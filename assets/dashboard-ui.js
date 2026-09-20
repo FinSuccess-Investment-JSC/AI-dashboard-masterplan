@@ -58,6 +58,7 @@
     heading.append(button);document.body.append(panel);
     wire(button,panel);
   });
+  window.DashboardPopover={wire,close};
   window.ChartCards?.compact();
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&active){const {button,panel}=active;if(panel.contains(document.activeElement))button.focus();button.dataset.pinned='false';close()}});
   document.addEventListener('pointerdown',e=>{if(active&&!active.panel.contains(e.target)&&!active.button.contains(e.target))close()});

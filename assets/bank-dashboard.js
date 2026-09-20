@@ -72,7 +72,7 @@
   const bankList=Object.entries(content.groups).flatMap(([group,g])=>g.tickers.map(ticker=>({ticker,group,label:g.label})));
   function choices(){const group=$('#bank-group').value;return bankList.filter(b=>group==='all'||b.group===group);}
   function fillTickers(){const old=$('#bank-ticker').value;$('#bank-ticker').innerHTML='<option value="all">Toàn bộ nhóm</option>'+choices().map(b=>`<option>${b.ticker}</option>`).join('');if(choices().some(b=>b.ticker===old))$('#bank-ticker').value=old;}
-  function comparison(){const ticker=$('#bank-ticker').value;$('#bank-rows').innerHTML=choices().filter(b=>ticker==='all'||b.ticker===ticker).map(b=>`<tr><td><b>${b.ticker==='AGRIBANK'?'Agribank':b.ticker}</b></td><td>${b.label}</td><td>—</td><td>—</td><td>—</td><td>—</td><td>${b.ticker==='AGRIBANK'?'Không áp dụng':'—'}</td><td>Chưa có kỳ · chờ Wi</td></tr>`).join('');}
+  function comparison(){if(!$('#bank-rows'))return;const ticker=$('#bank-ticker').value;$('#bank-rows').innerHTML=choices().filter(b=>ticker==='all'||b.ticker===ticker).map(b=>`<tr><td><b>${b.ticker==='AGRIBANK'?'Agribank':b.ticker}</b></td><td>${b.label}</td><td>—</td><td>—</td><td>—</td><td>—</td><td>${b.ticker==='AGRIBANK'?'Không áp dụng':'—'}</td><td>Chưa có kỳ · chờ Wi</td></tr>`).join('');}
   $('#players').innerHTML=Object.entries(content.groups).map(([id,g])=>`<article class="player"><h3>${g.label}</h3>${g.tickers.map(t=>`<button data-player="${t}" data-group="${id}">${t==='AGRIBANK'?'Agribank':t}</button>`).join('')}<p>Chọn mã để lọc bảng và góc nhìn riêng.</p></article>`).join('');
   fillTickers();comparison();
   let noteKey='';

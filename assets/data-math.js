@@ -34,7 +34,19 @@ function calendar(rows){
  }
  return out;
 }
+// Last available close per selected period. Null observations remain gaps.
+function periodClose(rows,period='day'){
+ if(!['day','week','month','year'].includes(period))throw new Error('Unsupported period');
+ const groups=new Map();
+ [...rows].sort((a,b)=>a.date.localeCompare(b.date)).forEach(r=>{
+  let key=r.date;
+  if(period==='week'){const d=new Date(r.date+'T00:00:00Z');d.setUTCDate(d.getUTCDate()-(d.getUTCDay()+6)%7);key=d.toISOString().slice(0,10)}
+  else if(period==='month')key=r.date.slice(0,7);else if(period==='year')key=r.date.slice(0,4);
+  groups.set(key,{date:key,last_date:r.date,value:Number.isFinite(r.value)?r.value:null});
+ });
+ return [...groups.values()];
+}
 function signal(value,low,high){return !Number.isFinite(value)?'missing':value<low?'low':value>=high?'high':'middle'}
-const api={mean,aggregate,join,cracks,rolling,calendar,signal};
+const api={mean,aggregate,join,cracks,rolling,calendar,signal,periodClose};
 if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.SectorMath=api;
 })(typeof window!=='undefined'?window:globalThis);

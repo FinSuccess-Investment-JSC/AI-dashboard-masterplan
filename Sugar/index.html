@@ -210,16 +210,22 @@ ul.list li{margin-bottom:7px}
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=46541cba0fd4">
 <script src="../data/daily-data.js?v=cf691abdaa02" defer></script>
-<script src="../assets/data-math.js?v=6a12195c87e0" defer></script>
+<script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=340975f1873b" defer></script>
-<script src="../assets/sector-content.js?v=900113ed2650" defer></script>
-<script src="../assets/sector-layout.js?v=32594f04ff49" defer></script>
-<script src="../assets/chart-cards.js?v=f44a219020ee" defer></script>
-<script src="../assets/dashboard-ui.js?v=6b0822e725ed" defer></script>
-<script src="../assets/catalyst-board.js?v=aab58d673101" defer></script>
+<script src="../assets/sector-content.js?v=0a7196675305" defer></script>
+<script src="../assets/sector-layout.js?v=321ff016e13a" defer></script>
+<script src="../assets/chart-cards.js?v=b51b5931dc7e" defer></script>
+<script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
+<script src="../assets/catalyst-board.js?v=8e97073afec4" defer></script>
+<script src="../data/company-comparison.js?v=ba4e84fefb4a" defer></script>
+<script src="../assets/financial-comparison.js?v=6bfc111ea73e" defer></script>
+<script src="../assets/research-layout.js?v=f896f4cd4cba" defer></script>
+<script src="../assets/research-sources.js?v=89f39bc0f69d" defer></script>
+<script src="../assets/research-editorial.js?v=e9bb795c7243" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20260912-r2"></script>
-<link rel="stylesheet" href="../assets/catalyst-board.css?v=f0a0d8faa97d">
+<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20260920-r1"></script>
+<link rel="stylesheet" href="../assets/catalyst-board.css?v=4d0c1fbd13a5">
+<link rel="stylesheet" href="../assets/research-layout.css?v=e2c590e2844f">
 </head>
 <body>
 <div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="sugar"><a href="../">Trang tổng</a><a href="../Dau-khi/">Dầu khí</a><a href="../Sugar/">Đường</a><a href="../Bank/">Ngân hàng</a></nav><p class="site-release-note" data-release-label></p></div></div>
@@ -325,7 +331,7 @@ ul.list li{margin-bottom:7px}
     <div class="grid two">
       <div class="card" data-block-id="sugar-04" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
         <div class="chart-title">Giá đường thế giới — 24 tháng gần nhất</div>
-        <div class="chart-sub">USD/kg, giá đường thô ISA · <a href="https://www.worldbank.org/en/research/commodity-markets" target="_blank" rel="noopener">World Bank Commodity Markets (Pink Sheet)</a></div>
+        <div class="chart-sub">USD/kg · đường thô ISA</div>
         <div id="chWorldRecent"></div>
         <div class="source-note">Nguồn: <a href="https://www.worldbank.org/en/research/commodity-markets" target="_blank" rel="noopener">World Bank Pink Sheet</a>, file cập nhật 04/08/2026. Đỉnh gần nhất T10/2024 (0,46), đáy T2/2026 (0,31).</div>
         <div class="srcrow"><a href="https://www.worldbank.org/en/research/commodity-markets" target="_blank" rel="noopener">World Bank · Commodity Markets (Pink Sheet)</a></div>
@@ -343,7 +349,7 @@ ul.list li{margin-bottom:7px}
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="sugar-06" data-update-kind="document" data-cadence="irregular" data-refresh-status="snapshot">
         <div class="chart-title">Giá đường trong nước — các mốc quan sát thực tế, 2020–2026</div>
-        <div class="chart-sub">VND/kg · mỗi điểm là một khoảng giá được báo cáo tại một thời điểm cụ thể (không nội suy)</div>
+        <div class="chart-sub">VND/kg · khoảng giá báo cáo từng thời điểm, không nội suy</div>
         <div id="chVnPrice"></div>
         <div class="legend">
           <span class="li"><span class="dot" style="background:var(--s1)"></span>Đường trắng (RS)</span>
@@ -355,7 +361,7 @@ ul.list li{margin-bottom:7px}
       </div>
       <div class="card" data-block-id="sugar-07" data-update-kind="document" data-cadence="irregular" data-refresh-status="snapshot">
         <div class="chart-title">So sánh khu vực — giá đường trắng, T7/2026</div>
-        <div class="chart-sub">VND/kg quy đổi · Việt Nam đang thấp nhất khu vực</div>
+        <div class="chart-sub">VND/kg quy đổi</div>
         <div id="chRegional"></div>
         <div class="source-note">Nguồn: Nông nghiệp & Môi trường (trích VSSA), 16/08/2026.</div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-regional"></table></div></details>
@@ -381,7 +387,7 @@ ul.list li{margin-bottom:7px}
       </div>
       <div class="card" data-block-id="sugar-09" data-update-kind="periodic" data-cadence="semiannual" data-refresh-status="snapshot">
         <div class="chart-title">Tồn kho cuối niên vụ</div>
-        <div class="chart-sub">Nghìn tấn · niên vụ 2010/11–2025/26 — thước đo áp lực cung–cầu trực tiếp nhất</div>
+        <div class="chart-sub">Nghìn tấn · niên vụ 2010/11–2025/26</div>
         <div id="chStocks"></div>
         <div class="source-note">Niên vụ 2025/26 là ước tính (báo cáo tháng 5/2026), chưa phải số liệu chốt vụ.</div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-stocks"></table></div></details>
@@ -424,7 +430,7 @@ ul.list li{margin-bottom:7px}
       </div>
       <div class="card" data-block-id="sugar-13" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
         <div class="chart-title">Biên lợi nhuận gộp SBT (TTC AgriS) theo niên độ</div>
-        <div class="chart-sub">%, niên độ tháng 7 – tháng 6 · doanh nghiệp đường niêm yết lớn nhất, ~46% thị phần nội địa</div>
+        <div class="chart-sub">% · niên độ T7–T6</div>
         <div id="chMargin"></div>
         <div class="source-note">Số liệu kiểm toán đầy đủ chỉ có đến FY2022/23. FY2023/24: biên gộp quý 4 giảm còn 9,5% (từ 12,7% cùng kỳ). FY2024/25: biên gộp quý 1 là 12,3% (so với 10,9% quý 1 FY2023/24) — chưa có số liệu cả niên độ đã kiểm toán nên không vẽ thành cột.</div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-margin"></table></div></details>
@@ -435,7 +441,7 @@ ul.list li{margin-bottom:7px}
 
   <div class="majorpane" data-tab="mt4">
   <section id="trade" class="section">
-    <div class="sectionhead"><div><h2>4. Policy/Trade/Tax</h2><p>Nhập khẩu chính ngạch (niên vụ, <a href="https://apps.fas.usda.gov/psdonline/app/index.html" target="_blank" rel="noopener">USDA PSD</a>) được tách riêng khỏi ước tính đường nhập lậu (năm dương lịch, VSSA/<a href="https://vcbs.com.vn" target="_blank" rel="noopener">VCBS</a>) — hai chuỗi khác kỳ, không gộp vào một biểu đồ.</p></div></div>
+    <div class="sectionhead"><div><h2>4. Policy/Trade/Tax</h2><p>Nhập khẩu chính ngạch (niên vụ, <a href="https://apps.fas.usda.gov/psdonline/app/index.html" target="_blank" rel="noopener">USDA PSD</a>) tách khỏi ước tính đường lậu (năm dương lịch, VSSA/<a href="https://vcbs.com.vn" target="_blank" rel="noopener">VCBS</a>): khác kỳ, không gộp.</p></div></div>
     <h3 class="subhead" style="margin-top:4px">Thương mại &amp; cạnh tranh chất tạo ngọt</h3>
     <div class="grid two">
       <div class="card" data-block-id="sugar-14" data-update-kind="periodic" data-cadence="semiannual" data-refresh-status="snapshot">
@@ -447,7 +453,7 @@ ul.list li{margin-bottom:7px}
       </div>
       <div class="card" data-block-id="sugar-15" data-update-kind="document" data-cadence="irregular" data-refresh-status="snapshot">
         <div class="chart-title">Ước tính đường nhập lậu</div>
-        <div class="chart-sub">Nghìn tấn · năm dương lịch, ước tính — KHÔNG phải số liệu hải quan chính thức</div>
+        <div class="chart-sub">Nghìn tấn · năm dương lịch</div>
         <div id="chSmuggled"></div>
         <div class="source-note">Nguồn: <a href="https://vcbs.com.vn" target="_blank" rel="noopener">VCBS</a> "Báo cáo ngành mía đường" 2024, VSSA. Ước tính giảm mạnh sau ATIGA (2020) và sau thuế CBPG/CTC (2021) rồi tăng trở lại; thị phần đường lậu được VSSA ước khoảng 30% thị trường nội địa giữa 2026.</div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-smuggled"></table></div></details>
@@ -456,7 +462,7 @@ ul.list li{margin-bottom:7px}
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="sugar-16" data-update-kind="document" data-cadence="irregular" data-refresh-status="snapshot">
         <div class="chart-title">Nhập khẩu HFCS (siro ngô fructose cao)</div>
-        <div class="chart-sub">Nghìn tấn · năm dương lịch — chất tạo ngọt thay thế cạnh tranh trực tiếp với đường mía</div>
+        <div class="chart-sub">Nghìn tấn · năm dương lịch</div>
         <div id="chHfcs"></div>
         <div class="source-note">Nhập khẩu HFCS tăng hơn gấp đôi 2021→2024 (102,4 → 241,5 nghìn tấn). 2023* là số suy ra từ lũy kế 9 tháng, không phải số cả năm công bố trực tiếp; 2025 (7T)* là lũy kế 7 tháng, chưa phải cả năm — cả hai cột được hiển thị mờ hơn. Không xác nhận được mức chênh lệch giá "20–25%" từng công bố trước đây — các nguồn giá landed cho thấy khoảng chênh rộng hơn (35–55%), nhưng phương pháp so sánh không đồng nhất (HFCS ngọt hơn đường mía 25–60% theo trọng lượng) nên không đưa một con số duy nhất vào dashboard.</div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-hfcs"></table></div></details>
@@ -488,15 +494,17 @@ ul.list li{margin-bottom:7px}
 
   <section id="policy" class="section">
     <h3 class="subhead">Chính sách phòng vệ thương mại &amp; thuế nhập khẩu</h3>
-    <p class="subsub">Đã đối chiếu với số hiệu quyết định gốc (Cục Phòng vệ thương mại, Bộ Công Thương) thay vì chỉ dẫn lại mốc thời gian chung chung.</p>
-    <div class="card" data-block-id="sugar-18" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
-      <div class="timeline">
-        <div class="event"><small>01/01/2020</small><b>ATIGA có hiệu lực với đường</b><p>Thông tư 23/2019/TT-BCT: bỏ hạn ngạch thuế quan nhập khẩu đường ASEAN, thuế về 5% (HS 1701) — mở đường cho làn sóng nhập khẩu 2020–2021.</p></div>
-        <div class="event"><small>16/02/2021</small><b>Thuế CBPG/CTC tạm thời — đường Thái Lan</b><p>Quyết định 477/QĐ-BCT (ký 09/02/2021): 44,23% (đường tinh luyện) và 29,23% (đường thô), vụ việc AD13-AS01.</p></div>
-        <div class="event"><small>16/06/2021</small><b>Thuế chính thức — Quyết định 1578/QĐ-BCT</b><p>AD 42,99% + CVD 4,65% = 47,64%, áp dụng 5 năm với đường có xuất xứ Thái Lan.</p></div>
-        <div class="event"><small>07/08/2022</small><b>Chống lẩn tránh — Quyết định 1514/QĐ-BCT</b><p>Mở rộng mức thuế 47,64% sang đường lẩn tránh qua Campuchia, Indonesia, Lào, Malaysia, Myanmar (trừ trường hợp chứng minh được nguồn gốc bản địa). Sau đó được điều chỉnh bởi Quyết định 2960/QĐ-BCT/2022.</p></div>
-        <div class="event"><small>16/06/2026</small><b>Gia hạn 5 năm — Quyết định 1309 & 1310/QĐ-BCT</b><p>Ký 02/06/2026, kết quả rà soát cuối kỳ: gia hạn cả hai biện pháp đến 15/06/2031. Nhập khẩu Thái Lan đã giảm từ 924.000 xuống 82.000 tấn trong giai đoạn áp thuế. Mức thuế cụ thể sau gia hạn chưa được xác nhận đầy đủ từ văn bản gốc — cần theo dõi thêm.</p></div>
-      </div>
+        <div class="card" data-block-id="sugar-18" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
+      <div class="tablewrap compare-table"><table>
+        <thead><tr><th>Mốc</th><th>Văn bản</th><th>Thay đổi</th><th>Mức thuế với đường Thái Lan</th></tr></thead>
+        <tbody>
+          <tr><td>01/01/2020</td><td>Thông tư 23/2019/TT-BCT (ATIGA)</td><td>Bỏ hạn ngạch thuế quan nhập khẩu đường ASEAN → <mark class="key-phrase">mở làn sóng nhập khẩu 2020–2021</mark></td><td class="after">5% (HS 1701)</td></tr>
+          <tr><td>16/02/2021</td><td>Quyết định 477/QĐ-BCT, ký 09/02/2021 · vụ việc AD13-AS01</td><td>Thuế chống bán phá giá / chống trợ cấp tạm thời</td><td class="after">44,23% đường tinh luyện · 29,23% đường thô</td></tr>
+          <tr><td>16/06/2021</td><td>Quyết định 1578/QĐ-BCT</td><td>Thuế chính thức, áp dụng 5 năm</td><td class="after">AD 42,99% + CVD 4,65% = 47,64%</td></tr>
+          <tr><td>07/08/2022</td><td>Quyết định 1514/QĐ-BCT · điều chỉnh bởi 2960/QĐ-BCT/2022</td><td><mark class="key-phrase">Chống lẩn tránh</mark>: mở rộng sang đường đi qua Campuchia, Indonesia, Lào, Malaysia, Myanmar (trừ khi chứng minh được xuất xứ bản địa)</td><td class="after">47,64%</td></tr>
+          <tr><td>16/06/2026</td><td>Quyết định 1309 &amp; 1310/QĐ-BCT, ký 02/06/2026 · rà soát cuối kỳ</td><td><mark class="key-phrase">Gia hạn cả hai biện pháp đến 15/06/2031</mark>. Nhập khẩu từ Thái Lan giảm từ 924.000 xuống 82.000 tấn trong giai đoạn áp thuế</td><td class="before">Mức cụ thể sau gia hạn chưa xác nhận từ văn bản gốc</td></tr>
+        </tbody>
+      </table></div>
     </div>
   </section>
   </div>

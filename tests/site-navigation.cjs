@@ -48,11 +48,11 @@ const prefix = '/AI-dashboard-masterplan/';
     for (const key of ['oil','sugar','bank']) {
       await page.locator('#readyDashboards [data-site-route="'+key+'"]').click();
       await checkRoute(key);
-      assert.equal(await page.locator('.majortabbtn').count(), 7);
+      assert.equal(await page.locator('.majortabbtn').count(), 6);
       assert.ok(await page.locator('svg').count() > 10);
       assert.ok(await page.locator('.source-info-panel').count() > 0);
       assert.ok(await page.evaluate(key => key === 'bank' ? !!window.BANK_WI_DATA : !!window.SECTOR_DAILY, key));
-      for (let tab=0; tab<7; tab++) {
+      for (let tab=0; tab<6; tab++) {
         await page.locator('.majortabbtn').nth(tab).click();
         assert.equal(new URL(page.url()).pathname, expected(key));
       }
@@ -86,7 +86,7 @@ const prefix = '/AI-dashboard-masterplan/';
     }
     assert.deepEqual(errors, []);
     assert.deepEqual(missing, []);
-    console.log(JSON.stringify({result:'PASS',base,version:manifest.version,checks:'3 hub cards, legacy hashes, 6 cross-sector paths + Back, 21 section tabs, charts/data, home, duong alias, desktop/390px, no JS/HTTP errors'}));
+    console.log(JSON.stringify({result:'PASS',base,version:manifest.version,checks:'3 hub cards, legacy hashes, 6 cross-sector paths + Back, 18 section tabs, charts/data, home, duong alias, desktop/390px, no JS/HTTP errors'}));
   } finally {
     if(browser) await browser.close();
     if(server) await new Promise(resolve => server.close(resolve));

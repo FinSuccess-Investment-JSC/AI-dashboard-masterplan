@@ -296,16 +296,22 @@ body{font-size:14px;line-height:1.45}
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=46541cba0fd4">
 <script src="../data/daily-data.js?v=cf691abdaa02" defer></script>
-<script src="../assets/data-math.js?v=6a12195c87e0" defer></script>
+<script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=340975f1873b" defer></script>
-<script src="../assets/sector-content.js?v=900113ed2650" defer></script>
-<script src="../assets/sector-layout.js?v=32594f04ff49" defer></script>
-<script src="../assets/chart-cards.js?v=f44a219020ee" defer></script>
-<script src="../assets/dashboard-ui.js?v=6b0822e725ed" defer></script>
-<script src="../assets/catalyst-board.js?v=aab58d673101" defer></script>
+<script src="../assets/sector-content.js?v=0a7196675305" defer></script>
+<script src="../assets/sector-layout.js?v=321ff016e13a" defer></script>
+<script src="../assets/chart-cards.js?v=b51b5931dc7e" defer></script>
+<script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
+<script src="../assets/catalyst-board.js?v=8e97073afec4" defer></script>
+<script src="../data/company-comparison.js?v=ba4e84fefb4a" defer></script>
+<script src="../assets/financial-comparison.js?v=6bfc111ea73e" defer></script>
+<script src="../assets/research-layout.js?v=f896f4cd4cba" defer></script>
+<script src="../assets/research-sources.js?v=89f39bc0f69d" defer></script>
+<script src="../assets/research-editorial.js?v=e9bb795c7243" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20260912-r2"></script>
-<link rel="stylesheet" href="../assets/catalyst-board.css?v=f0a0d8faa97d">
+<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20260920-r1"></script>
+<link rel="stylesheet" href="../assets/catalyst-board.css?v=4d0c1fbd13a5">
+<link rel="stylesheet" href="../assets/research-layout.css?v=e2c590e2844f">
 </head>
 <body>
 <div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="oil"><a href="../">Trang tổng</a><a href="../Dau-khi/">Dầu khí</a><a href="../Sugar/">Đường</a><a href="../Bank/">Ngân hàng</a></nav><p class="site-release-note" data-release-label></p></div></div>
@@ -440,7 +446,7 @@ body{font-size:14px;line-height:1.45}
       <div class="viz-grid">
         <div class="viz-block">
           <div class="chart-title">Cung – cầu dầu và nhiên liệu lỏng toàn cầu — 2022–2027E</div>
-          <div class="chart-sub">triệu thùng/ngày, bình quân năm · production so với consumption</div>
+          <div class="chart-sub">triệu thùng/ngày, bình quân năm</div>
           <div id="chWorldSD"></div>
           <div class="legend">
             <span class="li"><span class="dot" style="background:var(--s3)"></span>Cung toàn cầu</span>
@@ -449,7 +455,7 @@ body{font-size:14px;line-height:1.45}
         </div>
         <div class="viz-block">
           <div class="chart-title">Balance: cung trừ cầu</div>
-          <div class="chart-sub">triệu thùng/ngày · dương = dư cung/tồn kho tăng, âm = thiếu cung/tồn kho rút</div>
+          <div class="chart-sub">triệu thùng/ngày · dương = dư cung, âm = thiếu cung</div>
           <div id="chWorldBalance"></div>
           <div class="signal-line"><b>Tín hiệu giá:</b> 2026E chuyển sang thiếu cung khoảng <b>1,87 mb/d</b>, thường là bias hỗ trợ giá. Nhưng 2027E trong STEO lại bật sang dư cung lớn khi nguồn cung phục hồi — nghĩa là giá cao hiện tại phụ thuộc rất nhiều vào việc gián đoạn có kéo dài hơn dự báo hay không.</div>
         </div>
@@ -505,7 +511,7 @@ body{font-size:14px;line-height:1.45}
       </div>
       <div class="card" data-block-id="dau-khi-09" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">
         <div class="chart-title">Sản lượng dầu thô Mỹ — 36 tháng</div>
-        <div class="chart-sub">triệu thùng/ngày, bình quân tháng · nguồn cung ngoài OPEC lớn nhất thế giới</div>
+        <div class="chart-sub">triệu thùng/ngày, bình quân tháng</div>
         <div id="chUsProd"></div>
         <div class="source-note">Số mới nhất 28/08/2026. Sản lượng ở vùng cao là bằng chứng quan trọng cho kết luận "không thiếu dầu thô".</div>
         <div class="srcrow"><a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&amp;s=WCRFPUS2&amp;f=W" target="_blank" rel="noopener">EIA · chuỗi WCRFPUS2</a></div>
@@ -516,14 +522,14 @@ body{font-size:14px;line-height:1.45}
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="dau-khi-10" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">
         <div class="chart-title">Tồn kho tại Cushing — 36 tháng</div>
-        <div class="chart-sub">triệu thùng · điểm giao nhận hợp đồng WTI, mức thấp ở đây khuếch đại biến động giá</div>
+        <div class="chart-sub">triệu thùng · điểm giao nhận hợp đồng WTI</div>
         <div id="chCushing"></div>
         <div class="srcrow"><a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&amp;s=W_EPC0_SAX_YCUOK_MBBL&amp;f=W" target="_blank" rel="noopener">EIA · tồn kho Cushing</a></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-cushing"></table></div></details>
       </div>
       <div class="card" data-block-id="dau-khi-11" data-update-kind="public" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">Đường cong giá kỳ hạn WTI — theo ngày giao dịch</div>
-        <div class="chart-sub">USD/thùng, giá hợp đồng theo tháng đáo hạn · độ dốc cho biết thị trường đang định giá tình trạng hiện tại là tạm thời hay lâu dài</div>
+        <div class="chart-sub">USD/thùng · giá hợp đồng theo tháng đáo hạn</div>
         <div id="chCurve"></div>
         <div class="conf-note"><b>Backwardation rất dốc:</b> hợp đồng gần nhất 90,55 USD/thùng, hợp đồng tháng 12/2027 chỉ 70,72 — chênh <b>19,83 USD/thùng</b>. Thị trường đang trả giá cao cho hàng giao ngay và tin rằng tình trạng căng thẳng sẽ dịu đi. Đây là bằng chứng cho luận điểm <b>phần bù gián đoạn, không phải thiếu hụt cấu trúc</b>. Backwardation dốc cũng làm việc trữ hàng nổi trên tàu không còn hiệu quả kinh tế.</div>
         <div class="source-note">Giá hợp đồng WTI trên NYMEX lấy qua Yahoo Finance. Bản cập nhật dùng giá đóng cửa cùng ngày giao dịch, không phải giá thanh toán chính thức; ngày nguồn và ngày kiểm tra được ghi riêng bên dưới chart. <b>Đây là nguồn không chính thức</b> — dùng tạm để lấp cổng phân tích, nên thay bằng dữ liệu vendor khi mua quyền truy cập. Chuỗi hợp đồng kỳ hạn miễn phí trước đây của EIA đã dừng cập nhật từ tháng 4/2024 nên không dùng được.</div>
@@ -534,7 +540,7 @@ body{font-size:14px;line-height:1.45}
 
     <div class="card" style="margin-top:14px" data-block-id="dau-khi-12" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
       <div class="chart-title">Dư địa công suất OPEC và gián đoạn nguồn cung ngoài kế hoạch — 2024 đến tháng 7/2026</div>
-      <div class="chart-sub">triệu thùng/ngày · dư địa công suất là bộ giảm xóc của cả hệ thống; gián đoạn ngoài kế hoạch là phần sản lượng không ra được thị trường</div>
+      <div class="chart-sub">triệu thùng/ngày</div>
       <div id="chSpare"></div>
       <div class="legend">
         <span class="li"><span class="dot" style="background:var(--s3)"></span>Dư địa công suất OPEC</span>
@@ -550,7 +556,7 @@ body{font-size:14px;line-height:1.45}
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="dau-khi-13" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">
         <div class="chart-title">Vị thế ròng của quỹ đầu cơ trên hợp đồng WTI — theo tuần</div>
-        <div class="chart-sub">nghìn hợp đồng, vị thế mua trừ vị thế bán của nhóm quỹ quản lý tiền · đo mức độ đông đúc, không đo hướng</div>
+        <div class="chart-sub">nghìn hợp đồng · mua trừ bán của quỹ quản lý tiền</div>
         <div id="chCot"></div>
         <div class="conf-note">Vị thế ròng hiện ở <b>84,0 nghìn hợp đồng</b> (25/08/2026), nằm giữa dải 2025–2026 (thấp nhất −38,2; cao nhất 253,9). Nói cách khác thị trường <b>chưa đông đúc</b> — đợt tăng giá hiện nay không phải do dòng tiền đầu cơ dồn vào, mà do điều kiện vật chất. Điều này làm giảm rủi ro một đợt bán tháo kỹ thuật, nhưng cũng có nghĩa nếu nguồn cung thắt thêm thì vẫn còn dư địa để vị thế đầu cơ đẩy giá lên cao hơn.</div>
         <div class="source-note">Báo cáo Cam kết của các nhà giao dịch, bản phân tách theo nhóm, hợp đồng <code>WTI-PHYSICAL</code> trên sàn NYMEX (mã CFTC 067651). Công bố hằng tuần, độ trễ khoảng 3 ngày. Link đầu tiên bên dưới mở đúng báo cáo tuần mới nhất — tìm dòng WTI-PHYSICAL, cột Managed Money.</div>
@@ -558,7 +564,7 @@ body{font-size:14px;line-height:1.45}
         <details class="dtable"><summary>Xem bảng dữ liệu (86 tuần)</summary><div class="tablewrap"><table id="tbl-cot"></table></div></details>
       </div>
       <div class="card" style="border-left:4px solid var(--accent)" data-block-id="dau-khi-14" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3 style="margin-top:0;font-size:13.5px">Đọc chế độ thị trường — bốn cổng đã có đủ số</h3>
+        <h3 style="margin-top:0;font-size:13.5px">Đọc chế độ thị trường</h3>
         <div class="tablewrap"><table>
           <thead><tr><th>Cổng</th><th>Số hiện tại</th><th>Nói lên điều gì</th></tr></thead>
           <tbody>
@@ -577,7 +583,7 @@ body{font-size:14px;line-height:1.45}
     <div class="grid two">
       <div class="card" data-block-id="dau-khi-15" data-update-kind="document" data-cadence="irregular" data-refresh-status="snapshot">
         <div class="chart-title">Sản lượng khai thác dầu thô và khí tự nhiên — 2020–2026 YTD</div>
-        <div class="chart-sub">dầu thô: triệu tấn · khí: tỷ m³ · 2026 là lũy kế 6 tháng, không annualize</div>
+        <div class="chart-sub">dầu thô: triệu tấn · khí: tỷ m³ · 2026 = 6 tháng</div>
         <div id="chVnUpstream"></div>
         <div class="legend">
           <span class="li"><span class="dot" style="background:var(--s2)"></span>Khai thác dầu thô (triệu tấn)</span>
@@ -589,7 +595,7 @@ body{font-size:14px;line-height:1.45}
       </div>
       <div class="card" data-block-id="dau-khi-16" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
         <div class="chart-title">Sản lượng khí vào bờ và LNG nhập khẩu — 2021–2026</div>
-        <div class="chart-sub">triệu m³ · cột 2026 là kế hoạch doanh nghiệp, không phải số thực hiện</div>
+        <div class="chart-sub">triệu m³ · 2026 = kế hoạch</div>
         <div id="chGasVol"></div>
         <div class="legend">
           <span class="li"><span class="dot" style="background:var(--s1)"></span>Khí ẩm nội địa</span>
@@ -605,7 +611,7 @@ body{font-size:14px;line-height:1.45}
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="dau-khi-17" data-update-kind="document" data-cadence="irregular" data-refresh-status="snapshot">
         <div class="chart-title">Vị trí của PV GAS trong nền kinh tế — số liệu công bố</div>
-        <div class="chart-sub">% · bốn tỷ trọng do doanh nghiệp và Petrovietnam công bố, thay cho bảng cơ cấu hộ tiêu thụ trước đây</div>
+        <div class="chart-sub">%</div>
         <div id="chGasCustomer"></div>
         <div class="conf-note"><b>Đã thay số theo nguyên tắc chỉ dùng nguồn công khai.</b> Bản trước hiển thị cơ cấu hộ tiêu thụ khí 2025 (điện 3.954 / đạm 1.205 / công nghiệp 1.041 triệu m³), nhưng chưa có nguồn public công bố đúng ba con số đó trong repo, nên đã gỡ bỏ. Thay vào đó là bốn tỷ trọng doanh nghiệp có công bố, phản ánh cùng một ý: nhu cầu khí phụ thuộc áp đảo vào điện và đạm.</div>
         <div class="source-note">Thị phần khí khô và LPG bán buôn theo bài về ngành công nghiệp khí trên Tạp chí Năng lượng Việt Nam. Tỷ trọng đóng góp sản lượng điện quốc gia (6,3%) và sản lượng đạm cả nước (70%) theo công bố tại đại hội cổ đông thường niên 2026 của PV GAS. Bổ sung: 7 tháng đầu 2026 PV GAS cấp 325 triệu Sm³ khí cho sản xuất đạm khu vực Đông Nam Bộ, kế hoạch cả năm 590 triệu Sm³.</div>
@@ -655,7 +661,7 @@ body{font-size:14px;line-height:1.45}
 
     <div class="card" data-block-id="dau-khi-20" data-transform="derived" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">
       <div class="chart-title">Crack spread — 24 tháng gần nhất</div>
-      <div class="chart-sub">USD/thùng, bình quân tháng · tự tính từ giá giao ngay Bờ Vịnh Mỹ trừ giá Brent</div>
+      <div class="chart-sub">USD/thùng, bình quân tháng · giá USGC trừ Brent</div>
       <div id="chCrack"></div>
       <div class="legend">
         <span class="li"><span class="dot" style="background:var(--s2)"></span>Crack diesel (ULSD)</span>
@@ -672,7 +678,7 @@ body{font-size:14px;line-height:1.45}
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="dau-khi-21" data-transform="derived" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">
         <div class="chart-title">Giá sản phẩm quốc tế proxy — 24 tháng</div>
-        <div class="chart-sub">USD/thùng, bình quân tháng · Brent so với xăng và diesel quy đổi từ EIA USGC</div>
+        <div class="chart-sub">USD/thùng, bình quân tháng · EIA USGC</div>
         <div id="chMoit"></div>
         <div class="conf-note">Đây là time-series thay cho snapshot một kỳ. Diesel product price proxy tăng từ 95,6 USD/thùng tháng 9/2025 lên 198,8 USD/thùng tại điểm T9/2026, trong khi Brent tăng từ 68,0 lên 96,0. Phần tăng vượt trội nằm ở sản phẩm sau lọc, không chỉ ở dầu thô.</div>
         <div class="source-note">Nguồn chart là EIA Brent spot, EIA USGC gasoline và EIA USGC ULSD. Số này không phải bảng giá thành phẩm trong công thức điều hành của Bộ Công Thương; văn bản MOIT/PDF từng kỳ cần được bóc tách riêng nếu muốn đúng tuyệt đối theo rổ Việt Nam.</div>
@@ -681,7 +687,7 @@ body{font-size:14px;line-height:1.45}
       </div>
       <div class="card" data-block-id="dau-khi-22" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
         <div class="chart-title">Giá bán lẻ trong nước — 10 kỳ điều hành gần nhất</div>
-        <div class="chart-sub">đồng/lít, Vùng 1 · Petrolimex/CostFlow, cập nhật tới 03/09/2026</div>
+        <div class="chart-sub">đồng/lít, Vùng 1 · tới 03/09/2026</div>
         <div id="chRetailFuelMini"></div>
         <div class="legend">
           <span class="li"><span class="dot" style="background:var(--s4)"></span>E5 RON 92-II</span>
@@ -706,7 +712,7 @@ body{font-size:14px;line-height:1.45}
       </div>
       <div class="card" data-block-id="dau-khi-24" data-transform="derived" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">
         <div class="chart-title">Brent — bình quân năm, 2010–2026</div>
-        <div class="chart-sub">USD/thùng · đỉnh 2012 (111,57) → đáy 2020 (41,96) → đỉnh 2022 (100,93) → vùng thấp 2025 (69,14) → đang tăng lại</div>
+        <div class="chart-sub">USD/thùng, bình quân năm</div>
         <div id="chBrentYear"></div>
         <div class="conf-note">Năm hiện tại là bình quân phần năm đã có dữ liệu (YTD), không so sánh trực tiếp với các năm đủ 12 tháng.</div>
         <div class="srcrow"><a href="https://fred.stlouisfed.org/series/DCOILBRENTEU" target="_blank" rel="noopener">FRED · DCOILBRENTEU</a></div>
@@ -717,7 +723,7 @@ body{font-size:14px;line-height:1.45}
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="dau-khi-25" data-transform="derived" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">
         <div class="chart-title">Brent so với WTI — 24 tháng</div>
-        <div class="chart-sub">USD/thùng, bình quân tháng · độ rộng chênh lệch cho biết arbitrage xuất khẩu dầu Mỹ đang mở hay đóng</div>
+        <div class="chart-sub">USD/thùng, bình quân tháng</div>
         <div id="chBrentWti"></div>
         <div class="legend">
           <span class="li"><span class="dot" style="background:var(--s1)"></span>Brent</span>
@@ -776,14 +782,17 @@ body{font-size:14px;line-height:1.45}
         <div class="title">Luật Dầu khí 2026</div>
         <div class="desc">Trang này chỉ tóm tắt kênh truyền dẫn tới ngành; phần điều khoản, timeline và tác động pháp lý chi tiết nằm ở dashboard luật riêng.</div>
       </a>
-      <p style="font-size:12.5px;line-height:1.65;color:var(--ink2);margin:0 0 12px">Luật không tạo doanh thu trực tiếp. Tác động đi qua nhiều bước: cải thiện hiệu quả dự án → tăng xác suất ra quyết định đầu tư → phát sinh hợp đồng dịch vụ → hình thành sản lượng và dòng tiền. Vì vậy nhóm dịch vụ hưởng lợi trước, sản lượng và hạ tầng hưởng lợi sau.</p>
-      <div class="grid two">
-        <div class="driver"><h3>Rút ngắn tầng phê duyệt</h3><p>Petrovietnam được giao thêm thẩm quyền với nhiều nội dung chuyên môn, lựa chọn nhà thầu và quản lý hợp đồng. Với ngành có vốn đầu tư lớn và thời gian chuẩn bị nhiều năm, mỗi năm chậm làm tăng chi phí vốn và rủi ro trượt giá thiết bị — nên rút ngắn thời gian phê duyệt cải thiện hiệu quả dự án ngay cả khi giá dầu không đổi.</p></div>
-        <div class="driver"><h3>Cơ chế cho mỏ cận biên và gia tăng thu hồi dầu</h3><p>Dự án mỏ cận biên hoặc áp dụng giải pháp gia tăng thu hồi dầu có thể được đề xuất tăng mức thu hồi chi phí tối đa thêm không quá 10% so với mức đang áp dụng. Thu hồi chi phí là phần doanh thu nhà thầu được dùng để bù chi phí trước khi chia lợi nhuận — tăng trần này giúp dòng tiền về sớm hơn.</p></div>
-        <div class="driver"><h3>Linh hoạt trong quản lý hợp đồng</h3><p>Hoàn thiện cơ chế gia hạn hợp đồng, gia hạn giai đoạn thăm dò, giữ lại diện tích có phát hiện khí. Với khí, một phát hiện chưa chắc phát triển được ngay vì còn phải chờ đường ống và hộ tiêu thụ — cơ chế linh hoạt hơn giúp tránh mất cơ hội thương mại hóa vì hết thời hạn.</p></div>
-        <div class="driver"><h3>Mở rộng sang năng lượng ngoài khơi và lưu trữ CO₂</h3><p>Khung pháp lý mở rộng cho công trình năng lượng ngoài khơi và cơ chế thu giữ – lưu trữ CO₂, gồm cả cách xử lý chi phí này trong cơ chế thu hồi chi phí dầu khí. Về dài hạn có thể tạo nhu cầu mới cho khảo sát, khoan giếng bơm ép, đường ống và cải hoán giàn.</p></div>
-      </div>
-      <div class="conf-note">Luật chỉ có hiệu lực từ 01/03/2027. Tác động trong 2026 chủ yếu nằm ở kỳ vọng; tốc độ thực thi còn phụ thuộc nghị định và thông tư hướng dẫn.</div>
+      <p class="policy-lead">Luật không tạo doanh thu trực tiếp. Chuỗi truyền dẫn: hiệu quả dự án tốt hơn → nhiều quyết định đầu tư hơn → hợp đồng dịch vụ → sản lượng &amp; dòng tiền. <mark class="key-phrase">Dịch vụ (PVD, PVS) hưởng lợi trước</mark>, sản lượng và hạ tầng (GAS) hưởng lợi sau.</p>
+      <div class="tablewrap compare-table"><table>
+        <thead><tr><th>Nội dung</th><th>Trước Luật 2026</th><th>Từ 01/03/2027</th><th>Ý nghĩa với doanh nghiệp</th></tr></thead>
+        <tbody>
+          <tr><td>Thẩm quyền phê duyệt</td><td class="before">Nhiều nội dung chuyên môn, chọn nhà thầu, quản lý hợp đồng phải trình cấp trên</td><td class="after">Petrovietnam được giao thêm thẩm quyền</td><td><mark class="key-phrase">Rút ngắn thời gian phê duyệt</mark> → giảm chi phí vốn và rủi ro trượt giá thiết bị, kể cả khi giá dầu không đổi</td></tr>
+          <tr><td>Thu hồi chi phí · mỏ cận biên, gia tăng thu hồi dầu</td><td class="before">Trần thu hồi chi phí theo mức đang áp dụng</td><td class="after">Được đề xuất nâng trần thêm tối đa 10%</td><td>Thu hồi chi phí là phần doanh thu nhà thầu giữ để bù chi phí trước khi chia lợi nhuận → <mark class="key-phrase">dòng tiền về sớm hơn</mark></td></tr>
+          <tr><td>Thời hạn hợp đồng &amp; diện tích</td><td class="before">Hết hạn thăm dò / hợp đồng có thể mất diện tích dù đã có phát hiện khí</td><td class="after">Gia hạn hợp đồng, gia hạn thăm dò, giữ lại diện tích có phát hiện khí</td><td><mark class="key-phrase">Không mất cơ hội thương mại hóa</mark> trong lúc chờ đường ống và hộ tiêu thụ</td></tr>
+          <tr><td>Phạm vi luật</td><td class="before">Dầu khí truyền thống</td><td class="after">Thêm năng lượng ngoài khơi và thu giữ – lưu trữ CO₂, gồm cách tính chi phí này trong thu hồi chi phí</td><td>Nhu cầu dài hạn mới: khảo sát, khoan giếng bơm ép, đường ống, cải hoán giàn</td></tr>
+        </tbody>
+      </table></div>
+      <div class="conf-note">Hiệu lực từ 01/03/2027 · tác động 2026 chủ yếu là kỳ vọng · tốc độ thực thi phụ thuộc nghị định, thông tư hướng dẫn.</div>
       <div class="source-note"><b>Nguồn công khai:</b> văn bản luật gốc tra tại <a href="https://vanban.chinhphu.vn/" target="_blank" rel="noopener">Cơ sở dữ liệu văn bản quy phạm pháp luật của Chính phủ</a> và <a href="https://quochoi.vn/" target="_blank" rel="noopener">Quốc hội</a>; tác động tới từng doanh nghiệp dẫn theo công bố của chính doanh nghiệp. Dashboard này chỉ tóm tắt tác động đầu tư; phân tích luật chi tiết nên đọc ở trang chuyên đề riêng.</div>
       <div class="srcrow"><a href="https://thanhnhan-04.github.io/Luat-Dau-Khi-2026/" target="_blank" rel="noopener">Dashboard chuyên đề · Luật Dầu khí 2026</a><a href="https://www.pvgas.com.vn/" target="_blank" rel="noopener">PV GAS</a><a href="https://www.bsr.com.vn/" target="_blank" rel="noopener">BSR</a><a href="https://www.pvtrans.vn/" target="_blank" rel="noopener">PVTrans</a></div>
     </div>
@@ -951,11 +960,10 @@ body{font-size:14px;line-height:1.45}
 
   <div class="majorpane" data-tab="mt7" id="pane-mt7">
   <section class="section">
-    <div class="sectionhead"><div><h2>7. Hormuz &amp; dòng chảy <em>— tab riêng của ngành</em></h2><p>Đây là tab customize ngoài khung chuẩn, dựng riêng cho đợt gián đoạn đang diễn ra. Lý do tách riêng: đây là một cú sốc dòng chảy vật chất có thể kết thúc, khác hẳn các yếu tố cấu trúc dài hạn ở sáu tab trước — trộn chung sẽ làm người đọc tưởng nó là đặc điểm thường trực của ngành.</p></div></div>
 
     <div class="card" style="margin-top:14px" data-block-id="dau-khi-37" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">
-      <div class="chart-title">Tàu chở dầu qua Hormuz — dữ liệu ngày & bình quân 7 ngày</div>
-      <div class="chart-sub">lượt tàu/ngày · dữ liệu ngày là lớp theo dõi chính; bình quân 7 ngày giúp phân biệt xu hướng với nhiễu</div>
+      <div class="chart-title">Tàu chở dầu qua Hormuz</div>
+      <div class="chart-sub">lượt tàu/ngày</div>
       <div id="chHormuzM"></div>
       <div class="conf-note">Mức nền trước gián đoạn là 30–50 lượt tàu chở dầu mỗi ngày. Sáu tháng gần nhất dao động trong khoảng 0,9–5,4 — <b>chưa tháng nào quay lại quá 11% mức nền</b>. Đây là ngưỡng đo được để kiểm tra kịch bản ở tab 5: kịch bản tăng bị bác bỏ nếu lưu lượng phục hồi về vùng 30 lượt/ngày trở lên.</div>
       <div class="srcrow"><a href="https://portwatch.imf.org/pages/chokepoint6" target="_blank" rel="noopener">IMF PortWatch · eo Hormuz</a></div>

@@ -59,3 +59,9 @@ PLAYWRIGHT_MODULE=/path/to/playwright node tests/site-navigation.cjs
 Use a new release ID for every publication. The preparer hashes local JS/CSS references in the hub and three industry pages (including JS data bundles), applies the same navigation version, and writes `data/site-release.json` for byte-level verification. It does not update observations or publish. Commit the prepared HTML, assets/data and manifest together, then push to the existing Pages branch (`main`, repository root). Check the Pages build and rerun the navigation test with `SITE_BASE=https://thanhnhan-04.github.io/AI-dashboard-masterplan/` after deployment. `CHROME_PATH` can override the test browser executable.
 
 All hub/sector navigation uses `assets/site-navigation.js`. Historical hub hashes `#ngan-hang`, `#dau-khi`, `#duong` redirect to their canonical versioned dashboard; section hashes inside a sector stay local. The release label refers to site files, not financial observation or analysis dates. Daily local updates still require preparation and publication to appear publicly.
+
+### Public company comparison (manual)
+
+`python3 scripts/update_company_comparison.py` downloads public Stock Analysis financial and ratio tables for the Oil/Sugar/Bank comparison universe. Install `scripts/requirements.txt` first. Output: `data/company-comparison.json` and browser bundle `.js`; raw HTML/parsed metadata in `data/raw/comparison/` (local archive, not published). `python3 scripts/update_company_comparison.py --offline` rebuilds from that archive without network calls.
+
+Records retain fiscal period-end, source URLs, fetch date and dated valuation. Missing inputs remain null; failed periods keep prior data with `last_good`. No automatic schedule is installed. QNS currently unavailable. Standardized provider figures are not a full reconciliation to original issuer filings. See DASHBOARD_WORKFLOW §11 for formulas and bank-specific definitions.

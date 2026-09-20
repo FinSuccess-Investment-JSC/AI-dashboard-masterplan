@@ -11,3 +11,11 @@ assert.equal(M.rolling(rs).at(-1).average,3);assert.equal(M.rolling(rs.slice(1))
 const gapped=M.calendar([{date:'2026-09-01',tanker:0},{date:'2026-09-03',tanker:2}]);assert.equal(gapped[1].tanker,null);assert.equal(gapped[0].tanker,0);
 assert.equal(M.signal(null,10,30),'missing');assert.equal(M.signal(5,10,30),'low');
 console.log('PASS: aligned dates, gallon conversion, aggregation, calendar gaps, rolling mean, missing signals');
+
+// Period close crosses year boundaries using Monday weeks, retains nulls, and never mutates inputs.
+const closing=[d('2026-01-02',2),d('2025-12-31',1),d('2026-01-05',3),d('2026-01-06',null)];
+assert.deepEqual(M.periodClose(closing,'week'),[{date:'2025-12-29',last_date:'2026-01-02',value:2},{date:'2026-01-05',last_date:'2026-01-06',value:null}]);
+assert.equal(closing[0].date,'2026-01-02');
+assert.deepEqual(M.periodClose(closing,'year').map(r=>r.value),[1,null]);
+assert.deepEqual(M.periodClose([],'month'),[]);
+assert.throws(()=>M.periodClose(closing,'invalid'));
