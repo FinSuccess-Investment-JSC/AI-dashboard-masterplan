@@ -48,11 +48,11 @@ const prefix = '/AI-dashboard-masterplan/';
     for (const key of ['oil','sugar','bank']) {
       await page.locator('#readyDashboards [data-site-route="'+key+'"]').click();
       await checkRoute(key);
-      assert.equal(await page.locator('.majortabbtn').count(), 6);
+      const tabCount=key==='bank'?7:6;assert.equal(await page.locator('.majortabbtn').count(), tabCount);
       assert.ok(await page.locator('svg').count() > 10);
       assert.ok(await page.locator('.source-info-panel').count() > 0);
       assert.ok(await page.evaluate(key => key === 'bank' ? !!window.BANK_WI_DATA : !!window.SECTOR_DAILY, key));
-      for (let tab=0; tab<6; tab++) {
+      for (let tab=0; tab<tabCount; tab++) {
         await page.locator('.majortabbtn').nth(tab).click();
         assert.equal(new URL(page.url()).pathname, expected(key));
       }

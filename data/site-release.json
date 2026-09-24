@@ -1,5 +1,5 @@
 {
-  "version": "20260920-r1",
+  "version": "20260923-r2",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -7,24 +7,24 @@
     "bank": "Bank/"
   },
   "files": {
-    "404.html": "94e157a30b5548b1411351c8c062d3ae0bdad89faa2f6e503407a7a91a8c593f",
-    "Bank/index.html": "4c6de2e0700ac69b020d33d3f6e9cfb9a174bd544455e10e0158840f2485fb53",
-    "Dau-khi/index.html": "68e471b6c62ea842801b3d1ee733c5ffd12fa6bec3a836922bbbbf4a9a2789ed",
-    "Sugar/index.html": "8a95a0903d093d564f4e6575112244e57ca5db941ec732e31a70551dc3544d21",
+    "404.html": "25d6a24648d668cd3b483504976bb9d58b25d0d10440adb724e535476fd0bb12",
+    "Bank/index.html": "fba9e33f81009a293964255714b6fd053cb278c6ae90782d7596749ff9d42e0b",
+    "Dau-khi/index.html": "6cefbd97f12fd9371f7f7f1098e37b48fa4a90ba7c817ee806ea8afb414c2402",
+    "Sugar/index.html": "f5f4994d2cd58baa6b570fa43494f928e63da97d55de2ad4d40b05ad2eb682c4",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
-    "assets/bank-dashboard.js": "58e8a1be2aae096c1e0774bb20db14909d1fe71ca4ea85b36dd1a701cf92229e",
-    "assets/bank-wi.js": "2452afc6fa10fd1af722dc3a3f06b2765d6eb6d0da7117c739fa4ef64af21ce6",
+    "assets/bank-dashboard.js": "e4ddd6ca86624b9f99f3bae534def6b7fc1a8f422632ed5765fc61aa33347fad",
+    "assets/bank-wi.js": "c06c20ea581938047a64d645419353da308dfff0d2723af92fef91a2774e669a",
     "assets/catalyst-board.css": "4d0c1fbd13a52a4ea1edb6872cffa217b688a3adfef0c2463c0ecafade2e1ff2",
     "assets/catalyst-board.js": "8e97073afec4d26264bc2ee6e5e0e80cb57a8fb10da74ec072f0adb8544c6ddf",
-    "assets/chart-cards.js": "b51b5931dc7e3d703af10ae1809d985fb26599e229de93fece19cc6c14f306d1",
+    "assets/chart-cards.js": "2fd974ccd3d2664222b74849dd51609ecabcc40616e8031df5e15bc3dfb71eb9",
     "assets/dashboard-ui.css": "46541cba0fd409a0cbe9f4bce2e4c572012fe90b31284b708d2fa0695b627c25",
     "assets/dashboard-ui.js": "08a5cb16b308fca4523c3f525731266d610fdde0d7f4e9babf8d93cf78142d44",
     "assets/data-math.js": "ed6356aac3afd13ce8d05fbc837d6a844ebfdbaeb7edfe50fc589ac5c3b94def",
-    "assets/financial-comparison.js": "6bfc111ea73e0305ced6e9f9b38c322f3b467e5f227afea40420e17ad8bf0729",
-    "assets/research-editorial.js": "e9bb795c724348e2c566d2bac0f63ea32a1919d2e949008cd21c296471aa7882",
-    "assets/research-layout.css": "e2c590e2844fff7d658bfc8e7c2eb858a45611d53e93257646f52196a2b16d75",
-    "assets/research-layout.js": "f896f4cd4cbaec2e62276efcb967f201964596e1852bce270776c00256cb353f",
+    "assets/financial-comparison.js": "b432cb6f4cfd33b2392a93db7cdc60cde7a171acaaba64a748b108e782b970b3",
+    "assets/research-editorial.js": "7a9e9e76ccd81589d50b68a5f273dbee3e9d9844bb6be7f0ae8a3078c278b674",
+    "assets/research-layout.css": "60e744338cd06cef4b19ffda86936af9855046538bbdb964449b7bcec8be791d",
+    "assets/research-layout.js": "0415addff57323f60e71fb7d239efcc568f43cc0d04b04d97d48a39aaf79eb52",
     "assets/research-sources.js": "89f39bc0f69d6c355f131e7774c1aed599339faf1c67fdaf61c3ae07bd942c65",
     "assets/sector-content.js": "0a719667530507ca2b498fb38db32c9b56598d0f85a17ac320aba16f79cc952a",
     "assets/sector-layout.js": "321ff016e13a0d8b59e3945b2937d94883e612d12c5c7a3c0f5343ebeccdf5c2",
@@ -35,8 +35,8 @@
     "data/bank-wi-data.js": "6679467647c30fc299131dfd06f2d29d2c92af3b78258a05446368735acb4b5e",
     "data/company-comparison.js": "ba4e84fefb4aaa1dc6d01afde1eecaaa840a0d40ffca003fa7e1182d13fb676e",
     "data/daily-data.js": "cf691abdaa02fbf1d64889a8bc66aa54c0d8c689f2792c1c858abf8060e29f0a",
-    "duong/index.html": "4bde10f9f7a10d83e265eeade08301fc21a84d3e581d352d4de009196d675d6b",
-    "index.html": "80b92e497032bb14aa82b555d86b6f0ae0abd282f17be4d3a5f68f91d7cc9727"
+    "duong/index.html": "597245d5e844b54914575bd43de39bd66f30f318bf6a9ad7fbd66c88c729a2f0",
+    "index.html": "8b401f8629f1aa454387a792f939da31e5d6e60a32b3ad07ab24a1e3b16534dc"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }

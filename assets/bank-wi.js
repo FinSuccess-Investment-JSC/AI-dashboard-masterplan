@@ -22,8 +22,8 @@
   const tip = document.createElement('div'); tip.className = 'chart-tooltip'; tip.hidden = true; document.body.append(tip);
   function wireTips(host) {
     host.querySelectorAll('[data-tip]').forEach(el => {
-      const show = () => { const r = el.getBoundingClientRect(); tip.textContent = el.dataset.tip; tip.hidden = false; tip.style.left = Math.max(8, Math.min(r.x, innerWidth - tip.offsetWidth - 8)) + 'px'; tip.style.top = Math.max(8, r.y - tip.offsetHeight - 9) + 'px'; };
-      const hide = () => tip.hidden = true;
+      const show = () => { const r = el.getBoundingClientRect(); el.classList.add('wi-point-active'); tip.textContent = el.dataset.tip; tip.hidden = false; tip.style.left = Math.max(8, Math.min(r.x, innerWidth - tip.offsetWidth - 8)) + 'px'; tip.style.top = Math.max(8, r.y - tip.offsetHeight - 9) + 'px'; };
+      const hide = () => { el.classList.remove('wi-point-active'); tip.hidden = true; };
       el.addEventListener('mouseenter', show); el.addEventListener('focus', show); el.addEventListener('click', show); el.addEventListener('mouseleave', hide); el.addEventListener('blur', hide);
     });
   }
@@ -168,7 +168,7 @@
   R.bonds = () => {
     const m = mount('bonds', {unit: 'tỷ VND · %/năm', obs: 'theo đợt phát hành / sự kiện mua lại', derived: true,
       method: W.blocks.bonds.derived,
-      gap: 'Chưa nối bảng thanh toán gốc/lãi và giao dịch thứ cấp của Wi; "ròng" chỉ trừ mua lại trước hạn. Mua lại lọc theo mã bank phía Wi nhưng mã từng dòng nằm trong mảng lồng chưa lấy nên không tách theo bank.',
+      gap: 'Chưa nối bảng thanh toán gốc/lãi và giao dịch thứ cấp của Wi; "ròng" chỉ trừ mua lại trước hạn. Mua lại lọc theo mã bank phía Wi nhưng mã từng dòng nằm trong mảng lồng chưa lấy nên không tách theo bank. Tháng 9/2026 mới là snapshot đến 11/09: phát hành bằng 0 trong bản lấy này không có nghĩa cả tháng không có deal; cần nạp lại Wi trước khi dùng làm kết luận.',
       insight: (() => { const d = W.blocks.bonds.data; const tot = d.months.reduce((a, x) => a + x.issued_bn, 0), bb = d.months.reduce((a, x) => a + x.buyback_bn, 0); const m8 = d.months.find(x => x.month === '2026-08'); return `Từ đầu 2026 các bank niêm yết phát hành ${vi(tot / 1000, 1)} nghìn tỷ (${d.issuance_count} đợt) và mua lại trước hạn ${vi(bb / 1000, 1)} nghìn tỷ (${d.buyback_count} sự kiện); tháng 8/2026 phát hành ${vi(m8?.issued_bn / 1000, 1)} nghìn tỷ với coupon bình quân ${vi(m8?.avg_coupon_w, 2)}%/năm, cao hơn lãi suất 12 tháng niêm yết ~5,9–6,0%. Kênh GTCG đang bù cho tiền gửi tăng chậm hơn tín dụng nhưng với giá vốn cao hơn; theo dõi coupon và tỷ lệ phát hành thành công so kế hoạch.`; })()});
     if (!m) return; const d = m.d;
     const ser = [{label: 'Phát hành thực', color: C[0], points: d.months.map(x => [x.month, x.issued_bn / 1000])}, {label: 'Mua lại trước hạn', color: C[4], points: d.months.map(x => [x.month, -x.buyback_bn / 1000])}];
@@ -266,9 +266,11 @@
       gap: 'Dòng ngày 11/09/2026 là quan sát trong phiên tại giờ lấy; DXY là hợp đồng futures (Wi), không phải chỉ số spot ICE.',
       insight: (() => { const d = b.data; const s = last(d.vcb_sell.points), c = last(d.sbv_central.points), f = last(d.free_sell.points), x = last(d.dxy.points), j = last(d.usdjpy.points); const s0 = d.vcb_sell.points.find(p => p[0] === '2026-07-28'); return `VCB bán ${vi(s[1], 0)} VND/USD ngày ${dmy(s[0])}, giảm ${vi(s0[1] - s[1], 0)} đồng từ đỉnh 26.525 (28/07) dù tỷ giá trung tâm lên ${vi(c[1], 0)}; tự do ${vi(f[1], 0)} thấp hơn NHTM — áp lực VND đã dịu khi DXY về ${vi(x[1], 1)} và USD/JPY ${vi(j[1], 1)}. Điều này tạo dư địa để NHNN bơm OMO và ON hạ mà không đánh đổi tỷ giá; rủi ro đảo chiều nếu DXY quay lại vùng 101.`; })()});
     if (!m) return; const d = m.d;
-    const draw = r => { const s1 = [{label: 'VCB bán', color: C[0], points: sliceRange(d.vcb_sell.points, r)}, {label: 'VCB mua', color: C[1], points: sliceRange(d.vcb_buy.points, r)}, {label: 'Tự do bán', color: C[4], points: sliceRange(d.free_sell.points, r)}, {label: 'Trung tâm NHNN', color: C[6], points: sliceRange(d.sbv_central.points, r)}]; const s2 = [{label: 'DXY futures', color: C[3], points: sliceRange(d.dxy.points, r)}]; const s3 = [{label: 'USD/JPY', color: C[2], points: sliceRange(d.usdjpy.points, r)}]; m.host.querySelector('.wi-chart').innerHTML = `<h4>USD/VND (VND cho 1 USD)</h4>` + lineChart({series: s1, unit: 'VND', fmt: v => vi(v, 0)}) + legend(s1) + `<div class="grid two wi-two"><div><h4>DXY futures</h4>${lineChart({series: s2, fmt: v => vi(v, 1), height: 190})}</div><div><h4>USD/JPY (JPY cho 1 USD)</h4>${lineChart({series: s3, fmt: v => vi(v, 0), height: 190})}</div></div>`; };
+    const fxSeries = [{key:'vcb_sell',label:'VCB bán',color:C[0]},{key:'vcb_buy',label:'VCB mua',color:C[1]},{key:'free_sell',label:'Tự do bán',color:C[4]},{key:'sbv_central',label:'Trung tâm NHNN',color:C[6]}];
+    const active = new Set(fxSeries.map(s => s.key));
+    const draw = r => { const s1 = fxSeries.filter(s => active.has(s.key)).map(s => ({...s,points:sliceRange(d[s.key].points,r)})); const s2 = [{label:'DXY futures',color:C[3],points:sliceRange(d.dxy.points,r)}]; const s3 = [{label:'USD/JPY',color:C[2],points:sliceRange(d.usdjpy.points,r)}]; m.host.querySelector('.wi-chart').innerHTML = `<h4>USD/VND (VND cho 1 USD)</h4>` + (s1.length ? lineChart({series:s1,unit:'VND',fmt:v=>vi(v,0)}) + legend(s1) : '<p class="note">Chọn ít nhất một chuỗi USD/VND.</p>') + `<div class="grid two wi-two"><div><h4>DXY futures · trục riêng</h4>${lineChart({series:s2,fmt:v=>vi(v,1),height:190})}</div><div><h4>USD/JPY (JPY cho 1 USD)</h4>${lineChart({series:s3,fmt:v=>vi(v,0),height:190})}</div></div>`; wireTips(m.host.querySelector('.wi-chart')); };
     const s = last(d.vcb_sell.points), c = last(d.sbv_central.points), f = last(d.free_sell.points), sp = last(d.vcb_bid_ask_spread.points);
-    m.host.innerHTML = `<div class="wi-kpis"><div><span>VCB mua/bán ${dmy(s[0])}</span><b>${vi(last(d.vcb_buy.points)[1], 0)} / ${vi(s[1], 0)}</b><small>chênh mua–bán ${vi(sp[1], 0)} đ</small></div><div><span>Trung tâm NHNN</span><b>${vi(c[1], 0)}</b></div><div><span>Tự do mua/bán</span><b>${vi(last(d.free_buy.points)[1], 0)} / ${vi(f[1], 0)}</b></div><div><span>DXY · USD/JPY · JPYUSD</span><b>${vi(last(d.dxy.points)[1], 2)} · ${vi(last(d.usdjpy.points)[1], 2)}</b><small>JPYUSD = ${last(d.jpyusd_derived.points)[1].toFixed(5)} (1/USDJPY)</small></div></div>` + rangeControl('fx', [['30', '30 ngày'], ['60', '60 ngày'], ['all', 'Từ 06/2026']], 'all') + '<div class="wi-chart"></div>'; draw('all'); wireRange(m.el, draw);
+    m.host.innerHTML = `<div class="wi-kpis"><div><span>VCB mua/bán ${dmy(s[0])}</span><b>${vi(last(d.vcb_buy.points)[1], 0)} / ${vi(s[1], 0)}</b><small>chênh mua–bán ${vi(sp[1], 0)} đ</small></div><div><span>Trung tâm NHNN</span><b>${vi(c[1], 0)}</b></div><div><span>Tự do mua/bán</span><b>${vi(last(d.free_buy.points)[1], 0)} / ${vi(f[1], 0)}</b></div><div><span>DXY · USD/JPY · JPYUSD</span><b>${vi(last(d.dxy.points)[1], 2)} · ${vi(last(d.usdjpy.points)[1], 2)}</b><small>JPYUSD = ${last(d.jpyusd_derived.points)[1].toFixed(5)} (1/USDJPY)</small></div></div>` + rangeControl('fx', [['30', '30 ngày'], ['60', '60 ngày'], ['all', 'Từ 06/2026']], 'all') + `<fieldset class="wi-series-toggle"><legend>Hiện chuỗi USD/VND</legend>${fxSeries.map(s=>`<label><input type="checkbox" value="${s.key}" checked> ${s.label}</label>`).join('')}</fieldset><div class="wi-chart"></div>`; draw('all'); wireRange(m.el, draw);m.host.querySelectorAll('.wi-series-toggle input').forEach(input=>input.addEventListener('change',()=>{input.checked?active.add(input.value):active.delete(input.value);draw(m.host.querySelector('.wi-range [aria-pressed="true"]').dataset.range)}));
   };
   R['bonds-macro'] = () => {
     const b = W.blocks['bonds-macro'];
@@ -319,6 +321,36 @@
 
   for (const k of Object.keys(R)) { try { R[k](); } catch (e) { console.error('wi block', k, e); const c = card(k); if (c) c.insertAdjacentHTML('beforeend', `<p class="data-gap">Lỗi hiển thị block ${k}: ${esc(e.message)}</p>`); } }
   document.querySelectorAll('[id^="bank-"] .wi-body').forEach(wireTips);
+
+  // Fold dense summary tables so charts stay visible; user opens the table when needed.
+  function foldWiTables(root) {
+    root.querySelectorAll('.wi-table').forEach(scroll => {
+      if (scroll.closest('.wi-table-fold')) return;
+      const cap = scroll.querySelector('caption')?.textContent?.trim() || '';
+      const rowCount = scroll.querySelectorAll('tbody tr').length;
+      let label = cap;
+      if (!label) {
+        const prev = scroll.previousElementSibling;
+        if (prev && prev.tagName === 'H4') label = prev.textContent.trim();
+      }
+      if (!label) label = 'Bảng số liệu';
+      const details = document.createElement('details');
+      details.className = 'wi-table-fold';
+      const summary = document.createElement('summary');
+      summary.innerHTML = `<span class="wi-fold-label">${esc(label)}</span><span class="wi-fold-meta">${rowCount} dòng</span>`;
+      details.append(summary);
+      scroll.parentNode.insertBefore(details, scroll);
+      details.append(scroll);
+    });
+  }
+  function foldAndRewire(root) { foldWiTables(root); wireTips(root); }
+  // Initial fold + observer so rerenders (fx toggle, range control) keep the fold.
+  document.querySelectorAll('[id^="bank-"] .wi-body').forEach(foldAndRewire);
+  document.querySelectorAll('[id^="bank-"] .wi-body').forEach(body => {
+    new MutationObserver(muts => {
+      for (const m of muts) if ([...m.addedNodes].some(n => n.nodeType === 1 && (n.classList?.contains('wi-table') || n.querySelector?.('.wi-table')))) { foldAndRewire(body); break; }
+    }).observe(body, {childList: true, subtree: true});
+  });
 
   // ---------- comparison table (tab 7) ----------
   const ratios = W.blocks['bank-ratios']?.data.banks || [], val = W.blocks.valuation?.data.banks || [];

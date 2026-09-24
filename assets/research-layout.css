@@ -38,3 +38,22 @@ body[data-research-sector] .value-chain-card{margin-bottom:20px}
 .thesis-fold-body .catalyst-map,.thesis-fold-body .catriskgrid{margin-top:8px}
 @media(max-width:700px){.compare-table table{font-size:12px}.compare-table td:first-child{min-width:100px}}
 .policy-impact{font-weight:600;color:#21594c!important;background:#edf5f3;padding:10px 14px;border-radius:8px;margin:0 0 16px}
+body[data-sector="bank"] .wi-point-active{stroke:#102e42;stroke-width:3px;paint-order:stroke;filter:drop-shadow(0 0 4px #102e4280)}
+body[data-sector="bank"] .wi-series-toggle{border:0;padding:0;margin:12px 0;display:flex;gap:10px 16px;flex-wrap:wrap;font-size:12px}
+body[data-sector="bank"] .wi-series-toggle legend{font-weight:650;margin-bottom:6px}
+body[data-sector="bank"] .wi-series-toggle label{display:inline-flex;align-items:center;gap:4px;cursor:pointer}
+.comparison-disclosure>summary{cursor:pointer;padding:11px 22px;font-size:12px;font-weight:650;color:#2c5967;background:#f3f8f8}
+.bank-framework{margin:22px 0}.bank-framework h2{font-size:18px}.bank-framework-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.bank-framework-grid h3{font-size:14px}.bank-framework-grid p{font-size:12px;line-height:1.7}
+@media(max-width:700px){.bank-framework-grid{grid-template-columns:1fr}.comparison-disclosure>summary{padding:11px 14px}}
+.bank-rumors{margin-top:18px}.bank-rumor{border:1px solid #e0e6ec;border-left:4px solid #bd8453;padding:12px;margin:10px 0;border-radius:7px;background:#fffaf5}.bank-rumor-head,.bank-rumor-controls{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}.bank-rumor-head small{color:#64748b}.bank-rumor p{font-size:13px;line-height:1.6}.bank-rumor-controls select,.bank-rumor-controls button{font:inherit;font-size:12px;padding:7px;border:1px solid #cbd5df;border-radius:6px;background:#fff;cursor:pointer}
+body[data-sector="bank"] .wi-table-fold{margin:12px 0;border:1px solid #dbe4ec;border-radius:8px;background:#f9fbfc;overflow:hidden}
+body[data-sector="bank"] .wi-table-fold>summary{cursor:pointer;list-style:none;padding:10px 14px;font-size:12.5px;font-weight:650;color:#22475b;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;background:#eef4f7}
+body[data-sector="bank"] .wi-table-fold>summary::-webkit-details-marker{display:none}
+body[data-sector="bank"] .wi-table-fold>summary::before{content:"▸";display:inline-block;margin-right:6px;transition:transform .15s;color:#4a6b7d;font-size:11px}
+body[data-sector="bank"] .wi-table-fold[open]>summary::before{transform:rotate(90deg)}
+body[data-sector="bank"] .wi-table-fold>summary:hover,body[data-sector="bank"] .wi-table-fold>summary:focus-visible{background:#e3edf3;outline:none}
+body[data-sector="bank"] .wi-table-fold .wi-fold-label{flex:1;min-width:0}
+body[data-sector="bank"] .wi-table-fold .wi-fold-meta{color:#6d7f8e;font-weight:500;font-size:11.5px;white-space:nowrap}
+body[data-sector="bank"] .wi-table-fold .wi-table{margin:0}
+body[data-sector="bank"] .wi-table-fold .wi-table table{margin:0}
+@media(max-width:700px){body[data-sector="bank"] .wi-table-fold>summary{padding:10px 12px;font-size:12px}}

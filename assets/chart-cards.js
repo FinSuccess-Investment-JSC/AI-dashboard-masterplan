@@ -74,7 +74,7 @@
       const protectedNotes=keepNotes.has(id)?notes.filter(n=>n.classList.contains('source-note')&&!n.classList.contains('cadence-note')&&!n.classList.contains('refresh-note')):[];
       notes.filter(n=>!protectedNotes.includes(n)).forEach(n=>body.append(n));
       // Data tables remain the same nodes, now under the same source disclosure.
-      own(block,'details').filter(d=>d.querySelector('table')&&!d.querySelector('.data-gap,.gap-row')).forEach(d=>body.append(d));
+      own(block,'details').filter(d=>d.querySelector('table')&&!d.querySelector('.data-gap,.gap-row')&&!d.classList.contains('wi-table-fold')).forEach(d=>body.append(d));
       details.append(body);actions.append(details);footer.append(actions);
       if(flags[id])footer.prepend(make('p','chart-caveat',flags[id]));
       if(meta.error||meta.stale)footer.prepend(make('p','chart-freshness',meta.error?'Lần tải mới lỗi · Giữ dữ liệu tốt gần nhất.':'Nguồn có độ trễ / đang chờ dữ liệu mới.'));
