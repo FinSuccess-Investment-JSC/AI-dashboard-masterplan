@@ -116,7 +116,9 @@ def load_curve():
     def contract(offset):
         year,month=divmod(start+offset,12);symbol=f'CL{months[month]}{year%100:02d}.NYM'
         url='https://query1.finance.yahoo.com/v8/finance/chart/'+urllib.parse.quote(symbol)+'?interval=1d&range=1mo'
-        data=json.loads(fetch(url));result=data.get('chart',{}).get('result')
+        try:data=json.loads(fetch(url))
+        except Exception as exc:raise RuntimeError(f'{symbol}: {exc}') from exc
+        result=data.get('chart',{}).get('result')
         if not result:raise ValueError('Yahoo quote unavailable')
         r=result[0];meta=r['meta']
         if meta.get('currency')!='USD' or meta.get('symbol')!=symbol:raise ValueError('Quote identity/currency mismatch')
@@ -129,7 +131,17 @@ def load_curve():
             closes[date]=round(value,2)
         if not closes:raise ValueError('No futures close')
         return {'maturity':f'{year}-{month+1:02d}','symbol':symbol,'closes':closes,'source_url':url}
-    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as ex:contracts=list(ex.map(contract,range(18)))
+    # The near delivery month expires before the calendar month ends. Probe the
+    # first few maturities instead of assuming next month is still traded.
+    first=None
+    for offset in range(3):
+        try:first=contract(offset);break
+        except RuntimeError as exc:
+            if '404' not in str(exc):raise
+    if first is None:raise ValueError('No active near-month WTI contract')
+    first_offset=(int(first['maturity'][:4])*12+int(first['maturity'][5:])-1)-start
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as ex:
+        contracts=[first]+list(ex.map(contract,range(first_offset+1,first_offset+18)))
     records=align_curve(contracts,now.date())
     raw=json.dumps(contracts).encode()
     return {'source_url':'https://finance.yahoo.com/quote/CL%3DF/futures/','source_name':'Yahoo Finance (unofficial)',

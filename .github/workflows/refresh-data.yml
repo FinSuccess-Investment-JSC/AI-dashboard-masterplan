@@ -1,0 +1,59 @@
+name: Refresh dashboard data
+
+"on":
+  schedule:
+    # 07:30 and 15:30 Asia/Ho_Chi_Minh; GitHub cron uses UTC.
+    - cron: '30 0 * * *'
+    - cron: '30 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: dashboard-data-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+      - name: Install parser dependencies
+        run: python -m pip install -r scripts/requirements.txt
+      - name: Refresh and prepare changed data
+        id: refresh
+        run: |
+          if [ "${{ github.event_name }}" = 'workflow_dispatch' ] || [ "${{ github.event.schedule }}" = '30 8 * * *' ]; then
+            python scripts/refresh_release.py --comparison --prepare-release
+          else
+            python scripts/refresh_release.py --prepare-release
+          fi
+      - name: Validate generated data
+        run: |
+          python -m unittest discover -s tests
+          node tests/data-math.test.cjs
+          node tests/financial-comparison.test.cjs
+      - name: Publish changed data to the existing Pages branch
+        if: steps.refresh.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add data/daily-data.js data/update-status.json data/bank-public-data.js data/company-comparison.js data/company-comparison.json data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html
+          if git diff --cached --quiet; then
+            echo 'No observations or source statuses changed.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Refresh public dashboard observations'
+          git push origin HEAD:main
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"
