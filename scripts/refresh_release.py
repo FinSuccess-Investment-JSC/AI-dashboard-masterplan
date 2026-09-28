@@ -55,6 +55,7 @@ def main():
     cli = argparse.ArgumentParser()
     cli.add_argument('--comparison', action='store_true', help='Also check the public company tables')
     cli.add_argument('--prepare-release', action='store_true', help='Hash changed browser bundles into a new site release')
+    cli.add_argument('--force-release', action='store_true', help='Prepare a release even if observations are unchanged')
     args = cli.parse_args()
     before = signature(args.comparison)
     results = {}
@@ -63,7 +64,7 @@ def main():
     if args.comparison:
         results['comparison'] = subprocess.run([sys.executable, str(ROOT / 'scripts' / 'update_company_comparison.py')], cwd=ROOT).returncode
     after = signature(args.comparison)
-    changed = before != after
+    changed = before != after or args.force_release
     if os.environ.get('GITHUB_OUTPUT'):
         with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
             output.write(f"changed={'true' if changed else 'false'}\n")

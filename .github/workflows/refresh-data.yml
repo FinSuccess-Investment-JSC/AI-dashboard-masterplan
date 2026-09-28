@@ -6,6 +6,11 @@ name: Refresh dashboard data
     - cron: '30 0 * * *'
     - cron: '30 8 * * *'
   workflow_dispatch:
+    inputs:
+      force_release:
+        description: 'Force a release to verify the publication path'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -32,10 +37,12 @@ jobs:
       - name: Refresh and prepare changed data
         id: refresh
         run: |
+          extra=()
+          if [ "${{ inputs.force_release }}" = 'true' ]; then extra+=(--force-release); fi
           if [ "${{ github.event_name }}" = 'workflow_dispatch' ] || [ "${{ github.event.schedule }}" = '30 8 * * *' ]; then
-            python scripts/refresh_release.py --comparison --prepare-release
+            python scripts/refresh_release.py --comparison --prepare-release "${extra[@]}"
           else
-            python scripts/refresh_release.py --prepare-release
+            python scripts/refresh_release.py --prepare-release "${extra[@]}"
           fi
       - name: Validate generated data
         run: |
