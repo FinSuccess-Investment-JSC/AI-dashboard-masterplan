@@ -45,6 +45,41 @@ $$('.majorpane[data-tab="mt3"],.majorpane[data-tab="mt6"]').forEach(n=>n.remove(
 const marketHeading=market.querySelector('.sectionhead h2');marketHeading.textContent='Bức tranh ngành';
 const mp=market.querySelector('.sectionhead p');if(mp)mp.textContent='Cung cầu → giá & chi phí → biên lợi nhuận.';
 [[world,oil?'Cân bằng dầu → tồn kho → Brent & crack':bank?'Vốn quốc tế → chi phí USD → tỷ giá':'Sản lượng → xuất khẩu → giá đường'],[vn,oil?'Sản lượng → nguồn nhập → giá bán & biên':bank?'Huy động → tín dụng → NIM → chi phí rủi ro':'Vùng mía → tồn kho → giá bán so giá nguyên liệu']].forEach(([host,text])=>host.prepend(make('p','research-path',text)));
+if(oil){
+ // World: split into Giá sản phẩm / Cung-cầu & Tồn kho / Crack spread so each view stays short.
+ const worldCaption=[...world.children].find(n=>n.matches('.research-path'));
+ const tier1=[...world.children].find(n=>n.matches('h3.subhead')&&/Tầng 1/.test(n.textContent));if(tier1)tier1.remove();
+ const tier2=[...vn.children].find(n=>n.matches('h3.subhead')&&/Tầng 2/.test(n.textContent));if(tier2)tier2.remove();
+ const crackCards=[block('dau-khi-20'),block('dau-khi-singapore-crack')].filter(Boolean);
+ const priceCards=[...pricesWorld.children].filter(n=>!crackCards.includes(n));
+ const crackNote=vn.querySelector('.signal-line');
+ const supplyChildren=[...world.children].filter(n=>n!==pricesWorld&&n!==worldCaption);
+ const wPrice=make('div','supply-pane'),wSupply=make('div','supply-pane'),wCrack=make('div','supply-pane');
+ wPrice.id='world-price';wSupply.id='world-supply';wCrack.id='world-crack';
+ supplyChildren.forEach(n=>wSupply.append(n));
+ const wPriceGrid=grid(wPrice);priceCards.forEach(n=>wPriceGrid.append(n));
+ const wCrackGrid=grid(wCrack);crackCards.forEach(n=>wCrackGrid.append(n));
+ if(crackNote)wCrack.prepend(crackNote);
+ pricesWorld.remove();
+ const worldTabs=make('div','world-subtabs');worldTabs.setAttribute('role','tablist');worldTabs.setAttribute('aria-label','Nội dung Thế giới');
+ const worldPanes=[wPrice,wSupply,wCrack];
+ function selectWorldSub(i){worldPanes.forEach((p,j)=>{p.hidden=i!==j;const b=worldTabs.children[j];b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1})}
+ ['Giá sản phẩm','Cung-cầu & Tồn kho','Crack spread'].forEach((label,i)=>{
+  const b=make('button','tabbtn',label);b.type='button';b.id='world-sub-'+i;b.setAttribute('role','tab');b.setAttribute('aria-controls',worldPanes[i].id);worldPanes[i].setAttribute('role','tabpanel');worldPanes[i].setAttribute('aria-labelledby',b.id);
+  b.addEventListener('click',()=>selectWorldSub(i));
+  b.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight')next=(i+1)%3;else if(e.key==='ArrowLeft')next=(i+2)%3;else if(e.key==='Home')next=0;else if(e.key==='End')next=2;if(next!==undefined){e.preventDefault();selectWorldSub(next);worldTabs.children[next].focus()}});
+  worldTabs.append(b);
+ });
+ world.append(worldTabs,wPrice,wSupply,wCrack);selectWorldSub(0);
+ // Vietnam: collapse long table/prose cards into dropdowns; charts stay visible outside the fold.
+ ['dau-khi-18','dau-khi-19','dau-khi-26'].forEach(id=>{
+  const c=block(id);if(!c)return;
+  const h=c.querySelector('h3');
+  const title=h?.childNodes[0]?.textContent?.trim()||h?.textContent?.trim()||'Chi tiết';
+  fold(c,title);
+  if(h)h.classList.add('research-repeated-heading');
+ });
+}
 // Static roadmap focuses on economic roles, not a current market call.
 const road=make('section','research-roadmap');road.append(make('h2','','Bản đồ ngành'),make('p','',oil?'Đầu tư & khai thác → xử lý dầu / khí → phân phối & tiêu thụ. Dịch vụ và vận tải hỗ trợ từng khâu.':bank?'Nguồn vốn → tài sản sinh lãi → thu nhập → chi phí vận hành & dự phòng → ROE.':'Vùng mía / nguyên liệu nhập → chế biến → phân phối → khách hàng công nghiệp & bán lẻ.'));
 const steps=make('div','research-steps');

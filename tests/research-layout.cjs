@@ -36,11 +36,21 @@ try { for(const sector of ['Dau-khi','Sugar','Bank']){
  for(const width of [1440,390]){await p.setViewportSize({width,height:1000});await p.locator('.majortabbtn').first().click();await p.locator('.financial-comparison').scrollIntoViewIfNeeded();await p.screenshot({path:`/private/tmp/dashboard-redesign/${sector}-${width}-comparison.png`});
  await p.locator('.majortabbtn').nth(1).click();await p.screenshot({path:`/private/tmp/dashboard-redesign/${sector}-${width}-market.png`});await p.evaluate(()=>window.scrollTo({top:2000,behavior:'instant'}));
  const sticky=await p.locator('.sticky-geography').evaluate(n=>({top:n.getBoundingClientRect().top,expected:parseFloat(getComputedStyle(n).top)}));assert.ok(Math.abs(sticky.top-sticky.expected)<2,sector+' sticky navigation '+JSON.stringify(sticky));
- if(sector==='Dau-khi'){await p.locator('#supply-tab-0').click();await p.locator('#opec-drivers').scrollIntoViewIfNeeded();await p.screenshot({path:`/private/tmp/dashboard-redesign/${sector}-${width}-opec.png`});assert.equal(await p.locator('#opec-drivers svg').count(),3);}
+ if(sector==='Dau-khi'){
+  await p.locator('#supply-tab-0').click();
+  const worldSubs=p.locator('#supply-world .world-subtabs button');
+  assert.equal(await worldSubs.count(),3,'Thế giới có 3 tab con');
+  assert.deepEqual(await worldSubs.allTextContents(),['Giá sản phẩm','Cung-cầu & Tồn kho','Crack spread']);
+  await p.locator('#world-sub-1').click();await p.locator('#opec-drivers').scrollIntoViewIfNeeded();await p.screenshot({path:`/private/tmp/dashboard-redesign/${sector}-${width}-opec.png`});assert.equal(await p.locator('#opec-drivers svg').count(),3);
+  await p.locator('#world-sub-2').click();assert.equal(await p.locator('#world-crack .card').count(),2,'Crack spread giữ 2 biểu đồ');
+  await p.locator('#supply-tab-1').click();
+  for(const id of ['dau-khi-18','dau-khi-19','dau-khi-26']){const f=p.locator(`[data-block-id="${id}"] details.research-fold`);assert.equal(await f.count(),1,id+' có dropdown');assert.equal(await f.getAttribute('open'),null,id+' dropdown đóng theo mặc định');}
+  assert.equal(await p.locator('[data-block-id="dau-khi-19"] > .data-gap').isVisible(),true,'data-gap vẫn hiện ngoài dropdown');
+ }
  }
  await p.locator('.majortabbtn').nth(1).click();
  if(sector!=='Bank'){
-  await p.locator('#supply-tab-0').click();await p.locator('#price-frequency').selectOption('week');const n=await p.locator('#chFastPrice svg').count();assert.equal(n,1);
+  await p.locator('#supply-tab-0').click();if(sector==='Dau-khi')await p.locator('#world-sub-0').click();await p.locator('#price-frequency').selectOption('week');const n=await p.locator('#chFastPrice svg').count();assert.equal(n,1);
   await p.locator('#price-frequency').selectOption('year');await p.locator('#price-range').selectOption('all');assert.equal(await p.locator('#chFastPrice svg').count(),1);
   await p.locator('#price-range').selectOption('custom');await p.locator('#price-from').fill('2026-09-10');await p.locator('#price-to').fill('2026-01-01');await p.locator('#price-to').dispatchEvent('change');assert.equal(await p.locator('#chFastPrice svg').count(),0);
   await p.locator('#price-range').selectOption('90');await p.locator('#price-frequency').selectOption('day');

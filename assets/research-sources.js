@@ -57,6 +57,6 @@ const global=document.querySelector('[data-block-id="dau-khi-05"]');if(global){
  const notes=[...global.querySelectorAll(':scope > .source-note,:scope > .srcrow')];if(notes.length){const host=make('div','chart-card-actions');global.append(host);popover(host,notes,'Cân bằng cung cầu toàn cầu')}
 }
 // Close source/insight popovers when the main or geographic context changes.
-document.querySelectorAll('.majortabbtn,.supply-tabs button,.subtabs button').forEach(b=>b.addEventListener('click',window.DashboardPopover.close));
+document.querySelectorAll('.majortabbtn,.supply-tabs button,.subtabs button,.world-subtabs button').forEach(b=>b.addEventListener('click',window.DashboardPopover.close));
 document.body.dataset.sourcesReady='true';
 })();
