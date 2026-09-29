@@ -306,7 +306,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/research-sources.js?v=89f39bc0f69d" defer></script>
 <script src="../assets/research-editorial.js?v=7a9e9e76ccd8" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20260929-r4"></script>
+<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20260929-r5"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=4d0c1fbd13a5">
 <link rel="stylesheet" href="../assets/research-layout.css?v=60e744338cd0">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=182c66c74c0a">
@@ -541,8 +541,8 @@ body{font-size:14px;line-height:1.45}
       <div class="chart-sub">triệu thùng/ngày</div>
       <div id="chSpare"></div>
       <div class="legend">
-        <span class="li"><span class="dot" style="background:var(--s3)"></span>Dư địa công suất OPEC</span>
-        <span class="li"><span class="dot" style="background:var(--s2)"></span>Gián đoạn ngoài kế hoạch</span>
+        <span class="li"><span class="dot" style="background:#59C5C8"></span>Dư địa công suất OPEC</span>
+        <span class="li"><span class="dot" style="background:#861C52"></span>Gián đoạn ngoài kế hoạch</span>
       </div>
       <div class="conf-note">Đây là <b>ước tính của EIA, không phải số đo trực tiếp</b>. Dư địa công suất và gián đoạn có thể được sửa khi báo cáo tháng mới ra. Chart chỉ dùng tháng có đủ cả hai chuỗi; tháng dự báo chưa có số gián đoạn thực tế không được vẽ.</div>
       <div class="source-note">Tự cập nhật từ file STEO tháng hiện hành, sheet <code>3dtab</code>, mã <code>cops_opec</code> và <code>padi_OPEC</code>. Ngày kiểm tra và tháng quan sát mới nhất được ghi riêng dưới chart.</div>
@@ -1486,7 +1486,7 @@ fillTable("tbl-hormuz",["Ngày (2026)","Tàu chở dầu","Tổng số tàu"],hz
 const spLab=["T1/24","T2/24","T3/24","T4/24","T5/24","T6/24","T7/24","T8/24","T9/24","T10/24","T11/24","T12/24","T1/25","T2/25","T3/25","T4/25","T5/25","T6/25","T7/25","T8/25","T9/25","T10/25","T11/25","T12/25","T1/26","T2/26","T3/26","T4/26","T5/26","T6/26","T7/26"];
 const spVal=[3.44,3.29,3.13,3.15,3.44,3.86,3.52,3.48,3.85,3.78,3.88,3.96,4.02,4.03,3.69,3.94,3.75,3.05,3.48,3.56,2.57,3.0,3.08,3.0,2.96,2.21,0.07,0.11,0.03,0.02,0.02];
 const ouVal=[1.56,1.41,1.27,1.37,1.28,1.3,1.22,1.38,1.8,1.39,1.2,1.02,1.07,0.93,1.07,0.97,0.9,1.13,1.05,1.02,0.92,0.87,0.93,0.89,1.02,0.94,8.56,11.0,11.68,8.98,7.04];
-barLineChart("chSpare",{categories:spLab,series:[{name:"Dư địa công suất OPEC",color:S3,kind:"line",values:spVal},{name:"Gián đoạn ngoài kế hoạch",color:S2,kind:"line",values:ouVal}],unit:"triệu thùng/ngày",digits:2,height:280});
+barLineChart("chSpare",{categories:spLab,series:[{name:"Dư địa công suất OPEC",color:"#59C5C8",kind:"line",values:spVal},{name:"Gián đoạn ngoài kế hoạch",color:"#861C52",kind:"line",values:ouVal}],unit:"triệu thùng/ngày",digits:2,height:280});
 fillTable("tbl-spare",["Tháng","Dư địa công suất (triệu thùng/ngày)","Gián đoạn ngoài kế hoạch"],spLab.map((l,i)=>[l,fmt(spVal[i],2),ouVal[i]==null?"—":fmt(ouVal[i],2)]));
 
 const cvLab=["T10/26","T11/26","T12/26","T1/27","T2/27","T3/27","T4/27","T6/27","T9/27","T12/27"];
