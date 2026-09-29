@@ -1,110 +1,110 @@
 {
-  "run_at": "2026-09-28T15:19:39.289155+00:00",
+  "run_at": "2026-09-29T06:02:31.309692+00:00",
   "errors": 0,
   "sources": {
     "brent": {
       "status": "ok",
       "latest_observation": "2026-09-22",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
-      "error": null
-    },
-    "diesel": {
-      "status": "ok",
-      "latest_observation": "2026-09-22",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
-      "error": null
-    },
-    "gasoline": {
-      "status": "ok",
-      "latest_observation": "2026-09-22",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
       "error": null
     },
     "wti": {
       "status": "ok",
       "latest_observation": "2026-09-22",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
       "error": null
     },
-    "cushing": {
+    "gasoline": {
       "status": "ok",
-      "latest_observation": "2026-09-18",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
+      "latest_observation": "2026-09-22",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
+      "error": null
+    },
+    "diesel": {
+      "status": "ok",
+      "latest_observation": "2026-09-22",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
       "error": null
     },
     "crude_stock": {
       "status": "ok",
       "latest_observation": "2026-09-18",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
-      "error": null
-    },
-    "hormuz": {
-      "status": "ok",
-      "latest_observation": "2026-09-20",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
       "error": null
     },
     "gasoline_stock": {
       "status": "ok",
       "latest_observation": "2026-09-18",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
       "error": null
     },
-    "brent_futures": {
+    "cushing": {
       "status": "ok",
-      "latest_observation": "2026-09-25",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
+      "latest_observation": "2026-09-18",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
       "error": null
     },
-    "sugar_futures": {
+    "hormuz": {
       "status": "ok",
-      "latest_observation": "2026-09-25",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
+      "latest_observation": "2026-09-20",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
       "error": null
     },
     "wti_curve": {
       "status": "ok",
-      "latest_observation": "2026-09-25",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
+      "latest_observation": "2026-09-28",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
       "error": null
     },
-    "sugar_monthly": {
+    "brent_futures": {
       "status": "ok",
-      "latest_observation": "2026-08-31",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
+      "latest_observation": "2026-09-28",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
+      "error": null
+    },
+    "sugar_futures": {
+      "status": "ok",
+      "latest_observation": "2026-09-28",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
       "error": null
     },
     "distillate_stock": {
       "status": "ok",
       "latest_observation": "2026-09-18",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
+      "error": null
+    },
+    "sugar_monthly": {
+      "status": "ok",
+      "latest_observation": "2026-08-31",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
       "error": null
     },
     "sugar_producers": {
       "status": "ok",
       "latest_observation": "2026-01-01",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
       "error": null
     },
     "us_production": {
       "status": "ok",
       "latest_observation": "2026-09-18",
-      "last_success_at": "2026-09-28T15:19:39.289155+00:00",
-      "last_checked_at": "2026-09-28T15:19:39.289155+00:00",
+      "last_success_at": "2026-09-29T06:02:31.309692+00:00",
+      "last_checked_at": "2026-09-29T06:02:31.309692+00:00",
       "error": null
     }
   }
