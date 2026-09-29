@@ -291,22 +291,22 @@ body{font-size:14px;line-height:1.45}
 }
 
 </style>
-<link rel="stylesheet" href="../assets/dashboard-ui.css?v=46541cba0fd4">
-<script src="../data/daily-data.js?v=8f1fa7928308" defer></script>
+<link rel="stylesheet" href="../assets/dashboard-ui.css?v=111bbfce1363">
+<script src="../data/daily-data.js?v=b6ac6aba2a99" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
-<script src="../assets/sector-runtime.js?v=ab7f9b5a3420" defer></script>
-<script src="../assets/sector-content.js?v=4aa753e25d6d" defer></script>
+<script src="../assets/sector-runtime.js?v=8272275f4a1d" defer></script>
+<script src="../assets/sector-content.js?v=d9adcee21839" defer></script>
 <script src="../assets/sector-layout.js?v=fae05da50c76" defer></script>
 <script src="../assets/chart-cards.js?v=2fd974ccd3d2" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="../assets/catalyst-board.js?v=8e97073afec4" defer></script>
-<script src="../data/company-comparison.js?v=9acbb3e76365" defer></script>
+<script src="../data/company-comparison.js?v=7bd56283a8e7" defer></script>
 <script src="../assets/financial-comparison.js?v=b432cb6f4cfd" defer></script>
 <script src="../assets/research-layout.js?v=4eaa1e25fb74" defer></script>
 <script src="../assets/research-sources.js?v=89f39bc0f69d" defer></script>
 <script src="../assets/research-editorial.js?v=7a9e9e76ccd8" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20260929-r3"></script>
+<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20260929-r4"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=4d0c1fbd13a5">
 <link rel="stylesheet" href="../assets/research-layout.css?v=60e744338cd0">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=182c66c74c0a">
@@ -503,7 +503,7 @@ body{font-size:14px;line-height:1.45}
         <div class="chart-title">Tồn kho distillate Mỹ tháng 8 — so sánh 6 năm</div>
         <div class="chart-sub">triệu thùng, bình quân các tuần trong tháng 8 mỗi năm · loại bỏ yếu tố mùa vụ</div>
         <div id="chDistYear"></div>
-        <div class="source-note">Tự tính bình quân các tuần tháng 8 từng năm từ chuỗi tuần của EIA, tải ngày 03/09/2026.</div>
+        <div class="source-note">Tự tính bình quân các tuần tháng 8 từng năm từ chuỗi tuần của EIA; ngày quan sát và ngày kiểm tra nguồn hiển thị dưới chart.</div>
         <div class="srcrow"><a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&amp;s=WDISTUS1&amp;f=W" target="_blank" rel="noopener">EIA · chuỗi WDISTUS1</a></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-distyear"></table></div></details>
       </div>
@@ -511,7 +511,7 @@ body{font-size:14px;line-height:1.45}
         <div class="chart-title">Sản lượng dầu thô Mỹ — 36 tháng</div>
         <div class="chart-sub">triệu thùng/ngày, bình quân tháng</div>
         <div id="chUsProd"></div>
-        <div class="source-note">Số mới nhất 28/08/2026. Sản lượng ở vùng cao là bằng chứng quan trọng cho kết luận "không thiếu dầu thô".</div>
+        <div class="source-note">Sản lượng là ước tính tuần của EIA; so cùng tồn kho và nhu cầu lọc dầu trước khi kết luận cân bằng thị trường.</div>
         <div class="srcrow"><a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&amp;s=WCRFPUS2&amp;f=W" target="_blank" rel="noopener">EIA · chuỗi WCRFPUS2</a></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-usprod"></table></div></details>
       </div>
@@ -529,7 +529,7 @@ body{font-size:14px;line-height:1.45}
         <div class="chart-title">Đường cong giá kỳ hạn WTI — theo ngày giao dịch</div>
         <div class="chart-sub">USD/thùng · giá hợp đồng theo tháng đáo hạn</div>
         <div id="chCurve"></div>
-        <div class="conf-note"><b>Backwardation rất dốc:</b> hợp đồng gần nhất 90,55 USD/thùng, hợp đồng tháng 12/2027 chỉ 70,72 — chênh <b>19,83 USD/thùng</b>. Thị trường đang trả giá cao cho hàng giao ngay và tin rằng tình trạng căng thẳng sẽ dịu đi. Đây là bằng chứng cho luận điểm <b>phần bù gián đoạn, không phải thiếu hụt cấu trúc</b>. Backwardation dốc cũng làm việc trữ hàng nổi trên tàu không còn hiệu quả kinh tế.</div>
+        <div class="conf-note">Giá hợp đồng gần và xa thay đổi từng phiên; xem chênh lệch cùng ngày trong bảng và tín hiệu mới dưới chart. Đường cong phản ánh định giá kỳ hạn, không tự chứng minh gián đoạn sẽ kết thúc khi nào.</div>
         <div class="source-note">Giá hợp đồng WTI trên NYMEX lấy qua Yahoo Finance. Bản cập nhật dùng giá đóng cửa cùng ngày giao dịch, không phải giá thanh toán chính thức; ngày nguồn và ngày kiểm tra được ghi riêng bên dưới chart. <b>Đây là nguồn không chính thức</b> — dùng tạm để lấp cổng phân tích, nên thay bằng dữ liệu vendor khi mua quyền truy cập. Chuỗi hợp đồng kỳ hạn miễn phí trước đây của EIA đã dừng cập nhật từ tháng 4/2024 nên không dùng được.</div>
         <div class="srcrow"><a href="https://finance.yahoo.com/quote/CL%3DF/futures" target="_blank" rel="noopener">Yahoo Finance · chuỗi hợp đồng WTI theo tháng đáo hạn</a><a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&amp;s=RCLC1&amp;f=D" target="_blank" rel="noopener">EIA · chuỗi kỳ hạn (đã dừng 04/2024)</a></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-curve"></table></div></details>
@@ -537,17 +537,16 @@ body{font-size:14px;line-height:1.45}
     </div>
 
     <div class="card" style="margin-top:14px" data-block-id="dau-khi-12" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-      <div class="chart-title">Dư địa công suất OPEC và gián đoạn nguồn cung ngoài kế hoạch — 2024 đến tháng 7/2026</div>
+      <div class="chart-title">Dư địa công suất OPEC và gián đoạn nguồn cung ngoài kế hoạch</div>
       <div class="chart-sub">triệu thùng/ngày</div>
       <div id="chSpare"></div>
       <div class="legend">
         <span class="li"><span class="dot" style="background:var(--s3)"></span>Dư địa công suất OPEC</span>
         <span class="li"><span class="dot" style="background:var(--s2)"></span>Gián đoạn ngoài kế hoạch</span>
       </div>
-      <div class="conf-note"><b>Đây là mảnh dữ liệu quan trọng nhất của cả tab này.</b> Dư địa công suất sụp từ 2,96 triệu thùng/ngày (tháng 1/2026) xuống 2,21 (tháng 2) rồi <b>0,07 từ tháng 3/2026</b>, và giữ ở mức gần bằng không tới nay. Cùng lúc, gián đoạn ngoài kế hoạch nhảy từ 0,94 lên <b>8,56 triệu thùng/ngày trong tháng 3</b>, đỉnh 11,68 vào tháng 5, còn 7,04 vào tháng 7. Hai đường này gặp nhau đúng thời điểm lưu lượng tàu qua eo Hormuz về không (tab 7).</div>
-      <div class="conf-note">Cần đọc kèm cảnh báo: đây là <b>ước tính của cơ quan năng lượng Mỹ, không phải số đo trực tiếp</b> — công suất dự phòng không ai quan sát được, chỉ ước lượng. Số từ tháng 8/2026 trở đi trong nguồn gốc là dự báo nên không đưa vào biểu đồ; theo dự báo đó, dư địa vẫn ở mức 0,02–0,03 suốt tới đầu 2027.</div>
-      <div class="source-note">Bảng 3d, báo cáo Triển vọng Năng lượng Ngắn hạn phát hành ngày 11/08/2026, forecast completed 06/08/2026. Lấy từ file archive <code>aug26_base.xlsx</code>, sheet <code>3dtab</code>, dòng <code>cops_opec</code> (dư địa công suất) và <code>padi_OPEC</code> (gián đoạn ngoài kế hoạch) — link đầu tiên bên dưới tải thẳng file đó.</div>
-      <div class="srcrow"><a href="https://www.eia.gov/outlooks/steo/archives/aug26_base.xlsx" target="_blank" rel="noopener">EIA STEO · archive Aug 2026 (.xlsx, sheet 3dtab)</a><a href="https://www.eia.gov/outlooks/steo/tables/pdf/3dtab.pdf" target="_blank" rel="noopener">EIA STEO · Bảng 3d bản PDF</a><a href="https://www.eia.gov/outlooks/steo/data/browser/" target="_blank" rel="noopener">EIA STEO · trình duyệt dữ liệu</a><a href="https://www.eia.gov/todayinenergy/detail.php?id=66904" target="_blank" rel="noopener">EIA · phương pháp ước tính</a></div>
+      <div class="conf-note">Đây là <b>ước tính của EIA, không phải số đo trực tiếp</b>. Dư địa công suất và gián đoạn có thể được sửa khi báo cáo tháng mới ra. Chart chỉ dùng tháng có đủ cả hai chuỗi; tháng dự báo chưa có số gián đoạn thực tế không được vẽ.</div>
+      <div class="source-note">Tự cập nhật từ file STEO tháng hiện hành, sheet <code>3dtab</code>, mã <code>cops_opec</code> và <code>padi_OPEC</code>. Ngày kiểm tra và tháng quan sát mới nhất được ghi riêng dưới chart.</div>
+      <div class="srcrow"><a href="https://www.eia.gov/outlooks/steo/xls/STEO_m.xlsx" target="_blank" rel="noopener">EIA STEO · file tháng hiện hành (.xlsx)</a><a href="https://www.eia.gov/outlooks/steo/release_schedule.php" target="_blank" rel="noopener">EIA · lịch phát hành STEO</a><a href="https://www.eia.gov/todayinenergy/detail.php?id=66904" target="_blank" rel="noopener">EIA · phương pháp ước tính</a></div>
       <details class="dtable"><summary>Xem bảng dữ liệu (31 tháng)</summary><div class="tablewrap"><table id="tbl-spare"></table></div></details>
     </div>
 
@@ -556,13 +555,14 @@ body{font-size:14px;line-height:1.45}
         <div class="chart-title">Vị thế ròng của quỹ đầu cơ trên hợp đồng WTI — theo tuần</div>
         <div class="chart-sub">nghìn hợp đồng · mua trừ bán của quỹ quản lý tiền</div>
         <div id="chCot"></div>
-        <div class="conf-note">Vị thế ròng hiện ở <b>84,0 nghìn hợp đồng</b> (25/08/2026), nằm giữa dải 2025–2026 (thấp nhất −38,2; cao nhất 253,9). Nói cách khác thị trường <b>chưa đông đúc</b> — đợt tăng giá hiện nay không phải do dòng tiền đầu cơ dồn vào, mà do điều kiện vật chất. Điều này làm giảm rủi ro một đợt bán tháo kỹ thuật, nhưng cũng có nghĩa nếu nguồn cung thắt thêm thì vẫn còn dư địa để vị thế đầu cơ đẩy giá lên cao hơn.</div>
-        <div class="source-note">Báo cáo Cam kết của các nhà giao dịch, bản phân tách theo nhóm, hợp đồng <code>WTI-PHYSICAL</code> trên sàn NYMEX (mã CFTC 067651). Công bố hằng tuần, độ trễ khoảng 3 ngày. Link đầu tiên bên dưới mở đúng báo cáo tuần mới nhất — tìm dòng WTI-PHYSICAL, cột Managed Money.</div>
+        <div class="conf-note">Vị thế ròng cho biết độ nghiêng mua/bán của nhóm managed money; nó không tự chứng minh nguyên nhân biến động giá. Đối chiếu với tồn kho, crack và đường cong kỳ hạn trước khi kết luận chế độ thị trường.</div>
+        <div class="source-note">Báo cáo Cam kết của các nhà giao dịch, bản phân tách futures-only, hợp đồng <code>WTI-PHYSICAL</code> trên NYMEX (mã CFTC 067651). Lấy Managed Money Long trừ Short; ngày vị thế thứ Ba, thường công bố thứ Sáu.</div>
         <div class="srcrow"><a href="https://www.cftc.gov/dea/futures/petroleum_sf.htm" target="_blank" rel="noopener">CFTC · báo cáo phân tách nhóm dầu khí, tuần mới nhất</a><a href="https://www.cftc.gov/files/dea/history/fut_disagg_txt_2026.zip" target="_blank" rel="noopener">CFTC · dữ liệu lịch sử 2026 (.zip)</a><a href="https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm" target="_blank" rel="noopener">CFTC · trang gốc bộ báo cáo</a></div>
         <details class="dtable"><summary>Xem bảng dữ liệu (86 tuần)</summary><div class="tablewrap"><table id="tbl-cot"></table></div></details>
       </div>
       <div class="card" style="border-left:4px solid var(--accent)" data-block-id="dau-khi-14" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3 style="margin-top:0;font-size:13.5px">Đọc chế độ thị trường</h3>
+        <h3 style="margin-top:0;font-size:13.5px">Đọc chế độ thị trường · bản phân tích 03/09/2026</h3>
+        <div class="source-note">Các số và nhận định trong bảng dưới là bản phân tích lưu tại ngày ghi trên tiêu đề; đọc tín hiệu từ dữ liệu mới dưới từng chart để đánh giá hiện tại.</div>
         <div class="tablewrap"><table>
           <thead><tr><th>Cổng</th><th>Số hiện tại</th><th>Nói lên điều gì</th></tr></thead>
           <tbody>
@@ -692,22 +692,21 @@ body{font-size:14px;line-height:1.45}
         <div class="chart-title">Giá sản phẩm quốc tế proxy — 24 tháng</div>
         <div class="chart-sub">USD/thùng, bình quân tháng · EIA USGC</div>
         <div id="chMoit"></div>
-        <div class="conf-note">Đây là time-series thay cho snapshot một kỳ. Diesel product price proxy tăng từ 95,6 USD/thùng tháng 9/2025 lên 198,8 USD/thùng tại điểm T9/2026, trong khi Brent tăng từ 68,0 lên 96,0. Phần tăng vượt trội nằm ở sản phẩm sau lọc, không chỉ ở dầu thô.</div>
+        <div class="conf-note">So biến động giá sản phẩm với Brent theo đúng tháng trên chart; mức giá sản phẩm cao chưa tự xác nhận biên lọc dầu khi giá đầu vào cũng thay đổi.</div>
         <div class="source-note">Nguồn chart là EIA Brent spot, EIA USGC gasoline và EIA USGC ULSD. Số này không phải bảng giá thành phẩm trong công thức điều hành của Bộ Công Thương; văn bản MOIT/PDF từng kỳ cần được bóc tách riêng nếu muốn đúng tuyệt đối theo rổ Việt Nam.</div>
         <div class="srcrow"><a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&amp;s=RBRTE&amp;f=D" target="_blank" rel="noopener">EIA · Brent spot</a><a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&amp;s=EER_EPMRU_PF4_RGC_DPG&amp;f=D" target="_blank" rel="noopener">EIA · xăng USGC</a><a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&amp;s=EER_EPD2DXL0_PF4_RGC_DPG&amp;f=D" target="_blank" rel="noopener">EIA · diesel ULSD USGC</a></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-moit"></table></div></details>
       </div>
       <div class="card" data-block-id="dau-khi-22" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
         <div class="chart-title">Giá bán lẻ trong nước — 10 kỳ điều hành gần nhất</div>
-        <div class="chart-sub">đồng/lít, Vùng 1 · tới 03/09/2026</div>
+        <div class="chart-sub">đồng/lít, Vùng 1 · theo kỳ công bố Petrolimex</div>
         <div id="chRetailFuelMini"></div>
         <div class="legend">
           <span class="li"><span class="dot" style="background:var(--s4)"></span>E5 RON 92-II</span>
           <span class="li"><span class="dot" style="background:var(--s3)"></span>E10 RON 95-III</span>
           <span class="li"><span class="dot" style="background:var(--s2)"></span>DO 0,05S-II</span>
         </div>
-        <div class="conf-note">Diesel đã hạ từ đỉnh 28.540 đồng/lít ngày 20/08 xuống 27.740 ngày 03/09, trong khi xăng E5 và RON 95 tăng lên đỉnh 10 kỳ. Đây là lý do cần nhìn xu hướng theo kỳ điều hành, không nhìn một snapshot đơn lẻ.</div>
-        <div class="srcrow"><a href="https://costflow.vn/du-lieu/gia-xang-dau-lap-du-toan" target="_blank" rel="noopener">CostFlow · chuỗi Petrolimex từ 2016</a><a href="https://moit.gov.vn/van-ban-phap-luat/van-ban-phap-quy/thong-bao-dieu-hanh-gia-ban-xang-dau.html" target="_blank" rel="noopener">Bộ Công Thương · kỳ 03/09/2026</a></div>
+        <div class="srcrow"><a href="https://home.petrolimex.com.vn/ndi/thong-cao-bao-chi.html" target="_blank" rel="noopener">Petrolimex · thông cáo giá từng kỳ</a><a href="https://moit.gov.vn/van-ban-phap-luat/van-ban-phap-quy/thong-bao-dieu-hanh-gia-ban-xang-dau.html" target="_blank" rel="noopener">Bộ Công Thương · văn bản điều hành</a></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-retailmini"></table></div></details>
       </div>
     </div>
@@ -768,7 +767,7 @@ body{font-size:14px;line-height:1.45}
         </div>
         <div class="viz-block">
           <div class="chart-title">10 kỳ điều hành gần nhất — cập nhật nhanh</div>
-          <div class="chart-sub">đồng/lít, Vùng 1 · 02/07–03/09/2026</div>
+          <div class="chart-sub">đồng/lít, Vùng 1 · 10 kỳ gần nhất</div>
           <div id="chRetailFuel"></div>
         </div>
       </div>
@@ -776,13 +775,13 @@ body{font-size:14px;line-height:1.45}
         <thead><tr><th>Cấu phần</th><th>Cách vận hành</th><th>Ảnh hưởng tới doanh nghiệp</th></tr></thead>
         <tbody>
           <tr><td><b>Chu kỳ điều hành</b></td><td>Liên Bộ Công Thương – Tài chính công bố giá trần bán lẻ theo kỳ, dựa trên bình quân giá thành phẩm thế giới giữa hai kỳ</td><td>Tạo độ trễ giữa giá vốn nhập và giá bán được phép áp dụng — nguồn gốc của lãi/lỗ hàng tồn kho</td></tr>
-          <tr><td><b>Quỹ bình ổn giá</b></td><td>Kỳ 03/09/2026 cần đọc trong PDF/văn bản điều hành gốc; kỳ 27/08/2026 trước đó không chi quỹ và trích lập diesel 200 đồng/lít</td><td>Trích lập làm giảm phần giá được chuyển vào giá bán, ảnh hưởng trực tiếp biên khâu phân phối</td></tr>
+          <tr><td><b>Quỹ bình ổn giá</b></td><td>Kiểm mức trích/chi trong văn bản Bộ Công Thương đúng từng kỳ; bảng giá Petrolimex không tách khoản này</td><td>Trích lập hoặc chi quỹ làm thay đổi phần giá được chuyển vào giá bán</td></tr>
           <tr><td><b>Giá thành phẩm tham chiếu</b></td><td>Văn bản Bộ Công Thương có PDF từng kỳ; HTML chỉ expose metadata nên pipeline cần OCR/PDF parser</td><td>Đây là đầu vào sát nhất cho PLX/nhà phân phối, nhưng chưa có API public sạch</td></tr>
         </tbody>
       </table></div>
-      <div class="source-note">Chart dài dùng chuỗi CostFlow tổng hợp từ thông cáo Petrolimex, có dữ liệu từ 04/01/2016 đến 03/09/2026. Chart 10 kỳ gần nhất dùng cùng nguồn để theo dõi nhanh trong quý. Văn bản điều hành gốc của Bộ Công Thương dùng để đối chiếu pháp lý từng kỳ.</div>
+      <div class="source-note">Chart dài dùng các mốc cuối năm từ chuỗi CostFlow/Petrolimex; điểm 2026 và chart 10 kỳ lấy trực tiếp thông cáo Petrolimex. Văn bản Bộ Công Thương dùng để đối chiếu cơ chế từng kỳ. Điểm 2026 là một mốc giá, không phải bình quân năm.</div>
       <div class="data-gap"><b>Data limitation:</b> giá thành phẩm thế giới trong công thức điều hành nằm trong PDF Bộ Công Thương từng kỳ; file PDF tải được nhưng không extract text sạch bằng <code>pdftotext</code>. Pipeline tự động cần OCR/PDF parser hoặc nguồn vendor.</div>
-      <div class="srcrow"><a href="https://costflow.vn/du-lieu/gia-xang-dau-lap-du-toan" target="_blank" rel="noopener">CostFlow · chuỗi Petrolimex 2016–2026</a><a href="https://moit.gov.vn/van-ban-phap-luat/van-ban-phap-quy/thong-bao-dieu-hanh-gia-ban-xang-dau.html" target="_blank" rel="noopener">Bộ Công Thương · văn bản 03/09/2026</a><a href="https://dms.gov.vn/" target="_blank" rel="noopener">Cục Quản lý &amp; Phát triển thị trường trong nước</a></div>
+      <div class="srcrow"><a href="https://costflow.vn/du-lieu/gia-xang-dau-lap-du-toan" target="_blank" rel="noopener">CostFlow · mốc cuối năm 2016–2025</a><a href="https://home.petrolimex.com.vn/ndi/thong-cao-bao-chi.html" target="_blank" rel="noopener">Petrolimex · giá theo kỳ 2026</a><a href="https://moit.gov.vn/van-ban-phap-luat/van-ban-phap-quy/thong-bao-dieu-hanh-gia-ban-xang-dau.html" target="_blank" rel="noopener">Bộ Công Thương · văn bản điều hành</a></div>
       <details class="dtable"><summary>Xem bảng dữ liệu theo năm</summary><div class="tablewrap"><table id="tbl-retailyear"></table></div></details>
       <details class="dtable"><summary>Xem bảng dữ liệu 10 kỳ gần nhất</summary><div class="tablewrap"><table id="tbl-retailfuel"></table></div></details>
     </div>
@@ -977,7 +976,7 @@ body{font-size:14px;line-height:1.45}
       <div class="chart-title">Tàu chở dầu qua Hormuz</div>
       <div class="chart-sub">lượt tàu/ngày</div>
       <div id="chHormuzM"></div>
-      <div class="conf-note">Mức nền trước gián đoạn là 30–50 lượt tàu chở dầu mỗi ngày. Sáu tháng gần nhất dao động trong khoảng 0,9–5,4 — <b>chưa tháng nào quay lại quá 11% mức nền</b>. Đây là ngưỡng đo được để kiểm tra kịch bản ở tab 5: kịch bản tăng bị bác bỏ nếu lưu lượng phục hồi về vùng 30 lượt/ngày trở lên.</div>
+      <div class="conf-note">Trước gián đoạn, lưu lượng thường ở vùng 30–50 tàu chở dầu/ngày. Đọc mức ngày cùng đường bình quân 7 ngày và ngày quan sát mới nhất; lượt tàu AIS không cho biết trực tiếp số thùng dầu vận chuyển.</div>
       <div class="srcrow"><a href="https://portwatch.imf.org/pages/chokepoint6" target="_blank" rel="noopener">IMF PortWatch · eo Hormuz</a></div>
       <details class="dtable"><summary>Xem bảng dữ liệu theo ngày (242 ngày)</summary><div class="tablewrap"><table id="tbl-hormuz"></table></div></details>
     </div>
@@ -1089,8 +1088,7 @@ function floatRange(minV,maxV){
   const hi=Math.ceil((maxV+span*0.15)/step)*step;
   return [Math.max(lo,0), hi];
 }
-function yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,digits,yMin){
-  const steps=4;
+function yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,digits,yMin,steps=4){
   yMin=yMin||0;
   const yToPx=(v)=> padT + plotH*(1-(v-yMin)/(yMax-yMin));
   for(let i=0;i<=steps;i++){
@@ -1107,7 +1105,7 @@ function barLineChart(containerId, opts){
   const host=document.getElementById(containerId);
   if(!host) return;
   const cats=opts.categories, n=cats.length;
-  const rotate = n>8;
+  const rotate = opts.rotateLabels===false ? false : n>8;
   const W=640, H=Math.max(250, opts.height||250);
   const padL=50,padR=14,padT=14,padB= rotate?56:30;
   const plotW=W-padL-padR, plotH=H-padT-padB;
@@ -1119,7 +1117,7 @@ function barLineChart(containerId, opts){
     const r=floatRange(mn,maxV); yMin=r[0]; yMax=r[1];
   }
   const svg=baseSvg(W,H,opts.ariaLabel);
-  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits,yMin);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits,yMin,opts.yGridSteps||4);
   svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
   const band=plotW/n;
   const barSeries=opts.series.filter(s=>s.kind!=='line');
@@ -1157,9 +1155,9 @@ function barLineChart(containerId, opts){
     hit.addEventListener('blur',hideTip);
     svg.appendChild(hit);
     const lx=cx, ly=padT+plotH+14;
-    const everyN = n>24 ? Math.ceil(n/18) : 1;
+    const everyN = opts.maxLabels ? Math.max(1,Math.ceil(n/opts.maxLabels)) : n>24 ? Math.ceil(n/18) : 1;
     if(i%everyN===0 || i===n-1){
-      const label=txt('text',{x:lx,y:ly,'text-anchor': rotate?'end':'middle',class:'catlabel'}, cat);
+      const label=txt('text',{x:lx,y:ly,'text-anchor': rotate?'end':'middle',class:'catlabel'}, opts.tickLabels?.[i]||cat);
       if(rotate) label.setAttribute('transform','rotate(-40 '+lx+' '+ly+')');
       svg.appendChild(label);
     }
@@ -1171,12 +1169,14 @@ function barLineChart(containerId, opts){
     if(pts.length>1){
       let d='', pen=false;
       linePts[s.name].forEach(p=>{if(!p){pen=false;return;}d+=(pen?' L':' M')+p[0]+','+p[1];pen=true;});
-      svg.appendChild(el('path',{d:d,fill:'none',stroke:s.color,'stroke-width':2,'stroke-linecap':'round','stroke-linejoin':'round'}));
+      svg.appendChild(el('path',{d:d,fill:'none',stroke:s.color,'stroke-width':s.strokeWidth||2,'stroke-linecap':'round','stroke-linejoin':'round'}));
     }
     linePts[s.name].forEach((p,i)=>{
       if(!p) return;
-      const c=el('circle',{cx:p[0],cy:p[1],r:3.5,fill:s.color,stroke:'var(--card)','stroke-width':1.5});
-      svg.appendChild(c);
+      if(s.markers!==false){
+        const c=el('circle',{cx:p[0],cy:p[1],r:3.5,fill:s.color,stroke:'var(--card)','stroke-width':1.5});
+        svg.appendChild(c);
+      }
       if(i===n-1){
         let ly=p[1]-12;
         while(endLabelY.some(v=>Math.abs(v-ly)<13)) ly-=14;

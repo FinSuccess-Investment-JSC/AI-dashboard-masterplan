@@ -99,6 +99,41 @@ if(oil){
   currentReading('chSingaporeCrack',`Ngày ${short(point.date)}: gasoil – Dubai ${nf(point.gasoil_crack,2)}, gasoline – Dubai ${nf(point.gasoline_crack,2)} USD/thùng. Đây là chênh lệch giá khu vực, chưa phải biên của BSR.`);
  }
  note('chSingaporeCrack',['singapore_cracks'],'KNOC Opinet: lấy giá ước tính Singapore RON 92 và gasoil 0,001% cùng ngày với Dubai spot, đều USD/thùng; trừ từng ngày rồi bình quân theo tháng. Không điền giá ngày nghỉ hoặc ngày thiếu, không dùng Brent futures của KNOC thay Dubai spot. Nguồn khảo sát thứ Ba–thứ Bảy cho giá ngày T vào T+1; job kiểm hai lần/ngày.');
+ if(available('opec_capacity')){
+  const cap=rows('opec_capacity').map(r=>({...r,label:'T'+Number(r.date.slice(5,7))+'/'+r.date.slice(2,4)}));
+  plot('chSpare',cap,[['Dư địa công suất OPEC','capacity',color[1]],['Gián đoạn ngoài kế hoạch','outages',color[2]]],'triệu thùng/ngày',2,280);
+  table('tbl-spare',['Tháng','Dư địa công suất OPEC','Gián đoạn ngoài kế hoạch'],cap,['capacity','outages'],2);
+  const card=document.getElementById('chSpare')?.closest('.card');
+  const title=card?.querySelector('.chart-title');if(title)title.textContent=`Dư địa công suất OPEC và gián đoạn nguồn cung — đến ${short(cap.at(-1).date)}`;
+  currentReading('chSpare',`Ước tính EIA cho ${short(cap.at(-1).date)}: dư địa ${nf(cap.at(-1).capacity,2)}, gián đoạn ${nf(cap.at(-1).outages,2)} triệu thùng/ngày. Số có thể được sửa trong báo cáo tháng sau.`);
+ }
+ note('chSpare',['opec_capacity'],'EIA STEO bản '+(src.opec_capacity?.issue||'mới nhất')+': sheet 3dtab, mã cops_opec và padi_OPEC. Chỉ vẽ tháng có cả hai ước tính; tháng dự báo chưa có gián đoạn thực tế để trống.');
+ if(available('wti_cot')){
+  const cot=rows('wti_cot').slice(-104);
+  plot('chCot',cot,[['Managed money · ròng','net_thousands',color[0]]],'nghìn hợp đồng',1,290);
+  fillTable('tbl-cot',['Tuần kết thúc','Mua','Bán','Ròng (nghìn HĐ)'],cot.map(r=>[short(r.date),nf(r.long,0),nf(r.short,0),nf(r.net_thousands,1)]));
+  const point=cot.at(-1);
+  currentReading('chCot',`Kỳ ${short(point.date)}: managed money mua ${nf(point.long,0)}, bán ${nf(point.short,0)} hợp đồng; ròng ${nf(point.net_thousands,1)} nghìn hợp đồng. COT phản ánh vị thế, không đo trực tiếp cung cầu dầu.`);
+ }
+ note('chCot',['wti_cot'],'CFTC disaggregated futures-only, mã 067651 WTI-PHYSICAL: Managed Money Long trừ Short. Vị thế ngày thứ Ba, thường công bố thứ Sáu; job kiểm cuối tuần và đầu tuần sau nếu trễ.');
+ if(available('retail_fuel')){
+  const retail=rows('retail_fuel').slice(-10).map(r=>({...r,label:short(r.date)}));
+  const series=[['E5 RON 92-II','e5',color[3]],['E10 RON 95-III','ron95',color[2]],['DO 0,05S-II','diesel',color[1]]];
+  for(const [chart,tableId] of [['chRetailFuelMini','tbl-retailmini'],['chRetailFuel','tbl-retailfuel']]){
+   plot(chart,retail,series,'đ/lít',0);
+   table(tableId,['Kỳ giá','E5 RON 92-II','E10 RON 95-III','DO 0,05S-II'],retail,['e5','ron95','diesel'],0);
+   const sub=document.getElementById(chart)?.closest('.card,.viz-block')?.querySelector('.chart-sub');
+   if(sub)sub.textContent=`đồng/lít, Vùng 1 · ${short(retail[0].date)}–${short(retail.at(-1).date)}`;
+  }
+  const latest=retail.at(-1);
+  if(typeof retailYears!=='undefined'){
+   const years=retailYears.map((year,i)=>({label:year,e5:i===retailYears.length-1?latest.e5:retailE5Y[i],ron95:i===retailYears.length-1?latest.ron95:retailRon95Y[i],diesel:i===retailYears.length-1?latest.diesel:retailDieselY[i]}));
+   plot('chRetailYear',years,series,'đ/lít',0);
+   fillTable('tbl-retailyear',['Năm','E5 RON 92-II','RON95/E10 RON95-III','DO 0,05S-II','Mốc'],years.map((r,i)=>[r.label,nf(r.e5,0),nf(r.ron95,0),nf(r.diesel,0),i===years.length-1?short(latest.date):'mốc cuối năm']));
+  }
+  currentReading('chRetailFuelMini',`Kỳ ${short(latest.date)}: E5 ${nf(latest.e5,0)}, E10 RON 95 ${nf(latest.ron95,0)}, diesel ${nf(latest.diesel,0)} đồng/lít tại Vùng 1.`);
+ }
+ [['chRetailFuelMini','Thông cáo Petrolimex công bố từng kỳ; bảng giá Vùng 1 được OCR từ ảnh chính thức, kiểm đúng ba mã sản phẩm và đơn vị.'],['chRetailFuel','Thông cáo Petrolimex công bố từng kỳ; giữ 10 kỳ gần nhất.'],['chRetailYear','Các năm trước theo chuỗi CostFlow/Petrolimex; điểm 2026 là giá Petrolimex kỳ mới nhất, không phải bình quân năm.']].forEach(([id,method])=>note(id,['retail_fuel'],method));
  const priceMethod='Tải lịch sử XLS từ EIA; bỏ ngày thiếu số, không điền 0. Bình quân tháng từ các phiên có dữ liệu; dấu * là tháng hiện tại chưa đủ kỳ. Spread/crack chỉ dùng ngày có đủ các đầu vào; xăng và ULSD đổi USD/gallon × 42 rồi trừ Brent.';
  [['chBrent24',['brent']],['chBrentYear',['brent']],['chBrentWti',['brent','wti']],['chCrack',['brent','gasoline','diesel']],['chMoit',['brent','gasoline','diesel']]].forEach(([id,ks])=>note(id,ks,priceMethod));
  const stocks=[['chCrudeStock','tbl-crudestock','crude_stock','Tồn kho dầu thô','last'],['chCushing','tbl-cushing','cushing','Tồn kho Cushing','last'],['chUsProd','tbl-usprod','us_production','Sản lượng dầu Mỹ','mean']];
@@ -121,20 +156,40 @@ if(oil){
   plot('chCurve',rs,[['WTI futures close','value',color[0]]],'USD/thùng',2);table('tbl-curve',['Tháng đáo hạn','USD/thùng','Chênh với kỳ gần nhất'],rs,['value','spread'],2);
  }
  note('chCurve',['wti_curve'],'Yahoo Finance, nguồn không chính thức: giá đóng cửa từng hợp đồng cùng ngày giao dịch, không ghép continuous futures thành đường cong. Nếu thiếu hợp đồng hoặc ngày không khớp, giữ nguyên đường cong đã kiểm tra trước đó.');
- // Full-date raw history, default 90 days and a complete-calendar 7-day mean.
+ // Full-date raw history, with separate short- and long-range views.
  const hz=available('hormuz')?rows('hormuz'):hzLab.map((l,i)=>({date:'2026-'+l.slice(3)+'-'+l.slice(0,2),tanker:hzTanker[i],total:hzTotal[i]}));
  const hzRolling=M.calendar(M.rolling(hz,'tanker',7));
  const host=document.getElementById('chHormuzM');const controls=document.createElement('div');controls.className='hormuz-controls';host.before(controls);
+ const headline=document.createElement('div');headline.className='hormuz-headline';controls.before(headline);
+ const latestHz=hzRolling.at(-1);
+ headline.innerHTML=`<span><b>${nf(latestHz?.tanker,0)}</b> tàu ngày ${short(latestHz?.date)}</span><span><b>${nf(latestHz?.average,1)}</b> tàu/ngày · bình quân 7 ngày</span>`;
+ const viewNote=document.createElement('div');viewNote.className='chart-sub hormuz-view-note';host.after(viewNote);
  function drawHz(days){
   const rs=days?hzRolling.slice(-days):hzRolling;
-  plot('chHormuzM',rs,[['Tàu chở dầu/ngày','tanker','#b3bbc5'],['Bình quân 7 ngày','average',color[1]]],'lượt/ngày',1,280);
+  let chartRows,series,description;
+  if(days===0){
+   chartRows=M.aggregate(rs,'tanker','month').map(r=>({date:r.date,label:'T'+Number(r.date.slice(5))+'/'+r.date.slice(2,4),value:r.value}));
+   series=[{name:'Bình quân tháng',kind:'line',color:color[0],values:chartRows.map(r=>r.value),markers:false,strokeWidth:3}];
+   description='Toàn bộ · bình quân tháng từ ngày có quan sát';
+  }else if(days>90){
+   chartRows=rs.filter((r,i)=>i%7===0||i===rs.length-1);
+   series=[{name:'Bình quân 7 ngày',kind:'line',color:color[2],values:chartRows.map(r=>r.average),markers:false,strokeWidth:3}];
+   description='1 năm · bình quân 7 ngày, lấy một mốc mỗi tuần';
+  }else{
+   chartRows=rs;
+   series=[{name:'Tàu từng ngày',kind:'bar',color:color[1],values:rs.map(r=>r.tanker)},
+           {name:'Bình quân 7 ngày',kind:'line',color:color[2],values:rs.map(r=>r.average),markers:false,strokeWidth:3}];
+   description=`${days} ngày · cột ngày và đường bình quân 7 ngày`;
+  }
+  barLineChart('chHormuzM',{categories:chartRows.map(r=>r.label||short(r.date)),tickLabels:chartRows.map(r=>r.label||r.date.slice(8)+'/'+r.date.slice(5,7)),series,unit:'lượt/ngày',digits:0,height:270,maxLabels:7,rotateLabels:false,yGridSteps:5,ariaLabel:'Tàu chở dầu qua Hormuz'});
+  host.chartReadings=[{name:'Tàu ngày gần nhất',value:latestHz?.tanker,period:latestHz?.date},{name:'Bình quân 7 ngày',value:latestHz?.average,period:latestHz?.date}];
+  viewNote.textContent=description;
   table('tbl-hormuz',['Ngày','Tàu chở dầu','Tổng số tàu','Bình quân 7 ngày'],rs,['tanker','total','average']);
   controls.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.days)===days)));
  }
- [[30,'30 ngày'],[90,'90 ngày'],[365,'1 năm'],[0,'Toàn bộ']].forEach(([days,label])=>{const b=document.createElement('button');b.textContent=label;b.dataset.days=days;b.type='button';b.addEventListener('click',()=>drawHz(days));controls.append(b)});drawHz(90);
- const legend=document.createElement('div');legend.className='chart-sub';legend.textContent='Xám: số tàu từng ngày · Đỏ: bình quân 7 ngày đủ quan sát';host.after(legend);
+ [[30,'30 ngày'],[90,'90 ngày'],[365,'1 năm'],[0,'Toàn bộ']].forEach(([days,label])=>{const b=document.createElement('button');b.textContent=label;b.dataset.days=days;b.type='button';b.addEventListener('click',()=>drawHz(days));controls.append(b)});drawHz(30);
  const summary=host.closest('.card').querySelector('.dtable summary');if(summary)summary.textContent='Xem dữ liệu ngày theo khoảng đang chọn';
- ['chHormuzM'].forEach(id=>note(id,['hormuz'],'IMF PortWatch API: lọc portid=chokepoint6, đọc date/n_tanker/n_total và phân trang toàn bộ kết quả. Dữ liệu quan sát theo ngày, nguồn cập nhật theo đợt; job kiểm tra mỗi ngày. Bình quân 7 ngày chỉ có khi đủ 7 ngày lịch, không thay ngày thiếu bằng 0.'));
+ ['chHormuzM'].forEach(id=>note(id,['hormuz'],'IMF PortWatch API: lọc portid=chokepoint6, đọc date/n_tanker/n_total và phân trang toàn bộ kết quả. Dữ liệu quan sát theo ngày, nguồn cập nhật theo đợt; job kiểm hằng ngày. Bình quân 7 ngày chỉ có khi đủ 7 ngày lịch, không thay ngày thiếu bằng 0. Khoảng 1 năm lấy một mốc BQ7 mỗi tuần; Toàn bộ là bình quân tháng của ngày có quan sát.'));
  // Fix an existing negative-margin omission, without changing the underlying value.
  balanceBarChart('chBsrMargin',{labels:bsrYears,values:bsrMarginRaw,unit:'%',height:250});
  // Public-data summary keeps dated, verified facts separate from unrefreshed research.

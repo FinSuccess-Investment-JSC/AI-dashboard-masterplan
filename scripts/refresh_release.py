@@ -59,8 +59,9 @@ def main():
     args = cli.parse_args()
     before = signature(args.comparison)
     results = {}
+    polling_args = [] if args.force_release else ['--scheduled']
     for name, script in [('market', 'update_daily.py'), ('bank', 'update_bank.py')]:
-        results[name] = subprocess.run([sys.executable, str(ROOT / 'scripts' / script)], cwd=ROOT).returncode
+        results[name] = subprocess.run([sys.executable, str(ROOT / 'scripts' / script), *polling_args], cwd=ROOT).returncode
     if args.comparison:
         results['comparison'] = subprocess.run([sys.executable, str(ROOT / 'scripts' / 'update_company_comparison.py')], cwd=ROOT).returncode
     after = signature(args.comparison)

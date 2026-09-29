@@ -13,9 +13,12 @@ from pathlib import Path
 import re
 import subprocess
 import tempfile
+import sys
 from html.parser import HTMLParser
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from polling_policy import bank_due
 URL = 'https://eximbank.com.vn/tin-tuc/lai-suat-binh-quan-thang-trong-nam-2026'
 PREFIX = 'window.BANK_PUBLIC_DATA = '
 
@@ -86,8 +89,15 @@ def main():
     cli = argparse.ArgumentParser()
     cli.add_argument('--output-dir', type=Path, default=ROOT/'data')
     cli.add_argument('--input-html', type=Path, help='Audit/replay a previously downloaded source; not a fresh source check')
+    cli.add_argument('--scheduled', action='store_true', help='Skip outside the monthly disclosure check window')
     args = cli.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
+    if args.scheduled and not args.input_html:
+        path = args.output_dir/'bank-public-data.js'
+        old = json.loads(path.read_text()[len(PREFIX):].strip().removesuffix(';')) if path.exists() else {}
+        if not bank_due(dt.datetime.now(dt.timezone.utc), old.get('last_checked_at')):
+            print('Bank disclosure feed not due in this scheduled run')
+            return 0
     with (args.output_dir/'.bank-update.lock').open('w') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         path = args.output_dir/'bank-public-data.js'
