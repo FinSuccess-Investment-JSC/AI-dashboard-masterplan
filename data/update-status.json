@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-09-29T05:39:53.517542+00:00",
+  "run_at": "2026-09-29T09:41:16.031162+00:00",
   "errors": 0,
   "sources": {
     "gasoline": {
@@ -133,6 +133,20 @@
       "latest_observation": "2026-09-22",
       "last_success_at": "2026-09-29T05:39:53.517542+00:00",
       "last_checked_at": "2026-09-29T05:39:53.517542+00:00",
+      "error": null
+    },
+    "bab_el_mandeb": {
+      "status": "ok",
+      "latest_observation": "2026-09-20",
+      "last_success_at": "2026-09-29T08:44:48.244790+00:00",
+      "last_checked_at": "2026-09-29T08:44:48.244790+00:00",
+      "error": null
+    },
+    "middle_east_crude_exports": {
+      "status": "ok",
+      "latest_observation": "2026-07-01",
+      "last_success_at": "2026-09-29T09:41:16.031162+00:00",
+      "last_checked_at": "2026-09-29T09:41:16.031162+00:00",
       "error": null
     }
   }

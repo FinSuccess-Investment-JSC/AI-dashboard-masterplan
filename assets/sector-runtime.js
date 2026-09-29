@@ -108,6 +108,14 @@ if(oil){
   currentReading('chSpare',`Ước tính EIA cho ${short(cap.at(-1).date)}: dư địa ${nf(cap.at(-1).capacity,2)}, gián đoạn ${nf(cap.at(-1).outages,2)} triệu thùng/ngày. Số có thể được sửa trong báo cáo tháng sau.`);
  }
  note('chSpare',['opec_capacity'],'EIA STEO bản '+(src.opec_capacity?.issue||'mới nhất')+': sheet 3dtab, mã cops_opec và padi_OPEC. Chỉ vẽ tháng có cả hai ước tính; tháng dự báo chưa có gián đoạn thực tế để trống.');
+ if(available('middle_east_crude_exports')){
+  const exports=rows('middle_east_crude_exports').slice(-30).map(r=>({...r,label:'T'+Number(r.date.slice(5,7))+'/'+r.date.slice(2,4)}));
+  plot('chMiddleEastExports',exports,[['Saudi Arabia','saudi',color[0]],['Kuwait','kuwait',color[2]]],'triệu thùng/ngày',2,270);
+  table('tbl-middleeast-exports',['Tháng','Saudi Arabia · mb/d','Kuwait · mb/d'],exports,['saudi','kuwait'],2);
+  currentReading('chMiddleEastExports',`JODI tháng ${exports.at(-1).label}: Saudi Arabia ${nf(exports.at(-1).saudi,2)}, Kuwait ${nf(exports.at(-1).kuwait,2)} triệu thùng/ngày. Hai chuỗi này không đại diện tổng xuất khẩu Trung Đông.`);
+  document.getElementById('chMiddleEastExports').dataset.qualityUnassessed=String(['saudi_assessment','kuwait_assessment'].some(field=>exports.at(-1)[field]==='3'));
+ }
+ note('chMiddleEastExports',['middle_east_crude_exports'],'JODI Oil: CRUDEOIL / TOTEXPSB / KBD, đổi nghìn sang triệu thùng/ngày. Chỉ giữ tháng cả Saudi Arabia và Kuwait cùng báo cáo. Nguồn thường cập nhật quanh ngày 20; job kiểm theo lịch tháng. Thiếu số không được điền bằng 0, không suy ra tổng Trung Đông. Link IEA là bối cảnh xuất khẩu dầu vùng Vịnh rộng hơn, không phải dữ liệu của hai đường chart.');
  if(available('wti_cot')){
   const cot=rows('wti_cot').slice(-104);
   plot('chCot',cot,[['Managed money · ròng','net_thousands',color[0]]],'nghìn hợp đồng',1,290);
@@ -190,6 +198,29 @@ if(oil){
  [[30,'30 ngày'],[90,'90 ngày'],[365,'1 năm'],[0,'Toàn bộ']].forEach(([days,label])=>{const b=document.createElement('button');b.textContent=label;b.dataset.days=days;b.type='button';b.addEventListener('click',()=>drawHz(days));controls.append(b)});drawHz(30);
  const summary=host.closest('.card').querySelector('.dtable summary');if(summary)summary.textContent='Xem dữ liệu ngày theo khoảng đang chọn';
  ['chHormuzM'].forEach(id=>note(id,['hormuz'],'IMF PortWatch API: lọc portid=chokepoint6, đọc date/n_tanker/n_total và phân trang toàn bộ kết quả. Dữ liệu quan sát theo ngày, nguồn cập nhật theo đợt; job kiểm hằng ngày. Bình quân 7 ngày chỉ có khi đủ 7 ngày lịch, không thay ngày thiếu bằng 0. Khoảng 1 năm lấy một mốc BQ7 mỗi tuần; Toàn bộ là bình quân tháng của ngày có quan sát.'));
+ if(available('bab_el_mandeb')){
+  const bab=M.calendar(M.rolling(rows('bab_el_mandeb'),'total',7));
+  const babHost=document.getElementById('chBabMandeb'),buttons=document.createElement('div');buttons.className='hormuz-controls';babHost.before(buttons);
+  const headline=document.createElement('div');headline.className='hormuz-headline';buttons.before(headline);
+  const latest=bab.at(-1);
+  headline.innerHTML=`<span><b>${nf(latest.total,0)}</b> lượt tàu ngày ${short(latest.date)}</span><span><b>${nf(latest.tanker,0)}</b> tàu chở dầu cùng ngày</span>`;
+  const viewNote=document.createElement('div');viewNote.className='chart-sub hormuz-view-note';babHost.after(viewNote);
+  function drawBab(days){
+   const selected=days?bab.slice(-days):bab;
+   let chartRows,series,description;
+   if(days===0){chartRows=M.aggregate(selected,'total','month').map(r=>({...r,label:'T'+Number(r.date.slice(5,7))+'/'+r.date.slice(2,4)}));series=[{name:'Bình quân tháng',kind:'line',color:color[2],values:chartRows.map(r=>r.value),markers:false,strokeWidth:3}];description='Toàn bộ · bình quân tháng từ ngày có quan sát';}
+   else if(days>90){chartRows=selected.filter((r,i)=>i%7===0||i===selected.length-1);series=[{name:'Bình quân 7 ngày',kind:'line',color:color[2],values:chartRows.map(r=>r.average),markers:false,strokeWidth:3}];description='1 năm · bình quân 7 ngày, lấy một mốc mỗi tuần';}
+   else{chartRows=selected;series=[{name:'Tổng lượt từng ngày',kind:'bar',color:color[1],values:selected.map(r=>r.total)},{name:'Bình quân 7 ngày',kind:'line',color:color[2],values:selected.map(r=>r.average),markers:false,strokeWidth:3}];description=`${days} ngày · tổng lượt và bình quân 7 ngày`;}
+   barLineChart('chBabMandeb',{categories:chartRows.map(r=>r.label||short(r.date)),tickLabels:chartRows.map(r=>r.label||r.date.slice(8)+'/'+r.date.slice(5,7)),series,unit:'lượt/ngày',digits:0,height:270,maxLabels:7,rotateLabels:false,ariaLabel:'Transit calls qua eo Bab el-Mandeb'});
+   babHost.chartReadings=[{name:'Tổng lượt mới nhất',value:latest.total,period:latest.date},{name:'Tàu chở dầu',value:latest.tanker,period:latest.date},{name:'Bình quân 7 ngày',value:latest.average,period:latest.date}];
+   viewNote.textContent=description;
+   table('tbl-bab-mandeb',['Ngày','Tổng lượt tàu','Tàu chở dầu','Bình quân 7 ngày'],selected,['total','tanker','average']);
+   buttons.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.days)===days)));
+  }
+  [[30,'30 ngày'],[90,'90 ngày'],[365,'1 năm'],[0,'Toàn bộ']].forEach(([days,label])=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.dataset.days=days;b.addEventListener('click',()=>drawBab(days));buttons.append(b)});drawBab(30);
+  currentReading('chBabMandeb',`Ngày ${short(latest.date)} ghi nhận ${nf(latest.total,0)} lượt tàu qua Bab el-Mandeb, trong đó ${nf(latest.tanker,0)} tàu chở dầu; bình quân tổng lượt 7 ngày ${nf(latest.average,1)} lượt/ngày.`);
+ }
+ note('chBabMandeb',['bab_el_mandeb'],'IMF PortWatch API: portid=chokepoint4, n_total là tổng lượt tàu và n_tanker là số tàu chở dầu. Quan sát ngày, nguồn phát hành theo đợt; job kiểm hằng ngày. Bình quân 7 ngày chỉ tính khi đủ ngày lịch; không thay ngày thiếu bằng 0.');
  // Fix an existing negative-margin omission, without changing the underlying value.
  balanceBarChart('chBsrMargin',{labels:bsrYears,values:bsrMarginRaw,unit:'%',height:250});
  // Public-data summary keeps dated, verified facts separate from unrefreshed research.

@@ -35,6 +35,9 @@ Diézen 0,05S-II Dongl/lit 30.490 31.090'''
         self.assertFalse(due('sugar_producers', thu, checked_yesterday))
         self.assertTrue(due('sugar_producers', thu, None))
         self.assertTrue(bank_due(thu, checked_yesterday))
+        self.assertFalse(due('middle_east_crude_exports', thu, checked_yesterday))
+        jodi_window = dt.datetime(2026, 10, 20, 7, 30, tzinfo=VN)
+        self.assertTrue(due('middle_east_crude_exports', jodi_window, checked_yesterday))
 
 
 if __name__ == '__main__':

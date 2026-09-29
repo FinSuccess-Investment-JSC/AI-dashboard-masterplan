@@ -16,6 +16,10 @@ class ValidationTests(unittest.TestCase):
   self.assertEqual(u.parse_portwatch([row])[0]['tanker'],0)
   row['attributes']['n_tanker']=2
   with self.assertRaises(ValueError):u.parse_portwatch([row])
+ def test_bab_el_mandeb_identity_and_counts(self):
+  row={'attributes':{'date':'2026-09-20','portid':'chokepoint4','n_tanker':5,'n_total':26}}
+  self.assertEqual(u.parse_portwatch([row],'chokepoint4')[0]['total'],26)
+  with self.assertRaises(ValueError):u.parse_portwatch([row],'chokepoint6')
  def test_regression_and_truncation_keep_old(self):
   old={'latest_observation':'2026-09-06','records':[{'date':'2026-09-06','value':2}]*100}
   saved=json.dumps(old)

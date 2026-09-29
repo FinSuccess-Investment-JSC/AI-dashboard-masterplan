@@ -35,6 +35,8 @@ def due(key: str, now: dt.datetime, last_checked: str | None) -> bool:
         window = day in (5, 0, 1)  # Tuesday positions normally publish Friday US / Saturday VN.
     elif key == 'sugar_monthly':
         window = local.day <= 10 or day == 0
+    elif key == 'middle_east_crude_exports':
+        window = 18 <= local.day <= 28 or day == 0  # JODI updates around the 20th; retry delays.
     else:
         window = day < 6  # PortWatch batch timing and Petrolimex events can shift.
     if not window:

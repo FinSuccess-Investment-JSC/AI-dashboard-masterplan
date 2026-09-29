@@ -291,22 +291,22 @@ body{font-size:14px;line-height:1.45}
 }
 
 </style>
-<link rel="stylesheet" href="../assets/dashboard-ui.css?v=111bbfce1363">
-<script src="../data/daily-data.js?v=b6ac6aba2a99" defer></script>
+<link rel="stylesheet" href="../assets/dashboard-ui.css?v=5763ce23563b">
+<script src="../data/daily-data.js?v=83e62eb6dfc8" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
-<script src="../assets/sector-runtime.js?v=8272275f4a1d" defer></script>
-<script src="../assets/sector-content.js?v=d9adcee21839" defer></script>
+<script src="../assets/sector-runtime.js?v=a45c4b978479" defer></script>
+<script src="../assets/sector-content.js?v=eff5124ba398" defer></script>
 <script src="../assets/sector-layout.js?v=fae05da50c76" defer></script>
-<script src="../assets/chart-cards.js?v=2fd974ccd3d2" defer></script>
+<script src="../assets/chart-cards.js?v=1c2b02c72a99" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="../assets/catalyst-board.js?v=8e97073afec4" defer></script>
 <script src="../data/company-comparison.js?v=7bd56283a8e7" defer></script>
 <script src="../assets/financial-comparison.js?v=b432cb6f4cfd" defer></script>
-<script src="../assets/research-layout.js?v=4eaa1e25fb74" defer></script>
-<script src="../assets/research-sources.js?v=89f39bc0f69d" defer></script>
+<script src="../assets/research-layout.js?v=b84ea7aad02e" defer></script>
+<script src="../assets/research-sources.js?v=0f8638a1e169" defer></script>
 <script src="../assets/research-editorial.js?v=7a9e9e76ccd8" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20260929-r5"></script>
+<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20260929-r6"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=4d0c1fbd13a5">
 <link rel="stylesheet" href="../assets/research-layout.css?v=60e744338cd0">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=182c66c74c0a">
@@ -472,6 +472,16 @@ body{font-size:14px;line-height:1.45}
       </table></div>
       <div class="conf-note"><b>Cách đọc:</b> phần Mỹ bên dưới là nhóm chỉ báo tần suất cao để kiểm tra stress thị trường theo tuần. Kết luận về giá dầu cần đặt trong cân bằng toàn cầu ở chart trên và trong các biến giải thích như spare capacity, gián đoạn nguồn cung, product trade và demand revision.</div>
       <div class="srcrow"><a href="https://www.iea.org/reports/oil-market-report-august-2026" target="_blank" rel="noopener">IEA · Oil Market Report Aug 2026</a><a href="https://www.eia.gov/outlooks/steo/report/" target="_blank" rel="noopener">EIA · STEO Aug 2026</a><a href="https://www.opec.org/pr-detail/611-2-august-2026.html" target="_blank" rel="noopener">OPEC+ · quyết định sản lượng 02/08/2026</a><a href="https://publications.opec.org/momr/" target="_blank" rel="noopener">OPEC · Monthly Oil Market Report</a></div>
+    </div>
+
+    <div class="card" style="margin-bottom:14px" data-block-id="dau-khi-40" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+      <div class="chart-title">Xuất khẩu dầu thô Trung Đông · Saudi Arabia và Kuwait</div>
+      <div class="chart-sub">triệu thùng/ngày · số liệu tháng do từng nước báo cáo cho JODI</div>
+      <div id="chMiddleEastExports"></div>
+      <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>Saudi Arabia</span><span class="li"><span class="dot" style="background:#861C52"></span>Kuwait</span></div>
+      <div class="conf-note"><b>Phạm vi:</b> chỉ hai nước có chuỗi xuất khẩu dầu thô công khai đủ kỳ trong bộ JODI này; <b>không phải tổng xuất khẩu Trung Đông</b>. Các nước khác và tuyến đi không được suy từ số này.</div>
+      <div class="srcrow"><a href="https://www.jodidata.org/oil/database/data-downloads.aspx" target="_blank" rel="noopener">JODI Oil · CSV xuất khẩu dầu thô</a><a href="https://www.jodidata.org/oil/support/user-guide/assessments.aspx" target="_blank" rel="noopener">JODI · mã đánh giá dữ liệu</a><a href="https://www.iea.org/data-and-statistics/charts/gulf-producers-oil-exports-february-august-2026" target="_blank" rel="noopener">IEA · xuất khẩu dầu vùng Vịnh (phạm vi rộng hơn)</a></div>
+      <details class="dtable"><summary>Xem số liệu tháng theo quốc gia</summary><div class="tablewrap"><table id="tbl-middleeast-exports"></table></div></details>
     </div>
 
     <h3 class="subhead">Tín hiệu tần suất cao — Mỹ</h3>
@@ -979,6 +989,16 @@ body{font-size:14px;line-height:1.45}
       <div class="conf-note">Trước gián đoạn, lưu lượng thường ở vùng 30–50 tàu chở dầu/ngày. Đọc mức ngày cùng đường bình quân 7 ngày và ngày quan sát mới nhất; lượt tàu AIS không cho biết trực tiếp số thùng dầu vận chuyển.</div>
       <div class="srcrow"><a href="https://portwatch.imf.org/pages/chokepoint6" target="_blank" rel="noopener">IMF PortWatch · eo Hormuz</a></div>
       <details class="dtable"><summary>Xem bảng dữ liệu theo ngày (242 ngày)</summary><div class="tablewrap"><table id="tbl-hormuz"></table></div></details>
+    </div>
+
+    <div class="card" style="margin-top:14px" data-block-id="dau-khi-41" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">
+      <div class="chart-title">Transit calls qua eo Bab el-Mandeb</div>
+      <div class="chart-sub">tổng lượt tàu/ngày · IMF PortWatch</div>
+      <div id="chBabMandeb"></div>
+      <div class="legend"><span class="li"><span class="dot" style="background:#59C5C8"></span>Tổng lượt từng ngày</span><span class="li"><span class="dot" style="background:#861C52"></span>Bình quân 7 ngày</span></div>
+      <div class="conf-note">Lượt tàu AIS gồm nhiều loại tàu; số tàu chở dầu là một phần của tổng lượt. Không quy đổi lượt tàu thành thùng dầu hoặc xuất khẩu dầu thô.</div>
+      <div class="srcrow"><a href="https://portwatch.imf.org/pages/6b1814d64903461b98144a6cc25eb79c" target="_blank" rel="noopener">IMF PortWatch · Bab el-Mandeb</a></div>
+      <details class="dtable"><summary>Xem số liệu ngày</summary><div class="tablewrap"><table id="tbl-bab-mandeb"></table></div></details>
     </div>
 
     <div class="card" style="margin-top:14px" data-block-id="dau-khi-38" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">

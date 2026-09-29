@@ -52,8 +52,9 @@
 .hormuz-headline{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 6px}
 .hormuz-headline span{display:inline-flex;align-items:baseline;gap:6px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--tint-soft);font-size:12px;color:var(--ink2)}
 .hormuz-headline b{font-size:20px;color:var(--brand);font-variant-numeric:tabular-nums}
-#chHormuzM{min-width:0;max-width:100%}
-#chHormuzM svg{width:100%;max-width:900px;height:auto;margin-inline:auto}
+#chHormuzM,#chBabMandeb{min-width:0;max-width:100%}
+#chHormuzM svg,#chBabMandeb svg{width:100%;max-width:900px;height:auto;margin-inline:auto}
+#chMiddleEastExports svg{width:100%;max-width:900px;height:auto;margin-inline:auto}
 @media(max-width:700px){#pane-mt7 .card{min-width:0;max-width:100%}.hormuz-headline span{max-width:100%}}
 .hormuz-view-note{font-weight:650;margin-top:7px}
 @media(max-width:700px){.monitor-grid{grid-template-columns:1fr}.policy-visuals{grid-template-columns:minmax(0,1fr)}}

@@ -17,6 +17,7 @@ from petrolimex_prices import load as load_retail_fuel
 from polling_policy import due as source_due
 from steo_capacity import load as load_steo_capacity
 from cftc_positions import load as load_wti_cot
+from jodi_exports import load as load_middle_east_exports
 ROOT=Path(__file__).resolve().parents[1]
 UTC=dt.timezone.utc
 EIA={
@@ -79,11 +80,11 @@ def load_eia(key, spec):
     rows=parse_eia(raw,code,unit,scale)
     return {'source_url':url,'source_name':'EIA','observation_frequency':frequency,'publication_frequency':'weekly','unit':unit if scale==1 else ('million barrels/day' if key=='us_production' else 'million barrels'),'records':rows,'raw_sha256':hashlib.sha256(raw).hexdigest()},raw
 
-def parse_portwatch(features):
+def parse_portwatch(features, portid='chokepoint6'):
     rows=[]
     for f in features:
         a=f['attributes']
-        if a.get('portid')!='chokepoint6':raise ValueError('Wrong chokepoint')
+        if a.get('portid')!=portid:raise ValueError('Wrong chokepoint')
         date=a['date']
         if isinstance(date,(int,float)):date=dt.datetime.fromtimestamp(date/1000,UTC).date().isoformat()
         else:date=str(date)[:10]
@@ -93,20 +94,21 @@ def parse_portwatch(features):
         rows.append({'date':date,'tanker':tanker,'total':total})
     return normalize(rows,['tanker','total'])
 
-def load_portwatch():
+def load_portwatch(portid='chokepoint6'):
     features=[];raw_pages=[];offset=0
     while True:
-        query={'where':"portid='chokepoint6' AND date >= DATE '2023-01-01'",'outFields':'date,portid,n_tanker,n_total','orderByFields':'date ASC','resultOffset':offset,'resultRecordCount':1000,'f':'json'}
+        query={'where':f"portid='{portid}' AND date >= DATE '2023-01-01'",'outFields':'date,portid,n_tanker,n_total','orderByFields':'date ASC','resultOffset':offset,'resultRecordCount':1000,'f':'json'}
         raw=fetch(PORTWATCH+'?'+urllib.parse.urlencode(query));page=json.loads(raw)
         if 'error' in page:raise ValueError('PortWatch: '+str(page['error']))
         batch=page.get('features',[]);features.extend(batch);raw_pages.append(page)
         if not page.get('exceededTransferLimit'):break
         if not batch or offset>=20000:raise ValueError('Invalid pagination')
         offset+=len(batch)
-    rows=parse_portwatch(features)
-    if len(rows)<180:raise ValueError('Incomplete Hormuz history')
+    rows=parse_portwatch(features,portid)
+    if len(rows)<180:raise ValueError('Incomplete PortWatch history')
     raw=json.dumps(raw_pages).encode()
-    return {'source_url':PORTWATCH,'source_name':'IMF PortWatch','observation_frequency':'daily','publication_frequency':'weekly','unit':'transit calls/day','records':rows,'raw_sha256':hashlib.sha256(raw).hexdigest()},raw
+    page_url={'chokepoint4':'https://portwatch.imf.org/pages/6b1814d64903461b98144a6cc25eb79c','chokepoint6':'https://portwatch.imf.org/pages/chokepoint6'}[portid]
+    return {'source_url':page_url,'source_name':'IMF PortWatch','observation_frequency':'daily','publication_frequency':'weekly','unit':'transit calls/day','records':rows,'raw_sha256':hashlib.sha256(raw).hexdigest(),'method':f'ArcGIS Daily_Chokepoints_Data; portid={portid}; n_total and n_tanker'},raw
 
 def align_curve(contracts, today):
     # Prefer the latest COMPLETE trading day common to every requested maturity.
@@ -245,7 +247,7 @@ def main():
     try:
         cache=out/'daily.json';bundle=json.loads(cache.read_text()) if cache.exists() else {'schema_version':1,'sources':{}}
         tasks={k:(lambda k=k,s=s:load_eia(k,s)) for k,s in EIA.items()}
-        tasks.update(hormuz=load_portwatch,wti_curve=load_curve,brent_futures=lambda:load_daily_futures("BZ=F","USD/barrel"),sugar_futures=lambda:load_daily_futures("SB=F","US cents/lb"),sugar_monthly=load_wb_sugar,sugar_producers=load_sugar_producers,
+        tasks.update(hormuz=load_portwatch,bab_el_mandeb=lambda:load_portwatch('chokepoint4'),middle_east_crude_exports=lambda:load_middle_east_exports(bundle['sources'].get('middle_east_crude_exports',{}).get('records')),wti_curve=load_curve,brent_futures=lambda:load_daily_futures("BZ=F","USD/barrel"),sugar_futures=lambda:load_daily_futures("SB=F","US cents/lb"),sugar_monthly=load_wb_sugar,sugar_producers=load_sugar_producers,
                      singapore_cracks=lambda:load_singapore_cracks(bundle['sources'].get('singapore_cracks',{}).get('records')),
                      retail_fuel=lambda:load_retail_fuel(bundle['sources'].get('retail_fuel',{}).get('records')),
                      opec_capacity=load_steo_capacity,wti_cot=load_wti_cot)

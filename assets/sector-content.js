@@ -36,6 +36,8 @@ const sources={
  chSingaporeCrack:['daily','giá Singapore và Dubai cùng ngày → bình quân tháng','KNOC Opinet · khảo sát thứ Ba–thứ Bảy (T+1)','https://www.opinet.co.kr/glopopdSelect.do'],
  chCurve:['daily','giá đóng cửa theo ngày giao dịch','Yahoo Finance · không chính thức','https://finance.yahoo.com/quote/CL%3DF/futures/'],
  chHormuzM:['weekly','ngày; kèm bình quân 7 ngày','IMF PortWatch · dữ liệu ngày, cập nhật tuần (OCHA)','https://github.com/OCHA-DAP/hdx-scraper-portwatch'],
+ chBabMandeb:['weekly','ngày; kèm bình quân 7 ngày','IMF PortWatch · dữ liệu ngày, cập nhật tuần (OCHA)','https://portwatch.imf.org/pages/6b1814d64903461b98144a6cc25eb79c'],
+ chMiddleEastExports:['monthly','tháng, Saudi Arabia & Kuwait','JODI Oil · quanh ngày 20 mỗi tháng','https://www.jodidata.org/oil/database/data-downloads.aspx'],
  chMargin:['annual','niên độ, số kiểm toán','BCTC kiểm toán SBT',null],chBsrMargin:['annual','năm, số kiểm toán','BCTC kiểm toán BSR',null],chPlx:['quarterly','cuối quý','BCTC PLX',null],chGasVol:['annual','năm và kế hoạch ĐHĐCĐ','PV GAS · công bố năm / ĐHĐCĐ',null],
 };
 const insight={
@@ -78,6 +80,8 @@ const insight={
  chBsrMargin:'Biên gộp biến động theo crack, cơ cấu dầu và chu kỳ bảo dưỡng. Năm biên âm phải được giữ trong bảng và khi vẽ chart; dự báo cần tách biến động giá hàng tồn kho khỏi hiệu quả lọc dầu.',
  chPlx:'Tồn kho tăng làm doanh nghiệp nhạy hơn với biến động giá giữa lúc nhập và bán. Cần đọc chung dự phòng, lợi nhuận và tiền mặt; giá trị tồn kho tăng có thể do tăng giá vốn, không nhất thiết tăng số lít dự trữ.',
  chHormuzM:'Chuỗi ngày cho biết dòng chảy thực tế có phục hồi sau tin tức hay chưa; bình quân 7 ngày giảm nhiễu một chuyến tàu. Đây là số lượt tàu AIS quan sát được, không phải thùng dầu: thay đổi tải trọng và nhiễu tín hiệu có thể làm hai đại lượng đi khác nhau.',
+ chBabMandeb:'Bab el-Mandeb là tuyến qua Biển Đỏ; số lượt tàu qua eo giúp kiểm tra tuyến vận tải có mở rộng hay bị nghẽn. Số tàu chở dầu là một phần của tổng lượt, không cho biết khối lượng dầu hay cảng xuất phát. Đối chiếu với Hormuz và xuất khẩu dầu thô từng nước trước khi suy ra nguồn cung thực đến châu Á.',
+ chMiddleEastExports:'Xuất khẩu dầu thô Saudi Arabia và Kuwait phản ánh dòng hàng thực của hai nhà xuất khẩu Trung Đông trong dữ liệu JODI. Kuwait liên quan nguồn dầu cho Nghi Sơn, nhưng số xuất khẩu cả nước không cho biết lượng hợp đồng giao riêng cho nhà máy. Dữ liệu tháng có độ trễ và không bao trùm UAE, Iraq, Iran hay toàn khu vực.',
 };
 const frequency={daily:'hằng ngày giao dịch',weekly:'hằng tuần',monthly:'hằng tháng',quarterly:'hằng quý',annual:'hằng năm',semiannual:'2 lần/năm (tháng 5, 11)',irregular:'theo công bố, chưa có lịch cố định',event:'theo sự kiện'};
 // Add a proper source/cadence line to every chart, including those whose sources

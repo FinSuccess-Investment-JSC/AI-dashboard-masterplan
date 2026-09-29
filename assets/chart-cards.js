@@ -23,6 +23,8 @@
     chBrentYear:'Năm hiện tại là YTD.',
     chBrentWti:'* = tháng chưa đủ kỳ.',
     chHormuzM:'Lượt tàu AIS, không phải thùng dầu.',
+    chBabMandeb:'Lượt tàu AIS gồm nhiều loại tàu, không phải thùng dầu.',
+    chMiddleEastExports:'Chỉ Saudi Arabia và Kuwait; không phải tổng Trung Đông.',
     chSupplyDemand:'Gồm cả đường từ đường thô nhập tái chế.',
     chStocks:'2025/26 là ước tính.',
     chSugarProducers:'EU không cộng thêm các nước thành viên.',
@@ -76,7 +78,7 @@
       // Data tables remain the same nodes, now under the same source disclosure.
       own(block,'details').filter(d=>d.querySelector('table')&&!d.querySelector('.data-gap,.gap-row')&&!d.classList.contains('wi-table-fold')).forEach(d=>body.append(d));
       details.append(body);actions.append(details);footer.append(actions);
-      if(flags[id])footer.prepend(make('p','chart-caveat',flags[id]));
+      if(flags[id])footer.prepend(make('p','chart-caveat',flags[id]+(host?.dataset.qualityUnassessed==='true'?' Mã 3 của JODI: số kỳ mới nhất chưa được đánh giá so sánh.':'')));
       if(meta.error||meta.stale)footer.prepend(make('p','chart-freshness',meta.error?'Lần tải mới lỗi · Giữ dữ liệu tốt gần nhất.':'Nguồn có độ trễ / đang chờ dữ liệu mới.'));
       block.append(footer);block.classList.add('compact-chart-card');
       const badge=own(block,'.update-badge')[0];
