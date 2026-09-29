@@ -48,5 +48,11 @@ empty space. On narrow screens, preserve readable labels and controls before
 trying to fit more columns. Hover, focus, touch and print behavior of source and
 insight controls must remain available.
 
+Charts in a paired row use equal-width cards. Standard time-series charts have
+at least a 250-unit SVG plot height (240 for dense bank blocks); only content-led
+horizontal comparisons may be shorter or taller. Axis labels use a dark ink
+shade, at least 12 SVG units and semibold weight so they remain readable when
+the chart scales into a card. Legend swatches must match the plotted series.
+
 The stock dashboard's financial-model input/forecast rules are not transferred
 to these sector dashboards unless a matching feature is added deliberately.

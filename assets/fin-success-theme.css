@@ -132,8 +132,18 @@ body[data-sector="bank"] .btn.secondary { background: #fff; border-color: var(--
 .chart-tooltip, .chtip { background: var(--fs-navy); color: #fff; }
 .chart-title { font-size: 14px; line-height: 1.4; }
 .chart-sub, .legend, .chart-legend { font-size: 12px; }
-.axislabel, .catlabel { fill: var(--fs-muted); font-size: 10px; }
-.endlabel { fill: var(--fs-ink); font-size: 11px; }
+/* Fixed-width SVG viewBoxes shrink in narrow cards. Give paired charts equal
+   space, then keep their axes readable at the displayed size. */
+.grid.two:has(> .card [id^="ch"]) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.viz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.chartsvg .axislabel, .chartsvg .catlabel {
+  fill: #3f4858; font-size: 12px; font-weight: 600;
+}
+.chartsvg .endlabel { fill: var(--fs-ink); font-size: 12px; font-weight: 700; }
+.chart svg text, .wi-body svg text {
+  fill: #3f4858; font: 600 12px var(--fs-font);
+}
+.chart svg, .wi-body svg { display: block; }
 .thesis-signal { border-left-color: var(--fs-turquoise); }
 .thesis-signal[data-state="attention"] { border-left-color: #b8443a; }
 .thesis-signal[data-state="stale"] { border-left-color: #c29100; }
@@ -146,6 +156,10 @@ body[data-sector="bank"] .wi-table-fold>summary:hover { background: #e9edff; }
 /* Stock dashboard's typography keeps information at its point of use. */
 .chart-sub, .chart-caveat, .chart-freshness, .source-note, .cadence-note,
 .research-caption, .thesis-limitation { line-height: 1.55; }
+@media (max-width:1150px) {
+  .grid.two:has(> .card [id^="ch"]) { grid-template-columns: minmax(0, 1fr); }
+  .viz-grid { grid-template-columns: minmax(0, 1fr); }
+}
 @media (max-width:700px) {
   .card, .research-steps article { padding: 16px; }
   .chart-title { font-size: 13.5px; }
