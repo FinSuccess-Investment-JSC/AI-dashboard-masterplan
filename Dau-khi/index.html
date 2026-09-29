@@ -292,21 +292,21 @@ body{font-size:14px;line-height:1.45}
 
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=46541cba0fd4">
-<script src="../data/daily-data.js?v=ee93e8dd0ed6" defer></script>
+<script src="../data/daily-data.js?v=8f1fa7928308" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
-<script src="../assets/sector-runtime.js?v=9f828116247e" defer></script>
-<script src="../assets/sector-content.js?v=0a7196675305" defer></script>
+<script src="../assets/sector-runtime.js?v=ab7f9b5a3420" defer></script>
+<script src="../assets/sector-content.js?v=4aa753e25d6d" defer></script>
 <script src="../assets/sector-layout.js?v=fae05da50c76" defer></script>
 <script src="../assets/chart-cards.js?v=2fd974ccd3d2" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="../assets/catalyst-board.js?v=8e97073afec4" defer></script>
 <script src="../data/company-comparison.js?v=9acbb3e76365" defer></script>
 <script src="../assets/financial-comparison.js?v=b432cb6f4cfd" defer></script>
-<script src="../assets/research-layout.js?v=30e6ff8ec9dd" defer></script>
+<script src="../assets/research-layout.js?v=4eaa1e25fb74" defer></script>
 <script src="../assets/research-sources.js?v=89f39bc0f69d" defer></script>
 <script src="../assets/research-editorial.js?v=7a9e9e76ccd8" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20260929-r2"></script>
+<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20260929-r3"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=4d0c1fbd13a5">
 <link rel="stylesheet" href="../assets/research-layout.css?v=60e744338cd0">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=182c66c74c0a">
@@ -657,6 +657,7 @@ body{font-size:14px;line-height:1.45}
   <section class="section">
     <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Với ngành dầu khí, thứ tự đọc phải đảo so với thông thường: <b>crack spread trước, giá bán sau</b>. Nhà máy lọc dầu không bán dầu thô — họ bán chênh lệch giữa giá sản phẩm và giá dầu thô. Chênh lệch đó mới là biến quyết định biên lợi nhuận, không phải mức giá dầu.</p></div></div>
 
+    <div class="grid two crack-comparison">
     <div class="card" data-block-id="dau-khi-20" data-transform="derived" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">
       <div class="chart-title">Crack spread — 24 tháng gần nhất</div>
       <div class="chart-sub">USD/thùng, bình quân tháng · giá USGC trừ Brent</div>
@@ -670,8 +671,21 @@ body{font-size:14px;line-height:1.45}
       <div class="srcrow"><a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&amp;s=RBRTE&amp;f=D" target="_blank" rel="noopener">EIA · Brent spot</a><a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&amp;s=EER_EPMRU_PF4_RGC_DPG&amp;f=D" target="_blank" rel="noopener">EIA · xăng Bờ Vịnh</a><a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&amp;s=EER_EPD2DXL0_PF4_RGC_DPG&amp;f=D" target="_blank" rel="noopener">EIA · diesel ULSD Bờ Vịnh</a></div>
       <details class="dtable"><summary>Xem bảng dữ liệu (24 tháng)</summary><div class="tablewrap"><table id="tbl-crack"></table></div></details>
     </div>
+    <div class="card" data-block-id="dau-khi-singapore-crack" data-transform="derived" data-update-kind="public" data-cadence="daily" data-refresh-status="snapshot">
+      <div class="chart-title">Singapore crack spread so Dubai — BSR proxy</div>
+      <div class="chart-sub">USD/thùng, bình quân tháng từ giá cùng ngày · 24 tháng</div>
+      <div id="chSingaporeCrack"></div>
+      <div class="legend">
+        <span class="li"><span class="dot" style="background:var(--s2)"></span>Gasoil 0,001% – Dubai</span>
+        <span class="li"><span class="dot" style="background:var(--s4)"></span>Gasoline RON 92 – Dubai</span>
+      </div>
+      <div class="data-gap">Chỉ báo khu vực cho BSR, không phải biên thực tế: chưa trừ chi phí vận hành, vận chuyển hay tính cơ cấu dầu thô và sản phẩm của nhà máy. Giá KNOC là ước tính thị trường Singapore; tháng hiện tại chưa đủ kỳ.</div>
+      <div class="srcrow"><a href="https://www.opinet.co.kr/glopopdSelect.do" target="_blank" rel="noopener">KNOC Opinet · giá sản phẩm Singapore</a><a href="https://www.opinet.co.kr/gloptotSelect.do" target="_blank" rel="noopener">KNOC Opinet · Dubai spot</a></div>
+      <details class="dtable"><summary>Xem bảng dữ liệu (24 tháng)</summary><div class="tablewrap"><table id="tbl-singapore-crack"></table></div></details>
+    </div>
+    </div>
 
-    <div class="signal-line"><b>Crack spread là phần chênh giữa giá sản phẩm lọc dầu và giá dầu thô.</b> Dashboard tự tính từ giá công khai của EIA: diesel/gasoline quy đổi USD/gallon sang USD/thùng bằng cách nhân 42, rồi trừ Brent. Công thức đúng về mặt đơn vị, nhưng đây là proxy USGC; biên của BSR/Nghi Sơn còn phụ thuộc cấu hình nhà máy, yield sản phẩm, loại dầu thô và chi phí vận hành.</div>
+    <div class="signal-line"><b>Crack spread là phần chênh giữa giá sản phẩm lọc dầu và giá dầu thô.</b> USGC–Brent giúp đối chiếu thị trường Mỹ; Singapore–Dubai gần thị trường lọc dầu châu Á của BSR hơn. Cả hai là chỉ báo giá, còn biên BSR phụ thuộc cơ cấu nguyên liệu, sản phẩm, vận hành và tồn kho.</div>
 
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="dau-khi-21" data-transform="derived" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">

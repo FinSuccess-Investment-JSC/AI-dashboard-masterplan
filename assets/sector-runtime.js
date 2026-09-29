@@ -88,6 +88,17 @@ if(oil){
   currentReading('chCrack',`Crack diesel ${nf(crackRows.at(-1).diesel_crack)} USD/thùng, xăng ${nf(crackRows.at(-1).gasoline_crack)} USD/thùng cùng ngày ${short(crackRows.at(-1).date)}. ${crackRows.at(-1).diesel_crack>crackRows.at(-1).gasoline_crack?'Diesel có phần chênh cao hơn xăng; cần kiểm tra nguồn cung và tồn kho riêng của distillate.':'Chênh diesel không vượt xăng; cần kiểm tra cơ cấu sản phẩm khi đánh giá biên nhà máy.'}`);
   showKpi('spk-crack',crackRows.map(r=>({date:r.date,value:r.diesel_crack})),'USD/thùng','Tính trên các giá cùng ngày');
  }
+ if(available('singapore_cracks')){
+  const daily=rows('singapore_cracks');
+  const gasoil=monthly(daily,'gasoil_crack');
+  const gasoline=new Map(monthly(daily,'gasoline_crack').map(r=>[r.date,r.value]));
+  const rs=gasoil.map(r=>({...r,gasoil_crack:r.value,gasoline_crack:gasoline.get(r.date)}));
+  plot('chSingaporeCrack',rs,[['Gasoil 10ppm – Dubai','gasoil_crack',color[1]],['Gasoline RON 92 – Dubai','gasoline_crack',color[3]]],'USD/thùng');
+  table('tbl-singapore-crack',['Tháng','Gasoil – Dubai','Gasoline – Dubai'],rs,['gasoil_crack','gasoline_crack'],2);
+  const point=daily.at(-1);
+  currentReading('chSingaporeCrack',`Ngày ${short(point.date)}: gasoil – Dubai ${nf(point.gasoil_crack,2)}, gasoline – Dubai ${nf(point.gasoline_crack,2)} USD/thùng. Đây là chênh lệch giá khu vực, chưa phải biên của BSR.`);
+ }
+ note('chSingaporeCrack',['singapore_cracks'],'KNOC Opinet: lấy giá ước tính Singapore RON 92 và gasoil 0,001% cùng ngày với Dubai spot, đều USD/thùng; trừ từng ngày rồi bình quân theo tháng. Không điền giá ngày nghỉ hoặc ngày thiếu, không dùng Brent futures của KNOC thay Dubai spot. Nguồn khảo sát thứ Ba–thứ Bảy cho giá ngày T vào T+1; job kiểm hai lần/ngày.');
  const priceMethod='Tải lịch sử XLS từ EIA; bỏ ngày thiếu số, không điền 0. Bình quân tháng từ các phiên có dữ liệu; dấu * là tháng hiện tại chưa đủ kỳ. Spread/crack chỉ dùng ngày có đủ các đầu vào; xăng và ULSD đổi USD/gallon × 42 rồi trừ Brent.';
  [['chBrent24',['brent']],['chBrentYear',['brent']],['chBrentWti',['brent','wti']],['chCrack',['brent','gasoline','diesel']],['chMoit',['brent','gasoline','diesel']]].forEach(([id,ks])=>note(id,ks,priceMethod));
  const stocks=[['chCrudeStock','tbl-crudestock','crude_stock','Tồn kho dầu thô','last'],['chCushing','tbl-cushing','cushing','Tồn kho Cushing','last'],['chUsProd','tbl-usprod','us_production','Sản lượng dầu Mỹ','mean']];

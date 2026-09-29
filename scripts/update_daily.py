@@ -11,6 +11,8 @@ from zoneinfo import ZoneInfo
 import xlrd
 import io, csv, zipfile, re, calendar
 import openpyxl
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from opinet_cracks import load as load_singapore_cracks
 ROOT=Path(__file__).resolve().parents[1]
 UTC=dt.timezone.utc
 EIA={
@@ -239,7 +241,8 @@ def main():
     try:
         cache=out/'daily.json';bundle=json.loads(cache.read_text()) if cache.exists() else {'schema_version':1,'sources':{}}
         tasks={k:(lambda k=k,s=s:load_eia(k,s)) for k,s in EIA.items()}
-        tasks.update(hormuz=load_portwatch,wti_curve=load_curve,brent_futures=lambda:load_daily_futures("BZ=F","USD/barrel"),sugar_futures=lambda:load_daily_futures("SB=F","US cents/lb"),sugar_monthly=load_wb_sugar,sugar_producers=load_sugar_producers)
+        tasks.update(hormuz=load_portwatch,wti_curve=load_curve,brent_futures=lambda:load_daily_futures("BZ=F","USD/barrel"),sugar_futures=lambda:load_daily_futures("SB=F","US cents/lb"),sugar_monthly=load_wb_sugar,sugar_producers=load_sugar_producers,
+                     singapore_cracks=lambda:load_singapore_cracks(bundle['sources'].get('singapore_cracks',{}).get('records')))
         selected=args.sources or list(tasks)
         if any(k not in tasks for k in selected):raise ValueError('Unknown source')
         errors=0;run_at=dt.datetime.now(UTC).isoformat()

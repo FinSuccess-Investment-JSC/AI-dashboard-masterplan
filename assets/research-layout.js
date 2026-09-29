@@ -28,6 +28,11 @@ if(bank){
 }else{
  const domestic=new Set(oil?['dau-khi-22','dau-khi-26']:['sugar-06','sugar-12','sugar-13']);
  $$('[data-tab="mt3"] .card').filter(n=>!n.parentElement.closest('.card')).forEach(n=>(domestic.has(n.dataset.blockId)?pricesVN:pricesWorld).append(n));
+ if(oil){
+  // Keep the two comparable refinery indicators together after geographic routing.
+  const usgc=block('dau-khi-20'),singapore=block('dau-khi-singapore-crack');
+  if(usgc&&singapore)pricesWorld.prepend(usgc,singapore);
+ }
  $$('[data-tab="mt3"] .section').forEach(s=>[...s.children].filter(n=>!n.matches('.sectionhead,.grid')).forEach(n=>pricesVN.append(n)));
  const cycle=block(oil?'dau-khi-02':'sugar-02');if(cycle){vn.append(cycle);cycle.prepend(make('p','research-caption',oil?'Phân tích AI ngày 03/09/2026 · chưa cập nhật theo số mới':'Phân tích AI ngày 17/08/2026 · chưa cập nhật theo số mới'));}
  const kpis=overview.querySelector('.kpis');if(kpis)market.prepend(kpis);
