@@ -15,7 +15,7 @@
   const dmy = s => s ? (s.length === 7 ? 'T' + Number(s.slice(5, 7)) + '/' + s.slice(0, 4) : /^\d{4}Q\d$/.test(s) ? 'Q' + s[5] + '/' + s.slice(0, 4) : new Date(s.slice(0, 10)).toLocaleDateString('vi-VN')) : '—';
   const checked = dmy(W.checked_at?.slice(0, 10));
   const WI = 'https://wifeed.vn/';
-  const C = ['#167b79', '#426cba', '#ad724d', '#7862a4', '#c2565b', '#5f8f3e', '#8a8f99'];
+  const C = ['#2938A8', '#59C5C8', '#861C52', '#c29100', '#1D2678', '#6171C5', '#8997D6'];
   const AI_DATE = '11/09/2026';
 
   // ---------- tooltip (shared with bank-dashboard's style) ----------

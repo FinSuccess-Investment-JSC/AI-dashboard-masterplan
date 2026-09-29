@@ -1,0 +1,153 @@
+/* FinSuccess visual rules from Stock dashboard/CLAUDE.md and _template/brand.css.
+   Shared by the hub and every sector page. Source/status meaning is preserved. */
+:root {
+  color-scheme: light;
+  --fs-navy: #1D2678;
+  --fs-blue: #2938A8;
+  --fs-turquoise: #59C5C8;
+  --fs-purple: #861C52;
+  --fs-gold: #FFD45D;
+  --fs-ink: #303540;
+  --fs-muted: #596272;
+  --fs-line: #dce1e9;
+  --fs-soft-blue: #f0f4ff;
+  --fs-soft-teal: #e7f5f5;
+  --fs-soft-purple: #f7ecf2;
+  --fs-soft-gold: #fff5d4;
+  --fs-font: Arial, "Helvetica Neue", system-ui, sans-serif;
+
+  --navy: var(--fs-navy);
+  --navy2: var(--fs-blue);
+  --navy3: #4354B7;
+  --brand: var(--fs-navy);
+  --brand2: var(--fs-blue);
+  --brand-deep: var(--fs-navy);
+  --accent: #256f72;
+  --accent-bright: var(--fs-turquoise);
+  --accent2: var(--fs-turquoise);
+  --accent-soft: var(--fs-soft-teal);
+  --page: #fbfcff;
+  --bg: #fff;
+  --card: #fff;
+  --ink: var(--fs-ink);
+  --ink2: #465064;
+  --muted: var(--fs-muted);
+  --line: var(--fs-line);
+  --hair: #e9ecf3;
+  --tint: #d9def4;
+  --tint-soft: #f7f8fc;
+  --soft: #f7f8fc;
+  --grid: #e8ebf3;
+  --axis: #b9c1d0;
+  --s1: var(--fs-blue);
+  --s2: var(--fs-turquoise);
+  --s3: var(--fs-purple);
+  --s4: #c29100;
+  --s5: var(--fs-navy);
+  --s6: #6171c5;
+  --s7: #8997d6;
+  --s8: #b3bde8;
+  --gold: #8a6400;
+  --gold-soft: var(--fs-soft-gold);
+  --warn-bg: #fff8e6;
+  --shadow: 0 1px 3px rgba(29,38,120,.045);
+}
+
+body,
+body[data-sector="bank"],
+body[data-research-sector] { background: var(--page); color: var(--ink); font-family: var(--fs-font); }
+button, input, select, textarea, table, td, th,
+.chart-source-details>summary, .chart svg text, .wi-body svg text { font-family: var(--fs-font); }
+table, .kpi .value, .value, .thesis-metric, .comparison-table { font-variant-numeric: tabular-nums; }
+h1, h2, h3, h4, .hero h1, .intro h1, .research-header h1,
+.comparison-heading h2, .business-models h2, .company-dashboard-links h2 {
+  font-family: var(--fs-font); color: var(--fs-navy); letter-spacing: -.02em;
+}
+.hero h1 em, h1 em, h2 em, .accent { color: var(--fs-blue); font-style: normal; font-weight: 700; }
+.hero h1, .research-header h1 { font-weight: 750; }
+body[data-sector="bank"] h1 span { font-family: var(--fs-font); font-style: normal; color: var(--fs-blue); font-weight: 700; }
+.subhead { font-family: var(--fs-font); color: var(--fs-navy); font-weight: 700; }
+.hero p, .lede, .research-header p, .chart-sub, .research-caption { color: var(--fs-muted); }
+
+/* White, quiet surfaces; spare color is reserved for data and selection. */
+.hero, body[data-sector="bank"] .hero, .research-context>.hero,
+.card, .kpi, .research-fold, .research-steps article, .financial-comparison {
+  background: #fff; border-color: var(--fs-line); box-shadow: var(--shadow);
+}
+.card, .kpi, .research-fold, .research-steps article { border-radius: 16px; }
+.hero, body[data-sector="bank"] .hero, .research-context>.hero { border: 1px solid var(--fs-line); border-radius: 16px; }
+.hero a, .hero a:hover { color: var(--fs-blue); border-bottom-color: var(--fs-turquoise); }
+body[data-sector="bank"] .hero-aside { background: var(--fs-soft-blue); border-left-color: var(--fs-line); }
+.fiscbar, .topbar, .site-navigation-shell { background: var(--fs-navy); }
+.fiscbar, .topbar { color: #fff; }
+.fiscbar .fiscbar-nav a:hover, .topbar a:hover { color: var(--fs-gold); }
+.site-navigation a[aria-current="page"], .topbar .site-navigation a[aria-current="page"] {
+  background: var(--fs-soft-teal); border-color: #b9e2e3; color: var(--fs-navy);
+}
+.site-navigation a:focus-visible, button:focus-visible, a:focus-visible,
+summary:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--fs-turquoise); outline-offset: 2px;
+}
+.site-release-inline { color: var(--fs-muted); }
+
+.majortabbtn.active, .majortabbtn[aria-selected="true"], .tabbtn.active,
+.tabbtn[aria-selected="true"], .thesis-scenario-tabs [aria-selected="true"],
+.research-toolbar button[aria-pressed="true"], .btn.primary, body[data-sector="bank"] .btn {
+  background: var(--fs-navy); border-color: var(--fs-navy); color: #fff;
+}
+body[data-sector="bank"] .btn.secondary { background: #fff; border-color: var(--fs-line); color: var(--fs-navy); }
+.majortabbtn.active, .majortabbtn[aria-selected="true"] { border-bottom-color: var(--fs-turquoise); }
+.comparison-heading { background: var(--fs-navy); }
+.comparison-heading h2 { color: #fff; }
+.comparison-eyebrow, .comparison-unit { color: #e2e7ff; }
+.comparison-views button[aria-pressed="true"], .supply-tabs [aria-selected="true"],
+.wi-range button[aria-pressed="true"] { background: var(--fs-soft-teal); border-color: #b9e2e3; color: var(--fs-navy); }
+.comparison-table th, .compare-table th, th { background: var(--fs-soft-blue); color: var(--fs-navy); }
+.comparison-band.profit { background: var(--fs-soft-teal); }
+.comparison-band.balance { background: var(--fs-soft-blue); }
+.comparison-band.valuation { background: var(--fs-soft-gold); }
+.comparison-table td b, .comparison-table .metric, .key-number, .thesis-metric,
+.kpi .value, .inventory-overview strong { color: var(--fs-navy); }
+.key-phrase { background: var(--fs-soft-teal); color: #256f72; }
+.business-model { border-top-color: var(--fs-turquoise); }
+.business-ticker, .eyebrow { color: var(--fs-blue); }
+.research-path, .policy-impact { background: var(--fs-soft-blue); color: var(--fs-navy) !important; }
+
+/* Metadata classes retain distinct hues and visible limitations. */
+[data-update-kind="public"] { --block-bg: var(--fs-soft-teal); --block-accent: #256f72; }
+[data-update-kind="periodic"] { --block-bg: var(--fs-soft-blue); --block-accent: var(--fs-blue); }
+[data-update-kind="periodic"][data-cadence="quarterly"] { --block-bg: #efefff; --block-accent: var(--fs-navy); }
+[data-update-kind="periodic"][data-cadence="annual"] { --block-bg: var(--fs-soft-gold); --block-accent: #795900; }
+[data-update-kind="periodic"][data-cadence="semiannual"] { --block-bg: #e9edff; --block-accent: #4354b7; }
+[data-update-kind="document"] { --block-bg: var(--fs-soft-purple); --block-accent: var(--fs-purple); }
+[data-update-kind="ai"] { --block-bg: #eef8f8; --block-accent: #256f72; }
+[data-update-kind="static"] { --block-bg: #f3f4f6; --block-accent: #626c7a; }
+[data-update-kind="analyst"] { --block-bg: #fff5e8; --block-accent: #946332; }
+[data-update-kind="event"] { --block-bg: #fceff4; --block-accent: var(--fs-purple); }
+.chart-info-button { background: #eef1fb; border-color: #d9def4; color: var(--fs-navy); font-family: var(--fs-font); }
+.chart-info-button:hover { background: #e5eaff; }
+.chart-info-panel { border-color: #d9def4; color: var(--fs-ink); }
+.chart-info-panel .info-heading, .chart-info-panel a { color: var(--fs-navy); }
+.chart-source-details>summary, .source-popover a { color: var(--fs-blue); }
+.chart-tooltip, .chtip { background: var(--fs-navy); color: #fff; }
+.chart-title { font-size: 14px; line-height: 1.4; }
+.chart-sub, .legend, .chart-legend { font-size: 12px; }
+.axislabel, .catlabel { fill: var(--fs-muted); font-size: 10px; }
+.endlabel { fill: var(--fs-ink); font-size: 11px; }
+.thesis-signal { border-left-color: var(--fs-turquoise); }
+.thesis-signal[data-state="attention"] { border-left-color: #b8443a; }
+.thesis-signal[data-state="stale"] { border-left-color: #c29100; }
+.thesis-signal[data-state="unknown"] { border-left-color: #98a1ab; }
+.thesis-horizon, .thesis-state { background: var(--fs-soft-blue); color: var(--fs-navy); }
+.wi-kpis>div { background: #f8faff; border-color: var(--fs-line); }
+body[data-sector="bank"] .wi-table-fold>summary { background: var(--fs-soft-blue); color: var(--fs-navy); }
+body[data-sector="bank"] .wi-table-fold>summary:hover { background: #e9edff; }
+
+/* Stock dashboard's typography keeps information at its point of use. */
+.chart-sub, .chart-caveat, .chart-freshness, .source-note, .cadence-note,
+.research-caption, .thesis-limitation { line-height: 1.55; }
+@media (max-width:700px) {
+  .card, .research-steps article { padding: 16px; }
+  .chart-title { font-size: 13.5px; }
+  .hero h1, .research-header h1 { font-size: clamp(27px, 7vw, 34px); }
+}

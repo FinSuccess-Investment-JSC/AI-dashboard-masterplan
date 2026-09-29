@@ -10,7 +10,7 @@ const available=k=>Array.isArray(src[k]?.records)&&src[k].records.length>0;
 const rows=k=>available(k)?src[k].records:[];
 const last=k=>rows(k).at(-1);
 const stale=k=>!available(k)||src[k].status!=='ok'||(Date.now()-Date.parse(src[k].latest_observation)>14*86400000);
-const color=['#1f4e9c','#d1583f','#27af95','#d99000'];
+const color=['#2938A8','#59C5C8','#861C52','#c29100'];
 function note(hostId,keys,method){
  const host=document.getElementById(hostId);if(!host)return;
  const block=host.closest('.card,.viz-block');

@@ -139,6 +139,11 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - GitHub Actions kiểm dầu/đường/Eximbank lúc 07:30 và 15:30 giờ Việt Nam; lượt 15:30 kiểm thêm bảng so sánh doanh nghiệp. Phân biệt giờ kiểm với kỳ quan sát và lịch công bố như §2. Chỉ chuẩn bị release/Pages build khi hash số liệu hoặc trạng thái nguồn đổi; nguồn lỗi giữ last-good, không đổi kỳ quan sát thành giờ kiểm.
 - `scripts/refresh_release.py` là bộ điều phối; các adapter cũ tiếp tục kiểm schema/đơn vị/kỳ. Workflow commit data và manifest sau khi unit test qua, rồi yêu cầu Pages build cho cấu hình branch legacy. Cron cục bộ 06:15 còn là bản dự phòng, không xuất bản.
 - Wi vẫn cần MCP phiên agent vì chưa có credential API cho job. Các snapshot nội địa, chính sách, PDF/broker chưa có nguồn máy đọc được vẫn cập nhật theo công bố và giữ cờ hạn chế; không ghi là realtime.
+
+## 14. Design system FinSuccess (29/09/2026)
+
+- Quy tắc màu, chữ và bố cục lấy từ project Stock dashboard được lưu cục bộ trong `DESIGN_RULES.md`; theme dùng chung ở `assets/fin-success-theme.css`. Năm màu: navy `#1D2678`, blue `#2938A8`, turquoise `#59C5C8`, tím `#861C52`, vàng `#FFD45D`; nền trắng, chữ mực đậm và Arial/system sans.
+- Áp dụng cho trang tổng và Dầu khí/Đường/Bank qua asset dùng chung. Màu theo ý nghĩa nguồn và cảnh báo vẫn tuân §1–3; `.data-gap`, `.gap-row`, cờ actual/estimate/forecast, dữ liệu và phân tích có ngày giữ nguyên. Không chuyển rule nhập forecast cổ phiếu sang dashboard ngành khi chưa có feature tương ứng.
 - OPEC/non-OPEC chuyển từ bảng dài thành chart/sơ đồ trước tồn kho Mỹ; giữ nguyên snapshot T8/2026, các số khác kỳ/phạm vi không cộng. Non-OPEC chưa có đóng góp định lượng đồng kỳ nên chỉ sơ đồ định tính, không tạo số.
 - QA bổ sung: unit tests cho parser nhiều bảng, ngày giá, quy đổi đơn vị, ROE quý/missing đầu kỳ, ngân hàng; UI kiểm 6 tab, sort/filter/kỳ, nguồn, thanh địa lý sticky desktop/390px. Lần sửa này không cập nhật lại các nguồn thị trường hiện có.
 
