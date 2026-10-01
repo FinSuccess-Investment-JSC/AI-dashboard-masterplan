@@ -1,5 +1,5 @@
 {
-  "version": "20261001T062636Z",
+  "version": "20261001T154135Z",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -7,10 +7,10 @@
     "bank": "Bank/"
   },
   "files": {
-    "404.html": "8744860528eb3e828d9bba0b8c267bfbc82083ae5f1ba3dea78f1b1a75e64aab",
-    "Bank/index.html": "d2fc64b53e8d9e18fe7615bf4c5bcf27d13a88357e83006697d6f6cab9266b8f",
-    "Dau-khi/index.html": "f02e0bdccbadbc99acc0f5b6570593ee0bf58672341689414c20095a8c9787a4",
-    "Sugar/index.html": "98a394bf8575fb02f47e20ecc4808991a9b88efa2903eeee14a1bb4ab248365a",
+    "404.html": "020300a84c75036c34e597c084897bbc7e5729dd46c1e62a92965c89ed2e09de",
+    "Bank/index.html": "605de9ae40c40264b451e54f0d503433f5eba6d8aaf63bb05e7bcbe5f23ba41d",
+    "Dau-khi/index.html": "8e92c9059ff2cd9981d1802b45e82c7a0ea58b34299183f355b404e8cd1bb3f5",
+    "Sugar/index.html": "6c738be5608a956e505439d06dc7039a89dcaab1ed57e4523217d007379ac0fa",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
     "assets/bank-dashboard.js": "f8dd0c1cb1c18e49ff68ab5a74ed3eb1ffa63a32e2432b2ecc7ab3a2ccedcc5e",
@@ -34,10 +34,10 @@
     "assets/site-navigation.js": "9b367760d97e7bd3698e081473d8f8de16c3612241c75fed36b6a510d07ad54e",
     "data/bank-public-data.js": "7607de1248b3a0f27e073da2e58e329d65d57a7d5e3bce9de7c3a4a6c221aeb1",
     "data/bank-wi-data.js": "6679467647c30fc299131dfd06f2d29d2c92af3b78258a05446368735acb4b5e",
-    "data/company-comparison.js": "0876a6c47fdaedca9796d6ba3f91259ac4c3f910426bb59e1c92cccb8e1a6c07",
-    "data/daily-data.js": "615b66d5b9a5b631ddeb73092d7c9170002c5d4176b63c3b6b3bfd61a740663e",
-    "duong/index.html": "5ad424cbaa0e87330d3da6a5c0e1392f4538d7b912abbce7ff7ec7f4189d5cc1",
-    "index.html": "cbf9248b1218cec7d8a4a3a60fb0a72364d4d44a0c3d03799bd88d2c568ef611"
+    "data/company-comparison.js": "a1e7670a7dbbc04c6d1d5df20ddad2def89ed222ef90dd5100681e6eeb80cb53",
+    "data/daily-data.js": "eee50b64a876335a9b3f9700b23f192248fdffec20c5610379431065eb04b463",
+    "duong/index.html": "e9695cab1583ae756e12b389be448837188574b34f30826278174ecfd760d00e",
+    "index.html": "8786be216026766feadf625307eb9e0fbce1ea5669da082f51a5b721e3583c3b"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }
