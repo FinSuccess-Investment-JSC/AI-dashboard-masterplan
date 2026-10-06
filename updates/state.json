@@ -32,9 +32,9 @@
    "attempts": 1
   },
   "oil.vn-production": {
-   "lastAttempt": "2026-10-06T14:22:41+07:00",
-   "lastError": "Không truy cập được nguồn (proxy 403 với nso.gov.vn, pvgas.com.vn, petrotimes.vn); giữ số cũ",
-   "attempts": 1
+   "lastAttempt": "2026-10-06T16:22:10+07:00",
+   "lastSuccess": "2026-10-06T16:22:10+07:00",
+   "lastNote": "NSO 9T/2026 (ước tính, công bố 10/2026): dầu thô 6,66 triệu tấn (+10,5%), khí 4,86 tỷ m³ (+10,8%); thay mốc 6T Petrovietnam bằng 9T NSO"
   },
   "oil.pvgas-annual": {
    "lastAttempt": "2026-10-06T14:22:41+07:00",
@@ -42,19 +42,43 @@
    "attempts": 1
   },
   "oil.supply-news": {
-   "lastAttempt": "2026-10-06T14:22:41+07:00",
-   "lastError": "Không truy cập được nguồn (proxy 403 với nso.gov.vn, pvgas.com.vn, petrotimes.vn); giữ số cũ",
-   "attempts": 1
+   "lastAttempt": "2026-10-06T16:22:10+07:00",
+   "lastSuccess": "2026-10-06T16:22:10+07:00",
+   "lastNote": "Rà petrotimes 06/10/2026: không có mốc mới về Dung Quất, Nghi Sơn, dự án khí; không sửa trang"
   },
-  "oil.price-policy": {},
+  "oil.price-policy": {
+   "lastAttempt": "2026-10-06T16:22:10+07:00",
+   "lastSuccess": "2026-10-06T16:22:10+07:00",
+   "lastNote": "Rà moit.gov.vn 06/10/2026: chỉ có thông báo điều hành giá định kỳ, không có nghị định/thông tư/hướng dẫn Luật Dầu khí mới; không sửa trang"
+  },
   "oil.bsr-annual": {},
   "oil.company-quarterly": {},
-  "sugar.domestic": {},
-  "sugar.vn-balance": {},
-  "sugar.crop": {},
+  "sugar.domestic": {
+   "lastAttempt": "2026-10-06T16:22:10+07:00",
+   "lastError": "Nguồn qua news.google.com: không mở được bài gốc (link chuyển hướng), không xác minh được mốc giá VSSA mới; giữ số cũ",
+   "attempts": 1
+  },
+  "sugar.vn-balance": {
+   "lastAttempt": "2026-10-06T16:22:10+07:00",
+   "lastSuccess": "2026-10-06T16:22:10+07:00",
+   "lastNote": "USDA PSD csv 06/10/2026: số niên vụ 2010/11–2025/26 không đổi; có thêm dự báo 2026/27 (sản lượng 1.350, nhập 825, tồn cuối 425 nghìn tấn) chưa thêm vào trang"
+  },
+  "sugar.crop": {
+   "lastAttempt": "2026-10-06T16:22:10+07:00",
+   "lastError": "Nguồn qua news.google.com: không mở được bài gốc, không xác minh được số tổng kết vụ; giữ số cũ",
+   "attempts": 1
+  },
   "sugar.company": {},
-  "sugar.trade": {},
-  "bank.policy": {},
+  "sugar.trade": {
+   "lastAttempt": "2026-10-06T16:22:10+07:00",
+   "lastSuccess": "2026-10-06T16:22:10+07:00",
+   "lastNote": "Rà trang chủ moit.gov.vn 06/10/2026: không thấy văn bản mới về hạn ngạch/HFCS/đường; không sửa trang"
+  },
+  "bank.policy": {
+   "lastAttempt": "2026-10-06T16:22:10+07:00",
+   "lastError": "sbv.gov.vn trả 403 (proxy); giữ nguyên",
+   "attempts": 1
+  },
   "oil.ai.cycle": {},
   "oil.ai.balance": {},
   "oil.ai.regime": {},
@@ -1260,39 +1284,9 @@
    "signals": []
   },
   {
-   "id": "oil.vn-production",
-   "tier": "C",
-   "title": "Sản lượng khai thác dầu thô, khí Việt Nam",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
    "id": "oil.pvgas-annual",
    "tier": "C",
    "title": "PV GAS: khí vào bờ, LNG, vị trí trong nền kinh tế",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "oil.supply-news",
-   "tier": "C",
-   "title": "Cân đối xăng dầu, chuỗi dự án khí",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "oil.price-policy",
-   "tier": "C",
-   "title": "Cơ chế điều hành giá xăng dầu, Luật Dầu khí",
    "since": "2026-10-06T14:14:07+07:00",
    "reasons": [
     "lần đầu: rà soát số đang hiển thị"
@@ -1330,16 +1324,6 @@
    "signals": []
   },
   {
-   "id": "sugar.vn-balance",
-   "tier": "C",
-   "title": "Cân đối cung – cầu, tồn kho, nhập khẩu đường Việt Nam (USDA PSD)",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
    "id": "sugar.crop",
    "tier": "C",
    "title": "Mía ép, diện tích, giá mía nguyên liệu",
@@ -1353,16 +1337,6 @@
    "id": "sugar.company",
    "tier": "C",
    "title": "SBT biên gộp, so sánh biên và sức khỏe tài chính nhóm đường",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "sugar.trade",
-   "tier": "C",
-   "title": "Nhập lậu ước tính, HFCS, hạn ngạch thuế quan, mốc chính sách",
    "since": "2026-10-06T14:14:07+07:00",
    "reasons": [
     "lần đầu: rà soát số đang hiển thị"
@@ -1440,5 +1414,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-10-06T14:42:11+07:00"
+ "updatedAt": "2026-10-06T16:22:10+07:00"
 }

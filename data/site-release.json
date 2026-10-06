@@ -1,5 +1,5 @@
 {
-  "version": "20261006T090132Z",
+  "version": "20261006T092110Z",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -7,10 +7,10 @@
     "bank": "Bank/"
   },
   "files": {
-    "404.html": "5c6834b7b4dd06e4bac7c8660641b70d79dc0a47e45338a2bd0d833e080bad7a",
-    "Bank/index.html": "900472badffc4b6f878db9ce83a3c4427ce5a1f10cfb67f92c57c4fa5a522ccf",
-    "Dau-khi/index.html": "3c1f21644ca0fdca8d3478e030a938ebdb534783c30c5cd87d38ea06100174fd",
-    "Sugar/index.html": "b9844d605e9ae023ec36fb876f9b8ea4babdd88db9778aa60d28d3ca2aedc4b0",
+    "404.html": "7680e15045a84a0eb9b1262aa32c621fc971875ec05b3a344f66dbebcaf7f282",
+    "Bank/index.html": "4fdc8ad0b017aa86bea42740fbb9c921444304110d0ad48b5aace06009693b66",
+    "Dau-khi/index.html": "641854f1654e2a8375ef9dc64466c9797080362bb118668b13b34895ac8fe517",
+    "Sugar/index.html": "7b21c0b275855b3d8f91c9401cd9116038eba84aba3c8021fd0787d4f0634388",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
     "assets/bank-dashboard.js": "aa0d235f9d52f5168dbcb831948da37b32138c8565e227ff73b49c4726f99b36",
@@ -39,8 +39,8 @@
     "data/company-comparison.js": "29cc19f5f3c98f793c0a5ef112fefab2bed3cd09fc3a444d81cec96c733be645",
     "data/company-valuation.js": "79ad37e8c0881a61454428d78e92c072d7bb5529f7f045d860652764d384278e",
     "data/daily-data.js": "55dc9fe060d3495341412b531f2d4855008f3e9d7d351cd465586d400ea0eb88",
-    "duong/index.html": "f4d2989d7bbcbc72e58382187aabcc882a4fc37af5a927672f3f5496b32b2b5b",
-    "index.html": "acb4d92aea1818d6c24edc14598b2fc3d044d0f45e0ff05fbee6d9cbaa3de333"
+    "duong/index.html": "aff000a445fa94cbbc2ead0f442e51eb6cf2ad6b4a1e01033215e18da8a9e120",
+    "index.html": "a9ec1b9c8c1e9a8e1fef1aa7f803731328f7792ee33c51a436405f76052bd633"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }

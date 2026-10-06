@@ -1,5 +1,7 @@
-Routine 06/10/2026: 0 mục cập nhật, 6 mục lỗi (giữ nguyên số cũ).
-Lỗi bank.wi.daily/monthly/quarterly: WiMCP gọi được nhưng không ghi được ~25 file raw tự động, không chuyển tay số để tránh sai.
-Lỗi oil.vn-production, oil.pvgas-annual, oil.supply-news: môi trường chặn nguồn (403 nso.gov.vn, pvgas.com.vn, petrotimes.vn).
-Còn trong hàng chờ: các mục C/D còn lại (dầu khí, đường, bank.policy, 5 mục D).
+Routine tuần 06/10/2026: xử lý 8 mục tài liệu.
+Dầu khí: sản lượng NSO 9T/2026 dầu thô 6,66 triệu tấn (+10,5%), khí 4,86 tỷ m³ (+10,8%).
+Dầu khí: giá/Luật Dầu khí, Dung Quất/Nghi Sơn: không có văn bản/mốc mới.
+Đường: USDA PSD không đổi số niên vụ đã hiển thị (có dự báo 2026/27 chưa thêm); nhập lậu/HFCS/TRQ không có văn bản mới.
+Lỗi: sugar.domestic, sugar.crop (nguồn Google News không mở được bài gốc); bank.policy (sbv.gov.vn 403).
+Còn 5 mục insight (D) trong hàng chờ.
 Chưa kiểm giao diện bằng trình duyệt.
