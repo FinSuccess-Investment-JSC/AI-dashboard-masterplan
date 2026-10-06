@@ -16,12 +16,36 @@
   "sugar.usda-producers": {},
   "bank.eximbank": {},
   "comparison.financials": {},
-  "bank.wi.daily": {},
-  "bank.wi.monthly": {},
-  "bank.wi.quarterly": {},
-  "oil.vn-production": {},
-  "oil.pvgas-annual": {},
-  "oil.supply-news": {},
+  "bank.wi.daily": {
+   "lastAttempt": "2026-10-06T14:22:41+07:00",
+   "lastError": "Không ghi được raw Wi tự động: WiMCP gọi được nhưng response chỉ trả về hội thoại, chuyển tay ~25 file raw dễ sai số; giữ số cũ, cần chạy có script/ người dùng",
+   "attempts": 1
+  },
+  "bank.wi.monthly": {
+   "lastAttempt": "2026-10-06T14:22:41+07:00",
+   "lastError": "Như bank.wi.daily: giữ số cũ",
+   "attempts": 1
+  },
+  "bank.wi.quarterly": {
+   "lastAttempt": "2026-10-06T14:22:41+07:00",
+   "lastError": "Như bank.wi.daily: giữ số cũ",
+   "attempts": 1
+  },
+  "oil.vn-production": {
+   "lastAttempt": "2026-10-06T14:22:41+07:00",
+   "lastError": "Không truy cập được nguồn (proxy 403 với nso.gov.vn, pvgas.com.vn, petrotimes.vn); giữ số cũ",
+   "attempts": 1
+  },
+  "oil.pvgas-annual": {
+   "lastAttempt": "2026-10-06T14:22:41+07:00",
+   "lastError": "Không truy cập được nguồn (proxy 403 với nso.gov.vn, pvgas.com.vn, petrotimes.vn); giữ số cũ",
+   "attempts": 1
+  },
+  "oil.supply-news": {
+   "lastAttempt": "2026-10-06T14:22:41+07:00",
+   "lastError": "Không truy cập được nguồn (proxy 403 với nso.gov.vn, pvgas.com.vn, petrotimes.vn); giữ số cũ",
+   "attempts": 1
+  },
   "oil.price-policy": {},
   "oil.bsr-annual": {},
   "oil.company-quarterly": {},
@@ -1436,5 +1460,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-10-06T14:14:07+07:00"
+ "updatedAt": "2026-10-06T14:22:41+07:00"
 }

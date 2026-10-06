@@ -1,0 +1,5 @@
+Routine 06/10/2026: 0 mục cập nhật, 6 mục lỗi (giữ nguyên số cũ).
+Lỗi bank.wi.daily/monthly/quarterly: WiMCP gọi được nhưng không ghi được ~25 file raw tự động, không chuyển tay số để tránh sai.
+Lỗi oil.vn-production, oil.pvgas-annual, oil.supply-news: môi trường chặn nguồn (403 nso.gov.vn, pvgas.com.vn, petrotimes.vn).
+Còn trong hàng chờ: các mục C/D còn lại (dầu khí, đường, bank.policy, 5 mục D).
+Chưa kiểm giao diện bằng trình duyệt.
