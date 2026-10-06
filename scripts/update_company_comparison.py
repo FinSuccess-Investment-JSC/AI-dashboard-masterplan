@@ -12,6 +12,10 @@ ROOT=Path(__file__).resolve().parents[1]
 UNIVERSE={
  'oil': [('GAS','hose','Khí'),('BSR','hose','Lọc dầu'),('PLX','hose','Phân phối'),('PVD','hose','Dịch vụ'),('PVS','hnx','Dịch vụ'),('PVT','hose','Vận tải')],
  'sugar':[('SBT','hose','Mía & thương mại'),('QNS','upcom','Đa ngành'),('SLS','hnx','Mía đường'),('LSS','hose','Mía đường'),('KTS','hnx','Mía đường')],
+ 'power':[('POW','hose','Nhiệt điện'),('NT2','hose','Nhiệt điện'),('PPC','hose','Nhiệt điện'),('QTP','upcom','Nhiệt điện'),('HND','upcom','Nhiệt điện'),('BTP','hose','Nhiệt điện'),
+          ('REE','hose','Thủy điện & đa ngành'),('VSH','hose','Thủy điện & đa ngành'),('CHP','hose','Thủy điện & đa ngành'),('SBA','hose','Thủy điện & đa ngành'),('TMP','hose','Thủy điện & đa ngành'),('SHP','hose','Thủy điện & đa ngành'),
+          ('GEG','hose','Năng lượng tái tạo'),('HDG','hose','Năng lượng tái tạo'),('TTA','hose','Năng lượng tái tạo'),
+          ('PC1','hose','Lưới, xây lắp & thiết bị'),('TV2','hose','Lưới, xây lắp & thiết bị'),('GEX','hose','Lưới, xây lắp & thiết bị')],
  'bank':[(s,'hose',g) for s,g in [('VCB','Quốc doanh'),('CTG','Quốc doanh'),('BID','Quốc doanh'),('TCB','Tư nhân'),('VPB','Tư nhân'),('MBB','Tư nhân'),('ACB','Tư nhân'),('HDB','Tư nhân'),('TPB','Tư nhân'),('VIB','Tư nhân'),('SHB','Tư nhân')]]}
 PAGES={'income_year':'financials/income-statement/','balance_year':'financials/balance-sheet/','income_quarter':'financials/income-statement/?p=quarterly','balance_quarter':'financials/balance-sheet/?p=quarterly','valuation':'financials/ratios/?p=quarterly'}
 

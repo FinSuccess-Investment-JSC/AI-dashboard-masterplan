@@ -5,7 +5,7 @@ No API credentials or network access from the dashboard browser are required.
 """
 from __future__ import annotations
 import fcntl
-import argparse, calendar, concurrent.futures, datetime as dt, hashlib, json, math, os, sys, tempfile, time, subprocess, urllib.parse, urllib.request
+import argparse, calendar, concurrent.futures, datetime as dt, hashlib, json, math, os, sys, tempfile, threading, time, subprocess, urllib.parse, urllib.request
 from pathlib import Path
 from zoneinfo import ZoneInfo
 import xlrd
@@ -18,6 +18,8 @@ from polling_policy import due as source_due
 from steo_capacity import load as load_steo_capacity, load_world_balance
 from cftc_positions import load as load_wti_cot
 from jodi_exports import load as load_middle_east_exports
+from power_feeds import (discover_wb_monthly_url, load_enso_oni, load_ice_front, load_lng_jkm, load_nino34_weekly,
+                         load_vn_power_daily, load_wb_energy)
 ROOT=Path(__file__).resolve().parents[1]
 UTC=dt.timezone.utc
 EIA={
@@ -30,6 +32,7 @@ EIA={
  'distillate_stock':('WDISTUS1','Thousand Barrels',.001,'weekly', '2026-08-28'),
  'cushing':('W_EPC0_SAX_YCUOK_MBBL','Thousand Barrels',.001,'weekly', '2026-08-28'),
  'us_production':('WCRFPUS2','Thousand Barrels per Day',.001,'weekly', '2026-08-28'),
+ 'henry_hub':('RNGWHHD','Dollars per Million Btu',1,'daily', '2026-09-01'),  # natural gas (dnav/ng), same xls layout
 }
 PORTWATCH='https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query'
 
@@ -75,7 +78,8 @@ def parse_eia(data, code, unit, scale):
 
 def load_eia(key, spec):
     code,unit,scale,frequency,_=spec
-    url=f'https://www.eia.gov/dnav/pet/hist_xls/{code}{"d" if frequency=="daily" else "w"}.xls'
+    area='ng' if code.startswith('RNG') else 'pet'
+    url=f'https://www.eia.gov/dnav/{area}/hist_xls/{code}{"d" if frequency=="daily" else "w"}.xls'
     raw=fetch(url)
     rows=parse_eia(raw,code,unit,scale)
     return {'source_url':url,'source_name':'EIA','observation_frequency':frequency,'publication_frequency':'weekly','unit':unit if scale==1 else ('million barrels/day' if key=='us_production' else 'million barrels'),'records':rows,'raw_sha256':hashlib.sha256(raw).hexdigest()},raw
@@ -237,8 +241,20 @@ def load_sugar_vn_balance():
         'method':'Vietnam, Sugar Centrifugal 0612000: beginning stocks, production, imports, exports, human domestic consumption, ending stocks',
         'raw_sha256':hashlib.sha256(raw).hexdigest()},raw
 
+_WB_LOCK=threading.Lock();_WB={}
+
+def wb_monthly():
+    """One Pink Sheet download per run, shared by sugar_monthly and wb_energy_monthly. The document link is
+    read from the World Bank landing page (its id changes on re-issue); the known link is the fallback."""
+    with _WB_LOCK:
+        if 'raw' not in _WB:
+            try:url=discover_wb_monthly_url(fetch)
+            except Exception:url=WB_MONTHLY
+            _WB.update(url=url,raw=fetch(url))
+        return _WB['url'],_WB['raw']
+
 def load_wb_sugar():
-    raw=fetch(WB_MONTHLY);w=openpyxl.load_workbook(io.BytesIO(raw),read_only=True,data_only=True)
+    url,raw=wb_monthly();w=openpyxl.load_workbook(io.BytesIO(raw),read_only=True,data_only=True)
     data=list(w['Monthly Prices'].values);head=next(i for i,r in enumerate(data) if 'Sugar, world' in r)
     col=data[head].index('Sugar, world')
     if data[head+1][col]!='($/kg)':raise ValueError('World Bank sugar unit mismatch')
@@ -249,7 +265,7 @@ def load_wb_sugar():
         if year<2010:continue
         if not isinstance(v,(int,float)) or v<=0:raise ValueError('Missing/invalid sugar month')
         records.append({'date':dt.date(year,month,calendar.monthrange(year,month)[1]).isoformat(),'value':v})
-    return {'source_url':WB_MONTHLY,'source_name':'World Bank Pink Sheet','observation_frequency':'monthly',
+    return {'source_url':url,'source_name':'World Bank Pink Sheet','observation_frequency':'monthly',
         'publication_frequency':'monthly','unit':'USD/kg','records':normalize(records,['value']),
         'raw_sha256':hashlib.sha256(raw).hexdigest()},raw
 
@@ -314,7 +330,11 @@ def main():
         tasks.update(hormuz=load_portwatch,bab_el_mandeb=lambda:load_portwatch('chokepoint4'),middle_east_crude_exports=lambda:load_middle_east_exports(bundle['sources'].get('middle_east_crude_exports',{}).get('records')),wti_curve=load_curve,brent_futures=lambda:load_daily_futures("BZ=F","USD/barrel"),sugar_futures=load_sugar_futures,sugar_vn_balance=load_sugar_vn_balance,sugar_monthly=load_wb_sugar,sugar_producers=load_sugar_producers,
                      singapore_cracks=lambda:load_singapore_cracks(bundle['sources'].get('singapore_cracks',{}).get('records')),
                      retail_fuel=lambda:load_retail_fuel(bundle['sources'].get('retail_fuel',{}).get('records')),
-                     opec_capacity=load_steo_capacity,world_balance=load_world_balance,wti_cot=load_wti_cot)
+                     opec_capacity=load_steo_capacity,world_balance=load_world_balance,wti_cot=load_wti_cot,
+                     # Power sector (scripts/power_feeds.py); henry_hub is an EIA entry above.
+                     vn_power_daily=lambda:load_vn_power_daily(bundle['sources'].get('vn_power_daily')),
+                     wb_energy_monthly=lambda:load_wb_energy(*wb_monthly()),enso_oni=load_enso_oni,nino34_weekly=load_nino34_weekly,
+                     coal_newcastle=lambda:load_ice_front('coal_newcastle'),lng_jkm=load_lng_jkm)
         selected=args.sources or list(tasks)
         if any(k not in tasks for k in selected):raise ValueError('Unknown source')
         if args.scheduled and not args.sources:
@@ -329,7 +349,7 @@ def main():
             for future in concurrent.futures.as_completed(futures):
                 key=futures[future];old=bundle['sources'].get(key,{})
                 try:
-                    fresh,raw=future.result();floor=EIA[key][4] if key in EIA else {'hormuz':'2026-08-30','wti_curve':'2026-09-03','sugar_monthly':'2026-07-31'}.get(key,'2010-01-01')
+                    fresh,raw=future.result();floor=EIA[key][4] if key in EIA else {'hormuz':'2026-08-30','wti_curve':'2026-09-03','sugar_monthly':'2026-07-31','wb_energy_monthly':'2026-07-31','enso_oni':'2026-07-31','nino34_weekly':'2026-09-01','vn_power_daily':'2026-09-01','coal_newcastle':'2026-09-01','lng_jkm':'2026-09-01'}.get(key,'2010-01-01')
                     fresh=merge_good(old,fresh,floor);fresh.update(last_success_at=run_at,last_checked_at=run_at,status='ok',error=None)
                     fresh['changed_at']=run_at if fresh['data_hash']!=old.get('data_hash') else old.get('changed_at',run_at)
                     bundle['sources'][key]=fresh

@@ -5,9 +5,9 @@ import datetime as dt
 from zoneinfo import ZoneInfo
 
 VN = ZoneInfo('Asia/Ho_Chi_Minh')
-SPOT = {'brent', 'wti', 'gasoline', 'diesel'}
+SPOT = {'brent', 'wti', 'gasoline', 'diesel', 'henry_hub'}  # EIA spot files publish weekly (Wednesday)
 WPSR = {'crude_stock', 'gasoline_stock', 'distillate_stock', 'cushing', 'us_production'}
-FUTURES = {'wti_curve', 'brent_futures', 'sugar_futures'}
+FUTURES = {'wti_curve', 'brent_futures', 'sugar_futures', 'coal_newcastle', 'lng_jkm'}
 
 
 def due(key: str, now: dt.datetime, last_checked: str | None) -> bool:
@@ -33,8 +33,12 @@ def due(key: str, now: dt.datetime, last_checked: str | None) -> bool:
         window = 5 <= local.day <= 15 or day == 0
     elif key == 'wti_cot':
         window = day in (5, 0, 1)  # Tuesday positions normally publish Friday US / Saturday VN.
-    elif key == 'sugar_monthly':
+    elif key in ('sugar_monthly', 'wb_energy_monthly', 'enso_oni'):  # Pink Sheet; CPC ONI after the ERSST update
         window = local.day <= 10 or day == 0
+    elif key == 'vn_power_daily':
+        window = True  # EVN posts day D on D+1 about 10:20-11:00 ICT, weekends included
+    elif key == 'nino34_weekly':
+        window = day in (0, 1, 2)  # CPC updates Monday US; Wednesday covers a US Monday holiday
     elif key == 'middle_east_crude_exports':
         window = 18 <= local.day <= 28 or day == 0  # JODI updates around the 20th; retry delays.
     else:

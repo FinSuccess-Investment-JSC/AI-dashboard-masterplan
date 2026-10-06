@@ -64,7 +64,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           DATA_CHANGED: ${{ steps.refresh.outputs.changed }}
         run: |
-          git add data/daily-data.js data/update-status.json data/bank-public-data.js data/company-valuation.js data/company-valuation.json data/company-comparison.js data/company-comparison.json data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html updates/state.json updates/last-run.md
+          git add data/daily-data.js data/update-status.json data/bank-public-data.js data/company-valuation.js data/company-valuation.json data/company-comparison.js data/company-comparison.json data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html Dien/index.html updates/state.json updates/last-run.md
           if git diff --cached --quiet; then
             echo 'No observations, source statuses or schedule state changed.'
             exit 0

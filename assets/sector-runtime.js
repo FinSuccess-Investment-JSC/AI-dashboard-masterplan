@@ -2,14 +2,16 @@
    No claims of live LLM inference: AI-authored interpretation lives in sector-content.js. */
 (() => {
 'use strict';
-const oil=!!document.getElementById('chCurve'), M=window.SectorMath;
+const power=document.body.dataset.sector==='power',oil=!power&&!!document.getElementById('chCurve'), M=window.SectorMath;
 const bundle=window.SECTOR_DAILY||{sources:{}}, src=bundle.sources||{};
 const nf=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
 const short=d=>d?d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(0,4):'chưa có';
 const available=k=>Array.isArray(src[k]?.records)&&src[k].records.length>0;
 const rows=k=>available(k)?src[k].records:[];
 const last=k=>rows(k).at(-1);
-const stale=k=>!available(k)||src[k].status!=='ok'||(Date.now()-Date.parse(src[k].latest_observation)>14*86400000);
+// Freshness follows the source's own rhythm: a monthly or seasonal index is not late after two weeks.
+const maxAge=k=>{const f=String(src[k]?.observation_frequency||'');return /year|annual/.test(f)?400:/quarter/.test(f)?120:/month|season/.test(f)?75:/week/.test(f)?21:14};
+const stale=k=>!available(k)||src[k].status!=='ok'||(Date.now()-Date.parse(src[k].latest_observation)>maxAge(k)*86400000);
 const color=['#2938A8','#59C5C8','#861C52','#c29100'];
 function note(hostId,keys,method){
  const host=document.getElementById(hostId);if(!host)return;
@@ -57,7 +59,7 @@ function currentReading(hostId,text){
 function archiveSummary(replacement){
  const old=document.querySelector('.hero .insight');if(!old)return;
  const archive=document.createElement('details');archive.className='summary-archive';
- const summary=document.createElement('summary');summary.textContent='Bản phân tích AI lưu ngày '+(oil?'03/09/2026':'17/08/2026');archive.append(summary);
+ const summary=document.createElement('summary');summary.textContent='Bản phân tích AI lưu ngày '+(oil?'03/09/2026':power?'06/10/2026':'17/08/2026');archive.append(summary);
  old.before(archive);archive.append(old);old.classList.remove('insight');
  const fresh=document.createElement('div');fresh.className='insight';Object.assign(fresh.dataset,{updateKind:'ai',cadence:'on-data-change',refreshStatus:'derived'});
  const title=document.createElement('b');title.textContent='Đọc nhanh từ dữ liệu: ';fresh.append(title,replacement);
@@ -259,7 +261,94 @@ if(oil){
  if(scenarioHead){const stamp=document.createElement('div');stamp.className='source-note';stamp.textContent='Kịch bản AI đề xuất từ bản 03/09/2026; chưa hiệu chỉnh theo số liệu vừa tải. Ngưỡng là giả định cần theo dõi.';scenarioHead.after(stamp)}
  document.querySelectorAll('.factor-card').forEach(c=>{const n=document.createElement('small');n.className='analysis-date';n.textContent='Phân tích lưu 03/09/2026 · số mới theo bảng theo dõi';c.prepend(n)});
 }
-else{
+else if(power){
+ // Power: EVN daily bulletins, NOAA ENSO, World Bank energy and ICE futures. A missing feed shows a gap, never an estimate.
+ const pick=(...ks)=>ks.find(available);
+ const label=d=>'T'+Number(d.slice(5,7))+'/'+d.slice(2,4);
+ const pct=(a,b)=>Number.isFinite(a)&&Number.isFinite(b)&&b?(a/b-1)*100:null;
+ const signed=(v,d=1)=>Number.isFinite(v)?(v>0?'+':'')+nf(v,d):'—';
+ const setKpi=(id,value,delta,cls)=>{const v=document.getElementById(id);if(v&&value)v.textContent=value;const d=document.getElementById(id+'-delta');if(d&&delta){d.textContent=delta;if(cls)d.className='delta '+cls}};
+ const spark=(id,values,c)=>{const n=document.getElementById(id);if(!n||!values.length)return;n.replaceChildren();sparkline(id,values,c)};
+ const gap=(id,text)=>{const host=document.getElementById(id);if(!host||host.querySelector('svg'))return;const n=document.createElement('p');n.className='data-gap';n.textContent=text;host.after(n)};
+ const daily=pick('vn_power_daily');
+ if(daily){
+  const all=M.rolling(rows(daily).filter(r=>Number.isFinite(r.output_mkwh)),'output_mkwh',7),rs=all.slice(-120);
+  barLineChart('chDaily',{categories:rs.map(r=>r.date),tickLabels:rs.map(r=>short(r.date).slice(0,5)),series:[{name:'Sản lượng ngày',kind:'line',color:color[1],markers:false,strokeWidth:1.5,values:rs.map(r=>r.output_mkwh)},{name:'Bình quân 7 ngày',kind:'line',color:color[0],markers:false,strokeWidth:2.5,values:rs.map(r=>r.average)}],unit:'triệu kWh',digits:1,height:260,zeroBase:false,maxLabels:8});
+  fillTable('tbl-daily',['Ngày','Sản lượng (triệu kWh)','Bình quân 7 ngày','Pmax (MW)'],rs.slice().reverse().map(r=>[short(r.date),nf(r.output_mkwh,1),nf(r.average,1),nf(r.pmax_mw,0)]));
+  note('chDaily',[daily],'Đọc từng bản tin "Thông tin chung về vận hành hệ thống điện Quốc gia" trên evn.com.vn: sản lượng sản xuất và nhập khẩu, Pmax và sản lượng từng loại nguồn. Ngày EVN không đăng bản tin để trống, không nội suy; bình quân 7 ngày chỉ tính khi đủ 7 ngày liền.');
+  // 30-day mean against the same window a year earlier: a storm or holiday week does not swing the KPI.
+  const byDate=new Map(all.map(r=>[r.date,r.output_mkwh])),last=all.at(-1);
+  const mean30=end=>{const d=new Date(end+'T00:00:00Z'),xs=[];for(let i=0;i<30;i++){const v=byDate.get(d.toISOString().slice(0,10));if(Number.isFinite(v))xs.push(v);d.setUTCDate(d.getUTCDate()-1)}return xs.length>=27?xs.reduce((a,b)=>a+b,0)/xs.length:null};
+  const ago=new Date(last.date+'T00:00:00Z');ago.setUTCFullYear(ago.getUTCFullYear()-1);
+  const yoy=pct(mean30(last.date),mean30(ago.toISOString().slice(0,10)));
+  setKpi('kpi-daily',nf(last.output_mkwh,1),short(last.date)+(Number.isFinite(yoy)?' · BQ 30 ngày '+signed(yoy)+'% so cùng kỳ':''),yoy>0?'d-good':'d-warn');
+  spark('spk-daily',all.slice(-30).map(r=>r.output_mkwh),color[0]);
+  // Months summed from complete bulletins; a month with missing days is flagged, not scaled up.
+  const months=new Map();
+  rows(daily).forEach(r=>{
+   if(!Number.isFinite(r.output_mkwh))return;const k=r.date.slice(0,7);
+   const m=months.get(k)||{date:k,days:0,output:0,pmax:null,pmax_date:null,mixDays:0,mixTotal:0,coal:0,hydro:0,gas:0,re:0,imports:0,other:0};
+   m.days++;m.output+=r.output_mkwh;if(Number.isFinite(r.pmax_mw)&&(m.pmax===null||r.pmax_mw>m.pmax)){m.pmax=r.pmax_mw;m.pmax_date=r.date}
+   const solar=Number.isFinite(r.solar)?r.solar:Number.isFinite(r.solar_farm)&&Number.isFinite(r.rooftop_solar)?r.solar_farm+r.rooftop_solar:null;
+   const parts={coal:r.coal,hydro:r.hydro,gas:Number.isFinite(r.gas)?r.gas+(Number.isFinite(r.oil)?r.oil:0):null,re:Number.isFinite(solar)&&Number.isFinite(r.wind)?solar+r.wind:null,imports:r.imports,other:Number.isFinite(r.other)?r.other:0};
+   if(Object.values(parts).every(Number.isFinite)){m.mixDays++;m.mixTotal+=r.output_mkwh;Object.entries(parts).forEach(([key,v])=>m[key]+=v)}
+   months.set(k,m);
+  });
+  const today=new Date().toISOString().slice(0,7);
+  const ms=[...months.values()].sort((a,b)=>a.date.localeCompare(b.date)).map(m=>{const [y,mo]=m.date.split('-').map(Number);const full=new Date(Date.UTC(y,mo,0)).getUTCDate();return {...m,complete:m.days===full&&m.date<today,label:label(m.date)+(m.days===full&&m.date<today?'':'*')}});
+  const mix=ms.filter(m=>m.mixDays).slice(-24).map(m=>({...m,label:label(m.date)+(m.date<today&&m.mixDays>=0.9*Number(new Date(Date.UTC(+m.date.slice(0,4),+m.date.slice(5,7),0)).getUTCDate())?'':'*'),coal_s:m.coal/m.mixTotal*100,hydro_s:m.hydro/m.mixTotal*100,gas_s:m.gas/m.mixTotal*100,re_s:m.re/m.mixTotal*100,imports_s:m.imports/m.mixTotal*100}));
+  if(mix.length){
+   plot('chMixShare',mix,[['Nhiệt điện than','coal_s',color[0]],['Thủy điện','hydro_s',color[1]],['NLTT (gió, mặt trời)','re_s',color[3]],['Khí & dầu','gas_s',color[2]],['Nhập khẩu','imports_s','#6b7686']],'%',1,280);
+   fillTable('tbl-mix',['Tháng','Than %','Thủy điện %','NLTT %','Khí & dầu %','Nhập khẩu %','Ngày có số'],mix.slice().reverse().map(m=>[m.label,...['coal_s','hydro_s','re_s','gas_s','imports_s'].map(f=>nf(m[f],1)),String(m.mixDays)]));
+   note('chMixShare',[daily],'Cộng sản lượng từng loại nguồn của các ngày có đủ thành phần, chia cho tổng sản lượng của chính các ngày đó. Điện mặt trời mái nhà là số EVN ước tính (thương phẩm).');
+  }
+  // Monthly totals are sums of the daily bulletins (checked against EVN's monthly releases within 0.5%).
+  const shown=ms.filter(m=>m.date<today).slice(-24).map(m=>{const prev=ms.find(x=>x.date===String(Number(m.date.slice(0,4))-1)+m.date.slice(4));return {...m,value:m.output/1000,yoy:m.complete&&prev?.complete?pct(m.output,prev.output):null}});
+  barLineChart('chMonthly',{categories:shown.map(m=>m.label),series:[{name:'Sản lượng tháng',kind:'bar',color:color[0],values:shown.map(m=>m.value)}],unit:'tỷ kWh',digits:2,height:260});
+  fillTable('tbl-monthly',['Tháng','Tỷ kWh','So cùng kỳ','Số ngày có bản tin'],shown.slice().reverse().map(m=>[m.label,nf(m.value,2),Number.isFinite(m.yoy)?signed(m.yoy)+'%':'—',String(m.days)]));
+  note('chMonthly',[daily],'Cộng sản lượng các bản tin ngày trong tháng; * = tháng chưa đủ ngày (EVN không đăng bản tin hoặc bản tin bị loại vì sai số). So cùng kỳ chỉ tính khi cả hai tháng đủ ngày.');
+  const pm=ms.filter(m=>Number.isFinite(m.pmax)).slice(-24);
+  barLineChart('chPmax',{categories:pm.map(m=>m.label),series:[{name:'Pmax tháng',kind:'line',color:color[2],values:pm.map(m=>m.pmax)}],unit:'MW',digits:0,height:250,zeroBase:false});
+  fillTable('tbl-pmax',['Tháng','Pmax (MW)','Ngày đạt'],pm.slice().reverse().map(m=>[m.label,nf(m.pmax,0),short(m.pmax_date)]));
+  note('chPmax',[daily],'Pmax cao nhất trong các bản tin ngày của tháng; tháng thiếu bản tin có thể bỏ sót đỉnh thật (*).');
+  const year=last.date.slice(0,4),ytd=ms.filter(m=>m.date.startsWith(year)&&Number.isFinite(m.pmax)).sort((a,b)=>b.pmax-a.pmax)[0];
+  if(ytd){setKpi('kpi-pmax',nf(ytd.pmax,0),'cao nhất '+year+' · ngày '+short(ytd.pmax_date));spark('spk-pmax',pm.slice(-12).map(m=>m.pmax),color[2])}
+ }else['chDaily','chMixShare','chMonthly','chPmax'].forEach(id=>gap(id,'Chưa tải được bản tin vận hành EVN. Không thay bằng số ước tính.'));
+ const oni=pick('enso_oni');
+ if(oni){
+  const rs=rows(oni).filter(r=>r.year>=2010&&Number.isFinite(r.oni)),last=rs.at(-1);
+  balanceBarChart('chEnso',{labels:rs.map(r=>r.season+' '+r.year),values:rs.map(r=>r.oni),unit:'°C',height:260,name:'ONI',colors:[color[2],color[0]],labelEvery:24,digits:2});
+  fillTable('tbl-enso',['Mùa (3 tháng)','ONI (°C)'],rs.slice(-36).reverse().map(r=>[r.season+' '+r.year,signed(r.oni,2)]));
+  note('chEnso',[oni],'NOAA CPC oni.ascii.txt: nhiệt độ mặt biển Niño 3.4 trung bình 3 tháng trừ trung bình nền trượt 30 năm. Ngưỡng ±0,5 °C theo định nghĩa của NOAA; NOAA chỉ công bố một đợt El Niño/La Niña khi ngưỡng giữ đủ 5 mùa liên tiếp.');
+  const state=last.oni>=0.5?'El Niño':last.oni<=-0.5?'La Niña':'trung tính';
+  setKpi('kpi-oni',signed(last.oni,2),last.season+' '+last.year+' · '+state,state==='trung tính'?'d-good':'d-warn');
+  spark('spk-oni',rs.slice(-12).map(r=>r.oni),color[2]);
+ }else gap('chEnso','Chưa tải được ONI của NOAA.');
+ const nino=pick('nino34_weekly');
+ if(nino){
+  const rs=rows(nino).filter(r=>Number.isFinite(r.ssta)).slice(-104);
+  barLineChart('chNino34',{categories:rs.map(r=>r.date),tickLabels:rs.map(r=>short(r.date)),series:[{name:'Niño 3.4',kind:'line',color:color[2],markers:false,values:rs.map(r=>r.ssta)}],unit:'°C',digits:2,height:250,zeroBase:false,maxLabels:8});
+  fillTable('tbl-nino34',['Tuần (ngày giữa tuần)','Chênh nhiệt độ (°C)'],rs.slice(-26).reverse().map(r=>[short(r.date),signed(r.ssta,2)]));
+  note('chNino34',[nino],'NOAA CPC wksst9120.for: nhiệt độ mặt biển tuần vùng Niño 3.4 (OISST), chênh so trung bình 1991–2020. 104 tuần gần nhất.');
+ }else gap('chNino34','Chưa tải được chuỗi tuần Niño 3.4.');
+ const wb=pick('wb_energy','wb_energy_monthly');
+ if(wb){
+  const rs=rows(wb).slice(-36).map(r=>({...r,label:label(r.date)}));
+  plot('chCoalM',rs,[['Than Australia (Newcastle)','coal_au',color[0]],['Than Nam Phi','coal_za',color[3]]],'USD/tấn',1,250);
+  table('tbl-coalm',['Tháng','Australia','Nam Phi'],rs.slice().reverse(),['coal_au','coal_za'],1);
+  note('chCoalM',[wb],'Tải file CMO-Historical-Data-Monthly.xlsx của World Bank; chọn đúng cột và đơn vị USD/tấn. Giá bình quân tháng; bộ tải kiểm hằng ngày và chỉ thay số khi World Bank phát hành file mới (đầu tháng).');
+  plot('chGasM',rs,[['LNG Nhật Bản','lng_japan',color[0]],['Khí châu Âu (TTF)','gas_europe',color[2]],['Khí Mỹ (Henry Hub)','gas_us',color[1]]],'USD/MMBtu',2,250);
+  table('tbl-gasm',['Tháng','LNG Nhật Bản','Khí châu Âu','Khí Mỹ'],rs.slice().reverse(),['lng_japan','gas_europe','gas_us'],2);
+  note('chGasM',[wb],'Cùng file Pink Sheet; USD/MMBtu. LNG Nhật Bản là giá nhập khẩu CIF bình quân, phần lớn theo hợp đồng dài hạn gắn giá dầu.');
+ }else['chCoalM','chGasM'].forEach(id=>gap(id,'Chưa tải được World Bank Pink Sheet.'));
+ const coal=pick('coal_newcastle');
+ if(coal){
+  const rs=rows(coal),last=rs.at(-1),cut=new Date(Date.parse(last.date)-30*86400000).toISOString().slice(0,10),prev=rs.filter(r=>r.date<=cut).at(-1);
+  setKpi('kpi-coal',nf(last.value,1),short(last.date)+(prev?' · '+signed(pct(last.value,prev.value))+'% so 1 tháng':''));
+  spark('spk-coal',rs.slice(-30).map(r=>r.value),color[0]);
+ }
+}
+else if(!power){
  if(available('sugar_vn_balance')&&document.getElementById('chSupplyDemand')){
   // USDA PSD Vietnam (same series as the original snapshot), refreshed when USDA revises PSD.
   const vb=rows('sugar_vn_balance'),thisYear=new Date().getFullYear();

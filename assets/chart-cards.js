@@ -15,7 +15,14 @@
   // Explicitly reviewed qualifiers, not guesses from titles or data values.
   const flags={
     chCurve:'Yahoo · close cùng phiên, không phải settlement.',
-    chFastPrice:'Yahoo · close, không phải settlement; chuyển hợp đồng có thể tạo bước nhảy.',
+    chFastPrice:document.body.dataset.sector==='power'?'ICE · close hợp đồng gần nhất, không phải settlement; không ghép các hợp đồng.':'Yahoo · close, không phải settlement; chuyển hợp đồng có thể tạo bước nhảy.',
+    chDaily:'Ngày EVN không đăng bản tin để trống, không nội suy.',
+    chMixShare:'* = tháng chưa đủ ngày · điện mặt trời mái nhà là số EVN ước tính.',
+    chMonthly:'* = tháng chưa đủ ngày có bản tin; không ước phần thiếu.',
+    chPmax:'* = tháng chưa đủ bản tin, có thể chưa phải đỉnh của tháng.',
+    chEnso:'Các mùa gần nhất có thể được NOAA sửa.',
+    chCoalM:'Giá quốc tế bình quân tháng, chưa phải giá về đến nhà máy.',
+    chGasM:'Giá quốc tế bình quân tháng, chưa phải giá khí bán cho nhà máy Việt Nam.',
     chGasCustomer:'Bốn tỷ trọng có mẫu số khác nhau; không cộng thành 100%.',
     chCrack:'Proxy USGC, không phải biên nhà máy Việt Nam · * = tháng chưa đủ kỳ.',
     chMoit:'Proxy USGC, không phải rổ giá điều hành Bộ Công Thương · * = tháng chưa đủ kỳ.',

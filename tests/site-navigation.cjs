@@ -39,13 +39,13 @@ const prefix = '/AI-dashboard-masterplan/';
       assert.equal(new URL(page.url()).searchParams.get('v'), manifest.version);
       assert.equal(await page.locator('[data-site-navigation] [aria-current="page"]').getAttribute('data-site-route'), key);
     }
-    for (const [hash,key] of [['ngan-hang','bank'],['dau-khi','oil'],['duong','sugar']]) {
+    for (const [hash,key] of [['ngan-hang','bank'],['dau-khi','oil'],['duong','sugar'],['dien','power']]) {
       await page.goto(base+'?v=20260911#'+hash);
       await checkRoute(key);
     }
     await page.goto(base+'?v='+manifest.version);
-    assert.equal(await page.locator('#readyDashboards a').count(), 3);
-    for (const key of ['oil','sugar','bank']) {
+    assert.equal(await page.locator('#readyDashboards a').count(), 4);
+    for (const key of ['oil','sugar','bank','power']) {
       await page.locator('#readyDashboards [data-site-route="'+key+'"]').click();
       await checkRoute(key);
       const tabCount=key==='bank'?7:6;assert.equal(await page.locator('.majortabbtn').count(), tabCount);
@@ -66,8 +66,8 @@ const prefix = '/AI-dashboard-masterplan/';
       await page.locator('[data-site-navigation] [data-site-route="home"]').click();
       await checkRoute('home');
     }
-    for (const from of ['oil','sugar','bank']) {
-      for (const to of ['oil','sugar','bank'].filter(key => key !== from)) {
+    for (const from of ['oil','sugar','bank','power']) {
+      for (const to of ['oil','sugar','bank','power'].filter(key => key !== from)) {
         await page.goto(base+manifest.routes[from]+'?v='+manifest.version);
         await page.locator('[data-site-navigation] [data-site-route="'+to+'"]').click();
         await checkRoute(to);
@@ -86,7 +86,7 @@ const prefix = '/AI-dashboard-masterplan/';
     }
     assert.deepEqual(errors, []);
     assert.deepEqual(missing, []);
-    console.log(JSON.stringify({result:'PASS',base,version:manifest.version,checks:'3 hub cards, legacy hashes, 6 cross-sector paths + Back, 18 section tabs, charts/data, home, duong alias, desktop/390px, no JS/HTTP errors'}));
+    console.log(JSON.stringify({result:'PASS',base,version:manifest.version,checks:'4 hub cards, legacy hashes, 12 cross-sector paths + Back, 25 section tabs, charts/data, home, duong alias, desktop/390px, no JS/HTTP errors'}));
   } finally {
     if(browser) await browser.close();
     if(server) await new Promise(resolve => server.close(resolve));

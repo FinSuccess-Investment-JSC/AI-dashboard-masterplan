@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi" data-release="20261006T092711Z">
+<html lang="vi" data-release="20261006T141837Z">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,6 +18,8 @@ const routes = [
   {match: base.toLowerCase() + "sugar/index.html", target: base + "Sugar/"},
   {match: base.toLowerCase() + "duong/", target: base + "Sugar/"},
   {match: base.toLowerCase() + "duong/index.html", target: base + "Sugar/"},
+  {match: base.toLowerCase() + "dien/", target: base + "Dien/"},
+  {match: base.toLowerCase() + "dien/index.html", target: base + "Dien/"},
   {match: base.toLowerCase() + "masterplan/", target: base + "Masterplan/"},
   {match: base.toLowerCase() + "masterplan/index.html", target: base + "Masterplan/"}
 ];
@@ -41,6 +43,7 @@ a.primary{background:#11255a;color:#fff;border-color:#11255a}
     <a href="/AI-dashboard-masterplan/Dau-khi/">Dashboard Dầu khí</a>
     <a href="/AI-dashboard-masterplan/Sugar/">Dashboard Đường</a>
     <a href="/AI-dashboard-masterplan/Bank/">Dashboard Ngân hàng</a>
+    <a href="/AI-dashboard-masterplan/Dien/">Dashboard Điện</a>
   </div>
 </main>
 <script>document.querySelectorAll('.actions a').forEach(a=>{const url=new URL(a.href);url.searchParams.set('v',document.documentElement.dataset.release);a.href=url.href;});</script>

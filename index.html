@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>FinSuccess Industry Dashboard Database</title>
 <link rel="stylesheet" href="assets/site-navigation.css?v=54a3825f55f4">
-<script src="assets/site-navigation.js?v=9b367760d97e" data-release="20261006T092711Z"></script>
+<script src="assets/site-navigation.js?v=b0a8a77f3544" data-release="20261006T141837Z"></script>
 <style>
 :root{--navy:#11255a;--navy2:#1d3678;--accent:#27af95;--accent2:#2fd0b2;--page:#f5f7fc;--card:#fff;--ink:#101318;--ink2:#3d4653;--muted:#6b7686;--line:#dfe6f7;--hair:#eaf0fb;--soft:#eef5f8;--red:#b8443a;--shadow:0 1px 2px rgba(17,37,90,.04),0 10px 28px rgba(17,37,90,.06)}
 *{box-sizing:border-box}
@@ -34,7 +34,8 @@ a{color:inherit}
 table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}th,td{padding:9px 7px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}th{font-size:10.5px;text-transform:uppercase;letter-spacing:.3px;color:var(--muted)}td b{color:var(--ink)}
 .status{display:inline-flex;border-radius:999px;padding:3px 8px;font-size:10.5px;font-weight:850}.s-ready{background:#e7f5f1;color:var(--accent)}.s-empty{background:#eef1f5;color:var(--muted)}
 .note{border-left:4px solid var(--accent);background:#eef8f5;border-radius:8px;padding:12px 13px;color:var(--ink2);font-size:12.5px;line-height:1.55}.warn{border-left-color:var(--red);background:#fbecea}
-.ready-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0}.industry-card{display:flex;flex-direction:column;gap:12px;min-width:0}.industry-card .actions{margin-top:auto}.industry-card h2{font-size:23px}.industry-card .facts{grid-template-columns:1fr 1fr}.industry-card ul{margin:0;padding-left:18px;color:var(--ink2);font-size:12px;line-height:1.8}.industry-card .btn{width:100%;min-height:42px}.planned-industries{margin-top:24px}.planned-industries>summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--navy)}.tab{text-decoration:none}.ready-grid+.site-release-inline{margin-top:0}
+.ready-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:20px 0}.industry-card{display:flex;flex-direction:column;gap:12px;min-width:0}.industry-card .actions{margin-top:auto}.industry-card h2{font-size:23px}.industry-card .facts{grid-template-columns:1fr 1fr}.industry-card ul{margin:0;padding-left:18px;color:var(--ink2);font-size:12px;line-height:1.8}.industry-card .btn{width:100%;min-height:42px}.planned-industries{margin-top:24px}.planned-industries>summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--navy)}.tab{text-decoration:none}.ready-grid+.site-release-inline{margin-top:0}
+@media(max-width:1280px){.ready-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){.ready-grid{grid-template-columns:1fr}}
 @media(max-width:900px){.layout{grid-template-columns:1fr}.side{position:static}.two,.facts{grid-template-columns:1fr}.wrap{padding:14px}.hero h1{font-size:27px}}
 </style>
@@ -52,10 +53,10 @@ table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}th,td{pa
 <main class="wrap">
   <section class="hero">
     <h1>Master database <em>dashboard ngành</em></h1>
-    <p>Chọn ngành để mở dashboard đầy đủ. Ba dashboard Dầu khí, Đường và Ngân hàng cùng dùng phiên bản mới nhất đã xuất bản từ project. Trong mỗi ngành, dùng thanh điều hướng phía trên để chuyển ngành hoặc quay về trang tổng.</p>
+    <p>Chọn ngành để mở dashboard đầy đủ. Bốn dashboard Dầu khí, Đường, Ngân hàng và Điện cùng dùng phiên bản mới nhất đã xuất bản từ project. Trong mỗi ngành, dùng thanh điều hướng phía trên để chuyển ngành hoặc quay về trang tổng.</p>
     <div class="meta">
-      <span class="pill">3 dashboard ngành</span>
-      <span class="pill">Giao diện cập nhật 12/09/2026</span>
+      <span class="pill">4 dashboard ngành</span>
+      <span class="pill">Giao diện cập nhật 06/10/2026</span>
       <span class="pill">Kỳ số liệu riêng tại từng chart</span>
       <a class="pill" data-site-route="plan" href="Masterplan/">Master plan ↗</a>
     </div>
@@ -77,7 +78,7 @@ const industries=[
   {id:"kcn",name:"Khu công nghiệp",status:"planned",headline:"Khu công nghiệp",desc:"Chưa dựng dashboard ngành.",watch:["FDI đăng ký/giải ngân","Giá thuê đất KCN","Diện tích sẵn sàng cho thuê","Tiến độ pháp lý dự án mới"]},
   {id:"ban-le",name:"Bán lẻ",status:"planned",headline:"Bán lẻ",desc:"Chưa dựng dashboard ngành.",watch:["SSSG và traffic","Thu nhập/niềm tin tiêu dùng","Mở mới/đóng cửa hàng","Gross margin và inventory"]},
   {id:"thep",name:"Thép",status:"planned",headline:"Thép",desc:"Chưa dựng dashboard ngành.",watch:["HRC/rebar spread","Quặng sắt, than cốc","Sản lượng tiêu thụ nội địa/xuất khẩu","China supply và trade defense"]},
-  {id:"dien",name:"Điện",status:"planned",headline:"Điện",desc:"Chưa dựng dashboard ngành.",watch:["Sản lượng điện theo nguồn","PPA/giá CGM","Thủy văn, than, LNG","Quy hoạch điện và capex"]},
+  {id:"dien",name:"Điện",status:"ready",folder:"Dien/",headline:"Dashboard ngành Điện Việt Nam",desc:"Sản lượng và cơ cấu nguồn điện hằng ngày, giá than/LNG, thủy văn và El Niño, giá điện, Quy hoạch điện VIII và 18 doanh nghiệp niêm yết.",metrics:[["7","tab phân tích"],["18","doanh nghiệp theo dõi"],["Hằng ngày","sản lượng hệ thống EVN"],["Public-source","ưu tiên nguồn"]],watch:["Sản lượng, Pmax và cơ cấu nguồn","Thủy văn, El Niño, giá than và LNG","Giá bán lẻ điện, tài chính EVN, giá thị trường","Quy hoạch điện VIII, DPPA, LNG và gió ngoài khơi"]},
   {id:"phan-bon",name:"Phân bón",status:"planned",headline:"Phân bón",desc:"Chưa dựng dashboard ngành.",watch:["Urea/NPK prices","Gas/coal feedstock cost","Xuất nhập khẩu","Vụ mùa và tồn kho"]},
   {id:"logistics",name:"Cảng & logistics",status:"planned",headline:"Cảng & logistics",desc:"Chưa dựng dashboard ngành.",watch:["Sản lượng container","Cước vận tải biển","Công suất cảng mới","Trade flow theo tuyến"]},
   {id:"thuy-san",name:"Thủy sản",status:"planned",headline:"Thủy sản",desc:"Chưa dựng dashboard ngành.",watch:["Giá cá tra/tôm","Xuất khẩu theo thị trường","Feed cost","Thuế chống bán phá giá"]}
@@ -87,11 +88,12 @@ const panes=document.getElementById("industryPanes");
 const statusLabel={ready:"Đã có",planned:"Chưa dựng"};
 const statusClass={ready:"s-ready",planned:"s-empty"};
 function render(){
-  const routeFor={"dau-khi":"oil","duong":"sugar","ngan-hang":"bank"};
+  const routeFor={"dau-khi":"oil","duong":"sugar","ngan-hang":"bank","dien":"power"};
   const descriptions={
     "dau-khi":["Hormuz theo ngày & bình quân 7 ngày","Brent futures, đường cong WTI và crack","Cung – cầu Thế giới / Việt Nam"],
     "duong":["Sugar No.11 futures và World Bank tháng","USDA: bốn trung tâm cung đường lớn","Cung – cầu Thế giới / Việt Nam"],
-    "ngan-hang":["20 nhóm dữ liệu Wi đã tích hợp","Huy động, tín dụng, NIM và chất lượng tài sản","So sánh ngân hàng, Catalyst / Risk"]
+    "ngan-hang":["20 nhóm dữ liệu Wi đã tích hợp","Huy động, tín dụng, NIM và chất lượng tài sản","So sánh ngân hàng, Catalyst / Risk"],
+    "dien":["Sản lượng, Pmax và cơ cấu nguồn hằng ngày (EVN)","Thủy văn & El Niño, giá than và LNG","Giá điện, Quy hoạch điện VIII, 18 doanh nghiệp"]
   };
   document.getElementById('readyDashboards').innerHTML=industries.filter(x=>x.status==='ready').map(x=>`<article class="card industry-card" data-industry="${x.id}"><span class="status s-ready">Dashboard đã cập nhật</span><h2>${x.name}</h2><p class="sub">${x.headline}</p><ul>${descriptions[x.id].map(t=>`<li>${t}</li>`).join('')}</ul><p class="sub">Nguồn, ngày dữ liệu và hạn chế được ghi tại từng biểu đồ.</p><div class="actions"><a class="btn primary" data-site-route="${routeFor[x.id]}" href="${DashboardSite.href(routeFor[x.id])}">Mở dashboard ${x.name} →</a></div></article>`).join('');
   const planned=industries.filter(x=>x.status!=='ready');

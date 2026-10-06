@@ -52,7 +52,7 @@ const register=make('section','source-register');register.append(make('h3','','N
 // Numeric comparison uses the same interaction as chart sources.
 const comparison=document.querySelector('.comparison-source');if(comparison){const host=make('div','comparison-source-action');comparison.before(host);const body=comparison.querySelector('.comparison-source-body');popover(host,[body],'So sánh tài chính & định giá');comparison.remove()}
 // Broad source-only blocks and provenance outside chart footers belong to Sources.
-const oldPlayers=document.querySelector(`[data-block-id="${sector==='oil'?'dau-khi-03':'sugar-03'}"]`);if(oldPlayers)oldPlayers.remove();
+const oldId={oil:'dau-khi-03',sugar:'sugar-03'}[sector],oldPlayers=oldId&&document.querySelector(`[data-block-id="${oldId}"]`);if(oldPlayers)oldPlayers.remove();
 const global=document.querySelector('[data-block-id="dau-khi-05"]');if(global){
  const notes=[...global.querySelectorAll(':scope > .source-note,:scope > .srcrow')];if(notes.length){const host=make('div','chart-card-actions');global.append(host);popover(host,notes,'Cân bằng cung cầu toàn cầu')}
 }

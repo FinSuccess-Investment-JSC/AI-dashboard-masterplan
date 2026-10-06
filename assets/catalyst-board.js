@@ -3,8 +3,8 @@
 (() => {
   'use strict';
   const pane=document.querySelector('.majorpane[data-tab="mt5"]');if(!pane)return;
-  const bank=document.body.dataset.sector==='bank',oil=!!document.getElementById('chCurve');
-  const sector=bank?'bank':oil?'oil':'sugar';
+  const bank=document.body.dataset.sector==='bank',power=document.body.dataset.sector==='power',oil=!power&&!!document.getElementById('chCurve');
+  const sector=bank?'bank':power?'power':oil?'oil':'sugar';
   const make=(tag,cls,text)=>{const n=document.createElement(tag);n.className=cls;if(text)n.textContent=text;return n};
   const num=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
   const date=v=>/^\d{4}-\d{2}-\d{2}/.test(v||'')?v.slice(8,10)+'/'+v.slice(5,7)+'/'+v.slice(0,4):v||'Chưa có kỳ';
@@ -16,7 +16,7 @@
   const heading=make('div','thesis-heading');heading.append(make('h2','','Catalyst / Risk'),make('p','','Điều gì cần theo dõi, tác động tới đâu và khi nào cần đổi đánh giá?'));board.append(heading);
   function keys(buttons,select){buttons.forEach((b,i)=>b.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const j=e.key==='Home'?0:e.key==='End'?buttons.length-1:(i+(e.key==='ArrowRight'?1:buttons.length-1))%buttons.length;select(j);buttons[j].focus()}))}
   const signals=make('div','thesis-view');signals.id='thesis-signals';board.append(signals);
-  const stamp=bank?'11/09/2026':oil?'03/09/2026':'17/08/2026';
+  const stamp=bank?'11/09/2026':power?'06/10/2026':oil?'03/09/2026':'17/08/2026';
   // One page: signals first, then original KPI table and the dated AI analysis under clear folds.
   const fold=(id,title,note)=>{const d=make('details','thesis-fold');d.id=id;const s=make('summary','',title);d.append(s);const body=make('div','thesis-fold-body');if(note)body.append(make('p','thesis-notice',note));d.append(body);return {d,body}};
   const kpi=fold('thesis-evidence','Bảng KPI & ngưỡng theo dõi');
@@ -63,6 +63,18 @@
     ];
     // Never turn a missing/stale feed into a favourable signal.
     [[0,['hormuz']],[1,['brent','gasoline','diesel','distillate_stock']]].forEach(([i,ids])=>{if(ids.some(k=>!feeds[k]?.records?.length)){rows[i].status='Thiếu dữ liệu';rows[i].metric='—'}else if(ids.some(k=>feeds[k].status!=='ok'||Date.now()-Date.parse(feeds[k].latest_observation)>14*86400000)){rows[i].status='Chờ cập nhật'}});
+  }else if(power){
+    const last=k=>feeds[k]?.records?.at(-1),oni=last('enso_oni'),wbk=['wb_energy','wb_energy_monthly'].find(k=>feeds[k]?.records?.length),wb=wbk&&last(wbk);
+    const coal=last('coal_newcastle'),lng=last('lng_jkm'),day=last('vn_power_daily');
+    const coalText=coal?num(coal.value,1)+' USD/tấn':wb&&Number.isFinite(wb.coal_au)?num(wb.coal_au,1)+' USD/tấn (WB)':'—';
+    const lngText=lng?num(lng.value,2)+' USD/MMBtu':wb&&Number.isFinite(wb.lng_japan)?num(wb.lng_japan,2)+' USD/MMBtu (WB)':'';
+    rows=[
+      item('Thủy văn & El Niño',oni?'ONI '+(oni.oni>0?'+':'')+num(oni.oni,2)+' °C':'—',oni?'NOAA · mùa '+oni.season+' '+oni.year:'Chưa có kỳ','Theo dõi','Sản lượng thủy điện mùa khô; tỷ trọng huy động than, khí.','ONI về dưới +0,5 °C (hết El Niño) hoặc nước về hồ mùa khô 2026–27 thấp hơn trung bình nhiều năm.','ONI là chỉ số toàn cầu, chưa phải lưu lượng về hồ; số hồ chứa EVN chỉ mở được trong nước.',[['chEnso','ONI'],['chMixShare','Cơ cấu huy động']],['hydro','thermal']),
+      item('Giá than & LNG',coalText+(lngText?' · '+lngText:''),coal?'ICE · '+date(coal.date):wb?'World Bank · '+wb.date.slice(0,7):'Chưa có kỳ','Theo dõi','Chi phí biến đổi nhiệt điện than, khí; giá mua điện bình quân của EVN.','Giá than hoặc LNG đổi hướng và giữ chênh ≥15% so trung bình 3 tháng.','Giá quốc tế, chưa phải giá than TKV hay khí trong nước bán cho nhà máy.',[['chFastPrice','Futures ngày'],['chCoalM','Than tháng'],['chGasM','Khí & LNG tháng']],['thermal']),
+      item('Giá bán lẻ & tài chính EVN','2.204,07 đ/kWh','Áp dụng từ 10/05/2025','Theo dõi','Khả năng thanh toán tiền điện cho nhà máy; dòng tiền IPP.','Có quyết định điều chỉnh giá bán lẻ hoặc EVN công bố kết quả tài chính năm.','Chính phủ yêu cầu không tăng giá điện (03/10/2026).',[['chTariff','Giá bán lẻ bình quân'],['chEvnLoss','Lỗ lũy kế EVN']],['thermal','hydro','re']),
+      item('Phụ tải & huy động',day?num(day.output_mkwh,1)+' triệu kWh/ngày':'—',day?'EVN · '+date(day.date):'Chưa có kỳ','Theo dõi','Sản lượng phát của nhà máy; nhu cầu đầu tư nguồn, lưới.','Tăng trưởng sản lượng lũy kế năm lệch ≥2 điểm % so kế hoạch EVN.','Bản tin ngày của EVN; chưa có giá thị trường điện SMP (trang NSMO chỉ mở trong nước).',[['chDaily','Sản lượng ngày'],['chMonthly','Sản lượng tháng']],['thermal','hydro','re','grid'])
+    ];
+    [[0,['enso_oni'],62],[1,['coal_newcastle','lng_jkm',wbk].filter(Boolean),45],[3,['vn_power_daily'],7]].forEach(([i,ids,days])=>{const live=ids.filter(k=>feeds[k]?.records?.length);if(!live.length){rows[i].status='Thiếu dữ liệu';rows[i].metric='—'}else if(live.every(k=>feeds[k].status!=='ok'||Date.now()-Date.parse(feeds[k].latest_observation)>days*86400000)){rows[i].status='Chờ cập nhật'}});
   }else if(!bank){
     const wb=feeds.sugar_monthly,last=wb?.records?.at(-1),stock=monitors[1]?.querySelector('strong')?.textContent||'—',hfcs=monitors[2]?.querySelector('strong')?.textContent||'—';
     rows=[
@@ -105,10 +117,10 @@
   });
   if(!bank){
     const label=make('label','','Góc nhìn doanh nghiệp');label.htmlFor='thesis-scope';const select=make('select','');select.id='thesis-scope';
-    const opts=oil?[['all','Toàn chuỗi'],['upstream','Khai thác'],['services','Dịch vụ'],['gas','Khí'],['refining','Lọc dầu'],['distribution','Phân phối']]:[['all','Toàn ngành'],['cane','Tự chủ vùng mía'],['import','Phụ thuộc nguyên liệu nhập']];
+    const opts=power?[['all','Toàn ngành'],['thermal','Nhiệt điện'],['hydro','Thủy điện'],['re','Năng lượng tái tạo'],['grid','Lưới, xây lắp & thiết bị']]:oil?[['all','Toàn chuỗi'],['upstream','Khai thác'],['services','Dịch vụ'],['gas','Khí'],['refining','Lọc dầu'],['distribution','Phân phối']]:[['all','Toàn ngành'],['cane','Tự chủ vùng mía'],['import','Phụ thuộc nguyên liệu nhập']];
     opts.forEach(([v,t])=>{const o=make('option','',t);o.value=v;select.append(o)});filter.append(label,select);
-    select.addEventListener('change',()=>{[...grid.children].forEach(c=>c.hidden=select.value!=='all'&&!c.dataset.groups.split(',').includes(select.value));intro.textContent=oil?'':select.value==='cane'?'Tự chủ mía: ưu tiên giá bán so giá mía, năng suất và độ bền vùng nguyên liệu.':select.value==='import'?'Nguyên liệu nhập: ưu tiên giá đường thô, tỷ giá, thuế và khả năng chuyển giá bán.':'';intro.hidden=!intro.textContent;if(!intro.parentElement)grid.before(intro)});
-    if(!oil)select.addEventListener('change',()=>{
+    select.addEventListener('change',()=>{[...grid.children].forEach(c=>c.hidden=select.value!=='all'&&!c.dataset.groups.split(',').includes(select.value));intro.textContent=oil||power?'':select.value==='cane'?'Tự chủ mía: ưu tiên giá bán so giá mía, năng suất và độ bền vùng nguyên liệu.':select.value==='import'?'Nguyên liệu nhập: ưu tiên giá đường thô, tỷ giá, thuế và khả năng chuyển giá bán.':'';intro.hidden=!intro.textContent;if(!intro.parentElement)grid.before(intro)});
+    if(!oil&&!power)select.addEventListener('change',()=>{
       const c=grid.children[1],raw=select.value==='import',cane=select.value==='cane';
       c.querySelector('h3').textContent=raw?'Giá bán & đường thô nhập':cane?'Giá bán & giá mía':rows[1].title;
       const impact=c.querySelector('.thesis-impact');impact.replaceChildren(make('b','','Ảnh hưởng: '),raw?'Giá đường thô, tỷ giá, thuế và khả năng chuyển giá bán.':cane?'Giá bán so chi phí mía; năng suất và tỷ lệ thu hồi đường.':rows[1].impact);
@@ -135,6 +147,10 @@
     ['Tín dụng và huy động cùng mở rộng; NIM ổn định, nợ sớm không tăng.','Thu nhập lãi và phí hỗ trợ tăng trưởng.','NIM suy giảm hoặc chất lượng tài sản xấu đi.'],
     ['Giá vốn hạ nhanh hơn lợi suất; vốn/room còn dư địa.','Biên và chi phí rủi ro cùng cải thiện.','Bao phủ yếu đi hoặc tăng trưởng che khuất nợ xấu.'],
     ['Huy động đắt lên, lãi đầu ra bị nén và nợ sớm tăng.','Lợi nhuận chịu áp lực từ biên, dự phòng và vốn.','Biên ổn định và chất lượng tài sản phục hồi có bằng chứng.']
+  ]:power?[
+    ['El Niño mạnh kéo dài qua mùa khô 2027; giá bán lẻ giữ nguyên tới hết 2026.','Thủy điện giảm sản lượng mùa khô; than, khí được huy động nhiều hơn; chi phí mua điện của EVN tăng.','Nước về hồ mùa khô vượt trung bình hoặc ONI về trung tính sớm.'],
+    ['Phụ tải tăng nhanh, giá than và LNG hạ, giá bán lẻ được điều chỉnh theo cơ chế.','Dòng tiền EVN cải thiện; nhà máy được thanh toán đúng hạn; nhu cầu đầu tư nguồn, lưới tăng.','Giá nhiên liệu tăng lại hoặc giá bán lẻ bị giữ lâu.'],
+    ['El Niño sâu, nhiên liệu đắt lên, giá bán lẻ không điều chỉnh.','EVN lỗ trở lại, chậm thanh toán cho nhà máy; rủi ro thiếu điện miền Bắc mùa khô.','Thủy văn phục hồi hoặc giá bán lẻ được điều chỉnh.']
   ]:oil?[
     ['Gián đoạn kéo dài, không leo thang; crack hạ nhiệt.','Giá và biên phân hóa theo khâu kinh doanh.','Dòng chảy phục hồi bền hoặc mất thêm nguồn cung vật chất.'],
     ['Leo thang gây mất thêm dòng chảy vật chất.','Upstream được hỗ trợ giá; khâu nhập hàng chịu áp lực.','Hormuz bình thường hóa, tồn kho sản phẩm phục hồi.'],

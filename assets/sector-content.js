@@ -8,7 +8,7 @@ if(document.body.dataset.sector==='bank'){
  window.SECTOR_CONTENT={bank:window.BANK_CONTENT};
  return;
 }
-const oil=!!document.getElementById('chCurve');
+const power=document.body.dataset.sector==='power',oil=!power&&!!document.getElementById('chCurve');
 const EIA='https://www.eia.gov/dnav/pet/pet_pri_spt_s1_d.htm';
 const WPSR='https://www.eia.gov/petroleum/supply/weekly/';
 const USDA='https://esmis.nal.usda.gov/publication/sugar-world-markets-and-trade';
@@ -39,6 +39,13 @@ const sources={
  chBabMandeb:['weekly','ngày; kèm bình quân 7 ngày','IMF PortWatch · dữ liệu ngày, cập nhật tuần (OCHA)','https://portwatch.imf.org/pages/6b1814d64903461b98144a6cc25eb79c'],
  chMiddleEastExports:['monthly','tháng, Saudi Arabia & Kuwait','JODI Oil · quanh ngày 20 mỗi tháng','https://www.jodidata.org/oil/database/data-downloads.aspx'],
  chMargin:['annual','niên độ, số kiểm toán','BCTC kiểm toán SBT',null],chBsrMargin:['annual','năm, số kiểm toán','BCTC kiểm toán BSR',null],chPlx:['quarterly','cuối quý','BCTC PLX',null],chGasVol:['annual','năm và kế hoạch ĐHĐCĐ','PV GAS · công bố năm / ĐHĐCĐ',null],
+ chDaily:['daily','ngày; EVN đăng bản tin sau khoảng 1 ngày','EVN · Thông tin vận hành hệ thống điện Quốc gia','https://www.evn.com.vn/vi-VN/news-l/Thong-tin-tom-tat-van-hanh-HTD-Quoc-gia-60-2015'],
+ chMixShare:['daily','tháng, cộng từ bản tin ngày','EVN · bản tin vận hành ngày','https://www.evn.com.vn/vi-VN/news-l/Thong-tin-tom-tat-van-hanh-HTD-Quoc-gia-60-2015'],
+ chPmax:['daily','đỉnh cao nhất trong tháng','EVN · bản tin vận hành ngày','https://www.evn.com.vn/vi-VN/news-l/Thong-tin-tom-tat-van-hanh-HTD-Quoc-gia-60-2015'],
+ chMonthly:['daily','tháng, cộng từ bản tin ngày','EVN · bản tin vận hành ngày','https://www.evn.com.vn/vi-VN/news-l/Thong-tin-tom-tat-van-hanh-HTD-Quoc-gia-60-2015'],
+ chEnso:['monthly','3 tháng trượt; NOAA cập nhật đầu tháng','NOAA CPC · ONI','https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt'],
+ chNino34:['weekly','tuần; NOAA cập nhật thứ Hai','NOAA CPC · Niño 3.4 tuần','https://www.cpc.ncep.noaa.gov/data/indices/wksst9120.for'],
+ chCoalM:['monthly','bình quân tháng','World Bank Pink Sheet',WB],chGasM:['monthly','bình quân tháng','World Bank Pink Sheet',WB],
 };
 const insight={
  chWorldRecent:'Giá thế giới giảm sẽ kéo giá nhập khẩu quy đổi xuống, tạo áp lực lên giá bán đường nội địa dù có phòng vệ thương mại. Cần đặt cạnh tỷ giá, thuế áp dụng và tồn kho trong nước; giá ISA là đường thô, không phải giá bán đường trắng tại Việt Nam.',
@@ -82,6 +89,12 @@ const insight={
  chHormuzM:'Chuỗi ngày cho biết dòng chảy thực tế có phục hồi sau tin tức hay chưa; bình quân 7 ngày giảm nhiễu một chuyến tàu. Đây là số lượt tàu AIS quan sát được, không phải thùng dầu: thay đổi tải trọng và nhiễu tín hiệu có thể làm hai đại lượng đi khác nhau.',
  chBabMandeb:'Bab el-Mandeb là tuyến qua Biển Đỏ; số lượt tàu qua eo giúp kiểm tra tuyến vận tải có mở rộng hay bị nghẽn. Số tàu chở dầu là một phần của tổng lượt, không cho biết khối lượng dầu hay cảng xuất phát. Đối chiếu với Hormuz và xuất khẩu dầu thô từng nước trước khi suy ra nguồn cung thực đến châu Á.',
  chMiddleEastExports:'Xuất khẩu dầu thô Saudi Arabia và Kuwait phản ánh dòng hàng thực của hai nhà xuất khẩu Trung Đông trong dữ liệu JODI. Kuwait liên quan nguồn dầu cho Nghi Sơn, nhưng số xuất khẩu cả nước không cho biết lượng hợp đồng giao riêng cho nhà máy. Dữ liệu tháng có độ trễ và không bao trùm UAE, Iraq, Iran hay toàn khu vực.',
+ chDaily:'Sản lượng ngày phản ánh phụ tải, thời tiết và ngày nghỉ. So bình quân 7 ngày với cùng kỳ để bỏ nhiễu cuối tuần; tăng nhanh hơn kế hoạch EVN nghĩa là nguồn than, khí phải huy động cao hơn.',
+ chMixShare:'Thủy điện chiếm tỷ trọng cao nhất trong mùa lũ, than bù phần còn lại. Năm El Niño, đỉnh thủy điện mùa lũ thấp hơn và than giữ tỷ trọng cao lâu hơn: có lợi cho sản lượng nhiệt điện, bất lợi cho thủy điện.',
+ chPmax:'Pmax thường lập đỉnh trong các đợt nắng nóng. Pmax tăng nhanh hơn công suất nguồn mới vào vận hành là rủi ro thiếu điện giờ cao điểm, nhất là miền Bắc.',
+ chEnso:'ONI dương kéo dài thường đi trước mùa khô ít nước ở Việt Nam vài tháng. Đây là chỉ báo sớm cho sản lượng thủy điện mùa khô, không thay số nước về hồ.',
+ chCoalM:'Hợp đồng mua bán điện với EVN thường chuyển giá nhiên liệu vào giá điện năng, nên giá than tác động tới chi phí mua điện của EVN mạnh hơn tới biên của nhà máy than.',
+ chGasM:'Điện khí chạy LNG nhập có chi phí biến đổi cao nhất hệ thống; giá LNG quyết định mức huy động khi không có cam kết bao tiêu sản lượng.',
 };
 const frequency={daily:'hằng ngày giao dịch',weekly:'hằng tuần',monthly:'hằng tháng',quarterly:'hằng quý',annual:'hằng năm',semiannual:'2 lần/năm (tháng 5, 11)',irregular:'theo công bố, chưa có lịch cố định',event:'theo sự kiện'};
 // Add a proper source/cadence line to every chart, including those whose sources
@@ -109,7 +122,7 @@ spare?.querySelectorAll('.conf-note').forEach(n=>{if(n.textContent.startsWith('C
 document.querySelectorAll('.card .conf-note,.viz-block .signal-line').forEach(n=>{
  if(n.closest('.data-gap,.gap-row'))return;
  const block=n.closest('.card,.viz-block');if(!block.querySelector('.chart-title'))return;
- n.dataset.snapshotAt=oil?'03/09/2026':'17/08/2026';
+ n.dataset.snapshotAt=oil?'03/09/2026':power?'06/10/2026':'17/08/2026';
 });
 function card(title,id,sub,source,reading){
  const c=document.createElement('div');c.className='card';Object.assign(c.dataset,{updateKind:'event',cadence:'event',blockId:id,transform:'derived',refreshStatus:'snapshot'});
@@ -120,14 +133,14 @@ function card(title,id,sub,source,reading){
  const note=document.createElement('div');note.className='chart-insight';note.textContent='Cách hiểu trong bối cảnh ngành · AI: '+reading;c.append(note);return c;
 }
 const policy=document.querySelector('.majorpane[data-tab="mt4"] .section');
-if(policy){
+if(policy&&!power){
  const grid=document.createElement('div');grid.className='grid two policy-visuals';policy.querySelector('.sectionhead')?.after(grid);
  if(oil){
   grid.append(card('Chênh lệch giá diesel so với RON95','chPolicyPremium','đồng/lít · cùng kỳ điều hành, 02/07–03/09/2026','Tự tính diesel − RON95 từ chuỗi giá điều hành đang có trong dashboard. <a href="https://costflow.vn/du-lieu/gia-xang-dau-lap-du-toan" target="_blank" rel="noopener">CostFlow / Petrolimex</a>.','Diesel đắt hơn xăng cho thấy sức ép tương đối ở nhiên liệu vận tải/sản xuất. Chênh lệch này chịu cả giá thành phẩm và thuế/quỹ; không phải biên lọc dầu hay biên bán lẻ.'));
   balanceBarChart('chPolicyPremium',{labels:retailDates,values:retailDiesel.map((v,i)=>v-retailRon95[i]),unit:'đ/lít',height:250});
   grid.append(card('Mức điều chỉnh diesel qua từng kỳ','chPolicyChange','đồng/lít · thay đổi so với kỳ trước','Tự tính chênh lệch hai kỳ liên tiếp; kỳ đầu bỏ vì không có mốc trước. <a href="https://costflow.vn/du-lieu/gia-xang-dau-lap-du-toan" target="_blank" rel="noopener">Chuỗi giá điều hành</a>.','Các bước đổi giá lớn làm rủi ro lệch pha giữa giá mua hàng và giá bán tăng. Cần ghép ngày nhập, vòng quay tồn kho và quyết định trích/chi quỹ để đo tác động lên PLX; không quy toàn bộ mức tăng cho một sắc thuế.'));
   balanceBarChart('chPolicyChange',{labels:retailDates.slice(1),values:retailDiesel.slice(1).map((v,i)=>v-retailDiesel[i]),unit:'đ/lít',height:250});
- }else{
+ }else if(!power){
   grid.append(card('Hạn ngạch đường 2024 — mức phân giao thực tế','chPolicyQuota','nghìn tấn · 121 / 126 = 96,03%','<a href="https://moit.gov.vn/tin-tuc/thong-bao/thong-bao-ket-qua-phien-phan-giao-han-ngach-thue-quan-nhap-khau-duong-nam-2024-theo-phuong-thuc-dau-gia.html" target="_blank" rel="noopener">Bộ Công Thương · kết quả đấu giá 2024</a>. Đây là hạn ngạch được phân giao, không phải lượng hàng đã nhập.','Tỷ lệ phân giao cao cho thấy nhu cầu tiếp cận nguồn nhập có ưu đãi, nhưng không đo được khối lượng nhập thực tế. Hạn ngạch chỉ là một phần của cạnh tranh nhập khẩu; cần đối chiếu số thực nhập và đường ngoài hạn ngạch.'));
   barLineChart('chPolicyQuota',{categories:['Hạn ngạch','Đã phân giao','Chưa phân giao'],series:[{name:'Nghìn tấn',color:S1,values:[126,121,5]}],unit:'nghìn tấn',digits:0,height:250});
   grid.append(card('Cấu phần thuế phòng vệ — mốc 2021','chPolicyTax','% · 42,99 + 4,65 = 47,64','<a href="https://moit.gov.vn/tin-tuc/thong-tin-hop-bao/bo-cong-thuong-hop-bao-thuong-ky-quy-ii-2021.html" target="_blank" rel="noopener">Bộ Công Thương · Quyết định 1578/QĐ-BCT, 2021</a>. Chart là mốc lịch sử; không khẳng định đây là mức áp dụng sau rà soát/gia hạn 2026.','Phòng vệ thương mại làm tăng chi phí nhập các hàng hóa thuộc phạm vi áp dụng, tạo khoảng bảo vệ cho nhà máy trong nước. Hiệu quả còn phụ thuộc xuất xứ, chống lẩn tránh, hàng nhập lậu và HFCS; không suy thuế cao thành giá đường hay lợi nhuận chắc chắn tăng.'));

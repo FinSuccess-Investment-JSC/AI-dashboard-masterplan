@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-06T09:24:36.889376+00:00",
+  "run_at": "2026-10-06T13:55:35.251682+00:00",
   "errors": 0,
   "sources": {
     "wti": {
@@ -96,8 +96,8 @@
     "sugar_monthly": {
       "status": "ok",
       "latest_observation": "2026-09-30",
-      "last_success_at": "2026-10-06T04:37:13.187982+00:00",
-      "last_checked_at": "2026-10-06T04:37:13.187982+00:00",
+      "last_success_at": "2026-10-06T13:52:16.565313+00:00",
+      "last_checked_at": "2026-10-06T13:52:16.565313+00:00",
       "error": null
     },
     "middle_east_crude_exports": {
@@ -161,6 +161,55 @@
       "latest_observation": "2026-01-01",
       "last_success_at": "2026-10-06T09:24:21.600432+00:00",
       "last_checked_at": "2026-10-06T09:24:21.600432+00:00",
+      "error": null
+    },
+    "wb_energy_monthly": {
+      "status": "ok",
+      "latest_observation": "2026-09-30",
+      "last_success_at": "2026-10-06T13:52:16.565313+00:00",
+      "last_checked_at": "2026-10-06T13:52:16.565313+00:00",
+      "error": null
+    },
+    "coal_newcastle": {
+      "status": "ok",
+      "latest_observation": "2026-10-05",
+      "last_success_at": "2026-10-06T13:52:16.565313+00:00",
+      "last_checked_at": "2026-10-06T13:52:16.565313+00:00",
+      "error": null
+    },
+    "enso_oni": {
+      "status": "ok",
+      "latest_observation": "2026-08-31",
+      "last_success_at": "2026-10-06T13:52:16.565313+00:00",
+      "last_checked_at": "2026-10-06T13:52:16.565313+00:00",
+      "error": null
+    },
+    "lng_jkm": {
+      "status": "ok",
+      "latest_observation": "2026-10-05",
+      "last_success_at": "2026-10-06T13:52:16.565313+00:00",
+      "last_checked_at": "2026-10-06T13:52:16.565313+00:00",
+      "error": null
+    },
+    "nino34_weekly": {
+      "status": "ok",
+      "latest_observation": "2026-09-30",
+      "last_success_at": "2026-10-06T13:52:16.565313+00:00",
+      "last_checked_at": "2026-10-06T13:52:16.565313+00:00",
+      "error": null
+    },
+    "henry_hub": {
+      "status": "ok",
+      "latest_observation": "2026-09-29",
+      "last_success_at": "2026-10-06T13:52:16.565313+00:00",
+      "last_checked_at": "2026-10-06T13:52:16.565313+00:00",
+      "error": null
+    },
+    "vn_power_daily": {
+      "status": "ok",
+      "latest_observation": "2026-10-05",
+      "last_success_at": "2026-10-06T13:55:35.251682+00:00",
+      "last_checked_at": "2026-10-06T13:55:35.251682+00:00",
       "error": null
     }
   }

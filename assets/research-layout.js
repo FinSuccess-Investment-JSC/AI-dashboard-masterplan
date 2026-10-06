@@ -2,8 +2,8 @@
 (() => {
 'use strict';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const bank=document.body.dataset.sector==='bank',oil=!!$('#chCurve');
-const sector=bank?'bank':oil?'oil':'sugar';document.body.dataset.researchSector=sector;
+const bank=document.body.dataset.sector==='bank',power=document.body.dataset.sector==='power',oil=!power&&!!$('#chCurve');
+const sector=bank?'bank':power?'power':oil?'oil':'sugar';document.body.dataset.researchSector=sector;
 const make=(tag,cls,text)=>{const n=document.createElement(tag);n.className=cls||'';if(text)n.textContent=text;return n};
 const pane=k=>$(`.majorpane[data-tab="mt${k}"]`),overview=pane(1),market=pane(2),policy=pane(4),hot=pane(7);
 const legacyPlayerNodes=[...(bank?hot:pane(6)).children];
@@ -26,7 +26,7 @@ if(bank){
  const exampleBody=make('div','research-detail');exampleBody.append(make('p','data-gap','Hiện mới xác minh được chuỗi lãi suất cho vay bình quân của Eximbank; chưa có cùng loại công bố cho các ngân hàng khác để mở bộ chọn ngân hàng mà vẫn so sánh đúng định nghĩa.'));[rateControls,lending,rateTable,rateSummary].forEach(n=>{if(n)exampleBody.append(n)});example.append(exampleBody);vn.append(example);
  const fx=$('#bank-fx');if(fx){const fxGroup=make('section','bank-fx-group');fxGroup.append(make('h3','','Tỷ giá & USD'),fx);vn.append(fxGroup)}
 }else{
- const domestic=new Set(oil?['dau-khi-22','dau-khi-26']:['sugar-06','sugar-12','sugar-13']);
+ const domestic=new Set(oil?['dau-khi-22','dau-khi-26']:power?['dien-14','dien-15','dien-16']:['sugar-06','sugar-12','sugar-13']);
  $$('[data-tab="mt3"] .card').filter(n=>!n.parentElement.closest('.card')).forEach(n=>(domestic.has(n.dataset.blockId)?pricesVN:pricesWorld).append(n));
  if(oil){
   // Keep the two comparable refinery indicators together after geographic routing.
@@ -34,17 +34,17 @@ if(bank){
   if(usgc&&singapore)pricesWorld.prepend(usgc,singapore);
  }
  $$('[data-tab="mt3"] .section').forEach(s=>[...s.children].filter(n=>!n.matches('.sectionhead,.grid')).forEach(n=>pricesVN.append(n)));
- const cycle=block(oil?'dau-khi-02':'sugar-02');if(cycle){vn.append(cycle);cycle.prepend(make('p','research-caption',oil?'Phân tích AI ngày 03/09/2026 · chưa cập nhật theo số mới':'Phân tích AI ngày 17/08/2026 · chưa cập nhật theo số mới'));}
+ const cycle=block(oil?'dau-khi-02':power?'dien-02':'sugar-02');if(cycle){vn.append(cycle);cycle.prepend(make('p','research-caption',oil?'Phân tích AI ngày 03/09/2026 · chưa cập nhật theo số mới':power?'Phân tích AI ngày 06/10/2026':'Phân tích AI ngày 17/08/2026 · chưa cập nhật theo số mới'));}
  const kpis=overview.querySelector('.kpis');if(kpis)market.prepend(kpis);
  // All source/player detail stays available in Overview.
  [...pane(6).children].forEach(n=>overview.append(n));
- if(!oil){['sugar-14','sugar-15','sugar-16'].forEach(id=>pricesVN.append(block(id)));[...hot.children].forEach(n=>overview.append(n));}
+ if(sector==='sugar'){['sugar-14','sugar-15','sugar-16'].forEach(id=>pricesVN.append(block(id)));[...hot.children].forEach(n=>overview.append(n));}
 }
 // Old panels can have multiple nodes (Sugar mt3); remove only after moving data.
 $$('.majorpane[data-tab="mt3"],.majorpane[data-tab="mt6"]').forEach(n=>n.remove());
 const marketHeading=market.querySelector('.sectionhead h2');marketHeading.textContent='Bức tranh ngành';
 const mp=market.querySelector('.sectionhead p');if(mp)mp.textContent='Cung cầu → giá & chi phí → biên lợi nhuận.';
-[[world,oil?'Cân bằng dầu → tồn kho → Brent & crack':bank?'Vốn quốc tế → chi phí USD → tỷ giá':'Sản lượng → xuất khẩu → giá đường'],[vn,oil?'Sản lượng → nguồn nhập → giá bán & biên':bank?'Huy động → tín dụng → NIM → chi phí rủi ro':'Vùng mía → tồn kho → giá bán so giá nguyên liệu']].forEach(([host,text])=>host.prepend(make('p','research-path',text)));
+[[world,power?'Thủy văn & El Niño · giá than, LNG → chi phí phát điện':oil?'Cân bằng dầu → tồn kho → Brent & crack':bank?'Vốn quốc tế → chi phí USD → tỷ giá':'Sản lượng → xuất khẩu → giá đường'],[vn,power?'Phụ tải → cơ cấu nguồn → giá điện & dòng tiền EVN':oil?'Sản lượng → nguồn nhập → giá bán & biên':bank?'Huy động → tín dụng → NIM → chi phí rủi ro':'Vùng mía → tồn kho → giá bán so giá nguyên liệu']].forEach(([host,text])=>host.prepend(make('p','research-path',text)));
 if(oil){
  // World: split into Giá sản phẩm / Cung-cầu & Tồn kho / Crack spread so each view stays short.
  const worldCaption=[...world.children].find(n=>n.matches('.research-path'));
@@ -81,15 +81,20 @@ if(oil){
  });
 }
 // Static roadmap focuses on economic roles, not a current market call.
-const road=make('section','research-roadmap');road.append(make('h2','','Bản đồ ngành'),make('p','',oil?'Đầu tư & khai thác → xử lý dầu / khí → phân phối & tiêu thụ. Dịch vụ và vận tải hỗ trợ từng khâu.':bank?'Nguồn vốn → tài sản sinh lãi → thu nhập → chi phí vận hành & dự phòng → ROE.':'Vùng mía / nguyên liệu nhập → chế biến → phân phối → khách hàng công nghiệp & bán lẻ.'));
+const road=make('section','research-roadmap');road.append(make('h2','','Bản đồ ngành'),make('p','',power?'Nhiên liệu & thủy văn → phát điện → EVN/EPTC mua, NSMO điều độ → truyền tải, phân phối → khách hàng. DPPA mở kênh bán trực tiếp.':oil?'Đầu tư & khai thác → xử lý dầu / khí → phân phối & tiêu thụ. Dịch vụ và vận tải hỗ trợ từng khâu.':bank?'Nguồn vốn → tài sản sinh lãi → thu nhập → chi phí vận hành & dự phòng → ROE.':'Vùng mía / nguyên liệu nhập → chế biến → phân phối → khách hàng công nghiệp & bán lẻ.'));
 const steps=make('div','research-steps');
-(oil?[['01 · Nguồn cung','PVD: khoan; PVS: EPCI, kho nổi. Theo dõi hợp đồng, công suất và tiến độ.'],['02 · Chế biến','GAS: khí và hạ tầng; BSR: lọc dầu. Sản lượng, cơ cấu nguồn và biên chế biến quyết định hiệu quả.'],['03 · Đưa ra thị trường','PLX: phân phối; PVT: vận tải. Theo dõi sản lượng bán, tồn kho, cước và cơ cấu hợp đồng.']]:bank?[['01 · Giá vốn','CASA, tiền gửi KBNN và tái cấp vốn có thể hỗ trợ giá vốn, nhưng khác nhau về độ ổn định và điều kiện tiếp cận. Trái phiếu, chứng chỉ tiền gửi và liên ngân hàng cũng bổ sung vốn với chi phí riêng.'],['02 · Phân bổ vốn','Cơ cấu khách hàng, ngành nghề và kỳ hạn cho vay quyết định lợi suất, rủi ro và nhu cầu vốn; so với kỳ hạn huy động và tỷ lệ an toàn.'],['03 · Lợi nhuận & vốn','Tăng trưởng dư nợ, NIM, thu phí ròng, CIR và dự phòng tác động ROE. Cổ tức và kế hoạch tăng vốn quyết định khả năng giữ vốn cho tăng trưởng.']]:[['01 · Nguyên liệu','SLS, LSS, KTS: vùng mía và hiệu suất nhà máy; SBT: thêm vai trò nguyên liệu nhập và thương mại.'],['02 · Sản xuất','Giá mía, chữ đường và công suất quyết định giá thành. QNS cần tách mảng đường với các mảng khác.'],['03 · Tiêu thụ','Giá bán, tồn kho và cơ cấu khách hàng quyết định khả năng chuyển chi phí.']]).forEach(([title,body])=>{const n=make('article');n.append(make('h3','',title),make('p','',body));steps.append(n)});road.append(steps);overview.prepend(road);
+(power?[['01 · Nhiên liệu & nước','Than, khí/LNG nhập khẩu và thủy văn quyết định chi phí và khả năng phát của từng nhóm nhà máy. El Niño làm giảm nước về hồ thủy điện.'],['02 · Phát điện','Nhiệt điện, điện khí, thủy điện và năng lượng tái tạo bán điện qua hợp đồng PPA và thị trường bán buôn. Mức huy động và giá thị trường quyết định sản lượng và biên.'],['03 · Lưới & khách hàng','EVN/EPTC là bên mua chính; giá bán lẻ và tài chính EVN ảnh hưởng thanh toán cho nhà máy. Truyền tải, phân phối và DPPA mở đầu tư lưới cho xây lắp, thiết bị.']]:oil?[['01 · Nguồn cung','PVD: khoan; PVS: EPCI, kho nổi. Theo dõi hợp đồng, công suất và tiến độ.'],['02 · Chế biến','GAS: khí và hạ tầng; BSR: lọc dầu. Sản lượng, cơ cấu nguồn và biên chế biến quyết định hiệu quả.'],['03 · Đưa ra thị trường','PLX: phân phối; PVT: vận tải. Theo dõi sản lượng bán, tồn kho, cước và cơ cấu hợp đồng.']]:bank?[['01 · Giá vốn','CASA, tiền gửi KBNN và tái cấp vốn có thể hỗ trợ giá vốn, nhưng khác nhau về độ ổn định và điều kiện tiếp cận. Trái phiếu, chứng chỉ tiền gửi và liên ngân hàng cũng bổ sung vốn với chi phí riêng.'],['02 · Phân bổ vốn','Cơ cấu khách hàng, ngành nghề và kỳ hạn cho vay quyết định lợi suất, rủi ro và nhu cầu vốn; so với kỳ hạn huy động và tỷ lệ an toàn.'],['03 · Lợi nhuận & vốn','Tăng trưởng dư nợ, NIM, thu phí ròng, CIR và dự phòng tác động ROE. Cổ tức và kế hoạch tăng vốn quyết định khả năng giữ vốn cho tăng trưởng.']]:[['01 · Nguyên liệu','SLS, LSS, KTS: vùng mía và hiệu suất nhà máy; SBT: thêm vai trò nguyên liệu nhập và thương mại.'],['02 · Sản xuất','Giá mía, chữ đường và công suất quyết định giá thành. QNS cần tách mảng đường với các mảng khác.'],['03 · Tiêu thụ','Giá bán, tồn kho và cơ cấu khách hàng quyết định khả năng chuyển chi phí.']]).forEach(([title,body])=>{const n=make('article');n.append(make('h3','',title),make('p','',body));steps.append(n)});road.append(steps);overview.prepend(road);
 // Industry mechanisms precede the financial comparison; company deep-dives get their own dashboards.
-const chain=bank?overview.querySelector('.flow-scroll')?.closest('.card'):block(oil?'dau-khi-01':'sugar-01');
-const originalIntro=overview.querySelector('.sectionhead');if(originalIntro){road.before(originalIntro);originalIntro.querySelector('h2').textContent='Tổng quan ngành '+(oil?'dầu khí':bank?'ngân hàng':'đường');}
+const chain=bank?overview.querySelector('.flow-scroll')?.closest('.card'):block(oil?'dau-khi-01':power?'dien-01':'sugar-01');
+const originalIntro=overview.querySelector('.sectionhead');if(originalIntro){road.before(originalIntro);originalIntro.querySelector('h2').textContent='Tổng quan ngành '+(oil?'dầu khí':bank?'ngân hàng':power?'điện':'đường');}
 if(chain)road.after(chain);
 const business=make('section','business-models');business.append(make('h2','','Doanh nghiệp kiếm tiền như thế nào?'));const bmGrid=make('div','business-model-grid');business.append(bmGrid);
-const models=oil?[
+const models=power?[
+ ['POW · NT2 · PPC · QTP · HND · BTP','Nhiệt điện than & khí','Bán điện cho EVN theo hợp đồng PPA (giá công suất + giá điện năng gắn chi phí nhiên liệu) và một phần trên thị trường bán buôn. Lợi nhuận phụ thuộc mức huy động, giá thị trường và cơ chế chuyển ngang giá than/khí; khấu hao và lãi vay giảm dần khi nhà máy già đi.'],
+ ['REE · VSH · CHP · SBA · TMP · SHP','Thủy điện','Chi phí biến đổi gần như bằng 0, nên sản lượng theo thủy văn quyết định lợi nhuận. Năm nước nhiều tăng sản lượng và giá thị trường thường thấp; El Niño làm giảm nước về nhưng giá thị trường có thể cao hơn. REE còn có mảng nước, cơ điện và bất động sản.'],
+ ['GEG · HDG · TTA','Năng lượng tái tạo','Điện mặt trời và điện gió bán theo giá FIT hoặc khung giá chuyển tiếp; rủi ro chính là cắt giảm công suất, đàm phán lại giá và thanh toán chậm. Dự án mới phụ thuộc Quy hoạch điện VIII và cơ chế DPPA.'],
+ ['PC1 · TV2 · GEX','Xây lắp, tư vấn & thiết bị lưới','Hưởng lợi từ vốn đầu tư truyền tải, phân phối và nguồn mới theo Quy hoạch điện VIII. Doanh thu ghi nhận theo tiến độ hợp đồng; backlog và tốc độ giải ngân của EVN/NPT quyết định tăng trưởng.']
+]:oil?[
  ['GAS','Khí & hạ tầng','Thu gom, xử lý, vận chuyển và kinh doanh khí; kết nối nguồn khí trong nước, LNG với điện, đạm và công nghiệp. Doanh thu gồm giá khí × sản lượng và dịch vụ hạ tầng. Cơ cấu nguồn và điều khoản giá quyết định phần biên giữ lại.'],
  ['BSR','Lọc hóa dầu','Mua dầu thô, chế biến thành xăng, diesel và sản phẩm khác tại Dung Quất. Thu nhập phụ thuộc chênh lệch giá sản phẩm–nguyên liệu, cơ cấu dầu đầu vào và chi phí chế biến. Bảo dưỡng và đánh giá hàng tồn kho có thể làm lợi nhuận quý biến động.'],
  ['PLX','Phân phối xăng dầu','Mua và phân phối xăng dầu qua hệ thống bán buôn, bán lẻ. Quy mô bán và phần biên trên mỗi lít quan trọng hơn riêng giá dầu. Cơ chế điều hành giá, độ trễ giá vốn và vòng quay tồn kho cùng ảnh hưởng lợi nhuận.'],
@@ -132,11 +137,11 @@ $$('.classification-key,.global-gap,.update-legend').forEach(n=>sources.append(n
 $$('.card').filter(n=>/Nguồn chưa gắn được đường dẫn|Nguồn dữ liệu và khả năng tự động cập nhật/.test(n.querySelector('h3')?.textContent||'')).forEach(n=>sources.append(n));
 $$('.thesis-source-row').forEach(n=>{const wrap=make('section','source-register');wrap.append(make('h3','','Nguồn của bản phân tích Catalyst/Risk'),n);sources.append(wrap)});
 const players=make('section','company-dashboard-links');players.append(make('h2','','Dashboard doanh nghiệp'));const companyLinks=make('div','company-link-grid');
-const tickers=oil?['GAS','BSR','PLX','PVD','PVS','PVT']:bank?['VCB','CTG','BID','TCB','VPB','MBB','ACB','HDB','TPB','VIB','SHB']:['SBT','QNS','SLS','LSS','KTS'];
+const tickers=power?['POW','NT2','PPC','QTP','HND','BTP','REE','VSH','CHP','SBA','TMP','SHP','GEG','HDG','TTA','PC1','TV2','GEX']:oil?['GAS','BSR','PLX','PVD','PVS','PVT']:bank?['VCB','CTG','BID','TCB','VPB','MBB','ACB','HDB','TPB','VIB','SHB']:['SBT','QNS','SLS','LSS','KTS'];
 tickers.forEach(t=>{const n=make('div','company-dashboard-pending');n.append(make('b','',t),make('span','','Sẽ bổ sung dashboard'));companyLinks.append(n)});players.append(companyLinks);comp.after(players);
 window.FinancialComparison?.mount(comp,{sector,sources});
 // Remove the previous summary from the product flow; source metadata remains in Sources.
-const hero=$('.hero');if(hero){const header=make('header','research-header');header.append(make('h1','',oil?'Dầu khí':bank?'Ngân hàng':'Đường'));hero.before(header);preserveProvenance(hero);hero.remove();}
+const hero=$('.hero');if(hero){const header=make('header','research-header');header.append(make('h1','',oil?'Dầu khí':bank?'Ngân hàng':power?'Điện':'Đường'));hero.before(header);preserveProvenance(hero);hero.remove();}
 $$('footer,.footer').forEach(n=>{if(!n.closest('.card'))n.remove()});
 if(bank){const filter=$('.bank-filter');if(filter){pane(5).prepend(filter);filter.querySelector('p').textContent='Chọn ngân hàng cho góc nhìn analyst và tín hiệu theo dõi. Số liệu toàn ngành giữ phạm vi ghi trên từng biểu đồ.'}}
 // Stick geography below the global navigation, including responsive header height.
@@ -152,25 +157,25 @@ function fold(card,title,opts={}){
  d.append(summary,body);const children=[...card.children];children.forEach(n=>{if(!opts.all&&(n.matches('.data-gap,.gap-row')||n.querySelector('.data-gap,.gap-row')))return;body.append(n)});if(opts.open)d.open=true;card.prepend(d);return {d,body,summary};
 }
 // Numbers with units, percentages and dates stand out inside prose; chart captions, links, code and tables are left alone.
-const UNIT='(?:%|điểm %|điểm phần trăm|USD/thùng|USD/kg|US cent/lb|USD|k đ/kg|đ/kg|đồng/lít|đ/lít|triệu thùng/ngày|triệu thùng|mb/d|nghìn tấn|triệu tấn|tấn|lượt tàu/ngày|lượt/ngày|lượt tàu|lượt|tàu/ngày|tỷ USD|tỷ m³|triệu m³|nghìn ha|tỷ đồng|triệu tỷ|x)';
+const UNIT='(?:%|đ/kWh|đồng/kWh|tỷ kWh|triệu kWh|GW|MW|USD/tấn|USD/MMBtu|°C|điểm %|điểm phần trăm|USD/thùng|USD/kg|US cent/lb|USD|k đ/kg|đ/kg|đồng/lít|đ/lít|triệu thùng/ngày|triệu thùng|mb/d|nghìn tấn|triệu tấn|tấn|lượt tàu/ngày|lượt/ngày|lượt tàu|lượt|tàu/ngày|tỷ USD|tỷ m³|triệu m³|nghìn ha|tỷ đồng|triệu tỷ|x)';
 const NUM='[+\\-−]?\\d{1,3}(?:[.,]\\d{3})*(?:[.,]\\d+)?';
 const KEY=new RegExp('(?<![\\w/.,\\-])('+NUM+'(?:\\s?[–\\-]\\s?'+NUM+')?\\s?'+UNIT+'|\\d{2}/\\d{2}/\\d{4}|\\d{2}/\\d{2}/\\d{2})(?![\\w/%])','g');
 function emphasize(root){
  if(!root||root.dataset.emphasized)return;root.dataset.emphasized='1';
- const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>(n.parentElement.closest('table')&&!n.parentElement.closest('.compare-table'))||n.parentElement.closest('a,code,svg,button,input,textarea,select,label,.chart-sub,.chart-caveat,.chart-freshness,.chart-source-line,.key-number,.key-phrase,.thesis-metric,.thesis-period,.thesis-state,.research-caption,.cadence-note,.source-note,.source-links,.srcrow,.data-gap,.gap-row,.research-editor')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+ const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>(n.parentElement.closest('table')&&!n.parentElement.closest('.compare-table'))||n.parentElement.closest('a,code,svg,button,input,textarea,select,label,.chart-title,.chart-sub,.chart-caveat,.chart-freshness,.chart-source-line,.key-number,.key-phrase,.thesis-metric,.thesis-period,.thesis-state,.research-caption,.cadence-note,.source-note,.source-links,.srcrow,.data-gap,.gap-row,.research-editor')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
  nodes.forEach(t=>{const text=t.nodeValue;if(!KEY.test(text)){KEY.lastIndex=0;return}KEY.lastIndex=0;const frag=document.createDocumentFragment();let last=0;text.replace(KEY,(m,_g,offset)=>{frag.append(text.slice(last,offset));frag.append(make('b','key-number',m));last=offset+m.length;return m});frag.append(text.slice(last));t.replaceWith(frag)});
 }
-const policyTitles={'dau-khi-27':'Điều hành giá xăng dầu','dau-khi-28':'Luật Dầu khí 2026 · khung tác động','sugar-17':'Hạn ngạch & thuế nhập khẩu','sugar-18':'Phòng vệ thương mại · các mốc thay đổi'};
+const policyTitles={'dien-17':'Giá điện · cơ chế điều chỉnh','dien-18':'Quy hoạch điện VIII & chuyển dịch','dien-19':'DPPA, điện mái nhà & thị trường điện','dau-khi-27':'Điều hành giá xăng dầu','dau-khi-28':'Luật Dầu khí 2026 · khung tác động','sugar-17':'Hạn ngạch & thuế nhập khẩu','sugar-18':'Phòng vệ thương mại · các mốc thay đổi'};
 const policyCards=[...policy.querySelectorAll('.card')].filter(n=>!n.parentElement.closest('.card'));
 const impacts=new Map();
-policyCards.forEach((c,i)=>{const h=c.querySelector('h3,.chart-title'),title=policyTitles[c.dataset.blockId]||h?.childNodes[0]?.textContent?.trim()||'Chính sách phòng vệ thương mại';const f=fold(c,title);if(h)h.classList.add('research-repeated-heading');const p=make('p','research-caption',oil?(c.dataset.blockId!=='dau-khi-28'?'Tác động: PLX và khâu phân phối · trong quý · qua cơ chế giá và vòng quay tồn kho.':'Tác động: PVD/PVS trước, GAS và sản lượng sau · qua tiến độ đầu tư và hợp đồng.') :bank?'Tác động: vốn, thanh khoản và khả năng tăng tín dụng · mức độ khác nhau theo bảng cân đối từng ngân hàng.':'Tác động: giá nhập quy đổi và cạnh tranh nội địa · khác nhau giữa doanh nghiệp tự chủ mía và nhập nguyên liệu.');f.body.prepend(p);impacts.set(p.textContent,[...(impacts.get(p.textContent)||[]),p]);});
+policyCards.forEach((c,i)=>{const h=c.querySelector('h3,.chart-title'),title=policyTitles[c.dataset.blockId]||h?.childNodes[0]?.textContent?.trim()||'Chính sách phòng vệ thương mại';const f=fold(c,title);if(h)h.classList.add('research-repeated-heading');const p=make('p','research-caption',power?({'dien-17':'Tác động: dòng tiền EVN và khả năng thanh toán cho nhà máy · theo từng kỳ điều chỉnh giá.','dien-18':'Tác động: PC1, TV2, GEX và dự án nguồn mới · qua danh mục dự án và vốn đầu tư lưới.','dien-19':'Tác động: GEG, HDG, TTA và nhà máy bán điện trên thị trường · qua cơ chế giá và khách hàng mua trực tiếp.'}[c.dataset.blockId]||'Tác động: giá bán và sản lượng của nhà máy điện · khác nhau theo loại nguồn.'):oil?(c.dataset.blockId!=='dau-khi-28'?'Tác động: PLX và khâu phân phối · trong quý · qua cơ chế giá và vòng quay tồn kho.':'Tác động: PVD/PVS trước, GAS và sản lượng sau · qua tiến độ đầu tư và hợp đồng.') :bank?'Tác động: vốn, thanh khoản và khả năng tăng tín dụng · mức độ khác nhau theo bảng cân đối từng ngân hàng.':'Tác động: giá nhập quy đổi và cạnh tranh nội địa · khác nhau giữa doanh nghiệp tự chủ mía và nhập nguyên liệu.');f.body.prepend(p);impacts.set(p.textContent,[...(impacts.get(p.textContent)||[]),p]);});
 // A transmission line shared by several cards is said once under the section heading.
 const policyHead=policy.querySelector('.sectionhead');impacts.forEach((ps,text)=>{if(ps.length<2)return;ps.forEach(n=>n.remove());const once=make('p','research-caption policy-impact',text);(policyHead||policy).after(once)});
 policy.querySelectorAll('.sectionhead h2').forEach(h=>h.textContent='Chính sách · Thuế · Thương mại');
 // Compact chart labels. Unit, observation period, source and warning stay intact.
-const titles={chCrudeStock:'Tồn kho dầu thô Mỹ',chProdStock:'Tồn kho sản phẩm Mỹ',chDistYear:'Mùa vụ tồn kho diesel Mỹ',chCushing:'Tồn kho Cushing',chUsProd:'Sản lượng dầu Mỹ',chSpare:'Công suất dự phòng & gián đoạn',chCftc:'Vị thế quỹ WTI',chGasVol:'Khí & LNG Việt Nam',chMarginCompare:'Biên gộp mảng đường',chFastPrice:oil?'Brent Futures':'Sugar No.11 Futures',chHormuzM:'Tàu qua Hormuz',chCrack:'Crack spread',chBrentM:'Brent',chBrentY:'Brent · bình quân năm',chCurve:'Đường cong WTI',chWorldSD:'Cung cầu dầu toàn cầu',chWorldBalance:'Cung trừ cầu',chWorldRecent:'Giá đường thế giới',chWorldLong:'Giá đường · bình quân năm',chVnPrice:'Giá đường Việt Nam',chRetailFuel:'Giá bán lẻ xăng dầu',chVnUpstream:'Sản lượng dầu & khí Việt Nam'};
-Object.entries(titles).forEach(([id,title])=>{const c=$('#'+id)?.closest('.viz-block,.card'),h=c?.querySelector('.chart-title');if(h){const t=[...h.childNodes].find(n=>n.nodeType===3);if(t)t.textContent=title;}});
+const titles={chCrudeStock:'Tồn kho dầu thô Mỹ',chProdStock:'Tồn kho sản phẩm Mỹ',chDistYear:'Mùa vụ tồn kho diesel Mỹ',chCushing:'Tồn kho Cushing',chUsProd:'Sản lượng dầu Mỹ',chSpare:'Công suất dự phòng & gián đoạn',chCftc:'Vị thế quỹ WTI',chGasVol:'Khí & LNG Việt Nam',chMarginCompare:'Biên gộp mảng đường',chFastPrice:oil?'Brent Futures':power?'':'Sugar No.11 Futures',chHormuzM:'Tàu qua Hormuz',chCrack:'Crack spread',chBrentM:'Brent',chBrentY:'Brent · bình quân năm',chCurve:'Đường cong WTI',chWorldSD:'Cung cầu dầu toàn cầu',chWorldBalance:'Cung trừ cầu',chWorldRecent:'Giá đường thế giới',chWorldLong:'Giá đường · bình quân năm',chVnPrice:'Giá đường Việt Nam',chRetailFuel:'Giá bán lẻ xăng dầu',chVnUpstream:'Sản lượng dầu & khí Việt Nam'};
+Object.entries(titles).forEach(([id,title])=>{if(!title)return;const c=$('#'+id)?.closest('.viz-block,.card'),h=c?.querySelector('.chart-title');if(h){const t=[...h.childNodes].find(n=>n.nodeType===3);if(t)t.textContent=title;}});
 // Own the six primary routes while preserving historical #mt3/#mt6 links.
 const nav=$('.majortabbtn').parentElement;nav.replaceChildren();nav.setAttribute('role','tablist');nav.setAttribute('aria-label','Các phần nghiên cứu');
 const routes=[['mt1','Tổng quan ngành'],['mt2','Bức tranh ngành'],['mt4','Policy · Tax · Trade'],['mt5','Catalyst · Risk'],['mt7','Chủ đề nóng'],['mt8','Sources'],...(bank?[['mt9','Methodology']]:[])];
@@ -178,7 +183,9 @@ function select(key,hash=false){key=key==='mt3'?'mt2':key==='mt6'?(bank?'mt2':'m
 routes.forEach(([key,label],i)=>{const b=make('button','majortabbtn',`${i+1}. ${label}`);b.type='button';b.dataset.tab=key;b.id='research-tab-'+key;b.setAttribute('role','tab');const p=pane(Number(key.slice(2)));p.id=p.id||'pane-'+key;p.setAttribute('role','tabpanel');p.setAttribute('aria-labelledby',b.id);b.setAttribute('aria-controls',p.id);b.addEventListener('click',()=>{select(key,true);window.scrollTo({top:0,behavior:'instant'})});b.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const j=e.key==='Home'?0:e.key==='End'?routes.length-1:(i+(e.key==='ArrowRight'?1:routes.length-1))%routes.length;nav.children[j].click();nav.children[j].focus()});nav.append(b)});
 window.showMajorTab=key=>select(key,true);window.addEventListener('hashchange',()=>select(location.hash.slice(1)));select(location.hash.slice(1));
 // Interactive futures: frequency changes aggregation; range only filters observations.
-const feed=window.SECTOR_DAILY?.sources?.[oil?'brent_futures':'sugar_futures'],chart=$('#chFastPrice');
+const fastSrc=window.SECTOR_DAILY?.sources||{},powerFeed=['coal_newcastle','lng_jkm'].find(k=>fastSrc[k]?.records?.length)||'coal_newcastle';
+const feed=fastSrc[oil?'brent_futures':power?powerFeed:'sugar_futures'],chart=$('#chFastPrice');
+const fastName=oil?'Brent Futures':power?(powerFeed==='coal_newcastle'?'Than Newcastle':'LNG JKM'):'Sugar No.11 Futures',fastUnit=oil?'USD/thùng':power?(powerFeed==='coal_newcastle'?'USD/tấn':'USD/MMBtu'):'US cent/lb';
 if(chart&&feed?.records?.length){
  const card=chart.closest('.card'),control=make('div','chart-explore'),freq=make('select'),range=make('select'),start=make('input'),end=make('input');
  freq.id='price-frequency';range.id='price-range';start.id='price-from';end.id='price-to';start.type=end.type='date';
@@ -194,8 +201,8 @@ if(chart&&feed?.records?.length){
   if(!from||!to||from>to){chart.replaceChildren();table.replaceChildren();status.textContent='Chọn ngày bắt đầu không sau ngày kết thúc.';return}
   const rs=window.SectorMath.periodClose(raw.filter(r=>r.date>=from&&r.date<=to),freq.value);
   if(!rs.length){chart.replaceChildren();table.replaceChildren();status.textContent='Không có dữ liệu trong khoảng đã chọn.';return}
-  barLineChart('chFastPrice',{categories:rs.map(r=>r.date),series:[{name:oil?'Brent Futures':'Sugar No.11 Futures'+(feed.symbol&&feed.symbol!=='SB=F'?' · hợp đồng '+feed.symbol.replace('.NYB',''):''),kind:'line',color:'#2938A8',values:rs.map(r=>r.value)}],unit:oil?'USD/thùng':'US cent/lb',digits:2,height:270,zeroBase:false});
-  status.textContent=rs.length+' điểm · '+from+' → '+to+(freq.value==='day'?'':' · close cuối mỗi kỳ, kỳ đầu/cuối có thể chưa đủ')+(feed.symbol&&feed.symbol!=='SB=F'&&!oil?' · Một hợp đồng '+feed.symbol.replace('.NYB','')+' (Yahoo không trả đủ chuỗi SB=F); không ghép các hợp đồng.':'');
+  barLineChart('chFastPrice',{categories:rs.map(r=>r.date),series:[{name:fastName+(!oil&&!power&&feed.symbol&&feed.symbol!=='SB=F'?' · hợp đồng '+feed.symbol.replace('.NYB',''):''),kind:'line',color:'#2938A8',values:rs.map(r=>r.value)}],unit:fastUnit,digits:2,height:270,zeroBase:false});
+  status.textContent=rs.length+' điểm · '+from+' → '+to+(freq.value==='day'?'':' · close cuối mỗi kỳ, kỳ đầu/cuối có thể chưa đủ')+(feed.symbol&&feed.symbol!=='SB=F'&&!oil&&!power?' · Một hợp đồng '+feed.symbol.replace('.NYB','')+' (Yahoo không trả đủ chuỗi SB=F); không ghép các hợp đồng.':'');
   table.replaceChildren();const h=make('tr');['Kỳ','Phiên quan sát','Giá đóng cửa'].forEach(t=>h.append(make('th','',t)));table.append(h);rs.forEach(r=>{const tr=make('tr');[r.date,r.last_date,r.value===null?'—':r.value.toLocaleString('vi-VN',{maximumFractionDigits:2})].forEach(t=>tr.append(make('td','',t)));table.append(tr)});
  }
  [freq,range,start,end].forEach(n=>n.addEventListener('change',draw));draw();
