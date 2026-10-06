@@ -41,9 +41,9 @@ def due(key: str, now: dt.datetime, last_checked: str | None) -> bool:
         window = day < 6  # PortWatch batch timing and Petrolimex events can shift.
     if not window:
         return False
-    if key in ('singapore_cracks', 'retail_fuel'):
-        return (local - checked).total_seconds() >= 6 * 3600
-    return checked.date() != local.date()
+    # Inside a release window every scheduled run re-checks (runs are >= 6 h apart: 07:30, 15:30),
+    # so a source that publishes after the morning run still reaches the dashboard that afternoon.
+    return (local - checked).total_seconds() >= 6 * 3600
 
 
 def bank_due(now: dt.datetime, last_checked: str | None) -> bool:

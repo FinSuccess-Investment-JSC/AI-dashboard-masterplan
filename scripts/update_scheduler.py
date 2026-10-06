@@ -39,6 +39,7 @@ MAX_SEEN = 3000
 MAX_SIGNALS = 20
 STUCK_AFTER = 3            # failed routine attempts before the item is flagged
 A_REMIND_DAYS = 7          # repeat "still broken" alerts for a tier-A source weekly
+PARKED = ('todo', 'blocked', 'manual')  # never queued; manual = updated when the user asks
 
 
 # ---------- schedule ----------
@@ -366,7 +367,7 @@ def queue_details(reg: dict, state: dict) -> list[dict]:
     out = []
     for q in state['queue']:
         item = items.get(q['id'], {})
-        if item.get('status') in ('todo', 'blocked'):  # parked in the registry: not for the routine yet
+        if item.get('status') in PARKED:  # todo/blocked, or manual (only when the user asks)
             continue
         st = state['items'].get(q['id'], {})
         out.append({**q, **{k: item.get(k) for k in ('where', 'source', 'how', 'gates', 'wiBlocks', 'sources') if item.get(k)},
@@ -420,8 +421,11 @@ def main(argv=None) -> int:
             more, warn = a_health(reg, state, now, sources)
             lines += more
             alerts += warn
+        parked = {i['id'] for i in reg['items'] if i.get('status') in PARKED}
+        if args.run and any(q['id'] in parked for q in state['queue']):  # registry decision changed: drop stale entries
+            state['queue'] = [q for q in state['queue'] if q['id'] not in parked]
         for item in reg['items']:
-            if item['tier'] not in ('B', 'C', 'D') or item.get('status') in ('todo', 'blocked') or (only and item['id'] not in only):
+            if item['tier'] not in ('B', 'C', 'D') or item.get('status') in PARKED or (only and item['id'] not in only):
                 continue
             st = state['items'].setdefault(item['id'], {})
             due, reason = is_due(item, st, state, now, sources)

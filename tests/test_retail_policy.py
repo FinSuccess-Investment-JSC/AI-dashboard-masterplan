@@ -47,6 +47,7 @@ Mazut N°2B (3,58) Déng/kg 20.390 20.790'''
         checked_yesterday = '2026-10-07T00:30:00+00:00'
         self.assertTrue(due('crude_stock', thu, checked_yesterday))
         self.assertFalse(due('crude_stock', thu, thu.astimezone(dt.timezone.utc).isoformat()))
+        self.assertTrue(due('crude_stock', thu.replace(hour=15), thu.astimezone(dt.timezone.utc).isoformat()))  # afternoon re-check
         self.assertTrue(due('retail_fuel', thu, checked_yesterday))
         self.assertFalse(due('retail_fuel', thu, thu.astimezone(dt.timezone.utc).isoformat()))
         self.assertTrue(due('retail_fuel', thu + dt.timedelta(hours=8), thu.astimezone(dt.timezone.utc).isoformat()))

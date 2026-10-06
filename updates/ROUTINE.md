@@ -37,6 +37,8 @@ Mỗi lượt xử lý tối đa 6 mục đầu theo đúng thứ tự `--queue`
 
 ## Quy tắc của người dùng (bản rút gọn từ memory)
 
+- Dashboard ngành ưu tiên dữ liệu thị trường mới nhất; số BCTC/doanh nghiệp chỉ cập nhật khi người dùng nhắn — routine không tự đi tìm BCTC.
+
 - Màu và font theo FinSuccess (`DESIGN_RULES.md`, `assets/fin-success-theme.css`, style fisc.vn); không thêm màu ngoài token.
 - Nguồn dưới mỗi chart/bảng/số là link bấm được tới đúng trang hoặc file gốc; không có URL thì ghi tên file nội bộ, tuyệt đối không bịa link.
 - Ít chữ, dễ nắm key: không viết điều đã thấy trên chart; con số và cụm ý chính in đậm/đổi màu (`ResearchLayout.emphasize()`, `<mark class="key-phrase">`); so với kỳ trước thì kẻ bảng Trước/Sau (`.compare-table`). Nhãn lời bình ghi đúng "Phân tích AI ngày dd/mm/yyyy".
