@@ -88,13 +88,12 @@ Check the Actions run and `data/site-release.json` after the first scheduled dep
 
 ### Move to the FISC GitHub account
 
-Done 06/10/2026: the repository now lives at `FinSuccess-Investment-JSC/AI-dashboard-masterplan` (transferred, history and Actions kept); public site `https://finsuccess-investment-jsc.github.io/AI-dashboard-masterplan/`. The old name `thanhnhan-04/AI-dashboard-masterplan` is a separate redirect-only repository (`index.html` + `404.html`) that forwards any old path, query and hash to the new site; do not push dashboard code there. A forced manual run of *Refresh dashboard data* in the organization committed and published release `20261006T043852Z`.
+Done 06/10/2026: the repository now lives at `FinSuccess-Investment-JSC/AI-dashboard-masterplan` (transferred, history and Actions kept); public site `https://finsuccess-investment-jsc.github.io/AI-dashboard-masterplan/`. The old name `thanhnhan-04/AI-dashboard-masterplan` is a separate redirect-only repository (`index.html` + `404.html`) that forwards any old path, query and hash to the new site; do not push dashboard code there. A forced manual run of *Refresh dashboard data* in the organization committed and published release `20261006T043852Z`; `tests/site-navigation.cjs` passes against the new `SITE_BASE`.
 
 Still open:
 
-1. Rerun `tests/site-navigation.cjs` with `SITE_BASE=https://finsuccess-investment-jsc.github.io/AI-dashboard-masterplan/`.
-2. Custom domain for Pages (e.g. `dashboard.fisc.vn`) so the public link survives future host changes.
-3. Add secrets `ZALO_OA_TOKEN`, `ZALO_USER_ID` (or Telegram) in the organization repository.
-4. Wi (Bank) refresh: schedule a Claude routine that reruns `data/bank-wi-contract.json` with WiMCP and `scripts/build_bank_wi.py`, then opens a commit for the job to publish.
-5. Remove the old local cron block `FIN_SUCCESS_SECTOR_DASHBOARDS` (between its START/END markers) if still present.
+1. Custom domain for Pages (e.g. `dashboard.fisc.vn`) so the public link survives future host changes.
+2. Add secrets `ZALO_OA_TOKEN`, `ZALO_USER_ID` (or Telegram) in the organization repository.
+3. Wi (Bank) refresh: schedule a Claude routine that reruns `data/bank-wi-contract.json` with WiMCP and `scripts/build_bank_wi.py`, then opens a commit for the job to publish.
+4. Remove the old local cron block `FIN_SUCCESS_SECTOR_DASHBOARDS` (between its START/END markers) if still present.
 
