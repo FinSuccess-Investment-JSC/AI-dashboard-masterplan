@@ -162,7 +162,7 @@ PSD_SUGAR='https://apps.fas.usda.gov/psdonline/downloads/psd_sugar_csv.zip'
 def parse_daily_futures(result, symbol, today=None):
     meta=result['meta']
     if meta.get('symbol')!=symbol or meta.get('currency')!=('USX' if symbol=='SB=F' else 'USD') or meta.get('instrumentType')!='FUTURE':
-        raise ValueError('Futures identity/unit mismatch')
+        raise ValueError(f"Futures identity/unit mismatch: {meta.get('symbol')}/{meta.get('currency')}/{meta.get('instrumentType')}")
     zone=ZoneInfo(meta['exchangeTimezoneName']);today=today or dt.datetime.now(zone).date()
     records=[]
     for stamp,value in zip(result.get('timestamp',[]),result['indicators']['quote'][0]['close']):
@@ -171,7 +171,9 @@ def parse_daily_futures(result, symbol, today=None):
         if not isinstance(value,(int,float)) or value<=0:raise ValueError('Invalid futures close')
         records.append({'date':date.isoformat(),'value':round(value,4)})
     rows=normalize(records,['value'],today)
-    if len(rows)<100:raise ValueError('Incomplete futures history')
+    # Yahoo can serve only the latest bar for a continuous symbol (SB=F, 06.10.2026, after the
+    # V26->H27 roll): reject it so the caller keeps last-good instead of publishing a stub.
+    if len(rows)<100:raise ValueError(f'Incomplete futures history: {len(rows)} completed sessions from {len(result.get("timestamp",[]))} bars')
     if (today-dt.date.fromisoformat(rows[-1]['date'])).days>10:raise ValueError('Futures feed is stale')
     return rows
 
@@ -236,6 +238,17 @@ def atomic(path, text):
     finally:
         if os.path.exists(tmp):os.unlink(tmp)
 
+def previous_bundle(out):
+    # daily.json is an ignored local cache, absent on a fresh CI checkout. Without this the
+    # committed browser bundle was ignored there and a failed source lost its last-good records.
+    found=[]
+    for path,prefix in ((out/'daily.json',''),(out/'daily-data.js','window.SECTOR_DAILY = ')):
+        if not path.exists():continue
+        text=path.read_text()
+        if not text.startswith(prefix):raise ValueError(f'Unexpected bundle: {path}')
+        found.append(json.loads(text[len(prefix):].strip().removesuffix(';')))
+    return max(found,key=lambda b:b.get('last_run_at') or '',default={'schema_version':1,'sources':{}})
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--output-dir',type=Path,default=ROOT/'data');parser.add_argument('--sources',nargs='*');parser.add_argument('--scheduled',action='store_true',help='Check only feeds due under source-specific polling windows');args=parser.parse_args()
     out=args.output_dir;out.mkdir(parents=True,exist_ok=True)
@@ -245,7 +258,7 @@ def main():
     except BlockingIOError:
         lock_file.close();print('Another update holds '+str(lock),file=sys.stderr);return 2
     try:
-        cache=out/'daily.json';bundle=json.loads(cache.read_text()) if cache.exists() else {'schema_version':1,'sources':{}}
+        cache=out/'daily.json';bundle=previous_bundle(out)
         tasks={k:(lambda k=k,s=s:load_eia(k,s)) for k,s in EIA.items()}
         tasks.update(hormuz=load_portwatch,bab_el_mandeb=lambda:load_portwatch('chokepoint4'),middle_east_crude_exports=lambda:load_middle_east_exports(bundle['sources'].get('middle_east_crude_exports',{}).get('records')),wti_curve=load_curve,brent_futures=lambda:load_daily_futures("BZ=F","USD/barrel"),sugar_futures=lambda:load_daily_futures("SB=F","US cents/lb"),sugar_monthly=load_wb_sugar,sugar_producers=load_sugar_producers,
                      singapore_cracks=lambda:load_singapore_cracks(bundle['sources'].get('singapore_cracks',{}).get('records')),
