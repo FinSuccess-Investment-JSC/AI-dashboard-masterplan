@@ -20,6 +20,24 @@ Diézen 0,05S-II Dongl/lit 30.490 31.090'''
         with self.assertRaises(ValueError):
             parse_prices(ocr.replace('Diézen 0,05S-II', 'Dau hỏa'))
 
+    def test_petrolimex_renamed_rows_from_2026_10_01(self):
+        # tesseract 5.5 eng output of the 01.10.2026 table: products renamed "... Mức N", E5 read as "ES".
+        ocr = '''Mat hang thué GTGT) Vung 1 Vung 2
+Xang E10 RON 95 Mitre 5 Déngllit 28.180 28.740
+Xang E10 RON 95-IIl Mtrc 3 Déngllit 27.180 27.720
+Xang ES RON 92-II Mire 2 Déngllit 26.560 27.090
+Diézen 0,001S-V Mtrc 5 Dongllit 31.110 31.730
+Diézen 0,05S-Il Mire 2 Dongl/lit 29.710 30.300
+Dau hda 2 - K Dongllit 29.770 30.360
+Mazut N°2B (3,58) Déng/kg 20.390 20.790'''
+        self.assertEqual(parse_prices(ocr), {'e5': 26560, 'ron95': 27180, 'diesel': 29710})
+        with self.assertRaisesRegex(ValueError, 'ambiguous: E5'):
+            parse_prices(ocr + '\nXang E5 RON 92-II Mire 2 Déngllit 26.560 27.090')
+        with self.assertRaisesRegex(ValueError, 'missing or ambiguous: E5'):
+            parse_prices(ocr.replace('Xang ES RON 92-II', 'Xang RON 92-II'))
+        with self.assertRaisesRegex(ValueError, 'ambiguous: E10'):
+            parse_prices(ocr.replace('95 Mitre 5', '95-IIl Mitre 5'))
+
     def test_notice_date(self):
         html = '<a href="/ndi/thong-cao-bao-chi/ngay-24-9-2026.html">Petrolimex điều chỉnh giá xăng dầu từ 15 giờ 00 phút ngày 24.9.2026</a>'
         self.assertEqual(list(article_links(html)), ['2026-09-24'])

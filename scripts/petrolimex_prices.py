@@ -19,17 +19,19 @@ PRICE = re.compile(r'\b(\d{2})\.(\d{3})\b')
 
 def parse_prices(ocr: str):
     lines = [line.strip() for line in ocr.splitlines() if line.strip()]
-    def price_from(candidates):
+    def price_from(product, candidates):
         if len(candidates) != 1:
-            raise ValueError('Petrolimex product row missing or ambiguous')
+            raise ValueError(f'Petrolimex product row missing or ambiguous: {product}')
         values = [int(a) * 1000 + int(b) for a, b in PRICE.findall(candidates[0])]
         if len(values) != 2 or not 5000 <= values[0] <= values[1] <= 100000 or values[1] - values[0] > 3000:
             raise ValueError('Petrolimex Zone 1/2 prices invalid')
         return values[0]
-    e5 = price_from([line for line in lines if re.search(r'E5\s+RON\s*92', line, re.I)])
-    ron95 = price_from([line for line in lines if re.search(r'E10\s+RON\s*95-', line, re.I)
-                        and not re.search(r'95-V\b', line, re.I)])
-    diesel = price_from([line for line in lines if re.search(r'0[,.]05S', line, re.I)])
+    # From 01.10.2026 rows read "Xăng E5 RON 92-II Mức 2" (no "sinh học", emission level suffix);
+    # tesseract eng reads that "E5" as "ES". A second E5/ES row is still rejected as ambiguous.
+    e5 = price_from('E5 RON 92', [line for line in lines if re.search(r'E[5S]\s+RON\s*92', line, re.I)])
+    ron95 = price_from('E10 RON 95-III', [line for line in lines if re.search(r'E10\s+RON\s*95-', line, re.I)
+                                          and not re.search(r'95-V\b', line, re.I)])
+    diesel = price_from('DO 0,05S', [line for line in lines if re.search(r'0[,.]05S', line, re.I)])
     return {'e5': e5, 'ron95': ron95, 'diesel': diesel}
 
 
