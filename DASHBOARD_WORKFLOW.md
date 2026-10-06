@@ -166,3 +166,12 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Bảng màu:** chỉ dùng token trong `DESIGN_RULES.md`; sơ đồ luồng vốn Bank, chuỗi giá trị và chart nguồn đã chuyển khỏi màu xanh rêu cũ.
 - **Cập nhật trên cloud:** GitHub Actions (`refresh-data.yml`, 07:30 và 15:30) là đường cập nhật duy nhất, không phụ thuộc máy bật; tự commit và publish khi test qua. Thông báo Zalo khi nguồn chuyển sang lỗi, phục hồi, có số mới hoặc job lỗi (chỉ báo lúc chuyển trạng thái). Wi (Bank) vẫn cần phiên Claude có WiMCP. Các bước chuyển sang GitHub của FISC ở `scripts/README.md`.
 
+
+## 16. Lịch cập nhật theo kỳ của từng nguồn (06/10/2026)
+
+- **Một danh mục duy nhất:** `updates/registry.json` liệt kê mọi khối dữ liệu (mã card `data-block-id`, nhóm, nguồn có link, lịch công bố, lịch kiểm, cách cập nhật, điều kiện kiểm). Thêm card dữ liệu mới thì phải thêm vào registry; `tests/test_update_scheduler.py` báo lỗi nếu card không có lịch.
+- **Bốn nhóm:** A = script nguồn công khai (`refresh_release.py` + `polling_policy.py`, 07:30 và 15:30); B = Wi qua WiMCP; C = tài liệu/sự kiện Claude đọc; D = lời bình AI viết lại khi số liệu nền đổi (tối thiểu 7–28 ngày một lần). Khối tĩnh không có lịch.
+- **Xếp hàng chờ:** `scripts/update_scheduler.py --run --watch` chạy trong cùng job GitHub: kiểm 17 watcher (RSS NSO, danh sách BCTC CafeF theo mã, IR doanh nghiệp, Bộ Công Thương, PSD USDA, báo cáo CTCK), thấy tài liệu mới hoặc đến lịch thì đưa mục B/C/D vào `updates/state.json`. Watcher lần đầu chỉ ghi mốc; mỗi mục được rà một lần khi registry mới tạo.
+- **Claude routine 08:00 T2–T6** xử lý tối đa 6 mục/lượt theo `updates/ROUTINE.md`, kiểm số, chạy test, chuẩn bị release, push thẳng `main` (người dùng cho phép tự publish) và ghi `updates/routine-notify.txt` để workflow `routine-notify.yml` gửi Zalo/Telegram.
+- **Lịch đã kiểm:** NSO công bố ngày 3 hằng tháng từ 05/2026 (QĐ 03/QĐ-CTK); BCTC quý ≤20 ngày (công ty mẹ 30), bán niên ≤45/60, năm kiểm toán ≤90 ngày (TT96/2020, VBHN 10/2026); điều hành giá xăng dầu thứ Năm (NĐ 80/2023, dự thảo thay thế có thể bỏ từ 2027); TRQ đường thường quyết định tháng 8–9, đấu giá tháng 9–10. USDA không còn báo cáo GAIN đường Việt Nam từ 2021, dùng PSD. VSSA và Hải quan không có trang đọc được bằng máy.
+- **Last-good trên cloud:** `update_daily.py` đọc bản mới hơn giữa `data/daily.json` và `data/daily-data.js`; trước 06/10/2026 runner không có `daily.json` nên nguồn lỗi bị xóa số (Petrolimex, Sugar futures). Nguồn A lỗi kéo dài được nhắc lại mỗi 7 ngày.

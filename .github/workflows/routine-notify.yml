@@ -1,0 +1,27 @@
+name: Routine notification
+
+# The 08:00 Claude routine (updates/ROUTINE.md) has no Zalo/Telegram secrets; it writes
+# updates/routine-notify.txt and this job sends it with the repository secrets.
+"on":
+  push:
+    branches: [main]
+    paths: ['updates/routine-notify.txt']
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Send routine summary
+        env:
+          ZALO_OA_TOKEN: ${{ secrets.ZALO_OA_TOKEN }}
+          ZALO_USER_ID: ${{ secrets.ZALO_USER_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python scripts/notify.py updates/routine-notify.txt

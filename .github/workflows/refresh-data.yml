@@ -49,26 +49,33 @@ jobs:
           else
             python scripts/refresh_release.py --prepare-release --notify-file .notify.txt "${extra[@]}"
           fi
+      # Tiers B/C/D (Wi, documents, AI text): queue due items for the 08:00 Claude routine
+      # (updates/ROUTINE.md) and check publication pages. Never blocks publishing tier A.
+      - name: Queue Wi, document and AI-text updates
+        continue-on-error: true
+        run: python scripts/update_scheduler.py --run --watch --notify-file .notify.txt
       - name: Validate generated data
         run: |
           python -m unittest discover -s tests
           node tests/data-math.test.cjs
           node tests/financial-comparison.test.cjs
-      - name: Publish changed data to the existing Pages branch
-        if: steps.refresh.outputs.changed == 'true'
+      - name: Publish changed data and schedule state
         env:
           GH_TOKEN: ${{ github.token }}
+          DATA_CHANGED: ${{ steps.refresh.outputs.changed }}
         run: |
-          git add data/daily-data.js data/update-status.json data/bank-public-data.js data/company-comparison.js data/company-comparison.json data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html
+          git add data/daily-data.js data/update-status.json data/bank-public-data.js data/company-comparison.js data/company-comparison.json data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html updates/state.json updates/last-run.md
           if git diff --cached --quiet; then
-            echo 'No observations or source statuses changed.'
+            echo 'No observations, source statuses or schedule state changed.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Refresh public dashboard observations'
+          if [ "$DATA_CHANGED" = 'true' ]; then git commit -m 'Refresh public dashboard observations'; else git commit -m 'Update data schedule state'; fi
+          git pull --rebase --autostash origin main  # the Claude routine may have pushed meanwhile
           git push origin HEAD:main
-          gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"
+          # GITHUB_TOKEN commits do not trigger the legacy Pages build; schedule-only commits need no build.
+          if [ "$DATA_CHANGED" = 'true' ]; then gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"; fi
       # Zalo (or Telegram) alert. Without the secrets the message is only printed to the log.
       - name: Notify changes and source errors
         if: success()
