@@ -1,3 +1,5 @@
+import contextlib
+import io
 import json
 import re
 import tempfile
@@ -205,7 +207,8 @@ class RegistryTests(unittest.TestCase):
     def test_dry_run_writes_nothing(self):
         with tempfile.TemporaryDirectory() as directory, patch.object(us, 'STATE', Path(directory) / 'state.json'), \
                 patch.object(us, 'REPORT', Path(directory) / 'last-run.md'):
-            self.assertEqual(us.main(['--now', '2026-10-12T08:00']), 0)
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(us.main(['--now', '2026-10-12T08:00']), 0)
             self.assertFalse((Path(directory) / 'state.json').exists())
 
 
