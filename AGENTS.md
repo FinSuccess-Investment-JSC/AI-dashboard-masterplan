@@ -5,3 +5,5 @@ Before changing sector dashboards, read [DASHBOARD_WORKFLOW.md](DASHBOARD_WORKFL
 For design, color and typography changes, read [DESIGN_RULES.md](DESIGN_RULES.md). Apply the shared FinSuccess theme in `assets/fin-success-theme.css` across the hub and all sector dashboards.
 
 Read `AI_WORKSPACE/README.md` and current status/task/update notes when available. Do not overwrite unrelated user edits.
+
+`AI_WORKSPACE/` is not part of this repository: it is the private repository `FinSuccess-Investment-JSC/AI-dashboard-notes`, cloned into `AI_WORKSPACE/`. If the folder is missing (new machine), clone it there before starting. After changing notes, commit and push that repository too.
