@@ -366,6 +366,8 @@ def queue_details(reg: dict, state: dict) -> list[dict]:
     out = []
     for q in state['queue']:
         item = items.get(q['id'], {})
+        if item.get('status') in ('todo', 'blocked'):  # parked in the registry: not for the routine yet
+            continue
         st = state['items'].get(q['id'], {})
         out.append({**q, **{k: item.get(k) for k in ('where', 'source', 'how', 'gates', 'wiBlocks', 'sources') if item.get(k)},
                     'lastSuccess': st.get('lastSuccess'), 'lastError': st.get('lastError'), 'attempts': st.get('attempts', 0)})

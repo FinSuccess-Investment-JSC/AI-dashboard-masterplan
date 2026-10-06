@@ -488,7 +488,10 @@ def block_news(today):
 
 def block_valuation(today):
     rd = load('ratio_daily_banks_20260910_11.json'); sec = load('sector_ratio_daily_107.json'); com = load('ratio_common_ttm_2026q2.json')
-    completed = '2026-09-10'
+    # A row dated `today` may be an intraday price; use the latest session before today.
+    sessions = sorted({r['trading_date'] for r in rd['data'] if r['trading_date'] < today})
+    if not sessions: raise RawError('valuation: no completed session before today')
+    completed = sessions[-1]
     rows = [r for r in rd['data'] if r['trading_date'] == completed]
     if len(rows) != 27: raise RawError('valuation: expected 27 banks on completed session')
     roe = {r['symbol']: r['roe'] for r in com['data']}
@@ -497,11 +500,11 @@ def block_valuation(today):
     spts = sorted([[r['trading_date'], r['pe'], r['pb'], r['market_cap']] for r in srows], key=lambda x: x[0])
     check_dates([[p[0], p[1]] for p in spts], today, 'sector_pe')
     return {
-        'source_ids': ['companies:ratio_daily (27 bank, trading_date=2026-09-10)', 'sector:sector_ratio_daily:sector_id=107', 'companies:ratio_common_ttm:roe'],
+        'source_ids': [f'companies:ratio_daily (27 bank, trading_date={completed})', 'sector:sector_ratio_daily:sector_id=107', 'companies:ratio_common_ttm:roe'],
         'source_tables': 'Wi ratio_daily (định giá theo giá đóng cửa ngày) + sector_ratio_daily (ngành 107) + ROE TTM Q2/2026',
         'publication_frequency': 'Cuối mỗi phiên giao dịch', 'observation_frequency': 'daily', 'latest_observation': completed,
         'price_date': completed, 'fs_period': '2026Q2 (EPS/BVPS trailing theo Wi)', 'unit': 'lần; VND',
-        'date_note': 'Dòng 2026-09-11 trong raw là trong phiên nên không dùng; dashboard lấy phiên hoàn tất 2026-09-10. Agribank không niêm yết.',
+        'date_note': f'Dashboard lấy phiên đã đóng cửa gần nhất trước ngày kiểm ({completed}); dòng cùng ngày kiểm có thể là giá trong phiên nên không dùng. Agribank không niêm yết.',
         'data': {'banks': banks, 'sector_daily': spts},
     }
 

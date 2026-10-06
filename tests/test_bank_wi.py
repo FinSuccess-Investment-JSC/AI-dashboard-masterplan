@@ -11,7 +11,7 @@ spec = importlib.util.spec_from_file_location('build_bank_wi', ROOT / 'scripts/b
 wi = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(wi)
 RAW = ROOT / 'data/raw/wi'
-TODAY = '2026-09-11'
+TODAY = __import__('datetime').date.today().isoformat()  # raw files are refreshed by the routine
 
 
 class WiValidationTests(unittest.TestCase):
@@ -68,7 +68,8 @@ class WiValidationTests(unittest.TestCase):
 
     def test_valuation_uses_completed_session(self):
         b = wi.block_valuation(TODAY)
-        self.assertEqual(b['price_date'], '2026-09-10')
+        raw = json.loads(next(RAW.glob('ratio_daily_banks_*.json')).read_text())
+        self.assertEqual(b['price_date'], max(r['trading_date'] for r in raw['data'] if r['trading_date'] < TODAY))
         self.assertEqual(len(b['data']['banks']), 27)
 
     def test_forecast_targets_flagged(self):

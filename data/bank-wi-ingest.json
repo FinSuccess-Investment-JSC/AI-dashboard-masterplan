@@ -1,0 +1,242 @@
+{
+ "about": "Cách nạp kết quả WiMCP vào từng file data/raw/wi/*.json (scripts/wi_ingest.py). Kết quả MCP lưu nguyên văn; script ghép vào cấu trúc file hiện có, đối chiếu kỳ chồng lấn: lệch ở các kỳ gần nhất = Wi sửa số (ghi vào revisions), lệch ở kỳ cũ hơn = lỗi chép, không ghi file.",
+ "tool_names": {
+  "wifeed_macro": "wi_data_macro",
+  "wifeed_gbond": "wi_data_gbond",
+  "wifeed_stock_market": "wi_data_stock",
+  "wifeed_sector": "wi_data_sector",
+  "wifeed_companies": "wi_data_companies",
+  "wifeed_cbond": "wi_data_cbond",
+  "wifeed_news": "wi_data_news",
+  "wifeed_macro_forecast": "wi_data_macro_forecast"
+ },
+ "revisable_points": 5,
+ "overlap_days": 7,
+ "files": {
+  "macro_money_market_daily.json": {
+   "parts": [
+    {
+     "kind": "series",
+     "path": "series"
+    }
+   ]
+  },
+  "macro_fx_daily.json": {
+   "parts": [
+    {
+     "kind": "series",
+     "path": "series"
+    }
+   ]
+  },
+  "gbond_yield_curve_daily.json": {
+   "parts": [
+    {
+     "kind": "series",
+     "path": "series"
+    }
+   ]
+  },
+  "macro_funding_credit_monthly.json": {
+   "parts": [
+    {
+     "kind": "series",
+     "path": "series"
+    }
+   ],
+   "overlap_days": 120
+  },
+  "macro_vn_activity.json": {
+   "parts": [
+    {
+     "kind": "series",
+     "path": "series"
+    }
+   ],
+   "overlap_days": 200
+  },
+  "macro_credit_sectors_monthly.json": {
+   "parts": [
+    {
+     "kind": "aligned",
+     "path": "series",
+     "dates": "dates",
+     "pairs": {
+      "id": "values",
+      "yoy_id": "yoy"
+     }
+    }
+   ],
+   "overlap_days": 120
+  },
+  "macro_deposit_rates_groups.json": {
+   "parts": [
+    {
+     "kind": "aligned",
+     "path": "monthly",
+     "dates": "dates",
+     "pairs": {
+      "id": "values"
+     }
+    },
+    {
+     "kind": "aligned_flat",
+     "path": "daily_12m_latest",
+     "dates": "dates",
+     "keep": 12,
+     "overlap_days": 7
+    }
+   ],
+   "overlap_days": 60,
+   "manual": [
+    "policy_rates_latest"
+   ]
+  },
+  "macro_deposit_rates_banks_12m.json": {
+   "parts": [
+    {
+     "kind": "snapshot_rows",
+     "id_col": 2,
+     "value_col": 3,
+     "date_field": "observation_date"
+    }
+   ],
+   "recent_days": 5
+  },
+  "index_ratio_daily_vnindex.json": {
+   "parts": [
+    {
+     "kind": "table",
+     "key": [
+      "trading_date"
+     ],
+     "date": "trading_date"
+    }
+   ]
+  },
+  "sector_ratio_daily_107.json": {
+   "parts": [
+    {
+     "kind": "table",
+     "key": [
+      "trading_date"
+     ],
+     "date": "trading_date"
+    }
+   ]
+  },
+  "gbond_primary_auctions.json": {
+   "parts": [
+    {
+     "kind": "table",
+     "key": [
+      "auction_date",
+      "bond_ticker"
+     ],
+     "date": "auction_date"
+    }
+   ]
+  },
+  "cbond_bank_issuances_2026.json": {
+   "parts": [
+    {
+     "kind": "table",
+     "key": [
+      "bond_ticker"
+     ],
+     "date": "issuance_start_date",
+     "window_replace": true
+    }
+   ],
+   "overlap_days": 30
+  },
+  "cbond_bank_buybacks_2026.json": {
+   "parts": [
+    {
+     "kind": "table",
+     "key": [
+      "execute_date",
+      "buyback_value",
+      "value_before_buyback",
+      "value_after_buyback"
+     ],
+     "date": "execute_date",
+     "window_replace": true
+    }
+   ],
+   "overlap_days": 30
+  },
+  "macro_forecast_rates_credit.json": {
+   "parts": [
+    {
+     "kind": "table",
+     "key": [
+      "id"
+     ],
+     "date": "release_date"
+    }
+   ],
+   "overlap_days": 30
+  },
+  "macro_forecast_gdp_fx.json": {
+   "parts": [
+    {
+     "kind": "table",
+     "key": [
+      "id"
+     ],
+     "date": "release_date"
+    }
+   ],
+   "overlap_days": 30
+  },
+  "ratio_daily_banks_20260910_11.json": {
+   "parts": [
+    {
+     "kind": "records",
+     "path": "data",
+     "key": [
+      "symbol",
+      "trading_date"
+     ],
+     "date": "trading_date",
+     "keep_dates": 2
+    }
+   ],
+   "recent_days": 5
+  },
+  "news_bank_20260901_11.json": {
+   "manual": "Tin tức: routine thay bằng 25 CBTT + 11 ai_news mới nhất theo đúng cấu trúc cũ (chữ, không phải số)."
+  },
+  "sector_fs_bank_107_q.json": {
+   "quarterly": true
+  },
+  "fs_bank_2026q2_core.json": {
+   "quarterly": true
+  },
+  "fs_bank_notes_2026q2_aq.json": {
+   "quarterly": true
+  },
+  "ratio_bank_q_2026q2_mix.json": {
+   "quarterly": true
+  },
+  "ratio_bank_q_2026q2_structure.json": {
+   "quarterly": true
+  },
+  "ratio_bank_ttm_2026q2.json": {
+   "quarterly": true
+  },
+  "ratio_bank_ttm_core11_8q.json": {
+   "quarterly": true
+  },
+  "ratio_common_ttm_2026q2.json": {
+   "quarterly": true
+  },
+  "sector_ratio_bank_107.json": {
+   "quarterly": true
+  }
+ },
+ "limit_max": {
+  "wi_data_macro_forecast": 100
+ }
+}

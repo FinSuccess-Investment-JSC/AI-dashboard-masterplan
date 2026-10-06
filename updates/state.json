@@ -17,14 +17,14 @@
   "bank.eximbank": {},
   "comparison.financials": {},
   "bank.wi.daily": {
-   "lastAttempt": "2026-10-06T14:22:41+07:00",
-   "lastError": "Không ghi được raw Wi tự động: WiMCP gọi được nhưng response chỉ trả về hội thoại, chuyển tay ~25 file raw dễ sai số; giữ số cũ, cần chạy có script/ người dùng",
-   "attempts": 1
+   "lastAttempt": "2026-10-06T14:42:11+07:00",
+   "lastSuccess": "2026-10-06T14:42:11+07:00",
+   "lastNote": "Nạp qua hook + wi_ingest: lãi suất/tỷ giá/TPCP/định giá đến 06/10, 20/20 khối build OK"
   },
   "bank.wi.monthly": {
-   "lastAttempt": "2026-10-06T14:22:41+07:00",
-   "lastError": "Như bank.wi.daily: giữ số cũ",
-   "attempts": 1
+   "lastAttempt": "2026-10-06T14:42:11+07:00",
+   "lastSuccess": "2026-10-06T14:42:11+07:00",
+   "lastNote": "Tiền gửi T6, tín dụng T7, dự báo và TPDN đến 30/09; Wi sửa GDP Q2 8,39→8,81%"
   },
   "bank.wi.quarterly": {
    "lastAttempt": "2026-10-06T14:22:41+07:00",
@@ -1250,26 +1250,6 @@
  },
  "queue": [
   {
-   "id": "bank.wi.daily",
-   "tier": "B",
-   "title": "Wi: lãi suất huy động, liên ngân hàng, OMO, tỷ giá, TPCP, định giá, tin tức",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "bank.wi.monthly",
-   "tier": "B",
-   "title": "Wi: tiền gửi, cung tiền, tín dụng, tín dụng theo ngành, vĩ mô, dự báo, TPDN",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
    "id": "bank.wi.quarterly",
    "tier": "B",
    "title": "Wi: BCTC ngân hàng (chỉ số, thu nhập, chất lượng tài sản, định giá lại, nguồn vốn khác)",
@@ -1460,5 +1440,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-10-06T14:22:41+07:00"
+ "updatedAt": "2026-10-06T14:42:11+07:00"
 }

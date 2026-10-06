@@ -21,3 +21,6 @@ data/.update.lock
 data/daily.json
 data/.bank-update.lock
 .notify.txt
+
+# WiMCP results captured by scripts/wi_capture.py (merged then deleted by wi_ingest.py)
+data/raw/wi/.inbox/
