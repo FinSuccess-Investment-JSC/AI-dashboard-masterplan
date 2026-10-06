@@ -98,6 +98,13 @@ class QueueTests(unittest.TestCase):
         self.assertNotIn('stuck', state['items']['x'])
         self.assertEqual(state['items']['x']['lastSuccess'], '2026-10-13T08:00:00+07:00')
 
+    def test_queue_order_puts_untried_items_before_failed_ones(self):
+        reg = {'items': [{'id': i, 'tier': t, 'title': i, 'where': {}} for i, t in (('d', 'D'), ('c-failed', 'C'), ('c-new', 'C'), ('b', 'B'))]}
+        state = {'items': {'c-failed': {'attempts': 2}}, 'watchers': {},
+                 'queue': [{'id': i, 'tier': t, 'title': i, 'since': '2026-10-06T14:00:00+07:00', 'reasons': [], 'signals': []}
+                           for i, t in (('d', 'D'), ('c-failed', 'C'), ('c-new', 'C'), ('b', 'B'))]}
+        self.assertEqual([q['id'] for q in us.queue_details(reg, state)], ['b', 'c-new', 'c-failed', 'd'])
+
     def test_broken_feed_reminds_weekly(self):
         reg = {'items': [{'id': 'oil.retail', 'tier': 'A', 'title': 'Giá bán lẻ', 'sources': ['retail_fuel']}]}
         state = {'items': {}, 'watchers': {}, 'queue': []}

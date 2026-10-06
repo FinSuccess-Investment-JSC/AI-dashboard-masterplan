@@ -369,7 +369,8 @@ def queue_details(reg: dict, state: dict) -> list[dict]:
         st = state['items'].get(q['id'], {})
         out.append({**q, **{k: item.get(k) for k in ('where', 'source', 'how', 'gates', 'wiBlocks', 'sources') if item.get(k)},
                     'lastSuccess': st.get('lastSuccess'), 'lastError': st.get('lastError'), 'attempts': st.get('attempts', 0)})
-    return out
+    # Routine order: B -> C -> D, untried before failed (a blocked item must not starve the rest), oldest first.
+    return sorted(out, key=lambda q: ('BCD'.find(q['tier']), q['attempts'], q['since']))
 
 
 # ---------- main ----------

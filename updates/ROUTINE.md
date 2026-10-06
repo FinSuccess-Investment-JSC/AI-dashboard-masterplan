@@ -13,7 +13,7 @@ Chạy 08:00 thứ Hai–thứ Sáu (giờ Việt Nam), sau job GitHub 07:30 đ�
 
 Mỗi mục có `where` (trang + card), `source`, `how`, `gates`, `signals` (tài liệu mới watcher thấy), `reasons`.
 
-Mỗi lượt xử lý tối đa 6 mục, theo thứ tự B → C → D, mục cũ (`since`) trước. Mục chưa làm cứ để trong hàng chờ cho sáng hôm sau, không `--fail`.
+Mỗi lượt xử lý tối đa 6 mục đầu theo đúng thứ tự `--queue` in ra (đã sắp: B → C → D, mục chưa thử trước mục đã lỗi, mục cũ trước). Mục chưa làm cứ để trong hàng chờ cho sáng hôm sau, không `--fail`.
 
 **B · Wi (Bank).** Với từng id trong `wiBlocks`, gọi đúng tool/endpoint/filters/columns trong `data/bank-wi-contract.json` → ghi response vào `data/raw/wi/<raw_file>` theo cấu trúc file hiện có (request, fetched_at, columns/rows hoặc series). Sau đó `python3 scripts/build_bank_wi.py --checked-at <ISO hiện tại>` và `python3 -m unittest tests/test_bank_wi.py`. Không có WiMCP hoặc Wi lỗi → `--fail`, giữ số cũ.
 
