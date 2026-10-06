@@ -123,8 +123,9 @@
       rows.forEach((r,i)=>{if(!Number.isFinite(r[s.key]))return;const text=`${s.label} · ${date(r.date)}: ${n(r[s.key])} ${s.key==='spread'?'điểm %':'%/năm'}`;svg+=`<circle cx="${x(i)}" cy="${y(r[s.key])}" r="4" fill="${s.color}" tabindex="0" aria-label="${esc(text)}" data-tip="${esc(text)}"><title>${esc(text)}</title></circle>`;});
     });host.innerHTML=svg+'</svg>';
     host.querySelectorAll('[data-tip]').forEach(dot=>{
-      const show=()=>{const r=dot.getBoundingClientRect();tooltip.textContent=dot.dataset.tip;tooltip.hidden=false;tooltip.style.left=Math.max(8,Math.min(r.x,innerWidth-tooltip.offsetWidth-8))+'px';tooltip.style.top=Math.max(8,r.y-tooltip.offsetHeight-9)+'px';};
-      dot.addEventListener('mouseenter',show);dot.addEventListener('focus',show);dot.addEventListener('click',show);dot.addEventListener('mouseleave',()=>tooltip.hidden=true);dot.addEventListener('blur',()=>tooltip.hidden=true);
+      const show=()=>{const r=dot.getBoundingClientRect();dot.classList.add('wi-point-active');tooltip.textContent=dot.dataset.tip;tooltip.hidden=false;tooltip.style.left=Math.max(8,Math.min(r.x,innerWidth-tooltip.offsetWidth-8))+'px';tooltip.style.top=Math.max(8,r.y-tooltip.offsetHeight-9)+'px';};
+      const hide=()=>{dot.classList.remove('wi-point-active');tooltip.hidden=true};
+      dot.addEventListener('mouseenter',show);dot.addEventListener('focus',show);dot.addEventListener('click',show);dot.addEventListener('mouseleave',hide);dot.addEventListener('blur',hide);
     });
   }
   document.addEventListener('keydown',e=>{if(e.key==='Escape')tooltip.hidden=true;});document.addEventListener('pointerdown',e=>{if(!e.target.closest('[data-tip]'))tooltip.hidden=true;});window.addEventListener('scroll',()=>tooltip.hidden=true,true);
