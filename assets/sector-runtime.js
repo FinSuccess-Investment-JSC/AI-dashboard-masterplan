@@ -18,7 +18,10 @@ function note(hostId,keys,method){
  const good=keys.every(available), error=keys.some(k=>src[k]?.status==='error');
  block.dataset.refreshStatus=good?'loaded':'snapshot';block.dataset.sourceIds=keys.join(',');
  const dates=keys.map(k=>src[k]?.latest_observation).filter(Boolean);
- n.textContent=(good?'Dữ liệu nguồn tới '+short(dates.sort()[0]):'Đang giữ bản chụp gốc')+(error?' · Lần lấy mới chưa thành công, giữ dữ liệu tốt gần nhất.':'.');
+ // Forecast series (records flagged estimate, e.g. STEO 2027E) are dated by the issue, not by their last forecast year.
+ const issues=keys.filter(k=>src[k]?.records?.some(r=>r.estimate)&&src[k]?.issue).map(k=>src[k].issue);
+ const through=issues.length?'Bản phát hành '+issues[0].slice(5,7)+'/'+issues[0].slice(0,4):'Dữ liệu nguồn tới '+short(dates.sort()[0]);
+ n.textContent=(good?through:'Đang giữ bản chụp gốc')+(error?' · Lần lấy mới chưa thành công, giữ dữ liệu tốt gần nhất.':'.');
  if(bundle.last_run_at)n.textContent+=' Kiểm tra: '+new Date(bundle.last_run_at).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'})+'.';
  if(keys.some(stale)){n.classList.add('is-stale');n.textContent+=' Nguồn có độ trễ hoặc đang chờ dữ liệu mới.'}
  host.after(n);
@@ -106,6 +109,14 @@ if(oil){
   const card=document.getElementById('chSpare')?.closest('.card');
   const title=card?.querySelector('.chart-title');if(title)title.textContent=`Dư địa công suất OPEC và gián đoạn nguồn cung — đến ${short(cap.at(-1).date)}`;
   currentReading('chSpare',`Ước tính EIA cho ${short(cap.at(-1).date)}: dư địa ${nf(cap.at(-1).capacity,2)}, gián đoạn ${nf(cap.at(-1).outages,2)} triệu thùng/ngày. Số có thể được sửa trong báo cáo tháng sau.`);
+ }
+ if(available('world_balance')&&document.getElementById('chWorldSD')){
+  // Same method as the original snapshot (3atab papr_world / patc_world, 12-month means), refreshed with each STEO issue.
+  const wb=rows('world_balance'),labels=wb.map(r=>r.year+(r.estimate?'E':''));
+  barLineChart('chWorldSD',{categories:labels,series:[{name:'Cung toàn cầu',color:color[2],kind:'line',values:wb.map(r=>r.supply)},{name:'Cầu toàn cầu',color:color[1],kind:'line',values:wb.map(r=>r.demand)}],unit:'mb/d',digits:2,height:250,zeroBase:false});
+  if(document.getElementById('chWorldBalance'))balanceBarChart('chWorldBalance',{labels,values:wb.map(r=>r.balance),unit:'mb/d',height:230});
+  fillTable('tbl-worldbalance',['Năm','Cung toàn cầu (mb/d)','Cầu toàn cầu (mb/d)','Balance: cung - cầu (mb/d)','Đọc nhanh'],wb.map((r,i)=>[labels[i],nf(r.supply,2),nf(r.demand,2),nf(r.balance,2),r.balance>=0?'Dư cung / tồn kho tăng':'Thiếu cung / tồn kho rút']));
+  note('chWorldSD',['world_balance'],'EIA STEO bản '+(src.world_balance?.issue||'mới nhất')+': sheet 3atab, papr_world (cung) và patc_world (cầu), bình quân 12 tháng mỗi năm; năm có tháng dự báo ghi E. Tự cập nhật khi EIA ra bản mới.');
  }
  note('chSpare',['opec_capacity'],'EIA STEO bản '+(src.opec_capacity?.issue||'mới nhất')+': sheet 3dtab, mã cops_opec và padi_OPEC. Chỉ vẽ tháng có cả hai ước tính; tháng dự báo chưa có gián đoạn thực tế để trống.');
  if(available('middle_east_crude_exports')){

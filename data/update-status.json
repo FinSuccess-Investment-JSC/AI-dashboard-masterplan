@@ -1,6 +1,6 @@
 {
-  "run_at": "2026-10-06T06:44:36.122397+00:00",
-  "errors": 1,
+  "run_at": "2026-10-06T08:58:46.995985+00:00",
+  "errors": 0,
   "sources": {
     "wti": {
       "status": "ok",
@@ -147,6 +147,13 @@
       "latest_observation": "2026-10-05",
       "last_success_at": "2026-10-06T04:37:13.187982+00:00",
       "last_checked_at": "2026-10-06T04:37:13.187982+00:00",
+      "error": null
+    },
+    "world_balance": {
+      "status": "ok",
+      "latest_observation": "2027-12-31",
+      "last_success_at": "2026-10-06T08:58:46.995985+00:00",
+      "last_checked_at": "2026-10-06T08:58:46.995985+00:00",
       "error": null
     }
   }

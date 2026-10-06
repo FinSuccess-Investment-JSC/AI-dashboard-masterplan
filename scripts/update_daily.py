@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from opinet_cracks import load as load_singapore_cracks
 from petrolimex_prices import load as load_retail_fuel
 from polling_policy import due as source_due
-from steo_capacity import load as load_steo_capacity
+from steo_capacity import load as load_steo_capacity, load_world_balance
 from cftc_positions import load as load_wti_cot
 from jodi_exports import load as load_middle_east_exports
 ROOT=Path(__file__).resolve().parents[1]
@@ -263,7 +263,7 @@ def main():
         tasks.update(hormuz=load_portwatch,bab_el_mandeb=lambda:load_portwatch('chokepoint4'),middle_east_crude_exports=lambda:load_middle_east_exports(bundle['sources'].get('middle_east_crude_exports',{}).get('records')),wti_curve=load_curve,brent_futures=lambda:load_daily_futures("BZ=F","USD/barrel"),sugar_futures=lambda:load_daily_futures("SB=F","US cents/lb"),sugar_monthly=load_wb_sugar,sugar_producers=load_sugar_producers,
                      singapore_cracks=lambda:load_singapore_cracks(bundle['sources'].get('singapore_cracks',{}).get('records')),
                      retail_fuel=lambda:load_retail_fuel(bundle['sources'].get('retail_fuel',{}).get('records')),
-                     opec_capacity=load_steo_capacity,wti_cot=load_wti_cot)
+                     opec_capacity=load_steo_capacity,world_balance=load_world_balance,wti_cot=load_wti_cot)
         selected=args.sources or list(tasks)
         if any(k not in tasks for k in selected):raise ValueError('Unknown source')
         if args.scheduled and not args.sources:

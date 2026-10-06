@@ -62,6 +62,24 @@ class ScheduleTests(unittest.TestCase):
         self.assertFalse(us.is_due(item(sched, 'D'), {'lastSuccess': '2026-10-09T08:00:00+07:00'}, {'items': {}}, now, sources)[0])  # < 7 days
         self.assertFalse(us.is_due(item(sched, 'D'), {'lastSuccess': '2026-10-11T08:00:00+07:00'}, {'items': {}}, vn('2026-10-20T08:00'), sources)[0])  # no change since
 
+    def test_ai_text_waits_for_a_material_move(self):
+        sched = {'type': 'data', 'sources': ['brent', 'world_balance'], 'minDays': 7,
+                 'material': [{'source': 'brent', 'field': 'value', 'pct': 5},
+                              {'source': 'world_balance', 'field': 'balance', 'abs': 0.5, 'pick': 'all'}]}
+        it = item(sched, 'D')
+        def sources(brent, balance_2026):
+            return {'brent': {'changed_at': '2026-10-10T01:00:00+00:00', 'records': [{'date': '2026-10-09', 'value': brent}]},
+                    'world_balance': {'changed_at': '2026-10-10T01:00:00+00:00', 'records': [
+                        {'date': '2025-12-31', 'balance': 1.94}, {'date': '2026-12-31', 'balance': balance_2026}]}}
+        base = us.snapshot(it, sources(100.0, -1.93))
+        st = {'lastSuccess': '2026-10-01T08:00:00+07:00', 'snapshot': base}
+        now = vn('2026-10-12T07:30')
+        self.assertFalse(us.is_due(it, st, {'items': {}}, now, sources(103.0, -1.80))[0])   # +3% and 0.13 mb/d: not material
+        due, reason = us.is_due(it, st, {'items': {}}, now, sources(106.0, -1.93))
+        self.assertTrue(due)
+        self.assertIn('brent.value', reason)
+        self.assertTrue(us.is_due(it, st, {'items': {}}, now, sources(100.0, -1.20))[0])  # one STEO year moved 0.73 mb/d
+
     def test_after_items(self):
         state = {'items': {'wi': {'lastSuccess': '2026-10-12T08:30:00+07:00'}}}
         sched = {'type': 'after', 'items': ['wi']}
@@ -104,6 +122,8 @@ class QueueTests(unittest.TestCase):
                  'queue': [{'id': i, 'tier': t, 'title': i, 'since': '2026-10-06T14:00:00+07:00', 'reasons': [], 'signals': []}
                            for i, t in (('d', 'D'), ('c-failed', 'C'), ('c-new', 'C'), ('b', 'B'))]}
         self.assertEqual([q['id'] for q in us.queue_details(reg, state)], ['b', 'c-new', 'c-failed', 'd'])
+        self.assertEqual([q['id'] for q in us.queue_details(reg, state, {'C', 'D'})], ['c-new', 'c-failed', 'd'])
+        self.assertEqual([q['id'] for q in us.queue_details(reg, state, {'B'})], ['b'])
 
     def test_broken_feed_reminds_weekly(self):
         reg = {'items': [{'id': 'oil.retail', 'tier': 'A', 'title': 'Giá bán lẻ', 'sources': ['retail_fuel']}]}

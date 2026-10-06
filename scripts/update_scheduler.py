@@ -8,7 +8,7 @@ Claude) and D (AI text after data changes) are put on a queue that the Claude ro
 
     python3 scripts/update_scheduler.py                       # dry run: what is due
     python3 scripts/update_scheduler.py --run --watch         # cloud job: queue + watchers
-    python3 scripts/update_scheduler.py --queue               # queue with registry details (JSON)
+    python3 scripts/update_scheduler.py --queue --tiers B     # queue for one routine (JSON)
     python3 scripts/update_scheduler.py --done ID --note "..."
     python3 scripts/update_scheduler.py --fail ID --note "..."
 """
@@ -137,6 +137,37 @@ def data_changed_since(keys: list[str], since: datetime | None, sources: dict) -
     return changed
 
 
+def metric_values(rule: dict, sources: dict) -> dict[str, float]:
+    """Values one materiality rule watches: the latest record, or every record with pick=all (e.g. each STEO year)."""
+    records = sources.get(rule['source'], {}).get('records') or []
+    every = rule.get('pick') == 'all'
+    out = {}
+    for r in records if every else records[-1:]:
+        v = r.get(rule['field'])
+        if isinstance(v, (int, float)) and not isinstance(v, bool):
+            out[f"{rule['source']}.{rule['field']}" + (f"@{r.get('date')}" if every else '')] = float(v)
+    return out
+
+
+def snapshot(item: dict, sources: dict) -> dict[str, float]:
+    return {k: v for rule in item['schedule'].get('material', []) for k, v in metric_values(rule, sources).items()}
+
+
+def material_changes(item: dict, st: dict, sources: dict) -> list[str]:
+    """AI text is rewritten only when a watched number moved past its threshold since it was last written."""
+    old, hits = st.get('snapshot') or {}, []
+    for rule in item['schedule'].get('material', []):
+        for key, value in metric_values(rule, sources).items():
+            before = old.get(key)
+            if before is None:
+                hits.append(f'{key} mới: {value:g}')
+                continue
+            moved = abs(value - before)
+            if ('pct' in rule and before and moved / abs(before) * 100 >= rule['pct']) or ('abs' in rule and moved >= rule['abs']):
+                hits.append(f'{key}: {before:g} → {value:g}')
+    return hits
+
+
 def is_due(item: dict, st: dict, state: dict, now: datetime, sources: dict) -> tuple[bool, str]:
     sched = item['schedule']
     kind = sched.get('type')
@@ -158,6 +189,9 @@ def is_due(item: dict, st: dict, state: dict, now: datetime, sources: dict) -> t
         return (True, 'sau ' + ', '.join(deps)) if deps else signal
     if kind == 'data':
         changed = data_changed_since(sched['sources'], done, sources)
+        if changed and sched.get('material'):
+            hits = material_changes(item, st, sources)
+            return (True, 'đổi đáng kể: ' + '; '.join(hits[:4])) if hits else signal
         return (True, 'số liệu nền đổi: ' + ', '.join(changed)) if changed else signal
     slot = last_slot(sched, now)
     if slot and (not done or done < slot):
@@ -366,12 +400,12 @@ def a_health(reg: dict, state: dict, now: datetime, sources: dict) -> tuple[list
     return lines, alerts
 
 
-def queue_details(reg: dict, state: dict) -> list[dict]:
+def queue_details(reg: dict, state: dict, tiers: set[str] | None = None) -> list[dict]:
     items = {i['id']: i for i in reg['items']}
     out = []
     for q in state['queue']:
         item = items.get(q['id'], {})
-        if item.get('status') in PARKED:  # todo/blocked, or manual (only when the user asks)
+        if item.get('status') in PARKED or (tiers and q['tier'] not in tiers):  # parked, or another routine's tier
             continue
         st = state['items'].get(q['id'], {})
         out.append({**q, **{k: item.get(k) for k in ('where', 'source', 'how', 'gates', 'wiBlocks', 'sources') if item.get(k)},
@@ -389,6 +423,7 @@ def main(argv=None) -> int:
     ap.add_argument('--only', help='comma-separated item/watcher ids')
     ap.add_argument('--now', help='simulate a time (ISO, Vietnam time)')
     ap.add_argument('--queue', action='store_true', help='print the queue with registry details as JSON')
+    ap.add_argument('--tiers', help='with --queue: only these tiers, e.g. B (daily Wi routine) or C,D (weekly routine)')
     ap.add_argument('--done', metavar='ID', help='close a queue item after a successful update or a check with nothing new')
     ap.add_argument('--fail', metavar='ID', help='record a failed routine attempt; the item stays queued')
     ap.add_argument('--note', default='', help='what changed / why it failed (shown in the report)')
@@ -404,7 +439,7 @@ def main(argv=None) -> int:
     alerts: list[str] = []
 
     if args.queue:
-        print(json.dumps(queue_details(reg, state), ensure_ascii=False, indent=1))
+        print(json.dumps(queue_details(reg, state, set(args.tiers.split(',')) if args.tiers else None), ensure_ascii=False, indent=1))
         return 0
     if args.done or args.fail:
         item_id = args.done or args.fail
@@ -413,6 +448,9 @@ def main(argv=None) -> int:
             return 2
         line = close(state, item_id, bool(args.done), args.note or ('cập nhật xong' if args.done else 'lỗi'), now)
         lines.append(line)
+        item = next(i for i in reg['items'] if i['id'] == item_id)
+        if args.done and item['schedule'].get('material'):  # baseline for the next "moved enough?" check
+            state['items'][item_id]['snapshot'] = snapshot(item, source_status())
         if args.fail and state['items'][item_id].get('stuck'):
             alerts.append(f"❌ Routine thất bại {state['items'][item_id]['attempts']} lần với {item_id}: {args.note[:200]}")
     else:

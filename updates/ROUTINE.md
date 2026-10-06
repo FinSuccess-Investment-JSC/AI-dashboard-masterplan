@@ -1,18 +1,22 @@
 # Claude routine: xử lý hàng chờ cập nhật
 
-Chạy 08:00 thứ Hai–thứ Sáu (giờ Việt Nam), sau job GitHub 07:30 đã xếp hàng chờ. Người dùng cho phép tự publish (06/10/2026); mọi thay đổi phải qua kiểm tra dưới đây. Routine chỉ dùng repo này (một repo/phiên để hook trong `.claude/settings.json` chạy); không cần repo ghi chú.
+Hai routine trên cloud, không cần máy người dùng bật:
+- **Wi hằng ngày** — 08:00 thứ Hai–thứ Sáu, chỉ nhóm B: `--queue --tiers B`.
+- **Tài liệu + insight hằng tuần** — 08:30 thứ Hai, nhóm C và D: `--queue --tiers C,D`, tối đa 8 mục/lượt.
+
+Cả hai chạy sau job GitHub 07:30 đã xếp hàng chờ. Người dùng cho phép tự publish (06/10/2026); mọi thay đổi phải qua kiểm tra dưới đây. Routine chỉ dùng repo này (một repo/phiên để hook trong `.claude/settings.json` chạy); không cần repo ghi chú.
 
 ## 1. Chuẩn bị
 
 1. Nhánh `main`: `git pull origin main`.
 2. Đọc `AGENTS.md`, `DASHBOARD_WORKFLOW.md` §2, §5, §12, §16 và mục "Quy tắc của người dùng" cuối file này.
-3. `python3 scripts/update_scheduler.py --queue`. Danh sách rỗng thì **dừng, không commit**.
+3. `python3 scripts/update_scheduler.py --queue --tiers <B hoặc C,D theo routine>`. Danh sách rỗng thì **dừng, không commit**.
 
 ## 2. Xử lý từng mục
 
 Mỗi mục có `where` (trang + card), `source`, `how`, `gates`, `signals` (tài liệu mới watcher thấy), `reasons`.
 
-Mỗi lượt xử lý tối đa 6 mục đầu theo đúng thứ tự `--queue` in ra (đã sắp: B → C → D, mục chưa thử trước mục đã lỗi, mục cũ trước). Mục chưa làm cứ để trong hàng chờ cho sáng hôm sau, không `--fail`.
+Routine hằng ngày làm hết mục B; routine hằng tuần xử lý tối đa 8 mục đầu theo đúng thứ tự `--queue` in ra (đã sắp: B → C → D, mục chưa thử trước mục đã lỗi, mục cũ trước). Mục chưa làm cứ để trong hàng chờ cho lượt sau, không `--fail`.
 
 **B · Wi (Bank).** Không chép tay số Wi.
 1. `python3 scripts/wi_ingest.py plan <id mục>` in danh sách lệnh WiMCP cần gọi.
@@ -23,7 +27,7 @@ Mỗi lượt xử lý tối đa 6 mục đầu theo đúng thứ tự `--queue`
 
 **C · Tài liệu.** Mở tài liệu trong `signals` (hoặc `source`), xác nhận kỳ dữ liệu và đơn vị, rồi sửa số trong `where.page`, đúng card `where.blocks`: mảng dữ liệu của chart trong script cuối trang, bảng dữ liệu, link nguồn bấm được kèm ngày công bố, và ngày "Kiểm tra" ở dòng cadence. Watcher báo nhầm hoặc tài liệu không có số mới → `--done` kèm ghi chú, không sửa trang. Không truy cập được nguồn (403, chặn mạng) → `--fail` ghi rõ tên miền.
 
-**D · Lời bình AI.** Đọc lại số liệu nền đã đổi (trong `reasons`). Cập nhật con số và nhận định bị thay đổi, đổi dấu "AI viết dd/mm/yyyy". Không bao giờ sửa phần analyst (`.analyst-input`, `data-update-kind="analyst"`). Kết luận không đổi → chỉ cập nhật số; không có gì đổi → `--done` kèm ghi chú.
+**D · Lời bình AI (insight).** Mục D chỉ vào hàng chờ khi số nền đổi vượt ngưỡng (`material` trong registry, vd Brent ±5%, cán cân STEO ±0,5 triệu thùng/ngày); `reasons` ghi số cũ → số mới. Khi `--done`, scheduler tự lưu mốc số để lần sau so. Đọc lại số liệu nền đã đổi. Cập nhật con số và nhận định bị thay đổi, đổi dấu "AI viết dd/mm/yyyy". Không bao giờ sửa phần analyst (`.analyst-input`, `data-update-kind="analyst"`). Kết luận không đổi → chỉ cập nhật số; không có gì đổi → `--done` kèm ghi chú.
 
 **Luật chung:** không bịa, không nội suy, thiếu thì để trống và ghi hạn chế; phân biệt kỳ quan sát, ngày công bố, ngày kiểm; nguồn phải là link bấm được; ít chữ, số nổi bật. Không chắc số đúng → `--fail` với lý do, để người dùng xem.
 
