@@ -1,6 +1,6 @@
 {
-  "run_at": "2026-10-06T13:55:35.251682+00:00",
-  "errors": 0,
+  "run_at": "2026-10-06T15:24:40.650074+00:00",
+  "errors": 1,
   "sources": {
     "wti": {
       "status": "ok",
@@ -46,16 +46,16 @@
     },
     "hormuz": {
       "status": "ok",
-      "latest_observation": "2026-09-27",
-      "last_success_at": "2026-10-06T04:37:13.187982+00:00",
-      "last_checked_at": "2026-10-06T04:37:13.187982+00:00",
+      "latest_observation": "2026-10-04",
+      "last_success_at": "2026-10-06T15:24:40.650074+00:00",
+      "last_checked_at": "2026-10-06T15:24:40.650074+00:00",
       "error": null
     },
     "bab_el_mandeb": {
       "status": "ok",
-      "latest_observation": "2026-09-27",
-      "last_success_at": "2026-10-06T04:37:13.187982+00:00",
-      "last_checked_at": "2026-10-06T04:37:13.187982+00:00",
+      "latest_observation": "2026-10-04",
+      "last_success_at": "2026-10-06T15:24:40.650074+00:00",
+      "last_checked_at": "2026-10-06T15:24:40.650074+00:00",
       "error": null
     },
     "cushing": {
@@ -68,22 +68,22 @@
     "wti_curve": {
       "status": "ok",
       "latest_observation": "2026-10-05",
-      "last_success_at": "2026-10-06T04:37:13.187982+00:00",
-      "last_checked_at": "2026-10-06T04:37:13.187982+00:00",
+      "last_success_at": "2026-10-06T15:24:40.650074+00:00",
+      "last_checked_at": "2026-10-06T15:24:40.650074+00:00",
       "error": null
     },
     "brent_futures": {
       "status": "ok",
       "latest_observation": "2026-10-05",
-      "last_success_at": "2026-10-06T04:37:13.187982+00:00",
-      "last_checked_at": "2026-10-06T04:37:13.187982+00:00",
+      "last_success_at": "2026-10-06T15:24:40.650074+00:00",
+      "last_checked_at": "2026-10-06T15:24:40.650074+00:00",
       "error": null
     },
     "sugar_futures": {
       "status": "ok",
       "latest_observation": "2026-10-05",
-      "last_success_at": "2026-10-06T09:24:36.889376+00:00",
-      "last_checked_at": "2026-10-06T09:24:36.889376+00:00",
+      "last_success_at": "2026-10-06T15:24:40.650074+00:00",
+      "last_checked_at": "2026-10-06T15:24:40.650074+00:00",
       "error": null
     },
     "distillate_stock": {
@@ -124,36 +124,36 @@
     "wti_cot": {
       "status": "ok",
       "latest_observation": "2026-09-29",
-      "last_success_at": "2026-10-06T04:37:13.187982+00:00",
-      "last_checked_at": "2026-10-06T04:37:13.187982+00:00",
+      "last_success_at": "2026-10-06T15:24:40.650074+00:00",
+      "last_checked_at": "2026-10-06T15:24:40.650074+00:00",
       "error": null
     },
     "opec_capacity": {
       "status": "ok",
       "latest_observation": "2026-08-31",
-      "last_success_at": "2026-10-06T04:37:13.187982+00:00",
-      "last_checked_at": "2026-10-06T04:37:13.187982+00:00",
+      "last_success_at": "2026-10-06T15:24:40.650074+00:00",
+      "last_checked_at": "2026-10-06T15:24:40.650074+00:00",
       "error": null
     },
     "retail_fuel": {
-      "status": "ok",
+      "status": "error",
       "latest_observation": "2026-10-01",
       "last_success_at": "2026-10-06T06:44:36.122397+00:00",
-      "last_checked_at": "2026-10-06T06:44:36.122397+00:00",
-      "error": null
+      "last_checked_at": "2026-10-06T15:24:40.650074+00:00",
+      "error": "HTTPSConnectionPool(host='files.petrolimex.com.vn', port=443): Read timed out. (read timeout=30)"
     },
     "singapore_cracks": {
       "status": "ok",
       "latest_observation": "2026-10-05",
-      "last_success_at": "2026-10-06T04:37:13.187982+00:00",
-      "last_checked_at": "2026-10-06T04:37:13.187982+00:00",
+      "last_success_at": "2026-10-06T15:24:40.650074+00:00",
+      "last_checked_at": "2026-10-06T15:24:40.650074+00:00",
       "error": null
     },
     "world_balance": {
       "status": "ok",
       "latest_observation": "2027-12-31",
-      "last_success_at": "2026-10-06T08:58:46.995985+00:00",
-      "last_checked_at": "2026-10-06T08:58:46.995985+00:00",
+      "last_success_at": "2026-10-06T15:24:40.650074+00:00",
+      "last_checked_at": "2026-10-06T15:24:40.650074+00:00",
       "error": null
     },
     "sugar_vn_balance": {

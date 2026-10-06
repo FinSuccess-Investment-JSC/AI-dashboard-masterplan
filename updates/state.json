@@ -8,10 +8,10 @@
   "oil.portwatch": {},
   "oil.jodi": {},
   "oil.singapore-cracks": {},
-  "oil.retail-fuel": {},
-  "sugar.futures": {
+  "oil.retail-fuel": {
    "brokenSince": "2026-10-06"
   },
+  "sugar.futures": {},
   "sugar.worldbank": {},
   "sugar.usda-producers": {},
   "bank.eximbank": {},
@@ -84,7 +84,17 @@
   "oil.ai.regime": {},
   "oil.ai.channels": {},
   "sugar.ai.cycle": {},
-  "bank.ai.read": {}
+  "bank.ai.read": {},
+  "market.valuation": {},
+  "power.evn-daily": {},
+  "power.enso": {},
+  "power.wb-energy": {},
+  "power.futures": {},
+  "power.tariff-evn": {},
+  "power.policy": {},
+  "power.capacity": {},
+  "power.hot-topics": {},
+  "power.ai.cycle": {}
  },
  "watchers": {
   "nso.rss": {
@@ -903,8 +913,10 @@
   },
   "pvn.news": {
    "seen": [
+    "5e48bc24581143c1",
     "470c6ce74a73a25b"
-   ]
+   ],
+   "lastNew": "2026-10-06T22:26:32+07:00"
   },
   "moit.notices": {
    "seen": [
@@ -1257,13 +1269,15 @@
   },
   "news.vssa": {
    "seen": [
+    "0545c46441e7b9bc",
     "6819f10aca892e47",
     "5d6dcaf2364fa67d",
     "dac99404bc35696e",
     "011a673c1a49dd5b",
     "79a379edde5c4fbd",
     "e7dcd21a2037f5eb"
-   ]
+   ],
+   "lastNew": "2026-10-06T22:26:32+07:00"
   },
   "vcbs.sector": {
    "seen": []
@@ -1274,52 +1288,13 @@
  },
  "queue": [
   {
-   "id": "bank.wi.quarterly",
-   "tier": "B",
-   "title": "Wi: BCTC ngân hàng (chỉ số, thu nhập, chất lượng tài sản, định giá lại, nguồn vốn khác)",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "oil.pvgas-annual",
-   "tier": "C",
-   "title": "PV GAS: khí vào bờ, LNG, vị trí trong nền kinh tế",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "oil.bsr-annual",
-   "tier": "C",
-   "title": "BSR biên lợi nhuận gộp theo năm",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "oil.company-quarterly",
-   "tier": "C",
-   "title": "PLX tồn kho, PVD/PVS/GAS driver theo quý",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
    "id": "sugar.domestic",
    "tier": "C",
    "title": "Giá đường trong nước, so sánh khu vực",
    "since": "2026-10-06T14:14:07+07:00",
    "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
+    "lần đầu: rà soát số đang hiển thị",
+    "lịch 01/10 07:00"
    ],
    "signals": []
   },
@@ -1329,19 +1304,16 @@
    "title": "Mía ép, diện tích, giá mía nguyên liệu",
    "since": "2026-10-06T14:14:07+07:00",
    "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
+    "lần đầu: rà soát số đang hiển thị",
+    "lịch 05/10 07:00"
    ],
-   "signals": []
-  },
-  {
-   "id": "sugar.company",
-   "tier": "C",
-   "title": "SBT biên gộp, so sánh biên và sức khỏe tài chính nhóm đường",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
+   "signals": [
+    {
+     "watcher": "news.vssa",
+     "seenAt": "2026-10-06T22:26:32+07:00",
+     "what": "Sản lượng mía đường niên vụ 2020/2021 thấp nhất trong 20 năm qua - Thế giới tiếp thị — https://news.google.com/rss/articles/CBMixgFBVV95cUxNSGJFS2lGVnhIcC0tTEloSG1lNHNhWmk1MUVTdVlvN2RMNUdBS3BLSGdtUUEwUldDYjFhRElQbnEtWXNlbHZqdWFUTWF6aDNfaExrYlNfVDFnOGtWajhJak9ocm9xaWhySzNkNlk4QXVleXBKRTdTd3JSalV6cDl1VTFidy1DWkZzMkhQTXV3ZG1CakZlcGFxLURuX2VvM3NudEg1MXBXekFFQ25XdlVDR3BRandQVEVOSzFQVjRoZ2IxOVhUMVE?oc=5"
+    }
+   ]
   },
   {
    "id": "bank.policy",
@@ -1349,7 +1321,8 @@
    "title": "Bank: mốc pháp lý, bức tranh thế giới",
    "since": "2026-10-06T14:14:07+07:00",
    "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
+    "lần đầu: rà soát số đang hiển thị",
+    "lịch 06/10 07:00"
    ],
    "signals": []
   },
@@ -1412,7 +1385,73 @@
     "lần đầu: rà soát số đang hiển thị"
    ],
    "signals": []
+  },
+  {
+   "id": "oil.supply-news",
+   "tier": "C",
+   "title": "Cân đối xăng dầu, chuỗi dự án khí",
+   "since": "2026-10-06T22:26:32+07:00",
+   "reasons": [
+    "watcher báo có công bố mới"
+   ],
+   "signals": [
+    {
+     "watcher": "pvn.news",
+     "seenAt": "2026-10-06T22:26:32+07:00",
+     "what": "PETROVIETNAM và các bên góp vốn trao đổi định hướng vận hành và phát triển dài hạn Nhà máy Lọc hóa dầu Nghi Sơn — https://petrovietnam.petrotimes.vn/petrovietnam-va-cac-ben-gop-von-trao-doi-dinh-huong-van-hanh-va-phat-trien-dai-han-nha-may-loc-hoa-dau-nghi-son-746389.html"
+    }
+   ]
+  },
+  {
+   "id": "power.tariff-evn",
+   "tier": "C",
+   "title": "Giá bán lẻ điện, tài chính EVN, giá thị trường điện",
+   "since": "2026-10-06T22:26:32+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "power.policy",
+   "tier": "C",
+   "title": "Cơ chế giá điện, Quy hoạch điện VIII, DPPA, mái nhà, thị trường điện",
+   "since": "2026-10-06T22:26:32+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "power.capacity",
+   "tier": "C",
+   "title": "Công suất đặt theo nguồn, sản lượng năm",
+   "since": "2026-10-06T22:26:32+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "power.hot-topics",
+   "tier": "C",
+   "title": "Chủ đề nóng: El Niño & thủy văn, giá điện & EVN, chuyển dịch năng lượng",
+   "since": "2026-10-06T22:26:32+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "power.ai.cycle",
+   "tier": "D",
+   "title": "Điện: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
+   "since": "2026-10-06T22:26:32+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
   }
  ],
- "updatedAt": "2026-10-06T16:22:10+07:00"
+ "updatedAt": "2026-10-06T22:26:32+07:00"
 }
