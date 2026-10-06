@@ -194,8 +194,8 @@ if(chart&&feed?.records?.length){
   if(!from||!to||from>to){chart.replaceChildren();table.replaceChildren();status.textContent='Chọn ngày bắt đầu không sau ngày kết thúc.';return}
   const rs=window.SectorMath.periodClose(raw.filter(r=>r.date>=from&&r.date<=to),freq.value);
   if(!rs.length){chart.replaceChildren();table.replaceChildren();status.textContent='Không có dữ liệu trong khoảng đã chọn.';return}
-  barLineChart('chFastPrice',{categories:rs.map(r=>r.date),series:[{name:oil?'Brent Futures':'Sugar No.11 Futures',kind:'line',color:'#2938A8',values:rs.map(r=>r.value)}],unit:oil?'USD/thùng':'US cent/lb',digits:2,height:270,zeroBase:false});
-  status.textContent=rs.length+' điểm · '+from+' → '+to+(freq.value==='day'?'':' · close cuối mỗi kỳ, kỳ đầu/cuối có thể chưa đủ');
+  barLineChart('chFastPrice',{categories:rs.map(r=>r.date),series:[{name:oil?'Brent Futures':'Sugar No.11 Futures'+(feed.symbol&&feed.symbol!=='SB=F'?' · hợp đồng '+feed.symbol.replace('.NYB',''):''),kind:'line',color:'#2938A8',values:rs.map(r=>r.value)}],unit:oil?'USD/thùng':'US cent/lb',digits:2,height:270,zeroBase:false});
+  status.textContent=rs.length+' điểm · '+from+' → '+to+(freq.value==='day'?'':' · close cuối mỗi kỳ, kỳ đầu/cuối có thể chưa đủ')+(feed.symbol&&feed.symbol!=='SB=F'&&!oil?' · Một hợp đồng '+feed.symbol.replace('.NYB','')+' (Yahoo không trả đủ chuỗi SB=F); không ghép các hợp đồng.':'');
   table.replaceChildren();const h=make('tr');['Kỳ','Phiên quan sát','Giá đóng cửa'].forEach(t=>h.append(make('th','',t)));table.append(h);rs.forEach(r=>{const tr=make('tr');[r.date,r.last_date,r.value===null?'—':r.value.toLocaleString('vi-VN',{maximumFractionDigits:2})].forEach(t=>tr.append(make('td','',t)));table.append(tr)});
  }
  [freq,range,start,end].forEach(n=>n.addEventListener('change',draw));draw();

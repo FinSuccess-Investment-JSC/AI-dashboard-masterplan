@@ -5,7 +5,7 @@ No API credentials or network access from the dashboard browser are required.
 """
 from __future__ import annotations
 import fcntl
-import argparse, concurrent.futures, datetime as dt, hashlib, json, math, os, sys, tempfile, time, subprocess, urllib.parse, urllib.request
+import argparse, calendar, concurrent.futures, datetime as dt, hashlib, json, math, os, sys, tempfile, time, subprocess, urllib.parse, urllib.request
 from pathlib import Path
 from zoneinfo import ZoneInfo
 import xlrd
@@ -161,7 +161,7 @@ PSD_SUGAR='https://apps.fas.usda.gov/psdonline/downloads/psd_sugar_csv.zip'
 
 def parse_daily_futures(result, symbol, today=None):
     meta=result['meta']
-    if meta.get('symbol')!=symbol or meta.get('currency')!=('USX' if symbol=='SB=F' else 'USD') or meta.get('instrumentType')!='FUTURE':
+    if meta.get('symbol')!=symbol or meta.get('currency')!=('USX' if symbol.startswith('SB') else 'USD') or meta.get('instrumentType')!='FUTURE':
         raise ValueError(f"Futures identity/unit mismatch: {meta.get('symbol')}/{meta.get('currency')}/{meta.get('instrumentType')}")
     zone=ZoneInfo(meta['exchangeTimezoneName']);today=today or dt.datetime.now(zone).date()
     records=[]
@@ -184,6 +184,57 @@ def load_daily_futures(symbol,unit):
     return {'source_url':'https://finance.yahoo.com/quote/'+urllib.parse.quote(symbol)+'/',
         'source_name':'Yahoo Finance (unofficial)','symbol':symbol,'instrument':'continuous front futures',
         'observation_frequency':'daily','publication_frequency':'daily','unit':unit,'records':rows,
+        'raw_sha256':hashlib.sha256(raw).hexdigest()},raw
+
+SUGAR_MONTHS={3:'H',5:'K',7:'N',10:'V'}
+
+def sugar_contracts(today=None):
+    """Listed ICE Sugar No.11 contracts still trading, nearest first. The last trading day falls in
+    the month before delivery, so a contract is live while that month has not ended."""
+    today=today or dt.date.today();out=[]
+    for year in (today.year,today.year+1,today.year+2):
+        for month,code in SUGAR_MONTHS.items():
+            prev_year,prev_month=(year,month-1) if month>1 else (year-1,12)
+            if dt.date(prev_year,prev_month,calendar.monthrange(prev_year,prev_month)[1])>=today:
+                out.append(f'SB{code}{year%100:02d}.NYB')
+    return out
+
+def load_sugar_futures():
+    """SB=F first; when Yahoo serves only a stub for the continuous symbol (after a roll), use the
+    nearest listed contract with a full history. One contract only: series are never spliced."""
+    try:
+        return load_daily_futures('SB=F','US cents/lb')
+    except ValueError as exc:  # stub history, empty series or ALTSYMBOL identity all mean "use a contract"
+        reason=str(exc)
+    for symbol in sugar_contracts()[:3]:
+        try:
+            src=load_daily_futures(symbol,'US cents/lb')
+        except ValueError:
+            continue
+        src[0]['instrument']=f'nearest listed contract {symbol}; SB=F unavailable ({reason})'
+        return src
+    raise ValueError('No Sugar No.11 contract with complete history')
+
+def load_sugar_vn_balance():
+    """USDA PSD Vietnam centrifugal sugar balance by marketing year, thousand tonnes raw value."""
+    raw=fetch(PSD_SUGAR);z=zipfile.ZipFile(io.BytesIO(raw))
+    if sum(i.file_size for i in z.infolist())>60_000_000:raise ValueError('PSD archive exceeds limit')
+    fields={'Beginning Stocks':'beg_stock','Production':'production','Imports':'imports','Exports':'exports',
+            'Human Dom. Consumption':'consumption','Ending Stocks':'end_stock'}
+    grouped={}
+    for r in csv.DictReader(io.TextIOWrapper(z.open('psd_sugar.csv'),encoding='utf-8-sig')):
+        if r['Country_Name']!='Vietnam' or r['Attribute_Description'] not in fields or int(r['Market_Year'])<2010:continue
+        if r['Commodity_Code']!='0612000' or r['Unit_Description']!='(1000 MT)':raise ValueError('PSD identity/unit mismatch')
+        year=int(r['Market_Year']);key=fields[r['Attribute_Description']]
+        row=grouped.setdefault(year,{'date':f'{year}-01-01','market_year':year})
+        if key in row:raise ValueError('Duplicate PSD Vietnam attribute/year')
+        row[key]=float(r['Value'])
+    complete=[r for r in grouped.values() if all(k in r for k in fields.values())]
+    records=normalize(complete,list(fields.values()))
+    if len(records)<10:raise ValueError('Incomplete PSD Vietnam history')
+    return {'source_url':PSD_SUGAR,'source_name':'USDA FAS PSD','observation_frequency':'marketing year',
+        'publication_frequency':'when USDA revises PSD (May/Nov round)','unit':'thousand tonnes raw value','records':records,
+        'method':'Vietnam, Sugar Centrifugal 0612000: beginning stocks, production, imports, exports, human domestic consumption, ending stocks',
         'raw_sha256':hashlib.sha256(raw).hexdigest()},raw
 
 def load_wb_sugar():
@@ -260,7 +311,7 @@ def main():
     try:
         cache=out/'daily.json';bundle=previous_bundle(out)
         tasks={k:(lambda k=k,s=s:load_eia(k,s)) for k,s in EIA.items()}
-        tasks.update(hormuz=load_portwatch,bab_el_mandeb=lambda:load_portwatch('chokepoint4'),middle_east_crude_exports=lambda:load_middle_east_exports(bundle['sources'].get('middle_east_crude_exports',{}).get('records')),wti_curve=load_curve,brent_futures=lambda:load_daily_futures("BZ=F","USD/barrel"),sugar_futures=lambda:load_daily_futures("SB=F","US cents/lb"),sugar_monthly=load_wb_sugar,sugar_producers=load_sugar_producers,
+        tasks.update(hormuz=load_portwatch,bab_el_mandeb=lambda:load_portwatch('chokepoint4'),middle_east_crude_exports=lambda:load_middle_east_exports(bundle['sources'].get('middle_east_crude_exports',{}).get('records')),wti_curve=load_curve,brent_futures=lambda:load_daily_futures("BZ=F","USD/barrel"),sugar_futures=load_sugar_futures,sugar_vn_balance=load_sugar_vn_balance,sugar_monthly=load_wb_sugar,sugar_producers=load_sugar_producers,
                      singapore_cracks=lambda:load_singapore_cracks(bundle['sources'].get('singapore_cracks',{}).get('records')),
                      retail_fuel=lambda:load_retail_fuel(bundle['sources'].get('retail_fuel',{}).get('records')),
                      opec_capacity=load_steo_capacity,world_balance=load_world_balance,wti_cot=load_wti_cot)

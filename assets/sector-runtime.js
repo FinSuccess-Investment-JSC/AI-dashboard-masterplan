@@ -260,6 +260,18 @@ if(oil){
  document.querySelectorAll('.factor-card').forEach(c=>{const n=document.createElement('small');n.className='analysis-date';n.textContent='Phân tích lưu 03/09/2026 · số mới theo bảng theo dõi';c.prepend(n)});
 }
 else{
+ if(available('sugar_vn_balance')&&document.getElementById('chSupplyDemand')){
+  // USDA PSD Vietnam (same series as the original snapshot), refreshed when USDA revises PSD.
+  const vb=rows('sugar_vn_balance'),thisYear=new Date().getFullYear();
+  const my=r=>String(r.market_year).slice(2)+'/'+String(r.market_year+1).slice(2);
+  const tag=r=>r.market_year>=thisYear?' (dự báo)':r.market_year===thisYear-1?' (ước tính)':'';
+  const labels=vb.map(r=>my(r)+(r.market_year>=thisYear-1?'*':'')),full=vb.map(r=>r.market_year+'/'+String(r.market_year+1).slice(2)+tag(r));
+  barLineChart('chSupplyDemand',{categories:labels,series:[{name:'Sản lượng đường',color:color[0],values:vb.map(r=>r.production)},{name:'Tiêu thụ nội địa',color:color[1],kind:'line',values:vb.map(r=>r.consumption)}],unit:'nghìn tấn',digits:0,height:260});
+  fillTable('tbl-supdem',['Niên vụ','Sản lượng (nghìn tấn)','Tiêu thụ (nghìn tấn)'],vb.map((r,i)=>[full[i],nf(r.production,0),nf(r.consumption,0)]));
+  if(document.getElementById('chStocks')){barLineChart('chStocks',{categories:labels,series:[{name:'Tồn kho cuối vụ',color:color[2],values:vb.map(r=>r.end_stock)}],unit:'nghìn tấn',digits:0,height:250});fillTable('tbl-stocks',['Niên vụ','Tồn kho cuối vụ (nghìn tấn)'],vb.map((r,i)=>[full[i],nf(r.end_stock,0)]));}
+  if(document.getElementById('chImports')){barLineChart('chImports',{categories:labels,series:[{name:'Nhập khẩu',color:color[0],values:vb.map(r=>r.imports)}],unit:'nghìn tấn',digits:0,height:250});fillTable('tbl-imports',['Niên vụ','Nhập khẩu (nghìn tấn)'],vb.map((r,i)=>[full[i],nf(r.imports,0)]));}
+  note('chSupplyDemand',['sugar_vn_balance'],'USDA FAS PSD, Việt Nam, đường ly tâm (0612000), nghìn tấn giá trị thô; * = niên vụ ước tính hoặc dự báo của USDA. Tự cập nhật khi USDA sửa số PSD.');
+ }
  // Base snapshot monitoring. sector-layout.js applies validated Sugar feeds when available.
  const section=document.querySelector('.majorpane[data-tab="mt5"] .section');
  if(section){
