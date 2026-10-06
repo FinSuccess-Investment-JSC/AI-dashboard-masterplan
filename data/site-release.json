@@ -1,5 +1,5 @@
 {
-  "version": "20261006T043852Z",
+  "version": "20261006T064510Z",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -7,10 +7,10 @@
     "bank": "Bank/"
   },
   "files": {
-    "404.html": "edae02bf75d8a8f48c2c401d11ce0da9f1b75acafb4f4be3b19b7cf2935a354b",
-    "Bank/index.html": "32e62097061e7d01403671ade51bdda572e9ec5b3551639881a58a1ee247c983",
-    "Dau-khi/index.html": "077a169ef55a62d1863b866428f148dfecf4c2a5df31e9ce95c117398c5f915d",
-    "Sugar/index.html": "f43daf9ec35b7f0f41e31f33bfd2d353f421bd29221772ab561bea3819defe80",
+    "404.html": "2e8b2ca5c800391e34ac9c706e89e22ccb1b6fe21fc0ec3761a96addcbc997ac",
+    "Bank/index.html": "1741d50883bbddf59a30e6ddb554714007a7162cdded9b529d30953553011ba1",
+    "Dau-khi/index.html": "efb987353e2aa6ca23b3d7573817d67abf25e69a4578f633d44a509c6f0c34f4",
+    "Sugar/index.html": "4bd9eeb2c385af46264e16fd6b009de482302f121f7a0d7aef27134a53652ff6",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
     "assets/bank-dashboard.js": "aa0d235f9d52f5168dbcb831948da37b32138c8565e227ff73b49c4726f99b36",
@@ -37,9 +37,9 @@
     "data/bank-public-data.js": "4d672f57d11f49069461e9e0d99c33e93f5f9383905e805d11c09cab2af57fcb",
     "data/bank-wi-data.js": "6679467647c30fc299131dfd06f2d29d2c92af3b78258a05446368735acb4b5e",
     "data/company-comparison.js": "611f85dfb5afab51bacb3d629e1ca8cd9f1d8766d0fefcb859ecfa32d68b7aac",
-    "data/daily-data.js": "861b4c730cf2e8f3af84bb8ae88fcf237ab26a38976199116a2107ef07a6b1a2",
-    "duong/index.html": "fd8fd75ef441de5a2138785164f43c526eaf90aa9b1b920ae24cf80c531612e7",
-    "index.html": "3ae490a3a62ca15986d1fa9b3774ffe8f16d76a325067df2955fb732024bae2b"
+    "data/daily-data.js": "ccf402cafb15e2b478b37e0e7865e87dac8e6695094ca086fe43266363c2a564",
+    "duong/index.html": "c1c2e234531f1b10b3733c244bcf941e2dad2793bf4987a56ee983ef09a8af72",
+    "index.html": "2e87e7ccd82453069a5cd3ecdcc21c5294fef6727bb63d171b579d18e7d63a28"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }

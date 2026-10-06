@@ -1,6 +1,6 @@
 {
-  "run_at": "2026-10-06T04:37:13.187982+00:00",
-  "errors": 2,
+  "run_at": "2026-10-06T06:44:36.122397+00:00",
+  "errors": 1,
   "sources": {
     "wti": {
       "status": "ok",
@@ -81,10 +81,10 @@
     },
     "sugar_futures": {
       "status": "error",
-      "latest_observation": null,
-      "last_success_at": null,
-      "last_checked_at": "2026-10-06T04:37:13.187982+00:00",
-      "error": "Incomplete futures history"
+      "latest_observation": "2026-10-02",
+      "last_success_at": "2026-10-05T17:20:22.779914+00:00",
+      "last_checked_at": "2026-10-06T06:44:36.122397+00:00",
+      "error": "Incomplete futures history: 1 completed sessions from 1 bars"
     },
     "distillate_stock": {
       "status": "ok",
@@ -136,11 +136,11 @@
       "error": null
     },
     "retail_fuel": {
-      "status": "error",
-      "latest_observation": null,
-      "last_success_at": null,
-      "last_checked_at": "2026-10-06T04:37:13.187982+00:00",
-      "error": "Petrolimex product row missing or ambiguous"
+      "status": "ok",
+      "latest_observation": "2026-10-01",
+      "last_success_at": "2026-10-06T06:44:36.122397+00:00",
+      "last_checked_at": "2026-10-06T06:44:36.122397+00:00",
+      "error": null
     },
     "singapore_cracks": {
       "status": "ok",
