@@ -215,14 +215,15 @@ ul.list li{margin-bottom:7px}
 <script src="../assets/chart-cards.js?v=1c2b02c72a99" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="../assets/catalyst-board.js?v=8e97073afec4" defer></script>
+<script src="../data/company-valuation.js?v=79ad37e8c088" defer></script>
 <script src="../data/company-comparison.js?v=29cc19f5f3c9" defer></script>
-<script src="../assets/financial-comparison.js?v=b432cb6f4cfd" defer></script>
-<script src="../assets/research-layout.js?v=b84ea7aad02e" defer></script>
+<script src="../assets/financial-comparison.js?v=c2d94f7d0b29" defer></script>
+<script src="../assets/research-layout.js?v=801a09ce32c2" defer></script>
 <script src="../assets/research-sources.js?v=edcd4f68d6d5" defer></script>
 <script src="../assets/research-editorial.js?v=7a9e9e76ccd8" defer></script>
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20261006T074313Z"></script>
+<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20261006T083717Z"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=4d0c1fbd13a5">
 <link rel="stylesheet" href="../assets/research-layout.css?v=60e744338cd0">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=acb6bc4d7444">
@@ -560,15 +561,15 @@ ul.list li{margin-bottom:7px}
       </div>
       <div class="card" data-block-id="sugar-20" data-update-kind="document" data-cadence="irregular" data-refresh-status="snapshot">
         <div class="chart-title">Sức khỏe tài chính nhóm đường niêm yết</div>
-        <div class="chart-sub">TTM tại 09/01/2024 · <a href="https://www.vietcap.com.vn/" target="_blank" rel="noopener">Vietcap</a> (FiinPro)</div>
+        <div class="chart-sub">Doanh thu, LNST, ROE/ROA: TTM tại 09/01/2024 · <a href="https://www.vietcap.com.vn/" target="_blank" rel="noopener">Vietcap</a> (FiinPro) · Vốn hóa, P/E: phiên <span data-valuation-date="SBT">—</span> · <a href="https://dstock.vndirect.com.vn/tong-quan/SBT" target="_blank" rel="noopener">VNDirect</a></div>
         <div class="tablewrap">
           <table class="plain">
-            <thead><tr><th>Mã</th><th>Vốn hóa (tr.USD)</th><th>DT TTM (tr.USD)</th><th>LNST TTM (tr.USD)</th><th>LNST YoY</th><th>ROE</th><th>ROA</th><th>P/E</th></tr></thead>
+            <thead><tr><th>Mã</th><th>Vốn hóa</th><th>DT TTM (tr.USD)</th><th>LNST TTM (tr.USD)</th><th>LNST YoY</th><th>ROE</th><th>ROA</th><th>P/E</th></tr></thead>
             <tbody>
-              <tr><td>SBT</td><td>411,9</td><td>1.076,9</td><td>21,4</td><td>-39,4%</td><td>4,9%</td><td>1,7%</td><td>20,0x</td></tr>
-              <tr><td>SLS</td><td>58,1</td><td>75,2</td><td>23,4</td><td>+117,2%</td><td>54,3%</td><td>42,9%</td><td>2,5x</td></tr>
-              <tr><td>LSS</td><td>34,0</td><td>82,3</td><td>1,6</td><td>-12,8%</td><td>12,5%</td><td>1,5%</td><td>21,7x</td></tr>
-              <tr><td>QNS*</td><td>673,7</td><td>404,0</td><td>81,7</td><td>+89,8%</td><td>25,6%</td><td>17,4%</td><td>8,3x</td></tr>
+              <tr><td>SBT</td><td data-valuation="SBT:market_cap">—</td><td>1.076,9</td><td>21,4</td><td>-39,4%</td><td>4,9%</td><td>1,7%</td><td data-valuation="SBT:pe">—</td></tr>
+              <tr><td>SLS</td><td data-valuation="SLS:market_cap">—</td><td>75,2</td><td>23,4</td><td>+117,2%</td><td>54,3%</td><td>42,9%</td><td data-valuation="SLS:pe">—</td></tr>
+              <tr><td>LSS</td><td data-valuation="LSS:market_cap">—</td><td>82,3</td><td>1,6</td><td>-12,8%</td><td>12,5%</td><td>1,5%</td><td data-valuation="LSS:pe">—</td></tr>
+              <tr><td>QNS*</td><td data-valuation="QNS:market_cap">—</td><td>404,0</td><td>81,7</td><td>+89,8%</td><td>25,6%</td><td>17,4%</td><td data-valuation="QNS:pe">—</td></tr>
             </tbody>
           </table>
         </div>
@@ -584,7 +585,7 @@ ul.list li{margin-bottom:7px}
         <p>Doanh nghiệp đường niêm yết lớn nhất, ~46% thị phần đường nội địa (FY2019/20 và FY2022/23). Vùng nguyên liệu chính tại Tây Ninh; theo thông tin doanh nghiệp tự công bố, còn mở rộng vùng trồng sang Lào, Campuchia và Úc theo mô hình nông nghiệp đa quốc gia (chưa kiểm chứng lại trong dashboard này). Biên lợi nhuận gộp mảng đường thấp nhất nhóm so sánh dù thị phần lớn nhất — gợi ý cạnh tranh giá/chi phí đầu vào cao hơn phần còn lại của ngành.</p>
         <div class="stats">
           <div class="stat">Biên LN gộp mảng đường FY22/23<br><b>11,6%</b></div>
-          <div class="stat">Vốn hóa TTM 09/01/2024<br><b>411,9tr USD</b></div>
+          <div class="stat">Vốn hóa · phiên <span data-valuation-date="SBT">—</span><br><b data-valuation="SBT:market_cap">—</b></div>
           <div class="stat">ROE / ROA TTM<br><b>4,9% / 1,7%</b></div>
         </div>
       </div>
@@ -593,7 +594,7 @@ ul.list li{margin-bottom:7px}
         <p>Doanh nghiệp đa ngành — mảng đường chỉ là một phần doanh thu, bên cạnh mảng sữa đậu nành Vinasoy (biên lợi nhuận cao, đóng góp lớn vào lợi nhuận hợp nhất). ROE/ROA và tăng trưởng LNST TTM cao nhất trong bảng tài chính, nhưng phản ánh toàn công ty chứ không riêng mảng đường — không nên đọc trực tiếp như hiệu quả ngành đường.</p>
         <div class="stats">
           <div class="stat">Biên LN gộp mảng đường FY22/23<br><b>24,4%</b></div>
-          <div class="stat">Vốn hóa TTM 09/01/2024<br><b>673,7tr USD</b></div>
+          <div class="stat">Vốn hóa · phiên <span data-valuation-date="QNS">—</span><br><b data-valuation="QNS:market_cap">—</b></div>
           <div class="stat">ROE / ROA TTM<br><b>25,6% / 17,4%</b></div>
         </div>
       </div>
@@ -602,7 +603,7 @@ ul.list li{margin-bottom:7px}
         <p>Vùng nguyên liệu tại Sơn La (Tây Bắc) — địa hình miền núi có thể khiến ít cạnh tranh trực tiếp với đường nhập lậu/nhập khẩu qua các cửa khẩu phía Nam và Tây Nam hơn nhóm còn lại (giả thuyết khả dĩ, chưa kiểm chứng riêng trong dashboard này). Biên lợi nhuận gộp mảng đường và ROE/ROA cao nhất nhóm so sánh rõ rệt, dù vốn hóa nhỏ nhất — thanh khoản giao dịch có thể là yếu tố cần lưu ý thêm.</p>
         <div class="stats">
           <div class="stat">Biên LN gộp mảng đường FY22/23<br><b>34,7%</b></div>
-          <div class="stat">Vốn hóa TTM 09/01/2024<br><b>58,1tr USD</b></div>
+          <div class="stat">Vốn hóa · phiên <span data-valuation-date="SLS">—</span><br><b data-valuation="SLS:market_cap">—</b></div>
           <div class="stat">ROE / ROA TTM<br><b>54,3% / 42,9%</b></div>
         </div>
       </div>
@@ -611,7 +612,7 @@ ul.list li{margin-bottom:7px}
         <p>Vùng nguyên liệu tại Thanh Hóa. Biên lợi nhuận gộp mảng đường thấp nhất trong nhóm so sánh FY2022/23. Theo thông tin công khai phổ biến, doanh nghiệp có dây chuyền sản xuất cồn/ethanol từ mật rỉ đường bên cạnh mảng đường chính (xem thêm tab 7 — sản phẩm phụ), nhưng dashboard này chưa có số liệu tách bạch doanh thu theo mảng để định lượng đóng góp.</p>
         <div class="stats">
           <div class="stat">Biên LN gộp mảng đường FY22/23<br><b>10,0%</b></div>
-          <div class="stat">Vốn hóa TTM 09/01/2024<br><b>34,0tr USD</b></div>
+          <div class="stat">Vốn hóa · phiên <span data-valuation-date="LSS">—</span><br><b data-valuation="LSS:market_cap">—</b></div>
           <div class="stat">ROE / ROA TTM<br><b>12,5% / 1,5%</b></div>
         </div>
       </div>

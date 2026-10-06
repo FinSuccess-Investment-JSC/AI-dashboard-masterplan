@@ -1,5 +1,5 @@
 {
-  "version": "20261006T074313Z",
+  "version": "20261006T083717Z",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -7,10 +7,10 @@
     "bank": "Bank/"
   },
   "files": {
-    "404.html": "e7b463f49f449c5c807bf3bae8a19bf104b8a792bc8db7eb6de18dc0db6b486d",
-    "Bank/index.html": "df483e215b8b7aee4a3fcb1b4823ad6659858d7f68ef3543fabe0e5cbcff01f7",
-    "Dau-khi/index.html": "67a165dd801eb63b52c16930b400973d1cacb4ed38d4a14626516a0ff51c7f2a",
-    "Sugar/index.html": "bc3ef60aa746f18368762e3760acdc7c0cb8b1f3ff70776b0449b88ebc95c190",
+    "404.html": "31965a57741ab434dbb27295da1020f4f27bdca76e4661c965659ad4dd1cbbe4",
+    "Bank/index.html": "fd67f1816042c9361ecec33bc1c1de134c81ad8f4349969ab38ea8bbb352501f",
+    "Dau-khi/index.html": "00505df9e98371f0ca1daf8508b4bd807429c797edc1bd5c970c256301de2beb",
+    "Sugar/index.html": "acd93182c04fc2f491318b186d2caad6e0c615aa080f30e13745563eed3d8f51",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
     "assets/bank-dashboard.js": "aa0d235f9d52f5168dbcb831948da37b32138c8565e227ff73b49c4726f99b36",
@@ -23,10 +23,10 @@
     "assets/dashboard-ui.js": "08a5cb16b308fca4523c3f525731266d610fdde0d7f4e9babf8d93cf78142d44",
     "assets/data-math.js": "ed6356aac3afd13ce8d05fbc837d6a844ebfdbaeb7edfe50fc589ac5c3b94def",
     "assets/fin-success-theme.css": "acb6bc4d7444fa898a176802d2fb2067d91ba4ab0db7ed66232c6acc2d984d3e",
-    "assets/financial-comparison.js": "b432cb6f4cfd33b2392a93db7cdc60cde7a171acaaba64a748b108e782b970b3",
+    "assets/financial-comparison.js": "c2d94f7d0b293c548ac48b625dc1796c84f3cbe5dad6c668b756d47e3eb6aca5",
     "assets/research-editorial.js": "7a9e9e76ccd81589d50b68a5f273dbee3e9d9844bb6be7f0ae8a3078c278b674",
     "assets/research-layout.css": "60e744338cd06cef4b19ffda86936af9855046538bbdb964449b7bcec8be791d",
-    "assets/research-layout.js": "b84ea7aad02e6e5f30b4392cc3d523620466545dfb6e736d69928d48100fd5fe",
+    "assets/research-layout.js": "801a09ce32c22966f67fda7f92c232a82b1f613320aa4ec8eddd85ba8e344a52",
     "assets/research-sources.js": "edcd4f68d6d5812bc81cc754e702d21602b7063384fbfa65b79c4509e792378a",
     "assets/sector-content.js": "eff5124ba39861f4a1ab135ce4345d8e43ec5f7b913931033ef284a4fe24c768",
     "assets/sector-layout.js": "ef54303dcca55db9b1d12a6949b873476117b13a145561dbd94729ddba3a095d",
@@ -37,9 +37,10 @@
     "data/bank-public-data.js": "4d672f57d11f49069461e9e0d99c33e93f5f9383905e805d11c09cab2af57fcb",
     "data/bank-wi-data.js": "75b194292e7e459df90df905c2c44b00d01345abe3ce314ce5a8b5d8e93c3531",
     "data/company-comparison.js": "29cc19f5f3c98f793c0a5ef112fefab2bed3cd09fc3a444d81cec96c733be645",
+    "data/company-valuation.js": "79ad37e8c0881a61454428d78e92c072d7bb5529f7f045d860652764d384278e",
     "data/daily-data.js": "ccf402cafb15e2b478b37e0e7865e87dac8e6695094ca086fe43266363c2a564",
-    "duong/index.html": "4bda7080549a2138974f7dd543c5ce412ef2e11f05eaf8060874c5f1468652af",
-    "index.html": "d376ede5258f6a0e620d5a76df0eecadad9fe2a10c5e8a1ea0fe3cb9a437ab16"
+    "duong/index.html": "ecc7d6e9c8e8fb7f67f49e61e3ebb71a447f35bcff2e806f9cbef65f1bc1716f",
+    "index.html": "fca38465540380d83ee8acdcfbf14168b1770c73f0dfcc5130521f74ec02a6e2"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }

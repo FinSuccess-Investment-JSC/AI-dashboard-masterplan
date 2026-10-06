@@ -28,6 +28,10 @@ def browser_json(path: Path, prefix: str):
     return json.loads(text[len(prefix):].strip().removesuffix(';'))
 
 
+def valuation():
+    return browser_json(DATA / 'company-valuation.js', 'window.COMPANY_VALUATION = ')
+
+
 def signature(include_comparison: bool):
     daily = browser_json(DATA / 'daily-data.js', 'window.SECTOR_DAILY = ')
     bank = browser_json(DATA / 'bank-public-data.js', 'window.BANK_PUBLIC_DATA = ')
@@ -35,6 +39,7 @@ def signature(include_comparison: bool):
         'daily': {key: (source.get('data_hash'), source.get('status'))
                   for key, source in daily.get('sources', {}).items()},
         'bank': (bank.get('data_hash'), bank.get('status')),
+        'valuation': (valuation().get('data_hash'), valuation().get('status')),
     }
     if include_comparison:
         comparison = json.loads((DATA / 'company-comparison.json').read_text()) if (DATA / 'company-comparison.json').exists() else {}
@@ -57,6 +62,9 @@ def source_states():
     states = {key: (source.get('data_hash'), source.get('status'), source.get('latest_observation'), source.get('error'))
               for key, source in daily.get('sources', {}).items()}
     states['bank_eximbank'] = (bank.get('data_hash'), bank.get('status'), bank.get('latest_observation'), bank.get('error'))
+    val = valuation()
+    states['company_valuation'] = (val.get('data_hash'), 'error' if val.get('status') == 'error' else 'ok',
+                                   val.get('latest_observation'), '; '.join(f'{k}: {v}' for k, v in (val.get('errors') or {}).items())[:200] or None)
     return states
 
 
@@ -64,7 +72,8 @@ def notice(before: dict, after: dict, adapters: dict) -> str:
     """Short message for Zalo: only transitions, so one broken feed alerts once, not every run."""
     broke = [k for k, v in after.items() if v[1] == 'error' and before.get(k, (None, None))[1] != 'error']
     healed = [k for k, v in after.items() if v[1] != 'error' and before.get(k, (None, None))[1] == 'error']
-    fresh = [f"{k} ({v[2]})" if v[2] else k for k, v in after.items() if v[0] != before.get(k, (None,))[0]]
+    quiet = {'company_valuation'}  # moves every trading day: only failures are worth a message
+    fresh = [f"{k} ({v[2]})" if v[2] else k for k, v in after.items() if v[0] != before.get(k, (None,))[0] and k not in quiet]
     lines = []
     if broke:
         lines.append('Nguồn lỗi, giữ số cũ: ' + '; '.join(f"{k}: {str(after[k][3] or '')[:120]}" for k in broke))
@@ -91,6 +100,8 @@ def main():
     polling_args = [] if args.force_release else ['--scheduled']
     for name, script in [('market', 'update_daily.py'), ('bank', 'update_bank.py')]:
         results[name] = subprocess.run([sys.executable, str(ROOT / 'scripts' / script), *polling_args], cwd=ROOT).returncode
+    # Daily P/E, P/B, market cap: every run (07:30 = previous close, 15:30 = same-day close).
+    results['valuation'] = subprocess.run([sys.executable, str(ROOT / 'scripts' / 'update_valuation.py')], cwd=ROOT).returncode
     if args.comparison:
         results['comparison'] = subprocess.run([sys.executable, str(ROOT / 'scripts' / 'update_company_comparison.py')], cwd=ROOT).returncode
     after = signature(args.comparison)

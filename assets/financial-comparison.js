@@ -6,7 +6,8 @@ const finite=Number.isFinite;
 function compare(a,b,direction=1){const am=a===null||a===undefined,bm=b===null||b===undefined;if(am||bm)return am===bm?0:am?1:-1;return direction*(typeof a==='number'&&typeof b==='number'?a-b:String(a).localeCompare(String(b),'vi',{numeric:true}));}
 function mount(host,{sector,sources}){
  const bank=sector==='bank',bundle=window.COMPANY_COMPARISON;
- const rows=(bundle?.companies||[]).filter(r=>r.sector===sector);
+ const live=window.COMPANY_VALUATION?.companies||{};
+ const rows=(bundle?.companies||[]).filter(r=>r.sector===sector).map(r=>live[r.symbol]?{...r,quote:live[r.symbol]}:r); // daily P/E, P/B, market cap (VNDirect) override the statement snapshot
  const heading=make('div','comparison-heading'),headline=make('div');headline.append(make('span','comparison-eyebrow','FINANCIAL SNAPSHOT'),make('h2','','So sánh tài chính & định giá'));heading.append(headline,make('span','comparison-unit','Tỷ VND · % · lần'));host.append(heading);
  const tools=make('div','comparison-tools'),search=make('input');search.id='comparison-search';search.type='search';search.placeholder='Tìm mã cổ phiếu';search.setAttribute('aria-label','Tìm mã cổ phiếu');
  const group=make('select');group.id='comparison-group';group.setAttribute('aria-label','Lọc nhóm doanh nghiệp');[['all','Tất cả doanh nghiệp'],...[...new Set(rows.map(r=>r.group))].map(g=>[g,g])].forEach(([v,t])=>{const o=make('option','',t);o.value=v;group.append(o)});
@@ -49,10 +50,18 @@ function mount(host,{sector,sources}){
  const source=make('details','comparison-source');source.append(make('summary','','Nguồn & định nghĩa'));const body=make('div','comparison-source-body');
  body.append(make('p','','Nguồn public: Stock Analysis / S&P Global Market Intelligence. Snapshot tải '+(bundle?.checked_at?.slice(0,10)||'chưa có')+'. Đây là bộ số chuẩn hóa của nhà cung cấp, chưa đối chiếu toàn bộ với BCTC gốc. Giá và tỷ lệ định giá có độ trễ; xem ngày tại từng dòng.'));
  body.append(make('p','','Biên ròng = lợi nhuận thuộc cổ đông phổ thông / doanh thu (ngân hàng: tổng thu nhập trước dự phòng tín dụng theo nguồn). ROE = cùng lợi nhuận / vốn cổ đông phổ thông bình quân đầu–cuối kỳ. Quý dùng riêng quý, không nhân bốn. Nợ vay ngắn hạn = vay ngắn hạn + phần vay dài hạn đến hạn; thiếu một cấu phần thì để trống. Tiền không cộng đầu tư ngắn hạn. Tiền/nợ là số cuối kỳ. ROA dùng lợi nhuận thuộc cổ đông phổ thông / tổng tài sản bình quân; CIR = chi phí ngoài lãi / tổng thu nhập trước dự phòng. NIM, CASA và NPL chưa có trong nguồn công khai này nên không ghép thêm số Wi khác định nghĩa/kỳ.'));
- rows.forEach(r=>{const n=make('p');n.append(make('b','',r.symbol+' · '));const urls=new Set([...(r.year?.source_urls||[]),...(r.quarter?.source_urls||[]),r.quote?.source_url].filter(Boolean));urls.forEach((url,i)=>{const a=make('a','',i===urls.size-1&&url.includes('ratios')?'Định giá ↗':url.includes('balance-sheet')?'CĐKT '+(url.includes('quarterly')?'quý':'năm')+' ↗':'KQKD '+(url.includes('quarterly')?'quý':'năm')+' ↗');a.href=url;a.target='_blank';a.rel='noopener';n.append(a,' · ')});if(!urls.size)n.append('Chưa lấy được dữ liệu công khai cho đúng mã/sàn.');body.append(n)});source.append(body);host.append(source);
+ rows.forEach(r=>{const n=make('p');n.append(make('b','',r.symbol+' · '));const urls=new Set([...(r.year?.source_urls||[]),...(r.quarter?.source_urls||[]),r.quote?.source_url].filter(Boolean));urls.forEach((url,i)=>{const a=make('a','',url.includes('vndirect')?'Định giá VNDirect ↗':i===urls.size-1&&url.includes('ratios')?'Định giá ↗':url.includes('balance-sheet')?'CĐKT '+(url.includes('quarterly')?'quý':'năm')+' ↗':'KQKD '+(url.includes('quarterly')?'quý':'năm')+' ↗');a.href=url;a.target='_blank';a.rel='noopener';n.append(a,' · ')});if(!urls.size)n.append('Chưa lấy được dữ liệu công khai cho đúng mã/sàn.');body.append(n)});source.append(body);host.append(source);
  const registry=make('details','research-fold');registry.append(make('summary','','Nguồn bảng so sánh tài chính'));const registryBody=body.cloneNode(true);registryBody.className='research-detail';registry.append(registryBody);sources.append(registry);
  draw();
 }
 if(typeof window!=='undefined')window.FinancialComparison={mount,compare};
 if(typeof module!=='undefined'&&module.exports)module.exports={compare};
+/* Daily valuation spots outside the table: <b data-valuation="SBT:market_cap">, <span data-valuation-date="SBT">. */
+function bindValuation(){
+ const live=window.COMPANY_VALUATION?.companies||{};
+ const fmt=(k,x)=>x===null||x===undefined?'—':k==='market_cap'?Math.round(x).toLocaleString('vi-VN')+' tỷ đ':x.toLocaleString('vi-VN',{minimumFractionDigits:1,maximumFractionDigits:1})+'x';
+ document.querySelectorAll('[data-valuation]').forEach(n=>{const [symbol,key]=n.dataset.valuation.split(':');n.textContent=live[symbol]?fmt(key,live[symbol][key]):'—'});
+ document.querySelectorAll('[data-valuation-date]').forEach(n=>{const c=live[n.dataset.valuationDate];n.textContent=c?c.date.split('-').reverse().join('/'):'—'});
+}
+if(typeof document!=='undefined')document.readyState==='loading'?document.addEventListener('DOMContentLoaded',bindValuation):bindValuation();
 })();

@@ -121,6 +121,10 @@ def source_status() -> dict:
     out = dict(daily)
     if bank:
         out['bank_eximbank'] = bank
+    val = browser_json(ROOT / 'data/company-valuation.js', 'window.COMPANY_VALUATION = ')
+    if val:
+        out['company_valuation'] = {'status': 'error' if val.get('status') == 'error' else 'ok', 'changed_at': val.get('changed_at'),
+                                    'error': '; '.join(f'{k}: {v}' for k, v in (val.get('errors') or {}).items())[:200] or None}
     return out
 
 
