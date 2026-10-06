@@ -39,3 +39,21 @@ class ReleaseSignatureTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class NoticeTests(unittest.TestCase):
+    def test_alerts_only_on_transitions(self):
+        before = {'brent': ('a', 'ok', '2026-10-01', None), 'wti': ('w', 'error', '2026-09-30', 'timeout'), 'eia': ('e', 'ok', None, None)}
+        after = {'brent': ('b', 'ok', '2026-10-02', None), 'wti': ('w', 'error', '2026-09-30', 'timeout'), 'eia': ('e', 'error', None, 'HTTP 503')}
+        text = refresh_release.notice(before, after, {'market': 1})
+        self.assertIn('eia: HTTP 503', text)
+        self.assertNotIn('wti', text)  # still broken: already alerted on the earlier run
+        self.assertIn('brent (2026-10-02)', text)
+
+    def test_nothing_changed_sends_nothing(self):
+        same = {'brent': ('a', 'ok', '2026-10-01', None)}
+        self.assertEqual(refresh_release.notice(same, same, {'market': 0, 'bank': 0}), '')
+
+    def test_recovery_is_reported(self):
+        text = refresh_release.notice({'wti': ('w', 'error', None, 'x')}, {'wti': ('w', 'ok', None, None)}, {})
+        self.assertIn('chạy lại bình thường: wti', text)

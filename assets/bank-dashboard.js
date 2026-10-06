@@ -102,6 +102,12 @@
   const tooltip=document.createElement('div');tooltip.className='chart-tooltip';tooltip.hidden=true;document.body.append(tooltip);
   function chart(id,series,rows){
     const host=$('#'+id);
+    if(!window.ChartTypes||!host||!rows.length)return chartBase(id,series,rows);
+    const unit=id==='eib-spread'?'điểm %':'%/năm';
+    ChartTypes.mount(host,{categories:rows.map(r=>date(r.date)),tickLabels:rows.map(r=>`T${Number(r.date.slice(5,7))}/${r.date.slice(2,4)}`),series:series.map(s=>({name:s.label,color:s.color,kind:'line',values:rows.map(r=>r[s.key])})),unit,digits:2,zeroBase:false,height:255},()=>chartBase(id,series,rows));
+  }
+  function chartBase(id,series,rows){
+    const host=$('#'+id);
     if(!rows.length){host.innerHTML='<div class="gap-empty">Không có dữ liệu nguồn hợp lệ.</div>';return;}
     const W=innerWidth<700?340:580,H=255,L=48,R=20,T=20,B=34;
     const vals=series.flatMap(s=>rows.map(r=>r[s.key])).filter(Number.isFinite);

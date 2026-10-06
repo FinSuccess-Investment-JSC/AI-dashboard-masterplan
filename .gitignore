@@ -20,3 +20,4 @@ data/raw/*
 data/.update.lock
 data/daily.json
 data/.bank-update.lock
+.notify.txt

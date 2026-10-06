@@ -7,7 +7,7 @@ python3 -m pip install -r scripts/requirements.txt
 python3 scripts/update_daily.py
 ```
 
-Requires Python 3.10+ and system `curl` with working TLS trust. The installed local cron calls `scripts/run_daily.sh` at 06:15 Asia/Ho_Chi_Minh daily. That wrapper uses the Python path provided in `DASHBOARD_PYTHON`; set it explicitly on another machine. The computer must be awake and connected. Local changes are not published to GitHub Pages.
+Requires Python 3.10+ and system `curl` with working TLS trust. Since 06/10/2026 updates run only on GitHub Actions (see *Automated public refresh*); the local 06:15 cron is retired. `scripts/run_daily.sh` remains for manual runs. That wrapper uses the Python path provided in `DASHBOARD_PYTHON`; set it explicitly on another machine. The computer must be awake and connected. Local changes are not published to GitHub Pages.
 
 ```sh
 python3 scripts/install_daily_schedule.py --preview
@@ -81,3 +81,17 @@ Records retain fiscal period-end, source URLs, fetch date and dated valuation. M
 The manual workflow form has a `force_release` option for testing the commit and Pages build path even when the observations are unchanged. Scheduled runs leave it off.
 
 Check the Actions run and `data/site-release.json` after the first scheduled deployment. GitHub scheduled jobs can start late; this is a polling system, not a live price feed. Failed sources retain last-good observations and publish an error status once it changes. The local 06:15 cron remains a separate backup and does not publish. Wi data still requires a connector session and `build_bank_wi.py`; no Wi API credential is available to the scheduled job. Document, policy and domestic snapshots without validated machine-readable sources remain manual with their existing dated limitations.
+
+### Notifications (06/10/2026)
+
+`refresh_release.py --notify-file .notify.txt` writes a short message only on transitions: a source turning to error (with its error text), a source recovering, sources with new observations, or adapters returning a nonzero code. `scripts/notify.py` sends it to Zalo OA (`ZALO_OA_TOKEN` + `ZALO_USER_ID`) or Telegram (`TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID`); without secrets it only prints to the job log. A failed run sends a separate alert with the run link. Same script as `Stock dashboard/_template/tools/notify.py`; the Zalo endpoint is not yet tested against a real OA.
+
+### Move to the FISC GitHub account (pending account)
+
+1. Transfer `thanhnhan-04/AI-dashboard-masterplan` to the FISC organization (keeps history, issues and Actions).
+2. Prefer a custom domain for Pages (e.g. `dashboard.fisc.vn`) so the public link survives future host changes; the old `thanhnhan-04.github.io` link does not redirect.
+3. Add secrets `ZALO_OA_TOKEN`, `ZALO_USER_ID` (or Telegram) in the new repository.
+4. Run *Refresh dashboard data* manually once with `force_release`; then rerun `tests/site-navigation.cjs` with the new `SITE_BASE`.
+5. Wi (Bank) refresh: schedule a Claude routine that reruns `data/bank-wi-contract.json` with WiMCP and `scripts/build_bank_wi.py`, then opens a commit for the job to publish.
+6. Remove the old local cron block `FIN_SUCCESS_SECTOR_DASHBOARDS` (between its START/END markers) if still present.
+

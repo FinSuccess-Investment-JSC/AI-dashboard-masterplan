@@ -206,24 +206,26 @@ ul.list li{margin-bottom:7px}
 
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=5763ce23563b">
+<script src="../assets/chart-types.js?v=78983022b269"></script>
 <script src="../data/daily-data.js?v=412855046704" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=a45c4b978479" defer></script>
 <script src="../assets/sector-content.js?v=eff5124ba398" defer></script>
-<script src="../assets/sector-layout.js?v=fae05da50c76" defer></script>
+<script src="../assets/sector-layout.js?v=ef54303dcca5" defer></script>
 <script src="../assets/chart-cards.js?v=1c2b02c72a99" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="../assets/catalyst-board.js?v=8e97073afec4" defer></script>
 <script src="../data/company-comparison.js?v=a16738017b47" defer></script>
 <script src="../assets/financial-comparison.js?v=b432cb6f4cfd" defer></script>
 <script src="../assets/research-layout.js?v=b84ea7aad02e" defer></script>
-<script src="../assets/research-sources.js?v=0f8638a1e169" defer></script>
+<script src="../assets/research-sources.js?v=edcd4f68d6d5" defer></script>
 <script src="../assets/research-editorial.js?v=7a9e9e76ccd8" defer></script>
+<script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20261005T172206Z"></script>
+<script src="../assets/site-navigation.js?v=9b367760d97e" data-release="20261006-r1"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=4d0c1fbd13a5">
 <link rel="stylesheet" href="../assets/research-layout.css?v=60e744338cd0">
-<link rel="stylesheet" href="../assets/fin-success-theme.css?v=182c66c74c0a">
+<link rel="stylesheet" href="../assets/fin-success-theme.css?v=acb6bc4d7444">
 </head>
 <body>
 <div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="sugar"><a href="../">Trang tổng</a><a href="../Dau-khi/">Dầu khí</a><a href="../Sugar/">Đường</a><a href="../Bank/">Ngân hàng</a></nav><p class="site-release-note" data-release-label></p></div></div>
@@ -725,7 +727,7 @@ function yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,digits,yMin){
 }
 
 /* categorical bar / combo chart */
-function barLineChart(containerId, opts){
+function barLineChartBase(containerId, opts){
   const host=document.getElementById(containerId);
   if(!host) return;
   const cats=opts.categories, n=cats.length;
@@ -812,7 +814,7 @@ function barLineChart(containerId, opts){
 }
 
 /* single-series line chart, evenly spaced (for monthly world price) */
-function lineChart(containerId, opts){
+function lineChartBase(containerId, opts){
   const labels=opts.labels, n=labels.length;
   const W=640,H=Math.max(250, opts.height||250);
   const padL=44,padR=14,padT=14,padB=30;
@@ -846,6 +848,18 @@ function lineChart(containerId, opts){
   });
   const host=document.getElementById(containerId);
   host.innerHTML=''; host.appendChild(svg);
+}
+
+/* chart-type switcher (assets/chart-types.js): native view = renderer above */
+function barLineChart(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host||!window.ChartTypes) return barLineChartBase(containerId, opts);
+  ChartTypes.mount(host,{categories:opts.categories,tickLabels:opts.tickLabels,series:opts.series.map(s=>({name:s.name,color:s.color,kind:s.kind,values:s.values,conf:s.confArr,strokeWidth:s.strokeWidth})),unit:opts.unit,digits:opts.digits,zeroBase:opts.zeroBase,height:opts.height,stackable:opts.stackable,aria:opts.ariaLabel},()=>barLineChartBase(containerId,opts));
+}
+function lineChart(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host||!window.ChartTypes) return lineChartBase(containerId, opts);
+  ChartTypes.mount(host,{categories:opts.labels,series:[{name:opts.seriesName||'Giá trị',color:opts.color,kind:'line',values:opts.values}],unit:opts.unit,digits:opts.digits,zeroBase:opts.zeroBase,height:opts.height,aria:opts.ariaLabel},()=>lineChartBase(containerId,opts));
 }
 
 /* multi-series real-date range/dot chart (VN price) */

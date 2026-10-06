@@ -45,9 +45,9 @@ jobs:
           extra=()
           if [ "${{ inputs.force_release }}" = 'true' ]; then extra+=(--force-release); fi
           if [ "${{ github.event_name }}" = 'workflow_dispatch' ] || [ "${{ github.event.schedule }}" = '30 8 * * *' ]; then
-            python scripts/refresh_release.py --comparison --prepare-release "${extra[@]}"
+            python scripts/refresh_release.py --comparison --prepare-release --notify-file .notify.txt "${extra[@]}"
           else
-            python scripts/refresh_release.py --prepare-release "${extra[@]}"
+            python scripts/refresh_release.py --prepare-release --notify-file .notify.txt "${extra[@]}"
           fi
       - name: Validate generated data
         run: |
@@ -69,3 +69,24 @@ jobs:
           git commit -m 'Refresh public dashboard observations'
           git push origin HEAD:main
           gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"
+      # Zalo (or Telegram) alert. Without the secrets the message is only printed to the log.
+      - name: Notify changes and source errors
+        if: success()
+        continue-on-error: true
+        env:
+          ZALO_OA_TOKEN: ${{ secrets.ZALO_OA_TOKEN }}
+          ZALO_USER_ID: ${{ secrets.ZALO_USER_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python scripts/notify.py .notify.txt
+      - name: Notify failed run
+        if: failure()
+        continue-on-error: true
+        env:
+          ZALO_OA_TOKEN: ${{ secrets.ZALO_OA_TOKEN }}
+          ZALO_USER_ID: ${{ secrets.ZALO_USER_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          printf 'Job cập nhật dashboard ngành lỗi, không publish; dữ liệu cũ giữ nguyên.\n%s/%s/actions/runs/%s\n' "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" > .notify.txt
+          python scripts/notify.py .notify.txt

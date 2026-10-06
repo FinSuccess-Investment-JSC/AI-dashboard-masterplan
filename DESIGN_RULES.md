@@ -54,5 +54,10 @@ horizontal comparisons may be shorter or taller. Axis labels use a dark ink
 shade, at least 12 SVG units and semibold weight so they remain readable when
 the chart scales into a card. Legend swatches must match the plotted series.
 
+Every quantitative chart carries the shared type switcher (Cột / Cột chồng / Thanh /
+Đường / Miền, `assets/chart-types.js`); invalid types stay visible but disabled with a
+reason. Large data tables (more than 8 rows) start collapsed in a dropdown; tables that
+hold data limitations stay visible. See `DASHBOARD_WORKFLOW.md` §15.
+
 The stock dashboard's financial-model input/forecast rules are not transferred
 to these sector dashboards unless a matching feature is added deliberately.

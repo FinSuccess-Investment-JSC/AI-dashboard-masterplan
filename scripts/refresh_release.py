@@ -51,13 +51,42 @@ def signature(include_comparison: bool):
     return hashlib.sha256(json.dumps(state, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
+def source_states():
+    daily = browser_json(DATA / 'daily-data.js', 'window.SECTOR_DAILY = ')
+    bank = browser_json(DATA / 'bank-public-data.js', 'window.BANK_PUBLIC_DATA = ')
+    states = {key: (source.get('data_hash'), source.get('status'), source.get('latest_observation'), source.get('error'))
+              for key, source in daily.get('sources', {}).items()}
+    states['bank_eximbank'] = (bank.get('data_hash'), bank.get('status'), bank.get('latest_observation'), bank.get('error'))
+    return states
+
+
+def notice(before: dict, after: dict, adapters: dict) -> str:
+    """Short message for Zalo: only transitions, so one broken feed alerts once, not every run."""
+    broke = [k for k, v in after.items() if v[1] == 'error' and before.get(k, (None, None))[1] != 'error']
+    healed = [k for k, v in after.items() if v[1] != 'error' and before.get(k, (None, None))[1] == 'error']
+    fresh = [f"{k} ({v[2]})" if v[2] else k for k, v in after.items() if v[0] != before.get(k, (None,))[0]]
+    lines = []
+    if broke:
+        lines.append('Nguồn lỗi, giữ số cũ: ' + '; '.join(f"{k}: {str(after[k][3] or '')[:120]}" for k in broke))
+    if healed:
+        lines.append('Nguồn đã chạy lại bình thường: ' + ', '.join(healed))
+    if fresh:
+        lines.append('Đã cập nhật và publish: ' + ', '.join(fresh))
+    failed = [name for name, code in adapters.items() if code not in (0, None)]
+    if failed and not broke:
+        lines.append('Adapter trả mã lỗi (xem log GitHub Actions): ' + ', '.join(failed))
+    return '\n'.join(lines)
+
+
 def main():
     cli = argparse.ArgumentParser()
     cli.add_argument('--comparison', action='store_true', help='Also check the public company tables')
     cli.add_argument('--prepare-release', action='store_true', help='Hash changed browser bundles into a new site release')
     cli.add_argument('--force-release', action='store_true', help='Prepare a release even if observations are unchanged')
+    cli.add_argument('--notify-file', type=Path, help='Write a short change/error notice for scripts/notify.py')
     args = cli.parse_args()
     before = signature(args.comparison)
+    states_before = source_states()
     results = {}
     polling_args = [] if args.force_release else ['--scheduled']
     for name, script in [('market', 'update_daily.py'), ('bank', 'update_bank.py')]:
@@ -72,6 +101,8 @@ def main():
     if changed and args.prepare_release:
         version = dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
         subprocess.run([sys.executable, str(ROOT / 'scripts' / 'prepare_release.py'), '--version', version], cwd=ROOT, check=True)
+    if args.notify_file:
+        args.notify_file.write_text(notice(states_before, source_states(), results), encoding='utf-8')
     print(json.dumps({'changed': changed, 'adapters': results, 'prepared_release': changed and args.prepare_release}), flush=True)
     # One bad feed is recorded in its bundle; healthy feeds still advance.
     return 0

@@ -33,7 +33,7 @@
 
   // ---------- generic SVG charts ----------
   // series: [{label,color,points:[[x,y],...]}]; all points share x category order (dates sorted asc).
-  function lineChart(opts) {
+  function lineSvg(opts) {
     const {series, unit = '', fmt = v => vi(v), zero = false, height = 240, labelEvery, monthly = false} = opts;
     const xs = [...new Set(series.flatMap(s => s.points.map(p => p[0])))].sort();
     if (!xs.length) return '<div class="gap-empty">Không có dữ liệu hợp lệ.</div>';
@@ -61,7 +61,7 @@
     });
     return svg + '</svg>';
   }
-  function barChart(opts) {
+  function barSvg(opts) {
     const {series, unit = '', fmt = v => vi(v), height = 240, stacked = false, monthly = false} = opts; // series[i].points: [[x,y]]
     const xs = [...new Set(series.flatMap(s => s.points.map(p => p[0])))].sort();
     if (!xs.length) return '<div class="gap-empty">Không có dữ liệu hợp lệ.</div>';
@@ -92,6 +92,16 @@
     svg += `<path d="M${L} ${Y(0)}H${Wd - R}" stroke="#8a95a3"/>`;
     return svg + '</svg>';
   }
+  // Chart-type switcher (assets/chart-types.js): native view stays the SVG above.
+  function switchable(opts, svg, nativeType) {
+    if (!window.ChartTypes || svg.startsWith('<div')) return svg;
+    const xs = [...new Set(opts.series.flatMap(s => s.points.map(p => p[0])))].sort();
+    const label = x => /^\d{4}/.test(String(x)) ? (opts.monthly || String(x).length === 7 ? mo(x) : dmy(x)) : String(x);
+    return ChartTypes.html({categories: xs.map(label), tickLabels: xs.map(x => shortX(x, opts.monthly)), series: opts.series.map(s => ({name: s.label, color: s.color, kind: nativeType === 'line' ? 'line' : 'bar', values: xs.map(x => dict(s.points)[x])})), unit: opts.unit, fmt: opts.fmt || (v => vi(v)), zeroBase: nativeType === 'line' ? Boolean(opts.zero) : true, height: opts.height, stackable: Boolean(opts.stacked), native: nativeType, aria: opts.aria}, svg);
+  }
+  const lineChart = opts => switchable(opts, lineSvg(opts), 'line');
+  const barChart = opts => switchable(opts, barSvg(opts), opts.stacked ? 'stack' : 'bar');
+  document.addEventListener('ct:render', e => { if (e.target.closest?.('.wi-body')) wireTips(e.target); });
   const dict = pts => { if (!pts._d) Object.defineProperty(pts, '_d', {value: Object.fromEntries(pts)}); return pts._d; };
   function shortX(x, monthly) { x = String(x ?? ''); if (/^\d{4}Q\d$/.test(x)) return 'Q' + x[5] + '/' + x.slice(2, 4); if (x.length === 7 || (monthly && x.length >= 10)) return 'T' + Number(x.slice(5, 7)) + '/' + x.slice(2, 4); if (x.length >= 10) return x.slice(8, 10) + '/' + x.slice(5, 7); return x; }
   const mo = s => s ? 'T' + Number(s.slice(5, 7)) + '/' + s.slice(0, 4) : '—';
