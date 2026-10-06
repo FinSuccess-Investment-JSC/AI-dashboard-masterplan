@@ -86,12 +86,15 @@ Check the Actions run and `data/site-release.json` after the first scheduled dep
 
 `refresh_release.py --notify-file .notify.txt` writes a short message only on transitions: a source turning to error (with its error text), a source recovering, sources with new observations, or adapters returning a nonzero code. `scripts/notify.py` sends it to Zalo OA (`ZALO_OA_TOKEN` + `ZALO_USER_ID`) or Telegram (`TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID`); without secrets it only prints to the job log. A failed run sends a separate alert with the run link. Same script as `Stock dashboard/_template/tools/notify.py`; the Zalo endpoint is not yet tested against a real OA.
 
-### Move to the FISC GitHub account (pending account)
+### Move to the FISC GitHub account
 
-1. Transfer `thanhnhan-04/AI-dashboard-masterplan` to the FISC organization (keeps history, issues and Actions).
-2. Prefer a custom domain for Pages (e.g. `dashboard.fisc.vn`) so the public link survives future host changes; the old `thanhnhan-04.github.io` link does not redirect.
-3. Add secrets `ZALO_OA_TOKEN`, `ZALO_USER_ID` (or Telegram) in the new repository.
-4. Run *Refresh dashboard data* manually once with `force_release`; then rerun `tests/site-navigation.cjs` with the new `SITE_BASE`.
-5. Wi (Bank) refresh: schedule a Claude routine that reruns `data/bank-wi-contract.json` with WiMCP and `scripts/build_bank_wi.py`, then opens a commit for the job to publish.
-6. Remove the old local cron block `FIN_SUCCESS_SECTOR_DASHBOARDS` (between its START/END markers) if still present.
+Done 06/10/2026: the repository now lives at `FinSuccess-Investment-JSC/AI-dashboard-masterplan` (transferred, history and Actions kept); public site `https://finsuccess-investment-jsc.github.io/AI-dashboard-masterplan/`. The old name `thanhnhan-04/AI-dashboard-masterplan` is a separate redirect-only repository (`index.html` + `404.html`) that forwards any old path, query and hash to the new site; do not push dashboard code there. A forced manual run of *Refresh dashboard data* in the organization committed and published release `20261006T043852Z`.
+
+Still open:
+
+1. Rerun `tests/site-navigation.cjs` with `SITE_BASE=https://finsuccess-investment-jsc.github.io/AI-dashboard-masterplan/`.
+2. Custom domain for Pages (e.g. `dashboard.fisc.vn`) so the public link survives future host changes.
+3. Add secrets `ZALO_OA_TOKEN`, `ZALO_USER_ID` (or Telegram) in the organization repository.
+4. Wi (Bank) refresh: schedule a Claude routine that reruns `data/bank-wi-contract.json` with WiMCP and `scripts/build_bank_wi.py`, then opens a commit for the job to publish.
+5. Remove the old local cron block `FIN_SUCCESS_SECTOR_DASHBOARDS` (between its START/END markers) if still present.
 
