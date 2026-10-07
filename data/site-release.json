@@ -1,5 +1,5 @@
 {
-  "version": "20261006T152632Z",
+  "version": "20261007T062249Z",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -8,11 +8,11 @@
     "power": "Dien/"
   },
   "files": {
-    "404.html": "4c7dc4e3186e24f8c465b2a673254706359798826ca074ab224a287cd97002ab",
-    "Bank/index.html": "6b0b828c1a5695edf14ecf408f037fe942af537714836bf4bde9e402b2167e60",
-    "Dau-khi/index.html": "6ca97049f31b91ba26de2d3459f7b7bb91748d6a39074a1df107e74cad586765",
-    "Dien/index.html": "ff7a766ea70ad75145e3e2d7fb06ca1ffe46c74192e5fba019444d957231e193",
-    "Sugar/index.html": "73e2a77ab741bd7cb47f5667ea23a8251d586ddd4ae8cada536d218c630088d5",
+    "404.html": "73dc34d0d6e0052c736e22d712e6637ed2ee0ab60a0c3a82d1e603753d134240",
+    "Bank/index.html": "3b77f52293923ce966848b3d5e8cad1fbb9ebdaac1d4d586923462cfc182d18f",
+    "Dau-khi/index.html": "19de134297a2de317534fd9d218db60320a503f06415caee0e492e8d0432654f",
+    "Dien/index.html": "01ff69a6a2dbf30d9af04036b94351ba5394e2d2e9bf531b81b6ee6e615393e7",
+    "Sugar/index.html": "25251dd6d513054ca30591fcd0f13b196d26e3dfb1594c8be57fadf906c17da8",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
     "assets/bank-dashboard.js": "aa0d235f9d52f5168dbcb831948da37b32138c8565e227ff73b49c4726f99b36",
@@ -36,13 +36,13 @@
     "assets/site-navigation.css": "54a3825f55f47d624459c2df4c1c82aa12c9fdafa9f1d3a59c54407153966029",
     "assets/site-navigation.js": "b0a8a77f3544d8c3c9781b02050590eba4caba089075302bee69983e87e562b7",
     "assets/table-fold.js": "9c78488b28f67114a6d672d11a27c9ce27412ca8cf673d5146834280ef97e9aa",
-    "data/bank-public-data.js": "670785511c62a217f3c32593d4edf1a56c9d6dcaf64db5baaaf301c4fb372c43",
+    "data/bank-public-data.js": "a99c5452dfb19b30b7e87d1f18d1284919bcfa22443b6bfc5b7fe822e3dbef8b",
     "data/bank-wi-data.js": "75b194292e7e459df90df905c2c44b00d01345abe3ce314ce5a8b5d8e93c3531",
     "data/company-comparison.js": "163a2b8feecdc71d3e673e2723b3c52bc23c54283f18c5b2c589ea6bcc4df35b",
-    "data/company-valuation.js": "7ebdb5aff0ad3b468725073fb06ee679a3873ade97af278786eb6b4f1eef651a",
-    "data/daily-data.js": "4df55b67b19d26d7804c3b6f46ec47d46e54d5830449c5db3f4965e9d02f6788",
-    "duong/index.html": "62e312b9a9155a3cf88ea23948d450047d7d88e2d9a72d70db0bc9d000388b7e",
-    "index.html": "3678368cdded9e4a172fdf95cebd2b9da163e0af71793ec82672d6c0a818445a"
+    "data/company-valuation.js": "4a132399c288573c1f100c2a7b9cf4330b2ef0ebf7850ab298f6ac0c8dbe4634",
+    "data/daily-data.js": "0c6752ea7009b0a7efc9928364f0ecc9ca3c6812660ba2bacf99b49653c37b10",
+    "duong/index.html": "66223d06c03a65d3318ecaae26c479e2ddf1634f05412988a3e27286c936159c",
+    "index.html": "0ea851d1fb696e11a790d1f0cfd4262b7c0f260e972bf8b2a214730e8779752d"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }

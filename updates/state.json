@@ -8,9 +8,7 @@
   "oil.portwatch": {},
   "oil.jodi": {},
   "oil.singapore-cracks": {},
-  "oil.retail-fuel": {
-   "brokenSince": "2026-10-06"
-  },
+  "oil.retail-fuel": {},
   "sugar.futures": {},
   "sugar.worldbank": {},
   "sugar.usda-producers": {},
@@ -920,10 +918,12 @@
   },
   "moit.notices": {
    "seen": [
+    "c5ba567ff77b59c5",
     "b9e42945a7416599",
     "f32eeb3f3dd5cd23",
     "2db8a8ea12436bf0"
-   ]
+   ],
+   "lastNew": "2026-10-07T13:22:49+07:00"
   },
   "moit.sugar-trq": {
    "seen": [
@@ -1269,6 +1269,7 @@
   },
   "news.vssa": {
    "seen": [
+    "6da8653c067e8c0c",
     "0545c46441e7b9bc",
     "6819f10aca892e47",
     "5d6dcaf2364fa67d",
@@ -1277,7 +1278,7 @@
     "79a379edde5c4fbd",
     "e7dcd21a2037f5eb"
    ],
-   "lastNew": "2026-10-06T22:26:32+07:00"
+   "lastNew": "2026-10-07T13:22:49+07:00"
   },
   "vcbs.sector": {
    "seen": []
@@ -1312,6 +1313,11 @@
      "watcher": "news.vssa",
      "seenAt": "2026-10-06T22:26:32+07:00",
      "what": "Sản lượng mía đường niên vụ 2020/2021 thấp nhất trong 20 năm qua - Thế giới tiếp thị — https://news.google.com/rss/articles/CBMixgFBVV95cUxNSGJFS2lGVnhIcC0tTEloSG1lNHNhWmk1MUVTdVlvN2RMNUdBS3BLSGdtUUEwUldDYjFhRElQbnEtWXNlbHZqdWFUTWF6aDNfaExrYlNfVDFnOGtWajhJak9ocm9xaWhySzNkNlk4QXVleXBKRTdTd3JSalV6cDl1VTFidy1DWkZzMkhQTXV3ZG1CakZlcGFxLURuX2VvM3NudEg1MXBXekFFQ25XdlVDR3BRandQVEVOSzFQVjRoZ2IxOVhUMVE?oc=5"
+    },
+    {
+     "watcher": "news.vssa",
+     "seenAt": "2026-10-07T13:22:49+07:00",
+     "what": "5 nhiệm vụ trọng tâm của ngành mía đường trong niên vụ mới - VnEconomy — https://news.google.com/rss/articles/CBMiiwFBVV95cUxPNm5FN2NqY19qdndYU3QxTk1pOVR5RFFUdHVSbExKZlN4SkNYZFEwUHdETEg1TDV4aDQxdVU2eGpJdVk2MEtnaVpaNmM2TGs0dHRGNHoyT254V3FQTzh2TUFFektaSmhzUnJIZlJ3ZHZXLUJQX0lfRTU4dUVwRjJCVmk4QVIyaU1uNTRV?oc=5"
     }
    ]
   },
@@ -1322,7 +1328,8 @@
    "since": "2026-10-06T14:14:07+07:00",
    "reasons": [
     "lần đầu: rà soát số đang hiển thị",
-    "lịch 06/10 07:00"
+    "lịch 06/10 07:00",
+    "lịch 07/10 07:00"
    ],
    "signals": []
   },
@@ -1410,7 +1417,13 @@
    "reasons": [
     "lần đầu: rà soát số đang hiển thị"
    ],
-   "signals": []
+   "signals": [
+    {
+     "watcher": "moit.notices",
+     "seenAt": "2026-10-07T13:22:49+07:00",
+     "what": "Bộ Công Thương ban hành Thông tư số 65/2026/TT-BCT về kinh doanh xuất khẩu gạo — /tin-tuc/thi-truong-nuoc-ngoai/quy-dinh-moi-ve-phan-bo-chi-tieu-xuat-khau-gao.html"
+    }
+   ]
   },
   {
    "id": "power.policy",
@@ -1420,7 +1433,13 @@
    "reasons": [
     "lần đầu: rà soát số đang hiển thị"
    ],
-   "signals": []
+   "signals": [
+    {
+     "watcher": "moit.notices",
+     "seenAt": "2026-10-07T13:22:49+07:00",
+     "what": "Bộ Công Thương ban hành Thông tư số 65/2026/TT-BCT về kinh doanh xuất khẩu gạo — /tin-tuc/thi-truong-nuoc-ngoai/quy-dinh-moi-ve-phan-bo-chi-tieu-xuat-khau-gao.html"
+    }
+   ]
   },
   {
    "id": "power.capacity",
@@ -1440,7 +1459,13 @@
    "reasons": [
     "lần đầu: rà soát số đang hiển thị"
    ],
-   "signals": []
+   "signals": [
+    {
+     "watcher": "moit.notices",
+     "seenAt": "2026-10-07T13:22:49+07:00",
+     "what": "Bộ Công Thương ban hành Thông tư số 65/2026/TT-BCT về kinh doanh xuất khẩu gạo — /tin-tuc/thi-truong-nuoc-ngoai/quy-dinh-moi-ve-phan-bo-chi-tieu-xuat-khau-gao.html"
+    }
+   ]
   },
   {
    "id": "power.ai.cycle",
@@ -1451,7 +1476,33 @@
     "lần đầu: rà soát số đang hiển thị"
    ],
    "signals": []
+  },
+  {
+   "id": "bank.wi.daily",
+   "tier": "B",
+   "title": "Wi: lãi suất huy động, liên ngân hàng, OMO, tỷ giá, TPCP, định giá, tin tức",
+   "since": "2026-10-07T13:22:49+07:00",
+   "reasons": [
+    "lịch 07/10 07:00"
+   ],
+   "signals": []
+  },
+  {
+   "id": "oil.price-policy",
+   "tier": "C",
+   "title": "Cơ chế điều hành giá xăng dầu, Luật Dầu khí",
+   "since": "2026-10-07T13:22:49+07:00",
+   "reasons": [
+    "watcher báo có công bố mới"
+   ],
+   "signals": [
+    {
+     "watcher": "moit.notices",
+     "seenAt": "2026-10-07T13:22:49+07:00",
+     "what": "Bộ Công Thương ban hành Thông tư số 65/2026/TT-BCT về kinh doanh xuất khẩu gạo — /tin-tuc/thi-truong-nuoc-ngoai/quy-dinh-moi-ve-phan-bo-chi-tieu-xuat-khau-gao.html"
+    }
+   ]
   }
  ],
- "updatedAt": "2026-10-06T22:26:32+07:00"
+ "updatedAt": "2026-10-07T13:22:49+07:00"
 }
