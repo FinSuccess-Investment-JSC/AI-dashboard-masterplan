@@ -1,33 +1,33 @@
 {
-  "run_at": "2026-10-07T06:21:30.839357+00:00",
+  "run_at": "2026-10-07T15:48:15.696374+00:00",
   "errors": 0,
   "sources": {
     "wti": {
       "status": "ok",
       "latest_observation": "2026-09-29",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "diesel": {
       "status": "ok",
       "latest_observation": "2026-09-29",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "brent": {
       "status": "ok",
       "latest_observation": "2026-09-29",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "gasoline": {
       "status": "ok",
       "latest_observation": "2026-09-29",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "gasoline_stock": {
@@ -47,15 +47,15 @@
     "hormuz": {
       "status": "ok",
       "latest_observation": "2026-10-04",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "bab_el_mandeb": {
       "status": "ok",
       "latest_observation": "2026-10-04",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "cushing": {
@@ -68,22 +68,22 @@
     "wti_curve": {
       "status": "ok",
       "latest_observation": "2026-10-06",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "brent_futures": {
       "status": "ok",
       "latest_observation": "2026-10-06",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "sugar_futures": {
       "status": "ok",
       "latest_observation": "2026-10-06",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "distillate_stock": {
@@ -96,8 +96,8 @@
     "sugar_monthly": {
       "status": "ok",
       "latest_observation": "2026-09-30",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "middle_east_crude_exports": {
@@ -131,29 +131,29 @@
     "opec_capacity": {
       "status": "ok",
       "latest_observation": "2026-09-30",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "retail_fuel": {
       "status": "ok",
       "latest_observation": "2026-10-01",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "singapore_cracks": {
       "status": "ok",
       "latest_observation": "2026-10-06",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "world_balance": {
       "status": "ok",
       "latest_observation": "2027-12-31",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "sugar_vn_balance": {
@@ -166,50 +166,50 @@
     "wb_energy_monthly": {
       "status": "ok",
       "latest_observation": "2026-09-30",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "coal_newcastle": {
       "status": "ok",
       "latest_observation": "2026-10-06",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "enso_oni": {
       "status": "ok",
       "latest_observation": "2026-08-31",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "lng_jkm": {
       "status": "ok",
       "latest_observation": "2026-10-06",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "nino34_weekly": {
       "status": "ok",
       "latest_observation": "2026-09-30",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "henry_hub": {
       "status": "ok",
       "latest_observation": "2026-09-29",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     },
     "vn_power_daily": {
       "status": "ok",
       "latest_observation": "2026-10-05",
-      "last_success_at": "2026-10-07T06:21:30.839357+00:00",
-      "last_checked_at": "2026-10-07T06:21:30.839357+00:00",
+      "last_success_at": "2026-10-07T15:48:15.696374+00:00",
+      "last_checked_at": "2026-10-07T15:48:15.696374+00:00",
       "error": null
     }
   }

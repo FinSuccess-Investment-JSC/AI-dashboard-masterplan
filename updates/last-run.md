@@ -1,9 +1,7 @@
-# Lịch cập nhật — 07/10/2026 13:22
+# Lịch cập nhật — 07/10/2026 22:49
 
-- 🆕 moit.notices: 1 mục mới — Bộ Công Thương ban hành Thông tư số 65/2026/TT-BCT về kinh doanh xuất khẩu gạo — /tin-tuc/thi-truong-nuoc-ngoai/quy-dinh-moi-ve-phan-bo-chi-tieu-xuat-khau-gao.html
-- 🆕 news.vssa: 1 mục mới — 5 nhiệm vụ trọng tâm của ngành mía đường trong niên vụ mới - VnEconomy — https://news.google.com/rss/articles/CBMiiwFBVV95cUxPNm5FN2NqY19qdndYU3QxTk1pOVR5RFFUdHVSbExKZlN4SkNYZFEwUHdETEg1TDV4aDQxdVU2eGpJdVk2MEtnaVpaNmM2TGs0dHRGNHoyT254V3FQTzh2TUFFektaSmhzUnJIZlJ3ZHZXLUJQX0lfRTU4dUVwRjJCVmk4QVIyaU1uNTRV?oc=5
+- ⚠️ watcher news.vssa: HTTP 503
 - → hàng chờ [B] bank.wi.daily: lịch 07/10 07:00
-- → hàng chờ [C] oil.price-policy: watcher báo có công bố mới
 - → hàng chờ [C] sugar.domestic: lịch 01/10 07:00
 - → hàng chờ [C] sugar.crop: lịch 05/10 07:00
 - → hàng chờ [C] bank.policy: lịch 07/10 07:00
@@ -19,3 +17,7 @@
 - → hàng chờ [C] power.hot-topics: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [D] power.ai.cycle: lần đầu: rà soát số đang hiển thị
 - Hàng chờ Claude: 17 mục — sugar.domestic, sugar.crop, bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, sugar.ai.cycle, bank.ai.read, oil.supply-news
+
+## Cảnh báo
+
+- ⚠️ Watcher news.vssa không đọc được trang (HTTP 503)
