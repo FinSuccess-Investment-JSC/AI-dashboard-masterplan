@@ -292,7 +292,7 @@ body{font-size:14px;line-height:1.45}
 
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=5763ce23563b">
-<script src="../assets/chart-types.js?v=78983022b269"></script>
+<script src="../assets/chart-types.js?v=62e4374c64b7"></script>
 <script src="../data/daily-data.js?v=bd2374a1aa25" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=5e53fba2cc18" defer></script>
@@ -310,10 +310,10 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/pane-subtabs.js?v=48caf5cb572e" defer></script>
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=b0a8a77f3544" data-release="20261008T130000Z"></script>
+<script src="../assets/site-navigation.js?v=b0a8a77f3544" data-release="20261008T141500Z"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=b1aa5da24afa">
 <link rel="stylesheet" href="../assets/research-layout.css?v=75fe954acc95">
-<link rel="stylesheet" href="../assets/fin-success-theme.css?v=d86f9e3f1d05">
+<link rel="stylesheet" href="../assets/fin-success-theme.css?v=08b4641003d4">
 </head>
 <body>
 <div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="oil"><a href="../">Trang tổng</a><a href="../Dau-khi/">Dầu khí</a><a href="../Sugar/">Đường</a><a href="../Bank/">Ngân hàng</a><a href="../Dien/">Điện</a></nav><p class="site-release-note" data-release-label></p></div></div>
@@ -1130,7 +1130,7 @@ function barLineChartBase(containerId, opts){
   if(!host) return;
   const cats=opts.categories, n=cats.length;
   const rotate = opts.rotateLabels===false ? false : n>8;
-  const W=640, H=Math.max(250, opts.height||250);
+  const W=640, H=260;
   const padL=50,padR=14,padT=14,padB= rotate?56:30;
   const plotW=W-padL-padR, plotH=H-padT-padB;
   let maxV=0;
@@ -1216,7 +1216,7 @@ function barLineChartBase(containerId, opts){
 /* single-series line chart, evenly spaced (for monthly world price) */
 function lineChartBase(containerId, opts){
   const labels=opts.labels, n=labels.length;
-  const W=640,H=Math.max(250, opts.height||250);
+  const W=640,H=260;
   const padL=44,padR=14,padT=14,padB=30;
   const plotW=W-padL-padR, plotH=H-padT-padB;
   const maxV=Math.max.apply(null, opts.values);
@@ -1264,7 +1264,7 @@ function lineChart(containerId, opts){
 
 /* multi-series real-date range/dot chart (VN price) */
 function rangeDotChart(containerId, opts){
-  const W=640,H=Math.max(250, opts.height||250);
+  const W=640,H=260;
   const padL=48,padR=14,padT=14,padB=28;
   const plotW=W-padL-padR, plotH=H-padT-padB;
   const domainStart=opts.domain[0].getTime(), domainEnd=opts.domain[1].getTime();
@@ -1305,7 +1305,7 @@ function rangeDotChart(containerId, opts){
 /* horizontal compare bars — single snapshot, N entities */
 function hbarCompare(containerId, opts){
   const items=opts.items, n=items.length;
-  const W=640, rowH=38, padT=8, padB=8;
+  const W=640, padT=8, padB=8, rowH=Math.max(38,(260-padT-padB)/n); /* same total height as the other charts */
   const H=padT+padB+rowH*n;
   const padL=8, padR=64, labelW=112;
   const plotW=W-padL-padR-labelW;
@@ -1313,7 +1313,7 @@ function hbarCompare(containerId, opts){
   const svg=baseSvg(W,H,opts.ariaLabel);
   items.forEach((it,i)=>{
     const y=padT+i*rowH;
-    const barY=y+8, barH=rowH-16;
+    const barH=Math.min(rowH-16,30), barY=y+(rowH-barH)/2;
     const bw=plotW*(it.value/maxV);
     svg.appendChild(txt('text',{x:padL+labelW-8,y:y+rowH/2+4,'text-anchor':'end',class:'catlabel',style:'font-weight:700'}, it.label));
     const r=el('rect',{x:padL+labelW,y:barY,width:Math.max(bw,2),height:barH,rx:4,ry:4,fill:it.color});
@@ -1332,7 +1332,7 @@ function hbarCompare(containerId, opts){
 
 function balanceBarChart(containerId, opts){
   const labels=opts.labels, values=opts.values;
-  const W=640,H=Math.max(250, opts.height||250),padL=52,padR=20,padT=16,padB=38;
+  const W=640,H=260,padL=52,padR=20,padT=16,padB=38;
   const plotW=W-padL-padR, plotH=H-padT-padB;
   const maxAbs=Math.max(1, Math.max.apply(null, values.map(v=>Math.abs(v))))*1.2;
   const zeroY=padT+plotH/2;

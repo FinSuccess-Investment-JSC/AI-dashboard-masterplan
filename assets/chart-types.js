@@ -53,12 +53,14 @@
   }
 
   /* ---------- universal SVG renderer ---------- */
+  const UNIFORM = document.body?.dataset.sector !== 'bank';
   function render(model, type) {
     const cats = model.categories, n = cats.length, f = fmtOf(model);
     const main = model.series.filter(s => !s.overlay), over = model.series.filter(s => s.overlay);
     const label = i => String(model.tickLabels?.[i] ?? cats[i]);
     if (type === 'hbar') return renderH(model, main, over, f, label);
-    const W = 640, H = Math.max(240, model.height || 250), L = 52, R = 16, T = 16, B = 30;
+    // Uniform plot height so charts in one row/tab look the same size (Bank keeps per-chart heights).
+    const W = 640, H = UNIFORM ? 260 : Math.max(240, model.height || 250), L = 52, R = 16, T = 16, B = 30;
     const pw = W - L - R, ph = H - T - B, band = pw / Math.max(n, 1);
     const stacked = type === 'stack' || (type === 'area' && model.stackable && main.length > 1 &&
       main.every(s => s.values.every(v => v == null || v >= 0)) && main.every(s => s.values.every(num)));
@@ -132,7 +134,9 @@
   }
   function renderH(model, main, over, f, label) {
     const all = main.concat(over), n = model.categories.length;
-    const rowH = Math.max(18, all.length * 9 + 8), labelW = 84, W = 640, T = 6, B = 22, R = 64;
+    let rowH = Math.max(18, all.length * 9 + 8);const labelW = 84, W = 640, B = 22, R = 64;
+    if (UNIFORM) rowH = Math.min(40, Math.max(rowH, (260 - 28) / n));
+    const T = 6 + (UNIFORM ? Math.max(0, 260 - 28 - rowH * n) : 0);
     const H = T + B + rowH * n, L = labelW + 8, pw = W - L - R;
     const vals = all.flatMap(s => s.values.filter(num));
     if (!vals.length) return '<div class="gap-empty">Không có dữ liệu hợp lệ.</div>';

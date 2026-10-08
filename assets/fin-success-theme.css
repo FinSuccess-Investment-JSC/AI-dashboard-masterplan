@@ -206,3 +206,15 @@ body[data-sector="bank"] .wi-table-fold>summary:hover { background: #e9edff; }
 .pane-subtabs .tabbtn[aria-selected="true"], .subtabs .tabbtn[aria-selected="true"] {
   background: var(--fs-soft-teal); border-color: #b9e2e3; color: #111;
 }
+
+/* Sub-tab: chữ thường, đậm khi đang chọn (08/10/2026). */
+.supply-tabs .tabbtn, .world-subtabs .tabbtn, .pane-subtabs .tabbtn, .subtabs .tabbtn, .inventory-tabs button { font-weight: 400; color: #111; }
+.supply-tabs .tabbtn[aria-selected="true"], .world-subtabs .tabbtn[aria-selected="true"],
+.pane-subtabs .tabbtn[aria-selected="true"], .subtabs .tabbtn[aria-selected="true"], .inventory-tabs button[aria-selected="true"] { font-weight: 700; }
+
+/* Bỏ khung màu theo loại dữ liệu: nhãn loại nằm ở badge nhỏ, khối không đổi màu nền/viền trên. */
+[data-update-kind] { background: #fff !important; border-top: 0 !important; }
+.insight[data-update-kind], .summary-archive [data-update-kind] { border: 1px solid var(--fs-line) !important; }
+
+/* Thẻ không có chart không chiếm một nửa hàng cạnh chart (tránh khung rỗng kéo dãn). */
+.grid.two > .card:not(:has([id^="ch"])), .research-grid > .card:not(:has([id^="ch"])) { grid-column: 1 / -1; }

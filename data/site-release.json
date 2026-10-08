@@ -1,5 +1,5 @@
 {
-  "version": "20261008T130000Z",
+  "version": "20261008T141500Z",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -8,11 +8,11 @@
     "power": "Dien/"
   },
   "files": {
-    "404.html": "fb816123bb08a144fba18a87d246f30d2ed804c4685327f238a49ae8422896d7",
-    "Bank/index.html": "5674795bcf124b7e199adfc5863835653dc63dc72eda28947a4e1061e3662143",
-    "Dau-khi/index.html": "15ca8164579b0ed074c614bd9705c050b353b4bf2d71aacd079dedc33feade7b",
-    "Dien/index.html": "671dc1885739cab6aff26175925f953a08e3ba2329aa6fcd14c8834cf0dd3048",
-    "Sugar/index.html": "fe84c854134d2dc27fdf9e899b636039eb2698ac255c0cf6359d07c0d5daa997",
+    "404.html": "7f05556f4806f72944ce7fdb920f1d16fe16ea04488248be67eb68ae397e49d0",
+    "Bank/index.html": "61c053a5d2502ffbeb188101d4fa642a6579ea89d786b6c86553372dcf18f12a",
+    "Dau-khi/index.html": "503b700b2b8778fa08e36e037759541c838453bda77aba4670c12c218953af9c",
+    "Dien/index.html": "6d0a2d3f2e8e9a2506b6af3941376eb57a550deae61713e527b2e2756b914bb2",
+    "Sugar/index.html": "c154485173960105afc26d0a8e9830689ddeddf0e2f7e01ac2eb591cfc3331c2",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
     "assets/bank-dashboard.js": "aa0d235f9d52f5168dbcb831948da37b32138c8565e227ff73b49c4726f99b36",
@@ -20,11 +20,11 @@
     "assets/catalyst-board.css": "b1aa5da24afa10866906ea2c7e5caf5921519cda36850a805bc8eee327da7a2b",
     "assets/catalyst-board.js": "273791e0d6d040f0e611dc9f52477e76587b02398f40456c91d7e315eae7083e",
     "assets/chart-cards.js": "1621f7e239bec75de7e242b39fde069706e89b87c16a35f657852d973bd2590a",
-    "assets/chart-types.js": "78983022b269e9488c4bbf03042353ae186f68fc2852e7031d5d6c08d934feb8",
+    "assets/chart-types.js": "62e4374c64b7235f1e5783508d46c8e0700a8e867839b9f04dfe04784d077e21",
     "assets/dashboard-ui.css": "5763ce23563ba7dcb4bdfee7e32d98a67eed95ec2340edd9396321167c1b92ed",
     "assets/dashboard-ui.js": "08a5cb16b308fca4523c3f525731266d610fdde0d7f4e9babf8d93cf78142d44",
     "assets/data-math.js": "ed6356aac3afd13ce8d05fbc837d6a844ebfdbaeb7edfe50fc589ac5c3b94def",
-    "assets/fin-success-theme.css": "d86f9e3f1d05beadb6c2c92aa278a4d31cb316daba35cc4e37788a1878457b53",
+    "assets/fin-success-theme.css": "08b4641003d4f6485a88746a20db43fa99b3fc713e00f2ac5ee2bc8cc1b2fbdd",
     "assets/financial-comparison.js": "c2d94f7d0b293c548ac48b625dc1796c84f3cbe5dad6c668b756d47e3eb6aca5",
     "assets/pane-subtabs.js": "48caf5cb572e39668d48740a6157d09d26a3d7b40f3abcc2d090c6eaaf94c403",
     "assets/research-editorial.js": "4318053b7e801137cf058ab5b7812ae0c337cd669c0766994fd2a339fcb6fa5c",
@@ -42,8 +42,8 @@
     "data/company-comparison.js": "9b473b8d4c844d814a6c864088700f5f4c71aaf3ba835b45dbe9ab38eab08c78",
     "data/company-valuation.js": "5874da05f0a27e97f22bf998c67baf988f5f9f049bfe24ddc564e50537bb2bd5",
     "data/daily-data.js": "bd2374a1aa25478ba342a9bafd5ee57121ef334314247bfd5090534872cd4bde",
-    "duong/index.html": "d71ecbbc1f6e7c43dd162427c7774352fbcd0c66de755a36ad7dbdfd38151cfa",
-    "index.html": "19bd50d8f564906c83d08ee6602c4945eeafe036ee2b03df227f5ff92a4505ff"
+    "duong/index.html": "4b70395fa2513d66a6ffbb0c04ae122f673d0a2f8edaf1451c7af6116676adf2",
+    "index.html": "d12b465a677a05bbe02e81c0e255f4e8dd475354db033d66b8022c8e24dbb28c"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }

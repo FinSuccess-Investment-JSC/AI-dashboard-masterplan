@@ -42,7 +42,7 @@ Do not hide material limitations or analyst attribution to make a card shorter.
 
 ## Sub-tab
 
-Nút sub-tab (Thế giới / Việt Nam, Chuỗi giá trị…) nền trắng viền nhạt, mục đang chọn nền teal nhạt, chữ đen; không dùng nền navy cho sub-tab (navy dành cho tab lớn). CSS ở cuối `assets/fin-success-theme.css`.
+Nút sub-tab (Thế giới / Việt Nam, Chuỗi giá trị…) nền trắng viền nhạt, mục đang chọn nền teal nhạt, chữ đen; chữ thường (400), chỉ mục đang chọn đậm (700); không dùng nền navy cho sub-tab (navy dành cho tab lớn). CSS ở cuối `assets/fin-success-theme.css`.
 
 ## Layout
 
@@ -65,3 +65,9 @@ hold data limitations stay visible. See `DASHBOARD_WORKFLOW.md` §15.
 
 The stock dashboard's financial-model input/forecast rules are not transferred
 to these sector dashboards unless a matching feature is added deliberately.
+
+## Chart cùng cỡ, không khung màu theo loại dữ liệu (08/10/2026)
+
+- Mọi chart cột/đường/vùng trong một dashboard có cùng chiều cao vẽ (viewBox 640×260); chart ngang (hbar) cũng đệm về 260. `chart-types.js` dùng chung (trừ Bank) và hàm vẽ inline trong `Dau-khi/index.html` đều theo quy tắc này; không đặt `height` riêng cho từng chart.
+- Thẻ không chứa chart trong lưới 2 cột (vd. thẻ chỉ có `details`) chiếm cả hàng, không đứng cạnh chart làm khung rỗng bị kéo dãn.
+- Khối `[data-update-kind]` không còn nền/viền trên theo màu loại dữ liệu; loại dữ liệu chỉ hiển thị bằng badge nhỏ trên khối và chú giải ở Sources. Quy tắc ở cuối `assets/fin-success-theme.css`.
