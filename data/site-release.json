@@ -1,5 +1,5 @@
 {
-  "version": "20261008T161500Z",
+  "version": "20261008-power-seasonal-r1",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -8,11 +8,11 @@
     "power": "Dien/"
   },
   "files": {
-    "404.html": "094407fe3ed88e7ed7a79bfaa34f0b36d448b357669e1d2661409d6d5a7c4fb1",
-    "Bank/index.html": "815f0a1f8ec48b24740b8da123ee07d98a88dd1da63186513685dfd824dbe78e",
-    "Dau-khi/index.html": "e0d772ec83dcbc266037bd7d847c48418384145273383fec91f94323ee88e6d2",
-    "Dien/index.html": "71bc6fc2f4a5ba3576fc7952d757d7619e31f28c5a57eda9233d8da4e53403d2",
-    "Sugar/index.html": "db1a2acdda1ade81e03caf38f1acaa4d8d38b7c9bc4ebb012fbe664a775bd37f",
+    "404.html": "fa6c5b5611e78cf1750e0745ca4e1937daab659031d5b14fe70c5fd286d5e937",
+    "Bank/index.html": "066b4a8cfe642ad0aaea6952b1a335b63fc99d11bf6a0cb0eab67a272c810615",
+    "Dau-khi/index.html": "8a1885ccfb3f9bb3dc40598c4d138acb6b698d50a2c71f40b62a2ce360d8a105",
+    "Dien/index.html": "7cbfaab84dc360c2d3763de72da71b030bf82d373b86bdf33153fa284445434f",
+    "Sugar/index.html": "f5405567010e5d09e3cdd86f3546dfe57686b5d7e2b1fb3bc57ef15031d09375",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
     "assets/bank-dashboard.js": "aa0d235f9d52f5168dbcb831948da37b32138c8565e227ff73b49c4726f99b36",
@@ -31,9 +31,9 @@
     "assets/research-layout.css": "e064ebdedacc115aa8c5758fe4b4190f025bfdbf63ddcb5361ff56c84f48da59",
     "assets/research-layout.js": "afb668ac0b100c36c191ca8651fef7ac937b83bb9983293ba0609823b37dabec",
     "assets/research-sources.js": "2e0a8424c403eb1b0cda0572b6f356d2eb593235fa2c66b698bf41a1e20715af",
-    "assets/sector-content.js": "8acdd6280707033a8048b7b2c5bb6a0649662f1b90ec0a3a310e758fd99c1d8b",
+    "assets/sector-content.js": "69359b43a2dae120837ec862f744b5c021c55e5a88ca0ce0a488c811e7adb221",
     "assets/sector-layout.js": "e40d5f2a8b81a71f3f187883bf5e1d0c446d81c77cbceb6f6ce04dd9609524e1",
-    "assets/sector-runtime.js": "999dd836f257cc582dbef63d2f3d6d9435be4ab5a5cee8bffb7c23d8c4110142",
+    "assets/sector-runtime.js": "c1a98ab8057dac7086ea181599bd4e281a0ed8636ae65da85bd95fbf5143ce93",
     "assets/site-navigation.css": "54a3825f55f47d624459c2df4c1c82aa12c9fdafa9f1d3a59c54407153966029",
     "assets/site-navigation.js": "b0a8a77f3544d8c3c9781b02050590eba4caba089075302bee69983e87e562b7",
     "assets/table-fold.js": "9c78488b28f67114a6d672d11a27c9ce27412ca8cf673d5146834280ef97e9aa",
@@ -42,8 +42,8 @@
     "data/company-comparison.js": "9b473b8d4c844d814a6c864088700f5f4c71aaf3ba835b45dbe9ab38eab08c78",
     "data/company-valuation.js": "5874da05f0a27e97f22bf998c67baf988f5f9f049bfe24ddc564e50537bb2bd5",
     "data/daily-data.js": "bd2374a1aa25478ba342a9bafd5ee57121ef334314247bfd5090534872cd4bde",
-    "duong/index.html": "6927ae36075ec0e0d2099f544f8f8d898af78ea2950531dcb1798b5123f7722b",
-    "index.html": "baf95843e54b49f7e7b789d9d48b9c8a1cbf4b09c84f4a8586e35dc7026acd78"
+    "duong/index.html": "756727e233404721cc1ee88b4d2128dbd7b262e63cedf36231954436156a6ed6",
+    "index.html": "c807eec5c49c00adf2a2322df23bafb9e919a9ea7f621eb786e8ed40f35b602a"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }
