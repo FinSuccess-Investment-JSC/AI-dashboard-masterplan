@@ -197,3 +197,9 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - Rút gọn 08/10/2026 theo phản hồi "dài, nhiều chữ": bỏ gạch đầu dòng dưới kết luận và hai cột Catalyst|Risk vì lặp số với bảng; ô khâu chỉ còn mũi tên + 2–3 chữ; lịch chỉ ngày + sự kiện.
 - Bỏ khối Kịch bản ở Dầu khí (08/10/2026, người dùng yêu cầu): khung 03/09 lệch giá hiện tại.
 - Ẩn luôn các fold Chi tiết tín hiệu, Bảng KPI, Phân tích AI 03/09 và Góc nhìn analyst ở Dầu khí (class `.oil-compact`, 08/10/2026). Vẫn giữ trong DOM để srcrow sang Sources; muốn hiện lại thì bỏ class.
+
+## Sub-tab trong tab lớn (thí điểm Dầu khí, 08/10/2026)
+
+- `assets/pane-subtabs.js` (load sau research-editorial): chia tab lớn thành sub-tab cùng kiểu nút "Thế giới / Việt Nam" (`.supply-tabs .tabbtn`). Nhóm khai báo tường minh bằng selector theo từng tab; node được di chuyển, không nhân bản.
+- Dầu khí: **Tổng quan** = Chuỗi giá trị / Mô hình kinh doanh / So sánh tài chính / Dashboard doanh nghiệp · **Policy** = Điều hành giá / Luật Dầu khí 2026 · **Sources** = Độ tin cậy / Nguồn dữ liệu / Tài liệu khác. Bức tranh ngành giữ sub-tab địa lý sẵn có; Catalyst/Risk đã gọn nên không chia; Chủ đề nóng giữ nút Đang theo dõi / Đã lưu.
+- Sub-tab chỉ chứa một khối gấp thì tự mở khi bấm. Link bằng chứng trỏ vào sub-tab ẩn sẽ tự mở sub-tab đó.

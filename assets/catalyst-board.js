@@ -45,6 +45,7 @@
     if(board.contains(target)){target.scrollIntoView({block:'start',behavior:'smooth'});return}
     const major=target.closest('.majorpane');
     if(major){const button=[...document.querySelectorAll('.majortabbtn')].find(b=>b.dataset.tab===major.dataset.tab)||document.querySelectorAll('.majortabbtn')[Number(major.dataset.tab.slice(2))-1];button?.click()}
+    const sub=target.closest('.pane-subpane');if(sub?.hidden)document.getElementById(sub.id+'-tab')?.click();
     const geo=target.closest('.supply-pane');if(geo?.hidden)document.querySelector(`[aria-controls="${geo.id}"]`)?.click();
     const bankGeo=target.closest('#geo-pane-vn,#geo-pane-world');if(bankGeo?.hidden)document.querySelector(`[aria-controls="${bankGeo.id}"]`)?.click();
     const inventory=target.closest('.inventory-group>.card');if(inventory?.hidden)document.querySelector(`[aria-controls="${inventory.id}"]`)?.click();

@@ -58,3 +58,5 @@ body[data-sector="bank"] .wi-table-fold .wi-fold-meta{color:#6d7f8e;font-weight:
 body[data-sector="bank"] .wi-table-fold .wi-table{margin:0}
 body[data-sector="bank"] .wi-table-fold .wi-table table{margin:0}
 @media(max-width:700px){body[data-sector="bank"] .wi-table-fold>summary{padding:10px 12px;font-size:12px}}
+.pane-subtabs{margin:4px 0 18px}.pane-subpane[hidden]{display:none!important}
+.pane-subtabs{display:flex;flex-wrap:wrap;gap:8px}.pane-subtabs .tabbtn{white-space:nowrap;flex:0 0 auto;width:auto}
