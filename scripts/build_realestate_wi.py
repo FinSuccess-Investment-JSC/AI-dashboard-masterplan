@@ -24,6 +24,8 @@ INBOX = ROOT / 'data' / 'raw' / 'wi' / '.inbox'
 OUT_JS = ROOT / 'data' / 'realestate-wi-data.js'
 OUT_JSON = ROOT / 'data' / 'realestate-wi-data.json'
 BN = 1e9  # VND -> tỷ VND
+# Listed industrial-park developers (and HNX codes of their bond-issuing subsidiaries) for the KCN split.
+KCN = {'KBC', 'IDC', 'BCM', 'SZC', 'SIP', 'VGC', 'LHG', 'BCMC', 'VJVC'}
 RE_SECTOR = 'Bất động sản'
 
 
@@ -153,7 +155,11 @@ def build_maturity(resps):
                 y, m = y + 1, 1
     records = [{'date': d, **by_month[d]} for d in sorted(by_month)]
     top = sorted(({'symbol': s, 'name': v['name'], 'due': v['due'], 'months': sorted(v['months'])} for s, v in by_issuer.items()), key=lambda x: -x['due'])[:15]
+    kcn = {s: v for s, v in by_issuer.items() if s in KCN}
+    kcn_due = sum(v['due'] for v in kcn.values())
+    total_due = sum(v['due'] for v in by_issuer.values())
     return {'unit': 'tỷ VND', 'records': records, 'top_issuers': top,
+            'kcn': {'due': kcn_due, 'total_due': total_due, 'symbols': sorted(kcn), 'issuers': sorted(({'symbol': s, 'name': v['name'], 'due': v['due']} for s, v in kcn.items()), key=lambda x: -x['due'])},
             'note': 'Gốc dự phóng đến hạn theo dư nợ còn lại; lãi ước tính (mã lãi thả nổi giữ lãi suất hiện hành). Lịch được tính lại toàn bộ mỗi lần Wi cập nhật.'}
 
 
@@ -203,7 +209,8 @@ def main(argv=None):
     for call in contract['calls']:
         found = [c for c in caps if matches(c, call)]
         if found:
-            best = max(found, key=lambda c: c.get('captured_at', ''))
+            key = (lambda c: ((c.get('input') or {}).get('to_time', ''), c.get('captured_at', ''))) if call.get('pick') == 'max_to_time' else (lambda c: c.get('captured_at', ''))
+            best = max(found, key=key)
             picked[call['block']] = best
             status[call['block']] = {'status': 'ok', 'captured_at': best.get('captured_at'), 'file': best['_file']}
         else:

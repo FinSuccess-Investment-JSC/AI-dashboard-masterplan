@@ -73,3 +73,4 @@ tr[data-state=risk] td:first-child{box-shadow:inset 3px 0 #d98b4a}tr[data-state=
 .cr-cal time{font-size:13px;font-weight:750;color:var(--fs-navy,#19316f)}.cr-cal b{font-size:12px;font-weight:600;line-height:1.4}
 @media(max-width:700px){.cr-verdict,.cr-score,.cr-cal{padding:16px}.cr-verdict h3{font-size:17px}}
 .brief-compact #thesis-detail,.brief-compact #thesis-evidence,.brief-compact #thesis-archive,.brief-compact .analyst-input{display:none}
+.cr-score-table tr.cr-group td{background:#f3f7f9;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:#4f6b7e;padding:7px 10px;box-shadow:none}

@@ -85,3 +85,5 @@ body[data-sector="bank"] .wi-table-fold .wi-table table{margin:0}
 .grid>.subhead,.grid>.subsub,.research-grid>.subhead,.research-grid>.subsub{grid-column:1/-1}
 .grid.two>.card.is-lone-plain,.research-grid>.card.is-lone-plain{grid-column:1/-1}
 .is-lone-plain svg.chartsvg,.is-lone-plain svg.ct-svg{display:block;max-width:760px;margin-inline:auto}
+.topic-tabs .topic-seg{align-self:center;font-size:10.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:#6a7e8e;margin:0 2px 0 8px}.topic-tabs .topic-seg:first-child{margin-left:0}
+.seg-chip{display:inline-block;white-space:nowrap;font-size:11px;font-weight:650;border-radius:20px;padding:2px 8px;background:#eef2f5;color:#4f6b7e}.seg-chip[data-seg="Nhà ở"]{background:#e9edfb;color:#2938A8}.seg-chip[data-seg="Khu công nghiệp"]{background:#e3f4ef;color:#1f7a66}

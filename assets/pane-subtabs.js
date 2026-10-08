@@ -12,7 +12,7 @@
     oil:{...common,mt4:[['Điều hành giá','.policy-impact,.policy-visuals,.card:has(h2,h3):not(:has(.compare-table))'],['Luật Dầu khí 2026','.card:has(.compare-table)']]},
     power:{...common,mt1:[...common.mt1,['Doanh nghiệp theo dõi',':scope>.section']],mt4:[['Giá điện',card(0)],['Quy hoạch điện VIII',card(1)],['DPPA & điện mái nhà',card(2)]]},
     sugar:{...common,mt1:[...common.mt1,['Mùa vụ & sản phẩm phụ',':scope>.section']]},
-    realestate:{...common,mt1:[...common.mt1,['Doanh nghiệp theo dõi','.grid.two']],mt4:[['Đất đai & bảng giá đất',card(0)],['Nhà ở & NOXH',card(1)],['Tín dụng & trái phiếu',card(2)]],mt10:[['Trái phiếu BĐS','.bds-bond'],['Tín dụng & lãi suất','.bds-credit']],mt11:[['Khung pháp lý','.bds-legal'],['Bảng giá đất','.bds-landprice'],['Dự án theo dõi','.bds-projects']]},
+    realestate:{...common,mt1:[...common.mt1,['Doanh nghiệp theo dõi','.grid.two']],mt4:[['Đất đai & bảng giá đất',card(0)],['Nhà ở & NOXH',card(1)],['Tín dụng & trái phiếu',card(2)],['Khu công nghiệp',card(3)]],mt10:[['Trái phiếu BĐS','.bds-bond'],['Tín dụng & lãi suất','.bds-credit']],mt11:[['Khung pháp lý','.bds-legal'],['Bảng giá đất','.bds-landprice'],['Dự án theo dõi','.bds-projects']]},
     bank:{
       mt1:[['Luồng vốn','.research-roadmap,.card:not(.compact-chart-card)'],['Mô hình kinh doanh','.business-models,.bank-framework'],['So sánh tài chính','.financial-comparison'],['Đọc nhanh','.grid.two,.sectionhead:not(:first-child),.monitor-grid']],
       mt4:[['Mốc pháp lý','.policy-impact,.card'],['Room tín dụng','.grid.two,.note']],

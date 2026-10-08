@@ -26,7 +26,7 @@ if(bank){
  const exampleBody=make('div','research-detail');exampleBody.append(make('p','data-gap','Hiện mới xác minh được chuỗi lãi suất cho vay bình quân của Eximbank; chưa có cùng loại công bố cho các ngân hàng khác để mở bộ chọn ngân hàng mà vẫn so sánh đúng định nghĩa.'));[rateControls,lending,rateTable,rateSummary].forEach(n=>{if(n)exampleBody.append(n)});example.append(exampleBody);vn.append(example);
  const fx=$('#bank-fx');if(fx){const fxGroup=make('section','bank-fx-group');fxGroup.append(make('h3','','Tỷ giá & USD'),fx);vn.append(fxGroup)}
 }else{
- const domestic=new Set(oil?['dau-khi-22','dau-khi-26']:power?['dien-14','dien-15','dien-16']:re?['bds-18']:['sugar-06','sugar-12','sugar-13']); // real estate: pane A = Nhà ở, pane B = Khu công nghiệp
+ const domestic=new Set(oil?['dau-khi-22','dau-khi-26']:power?['dien-14','dien-15','dien-16']:re?['bds-18','bds-41']:['sugar-06','sugar-12','sugar-13']); // real estate: pane A = Nhà ở, pane B = Khu công nghiệp
  $$('[data-tab="mt3"] .card').filter(n=>!n.parentElement.closest('.card')).forEach(n=>(domestic.has(n.dataset.blockId)?pricesVN:pricesWorld).append(n));
  if(oil){
   // Keep the two comparable refinery indicators together after geographic routing.

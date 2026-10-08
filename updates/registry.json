@@ -1552,7 +1552,8 @@
      "bds-29",
      "bds-30",
      "bds-33",
-     "bds-34"
+     "bds-34",
+     "bds-41"
     ]
    },
    "how": "Gọi lại đúng các lời gọi WiMCP trong data/realestate-wi-contract.json (hook wi_capture.py lưu kết quả), rồi chạy python3 scripts/build_realestate_wi.py; kiểm số mới nhất đổi hợp lý trước khi commit data/realestate-wi-data.js.",
@@ -1716,7 +1717,8 @@
      "bds-20",
      "bds-21",
      "bds-37",
-     "bds-38"
+     "bds-38",
+     "bds-42"
     ]
    },
    "how": "Kiểm văn bản mới (luật sửa đổi, nghị định, thông tư NHNN, nghị quyết bảng giá đất); cập nhật bảng Trước/Sau và chLandPrice; đổi 'chưa xác minh' thành số hiệu khi có",
@@ -1781,7 +1783,8 @@
      "bds-25",
      "bds-26",
      "bds-27",
-     "bds-39"
+     "bds-39",
+     "bds-43"
     ]
    },
    "how": "Thêm mốc mới có ngày và link; kiểm điều kiện kết thúc; cập nhật bảng dự án theo dõi",

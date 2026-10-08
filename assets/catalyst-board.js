@@ -185,10 +185,12 @@
       segs.forEach(([n,t,s,why])=>{const c=make('div','cr-seg');c.dataset.tilt=s;c.append(make('b','',n),make('em','',t),make('span','cr-seg-tilt',{up:'▲',down:'▼',flat:'■',na:'?'}[s]),make('small','',why));box.append(c)});head.append(box)}
     brief.append(head);
     const tb=make('section','cr-score card');tb.append(make('h3','','Tín hiệu'));
-    const wrap=make('div','cr-score-wrap'),table=make('table','cr-score-table');wrap.append(table);
+    const wrap=make('div','cr-score-wrap'),table=make('table','cr-score-table');table.dataset.noFold=''; /* main content: never fold */wrap.append(table);
     const tr=make('tr','');headers.forEach(t=>tr.append(make('th','',t)));const thead=make('thead','');thead.append(tr);table.append(thead);
     const tbody=make('tbody','');
-    [...score].sort((a,b)=>order.indexOf(a.st)-order.indexOf(b.st)).forEach(({name,chart,st,mid,end})=>{
+    const groupsSeen=[...new Set(score.map(x=>x.group||''))];
+    groupsSeen.flatMap(g=>score.filter(x=>(x.group||'')===g).sort((a,b)=>order.indexOf(a.st)-order.indexOf(b.st))).forEach(({name,chart,st,mid,end,group},i,arr)=>{
+      if(group&&group!==arr[i-1]?.group){const gr=make('tr','cr-group'),td=make('td','',group);td.colSpan=headers.length;gr.append(td);tbody.append(gr)}
       const r=make('tr','');r.dataset.state=st;const c0=make('td','');
       if(chart&&document.getElementById(chart)){const a=make('a','',name+' ↗');a.href='#'+chart;a.addEventListener('click',e=>{e.preventDefault();reveal(chart)});c0.append(a)}else c0.textContent=name;
       r.append(c0);mid.forEach((t,i)=>r.append(make('td',i<2?'cr-num':'',t)));r.append(make('td','cr-state',stateText[st]));end.forEach(t=>r.append(make('td','',t)));tbody.append(r)});
@@ -257,9 +259,12 @@
     const cc=yoyLast('credit_construction',12),ct=yoyLast('credit_total',12),cpi=R.cpi?.value,fdiChg=R.fdi&&R.fdiPrev?(R.fdi.value/R.fdiPrev.value-1)*100:null;
     const lateChg=lc&&pc?lc.late_payment_debt-pc.late_payment_debt:null,lateSt=lateChg==null?'na':lateChg>500?'risk':lateChg<-500?'good':'watch';
     const dueSt=dueShare==null?'na':dueShare>=5?'risk':dueShare>=3?'watch':'good',issSt=issChg==null?'na':issChg>=20?'good':issChg<=-20?'risk':'info';
-    const housingUp=lateSt==='good'&&dueSt!=='risk',kcnUp=fdiChg!=null&&fdiChg>0;
+    const housingUp=lateSt==='good'&&dueSt!=='risk';let kcnUp=fdiChg!=null&&fdiChg>0;
     const mon=d=>'T'+Number(d.slice(5,7))+'/'+d.slice(2,4);
-    const row=(name,now,prev,unit,d,th,st,who,chart)=>({name,chart,st,mid:[S(now,d,unit),prev===undefined?'—':D(now,prev,d),th],end:[who]});
+    const row=(name,now,prev,unit,d,th,st,who,chart,group='Nhà ở')=>({name,chart,st,group,mid:[S(now,d,unit),prev===undefined?'—':D(now,prev,d),th],end:[who]});
+    const fm=mac.fdi_mfg_ytd?.records||[],fmL=fm.at(-1),fmP=fmL&&fm.find(r=>r.date===String(Number(fmL.date.slice(0,4))-1)+fmL.date.slice(4)),fmChg=fmL&&fmP?(fmL.value/fmP.value-1)*100:null;
+    const iip=mac.iip_mfg_yoy?.records||[],iipL=iip.at(-1),iip3=iip.slice(-3).reduce((a,r)=>a+r.value,0)/Math.max(1,iip.slice(-3).length);
+    const ipb=window.REALESTATE_WI?.blocks?.sector_ratio?.by_sector?.['157']?.records||[],ipbL=ipb.at(-1),ipbP=ipb.at(-6);
     renderBrief({
       headline:(dueSt==='risk'||lateSt==='risk')?'Nhà ở: áp lực đáo hạn trái phiếu còn nặng · khu công nghiệp thuận nhờ FDI':housingUp?'Nhà ở: vốn đang dễ thở hơn · khu công nghiệp thuận nhờ FDI':'Nhà ở trung tính về vốn · khu công nghiệp '+(kcnUp?'thuận nhờ FDI':'chờ FDI'),
       segs:[['Nhà ở','VHM · NVL · KDH · NLG · DXG · PDR…',lc?(housingUp?'up':dueSt==='risk'||lateSt==='risk'?'down':'flat'):'na',lc?'Đáo hạn 3T = '+num(dueShare,1)+'% dư nợ':'Thiếu TPDN'],['Khu công nghiệp','KBC · IDC · BCM · SZC · SIP · VGC · LHG',fdiChg==null?'na':kcnUp?'up':'down',fdiChg==null?'Thiếu FDI':'FDI BĐS '+(fdiChg>0?'+':'')+num(fdiChg,0)+'% YoY'],['Cho thuê','VRE',cpi==null?'na':cpi>=7?'up':'flat',cpi==null?'Thiếu CPI':'CPI nhà ở '+num(cpi,1)+'%'],['Môi giới','DXS','na','Chờ số giao dịch Q3']],
@@ -269,9 +274,12 @@
         row('Gốc đến hạn 3 tháng tới / dư nợ',dueShare,undefined,'%',1,'≥ 5% là rủi ro',dueSt,'Nhà ở · VHM','chBondMaturity'),
         row('Phát hành TPDN BĐS 3T gần nhất',issNow/1000,issPrev/1000,' nghìn tỷ',1,'±20% so 3T trước',issSt,'Nhà ở','chBondIssuance'),
         row('Tín dụng xây dựng YoY',cc,undefined,'%',1,ct==null?'so tổng tín dụng':'> tổng tín dụng '+num(ct,1)+'%',cc==null?'na':ct!=null&&cc>ct?'good':'watch','Nhà ở · nhà thầu','chCreditRe'),
-        row('FDI đăng ký vào BĐS (YTD)',R.fdi?R.fdi.value/1000:null,R.fdiPrev?R.fdiPrev.value/1000:null,' tỷ USD',2,'> cùng kỳ',fdiChg==null?'na':fdiChg>0?'good':'risk','KCN · cho thuê','chFdiRe'),
+        row('FDI đăng ký vào BĐS (YTD)',R.fdi?R.fdi.value/1000:null,R.fdiPrev?R.fdiPrev.value/1000:null,' tỷ USD',2,'> cùng kỳ',fdiChg==null?'na':fdiChg>0?'good':'risk','KCN · cho thuê','chFdiRe','Khu công nghiệp'),
         row('CPI nhà ở & VLXD YoY',cpi,undefined,'%',2,'≥ 7% sát ngưỡng',cpi==null?'na':cpi>=7?'watch':'info','Cho thuê · người mua','chCpiHousing'),
-        row('P/B BĐS dân cư',R.resLast?R.resLast[2]:null,undefined,'x',2,'—',R.resLast?'info':'na','Nhà ở ▲ VHM','chSectorPb')],
+        row('P/B BĐS dân cư',R.resLast?R.resLast[2]:null,undefined,'x',2,'—',R.resLast?'info':'na','Nhà ở ▲ VHM','chSectorPb'),
+        row('FDI đăng ký CB-CT (YTD)',fmL?fmL.value/1000:null,fmP?fmP.value/1000:null,' tỷ USD',2,'> cùng kỳ',fmChg==null?'na':fmChg>0?'good':'risk','KBC · IDC · BCM · SZC · SIP · VGC · LHG','chFdiMfg','Khu công nghiệp'),
+        row('IIP chế biến, chế tạo (BQ 3 tháng)',iip.length?iip3:null,undefined,'%',1,'≥ 8% YoY',iipL?iip3>=8?'good':iip3<0?'risk':'watch':'na','Khách thuê KCN','chIipMfg','Khu công nghiệp'),
+        row('P/B BĐS công nghiệp',ipbL?ipbL[2]:null,ipbP?ipbP[2]:null,'x',2,'—',ipbL?'info':'na','KCN niêm yết','chIpPb','Khu công nghiệp')],
       events:[['20/10','Khai mạc kỳ họp QH: Luật Đất đai sửa đổi'],['20–30/10','BCTC quý III'],['Đầu tháng','NSO: CPI, FDI, GDP quý'],['Hằng tháng','HNX/VBMA: TPDN đáo hạn'],['Cuối T11','Bộ Xây dựng: thị trường Q3']]
     });
   }else if(bank){

@@ -47,7 +47,7 @@ function filter(){list.querySelectorAll(':scope > .research-topic').forEach(n=>n
 const empty=make('p','research-caption','Chưa có chủ đề trong nhóm này.');hot.append(empty);active.onclick=()=>{view='active';filter()};archive.onclick=()=>{view='archived';filter()};list.addEventListener('lifecyclechange',filter);
 function topic(key,title,content,initial={}){const c=make('article','research-topic');c.append(...content);list.append(c);const f=fold(c,title,{all:true,open:true});editor(c,key,'topic',{title,...initial});return c;}
 if(sector==='oil')topic('hormuz','Hormuz · dòng chảy & tác động',old);
-else if(sector==='power'||sector==='realestate')old.filter(n=>n.dataset?.topicKey).forEach(n=>topic(n.dataset.topicKey,n.dataset.topicTitle,[...n.children]));
+else if(sector==='power'||sector==='realestate')old.filter(n=>n.dataset?.topicKey).forEach(n=>{const t=topic(n.dataset.topicKey,n.dataset.topicTitle,[...n.children]);if(n.dataset.topicSegment)t.dataset.segment=n.dataset.topicSegment});
 else if(sector==='bank'){
  const news=document.getElementById('bank-news');if(news)topic('bank-news','Tin & công bố doanh nghiệp',[news]);
 }
@@ -76,10 +76,14 @@ document.querySelectorAll('.thesis-signal,.thesis-scenario-panel,.thesis-fold-bo
  const bar=make('div','supply-tabs pane-subtabs topic-tabs');bar.setAttribute('role','tablist');bar.setAttribute('aria-label','Chủ đề');list.before(bar);empty.after(toolbar);
  let selected=null;
  function sync(){
-  const ts=[...list.querySelectorAll(':scope > .research-topic')].filter(t=>!t.hidden);
+  const order=['Nhà ở','Khu công nghiệp','Chung'],ts=[...list.querySelectorAll(':scope > .research-topic')].filter(t=>!t.hidden);
+  if(ts.some(t=>t.dataset.segment))ts.sort((a,b)=>order.indexOf(a.dataset.segment||'Chung')-order.indexOf(b.dataset.segment||'Chung'));
   if(!ts.includes(selected))selected=ts[0]||null;
   bar.replaceChildren();bar.hidden=ts.length<2;
+  // Topics tagged with a segment (Nhà ở / Khu công nghiệp / Chung) are grouped under a small label.
+  let lastSeg=null;
   ts.forEach(t=>{
+   const seg=t.dataset.segment;if(seg&&seg!==lastSeg){bar.append(make('span','topic-seg',seg));lastSeg=seg}
    const title=t.querySelector(':scope > .research-fold > summary')?.childNodes[0]?.textContent.trim()||'Chủ đề';
    const b=make('button','tabbtn',title.split(' · ')[0]);b.type='button';b.title=title;b.setAttribute('role','tab');b.setAttribute('aria-selected',String(t===selected));b.tabIndex=t===selected?0:-1;
    b.onclick=()=>{selected=t;sync()};bar.append(b);

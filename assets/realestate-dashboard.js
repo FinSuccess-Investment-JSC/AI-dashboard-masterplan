@@ -185,7 +185,7 @@ if(cement.length&&document.getElementById('chCement')){
  insight('chCement','Xi măng ít biến động hơn thép và chỉ đổi theo đợt công bố; dùng như nền chi phí, không dùng để bắt điểm đảo chiều.');
 }
 if(Object.keys(sec).length&&document.getElementById('chSectorPb')){
- const ids=[['160','BĐS dân cư',C.navy],['157','BĐS công nghiệp',C.teal],['159','Cho thuê',C.gold],['161','Môi giới',C.plum]].filter(([id])=>sec[id]?.records?.length);
+ const ids=[['160','BĐS dân cư',C.navy],['159','Cho thuê',C.gold],['161','Môi giới',C.plum]].filter(([id])=>sec[id]?.records?.length);
  const dates=[...new Set(ids.flatMap(([id])=>sec[id].records.map(r=>r[0])))].sort();
  const weekly=dates.filter((d,i)=>i%5===0||i===dates.length-1);
  const at=(id,d)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[2]:null};
@@ -195,6 +195,15 @@ if(Object.keys(sec).length&&document.getElementById('chSectorPb')){
  insight('chSectorPb','P/B phân ngành dân cư do Vinhomes chi phối; đọc nó như định giá của một mã lớn hơn là của ngành. Cho thuê và môi giới dưới 1 lần cho thấy thị trường chưa trả giá cho dòng tiền ổn định hay cho đòn bẩy vào chu kỳ hồi phục. Đợt nhảy P/E dân cư tháng 7–8/2026 là nhiễu từ thay đổi mẫu số, không phải thay đổi kinh doanh.');
 }
 
+if(sec['157']?.records?.length&&document.getElementById('chIpPb')){
+ const rs=sec['157'].records,w=rs.filter((r,i)=>i%5===0||i===rs.length-1);
+ barLineChart('chIpPb',{categories:w.map(r=>r[0].slice(8,10)+'/'+r[0].slice(5,7)+'/'+r[0].slice(2,4)),series:[{name:'P/B',color:C.navy,kind:'line',values:w.map(r=>r[2])},{name:'P/E ÷ 10',color:C.gold,kind:'line',values:w.map(r=>r[1]==null?null:r[1]/10)}],unit:'x',digits:2,height:260,zeroBase:false,rotateLabels:true});
+ fillTable('tbl-ip-pb',['Phiên','P/B','P/E','Vốn hóa (nghìn tỷ)'],w.slice().reverse().map(r=>[short(r[0]),nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1)]));
+ sourceLine('chIpPb',[SRC.wi],short(rs.at(-1)[0]),'Wi sector_ratio_daily, phân ngành 157 "Bất động sản công nghiệp"; P/E chia 10 để cùng trục với P/B. Định giá tổng hợp bị chi phối bởi mã lớn (BCM, KBC).');
+ insight('chIpPb','P/B BĐS công nghiệp giảm từ vùng 2,5 lần đầu 2025 về khoảng 1,4 lần dù FDI đăng ký kỷ lục: thị trường đang chiết khấu rủi ro thuế quan và cung mới miền Bắc. Định giá ROE ~10% với P/B 1,4 lần là mức trung tính, chưa phản ánh tăng trưởng diện tích cho thuê.');
+}
+const kcnBond=B.cbond_maturity?.kcn,kcnNote=document.getElementById('bond-kcn-share');
+if(kcnNote&&kcnBond)kcnNote.textContent='Khu công nghiệp: 7 mã KCN niêm yết và công ty con có '+nf(kcnBond.due,0)+' tỷ gốc đến hạn tới cuối 2027, tức '+nf(kcnBond.total_due?kcnBond.due/kcnBond.total_due*100:0,1)+'% của ngành'+(kcnBond.issuers.length?' ('+kcnBond.issuers.map(i=>i.symbol+' '+nf(i.due,0)).join(', ')+' tỷ)':'')+'. Phần còn lại là chủ đầu tư nhà ở, nghỉ dưỡng và tổ chức chưa niêm yết.';
 // ---------- 4. KPIs & quick read ----------
 const res=sec['160']?.records||[],resLast=res.at(-1);
 const nowM=new Date().toISOString().slice(0,7);

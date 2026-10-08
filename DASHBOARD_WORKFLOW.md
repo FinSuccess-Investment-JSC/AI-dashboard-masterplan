@@ -226,3 +226,12 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Không để ô trống trong lưới hai cột:** `assets/layout-balance.js` đếm thẻ theo từng đoạn giữa các hàng full-width; đoạn lẻ thì thẻ cuối chiếm cả hàng, chart bên trái, "Cách hiểu trong bối cảnh ngành" (lấy từ popover ⓘ) bên phải; thẻ không có lời đọc vẫn chiếm cả hàng (chart tối đa 760px, canh giữa). Thẻ chart đứng lẻ trước một lưới được nhập vào lưới đó. Thẻ chart mới nên luôn có `chart-insight`.
 - **Catalyst/Risk:** kết luận, bảng Tín hiệu và Sắp tới là thẻ trắng chuẩn (class `card`), đầu trang dùng `.sectionhead` như các tab khác; bỏ khối nền navy.
 - **Chủ đề nóng:** mỗi chủ đề là một sub-tab (nhãn = phần tên trước " · "), bỏ khung viền xanh và fold lồng nhau; bộ lọc Đang theo dõi/Đã lưu, xuất JSON và "Thêm chủ đề" nằm dưới nội dung; góc nhìn analyst là một fold nhỏ cuối chủ đề.
+
+## 20. BĐS: tách Nhà ở / Khu công nghiệp ở mọi tab (08/10/2026, người dùng chọn giữ một dashboard)
+
+- Bức tranh ngành: pane KCN có FDI CB-CT, vốn thực hiện, IIP, lấp đầy, **P/B–P/E BĐS công nghiệp (bds-41)**, giá thuê đất; pane Nhà ở giữ giá nhà, VLXD, lãi suất, P/B dân cư/cho thuê/môi giới.
+- Policy: sub-tab thứ tư **Khu công nghiệp (bds-42)**: NĐ 35/2022, room tín dụng KCN được nới, NQ 254, bảng giá đất phía Nam, thuế quan Mỹ.
+- Catalyst/Risk: bảng Tín hiệu có hàng nhóm "Nhà ở" / "Khu công nghiệp" (`group` trong `renderBrief`); bảng không bị `table-fold` gấp (`data-no-fold`).
+- Chủ đề nóng: `data-topic-segment` → sub-tab gom theo nhãn Nhà ở / Khu công nghiệp / Chung; thêm chủ đề "Quỹ đất KCN" (bds-43). Pháp lý: cột "Mảng" ở bảng văn bản và dự án; thêm NĐ 35/2022.
+- Vốn & Trái phiếu: ghi rõ số chung toàn ngành; builder tính phần đáo hạn của 7 mã KCN + công ty con (`KCN` trong `build_realestate_wi.py`).
+- Sửa lỗi: `sector_ratio_recent` chọn capture có `to_time` mới nhất (`pick: max_to_time`); trước đó P/B phân ngành lấy nhầm số 06/10/2025.

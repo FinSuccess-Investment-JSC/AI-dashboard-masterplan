@@ -1,34 +1,243 @@
 {
-  "schema": 1,
-  "about": "Các lời gọi WiMCP cho dashboard Bất động sản. Routine Claude gọi lại đúng các lời gọi này (hook wi_capture.py lưu kết quả vào data/raw/wi/.inbox/), rồi chạy scripts/build_realestate_wi.py để dựng data/realestate-wi-data.js. Không chép tay số.",
-  "calls": [
-    {"block": "cbond_cashflow", "tool": "wi_data_cbond", "input": {"action": "get_data", "endpoint_name": "bonds_corp_cashflow_monthly", "filters": "{\"sector_l1\":\"Bất động sản\",\"currency\":\"VND\"}", "columns": "year,month,sector_l2,principal_due,interest_due,principal_paid,interest_paid,principal_buyback,ontime_ratio,late_payment_debt,late_principal_debt,late_bond_count,new_late_bond_count,late_issuer_count,outstanding_value,outstanding_bond_count,as_of_date", "limit": 400}, "cadence": "daily", "note": "Tháng hiện tại là số tạm tính tới ngày chốt."},
-    {"block": "cbond_issuance", "tool": "wi_data_cbond", "input": {"action": "get_data", "endpoint_name": "bonds_corp_issuance_monthly", "filters": "{\"sector_l1\":\"Bất động sản\",\"currency\":\"VND\"}", "columns": "year,month,sector_l2,issuance_method,maturity_bucket,actual_issuance_value,issue_count,issuer_count,wavg_coupon,wavg_maturity_years,secured_share,as_of_date", "limit": 1000}, "cadence": "daily"},
-    {"block": "cbond_maturity_2026", "tool": "wi_data_cbond", "input": {"action": "get_data", "endpoint_name": "bonds_corp_maturity_schedule_monthly", "filters": "{\"currency\":\"VND\",\"year\":\"2026\"}", "columns": "year,month,symbol,company_name,sector_l1,sector_l2,due_at_outstanding,estimated_interest,bond_count", "limit": 1000}, "cadence": "weekly", "note": "Endpoint không lọc được theo ngành; lọc sector_l1 = Bất động sản khi dựng."},
-    {"block": "cbond_maturity_2027", "tool": "wi_data_cbond", "input": {"action": "get_data", "endpoint_name": "bonds_corp_maturity_schedule_monthly", "filters": "{\"currency\":\"VND\",\"year\":\"2027\"}", "columns": "year,month,symbol,company_name,sector_l1,sector_l2,due_at_outstanding,estimated_interest,bond_count", "limit": 1000}, "cadence": "weekly", "note": "Kết quả vượt trần hiển thị của tool: hook chỉ lưu thông báo lỗi; cần chép file tool-results vào capture (xem build_realestate_wi.py --restore)."},
-    {"block": "macro_core", "tool": "wi_data_macro", "input": {"action": "get_values", "indicator_id": "77044,77101,80032,79920,80025,75777,75708,75926,75931,81497,76951", "limit": 60}, "cadence": "daily"},
-    {"block": "macro_kcn", "tool": "wi_data_macro", "input": {"action": "get_values", "indicator_id": "77100,202899,75920", "limit": 60}, "cadence": "daily"},
-    {"block": "commodity", "tool": "wi_data_commodity", "input": {"action": "get_values", "indicator_id": "80961,74362", "from_time": "2021-01-01", "to_time": "2026-10-08", "limit": 1000}, "cadence": "weekly", "match_keys": ["action", "indicator_id"]},
-    {"block": "sector_ratio_recent", "tool": "wi_data_sector", "input": {"action": "get_data", "endpoint_name": "sector_ratio_daily", "filters": "{\"sector_id\":\"157,159,160,161\"}", "columns": "sector_id,trading_date,pe,pb,market_cap", "by_time": "trading_date", "from_time": "2024-10-01", "to_time": "2026-10-08", "limit": 1000}, "cadence": "daily", "match_keys": ["action", "endpoint_name", "filters", "from_time"], "note": "to_time = hôm nay khi gọi lại; chỉ cần cửa sổ ~1 năm gần nhất (1000 dòng = 250 phiên × 4 phân ngành)."},
-    {"block": "sector_ratio_older", "tool": "wi_data_sector", "input": {"action": "get_data", "endpoint_name": "sector_ratio_daily", "filters": "{\"sector_id\":\"157,159,160,161\"}", "columns": "sector_id,trading_date,pe,pb,market_cap", "by_time": "trading_date", "from_time": "2024-10-01", "to_time": "2025-10-06", "limit": 1000}, "cadence": "none", "match_keys": ["action", "endpoint_name", "filters", "from_time", "to_time"], "note": "Lịch sử cố định, không cần gọi lại."}
-  ],
-  "indicators": {
-    "77101": ["fdi_re_ytd", "FDI đăng ký vào kinh doanh BĐS, lũy kế từ đầu năm", "triệu USD", "ytd"],
-    "77044": ["fdi_re_stock", "FDI đăng ký vào kinh doanh BĐS, lũy kế còn hiệu lực", "triệu USD", "monthly"],
-    "80032": ["gdp_re_q", "GDP hoạt động kinh doanh BĐS theo quý (giá hiện hành)", "tỷ VND", "quarterly"],
-    "79920": ["gdp_re_ytd", "GDP hoạt động kinh doanh BĐS lũy kế", "tỷ VND", "ytd"],
-    "80025": ["gdp_construction_q", "GDP ngành xây dựng theo quý (giá hiện hành)", "tỷ VND", "quarterly"],
-    "75777": ["cpi_housing_index", "CPI nhóm nhà ở và vật liệu xây dựng (2024 = 100)", "chỉ số", "monthly"],
-    "75708": ["cpi_housing_yoy", "CPI nhóm nhà ở và vật liệu xây dựng, so cùng kỳ", "%", "monthly"],
-    "75926": ["credit_construction", "Dư nợ tín dụng ngành xây dựng", "tỷ VND", "monthly"],
-    "75931": ["credit_total", "Tổng dư nợ tín dụng nền kinh tế", "tỷ VND", "monthly"],
-    "75920": ["deposits_total", "Tổng tiền gửi", "tỷ VND", "monthly"],
-    "81497": ["refi_rate", "Lãi suất tái cấp vốn", "%/năm", "daily"],
-    "76951": ["fdi_realized", "Vốn FDI thực hiện theo tháng (toàn nền kinh tế)", "triệu USD", "monthly"],
-    "77100": ["fdi_mfg_ytd", "FDI đăng ký vào công nghiệp chế biến, chế tạo, lũy kế từ đầu năm", "triệu USD", "ytd"],
-    "202899": ["iip_mfg_yoy", "IIP công nghiệp chế biến, chế tạo, so cùng kỳ", "%", "monthly"],
-    "80961": ["cement_price", "Giá xi măng trong nước", "nghìn VND/kg", "monthly"],
-    "74362": ["steel_price", "Thép CB300 D10 Hòa Phát", "nghìn VND/kg", "daily→monthly"]
+ "schema": 1,
+ "about": "Các lời gọi WiMCP cho dashboard Bất động sản. Routine Claude gọi lại đúng các lời gọi này (hook wi_capture.py lưu kết quả vào data/raw/wi/.inbox/), rồi chạy scripts/build_realestate_wi.py để dựng data/realestate-wi-data.js. Không chép tay số.",
+ "calls": [
+  {
+   "block": "cbond_cashflow",
+   "tool": "wi_data_cbond",
+   "input": {
+    "action": "get_data",
+    "endpoint_name": "bonds_corp_cashflow_monthly",
+    "filters": "{\"sector_l1\":\"Bất động sản\",\"currency\":\"VND\"}",
+    "columns": "year,month,sector_l2,principal_due,interest_due,principal_paid,interest_paid,principal_buyback,ontime_ratio,late_payment_debt,late_principal_debt,late_bond_count,new_late_bond_count,late_issuer_count,outstanding_value,outstanding_bond_count,as_of_date",
+    "limit": 400
+   },
+   "cadence": "daily",
+   "note": "Tháng hiện tại là số tạm tính tới ngày chốt."
   },
-  "sectors": {"157": "Bất động sản công nghiệp", "159": "Cho thuê bất động sản", "160": "Bất động sản dân cư", "161": "Đại lý và môi giới bất động sản"}
+  {
+   "block": "cbond_issuance",
+   "tool": "wi_data_cbond",
+   "input": {
+    "action": "get_data",
+    "endpoint_name": "bonds_corp_issuance_monthly",
+    "filters": "{\"sector_l1\":\"Bất động sản\",\"currency\":\"VND\"}",
+    "columns": "year,month,sector_l2,issuance_method,maturity_bucket,actual_issuance_value,issue_count,issuer_count,wavg_coupon,wavg_maturity_years,secured_share,as_of_date",
+    "limit": 1000
+   },
+   "cadence": "daily"
+  },
+  {
+   "block": "cbond_maturity_2026",
+   "tool": "wi_data_cbond",
+   "input": {
+    "action": "get_data",
+    "endpoint_name": "bonds_corp_maturity_schedule_monthly",
+    "filters": "{\"currency\":\"VND\",\"year\":\"2026\"}",
+    "columns": "year,month,symbol,company_name,sector_l1,sector_l2,due_at_outstanding,estimated_interest,bond_count",
+    "limit": 1000
+   },
+   "cadence": "weekly",
+   "note": "Endpoint không lọc được theo ngành; lọc sector_l1 = Bất động sản khi dựng."
+  },
+  {
+   "block": "cbond_maturity_2027",
+   "tool": "wi_data_cbond",
+   "input": {
+    "action": "get_data",
+    "endpoint_name": "bonds_corp_maturity_schedule_monthly",
+    "filters": "{\"currency\":\"VND\",\"year\":\"2027\"}",
+    "columns": "year,month,symbol,company_name,sector_l1,sector_l2,due_at_outstanding,estimated_interest,bond_count",
+    "limit": 1000
+   },
+   "cadence": "weekly",
+   "note": "Kết quả vượt trần hiển thị của tool: hook chỉ lưu thông báo lỗi; cần chép file tool-results vào capture (xem build_realestate_wi.py --restore)."
+  },
+  {
+   "block": "macro_core",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "77044,77101,80032,79920,80025,75777,75708,75926,75931,81497,76951",
+    "limit": 60
+   },
+   "cadence": "daily"
+  },
+  {
+   "block": "macro_kcn",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "77100,202899,75920",
+    "limit": 60
+   },
+   "cadence": "daily"
+  },
+  {
+   "block": "commodity",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "80961,74362",
+    "from_time": "2021-01-01",
+    "to_time": "2026-10-08",
+    "limit": 1000
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id"
+   ]
+  },
+  {
+   "block": "sector_ratio_recent",
+   "tool": "wi_data_sector",
+   "input": {
+    "action": "get_data",
+    "endpoint_name": "sector_ratio_daily",
+    "filters": "{\"sector_id\":\"157,159,160,161\"}",
+    "columns": "sector_id,trading_date,pe,pb,market_cap",
+    "by_time": "trading_date",
+    "from_time": "2024-10-01",
+    "to_time": "2026-10-08",
+    "limit": 1000
+   },
+   "cadence": "daily",
+   "match_keys": [
+    "action",
+    "endpoint_name",
+    "filters",
+    "from_time"
+   ],
+   "note": "to_time = hôm nay khi gọi lại; chỉ cần cửa sổ ~1 năm gần nhất (1000 dòng = 250 phiên × 4 phân ngành). Nhiều capture cùng khóa: chọn capture có to_time mới nhất.",
+   "pick": "max_to_time"
+  },
+  {
+   "block": "sector_ratio_older",
+   "tool": "wi_data_sector",
+   "input": {
+    "action": "get_data",
+    "endpoint_name": "sector_ratio_daily",
+    "filters": "{\"sector_id\":\"157,159,160,161\"}",
+    "columns": "sector_id,trading_date,pe,pb,market_cap",
+    "by_time": "trading_date",
+    "from_time": "2024-10-01",
+    "to_time": "2025-10-06",
+    "limit": 1000
+   },
+   "cadence": "none",
+   "match_keys": [
+    "action",
+    "endpoint_name",
+    "filters",
+    "from_time",
+    "to_time"
+   ],
+   "note": "Lịch sử cố định, không cần gọi lại."
+  }
+ ],
+ "indicators": {
+  "77101": [
+   "fdi_re_ytd",
+   "FDI đăng ký vào kinh doanh BĐS, lũy kế từ đầu năm",
+   "triệu USD",
+   "ytd"
+  ],
+  "77044": [
+   "fdi_re_stock",
+   "FDI đăng ký vào kinh doanh BĐS, lũy kế còn hiệu lực",
+   "triệu USD",
+   "monthly"
+  ],
+  "80032": [
+   "gdp_re_q",
+   "GDP hoạt động kinh doanh BĐS theo quý (giá hiện hành)",
+   "tỷ VND",
+   "quarterly"
+  ],
+  "79920": [
+   "gdp_re_ytd",
+   "GDP hoạt động kinh doanh BĐS lũy kế",
+   "tỷ VND",
+   "ytd"
+  ],
+  "80025": [
+   "gdp_construction_q",
+   "GDP ngành xây dựng theo quý (giá hiện hành)",
+   "tỷ VND",
+   "quarterly"
+  ],
+  "75777": [
+   "cpi_housing_index",
+   "CPI nhóm nhà ở và vật liệu xây dựng (2024 = 100)",
+   "chỉ số",
+   "monthly"
+  ],
+  "75708": [
+   "cpi_housing_yoy",
+   "CPI nhóm nhà ở và vật liệu xây dựng, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "75926": [
+   "credit_construction",
+   "Dư nợ tín dụng ngành xây dựng",
+   "tỷ VND",
+   "monthly"
+  ],
+  "75931": [
+   "credit_total",
+   "Tổng dư nợ tín dụng nền kinh tế",
+   "tỷ VND",
+   "monthly"
+  ],
+  "75920": [
+   "deposits_total",
+   "Tổng tiền gửi",
+   "tỷ VND",
+   "monthly"
+  ],
+  "81497": [
+   "refi_rate",
+   "Lãi suất tái cấp vốn",
+   "%/năm",
+   "daily"
+  ],
+  "76951": [
+   "fdi_realized",
+   "Vốn FDI thực hiện theo tháng (toàn nền kinh tế)",
+   "triệu USD",
+   "monthly"
+  ],
+  "77100": [
+   "fdi_mfg_ytd",
+   "FDI đăng ký vào công nghiệp chế biến, chế tạo, lũy kế từ đầu năm",
+   "triệu USD",
+   "ytd"
+  ],
+  "202899": [
+   "iip_mfg_yoy",
+   "IIP công nghiệp chế biến, chế tạo, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "80961": [
+   "cement_price",
+   "Giá xi măng trong nước",
+   "nghìn VND/kg",
+   "monthly"
+  ],
+  "74362": [
+   "steel_price",
+   "Thép CB300 D10 Hòa Phát",
+   "nghìn VND/kg",
+   "daily→monthly"
+  ]
+ },
+ "sectors": {
+  "157": "Bất động sản công nghiệp",
+  "159": "Cho thuê bất động sản",
+  "160": "Bất động sản dân cư",
+  "161": "Đại lý và môi giới bất động sản"
+ }
 }
