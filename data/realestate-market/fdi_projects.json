@@ -1,0 +1,548 @@
+[
+ {
+  "year": 2023,
+  "month": 5,
+  "name": "VSIP Lạng Sơn (hạ tầng KCN, 599,76 ha)",
+  "investor": "CTCP Phát triển Đô thị và KCN Việt Nam–Singapore (VSIP, liên doanh Sembcorp–Becamex)",
+  "country": "Singapore (liên doanh)",
+  "type": "KCN",
+  "capital_musd": 274,
+  "kind": "cấp mới",
+  "province": "Lạng Sơn",
+  "sources": [
+   {
+    "label": "Nhà Đầu tư",
+    "url": "https://nhadautu.vn/vsip-lam-chu-dau-tu-kcn-hon-6300-ty-dong-tai-lang-son-d76504.html"
+   }
+  ],
+  "note": "Chấp thuận chủ trương QĐ 501/QĐ-TTg 15/5/2023; >6.300 tỷ đồng"
+ },
+ {
+  "year": 2023,
+  "month": 5,
+  "name": "Emeria & Clarita (49% hai dự án của Khang Điền)",
+  "investor": "Keppel Land",
+  "country": "Singapore",
+  "type": "Nhà ở/Khu đô thị",
+  "capital_musd": 128,
+  "kind": "góp vốn mua CP",
+  "province": "TP.HCM",
+  "sources": [
+   {
+    "label": "Tuổi Trẻ/Saigon Times – M&A 2023",
+    "url": "https://tuoitre.vn/saigontimes/ma-bat-dong-san-mot-nam-bat-day-cua-nha-dau-tu-nuoc-ngoai-106863864.htm"
+   },
+   {
+    "label": "CafeF 30/12/2023",
+    "url": "https://cafef.vn/hon-11-ty-usd-von-fdi-chay-vao-bat-dong-san-cac-ong-lon-nuoc-ngoai-thau-tom-loat-du-an-tai-viet-nam-188231230000408968.chn"
+   }
+  ],
+  "note": "~3.200 tỷ đồng; USD xấp xỉ theo Saigon Times"
+ },
+ {
+  "year": 2023,
+  "month": 7,
+  "name": "Khu dân cư Tâm Lực / Eaton Park (mua 100% CTCP BĐS Tâm Lực)",
+  "investor": "Gamuda Land",
+  "country": "Malaysia",
+  "type": "Nhà ở/Khu đô thị",
+  "capital_musd": 315.8,
+  "kind": "góp vốn mua CP",
+  "province": "TP.HCM",
+  "sources": [
+   {
+    "label": "CafeF 30/12/2023",
+    "url": "https://cafef.vn/hon-11-ty-usd-von-fdi-chay-vao-bat-dong-san-cac-ong-lon-nuoc-ngoai-thau-tom-loat-du-an-tai-viet-nam-188231230000408968.chn"
+   },
+   {
+    "label": "Tuổi Trẻ/Saigon Times – M&A 2023",
+    "url": "https://tuoitre.vn/saigontimes/ma-bat-dong-san-mot-nam-bat-day-cua-nha-dau-tu-nuoc-ngoai-106863864.htm"
+   }
+  ],
+  "note": null
+ },
+ {
+  "year": 2023,
+  "month": 7,
+  "name": "Dự án khu đô thị tại TP Thủ Đức",
+  "investor": "Marubeni",
+  "country": "Nhật Bản",
+  "type": "Nhà ở/Khu đô thị",
+  "capital_musd": null,
+  "kind": "cấp mới",
+  "province": "TP.HCM",
+  "sources": [
+   {
+    "label": "CafeF 30/12/2023",
+    "url": "https://cafef.vn/hon-11-ty-usd-von-fdi-chay-vao-bat-dong-san-cac-ong-lon-nuoc-ngoai-thau-tom-loat-du-an-tai-viet-nam-188231230000408968.chn"
+   }
+  ],
+  "note": "CafeF ghi >10.000 tỷ đồng (~420 triệu USD quy đổi thô); chưa rõ tên dự án/hình thức – cần xác minh thêm"
+ },
+ {
+  "year": 2023,
+  "month": 8,
+  "name": "VSIP Thái Bình (333,4 ha)",
+  "investor": "VSIP",
+  "country": "Singapore (liên doanh)",
+  "type": "KCN",
+  "capital_musd": 211,
+  "kind": "cấp mới",
+  "province": "Thái Bình (nay Hưng Yên)",
+  "sources": [
+   {
+    "label": "VietnamFinance",
+    "url": "https://vietnamfinance.vn/vsip-dau-tu-them-2-kcn-lon-211-trieu-usd-vao-thai-binh-1500-ty-ve-ha-tinh-d100073.html"
+   }
+  ],
+  "note": "Chấp thuận 29/8/2023; 4.932 tỷ đồng"
+ },
+ {
+  "year": 2023,
+  "month": 8,
+  "name": "VSIP Bắc Thạch Hà giai đoạn 1 (190 ha)",
+  "investor": "VSIP",
+  "country": "Singapore (liên doanh)",
+  "type": "KCN",
+  "capital_musd": 65,
+  "kind": "cấp mới",
+  "province": "Hà Tĩnh",
+  "sources": [
+   {
+    "label": "VietnamFinance",
+    "url": "https://vietnamfinance.vn/vsip-dau-tu-them-2-kcn-lon-211-trieu-usd-vao-thai-binh-1500-ty-ve-ha-tinh-d100073.html"
+   }
+  ],
+  "note": "1.555,5 tỷ đồng; USD quy đổi xấp xỉ"
+ },
+ {
+  "year": 2023,
+  "month": 11,
+  "name": "The Sycamore – khu đô thị Tân Thành, Thành phố mới Bình Dương (18,9 ha, mua quỹ đất từ Becamex IDC)",
+  "investor": "CapitaLand Development",
+  "country": "Singapore",
+  "type": "Nhà ở/Khu đô thị",
+  "capital_musd": 553,
+  "kind": "góp vốn mua CP",
+  "province": "Bình Dương (nay TP.HCM)",
+  "sources": [
+   {
+    "label": "Tuổi Trẻ 28/2/2024",
+    "url": "https://tuoitre.vn/binh-duong-don-du-an-bat-dong-san-hon-500-trieu-usd-von-tu-singapore-2024022815373952.htm"
+   },
+   {
+    "label": "CafeF 30/12/2023",
+    "url": "https://cafef.vn/hon-11-ty-usd-von-fdi-chay-vao-bat-dong-san-cac-ong-lon-nuoc-ngoai-thau-tom-loat-du-an-tai-viet-nam-188231230000408968.chn"
+   },
+   {
+    "label": "VIR – Real estate FDI consolidates improvement",
+    "url": "https://vir.com.vn/real-estate-fdi-consolidates-improvement-122211.html"
+   }
+  ],
+  "note": "Tổng đầu tư 13.600 tỷ đồng (~553 triệu USD); khởi công 28/2/2024; VIR ghi 797 triệu USD"
+ },
+ {
+  "year": 2024,
+  "month": null,
+  "name": "Lumi Hanoi (Tây Hà Nội)",
+  "investor": "CapitaLand Development",
+  "country": "Singapore",
+  "type": "Nhà ở/Khu đô thị",
+  "capital_musd": 662,
+  "kind": "cấp mới",
+  "province": "Hà Nội",
+  "sources": [
+   {
+    "label": "Báo Đấu thầu",
+    "url": "https://baodauthau.vn/dong-von-dau-tu-nuoc-ngoai-chay-manh-vao-bat-dong-san-post155678.html"
+   },
+   {
+    "label": "VIR – Real estate FDI consolidates improvement",
+    "url": "https://vir.com.vn/real-estate-fdi-consolidates-improvement-122211.html"
+   }
+  ],
+  "note": "Đăng ký trong 4 tháng đầu 2024 (Cục ĐTNN); CafeF ghi cấp 11/2023 ~18.000 tỷ"
+ },
+ {
+  "year": 2024,
+  "month": null,
+  "name": "The One World (Bình Dương)",
+  "investor": "Sumitomo Forestry, Kumagai Gumi, NTT, AEON VN + Kim Oanh",
+  "country": "Nhật Bản",
+  "type": "Nhà ở/Khu đô thị",
+  "capital_musd": 1000,
+  "kind": "cấp mới",
+  "province": "Bình Dương (nay TP.HCM)",
+  "sources": [
+   {
+    "label": "VIR – Real estate FDI consolidates improvement",
+    "url": "https://vir.com.vn/real-estate-fdi-consolidates-improvement-122211.html"
+   }
+  ],
+  "note": "VIR: >1 tỷ USD; liên doanh với Kim Oanh – phần vốn ngoại chưa tách"
+ },
+ {
+  "year": 2024,
+  "month": null,
+  "name": "TT Avio",
+  "investor": "Cosmos Initia + TT Capital",
+  "country": "Nhật Bản",
+  "type": "Nhà ở/Khu đô thị",
+  "capital_musd": 150,
+  "kind": "cấp mới",
+  "province": "Bình Dương (nay TP.HCM)",
+  "sources": [
+   {
+    "label": "VIR – Real estate FDI consolidates improvement",
+    "url": "https://vir.com.vn/real-estate-fdi-consolidates-improvement-122211.html"
+   }
+  ],
+  "note": null
+ },
+ {
+  "year": 2024,
+  "month": 11,
+  "name": "Hạ tầng KCN thuộc Tổ hợp Deep C",
+  "investor": "Liên danh Deep C (Rent-A-Port)",
+  "country": "Bỉ",
+  "type": "KCN",
+  "capital_musd": 169,
+  "kind": "tăng vốn",
+  "province": "Hải Phòng",
+  "sources": [
+   {
+    "label": "Nhà Đầu tư – Hải Phòng trao chứng nhận 1,8 tỷ USD (11/2024)",
+    "url": "https://nhadautu.vn/hai-phong-trao-chung-nhan-dau-tu-cho-loat-du-an-voi-tong-von-18-ty-usd-d90766.html"
+   }
+  ],
+  "note": "Tổng vốn lên 286 triệu USD"
+ },
+ {
+  "year": 2024,
+  "month": 11,
+  "name": "Sembcorp Integrated Hub (KCN Nam Đình Vũ)",
+  "investor": "Sembcorp",
+  "country": "Singapore",
+  "type": "KCN",
+  "capital_musd": 56,
+  "kind": "cấp mới",
+  "province": "Hải Phòng",
+  "sources": [
+   {
+    "label": "Nhà Đầu tư – Hải Phòng trao chứng nhận 1,8 tỷ USD (11/2024)",
+    "url": "https://nhadautu.vn/hai-phong-trao-chung-nhan-dau-tu-cho-loat-du-an-voi-tong-von-18-ty-usd-d90766.html"
+   }
+  ],
+  "note": "Dưới ngưỡng 100 triệu – giữ vì là hạ tầng KCN"
+ },
+ {
+  "year": 2024,
+  "month": 11,
+  "name": "KCN WHA Smart Technology – Thanh Hóa (178,5 ha)",
+  "investor": "WHA Industrial Development 2 (SG) & liên danh",
+  "country": "Thái Lan",
+  "type": "KCN",
+  "capital_musd": 55,
+  "kind": "cấp mới",
+  "province": "Thanh Hóa",
+  "sources": [
+   {
+    "label": "Mekong ASEAN",
+    "url": "https://mekongasean.vn/nha-da-u-tu-thai-lan-duoc-chap-thuan-dau-tu-khu-cong-nghiep-hon-178-ha-tai-thanh-hoa-35778.html"
+   }
+  ],
+  "note": "Chấp thuận chủ trương 19/11/2024; 1.320 tỷ đồng"
+ },
+ {
+  "year": 2024,
+  "month": 12,
+  "name": "WHA Industrial Zone 2 – Nghệ An (KCN Nam Cấm D, 183 ha)",
+  "investor": "WHA Group",
+  "country": "Thái Lan",
+  "type": "KCN",
+  "capital_musd": 47,
+  "kind": "cấp mới",
+  "province": "Nghệ An",
+  "sources": [
+   {
+    "label": "Mekong ASEAN",
+    "url": "https://mekongasean.vn/tap-doa-n-thai-lan-duoc-chap-thuan-da-u-tu-khu-cong-nghiep-tai-nghe-an-37153.html"
+   }
+  ],
+  "note": "Chấp thuận 31/12/2024; 1.200 tỷ đồng, USD quy đổi xấp xỉ"
+ },
+ {
+  "year": 2025,
+  "month": null,
+  "name": "Tháp Phương Trạch – Thành phố thông minh Bắc Hà Nội (Đông Anh)",
+  "investor": "BRG + Sumitomo Corporation",
+  "country": "Nhật Bản",
+  "type": "Văn phòng–TM",
+  "capital_musd": 1550,
+  "kind": "cấp mới",
+  "province": "Hà Nội",
+  "sources": [
+   {
+    "label": "Báo Chính phủ – FDI BĐS quý I/2025",
+    "url": "https://baochinhphu.vn/von-fdi-do-vao-bat-dong-san-tang-manh-trong-quy-i-10225051315374095.htm"
+   }
+  ],
+  "note": "Nêu trong FDI BĐS quý I/2025; liên doanh, phần vốn ngoại chưa tách"
+ },
+ {
+  "year": 2025,
+  "month": 5,
+  "name": "The Grand Hồ Tràm – phân khu mới 35 ha (giai đoạn 2)",
+  "investor": "Lodgis Hospitality (Warburg Pincus–VinaCapital) / Công ty TNHH Dự án Hồ Tràm",
+  "country": "Hoa Kỳ",
+  "type": "Nghỉ dưỡng–Khách sạn",
+  "capital_musd": 1000,
+  "kind": "tăng vốn",
+  "province": "Bà Rịa–Vũng Tàu (nay TP.HCM)",
+  "sources": [
+   {
+    "label": "Tuổi Trẻ 15/5/2025",
+    "url": "https://tuoitre.vn/khoi-cong-du-an-du-lich-nghi-duong-1-ti-usd-o-ho-tram-ba-ria-vung-tau-20250515091052078.htm"
+   },
+   {
+    "label": "Dân trí",
+    "url": "https://dantri.com.vn/bat-dong-san/loat-du-an-quy-mo-lon-dau-tu-vao-ba-ria-vung-tau-20250624143133765.htm"
+   }
+  ],
+  "note": "Mốc khởi công 15/5/2025; nguồn không nêu số/ngày GCN điều chỉnh – coi là ước"
+ },
+ {
+  "year": 2025,
+  "month": 5,
+  "name": "KCN Thăng Long Thanh Hóa giai đoạn 1 (167 ha)",
+  "investor": "Sumitomo Corporation",
+  "country": "Nhật Bản",
+  "type": "KCN",
+  "capital_musd": 115.8,
+  "kind": "cấp mới",
+  "province": "Thanh Hóa",
+  "sources": [
+   {
+    "label": "Thị trường Tài chính Tiền tệ",
+    "url": "https://thitruongtaichinhtiente.vn/thanh-hoa-trao-du-an-khu-cong-nghiep-gan-3-000-ty-dong-cho-doanh-nghiep-den-tu-nhat-ban-67519.html"
+   }
+  ],
+  "note": "GCN 7/5/2025; 2.918 tỷ đồng"
+ },
+ {
+  "year": 2025,
+  "month": null,
+  "name": "Mua Công ty Phương Đông (từ Masterise)",
+  "investor": "Công ty Bạch Dương (liên quan UOB)",
+  "country": "Singapore",
+  "type": "Nhà ở/Khu đô thị",
+  "capital_musd": 365,
+  "kind": "góp vốn mua CP",
+  "province": null,
+  "sources": [
+   {
+    "label": "Mekong ASEAN – M&A địa ốc",
+    "url": "https://mekongasean.vn/ma-dia-oc-nam-2026-khi-nha-dau-tu-uu-tien-dong-tien-hon-quy-dat-51987.html"
+   }
+  ],
+  "note": "Loại tài sản/tỉnh chưa xác minh"
+ },
+ {
+  "year": 2025,
+  "month": 12,
+  "name": "KCN Đoan Hùng / Amata City Phú Thọ (475 ha)",
+  "investor": "Amata Corporation",
+  "country": "Thái Lan",
+  "type": "KCN",
+  "capital_musd": 185.2,
+  "kind": "cấp mới",
+  "province": "Phú Thọ",
+  "sources": [
+   {
+    "label": "Nhân Dân",
+    "url": "https://nhandan.vn/ocop/phu-tho-trao-giay-chung-nhan-dau-tu-cho-du-an-xay-khu-cong-nghiep-tri-gia-185-trieu-usd-post932388.html"
+   },
+   {
+    "label": "Thời báo Tài chính VN",
+    "url": "https://thoibaotaichinhvietnam.vn/fdi-nam-2025-giu-nhip-tang-truong-trong-boi-canh-nhieu-bien-dong-190432.html"
+   }
+  ],
+  "note": "GCN 23/12/2025"
+ },
+ {
+  "year": 2026,
+  "month": 4,
+  "name": "Evolution DC VN HCMC (52 MW, Khu CNC)",
+  "investor": "Hathor, Frontier, Evolution",
+  "country": "Singapore",
+  "type": "Logistics–Data center",
+  "capital_musd": 508.78,
+  "kind": "cấp mới",
+  "province": "TP.HCM",
+  "sources": [
+   {
+    "label": "Saigon Times – trao chứng nhận 1,23 tỷ USD (25/4/2026)",
+    "url": "https://tuoitre.vn/saigontimes/trao-chung-nhan-123-ti-do-tphcm-chot-loat-du-an-ha-tang-cong-nghe-loi/"
+   },
+   {
+    "label": "Bizhub – data infrastructure HCMC",
+    "url": "https://bizhub.vietnamnews.vn/billion-dollar-investments-pour-into-data-infrastructure-in-hcm-city-post402861.html"
+   }
+  ],
+  "note": "NSO có thể xếp ngành thông tin–truyền thông"
+ },
+ {
+  "year": 2026,
+  "month": 4,
+  "name": "STARMASON Hyperscale Data Centre (60 MW, Khu CNC)",
+  "investor": "Sembcorp Development + BB Holdings",
+  "country": "Singapore",
+  "type": "Logistics–Data center",
+  "capital_musd": 480.26,
+  "kind": "cấp mới",
+  "province": "TP.HCM",
+  "sources": [
+   {
+    "label": "Saigon Times – trao chứng nhận 1,23 tỷ USD (25/4/2026)",
+    "url": "https://tuoitre.vn/saigontimes/trao-chung-nhan-123-ti-do-tphcm-chot-loat-du-an-ha-tang-cong-nghe-loi/"
+   },
+   {
+    "label": "Bizhub – data infrastructure HCMC",
+    "url": "https://bizhub.vietnamnews.vn/billion-dollar-investments-pour-into-data-infrastructure-in-hcm-city-post402861.html"
+   }
+  ],
+  "note": "NSO có thể xếp ngành thông tin–truyền thông"
+ },
+ {
+  "year": 2026,
+  "month": null,
+  "name": "Trung tâm dữ liệu AI – KCN Tân Phú Trung (Củ Chi)",
+  "investor": "Accelerated Infrastructure Capital (AIC) + KBC",
+  "country": "Quốc tế (AIC)",
+  "type": "Logistics–Data center",
+  "capital_musd": 2100,
+  "kind": "cấp mới",
+  "province": "TP.HCM",
+  "sources": [
+   {
+    "label": "CafeF 25/9/2026",
+    "url": "https://cafef.vn/fdi-doi-khau-vi-ngoai-6800-ha-dat-sach-tphcm-chuan-bi-gi-de-don-du-an-ty-usd-188260925215029358.chn"
+   },
+   {
+    "label": "Bizhub – data infrastructure HCMC",
+    "url": "https://bizhub.vietnamnews.vn/billion-dollar-investments-pour-into-data-infrastructure-in-hcm-city-post402861.html"
+   }
+  ],
+  "note": "CafeF nêu trong 100 dự án FDI cấp mới 9T/2026; Bizhub (5/2026) mới ở mức MOU 11/3/2026 – cần kiểm tra GCN"
+ },
+ {
+  "year": 2026,
+  "month": 5,
+  "name": "VSIP Hà Nam – KCN công nghệ cao (630 ha)",
+  "investor": "VSIP",
+  "country": "Singapore (liên doanh)",
+  "type": "KCN",
+  "capital_musd": 227,
+  "kind": "cấp mới",
+  "province": "Ninh Bình (Hà Nam cũ)",
+  "sources": [
+   {
+    "label": "CafeLand – VSIP được cấp phép thêm 5 KCN",
+    "url": "https://cafeland.vn/tin-tuc/vsip-tang-toc-mo-rong-duoc-cap-phep-them-5-khu-cong-nghiep-hon-2300ha-151964.html"
+   },
+   {
+    "label": "VnExpress – VSIP thêm 5 KCN (29/5/2026)",
+    "url": "https://vnexpress.net/vsip-duoc-cap-phep-them-5-khu-cong-nghiep-tong-quy-mo-hon-2-300-ha-5079795.html"
+   }
+  ],
+  "note": "GCN 29/5/2026; 5.990 tỷ đồng"
+ },
+ {
+  "year": 2026,
+  "month": 5,
+  "name": "VSIP Huế (La Sơn, 467 ha)",
+  "investor": "VSIP",
+  "country": "Singapore (liên doanh)",
+  "type": "KCN",
+  "capital_musd": 123,
+  "kind": "cấp mới",
+  "province": "Huế",
+  "sources": [
+   {
+    "label": "CafeLand – VSIP được cấp phép thêm 5 KCN",
+    "url": "https://cafeland.vn/tin-tuc/vsip-tang-toc-mo-rong-duoc-cap-phep-them-5-khu-cong-nghiep-hon-2300ha-151964.html"
+   },
+   {
+    "label": "VnExpress – VSIP thêm 5 KCN (29/5/2026)",
+    "url": "https://vnexpress.net/vsip-duoc-cap-phep-them-5-khu-cong-nghiep-tong-quy-mo-hon-2-300-ha-5079795.html"
+   }
+  ],
+  "note": "3.075 tỷ đồng"
+ },
+ {
+  "year": 2026,
+  "month": 5,
+  "name": "VSIP IV Nghệ An (Thọ Lộc giai đoạn 2, 80 ha)",
+  "investor": "VSIP",
+  "country": "Singapore (liên doanh)",
+  "type": "KCN",
+  "capital_musd": 26.5,
+  "kind": "cấp mới",
+  "province": "Nghệ An",
+  "sources": [
+   {
+    "label": "CafeLand – VSIP được cấp phép thêm 5 KCN",
+    "url": "https://cafeland.vn/tin-tuc/vsip-tang-toc-mo-rong-duoc-cap-phep-them-5-khu-cong-nghiep-hon-2300ha-151964.html"
+   },
+   {
+    "label": "VnExpress – VSIP thêm 5 KCN (29/5/2026)",
+    "url": "https://vnexpress.net/vsip-duoc-cap-phep-them-5-khu-cong-nghiep-tong-quy-mo-hon-2-300-ha-5079795.html"
+   }
+  ],
+  "note": null
+ },
+ {
+  "year": 2026,
+  "month": 5,
+  "name": "VSIP IV Bình Dương (Vĩnh Lập, 750 ha) và VSIP II Hải Phòng (Tiên Lãng 2, 416 ha)",
+  "investor": "VSIP",
+  "country": "Singapore (liên doanh)",
+  "type": "KCN",
+  "capital_musd": null,
+  "kind": "cấp mới",
+  "province": "TP.HCM; Hải Phòng",
+  "sources": [
+   {
+    "label": "CafeLand – VSIP được cấp phép thêm 5 KCN",
+    "url": "https://cafeland.vn/tin-tuc/vsip-tang-toc-mo-rong-duoc-cap-phep-them-5-khu-cong-nghiep-hon-2300ha-151964.html"
+   },
+   {
+    "label": "VnExpress – VSIP thêm 5 KCN (29/5/2026)",
+    "url": "https://vnexpress.net/vsip-duoc-cap-phep-them-5-khu-cong-nghiep-tong-quy-mo-hon-2-300-ha-5079795.html"
+   }
+  ],
+  "note": "Nguồn không công bố vốn"
+ },
+ {
+  "year": 2026,
+  "month": 6,
+  "name": "Lotte Eco Smart City Thủ Thiêm (khu chức năng 2a)",
+  "investor": "Lotte Group (+ Phát Đạt)",
+  "country": "Hàn Quốc",
+  "type": "Văn phòng–TM",
+  "capital_musd": 1400,
+  "kind": "tăng vốn",
+  "province": "TP.HCM",
+  "sources": [
+   {
+    "label": "Báo Pháp luật – TP.HCM 17,2 tỷ USD FDI",
+    "url": "https://baophapluat.vn/tp-hcm-thu-hut-17-2-ty-usd-von-fdi-vuot-56-6-muc-tieu-nam-2026.html"
+   },
+   {
+    "label": "Viet Nam News",
+    "url": "https://vietnamnews.vn/economy/1784384/long-delayed-thu-thiem-project-revived-with-2-27-billion-investment-plan.html"
+   }
+  ],
+  "note": "Đề xuất tăng ~1,4 tỷ USD; tổng mới ~60.000 tỷ (2,27 tỷ USD) từ 20.100 tỷ. Chưa thấy GCN điều chỉnh"
+ }
+]

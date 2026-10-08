@@ -1,0 +1,508 @@
+[
+ {
+  "quarter": "Q1/2019",
+  "city": "Hanoi",
+  "price": 1333,
+  "price_unit": "USD/m2 (VAT basis not stated)",
+  "new_supply": 11822,
+  "sold": 9390,
+  "absorption_pct": null,
+  "note": "26 projects",
+  "sources": [
+   {
+    "label": "VietnamFinance",
+    "url": "https://vietnamfinance.vn/cbre-2600-can-chao-ban-moi-thi-truong-nha-lien-tho-ha-noi-len-dinh-trong-3-nam-d33815.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2019",
+  "city": "Hanoi",
+  "price": 1337,
+  "price_unit": "USD/m2 (VAT basis not stated)",
+  "new_supply": 6400,
+  "sold": 6900,
+  "absorption_pct": 40,
+  "note": "absorption = >40% of units launched in quarter",
+  "sources": [
+   {
+    "label": "CBRE Vietnam",
+    "url": "https://residential.cbrevietnam.com/en-US/cbre-releases-q2-2019-quarterly-report-highlights-hanoi-market"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2019",
+  "city": "Hanoi",
+  "price": 1337,
+  "price_unit": "USD/m2 (VAT basis not stated)",
+  "new_supply": 6100,
+  "sold": 4800,
+  "absorption_pct": null,
+  "note": "18 projects; 9M2019 launches ~26,800",
+  "sources": [
+   {
+    "label": "VnBusiness",
+    "url": "https://vnbusiness.vn/nguon-cung-can-ho-ha-noi-tang.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2019",
+  "city": "Hanoi",
+  "price": 1370,
+  "price_unit": "USD/m2",
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "FY2019 ~36,000 launched, ~29,000 sold (quarter split not given)",
+  "sources": [
+   {
+    "label": "VnEconomy",
+    "url": "https://vneconomy.vn/nha-dat-ha-noi-bat-ngo-tang-gia.htm"
+   }
+  ]
+ },
+ {
+  "quarter": "Q1/2020",
+  "city": "Hanoi",
+  "price": 1365,
+  "price_unit": "USD/m2",
+  "new_supply": 1600,
+  "sold": 2100,
+  "absorption_pct": null,
+  "note": "COVID; lowest launches in 9 yrs",
+  "sources": [
+   {
+    "label": "Thi truong Tai chinh Tien te",
+    "url": "https://thitruongtaichinhtiente.vn/hai-kich-ban-cho-phan-khuc-can-ho-ha-noi-thoi-covid-19-27127.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2020",
+  "city": "Hanoi",
+  "price": 1379,
+  "price_unit": "USD/m2 (excl. VAT)",
+  "new_supply": 5600,
+  "sold": 5100,
+  "absorption_pct": null,
+  "note": "88% mid-end",
+  "sources": [
+   {
+    "label": "Thi truong Tai chinh Tien te",
+    "url": "https://thitruongtaichinhtiente.vn/chung-cu-ha-noi-o-at-chao-ban-sau-dich-covid-19-28219.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2020",
+  "city": "Hanoi",
+  "price": 1325,
+  "price_unit": "USD/m2 (excl. VAT)",
+  "new_supply": 3500,
+  "sold": 4200,
+  "absorption_pct": null,
+  "note": "9M2020 launches 10,700",
+  "sources": [
+   {
+    "label": "Dien dan Doanh nghiep",
+    "url": "https://diendandoanhnghiep.vn/print/10009205.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2020",
+  "city": "Hanoi",
+  "price": 1412,
+  "price_unit": "USD/m2 (excl. VAT & maintenance)",
+  "new_supply": 7200,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "FY2020 ~18,000 launched, ~18,500 sold",
+  "sources": [
+   {
+    "label": "VnEconomy",
+    "url": "https://vneconomy.vn/bat-dong-san-nha-o-nguon-cung-giam-manh-gia-bat-tang-cao.htm"
+   },
+   {
+    "label": "Doanh nhan & Phap luat",
+    "url": "https://doanhnhan.baophapluat.vn/luong-can-ho-mo-ban-moi-o-ha-noi-thap-nhat-trong-vong-5-nam-36651.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q1/2021",
+  "city": "Hanoi",
+  "price": 1461,
+  "price_unit": "USD/m2",
+  "new_supply": 4400,
+  "sold": 4200,
+  "absorption_pct": null,
+  "note": "",
+  "sources": [
+   {
+    "label": "VnBusiness",
+    "url": "https://vnbusiness.vn/tin-tuc/gia-chung-cu-tai-ha-noi-tang-3-9-1077652.html"
+   },
+   {
+    "label": "VnExpress",
+    "url": "https://vnexpress.net/gia-chung-cu-ha-noi-van-tang-4261847.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2021",
+  "city": "Hanoi",
+  "price": 1472,
+  "price_unit": "USD/m2 (excl. VAT & maintenance)",
+  "new_supply": 3500,
+  "sold": 3900,
+  "absorption_pct": null,
+  "note": "Derived: H1 launches ~7,900 and H1 sold 8,100 minus Q1 (4,400/4,200); approximate",
+  "sources": [
+   {
+    "label": "CBRE Vietnam",
+    "url": "https://residential.cbrevietnam.com/en-US/cbre-releases-q2-2021-quarterly-report-highlights--hanoi"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2021",
+  "city": "Hanoi",
+  "price": 1542,
+  "price_unit": "USD/m2 (excl. VAT & maintenance)",
+  "new_supply": 3483,
+  "sold": 3000,
+  "absorption_pct": 52,
+  "note": "absorption = avg sold rate of newly launched projects in first quarter",
+  "sources": [
+   {
+    "label": "CBRE Vietnam",
+    "url": "https://residential.cbrevietnam.com/en-US/cbre-releases-hanoi-quarterly-report-highlights-q3-2021"
+   },
+   {
+    "label": "Viettimes",
+    "url": "https://viettimes.vn/cbre-gia-can-ho-tai-ha-noi-co-the-tang-5-7nam-trong-3-nam-toi-post151144.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2021",
+  "city": "Hanoi",
+  "price": null,
+  "price_unit": null,
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "Not found in opened sources",
+  "sources": []
+ },
+ {
+  "quarter": "Q1/2022",
+  "city": "Hanoi",
+  "price": 1655,
+  "price_unit": "USD/m2 (excl. VAT & maintenance)",
+  "new_supply": 3500,
+  "sold": 4200,
+  "absorption_pct": null,
+  "note": "",
+  "sources": [
+   {
+    "label": "VnEconomy",
+    "url": "https://vneconomy.vn/gia-nha-dat-con-tiep-tuc-tang.htm"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2022",
+  "city": "Hanoi",
+  "price": 1872,
+  "price_unit": "USD/m2 (excl. VAT & maintenance)",
+  "new_supply": 4700,
+  "sold": 10800,
+  "absorption_pct": null,
+  "note": "new_supply derived from H1 ~8,200 minus Q1 3,500; sold 10,800 reported as 'quarter' by one source, may be H1 - verify",
+  "sources": [
+   {
+    "label": "VnEconomy",
+    "url": "https://vneconomy.vn/ha-noi-gia-bat-dong-san-tiep-tuc-tang-trong-quy-2.htm"
+   },
+   {
+    "label": "Thi truong Tai chinh Tien te",
+    "url": "https://thitruongtaichinhtiente.vn/khoang-8-200-can-ho-chung-cu-mo-ban-moi-tai-ha-noi-trong-6-thang-dau-nam-tang-3-so-voi-cung-ky-41594.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2022",
+  "city": "Hanoi",
+  "price": 1896,
+  "price_unit": "USD/m2 (excl. VAT & maintenance)",
+  "new_supply": 3600,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "67% high-end",
+  "sources": [
+   {
+    "label": "Doanh nhan & Phap luat",
+    "url": "https://doanhnhan.baophapluat.vn/thi-truong-nha-o-ha-noi-nguon-cung-can-ho-trung-va-cao-cap-chiem-uu-the-47901.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2022",
+  "city": "Hanoi",
+  "price": 1934,
+  "price_unit": "USD/m2 (excl. VAT & maintenance)",
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "FY2022 ~15,100 launched, 16,600 sold; Q4 ~3,300 if derived",
+  "sources": [
+   {
+    "label": "Doanh nhan & Phap luat",
+    "url": "https://doanhnhan.baophapluat.vn/cbre-xu-huong-giam-gia-nha-o-tai-ha-noi-tiep-dien-den-quy-ii2023-50438.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q1/2023",
+  "city": "Hanoi",
+  "price": 1992,
+  "price_unit": "USD/m2 (excl. VAT & maintenance)",
+  "new_supply": 2000,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "sold -58% YoY, -54% QoQ (absolute not given)",
+  "sources": [
+   {
+    "label": "Thi truong Tai chinh Tien te",
+    "url": "https://thitruongtaichinhtiente.vn/2-000-can-ho-chung-cu-mo-ban-moi-tai-ha-noi-trong-quy-i-2023-45206.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2023",
+  "city": "Hanoi",
+  "price": 47.5,
+  "price_unit": "VND mn/m2 (excl. VAT & maintenance, before discount)",
+  "new_supply": 1820,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "CBRE switches to VND; H1 launches 3,926, H1 sold ~4,280",
+  "sources": [
+   {
+    "label": "Dien dan Doanh nghiep",
+    "url": "https://diendandoanhnghiep.vn/gia-chung-cu-ha-noi-van-neo-cao-246809.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2023",
+  "city": "Hanoi",
+  "price": 50.8,
+  "price_unit": "VND mn/m2 (excl. VAT & maintenance, before discount)",
+  "new_supply": 3000,
+  "sold": 3640,
+  "absorption_pct": null,
+  "note": "9M launches 6,925",
+  "sources": [
+   {
+    "label": "Doanh nhan & Phap luat",
+    "url": "https://doanhnhan.baophapluat.vn/cbre-nguon-cung-chung-cu-o-ha-noi-ca-nam-2023-du-bao-thap-nhat-trong-10-nam-63921.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2023",
+  "city": "Hanoi",
+  "price": 53,
+  "price_unit": "VND mn/m2 (excl. VAT & maintenance, before discount)",
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "FY2023 ~10,300 launched (Q4 ~3,400 if derived from 9M 6,925)",
+  "sources": [
+   {
+    "label": "DoanhnhanPlus",
+    "url": "https://doanhnhanplus.vn/bao-cao-cbre-2024-nguon-cung-nha-o-ha-noi-tp-hcm-thap-ky-luc-627735.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q1/2024",
+  "city": "Hanoi",
+  "price": 56,
+  "price_unit": "VND mn/m2 (excl. VAT & maintenance, before discount)",
+  "new_supply": 2300,
+  "sold": 2000,
+  "absorption_pct": null,
+  "note": "",
+  "sources": [
+   {
+    "label": "Dan Tri",
+    "url": "https://dantri.com.vn/bat-dong-san/cbre-gia-ban-chung-cu-moi-trung-binh-tai-ha-noi-hien-dat-56-trieu-dongm2-20240411081506641.htm"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2024",
+  "city": "Hanoi",
+  "price": 60,
+  "price_unit": "VND mn/m2 (excl. VAT & maintenance, before discount)",
+  "new_supply": 8500,
+  "sold": 10170,
+  "absorption_pct": null,
+  "note": "",
+  "sources": [
+   {
+    "label": "Dien dan Doanh nghiep",
+    "url": "https://diendandoanhnghiep.vn/dien-bien-thi-truong-bat-dong-san-ha-noi-tp-hcm-luong-mo-ban-lon-gia-phi-ma-266119.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2024",
+  "city": "Hanoi",
+  "price": 64,
+  "price_unit": "VND mn/m2 (excl. VAT & maintenance, before discount)",
+  "new_supply": 8230,
+  "sold": 8000,
+  "absorption_pct": null,
+  "note": "9M launches >19,000",
+  "sources": [
+   {
+    "label": "Van hoa Thoi dai",
+    "url": "https://vanhoathoidai.vn/cbre-cong-bo-tieu-diem-thi-truong-bat-dong-san-ha-noi-quy-32024-a44053.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2024",
+  "city": "Hanoi",
+  "price": 72,
+  "price_unit": "VND mn/m2 (excl. VAT)",
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": 70,
+  "note": "FY2024 ~30,900 launched; absorption ~70%+",
+  "sources": [
+   {
+    "label": "Phu nu Viet Nam",
+    "url": "https://phunuvietnam.vn/cbre-bao-cao-gia-nha-chung-cu-tang-khung-khiep-20250108134051894.htm"
+   }
+  ]
+ },
+ {
+  "quarter": "Q1/2025",
+  "city": "Hanoi",
+  "price": 75,
+  "price_unit": "VND mn/m2 (excl. VAT & maintenance, before discount)",
+  "new_supply": 3920,
+  "sold": 3950,
+  "absorption_pct": null,
+  "note": "",
+  "sources": [
+   {
+    "label": "VnEconomy",
+    "url": "https://vneconomy.vn/da-tang-gia-chung-cu-ha-noi-chung-lai-trong-quy-1-2025.htm"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2025",
+  "city": "Hanoi",
+  "price": 79,
+  "price_unit": "VND mn/m2 (excl. VAT & maintenance, before discount)",
+  "new_supply": 6850,
+  "sold": 5180,
+  "absorption_pct": 60,
+  "note": "absorption = first-launch quarter",
+  "sources": [
+   {
+    "label": "Mekong ASEAN",
+    "url": "https://mekongasean.vn/ha-noi-ty-le-hap-thu-can-ho-chung-cu-van-cao-du-gia-ban-leo-thang-43607.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2025",
+  "city": "Hanoi",
+  "price": 90,
+  "price_unit": "VND mn/m2 (excl. VAT & maintenance, before discount)",
+  "new_supply": 10300,
+  "sold": 11100,
+  "absorption_pct": 75,
+  "note": "price '>90'; absorption 70-80% (midpoint)",
+  "sources": [
+   {
+    "label": "VnEconomy",
+    "url": "https://vneconomy.vn/thi-truong-nha-o-ha-noi-soi-dong-trong-quy-32025.htm"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2025",
+  "city": "Hanoi",
+  "price": 78,
+  "price_unit": "VND mn/m2 (excl. VAT & maintenance, before discount)",
+  "new_supply": 14905,
+  "sold": 13500,
+  "absorption_pct": 79,
+  "note": "incl. Van Giang (Hung Yen) mega-projects >60% of Q4 supply",
+  "sources": [
+   {
+    "label": "Mekong ASEAN",
+    "url": "https://mekongasean.vn/thi-truong-chung-cu-ha-noi-ghi-nhan-nam-ky-luc-ve-nguon-cung-va-giao-dich-50809.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q1/2026",
+  "city": "Hanoi",
+  "price": 84,
+  "price_unit": "VND mn/m2 (excl. VAT & maintenance, before discount) - EXCLUDES Van Giang",
+  "new_supply": 8010,
+  "sold": 5382,
+  "absorption_pct": 50,
+  "note": "Toàn thị trường gồm Văn Giang (Hưng Yên) 84; loại Văn Giang 102. Search snippet cites all-market incl. Van Giang = 84 (not confirmed in opened page)",
+  "sources": [
+   {
+    "label": "Thoi bao Tai chinh",
+    "url": "https://thoibaotaichinhvietnam.vn/ha-noi-chung-cu-mo-ban-quy-i-cao-nhat-5-nam-qua-196125.html"
+   },
+   {
+    "label": "Thời báo Tài chính VN (CBRE Q1/2026)",
+    "url": "https://thoibaotaichinhvietnam.vn/ha-noi-chung-cu-mo-ban-quy-i-cao-nhat-5-nam-qua-196125.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2026",
+  "city": "Hanoi",
+  "price": 95,
+  "price_unit": "VND mn/m2 (excl. VAT & maintenance, before discount)",
+  "new_supply": 8590,
+  "sold": 5800,
+  "absorption_pct": 68,
+  "note": "new_supply derived: H1 16,600 - Q1 8,010; absorption = sold/new launches",
+  "sources": [
+   {
+    "label": "Tap chi Kinh te Tai chinh",
+    "url": "https://tapchikinhtetaichinh.vn/nguon-cung-can-ho-ha-noi-lap-ky-luc-gia-thu-cap-lan-dau-giam-sau-gan-4-nam-161086.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2026",
+  "city": "Hanoi",
+  "price": null,
+  "price_unit": null,
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "Not yet found published (as of 2026-10-08)",
+  "sources": []
+ }
+]

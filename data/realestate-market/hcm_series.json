@@ -1,0 +1,499 @@
+[
+ {
+  "quarter": "Q1/2019",
+  "city": "HCMC",
+  "price": 1764,
+  "price_unit": "USD/m2 (NFA, excl. VAT)",
+  "new_supply": 4423,
+  "sold": 5924,
+  "absorption_pct": null,
+  "note": "+3.1% QoQ, +14.9% YoY; sold > launches by ~1,500 (inventory absorbed)",
+  "sources": [
+   {
+    "label": "Reatimes (CBRE Q1/2019)",
+    "url": "https://reatimes.vn/ho-chi-minh-city-new-condo-supply-fell-to-the-bottom-202500833.htm"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2019",
+  "city": "HCMC",
+  "price": 1873,
+  "price_unit": "USD/m2 (NFA, excl. VAT)",
+  "new_supply": 4124,
+  "sold": null,
+  "absorption_pct": 80,
+  "note": "+5% QoQ, +20% YoY; absorption 'more than 80%'",
+  "sources": [
+   {
+    "label": "VietNamNet (CBRE H1/2019)",
+    "url": "https://vietnamnet.vn/en/hcm-citys-housing-market-gloomy-in-first-half-554477.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2019",
+  "city": "HCMC",
+  "price": 1852,
+  "price_unit": "USD/m2 (NFA, excl. VAT)",
+  "new_supply": 13072,
+  "sold": 13386,
+  "absorption_pct": 90,
+  "note": "Stable QoQ, +15% YoY; >90% of launches absorbed; Vinhomes Grand Park ~10k units",
+  "sources": [
+   {
+    "label": "CBRE Vietnam residential",
+    "url": "https://residential.cbrevietnam.com/en-US/cbre-hcmc-posts-good-condominium-consumption-in-q3"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2019",
+  "city": "HCMC",
+  "price": null,
+  "price_unit": null,
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "Not found in an opened CBRE source. CBRE 2019 sold-rate ~85-90% (per Q3/2020, 2020 review pages).",
+  "sources": []
+ },
+ {
+  "quarter": "Q1/2020",
+  "city": "HCMC",
+  "price": null,
+  "price_unit": null,
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "Not directly found. Implied from CBRE Q2/2020: price ~1,940 USD (Q2 'stable QoQ'); H1 launches 5,250 & sold 5,338 minus Q2 => ~3,606 launched / ~3,757 sold (derived, not published).",
+  "sources": [
+   {
+    "label": "CBRE Q2/2020 HCMC",
+    "url": "https://residential.cbrevietnam.com/en-US/cbre-releases-market-updates-for-q2-2020-ho-chi-minh-city"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2020",
+  "city": "HCMC",
+  "price": 1940,
+  "price_unit": "USD/m2 (NFA, excl. VAT)",
+  "new_supply": 1644,
+  "sold": 1581,
+  "absorption_pct": 70,
+  "note": "Stable QoQ, +4% YoY; launches -54% QoQ",
+  "sources": [
+   {
+    "label": "CBRE Q2/2020 HCMC",
+    "url": "https://residential.cbrevietnam.com/en-US/cbre-releases-market-updates-for-q2-2020-ho-chi-minh-city"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2020",
+  "city": "HCMC",
+  "price": 1966,
+  "price_unit": "USD/m2 (NFA, excl. VAT)",
+  "new_supply": 3964,
+  "sold": 3552,
+  "absorption_pct": 72,
+  "note": "+1% QoQ, +6% YoY; ~90% from Vinhomes Grand Park The Origami",
+  "sources": [
+   {
+    "label": "CBRE Q3/2020",
+    "url": "https://residential.cbrevietnam.com/en-US/cbre-releases-market-updates-for-q3-2020"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2020",
+  "city": "HCMC",
+  "price": 2150,
+  "price_unit": "USD/m2 (NFA, excl. VAT)",
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": 75,
+  "note": "+9% QoQ, +13% YoY. 2020 launches 17,272 (per search snippet), 2020 sold 15,086, sold-rate 75% is full-year. Q4 launches not stated on page.",
+  "sources": [
+   {
+    "label": "CBRE 2020 review",
+    "url": "https://residential.cbrevietnam.com/en-US/cbre-releases-2020-review-and-2021-outlook-highlighting-key-trends-in-hcmc"
+   }
+  ]
+ },
+ {
+  "quarter": "Q1/2021",
+  "city": "HCMC",
+  "price": null,
+  "price_unit": null,
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "No CBRE source opened (vneconomy 3,900 units/2,468 USD is JLL). CBRE Q2/2021 says Q2 launches were 'double previous quarter' => Q1 ~2,000 (implied); sold ~2,670 implied by Q2 +76% QoQ.",
+  "sources": [
+   {
+    "label": "CBRE Q2/2021 HCMC",
+    "url": "https://residential.cbrevietnam.com/en-US/cbre-releases-real-estate-market-update-for-q2-2021-highlighting-key-trends-in-hcmc"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2021",
+  "city": "HCMC",
+  "price": 2260,
+  "price_unit": "USD/m2 (NFA, excl. VAT)",
+  "new_supply": 3968,
+  "sold": 4700,
+  "absorption_pct": 80,
+  "note": "+16.5% YoY; >80% of Q2 launches absorbed",
+  "sources": [
+   {
+    "label": "CBRE Q2/2021 HCMC",
+    "url": "https://residential.cbrevietnam.com/en-US/cbre-releases-real-estate-market-update-for-q2-2021-highlighting-key-trends-in-hcmc"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2021",
+  "city": "HCMC",
+  "price": 2271,
+  "price_unit": "USD/m2 (NFA, excl. VAT)",
+  "new_supply": 1600,
+  "sold": 1582,
+  "absorption_pct": null,
+  "note": "~53 mn VND, net of VAT; +17% YoY; Directive 16 lockdown; 2 new projects sold 82%",
+  "sources": [
+   {
+    "label": "CBRE Q3/2021 HCMC",
+    "url": "https://residential.cbrevietnam.com/en-US/cbre-releases-real-estate-market-update-highlighting-key-trends-in-hcmc-q3-2021"
+   },
+   {
+    "label": "VietnamFinance",
+    "url": "https://vietnamfinance.vn/tp-hcm-gia-can-ho-tang-17-bat-chap-dich-benh-bung-phat-d71355.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2021",
+  "city": "HCMC",
+  "price": 2306,
+  "price_unit": "USD/m2 (NFA, excl. VAT)",
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "+6.9% YoY, excl. VAT. 2021 launches 14,339 (-22% YoY), Q4 = 48% of year (~6,900 implied).",
+  "sources": [
+   {
+    "label": "Dai Doan Ket (CBRE 2021)",
+    "url": "https://daidoanket.vn/nhin-lai-thi-truong-bds-2021-bai-1-nguon-cung-can-ho-o-tp-hcm-thap-nhat-6-nam-10214876.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q1/2022",
+  "city": "HCMC",
+  "price": 2390,
+  "price_unit": "USD/m2 (NFA, excl. VAT)",
+  "new_supply": 884,
+  "sold": 1247,
+  "absorption_pct": null,
+  "note": "+7.7% YoY; launches -48% YoY, lowest since 2013 (CBRE via VNDirect)",
+  "sources": [
+   {
+    "label": "VNDirect sector report 16/05/2022",
+    "url": "https://vndirect.com.vn/cmsupload/beta/NganhBDS_BCnganh_20220516.pdf"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2022",
+  "city": "HCMC",
+  "price": 2420,
+  "price_unit": "USD/m2 (NFA, excl. VAT)",
+  "new_supply": 13000,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "Price 'over 2,420 USD/m2'; ~13,000 units launched (approx.)",
+  "sources": [
+   {
+    "label": "Nhadautu (CBRE Q2/2022)",
+    "url": "https://nhadautu.vn/thi-truong-tphcm-co-khoang-13000-can-ho-duoc-mo-ban-trong-quy-2-2022-d67409.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2022",
+  "city": "HCMC",
+  "price": 2545,
+  "price_unit": "USD/m2 (NFA, excl. VAT)",
+  "new_supply": 2851,
+  "sold": 6726,
+  "absorption_pct": null,
+  "note": "+3.4% QoQ, +12% YoY; sold 2.4x launches; 9M sold 18,520",
+  "sources": [
+   {
+    "label": "Bao Phap Luat (CBRE Q3/2022)",
+    "url": "https://doanhnhan.baophapluat.vn/thi-truong-can-ho-tp-hcm-nguon-cung-giam-nhung-gia-ban-tiep-da-tang-du-bao-phan-khuc-cao-cap-dan-dat-thi-truong-47824.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2022",
+  "city": "HCMC",
+  "price": null,
+  "price_unit": null,
+  "new_supply": 1312,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "Lowest quarterly launch in 10 yrs (ex-COVID); 2022 launches 18,440. Price: search snippet says little change vs Q3 (not confirmed on opened page). Unit switch: CBRE reports VND/m2 from 2023.",
+  "sources": [
+   {
+    "label": "Bao Phap Luat (CBRE Q4/2022)",
+    "url": "https://doanhnhan.baophapluat.vn/thi-truong-can-ho-tp-hcm-du-bao-gap-nhieu-kho-khan-trong-nam-2023-50196.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q1/2023",
+  "city": "HCMC",
+  "price": 60,
+  "price_unit": "VND mn/m2 (thong thuy, excl. VAT & maintenance)",
+  "new_supply": 2900,
+  "sold": 960,
+  "absorption_pct": null,
+  "note": "Price 'over 60 mn' (+2% QoQ, +10.2% YoY); first quarter in VND; sold -17% QoQ",
+  "sources": [
+   {
+    "label": "Bao Phap Luat (CBRE Q1/2023)",
+    "url": "https://doanhnhan.baophapluat.vn/gia-ban-trung-binh-can-ho-tp-hcm-quy-i2023-tren-60-trieu-dongm2-51202.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2023",
+  "city": "HCMC",
+  "price": 60,
+  "price_unit": "VND mn/m2 (thong thuy, excl. VAT & maintenance)",
+  "new_supply": null,
+  "sold": 1500,
+  "absorption_pct": null,
+  "note": "Price 'under 60 mn', -4.8% QoQ (first decline since 2018); H1 launches 4,100+ => Q2 ~1,200 implied; ~1,500 transactions",
+  "sources": [
+   {
+    "label": "Bao Phap Luat (CBRE Q2/2023)",
+    "url": "https://doanhnhan.baophapluat.vn/gia-ban-can-ho-so-cap-tp-hcm-lan-dau-ghi-nhan-muc-giam-ke-tu-nam-2018-52386.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2023",
+  "city": "HCMC",
+  "price": 60.6,
+  "price_unit": "VND mn/m2 (thong thuy, excl. VAT & maintenance)",
+  "new_supply": 3600,
+  "sold": 2600,
+  "absorption_pct": 55,
+  "note": "+4% QoQ, +1.9% YoY; 96% premium",
+  "sources": [
+   {
+    "label": "Bao Phap Luat (CBRE Q3/2023)",
+    "url": "https://doanhnhan.baophapluat.vn/thi-truong-nha-o-tp-hcm-quy-iii2023-nguon-cung-moi-den-tu-phan-khuc-cao-cap-gia-ban-tang-4-63866.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2023",
+  "city": "HCMC",
+  "price": 61,
+  "price_unit": "VND mn/m2 (thong thuy, excl. VAT & maintenance)",
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "~61 mn excl. VAT & maintenance, -1.7% YoY. 2023 launches 8,700+ (Q4 ~1,000 implied from 8,700-4,100-3,600).",
+  "sources": [
+   {
+    "label": "Doanhnhanplus (CBRE 2023)",
+    "url": "https://doanhnhanplus.vn/bao-cao-cbre-2024-nguon-cung-nha-o-ha-noi-tp-hcm-thap-ky-luc-627735.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q1/2024",
+  "city": "HCMC",
+  "price": 61,
+  "price_unit": "VND mn/m2 (thong thuy, excl. VAT & maintenance)",
+  "new_supply": 500,
+  "sold": 600,
+  "absorption_pct": 80,
+  "note": "Flat QoQ, -3% YoY; lowest launches in ~15 yrs",
+  "sources": [
+   {
+    "label": "Tap chi Cong Thuong",
+    "url": "https://tapchicongthuong.vn/tp-ho-chi-minh--nguon-cung-thap-nhung-gia-chung-cu-di-ngang-119619.htm"
+   },
+   {
+    "label": "Bao Phap Luat",
+    "url": "https://doanhnhan.baophapluat.vn/thi-truong-nha-o-tp-hcm-nguon-cung-moi-han-che-mat-bang-gia-di-ngang-76315.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2024",
+  "city": "HCMC",
+  "price": null,
+  "price_unit": null,
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "Not found in opened CBRE source; Q3/2024 66 mn was +4% QoQ => ~63-64 mn implied.",
+  "sources": []
+ },
+ {
+  "quarter": "Q3/2024",
+  "city": "HCMC",
+  "price": 66,
+  "price_unit": "VND mn/m2 (thong thuy, excl. VAT & maintenance)",
+  "new_supply": null,
+  "sold": 2000,
+  "absorption_pct": null,
+  "note": "+4% QoQ, +8% YoY; very low new launches; >2,000 inventory units sold (~2x QoQ)",
+  "sources": [
+   {
+    "label": "Bao Phap Luat (CBRE Q3/2024)",
+    "url": "https://doanhnhan.baophapluat.vn/cbre-hon-2000-can-ho-ton-o-tp-hcm-duoc-tieu-thu-trong-quy-iii2024-nguon-cung-moi-mo-ban-chung-lai-78399.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2024",
+  "city": "HCMC",
+  "price": 76,
+  "price_unit": "VND mn/m2 (thong thuy, excl. VAT & maintenance)",
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": 70,
+  "note": "+~24% YoY; 2024 launches 5,050; Q4 launches 26x Q3 (Q4/2025 3,135 was -4% YoY => Q4/2024 ~3,270 implied)",
+  "sources": [
+   {
+    "label": "Dien dan Doanh nghiep (CBRE Q4/2024)",
+    "url": "https://diendandoanhnghiep.vn/mat-bang-gia-chung-cu-tp-hcm-dao-chieu-10148679.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q1/2025",
+  "city": "HCMC",
+  "price": 77,
+  "price_unit": "VND mn/m2 (thong thuy, excl. VAT & maintenance)",
+  "new_supply": 350,
+  "sold": null,
+  "absorption_pct": 60,
+  "note": "Only 350 units, all subsequent phases",
+  "sources": [
+   {
+    "label": "Thuong hieu & Cong luan (CBRE Q1/2025)",
+    "url": "https://thuonghieucongluan.com.vn/bat-dong-san-tp-hcm-quy-i-2025-nguon-cung-han-che-gia-ban-tiep-tuc-leo-thang-a258989.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2025",
+  "city": "HCMC",
+  "price": 82,
+  "price_unit": "VND mn/m2 (thong thuy, excl. VAT & maintenance)",
+  "new_supply": 1000,
+  "sold": null,
+  "absorption_pct": 90,
+  "note": "+7% QoQ, +29% YoY; ~1,000 units; absorption 90% per CBRE Q3/2025 comparison (H1 74%)",
+  "sources": [
+   {
+    "label": "Bao Dau Thau (CBRE Q2/2025)",
+    "url": "https://baodauthau.vn/thi-truong-can-ho-tphcm-nguon-cung-han-che-gia-leo-thang-va-thach-thuc-voi-nguoi-mua-o-thuc-post181420.html"
+   },
+   {
+    "label": "Thuong hieu & Cong luan (Q3/2025)",
+    "url": "https://thuonghieucongluan.com.vn/thi-truong-bat-dong-san-tp-hcm-quy-iii-2025-gia-nha-tiep-tuc-leo-thang-van-phong-hang-a-khoi-sac-a285405.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2025",
+  "city": "HCMC",
+  "price": 87,
+  "price_unit": "VND mn/m2 (thong thuy, excl. VAT & maintenance)",
+  "new_supply": null,
+  "sold": 2250,
+  "absorption_pct": 68,
+  "note": "Scope: OLD HCMC (pre-merger boundaries) though city merged 1/7/2025. +6.3% QoQ, +31% YoY; launches +143% QoQ (~2,500 implied)",
+  "sources": [
+   {
+    "label": "Thuong hieu & Cong luan (CBRE Q3/2025)",
+    "url": "https://thuonghieucongluan.com.vn/thi-truong-bat-dong-san-tp-hcm-quy-iii-2025-gia-nha-tiep-tuc-leo-thang-van-phong-hang-a-khoi-sac-a285405.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q4/2025",
+  "city": "HCMC",
+  "price": 92,
+  "price_unit": "VND mn/m2 (thong thuy, excl. VAT & maintenance)",
+  "new_supply": 3135,
+  "sold": null,
+  "absorption_pct": 90,
+  "note": "Scope: OLD HCMC. +21% YoY; 2025 launches 7,084 (+40%), FY absorption 73%",
+  "sources": [
+   {
+    "label": "Thi truong Tai chinh Tien te (CBRE 2025)",
+    "url": "https://thitruongtaichinhtiente.vn/cbre-bat-dong-san-tp-ho-chi-minh-2025-minh-bach-hon-nguon-cung-phuc-hoi-76107.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q1/2026",
+  "city": "HCMC",
+  "price": 71,
+  "price_unit": "VND mn/m2 (thong thuy, excl. VAT & maintenance)",
+  "new_supply": 3840,
+  "sold": null,
+  "absorption_pct": 77,
+  "note": "SCOPE CHANGE: merged HCMC (incl. Binh Duong, BR-VT); old HCMC ~40% of launches. +4.4% QoQ, +11% YoY on merged basis -> NOT comparable with 92 mn old-HCMC Q4/2025",
+  "sources": [
+   {
+    "label": "Thi truong Tai chinh Tien te (CBRE Q1/2026)",
+    "url": "https://thitruongtaichinhtiente.vn/print/82228.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q2/2026",
+  "city": "HCMC",
+  "price": 76,
+  "price_unit": "VND mn/m2 (thong thuy, excl. VAT & maintenance)",
+  "new_supply": 6573,
+  "sold": null,
+  "absorption_pct": 73,
+  "note": "Merged HCMC. +8% QoQ, +16% YoY; 73% = new-launch absorption (overall 90%); ~80% supply from old Binh Duong",
+  "sources": [
+   {
+    "label": "Thuong hieu & Cong luan (CBRE Q2/2026)",
+    "url": "https://thuonghieucongluan.com.vn/nguon-cung-nha-o-tp-hcm-phuc-hoi-gia-can-ho-so-cap-tiep-tuc-tang-a325509.html"
+   },
+   {
+    "label": "Doanh nghiep Hoi nhap",
+    "url": "https://doanhnghiephoinhap.vn/thi-truong-can-ho-tphcm-nguon-cung-lon-tu-khu-vuc-binh-duong-cu-142455.html"
+   }
+  ]
+ },
+ {
+  "quarter": "Q3/2026",
+  "city": "HCMC",
+  "price": null,
+  "price_unit": null,
+  "new_supply": null,
+  "sold": null,
+  "absorption_pct": null,
+  "note": "Not yet published/found as of 2026-10-08.",
+  "sources": []
+ }
+]

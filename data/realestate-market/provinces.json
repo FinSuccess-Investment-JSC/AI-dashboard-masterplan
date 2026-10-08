@@ -1,0 +1,500 @@
+[
+ {
+  "market": "TP.HCM (mới) - khu vực Bình Dương (cũ)",
+  "old_area_note": "Bình Dương cũ, nay thuộc TP.HCM",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": "Toàn TP.HCM mới: 6.573 căn hộ + 1.934 nhà ở; Bình Dương cũ ~80% căn hộ mới",
+  "sold_or_absorption": "Tỷ lệ hấp thụ nguồn cung mới toàn TP.HCM mới 73%; Bình Dương cũ đóng góp gần 80% sản phẩm mới mở bán",
+  "price": 76,
+  "price_unit": "VND mn/m2, giá sơ cấp bình quân toàn TP.HCM mới (net, chưa VAT/phí bảo trì), +8% QoQ, +16% YoY; ~95% nguồn cung mới ở Bình Dương cũ thuộc phân khúc cao cấp",
+  "key_projects": null,
+  "source_firm": "CBRE Vietnam",
+  "sources": [
+   {
+    "label": "Doanh nghiệp Hội nhập 07/07/2026 - CBRE",
+    "url": "https://doanhnghiephoinhap.vn/thi-truong-can-ho-tphcm-nguon-cung-lon-tu-khu-vuc-binh-duong-cu-142455.html"
+   },
+   {
+    "label": "Thương hiệu & Công luận - CBRE TP.HCM Q2/2026",
+    "url": "https://thuonghieucongluan.com.vn/nguon-cung-nha-o-tp-hcm-phuc-hoi-gia-can-ho-so-cap-tiep-tuc-tang-a325509.html"
+   }
+  ]
+ },
+ {
+  "market": "TP.HCM và vùng phụ cận (gồm Bình Dương cũ, Đồng Nai, Long An cũ, BR-VT cũ)",
+  "old_area_note": "DKRA gộp vùng; không tách theo tỉnh trong bài",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": "khoảng hơn 19.000 căn (-8% YoY); TP.HCM chiếm ~90%",
+  "sold_or_absorption": "tiêu thụ -11% YoY",
+  "price": null,
+  "price_unit": "giá sơ cấp không biến động nhiều QoQ; thứ cấp -2% đến -6% QoQ",
+  "key_projects": "Dự án Đồng Nai được chú ý sau khi lên thành phố; Q3 dự báo 10.000-13.000 căn tập trung Bình Dương (cũ)",
+  "source_firm": "DKRA Consulting",
+  "sources": [
+   {
+    "label": "Thị trường Tài chính Tiền tệ - DKRA Q2/2026",
+    "url": "https://thitruongtaichinhtiente.vn/can-ho-dat-nen-nha-pho-biet-thu-tp-ho-chi-minh-co-chuyen-dong-moi-84183.html"
+   }
+  ]
+ },
+ {
+  "market": "TP.HCM và vùng phụ cận",
+  "old_area_note": "DKRA gộp vùng",
+  "quarter": "Q2/2026",
+  "segment": "townhouse-villa",
+  "new_supply": "+2% YoY; TP.HCM (mới) ~53%",
+  "sold_or_absorption": "9% nguồn cung sơ cấp; -71% YoY",
+  "price": null,
+  "price_unit": "thứ cấp +2% QoQ",
+  "key_projects": "Q3 dự báo 2.000-3.000 căn tại TP.HCM, Long An, BR-VT (cũ)",
+  "source_firm": "DKRA Consulting",
+  "sources": [
+   {
+    "label": "Thị trường Tài chính Tiền tệ - DKRA Q2/2026",
+    "url": "https://thitruongtaichinhtiente.vn/can-ho-dat-nen-nha-pho-biet-thu-tp-ho-chi-minh-co-chuyen-dong-moi-84183.html"
+   }
+  ]
+ },
+ {
+  "market": "TP.HCM và vùng phụ cận",
+  "old_area_note": "DKRA gộp vùng",
+  "quarter": "Q2/2026",
+  "segment": "land plot",
+  "new_supply": "+8% YoY",
+  "sold_or_absorption": "~4% tổng cung; -16% YoY",
+  "price": null,
+  "price_unit": "sơ cấp đi ngang QoQ; thứ cấp +4%",
+  "key_projects": "Q3 dự báo 300-400 nền",
+  "source_firm": "DKRA Consulting",
+  "sources": [
+   {
+    "label": "Thị trường Tài chính Tiền tệ - DKRA Q2/2026",
+    "url": "https://thitruongtaichinhtiente.vn/can-ho-dat-nen-nha-pho-biet-thu-tp-ho-chi-minh-co-chuyen-dong-moi-84183.html"
+   }
+  ]
+ },
+ {
+  "market": "Đà Nẵng",
+  "old_area_note": "Đà Nẵng mới (gộp Quảng Nam)",
+  "quarter": "Q1/2026",
+  "segment": "apartment",
+  "new_supply": 3473,
+  "sold_or_absorption": 1816,
+  "price": 83,
+  "price_unit": "VND mn/m2 sơ cấp bình quân (CBRE); DKRA: sơ cấp +5-10% YoY",
+  "key_projects": "Tập trung Ngũ Hành Sơn",
+  "source_firm": "DKRA Consulting; CBRE (giá)",
+  "sources": [
+   {
+    "label": "Báo Đấu thầu - DKRA Đà Nẵng",
+    "url": "https://baodauthau.vn/bat-dong-san-da-nang-quy-22026-nguoi-ban-giu-gia-nguoi-mua-giu-tien-post197402.html"
+   },
+   {
+    "label": "Diễn đàn Doanh nghiệp - CBRE Đà Nẵng",
+    "url": "https://diendandoanhnghiep.vn/print/10177996.html"
+   }
+  ]
+ },
+ {
+  "market": "Đà Nẵng",
+  "old_area_note": "Đà Nẵng mới (gộp Quảng Nam)",
+  "quarter": "Q1/2026",
+  "segment": "townhouse-villa",
+  "new_supply": 2772,
+  "sold_or_absorption": 1711,
+  "price": 147,
+  "price_unit": "VND mn/m2 sơ cấp bình quân thấp tầng (CBRE, cung mới CBRE 800 căn); DKRA: sơ cấp đi ngang QoQ, +10% YoY",
+  "key_projects": "Vinhomes Hải Vân Bay (~512 ha); một dự án chiếm ~88% cung (DKRA)",
+  "source_firm": "DKRA Consulting; CBRE",
+  "sources": [
+   {
+    "label": "Báo Đấu thầu - DKRA Đà Nẵng",
+    "url": "https://baodauthau.vn/bat-dong-san-da-nang-quy-22026-nguoi-ban-giu-gia-nguoi-mua-giu-tien-post197402.html"
+   },
+   {
+    "label": "Diễn đàn Doanh nghiệp - CBRE Đà Nẵng",
+    "url": "https://diendandoanhnghiep.vn/print/10177996.html"
+   }
+  ]
+ },
+ {
+  "market": "Đà Nẵng",
+  "old_area_note": "Đà Nẵng mới (gộp Quảng Nam)",
+  "quarter": "Q1/2026",
+  "segment": "land plot",
+  "new_supply": 1750,
+  "sold_or_absorption": 228,
+  "price": null,
+  "price_unit": null,
+  "key_projects": null,
+  "source_firm": "DKRA Consulting",
+  "sources": [
+   {
+    "label": "Báo Đấu thầu - DKRA Đà Nẵng",
+    "url": "https://baodauthau.vn/bat-dong-san-da-nang-quy-22026-nguoi-ban-giu-gia-nguoi-mua-giu-tien-post197402.html"
+   }
+  ]
+ },
+ {
+  "market": "Đồng Nai",
+  "old_area_note": "Đồng Nai mới (gộp Bình Phước)",
+  "quarter": "Q3/2025 (tham khảo, chưa có số Q2/2026 tách tỉnh)",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": 37,
+  "price_unit": "VND mn/m2 bình quân căn hộ",
+  "key_projects": "Fresia Riverside (EximRS, Biên Hòa), Centria Island (TTC Land), Aqua City, Long Thành Central City",
+  "source_firm": "DKRA",
+  "sources": [
+   {
+    "label": "Báo Đấu thầu - Đồng Nai",
+    "url": "https://baodauthau.vn/thi-truong-bat-dong-san-dong-nai-am-dan-sau-tphcm-post184972.html"
+   }
+  ]
+ },
+ {
+  "market": "Đà Nẵng",
+  "old_area_note": "Đà Nẵng mới (gộp Quảng Nam)",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": "+47% QoQ (không có số căn trong bài)",
+  "sold_or_absorption": "+54% QoQ; hạng A-B chiếm 88% cung, 93% giao dịch",
+  "price": null,
+  "price_unit": "sơ cấp +2% QoQ; thứ cấp -6%",
+  "key_projects": null,
+  "source_firm": "DKRA Consulting",
+  "sources": [
+   {
+    "label": "VietnamFinance - DKRA Đà Nẵng Q2/2026",
+    "url": "https://vietnamfinance.vn/lai-suat-neo-cao-thanh-khoan-dat-nen-da-nang-tiep-tuc-tram-lang-d147839.html"
+   }
+  ]
+ },
+ {
+  "market": "Đà Nẵng",
+  "old_area_note": "Đà Nẵng mới (gộp Quảng Nam)",
+  "quarter": "Q2/2026",
+  "segment": "land plot",
+  "new_supply": "~1.470 sản phẩm đang chào bán (-13% QoQ)",
+  "sold_or_absorption": "~4% tổng cung sơ cấp",
+  "price": null,
+  "price_unit": "sơ cấp đi ngang, neo cao",
+  "key_projects": null,
+  "source_firm": "DKRA Consulting",
+  "sources": [
+   {
+    "label": "VietnamFinance - DKRA Đà Nẵng Q2/2026",
+    "url": "https://vietnamfinance.vn/lai-suat-neo-cao-thanh-khoan-dat-nen-da-nang-tiep-tuc-tram-lang-d147839.html"
+   }
+  ]
+ },
+ {
+  "market": "Hưng Yên (Văn Giang)",
+  "old_area_note": "Hưng Yên mới (gộp Thái Bình); CBRE tính trong thị trường Hà Nội",
+  "quarter": "Q2/2026",
+  "segment": "townhouse-villa",
+  "new_supply": "~1.110 căn thấp tầng mở bán tại thị trường Hà Nội, gần 80% từ các đại đô thị Văn Giang (H1/2026 ~2.100 căn)",
+  "sold_or_absorption": null,
+  "price": null,
+  "price_unit": null,
+  "key_projects": "Đại đô thị tại Văn Giang (không nêu tên)",
+  "source_firm": "CBRE Vietnam",
+  "sources": [
+   {
+    "label": "VietnamFinance - CBRE Hà Nội Q2/2026",
+    "url": "https://vietnamfinance.vn/nguon-cung-chung-cu-ha-noi-lap-ky-luc-can-ho-duoi-60-trieu-dong-m2-van-mat-bong-d147239.html"
+   }
+  ]
+ },
+ {
+  "market": "Hưng Yên (Văn Giang)",
+  "old_area_note": "Hưng Yên mới (gộp Thái Bình)",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": 67,
+  "price_unit": "VND mn/m2 giá trung bình, +3% QoQ, +33% YoY",
+  "key_projects": null,
+  "source_firm": "One Mount Group",
+  "sources": [
+   {
+    "label": "Nhân Dân - One Mount Q2/2026",
+    "url": "https://nhandan.vn/ocop/quy-ii2026-nguon-cung-bat-dong-san-tiep-tuc-gia-tang-thi-truong-buoc-vao-giai-doan-sang-loc-post975561.html"
+   }
+  ]
+ },
+ {
+  "market": "TP.HCM (mới) - Bình Dương (cũ)",
+  "old_area_note": "Bình Dương cũ",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": "7.000+ căn (66% nguồn cung TP.HCM mới)",
+  "sold_or_absorption": null,
+  "price": 60,
+  "price_unit": "VND mn/m2 giá trung bình, +5% QoQ, +33% YoY",
+  "key_projects": null,
+  "source_firm": "One Mount Group",
+  "sources": [
+   {
+    "label": "Nhân Dân - One Mount Q2/2026",
+    "url": "https://nhandan.vn/ocop/quy-ii2026-nguon-cung-bat-dong-san-tiep-tuc-gia-tang-thi-truong-buoc-vao-giai-doan-sang-loc-post975561.html"
+   }
+  ]
+ },
+ {
+  "market": "Đà Nẵng",
+  "old_area_note": "Đà Nẵng mới",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": 69,
+  "price_unit": "VND mn/m2 giá rao bán trung bình (listing, không phải sơ cấp); +1% QoQ",
+  "key_projects": null,
+  "source_firm": "Batdongsan.com.vn",
+  "sources": [
+   {
+    "label": "Tuổi Trẻ - báo cáo Batdongsan.com.vn Q2/2026",
+    "url": "https://tuoitre.vn/gia-chung-cu-ha-noi-giam-trong-quy-2-nam-2026-tphcm-on-dinh-100260618132835913.htm"
+   }
+  ]
+ },
+ {
+  "market": "Hưng Yên",
+  "old_area_note": "Hưng Yên mới (gộp Thái Bình)",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": 66,
+  "price_unit": "VND mn/m2 giá rao bán trung bình (listing, không phải sơ cấp); -3% QoQ",
+  "key_projects": null,
+  "source_firm": "Batdongsan.com.vn",
+  "sources": [
+   {
+    "label": "Tuổi Trẻ - báo cáo Batdongsan.com.vn Q2/2026",
+    "url": "https://tuoitre.vn/gia-chung-cu-ha-noi-giam-trong-quy-2-nam-2026-tphcm-on-dinh-100260618132835913.htm"
+   }
+  ]
+ },
+ {
+  "market": "Bắc Ninh",
+  "old_area_note": "Bắc Ninh mới (gộp Bắc Giang)",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": 39,
+  "price_unit": "VND mn/m2 giá rao bán trung bình (listing, không phải sơ cấp); -3% QoQ",
+  "key_projects": null,
+  "source_firm": "Batdongsan.com.vn",
+  "sources": [
+   {
+    "label": "Tuổi Trẻ - báo cáo Batdongsan.com.vn Q2/2026",
+    "url": "https://tuoitre.vn/gia-chung-cu-ha-noi-giam-trong-quy-2-nam-2026-tphcm-on-dinh-100260618132835913.htm"
+   }
+  ]
+ },
+ {
+  "market": "Hải Phòng",
+  "old_area_note": "Hải Phòng mới (gộp Hải Dương)",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": null,
+  "price_unit": "VND mn/m2 giá rao bán trung bình (listing, không phải sơ cấp); +8% QoQ",
+  "key_projects": null,
+  "source_firm": "Batdongsan.com.vn",
+  "sources": [
+   {
+    "label": "Tuổi Trẻ - báo cáo Batdongsan.com.vn Q2/2026",
+    "url": "https://tuoitre.vn/gia-chung-cu-ha-noi-giam-trong-quy-2-nam-2026-tphcm-on-dinh-100260618132835913.htm"
+   }
+  ]
+ },
+ {
+  "market": "Quảng Ninh",
+  "old_area_note": "",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": null,
+  "price_unit": "VND mn/m2 giá rao bán trung bình (listing, không phải sơ cấp); +6% QoQ",
+  "key_projects": null,
+  "source_firm": "Batdongsan.com.vn",
+  "sources": [
+   {
+    "label": "Tuổi Trẻ - báo cáo Batdongsan.com.vn Q2/2026",
+    "url": "https://tuoitre.vn/gia-chung-cu-ha-noi-giam-trong-quy-2-nam-2026-tphcm-on-dinh-100260618132835913.htm"
+   }
+  ]
+ },
+ {
+  "market": "Khánh Hòa",
+  "old_area_note": "Khánh Hòa mới (gộp Ninh Thuận)",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": null,
+  "price_unit": "VND mn/m2 giá rao bán trung bình (listing, không phải sơ cấp); +2% QoQ",
+  "key_projects": null,
+  "source_firm": "Batdongsan.com.vn",
+  "sources": [
+   {
+    "label": "Tuổi Trẻ - báo cáo Batdongsan.com.vn Q2/2026",
+    "url": "https://tuoitre.vn/gia-chung-cu-ha-noi-giam-trong-quy-2-nam-2026-tphcm-on-dinh-100260618132835913.htm"
+   }
+  ]
+ },
+ {
+  "market": "Bình Dương (cũ)",
+  "old_area_note": "nay thuộc TP.HCM",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": null,
+  "price_unit": "VND mn/m2 giá rao bán trung bình (listing, không phải sơ cấp); +2% QoQ",
+  "key_projects": null,
+  "source_firm": "Batdongsan.com.vn",
+  "sources": [
+   {
+    "label": "Tuổi Trẻ - báo cáo Batdongsan.com.vn Q2/2026",
+    "url": "https://tuoitre.vn/gia-chung-cu-ha-noi-giam-trong-quy-2-nam-2026-tphcm-on-dinh-100260618132835913.htm"
+   }
+  ]
+ },
+ {
+  "market": "Bà Rịa–Vũng Tàu (cũ)",
+  "old_area_note": "nay thuộc TP.HCM",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": null,
+  "price_unit": "VND mn/m2 giá rao bán trung bình (listing, không phải sơ cấp); +20% QoQ",
+  "key_projects": null,
+  "source_firm": "Batdongsan.com.vn",
+  "sources": [
+   {
+    "label": "Tuổi Trẻ - báo cáo Batdongsan.com.vn Q2/2026",
+    "url": "https://tuoitre.vn/gia-chung-cu-ha-noi-giam-trong-quy-2-nam-2026-tphcm-on-dinh-100260618132835913.htm"
+   }
+  ]
+ },
+ {
+  "market": "Đồng Nai",
+  "old_area_note": "Đồng Nai mới (gộp Bình Phước)",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": null,
+  "price_unit": "VND mn/m2 giá rao bán trung bình (listing, không phải sơ cấp); +5% QoQ",
+  "key_projects": null,
+  "source_firm": "Batdongsan.com.vn",
+  "sources": [
+   {
+    "label": "Tuổi Trẻ - báo cáo Batdongsan.com.vn Q2/2026",
+    "url": "https://tuoitre.vn/gia-chung-cu-ha-noi-giam-trong-quy-2-nam-2026-tphcm-on-dinh-100260618132835913.htm"
+   }
+  ]
+ },
+ {
+  "market": "Long An (cũ)",
+  "old_area_note": "nay thuộc Tây Ninh",
+  "quarter": "Q2/2026",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": null,
+  "price_unit": "VND mn/m2 giá rao bán trung bình (listing, không phải sơ cấp); +6% QoQ",
+  "key_projects": null,
+  "source_firm": "Batdongsan.com.vn",
+  "sources": [
+   {
+    "label": "Tuổi Trẻ - báo cáo Batdongsan.com.vn Q2/2026",
+    "url": "https://tuoitre.vn/gia-chung-cu-ha-noi-giam-trong-quy-2-nam-2026-tphcm-on-dinh-100260618132835913.htm"
+   }
+  ]
+ },
+ {
+  "market": "Hải Phòng",
+  "old_area_note": "Hải Phòng mới (gộp Hải Dương)",
+  "quarter": "Q1/2026",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": null,
+  "price_unit": "giá rao bán: The Minato Residence 50-62; Sentosa Sky Park 42-53 VND mn/m2",
+  "key_projects": "The Minato Residence; Sentosa Sky Park",
+  "source_firm": "Bộ Xây dựng",
+  "sources": [
+   {
+    "label": "Tạp chí KT-TC - báo cáo Bộ Xây dựng Q1/2026",
+    "url": "https://tapchikinhtetaichinh.vn/gia-can-ho-chung-cu-quy-i2026-vuot-550-trieu-dongm2-154629.html"
+   }
+  ]
+ },
+ {
+  "market": "Đà Nẵng",
+  "old_area_note": "Đà Nẵng mới",
+  "quarter": "Q1/2026",
+  "segment": "apartment",
+  "new_supply": null,
+  "sold_or_absorption": null,
+  "price": null,
+  "price_unit": "giá rao bán: Vista Residence 65-73; FPT Plaza 3 52-56; Mia Center Point 48-53 VND mn/m2",
+  "key_projects": "Vista Residence; FPT Plaza 3; Mia Center Point",
+  "source_firm": "Bộ Xây dựng",
+  "sources": [
+   {
+    "label": "Tạp chí KT-TC - báo cáo Bộ Xây dựng Q1/2026",
+    "url": "https://tapchikinhtetaichinh.vn/gia-can-ho-chung-cu-quy-i2026-vuot-550-trieu-dongm2-154629.html"
+   }
+  ]
+ },
+ {
+  "market": "Quảng Ninh (Hạ Long)",
+  "old_area_note": "",
+  "quarter": "Q2/2026",
+  "segment": "apartment (social housing)",
+  "new_supply": "602 căn NOXH + 26 nhà liền kề thương mại",
+  "sold_or_absorption": null,
+  "price": 23.6,
+  "price_unit": "VND mn/m2 gồm VAT, phí bảo trì; nhận hồ sơ 20/5-20/6/2026",
+  "key_projects": "NOXH phường Hà Tu (Ngân Hà Quảng Ninh + liên danh)",
+  "source_firm": "Chủ đầu tư (tin báo)",
+  "sources": [
+   {
+    "label": "VietnamFinance 04/05/2026",
+    "url": "https://vietnamfinance.vn/mo-ban-nha-o-xa-hoi-view-vinh-ha-long-gia-duoi-24-trieu-dong-m2-d144300.html"
+   }
+  ]
+ },
+ {
+  "market": "Quảng Ninh (Hạ Long)",
+  "old_area_note": "",
+  "quarter": "Q3/2026",
+  "segment": "townhouse-villa",
+  "new_supply": "3.236 căn thấp tầng đủ điều kiện bán (2.853 khu A1 + 383 khu A2); tổng >7.000 căn tính cả đợt quý 2",
+  "sold_or_absorption": null,
+  "price": null,
+  "price_unit": null,
+  "key_projects": "Hạ Long Xanh (Vingroup), thông báo 01/09/2026",
+  "source_firm": "Tin báo (cơ quan quản lý cho phép bán)",
+  "sources": [
+   {
+    "label": "VietnamFinance - Hạ Long Xanh",
+    "url": "https://vietnamfinance.vn/du-an-ha-long-xanh-cua-vingroup-duoc-mo-ban-them-3200-can-thap-tang-d149964.html"
+   }
+  ]
+ }
+]

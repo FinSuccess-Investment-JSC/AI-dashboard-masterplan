@@ -299,6 +299,8 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/sector-runtime.js?v=6ef086b89ff7" defer></script>
 <script src="../assets/sector-content.js?v=ff7de5bb55fb" defer></script>
 <script src="../assets/sector-layout.js?v=11f5c297153b" defer></script>
+<script src="../data/realestate-market-history.js?v=1cac369b93be" defer></script>
+<script src="../assets/realestate-market-history.js?v=8a2f1301fb5c" defer></script>
 <script src="../assets/realestate-dashboard.js?v=5725d2ab543e" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
@@ -313,7 +315,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=2c6c98bd6eb6" data-release="20261008T063435Z"></script>
+<script src="../assets/site-navigation.js?v=2c6c98bd6eb6" data-release="20261008T065827Z"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=c2f07b357463">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=033d06c36482">
@@ -412,9 +414,11 @@ body{font-size:14px;line-height:1.45}
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-cpi-housing"></table></div></details>
       </div>
       <div class="card" data-block-id="bds-07" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-        <div class="chart-title">Giao dịch &amp; tồn kho cả nước — Bộ Xây dựng Q2/2026</div>
-        <div class="chart-sub">công bố 21/08/2026 · Q3/2026 chưa có (dự kiến cuối 11/2026)</div>
-        <div class="tablewrap"><table>
+        <div class="chart-title">Giao dịch thành công cả nước — theo quý</div>
+        <div class="chart-sub">nghìn giao dịch · Bộ Xây dựng · Q3/2026 dự kiến cuối 11/2026</div>
+        <div id="chMocTx"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-moc-tx"></table></div></details>
+        <details class="dtable"><summary>Chi tiết Q2/2026 (công bố 21/08/2026)</summary><div class="tablewrap"><table>
           <thead><tr><th>Chỉ tiêu</th><th>Q2/2026</th><th>So Q1/2026</th><th>So Q2/2025</th></tr></thead>
           <tbody>
             <tr><td>Giao dịch thành công</td><td><b>100.005</b></td><td>= 71,5%</td><td>= 63,7%</td></tr>
@@ -423,8 +427,22 @@ body{font-size:14px;line-height:1.45}
             <tr><td>Tồn kho chủ đầu tư (25/34 tỉnh)</td><td><b>39.284</b> sản phẩm</td><td>nhà riêng lẻ +46,4% · căn hộ +22,2% · đất nền +25,4%</td><td>—</td></tr>
             <tr><td>Dự án đang triển khai</td><td>1.735</td><td colspan="2">72 hoàn thành (~17.150 căn) · 113 cấp phép mới (~103.205 căn)</td></tr>
           </tbody>
-        </table></div>
+        </table></div></details>
         <div class="source-note">Nguồn: <a href="https://vov.vn/kinh-te/bat-dong-san-quy-ii2026-giao-dich-dat-nen-giam-hon-40-ton-kho-464-post1326015.vov" target="_blank" rel="noopener">VOV 21/08/2026 dẫn Bộ Xây dựng</a> · <a href="https://thoibaotaichinhvietnam.vn/bo-xay-dung-gia-ban-can-ho-chung-cu-co-xu-huong-giam-202686.html" target="_blank" rel="noopener">Thời báo Tài chính</a>. Tồn kho là số chủ đầu tư báo cáo, chưa gồm hàng thứ cấp.</div>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="bds-07b" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Tồn kho chủ đầu tư — theo quý</div>
+        <div class="chart-sub">sản phẩm · Bộ Xây dựng · số tỉnh báo cáo đổi theo quý</div>
+        <div id="chMocInv"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-moc-inv"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bds-08b" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Căn hộ mở bán mới — Hà Nội, TP.HCM theo quý</div>
+        <div class="chart-sub">căn · CBRE · TP.HCM từ Q1/2026 là thành phố sau sáp nhập</div>
+        <div id="chCbreSupply"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-cbre-supply"></table></div></details>
       </div>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="bds-08" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
@@ -441,6 +459,17 @@ body{font-size:14px;line-height:1.45}
         </tbody>
       </table></div>
       <div class="source-note">Nguồn: <a href="https://doanhnhan.baophapluat.vn/nguon-cung-nha-ha-noi-lap-dinh-5-nam-phan-khuc-cao-cap-tiep-tuc-chiem-uu-the.html" target="_blank" rel="noopener">CBRE Hà Nội (Báo Pháp luật 07/07/2026)</a> · <a href="https://cafef.vn/gia-can-ho-tphcm-lap-mat-bang-moi-76-trieu-dong-m-90-nguon-hang-duoc-hap-thu-188260707164106882.chn" target="_blank" rel="noopener">CBRE TP.HCM (CafeF)</a> · <a href="https://cafef.vn/chung-cu-ha-noi-vang-bong-can-ho-duoi-70-trieu-dong-m2-188260814143655062.chn" target="_blank" rel="noopener">Savills Hà Nội (CafeF 14/08/2026)</a> · <a href="https://vov.vn/kinh-te/nguon-cung-can-ho-o-tphcm-chu-yeu-phan-khuc-cao-cap-giao-dich-tram-lang-post1323256.vov" target="_blank" rel="noopener">Savills TP.HCM (VOV 11/08/2026)</a> · <a href="https://tienphong.vn/giao-dich-bat-dong-san-nua-cuoi-2026-dien-bien-ra-sao-post1853746.tpo" target="_blank" rel="noopener">VARS (Tiền Phong 24/06/2026)</a>.</div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bds-08c" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+      <div class="chart-title">Cung mới căn hộ theo phân khúc &amp; khu vực — Q1–Q2/2026</div>
+      <div class="chart-sub">mỗi dòng một hãng; tỷ trọng theo định nghĩa của hãng đó</div>
+      <div class="tablewrap"><table id="tbl-supply-detail"></table></div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bds-08d" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+      <div class="chart-title">Thị trường tỉnh lớn ngoài Hà Nội, TP.HCM</div>
+      <div class="chart-sub">sơ cấp (DKRA, CBRE, One Mount) tách khỏi giá rao bán Batdongsan.com.vn</div>
+      <div class="tablewrap"><table id="tbl-provinces"></table></div>
+      <div class="data-gap">Chưa có số căn mở bán, bán được tách riêng cho Hải Phòng, Bắc Ninh, Khánh Hòa, Bà Rịa – Vũng Tàu (cũ), Long An (cũ), Đồng Nai, Cần Thơ trong nguồn công khai; DKRA chỉ công bố tổng vùng TP.HCM và phụ cận.</div>
     </div>
 
     <h3 class="subhead">Khu công nghiệp</h3>
@@ -487,27 +516,35 @@ body{font-size:14px;line-height:1.45}
     <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Giá sơ cấp theo báo cáo quý, chi phí vật liệu và lãi suất theo Wi, định giá bốn phân ngành theo phiên.</p></div></div>
     <div class="grid two">
       <div class="card" data-block-id="bds-13" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-        <div class="chart-title">Giá căn hộ sơ cấp — Hà Nội, TP.HCM Q2/2026</div>
-        <div class="chart-sub">triệu đồng/m² · ba nguồn, ba phạm vi</div>
-        <div id="chHousePrice"></div>
-        <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>Hà Nội</span><span class="li"><span class="dot" style="background:#59C5C8"></span>TP.HCM</span></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-house-price"></table></div></details>
+        <div class="chart-title">Giá căn hộ sơ cấp — Hà Nội, TP.HCM từ 2023</div>
+        <div class="chart-sub">triệu đồng/m² · CBRE · chưa VAT, phí bảo trì · TP.HCM từ Q1/2026 là thành phố sau sáp nhập</div>
+        <div id="chCbrePriceVnd"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-cbre-price"></table></div></details>
+<details class="dtable"><summary>So sánh nguồn Q2/2026 (CBRE, Savills, Bộ Xây dựng)</summary><div class="tablewrap"><table id="tbl-house-price"></table></div></details>
         <div class="source-note">Nguồn: <a href="https://doanhnhan.baophapluat.vn/nguon-cung-nha-ha-noi-lap-dinh-5-nam-phan-khuc-cao-cap-tiep-tuc-chiem-uu-the.html" target="_blank" rel="noopener">CBRE Hà Nội</a> (sơ cấp 95, +12% QoQ, +21% YoY; thứ cấp 60, −3% QoQ — lần đầu giảm từ cuối 2022) · <a href="https://cafef.vn/gia-can-ho-tphcm-lap-mat-bang-moi-76-trieu-dong-m-90-nguon-hang-duoc-hap-thu-188260707164106882.chn" target="_blank" rel="noopener">CBRE TP.HCM</a> (76, +8% QoQ, +16% YoY) · <a href="https://cafef.vn/chung-cu-ha-noi-vang-bong-can-ho-duoi-70-trieu-dong-m2-188260814143655062.chn" target="_blank" rel="noopener">Savills Hà Nội</a> (116, +27% YoY) · <a href="https://vov.vn/kinh-te/bat-dong-san-quy-ii2026-giao-dich-dat-nen-giam-hon-40-ton-kho-464-post1326015.vov" target="_blank" rel="noopener">Bộ Xây dựng</a> (Hà Nội ~123, TP.HCM ~108, Hưng Yên ~69). Mỗi nguồn một rổ dự án; không nối thành chuỗi.</div>
       </div>
+      <div class="card" data-block-id="bds-13b" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Giá căn hộ sơ cấp — Hà Nội, TP.HCM 2019–2023</div>
+        <div class="chart-sub">USD/m² · CBRE báo giá bằng USD đến Q1/2023 (Hà Nội), Q4/2022 (TP.HCM)</div>
+        <div id="chCbrePriceUsd"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-cbre-price-usd"></table></div></details>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="bds-14" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">Giá thép xây dựng — Hòa Phát CB300 D10</div>
         <div class="chart-sub">nghìn VND/kg · giá cuối tháng</div>
         <div id="chSteel"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-steel"></table></div></details>
       </div>
-    </div>
-    <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="bds-15" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
         <div class="chart-title">Giá xi măng trong nước</div>
         <div class="chart-sub">nghìn VND/kg · theo đợt công bố</div>
         <div id="chCement"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-cement"></table></div></details>
       </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="bds-16" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">Lãi suất tái cấp vốn</div>
         <div class="chart-sub">%/năm · giá trị cuối tháng · lãi vay mua nhà thực tế ở tab Vốn &amp; Trái phiếu</div>
@@ -1235,7 +1272,7 @@ const CS=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim(
 const S1=CS('--s1'),S2=CS('--s2'),S3=CS('--s3'),S4=CS('--s4'),S5=CS('--s5');
 /* Giá căn hộ sơ cấp Q2/2026, triệu đ/m²: mỗi cột một nguồn */
 const hpLabels=['CBRE · sơ cấp','CBRE · thứ cấp','Savills · sơ cấp','Bộ Xây dựng'],hpHN=[95,60,116,123],hpHCM=[76,62,null,108];
-barLineChart('chHousePrice',{categories:hpLabels,series:[{name:'Hà Nội',color:'#2938A8',values:hpHN},{name:'TP.HCM',color:'#59C5C8',values:hpHCM}],unit:'triệu đ/m²',digits:0,height:260,rotateLabels:false});
+/* chart dài: assets/realestate-market-history.js */
 fillTable('tbl-house-price',['Nguồn · phạm vi','Hà Nội','TP.HCM','Ghi chú'],[['CBRE · sơ cấp','95 (+12% QoQ, +21% YoY)','76 (+8% QoQ, +16% YoY)','rổ dự án đang mở bán'],['CBRE · thứ cấp','60 (−3% QoQ, +13% YoY)','62 (+26% YoY)','lần đầu giảm từ cuối 2022 (HN)'],['Savills · sơ cấp','116 (+16% QoQ, +27% YoY)','mở bán mới >90; 80% cung >120','không còn cung <70 (HN)'],['Bộ Xây dựng','~123','~108','Hưng Yên ~69; thứ cấp cả nước giảm so Q1']]);
 /* Giá thuê đất KCN Q2/2026, USD/m²/kỳ thuê còn lại */
 const rent=[['Miền Nam · Cushman',186.4,S1],['Miền Bắc · Cushman',137.7,S3],['Miền Bắc · JLL',135,S4]];
