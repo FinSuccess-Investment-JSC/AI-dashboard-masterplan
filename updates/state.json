@@ -94,7 +94,16 @@
   "power.policy": {},
   "power.capacity": {},
   "power.hot-topics": {},
-  "power.ai.cycle": {}
+  "power.ai.cycle": {},
+  "power.output-sources": {},
+  "realestate.wi.daily": {},
+  "realestate.wi.weekly": {},
+  "realestate.market-quarterly": {},
+  "realestate.kcn-quarterly": {},
+  "realestate.policy": {},
+  "realestate.credit-rates": {},
+  "realestate.hot-topics": {},
+  "realestate.ai.cycle": {}
  },
  "watchers": {
   "nso.rss": {
@@ -913,10 +922,11 @@
   },
   "pvn.news": {
    "seen": [
+    "d9f541fd66bcfd8e",
     "5e48bc24581143c1",
     "470c6ce74a73a25b"
    ],
-   "lastNew": "2026-10-06T22:26:32+07:00"
+   "lastNew": "2026-10-08T13:34:35+07:00"
   },
   "moit.notices": {
    "seen": [
@@ -1280,9 +1290,7 @@
     "79a379edde5c4fbd",
     "e7dcd21a2037f5eb"
    ],
-   "lastNew": "2026-10-07T13:22:49+07:00",
-   "lastError": "HTTP 503",
-   "alertedOn": "2026-10-07"
+   "lastNew": "2026-10-07T13:22:49+07:00"
   },
   "vcbs.sector": {
    "seen": []
@@ -1410,6 +1418,11 @@
      "watcher": "pvn.news",
      "seenAt": "2026-10-06T22:26:32+07:00",
      "what": "PETROVIETNAM và các bên góp vốn trao đổi định hướng vận hành và phát triển dài hạn Nhà máy Lọc hóa dầu Nghi Sơn — https://petrovietnam.petrotimes.vn/petrovietnam-va-cac-ben-gop-von-trao-doi-dinh-huong-van-hanh-va-phat-trien-dai-han-nha-may-loc-hoa-dau-nghi-son-746389.html"
+    },
+    {
+     "watcher": "pvn.news",
+     "seenAt": "2026-10-08T13:34:35+07:00",
+     "what": "Giữ lửa nghề ở Nhà máy Đóng tàu Dung Quất — https://petrovietnam.petrotimes.vn/giu-lua-nghe-o-nha-may-dong-tau-dung-quat-746344.html"
     }
    ]
   },
@@ -1487,7 +1500,8 @@
    "title": "Wi: lãi suất huy động, liên ngân hàng, OMO, tỷ giá, TPCP, định giá, tin tức",
    "since": "2026-10-07T13:22:49+07:00",
    "reasons": [
-    "lịch 07/10 07:00"
+    "lịch 07/10 07:00",
+    "lịch 08/10 07:00"
    ],
    "signals": []
   },
@@ -1506,7 +1520,97 @@
      "what": "Bộ Công Thương ban hành Thông tư số 65/2026/TT-BCT về kinh doanh xuất khẩu gạo — /tin-tuc/thi-truong-nuoc-ngoai/quy-dinh-moi-ve-phan-bo-chi-tieu-xuat-khau-gao.html"
     }
    ]
+  },
+  {
+   "id": "power.output-sources",
+   "tier": "C",
+   "title": "Sản lượng điện theo nguồn, lũy kế 9 tháng",
+   "since": "2026-10-08T13:34:35+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "realestate.wi.daily",
+   "tier": "B",
+   "title": "Wi: TPDN BĐS (phát hành, dư nợ, chậm trả), vĩ mô (FDI, GDP, CPI nhà ở, tín dụng, lãi suất), định giá 4 phân ngành",
+   "since": "2026-10-08T13:34:35+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "realestate.wi.weekly",
+   "tier": "B",
+   "title": "Wi: lịch đáo hạn TPDN BĐS 2026–2027, giá thép, xi măng",
+   "since": "2026-10-08T13:34:35+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "realestate.market-quarterly",
+   "tier": "C",
+   "title": "Bộ Xây dựng, CBRE, Savills, VARS: giao dịch, tồn kho, cung mới, giá căn hộ HN/HCM",
+   "since": "2026-10-08T13:34:35+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "realestate.kcn-quarterly",
+   "tier": "C",
+   "title": "Cushman & Wakefield, JLL: lấp đầy, cung mới, giá thuê đất KCN",
+   "since": "2026-10-08T13:34:35+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "realestate.policy",
+   "tier": "C",
+   "title": "Luật Đất đai, Nhà ở, KD BĐS, bảng giá đất, tín dụng BĐS, thuế BĐS",
+   "since": "2026-10-08T13:34:35+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "realestate.credit-rates",
+   "tier": "C",
+   "title": "Tín dụng BĐS (NHNN, Bộ Xây dựng), lãi suất vay mua nhà",
+   "since": "2026-10-08T13:34:35+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "realestate.hot-topics",
+   "tier": "C",
+   "title": "Chủ đề nóng: dự án tồn đọng, giá nhà, bảng giá đất, NOXH, KCN & thuế quan, tái cấu trúc nợ; dự án theo dõi",
+   "since": "2026-10-08T13:34:35+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "realestate.ai.cycle",
+   "tier": "D",
+   "title": "BĐS: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
+   "since": "2026-10-08T13:34:35+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
   }
  ],
- "updatedAt": "2026-10-08T08:16:05+07:00"
+ "updatedAt": "2026-10-08T13:34:35+07:00"
 }
