@@ -296,7 +296,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../data/daily-data.js?v=bd2374a1aa25" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=c1a98ab8057d" defer></script>
-<script src="../assets/sector-content.js?v=69359b43a2da" defer></script>
+<script src="../assets/sector-content.js?v=6fe2beab8004" defer></script>
 <script src="../assets/sector-layout.js?v=e40d5f2a8b81" defer></script>
 <script src="../assets/chart-cards.js?v=b6c382ba1cfa" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
@@ -310,7 +310,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/pane-subtabs.js?v=b56e625e7952" defer></script>
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=b0a8a77f3544" data-release="20261008T170000Z"></script>
+<script src="../assets/site-navigation.js?v=b0a8a77f3544" data-release="20261008-power-source-growth-r1"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=afb2ea7d8e69">
 <link rel="stylesheet" href="../assets/research-layout.css?v=28049630f1d9">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=033d06c36482">
@@ -525,6 +525,20 @@ body{font-size:14px;line-height:1.45}
         <div class="source-note">Nguồn: <a href="https://nhandan.vn/post-933828.html" target="_blank" rel="noopener">Nhân Dân 29/12/2025</a> · <a href="https://www.evn.com.vn/d/vi-VN/news/Tinh-hinh-hoat-dong-thang-9-nam-2026-nhiem-vu-trong-tam-3-thang-cuoi-nam-2026-60-142-509877" target="_blank" rel="noopener">EVN, tháng 9/2026</a> · <a href="https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf" target="_blank" rel="noopener">QĐ 768/QĐ-TTg, tr. 4</a>.</div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-output-target"></table></div></details>
       </div>
+    </div>
+    <div class="card" data-block-id="dien-11-sources" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot" style="margin-top:12px">
+      <div class="chart-title">Sản lượng tăng chủ yếu từ nguồn nào?</div>
+      <div class="chart-sub">9 tháng 2025 so 9 tháng 2026 · tỷ kWh · cùng kỳ để loại ảnh hưởng mùa vụ</div>
+      <div id="chOutputSources"></div>
+      <div class="legend"><span class="li"><span class="dot" style="background:#A9B1E2"></span>9T/2025</span><span class="li"><span class="dot" style="background:#2938A8"></span>9T/2026</span></div>
+      <div class="conf-note"><b>Than +17,39 tỷ kWh</b>, tương đương khoảng 72% mức tăng ròng của 5 nhóm; thủy điện giảm 6,67 tỷ kWh.</div>
+      <div class="tablewrap compare-table" style="margin-top:10px"><table>
+        <thead><tr><th>Nguồn</th><th>9T/2025</th><th>9T/2026</th><th>Tăng/giảm</th><th>So cùng kỳ</th></tr></thead>
+        <tbody id="tbl-output-sources-summary"></tbody>
+      </table></div>
+      <div class="data-gap">EVN ghi tổng sản lượng 9T/2026 tăng 9,3% so cùng kỳ; hai mức tổng đã công bố (241,51 và 265,79 tỷ kWh) cho kết quả tự tính 10,1%. Chưa rõ nguyên nhân chênh lệch; % theo từng nguồn ở trên tính từ các mức công bố.</div>
+      <div class="source-note">Nguồn: <a href="https://evn.com.vn/d/vi-VN/news/Tinh-hinh-hoat-dong-quy-III-nam-2025-muc-tieu-nhiem-vu-cong-tac-thang-10-nam-2025-60-142-505456" target="_blank" rel="noopener">EVN, 9T/2025</a> · <a href="https://www.evn.com.vn/d/vi-VN/news/Tinh-hinh-hoat-dong-thang-9-nam-2026-nhiem-vu-trong-tam-3-thang-cuoi-nam-2026-60-142-509877" target="_blank" rel="noopener">EVN, 9T/2026</a>. Năm nhóm cộng lại lệch tổng khoảng 0,3 tỷ kWh mỗi kỳ; số làm tròn. Quy hoạch điện VIII điều chỉnh công bố tổng sản lượng 2030 và công suất MW theo nguồn, chưa có sản lượng kWh mục tiêu theo từng nguồn.</div>
+      <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-output-sources"></table></div></details>
     </div>
   </section>
   </div>
@@ -1220,6 +1234,25 @@ fillTable('tbl-capacity',['Loại nguồn','MW cuối 2025','Tỷ trọng'],capI
 const outLabels=['2025 (ước)','2030 · cận dưới','2030 · cận trên'],outVals=[322.8,560.4,624.6];
 barLineChart('chOutputTarget',{categories:outLabels,series:[{name:'Điện sản xuất và nhập khẩu',color:S1,values:outVals}],unit:'tỷ kWh',digits:1,height:240,rotateLabels:false});
 fillTable('tbl-output-target',['Mốc','Tỷ kWh','Tăng bình quân cần từ 2025'],outLabels.map((l,i)=>[l,fmt(outVals[i],1),i?fmt((Math.pow(outVals[i]/322.8,1/5)-1)*100,1)+'%/năm':'—']));
+
+/* Sản lượng nguồn: hai kỳ 9 tháng EVN công bố, không suy từ công suất 2030. */
+const outputSources=[
+  {name:'Nhiệt điện than',before:115.24,after:132.63},
+  {name:'Tuabin khí',before:14.87,after:20.48},
+  {name:'Nhập khẩu',before:6.19,after:10.30},
+  {name:'Năng lượng tái tạo',before:29.75,after:33.60},
+  {name:'Thủy điện',before:75.15,after:68.48}
+];
+barLineChart('chOutputSources',{categories:outputSources.map(s=>s.name),series:[
+  {name:'9T/2025',color:'#A9B1E2',values:outputSources.map(s=>s.before)},
+  {name:'9T/2026',color:'#2938A8',values:outputSources.map(s=>s.after)}
+],unit:'tỷ kWh',digits:2,height:260,rotateLabels:false,ariaLabel:'So sánh sản lượng 9 tháng 2025 và 2026 theo từng nguồn điện'});
+const signed=(v,d)=> (v>0?'+':'')+fmt(v,d);
+document.getElementById('tbl-output-sources-summary').innerHTML=outputSources.map(s=>{
+  const delta=s.after-s.before;
+  return '<tr><td>'+s.name+'</td><td>'+fmt(s.before,2)+'</td><td>'+fmt(s.after,2)+'</td><td><b>'+signed(delta,2)+'</b> tỷ kWh</td><td><b>'+signed(delta/s.before*100,1)+'%</b></td></tr>';
+}).join('');
+fillTable('tbl-output-sources',['Nguồn','9T/2025 (tỷ kWh)','9T/2026 (tỷ kWh)','Tăng/giảm (tỷ kWh)','So cùng kỳ'],outputSources.map(s=>[s.name,fmt(s.before,2),fmt(s.after,2),signed(s.after-s.before,2),signed((s.after-s.before)/s.before*100,1)+'%']));
 
 /* Giá bán lẻ điện bình quân (đ/kWh, chưa VAT) theo ngày áp dụng */
 const tariffDates=['20/03/2019','04/05/2023','09/11/2023','11/10/2024','10/05/2025'],tariffVals=[1864.44,1920.3732,2006.79,2103.1159,2204.0655],tariffChange=['+8,36%','+3%','+4,5%','+4,8%','+4,8%'];
