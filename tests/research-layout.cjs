@@ -7,7 +7,7 @@ await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const base='htt
 const b=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});const p=await b.newPage({viewport:{width:1440,height:1000}});const errors=[];p.on('pageerror',e=>errors.push(e.message));
 try { for(const sector of ['Dau-khi','Sugar','Bank','Dien','Bat-dong-san','Det-may']){
  await p.goto(base+sector+'/');await p.waitForSelector('body[data-editorial-ready="true"]');
- const tabCount=sector==='Bank'?7:['Bat-dong-san','Det-may'].includes(sector)?8:6;assert.equal(await p.locator('.majortabbtn').count(),tabCount);
+ const tabCount=sector==='Bank'?7:sector==='Bat-dong-san'?8:6;assert.equal(await p.locator('.majortabbtn').count(),tabCount);
  assert.deepEqual(await p.evaluate(()=>{const ids=[...document.querySelectorAll('[id]')].map(n=>n.id);return ids.filter((id,i)=>ids.indexOf(id)!==i)}),[],sector+' duplicate ids');
  if(sector==='Bank'){
   assert.equal(await p.locator('#pane-mt9').count(),1);

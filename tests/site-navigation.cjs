@@ -48,7 +48,7 @@ const prefix = '/AI-dashboard-masterplan/';
     for (const key of ['oil','sugar','bank','power','realestate','textile']) {
       await page.locator('#readyDashboards [data-site-route="'+key+'"]').click();
       await checkRoute(key);
-      const tabCount=key==='bank'?7:['realestate','textile'].includes(key)?8:6;assert.equal(await page.locator('.majortabbtn').count(), tabCount);
+      const tabCount=key==='bank'?7:key==='realestate'?8:6;assert.equal(await page.locator('.majortabbtn').count(), tabCount);
       assert.ok(await page.locator('svg').count() > 10);
       assert.ok(await page.locator('.source-info-panel').count() > 0);
       assert.ok(await page.evaluate(key => key === 'bank' ? !!window.BANK_WI_DATA : !!window.SECTOR_DAILY, key));

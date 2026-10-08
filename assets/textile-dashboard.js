@@ -48,16 +48,21 @@ if(chain){
  figure.after(make('div','source-note','Mũi tên liền: dòng nguyên liệu và sản phẩm · Mũi tên đứt: sở hữu, chính sách. Sơ đồ không biểu thị tỷ trọng.'));
 }
 
-// ---------- 2. Sợi / Dệt nhuộm – May panes (Cung – Cầu) ----------
+// ---------- 2. Bức tranh ngành: Dệt nhuộm – May / Sợi / XK & thuế quan / Đơn hàng & nhãn hàng ----------
 const section=document.querySelector('.majorpane[data-tab="mt2"] .section');
 if(section){
  const head=section.querySelector('.sectionhead');
- const children=[...section.children].filter(e=>e!==head),garment=make('div','supply-pane'),yarn=make('div','supply-pane');garment.id='supply-world';yarn.id='supply-vietnam';
+ const children=[...section.children].filter(e=>e!==head),garment=make('div','supply-pane'),yarn=make('div','supply-pane'),trade=make('div','supply-pane'),orders=make('div','supply-pane');
+ garment.id='supply-world';yarn.id='supply-vietnam';trade.id='supply-trade';orders.id='supply-orders';
  let isYarn=false;children.forEach(e=>{if(e.matches('h3')&&/^Sợi/.test(e.textContent.trim()))isYarn=true;(isYarn?yarn:garment).append(e)});
+ // Former tabs 8–9 become sub-tabs; their intro line stays as a caption, the numbered heading goes.
+ [['mt10',trade],['mt11',orders]].forEach(([tab,pane])=>{const old=document.querySelector(`.majorpane[data-tab="${tab}"]`);if(!old)return;
+  [...old.children].forEach(n=>{if(n.matches('.sectionhead')){const p=n.querySelector('p');if(p)pane.append(make('p','research-caption',p.textContent));return}pane.append(n)});old.remove()});
  const tabs=make('div','supply-tabs');tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','Khâu');
- const panes=[garment,yarn];function select(i){panes.forEach((p,j)=>{p.hidden=i!==j;const b=tabs.children[j];b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1})}
- ['Dệt nhuộm – May','Sợi'].forEach((label,i)=>{const b=make('button','tabbtn',label);b.type='button';b.id='supply-tab-'+i;b.setAttribute('role','tab');b.setAttribute('aria-controls',panes[i].id);panes[i].setAttribute('role','tabpanel');panes[i].setAttribute('aria-labelledby',b.id);b.addEventListener('click',()=>select(i));b.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight'||e.key==='ArrowLeft')next=1-i;else if(e.key==='Home')next=0;else if(e.key==='End')next=1;if(next!==undefined){e.preventDefault();select(next);tabs.children[next].focus()}});tabs.append(b)});
- head.after(tabs,garment,yarn);select(0);
+ const panes=[garment,yarn,trade,orders],labels=['Dệt nhuộm – May','Sợi','XK & thuế quan','Đơn hàng & nhãn hàng'];
+ function select(i){panes.forEach((p,j)=>{p.hidden=i!==j;const b=tabs.children[j];b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1})}
+ labels.forEach((label,i)=>{const b=make('button','tabbtn',label);b.type='button';b.id='supply-tab-'+i;b.setAttribute('role','tab');b.setAttribute('aria-controls',panes[i].id);panes[i].setAttribute('role','tabpanel');panes[i].setAttribute('aria-labelledby',b.id);b.addEventListener('click',()=>select(i));b.addEventListener('keydown',e=>{const n=panes.length;let next;if(e.key==='ArrowRight')next=(i+1)%n;else if(e.key==='ArrowLeft')next=(i+n-1)%n;else if(e.key==='Home')next=0;else if(e.key==='End')next=n-1;if(next!==undefined){e.preventDefault();select(next);tabs.children[next].focus()}});tabs.append(b)});
+ head.after(tabs,...panes);select(0);
 }
 
 // ---------- 3. Charts ----------

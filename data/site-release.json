@@ -1,5 +1,5 @@
 {
-  "version": "20261008T092124Z",
+  "version": "20261008T101356Z",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -10,13 +10,13 @@
     "textile": "Det-may/"
   },
   "files": {
-    "404.html": "e36a244d5dc25fb4473a39a2473e8609493e9eb57445264623666740bdc71304",
-    "Bank/index.html": "11116a895842a36827bc37594cb3051481347f04043f10c0795e594c99326997",
-    "Bat-dong-san/index.html": "774beeb1f430d5e4945dc68d9f1e244caf424bbf3db10b432fba92c9d71d73b5",
-    "Dau-khi/index.html": "452cfa3d6177b8fd87bafb922401c6c2f5e774e17a4f8a0aa423bf802b615eb8",
-    "Det-may/index.html": "82424e46427421ad3477a9e40b2d392c797e52bd0111e3bf01f83b3442e28e11",
-    "Dien/index.html": "3e48fb86bdc0b666f3b98e49fbadd4d3516c1eee23cb22deafc273ce9c1c5548",
-    "Sugar/index.html": "67fa68c8faedddd772a11088eb02f95af5c928dd1cd205ddccc9e58853db0e84",
+    "404.html": "ca862e3121ae2e0d7810b70ba3ce00148d3a6a12eee9bee7b362fcb595860ac7",
+    "Bank/index.html": "350208dfe67ec675bc6c04b7465f5de1fc98a4aa27ccb931aaadde2e472d9789",
+    "Bat-dong-san/index.html": "4732a6fb48c926e8d7f013382359ffc5083584f82f4bd7cd6a19e9e1c326538d",
+    "Dau-khi/index.html": "86619abcc1c3d00fe0e7cb25547914b74edd066c74e255f9aef83746ee05bf79",
+    "Det-may/index.html": "7e079d9ba246b635b8e83e243e9c6521bb3781195f024ddc5b0982e3a6acfcde",
+    "Dien/index.html": "0eb43a683b91cf932f244fb49d254cde7d8eb596e689d1e5c39b0a2e4b837e6f",
+    "Sugar/index.html": "3688047184b5498027ee67e3b93bb8acd8c407872fa5edb7c115943d0474299f",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
     "assets/bank-dashboard.js": "aa0d235f9d52f5168dbcb831948da37b32138c8565e227ff73b49c4726f99b36",
@@ -37,7 +37,7 @@
     "assets/realestate-market-history.js": "735e18211ab0cebf6f92ebf8bec238d25f09d1404ba791aee4203be00c37d08d",
     "assets/research-editorial.js": "e2de98f2fdcb9c20647d12b82651382ee610008842f5c6bb66119e728ba45000",
     "assets/research-layout.css": "d45bab8741c40def99aeb3ec78aac94f200c6e064855fdda82a1348db98f0eab",
-    "assets/research-layout.js": "32919a188696e502570b4473965f60b789dfc85d797f84919953588db0cb02cb",
+    "assets/research-layout.js": "86d34e87c197b6c96517079fa83f2a71dc1807115faafecac90ca17db8891834",
     "assets/research-sources.js": "2e0a8424c403eb1b0cda0572b6f356d2eb593235fa2c66b698bf41a1e20715af",
     "assets/sector-content.js": "5f4334dba21e40e4f8bb414e3081c1204fd3d90af2f1256641852dcbfa714218",
     "assets/sector-layout.js": "2513e186c11cf6b37d9b2d912478e534986d2b2db24f7234a68b62d477df46b8",
@@ -45,7 +45,7 @@
     "assets/site-navigation.css": "54a3825f55f47d624459c2df4c1c82aa12c9fdafa9f1d3a59c54407153966029",
     "assets/site-navigation.js": "38f1100f7e0ba6864320083d6295a3e1f8d8884117d9253c18413abd33015c74",
     "assets/table-fold.js": "9c78488b28f67114a6d672d11a27c9ce27412ca8cf673d5146834280ef97e9aa",
-    "assets/textile-dashboard.js": "8ad7f430a25a434ef800d9b37ac1ee592e4d90e8a8987b4fea4cebb37c88695e",
+    "assets/textile-dashboard.js": "f536b9bf40ccc0b690750d6fdc9f38cd80527ac6dbf1f6f9bcce912d2063ded9",
     "data/bank-public-data.js": "85d048c5ba588ca334cc56ca2a8fe9a4ea70db2e5bce129a12982b54b2dfd038",
     "data/bank-wi-data.js": "11fdd1967af56f67a947ca4781107c304e8d59bac92d007c984a498bb36c05d0",
     "data/company-comparison.js": "3470c7add68dc8775f4bbfef62cb7f11b50ff35e9b2cc923a53662a97df393dc",
@@ -55,8 +55,8 @@
     "data/realestate-market-history.js": "1cac369b93be93e03a7790cdf9f1e721a9d6b7b1689e8e1845408b48d872d94e",
     "data/realestate-wi-data.js": "5ee10419829794c08e7fccdd87ce205814ad66c33ea1a0bf2cd9a0221dbf34d0",
     "data/textile-wi-data.js": "4f1fc3b211fd842d69303a52c038caa639016145dbea30fa4c4fc0c865746839",
-    "duong/index.html": "2cab100e96bbb43ebea0b9031aa84c58ab262199a0d3450bf7d0835083275a99",
-    "index.html": "9572311323ec39fd1735398df3fcad972a43dadd8f2483493d11186fe44285d1"
+    "duong/index.html": "43a92458efc6814859c083c3dc30e3f3c6f10d24522c5dc413d861d98ee88d84",
+    "index.html": "9a2d8769f744a667a345a4f844541bea6d425a5a3638e5d68e597116d59da429"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }
