@@ -1602,7 +1602,7 @@
   {
    "id": "realestate.market-quarterly",
    "tier": "C",
-   "title": "Bộ Xây dựng, CBRE, Savills, VARS: giao dịch, tồn kho, cung mới, giá căn hộ HN/HCM",
+   "title": "Bộ Xây dựng, CBRE, Savills, DKRA: giao dịch, tồn kho, cung mới theo phân khúc/khu vực, giá căn hộ HN/HCM, tỉnh lớn",
    "schedule": {
     "type": "window",
     "every": "weekly",
@@ -1636,15 +1636,52 @@
     "page": "Bat-dong-san/index.html",
     "blocks": [
      "bds-07",
+     "bds-07b",
      "bds-08",
-     "bds-13"
+     "bds-08b",
+     "bds-08c",
+     "bds-08d",
+     "bds-08e",
+     "bds-13",
+     "bds-13b"
     ]
    },
-   "how": "Thay bảng bằng số quý mới; giữ nguồn và phạm vi từng dòng (CBRE ≠ Savills ≠ Bộ Xây dựng); cập nhật chHousePrice trong inline JS",
+   "how": "Thêm dòng quý mới vào data/realestate-market/{moc_quarterly,hn_series,hcm_series,supply_detail,provinces}.json (mỗi dòng có sources link đã mở, ô thiếu = null, không nội suy), rồi chạy python3 scripts/build_realestate_market.py. Giá CBRE: một hãng cho chuỗi dài, TP.HCM sau sáp nhập là đường riêng. Chart cơ cấu Q2/2026 (chSupplyFirms/Loc/Price) và bảng Q2/2026 trong bds-08 đang viết trong assets/realestate-market-history.js và HTML: thay bằng quý mới.",
    "gates": [
     "Link bài gốc hoặc thông cáo",
     "Ghi kỳ và ngày công bố",
-    "Không nối hai nguồn thành một chuỗi"
+    "Không nối hai nguồn thành một chuỗi",
+    "Chạy build_realestate_market.py không lỗi thiếu nguồn"
+   ]
+  },
+  {
+   "id": "realestate.fdi-projects",
+   "tier": "C",
+   "title": "Dự án FDI lớn liên quan BĐS (KCN, nhà ở, văn phòng, nghỉ dưỡng, logistics–data center)",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     1,
+     8
+    ],
+    "at": "07:00"
+   },
+   "publication": "Cục Thống kê/Bộ Tài chính công bố FDI đầu tháng; lễ trao giấy chứng nhận đầu tư theo sự kiện",
+   "source": {
+    "name": "Bộ Tài chính · Cục Đầu tư nước ngoài",
+    "url": "https://fia.mpi.gov.vn/"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "blocks": [
+     "bds-05b"
+    ]
+   },
+   "how": "Thêm dự án mới (≥100 triệu USD; KCN có thể thấp hơn) vào data/realestate-market/fdi_projects.json: year, month, name, investor, country, type, capital_musd, kind, province, note, sources; chạy python3 scripts/build_realestate_market.py.",
+   "gates": [
+    "Link bài gốc đã mở",
+    "Ghi rõ đề xuất/ghi nhớ khác với đã cấp giấy",
+    "Không trùng dự án đã có"
    ]
   },
   {
