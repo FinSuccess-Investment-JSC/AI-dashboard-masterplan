@@ -48,7 +48,7 @@ const prefix = '/AI-dashboard-masterplan/';
     for (const key of ['oil','sugar','bank','power','realestate','textile']) {
       await page.locator('#readyDashboards [data-site-route="'+key+'"]').click();
       await checkRoute(key);
-      const tabCount=key==='bank'?7:6;assert.equal(await page.locator('.majortabbtn').count(), tabCount);
+      const tabCount=key==='bank'?7:['realestate','textile'].includes(key)?8:6;assert.equal(await page.locator('.majortabbtn').count(), tabCount);
       assert.ok(await page.locator('svg').count() > 10);
       assert.ok(await page.locator('.source-info-panel').count() > 0);
       assert.ok(await page.evaluate(key => key === 'bank' ? !!window.BANK_WI_DATA : !!window.SECTOR_DAILY, key));
@@ -56,7 +56,7 @@ const prefix = '/AI-dashboard-masterplan/';
         await page.locator('.majortabbtn').nth(tab).click();
         assert.equal(new URL(page.url()).pathname, expected(key));
       }
-      if(key !== 'bank') assert.equal(await page.locator('.supply-tabs').count(), 1);
+      if(key !== 'bank') assert.ok(await page.locator('.supply-tabs').count() >= 1);
       await page.locator('.majortabbtn').first().click();
       for (const width of [1440,390]) {
         await page.setViewportSize({width,height:1000});
@@ -86,7 +86,7 @@ const prefix = '/AI-dashboard-masterplan/';
     }
     assert.deepEqual(errors, []);
     assert.deepEqual(missing, []);
-    console.log(JSON.stringify({result:'PASS',base,version:manifest.version,checks:'4 hub cards, legacy hashes, 12 cross-sector paths + Back, 25 section tabs, charts/data, home, duong alias, desktop/390px, no JS/HTTP errors'}));
+    console.log(JSON.stringify({result:'PASS',base,version:manifest.version,checks:'6 hub cards, legacy hashes, 30 cross-sector paths + Back, 25 section tabs, charts/data, home, duong alias, desktop/390px, no JS/HTTP errors'}));
   } finally {
     if(browser) await browser.close();
     if(server) await new Promise(resolve => server.close(resolve));

@@ -77,7 +77,7 @@ document.querySelectorAll('.thesis-signal,.thesis-scenario-panel,.thesis-fold-bo
  const bar=make('div','supply-tabs pane-subtabs topic-tabs');bar.setAttribute('role','tablist');bar.setAttribute('aria-label','Chủ đề');list.before(bar);empty.after(toolbar);
  let selected=null;
  function sync(){
-  const order=['Nhà ở','Khu công nghiệp','Chung'],ts=[...list.querySelectorAll(':scope > .research-topic')].filter(t=>!t.hidden);
+  const order=['Nhà ở','Khu công nghiệp','Dệt nhuộm – May','Sợi','Chung'],ts=[...list.querySelectorAll(':scope > .research-topic')].filter(t=>!t.hidden);
   if(ts.some(t=>t.dataset.segment))ts.sort((a,b)=>order.indexOf(a.dataset.segment||'Chung')-order.indexOf(b.dataset.segment||'Chung'));
   if(!ts.includes(selected))selected=ts[0]||null;
   bar.replaceChildren();bar.hidden=ts.length<2;

@@ -1,5 +1,5 @@
 {
-  "version": "20261008T075911Z",
+  "version": "20261008T083642Z",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -10,13 +10,13 @@
     "textile": "Det-may/"
   },
   "files": {
-    "404.html": "07facc18028c85ab7083517c5abc38a97f33ea96ff8b6a3a32ec5c85cca953b0",
-    "Bank/index.html": "95bd0a90cf5de07ce0483fc198ed4901565438a38ecf985ac0da6947e73c54f0",
-    "Bat-dong-san/index.html": "5b46a80b655ff18ecc599a2ce9856a383e2539c611b66dd9411ecd9a5c6ad785",
-    "Dau-khi/index.html": "18dfcba002b9e86ceb2c1b80b2a59bab9c940056082ade592c5e12df19d3dc76",
-    "Det-may/index.html": "369e58943d755a4528fd1ab96312ba8f1024bef5b5a49c14912f5cd385d1e1f2",
-    "Dien/index.html": "07bc5239db5a59190c8aedccd47a64787403924afd597a796f68dee78daf8365",
-    "Sugar/index.html": "d6c8246cba8c4f5424232dd1efa4992f7c18c7eae369003dd8798184b1f15dcb",
+    "404.html": "d32abace8e383169f4b6af48be3136f11ce96009df8ecd1581af49af34353781",
+    "Bank/index.html": "3b228b691249fbf1f9c96d2fb03d24bc94b39fe4ad14157fe03392380776ff76",
+    "Bat-dong-san/index.html": "d93e1ce5120937dca08888111f79368bd8542d6029e603bfeac8e2814521a756",
+    "Dau-khi/index.html": "7e13b1193e07490d8013103a5096ed49316dcfae53cd02aaf20d069779d51d94",
+    "Det-may/index.html": "37d8fdd34f215739b4862578f90c59b214879d598347915fd86d4bfcb930b8e4",
+    "Dien/index.html": "065f790433c2233153886a2cf1bcf6446447cf86f46d10c21337d07d852ef443",
+    "Sugar/index.html": "a8450a428a8f7ddf75e65295074b3262ee59bafc3c3641abea5085a6aa2fbc05",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
     "assets/bank-dashboard.js": "aa0d235f9d52f5168dbcb831948da37b32138c8565e227ff73b49c4726f99b36",
@@ -34,7 +34,7 @@
     "assets/pane-subtabs.js": "ebe42eec2aa8c071d2ea3f23476774c224edd25bda471e19330b8f4186999b45",
     "assets/realestate-dashboard.js": "60a45e6f3b05aadd070e50c3e90b98fd2ec0d20ddeb168f7d7a4dc3c3e422b1a",
     "assets/realestate-market-history.js": "735e18211ab0cebf6f92ebf8bec238d25f09d1404ba791aee4203be00c37d08d",
-    "assets/research-editorial.js": "d625a0089db0696e2dd483c9b2fdd2092a13317f9246952c6555710214342a33",
+    "assets/research-editorial.js": "e2de98f2fdcb9c20647d12b82651382ee610008842f5c6bb66119e728ba45000",
     "assets/research-layout.css": "d45bab8741c40def99aeb3ec78aac94f200c6e064855fdda82a1348db98f0eab",
     "assets/research-layout.js": "32919a188696e502570b4473965f60b789dfc85d797f84919953588db0cb02cb",
     "assets/research-sources.js": "2e0a8424c403eb1b0cda0572b6f356d2eb593235fa2c66b698bf41a1e20715af",
@@ -53,8 +53,8 @@
     "data/realestate-market-history.js": "1cac369b93be93e03a7790cdf9f1e721a9d6b7b1689e8e1845408b48d872d94e",
     "data/realestate-wi-data.js": "5ee10419829794c08e7fccdd87ce205814ad66c33ea1a0bf2cd9a0221dbf34d0",
     "data/textile-wi-data.js": "329657ea458ca0ebc05a0de7c2314aad664c12a56792e74f6b2c0a0b4fea4511",
-    "duong/index.html": "a2d94d6d135c246b5401f0db65ad4bbabfeac163ff5121c039f744d175d7d047",
-    "index.html": "2abe3dd40047a34cfce4f14faf60954f1c4abdd42e85c296706e629fbae8d81a"
+    "duong/index.html": "f6fd3365a2eef23e5cf2ace153cbe504d04696d4f1ea4bee449a610a4da57a25",
+    "index.html": "8288b65225bfacee1dc77ba625e950dd6d74f5cb23509f0ae3f9621d3eb3a284"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }
