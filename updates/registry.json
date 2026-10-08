@@ -1523,7 +1523,9 @@
     "cbond_issuance",
     "macro_core",
     "macro_kcn",
-    "sector_ratio_recent"
+    "sector_ratio_recent",
+    "fdi_sector",
+    "refi_recent"
    ],
    "wiContract": "data/realestate-wi-contract.json",
    "schedule": {
@@ -1553,7 +1555,9 @@
      "bds-30",
      "bds-33",
      "bds-34",
-     "bds-41"
+     "bds-41",
+     "bds-05c",
+     "bds-05d"
     ]
    },
    "how": "Gọi lại đúng các lời gọi WiMCP trong data/realestate-wi-contract.json (hook wi_capture.py lưu kết quả), rồi chạy python3 scripts/build_realestate_wi.py; kiểm số mới nhất đổi hợp lý trước khi commit data/realestate-wi-data.js.",

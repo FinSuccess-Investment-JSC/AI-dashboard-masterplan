@@ -172,6 +172,11 @@ def build_macro(resps, indicators):
                 continue
             key, name, unit, tf = indicators[iid]
             vals = sorted(({'date': v['date'], 'value': v['value']} for v in item.get('values', []) if v.get('value') is not None), key=lambda x: x['date'])
+            # Several calls can carry the same indicator (recent window + fixed history): merge by date, later call wins.
+            if key in series:
+                merged = {r['date']: r for r in series[key]['records']}
+                merged.update({r['date']: r for r in vals})
+                vals = sorted(merged.values(), key=lambda x: x['date'])
             series[key] = {'indicator_id': int(iid), 'name': name, 'unit': unit, 'time_type': item.get('time_type') or tf, 'records': vals,
                            'latest_observation': vals[-1]['date'] if vals else None}
     return {'series': series}
@@ -230,8 +235,9 @@ def main(argv=None):
     put('cbond_issuance', build_issuance(resp('cbond_issuance')) if resp('cbond_issuance') else None, ['cbond_issuance'])
     mats = [resp(b) for b in ('cbond_maturity_2026', 'cbond_maturity_2027') if resp(b)]
     put('cbond_maturity', build_maturity(mats) if mats else None, [b for b in ('cbond_maturity_2026', 'cbond_maturity_2027') if resp(b)])
-    macro_resps = [resp(b) for b in ('macro_core', 'macro_kcn') if resp(b)]
-    put('macro', build_macro(macro_resps, contract['indicators']) if macro_resps else None, [b for b in ('macro_core', 'macro_kcn') if resp(b)])
+    macro_blocks = ('refi_hist_2016', 'refi_hist_2019', 'refi_hist_2021', 'refi_recent', 'fdi_sector', 'macro_core', 'macro_kcn')
+    macro_resps = [resp(b) for b in macro_blocks if resp(b)]
+    put('macro', build_macro(macro_resps, contract['indicators']) if macro_resps else None, [b for b in macro_blocks if resp(b)])
     put('commodity', build_macro([resp('commodity')], contract['indicators']) if resp('commodity') else None, ['commodity'])
     sector_resps = [resp(b) for b in ('sector_ratio_recent', 'sector_ratio_older') if resp(b)]
     put('sector_ratio', build_sector(sector_resps, contract['sectors']) if sector_resps else None, [b for b in ('sector_ratio_recent', 'sector_ratio_older') if resp(b)])

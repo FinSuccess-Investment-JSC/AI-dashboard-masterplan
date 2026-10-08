@@ -158,7 +158,7 @@ if (fp.length && fdiCard) {
   const sum = make('div', 'source-note');
   box.append(ctl, sum, wrap);
   card.append(box, note('Danh sách gom từ tin công bố, không phải toàn bộ FDI vào BĐS; NSO không công bố vốn thực hiện theo ngành. Dự án liên doanh ghi tổng vốn dự án. Ghi chú nêu dự án mới ở mức đề xuất hoặc ghi nhớ.'));
-  (fdiCard.closest('.grid') || fdiCard).after(card);
+  (document.querySelector('[data-block-id="bds-05d"]')?.closest('.grid') || fdiCard.closest('.grid') || fdiCard).after(card);
   const draw = () => {
     const rows = fp.filter(p => (sel.value === 'all' || p.type === sel.value) && (yrs.value === 'all' || String(p.year) === yrs.value)).sort((a, b) => (b.capital_musd || 0) - (a.capital_musd || 0));
     sum.textContent = `${rows.length} dự án · tổng ${nf(rows.reduce((s, p) => s + (p.capital_musd || 0), 0))} triệu USD (vốn đăng ký công bố; gồm cấp mới, tăng vốn, góp vốn).`;

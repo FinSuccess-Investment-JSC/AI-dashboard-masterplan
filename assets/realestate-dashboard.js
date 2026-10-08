@@ -116,10 +116,10 @@ if(S('credit_total').length&&S('deposits_total').length&&document.getElementById
  insight('chCreditGap','Tín dụng tăng nhanh hơn tiền gửi là lý do lãi suất huy động nhích lên dù lãi suất điều hành đứng yên. Với bất động sản, khoảng cách này đi trước lãi suất vay mua nhà vài tháng và đi trước room tín dụng cho chủ đầu tư.');
 }
 if(S('refi_rate').length&&document.getElementById('chRefiRate')){
- const rs=S('refi_rate'),byM={};rs.forEach(r=>{byM[r.date.slice(0,7)]=r});const ms=Object.keys(byM).sort().slice(-36).map(k=>byM[k]);
+ const rs=S('refi_rate'),byM={};rs.forEach(r=>{byM[r.date.slice(0,7)]=r});const ms=Object.keys(byM).sort().map(k=>byM[k]);
  barLineChart('chRefiRate',{categories:ms.map(r=>mon(r.date)),series:[{name:'Lãi suất tái cấp vốn',color:C.navy,kind:'line',values:ms.map(r=>r.value)}],unit:'%/năm',digits:2,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-refi',['Tháng','%/năm'],ms.slice().reverse().map(r=>[mon(r.date),nf(r.value,2)]));
- sourceLine('chRefiRate',[SRC.sbv,SRC.wi],short(rs.at(-1).date),'Lãi suất tái cấp vốn (chỉ tiêu 81497), giá trị cuối mỗi tháng. Chưa có chuỗi lãi suất cho vay mua nhà công bố đều; xem thẻ tín dụng để biết chênh tín dụng – tiền gửi.');
+ sourceLine('chRefiRate',[SRC.sbv,SRC.wi],short(rs.at(-1).date),'Lãi suất tái cấp vốn (chỉ tiêu 81497), giá trị cuối mỗi tháng từ 2016 (Wi giới hạn lookback 10 năm). Chưa có chuỗi lãi suất cho vay mua nhà công bố đều; xem thẻ tín dụng để biết chênh tín dụng – tiền gửi.');
  insight('chRefiRate','Lãi suất điều hành đứng yên từ giữa 2023 nên biến số thật của người mua nhà là lãi suất thả nổi sau ưu đãi của từng ngân hàng, đi theo lãi suất huy động 12 tháng. Chính sách tiền tệ nới nhưng chi phí vay mua nhà có thể vẫn tăng khi tín dụng chạy nhanh hơn tiền gửi.');
 }
 // Supply-demand proxies (Nhà ở)
@@ -138,6 +138,25 @@ if(S('fdi_re_ytd').length&&document.getElementById('chFdiRe')){
  fillTable('tbl-fdi-re',['Kỳ','Triệu USD','So cùng kỳ'],ys.slice().reverse().map(r=>{const prev=rs.find(x=>x.date===String(Number(r.date.slice(0,4))-1)+r.date.slice(4));return [r.date.slice(0,4)+(r.date.slice(5,7)!=='12'?' (đến T'+Number(r.date.slice(5,7))+')':''),nf(r.value,0),prev?signed((r.value/prev.value-1)*100,1)+'%':'—']}));
  sourceLine('chFdiRe',[SRC.fia,SRC.nso,SRC.wi],mon(latest.date),'Vốn đăng ký (cấp mới + điều chỉnh + góp vốn mua cổ phần) vào hoạt động kinh doanh bất động sản, lũy kế từ đầu năm (chỉ tiêu 77101). Năm chưa kết thúc ghi rõ tháng cuối; so cùng kỳ dùng cùng số tháng.');
  insight('chFdiRe','FDI vào bất động sản chủ yếu chảy vào khu công nghiệp, kho vận và nhà ở cao cấp, nên là tín hiệu cho nhóm KCN và cho thuê hơn là nhà ở đại chúng. Vốn đăng ký có thể dồn vào một thương vụ lớn; cần đối chiếu vốn thực hiện.');
+}
+if(S('fdi_re_monthly').length&&document.getElementById('chFdiReMonthly')){
+ const rs=S('fdi_re_monthly').slice(-36);
+ barLineChart('chFdiReMonthly',{categories:rs.map(r=>mon(r.date)),series:[{name:'FDI đăng ký vào BĐS',color:C.navy,values:rs.map(r=>r.value)}],unit:'triệu USD',digits:0,height:260,rotateLabels:true});
+ fillTable('tbl-fdi-re-monthly',['Tháng','Triệu USD'],S('fdi_re_monthly').slice().reverse().map(r=>[mon(r.date),nf(r.value,0)]));
+ const all=S('fdi_re_monthly'),gaps=[];for(let i=1;i<all.length;i++){const a=new Date(all[i-1].date),b=new Date(all[i].date),m=(b.getFullYear()-a.getFullYear())*12+b.getMonth()-a.getMonth();if(m>1)gaps.push(mon(all[i-1].date)+' → '+mon(all[i].date))}
+ sourceLine('chFdiReMonthly',[SRC.fia,SRC.nso,SRC.wi],mon(rs.at(-1).date),'Vốn đăng ký ròng trong tháng vào hoạt động kinh doanh bất động sản (chỉ tiêu 77215): cấp mới + điều chỉnh + góp vốn. Một dự án lớn có thể tạo đỉnh đơn lẻ (6/2026: 3,46 tỷ USD).'+(gaps.length?' Wi thiếu tháng: '+gaps.join(', ')+'.':''));
+ insight('chFdiReMonthly','Chuỗi tháng cho thấy FDI vào BĐS đi theo từng thương vụ chứ không đều: vài tháng một dự án lớn chiếm gần hết cả năm. Đọc cùng danh sách dự án lớn bên dưới để biết tháng đột biến đến từ KCN, khu đô thị hay data center.');
+}
+if(S('fdi_re_ytd').length&&document.getElementById('chFdiSector')){
+ const keys=[['fdi_re_ytd','Kinh doanh BĐS',C.navy],['fdi_ict_ytd','Thông tin – truyền thông (gồm data center)',C.plum],['fdi_transport_ytd','Vận tải kho bãi',C.teal],['fdi_accommodation_ytd','Lưu trú, ăn uống',C.gold],['fdi_construction_ytd','Xây dựng',C.grey]];
+ const yearEnd=k=>{const by={};S(k).forEach(r=>{by[r.date.slice(0,4)]=r});return by};
+ const maps=keys.map(([k])=>yearEnd(k)),ys=Object.keys(maps[0]).sort();
+ const lab=y=>{const r=maps[0][y];return y+(r&&r.date.slice(5,7)!=='12'?' (đến T'+Number(r.date.slice(5,7))+')':'')};
+ barLineChart('chFdiSector',{categories:ys.map(lab),series:keys.map(([k,n,c],i)=>({name:n,color:c,values:ys.map(y=>maps[i][y]?.value??null)})),unit:'triệu USD',digits:0,height:260,rotateLabels:false,stackable:true});
+ const host=document.getElementById('chFdiSector'),lg=make('div','legend');keys.forEach(([,n,c])=>{const s=make('span','li'),d=make('span','dot');d.style.background=c;s.append(d,n);lg.append(s)});host.after(lg);
+ fillTable('tbl-fdi-sector',['Năm',...keys.map(k=>k[1])],ys.slice().reverse().map(y=>[lab(y),...maps.map(m=>nf(m[y]?.value,0))]));
+ sourceLine('chFdiSector',[SRC.fia,SRC.nso,SRC.wi],mon(S('fdi_re_ytd').at(-1).date),'Vốn đăng ký lũy kế từ đầu năm theo ngành (bảng 24 của Wi: 77101, 77112, 77108, 77104, 77102); năm đã qua lấy số tháng 12. Data center có thể nằm ở thông tin – truyền thông hoặc BĐS tùy cách cấp phép; kho vận nằm ở vận tải kho bãi.');
+ insight('chFdiSector','Ngoài kinh doanh BĐS, các ngành "ăn đất" như data center, kho vận và khách sạn cũng là cầu thuê đất KCN và đất thương mại. Năm 2026 thông tin – truyền thông lên gần 3,2 tỷ USD đến T8, cùng lúc với loạt dự án data center ở TP.HCM trong danh sách dự án lớn; Wi không tách riêng data center nên đây là đối chiếu, chưa phải phân rã.');
 }
 if(S('cpi_housing_yoy').length&&document.getElementById('chCpiHousing')){
  const rs=S('cpi_housing_yoy').slice(-36);

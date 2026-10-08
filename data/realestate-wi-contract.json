@@ -74,6 +74,69 @@
    "cadence": "daily"
   },
   {
+   "block": "fdi_sector",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "77215,77100,77101,77102,77104,77108,77112",
+    "from_time": "2018-01-01",
+    "limit": 120
+   },
+   "cadence": "daily",
+   "note": "FDI đăng ký theo tháng (BĐS) và lũy kế năm theo ngành liên quan BĐS (bảng 24)."
+  },
+  {
+   "block": "refi_recent",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "81497",
+    "from_time": "2024-01-01",
+    "limit": 1000
+   },
+   "cadence": "daily",
+   "note": "Wi nén chuỗi ngày thành cuối tháng."
+  },
+  {
+   "block": "refi_hist_2016",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "81497",
+    "from_time": "2016-01-01",
+    "to_time": "2018-12-31",
+    "limit": 1000
+   },
+   "cadence": "fixed",
+   "note": "Lịch sử cố định, không cần gọi lại. Chia đoạn ≤3 năm để Wi nén theo tháng, không theo năm."
+  },
+  {
+   "block": "refi_hist_2019",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "81497",
+    "from_time": "2019-01-01",
+    "to_time": "2021-06-30",
+    "limit": 1000
+   },
+   "cadence": "fixed",
+   "note": "Lịch sử cố định, không cần gọi lại."
+  },
+  {
+   "block": "refi_hist_2021",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "81497",
+    "from_time": "2021-07-01",
+    "to_time": "2023-12-31",
+    "limit": 1000
+   },
+   "cadence": "fixed",
+   "note": "Lịch sử cố định, không cần gọi lại."
+  },
+  {
    "block": "commodity",
    "tool": "wi_data_commodity",
    "input": {
@@ -232,6 +295,36 @@
    "Thép CB300 D10 Hòa Phát",
    "nghìn VND/kg",
    "daily→monthly"
+  ],
+  "77215": [
+   "fdi_re_monthly",
+   "FDI đăng ký vào kinh doanh BĐS theo tháng (ròng, có thể âm)",
+   "triệu USD",
+   "monthly"
+  ],
+  "77102": [
+   "fdi_construction_ytd",
+   "FDI đăng ký vào xây dựng, lũy kế từ đầu năm",
+   "triệu USD",
+   "ytd"
+  ],
+  "77104": [
+   "fdi_accommodation_ytd",
+   "FDI đăng ký vào lưu trú và ăn uống, lũy kế từ đầu năm",
+   "triệu USD",
+   "ytd"
+  ],
+  "77108": [
+   "fdi_transport_ytd",
+   "FDI đăng ký vào vận tải kho bãi, lũy kế từ đầu năm",
+   "triệu USD",
+   "ytd"
+  ],
+  "77112": [
+   "fdi_ict_ytd",
+   "FDI đăng ký vào thông tin và truyền thông, lũy kế từ đầu năm",
+   "triệu USD",
+   "ytd"
   ]
  },
  "sectors": {
