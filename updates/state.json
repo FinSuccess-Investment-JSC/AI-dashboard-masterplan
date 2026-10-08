@@ -8,7 +8,9 @@
   "oil.portwatch": {},
   "oil.jodi": {},
   "oil.singapore-cracks": {},
-  "oil.retail-fuel": {},
+  "oil.retail-fuel": {
+   "brokenSince": "2026-10-08"
+  },
   "sugar.futures": {},
   "sugar.worldbank": {},
   "sugar.usda-producers": {},
@@ -103,7 +105,17 @@
   "realestate.policy": {},
   "realestate.credit-rates": {},
   "realestate.hot-topics": {},
-  "realestate.ai.cycle": {}
+  "realestate.ai.cycle": {},
+  "power.evn-reservoirs": {},
+  "power.market-fmp": {},
+  "realestate.fdi-projects": {},
+  "textile.wi.daily": {},
+  "textile.wi.weekly": {},
+  "textile.trade-tariff": {},
+  "textile.orders-brands": {},
+  "textile.policy": {},
+  "textile.hot-topics": {},
+  "textile.ai.cycle": {}
  },
  "watchers": {
   "nso.rss": {
@@ -1610,7 +1622,107 @@
     "lần đầu: rà soát số đang hiển thị"
    ],
    "signals": []
+  },
+  {
+   "id": "power.evn-reservoirs",
+   "tier": "C",
+   "title": "Hồ thủy điện EVN · ảnh chụp 00h, trung bình tháng",
+   "since": "2026-10-08T22:52:40+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "power.market-fmp",
+   "tier": "C",
+   "title": "FMP PGV theo tháng và CAN bình quân năm",
+   "since": "2026-10-08T22:52:40+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "realestate.fdi-projects",
+   "tier": "C",
+   "title": "Dự án FDI lớn liên quan BĐS (KCN, nhà ở, văn phòng, nghỉ dưỡng, logistics–data center)",
+   "since": "2026-10-08T22:52:40+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "textile.wi.daily",
+   "tier": "B",
+   "title": "Wi: xuất nhập khẩu dệt may theo tháng và thị trường, sản lượng, IIP, bán lẻ quần áo Mỹ, định giá hai phân ngành",
+   "since": "2026-10-08T22:52:40+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "textile.wi.weekly",
+   "tier": "B",
+   "title": "Wi: giá bông ICE, sợi và bông Trung Quốc, xơ PSF, PTA, MEG",
+   "since": "2026-10-08T22:52:40+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "textile.trade-tariff",
+   "tier": "C",
+   "title": "Thuế Mỹ (Mục 301, danh sách miễn trừ, hạn ngạch đối thủ), FTA, xuất xứ; nhập khẩu may mặc Mỹ (OTEXA); VITAS theo thị trường",
+   "since": "2026-10-08T22:52:40+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "textile.orders-brands",
+   "tier": "C",
+   "title": "Tồn kho, doanh thu nhãn hàng (Nike, Adidas, H&M, Inditex, Gap, Fast Retailing…); tín hiệu đơn hàng VITAS, Vinatex",
+   "since": "2026-10-08T22:52:40+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "textile.policy",
+   "tier": "C",
+   "title": "Lương tối thiểu, BHXH, thuế, EPR, yêu cầu xanh EU, phòng vệ thương mại sợi",
+   "since": "2026-10-08T22:52:40+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "textile.hot-topics",
+   "tier": "C",
+   "title": "Chủ đề nóng dệt may: thuế Mỹ, dịch chuyển đơn, phòng vệ sợi, bông, lao động, EU xanh, Bangladesh",
+   "since": "2026-10-08T22:52:40+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
+  },
+  {
+   "id": "textile.ai.cycle",
+   "tier": "D",
+   "title": "Dệt may: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
+   "since": "2026-10-08T22:52:40+07:00",
+   "reasons": [
+    "lần đầu: rà soát số đang hiển thị"
+   ],
+   "signals": []
   }
  ],
- "updatedAt": "2026-10-08T13:34:35+07:00"
+ "updatedAt": "2026-10-08T22:52:40+07:00"
 }

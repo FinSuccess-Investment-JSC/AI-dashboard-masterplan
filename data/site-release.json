@@ -1,5 +1,5 @@
 {
-  "version": "20261008T101356Z",
+  "version": "20261008T155240Z",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -10,13 +10,13 @@
     "textile": "Det-may/"
   },
   "files": {
-    "404.html": "ca862e3121ae2e0d7810b70ba3ce00148d3a6a12eee9bee7b362fcb595860ac7",
-    "Bank/index.html": "350208dfe67ec675bc6c04b7465f5de1fc98a4aa27ccb931aaadde2e472d9789",
-    "Bat-dong-san/index.html": "4732a6fb48c926e8d7f013382359ffc5083584f82f4bd7cd6a19e9e1c326538d",
-    "Dau-khi/index.html": "86619abcc1c3d00fe0e7cb25547914b74edd066c74e255f9aef83746ee05bf79",
-    "Det-may/index.html": "7e079d9ba246b635b8e83e243e9c6521bb3781195f024ddc5b0982e3a6acfcde",
-    "Dien/index.html": "0eb43a683b91cf932f244fb49d254cde7d8eb596e689d1e5c39b0a2e4b837e6f",
-    "Sugar/index.html": "3688047184b5498027ee67e3b93bb8acd8c407872fa5edb7c115943d0474299f",
+    "404.html": "63f50171dca9fe71af59f54b583261b22d1cb7ea466d8d17c745c9abc20071dd",
+    "Bank/index.html": "8f97c8077a4602914bb3810bbd6bd555ea0e460240a88445683c577200ed83ad",
+    "Bat-dong-san/index.html": "65719881cd4f71de53c54d1b29b085c40a336632bdc8af9c5e9db6589ae07aab",
+    "Dau-khi/index.html": "124ab6e53ce73ff171b216e98c83be72ab9a07f4983e8e33e22aca40d71eaf9f",
+    "Det-may/index.html": "f3b7c6c2090d0c2304e08a280344c12efd47d00b1c10bb9dd151bdd55962c3ee",
+    "Dien/index.html": "dac2c13a10d96797117789cc1a6ff035381d4975078a6a6476bc798087163498",
+    "Sugar/index.html": "1c1ea5ce938a57f7a533120ac07300f0c4f1971bf3c608349cfb1f2bb0dbc757",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
     "assets/bank-dashboard.js": "aa0d235f9d52f5168dbcb831948da37b32138c8565e227ff73b49c4726f99b36",
@@ -46,17 +46,17 @@
     "assets/site-navigation.js": "38f1100f7e0ba6864320083d6295a3e1f8d8884117d9253c18413abd33015c74",
     "assets/table-fold.js": "9c78488b28f67114a6d672d11a27c9ce27412ca8cf673d5146834280ef97e9aa",
     "assets/textile-dashboard.js": "f536b9bf40ccc0b690750d6fdc9f38cd80527ac6dbf1f6f9bcce912d2063ded9",
-    "data/bank-public-data.js": "85d048c5ba588ca334cc56ca2a8fe9a4ea70db2e5bce129a12982b54b2dfd038",
+    "data/bank-public-data.js": "d44903acb6ac7aaa2443d48e1d74a36dc9d05925090e3bfff34780a10814dac8",
     "data/bank-wi-data.js": "11fdd1967af56f67a947ca4781107c304e8d59bac92d007c984a498bb36c05d0",
-    "data/company-comparison.js": "3470c7add68dc8775f4bbfef62cb7f11b50ff35e9b2cc923a53662a97df393dc",
-    "data/company-valuation.js": "94bdf23adc022a2f1b449dcbe68b6a99b822ff615b79fe5207d4b7da7616d20e",
-    "data/daily-data.js": "c339e5bf0ac3fb9063f646c738c638c25c59ade8612eb9b7cd9af306bd437ea7",
+    "data/company-comparison.js": "1ecad153351255adc29bbfe6fe2163f6941c2bdbb3177e3fcc816545b2de7eaf",
+    "data/company-valuation.js": "fff6068d27cb8a156bcac5cb7eb82824bb5a9240eb59ee6bfa1e790a16256fff",
+    "data/daily-data.js": "d41bce2fe6544081cb9874cbba4feb10ed0dccbeface10d96cba94fe2a9e553f",
     "data/hydro-reservoirs.js": "5121e49c0866d9c27bd6405f395efd756ab0b6c5bf0bf41810ed05e3d34d6367",
     "data/realestate-market-history.js": "1cac369b93be93e03a7790cdf9f1e721a9d6b7b1689e8e1845408b48d872d94e",
     "data/realestate-wi-data.js": "5ee10419829794c08e7fccdd87ce205814ad66c33ea1a0bf2cd9a0221dbf34d0",
     "data/textile-wi-data.js": "4f1fc3b211fd842d69303a52c038caa639016145dbea30fa4c4fc0c865746839",
-    "duong/index.html": "43a92458efc6814859c083c3dc30e3f3c6f10d24522c5dc413d861d98ee88d84",
-    "index.html": "9a2d8769f744a667a345a4f844541bea6d425a5a3638e5d68e597116d59da429"
+    "duong/index.html": "a57bd06e10448f76af021938e5584deee8380f244c964dbd3eb3547398ebb129",
+    "index.html": "7589a5cd7567f6a6a500fae9c698788942f298b80c0da3c4cb9a30aa9d7f6ed9"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }
