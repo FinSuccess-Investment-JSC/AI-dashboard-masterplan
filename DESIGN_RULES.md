@@ -40,6 +40,10 @@ explains: the existing ⓘ insight and Source controls hold longer explanations.
 The default view stays concise, with detail in the existing disclosure controls.
 Do not hide material limitations or analyst attribution to make a card shorter.
 
+## Sub-tab
+
+Nút sub-tab (Thế giới / Việt Nam, Chuỗi giá trị…) nền trắng viền nhạt, mục đang chọn nền teal nhạt, chữ đen; không dùng nền navy cho sub-tab (navy dành cho tab lớn). CSS ở cuối `assets/fin-success-theme.css`.
+
 ## Layout
 
 Use white cards, 16px corner radius, thin borders and a light shadow. Keep the

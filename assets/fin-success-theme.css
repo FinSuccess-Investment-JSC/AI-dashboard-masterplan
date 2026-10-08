@@ -197,3 +197,12 @@ body[data-sector="bank"] .wi-table-fold>summary:hover { background: #e9edff; }
 .table-fold .table-fold-meta { color: var(--fs-muted); font-weight: 500; font-size: 11.5px; white-space: nowrap; }
 .table-fold>.table-fold-body { padding: 0 2px 2px; background: #fff; overflow-x: auto; }
 @media print { .table-fold>.table-fold-body { display: block !important; } }
+
+/* Sub-tab pills (chốt 08/10/2026): nền trắng, mục đang chọn nền teal nhạt, chữ đen. */
+.supply-tabs .tabbtn, .world-subtabs .tabbtn, .pane-subtabs .tabbtn, .subtabs .tabbtn {
+  background: #fff; border: 1px solid var(--fs-line); color: #111; font-weight: 650;
+}
+.supply-tabs .tabbtn[aria-selected="true"], .world-subtabs .tabbtn[aria-selected="true"],
+.pane-subtabs .tabbtn[aria-selected="true"], .subtabs .tabbtn[aria-selected="true"] {
+  background: var(--fs-soft-teal); border-color: #b9e2e3; color: #111;
+}
