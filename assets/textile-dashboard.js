@@ -85,14 +85,15 @@ if(exp.length&&document.getElementById('chExport')){
  insight('chExport','Đây là doanh thu gộp của khâu may. Tháng 1–2 nhiễu vì Tết; so cùng kỳ quan trọng hơn so tháng trước. Xuất khẩu tăng nhưng đơn giá giảm (nhập khẩu may mặc của Mỹ: Việt Nam +1,1% giá trị, +3,3% lượng 6T/2026) nghĩa là doanh nghiệp đang giữ đơn bằng giá.');
 }
 // Theo thị trường
-const us=S('exp_textile_us'),jp=S('exp_textile_jp');
+const us=S('exp_textile_us'),jp=S('exp_textile_jp'),kr=S('exp_textile_kr'),cn=S('exp_textile_cn');
 if(us.length&&exp.length&&document.getElementById('chExportMkt')){
- const em=byMonth(exp),jm=byMonth(jp),rs=us.slice(-24);
- const rest=rs.map(r=>{const t=em[ym(r.date)],j=jm[ym(r.date)];return t&&j?t.value-r.value-j.value:null});
- stack('chExportMkt',{categories:rs.map(r=>mon(r.date)),series:[{name:'Mỹ',color:C.navy,values:rs.map(r=>r.value)},{name:'Nhật Bản',color:C.gold,values:rs.map(r=>jm[ym(r.date)]?.value??null)},{name:'Thị trường khác',color:C.grey,values:rest}],unit:'triệu USD',digits:0,aria:'Xuất khẩu dệt may theo thị trường'});
- legend('chExportMkt',[['Mỹ',C.navy],['Nhật Bản',C.gold],['Thị trường khác',C.grey]]);
- fillTable('tbl-export-mkt',['Tháng','Mỹ','Nhật Bản','Khác','Tỷ trọng Mỹ'],us.slice().reverse().map(r=>{const t=em[ym(r.date)],j=jm[ym(r.date)];return [mon(r.date),nf(r.value,0),nf(j?.value,0),t&&j?nf(t.value-r.value-j.value,0):'—',t?nf(r.value/t.value*100,1)+'%':'—']}));
- sourceLine('chExportMkt',[SRC.customs,SRC.wi],mon(us.at(-1).date),'Hàng dệt, may sang Hoa Kỳ (87978) và Nhật Bản (88750); "thị trường khác" = tổng (83528) trừ hai nước, gồm EU, Hàn Quốc, Trung Quốc, Canada. Wi chưa có chuỗi riêng cho EU.');
+ const em=byMonth(exp),jm=byMonth(jp),km=byMonth(kr),cm=byMonth(cn),rs=us.slice(-24);
+ const v=(m,r)=>m[ym(r.date)]?.value??null;
+ const rest=rs.map(r=>{const t=em[ym(r.date)],j=v(jm,r),k=v(km,r),c=v(cm,r);return t&&j!=null&&k!=null&&c!=null?t.value-r.value-j-k-c:null});
+ stack('chExportMkt',{categories:rs.map(r=>mon(r.date)),series:[{name:'Mỹ',color:C.navy,values:rs.map(r=>r.value)},{name:'Nhật Bản',color:C.gold,values:rs.map(r=>v(jm,r))},{name:'Hàn Quốc',color:C.teal,values:rs.map(r=>v(km,r))},{name:'Trung Quốc',color:C.red,values:rs.map(r=>v(cm,r))},{name:'Khác (EU, Canada, Anh…)',color:C.grey,values:rest}],unit:'triệu USD',digits:0,aria:'Xuất khẩu dệt may theo thị trường'});
+ legend('chExportMkt',[['Mỹ',C.navy],['Nhật Bản',C.gold],['Hàn Quốc',C.teal],['Trung Quốc',C.red],['Khác (EU, Canada, Anh…)',C.grey]]);
+ fillTable('tbl-export-mkt',['Tháng','Mỹ','Nhật Bản','Hàn Quốc','Trung Quốc','Khác','Tỷ trọng Mỹ'],us.slice().reverse().map(r=>{const t=em[ym(r.date)],j=v(jm,r),k=v(km,r),c=v(cm,r);return [mon(r.date),nf(r.value,0),nf(j,0),nf(k,0),nf(c,0),t&&j!=null&&k!=null&&c!=null?nf(t.value-r.value-j-k-c,0):'—',t?nf(r.value/t.value*100,1)+'%':'—']}));
+ sourceLine('chExportMkt',[SRC.customs,SRC.wi],mon(us.at(-1).date),'Hàng dệt, may sang Hoa Kỳ (87978), Nhật Bản (88750), Hàn Quốc (88065), Trung Quốc (88023); "khác" = tổng (83528) trừ bốn nước. Wi chỉ có số theo tháng cho các nước này; EU, Canada, Anh có số theo năm ở tab XK & thuế quan.');
  insight('chExportMkt','Mỹ chiếm khoảng một nửa kim ngạch nên thuế Mỹ quyết định nhịp ngành. Tỷ trọng Mỹ tăng trước các mốc thuế (giao hàng sớm) rồi giảm sau; theo dõi tỷ trọng Mỹ sau 24/07/2026 khi thuế Mục 301 12,5% có hiệu lực.');
 }
 // Sản lượng quần áo & IIP
@@ -183,23 +184,50 @@ if(ur.length&&document.getElementById('chUsRetail')){
 // ---------- Document figures (data/textile/*.json, mirrored in the HTML tables) ----------
 // US apparel import shares 2025 (OTEXA via Apparel Resources)
 if(document.getElementById('chUsShare')){
- const rows=[['Việt Nam',21.5,null],['Trung Quốc',13.66,20.83],['Bangladesh',10.53,9.26]];
- barLineChart('chUsShare',{categories:rows.map(r=>r[0]),series:[{name:'2025',color:C.navy,values:rows.map(r=>r[1])},{name:'2024',color:C.grey,values:rows.map(r=>r[2])}],unit:'%',digits:1,height:260,rotateLabels:false});
- legend('chUsShare',[['2025',C.navy],['2024',C.grey]]);
- fillTable('tbl-us-share',['Nước','Thị phần 2025','Thị phần 2024','Giá trị 2025 (triệu USD)'],[['Việt Nam','21,50%','—','16.740'],['Trung Quốc','13,66%','20,83%','10.640'],['Bangladesh','10,53%','9,26%','8.200'],['Tổng nhập khẩu may mặc Mỹ','100%','','77.880']]);
- insight('chUsShare','Việt Nam đã vượt Trung Quốc thành nguồn cung may mặc số 1 của Mỹ năm 2025 khi thị phần Trung Quốc giảm hơn 7 điểm %. Phần thị phần này dễ bị Bangladesh, Campuchia, Indonesia chia lại nếu thuế của họ thấp hơn Việt Nam 2,5 điểm % và có hạn ngạch miễn thuế.');
-}
-if(document.getElementById('chUsH1')){
- const rows=[['Campuchia',12.32],['Indonesia',3.4],['Việt Nam',1.08],['Bangladesh',-5.75],['Ấn Độ',-25.27],['Trung Quốc',-37.69],['Tổng',-8.04]];
- ctBar('chUsH1',{categories:rows.map(r=>r[0]),series:[{name:'Giá trị 6T/2026 so cùng kỳ',color:C.navy,values:rows.map(r=>r[1])}],unit:'%',digits:1,aria:'Nhập khẩu may mặc của Mỹ 6T/2026 theo nước'});
+ const yrs=['2019','2020','2021','2024','2025','5T/2026'];
+ const rows=[['Việt Nam',C.navy,[null,16.37,14.84,18.88,21.5,22.2]],['Trung Quốc',C.red,[39.83,36.6,37.76,20.83,13.66,9.7]],['Bangladesh',C.teal,[null,8.17,8.84,9.26,10.53,11.3]],['Campuchia',C.gold,[null,4.87,4.22,4.75,6.2,6.5]],['Ấn Độ',C.plum,[null,3.91,4.35,5.89,6.35,null]],['Indonesia',C.grey,[null,3.99,3.76,5.33,5.98,null]]];
+ barLineChart('chUsShare',{categories:yrs,series:rows.map(([n,c,v])=>({name:n,color:c,kind:'line',values:v})),unit:'%',digits:1,height:260,zeroBase:false,rotateLabels:false});
+ legend('chUsShare',rows.map(([n,c])=>[n,c]));
+ fillTable('tbl-us-share',['Nước',...yrs],rows.map(([n,,v])=>[n,...v.map(x=>x==null?'—':nf(x,2)+'%')]).concat([['Tổng NK may mặc Mỹ (tỷ USD)','—','—','—','79,26','77,88','35,09 (6T)']]));
  fillTable('tbl-us-h1',['Nước','Giá trị YoY','Lượng (m² quy đổi) YoY','Đơn giá YoY'],[['Campuchia','+12,32%','—','—'],['Indonesia','+3,40%','—','—'],['Việt Nam','+1,08%','+3,30%','−2,15%'],['Bangladesh','−5,75%','−3,69%','−2,15%'],['Ấn Độ','−25,27%','−22,74%','−3,28%'],['Trung Quốc','−37,69%','−26,30%','−15,46%'],['Tổng','−8,04%','—','—']]);
- insight('chUsH1','Tổng nhập khẩu may mặc Mỹ 6T/2026 giảm 8% nhưng Việt Nam vẫn tăng nhẹ nhờ lấy thị phần của Trung Quốc và Ấn Độ. Campuchia tăng nhanh nhất: đối thủ trực tiếp về thuế thấp hơn.');
+ sourceLine('chUsShare',[['OTEXA','https://www.trade.gov/otexa-import-data'],['Just-Style 2019–21','https://www.just-style.com/features/analysis-china-market-share-of-us-apparel-imports-rises-after-four-year-lull/'],['Apparel Resources 2025','https://apparelresources.com/business-news/trade-business-news/bangladesh-raises-us-apparel-market-share-10-53-chinas-exports-decline/']],'5T/2026','2019–2021 theo Just-Style (có thể tính theo lượng); 2024 là 10 tháng đầu năm (Bangladesh: cả năm); 2025 cả năm theo giá trị; 5T/2026 theo OTEXA. Thiếu 2022–2023. Các năm khác cơ sở tính nên chỉ đọc xu hướng.');
+ insight('chUsShare','Trung Quốc mất khoảng 30 điểm % thị phần từ 2019, phần lớn sang Việt Nam (từ ~15% lên 22%) và một phần sang Bangladesh, Campuchia. Từ 24/07/2026 Việt Nam chịu thuế cao hơn các nước này 2,5 điểm %, nên tốc độ lấy thị phần là biến số cần theo dõi theo tháng.');
 }
-if(document.getElementById('chVitasMkt')){
- const rows=[['Mỹ',17.8],['Nhật Bản',4.5],['Hàn Quốc',2.8],['Trung Quốc',1.4],['Hà Lan',1.3],['Canada',1.2],['Đức',0.9],['Anh',0.89]];
- hbarCompare('chVitasMkt',{items:rows.map(([label,value],i)=>({label,value,color:i?C.teal:C.navy})),unit:'tỷ USD',digits:1,height:260,labelW:110});
- fillTable('tbl-vitas-mkt',['Thị trường','2025 (tỷ USD)','So cùng kỳ'],[['Mỹ','17,8','+10,7%'],['Nhật Bản','4,5','+6,1%'],['Hàn Quốc','2,8','−8,3%'],['Trung Quốc','1,4','+6,1%'],['Hà Lan','1,3','—'],['Canada','1,2','—'],['Đức','0,9','—'],['Anh','0,89','—'],['Tổng XK dệt may 2025','39,4','+7%']]);
- insight('chVitasMkt','Một thị trường (Mỹ) bằng tổng bảy thị trường tiếp theo cộng lại; đa dạng hóa sang Nhật, Hàn, EU là việc của nhiều năm, không đủ bù nếu Mỹ giảm mạnh. EU chia nhỏ theo nước nên trông nhỏ; VITAS đặt mục tiêu 2026 cho EU 5,1 tỷ USD.');
+const isr=[['2019',2.30],['2020',2.25],['2021',2.09],['2022',2.37],['2023',2.27],['2024',2.22],['2025',2.15],['T1/26',2.16],['T2/26',2.10],['T3/26',2.11],['T4/26',2.13],['T5/26',2.11],['T6/26',2.14],['T7/26',2.11]];
+if(document.getElementById('chUsIS')){
+ barLineChart('chUsIS',{categories:isr.map(r=>r[0]),series:[{name:'Tồn kho / doanh số',color:C.plum,kind:'line',values:isr.map(r=>r[1])}],unit:'lần',digits:2,height:260,zeroBase:false,rotateLabels:false});
+ fillTable('tbl-us-is',['Kỳ','Lần'],isr.slice().reverse().map(r=>[r[0],nf(r[1],2)]));
+ sourceLine('chUsIS',[['FRED MRTSIR448USS','https://fred.stlouisfed.org/series/MRTSIR448USS'],SRC.census],'T7/2026','Tỷ lệ tồn kho / doanh số của cửa hàng quần áo và phụ kiện Mỹ, điều chỉnh mùa vụ; các năm lấy tháng 12.');
+ insight('chUsIS','Tỷ lệ 2,1 lần là thấp nhất trong chuỗi từ 2019 trừ 2021: kênh bán lẻ Mỹ không thừa hàng, nên nhãn hàng có lý do đặt bổ sung khi doanh số giữ được. Đây là điều kiện cần cho đơn hàng quý tới, chưa đủ nếu thuế làm giảm biên nhãn hàng.');
+}
+const th=[['Việt Nam',C.navy,[20,10,12.5]],['Trung Quốc',C.red,[20,10,12.5]],['Bangladesh',C.teal,[20,10,10]],['Campuchia',C.gold,[19,10,10]],['Indonesia',C.grey,[19,10,10]],['Ấn Độ',C.plum,[50,10,10]]];
+if(document.getElementById('chTariffHist')){
+ const per=['IEEPA 8/2025–2/2026','Mục 122 · 24/2–24/7/2026','Mục 301 · từ 24/7/2026'];
+ ctBar('chTariffHist',{categories:per,series:th.map(([n,c,v])=>({name:n,color:c,values:v})),unit:'%',digits:1,aria:'Thuế bổ sung của Mỹ theo giai đoạn'});
+ legend('chTariffHist',th.map(([n,c])=>[n,c]));
+ fillTable('tbl-tariff-hist',['Nước',...per],th.map(([n,,v])=>[n,...v.map(x=>nf(x,1)+'%')]));
+ sourceLine('chTariffHist',[['Kelley Drye · Mục 301','https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas'],['GHY · Mục 122','https://www.ghy.com/trade-compliance/us-10-percent-section-122-tariff/']],'24/07/2026','Thuế cộng thêm vào MFN. IEEPA: Trung Quốc 20% sau 10/11/2025 (30% trước đó); Ấn Độ gồm 25% phạt dầu Nga. Việt Nam công bố 46% (4/2025) trước khi thỏa thuận xuống 20%.');
+ insight('chTariffHist','Qua ba giai đoạn, lợi thế thuế của Việt Nam đổi chiều: thời IEEPA ngang Bangladesh và thấp hơn Ấn Độ rất nhiều; nay cao hơn Bangladesh, Campuchia, Indonesia, Ấn Độ 2,5 điểm % và ngang Trung Quốc. Mức chênh nhỏ nhưng nhãn hàng tính theo đơn giá FOB vài USD, nên đủ để dời một phần đơn.');
+}
+const osh=[['VN · EU',C.navy,[4.0,4.2,4.6]],['VN · Nhật',C.gold,[19.0,19.6,null]],['VN · Hàn',C.teal,[26.0,26.5,null]],['TQ · EU',C.red,[29.6,29.0,28.3]],['TQ · Nhật',C.plum,[49.4,48.2,null]],['TQ · Hàn',C.grey,[41.0,40.1,null]]];
+if(document.getElementById('chOtherShare')){
+ const yrs=['2024','2025','5T/2026'];
+ barLineChart('chOtherShare',{categories:yrs,series:osh.map(([n,c,v])=>({name:n,color:c,kind:'line',values:v})),unit:'%',digits:1,height:260,zeroBase:true,rotateLabels:false});
+ legend('chOtherShare',osh.map(([n,c])=>[n,c]));
+ fillTable('tbl-other-share',['Thị trường · nước','2023','2024','2025','5T/2026'],[['EU · Việt Nam','—','4,0%','4,2%','4,6%'],['EU · Trung Quốc','—','29,6%','29,0%','28,3%'],['EU · Bangladesh','—','22,2%','21,9%','21,5%'],['Nhật · Việt Nam','18,4%','19,0%','19,6%','—'],['Nhật · Trung Quốc','50,6%','49,4%','48,2%','—'],['Hàn · Việt Nam','25,2%','26,0%','26,5%','—'],['Hàn · Trung Quốc','42,4%','41,0%','40,1%','—']]);
+ sourceLine('chOtherShare',[['TBS News · Eurostat','https://www.tbsnews.net/economy/rmg/bangladesh-loses-eu-apparel-market-share-faster-rivals-1490571'],['Trading Economics · Nhật','https://tradingeconomics.com/japan/imports/vietnam/articles-apparel-accessories-knit-crocheted'],['Trading Economics · Hàn','https://tradingeconomics.com/south-korea/imports/vietnam/articles-apparel-accessories-knit-crocheted']],'5T/2026','Theo dashboard dệt may nội bộ 28/07/2026. Nhật, Hàn: HS 61+62, năm đầy đủ; EU: nhập khẩu may mặc ngoài khối, 2026 là 5 tháng.');
+ insight('chOtherShare','Việt Nam đã là nguồn cung số 2 ở Nhật và Hàn (20–27%) nhưng mới chiếm khoảng 4–5% ở EU, nơi Trung Quốc và Bangladesh chiếm một nửa. EU là dư địa lớn nhất nếu EVFTA về 0% thuế toàn bộ năm 2027 và Bangladesh mất ưu đãi sau khi rời nhóm LDC.');
+}
+if(document.getElementById('tbl-vitas-mkt'))fillTable('tbl-vitas-mkt',['Thị trường','2025 (tỷ USD)','So cùng kỳ','Mục tiêu 2026'],[['Mỹ','17,8','+10,7%','19,7'],['Nhật Bản','4,5','+6,1%','5,1'],['Hàn Quốc','2,8','−8,3%','—'],['Trung Quốc','1,4','+6,1%','—'],['EU','—','—','5,1'],['Tổng XK dệt may','39,4','+7%','48']]);
+const yk=[['y_us','Mỹ',C.navy],['y_jp','Nhật Bản',C.gold],['y_kr','Hàn Quốc',C.teal],['y_cn','Trung Quốc',C.red],['y_ca','Canada',C.plum],['y_nl','Hà Lan',C.green],['y_de','Đức','#8a6fd1'],['y_uk','Anh',C.grey]];
+if(S('y_us').length&&document.getElementById('chMktYear')){
+ const maps=yk.map(([k])=>byMonth(S(k))),ys=S('y_us').map(r=>r.date.slice(0,4));
+ const at=(i,y)=>maps[i][y+'-12']?.value??null;
+ stack('chMktYear',{categories:ys,series:yk.map(([k,n,c],i)=>({name:n,color:c,values:ys.map(y=>at(i,y))})),unit:'triệu USD',digits:0,aria:'Xuất khẩu dệt may theo thị trường theo năm'});
+ legend('chMktYear',yk.map(([,n,c])=>[n,c]));
+ fillTable('tbl-mkt-year',['Năm',...yk.map(x=>x[1]),'Tăng Mỹ YoY'],ys.slice().reverse().map(y=>[y,...yk.map((_,i)=>nf(at(i,y),0)),at(0,String(y-1))?signed((at(0,y)/at(0,String(y-1))-1)*100,1)+'%':'—']));
+ sourceLine('chMktYear',[SRC.customs,SRC.wi],S('y_us').at(-1).date.slice(0,4),'Hàng dệt, may theo nước đến, số năm của hải quan (bảng 87 Wi: 279542 Mỹ, 279802 Nhật, 279716 Hàn, 279632 Trung Quốc, 279996 Canada, 278542 Hà Lan, 278606 Đức, 280130 Anh). Năm 2026 chưa đủ năm nên chưa có.');
+ insight('chMktYear','Từ 2013 Mỹ tăng gấp đôi và luôn chiếm khoảng một nửa; Hà Lan (cửa ngõ EU, gần gấp đôi), Anh và Canada tăng nhanh nhất sau 2021 nhờ EVFTA, UKVFTA, CPTPP, trong khi Hàn Quốc đi ngang. Đa dạng hóa có thật nhưng quy mô các thị trường mới vẫn nhỏ so với Mỹ.');
 }
 if(us.length&&document.getElementById('chUsYtd')){
  const years={};us.forEach(r=>{const y=r.date.slice(0,4);years[y]=(years[y]||{sum:0,last:r});years[y].sum+=r.value;years[y].last=r});

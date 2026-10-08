@@ -15,6 +15,30 @@
    "note": "Kết quả vượt trần hiển thị: chép file tool-results vào capture bằng build_realestate_wi.py --restore."
   },
   {
+   "block": "mkt_monthly",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "88065,88023",
+    "from_time": "2019-01-01",
+    "limit": 120
+   },
+   "cadence": "daily",
+   "note": "Hàng dệt, may sang Hàn Quốc (88065), Trung Quốc (88023) theo tháng."
+  },
+  {
+   "block": "mkt_yearly",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "279542,279802,279716,279632,278606,278542,280130,279996",
+    "from_time": "2013-01-01",
+    "limit": 20
+   },
+   "cadence": "daily",
+   "note": "Hàng dệt, may theo năm sang Mỹ, Nhật, Hàn, Trung Quốc, Đức, Hà Lan, Anh, Canada. Mã lấy từ list_indicators bảng 87 (time_frame yearly)."
+  },
+  {
    "block": "commodity_cotton",
    "tool": "wi_data_commodity",
    "input": {
@@ -214,6 +238,66 @@
    "Ethylene glycol (MEG)",
    "CNY/tấn",
    "daily"
+  ],
+  "88065": [
+   "exp_textile_kr",
+   "Xuất khẩu hàng dệt, may sang Hàn Quốc",
+   "triệu USD",
+   "monthly"
+  ],
+  "88023": [
+   "exp_textile_cn",
+   "Xuất khẩu hàng dệt, may sang Trung Quốc",
+   "triệu USD",
+   "monthly"
+  ],
+  "279542": [
+   "y_us",
+   "XK dệt may sang Hoa Kỳ, năm",
+   "triệu USD",
+   "yearly"
+  ],
+  "279802": [
+   "y_jp",
+   "XK dệt may sang Nhật Bản, năm",
+   "triệu USD",
+   "yearly"
+  ],
+  "279716": [
+   "y_kr",
+   "XK dệt may sang Hàn Quốc, năm",
+   "triệu USD",
+   "yearly"
+  ],
+  "279632": [
+   "y_cn",
+   "XK dệt may sang Trung Quốc, năm",
+   "triệu USD",
+   "yearly"
+  ],
+  "278606": [
+   "y_de",
+   "XK dệt may sang Đức, năm",
+   "triệu USD",
+   "yearly"
+  ],
+  "278542": [
+   "y_nl",
+   "XK dệt may sang Hà Lan, năm",
+   "triệu USD",
+   "yearly"
+  ],
+  "280130": [
+   "y_uk",
+   "XK dệt may sang Anh, năm",
+   "triệu USD",
+   "yearly"
+  ],
+  "279996": [
+   "y_ca",
+   "XK dệt may sang Canada, năm",
+   "triệu USD",
+   "yearly"
   ]
  },
  "sectors": {

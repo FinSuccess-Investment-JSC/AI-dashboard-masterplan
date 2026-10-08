@@ -46,7 +46,7 @@ def main():
         blocks[name] = value
 
     ind = contract['indicators']
-    put('macro', ['macro_trade'], lambda r: build_macro(r, ind))
+    put('macro', ['macro_trade', 'mkt_monthly', 'mkt_yearly'], lambda r: build_macro(r, ind))
     # Older window first so the monthly 2-year window wins on overlapping dates.
     put('commodity', ['commodity_cotton', 'commodity_recent'], lambda r: build_macro(r, ind))
     put('sector_ratio', ['sector_ratio_recent'], lambda r: build_sector(r, contract['sectors']))

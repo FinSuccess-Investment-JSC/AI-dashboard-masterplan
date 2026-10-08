@@ -298,8 +298,8 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/sector-runtime.js?v=9713048687dc" defer></script>
 <script src="../assets/sector-content.js?v=5f4334dba21e" defer></script>
 <script src="../assets/sector-layout.js?v=2513e186c11c" defer></script>
-<script src="../data/textile-wi-data.js?v=329657ea458c" defer></script>
-<script src="../assets/textile-dashboard.js?v=8ff8fbb87820" defer></script>
+<script src="../data/textile-wi-data.js?v=4f1fc3b211fd" defer></script>
+<script src="../assets/textile-dashboard.js?v=8ad7f430a25a" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="../assets/catalyst-board.js?v=61a5fcb13361" defer></script>
@@ -309,11 +309,11 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/research-layout.js?v=32919a188696" defer></script>
 <script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="../assets/research-editorial.js?v=e2de98f2fdcb" defer></script>
-<script src="../assets/pane-subtabs.js?v=ebe42eec2aa8" defer></script>
+<script src="../assets/pane-subtabs.js?v=0b1fd49f1299" defer></script>
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=38f1100f7e0b" data-release="20261008-power-hydro-reservoirs-r1"></script>
+<script src="../assets/site-navigation.js?v=38f1100f7e0b" data-release="20261008T091037Z"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=c2f07b357463">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=033d06c36482">
@@ -368,6 +368,12 @@ body{font-size:14px;line-height:1.45}
         <div class="source-note">Nguồn: <a href="https://tapchikinhtetaichinh.vn/nganh-det-may-tang-truong-phan-hoa-ap-luc-bien-loi-nhuan-gia-tang-166977.html" target="_blank" rel="noopener">Tạp chí Kinh tế Tài chính 14/9/2026</a> · <a href="https://vnbusiness.vn/thue-quan-my-bien-dong-co-hoi-hoan-thue-va-bai-toan-15-voi-det-may-viet-nam.html" target="_blank" rel="noopener">VnBusiness – Thuế quan Mỹ biến động</a> · <a href="https://www.morganlewis.com/pubs/2026/07/us-administration-rebuilds-global-tariff-program-under-section-301" target="_blank" rel="noopener">Morgan Lewis – Section 301 global tariff program</a> · <a href="https://baophapluat.vn/chinh-phu-quyet-dinh-tang-luong-toi-thieu-vung-tu-1-1-2026.html" target="_blank" rel="noopener">Báo Pháp luật – Tăng lương tối thiểu vùng từ 1/1/2026</a></div>
       </div>
     </div>
+    <div class="card sector-valuation" style="margin-top:14px" data-block-id="dm-13" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">P/E hai phân ngành dệt may — theo phiên</div>
+        <div class="chart-sub">lần · GICS cấp 4 của Wi · mỗi 5 phiên · P/B ở bảng</div>
+        <div id="chSectorVal"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-sector-val"></table></div></details>
+      </div>
     <div class="card" style="margin-top:14px" data-block-id="dm-03" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
       <h3 style="margin-top:0;font-size:13.5px">Doanh nghiệp theo dõi và biến quyết định của từng nhóm</h3>
       <div class="tablewrap"><table><thead><tr><th>Nhóm</th><th>Mã</th><th>Doanh thu đến từ</th><th>Biến quyết định</th><th>Đọc ở tab</th></tr></thead><tbody><tr><td><b>May xuất khẩu</b></td><td>TCM · TNG · MSH · GIL</td><td>Gia công (CMT) và FOB cho nhãn hàng Mỹ, EU, Nhật, Hàn</td><td>Đơn hàng nhãn hàng · thuế Mỹ · lương · tỷ giá</td><td>XK &amp; thuế quan · Đơn hàng &amp; nhãn hàng</td></tr><tr><td><b>Sợi</b></td><td>STK (sợi filament polyester) · ADS (sợi cotton, cotton pha)</td><td>Bán sợi cho nhà dệt trong nước và xuất khẩu</td><td>Giá xơ PSF, PTA/MEG, bông · chênh giá sợi – bông · phòng vệ thương mại</td><td>Giá – Chi phí – Margin</td></tr><tr><td><b>Tập đoàn</b></td><td>VGT (Vinatex)</td><td>Công ty con, liên kết từ sợi đến may</td><td>Cả hai chuỗi; lợi nhuận phần lớn từ liên kết</td><td>Cung – Cầu</td></tr></tbody></table></div>
@@ -387,7 +393,7 @@ body{font-size:14px;line-height:1.45}
       </div>
       <div class="card" data-block-id="dm-05" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
         <div class="chart-title">Xuất khẩu dệt may theo thị trường — theo tháng</div>
-        <div class="chart-sub">triệu USD · Mỹ, Nhật Bản và phần còn lại</div>
+        <div class="chart-sub">triệu USD · Mỹ, Nhật Bản, Hàn Quốc, Trung Quốc và phần còn lại</div>
         <div id="chExportMkt"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-export-mkt"></table></div></details>
       </div>
@@ -447,12 +453,7 @@ body{font-size:14px;line-height:1.45}
         <div id="chPoly"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-poly"></table></div></details>
       </div>
-      <div class="card" data-block-id="dm-13" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
-        <div class="chart-title">P/E hai phân ngành dệt may — theo phiên</div>
-        <div class="chart-sub">lần · GICS cấp 4 của Wi · mỗi 5 phiên · P/B ở bảng</div>
-        <div id="chSectorVal"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-sector-val"></table></div></details>
-      </div>
+
     </div>
     <div class="card" style="margin-top:14px" data-block-id="dm-14" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
       <div class="chart-title">Chi phí lao động và năng lượng</div>
@@ -555,24 +556,26 @@ body{font-size:14px;line-height:1.45}
     <div class="txt-trade">
     <div class="grid two">
       <div class="card" data-block-id="dm-20" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-        <div class="chart-title">Thị phần nhập khẩu may mặc của Mỹ</div>
-        <div class="chart-sub">% · năm 2025 · OTEXA</div>
+        <div class="chart-title">Thị phần nhập khẩu may mặc của Mỹ — theo năm</div>
+        <div class="chart-sub">% · OTEXA · 2026 là 5 tháng đầu năm</div>
         <div id="chUsShare"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-us-share"></table></div></details>
+        <details class="dtable"><summary>6T/2026: nhập khẩu may mặc của Mỹ thay đổi theo nước</summary><div class="tablewrap"><table id="tbl-us-h1"></table></div></details>
       </div>
       <div class="card" data-block-id="dm-21" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-        <div class="chart-title">Nhập khẩu may mặc của Mỹ 6T/2026 — thay đổi theo nước</div>
-        <div class="chart-sub">% so cùng kỳ · giá trị</div>
-        <div id="chUsH1"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-us-h1"></table></div></details>
+        <div class="chart-title">Thuế bổ sung của Mỹ qua từng giai đoạn</div>
+        <div class="chart-sub">% · cộng thêm vào thuế MFN</div>
+        <div id="chTariffHist"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-tariff-hist"></table></div></details>
       </div>
     </div>
     <div class="grid two" style="margin-top:14px">
-      <div class="card" data-block-id="dm-22" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-        <div class="chart-title">Xuất khẩu dệt may theo thị trường — năm 2025</div>
-        <div class="chart-sub">tỷ USD · VITAS</div>
-        <div id="chVitasMkt"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-vitas-mkt"></table></div></details>
+      <div class="card" data-block-id="dm-22" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Xuất khẩu dệt may theo thị trường — theo năm</div>
+        <div class="chart-sub">triệu USD · hải quan · 8 thị trường lớn</div>
+        <div id="chMktYear"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-mkt-year"></table></div></details>
+        <details class="dtable"><summary>VITAS: xuất khẩu theo thị trường 2025 và mục tiêu 2026</summary><div class="tablewrap"><table id="tbl-vitas-mkt"></table></div></details>
       </div>
       <div class="card" data-block-id="dm-23" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
         <div class="chart-title">Xuất khẩu dệt may sang Mỹ — lũy kế theo năm</div>
@@ -581,11 +584,20 @@ body{font-size:14px;line-height:1.45}
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-us-ytd"></table></div></details>
       </div>
     </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="dm-34" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Thị phần của Việt Nam và Trung Quốc tại EU, Nhật, Hàn</div>
+        <div class="chart-sub">% nhập khẩu may mặc · EU 2026 là 5 tháng đầu năm</div>
+        <div id="chOtherShare"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-other-share"></table></div></details>
+      </div>
+    </div>
     <div class="card" style="margin-top:14px" data-block-id="dm-24" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
-      <div class="chart-title">Thuế Mỹ với hàng Việt Nam và nước cạnh tranh</div>
-      <div class="chart-sub">mức trước → sau theo từng đợt</div>
-      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Nước</th><th>Đợt</th><th>Trước</th><th>Sau</th><th>Hiệu lực</th><th>Ghi chú</th><th>Nguồn</th></tr></thead><tbody><tr><td>Vietnam</td><td>Liberation Day announced rate (Apr 2025)</td><td>—</td><td><b>46%</b></td><td>announced 2025-04-02</td><td></td><td><a href="https://antidumping.vn/us-tariffs-on-vietnamese-exports-analyzing-the-executive-order-of-july-2025-n29057.html" target="_blank" rel="noopener">antidumping.vn – July 2025 EO</a></td></tr><tr><td>Vietnam</td><td>IEEPA reciprocal (deal Jul 2025)</td><td>46%</td><td><b>20%</b></td><td>2025-08-07</td><td></td><td><a href="https://antidumping.vn/us-tariffs-on-vietnamese-exports-analyzing-the-executive-order-of-july-2025-n29057.html" target="_blank" rel="noopener">antidumping.vn – July 2025 EO</a></td></tr><tr><td>Bangladesh</td><td>IEEPA reciprocal</td><td>37%</td><td><b>20%</b></td><td>2025-08-07</td><td></td><td><a href="https://www.business-humanrights.org/ja/最新ニュース/asia-relief-across-key-apparel-sourcing-countries-as-us-reduces-proposed-tariffs/" target="_blank" rel="noopener">BHRRC – Asia relief as US reduces proposed tariffs</a></td></tr><tr><td>Cambodia</td><td>IEEPA reciprocal</td><td>47%</td><td><b>19%</b></td><td>2025-08-07</td><td></td><td><a href="https://www.business-humanrights.org/ja/最新ニュース/asia-relief-across-key-apparel-sourcing-countries-as-us-reduces-proposed-tariffs/" target="_blank" rel="noopener">BHRRC</a></td></tr><tr><td>Indonesia</td><td>IEEPA reciprocal</td><td>32%</td><td><b>19%</b></td><td>2025-08-07</td><td></td><td><a href="https://www.business-humanrights.org/ja/最新ニュース/asia-relief-across-key-apparel-sourcing-countries-as-us-reduces-proposed-tariffs/" target="_blank" rel="noopener">BHRRC</a> · <a href="https://antidumping.vn/us-tariffs-on-vietnamese-exports-analyzing-the-executive-order-of-july-2025-n29057.html" target="_blank" rel="noopener">antidumping.vn</a></td></tr><tr><td>India</td><td>IEEPA reciprocal (+25% Russia-oil penalty per search summary, not verified on page)</td><td>26%</td><td><b>25%</b></td><td>2025-08-07</td><td></td><td><a href="https://www.business-humanrights.org/ja/最新ニュース/asia-relief-across-key-apparel-sourcing-countries-as-us-reduces-proposed-tariffs/" target="_blank" rel="noopener">BHRRC</a></td></tr><tr><td>China</td><td>IEEPA (cited rate)</td><td>—</td><td><b>55%</b></td><td>2025-08</td><td>antidumping.vn cites 55%; BHRRC cites 145% (April peak) - inconsistent, verify</td><td><a href="https://antidumping.vn/us-tariffs-on-vietnamese-exports-analyzing-the-executive-order-of-july-2025-n29057.html" target="_blank" rel="noopener">antidumping.vn</a></td></tr><tr><td>All</td><td>Supreme Court strikes IEEPA tariffs (Learning Resources v. Trump); CBP stops collecting</td><td>—</td><td><b>0%</b></td><td>ruling 2026-02-20; collection stopped 2026-02-24</td><td></td><td><a href="https://www.vietnam-briefing.com/news/us-supreme-court-blocks-trumps-tariffs-implications-for-vietnam-us-trade.html/" target="_blank" rel="noopener">Vietnam Briefing – Supreme Court blocks tariffs</a></td></tr><tr><td>All incl. Vietnam</td><td>Section 122 global surcharge (150 days); USMCA, CAFTA-DR textiles, ~1,100 Annex II codes exempt</td><td>—</td><td><b>10%</b></td><td>2026-02-24</td><td></td><td><a href="https://www.vietnam-briefing.com/news/us-supreme-court-blocks-trumps-tariffs-implications-for-vietnam-us-trade.html/" target="_blank" rel="noopener">Vietnam Briefing</a></td></tr><tr><td>Vietnam</td><td>Section 301 (forced-labor) tariffs replace expiring Sec.122</td><td>10%</td><td><b>12,5%</b></td><td>2026-07-24</td><td>Vietnam not in textile TRQ</td><td><a href="https://www.morganlewis.com/pubs/2026/07/us-administration-rebuilds-global-tariff-program-under-section-301" target="_blank" rel="noopener">Morgan Lewis – Section 301 global tariff program</a></td></tr><tr><td>Bangladesh / Cambodia / Indonesia</td><td>Section 301</td><td>10%</td><td><b>10%</b></td><td>2026-07-24</td><td>Textile TRQ (duty-free quota tied to US textile inputs, 3-yr) targeted 2026-09-01 for BD, KH, ID, MY</td><td><a href="https://www.morganlewis.com/pubs/2026/07/us-administration-rebuilds-global-tariff-program-under-section-301" target="_blank" rel="noopener">Morgan Lewis</a></td></tr><tr><td>India</td><td>Section 301</td><td>10%</td><td><b>10%</b></td><td>2026-07-24</td><td></td><td><a href="https://www.morganlewis.com/pubs/2026/07/us-administration-rebuilds-global-tariff-program-under-section-301" target="_blank" rel="noopener">Morgan Lewis</a></td></tr><tr><td>Mexico</td><td>Section 301</td><td>10%</td><td><b>10%</b></td><td>2026-07-24</td><td></td><td><a href="https://www.morganlewis.com/pubs/2026/07/us-administration-rebuilds-global-tariff-program-under-section-301" target="_blank" rel="noopener">Morgan Lewis</a></td></tr><tr><td>China</td><td>Section 301</td><td>—</td><td>—</td><td>2026-07-24</td><td>not explicitly listed on page; possibly 12.5% residual group - unverified</td><td><a href="https://www.morganlewis.com/pubs/2026/07/us-administration-rebuilds-global-tariff-program-under-section-301" target="_blank" rel="noopener">Morgan Lewis</a></td></tr></tbody></table></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Mức thuế toàn cầu theo Mục 122 sau phán quyết IEEPA: Vietnam Briefing ghi 10%, VnBusiness ghi 15% — chưa thống nhất. Theo Morgan Lewis, thuế Mục 301 từ 24/07/2026 thay cho Mục 122 hết hạn (không cộng dồn). Mức của Trung Quốc chưa xác minh; phụ thu 25% với Ấn Độ chỉ thấy ở kết quả tìm kiếm.</div></details>
+      <div class="chart-title">Thuế Mỹ với hàng may mặc: Việt Nam so với đối thủ</div>
+      <div class="chart-sub">thuế bổ sung theo từng lớp, cộng thêm vào thuế MFN · hiện hành = Mục 301 từ 24/07/2026</div>
+      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Nước</th><th>IEEPA<br>8/2025–2/2026</th><th>Mục 122<br>24/2–24/7/2026</th><th>Mục 301<br>từ 24/7/2026</th><th>Hạn ngạch miễn thuế dệt may</th><th>Thuế bổ sung hiện hành</th><th>Ghi chú</th><th>Nguồn</th></tr></thead><tbody><tr class="row-focus"><td><b>Việt Nam</b></td><td>20%</td><td>10%</td><td><b>12,5%</b></td><td>Không</td><td><b>12,5%</b></td><td>Thuế chuyển tải 40% hết hiệu lực cùng IEEPA</td><td><a href="https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas" target="_blank" rel="noopener">Kelley Drye – USTR final S301 rates, TRQs (eff. 24-Jul-2026)</a> · <a href="https://www.wilmerhale.com/en/insights/client-alerts/20250804-president-trump-announces-new-reciprocal-tariffs--set-to-take-effect-this-week" target="_blank" rel="noopener">WilmerHale – reciprocal rates eff. 7-Aug-2025 (snippet)</a> · <a href="https://www.ghy.com/trade-compliance/us-10-percent-section-122-tariff/" target="_blank" rel="noopener">GHY – Section 122 10%</a></td></tr><tr><td><b>Trung Quốc</b></td><td>20%</td><td>10%</td><td><b>12,5%</b></td><td>Không</td><td><b>≥ 12,5%</b></td><td>IEEPA = 10% đối ứng + 10% fentanyl (20% trước 10/11/2025); thuế Mục 301 cũ (List 4A 7,5%) chưa xác minh</td><td><a href="https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas" target="_blank" rel="noopener">Kelley Drye – S301 final</a> · <a href="https://www.thompsoncoburn.com/insights/58-november-4-2025-reducing-the-20-ieepa-fentanyl-tariffs-on-china-to-10-reciprocal-tariffs-on-china-remain-at-10-until-november-2026/" target="_blank" rel="noopener">Thompson Coburn – fentanyl 20%→10%, reciprocal 10% (snippet)</a></td></tr><tr><td><b>Bangladesh</b></td><td>20%</td><td>10%</td><td><b>10%</b></td><td>Có</td><td><b>10%</b></td><td>MFN bình quân may mặc ~16,5% (Textalks) → tổng ~26,5%</td><td><a href="https://textalks.com/?p=85234" target="_blank" rel="noopener">Textalks 31-Aug-2026 – ~26.5% effective (16.5% MFN + 10%)</a> · <a href="https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas" target="_blank" rel="noopener">Kelley Drye – S301 final</a></td></tr><tr><td><b>Campuchia</b></td><td>19%</td><td>10%</td><td><b>10%</b></td><td>Có</td><td><b>10%</b></td><td></td><td><a href="https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas" target="_blank" rel="noopener">Kelley Drye</a> · <a href="https://www.wilmerhale.com/en/insights/client-alerts/20250804-president-trump-announces-new-reciprocal-tariffs--set-to-take-effect-this-week" target="_blank" rel="noopener">WilmerHale (snippet)</a></td></tr><tr><td><b>Indonesia</b></td><td>19%</td><td>10%</td><td><b>10%</b></td><td>Có</td><td><b>10%</b></td><td></td><td><a href="https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas" target="_blank" rel="noopener">Kelley Drye</a></td></tr><tr><td><b>Ấn Độ</b></td><td>50%</td><td>10%</td><td><b>10%</b></td><td>Không</td><td><b>10%</b></td><td>IEEPA = 25% đối ứng + 25% phạt dầu Nga</td><td><a href="https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas" target="_blank" rel="noopener">Kelley Drye</a> · <a href="https://www.wilmerhale.com/en/insights/client-alerts/20250804-president-trump-announces-new-reciprocal-tariffs--set-to-take-effect-this-week" target="_blank" rel="noopener">WilmerHale (snippet)</a></td></tr><tr><td><b>Mexico</b></td><td>—</td><td>10%</td><td><b>10%</b></td><td>USMCA</td><td><b>10%</b></td><td>Hàng đạt xuất xứ USMCA miễn thuế MFN và Mục 122</td><td><a href="https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas" target="_blank" rel="noopener">Kelley Drye</a> · <a href="https://www.ghy.com/trade-compliance/us-10-percent-section-122-tariff/" target="_blank" rel="noopener">GHY – S122 exemptions</a></td></tr></tbody></table></div>
+      <p style="font-size:12.5px;line-height:1.6;margin:8px 0 0"><mark class="key-phrase">Tổng thuế = MFN + thuế bổ sung.</mark> Thuế MFN theo dòng hàng như nhau cho Việt Nam, Trung Quốc, Bangladesh, Campuchia, Indonesia, Ấn Độ (không nước nào có FTA với Mỹ), nên chênh lệch giữa các nước nằm ở cột thuế bổ sung: Việt Nam cao hơn nhóm 10% <b>2,5 điểm %</b> và không có hạn ngạch miễn thuế.</p>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Mục 122: GHY và Kelley Drye ghi 10% áp dụng 24/02–24/07/2026 (tuyên bố cho phép tối đa 15%; một số báo ghi 15% nhưng không thấy bằng chứng đã áp). Mục 301 thay Mục 122 khi hết hạn, không cộng dồn. Mức IEEPA 8/2025 và phần giảm thuế fentanyl của Trung Quốc lấy từ kết quả tìm kiếm (WilmerHale, Thompson Coburn), chưa mở trang gốc. MFN bình quân theo từng nước chỉ có số của Bangladesh.</div></details>
     </div>
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="dm-25" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
@@ -618,11 +630,25 @@ body{font-size:14px;line-height:1.45}
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-brands-chart"></table></div></details>
       </div>
     </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="dm-32" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Tồn kho / doanh số cửa hàng quần áo Mỹ</div>
+        <div class="chart-sub">lần · tháng 12 mỗi năm, 2026 theo tháng · thấp hơn = kho sạch hơn</div>
+        <div id="chUsIS"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-us-is"></table></div></details>
+      </div>
+    </div>
     <div class="card" style="margin-top:14px" data-block-id="dm-29" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
       <div class="chart-title">Nhãn hàng lớn: tồn kho, doanh thu và nhận định của ban lãnh đạo</div>
       <div class="chart-sub">kỳ báo cáo gần nhất của từng hãng</div>
       <div class="tablewrap"><table><thead><tr><th>Hãng</th><th>Kỳ</th><th>Kết thúc</th><th>Tồn kho</th><th>Tồn kho YoY</th><th>Doanh thu YoY</th><th>Ban lãnh đạo nói</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Nike</b></td><td>Q1 FY27</td><td>2026-08-31</td><td>7.800 USD</td><td>-3%</td><td>-4%</td><td>GM +60bp on lower warehousing/logistics costs; Greater China and EMEA weak, North America growing</td><td><a href="https://about.nike.com/newsroom/releases/nike-inc-reports-fiscal-2027-first-quarter-results" target="_blank" rel="noopener">Nike Q1 FY27 press release</a></td></tr><tr><td><b>Nike</b></td><td>Q4 FY26</td><td>2026-05-31</td><td>7.500 USD</td><td>+0%</td><td>-1%</td><td>Inventory flat: higher units offset by mix; $986m expected IEEPA tariff recovery added ~900bp to GM</td><td><a href="https://about.nike.com/newsroom/releases/nike-inc-reports-fiscal-2026-fourth-quarter-and-full-year-results" target="_blank" rel="noopener">Nike Q4 FY26 press release</a></td></tr><tr><td><b>Adidas</b></td><td>Q2 2026</td><td>2026-06-30</td><td>5.969 EUR</td><td>+13%</td><td>+13%</td><td>Prioritised availability (World Cup) over inventory optimisation; first small US tariff refund received, US$250-300m potential refunds not in guidance</td><td><a href="https://live.deutsche-boerse.com/news/EQS-Adhoc-adidas-grows-top-line-14-and-achieves-record-sales-in-Q2-increases-full-year-top-line-guidance-32ebe0ea-82c7-4bfa-8076-f52718607d4b" target="_blank" rel="noopener">adidas Q2 2026 ad-hoc release (Deutsche Boerse)</a></td></tr><tr><td><b>H&amp;M</b></td><td>Q3 FY2026 (Jun-Aug)</td><td>2026-08-31</td><td>39.355 SEK</td><td>+3,7%</td><td>+0,3%</td><td>Stock-in-trade up on higher goods in transit from global supply-chain disruption and EU logistics consolidation; ~1.6pp one-off GM benefit from tariffs/import costs; local-currency sales +1%</td><td><a href="https://mb.cision.com/Main/769/4400093/4285249.pdf" target="_blank" rel="noopener">H&amp;M nine-month report 2026 (PDF)</a></td></tr><tr><td><b>Inditex</b></td><td>H1 FY2026 (Feb-Jul)</td><td>2026-07-31</td><td>3.790 EUR</td><td>+9,3%</td><td>+7,6%</td><td>Inventory grew faster than sales; higher freight/input costs from Middle East disruption; Aug-early Sep sales +9%</td><td><a href="https://textalks.com/?p=85402" target="_blank" rel="noopener">Textalks on Inditex H1 2026</a> · <a href="https://fashionunited.uk/news/business/inditex-hits-new-high-reports-profit-of-2-98-billion-euros-with-7-6-percent-growth-through-july/2026090990227" target="_blank" rel="noopener">FashionUnited on Inditex H1 2026</a></td></tr><tr><td><b>Gap</b></td><td>Q2 FY2026</td><td>2026-08-01</td><td>2.297 USD</td><td>+0,1%</td><td>-2%</td><td>$417m net IEEPA tariff recovery in COGS; now assumes ~10% incremental tariff rate vs high-teens before</td><td><a href="https://www.sec.gov/Archives/edgar/data/0000039911/000162828026059262/q22026eprexhibit991.htm" target="_blank" rel="noopener">Gap Q2 FY2026 8-K Ex.99.1</a></td></tr><tr><td><b>Fast Retailing</b></td><td>Q3 FY2026 (9M Sep-May)</td><td>2026-05-31</td><td>497.659 JPY</td><td>—</td><td>+17,1%</td><td>Inventory down JPY13.2bn vs Aug-2025 year-end (YoY not stated); revenue YoY is 9-month cumulative</td><td><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/2026070900203.pdf" target="_blank" rel="noopener">Fast Retailing Q3 FY2026 results (HKEX)</a></td></tr></tbody></table></div>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Inditex lấy từ báo ngành (Textalks, FashionUnited), Fast Retailing từ báo cáo HKEX chỉ so với cuối năm tài chính 8/2025. Doanh thu Gap: 8-K ghi −2%, một bài báo ghi +9% — giữ −2%. Chưa có Lululemon, Columbia, VF, Under Armour và lịch sử 8 quý.</div></details>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="dm-33" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+      <div class="chart-title">Nhãn hàng ↔ doanh nghiệp: mức bằng chứng</div>
+      <div class="chart-sub">tách quan hệ đã xác nhận, theo báo cáo và gián tiếp</div>
+      <div class="tablewrap"><table><thead><tr><th>Nhãn hàng</th><th>Doanh nghiệp</th><th>Bằng chứng</th><th>Mức</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Decathlon</b></td><td>TNG</td><td>Công bố của doanh nghiệp</td><td><span style="color:#27af95;font-weight:700">Đã xác nhận</span></td><td><a href="https://tng.vn/page/tin-bai/TNG-DECATHLON-Dong-hanh-tao-nen-suc-bat-cho-nam-2026-184103" target="_blank" rel="noopener">link</a></td></tr><tr><td><b>Haddad · Columbia · Asmara · Nike</b></td><td>TNG</td><td>Báo chí, CTCK (SHS 13/08/2026)</td><td><span style="color:#c29100;font-weight:700">Báo cáo</span></td><td><a href="https://shinhansec.com.vn/uploads/report/TNG_Q2_2026_VN.pdf" target="_blank" rel="noopener">link</a></td></tr><tr><td><b>adidas · Columbia</b></td><td>TCM</td><td>Báo cáo thường niên các năm trước</td><td><span style="color:#c29100;font-weight:700">Báo cáo</span></td><td><a href="https://www.thanhcong.com.vn/annual-report/" target="_blank" rel="noopener">link</a></td></tr><tr><td><b>Nike · Target · Columbia · Walmart</b></td><td>MSH</td><td>CTCK; cần IR xác nhận</td><td><span style="color:#c29100;font-weight:700">Báo cáo</span></td><td><a href="https://www.songhong.vn/Quan-he-co-dong" target="_blank" rel="noopener">link</a></td></tr><tr><td><b>Nike · adidas (thương hiệu cuối)</b></td><td>STK</td><td>Gián tiếp qua sợi → vải → nhãn hàng</td><td><span style="color:#6b7686;font-weight:700">Gián tiếp</span></td><td><a href="https://www.theky.vn/" target="_blank" rel="noopener">link</a></td></tr></tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Lấy từ dashboard dệt may nội bộ (28/07/2026) và tin công bố; "Báo cáo" chưa phải tỷ trọng doanh thu hiện tại. GIL và ADS chưa có khách hàng công bố.</div></details>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="dm-30" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
       <div class="chart-title">Doanh nghiệp Việt Nam: khách hàng, kế hoạch và kết quả 2026</div>

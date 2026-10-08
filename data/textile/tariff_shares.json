@@ -1,0 +1,58 @@
+{
+ "_meta": {"compiled": "2026-10-08", "note": "Numbers only from pages opened (WebFetch) or search-result snippets citing the URL (flagged 'snippet'). null = not verified."},
+ "tariff_stack": [
+  {"country":"Vietnam","mfn_apparel_pct":null,"mfn_note":"Country-specific apparel MFN average not verified","ieepa_2025_pct":20,"s122_pct":10,"s301_2026_pct":12.5,"china_301_legacy_pct":null,"other_pct":null,"other_note":"IEEPA transshipment 40% (Aug 2025 EO) voided with IEEPA by SCOTUS 20-Feb-2026; no transshipment penalty in S301 final action (Kelley Drye)","trq_exemption":"No – not in S301 textile TRQ list","total_additional_pct":12.5,"total_indicative_pct":null,"as_of":"2026-10-08",
+   "sources":[{"label":"Kelley Drye – USTR final S301 rates, TRQs (eff. 24-Jul-2026)","url":"https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas"},{"label":"WilmerHale – reciprocal rates eff. 7-Aug-2025 (snippet)","url":"https://www.wilmerhale.com/en/insights/client-alerts/20250804-president-trump-announces-new-reciprocal-tariffs--set-to-take-effect-this-week"},{"label":"GHY – Section 122 10%","url":"https://www.ghy.com/trade-compliance/us-10-percent-section-122-tariff/"},{"label":"Textalks – VN 12.5% S301","url":"https://textalks.com/?p=85234"}]},
+  {"country":"China","mfn_apparel_pct":null,"mfn_note":"not verified","ieepa_2025_pct":20,"s122_pct":10,"s301_2026_pct":12.5,"china_301_legacy_pct":null,"other_pct":null,"other_note":"IEEPA 2025: reciprocal 10% + fentanyl 20% → fentanyl cut to 10% from 10-Nov-2025 (total IEEPA 20% from then; 30% before). Legacy S301 List 4A 7.5% on most apparel NOT verified from an opened page","trq_exemption":"No","total_additional_pct":null,"total_indicative_pct":null,"as_of":"2026-10-08",
+   "sources":[{"label":"Kelley Drye – S301 final","url":"https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas"},{"label":"Thompson Coburn – fentanyl 20%→10%, reciprocal 10% (snippet)","url":"https://www.thompsoncoburn.com/insights/58-november-4-2025-reducing-the-20-ieepa-fentanyl-tariffs-on-china-to-10-reciprocal-tariffs-on-china-remain-at-10-until-november-2026/"}]},
+  {"country":"Bangladesh","mfn_apparel_pct":16.5,"mfn_note":"Average MFN on Bangladesh apparel per Textalks (method not stated)","ieepa_2025_pct":20,"s122_pct":10,"s301_2026_pct":10,"china_301_legacy_pct":null,"other_pct":null,"other_note":"","trq_exemption":"Yes – S301 duty-free TRQ for textiles/apparel tied to US cotton/input imports; 3 years; quota volumes pending","total_additional_pct":10,"total_indicative_pct":26.5,"as_of":"2026-10-08",
+   "sources":[{"label":"Textalks 31-Aug-2026 – ~26.5% effective (16.5% MFN + 10%)","url":"https://textalks.com/?p=85234"},{"label":"Kelley Drye – S301 final","url":"https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas"}]},
+  {"country":"Cambodia","mfn_apparel_pct":null,"mfn_note":"not verified","ieepa_2025_pct":19,"s122_pct":10,"s301_2026_pct":10,"china_301_legacy_pct":null,"other_pct":null,"other_note":"","trq_exemption":"Yes – S301 textile/apparel TRQ (volumes pending)","total_additional_pct":10,"total_indicative_pct":null,"as_of":"2026-10-08",
+   "sources":[{"label":"Kelley Drye","url":"https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas"},{"label":"WilmerHale (snippet)","url":"https://www.wilmerhale.com/en/insights/client-alerts/20250804-president-trump-announces-new-reciprocal-tariffs--set-to-take-effect-this-week"}]},
+  {"country":"Indonesia","mfn_apparel_pct":null,"mfn_note":"not verified","ieepa_2025_pct":19,"s122_pct":10,"s301_2026_pct":10,"china_301_legacy_pct":null,"other_pct":null,"other_note":"","trq_exemption":"Yes – S301 textile/apparel TRQ (volumes pending)","total_additional_pct":10,"total_indicative_pct":null,"as_of":"2026-10-08",
+   "sources":[{"label":"Kelley Drye","url":"https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas"}]},
+  {"country":"India","mfn_apparel_pct":null,"mfn_note":"not verified","ieepa_2025_pct":50,"s122_pct":10,"s301_2026_pct":10,"china_301_legacy_pct":null,"other_pct":null,"other_note":"IEEPA 25% reciprocal (7-Aug-2025) + 25% Russian-oil (27-Aug-2025) = 50%; any later reduction before Feb-2026 not verified","trq_exemption":"No","total_additional_pct":10,"total_indicative_pct":null,"as_of":"2026-10-08",
+   "sources":[{"label":"Kelley Drye","url":"https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas"},{"label":"WilmerHale (snippet)","url":"https://www.wilmerhale.com/en/insights/client-alerts/20250804-president-trump-announces-new-reciprocal-tariffs--set-to-take-effect-this-week"}]},
+  {"country":"Mexico","mfn_apparel_pct":null,"mfn_note":"USMCA-originating goods duty-free","ieepa_2025_pct":null,"s122_pct":10,"s301_2026_pct":10,"china_301_legacy_pct":null,"other_pct":null,"other_note":"S122 exempted USMCA-eligible goods (9903.03.08); whether S301 exempts USMCA goods not verified","trq_exemption":"USMCA (S122)","total_additional_pct":10,"total_indicative_pct":null,"as_of":"2026-10-08",
+   "sources":[{"label":"Kelley Drye","url":"https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas"},{"label":"GHY – S122 exemptions","url":"https://www.ghy.com/trade-compliance/us-10-percent-section-122-tariff/"}]}
+ ],
+ "vn_tariff_history": [
+  {"date":"2025-04-02","rate_pct":46,"measure":"IEEPA reciprocal announced (10% baseline applied from 5-Apr-2025 during pause; baseline not verified from opened page)","sources":[{"label":"WilmerHale (snippet)","url":"https://www.wilmerhale.com/en/insights/client-alerts/20250804-president-trump-announces-new-reciprocal-tariffs--set-to-take-effect-this-week"}]},
+  {"date":"2025-08-07","rate_pct":20,"measure":"IEEPA reciprocal (EO 31-Jul-2025); 40% transshipment penalty","sources":[{"label":"WilmerHale (snippet)","url":"https://www.wilmerhale.com/en/insights/client-alerts/20250804-president-trump-announces-new-reciprocal-tariffs--set-to-take-effect-this-week"}]},
+  {"date":"2026-02-20","rate_pct":0,"measure":"SCOTUS Learning Resources v. Trump (6-3) voids IEEPA tariffs","sources":[{"label":"Baker Botts (snippet)","url":"https://ourtake.bakerbotts.com/post/102mjxj/trump-tariff-tracker-supreme-court-update-february-20-2026"}]},
+  {"date":"2026-02-24","rate_pct":10,"measure":"Section 122 global surcharge, 150 days","sources":[{"label":"GHY","url":"https://www.ghy.com/trade-compliance/us-10-percent-section-122-tariff/"}]},
+  {"date":"2026-07-24","rate_pct":12.5,"measure":"S122 expires; Section 301 (forced labor) 12.5% + MFN","sources":[{"label":"Kelley Drye","url":"https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas"}]}
+ ],
+ "shares": {
+  "US": {"basis":"OTEXA apparel; 2025 = value; 2020-21 from Just-Style (article emphasises volume/SME – basis uncertain); 2024 = Jan-Oct value",
+   "total_usd_bn":{"2023":77.926,"2024":79.257,"2025":77.88,"2026H1":35.09},
+   "series":{
+    "Vietnam":{"2020":16.37,"2021":14.84,"2024_JanOct":18.88,"2025":21.50},
+    "China":{"2019":39.83,"2020":36.60,"2021":37.76,"2024_JanOct":20.83,"2025":13.66},
+    "Bangladesh":{"2020":8.17,"2021":8.84,"2024":9.26,"2025":10.53},
+    "India":{"2020":3.91,"2021":4.35,"2024_JanOct":5.89},
+    "Indonesia":{"2020":3.99,"2021":3.76,"2024_JanOct":5.33},
+    "Cambodia":{"2020":4.87,"2021":4.22,"2024_JanOct":4.75},
+    "Mexico":{"2020":2.94,"2021":2.80}},
+   "yoy_2026H1_value_pct":{"Vietnam":1.08,"China":-37.69,"Bangladesh":-5.75,"India":-25.27,"Cambodia":12.32,"Indonesia":3.40},
+   "sources":[{"label":"Apparel Resources – 2025 OTEXA","url":"https://apparelresources.com/business-news/trade-business-news/bangladesh-raises-us-apparel-market-share-10-53-chinas-exports-decline/"},{"label":"Just-Style 2019-21","url":"https://www.just-style.com/features/analysis-china-market-share-of-us-apparel-imports-rises-after-four-year-lull/"},{"label":"Global Textile Times 2024 (snippet)","url":"https://www.globaltextiletimes.com/trends/us-apparel-imports-2024-market-shifts-and-sourcing-trends/"},{"label":"UNB H1 2026","url":"https://unb.com.bd/category/Business/us-apparel-imports-drop-in-h1-2026-bangladesh-sees-mixed-performance/192473"}]},
+  "EU": {"basis":"Eurostat extra-EU apparel, Jan-Nov 2025, EUR bn","total_eur_bn":{"2025_JanNov":82.94},
+   "values_eur_bn":{"China":{"2025_JanNov":24.42},"Bangladesh":{"2025_JanNov":18.06},"Turkiye":{"2025_JanNov":7.66},"Vietnam":{"2025_JanNov":4.02}},
+   "series_pct_derived":{"China":{"2025_JanNov":29.4},"Bangladesh":{"2025_JanNov":21.8},"Turkiye":{"2025_JanNov":9.2},"Vietnam":{"2025_JanNov":4.8}},
+   "series":{},"sources":[{"label":"Search snippet citing Eurostat (UNB/Financial Express) – not opened","url":"https://thefinancialexpress.com.bd/trade/bangladeshs-garment-exports-to-europe-exceed-eur18-billion-growing-over-75-per-cent"}]},
+  "JP": {"series":{},"sources":[],"note":"not researched/verified – null"},
+  "KR": {"series":{},"sources":[],"note":"not researched/verified – null"}
+ },
+ "us_clothing_is_ratio": [
+  {"period":"2019-12","value":2.30},{"period":"2020-12","value":2.25},{"period":"2021-12","value":2.09},{"period":"2022-12","value":2.37},{"period":"2023-12","value":2.27},{"period":"2024-12","value":2.22},{"period":"2025-12","value":2.15},
+  {"period":"2026-01","value":2.16},{"period":"2026-02","value":2.10},{"period":"2026-03","value":2.11},{"period":"2026-04","value":2.13},{"period":"2026-05","value":2.11},{"period":"2026-06","value":2.14},{"period":"2026-07","value":2.11,
+   "sources":[{"label":"FRED MRTSIR448USS","url":"https://fred.stlouisfed.org/series/MRTSIR448USS"}]}
+ ],
+ "conflicts": [
+  "Section 122 rate: proclamation/CBP-based sources (GHY, Crane, Kelley Drye) say 10% applied; Global Trade Alert snippet says raised to 15% on 22-Feb. Proclamation allowed up to 15% but no implementation found → use 10%.",
+  "China 2024 US share: 20.83% is Jan-Oct 2024 value (OTEXA via search snippet) vs 33.2% H1-2024 in Global Textile Times (likely volume/SME basis) – different bases.",
+  "US 2020-21 shares (Just-Style) may be volume (SME) not value; not directly comparable with 2024-25 value shares.",
+  "Bangladesh 2024 US share: 9.26% (Apparel Resources/Daily Star, full year) vs 9.37% (snippet, Jan-Oct).",
+  "Pre-Feb-2026 India IEEPA rate (50%) may have changed in late 2025/early 2026 – not verified."
+ ]
+}
