@@ -106,6 +106,30 @@ if (sd.length) {
     sd.slice().sort((a, b) => qk(b.quarter) - qk(a.quarter)).map(r => [`${r.quarter} · ${r.city} · ${r.source_firm}`, nf(r.total_new_units), join(r.by_segment, s => `${s.segment}: ${s.units_or_share ?? '—'}`), join(r.by_location, s => `${s.area}: ${s.units_or_share ?? '—'}`), r.note || '']));
   sources('tbl-supply-detail', sd.map(r => ({...r, quarter: `${r.quarter} ${r.city} ${r.source_firm}`})));
 }
+// Cơ cấu cung mới: chỉ vẽ phần các hãng công bố đủ để cộng thành 100%; "Còn lại" = 100 trừ phần đã công bố.
+// Số từ data/realestate-market/supply_detail.json (CBRE, Savills).
+if (document.getElementById('chSupplyFirms')) {
+  chart('chSupplyFirms', {categories: ['Hà Nội', 'TP.HCM'], unit: 'căn', digits: 0, aria: 'Căn hộ mở bán mới Q2/2026 theo hãng',
+    series: [{name: 'CBRE', color: C.navy, values: [8590, 6573]}, {name: 'Savills', color: C.teal, values: [5317, 1800]}]});
+  legend('chSupplyFirms', [['CBRE', C.navy], ['Savills', C.teal]]);
+  const h = document.getElementById('chSupplyFirms').closest('.card');
+  h?.insertBefore(note('CBRE Hà Nội Q2 = 16.600 căn 6 tháng trừ 8.010 căn Q1 (tự tính). CBRE TP.HCM là thành phố sau sáp nhập (gồm Bình Dương cũ); Savills có thể chưa gồm, nên hai hãng lệch gần 4 lần. Hấp thụ: CBRE HN 68%, CBRE HCM 73% dự án mới; Savills HCM 32% (6 tháng).'), h.querySelector('details'));
+}
+if (document.getElementById('chSupplyLoc')) {
+  chart('chSupplyLoc', {categories: ['Hà Nội Q1/2026', 'TP.HCM Q2/2026'], unit: '%', digits: 0, stackable: true, native: 'stack', aria: 'Cơ cấu cung mới theo khu vực',
+    series: [{name: 'Tỉnh giáp ranh (Văn Giang · Bình Dương cũ)', color: C.plum, values: [42, 80]},
+      {name: 'Huyện ngoại thành HN (Hoài Đức, Gia Lâm, Đông Anh)', color: C.gold, values: [37, null]},
+      {name: 'Còn lại', color: C.grey, values: [21, 20]}]});
+  legend('chSupplyLoc', [['Tỉnh giáp ranh (Văn Giang · Bình Dương cũ)', C.plum], ['Ngoại thành HN', C.gold], ['Còn lại', C.grey]]);
+}
+if (document.getElementById('chSupplyPrice')) {
+  chart('chSupplyPrice', {categories: ['HN Q1 · CBRE', 'HN Q2 · CBRE', 'HCM Q2 · Savills'], unit: '%', digits: 0, stackable: true, native: 'stack', aria: 'Cơ cấu cung mới theo mức giá',
+    series: [{name: '60–80', color: C.teal, values: [60, null, null]}, {name: '80–100', color: C.navy, values: [null, 30, null]},
+      {name: 'Trên 120', color: C.plum, values: [null, 35, 80]}, {name: 'Mức khác / không công bố', color: C.grey, values: [40, 35, 20]}]});
+  legend('chSupplyPrice', [['60–80', C.teal], ['80–100', C.navy], ['Trên 120', C.plum], ['Mức khác', C.grey]]);
+  document.getElementById('chSupplyPrice').closest('.card')?.append(note('Dưới 60 triệu đ/m²: 0% ở Hà Nội cả Q1 và Q2/2026 (CBRE). HN Q1 "60–80" là "trên 60%", vẽ ở mức sàn 60%. Savills Hà Nội Q2: không còn căn dưới 70, khoảng 60% từ 90 trở lên (khác thang mức giá nên không vẽ chung).'));
+  sources('chSupplyPrice', sd.filter(r => /CBRE|Savills/.test(r.source_firm)).map(r => ({...r, quarter: `${r.quarter} ${r.city} ${r.source_firm}`})));
+}
 const pv = D.provinces || [];
 if (pv.length) {
   const seg = {apartment: 'Căn hộ', 'townhouse-villa': 'Nhà phố, biệt thự', 'land plot': 'Đất nền'};
