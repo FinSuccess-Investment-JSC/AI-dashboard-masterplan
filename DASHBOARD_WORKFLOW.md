@@ -203,7 +203,7 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 ## Sub-tab trong tab lớn (thí điểm Dầu khí, 08/10/2026)
 
 - `assets/pane-subtabs.js` (load sau research-editorial): chia tab lớn thành sub-tab cùng kiểu nút "Thế giới / Việt Nam" (`.supply-tabs .tabbtn`). Nhóm khai báo tường minh bằng selector theo từng tab; node được di chuyển, không nhân bản.
-- Dầu khí: **Tổng quan** = Chuỗi giá trị / Mô hình kinh doanh / So sánh tài chính / Dashboard doanh nghiệp · **Policy** = Điều hành giá / Luật Dầu khí 2026 · **Sources** = Độ tin cậy / Nguồn dữ liệu / Tài liệu khác. Bức tranh ngành giữ sub-tab địa lý sẵn có; Catalyst/Risk đã gọn nên không chia; Chủ đề nóng giữ nút Đang theo dõi / Đã lưu.
+- Dầu khí: **Tổng quan** = Chuỗi giá trị / Mô hình kinh doanh / So sánh tài chính · **Policy** = Điều hành giá / Luật Dầu khí 2026 · **Sources** = Độ tin cậy / Nguồn dữ liệu / Tài liệu khác. Bức tranh ngành giữ sub-tab địa lý sẵn có; Catalyst/Risk đã gọn nên không chia; Chủ đề nóng giữ nút Đang theo dõi / Đã lưu.
 - Sub-tab chỉ chứa một khối gấp thì tự mở khi bấm. Link bằng chứng trỏ vào sub-tab ẩn sẽ tự mở sub-tab đó.
 
 ## Áp cho tất cả ngành (08/10/2026)
@@ -219,3 +219,10 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Nhóm B (Wi, không có feed script):** `data/realestate-wi-contract.json` liệt kê 9 lời gọi WiMCP (TPDN BĐS: cashflow, issuance tháng, lịch đáo hạn 2026/2027; vĩ mô: FDI BĐS 77101/77044, GDP BĐS 80032, CPI nhà ở 75777/75708, tín dụng 75926/75931, tiền gửi 75920, tái cấp vốn 81497, FDI thực hiện 76951, FDI CBCT 77100, IIP CBCT 202899; commodity thép 74362, xi măng 80961; sector_ratio_daily 157/159/160/161). Hook `wi_capture.py` lưu kết quả; `scripts/build_realestate_wi.py` dựng `data/realestate-wi-data.js` (+`.json`), giữ last-good khi thiếu. Lịch đáo hạn 2027 vượt trần hiển thị của tool → `--restore <file tool-results> <capture>`. Endpoint đáo hạn không lọc ngành phía server; lọc `sector_l1 = Bất động sản` khi dựng.
 - **Nhóm C (routine tài liệu):** Bộ Xây dựng quý, CBRE/Savills/VARS, Cushman/JLL (KCN), văn bản pháp lý, tín dụng BĐS và lãi vay mua nhà, chủ đề nóng; số rời theo báo cáo, không nối thành chuỗi. Chart tài liệu (`chHousePrice`, `chKcnRent`, `chMortgage`, `chLandPrice`) nằm trong inline JS của trang.
 - **Khoảng trống còn ghi trên trang:** chưa có chuỗi tín dụng kinh doanh BĐS theo tháng, lãi vay mua nhà theo chuỗi, số căn mở bán theo tháng; Q3/2026 của Bộ Xây dựng/CBRE chưa công bố; hệ số rủi ro tín dụng BĐS 2026 và cơ chế thuế quan Mỹ sau 24/07/2026 chưa xác minh.
+
+## 19. Chỉnh UX đợt 3 (08/10/2026, áp cho mọi dashboard)
+
+- **Bỏ mục "Dashboard doanh nghiệp"** (placeholder "Sẽ bổ sung dashboard") ở mọi ngành; sub-tab Tổng quan còn Chuỗi giá trị / Mô hình kinh doanh / So sánh tài chính (+ "Doanh nghiệp theo dõi" ở Điện và BĐS, "Mùa vụ & sản phẩm phụ" ở Đường vì còn nội dung riêng).
+- **Không để ô trống trong lưới hai cột:** `assets/layout-balance.js` đếm thẻ theo từng đoạn giữa các hàng full-width; đoạn lẻ thì thẻ cuối chiếm cả hàng, chart bên trái, "Cách hiểu trong bối cảnh ngành" (lấy từ popover ⓘ) bên phải; thẻ không có lời đọc vẫn chiếm cả hàng (chart tối đa 760px, canh giữa). Thẻ chart đứng lẻ trước một lưới được nhập vào lưới đó. Thẻ chart mới nên luôn có `chart-insight`.
+- **Catalyst/Risk:** kết luận, bảng Tín hiệu và Sắp tới là thẻ trắng chuẩn (class `card`), đầu trang dùng `.sectionhead` như các tab khác; bỏ khối nền navy.
+- **Chủ đề nóng:** mỗi chủ đề là một sub-tab (nhãn = phần tên trước " · "), bỏ khung viền xanh và fold lồng nhau; bộ lọc Đang theo dõi/Đã lưu, xuất JSON và "Thêm chủ đề" nằm dưới nội dung; góc nhìn analyst là một fold nhỏ cuối chủ đề.

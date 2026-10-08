@@ -5,16 +5,16 @@
   const sector=document.body.dataset.sector==='power'?'power':document.body.dataset.sector==='bank'?'bank':document.body.dataset.sector==='realestate'?'realestate':document.getElementById('chCurve')?'oil':'sugar';
   const card=i=>(n,root)=>[...root.children].filter(c=>c.matches('.card'))[i]===n;
   const common={
-    mt1:[['Chuỗi giá trị','.research-roadmap,.value-chain-card'],['Mô hình kinh doanh','.business-models'],['So sánh tài chính','.financial-comparison'],['Dashboard doanh nghiệp','.company-dashboard-links,:scope>.section']],
+    mt1:[['Chuỗi giá trị','.research-roadmap,.value-chain-card'],['Mô hình kinh doanh','.business-models'],['So sánh tài chính','.financial-comparison']],
     mt8:[['Độ tin cậy','.focus-card,.classification-key,.update-legend'],['Nguồn dữ liệu','.card:not(.focus-card),.source-register'],['Tài liệu khác','.research-fold']]
   };
   const config={
     oil:{...common,mt4:[['Điều hành giá','.policy-impact,.policy-visuals,.card:has(h2,h3):not(:has(.compare-table))'],['Luật Dầu khí 2026','.card:has(.compare-table)']]},
-    power:{...common,mt4:[['Giá điện',card(0)],['Quy hoạch điện VIII',card(1)],['DPPA & điện mái nhà',card(2)]]},
-    sugar:{...common},
-    realestate:{...common,mt4:[['Đất đai & bảng giá đất',card(0)],['Nhà ở & NOXH',card(1)],['Tín dụng & trái phiếu',card(2)]],mt10:[['Trái phiếu BĐS','.bds-bond'],['Tín dụng & lãi suất','.bds-credit']],mt11:[['Khung pháp lý','.bds-legal'],['Bảng giá đất','.bds-landprice'],['Dự án theo dõi','.bds-projects']]},
+    power:{...common,mt1:[...common.mt1,['Doanh nghiệp theo dõi',':scope>.section']],mt4:[['Giá điện',card(0)],['Quy hoạch điện VIII',card(1)],['DPPA & điện mái nhà',card(2)]]},
+    sugar:{...common,mt1:[...common.mt1,['Mùa vụ & sản phẩm phụ',':scope>.section']]},
+    realestate:{...common,mt1:[...common.mt1,['Doanh nghiệp theo dõi','.grid.two']],mt4:[['Đất đai & bảng giá đất',card(0)],['Nhà ở & NOXH',card(1)],['Tín dụng & trái phiếu',card(2)]],mt10:[['Trái phiếu BĐS','.bds-bond'],['Tín dụng & lãi suất','.bds-credit']],mt11:[['Khung pháp lý','.bds-legal'],['Bảng giá đất','.bds-landprice'],['Dự án theo dõi','.bds-projects']]},
     bank:{
-      mt1:[['Luồng vốn','.research-roadmap,.card:not(.compact-chart-card)'],['Mô hình kinh doanh','.business-models,.bank-framework'],['So sánh tài chính','.financial-comparison'],['Dashboard doanh nghiệp','.company-dashboard-links'],['Đọc nhanh','.grid.two,.sectionhead:not(:first-child),.monitor-grid']],
+      mt1:[['Luồng vốn','.research-roadmap,.card:not(.compact-chart-card)'],['Mô hình kinh doanh','.business-models,.bank-framework'],['So sánh tài chính','.financial-comparison'],['Đọc nhanh','.grid.two,.sectionhead:not(:first-child),.monitor-grid']],
       mt4:[['Mốc pháp lý','.policy-impact,.card'],['Room tín dụng','.grid.two,.note']],
       mt8:common.mt8
     }

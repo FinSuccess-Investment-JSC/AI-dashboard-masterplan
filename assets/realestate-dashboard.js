@@ -213,6 +213,12 @@ if(quick&&lastClosed){
  quick.innerHTML='';const b=make('b','','Đọc nhanh từ dữ liệu Wi: ');quick.append(b,`TPDN bất động sản còn ${nf(lastClosed.outstanding_value/1000,0)} nghìn tỷ dư nợ (${mon(lastClosed.date)}), chậm trả ${nf(lastClosed.late_payment_debt/1000,1)} nghìn tỷ tại ${lastClosed.late_issuer_count} doanh nghiệp; 12 tháng tới có ${nf(due12/1000,1)} nghìn tỷ gốc đến hạn. `+(fdi?`FDI đăng ký vào BĐS ${fdi.date.slice(0,4)} đến T${Number(fdi.date.slice(5,7))}: ${nf(fdi.value/1000,2)} tỷ USD${fdiPrev?' ('+signed((fdi.value/fdiPrev.value-1)*100,1)+'% so cùng kỳ)':''}. `:'')+(resLast?`P/B phân ngành dân cư ${nf(resLast[2],2)}x.`:''));
  Object.assign(quick.dataset,{updateKind:'ai',cadence:'on-data-change',refreshStatus:'derived'});
 }
+
+// Reading notes for the charts drawn from document figures (inline JS in the page).
+insight('chHousePrice','Giá sơ cấp Hà Nội (95–116) cao hơn mặt bằng thứ cấp (60) gần gấp rưỡi đúng lúc thứ cấp bắt đầu giảm: giá mở bán đang được kéo bằng cơ cấu dự án cao cấp, không phải bằng cầu rộng. Ba nguồn dùng ba rổ dự án khác nhau nên không so chéo.');
+insight('chKcnRent','Giá thuê đất miền Nam cao hơn miền Bắc khoảng 35% và tăng chậm hơn, trong khi lấp đầy cũng cao hơn (76% so với 64%): cầu miền Nam bị giới hạn bởi quỹ đất, miền Bắc bị giới hạn bởi cung mới. Đây là giá chào, không phải giá ký thực tế.');
+insight('chMortgage','Lãi suất sau ưu đãi (13–16%) cao hơn lãi suất ưu đãi (8,2–10,5%) từ 3 đến 6 điểm %: người vay đối mặt cú tăng khi hết ưu đãi. Đây là mốc khảo sát rời tháng 9/2026, không phải chuỗi; đối chiếu với tín dụng tiêu dùng BĐS −1,32% trong 5 tháng 2026.');
+insight('chLandPrice','Mức tăng bảng giá đất chênh rất lớn giữa nội đô và vùng mở rộng: dự án ở Bình Dương cũ, Bà Rịa – Vũng Tàu cũ chịu tiền sử dụng đất tăng nhiều lần, nội đô Hà Nội chỉ tăng vài phần trăm. Chart vẽ cận trên của khoảng tăng nên là mức tối đa, không phải trung bình.');
 // Sources table and meta
 const metaRow=document.getElementById('wi-built');if(metaRow)metaRow.textContent='Dựng từ WiMCP ngày '+built+' · các lời gọi ghi trong data/realestate-wi-contract.json.';
 // Analyst input slot (parity with other sectors)

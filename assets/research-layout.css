@@ -63,3 +63,25 @@ body[data-sector="bank"] .wi-table-fold .wi-table table{margin:0}
 /* A chart card that sits alone in a pane keeps the same size as chart cards in two-column rows. */
 .supply-pane>.card:has([id^="ch"]:not([id^="chain"])),.pane-subpane>.card:has([id^="ch"]:not([id^="chain"])){width:calc(50% - 8px);max-width:100%}
 @media(max-width:900px){.supply-pane>.card:has([id^="ch"]:not([id^="chain"])),.pane-subpane>.card:has([id^="ch"]:not([id^="chain"])){width:100%}}
+/* Odd chart card at the end of a two-column grid: full row, chart left, reading text right (no empty half). */
+.grid.two>.card.is-lone,.research-grid>.card.is-lone{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:28px;align-items:start}
+.is-lone>*{grid-column:1}
+.is-lone>.lone-aside{grid-column:2;grid-row:1/span 14;align-self:center;padding:16px 18px;background:#f7fafb;border:1px solid #e1eaef;border-radius:12px}
+.is-lone>.lone-aside .chart-insight{margin:0;padding:0;background:transparent;border:0;font-size:13px;line-height:1.7}
+.is-lone>.lone-aside .chart-insight+.chart-insight{margin-top:10px}
+@media(max-width:900px){.grid.two>.card.is-lone,.research-grid>.card.is-lone{display:block}.is-lone>.lone-aside{margin-top:12px}}
+/* Chủ đề nóng: topics are sub-tab panes, not framed fold boxes. */
+.research-topics>.research-topic{border:0;border-left:0;background:transparent;padding:0;margin:0;border-radius:0}
+.research-topic.topic-off{display:none!important}
+.research-topic>.research-fold{border:0;background:transparent;margin:0;box-shadow:none;border-radius:0}
+.research-topic>.research-fold>summary{pointer-events:none;list-style:none;border:0!important;padding:2px 0 14px;font-size:18px;font-weight:700;color:var(--fs-navy,#19316f)}
+.research-topic>.research-fold>summary::-webkit-details-marker{display:none}.research-topic>.research-fold>summary::marker{content:""}
+.research-topic>.research-fold>.research-detail{padding:0}
+.research-topic>.research-fold>.research-detail>.card+.card{margin-top:14px}
+.research-topic>.research-fold>.research-detail>.research-fold{margin:18px 0 0;border:1px solid var(--fs-line,#dce6ed);border-radius:12px;background:#fff}
+.research-topic>.research-fold>.research-detail>.research-fold>summary{padding:11px 14px;font-size:12.5px;font-weight:600;color:#4f6b7e}
+.research-topic>.research-fold>.research-detail>.research-fold .research-editor{margin:0;border-radius:0 0 12px 12px}
+.research-toolbar{margin:18px 0 8px}
+.grid>.subhead,.grid>.subsub,.research-grid>.subhead,.research-grid>.subsub{grid-column:1/-1}
+.grid.two>.card.is-lone-plain,.research-grid>.card.is-lone-plain{grid-column:1/-1}
+.is-lone-plain svg.chartsvg,.is-lone-plain svg.ct-svg{display:block;max-width:760px;margin-inline:auto}

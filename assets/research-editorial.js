@@ -71,5 +71,23 @@ const backup=make('button','','Xuất bản sao JSON');backup.type='button';tool
 hot.append(make('p','research-caption',failures.length?'Không mở được cơ sở dữ liệu của trình duyệt; các nút lưu chưa khả dụng.':'Lưu trên trình duyệt này · xuất JSON để giữ bản sao.'));
 // Key figures in prose stand out after every block has settled.
 document.querySelectorAll('.thesis-signal,.thesis-scenario-panel,.thesis-fold-body,.majorpane[data-tab="mt4"] .research-detail,.majorpane[data-tab="mt4"] .policy-timeline,.research-topic,.research-steps,.business-models').forEach(n=>R.emphasize(n));
+// Hot topics read like the other tabs: one sub-tab per topic; lifecycle filter, JSON backup and "add topic" sit below the content.
+(()=>{
+ const bar=make('div','supply-tabs pane-subtabs topic-tabs');bar.setAttribute('role','tablist');bar.setAttribute('aria-label','Chủ đề');list.before(bar);empty.after(toolbar);
+ let selected=null;
+ function sync(){
+  const ts=[...list.querySelectorAll(':scope > .research-topic')].filter(t=>!t.hidden);
+  if(!ts.includes(selected))selected=ts[0]||null;
+  bar.replaceChildren();bar.hidden=ts.length<2;
+  ts.forEach(t=>{
+   const title=t.querySelector(':scope > .research-fold > summary')?.childNodes[0]?.textContent.trim()||'Chủ đề';
+   const b=make('button','tabbtn',title.split(' · ')[0]);b.type='button';b.title=title;b.setAttribute('role','tab');b.setAttribute('aria-selected',String(t===selected));b.tabIndex=t===selected?0:-1;
+   b.onclick=()=>{selected=t;sync()};bar.append(b);
+  });
+  ts.forEach(t=>t.classList.toggle('topic-off',ts.length>1&&t!==selected));
+ }
+ new MutationObserver(sync).observe(list,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden']});
+ sync();
+})();
 filter();document.body.dataset.editorialReady='true';
 })();

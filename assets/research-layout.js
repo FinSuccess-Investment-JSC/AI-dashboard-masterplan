@@ -141,9 +141,6 @@ const credibility=block('dau-khi-04');if(credibility)sources.append(credibility)
 $$('.classification-key,.global-gap,.update-legend').forEach(n=>sources.append(n));
 $$('.card').filter(n=>/Nguồn chưa gắn được đường dẫn|Nguồn dữ liệu và khả năng tự động cập nhật/.test(n.querySelector('h3')?.textContent||'')).forEach(n=>sources.append(n));
 $$('.thesis-source-row').forEach(n=>{const wrap=make('section','source-register');wrap.append(make('h3','','Nguồn của bản phân tích Catalyst/Risk'),n);sources.append(wrap)});
-const players=make('section','company-dashboard-links');players.append(make('h2','','Dashboard doanh nghiệp'));const companyLinks=make('div','company-link-grid');
-const tickers=re?['VHM','NVL','KDH','NLG','DXG','PDR','DIG','CEO','AGG','TCH','NTL','KBC','IDC','BCM','SZC','SIP','VGC','LHG','VRE','DXS']:power?['POW','NT2','PPC','QTP','HND','BTP','REE','VSH','CHP','SBA','TMP','SHP','GEG','HDG','TTA','PC1','TV2','GEX']:oil?['GAS','BSR','PLX','PVD','PVS','PVT']:bank?['VCB','CTG','BID','TCB','VPB','MBB','ACB','HDB','TPB','VIB','SHB']:['SBT','QNS','SLS','LSS','KTS'];
-tickers.forEach(t=>{const n=make('div','company-dashboard-pending');n.append(make('b','',t),make('span','','Sẽ bổ sung dashboard'));companyLinks.append(n)});players.append(companyLinks);comp.after(players);
 window.FinancialComparison?.mount(comp,{sector,sources});
 // Remove the previous summary from the product flow; source metadata remains in Sources.
 const hero=$('.hero');if(hero){const header=make('header','research-header');header.append(make('h1','',oil?'Dầu khí':bank?'Ngân hàng':power?'Điện':re?'Bất động sản':'Đường'));hero.before(header);preserveProvenance(hero);hero.remove();}

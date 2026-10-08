@@ -43,42 +43,33 @@
 .has-thesis-board .analyst-input{margin-top:15px}
 [id^=bank-],[id^=ch],.thesis-board{scroll-margin-top:90px}
 @media(max-width:700px){.thesis-signals{grid-template-columns:1fr;gap:12px}.thesis-heading h2{font-size:23px}.thesis-signal,.thesis-scenarios{padding:16px}.thesis-signal-top{gap:7px}.thesis-state{font-size:9px}.thesis-metric{font-size:22px}.thesis-scenario-tabs button{font-size:11px;padding:9px 11px}.thesis-filter select{max-width:100%}[id^=bank-],[id^=ch],.thesis-board{scroll-margin-top:180px}}
-/* Oil pilot: verdict-first reading order. */
+/* Catalyst/Risk: same white cards as the rest of the project (class "card" supplies bg, border, radius, shadow). */
 .cr-brief{display:grid;gap:16px;margin-bottom:18px}
-.cr-verdict{padding:20px 22px;border-radius:10px;background:#173f51;color:#fff}
-.cr-verdict-label{font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#9fd8cb}
-.cr-verdict h3{font-size:18px;line-height:1.45;margin:6px 0 10px;color:#fff}
-.cr-verdict-points{margin:0 0 14px;padding-left:18px;font-size:12.5px;line-height:1.7;color:#dbe8ee}
-.cr-verdict-points .key-number{color:#fff}
-.cr-segments{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
-.cr-seg{background:rgba(255,255,255,.08);border-radius:8px;padding:10px 11px;display:flex;flex-direction:column;gap:3px;border-top:3px solid #8aa}
-.cr-seg b{font-size:13px}.cr-seg em{font-style:normal;font-size:10.5px;color:#a9c3cf}.cr-seg small{font-size:11px;line-height:1.45;color:#cbdbe2}
-.cr-seg-tilt{font-size:12px;font-weight:700}
-.cr-seg[data-tilt=up]{border-top-color:#27af95}.cr-seg[data-tilt=up] .cr-seg-tilt{color:#7fe0c8}
-.cr-seg[data-tilt=down]{border-top-color:#e08a4f}.cr-seg[data-tilt=down] .cr-seg-tilt{color:#ffb98a}
-.cr-seg[data-tilt=na] .cr-seg-tilt{color:#b9c4ca}
-.cr-score,.cr-cal{padding:18px 20px;background:#fff;border:1px solid #dce6ed;border-radius:10px}
-.cr-score h3,.cr-cal h3,.cr-cr h3{font-size:16px;margin:0 0 10px;color:#25445a}
+.cr-brief>*{min-width:0}
+.cr-verdict,.cr-score,.cr-cal{padding:18px 20px}
+.cr-verdict-label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#1f8a74;margin-bottom:4px}
+.cr-verdict h3{font-size:19px;line-height:1.4;margin:0 0 14px;color:var(--fs-navy,#19316f)}
+.cr-segments{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.cr-seg{background:#f7fafb;border:1px solid #e1eaef;border-top:3px solid #b8c4cc;border-radius:10px;padding:10px 12px;display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:2px 8px}
+.cr-seg b{font-size:13px;color:var(--fs-navy,#19316f)}.cr-seg em{display:none}
+.cr-seg small{grid-column:1/-1;font-size:11.5px;line-height:1.45;color:#5d7181}
+.cr-seg-tilt{font-size:16px;font-weight:700;color:#7a8791}
+.cr-seg[data-tilt=up]{border-top-color:#27af95}.cr-seg[data-tilt=up] .cr-seg-tilt{color:#1f8a74}
+.cr-seg[data-tilt=down]{border-top-color:#d98b4a}.cr-seg[data-tilt=down] .cr-seg-tilt{color:#b35f1f}
+.cr-seg[data-tilt=flat]{border-top-color:#9db0bc}
+.cr-score h3,.cr-cal h3{font-size:15px;margin:0 0 10px;color:var(--fs-navy,#19316f)}
 .cr-score-wrap{overflow-x:auto}
 .cr-score-table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:640px}
-.cr-score-table th{text-align:left;font-size:11px;color:#6a7e8e;font-weight:650;padding:8px 10px;border-bottom:1px solid #dce6ed}
+.cr-score-table th{text-align:left;font-size:11px;color:#6a7e8e;font-weight:650;padding:8px 10px;border-bottom:1px solid #dce6ed;background:transparent}
 .cr-score-table td{padding:10px;border-bottom:1px solid #eef2f4;vertical-align:top}
+.cr-score-table tr:last-child td{border-bottom:0}
 .cr-score-table a{color:#1f5f6a;font-weight:650;text-decoration:none}
 .cr-num{font-variant-numeric:tabular-nums;white-space:nowrap}
 .cr-state{font-weight:700;white-space:nowrap}
 tr[data-state=risk] .cr-state{color:#b35f1f}tr[data-state=watch] .cr-state{color:#9a7a1f}tr[data-state=good] .cr-state{color:#1f8a74}tr[data-state=info] .cr-state,tr[data-state=na] .cr-state{color:#7a8590}
 tr[data-state=risk] td:first-child{box-shadow:inset 3px 0 #d98b4a}tr[data-state=watch] td:first-child{box-shadow:inset 3px 0 #e0c26a}tr[data-state=good] td:first-child{box-shadow:inset 3px 0 #27af95}
-.cr-cr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.cr-cr-col{padding:16px 18px;border-radius:10px;border:1px solid #dce6ed;background:#fff;border-top:4px solid #27af95}
-.cr-cr-col.is-down{border-top-color:#d98b4a}
-.cr-cr-col ul{margin:0;padding-left:18px;font-size:12.5px;line-height:1.65}.cr-cr-col li+li{margin-top:6px}
-.cr-cal ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-.cr-cal li{border-left:3px solid #a8cfcc;padding:4px 10px;display:flex;flex-direction:column;gap:2px}
-.cr-cal time{font-size:13px;font-weight:750;color:#19316f}.cr-cal b{font-size:12px}.cr-cal small{font-size:11px;color:#6a7e8e;line-height:1.45}
-.cr-scenario-now{font-size:12px;background:#e8f4f0;border-radius:7px;padding:9px 12px;margin:0 0 12px}
-@media(max-width:900px){.cr-segments{grid-template-columns:repeat(2,minmax(0,1fr))}.cr-cal ol{grid-template-columns:1fr 1fr}}
-@media(max-width:700px){.cr-cr{grid-template-columns:1fr}.cr-verdict{padding:16px}.cr-verdict h3{font-size:16px}.cr-cal ol{grid-template-columns:1fr}}
-.cr-seg-tilt{font-size:16px}.cr-seg{flex-direction:row;flex-wrap:wrap;align-items:baseline;column-gap:6px}.cr-seg em{display:none}.cr-seg small{flex-basis:100%}
-.cr-verdict h3{margin-bottom:14px}
+.cr-cal ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.cr-cal li{background:#f7fafb;border:1px solid #e1eaef;border-radius:10px;padding:9px 12px;display:flex;flex-direction:column;gap:2px}
+.cr-cal time{font-size:13px;font-weight:750;color:var(--fs-navy,#19316f)}.cr-cal b{font-size:12px;font-weight:600;line-height:1.4}
+@media(max-width:700px){.cr-verdict,.cr-score,.cr-cal{padding:16px}.cr-verdict h3{font-size:17px}}
 .brief-compact #thesis-detail,.brief-compact #thesis-evidence,.brief-compact #thesis-archive,.brief-compact .analyst-input{display:none}
-.cr-brief>*{min-width:0} /* grid items must not inherit the 640px table min-width on phones */

@@ -13,7 +13,7 @@
   const oldScenarios=[...pane.querySelectorAll('.scenario')];
   const W=window.BANK_WI_DATA,feeds=window.SECTOR_DAILY?.sources||{};
   const board=make('section','thesis-board');board.id='thesis-board';
-  const heading=make('div','thesis-heading');heading.append(make('h2','','Catalyst / Risk'),make('p','','Điều gì cần theo dõi, tác động tới đâu và khi nào cần đổi đánh giá?'));board.append(heading);
+  const heading=make('div','sectionhead'),headingText=make('div','');headingText.append(make('h2','','Catalyst / Risk'),make('p','','Kết luận hiện tại, tín hiệu đo được và các mốc sắp tới.'));heading.append(headingText);board.append(heading);
   function keys(buttons,select){buttons.forEach((b,i)=>b.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const j=e.key==='Home'?0:e.key==='End'?buttons.length-1:(i+(e.key==='ArrowRight'?1:buttons.length-1))%buttons.length;select(j);buttons[j].focus()}))}
   const signals=make('div','thesis-view');signals.id='thesis-signals';board.append(signals);
   const stamp=bank?'11/09/2026':power?'06/10/2026':re?'08/10/2026':oil?'03/09/2026':'17/08/2026';
@@ -180,11 +180,11 @@
   // score row: {name,chart,st,mid:[cells],end:[cells]}; segs: [name,tickers,tilt(up|down|flat|na),why]
   function renderBrief({headline,segs=[],headers,score,events}){
     const brief=make('section','cr-brief');
-    const head=make('div','cr-verdict');head.append(make('span','cr-verdict-label','Kết luận hiện tại'),make('h3','',headline));
+    const head=make('div','cr-verdict card');head.append(make('span','cr-verdict-label','Kết luận hiện tại'),make('h3','',headline));
     if(segs.length){const box=make('div','cr-segments');
       segs.forEach(([n,t,s,why])=>{const c=make('div','cr-seg');c.dataset.tilt=s;c.append(make('b','',n),make('em','',t),make('span','cr-seg-tilt',{up:'▲',down:'▼',flat:'■',na:'?'}[s]),make('small','',why));box.append(c)});head.append(box)}
     brief.append(head);
-    const tb=make('section','cr-score');tb.append(make('h3','','Tín hiệu'));
+    const tb=make('section','cr-score card');tb.append(make('h3','','Tín hiệu'));
     const wrap=make('div','cr-score-wrap'),table=make('table','cr-score-table');wrap.append(table);
     const tr=make('tr','');headers.forEach(t=>tr.append(make('th','',t)));const thead=make('thead','');thead.append(tr);table.append(thead);
     const tbody=make('tbody','');
@@ -195,7 +195,7 @@
     table.append(tbody);tb.append(wrap,make('p','thesis-scope','Ngưỡng AI đề xuất, chưa kiểm định · bấm tên để xem biểu đồ.'));
     const snap=signals.querySelector('.thesis-bank-snapshot');if(snap)brief.append(snap);
     brief.append(tb);
-    if(events?.length){const cal=make('section','cr-cal');cal.append(make('h3','','Sắp tới'));const ol=make('ol','');
+    if(events?.length){const cal=make('section','cr-cal card');cal.append(make('h3','','Sắp tới'));const ol=make('ol','');
       events.forEach(([d,e])=>{const li=make('li','');li.append(make('time','',d),make('b','',e));ol.append(li)});cal.append(ol);brief.append(cal)}
     signals.prepend(brief);
     // Old tiles fold into one hidden block (kept in DOM so sources still move to Sources); scenarios removed per user.
