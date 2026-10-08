@@ -1,7 +1,6 @@
-Routine tuần 06/10/2026: xử lý 8 mục tài liệu.
-Dầu khí: sản lượng NSO 9T/2026 dầu thô 6,66 triệu tấn (+10,5%), khí 4,86 tỷ m³ (+10,8%).
-Dầu khí: giá/Luật Dầu khí, Dung Quất/Nghi Sơn: không có văn bản/mốc mới.
-Đường: USDA PSD không đổi số niên vụ đã hiển thị (có dự báo 2026/27 chưa thêm); nhập lậu/HFCS/TRQ không có văn bản mới.
-Lỗi: sugar.domestic, sugar.crop (nguồn Google News không mở được bài gốc); bank.policy (sbv.gov.vn 403).
-Còn 5 mục insight (D) trong hàng chờ.
+Routine Wi 08/10/2026: cập nhật một phần (9/11 file).
+Lãi suất huy động, liên ngân hàng/OMO (đến 07/10), tỷ giá (đến 08/10), đường cong TPCP, P/E-P/B ngân hàng, VNINDEX (đến 07/10): đã cập nhật.
+Vĩ mô tháng 9: xuất khẩu, nhập khẩu, cán cân; Wi sửa số tháng 8: cán cân TM -113,2 → -118,0 tr.USD.
+LỖI: đấu thầu TPCP (Wi bỏ cột winning_yield khi null, ingest từ chối) – giữ số cũ (30/09).
+LỖI: tin tức CBTT/ai_news chưa đổi (Wi không cấp link PDF; giao diện cần link).
 Chưa kiểm giao diện bằng trình duyệt.

@@ -15,9 +15,11 @@
   "bank.eximbank": {},
   "comparison.financials": {},
   "bank.wi.daily": {
-   "lastAttempt": "2026-10-06T14:42:11+07:00",
+   "lastAttempt": "2026-10-08T08:16:05+07:00",
    "lastSuccess": "2026-10-06T14:42:11+07:00",
-   "lastNote": "Nạp qua hook + wi_ingest: lãi suất/tỷ giá/TPCP/định giá đến 06/10, 20/20 khối build OK"
+   "lastNote": "Nạp qua hook + wi_ingest: lãi suất/tỷ giá/TPCP/định giá đến 06/10, 20/20 khối build OK",
+   "lastError": "Đã cập nhật 9/11 file Wi (quan sát mới nhất 07/10/2026; tỷ giá 08/10). Còn lỗi: gbond_primary_auctions (Wi bỏ cột winning_yield khi null → ingest từ chối, 2 lần) và news_bank (Wi không cấp link PDF CBTT, giao diện cần url + chuỗi ngày cứng trong assets/bank-wi.js) — cần người dùng xử lý.",
+   "attempts": 1
   },
   "bank.wi.monthly": {
    "lastAttempt": "2026-10-06T14:42:11+07:00",
@@ -1506,5 +1508,5 @@
    ]
   }
  ],
- "updatedAt": "2026-10-07T22:49:55+07:00"
+ "updatedAt": "2026-10-08T08:16:05+07:00"
 }
