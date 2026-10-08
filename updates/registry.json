@@ -1271,7 +1271,7 @@
   {
    "id": "power.tariff-evn",
    "tier": "C",
-   "title": "Giá bán lẻ điện, tài chính EVN, giá thị trường điện",
+   "title": "Giá bán lẻ điện và tài chính EVN",
    "schedule": {
     "type": "monthly",
     "days": [
@@ -1289,7 +1289,6 @@
     "page": "Dien/index.html",
     "blocks": [
      "dien-14",
-     "dien-15",
      "dien-16",
      "dien-20"
     ]
@@ -1303,6 +1302,17 @@
    "watch": [
     "moit.notices"
    ]
+  },
+  {
+   "id": "power.market-fmp",
+   "tier": "C",
+   "title": "FMP PGV theo tháng và CAN bình quân năm",
+   "schedule": {"type": "monthly", "days": [15, 25], "at": "07:00"},
+   "publication": "PGV IR ra bản tin tháng sau khi kết thúc tháng; CAN phê duyệt trong kế hoạch vận hành thị trường điện năm tới",
+   "source": {"name": "PGV IR · bản tin nhà đầu tư", "url": "https://www.genco3.com/quan-he-nha-dau-tu/ban-tin-nha-dau-tu.html"},
+   "where": {"page": "Dien/index.html", "blocks": ["dien-15"]},
+   "how": "Lấy FMP bình quân tháng chỉ từ bảng PGV IR; thêm tháng mới, giữ tháng cũ và link PDF. Rà quyết định kế hoạch vận hành cuối năm trước để cập nhật CAN bình quân năm; không lấy bình quân CAN năm trừ FMP tháng để suy SMP tháng.",
+   "gates": ["PGV IR có bảng FMP và kỳ tháng rõ ràng", "CAN có văn bản hoặc tài liệu công ty dẫn số và năm", "Không ghép FMP từ POW/REE", "Không lấp tháng thiếu bằng 0"]
   },
   {
    "id": "power.policy",
