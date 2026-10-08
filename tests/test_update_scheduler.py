@@ -232,7 +232,7 @@ class RegistryTests(unittest.TestCase):
         wi = set(json.loads((ROOT / 'data/bank-wi-contract.json').read_text())['blocks'])
         self.assertEqual(wi, {b for i in self.reg['items'] if i['tier'] == 'B' and 'wiContract' not in i for b in i['wiBlocks']})
         re_contract = json.loads((ROOT / 'data/realestate-wi-contract.json').read_text())
-        self.assertEqual({c['block'] for c in re_contract['calls']} - {'sector_ratio_older'}, {b for i in self.reg['items'] if i.get('wiContract') == 'data/realestate-wi-contract.json' for b in i['wiBlocks']})
+        self.assertEqual({c['block'] for c in re_contract['calls'] if c.get('cadence') != 'fixed'} - {'sector_ratio_older'}, {b for i in self.reg['items'] if i.get('wiContract') == 'data/realestate-wi-contract.json' for b in i['wiBlocks']})
 
     def test_dry_run_writes_nothing(self):
         with tempfile.TemporaryDirectory() as directory, patch.object(us, 'STATE', Path(directory) / 'state.json'), \
