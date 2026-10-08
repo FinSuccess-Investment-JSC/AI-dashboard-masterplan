@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "checked_at": "2026-10-08T13:33:31+07:00",
+ "checked_at": "2026-10-08T14:47:45+07:00",
  "provider": "VNDirect finfo",
  "method": "P/E, P/B, vốn hóa của VNDirect tại ngày tham chiếu, điều chỉnh theo giá đóng cửa phiên mới nhất; EPS, BVPS, số cổ phiếu giữ nguyên đến kỳ BCTC sau.",
  "units": {
@@ -9,9 +9,11 @@
   "pb": "lần",
   "close": "nghìn VND"
  },
- "status": "ok",
- "errors": {},
- "data_hash": "236bcdfa605e81e9969cb2c8bd782a27199b31b11297ef2a0e7c7e43c31f7f14",
+ "status": "partial",
+ "errors": {
+  "STK": "không có giá đóng cửa ngày 2026-04-28"
+ },
+ "data_hash": "4757cac4844c4f0c663e83eeb109d44dfdc64af63233a86114ff8d95272ef321",
  "latest_observation": "2026-10-07",
  "companies": {
   "GAS": {
@@ -553,6 +555,60 @@
    "market_cap": 2918.7,
    "basis_date": "2026-10-07",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DXS"
+  },
+  "TCM": {
+   "date": "2026-10-07",
+   "close": 15.0,
+   "pe": 8.01,
+   "pb": 0.73,
+   "market_cap": 1764.6,
+   "basis_date": "2026-10-07",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/TCM"
+  },
+  "TNG": {
+   "date": "2026-10-07",
+   "close": 18.4,
+   "pe": 5.38,
+   "pb": 1.26,
+   "market_cap": 2368.7,
+   "basis_date": "2026-10-07",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/TNG"
+  },
+  "MSH": {
+   "date": "2026-10-07",
+   "close": 31.4,
+   "pe": 5.58,
+   "pb": 1.75,
+   "market_cap": 3533.2,
+   "basis_date": "2026-10-07",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/MSH"
+  },
+  "GIL": {
+   "date": "2026-10-07",
+   "close": 7.93,
+   "pe": 6.69,
+   "pb": 0.32,
+   "market_cap": 805.7,
+   "basis_date": "2026-10-07",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/GIL"
+  },
+  "ADS": {
+   "date": "2026-10-07",
+   "close": 7.59,
+   "pe": 6.12,
+   "pb": 0.63,
+   "market_cap": 579.8,
+   "basis_date": "2026-10-07",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/ADS"
+  },
+  "VGT": {
+   "date": "2026-10-07",
+   "close": 12.0,
+   "pe": 5.56,
+   "pb": 0.77,
+   "market_cap": 5900.5,
+   "basis_date": "2026-10-07",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/VGT"
   }
  },
  "history": {
@@ -1375,7 +1431,61 @@
     0.45,
     2918.7
    ]
+  ],
+  "TCM": [
+   [
+    "2026-10-07",
+    15.0,
+    8.01,
+    0.73,
+    1764.6
+   ]
+  ],
+  "TNG": [
+   [
+    "2026-10-07",
+    18.4,
+    5.38,
+    1.26,
+    2368.7
+   ]
+  ],
+  "MSH": [
+   [
+    "2026-10-07",
+    31.4,
+    5.58,
+    1.75,
+    3533.2
+   ]
+  ],
+  "GIL": [
+   [
+    "2026-10-07",
+    7.93,
+    6.69,
+    0.32,
+    805.7
+   ]
+  ],
+  "ADS": [
+   [
+    "2026-10-07",
+    7.59,
+    6.12,
+    0.63,
+    579.8
+   ]
+  ],
+  "VGT": [
+   [
+    "2026-10-07",
+    12.0,
+    5.56,
+    0.77,
+    5900.5
+   ]
   ]
  },
- "changed_at": "2026-10-08T13:33:31+07:00"
+ "changed_at": "2026-10-08T14:47:45+07:00"
 }

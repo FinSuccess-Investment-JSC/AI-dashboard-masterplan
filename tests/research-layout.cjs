@@ -5,7 +5,7 @@ const root=path.resolve(__dirname,'..');fs.mkdirSync('/private/tmp/dashboard-red
 const server=http.createServer((req,res)=>{let name=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(name.endsWith('/'))name+='index.html';const file=path.resolve(root,'.'+name);if(!file.startsWith(root+path.sep)||!fs.existsSync(file)){res.writeHead(404).end();return}res.setHeader('Content-Type',({'.js':'application/javascript','.css':'text/css','.html':'text/html'})[path.extname(file)]||'application/octet-stream');res.end(fs.readFileSync(file))});
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const base='http://127.0.0.1:'+server.address().port+'/';
 const b=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});const p=await b.newPage({viewport:{width:1440,height:1000}});const errors=[];p.on('pageerror',e=>errors.push(e.message));
-try { for(const sector of ['Dau-khi','Sugar','Bank','Dien','Bat-dong-san']){
+try { for(const sector of ['Dau-khi','Sugar','Bank','Dien','Bat-dong-san','Det-may']){
  await p.goto(base+sector+'/');await p.waitForSelector('body[data-editorial-ready="true"]');
  const tabCount=sector==='Bank'?7:6;assert.equal(await p.locator('.majortabbtn').count(),tabCount);
  assert.deepEqual(await p.evaluate(()=>{const ids=[...document.querySelectorAll('[id]')].map(n=>n.id);return ids.filter((id,i)=>ids.indexOf(id)!==i)}),[],sector+' duplicate ids');
@@ -26,7 +26,7 @@ try { for(const sector of ['Dau-khi','Sugar','Bank','Dien','Bat-dong-san']){
  await p.locator('.majortabbtn').first().click();
  await p.waitForSelector('body[data-sources-ready="true"]');
  assert.ok(await p.evaluate(()=>Boolean(document.querySelector('.business-models').compareDocumentPosition(document.querySelector('.financial-comparison'))&Node.DOCUMENT_POSITION_FOLLOWING)));
- const symbol=sector==='Dau-khi'?'GAS':sector==='Sugar'?'SBT':sector==='Dien'?'POW':sector==='Bat-dong-san'?'VHM':'VCB';
+ const symbol=sector==='Dau-khi'?'GAS':sector==='Sugar'?'SBT':sector==='Dien'?'POW':sector==='Bat-dong-san'?'VHM':sector==='Det-may'?'TNG':'VCB';
  await p.locator('#comparison-search').fill(symbol);assert.equal(await p.locator('.comparison-table tbody tr').count(),1);
  for(const period of ['year','quarter']){await p.locator('#comparison-period').selectOption(period);assert.equal(await p.locator('.comparison-table [data-metric="roe"]').getAttribute('data-value'),await p.evaluate(({symbol,period})=>String(window.COMPANY_COMPARISON.companies.find(r=>r.symbol===symbol)[period].values.roe),{symbol,period}));}
  await p.locator('.comparison-tools button').click();await p.locator('[data-sort="pe"]').click();

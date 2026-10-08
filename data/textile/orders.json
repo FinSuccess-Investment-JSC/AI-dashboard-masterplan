@@ -1,0 +1,452 @@
+{
+ "brands": [
+  {
+   "brand": "Nike",
+   "fiscal_quarter": "Q1 FY27",
+   "period_end": "2026-08-31",
+   "currency": "USD",
+   "inventory_m": 7800,
+   "inventory_yoy_pct": -3,
+   "revenue_yoy_pct": -4,
+   "mgmt_comment": "GM +60bp on lower warehousing/logistics costs; Greater China and EMEA weak, North America growing",
+   "sources": [
+    {
+     "label": "Nike Q1 FY27 press release",
+     "url": "https://about.nike.com/newsroom/releases/nike-inc-reports-fiscal-2027-first-quarter-results"
+    }
+   ]
+  },
+  {
+   "brand": "Nike",
+   "fiscal_quarter": "Q4 FY26",
+   "period_end": "2026-05-31",
+   "currency": "USD",
+   "inventory_m": 7500,
+   "inventory_yoy_pct": 0,
+   "revenue_yoy_pct": -1,
+   "mgmt_comment": "Inventory flat: higher units offset by mix; $986m expected IEEPA tariff recovery added ~900bp to GM",
+   "sources": [
+    {
+     "label": "Nike Q4 FY26 press release",
+     "url": "https://about.nike.com/newsroom/releases/nike-inc-reports-fiscal-2026-fourth-quarter-and-full-year-results"
+    }
+   ]
+  },
+  {
+   "brand": "Adidas",
+   "fiscal_quarter": "Q2 2026",
+   "period_end": "2026-06-30",
+   "currency": "EUR",
+   "inventory_m": 5969,
+   "inventory_yoy_pct": 13,
+   "revenue_yoy_pct": 13,
+   "mgmt_comment": "Prioritised availability (World Cup) over inventory optimisation; first small US tariff refund received, US$250-300m potential refunds not in guidance",
+   "sources": [
+    {
+     "label": "adidas Q2 2026 ad-hoc release (Deutsche Boerse)",
+     "url": "https://live.deutsche-boerse.com/news/EQS-Adhoc-adidas-grows-top-line-14-and-achieves-record-sales-in-Q2-increases-full-year-top-line-guidance-32ebe0ea-82c7-4bfa-8076-f52718607d4b"
+    }
+   ]
+  },
+  {
+   "brand": "H&M",
+   "fiscal_quarter": "Q3 FY2026 (Jun-Aug)",
+   "period_end": "2026-08-31",
+   "currency": "SEK",
+   "inventory_m": 39355,
+   "inventory_yoy_pct": 3.7,
+   "revenue_yoy_pct": 0.3,
+   "mgmt_comment": "Stock-in-trade up on higher goods in transit from global supply-chain disruption and EU logistics consolidation; ~1.6pp one-off GM benefit from tariffs/import costs; local-currency sales +1%",
+   "sources": [
+    {
+     "label": "H&M nine-month report 2026 (PDF)",
+     "url": "https://mb.cision.com/Main/769/4400093/4285249.pdf"
+    }
+   ]
+  },
+  {
+   "brand": "Inditex",
+   "fiscal_quarter": "H1 FY2026 (Feb-Jul)",
+   "period_end": "2026-07-31",
+   "currency": "EUR",
+   "inventory_m": 3790,
+   "inventory_yoy_pct": 9.3,
+   "revenue_yoy_pct": 7.6,
+   "mgmt_comment": "Inventory grew faster than sales; higher freight/input costs from Middle East disruption; Aug-early Sep sales +9%",
+   "sources": [
+    {
+     "label": "Textalks on Inditex H1 2026",
+     "url": "https://textalks.com/?p=85402"
+    },
+    {
+     "label": "FashionUnited on Inditex H1 2026",
+     "url": "https://fashionunited.uk/news/business/inditex-hits-new-high-reports-profit-of-2-98-billion-euros-with-7-6-percent-growth-through-july/2026090990227"
+    }
+   ]
+  },
+  {
+   "brand": "Gap",
+   "fiscal_quarter": "Q2 FY2026",
+   "period_end": "2026-08-01",
+   "currency": "USD",
+   "inventory_m": 2297,
+   "inventory_yoy_pct": 0.1,
+   "revenue_yoy_pct": -2,
+   "mgmt_comment": "$417m net IEEPA tariff recovery in COGS; now assumes ~10% incremental tariff rate vs high-teens before",
+   "sources": [
+    {
+     "label": "Gap Q2 FY2026 8-K Ex.99.1",
+     "url": "https://www.sec.gov/Archives/edgar/data/0000039911/000162828026059262/q22026eprexhibit991.htm"
+    }
+   ]
+  },
+  {
+   "brand": "Fast Retailing",
+   "fiscal_quarter": "Q3 FY2026 (9M Sep-May)",
+   "period_end": "2026-05-31",
+   "currency": "JPY",
+   "inventory_m": 497659,
+   "inventory_yoy_pct": null,
+   "revenue_yoy_pct": 17.1,
+   "mgmt_comment": "Inventory down JPY13.2bn vs Aug-2025 year-end (YoY not stated); revenue YoY is 9-month cumulative",
+   "sources": [
+    {
+     "label": "Fast Retailing Q3 FY2026 results (HKEX)",
+     "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0709/2026070900203.pdf"
+    }
+   ]
+  }
+ ],
+ "companies": [
+  {
+   "ticker": "TNG",
+   "name": "CTCP Đầu tư và Thương mại TNG",
+   "main_customers": [
+    "Decathlon (EU)",
+    "Haddad (Mỹ)",
+    "Columbia (Mỹ)",
+    "Asmara (Mỹ)",
+    "Nike"
+   ],
+   "market_mix": null,
+   "order_visibility": "SHS (13/08/2026): đơn hàng được đảm bảo đến hết năm 2026; 2H2026 tăng trưởng chậm lại sau khi đẩy giao hàng Mỹ trước thuế Section 301 12,5% (24/7/2026).",
+   "plan_2026": {
+    "revenue_bn_vnd": 9500,
+    "profit_bn_vnd": 450,
+    "profit_type": "LNST (theo elibook; SHS: 6T LNST 204 tỷ = 46% KH)"
+   },
+   "results_2026": [
+    {
+     "period": "Q1/2026",
+     "revenue_bn_vnd": 1952,
+     "profit_bn_vnd": null,
+     "yoy": "DT +29,2%"
+    },
+    {
+     "period": "Q2/2026",
+     "revenue_bn_vnd": 2914,
+     "profit_bn_vnd": 147,
+     "yoy": "DT +15%, LNST +23%"
+    },
+    {
+     "period": "6T/2026",
+     "revenue_bn_vnd": 4866,
+     "profit_bn_vnd": 204,
+     "yoy": "DT +21%, LNST +27%"
+    }
+   ],
+   "sources": [
+    {
+     "label": "Shinhan Securities – TNG Q2/2026 (13/08/2026)",
+     "url": "https://shinhansec.com.vn/uploads/report/TNG_Q2_2026_VN.pdf"
+    },
+    {
+     "label": "Elibook – TNG & MSH 2026",
+     "url": "https://elibook.vn/2026/05/21/nganh-det-may-viet-nam-truoc-con-gio-nguoc-vi-mo-2026-dinh-hinh-co-hoi-phan-hoa-tu-tng-va-msh/"
+    },
+    {
+     "label": "Nhà Đầu Tư 13/07/2026",
+     "url": "https://nhadautu.vn/vinatex-tng-tang-truong-tich-cuc-doanh-nghiep-det-may-van-doi-mat-ap-luc-d106264.html"
+    }
+   ]
+  },
+  {
+   "ticker": "MSH",
+   "name": "CTCP May Sông Hồng",
+   "main_customers": [
+    "Columbia (~60 triệu USD/năm)",
+    "Walmart",
+    "Nike",
+    "Target"
+   ],
+   "market_mix": null,
+   "order_visibility": "ĐHĐCĐ 2026: đơn hàng ổn định đến hết tháng 8–9 (hết Q3); cuối năm còn bất định. Đẩy Nhật Bản, liên doanh với tập đoàn dệt Hàn Quốc.",
+   "plan_2026": {
+    "revenue_bn_vnd": 6000,
+    "profit_bn_vnd": 900,
+    "profit_type": "LNTT"
+   },
+   "results_2026": [
+    {
+     "period": "Q1/2026",
+     "revenue_bn_vnd": 1041.2,
+     "profit_bn_vnd": null,
+     "yoy": "DT đi ngang; biên gộp 20,3%"
+    },
+    {
+     "period": "Q2/2026",
+     "revenue_bn_vnd": 1656.96,
+     "profit_bn_vnd": 203.42,
+     "yoy": "DT +12,96%, LNST +13,04%"
+    },
+    {
+     "period": "6T/2026",
+     "revenue_bn_vnd": 2698.19,
+     "profit_bn_vnd": 284.71,
+     "yoy": "DT +7,8%, LNST +6,6%; tồn kho +83% so đầu năm"
+    }
+   ],
+   "sources": [
+    {
+     "label": "Doanh nhân (Pháp luật) – ĐHĐCĐ MSH 2026",
+     "url": "https://doanhnhan.baophapluat.vn/dhdcd-may-song-hong-msh-2026-don-hang-on-dinh-den-het-quy-3-dinh-huong-uu-tien-nguon-luc-cho-nguoi-lao-dong.html"
+    },
+    {
+     "label": "VnBusiness – MSH Q2/2026",
+     "url": "https://vnbusiness.vn/may-song-hong-lai-quy-ii-tang-13-lo-giai-bai-toan-vong-quay-hang-ton-kho.html"
+    },
+    {
+     "label": "Elibook – TNG & MSH 2026",
+     "url": "https://elibook.vn/2026/05/21/nganh-det-may-viet-nam-truoc-con-gio-nguoc-vi-mo-2026-dinh-hinh-co-hoi-phan-hoa-tu-tng-va-msh/"
+    }
+   ]
+  },
+  {
+   "ticker": "TCM",
+   "name": "CTCP Dệt may – Đầu tư – Thương mại Thành Công",
+   "main_customers": [],
+   "market_mix": null,
+   "order_visibility": "ĐHĐCĐ 2026: đủ đơn đến hết Q2, Q3 mới có ~50% kế hoạch; giảm tỷ trọng Mỹ, tăng xuất sang Nhật Bản và Hàn Quốc.",
+   "plan_2026": {
+    "revenue_bn_vnd": 4385.7,
+    "profit_bn_vnd": 293,
+    "profit_type": "LNST"
+   },
+   "results_2026": [
+    {
+     "period": "Q2/2026",
+     "revenue_bn_vnd": 968.1,
+     "profit_bn_vnd": 45.8,
+     "yoy": "DT +11%, LNST -44%"
+    },
+    {
+     "period": "6T/2026",
+     "revenue_bn_vnd": 1978,
+     "profit_bn_vnd": 111.7,
+     "yoy": "DT +5%, LNST -30% (LNTT 139,1 tỷ)"
+    }
+   ],
+   "sources": [
+    {
+     "label": "Doanh nhân – ĐHĐCĐ TCM 2026",
+     "url": "https://doanhnhan.baophapluat.vn/dhdcd-2026-det-may-thanh-cong-tcm-muc-tieu-loi-nhuan-ky-luc-293-ty-dong-du-kien-thu-lai-1-100-ty-tu-du-an-tc-tower.md"
+    },
+    {
+     "label": "VnBusiness – TCM 6T/2026",
+     "url": "https://vnbusiness.vn/det-may-thanh-cong-loi-nhuan-hut-hoi-co-phieu-roi-ve-day-gan-6-nam.html"
+    }
+   ]
+  },
+  {
+   "ticker": "GIL",
+   "name": "CTCP SXKD XNK Bình Thạnh (Gilimex)",
+   "main_customers": [],
+   "market_mix": null,
+   "order_visibility": null,
+   "plan_2026": {
+    "revenue_bn_vnd": 1600,
+    "profit_bn_vnd": 150,
+    "profit_type": "LNST"
+   },
+   "results_2026": [
+    {
+     "period": "Q2/2026",
+     "revenue_bn_vnd": 249.9,
+     "profit_bn_vnd": 11.95,
+     "yoy": "DT +93,8%; LNST từ lỗ 71,64 tỷ"
+    },
+    {
+     "period": "6T/2026",
+     "revenue_bn_vnd": 447.27,
+     "profit_bn_vnd": 23.23,
+     "yoy": "DT +75,4%; CFO -680 tỷ"
+    }
+   ],
+   "sources": [
+    {
+     "label": "Doanh nhân – GIL Q2/2026",
+     "url": "https://doanhnhan.baophapluat.vn/gilimex-gil-lai-tro-lai-trong-quy-ii-2026-nhung-dong-tien-kinh-doanh-am-ky-luc-hon-680-ty-dong.html"
+    }
+   ]
+  },
+  {
+   "ticker": "STK",
+   "name": "CTCP Sợi Thế Kỷ",
+   "main_customers": [],
+   "market_mix": null,
+   "order_visibility": null,
+   "plan_2026": {
+    "revenue_bn_vnd": 2366,
+    "profit_bn_vnd": 128,
+    "profit_type": "LNTT"
+   },
+   "results_2026": [
+    {
+     "period": "Q2/2026",
+     "revenue_bn_vnd": 395,
+     "profit_bn_vnd": -38,
+     "yoy": "DT +18,7%; lỗ sau thuế (LNTT -34 tỷ); lãi vay 53 tỷ"
+    },
+    {
+     "period": "6T/2026",
+     "revenue_bn_vnd": 663,
+     "profit_bn_vnd": -72,
+     "yoy": "DT -6,6%; cùng kỳ lãi 29 tỷ"
+    }
+   ],
+   "sources": [
+    {
+     "label": "MekongAsean – STK lỗ Q2/2026",
+     "url": "https://mekongasean.vn/soi-the-ky-lo-quy-22026-gan-34-ty-dong-tien-mat-giam-hon-90-57857.html"
+    }
+   ]
+  },
+  {
+   "ticker": "ADS",
+   "name": "CTCP Damsan",
+   "main_customers": [],
+   "market_mix": null,
+   "order_visibility": null,
+   "plan_2026": {
+    "revenue_bn_vnd": 2160,
+    "profit_bn_vnd": 145,
+    "profit_type": "LNTT"
+   },
+   "results_2026": [],
+   "sources": [
+    {
+     "label": "Doanh nhân – ADS KH 2026",
+     "url": "https://doanhnhan.baophapluat.vn/cong-ty-damsan-ads-dat-ke-hoach-lai-145-ty-dong-cho-nam-2026-tang-truong-gan-20-so-voi-nam-truoc.html"
+    }
+   ]
+  },
+  {
+   "ticker": "VGT",
+   "name": "Tập đoàn Dệt May Việt Nam (Vinatex)",
+   "main_customers": [],
+   "market_mix": null,
+   "order_visibility": "CEO Cao Hữu Hiếu (06/2026): từ tháng 7 đơn hàng khan hiếm, khách dè dặt chờ thuế Mỹ; 9T: thị trường được dự báo không tăng mạnh.",
+   "plan_2026": {
+    "revenue_bn_vnd": 21400,
+    "profit_bn_vnd": 1380,
+    "profit_type": "LNTT hợp nhất"
+   },
+   "results_2026": [
+    {
+     "period": "6T/2026",
+     "revenue_bn_vnd": 10049.4,
+     "profit_bn_vnd": 882.9,
+     "yoy": "DT +9,6%, LNTT +32,4%"
+    },
+    {
+     "period": "9T/2026",
+     "revenue_bn_vnd": 15501,
+     "profit_bn_vnd": 1470,
+     "yoy": "DT +7%, LNTT +41%, vượt KH năm; mảng sợi lãi 381,8 tỷ (+168%)"
+    }
+   ],
+   "sources": [
+    {
+     "label": "MekongAsean – Vinatex 9T/2026",
+     "url": "https://mekongasean.vn/vinatex-vuot-ke-hoach-loi-nhuan-nam-2026-sau-9-thang-60241.html"
+    },
+    {
+     "label": "Nhà Đầu Tư 13/07/2026",
+     "url": "https://nhadautu.vn/vinatex-tng-tang-truong-tich-cuc-doanh-nghiep-det-may-van-doi-mat-ap-luc-d106264.html"
+    },
+    {
+     "label": "VCCI 15/06/2026",
+     "url": "https://www.vcci.com.vn/tin-tuc/don-hang-det-may-quy-iv-khan-hiem-khach-hang-than-trong-voi-thue-quan-my"
+    }
+   ]
+  }
+ ],
+ "order_signals": [
+  {
+   "date": "2026-01-13",
+   "source_org": "VITAS",
+   "signal": "Chuyển từ gia công số lượng lớn sang đơn nhỏ, kỹ thuật cao (Mỹ, Nhật); XK 2025 ~46 tỷ USD.",
+   "sources": [
+    {
+     "label": "Doanh nghiệp Hội nhập",
+     "url": "https://doanhnghiephoinhap.vn/det-may-viet-nam-2026-tu-gia-cong-dai-tra-sang-chinh-phuc-don-hang-gia-tri-cao-125511.html"
+    }
+   ]
+  },
+  {
+   "date": "2026-06-15",
+   "source_org": "Vinatex",
+   "signal": "Từ tháng 7 đơn hàng khan hiếm, Q4 bi quan; khách chờ thuế Mỹ, đặt đơn nhỏ; XK 5T 18,8 tỷ USD (+5,6%).",
+   "sources": [
+    {
+     "label": "VCCI",
+     "url": "https://www.vcci.com.vn/tin-tuc/don-hang-det-may-quy-iv-khan-hiem-khach-hang-than-trong-voi-thue-quan-my"
+    }
+   ]
+  },
+  {
+   "date": "2026-07-13",
+   "source_org": "VITAS",
+   "signal": "XK 6T 22,2 tỷ USD (+1,7%); Mỹ 45% tỷ trọng; áp lực đơn hàng, chi phí, cạnh tranh cuối năm.",
+   "sources": [
+    {
+     "label": "Nhà Đầu Tư",
+     "url": "https://nhadautu.vn/vinatex-tng-tang-truong-tich-cuc-doanh-nghiep-det-may-van-doi-mat-ap-luc-d106264.html"
+    }
+   ]
+  },
+  {
+   "date": "2026-07-24",
+   "source_org": "USTR / Trung tâm WTO-VCCI",
+   "signal": "Thuế bổ sung Section 301 12,5% với hàng VN từ 24/7; cao hơn ~17 nước chịu 10%; Bangladesh, Indonesia, Campuchia có thể hưởng 0% nếu dùng nguyên liệu Mỹ.",
+   "sources": [
+    {
+     "label": "Trung tâm WTO – Dệt may và gỗ trước thuế mới",
+     "url": "https://trungtamwto.vn/tin-tuc/33152-det-may-va-go-viet-truoc-suc-ep-tu-thue-moi-cua-hoa-ky"
+    }
+   ]
+  },
+  {
+   "date": "2026-08-13",
+   "source_org": "Shinhan Securities",
+   "signal": "Nhà nhập khẩu Mỹ trở lại chu kỳ đặt hàng bình thường sau 24/7; Trung Quốc mất lợi thế ở Mỹ do thuế cao.",
+   "sources": [
+    {
+     "label": "Shinhan – TNG Q2/2026",
+     "url": "https://shinhansec.com.vn/uploads/report/TNG_Q2_2026_VN.pdf"
+    }
+   ]
+  },
+  {
+   "date": "2026-10",
+   "source_org": "Vinatex",
+   "signal": "9T LNTT vượt KH năm; lãnh đạo dự báo thị trường không tăng mạnh, chi phí lao động/vốn tăng, lợi thế thời vụ khó lặp lại.",
+   "sources": [
+    {
+     "label": "MekongAsean",
+     "url": "https://mekongasean.vn/vinatex-vuot-ke-hoach-loi-nhuan-nam-2026-sau-9-thang-60241.html"
+    }
+   ]
+  }
+ ]
+}

@@ -1307,12 +1307,32 @@
    "id": "power.market-fmp",
    "tier": "C",
    "title": "FMP PGV theo tháng và CAN bình quân năm",
-   "schedule": {"type": "monthly", "days": [15, 25], "at": "07:00"},
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     15,
+     25
+    ],
+    "at": "07:00"
+   },
    "publication": "PGV IR ra bản tin tháng sau khi kết thúc tháng; CAN phê duyệt trong kế hoạch vận hành thị trường điện năm tới",
-   "source": {"name": "PGV IR · bản tin nhà đầu tư", "url": "https://www.genco3.com/quan-he-nha-dau-tu/ban-tin-nha-dau-tu.html"},
-   "where": {"page": "Dien/index.html", "blocks": ["dien-15"]},
+   "source": {
+    "name": "PGV IR · bản tin nhà đầu tư",
+    "url": "https://www.genco3.com/quan-he-nha-dau-tu/ban-tin-nha-dau-tu.html"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-15"
+    ]
+   },
    "how": "Lấy FMP bình quân tháng chỉ từ bảng PGV IR; thêm tháng mới, giữ tháng cũ và link PDF. Rà quyết định kế hoạch vận hành cuối năm trước để cập nhật CAN bình quân năm; không lấy bình quân CAN năm trừ FMP tháng để suy SMP tháng.",
-   "gates": ["PGV IR có bảng FMP và kỳ tháng rõ ràng", "CAN có văn bản hoặc tài liệu công ty dẫn số và năm", "Không ghép FMP từ POW/REE", "Không lấp tháng thiếu bằng 0"]
+   "gates": [
+    "PGV IR có bảng FMP và kỳ tháng rõ ràng",
+    "CAN có văn bản hoặc tài liệu công ty dẫn số và năm",
+    "Không ghép FMP từ POW/REE",
+    "Không lấp tháng thiếu bằng 0"
+   ]
   },
   {
    "id": "power.policy",
@@ -1507,7 +1527,7 @@
     "type": "none"
    },
    "where": {
-    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html",
+    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html",
     "blocks": [
      "dau-khi-01",
      "dau-khi-03",
@@ -1520,7 +1540,10 @@
      "dien-29",
      "bds-01",
      "bds-03",
-     "bds-40"
+     "bds-40",
+     "dm-01",
+     "dm-03",
+     "dm-40"
     ]
    }
   },
@@ -1862,6 +1885,248 @@
     ]
    },
    "how": "Cập nhật số và nhận định trong bds-02 và catbox/riskbox theo số mới; bảng tín hiệu tự tính từ Wi",
+   "gates": [
+    "Số khớp chart",
+    "Không đụng ô analyst"
+   ]
+  },
+  {
+   "id": "textile.wi.daily",
+   "tier": "B",
+   "title": "Wi: xuất nhập khẩu dệt may theo tháng và thị trường, sản lượng, IIP, bán lẻ quần áo Mỹ, định giá hai phân ngành",
+   "wiBlocks": [
+    "macro_trade",
+    "sector_ratio_recent"
+   ],
+   "wiContract": "data/textile-wi-contract.json",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Hải quan, NSO đầu tháng; US Census giữa tháng; định giá theo phiên",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Det-may/index.html",
+    "file": "data/textile-wi-data.js",
+    "blocks": [
+     "dm-04",
+     "dm-05",
+     "dm-06",
+     "dm-07",
+     "dm-08",
+     "dm-09",
+     "dm-13",
+     "dm-23",
+     "dm-27"
+    ]
+   },
+   "how": "Gọi lại đúng các lời gọi WiMCP trong data/textile-wi-contract.json (hook wi_capture.py lưu kết quả), rồi chạy python3 scripts/build_textile_wi.py. Lời gọi macro_trade vượt trần hiển thị: dùng python3 scripts/build_realestate_wi.py --restore <file tool-results> <capture>. Với sector_ratio_recent đặt to_time = hôm nay.",
+   "gates": [
+    "Số tháng mới nhất hợp lý so tháng trước",
+    "Không chép tay số"
+   ]
+  },
+  {
+   "id": "textile.wi.weekly",
+   "tier": "B",
+   "title": "Wi: giá bông ICE, sợi và bông Trung Quốc, xơ PSF, PTA, MEG",
+   "wiBlocks": [
+    "commodity_cotton",
+    "commodity_recent"
+   ],
+   "wiContract": "data/textile-wi-contract.json",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Giá ngày; hiển thị cuối tháng",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Det-may/index.html",
+    "file": "data/textile-wi-data.js",
+    "blocks": [
+     "dm-10",
+     "dm-11",
+     "dm-12"
+    ]
+   },
+   "how": "Gọi lại hai lời gọi commodity với to_time = hôm nay (giữ from_time), rồi chạy python3 scripts/build_textile_wi.py.",
+   "gates": [
+    "Không chép tay số"
+   ]
+  },
+  {
+   "id": "textile.trade-tariff",
+   "tier": "C",
+   "title": "Thuế Mỹ (Mục 301, danh sách miễn trừ, hạn ngạch đối thủ), FTA, xuất xứ; nhập khẩu may mặc Mỹ (OTEXA); VITAS theo thị trường",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "USTR, Federal Register theo sự kiện; OTEXA hằng tháng (trễ ~2 tháng); VITAS theo họp báo",
+   "source": {
+    "name": "OTEXA · USTR",
+    "url": "https://www.trade.gov/otexa"
+   },
+   "where": {
+    "page": "Det-may/index.html",
+    "blocks": [
+     "dm-20",
+     "dm-21",
+     "dm-22",
+     "dm-24",
+     "dm-25",
+     "dm-26"
+    ]
+   },
+   "how": "Cập nhật data/textile/trade.json (mỗi dòng có sources link đã mở) và bảng/chart tương ứng trong Det-may/index.html, assets/textile-dashboard.js. Ghi rõ mức thuế còn mâu thuẫn giữa nguồn.",
+   "gates": [
+    "Link văn bản hoặc bài gốc đã mở",
+    "Ghi ngày hiệu lực",
+    "Không cộng dồn thuế khi nguồn không nói rõ"
+   ]
+  },
+  {
+   "id": "textile.orders-brands",
+   "tier": "C",
+   "title": "Tồn kho, doanh thu nhãn hàng (Nike, Adidas, H&M, Inditex, Gap, Fast Retailing…); tín hiệu đơn hàng VITAS, Vinatex",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo lịch báo cáo quý của từng hãng",
+   "source": {
+    "name": "Báo cáo nhãn hàng",
+    "url": "https://investors.nike.com/"
+   },
+   "where": {
+    "page": "Det-may/index.html",
+    "blocks": [
+     "dm-28",
+     "dm-29",
+     "dm-31"
+    ]
+   },
+   "how": "Thêm kỳ báo cáo mới vào data/textile/orders.json (brands, order_signals) và bảng dm-29, dm-31, chart chBrands.",
+   "gates": [
+    "Link thông cáo hãng hoặc báo dẫn",
+    "Ghi kỳ tài chính và ngày kết thúc kỳ"
+   ]
+  },
+  {
+   "id": "textile.companies",
+   "tier": "C",
+   "status": "manual",
+   "title": "Doanh nghiệp dệt may: khách hàng, kế hoạch, kết quả kinh doanh",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "BCTC quý; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "BCTC công bố",
+    "url": "https://www.hsx.vn/"
+   },
+   "where": {
+    "page": "Det-may/index.html",
+    "blocks": [
+     "dm-30"
+    ]
+   },
+   "how": "Khi người dùng nhắn: cập nhật companies trong data/textile/orders.json và bảng dm-30.",
+   "gates": [
+    "Link BCTC hoặc bài dẫn"
+   ]
+  },
+  {
+   "id": "textile.policy",
+   "tier": "C",
+   "title": "Lương tối thiểu, BHXH, thuế, EPR, yêu cầu xanh EU, phòng vệ thương mại sợi",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     1,
+     1
+    ],
+    "at": "07:00"
+   },
+   "publication": "Theo văn bản",
+   "source": {
+    "name": "Cổng văn bản Chính phủ",
+    "url": "https://vanban.chinhphu.vn/"
+   },
+   "where": {
+    "page": "Det-may/index.html",
+    "blocks": [
+     "dm-14",
+     "dm-15",
+     "dm-16"
+    ]
+   },
+   "how": "Kiểm văn bản mới, vụ phòng vệ thương mại mới; cập nhật data/textile/policy.json và bảng tương ứng; đổi 'chưa xác minh' khi có nguồn.",
+   "gates": [
+    "Số hiệu + ngày hiệu lực",
+    "Link văn bản gốc"
+   ]
+  },
+  {
+   "id": "textile.hot-topics",
+   "tier": "C",
+   "title": "Chủ đề nóng dệt may: thuế Mỹ, dịch chuyển đơn, phòng vệ sợi, bông, lao động, EU xanh, Bangladesh",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Báo ngành, VITAS",
+    "url": "http://www.vietnamtextile.org.vn/"
+   },
+   "where": {
+    "page": "Det-may/index.html",
+    "blocks": [
+     "dm-t1",
+     "dm-t2",
+     "dm-t3",
+     "dm-t4",
+     "dm-t5",
+     "dm-t6",
+     "dm-t7"
+    ]
+   },
+   "how": "Thêm mốc mới có ngày và link; kiểm điều kiện kết thúc.",
+   "gates": [
+    "Mỗi dòng có ngày + link"
+   ]
+  },
+  {
+   "id": "textile.ai.cycle",
+   "tier": "D",
+   "title": "Dệt may: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
+   "schedule": {
+    "type": "data",
+    "sources": [],
+    "minDays": 7,
+    "material": [],
+    "note": "Viết lại khi XK dệt may lũy kế đổi chiều so cùng kỳ, XK sang Mỹ âm 2 tháng liên tiếp, hoặc có mức thuế Mỹ mới"
+   },
+   "where": {
+    "page": "Det-may/index.html",
+    "blocks": [
+     "dm-02"
+    ]
+   },
+   "how": "Cập nhật số và nhận định trong dm-02 và catbox/riskbox; bảng tín hiệu tự tính từ Wi.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"

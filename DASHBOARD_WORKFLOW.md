@@ -237,3 +237,11 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - Chủ đề nóng: `data-topic-segment` → sub-tab gom theo nhãn Nhà ở / Khu công nghiệp / Chung; thêm chủ đề "Quỹ đất KCN" (bds-43). Pháp lý: cột "Mảng" ở bảng văn bản và dự án; thêm NĐ 35/2022.
 - Vốn & Trái phiếu: ghi rõ số chung toàn ngành; builder tính phần đáo hạn của 7 mã KCN + công ty con (`KCN` trong `build_realestate_wi.py`).
 - Sửa lỗi: `sector_ratio_recent` chọn capture có `to_time` mới nhất (`pick: max_to_time`); trước đó P/B phân ngành lấy nhầm số 06/10/2025.
+
+## 21. Dashboard Dệt may (08/10/2026)
+
+- **Phạm vi người dùng chốt:** 7 mã thanh khoản — may (TCM, TNG, MSH, GIL), sợi (STK, ADS), tập đoàn (VGT). Sub-tab Bức tranh ngành **Dệt nhuộm – May / Sợi**; hai tab riêng **XK & thuế quan** (mt10) và **Đơn hàng & nhãn hàng** (mt11). Nguyên liệu nằm trong Giá – Chi phí.
+- **Trang:** `Det-may/index.html` (`<body data-sector="textile">`), block `dm-01`…`dm-40`, chủ đề nóng `dm-t1`…`dm-t7`. File dùng chung nhận ngành qua cờ `tx` (research-layout, catalyst-board) hoặc `sector==='textile'`; `sector-layout.js`, `sector-content.js`, `sector-runtime.js` bỏ qua như BĐS. `assets/textile-dashboard.js` vẽ chuỗi giá trị, tách hai pane, mọi chart, KPI, Đọc nhanh.
+- **Nhóm B (Wi):** `data/textile-wi-contract.json` (XNK theo tháng và thị trường Mỹ/Nhật, sản lượng, IIP, bán lẻ quần áo Mỹ, bông ICE, sợi/bông/PSF/PTA/MEG Trung Quốc, P/E–P/B phân ngành 204, 207) → `scripts/build_textile_wi.py` → `data/textile-wi-data.js`. Lời gọi `macro_trade` vượt trần hiển thị: dùng `build_realestate_wi.py --restore`.
+- **Nhóm C (routine tài liệu):** `data/textile/{trade,orders,policy}.json` — mỗi dòng có link đã mở; thuế Mỹ (Mục 122 10% hay 15% còn lệch giữa nguồn, ghi ở ⓘ), OTEXA, VITAS, nhãn hàng, tín hiệu đơn hàng, chính sách. Số BCTC doanh nghiệp (`textile.companies`) chỉ cập nhật khi người dùng nhắn.
+- **Khoảng trống ghi trên trang (icon ⓘ):** cơ cấu thị trường từng DN, lịch sử 8 quý nhãn hàng, CPTPP/UKVFTA/RCEP 2026, tỷ trọng vải nhập từ Trung Quốc, giá điện 2026, sợi tổng hợp (Wi 252) chưa có số, VGT không có bảng tài chính công khai trên stockanalysis.

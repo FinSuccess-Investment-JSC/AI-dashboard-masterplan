@@ -3,8 +3,8 @@
 (() => {
   'use strict';
   const pane=document.querySelector('.majorpane[data-tab="mt5"]');if(!pane)return;
-  const bank=document.body.dataset.sector==='bank',power=document.body.dataset.sector==='power',re=document.body.dataset.sector==='realestate',oil=!power&&!re&&!!document.getElementById('chCurve');
-  const sector=bank?'bank':power?'power':re?'realestate':oil?'oil':'sugar';
+  const bank=document.body.dataset.sector==='bank',power=document.body.dataset.sector==='power',re=document.body.dataset.sector==='realestate',tx=document.body.dataset.sector==='textile',oil=!power&&!re&&!tx&&!!document.getElementById('chCurve');
+  const sector=bank?'bank':power?'power':re?'realestate':tx?'textile':oil?'oil':'sugar';
   const make=(tag,cls,text)=>{const n=document.createElement(tag);n.className=cls;if(text)n.textContent=text;return n};
   const num=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
   const date=v=>/^\d{4}-\d{2}-\d{2}/.test(v||'')?v.slice(8,10)+'/'+v.slice(5,7)+'/'+v.slice(0,4):v||'Chưa có kỳ';
@@ -16,7 +16,7 @@
   const heading=make('div','sectionhead'),headingText=make('div','');headingText.append(make('h2','','Catalyst / Risk'),make('p','','Kết luận hiện tại, tín hiệu đo được và các mốc sắp tới.'));heading.append(headingText);board.append(heading);
   function keys(buttons,select){buttons.forEach((b,i)=>b.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const j=e.key==='Home'?0:e.key==='End'?buttons.length-1:(i+(e.key==='ArrowRight'?1:buttons.length-1))%buttons.length;select(j);buttons[j].focus()}))}
   const signals=make('div','thesis-view');signals.id='thesis-signals';board.append(signals);
-  const stamp=bank?'11/09/2026':power?'06/10/2026':re?'08/10/2026':oil?'03/09/2026':'17/08/2026';
+  const stamp=bank?'11/09/2026':power?'06/10/2026':re||tx?'08/10/2026':oil?'03/09/2026':'17/08/2026';
   // One page: signals first, then original KPI table and the dated AI analysis under clear folds.
   const fold=(id,title,note)=>{const d=make('details','thesis-fold');d.id=id;const s=make('summary','',title);d.append(s);const body=make('div','thesis-fold-body');if(note)body.append(make('p','thesis-notice',note));d.append(body);return {d,body}};
   const kpi=fold('thesis-evidence','Bảng KPI & ngưỡng theo dõi');
@@ -76,7 +76,7 @@
       item('Phụ tải & huy động',day?num(day.output_mkwh,1)+' triệu kWh/ngày':'—',day?'EVN · '+date(day.date):'Chưa có kỳ','Theo dõi','Sản lượng phát của nhà máy; nhu cầu đầu tư nguồn, lưới.','Tăng trưởng sản lượng lũy kế năm lệch ≥2 điểm % so kế hoạch EVN.','Bản tin ngày của EVN; chưa có giá thị trường điện SMP (trang NSMO chỉ mở trong nước).',[['chDaily','Sản lượng ngày'],['chMonthly','Sản lượng tháng']],['thermal','hydro','re','grid'])
     ];
     [[0,['enso_oni'],62],[1,['coal_newcastle','lng_jkm',wbk].filter(Boolean),45],[3,['vn_power_daily'],7]].forEach(([i,ids,days])=>{const live=ids.filter(k=>feeds[k]?.records?.length);if(!live.length){rows[i].status='Thiếu dữ liệu';rows[i].metric='—'}else if(live.every(k=>feeds[k].status!=='ok'||Date.now()-Date.parse(feeds[k].latest_observation)>days*86400000)){rows[i].status='Chờ cập nhật'}});
-  }else if(re){
+  }else if(re||tx){
     rows=[]; // the verdict board below reads window.REALESTATE_WI directly; no legacy tiles
   }else if(!bank){
     const wb=feeds.sugar_monthly,last=wb?.records?.at(-1),stock=monitors[1]?.querySelector('strong')?.textContent||'—',hfcs=monitors[2]?.querySelector('strong')?.textContent||'—';
@@ -120,10 +120,10 @@
   });
   if(!bank){
     const label=make('label','','Góc nhìn doanh nghiệp');label.htmlFor='thesis-scope';const select=make('select','');select.id='thesis-scope';
-    const opts=re?[['all','Toàn ngành'],['housing','Nhà ở'],['industrial','Khu công nghiệp'],['leasing','Cho thuê'],['broker','Môi giới']]:power?[['all','Toàn ngành'],['thermal','Nhiệt điện'],['hydro','Thủy điện'],['re','Năng lượng tái tạo'],['grid','Lưới, xây lắp & thiết bị']]:oil?[['all','Toàn chuỗi'],['upstream','Khai thác'],['services','Dịch vụ'],['gas','Khí'],['refining','Lọc dầu'],['distribution','Phân phối']]:[['all','Toàn ngành'],['cane','Tự chủ vùng mía'],['import','Phụ thuộc nguyên liệu nhập']];
+    const opts=tx?[['all','Toàn ngành'],['garment','May'],['yarn','Sợi'],['group','Tập đoàn']]:re?[['all','Toàn ngành'],['housing','Nhà ở'],['industrial','Khu công nghiệp'],['leasing','Cho thuê'],['broker','Môi giới']]:power?[['all','Toàn ngành'],['thermal','Nhiệt điện'],['hydro','Thủy điện'],['re','Năng lượng tái tạo'],['grid','Lưới, xây lắp & thiết bị']]:oil?[['all','Toàn chuỗi'],['upstream','Khai thác'],['services','Dịch vụ'],['gas','Khí'],['refining','Lọc dầu'],['distribution','Phân phối']]:[['all','Toàn ngành'],['cane','Tự chủ vùng mía'],['import','Phụ thuộc nguyên liệu nhập']];
     opts.forEach(([v,t])=>{const o=make('option','',t);o.value=v;select.append(o)});filter.append(label,select);
     select.addEventListener('change',()=>{[...grid.children].forEach(c=>c.hidden=select.value!=='all'&&!c.dataset.groups.split(',').includes(select.value));intro.textContent=oil||power?'':select.value==='cane'?'Tự chủ mía: ưu tiên giá bán so giá mía, năng suất và độ bền vùng nguyên liệu.':select.value==='import'?'Nguyên liệu nhập: ưu tiên giá đường thô, tỷ giá, thuế và khả năng chuyển giá bán.':'';intro.hidden=!intro.textContent;if(!intro.parentElement)grid.before(intro)});
-    if(!oil&&!power&&!re)select.addEventListener('change',()=>{
+    if(!oil&&!power&&!re&&!tx)select.addEventListener('change',()=>{
       const c=grid.children[1],raw=select.value==='import',cane=select.value==='cane';
       c.querySelector('h3').textContent=raw?'Giá bán & đường thô nhập':cane?'Giá bán & giá mía':rows[1].title;
       const impact=c.querySelector('.thesis-impact');impact.replaceChildren(make('b','','Ảnh hưởng: '),raw?'Giá đường thô, tỷ giá, thuế và khả năng chuyển giá bán.':cane?'Giá bán so chi phí mía; năng suất và tỷ lệ thu hồi đường.':rows[1].impact);
@@ -281,6 +281,39 @@
         row('IIP chế biến, chế tạo (BQ 3 tháng)',iip.length?iip3:null,undefined,'%',1,'≥ 8% YoY',iipL?iip3>=8?'good':iip3<0?'risk':'watch':'na','Khách thuê KCN','chIipMfg','Khu công nghiệp'),
         row('P/B BĐS công nghiệp',ipbL?ipbL[2]:null,ipbP?ipbP[2]:null,'x',2,'—',ipbL?'info':'na','KCN niêm yết','chIpPb','Khu công nghiệp')],
       events:[['20/10','Khai mạc kỳ họp QH: Luật Đất đai sửa đổi'],['20–30/10','BCTC quý III'],['Đầu tháng','NSO: CPI, FDI, GDP quý'],['Hằng tháng','HNX/VBMA: TPDN đáo hạn'],['Cuối T11','Bộ Xây dựng: thị trường Q3']]
+    });
+  }else if(tx){
+    const T=window.TEXTILE_DASHBOARD||{},M=window.TEXTILE_WI?.blocks?.macro?.series||{},Cm=window.TEXTILE_WI?.blocks?.commodity?.series||{},Sec=window.TEXTILE_WI?.blocks?.sector_ratio?.by_sector||{};
+    const R=k=>M[k]?.records||Cm[k]?.records||[];
+    const yo=(rs,r)=>{if(!r)return null;const p=rs.find(x=>x.date.slice(0,7)===String(Number(r.date.slice(0,4))-1)+r.date.slice(4,7));return p&&p.value?(r.value/p.value-1)*100:null};
+    const mon=d=>'T'+Number(d.slice(5,7))+'/'+d.slice(2,4);
+    const ex=R('exp_textile'),exL=ex.at(-1),exY=yo(ex,exL),ytd=T.ytd?pct(T.ytd.now,T.ytd.prev):null;
+    const us=R('exp_textile_us'),usL=us.at(-1),usY=yo(us,usL),us2=us.length>1?yo(us,us.at(-2)):null;
+    const imf=R('imp_fabric'),imL=imf.at(-1),imY=yo(imf,imL),yx=R('exp_yarn'),yxL=yx.at(-1),yxY=yo(yx,yxL);
+    const ct=R('cotton_ice'),ctL=ct.at(-1),ps=R('psf'),psL=ps.at(-1),psY=yo(ps,psL),ur=R('us_apparel_retail_yoy'),urL=ur.at(-1);
+    const yc=R('yarn_cn'),cc=R('cotton_cn'),spr=yc.map(r=>{const c=cc.find(x=>x.date.slice(0,7)===r.date.slice(0,7));return c?{date:r.date,value:r.value-c.value}:null}).filter(Boolean),spL=spr.at(-1),spP=spr.at(-4);
+    const pe=Sec['204']?.records||[],peL=pe.at(-1);
+    const usSt=usY==null?'na':usY<0&&us2!=null&&us2<0?'risk':usY<0?'watch':usY>=9?'good':'info';
+    const exSt=ytd==null?'na':ytd>=5?'good':ytd<0?'risk':'watch';
+    const garmentUp=exSt==='good'&&usSt!=='risk',garmentDn=exSt==='risk'||usSt==='risk';
+    const yarnUp=yxY!=null&&yxY>5&&spL&&spP&&spL.value>=spP.value;
+    const row=(name,now,prev,unit,d,th,st,who,chart,group='Dệt nhuộm – May')=>({name,chart,st,group,mid:[S(now,d,unit),prev===undefined?'—':D(now,prev,d),th],end:[who]});
+    renderBrief({
+      headline:'May: '+(garmentUp?'xuất khẩu tăng tốc':garmentDn?'xuất khẩu sang Mỹ suy yếu':'xuất khẩu đi ngang, chịu thuế Mỹ cao hơn đối thủ')+' · Sợi: '+(yarnUp?'chênh giá sợi – bông cải thiện':'biên kéo sợi chưa cải thiện'),
+      segs:[['May','TCM · TNG · MSH · GIL',exL?(garmentUp?'up':garmentDn?'down':'flat'):'na',ytd==null?'Thiếu XK':'XK lũy kế '+(ytd>0?'+':'')+num(ytd,1)+'% YoY'],['Sợi','STK · ADS',yxL?(yarnUp?'up':'flat'):'na',yxY==null?'Thiếu XK sợi':'XK sợi '+(yxY>0?'+':'')+num(yxY,0)+'% YoY'],['Tập đoàn','VGT',exL?(garmentUp?'up':'flat'):'na','Cả chuỗi']],
+      headers:['Tín hiệu','Mới nhất','Kỳ trước','Ngưỡng','','Ai chịu'],
+      score:[
+        row('XK dệt may lũy kế năm, so cùng kỳ',ytd,undefined,'%',1,'≥ 5% thuận · < 0 rủi ro',exSt,'Cả ngành','chExport'),
+        row('XK dệt may tháng '+(exL?mon(exL.date):''),exL?exL.value/1000:null,ex.at(-2)?ex.at(-2).value/1000:null,' tỷ USD',2,'YoY '+(exY==null?'—':(exY>0?'+':'')+num(exY,1)+'%'),exY==null?'na':exY<0?'watch':'info','May','chExport'),
+        row('XK dệt may sang Mỹ, so cùng kỳ',usY,us2??undefined,'%',1,'2 tháng âm liên tiếp = rủi ro',usSt,'TNG · MSH · TCM · GIL','chExportMkt'),
+        row('Nhập khẩu vải, so cùng kỳ',imY,undefined,'%',1,'chỉ báo đơn 1–2 tháng',imY==null?'na':imY<0?'watch':'info','Nhà may FOB','chImport'),
+        row('Bán lẻ quần áo Mỹ, so cùng kỳ',urL?.value,ur.at(-2)?.value,'%',1,'< 0 = nhãn hàng giảm đơn',urL==null?'na':urL.value<0?'risk':urL.value>=3?'good':'info','Cả ngành','chUsRetail'),
+        row('Bông ICE',ctL?.value,ct.at(-13)?.value,' cent/lb',1,'> 90 áp lực biên sợi bông',ctL==null?'na':ctL.value>90?'risk':ctL.value>80?'watch':'info','ADS','chCotton','Sợi'),
+        row('Chênh giá sợi – bông Trung Quốc',spL?spL.value/1000:null,spP?spP.value/1000:null,' nghìn CNY/t',2,'tăng so 3 tháng trước = thuận',!spL||!spP?'na':spL.value>=spP.value?'good':'watch','ADS','chYarnSpread','Sợi'),
+        row('Xơ PSF, so cùng kỳ',psY,undefined,'%',1,'tăng nhanh = áp lực nếu giá sợi không theo',psY==null?'na':psY>15?'watch':'info','STK','chPoly','Sợi'),
+        row('XK xơ, sợi, so cùng kỳ',yxY,undefined,'%',1,'> +5% thuận',yxY==null?'na':yxY>5?'good':yxY<0?'risk':'watch','STK · ADS','chYarnExp','Sợi'),
+        row('P/E ngành may',peL?peL[1]:null,pe.at(-21)?pe.at(-21)[1]:null,'x',1,'—',peL?'info':'na','TCM · TNG · MSH · GIL','chSectorVal','Định giá')],
+      events:[['Đầu tháng','Hải quan, NSO: XK dệt may tháng trước'],['Giữa tháng','US Census: bán lẻ quần áo'],['20–30/10','BCTC quý III'],['24/11/2026','Bangladesh rời nhóm LDC'],['Theo sự kiện','USTR: danh sách miễn trừ Mục 301']]
     });
   }else if(bank){
     const map={'Cần chú ý':'risk','Theo dõi':'info'};

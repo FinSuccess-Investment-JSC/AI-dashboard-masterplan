@@ -1,0 +1,224 @@
+{
+ "schema": 1,
+ "about": "Các lời gọi WiMCP cho dashboard Dệt may. Routine Claude gọi lại đúng các lời gọi này (hook wi_capture.py lưu kết quả vào data/raw/wi/.inbox/), rồi chạy scripts/build_textile_wi.py để dựng data/textile-wi-data.js. Không chép tay số.",
+ "calls": [
+  {
+   "block": "macro_trade",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "83528,83531,83527,92752,92778,92787,92769,87978,88750,87977,82088,82089,82090,202903,202904,652,348",
+    "from_time": "2019-01-01",
+    "limit": 120
+   },
+   "cadence": "daily",
+   "note": "Kết quả vượt trần hiển thị: chép file tool-results vào capture bằng build_realestate_wi.py --restore."
+  },
+  {
+   "block": "commodity_cotton",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "74393,73979,203165,203213,203220,203187",
+    "from_time": "2022-01-01",
+    "to_time": "2026-10-08",
+    "limit": 1000
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "Bông ICE theo tháng từ 2023; chuỗi CNY bị nén theo quý ở cửa sổ dài."
+  },
+  {
+   "block": "commodity_recent",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "73979,203165,203213,203220,203187",
+    "from_time": "2024-10-01",
+    "to_time": "2026-10-08",
+    "limit": 1000
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "Cửa sổ 2 năm để Wi trả theo tháng. to_time = hôm nay khi gọi lại."
+  },
+  {
+   "block": "sector_ratio_recent",
+   "tool": "wi_data_sector",
+   "input": {
+    "action": "get_data",
+    "endpoint_name": "sector_ratio_daily",
+    "filters": "{\"sector_id\":\"204,207,252\"}",
+    "columns": "sector_id,trading_date,pe,pb,market_cap",
+    "by_time": "trading_date",
+    "from_time": "2025-04-01",
+    "to_time": "2026-10-08",
+    "limit": 1000
+   },
+   "cadence": "daily",
+   "match_keys": [
+    "action",
+    "endpoint_name",
+    "filters",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "252 (sợi tổng hợp) hiện không có số trên Wi."
+  }
+ ],
+ "indicators": {
+  "83528": [
+   "exp_textile",
+   "Xuất khẩu hàng dệt, may",
+   "triệu USD",
+   "monthly"
+  ],
+  "83531": [
+   "exp_footwear",
+   "Xuất khẩu giày dép",
+   "triệu USD",
+   "monthly"
+  ],
+  "83527": [
+   "exp_yarn",
+   "Xuất khẩu xơ, sợi dệt",
+   "triệu USD",
+   "monthly"
+  ],
+  "92752": [
+   "imp_fabric",
+   "Nhập khẩu vải",
+   "triệu USD",
+   "monthly"
+  ],
+  "92778": [
+   "imp_cotton",
+   "Nhập khẩu bông",
+   "triệu USD",
+   "monthly"
+  ],
+  "92787": [
+   "imp_yarn",
+   "Nhập khẩu xơ, sợi dệt",
+   "triệu USD",
+   "monthly"
+  ],
+  "92769": [
+   "imp_materials",
+   "Nhập khẩu nguyên phụ liệu dệt, may, da, giày",
+   "triệu USD",
+   "monthly"
+  ],
+  "87978": [
+   "exp_textile_us",
+   "Xuất khẩu hàng dệt, may sang Hoa Kỳ",
+   "triệu USD",
+   "monthly"
+  ],
+  "88750": [
+   "exp_textile_jp",
+   "Xuất khẩu hàng dệt, may sang Nhật Bản",
+   "triệu USD",
+   "monthly"
+  ],
+  "87977": [
+   "exp_yarn_us",
+   "Xuất khẩu xơ, sợi sang Hoa Kỳ",
+   "triệu USD",
+   "monthly"
+  ],
+  "82088": [
+   "fabric_natural",
+   "Sản lượng vải dệt từ sợi tự nhiên",
+   "triệu m²",
+   "monthly"
+  ],
+  "82089": [
+   "fabric_synthetic",
+   "Sản lượng vải dệt từ sợi tổng hợp, nhân tạo",
+   "triệu m²",
+   "monthly"
+  ],
+  "82090": [
+   "garments",
+   "Sản lượng quần áo mặc thường",
+   "triệu cái",
+   "monthly"
+  ],
+  "202903": [
+   "iip_textile",
+   "IIP ngành dệt, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "202904": [
+   "iip_apparel",
+   "IIP sản xuất trang phục, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "652": [
+   "us_apparel_retail",
+   "Bán lẻ quần áo, phụ kiện của Mỹ",
+   "tỷ USD",
+   "monthly"
+  ],
+  "348": [
+   "us_apparel_retail_yoy",
+   "Bán lẻ quần áo, phụ kiện của Mỹ, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "74393": [
+   "cotton_ice",
+   "Bông ICE Cotton No.2",
+   "US cent/pound",
+   "daily"
+  ],
+  "73979": [
+   "yarn_cn",
+   "Sợi cotton Trung Quốc",
+   "CNY/tấn",
+   "daily"
+  ],
+  "203165": [
+   "cotton_cn",
+   "Bông xơ Trung Quốc (Cotton Lint)",
+   "CNY/tấn",
+   "daily"
+  ],
+  "203213": [
+   "psf",
+   "Xơ polyester (PSF)",
+   "CNY/tấn",
+   "daily"
+  ],
+  "203220": [
+   "pta",
+   "PTA",
+   "CNY/tấn",
+   "daily"
+  ],
+  "203187": [
+   "meg",
+   "Ethylene glycol (MEG)",
+   "CNY/tấn",
+   "daily"
+  ]
+ },
+ "sectors": {
+  "204": "Sản xuất sản phẩm may mặc công nghiệp",
+  "207": "Sản xuất sợi và vải thành phẩm",
+  "252": "Sợi tổng hợp"
+ }
+}

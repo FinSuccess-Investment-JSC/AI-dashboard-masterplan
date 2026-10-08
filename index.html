@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>FinSuccess Industry Dashboard Database</title>
 <link rel="stylesheet" href="assets/site-navigation.css?v=54a3825f55f4">
-<script src="assets/site-navigation.js?v=2c6c98bd6eb6" data-release="20261008-power-fmp-pgv-r1"></script>
+<script src="assets/site-navigation.js?v=38f1100f7e0b" data-release="20261008T075911Z"></script>
 <style>
 :root{--navy:#11255a;--navy2:#1d3678;--accent:#27af95;--accent2:#2fd0b2;--page:#f5f7fc;--card:#fff;--ink:#101318;--ink2:#3d4653;--muted:#6b7686;--line:#dfe6f7;--hair:#eaf0fb;--soft:#eef5f8;--red:#b8443a;--shadow:0 1px 2px rgba(17,37,90,.04),0 10px 28px rgba(17,37,90,.06)}
 *{box-sizing:border-box}
@@ -75,6 +75,7 @@ const industries=[
   {id:"ngan-hang",name:"Ngân hàng",status:"ready",folder:"Bank/",headline:"Dashboard ngành Ngân hàng Việt Nam",desc:"Bảy tab theo flow cung vốn – tín dụng – biên lợi nhuận – chính sách – rủi ro, với dữ liệu Eximbank, IFC, pháp lý và Wi bundle session-only đã được tích hợp.",metrics:[["7","tab phân tích"],["20","Wi blocks đã nối"],["11/09/2026","Wi bundle checked"],["Ready","đã tích hợp web tổng"]],watch:["Huy động so với tín dụng","Giá vốn, NIM và CASA","Nợ nhóm 2, NPL và credit cost","OMO, tỷ giá, room và tỷ lệ an toàn"],sources:"Eximbank, IFC, Công báo, Tạp chí Ngân hàng và Wi bundle đã được tích hợp. Các khối còn thiếu/giới hạn vẫn được giữ rõ trên dashboard để không lẫn lộn dữ liệu và suy luận."},
   {id:"chung-khoan",name:"Chứng khoán",status:"planned",headline:"Chứng khoán",desc:"Chưa dựng dashboard ngành.",watch:["Thanh khoản thị trường","Margin lending","IPO/upgrading story","Broker market share"]},
   {id:"bds",name:"Bất động sản",status:"ready",folder:"Bat-dong-san/",headline:"Dashboard ngành Bất động sản Việt Nam",desc:"Nhà ở và khu công nghiệp: trái phiếu, tín dụng, FDI, giá nhà, bảng giá đất, pháp lý dự án và 20 doanh nghiệp niêm yết.",metrics:[["9","tab phân tích"],["20","doanh nghiệp theo dõi"],["Hằng ngày","trái phiếu BĐS (HNX · Wi)"],["Public-source","ưu tiên nguồn"]],watch:["Đáo hạn và chậm trả trái phiếu BĐS","Tín dụng, lãi vay mua nhà, FDI","Giá nhà Hà Nội, TP.HCM; lấp đầy KCN","Bảng giá đất, Luật Đất đai sửa đổi, dự án tồn đọng"]},
+  {id:"det-may",name:"Dệt may",status:"ready",folder:"Det-may/",headline:"Dashboard ngành Dệt may Việt Nam",desc:"Xuất khẩu theo thị trường, thuế Mỹ và quy tắc xuất xứ, giá bông – xơ – sợi, tồn kho nhãn hàng và 7 doanh nghiệp niêm yết.",metrics:[["9","tab phân tích"],["7","doanh nghiệp theo dõi"],["Hằng ngày","xuất khẩu, giá bông (Wi)"],["Public-source","ưu tiên nguồn"]],watch:["Xuất khẩu sang Mỹ","Thuế Mục 301 và hạn ngạch đối thủ","Giá bông, xơ PSF, chênh giá sợi","Tồn kho nhãn hàng"]},
   {id:"kcn",name:"Khu công nghiệp",status:"planned",headline:"Khu công nghiệp",desc:"Chưa dựng dashboard ngành.",watch:["FDI đăng ký/giải ngân","Giá thuê đất KCN","Diện tích sẵn sàng cho thuê","Tiến độ pháp lý dự án mới"]},
   {id:"ban-le",name:"Bán lẻ",status:"planned",headline:"Bán lẻ",desc:"Chưa dựng dashboard ngành.",watch:["SSSG và traffic","Thu nhập/niềm tin tiêu dùng","Mở mới/đóng cửa hàng","Gross margin và inventory"]},
   {id:"thep",name:"Thép",status:"planned",headline:"Thép",desc:"Chưa dựng dashboard ngành.",watch:["HRC/rebar spread","Quặng sắt, than cốc","Sản lượng tiêu thụ nội địa/xuất khẩu","China supply và trade defense"]},
@@ -88,12 +89,13 @@ const panes=document.getElementById("industryPanes");
 const statusLabel={ready:"Đã có",planned:"Chưa dựng"};
 const statusClass={ready:"s-ready",planned:"s-empty"};
 function render(){
-  const routeFor={"dau-khi":"oil","duong":"sugar","ngan-hang":"bank","dien":"power","bds":"realestate"};
+  const routeFor={"dau-khi":"oil","duong":"sugar","ngan-hang":"bank","dien":"power","bds":"realestate","det-may":"textile"};
   const descriptions={
     "dau-khi":["Hormuz theo ngày & bình quân 7 ngày","Brent futures, đường cong WTI và crack","Cung – cầu Thế giới / Việt Nam"],
     "duong":["Sugar No.11 futures và World Bank tháng","USDA: bốn trung tâm cung đường lớn","Cung – cầu Thế giới / Việt Nam"],
     "ngan-hang":["20 nhóm dữ liệu Wi đã tích hợp","Huy động, tín dụng, NIM và chất lượng tài sản","So sánh ngân hàng, Catalyst / Risk"],
     "dien":["Sản lượng, Pmax và cơ cấu nguồn hằng ngày (EVN)","Thủy văn & El Niño, giá than và LNG","Giá điện, Quy hoạch điện VIII, 18 doanh nghiệp"],
+    "det-may":["Xuất khẩu dệt may theo tháng và thị trường (Wi)","Thuế Mỹ, xuất xứ, nhập khẩu may mặc Mỹ","Giá bông – xơ – sợi, nhãn hàng, 7 doanh nghiệp"],
     "bds":["Trái phiếu BĐS: phát hành, chậm trả, lịch đáo hạn (HNX · Wi)","FDI, tín dụng, giá nhà, lấp đầy KCN","Bảng giá đất, pháp lý dự án, 20 doanh nghiệp"]
   };
   document.getElementById('readyDashboards').innerHTML=industries.filter(x=>x.status==='ready').map(x=>`<article class="card industry-card" data-industry="${x.id}"><span class="status s-ready">Dashboard đã cập nhật</span><h2>${x.name}</h2><p class="sub">${x.headline}</p><ul>${descriptions[x.id].map(t=>`<li>${t}</li>`).join('')}</ul><p class="sub">Nguồn, ngày dữ liệu và hạn chế được ghi tại từng biểu đồ.</p><div class="actions"><a class="btn primary" data-site-route="${routeFor[x.id]}" href="${DashboardSite.href(routeFor[x.id])}">Mở dashboard ${x.name} →</a></div></article>`).join('');

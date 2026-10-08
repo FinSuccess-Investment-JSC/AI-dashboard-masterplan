@@ -2,7 +2,7 @@
    Groups are explicit selector lists per sector; nodes are moved, never cloned. */
 (() => {
   'use strict';
-  const sector=document.body.dataset.sector==='power'?'power':document.body.dataset.sector==='bank'?'bank':document.body.dataset.sector==='realestate'?'realestate':document.getElementById('chCurve')?'oil':'sugar';
+  const sector=document.body.dataset.sector==='power'?'power':document.body.dataset.sector==='bank'?'bank':document.body.dataset.sector==='realestate'?'realestate':document.body.dataset.sector==='textile'?'textile':document.getElementById('chCurve')?'oil':'sugar';
   const card=i=>(n,root)=>[...root.children].filter(c=>c.matches('.card'))[i]===n;
   const common={
     mt1:[['Chuỗi giá trị','.research-roadmap,.value-chain-card'],['Mô hình kinh doanh','.business-models'],['So sánh tài chính','.financial-comparison']],
@@ -13,6 +13,7 @@
     power:{...common,mt1:[...common.mt1,['Doanh nghiệp theo dõi',':scope>.section']],mt4:[['Giá điện',card(0)],['Quy hoạch điện VIII',card(1)],['DPPA & điện mái nhà',card(2)]]},
     sugar:{...common,mt1:[...common.mt1,['Mùa vụ & sản phẩm phụ',':scope>.section']]},
     realestate:{...common,mt1:[...common.mt1,['Doanh nghiệp theo dõi','.grid.two']],mt4:[['Đất đai & bảng giá đất',card(0)],['Nhà ở & NOXH',card(1)],['Tín dụng & trái phiếu',card(2)],['Khu công nghiệp',card(3)]],mt10:[['Trái phiếu BĐS','.bds-bond'],['Tín dụng & lãi suất','.bds-credit']],mt11:[['Khung pháp lý','.bds-legal'],['Bảng giá đất','.bds-landprice'],['Dự án theo dõi','.bds-projects']]},
+    textile:{...common,mt1:[...common.mt1,['Doanh nghiệp theo dõi','.grid.two']],mt4:[['Chính sách trong nước & EU',card(0)],['Phòng vệ thương mại sợi',card(1)]]},
     bank:{
       mt1:[['Luồng vốn','.research-roadmap,.card:not(.compact-chart-card)'],['Mô hình kinh doanh','.business-models,.bank-framework'],['So sánh tài chính','.financial-comparison'],['Đọc nhanh','.grid.two,.sectionhead:not(:first-child),.monitor-grid']],
       mt4:[['Mốc pháp lý','.policy-impact,.card'],['Room tín dụng','.grid.two,.note']],
