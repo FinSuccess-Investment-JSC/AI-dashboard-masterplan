@@ -2,19 +2,28 @@
    Groups are explicit selector lists per sector; nodes are moved, never cloned. */
 (() => {
   'use strict';
-  const oil=document.body.dataset.sector!=='power'&&document.body.dataset.sector!=='bank'&&!!document.getElementById('chCurve');
-  if(!oil)return;
-  const config={
+  const sector=document.body.dataset.sector==='power'?'power':document.body.dataset.sector==='bank'?'bank':document.getElementById('chCurve')?'oil':'sugar';
+  const card=i=>(n,root)=>[...root.children].filter(c=>c.matches('.card'))[i]===n;
+  const common={
     mt1:[['Chuỗi giá trị','.research-roadmap,.value-chain-card'],['Mô hình kinh doanh','.business-models'],['So sánh tài chính','.financial-comparison'],['Dashboard doanh nghiệp','.company-dashboard-links,:scope>.section']],
-    mt4:[['Điều hành giá','.policy-impact,.policy-visuals,.card:has(h2,h3):not(:has(.compare-table))'],['Luật Dầu khí 2026','.card:has(.compare-table)']],
     mt8:[['Độ tin cậy','.focus-card,.classification-key,.update-legend'],['Nguồn dữ liệu','.card:not(.focus-card),.source-register'],['Tài liệu khác','.research-fold']]
   };
+  const config={
+    oil:{...common,mt4:[['Điều hành giá','.policy-impact,.policy-visuals,.card:has(h2,h3):not(:has(.compare-table))'],['Luật Dầu khí 2026','.card:has(.compare-table)']]},
+    power:{...common,mt4:[['Giá điện',card(0)],['Quy hoạch điện VIII',card(1)],['DPPA & điện mái nhà',card(2)]]},
+    sugar:{...common},
+    bank:{
+      mt1:[['Luồng vốn','.research-roadmap,.card:not(.compact-chart-card)'],['Mô hình kinh doanh','.business-models,.bank-framework'],['So sánh tài chính','.financial-comparison'],['Dashboard doanh nghiệp','.company-dashboard-links'],['Đọc nhanh','.grid.two,.sectionhead:not(:first-child),.monitor-grid']],
+      mt4:[['Mốc pháp lý','.policy-impact,.card'],['Room tín dụng','.grid.two,.note']],
+      mt8:common.mt8
+    }
+  };
   const make=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text)n.textContent=text;return n};
-  Object.entries(config).forEach(([key,groups])=>{
+  Object.entries(config[sector]).forEach(([key,groups])=>{
     const pane=document.querySelector(`.majorpane[data-tab="${key}"]`);if(!pane)return;
     const root=key==='mt4'?pane.querySelector(':scope>.section')||pane:pane;
     const used=new Set(),panes=groups.map(([label,sel],i)=>{
-      const nodes=[...root.querySelectorAll(':scope>*')].filter(n=>!used.has(n)&&sel.split(/,(?![^(]*\))/).some(s=>{try{return s.startsWith(':scope')?n.matches(s.replace(':scope>','')):n.matches(s)}catch{return false}}));
+      const nodes=[...root.querySelectorAll(':scope>*')].filter(n=>!used.has(n)&&(typeof sel==='function'?sel(n,root):sel.split(/,(?![^(]*\))/).some(s=>{try{return s.startsWith(':scope')?n.matches(s.replace(':scope>','')):n.matches(s)}catch{return false}})));
       nodes.forEach(n=>used.add(n));return {label,nodes,i};
     }).filter(g=>g.nodes.length);
     if(panes.length<2)return;

@@ -217,4 +217,9 @@ body[data-sector="bank"] .wi-table-fold>summary:hover { background: #e9edff; }
 .insight[data-update-kind], .summary-archive [data-update-kind] { border: 1px solid var(--fs-line) !important; }
 
 /* Thẻ không có chart không chiếm một nửa hàng cạnh chart (tránh khung rỗng kéo dãn). */
-.grid.two > .card:not(:has([id^="ch"])), .research-grid > .card:not(:has([id^="ch"])) { grid-column: 1 / -1; }
+body:not([data-sector="bank"]) .grid.two > .card:not(:has([id^="ch"])), body:not([data-sector="bank"]) .research-grid > .card:not(:has([id^="ch"])) { grid-column: 1 / -1; }
+/* Bank: Wi charts are drawn full-width; cap them near the size of the other dashboards' charts. */
+body[data-sector="bank"] .compact-chart-card svg[viewBox^="0 0 580 "] { display: block; max-width: 660px; margin-inline: auto; }
+
+/* Nhãn loại dữ liệu bỏ hẳn (08/10/2026): nguồn và kỳ nằm ở icon ghi chú của từng chart. */
+.update-badge, .classification-key, .update-legend { display: none !important; }

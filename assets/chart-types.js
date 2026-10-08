@@ -53,13 +53,13 @@
   }
 
   /* ---------- universal SVG renderer ---------- */
-  const UNIFORM = document.body?.dataset.sector !== 'bank';
+  const UNIFORM = true;
   function render(model, type) {
     const cats = model.categories, n = cats.length, f = fmtOf(model);
     const main = model.series.filter(s => !s.overlay), over = model.series.filter(s => s.overlay);
     const label = i => String(model.tickLabels?.[i] ?? cats[i]);
     if (type === 'hbar') return renderH(model, main, over, f, label);
-    // Uniform plot height so charts in one row/tab look the same size (Bank keeps per-chart heights).
+    // Uniform plot height so charts in one row/tab look the same size.
     const W = 640, H = UNIFORM ? 260 : Math.max(240, model.height || 250), L = 52, R = 16, T = 16, B = 30;
     const pw = W - L - R, ph = H - T - B, band = pw / Math.max(n, 1);
     const stacked = type === 'stack' || (type === 'area' && model.stackable && main.length > 1 &&

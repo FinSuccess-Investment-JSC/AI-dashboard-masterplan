@@ -270,6 +270,47 @@ else if(power){
  const setKpi=(id,value,delta,cls)=>{const v=document.getElementById(id);if(v&&value)v.textContent=value;const d=document.getElementById(id+'-delta');if(d&&delta){d.textContent=delta;if(cls)d.className='delta '+cls}};
  const spark=(id,values,c)=>{const n=document.getElementById(id);if(!n||!values.length)return;n.replaceChildren();sparkline(id,values,c)};
  const gap=(id,text)=>{const host=document.getElementById(id);if(!host||host.querySelector('svg'))return;const n=document.createElement('p');n.className='data-gap';n.textContent=text;host.after(n)};
+ // Put the monthly total and each generation source on its own full-width card.
+ // The original percentage table stays in the hydro card's data disclosure.
+ const mixCard=document.getElementById('chMixShare')?.closest('.card');
+ const monthlyCard=document.getElementById('chMonthly')?.closest('.card');
+ const pmaxCard=document.getElementById('chPmax')?.closest('.card');
+ const dailyCard=document.getElementById('chDaily')?.closest('.card');
+ const monthlyGrid=monthlyCard?.parentElement;
+ const seasonalGrid=document.createElement('div');seasonalGrid.className='grid power-seasonal-grid';
+ if(dailyCard&&mixCard&&monthlyCard&&pmaxCard&&monthlyGrid){
+  dailyCard.after(pmaxCard);monthlyGrid.after(seasonalGrid);seasonalGrid.append(monthlyCard,mixCard);monthlyGrid.remove();
+  mixCard.querySelector('.chart-title').textContent='Sản lượng thủy điện — so cùng tháng';
+  mixCard.querySelector('.chart-sub').textContent='tỷ kWh · bản tin vận hành EVN';
+  mixCard.querySelector('.legend')?.remove();
+  mixCard.querySelector('#tbl-mix')?.closest('details')?.querySelector('summary')?.replaceChildren('Xem bảng tỷ trọng nguồn (%)');
+  const sourceSpecs=[
+   ['chSourceGas','dien-07-gas','Sản lượng điện khí & dầu — so cùng tháng','gas'],
+   ['chSourceCoal','dien-07-coal','Sản lượng nhiệt điện than — so cùng tháng','coal'],
+   ['chSourceRenewables','dien-07-renewables','Sản lượng gió & mặt trời — so cùng tháng','re'],
+   ['chSourceImports','dien-07-imports','Sản lượng điện nhập khẩu — so cùng tháng','imports']
+  ];
+  sourceSpecs.forEach(([id,blockId,title])=>{
+   const card=document.createElement('div');card.className='card';Object.assign(card.dataset,{blockId,updateKind:'public',cadence:'daily',refreshStatus:'snapshot'});
+   const heading=document.createElement('div');heading.className='chart-title';heading.textContent=title;
+   const sub=document.createElement('div');sub.className='chart-sub';sub.textContent='tỷ kWh · bản tin vận hành EVN';
+   const host=document.createElement('div');host.id=id;
+   const detail=document.createElement('details');detail.className='dtable';
+   const summary=document.createElement('summary');summary.textContent='Xem bảng dữ liệu';
+   const wrap=document.createElement('div');wrap.className='tablewrap';const table=document.createElement('table');table.id='tbl-'+id;wrap.append(table);detail.append(summary,wrap);
+   card.append(heading,sub,host,detail);seasonalGrid.append(card);
+  });
+ }
+ const seasonalSources=[['chMixShare','tbl-chMixShare','hydro'],['chSourceGas','tbl-chSourceGas','gas'],['chSourceCoal','tbl-chSourceCoal','coal'],['chSourceRenewables','tbl-chSourceRenewables','re'],['chSourceImports','tbl-chSourceImports','imports']];
+ const seasonLabels=Array.from({length:12},(_,i)=>'T'+String(i+1).padStart(2,'0'));
+ const yearColors=['#B3BDE8','#6171C5','#2938A8'];
+ function seasonalPlot(id,records,years,field){
+  const byDate=new Map(records.map(m=>[m.date,m]));
+  const series=years.map((year,i)=>({name:String(year),kind:'bar',color:yearColors[i],values:seasonLabels.map((_,month)=>byDate.get(year+'-'+String(month+1).padStart(2,'0'))?.[field]??null),confArr:seasonLabels.map((_,month)=>byDate.get(year+'-'+String(month+1).padStart(2,'0'))?.full??false)}));
+  barLineChart(id,{categories:seasonLabels,series,unit:'tỷ kWh',digits:2,rotateLabels:false,ariaLabel:document.getElementById(id)?.closest('.card')?.querySelector('.chart-title')?.textContent});
+  const host=document.getElementById(id),legend=document.createElement('div');legend.className='legend';
+  years.forEach((year,i)=>{const item=document.createElement('span');item.className='li';const sw=document.createElement('span');sw.className='dot';sw.style.background=yearColors[i];item.append(sw,String(year));legend.append(item)});host.after(legend);
+ }
  const daily=pick('vn_power_daily');
  if(daily){
   const all=M.rolling(rows(daily).filter(r=>Number.isFinite(r.output_mkwh)),'output_mkwh',7),rs=all.slice(-120);
@@ -296,15 +337,22 @@ else if(power){
   });
   const today=new Date().toISOString().slice(0,7);
   const ms=[...months.values()].sort((a,b)=>a.date.localeCompare(b.date)).map(m=>{const [y,mo]=m.date.split('-').map(Number);const full=new Date(Date.UTC(y,mo,0)).getUTCDate();return {...m,complete:m.days===full&&m.date<today,label:label(m.date)+(m.days===full&&m.date<today?'':'*')}});
+  const lastYear=Number(ms.at(-1)?.date.slice(0,4)),seasonYears=[lastYear-2,lastYear-1,lastYear];
+  const seasonMonths=ms.filter(m=>seasonYears.includes(Number(m.date.slice(0,4)))&&m.date<=today);
+  const latestMonth=seasonMonths.at(-1),daysInLatest=latestMonth?new Date(Date.UTC(Number(latestMonth.date.slice(0,4)),Number(latestMonth.date.slice(5,7)),0)).getUTCDate():0;
+  if(latestMonth&&latestMonth.days<daysInLatest){const status=document.createElement('p');status.className='power-seasonal-status';status.textContent=`${label(latestMonth.date)}: ${latestMonth.days}/${daysInLatest} ngày có bản tin; cột nhạt là số chưa đủ tháng.`;seasonalGrid.prepend(status)}
   const mix=ms.filter(m=>m.mixDays).slice(-24).map(m=>({...m,label:label(m.date)+(m.date<today&&m.mixDays>=0.9*Number(new Date(Date.UTC(+m.date.slice(0,4),+m.date.slice(5,7),0)).getUTCDate())?'':'*'),coal_s:m.coal/m.mixTotal*100,hydro_s:m.hydro/m.mixTotal*100,gas_s:m.gas/m.mixTotal*100,re_s:m.re/m.mixTotal*100,imports_s:m.imports/m.mixTotal*100}));
   if(mix.length){
-   plot('chMixShare',mix,[['Nhiệt điện than','coal_s',color[0]],['Thủy điện','hydro_s',color[1]],['NLTT (gió, mặt trời)','re_s',color[3]],['Khí & dầu','gas_s',color[2]],['Nhập khẩu','imports_s','#6b7686']],'%',1,280);
    fillTable('tbl-mix',['Tháng','Than %','Thủy điện %','NLTT %','Khí & dầu %','Nhập khẩu %','Ngày có số'],mix.slice().reverse().map(m=>[m.label,...['coal_s','hydro_s','re_s','gas_s','imports_s'].map(f=>nf(m[f],1)),String(m.mixDays)]));
-   note('chMixShare',[daily],'Cộng sản lượng từng loại nguồn của các ngày có đủ thành phần, chia cho tổng sản lượng của chính các ngày đó. Điện mặt trời mái nhà là số EVN ước tính (thương phẩm).');
   }
+  seasonalSources.forEach(([id,tableId,field])=>{
+   const records=seasonMonths.filter(m=>m.mixDays>0).map(m=>{const fullDays=new Date(Date.UTC(Number(m.date.slice(0,4)),Number(m.date.slice(5,7)),0)).getUTCDate();return {...m,value:m[field]/1000,full:m.mixDays===fullDays&&m.date<today}});
+   if(records.length){seasonalPlot(id,records,seasonYears,'value');fillTable(tableId,['Tháng','Tỷ kWh','Ngày đủ thành phần','Tình trạng'],records.slice().reverse().map(m=>[label(m.date),nf(m.value,2),String(m.mixDays),m.full?'Đủ tháng':'Chưa đủ tháng']));}
+   note(id,[daily],'Cộng sản lượng nguồn từ những bản tin EVN có đủ thành phần trong tháng; không ước tính ngày thiếu. Điện mặt trời mái nhà dùng số EVN ước tính theo cơ sở thương phẩm.');
+  });
   // Monthly totals are sums of the daily bulletins (checked against EVN's monthly releases within 0.5%).
-  const shown=ms.filter(m=>m.date<today).slice(-24).map(m=>{const prev=ms.find(x=>x.date===String(Number(m.date.slice(0,4))-1)+m.date.slice(4));return {...m,value:m.output/1000,yoy:m.complete&&prev?.complete?pct(m.output,prev.output):null}});
-  barLineChart('chMonthly',{categories:shown.map(m=>m.label),series:[{name:'Sản lượng tháng',kind:'bar',color:color[0],values:shown.map(m=>m.value)}],unit:'tỷ kWh',digits:2,height:260});
+  const shown=seasonMonths.map(m=>{const prev=ms.find(x=>x.date===String(Number(m.date.slice(0,4))-1)+m.date.slice(4));return {...m,value:m.output/1000,full:m.complete,yoy:m.complete&&prev?.complete?pct(m.output,prev.output):null}});
+  seasonalPlot('chMonthly',shown,seasonYears,'value');
   fillTable('tbl-monthly',['Tháng','Tỷ kWh','So cùng kỳ','Số ngày có bản tin'],shown.slice().reverse().map(m=>[m.label,nf(m.value,2),Number.isFinite(m.yoy)?signed(m.yoy)+'%':'—',String(m.days)]));
   note('chMonthly',[daily],'Cộng sản lượng các bản tin ngày trong tháng; * = tháng chưa đủ ngày (EVN không đăng bản tin hoặc bản tin bị loại vì sai số). So cùng kỳ chỉ tính khi cả hai tháng đủ ngày.');
   const pm=ms.filter(m=>Number.isFinite(m.pmax)).slice(-24);

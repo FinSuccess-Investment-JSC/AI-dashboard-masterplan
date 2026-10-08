@@ -37,7 +37,7 @@
     const {series, unit = '', fmt = v => vi(v), zero = false, height = 240, labelEvery, monthly = false} = opts;
     const xs = [...new Set(series.flatMap(s => s.points.map(p => p[0])))].sort();
     if (!xs.length) return '<div class="gap-empty">Không có dữ liệu hợp lệ.</div>';
-    const Wd = innerWidth < 700 ? 340 : 580, H = Math.max(240, height), L = 56, R = 16, T = 18, B = 34;
+    const Wd = innerWidth < 700 ? 340 : 580, H = 260, L = 56, R = 16, T = 18, B = 34;
     const vals = series.flatMap(s => s.points.map(p => p[1])).filter(Number.isFinite);
     let min = Math.min(...vals), max = Math.max(...vals);
     if (zero) { min = Math.min(0, min); max = Math.max(0, max); }
@@ -65,7 +65,7 @@
     const {series, unit = '', fmt = v => vi(v), height = 240, stacked = false, monthly = false} = opts; // series[i].points: [[x,y]]
     const xs = [...new Set(series.flatMap(s => s.points.map(p => p[0])))].sort();
     if (!xs.length) return '<div class="gap-empty">Không có dữ liệu hợp lệ.</div>';
-    const Wd = innerWidth < 700 ? 340 : 580, H = Math.max(240, height), L = 56, R = 16, T = 18, B = 34;
+    const Wd = innerWidth < 700 ? 340 : 580, H = 260, L = 56, R = 16, T = 18, B = 34;
     let tot = xs.map(x => series.reduce((a, s) => a + (dict(s.points)[x] > 0 ? dict(s.points)[x] : 0), 0));
     let neg = xs.map(x => series.reduce((a, s) => a + (dict(s.points)[x] < 0 ? dict(s.points)[x] : 0), 0));
     const vals = stacked ? [...tot, ...neg] : series.flatMap(s => s.points.map(p => p[1])).filter(Number.isFinite);

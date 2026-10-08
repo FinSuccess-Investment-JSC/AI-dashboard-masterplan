@@ -203,3 +203,9 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - `assets/pane-subtabs.js` (load sau research-editorial): chia tab lớn thành sub-tab cùng kiểu nút "Thế giới / Việt Nam" (`.supply-tabs .tabbtn`). Nhóm khai báo tường minh bằng selector theo từng tab; node được di chuyển, không nhân bản.
 - Dầu khí: **Tổng quan** = Chuỗi giá trị / Mô hình kinh doanh / So sánh tài chính / Dashboard doanh nghiệp · **Policy** = Điều hành giá / Luật Dầu khí 2026 · **Sources** = Độ tin cậy / Nguồn dữ liệu / Tài liệu khác. Bức tranh ngành giữ sub-tab địa lý sẵn có; Catalyst/Risk đã gọn nên không chia; Chủ đề nóng giữ nút Đang theo dõi / Đã lưu.
 - Sub-tab chỉ chứa một khối gấp thì tự mở khi bấm. Link bằng chứng trỏ vào sub-tab ẩn sẽ tự mở sub-tab đó.
+
+## Áp cho tất cả ngành (08/10/2026)
+
+- `assets/catalyst-board.js`: một hàm `renderBrief` dùng chung cho Dầu khí, Điện, Đường, Bank (kết luận → Tín hiệu → Sắp tới; class `.cr-*`, `.brief-compact`). Điện: ONI, Nino 3.4, than Newcastle, LNG JKM, sản lượng ngày, tỷ trọng thủy điện. Đường: Sugar No.11, giá WB, tồn kho/tiêu thụ VN, nhập khẩu, cung 4 trung tâm. Bank: 5 tín hiệu Wi hiện có (trạng thái từ monitor) + snapshot mã/nhóm đang chọn.
+- `assets/pane-subtabs.js` có cấu hình theo ngành (oil/power/sugar/bank). Điện: Policy tách theo 3 thẻ; Đường chỉ tách Tổng quan và Sources (Policy chưa tách vì có khối rỗng); Bank tách Tổng quan, Policy, Sources, Bức tranh ngành giữ sub-tab địa lý sẵn có.
+- Badge `.update-badge` và chú giải loại nội dung ẩn bằng CSS toàn cục (người dùng: nguồn đã ở icon ghi chú). Dữ liệu `data-update-kind` vẫn giữ trong DOM.

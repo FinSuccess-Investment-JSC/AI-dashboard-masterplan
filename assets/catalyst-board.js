@@ -164,54 +164,116 @@
   const scenarioPanels=conditions.map((lines,i)=>{const p=make('div','thesis-scenario-panel');p.id='thesis-case-'+i;p.setAttribute('role','tabpanel');const range=oldScenarios[i]?.querySelector('.range')?.textContent;if(range)p.append(make('strong','',range));['Điều kiện','Tác động','Bác bỏ khi'].forEach((label,j)=>{const n=make('p','');n.append(make('b','',label+': '),lines[j]);p.append(n)});scenarios.append(p);return p});
   function scenario(i){scenarioPanels.forEach((p,j)=>{p.hidden=i!==j;const b=scenarioNav.children[j];b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1})}
   ['Cơ sở','Thuận lợi','Bất lợi'].forEach((label,i)=>{const b=make('button','',label);b.type='button';b.setAttribute('role','tab');b.id='thesis-case-tab-'+i;b.setAttribute('aria-controls',scenarioPanels[i].id);scenarioPanels[i].setAttribute('aria-labelledby',b.id);b.addEventListener('click',()=>scenario(i));scenarioNav.append(b)});keys([...scenarioNav.children],scenario);scenario(0);signals.append(scenarios);
-  // Oil (pilot 08/10/2026): verdict → scoreboard → catalyst|risk → calendar → scenarios; tiles fold below.
-  if(oil){
-    const rec=k=>feeds[k]?.status==='ok'?feeds[k].records||[]:[];
-    const ago=(r,days)=>{if(!r.length)return null;const t=Date.parse(r.at(-1).date)-days*86400000;return [...r].reverse().find(x=>Date.parse(x.date)<=t)||null};
-    const bq7=(r,end)=>{const w=r.filter(x=>Date.parse(x.date)<=end).slice(-7);return w.length===7?w.reduce((a,x)=>a+x.total,0)/7:null};
-    const hz=rec('hormuz'),bf=rec('brent_futures'),sg=rec('singapore_cracks'),ds=rec('distillate_stock'),rf=rec('retail_fuel'),wb=rec('world_balance');
-    const hzNow=hz.length?bq7(hz,Date.parse(hz.at(-1).date)):null,hzPrev=hz.length?bq7(hz,Date.parse(hz.at(-1).date)-7*86400000):null;
-    const v=(r,f='value')=>r.at(-1)?.[f],p=(r,f='value',d=7)=>ago(r,d)?.[f];
-    const y=new Date().getFullYear(),bNow=wb.find(x=>x.year===y),bNext=wb.find(x=>x.year===y+1);
-    // [signal, now, prev, unit, digits, threshold text, state, groups, chart, tile index]
-    const crack=v(sg,'gasoil_crack'),dist=v(ds);
-    const score=[
-      ['Tàu qua Hormuz (BQ7)',hzNow,hzPrev,' lượt/ngày',1,'≥ 30',hzNow==null?'na':hzNow<30?'risk':'good','BSR · PLX · PVT','chHormuzM',0],
-      ['Brent kỳ hạn gần',v(bf),p(bf),' USD/thùng',2,'—',v(bf)==null?'na':'info','Khai thác ▲ · Phân phối ▼','chBrent24',2],
-      ['Crack gasoil Singapore',crack,p(sg,'gasoil_crack'),' USD/thùng',2,'≥ 60',crack==null?'na':crack<60?'risk':crack<65?'watch':'good','BSR','chSingaporeCrack',1],
-      ['Tồn kho distillate Mỹ',dist,p(ds),' triệu thùng',1,'< 115',dist==null?'na':dist<115?'good':'watch','BSR','chProdStock',1],
-      ['Giá dầu diesel VN (Vùng 1)',v(rf,'diesel'),p(rf,'diesel'),' đ/lít',0,'—',v(rf,'diesel')==null?'na':'info','PLX · OIL','chRetailFuel',null],
-      ['Cân đối cung – cầu '+y+' (EIA)',bNow?.balance,null,' triệu thùng/ngày',2,'< 0',bNow?bNow.balance<0?'good':'risk':'na','Khai thác · GAS','chWorldBalance',2]
-    ];
-    const stateText={good:'Catalyst',risk:'Risk',watch:'Sát ngưỡng',info:'Bối cảnh',na:'Thiếu dữ liệu'};
-    const delta=(a,b,d)=>a==null||b==null?'—':(a-b>0?'▲ +':a-b<0?'▼ ':'■ ')+num(a-b,d);
-    const crackOk=crack!=null&&crack>=60,hzLow=hzNow!=null&&hzNow<30,surplus=bNext&&bNext.balance>0;
-    const brief=make('section','oil-brief');
-    const head=make('div','oil-verdict');head.append(make('span','oil-verdict-label','Kết luận hiện tại'),make('h3','',hzLow?(crackOk?'Khai thác, lọc dầu thuận · phân phối chịu áp lực':'Chỉ khai thác còn thuận · lọc dầu, phân phối chịu áp lực'):'Hormuz mở lại · lợi thế giá cao thu hẹp'));
-    const segs=make('div','oil-segments');
-    [['Khai thác','PVEP · GAS',bf.length?'up':'na','Giá cao; '+(y+1)+' dư cung'],['Lọc dầu','BSR',crackOk?'up':'down',crackOk?'Crack ≥ 60':'Crack < 60'],['Phân phối','PLX · OIL',hzLow?'down':'flat','Giá vốn cao'],['Dịch vụ','PVD · PVS','na','Chưa có hợp đồng mới'],['Khí','GAS · PVG','flat','LNG đắt']].forEach(([n,t,s,why])=>{
-      const c=make('div','oil-seg');c.dataset.tilt=s;c.append(make('b','',n),make('em','',t),make('span','oil-seg-tilt',{up:'▲',down:'▼',flat:'■',na:'?'}[s]),make('small','',why));segs.append(c)});
-    head.append(segs);brief.append(head);
-    // Scoreboard: one row per signal, click opens the evidence chart.
-    const tb=make('section','oil-score');tb.append(make('h3','','Tín hiệu'));
-    const tableWrap=make('div','oil-score-wrap'),table=make('table','oil-score-table');tableWrap.append(table);
-    const tr=make('tr','');['Tín hiệu','Mới nhất','1 tuần','Ngưỡng','','Ai chịu'].forEach(t=>tr.append(make('th','',t)));const thead=make('thead','');thead.append(tr);table.append(thead);
-    const tbody=make('tbody','');score.sort((a,b)=>['risk','watch','good','info','na'].indexOf(a[6])-['risk','watch','good','info','na'].indexOf(b[6])).forEach(([name,now,prev,unit,d,th,st,who,chart])=>{
-      const r=make('tr','');r.dataset.state=st;const a=make('a','',name+' ↗');a.href='#'+chart;a.addEventListener('click',e=>{e.preventDefault();reveal(chart)});const c0=make('td','');c0.append(a);
-      r.append(c0,make('td','oil-num',now==null?'—':num(now,d)+unit),make('td','oil-num',prev==null?'—':delta(now,prev,d)),make('td','',th),make('td','oil-state',stateText[st]),make('td','',who));tbody.append(r)});
-    table.append(tbody);tb.append(tableWrap,make('p','thesis-scope','Ngưỡng AI đề xuất, chưa kiểm định · bấm tên để xem biểu đồ.'));
-    // Upcoming events: regular schedule only; unconfirmed dates stay labelled.
-    const next=(dow,from=new Date())=>{const d=new Date(from);d.setHours(0,0,0,0);d.setDate(d.getDate()+(dow-d.getDay()+7)%7);return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')};
-    const cal=make('section','oil-cal');cal.append(make('h3','','Sắp tới'));const ol=make('ol','');
-    [[next(3),'EIA tồn kho tuần','Tồn kho distillate, crack'],[next(4),'Điều hành giá xăng dầu','Phân phối: giá bán so giá vốn'],['Giữa tháng','EIA STEO','Dự báo cân đối '+y+'–'+(y+1)],['Từ 20/10','BCTC quý III','Biên BSR, PLX; backlog PVD, PVS'],['Chưa xác nhận','Họp OPEC+','Hạn mức sản lượng']].forEach(([d,e,w])=>{const li=make('li','');li.append(make('time','',d),make('b','',e));ol.append(li)});cal.append(ol);
-    brief.append(tb,cal);signals.prepend(brief);
-    // Scenario frame dated 03/09 no longer matches prices; user removed it (08/10/2026).
-    // Detailed tiles go into a fold so the page reads top-down.
+  // Verdict-first layout (oil pilot 08/10/2026, rolled out to all sectors): verdict → signal table → upcoming events.
+  // Verdict, states and key numbers are computed from feeds by explicit thresholds; a missing feed is "Thiếu dữ liệu", never a good signal.
+  const rec=k=>feeds[k]?.status==='ok'?feeds[k].records||[]:[];
+  const ago=(r,days)=>{if(!r.length)return null;const t=Date.parse(r.at(-1).date)-days*86400000;return [...r].reverse().find(x=>Date.parse(x.date)<=t)||null};
+  const v=(r,f='value')=>r.at(-1)?.[f],p=(r,f='value',d=7)=>ago(r,d)?.[f];
+  const S=(x,d,u)=>x==null?'—':num(x,d)+u;
+  const D=(a,b,d)=>a==null||b==null?'—':(a-b>0?'▲ +':a-b<0?'▼ ':'■ ')+num(a-b,d);
+  const pct=(a,b)=>a==null||!b?null:(a/b-1)*100;
+  const mean=(r,n,f='value')=>{const w=r.slice(-n).map(x=>x[f]).filter(Number.isFinite);return w.length?w.reduce((s,x)=>s+x,0)/w.length:null};
+  const stateText={good:'Catalyst',risk:'Risk',watch:'Sát ngưỡng',info:'Bối cảnh',na:'Thiếu dữ liệu'},order=['risk','watch','good','info','na'];
+  const next=(dow,from=new Date())=>{const d=new Date(from);d.setHours(0,0,0,0);d.setDate(d.getDate()+(dow-d.getDay()+7)%7);return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')};
+  // score row: {name,chart,st,mid:[cells],end:[cells]}; segs: [name,tickers,tilt(up|down|flat|na),why]
+  function renderBrief({headline,segs=[],headers,score,events}){
+    const brief=make('section','cr-brief');
+    const head=make('div','cr-verdict');head.append(make('span','cr-verdict-label','Kết luận hiện tại'),make('h3','',headline));
+    if(segs.length){const box=make('div','cr-segments');
+      segs.forEach(([n,t,s,why])=>{const c=make('div','cr-seg');c.dataset.tilt=s;c.append(make('b','',n),make('em','',t),make('span','cr-seg-tilt',{up:'▲',down:'▼',flat:'■',na:'?'}[s]),make('small','',why));box.append(c)});head.append(box)}
+    brief.append(head);
+    const tb=make('section','cr-score');tb.append(make('h3','','Tín hiệu'));
+    const wrap=make('div','cr-score-wrap'),table=make('table','cr-score-table');wrap.append(table);
+    const tr=make('tr','');headers.forEach(t=>tr.append(make('th','',t)));const thead=make('thead','');thead.append(tr);table.append(thead);
+    const tbody=make('tbody','');
+    [...score].sort((a,b)=>order.indexOf(a.st)-order.indexOf(b.st)).forEach(({name,chart,st,mid,end})=>{
+      const r=make('tr','');r.dataset.state=st;const c0=make('td','');
+      if(chart&&document.getElementById(chart)){const a=make('a','',name+' ↗');a.href='#'+chart;a.addEventListener('click',e=>{e.preventDefault();reveal(chart)});c0.append(a)}else c0.textContent=name;
+      r.append(c0);mid.forEach((t,i)=>r.append(make('td',i<2?'cr-num':'',t)));r.append(make('td','cr-state',stateText[st]));end.forEach(t=>r.append(make('td','',t)));tbody.append(r)});
+    table.append(tbody);tb.append(wrap,make('p','thesis-scope','Ngưỡng AI đề xuất, chưa kiểm định · bấm tên để xem biểu đồ.'));
+    const snap=signals.querySelector('.thesis-bank-snapshot');if(snap)brief.append(snap);
+    brief.append(tb);
+    if(events?.length){const cal=make('section','cr-cal');cal.append(make('h3','','Sắp tới'));const ol=make('ol','');
+      events.forEach(([d,e])=>{const li=make('li','');li.append(make('time','',d),make('b','',e));ol.append(li)});cal.append(ol);brief.append(cal)}
+    signals.prepend(brief);
+    // Old tiles fold into one hidden block (kept in DOM so sources still move to Sources); scenarios removed per user.
     const detail=fold('thesis-detail','Chi tiết từng tín hiệu');
     detail.body.append(filter,grid,signals.querySelector('.thesis-assumption'));scenarios.replaceWith(detail.d);
     if(grid.querySelector('.data-gap,.gap-row'))detail.d.open=true;
-    // User asked (08/10/2026) to keep only verdict, signals and calendar; folds stay in DOM so sources still move to Sources.
-    pane.classList.add('oil-compact');
+    pane.classList.add('brief-compact');
+  }
+  const y=new Date().getFullYear();
+  if(oil){
+    const hz=rec('hormuz'),bf=rec('brent_futures'),sg=rec('singapore_cracks'),ds=rec('distillate_stock'),rf=rec('retail_fuel'),wb=rec('world_balance');
+    const bq7=(r,end)=>{const w=r.filter(x=>Date.parse(x.date)<=end).slice(-7);return w.length===7?w.reduce((a,x)=>a+x.total,0)/7:null};
+    const hzNow=hz.length?bq7(hz,Date.parse(hz.at(-1).date)):null,hzPrev=hz.length?bq7(hz,Date.parse(hz.at(-1).date)-7*86400000):null;
+    const bNow=wb.find(x=>x.year===y),bNext=wb.find(x=>x.year===y+1),crack=v(sg,'gasoil_crack'),dist=v(ds);
+    const crackOk=crack!=null&&crack>=60,hzLow=hzNow!=null&&hzNow<30,surplus=bNext&&bNext.balance>0;
+    const row=(name,now,prev,unit,d,th,st,who,chart)=>({name,chart,st,mid:[S(now,d,unit),prev===undefined?'—':D(now,prev,d),th],end:[who]});
+    renderBrief({
+      headline:hzLow?(crackOk?'Khai thác, lọc dầu thuận · phân phối chịu áp lực':'Chỉ khai thác còn thuận · lọc dầu, phân phối chịu áp lực'):'Hormuz mở lại · lợi thế giá cao thu hẹp',
+      segs:[['Khai thác','PVEP · GAS',bf.length?'up':'na','Giá cao; '+(y+1)+' dư cung'],['Lọc dầu','BSR',crackOk?'up':'down',crackOk?'Crack ≥ 60':'Crack < 60'],['Phân phối','PLX · OIL',hzLow?'down':'flat','Giá vốn cao'],['Dịch vụ','PVD · PVS','na','Chưa có hợp đồng mới'],['Khí','GAS · PVG','flat','LNG đắt']],
+      headers:['Tín hiệu','Mới nhất','1 tuần','Ngưỡng','','Ai chịu'],
+      score:[
+        row('Tàu qua Hormuz (BQ7)',hzNow,hzPrev,' lượt/ngày',1,'≥ 30',hzNow==null?'na':hzNow<30?'risk':'good','BSR · PLX · PVT','chHormuzM'),
+        row('Brent kỳ hạn gần',v(bf),p(bf),' USD/thùng',2,'—',v(bf)==null?'na':'info','Khai thác ▲ · Phân phối ▼','chBrent24'),
+        row('Crack gasoil Singapore',crack,p(sg,'gasoil_crack'),' USD/thùng',2,'≥ 60',crack==null?'na':crack<60?'risk':crack<65?'watch':'good','BSR','chSingaporeCrack'),
+        row('Tồn kho distillate Mỹ',dist,p(ds),' triệu thùng',1,'< 115',dist==null?'na':dist<115?'good':'watch','BSR','chProdStock'),
+        row('Giá dầu diesel VN (Vùng 1)',v(rf,'diesel'),p(rf,'diesel'),' đ/lít',0,'—',v(rf,'diesel')==null?'na':'info','PLX · OIL','chRetailFuel'),
+        row('Cân đối cung – cầu '+y+' (EIA)',bNow?.balance,undefined,' triệu thùng/ngày',2,'< 0',bNow?bNow.balance<0?'good':'risk':'na','Khai thác · GAS','chWorldBalance')],
+      events:[[next(3),'EIA tồn kho tuần'],[next(4),'Điều hành giá xăng dầu'],['Giữa tháng','EIA STEO'],['Từ 20/10','BCTC quý III'],['Chưa xác nhận','Họp OPEC+']]
+    });
+  }else if(power){
+    const oni=rec('enso_oni'),n34=rec('nino34_weekly'),coal=rec('coal_newcastle'),lng=rec('lng_jkm'),day=rec('vn_power_daily');
+    const oniNow=v(oni,'oni'),el=oniNow!=null&&oniNow>=0.5,cd=pct(v(coal),mean(coal,63)),ld=pct(v(lng),mean(lng,63));
+    const fuelHi=(cd!=null&&cd>=15)||(ld!=null&&ld>=15);
+    const dn=day.at(-1),dp=ago(day,7),hy=r=>r?.output_mkwh?r.hydro/r.output_mkwh*100:null;
+    const g=pct(mean(day.slice(-30),30,'output_mkwh'),mean(day.filter(x=>{const t=Date.parse(x.date),e=Date.parse(day.at(-1)?.date||0)-365*86400000;return t<=e&&t>e-30*86400000}),30,'output_mkwh'));
+    const fuelSt=d=>d==null?'na':d>=15?'risk':d<=-15?'good':Math.abs(d)>=10?'watch':'info';
+    const row=(name,now,prev,unit,dg,th,st,who,chart)=>({name,chart,st,mid:[S(now,dg,unit),D(now,prev,dg),th],end:[who]});
+    renderBrief({
+      headline:el?(fuelHi?'El Niño mạnh nhưng nhiên liệu đắt · nhiệt điện bị kẹp, thủy điện chịu áp lực':'El Niño mạnh · thủy điện chịu áp lực, nhiệt điện được huy động nhiều hơn'):(fuelHi?'Nhiên liệu đắt · nhiệt điện chịu áp lực':'Thủy văn trung tính · chưa có áp lực rõ lên các khâu'),
+      segs:[['Thủy điện','REE · VSH · CHP · SBA',oniNow==null?'na':el?'down':'up',oniNow==null?'Thiếu ONI':'ONI '+num(oniNow,2)+(el?' ≥ 0,5':' < 0,5')],
+        ['Nhiệt điện','PPC · QTP · POW · NT2',oniNow==null&&cd==null?'na':fuelHi?'down':el?'up':'flat',fuelHi?'Nhiên liệu đắt':el?'Được huy động nhiều':'Trung tính'],
+        ['Năng lượng tái tạo','','na','Chưa có dữ liệu'],
+        ['Lưới & xây lắp','PC1 · TV2',g==null?'na':g>=5?'up':'flat',g==null?'Thiếu dữ liệu':'Sản lượng '+(g>0?'+':'')+num(g,1)+'% cùng kỳ']],
+      headers:['Tín hiệu','Mới nhất','Kỳ trước','Ngưỡng','','Ai chịu'],
+      score:[
+        row('ONI (El Niño)',oniNow,oni.at(-2)?.oni,' °C',2,'≥ +0,5',oniNow==null?'na':el?'risk':'good','Thủy điện ▼ · Nhiệt điện ▲','chEnso'),
+        row('Nino 3.4 (tuần)',v(n34,'ssta'),p(n34,'ssta'),' °C',1,'≥ +0,5',v(n34,'ssta')==null?'na':v(n34,'ssta')>=0.5?'risk':'good','Thủy điện','chNino34'),
+        row('Than Newcastle',v(coal),p(coal),' USD/tấn',1,'±15% vs TB 3T',fuelSt(cd),'Nhiệt điện than','chCoalM'),
+        row('LNG JKM',v(lng),p(lng),' USD/MMBtu',2,'±15% vs TB 3T',fuelSt(ld),'Nhiệt điện khí','chGasM'),
+        row('Sản lượng điện ngày',dn?.output_mkwh,dp?.output_mkwh,' triệu kWh',1,'—',dn?'info':'na','Toàn ngành','chDaily'),
+        row('Thủy điện / tổng sản lượng',hy(dn),hy(dp),'%',1,'—',dn?'info':'na','Thủy điện','chMixShare')],
+      events:[['Đầu tháng','EVN sản lượng tháng'],['Giữa tháng','NOAA cập nhật ONI'],['Từ 20/10','BCTC quý III'],['Từ 11/2026','Mùa khô thủy điện']]
+    });
+  }else if(bank){
+    const map={'Cần chú ý':'risk','Theo dõi':'info'};
+    const att=rows.filter(r=>r.status==='Cần chú ý').length,na=rows.filter(r=>!map[r.status]).length;
+    renderBrief({
+      headline:att?att+'/'+rows.length+' tín hiệu cần chú ý':rows.length-na+'/'+rows.length+' tín hiệu đang theo dõi · chưa tín hiệu nào vượt ngưỡng'+(na?' · '+na+' thiếu số':''),
+      headers:['Tín hiệu','Mới nhất','Kỳ','','Ảnh hưởng'],
+      score:rows.map(r=>({name:r.title,chart:r.links[0]?.[0],st:map[r.status]||'na',mid:[r.metric,r.period],end:[r.impact]})),
+      events:[['Từ 15/10','BCTC quý III ngân hàng'],['Hằng ngày','OMO · liên ngân hàng · tỷ giá'],['Hằng tháng','SBV tín dụng, huy động'],['Đầu tháng','GSO: CPI, tăng trưởng']]
+    });
+  }else{
+    const fut=rec('sugar_futures'),wbm=rec('sugar_monthly'),bal=rec('sugar_vn_balance'),prod=rec('sugar_producers');
+    const fd=pct(v(fut),mean(fut,63)),b0=bal.at(-1),b1=bal.at(-2),ratio=b=>b?b.end_stock/b.consumption*100:null;
+    const pr=r=>r?r.brazil+r.eu+r.india+r.thailand:null,pg=pct(pr(prod.at(-1)),pr(prod.at(-2))),ig=pct(b0?.imports,b1?.imports);
+    const up=fd!=null&&fd>=5,dn=fd!=null&&fd<=-5;
+    const row=(name,mid,th,st,who,chart)=>({name,chart,st,mid:[...mid,th],end:[who]});
+    renderBrief({
+      headline:fd==null?'Chưa đủ giá đường thế giới để kết luận':up?'Giá đường thế giới tăng · lợi cho tự chủ mía, áp lực chi phí cho nhà nhập nguyên liệu':dn?'Giá đường thế giới giảm · áp lực cho tự chủ mía, nhẹ chi phí cho nhà nhập nguyên liệu':'Giá đường thế giới đi ngang · chưa có tín hiệu phân hóa rõ',
+      segs:[['Tự chủ mía','',fd==null?'na':up?'up':dn?'down':'flat',fd==null?'Thiếu giá':'Giá TG '+(fd>0?'+':'')+num(fd,1)+'% vs TB 3T'],['Nhập nguyên liệu','',fd==null?'na':up?'down':dn?'up':'flat',fd==null?'Thiếu giá':up?'Đường thô đắt lên':dn?'Đường thô rẻ đi':'Trung tính']],
+      headers:['Tín hiệu','Mới nhất','Kỳ trước','Ngưỡng','','Ai chịu'],
+      score:[
+        row('Sugar No.11 (kỳ hạn gần)',[S(v(fut),2,' cent/lb'),D(v(fut),p(fut),2)],'±10% vs TB 3T',fd==null?'na':fd<=-10?'risk':fd>=10?'good':Math.abs(fd)>=5?'watch':'info','Tự chủ mía · Nhập nguyên liệu','chWorldRecent'),
+        row('Giá đường World Bank (tháng)',[S(v(wbm),2,' USD/kg'),D(v(wbm),wbm.at(-2)?.value,2)],'—',v(wbm)==null?'na':'info','Toàn ngành','chWorldRecent'),
+        row('Tồn kho / tiêu thụ VN',[S(ratio(b0),1,'%'),D(ratio(b0),ratio(b1),1)],'Giảm qua các kỳ',b0&&b1?ratio(b0)<ratio(b1)?'good':'risk':'na','Toàn ngành','chStocks'),
+        row('Nhập khẩu đường VN',[S(b0?.imports,0,' nghìn tấn'),D(b0?.imports,b1?.imports,0)],'±3% so năm trước',ig==null?'na':ig>3?'risk':ig<-3?'good':'info','Nhập nguyên liệu','chImports'),
+        row('Cung 4 trung tâm (BR, EU, IN, TH)',[S(pr(prod.at(-1)),1,' triệu tấn'),D(pr(prod.at(-1)),pr(prod.at(-2)),1)],'±2% so năm trước',pg==null?'na':pg>=2?'risk':pg<=-2?'good':'info','Giá thế giới',null)],
+      events:[['Từ 20/10','BCTC quý III'],['Đầu tháng','World Bank giá hàng hóa'],['Giữa tháng 11','USDA PSD cập nhật'],['Thường T11–T12','Mở vụ ép mới']]
+    });
   }
   // Enter the requested tab at its decision board, avoiding the repeated hero.
   const enter=()=>requestAnimationFrame(()=>board.scrollIntoView({block:'start',behavior:'instant'}));

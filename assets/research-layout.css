@@ -60,3 +60,6 @@ body[data-sector="bank"] .wi-table-fold .wi-table table{margin:0}
 @media(max-width:700px){body[data-sector="bank"] .wi-table-fold>summary{padding:10px 12px;font-size:12px}}
 .pane-subtabs{margin:4px 0 18px}.pane-subpane[hidden]{display:none!important}
 .pane-subtabs{display:flex;flex-wrap:wrap;gap:8px}.pane-subtabs .tabbtn{white-space:nowrap;flex:0 0 auto;width:auto}
+/* A chart card that sits alone in a pane keeps the same size as chart cards in two-column rows. */
+.supply-pane>.card:has([id^="ch"]),.pane-subpane>.card:has([id^="ch"]){width:calc(50% - 8px);max-width:100%}
+@media(max-width:900px){.supply-pane>.card:has([id^="ch"]),.pane-subpane>.card:has([id^="ch"]){width:100%}}

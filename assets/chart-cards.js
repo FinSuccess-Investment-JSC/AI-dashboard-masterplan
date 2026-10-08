@@ -16,7 +16,7 @@
   // explanations remain in the source disclosure.
   const flags={
     chDaily:'Ngày EVN không đăng bản tin để trống, không nội suy.',
-    chMixShare:'Điện mặt trời mái nhà là số EVN ước tính.',
+    chSourceRenewables:'Điện mặt trời mái nhà là số EVN ước tính.',
     chPmax:'Tháng hiện tại có thể chưa phải đỉnh vì chưa đủ bản tin.',
     chCoalM:'Giá quốc tế bình quân tháng, chưa phải giá về đến nhà máy.',
     chGasM:'Giá quốc tế bình quân tháng, chưa phải giá khí bán cho nhà máy Việt Nam.',
