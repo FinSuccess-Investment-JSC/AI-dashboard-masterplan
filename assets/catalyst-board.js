@@ -315,6 +315,8 @@
       row('Chi phí & biên','Biên kéo sợi bông','Chênh sợi – bông TQ '+(spL?num(spL.value/1000,2)+' nghìn CNY/t':'—')+(spP?' so 3 tháng trước '+num(spP.value/1000,2):'')+' · bông ICE '+(ctL?num(ctL.value,1)+' cent/lb':'—'),'Chênh lệch tăng trở lại; bông ICE > 90 cent/lb là áp lực',!spL||!spP?'na':spL.value>=spP.value?'good':'watch','ADS · VGT','chYarnSpread'),
       row('Chi phí & biên','Lương tối thiểu +7,2% từ 01/01/2026','Vùng I 5,31 triệu đ/tháng; lương là chi phí lớn nhất của nhà may CMT','Đề xuất tăng lương 2027 > 7%','watch','▼ TNG · MSH · TCM · GIL','dm-14'),
       row('Định giá','Định giá đã chiết khấu rủi ro thuế','P/E ngành may '+(peL?num(peL[1],1)+'x':'—')+(pe1y?' (một năm trước '+num(pe1y[1],1)+'x)':''),'Có bằng chứng đơn hàng 2027 hoặc thuế Việt Nam giảm',peL?'info':'na','TCM · TNG · MSH · GIL','chSectorVal')];
+    const bigs={'Việt Nam lấy thị phần tại Mỹ':['22,2%','thị phần Mỹ 5T/26'],'Kênh bán lẻ Mỹ không thừa hàng':['2,11x','tồn kho / doanh số'],'Nhãn hàng còn tồn kho cao hơn doanh thu':['+9,3%','tồn kho Inditex (DT +7,6%)'],'Đơn hàng sớm qua nhập khẩu vải':[sg(imY3),'nhập vải BQ 3T YoY'],'Nhật, Hàn suy yếu; Trung Quốc tăng':[sg(krY),'XK sang Hàn lũy kế'],'Thuế Mỹ bất lợi tương đối':['12,5%','vs 10% đối thủ'],'Trung Quốc mất thị phần Mỹ':['9,7%','thị phần TQ 5T/26 (từ 13,7%)'],'EU là dư địa mới':['4,6%','thị phần VN tại EU'],'Nguyên liệu polyester tăng mạnh':[sg(psY),'xơ PSF YoY'],'Biên kéo sợi bông':[spL?num(spL.value/1000,2):'—','nghìn CNY/t chênh sợi–bông'],'Lương tối thiểu +7,2% từ 01/01/2026':['+7,2%','lương tối thiểu vùng'],'Định giá đã chiết khấu rủi ro thuế':[peL?num(peL[1],1)+'x':'—','P/E ngành may']};
+    score.forEach(r=>{r.big=bigs[r.name]||['—','']});
     const nGood=score.filter(r=>r.st==='good').length,nRisk=score.filter(r=>r.st==='risk').length;
     renderBrief({
       headline:'Cầu Mỹ và thị phần còn đỡ ngành; thuế cao hơn đối thủ và chi phí nguyên liệu là hai biến số xấu đi · '+nGood+' thuận, '+nRisk+' rủi ro',
@@ -323,6 +325,28 @@
       score,
       events:[['Đầu tháng','Hải quan, NSO: XK dệt may tháng trước'],['Giữa tháng','US Census: bán lẻ, tồn kho quần áo'],['20–30/10','BCTC quý III'],['24/11/2026','Bangladesh rời nhóm LDC'],['Theo sự kiện','USTR: hạn ngạch, miễn trừ Mục 301']]
     });
+    // Scannable view: tiles instead of a wide table (table stays under a fold).
+    (()=>{const sc=document.querySelector('.cr-score');if(!sc)return;
+      const wrap=sc.querySelector('.cr-score-wrap'),title=sc.querySelector('h3');
+      const chip={good:'Catalyst',risk:'Risk',watch:'Sát ngưỡng',info:'Bối cảnh',na:'Thiếu số'};
+      const groups=[...new Set(score.map(r=>r.group))];
+      const box=make('div','tx-tiles');
+      groups.forEach(g=>{const gh=make('h4','tx-group',g);box.append(gh);const grid=make('div','tx-grid');
+        score.filter(r=>r.group===g).sort((a,b)=>order.indexOf(a.st)-order.indexOf(b.st)).forEach(r=>{
+          const t=make('article','tx-tile');t.dataset.state=r.st;
+          const top=make('div','tx-top');top.append(make('span','tx-dot'),make('span','tx-chip',chip[r.st]));
+          const h=make('h5','',r.name);
+          const n=make('div','tx-big');n.append(make('strong','',r.big[0]),make('small','',r.big[1]));
+          const ev=make('p','tx-ev',r.mid[0]);
+          const who=make('div','tx-who');String(r.end[0]).split(/(?=[▲▼])/).forEach(part=>{const m=part.trim();if(!m)return;const c=make('span','tx-tag',m);c.dataset.dir=m.startsWith('▲')?'up':m.startsWith('▼')?'down':'';who.append(c)});
+          const cond=make('p','tx-cond');cond.append(make('b','','Đảo chiều khi: '),r.mid[1]);
+          t.append(top,h,n,ev,who,cond);
+          if(r.chart&&document.getElementById(r.chart)){const a=make('a','tx-link','Xem chart ↗');a.href='#'+r.chart;a.addEventListener('click',e=>{e.preventDefault();reveal(r.chart)});t.append(a)}
+          grid.append(t)});
+        box.append(grid)});
+      const fold=make('details','tx-tablefold');fold.append(make('summary','','Xem dạng bảng'));fold.append(wrap);
+      sc.append(box,fold);if(title)title.after(sc.querySelector('.thesis-scope')||document.createComment(''));
+    })();
   }else if(bank){
     const map={'Cần chú ý':'risk','Theo dõi':'info'};
     const att=rows.filter(r=>r.status==='Cần chú ý').length,na=rows.filter(r=>!map[r.status]).length;
