@@ -10,6 +10,7 @@
 - **Analyst chỉ nhập key insight, thông tin/đánh giá riêng, giả định hoặc phản biện của mình.** Không bắt analyst viết lại phần AI đã có đủ dữ liệu để đọc và phân tích. Không tự gán một quan điểm do AI viết là quan điểm analyst.
 - Tách quyền sở hữu nội dung với cách chạy: `ai` là người tạo/duy trì phân tích; `rule-based` là phép tính/tóm tắt theo quy tắc; `model-generated` chỉ dùng khi thực sự gọi mô hình. Không thay nhãn để giả lập việc đã gọi AI.
 - Nhận định lưu từ bản cũ phải có ngày phân tích và được tách khỏi số vừa cập nhật. Khi dữ liệu đổi, không giữ nguyên câu “hiện tại” mà làm người đọc tưởng AI đã phân tích lại.
+- (08/10/2026) Hạn chế dữ liệu mới viết dạng icon `.note-icon` (ⓘ Lưu ý dữ liệu), không dùng khung đỏ.
 - **Data limitation giữ nguyên nội dung, vị trí và cảnh báo hiển thị** (`.data-gap`, `.gap-row`, bảng hạn chế nguồn). Không gom vào tooltip hoặc xóa khi chưa giải quyết được hạn chế. Cờ estimate/YTD/kế hoạch và dữ liệu thiếu vẫn thấy được.
 
 ## 2. Kiểm nguồn trước khi gắn tần suất

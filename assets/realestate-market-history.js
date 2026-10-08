@@ -9,6 +9,7 @@ if (!D) return;
 const C = {navy: '#2938A8', teal: '#59C5C8', plum: '#861C52', gold: '#c29100', grey: '#6b7686'};
 const nf = (v, d = 0) => v == null ? '—' : Number(v).toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d});
 const make = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const note = text => { const d = make('details', 'note-icon'); d.append(make('summary', '', 'ⓘ Lưu ý dữ liệu'), make('div', '', text)); return d; };
 const qk = q => { const [n, y] = q.split('/'); return +y * 10 + +n.slice(1); };
 
 function chart(id, model) {
@@ -57,7 +58,7 @@ if (moc.length) {
   table('tbl-moc-inv', ['Quý', 'Tổng', 'Căn hộ', 'Nhà riêng lẻ', 'Đất nền', 'Tỉnh báo cáo'], inv.slice().reverse().map(r => [r.quarter, nf(r.inventory_total), nf(r.inventory_apt), nf(r.inventory_house), nf(r.inventory_land), r.provinces_reporting || '—']));
   sources('chMocInv', inv);
   const card = document.getElementById('chMocInv')?.closest('.card');
-  if (card) card.insertBefore(make('div', 'data-gap', 'Số tỉnh gửi báo cáo đổi theo quý (17–60/63 trước sáp nhập, 22–25/34 sau 7/2025) nên mức tồn kho giữa các quý không cùng phạm vi. Q1/2023, Q1/2025 không công bố số tuyệt đối.'), card.querySelector('details'));
+  if (card) card.insertBefore(note('Số tỉnh gửi báo cáo đổi theo quý (17–60/63 trước sáp nhập, 22–25/34 sau 7/2025) nên mức tồn kho giữa các quý không cùng phạm vi. Q1/2023, Q1/2025 không công bố số tuyệt đối.'), card.querySelector('details'));
 }
 
 // ---------- CBRE: giá sơ cấp & mở bán ----------
@@ -132,7 +133,7 @@ if (fp.length && fdiCard) {
   const wrap = make('div', 'tablewrap'), t = make('table'); t.id = 'tbl-fdi-projects'; wrap.append(t);
   const sum = make('div', 'source-note');
   box.append(ctl, sum, wrap);
-  card.append(box, make('div', 'data-gap', 'Danh sách gom từ tin công bố, không phải toàn bộ FDI vào BĐS; NSO không công bố vốn thực hiện theo ngành. Dự án liên doanh ghi tổng vốn dự án. Ghi chú nêu dự án mới ở mức đề xuất hoặc ghi nhớ.'));
+  card.append(box, note('Danh sách gom từ tin công bố, không phải toàn bộ FDI vào BĐS; NSO không công bố vốn thực hiện theo ngành. Dự án liên doanh ghi tổng vốn dự án. Ghi chú nêu dự án mới ở mức đề xuất hoặc ghi nhớ.'));
   (fdiCard.closest('.grid') || fdiCard).after(card);
   const draw = () => {
     const rows = fp.filter(p => (sel.value === 'all' || p.type === sel.value) && (yrs.value === 'all' || String(p.year) === yrs.value)).sort((a, b) => (b.capital_musd || 0) - (a.capital_musd || 0));

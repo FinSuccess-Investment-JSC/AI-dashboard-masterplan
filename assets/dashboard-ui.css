@@ -111,3 +111,9 @@
 @media print{.inventory-group>.card[hidden]{display:block!important}.inventory-tabs{display:none}.chart-source-details>.source-details-body{display:block!important}.chart-insight-action{display:none}}
 .inventory-group [id^=ch]{min-height:0!important}
 .chart-card-actions button,.chart-source-details>summary,.inventory-tabs button{scroll-margin-top:190px}
+/* Lưu ý dữ liệu dạng icon (thay khung đỏ .data-gap khi người dùng muốn gọn) */
+.note-icon{display:inline-block;margin:8px 0 2px;font:12px/1.55 Inter,system-ui,sans-serif;color:#355978;max-width:100%}
+.note-icon>summary{display:inline-flex;align-items:center;gap:4px;cursor:pointer;list-style:none;padding:3px 9px;border-radius:6px;background:#f7fafc;border:1px solid #dfe7ef;font-weight:600;font-size:11px}
+.note-icon>summary::-webkit-details-marker{display:none}
+.note-icon[open]>summary{background:#eef3f8}
+.note-icon>div{margin-top:6px;padding:8px 10px;border-radius:6px;background:#f7fafc;color:#3d4a5c}
