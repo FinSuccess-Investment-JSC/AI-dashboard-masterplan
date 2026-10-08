@@ -81,3 +81,4 @@ tr[data-state=risk] td:first-child{box-shadow:inset 3px 0 #d98b4a}tr[data-state=
 .cr-seg-tilt{font-size:16px}.cr-seg{flex-direction:row;flex-wrap:wrap;align-items:baseline;column-gap:6px}.cr-seg em{display:none}.cr-seg small{flex-basis:100%}
 .cr-verdict h3{margin-bottom:14px}
 .brief-compact #thesis-detail,.brief-compact #thesis-evidence,.brief-compact #thesis-archive,.brief-compact .analyst-input{display:none}
+.cr-brief>*{min-width:0} /* grid items must not inherit the 640px table min-width on phones */

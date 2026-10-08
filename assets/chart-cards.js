@@ -33,6 +33,11 @@
     chHfcs:'2023*: suy từ lũy kế 9 tháng · 2025 (7T)*: chưa đủ năm.',
     chPolicyQuota:'Hạn ngạch phân giao, không phải nhập khẩu thực tế.',
     chPolicyTax:'Mốc thuế 2021; chưa xác nhận mức đang áp dụng.',
+    chBondLate:'Số dư cuối tháng, không cộng dồn; gia hạn không làm giảm dư nợ chậm trả.',
+    chBondMaturity:'Lịch dự phóng, tính lại mỗi lần Wi cập nhật; mã lãi thả nổi giữ lãi suất hiện hành.',
+    chBondIssuance:'Tháng hiện tại là số tạm tính.',
+    chFdiRe:'FDI đăng ký, không phải vốn giải ngân vào bất động sản.',
+    chCreditRe:'Tín dụng ngành xây dựng (SBV); chưa có chuỗi tín dụng kinh doanh BĐS riêng.',
   };
   // These original notes contain qualification that must remain verbatim/visible.
   const keepNotes=new Set(['chVnPrice','chCaneCrush','chCaneArea','chCanePrice','chMargin','chBsrMargin','chGasVol']);

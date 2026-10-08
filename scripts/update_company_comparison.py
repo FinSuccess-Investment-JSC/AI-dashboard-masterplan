@@ -16,6 +16,9 @@ UNIVERSE={
           ('REE','hose','Thủy điện & đa ngành'),('VSH','hose','Thủy điện & đa ngành'),('CHP','hose','Thủy điện & đa ngành'),('SBA','hose','Thủy điện & đa ngành'),('TMP','hose','Thủy điện & đa ngành'),('SHP','hose','Thủy điện & đa ngành'),
           ('GEG','hose','Năng lượng tái tạo'),('HDG','hose','Năng lượng tái tạo'),('TTA','hose','Năng lượng tái tạo'),
           ('PC1','hose','Lưới, xây lắp & thiết bị'),('TV2','hose','Lưới, xây lắp & thiết bị'),('GEX','hose','Lưới, xây lắp & thiết bị')],
+ 'realestate':[('VHM','hose','Nhà ở'),('NVL','hose','Nhà ở'),('KDH','hose','Nhà ở'),('NLG','hose','Nhà ở'),('DXG','hose','Nhà ở'),('PDR','hose','Nhà ở'),('DIG','hose','Nhà ở'),('CEO','hnx','Nhà ở'),('AGG','hose','Nhà ở'),('TCH','hose','Nhà ở'),('NTL','hose','Nhà ở'),
+               ('KBC','hose','Khu công nghiệp'),('IDC','hnx','Khu công nghiệp'),('BCM','hose','Khu công nghiệp'),('SZC','hose','Khu công nghiệp'),('SIP','hose','Khu công nghiệp'),('VGC','hose','Khu công nghiệp'),('LHG','hose','Khu công nghiệp'),
+               ('VRE','hose','Cho thuê bán lẻ'),('DXS','hose','Môi giới')],
  'bank':[(s,'hose',g) for s,g in [('VCB','Quốc doanh'),('CTG','Quốc doanh'),('BID','Quốc doanh'),('TCB','Tư nhân'),('VPB','Tư nhân'),('MBB','Tư nhân'),('ACB','Tư nhân'),('HDB','Tư nhân'),('TPB','Tư nhân'),('VIB','Tư nhân'),('SHB','Tư nhân')]]}
 PAGES={'income_year':'financials/income-statement/','balance_year':'financials/balance-sheet/','income_quarter':'financials/income-statement/?p=quarterly','balance_quarter':'financials/balance-sheet/?p=quarterly','valuation':'financials/ratios/?p=quarterly'}
 

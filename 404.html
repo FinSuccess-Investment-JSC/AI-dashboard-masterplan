@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi" data-release="20261008-power-source-growth-r1">
+<html lang="vi" data-release="20261008T171500Z">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,6 +20,9 @@ const routes = [
   {match: base.toLowerCase() + "duong/index.html", target: base + "Sugar/"},
   {match: base.toLowerCase() + "dien/", target: base + "Dien/"},
   {match: base.toLowerCase() + "dien/index.html", target: base + "Dien/"},
+  {match: base.toLowerCase() + "bat-dong-san/", target: base + "Bat-dong-san/"},
+  {match: base.toLowerCase() + "bat-dong-san/index.html", target: base + "Bat-dong-san/"},
+  {match: base.toLowerCase() + "bds/", target: base + "Bat-dong-san/"},
   {match: base.toLowerCase() + "masterplan/", target: base + "Masterplan/"},
   {match: base.toLowerCase() + "masterplan/index.html", target: base + "Masterplan/"}
 ];
@@ -43,7 +46,7 @@ a.primary{background:#11255a;color:#fff;border-color:#11255a}
     <a href="/AI-dashboard-masterplan/Dau-khi/">Dashboard Dầu khí</a>
     <a href="/AI-dashboard-masterplan/Sugar/">Dashboard Đường</a>
     <a href="/AI-dashboard-masterplan/Bank/">Dashboard Ngân hàng</a>
-    <a href="/AI-dashboard-masterplan/Dien/">Dashboard Điện</a>
+    <a href="/AI-dashboard-masterplan/Dien/">Dashboard Điện</a> · <a href="/AI-dashboard-masterplan/Bat-dong-san/">Dashboard Bất động sản</a>
   </div>
 </main>
 <script>document.querySelectorAll('.actions a').forEach(a=>{const url=new URL(a.href);url.searchParams.set('v',document.documentElement.dataset.release);a.href=url.href;});</script>

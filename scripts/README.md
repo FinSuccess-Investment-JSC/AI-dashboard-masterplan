@@ -107,3 +107,4 @@ Still open:
 3. Wi (Bank) refresh: schedule a Claude routine that reruns `data/bank-wi-contract.json` with WiMCP and `scripts/build_bank_wi.py`, then opens a commit for the job to publish.
 4. Remove the old local cron block `FIN_SUCCESS_SECTOR_DASHBOARDS` (between its START/END markers) if still present.
 
+- `scripts/build_realestate_wi.py`: dựng `data/realestate-wi-data.js` từ capture WiMCP theo `data/realestate-wi-contract.json` (dashboard Bất động sản); `--restore` chép kết quả vượt trần hiển thị vào capture.

@@ -3,8 +3,8 @@
 (() => {
   'use strict';
   const pane=document.querySelector('.majorpane[data-tab="mt5"]');if(!pane)return;
-  const bank=document.body.dataset.sector==='bank',power=document.body.dataset.sector==='power',oil=!power&&!!document.getElementById('chCurve');
-  const sector=bank?'bank':power?'power':oil?'oil':'sugar';
+  const bank=document.body.dataset.sector==='bank',power=document.body.dataset.sector==='power',re=document.body.dataset.sector==='realestate',oil=!power&&!re&&!!document.getElementById('chCurve');
+  const sector=bank?'bank':power?'power':re?'realestate':oil?'oil':'sugar';
   const make=(tag,cls,text)=>{const n=document.createElement(tag);n.className=cls;if(text)n.textContent=text;return n};
   const num=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
   const date=v=>/^\d{4}-\d{2}-\d{2}/.test(v||'')?v.slice(8,10)+'/'+v.slice(5,7)+'/'+v.slice(0,4):v||'Chưa có kỳ';
@@ -16,7 +16,7 @@
   const heading=make('div','thesis-heading');heading.append(make('h2','','Catalyst / Risk'),make('p','','Điều gì cần theo dõi, tác động tới đâu và khi nào cần đổi đánh giá?'));board.append(heading);
   function keys(buttons,select){buttons.forEach((b,i)=>b.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const j=e.key==='Home'?0:e.key==='End'?buttons.length-1:(i+(e.key==='ArrowRight'?1:buttons.length-1))%buttons.length;select(j);buttons[j].focus()}))}
   const signals=make('div','thesis-view');signals.id='thesis-signals';board.append(signals);
-  const stamp=bank?'11/09/2026':power?'06/10/2026':oil?'03/09/2026':'17/08/2026';
+  const stamp=bank?'11/09/2026':power?'06/10/2026':re?'08/10/2026':oil?'03/09/2026':'17/08/2026';
   // One page: signals first, then original KPI table and the dated AI analysis under clear folds.
   const fold=(id,title,note)=>{const d=make('details','thesis-fold');d.id=id;const s=make('summary','',title);d.append(s);const body=make('div','thesis-fold-body');if(note)body.append(make('p','thesis-notice',note));d.append(body);return {d,body}};
   const kpi=fold('thesis-evidence','Bảng KPI & ngưỡng theo dõi');
@@ -76,6 +76,8 @@
       item('Phụ tải & huy động',day?num(day.output_mkwh,1)+' triệu kWh/ngày':'—',day?'EVN · '+date(day.date):'Chưa có kỳ','Theo dõi','Sản lượng phát của nhà máy; nhu cầu đầu tư nguồn, lưới.','Tăng trưởng sản lượng lũy kế năm lệch ≥2 điểm % so kế hoạch EVN.','Bản tin ngày của EVN; chưa có giá thị trường điện SMP (trang NSMO chỉ mở trong nước).',[['chDaily','Sản lượng ngày'],['chMonthly','Sản lượng tháng']],['thermal','hydro','re','grid'])
     ];
     [[0,['enso_oni'],62],[1,['coal_newcastle','lng_jkm',wbk].filter(Boolean),45],[3,['vn_power_daily'],7]].forEach(([i,ids,days])=>{const live=ids.filter(k=>feeds[k]?.records?.length);if(!live.length){rows[i].status='Thiếu dữ liệu';rows[i].metric='—'}else if(live.every(k=>feeds[k].status!=='ok'||Date.now()-Date.parse(feeds[k].latest_observation)>days*86400000)){rows[i].status='Chờ cập nhật'}});
+  }else if(re){
+    rows=[]; // the verdict board below reads window.REALESTATE_WI directly; no legacy tiles
   }else if(!bank){
     const wb=feeds.sugar_monthly,last=wb?.records?.at(-1),stock=monitors[1]?.querySelector('strong')?.textContent||'—',hfcs=monitors[2]?.querySelector('strong')?.textContent||'—';
     rows=[
@@ -118,10 +120,10 @@
   });
   if(!bank){
     const label=make('label','','Góc nhìn doanh nghiệp');label.htmlFor='thesis-scope';const select=make('select','');select.id='thesis-scope';
-    const opts=power?[['all','Toàn ngành'],['thermal','Nhiệt điện'],['hydro','Thủy điện'],['re','Năng lượng tái tạo'],['grid','Lưới, xây lắp & thiết bị']]:oil?[['all','Toàn chuỗi'],['upstream','Khai thác'],['services','Dịch vụ'],['gas','Khí'],['refining','Lọc dầu'],['distribution','Phân phối']]:[['all','Toàn ngành'],['cane','Tự chủ vùng mía'],['import','Phụ thuộc nguyên liệu nhập']];
+    const opts=re?[['all','Toàn ngành'],['housing','Nhà ở'],['industrial','Khu công nghiệp'],['leasing','Cho thuê'],['broker','Môi giới']]:power?[['all','Toàn ngành'],['thermal','Nhiệt điện'],['hydro','Thủy điện'],['re','Năng lượng tái tạo'],['grid','Lưới, xây lắp & thiết bị']]:oil?[['all','Toàn chuỗi'],['upstream','Khai thác'],['services','Dịch vụ'],['gas','Khí'],['refining','Lọc dầu'],['distribution','Phân phối']]:[['all','Toàn ngành'],['cane','Tự chủ vùng mía'],['import','Phụ thuộc nguyên liệu nhập']];
     opts.forEach(([v,t])=>{const o=make('option','',t);o.value=v;select.append(o)});filter.append(label,select);
     select.addEventListener('change',()=>{[...grid.children].forEach(c=>c.hidden=select.value!=='all'&&!c.dataset.groups.split(',').includes(select.value));intro.textContent=oil||power?'':select.value==='cane'?'Tự chủ mía: ưu tiên giá bán so giá mía, năng suất và độ bền vùng nguyên liệu.':select.value==='import'?'Nguyên liệu nhập: ưu tiên giá đường thô, tỷ giá, thuế và khả năng chuyển giá bán.':'';intro.hidden=!intro.textContent;if(!intro.parentElement)grid.before(intro)});
-    if(!oil&&!power)select.addEventListener('change',()=>{
+    if(!oil&&!power&&!re)select.addEventListener('change',()=>{
       const c=grid.children[1],raw=select.value==='import',cane=select.value==='cane';
       c.querySelector('h3').textContent=raw?'Giá bán & đường thô nhập':cane?'Giá bán & giá mía':rows[1].title;
       const impact=c.querySelector('.thesis-impact');impact.replaceChildren(make('b','','Ảnh hưởng: '),raw?'Giá đường thô, tỷ giá, thuế và khả năng chuyển giá bán.':cane?'Giá bán so chi phí mía; năng suất và tỷ lệ thu hồi đường.':rows[1].impact);
@@ -246,6 +248,31 @@
         row('Sản lượng điện ngày',dn?.output_mkwh,dp?.output_mkwh,' triệu kWh',1,'—',dn?'info':'na','Toàn ngành','chDaily'),
         row('Thủy điện / tổng sản lượng',hy(dn),hy(dp),'%',1,'—',dn?'info':'na','Thủy điện','chMixShare')],
       events:[['Đầu tháng','EVN sản lượng tháng'],['Giữa tháng','NOAA cập nhật ONI'],['Từ 20/10','BCTC quý III'],['Từ 11/2026','Mùa khô thủy điện']]
+    });
+  }else if(re){
+    const R=window.REALESTATE_DASHBOARD||{},B=window.REALESTATE_WI?.blocks||{},cash=(B.cbond_cashflow?.records||[]).filter(r=>!r.partial),iss=B.cbond_issuance?.records||[];
+    const lc=cash.at(-1),pc=cash.at(-2),due3=(R.next12||[]).slice(0,3).reduce((a,r)=>a+r.due,0),dueShare=lc?due3/lc.outstanding_value*100:null;
+    const issNow=iss.slice(-3).reduce((a,r)=>a+r.value,0),issPrev=iss.slice(-6,-3).reduce((a,r)=>a+r.value,0),issChg=issPrev?(issNow/issPrev-1)*100:null;
+    const mac=B.macro?.series||{},yoyLast=(k,lag)=>{const rs=mac[k]?.records||[],a=rs.at(-1),b=rs.at(-1-lag);return a&&b?(a.value/b.value-1)*100:null};
+    const cc=yoyLast('credit_construction',12),ct=yoyLast('credit_total',12),cpi=R.cpi?.value,fdiChg=R.fdi&&R.fdiPrev?(R.fdi.value/R.fdiPrev.value-1)*100:null;
+    const lateChg=lc&&pc?lc.late_payment_debt-pc.late_payment_debt:null,lateSt=lateChg==null?'na':lateChg>500?'risk':lateChg<-500?'good':'watch';
+    const dueSt=dueShare==null?'na':dueShare>=5?'risk':dueShare>=3?'watch':'good',issSt=issChg==null?'na':issChg>=20?'good':issChg<=-20?'risk':'info';
+    const housingUp=lateSt==='good'&&dueSt!=='risk',kcnUp=fdiChg!=null&&fdiChg>0;
+    const mon=d=>'T'+Number(d.slice(5,7))+'/'+d.slice(2,4);
+    const row=(name,now,prev,unit,d,th,st,who,chart)=>({name,chart,st,mid:[S(now,d,unit),prev===undefined?'—':D(now,prev,d),th],end:[who]});
+    renderBrief({
+      headline:(dueSt==='risk'||lateSt==='risk')?'Nhà ở: áp lực đáo hạn trái phiếu còn nặng · khu công nghiệp thuận nhờ FDI':housingUp?'Nhà ở: vốn đang dễ thở hơn · khu công nghiệp thuận nhờ FDI':'Nhà ở trung tính về vốn · khu công nghiệp '+(kcnUp?'thuận nhờ FDI':'chờ FDI'),
+      segs:[['Nhà ở','VHM · NVL · KDH · NLG · DXG · PDR…',lc?(housingUp?'up':dueSt==='risk'||lateSt==='risk'?'down':'flat'):'na',lc?'Đáo hạn 3T = '+num(dueShare,1)+'% dư nợ':'Thiếu TPDN'],['Khu công nghiệp','KBC · IDC · BCM · SZC · SIP · VGC · LHG',fdiChg==null?'na':kcnUp?'up':'down',fdiChg==null?'Thiếu FDI':'FDI BĐS '+(fdiChg>0?'+':'')+num(fdiChg,0)+'% YoY'],['Cho thuê','VRE',cpi==null?'na':cpi>=7?'up':'flat',cpi==null?'Thiếu CPI':'CPI nhà ở '+num(cpi,1)+'%'],['Môi giới','DXS','na','Chờ số giao dịch Q3']],
+      headers:['Tín hiệu','Mới nhất','Kỳ trước','Ngưỡng','','Ai chịu'],
+      score:[
+        row('TPDN BĐS chậm trả (cuối tháng)',lc?lc.late_payment_debt/1000:null,pc?pc.late_payment_debt/1000:null,' nghìn tỷ',1,'± 0,5 nghìn tỷ/tháng',lateSt,'Nhà ở (NVL, nhóm chưa niêm yết)','chBondLate'),
+        row('Gốc đến hạn 3 tháng tới / dư nợ',dueShare,undefined,'%',1,'≥ 5% là rủi ro',dueSt,'Nhà ở · VHM','chBondMaturity'),
+        row('Phát hành TPDN BĐS 3T gần nhất',issNow/1000,issPrev/1000,' nghìn tỷ',1,'±20% so 3T trước',issSt,'Nhà ở','chBondIssuance'),
+        row('Tín dụng xây dựng YoY',cc,undefined,'%',1,ct==null?'so tổng tín dụng':'> tổng tín dụng '+num(ct,1)+'%',cc==null?'na':ct!=null&&cc>ct?'good':'watch','Nhà ở · nhà thầu','chCreditRe'),
+        row('FDI đăng ký vào BĐS (YTD)',R.fdi?R.fdi.value/1000:null,R.fdiPrev?R.fdiPrev.value/1000:null,' tỷ USD',2,'> cùng kỳ',fdiChg==null?'na':fdiChg>0?'good':'risk','KCN · cho thuê','chFdiRe'),
+        row('CPI nhà ở & VLXD YoY',cpi,undefined,'%',2,'≥ 7% sát ngưỡng',cpi==null?'na':cpi>=7?'watch':'info','Cho thuê · người mua','chCpiHousing'),
+        row('P/B BĐS dân cư',R.resLast?R.resLast[2]:null,undefined,'x',2,'—',R.resLast?'info':'na','Nhà ở ▲ VHM','chSectorPb')],
+      events:[['20/10','Khai mạc kỳ họp QH: Luật Đất đai sửa đổi'],['20–30/10','BCTC quý III'],['Đầu tháng','NSO: CPI, FDI, GDP quý'],['Hằng tháng','HNX/VBMA: TPDN đáo hạn'],['Cuối T11','Bộ Xây dựng: thị trường Q3']]
     });
   }else if(bank){
     const map={'Cần chú ý':'risk','Theo dõi':'info'};

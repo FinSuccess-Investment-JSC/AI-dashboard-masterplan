@@ -218,18 +218,21 @@ class RegistryTests(unittest.TestCase):
                 if i['tier'] in ('B', 'C', 'D') and i.get('status') not in ('todo', 'blocked'):
                     self.assertTrue(i.get('how') and i.get('gates'))
                 if i['tier'] == 'B':
-                    contract = json.loads((ROOT / 'data/bank-wi-contract.json').read_text())['blocks']
-                    self.assertTrue(i['wiBlocks'] and set(i['wiBlocks']) <= set(contract))
+                    contract = json.loads((ROOT / i.get('wiContract', 'data/bank-wi-contract.json')).read_text())
+                    blocks = contract['blocks'] if 'blocks' in contract else [c['block'] for c in contract['calls']]
+                    self.assertTrue(i['wiBlocks'] and set(i['wiBlocks']) <= set(blocks))
 
     def test_every_dashboard_block_is_scheduled(self):
         covered = {b for i in self.reg['items'] for b in i['where'].get('blocks', [])}
-        for page in ('Dau-khi', 'Sugar', 'Dien'):
+        for page in ('Dau-khi', 'Sugar', 'Dien', 'Bat-dong-san'):
             text = (ROOT / page / 'index.html').read_text(encoding='utf-8')
             for block, kind in re.findall(r'data-block-id="([^"]+)" data-update-kind="([^"]+)"', text):
                 with self.subTest(block):
                     self.assertIn(block, covered, f'{page}: {kind} block has no registry item')
         wi = set(json.loads((ROOT / 'data/bank-wi-contract.json').read_text())['blocks'])
-        self.assertEqual(wi, {b for i in self.reg['items'] if i['tier'] == 'B' for b in i['wiBlocks']})
+        self.assertEqual(wi, {b for i in self.reg['items'] if i['tier'] == 'B' and 'wiContract' not in i for b in i['wiBlocks']})
+        re_contract = json.loads((ROOT / 'data/realestate-wi-contract.json').read_text())
+        self.assertEqual({c['block'] for c in re_contract['calls']} - {'sector_ratio_older'}, {b for i in self.reg['items'] if i.get('wiContract') == 'data/realestate-wi-contract.json' for b in i['wiBlocks']})
 
     def test_dry_run_writes_nothing(self):
         with tempfile.TemporaryDirectory() as directory, patch.object(us, 'STATE', Path(directory) / 'state.json'), \

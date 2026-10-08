@@ -1,0 +1,1236 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ngành Bất động sản Việt Nam · FinSuccess Research</title>
+<style>
+:root{
+  color-scheme: light;
+  /* ---- token lấy từ website công ty https://fisc.vn ---- */
+  --navy:#11255a; --navy2:#19316f; --navy3:#223567;
+  --accent:#27af95; --accent-bright:#2fd0b2; --accent-soft:#e6f5f1;
+  --tint:#dfe6f7; --tint-soft:#f5f7fc;
+  --bg:#ffffff; --page:#f5f7fc; --card:#ffffff;
+  --ink:#0d0d0d; --ink2:#3d4653; --muted:#6b7686;
+  --line:#dfe6f7; --hair:#eaeff9;
+  --brand:#11255a; --brand2:#19316f; --brand-deep:#11255a; --gold:#b8801f; --gold-soft:#fdf3e0;
+  --soft:#f5f7fc; --warn-bg:#fdf3e0; --danger-bg:#fbeae7;
+  --chart-surface:#ffffff; --grid:#e8edf7; --axis:#c6cfe0;
+  --s1:#1f4e9c; --s2:#d1583f; --s3:#27af95; --s4:#d99000; --s5:#a45bb8; --s6:#2f8f4e; --s7:#4b5bd4; --s8:#b8443a;
+  --good:#2f8f4e; --warning:#d99000; --serious:#dd7f4e; --critical:#c0392b;
+  --shadow:0 1px 2px rgba(17,37,90,.04), 0 6px 18px rgba(17,37,90,.05);
+  --radius:8px;
+}
+body{font-family:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,.hero h1,.intro h1{font-family:"Newsreader","Iowan Old Style",Georgia,serif;font-weight:600;letter-spacing:-.01em}
+h1 em,h2 em,.accent{font-style:italic;color:var(--accent);font-weight:500}
+.hero h1 em{color:var(--accent-bright)}
+table,.kpi .value,.value,td,th{font-family:"Inter",ui-sans-serif,system-ui,sans-serif;font-variant-numeric:tabular-nums}
+
+/* ---- thanh nhận diện công ty ---- */
+.fiscbar{background:linear-gradient(103deg,var(--navy) 0%,var(--navy3) 58%,#2c4a86 100%);color:#fff}
+.fiscbar-inner{max-width:1460px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.fiscbar img{height:34px;width:auto;display:block}
+.fiscbar .fiscbar-doc{font-size:12.5px;font-weight:600;color:#c9d6f0;letter-spacing:.2px}
+.fiscbar .fiscbar-doc b{color:#fff;font-weight:700}
+.fiscbar .fiscbar-nav{display:flex;gap:16px;flex-wrap:wrap}
+.fiscbar .fiscbar-nav a{color:#c9d6f0;text-decoration:none;font-size:12.5px;font-weight:600}
+.fiscbar .fiscbar-nav a:hover{color:var(--accent-bright)}
+
+/* ---- nguồn dạng link ---- */
+.source-note a,.conf-note a,.src-link{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(39,175,149,.35);font-weight:600}
+.source-note a:hover,.conf-note a:hover,.src-link:hover{color:var(--navy2);border-bottom-color:var(--navy2)}
+.source-note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6}
+.srcrow{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:6px}
+.srcrow a{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 9px;background:var(--tint-soft)}
+.srcrow a:after{content:"↗";font-size:9px;opacity:.7}
+.srcrow a:hover{border-color:var(--accent);background:var(--accent-soft)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important; scroll-behavior:auto!important} }
+body{margin:0;background:var(--page);color:var(--ink);font-family:ui-sans-serif,"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:proportional-nums}
+table{font-variant-numeric:tabular-nums}
+header{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--bg) 90%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{max-width:1460px;margin:auto;padding:12px 22px;display:flex;gap:16px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:.3px;font-size:13px;color:var(--ink)}
+.navlinks{display:flex;gap:14px;flex-wrap:wrap}
+.navlinks a{text-decoration:none;color:var(--muted);font-size:12.5px;font-weight:700}
+.navlinks a:hover{color:var(--brand)}
+.container{max-width:1460px;margin:auto;padding:22px}
+.hero{padding:26px 28px;border-radius:20px;background:linear-gradient(120deg,var(--brand-deep),var(--brand2));color:#fff;box-shadow:var(--shadow)}
+.hero h1{margin:0 0 8px;font-size:30px;line-height:1.15;text-wrap:balance}
+.hero p{margin:0;color:#dbeadb;max-width:920px;font-size:14.5px;line-height:1.55}
+.tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tag{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);padding:6px 10px;border-radius:999px;font-size:11.5px;font-weight:700}
+.insight{margin-top:16px;padding:13px 15px;background:rgba(255,255,255,.1);border-left:4px solid var(--gold);border-radius:10px;font-size:13.5px;line-height:1.6}
+.insight b{color:#fff}
+.grid{display:grid;gap:14px}
+.power-seasonal-grid{grid-template-columns:minmax(0,1fr);margin-top:14px}
+.power-seasonal-status{font-size:12px;color:var(--ink2);margin:0 0 2px}
+.kpis{grid-template-columns:repeat(6,minmax(150px,1fr));margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+.kpi .label{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.kpi .value{font-size:23px;font-weight:800;margin:6px 0 2px}
+.kpi .delta{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:700;padding:2px 7px;border-radius:999px;margin-bottom:4px}
+.kpi .delta.d-good{color:var(--good);background:color-mix(in srgb, var(--good) 14%, transparent)}
+.kpi .delta.d-warn{color:#8a6a10;background:var(--warn-bg)}
+:root[data-theme="dark"] .kpi .delta.d-warn,@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .kpi .delta.d-warn{color:var(--warning)}}
+.kpi .delta.d-bad{color:var(--critical);background:color-mix(in srgb, var(--critical) 12%, transparent)}
+.kpi .sub{font-size:11px;color:var(--muted);line-height:1.4}
+.kpi .spark{margin-top:6px;display:block}
+.section{margin-top:26px}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:0 0 12px;flex-wrap:wrap}
+.sectionhead h2{margin:0;font-size:20px}
+.sectionhead p{margin:2px 0 0;color:var(--muted);font-size:12.5px;max-width:640px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:var(--shadow)}
+.two{grid-template-columns:1.5fr 1fr}
+.three{grid-template-columns:repeat(3,1fr)}
+.four{grid-template-columns:repeat(4,1fr)}
+.chart-title{font-size:13.5px;font-weight:750;margin:0 0 2px}
+.chart-sub{font-size:11.5px;color:var(--muted);margin:0 0 8px}
+.chartsvg{display:block;width:100%;height:auto;overflow:visible}
+.gridline{stroke:var(--grid);stroke-width:1}
+.axisline{stroke:var(--axis);stroke-width:1}
+.axislabel{font-size:9px;fill:var(--muted)}
+.catlabel{font-size:9px;fill:var(--muted)}
+.endlabel{font-size:10px;fill:var(--ink2);font-weight:700}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 4px;font-size:11.5px;color:var(--ink2)}
+.legend .li{display:inline-flex;align-items:center;gap:6px}
+.legend .sw{width:12px;height:3px;border-radius:2px;display:inline-block}
+.legend .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.source-note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+.conf-note{font-size:11px;color:var(--muted);margin-top:2px;font-style:italic}
+details.dtable{margin-top:8px}
+details.dtable summary{cursor:pointer;font-size:11.5px;font-weight:700;color:var(--brand);list-style:none;display:inline-flex;align-items:center;gap:4px}
+details.dtable summary::-webkit-details-marker{display:none}
+details.dtable summary:before{content:"▸";font-size:10px}
+details.dtable[open] summary:before{content:"▾"}
+.dtable table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:8px}
+.dtable th,.dtable td{padding:6px 7px;border-bottom:1px solid var(--hair);text-align:left}
+.dtable th{color:var(--muted);font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.3px}
+.chtip{position:fixed;z-index:100;pointer-events:none;background:var(--ink);color:var(--bg);border-radius:10px;padding:8px 10px;font-size:11.5px;box-shadow:0 8px 20px rgba(0,0,0,.25);display:none;max-width:240px}
+.chtip-title{font-weight:800;margin-bottom:4px}
+.chtip-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:1px 0}
+.chtip-key{display:flex;align-items:center;gap:5px;opacity:.85}
+.chtip-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+.chtip-val{font-weight:800}
+.hitband{cursor:crosshair}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tabbtn{border:1px solid var(--line);background:var(--card);color:var(--brand);padding:7px 12px;border-radius:999px;font-weight:750;cursor:pointer;font-size:12.5px}
+.tabbtn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.tabpane{display:none} .tabpane.active{display:block}
+.tabpane p{font-size:13px;line-height:1.6;margin:0 0 6px}
+.timeline{position:relative;margin:8px 0 0;padding-left:24px}
+.timeline:before{content:"";position:absolute;left:7px;top:3px;bottom:3px;width:2px;background:var(--line)}
+.event{position:relative;margin:0 0 16px}
+.event:before{content:"";position:absolute;left:-21px;top:5px;width:10px;height:10px;background:var(--gold);border-radius:50%;box-shadow:0 0 0 3px var(--gold-soft)}
+.event b{display:block;font-size:13.5px} .event small{color:var(--muted);font-weight:700}
+.event p{margin:3px 0 0;font-size:12.5px;color:var(--ink2);line-height:1.5}
+.driver{padding:14px;border-radius:14px;background:var(--soft);border:1px solid var(--line)}
+.driver h3{margin:0 0 6px;font-size:14px} .driver p{margin:0;color:var(--ink2);font-size:12.5px;line-height:1.5}
+.scenario{border-radius:14px;padding:15px;border:1px solid var(--line);background:var(--card);cursor:pointer}
+.scenario:hover{box-shadow:var(--shadow)}
+.scenario.active{outline:2px solid var(--brand)}
+.scenario .range{font-size:22px;font-weight:800;margin:5px 0}
+.badge{display:inline-flex;padding:4px 9px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.2px}
+.base{background:var(--soft);color:var(--brand)} .bull{background:var(--warn-bg);color:#7a5b13} .bear{background:var(--danger-bg);color:#8a3d2e}
+.scenarioDetail{margin-top:14px;padding:14px 15px;border-radius:12px;background:var(--soft);border:1px dashed var(--line);color:var(--ink2);font-size:13px;line-height:1.6}
+.tablewrap{overflow:auto}
+table.plain{width:100%;border-collapse:collapse;font-size:12.5px}
+.plain th,.plain td{padding:9px 8px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}
+.plain th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.3px}
+.note{font-size:11.5px;color:var(--muted);line-height:1.55}
+.flagbox{background:var(--warn-bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:12.5px;line-height:1.6;color:var(--ink2);margin-top:10px}
+.flagbox b{color:var(--ink)}
+.footer{padding:26px 0 8px;color:var(--muted);font-size:11.5px}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--soft);color:var(--brand)}
+a{color:var(--brand)}
+@media(max-width:1150px){.kpis{grid-template-columns:repeat(3,1fr)}.two,.three,.four{grid-template-columns:1fr}}
+@media(max-width:700px){.container{padding:14px}.hero h1{font-size:24px}.kpis{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
+.majortabs{position:sticky;top:47px;z-index:25;background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.majortabrow{max-width:1460px;margin:auto;padding:10px 22px;display:flex;gap:8px;flex-wrap:wrap}
+.majortabbtn{border:1px solid var(--line);background:var(--card);color:var(--ink2);padding:8px 14px;border-radius:999px;font-weight:750;cursor:pointer;font-size:12.5px;white-space:nowrap}
+.majortabbtn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.majorpane{display:none}
+.majorpane.active{display:block}
+.subhead{font-size:15px;margin:22px 0 4px}
+.subhead:first-of-type{margin-top:4px}
+.subsub{font-size:12px;color:var(--muted);margin:0 0 12px;max-width:700px}
+.catriskgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.catbox,.riskbox{border-radius:14px;padding:14px 16px;border:1px solid var(--line)}
+.catbox{background:color-mix(in srgb, var(--good) 8%, var(--card))}
+.riskbox{background:color-mix(in srgb, var(--critical) 7%, var(--card))}
+.catbox h3,.riskbox h3{margin:0 0 8px;font-size:14px}
+.catbox ul,.riskbox ul{margin:0;padding-left:18px;font-size:12.5px;line-height:1.6;color:var(--ink2)}
+.catbox li,.riskbox li{margin-bottom:6px}
+.profilegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.profilecard{border-radius:14px;padding:14px 16px;border:1px solid var(--line);background:var(--card)}
+.profilecard h3{margin:0;font-size:15px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.profilecard .exch{font-size:10px;font-weight:800;color:var(--brand);background:var(--soft);padding:2px 8px;border-radius:999px}
+.profilecard p{margin:7px 0 0;font-size:12.5px;color:var(--ink2);line-height:1.55}
+.profilecard .stats{display:flex;gap:16px;margin-top:9px;flex-wrap:wrap}
+.profilecard .stat{font-size:11px;color:var(--muted)}
+.profilecard .stat b{display:block;font-size:15px;color:var(--ink);font-weight:800}
+@media(max-width:1150px){.catriskgrid,.profilegrid{grid-template-columns:1fr}}
+@media(max-width:700px){.majortabrow{padding:8px 14px}}
+
+/* ---- ghi de theo nhan dien FiSC ---- */
+.majortabs{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);border-top:0}
+.majortabbtn{font-weight:650}
+.majortabbtn.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.card{border-radius:var(--radius);border-color:var(--line)}
+.kpi{border-radius:var(--radius)}
+.hero{border-radius:18px;background:linear-gradient(103deg,var(--navy) 0%,var(--navy3) 58%,#2c4a86 100%)}
+.hero p{color:#d6e4ef}
+.insight{border-left-color:var(--accent-bright);background:rgba(255,255,255,.09)}
+.tag{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.22)}
+.sectionhead h2{font-size:21px}
+.subhead{font-family:"Newsreader","Iowan Old Style",Georgia,serif;font-weight:600;font-size:17px;color:var(--navy2)}
+details.dtable summary{color:var(--accent)}
+.scenario.active{outline-color:var(--accent)}
+.note{background:var(--tint-soft);border-left:3px solid var(--accent);padding:10px 12px;border-radius:10px;font-size:12.5px;line-height:1.6;color:var(--ink2)}
+code{background:var(--tint-soft);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:11px}
+.footer{border-top:1px solid var(--line);margin-top:26px}
+ul.list{margin:0;padding-left:18px;font-size:12.5px;line-height:1.65;color:var(--ink2)}
+ul.list li{margin-bottom:7px}
+.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+.scenario-detail{margin-top:14px;padding:14px 15px;border-radius:12px;background:var(--tint-soft);border:1px solid var(--line);color:var(--ink2);font-size:13px;line-height:1.65}
+.scenario-detail b{color:var(--ink)}
+@media(max-width:900px){.scenarios{grid-template-columns:1fr}}
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}.fiscbar-inner{padding:12px 14px}}
+
+.hero a,.tag a,.insight a,.fiscbar a{color:var(--accent-bright);border-bottom-color:rgba(47,208,178,.45)}
+.hero a:hover,.tag a:hover,.insight a:hover{color:#fff;border-bottom-color:#fff}
+
+/* ---- polish v1.1: research-dashboard readability ---- */
+body{font-size:14px;line-height:1.45}
+.container{padding-top:18px;padding-bottom:18px}
+.hero{border-radius:12px;padding:22px 24px}
+.hero h1{font-size:32px;line-height:1.08}
+.hero p{font-size:13.5px;max-width:980px}
+.insight{border-radius:8px;font-size:13px;line-height:1.55;max-width:1240px}
+.kpis{gap:10px;margin:14px 0}
+.kpi{padding:12px;min-height:128px}
+.kpi .label{font-size:10px;letter-spacing:.35px}
+.kpi .value{font-size:24px;line-height:1;margin:7px 0 4px}
+.kpi .sub{font-size:10.5px}
+.section{margin-top:22px}
+.sectionhead{align-items:flex-start;margin-bottom:10px}
+.sectionhead h2{font-size:22px;line-height:1.1}
+.sectionhead p{font-size:12.5px;max-width:880px;line-height:1.55}
+.card,.kpi,.driver,.scenario,.scenario-detail,.note,.flagbox,.profilecard,.catbox,.riskbox{border-radius:8px}
+.card{padding:14px}
+.chart-title{font-size:14px;line-height:1.3;color:var(--navy);font-weight:800}
+.chart-sub{font-size:11px;line-height:1.4;margin-bottom:6px}
+.card [id^="ch"]{min-height:230px}
+.chartsvg{margin-top:2px}
+.axislabel,.catlabel{font-size:9.5px}
+.endlabel{font-size:10.5px}
+.legend{font-size:11px;gap:10px 14px}
+.source-note,.conf-note{font-size:11px;line-height:1.45}
+.conf-note{padding-top:4px}
+.tablewrap{border:1px solid var(--hair);border-radius:8px;background:var(--card);overflow:auto}
+.tablewrap table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;line-height:1.45}
+.tablewrap th,.tablewrap td{padding:8px 9px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}
+.tablewrap th{position:sticky;top:0;z-index:1;background:var(--tint-soft);color:var(--navy2);font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.25px}
+.tablewrap tbody tr:nth-child(even){background:color-mix(in srgb, var(--tint-soft) 42%, transparent)}
+.tablewrap tbody tr:hover{background:var(--accent-soft)}
+.tablewrap tbody tr:last-child td{border-bottom:0}
+.tablewrap td:first-child{font-weight:650;color:var(--ink)}
+.tablewrap td b{color:var(--navy)}
+.focus-card{border-left:4px solid var(--accent);box-shadow:0 1px 2px rgba(17,37,90,.05),0 10px 28px rgba(39,175,149,.08)}
+.focus-card .chart-title,.focus-card h3{color:var(--navy)}
+.confidence-table tbody tr:nth-child(1) td:nth-child(2){color:var(--good);font-weight:800}
+.confidence-table tbody tr:nth-child(2) td:nth-child(2),.confidence-table tbody tr:nth-child(3) td:nth-child(2),.confidence-table tbody tr:nth-child(4) td:nth-child(2){color:var(--warning);font-weight:800}
+.confidence-table tbody tr:nth-child(5) td:nth-child(2){color:var(--critical);font-weight:800}
+.global-balance-table td:nth-child(3),.watch-table td:nth-child(3){font-weight:600;color:var(--ink)}
+.global-balance-table td:nth-child(4),.watch-table td:nth-child(4){background:color-mix(in srgb, var(--accent-soft) 45%, transparent)}
+.viz-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;margin:12px 0 10px}
+.viz-block{min-width:0;border-top:1px solid var(--hair);padding-top:10px}
+.viz-block [id^="ch"]{min-height:220px}
+.signal-line{margin:9px 0 0;padding:10px 12px;border-left:3px solid var(--accent);border-radius:8px;background:var(--tint-soft);font-size:12.5px;line-height:1.55;color:var(--ink2)}
+.signal-line b{color:var(--navy)}
+.data-gap{margin-top:8px;padding:10px 12px;border-left:4px solid var(--critical);border-radius:8px;background:var(--danger-bg);color:#7c241b;font-size:12px;line-height:1.5}
+.data-gap b{color:#6d1d14}
+.gap-row td{background:var(--danger-bg)!important;color:#7c241b}
+.gap-row td b{color:#6d1d14}
+.mini-matrix{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}
+.mini-cell{border:1px solid var(--hair);border-radius:8px;padding:10px;background:var(--tint-soft)}
+.mini-cell .k{font-size:10px;text-transform:uppercase;font-weight:800;color:var(--muted);letter-spacing:.25px}
+.mini-cell .v{font-size:18px;font-weight:850;color:var(--navy);margin-top:4px}
+.mini-cell .s{font-size:11px;color:var(--ink2);line-height:1.35;margin-top:4px}
+.catalyst-map{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.factor-card{border:1px solid var(--line);border-radius:8px;padding:12px;background:var(--card)}
+.factor-card.good{border-left:4px solid var(--good)}
+.factor-card.bad{border-left:4px solid var(--critical)}
+.factor-card h3{margin:0 0 8px;font-size:13px;color:var(--navy)}
+.factor-card .metric{font-size:20px;font-weight:850;color:var(--ink);line-height:1}
+.factor-card .label2{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4}
+.factor-card .impact{margin-top:8px;font-size:12px;color:var(--ink2);line-height:1.45}
+.law-cta{display:block;margin:0 0 12px;padding:13px 14px;border:1px solid color-mix(in srgb, var(--accent) 55%, var(--line));border-left:5px solid var(--accent);border-radius:8px;background:linear-gradient(90deg, color-mix(in srgb, var(--accent-soft) 72%, #fff), #fff);text-decoration:none;color:var(--ink)}
+.law-cta .eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.28px;font-weight:850;color:var(--accent)}
+.law-cta .title{margin-top:3px;font-size:17px;font-weight:850;color:var(--navy)}
+.law-cta .desc{margin-top:4px;font-size:12px;line-height:1.45;color:var(--ink2)}
+.srcrow{gap:5px 8px}
+.srcrow a{font-size:10.5px;border-radius:999px;padding:3px 8px}
+.subhead{margin-top:20px;margin-bottom:8px}
+.scenarios{gap:10px}
+.scenario{padding:13px}
+.scenario .range{font-size:20px;line-height:1.15}
+@media(max-width:700px){
+  .hero{padding:18px}
+  .hero h1{font-size:25px}
+  .insight{font-size:12.5px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .tablewrap th,.tablewrap td{padding:7px 8px}
+  .viz-grid{grid-template-columns:1fr}
+  .mini-matrix,.catalyst-map{grid-template-columns:1fr}
+}
+
+</style>
+<link rel="stylesheet" href="../assets/dashboard-ui.css?v=5763ce23563b">
+<script src="../assets/chart-types.js?v=5b81f0f266ee"></script>
+<script src="../data/daily-data.js?v=bd2374a1aa25" defer></script>
+<script src="../data/realestate-wi-data.js?v=fe7212070cbe" defer></script>
+<script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
+<script src="../assets/sector-runtime.js?v=6ef086b89ff7" defer></script>
+<script src="../assets/sector-content.js?v=ff7de5bb55fb" defer></script>
+<script src="../assets/sector-layout.js?v=11f5c297153b" defer></script>
+<script src="../assets/realestate-dashboard.js?v=e9967fd59eb6" defer></script>
+<script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
+<script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
+<script src="../assets/catalyst-board.js?v=afe7aa364431" defer></script>
+<script src="../data/company-valuation.js?v=61669f0f47ab" defer></script>
+<script src="../data/company-comparison.js?v=b72c16e7b3cb" defer></script>
+<script src="../assets/financial-comparison.js?v=c2d94f7d0b29" defer></script>
+<script src="../assets/research-layout.js?v=c1a8f88f49dd" defer></script>
+<script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
+<script src="../assets/research-editorial.js?v=2b9ddf9cad8c" defer></script>
+<script src="../assets/pane-subtabs.js?v=cb1ea476f56b" defer></script>
+<script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
+<link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
+<script src="../assets/site-navigation.js?v=2c6c98bd6eb6" data-release="20261008T171500Z"></script>
+<link rel="stylesheet" href="../assets/catalyst-board.css?v=65578b559897">
+<link rel="stylesheet" href="../assets/research-layout.css?v=28049630f1d9">
+<link rel="stylesheet" href="../assets/fin-success-theme.css?v=033d06c36482">
+</head>
+<body data-sector="realestate">
+<nav data-site-navigation="realestate"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="./" aria-current="page">Bất động sản</a></nav>
+<div class="fiscbar"><span>Dashboard ngành · Bất động sản Việt Nam · khung nghiên cứu gốc 08/10/2026</span></div>
+
+<nav class="majortabs">
+  <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst / Risk</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt10',this)">8. Vốn &amp; Trái phiếu</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt11',this)">9. Pháp lý dự án</button>
+</nav>
+
+<div class="container">
+  <section class="hero">
+    <h1>Bức tranh ngành bất động sản <em>Việt Nam</em></h1>
+    <p>Nhà ở đi theo pháp lý – vốn – lãi suất; khu công nghiệp đi theo FDI – quỹ đất sạch. Đọc theo từng khâu, không gom thành một con số chung.</p>
+    <div class="tagrow">
+      <span class="tag">Bản nghiên cứu: 08/10/2026</span>
+      <span class="tag">Trái phiếu: <a href="https://cbonds.hnx.vn/" target="_blank" rel="noopener">HNX · qua MCP Wi</a></span>
+      <span class="tag">Thị trường: <a href="https://moc.gov.vn/" target="_blank" rel="noopener">Bộ Xây dựng · báo cáo quý</a></span>
+      <span class="tag">Mọi khoảng trống dữ liệu được hiển thị là khoảng trống</span>
+    </div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> đang tải số Wi.</div>
+  </section>
+
+  <div class="majorpane active" data-tab="mt1" id="pane-mt1">
+    <div class="sectionhead"><div><h2>1. Tổng quan ngành bất động sản</h2><p>Hai mảng chạy bằng hai động cơ khác nhau. Nhà ở: pháp lý và vốn quyết định khi nào được bán, lãi suất quyết định ai mua. Khu công nghiệp: FDI chế biến chế tạo và quỹ đất đã đền bù.</p></div></div>
+    <section class="grid kpis">
+      <div class="kpi"><div class="label">P/B BĐS dân cư</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-pb"></div></div>
+      <div class="kpi"><div class="label">Gốc TPDN BĐS đến hạn 12T</div><div class="value">—</div><div class="delta"></div><div class="sub">HNX · Wi</div><div id="spk-maturity"></div></div>
+      <div class="kpi"><div class="label">TPDN BĐS chậm trả</div><div class="value">—</div><div class="delta"></div><div class="sub">HNX · Wi</div><div id="spk-late"></div></div>
+      <div class="kpi"><div class="label">FDI đăng ký vào BĐS</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO · Wi</div><div id="spk-fdi"></div></div>
+      <div class="kpi"><div class="label">CPI nhà ở &amp; VLXD</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO · Wi</div><div id="spk-cpi"></div></div>
+      <div class="kpi"><div class="label">Lãi suất tái cấp vốn</div><div class="value">—</div><div class="delta"></div><div class="sub">NHNN · Wi</div><div id="spk-refi"></div></div>
+    </section>
+    <div class="grid two">
+      <div class="card" data-block-id="bds-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <h3 style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3>
+        <p style="font-size:12.5px;line-height:1.6;margin:0">20 doanh nghiệp theo bốn nhóm: nhà ở (11), khu công nghiệp (7), cho thuê bán lẻ (VRE), môi giới (DXS).</p>
+      </div>
+      <div class="card" data-block-id="bds-02" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
+        <h3 style="margin-top:0;font-size:13.5px">Vị trí trong chu kỳ</h3>
+        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Nhà ở: giá đỉnh, thanh khoản chững.</mark> Giá căn hộ sơ cấp Hà Nội <b>95–116 triệu đ/m²</b> (+21–27% YoY), TP.HCM <b>76 triệu đ/m²</b> (+16% YoY), nhưng giao dịch cả nước Q2/2026 chỉ bằng <b>63,7%</b> cùng kỳ và tồn kho nhà riêng lẻ của chủ đầu tư tăng <b>46,4%</b> so quý trước. Lãi vay mua nhà thả nổi <b>13–16%</b>.</p>
+        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Vốn: đảo nợ được nhưng đắt.</mark> Trái phiếu bất động sản vẫn phát hành với lãi suất <b>11–12,5%</b>; dư nợ chậm trả giảm chậm; ba đỉnh đáo hạn <b>12/2026</b>, <b>8/2027</b>, <b>12/2027</b>.</p>
+        <p style="font-size:12.5px;line-height:1.65;margin-bottom:0"><mark class="key-phrase">Khu công nghiệp: cầu mạnh, cung mới nhiều.</mark> FDI đăng ký 9T/2026 <b>50,36 tỷ USD</b> (+76,4%), thực hiện cao nhất 5 năm; giá thuê đất miền Nam <b>186,4 USD/m²/kỳ</b>, miền Bắc lấp đầy giảm còn <b>64%</b> vì thêm 1.200 ha cung mới.</p>
+        <div class="source-note">Nguồn: <a href="https://vov.vn/kinh-te/bat-dong-san-quy-ii2026-giao-dich-dat-nen-giam-hon-40-ton-kho-464-post1326015.vov" target="_blank" rel="noopener">Bộ Xây dựng Q2/2026 (VOV 21/08/2026)</a> · <a href="https://doanhnhan.baophapluat.vn/nguon-cung-nha-ha-noi-lap-dinh-5-nam-phan-khuc-cao-cap-tiep-tuc-chiem-uu-the.html" target="_blank" rel="noopener">CBRE Q2/2026</a> · <a href="https://cafef.vn/chung-cu-ha-noi-vang-bong-can-ho-duoi-70-trieu-dong-m2-188260814143655062.chn" target="_blank" rel="noopener">Savills Q2/2026</a> · <a href="https://thitruongtaichinhtiente.vn/9-thang-nam-2026-fdi-thuc-hien-dat-21-07-ty-usd-cao-nhat-5-nam-86014.html" target="_blank" rel="noopener">FDI 9T/2026 (NSO)</a> · <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/northern-vietnam-industrial-property-market-maintains-growth-momentum" target="_blank" rel="noopener">Cushman &amp; Wakefield Q2/2026</a> · TPDN: Wi/HNX (tab Vốn &amp; Trái phiếu).</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bds-03" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Doanh nghiệp theo dõi và biến quyết định của từng nhóm</h3>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Nhóm</th><th>Mã</th><th>Doanh thu đến từ</th><th>Biến quyết định</th><th>Đọc ở tab</th></tr></thead>
+        <tbody>
+          <tr><td><b>Nhà ở</b></td><td>VHM · NVL · KDH · NLG · DXG · PDR · DIG · CEO · AGG · TCH · NTL</td><td>Bàn giao căn hộ, thấp tầng, đất nền; doanh số bán đi trước 1–3 năm</td><td>Pháp lý dự án · lịch trả nợ · lãi vay mua nhà · giá sơ cấp</td><td>Pháp lý dự án · Vốn &amp; Trái phiếu</td></tr>
+          <tr><td><b>Khu công nghiệp</b></td><td>KBC · IDC · BCM · SZC · SIP · VGC · LHG</td><td>Cho thuê đất, nhà xưởng, dịch vụ hạ tầng</td><td>FDI chế biến chế tạo · quỹ đất đã đền bù · giá thuê · thuế quan</td><td>Cung – Cầu (Khu công nghiệp)</td></tr>
+          <tr><td><b>Cho thuê bán lẻ</b></td><td>VRE</td><td>Tiền thuê cố định + theo doanh thu khách thuê</td><td>Lấp đầy · sức mua · lịch mở trung tâm mới</td><td>Cung – Cầu (CPI nhà ở, FDI)</td></tr>
+          <tr><td><b>Môi giới</b></td><td>DXS</td><td>Phí giao dịch sơ cấp</td><td>Số căn mở bán · hấp thụ toàn thị trường</td><td>Cung – Cầu (Nhà ở)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="source-note">VIC không đưa vào vì là tập đoàn đa ngành; VHM đại diện mảng nhà ở của Vingroup. P/E, P/B, vốn hóa cập nhật mỗi phiên (VNDirect); số BCTC chỉ cập nhật khi người dùng yêu cầu.</div>
+    </div>
+  </div>
+
+  <div class="majorpane" data-tab="mt2" id="pane-mt2">
+  <section class="section">
+    <div class="sectionhead"><div><h2>2. Cung – Cầu</h2><p>Nhà ở: hoạt động ngành, vốn ngoại, chi phí ở và giao dịch theo báo cáo quý. Khu công nghiệp: FDI chế biến chế tạo, sản xuất của khách thuê, lấp đầy và giá thuê.</p></div></div>
+
+    <h3 class="subhead">Nhà ở</h3>
+    <div class="grid two">
+      <div class="card" data-block-id="bds-04" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">GDP hoạt động kinh doanh bất động sản — theo quý</div>
+        <div class="chart-sub">nghìn tỷ VND, giá hiện hành · NSO công bố ngày 6 tháng đầu quý</div>
+        <div id="chGdpRe"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-gdp-re"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bds-05" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">FDI đăng ký vào kinh doanh bất động sản — theo năm</div>
+        <div class="chart-sub">triệu USD · cấp mới + điều chỉnh + góp vốn · năm hiện tại là lũy kế đến tháng gần nhất</div>
+        <div id="chFdiRe"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-fdi-re"></table></div></details>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="bds-06" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">CPI nhà ở &amp; vật liệu xây dựng — so cùng kỳ</div>
+        <div class="chart-sub">% · gồm tiền thuê nhà, điện, nước, chất đốt, vật liệu sửa chữa</div>
+        <div id="chCpiHousing"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-cpi-housing"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bds-07" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Giao dịch &amp; tồn kho cả nước — Bộ Xây dựng Q2/2026</div>
+        <div class="chart-sub">công bố 21/08/2026 · Q3/2026 chưa có (dự kiến cuối 11/2026)</div>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Chỉ tiêu</th><th>Q2/2026</th><th>So Q1/2026</th><th>So Q2/2025</th></tr></thead>
+          <tbody>
+            <tr><td>Giao dịch thành công</td><td><b>100.005</b></td><td>= 71,5%</td><td>= 63,7%</td></tr>
+            <tr><td>– Căn hộ + nhà riêng lẻ</td><td>26.567</td><td>= 86,1%</td><td>= 77,1%</td></tr>
+            <tr><td>– Đất nền</td><td>73.438</td><td>= 67,4%</td><td>= 59,9%</td></tr>
+            <tr><td>Tồn kho chủ đầu tư (25/34 tỉnh)</td><td><b>39.284</b> sản phẩm</td><td>nhà riêng lẻ +46,4% · căn hộ +22,2% · đất nền +25,4%</td><td>—</td></tr>
+            <tr><td>Dự án đang triển khai</td><td>1.735</td><td colspan="2">72 hoàn thành (~17.150 căn) · 113 cấp phép mới (~103.205 căn)</td></tr>
+          </tbody>
+        </table></div>
+        <div class="source-note">Nguồn: <a href="https://vov.vn/kinh-te/bat-dong-san-quy-ii2026-giao-dich-dat-nen-giam-hon-40-ton-kho-464-post1326015.vov" target="_blank" rel="noopener">VOV 21/08/2026 dẫn Bộ Xây dựng</a> · <a href="https://thoibaotaichinhvietnam.vn/bo-xay-dung-gia-ban-can-ho-chung-cu-co-xu-huong-giam-202686.html" target="_blank" rel="noopener">Thời báo Tài chính</a>. Tồn kho là số chủ đầu tư báo cáo, chưa gồm hàng thứ cấp.</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bds-08" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+      <div class="chart-title">Nguồn cung mới &amp; hấp thụ căn hộ — Hà Nội, TP.HCM Q2/2026</div>
+      <div class="chart-sub">CBRE và Savills khác phạm vi địa lý và định nghĩa; đọc theo từng dòng</div>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Thị trường · nguồn</th><th>Cung mới</th><th>Bán được / hấp thụ</th><th>Ghi chú</th></tr></thead>
+        <tbody>
+          <tr><td>Hà Nội · CBRE</td><td>6T/2026: <b>16.600 căn</b> (cao nhất từ 2020)</td><td>Q2: &gt;5.800 căn = <b>68%</b> cung mới (2024–25: &gt;90%)</td><td>35% cung mới trên 120 triệu đ/m²</td></tr>
+          <tr><td>Hà Nội · Savills</td><td>Q2: ~5.317 căn; 6T: ~11.000</td><td>Hạng B chiếm 53% giao dịch</td><td>Không còn cung sơ cấp dưới 70 triệu đ/m²</td></tr>
+          <tr><td>TP.HCM · CBRE</td><td>Q2: 6.573 căn hộ + 1.934 liền thổ (+~20% YoY)</td><td>Hấp thụ toàn thị trường <b>90%</b>; dự án mới ~73%</td><td>Tồn kho 2,3% cung lũy kế; dự báo 2026 ~45.000 căn (Bình Dương cũ chủ lực)</td></tr>
+          <tr><td>TP.HCM · Savills</td><td>Q2: 1.800 căn; 6T: 3.700 căn / 7 dự án</td><td>~1.500 căn, hấp thụ <b>32%</b></td><td>80% cung mới trên 120 triệu đ/m²</td></tr>
+          <tr><td>Cả nước · VARS</td><td>Q2: ~38.000 sản phẩm mới (×2,5 YoY)</td><td>&gt;24.000 giao dịch; hấp thụ sơ cấp ~47% (−10 điểm % QoQ)</td><td>Hấp thụ cung mới ~58%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="source-note">Nguồn: <a href="https://doanhnhan.baophapluat.vn/nguon-cung-nha-ha-noi-lap-dinh-5-nam-phan-khuc-cao-cap-tiep-tuc-chiem-uu-the.html" target="_blank" rel="noopener">CBRE Hà Nội (Báo Pháp luật 07/07/2026)</a> · <a href="https://cafef.vn/gia-can-ho-tphcm-lap-mat-bang-moi-76-trieu-dong-m-90-nguon-hang-duoc-hap-thu-188260707164106882.chn" target="_blank" rel="noopener">CBRE TP.HCM (CafeF)</a> · <a href="https://cafef.vn/chung-cu-ha-noi-vang-bong-can-ho-duoi-70-trieu-dong-m2-188260814143655062.chn" target="_blank" rel="noopener">Savills Hà Nội (CafeF 14/08/2026)</a> · <a href="https://vov.vn/kinh-te/nguon-cung-can-ho-o-tphcm-chu-yeu-phan-khuc-cao-cap-giao-dich-tram-lang-post1323256.vov" target="_blank" rel="noopener">Savills TP.HCM (VOV 11/08/2026)</a> · <a href="https://tienphong.vn/giao-dich-bat-dong-san-nua-cuoi-2026-dien-bien-ra-sao-post1853746.tpo" target="_blank" rel="noopener">VARS (Tiền Phong 24/06/2026)</a>.</div>
+    </div>
+
+    <h3 class="subhead">Khu công nghiệp</h3>
+    <div class="grid two">
+      <div class="card" data-block-id="bds-09" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">FDI đăng ký vào công nghiệp chế biến, chế tạo — theo năm</div>
+        <div class="chart-sub">triệu USD · nguồn cầu chính của đất khu công nghiệp · năm hiện tại là lũy kế</div>
+        <div id="chFdiMfg"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-fdi-mfg"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bds-10" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Vốn FDI thực hiện — theo tháng</div>
+        <div class="chart-sub">triệu USD · toàn nền kinh tế · 9T/2026: 21,07 tỷ USD, cao nhất 5 năm</div>
+        <div id="chFdiRealized"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-fdi-realized"></table></div></details>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="bds-11" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">IIP công nghiệp chế biến, chế tạo — so cùng kỳ</div>
+        <div class="chart-sub">% · sản xuất của khách thuê khu công nghiệp</div>
+        <div id="chIipMfg"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-iip-mfg"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bds-12" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Lấp đầy &amp; cung mới đất khu công nghiệp — Q2/2026</div>
+        <div class="chart-sub">Cushman &amp; Wakefield 17/08/2026 · JLL 6T/2026</div>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Khu vực</th><th>Lấp đầy</th><th>Cung mới 6T/2026</th><th>Nhà xưởng (RBF) · kho (RBW)</th></tr></thead>
+          <tbody>
+            <tr><td><b>Miền Bắc</b></td><td><b>64%</b> (−2,7 điểm % YoY)</td><td>+1.200 ha → &gt;25.200 ha (+15,7% YoY); RBF +472.000 m²</td><td>5,0 USD/m²/tháng · 86% — 4,9 · 85,7%</td></tr>
+            <tr><td><b>Miền Nam</b></td><td><b>76,3%</b> (TP.HCM 98,7% · Đồng Nai 88,4% · Tây Ninh 81,7%)</td><td>Không có kho mới trong Q2; RBF +56.000 m²</td><td>4,9 · 92% — 4,6 · 91,6%</td></tr>
+            <tr><td>Cả hai miền · JLL</td><td>—</td><td>Tổng cung ~41.000 ha (+1% YoY); thêm gần 2.000 ha đến cuối 2026</td><td>Bắc 5,3 / 4,5 · Nam 5,0 / 4,9 USD/m²/tháng</td></tr>
+          </tbody>
+        </table></div>
+        <div class="source-note">Nguồn: <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/northern-vietnam-industrial-property-market-maintains-growth-momentum" target="_blank" rel="noopener">Cushman &amp; Wakefield · miền Bắc</a> · <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/southern-vietnam-industrial-real-estate-maintains-stable-fundamentals" target="_blank" rel="noopener">miền Nam</a> · <a href="https://24hmoney.vn/news/jll-gia-thue-dat-cong-nghiep-tiep-tuc-tang-co-them-gan-2-000ha-den-cuoi-nam-2026-c3a2811536.html" target="_blank" rel="noopener">JLL 6T/2026</a>. Giá thuê đất nằm ở tab Giá – Chi phí – Margin.</div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="majorpane" data-tab="mt3" id="pane-mt3">
+  <section id="price" class="section">
+    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Giá sơ cấp theo báo cáo quý, chi phí vật liệu và lãi suất theo Wi, định giá bốn phân ngành theo phiên.</p></div></div>
+    <div class="grid two">
+      <div class="card" data-block-id="bds-13" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Giá căn hộ sơ cấp — Hà Nội, TP.HCM Q2/2026</div>
+        <div class="chart-sub">triệu đồng/m² · ba nguồn, ba phạm vi</div>
+        <div id="chHousePrice"></div>
+        <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>Hà Nội</span><span class="li"><span class="dot" style="background:#59C5C8"></span>TP.HCM</span></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-house-price"></table></div></details>
+        <div class="source-note">Nguồn: <a href="https://doanhnhan.baophapluat.vn/nguon-cung-nha-ha-noi-lap-dinh-5-nam-phan-khuc-cao-cap-tiep-tuc-chiem-uu-the.html" target="_blank" rel="noopener">CBRE Hà Nội</a> (sơ cấp 95, +12% QoQ, +21% YoY; thứ cấp 60, −3% QoQ — lần đầu giảm từ cuối 2022) · <a href="https://cafef.vn/gia-can-ho-tphcm-lap-mat-bang-moi-76-trieu-dong-m-90-nguon-hang-duoc-hap-thu-188260707164106882.chn" target="_blank" rel="noopener">CBRE TP.HCM</a> (76, +8% QoQ, +16% YoY) · <a href="https://cafef.vn/chung-cu-ha-noi-vang-bong-can-ho-duoi-70-trieu-dong-m2-188260814143655062.chn" target="_blank" rel="noopener">Savills Hà Nội</a> (116, +27% YoY) · <a href="https://vov.vn/kinh-te/bat-dong-san-quy-ii2026-giao-dich-dat-nen-giam-hon-40-ton-kho-464-post1326015.vov" target="_blank" rel="noopener">Bộ Xây dựng</a> (Hà Nội ~123, TP.HCM ~108, Hưng Yên ~69). Mỗi nguồn một rổ dự án; không nối thành chuỗi.</div>
+      </div>
+      <div class="card" data-block-id="bds-14" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">Giá thép xây dựng — Hòa Phát CB300 D10</div>
+        <div class="chart-sub">nghìn VND/kg · giá cuối tháng</div>
+        <div id="chSteel"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-steel"></table></div></details>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="bds-15" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Giá xi măng trong nước</div>
+        <div class="chart-sub">nghìn VND/kg · theo đợt công bố</div>
+        <div id="chCement"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-cement"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bds-16" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">Lãi suất tái cấp vốn</div>
+        <div class="chart-sub">%/năm · giá trị cuối tháng · lãi vay mua nhà thực tế ở tab Vốn &amp; Trái phiếu</div>
+        <div id="chRefiRate"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-refi"></table></div></details>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="bds-17" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">P/B bốn phân ngành bất động sản — theo phiên</div>
+        <div class="chart-sub">lần · GICS cấp 4 của Wi · mỗi 5 phiên</div>
+        <div id="chSectorPb"></div>
+        <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>BĐS dân cư</span><span class="li"><span class="dot" style="background:#59C5C8"></span>BĐS công nghiệp</span><span class="li"><span class="dot" style="background:#c29100"></span>Cho thuê</span><span class="li"><span class="dot" style="background:#861C52"></span>Môi giới</span></div>
+        <details class="dtable" open><summary>Phiên mới nhất</summary><div class="tablewrap"><table id="tbl-sector-pb"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bds-18" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Giá thuê đất khu công nghiệp — Q2/2026</div>
+        <div class="chart-sub">USD/m²/kỳ thuê còn lại · Cushman &amp; Wakefield</div>
+        <div id="chKcnRent"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-kcn-rent"></table></div></details>
+        <div class="source-note">Nguồn: <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/northern-vietnam-industrial-property-market-maintains-growth-momentum" target="_blank" rel="noopener">Cushman &amp; Wakefield · miền Bắc 137,7 (+2,7% YoY)</a> · <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/southern-vietnam-industrial-real-estate-maintains-stable-fundamentals" target="_blank" rel="noopener">miền Nam 186,4 (+1,7% YoY)</a> · JLL: miền Bắc ~135 · <a href="https://doanhnghiephoinhap.vn/gia-thue-dat-cong-nghiep-tiep-tuc-tang-khi-nguon-cung-moi-dan-mo-rong-144150.html" target="_blank" rel="noopener">Bộ Xây dựng: giá thuê Q2 tăng 5–12% (Bắc), 8–13% (Nam) YoY</a>.</div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="majorpane" data-tab="mt4" id="pane-mt4">
+  <section id="policy" class="section">
+    <div class="sectionhead"><div><h2>4. Policy / Trade / Tax</h2><p>Ba khung quyết định dòng tiền: giá đất và tiền sử dụng đất, điều kiện kinh doanh nhà ở và nhà ở xã hội, tín dụng và trái phiếu.</p></div></div>
+    <div class="card" data-block-id="bds-19" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Luật Đất đai 2024 và bảng giá đất mới từ 01/01/2026</h3>
+      <div class="tablewrap compare-table"><table>
+        <thead><tr><th>Nội dung</th><th>Trước 01/08/2024</th><th>Từ Luật Đất đai 31/2024/QH15</th></tr></thead>
+        <tbody>
+          <tr><td>Khung giá đất</td><td class="before">Chính phủ ban hành khung 5 năm; bảng giá tỉnh trong khung</td><td class="after"><b>Bỏ khung giá đất</b>; bảng giá theo nguyên tắc thị trường, lần đầu áp dụng 01/01/2026</td></tr>
+          <tr><td>Chu kỳ bảng giá đất</td><td class="before">5 năm</td><td class="after"><b>Hằng năm</b> từ 2026 (Luật 146/2025/QH15, hiệu lực 01/01/2026)</td></tr>
+          <tr><td>Thu hồi đất khi thỏa thuận dang dở</td><td class="before">Phải thỏa thuận 100%</td><td class="after">Đã thỏa thuận <b>&gt;75%</b> diện tích và &gt;75% người sử dụng đất thì Nhà nước thu hồi phần còn lại (NQ 254/2025/QH15, từ 01/01/2026)</td></tr>
+          <tr><td>Gia hạn tiến độ sử dụng đất</td><td class="before">—</td><td class="after">Tối đa 24 tháng; hoàn tiền trong 30 ngày (NĐ 226/2025)</td></tr>
+          <tr><td>Chuyển đất nông nghiệp lên đất ở</td><td class="before">Nộp 100% chênh lệch</td><td class="after">Từ 01/01/2026: nộp <b>30%</b> chênh lệch trong hạn mức, 50% phần vượt (NĐ 291/2025)</td></tr>
+        </tbody>
+      </table></div>
+      <p style="font-size:12.5px;line-height:1.6;margin:10px 0 6px"><mark class="key-phrase">Bảng giá đất 2026: 34/34 tỉnh đã ban hành.</mark> Hà Nội tăng <b>2–26%</b> (ngoại thành tăng mạnh nhất, cao nhất &gt;702 triệu đ/m² Hàng Ngang, Hàng Đào). TP.HCM mở rộng: địa bàn cũ tăng <b>1,0–1,65 lần</b>, Bình Dương cũ tới <b>&gt;8 lần</b>, Bà Rịa – Vũng Tàu cũ 1,7–&gt;4 lần; cao nhất 687 triệu đ/m² (Đồng Khởi). Chi tiết ở tab Pháp lý dự án.</p>
+      <p style="font-size:12.5px;line-height:1.6;margin:0 0 10px"><b>Đang sửa:</b> Luật Đất đai (sửa đổi) toàn diện trình Quốc hội kỳ họp thứ 2 khóa XVI, khai mạc <b>20/10/2026</b> (NQ 07/2026/UBTVQH16).</p>
+      <div class="source-note">Nguồn: <a href="https://thoibaotaichinhvietnam.vn/3-luat-ve-dat-dai-nha-o-chinh-thuc-co-hieu-luc-tu-182024-153951.html" target="_blank" rel="noopener">3 luật hiệu lực 01/08/2024</a> · <a href="https://mekongasean.vn/loat-thay-doi-trong-chinh-sach-dat-dai-co-hieu-luc-tu-112026-50150.html" target="_blank" rel="noopener">Luật 146/2025/QH15</a> · <a href="https://luatvietnam.vn/tin-van-ban-moi/da-co-nghi-quyet-254-2025-qh15-ve-co-che-thao-go-kho-khan-vuong-mac-trong-thi-hanh-luat-dat-dai-186-105881-article.html" target="_blank" rel="noopener">NQ 254/2025/QH15</a> · <a href="https://hcc.nghean.gov.vn/tin-tong-hop/nghi-dinh-226-2025-nd-cp-sua-doi-bo-sung-nghi-dinh-102-2024-quy-dinh-chi-tiet-thi-hanh-mot-so-dieu-cua-luat-dat-dai-2412.html" target="_blank" rel="noopener">NĐ 226/2025</a> · <a href="https://luatvietnam.vn/dat-dai/tu-1-1-2026-giam-tien-chuyen-dat-nong-nghiep-len-tho-cu-653-106167-article.html" target="_blank" rel="noopener">NĐ 291/2025</a> · <a href="https://luatvietnam.vn/dat-dai-nha-o/bang-gia-dat-2026-cua-34-tinh-thanh-567-105276-article.html" target="_blank" rel="noopener">Bảng giá đất 34 tỉnh</a> · <a href="https://lsvn.vn/ha-noi-chinh-thuc-se-ap-dung-bang-gia-dat-moi-a166454.html" target="_blank" rel="noopener">Hà Nội</a> · <a href="https://tienphong.vn/chi-tiet-bang-gia-dat-moi-se-ap-dung-o-tphcm-tu-1-1-2026-post1808173.tpo" target="_blank" rel="noopener">TP.HCM</a> · <a href="https://luatvietnam.vn/tin-van-ban-moi/quoc-hoi-xem-xet-luat-dat-dai-sua-doi-tai-ky-hop-thang-10-2026-186-110407-article.html" target="_blank" rel="noopener">Sửa Luật Đất đai 10/2026</a>.</div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bds-20" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Luật Nhà ở, Luật Kinh doanh BĐS 2023 và cơ chế nhà ở xã hội</h3>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Hiệu lực</th><th>Văn bản</th><th>Điểm chính cho doanh nghiệp</th></tr></thead>
+        <tbody>
+          <tr><td>01/08/2024</td><td><a href="https://baodauthau.vn/voi-8563-dai-bieu-tan-thanh-quoc-hoi-thong-qua-luat-nha-o-sua-doi-post147094.html" target="_blank" rel="noopener">Luật Nhà ở 27/2023/QH15</a> · <a href="https://thoibaotaichinhvietnam.vn/3-luat-ve-dat-dai-nha-o-chinh-thuc-co-hieu-luc-tu-182024-153951.html" target="_blank" rel="noopener">Luật KD BĐS 29/2023/QH15</a></td><td>Siết đặt cọc, công khai thông tin dự án, điều kiện sàn và môi giới; khung nhà ở xã hội, nhà lưu trú công nhân</td></tr>
+          <tr><td>01/04/2025 – 31/03/2030</td><td><a href="https://luatvietnam.vn/tin-van-ban-moi/da-co-nghi-dinh-75-2025-nd-cp-huong-dan-nghi-quyet-171-2024-qh15-186-101561-article.html" target="_blank" rel="noopener">NQ 171/2024/QH15 · NĐ 75/2025</a></td><td>Thí điểm nhà ở thương mại trên đất không phải đất ở qua thỏa thuận quyền sử dụng đất; TP.HCM duyệt <b>54/74</b> khu đất (1.079,62 ha) đợt 1</td></tr>
+          <tr><td>2025</td><td><a href="https://thuvienphapluat.vn/van-ban/EN/Xay-dung-Do-thi/Resolution-201-2025-QH15-piloting-certain-special-mechanisms-and-policies-for-social-housing-development/659586/tieng-anh.aspx" target="_blank" rel="noopener">NQ 201/2025/QH15</a> · <a href="https://vietnamfinance.vn/chinh-phu-ra-quy-dinh-ve-quy-nha-o-quoc-gia-hai-cap-d136004.html" target="_blank" rel="noopener">NĐ 302/2025</a></td><td>Rút ≥350 ngày thủ tục nhà ở xã hội; Quỹ nhà ở quốc gia hai cấp (đề xuất vốn điều lệ Quỹ Trung ương <b>10.000 tỷ</b>, 5.000 tỷ năm 2026)</td></tr>
+          <tr><td>2026</td><td><a href="https://mekongasean.vn/bo-xay-dung-thuc-tien-do-hoan-thanh-158700-can-nha-o-xa-hoi-nam-2026-54653.html" target="_blank" rel="noopener">Công điện 08/CĐ-BXD</a></td><td>Mục tiêu nhà ở xã hội 2026: <b>110.000 căn</b> (NQ 01/NQ-CP) → Bộ Xây dựng giao địa phương <b>158.700 căn</b>; 4T/2026 khởi công 40 dự án / 36.590 căn</td></tr>
+          <tr><td>Đang trình</td><td><a href="https://luatvietnam.vn/tin-van-ban-moi/chinh-phu-thong-qua-10-chinh-sach-lon-sua-luat-nha-o-va-luat-kinh-doanh-bat-dong-san-186-110341-article.html" target="_blank" rel="noopener">Sửa Luật Nhà ở &amp; Luật KD BĐS (NQ 175/NQ-CP, 03/07/2026)</a></td><td>6 + 4 chính sách lớn; dự thảo giới hạn đặt cọc tối đa <b>5%</b> giá bán; kết quả thông qua chưa xác minh</td></tr>
+        </tbody>
+      </table></div>
+      <div class="source-note">Bổ sung: <a href="https://tapchikinhtetaichinh.vn/sua-luat-nha-o-va-luat-kinh-doanh-bat-dong-san-chu-dau-tu-chi-duoc-thu-tien-dat-coc-toi-da-5-gia-ban-160844.html" target="_blank" rel="noopener">dự thảo đặt cọc 5%</a> · <a href="https://cafeland.vn/tin-tuc/nha-o-xa-hoi-don-song-lon-40-du-an-voi-hon-36590-can-do-bo-thi-truong-151066.html" target="_blank" rel="noopener">tiến độ NOXH 4T/2026</a>.</div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bds-21" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Tín dụng và trái phiếu bất động sản: chỉ đạo đang áp dụng</h3>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Văn bản · thời điểm</th><th>Nội dung</th><th>Ý nghĩa với doanh nghiệp</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://nhadautu.vn/nhnn-kiem-soat-tang-truong-tin-dung-bat-dong-san-trong-nam-2026-d102315.html" target="_blank" rel="noopener">CV 11686/NHNN-CSTT · 31/12/2025</a></td><td>Tăng trưởng tín dụng BĐS của mỗi ngân hàng <b>không vượt tốc độ tăng chung</b> của chính ngân hàng đó; mục tiêu tín dụng 2026 ~15%</td><td>Room cho chủ đầu tư bị khóa theo room chung; vay mới khó hơn vay cũ</td></tr>
+          <tr><td><a href="https://lsvn.vn/25-ngan-hang-duoc-noi-dieu-kien-cho-vay-nha-o-xa-hoi-a173572.html" target="_blank" rel="noopener">25 ngân hàng được nới</a></td><td>Dư nợ tăng thêm cho nhà ở xã hội, khu công nghiệp, khu chế xuất <b>không tính</b> vào giới hạn tín dụng BĐS</td><td>KCN và NOXH được ưu tiên vốn hơn nhà ở thương mại</td></tr>
+          <tr><td><a href="https://vnbusiness.vn/giai-ngan-goi-tin-dung-145000-ty-dong-cho-nha-o-xa-hoi-sau-3-nam-ra-sao.html" target="_blank" rel="noopener">Gói 145.000 tỷ NOXH</a></td><td>Giải ngân đến cuối 5/2026: <b>~12.440 tỷ (8,5%)</b>; lãi 7%/năm chủ đầu tư, 6,5%/năm người mua; không tính vào room</td><td>Nút thắt là dự án đủ điều kiện, không phải vốn</td></tr>
+          <tr><td><a href="https://thuehaiquan.tapchikinhtetaichinh.vn/tiep-tuc-nghien-cuu-hoan-thien-chinh-sach-thue-su-dung-dat-phi-nong-nghiep-156156.html" target="_blank" rel="noopener">Thuế BĐS · Bộ Tài chính</a></td><td>Trình sửa Luật Thuế sử dụng đất phi nông nghiệp kỳ họp 10/2026, hướng tới Luật Thuế bất động sản; thuế BĐS thứ hai mới ở mức nghiên cứu; <a href="https://doanhnghiephoinhap.vn/de-xuat-giu-muc-2-thue-chuyen-nhuong-bat-dong-san-siet-chat-gia-tinh-thue-131174.html" target="_blank" rel="noopener">giữ thuế chuyển nhượng 2%</a>, tính theo bảng giá đất nếu giá hợp đồng thấp hơn</td><td>Chưa có thuế mới trong 2026; rủi ro ở 2027 trở đi</td></tr>
+          <tr class="gap-row"><td>Hệ số rủi ro tín dụng BĐS 2026</td><td colspan="2">Chưa xác minh được thông tư mới của NHNN; giữ khung Thông tư 41/2016 cho tới khi có văn bản.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+  </div>
+
+  <div class="majorpane" data-tab="mt5" id="pane-mt5">
+  <section class="section">
+    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ Wi: trái phiếu, tín dụng, FDI, CPI nhà ở, định giá.</p></div></div>
+    <div class="catriskgrid">
+      <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
+        <h3>Catalyst — yếu tố hỗ trợ</h3>
+        <ul>
+          <li><b>FDI kỷ lục</b>: đăng ký 9T/2026 50,36 tỷ USD (+76,4%), thực hiện 21,07 tỷ USD cao nhất 5 năm → cầu đất KCN và kho vận.</li>
+          <li><b>Tháo gỡ pháp lý có cơ chế</b>: NQ 254 (thu hồi khi &gt;75% đồng thuận), NQ 171 (54 khu đất TP.HCM), Hệ thống 751 đã phân loại 3.984/4.619 dự án.</li>
+          <li><b>Tỷ lệ chậm trả TPDN giảm</b>: 12 tháng còn 0,24%; thu hồi nợ BĐS 58,7% (2025: 48,8%).</li>
+          <li><b>Cung mới nhà ở tăng</b>: Hà Nội 6T/2026 16.600 căn cao nhất từ 2020; TP.HCM dự báo ~45.000 căn năm 2026.</li>
+        </ul>
+      </div>
+      <div class="riskbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
+        <h3>Risk — rủi ro</h3>
+        <ul>
+          <li><b>Thanh khoản nhà ở chững</b>: giao dịch Q2/2026 = 63,7% cùng kỳ; tồn kho nhà riêng lẻ +46,4% QoQ; thứ cấp Hà Nội lần đầu giảm từ cuối 2022.</li>
+          <li><b>Lãi vay mua nhà thả nổi 13–16%</b>; tín dụng tiêu dùng BĐS 5T/2026 −1,32% trong khi tín dụng kinh doanh BĐS +14%.</li>
+          <li><b>Đáo hạn trái phiếu</b>: ~253.000 tỷ toàn thị trường 12 tháng tới, BĐS chiếm 55,6% phần còn lại 2026; đỉnh 12/2026 và 8, 12/2027.</li>
+          <li><b>Bảng giá đất mới</b> làm tăng tiền sử dụng đất cho dự án chưa nộp; miền Bắc lấp đầy KCN giảm còn 64% vì cung mới.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="srcrow"><a href="https://thitruongtaichinhtiente.vn/9-thang-nam-2026-fdi-thuc-hien-dat-21-07-ty-usd-cao-nhat-5-nam-86014.html" target="_blank" rel="noopener">NSO · FDI 9T/2026</a><a href="https://vov.vn/chinh-tri/go-diem-nghen-4619-du-an-dat-dai-de-giai-phong-nguon-luc-phat-trien-post1326368.vov" target="_blank" rel="noopener">VOV · Hệ thống 751</a><a href="https://thoibaotaichinhvietnam.vn/hon-250-000-ty-dong-trai-phieu-doanh-nghiep-se-dao-han-trong-12-thang-toi-203448.html" target="_blank" rel="noopener">VIS Rating · đáo hạn 12 tháng</a><a href="https://vov.vn/kinh-te/bat-dong-san-quy-ii2026-giao-dich-dat-nen-giam-hon-40-ton-kho-464-post1326015.vov" target="_blank" rel="noopener">Bộ Xây dựng Q2/2026</a><a href="https://baodauthau.vn/den-266-du-no-tin-dung-dat-tren-1997-trieu-ty-dong-post201953.html" target="_blank" rel="noopener">NHNN · tín dụng BĐS 5T/2026</a><a href="https://vietbao.vn/lai-suat-cho-vay-mua-nha-ngan-hang-nao-thap-nhat-thang-92026-605829.html" target="_blank" rel="noopener">Lãi vay mua nhà 9/2026</a><a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/northern-vietnam-industrial-property-market-maintains-growth-momentum" target="_blank" rel="noopener">Cushman · KCN miền Bắc</a></div>
+  </section>
+  </div>
+
+  <div class="majorpane" data-tab="mt6" id="pane-mt6">
+  <section class="section">
+    <div class="sectionhead"><div><h2>6. Key players</h2><p>20 doanh nghiệp niêm yết theo bốn nhóm. Bảng so sánh tài chính và định giá hằng ngày nằm ở Tổng quan.</p></div></div>
+  </section>
+  </div>
+
+  <div class="majorpane" data-tab="mt7" id="pane-mt7">
+    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Sáu câu chuyện đang dẫn dắt ngành.</p></div></div>
+    <div data-topic-key="phap-ly" data-topic-title="Tháo gỡ dự án tồn đọng · Hệ thống 751 &amp; NQ 254">
+      <div class="card" data-block-id="bds-22" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="tablewrap"><table>
+          <thead><tr><th>Mốc</th><th>Số liệu</th></tr></thead>
+          <tbody>
+            <tr><td>21/01/2026</td><td><b>926/2.991</b> dự án đã gỡ (52.021,8 ha; &gt;724.000 tỷ); 2.065 còn vướng; tổng danh mục 153.433,5 ha, &gt;2,46 triệu tỷ</td></tr>
+            <tr><td>31/07/2026</td><td>Hệ thống 751 ghi nhận <b>4.619</b> dự án/đất đai vướng mắc; 3.984 đã phân loại 6 nhóm; 635 chưa rà soát</td></tr>
+            <tr><td>22/08/2026</td><td>Công điện 58/CĐ-TTg: hoàn thành cập nhật trước 15/09/2026 (kết quả sau hạn chưa xác minh)</td></tr>
+            <tr><td>01/01/2026</td><td>NQ 254/2025/QH15 hiệu lực: thu hồi phần còn lại khi đã thỏa thuận &gt;75%</td></tr>
+          </tbody>
+        </table></div>
+        <p style="font-size:12.5px;line-height:1.6;margin:8px 0 0"><mark class="key-phrase">Điều kiện kết thúc:</mark> Hệ thống 751 công bố số dự án đã gỡ sau 15/09/2026 và Luật Đất đai sửa đổi được thông qua.</p>
+        <div class="source-note">Nguồn: <a href="https://nhadautu.vn/hang-tram-nghin-ha-dat-dong-bang-da-thao-go-d102400.html" target="_blank" rel="noopener">Nhà đầu tư 21/01/2026</a> · <a href="https://vov.vn/chinh-tri/go-diem-nghen-4619-du-an-dat-dai-de-giai-phong-nguon-luc-phat-trien-post1326368.vov" target="_blank" rel="noopener">VOV · 4.619 dự án</a> · <a href="https://mekongasean.vn/ra-soat-de-xuat-giai-phap-thao-go-cho-cac-du-an-ton-dong-keo-dai-58784.html" target="_blank" rel="noopener">Mekong ASEAN · CĐ 58</a> · <a href="https://danchuphapluat.vn/nghi-quyet-so-2542025qh15-co-che-tren-75-dong-thuan-mo-duong-cho-nhieu-du-an-vuot-diem-nghen-giai-phong-mat-bang-9628.html" target="_blank" rel="noopener">NQ 254</a>.</div>
+      </div>
+    </div>
+    <div data-topic-key="gia-nha" data-topic-title="Giá nhà Hà Nội, TP.HCM lập đỉnh · thanh khoản chững · lãi vay tăng">
+      <div class="card" data-block-id="bds-23" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px">
+          <li>Hà Nội sơ cấp <b>95</b> (CBRE) / <b>116</b> (Savills) triệu đ/m²; thứ cấp <b>−3% QoQ</b>, lần đầu giảm từ cuối 2022; hấp thụ cung mới 68%.</li>
+          <li>TP.HCM: 80% cung mới trên 120 triệu đ/m², hấp thụ 32% (Savills); CBRE ghi hấp thụ toàn thị trường 90%.</li>
+          <li>Lãi vay mua nhà 9/2026: ưu đãi 8,2–10,5%, thả nổi <b>13–15%</b>, có nơi 16%; đầu 8/2026 VCB 7,8% → 9,8%, VietinBank 7,6% → 10,5%.</li>
+        </ul>
+        <p style="font-size:12.5px;line-height:1.6;margin:0"><mark class="key-phrase">Điều kiện kết thúc:</mark> Bộ Xây dựng Q3/2026 cho thấy giao dịch tăng trở lại so cùng kỳ hoặc giá sơ cấp Hà Nội giảm hai quý liên tiếp.</p>
+        <div class="source-note">Nguồn: <a href="https://doanhnhan.baophapluat.vn/nguon-cung-nha-ha-noi-lap-dinh-5-nam-phan-khuc-cao-cap-tiep-tuc-chiem-uu-the.html" target="_blank" rel="noopener">CBRE</a> · <a href="https://vov.vn/kinh-te/nguon-cung-can-ho-o-tphcm-chu-yeu-phan-khuc-cao-cap-giao-dich-tram-lang-post1323256.vov" target="_blank" rel="noopener">Savills TP.HCM</a> · <a href="https://vietbao.vn/lai-suat-cho-vay-mua-nha-ngan-hang-nao-thap-nhat-thang-92026-605829.html" target="_blank" rel="noopener">Lãi vay 9/2026 (VARS/DKRA)</a>.</div>
+      </div>
+    </div>
+    <div data-topic-key="bang-gia-dat" data-topic-title="Sáp nhập tỉnh &amp; bảng giá đất 2026">
+      <div class="card" data-block-id="bds-24" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px">
+          <li>34 tỉnh áp bảng giá mới từ 01/01/2026; từ nay cập nhật hằng năm.</li>
+          <li>TP.HCM mở rộng: Bình Dương cũ tăng tới <b>&gt;8 lần</b>, Bà Rịa – Vũng Tàu cũ 1,7–&gt;4 lần → KCN và nhà ở phía Nam chịu tiền thuê/sử dụng đất cao hơn.</li>
+          <li>VARS: công thức giá đất mới làm tăng mạnh chi phí đầu vào, khó giảm giá bán.</li>
+        </ul>
+        <p style="font-size:12.5px;line-height:1.6;margin:0"><mark class="key-phrase">Điều kiện kết thúc:</mark> các tỉnh công bố bảng giá 2027 (áp dụng 01/01/2027) với mức thay đổi dưới 10%.</p>
+        <div class="source-note">Nguồn: <a href="https://tienphong.vn/chi-tiet-bang-gia-dat-moi-se-ap-dung-o-tphcm-tu-1-1-2026-post1808173.tpo" target="_blank" rel="noopener">Tiền Phong · TP.HCM</a> · <a href="https://luatvietnam.vn/dat-dai-nha-o/bang-gia-dat-2026-cua-34-tinh-thanh-567-105276-article.html" target="_blank" rel="noopener">LuatVietnam · 34 tỉnh</a> · <a href="https://tienphong.vn/giao-dich-bat-dong-san-nua-cuoi-2026-dien-bien-ra-sao-post1853746.tpo" target="_blank" rel="noopener">VARS</a>.</div>
+      </div>
+    </div>
+    <div data-topic-key="noxh" data-topic-title="Nhà ở xã hội &amp; Quỹ nhà ở quốc gia">
+      <div class="card" data-block-id="bds-25" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px">
+          <li>Mục tiêu 2026: 110.000 căn (NQ 01) → Bộ Xây dựng giao <b>158.700 căn</b>; lũy kế khởi công 226 dự án / 228.725 căn.</li>
+          <li>Gói 145.000 tỷ mới giải ngân <b>8,5%</b> sau 3 năm; nút thắt là nguồn cung dự án đủ điều kiện.</li>
+          <li>Quỹ nhà ở Trung ương đề xuất 10.000 tỷ vốn điều lệ; 13 địa phương đã lập Quỹ.</li>
+        </ul>
+        <p style="font-size:12.5px;line-height:1.6;margin:0"><mark class="key-phrase">Điều kiện kết thúc:</mark> giải ngân gói 145.000 tỷ vượt 20% hoặc Quỹ nhà ở quốc gia được cấp vốn.</p>
+        <div class="source-note">Nguồn: <a href="https://mekongasean.vn/bo-xay-dung-thuc-tien-do-hoan-thanh-158700-can-nha-o-xa-hoi-nam-2026-54653.html" target="_blank" rel="noopener">Công điện 08/CĐ-BXD</a> · <a href="https://vnbusiness.vn/giai-ngan-goi-tin-dung-145000-ty-dong-cho-nha-o-xa-hoi-sau-3-nam-ra-sao.html" target="_blank" rel="noopener">VnBusiness · gói 145.000 tỷ</a> · <a href="https://vietnamfinance.vn/bo-xay-dung-de-xuat-cap-10000-ty-von-dieu-le-quy-nha-o-trung-uong-d144966.html" target="_blank" rel="noopener">VietnamFinance · Quỹ nhà ở</a> · <a href="https://cafeland.vn/tin-tuc/nha-o-xa-hoi-don-song-lon-40-du-an-voi-hon-36590-can-do-bo-thi-truong-151066.html" target="_blank" rel="noopener">CafeLand · tiến độ</a>.</div>
+      </div>
+    </div>
+    <div data-topic-key="kcn-fdi" data-topic-title="Khu công nghiệp · FDI kỷ lục &amp; thuế quan Mỹ">
+      <div class="card" data-block-id="bds-26" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px">
+          <li>FDI 9T/2026: đăng ký <b>50,36 tỷ USD</b> (+76,4%), chế biến chế tạo 21,82 tỷ (50,3%), kinh doanh BĐS 6,94 tỷ (16,0%); thực hiện 21,07 tỷ USD.</li>
+          <li>Miền Bắc lấp đầy giảm còn 64% vì +1.200 ha cung mới; miền Nam giá thuê 186,4 USD/m²/kỳ, TP.HCM lấp đầy 98,7%.</li>
+          <li>Thuế quan Mỹ: thuế đối ứng 20% bị Tòa Tối cao bác (2/2026) → thuế toàn cầu 10% theo Section 122 đến 24/07/2026; cơ chế sau đó chưa xác minh.</li>
+        </ul>
+        <p style="font-size:12.5px;line-height:1.6;margin:0"><mark class="key-phrase">Điều kiện kết thúc:</mark> có cơ chế thuế quan Mỹ ổn định sau 24/07/2026 và lấp đầy miền Bắc quay lại trên 70%.</p>
+        <div class="source-note">Nguồn: <a href="https://thitruongtaichinhtiente.vn/9-thang-nam-2026-fdi-thuc-hien-dat-21-07-ty-usd-cao-nhat-5-nam-86014.html" target="_blank" rel="noopener">NSO · FDI 9T/2026</a> · <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/southern-vietnam-industrial-real-estate-maintains-stable-fundamentals" target="_blank" rel="noopener">Cushman · miền Nam</a> · <a href="https://trungtamwto.vn/chuyen-de/31841-hang-viet-nam-dang-chiu-cac-loai-thue-quan-nao-khi-xuat-khau-sang-thi-truong-my" target="_blank" rel="noopener">Trung tâm WTO · thuế quan</a> · <a href="https://www.whitecase.com/insight-alert/trump-administration-imposes-10-section-122-tariff-plan-replace-ieepa-tariffs" target="_blank" rel="noopener">White &amp; Case · Section 122</a>.</div>
+      </div>
+    </div>
+    <div data-topic-key="tai-cau-truc" data-topic-title="Tái cấu trúc nợ · Novaland &amp; di sản Vạn Thịnh Phát">
+      <div class="card" data-block-id="bds-27" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px">
+          <li><b>Novaland</b>: kế hoạch 2026 doanh thu 22.715 tỷ (×3,26), LNST 1.852 tỷ; chào bán 800 triệu cổ phiếu; tiếp tục hoán đổi nợ trái phiếu bằng cổ phiếu; trái phiếu quốc tế <b>335 triệu USD</b> lùi đáo hạn sang 30/06/2027; nợ vay 61.831 tỷ (30/06/2025).</li>
+          <li><b>Vạn Thịnh Phát / SCB</b>: đấu giá tài sản đợt 1 (8 mã / 12 tài sản); nhà máy Tanifood giá khởi điểm 1.350 tỷ → 886,7 tỷ (24/07/2026); ~42.500 trái chủ nhận thêm 1.732 tỷ.</li>
+        </ul>
+        <p style="font-size:12.5px;line-height:1.6;margin:0"><mark class="key-phrase">Điều kiện kết thúc:</mark> Novaland hoàn tất chào bán và trả đúng hạn trái phiếu 335 triệu USD.</p>
+        <div class="source-note">Nguồn: <a href="https://doanhnhan.baophapluat.vn/dhdcd-novaland-nvl-2026-tan-chu-tich-bui-cao-nhat-quan-nham-chuc-chot-ban-800-trieu-co-phieu-va-don-luc-ban-giao-2-600-can-nha.html" target="_blank" rel="noopener">ĐHĐCĐ Novaland 23/04/2026</a> · <a href="https://doanhnhan.baophapluat.vn/novaland-nvl-xin-mien-tru-vi-pham-lo-trai-phieu-335-trieu-usd-88100.html" target="_blank" rel="noopener">trái phiếu 335 triệu USD</a> · <a href="https://baodauthau.vn/dau-gia-hang-loat-tai-san-tu-dai-an-van-thinh-phat-post202779.html" target="_blank" rel="noopener">Báo Đấu thầu · Vạn Thịnh Phát</a>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="majorpane" data-tab="mt10" id="pane-mt10">
+    <div class="sectionhead"><div><h2>8. Vốn &amp; Trái phiếu</h2><p>Trái phiếu bất động sản theo tháng từ HNX qua Wi: phát hành, dư nợ, chậm trả, lịch đáo hạn. Tín dụng và lãi suất từ NHNN.</p></div></div>
+    <div class="bds-bond">
+      <div class="grid two">
+        <div class="card" data-block-id="bds-28" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+          <div class="chart-title">Phát hành trái phiếu BĐS — theo tháng</div>
+          <div class="chart-sub">tỷ VND · riêng lẻ + công chúng · 36 tháng</div>
+          <div id="chBondIssuance"></div>
+          <details class="dtable"><summary>Xem bảng dữ liệu (kèm lãi suất bình quân, kỳ hạn)</summary><div class="tablewrap"><table id="tbl-bond-issuance"></table></div></details>
+        </div>
+        <div class="card" data-block-id="bds-29" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+          <div class="chart-title">Dư nợ trái phiếu BĐS và gốc đã trả — theo tháng</div>
+          <div class="chart-sub">nghìn tỷ VND · dư nợ ước tính cuối tháng</div>
+          <div id="chBondOutstanding"></div>
+          <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>Dư nợ cuối tháng</span><span class="li"><span class="dot" style="background:#59C5C8"></span>Gốc đã trả trong tháng</span></div>
+          <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-bond-outstanding"></table></div></details>
+        </div>
+      </div>
+      <div class="grid two" style="margin-top:14px">
+        <div class="card" data-block-id="bds-30" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+          <div class="chart-title">Dư nợ chậm trả trái phiếu BĐS — cuối tháng</div>
+          <div class="chart-sub">nghìn tỷ VND · gốc + lãi · số doanh nghiệp chậm trả trong bảng</div>
+          <div id="chBondLate"></div>
+          <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-bond-late"></table></div></details>
+        </div>
+        <div class="card" data-block-id="bds-31" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="snapshot">
+          <div class="chart-title">Lịch đáo hạn trái phiếu BĐS — tháng này đến cuối 2027</div>
+          <div class="chart-sub">tỷ VND · gốc đến hạn theo dư nợ còn lại + lãi ước tính</div>
+          <div id="chBondMaturity"></div>
+          <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>Gốc đến hạn</span><span class="li"><span class="dot" style="background:#59C5C8"></span>Lãi ước tính</span></div>
+          <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-bond-maturity"></table></div></details>
+        </div>
+      </div>
+      <div class="card" style="margin-top:14px" data-block-id="bds-32" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="chart-title">Tổ chức phát hành BĐS có gốc đến hạn lớn nhất — đến cuối 2027</div>
+        <div class="chart-sub">tỷ VND · 15 tổ chức · mã nội bộ HNX cho doanh nghiệp chưa niêm yết</div>
+        <div class="tablewrap"><table id="tbl-bond-top"></table></div>
+        <div class="source-note">Đối chiếu thị trường: VIS Rating ước ~253.000 tỷ TPDN toàn thị trường đáo hạn 12 tháng tới (10/2026 ~24.000; 11/2026 ~20.000; 12/2026 ~31.000 tỷ); BĐS chiếm 55,6% giá trị đáo hạn còn lại của 2026 (VBMA). <a href="https://thoibaotaichinhvietnam.vn/hon-250-000-ty-dong-trai-phieu-doanh-nghiep-se-dao-han-trong-12-thang-toi-203448.html" target="_blank" rel="noopener">Thời báo Tài chính 08/09/2026</a> · <a href="https://doanhnhan.baophapluat.vn/gan-290-000-ty-dong-trai-phieu-doanh-nghiep-duoc-huy-dong-bat-dong-san-doi-mat-ap-luc-dao-han-lon.html" target="_blank" rel="noopener">VBMA 7T/2026</a>. Số Wi tính riêng gốc còn lại của ngành BĐS nên thấp hơn ước tính toàn thị trường.</div>
+      </div>
+    </div>
+    <div class="bds-credit">
+      <div class="grid two" style="margin-top:14px">
+        <div class="card" data-block-id="bds-33" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+          <div class="chart-title">Tín dụng ngành xây dựng so tổng tín dụng — so cùng kỳ</div>
+          <div class="chart-sub">% · NHNN theo ngành kinh tế</div>
+          <div id="chCreditRe"></div>
+          <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>Xây dựng</span><span class="li"><span class="dot" style="background:#6b7686"></span>Tổng tín dụng</span></div>
+          <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-credit-re"></table></div></details>
+        </div>
+        <div class="card" data-block-id="bds-34" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+          <div class="chart-title">Tín dụng và tiền gửi — so cùng kỳ</div>
+          <div class="chart-sub">% · khoảng cách này đi trước lãi suất vay mua nhà</div>
+          <div id="chCreditGap"></div>
+          <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>Tín dụng</span><span class="li"><span class="dot" style="background:#59C5C8"></span>Tiền gửi</span></div>
+          <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-credit-gap"></table></div></details>
+        </div>
+      </div>
+      <div class="grid two" style="margin-top:14px">
+        <div class="card" data-block-id="bds-35" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+          <div class="chart-title">Tín dụng bất động sản theo NHNN và Bộ Xây dựng</div>
+          <div class="chart-sub">mốc gần nhất · số cả nước</div>
+          <div class="tablewrap"><table>
+            <thead><tr><th>Chỉ tiêu</th><th>Giá trị</th><th>Thời điểm</th></tr></thead>
+            <tbody>
+              <tr><td>Tín dụng BĐS / tổng dư nợ</td><td><b>25,73%</b> · tự sử dụng 51,97% · nợ xấu BĐS 2,3%</td><td>cuối 5/2026</td></tr>
+              <tr><td>Tín dụng kinh doanh BĐS · tiêu dùng BĐS</td><td><b>+14%</b> · <b>−1,32%</b> (cùng kỳ 2025: +15%)</td><td>5T/2026</td></tr>
+              <tr><td>Dư nợ kinh doanh BĐS</td><td>&gt;2,519 triệu tỷ; dự án đô thị/nhà ở 833.558 tỷ; quyền sử dụng đất 314.449 tỷ (+23,1%); KCN/KCX 184.137 tỷ (+32,4%)</td><td>30/06/2026</td></tr>
+              <tr><td>Tổng dư nợ toàn hệ thống</td><td>~20,75 triệu tỷ (+11,59% YTD, +16,59% YoY); lãi suất huy động mới bình quân 6,38%</td><td>cuối 9/2026</td></tr>
+              <tr class="gap-row"><td>Tín dụng BĐS cuối 9/2026</td><td colspan="2">Chưa công bố (họp báo 03/10/2026 không nêu).</td></tr>
+            </tbody>
+          </table></div>
+          <div class="source-note">Nguồn: <a href="https://vneconomy.vn/tin-dung-bat-dong-san-chiem-2573-du-no-nen-kinh-te.htm" target="_blank" rel="noopener">VnEconomy · NHNN 03/06/2026</a> · <a href="https://baodauthau.vn/den-266-du-no-tin-dung-dat-tren-1997-trieu-ty-dong-post201953.html" target="_blank" rel="noopener">Báo Đấu thầu · Thống đốc</a> · <a href="https://thanhtra.com.vn/nha-dat-57A4B2310/du-no-kinh-doanh-bat-dong-san-vuot-25-trieu-ty-dong-eca280581.html" target="_blank" rel="noopener">Thanh tra · Bộ Xây dựng Q2/2026</a> · <a href="https://mekongasean.vn/du-no-tin-dung-tang-1159-gan-409000-ty-dong-cho-vay-uu-dai-60280.html" target="_blank" rel="noopener">Mekong ASEAN · 03/10/2026</a>. Mốc so sánh của số 2,519 triệu tỷ chưa rõ (bài dẫn báo cáo Bộ Xây dựng).</div>
+        </div>
+        <div class="card" data-block-id="bds-36" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+          <div class="chart-title">Lãi suất vay mua nhà — 9/2026</div>
+          <div class="chart-sub">%/năm · khảo sát ~10 ngân hàng</div>
+          <div id="chMortgage"></div>
+          <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-mortgage"></table></div></details>
+          <div class="source-note">Nguồn: <a href="https://vietbao.vn/lai-suat-cho-vay-mua-nha-ngan-hang-nao-thap-nhat-thang-92026-605829.html" target="_blank" rel="noopener">Việt Báo 03/09/2026 (VARS/DKRA)</a>: ưu đãi 8,2–10,5%, biên 3,3–3,5 điểm %, thả nổi 13–15%, có nơi 16%; VIB cố định 11,5% 5 năm. <a href="https://thanhtra.com.vn/nha-dat-57A4B2310/du-no-kinh-doanh-bat-dong-san-vuot-25-trieu-ty-dong-eca280581.html" target="_blank" rel="noopener">Bộ Xây dựng Q2</a>: vay BĐS 12–14%, thả nổi 13–16%. Không có chuỗi chính thức; mỗi kỳ khảo sát là một quan sát rời.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="majorpane" data-tab="mt11" id="pane-mt11">
+    <div class="sectionhead"><div><h2>9. Pháp lý dự án</h2><p>Khung pháp lý đang hiệu lực, bảng giá đất từng địa phương và các dự án, cơ chế thí điểm cần theo dõi.</p></div></div>
+    <div class="bds-legal">
+      <div class="card" data-block-id="bds-37" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Khung pháp lý bất động sản — văn bản đang hiệu lực và sắp ban hành</div>
+        <div class="chart-sub">số hiệu · hiệu lực · tác động</div>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Văn bản</th><th>Số hiệu</th><th>Hiệu lực</th><th>Tác động chính</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://thoibaotaichinhvietnam.vn/3-luat-ve-dat-dai-nha-o-chinh-thuc-co-hieu-luc-tu-182024-153951.html" target="_blank" rel="noopener">Luật Đất đai 2024</a></td><td>31/2024/QH15</td><td>01/08/2024</td><td>Bỏ khung giá đất; bảng giá đất theo thị trường từ 01/01/2026</td></tr>
+            <tr><td>Luật Nhà ở 2023</td><td>27/2023/QH15</td><td>01/08/2024</td><td>Chủ đầu tư NOXH, nhà ở nhiều tầng nhiều căn, nhà lưu trú công nhân</td></tr>
+            <tr><td>Luật Kinh doanh BĐS 2023</td><td>29/2023/QH15</td><td>01/08/2024</td><td>Siết đặt cọc, công khai thông tin dự án, sàn và môi giới</td></tr>
+            <tr><td><a href="https://luatminhkhue.vn/danh-sach-cac-van-ban-huong-dan-luat-dat-dai-nam-2024.aspx" target="_blank" rel="noopener">NĐ giá đất · NĐ tiền SDĐ</a></td><td>71/2024 · 103/2024</td><td>01/08/2024</td><td>Phương pháp định giá đất; cách tính tiền sử dụng đất, tiền thuê đất</td></tr>
+            <tr><td><a href="https://hcc.nghean.gov.vn/tin-tong-hop/nghi-dinh-226-2025-nd-cp-sua-doi-bo-sung-nghi-dinh-102-2024-quy-dinh-chi-tiet-thi-hanh-mot-so-dieu-cua-luat-dat-dai-2412.html" target="_blank" rel="noopener">NĐ sửa các NĐ hướng dẫn</a></td><td>226/2025/NĐ-CP</td><td>15/08/2025</td><td>Thời điểm giá khởi điểm đấu giá; gia hạn tiến độ tối đa 24 tháng</td></tr>
+            <tr><td><a href="https://luatvietnam.vn/dat-dai/tu-1-1-2026-giam-tien-chuyen-dat-nong-nghiep-len-tho-cu-653-106167-article.html" target="_blank" rel="noopener">NĐ sửa NĐ 103, 104/2024</a></td><td>291/2025/NĐ-CP</td><td>06/11/2025</td><td>Tiền SDĐ khi chuyển mục đích: 30% / 50% chênh lệch từ 01/01/2026</td></tr>
+            <tr><td><a href="https://luatvietnam.vn/tin-van-ban-moi/da-co-nghi-dinh-75-2025-nd-cp-huong-dan-nghi-quyet-171-2024-qh15-186-101561-article.html" target="_blank" rel="noopener">NQ thí điểm nhà ở thương mại qua thỏa thuận QSDĐ</a></td><td>171/2024/QH15 · NĐ 75/2025</td><td>01/04/2025 – 31/03/2030</td><td>Nhà ở thương mại trên đất không phải đất ở</td></tr>
+            <tr><td><a href="https://theleader.vn/quoc-hoi-vao-cuoc-pha-tan-cuc-mau-dong-trong-bat-dong-san-d39100.html" target="_blank" rel="noopener">NQ cơ chế đặc thù TP.HCM, Đà Nẵng, Khánh Hòa</a></td><td>170/2024/QH15</td><td>2025</td><td>64 dự án theo kết luận thanh tra (Đà Nẵng 49, Khánh Hòa 11, TP.HCM 4)</td></tr>
+            <tr><td><a href="https://thuvienphapluat.vn/van-ban/EN/Xay-dung-Do-thi/Resolution-201-2025-QH15-piloting-certain-special-mechanisms-and-policies-for-social-housing-development/659586/tieng-anh.aspx" target="_blank" rel="noopener">NQ cơ chế đặc thù NOXH</a> · <a href="https://vietnamfinance.vn/chinh-phu-ra-quy-dinh-ve-quy-nha-o-quoc-gia-hai-cap-d136004.html" target="_blank" rel="noopener">NĐ Quỹ nhà ở quốc gia</a></td><td>201/2025/QH15 · 302/2025/NĐ-CP</td><td>2025 · 19/11/2025</td><td>Quỹ nhà ở hai cấp; rút ≥350 ngày thủ tục</td></tr>
+            <tr><td><a href="https://luatvietnam.vn/tin-van-ban-moi/da-co-nghi-quyet-254-2025-qh15-ve-co-che-thao-go-kho-khan-vuong-mac-trong-thi-hanh-luat-dat-dai-186-105881-article.html" target="_blank" rel="noopener">NQ tháo gỡ vướng mắc thi hành Luật Đất đai</a></td><td>254/2025/QH15</td><td>01/01/2026</td><td>Thu hồi phần còn lại khi đã thỏa thuận &gt;75%</td></tr>
+            <tr><td><a href="https://mekongasean.vn/loat-thay-doi-trong-chinh-sach-dat-dai-co-hieu-luc-tu-112026-50150.html" target="_blank" rel="noopener">Luật sửa 15 luật nông nghiệp – môi trường</a></td><td>146/2025/QH15</td><td>01/01/2026</td><td>Bảng giá đất ban hành hằng năm</td></tr>
+            <tr><td><a href="https://luatvietnam.vn/tin-van-ban-moi/quoc-hoi-xem-xet-luat-dat-dai-sua-doi-tai-ky-hop-thang-10-2026-186-110407-article.html" target="_blank" rel="noopener">Luật Đất đai (sửa đổi) toàn diện</a></td><td>Dự án luật</td><td>Trình kỳ họp từ 20/10/2026</td><td>NQ 07/2026/UBTVQH16; UBTVQH cho ý kiến 9/2026</td></tr>
+            <tr><td><a href="https://luatvietnam.vn/tin-van-ban-moi/chinh-phu-thong-qua-10-chinh-sach-lon-sua-luat-nha-o-va-luat-kinh-doanh-bat-dong-san-186-110341-article.html" target="_blank" rel="noopener">Sửa Luật Nhà ở &amp; Luật KD BĐS</a></td><td>Dự án luật</td><td>Đề nghị thủ tục rút gọn (8/2026 hoặc 10/2026)</td><td>Đặt cọc tối đa 5% giá bán; ba luật đất đai – nhà ở – KD BĐS hiệu lực cùng ngày</td></tr>
+          </tbody>
+        </table></div>
+        <div class="source-note">Văn bản gốc tra tại <a href="https://vanban.chinhphu.vn/" target="_blank" rel="noopener">vanban.chinhphu.vn</a>; các link trên là bài tóm tắt có số hiệu và ngày hiệu lực. Kỳ họp thứ 2 Quốc hội khóa XVI: 20/10–13/11 và 25/11–05/12/2026 (<a href="https://lsvn.vn/du-kien-ky-hop-thu-2-quoc-hoi-khoa-xvi-khai-mac-vao-ngay-20-10-2026-a172642.html" target="_blank" rel="noopener">LSVN</a>).</div>
+      </div>
+    </div>
+    <div class="bds-landprice">
+      <div class="card" style="margin-top:14px" data-block-id="bds-38" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Bảng giá đất 2026 — mức thay đổi tại các thị trường lớn</div>
+        <div class="chart-sub">so bảng giá trước · áp dụng từ 01/01/2026 · 34/34 tỉnh đã ban hành</div>
+        <div id="chLandPrice"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-land-price"></table></div></details>
+        <div class="source-note">Nguồn: <a href="https://lsvn.vn/ha-noi-chinh-thuc-se-ap-dung-bang-gia-dat-moi-a166454.html" target="_blank" rel="noopener">Hà Nội (HĐND 26/11/2025)</a>: nội đô ~2%, Đông Anh/Hoài Đức/Thanh Trì 15–26%, cao nhất &gt;702 triệu đ/m² · <a href="https://tienphong.vn/chi-tiet-bang-gia-dat-moi-se-ap-dung-o-tphcm-tu-1-1-2026-post1808173.tpo" target="_blank" rel="noopener">TP.HCM (Tiền Phong 27/12/2025)</a>: HCM cũ 1,0–1,65 lần, Bình Dương cũ &gt;8 lần, BR-VT cũ 1,7–&gt;4 lần, cao nhất 687 triệu đ/m² · <a href="https://thuvienphapluat.vn/phap-luat-doanh-nghiep/bai-viet/tong-hop-nghi-quyet-bang-gia-dat-2026-cua-34-tinh-thanh-17591.html" target="_blank" rel="noopener">tổng hợp nghị quyết 34 tỉnh</a>. Chart vẽ cận trên của khoảng tăng từng địa bàn; các tỉnh khác chưa tổng hợp.</div>
+      </div>
+    </div>
+    <div class="bds-projects">
+      <div class="card" style="margin-top:14px" data-block-id="bds-39" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Dự án và cơ chế thí điểm cần theo dõi</div>
+        <div class="chart-sub">mốc gần nhất · điều kiện cần kiểm</div>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Đối tượng</th><th>Mốc gần nhất</th><th>Cần kiểm tiếp</th></tr></thead>
+          <tbody>
+            <tr><td>Hệ thống 751 · dự án tồn đọng cả nước</td><td>31/07/2026: 4.619 dự án; 3.984 đã phân loại; hạn cập nhật 15/09/2026</td><td>Số dự án đã gỡ sau 15/09; danh sách theo tỉnh</td></tr>
+            <tr><td>NQ 171 · TP.HCM</td><td>Đợt 1: 54/74 khu đất, 1.079,62 ha</td><td>Đợt 2 và số dự án đã được chấp thuận chủ trương</td></tr>
+            <tr><td>NQ 170 · Đà Nẵng, Khánh Hòa, TP.HCM</td><td>64 dự án theo kết luận thanh tra</td><td>Dự án đã được xác định lại nghĩa vụ tài chính</td></tr>
+            <tr><td>Novaland · tái cấu trúc</td><td>Trái phiếu 335 triệu USD đáo hạn 30/06/2027; chào bán 800 triệu cổ phiếu</td><td>Tiến độ chào bán; pháp lý Aqua City, NovaWorld</td></tr>
+            <tr><td>Vạn Thịnh Phát / SCB · đấu giá tài sản</td><td>Tanifood khởi điểm 886,7 tỷ (24/07/2026); 1.732 tỷ trả thêm cho ~42.500 trái chủ</td><td>Kết quả đấu giá đợt 1</td></tr>
+            <tr><td>Bảng giá đất 2027</td><td>Phải ban hành hằng năm</td><td>Dự thảo của Hà Nội, TP.HCM trong Q4/2026</td></tr>
+          </tbody>
+        </table></div>
+        <div class="source-note">Nguồn: <a href="https://vov.vn/chinh-tri/go-diem-nghen-4619-du-an-dat-dai-de-giai-phong-nguon-luc-phat-trien-post1326368.vov" target="_blank" rel="noopener">VOV · Hệ thống 751</a> · <a href="https://daibieunhandan.vn/trinh-ubnd-tp-ho-chi-minh-74-khu-dat-thi-diem-du-an-nha-o-thuong-mai-theo-nghi-quyet-171-2024-qh15-cua-quoc-hoi-10388054.html" target="_blank" rel="noopener">Đại biểu Nhân dân · NQ 171 TP.HCM</a> · <a href="https://theleader.vn/quoc-hoi-vao-cuoc-pha-tan-cuc-mau-dong-trong-bat-dong-san-d39100.html" target="_blank" rel="noopener">The Leader · NQ 170</a> · <a href="https://doanhnhan.baophapluat.vn/novaland-nvl-xin-mien-tru-vi-pham-lo-trai-phieu-335-trieu-usd-88100.html" target="_blank" rel="noopener">Novaland</a> · <a href="https://baodauthau.vn/dau-gia-hang-loat-tai-san-tu-dai-an-van-thinh-phat-post202779.html" target="_blank" rel="noopener">Vạn Thịnh Phát</a>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px" data-block-id="bds-40" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+    <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead>
+      <tbody>
+        <tr><td><b>Trái phiếu BĐS: phát hành, dư nợ, chậm trả, đáo hạn</b></td><td><a href="https://cbonds.hnx.vn/" target="_blank" rel="noopener">HNX</a> qua MCP Wi</td><td>Tháng · lịch đáo hạn tính lại mỗi lần cập nhật</td><td>Routine Claude hằng ngày (Wi) → <code>scripts/build_realestate_wi.py</code></td></tr>
+        <tr><td><b>GDP BĐS, CPI nhà ở, FDI, IIP</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a>, <a href="https://fia.mpi.gov.vn/" target="_blank" rel="noopener">Cục Đầu tư nước ngoài</a> qua Wi</td><td>Tháng / quý · NSO công bố ngày 6</td><td>Routine Claude hằng ngày (Wi)</td></tr>
+        <tr><td><b>Tín dụng, tiền gửi, lãi suất điều hành</b></td><td><a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN</a> qua Wi</td><td>Tháng · trễ 1–3 tháng</td><td>Routine Claude hằng ngày (Wi)</td></tr>
+        <tr><td><b>Giá thép, xi măng</b></td><td>Hòa Phát, công bố giá VLXD qua Wi</td><td>Ngày / tháng</td><td>Routine Claude hằng tuần (Wi)</td></tr>
+        <tr><td><b>P/B, P/E bốn phân ngành</b></td><td>Wi sector_ratio_daily</td><td>Phiên</td><td>Routine Claude hằng ngày (Wi)</td></tr>
+        <tr><td><b>P/E, P/B, vốn hóa từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script GitHub mỗi lượt job</td></tr>
+        <tr><td><b>Cung, giao dịch, giá nhà; lấp đầy, giá thuê KCN; pháp lý</b></td><td>Bộ Xây dựng, CBRE, Savills, Cushman &amp; Wakefield, JLL, VARS, văn bản Chính phủ (link tại từng thẻ)</td><td>Quý / theo sự kiện</td><td>Routine tài liệu thứ Hai</td></tr>
+        <tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr>
+        <tr class="gap-row"><td><b>Tín dụng kinh doanh BĐS theo tháng, lãi suất vay mua nhà theo chuỗi, số căn mở bán theo tháng</b></td><td>NHNN, ngân hàng, CBRE</td><td>—</td><td>Chưa có nguồn máy đọc được; giữ các mốc rời theo báo cáo</td></tr>
+      </tbody>
+    </table></div>
+    <div class="source-note" id="wi-built">Dựng từ WiMCP; các lời gọi ghi trong data/realestate-wi-contract.json.</div>
+  </div>
+  <div class="footer">Vietnam Real Estate Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 08/10/2026.</div>
+</div>
+
+<script>
+/* ---------- tiny SVG chart engine ---------- */
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs){
+  const e=document.createElementNS(NS,tag);
+  if(attrs){ for(const k in attrs){ e.setAttribute(k, attrs[k]); } }
+  return e;
+}
+function txt(tag,attrs,text){ const e=el(tag,attrs); if(text!==undefined) e.textContent=text; return e; }
+function niceMax(v){
+  if(v<=0) return 1;
+  const mag=Math.pow(10,Math.floor(Math.log10(v)));
+  const n=v/mag;
+  let step;
+  if(n<=1) step=1; else if(n<=2) step=2; else if(n<=2.5) step=2.5; else if(n<=5) step=5; else step=10;
+  return step*mag;
+}
+function fmt(v,d){
+  d = d===undefined?0:d;
+  return Number(v).toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d});
+}
+let tipEl=null;
+function tipBox(){
+  if(!tipEl){ tipEl=document.createElement('div'); tipEl.className='chtip'; document.body.appendChild(tipEl); }
+  return tipEl;
+}
+function showTip(evt,title,rows){
+  const t=tipBox();
+  t.innerHTML='';
+  const h=document.createElement('div'); h.className='chtip-title'; h.textContent=title; t.appendChild(h);
+  rows.forEach(r=>{
+    const row=document.createElement('div'); row.className='chtip-row';
+    const key=document.createElement('span'); key.className='chtip-key';
+    if(r.color){ const dot=document.createElement('span'); dot.className='chtip-dot'; dot.style.background=r.color; key.appendChild(dot); }
+    const kt=document.createElement('span'); kt.textContent=r.label; key.appendChild(kt);
+    const val=document.createElement('span'); val.className='chtip-val'; val.textContent=r.value;
+    row.appendChild(key); row.appendChild(val);
+    t.appendChild(row);
+  });
+  t.style.display='block';
+  moveTip(evt);
+}
+function moveTip(evt){
+  const t=tipBox();
+  const pad=16;
+  let x=evt.clientX+pad, y=evt.clientY+pad;
+  const rect=t.getBoundingClientRect();
+  if(x+rect.width>window.innerWidth-8) x=evt.clientX-rect.width-pad;
+  if(y+rect.height>window.innerHeight-8) y=evt.clientY-rect.height-pad;
+  t.style.left=x+'px'; t.style.top=y+'px';
+}
+function hideTip(){ if(tipEl) tipEl.style.display='none'; }
+
+function baseSvg(W,H,label){
+  return el('svg',{viewBox:'0 0 '+W+' '+H, width:'100%', height:H, class:'chartsvg', role:'img', 'aria-label':label||''});
+}
+function floatRange(minV,maxV){
+  const span=(maxV-minV)||Math.abs(maxV)||1;
+  const step=niceMax(span/4);
+  const lo=Math.floor((minV-span*0.15)/step)*step;
+  const hi=Math.ceil((maxV+span*0.15)/step)*step;
+  return [Math.max(lo,0), hi];
+}
+function yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,digits,yMin,steps=4){
+  yMin=yMin||0;
+  const yToPx=(v)=> padT + plotH*(1-(v-yMin)/(yMax-yMin));
+  for(let i=0;i<=steps;i++){
+    const v=yMin+(yMax-yMin)*i/steps;
+    const y=yToPx(v);
+    svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:y,y2:y,class:'gridline'}));
+    svg.appendChild(txt('text',{x:padL-8,y:y+3,'text-anchor':'end',class:'axislabel'}, fmt(v,digits)));
+  }
+  return yToPx;
+}
+
+/* categorical bar / combo chart */
+function barLineChartBase(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host) return;
+  const cats=opts.categories, n=cats.length;
+  const rotate = opts.rotateLabels===false ? false : n>8;
+  const W=640, H=260;
+  const padL=50,padR=14,padT=14,padB= rotate?56:30;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  let maxV=0;
+  opts.series.forEach(s=> s.values.forEach(v=>{ if(v!=null && v>maxV) maxV=v; }));
+  let yMin=0, yMax=niceMax(maxV*1.15);
+  if(opts.zeroBase===false && opts.series.every(s=>s.kind==='line')){
+    let mn=Infinity; opts.series.forEach(s=>s.values.forEach(v=>{ if(v!=null && v<mn) mn=v; }));
+    const r=floatRange(mn,maxV); yMin=r[0]; yMax=r[1];
+  }
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits,yMin,opts.yGridSteps||4);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  const band=plotW/n;
+  const barSeries=opts.series.filter(s=>s.kind!=='line');
+  const lineSeries=opts.series.filter(s=>s.kind==='line');
+  const barW=Math.min(24, band*0.62/(barSeries.length||1));
+  const linePts={};
+  lineSeries.forEach(s=>{ linePts[s.name]=[]; });
+
+  cats.forEach((cat,i)=>{
+    const bandX=padL+i*band;
+    const cx=bandX+band/2;
+    const rows=[];
+    barSeries.forEach((s,si)=>{
+      const v=s.values[i];
+      const gx = cx - (barSeries.length*barW)/2 + si*barW;
+      if(v!=null){
+        const y0=yToPx(0), y1=yToPx(v);
+        const r=el('rect',{x:gx+1,y:Math.min(y0,y1),width:Math.max(barW-2,2),height:Math.max(Math.abs(y0-y1),1),rx:3,ry:3,fill:s.color, opacity: s.confArr && s.confArr[i]===false ? 0.55 : 1});
+        r.appendChild(txt('title',{},cat+' — '+s.name+': '+fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+        svg.appendChild(r);
+        if(i===n-1){ svg.appendChild(txt('text',{x:gx+barW/2,y:Math.min(y0,y1)-6,'text-anchor':'middle',class:'endlabel',fill:s.color},fmt(v,opts.digits))); }
+        rows.push({label:s.name,value:fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):''),color:s.color});
+      }
+    });
+    lineSeries.forEach(s=>{
+      const v=s.values[i];
+      if(v!=null){ linePts[s.name].push([cx, yToPx(v)]); rows.push({label:s.name,value:fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):''),color:s.color}); }
+      else { linePts[s.name].push(null); }
+    });
+    const hit=el('rect',{x:bandX,y:padT,width:band,height:plotH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, cat, rows));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    hit.addEventListener('focus',e=>showTip({clientX:bandX+ (host.getBoundingClientRect ? host.getBoundingClientRect().left:0), clientY:80}, cat, rows));
+    hit.addEventListener('blur',hideTip);
+    svg.appendChild(hit);
+    const lx=cx, ly=padT+plotH+14;
+    const everyN = opts.maxLabels ? Math.max(1,Math.ceil(n/opts.maxLabels)) : n>24 ? Math.ceil(n/18) : 1;
+    if(i%everyN===0 || i===n-1){
+      const label=txt('text',{x:lx,y:ly,'text-anchor': rotate?'end':'middle',class:'catlabel'}, opts.tickLabels?.[i]||cat);
+      if(rotate) label.setAttribute('transform','rotate(-40 '+lx+' '+ly+')');
+      svg.appendChild(label);
+    }
+  });
+
+  const endLabelY=[];
+  lineSeries.forEach(s=>{
+    const pts=linePts[s.name].filter(p=>p);
+    if(pts.length>1){
+      let d='', pen=false;
+      linePts[s.name].forEach(p=>{if(!p){pen=false;return;}d+=(pen?' L':' M')+p[0]+','+p[1];pen=true;});
+      svg.appendChild(el('path',{d:d,fill:'none',stroke:s.color,'stroke-width':s.strokeWidth||2,'stroke-linecap':'round','stroke-linejoin':'round'}));
+    }
+    linePts[s.name].forEach((p,i)=>{
+      if(!p) return;
+      if(s.markers!==false){
+        const c=el('circle',{cx:p[0],cy:p[1],r:3.5,fill:s.color,stroke:'var(--card)','stroke-width':1.5});
+        svg.appendChild(c);
+      }
+      if(i===n-1){
+        let ly=p[1]-12;
+        while(endLabelY.some(v=>Math.abs(v-ly)<13)) ly-=14;
+        endLabelY.push(ly);
+        svg.appendChild(txt('text',{x:p[0],y:ly,'text-anchor':'middle',class:'endlabel',fill:s.color}, fmt(s.values[i],opts.digits)));
+      }
+    });
+  });
+
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* single-series line chart, evenly spaced (for monthly world price) */
+function lineChartBase(containerId, opts){
+  const labels=opts.labels, n=labels.length;
+  const W=640,H=260;
+  const padL=44,padR=14,padT=14,padB=30;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const maxV=Math.max.apply(null, opts.values);
+  const minV=Math.min.apply(null, opts.values);
+  let yMin=0, yMax=niceMax(maxV*1.1);
+  if(opts.zeroBase===false){ const r=floatRange(minV,maxV); yMin=r[0]; yMax=r[1]; }
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits,yMin);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  const step=plotW/(n-1);
+  const pts=opts.values.map((v,i)=>[padL+i*step, yToPx(v)]);
+  const areaD='M'+pts.map(p=>p[0]+','+p[1]).join(' L')+' L'+pts[pts.length-1][0]+','+(padT+plotH)+' L'+pts[0][0]+','+(padT+plotH)+' Z';
+  svg.appendChild(el('path',{d:areaD,fill:opts.color,opacity:0.1}));
+  const lineD='M'+pts.map(p=>p[0]+','+p[1]).join(' L');
+  svg.appendChild(el('path',{d:lineD,fill:'none',stroke:opts.color,'stroke-width':2,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  labels.forEach((lab,i)=>{
+    const showTick = (i%Math.max(1,Math.ceil(n/10))===0)||i===n-1;
+    const hit=el('rect',{x:padL+i*step-step/2,y:padT,width:step,height:plotH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, lab, [{label:opts.seriesName||'Giá trị',value:fmt(opts.values[i],opts.digits)+(opts.unit?(' '+opts.unit):''),color:opts.color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    svg.appendChild(hit);
+    const c=el('circle',{cx:pts[i][0],cy:pts[i][1],r:2.6,fill:opts.color,stroke:'var(--card)','stroke-width':1});
+    svg.appendChild(c);
+    if(showTick){
+      svg.appendChild(txt('text',{x:pts[i][0],y:padT+plotH+14,'text-anchor':'middle',class:'catlabel'}, lab));
+    }
+    if(i===n-1){ svg.appendChild(txt('text',{x:pts[i][0],y:pts[i][1]-10,'text-anchor':'end',class:'endlabel',fill:opts.color}, fmt(opts.values[i],opts.digits))); }
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* chart-type switcher (assets/chart-types.js): native view = renderer above */
+function barLineChart(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host||!window.ChartTypes) return barLineChartBase(containerId, opts);
+  ChartTypes.mount(host,{categories:opts.categories,tickLabels:opts.tickLabels,series:opts.series.map(s=>({name:s.name,color:s.color,kind:s.kind,values:s.values,conf:s.confArr,strokeWidth:s.strokeWidth})),unit:opts.unit,digits:opts.digits,zeroBase:opts.zeroBase,height:opts.height,stackable:opts.stackable,aria:opts.ariaLabel},()=>barLineChartBase(containerId,opts));
+}
+function lineChart(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host||!window.ChartTypes) return lineChartBase(containerId, opts);
+  ChartTypes.mount(host,{categories:opts.labels,series:[{name:opts.seriesName||'Giá trị',color:opts.color,kind:'line',values:opts.values}],unit:opts.unit,digits:opts.digits,zeroBase:opts.zeroBase,height:opts.height,aria:opts.ariaLabel},()=>lineChartBase(containerId,opts));
+}
+
+/* multi-series real-date range/dot chart (VN price) */
+function rangeDotChart(containerId, opts){
+  const W=640,H=260;
+  const padL=48,padR=14,padT=14,padB=28;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const domainStart=opts.domain[0].getTime(), domainEnd=opts.domain[1].getTime();
+  const xOf=(d)=> padL + plotW*( (d.getTime()-domainStart) / (domainEnd-domainStart) );
+  let maxV=0;
+  opts.series.forEach(s=> s.points.forEach(p=>{ if(p.high>maxV) maxV=p.high; }));
+  const yMax=niceMax(maxV*1.1);
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  for(let y=opts.domain[0].getFullYear(); y<=opts.domain[1].getFullYear(); y++){
+    const d=new Date(y+'-01-01T00:00:00');
+    if(d<opts.domain[0]||d>opts.domain[1]) continue;
+    const x=xOf(d);
+    svg.appendChild(el('line',{x1:x,x2:x,y1:padT,y2:padT+plotH,class:'gridline'}));
+    svg.appendChild(txt('text',{x:x,y:padT+plotH+13,'text-anchor':'start',class:'catlabel'}, String(y)));
+  }
+  opts.series.forEach(s=>{
+    s.points.forEach(p=>{
+      const d=new Date(p.date+'T00:00:00');
+      const x=xOf(d);
+      const yLow=yToPx(p.low), yHigh=yToPx(p.high), yMid=yToPx(p.mid);
+      if(p.high>p.low){ svg.appendChild(el('line',{x1:x,x2:x,y1:yHigh,y2:yLow,stroke:s.color,'stroke-width':2,opacity:0.55})); }
+      const c=el('circle',{cx:x,cy:yMid,r: p.conf===false?4:4.5, fill: p.conf===false? 'var(--card)':s.color, stroke:s.color,'stroke-width':2});
+      const hit=el('circle',{cx:x,cy:yMid,r:13,fill:'transparent',class:'hitband',tabindex:'0'});
+      const label=p.label+(p.conf===false?' (độ tin cậy thấp)':'');
+      hit.addEventListener('pointerenter',e=>showTip(e, p.date.split('-').reverse().join('/'), [{label:label,value:fmt(p.low)+'–'+fmt(p.high)+' đ/kg',color:s.color}]));
+      hit.addEventListener('pointermove',moveTip);
+      hit.addEventListener('pointerleave',hideTip);
+      svg.appendChild(hit);
+      svg.appendChild(c);
+    });
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* horizontal compare bars — single snapshot, N entities */
+function hbarCompare(containerId, opts){
+  const items=opts.items, n=items.length;
+  const W=640, padT=8, padB=8, rowH=Math.max(38,(260-padT-padB)/n); /* same total height as the other charts */
+  const H=padT+padB+rowH*n;
+  const padL=8, padR=64, labelW=opts.labelW||112;
+  const plotW=W-padL-padR-labelW;
+  const maxV=niceMax(Math.max.apply(null, items.map(it=>it.value))*1.15);
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  items.forEach((it,i)=>{
+    const y=padT+i*rowH;
+    const barH=Math.min(rowH-16,30), barY=y+(rowH-barH)/2;
+    const bw=plotW*(it.value/maxV);
+    svg.appendChild(txt('text',{x:padL+labelW-8,y:y+rowH/2+4,'text-anchor':'end',class:'catlabel',style:'font-weight:700'}, it.label));
+    const r=el('rect',{x:padL+labelW,y:barY,width:Math.max(bw,2),height:barH,rx:4,ry:4,fill:it.color});
+    r.appendChild(txt('title',{},it.label+': '+fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+    const hit=el('rect',{x:padL+labelW,y:barY,width:Math.max(bw,2),height:barH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, it.label, [{label:opts.unit||'Giá trị', value:fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):''), color:it.color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    svg.appendChild(r);
+    svg.appendChild(txt('text',{x:padL+labelW+bw+8,y:y+rowH/2+4,class:'endlabel',fill:'var(--ink2)'}, fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+    svg.appendChild(hit);
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+function balanceBarChart(containerId, opts){
+  const labels=opts.labels, values=opts.values, every=opts.labelEvery||1, digits=opts.digits??1;
+  const W=640,H=260,padL=52,padR=20,padT=16,padB=38;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const maxAbs=Math.max(opts.minScale||1, Math.max.apply(null, values.map(v=>Math.abs(v))))*1.2;
+  const zeroY=padT+plotH/2;
+  const svg=baseSvg(W,H,opts.ariaLabel||containerId);
+  [-1,0,1].forEach(t=>{
+    const y=zeroY-(plotH/2)*t;
+    svg.appendChild(el('line',{x1:padL,y1:y,x2:W-padR,y2:y,class:t===0?'axisline':'gridline'}));
+    svg.appendChild(txt('text',{x:padL-8,y:y+3,'text-anchor':'end',class:'axislabel'},fmt(t*maxAbs,digits)));
+  });
+  const band=plotW/labels.length, barW=Math.max(1,Math.min(46, band*(every>1?0.8:0.55)));
+  values.forEach((v,i)=>{
+    const x=padL+i*band+(band-barW)/2;
+    const yVal=zeroY-(plotH/2)*(v/maxAbs);
+    const y=Math.min(zeroY,yVal);
+    const h=Math.max(1,Math.abs(zeroY-yVal));
+    const color=v>=0?(opts.colors?.[0]||S3):(opts.colors?.[1]||S2);
+    svg.appendChild(el('rect',{x:x,y:y,width:barW,height:h,rx:every>1?0:4,ry:every>1?0:4,fill:color,opacity:.9}));
+    const hit=el('rect',{x:padL+i*band,y:padT,width:band,height:plotH,fill:'transparent',class:'hitband',tabindex:every>1?'-1':'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, labels[i], [{label:opts.name||'Cung - cầu', value:fmt(v,digits)+' '+(opts.unit||''), color:color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    if(every===1) svg.appendChild(txt('text',{x:x+barW/2,y:v>=0?y-5:y+h+12,'text-anchor':'middle',class:'endlabel',fill:'var(--ink2)'},fmt(v,digits)));
+    if((i%every===0&&labels.length-1-i>=every/2)||i===labels.length-1) svg.appendChild(txt('text',{x:x+barW/2,y:H-14,'text-anchor':'middle',class:'catlabel'},labels[i]));
+    svg.appendChild(hit);
+  });
+  if(every>1){const i=values.length-1,v=values[i],x=padL+i*band+band/2,yVal=zeroY-(plotH/2)*(v/maxAbs);svg.appendChild(txt('text',{x:x-4,y:v>=0?yVal-6:yVal+14,'text-anchor':'end',class:'endlabel',fill:'var(--ink2)'},fmt(v,digits)));}
+  svg.appendChild(txt('text',{x:padL,y:H-4,class:'axislabel'},opts.unit||''));
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+function sparkline(id, values, color){
+  const host=document.getElementById(id);
+  if(!host) return;
+  const W=100,H=26,pad=3;
+  const maxV=Math.max.apply(null, values), minV=Math.min.apply(null, values);
+  const range=(maxV-minV)||1;
+  const step=(W-pad*2)/(values.length-1);
+  const pts=values.map((v,i)=>[pad+i*step, H-pad-(H-pad*2)*((v-minV)/range)]);
+  const d='M'+pts.map(p=>p[0]+','+p[1]).join(' L');
+  host.appendChild(el('path',{d:d,fill:'none',stroke:color,'stroke-width':1.6,'stroke-linecap':'round','stroke-linejoin':'round',opacity:0.55}));
+  const last=pts[pts.length-1];
+  host.appendChild(el('circle',{cx:last[0],cy:last[1],r:2.4,fill:color}));
+}
+
+function fillTable(id, headers, rows){
+  const t=document.getElementById(id);
+  if(!t) return;
+  const thead=el('thead' ); // not svg NS, use html
+  t.innerHTML='';
+  const theadHtml=document.createElement('thead');
+  const trh=document.createElement('tr');
+  headers.forEach(h=>{ const th=document.createElement('th'); th.textContent=h; trh.appendChild(th); });
+  theadHtml.appendChild(trh); t.appendChild(theadHtml);
+  const tbody=document.createElement('tbody');
+  rows.forEach(r=>{
+    const tr=document.createElement('tr');
+    r.forEach(c=>{ const td=document.createElement('td'); td.textContent=c; tr.appendChild(td); });
+    tbody.appendChild(tr);
+  });
+  t.appendChild(tbody);
+}
+
+/* ---------- DỮ LIỆU TỪ TÀI LIỆU (mốc rời, có nguồn tại từng thẻ) ---------- */
+const CS=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const S1=CS('--s1'),S2=CS('--s2'),S3=CS('--s3'),S4=CS('--s4'),S5=CS('--s5');
+/* Giá căn hộ sơ cấp Q2/2026, triệu đ/m²: mỗi cột một nguồn */
+const hpLabels=['CBRE · sơ cấp','CBRE · thứ cấp','Savills · sơ cấp','Bộ Xây dựng'],hpHN=[95,60,116,123],hpHCM=[76,62,null,108];
+barLineChart('chHousePrice',{categories:hpLabels,series:[{name:'Hà Nội',color:'#2938A8',values:hpHN},{name:'TP.HCM',color:'#59C5C8',values:hpHCM}],unit:'triệu đ/m²',digits:0,height:260,rotateLabels:false});
+fillTable('tbl-house-price',['Nguồn · phạm vi','Hà Nội','TP.HCM','Ghi chú'],[['CBRE · sơ cấp','95 (+12% QoQ, +21% YoY)','76 (+8% QoQ, +16% YoY)','rổ dự án đang mở bán'],['CBRE · thứ cấp','60 (−3% QoQ, +13% YoY)','62 (+26% YoY)','lần đầu giảm từ cuối 2022 (HN)'],['Savills · sơ cấp','116 (+16% QoQ, +27% YoY)','mở bán mới >90; 80% cung >120','không còn cung <70 (HN)'],['Bộ Xây dựng','~123','~108','Hưng Yên ~69; thứ cấp cả nước giảm so Q1']]);
+/* Giá thuê đất KCN Q2/2026, USD/m²/kỳ thuê còn lại */
+const rent=[['Miền Nam · Cushman',186.4,S1],['Miền Bắc · Cushman',137.7,S3],['Miền Bắc · JLL',135,S4]];
+hbarCompare('chKcnRent',{items:rent.map(([label,value,color])=>({label,value,color})),unit:'USD/m²',digits:1,height:200,labelW:200});
+fillTable('tbl-kcn-rent',['Khu vực · nguồn','USD/m²/kỳ','So cùng kỳ'],[['Miền Nam · Cushman & Wakefield','186,4','+1,7%'],['Miền Bắc · Cushman & Wakefield','137,7','+2,7%'],['Miền Bắc · JLL','~135','—'],['Bộ Xây dựng (xu hướng)','—','Bắc +5–12%, Nam +8–13%']]);
+/* Lãi suất vay mua nhà 9/2026, %/năm: cận dưới và cận trên của khảo sát */
+const mg=[['Ưu đãi · thấp',8.2,S3],['Ưu đãi · cao',10.5,S4],['Thả nổi · thấp',13,S2],['Thả nổi · cao',16,S2],['VIB cố định 5 năm',11.5,S5]];
+hbarCompare('chMortgage',{items:mg.map(([label,value,color])=>({label,value,color})),unit:'%',digits:1,height:230,labelW:200});
+fillTable('tbl-mortgage',['Mức','%/năm','Ghi chú'],[['Ưu đãi (10 ngân hàng)','8,2 – 10,5','VCB 9,8; VietinBank 10,5; Agribank 8,2 từ đầu 8/2026'],['Biên thả nổi','+3,3 – 3,5 điểm %','trên lãi suất cơ sở'],['Thả nổi sau ưu đãi','13 – 15, có nơi 16','VARS/DKRA 9/2026'],['Vay bất động sản (Bộ Xây dựng Q2)','12 – 14; thả nổi 13 – 16','']]);
+/* Bảng giá đất 2026: cận trên của khoảng tăng, % */
+const lp=[['Hà Nội · nội đô',2,S3],['Hà Nội · ngoại thành (Đông Anh, Hoài Đức, Thanh Trì)',26,S4],['TP.HCM · địa bàn cũ',65,S1],['TP.HCM · Bà Rịa – Vũng Tàu cũ',300,S2],['TP.HCM · Bình Dương cũ',700,S2]];
+hbarCompare('chLandPrice',{items:lp.map(([label,value,color])=>({label,value,color})),unit:'%',digits:0,height:260,labelW:260});
+fillTable('tbl-land-price',['Địa bàn','Mức thay đổi so bảng cũ','Mức cao nhất'],[['Hà Nội · nội đô','~+2%','>702 triệu đ/m² (Hàng Ngang, Hàng Đào, Lê Thái Tổ)'],['Hà Nội · Đông Anh, Hoài Đức, Thanh Trì','+15 – 26%','—'],['TP.HCM · địa bàn cũ','×1,0 – 1,65','687 triệu đ/m² (Đồng Khởi)'],['TP.HCM · Bà Rịa – Vũng Tàu cũ','×1,7 – >4','—'],['TP.HCM · Bình Dương cũ','tới >×8','—']]);
+
+/* ---------- tab ---------- */
+function showMajorTab(key, btn){
+  document.querySelectorAll(".majorpane").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll(".majortabbtn").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll('.majorpane[data-tab="'+key+'"]').forEach(x=>x.classList.add("active"));
+  const activeBtn = btn || Array.from(document.querySelectorAll(".majortabbtn")).find(x => (x.getAttribute("onclick") || "").indexOf("'"+key+"'") >= 0);
+  if(activeBtn) activeBtn.classList.add("active");
+  if(location.hash !== "#"+key) history.replaceState(null, "", "#"+key);
+}
+const initialTab = (location.hash || "").replace("#", "");
+if(document.querySelector('.majorpane[data-tab="'+initialTab+'"]')) showMajorTab(initialTab);
+window.addEventListener("hashchange", () => {
+  const nextTab = (location.hash || "").replace("#", "");
+  if(document.querySelector('.majorpane[data-tab="'+nextTab+'"]')) showMajorTab(nextTab);
+});
+</script>
+</body>
+</html>

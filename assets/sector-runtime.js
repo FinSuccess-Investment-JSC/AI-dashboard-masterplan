@@ -2,6 +2,7 @@
    No claims of live LLM inference: AI-authored interpretation lives in sector-content.js. */
 (() => {
 'use strict';
+if(document.body.dataset.sector==='realestate'){window.SECTOR_RUNTIME={available:()=>false,crackRows:[],loaded:false,sourceStatus:{}};return;} // no daily.json feed yet; Wi bundle drives the charts
 const power=document.body.dataset.sector==='power',oil=!power&&!!document.getElementById('chCurve'), M=window.SectorMath;
 const bundle=window.SECTOR_DAILY||{sources:{}}, src=bundle.sources||{};
 const nf=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';

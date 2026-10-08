@@ -10,60 +10,1808 @@
   "static": "Nội dung tĩnh, chỉ sửa khi người dùng yêu cầu"
  },
  "watchers": [
-  {"id": "nso.rss", "kind": "rss", "url": "https://www.nso.gov.vn/feed/", "match": "tình hình kinh tế\\W+xã hội", "note": "NSO công bố ngày 3 hằng tháng từ 05/2026 (ngày 6 trước đó), cả cuối tuần; lịch năm: https://www.nso.gov.vn/lich-pho-bien-thong-tin/"},
-  {"id": "pvn.news", "kind": "rss", "url": "https://petrovietnam.petrotimes.vn/rss_feed/trang-chu", "match": "Dung Quất|Nghi Sơn|lọc dầu|dòng khí|khí đầu tiên|FID|nguồn cung xăng|Cá Voi Xanh|Lô B|LNG", "note": "pvn.vn dùng khóa DH yếu, Python từ chối; dùng RSS Tạp chí Năng lượng Petrovietnam"},
-  {"id": "moit.notices", "kind": "links", "url": "https://moit.gov.vn/tin-tuc/thong-bao", "match": "Nghị định|Thông tư|cơ chế|bình ổn|kinh doanh xăng dầu|Luật Dầu khí"},
-  {"id": "moit.sugar-trq", "kind": "links", "url": "https://moit.gov.vn/tag/h%E1%BA%A1n%20ng%E1%BA%A1ch%20thu%E1%BA%BF%20quan%20nh%E1%BA%ADp%20kh%E1%BA%A9u", "match": "đường", "note": "2024: QĐ 20/8, đấu giá 20/9; 2025: QĐ ~19/9, đấu giá 20/10"},
-  {"id": "news.vssa", "kind": "rss", "url": "https://news.google.com/rss/search?q=%22Hi%E1%BB%87p%20h%E1%BB%99i%20M%C3%ADa%20%C4%91%C6%B0%E1%BB%9Dng%22&hl=vi&gl=VN&ceid=VN:vi", "match": "niên vụ|tổng kết|sản lượng", "note": "vssa.org.vn treo, vienmiaduong.vn đã ngừng"},
-  {"id": "vcbs.sector", "kind": "json", "url": "https://www.vcbs.com.vn/api/v1/ttpt-reports?locale=vi&category_code=BCN", "list": "data", "title": "name", "fields": ["id"], "match": "mía|đường"}
+  {
+   "id": "nso.rss",
+   "kind": "rss",
+   "url": "https://www.nso.gov.vn/feed/",
+   "match": "tình hình kinh tế\\W+xã hội",
+   "note": "NSO công bố ngày 3 hằng tháng từ 05/2026 (ngày 6 trước đó), cả cuối tuần; lịch năm: https://www.nso.gov.vn/lich-pho-bien-thong-tin/"
+  },
+  {
+   "id": "pvn.news",
+   "kind": "rss",
+   "url": "https://petrovietnam.petrotimes.vn/rss_feed/trang-chu",
+   "match": "Dung Quất|Nghi Sơn|lọc dầu|dòng khí|khí đầu tiên|FID|nguồn cung xăng|Cá Voi Xanh|Lô B|LNG",
+   "note": "pvn.vn dùng khóa DH yếu, Python từ chối; dùng RSS Tạp chí Năng lượng Petrovietnam"
+  },
+  {
+   "id": "moit.notices",
+   "kind": "links",
+   "url": "https://moit.gov.vn/tin-tuc/thong-bao",
+   "match": "Nghị định|Thông tư|cơ chế|bình ổn|kinh doanh xăng dầu|Luật Dầu khí"
+  },
+  {
+   "id": "moit.sugar-trq",
+   "kind": "links",
+   "url": "https://moit.gov.vn/tag/h%E1%BA%A1n%20ng%E1%BA%A1ch%20thu%E1%BA%BF%20quan%20nh%E1%BA%ADp%20kh%E1%BA%A9u",
+   "match": "đường",
+   "note": "2024: QĐ 20/8, đấu giá 20/9; 2025: QĐ ~19/9, đấu giá 20/10"
+  },
+  {
+   "id": "news.vssa",
+   "kind": "rss",
+   "url": "https://news.google.com/rss/search?q=%22Hi%E1%BB%87p%20h%E1%BB%99i%20M%C3%ADa%20%C4%91%C6%B0%E1%BB%9Dng%22&hl=vi&gl=VN&ceid=VN:vi",
+   "match": "niên vụ|tổng kết|sản lượng",
+   "note": "vssa.org.vn treo, vienmiaduong.vn đã ngừng"
+  },
+  {
+   "id": "vcbs.sector",
+   "kind": "json",
+   "url": "https://www.vcbs.com.vn/api/v1/ttpt-reports?locale=vi&category_code=BCN",
+   "list": "data",
+   "title": "name",
+   "fields": [
+    "id"
+   ],
+   "match": "mía|đường"
+  }
  ],
  "items": [
-  {"id": "oil.eia-spot", "tier": "A", "title": "Giá giao ngay Brent, WTI, xăng, diesel (EIA)", "sources": ["brent", "wti", "gasoline", "diesel"], "schedule": {"type": "policy", "note": "thứ Tư–Sáu"}, "publication": "File giá ngày, EIA phát hành theo tuần", "source": {"name": "EIA Spot Prices", "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_d.htm"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-20", "dau-khi-21", "dau-khi-23", "dau-khi-24", "dau-khi-25"]}},
-  {"id": "oil.eia-wpsr", "tier": "A", "title": "Tồn kho, sản lượng Mỹ (EIA WPSR)", "sources": ["crude_stock", "gasoline_stock", "distillate_stock", "cushing", "us_production"], "schedule": {"type": "policy", "note": "thứ Năm–Sáu giờ VN"}, "publication": "Hằng tuần, thứ Tư giờ Mỹ; lễ có thể dời", "source": {"name": "EIA Weekly Petroleum Status Report", "url": "https://www.eia.gov/petroleum/supply/weekly/"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-06", "dau-khi-07", "dau-khi-08", "dau-khi-09", "dau-khi-10"]}},
-  {"id": "oil.futures", "tier": "A", "title": "Đường cong WTI, Brent futures (Yahoo)", "sources": ["wti_curve", "brent_futures"], "schedule": {"type": "policy", "note": "thứ Ba–Bảy, phiên hoàn tất"}, "publication": "Ngày giao dịch; nguồn không chính thức", "source": {"name": "Yahoo Finance futures", "url": "https://finance.yahoo.com/quote/CL%3DF/futures/"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-11"], "note": "kèm chart giá nhanh #chFastPrice"}},
-  {"id": "oil.cftc", "tier": "A", "title": "Vị thế managed money WTI (CFTC COT)", "sources": ["wti_cot"], "schedule": {"type": "policy", "note": "thứ Bảy–thứ Ba giờ VN"}, "publication": "Vị thế thứ Ba, thường công bố thứ Sáu", "source": {"name": "CFTC Commitments of Traders", "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-13"]}},
-  {"id": "oil.steo", "tier": "A", "title": "Dư địa công suất OPEC, cung cầu dầu toàn cầu (EIA STEO)", "sources": ["opec_capacity", "world_balance"], "schedule": {"type": "policy", "note": "ngày 5–15 hằng tháng và thứ Hai"}, "publication": "Hằng tháng theo lịch STEO", "source": {"name": "EIA STEO release schedule", "url": "https://www.eia.gov/outlooks/steo/release_schedule.php"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-12", "dau-khi-05"], "note": "dau-khi-05: chart chWorldSD, chWorldBalance, bảng tbl-worldbalance"}},
-  {"id": "oil.portwatch", "tier": "A", "title": "Lượt tàu qua Hormuz, Bab el-Mandeb (IMF PortWatch)", "sources": ["hormuz", "bab_el_mandeb"], "schedule": {"type": "policy", "note": "thứ Hai–Bảy"}, "publication": "Số liệu ngày, cập nhật theo tuần", "source": {"name": "IMF PortWatch", "url": "https://portwatch.imf.org/pages/chokepoint6"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-37", "dau-khi-41"]}},
-  {"id": "oil.jodi", "tier": "A", "title": "Xuất khẩu dầu thô Saudi Arabia, Kuwait (JODI)", "sources": ["middle_east_crude_exports"], "schedule": {"type": "policy", "note": "ngày 18–28 và thứ Hai"}, "publication": "Hằng tháng, quanh ngày 20", "source": {"name": "JODI Oil", "url": "https://www.jodidata.org/oil/database/data-downloads.aspx"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-40"]}},
-  {"id": "oil.singapore-cracks", "tier": "A", "title": "Crack Singapore gasoil, xăng so với Dubai (KNOC)", "sources": ["singapore_cracks"], "schedule": {"type": "policy", "note": "thứ Ba–Bảy, cách 6 giờ"}, "publication": "Giá ngày T công bố T+1, thứ Ba–Bảy", "source": {"name": "KNOC Opinet", "url": "https://www.opinet.co.kr/glopopdSelect.do"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-singapore-crack"]}},
-  {"id": "oil.retail-fuel", "tier": "A", "title": "Giá bán lẻ xăng dầu Vùng 1 (Petrolimex)", "sources": ["retail_fuel"], "schedule": {"type": "policy", "note": "ngày làm việc, cách 6 giờ"}, "publication": "Theo kỳ điều hành, thông cáo Petrolimex", "source": {"name": "Petrolimex thông cáo báo chí", "url": "https://home.petrolimex.com.vn/ndi/thong-cao-bao-chi.html"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-22"]}},
-  {"id": "sugar.futures", "tier": "A", "title": "Sugar No.11 futures (Yahoo SB=F, hoặc hợp đồng gần nhất khi SB=F hỏng)", "sources": ["sugar_futures"], "schedule": {"type": "policy", "note": "thứ Ba–Bảy"}, "publication": "Ngày giao dịch; nguồn không chính thức", "source": {"name": "Yahoo SB=F", "url": "https://finance.yahoo.com/quote/SB%3DF/"}, "where": {"page": "Sugar/index.html", "blocks": [], "note": "chart giá nhanh #chFastPrice do assets/sector-layout.js dựng"}},
-  {"id": "sugar.worldbank", "tier": "A", "title": "Giá đường thế giới tháng (World Bank Pink Sheet)", "sources": ["sugar_monthly"], "schedule": {"type": "policy", "note": "ngày 1–10 và thứ Hai"}, "publication": "Hằng tháng", "source": {"name": "World Bank Commodity Markets", "url": "https://www.worldbank.org/en/research/commodity-markets"}, "where": {"page": "Sugar/index.html", "blocks": ["sugar-04", "sugar-05"]}},
-  {"id": "sugar.usda-producers", "tier": "A", "title": "Sản lượng 4 trung tâm cung đường (USDA PSD)", "sources": ["sugar_producers"], "schedule": {"type": "policy", "note": "từ 15/5 và 15/11"}, "publication": "2 lần/năm, tháng 5 và 11", "source": {"name": "USDA FAS PSD", "url": "https://apps.fas.usda.gov/psdonline/app/index.html"}, "where": {"page": "Sugar/index.html", "blocks": [], "note": "card sugar-world-production do assets/sector-layout.js dựng"}},
-  {"id": "bank.eximbank", "tier": "A", "title": "Eximbank lãi suất cho vay, chênh lệch bình quân", "sources": ["bank_eximbank"], "schedule": {"type": "policy", "note": "ngày làm việc trong cửa sổ công bố tháng"}, "publication": "Theo công bố, không cố định", "source": {"name": "Eximbank", "url": "https://eximbank.com.vn/"}, "where": {"page": "Bank/index.html", "cards": ["Eximbank · lãi suất cho vay bình quân", "Eximbank · chênh lệch lãi suất bình quân"]}},
-  {"id": "market.valuation", "tier": "A", "title": "P/E, P/B, vốn hóa hằng ngày của doanh nghiệp theo dõi (40 mã)", "sources": ["company_valuation"], "schedule": {"type": "policy", "note": "mọi lượt job: 07:30 phiên trước, 15:30 phiên trong ngày"}, "publication": "Giá đóng cửa mỗi phiên; P/E, P/B, vốn hóa VNDirect tính theo EPS/BVPS gần nhất", "source": {"name": "VNDirect finfo", "url": "https://dstock.vndirect.com.vn/"}, "where": {"page": "assets/financial-comparison.js", "blocks": [], "note": "tab so sánh 4 ngành; trang Đường: bảng sức khỏe tài chính (sugar-20) và thẻ hồ sơ doanh nghiệp qua data-valuation"}},
-  {"id": "comparison.financials", "tier": "A", "title": "Bảng so sánh tài chính doanh nghiệp (số BCTC; định giá lấy từ market.valuation)", "job": "refresh_release.py --comparison (lượt 15:30)", "schedule": {"type": "policy", "note": "15:30 mỗi ngày"}, "publication": "BCTC quý/năm, giá ngày", "source": {"name": "Bảng tài chính công khai", "url": "https://finance.vietstock.vn/"}, "where": {"page": "assets/financial-comparison.js", "blocks": [], "note": "tab so sánh doanh nghiệp ở cả 4 trang"}},
-  {"id": "bank.wi.daily", "tier": "B", "title": "Wi: lãi suất huy động, liên ngân hàng, OMO, tỷ giá, TPCP, định giá, tin tức", "wiBlocks": ["deposit-rates", "money-market", "omo", "fx", "bonds-macro", "valuation", "services-demand", "news"], "schedule": {"type": "daily", "at": "07:00", "days": "mon-fri"}, "publication": "Hằng ngày (metadata bảng Wi)", "source": {"name": "WiData qua WiMCP", "url": "https://widata.vn/"}, "where": {"page": "Bank/index.html", "file": "data/bank-wi-data.js"}, "how": "python3 scripts/wi_ingest.py plan <id> → gọi đúng từng lệnh WiMCP (hook tự lưu kết quả) → python3 scripts/wi_ingest.py ingest <id> → python3 scripts/build_bank_wi.py --checked-at <ISO>; file tin tức: thay 25 CBTT + 11 ai_news mới nhất theo cấu trúc cũ", "gates": ["tests/test_bank_wi.py qua", "Ngày quan sát mới không lùi so với bản cũ", "Không ghép bảng gốc 17/18 với bảng đã điều chỉnh 301/302"]},
-  {"id": "bank.wi.monthly", "tier": "B", "title": "Wi: tiền gửi, cung tiền, tín dụng, tín dụng theo ngành, vĩ mô, dự báo, TPDN", "wiBlocks": ["funding", "credit", "credit-sectors", "macro", "forecast", "bonds"], "schedule": {"type": "weekly", "day": "mon", "at": "07:00"}, "publication": "SBV trễ 1–3 tháng, ngày công bố không cố định; TPDN theo phát hành", "source": {"name": "WiData qua WiMCP", "url": "https://widata.vn/"}, "where": {"page": "Bank/index.html", "file": "data/bank-wi-data.js"}, "how": "Như bank.wi.daily (plan → gọi WiMCP → ingest → build)", "gates": ["tests/test_bank_wi.py qua", "Dùng bảng đã điều chỉnh 301/302 cho tiền gửi/M2", "Kỳ mới phải là tháng kế tiếp hoặc revision có ghi chú"]},
-  {"id": "bank.wi.quarterly", "tier": "B", "status": "manual", "title": "Wi: BCTC ngân hàng (chỉ số, thu nhập, chất lượng tài sản, định giá lại, nguồn vốn khác)", "wiBlocks": ["other-funding", "bank-ratios", "yield-funding", "income", "asset-quality", "repricing"], "schedule": {"type": "window", "every": "daily", "at": "07:00", "days": "mon-fri", "windows": [["01-15", "02-05"], ["03-15", "04-05"], ["04-15", "05-05"], ["07-15", "08-05"], ["08-10", "09-03"], ["10-15", "11-05"]]}, "publication": "BCTC quý ≤20 ngày (công ty mẹ 30), bán niên soát xét ≤45/60, năm kiểm toán ≤90 ngày sau kỳ (TT96/2020, VBHN 10/2026)", "source": {"name": "WiData qua WiMCP", "url": "https://widata.vn/"}, "where": {"page": "Bank/index.html", "file": "data/bank-wi-data.js"}, "how": "Như bank.wi.daily; cập nhật tên kỳ (vd 2026Q3) trong raw_file nếu contract đổi kỳ", "gates": ["tests/test_bank_wi.py qua", "Đủ mẫu ngân hàng cùng kỳ, thiếu thì ghi rõ mã thiếu", "Không trộn TTM với quý"], "manual": "Số BCTC/báo cáo doanh nghiệp: chỉ cập nhật khi người dùng nhắn (quyết định 06/10/2026), không quét định kỳ"},
-  {"id": "oil.vn-production", "tier": "C", "title": "Sản lượng khai thác dầu thô, khí Việt Nam", "schedule": {"type": "watch"}, "publication": "NSO ngày 3 hằng tháng (từ 05/2026), kể cả cuối tuần", "source": {"name": "NSO số liệu thống kê", "url": "https://www.nso.gov.vn/so-lieu-thong-ke/"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-15"]}, "how": "Lấy sản lượng dầu thô (triệu tấn) và khí (tỷ m³) lũy kế năm từ báo cáo NSO tháng mới nhất; cập nhật nhãn số tháng của cột năm hiện tại", "gates": ["Đúng đơn vị triệu tấn / tỷ m³", "Ghi rõ YTD bao nhiêu tháng", "Link báo cáo NSO đúng tháng"], "watch": ["nso.rss"]},
-  {"id": "oil.pvgas-annual", "tier": "C", "title": "PV GAS: khí vào bờ, LNG, vị trí trong nền kinh tế", "schedule": {"type": "watch"}, "publication": "Báo cáo thường niên ≤110 ngày sau năm; tài liệu ĐHĐCĐ ≥21 ngày trước họp", "source": {"name": "PV GAS quan hệ cổ đông", "url": "https://www.pvgas.com.vn/"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-16", "dau-khi-17"]}, "how": "Cập nhật sản lượng khí ẩm nội địa, LNG năm trước (thực hiện) và năm nay (kế hoạch, vẽ mờ) từ báo cáo thường niên/tài liệu ĐHĐCĐ", "gates": ["Phân biệt thực hiện và kế hoạch", "Đơn vị triệu m³", "Link tài liệu gốc"], "status": "manual", "manual": "Số BCTC/báo cáo doanh nghiệp: chỉ cập nhật khi người dùng nhắn (quyết định 06/10/2026), không quét định kỳ"},
-  {"id": "oil.supply-news", "tier": "C", "title": "Cân đối xăng dầu, chuỗi dự án khí", "schedule": {"type": "monthly", "days": [1, 1], "at": "07:00"}, "publication": "Không cố định; Petrovietnam thường công bố kết quả tháng ngày 10–20 tháng sau", "source": {"name": "Petrovietnam, Bộ Công Thương, báo ngành", "url": "https://petrovietnam.petrotimes.vn/"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-18", "dau-khi-19"]}, "how": "Rà tin chính thức trong tháng về công suất/vận hành Dung Quất, Nghi Sơn và mốc dự án khí (FID, dòng khí đầu tiên); chỉ sửa khi có mốc mới", "gates": ["Ưu tiên nguồn doanh nghiệp/cơ quan nhà nước", "Ghi ngày công bố", "Không đổi mốc nếu chỉ là tin đồn"], "watch": ["pvn.news"]},
-  {"id": "oil.price-policy", "tier": "C", "title": "Cơ chế điều hành giá xăng dầu, Luật Dầu khí", "schedule": {"type": "monthly", "days": [1, 1], "at": "07:00"}, "publication": "Theo văn bản; NĐ 80/2023 điều hành thứ Năm hằng tuần, dự thảo nghị định mới có thể để doanh nghiệp tự định giá từ 2027", "source": {"name": "Bộ Công Thương văn bản", "url": "https://moit.gov.vn/van-ban-phap-luat/van-ban-phap-quy/thong-bao-dieu-hanh-gia-ban-xang-dau.html"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-27", "dau-khi-28"]}, "how": "Kiểm văn bản mới về cơ chế giá (nghị định, thông tư, quỹ bình ổn) và văn bản hướng dẫn Luật Dầu khí; cập nhật mốc và tác động", "gates": ["Số hiệu văn bản + ngày hiệu lực", "Link văn bản gốc"], "watch": ["moit.notices"]},
-  {"id": "oil.bsr-annual", "tier": "C", "title": "BSR biên lợi nhuận gộp theo năm", "schedule": {"type": "watch"}, "publication": "BCTC năm kiểm toán ≤90 ngày sau năm", "source": {"name": "CafeF BCTC BSR", "url": "https://cafef.vn/du-lieu/hose/bsr-cong-ty-co-phan-loc-hoa-dau-binh-son.chn"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-30"]}, "how": "Thêm năm tài chính mới: biên gộp = lợi nhuận gộp / doanh thu thuần từ BCTC kiểm toán", "gates": ["Dùng BCTC kiểm toán, không dùng số quý cộng dồn", "Giữ năm âm (vd 2020) và trục từ 0"], "status": "manual", "manual": "Số BCTC/báo cáo doanh nghiệp: chỉ cập nhật khi người dùng nhắn (quyết định 06/10/2026), không quét định kỳ"},
-  {"id": "oil.company-quarterly", "tier": "C", "title": "PLX tồn kho, PVD/PVS/GAS driver theo quý", "schedule": {"type": "watch"}, "publication": "BCTC quý ≤20 ngày (mẹ 30), bán niên ≤45/60, năm ≤90 ngày", "source": {"name": "BCTC doanh nghiệp", "url": "https://finance.vietstock.vn/PLX/tai-chinh.htm"}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-31", "dau-khi-32", "dau-khi-33", "dau-khi-34"]}, "how": "Thêm quý mới: PLX tồn kho cuối quý, LNST, dự phòng giảm giá; PVD/PVS/GAS cập nhật driver có trong BCTC/CBTT quý", "gates": ["Đúng quý báo cáo", "Đối chiếu tổng với BCTC gốc", "Thiếu thì để trống"], "status": "manual", "manual": "Số BCTC/báo cáo doanh nghiệp: chỉ cập nhật khi người dùng nhắn (quyết định 06/10/2026), không quét định kỳ"},
-  {"id": "sugar.domestic", "tier": "C", "title": "Giá đường trong nước, so sánh khu vực", "schedule": {"type": "monthly", "days": [1, 1], "at": "07:00"}, "publication": "Không cố định; không có chuỗi giá công bố theo lịch", "source": {"name": "VSSA qua báo ngành", "url": "https://news.google.com/search?q=%22Hi%E1%BB%87p%20h%E1%BB%99i%20M%C3%ADa%20%C4%91%C6%B0%E1%BB%9Dng%22"}, "where": {"page": "Sugar/index.html", "blocks": ["sugar-06", "sugar-07"]}, "how": "Thêm mốc giá đường RS/RE trong nước và giá khu vực quy đổi VND/kg từ công bố VSSA/báo ngành trong tháng", "gates": ["Mốc giá có ngày quan sát", "Không nội suy giữa các mốc"]},
-  {"id": "sugar.vn-balance", "tier": "A", "title": "Cân đối cung – cầu, tồn kho, nhập khẩu đường Việt Nam (USDA PSD, script)", "schedule": {"type": "policy", "note": "từ 15/5 và 15/11, ngày 1 hằng tháng"}, "publication": "Khi USDA sửa PSD (vòng tháng 5/11); có niên vụ dự báo", "source": {"name": "USDA FAS PSD", "url": "https://apps.fas.usda.gov/psdonline/app/index.html"}, "where": {"page": "Sugar/index.html", "blocks": ["sugar-08", "sugar-09", "sugar-14"]}, "sources": ["sugar_vn_balance"]},
-  {"id": "sugar.crop", "tier": "C", "title": "Mía ép, diện tích, giá mía nguyên liệu", "schedule": {"type": "window", "every": "weekly", "day": "mon", "at": "07:00", "windows": [["08-15", "10-15"]]}, "publication": "Hội nghị tổng kết niên vụ (vd 13/09/2024); USDA không còn báo cáo GAIN đường Việt Nam từ 2021", "source": {"name": "VSSA qua báo ngành", "url": "https://news.google.com/search?q=%22Hi%E1%BB%87p%20h%E1%BB%99i%20M%C3%ADa%20%C4%91%C6%B0%E1%BB%9Dng%22"}, "where": {"page": "Sugar/index.html", "blocks": ["sugar-10", "sugar-11", "sugar-12"]}, "how": "Thêm niên vụ vừa kết thúc khi có số tổng kết chính thức", "gates": ["Chỉ số liệu chốt vụ", "Giữ định nghĩa mía ép tại nhà máy"], "watch": ["news.vssa"]},
-  {"id": "sugar.company", "tier": "C", "title": "SBT biên gộp, so sánh biên và sức khỏe tài chính nhóm đường", "schedule": {"type": "watch"}, "publication": "BCTC quý; SBT niên độ T7–T6, BCTC năm kiểm toán khoảng 28/09", "source": {"name": "BCTC doanh nghiệp", "url": "https://finance.vietstock.vn/SBT/tai-chinh.htm"}, "where": {"page": "Sugar/index.html", "blocks": ["sugar-13", "sugar-19", "sugar-20"]}, "how": "Thêm kỳ mới từ BCTC; thay snapshot broker cũ bằng số BCTC công khai khi đủ 5 mã", "gates": ["Đúng niên độ", "Ghi nguồn mỗi mã", "Đổi quý niên độ SBT sang quý dương lịch trước khi so với mã khác"], "status": "manual", "manual": "Số BCTC/báo cáo doanh nghiệp: chỉ cập nhật khi người dùng nhắn (quyết định 06/10/2026), không quét định kỳ"},
-  {"id": "sugar.trade", "tier": "C", "title": "Nhập lậu ước tính, HFCS, hạn ngạch thuế quan, mốc chính sách", "schedule": {"type": "window", "every": "weekly", "day": "mon", "at": "07:00", "windows": [["01-15", "02-15"]]}, "publication": "TRQ: QĐ khoảng 8–9, đấu giá 9–10 hằng năm; HFCS theo số Hải quan năm (trang Hải quan không đọc được bằng máy)", "source": {"name": "Bộ Công Thương, Hải quan, VSSA", "url": "https://moit.gov.vn/"}, "where": {"page": "Sugar/index.html", "blocks": ["sugar-15", "sugar-16", "sugar-17", "sugar-18"]}, "how": "Thêm năm mới cho HFCS, hạn ngạch TRQ; thêm mốc chính sách nếu có văn bản mới", "gates": ["Số hiệu văn bản", "Ước tính nhập lậu ghi rõ nguồn ước tính"], "watch": ["moit.sugar-trq", "vcbs.sector"]},
-  {"id": "bank.policy", "tier": "C", "title": "Bank: mốc pháp lý, bức tranh thế giới", "schedule": {"type": "monthly", "days": [1, 7], "at": "07:00"}, "publication": "Theo văn bản / theo công bố", "source": {"name": "Văn bản NHNN trên Cổng văn bản Chính phủ (sbv.gov.vn chặn máy chủ cloud)", "url": "https://vanban.chinhphu.vn/"}, "where": {"page": "Bank/index.html", "cards": ["Mốc pháp lý cần đặt cạnh bảng cân đối"], "note": "và card bức tranh thế giới trong tab địa lý"}, "how": "Thêm văn bản mới của NHNN/Chính phủ ảnh hưởng bảng cân đối ngân hàng", "gates": ["Số hiệu, ngày hiệu lực", "Link văn bản gốc"]},
-  {"id": "oil.ai.cycle", "tier": "D", "title": "Dầu khí: vị trí trong chu kỳ", "schedule": {"type": "data", "sources": ["brent", "wti", "brent_futures", "crude_stock"], "minDays": 7, "material": [{"source": "brent", "field": "value", "pct": 5}, {"source": "crude_stock", "field": "value", "pct": 3}]}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-02"]}, "how": "Cập nhật số bình quân năm, cấu trúc kỳ hạn và nhận định pha chu kỳ", "gates": ["Số trong lời bình khớp chart", "Không đụng ô analyst"]},
-  {"id": "oil.ai.balance", "tier": "D", "title": "Dầu khí: cân bằng cung – cầu toàn cầu", "schedule": {"type": "data", "sources": ["world_balance", "opec_capacity", "middle_east_crude_exports", "crude_stock", "us_production"], "minDays": 7, "material": [{"source": "world_balance", "field": "balance", "abs": 0.5, "pick": "all"}, {"source": "opec_capacity", "field": "capacity", "abs": 0.5}, {"source": "crude_stock", "field": "value", "pct": 3}]}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-05"]}, "how": "Cập nhật biến giải thích cân bằng cung – cầu theo STEO, JODI, tồn kho mới", "gates": ["Số khớp chart", "Ghi rõ số ước tính (EIA) khác số đo", "Không đụng ô analyst"]},
-  {"id": "oil.ai.regime", "tier": "D", "title": "Dầu khí: đọc chế độ thị trường", "schedule": {"type": "data", "sources": ["brent", "wti_curve", "wti_cot", "crude_stock", "singapore_cracks"], "minDays": 7, "material": [{"source": "brent", "field": "value", "pct": 5}, {"source": "wti_cot", "field": "net_thousands", "abs": 30}, {"source": "singapore_cracks", "field": "gasoil_crack", "abs": 5}, {"source": "crude_stock", "field": "value", "pct": 3}]}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-14", "dau-khi-29"]}, "how": "Làm mới bảng tín hiệu, ngưỡng KPI cần theo dõi và ngày bản phân tích", "gates": ["Đổi ngày 'bản phân tích'", "Số khớp dữ liệu nền"]},
-  {"id": "oil.ai.channels", "tier": "D", "title": "Dầu khí: năm kênh truyền dẫn, PVT", "schedule": {"type": "data", "sources": ["brent", "singapore_cracks", "retail_fuel", "hormuz", "bab_el_mandeb"], "minDays": 7, "material": [{"source": "brent", "field": "value", "pct": 5}, {"source": "singapore_cracks", "field": "gasoil_crack", "abs": 5}, {"source": "singapore_cracks", "field": "gasoline_crack", "abs": 5}, {"source": "retail_fuel", "field": "ron95", "pct": 3}]}, "where": {"page": "Dau-khi/index.html", "blocks": ["dau-khi-38", "dau-khi-35"]}, "how": "Cập nhật chiều/độ mạnh tác động từng kênh theo số mới", "gates": ["Không suy cước PVT từ giá dầu", "Không đụng ô analyst"]},
-  {"id": "sugar.ai.cycle", "tier": "D", "title": "Đường: vị trí trong chu kỳ", "schedule": {"type": "data", "sources": ["sugar_monthly", "sugar_futures"], "minDays": 7, "material": [{"source": "sugar_monthly", "field": "value", "pct": 5}, {"source": "sugar_futures", "field": "value", "pct": 7}]}, "where": {"page": "Sugar/index.html", "blocks": ["sugar-02"]}, "how": "Cập nhật mức giá so với đỉnh/đáy chu kỳ và nhận định", "gates": ["Số khớp chart", "Không đụng ô analyst"]},
-  {"id": "bank.ai.read", "tier": "D", "title": "Bank: đọc nhanh", "schedule": {"type": "after", "items": ["bank.wi.daily", "bank.wi.monthly", "bank.wi.quarterly"], "minDays": 7}, "where": {"page": "Bank/index.html", "cards": ["Đọc nhanh"]}, "how": "Viết lại đoạn đọc nhanh theo số Wi mới, đổi ngày 'AI viết'", "gates": ["Số khớp bundle Wi", "Không đụng ô analyst"]},
-  {"id": "power.evn-daily", "tier": "A", "title": "Sản lượng, Pmax, cơ cấu nguồn theo ngày (EVN, script)", "sources": ["vn_power_daily"], "schedule": {"type": "policy", "note": "mọi lượt job; EVN đăng bản tin ngày D vào khoảng 10:20–11:00 ngày D+1"}, "publication": "Hằng ngày, kể cả cuối tuần", "source": {"name": "EVN · Thông tin vận hành HTĐ Quốc gia", "url": "https://www.evn.com.vn/vi-VN/news-l/Thong-tin-tom-tat-van-hanh-HTD-Quoc-gia-60-2015"}, "where": {"page": "Dien/index.html", "blocks": ["dien-06", "dien-07", "dien-07-gas", "dien-07-coal", "dien-07-renewables", "dien-07-imports", "dien-08", "dien-09"]}},
-  {"id": "power.enso", "tier": "A", "title": "ONI và Niño 3.4 tuần (NOAA CPC, script)", "sources": ["enso_oni", "nino34_weekly"], "schedule": {"type": "policy", "note": "ONI ngày 1–10 và thứ Hai; Niño 3.4 thứ Hai–Tư"}, "publication": "ONI hằng tháng; Niño 3.4 hằng tuần", "source": {"name": "NOAA CPC", "url": "https://www.cpc.ncep.noaa.gov/data/indices/"}, "where": {"page": "Dien/index.html", "blocks": ["dien-04", "dien-05"]}},
-  {"id": "power.wb-energy", "tier": "A", "title": "Giá than, khí, LNG tháng (World Bank Pink Sheet, script)", "sources": ["wb_energy_monthly"], "schedule": {"type": "policy", "note": "ngày 1–10 và thứ Hai"}, "publication": "Hằng tháng", "source": {"name": "World Bank Commodity Markets", "url": "https://www.worldbank.org/en/research/commodity-markets"}, "where": {"page": "Dien/index.html", "blocks": ["dien-12", "dien-13"]}},
-  {"id": "power.futures", "tier": "A", "title": "Futures than Newcastle, LNG JKM (ICE, script)", "sources": ["coal_newcastle", "lng_jkm"], "schedule": {"type": "policy", "note": "thứ Ba–Bảy"}, "publication": "Ngày giao dịch; nguồn không chính thức", "source": {"name": "ICE", "url": "https://www.ice.com/products/243/Newcastle-Coal-Futures"}, "where": {"page": "Dien/index.html", "blocks": [], "note": "chart giá nhanh #chFastPrice do assets/sector-layout.js dựng; KPI than"}},
-  {"id": "power.tariff-evn", "tier": "C", "title": "Giá bán lẻ điện, tài chính EVN, giá thị trường điện", "schedule": {"type": "monthly", "days": [1, 1], "at": "07:00"}, "publication": "Theo quyết định điều chỉnh giá (tối thiểu 3 tháng/lần theo NĐ 72/2025); BCTC EVN năm công bố khoảng tháng 6", "source": {"name": "EVN, Bộ Công Thương", "url": "https://www.evn.com.vn/"}, "where": {"page": "Dien/index.html", "blocks": ["dien-14", "dien-15", "dien-16", "dien-20"]}, "how": "Kiểm quyết định giá bán lẻ mới, kết quả tài chính EVN, giá mua điện bình quân; thêm mốc mới vào chart và bảng, giữ mốc cũ", "gates": ["Số hiệu văn bản + ngày hiệu lực", "Link văn bản gốc hoặc bài EVN", "Không suy giá từ tin đồn"], "watch": ["moit.notices"]},
-  {"id": "power.policy", "tier": "C", "title": "Cơ chế giá điện, Quy hoạch điện VIII, DPPA, mái nhà, thị trường điện", "schedule": {"type": "monthly", "days": [1, 1], "at": "07:00"}, "publication": "Theo văn bản", "source": {"name": "Cổng văn bản Chính phủ", "url": "https://vanban.chinhphu.vn/"}, "where": {"page": "Dien/index.html", "blocks": ["dien-17", "dien-18", "dien-19"]}, "how": "Kiểm văn bản mới (nghị định, quyết định, thông tư) về giá điện, quy hoạch, DPPA, mái nhà, thị trường điện; cập nhật bảng Trước/Sau", "gates": ["Số hiệu văn bản + ngày hiệu lực", "Link văn bản gốc"], "watch": ["moit.notices"]},
-  {"id": "power.capacity", "tier": "C", "title": "Công suất đặt theo nguồn, sản lượng năm", "schedule": {"type": "window", "every": "weekly", "day": "mon", "at": "07:00", "windows": [["01-05", "02-15"], ["06-01", "07-31"]]}, "publication": "EVN tổng kết năm (tháng 1), báo cáo thường niên (giữa năm)", "source": {"name": "EVN", "url": "https://www.evn.com.vn/"}, "where": {"page": "Dien/index.html", "blocks": ["dien-10", "dien-11"]}, "how": "Thêm năm mới khi EVN công bố số chính thức; giữ định nghĩa cũ, ghi rõ nếu nguồn đổi cách tính (mái nhà, nhập khẩu)", "gates": ["Số chính thức của EVN/NSMO", "Ghi kỳ và ngày công bố"]},
-  {"id": "power.output-sources", "tier": "C", "title": "Sản lượng điện theo nguồn, lũy kế 9 tháng", "schedule": {"type": "window", "every": "weekly", "day": "mon", "at": "07:00", "windows": [["10-01", "11-15"]]}, "publication": "EVN báo cáo hoạt động 9 tháng, thường công bố tháng 10", "source": {"name": "EVN", "url": "https://www.evn.com.vn/"}, "where": {"page": "Dien/index.html", "blocks": ["dien-11-sources"]}, "how": "So cùng kỳ từng nguồn theo số EVN công bố; giữ mức tuyệt đối, tăng/giảm tỷ kWh và %; kiểm tổng các nguồn với tổng EVN, nêu chênh lệch nếu có", "gates": ["Có tài liệu EVN cho cả hai kỳ", "Không thay sản lượng kWh bằng công suất MW", "Ghi rõ nếu tỷ lệ tăng tổng không khớp hai mức tổng"]},
-  {"id": "power.hot-topics", "tier": "C", "title": "Chủ đề nóng: El Niño & thủy văn, giá điện & EVN, chuyển dịch năng lượng", "schedule": {"type": "weekly", "day": "mon", "at": "07:00"}, "publication": "Theo sự kiện; NOAA bàn ENSO thứ Năm tuần 2 mỗi tháng", "source": {"name": "NOAA, EVN, Bộ Công Thương, báo ngành", "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml"}, "where": {"page": "Dien/index.html", "blocks": ["dien-21", "dien-22", "dien-23", "dien-24", "dien-25", "dien-26", "dien-27", "dien-28"]}, "how": "Cập nhật xác suất ENSO theo bản tin NOAA mới, tiến độ dự án (LNG, BESS, hạt nhân, gió ngoài khơi), tranh chấp FIT; mỗi dòng giữ ngày và link", "gates": ["Mỗi số có link mở được", "Ghi ngày công bố", "Không đổi mốc nếu chỉ là đề xuất"], "watch": ["moit.notices"]},
-  {"id": "power.ai.cycle", "tier": "D", "title": "Điện: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk", "schedule": {"type": "data", "sources": ["enso_oni", "coal_newcastle", "wb_energy_monthly"], "minDays": 7, "material": [{"source": "enso_oni", "field": "oni", "abs": 0.3}, {"source": "coal_newcastle", "field": "value", "pct": 10}, {"source": "wb_energy_monthly", "field": "lng_japan", "pct": 10}]}, "where": {"page": "Dien/index.html", "blocks": ["dien-02"]}, "how": "Cập nhật số và nhận định khi ENSO, giá than hoặc LNG đổi vượt ngưỡng", "gates": ["Số khớp chart", "Không đụng ô analyst"]},
-  {"id": "static.pages", "tier": "static", "title": "Chuỗi giá trị, danh sách doanh nghiệp, giải thích cơ chế", "schedule": {"type": "none"}, "where": {"page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html", "blocks": ["dau-khi-01", "dau-khi-03", "dau-khi-04", "dau-khi-26", "sugar-01", "sugar-03", "dien-01", "dien-03", "dien-29"]}}
+  {
+   "id": "oil.eia-spot",
+   "tier": "A",
+   "title": "Giá giao ngay Brent, WTI, xăng, diesel (EIA)",
+   "sources": [
+    "brent",
+    "wti",
+    "gasoline",
+    "diesel"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "thứ Tư–Sáu"
+   },
+   "publication": "File giá ngày, EIA phát hành theo tuần",
+   "source": {
+    "name": "EIA Spot Prices",
+    "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_d.htm"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-20",
+     "dau-khi-21",
+     "dau-khi-23",
+     "dau-khi-24",
+     "dau-khi-25"
+    ]
+   }
+  },
+  {
+   "id": "oil.eia-wpsr",
+   "tier": "A",
+   "title": "Tồn kho, sản lượng Mỹ (EIA WPSR)",
+   "sources": [
+    "crude_stock",
+    "gasoline_stock",
+    "distillate_stock",
+    "cushing",
+    "us_production"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "thứ Năm–Sáu giờ VN"
+   },
+   "publication": "Hằng tuần, thứ Tư giờ Mỹ; lễ có thể dời",
+   "source": {
+    "name": "EIA Weekly Petroleum Status Report",
+    "url": "https://www.eia.gov/petroleum/supply/weekly/"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-06",
+     "dau-khi-07",
+     "dau-khi-08",
+     "dau-khi-09",
+     "dau-khi-10"
+    ]
+   }
+  },
+  {
+   "id": "oil.futures",
+   "tier": "A",
+   "title": "Đường cong WTI, Brent futures (Yahoo)",
+   "sources": [
+    "wti_curve",
+    "brent_futures"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "thứ Ba–Bảy, phiên hoàn tất"
+   },
+   "publication": "Ngày giao dịch; nguồn không chính thức",
+   "source": {
+    "name": "Yahoo Finance futures",
+    "url": "https://finance.yahoo.com/quote/CL%3DF/futures/"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-11"
+    ],
+    "note": "kèm chart giá nhanh #chFastPrice"
+   }
+  },
+  {
+   "id": "oil.cftc",
+   "tier": "A",
+   "title": "Vị thế managed money WTI (CFTC COT)",
+   "sources": [
+    "wti_cot"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "thứ Bảy–thứ Ba giờ VN"
+   },
+   "publication": "Vị thế thứ Ba, thường công bố thứ Sáu",
+   "source": {
+    "name": "CFTC Commitments of Traders",
+    "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-13"
+    ]
+   }
+  },
+  {
+   "id": "oil.steo",
+   "tier": "A",
+   "title": "Dư địa công suất OPEC, cung cầu dầu toàn cầu (EIA STEO)",
+   "sources": [
+    "opec_capacity",
+    "world_balance"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "ngày 5–15 hằng tháng và thứ Hai"
+   },
+   "publication": "Hằng tháng theo lịch STEO",
+   "source": {
+    "name": "EIA STEO release schedule",
+    "url": "https://www.eia.gov/outlooks/steo/release_schedule.php"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-12",
+     "dau-khi-05"
+    ],
+    "note": "dau-khi-05: chart chWorldSD, chWorldBalance, bảng tbl-worldbalance"
+   }
+  },
+  {
+   "id": "oil.portwatch",
+   "tier": "A",
+   "title": "Lượt tàu qua Hormuz, Bab el-Mandeb (IMF PortWatch)",
+   "sources": [
+    "hormuz",
+    "bab_el_mandeb"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "thứ Hai–Bảy"
+   },
+   "publication": "Số liệu ngày, cập nhật theo tuần",
+   "source": {
+    "name": "IMF PortWatch",
+    "url": "https://portwatch.imf.org/pages/chokepoint6"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-37",
+     "dau-khi-41"
+    ]
+   }
+  },
+  {
+   "id": "oil.jodi",
+   "tier": "A",
+   "title": "Xuất khẩu dầu thô Saudi Arabia, Kuwait (JODI)",
+   "sources": [
+    "middle_east_crude_exports"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "ngày 18–28 và thứ Hai"
+   },
+   "publication": "Hằng tháng, quanh ngày 20",
+   "source": {
+    "name": "JODI Oil",
+    "url": "https://www.jodidata.org/oil/database/data-downloads.aspx"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-40"
+    ]
+   }
+  },
+  {
+   "id": "oil.singapore-cracks",
+   "tier": "A",
+   "title": "Crack Singapore gasoil, xăng so với Dubai (KNOC)",
+   "sources": [
+    "singapore_cracks"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "thứ Ba–Bảy, cách 6 giờ"
+   },
+   "publication": "Giá ngày T công bố T+1, thứ Ba–Bảy",
+   "source": {
+    "name": "KNOC Opinet",
+    "url": "https://www.opinet.co.kr/glopopdSelect.do"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-singapore-crack"
+    ]
+   }
+  },
+  {
+   "id": "oil.retail-fuel",
+   "tier": "A",
+   "title": "Giá bán lẻ xăng dầu Vùng 1 (Petrolimex)",
+   "sources": [
+    "retail_fuel"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "ngày làm việc, cách 6 giờ"
+   },
+   "publication": "Theo kỳ điều hành, thông cáo Petrolimex",
+   "source": {
+    "name": "Petrolimex thông cáo báo chí",
+    "url": "https://home.petrolimex.com.vn/ndi/thong-cao-bao-chi.html"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-22"
+    ]
+   }
+  },
+  {
+   "id": "sugar.futures",
+   "tier": "A",
+   "title": "Sugar No.11 futures (Yahoo SB=F, hoặc hợp đồng gần nhất khi SB=F hỏng)",
+   "sources": [
+    "sugar_futures"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "thứ Ba–Bảy"
+   },
+   "publication": "Ngày giao dịch; nguồn không chính thức",
+   "source": {
+    "name": "Yahoo SB=F",
+    "url": "https://finance.yahoo.com/quote/SB%3DF/"
+   },
+   "where": {
+    "page": "Sugar/index.html",
+    "blocks": [],
+    "note": "chart giá nhanh #chFastPrice do assets/sector-layout.js dựng"
+   }
+  },
+  {
+   "id": "sugar.worldbank",
+   "tier": "A",
+   "title": "Giá đường thế giới tháng (World Bank Pink Sheet)",
+   "sources": [
+    "sugar_monthly"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "ngày 1–10 và thứ Hai"
+   },
+   "publication": "Hằng tháng",
+   "source": {
+    "name": "World Bank Commodity Markets",
+    "url": "https://www.worldbank.org/en/research/commodity-markets"
+   },
+   "where": {
+    "page": "Sugar/index.html",
+    "blocks": [
+     "sugar-04",
+     "sugar-05"
+    ]
+   }
+  },
+  {
+   "id": "sugar.usda-producers",
+   "tier": "A",
+   "title": "Sản lượng 4 trung tâm cung đường (USDA PSD)",
+   "sources": [
+    "sugar_producers"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "từ 15/5 và 15/11"
+   },
+   "publication": "2 lần/năm, tháng 5 và 11",
+   "source": {
+    "name": "USDA FAS PSD",
+    "url": "https://apps.fas.usda.gov/psdonline/app/index.html"
+   },
+   "where": {
+    "page": "Sugar/index.html",
+    "blocks": [],
+    "note": "card sugar-world-production do assets/sector-layout.js dựng"
+   }
+  },
+  {
+   "id": "bank.eximbank",
+   "tier": "A",
+   "title": "Eximbank lãi suất cho vay, chênh lệch bình quân",
+   "sources": [
+    "bank_eximbank"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "ngày làm việc trong cửa sổ công bố tháng"
+   },
+   "publication": "Theo công bố, không cố định",
+   "source": {
+    "name": "Eximbank",
+    "url": "https://eximbank.com.vn/"
+   },
+   "where": {
+    "page": "Bank/index.html",
+    "cards": [
+     "Eximbank · lãi suất cho vay bình quân",
+     "Eximbank · chênh lệch lãi suất bình quân"
+    ]
+   }
+  },
+  {
+   "id": "market.valuation",
+   "tier": "A",
+   "title": "P/E, P/B, vốn hóa hằng ngày của doanh nghiệp theo dõi (40 mã)",
+   "sources": [
+    "company_valuation"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "mọi lượt job: 07:30 phiên trước, 15:30 phiên trong ngày"
+   },
+   "publication": "Giá đóng cửa mỗi phiên; P/E, P/B, vốn hóa VNDirect tính theo EPS/BVPS gần nhất",
+   "source": {
+    "name": "VNDirect finfo",
+    "url": "https://dstock.vndirect.com.vn/"
+   },
+   "where": {
+    "page": "assets/financial-comparison.js",
+    "blocks": [],
+    "note": "tab so sánh 4 ngành; trang Đường: bảng sức khỏe tài chính (sugar-20) và thẻ hồ sơ doanh nghiệp qua data-valuation"
+   }
+  },
+  {
+   "id": "comparison.financials",
+   "tier": "A",
+   "title": "Bảng so sánh tài chính doanh nghiệp (số BCTC; định giá lấy từ market.valuation)",
+   "job": "refresh_release.py --comparison (lượt 15:30)",
+   "schedule": {
+    "type": "policy",
+    "note": "15:30 mỗi ngày"
+   },
+   "publication": "BCTC quý/năm, giá ngày",
+   "source": {
+    "name": "Bảng tài chính công khai",
+    "url": "https://finance.vietstock.vn/"
+   },
+   "where": {
+    "page": "assets/financial-comparison.js",
+    "blocks": [],
+    "note": "tab so sánh doanh nghiệp ở cả 4 trang"
+   }
+  },
+  {
+   "id": "bank.wi.daily",
+   "tier": "B",
+   "title": "Wi: lãi suất huy động, liên ngân hàng, OMO, tỷ giá, TPCP, định giá, tin tức",
+   "wiBlocks": [
+    "deposit-rates",
+    "money-market",
+    "omo",
+    "fx",
+    "bonds-macro",
+    "valuation",
+    "services-demand",
+    "news"
+   ],
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Hằng ngày (metadata bảng Wi)",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Bank/index.html",
+    "file": "data/bank-wi-data.js"
+   },
+   "how": "python3 scripts/wi_ingest.py plan <id> → gọi đúng từng lệnh WiMCP (hook tự lưu kết quả) → python3 scripts/wi_ingest.py ingest <id> → python3 scripts/build_bank_wi.py --checked-at <ISO>; file tin tức: thay 25 CBTT + 11 ai_news mới nhất theo cấu trúc cũ",
+   "gates": [
+    "tests/test_bank_wi.py qua",
+    "Ngày quan sát mới không lùi so với bản cũ",
+    "Không ghép bảng gốc 17/18 với bảng đã điều chỉnh 301/302"
+   ]
+  },
+  {
+   "id": "bank.wi.monthly",
+   "tier": "B",
+   "title": "Wi: tiền gửi, cung tiền, tín dụng, tín dụng theo ngành, vĩ mô, dự báo, TPDN",
+   "wiBlocks": [
+    "funding",
+    "credit",
+    "credit-sectors",
+    "macro",
+    "forecast",
+    "bonds"
+   ],
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "SBV trễ 1–3 tháng, ngày công bố không cố định; TPDN theo phát hành",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Bank/index.html",
+    "file": "data/bank-wi-data.js"
+   },
+   "how": "Như bank.wi.daily (plan → gọi WiMCP → ingest → build)",
+   "gates": [
+    "tests/test_bank_wi.py qua",
+    "Dùng bảng đã điều chỉnh 301/302 cho tiền gửi/M2",
+    "Kỳ mới phải là tháng kế tiếp hoặc revision có ghi chú"
+   ]
+  },
+  {
+   "id": "bank.wi.quarterly",
+   "tier": "B",
+   "status": "manual",
+   "title": "Wi: BCTC ngân hàng (chỉ số, thu nhập, chất lượng tài sản, định giá lại, nguồn vốn khác)",
+   "wiBlocks": [
+    "other-funding",
+    "bank-ratios",
+    "yield-funding",
+    "income",
+    "asset-quality",
+    "repricing"
+   ],
+   "schedule": {
+    "type": "window",
+    "every": "daily",
+    "at": "07:00",
+    "days": "mon-fri",
+    "windows": [
+     [
+      "01-15",
+      "02-05"
+     ],
+     [
+      "03-15",
+      "04-05"
+     ],
+     [
+      "04-15",
+      "05-05"
+     ],
+     [
+      "07-15",
+      "08-05"
+     ],
+     [
+      "08-10",
+      "09-03"
+     ],
+     [
+      "10-15",
+      "11-05"
+     ]
+    ]
+   },
+   "publication": "BCTC quý ≤20 ngày (công ty mẹ 30), bán niên soát xét ≤45/60, năm kiểm toán ≤90 ngày sau kỳ (TT96/2020, VBHN 10/2026)",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Bank/index.html",
+    "file": "data/bank-wi-data.js"
+   },
+   "how": "Như bank.wi.daily; cập nhật tên kỳ (vd 2026Q3) trong raw_file nếu contract đổi kỳ",
+   "gates": [
+    "tests/test_bank_wi.py qua",
+    "Đủ mẫu ngân hàng cùng kỳ, thiếu thì ghi rõ mã thiếu",
+    "Không trộn TTM với quý"
+   ],
+   "manual": "Số BCTC/báo cáo doanh nghiệp: chỉ cập nhật khi người dùng nhắn (quyết định 06/10/2026), không quét định kỳ"
+  },
+  {
+   "id": "oil.vn-production",
+   "tier": "C",
+   "title": "Sản lượng khai thác dầu thô, khí Việt Nam",
+   "schedule": {
+    "type": "watch"
+   },
+   "publication": "NSO ngày 3 hằng tháng (từ 05/2026), kể cả cuối tuần",
+   "source": {
+    "name": "NSO số liệu thống kê",
+    "url": "https://www.nso.gov.vn/so-lieu-thong-ke/"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-15"
+    ]
+   },
+   "how": "Lấy sản lượng dầu thô (triệu tấn) và khí (tỷ m³) lũy kế năm từ báo cáo NSO tháng mới nhất; cập nhật nhãn số tháng của cột năm hiện tại",
+   "gates": [
+    "Đúng đơn vị triệu tấn / tỷ m³",
+    "Ghi rõ YTD bao nhiêu tháng",
+    "Link báo cáo NSO đúng tháng"
+   ],
+   "watch": [
+    "nso.rss"
+   ]
+  },
+  {
+   "id": "oil.pvgas-annual",
+   "tier": "C",
+   "title": "PV GAS: khí vào bờ, LNG, vị trí trong nền kinh tế",
+   "schedule": {
+    "type": "watch"
+   },
+   "publication": "Báo cáo thường niên ≤110 ngày sau năm; tài liệu ĐHĐCĐ ≥21 ngày trước họp",
+   "source": {
+    "name": "PV GAS quan hệ cổ đông",
+    "url": "https://www.pvgas.com.vn/"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-16",
+     "dau-khi-17"
+    ]
+   },
+   "how": "Cập nhật sản lượng khí ẩm nội địa, LNG năm trước (thực hiện) và năm nay (kế hoạch, vẽ mờ) từ báo cáo thường niên/tài liệu ĐHĐCĐ",
+   "gates": [
+    "Phân biệt thực hiện và kế hoạch",
+    "Đơn vị triệu m³",
+    "Link tài liệu gốc"
+   ],
+   "status": "manual",
+   "manual": "Số BCTC/báo cáo doanh nghiệp: chỉ cập nhật khi người dùng nhắn (quyết định 06/10/2026), không quét định kỳ"
+  },
+  {
+   "id": "oil.supply-news",
+   "tier": "C",
+   "title": "Cân đối xăng dầu, chuỗi dự án khí",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     1,
+     1
+    ],
+    "at": "07:00"
+   },
+   "publication": "Không cố định; Petrovietnam thường công bố kết quả tháng ngày 10–20 tháng sau",
+   "source": {
+    "name": "Petrovietnam, Bộ Công Thương, báo ngành",
+    "url": "https://petrovietnam.petrotimes.vn/"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-18",
+     "dau-khi-19"
+    ]
+   },
+   "how": "Rà tin chính thức trong tháng về công suất/vận hành Dung Quất, Nghi Sơn và mốc dự án khí (FID, dòng khí đầu tiên); chỉ sửa khi có mốc mới",
+   "gates": [
+    "Ưu tiên nguồn doanh nghiệp/cơ quan nhà nước",
+    "Ghi ngày công bố",
+    "Không đổi mốc nếu chỉ là tin đồn"
+   ],
+   "watch": [
+    "pvn.news"
+   ]
+  },
+  {
+   "id": "oil.price-policy",
+   "tier": "C",
+   "title": "Cơ chế điều hành giá xăng dầu, Luật Dầu khí",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     1,
+     1
+    ],
+    "at": "07:00"
+   },
+   "publication": "Theo văn bản; NĐ 80/2023 điều hành thứ Năm hằng tuần, dự thảo nghị định mới có thể để doanh nghiệp tự định giá từ 2027",
+   "source": {
+    "name": "Bộ Công Thương văn bản",
+    "url": "https://moit.gov.vn/van-ban-phap-luat/van-ban-phap-quy/thong-bao-dieu-hanh-gia-ban-xang-dau.html"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-27",
+     "dau-khi-28"
+    ]
+   },
+   "how": "Kiểm văn bản mới về cơ chế giá (nghị định, thông tư, quỹ bình ổn) và văn bản hướng dẫn Luật Dầu khí; cập nhật mốc và tác động",
+   "gates": [
+    "Số hiệu văn bản + ngày hiệu lực",
+    "Link văn bản gốc"
+   ],
+   "watch": [
+    "moit.notices"
+   ]
+  },
+  {
+   "id": "oil.bsr-annual",
+   "tier": "C",
+   "title": "BSR biên lợi nhuận gộp theo năm",
+   "schedule": {
+    "type": "watch"
+   },
+   "publication": "BCTC năm kiểm toán ≤90 ngày sau năm",
+   "source": {
+    "name": "CafeF BCTC BSR",
+    "url": "https://cafef.vn/du-lieu/hose/bsr-cong-ty-co-phan-loc-hoa-dau-binh-son.chn"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-30"
+    ]
+   },
+   "how": "Thêm năm tài chính mới: biên gộp = lợi nhuận gộp / doanh thu thuần từ BCTC kiểm toán",
+   "gates": [
+    "Dùng BCTC kiểm toán, không dùng số quý cộng dồn",
+    "Giữ năm âm (vd 2020) và trục từ 0"
+   ],
+   "status": "manual",
+   "manual": "Số BCTC/báo cáo doanh nghiệp: chỉ cập nhật khi người dùng nhắn (quyết định 06/10/2026), không quét định kỳ"
+  },
+  {
+   "id": "oil.company-quarterly",
+   "tier": "C",
+   "title": "PLX tồn kho, PVD/PVS/GAS driver theo quý",
+   "schedule": {
+    "type": "watch"
+   },
+   "publication": "BCTC quý ≤20 ngày (mẹ 30), bán niên ≤45/60, năm ≤90 ngày",
+   "source": {
+    "name": "BCTC doanh nghiệp",
+    "url": "https://finance.vietstock.vn/PLX/tai-chinh.htm"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-31",
+     "dau-khi-32",
+     "dau-khi-33",
+     "dau-khi-34"
+    ]
+   },
+   "how": "Thêm quý mới: PLX tồn kho cuối quý, LNST, dự phòng giảm giá; PVD/PVS/GAS cập nhật driver có trong BCTC/CBTT quý",
+   "gates": [
+    "Đúng quý báo cáo",
+    "Đối chiếu tổng với BCTC gốc",
+    "Thiếu thì để trống"
+   ],
+   "status": "manual",
+   "manual": "Số BCTC/báo cáo doanh nghiệp: chỉ cập nhật khi người dùng nhắn (quyết định 06/10/2026), không quét định kỳ"
+  },
+  {
+   "id": "sugar.domestic",
+   "tier": "C",
+   "title": "Giá đường trong nước, so sánh khu vực",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     1,
+     1
+    ],
+    "at": "07:00"
+   },
+   "publication": "Không cố định; không có chuỗi giá công bố theo lịch",
+   "source": {
+    "name": "VSSA qua báo ngành",
+    "url": "https://news.google.com/search?q=%22Hi%E1%BB%87p%20h%E1%BB%99i%20M%C3%ADa%20%C4%91%C6%B0%E1%BB%9Dng%22"
+   },
+   "where": {
+    "page": "Sugar/index.html",
+    "blocks": [
+     "sugar-06",
+     "sugar-07"
+    ]
+   },
+   "how": "Thêm mốc giá đường RS/RE trong nước và giá khu vực quy đổi VND/kg từ công bố VSSA/báo ngành trong tháng",
+   "gates": [
+    "Mốc giá có ngày quan sát",
+    "Không nội suy giữa các mốc"
+   ]
+  },
+  {
+   "id": "sugar.vn-balance",
+   "tier": "A",
+   "title": "Cân đối cung – cầu, tồn kho, nhập khẩu đường Việt Nam (USDA PSD, script)",
+   "schedule": {
+    "type": "policy",
+    "note": "từ 15/5 và 15/11, ngày 1 hằng tháng"
+   },
+   "publication": "Khi USDA sửa PSD (vòng tháng 5/11); có niên vụ dự báo",
+   "source": {
+    "name": "USDA FAS PSD",
+    "url": "https://apps.fas.usda.gov/psdonline/app/index.html"
+   },
+   "where": {
+    "page": "Sugar/index.html",
+    "blocks": [
+     "sugar-08",
+     "sugar-09",
+     "sugar-14"
+    ]
+   },
+   "sources": [
+    "sugar_vn_balance"
+   ]
+  },
+  {
+   "id": "sugar.crop",
+   "tier": "C",
+   "title": "Mía ép, diện tích, giá mía nguyên liệu",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "08-15",
+      "10-15"
+     ]
+    ]
+   },
+   "publication": "Hội nghị tổng kết niên vụ (vd 13/09/2024); USDA không còn báo cáo GAIN đường Việt Nam từ 2021",
+   "source": {
+    "name": "VSSA qua báo ngành",
+    "url": "https://news.google.com/search?q=%22Hi%E1%BB%87p%20h%E1%BB%99i%20M%C3%ADa%20%C4%91%C6%B0%E1%BB%9Dng%22"
+   },
+   "where": {
+    "page": "Sugar/index.html",
+    "blocks": [
+     "sugar-10",
+     "sugar-11",
+     "sugar-12"
+    ]
+   },
+   "how": "Thêm niên vụ vừa kết thúc khi có số tổng kết chính thức",
+   "gates": [
+    "Chỉ số liệu chốt vụ",
+    "Giữ định nghĩa mía ép tại nhà máy"
+   ],
+   "watch": [
+    "news.vssa"
+   ]
+  },
+  {
+   "id": "sugar.company",
+   "tier": "C",
+   "title": "SBT biên gộp, so sánh biên và sức khỏe tài chính nhóm đường",
+   "schedule": {
+    "type": "watch"
+   },
+   "publication": "BCTC quý; SBT niên độ T7–T6, BCTC năm kiểm toán khoảng 28/09",
+   "source": {
+    "name": "BCTC doanh nghiệp",
+    "url": "https://finance.vietstock.vn/SBT/tai-chinh.htm"
+   },
+   "where": {
+    "page": "Sugar/index.html",
+    "blocks": [
+     "sugar-13",
+     "sugar-19",
+     "sugar-20"
+    ]
+   },
+   "how": "Thêm kỳ mới từ BCTC; thay snapshot broker cũ bằng số BCTC công khai khi đủ 5 mã",
+   "gates": [
+    "Đúng niên độ",
+    "Ghi nguồn mỗi mã",
+    "Đổi quý niên độ SBT sang quý dương lịch trước khi so với mã khác"
+   ],
+   "status": "manual",
+   "manual": "Số BCTC/báo cáo doanh nghiệp: chỉ cập nhật khi người dùng nhắn (quyết định 06/10/2026), không quét định kỳ"
+  },
+  {
+   "id": "sugar.trade",
+   "tier": "C",
+   "title": "Nhập lậu ước tính, HFCS, hạn ngạch thuế quan, mốc chính sách",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-15"
+     ]
+    ]
+   },
+   "publication": "TRQ: QĐ khoảng 8–9, đấu giá 9–10 hằng năm; HFCS theo số Hải quan năm (trang Hải quan không đọc được bằng máy)",
+   "source": {
+    "name": "Bộ Công Thương, Hải quan, VSSA",
+    "url": "https://moit.gov.vn/"
+   },
+   "where": {
+    "page": "Sugar/index.html",
+    "blocks": [
+     "sugar-15",
+     "sugar-16",
+     "sugar-17",
+     "sugar-18"
+    ]
+   },
+   "how": "Thêm năm mới cho HFCS, hạn ngạch TRQ; thêm mốc chính sách nếu có văn bản mới",
+   "gates": [
+    "Số hiệu văn bản",
+    "Ước tính nhập lậu ghi rõ nguồn ước tính"
+   ],
+   "watch": [
+    "moit.sugar-trq",
+    "vcbs.sector"
+   ]
+  },
+  {
+   "id": "bank.policy",
+   "tier": "C",
+   "title": "Bank: mốc pháp lý, bức tranh thế giới",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     1,
+     7
+    ],
+    "at": "07:00"
+   },
+   "publication": "Theo văn bản / theo công bố",
+   "source": {
+    "name": "Văn bản NHNN trên Cổng văn bản Chính phủ (sbv.gov.vn chặn máy chủ cloud)",
+    "url": "https://vanban.chinhphu.vn/"
+   },
+   "where": {
+    "page": "Bank/index.html",
+    "cards": [
+     "Mốc pháp lý cần đặt cạnh bảng cân đối"
+    ],
+    "note": "và card bức tranh thế giới trong tab địa lý"
+   },
+   "how": "Thêm văn bản mới của NHNN/Chính phủ ảnh hưởng bảng cân đối ngân hàng",
+   "gates": [
+    "Số hiệu, ngày hiệu lực",
+    "Link văn bản gốc"
+   ]
+  },
+  {
+   "id": "oil.ai.cycle",
+   "tier": "D",
+   "title": "Dầu khí: vị trí trong chu kỳ",
+   "schedule": {
+    "type": "data",
+    "sources": [
+     "brent",
+     "wti",
+     "brent_futures",
+     "crude_stock"
+    ],
+    "minDays": 7,
+    "material": [
+     {
+      "source": "brent",
+      "field": "value",
+      "pct": 5
+     },
+     {
+      "source": "crude_stock",
+      "field": "value",
+      "pct": 3
+     }
+    ]
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-02"
+    ]
+   },
+   "how": "Cập nhật số bình quân năm, cấu trúc kỳ hạn và nhận định pha chu kỳ",
+   "gates": [
+    "Số trong lời bình khớp chart",
+    "Không đụng ô analyst"
+   ]
+  },
+  {
+   "id": "oil.ai.balance",
+   "tier": "D",
+   "title": "Dầu khí: cân bằng cung – cầu toàn cầu",
+   "schedule": {
+    "type": "data",
+    "sources": [
+     "world_balance",
+     "opec_capacity",
+     "middle_east_crude_exports",
+     "crude_stock",
+     "us_production"
+    ],
+    "minDays": 7,
+    "material": [
+     {
+      "source": "world_balance",
+      "field": "balance",
+      "abs": 0.5,
+      "pick": "all"
+     },
+     {
+      "source": "opec_capacity",
+      "field": "capacity",
+      "abs": 0.5
+     },
+     {
+      "source": "crude_stock",
+      "field": "value",
+      "pct": 3
+     }
+    ]
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-05"
+    ]
+   },
+   "how": "Cập nhật biến giải thích cân bằng cung – cầu theo STEO, JODI, tồn kho mới",
+   "gates": [
+    "Số khớp chart",
+    "Ghi rõ số ước tính (EIA) khác số đo",
+    "Không đụng ô analyst"
+   ]
+  },
+  {
+   "id": "oil.ai.regime",
+   "tier": "D",
+   "title": "Dầu khí: đọc chế độ thị trường",
+   "schedule": {
+    "type": "data",
+    "sources": [
+     "brent",
+     "wti_curve",
+     "wti_cot",
+     "crude_stock",
+     "singapore_cracks"
+    ],
+    "minDays": 7,
+    "material": [
+     {
+      "source": "brent",
+      "field": "value",
+      "pct": 5
+     },
+     {
+      "source": "wti_cot",
+      "field": "net_thousands",
+      "abs": 30
+     },
+     {
+      "source": "singapore_cracks",
+      "field": "gasoil_crack",
+      "abs": 5
+     },
+     {
+      "source": "crude_stock",
+      "field": "value",
+      "pct": 3
+     }
+    ]
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-14",
+     "dau-khi-29"
+    ]
+   },
+   "how": "Làm mới bảng tín hiệu, ngưỡng KPI cần theo dõi và ngày bản phân tích",
+   "gates": [
+    "Đổi ngày 'bản phân tích'",
+    "Số khớp dữ liệu nền"
+   ]
+  },
+  {
+   "id": "oil.ai.channels",
+   "tier": "D",
+   "title": "Dầu khí: năm kênh truyền dẫn, PVT",
+   "schedule": {
+    "type": "data",
+    "sources": [
+     "brent",
+     "singapore_cracks",
+     "retail_fuel",
+     "hormuz",
+     "bab_el_mandeb"
+    ],
+    "minDays": 7,
+    "material": [
+     {
+      "source": "brent",
+      "field": "value",
+      "pct": 5
+     },
+     {
+      "source": "singapore_cracks",
+      "field": "gasoil_crack",
+      "abs": 5
+     },
+     {
+      "source": "singapore_cracks",
+      "field": "gasoline_crack",
+      "abs": 5
+     },
+     {
+      "source": "retail_fuel",
+      "field": "ron95",
+      "pct": 3
+     }
+    ]
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "blocks": [
+     "dau-khi-38",
+     "dau-khi-35"
+    ]
+   },
+   "how": "Cập nhật chiều/độ mạnh tác động từng kênh theo số mới",
+   "gates": [
+    "Không suy cước PVT từ giá dầu",
+    "Không đụng ô analyst"
+   ]
+  },
+  {
+   "id": "sugar.ai.cycle",
+   "tier": "D",
+   "title": "Đường: vị trí trong chu kỳ",
+   "schedule": {
+    "type": "data",
+    "sources": [
+     "sugar_monthly",
+     "sugar_futures"
+    ],
+    "minDays": 7,
+    "material": [
+     {
+      "source": "sugar_monthly",
+      "field": "value",
+      "pct": 5
+     },
+     {
+      "source": "sugar_futures",
+      "field": "value",
+      "pct": 7
+     }
+    ]
+   },
+   "where": {
+    "page": "Sugar/index.html",
+    "blocks": [
+     "sugar-02"
+    ]
+   },
+   "how": "Cập nhật mức giá so với đỉnh/đáy chu kỳ và nhận định",
+   "gates": [
+    "Số khớp chart",
+    "Không đụng ô analyst"
+   ]
+  },
+  {
+   "id": "bank.ai.read",
+   "tier": "D",
+   "title": "Bank: đọc nhanh",
+   "schedule": {
+    "type": "after",
+    "items": [
+     "bank.wi.daily",
+     "bank.wi.monthly",
+     "bank.wi.quarterly"
+    ],
+    "minDays": 7
+   },
+   "where": {
+    "page": "Bank/index.html",
+    "cards": [
+     "Đọc nhanh"
+    ]
+   },
+   "how": "Viết lại đoạn đọc nhanh theo số Wi mới, đổi ngày 'AI viết'",
+   "gates": [
+    "Số khớp bundle Wi",
+    "Không đụng ô analyst"
+   ]
+  },
+  {
+   "id": "power.evn-daily",
+   "tier": "A",
+   "title": "Sản lượng, Pmax, cơ cấu nguồn theo ngày (EVN, script)",
+   "sources": [
+    "vn_power_daily"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "mọi lượt job; EVN đăng bản tin ngày D vào khoảng 10:20–11:00 ngày D+1"
+   },
+   "publication": "Hằng ngày, kể cả cuối tuần",
+   "source": {
+    "name": "EVN · Thông tin vận hành HTĐ Quốc gia",
+    "url": "https://www.evn.com.vn/vi-VN/news-l/Thong-tin-tom-tat-van-hanh-HTD-Quoc-gia-60-2015"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-06",
+     "dien-07",
+     "dien-07-gas",
+     "dien-07-coal",
+     "dien-07-renewables",
+     "dien-07-imports",
+     "dien-08",
+     "dien-09"
+    ]
+   }
+  },
+  {
+   "id": "power.enso",
+   "tier": "A",
+   "title": "ONI và Niño 3.4 tuần (NOAA CPC, script)",
+   "sources": [
+    "enso_oni",
+    "nino34_weekly"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "ONI ngày 1–10 và thứ Hai; Niño 3.4 thứ Hai–Tư"
+   },
+   "publication": "ONI hằng tháng; Niño 3.4 hằng tuần",
+   "source": {
+    "name": "NOAA CPC",
+    "url": "https://www.cpc.ncep.noaa.gov/data/indices/"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-04",
+     "dien-05"
+    ]
+   }
+  },
+  {
+   "id": "power.wb-energy",
+   "tier": "A",
+   "title": "Giá than, khí, LNG tháng (World Bank Pink Sheet, script)",
+   "sources": [
+    "wb_energy_monthly"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "ngày 1–10 và thứ Hai"
+   },
+   "publication": "Hằng tháng",
+   "source": {
+    "name": "World Bank Commodity Markets",
+    "url": "https://www.worldbank.org/en/research/commodity-markets"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-12",
+     "dien-13"
+    ]
+   }
+  },
+  {
+   "id": "power.futures",
+   "tier": "A",
+   "title": "Futures than Newcastle, LNG JKM (ICE, script)",
+   "sources": [
+    "coal_newcastle",
+    "lng_jkm"
+   ],
+   "schedule": {
+    "type": "policy",
+    "note": "thứ Ba–Bảy"
+   },
+   "publication": "Ngày giao dịch; nguồn không chính thức",
+   "source": {
+    "name": "ICE",
+    "url": "https://www.ice.com/products/243/Newcastle-Coal-Futures"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [],
+    "note": "chart giá nhanh #chFastPrice do assets/sector-layout.js dựng; KPI than"
+   }
+  },
+  {
+   "id": "power.tariff-evn",
+   "tier": "C",
+   "title": "Giá bán lẻ điện, tài chính EVN, giá thị trường điện",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     1,
+     1
+    ],
+    "at": "07:00"
+   },
+   "publication": "Theo quyết định điều chỉnh giá (tối thiểu 3 tháng/lần theo NĐ 72/2025); BCTC EVN năm công bố khoảng tháng 6",
+   "source": {
+    "name": "EVN, Bộ Công Thương",
+    "url": "https://www.evn.com.vn/"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-14",
+     "dien-15",
+     "dien-16",
+     "dien-20"
+    ]
+   },
+   "how": "Kiểm quyết định giá bán lẻ mới, kết quả tài chính EVN, giá mua điện bình quân; thêm mốc mới vào chart và bảng, giữ mốc cũ",
+   "gates": [
+    "Số hiệu văn bản + ngày hiệu lực",
+    "Link văn bản gốc hoặc bài EVN",
+    "Không suy giá từ tin đồn"
+   ],
+   "watch": [
+    "moit.notices"
+   ]
+  },
+  {
+   "id": "power.policy",
+   "tier": "C",
+   "title": "Cơ chế giá điện, Quy hoạch điện VIII, DPPA, mái nhà, thị trường điện",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     1,
+     1
+    ],
+    "at": "07:00"
+   },
+   "publication": "Theo văn bản",
+   "source": {
+    "name": "Cổng văn bản Chính phủ",
+    "url": "https://vanban.chinhphu.vn/"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-17",
+     "dien-18",
+     "dien-19"
+    ]
+   },
+   "how": "Kiểm văn bản mới (nghị định, quyết định, thông tư) về giá điện, quy hoạch, DPPA, mái nhà, thị trường điện; cập nhật bảng Trước/Sau",
+   "gates": [
+    "Số hiệu văn bản + ngày hiệu lực",
+    "Link văn bản gốc"
+   ],
+   "watch": [
+    "moit.notices"
+   ]
+  },
+  {
+   "id": "power.capacity",
+   "tier": "C",
+   "title": "Công suất đặt theo nguồn, sản lượng năm",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-05",
+      "02-15"
+     ],
+     [
+      "06-01",
+      "07-31"
+     ]
+    ]
+   },
+   "publication": "EVN tổng kết năm (tháng 1), báo cáo thường niên (giữa năm)",
+   "source": {
+    "name": "EVN",
+    "url": "https://www.evn.com.vn/"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-10",
+     "dien-11"
+    ]
+   },
+   "how": "Thêm năm mới khi EVN công bố số chính thức; giữ định nghĩa cũ, ghi rõ nếu nguồn đổi cách tính (mái nhà, nhập khẩu)",
+   "gates": [
+    "Số chính thức của EVN/NSMO",
+    "Ghi kỳ và ngày công bố"
+   ]
+  },
+  {
+   "id": "power.output-sources",
+   "tier": "C",
+   "title": "Sản lượng điện theo nguồn, lũy kế 9 tháng",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "10-01",
+      "11-15"
+     ]
+    ]
+   },
+   "publication": "EVN báo cáo hoạt động 9 tháng, thường công bố tháng 10",
+   "source": {
+    "name": "EVN",
+    "url": "https://www.evn.com.vn/"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-11-sources"
+    ]
+   },
+   "how": "So cùng kỳ từng nguồn theo số EVN công bố; giữ mức tuyệt đối, tăng/giảm tỷ kWh và %; kiểm tổng các nguồn với tổng EVN, nêu chênh lệch nếu có",
+   "gates": [
+    "Có tài liệu EVN cho cả hai kỳ",
+    "Không thay sản lượng kWh bằng công suất MW",
+    "Ghi rõ nếu tỷ lệ tăng tổng không khớp hai mức tổng"
+   ]
+  },
+  {
+   "id": "power.hot-topics",
+   "tier": "C",
+   "title": "Chủ đề nóng: El Niño & thủy văn, giá điện & EVN, chuyển dịch năng lượng",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện; NOAA bàn ENSO thứ Năm tuần 2 mỗi tháng",
+   "source": {
+    "name": "NOAA, EVN, Bộ Công Thương, báo ngành",
+    "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-21",
+     "dien-22",
+     "dien-23",
+     "dien-24",
+     "dien-25",
+     "dien-26",
+     "dien-27",
+     "dien-28"
+    ]
+   },
+   "how": "Cập nhật xác suất ENSO theo bản tin NOAA mới, tiến độ dự án (LNG, BESS, hạt nhân, gió ngoài khơi), tranh chấp FIT; mỗi dòng giữ ngày và link",
+   "gates": [
+    "Mỗi số có link mở được",
+    "Ghi ngày công bố",
+    "Không đổi mốc nếu chỉ là đề xuất"
+   ],
+   "watch": [
+    "moit.notices"
+   ]
+  },
+  {
+   "id": "power.ai.cycle",
+   "tier": "D",
+   "title": "Điện: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
+   "schedule": {
+    "type": "data",
+    "sources": [
+     "enso_oni",
+     "coal_newcastle",
+     "wb_energy_monthly"
+    ],
+    "minDays": 7,
+    "material": [
+     {
+      "source": "enso_oni",
+      "field": "oni",
+      "abs": 0.3
+     },
+     {
+      "source": "coal_newcastle",
+      "field": "value",
+      "pct": 10
+     },
+     {
+      "source": "wb_energy_monthly",
+      "field": "lng_japan",
+      "pct": 10
+     }
+    ]
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-02"
+    ]
+   },
+   "how": "Cập nhật số và nhận định khi ENSO, giá than hoặc LNG đổi vượt ngưỡng",
+   "gates": [
+    "Số khớp chart",
+    "Không đụng ô analyst"
+   ]
+  },
+  {
+   "id": "static.pages",
+   "tier": "static",
+   "title": "Chuỗi giá trị, danh sách doanh nghiệp, giải thích cơ chế",
+   "schedule": {
+    "type": "none"
+   },
+   "where": {
+    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html",
+    "blocks": [
+     "dau-khi-01",
+     "dau-khi-03",
+     "dau-khi-04",
+     "dau-khi-26",
+     "sugar-01",
+     "sugar-03",
+     "dien-01",
+     "dien-03",
+     "dien-29",
+     "bds-01",
+     "bds-03",
+     "bds-40"
+    ]
+   }
+  },
+  {
+   "id": "realestate.wi.daily",
+   "tier": "B",
+   "title": "Wi: TPDN BĐS (phát hành, dư nợ, chậm trả), vĩ mô (FDI, GDP, CPI nhà ở, tín dụng, lãi suất), định giá 4 phân ngành",
+   "wiBlocks": [
+    "cbond_cashflow",
+    "cbond_issuance",
+    "macro_core",
+    "macro_kcn",
+    "sector_ratio_recent"
+   ],
+   "wiContract": "data/realestate-wi-contract.json",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "HNX theo CBTT; NSO ngày 6; NHNN trễ 1–3 tháng; định giá theo phiên",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "file": "data/realestate-wi-data.js",
+    "blocks": [
+     "bds-04",
+     "bds-05",
+     "bds-06",
+     "bds-09",
+     "bds-10",
+     "bds-11",
+     "bds-16",
+     "bds-17",
+     "bds-28",
+     "bds-29",
+     "bds-30",
+     "bds-33",
+     "bds-34"
+    ]
+   },
+   "how": "Gọi lại đúng các lời gọi WiMCP trong data/realestate-wi-contract.json (hook wi_capture.py lưu kết quả), rồi chạy python3 scripts/build_realestate_wi.py; kiểm số mới nhất đổi hợp lý trước khi commit data/realestate-wi-data.js.",
+   "gates": [
+    "Không chép tay số",
+    "Tháng chưa khép sổ không vẽ",
+    "Giữ last-good khi Wi lỗi"
+   ]
+  },
+  {
+   "id": "realestate.wi.weekly",
+   "tier": "B",
+   "title": "Wi: lịch đáo hạn TPDN BĐS 2026–2027, giá thép, xi măng",
+   "wiBlocks": [
+    "cbond_maturity_2026",
+    "cbond_maturity_2027",
+    "commodity"
+   ],
+   "wiContract": "data/realestate-wi-contract.json",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Lịch đáo hạn tính lại mỗi lần Wi cập nhật; giá VLXD theo đợt",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "file": "data/realestate-wi-data.js",
+    "blocks": [
+     "bds-14",
+     "bds-15",
+     "bds-31",
+     "bds-32"
+    ]
+   },
+   "how": "Gọi lại đúng các lời gọi WiMCP trong data/realestate-wi-contract.json (hook wi_capture.py lưu kết quả), rồi chạy python3 scripts/build_realestate_wi.py; kiểm số mới nhất đổi hợp lý trước khi commit data/realestate-wi-data.js. Lịch đáo hạn 2027 vượt trần hiển thị của tool: dùng --restore với file tool-results.",
+   "gates": [
+    "Lọc sector_l1 = Bất động sản khi dựng",
+    "Ghi rõ số dòng bị cắt nếu total_count > returned"
+   ]
+  },
+  {
+   "id": "realestate.market-quarterly",
+   "tier": "C",
+   "title": "Bộ Xây dựng, CBRE, Savills, VARS: giao dịch, tồn kho, cung mới, giá căn hộ HN/HCM",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-05",
+      "02-28"
+     ],
+     [
+      "04-01",
+      "05-31"
+     ],
+     [
+      "07-01",
+      "08-31"
+     ],
+     [
+      "10-01",
+      "11-30"
+     ]
+    ]
+   },
+   "publication": "Bộ Xây dựng hằng quý (Q2/2026 công bố 21/08/2026); CBRE/Savills đầu tháng sau quý",
+   "source": {
+    "name": "Bộ Xây dựng",
+    "url": "https://moc.gov.vn/"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "blocks": [
+     "bds-07",
+     "bds-08",
+     "bds-13"
+    ]
+   },
+   "how": "Thay bảng bằng số quý mới; giữ nguồn và phạm vi từng dòng (CBRE ≠ Savills ≠ Bộ Xây dựng); cập nhật chHousePrice trong inline JS",
+   "gates": [
+    "Link bài gốc hoặc thông cáo",
+    "Ghi kỳ và ngày công bố",
+    "Không nối hai nguồn thành một chuỗi"
+   ]
+  },
+  {
+   "id": "realestate.kcn-quarterly",
+   "tier": "C",
+   "title": "Cushman & Wakefield, JLL: lấp đầy, cung mới, giá thuê đất KCN",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-28"
+     ],
+     [
+      "04-15",
+      "05-31"
+     ],
+     [
+      "07-15",
+      "08-31"
+     ],
+     [
+      "10-15",
+      "11-30"
+     ]
+    ]
+   },
+   "publication": "Hằng quý, khoảng 6–8 tuần sau kết thúc quý",
+   "source": {
+    "name": "Cushman & Wakefield Việt Nam",
+    "url": "https://www.cushmanwakefield.com/vi-vn/vietnam/insights"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "blocks": [
+     "bds-12",
+     "bds-18"
+    ]
+   },
+   "how": "Cập nhật bảng lấp đầy/cung mới và chKcnRent (inline JS) theo thông cáo quý mới; giữ đơn vị USD/m²/kỳ thuê còn lại",
+   "gates": [
+    "Link thông cáo gốc",
+    "Phân biệt đất, nhà xưởng, kho"
+   ]
+  },
+  {
+   "id": "realestate.policy",
+   "tier": "C",
+   "title": "Luật Đất đai, Nhà ở, KD BĐS, bảng giá đất, tín dụng BĐS, thuế BĐS",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     1,
+     1
+    ],
+    "at": "07:00"
+   },
+   "publication": "Theo văn bản; kỳ họp QH thứ 2 khóa XVI từ 20/10/2026",
+   "source": {
+    "name": "Cổng văn bản Chính phủ",
+    "url": "https://vanban.chinhphu.vn/"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "blocks": [
+     "bds-19",
+     "bds-20",
+     "bds-21",
+     "bds-37",
+     "bds-38"
+    ]
+   },
+   "how": "Kiểm văn bản mới (luật sửa đổi, nghị định, thông tư NHNN, nghị quyết bảng giá đất); cập nhật bảng Trước/Sau và chLandPrice; đổi 'chưa xác minh' thành số hiệu khi có",
+   "gates": [
+    "Số hiệu + ngày hiệu lực",
+    "Link văn bản gốc hoặc bài có số hiệu"
+   ],
+   "watch": [
+    "nso.rss"
+   ]
+  },
+  {
+   "id": "realestate.credit-rates",
+   "tier": "C",
+   "title": "Tín dụng BĐS (NHNN, Bộ Xây dựng), lãi suất vay mua nhà",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     3,
+     8
+    ],
+    "at": "07:00"
+   },
+   "publication": "Họp báo Chính phủ đầu tháng; NHNN họp báo 6 tháng/năm; khảo sát lãi vay đầu tháng",
+   "source": {
+    "name": "Ngân hàng Nhà nước",
+    "url": "https://www.sbv.gov.vn/"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "blocks": [
+     "bds-35",
+     "bds-36"
+    ]
+   },
+   "how": "Cập nhật bảng tín dụng BĐS và chMortgage (inline JS) theo công bố mới; ghi rõ mốc so sánh",
+   "gates": [
+    "Link bài dẫn NHNN/Bộ Xây dựng",
+    "Ghi thời điểm số liệu"
+   ]
+  },
+  {
+   "id": "realestate.hot-topics",
+   "tier": "C",
+   "title": "Chủ đề nóng: dự án tồn đọng, giá nhà, bảng giá đất, NOXH, KCN & thuế quan, tái cấu trúc nợ; dự án theo dõi",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Báo ngành, Bộ Xây dựng, HNX",
+    "url": "https://moc.gov.vn/"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "blocks": [
+     "bds-22",
+     "bds-23",
+     "bds-24",
+     "bds-25",
+     "bds-26",
+     "bds-27",
+     "bds-39"
+    ]
+   },
+   "how": "Thêm mốc mới có ngày và link; kiểm điều kiện kết thúc; cập nhật bảng dự án theo dõi",
+   "gates": [
+    "Mỗi dòng có ngày + link",
+    "Không gán nhân quả giá cổ phiếu"
+   ]
+  },
+  {
+   "id": "realestate.ai.cycle",
+   "tier": "D",
+   "title": "BĐS: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
+   "schedule": {
+    "type": "data",
+    "sources": [],
+    "minDays": 7,
+    "material": [],
+    "note": "Viết lại khi dư nợ chậm trả TPDN BĐS đổi ≥ 5% hoặc gốc đến hạn 3 tháng tới / dư nợ đổi ≥ 1 điểm %, hoặc có số quý mới của Bộ Xây dựng"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "blocks": [
+     "bds-02"
+    ]
+   },
+   "how": "Cập nhật số và nhận định trong bds-02 và catbox/riskbox theo số mới; bảng tín hiệu tự tính từ Wi",
+   "gates": [
+    "Số khớp chart",
+    "Không đụng ô analyst"
+   ]
+  }
  ]
 }
