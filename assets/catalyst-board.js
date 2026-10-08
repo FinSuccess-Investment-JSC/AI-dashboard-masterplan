@@ -209,6 +209,8 @@
     const detail=fold('thesis-detail','Chi tiết từng tín hiệu');
     detail.body.append(filter,grid,signals.querySelector('.thesis-assumption'));scenarios.replaceWith(detail.d);
     if(grid.querySelector('.data-gap,.gap-row'))detail.d.open=true;
+    // User asked (08/10/2026) to keep only verdict, signals and calendar; folds stay in DOM so sources still move to Sources.
+    pane.classList.add('oil-compact');
   }
   // Enter the requested tab at its decision board, avoiding the repeated hero.
   const enter=()=>requestAnimationFrame(()=>board.scrollIntoView({block:'start',behavior:'instant'}));

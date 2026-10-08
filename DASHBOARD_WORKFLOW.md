@@ -196,3 +196,4 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - Ngành khác giữ layout cũ cho tới khi người dùng duyệt bản Dầu khí.
 - Rút gọn 08/10/2026 theo phản hồi "dài, nhiều chữ": bỏ gạch đầu dòng dưới kết luận và hai cột Catalyst|Risk vì lặp số với bảng; ô khâu chỉ còn mũi tên + 2–3 chữ; lịch chỉ ngày + sự kiện.
 - Bỏ khối Kịch bản ở Dầu khí (08/10/2026, người dùng yêu cầu): khung 03/09 lệch giá hiện tại.
+- Ẩn luôn các fold Chi tiết tín hiệu, Bảng KPI, Phân tích AI 03/09 và Góc nhìn analyst ở Dầu khí (class `.oil-compact`, 08/10/2026). Vẫn giữ trong DOM để srcrow sang Sources; muốn hiện lại thì bỏ class.

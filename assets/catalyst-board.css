@@ -80,3 +80,4 @@ tr[data-state=risk] td:first-child{box-shadow:inset 3px 0 #d98b4a}tr[data-state=
 @media(max-width:700px){.oil-cr{grid-template-columns:1fr}.oil-verdict{padding:16px}.oil-verdict h3{font-size:16px}.oil-cal ol{grid-template-columns:1fr}}
 .oil-seg-tilt{font-size:16px}.oil-seg{flex-direction:row;flex-wrap:wrap;align-items:baseline;column-gap:6px}.oil-seg em{display:none}.oil-seg small{flex-basis:100%}
 .oil-verdict h3{margin-bottom:14px}
+.oil-compact #thesis-detail,.oil-compact #thesis-evidence,.oil-compact #thesis-archive,.oil-compact .analyst-input{display:none}
