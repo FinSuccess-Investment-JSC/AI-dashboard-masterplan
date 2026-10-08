@@ -175,57 +175,39 @@
     // [signal, now, prev, unit, digits, threshold text, state, groups, chart, tile index]
     const crack=v(sg,'gasoil_crack'),dist=v(ds);
     const score=[
-      ['Tàu qua Hormuz (BQ7)',hzNow,hzPrev,' lượt/ngày',1,'≥ 30 là phục hồi',hzNow==null?'na':hzNow<30?'risk':'good','Lọc dầu · Phân phối · Vận tải','chHormuzM',0],
-      ['Brent kỳ hạn gần',v(bf),p(bf),' USD/thùng',2,'Bối cảnh, không chấm ngưỡng',v(bf)==null?'na':'info','Khai thác (+) · Phân phối (−)','chBrent24',2],
-      ['Crack gasoil Singapore',crack,p(sg,'gasoil_crack'),' USD/thùng',2,'≥ 60 hỗ trợ biên lọc',crack==null?'na':crack<60?'risk':crack<65?'watch':'good','Lọc dầu (BSR)','chSingaporeCrack',1],
-      ['Tồn kho distillate Mỹ',dist,p(ds),' triệu thùng',1,'< 115 là thắt chặt',dist==null?'na':dist<115?'good':'watch','Lọc dầu','chProdStock',1],
-      ['Giá dầu diesel VN (Vùng 1)',v(rf,'diesel'),p(rf,'diesel'),' đ/lít',0,'Theo kỳ điều hành thứ Năm',v(rf,'diesel')==null?'na':'info','Phân phối (PLX, OIL)','chRetailFuel',null],
-      ['Cân đối cung – cầu '+y+' (EIA)',bNow?.balance,null,' triệu thùng/ngày',2,'Âm = thiếu cung',bNow?bNow.balance<0?'good':'risk':'na','Khai thác · Khí','chWorldBalance',2]
+      ['Tàu qua Hormuz (BQ7)',hzNow,hzPrev,' lượt/ngày',1,'≥ 30',hzNow==null?'na':hzNow<30?'risk':'good','BSR · PLX · PVT','chHormuzM',0],
+      ['Brent kỳ hạn gần',v(bf),p(bf),' USD/thùng',2,'—',v(bf)==null?'na':'info','Khai thác ▲ · Phân phối ▼','chBrent24',2],
+      ['Crack gasoil Singapore',crack,p(sg,'gasoil_crack'),' USD/thùng',2,'≥ 60',crack==null?'na':crack<60?'risk':crack<65?'watch':'good','BSR','chSingaporeCrack',1],
+      ['Tồn kho distillate Mỹ',dist,p(ds),' triệu thùng',1,'< 115',dist==null?'na':dist<115?'good':'watch','BSR','chProdStock',1],
+      ['Giá dầu diesel VN (Vùng 1)',v(rf,'diesel'),p(rf,'diesel'),' đ/lít',0,'—',v(rf,'diesel')==null?'na':'info','PLX · OIL','chRetailFuel',null],
+      ['Cân đối cung – cầu '+y+' (EIA)',bNow?.balance,null,' triệu thùng/ngày',2,'< 0',bNow?bNow.balance<0?'good':'risk':'na','Khai thác · GAS','chWorldBalance',2]
     ];
-    const stateText={good:'Hỗ trợ',risk:'Rủi ro',watch:'Sát ngưỡng',info:'Bối cảnh',na:'Thiếu dữ liệu'};
+    const stateText={good:'Catalyst',risk:'Risk',watch:'Sát ngưỡng',info:'Bối cảnh',na:'Thiếu dữ liệu'};
     const delta=(a,b,d)=>a==null||b==null?'—':(a-b>0?'▲ +':a-b<0?'▼ ':'■ ')+num(a-b,d);
     const crackOk=crack!=null&&crack>=60,hzLow=hzNow!=null&&hzNow<30,surplus=bNext&&bNext.balance>0;
     const brief=make('section','oil-brief');
-    const head=make('div','oil-verdict');head.append(make('span','oil-verdict-label','Kết luận hiện tại'),make('h3','',hzLow?(crackOk?'Phân hóa theo khâu: khai thác và lọc dầu được hỗ trợ, phân phối chịu áp lực giá vốn':'Chỉ còn khai thác được hỗ trợ: crack gasoil đã dưới ngưỡng 60, phân phối vẫn chịu áp lực giá vốn'):'Dòng chảy đang bình thường hóa: lợi thế giá cao của khai thác và lọc dầu thu hẹp dần'));
-    const bullets=make('ul','oil-verdict-points');
-    [hzLow?['Hormuz gần như đóng: ',num(hzNow,1)+' lượt/ngày',' (ngưỡng phục hồi 30). Giá Brent cao là hệ quả, chưa phải tín hiệu cầu mạnh.']:['Hormuz phục hồi: ',num(hzNow,1)+' lượt/ngày',', cần thêm 2–3 tuần để xác nhận độ bền.'],
-     crackOk?['Crack gasoil ',num(crack,2)+' USD/thùng',', vẫn trên ngưỡng 60: biên lọc của BSR đang thuận, nhưng đã giảm từ đỉnh đầu tháng.']:['Crack gasoil ',num(crack,2)+' USD/thùng',', dưới ngưỡng 60: lợi thế biên của BSR đang mất dần.'],
-     surplus?['EIA dự báo ',y+1+' dư cung '+num(bNext.balance,2)+' triệu thùng/ngày',' (sau khi '+y+' thiếu '+num(-bNow.balance,2)+'). Giá cao khó kéo dài, đây là rủi ro chính cho khai thác và định giá dịch vụ.']:null
-    ].filter(Boolean).forEach(([a,b,c])=>{const li=make('li','');li.append(a,make('b','key-number',b),c);bullets.append(li)});
-    head.append(bullets);
+    const head=make('div','oil-verdict');head.append(make('span','oil-verdict-label','Kết luận hiện tại'),make('h3','',hzLow?(crackOk?'Khai thác, lọc dầu thuận · phân phối chịu áp lực':'Chỉ khai thác còn thuận · lọc dầu, phân phối chịu áp lực'):'Hormuz mở lại · lợi thế giá cao thu hẹp'));
     const segs=make('div','oil-segments');
-    [['Khai thác','PVEP · GAS',bf.length?'up':'na','Giá bán cao; rủi ro dư cung '+(y+1)],['Lọc dầu','BSR',crackOk?'up':'down',crackOk?'Crack trên ngưỡng 60':'Crack dưới ngưỡng 60'],['Phân phối','PLX · OIL',hzLow?'down':'flat','Giá vốn nhập cao, giá bán theo điều hành'],['Dịch vụ','PVD · PVS','na','Chưa có dữ liệu hợp đồng mới'],['Khí','GAS · PVG','flat','LNG nhập đắt; khí nội địa ổn định']].forEach(([n,t,s,why])=>{
-      const c=make('div','oil-seg');c.dataset.tilt=s;c.append(make('b','',n),make('em','',t),make('span','oil-seg-tilt',{up:'▲ Thuận',down:'▼ Áp lực',flat:'■ Trung tính',na:'? Chưa đủ dữ liệu'}[s]),make('small','',why));segs.append(c)});
+    [['Khai thác','PVEP · GAS',bf.length?'up':'na','Giá cao; '+(y+1)+' dư cung'],['Lọc dầu','BSR',crackOk?'up':'down',crackOk?'Crack ≥ 60':'Crack < 60'],['Phân phối','PLX · OIL',hzLow?'down':'flat','Giá vốn cao'],['Dịch vụ','PVD · PVS','na','Chưa có hợp đồng mới'],['Khí','GAS · PVG','flat','LNG đắt']].forEach(([n,t,s,why])=>{
+      const c=make('div','oil-seg');c.dataset.tilt=s;c.append(make('b','',n),make('em','',t),make('span','oil-seg-tilt',{up:'▲',down:'▼',flat:'■',na:'?'}[s]),make('small','',why));segs.append(c)});
     head.append(segs);brief.append(head);
     // Scoreboard: one row per signal, click opens the evidence chart.
-    const tb=make('section','oil-score');tb.append(make('h3','','Bảng điểm tín hiệu'));
+    const tb=make('section','oil-score');tb.append(make('h3','','Tín hiệu'));
     const tableWrap=make('div','oil-score-wrap'),table=make('table','oil-score-table');tableWrap.append(table);
-    const tr=make('tr','');['Tín hiệu','Mới nhất','So 1 tuần trước','Ngưỡng','Trạng thái','Tác động tới'].forEach(t=>tr.append(make('th','',t)));const thead=make('thead','');thead.append(tr);table.append(thead);
+    const tr=make('tr','');['Tín hiệu','Mới nhất','1 tuần','Ngưỡng','','Ai chịu'].forEach(t=>tr.append(make('th','',t)));const thead=make('thead','');thead.append(tr);table.append(thead);
     const tbody=make('tbody','');score.sort((a,b)=>['risk','watch','good','info','na'].indexOf(a[6])-['risk','watch','good','info','na'].indexOf(b[6])).forEach(([name,now,prev,unit,d,th,st,who,chart])=>{
       const r=make('tr','');r.dataset.state=st;const a=make('a','',name+' ↗');a.href='#'+chart;a.addEventListener('click',e=>{e.preventDefault();reveal(chart)});const c0=make('td','');c0.append(a);
       r.append(c0,make('td','oil-num',now==null?'—':num(now,d)+unit),make('td','oil-num',prev==null?'—':delta(now,prev,d)),make('td','',th),make('td','oil-state',stateText[st]),make('td','',who));tbody.append(r)});
-    table.append(tbody);tb.append(tableWrap,make('p','thesis-scope','Ngưỡng do AI đề xuất, chưa kiểm định thống kê · số tự cập nhật theo nguồn mỗi lượt tải dữ liệu · bấm tên tín hiệu để mở biểu đồ gốc.'));
-    // Catalyst vs risk, each item = one sentence + the number that drives it.
-    const cr=make('section','oil-cr');
-    const col=(title,cls,items)=>{const c=make('div','oil-cr-col '+cls);c.append(make('h3','',title));const ul=make('ul','');items.forEach(([n,t])=>{const li=make('li','');li.append(make('b','key-number',n),' ',t);ul.append(li)});c.append(ul);return c};
-    cr.append(col('Catalyst','is-up',[
-      crackOk&&[num(crack,2)+' USD/thùng','crack gasoil giữ trên 60 → BSR có biên lọc tốt trong quý IV nếu chạy đủ công suất.'],
-      hzLow&&[num(v(bf),2)+' USD/thùng','Brent kỳ hạn cao → giá bán khí, condensate và dòng tiền khai thác tốt hơn kế hoạch.'],
-      dist!=null&&dist<115&&[num(dist,1)+' triệu thùng','tồn kho distillate Mỹ thấp → crack khó giảm nhanh.']
-    ].filter(Boolean)),col('Risk','is-down',[
-      hzLow&&[num(hzNow,1)+' lượt/ngày','qua Hormuz → nguyên liệu nhập cho lọc dầu và giá vốn phân phối bị đội lên.'],
-      surplus&&['+'+num(bNext.balance,2)+' triệu thùng/ngày','dư cung EIA dự báo cho '+(y+1)+' → giá dầu có thể giảm mạnh khi eo biển mở lại.'],
-      crack!=null&&crack<65&&[num(crack,2)+' USD/thùng',crack<60?'crack gasoil đã thủng ngưỡng 60 → biên lọc của BSR quý IV có thể thấp hơn quý III.':'crack chỉ còn cách ngưỡng 60 khoảng '+num(crack-60,1)+' USD.']
-    ].filter(Boolean)));
+    table.append(tbody);tb.append(tableWrap,make('p','thesis-scope','Ngưỡng AI đề xuất, chưa kiểm định · bấm tên để xem biểu đồ.'));
     // Upcoming events: regular schedule only; unconfirmed dates stay labelled.
     const next=(dow,from=new Date())=>{const d=new Date(from);d.setHours(0,0,0,0);d.setDate(d.getDate()+(dow-d.getDay()+7)%7);return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')};
-    const cal=make('section','oil-cal');cal.append(make('h3','','Lịch cần theo dõi'));const ol=make('ol','');
-    [[next(3),'EIA công bố tồn kho tuần','Tồn kho distillate, crack'],[next(4),'Kỳ điều hành giá xăng dầu','Phân phối: giá bán so giá vốn'],['Giữa tháng','EIA STEO tháng mới','Dự báo cân đối '+y+'–'+(y+1)],['Từ 20/10','Mùa BCTC quý III','Biên BSR, PLX; backlog PVD, PVS'],['Chưa xác nhận','Họp OPEC+ hằng tháng','Hạn mức sản lượng']].forEach(([d,e,w])=>{const li=make('li','');li.append(make('time','',d),make('b','',e),make('small','',w));ol.append(li)});cal.append(ol);
-    brief.append(tb,cr,cal);signals.prepend(brief);
+    const cal=make('section','oil-cal');cal.append(make('h3','','Sắp tới'));const ol=make('ol','');
+    [[next(3),'EIA tồn kho tuần','Tồn kho distillate, crack'],[next(4),'Điều hành giá xăng dầu','Phân phối: giá bán so giá vốn'],['Giữa tháng','EIA STEO','Dự báo cân đối '+y+'–'+(y+1)],['Từ 20/10','BCTC quý III','Biên BSR, PLX; backlog PVD, PVS'],['Chưa xác nhận','Họp OPEC+','Hạn mức sản lượng']].forEach(([d,e,w])=>{const li=make('li','');li.append(make('time','',d),make('b','',e));ol.append(li)});cal.append(ol);
+    brief.append(tb,cal);signals.prepend(brief);
     // Scenario panel says which case the current signals match.
-    const match=hzLow?0:2;const hint=make('p','oil-scenario-now');hint.append(make('b','','Số hiện tại khớp: '),['Cơ sở','Thuận lợi','Bất lợi'][match]+(hzLow?' (Hormuz vẫn dưới 30 lượt/ngày, chưa leo thang thêm).':' (dòng tàu đã vượt 30 lượt/ngày).'));scenarioNav.after(hint);scenario(match);
+    const match=hzLow?0:2;const hint=make('p','oil-scenario-now');hint.append(make('b','','Đang khớp: '),['Cơ sở','Thuận lợi','Bất lợi'][match]);scenarioNav.after(hint);scenario(match);
     // Detailed tiles go into a fold so the page reads top-down.
-    const detail=fold('thesis-detail','Chi tiết từng tín hiệu: ảnh hưởng, điều kiện đổi đánh giá, giới hạn');
+    const detail=fold('thesis-detail','Chi tiết từng tín hiệu');
     detail.body.append(filter,grid,signals.querySelector('.thesis-assumption'));scenarios.after(detail.d);
     if(grid.querySelector('.data-gap,.gap-row'))detail.d.open=true;
   }
