@@ -283,37 +283,45 @@
       events:[['20/10','Khai mạc kỳ họp QH: Luật Đất đai sửa đổi'],['20–30/10','BCTC quý III'],['Đầu tháng','NSO: CPI, FDI, GDP quý'],['Hằng tháng','HNX/VBMA: TPDN đáo hạn'],['Cuối T11','Bộ Xây dựng: thị trường Q3']]
     });
   }else if(tx){
+    // Thesis delta: one row per variable that is moving — evidence (latest number), direction, who gains/loses, what would reverse it.
     const T=window.TEXTILE_DASHBOARD||{},M=window.TEXTILE_WI?.blocks?.macro?.series||{},Cm=window.TEXTILE_WI?.blocks?.commodity?.series||{},Sec=window.TEXTILE_WI?.blocks?.sector_ratio?.by_sector||{};
     const R=k=>M[k]?.records||Cm[k]?.records||[];
-    const yo=(rs,r)=>{if(!r)return null;const p=rs.find(x=>x.date.slice(0,7)===String(Number(r.date.slice(0,4))-1)+r.date.slice(4,7));return p&&p.value?(r.value/p.value-1)*100:null};
     const mon=d=>'T'+Number(d.slice(5,7))+'/'+d.slice(2,4);
-    const ex=R('exp_textile'),exL=ex.at(-1),exY=yo(ex,exL),ytd=T.ytd?pct(T.ytd.now,T.ytd.prev):null;
-    const us=R('exp_textile_us'),usL=us.at(-1),usY=yo(us,usL),us2=us.length>1?yo(us,us.at(-2)):null;
-    const imf=R('imp_fabric'),imL=imf.at(-1),imY=yo(imf,imL),yx=R('exp_yarn'),yxL=yx.at(-1),yxY=yo(yx,yxL);
-    const ct=R('cotton_ice'),ctL=ct.at(-1),ps=R('psf'),psL=ps.at(-1),psY=yo(ps,psL),ur=R('us_apparel_retail_yoy'),urL=ur.at(-1);
+    const yo=(rs,r)=>{if(!r)return null;const p=rs.find(x=>x.date.slice(0,7)===String(Number(r.date.slice(0,4))-1)+r.date.slice(4,7));return p&&p.value?(r.value/p.value-1)*100:null};
+    const ytdYo=k=>{const rs=R(k),l=rs.at(-1);if(!l)return null;const y=l.date.slice(0,4),m=l.date.slice(5,7),sum=yy=>rs.filter(r=>r.date.slice(0,4)===yy&&r.date.slice(5,7)<=m).reduce((a,r)=>a+r.value,0);const p=sum(String(y-1));return p?(sum(y)/p-1)*100:null};
+    const sg=v=>v==null?'—':(v>0?'+':'')+num(v,1)+'%';
+    const us=R('exp_textile_us'),usL=us.at(-1),usY=yo(us,usL),us2=us.length>1?yo(us,us.at(-2)):null,usYtd=ytdYo('exp_textile_us');
+    const jpY=ytdYo('exp_textile_jp'),krY=ytdYo('exp_textile_kr'),cnY=ytdYo('exp_textile_cn');
+    const imf=R('imp_fabric'),imL=imf.at(-1),imY3=(()=>{const w=imf.slice(-3).map(r=>yo(imf,r)).filter(x=>x!=null);return w.length?w.reduce((a,x)=>a+x,0)/w.length:null})();
+    const ur=R('us_apparel_retail_yoy'),urL=ur.at(-1);
+    const ps=R('psf'),psL=ps.at(-1),psY=yo(ps,psL),pta=R('pta'),ptaL=pta.at(-1),ptaY=yo(pta,ptaL);
     const yc=R('yarn_cn'),cc=R('cotton_cn'),spr=yc.map(r=>{const c=cc.find(x=>x.date.slice(0,7)===r.date.slice(0,7));return c?{date:r.date,value:r.value-c.value}:null}).filter(Boolean),spL=spr.at(-1),spP=spr.at(-4);
-    const pe=Sec['204']?.records||[],peL=pe.at(-1);
-    const usSt=usY==null?'na':usY<0&&us2!=null&&us2<0?'risk':usY<0?'watch':usY>=9?'good':'info';
-    const exSt=ytd==null?'na':ytd>=5?'good':ytd<0?'risk':'watch';
-    const garmentUp=exSt==='good'&&usSt!=='risk',garmentDn=exSt==='risk'||usSt==='risk';
-    const yarnUp=yxY!=null&&yxY>5&&spL&&spP&&spL.value>=spP.value;
-    const row=(name,now,prev,unit,d,th,st,who,chart,group='Dệt nhuộm – May')=>({name,chart,st,group,mid:[S(now,d,unit),prev===undefined?'—':D(now,prev,d),th],end:[who]});
+    const ct=R('cotton_ice'),ctL=ct.at(-1);
+    const pe=Sec['204']?.records||[],peL=pe.at(-1),pe1y=pe.find(r=>r[0]>=String(Number((peL?.[0]||'2026').slice(0,4))-1)+(peL?.[0]||'').slice(4));
+    const ytd=T.ytd?pct(T.ytd.now,T.ytd.prev):null;
+    const row=(group,name,evidence,cond,st,who,chart)=>({group,name,chart,st,mid:[evidence,cond],end:[who]});
+    const usSt=usY==null?'na':usY<0&&us2!=null&&us2<0?'risk':usYtd!=null&&usYtd>3?'good':'watch';
+    const asiaSt=[jpY,krY].every(v=>v!=null)?(jpY<0&&krY<0?'risk':jpY<0||krY<0?'watch':'good'):'na';
+    const score=[
+      row('Cầu & đơn hàng','Việt Nam lấy thị phần tại Mỹ','Thị phần 21,5% (2025) → 22,2% (5T/2026) · XK sang Mỹ '+(usL?mon(usL.date)+' '+sg(usY)+' YoY, lũy kế '+sg(usYtd):'—'),'XK sang Mỹ âm YoY 2 tháng liên tiếp, hoặc thị phần OTEXA giảm',usSt,'▲ MSH · TNG · GIL','chUsShare'),
+      row('Cầu & đơn hàng','Kênh bán lẻ Mỹ không thừa hàng','Tồn kho/doanh số quần áo 2,11 lần (T7/26, gần đáy từ 2019) · bán lẻ quần áo '+(urL?mon(urL.date)+' '+sg(urL.value):'—'),'Tồn kho/doanh số > 2,2 lần hoặc bán lẻ quần áo Mỹ âm YoY',urL==null?'na':urL.value<0?'risk':'good','▲ cả nhóm may','chUsIS'),
+      row('Cầu & đơn hàng','Nhãn hàng còn tồn kho cao hơn doanh thu','Inditex tồn kho +9,3% / doanh thu +7,6%; Adidas +13% / +13%; Nike −3% / −4%','Tồn kho các hãng tăng chậm hơn doanh thu ở kỳ báo cáo tới','watch','▼ đơn Q4–Q1 của nhà may','chBrands'),
+      row('Cầu & đơn hàng','Đơn hàng sớm qua nhập khẩu vải','Nhập vải BQ 3 tháng '+sg(imY3)+' YoY'+(imL?' (đến '+mon(imL.date)+')':''),'Nhập vải BQ 3 tháng âm YoY',imY3==null?'na':imY3<0?'risk':imY3>5?'good':'info','Nhà may FOB · TNG · MSH','chImport'),
+      row('Cầu & đơn hàng','Nhật, Hàn suy yếu; Trung Quốc tăng','Lũy kế năm: Nhật '+sg(jpY)+' · Hàn '+sg(krY)+' · Trung Quốc '+sg(cnY),'Nhật và Hàn trở lại tăng YoY',asiaSt,'▼ TCM (Nhật, Hàn) · ▲ STK, ADS (sợi sang TQ)','chExportMkt'),
+      row('Thuế & cạnh tranh','Thuế Mỹ bất lợi tương đối','Việt Nam 12,5% vs Bangladesh, Campuchia, Indonesia, Ấn Độ 10% (từ 24/07/2026); ba nước đầu có hạn ngạch miễn thuế','Việt Nam được miễn trừ hoặc có hạn ngạch; đối thủ bị tăng thuế','risk','▼ TNG · MSH · GIL · TCM','chTariffHist'),
+      row('Thuế & cạnh tranh','Trung Quốc mất thị phần Mỹ','Thị phần TQ 13,7% (2025) → 9,7% (5T/2026); NK may mặc Mỹ từ TQ 6T/2026 −37,7%','Thuế với Trung Quốc giảm so với Việt Nam','good','▲ cả nhóm may','chUsShare'),
+      row('Thuế & cạnh tranh','EU là dư địa mới','Việt Nam ~4,6% thị phần EU; EVFTA về 0% toàn bộ ~2027; Bangladesh rời LDC 24/11/2026','EU gia hạn ưu đãi cho Bangladesh','info','▲ TCM · TNG (khách EU)','chOtherShare'),
+      row('Chi phí & biên','Nguyên liệu polyester tăng mạnh','PSF '+sg(psY)+' YoY · PTA '+sg(ptaY)+' YoY'+(psL?' ('+mon(psL.date)+')':''),'Giá sợi polyester tăng theo, hoặc PTA/MEG hạ nhiệt',psY==null?'na':psY>15?'risk':'watch','▼ STK (nếu giá sợi không theo)','chPoly'),
+      row('Chi phí & biên','Biên kéo sợi bông','Chênh sợi – bông TQ '+(spL?num(spL.value/1000,2)+' nghìn CNY/t':'—')+(spP?' so 3 tháng trước '+num(spP.value/1000,2):'')+' · bông ICE '+(ctL?num(ctL.value,1)+' cent/lb':'—'),'Chênh lệch tăng trở lại; bông ICE > 90 cent/lb là áp lực',!spL||!spP?'na':spL.value>=spP.value?'good':'watch','ADS · VGT','chYarnSpread'),
+      row('Chi phí & biên','Lương tối thiểu +7,2% từ 01/01/2026','Vùng I 5,31 triệu đ/tháng; lương là chi phí lớn nhất của nhà may CMT','Đề xuất tăng lương 2027 > 7%','watch','▼ TNG · MSH · TCM · GIL','dm-14'),
+      row('Định giá','Định giá đã chiết khấu rủi ro thuế','P/E ngành may '+(peL?num(peL[1],1)+'x':'—')+(pe1y?' (một năm trước '+num(pe1y[1],1)+'x)':''),'Có bằng chứng đơn hàng 2027 hoặc thuế Việt Nam giảm',peL?'info':'na','TCM · TNG · MSH · GIL','chSectorVal')];
+    const nGood=score.filter(r=>r.st==='good').length,nRisk=score.filter(r=>r.st==='risk').length;
     renderBrief({
-      headline:'May: '+(garmentUp?'xuất khẩu tăng tốc':garmentDn?'xuất khẩu sang Mỹ suy yếu':'xuất khẩu đi ngang, chịu thuế Mỹ cao hơn đối thủ')+' · Sợi: '+(yarnUp?'chênh giá sợi – bông cải thiện':'biên kéo sợi chưa cải thiện'),
-      segs:[['May','TCM · TNG · MSH · GIL',exL?(garmentUp?'up':garmentDn?'down':'flat'):'na',ytd==null?'Thiếu XK':'XK lũy kế '+(ytd>0?'+':'')+num(ytd,1)+'% YoY'],['Sợi','STK · ADS',yxL?(yarnUp?'up':'flat'):'na',yxY==null?'Thiếu XK sợi':'XK sợi '+(yxY>0?'+':'')+num(yxY,0)+'% YoY'],['Tập đoàn','VGT',exL?(garmentUp?'up':'flat'):'na','Cả chuỗi']],
-      headers:['Tín hiệu','Mới nhất','Kỳ trước','Ngưỡng','','Ai chịu'],
-      score:[
-        row('XK dệt may lũy kế năm, so cùng kỳ',ytd,undefined,'%',1,'≥ 5% thuận · < 0 rủi ro',exSt,'Cả ngành','chExport'),
-        row('XK dệt may tháng '+(exL?mon(exL.date):''),exL?exL.value/1000:null,ex.at(-2)?ex.at(-2).value/1000:null,' tỷ USD',2,'YoY '+(exY==null?'—':(exY>0?'+':'')+num(exY,1)+'%'),exY==null?'na':exY<0?'watch':'info','May','chExport'),
-        row('XK dệt may sang Mỹ, so cùng kỳ',usY,us2??undefined,'%',1,'2 tháng âm liên tiếp = rủi ro',usSt,'TNG · MSH · TCM · GIL','chExportMkt'),
-        row('Nhập khẩu vải, so cùng kỳ',imY,undefined,'%',1,'chỉ báo đơn 1–2 tháng',imY==null?'na':imY<0?'watch':'info','Nhà may FOB','chImport'),
-        row('Bán lẻ quần áo Mỹ, so cùng kỳ',urL?.value,ur.at(-2)?.value,'%',1,'< 0 = nhãn hàng giảm đơn',urL==null?'na':urL.value<0?'risk':urL.value>=3?'good':'info','Cả ngành','chUsRetail'),
-        row('Bông ICE',ctL?.value,ct.at(-13)?.value,' cent/lb',1,'> 90 áp lực biên sợi bông',ctL==null?'na':ctL.value>90?'risk':ctL.value>80?'watch':'info','ADS','chCotton','Sợi'),
-        row('Chênh giá sợi – bông Trung Quốc',spL?spL.value/1000:null,spP?spP.value/1000:null,' nghìn CNY/t',2,'tăng so 3 tháng trước = thuận',!spL||!spP?'na':spL.value>=spP.value?'good':'watch','ADS','chYarnSpread','Sợi'),
-        row('Xơ PSF, so cùng kỳ',psY,undefined,'%',1,'tăng nhanh = áp lực nếu giá sợi không theo',psY==null?'na':psY>15?'watch':'info','STK','chPoly','Sợi'),
-        row('XK xơ, sợi, so cùng kỳ',yxY,undefined,'%',1,'> +5% thuận',yxY==null?'na':yxY>5?'good':yxY<0?'risk':'watch','STK · ADS','chYarnExp','Sợi'),
-        row('P/E ngành may',peL?peL[1]:null,pe.at(-21)?pe.at(-21)[1]:null,'x',1,'—',peL?'info':'na','TCM · TNG · MSH · GIL','chSectorVal','Định giá')],
-      events:[['Đầu tháng','Hải quan, NSO: XK dệt may tháng trước'],['Giữa tháng','US Census: bán lẻ quần áo'],['20–30/10','BCTC quý III'],['24/11/2026','Bangladesh rời nhóm LDC'],['Theo sự kiện','USTR: danh sách miễn trừ Mục 301']]
+      headline:'Cầu Mỹ và thị phần còn đỡ ngành; thuế cao hơn đối thủ và chi phí nguyên liệu là hai biến số xấu đi · '+nGood+' thuận, '+nRisk+' rủi ro',
+      segs:[['May','TCM · TNG · MSH · GIL',usSt==='risk'?'down':usSt==='good'?'up':'flat',usYtd==null?'Thiếu XK Mỹ':'XK Mỹ lũy kế '+sg(usYtd)],['Sợi','STK · ADS',psY!=null&&psY>15?'down':'flat',psY==null?'Thiếu PSF':'PSF '+sg(psY)+' YoY'],['Tập đoàn','VGT',ytd==null?'na':ytd>3?'up':'flat',ytd==null?'Cả chuỗi':'XK lũy kế '+sg(ytd)]],
+      headers:['Biến số đang thay đổi','Đang thấy (số mới nhất)','Đổi đánh giá khi','','Hưởng lợi ▲ / chịu thiệt ▼'],
+      score,
+      events:[['Đầu tháng','Hải quan, NSO: XK dệt may tháng trước'],['Giữa tháng','US Census: bán lẻ, tồn kho quần áo'],['20–30/10','BCTC quý III'],['24/11/2026','Bangladesh rời nhóm LDC'],['Theo sự kiện','USTR: hạn ngạch, miễn trừ Mục 301']]
     });
   }else if(bank){
     const map={'Cần chú ý':'risk','Theo dõi':'info'};
