@@ -188,3 +188,9 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Nhóm A (script, không tốn token):** `scripts/power_feeds.py` qua `update_daily.py`: `vn_power_daily` (bản tin vận hành ngày của EVN từ 28/05/2023; sai số tổng thành phần, trùng số, lệch ngày → loại vào `excluded`, không lấp), `wb_energy_monthly` (World Bank than, LNG, khí), `enso_oni`, `nino34_weekly` (NOAA CPC), `coal_newcastle`, `lng_jkm` (ICE, một hợp đồng, không ghép), `henry_hub` (EIA). Tổng tháng cộng từ bản tin ngày khớp thông cáo tháng EVN trong ±0,5%.
 - **Nhóm C/D:** giá bán lẻ, tài chính EVN, cơ chế giá (NĐ 72/2025 → NĐ 278/2026), QHĐ VIII (QĐ 768), DPPA/mái nhà (NĐ 57, 58 → 243), thị trường bán buôn (TT 29/2026), pipeline LNG/BESS/hạt nhân, tranh chấp FIT → routine tài liệu thứ Hai. Lời bình chu kỳ viết lại khi ONI đổi ≥0,3 °C hoặc than/LNG đổi ≥10%.
 - **Hạn chế còn ghi trên trang:** chưa có giá thị trường điện theo giờ (SMP) và mực nước hồ; công suất theo nguồn mới có số EVN ước cuối 2025; chưa có chuỗi sản lượng năm 2019–2025 đã đối chiếu.
+
+## Catalyst/Risk dạng kết luận trước (thí điểm Dầu khí, 08/10/2026)
+
+- Thứ tự đọc: **Kết luận hiện tại** (tiêu đề + 2–3 ý có số + nghiêng theo 5 khâu) → **Bảng điểm tín hiệu** (mới nhất / so 1 tuần trước / ngưỡng / trạng thái / tác động tới; xếp Rủi ro → Sát ngưỡng → Hỗ trợ → Bối cảnh; bấm tên mở biểu đồ gốc) → **Catalyst | Risk** hai cột → **Lịch cần theo dõi** → Kịch bản (ghi "Số hiện tại khớp" và tự chọn tab) → fold **Chi tiết từng tín hiệu** (tile cũ) → KPI → Phân tích AI bản gốc.
+- Câu kết luận, trạng thái và các ý catalyst/risk đều tính từ `SECTOR_DAILY` theo ngưỡng (Hormuz BQ7 30, crack gasoil Singapore 60, distillate Mỹ 115, cân đối EIA năm nay/năm sau). Số đổi qua ngưỡng thì câu chữ đổi theo; feed lỗi/thiếu thì là "Thiếu dữ liệu". Lịch chỉ ghi mốc định kỳ, mốc chưa xác nhận ghi rõ "Chưa xác nhận".
+- Ngành khác giữ layout cũ cho tới khi người dùng duyệt bản Dầu khí.
