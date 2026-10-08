@@ -1167,6 +1167,17 @@
    ]
   },
   {
+   "id": "power.evn-reservoirs",
+   "tier": "C",
+   "title": "Hồ thủy điện EVN · ảnh chụp 00h, trung bình tháng",
+   "schedule": {"type": "weekly", "day": "mon", "at": "07:00"},
+   "publication": "EVN hiển thị thông số vận hành theo thời điểm; không có lịch phát hành cố định",
+   "source": {"name": "EVN · mực nước các hồ thủy điện", "url": "https://www.evn.com.vn/vi-VN/thong-tin-ho-thuy-dien/Muc-nuoc-cac-ho-thuy-dien-60-123"},
+   "where": {"page": "Dien/index.html", "blocks": ["dien-hydro-reservoirs"]},
+   "how": "Kiểm quyền truy cập iframe EVN. Nếu lấy được mẫu mới đúng thời điểm, lưu ngày yêu cầu, giờ EVN gốc và bốn chỉ tiêu từng hồ vào workbook; chạy scripts/build_hydro_reservoirs.py với workbook đầy đủ. Hiện tại dữ liệu dừng 27/08/2026, chưa có bộ lấy mẫu tự động đã kiểm chứng.",
+   "gates": ["Chỉ dùng mẫu EVN trong ±2 giờ quanh 00h", "Không điền ngày thiếu hoặc nhận trùng ngày", "Giữ tỷ lệ phủ và ngày dữ liệu cuối hiện rõ", "Không gọi Qxt là toàn bộ xả lũ"]
+  },
+  {
    "id": "power.evn-daily",
    "tier": "A",
    "title": "Sản lượng, Pmax, cơ cấu nguồn theo ngày (EVN, script)",

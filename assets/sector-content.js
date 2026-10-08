@@ -48,6 +48,7 @@ const sources={
  chSourceImports:['daily','tháng, cộng từ bản tin ngày','EVN · bản tin vận hành ngày','https://www.evn.com.vn/vi-VN/news-l/Thong-tin-tom-tat-van-hanh-HTD-Quoc-gia-60-2015'],
  chOutputSources:['annual','lũy kế 9 tháng, so cùng kỳ','EVN · báo cáo hoạt động 9 tháng','https://www.evn.com.vn/d/vi-VN/news/Tinh-hinh-hoat-dong-thang-9-nam-2026-nhiem-vu-trong-tam-3-thang-cuoi-nam-2026-60-142-509877'],
  chFmpTrend:['monthly','FMP bình quân tháng; CAN tham chiếu bình quân năm','PGV IR · bản tin nhà đầu tư tháng','https://www.genco3.com/quan-he-nha-dau-tu/ban-tin-nha-dau-tu.html'],
+ 'hydro-reservoir-chart':['daily','Mẫu gần 00h mỗi ngày; bình quân tháng theo hồ','EVN · mực nước các hồ thủy điện','https://www.evn.com.vn/vi-VN/thong-tin-ho-thuy-dien/Muc-nuoc-cac-ho-thuy-dien-60-123'],
  chPmax:['daily','đỉnh cao nhất trong tháng','EVN · bản tin vận hành ngày','https://www.evn.com.vn/vi-VN/news-l/Thong-tin-tom-tat-van-hanh-HTD-Quoc-gia-60-2015'],
  chMonthly:['daily','tháng, cộng từ bản tin ngày','EVN · bản tin vận hành ngày','https://www.evn.com.vn/vi-VN/news-l/Thong-tin-tom-tat-van-hanh-HTD-Quoc-gia-60-2015'],
  chEnso:['monthly','3 tháng trượt; NOAA cập nhật đầu tháng','NOAA CPC · ONI','https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt'],

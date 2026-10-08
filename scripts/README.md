@@ -109,3 +109,9 @@ Still open:
 
 - `scripts/build_textile_wi.py`: dựng `data/textile-wi-data.js` từ capture WiMCP theo `data/textile-wi-contract.json` (dashboard Dệt may), dùng chung hàm của build_realestate_wi.py.
 - `scripts/build_realestate_wi.py`: dựng `data/realestate-wi-data.js` từ capture WiMCP theo `data/realestate-wi-contract.json` (dashboard Bất động sản); `--restore` chép kết quả vượt trần hiển thị vào capture.
+
+### EVN reservoir archive
+
+`python3 scripts/build_hydro_reservoirs.py /path/to/Du_Lieu_Van_Hanh_Ho_Chua_EVN.xlsx` rebuilds `data/hydro-reservoirs.js` directly from `Du_lieu_ngay`. It retains only EVN observation timestamps within ±2 hours of requested 00:00 and records per-reservoir-month coverage. The dashboard compares the latest year, prior year and a 5-year same-month baseline. The input is an archived workbook supplied by the user, last observed 2026-08-27. The EVN live iframe could not be fetched in this session, so this is **not** a scheduled daily scraper. A future collector should append dated raw snapshots, validate actual EVN timestamps and preserve last-good before using this importer.
+
+The exact user workbook is retained in the private `AI_WORKSPACE/source-archives/` notes repository so another machine can rebuild the public monthly bundle; it is not copied into the public dashboard repository.

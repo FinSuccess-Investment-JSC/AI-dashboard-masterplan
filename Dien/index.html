@@ -297,10 +297,12 @@ body{font-size:14px;line-height:1.45}
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=123c08b8ffcd">
 <script src="../assets/chart-types.js?v=5b81f0f266ee"></script>
 <script src="../data/daily-data.js?v=c339e5bf0ac3" defer></script>
+<script src="../data/hydro-reservoirs.js?v=5121e49c0866" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=9713048687dc" defer></script>
-<script src="../assets/sector-content.js?v=93dbfdd8a3d6" defer></script>
+<script src="../assets/sector-content.js?v=5f4334dba21e" defer></script>
 <script src="../assets/sector-layout.js?v=2513e186c11c" defer></script>
+<script src="../assets/hydro-reservoirs.js?v=cd9258726355" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="../assets/catalyst-board.js?v=61a5fcb13361" defer></script>
@@ -314,7 +316,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=38f1100f7e0b" data-release="20261008T083642Z"></script>
+<script src="../assets/site-navigation.js?v=38f1100f7e0b" data-release="20261008-power-hydro-reservoirs-r1"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=c2f07b357463">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=033d06c36482">
@@ -460,6 +462,18 @@ body{font-size:14px;line-height:1.45}
       </div>
     </div>
 
+    <h3 class="subhead">Thủy văn hồ chứa · theo cụm EVN</h3>
+    <div class="card" data-block-id="dien-hydro-reservoirs" data-update-kind="public" data-cadence="daily" data-refresh-status="snapshot">
+      <div class="chart-title">Hồ thủy điện: năm mới nhất so với năm trước và trung bình 5 năm</div>
+      <div class="chart-sub">Trung bình tháng từ một quan sát mỗi ngày, giờ EVN trong ±2 giờ quanh 00h · chọn từng hồ và chỉ tiêu</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin:10px 0"><label>Hồ <select id="hydro-reservoir"></select></label><label>Chỉ tiêu <select id="hydro-metric"><option value="level">Mực nước thượng lưu</option><option value="inflow">Nước về hồ</option><option value="generation">Xả qua nhà máy</option><option value="spill">Xả qua đập tràn</option></select></label></div>
+      <p id="hydro-reservoir-status" class="power-seasonal-status"></p>
+      <div id="hydro-reservoir-chart"></div>
+      <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>Năm mới nhất</span><span class="li"><span class="dot" style="background:#59C5C8"></span>Năm trước</span><span class="li"><span class="dot" style="background:#c29100"></span>Trung bình 5 năm</span></div>
+      <div class="data-gap">ⓘ Lưu ý dữ liệu: bản Excel người dùng cung cấp dừng ở <span id="hydro-last-date">27/08/2026</span>; đây là ảnh chụp lịch sử, chưa có kết nối lấy số EVN mới. Thời điểm EVN thực tế có thể lệch 00h. Chỉ vẽ tháng có ít nhất 80% ngày; nền 5 năm cần ít nhất 3 năm hợp lệ. Lưu lượng là giá trị tức thời bình quân các mẫu, không phải tổng lượng nước tháng; xả qua tràn không đồng nghĩa toàn bộ xả điều tiết lũ.</div>
+      <div class="source-note">Nguồn: <a href="https://www.evn.com.vn/vi-VN/thong-tin-ho-thuy-dien/Muc-nuoc-cac-ho-thuy-dien-60-123" target="_blank" rel="noopener">EVN · mực nước các hồ thủy điện</a>; lưu trữ và tổng hợp lại từ workbook được cung cấp. VSH/TBC/SBH/CHP/TMP trên bản đồ là vị trí so sánh địa lý, không phải quyền sở hữu các hồ EVN.</div>
+      <details class="dtable"><summary>Chi tiết dữ liệu tháng</summary><div class="tablewrap"><table id="hydro-reservoir-table"></table></div></details>
+    </div>
     <h3 class="subhead">Cung – cầu điện Việt Nam</h3>
     <div class="grid two">
       <div class="card" data-block-id="dien-06" data-update-kind="public" data-cadence="daily" data-refresh-status="snapshot">
@@ -865,7 +879,7 @@ body{font-size:14px;line-height:1.45}
         <tr><td><b>P/E, P/B, vốn hóa</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Tự động</td></tr>
         <tr><td><b>Giá điện, tài chính EVN, chính sách, dự án</b></td><td>Văn bản Chính phủ, Bộ Công Thương, EVN, báo ngành (link tại từng card)</td><td>Theo sự kiện</td><td>Routine AI đọc tài liệu hằng tuần</td></tr>
         <tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr>
-        <tr class="gap-row"><td><b>SMP theo giờ, mực nước hồ</b></td><td>NSMO, EVN hồ chứa</td><td>Giờ / ngày</td><td>Chưa tự động: trang chỉ mở cho truy cập trong nước. FMP bình quân tháng đã có từ bản tin PGV IR.</td></tr>
+        <tr class="gap-row"><td><b>SMP theo giờ, cập nhật hồ mới</b></td><td>NSMO, EVN hồ chứa</td><td>Giờ / ngày</td><td>SMP chưa tự động. Hồ chứa có lịch sử đến 27/08/2026 từ workbook, nhưng chưa có kết nối lấy mẫu EVN mới; FMP tháng lấy từ PGV IR.</td></tr>
       </tbody>
     </table></div>
     <div class="source-note">Ngày dữ liệu và ngày kiểm tra ghi riêng tại từng biểu đồ. Khoảng trống dữ liệu được giữ là khoảng trống, không nội suy.</div>
