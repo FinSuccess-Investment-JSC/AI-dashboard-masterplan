@@ -12,23 +12,17 @@
     if(/^monthly/.test(frequency||'')&&/^\d{4}-\d{2}/.test(value||''))return 'T'+Number(value.slice(5,7))+'/'+value.slice(0,4);
     return date(value);
   }
-  // Explicitly reviewed qualifiers, not guesses from titles or data values.
+  // Only material interpretation limits belong below charts; methods and symbol
+  // explanations remain in the source disclosure.
   const flags={
-    chCurve:'Yahoo · close cùng phiên, không phải settlement.',
-    chFastPrice:document.body.dataset.sector==='power'?'ICE · close hợp đồng gần nhất, không phải settlement; không ghép các hợp đồng.':'Yahoo · close, không phải settlement; chuyển hợp đồng có thể tạo bước nhảy.',
     chDaily:'Ngày EVN không đăng bản tin để trống, không nội suy.',
-    chMixShare:'* = tháng chưa đủ ngày · điện mặt trời mái nhà là số EVN ước tính.',
-    chMonthly:'* = tháng chưa đủ ngày có bản tin; không ước phần thiếu.',
-    chPmax:'* = tháng chưa đủ bản tin, có thể chưa phải đỉnh của tháng.',
-    chEnso:'Các mùa gần nhất có thể được NOAA sửa.',
+    chMixShare:'Điện mặt trời mái nhà là số EVN ước tính.',
+    chPmax:'Tháng hiện tại có thể chưa phải đỉnh vì chưa đủ bản tin.',
     chCoalM:'Giá quốc tế bình quân tháng, chưa phải giá về đến nhà máy.',
     chGasM:'Giá quốc tế bình quân tháng, chưa phải giá khí bán cho nhà máy Việt Nam.',
     chGasCustomer:'Bốn tỷ trọng có mẫu số khác nhau; không cộng thành 100%.',
-    chCrack:'Proxy USGC, không phải biên nhà máy Việt Nam · * = tháng chưa đủ kỳ.',
-    chMoit:'Proxy USGC, không phải rổ giá điều hành Bộ Công Thương · * = tháng chưa đủ kỳ.',
-    chBrent24:'* = tháng chưa đủ kỳ.',
-    chBrentYear:'Năm hiện tại là YTD.',
-    chBrentWti:'* = tháng chưa đủ kỳ.',
+    chCrack:'Proxy USGC, không phải biên nhà máy Việt Nam.',
+    chMoit:'Proxy USGC, không phải rổ giá điều hành Bộ Công Thương.',
     chHormuzM:'Lượt tàu AIS, không phải thùng dầu.',
     chBabMandeb:'Lượt tàu AIS gồm nhiều loại tàu, không phải thùng dầu.',
     chMiddleEastExports:'Chỉ Saudi Arabia và Kuwait; không phải tổng Trung Đông.',
