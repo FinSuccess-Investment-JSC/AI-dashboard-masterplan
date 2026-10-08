@@ -204,11 +204,10 @@
     const cal=make('section','oil-cal');cal.append(make('h3','','Sắp tới'));const ol=make('ol','');
     [[next(3),'EIA tồn kho tuần','Tồn kho distillate, crack'],[next(4),'Điều hành giá xăng dầu','Phân phối: giá bán so giá vốn'],['Giữa tháng','EIA STEO','Dự báo cân đối '+y+'–'+(y+1)],['Từ 20/10','BCTC quý III','Biên BSR, PLX; backlog PVD, PVS'],['Chưa xác nhận','Họp OPEC+','Hạn mức sản lượng']].forEach(([d,e,w])=>{const li=make('li','');li.append(make('time','',d),make('b','',e));ol.append(li)});cal.append(ol);
     brief.append(tb,cal);signals.prepend(brief);
-    // Scenario panel says which case the current signals match.
-    const match=hzLow?0:2;const hint=make('p','oil-scenario-now');hint.append(make('b','','Đang khớp: '),['Cơ sở','Thuận lợi','Bất lợi'][match]);scenarioNav.after(hint);scenario(match);
+    // Scenario frame dated 03/09 no longer matches prices; user removed it (08/10/2026).
     // Detailed tiles go into a fold so the page reads top-down.
     const detail=fold('thesis-detail','Chi tiết từng tín hiệu');
-    detail.body.append(filter,grid,signals.querySelector('.thesis-assumption'));scenarios.after(detail.d);
+    detail.body.append(filter,grid,signals.querySelector('.thesis-assumption'));scenarios.replaceWith(detail.d);
     if(grid.querySelector('.data-gap,.gap-row'))detail.d.open=true;
   }
   // Enter the requested tab at its decision board, avoiding the repeated hero.

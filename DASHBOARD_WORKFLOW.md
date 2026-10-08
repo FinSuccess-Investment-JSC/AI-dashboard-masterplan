@@ -191,7 +191,8 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 
 ## Catalyst/Risk dạng kết luận trước (thí điểm Dầu khí, 08/10/2026)
 
-- Thứ tự đọc: **Kết luận hiện tại** (tiêu đề + 2–3 ý có số + nghiêng theo 5 khâu) → **Bảng điểm tín hiệu** (mới nhất / so 1 tuần trước / ngưỡng / trạng thái / tác động tới; xếp Rủi ro → Sát ngưỡng → Hỗ trợ → Bối cảnh; bấm tên mở biểu đồ gốc) (cột trạng thái ghi thẳng Catalyst / Risk) → **Sắp tới** → Kịch bản (ghi "Số hiện tại khớp" và tự chọn tab) → fold **Chi tiết từng tín hiệu** (tile cũ) → KPI → Phân tích AI bản gốc.
+- Thứ tự đọc: **Kết luận hiện tại** (tiêu đề + 2–3 ý có số + nghiêng theo 5 khâu) → **Bảng điểm tín hiệu** (mới nhất / so 1 tuần trước / ngưỡng / trạng thái / tác động tới; xếp Rủi ro → Sát ngưỡng → Hỗ trợ → Bối cảnh; bấm tên mở biểu đồ gốc) (cột trạng thái ghi thẳng Catalyst / Risk) → **Sắp tới** → fold **Chi tiết từng tín hiệu** (tile cũ) → KPI → Phân tích AI bản gốc.
 - Câu kết luận, trạng thái và các ý catalyst/risk đều tính từ `SECTOR_DAILY` theo ngưỡng (Hormuz BQ7 30, crack gasoil Singapore 60, distillate Mỹ 115, cân đối EIA năm nay/năm sau). Số đổi qua ngưỡng thì câu chữ đổi theo; feed lỗi/thiếu thì là "Thiếu dữ liệu". Lịch chỉ ghi mốc định kỳ, mốc chưa xác nhận ghi rõ "Chưa xác nhận".
 - Ngành khác giữ layout cũ cho tới khi người dùng duyệt bản Dầu khí.
 - Rút gọn 08/10/2026 theo phản hồi "dài, nhiều chữ": bỏ gạch đầu dòng dưới kết luận và hai cột Catalyst|Risk vì lặp số với bảng; ô khâu chỉ còn mũi tên + 2–3 chữ; lịch chỉ ngày + sự kiện.
+- Bỏ khối Kịch bản ở Dầu khí (08/10/2026, người dùng yêu cầu): khung 03/09 lệch giá hiện tại.
