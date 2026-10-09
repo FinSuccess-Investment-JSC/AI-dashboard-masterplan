@@ -255,3 +255,10 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - `scripts/build_hydro_reservoirs.py INPUT.xlsx` tái tính trực tiếp từ `Du_lieu_ngay` thành `data/hydro-reservoirs-seed.json`; `scripts/update_hydro_reservoirs.py` ghép seed với raw ngày để dựng `data/hydro-reservoirs.js`. Không tin mù quáng sheet `Trung_binh_thang` hoặc các sheet chart thủ công. Job `.github/workflows/hydro-reservoirs.yml` thử lấy 00h hằng ngày lúc 00:15 và 01:15 giờ Việt Nam; chỉ commit/publish nếu có mẫu mới hợp lệ, lỗi giữ last-good. Tại 09/10/2026 chưa có lần chạy production được xác nhận; phải kiểm lần đầu trước khi gọi là tự động vận hành ổn định.
 
 - (08/10/2026) Dệt may: XK & thuế quan, Đơn hàng & nhãn hàng gộp thành sub-tab 3–4 của Bức tranh ngành (`assets/textile-dashboard.js` chuyển nội dung mt10/mt11 vào pane `supply-trade`, `supply-orders`). Catalyst/Risk dạng thẻ (`.tx-tile`), bảng giữ trong "Xem dạng bảng".
+
+## 19. Điện: chuỗi giá trị, giá phát điện và pipeline (09/10/2026)
+
+- PGV có tài sản điện khí và than; TV1/TV2/TV3 là tư vấn kỹ thuật, GEX/GEE ở nhánh thiết bị. Không dùng GEE làm đại diện sản lượng phát điện.
+- Card Policy so trần khung giá phát điện đúng công nghệ, vùng và năm quyết định; không diễn giải trần là giá PPA đã ký. Điện khí thiên nhiên và LNG có quyết định riêng, không thay thế lẫn nhau. Checklist dự án LNG phải tách điều kiện pháp lý (như Qc theo NĐ 100/2025) khỏi điều khoản cần đàm phán trong PPA.
+- Pipeline chọn lọc theo tên dự án, MW, năm COD kế hoạch và nguồn chủ đầu tư. Không cộng dự án mẫu thành toàn bộ QĐ 768; khi chủ đầu tư cập nhật tiến độ thì ưu tiên mốc mới và giữ mốc cũ trong chi tiết nếu cần đối chiếu.
+- KQKD nhóm từ Wi chỉ tính khi có dữ liệu đúng kỳ và quy tắc loại trừ công ty con trùng hợp nhất. Bảng tài chính từng mã không mặc nhiên cộng thành toàn ngành.

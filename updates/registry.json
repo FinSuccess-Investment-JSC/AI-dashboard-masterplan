@@ -1387,7 +1387,7 @@
      "dien-19"
     ]
    },
-   "how": "Kiểm văn bản mới (nghị định, quyết định, thông tư) về giá điện, quy hoạch, DPPA, mái nhà, thị trường điện; cập nhật bảng Trước/Sau",
+   "how": "Kiểm quyết định khung giá phát điện theo năm/công nghệ/vùng, điều kiện PPA LNG và tiến độ dự án nguồn; đối chiếu QĐ 768 với thông báo mới của chủ đầu tư. Kiểm DPPA, mái nhà, thị trường điện trong phần chi tiết",
    "gates": [
     "Số hiệu văn bản + ngày hiệu lực",
     "Link văn bản gốc"

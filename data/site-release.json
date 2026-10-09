@@ -1,5 +1,5 @@
 {
-  "version": "20261009-power-hydro-collector-r1",
+  "version": "20261009-power-policy-r1",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -10,13 +10,13 @@
     "textile": "Det-may/"
   },
   "files": {
-    "404.html": "7a7375c695f2d29adfbe104414ee37816f13f9590a05a9d9501ca6456aad854a",
-    "Bank/index.html": "a53143c5d3df8eb27021801dd9d228175d92d144519553d41e8ea88d53d8edd7",
-    "Bat-dong-san/index.html": "11f307a563388e1402575551edab189b81c556b8ab13e47b2a4b1156b409b091",
-    "Dau-khi/index.html": "0a2d3d400f7a4ae3fd8472b86d10b1e81d258875683ad92ee8aa665b14f84941",
-    "Det-may/index.html": "2df48406c0e1d417c49c1d87b930d4179e5c868d9fefbc3d3bb76df58ee9d4eb",
-    "Dien/index.html": "00d9fc9a9d8ec20eb181b7072d7746dcd6e54a7f8cf47f05172c6525f963999a",
-    "Sugar/index.html": "4f722522e91aa4e51f4734f3953f58cbc43dd5564aa872bcf81cffffdf5ded95",
+    "404.html": "8652b2a30030445accbea0e4f13e0e74f01b9233ca4a409b958384ae706cb90a",
+    "Bank/index.html": "573a8407a6898d599d1fc2951fdfc94e74700787fc36ee0f8b1acef80ae952ee",
+    "Bat-dong-san/index.html": "5b402fc781afcd6ffc35f0e6d6e25811b7e2c4f1a27d4337cd0a2d2b3112c9bf",
+    "Dau-khi/index.html": "7bf1a8c119f8274942e09170ff1a0ef0c9e7d6c87e76f74aa6cc6a1ab46c9752",
+    "Det-may/index.html": "905517a2b95a0eab4bb3b7f63b679daaecf70f74ae78af1ed1f6c8fad688da15",
+    "Dien/index.html": "e32346b0453f4dabb2ab83b028cdb5d073615b3531e18234f2cb80372f6ed8d9",
+    "Sugar/index.html": "4affcea00e1d4fba742a3f4bed9fd290da7659ca18c74aadf07a532047273c08",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
     "assets/bank-dashboard.js": "aa0d235f9d52f5168dbcb831948da37b32138c8565e227ff73b49c4726f99b36",
@@ -28,7 +28,7 @@
     "assets/dashboard-ui.css": "123c08b8ffcd70fe44f8b67143fe5e3c7b5fdaba33b3785dba19b6d5295f97d5",
     "assets/dashboard-ui.js": "08a5cb16b308fca4523c3f525731266d610fdde0d7f4e9babf8d93cf78142d44",
     "assets/data-math.js": "ed6356aac3afd13ce8d05fbc837d6a844ebfdbaeb7edfe50fc589ac5c3b94def",
-    "assets/fin-success-theme.css": "033d06c3648266131fb2940d1c7b8b82ab9a0e0f2cd5f01bc0137f65e30be26a",
+    "assets/fin-success-theme.css": "866820c17041aaf53c0e0226711a8474880ff69a905e64ec995358d52681f654",
     "assets/financial-comparison.js": "c2d94f7d0b293c548ac48b625dc1796c84f3cbe5dad6c668b756d47e3eb6aca5",
     "assets/hydro-reservoirs.js": "c1d13c7c315a84ae80b87fa5a34f1bae5103ece9f80955d21eb8b170e1340baa",
     "assets/layout-balance.js": "85ce75a939eac646c27002a1c1cd1ff17b617110d51c8d9ab1ea2f1041fa0fd1",
@@ -40,7 +40,7 @@
     "assets/research-layout.js": "86d34e87c197b6c96517079fa83f2a71dc1807115faafecac90ca17db8891834",
     "assets/research-sources.js": "2e0a8424c403eb1b0cda0572b6f356d2eb593235fa2c66b698bf41a1e20715af",
     "assets/sector-content.js": "5f4334dba21e40e4f8bb414e3081c1204fd3d90af2f1256641852dcbfa714218",
-    "assets/sector-layout.js": "2513e186c11cf6b37d9b2d912478e534986d2b2db24f7234a68b62d477df46b8",
+    "assets/sector-layout.js": "143b061e89bd74c931d97d9e0418b7ab4d53fc88987b9ce02bda59a38274aaf0",
     "assets/sector-runtime.js": "9713048687dc8662d4c8abc7c7f79040033a8a606d1e604420be34b32f043f09",
     "assets/site-navigation.css": "54a3825f55f47d624459c2df4c1c82aa12c9fdafa9f1d3a59c54407153966029",
     "assets/site-navigation.js": "38f1100f7e0ba6864320083d6295a3e1f8d8884117d9253c18413abd33015c74",
@@ -55,8 +55,8 @@
     "data/realestate-market-history.js": "1cac369b93be93e03a7790cdf9f1e721a9d6b7b1689e8e1845408b48d872d94e",
     "data/realestate-wi-data.js": "5ee10419829794c08e7fccdd87ce205814ad66c33ea1a0bf2cd9a0221dbf34d0",
     "data/textile-wi-data.js": "4f1fc3b211fd842d69303a52c038caa639016145dbea30fa4c4fc0c865746839",
-    "duong/index.html": "d739e89a5b84f9877cd84dfcac09733b5570cd68fe7ea01e1901f264f6db4c4e",
-    "index.html": "000883ff3b2834bdc5949a5f28ecfbf1d77adbb75c1c498d797cd1cb6bff375d"
+    "duong/index.html": "f878f5dcaa459b1b8c4fc7ca81e4692c80834a2bf0b76a5eb886b51e0e2e0114",
+    "index.html": "891025839d62cea048d9cb44555ac62108538f25743070c23d325991ed7200d6"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }
