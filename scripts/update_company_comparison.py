@@ -21,6 +21,7 @@ UNIVERSE={
                ('VRE','hose','Cho thuê bán lẻ'),('DXS','hose','Môi giới')],
  'textile':[('TCM','hose','May'),('TNG','hnx','May'),('MSH','hose','May'),('GIL','hose','May'),('STK','hose','Sợi'),('ADS','hose','Sợi'),('VGT','upcom','Tập đoàn')],
  'port':[('GMD','hose','Cảng'),('PHP','hnx','Cảng'),('SGP','upcom','Cảng'),('VSC','hose','Cảng'),('CDN','hnx','Cảng'),('DVP','hose','Cảng'),('PDN','hose','Cảng'),('HAH','hose','Vận tải biển'),('SCS','hose','Hàng không'),('SGN','hose','Hàng không'),('TCL','hose','Kho bãi & logistics'),('STG','hose','Kho bãi & logistics')],
+ 'agri':[('LTG','upcom','Cây trồng XK'),('PAN','hose','Cây trồng XK'),('GVR','hose','Cây trồng XK'),('DPR','hose','Cây trồng XK'),('PHR','hose','Cây trồng XK'),('DBC','hose','Chăn nuôi & thức ăn'),('HAG','hose','Chăn nuôi & thức ăn'),('BAF','hose','Chăn nuôi & thức ăn'),('VNM','hose','Thực phẩm & đồ uống'),('MSN','hose','Thực phẩm & đồ uống'),('SAB','hose','Thực phẩm & đồ uống'),('KDC','hose','Thực phẩm & đồ uống')],
  'bank':[(s,'hose',g) for s,g in [('VCB','Quốc doanh'),('CTG','Quốc doanh'),('BID','Quốc doanh'),('TCB','Tư nhân'),('VPB','Tư nhân'),('MBB','Tư nhân'),('ACB','Tư nhân'),('HDB','Tư nhân'),('TPB','Tư nhân'),('VIB','Tư nhân'),('SHB','Tư nhân')]]}
 PAGES={'income_year':'financials/income-statement/','balance_year':'financials/balance-sheet/','income_quarter':'financials/income-statement/?p=quarterly','balance_quarter':'financials/balance-sheet/?p=quarterly','valuation':'financials/ratios/?p=quarterly'}
 

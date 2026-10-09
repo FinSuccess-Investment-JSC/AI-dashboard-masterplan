@@ -1,0 +1,987 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ngành Nông nghiệp &amp; thực phẩm Việt Nam · FinSuccess Research</title>
+<style>
+:root{
+  color-scheme: light;
+  /* ---- token lấy từ website công ty https://fisc.vn ---- */
+  --navy:#11255a; --navy2:#19316f; --navy3:#223567;
+  --accent:#27af95; --accent-bright:#2fd0b2; --accent-soft:#e6f5f1;
+  --tint:#dfe6f7; --tint-soft:#f5f7fc;
+  --bg:#ffffff; --page:#f5f7fc; --card:#ffffff;
+  --ink:#0d0d0d; --ink2:#3d4653; --muted:#6b7686;
+  --line:#dfe6f7; --hair:#eaeff9;
+  --brand:#11255a; --brand2:#19316f; --brand-deep:#11255a; --gold:#b8801f; --gold-soft:#fdf3e0;
+  --soft:#f5f7fc; --warn-bg:#fdf3e0; --danger-bg:#fbeae7;
+  --chart-surface:#ffffff; --grid:#e8edf7; --axis:#c6cfe0;
+  --s1:#1f4e9c; --s2:#d1583f; --s3:#27af95; --s4:#d99000; --s5:#a45bb8; --s6:#2f8f4e; --s7:#4b5bd4; --s8:#b8443a;
+  --good:#2f8f4e; --warning:#d99000; --serious:#dd7f4e; --critical:#c0392b;
+  --shadow:0 1px 2px rgba(17,37,90,.04), 0 6px 18px rgba(17,37,90,.05);
+  --radius:8px;
+}
+body{font-family:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,.hero h1,.intro h1{font-family:"Newsreader","Iowan Old Style",Georgia,serif;font-weight:600;letter-spacing:-.01em}
+h1 em,h2 em,.accent{font-style:italic;color:var(--accent);font-weight:500}
+.hero h1 em{color:var(--accent-bright)}
+table,.kpi .value,.value,td,th{font-family:"Inter",ui-sans-serif,system-ui,sans-serif;font-variant-numeric:tabular-nums}
+
+/* ---- thanh nhận diện công ty ---- */
+.fiscbar{background:linear-gradient(103deg,var(--navy) 0%,var(--navy3) 58%,#2c4a86 100%);color:#fff}
+.fiscbar-inner{max-width:1460px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.fiscbar img{height:34px;width:auto;display:block}
+.fiscbar .fiscbar-doc{font-size:12.5px;font-weight:600;color:#c9d6f0;letter-spacing:.2px}
+.fiscbar .fiscbar-doc b{color:#fff;font-weight:700}
+.fiscbar .fiscbar-nav{display:flex;gap:16px;flex-wrap:wrap}
+.fiscbar .fiscbar-nav a{color:#c9d6f0;text-decoration:none;font-size:12.5px;font-weight:600}
+.fiscbar .fiscbar-nav a:hover{color:var(--accent-bright)}
+
+/* ---- nguồn dạng link ---- */
+.source-note a,.conf-note a,.src-link{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(39,175,149,.35);font-weight:600}
+.source-note a:hover,.conf-note a:hover,.src-link:hover{color:var(--navy2);border-bottom-color:var(--navy2)}
+.source-note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6}
+.srcrow{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:6px}
+.srcrow a{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 9px;background:var(--tint-soft)}
+.srcrow a:after{content:"↗";font-size:9px;opacity:.7}
+.srcrow a:hover{border-color:var(--accent);background:var(--accent-soft)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important; scroll-behavior:auto!important} }
+body{margin:0;background:var(--page);color:var(--ink);font-family:ui-sans-serif,"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:proportional-nums}
+table{font-variant-numeric:tabular-nums}
+header{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--bg) 90%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{max-width:1460px;margin:auto;padding:12px 22px;display:flex;gap:16px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:.3px;font-size:13px;color:var(--ink)}
+.navlinks{display:flex;gap:14px;flex-wrap:wrap}
+.navlinks a{text-decoration:none;color:var(--muted);font-size:12.5px;font-weight:700}
+.navlinks a:hover{color:var(--brand)}
+.container{max-width:1460px;margin:auto;padding:22px}
+.hero{padding:26px 28px;border-radius:20px;background:linear-gradient(120deg,var(--brand-deep),var(--brand2));color:#fff;box-shadow:var(--shadow)}
+.hero h1{margin:0 0 8px;font-size:30px;line-height:1.15;text-wrap:balance}
+.hero p{margin:0;color:#dbeadb;max-width:920px;font-size:14.5px;line-height:1.55}
+.tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tag{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);padding:6px 10px;border-radius:999px;font-size:11.5px;font-weight:700}
+.insight{margin-top:16px;padding:13px 15px;background:rgba(255,255,255,.1);border-left:4px solid var(--gold);border-radius:10px;font-size:13.5px;line-height:1.6}
+.insight b{color:#fff}
+.grid{display:grid;gap:14px}
+.power-seasonal-grid{grid-template-columns:minmax(0,1fr);margin-top:14px}
+.power-seasonal-status{font-size:12px;color:var(--ink2);margin:0 0 2px}
+.kpis{grid-template-columns:repeat(6,minmax(150px,1fr));margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+.kpi .label{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.kpi .value{font-size:23px;font-weight:800;margin:6px 0 2px}
+.kpi .delta{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:700;padding:2px 7px;border-radius:999px;margin-bottom:4px}
+.kpi .delta.d-good{color:var(--good);background:color-mix(in srgb, var(--good) 14%, transparent)}
+.kpi .delta.d-warn{color:#8a6a10;background:var(--warn-bg)}
+:root[data-theme="dark"] .kpi .delta.d-warn,@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .kpi .delta.d-warn{color:var(--warning)}}
+.kpi .delta.d-bad{color:var(--critical);background:color-mix(in srgb, var(--critical) 12%, transparent)}
+.kpi .sub{font-size:11px;color:var(--muted);line-height:1.4}
+.kpi .spark{margin-top:6px;display:block}
+.section{margin-top:26px}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:0 0 12px;flex-wrap:wrap}
+.sectionhead h2{margin:0;font-size:20px}
+.sectionhead p{margin:2px 0 0;color:var(--muted);font-size:12.5px;max-width:640px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:var(--shadow)}
+.two{grid-template-columns:1.5fr 1fr}
+.three{grid-template-columns:repeat(3,1fr)}
+.four{grid-template-columns:repeat(4,1fr)}
+.chart-title{font-size:13.5px;font-weight:750;margin:0 0 2px}
+.chart-sub{font-size:11.5px;color:var(--muted);margin:0 0 8px}
+.chartsvg{display:block;width:100%;height:auto;overflow:visible}
+.gridline{stroke:var(--grid);stroke-width:1}
+.axisline{stroke:var(--axis);stroke-width:1}
+.axislabel{font-size:9px;fill:var(--muted)}
+.catlabel{font-size:9px;fill:var(--muted)}
+.endlabel{font-size:10px;fill:var(--ink2);font-weight:700}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 4px;font-size:11.5px;color:var(--ink2)}
+.legend .li{display:inline-flex;align-items:center;gap:6px}
+.legend .sw{width:12px;height:3px;border-radius:2px;display:inline-block}
+.legend .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.source-note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+.conf-note{font-size:11px;color:var(--muted);margin-top:2px;font-style:italic}
+details.dtable{margin-top:8px}
+details.dtable summary{cursor:pointer;font-size:11.5px;font-weight:700;color:var(--brand);list-style:none;display:inline-flex;align-items:center;gap:4px}
+details.dtable summary::-webkit-details-marker{display:none}
+details.dtable summary:before{content:"▸";font-size:10px}
+details.dtable[open] summary:before{content:"▾"}
+.dtable table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:8px}
+.dtable th,.dtable td{padding:6px 7px;border-bottom:1px solid var(--hair);text-align:left}
+.dtable th{color:var(--muted);font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.3px}
+.chtip{position:fixed;z-index:100;pointer-events:none;background:var(--ink);color:var(--bg);border-radius:10px;padding:8px 10px;font-size:11.5px;box-shadow:0 8px 20px rgba(0,0,0,.25);display:none;max-width:240px}
+.chtip-title{font-weight:800;margin-bottom:4px}
+.chtip-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:1px 0}
+.chtip-key{display:flex;align-items:center;gap:5px;opacity:.85}
+.chtip-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+.chtip-val{font-weight:800}
+.hitband{cursor:crosshair}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tabbtn{border:1px solid var(--line);background:var(--card);color:var(--brand);padding:7px 12px;border-radius:999px;font-weight:750;cursor:pointer;font-size:12.5px}
+.tabbtn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.tabpane{display:none} .tabpane.active{display:block}
+.tabpane p{font-size:13px;line-height:1.6;margin:0 0 6px}
+.timeline{position:relative;margin:8px 0 0;padding-left:24px}
+.timeline:before{content:"";position:absolute;left:7px;top:3px;bottom:3px;width:2px;background:var(--line)}
+.event{position:relative;margin:0 0 16px}
+.event:before{content:"";position:absolute;left:-21px;top:5px;width:10px;height:10px;background:var(--gold);border-radius:50%;box-shadow:0 0 0 3px var(--gold-soft)}
+.event b{display:block;font-size:13.5px} .event small{color:var(--muted);font-weight:700}
+.event p{margin:3px 0 0;font-size:12.5px;color:var(--ink2);line-height:1.5}
+.driver{padding:14px;border-radius:14px;background:var(--soft);border:1px solid var(--line)}
+.driver h3{margin:0 0 6px;font-size:14px} .driver p{margin:0;color:var(--ink2);font-size:12.5px;line-height:1.5}
+.scenario{border-radius:14px;padding:15px;border:1px solid var(--line);background:var(--card);cursor:pointer}
+.scenario:hover{box-shadow:var(--shadow)}
+.scenario.active{outline:2px solid var(--brand)}
+.scenario .range{font-size:22px;font-weight:800;margin:5px 0}
+.badge{display:inline-flex;padding:4px 9px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.2px}
+.base{background:var(--soft);color:var(--brand)} .bull{background:var(--warn-bg);color:#7a5b13} .bear{background:var(--danger-bg);color:#8a3d2e}
+.scenarioDetail{margin-top:14px;padding:14px 15px;border-radius:12px;background:var(--soft);border:1px dashed var(--line);color:var(--ink2);font-size:13px;line-height:1.6}
+.tablewrap{overflow:auto}
+table.plain{width:100%;border-collapse:collapse;font-size:12.5px}
+.plain th,.plain td{padding:9px 8px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}
+.plain th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.3px}
+.note{font-size:11.5px;color:var(--muted);line-height:1.55}
+.flagbox{background:var(--warn-bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:12.5px;line-height:1.6;color:var(--ink2);margin-top:10px}
+.flagbox b{color:var(--ink)}
+.footer{padding:26px 0 8px;color:var(--muted);font-size:11.5px}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--soft);color:var(--brand)}
+a{color:var(--brand)}
+@media(max-width:1150px){.kpis{grid-template-columns:repeat(3,1fr)}.two,.three,.four{grid-template-columns:1fr}}
+@media(max-width:700px){.container{padding:14px}.hero h1{font-size:24px}.kpis{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
+.majortabs{position:sticky;top:47px;z-index:25;background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.majortabrow{max-width:1460px;margin:auto;padding:10px 22px;display:flex;gap:8px;flex-wrap:wrap}
+.majortabbtn{border:1px solid var(--line);background:var(--card);color:var(--ink2);padding:8px 14px;border-radius:999px;font-weight:750;cursor:pointer;font-size:12.5px;white-space:nowrap}
+.majortabbtn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.majorpane{display:none}
+.majorpane.active{display:block}
+.subhead{font-size:15px;margin:22px 0 4px}
+.subhead:first-of-type{margin-top:4px}
+.subsub{font-size:12px;color:var(--muted);margin:0 0 12px;max-width:700px}
+.catriskgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.catbox,.riskbox{border-radius:14px;padding:14px 16px;border:1px solid var(--line)}
+.catbox{background:color-mix(in srgb, var(--good) 8%, var(--card))}
+.riskbox{background:color-mix(in srgb, var(--critical) 7%, var(--card))}
+.catbox h3,.riskbox h3{margin:0 0 8px;font-size:14px}
+.catbox ul,.riskbox ul{margin:0;padding-left:18px;font-size:12.5px;line-height:1.6;color:var(--ink2)}
+.catbox li,.riskbox li{margin-bottom:6px}
+.profilegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.profilecard{border-radius:14px;padding:14px 16px;border:1px solid var(--line);background:var(--card)}
+.profilecard h3{margin:0;font-size:15px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.profilecard .exch{font-size:10px;font-weight:800;color:var(--brand);background:var(--soft);padding:2px 8px;border-radius:999px}
+.profilecard p{margin:7px 0 0;font-size:12.5px;color:var(--ink2);line-height:1.55}
+.profilecard .stats{display:flex;gap:16px;margin-top:9px;flex-wrap:wrap}
+.profilecard .stat{font-size:11px;color:var(--muted)}
+.profilecard .stat b{display:block;font-size:15px;color:var(--ink);font-weight:800}
+@media(max-width:1150px){.catriskgrid,.profilegrid{grid-template-columns:1fr}}
+@media(max-width:700px){.majortabrow{padding:8px 14px}}
+
+/* ---- ghi de theo nhan dien FiSC ---- */
+.majortabs{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);border-top:0}
+.majortabbtn{font-weight:650}
+.majortabbtn.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.card{border-radius:var(--radius);border-color:var(--line)}
+.kpi{border-radius:var(--radius)}
+.hero{border-radius:18px;background:linear-gradient(103deg,var(--navy) 0%,var(--navy3) 58%,#2c4a86 100%)}
+.hero p{color:#d6e4ef}
+.insight{border-left-color:var(--accent-bright);background:rgba(255,255,255,.09)}
+.tag{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.22)}
+.sectionhead h2{font-size:21px}
+.subhead{font-family:"Newsreader","Iowan Old Style",Georgia,serif;font-weight:600;font-size:17px;color:var(--navy2)}
+details.dtable summary{color:var(--accent)}
+.scenario.active{outline-color:var(--accent)}
+.note{background:var(--tint-soft);border-left:3px solid var(--accent);padding:10px 12px;border-radius:10px;font-size:12.5px;line-height:1.6;color:var(--ink2)}
+code{background:var(--tint-soft);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:11px}
+.footer{border-top:1px solid var(--line);margin-top:26px}
+ul.list{margin:0;padding-left:18px;font-size:12.5px;line-height:1.65;color:var(--ink2)}
+ul.list li{margin-bottom:7px}
+.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+.scenario-detail{margin-top:14px;padding:14px 15px;border-radius:12px;background:var(--tint-soft);border:1px solid var(--line);color:var(--ink2);font-size:13px;line-height:1.65}
+.scenario-detail b{color:var(--ink)}
+@media(max-width:900px){.scenarios{grid-template-columns:1fr}}
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}.fiscbar-inner{padding:12px 14px}}
+
+.hero a,.tag a,.insight a,.fiscbar a{color:var(--accent-bright);border-bottom-color:rgba(47,208,178,.45)}
+.hero a:hover,.tag a:hover,.insight a:hover{color:#fff;border-bottom-color:#fff}
+
+/* ---- polish v1.1: research-dashboard readability ---- */
+body{font-size:14px;line-height:1.45}
+.container{padding-top:18px;padding-bottom:18px}
+.hero{border-radius:12px;padding:22px 24px}
+.hero h1{font-size:32px;line-height:1.08}
+.hero p{font-size:13.5px;max-width:980px}
+.insight{border-radius:8px;font-size:13px;line-height:1.55;max-width:1240px}
+.kpis{gap:10px;margin:14px 0}
+.kpi{padding:12px;min-height:128px}
+.kpi .label{font-size:10px;letter-spacing:.35px}
+.kpi .value{font-size:24px;line-height:1;margin:7px 0 4px}
+.kpi .sub{font-size:10.5px}
+.section{margin-top:22px}
+.sectionhead{align-items:flex-start;margin-bottom:10px}
+.sectionhead h2{font-size:22px;line-height:1.1}
+.sectionhead p{font-size:12.5px;max-width:880px;line-height:1.55}
+.card,.kpi,.driver,.scenario,.scenario-detail,.note,.flagbox,.profilecard,.catbox,.riskbox{border-radius:8px}
+.card{padding:14px}
+.chart-title{font-size:14px;line-height:1.3;color:var(--navy);font-weight:800}
+.chart-sub{font-size:11px;line-height:1.4;margin-bottom:6px}
+.card [id^="ch"]{min-height:230px}
+.chartsvg{margin-top:2px}
+.axislabel,.catlabel{font-size:9.5px}
+.endlabel{font-size:10.5px}
+.legend{font-size:11px;gap:10px 14px}
+.source-note,.conf-note{font-size:11px;line-height:1.45}
+.conf-note{padding-top:4px}
+.tablewrap{border:1px solid var(--hair);border-radius:8px;background:var(--card);overflow:auto}
+.tablewrap table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;line-height:1.45}
+.tablewrap th,.tablewrap td{padding:8px 9px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}
+.tablewrap th{position:sticky;top:0;z-index:1;background:var(--tint-soft);color:var(--navy2);font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.25px}
+.tablewrap tbody tr:nth-child(even){background:color-mix(in srgb, var(--tint-soft) 42%, transparent)}
+.tablewrap tbody tr:hover{background:var(--accent-soft)}
+.tablewrap tbody tr:last-child td{border-bottom:0}
+.tablewrap td:first-child{font-weight:650;color:var(--ink)}
+.tablewrap td b{color:var(--navy)}
+.focus-card{border-left:4px solid var(--accent);box-shadow:0 1px 2px rgba(17,37,90,.05),0 10px 28px rgba(39,175,149,.08)}
+.focus-card .chart-title,.focus-card h3{color:var(--navy)}
+.confidence-table tbody tr:nth-child(1) td:nth-child(2){color:var(--good);font-weight:800}
+.confidence-table tbody tr:nth-child(2) td:nth-child(2),.confidence-table tbody tr:nth-child(3) td:nth-child(2),.confidence-table tbody tr:nth-child(4) td:nth-child(2){color:var(--warning);font-weight:800}
+.confidence-table tbody tr:nth-child(5) td:nth-child(2){color:var(--critical);font-weight:800}
+.global-balance-table td:nth-child(3),.watch-table td:nth-child(3){font-weight:600;color:var(--ink)}
+.global-balance-table td:nth-child(4),.watch-table td:nth-child(4){background:color-mix(in srgb, var(--accent-soft) 45%, transparent)}
+.viz-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;margin:12px 0 10px}
+.viz-block{min-width:0;border-top:1px solid var(--hair);padding-top:10px}
+.viz-block [id^="ch"]{min-height:220px}
+.signal-line{margin:9px 0 0;padding:10px 12px;border-left:3px solid var(--accent);border-radius:8px;background:var(--tint-soft);font-size:12.5px;line-height:1.55;color:var(--ink2)}
+.signal-line b{color:var(--navy)}
+.data-gap{margin-top:8px;padding:10px 12px;border-left:4px solid var(--critical);border-radius:8px;background:var(--danger-bg);color:#7c241b;font-size:12px;line-height:1.5}
+.data-gap b{color:#6d1d14}
+.gap-row td{background:var(--danger-bg)!important;color:#7c241b}
+.gap-row td b{color:#6d1d14}
+.mini-matrix{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}
+.mini-cell{border:1px solid var(--hair);border-radius:8px;padding:10px;background:var(--tint-soft)}
+.mini-cell .k{font-size:10px;text-transform:uppercase;font-weight:800;color:var(--muted);letter-spacing:.25px}
+.mini-cell .v{font-size:18px;font-weight:850;color:var(--navy);margin-top:4px}
+.mini-cell .s{font-size:11px;color:var(--ink2);line-height:1.35;margin-top:4px}
+.catalyst-map{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.factor-card{border:1px solid var(--line);border-radius:8px;padding:12px;background:var(--card)}
+.factor-card.good{border-left:4px solid var(--good)}
+.factor-card.bad{border-left:4px solid var(--critical)}
+.factor-card h3{margin:0 0 8px;font-size:13px;color:var(--navy)}
+.factor-card .metric{font-size:20px;font-weight:850;color:var(--ink);line-height:1}
+.factor-card .label2{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4}
+.factor-card .impact{margin-top:8px;font-size:12px;color:var(--ink2);line-height:1.45}
+.law-cta{display:block;margin:0 0 12px;padding:13px 14px;border:1px solid color-mix(in srgb, var(--accent) 55%, var(--line));border-left:5px solid var(--accent);border-radius:8px;background:linear-gradient(90deg, color-mix(in srgb, var(--accent-soft) 72%, #fff), #fff);text-decoration:none;color:var(--ink)}
+.law-cta .eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.28px;font-weight:850;color:var(--accent)}
+.law-cta .title{margin-top:3px;font-size:17px;font-weight:850;color:var(--navy)}
+.law-cta .desc{margin-top:4px;font-size:12px;line-height:1.45;color:var(--ink2)}
+.srcrow{gap:5px 8px}
+.srcrow a{font-size:10.5px;border-radius:999px;padding:3px 8px}
+.subhead{margin-top:20px;margin-bottom:8px}
+.scenarios{gap:10px}
+.scenario{padding:13px}
+.scenario .range{font-size:20px;line-height:1.15}
+@media(max-width:700px){
+  .hero{padding:18px}
+  .hero h1{font-size:25px}
+  .insight{font-size:12.5px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .tablewrap th,.tablewrap td{padding:7px 8px}
+  .viz-grid{grid-template-columns:1fr}
+  .mini-matrix,.catalyst-map{grid-template-columns:1fr}
+}
+
+</style>
+<link rel="stylesheet" href="../assets/dashboard-ui.css?v=123c08b8ffcd">
+<script src="../assets/chart-types.js?v=5b81f0f266ee"></script>
+<script src="../data/daily-data.js?v=065d6fb3a9b2" defer></script>
+<script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
+<script src="../assets/sector-runtime.js?v=d5d24d93a98e" defer></script>
+<script src="../assets/sector-content.js?v=0c3d5655b929" defer></script>
+<script src="../assets/sector-layout.js?v=1258209726e6" defer></script>
+<script src="../data/agri-wi-data.js?v=2cdb7619c74b" defer></script>
+<script src="../assets/agri-dashboard.js?v=f8ad0adc3818" defer></script>
+<script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
+<script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
+<script src="../assets/catalyst-board.js?v=98ede80424f7" defer></script>
+<script src="../data/company-valuation.js?v=92ec0fb8bca4" defer></script>
+<script src="../data/company-comparison.js?v=7ee4ec8333ba" defer></script>
+<script src="../assets/financial-comparison.js?v=c2d94f7d0b29" defer></script>
+<script src="../assets/research-layout.js?v=6d0d3b6f3de9" defer></script>
+<script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
+<script src="../assets/research-editorial.js?v=c14ace90919f" defer></script>
+<script src="../assets/pane-subtabs.js?v=3a509b1fedb8" defer></script>
+<script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
+<script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
+<link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
+<script src="../assets/site-navigation.js?v=b887fc7f0543" data-release="20261009-agri-r1"></script>
+<link rel="stylesheet" href="../assets/catalyst-board.css?v=c2f07b357463">
+<link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
+<link rel="stylesheet" href="../assets/fin-success-theme.css?v=866820c17041">
+<style>
+/* Catalyst dạng "biến số đang thay đổi": chữ dài, không ép một dòng */
+body[data-sector="agri"] .cr-score-table{table-layout:fixed;width:100%}
+body[data-sector="agri"] .cr-score-table td,body[data-sector="agri"] .cr-score-table th{white-space:normal;text-align:left;vertical-align:top;font-size:12.5px;line-height:1.5}
+body[data-sector="agri"] .cr-score-table th:nth-child(1){width:22%}
+body[data-sector="agri"] .cr-score-table th:nth-child(2){width:32%}
+body[data-sector="agri"] .cr-score-table th:nth-child(3){width:22%}
+body[data-sector="agri"] .cr-score-table th:nth-child(4){width:9%}
+body[data-sector="agri"] .cr-score-table th:nth-child(5){width:15%}
+@media (max-width:700px){body[data-sector="agri"] .cr-score-table{table-layout:auto;min-width:640px}}
+/* Catalyst dạng thẻ */
+body[data-sector="agri"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2,#4a5568)}
+.tx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.tx-tile{border:1px solid var(--line,#dfe7ef);border-radius:12px;padding:12px 14px;background:var(--card,#fff);border-top:3px solid #9aa5b1;display:flex;flex-direction:column;gap:6px}
+.tx-tile[data-state="good"]{border-top-color:#27af95}.tx-tile[data-state="risk"]{border-top-color:#d1583f}.tx-tile[data-state="watch"]{border-top-color:#c29100}
+.tx-top{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700}
+.tx-dot{width:9px;height:9px;border-radius:50%;background:#9aa5b1}
+.tx-tile[data-state="good"] .tx-dot{background:#27af95}.tx-tile[data-state="risk"] .tx-dot{background:#d1583f}.tx-tile[data-state="watch"] .tx-dot{background:#c29100}
+.tx-tile[data-state="good"] .tx-chip{color:#1d8a76}.tx-tile[data-state="risk"] .tx-chip{color:#b8412c}.tx-tile[data-state="watch"] .tx-chip{color:#8a6a00}
+.tx-tile h5{margin:0;font-size:13.5px;line-height:1.35;color:var(--navy,#11255a)}
+.tx-big{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.tx-big strong{font-size:26px;line-height:1.1;color:var(--navy,#11255a)}.tx-big small{font-size:11.5px;color:#5b6778}
+.tx-ev{margin:0;font-size:12.5px;line-height:1.5;color:#3d4a5c}
+.tx-who{display:flex;gap:6px;flex-wrap:wrap}.tx-tag{font-size:11px;font-weight:650;padding:2px 8px;border-radius:999px;background:#eef2f6;color:#3d4a5c}
+.tx-tag[data-dir="up"]{background:#e3f5f0;color:#1d8a76}.tx-tag[data-dir="down"]{background:#fbe9e5;color:#b8412c}
+.tx-cond{margin:0;margin-top:auto;padding-top:6px;border-top:1px dashed #dfe7ef;font-size:11.5px;line-height:1.45;color:#5b6778}
+.tx-link{font-size:11.5px;font-weight:650}
+.tx-tablefold{margin-top:14px}.tx-tablefold>summary{cursor:pointer;font-size:12px;font-weight:650;color:#355978}
+</style>
+</head>
+<body data-sector="agri">
+<nav data-site-navigation="agri"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="../Bat-dong-san/">Bất động sản</a><a data-site-route="textile" href="../Det-may/">Dệt may</a><a data-site-route="port" href="../Cang-bien/">Cảng &amp; kho bãi</a><a data-site-route="agri" href="./" aria-current="page">Nông nghiệp &amp; thực phẩm</a></nav>
+<div class="fiscbar"><span>Dashboard ngành · Nông nghiệp &amp; thực phẩm Việt Nam · khung nghiên cứu gốc 09/10/2026</span></div>
+
+<nav class="majortabs">
+  <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst / Risk</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt10',this)">8. Thời tiết &amp; mùa vụ</button>
+</nav>
+
+<div class="container">
+  <section class="hero">
+    <h1>Bức tranh ngành nông nghiệp &amp; thực phẩm <em>Việt Nam</em></h1>
+    <p>Ba chuỗi chạy theo ba lực khác nhau: cây trồng xuất khẩu theo giá thế giới và thời tiết; chăn nuôi theo giá heo hơi so với giá ngô, khô đậu; thực phẩm – đồ uống theo sức mua và thuế. Đọc tách, không gộp.</p>
+    <div class="tagrow">
+      <span class="tag">Bản nghiên cứu: 09/10/2026</span>
+      <span class="tag">XNK, sản lượng, giá: <a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan, NSO · qua MCP Wi</a></span>
+      <span class="tag">ENSO: <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC</a></span>
+    </div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> đang tải số Wi.</div>
+  </section>
+  <div class="majorpane active" data-tab="mt1" id="pane-mt1">
+    <div class="sectionhead"><div><h2>1. Tổng quan ngành nông nghiệp &amp; thực phẩm</h2><p>Cây trồng xuất khẩu nhận giá thế giới; chăn nuôi mua ngô, đậu tương nhập khẩu và bán heo theo giá trong nước; thực phẩm – đồ uống bán cho người tiêu dùng trong nước, chịu thuế tiêu thụ đặc biệt.</p></div></div>
+    <section class="grid kpis">
+      <div class="kpi"><div class="label">Cà phê Robusta ICE</div><div class="value">—</div><div class="delta"></div><div class="sub">ICE · Wi</div><div id="spk-robusta"></div></div>
+      <div class="kpi"><div class="label">Cao su TSR20 SGX</div><div class="value">—</div><div class="delta"></div><div class="sub">SGX · Wi</div><div id="spk-rubber"></div></div>
+      <div class="kpi"><div class="label">Giá XK gạo bình quân</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan · Wi</div><div id="spk-rice"></div></div>
+      <div class="kpi"><div class="label">Heo hơi toàn quốc</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-hog"></div></div>
+      <div class="kpi"><div class="label">Ngô CBOT</div><div class="value">—</div><div class="delta"></div><div class="sub">CME · Wi</div><div id="spk-corn"></div></div>
+      <div class="kpi"><div class="label">Bán lẻ hàng hóa</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO · Wi</div><div id="spk-retail"></div></div>
+    </section>
+    <div class="grid two">
+      <div class="card" data-block-id="nn-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <h3 style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3>
+        <p style="font-size:12.5px;line-height:1.6;margin:0">12 doanh nghiệp: cây trồng XK (LTG, PAN, GVR, DPR, PHR), chăn nuôi &amp; thức ăn (DBC, HAG, BAF), thực phẩm &amp; đồ uống (VNM, MSN, SAB, KDC).</p>
+      </div>
+      <div class="card" data-block-id="nn-02" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
+        <h3 style="margin-top:0;font-size:13.5px">Vị trí trong chu kỳ</h3>
+        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Cây trồng phân hóa.</mark> Cao su TSR20 <b>+52%</b> YoY, giá XK cao su <b>+27%</b>; Robusta <b>−24%</b>, giá XK cà phê <b>−21%</b>; kim ngạch gạo 9T <b>−12%</b>.</p>
+        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Chăn nuôi bị ép biên.</mark> Heo hơi về <b>~53 nghìn đ/kg</b> (đỉnh T1/2026 ~78), trong khi ngô CBOT <b>+16%</b>, khô đậu <b>+13%</b> YoY.</p>
+        <p style="font-size:12.5px;line-height:1.65;margin-bottom:0"><mark class="key-phrase">Tiêu dùng trong nước khỏe; El Niño mạnh.</mark> Bán lẻ hàng hóa 9T <b>+12%</b>, bia <b>+15%</b>. NOAA: Niño-3.4 <b>+2,1 °C</b>, khả năng El Niño mạnh kỷ lục tới Q1/2027 → hạn Tây Nguyên, mặn ĐBSCL.</p>
+        <div class="source-note">Nguồn: số Wi tại các chart · <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC 08/10/2026</a></div>
+      </div>
+    </div>
+    <div class="card sector-valuation" style="margin-top:14px" data-block-id="nn-03" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">P/E các phân ngành nông nghiệp, thực phẩm — theo phiên</div>
+        <div class="chart-sub">lần · GICS cấp 4 của Wi · mỗi 5 phiên · P/B ở bảng</div>
+        <div id="chSectorVal"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-sector-val"></table></div></details>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="nn-04" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Doanh nghiệp theo dõi và biến quyết định của từng nhóm</h3>
+      <div class="tablewrap"><table><thead><tr><th>Chuỗi</th><th>Mã</th><th>Doanh thu đến từ</th><th>Biến quyết định</th></tr></thead><tbody><tr><td><b>Cây trồng XK · gạo</b></td><td>LTG · PAN</td><td>Gạo XK, vật tư nông nghiệp (LTG); gạo, điều, thực phẩm (PAN)</td><td>Giá XK gạo · Philippines, Indonesia · mặn ĐBSCL</td></tr><tr><td><b>Cây trồng XK · cao su</b></td><td>GVR · DPR · PHR</td><td>Mủ cao su; đền bù, cho thuê đất KCN</td><td>Giá TSR20 · tiến độ chuyển đất sang KCN · EUDR</td></tr><tr><td><b>Chăn nuôi &amp; thức ăn</b></td><td>DBC · HAG · BAF</td><td>Heo hơi, thức ăn chăn nuôi; HAG thêm chuối, sầu riêng</td><td>Giá heo hơi − giá ngô, khô đậu · ASF</td></tr><tr><td><b>Thực phẩm &amp; đồ uống</b></td><td>VNM · MSN · SAB · KDC</td><td>Sữa, hàng tiêu dùng, bán lẻ, bia, dầu ăn</td><td>Sức mua · giá sữa bột, lúa mạch, dầu thực vật · thuế TTĐB</td></tr></tbody></table></div>
+      <div class="source-note">Cà phê không có mã niêm yết thuần (HAG có 2.464 ha cà phê). P/E, P/B, vốn hóa cập nhật mỗi phiên (VNDirect); LTG bị hạn chế giao dịch nên không có giá. Số BCTC chỉ cập nhật khi người dùng yêu cầu.</div>
+    </div>
+  </div>
+  <div class="majorpane" data-tab="mt2" id="pane-mt2">
+  <section class="section">
+    <div class="sectionhead"><div><h2>2. Cung – Cầu</h2><p>Ba chuỗi: cây trồng XK, chăn nuôi &amp; thức ăn, thực phẩm &amp; đồ uống. Mỗi chuỗi gồm sản lượng, giá đầu ra và đầu vào.</p></div></div>
+    <h3 class="subhead">Cây trồng XK</h3>
+    <div class="grid two">
+      <div class="card" data-block-id="nn-10" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Xuất khẩu gạo, cà phê, cao su — theo tháng</div>
+        <div class="chart-sub">triệu USD</div>
+        <div id="chExp"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-exp"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nn-11" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Giá xuất khẩu bình quân — gạo, cà phê, cao su</div>
+        <div class="chart-sub">USD/kg</div>
+        <div id="chPx"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-px"></table></div></details>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="nn-12" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">Cà phê Robusta ICE và cao su TSR20</div>
+        <div class="chart-sub">cuối tháng · Robusta USD/tấn · TSR20 US cent/kg ×10 để cùng trục</div>
+        <div id="chWorld"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-world"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nn-13" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">Gạo 5% tấm trong nước</div>
+        <div class="chart-sub">nghìn đ/kg · cuối tháng</div>
+        <div id="chRice"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-rice"></table></div></details>
+      </div>
+    </div>
+    <h3 class="subhead">Chăn nuôi &amp; thức ăn</h3>
+    <div class="grid two">
+      <div class="card" data-block-id="nn-20" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">Giá heo hơi toàn quốc</div>
+        <div class="chart-sub">nghìn đ/kg · cuối tháng</div>
+        <div id="chHog"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-hog"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nn-21" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">Ngô và khô đậu tương CBOT</div>
+        <div class="chart-sub">% so cùng kỳ · cuối tháng</div>
+        <div id="chFeedPx"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-feedpx"></table></div></details>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="nn-22" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Nhập khẩu ngô, đậu tương, thức ăn chăn nuôi</div>
+        <div class="chart-sub">triệu USD · theo tháng</div>
+        <div id="chFeedImp"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-feedimp"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nn-23" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Sản lượng thức ăn gia súc</div>
+        <div class="chart-sub">nghìn tấn · theo tháng</div>
+        <div id="chFeed"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-feed"></table></div></details>
+      </div>
+    </div>
+    <h3 class="subhead">Thực phẩm &amp; đồ uống</h3>
+    <div class="grid two">
+      <div class="card" data-block-id="nn-30" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Bán lẻ hàng hóa — theo tháng</div>
+        <div class="chart-sub">nghìn tỷ đồng · so cùng kỳ ở bảng</div>
+        <div id="chRetail"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-retail"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nn-31" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Sản lượng bia và sữa tươi</div>
+        <div class="chart-sub">triệu lít · theo tháng</div>
+        <div id="chBev"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-bev"></table></div></details>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="nn-32" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">IIP chế biến thực phẩm, đồ uống và CPI</div>
+        <div class="chart-sub">% so cùng kỳ</div>
+        <div id="chIip"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-iip"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nn-33" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Nhập khẩu sữa và sản phẩm sữa</div>
+        <div class="chart-sub">triệu USD · chi phí đầu vào của nhà sữa</div>
+        <div id="chMilk"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-milk"></table></div></details>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="majorpane" data-tab="mt3" id="pane-mt3">
+  <section id="price" class="section">
+    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Giá đầu ra, đầu vào nằm trong từng chuỗi ở Bức tranh ngành.</p></div></div>
+  </section>
+  </div>
+  <div class="majorpane" data-tab="mt4" id="pane-mt4">
+  <section id="policy" class="section">
+    <div class="sectionhead"><div><h2>4. Policy / Trade / Tax</h2><p>Hai nhóm: thị trường nhập khẩu và rào cản (gạo, cà phê, cao su, nguyên liệu thức ăn); thuế và dịch bệnh trong nước.</p></div></div>
+    <div class="card" data-block-id="nn-50" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Thị trường nhập khẩu và rào cản thương mại</h3>
+      <div class="tablewrap"><table><thead><tr><th>Biện pháp</th><th>Hiệu lực</th><th>Nội dung</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Philippines tạm dừng nhập gạo (EO 102)</b></td><td>01/09/2025 → 31/12/2025; mở 01/2026, dừng tiếp 02–04/2026</td><td>Thị trường lớn nhất của gạo Việt Nam; thuế nhập khẩu linh hoạt 15–35% từ 01/2026 (EO 105)</td><td>LTG · PAN</td><td><a href="https://wealthinsights.metrobank.com.ph/bworldonline/philippines-eyes-1-month-rice-import-window-in-january-2026" target="_blank" rel="noopener">BusinessWorld</a> · <a href="https://www.gmanetwork.com/news/money/economy/965152/philippines-rice-tariff-january-2026/story/" target="_blank" rel="noopener">GMA</a></td></tr><tr><td><b>Indonesia không nhập gạo tiêu dùng 2026</b></td><td>2026</td><td>Dự trữ gạo chính phủ 5,0 triệu tấn (23/04/2026)</td><td>LTG · PAN</td><td><a href="https://trungtamwto.vn/tin-tuc/31553-indonesia-khong-nhap-khau-gao-ngo-va-duong-nam-2026-viet-nam-co-lo-that-thu" target="_blank" rel="noopener">Trung tâm WTO</a></td></tr><tr><td><b>EUDR – Quy định (EU) 2025/2650</b></td><td>DN lớn 30/12/2026; DN vừa, nhỏ 30/06/2027</td><td>Cà phê, cao su phải chứng minh không phá rừng</td><td>GVR · DPR · PHR · HAG</td><td><a href="https://trade.ec.europa.eu/access-to-markets/en/news/delay-until-december-2026-and-other-developments-implementation-eudr-regulation" target="_blank" rel="noopener">EC Access2Markets</a></td></tr><tr><td><b>Mỹ miễn thuế đối ứng cà phê, gia vị</b></td><td>13/11 (năm chưa kiểm trên văn bản gốc)</td><td>Cà phê Việt Nam ra khỏi diện thuế 20%</td><td>HAG (cà phê)</td><td><a href="https://trungtamwto.vn/chuyen-de/31145-ong-trump-ky-sac-lenh-giam-thue-nong-san-nhap-khau-ca-phe-viet-nam-don-thoi-diem-vang-gia-tang-thi-phan" target="_blank" rel="noopener">Trung tâm WTO</a></td></tr><tr><td><b>NĐ 73/2025 – thuế MFN ngô, khô đậu về 0%</b></td><td>31/03/2025</td><td>Ngô hạt 2% → 0%; khô dầu đậu tương 1–2% → 0%</td><td>DBC · BAF · HAG</td><td><a href="https://insightplus.bakermckenzie.com/bm/tax/vietnam-mfn-import-duty-rates-for-certain-goods-reduced-effective-31-march-2025" target="_blank" rel="noopener">Baker McKenzie</a></td></tr></tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Các dòng trên lấy từ đoạn trích kết quả tìm kiếm, trừ khi ghi khác. Chưa xác nhận chính sách nhập gạo của Philippines đang áp dụng tại 10/2026. Chưa tra: Ấn Độ mở lại xuất khẩu gạo, NĐ 107/2024 kinh doanh gạo, nhập khẩu cao su của Trung Quốc, nhập khẩu thịt.</div></details>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="nn-51" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Thuế và dịch bệnh trong nước</h3>
+      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Biện pháp</th><th>Trước</th><th>Sau</th><th>Hiệu lực</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Luật Thuế TTĐB 66/2025/QH15 – rượu, bia</b></td><td>65%</td><td><b>Tăng 5 điểm %/năm 2027–2031, lên 90% năm 2031</b></td><td>01/01/2026 (lộ trình từ 2027)</td><td>SAB</td><td><a href="https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm" target="_blank" rel="noopener">VnEconomy</a></td></tr><tr><td><b>Luật Thuế TTĐB – nước giải khát có đường</b></td><td>Không chịu thuế</td><td><b>Chịu thuế</b> nếu &gt;5 g đường/100 mL</td><td>01/01/2026</td><td>MSN · KDC · VNM</td><td><a href="https://luatvietnam.vn/thue-phi-le-phi/diem-moi-cua-luat-thue-tieu-thu-dac-biet-565-98391-article.html" target="_blank" rel="noopener">LuatVietnam</a></td></tr><tr><td><b>Giảm thuế GTGT 2%</b></td><td>10%</td><td><b>8%</b> (trừ hàng chịu TTĐB)</td><td>01/07/2025 → 31/12/2026</td><td>VNM · MSN · KDC</td><td><a href="https://www.pwc.com/vn/vn/publications/news-brief/250618-approval-for-extending-vat-cut.html" target="_blank" rel="noopener">PwC</a></td></tr><tr><td><b>Dịch tả heo châu Phi (ASF)</b></td><td>—</td><td>2T/2026: 225 ổ dịch, 23 tỉnh, ~12.900 con tiêu hủy; 07/2026 lan ra 20 tỉnh</td><td>2026</td><td>DBC · BAF · HAG</td><td><a href="https://www.sggp.org.vn/2-thang-dau-nam-2026-ca-nuoc-co-gan-12700-con-heo-chet-buoc-tieu-huy-vi-dich-post840883.html" target="_blank" rel="noopener">SGGP</a> · <a href="https://thesaigontimes.vn/dich-ta-lon-chau-phi-lan-ra-20-tinh-chinh-phu-vao-cuoc/" target="_blank" rel="noopener">Saigon Times</a></td></tr></tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Mức TTĐB rượu, bia trước 2026 (65%) theo luật cũ; lộ trình 2027–2031 và mức 90% theo VnEconomy, nguồn khác ghi 60% — cần đối chiếu văn bản luật. Lộ trình thuế suất nước có đường chưa có. Số ổ ASF lũy kế đến 10/2026 chưa có.</div></details>
+    </div>
+  </section>
+  </div>
+  <div class="majorpane" data-tab="mt5" id="pane-mt5">
+  <section class="section">
+    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ Wi (giá hàng hóa, XNK, sản lượng, bán lẻ, định giá) và NOAA (ENSO).</p></div></div>
+    <div class="catriskgrid">
+      <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
+        <h3>Catalyst — yếu tố hỗ trợ</h3>
+        <ul><li><b>Giá cao su tăng mạnh</b>: TSR20 +52% YoY <span class="muted">(1–2 quý · GVR · DPR · PHR)</span></li><li><b>Đền bù, chuyển đất cao su sang KCN</b>: PHR còn ~2.100 tỷ VSIP III; GVR mở 5 KCN mới từ Q3/2026 <span class="muted">(2026–2027 · PHR · GVR)</span></li><li><b>Tiêu dùng nội địa</b>: bán lẻ 9T +12%, bia +15% <span class="muted">(1–2 quý · SAB · MSN · VNM)</span></li></ul>
+      </div>
+      <div class="riskbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
+        <h3>Risk — rủi ro</h3>
+        <ul><li><b>El Niño mạnh tới Q1/2027</b>: hạn Tây Nguyên, mặn ĐBSCL vụ Đông Xuân <span class="muted">(Q4/2026–Q2/2027 · LTG · PAN · HAG)</span></li><li><b>Biên chăn nuôi hẹp</b>: heo hơi giảm, ngô và khô đậu tăng <span class="muted">(1–2 quý · DBC · BAF)</span></li><li><b>Thuế TTĐB bia từ 2027</b> <span class="muted">(2027 · SAB)</span></li><li><b>Gạo: Philippines, Indonesia hạn chế nhập</b> <span class="muted">(theo sự kiện · LTG · PAN)</span></li></ul>
+      </div>
+    </div>
+    <div class="srcrow"><a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC</a><a href="https://elibook.vn/2026/06/25/phr-gia-cao-su-tu-nhien-van-neo-cao-va-suc-bat-tu-3260-ty-dong-tien-boi-thuong-dat/" target="_blank" rel="noopener">Elibook – PHR</a><a href="https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm" target="_blank" rel="noopener">VnEconomy – TTĐB</a></div>
+  </section>
+  </div>
+  <div class="majorpane" data-tab="mt6" id="pane-mt6">
+  <section class="section">
+    <div class="sectionhead"><div><h2>6. Key players</h2><p>12 doanh nghiệp theo ba chuỗi. Bảng so sánh tài chính và định giá hằng ngày ở Tổng quan.</p></div></div>
+    <div class="card" data-block-id="nn-60" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+      <div class="chart-title">Kế hoạch và kết quả 2026</div>
+      <div class="chart-sub">tỷ đồng · 6T/2026 trừ khi ghi khác</div>
+      <div class="tablewrap"><table><thead><tr><th>Mã</th><th>Kế hoạch 2026</th><th>Kết quả 6T/2026</th><th>Điểm cần biết</th><th>Nguồn</th></tr></thead><tbody>
+      <tr><td><b>LTG</b></td><td>—</td><td>—</td><td>Hạn chế giao dịch do chậm nộp BCTC 2024–2025</td><td><a href="https://vneconomy.vn/tap-doan-loc-troi-giai-trinh-co-phieu-vao-dien-han-che-giao-dich.htm" target="_blank" rel="noopener">VnEconomy</a></td></tr>
+      <tr><td><b>PAN</b></td><td>DT 18.000 · LNST 1.780</td><td>DT 7.387 (−9%) · LNST 458 (+126%)</td><td>Đã bán Bibica; biên gộp Q2 21,9%</td><td><a href="https://mekongasean.vn/doanh-thu-di-lu-i-pan-group-van-bao-lai-tang-ga-n-40-57833.html" target="_blank" rel="noopener">MekongAsean</a></td></tr>
+      <tr><td><b>GVR</b></td><td>DT 33.799 · LNTT 6.902</td><td>DT ~19.400 · LNTT 6.038 (87,5% KH)</td><td>5 KCN mới từ Q3/2026; kế hoạch thấp, dễ vượt</td><td><a href="https://nhandan.vn/sau-thang-nam-2026-tap-doan-vrg-dat-loi-nhuan-hon-6000-ty-dong-post978413.html" target="_blank" rel="noopener">Nhân Dân</a></td></tr>
+      <tr><td><b>DPR</b></td><td>DT 1.067 · LNST 398</td><td>DT 659 (+63%) · LNST 218 (+58%)</td><td>Giá bán bình quân 58,2 triệu đ/tấn (+11%)</td><td><a href="https://mekongasean.vn/huong-loi-tu-gia-ban-lai-quy-22026-cua-cao-su-dong-phu-tang-60-57810.html" target="_blank" rel="noopener">MekongAsean</a></td></tr>
+      <tr><td><b>PHR</b></td><td>DT 2.300 · LNST 779</td><td>LNST 655</td><td>Đền bù 496 tỷ = 62% LNTT; còn ~2.100 tỷ VSIP III</td><td><a href="https://elibook.vn/2026/08/17/phr-cu-nhay-vot-ngoan-muc-quy-2-cua-vua-cao-su-binh-duong/" target="_blank" rel="noopener">Elibook</a></td></tr>
+      <tr><td><b>DBC</b></td><td>LNST 1.117 (−25%)</td><td>DT 8.377 (+12%) · LNST 663 (−34%)</td><td>Giá heo giảm, giá vốn tăng</td><td><a href="https://cafef.vn/gia-lon-hoi-giam-keo-lai-rong-quy-ii-2026-cua-dabaco-di-lui-43-188260731094501651.chn" target="_blank" rel="noopener">CafeF</a></td></tr>
+      <tr><td><b>HAG</b></td><td>—</td><td>DT 3.707 · LNST ~2.300</td><td>Lãi chủ yếu từ miễn 784 tỷ lãi trái phiếu; chuối 2.365 ha, sầu riêng 1.713 ha, cà phê 2.464 ha</td><td><a href="https://mekongasean.vn/hagl-bam-sat-ke-hoach-loi-nhuan-ky-luc-nho-duoc-mien-lai-trai-phieu-57803.html" target="_blank" rel="noopener">MekongAsean</a></td></tr>
+      <tr><td><b>BAF</b></td><td>DT 8.431 · LNST 793</td><td>DT 3.899 (+55%)</td><td>Đàn ~900 nghìn con; xuất bán 6T +61%</td><td><a href="https://tapchicongthuong.vn/baf-tang-61--san-luong-heo-6-thang-dau-nam-2026--day-manh-dau-tu-cho-chu-ky-tang-truong-moi-538213.htm" target="_blank" rel="noopener">Tạp chí Công Thương</a></td></tr>
+      <tr><td><b>VNM</b></td><td>DT 66.477 · LNST 9.828</td><td>DT 35.034 (+18%) · LNST 5.643 (+38%)</td><td>Q2 lãi cao nhất từ Q1/2021</td><td><a href="https://vietbao.vn/vinamilk-lai-hon-5600-ty-dong-sau-6-thang-hoan-thanh-57-ke-hoach-nam-601316.html" target="_blank" rel="noopener">Việt Báo</a></td></tr>
+      <tr><td><b>MSN</b></td><td>Đề xuất nâng: DT 98–105 nghìn tỷ · LNST 10.000–11.500</td><td>Q2: DT 28.118 (+54%) · LNST 3.800 (×2,3)</td><td>WinCommerce có lãi; MHT tăng mạnh</td><td><a href="https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html" target="_blank" rel="noopener">Doanh nhân</a></td></tr>
+      <tr><td><b>SAB</b></td><td>DT 28.316 · LNST 4.609</td><td>LNST 2.489 (+21%)</td><td>Thuế TTĐB tăng từ 2027</td><td><a href="https://doanhnhan.baophapluat.vn/sabeco-sab-thu-hon-2-480-ty-dong-lai-sau-thue-nua-dau-nam-2026-hoan-thanh-50-ke-hoach.html" target="_blank" rel="noopener">Doanh nhân</a></td></tr>
+      <tr><td><b>KDC</b></td><td>DT 12.000 · LNTT 700</td><td>DT 4.345 (+4,5%) · LNTT 149 (+64%)</td><td>Tái cấu trúc dầu ăn, kế hoạch IPO Tường An</td><td><a href="https://mekongasean.vn/loi-nhuan-kido-tang-manh-sau-soat-xet-6-thang-dau-nam-2026-59181.html" target="_blank" rel="noopener">MekongAsean</a></td></tr>
+      </tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Trừ MSN, các số lấy từ đoạn trích kết quả tìm kiếm, chưa đối chiếu BCTC gốc. Kế hoạch HAG chỉ suy được từ % hoàn thành nên để trống. LTG không có số 2026. Số BCTC chỉ cập nhật khi người dùng yêu cầu.</div></details>
+    </div>
+  </section>
+  </div>
+  <div class="majorpane" data-tab="mt7" id="pane-mt7">
+    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Bốn câu chuyện đang dẫn dắt ngành.</p></div></div>
+    <div data-topic-key="el_nino" data-topic-segment="Cây trồng XK" data-topic-title="El Niño mạnh: hạn và mặn">
+      <div class="card" data-block-id="nn-t1" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>NOAA 08/10/2026: Niño-3.4 +2,1 °C; 83% khả năng El Niño mạnh kỷ lục (≥2,5 °C) vào 10–12/2026</li><li>Mưa có thể thấp hơn trung bình 25–50%; mặn ĐBSCL đầu 2027 vào sâu 90–125 km trên sông Vàm Cỏ</li></ul>
+        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▼ LTG · PAN · HAG · ▲ giá cà phê thế giới nếu hạn làm giảm vụ</p>
+        <div class="source-note">Nguồn: <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC</a> · <a href="https://vietnamnews.vn/environment/1782297/el-nino-looms-over-viet-nam-with-drought-heat-and-salinity-risks.html" target="_blank" rel="noopener">Viet Nam News</a></div>
+      </div>
+    </div>
+    <div data-topic-key="hog_cycle" data-topic-segment="Chăn nuôi &amp; thức ăn" data-topic-title="Giá heo giảm, thức ăn tăng">
+      <div class="card" data-block-id="nn-t2" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Heo hơi 54–56 nghìn đ/kg ngày 06/10/2026, từ 62–72 nghìn đ/kg tháng 1</li><li>Đàn heo doanh nghiệp tăng nhanh (BAF xuất bán 6T +61%); ASF lan 20 tỉnh 07/2026</li></ul>
+        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▼ DBC · BAF · HAG</p>
+        <div class="source-note">Nguồn: <a href="https://baolaocai.vn/gia-lon-hoi-hom-nay-6102026-cao-nhat-56000-dongkg-post911190.html" target="_blank" rel="noopener">Báo Lào Cai 06/10/2026</a> · <a href="https://tapchicongthuong.vn/baf-tang-61--san-luong-heo-6-thang-dau-nam-2026--day-manh-dau-tu-cho-chu-ky-tang-truong-moi-538213.htm" target="_blank" rel="noopener">Tạp chí Công Thương</a></div>
+      </div>
+    </div>
+    <div data-topic-key="rubber_land" data-topic-segment="Cây trồng XK" data-topic-title="Cao su: giá tăng và đất KCN">
+      <div class="card" data-block-id="nn-t3" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>TSR20 tăng hơn 50% so cùng kỳ; DPR giá bán bình quân +11%</li><li>PHR còn ~2.100 tỷ đền bù VSIP III (2026–2027), Bắc Tân Uyên 1 &gt;1.400 tỷ</li><li>EUDR áp dụng DN lớn từ 30/12/2026</li></ul>
+        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▲ GVR · DPR · PHR</p>
+        <div class="source-note">Nguồn: <a href="https://elibook.vn/2026/06/25/phr-gia-cao-su-tu-nhien-van-neo-cao-va-suc-bat-tu-3260-ty-dong-tien-boi-thuong-dat/" target="_blank" rel="noopener">Elibook</a> · <a href="https://mekongasean.vn/huong-loi-tu-gia-ban-lai-quy-22026-cua-cao-su-dong-phu-tang-60-57810.html" target="_blank" rel="noopener">MekongAsean</a></div>
+      </div>
+    </div>
+    <div data-topic-key="excise" data-topic-segment="Thực phẩm &amp; đồ uống" data-topic-title="Thuế TTĐB bia, nước ngọt">
+      <div class="card" data-block-id="nn-t4" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Rượu, bia tăng 5 điểm %/năm từ 2027</li><li>Nước có đường &gt;5 g/100 mL chịu thuế từ 01/01/2026</li><li>Bia 9T/2026 vẫn +15% sản lượng</li></ul>
+        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▼ SAB · MSN (nước giải khát)</p>
+        <div class="source-note">Nguồn: <a href="https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm" target="_blank" rel="noopener">VnEconomy</a> · <a href="https://elibook.vn/2026/09/16/sab-bien-lai-gop-dat-dinh-8-quy-nhung-loi-nhuan-van-giam-chan-con-song-thue-2027-dang-cho-phia-truoc/" target="_blank" rel="noopener">Elibook – SAB</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="majorpane" data-tab="mt10" id="pane-mt10">
+    <div class="sectionhead"><div><h2>Thời tiết &amp; mùa vụ</h2><p>El Niño làm khô Tây Nguyên và đẩy mặn vào ĐBSCL mùa khô; tác động tới sản lượng đi sau 3–6 tháng.</p></div></div>
+    <div class="grid two">
+      <div class="card" data-block-id="nn-40" data-update-kind="public" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Chỉ số ONI (ENSO) — theo mùa 3 tháng</div>
+        <div class="chart-sub">°C · ≥ +0,5 El Niño · ≥ +1,5 mạnh</div>
+        <div id="chOni"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-oni"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nn-41" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="chart-title">Niño-3.4 theo tuần</div>
+        <div class="chart-sub">°C chênh so trung bình · 52 tuần gần nhất</div>
+        <div id="chNino"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-nino"></table></div></details>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="nn-42" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+      <div class="chart-title">Lịch mùa vụ và tác động của El Niño</div>
+      <div class="chart-sub">vụ chính · vùng · điều cần theo dõi</div>
+      <div class="tablewrap"><table><thead><tr><th>Cây trồng</th><th>Vùng</th><th>Thu hoạch</th><th>El Niño tác động</th><th>Mã</th></tr></thead><tbody><tr><td><b>Cà phê Robusta</b></td><td>Tây Nguyên</td><td>Niên vụ 10–9, thu hoạch 10–12</td><td>Hạn mùa khô (12–4) làm giảm vụ sau; tưới tốn chi phí. USDA 2026/27: 32,5 triệu bao (+2,5%)</td><td>HAG</td></tr><tr><td><b>Lúa</b></td><td>ĐBSCL</td><td>Đông Xuân 2–3, Hè Thu 7–8, Thu Đông 10–11</td><td>Mặn xâm nhập sâu đầu 2027 đe dọa vụ Đông Xuân — vụ lớn nhất, gạo XK chính</td><td>LTG · PAN</td></tr><tr><td><b>Cao su</b></td><td>Đông Nam Bộ, Tây Nguyên</td><td>Cạo 5–1, nghỉ cạo mùa khô 2–4</td><td>Khô hạn kéo dài mùa nghỉ cạo, giảm sản lượng mủ toàn vùng → hỗ trợ giá</td><td>GVR · DPR · PHR</td></tr><tr><td><b>Ngô, đậu tương (nhập)</b></td><td>Mỹ, Brazil, Argentina</td><td>Mỹ 9–11; Nam Mỹ 2–5</td><td>El Niño thường thuận cho Nam Mỹ → có thể hạ giá thức ăn chăn nuôi năm 2027</td><td>DBC · BAF</td></tr></tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Lịch mùa vụ là kiến thức ngành phổ biến, không phải số của nguồn cụ thể. Dự báo mặn và mức thiếu mưa lấy từ đoạn trích Viet Nam News; USDA cà phê từ đoạn trích báo cáo tháng 6/2026. Chưa có USDA gạo Việt Nam 2026/27.</div></details>
+      <div class="source-note">Nguồn: <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC</a> · <a href="https://vietnamnews.vn/environment/1779696/viet-nam-faces-25-50-per-cent-rainfall-shortfalls-if-el-nino-strengthens.html" target="_blank" rel="noopener">Viet Nam News – thiếu mưa 25–50%</a> · <a href="https://apps.fas.usda.gov/psdonline/circulars/2026/07/coffee.pdf" target="_blank" rel="noopener">USDA FAS – Coffee</a></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px" data-block-id="nn-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+    <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa; giá XK bình quân</b></td><td><a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan</a> qua MCP Wi</td><td>Tháng</td><td>Routine Claude hằng ngày (Wi)</td></tr><tr><td><b>Bán lẻ, CPI, IIP, sản lượng bia, sữa, thức ăn</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a> qua Wi</td><td>Tháng</td><td>Routine Claude hằng ngày (Wi)</td></tr><tr><td><b>Heo hơi, gạo nội địa, Robusta, TSR20, ngô, khô đậu</b></td><td>Wi</td><td>Ngày · hiển thị cuối tháng</td><td>Routine Claude hằng tuần (Wi)</td></tr><tr><td><b>ONI, Niño-3.4</b></td><td><a href="https://www.cpc.ncep.noaa.gov/" target="_blank" rel="noopener">NOAA CPC</a></td><td>Tháng / tuần</td><td>Script GitHub mỗi lượt job (dùng chung với Điện)</td></tr><tr><td><b>P/E, P/B nhóm ngành; từng mã</b></td><td>Wi; <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Wi hằng ngày; script mỗi lượt job</td></tr><tr><td><b>Chính sách, mùa vụ, chủ đề nóng</b></td><td>Báo chí, văn bản (link tại từng thẻ)</td><td>Theo sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="source-note" id="wi-built">Dựng từ WiMCP; các lời gọi ghi trong data/agri-wi-contract.json.</div>
+  </div>
+  <div class="footer">Vietnam Agriculture &amp; Food Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 09/10/2026.</div>
+</div>
+<script>
+/* ---------- tiny SVG chart engine ---------- */
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs){
+  const e=document.createElementNS(NS,tag);
+  if(attrs){ for(const k in attrs){ e.setAttribute(k, attrs[k]); } }
+  return e;
+}
+function txt(tag,attrs,text){ const e=el(tag,attrs); if(text!==undefined) e.textContent=text; return e; }
+function niceMax(v){
+  if(v<=0) return 1;
+  const mag=Math.pow(10,Math.floor(Math.log10(v)));
+  const n=v/mag;
+  let step;
+  if(n<=1) step=1; else if(n<=2) step=2; else if(n<=2.5) step=2.5; else if(n<=5) step=5; else step=10;
+  return step*mag;
+}
+function fmt(v,d){
+  d = d===undefined?0:d;
+  return Number(v).toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d});
+}
+let tipEl=null;
+function tipBox(){
+  if(!tipEl){ tipEl=document.createElement('div'); tipEl.className='chtip'; document.body.appendChild(tipEl); }
+  return tipEl;
+}
+function showTip(evt,title,rows){
+  const t=tipBox();
+  t.innerHTML='';
+  const h=document.createElement('div'); h.className='chtip-title'; h.textContent=title; t.appendChild(h);
+  rows.forEach(r=>{
+    const row=document.createElement('div'); row.className='chtip-row';
+    const key=document.createElement('span'); key.className='chtip-key';
+    if(r.color){ const dot=document.createElement('span'); dot.className='chtip-dot'; dot.style.background=r.color; key.appendChild(dot); }
+    const kt=document.createElement('span'); kt.textContent=r.label; key.appendChild(kt);
+    const val=document.createElement('span'); val.className='chtip-val'; val.textContent=r.value;
+    row.appendChild(key); row.appendChild(val);
+    t.appendChild(row);
+  });
+  t.style.display='block';
+  moveTip(evt);
+}
+function moveTip(evt){
+  const t=tipBox();
+  const pad=16;
+  let x=evt.clientX+pad, y=evt.clientY+pad;
+  const rect=t.getBoundingClientRect();
+  if(x+rect.width>window.innerWidth-8) x=evt.clientX-rect.width-pad;
+  if(y+rect.height>window.innerHeight-8) y=evt.clientY-rect.height-pad;
+  t.style.left=x+'px'; t.style.top=y+'px';
+}
+function hideTip(){ if(tipEl) tipEl.style.display='none'; }
+
+function baseSvg(W,H,label){
+  return el('svg',{viewBox:'0 0 '+W+' '+H, width:'100%', height:H, class:'chartsvg', role:'img', 'aria-label':label||''});
+}
+function floatRange(minV,maxV){
+  const span=(maxV-minV)||Math.abs(maxV)||1;
+  const step=niceMax(span/4);
+  const lo=Math.floor((minV-span*0.15)/step)*step;
+  const hi=Math.ceil((maxV+span*0.15)/step)*step;
+  return [Math.max(lo,0), hi];
+}
+function yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,digits,yMin,steps=4){
+  yMin=yMin||0;
+  const yToPx=(v)=> padT + plotH*(1-(v-yMin)/(yMax-yMin));
+  for(let i=0;i<=steps;i++){
+    const v=yMin+(yMax-yMin)*i/steps;
+    const y=yToPx(v);
+    svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:y,y2:y,class:'gridline'}));
+    svg.appendChild(txt('text',{x:padL-8,y:y+3,'text-anchor':'end',class:'axislabel'}, fmt(v,digits)));
+  }
+  return yToPx;
+}
+
+/* categorical bar / combo chart */
+function barLineChartBase(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host) return;
+  const cats=opts.categories, n=cats.length;
+  const rotate = opts.rotateLabels===false ? false : n>8;
+  const W=640, H=260;
+  const padL=50,padR=14,padT=14,padB= rotate?56:30;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  let maxV=0;
+  opts.series.forEach(s=> s.values.forEach(v=>{ if(v!=null && v>maxV) maxV=v; }));
+  let yMin=0, yMax=niceMax(maxV*1.15);
+  if(opts.zeroBase===false && opts.series.every(s=>s.kind==='line')){
+    let mn=Infinity; opts.series.forEach(s=>s.values.forEach(v=>{ if(v!=null && v<mn) mn=v; }));
+    const r=floatRange(mn,maxV); yMin=r[0]; yMax=r[1];
+  }
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits,yMin,opts.yGridSteps||4);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  const band=plotW/n;
+  const barSeries=opts.series.filter(s=>s.kind!=='line');
+  const lineSeries=opts.series.filter(s=>s.kind==='line');
+  const barW=Math.min(24, band*0.62/(barSeries.length||1));
+  const linePts={};
+  lineSeries.forEach(s=>{ linePts[s.name]=[]; });
+
+  cats.forEach((cat,i)=>{
+    const bandX=padL+i*band;
+    const cx=bandX+band/2;
+    const rows=[];
+    barSeries.forEach((s,si)=>{
+      const v=s.values[i];
+      const gx = cx - (barSeries.length*barW)/2 + si*barW;
+      if(v!=null){
+        const y0=yToPx(0), y1=yToPx(v);
+        const r=el('rect',{x:gx+1,y:Math.min(y0,y1),width:Math.max(barW-2,2),height:Math.max(Math.abs(y0-y1),1),rx:3,ry:3,fill:s.color, opacity: s.confArr && s.confArr[i]===false ? 0.55 : 1});
+        r.appendChild(txt('title',{},cat+' — '+s.name+': '+fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+        svg.appendChild(r);
+        if(i===n-1){ svg.appendChild(txt('text',{x:gx+barW/2,y:Math.min(y0,y1)-6,'text-anchor':'middle',class:'endlabel',fill:s.color},fmt(v,opts.digits))); }
+        rows.push({label:s.name,value:fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):''),color:s.color});
+      }
+    });
+    lineSeries.forEach(s=>{
+      const v=s.values[i];
+      if(v!=null){ linePts[s.name].push([cx, yToPx(v)]); rows.push({label:s.name,value:fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):''),color:s.color}); }
+      else { linePts[s.name].push(null); }
+    });
+    const hit=el('rect',{x:bandX,y:padT,width:band,height:plotH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, cat, rows));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    hit.addEventListener('focus',e=>showTip({clientX:bandX+ (host.getBoundingClientRect ? host.getBoundingClientRect().left:0), clientY:80}, cat, rows));
+    hit.addEventListener('blur',hideTip);
+    svg.appendChild(hit);
+    const lx=cx, ly=padT+plotH+14;
+    const everyN = opts.maxLabels ? Math.max(1,Math.ceil(n/opts.maxLabels)) : n>24 ? Math.ceil(n/18) : 1;
+    if(i%everyN===0 || i===n-1){
+      const label=txt('text',{x:lx,y:ly,'text-anchor': rotate?'end':'middle',class:'catlabel'}, opts.tickLabels?.[i]||cat);
+      if(rotate) label.setAttribute('transform','rotate(-40 '+lx+' '+ly+')');
+      svg.appendChild(label);
+    }
+  });
+
+  const endLabelY=[];
+  lineSeries.forEach(s=>{
+    const pts=linePts[s.name].filter(p=>p);
+    if(pts.length>1){
+      let d='', pen=false;
+      linePts[s.name].forEach(p=>{if(!p){pen=false;return;}d+=(pen?' L':' M')+p[0]+','+p[1];pen=true;});
+      svg.appendChild(el('path',{d:d,fill:'none',stroke:s.color,'stroke-width':s.strokeWidth||2,'stroke-linecap':'round','stroke-linejoin':'round'}));
+    }
+    linePts[s.name].forEach((p,i)=>{
+      if(!p) return;
+      if(s.markers!==false){
+        const c=el('circle',{cx:p[0],cy:p[1],r:3.5,fill:s.color,stroke:'var(--card)','stroke-width':1.5});
+        svg.appendChild(c);
+      }
+      if(i===n-1){
+        let ly=p[1]-12;
+        while(endLabelY.some(v=>Math.abs(v-ly)<13)) ly-=14;
+        endLabelY.push(ly);
+        svg.appendChild(txt('text',{x:p[0],y:ly,'text-anchor':'middle',class:'endlabel',fill:s.color}, fmt(s.values[i],opts.digits)));
+      }
+    });
+  });
+
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* single-series line chart, evenly spaced (for monthly world price) */
+function lineChartBase(containerId, opts){
+  const labels=opts.labels, n=labels.length;
+  const W=640,H=260;
+  const padL=44,padR=14,padT=14,padB=30;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const maxV=Math.max.apply(null, opts.values);
+  const minV=Math.min.apply(null, opts.values);
+  let yMin=0, yMax=niceMax(maxV*1.1);
+  if(opts.zeroBase===false){ const r=floatRange(minV,maxV); yMin=r[0]; yMax=r[1]; }
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits,yMin);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  const step=plotW/(n-1);
+  const pts=opts.values.map((v,i)=>[padL+i*step, yToPx(v)]);
+  const areaD='M'+pts.map(p=>p[0]+','+p[1]).join(' L')+' L'+pts[pts.length-1][0]+','+(padT+plotH)+' L'+pts[0][0]+','+(padT+plotH)+' Z';
+  svg.appendChild(el('path',{d:areaD,fill:opts.color,opacity:0.1}));
+  const lineD='M'+pts.map(p=>p[0]+','+p[1]).join(' L');
+  svg.appendChild(el('path',{d:lineD,fill:'none',stroke:opts.color,'stroke-width':2,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  labels.forEach((lab,i)=>{
+    const showTick = (i%Math.max(1,Math.ceil(n/10))===0)||i===n-1;
+    const hit=el('rect',{x:padL+i*step-step/2,y:padT,width:step,height:plotH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, lab, [{label:opts.seriesName||'Giá trị',value:fmt(opts.values[i],opts.digits)+(opts.unit?(' '+opts.unit):''),color:opts.color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    svg.appendChild(hit);
+    const c=el('circle',{cx:pts[i][0],cy:pts[i][1],r:2.6,fill:opts.color,stroke:'var(--card)','stroke-width':1});
+    svg.appendChild(c);
+    if(showTick){
+      svg.appendChild(txt('text',{x:pts[i][0],y:padT+plotH+14,'text-anchor':'middle',class:'catlabel'}, lab));
+    }
+    if(i===n-1){ svg.appendChild(txt('text',{x:pts[i][0],y:pts[i][1]-10,'text-anchor':'end',class:'endlabel',fill:opts.color}, fmt(opts.values[i],opts.digits))); }
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* chart-type switcher (assets/chart-types.js): native view = renderer above */
+function barLineChart(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host||!window.ChartTypes) return barLineChartBase(containerId, opts);
+  ChartTypes.mount(host,{categories:opts.categories,tickLabels:opts.tickLabels,series:opts.series.map(s=>({name:s.name,color:s.color,kind:s.kind,values:s.values,conf:s.confArr,strokeWidth:s.strokeWidth})),unit:opts.unit,digits:opts.digits,zeroBase:opts.zeroBase,height:opts.height,stackable:opts.stackable,aria:opts.ariaLabel},()=>barLineChartBase(containerId,opts));
+}
+function lineChart(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host||!window.ChartTypes) return lineChartBase(containerId, opts);
+  ChartTypes.mount(host,{categories:opts.labels,series:[{name:opts.seriesName||'Giá trị',color:opts.color,kind:'line',values:opts.values}],unit:opts.unit,digits:opts.digits,zeroBase:opts.zeroBase,height:opts.height,aria:opts.ariaLabel},()=>lineChartBase(containerId,opts));
+}
+
+/* multi-series real-date range/dot chart (VN price) */
+function rangeDotChart(containerId, opts){
+  const W=640,H=260;
+  const padL=48,padR=14,padT=14,padB=28;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const domainStart=opts.domain[0].getTime(), domainEnd=opts.domain[1].getTime();
+  const xOf=(d)=> padL + plotW*( (d.getTime()-domainStart) / (domainEnd-domainStart) );
+  let maxV=0;
+  opts.series.forEach(s=> s.points.forEach(p=>{ if(p.high>maxV) maxV=p.high; }));
+  const yMax=niceMax(maxV*1.1);
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  for(let y=opts.domain[0].getFullYear(); y<=opts.domain[1].getFullYear(); y++){
+    const d=new Date(y+'-01-01T00:00:00');
+    if(d<opts.domain[0]||d>opts.domain[1]) continue;
+    const x=xOf(d);
+    svg.appendChild(el('line',{x1:x,x2:x,y1:padT,y2:padT+plotH,class:'gridline'}));
+    svg.appendChild(txt('text',{x:x,y:padT+plotH+13,'text-anchor':'start',class:'catlabel'}, String(y)));
+  }
+  opts.series.forEach(s=>{
+    s.points.forEach(p=>{
+      const d=new Date(p.date+'T00:00:00');
+      const x=xOf(d);
+      const yLow=yToPx(p.low), yHigh=yToPx(p.high), yMid=yToPx(p.mid);
+      if(p.high>p.low){ svg.appendChild(el('line',{x1:x,x2:x,y1:yHigh,y2:yLow,stroke:s.color,'stroke-width':2,opacity:0.55})); }
+      const c=el('circle',{cx:x,cy:yMid,r: p.conf===false?4:4.5, fill: p.conf===false? 'var(--card)':s.color, stroke:s.color,'stroke-width':2});
+      const hit=el('circle',{cx:x,cy:yMid,r:13,fill:'transparent',class:'hitband',tabindex:'0'});
+      const label=p.label+(p.conf===false?' (độ tin cậy thấp)':'');
+      hit.addEventListener('pointerenter',e=>showTip(e, p.date.split('-').reverse().join('/'), [{label:label,value:fmt(p.low)+'–'+fmt(p.high)+' đ/kg',color:s.color}]));
+      hit.addEventListener('pointermove',moveTip);
+      hit.addEventListener('pointerleave',hideTip);
+      svg.appendChild(hit);
+      svg.appendChild(c);
+    });
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* horizontal compare bars — single snapshot, N entities */
+function hbarCompare(containerId, opts){
+  const items=opts.items, n=items.length;
+  const W=640, padT=8, padB=8, rowH=Math.max(38,(260-padT-padB)/n); /* same total height as the other charts */
+  const H=padT+padB+rowH*n;
+  const padL=8, padR=64, labelW=opts.labelW||112;
+  const plotW=W-padL-padR-labelW;
+  const maxV=niceMax(Math.max.apply(null, items.map(it=>it.value))*1.15);
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  items.forEach((it,i)=>{
+    const y=padT+i*rowH;
+    const barH=Math.min(rowH-16,30), barY=y+(rowH-barH)/2;
+    const bw=plotW*(it.value/maxV);
+    svg.appendChild(txt('text',{x:padL+labelW-8,y:y+rowH/2+4,'text-anchor':'end',class:'catlabel',style:'font-weight:700'}, it.label));
+    const r=el('rect',{x:padL+labelW,y:barY,width:Math.max(bw,2),height:barH,rx:4,ry:4,fill:it.color});
+    r.appendChild(txt('title',{},it.label+': '+fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+    const hit=el('rect',{x:padL+labelW,y:barY,width:Math.max(bw,2),height:barH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, it.label, [{label:opts.unit||'Giá trị', value:fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):''), color:it.color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    svg.appendChild(r);
+    svg.appendChild(txt('text',{x:padL+labelW+bw+8,y:y+rowH/2+4,class:'endlabel',fill:'var(--ink2)'}, fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+    svg.appendChild(hit);
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+function balanceBarChart(containerId, opts){
+  const labels=opts.labels, values=opts.values, every=opts.labelEvery||1, digits=opts.digits??1;
+  const W=640,H=260,padL=52,padR=20,padT=16,padB=38;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const maxAbs=Math.max(opts.minScale||1, Math.max.apply(null, values.map(v=>Math.abs(v))))*1.2;
+  const zeroY=padT+plotH/2;
+  const svg=baseSvg(W,H,opts.ariaLabel||containerId);
+  [-1,0,1].forEach(t=>{
+    const y=zeroY-(plotH/2)*t;
+    svg.appendChild(el('line',{x1:padL,y1:y,x2:W-padR,y2:y,class:t===0?'axisline':'gridline'}));
+    svg.appendChild(txt('text',{x:padL-8,y:y+3,'text-anchor':'end',class:'axislabel'},fmt(t*maxAbs,digits)));
+  });
+  const band=plotW/labels.length, barW=Math.max(1,Math.min(46, band*(every>1?0.8:0.55)));
+  values.forEach((v,i)=>{
+    const x=padL+i*band+(band-barW)/2;
+    const yVal=zeroY-(plotH/2)*(v/maxAbs);
+    const y=Math.min(zeroY,yVal);
+    const h=Math.max(1,Math.abs(zeroY-yVal));
+    const color=v>=0?(opts.colors?.[0]||S3):(opts.colors?.[1]||S2);
+    svg.appendChild(el('rect',{x:x,y:y,width:barW,height:h,rx:every>1?0:4,ry:every>1?0:4,fill:color,opacity:.9}));
+    const hit=el('rect',{x:padL+i*band,y:padT,width:band,height:plotH,fill:'transparent',class:'hitband',tabindex:every>1?'-1':'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, labels[i], [{label:opts.name||'Cung - cầu', value:fmt(v,digits)+' '+(opts.unit||''), color:color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    if(every===1) svg.appendChild(txt('text',{x:x+barW/2,y:v>=0?y-5:y+h+12,'text-anchor':'middle',class:'endlabel',fill:'var(--ink2)'},fmt(v,digits)));
+    if((i%every===0&&labels.length-1-i>=every/2)||i===labels.length-1) svg.appendChild(txt('text',{x:x+barW/2,y:H-14,'text-anchor':'middle',class:'catlabel'},labels[i]));
+    svg.appendChild(hit);
+  });
+  if(every>1){const i=values.length-1,v=values[i],x=padL+i*band+band/2,yVal=zeroY-(plotH/2)*(v/maxAbs);svg.appendChild(txt('text',{x:x-4,y:v>=0?yVal-6:yVal+14,'text-anchor':'end',class:'endlabel',fill:'var(--ink2)'},fmt(v,digits)));}
+  svg.appendChild(txt('text',{x:padL,y:H-4,class:'axislabel'},opts.unit||''));
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+function sparkline(id, values, color){
+  const host=document.getElementById(id);
+  if(!host) return;
+  const W=100,H=26,pad=3;
+  const maxV=Math.max.apply(null, values), minV=Math.min.apply(null, values);
+  const range=(maxV-minV)||1;
+  const step=(W-pad*2)/(values.length-1);
+  const pts=values.map((v,i)=>[pad+i*step, H-pad-(H-pad*2)*((v-minV)/range)]);
+  const d='M'+pts.map(p=>p[0]+','+p[1]).join(' L');
+  host.appendChild(el('path',{d:d,fill:'none',stroke:color,'stroke-width':1.6,'stroke-linecap':'round','stroke-linejoin':'round',opacity:0.55}));
+  const last=pts[pts.length-1];
+  host.appendChild(el('circle',{cx:last[0],cy:last[1],r:2.4,fill:color}));
+}
+
+function fillTable(id, headers, rows){
+  const t=document.getElementById(id);
+  if(!t) return;
+  const thead=el('thead' ); // not svg NS, use html
+  t.innerHTML='';
+  const theadHtml=document.createElement('thead');
+  const trh=document.createElement('tr');
+  headers.forEach(h=>{ const th=document.createElement('th'); th.textContent=h; trh.appendChild(th); });
+  theadHtml.appendChild(trh); t.appendChild(theadHtml);
+  const tbody=document.createElement('tbody');
+  rows.forEach(r=>{
+    const tr=document.createElement('tr');
+    r.forEach(c=>{ const td=document.createElement('td'); td.textContent=c; tr.appendChild(td); });
+    tbody.appendChild(tr);
+  });
+  t.appendChild(tbody);
+}
+
+function showMajorTab(key, btn){
+  document.querySelectorAll(".majorpane").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll(".majortabbtn").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll('.majorpane[data-tab="'+key+'"]').forEach(x=>x.classList.add("active"));
+  const activeBtn = btn || Array.from(document.querySelectorAll(".majortabbtn")).find(x => (x.getAttribute("onclick") || "").indexOf("'"+key+"'") >= 0);
+  if(activeBtn) activeBtn.classList.add("active");
+  if(location.hash !== "#"+key) history.replaceState(null, "", "#"+key);
+}
+const initialTab = (location.hash || "").replace("#", "");
+if(document.querySelector('.majorpane[data-tab="'+initialTab+'"]')) showMajorTab(initialTab);
+window.addEventListener("hashchange", () => {
+  const nextTab = (location.hash || "").replace("#", "");
+  if(document.querySelector('.majorpane[data-tab="'+nextTab+'"]')) showMajorTab(nextTab);
+});
+</script>
+</body>
+</html>

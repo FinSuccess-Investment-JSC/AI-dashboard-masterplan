@@ -270,3 +270,11 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Wi (nhóm B):** `data/port-wi-contract.json` → `scripts/build_port_wi.py` → `data/port-wi-data.js`: vận chuyển đường biển, ngoài nước, hàng không, thủy nội địa (NSO), XNK (Hải quan), chỉ số giá bốc xếp/kho bãi/vận tải biển (quý), BDI, định giá GICS 309/186/185/183/182. Wi không có chỉ số cước container; mazut 180cst trả 404.
 - **Tài liệu (nhóm C):** Drewry WCI theo tuyến và theo tuần, khung giá bốc xếp (TT 39/2023 → sửa QĐ 810 từ 01/02/2026), sản lượng cụm cảng, dự án mới. Số chỉ thấy ở đoạn trích tìm kiếm được ghi rõ trong ⓘ Lưu ý dữ liệu.
 - **Hạn chế còn ghi trên trang:** chưa có chuỗi sản lượng cảng năm 2015–2024, thị phần từng bến Hải Phòng, giá thuê tàu (Harpex/ConTex), phí hạ tầng cảng biển; STG chưa có số 2026.
+
+## 19. Dashboard Nông nghiệp & thực phẩm (09/10/2026)
+
+- **Phạm vi người dùng chốt:** 12 mã theo 3 chuỗi — Cây trồng XK (LTG, PAN, GVR, DPR, PHR) · Chăn nuôi & thức ăn (DBC, HAG, BAF) · Thực phẩm & đồ uống (VNM, MSN, SAB, KDC); sub-tab Bức tranh ngành theo 3 chuỗi; tab riêng **Thời tiết & mùa vụ** (`mt10`). Không gồm thủy sản.
+- **Trang:** `Nong-nghiep/index.html` (`data-sector="agri"`), renderer `assets/agri-dashboard.js` (chart, sub-tab, `window.AGRI_BRIEF`). Mã card `nn-*`, lịch `agri.*` trong registry.
+- **Wi (nhóm B):** `data/agri-wi-contract.json` → `scripts/build_agri_wi.py`: XNK và giá XK gạo/cà phê/cao su, NK ngô/đậu tương/thức ăn/sữa, bán lẻ, CPI, IIP, sản lượng bia/sữa/thức ăn; heo hơi (chuỗi toàn quốc 74124), gạo 5% nội địa, Robusta, TSR20, ngô và khô đậu CBOT; định giá GICS 282/239/240/235/120/241. Lời gọi macro vượt trần hiển thị → `build_realestate_wi.py --restore`.
+- **ENSO (nhóm A):** dùng lại `enso_oni`, `nino34_weekly` của dashboard Điện trong `SECTOR_DAILY`; ONI vẽ bằng `balanceBarChart` (có giá trị âm).
+- **Hạn chế ghi trên trang:** đa số số doanh nghiệp và chính sách lấy từ đoạn trích kết quả tìm kiếm; chưa có giá GDT sữa, USDA gạo VN, Ấn Độ/NĐ 107 gạo, số ASF lũy kế; LTG bị hạn chế giao dịch nên không có giá; ROE năm của VNM, MSN, SAB, GVR trống ở nguồn bảng so sánh.

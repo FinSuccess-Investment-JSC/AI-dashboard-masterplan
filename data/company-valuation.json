@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "checked_at": "2026-10-09T20:22:12+07:00",
+ "checked_at": "2026-10-09T21:05:24+07:00",
  "provider": "VNDirect finfo",
  "method": "P/E, P/B, vốn hóa của VNDirect tại ngày tham chiếu, điều chỉnh theo giá đóng cửa phiên mới nhất; EPS, BVPS, số cổ phiếu giữ nguyên đến kỳ BCTC sau.",
  "units": {
@@ -11,9 +11,10 @@
  },
  "status": "partial",
  "errors": {
-  "STK": "không có giá đóng cửa ngày 2026-04-28"
+  "STK": "không có giá đóng cửa ngày 2026-04-28",
+  "LTG": "không có giá đóng cửa ngày 2024-09-27"
  },
- "data_hash": "fa246c78eec21189ac927dd4da2fcc873c8ab1dbf53dcc62d6d0e5733249a8b3",
+ "data_hash": "f5d7de1445611cb747ad3acdd75606352b0cb359affbf16f75454bf57ba600a2",
  "latest_observation": "2026-10-09",
  "companies": {
   "GAS": {
@@ -717,6 +718,105 @@
    "market_cap": 3718.9,
    "basis_date": "2026-10-08",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/STG"
+  },
+  "PAN": {
+   "date": "2026-10-09",
+   "close": 18.8,
+   "pe": 3.95,
+   "pb": 0.88,
+   "market_cap": 4712.7,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/PAN"
+  },
+  "GVR": {
+   "date": "2026-10-09",
+   "close": 32.85,
+   "pe": 18.76,
+   "pb": 2.17,
+   "market_cap": 131400.0,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/GVR"
+  },
+  "DPR": {
+   "date": "2026-10-09",
+   "close": 37.65,
+   "pe": 9.15,
+   "pb": 1.2,
+   "market_cap": 3271.3,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/DPR"
+  },
+  "PHR": {
+   "date": "2026-10-09",
+   "close": 32.9,
+   "pe": 8.58,
+   "pb": 1.72,
+   "market_cap": 8024.2,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/PHR"
+  },
+  "DBC": {
+   "date": "2026-10-09",
+   "close": 15.55,
+   "pe": 5.8,
+   "pb": 0.79,
+   "market_cap": 6702.8,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/DBC"
+  },
+  "HAG": {
+   "date": "2026-10-09",
+   "close": 14.6,
+   "pe": 5.58,
+   "pb": 1.18,
+   "market_cap": 18504.0,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/HAG"
+  },
+  "BAF": {
+   "date": "2026-10-09",
+   "close": 31.15,
+   "pe": 121.46,
+   "pb": 2.6,
+   "market_cap": 11364.3,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/BAF"
+  },
+  "VNM": {
+   "date": "2026-10-09",
+   "close": 57.7,
+   "pe": 11.0,
+   "pb": 3.78,
+   "market_cap": 120590.4,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/VNM"
+  },
+  "MSN": {
+   "date": "2026-10-09",
+   "close": 74.2,
+   "pe": 16.15,
+   "pb": 2.85,
+   "market_cap": 113893.4,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/MSN"
+  },
+  "SAB": {
+   "date": "2026-10-09",
+   "close": 42.9,
+   "pe": 11.52,
+   "pb": 3.5,
+   "market_cap": 55021.9,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/SAB"
+  },
+  "KDC": {
+   "date": "2026-10-09",
+   "close": 50.5,
+   "pe": 24.98,
+   "pb": 2.41,
+   "market_cap": 13955.4,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/KDC"
   }
  },
  "history": {
@@ -2618,7 +2718,106 @@
     1.36,
     3718.9
    ]
+  ],
+  "PAN": [
+   [
+    "2026-10-09",
+    18.8,
+    3.95,
+    0.88,
+    4712.7
+   ]
+  ],
+  "GVR": [
+   [
+    "2026-10-09",
+    32.85,
+    18.76,
+    2.17,
+    131400.0
+   ]
+  ],
+  "DPR": [
+   [
+    "2026-10-09",
+    37.65,
+    9.15,
+    1.2,
+    3271.3
+   ]
+  ],
+  "PHR": [
+   [
+    "2026-10-09",
+    32.9,
+    8.58,
+    1.72,
+    8024.2
+   ]
+  ],
+  "DBC": [
+   [
+    "2026-10-09",
+    15.55,
+    5.8,
+    0.79,
+    6702.8
+   ]
+  ],
+  "HAG": [
+   [
+    "2026-10-09",
+    14.6,
+    5.58,
+    1.18,
+    18504.0
+   ]
+  ],
+  "BAF": [
+   [
+    "2026-10-09",
+    31.15,
+    121.46,
+    2.6,
+    11364.3
+   ]
+  ],
+  "VNM": [
+   [
+    "2026-10-09",
+    57.7,
+    11.0,
+    3.78,
+    120590.4
+   ]
+  ],
+  "MSN": [
+   [
+    "2026-10-09",
+    74.2,
+    16.15,
+    2.85,
+    113893.4
+   ]
+  ],
+  "SAB": [
+   [
+    "2026-10-09",
+    42.9,
+    11.52,
+    3.5,
+    55021.9
+   ]
+  ],
+  "KDC": [
+   [
+    "2026-10-09",
+    50.5,
+    24.98,
+    2.41,
+    13955.4
+   ]
   ]
  },
- "changed_at": "2026-10-09T20:22:12+07:00"
+ "changed_at": "2026-10-09T21:05:24+07:00"
 }

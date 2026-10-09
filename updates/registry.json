@@ -1555,7 +1555,7 @@
     "type": "none"
    },
    "where": {
-    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html",
+    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html",
     "blocks": [
      "dau-khi-01",
      "dau-khi-03",
@@ -1574,7 +1574,10 @@
      "dm-40",
      "cg-01",
      "cg-03",
-     "cg-50"
+     "cg-50",
+     "nn-01",
+     "nn-04",
+     "nn-90"
     ]
    }
   },
@@ -2421,6 +2424,237 @@
     ]
    },
    "how": "Cập nhật số và nhận định trong cg-02 và catbox/riskbox; thẻ tín hiệu tự tính từ Wi trong assets/port-dashboard.js.",
+   "gates": [
+    "Số khớp chart",
+    "Không đụng ô analyst"
+   ]
+  },
+  {
+   "id": "agri.wi.daily",
+   "tier": "B",
+   "title": "Wi: XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa; giá XK; bán lẻ, CPI, IIP, sản lượng bia, sữa, thức ăn; định giá phân ngành",
+   "wiBlocks": [
+    "macro_agri",
+    "sector_ratio_recent"
+   ],
+   "wiContract": "data/agri-wi-contract.json",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Hải quan, NSO đầu tháng; định giá theo phiên",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Nong-nghiep/index.html",
+    "file": "data/agri-wi-data.js",
+    "blocks": [
+     "nn-03",
+     "nn-10",
+     "nn-11",
+     "nn-22",
+     "nn-23",
+     "nn-30",
+     "nn-31",
+     "nn-32",
+     "nn-33"
+    ]
+   },
+   "how": "Gọi lại đúng các lời gọi WiMCP trong data/agri-wi-contract.json, rồi chạy python3 scripts/build_agri_wi.py. Lời gọi macro_agri vượt trần hiển thị: dùng python3 scripts/build_realestate_wi.py --restore <file tool-results> <capture>. Với sector_ratio_recent đặt to_time = hôm nay.",
+   "gates": [
+    "Không chép tay số"
+   ]
+  },
+  {
+   "id": "agri.wi.weekly",
+   "tier": "B",
+   "title": "Wi: heo hơi, gạo nội địa, Robusta, TSR20, ngô, khô đậu CBOT",
+   "wiBlocks": [
+    "commodity_agri"
+   ],
+   "wiContract": "data/agri-wi-contract.json",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Giá ngày; hiển thị cuối tháng",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Nong-nghiep/index.html",
+    "file": "data/agri-wi-data.js",
+    "blocks": [
+     "nn-12",
+     "nn-13",
+     "nn-20",
+     "nn-21"
+    ]
+   },
+   "how": "Gọi lại lời gọi commodity với to_time = hôm nay (giữ from_time), rồi chạy python3 scripts/build_agri_wi.py.",
+   "gates": [
+    "Không chép tay số"
+   ]
+  },
+  {
+   "id": "agri.enso",
+   "tier": "A",
+   "title": "ONI, Niño-3.4 (NOAA) dùng chung với dashboard Điện",
+   "sources": [
+    "enso_oni",
+    "nino34_weekly"
+   ],
+   "schedule": {
+    "type": "daily",
+    "at": "07:30"
+   },
+   "publication": "ONI hằng tháng; Niño-3.4 hằng tuần",
+   "source": {
+    "name": "NOAA CPC",
+    "url": "https://www.cpc.ncep.noaa.gov/"
+   },
+   "where": {
+    "page": "Nong-nghiep/index.html",
+    "file": "data/daily-data.js",
+    "blocks": [
+     "nn-40",
+     "nn-41"
+    ]
+   },
+   "how": "Tự động qua scripts/power_feeds.py trong update_daily.py.",
+   "gates": [
+    "Không điền kỳ thiếu"
+   ]
+  },
+  {
+   "id": "agri.policy",
+   "tier": "C",
+   "title": "Gạo (Philippines, Indonesia, Ấn Độ), EUDR, thuế Mỹ cà phê, thuế MFN thức ăn, TTĐB, GTGT, ASF",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo văn bản, sự kiện",
+   "source": {
+    "name": "Cổng văn bản Chính phủ",
+    "url": "https://vanban.chinhphu.vn/"
+   },
+   "where": {
+    "page": "Nong-nghiep/index.html",
+    "blocks": [
+     "nn-50",
+     "nn-51"
+    ]
+   },
+   "how": "Kiểm văn bản, sự kiện mới; cập nhật bảng; đổi ghi chú đoạn trích khi đã mở trang gốc.",
+   "gates": [
+    "Số hiệu + ngày hiệu lực",
+    "Link văn bản gốc"
+   ]
+  },
+  {
+   "id": "agri.weather",
+   "tier": "C",
+   "title": "Bản tin ENSO NOAA, dự báo mặn, USDA cà phê/gạo, lịch mùa vụ",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "NOAA thứ Năm thứ 2 hằng tháng; USDA tháng 6, 12",
+   "source": {
+    "name": "NOAA CPC",
+    "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml"
+   },
+   "where": {
+    "page": "Nong-nghiep/index.html",
+    "blocks": [
+     "nn-42"
+    ]
+   },
+   "how": "Cập nhật xác suất NOAA, dự báo mặn, USDA trong bảng nn-42 và chủ đề nn-t1.",
+   "gates": [
+    "Link bản tin gốc"
+   ]
+  },
+  {
+   "id": "agri.companies",
+   "tier": "C",
+   "status": "manual",
+   "title": "Doanh nghiệp nông nghiệp, thực phẩm: kế hoạch, kết quả",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "BCTC quý; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "BCTC công bố",
+    "url": "https://www.hsx.vn/"
+   },
+   "where": {
+    "page": "Nong-nghiep/index.html",
+    "blocks": [
+     "nn-60"
+    ]
+   },
+   "how": "Khi người dùng nhắn: cập nhật bảng nn-60.",
+   "gates": [
+    "Link BCTC hoặc bài dẫn"
+   ]
+  },
+  {
+   "id": "agri.hot-topics",
+   "tier": "C",
+   "title": "Chủ đề nóng: El Niño, chu kỳ heo, cao su & đất KCN, thuế TTĐB",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Báo ngành",
+    "url": "https://nongnghiepmoitruong.vn/"
+   },
+   "where": {
+    "page": "Nong-nghiep/index.html",
+    "blocks": [
+     "nn-t1",
+     "nn-t2",
+     "nn-t3",
+     "nn-t4"
+    ]
+   },
+   "how": "Thêm mốc mới có ngày và link.",
+   "gates": [
+    "Mỗi dòng có ngày + link"
+   ]
+  },
+  {
+   "id": "agri.ai.cycle",
+   "tier": "D",
+   "title": "Nông nghiệp: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
+   "schedule": {
+    "type": "data",
+    "sources": [
+     "enso_oni"
+    ],
+    "minDays": 7,
+    "material": [],
+    "note": "Viết lại khi giá cao su, cà phê, heo hơi đổi ≥10% hoặc ONI đổi ≥0,3 °C"
+   },
+   "where": {
+    "page": "Nong-nghiep/index.html",
+    "blocks": [
+     "nn-02"
+    ]
+   },
+   "how": "Cập nhật số và nhận định trong nn-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/agri-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
