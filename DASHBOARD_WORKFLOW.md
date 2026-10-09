@@ -278,3 +278,10 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Wi (nhóm B):** `data/agri-wi-contract.json` → `scripts/build_agri_wi.py`: XNK và giá XK gạo/cà phê/cao su, NK ngô/đậu tương/thức ăn/sữa, bán lẻ, CPI, IIP, sản lượng bia/sữa/thức ăn; heo hơi (chuỗi toàn quốc 74124), gạo 5% nội địa, Robusta, TSR20, ngô và khô đậu CBOT; định giá GICS 282/239/240/235/120/241. Lời gọi macro vượt trần hiển thị → `build_realestate_wi.py --restore`.
 - **ENSO (nhóm A):** dùng lại `enso_oni`, `nino34_weekly` của dashboard Điện trong `SECTOR_DAILY`; ONI vẽ bằng `balanceBarChart` (có giá trị âm).
 - **Hạn chế ghi trên trang:** đa số số doanh nghiệp và chính sách lấy từ đoạn trích kết quả tìm kiếm; chưa có giá GDT sữa, USDA gạo VN, Ấn Độ/NĐ 107 gạo, số ASF lũy kế; LTG bị hạn chế giao dịch nên không có giá; ROE năm của VNM, MSN, SAB, GVR trống ở nguồn bảng so sánh.
+
+## 20. Số từ tài liệu phải có bằng chứng đã mở (09/10/2026, người dùng yêu cầu giải pháp lâu dài)
+
+- **Quy tắc:** số lấy từ tài liệu, báo chí chỉ lên dashboard khi đã mở trang gốc. Đoạn trích kết quả tìm kiếm chỉ dùng để tìm link. Không mở được (SSL, 403, link chết) → để trống, ghi lý do trong ⓘ Lưu ý dữ liệu; không dùng số từ đoạn trích.
+- **Kho bằng chứng:** `data/<ngành>/evidence.json`, mỗi số một dòng: `block`, `claim`, `value`, `url`, `opened_at`, `quote` (đoạn văn gốc nguyên văn chứa số), `status` (`match`/`mismatch`/`unreachable`/`not_found`), `correct_value`, `note`. Prompt agent nghiên cứu phải yêu cầu trả đúng định dạng này.
+- **Kiểm tự động:** `tests/test_evidence.py` (qua `scripts/check_evidence.py`) báo lỗi khi dòng `match` thiếu quote hoặc con số không xuất hiện trong quote của chính nó (bỏ qua dấu phân cách nghìn/thập phân).
+- **Kiểm lại định kỳ:** routine tài liệu thứ Hai chạy `python3 scripts/check_evidence.py --fetch`: mở lại mọi link, ghi `data/evidence-status.json`; link chết hoặc đoạn văn đổi được đưa vào thông báo routine để sửa, không giữ im lặng.

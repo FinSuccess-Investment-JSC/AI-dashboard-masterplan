@@ -101,16 +101,16 @@ if(document.getElementById('chThroughput')){
 const wci=[['Thượng Hải – New York',10220],['Thượng Hải – Los Angeles',7624],['Thượng Hải – Genoa',3696],['Thượng Hải – Rotterdam',3337],['WCI tổng hợp',4351]];
 if(document.getElementById('chWci')){
  hbarCompare('chWci',{items:wci.map(([l,v],i)=>({label:l.replace('Thượng Hải – ','TH – '),value:v,color:i===4?C.navy:C.teal})),unit:'USD/FEU',digits:0,labelW:150,ariaLabel:'Drewry WCI theo tuyến'});
- fillTable('tbl-wci',['Tuyến','USD/FEU · 08/10/2026'],wci.map(([l,v])=>[l,nf(v,0)]).concat([['SCFI (30/09, điểm)','3.662']]));
+ fillTable('tbl-wci',['Tuyến','USD/FEU · 08/10/2026'],wci.map(([l,v])=>[l,nf(v,0)]));
  sourceLine('chWci',[SRC.drewry],'08/10/2026','Giá giao ngay container 40 feet, công bố thứ Năm hằng tuần.',false);
  insight('chWci','Tuyến xuyên Thái Bình Dương đắt gấp 2–3 lần tuyến Á – Âu: hàng Việt Nam đi Mỹ là phần sinh lãi của hãng tàu nên hãng ưu tiên giữ tuyến tàu mẹ vào Cái Mép. Với HAH (nội Á) chỉ số này là chỉ báo gián tiếp; cước nội Á không có trong WCI.');
 }
-const wk=[['20/08',4526],['24/09',4468],['01/10',4434],['08/10',4351]];
+const wk=[['20/08',4526],['08/10',4351]];
 if(document.getElementById('chWciWeeks')){
  barLineChart('chWciWeeks',{categories:wk.map(r=>r[0]),series:[{name:'WCI tổng hợp',color:C.navy,kind:'line',values:wk.map(r=>r[1])}],unit:'USD/FEU',digits:0,height:260,zeroBase:false,rotateLabels:false});
  fillTable('tbl-wci-weeks',['Tuần (2026)','USD/FEU'],wk.slice().reverse().map(r=>[r[0],nf(r[1],0)]));
- sourceLine('chWciWeeks',[SRC.drewry,['Hellenic Shipping News 20/08','https://www.hellenicshippingnews.com/?p=1144957']],'08/10/2026','Các tuần có số đã thu thập; không nối các tuần thiếu.',false);
- insight('chWciWeeks','Cước giảm nhẹ ba tuần liên tiếp quanh Golden Week; Drewry kỳ vọng ổn định ngắn hạn, rủi ro giảm nếu tàu quay lại Suez nhanh (giải phóng tàu, thừa cung). Cước giảm ảnh hưởng HAH trước, cảng sau, vì cảng thu theo container chứ không theo cước.');
+ sourceLine('chWciWeeks',[SRC.drewry,['Hellenic Shipping News 20/08','https://www.hellenicshippingnews.com/?p=1144957']],'08/10/2026','Chỉ các tuần đã mở được trang gốc; không nối các tuần thiếu.',false);
+ insight('chWciWeeks','WCI tổng hợp 08/10 thấp hơn 20/08 khoảng 4%; riêng Á – Âu đã giảm 13 tuần liền. Drewry kỳ vọng ổn định ngắn hạn, rủi ro giảm nếu tàu quay lại Suez nhanh (giải phóng tàu, thừa cung). Cước giảm ảnh hưởng HAH trước, cảng sau, vì cảng thu theo container chứ không theo cước.');
 }
 // Khung giá bốc dỡ
 if(document.getElementById('chTariff')){
@@ -183,20 +183,20 @@ if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
  insight('chSectorVal','P/E nhóm cảng quanh 12 lần, thấp hơn đầu năm (14–15 lần) dù lợi nhuận 6T tăng mạnh: thị trường chiết khấu phần lãi một lần và rủi ro dư cung Hải Phòng. Nhóm hỗ trợ vận tải đường thủy P/E trên 20 lần là do vài mã vốn hóa lớn, không đại diện cả nhóm.');
 }
 // Dự án: công suất mới, vốn
-const cap=[['2025',[['Lạch Huyện 3–4 (PHP)',1.1],['Lạch Huyện 5–6',1.8],['Nam Đình Vũ 3 (GMD)',0.65]]],['2027',[['Gemalink 2 (GMD, tăng thêm ước)',1.5],['Bạch Đằng (PHP)',0.7]]],['2028',[['Cái Mép Hạ GĐ1',2]]],['2030',[['Cần Giờ',4.8]]]];
+const cap=[['2025',[['Lạch Huyện 3–4 (PHP)',1.1],['Nam Đình Vũ 3 (GMD)',0.65]]],['2027',[['Gemalink 2 (GMD, tăng thêm ước)',1.5],['Bạch Đằng (PHP)',0.7]]],['2030',[['Cần Giờ',4.8]]]];
 if(document.getElementById('chNewCap')){
  const names=[...new Set(cap.flatMap(([,ps])=>ps.map(p=>p[0])))],colors=['#1D2678','#2938A8','#4354B7','#6171C5','#8997D6','#B3BDE8','#D9DEF4'];
  stack('chNewCap',{categories:cap.map(c=>c[0]),series:names.map((n,i)=>({name:n,color:colors[i%colors.length],values:cap.map(([,ps])=>ps.find(p=>p[0]===n)?.[1]??null)})),unit:'triệu TEU',digits:2,aria:'Công suất container mới theo năm'});
  legend('chNewCap',names.map((n,i)=>[n,colors[i%colors.length]]));
  fillTable('tbl-newcap',['Năm khai thác','Dự án','Triệu TEU/năm'],cap.flatMap(([y,ps])=>ps.map(p=>[y,p[0],nf(p[1],2)])));
  sourceLine('chNewCap',[['Tạp chí Công Thương','https://tapchicongthuong.vn/ben-so-3--4-lach-huyen-tao-cu-hich--cang-hai-phong--php--tang-toc-voi-loat-du-an-moi-525571.htm'],['Gemadept','https://www.gemadept.com.vn/en/groundbreaking-for-gemalink-deep-sea-port-phase-2-elevating-the-status-of-an-international-trade-gateway/'],['Tin nhanh chứng khoán','https://www.tinnhanhchungkhoan.vn/tphcm-thuc-nha-dau-tu-du-an-cang-quoc-te-can-gio-khoi-cong-trong-thang-10-post397552.html']],'09/10/2026','Năm khai thác dự kiến của chủ đầu tư; dự án chậm sẽ dời sang năm sau.',false);
- insight('chNewCap','Năm 2025 Hải Phòng nhận khoảng 3,5 triệu TEU công suất mới, bằng ~40% sản lượng cả cụm: đây là lý do cảng hạ lưu chịu áp lực giá dù cầu tăng 13%. Phía Nam cung mới dồn vào 2027–2030; nếu Cần Giờ đúng tiến độ, trung chuyển quốc tế là mảng mới chứ không chỉ chia hàng của Cái Mép.');
+ insight('chNewCap','Từ 2025 Hải Phòng nhận thêm khoảng 2,5–3 triệu TEU công suất (Vietstock; chart chỉ vẽ phần đã xác minh công suất từng bến), tương đương ~30% sản lượng cả cụm: đây là lý do cảng hạ lưu chịu áp lực giá dù cầu tăng 13%. Phía Nam cung mới dồn vào 2027–2030; nếu Cần Giờ đúng tiến độ, trung chuyển quốc tế là mảng mới chứ không chỉ chia hàng của Cái Mép.');
 }
 if(document.getElementById('chCapex')){
- const cx=[['Cần Giờ',128.873],['Cái Mép Hạ',50.2],['Lạch Huyện 7–8',12.793],['Lạch Huyện 5–6',8.951],['Gemalink 2',8.362],['Lạch Huyện 3–4',6.946],['Bạch Đằng',4.2],['Nam Đình Vũ 3',2.8]];
+ const cx=[['Cần Giờ',128.873],['Cái Mép Hạ',50.2],['Lạch Huyện 5–6',8.951],['Bạch Đằng',4.2],['Nam Đình Vũ 3',2.8]];
  hbarCompare('chCapex',{items:cx.map(([l,v],i)=>({label:l,value:v,color:i<2?C.navy:C.teal})),unit:'nghìn tỷ',digits:1,labelW:130,ariaLabel:'Vốn đầu tư dự án cảng'});
- sourceLine('chCapex',[['Tin nhanh chứng khoán','https://www.tinnhanhchungkhoan.vn/tphcm-thuc-nha-dau-tu-du-an-cang-quoc-te-can-gio-khoi-cong-trong-thang-10-post397552.html'],['Báo Đấu thầu','https://baodauthau.vn/chay-nuoc-rut-trien-khai-du-an-cang-bien-tai-tphcm-khong-de-nha-dau-tu-vuong-thu-tuc-post196899.html'],['Doanh nhân','https://doanhnhan.baophapluat.vn/viconship-vsc-muon-mua-65-von-mot-doanh-nghiep-de-thuc-hien-du-an-tai-hai-phong-84157.html']],'09/10/2026','Tổng mức đầu tư công bố, chưa phải vốn giải ngân. Lạch Huyện 3–8 từ đoạn trích.',false);
- insight('chCapex','Cần Giờ gần bằng tổng các dự án còn lại cộng lại. Với SGP (15%), phần góp 2.899 tỷ lớn so với lợi nhuận năm (~480 tỷ), nên cổ tức bị cắt; lợi ích chỉ đến sau 2030.');
+ sourceLine('chCapex',[['Tin nhanh chứng khoán','https://www.tinnhanhchungkhoan.vn/tphcm-thuc-nha-dau-tu-du-an-cang-quoc-te-can-gio-khoi-cong-trong-thang-10-post397552.html'],['Báo Đấu thầu','https://baodauthau.vn/chay-nuoc-rut-trien-khai-du-an-cang-bien-tai-tphcm-khong-de-nha-dau-tu-vuong-thu-tuc-post196899.html'],['Doanh nhân','https://doanhnhan.baophapluat.vn/viconship-vsc-muon-mua-65-von-mot-doanh-nghiep-de-thuc-hien-du-an-tai-hai-phong-84157.html']],'09/10/2026','Tổng mức đầu tư công bố, chưa phải vốn giải ngân. Chỉ dự án có số vốn trên trang gốc đã mở.',false);
+ insight('chCapex','Cần Giờ gần bằng tổng các dự án còn lại cộng lại. Với SGP (15%), phần góp 2.899 tỷ gấp khoảng 6 lần kế hoạch lợi nhuận năm (~480 tỷ); lợi ích chỉ đến sau 2030.');
 }
 
 // ---------- 4. KPIs, quick read, catalyst brief ----------
@@ -224,8 +224,8 @@ const score=[
  row('Cầu & sản lượng','Đội tàu Việt Nam chạy đầy',[signed(seaYtd,1)+'%','đường biển lũy kế YoY'],'Vận chuyển đường biển '+(sL?mon(sL.date)+' '+signed(yoyAt(sea,sL),1)+'% YoY':'—'),'Lũy kế năm về dưới +5%',seaYtd==null?'na':seaYtd>8?'good':seaYtd<0?'risk':'watch','▲ HAH','chSea'),
  row('Cầu & sản lượng','Hàng không quốc tế yếu',['−8%','sản lượng SCS Q2/26'],'SCS quốc tế 50.163 tấn (−8%); hãng Việt Nam '+(aL?mon(aL.date)+' '+signed(yoyAt(air,aL),1)+'%':'—'),'Sản lượng SCS quý trở lại tăng YoY','risk','▼ SCS · SGN','chAir'),
  row('Giá & cạnh tranh','Giá bốc xếp tàu mẹ tăng',['+10%','khung giá sàn từ 01/02/2026'],'Cái Mép, Lạch Huyện 63–73 USD/20\'; chỉ số giá bốc xếp '+(ppL?qtr(ppL.date)+' '+signed(ppL.value,1)+'% YoY':'—'),'Cảng giảm giá dưới sàn hoặc khung giá bị hoãn','good','▲ GMD · PHP · SGP','chTariff'),
- row('Giá & cạnh tranh','Dư cung Hải Phòng',['+3,5','triệu TEU công suất mới 2025'],'Lạch Huyện 3–6, Nam Đình Vũ 3 so với sản lượng 8,35 triệu TEU (2025)','Sản lượng Hải Phòng tăng > 15% hấp thụ cung mới','risk','▲ PHP · GMD ▼ VSC · DVP','chNewCap'),
- row('Giá & cạnh tranh','Cước container giảm nhẹ',['4.351','USD/FEU WCI 08/10'],'WCI giảm 3 tuần liền; giá vận tải biển '+(psL?qtr(psL.date)+' '+signed(psL.value,1)+'% YoY':'—'),'WCI giảm > 15% trong một quý hoặc tàu quay lại Suez','watch','▼ HAH','chWciWeeks'),
+ row('Giá & cạnh tranh','Dư cung Hải Phòng',['+2,5–3','triệu TEU công suất mới từ 2025'],'Lạch Huyện 3–6, Nam Đình Vũ 3 so với sản lượng 8,35 triệu TEU (2025)','Sản lượng Hải Phòng tăng > 15% hấp thụ cung mới','risk','▲ PHP · GMD ▼ VSC · DVP','chNewCap'),
+ row('Giá & cạnh tranh','Cước container giảm nhẹ',['4.351','USD/FEU WCI 08/10'],'WCI −2% tuần 08/10, Á – Âu giảm 13 tuần liền; giá vận tải biển '+(psL?qtr(psL.date)+' '+signed(psL.value,1)+'% YoY':'—'),'WCI giảm > 15% trong một quý hoặc tàu quay lại Suez','watch','▼ HAH','chWciWeeks'),
  row('Cung mới phía Nam','Gemalink 2 · Cần Giờ',['Q4/2027','Gemalink 2 khai thác'],'Gemalink ~27% cụm Cái Mép; Cần Giờ 4,8 triệu TEU năm 2030, chưa khởi công','Cần Giờ khởi công đúng 10/2026; Cái Mép Hạ chậm','info','▲ GMD (2028) · SGP','chCaiMep'),
  row('Định giá','Định giá đã chiết khấu',[peL?nf(peL[1],1)+'x':'—','P/E cảng'],'P/E cảng '+(peL?nf(peL[1],1)+'x':'—')+(pe0?' (đầu kỳ '+nf(pe0[1],1)+'x, '+short(pe0[0])+')':''),'Lãi lõi quý III tăng tiếp khi bỏ thu nhập một lần',peL?'info':'na','GMD · PHP · VSC','chSectorVal')];
 const nGood=score.filter(r=>r.st==='good').length,nRisk=score.filter(r=>r.st==='risk').length;

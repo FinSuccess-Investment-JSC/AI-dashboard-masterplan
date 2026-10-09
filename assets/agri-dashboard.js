@@ -118,7 +118,7 @@ if(hog.length&&document.getElementById('chHog')){
  lines('chHog',hog,[['Heo hơi',C.red,r=>r.value]],'nghìn đ/kg',1,false);
  fillTable('tbl-hog',['Kỳ','Nghìn đ/kg','So cùng kỳ'],hog.slice().reverse().map(r=>[short(r.date),nf(r.value,1),signed(yoyAt(hog,r),1)+'%']));
  sourceLine('chHog',[['Wi',null]],short(hog.at(-1).date),'Heo hơi trong nước, chuỗi toàn quốc (74124), Wi nén về cuối tháng. Không dùng ba chuỗi vùng.');
- insight('chHog','Giá heo giảm từ ~78 (T1) xuống ~53 nghìn đ/kg: vùng hòa vốn của trang trại công nghiệp thường quanh 50–55 nghìn, nên lợi nhuận mảng heo của DBC, BAF đang về sát 0. Đàn của doanh nghiệp lớn tăng nhanh (BAF +61% xuất bán) làm cung tăng; ASF là biến số có thể đảo chiều cung.');
+ insight('chHog','Giá heo giảm từ ~78 (T1) xuống ~53 nghìn đ/kg: mức này đã gần vùng hòa vốn của nhiều trang trại khi giá thức ăn tăng, nên lợi nhuận mảng heo của DBC, BAF bị thu hẹp mạnh (DBC LNST 6T −35%). Đàn của doanh nghiệp lớn tăng nhanh (BAF +61% xuất bán) làm cung tăng; ASF là biến số có thể đảo chiều cung.');
 }
 const co=S('corn'),sm=S('soymeal');
 if(co.length&&document.getElementById('chFeedPx')){
@@ -127,7 +127,7 @@ if(co.length&&document.getElementById('chFeedPx')){
  legend('chFeedPx',[['Ngô CBOT',C.gold],['Khô đậu tương CBOT',C.green]]);
  fillTable('tbl-feedpx',['Kỳ','Ngô (cent/bushel)','Khô đậu (USD/short ton)','Ngô YoY','Khô đậu YoY'],co.slice().reverse().map(r=>{const s=smm[ym(r.date)];return [short(r.date),nf(r.value,1),nf(s?.value,1),signed(yoyAt(co,r),1)+'%',signed(yoyAt(sm,s),1)+'%']}));
  sourceLine('chFeedPx',[['CME/CBOT qua Wi',null]],short(co.at(-1).date),'Ngô future CBOT (203105, US cent/bushel), khô đậu tương CBOT (203092, USD/short ton). Vẽ % so cùng kỳ vì khác đơn vị.');
- insight('chFeedPx','Ngô và khô đậu chiếm khoảng 60–70% giá thành thức ăn, thức ăn chiếm ~70% giá thành heo. Hai nguyên liệu cùng tăng 13–16% YoY trong khi giá heo đi ngang so cùng kỳ và giảm mạnh từ đầu năm: biên chăn nuôi bị ép từ hai phía.');
+ insight('chFeedPx','Ngô và khô đậu là nguyên liệu chính của thức ăn, và thức ăn là chi phí lớn nhất của nuôi heo. Hai nguyên liệu cùng tăng 13–16% YoY trong khi giá heo đi ngang so cùng kỳ và giảm mạnh từ đầu năm: biên chăn nuôi bị ép từ hai phía.');
 }
 const ic=S('imp_corn'),is=S('imp_soy'),iff=S('imp_feed');
 if(ic.length&&document.getElementById('chFeedImp')){
@@ -162,7 +162,7 @@ if(be.length&&document.getElementById('chBev')){
  legend('chBev',[['Bia',C.gold],['Sữa tươi',C.teal]]);
  fillTable('tbl-bev',['Tháng','Bia','Bia YoY','Sữa tươi','Sữa tươi YoY','Sữa bột (nghìn tấn)'],be.slice().reverse().map(r=>{const m=mm[ym(r.date)],p=byMonth(S('milk_powder'))[ym(r.date)];return [mon(r.date),nf(r.value,0),signed(yoyAt(be,r),1)+'%',nf(m?.value,0),signed(yoyAt(mk,m),1)+'%',nf(p?.value,1)]}));
  sourceLine('chBev',[SRC.nso,SRC.wi],mon(be.at(-1).date),'Sản lượng bia (82086), sữa tươi (82116), sữa bột (82084, ở bảng) của toàn ngành, NSO.');
- insight('chBev','Bia 9T +15% sau hai năm giảm vì NĐ 100 (nồng độ cồn): nền thấp và du lịch hồi phục. Đây là năm cuối trước khi thuế TTĐB tăng từ 2027, nên một phần có thể là tích trữ. Sữa tươi +3% đi đều, phù hợp với VNM giành thêm thị phần chứ không phải thị trường tăng nhanh.');
+ insight('chBev','Bia 9T +15% sau hai năm giảm vì NĐ 100 (nồng độ cồn): nền thấp và du lịch hồi phục. Đây là năm cuối trước khi thuế TTĐB bia tăng từ 2027, nên một phần có thể là tích trữ. Sữa tươi +3% đi đều, phù hợp với VNM giành thêm thị phần chứ không phải thị trường tăng nhanh.');
 }
 const fi=S('iip_food'),bi=S('iip_bev'),cf=S('cpi_food'),cb=S('cpi_bev');
 if(fi.length&&document.getElementById('chIip')){
@@ -233,7 +233,7 @@ const score=[
  row('Chăn nuôi','Giá heo hơi giảm',[hgL?nf(hgL.value,0):'—','nghìn đ/kg heo hơi'],'Từ đỉnh 12 tháng '+nf(hogPeak,0)+' nghìn đ/kg; '+signed(hgY,0)+'% YoY','Heo hơi > 60 nghìn đ/kg',hgL==null?'na':hgL.value<56?'risk':hgL.value>62?'good':'watch','▼ DBC · BAF · HAG','chHog'),
  row('Chăn nuôi','Nguyên liệu thức ăn tăng',[signed(coY,0)+'%','ngô CBOT YoY'],'Khô đậu '+signed(smY,0)+'% YoY; nhập ngô 9T +29%','Ngô, khô đậu về âm YoY',coY==null?'na':coY>10?'risk':coY<-5?'good':'watch','▼ DBC · BAF','chFeedPx'),
  row('Thực phẩm & đồ uống','Tiêu dùng trong nước khỏe',[signed(rtY,0)+'%','bán lẻ hàng hóa lũy kế'],'Bia lũy kế '+signed(beY,0)+'%; CPI hàng ăn ~4%','Bán lẻ lũy kế về dưới +8%',rtY==null?'na':rtY>10?'good':rtY<6?'risk':'watch','▲ VNM · MSN · SAB · KDC','chRetail'),
- row('Thực phẩm & đồ uống','Thuế TTĐB bia từ 2027',['+5đ%','thuế TTĐB mỗi năm 2027–2031'],'Rượu, bia 65% → 90% năm 2031; nước có đường chịu thuế từ 2026','Lộ trình được giãn','risk','▼ SAB','chBev'),
+ row('Thực phẩm & đồ uống','Thuế TTĐB bia từ 2027',['+5đ%','thuế TTĐB mỗi năm 2027–2031'],'Bia, rượu từ 20°: 65% → 90% năm 2031; nước có đường 8% từ 2027','Lộ trình được giãn','risk','▼ SAB','chBev'),
  row('Thời tiết','El Niño mạnh',[oL?nf(oL.oni,2)+'°C':'—','ONI '+(oL?oL.season+'/'+oL.year:'')],'NOAA: 83% khả năng El Niño mạnh kỷ lục 10–12/2026, kéo dài tới Q1/2027','ONI về dưới 1,0','risk','▼ LTG · PAN · HAG ▲ giá cà phê, cao su','chOni'),
  row('Định giá','Định giá cao su đã hạ',[peL?nf(peL[1],1)+'x':'—','P/E cao su'],'P/E cao su '+(peL?nf(peL[1],1)+'x':'—')+(pe0?' (đầu kỳ '+nf(pe0[1],1)+'x, '+short(pe0[0])+')':''),'Lợi nhuận cao su giảm khi giá mủ đảo chiều',peL?'info':'na','GVR · DPR · PHR','chSectorVal')];
 const nGood=score.filter(r=>r.st==='good').length,nRisk=score.filter(r=>r.st==='risk').length;
@@ -242,7 +242,7 @@ window.AGRI_BRIEF={
  segs:[['Cao su','GVR · DPR · PHR',tsY!=null&&tsY>10?'up':'flat','TSR20 '+signed(tsY,0)+'%'],['Gạo, cà phê','LTG · PAN · HAG','down','Robusta '+signed(roY,0)+'% · El Niño'],['Chăn nuôi','DBC · BAF · HAG','down','Heo '+(hgL?nf(hgL.value,0):'—')+' · ngô '+signed(coY,0)+'%'],['Thực phẩm & đồ uống','VNM · MSN · SAB · KDC',rtY!=null&&rtY>10?'up':'flat','Bán lẻ '+signed(rtY,0)+'%']],
  headers:['Biến số đang thay đổi','Đang thấy (số mới nhất)','Đổi đánh giá khi','','Hưởng lợi ▲ / chịu thiệt ▼'],
  score,
- events:[['Đầu tháng','Hải quan, NSO: XNK, bán lẻ, sản lượng'],['Thứ Năm thứ 2 hằng tháng','NOAA: bản tin ENSO'],['Giữa tháng','USDA WASDE'],['20–30/10','BCTC quý III'],['30/12/2026','EUDR áp dụng DN lớn']]
+ events:[['Đầu tháng','Hải quan, NSO: XNK, bán lẻ, sản lượng'],['Thứ Năm thứ 2 hằng tháng','NOAA: bản tin ENSO'],['Giữa tháng','USDA WASDE'],['20–30/10','BCTC quý III'],['30/12/2026','EUDR áp dụng DN lớn, vừa']]
 };
 const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ WiMCP lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; các lời gọi ghi trong data/agri-wi-contract.json.';
 })();

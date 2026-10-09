@@ -31,6 +31,8 @@ Routine hằng ngày làm hết mục B; routine hằng tuần xử lý tối đ
 
 **Luật chung:** không bịa, không nội suy, thiếu thì để trống và ghi hạn chế; phân biệt kỳ quan sát, ngày công bố, ngày kiểm; nguồn phải là link bấm được; ít chữ, số nổi bật. Không chắc số đúng → `--fail` với lý do, để người dùng xem.
 
+**Bằng chứng tài liệu (mọi lượt thứ Hai).** Số tài liệu mới hoặc sửa phải thêm/cập nhật dòng trong `data/<ngành>/evidence.json` với đoạn văn gốc đã mở (không dùng đoạn trích tìm kiếm). Chạy `python3 scripts/check_evidence.py --fetch`; mục nào `unreachable` hoặc `quote_changed` thì mở lại nguồn, sửa số hoặc ghi hạn chế, và nêu trong `routine-notify.txt`.
+
 ## 3. Kết thúc
 
 1. `python3 -m unittest discover -s tests && node tests/data-math.test.cjs && node tests/financial-comparison.test.cjs`. Test lỗi → hoàn tác thay đổi của mục gây lỗi, `--fail` mục đó.

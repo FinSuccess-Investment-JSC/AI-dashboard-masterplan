@@ -1,0 +1,117 @@
+{
+ "checked_at": "2026-10-09T14:51:48Z",
+ "problems": [
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-50",
+   "claim": "Philippines dừng nhập gạo",
+   "url": "https://wealthinsights.metrobank.com.ph/bworldonline/philippines-eyes-1-month-rice-import-window-in-january-2026",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-t4",
+   "claim": "Rượu bia +5 điểm %/năm từ 2027",
+   "url": "https://hoatieu.vn/phap-luat/luat-thue-tieu-thu-dac-biet-so-66-2025-qh15-235343",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-t2",
+   "claim": "Heo hơi 06/10/2026",
+   "url": "https://baolaocai.vn/gia-lon-hoi-hom-nay-6102026-cao-nhat-56000-dongkg-post911190.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-t3",
+   "claim": "EUDR DN lớn",
+   "url": "https://trade.ec.europa.eu/access-to-markets/en/news/delay-until-december-2026-and-other-developments-implementation-eudr-regulation",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-60",
+   "claim": "GVR 6T/2026",
+   "url": "https://nhandan.vn/sau-thang-nam-2026-tap-doan-vrg-dat-loi-nhuan-hon-6000-ty-dong-post978413.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-60",
+   "claim": "PHR 6T LNST, đền bù",
+   "url": "https://elibook.vn/2026/08/17/phr-cu-nhay-vot-ngoan-muc-quy-2-cua-vua-cao-su-binh-duong/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-60",
+   "claim": "DBC",
+   "url": "https://cafef.vn/gia-lon-hoi-giam-keo-lai-rong-quy-ii-2026-cua-dabaco-di-lui-43-188260731094501651.chn",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-60",
+   "claim": "HAG diện tích",
+   "url": "https://mekongasean.vn/hagl-bam-sat-ke-hoach-loi-nhuan-ky-luc-nho-duoc-mien-lai-trai-phieu-57803.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-60",
+   "claim": "BAF 6T, đàn",
+   "url": "https://tapchicongthuong.vn/baf-tang-61--san-luong-heo-6-thang-dau-nam-2026--day-manh-dau-tu-cho-chu-ky-tang-truong-moi-538213.htm",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-60",
+   "claim": "MSN",
+   "url": "https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/port/evidence.json",
+   "block": "cg-03",
+   "claim": "Toàn quốc 5T/2026 hàng qua cảng",
+   "url": "https://baochinhphu.vn/giam-thu-tuc-hanh-chinh-hang-hoa-qua-cang-bien-tang-manh-102260528153427691.htm",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/port/evidence.json",
+   "block": "cg-03",
+   "claim": "Gemalink Q1/2026",
+   "url": "https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/port/evidence.json",
+   "block": "cg-03",
+   "claim": "SGP 2025 container",
+   "url": "https://saigonport.vn/wp-content/uploads/2026/04/VN_04-Bao-cao-cua-HDQT-tai-DHDCD-2026.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/port/evidence.json",
+   "block": "cg-06",
+   "claim": "chCaiMep: tổng cụm và 3 bến",
+   "url": "https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/port/evidence.json",
+   "block": "cg-15",
+   "claim": "Cái Mép Hạ",
+   "url": "https://baodauthau.vn/chay-nuoc-rut-trien-khai-du-an-cang-bien-tai-tphcm-khong-de-nha-dau-tu-vuong-thu-tuc-post196899.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/port/evidence.json",
+   "block": "cg-t3",
+   "claim": "SGP KH 2026 hợp nhất",
+   "url": "https://saigonport.vn/wp-content/uploads/2026/04/VN_04-Bao-cao-cua-HDQT-tai-DHDCD-2026.pdf",
+   "state": "quote_changed"
+  }
+ ]
+}

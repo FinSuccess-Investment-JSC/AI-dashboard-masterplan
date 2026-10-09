@@ -117,3 +117,6 @@ Still open:
 `scripts/fetch_hydro_reservoirs.py` reads the live EVN iframe table; the separate GitHub Actions workflow attempts 00:15 and 01:15 Asia/Ho_Chi_Minh. A capture is accepted only with at least 15 unique reservoirs whose EVN timestamp lies within ±2 hours of 00:00. Accepted JSON is archived at `data/raw/evn-reservoirs/YYYY-MM-DD.json`; `scripts/update_hydro_reservoirs.py` merges it with the seed idempotently. Invalid/late source leaves the last published series intact. The first production run was not yet verified on 09/10/2026.
 
 The exact user workbook is retained in the private `AI_WORKSPACE/source-archives/` notes repository so another machine can rebuild the public monthly bundle; it is not copied into the public dashboard repository.
+
+## check_evidence.py
+Bằng chứng số tài liệu: `python3 scripts/check_evidence.py` (cấu trúc, chạy trong test) và `--fetch` (mở lại link, ghi `data/evidence-status.json`; cần `pdftotext` cho PDF). Xem DASHBOARD_WORKFLOW §20.
