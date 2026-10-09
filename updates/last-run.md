@@ -1,38 +1,4 @@
-# Lịch cập nhật — 08/10/2026 22:52
+# Lịch cập nhật — 09/10/2026 08:16
 
-- ❌ oil.retail-fuel lỗi 0 ngày: retail_fuel
-- → hàng chờ [B] bank.wi.daily: lịch 08/10 07:00
-- → hàng chờ [C] sugar.domestic: lịch 01/10 07:00
-- → hàng chờ [C] sugar.crop: lịch 05/10 07:00
-- → hàng chờ [C] bank.policy: lịch 07/10 07:00
-- → hàng chờ [D] oil.ai.cycle: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [D] oil.ai.balance: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [D] oil.ai.regime: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [D] oil.ai.channels: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [D] sugar.ai.cycle: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [D] bank.ai.read: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] power.evn-reservoirs: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] power.tariff-evn: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] power.market-fmp: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] power.policy: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] power.capacity: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] power.output-sources: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] power.hot-topics: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [D] power.ai.cycle: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [B] realestate.wi.daily: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [B] realestate.wi.weekly: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] realestate.market-quarterly: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] realestate.fdi-projects: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] realestate.kcn-quarterly: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] realestate.policy: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] realestate.credit-rates: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] realestate.hot-topics: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [D] realestate.ai.cycle: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [B] textile.wi.daily: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [B] textile.wi.weekly: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] textile.trade-tariff: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] textile.orders-brands: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] textile.policy: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [C] textile.hot-topics: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [D] textile.ai.cycle: lần đầu: rà soát số đang hiển thị
-- Hàng chờ Claude: 36 mục — sugar.domestic, sugar.crop, bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, sugar.ai.cycle, bank.ai.read, oil.supply-news
+- ✅ bank.wi.daily: Cập nhật 9/11 file Wi: lãi suất huy động đến 08/10, liên ngân hàng đến 07/10, tỷ giá đến 09/10, TPCP đến 08/10, định giá đến 08/10. Còn lỗi: gbond_primary_auctions (Wi bỏ cột winning_yield khi null, ingest từ chối, 2 lần) và news_bank (không có link PDF CBTT, cần người dùng).
+- Hàng chờ Claude: 35 mục — sugar.domestic, sugar.crop, bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, sugar.ai.cycle, bank.ai.read, oil.supply-news
