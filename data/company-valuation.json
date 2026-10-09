@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "checked_at": "2026-10-09T21:05:24+07:00",
+ "checked_at": "2026-10-09T22:32:05+07:00",
  "provider": "VNDirect finfo",
  "method": "P/E, P/B, vốn hóa của VNDirect tại ngày tham chiếu, điều chỉnh theo giá đóng cửa phiên mới nhất; EPS, BVPS, số cổ phiếu giữ nguyên đến kỳ BCTC sau.",
  "units": {

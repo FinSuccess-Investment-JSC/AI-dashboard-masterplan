@@ -1,4 +1,4 @@
-# Lịch cập nhật — 09/10/2026 13:36
+# Lịch cập nhật — 09/10/2026 22:34
 
 - ❌ oil.retail-fuel lỗi 1 ngày: retail_fuel
 - → hàng chờ [C] sugar.domestic: lịch 01/10 07:00
@@ -34,8 +34,18 @@
 - → hàng chờ [C] textile.policy: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [C] textile.hot-topics: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [D] textile.ai.cycle: lần đầu: rà soát số đang hiển thị
-- Hàng chờ Claude: 35 mục — sugar.domestic, sugar.crop, bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, sugar.ai.cycle, bank.ai.read, oil.supply-news
-
-## Cảnh báo
-
-- ❌ Nguồn tự động vẫn lỗi 1 ngày, web giữ số cũ — Giá bán lẻ xăng dầu Vùng 1 (Petrolimex) (retail_fuel: Petrolimex product row missing or ambiguous: E10 RON 95-III)
+- → hàng chờ [B] port.wi.daily: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [B] port.wi.weekly: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] port.freight: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] port.throughput: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] port.policy: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] port.projects: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] port.hot-topics: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] port.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [B] agri.wi.daily: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [B] agri.wi.weekly: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] agri.policy: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] agri.weather: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] agri.hot-topics: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] agri.ai.cycle: lần đầu: rà soát số đang hiển thị
+- Hàng chờ Claude: 49 mục — sugar.domestic, sugar.crop, bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, sugar.ai.cycle, bank.ai.read, oil.supply-news
