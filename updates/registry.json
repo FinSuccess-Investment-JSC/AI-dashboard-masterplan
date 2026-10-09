@@ -54,6 +54,20 @@
     "id"
    ],
    "match": "mía|đường"
+  },
+  {
+   "id": "fr.vn-seafood",
+   "kind": "rss",
+   "url": "https://www.federalregister.gov/api/v1/documents.rss?conditions%5Bterm%5D=%22Socialist+Republic+of+Vietnam%22+%28fillets+OR+shrimp%29&order=newest",
+   "match": "Fish Fillets From the Socialist Republic of Vietnam|Shrimp From the Socialist Republic of Vietnam",
+   "note": "Kết luận CBPG/CVD cá tra (A-552-801), tôm (A-552-802) Việt Nam"
+  },
+  {
+   "id": "news.vasep",
+   "kind": "rss",
+   "url": "https://news.google.com/rss/search?q=VASEP+xu%E1%BA%A5t+kh%E1%BA%A9u+th%E1%BB%A7y+s%E1%BA%A3n&hl=vi&gl=VN&ceid=VN:vi",
+   "match": "tháng|quý|tháng đầu năm",
+   "note": "Tin VASEP về XK thủy sản theo tháng"
   }
  ],
  "items": [
@@ -2175,20 +2189,22 @@
    ]
   },
   {
-   "id": "port.wi.daily",
+   "id": "port.wi.monthly",
    "tier": "B",
-   "title": "Wi: XNK, vận chuyển hàng hóa đường biển, hàng không, thủy nội địa; chỉ số giá bốc xếp, kho bãi, vận tải biển; định giá nhóm cảng",
+   "title": "Wi: XNK, vận chuyển hàng hóa đường biển, hàng không, thủy nội địa",
    "wiBlocks": [
-    "macro_transport",
-    "sector_ratio_recent"
+    "macro_transport"
    ],
    "wiContract": "data/port-wi-contract.json",
    "schedule": {
-    "type": "daily",
+    "type": "monthly",
     "at": "07:00",
-    "days": "mon-fri"
+    "days": [
+     3,
+     15
+    ]
    },
-   "publication": "Hải quan, NSO đầu tháng; chỉ số giá dịch vụ theo quý; định giá theo phiên",
+   "publication": "NSO (vận chuyển, chỉ số giá) ngày 3–6; Hải quan XNK sơ bộ đầu tháng, chính thức giữa tháng",
    "source": {
     "name": "WiData qua WiMCP",
     "url": "https://widata.vn/"
@@ -2199,13 +2215,12 @@
     "blocks": [
      "cg-07",
      "cg-10",
-     "cg-13",
      "cg-14",
      "cg-17",
      "cg-18"
     ]
    },
-   "how": "Gọi lại đúng các lời gọi WiMCP trong data/port-wi-contract.json (hook wi_capture.py lưu kết quả), rồi chạy python3 scripts/build_port_wi.py. Với sector_ratio_recent đặt to_time = hôm nay.",
+   "how": "Trong cửa sổ công bố, mỗi ngày làm việc gọi lại lời gọi macro_transport trong data/port-wi-contract.json; nếu Wi đã có tháng mới thì chạy script build, nếu chưa thì --done với ghi chú \"chưa có kỳ mới\". Kết quả vượt trần hiển thị: build_realestate_wi.py --restore.",
    "gates": [
     "Không chép tay số"
    ]
@@ -2249,7 +2264,7 @@
     "day": "mon",
     "at": "07:00"
    },
-   "publication": "Drewry thứ Năm hằng tuần; SCFI thứ Sáu",
+   "publication": "Drewry WCI thứ Năm hằng tuần; trang chỉ hiện tuần mới nhất nên phải lưu mỗi tuần",
    "source": {
     "name": "Drewry WCI",
     "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry"
@@ -2272,11 +2287,14 @@
    "tier": "C",
    "title": "Hàng hóa, container qua cảng toàn quốc, Hải Phòng, Cái Mép; sản lượng doanh nghiệp; cung – cầu cụm cảng",
    "schedule": {
-    "type": "weekly",
-    "day": "mon",
-    "at": "07:00"
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     8,
+     20
+    ]
    },
-   "publication": "Cục Hàng hải và Đường thủy theo công bố, không cố định",
+   "publication": "Cục Hàng hải và Đường thủy, Cảng vụ, VIMC theo tháng, thường giữa tháng; quý cho từng cụm cảng",
    "source": {
     "name": "Cục Hàng hải và Đường thủy",
     "url": "https://vmrcc.gov.vn/"
@@ -2433,20 +2451,22 @@
    ]
   },
   {
-   "id": "agri.wi.daily",
+   "id": "agri.wi.monthly",
    "tier": "B",
-   "title": "Wi: XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa; giá XK; bán lẻ, CPI, IIP, sản lượng bia, sữa, thức ăn; định giá phân ngành",
+   "title": "Wi: XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa",
    "wiBlocks": [
-    "macro_agri",
-    "sector_ratio_recent"
+    "macro_agri"
    ],
    "wiContract": "data/agri-wi-contract.json",
    "schedule": {
-    "type": "daily",
+    "type": "monthly",
     "at": "07:00",
-    "days": "mon-fri"
+    "days": [
+     3,
+     15
+    ]
    },
-   "publication": "Hải quan, NSO đầu tháng; định giá theo phiên",
+   "publication": "NSO (bán lẻ, CPI, IIP, sản lượng) ngày 3–6; Hải quan XNK theo mặt hàng đầu–giữa tháng",
    "source": {
     "name": "WiData qua WiMCP",
     "url": "https://widata.vn/"
@@ -2455,7 +2475,6 @@
     "page": "Nong-nghiep/index.html",
     "file": "data/agri-wi-data.js",
     "blocks": [
-     "nn-03",
      "nn-10",
      "nn-11",
      "nn-22",
@@ -2466,7 +2485,7 @@
      "nn-33"
     ]
    },
-   "how": "Gọi lại đúng các lời gọi WiMCP trong data/agri-wi-contract.json, rồi chạy python3 scripts/build_agri_wi.py. Lời gọi macro_agri vượt trần hiển thị: dùng python3 scripts/build_realestate_wi.py --restore <file tool-results> <capture>. Với sector_ratio_recent đặt to_time = hôm nay.",
+   "how": "Trong cửa sổ công bố, mỗi ngày làm việc gọi lại lời gọi macro_agri trong data/agri-wi-contract.json; nếu Wi đã có tháng mới thì chạy script build, nếu chưa thì --done với ghi chú \"chưa có kỳ mới\". Kết quả vượt trần hiển thị: build_realestate_wi.py --restore.",
    "gates": [
     "Không chép tay số"
    ]
@@ -2566,11 +2585,14 @@
    "tier": "C",
    "title": "Bản tin ENSO NOAA, dự báo mặn, USDA cà phê/gạo, lịch mùa vụ",
    "schedule": {
-    "type": "weekly",
-    "day": "mon",
-    "at": "07:00"
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     9,
+     16
+    ]
    },
-   "publication": "NOAA thứ Năm thứ 2 hằng tháng; USDA tháng 6, 12",
+   "publication": "NOAA ENSO Diagnostic Discussion thứ Năm thứ 2 hằng tháng; USDA cà phê tháng 6, 12",
    "source": {
     "name": "NOAA CPC",
     "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml"
@@ -2664,20 +2686,22 @@
    ]
   },
   {
-   "id": "seafood.wi.daily",
+   "id": "seafood.wi.monthly",
    "tier": "B",
-   "title": "Wi: XK thủy sản tổng và theo Mỹ, Trung Quốc, Nhật, Hàn; định giá ngành thủy sản",
+   "title": "Wi: XK thủy sản tổng và theo Mỹ, Trung Quốc, Nhật, Hàn",
    "wiBlocks": [
-    "macro_seafood",
-    "sector_ratio_recent"
+    "macro_seafood"
    ],
    "wiContract": "data/seafood-wi-contract.json",
    "schedule": {
-    "type": "daily",
+    "type": "monthly",
     "at": "07:00",
-    "days": "mon-fri"
+    "days": [
+     3,
+     28
+    ]
    },
-   "publication": "Hải quan đầu tháng (theo nước trễ thêm ~1 tháng); định giá theo phiên",
+   "publication": "Hải quan: tổng thủy sản đầu tháng; theo nước (bảng 87) cuối tháng sau (vd T8 có ngày 30/09)",
    "source": {
     "name": "WiData qua WiMCP",
     "url": "https://widata.vn/"
@@ -2686,12 +2710,11 @@
     "page": "Thuy-san/index.html",
     "file": "data/seafood-wi-data.js",
     "blocks": [
-     "ts-03",
      "ts-10",
      "ts-14"
     ]
    },
-   "how": "Gọi lại đúng các lời gọi WiMCP trong data/seafood-wi-contract.json, rồi chạy python3 scripts/build_seafood_wi.py. Với sector_ratio_recent đặt to_time = hôm nay.",
+   "how": "Trong cửa sổ công bố, mỗi ngày làm việc gọi lại lời gọi macro_seafood trong data/seafood-wi-contract.json; nếu Wi đã có tháng mới thì chạy script build, nếu chưa thì --done với ghi chú \"chưa có kỳ mới\". Kết quả vượt trần hiển thị: build_realestate_wi.py --restore.",
    "gates": [
     "Không chép tay số"
    ]
@@ -2733,11 +2756,9 @@
    "tier": "C",
    "title": "CBPG cá tra, tôm (POR), CVD tôm, Mục 301; so sánh Ấn Độ, Ecuador",
    "schedule": {
-    "type": "weekly",
-    "day": "mon",
-    "at": "07:00"
+    "type": "watch"
    },
-   "publication": "Federal Register theo kết luận sơ bộ/cuối từng kỳ",
+   "publication": "Federal Register theo kết luận sơ bộ/cuối của từng kỳ rà soát (POR cá tra 8–7, tôm 2–1)",
    "source": {
     "name": "Federal Register",
     "url": "https://www.federalregister.gov/"
@@ -2754,6 +2775,9 @@
    "gates": [
     "Mở văn bản Federal Register",
     "Ghi rõ sơ bộ/cuối cùng, POR"
+   ],
+   "watch": [
+    "fr.vn-seafood"
    ]
   },
   {
@@ -2761,11 +2785,14 @@
    "tier": "C",
    "title": "VASEP: XK cá tra, tôm theo thị trường; IUU; MMPA",
    "schedule": {
-    "type": "weekly",
-    "day": "mon",
-    "at": "07:00"
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     10,
+     20
+    ]
    },
-   "publication": "VASEP hằng tháng; IUU, MMPA theo sự kiện",
+   "publication": "VASEP tổng kết tháng khoảng ngày 10–20; IUU, MMPA theo sự kiện",
    "source": {
     "name": "VASEP",
     "url": "https://vasep.com.vn/"
@@ -2781,6 +2808,9 @@
    "how": "Cập nhật số VASEP mới nhất (đã mở trang) vào chart chVasep, chMkt2 và bảng ts-50; thêm dòng evidence.",
    "gates": [
     "Mở trang gốc"
+   ],
+   "watch": [
+    "news.vasep"
    ]
   },
   {
@@ -2856,6 +2886,96 @@
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
+   ]
+  },
+  {
+   "id": "port.wi.valuation",
+   "tier": "B",
+   "title": "Wi: định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
+   "wiBlocks": [
+    "sector_ratio_recent"
+   ],
+   "wiContract": "data/port-wi-contract.json",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Theo phiên giao dịch",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "file": "data/port-wi-data.js",
+    "blocks": [
+     "cg-13"
+    ]
+   },
+   "how": "Gọi lại lời gọi sector_ratio_recent trong data/port-wi-contract.json với to_time = hôm nay, rồi chạy script build tương ứng.",
+   "gates": [
+    "Không chép tay số"
+   ]
+  },
+  {
+   "id": "agri.wi.valuation",
+   "tier": "B",
+   "title": "Wi: định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
+   "wiBlocks": [
+    "sector_ratio_recent"
+   ],
+   "wiContract": "data/agri-wi-contract.json",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Theo phiên giao dịch",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Nong-nghiep/index.html",
+    "file": "data/agri-wi-data.js",
+    "blocks": [
+     "nn-03"
+    ]
+   },
+   "how": "Gọi lại lời gọi sector_ratio_recent trong data/agri-wi-contract.json với to_time = hôm nay, rồi chạy script build tương ứng.",
+   "gates": [
+    "Không chép tay số"
+   ]
+  },
+  {
+   "id": "seafood.wi.valuation",
+   "tier": "B",
+   "title": "Wi: định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
+   "wiBlocks": [
+    "sector_ratio_recent"
+   ],
+   "wiContract": "data/seafood-wi-contract.json",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Theo phiên giao dịch",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "file": "data/seafood-wi-data.js",
+    "blocks": [
+     "ts-03"
+    ]
+   },
+   "how": "Gọi lại lời gọi sector_ratio_recent trong data/seafood-wi-contract.json với to_time = hôm nay, rồi chạy script build tương ứng.",
+   "gates": [
+    "Không chép tay số"
    ]
   }
  ]
