@@ -1,0 +1,129 @@
+{
+ "schema": 1,
+ "about": "Các lời gọi WiMCP cho dashboard Cảng & kho bãi. Routine Claude gọi lại đúng các lời gọi này (hook wi_capture.py lưu kết quả vào data/raw/wi/.inbox/), rồi chạy scripts/build_port_wi.py để dựng data/port-wi-data.js. Không chép tay số.",
+ "calls": [
+  {
+   "block": "macro_transport",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "82585,82583,82588,82586,83479,92728,75667,75665,75662",
+    "from_time": "2019-01-01",
+    "limit": 120
+   },
+   "cadence": "daily",
+   "note": "Vận chuyển hàng hóa đường biển, ngoài nước, hàng không, thủy nội địa (NSO, tháng); XNK tổng (Hải quan); chỉ số giá bốc xếp, kho bãi, vận tải biển (quý, YoY)."
+  },
+  {
+   "block": "commodity_freight",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "73982,205629",
+    "from_time": "2024-10-01",
+    "to_time": "2026-10-09",
+    "limit": 600
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "BDI (hàng rời). 205629 (mazut 180cst) Wi trả 404 ở lần gọi 09/10/2026. Wi không có SCFI/chỉ số cước container. to_time = hôm nay khi gọi lại."
+  },
+  {
+   "block": "sector_ratio_recent",
+   "tool": "wi_data_sector",
+   "input": {
+    "action": "get_data",
+    "endpoint_name": "sector_ratio_daily",
+    "filters": "{\"sector_id\":\"309,186,185,183,182\"}",
+    "columns": "sector_id,trading_date,pe,pb,market_cap",
+    "by_time": "trading_date",
+    "from_time": "2025-04-01",
+    "to_time": "2026-10-09",
+    "limit": 1000
+   },
+   "cadence": "daily",
+   "match_keys": [
+    "action",
+    "endpoint_name",
+    "filters",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "Trần 1000 dòng: 5 ngành × ~200 phiên, nên cửa sổ thực tế bắt đầu khoảng giữa 12/2025."
+  }
+ ],
+ "indicators": {
+  "82585": [
+   "sea_freight",
+   "Vận chuyển hàng hóa đường biển",
+   "nghìn tấn",
+   "monthly"
+  ],
+  "82583": [
+   "overseas_freight",
+   "Vận chuyển hàng hóa ngoài nước",
+   "nghìn tấn",
+   "monthly"
+  ],
+  "82588": [
+   "air_freight",
+   "Vận chuyển hàng hóa hàng không",
+   "nghìn tấn",
+   "monthly"
+  ],
+  "82586": [
+   "inland_freight",
+   "Vận chuyển hàng hóa đường thủy nội địa",
+   "nghìn tấn",
+   "monthly"
+  ],
+  "83479": [
+   "exports",
+   "Xuất khẩu hàng hóa",
+   "triệu USD",
+   "monthly"
+  ],
+  "92728": [
+   "imports",
+   "Nhập khẩu hàng hóa",
+   "triệu USD",
+   "monthly"
+  ],
+  "75667": [
+   "ppi_handling",
+   "Chỉ số giá dịch vụ bốc xếp hàng hóa, so cùng kỳ",
+   "%",
+   "quarterly"
+  ],
+  "75665": [
+   "ppi_warehouse",
+   "Chỉ số giá kho bãi và hỗ trợ vận tải, so cùng kỳ",
+   "%",
+   "quarterly"
+  ],
+  "75662": [
+   "ppi_sea",
+   "Chỉ số giá vận tải ven biển và viễn dương, so cùng kỳ",
+   "%",
+   "quarterly"
+  ],
+  "73982": [
+   "bdi",
+   "Baltic Dry Index",
+   "điểm",
+   "daily"
+  ]
+ },
+ "sectors": {
+  "309": "Cảng và dịch vụ hàng hải",
+  "186": "Hỗ trợ vận tải đường thủy",
+  "185": "Vận tải hàng hóa đường thủy",
+  "183": "Hỗ trợ vận tải hàng không",
+  "182": "Sắp xếp vận tải hàng hóa (logistics)"
+ }
+}

@@ -3,8 +3,8 @@
 (() => {
   'use strict';
   const pane=document.querySelector('.majorpane[data-tab="mt5"]');if(!pane)return;
-  const bank=document.body.dataset.sector==='bank',power=document.body.dataset.sector==='power',re=document.body.dataset.sector==='realestate',tx=document.body.dataset.sector==='textile',oil=!power&&!re&&!tx&&!!document.getElementById('chCurve');
-  const sector=bank?'bank':power?'power':re?'realestate':tx?'textile':oil?'oil':'sugar';
+  const bank=document.body.dataset.sector==='bank',power=document.body.dataset.sector==='power',re=document.body.dataset.sector==='realestate',tx=document.body.dataset.sector==='textile',pt=document.body.dataset.sector==='port',oil=!power&&!re&&!tx&&!pt&&!!document.getElementById('chCurve');
+  const sector=bank?'bank':power?'power':re?'realestate':tx?'textile':pt?'port':oil?'oil':'sugar';
   const make=(tag,cls,text)=>{const n=document.createElement(tag);n.className=cls;if(text)n.textContent=text;return n};
   const num=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
   const date=v=>/^\d{4}-\d{2}-\d{2}/.test(v||'')?v.slice(8,10)+'/'+v.slice(5,7)+'/'+v.slice(0,4):v||'Chưa có kỳ';
@@ -16,7 +16,7 @@
   const heading=make('div','sectionhead'),headingText=make('div','');headingText.append(make('h2','','Catalyst / Risk'),make('p','','Kết luận hiện tại, tín hiệu đo được và các mốc sắp tới.'));heading.append(headingText);board.append(heading);
   function keys(buttons,select){buttons.forEach((b,i)=>b.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const j=e.key==='Home'?0:e.key==='End'?buttons.length-1:(i+(e.key==='ArrowRight'?1:buttons.length-1))%buttons.length;select(j);buttons[j].focus()}))}
   const signals=make('div','thesis-view');signals.id='thesis-signals';board.append(signals);
-  const stamp=bank?'11/09/2026':power?'06/10/2026':re||tx?'08/10/2026':oil?'03/09/2026':'17/08/2026';
+  const stamp=bank?'11/09/2026':power?'06/10/2026':pt?'09/10/2026':re||tx?'08/10/2026':oil?'03/09/2026':'17/08/2026';
   // One page: signals first, then original KPI table and the dated AI analysis under clear folds.
   const fold=(id,title,note)=>{const d=make('details','thesis-fold');d.id=id;const s=make('summary','',title);d.append(s);const body=make('div','thesis-fold-body');if(note)body.append(make('p','thesis-notice',note));d.append(body);return {d,body}};
   const kpi=fold('thesis-evidence','Bảng KPI & ngưỡng theo dõi');
@@ -76,7 +76,7 @@
       item('Phụ tải & huy động',day?num(day.output_mkwh,1)+' triệu kWh/ngày':'—',day?'EVN · '+date(day.date):'Chưa có kỳ','Theo dõi','Sản lượng phát của nhà máy; nhu cầu đầu tư nguồn, lưới.','Tăng trưởng sản lượng lũy kế năm lệch ≥2 điểm % so kế hoạch EVN.','Bản tin ngày của EVN; chưa có giá thị trường điện SMP (trang NSMO chỉ mở trong nước).',[['chDaily','Sản lượng ngày'],['chMonthly','Sản lượng tháng']],['thermal','hydro','re','grid'])
     ];
     [[0,['enso_oni'],62],[1,['coal_newcastle','lng_jkm',wbk].filter(Boolean),45],[3,['vn_power_daily'],7]].forEach(([i,ids,days])=>{const live=ids.filter(k=>feeds[k]?.records?.length);if(!live.length){rows[i].status='Thiếu dữ liệu';rows[i].metric='—'}else if(live.every(k=>feeds[k].status!=='ok'||Date.now()-Date.parse(feeds[k].latest_observation)>days*86400000)){rows[i].status='Chờ cập nhật'}});
-  }else if(re||tx){
+  }else if(re||tx||pt){
     rows=[]; // the verdict board below reads window.REALESTATE_WI directly; no legacy tiles
   }else if(!bank){
     const wb=feeds.sugar_monthly,last=wb?.records?.at(-1),stock=monitors[1]?.querySelector('strong')?.textContent||'—',hfcs=monitors[2]?.querySelector('strong')?.textContent||'—';
@@ -120,10 +120,10 @@
   });
   if(!bank){
     const label=make('label','','Góc nhìn doanh nghiệp');label.htmlFor='thesis-scope';const select=make('select','');select.id='thesis-scope';
-    const opts=tx?[['all','Toàn ngành'],['garment','May'],['yarn','Sợi'],['group','Tập đoàn']]:re?[['all','Toàn ngành'],['housing','Nhà ở'],['industrial','Khu công nghiệp'],['leasing','Cho thuê'],['broker','Môi giới']]:power?[['all','Toàn ngành'],['thermal','Nhiệt điện'],['hydro','Thủy điện'],['re','Năng lượng tái tạo'],['grid','Lưới, xây lắp & thiết bị']]:oil?[['all','Toàn chuỗi'],['upstream','Khai thác'],['services','Dịch vụ'],['gas','Khí'],['refining','Lọc dầu'],['distribution','Phân phối']]:[['all','Toàn ngành'],['cane','Tự chủ vùng mía'],['import','Phụ thuộc nguyên liệu nhập']];
+    const opts=pt?[['all','Toàn ngành']]:tx?[['all','Toàn ngành'],['garment','May'],['yarn','Sợi'],['group','Tập đoàn']]:re?[['all','Toàn ngành'],['housing','Nhà ở'],['industrial','Khu công nghiệp'],['leasing','Cho thuê'],['broker','Môi giới']]:power?[['all','Toàn ngành'],['thermal','Nhiệt điện'],['hydro','Thủy điện'],['re','Năng lượng tái tạo'],['grid','Lưới, xây lắp & thiết bị']]:oil?[['all','Toàn chuỗi'],['upstream','Khai thác'],['services','Dịch vụ'],['gas','Khí'],['refining','Lọc dầu'],['distribution','Phân phối']]:[['all','Toàn ngành'],['cane','Tự chủ vùng mía'],['import','Phụ thuộc nguyên liệu nhập']];
     opts.forEach(([v,t])=>{const o=make('option','',t);o.value=v;select.append(o)});filter.append(label,select);
     select.addEventListener('change',()=>{[...grid.children].forEach(c=>c.hidden=select.value!=='all'&&!c.dataset.groups.split(',').includes(select.value));intro.textContent=oil||power?'':select.value==='cane'?'Tự chủ mía: ưu tiên giá bán so giá mía, năng suất và độ bền vùng nguyên liệu.':select.value==='import'?'Nguyên liệu nhập: ưu tiên giá đường thô, tỷ giá, thuế và khả năng chuyển giá bán.':'';intro.hidden=!intro.textContent;if(!intro.parentElement)grid.before(intro)});
-    if(!oil&&!power&&!re&&!tx)select.addEventListener('change',()=>{
+    if(!oil&&!power&&!re&&!tx&&!pt)select.addEventListener('change',()=>{
       const c=grid.children[1],raw=select.value==='import',cane=select.value==='cane';
       c.querySelector('h3').textContent=raw?'Giá bán & đường thô nhập':cane?'Giá bán & giá mía':rows[1].title;
       const impact=c.querySelector('.thesis-impact');impact.replaceChildren(make('b','','Ảnh hưởng: '),raw?'Giá đường thô, tỷ giá, thuế và khả năng chuyển giá bán.':cane?'Giá bán so chi phí mía; năng suất và tỷ lệ thu hồi đường.':rows[1].impact);
@@ -282,7 +282,8 @@
         row('P/B BĐS công nghiệp',ipbL?ipbL[2]:null,ipbP?ipbP[2]:null,'x',2,'—',ipbL?'info':'na','KCN niêm yết','chIpPb','Khu công nghiệp')],
       events:[['20/10','Khai mạc kỳ họp QH: Luật Đất đai sửa đổi'],['20–30/10','BCTC quý III'],['Đầu tháng','NSO: CPI, FDI, GDP quý'],['Hằng tháng','HNX/VBMA: TPDN đáo hạn'],['Cuối T11','Bộ Xây dựng: thị trường Q3']]
     });
-  }else if(tx){
+  }else if(tx||pt){
+    let score;if(pt){score=window.PORT_BRIEF?.score||[];renderBrief(window.PORT_BRIEF||{headline:'Thiếu dữ liệu',segs:[],headers:[],score:[],events:[]})}else{
     // Thesis delta: one row per variable that is moving — evidence (latest number), direction, who gains/loses, what would reverse it.
     const T=window.TEXTILE_DASHBOARD||{},M=window.TEXTILE_WI?.blocks?.macro?.series||{},Cm=window.TEXTILE_WI?.blocks?.commodity?.series||{},Sec=window.TEXTILE_WI?.blocks?.sector_ratio?.by_sector||{};
     const R=k=>M[k]?.records||Cm[k]?.records||[];
@@ -302,7 +303,7 @@
     const row=(group,name,evidence,cond,st,who,chart)=>({group,name,chart,st,mid:[evidence,cond],end:[who]});
     const usSt=usY==null?'na':usY<0&&us2!=null&&us2<0?'risk':usYtd!=null&&usYtd>3?'good':'watch';
     const asiaSt=[jpY,krY].every(v=>v!=null)?(jpY<0&&krY<0?'risk':jpY<0||krY<0?'watch':'good'):'na';
-    const score=[
+    score=[
       row('Cầu & đơn hàng','Việt Nam lấy thị phần tại Mỹ','Thị phần 21,5% (2025) → 22,2% (5T/2026) · XK sang Mỹ '+(usL?mon(usL.date)+' '+sg(usY)+' YoY, lũy kế '+sg(usYtd):'—'),'XK sang Mỹ âm YoY 2 tháng liên tiếp, hoặc thị phần OTEXA giảm',usSt,'▲ MSH · TNG · GIL','chUsShare'),
       row('Cầu & đơn hàng','Kênh bán lẻ Mỹ không thừa hàng','Tồn kho/doanh số quần áo 2,11 lần (T7/26, gần đáy từ 2019) · bán lẻ quần áo '+(urL?mon(urL.date)+' '+sg(urL.value):'—'),'Tồn kho/doanh số > 2,2 lần hoặc bán lẻ quần áo Mỹ âm YoY',urL==null?'na':urL.value<0?'risk':'good','▲ cả nhóm may','chUsIS'),
       row('Cầu & đơn hàng','Nhãn hàng còn tồn kho cao hơn doanh thu','Inditex tồn kho +9,3% / doanh thu +7,6%; Adidas +13% / +13%; Nike −3% / −4%','Tồn kho các hãng tăng chậm hơn doanh thu ở kỳ báo cáo tới','watch','▼ đơn Q4–Q1 của nhà may','chBrands'),
@@ -325,6 +326,7 @@
       score,
       events:[['Đầu tháng','Hải quan, NSO: XK dệt may tháng trước'],['Giữa tháng','US Census: bán lẻ, tồn kho quần áo'],['20–30/10','BCTC quý III'],['24/11/2026','Bangladesh rời nhóm LDC'],['Theo sự kiện','USTR: hạn ngạch, miễn trừ Mục 301']]
     });
+    }
     // Scannable view: tiles instead of a wide table (table stays under a fold).
     (()=>{const sc=document.querySelector('.cr-score');if(!sc)return;
       const wrap=sc.querySelector('.cr-score-wrap'),title=sc.querySelector('h3');

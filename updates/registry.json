@@ -1555,7 +1555,7 @@
     "type": "none"
    },
    "where": {
-    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html",
+    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html",
     "blocks": [
      "dau-khi-01",
      "dau-khi-03",
@@ -1571,7 +1571,10 @@
      "bds-40",
      "dm-01",
      "dm-03",
-     "dm-40"
+     "dm-40",
+     "cg-01",
+     "cg-03",
+     "cg-50"
     ]
    }
   },
@@ -2160,6 +2163,264 @@
     ]
    },
    "how": "Cập nhật số và nhận định trong dm-02 và catbox/riskbox; bảng tín hiệu tự tính từ Wi.",
+   "gates": [
+    "Số khớp chart",
+    "Không đụng ô analyst"
+   ]
+  },
+  {
+   "id": "port.wi.daily",
+   "tier": "B",
+   "title": "Wi: XNK, vận chuyển hàng hóa đường biển, hàng không, thủy nội địa; chỉ số giá bốc xếp, kho bãi, vận tải biển; định giá nhóm cảng",
+   "wiBlocks": [
+    "macro_transport",
+    "sector_ratio_recent"
+   ],
+   "wiContract": "data/port-wi-contract.json",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Hải quan, NSO đầu tháng; chỉ số giá dịch vụ theo quý; định giá theo phiên",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "file": "data/port-wi-data.js",
+    "blocks": [
+     "cg-07",
+     "cg-10",
+     "cg-13",
+     "cg-14",
+     "cg-17",
+     "cg-18"
+    ]
+   },
+   "how": "Gọi lại đúng các lời gọi WiMCP trong data/port-wi-contract.json (hook wi_capture.py lưu kết quả), rồi chạy python3 scripts/build_port_wi.py. Với sector_ratio_recent đặt to_time = hôm nay.",
+   "gates": [
+    "Không chép tay số"
+   ]
+  },
+  {
+   "id": "port.wi.weekly",
+   "tier": "B",
+   "title": "Wi: Baltic Dry Index",
+   "wiBlocks": [
+    "commodity_freight"
+   ],
+   "wiContract": "data/port-wi-contract.json",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Giá ngày; hiển thị cuối tháng",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "file": "data/port-wi-data.js",
+    "blocks": [
+     "cg-15"
+    ]
+   },
+   "how": "Gọi lại lời gọi commodity với to_time = hôm nay (giữ from_time), rồi chạy python3 scripts/build_port_wi.py.",
+   "gates": [
+    "Không chép tay số"
+   ]
+  },
+  {
+   "id": "port.freight",
+   "tier": "C",
+   "title": "Cước container Drewry WCI theo tuyến, SCFI; giá thuê tàu nếu có nguồn",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Drewry thứ Năm hằng tuần; SCFI thứ Sáu",
+   "source": {
+    "name": "Drewry WCI",
+    "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "blocks": [
+     "cg-04",
+     "cg-05"
+    ]
+   },
+   "how": "Thêm tuần mới vào mảng wk và wci trong assets/port-dashboard.js; cập nhật KPI WCI trong Cang-bien/index.html.",
+   "gates": [
+    "Link trang Drewry đã mở",
+    "Không nối tuần thiếu"
+   ]
+  },
+  {
+   "id": "port.throughput",
+   "tier": "C",
+   "title": "Hàng hóa, container qua cảng toàn quốc, Hải Phòng, Cái Mép; sản lượng doanh nghiệp; cung – cầu cụm cảng",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Cục Hàng hải và Đường thủy theo công bố, không cố định",
+   "source": {
+    "name": "Cục Hàng hải và Đường thủy",
+    "url": "https://vmrcc.gov.vn/"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "blocks": [
+     "cg-08",
+     "cg-09",
+     "cg-11",
+     "cg-12"
+    ]
+   },
+   "how": "Thêm kỳ mới có link vào bảng cg-12, chart chThroughput, chCaiMep trong assets/port-dashboard.js.",
+   "gates": [
+    "Ghi rõ phạm vi (tấn, TEU, tàu mẹ)",
+    "Link nguồn đã mở"
+   ]
+  },
+  {
+   "id": "port.policy",
+   "tier": "C",
+   "title": "Khung giá bốc xếp, phí hạ tầng cảng biển, quy hoạch cảng, chủ trương dự án",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     1,
+     1
+    ],
+    "at": "07:00"
+   },
+   "publication": "Theo văn bản",
+   "source": {
+    "name": "Cổng văn bản Chính phủ",
+    "url": "https://vanban.chinhphu.vn/"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "blocks": [
+     "cg-06",
+     "cg-20",
+     "cg-21"
+    ]
+   },
+   "how": "Kiểm văn bản mới; cập nhật bảng compare-table và chart chTariff.",
+   "gates": [
+    "Số hiệu + ngày hiệu lực",
+    "Link văn bản gốc"
+   ]
+  },
+  {
+   "id": "port.projects",
+   "tier": "C",
+   "title": "Dự án cảng mới: Lạch Huyện, Nam Đình Vũ, Gemalink, Cái Mép Hạ, Cần Giờ, Liên Chiểu, Long Thành",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Báo chí, IR doanh nghiệp",
+    "url": "https://www.gemadept.com.vn/"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "blocks": [
+     "cg-40",
+     "cg-41",
+     "cg-42",
+     "cg-16",
+     "cg-19"
+    ]
+   },
+   "how": "Cập nhật tiến độ, công suất trong bảng cg-42 và mảng cap trong assets/port-dashboard.js.",
+   "gates": [
+    "Mỗi dòng có link",
+    "Tách số đoạn trích"
+   ]
+  },
+  {
+   "id": "port.companies",
+   "tier": "C",
+   "status": "manual",
+   "title": "Doanh nghiệp cảng, kho bãi: kế hoạch, kết quả kinh doanh",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "BCTC quý; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "BCTC công bố",
+    "url": "https://www.hsx.vn/"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "blocks": [
+     "cg-30"
+    ]
+   },
+   "how": "Khi người dùng nhắn: cập nhật bảng cg-30.",
+   "gates": [
+    "Link BCTC hoặc bài dẫn"
+   ]
+  },
+  {
+   "id": "port.hot-topics",
+   "tier": "C",
+   "title": "Chủ đề nóng cảng: dư cung Hải Phòng, giá bốc xếp, Cần Giờ, Long Thành",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Báo ngành",
+    "url": "https://vmrcc.gov.vn/"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "blocks": [
+     "cg-t1",
+     "cg-t2",
+     "cg-t3",
+     "cg-t4"
+    ]
+   },
+   "how": "Thêm mốc mới có ngày và link; kiểm điều kiện kết thúc.",
+   "gates": [
+    "Mỗi dòng có ngày + link"
+   ]
+  },
+  {
+   "id": "port.ai.cycle",
+   "tier": "D",
+   "title": "Cảng: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
+   "schedule": {
+    "type": "data",
+    "sources": [],
+    "minDays": 7,
+    "material": [],
+    "note": "Viết lại khi XNK đổi chiều so cùng kỳ, có khung giá bốc xếp mới, hoặc bến mới khai thác"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "blocks": [
+     "cg-02"
+    ]
+   },
+   "how": "Cập nhật số và nhận định trong cg-02 và catbox/riskbox; thẻ tín hiệu tự tính từ Wi trong assets/port-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"

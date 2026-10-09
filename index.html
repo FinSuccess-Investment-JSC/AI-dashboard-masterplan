@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>FinSuccess Industry Dashboard Database</title>
 <link rel="stylesheet" href="assets/site-navigation.css?v=54a3825f55f4">
-<script src="assets/site-navigation.js?v=38f1100f7e0b" data-release="20261009-power-policy-r1"></script>
+<script src="assets/site-navigation.js?v=6f694bd0e7f7" data-release="20261009-port-r1"></script>
 <style>
 :root{--navy:#11255a;--navy2:#1d3678;--accent:#27af95;--accent2:#2fd0b2;--page:#f5f7fc;--card:#fff;--ink:#101318;--ink2:#3d4653;--muted:#6b7686;--line:#dfe6f7;--hair:#eaf0fb;--soft:#eef5f8;--red:#b8443a;--shadow:0 1px 2px rgba(17,37,90,.04),0 10px 28px rgba(17,37,90,.06)}
 *{box-sizing:border-box}
@@ -81,7 +81,7 @@ const industries=[
   {id:"thep",name:"Thép",status:"planned",headline:"Thép",desc:"Chưa dựng dashboard ngành.",watch:["HRC/rebar spread","Quặng sắt, than cốc","Sản lượng tiêu thụ nội địa/xuất khẩu","China supply và trade defense"]},
   {id:"dien",name:"Điện",status:"ready",folder:"Dien/",headline:"Dashboard ngành Điện Việt Nam",desc:"Sản lượng và cơ cấu nguồn điện hằng ngày, giá than/LNG, thủy văn và El Niño, giá điện, Quy hoạch điện VIII và 18 doanh nghiệp niêm yết.",metrics:[["7","tab phân tích"],["18","doanh nghiệp theo dõi"],["Hằng ngày","sản lượng hệ thống EVN"],["Public-source","ưu tiên nguồn"]],watch:["Sản lượng, Pmax và cơ cấu nguồn","Thủy văn, El Niño, giá than và LNG","Giá bán lẻ điện, tài chính EVN, giá thị trường","Quy hoạch điện VIII, DPPA, LNG và gió ngoài khơi"]},
   {id:"phan-bon",name:"Phân bón",status:"planned",headline:"Phân bón",desc:"Chưa dựng dashboard ngành.",watch:["Urea/NPK prices","Gas/coal feedstock cost","Xuất nhập khẩu","Vụ mùa và tồn kho"]},
-  {id:"logistics",name:"Cảng & logistics",status:"planned",headline:"Cảng & logistics",desc:"Chưa dựng dashboard ngành.",watch:["Sản lượng container","Cước vận tải biển","Công suất cảng mới","Trade flow theo tuyến"]},
+  {id:"cang-bien",name:"Cảng & kho bãi",status:"ready",folder:"Cang-bien/",headline:"Dashboard ngành Cảng & kho bãi Việt Nam",desc:"Sản lượng XNK và vận chuyển, giá bốc xếp và cước container, cạnh tranh cụm cảng, dự án cảng mới và 12 doanh nghiệp.",metrics:[["8","tab phân tích"],["12","doanh nghiệp theo dõi"],["Hằng ngày","XNK, vận chuyển, định giá (Wi)"],["Public-source","ưu tiên nguồn"]],watch:["Sản lượng container, XNK","Giá bốc xếp tàu mẹ","Công suất mới Hải Phòng, Cái Mép","Cước, giá thuê tàu"]},
   {id:"thuy-san",name:"Thủy sản",status:"planned",headline:"Thủy sản",desc:"Chưa dựng dashboard ngành.",watch:["Giá cá tra/tôm","Xuất khẩu theo thị trường","Feed cost","Thuế chống bán phá giá"]}
 ];
 const tabs=document.getElementById("industryTabs");
@@ -89,13 +89,14 @@ const panes=document.getElementById("industryPanes");
 const statusLabel={ready:"Đã có",planned:"Chưa dựng"};
 const statusClass={ready:"s-ready",planned:"s-empty"};
 function render(){
-  const routeFor={"dau-khi":"oil","duong":"sugar","ngan-hang":"bank","dien":"power","bds":"realestate","det-may":"textile"};
+  const routeFor={"dau-khi":"oil","duong":"sugar","ngan-hang":"bank","dien":"power","bds":"realestate","det-may":"textile","cang-bien":"port"};
   const descriptions={
     "dau-khi":["Hormuz theo ngày & bình quân 7 ngày","Brent futures, đường cong WTI và crack","Cung – cầu Thế giới / Việt Nam"],
     "duong":["Sugar No.11 futures và World Bank tháng","USDA: bốn trung tâm cung đường lớn","Cung – cầu Thế giới / Việt Nam"],
     "ngan-hang":["20 nhóm dữ liệu Wi đã tích hợp","Huy động, tín dụng, NIM và chất lượng tài sản","So sánh ngân hàng, Catalyst / Risk"],
     "dien":["Sản lượng, Pmax và cơ cấu nguồn hằng ngày (EVN)","Thủy văn & El Niño, giá than và LNG","Giá điện, Quy hoạch điện VIII, 18 doanh nghiệp"],
     "det-may":["Xuất khẩu dệt may theo tháng và thị trường (Wi)","Thuế Mỹ, xuất xứ, nhập khẩu may mặc Mỹ","Giá bông – xơ – sợi, nhãn hàng, 7 doanh nghiệp"],
+    "cang-bien":["XNK, vận chuyển biển, hàng không theo tháng (Wi)","Giá bốc xếp, cước WCI, cạnh tranh Cái Mép","Dự án cảng mới, 12 doanh nghiệp"],
     "bds":["Trái phiếu BĐS: phát hành, chậm trả, lịch đáo hạn (HNX · Wi)","FDI, tín dụng, giá nhà, lấp đầy KCN","Bảng giá đất, pháp lý dự án, 20 doanh nghiệp"]
   };
   document.getElementById('readyDashboards').innerHTML=industries.filter(x=>x.status==='ready').map(x=>`<article class="card industry-card" data-industry="${x.id}"><span class="status s-ready">Dashboard đã cập nhật</span><h2>${x.name}</h2><p class="sub">${x.headline}</p><ul>${descriptions[x.id].map(t=>`<li>${t}</li>`).join('')}</ul><p class="sub">Nguồn, ngày dữ liệu và hạn chế được ghi tại từng biểu đồ.</p><div class="actions"><a class="btn primary" data-site-route="${routeFor[x.id]}" href="${DashboardSite.href(routeFor[x.id])}">Mở dashboard ${x.name} →</a></div></article>`).join('');

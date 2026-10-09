@@ -5,9 +5,9 @@ const root=path.resolve(__dirname,'..');fs.mkdirSync('/private/tmp/dashboard-red
 const server=http.createServer((req,res)=>{let name=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(name.endsWith('/'))name+='index.html';const file=path.resolve(root,'.'+name);if(!file.startsWith(root+path.sep)||!fs.existsSync(file)){res.writeHead(404).end();return}res.setHeader('Content-Type',({'.js':'application/javascript','.css':'text/css','.html':'text/html'})[path.extname(file)]||'application/octet-stream');res.end(fs.readFileSync(file))});
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const base='http://127.0.0.1:'+server.address().port+'/';
 const b=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});const p=await b.newPage({viewport:{width:1440,height:1000}});const errors=[];p.on('pageerror',e=>errors.push(e.message));
-try { for(const sector of ['Dau-khi','Sugar','Bank','Dien','Bat-dong-san','Det-may']){
+try { for(const sector of ['Dau-khi','Sugar','Bank','Dien','Bat-dong-san','Det-may','Cang-bien']){
  await p.goto(base+sector+'/');await p.waitForSelector('body[data-editorial-ready="true"]');
- const tabCount=sector==='Bank'?7:sector==='Bat-dong-san'?8:6;assert.equal(await p.locator('.majortabbtn').count(),tabCount);
+ const tabCount=sector==='Bank'||sector==='Cang-bien'?7:sector==='Bat-dong-san'?8:6;assert.equal(await p.locator('.majortabbtn').count(),tabCount);
  assert.deepEqual(await p.evaluate(()=>{const ids=[...document.querySelectorAll('[id]')].map(n=>n.id);return ids.filter((id,i)=>ids.indexOf(id)!==i)}),[],sector+' duplicate ids');
  if(sector==='Bank'){
   assert.equal(await p.locator('#pane-mt9').count(),1);
@@ -26,7 +26,7 @@ try { for(const sector of ['Dau-khi','Sugar','Bank','Dien','Bat-dong-san','Det-m
  await p.locator('.majortabbtn').first().click();
  await p.waitForSelector('body[data-sources-ready="true"]');
  assert.ok(await p.evaluate(()=>Boolean(document.querySelector('.business-models').compareDocumentPosition(document.querySelector('.financial-comparison'))&Node.DOCUMENT_POSITION_FOLLOWING)));
- const symbol=sector==='Dau-khi'?'GAS':sector==='Sugar'?'SBT':sector==='Dien'?'POW':sector==='Bat-dong-san'?'VHM':sector==='Det-may'?'TNG':'VCB';
+ const symbol=sector==='Dau-khi'?'GAS':sector==='Sugar'?'SBT':sector==='Dien'?'POW':sector==='Bat-dong-san'?'VHM':sector==='Det-may'?'TNG':sector==='Cang-bien'?'GMD':'VCB';
  const compTab=p.locator('#pane-mt1 button',{hasText:'So sánh tài chính'});if(await compTab.count())await compTab.first().click();
  await p.locator('#comparison-search').fill(symbol);assert.equal(await p.locator('.comparison-table tbody tr').count(),1);
  for(const period of ['year','quarter']){await p.locator('#comparison-period').selectOption(period);assert.equal(await p.locator('.comparison-table [data-metric="roe"]').getAttribute('data-value'),await p.evaluate(({symbol,period})=>String(window.COMPANY_COMPARISON.companies.find(r=>r.symbol===symbol)[period].values.roe),{symbol,period}));}
@@ -50,7 +50,7 @@ try { for(const sector of ['Dau-khi','Sugar','Bank','Dien','Bat-dong-san','Det-m
  }
  }
  await p.locator('.majortabbtn').nth(1).click();
- if(['Bat-dong-san','Det-may'].includes(sector)){ // no fast-price chart: check the two supply panes only
+ if(['Bat-dong-san','Det-may','Cang-bien'].includes(sector)){ // no fast-price chart: check the two supply panes only
   await p.locator('#supply-tab-0').focus();await p.keyboard.press('ArrowRight');assert.equal(await p.locator('#supply-vietnam').isVisible(),true);
  }else if(sector!=='Bank'){
   await p.locator('#supply-tab-0').click();if(sector==='Dau-khi')await p.locator('#world-sub-0').click();await p.locator('#price-frequency').selectOption('week');const n=await p.locator('#chFastPrice svg').count();assert.equal(n,1);
@@ -60,8 +60,8 @@ try { for(const sector of ['Dau-khi','Sugar','Bank','Dien','Bat-dong-san','Det-m
   await p.locator('#supply-tab-0').focus();await p.keyboard.press('ArrowRight');assert.equal(await p.locator('#supply-vietnam').isVisible(),true);
  }
  await p.locator('.majortabbtn[data-tab="mt4"]').click();const policy=p.locator('.majorpane[data-tab="mt4"] details.research-fold').first();if(await policy.getAttribute('data-sub-opened')!==null&&await policy.getAttribute('open')!==null)await policy.locator(':scope > summary').click(); /* a sub-tab holding one fold opens it by design */assert.equal(await policy.getAttribute('open'),null);await policy.locator(':scope > summary').click();assert.notEqual(await policy.getAttribute('open'),null);await p.keyboard.press('Escape');assert.equal(await policy.getAttribute('open'),null);
- await p.locator('.majortabbtn[data-tab="mt5"]').click();const sig=sector==='Det-may'?p.locator('.tx-tile').first():p.locator('.cr-score-table tbody tr:not(.cr-group)').first();assert.equal(await (sector==='Det-may'?sig.locator('.tx-big strong'):sig.locator('.cr-num').first()).isVisible(),true,sector+' signal metric visible without opening a fold');assert.equal(await p.locator('#thesis-evidence, #thesis-archive').evaluateAll(ns=>ns.map(n=>n.open)).then(a=>a.some(Boolean)&&sector!=='Bank'),false,sector+' original detail folds closed unless they carry warnings');
- await p.locator('.majortabbtn[data-tab="mt5"]').click();const ev=p.locator(sector==='Det-may'?'.tx-tile .tx-link':'.cr-score-table tbody a').first();if(await ev.count())await ev.click();
+ await p.locator('.majortabbtn[data-tab="mt5"]').click();const sig=['Det-may','Cang-bien'].includes(sector)?p.locator('.tx-tile').first():p.locator('.cr-score-table tbody tr:not(.cr-group)').first();assert.equal(await (['Det-may','Cang-bien'].includes(sector)?sig.locator('.tx-big strong'):sig.locator('.cr-num').first()).isVisible(),true,sector+' signal metric visible without opening a fold');assert.equal(await p.locator('#thesis-evidence, #thesis-archive').evaluateAll(ns=>ns.map(n=>n.open)).then(a=>a.some(Boolean)&&sector!=='Bank'),false,sector+' original detail folds closed unless they carry warnings');
+ await p.locator('.majortabbtn[data-tab="mt5"]').click();const ev=p.locator(['Det-may','Cang-bien'].includes(sector)?'.tx-tile .tx-link':'.cr-score-table tbody a').first();if(await ev.count())await ev.click();
  if(sector==='Dau-khi'){assert.equal(await p.locator('#chHormuzM').isVisible(),true);assert.ok(await p.locator('#chHormuzM').evaluate(n=>n.closest('.research-topic > details.research-fold')?.open),'Hormuz chart lives inside its topic fold');assert.equal(await p.locator('#pane-mt7 h3').filter({hasText:'Nguồn dữ liệu và khả năng tự động cập nhật'}).count(),0,'source table left hot topics');assert.equal(await p.locator('#pane-mt8 h3').filter({hasText:'Nguồn dữ liệu và khả năng tự động cập nhật'}).count(),1,'source table registered in Sources');}
  assert.equal(await p.locator('.thesis-view-tabs').count(),0,sector+' catalyst sub-tabs removed');assert.ok(await p.locator('.thesis-board .key-number, .majorpane[data-tab="mt4"] .key-number').count()>0,sector+' key numbers emphasised');
  await p.locator('.majortabbtn[data-tab="mt7"]').click();const create=p.locator('summary').filter({hasText:'Thêm chủ đề theo dõi'});await create.click();await p.locator('#topic-new-title').fill('QA topic');await p.locator('#topic-new-description').fill('Test hypothesis and end condition');await p.locator('#topic-new-author').fill('QA');await p.locator('#topic-new-source').fill('https://example.com/');await p.getByRole('button',{name:'Thêm chủ đề',exact:true}).click();await p.waitForSelector('.research-topic:has-text("QA topic")',{state:'attached'});await p.reload();await p.waitForSelector('body[data-editorial-ready="true"]');await p.locator('.majortabbtn[data-tab="mt7"]').click();assert.equal(await p.locator('.research-topic:has-text("QA topic")').count(),1);const qaTab=async()=>{const t=p.locator('#pane-mt7 button',{hasText:'QA topic'});if(await t.count()&&await t.first().isVisible())await t.first().click()};await qaTab();

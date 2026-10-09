@@ -20,6 +20,7 @@ UNIVERSE={
                ('KBC','hose','Khu công nghiệp'),('IDC','hnx','Khu công nghiệp'),('BCM','hose','Khu công nghiệp'),('SZC','hose','Khu công nghiệp'),('SIP','hose','Khu công nghiệp'),('VGC','hose','Khu công nghiệp'),('LHG','hose','Khu công nghiệp'),
                ('VRE','hose','Cho thuê bán lẻ'),('DXS','hose','Môi giới')],
  'textile':[('TCM','hose','May'),('TNG','hnx','May'),('MSH','hose','May'),('GIL','hose','May'),('STK','hose','Sợi'),('ADS','hose','Sợi'),('VGT','upcom','Tập đoàn')],
+ 'port':[('GMD','hose','Cảng'),('PHP','hnx','Cảng'),('SGP','upcom','Cảng'),('VSC','hose','Cảng'),('CDN','hnx','Cảng'),('DVP','hose','Cảng'),('PDN','hose','Cảng'),('HAH','hose','Vận tải biển'),('SCS','hose','Hàng không'),('SGN','hose','Hàng không'),('TCL','hose','Kho bãi & logistics'),('STG','hose','Kho bãi & logistics')],
  'bank':[(s,'hose',g) for s,g in [('VCB','Quốc doanh'),('CTG','Quốc doanh'),('BID','Quốc doanh'),('TCB','Tư nhân'),('VPB','Tư nhân'),('MBB','Tư nhân'),('ACB','Tư nhân'),('HDB','Tư nhân'),('TPB','Tư nhân'),('VIB','Tư nhân'),('SHB','Tư nhân')]]}
 PAGES={'income_year':'financials/income-statement/','balance_year':'financials/balance-sheet/','income_quarter':'financials/income-statement/?p=quarterly','balance_quarter':'financials/balance-sheet/?p=quarterly','valuation':'financials/ratios/?p=quarterly'}
 

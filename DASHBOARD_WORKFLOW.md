@@ -262,3 +262,11 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - Card Policy so trần khung giá phát điện đúng công nghệ, vùng và năm quyết định; không diễn giải trần là giá PPA đã ký. Điện khí thiên nhiên và LNG có quyết định riêng, không thay thế lẫn nhau. Checklist dự án LNG phải tách điều kiện pháp lý (như Qc theo NĐ 100/2025) khỏi điều khoản cần đàm phán trong PPA.
 - Pipeline chọn lọc theo tên dự án, MW, năm COD kế hoạch và nguồn chủ đầu tư. Không cộng dự án mẫu thành toàn bộ QĐ 768; khi chủ đầu tư cập nhật tiến độ thì ưu tiên mốc mới và giữ mốc cũ trong chi tiết nếu cần đối chiếu.
 - KQKD nhóm từ Wi chỉ tính khi có dữ liệu đúng kỳ và quy tắc loại trừ công ty con trùng hợp nhất. Bảng tài chính từng mã không mặc nhiên cộng thành toàn ngành.
+
+## 18. Dashboard Cảng & kho bãi (09/10/2026)
+
+- **Phạm vi người dùng chốt:** 12 mã (GMD, PHP, SGP, VSC, CDN, DVP, PDN · HAH · SCS, SGN · TCL, STG); sub-tab Bức tranh ngành **Cảng / Vận tải biển / Kho bãi**; tab riêng **Dự án cảng mới** (`mt10`); giá cước và giá bốc xếp đặt ở **Tổng quan** (sub-tab "Giá cước & bốc xếp", `.port-prices`), không tách tab.
+- **Trang:** `Cang-bien/index.html` (`<body data-sector="port">`), renderer `assets/port-dashboard.js` (chart, sub-tab, `window.PORT_BRIEF` cho thẻ Catalyst). Mã card `cg-*`, có lịch trong `updates/registry.json` (`port.*`).
+- **Wi (nhóm B):** `data/port-wi-contract.json` → `scripts/build_port_wi.py` → `data/port-wi-data.js`: vận chuyển đường biển, ngoài nước, hàng không, thủy nội địa (NSO), XNK (Hải quan), chỉ số giá bốc xếp/kho bãi/vận tải biển (quý), BDI, định giá GICS 309/186/185/183/182. Wi không có chỉ số cước container; mazut 180cst trả 404.
+- **Tài liệu (nhóm C):** Drewry WCI theo tuyến và theo tuần, khung giá bốc xếp (TT 39/2023 → sửa QĐ 810 từ 01/02/2026), sản lượng cụm cảng, dự án mới. Số chỉ thấy ở đoạn trích tìm kiếm được ghi rõ trong ⓘ Lưu ý dữ liệu.
+- **Hạn chế còn ghi trên trang:** chưa có chuỗi sản lượng cảng năm 2015–2024, thị phần từng bến Hải Phòng, giá thuê tàu (Harpex/ConTex), phí hạ tầng cảng biển; STG chưa có số 2026.

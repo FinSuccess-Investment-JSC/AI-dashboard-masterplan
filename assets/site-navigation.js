@@ -12,9 +12,10 @@
     power: {path: 'Dien/', label: 'Điện'},
     realestate: {path: 'Bat-dong-san/', label: 'Bất động sản'},
     textile: {path: 'Det-may/', label: 'Dệt may'},
+    port: {path: 'Cang-bien/', label: 'Cảng & kho bãi'},
     plan: {path: 'Masterplan/', label: 'Master plan'}
   };
-  const aliases = {'dau-khi':'oil', 'duong':'sugar', 'sugar':'sugar', 'ngan-hang':'bank', 'bank':'bank', 'dien':'power', 'power':'power', 'bat-dong-san':'realestate', 'bds':'realestate', 'realestate':'realestate', 'det-may':'textile', 'textile':'textile'};
+  const aliases = {'dau-khi':'oil', 'duong':'sugar', 'sugar':'sugar', 'ngan-hang':'bank', 'bank':'bank', 'dien':'power', 'power':'power', 'bat-dong-san':'realestate', 'bds':'realestate', 'realestate':'realestate', 'det-may':'textile', 'textile':'textile', 'cang-bien':'port', 'cang':'port', 'port':'port'};
   function href(key) {
     if (!routes[key]) throw new Error('Unknown dashboard route: '+key);
     const url = new URL(routes[key].path, root);
@@ -39,7 +40,7 @@
       nav.classList.add('site-navigation');
       nav.setAttribute('aria-label','Điều hướng dashboard ngành');
       nav.replaceChildren();
-      for (const key of ['home','oil','sugar','bank','power','realestate','textile']) {
+      for (const key of ['home','oil','sugar','bank','power','realestate','textile','port']) {
         const link = document.createElement('a');
         link.href = href(key);
         link.dataset.siteRoute = key;
