@@ -115,21 +115,126 @@
   "textile.policy": {},
   "textile.hot-topics": {},
   "textile.ai.cycle": {},
-  "agri.enso": {},
-  "port.wi.daily": {},
-  "port.wi.weekly": {},
-  "port.freight": {},
-  "port.throughput": {},
-  "port.policy": {},
-  "port.projects": {},
-  "port.hot-topics": {},
-  "port.ai.cycle": {},
-  "agri.wi.daily": {},
-  "agri.wi.weekly": {},
-  "agri.policy": {},
-  "agri.weather": {},
-  "agri.hot-topics": {},
-  "agri.ai.cycle": {}
+  "agri.enso": {
+   "lastAttempt": "2026-10-09T23:21:13+07:00",
+   "lastSuccess": "2026-10-09T23:21:13+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "port.wi.weekly": {
+   "lastAttempt": "2026-10-09T23:21:12+07:00",
+   "lastSuccess": "2026-10-09T23:21:12+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "port.freight": {
+   "lastAttempt": "2026-10-09T23:21:13+07:00",
+   "lastSuccess": "2026-10-09T23:21:13+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "port.throughput": {
+   "lastAttempt": "2026-10-09T23:21:13+07:00",
+   "lastSuccess": "2026-10-09T23:21:13+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "port.policy": {
+   "lastAttempt": "2026-10-09T23:21:13+07:00",
+   "lastSuccess": "2026-10-09T23:21:13+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "port.projects": {
+   "lastAttempt": "2026-10-09T23:21:13+07:00",
+   "lastSuccess": "2026-10-09T23:21:13+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "port.hot-topics": {
+   "lastAttempt": "2026-10-09T23:21:13+07:00",
+   "lastSuccess": "2026-10-09T23:21:13+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "port.ai.cycle": {
+   "lastAttempt": "2026-10-09T23:21:13+07:00",
+   "lastSuccess": "2026-10-09T23:21:13+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "agri.wi.weekly": {
+   "lastAttempt": "2026-10-09T23:21:13+07:00",
+   "lastSuccess": "2026-10-09T23:21:13+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "agri.policy": {
+   "lastAttempt": "2026-10-09T23:21:14+07:00",
+   "lastSuccess": "2026-10-09T23:21:14+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "agri.weather": {
+   "lastAttempt": "2026-10-09T23:21:14+07:00",
+   "lastSuccess": "2026-10-09T23:21:14+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "agri.hot-topics": {
+   "lastAttempt": "2026-10-09T23:21:14+07:00",
+   "lastSuccess": "2026-10-09T23:21:14+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "agri.ai.cycle": {
+   "lastAttempt": "2026-10-09T23:21:14+07:00",
+   "lastSuccess": "2026-10-09T23:21:14+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "port.wi.monthly": {
+   "lastAttempt": "2026-10-09T23:21:12+07:00",
+   "lastSuccess": "2026-10-09T23:21:12+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "agri.wi.monthly": {
+   "lastAttempt": "2026-10-09T23:21:13+07:00",
+   "lastSuccess": "2026-10-09T23:21:13+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "seafood.wi.monthly": {
+   "lastAttempt": "2026-10-09T23:21:14+07:00",
+   "lastSuccess": "2026-10-09T23:21:14+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "seafood.wi.weekly": {
+   "lastAttempt": "2026-10-09T23:21:14+07:00",
+   "lastSuccess": "2026-10-09T23:21:14+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "seafood.duties": {
+   "lastAttempt": "2026-10-09T23:21:14+07:00",
+   "lastSuccess": "2026-10-09T23:21:14+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "seafood.trade": {
+   "lastAttempt": "2026-10-09T23:21:14+07:00",
+   "lastSuccess": "2026-10-09T23:21:14+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "seafood.hot-topics": {
+   "lastAttempt": "2026-10-09T23:21:14+07:00",
+   "lastSuccess": "2026-10-09T23:21:14+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "seafood.ai.cycle": {
+   "lastAttempt": "2026-10-09T23:21:15+07:00",
+   "lastSuccess": "2026-10-09T23:21:15+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "port.wi.valuation": {
+   "lastAttempt": "2026-10-09T23:21:15+07:00",
+   "lastSuccess": "2026-10-09T23:21:15+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "agri.wi.valuation": {
+   "lastAttempt": "2026-10-09T23:21:15+07:00",
+   "lastSuccess": "2026-10-09T23:21:15+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "seafood.wi.valuation": {
+   "lastAttempt": "2026-10-09T23:21:15+07:00",
+   "lastSuccess": "2026-10-09T23:21:15+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  }
  },
  "watchers": {
   "nso.rss": {
@@ -1725,147 +1830,7 @@
     "lần đầu: rà soát số đang hiển thị"
    ],
    "signals": []
-  },
-  {
-   "id": "port.wi.daily",
-   "tier": "B",
-   "title": "Wi: XNK, vận chuyển hàng hóa đường biển, hàng không, thủy nội địa; chỉ số giá bốc xếp, kho bãi, vận tải biển; định giá nhóm cảng",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.wi.weekly",
-   "tier": "B",
-   "title": "Wi: Baltic Dry Index",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.freight",
-   "tier": "C",
-   "title": "Cước container Drewry WCI theo tuyến, SCFI; giá thuê tàu nếu có nguồn",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.throughput",
-   "tier": "C",
-   "title": "Hàng hóa, container qua cảng toàn quốc, Hải Phòng, Cái Mép; sản lượng doanh nghiệp; cung – cầu cụm cảng",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.policy",
-   "tier": "C",
-   "title": "Khung giá bốc xếp, phí hạ tầng cảng biển, quy hoạch cảng, chủ trương dự án",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.projects",
-   "tier": "C",
-   "title": "Dự án cảng mới: Lạch Huyện, Nam Đình Vũ, Gemalink, Cái Mép Hạ, Cần Giờ, Liên Chiểu, Long Thành",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng cảng: dư cung Hải Phòng, giá bốc xếp, Cần Giờ, Long Thành",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.ai.cycle",
-   "tier": "D",
-   "title": "Cảng: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "agri.wi.daily",
-   "tier": "B",
-   "title": "Wi: XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa; giá XK; bán lẻ, CPI, IIP, sản lượng bia, sữa, thức ăn; định giá phân ngành",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "agri.wi.weekly",
-   "tier": "B",
-   "title": "Wi: heo hơi, gạo nội địa, Robusta, TSR20, ngô, khô đậu CBOT",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "agri.policy",
-   "tier": "C",
-   "title": "Gạo (Philippines, Indonesia, Ấn Độ), EUDR, thuế Mỹ cà phê, thuế MFN thức ăn, TTĐB, GTGT, ASF",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "agri.weather",
-   "tier": "C",
-   "title": "Bản tin ENSO NOAA, dự báo mặn, USDA cà phê/gạo, lịch mùa vụ",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "agri.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: El Niño, chu kỳ heo, cao su & đất KCN, thuế TTĐB",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "agri.ai.cycle",
-   "tier": "D",
-   "title": "Nông nghiệp: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
-   "since": "2026-10-09T22:34:44+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
   }
  ],
- "updatedAt": "2026-10-09T22:34:44+07:00"
+ "updatedAt": "2026-10-09T23:21:15+07:00"
 }

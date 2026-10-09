@@ -293,3 +293,8 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Wi (nhóm B):** `data/seafood-wi-contract.json` → `scripts/build_seafood_wi.py`: XK thủy sản tổng (83499) và theo Mỹ 87957, Trung Quốc 87997, Nhật 88726, Hàn 88042 (bảng 87); giá cá tra 74384, cá giống 264825, tôm thẻ 50 con 74379; khô đậu, ngô CBOT; định giá GICS 238, 235. Không vẽ 82082 (bước nhảy đơn vị) và tôm không phân cỡ 264644/264638 (đứng yên nhiều tháng).
 - **Bằng chứng:** dashboard đầu tiên dựng theo §20 từ đầu — mọi số tài liệu có trong `data/seafood/evidence.json` (CBPG, CVD từ văn bản Federal Register).
 - **Sửa engine chart (Cảng, Nông nghiệp, Thủy sản):** `floatRange` không chặn trục dưới ở 0 khi chuỗi có giá trị âm (chart % so cùng kỳ). Các dashboard cũ (Dầu khí, Đường, Điện, BĐS, Dệt may) vẫn dùng bản chặn ở 0; chart đường % âm ở đó có thể bị cắt — chưa sửa.
+
+## 22. Đóng mục "rà soát lần đầu" khi push dashboard mới (09/10/2026)
+
+- Mục registry mới luôn vào hàng chờ với lý do "lần đầu: rà soát số đang hiển thị". Với dashboard vừa dựng (số Wi mới, số tài liệu có evidence.json) việc rà này là thừa: ngay khi push, chạy `python3 scripts/update_scheduler.py --done <id> --note "Đã dựng và kiểm chứng ngày …"` cho từng mục của ngành đó. Đổi tên mục thì gỡ mã cũ khỏi `updates/state.json`.
+- 09/10/2026 đã đóng 24 mục Cảng, Nông nghiệp, Thủy sản; hàng chờ còn 35 mục của các dashboard cũ (rà soát lần đầu có ích vì chưa có evidence), routine thứ Hai xử lý 8 mục/lượt.
