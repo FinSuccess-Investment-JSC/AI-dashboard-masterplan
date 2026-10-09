@@ -9,7 +9,8 @@
   "oil.jodi": {},
   "oil.singapore-cracks": {},
   "oil.retail-fuel": {
-   "brokenSince": "2026-10-08"
+   "brokenSince": "2026-10-08",
+   "alertedOn": "2026-10-09"
   },
   "sugar.futures": {},
   "sugar.worldbank": {},
@@ -1711,5 +1712,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-10-09T08:16:20+07:00"
+ "updatedAt": "2026-10-09T13:36:14+07:00"
 }
