@@ -1,5 +1,5 @@
 {
-  "version": "20261009-evidence-r1",
+  "version": "20261009-evidence-r2",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -12,15 +12,15 @@
     "agri": "Nong-nghiep/"
   },
   "files": {
-    "404.html": "a07f328c289ba038486b6b129b093c1b8f3e08fc92e0ee61ba246da1947edcd3",
-    "Bank/index.html": "42ecebd7be008699005c9c65f093d326e1dd91581f07a53652c59a54c567f964",
-    "Bat-dong-san/index.html": "487429fac433afdac5cf08918bc334623e9db293a7118ec2f4189f8f2eea72ac",
-    "Cang-bien/index.html": "648169f7b8f579a38899d018d5c099b8095f3ba5e87d3c220c390ed83983da65",
-    "Dau-khi/index.html": "b7c4da26ede923fc111e00c9923b60bffec36d6f1618a710df045bfc5acbc3a2",
-    "Det-may/index.html": "311bbe97559b8b0fdb8dea8d6cda85c04dd5256cc081c460550b3066f4e3f10c",
-    "Dien/index.html": "b3ed25f939a3e1126c47c7ed65bf072690c6e6e6c4cec2603038cbaab064aed2",
-    "Nong-nghiep/index.html": "8ac70b275bcfd2d4f1a445988aa41ee4fd7347f7d8baf424887a38e13e5de8c7",
-    "Sugar/index.html": "e852cceedd89ddc698502c74c64e0bda589a1003fe01b5e9aa54d9772207dd2f",
+    "404.html": "a8e2d17633895dce0c0cf704834fe711fb908a296a47a2a2d6fca46a07e6ff5c",
+    "Bank/index.html": "f50d84629142c1cafc3ff494bb3690e230330bd0514c346f0815a26db0aecb82",
+    "Bat-dong-san/index.html": "ed3c39e7fa4d8f589010ea71129a5156800dbcd96afa9a0e303d0091302cfb77",
+    "Cang-bien/index.html": "869c85b5006b93a261a057b6e5d954cbcb7ada6258da5dd30175c2e673e13d99",
+    "Dau-khi/index.html": "2b36b1e78d4b201dffe0bd46801c8740a00145e50475b4a19c59ba359fefa9e1",
+    "Det-may/index.html": "b7a5726d3a7e5462c207429d4140c000c91aec03e8a4b4550f7891ef27fb84d8",
+    "Dien/index.html": "2f99b7d9ae137ba8ca4cd6928b06ced43ba544f3342036301a8d231740be2039",
+    "Nong-nghiep/index.html": "3f979a3dffe0b0a1f93e83891f3b05443f7b0894e4ecca4c6b1be0c99c5f1773",
+    "Sugar/index.html": "3f9a4096c1030b42d7598338e39a8c2ff524ece4ddc067b08d90498af905fcfa",
     "assets/agri-dashboard.js": "6bf179aadc362be70ba3b9983e3113f7ca90f8b9e692bac0b0fdfee20104b6a4",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
@@ -63,8 +63,8 @@
     "data/realestate-market-history.js": "1cac369b93be93e03a7790cdf9f1e721a9d6b7b1689e8e1845408b48d872d94e",
     "data/realestate-wi-data.js": "5ee10419829794c08e7fccdd87ce205814ad66c33ea1a0bf2cd9a0221dbf34d0",
     "data/textile-wi-data.js": "4f1fc3b211fd842d69303a52c038caa639016145dbea30fa4c4fc0c865746839",
-    "duong/index.html": "395c88306b06214f5743ed1443a3e6f636e5cdc04f5c8f07a40faefc9acddc9d",
-    "index.html": "e9fcbe48d8bc4a8f49a8b437aa2f5d6efa0f512eef8b9b7805b7ce204e014c12"
+    "duong/index.html": "9fc34a6ca809197224c2ec75eca7fac72ed30d9be2bde9195dfba7ba0b4de94e",
+    "index.html": "1f9d7d190edaeec2cdad12823840946f721a83d6228de9773a07de4a156cdbca"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }
