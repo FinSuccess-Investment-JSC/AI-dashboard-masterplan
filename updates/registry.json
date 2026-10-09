@@ -1555,7 +1555,7 @@
     "type": "none"
    },
    "where": {
-    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html",
+    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html",
     "blocks": [
      "dau-khi-01",
      "dau-khi-03",
@@ -1577,7 +1577,10 @@
      "cg-50",
      "nn-01",
      "nn-04",
-     "nn-90"
+     "nn-90",
+     "ts-01",
+     "ts-04",
+     "ts-90"
     ]
    }
   },
@@ -2655,6 +2658,201 @@
     ]
    },
    "how": "Cập nhật số và nhận định trong nn-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/agri-dashboard.js.",
+   "gates": [
+    "Số khớp chart",
+    "Không đụng ô analyst"
+   ]
+  },
+  {
+   "id": "seafood.wi.daily",
+   "tier": "B",
+   "title": "Wi: XK thủy sản tổng và theo Mỹ, Trung Quốc, Nhật, Hàn; định giá ngành thủy sản",
+   "wiBlocks": [
+    "macro_seafood",
+    "sector_ratio_recent"
+   ],
+   "wiContract": "data/seafood-wi-contract.json",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Hải quan đầu tháng (theo nước trễ thêm ~1 tháng); định giá theo phiên",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "file": "data/seafood-wi-data.js",
+    "blocks": [
+     "ts-03",
+     "ts-10",
+     "ts-14"
+    ]
+   },
+   "how": "Gọi lại đúng các lời gọi WiMCP trong data/seafood-wi-contract.json, rồi chạy python3 scripts/build_seafood_wi.py. Với sector_ratio_recent đặt to_time = hôm nay.",
+   "gates": [
+    "Không chép tay số"
+   ]
+  },
+  {
+   "id": "seafood.wi.weekly",
+   "tier": "B",
+   "title": "Wi: giá cá tra nguyên liệu, cá giống, tôm thẻ 50 con; khô đậu, ngô CBOT",
+   "wiBlocks": [
+    "commodity_seafood"
+   ],
+   "wiContract": "data/seafood-wi-contract.json",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Giá ngày; hiển thị cuối tháng",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "file": "data/seafood-wi-data.js",
+    "blocks": [
+     "ts-11",
+     "ts-13",
+     "ts-20"
+    ]
+   },
+   "how": "Gọi lại lời gọi commodity với to_time = hôm nay, rồi chạy python3 scripts/build_seafood_wi.py.",
+   "gates": [
+    "Không chép tay số"
+   ]
+  },
+  {
+   "id": "seafood.duties",
+   "tier": "C",
+   "title": "CBPG cá tra, tôm (POR), CVD tôm, Mục 301; so sánh Ấn Độ, Ecuador",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Federal Register theo kết luận sơ bộ/cuối từng kỳ",
+   "source": {
+    "name": "Federal Register",
+    "url": "https://www.federalregister.gov/"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "blocks": [
+     "ts-40",
+     "ts-41",
+     "ts-42"
+    ]
+   },
+   "how": "Tìm kết luận mới (A-552-801 cá tra, A-552-802 tôm) trên Federal Register; cập nhật mảng pd/items trong assets/seafood-dashboard.js và bảng ts-42; thêm dòng evidence.",
+   "gates": [
+    "Mở văn bản Federal Register",
+    "Ghi rõ sơ bộ/cuối cùng, POR"
+   ]
+  },
+  {
+   "id": "seafood.trade",
+   "tier": "C",
+   "title": "VASEP: XK cá tra, tôm theo thị trường; IUU; MMPA",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "VASEP hằng tháng; IUU, MMPA theo sự kiện",
+   "source": {
+    "name": "VASEP",
+    "url": "https://vasep.com.vn/"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "blocks": [
+     "ts-12",
+     "ts-21",
+     "ts-50"
+    ]
+   },
+   "how": "Cập nhật số VASEP mới nhất (đã mở trang) vào chart chVasep, chMkt2 và bảng ts-50; thêm dòng evidence.",
+   "gates": [
+    "Mở trang gốc"
+   ]
+  },
+  {
+   "id": "seafood.companies",
+   "tier": "C",
+   "status": "manual",
+   "title": "Doanh nghiệp thủy sản: kế hoạch, kết quả",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "BCTC quý; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "BCTC công bố",
+    "url": "https://www.hsx.vn/"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "blocks": [
+     "ts-60"
+    ]
+   },
+   "how": "Khi người dùng nhắn: cập nhật bảng ts-60 và evidence.",
+   "gates": [
+    "Link BCTC hoặc bài dẫn"
+   ]
+  },
+  {
+   "id": "seafood.hot-topics",
+   "tier": "C",
+   "title": "Chủ đề nóng: Trung Quốc thay Mỹ, thuế Mỹ, thức ăn, MMPA/IUU",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "VASEP",
+    "url": "https://vasep.com.vn/"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "blocks": [
+     "ts-t1",
+     "ts-t2",
+     "ts-t3",
+     "ts-t4"
+    ]
+   },
+   "how": "Thêm mốc mới có ngày và link.",
+   "gates": [
+    "Mỗi dòng có ngày + link"
+   ]
+  },
+  {
+   "id": "seafood.ai.cycle",
+   "tier": "D",
+   "title": "Thủy sản: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
+   "schedule": {
+    "type": "data",
+    "sources": [],
+    "minDays": 7,
+    "material": [],
+    "note": "Viết lại khi có kết luận CBPG mới, XK sang Mỹ/TQ đổi chiều, hoặc giá cá, tôm, khô đậu đổi ≥10%"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "blocks": [
+     "ts-02"
+    ]
+   },
+   "how": "Cập nhật ts-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/seafood-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"

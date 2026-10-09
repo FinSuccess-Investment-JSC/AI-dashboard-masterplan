@@ -123,7 +123,7 @@ if(hog.length&&document.getElementById('chHog')){
 const co=S('corn'),sm=S('soymeal');
 if(co.length&&document.getElementById('chFeedPx')){
  const smm=byMonth(sm),base=co.slice(-24);
- barLineChart('chFeedPx',{categories:base.map(r=>mon(r.date)),series:[{name:'Ngô YoY',color:C.gold,values:base.map(r=>yoyAt(co,r))},{name:'Khô đậu YoY',color:C.green,values:base.map(r=>yoyAt(sm,smm[ym(r.date)]))}],unit:'%',digits:1,height:260,rotateLabels:true});
+ barLineChart('chFeedPx',{categories:base.map(r=>mon(r.date)),series:[{name:'Ngô YoY',color:C.gold,kind:'line',values:base.map(r=>yoyAt(co,r))},{name:'Khô đậu YoY',color:C.green,kind:'line',values:base.map(r=>yoyAt(sm,smm[ym(r.date)]))}],unit:'%',digits:1,height:260,zeroBase:false,rotateLabels:true});
  legend('chFeedPx',[['Ngô CBOT',C.gold],['Khô đậu tương CBOT',C.green]]);
  fillTable('tbl-feedpx',['Kỳ','Ngô (cent/bushel)','Khô đậu (USD/short ton)','Ngô YoY','Khô đậu YoY'],co.slice().reverse().map(r=>{const s=smm[ym(r.date)];return [short(r.date),nf(r.value,1),nf(s?.value,1),signed(yoyAt(co,r),1)+'%',signed(yoyAt(sm,s),1)+'%']}));
  sourceLine('chFeedPx',[['CME/CBOT qua Wi',null]],short(co.at(-1).date),'Ngô future CBOT (203105, US cent/bushel), khô đậu tương CBOT (203092, USD/short ton). Vẽ % so cùng kỳ vì khác đơn vị.');

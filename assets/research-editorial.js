@@ -35,6 +35,7 @@ const strategies={
  textile:[],
  port:[],
  agri:[],
+ seafood:[],
  bank:[['Tăng trưởng tín dụng có đủ vốn tài trợ?','1–2 quý','Tiền gửi dân cư/TCKT, trái phiếu, chứng chỉ tiền gửi và liên ngân hàng đều tài trợ được tăng trưởng nhưng khác giá vốn và kỳ hạn.','So chênh tăng trưởng tín dụng–huy động, cơ cấu từng nguồn và giá vốn cùng kỳ; không coi vốn thị trường 2 như tiền gửi ổn định.'],['NIM phục hồi có bền sau tái định giá?','1–4 quý','CASA, chi phí tiền gửi và lợi suất tài sản cùng tác động lợi nhuận.','So NIM thực tế qua các lần lãi suất biến động với khe hở tái định giá theo kỳ hạn; gap tổng không đủ để kết luận tốc độ repricing.'],['Nợ sớm có chuyển thành chi phí dự phòng?','1–4 quý','Credit cost có thể triệt tiêu tăng trưởng thu nhập.','Theo dõi dịch chuyển nhóm nợ, thu hồi và bao phủ; tăng dư nợ có thể làm loãng tỷ lệ NPL.'],['Vốn có mở thêm dư địa tăng trưởng?','Theo công bố từng bank','Room còn phụ thuộc chất lượng bảng cân đối, mục tiêu chính sách và quyết định NHNN.','So CAR, chất lượng tài sản, tăng vốn và công bố room/danh mục ưu tiên chính thức; không dùng số hệ thống thay room từng bank.'],['ROE cải thiện đã được phản ánh vào P/B?','2–4 quý','P/B cần đối chiếu ROE bền vững, chất lượng tài sản và chi phí vốn.','Chưa có kỳ vọng lợi nhuận thị trường đồng bộ để lượng hóa dư địa định giá lại.']]
 };
 document.querySelectorAll('.thesis-signal').forEach((c,i)=>{
@@ -50,7 +51,7 @@ function filter(){list.querySelectorAll(':scope > .research-topic').forEach(n=>n
 const empty=make('p','research-caption','Chưa có chủ đề trong nhóm này.');hot.append(empty);active.onclick=()=>{view='active';filter()};archive.onclick=()=>{view='archived';filter()};list.addEventListener('lifecyclechange',filter);
 function topic(key,title,content,initial={}){const c=make('article','research-topic');c.append(...content);list.append(c);const f=fold(c,title,{all:true,open:true});editor(c,key,'topic',{title,...initial});return c;}
 if(sector==='oil')topic('hormuz','Hormuz · dòng chảy & tác động',old);
-else if(sector==='power'||sector==='realestate'||sector==='textile'||sector==='port'||sector==='agri')old.filter(n=>n.dataset?.topicKey).forEach(n=>{const t=topic(n.dataset.topicKey,n.dataset.topicTitle,[...n.children]);if(n.dataset.topicSegment)t.dataset.segment=n.dataset.topicSegment});
+else if(sector==='power'||sector==='realestate'||sector==='textile'||sector==='port'||sector==='agri'||sector==='seafood')old.filter(n=>n.dataset?.topicKey).forEach(n=>{const t=topic(n.dataset.topicKey,n.dataset.topicTitle,[...n.children]);if(n.dataset.topicSegment)t.dataset.segment=n.dataset.topicSegment});
 else if(sector==='bank'){
  const news=document.getElementById('bank-news');if(news)topic('bank-news','Tin & công bố doanh nghiệp',[news]);
 }

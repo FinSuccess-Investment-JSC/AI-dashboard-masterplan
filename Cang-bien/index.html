@@ -293,27 +293,27 @@ body{font-size:14px;line-height:1.45}
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=123c08b8ffcd">
 <script src="../assets/chart-types.js?v=5b81f0f266ee"></script>
-<script src="../data/daily-data.js?v=065d6fb3a9b2" defer></script>
+<script src="../data/daily-data.js?v=ed4279fc6457" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
-<script src="../assets/sector-runtime.js?v=d5d24d93a98e" defer></script>
-<script src="../assets/sector-content.js?v=0c3d5655b929" defer></script>
-<script src="../assets/sector-layout.js?v=1258209726e6" defer></script>
+<script src="../assets/sector-runtime.js?v=5b46c0841f32" defer></script>
+<script src="../assets/sector-content.js?v=56f7598a6790" defer></script>
+<script src="../assets/sector-layout.js?v=c2e43c9f455a" defer></script>
 <script src="../data/port-wi-data.js?v=e3be6c98116f" defer></script>
 <script src="../assets/port-dashboard.js?v=c4c7aa4e84fe" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="../assets/catalyst-board.js?v=98ede80424f7" defer></script>
-<script src="../data/company-valuation.js?v=92ec0fb8bca4" defer></script>
-<script src="../data/company-comparison.js?v=7ee4ec8333ba" defer></script>
+<script src="../assets/catalyst-board.js?v=497ae743d98f" defer></script>
+<script src="../data/company-valuation.js?v=006cda778b8a" defer></script>
+<script src="../data/company-comparison.js?v=5f038ded8f7e" defer></script>
 <script src="../assets/financial-comparison.js?v=c2d94f7d0b29" defer></script>
-<script src="../assets/research-layout.js?v=50b5dc95054d" defer></script>
+<script src="../assets/research-layout.js?v=ed8202116a36" defer></script>
 <script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
-<script src="../assets/research-editorial.js?v=c14ace90919f" defer></script>
-<script src="../assets/pane-subtabs.js?v=3a509b1fedb8" defer></script>
+<script src="../assets/research-editorial.js?v=804569ccef3e" defer></script>
+<script src="../assets/pane-subtabs.js?v=c5df3691e096" defer></script>
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=b887fc7f0543" data-release="20261009-evidence-r2"></script>
+<script src="../assets/site-navigation.js?v=79b4fef6933b" data-release="20261009-seafood-r2"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=c2f07b357463">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=866820c17041">
@@ -347,7 +347,7 @@ body[data-sector="port"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spaci
 </style>
 </head>
 <body data-sector="port">
-<nav data-site-navigation="port"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="../Bat-dong-san/">Bất động sản</a><a data-site-route="textile" href="../Det-may/">Dệt may</a><a data-site-route="port" href="./" aria-current="page">Cảng &amp; kho bãi</a><a data-site-route="agri" href="../Nong-nghiep/">Nông nghiệp &amp; thực phẩm</a></nav>
+<nav data-site-navigation="port"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="../Bat-dong-san/">Bất động sản</a><a data-site-route="textile" href="../Det-may/">Dệt may</a><a data-site-route="port" href="./" aria-current="page">Cảng &amp; kho bãi</a><a data-site-route="agri" href="../Nong-nghiep/">Nông nghiệp &amp; thực phẩm</a><a data-site-route="seafood" href="../Thuy-san/">Thủy sản</a></nav>
 <div class="fiscbar"><span>Dashboard ngành · Cảng &amp; kho bãi Việt Nam · khung nghiên cứu gốc 09/10/2026</span></div>
 
 <nav class="majortabs">
@@ -705,7 +705,7 @@ function floatRange(minV,maxV){
   const step=niceMax(span/4);
   const lo=Math.floor((minV-span*0.15)/step)*step;
   const hi=Math.ceil((maxV+span*0.15)/step)*step;
-  return [Math.max(lo,0), hi];
+  return [minV<0?lo:Math.max(lo,0), hi]; // negative series (YoY %) keep their own floor
 }
 function yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,digits,yMin,steps=4){
   yMin=yMin||0;

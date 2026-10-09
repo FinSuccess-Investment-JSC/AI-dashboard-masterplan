@@ -39,16 +39,16 @@ const prefix = '/AI-dashboard-masterplan/';
       assert.equal(new URL(page.url()).searchParams.get('v'), manifest.version);
       assert.equal(await page.locator('[data-site-navigation] [aria-current="page"]').getAttribute('data-site-route'), key);
     }
-    for (const [hash,key] of [['ngan-hang','bank'],['dau-khi','oil'],['duong','sugar'],['dien','power'],['bat-dong-san','realestate'],['det-may','textile'],['cang-bien','port'],['nong-nghiep','agri']]) {
+    for (const [hash,key] of [['ngan-hang','bank'],['dau-khi','oil'],['duong','sugar'],['dien','power'],['bat-dong-san','realestate'],['det-may','textile'],['cang-bien','port'],['nong-nghiep','agri'],['thuy-san','seafood']]) {
       await page.goto(base+'?v=20260911#'+hash);
       await checkRoute(key);
     }
     await page.goto(base+'?v='+manifest.version);
-    assert.equal(await page.locator('#readyDashboards a').count(), 8);
-    for (const key of ['oil','sugar','bank','power','realestate','textile','port','agri']) {
+    assert.equal(await page.locator('#readyDashboards a').count(), 9);
+    for (const key of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood']) {
       await page.locator('#readyDashboards [data-site-route="'+key+'"]').click();
       await checkRoute(key);
-      const tabCount=key==='bank'||key==='port'||key==='agri'?7:key==='realestate'?8:6;assert.equal(await page.locator('.majortabbtn').count(), tabCount);
+      const tabCount=key==='bank'||key==='port'||key==='agri'||key==='seafood'?7:key==='realestate'?8:6;assert.equal(await page.locator('.majortabbtn').count(), tabCount);
       assert.ok(await page.locator('svg').count() > 10);
       assert.ok(await page.locator('.source-info-panel').count() > 0);
       assert.ok(await page.evaluate(key => key === 'bank' ? !!window.BANK_WI_DATA : !!window.SECTOR_DAILY, key));
@@ -66,8 +66,8 @@ const prefix = '/AI-dashboard-masterplan/';
       await page.locator('[data-site-navigation] [data-site-route="home"]').click();
       await checkRoute('home');
     }
-    for (const from of ['oil','sugar','bank','power','realestate','textile','port','agri']) {
-      for (const to of ['oil','sugar','bank','power','realestate','textile','port','agri'].filter(key => key !== from)) {
+    for (const from of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood']) {
+      for (const to of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood'].filter(key => key !== from)) {
         await page.goto(base+manifest.routes[from]+'?v='+manifest.version);
         await page.locator('[data-site-navigation] [data-site-route="'+to+'"]').click();
         await checkRoute(to);

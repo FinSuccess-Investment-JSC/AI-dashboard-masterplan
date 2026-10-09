@@ -285,3 +285,11 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Kho bằng chứng:** `data/<ngành>/evidence.json`, mỗi số một dòng: `block`, `claim`, `value`, `url`, `opened_at`, `quote` (đoạn văn gốc nguyên văn chứa số), `status` (`match`/`mismatch`/`unreachable`/`not_found`), `correct_value`, `note`. Prompt agent nghiên cứu phải yêu cầu trả đúng định dạng này.
 - **Kiểm tự động:** `tests/test_evidence.py` (qua `scripts/check_evidence.py`) báo lỗi khi dòng `match` thiếu quote hoặc con số không xuất hiện trong quote của chính nó (bỏ qua dấu phân cách nghìn/thập phân).
 - **Kiểm lại định kỳ:** routine tài liệu thứ Hai chạy `python3 scripts/check_evidence.py --fetch`: mở lại mọi link, ghi `data/evidence-status.json`; link chết hoặc đoạn văn đổi được đưa vào thông báo routine để sửa, không giữ im lặng.
+
+## 21. Dashboard Thủy sản (09/10/2026)
+
+- **Phạm vi người dùng chốt:** 7 mã (VHC, ANV, IDI · FMC, MPC, CMX · ASM); sub-tab **Cá tra / Tôm**; tab riêng **Thuế & phòng vệ thương mại** (`mt10`).
+- **Trang:** `Thuy-san/index.html` (`data-sector="seafood"`), renderer `assets/seafood-dashboard.js` (`window.SEAFOOD_BRIEF`). Mã card `ts-*`, lịch `seafood.*`.
+- **Wi (nhóm B):** `data/seafood-wi-contract.json` → `scripts/build_seafood_wi.py`: XK thủy sản tổng (83499) và theo Mỹ 87957, Trung Quốc 87997, Nhật 88726, Hàn 88042 (bảng 87); giá cá tra 74384, cá giống 264825, tôm thẻ 50 con 74379; khô đậu, ngô CBOT; định giá GICS 238, 235. Không vẽ 82082 (bước nhảy đơn vị) và tôm không phân cỡ 264644/264638 (đứng yên nhiều tháng).
+- **Bằng chứng:** dashboard đầu tiên dựng theo §20 từ đầu — mọi số tài liệu có trong `data/seafood/evidence.json` (CBPG, CVD từ văn bản Federal Register).
+- **Sửa engine chart (Cảng, Nông nghiệp, Thủy sản):** `floatRange` không chặn trục dưới ở 0 khi chuỗi có giá trị âm (chart % so cùng kỳ). Các dashboard cũ (Dầu khí, Đường, Điện, BĐS, Dệt may) vẫn dùng bản chặn ở 0; chart đường % âm ở đó có thể bị cắt — chưa sửa.

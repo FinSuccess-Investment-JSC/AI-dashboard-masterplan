@@ -1,0 +1,662 @@
+[
+ {
+  "block": "ts-42",
+  "claim": "Cá tra CBPG POR20 (8/2022–7/2023) cuối cùng: Biên Đông và Nam Việt (NAVICO, mức riêng không được kiểm tra) 0 USD/kg",
+  "value": "$0.00/kg",
+  "url": "https://www.federalregister.gov/d/2025-11205",
+  "opened_at": "2026-10-09",
+  "quote": "Nam Viet Corporation $0.00* ... * This rate is based on the rate calculated for Bien Dong Seafood Co. Ltd.",
+  "status": "match",
+  "note": "Công bố trên FR ngày 18/06/2025; file PDF public-inspection"
+ },
+ {
+  "block": "ts-11",
+  "claim": "Cá tra mức toàn quốc Việt Nam (Vietnam-wide entity)",
+  "value": "$2.39/kg",
+  "url": "https://www.federalregister.gov/d/2025-11205",
+  "opened_at": "2026-10-09",
+  "quote": "be the rate for the Vietnam-wide entity (i.e., $2.39 per kilogram)",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ts-42",
+  "claim": "Vĩnh Hoàn (VHC) được rút khỏi lệnh CBPG cá tra ngày 24/01/2025",
+  "value": "revoked 24/01/2025",
+  "url": "https://www.federalregister.gov/d/2025-02482",
+  "opened_at": "2026-10-09",
+  "quote": "On January 24, 2025, the U.S. Department of Commerce (Commerce) published a partial revocation of Vinh Hoan Corporation (Vinh Hoan) from the antidumping duty (AD) order on certain frozen fish fillets",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ts-42",
+  "claim": "Cá tra POR21 (8/2023–7/2024) sơ bộ, công bố FR 11/02/2026",
+  "value": "sơ bộ 11/02/2026",
+  "url": "https://www.federalregister.gov/d/2026-02772",
+  "opened_at": "2026-10-09",
+  "quote": "Commerce preliminarily determines that Bien Dong Seafood Co., Ltd. (Bien Dong) and NTSF Seafoods Joint Stock Company (NTSF), made sales of certain frozen fish fillets (fish fillets) at less than normal value (NV) during the period of review (POR) August 1, 2023, through July 31, 2024.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ts-42",
+  "claim": "Cá tra POR21 cuối cùng (FR 13/08/2026): Nam Việt (ANV) 0,84 USD/kg",
+  "value": "0.84 USD/kg",
+  "url": "https://www.federalregister.gov/d/2026-16553",
+  "opened_at": "2026-10-09",
+  "quote": "Bien Dong Seafood Co., Ltd 1.00 NTSF Seafoods Joint Stock Company 0.38 Rates for Non-Selected Separate Rate Respondents Can Tho Import Export Seafood Joint Stock Company 0.84 Nam Viet Corporation 0.84",
+  "status": "match",
+  "note": "Biên Đông 1,00; NTSF 0,38; CASEAMEX 0,84 USD/kg"
+ },
+ {
+  "block": "ts-42",
+  "claim": "Cá tra POR21: IDI bị rút khỏi kỳ rà soát (không có lô hàng xem xét)",
+  "value": "rescinded",
+  "url": "https://www.federalregister.gov/d/2026-16553",
+  "opened_at": "2026-10-09",
+  "quote": "inadvertently listed I.D.I. International Development under “Appendix IV – Vietnam-Wide Entity” instead of under “Appendix II – Companies for Which Commerce is Rescinding the Review.” To rectify this error, we are rescinding this administrative review with respect to this company.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ts-42",
+  "claim": "Rà soát hoàng hôn lần 4 lệnh CBPG cá tra: duy trì lệnh, biên độ đến 63,88%",
+  "value": "63.88%",
+  "url": "https://www.federalregister.gov/d/2026-07309",
+  "opened_at": "2026-10-09",
+  "quote": "dumping margins up to 63.88 percent",
+  "status": "match",
+  "note": "FR 15/04/2026, expedited sunset"
+ },
+ {
+  "block": "ts-42",
+  "claim": "Tôm CBPG POR18 (2/2023–1/2024) cuối cùng (FR 23/02/2026): mức riêng cho DN không được kiểm tra (gồm Sao Ta/FMC)",
+  "value": "4.58% (tiền ký quỹ 4.28%)",
+  "url": "https://www.federalregister.gov/d/2026-03511",
+  "opened_at": "2026-10-09",
+  "quote": "Separate Rate Companies 4.58 4.28",
+  "status": "match",
+  "note": "Cột 2 = cash deposit đã trừ bù trợ cấp; Sao Ta có trong danh sách separate rate"
+ },
+ {
+  "block": "ts-42",
+  "claim": "Tôm POR18: STAPIMEX, Thông Thuận bị áp AFA = mức toàn quốc",
+  "value": "25.76%",
+  "url": "https://www.federalregister.gov/d/2026-03511",
+  "opened_at": "2026-10-09",
+  "quote": "we assigned STAPIMEX and Thong Thuan/TTCR a weighted-average dumping margin of 25.76 percent, a rate which previously has been applied as AFA in the Final Determination for the Vietnam-wide entity.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ts-42",
+  "claim": "Minh Phú (MPC) được loại khỏi lệnh CBPG tôm từ 18/07/2016 (với tôm do Minh Phú tự sản xuất)",
+  "value": "excluded 18/07/2016",
+  "url": "https://www.federalregister.gov/d/2026-03511",
+  "opened_at": "2026-10-09",
+  "quote": "Shrimp produced and exported by Minh Phu Hau Giang Seafood were excluded from the antidumping duty order on certain frozen warmwater shrimp from Vietnam, effective July 18, 2016.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ts-42",
+  "claim": "Tôm POR19 (2/2024–1/2025) sơ bộ (FR 13/05/2026): Sao Ta/Fimex 10,76%, STAPIMEX 6,30%, mức riêng 7,56%",
+  "value": "10.76% / 6.30% / 7.56%",
+  "url": "https://www.federalregister.gov/d/2026-09465",
+  "opened_at": "2026-10-09",
+  "quote": "Commerce has determined the estimated dumping margin for the Fimex Group to be 10.76 percent and STAPIMEX to be 6.30 percent.",
+  "status": "match",
+  "note": "Non-individually examined separate rate 7.56%"
+ },
+ {
+  "block": "ts-42",
+  "claim": "Tôm CVD Việt Nam (kết luận cuối 21/10/2024): STAPIMEX và các DN khác 2,84%; Thông Thuận 221,82%",
+  "value": "2.84% / 221.82%",
+  "url": "https://vietnamnews.vn/economy/1665711/us-issues-final-affirmative-countervailing-duty-determination-on-frozen-warmwater-shrimp-from-viet-nam.html",
+  "opened_at": "2026-10-09",
+  "quote": "The DOC has determined a duty of 2.84 per cent on products from Sóc Trăng Seafood Joint Stock Company (STAPIMEX) ... 221.82 per cent – the rate based on adverse facts available (AFA) – for Thông Thuận Company Limited",
+  "status": "match",
+  "note": "Nguồn thứ cấp (báo); chưa mở được văn bản FR gốc"
+ },
+ {
+  "block": "ts-42",
+  "claim": "Mục 122: phụ thu 10% toàn cầu 24/02–24/07/2026",
+  "value": "10%",
+  "url": "https://www.ey.com/en_gl/technical/tax-alerts/us-implements-global-10-percent-import-tariff-under-section-122-of-the-trade-act-of-1974",
+  "opened_at": "2026-10-09",
+  "quote": "10% ad valorem global import tariff on all articles imported, effective 12:01 a.m. ET on 24 February 2026, through 12:01 a.m. ET on 24 July 2026",
+  "status": "match",
+  "note": "Nguồn thứ cấp (EY)"
+ },
+ {
+  "block": "ts-42",
+  "claim": "Mục 301 (lao động cưỡng bức): Việt Nam chịu thêm 12,5% từ 24/07/2026, ~37% kim ngạch XK sang Mỹ",
+  "value": "12.5%",
+  "url": "https://moit.gov.vn/en/news/u.s.-trade-representative-issues-final-determination-in-section-301-investigation-covering-60-economies.html",
+  "opened_at": "2026-10-09",
+  "quote": "additional 12.5% tariff ... July 24, 2026 (U.S. Eastern Time) ... approximately 37% of Vietnam's current exports to the U.S. after products excluded under U.S. law are removed",
+  "status": "match",
+  "note": "Trang Bộ Công Thương; chưa xác định thủy sản có thuộc diện chịu hay miễn"
+ },
+ {
+  "block": "ts-50",
+  "claim": "Thẻ vàng IUU: QĐ 1516/QĐ-TTg 10/08/2026 kế hoạch xử lý khuyến nghị sau thanh tra lần 5 của EC, mục tiêu gỡ thẻ vàng 2026",
+  "value": "lần 5; QĐ 1516 ngày 10/08/2026",
+  "url": "https://en.vneconomy.vn/vietnam-targets-removal-of-eu-yellow-card-on-iuu-fishing-in-2026.htm",
+  "opened_at": "2026-10-09",
+  "quote": "Prime Ministerial Decision No. 1516/QD-TTg dated August 10, 2026, approving an action plan for addressing recommendations made by the European Commission (EC) following its fifth inspection on illegal, unreported and unregulated (IUU) fishing in Vietnam",
+  "status": "match",
+  "note": "Thẻ vàng vẫn còn (bài 13/08/2026)"
+ },
+ {
+  "block": "ts-50",
+  "claim": "MMPA: NOAA từ chối 12 nghề cá VN, cấm nhập từ 01/01/2026; chấp thuận 11",
+  "value": "12 bị cấm / 11 được chấp thuận",
+  "url": "https://news.tuoitre.vn/us-bans-import-of-seafood-from-12-vietnamese-fisheries-from-january-1-103260102114049278.htm",
+  "opened_at": "2026-10-09",
+  "quote": "NOAA approved comparability findings for 11 Vietnamese fisheries but denied approval for 12 others",
+  "status": "match",
+  "note": "Loài: cá ngừ, cá kiếm, cá mú, cá thu, cá đối, cua, mực...; KN 2024 bị ảnh hưởng 511,5 triệu USD"
+ },
+ {
+  "block": "ts-50",
+  "claim": "MMPA: giá trị XK sang Mỹ năm 2024 của nhóm bị ảnh hưởng",
+  "value": "511.5 triệu USD",
+  "url": "https://news.tuoitre.vn/us-bans-import-of-seafood-from-12-vietnamese-fisheries-from-january-1-103260102114049278.htm",
+  "opened_at": "2026-10-09",
+  "quote": "the total export value of the affected products shipped to the U.S. in 2024, which stood at $511.5 million",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ts-42",
+  "claim": "Tôm Ấn Độ CBPG POR 2024–2025 cuối cùng (FR 04/09/2026): Devi 4,04%, Sandhya 7,01%, khác 5,53%; all-others 10,17%",
+  "value": "4.04% / 7.01% / 5.53%",
+  "url": "https://www.federalregister.gov/d/2026-18184",
+  "opened_at": "2026-10-09",
+  "quote": "Devi Fisheries Limited; Satya Seafoods Private Limited; Usha Seafoods; Devi Aquatech Private Limited 4.04 Sandhya Aqua Exports Private Limited 7.01 Companies Not Selected for Individual Examination 5.53",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ts-42",
+  "claim": "Tôm Ecuador CVD kết luận cuối (10/2024): Santa Priscila 3,57%, Songa 4,41%, all others 3,78%",
+  "value": "3.57% / 4.41% / 3.78%",
+  "url": "https://govinfo.gov/content/pkg/FR-2024-10-28/pdf/2024-24957.pdf",
+  "opened_at": "2026-10-09",
+  "quote": "Industrial Pesquera Santa Priscila S.A ... 3.57 Sociedad Nacional de Galápagos C.A ... 4.41 All Others ... 3.78",
+  "status": "match",
+  "note": "Quote ghép từ bảng PDF; có rà soát nhanh (expedited) sơ bộ FR 10/03/2026 chưa đọc mức"
+ },
+ {
+  "block": "ts-42",
+  "claim": "Tôm Ecuador CBPG: kết luận cuối phủ định (0,00% và 0,48% de minimis) → không có lệnh CBPG",
+  "value": "negative",
+  "url": "https://govinfo.gov/content/pkg/FR-2024-10-28/pdf/2024-24958.pdf",
+  "opened_at": "2026-10-09",
+  "quote": "Ecuador: Final Negative Determination ... 0.00. 0.48 (de minimis).",
+  "status": "match",
+  "note": "Quote ghép từ PDF"
+ },
+ {
+  "block": "industry",
+  "claim": "XK thủy sản 8T/2026 (VASEP)",
+  "value": "8 tỷ USD, +11,8%",
+  "url": "https://mekongasean.vn/xuat-khau-thuy-san-nam-2026-du-kien-vuot-moc-12-ty-usd-59256.html",
+  "opened_at": "2026-10-09",
+  "quote": "Lũy kế 8 tháng đầu năm 2026, Việt Nam thu về 8 tỷ USD từ xuất khẩu mặt hàng này, tăng 11,8%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "XK thủy sản sang TQ&HK 8T/2026",
+  "value": "2,03 tỷ USD, +33,4%, 25%",
+  "url": "https://mekongasean.vn/xuat-khau-thuy-san-nam-2026-du-kien-vuot-moc-12-ty-usd-59256.html",
+  "opened_at": "2026-10-09",
+  "quote": "Trung Quốc & Hong Kong tiếp tục là thị trường xuất khẩu thủy sản lớn nhất với 2,03 tỷ USD, tăng 33,4%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "XK thủy sản sang Mỹ 8T/2026",
+  "value": "1,24 tỷ USD (đi ngang)",
+  "url": "https://mekongasean.vn/xuat-khau-thuy-san-nam-2026-du-kien-vuot-moc-12-ty-usd-59256.html",
+  "opened_at": "2026-10-09",
+  "quote": "kim ngạch xuất khẩu thủy sản sang Mỹ lại gần như đi ngang trong kỳ, ở mức 1,24 tỷ USD",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "XK tôm 8T/2026",
+  "value": "3,2 tỷ USD, +12,3%",
+  "url": "https://mekongasean.vn/xuat-khau-thuy-san-nam-2026-du-kien-vuot-moc-12-ty-usd-59256.html",
+  "opened_at": "2026-10-09",
+  "quote": "kim ngạch xuất khẩu tôm đạt 3,2 tỷ USD, tăng 12,3%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "XK cá tra 8T/2026",
+  "value": "1,5 tỷ USD, +9%",
+  "url": "https://mekongasean.vn/xuat-khau-thuy-san-nam-2026-du-kien-vuot-moc-12-ty-usd-59256.html",
+  "opened_at": "2026-10-09",
+  "quote": "Kim ngạch xuất khẩu cá tra cũng tăng 9% YoY, lên 1,5 tỷ USD",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "Dự báo XK thủy sản 2026 (VASEP)",
+  "value": ">12 tỷ USD",
+  "url": "https://mekongasean.vn/xuat-khau-thuy-san-nam-2026-du-kien-vuot-moc-12-ty-usd-59256.html",
+  "opened_at": "2026-10-09",
+  "quote": "VASEP dự báo, xuất khẩu mặt hàng này có thể vượt mốc 12 tỷ USD trong năm nay",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "Dự báo XK cá tra 2026",
+  "value": "~2,3 tỷ USD",
+  "url": "https://trungtamwto.vn/tin-tuc/31929-nguon-cung-ca-thit-trang-giam-ca-tra-rong-duong-xuat-ngoai",
+  "opened_at": "2026-10-09",
+  "quote": "xuất khẩu cá tra kỳ vọng đạt khoảng 2,3 tỷ USD",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "XK cá tra 2T/2026 theo thị trường: TQ / Mỹ / EU",
+  "value": "94 / 38 / 26 triệu USD",
+  "url": "https://trungtamwto.vn/chuyen-de/32000-trung-quoc-tiep-tuc-la-diem-den-lon-nhat-cua-ca-tra-viet-nam",
+  "opened_at": "2026-10-09",
+  "quote": "Lũy kế hai tháng đầu năm, kim ngạch đạt 94 triệu USD, tăng mạnh 86%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "XK cá tra sang Mỹ 2T/2026",
+  "value": "38 triệu USD, -5%",
+  "url": "https://trungtamwto.vn/chuyen-de/32000-trung-quoc-tiep-tuc-la-diem-den-lon-nhat-cua-ca-tra-viet-nam",
+  "opened_at": "2026-10-09",
+  "quote": "Tính chung hai tháng đầu năm, kim ngạch đạt 38 triệu USD, giảm nhẹ 5%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "XK cá tra sang EU 2T/2026",
+  "value": "26 triệu USD, +7%",
+  "url": "https://trungtamwto.vn/chuyen-de/32000-trung-quoc-tiep-tuc-la-diem-den-lon-nhat-cua-ca-tra-viet-nam",
+  "opened_at": "2026-10-09",
+  "quote": "kim ngạch xuất khẩu cá tra sang thị trường EU đạt 26 triệu USD, tăng 7%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "XK cá tra tháng 7/2026",
+  "value": "~184 triệu USD, -6,1%",
+  "url": "https://mekongasean.vn/vinh-hoan-co-thang-giam-doanh-thu-dau-tien-trong-nam-2026-58562.html",
+  "opened_at": "2026-10-09",
+  "quote": "tháng 7/2026, kim ngạch xuất khẩu cá tra của Việt Nam giảm 6,1% YoY, đạt gần 184 triệu USD",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "XK tôm 2T/2026 sang TQ+HK",
+  "value": "309 triệu USD, +58%, 45%",
+  "url": "https://trungtamwto.vn/tin-tuc/32016-xuat-khau-tom-sang-my-giam-sau-truoc-ap-luc-thue-quan-trung-quoc-thanh-luc-day-chinh",
+  "opened_at": "2026-10-09",
+  "quote": "kim ngạch 2 tháng đạt 309 triệu USD, tăng 58%, chiếm tới 45%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "XK tôm 2T/2026 sang Mỹ",
+  "value": "~60 triệu USD, -22%",
+  "url": "https://trungtamwto.vn/tin-tuc/32016-xuat-khau-tom-sang-my-giam-sau-truoc-ap-luc-thue-quan-trung-quoc-thanh-luc-day-chinh",
+  "opened_at": "2026-10-09",
+  "quote": "lũy kế 2 tháng đạt gần 60 triệu USD, giảm 22%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "XK tôm 2T/2026 sang EU",
+  "value": "77 triệu USD, +28%",
+  "url": "https://trungtamwto.vn/tin-tuc/32016-xuat-khau-tom-sang-my-giam-sau-truoc-ap-luc-thue-quan-trung-quoc-thanh-luc-day-chinh",
+  "opened_at": "2026-10-09",
+  "quote": "lũy kế 2 tháng đạt 77 triệu USD, tăng 28%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "industry",
+  "claim": "Thuế CBPG tôm POR19 (Mỹ)",
+  "value": "25,76% / 4,58%",
+  "url": "https://trungtamwto.vn/tin-tuc/32016-xuat-khau-tom-sang-my-giam-sau-truoc-ap-luc-thue-quan-trung-quoc-thanh-luc-day-chinh",
+  "opened_at": "2026-10-09",
+  "quote": "hai bị đơn bắt buộc bị áp biên độ 25,76%, trong khi 22 doanh nghiệp được hưởng mức thuế suất riêng rẽ là 4,58%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "price",
+  "claim": "Giá cá tra nguyên liệu ĐBSCL đầu 2026",
+  "value": "33.000-34.000 đ/kg",
+  "url": "https://trungtamwto.vn/tin-tuc/31929-nguon-cung-ca-thit-trang-giam-ca-tra-rong-duong-xuat-ngoai",
+  "opened_at": "2026-10-09",
+  "quote": "giá cá tra nguyên liệu tại đồng bằng sông Cửu Long khoảng 33.000 - 34.000 đồng/kg",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "price",
+  "claim": "Giá cá tra 0,8-1 kg đầu 2026 (đỉnh)",
+  "value": "35.000 đ/kg",
+  "url": "https://doanhnghiephoinhap.vn/gia-ca-tra-tang-cao-ky-luc-mo-ra-chu-ky-phuc-hoi-moi-cho-xuat-khau-nam-2026-127578.html",
+  "opened_at": "2026-10-09",
+  "quote": "phổ biến quanh mức 35.000 đồng/kg",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "price",
+  "claim": "Giá thành nuôi cá tra",
+  "value": "24.000-26.000 đ/kg",
+  "url": "https://doanhnghiephoinhap.vn/gia-ca-tra-tang-cao-ky-luc-mo-ra-chu-ky-phuc-hoi-moi-cho-xuat-khau-nam-2026-127578.html",
+  "opened_at": "2026-10-09",
+  "quote": "chi phí sản xuất bình quân khoảng 24.000 – 26.000 đồng/kg",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "price",
+  "claim": "Giá tôm thẻ Cà Mau T6/2026 cỡ 20 con giảm",
+  "value": "-17.500 đ/kg MoM",
+  "url": "https://vneconomy.vn/gia-nong-san-thang-6-bien-dong-trai-chieu-ca-phe-tro-lai-moc-89000-dongkg.htm",
+  "opened_at": "2026-10-09",
+  "quote": "loại 20 con/kg giảm mạnh nhất, tới 17.500 đồng/kg so với tháng trước",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "price",
+  "claim": "Giá tôm sú 20-40 con T6/2026",
+  "value": "-6.000 đến -15.000 đ/kg MoM",
+  "url": "https://vneconomy.vn/gia-nong-san-thang-6-bien-dong-trai-chieu-ca-phe-tro-lai-moc-89000-dongkg.htm",
+  "opened_at": "2026-10-09",
+  "quote": "Các loại tôm sú thương phẩm cỡ 20-40 con/kg giảm từ 6.000-15.0",
+  "status": "match",
+  "note": "Quote cắt theo giới hạn ký tự; trang ghi 6.000-15.000 đồng/kg"
+ },
+ {
+  "block": "price",
+  "claim": "Giá tôm thẻ tại ao (Simplize, 09/10/2026)",
+  "value": "87.00",
+  "url": "https://simplize.vn/hang-hoa/gia-tom-the",
+  "opened_at": "2026-10-09",
+  "quote": "Giá Tôm thẻ (tại ao) hôm nay đang giao dịch ở mức 87.00 (VNĐ/kg)",
+  "status": "match",
+  "note": "Trang ghi 87.00 đơn vị nghìn VNĐ/kg (biên 52 tuần 78.00-122.2); không ghi cỡ tôm Trang ghi \"87.00 (VNĐ/kg)\", không rõ đơn vị nghìn; không dùng trên dashboard."
+ },
+ {
+  "block": "price",
+  "claim": "Thuế Section 301 Mỹ với VN",
+  "value": "12,5% từ 24/7/2026",
+  "url": "https://shinhansec.com.vn/uploads/report/ANV_update_Q2_2026_VN_docx.pdf",
+  "opened_at": "2026-10-09",
+  "quote": "Thuế Section 301 12.5% 24/7/2026-24/7/2030",
+  "status": "match",
+  "note": "Ô bảng PDF Shinhan (pdftotext -layout), quote ghép từ các ô cùng hàng; cập nhật 27/07/2026"
+ },
+ {
+  "block": "VHC",
+  "claim": "KH 2026",
+  "value": "DT 14.000 tỷ, LNST cổ đông mẹ 1.600 tỷ",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/loi-nhuan-nu-hoang-ca-tra-vinh-hoan-di-lui-trong-quy-ii2026-35254764",
+  "opened_at": "2026-10-09",
+  "quote": "lợi nhuận sau thuế thuộc về cổ đông công ty mẹ dự kiến đạt 1.600 tỷ đồng, tăng 13%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "VHC",
+  "claim": "KQ 6T/2026",
+  "value": "DT 6.398,98 tỷ (+9,6%), LNST 779,26 tỷ (+3,8%), CĐ mẹ 735,24 tỷ",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/loi-nhuan-nu-hoang-ca-tra-vinh-hoan-di-lui-trong-quy-ii2026-35254764",
+  "opened_at": "2026-10-09",
+  "quote": "Lũy kế 6 tháng đầu năm 2026, Vĩnh Hoàn ghi nhận doanh thu thuần đạt 6.398,98 tỷ đồng, tăng 9,6% so với cùng kỳ năm trước. Lợi nhuận sau thuế đạt 779,26 tỷ đồng, tăng 3,8%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "VHC",
+  "claim": "DT Mỹ Q2/2026",
+  "value": "1.272 tỷ (+10,3%)",
+  "url": "https://extgw.dsc.com.vn/eback/uploads/BC_VHC_Q2_2026_20260826_1644_30adfa9aa2.pdf",
+  "opened_at": "2026-10-09",
+  "quote": "Thị trường lớn nhất vẫn là Mỹ, với doanh thu 1.272 tỷ đồng (+10,3% YoY)",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "VHC",
+  "claim": "DT tháng 8/2026",
+  "value": "1.099 tỷ, +2%",
+  "url": "https://doanhnhan.baophapluat.vn/vinh-hoan-vhc-lay-lai-da-tang-truong-doanh-thu-ca-tra-van-chiu-suc-ep.html",
+  "opened_at": "2026-10-09",
+  "quote": "tổng doanh thu tháng 8/2026 đạt 1.099 tỷ đồng, tăng 2% so với cùng kỳ năm 2025",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "VHC",
+  "claim": "T8/2026 theo thị trường: Mỹ / VN / EU / TQ",
+  "value": "231 (-15%) / 281 (-13%) / 267 (+10%) / 113 (+56%) tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/vinh-hoan-vhc-lay-lai-da-tang-truong-doanh-thu-ca-tra-van-chiu-suc-ep.html",
+  "opened_at": "2026-10-09",
+  "quote": "thị trường Mỹ ghi nhận doanh thu 231 tỷ đồng, giảm 15% so với cùng kỳ. Doanh thu tại Việt Nam đạt 281 tỷ đồng, giảm 13%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "VHC",
+  "claim": "DT tháng 7/2026",
+  "value": "1.148 tỷ, -10%; Mỹ 323 tỷ -36%",
+  "url": "https://mekongasean.vn/vinh-hoan-co-thang-giam-doanh-thu-dau-tien-trong-nam-2026-58562.html",
+  "opened_at": "2026-10-09",
+  "quote": "doanh thu thuần đạt 1.148 tỷ đồng, giảm 10% so với cùng kỳ (YoY)",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "VHC",
+  "claim": "Capex 2026",
+  "value": "~1.520 tỷ",
+  "url": "https://mekongasean.vn/vinh-hoan-co-thang-giam-doanh-thu-dau-tien-trong-nam-2026-58562.html",
+  "opened_at": "2026-10-09",
+  "quote": "Vĩnh Hoàn sẽ dành khoảng 1.520 tỷ đồng để mở rộng đầu tư",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ANV",
+  "claim": "Chuỗi giá trị & quy mô",
+  "value": "4 nhà máy 1.360 tấn/ngày; TĂ 800.000 tấn/năm; 250 ha + 450 ha nuôi CNC",
+  "url": "https://shinhansec.com.vn/uploads/report/ANV_update_Q2_2026_VN_docx.pdf",
+  "opened_at": "2026-10-09",
+  "quote": "vận hành 4 nhà máy chế biến với tổng công suất thiết kế 1,360 tấn/ngày, công suất sử dụng thực tế hiện nay 600–700 tấn/ngày",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ANV",
+  "claim": "KH 2026",
+  "value": "DT 7.700 tỷ, LNST 1.070 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/nam-viet-anv-quy-ii-2026-doanh-thu-tang-nhung-loi-nhuan-lao-doc-toi-60.html",
+  "opened_at": "2026-10-09",
+  "quote": "Năm 2026, doanh nghiệp đặt mục tiêu doanh thu 7.700 tỷ đồng và lợi nhuận sau thuế 1.070 tỷ đồng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ANV",
+  "claim": "KQ 6T/2026",
+  "value": "DT 3.778,3 tỷ (+33,4%), LNST 330,2 tỷ (-29%); 49%/30,9% KH",
+  "url": "https://doanhnhan.baophapluat.vn/nam-viet-anv-quy-ii-2026-doanh-thu-tang-nhung-loi-nhuan-lao-doc-toi-60.html",
+  "opened_at": "2026-10-09",
+  "quote": "Lũy kế 6 tháng đầu năm 2026, Nam Việt ghi nhận doanh thu thuần 3.778,3 tỷ đồng, tăng 33,4% so với cùng kỳ. Tuy nhiên, lợi nhuận sau thuế chỉ đạt 330,2 tỷ đồng, giảm 29%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ANV",
+  "claim": "Biên gộp Q2/2026",
+  "value": "16,1% (từ 28,2%)",
+  "url": "https://doanhnhan.baophapluat.vn/nam-viet-anv-quy-ii-2026-doanh-thu-tang-nhung-loi-nhuan-lao-doc-toi-60.html",
+  "opened_at": "2026-10-09",
+  "quote": "biên lợi nhuận gộp của doanh nghiệp giảm mạnh từ 28,2% xuống còn 16,1%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "IDI",
+  "claim": "KQ 6T/2026",
+  "value": "DT 3.530 tỷ (+1,9%), LNST 106 tỷ (+70,9%)",
+  "url": "https://stockbiz.vn/tin-tuc/xuat-khau-tang-gan-13-loi-nhuan-doanh-nghiep-thuy-san-phan-hoa/41306637",
+  "opened_at": "2026-10-09",
+  "quote": "Lũy kế 6 tháng đầu năm, IDI ghi nhận 3.530 tỷ đồng doanh thu thuần và 106 tỷ đồng lợi nhuận sau thuế, lần lượt tăng 1,9% và 70,9%",
+  "status": "match",
+  "note": "Kết quả tìm kiếm có đoạn trích nói LNST 6T giảm 21% nhưng không mở được trang gốc nên không dùng"
+ },
+ {
+  "block": "MPC",
+  "claim": "KH 2026",
+  "value": "DT 19.892,1 tỷ, LNST 974,4 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/thuy-san-minh-phu-mpc-bao-lai-sau-thue-hon-415-ty-dong-nua-dau-nam-2026.html",
+  "opened_at": "2026-10-09",
+  "quote": "Năm 2026, Thủy sản Minh Phú đặt kế hoạch kinh doanh với doanh thu 19.892,1 tỷ đồng, lợi nhuận ròng dự kiến 974,4 tỷ đồng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "MPC",
+  "claim": "KQ 6T/2026",
+  "value": "DT 7.554,9 tỷ (+16,8%), LNST 415,4 tỷ (+127,5%), 42,6% KH",
+  "url": "https://doanhnhan.baophapluat.vn/thuy-san-minh-phu-mpc-bao-lai-sau-thue-hon-415-ty-dong-nua-dau-nam-2026.html",
+  "opened_at": "2026-10-09",
+  "quote": "Thủy sản Minh Phú ghi nhận doanh thu đạt 7.554,9 tỷ đồng, tăng 16,8% so với cùng kỳ; lợi nhuận sau thuế đạt 415,4 tỷ đồng, tăng 127,5%",
+  "status": "match",
+  "note": "Stockbiz ghi 6T DT 7.577 tỷ, LNST 415,5 tỷ; chưa rõ vì sao lệch nhẹ với số Báo Pháp luật"
+ },
+ {
+  "block": "MPC",
+  "claim": "Tồn kho 30/6/2026",
+  "value": "6.146,5 tỷ (48% TTS)",
+  "url": "https://doanhnhan.baophapluat.vn/thuy-san-minh-phu-mpc-bao-lai-sau-thue-hon-415-ty-dong-nua-dau-nam-2026.html",
+  "opened_at": "2026-10-09",
+  "quote": "tài sản chủ yếu ghi nhận 6.146,5 tỷ đồng tồn kho, chiếm 48% tổng tài sản",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "MPC",
+  "claim": "Thị trường 2025: Mỹ",
+  "value": "~140 triệu USD, >25% XK",
+  "url": "https://seafood.vasep.com.vn/amp/minh-phu-targets-trillion-dong-pre-tax-profit-despite-slow-recovery-in-the-u-s-market-37060.html",
+  "opened_at": "2026-10-09",
+  "quote": "generating nearly USD 140 million in revenue, up 33% year-on-year and accounting for more than 25% of its total export turnover",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "MPC",
+  "claim": "Thị trường 2025: Nhật",
+  "value": "124 triệu USD",
+  "url": "https://seafood.vasep.com.vn/amp/minh-phu-targets-trillion-dong-pre-tax-profit-despite-slow-recovery-in-the-u-s-market-37060.html",
+  "opened_at": "2026-10-09",
+  "quote": "Japan remained Minh Phu’s second-largest market in 2025, generating USD 124 million in revenue",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "FMC",
+  "claim": "KH 2026",
+  "value": "DT 8.000 tỷ, LNTT 452 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/thuc-pham-sao-ta-fmc-doanh-so-giam-tro-lai-sau-tin-hieu-khoi-sac-ke-hoach-loi-nhuan-khong-doi.html",
+  "opened_at": "2026-10-09",
+  "quote": "FMC đặt mục tiêu doanh thu tiêu thụ hợp nhất đạt 8.000 tỷ đồng và lợi nhuận trước thuế hợp nhất 452 tỷ đồng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "FMC",
+  "claim": "KQ 6T/2026 sau soát xét",
+  "value": "DT 3.066 tỷ (-20%), LNST 252,9 tỷ (+81,5%)",
+  "url": "https://doanhnhan.baophapluat.vn/thuc-pham-sao-ta-fmc-loi-nhuan-ban-nien-sau-soat-xet-tang-hon-27-ty-dong.html",
+  "opened_at": "2026-10-09",
+  "quote": "doanh thu thuần 6 tháng đầu năm của FMC sau soát xét đạt hơn 3.066 tỷ đồng, giảm 20% so với cùng kỳ. Trong khi đó, lợi nhuận sau thuế hợp nhất đạt hơn 252,9 tỷ đồng, tăng 81,5%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "FMC",
+  "claim": "Doanh số tháng 7/2026",
+  "value": "35,77 triệu USD, -2%",
+  "url": "https://doanhnhan.baophapluat.vn/thuc-pham-sao-ta-fmc-bao-doanh-so-thang-7-giam-2.html",
+  "opened_at": "2026-10-09",
+  "quote": "doanh số đạt 35,77 triệu USD, giảm 2% so với cùng kỳ năm trước",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "FMC",
+  "claim": "Tiền gửi 30/6/2026",
+  "value": "~1.940 tỷ (+85%)",
+  "url": "https://doanhnhan.baophapluat.vn/thuc-pham-sao-ta-fmc-bao-doanh-so-thang-7-giam-2.html",
+  "opened_at": "2026-10-09",
+  "quote": "lượng tiền gửi này đạt gần 1.940 tỷ đồng, tương đương mức tăng 85%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ASM",
+  "claim": "KH 2026",
+  "value": "DT 13.735 tỷ, LNST 900 tỷ",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/tap-doan-sao-mai-bao-lai-tang-gan-3-lan-trong-nua-dau-nam-2026-35261263",
+  "opened_at": "2026-10-09",
+  "quote": "Sao Mai đặt mục tiêu doanh thu 13.735 tỷ đồng và lợi nhuận sau thuế 900 tỷ đồng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ASM",
+  "claim": "KQ 6T/2026",
+  "value": "DT 5.721,1 tỷ (-5,7%), LNST 214,5 tỷ (+170,1%), CĐ mẹ 137,5 tỷ",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/tap-doan-sao-mai-bao-lai-tang-gan-3-lan-trong-nua-dau-nam-2026-35261263",
+  "opened_at": "2026-10-09",
+  "quote": "Lũy kế 6 tháng đầu năm, doanh thu thuần của Sao Mai đạt 5.721,1 tỷ đồng giảm 5,7% so với cùng kỳ. Lợi nhuận sau thuế đạt 214,5 tỷ đồng tăng 170,1%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "ASM",
+  "claim": "Chi phí lãi vay Q2/2026",
+  "value": "286,9 tỷ (+41,1%)",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/tap-doan-sao-mai-bao-lai-tang-gan-3-lan-trong-nua-dau-nam-2026-35261263",
+  "opened_at": "2026-10-09",
+  "quote": "chi phí lãi vay ở mức 286,9 tỷ đồng tăng 41,1%",
+  "status": "match",
+  "note": ""
+ }
+]

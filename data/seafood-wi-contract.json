@@ -1,0 +1,131 @@
+{
+ "schema": 1,
+ "about": "Các lời gọi WiMCP cho dashboard Thủy sản. Routine Claude gọi lại đúng các lời gọi này, rồi chạy scripts/build_seafood_wi.py. Không chép tay số.",
+ "calls": [
+  {
+   "block": "macro_seafood",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "83499,87957,87997,88726,88042,82082,202900",
+    "from_time": "2019-01-01",
+    "limit": 120
+   },
+   "cadence": "daily",
+   "note": "82082 (thủy hải sản chế biến) gọi kèm nhưng không vẽ: chuỗi có bước nhảy đơn vị."
+  },
+  {
+   "block": "commodity_seafood",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "74384,264825,264644,264638,74379,203092,203105",
+    "from_time": "2023-10-01",
+    "to_time": "2026-10-09",
+    "limit": 1000
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "264644, 264638 (tôm không phân cỡ) đứng yên nhiều tháng, không vẽ; dùng 74379. to_time = hôm nay khi gọi lại."
+  },
+  {
+   "block": "sector_ratio_recent",
+   "tool": "wi_data_sector",
+   "input": {
+    "action": "get_data",
+    "endpoint_name": "sector_ratio_daily",
+    "filters": "{\"sector_id\":\"238,235\"}",
+    "columns": "sector_id,trading_date,pe,pb,market_cap",
+    "by_time": "trading_date",
+    "from_time": "2025-01-01",
+    "to_time": "2026-10-09",
+    "limit": 1000
+   },
+   "cadence": "daily",
+   "match_keys": [
+    "action",
+    "endpoint_name",
+    "filters",
+    "from_time"
+   ],
+   "pick": "max_to_time"
+  }
+ ],
+ "indicators": {
+  "83499": [
+   "exp_seafood",
+   "Xuất khẩu hàng thủy sản",
+   "triệu USD",
+   "monthly"
+  ],
+  "87957": [
+   "exp_us",
+   "Xuất khẩu thủy sản sang Hoa Kỳ",
+   "triệu USD",
+   "monthly"
+  ],
+  "87997": [
+   "exp_cn",
+   "Xuất khẩu thủy sản sang Trung Quốc",
+   "triệu USD",
+   "monthly"
+  ],
+  "88726": [
+   "exp_jp",
+   "Xuất khẩu thủy sản sang Nhật Bản",
+   "triệu USD",
+   "monthly"
+  ],
+  "88042": [
+   "exp_kr",
+   "Xuất khẩu thủy sản sang Hàn Quốc",
+   "triệu USD",
+   "monthly"
+  ],
+  "202900": [
+   "iip_food",
+   "IIP chế biến thực phẩm, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "74384": [
+   "pangasius",
+   "Cá tra thịt trắng nguyên liệu",
+   "nghìn VND/kg",
+   "daily"
+  ],
+  "264825": [
+   "pangasius_fry",
+   "Cá tra giống",
+   "nghìn VND/kg",
+   "daily"
+  ],
+  "74379": [
+   "shrimp50",
+   "Tôm thẻ 50 con/kg Cà Mau",
+   "nghìn VND/kg",
+   "daily"
+  ],
+  "203092": [
+   "soymeal",
+   "Khô đậu tương CBOT",
+   "USD/short ton",
+   "daily"
+  ],
+  "203105": [
+   "corn",
+   "Ngô CBOT",
+   "US cent/bushel",
+   "daily"
+  ]
+ },
+ "sectors": {
+  "238": "Nuôi trồng và chế biến thủy sản",
+  "235": "Thức ăn chăn nuôi"
+ }
+}

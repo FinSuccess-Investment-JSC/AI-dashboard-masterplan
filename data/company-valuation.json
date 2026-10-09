@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "checked_at": "2026-10-09T22:32:05+07:00",
+ "checked_at": "2026-10-09T22:58:20+07:00",
  "provider": "VNDirect finfo",
  "method": "P/E, P/B, vốn hóa của VNDirect tại ngày tham chiếu, điều chỉnh theo giá đóng cửa phiên mới nhất; EPS, BVPS, số cổ phiếu giữ nguyên đến kỳ BCTC sau.",
  "units": {
@@ -14,7 +14,7 @@
   "STK": "không có giá đóng cửa ngày 2026-04-28",
   "LTG": "không có giá đóng cửa ngày 2024-09-27"
  },
- "data_hash": "f5d7de1445611cb747ad3acdd75606352b0cb359affbf16f75454bf57ba600a2",
+ "data_hash": "bb6173468b700e216402b9adc13833cf1bc41383fdcb9fcd6cb7450e8e3cbde8",
  "latest_observation": "2026-10-09",
  "companies": {
   "GAS": {
@@ -817,6 +817,69 @@
    "market_cap": 13955.4,
    "basis_date": "2026-10-08",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/KDC"
+  },
+  "VHC": {
+   "date": "2026-10-09",
+   "close": 52.4,
+   "pe": 7.56,
+   "pb": 1.17,
+   "market_cap": 10975.3,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/VHC"
+  },
+  "ANV": {
+   "date": "2026-10-09",
+   "close": 18.65,
+   "pe": 5.74,
+   "pb": 1.29,
+   "market_cap": 4965.7,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/ANV"
+  },
+  "IDI": {
+   "date": "2026-10-09",
+   "close": 5.16,
+   "pe": 8.49,
+   "pb": 0.4,
+   "market_cap": 1409.6,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/IDI"
+  },
+  "FMC": {
+   "date": "2026-10-09",
+   "close": 35.45,
+   "pe": 5.16,
+   "pb": 0.98,
+   "market_cap": 2318.0,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/FMC"
+  },
+  "MPC": {
+   "date": "2026-10-09",
+   "close": 13.7,
+   "pe": 9.94,
+   "pb": 0.99,
+   "market_cap": 5478.8,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/MPC"
+  },
+  "CMX": {
+   "date": "2026-10-09",
+   "close": 4.59,
+   "pe": 6.67,
+   "pb": 0.37,
+   "market_cap": 467.7,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/CMX"
+  },
+  "ASM": {
+   "date": "2026-10-09",
+   "close": 4.91,
+   "pe": 14.1,
+   "pb": 0.36,
+   "market_cap": 1999.3,
+   "basis_date": "2026-10-08",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/ASM"
   }
  },
  "history": {
@@ -2817,7 +2880,70 @@
     2.41,
     13955.4
    ]
+  ],
+  "VHC": [
+   [
+    "2026-10-09",
+    52.4,
+    7.56,
+    1.17,
+    10975.3
+   ]
+  ],
+  "ANV": [
+   [
+    "2026-10-09",
+    18.65,
+    5.74,
+    1.29,
+    4965.7
+   ]
+  ],
+  "IDI": [
+   [
+    "2026-10-09",
+    5.16,
+    8.49,
+    0.4,
+    1409.6
+   ]
+  ],
+  "FMC": [
+   [
+    "2026-10-09",
+    35.45,
+    5.16,
+    0.98,
+    2318.0
+   ]
+  ],
+  "MPC": [
+   [
+    "2026-10-09",
+    13.7,
+    9.94,
+    0.99,
+    5478.8
+   ]
+  ],
+  "CMX": [
+   [
+    "2026-10-09",
+    4.59,
+    6.67,
+    0.37,
+    467.7
+   ]
+  ],
+  "ASM": [
+   [
+    "2026-10-09",
+    4.91,
+    14.1,
+    0.36,
+    1999.3
+   ]
   ]
  },
- "changed_at": "2026-10-09T21:05:24+07:00"
+ "changed_at": "2026-10-09T22:38:44+07:00"
 }

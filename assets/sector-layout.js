@@ -1,7 +1,7 @@
 /* Value chains, geographic navigation, and clearly separated faster price feeds. */
 (() => {
 'use strict';
-if(document.body.dataset.sector==='realestate'||document.body.dataset.sector==='textile'||document.body.dataset.sector==='port'||document.body.dataset.sector==='agri')return; // assets/realestate-dashboard.js owns the chain and the Nhà ở / KCN panes
+if(document.body.dataset.sector==='realestate'||document.body.dataset.sector==='textile'||document.body.dataset.sector==='port'||document.body.dataset.sector==='agri'||document.body.dataset.sector==='seafood')return; // assets/realestate-dashboard.js owns the chain and the Nhà ở / KCN panes
 const power=document.body.dataset.sector==='power',oil=!power&&!!document.getElementById('chCurve'),sugar=!oil&&!power,src=window.SECTOR_DAILY?.sources||{};
 const fmt=(v,n=2)=>v.toLocaleString('vi-VN',{maximumFractionDigits:n});
 const make=(tag,cls,text)=>{const e=document.createElement(tag);e.className=cls||'';if(text)e.textContent=text;return e};

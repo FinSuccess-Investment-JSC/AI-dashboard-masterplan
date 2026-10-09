@@ -8,7 +8,7 @@ if(document.body.dataset.sector==='bank'){
  window.SECTOR_CONTENT={bank:window.BANK_CONTENT};
  return;
 }
-if(document.body.dataset.sector==='realestate'||document.body.dataset.sector==='textile'||document.body.dataset.sector==='port'||document.body.dataset.sector==='agri')return; // source lines and insights come from assets/realestate-dashboard.js
+if(document.body.dataset.sector==='realestate'||document.body.dataset.sector==='textile'||document.body.dataset.sector==='port'||document.body.dataset.sector==='agri'||document.body.dataset.sector==='seafood')return; // source lines and insights come from assets/realestate-dashboard.js
 const power=document.body.dataset.sector==='power',oil=!power&&!!document.getElementById('chCurve');
 const EIA='https://www.eia.gov/dnav/pet/pet_pri_spt_s1_d.htm';
 const WPSR='https://www.eia.gov/petroleum/supply/weekly/';

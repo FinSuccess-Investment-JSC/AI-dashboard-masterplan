@@ -14,9 +14,10 @@
     textile: {path: 'Det-may/', label: 'Dệt may'},
     port: {path: 'Cang-bien/', label: 'Cảng & kho bãi'},
     agri: {path: 'Nong-nghiep/', label: 'Nông nghiệp & thực phẩm'},
+    seafood: {path: 'Thuy-san/', label: 'Thủy sản'},
     plan: {path: 'Masterplan/', label: 'Master plan'}
   };
-  const aliases = {'dau-khi':'oil', 'duong':'sugar', 'sugar':'sugar', 'ngan-hang':'bank', 'bank':'bank', 'dien':'power', 'power':'power', 'bat-dong-san':'realestate', 'bds':'realestate', 'realestate':'realestate', 'det-may':'textile', 'textile':'textile', 'cang-bien':'port', 'cang':'port', 'port':'port', 'nong-nghiep':'agri', 'agri':'agri'};
+  const aliases = {'dau-khi':'oil', 'duong':'sugar', 'sugar':'sugar', 'ngan-hang':'bank', 'bank':'bank', 'dien':'power', 'power':'power', 'bat-dong-san':'realestate', 'bds':'realestate', 'realestate':'realestate', 'det-may':'textile', 'textile':'textile', 'cang-bien':'port', 'cang':'port', 'port':'port', 'nong-nghiep':'agri', 'agri':'agri', 'thuy-san':'seafood', 'seafood':'seafood'};
   function href(key) {
     if (!routes[key]) throw new Error('Unknown dashboard route: '+key);
     const url = new URL(routes[key].path, root);
@@ -41,7 +42,7 @@
       nav.classList.add('site-navigation');
       nav.setAttribute('aria-label','Điều hướng dashboard ngành');
       nav.replaceChildren();
-      for (const key of ['home','oil','sugar','bank','power','realestate','textile','port','agri']) {
+      for (const key of ['home','oil','sugar','bank','power','realestate','textile','port','agri','seafood']) {
         const link = document.createElement('a');
         link.href = href(key);
         link.dataset.siteRoute = key;
