@@ -8,6 +8,8 @@
   const table = document.getElementById('hydro-reservoir-table');
   const lastDate = document.getElementById('hydro-last-date');
   if(lastDate) lastDate.textContent=dataset.last_observation.split('-').reverse().join('/');
+  const collectorStatus = document.getElementById('hydro-collector-status');
+  if(collectorStatus && dataset.last_observation > '2026-08-27') collectorStatus.textContent='job lấy mẫu 00h đã có quan sát mới; ngày thiếu vẫn để trống';
   const names = [...new Set(dataset.monthly.map(r => r.reservoir))].sort((a,b) => a.localeCompare(b,'vi'));
   [...new Set(dataset.monthly.map(r => r.region))].sort((a,b)=>a.localeCompare(b,'vi')).forEach(region => {
     const group=document.createElement('optgroup'); group.label=region;

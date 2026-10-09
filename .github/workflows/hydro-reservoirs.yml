@@ -1,0 +1,50 @@
+name: Capture EVN reservoirs at midnight
+
+"on":
+  schedule:
+    # 00:15 Asia/Ho_Chi_Minh; GitHub cron uses UTC.
+    - cron: '15 17 * * *'
+    # Retry at 01:15 if the source published its midnight readings late.
+    - cron: '15 18 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: dashboard-data-refresh
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+      - run: python -m pip install -r scripts/requirements.txt
+      - name: Capture EVN 00h and rebuild monthly series
+        run: |
+          python scripts/fetch_hydro_reservoirs.py
+          python scripts/update_hydro_reservoirs.py
+      - name: Publish only a new observation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- data/hydro-reservoirs.js; then
+            echo 'No new valid EVN observation.'
+            exit 0
+          fi
+          python scripts/prepare_release.py --version "$(date -u +%Y%m%dT%H%M%SZ)-hydro"
+          python -m unittest discover -s tests -q
+          git add data/raw/evn-reservoirs data/hydro-reservoirs.js data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html Dien/index.html Bat-dong-san/index.html Det-may/index.html
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update EVN reservoir 00h observations'
+          git pull --rebase --autostash origin main
+          git push origin HEAD:main
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"

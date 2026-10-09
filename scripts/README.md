@@ -112,6 +112,8 @@ Still open:
 
 ### EVN reservoir archive
 
-`python3 scripts/build_hydro_reservoirs.py /path/to/Du_Lieu_Van_Hanh_Ho_Chua_EVN.xlsx` rebuilds `data/hydro-reservoirs.js` directly from `Du_lieu_ngay`. It retains only EVN observation timestamps within ±2 hours of requested 00:00 and records per-reservoir-month coverage. The dashboard compares the latest year, prior year and a 5-year same-month baseline. The input is an archived workbook supplied by the user, last observed 2026-08-27. The EVN live iframe could not be fetched in this session, so this is **not** a scheduled daily scraper. A future collector should append dated raw snapshots, validate actual EVN timestamps and preserve last-good before using this importer.
+`python3 scripts/build_hydro_reservoirs.py AI_WORKSPACE/source-archives/Du_Lieu_Van_Hanh_Ho_Chua_EVN_2026-08-27.xlsx` rebuilds `data/hydro-reservoirs-seed.json` directly from `Du_lieu_ngay`, then merges dated raw files into `data/hydro-reservoirs.js`. It retains only EVN timestamps within ±2 hours of requested 00:00 and records per-reservoir-month coverage. The dashboard compares the latest year, prior year and a 5-year same-month baseline. The workbook archive ends 2026-08-27.
+
+`scripts/fetch_hydro_reservoirs.py` reads the live EVN iframe table; the separate GitHub Actions workflow attempts 00:15 and 01:15 Asia/Ho_Chi_Minh. A capture is accepted only with at least 15 unique reservoirs whose EVN timestamp lies within ±2 hours of 00:00. Accepted JSON is archived at `data/raw/evn-reservoirs/YYYY-MM-DD.json`; `scripts/update_hydro_reservoirs.py` merges it with the seed idempotently. Invalid/late source leaves the last published series intact. The first production run was not yet verified on 09/10/2026.
 
 The exact user workbook is retained in the private `AI_WORKSPACE/source-archives/` notes repository so another machine can rebuild the public monthly bundle; it is not copied into the public dashboard repository.

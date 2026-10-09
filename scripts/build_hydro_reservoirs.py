@@ -13,7 +13,7 @@ from pathlib import Path
 
 from openpyxl import load_workbook
 
-OUT = Path(__file__).resolve().parents[1] / 'data' / 'hydro-reservoirs.js'
+OUT = Path(__file__).resolve().parents[1] / 'data' / 'hydro-reservoirs-seed.json'
 FIELDS = {'level': 9, 'inflow': 12, 'spill': 14, 'generation': 15}
 
 def main(path):
@@ -58,7 +58,9 @@ def main(path):
                'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
                'last_observation': latest.isoformat(), 'sampling': 'one requested 00:00 snapshot per day; retain only EVN timestamps within two hours of 00:00',
                'monthly': data}
-    OUT.write_text('window.HYDRO_RESERVOIRS=' + json.dumps(payload, ensure_ascii=False, separators=(',', ':')) + ';\n')
+    OUT.write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':')) + '\n')
+    from update_hydro_reservoirs import build
+    build()
     print(f'{len(region)} reservoirs, {len(data)} reservoir-months, latest {latest}, {OUT}')
 
 if __name__ == '__main__':

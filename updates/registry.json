@@ -1186,7 +1186,7 @@
      "dien-hydro-reservoirs"
     ]
    },
-   "how": "Kiểm quyền truy cập iframe EVN. Nếu lấy được mẫu mới đúng thời điểm, lưu ngày yêu cầu, giờ EVN gốc và bốn chỉ tiêu từng hồ vào workbook; chạy scripts/build_hydro_reservoirs.py với workbook đầy đủ. Hiện tại dữ liệu dừng 27/08/2026, chưa có bộ lấy mẫu tự động đã kiểm chứng.",
+   "how": "Theo dõi .github/workflows/hydro-reservoirs.yml: thử lấy mẫu 00:15 và 01:15, chỉ nhận giờ EVN trong ±2h quanh 00h, lưu raw JSON rồi scripts/update_hydro_reservoirs.py tái dựng chart. Kiểm lần chạy đầu tiên và ghi khoảng trống từ workbook 27/08/2026 đến mẫu mới; seed tái dựng từ workbook bằng scripts/build_hydro_reservoirs.py.",
    "gates": [
     "Chỉ dùng mẫu EVN trong ±2 giờ quanh 00h",
     "Không điền ngày thiếu hoặc nhận trùng ngày",
