@@ -71,3 +71,13 @@ to these sector dashboards unless a matching feature is added deliberately.
 - Mọi chart cột/đường/vùng trong một dashboard có cùng chiều cao vẽ (viewBox 640×260); chart ngang (hbar) cũng đệm về 260. `chart-types.js` dùng chung (trừ Bank) và hàm vẽ inline trong `Dau-khi/index.html` đều theo quy tắc này; không đặt `height` riêng cho từng chart.
 - Thẻ không chứa chart trong lưới 2 cột (vd. thẻ chỉ có `details`) chiếm cả hàng, không đứng cạnh chart làm khung rỗng bị kéo dãn.
 - Khối `[data-update-kind]` không còn nền/viền trên theo màu loại dữ liệu; loại dữ liệu chỉ hiển thị bằng badge nhỏ trên khối và chú giải ở Sources. Quy tắc ở cuối `assets/fin-success-theme.css`.
+
+## Đồng bộ với Stock dashboard (10/10/2026)
+
+Người dùng yêu cầu font, cỡ chữ và cách trình bày giống Stock dashboard, áp cho mọi dashboard ngành và trang tổng. CSS ở cuối `assets/fin-success-theme.css`, logo bar chèn bởi `assets/site-navigation.js` (`assets/fin-success-logo.png`, lấy từ `_template` của Stock dashboard).
+
+- Thứ tự đầu trang: logo FinSuccess (nền trắng) → thanh chọn ngành (chữ, ngành đang xem gạch chân teal) → dải tên ngành 20px navy → tab chính.
+- Tab chính: chữ 13,5px đậm 600 màu `#5a6682`, đang chọn navy + gạch chân teal 3px; không dùng nút viên thuốc nền navy nữa (sub-tab giữ kiểu viên thuốc trắng/teal nhạt).
+- Tiêu đề mục 22px navy có vạch teal bên trái; tiêu đề chart 16px; chữ phụ 12–13px `#596272`.
+- Ô chỉ số: nhãn in hoa 11px, số 22px đậm 800 navy. Bảng 13px, tiêu đề nền `#F0F4FF`. Card viền `#d9dde4`, bo 16px, padding 22px.
+- Trang có `.topbar` (trang tổng, Ngân hàng): nền trắng, ẩn chữ thương hiệu vì đã có logo.

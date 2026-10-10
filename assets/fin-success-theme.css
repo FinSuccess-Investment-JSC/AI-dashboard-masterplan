@@ -231,3 +231,69 @@ body[data-sector="bank"] .compact-chart-card svg[viewBox^="0 0 580 "] { display:
 .power-project-pipeline .pipeline-row span:first-child{font-weight:600;color:#303540}
 .power-project-pipeline .pipeline-milestone,.power-project-pipeline .pipeline-span{background:#dce2f7;color:#1D2678;font-weight:700;text-align:center}
 .power-project-pipeline .pipeline-span{background:#e7ecfa}
+
+/* ===== Đồng bộ giao diện với Stock dashboard (10/10/2026) =====
+   Nguồn: Stock dashboard/_template/brand.css + inline styles của template.
+   Logo bar, tab chữ gạch chân teal, tiêu đề mục có vạch teal, chữ bảng 13px,
+   ô chỉ số nhãn in hoa 11px / số 22px, card bo 16px. Chỉ đổi hình thức. */
+body { font-family: Arial, 'Helvetica Neue', system-ui, sans-serif; background: #fbfcff; color: #303540; }
+.fs-brandbar { background: #fff; border-bottom: 1px solid #dce1e9; }
+.fs-brandbar .in { max-width: 1440px; margin: 0 auto; padding: 20px 24px; min-height: 90px; box-sizing: border-box; display: flex; align-items: center; }
+.fs-brandbar img { height: 54px; width: auto; display: block; }
+.fiscbar { display: none !important; }
+/* Thanh chọn ngành: chữ gọn trên nền trắng, ngành đang xem gạch chân teal. */
+.site-navigation-shell { background: #fff; border-bottom: 1px solid #dce1e9; }
+nav.site-navigation:not(.site-navigation-inner nav) { background: #fff; border-bottom: 1px solid #dce1e9; padding: 6px 24px; max-width: none; margin: 0; }
+.site-navigation a, .topbar .site-navigation a { color: #5a6682; font: 600 12.5px/1.4 Arial, 'Helvetica Neue', system-ui, sans-serif; border: 0; border-radius: 0; border-bottom: 3px solid transparent; padding: 8px 10px; min-height: 0; background: transparent; }
+.site-navigation a:hover, .topbar .site-navigation a:hover { background: transparent; color: #1D2678; }
+.site-navigation a[aria-current="page"], .topbar .site-navigation a[aria-current="page"] { background: transparent; color: #1D2678; border-color: #59C5C8; }
+/* Tên ngành như dải tiêu đề mã ở Stock dashboard. */
+.research-header { background: #fff; border: 0; border-bottom: 1px solid #dce1e9; margin: 0 -24px 0; padding: 18px 24px; }
+.research-header h1 { font-size: 20px; font-weight: 750; color: #1D2678; margin: 0; letter-spacing: 0; }
+/* Tab chính: chữ, gạch chân teal khi chọn. */
+.majortabs { background: #fff !important; border-bottom: 1px solid #dce1e9; box-shadow: none; backdrop-filter: none; }
+.majortabrow, .majortabs { gap: 2px; }
+.majortabbtn, .majortabbtn.active { background: transparent !important; border: 0 !important; border-bottom: 3px solid transparent !important; border-radius: 0 !important; color: #5a6682 !important; font: 600 13.5px/1.3 Arial, 'Helvetica Neue', system-ui, sans-serif !important; padding: 13px 15px !important; }
+.majortabbtn:hover { color: #1D2678 !important; }
+.majortabbtn.active, .majortabbtn[aria-selected="true"] { color: #1D2678 !important; border-bottom-color: #59C5C8 !important; }
+.majortabbtn:focus-visible { outline: 3px solid #59C5C8; outline-offset: 2px; }
+/* Tiêu đề mục với vạch teal. */
+.sectionhead h2, .research-roadmap > h2, .thesis-board .sectionhead h2 { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 700; color: #1D2678; margin: 8px 0 14px; }
+.sectionhead h2::before, .research-roadmap > h2::before { content: ""; flex: none; width: 5px; height: 22px; border-radius: 3px; background: #59C5C8; }
+.sectionhead p, .research-caption { color: #596272; font-size: 13px; }
+.chart-title, .card h3 { font-size: 16px; font-weight: 700; color: #1D2678; }
+.chart-sub { color: #596272; font-size: 12px; }
+/* Card như Stock dashboard. */
+.card, .kpi, .business-model, .research-topic, .tx-tile, .thesis-signal { border: 1px solid #d9dde4; border-radius: 16px; box-shadow: 0 1px 3px rgba(20,25,113,.035); background: #fff; }
+.card { padding: 22px; }
+/* Ô chỉ số: nhãn in hoa 11px, số 22px navy đậm. */
+.kpi .label { font-size: 11px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: #596272; }
+.kpi .value { font-size: 22px; font-weight: 800; color: #1D2678; margin: 3px 0 1px; }
+.kpi .sub, .kpi .delta { font-size: 12px; color: #596272; }
+/* Bảng 13px, tiêu đề nền xanh nhạt. */
+table { font-size: 13px; }
+th { background: #F0F4FF !important; color: #1D2678; font-weight: 700; padding: 8px 10px; text-transform: none; letter-spacing: normal; font-size: 13px; }
+td { padding: 7px 10px; border-bottom: 1px solid #dce1e9; }
+.source-note, .cadence-note, .method-note { color: #596272; font-size: 11px; }
+@media (max-width: 700px) {
+  .fs-brandbar .in { min-height: 72px; padding: 14px 18px; }
+  .fs-brandbar img { height: 42px; }
+  .research-header { margin: 0 -14px; padding: 14px 18px; }
+  .majortabbtn, .majortabbtn.active { padding: 11px 10px !important; font-size: 12.5px !important; }
+  .card { padding: 16px; }
+}
+.research-header.fs-titleband { margin: 0; padding: 18px 24px; }
+.research-header.fs-titleband h1 { max-width: 1440px; margin: 0 auto; }
+/* Trang tổng và Ngân hàng có .topbar riêng: nền trắng, bỏ chữ thương hiệu (đã có logo), nav cùng kiểu. */
+.topbar { background: #fff !important; color: #303540 !important; border-bottom: 1px solid #dce1e9; box-shadow: none; }
+.topbar .brand { display: none !important; }
+.topbar > div, .topbar-inner { padding-top: 6px !important; padding-bottom: 6px !important; }
+.topbar .site-navigation { background: transparent; border: 0; padding: 0; }
+.topbar nav.site-navigation { border: 0 !important; padding: 0 !important; }
+@media (max-width: 700px) {
+  /* Một dòng cuộn ngang như tab của Stock dashboard. */
+  nav.site-navigation, .majortabs, .majortabrow { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .majortabs { display: flex; }
+  nav.site-navigation::-webkit-scrollbar, .majortabs::-webkit-scrollbar { display: none; }
+  .site-navigation a, .majortabbtn { flex: none; }
+}
