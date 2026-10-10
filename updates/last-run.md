@@ -1,4 +1,46 @@
-# Lịch cập nhật — 10/10/2026 10:47
+# Lịch cập nhật — 10/10/2026 13:18
 
-- ✅ shipping.ai.cycle: Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)
-- Hàng chờ Claude: 35 mục — sugar.domestic, sugar.crop, bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, sugar.ai.cycle, bank.ai.read, oil.supply-news
+- watcher fr.vn-seafood: lập baseline 0 mục
+- watcher news.vasep: lập baseline 29 mục
+- watcher news.shipping-policy: lập baseline 33 mục
+- ❌ oil.retail-fuel lỗi 2 ngày: retail_fuel
+- → hàng chờ [C] sugar.domestic: lịch 01/10 07:00
+- → hàng chờ [C] sugar.crop: lịch 05/10 07:00
+- → hàng chờ [C] bank.policy: lịch 07/10 07:00
+- → hàng chờ [D] oil.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] oil.ai.balance: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] oil.ai.regime: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] oil.ai.channels: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] sugar.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] bank.ai.read: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] power.evn-reservoirs: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] power.tariff-evn: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] power.market-fmp: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] power.policy: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] power.capacity: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] power.output-sources: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] power.hot-topics: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] power.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [B] realestate.wi.daily: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [B] realestate.wi.weekly: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] realestate.market-quarterly: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] realestate.fdi-projects: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] realestate.kcn-quarterly: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] realestate.policy: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] realestate.credit-rates: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] realestate.hot-topics: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] realestate.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [B] textile.wi.daily: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [B] textile.wi.weekly: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] textile.trade-tariff: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] textile.orders-brands: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] textile.policy: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] textile.hot-topics: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] textile.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [B] port.wi.monthly: lịch 10/10 07:00
+- → hàng chờ [C] port.throughput: lịch 10/10 07:00
+- → hàng chờ [B] agri.wi.monthly: lịch 10/10 07:00
+- → hàng chờ [C] agri.weather: lịch 10/10 07:00
+- → hàng chờ [B] seafood.wi.monthly: lịch 10/10 07:00
+- → hàng chờ [C] seafood.trade: lịch 10/10 07:00
+- Hàng chờ Claude: 41 mục — sugar.domestic, sugar.crop, bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, sugar.ai.cycle, bank.ai.read, oil.supply-news

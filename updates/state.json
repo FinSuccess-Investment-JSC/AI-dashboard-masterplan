@@ -1473,6 +1473,79 @@
   },
   "vietcap.research": {
    "seen": []
+  },
+  "fr.vn-seafood": {
+   "seen": []
+  },
+  "news.vasep": {
+   "seen": [
+    "d281248ab485daa1",
+    "303c99a181e7b9b2",
+    "492bfc77d55386bd",
+    "d3e5116b3c83c4a2",
+    "5ba5792dddb0451f",
+    "b3e80f8d4a99973d",
+    "5636d3b8b72da02b",
+    "73bf40d19371b1e0",
+    "ce5151abfadabed3",
+    "d50f8460fd87838b",
+    "df6d12e862517cb5",
+    "38f26a8ffef2a67c",
+    "3903464d10cdee0f",
+    "9b5727142b3ad448",
+    "7047a1213a65aef3",
+    "5e4654095ed1836e",
+    "90deb4a0f8ea1f38",
+    "e53d8d75df25fa7a",
+    "cdd82217316b4a59",
+    "950486f5783f58e3",
+    "7f82503c65956e03",
+    "81fac7deac5158e3",
+    "e838c3d34c783803",
+    "f4ad0e5fa88edc71",
+    "4683680561ebde17",
+    "60500bf836aed53e",
+    "53a7c4f4ad28c29c",
+    "9e6a12a13c89bf7a",
+    "d2d32128058c8df1"
+   ]
+  },
+  "news.shipping-policy": {
+   "seen": [
+    "69442ff23919ac0a",
+    "af4d34b14aa7a0a7",
+    "a67f33ccaf872fc5",
+    "dace722a5d7f59ea",
+    "7beba6c940927853",
+    "7c0482704247e438",
+    "a2b5296210816403",
+    "0db05b3a18d1f813",
+    "aa97f465e53a5116",
+    "27ddd40e1f227310",
+    "111c29e16f5a918b",
+    "07e0a238e446a16c",
+    "3681635077badc15",
+    "f3caffefe8ffca95",
+    "af8bf376f018cf21",
+    "5670c2fec3098481",
+    "c45d990083eca088",
+    "5239cd468cf10d18",
+    "78f250857d00c252",
+    "4e304a61ddb6ff30",
+    "af89faacc078856d",
+    "399d5555c9d8da5c",
+    "770686cef7e3b10c",
+    "56f9fa79d39bfd1c",
+    "3ce4877cde4801bc",
+    "74cb8b6d05936fb0",
+    "72e7fe3d9cc9b3ff",
+    "26dd4951979d5e51",
+    "248065b121b0a69e",
+    "779d522027326a74",
+    "506056dfbbb5cc38",
+    "e09ce7e2766b145a",
+    "489f66b7b29e12c2"
+   ]
   }
  },
  "queue": [
@@ -1875,7 +1948,67 @@
     "lần đầu: rà soát số đang hiển thị"
    ],
    "signals": []
+  },
+  {
+   "id": "port.wi.monthly",
+   "tier": "B",
+   "title": "Wi: XNK, vận chuyển hàng hóa đường biển, hàng không, thủy nội địa",
+   "since": "2026-10-10T13:18:47+07:00",
+   "reasons": [
+    "lịch 10/10 07:00"
+   ],
+   "signals": []
+  },
+  {
+   "id": "port.throughput",
+   "tier": "C",
+   "title": "Hàng hóa, container qua cảng toàn quốc, Hải Phòng, Cái Mép; sản lượng doanh nghiệp; cung – cầu cụm cảng",
+   "since": "2026-10-10T13:18:47+07:00",
+   "reasons": [
+    "lịch 10/10 07:00"
+   ],
+   "signals": []
+  },
+  {
+   "id": "agri.wi.monthly",
+   "tier": "B",
+   "title": "Wi: XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa",
+   "since": "2026-10-10T13:18:47+07:00",
+   "reasons": [
+    "lịch 10/10 07:00"
+   ],
+   "signals": []
+  },
+  {
+   "id": "agri.weather",
+   "tier": "C",
+   "title": "Bản tin ENSO NOAA, dự báo mặn, USDA cà phê/gạo, lịch mùa vụ",
+   "since": "2026-10-10T13:18:47+07:00",
+   "reasons": [
+    "lịch 10/10 07:00"
+   ],
+   "signals": []
+  },
+  {
+   "id": "seafood.wi.monthly",
+   "tier": "B",
+   "title": "Wi: XK thủy sản tổng và theo Mỹ, Trung Quốc, Nhật, Hàn",
+   "since": "2026-10-10T13:18:47+07:00",
+   "reasons": [
+    "lịch 10/10 07:00"
+   ],
+   "signals": []
+  },
+  {
+   "id": "seafood.trade",
+   "tier": "C",
+   "title": "VASEP: XK cá tra, tôm theo thị trường; IUU; MMPA",
+   "since": "2026-10-10T13:18:47+07:00",
+   "reasons": [
+    "lịch 10/10 07:00"
+   ],
+   "signals": []
   }
  ],
- "updatedAt": "2026-10-10T10:47:46+07:00"
+ "updatedAt": "2026-10-10T13:18:47+07:00"
 }
