@@ -178,11 +178,9 @@
   const stateText={good:'Catalyst',risk:'Risk',watch:'Sát ngưỡng',info:'Bối cảnh',na:'Thiếu dữ liệu'},order=['risk','watch','good','info','na'];
   const next=(dow,from=new Date())=>{const d=new Date(from);d.setHours(0,0,0,0);d.setDate(d.getDate()+(dow-d.getDay()+7)%7);return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')};
   // score row: {name,chart,st,mid:[cells],end:[cells]}; segs: [name,tickers,tilt(up|down|flat|na),why]
-  function renderBrief({headline,segs=[],headers,score,events}){
+  function renderBrief({headline,segs=[],headers,score=[],events,priority}){
     const brief=make('section','cr-brief');
     const head=make('div','cr-verdict card');head.append(make('span','cr-verdict-label','Kết luận hiện tại'),make('h3','',headline));
-    if(segs.length){const box=make('div','cr-segments');
-      segs.forEach(([n,t,s,why])=>{const c=make('div','cr-seg');c.dataset.tilt=s;c.append(make('b','',n),make('em','',t),make('span','cr-seg-tilt',{up:'▲',down:'▼',flat:'■',na:'?'}[s]),make('small','',why));box.append(c)});head.append(box)}
     brief.append(head);
     const tb=make('section','cr-score card');tb.append(make('h3','','Tín hiệu'));
     const wrap=make('div','cr-score-wrap'),table=make('table','cr-score-table');table.dataset.noFold=''; /* main content: never fold */wrap.append(table);
@@ -194,16 +192,41 @@
       const r=make('tr','');r.dataset.state=st;const c0=make('td','');
       if(chart&&document.getElementById(chart)){const a=make('a','',name+' ↗');a.href='#'+chart;a.addEventListener('click',e=>{e.preventDefault();reveal(chart)});c0.append(a)}else c0.textContent=name;
       r.append(c0);mid.forEach((t,i)=>r.append(make('td',i<2?'cr-num':'',t)));r.append(make('td','cr-state',stateText[st]));end.forEach(t=>r.append(make('td','',t)));tbody.append(r)});
-    table.append(tbody);tb.append(wrap,make('p','thesis-scope','Ngưỡng AI đề xuất, chưa kiểm định · bấm tên để xem biểu đồ.'));
+    table.append(tbody);
+    const candidates=(priority?.length?priority.map(([name,change])=>({r:score.find(x=>x.name===name),change})).filter(x=>x.r):score.map(r=>({r,change:r.mid?.[1]||''})))
+      .sort((a,b)=>order.indexOf(a.r.st)-order.indexOf(b.r.st));
+    const selected=[];
+    if(!priority&&candidates.some(x=>x.r.group)){
+      for(const group of new Set(candidates.map(x=>x.r.group||''))){const first=candidates.find(x=>(x.r.group||'')===group);if(first&&selected.length<5)selected.push(first)}
+    }
+    for(const item of candidates){if(selected.length>=5)break;if(!selected.includes(item))selected.push(item)}
+    const status={good:'Hỗ trợ',risk:'Rủi ro',watch:'Theo dõi',info:'Bối cảnh',na:'Thiếu số'};
+    const list=make('div','tx-priority-list');list.setAttribute('aria-label','Tín hiệu ưu tiên');
+    selected.forEach(({r,change})=>{
+      const item=make('details','tx-priority-row');item.dataset.state=r.st;
+      const summary=make('summary','tx-priority-summary');
+      const topic=make('span','tx-priority-topic');topic.append(make('i','tx-priority-dot'),make('span','tx-priority-name',r.name),make('small','tx-priority-status',status[r.st]||'Theo dõi'));
+      const number=make('span','tx-priority-number');number.append(make('strong','',r.big?.[0]||r.mid?.[0]||'—'),make('small','',change));
+      const affected=make('span','tx-priority-affected',String(r.end?.[0]||'').replaceAll('▲','↑').replaceAll('▼','↓'));
+      summary.append(topic,number,affected);item.append(summary);
+      const detail=make('div','tx-priority-detail');
+      if(r.big)detail.append(make('p','',r.mid?.[0]||''));
+      if(r.mid?.length>1){const trigger=make('p','');trigger.append(make('b','','Đối chiếu: '),r.mid.slice(r.big?1:1).join(' · '));detail.append(trigger)}
+      if(r.chart&&document.getElementById(r.chart)){const link=make('a','tx-priority-link','Xem biểu đồ ↗');link.href='#'+r.chart;link.addEventListener('click',e=>{e.preventDefault();reveal(r.chart)});detail.append(link)}
+      item.append(detail);list.append(item)
+    });
+    tb.append(list);
+    const all=make('details','tx-tablefold');all.append(make('summary','','Xem đủ '+score.length+' tín hiệu'),wrap);tb.append(all);
     const snap=signals.querySelector('.thesis-bank-snapshot');if(snap)brief.append(snap);
     brief.append(tb);
     if(events?.length){const cal=make('section','cr-cal card');cal.append(make('h3','','Sắp tới'));const ol=make('ol','');
-      events.forEach(([d,e])=>{const li=make('li','');li.append(make('time','',d),make('b','',e));ol.append(li)});cal.append(ol);brief.append(cal)}
+      events.slice(0,3).forEach(([d,e])=>{const li=make('li','');li.append(make('time','',d),make('b','',e));ol.append(li)});cal.append(ol);
+      if(events.length>3){const more=make('details','tx-more-events');more.append(make('summary','','Mốc khác'));const extra=make('ol','');events.slice(3).forEach(([d,e])=>{const li=make('li','');li.append(make('time','',d),make('b','',e));extra.append(li)});more.append(extra);cal.append(more)}brief.append(cal)}
     signals.prepend(brief);
     // Old tiles fold into one hidden block (kept in DOM so sources still move to Sources); scenarios removed per user.
     const detail=fold('thesis-detail','Chi tiết từng tín hiệu');
     detail.body.append(filter,grid,signals.querySelector('.thesis-assumption'));scenarios.replaceWith(detail.d);
-    if(grid.querySelector('.data-gap,.gap-row'))detail.d.open=true;
+    if(grid.querySelector('.data-gap,.gap-row')){detail.d.open=true;detail.d.classList.add('has-data-gap')}
     pane.classList.add('brief-compact');
   }
   const y=new Date().getFullYear();
@@ -320,35 +343,14 @@
     score.forEach(r=>{r.big=bigs[r.name]||['—','']});
     const nGood=score.filter(r=>r.st==='good').length,nRisk=score.filter(r=>r.st==='risk').length;
     renderBrief({
-      headline:'Cầu Mỹ và thị phần còn đỡ ngành; thuế cao hơn đối thủ và chi phí nguyên liệu là hai biến số xấu đi · '+nGood+' thuận, '+nRisk+' rủi ro',
+      headline:'Thuế Mỹ gây áp lực; thị phần tại Mỹ hỗ trợ nhóm may'+(psY!=null&&psY>15?' · PSF tăng gây sức ép cho nhóm sợi':'')+'.',
       segs:[['May','TCM · TNG · MSH · GIL',usSt==='risk'?'down':usSt==='good'?'up':'flat',usYtd==null?'Thiếu XK Mỹ':'XK Mỹ lũy kế '+sg(usYtd)],['Sợi','STK · ADS',psY!=null&&psY>15?'down':'flat',psY==null?'Thiếu PSF':'PSF '+sg(psY)+' YoY'],['Tập đoàn','VGT',ytd==null?'na':ytd>3?'up':'flat',ytd==null?'Cả chuỗi':'XK lũy kế '+sg(ytd)]],
       headers:['Biến số đang thay đổi','Đang thấy (số mới nhất)','Đổi đánh giá khi','','Hưởng lợi ▲ / chịu thiệt ▼'],
       score,
+      priority:[['Thuế Mỹ bất lợi tương đối','+2,5 điểm % so đối thủ'],['Đơn hàng sớm qua nhập khẩu vải','BQ 3 tháng · YoY'],['Nguyên liệu polyester tăng mạnh','PSF · YoY'],['Việt Nam lấy thị phần tại Mỹ','+0,7 điểm % từ 2025'],['Nhật, Hàn suy yếu; Trung Quốc tăng','XK Hàn · lũy kế YoY']],
       events:[['Đầu tháng','Hải quan, NSO: XK dệt may tháng trước'],['Giữa tháng','US Census: bán lẻ, tồn kho quần áo'],['20–30/10','BCTC quý III'],['24/11/2026','Bangladesh rời nhóm LDC'],['Theo sự kiện','USTR: hạn ngạch, miễn trừ Mục 301']]
     });
     }
-    // Scannable view: tiles instead of a wide table (table stays under a fold).
-    (()=>{const sc=document.querySelector('.cr-score');if(!sc)return;
-      const wrap=sc.querySelector('.cr-score-wrap'),title=sc.querySelector('h3');
-      const chip={good:'Catalyst',risk:'Risk',watch:'Sát ngưỡng',info:'Bối cảnh',na:'Thiếu số'};
-      const groups=[...new Set(score.map(r=>r.group))];
-      const box=make('div','tx-tiles');
-      groups.forEach(g=>{const gh=make('h4','tx-group',g);box.append(gh);const grid=make('div','tx-grid');
-        score.filter(r=>r.group===g).sort((a,b)=>order.indexOf(a.st)-order.indexOf(b.st)).forEach(r=>{
-          const t=make('article','tx-tile');t.dataset.state=r.st;
-          const top=make('div','tx-top');top.append(make('span','tx-dot'),make('span','tx-chip',chip[r.st]));
-          const h=make('h5','',r.name);
-          const n=make('div','tx-big');n.append(make('strong','',r.big[0]),make('small','',r.big[1]));
-          const ev=make('p','tx-ev',r.mid[0]);
-          const who=make('div','tx-who');String(r.end[0]).split(/(?=[▲▼])/).forEach(part=>{const m=part.trim();if(!m)return;const c=make('span','tx-tag',m);c.dataset.dir=m.startsWith('▲')?'up':m.startsWith('▼')?'down':'';who.append(c)});
-          const cond=make('p','tx-cond');cond.append(make('b','','Đảo chiều khi: '),r.mid[1]);
-          t.append(top,h,n,ev,who,cond);
-          if(r.chart&&document.getElementById(r.chart)){const a=make('a','tx-link','Xem chart ↗');a.href='#'+r.chart;a.addEventListener('click',e=>{e.preventDefault();reveal(r.chart)});t.append(a)}
-          grid.append(t)});
-        box.append(grid)});
-      const fold=make('details','tx-tablefold');fold.append(make('summary','','Xem dạng bảng'));fold.append(wrap);
-      sc.append(box,fold);if(title)title.after(sc.querySelector('.thesis-scope')||document.createComment(''));
-    })();
   }else if(bank){
     const map={'Cần chú ý':'risk','Theo dõi':'info'};
     const att=rows.filter(r=>r.status==='Cần chú ý').length,na=rows.filter(r=>!map[r.status]).length;
