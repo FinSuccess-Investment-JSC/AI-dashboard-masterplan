@@ -326,3 +326,5 @@ body.fs-home .fs-search label { text-align: left; }
 .fs-home-main { min-height: 40vh; }
 .fs-brandbar a { display: inline-block; }
 body.fs-home .fs-search { margin-bottom: 32px; } body.fs-home nav.site-navigation { border-top: 1px solid #dce1e9; }
+/* Thanh chọn ngành bỏ hẳn (10/10/2026): chuyển ngành bằng ô Tra cứu ngành, về trang gốc bằng logo. */
+[data-site-navigation], .site-navigation-shell, .topbar { display: none !important; }

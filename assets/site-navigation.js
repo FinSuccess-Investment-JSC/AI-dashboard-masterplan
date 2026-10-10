@@ -47,7 +47,7 @@
     const norm = t => String(t || '').toLocaleLowerCase('vi').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
     let entries = [], loaded = false, matches = [], selected = 0;
     function build() {
-      entries = ['oil','sugar','bank','power','realestate','textile','port','agri','seafood'].map(k => ({kind:'sector', code:routes[k].label, sub:'Dashboard ngành', key:k, words:norm(routes[k].label + ' ' + SECTOR_WORDS[k])}));
+      entries = ['oil','sugar','bank','power','realestate','textile','port','agri','seafood'].map(k => ({kind:'sector', code:routes[k].label, sub:'', key:k, words:norm(routes[k].label + ' ' + SECTOR_WORDS[k])}));
       const companies = (window.COMPANY_COMPARISON && window.COMPANY_COMPARISON.companies) || [];
       companies.forEach(c => { if (!routes[c.sector]) return; entries.push({kind:'stock', code:c.symbol, sub:routes[c.sector].label + (c.group ? ' · ' + c.group : ''), key:c.sector, words:norm(c.symbol + ' ' + c.group)}); });
       loaded = companies.length > 0;
