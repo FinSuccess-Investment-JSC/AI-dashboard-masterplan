@@ -1,5 +1,5 @@
 {
-  "version": "20261010-shipping-r1",
+  "version": "20261010-shipping-r2",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -14,17 +14,17 @@
     "shipping": "Van-tai-bien/"
   },
   "files": {
-    "404.html": "cd46524e6573bc8ba859e5543d07bb251982798b5f8cd2cea17629b7741df2d6",
-    "Bank/index.html": "936a2b3dd93d55a4c4aa7e3c77da3a172472889fa9566d5b3426a73ec72efd23",
-    "Bat-dong-san/index.html": "59b27b895894ed67cb58ddaf4a33a920489f3338ffcf5ca58eb2f8d2b8417bdd",
-    "Cang-bien/index.html": "ec225bd0aa9037672c0fa82f6516dba5c425e5f63efa340c6c158209e2a74bd5",
-    "Dau-khi/index.html": "4689564185a523eec9f248bafaf35cdc395baf4af27a48acd3192e883bda9a1e",
-    "Det-may/index.html": "dd59a36b199e8e30360f59a0ccb9b1a151f204264a43291e7920d397cfff2950",
-    "Dien/index.html": "5aa2524de07bbded5bcb6dc6da0946064520f4051a9abdb64f678266d1f4b750",
-    "Nong-nghiep/index.html": "a0a408085a2d378f0badedb026139604674d12191ad5ff1dcafa7205a92723ee",
-    "Sugar/index.html": "088cf5bcf45d067d89d1e07e19daac41a6022264314c2714b9211e0c2275ef22",
-    "Thuy-san/index.html": "78d7b73e2a440adcc73ff7037dcbe7d61cda6044681b75dfa658a14f02bb1060",
-    "Van-tai-bien/index.html": "75796f631c1208e9a223caa9eb4594f1ea1ccd80a9cfa0536a57be565e29fe83",
+    "404.html": "82ad9d51b7a33ef66a8c644a17f264d7843753bfbe1db9b95925ac06896f97b8",
+    "Bank/index.html": "6b2ec4eb6b624f280ded47ae06b39a97ae9f77e1aa4a384680527db26a6e7144",
+    "Bat-dong-san/index.html": "8688eee21d4224d56a32867e8d06773038177cf13681b25e6fddbaf567061ea0",
+    "Cang-bien/index.html": "8e5b423bf810d4353c82cd385703d1d79d3556609da4f9c2444bcae377df4157",
+    "Dau-khi/index.html": "366232d12f0763d4d444e6df8b9c87c0d0320e3c34883214c5fbc33f4f5b3e6c",
+    "Det-may/index.html": "709b018c93cf2ee3f276a70032c776a0673b06ed932cc0b80d753bda929ad055",
+    "Dien/index.html": "b5590dca587a2d00135c48e22540ecc4ced61fff2b78ca5d3fd7dab084120310",
+    "Nong-nghiep/index.html": "e7283356a83ddbc8cbd0cb06a96719c20cec245ba0211d3658144b92359ccd60",
+    "Sugar/index.html": "55eabc757806553d0b47a67d7aeb97761af686663a8461914a43ae5d35e27a6c",
+    "Thuy-san/index.html": "6f230d8f6cbf65ad38cff6f942d9267f0c54acd930eb9b567ff3078daaf367eb",
+    "Van-tai-bien/index.html": "a054bba8992fdd1df8b9b830e4e21f8d56d7186dbd8c2f6882a191871f0df57b",
     "assets/agri-dashboard.js": "75c4c93780e6622c94a39e6eaf8c079baae744415878b145fcdf8510be55eb6b",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
@@ -53,7 +53,7 @@
     "assets/sector-content.js": "ce8ee5451890eb22cdb8dceb763afbc882b9b1a415786770617ef83c87c3d783",
     "assets/sector-layout.js": "4a5d00ee4768716ee312fa1f3cb6739f7f885a709af370f6a59baa8dc505eef7",
     "assets/sector-runtime.js": "3998c564bde31f242387a89fe406f607319e843b75fa33722335634244f2e72c",
-    "assets/shipping-dashboard.js": "1932fc13a0fd8ca6cc508577dc377988ce55374798c254da7c7e9c4b796b0f0d",
+    "assets/shipping-dashboard.js": "4d241be96d9486085c2a493b089539148704cb2fb59fdb077a94b7c77ab01601",
     "assets/site-navigation.css": "54a3825f55f47d624459c2df4c1c82aa12c9fdafa9f1d3a59c54407153966029",
     "assets/site-navigation.js": "0c9b4dc10f61ccd329f220e046dba382d7ece0b0c0a9f795400c9b4616efbcc7",
     "assets/table-fold.js": "9c78488b28f67114a6d672d11a27c9ce27412ca8cf673d5146834280ef97e9aa",
@@ -71,8 +71,8 @@
     "data/seafood-wi-data.js": "7510439e76d6f85404862bf8560dfb04bace0ca8d4f58afcf881f9ad4998ae3b",
     "data/shipping-wi-data.js": "4728b8d71a3c50e3dac7127c3c79aa116a6c09d0db36be0d923a17176a43db99",
     "data/textile-wi-data.js": "4f1fc3b211fd842d69303a52c038caa639016145dbea30fa4c4fc0c865746839",
-    "duong/index.html": "569dc3aaef004fe60410399dc4106749b42cb5ebb9e10194911bca8addb55226",
-    "index.html": "bafad1334323a9c33c19abe3ad89a13b00c1ea0b1b08d756c0b5c901fc382556"
+    "duong/index.html": "31b2a13498ca3d0985f8be33847f068169ed6d8d4b40d3451de59c575a95c009",
+    "index.html": "373803809f32d711009c86f2db9a76a1c4a173e0645ead1e52021d1138e16db7"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }

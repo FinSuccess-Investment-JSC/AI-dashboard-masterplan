@@ -124,6 +124,47 @@ if(ps.length&&document.getElementById('chPpi')){
 }
 // Container (số Wi của toàn ngành đã ở trên; chart riêng dùng XNK làm cầu)
 const ex=S('exports'),im=S('imports');
+/* Grouped bars for supply vs demand growth (document figures, can be negative). */
+function groupBars(id,o){
+  const host=document.getElementById(id);if(!host)return;
+  const W=640,H=260,padL=46,padR=12,padT=20,padB=34,plotW=W-padL-padR,plotH=H-padT-padB;
+  const vals=o.series.flatMap(s=>s.values).filter(v=>Number.isFinite(v));
+  const maxV=Math.max(0,...vals),minV=Math.min(0,...vals),span=(maxV-minV)||1;
+  const top=maxV+span*0.22,bot=minV<0?minV-span*0.22:0;
+  const y=v=>padT+plotH*(top-v)/(top-bot);
+  const svg=baseSvg(W,H,o.ariaLabel||id);
+  const step=niceMax((top-bot)/4);
+  for(let g=Math.ceil(bot/step)*step;g<=top;g+=step){svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:y(g),y2:y(g),class:g===0?'axisline':'gridline'}));svg.appendChild(txt('text',{x:padL-8,y:y(g)+3,'text-anchor':'end',class:'axislabel'},(g>0?'+':'')+nf(g,0)+'%'));}
+  const gw=plotW/o.groups.length,ns=o.series.length,bw=Math.min(44,(gw*0.72)/ns);
+  o.groups.forEach((g,gi)=>{
+    const x0=padL+gi*gw+(gw-bw*ns)/2;
+    o.series.forEach((sr,si)=>{const v=sr.values[gi],x=x0+si*bw;
+      if(!Number.isFinite(v)){svg.appendChild(txt('text',{x:x+bw/2,y:y(0)-6,'text-anchor':'middle',class:'endlabel',fill:'var(--ink3)'},'chưa có'));return;}
+      const r=el('rect',{x:x+3,y:Math.min(y(0),y(v)),width:bw-6,height:Math.max(2,Math.abs(y(0)-y(v))),rx:3,ry:3,fill:sr.color});
+      r.appendChild(txt('title',{},g+' · '+sr.name+': '+(v>0?'+':'')+nf(v,1)+'%'));svg.appendChild(r);
+      svg.appendChild(txt('text',{x:x+bw/2,y:v>=0?y(v)-5:y(v)+13,'text-anchor':'middle',class:'endlabel',fill:'var(--ink2)'},(v>0?'+':'')+nf(v,1)+'%'));
+    });
+    svg.appendChild(txt('text',{x:padL+gi*gw+gw/2,y:H-padB+18,'text-anchor':'middle',class:'axislabel'},g));
+  });
+  host.innerHTML='';host.appendChild(svg);
+  const leg=make('div','legend');o.series.forEach(sr=>{const li=make('span','li');const sw=make('i','sw');sw.style.background=sr.color;sw.style.height='9px';li.append(sw,document.createTextNode(sr.name));leg.append(li)});host.appendChild(leg);
+}
+const BIMCO=[['BIMCO qua Cyprus Shipping News','https://cyprusshippingnews.com/?s=BIMCO']];
+if(document.getElementById('chSdTanker')){
+  groupBars('chSdTanker',{groups:['2026','2027'],series:[{name:'Cầu nếu Hormuz đóng kéo dài',color:C.navy,values:[-12,-9.5]},{name:'Cầu nếu Hormuz mở lại',color:C.teal,values:[-5,7.5]},{name:'Cung đội tàu',color:C.red,values:[-0.5,5.5]}],ariaLabel:'Cung cầu tanker dầu thô theo BIMCO'});
+  sourceLine('chSdTanker',[['BIMCO tanker 6/2026 qua Hellenic Shipping News','https://www.hellenicshippingnews.com/?p=1136526']],'6/2026','Điểm giữa các khoảng BIMCO đưa ra (vd −11…−13% vẽ −12%). Cầu tính theo tấn-dặm.',false);
+  insight('chSdTanker','Cầu tanker theo tấn giảm vì dầu Vịnh không xuất được, nhưng cung tàu 2026 gần như không tăng (0 đến −1%) và tàu bị kẹt, nên cước vẫn ở đỉnh. Đến 2027 cung +5–6% — nếu Hormuz vẫn đóng thì cả cầu và cước cùng giảm; nếu mở lại, cầu bật +7,5% nhưng tàu mới cũng về.');
+}
+if(document.getElementById('chSdBulk')){
+  groupBars('chSdBulk',{groups:['2026','2027'],series:[{name:'Cầu (tấn-dặm)',color:C.navy,values:[3,1]},{name:'Cung đội tàu',color:C.red,values:[2,4]}],ariaLabel:'Cung cầu hàng rời theo BIMCO'});
+  sourceLine('chSdBulk',[['BIMCO dry bulk 7/2026','https://cyprusshippingnews.com/2026/07/31/bimco-dry-bulk-shipping-market-overview-outlook-2/']],'7/2026','Điểm giữa khoảng BIMCO (cầu 2026 +2,5…3,5%, thêm 1 điểm nếu Hormuz mở; cung 2027 +3,5…4,5%).',false);
+  insight('chSdBulk','2026 cầu còn vượt cung (+3% so +2%) nên BDI giữ cao, thuận cho VOS, VNA. 2027 đảo chiều: cung +4% trong khi cầu chỉ +1% — cước hàng rời khó giữ sang năm sau.');
+}
+if(document.getElementById('chSdCont')){
+  groupBars('chSdCont',{groups:['2026','2027'],series:[{name:'Cầu (khối lượng, 7T/2026 thực tế)',color:C.navy,values:[5.1,NaN]},{name:'Cung đội tàu',color:C.red,values:[4.6,9]}],ariaLabel:'Cung cầu container theo BIMCO'});
+  sourceLine('chSdCont',[['BIMCO container 9/2026','https://cyprusshippingnews.com/2026/09/28/bimcos-container-shipping-market-overview-outlook-september-2026-is-out/']],'9/2026','BIMCO không nêu % cầu 2027, chỉ nói cầu tàu có thể thấp hơn 5 điểm % nếu các hãng về Suez hoàn toàn.',false);
+  insight('chSdCont','2026 còn cân (cầu +5,1% so cung +4,6%), nhưng 2027 cung +9% là mức tăng mạnh nhất ba phân khúc; cộng thêm tàu quay về Suez làm tấn-dặm mất 5–10% → giá thuê tàu của HAH chịu sức ép từ 2027.');
+}
 if(ex.length&&document.getElementById('chTrade')){
  const imm=byMonth(im),rs=ex.slice(-36);
  barLineChart('chTrade',{categories:rs.map(r=>mon(r.date)),series:[{name:'XNK (tỷ USD)',color:C.navy,values:rs.map(r=>(r.value+(imm[ym(r.date)]?.value||0))/1000)}],unit:'tỷ USD',digits:1,height:260,rotateLabels:true});

@@ -299,7 +299,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/sector-content.js?v=ce8ee5451890" defer></script>
 <script src="../assets/sector-layout.js?v=4a5d00ee4768" defer></script>
 <script src="../data/shipping-wi-data.js?v=4728b8d71a3c" defer></script>
-<script src="../assets/shipping-dashboard.js?v=1932fc13a0fd" defer></script>
+<script src="../assets/shipping-dashboard.js?v=4d241be96d94" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="../assets/catalyst-board.js?v=8d3a1d442ce8" defer></script>
@@ -313,7 +313,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=0c9b4dc10f61" data-release="20261010-shipping-r1"></script>
+<script src="../assets/site-navigation.js?v=0c9b4dc10f61" data-release="20261010-shipping-r2"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=ae5d52d8722e">
@@ -426,9 +426,10 @@ body[data-sector="shipping"] .tx-group{margin:18px 0 8px;font-size:12px;letter-s
       </div>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="vt-12" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-      <div class="chart-title">Cung – cầu tanker theo BIMCO, Clarksons</div>
-      <div class="chart-sub">% · dự báo theo kịch bản Hormuz</div>
-      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>Trước xung đột (11/2025)</th><th>Kịch bản mở lại (6/2026)</th><th>Kịch bản đóng kéo dài (6/2026)</th></tr></thead><tbody><tr><td>Cầu tanker dầu thô 2026</td><td>+1–2%</td><td>−4 đến −6%</td><td><b>−11 đến −13%</b></td></tr><tr><td>Cầu tanker dầu thô 2027</td><td>0–1%</td><td>+6,5 đến +8,5%</td><td>−8,5 đến −10,5%</td></tr><tr><td>Cung tanker dầu thô 2026 / 2027</td><td>+1,5%</td><td colspan="2">0 đến −1% / +5–6%</td></tr><tr><td>Xuất khẩu dầu lũy kế 8T/2026</td><td>—</td><td colspan="2">Dầu thô −5,7%, sản phẩm sạch −11,2%; tồn kho giảm &gt;500 triệu thùng</td></tr><tr><td>Orderbook tanker (Clarksons H1/2026)</td><td>—</td><td colspan="2">25% đội tàu; &gt;150 VLCC đặt mới 2026, cao nhất từ 1973</td></tr></tbody></table></div>
+      <div class="chart-title">Cung – cầu tanker dầu thô theo BIMCO</div>
+      <div class="chart-sub">% tăng trưởng · hai kịch bản Hormuz · điểm giữa khoảng dự báo</div>
+      <div id="chSdTanker"></div>
+      <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>Trước xung đột (11/2025)</th><th>Kịch bản mở lại (6/2026)</th><th>Kịch bản đóng kéo dài (6/2026)</th></tr></thead><tbody><tr><td>Cầu tanker dầu thô 2026</td><td>+1–2%</td><td>−4 đến −6%</td><td><b>−11 đến −13%</b></td></tr><tr><td>Cầu tanker dầu thô 2027</td><td>0–1%</td><td>+6,5 đến +8,5%</td><td>−8,5 đến −10,5%</td></tr><tr><td>Cung tanker dầu thô 2026 / 2027</td><td>+1,5%</td><td colspan="2">0 đến −1% / +5–6%</td></tr><tr><td>Xuất khẩu dầu lũy kế 8T/2026</td><td>—</td><td colspan="2">Dầu thô −5,7%, sản phẩm sạch −11,2%; tồn kho giảm &gt;500 triệu thùng</td></tr><tr><td>Orderbook tanker (Clarksons H1/2026)</td><td>—</td><td colspan="2">25% đội tàu; &gt;150 VLCC đặt mới 2026, cao nhất từ 1973</td></tr></tbody></table></div></details>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Cầu tanker giảm theo tấn (ít dầu xuất) nhưng cước vẫn tăng vì tấn-dặm tăng và tàu bị kẹt: BIMCO đo cầu theo tấn-dặm có điều chỉnh. Bản BIMCO 8/2026 không nêu % mới, % kịch bản lấy từ bản 6/2026; bimco.org không mở trực tiếp, số lấy qua trang đăng lại thông cáo.</div></details>
       <div class="source-note">Nguồn: <a href="https://gcaptain.com/bimco-sees-tanker-markets-splitting-as-geopolitics-reshape-global-oil-trade/" target="_blank" rel="noopener">gCaptain – BIMCO 11/2025</a> · <a href="https://www.hellenicshippingnews.com/?p=1136526" target="_blank" rel="noopener">Hellenic – BIMCO 6/2026</a> · <a href="https://cyprusshippingnews.com/2026/08/31/export-disruptions-increasingly-hurting-tanker-demand-bimcos-tanker-shipping-market-overview-outlook-august-2026-is-out/" target="_blank" rel="noopener">BIMCO 8/2026</a> · <a href="https://hellenicshippingnews.com/first-half-2026-shipping-market-review-clarksea-index-up-61" target="_blank" rel="noopener">Clarksons H1/2026</a></div>
     </div>
@@ -455,9 +456,10 @@ body[data-sector="shipping"] .tx-group{margin:18px 0 8px;font-size:12px;letter-s
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-ppi"></table></div></details>
       </div>
       <div class="card" data-block-id="vt-23" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-        <div class="chart-title">Cung – cầu hàng rời theo BIMCO (7/2026)</div>
-        <div class="chart-sub">% tăng trưởng</div>
-        <div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>2026</th><th>2027</th><th>Ý nghĩa</th></tr></thead><tbody><tr><td>Cầu (tấn-dặm)</td><td><b>+2,5 đến +3,5%</b> (+1 điểm % nếu Hormuz mở)</td><td>+0,5 đến +1,5%</td><td>Cầu vượt cung năm nay</td></tr><tr><td>Cung đội tàu</td><td>+1,5 đến +2,5%</td><td><b>+3,5 đến +4,5%</b></td><td>Cung tăng tốc 2027 → cước khó giữ</td></tr><tr><td>Orderbook (Clarksons)</td><td colspan="2">14% đội tàu — thấp nhất ba phân khúc</td><td>Thuận cho VOS, VNA</td></tr></tbody></table></div>
+        <div class="chart-title">Cung – cầu hàng rời theo BIMCO</div>
+      <div class="chart-sub">% tăng trưởng · tấn-dặm so đội tàu</div>
+      <div id="chSdBulk"></div>
+      <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>2026</th><th>2027</th><th>Ý nghĩa</th></tr></thead><tbody><tr><td>Cầu (tấn-dặm)</td><td><b>+2,5 đến +3,5%</b> (+1 điểm % nếu Hormuz mở)</td><td>+0,5 đến +1,5%</td><td>Cầu vượt cung năm nay</td></tr><tr><td>Cung đội tàu</td><td>+1,5 đến +2,5%</td><td><b>+3,5 đến +4,5%</b></td><td>Cung tăng tốc 2027 → cước khó giữ</td></tr><tr><td>Orderbook (Clarksons)</td><td colspan="2">14% đội tàu — thấp nhất ba phân khúc</td><td>Thuận cho VOS, VNA</td></tr></tbody></table></div></details>
         <div class="source-note">Nguồn: <a href="https://cyprusshippingnews.com/2026/07/31/bimco-dry-bulk-shipping-market-overview-outlook-2/" target="_blank" rel="noopener">BIMCO dry bulk 7/2026</a> · <a href="https://hellenicshippingnews.com/first-half-2026-shipping-market-review-clarksea-index-up-61" target="_blank" rel="noopener">Clarksons</a></div>
       </div>
     </div>
@@ -470,9 +472,10 @@ body[data-sector="shipping"] .tx-group{margin:18px 0 8px;font-size:12px;letter-s
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-trade"></table></div></details>
       </div>
       <div class="card" data-block-id="vt-31" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-        <div class="chart-title">Cung – cầu container theo BIMCO (9/2026)</div>
-        <div class="chart-sub">% · đội tàu 34 triệu TEU</div>
-        <div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>Số</th><th>Ý nghĩa</th></tr></thead><tbody><tr><td>Khối lượng 7T/2026</td><td>+5,1% YoY</td><td>Cầu hàng vẫn tăng</td></tr><tr><td>Đội tàu 2026 / 2027</td><td>+4,6% / <b>+9%</b></td><td>Cung tăng mạnh 2027</td></tr><tr><td>Orderbook</td><td><b>&gt;14 triệu TEU = 42% đội tàu</b></td><td>Cao nhất ba phân khúc</td></tr><tr><td>Nếu Suez bình thường hoàn toàn</td><td>Cầu tàu <b>−10%</b></td><td>Tấn-dặm mất đi → thừa tàu, giá thuê tàu giảm</td></tr></tbody></table></div>
+        <div class="chart-title">Cung – cầu container theo BIMCO</div>
+      <div class="chart-sub">% tăng trưởng · khối lượng so đội tàu 34 triệu TEU</div>
+      <div id="chSdCont"></div>
+      <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>Số</th><th>Ý nghĩa</th></tr></thead><tbody><tr><td>Khối lượng 7T/2026</td><td>+5,1% YoY</td><td>Cầu hàng vẫn tăng</td></tr><tr><td>Đội tàu 2026 / 2027</td><td>+4,6% / <b>+9%</b></td><td>Cung tăng mạnh 2027</td></tr><tr><td>Orderbook</td><td><b>&gt;14 triệu TEU = 42% đội tàu</b></td><td>Cao nhất ba phân khúc</td></tr><tr><td>Nếu Suez bình thường hoàn toàn</td><td>Cầu tàu <b>−10%</b></td><td>Tấn-dặm mất đi → thừa tàu, giá thuê tàu giảm</td></tr></tbody></table></div></details>
         <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Cước container (SCFI, WCI) và giá thuê tàu không có trên Wi; WCI theo tuần xem ở dashboard Cảng &amp; kho bãi.</div></details>
         <div class="source-note">Nguồn: <a href="https://cyprusshippingnews.com/2026/09/28/bimcos-container-shipping-market-overview-outlook-september-2026-is-out/" target="_blank" rel="noopener">BIMCO container 9/2026</a></div>
       </div>
