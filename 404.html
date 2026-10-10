@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi" data-release="20261010-catalyst-compact-r1">
+<html lang="vi" data-release="20261010-shipping-r1">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,6 +31,8 @@ const routes = [
   {match: base.toLowerCase() + "nong-nghiep/index.html", target: base + "Nong-nghiep/"},
   {match: base.toLowerCase() + "thuy-san/", target: base + "Thuy-san/"},
   {match: base.toLowerCase() + "thuy-san/index.html", target: base + "Thuy-san/"},
+  {match: base.toLowerCase() + "van-tai-bien/", target: base + "Van-tai-bien/"},
+  {match: base.toLowerCase() + "van-tai-bien/index.html", target: base + "Van-tai-bien/"},
   {match: base.toLowerCase() + "masterplan/", target: base + "Masterplan/"},
   {match: base.toLowerCase() + "masterplan/index.html", target: base + "Masterplan/"}
 ];
@@ -54,7 +56,7 @@ a.primary{background:#11255a;color:#fff;border-color:#11255a}
     <a href="/AI-dashboard-masterplan/Dau-khi/">Dashboard Dầu khí</a>
     <a href="/AI-dashboard-masterplan/Sugar/">Dashboard Đường</a>
     <a href="/AI-dashboard-masterplan/Bank/">Dashboard Ngân hàng</a>
-    <a href="/AI-dashboard-masterplan/Dien/">Dashboard Điện</a> · <a href="/AI-dashboard-masterplan/Bat-dong-san/">Dashboard Bất động sản</a> · <a href="/AI-dashboard-masterplan/Det-may/">Dashboard Dệt may</a> · <a href="/AI-dashboard-masterplan/Cang-bien/">Dashboard Cảng &amp; kho bãi</a> · <a href="/AI-dashboard-masterplan/Nong-nghiep/">Dashboard Nông nghiệp &amp; thực phẩm</a> · <a href="/AI-dashboard-masterplan/Thuy-san/">Dashboard Thủy sản</a>
+    <a href="/AI-dashboard-masterplan/Dien/">Dashboard Điện</a> · <a href="/AI-dashboard-masterplan/Bat-dong-san/">Dashboard Bất động sản</a> · <a href="/AI-dashboard-masterplan/Det-may/">Dashboard Dệt may</a> · <a href="/AI-dashboard-masterplan/Cang-bien/">Dashboard Cảng &amp; kho bãi</a> · <a href="/AI-dashboard-masterplan/Nong-nghiep/">Dashboard Nông nghiệp &amp; thực phẩm</a> · <a href="/AI-dashboard-masterplan/Thuy-san/">Dashboard Thủy sản</a> · <a href="/AI-dashboard-masterplan/Van-tai-bien/">Dashboard Vận tải biển</a>
   </div>
 </main>
 <script>document.querySelectorAll('.actions a').forEach(a=>{const url=new URL(a.href);url.searchParams.set('v',document.documentElement.dataset.release);a.href=url.href;});</script>

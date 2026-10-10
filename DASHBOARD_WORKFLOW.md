@@ -298,3 +298,11 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 
 - Mục registry mới luôn vào hàng chờ với lý do "lần đầu: rà soát số đang hiển thị". Với dashboard vừa dựng (số Wi mới, số tài liệu có evidence.json) việc rà này là thừa: ngay khi push, chạy `python3 scripts/update_scheduler.py --done <id> --note "Đã dựng và kiểm chứng ngày …"` cho từng mục của ngành đó. Đổi tên mục thì gỡ mã cũ khỏi `updates/state.json`.
 - 09/10/2026 đã đóng 24 mục Cảng, Nông nghiệp, Thủy sản; hàng chờ còn 35 mục của các dashboard cũ (rà soát lần đầu có ích vì chưa có evidence), routine thứ Hai xử lý 8 mục/lượt.
+
+## 23. Dashboard Vận tải biển (10/10/2026)
+
+- **Phạm vi người dùng chốt:** 8 mã (PVT, VTO, VIP, PVP, GSP · VOS, VNA · HAH); sub-tab **Tàu dầu & khí / Hàng rời / Container**; tab riêng **Địa chính trị & tuyến** (`mt10`: Hormuz, Bab el-Mandeb theo ngày từ PortWatch, Suez/Mũi Hảo Vọng, bảo hiểm chiến tranh).
+- **Trang:** `Van-tai-bien/index.html` (`data-sector="shipping"`), renderer `assets/shipping-dashboard.js` (`window.SHIPPING_BRIEF`). Mã card `vt-*`, lịch `shipping.*`. Hormuz, Bab el-Mandeb dùng lại feed `window.SECTOR_DAILY.sources` của Dầu khí (mục `oil.portwatch` mở rộng sang `vt-40`, `vt-41`).
+- **Wi (nhóm B):** `data/shipping-wi-contract.json` → `scripts/build_shipping_wi.py`: BDI 82585, BDTI 82583, BCTI 82497; vận chuyển đường biển 75662/75661; chỉ số giá vận tải biển, đường thủy theo quý; XNK; Brent, dầu nhiên liệu Trung Quốc (chia 100 để cùng trục); định giá GICS 185, 309. Không có SCFI, giá thuê tàu container, TCE trên Wi — lấy từ tài liệu tuần (Affinity, Handybulk, HARPEX) vào `vt-61`, `vt-62`.
+- **Bằng chứng:** `data/shipping/evidence.json` 142 dòng. Khi hợp nhất bản nháp của agent phải mở lại các dòng `paraphrase/check/partial`: 6 dòng không mở lại được (SCFI sourcing.center, PHS, danchuphapluat) → bỏ số khỏi trang; OFAC 08/10/2026 đếm lại từ trang gốc là **22 tàu** (bản nháp ghi 24). ustr.gov, imo.org, bimco.org, suezcanal.gov.eg không mở trực tiếp — số qua hãng luật, P&I, trang đăng lại thông cáo, ghi rõ trong "Lưu ý dữ liệu".
+- **Mâu thuẫn nguồn để nguyên và ghi chú:** đội tàu VN 12/2025 ~9,4 triệu DWT (Bộ Xây dựng) thấp hơn 12/2024 11,37 triệu (VnEconomy) dù số tàu tăng — khác phạm vi thống kê, chưa đối chiếu.

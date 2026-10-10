@@ -234,6 +234,51 @@
    "lastAttempt": "2026-10-09T23:21:15+07:00",
    "lastSuccess": "2026-10-09T23:21:15+07:00",
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+  },
+  "shipping.wi.daily": {
+   "lastAttempt": "2026-10-10T10:47:43+07:00",
+   "lastSuccess": "2026-10-10T10:47:43+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+  },
+  "shipping.wi.weekly": {
+   "lastAttempt": "2026-10-10T10:47:44+07:00",
+   "lastSuccess": "2026-10-10T10:47:44+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+  },
+  "shipping.wi.valuation": {
+   "lastAttempt": "2026-10-10T10:47:44+07:00",
+   "lastSuccess": "2026-10-10T10:47:44+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+  },
+  "shipping.outlook": {
+   "lastAttempt": "2026-10-10T10:47:45+07:00",
+   "lastSuccess": "2026-10-10T10:47:45+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+  },
+  "shipping.policy": {
+   "lastAttempt": "2026-10-10T10:47:45+07:00",
+   "lastSuccess": "2026-10-10T10:47:45+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+  },
+  "shipping.rates": {
+   "lastAttempt": "2026-10-10T10:47:45+07:00",
+   "lastSuccess": "2026-10-10T10:47:45+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+  },
+  "shipping.companies": {
+   "lastAttempt": "2026-10-10T10:47:46+07:00",
+   "lastSuccess": "2026-10-10T10:47:46+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+  },
+  "shipping.hot-topics": {
+   "lastAttempt": "2026-10-10T10:47:46+07:00",
+   "lastSuccess": "2026-10-10T10:47:46+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+  },
+  "shipping.ai.cycle": {
+   "lastAttempt": "2026-10-10T10:47:46+07:00",
+   "lastSuccess": "2026-10-10T10:47:46+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
   }
  },
  "watchers": {
@@ -1832,5 +1877,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-10-09T23:21:15+07:00"
+ "updatedAt": "2026-10-10T10:47:46+07:00"
 }

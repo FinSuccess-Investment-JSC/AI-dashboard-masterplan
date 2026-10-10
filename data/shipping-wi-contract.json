@@ -1,0 +1,136 @@
+{
+ "schema": 1,
+ "about": "Các lời gọi WiMCP cho dashboard Vận tải biển. Routine Claude gọi lại đúng các lời gọi này, rồi chạy scripts/build_shipping_wi.py. Không chép tay số.",
+ "calls": [
+  {
+   "block": "macro_shipping",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "82585,82583,82497,75662,75661,83479,92728",
+    "from_time": "2019-01-01",
+    "limit": 120
+   },
+   "cadence": "daily"
+  },
+  {
+   "block": "commodity_shipping",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "73982,73983,73984,203085,203125",
+    "from_time": "2023-10-01",
+    "to_time": "2026-10-10",
+    "limit": 1000
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "Wi nén chuỗi ngày về cuối tháng. to_time = hôm nay khi gọi lại. Wi không có SCFI, TCE, giá thuê tàu."
+  },
+  {
+   "block": "sector_ratio_recent",
+   "tool": "wi_data_sector",
+   "input": {
+    "action": "get_data",
+    "endpoint_name": "sector_ratio_daily",
+    "filters": "{\"sector_id\":\"185,309\"}",
+    "columns": "sector_id,trading_date,pe,pb,market_cap",
+    "by_time": "trading_date",
+    "from_time": "2025-01-01",
+    "to_time": "2026-10-10",
+    "limit": 1000
+   },
+   "cadence": "daily",
+   "match_keys": [
+    "action",
+    "endpoint_name",
+    "filters",
+    "from_time"
+   ],
+   "pick": "max_to_time"
+  }
+ ],
+ "indicators": {
+  "73982": [
+   "bdi",
+   "Baltic Dry Index",
+   "điểm",
+   "daily"
+  ],
+  "73983": [
+   "bdti",
+   "Baltic Dirty Tanker Index",
+   "điểm",
+   "daily"
+  ],
+  "73984": [
+   "bcti",
+   "Baltic Clean Tanker Index",
+   "điểm",
+   "daily"
+  ],
+  "203085": [
+   "brent",
+   "Dầu Brent",
+   "USD/thùng",
+   "daily"
+  ],
+  "203125": [
+   "fuel_oil_cn",
+   "Dầu nhiên liệu (spot Trung Quốc)",
+   "CNY/tấn",
+   "daily"
+  ],
+  "82585": [
+   "sea_freight",
+   "Vận chuyển hàng hóa đường biển",
+   "nghìn tấn",
+   "monthly"
+  ],
+  "82583": [
+   "overseas_freight",
+   "Vận chuyển hàng hóa ngoài nước",
+   "nghìn tấn",
+   "monthly"
+  ],
+  "82497": [
+   "sea_tonkm_ytd",
+   "Luân chuyển hàng hóa đường biển (lũy kế)",
+   "triệu tấn.km",
+   "monthly"
+  ],
+  "75662": [
+   "ppi_sea",
+   "Chỉ số giá vận tải ven biển và viễn dương, so cùng kỳ",
+   "%",
+   "quarterly"
+  ],
+  "75661": [
+   "ppi_water",
+   "Chỉ số giá vận tải đường thủy, so cùng kỳ",
+   "%",
+   "quarterly"
+  ],
+  "83479": [
+   "exports",
+   "Xuất khẩu hàng hóa",
+   "triệu USD",
+   "monthly"
+  ],
+  "92728": [
+   "imports",
+   "Nhập khẩu hàng hóa",
+   "triệu USD",
+   "monthly"
+  ]
+ },
+ "sectors": {
+  "185": "Vận tải hàng hóa đường thủy",
+  "309": "Cảng và dịch vụ hàng hải"
+ }
+}

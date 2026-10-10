@@ -13,7 +13,7 @@ import re
 from urllib.parse import urlsplit, unquote
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = ['index.html','Bank/index.html','Dau-khi/index.html','Sugar/index.html','duong/index.html','Dien/index.html','Bat-dong-san/index.html','Det-may/index.html','Cang-bien/index.html','Nong-nghiep/index.html','Thuy-san/index.html','404.html']
+PAGES = ['index.html','Bank/index.html','Dau-khi/index.html','Sugar/index.html','duong/index.html','Dien/index.html','Bat-dong-san/index.html','Det-may/index.html','Cang-bien/index.html','Nong-nghiep/index.html','Thuy-san/index.html','Van-tai-bien/index.html','404.html']
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -43,7 +43,7 @@ def main():
         page.write_text(text)
     manifest={
         'version':args.version,
-        'routes':{'home':'./','oil':'Dau-khi/','sugar':'Sugar/','bank':'Bank/','power':'Dien/','realestate':'Bat-dong-san/','textile':'Det-may/','port':'Cang-bien/','agri':'Nong-nghiep/','seafood':'Thuy-san/'},
+        'routes':{'home':'./','oil':'Dau-khi/','sugar':'Sugar/','bank':'Bank/','power':'Dien/','realestate':'Bat-dong-san/','textile':'Det-may/','port':'Cang-bien/','agri':'Nong-nghiep/','seafood':'Thuy-san/','shipping':'Van-tai-bien/'},
         'files':{name:digest(ROOT/name) for name in sorted(public_files)},
         'note':'Release identifies site files; observation dates remain in each data source.'
     }

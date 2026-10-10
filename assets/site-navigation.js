@@ -15,9 +15,10 @@
     port: {path: 'Cang-bien/', label: 'Cảng & kho bãi'},
     agri: {path: 'Nong-nghiep/', label: 'Nông nghiệp & thực phẩm'},
     seafood: {path: 'Thuy-san/', label: 'Thủy sản'},
+    shipping: {path: 'Van-tai-bien/', label: 'Vận tải biển'},
     plan: {path: 'Masterplan/', label: 'Master plan'}
   };
-  const aliases = {'dau-khi':'oil', 'duong':'sugar', 'sugar':'sugar', 'ngan-hang':'bank', 'bank':'bank', 'dien':'power', 'power':'power', 'bat-dong-san':'realestate', 'bds':'realestate', 'realestate':'realestate', 'det-may':'textile', 'textile':'textile', 'cang-bien':'port', 'cang':'port', 'port':'port', 'nong-nghiep':'agri', 'agri':'agri', 'thuy-san':'seafood', 'seafood':'seafood'};
+  const aliases = {'dau-khi':'oil', 'duong':'sugar', 'sugar':'sugar', 'ngan-hang':'bank', 'bank':'bank', 'dien':'power', 'power':'power', 'bat-dong-san':'realestate', 'bds':'realestate', 'realestate':'realestate', 'det-may':'textile', 'textile':'textile', 'cang-bien':'port', 'cang':'port', 'port':'port', 'nong-nghiep':'agri', 'agri':'agri', 'thuy-san':'seafood', 'seafood':'seafood', 'van-tai-bien':'shipping', 'van-tai':'shipping', 'shipping':'shipping'};
   function href(key) {
     if (!routes[key]) throw new Error('Unknown dashboard route: '+key);
     const url = new URL(routes[key].path, root);
@@ -34,7 +35,7 @@
   }
 
   // Search box as in the Stock dashboard ("Tra cứu cổ phiếu"): sectors by name, listed companies by ticker.
-  const SECTOR_WORDS = {home:'trang tổng hub', oil:'dầu khí oil gas xăng', sugar:'đường mía sugar', bank:'ngân hàng bank tín dụng', power:'điện power năng lượng', realestate:'bất động sản bds kcn khu công nghiệp nhà ở', textile:'dệt may sợi garment', port:'cảng biển kho bãi logistics vận tải', agri:'nông nghiệp thực phẩm gạo cà phê cao su chăn nuôi heo sữa bia', seafood:'thủy sản cá tra tôm seafood'};
+  const SECTOR_WORDS = {home:'trang tổng hub', oil:'dầu khí oil gas xăng', sugar:'đường mía sugar', bank:'ngân hàng bank tín dụng', power:'điện power năng lượng', realestate:'bất động sản bds kcn khu công nghiệp nhà ở', textile:'dệt may sợi garment', port:'cảng biển kho bãi logistics vận tải', agri:'nông nghiệp thực phẩm gạo cà phê cao su chăn nuôi heo sữa bia', seafood:'thủy sản cá tra tôm seafood', shipping:'vận tải biển tàu dầu tanker hàng rời container shipping cước hormuz'};
   function mountSearch() {
     const sec = document.createElement('section'); sec.className = 'fs-search'; sec.setAttribute('aria-label', 'Tìm dashboard ngành');
     sec.innerHTML = '<form id="fsSearch" role="search" autocomplete="off"><label for="fsQuery">Tra cứu ngành</label>'
@@ -47,7 +48,7 @@
     const norm = t => String(t || '').toLocaleLowerCase('vi').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
     let entries = [], loaded = false, matches = [], selected = 0;
     function build() {
-      entries = ['oil','sugar','bank','power','realestate','textile','port','agri','seafood'].map(k => ({kind:'sector', code:routes[k].label, sub:'', key:k, words:norm(routes[k].label + ' ' + SECTOR_WORDS[k])}));
+      entries = ['oil','sugar','bank','power','realestate','textile','port','agri','seafood','shipping'].map(k => ({kind:'sector', code:routes[k].label, sub:'', key:k, words:norm(routes[k].label + ' ' + SECTOR_WORDS[k])}));
       const companies = (window.COMPANY_COMPARISON && window.COMPANY_COMPARISON.companies) || [];
       companies.forEach(c => { if (!routes[c.sector]) return; entries.push({kind:'stock', code:c.symbol, sub:routes[c.sector].label + (c.group ? ' · ' + c.group : ''), key:c.sector, words:norm(c.symbol + ' ' + c.group)}); });
       loaded = companies.length > 0;
@@ -118,7 +119,7 @@
       nav.classList.add('site-navigation');
       nav.setAttribute('aria-label','Điều hướng dashboard ngành');
       nav.replaceChildren();
-      for (const key of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood']) {
+      for (const key of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood','shipping']) {
         const link = document.createElement('a');
         link.href = href(key);
         link.dataset.siteRoute = key;

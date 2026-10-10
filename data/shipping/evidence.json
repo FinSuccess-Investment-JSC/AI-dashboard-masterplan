@@ -1,0 +1,1422 @@
+[
+ {
+  "block": "vt-42",
+  "claim": "Lượt tàu qua Suez trung bình tháng 9/2026 (IMF PortWatch, AIS)",
+  "value": "40.4 lượt/ngày (container 10.8, tanker 15.6)",
+  "url": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query",
+  "opened_at": "2026-10-10",
+  "quote": "Suez Canal: total 40.4/day, container 10.8, tanker 15.6, days 30 (2026-09-01..2026-09-30)",
+  "status": "match",
+  "note": "A1 Biển Đỏ/Suez. Tự tính trung bình từ bảng ngày Daily_Chokepoints_Data của PortWatch (truy vấn statistics). Dữ liệu cập nhật tới 04/10/2026."
+ },
+ {
+  "block": "vt-42",
+  "claim": "Lượt tàu qua Suez tháng 9/2023 (trước khủng hoảng) để so sánh",
+  "value": "74.2 lượt/ngày (container 20.7, tanker 25.2)",
+  "url": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query",
+  "opened_at": "2026-10-10",
+  "quote": "Suez Canal: total 74.2/day, container 20.7, tanker 25.2, days 30 (2023-09-01..2023-09-30)",
+  "status": "match",
+  "note": "A1 Biển Đỏ/Suez. Tháng 9/2026 chỉ bằng ~54% tháng 9/2023; container ~52%, tanker ~62%. Tháng 9/2025: 42.1/ngày (container 9.5, tanker 16.0)."
+ },
+ {
+  "block": "vt-42",
+  "claim": "Lượt tàu qua Suez và Bab el-Mandeb 1–4/10/2026",
+  "value": "Suez 47.2/ngày (container 16.0); Bab el-Mandeb 29.5/ngày; Mũi Hảo Vọng 92.2/ngày",
+  "url": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query",
+  "opened_at": "2026-10-10",
+  "quote": "Suez Canal: total 47.2/day, container 16.0, tanker 18.0, days 4; Bab el-Mandeb Strait: total 29.5/day; Cape of Good Hope: total 92.2/day",
+  "status": "match",
+  "note": "A1 Biển Đỏ/Suez. Container qua Suez đầu tháng 10 tăng rõ so tháng 9 (16 vs 10.8/ngày) nhưng Mũi Hảo Vọng vẫn 92/ngày so 55.8/ngày tháng 9/2023 -> chuyển tuyến chưa đảo chiều hoàn toàn."
+ },
+ {
+  "block": "vt-42",
+  "claim": "SCA: tải trọng ròng tàu container qua kênh 8 tháng 2026",
+  "value": "72.1 triệu tấn, +54.2% so 46.7 triệu tấn cùng kỳ 2025",
+  "url": "https://cyprusshippingnews.com/2026/09/22/adm-rabiee-the-suez-canal-witnesses-the-first-transit-of-the-mega-container-ship-oocl-portugal-amongst-vessels-of-the-north-convoy/",
+  "opened_at": "2026-10-10",
+  "quote": "Net tonnages have increased by 54.2%; recording approximately 72.1 million tons during the period from January – August of 2026 compared to 46.7 million tons during the same period of 2025.",
+  "status": "match",
+  "note": "A1 Biển Đỏ/Suez. Thông cáo SCA (Adm. Rabiee) đăng lại ngày 22/9/2026; OOCL Portugal 24.000 TEU là chuyến COSCO đầu tiên qua Suez hướng nam kể từ khủng hoảng Biển Đỏ."
+ },
+ {
+  "block": "vt-42",
+  "claim": "Các hãng container đã quay lại Suez (gCaptain 16/9/2026)",
+  "value": "CMA CGM, Maersk, MSC, Hapag-Lloyd, COSCO; Gemini thêm 4 dịch vụ AE5, AE11, AE12, ME2",
+  "url": "https://gcaptain.com/container-shipping-returns-to-suez-despite-rising-red-sea-risks/",
+  "opened_at": "2026-10-10",
+  "quote": "services operated by CMA CGM, Maersk, MSC, Hapag-Lloyd and COSCO have all returned to the canal to varying degrees ... four additional Gemini Cooperation services — AE5, AE11, AE12 and ME2 — will shift from the Cape of Good Hope back to the Suez Canal",
+  "status": "match",
+  "note": "A1 Biển Đỏ/Suez. Ngày 16/9/2026: 39 tàu/2.3 triệu tấn ròng qua kênh trong ngày."
+ },
+ {
+  "block": "vt-42",
+  "claim": "SCA: 6 tháng đầu năm tài khóa 2025/26 so cùng kỳ",
+  "value": "1.315 tàu, 56 triệu tấn ròng, doanh thu 449 triệu USD (cùng kỳ 2025: 1.243 tàu, 47 triệu tấn, 368 triệu USD)",
+  "url": "https://shippingtelegraph.com/shipping-reports/suez-canal-sees-1315-ships-and-449m-in-revenue-since-2026/",
+  "opened_at": "2026-10-10",
+  "quote": "Vessels: 1,315; Net tonnage: 56 million tons; Revenue: $449 million ... Same Period 2025: Vessels: 1,243 (5.8% increase); Net tonnage: 47 million tons (16% increase); Revenue: $368 million (18.5% increase)",
+  "status": "match",
+  "note": "A1 Biển Đỏ/Suez. Bài 12/02/2026 dẫn phát biểu Chủ tịch SCA Ossama Rabiee; trang trung gian, chưa mở được thông cáo gốc SCA."
+ },
+ {
+  "block": "vt-42",
+  "claim": "Lượt tàu qua Hormuz tháng 9/2026 (PortWatch)",
+  "value": "3.6 lượt/ngày (tanker 1.1) so 87.9/ngày tháng 9/2025 và 102.4/ngày tháng 9/2023",
+  "url": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query",
+  "opened_at": "2026-10-10",
+  "quote": "Strait of Hormuz: total 3.6/day, container 0.3, tanker 1.1, days 30 (2026-09); Strait of Hormuz: total 87.9/day, container 16.9, tanker 49.8 (2025-09); 102.4/day (2023-09)",
+  "status": "match",
+  "note": "A2 Hormuz. 1–4/10/2026: 2.5 lượt/ngày, tanker 0. Trung bình 1/3–4/10/2026: 6.4/ngày so 68.1/ngày 1/1–27/2/2026."
+ },
+ {
+  "block": "vt-42",
+  "claim": "Mốc xung đột 2026",
+  "value": "Bắt đầu tháng 2; ngừng bắn 8/4; ba tàu bị tấn công đầu tháng 7",
+  "url": "https://gcaptain.com/hormuz-on-a-knife-edge-shipping-pays-the-price-as-the-iran-u-s-ceasefire-unravels/",
+  "opened_at": "2026-10-10",
+  "quote": "began in February ... A tentative calm followed the original 8 April ceasefire, but each subsequent lull has been broken by a fresh round of strikes ... Three vessels were attacked in the Strait in early July, including a Qatari-flagged LNG carrier",
+  "status": "match",
+  "note": "A2 Hormuz. gCaptain 21/7/2026. Ngày ngừng bắn 8/4/2026 lấy từ Bloomberg Law 5/6/2026 (US forces counted nearly 1,000 commercial vessel transits in two months since ceasefire). · Mở lại 10/10/2026; bài không ghi ngày 28/2, chỉ ghi tháng 2"
+ },
+ {
+  "block": "vt-42",
+  "claim": "Phí bảo hiểm rủi ro chiến tranh Hormuz đầu tháng 9/2026",
+  "value": "7.5%–12.5% giá trị thân tàu mỗi lượt, so ~0.25% trước xung đột",
+  "url": "https://www.breakwaveadvisors.com/insights/980026wetreportkju458-ook57",
+  "opened_at": "2026-10-10",
+  "quote": "premiums at 7.5%–12.5% of hull value per transit ... around 0.25%",
+  "status": "match",
+  "note": "A2 Hormuz. Breakwave Bi-Weekly Tanker Report 8/9/2026. Xuất khẩu dầu Iraq 8/2026 ~2.35 mb/d vẫn dưới trước chiến tranh; Brent mid/high-$90s."
+ },
+ {
+  "block": "vt-42",
+  "claim": "Phí bảo hiểm chiến tranh Hormuz tháng 7/2026",
+  "value": "ba đến mười phần trăm giá trị bảo hiểm tàu (bài viết bằng chữ)",
+  "url": "https://gcaptain.com/hormuz-on-a-knife-edge-shipping-pays-the-price-as-the-iran-u-s-ceasefire-unravels/",
+  "opened_at": "2026-10-10",
+  "quote": "between three and ten percent of a vessel's insured value",
+  "status": "match",
+  "note": "A2 Hormuz. Ví dụ trong bài: tàu dầu 100 triệu USD trả 250.000–10 triệu USD/lượt. Khoảng 6.000 thuyền viên còn kẹt trong khu vực. · Trang viết số bằng chữ: three and ten percent"
+ },
+ {
+  "block": "vt-42",
+  "claim": "Tình trạng đầu tháng 10/2026",
+  "value": "1 lượt ngày 27/9/2026 (baseline 85/ngày); 11 tàu bị tấn công trong 1 tuần; 224 tàu neo chờ; Brent 100.21 USD",
+  "url": "https://straits.live/briefs/2026-10-05",
+  "opened_at": "2026-10-10",
+  "quote": "IMF PortWatch recorded 1 transit on 2026-09-27, against a pre-crisis baseline of 85 per day ... 11 ships have been hit in one week ... 224 AIS-visible vessels",
+  "status": "match",
+  "note": "A2 Hormuz. Trang tổng hợp (straits.live), Iran tuyên bố eo chưa mở lại tới khi điều kiện được đáp ứng. Dữ liệu PortWatch gốc xác nhận 27/9–4/10 chỉ 1–4 lượt/ngày."
+ },
+ {
+  "block": "vt-42",
+  "claim": "Clarksons: sụt giảm lượt qua Hormuz H1 2026",
+  "value": "-95% lượt qua Hormuz từ tháng 3 (eo chiếm 20% cung dầu toàn cầu)",
+  "url": "https://hellenicshippingnews.com/first-half-2026-shipping-market-review-clarksea-index-up-61",
+  "opened_at": "2026-10-10",
+  "quote": "95% drop in transits through the critical Strait of Hormuz 'chokepoint' (20% of global oil supply) from March triggered material maritime disruption",
+  "status": "match",
+  "note": "A2 Hormuz. Clarksons Research H1 2026 review, 4/7/2026; ClarkSea Index 38.717 USD/ngày, +61% y-o-y."
+ },
+ {
+  "block": "vt-50",
+  "claim": "OFAC 8/10/2026: chỉ định tàu liên quan Iran",
+  "value": "hai mươi hai tàu dầu/khí (tanker) thêm vào SDN: LPG tám, asphalt năm, crude/oil bốn, chemical/products ba, products một, container không",
+  "url": "https://ofac.treasury.gov/recent-actions/20261008",
+  "opened_at": "2026-10-10",
+  "quote": "The following vessels have been added to OFAC's SDN List: ARGO MARIS (PJQ10) Asphalt/Bitumen Tanker Honduras flag; Vessel Year of Build 1991; Vessel Registration Identification IMO 9041643",
+  "status": "match",
+  "note": "A3 Cấm vận. Đếm 24 mục 'Vessel Registration Identification IMO' và 22 mục 'Tanker ... flag' trên trang gốc OFAC (Iran-related Designations; Issuance of Amended Russia-related General License). · Đếm bằng script từ trang tải về 10/10/2026: 22 dòng IMO trong mục vessels added, tất cả là Tanker; mục entities có 20 IMO (công ty), deletions 2 tàu container. Bản nháp ghi 24 tàu là sai."
+ },
+ {
+  "block": "vt-50",
+  "claim": "OFAC 25/2/2026: shadow fleet Iran",
+  "value": "Hơn 30 cá nhân/tổ chức/tàu, gồm 12 tàu shadow fleet",
+  "url": "https://www.shipuniverse.com/news/ofac-expands-iran-shadow-fleet-crackdown-as-12-more-tankers-and-gas-carriers-sanctioned/",
+  "opened_at": "2026-10-10",
+  "quote": "OFAC sanctioned over 30 individuals, entities, and vessels ... 12 'shadow fleet' ships accused of transporting hundreds of millions of dollars' worth of Iranian petroleum and petrochemical cargoes",
+  "status": "match",
+  "note": "A3 Cấm vận. Trang trung gian (shipuniverse 26/2/2026); tàu: HOOT, OCEAN KOI, NORTH STAR, FELICITA, ATEELA 1/2, NIBA, LUMA, REMIZ, DANUTA I, ALAA, GAS FATE."
+ },
+ {
+  "block": "vt-50",
+  "claim": "EU gói trừng phạt thứ 21 với Nga (23/7/2026)",
+  "value": "Thêm 41 tàu, tổng >670 tàu bị cấm; price cap dầu 44.10 USD/thùng, cơ chế điều chỉnh tạm dừng tới 15/7/2027",
+  "url": "https://www.skuld.com/topics/legal/sanctions/russia/eu-sanctions-21st-sanctions-package-against-russia/",
+  "opened_at": "2026-10-10",
+  "quote": "41 additional vessels designated ... Total sanctioned vessels: over 670 ... US$44.10 per barrel ... the automatic six-monthly adjustment mechanism for the oil price cap...paused for a period of 12 months, until 15 July 2027",
+  "status": "match",
+  "note": "A3 Cấm vận. Skuld P&I 29/7/2026. Lần đầu mở rộng tiêu chí sang tàu cung cấp dịch vụ bunkering/STS cho shadow fleet; cho phép tịch thu hàng trên tàu shadow fleet bị giữ."
+ },
+ {
+  "block": "vt-50",
+  "claim": "Mỹ tấn công 5 tàu dầu Iran 8/9/2026, 3 tàu có liên hệ shadow fleet Nga",
+  "value": "3/5 tàu (Kaviz, Charminar, Riesco)",
+  "url": "https://euromaidanpress.com/2026/09/10/3-of-5-iranian-tankers-hit-by-us-had-links-to-russias-shadow-fleet/",
+  "opened_at": "2026-10-10",
+  "quote": "Three of five Iranian oil tankers struck by the US military on 8 September were also involved in Russia's oil trade.",
+  "status": "match",
+  "note": "A3 Cấm vận. Nguồn báo chí Ukraine; mức độ chéo giữa shadow fleet Nga và Iran."
+ },
+ {
+  "block": "vt-50",
+  "claim": "Phí cảng Mỹ với tàu Trung Quốc sở hữu/vận hành (Annex I)",
+  "value": "50 USD/NT từ 14/10/2025; 80 USD/NT 17/4/2026; 110 USD/NT 17/4/2027; 140 USD/NT 17/4/2028; tối đa 5 lần/năm/tàu",
+  "url": "https://www.clydeco.com/en/insights/2025/10/impact-of-tariffs-to-charterparties-1",
+  "opened_at": "2026-10-10",
+  "quote": "$50 per net ton for the arriving vessel ... The fee will be charged up to five times per year, per individual vessel.",
+  "status": "match",
+  "note": "A3 USTR 301. Clyde & Co 14/10/2025."
+ },
+ {
+  "block": "vt-50",
+  "claim": "Phí cảng Mỹ với tàu đóng tại Trung Quốc (Annex II)",
+  "value": "18 USD/NT hoặc 120 USD/container (14/10/2025) -> 23/153 (4/2026) -> 28/195 (4/2027) -> 33/250 (4/2028); tàu chở xe 46 USD/NT",
+  "url": "https://www.clydeco.com/en/insights/2025/10/impact-of-tariffs-to-charterparties-1",
+  "opened_at": "2026-10-10",
+  "quote": "Per Net Ton: October 14, 2025: $18; April 17, 2026: $23; April 17, 2027: $28; April 17, 2028: $33 ... Per Discharged Container: October 14, 2025: $120; April 17, 2026: $153; April 17, 2027: $195; April 17, 2028: $250",
+  "status": "match",
+  "note": "A3 USTR 301. Lấy mức cao hơn giữa hai cách tính."
+ },
+ {
+  "block": "vt-50",
+  "claim": "Tạm hoãn phí USTR 1 năm",
+  "value": "hoãn 1 năm từ 10/11/2025 (tới ~10/11/2026); Trung Quốc hoãn phí trả đũa tương ứng",
+  "url": "https://www.hklaw.com/en/insights/publications/2025/11/ustr-port-fee-suspension-what-you-need-to-know",
+  "opened_at": "2026-10-10",
+  "quote": "effective Nov. 10, 2025, the U.S. will suspend for one year the implementation of actions taken against China ... China will suspend its retaliatory port fee measures against the U.S. for one year.",
+  "status": "match",
+  "note": "A3 USTR 301. Holland & Knight 12/11/2025. Chưa tìm được văn bản 2026 về gia hạn/kết thúc hoãn; mốc 10/11/2026 là catalyst cần theo dõi."
+ },
+ {
+  "block": "vt-12",
+  "claim": "BIMCO tanker (6/2026): cầu tanker dầu thô theo kịch bản Hormuz",
+  "value": "Kịch bản gốc (mở lại trước cuối 6/2026): cầu crude -4%..-6% 2026, +6.5%..+8.5% 2027; kịch bản đóng kéo dài: -11%..-13% 2026, -8.5%..-10.5% 2027",
+  "url": "https://www.hellenicshippingnews.com/?p=1136526",
+  "opened_at": "2026-10-10",
+  "quote": "crude tanker demand is expected to contract by 4% to 6% ... 6.5% to 8.5% ... crude tanker demand could contract by 11% to 13% ... 8.5% to 10.5%",
+  "status": "match",
+  "note": "A4 Tấn-dặm. Bài 9/6/2026 dẫn BIMCO. Cung: crude 0%..-1% 2026, +5..6% 2027; product +4.5..5.5% 2026, +7..8% 2027."
+ },
+ {
+  "block": "vt-12",
+  "claim": "BIMCO tanker 8/2026: xuất khẩu dầu YTD",
+  "value": "Xuất khẩu dầu thô YTD -5.7%, sản phẩm sạch -11.2%; tồn kho toàn cầu giảm >500 triệu thùng",
+  "url": "https://cyprusshippingnews.com/2026/08/31/export-disruptions-increasingly-hurting-tanker-demand-bimcos-tanker-shipping-market-overview-outlook-august-2026-is-out/",
+  "opened_at": "2026-10-10",
+  "quote": "Year-to-date oil exports declined 5.7% while clean products fell 11.2% ... Global oil and product stocks have fallen by more than 500 million barrels",
+  "status": "match",
+  "note": "A4 Tấn-dặm. Hai kịch bản SoH open (bình thường hóa dần Q4/2026) và SoH closed (kéo dài hết 2027)."
+ },
+ {
+  "block": "vt-12",
+  "claim": "BIMCO dry bulk 7/2026",
+  "value": "Cầu 2026 +2.5..3.5% (SoH đóng), +1 điểm % nếu mở; 2027 +0.5..1.5%; cung 2026 +1.5..2.5%, 2027 +3.5..4.5%",
+  "url": "https://cyprusshippingnews.com/2026/07/31/bimco-dry-bulk-shipping-market-overview-outlook-2/",
+  "opened_at": "2026-10-10",
+  "quote": "forecast to grow 2.5-3.5% ... expected to grow 0.5-1.5% ... Supply forecast to grow 1.5-2.5% ... forecast to grow 3.5-4.5%",
+  "status": "match",
+  "note": "A4 Tấn-dặm. BIMCO 31/7/2026; El Niño có thể hạn chế kênh Panama, kéo dài hải trình."
+ },
+ {
+  "block": "vt-12",
+  "claim": "BIMCO container 9/2026",
+  "value": "Khối lượng 7 tháng +5.1% y/y; đội tàu 34 triệu TEU, +4.6% 2026, +9% 2027; orderbook >14 triệu TEU = 42% đội tàu; nếu Suez bình thường hóa hoàn toàn cầu tàu -10%",
+  "url": "https://cyprusshippingnews.com/2026/09/28/bimcos-container-shipping-market-overview-outlook-september-2026-is-out/",
+  "opened_at": "2026-10-10",
+  "quote": "The container ship order book now exceeds 14m TEU, equal to 42% of the existing fleet ... Once routings fully normalise, ship demand could be 10% lower",
+  "status": "match",
+  "note": "A4 Tấn-dặm. BIMCO 28/9/2026; nếu các tuyến quay lại Suez trong năm, tăng trưởng cầu tàu có thể thấp hơn dự báo 5 điểm %."
+ },
+ {
+  "block": "vt-12",
+  "claim": "Clarksons giữa 2026: orderbook/đội tàu",
+  "value": "Orderbook 207 triệu CGT = 21% đội tàu; tanker 25%, bulker 14%, container/LNG/LPG 40%; đội tàu 2026f +5%; >150 VLCC đặt mới 2026 (cao nhất từ 1973)",
+  "url": "https://hellenicshippingnews.com/first-half-2026-shipping-market-review-clarksea-index-up-61",
+  "opened_at": "2026-10-10",
+  "quote": "The global fleet continues to steadily expand (2026f: +5%) ... 25% of fleet ... 40% of fleet ... only 14% of fleet ... now 21% of the fleet ... 150 VLCC ordered so far in 2026, already the largest annual tally since 1973",
+  "status": "match",
+  "note": "A4 Tấn-dặm. Clarksons Research 4/7/2026."
+ },
+ {
+  "block": "vt-12",
+  "claim": "BIMCO tanker 11/2025 (trước xung đột Hormuz)",
+  "value": "Cầu crude +1-2% 2026, 0-1% 2027; cung crude +1.5% 2026, +3.5% 2027; product cung +5.5%/năm, cầu +0.5-1.5%; Biển Đỏ bình thường hóa hoàn toàn: cầu -2..3%",
+  "url": "https://gcaptain.com/bimco-sees-tanker-markets-splitting-as-geopolitics-reshape-global-oil-trade/",
+  "opened_at": "2026-10-10",
+  "quote": "Should shipping routes through the region fully normalize, BIMCO forecasts demand could fall by 2-3% compared to current projections.",
+  "status": "match",
+  "note": "A4 Tấn-dặm. gCaptain 28/11/2025; dùng làm mốc so sánh trước khủng hoảng Hormuz."
+ },
+ {
+  "block": "vt-50",
+  "claim": "IMO Net-Zero Framework: hoãn 10/2025",
+  "value": "Phiên bất thường MEPC 14–17/10/2025 hoãn 1 năm; có thể còn hiệu lực cho năm báo cáo 2028",
+  "url": "https://www.velaw.com/insights/imo-postpones-adoption-of-net-zero-framework/",
+  "opened_at": "2026-10-10",
+  "quote": "ended with the decision to adjourn for one year without adopting the measures and reconvene in October 2026 ... could still potentially enter into force for reporting year 2028, though this timeline is now uncertain",
+  "status": "match",
+  "note": "A5 IMO/EU ETS. Vinson & Elkins 24/10/2025."
+ },
+ {
+  "block": "vt-50",
+  "claim": "MEPC 84 (27/4–1/5/2026) và lịch quyết định cuối 2026",
+  "value": "phiên bất thường thứ hai nối lại 4 December (12/2026), tùy kết quả MEPC 85",
+  "url": "https://www.marinelink.com/news/imo-progresses-net-zero-framework-538729",
+  "opened_at": "2026-10-10",
+  "quote": "The second extraordinary session of MEPC (adjourned last October) is scheduled to resume on 4 December, subject to discussions at MEPC 85.",
+  "status": "match",
+  "note": "A5 IMO/EU ETS. MarineLink 3/5/2026; Ammonia Energy 12/5/2026 nói 'majority of member states now accept the NZF'. Khung chưa được thông qua tính tới 10/10/2026. · Ngày MEPC 85 30/11–3/12/2026 lấy theo lịch IMO trong bài (bảng), không có câu trích"
+ },
+ {
+  "block": "vt-50",
+  "claim": "EU ETS hàng hải 100% từ 1/1/2026",
+  "value": "Nộp 100% hạn ngạch phát thải (40% 2024, 70% 2025); bao gồm CH4 và N2O từ 2026; 100% nội EU/EEA, 50% chuyến EU–ngoài EU",
+  "url": "https://www.ukpandi.com/news-and-resources/news/article/eu-ets-and-shipping-from-1-january-2026/",
+  "opened_at": "2026-10-10",
+  "quote": "40% in 2024 and 70% in 2025 ... the EU ETS for shipping covers not only carbon dioxide (CO₂), but also methane (CH₄) and nitrous oxide (N₂O)",
+  "status": "match",
+  "note": "A5 IMO/EU ETS. UK P&I Club 21/1/2026."
+ },
+ {
+  "block": "vt-51",
+  "claim": "Cục Hàng hải và Đường thủy VN tổng kết 2025 (24/12/2025): đội tàu biển",
+  "value": "1.434 tàu, tổng trọng tải ~9,4 triệu DWT; 73 tàu đăng ký mới năm 2025",
+  "url": "https://moc.gov.vn/vn/tin-tuc/1173/90629/cuc-hang-hai-va-duong-thuy-viet-nam-hoan-thien-the-che-tao-moi-truong-kinh-doanh-thong-thoang-minh-bach-on-dinh-an-toan.aspx",
+  "opened_at": "2026-10-10",
+  "quote": "Tổng số tàu thuộc đội tàu biển Việt Nam là 1.434 tàu với tổng trọng tải khoảng 9,4 triệu DWT. Trong đó, năm 2025 có 73 tàu biển đăng ký mới.",
+  "status": "match",
+  "note": "B6 Đội tàu VN. Số DWT 9,4 triệu thấp hơn 11,367 triệu DWT công bố cho 12/2024 (vneconomy) — có thể khác phạm vi thống kê; cần kiểm chứng với Cục."
+ },
+ {
+  "block": "vt-51",
+  "claim": "Hàng qua cảng biển và cảng thủy nội địa 2025",
+  "value": "~1,17 tỷ tấn (+12%); container 34,36 triệu TEU (+11%); hành khách 9,29 triệu lượt",
+  "url": "https://moc.gov.vn/vn/tin-tuc/1173/90629/cuc-hang-hai-va-duong-thuy-viet-nam-hoan-thien-the-che-tao-moi-truong-kinh-doanh-thong-thoang-minh-bach-on-dinh-an-toan.aspx",
+  "opened_at": "2026-10-10",
+  "quote": "năm 2025, tổng khối lượng hàng hóa thông qua cảng biển và cảng thuỷ nội địa ước đạt khoảng 1,17 tỷ tấn, tăng 12% so với cùng kỳ năm 2024. Trong đó, hàng hóa container thông qua cảng ước đạt 34,36 triệu Teu, tăng 11%.",
+  "status": "match",
+  "note": "B6 Đội tàu VN. Bộ Xây dựng, 24/12/2025."
+ },
+ {
+  "block": "vt-51",
+  "claim": "Đội tàu VN tháng 12/2024 (mốc so sánh)",
+  "value": "1.490 tàu đăng ký; 1.430 tàu/11,367 triệu DWT; 956 tàu vận tải/10,5 triệu DWT; tuổi bình quân tàu vận tải 17,4; container 43 tàu tuổi 18,5",
+  "url": "https://vneconomy.vn/techconnect//nganh-hang-hai-tang-truong-manh-me-huong-toi-muc-tieu-moi.htm",
+  "opened_at": "2026-10-10",
+  "quote": "tuổi bình quân của đội tàu vận tải là 17,4",
+  "status": "match",
+  "note": "B6 Đội tàu VN. VnEconomy 26/12/2024. Đội tàu VN chở 140,9 triệu tấn hàng qua cảng VN năm 2024 (+3%); thị phần XNK 2019–2024 dao động 5–8,25%, bình quân 6,4%/năm. Chưa tìm được tuổi tàu bình quân và sản lượng đội tàu VN cho năm 2025."
+ },
+ {
+  "block": "vt-51",
+  "claim": "Đề án phát triển đội tàu vận tải biển (QĐ 1254/QĐ-BGTVT, 28/9/2022): mục tiêu thị phần",
+  "value": "Thị phần hàng XNK qua cảng VN do đội tàu VN đảm nhận 10% năm 2026, 20% năm 2030; miễn thuế GTGT nhập khẩu tàu biển đến hết 2026",
+  "url": "https://daidoanket.vn/nang-tam-nang-chat-cho-doi-tau-bien-10233243.html",
+  "opened_at": "2026-10-10",
+  "quote": "tăng gấp đôi thị phần vận tải hàng hóa xuất nhập khẩu qua cảng biển Việt Nam bằng đội tàu biển Việt Nam lên 10% ... đạt 20% vào năm 2030",
+  "status": "match",
+  "note": "B6 Đội tàu VN. Đại Đoàn Kết 3/10/2022 (không mở được PDF gốc QĐ 1254 trên luatvietnam). UBTVQH 27/8/2026 ghi nhận thị phần thực tế 2023–2024 chỉ ~7% (daibieunhandan 10/9/2026)."
+ },
+ {
+  "block": "vt-51",
+  "claim": "Thuế GTGT 0% vận tải quốc tế (Luật 48/2024/QH15 Điều 9, hiệu lực 1/7/2025; điều kiện NĐ 181/2025 Điều 18)",
+  "value": "0% cho vận tải quốc tế; điều kiện: hợp đồng vận chuyển chặng quốc tế + chứng từ thanh toán không dùng tiền mặt",
+  "url": "https://thuehaiquan.tapchikinhtetaichinh.vn/chinh-sach-thue-nha-thau-doi-voi-dich-vu-van-tai-va-giao-nhan-hang-hoa-xuat-khau-164660.html",
+  "opened_at": "2026-10-10",
+  "quote": "vận tải quốc tế thuộc nhóm hàng hóa, dịch vụ xuất khẩu khác được áp dụng thuế suất 0% ... có hợp đồng vận chuyển hành khách, hành lý hoặc hàng hóa giữa người vận chuyển và người thuê vận chuyển theo chặng quốc tế từ Việt Nam ra nước ngoài ... phải có chứng từ thanh toán không dùng tiền mặt",
+  "status": "match",
+  "note": "B7 Chính sách/thuế. Tạp chí Kinh tế Tài chính 17/8/2026."
+ },
+ {
+  "block": "vt-51",
+  "claim": "Thông tư 40/2026/TT-BTC: miễn một số phí hàng hải hỗ trợ doanh nghiệp",
+  "value": "Miễn phí hàng hải với tàu ra/vào vùng nước hàng hải, phí cảng thủy nội địa, hạ tầng đường sắt từ 7/4 đến hết tháng 6/2026",
+  "url": "https://lsvn.vn/mien-mot-so-phi-le-phi-giao-thong-van-tai-den-30-6-de-ho-tro-doanh-nghiep-a171304.html",
+  "opened_at": "2026-10-10",
+  "quote": "từ ngày 07/4 đến hết tháng 6/2026",
+  "status": "match",
+  "note": "B7 Chính sách/thuế. LSVN 9/4/2026; biện pháp giảm chi phí logistics khi giá nhiên liệu biến động (Hormuz). Đã hết hiệu lực 30/6/2026; chưa thấy văn bản gia hạn."
+ },
+ {
+  "block": "vt-51",
+  "claim": "Thông tư 39/2026/TT-BTC (31/3/2026) phí, lệ phí cảng bến thủy nội địa",
+  "value": "Hiệu lực 1/4/2026, thay Thông tư 248/2016/TT-BTC",
+  "url": "https://tapchikinhtetaichinh.vn/quy-dinh-muc-phi-le-phi-tai-cang-ben-thuy-noi-dia-152661.html",
+  "opened_at": "2026-10-10",
+  "quote": "Thông tư số 248/2016/TT-BTC ngày 11 tháng 11 năm 2016",
+  "status": "match",
+  "note": "B7 Chính sách/thuế. Chỉ áp dụng cảng, bến thủy nội địa. Phí hàng hải cảng biển vẫn theo TT 261/2016/TT-BTC và TT 74/2021/TT-BTC (hiệu lực 12/10/2021, thoibaotaichinh 30/8/2021); chưa tìm thấy thông tư phí hàng hải mới 2026."
+ },
+ {
+  "block": "vt-51",
+  "claim": "Nghị quyết 77/NQ-CP (1/4/2026) thông qua chính sách Bộ luật Hàng hải và Đường thủy VN (sửa đổi)",
+  "value": "6 chính sách; Bộ Xây dựng chủ trì soạn thảo",
+  "url": "https://luatvietnam.vn/chinh-sach/nghi-quyet-77-nq-cp-2026-ve-chinh-sach-bo-luat-hang-hai-va-duong-thuy-viet-nam-sua-doi-430830-d1.html",
+  "opened_at": "2026-10-10",
+  "quote": "phát triển đội ngũ thuyền viên đáp ứng nhu cầu trong nước và quốc tế",
+  "status": "match",
+  "note": "B7 Luật Hàng hải. Hợp nhất Bộ luật Hàng hải VN và Luật Giao thông đường thủy nội địa."
+ },
+ {
+  "block": "vt-51",
+  "claim": "Dự thảo Bộ luật Hàng hải và Đường thủy VN: cấu trúc và lộ trình",
+  "value": "19 chương, 156 điều (giảm 296 điều, ~65%); trình QH kỳ 2 tháng 10/2026",
+  "url": "https://thanhtra.com.vn/doi-noi-52FA82FBF/hop-nhat-2-luat-kho-thuong-vu-quoc-hoi-yeu-cau-khong-de-tao-khoang-trong-phap-ly-90d442baf.html",
+  "opened_at": "2026-10-10",
+  "quote": "Dự thảo bộ luật gồm 19 chương và 156 điều.",
+  "status": "match",
+  "note": "B7 Luật Hàng hải. Nhân Dân 26/6/2026; lần đầu có ưu đãi thuế, tín dụng cho cảng xanh/tàu xanh. · Nhân Dân cũng ghi \"19 chương, 156 điều\"; câu trích lấy từ Thanh tra (mở lại 10/10/2026)"
+ },
+ {
+  "block": "vt-51",
+  "claim": "UBTVQH cho ý kiến dự án Bộ luật 27/8/2026; lộ trình thông qua",
+  "value": "Cho ý kiến kỳ họp 2 (10/2026), dự kiến thông qua kỳ họp 3 (5/2027); cắt 54 thủ tục hành chính, sửa 46",
+  "url": "https://thanhtra.com.vn/doi-noi-52FA82FBF/hop-nhat-2-luat-kho-thuong-vu-quoc-hoi-yeu-cau-khong-de-tao-khoang-trong-phap-ly-90d442baf.html",
+  "opened_at": "2026-10-10",
+  "quote": "Ủy ban Thường vụ Quốc hội thống nhất trình Quốc hội cho ý kiến tại kỳ họp thứ 2 (tháng 10/2026) và thông qua tại kỳ họp thứ 3 (tháng 5/2027). ... 54 thủ tục hành chính được bãi bỏ; 46 thủ tục hành chính sẽ được sửa đổi, bổ sung",
+  "status": "match",
+  "note": "B7 Luật Hàng hải. Báo Thanh tra 27/8/2026. Dự thảo giao Chính phủ quy định 67 điều (daibieunhandan 10/9/2026)."
+ },
+ {
+  "block": "vt-51",
+  "claim": "Ưu đãi xanh trong dự thảo Bộ luật",
+  "value": "Miễn, giảm tiền sử dụng đất/thuê đất cho cảng xanh, cảng thông minh; tín dụng đầu tư Nhà nước; ưu đãi đóng mới, khai thác tàu nhiên liệu thay thế",
+  "url": "https://doanhnghiephoinhap.vn/uu-dai-manh-cho-cang-xanh-mo-loi-chuyen-doi-ben-vung-nganh-hang-hai-viet-nam-141556.html",
+  "opened_at": "2026-10-10",
+  "quote": "miễn, giảm tiền sử dụng đất và tiền thuê đất ... nguồn tín dụng đầu tư của Nhà nước, vốn vay ưu đãi ... đóng mới, khai thác tàu thuyền sử dụng nhiên liệu thay thế",
+  "status": "match",
+  "note": "B7 Luật Hàng hải. Doanh nghiệp Hội nhập 30/6/2026."
+ },
+ {
+  "block": "vt-60",
+  "claim": "LNST Q2/2026",
+  "value": "678 tỷ đồng, +88% YoY",
+  "url": "https://mekongasean.vn/van-tai-bien-quy-22026-nguoi-thang-lon-ke-hut-hoi-58346.html",
+  "opened_at": "2026-10-10",
+  "quote": "Sau khi trừ đi các chi phí, PVT báo lãi sau thuế quý 2 đạt 678 tỷ đồng, tăng 88% YoY và tăng 75% so với quý 1/2026.",
+  "status": "match",
+  "note": "PVT. mekongasean 11/08/2026"
+ },
+ {
+  "block": "vt-60",
+  "claim": "DT & LNST 6T/2026",
+  "value": "DT 9.892 tỷ (+39%), LNST 1.066 tỷ (+67%)",
+  "url": "https://mekongasean.vn/van-tai-bien-quy-22026-nguoi-thang-lon-ke-hut-hoi-58346.html",
+  "opened_at": "2026-10-10",
+  "quote": "Lũy kế 6 tháng đầu năm, doanh thu thuần công ty đạt 9.892 tỷ đồng, lãi sau thuế đạt 1.066 tỷ đồng, lần lượt tăng 39% và 67% YoY.",
+  "status": "match",
+  "note": "PVT."
+ },
+ {
+  "block": "vt-60",
+  "claim": "% KH LNST 2026 sau 6T",
+  "value": "89%",
+  "url": "https://mekongasean.vn/van-tai-bien-quy-22026-nguoi-thang-lon-ke-hut-hoi-58346.html",
+  "opened_at": "2026-10-10",
+  "quote": "So với mục tiêu lãi sau thuế 1.200 tỷ đồng được ĐHĐCĐ thường niên năm 2026 thông qua, sau nửa chặng đường, PVTrans đã thực hiện được 89% chỉ tiêu lợi nhuận năm.",
+  "status": "match",
+  "note": "PVT."
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH 2026",
+  "value": "DT 16.500 tỷ (+2,8%), LNST 1.200 tỷ (-10%)",
+  "url": "https://mekongasean.vn/pvtrans-dat-ke-hoach-lai-sau-thue-1200-ty-dong-nam-2026-52036.html",
+  "opened_at": "2026-10-10",
+  "quote": "HĐQT Tổng CTCP Vận tải Dầu khí (PVTrans – HoSE: PVT) vừa có quyết định phê duyệt kế hoạch sản xuất kinh doanh năm 2026 với mục tiêu doanh thu đạt 16.500 tỷ đồng, lợi nhuận sau thuế đạt 1.200 tỷ đồng, tăng 2,8% về doanh thu nhưng giảm hơn 10% về lợi nhuận so với cùng kỳ năm 2025.",
+  "status": "match",
+  "note": "PVT. mekongasean 23/02/2026"
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH đầu tư tàu 2026",
+  "value": "1-2 tàu chuyển tiếp 45 triệu USD + 1-3 tàu mới 85 triệu USD; tổng vốn 3.858 tỷ",
+  "url": "https://mekongasean.vn/pvtrans-dat-ke-hoach-lai-sau-thue-1200-ty-dong-nam-2026-52036.html",
+  "opened_at": "2026-10-10",
+  "quote": "Cụ thể, doanh nghiệp tiếp tục đầu tư vào dự án chuyển tiếp từ một đến 2 tàu (tàu dầu thô, tàu dầu sản phẩm, tàu dầu hóa chất) với tổng vốn đầu tư 45 triệu USD. Bên cạnh đó, PVTrans đầu tư thêm một đến 3 tàu mới với tổng vốn đầu tư là 85 triệu USD.",
+  "status": "match",
+  "note": "PVT."
+ },
+ {
+  "block": "vt-60",
+  "claim": "LNST 2025",
+  "value": "1.329 tỷ (-10%)",
+  "url": "https://mekongasean.vn/pvtrans-dat-ke-hoach-lai-sau-thue-1200-ty-dong-nam-2026-52036.html",
+  "opened_at": "2026-10-10",
+  "quote": "Tuy nhiên, lợi nhuận sau thuế cả năm giảm 10% YoY, xuống còn 1.329 tỷ đồng.",
+  "status": "match",
+  "note": "PVT."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Đội tàu cuối 2025 & tỷ trọng quốc tế",
+  "value": "65 tàu; 90% hoạt động tuyến quốc tế",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-pvtrans-pvt-2026-uoc-lai-quy-1-dat-470-ty-chot-chia-co-tuc-10-va-duy-tri-chuoi-loi-nhuan-nghin-ty.html",
+  "opened_at": "2026-10-10",
+  "quote": "Kết thúc năm 2025, PVTrans sở hữu đội tàu 65 chiếc đa dạng chủng loại (tàu dầu thô, dầu sản phẩm, hóa chất, LPG và hàng rời), khẳng định vị thế đội tàu lớn nhất Việt Nam với 90% hoạt động trên tuyến quốc tế.",
+  "status": "match",
+  "note": "PVT. baophapluat 21/04/2026; không có số tổng DWT/tuổi bình quân trong bài"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Cổ tức 2025",
+  "value": "10% bằng cổ phiếu; vốn 4.699 -> 5.169 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-pvtrans-pvt-2026-uoc-lai-quy-1-dat-470-ty-chot-chia-co-tuc-10-va-duy-tri-chuoi-loi-nhuan-nghin-ty.html",
+  "opened_at": "2026-10-10",
+  "quote": "Đại hội cũng thông qua phương án tăng vốn điều lệ từ 4.699 tỷ đồng lên 5.169 tỷ đồng bằng hình thức phát hành cổ phiếu trả cổ tức với tỷ lệ 10%.",
+  "status": "match",
+  "note": "PVT."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Catalyst VLGC / Nghi Sơn",
+  "value": "đàm phán Nghi Sơn; VLGC ~300.000 USD/ngày",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-pvtrans-pvt-2026-uoc-lai-quy-1-dat-470-ty-chot-chia-co-tuc-10-va-duy-tri-chuoi-loi-nhuan-nghin-ty.html",
+  "opened_at": "2026-10-10",
+  "quote": "Chủ tịch Phạm Việt Anh đưa ra dẫn chứng, giá cước tàu VLGC thời điểm chạm đáy chỉ ở mức 30.000 - 50.000 USD/ngày, hiện tại đang duy trì quanh mốc 300.000 USD/ngày do có thể tận dụng làm kho chứa nổi.",
+  "status": "match",
+  "note": "PVT."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Tổng DWT đội tàu (6T/2026)",
+  "value": ">2,0 triệu DWT (+19% YoY)",
+  "url": "https://acbs.com.vn/acbsmedia/2026/08/PVT_Update-Q2-2026.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "the full-quarter contribution from 7 vessels acquired in 2025, lifting total fleet capacity to more than 2.0 million DWT (+19% YoY)",
+  "status": "match",
+  "note": "PVT. ACBS 06/08/2026, pdftotext"
+ },
+ {
+  "block": "vt-60",
+  "claim": "TC vs spot / Hormuz",
+  "value": "đa số đội tàu ngoài Hormuz hoặc theo hợp đồng TC; chỉ 1 tàu trong Hormuz (từ 7 tàu cuối T2/2026)",
+  "url": "https://acbs.com.vn/acbsmedia/2026/08/PVT_Update-Q2-2026.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "PVT currently has only one vessel operating in the Strait of Hormuz, down from seven vessels at the end of February 2026 when the conflict first escalated. The affected vessels are either employed under time-charter contracts or participate in vessel pools",
+  "status": "match",
+  "note": "PVT. ACBS không nêu % TC chính xác"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Giá TC quốc tế hiện hành (ACBS, 8/2026)",
+  "value": "Aframax ~55.000 USD/ngày (+41% YTD); MR ~27.000 (+20% YTD); Handy ~25.000 (+25% YTD)",
+  "url": "https://acbs.com.vn/acbsmedia/2026/08/PVT_Update-Q2-2026.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "International time-charter rates currently stand at around USD55,000/day for Aframax crude oil tankers (+41% YTD), USD27,000/day for MR product tankers (+20% YTD), and USD25,000/day for Handy chemical tankers (+25% YTD).",
+  "status": "match",
+  "note": "PVT."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Tiến độ mua tàu 1H2026",
+  "value": "chưa mua tàu nào trong 1H2026 do giá tàu cũ cao; 2H ưu tiên tàu dầu thô, có thể 1 Ultramax",
+  "url": "https://acbs.com.vn/acbsmedia/2026/08/PVT_Update-Q2-2026.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "PVT had not completed any vessel acquisitions as of the end of 1H2026. According to management, second-hand vessel prices have remained elevated amid favorable shipping market conditions",
+  "status": "match",
+  "note": "PVT."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Dự phóng ACBS 2026",
+  "value": "DT 18.197 tỷ, LNST 1.937 tỷ (+45,7%), TP 28.200",
+  "url": "https://acbs.com.vn/acbsmedia/2026/08/PVT_Update-Q2-2026.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "we maintain our 2026 revenue and NPAT forecasts at VND18,197bn (+13.4% YoY) and VND1,937bn (+45.7% YoY), respectively, with a target price of VND28,200/share",
+  "status": "match",
+  "note": "PVT."
+ },
+ {
+  "block": "vt-60",
+  "claim": "NPAT-MI 6T/2026 & cước chuẩn",
+  "value": "NPAT-MI 872 tỷ (+72%); Aframax/MR/Handymax +89%/+51%/+50% YoY; DWT +22% YoY",
+  "url": "https://www.vietcap.com.vn/en/research-center/pvt-core-h1-2026-npat-mi-up-64-yoy-on-stronger-tanker-rates-fleet-expansion-slightly-above-expectations-earnings-flash",
+  "opened_at": "2026-10-10",
+  "quote": "H1 2026 revenue was VND9.9tn (+39% YoY) and reported NPAT-MI was VND872bn (+72% YoY). Core NPAT-MI rose 64% YoY to VND804bn",
+  "status": "match",
+  "note": "PVT. Vietcap 29/07/2026"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Q2/2026",
+  "value": "DT 722,7 tỷ (+29,7%), LNST 134,2 tỷ (+198,1%)",
+  "url": "https://doanhnhan.baophapluat.vn/van-tai-dau-khi-thai-binh-duong-pvp-bao-lai-quy-ii-2026-tang-gap-3-lan-hoan-thanh-gan-80-ke-hoach-nam.html",
+  "opened_at": "2026-10-10",
+  "quote": "Báo cáo tài chính quý II/2026 cho thấy doanh thu thuần của PVP ghi nhận hơn 722,7 tỷ đồng, tăng 29,7% so với cùng kỳ năm trước. Điểm sáng lớn nhất đến từ lợi nhuận sau thuế khi đạt 134,2 tỷ đồng, tăng trưởng 198,1%",
+  "status": "match",
+  "note": "PVP. baophapluat 25/07/2026"
+ },
+ {
+  "block": "vt-60",
+  "claim": "6T/2026 & % KH",
+  "value": "DT 1.367 tỷ (+39,7%), LNST 209,7 tỷ (+145%); 50,6% KH DT, 77,6% KH LN",
+  "url": "https://doanhnhan.baophapluat.vn/van-tai-dau-khi-thai-binh-duong-pvp-bao-lai-quy-ii-2026-tang-gap-3-lan-hoan-thanh-gan-80-ke-hoach-nam.html",
+  "opened_at": "2026-10-10",
+  "quote": "Lũy kế nửa đầu năm, doanh nghiệp mang về 1.367 tỷ đồng doanh thu và 209,7 tỷ đồng lợi nhuận sau thuế, lần lượt tăng 39,7% và 145% so với bán niên 2025. Trải qua sáu tháng, PVP đã hoàn thành 50,6% chỉ tiêu doanh thu và 77,6% kế hoạch lợi nhuận cả năm.",
+  "status": "match",
+  "note": "PVP."
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH 2026",
+  "value": "DT 2.700 tỷ; LNTT 270 tỷ; LNST 216 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/pvtrans-pacific-pvp-dat-muc-tieu-lai-truoc-thue-270-ty-dong-trong-nam-2026.html",
+  "opened_at": "2026-10-10",
+  "quote": "Theo đó, vào năm 2026, PVP đặt kế hoạch doanh thu đạt 2.700 tỷ đồng. Công ty đặt mục tiêu lãi trước thuế 270 tỷ đồng, lãi sau thuế cả năm 2026 là 216 tỷ đồng.",
+  "status": "match",
+  "note": "PVP. baophapluat 11/02/2026"
+ },
+ {
+  "block": "vt-60",
+  "claim": "KQ 2025",
+  "value": "DT 2.404,75 tỷ (+34%), LNST 199 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/pvtrans-pacific-pvp-dat-muc-tieu-lai-truoc-thue-270-ty-dong-trong-nam-2026.html",
+  "opened_at": "2026-10-10",
+  "quote": "kết thúc năm 2025, PVTrans Pacific ghi nhận doanh thu thuần đạt 2.404,75 tỷ đồng, tăng 34% so với cùng kỳ; lợi nhuận sau thuế đạt 199 tỷ đồng.",
+  "status": "match",
+  "note": "PVP."
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH đầu tư tàu 2026",
+  "value": "116 triệu USD: Aframax số 2 (50,5tr), MR/hóa chất 55.000 DWT (30,5tr), Aframax số 3 hoặc MR (35tr)",
+  "url": "https://doanhnhan.baophapluat.vn/pvtrans-pacific-pvp-dat-muc-tieu-lai-truoc-thue-270-ty-dong-trong-nam-2026.html",
+  "opened_at": "2026-10-10",
+  "quote": "công ty dự kiến đầu tư 50,5 triệu USD để đầu tư 1 tàu dầu Aframax số 2 trọng tải đến 120.000 DWT; 30,5 triệu USD để đầu tư 1 tàu dầu thô MR1/MR2, tàu dầu/hoá chất trọng tải đến 55.000 DWT; và dùng 35 triệu USD đầu tư 1 tàu dầu thô Aframax số 3",
+  "status": "match",
+  "note": "PVP."
+ },
+ {
+  "block": "vt-60",
+  "claim": "ĐHĐCĐ bất thường 23/10/2026 - Aframax số 3",
+  "value": "họp 23/10/2026; mua tàu cũ ≤15 tuổi (theo phương án Aframax số 2)",
+  "url": "https://doanhnhan.baophapluat.vn/van-tai-dau-khi-thai-binh-duong-pvp-trieu-tap-dhdcd-bat-thuong-muon-mua-them-tau-aframax-thu-3.html",
+  "opened_at": "2026-10-10",
+  "quote": "CTCP Vận tải Dầu khí Thái Bình Dương (PVTrans Pacific, mã ck: PVP) vừa thông báo chốt danh sách cổ đông để tổ chức ĐHĐCĐ bất thường, dự kiến diễn ra ngày 23/10/2026.",
+  "status": "match",
+  "note": "PVP. baophapluat 12/09/2026; thông số Aframax số 3 chưa công bố"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Đội tàu (cuối 2024)",
+  "value": "01 tàu FSO Đại Hùng, 01 tàu dầu thô Aframax, 02 tàu dầu hoá chất MR khai thác quốc tế (cuối 2024)",
+  "url": "https://tapchicongthuong.vn/pv-trans-pacific--pvp--du-chi-112-trieu-usd-de--tre-hoa--doi-tau-139280.htm",
+  "opened_at": "2026-10-10",
+  "quote": "Tính đến cuối năm 2024, PV Trans Pacific đang sở hữu đội tàu gồm 01 tàu FSO phục vụ khai thác mỏ Đại Hùng, 01 tàu dầu thô Aframax, 02 tàu dầu hoá chất MR đang khai thác trên thị trường quốc tế.",
+  "status": "match",
+  "note": "PVP. tapchicongthuong 11/04/2025; chưa thấy CBTT nhận Aframax số 2"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Tổng DWT đội tàu",
+  "value": "4 tàu, >300.000 DWT (sau Pacific Pride 50.697 DWT)",
+  "url": "https://tapchicongthuong.vn/pv-trans-pacific--pvp--so-huu-them-tau-50-000-dwt--can-dich-som-ke-hoach-ca-nam-128703.htm",
+  "opened_at": "2026-10-10",
+  "quote": "Với việc sở hữu thêm tàu Pacific Pride, đội tàu của PV Trans Pacific được nâng lên mức 4 chiếc với tổng trọng tải hơn 300.000 DWT và đa dạng chủng loại như tàu Aframax, MR, FSO...",
+  "status": "match",
+  "note": "PVP. tapchicongthuong 24/10/2024"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Tàu Apollo tái ký TC",
+  "value": "70.000 USD/ngày (gấp đôi 35.000); Aframax TC ~61.000 USD/ngày (+114% YoY)",
+  "url": "https://elibook.vn/2026/05/25/pvt-gia-cuoc-thue-tau-dau-tho-aframax-van-neo-cao-trong-quy-2-tau-apollo-tai-ky-hop-dong-70000-dola-ngay-gap-doi-gia-thue-cu/",
+  "opened_at": "2026-10-10",
+  "quote": "Tàu Apollo tái ký hợp đồng với mức 70,000 USD/ngày , gấp đôi giá cũ, dự kiến đóng góp thêm ~71 tỷ đồng lợi nhuận quý 2 cho PVP.",
+  "status": "match",
+  "note": "PVP. elibook tóm lược báo cáo BSC 25/05/2026; nguồn thứ cấp"
+ },
+ {
+  "block": "vt-60",
+  "claim": "KQ 2025",
+  "value": "DTT 1.130 tỷ (+1%, 105% KH); LNST-CĐTS 117 tỷ (+6%, 118% KH)",
+  "url": "https://www.bsc.com.vn/Report/ReportFile/15166",
+  "opened_at": "2026-10-10",
+  "quote": "KQKD năm 2025: DTT = 1,130 tỷ VNĐ (+1% YoY, hoàn thành 105% kế hoạch), LNST-CĐTS = 117 tỷ VNĐ (+6% YoY, hoàn thành 118% kế hoạch)",
+  "status": "match",
+  "note": "VTO. BSC 01/04/2026, pdftotext"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Thị trường chính",
+  "value": "nội địa/nội Á; Petrolimex & PG Tanker chiếm 89% DT",
+  "url": "https://www.bsc.com.vn/Report/ReportFile/15166",
+  "opened_at": "2026-10-10",
+  "quote": "hoạt động chủ yếu vẫn là vận chuyển nguồn hàng xăng dầu nội địa từ Tập đoàn Xăng dầu Việt Nam và Tổng công ty vận tải thuỷ Petrolimex (chiếm 89% tỷ trọng doanh thu).",
+  "status": "match",
+  "note": "VTO."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Rủi ro đội tàu già",
+  "value": "đội tàu già hóa; tàu Nhà Bè 09 gặp sự cố",
+  "url": "https://www.bsc.com.vn/Report/ReportFile/15166",
+  "opened_at": "2026-10-10",
+  "quote": "đội tàu ngày càng già hóa của VTO có thể làm gia tăng các khoản phát sinh và nhu cầu sửa chữa – bảo dưỡng. Đơn cử, tàu Nhà Bè 09 gặp sự cố",
+  "status": "match",
+  "note": "VTO."
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH 2026 (ĐHĐCĐ 22/04/2026)",
+  "value": "Tổng DT 1.022.403 trđ; LNTT 133.379 trđ; LNST 102.866 trđ; cổ tức dự kiến 9%",
+  "url": "https://files.petrolimex.com.vn/pdfs/8fb3004feb6e476ab3d74cd47d96c59b/448e69f0965143b693fa1f7ea1b2c626/13%20Bao%20cao%20KQ%20kinh%20doanh%20quan%20tri%202025%20KH2026%20tong%20ket%20hoat%20dong%20HDQT%20NK2021-2025%20va%20dinh%20huong%202026-2031.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "Kế hoạch 2026 | 1 Tổng doanh thu và thu nhập khác 1.022.403 | 3 Lợi nhuận trước thuế 133.379 | 4 Lợi nhuận sau thuế 102.866 | 7 Cổ tức (%) Dự kiến 9 %",
+  "status": "match",
+  "note": "VTO. Báo cáo HĐQT (dự thảo) trình ĐHĐCĐ 22/04/2026, pdftotext; đơn vị triệu đồng"
+ },
+ {
+  "block": "vt-60",
+  "claim": "KQ 2025 theo báo cáo HĐQT",
+  "value": "Tổng DT 1.165.238 trđ (107,86% KH); LNTT 155.817; LNST 121.382 trđ (121,91% KH); cổ tức dự kiến 10%",
+  "url": "https://files.petrolimex.com.vn/pdfs/8fb3004feb6e476ab3d74cd47d96c59b/448e69f0965143b693fa1f7ea1b2c626/13%20Bao%20cao%20KQ%20kinh%20doanh%20quan%20tri%202025%20KH2026%20tong%20ket%20hoat%20dong%20HDQT%20NK2021-2025%20va%20dinh%20huong%202026-2031.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "1 Tổng Doanh thu và Thu nhập khác 1.080.340 1.165.238 107,86% | 3 Lợi nhuận trước thuế 130.556 155.817 119,35% | 4 Lợi nhuận sau thuế 99.566 121.382 121,91% | 7 Cổ tức (%) 9% Dự kiến 10%",
+  "status": "match",
+  "note": "VTO."
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH mua tàu 2026-2027",
+  "value": "1 tàu MR ≤50.000 DWT, <8 tuổi, tối đa 56 triệu USD",
+  "url": "https://files.petrolimex.com.vn/pdfs/8fb3004feb6e476ab3d74cd47d96c59b/448e69f0965143b693fa1f7ea1b2c626/13%20Bao%20cao%20KQ%20kinh%20doanh%20quan%20tri%202025%20KH2026%20tong%20ket%20hoat%20dong%20HDQT%20NK2021-2025%20va%20dinh%20huong%202026-2031.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "Tiếp tục triển khai dự án đầu tư 01 tàu dầu viễn dương MR có trọng tải không lớn hơn 50.000 DWT, tuổi tàu dưới 08 năm, với tổng mức đầu tư dự kiến tối đa 56 triệu USD (chưa bao gồm thuế, phí), nhằm thay thế tàu đã thanh lý vào thời điểm phù hợp trong giai đoạn 2026-2027.",
+  "status": "match",
+  "note": "VTO."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Lý do chưa mua tàu 2025",
+  "value": "giá tàu tăng cao, điều kiện giao tàu chưa thuận lợi",
+  "url": "https://files.petrolimex.com.vn/pdfs/8fb3004feb6e476ab3d74cd47d96c59b/448e69f0965143b693fa1f7ea1b2c626/13%20Bao%20cao%20KQ%20kinh%20doanh%20quan%20tri%202025%20KH2026%20tong%20ket%20hoat%20dong%20HDQT%20NK2021-2025%20va%20dinh%20huong%202026-2031.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "thị trường mua bán tàu dầu có nhiều biến động, giá tàu tăng cao so với dự kiến; đồng thời các điều kiện giao tàu do đối tác đưa ra chưa thuận lợi",
+  "status": "match",
+  "note": "VTO."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Q2/2026 & Q1/2026 (BCTC, cafef)",
+  "value": "DTT Q1/26 272,36 tỷ; Q2/26 329,0 tỷ; LNST Q1/26 30,43 tỷ; Q2/26 49,12 tỷ -> 6T/26 LNST 79,55 tỷ",
+  "url": "https://s.cafef.vn/bao-cao-tai-chinh/VTO/IncSta/2026/2/0/0/ket-qua-hoat-dong-kinh-doanh-.chn",
+  "opened_at": "2026-10-10",
+  "quote": "Quý 1- 2026 | Quý 2- 2026 | ... 3. Doanh thu thuần về bán hàng và cung cấp dịch vụ | 272.360.406.863 | 328.995.765.772 | ... 18. Lợi nhuận sau thuế thu nhập doanh nghiệp | 30.428.406.472 | 49.123.722.701",
+  "status": "match",
+  "note": "VTO. bảng cafef (đơn vị đồng); tổng 6T do tự cộng"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Cùng kỳ 2025 để tính YoY",
+  "value": "Q2/25 LNST 25,68 tỷ; Q1/25 19,28 tỷ -> 6T/25 44,96 tỷ; Q2/26 +91% YoY, 6T/26 +77% YoY; 6T/26 = 77% KH LNST 2026",
+  "url": "https://s.cafef.vn/bao-cao-tai-chinh/VTO/IncSta/2025/4/0/0/ket-qua-hoat-dong-kinh-doanh-.chn",
+  "opened_at": "2026-10-10",
+  "quote": "Quý 1- 2025 | Quý 2- 2025 | ... 3. Doanh thu thuần | 284.965.960.038 | 258.924.368.286 | ... 18. Lợi nhuận sau thuế thu nhập doanh nghiệp | 19.283.576.029 | 25.680.723.682",
+  "status": "match",
+  "note": "VTO. % YoY và % KH do tự tính từ hai bảng cafef"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Đội tàu",
+  "value": "4 tàu MR, >150.000 DWT: Petrolimex 15 (17.961 DWT, 1999), 16 (46.732, 2004), 18 (40.092, 2007), 21 (45.942, 2010)",
+  "url": "https://www.bvsc.com.vn/media/lo5njtei/bvsc-b%C3%A1o-c%C3%A1o-l%E1%BA%A7n-%C4%91%E1%BA%A7u-vip-022025.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "VIP đang sở hữu đội tàu vận tải xăng dầu thành phẩm bao gồm 4 chiếc, với tổng trọng tải hơn 150.000 DWT. | Petrolimex 15 17.961 1999 | Petrolimex 16 46.732 2004 | Petrolimex 18 40.092 2007 | Petrolimex 21 45.942 2010",
+  "status": "match",
+  "note": "VIP. BVSC 02/2025, pdftotext; tuổi bình quân ~21 năm (tự tính)"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Mô hình TC với PG Tanker / spot",
+  "value": "cho thuê định hạn với PG Tanker; không có đối tác TC thì chạy spot",
+  "url": "https://www.bvsc.com.vn/media/lo5njtei/bvsc-b%C3%A1o-c%C3%A1o-l%E1%BA%A7n-%C4%91%E1%BA%A7u-vip-022025.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "Nếu không có đối tác thuê định hạn, VIP phải khai thác theo hình thức spot, qua đó tăng chi",
+  "status": "match",
+  "note": "VIP."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Q2/2026 & Q1/2026 (BCTC, cafef)",
+  "value": "DTT Q1/26 145,54 tỷ; Q2/26 179,41 tỷ; LNST Q1/26 9,91 tỷ; Q2/26 20,17 tỷ -> 6T/26 LNST 30,09 tỷ",
+  "url": "https://s.cafef.vn/bao-cao-tai-chinh/VIP/IncSta/2026/2/0/0/ket-qua-hoat-dong-kinh-doanh-.chn",
+  "opened_at": "2026-10-10",
+  "quote": "Quý 1- 2026 | Quý 2- 2026 | ... 3. Doanh thu thuần về bán hàng và cung cấp dịch vụ | 145.543.490.020 | 179.407.534.751 | ... 18. Lợi nhuận sau thuế thu nhập doanh nghiệp | 9.914.325.978 | 20.171.102.813",
+  "status": "match",
+  "note": "VIP. bảng cafef; tổng 6T tự cộng"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Cùng kỳ 2025",
+  "value": "Q2/25 LNST 37,97 tỷ; Q1/25 25,10 tỷ -> 6T/25 63,06 tỷ; Q2/26 -47% YoY, 6T/26 -52% YoY",
+  "url": "https://s.cafef.vn/bao-cao-tai-chinh/VIP/IncSta/2025/4/0/0/ket-qua-hoat-dong-kinh-doanh-.chn",
+  "opened_at": "2026-10-10",
+  "quote": "Quý 1- 2025 | Quý 2- 2025 | ... 3. Doanh thu thuần | 149.250.117.371 | 149.284.462.544 | ... 18. Lợi nhuận sau thuế thu nhập doanh nghiệp | 25.096.656.944 | 37.965.518.480",
+  "status": "match",
+  "note": "VIP. % YoY tự tính"
+ },
+ {
+  "block": "vt-60",
+  "claim": "ĐHĐCĐ 2026 & cổ tức 2025",
+  "value": "ĐHĐCĐ 13/4/2026; cổ tức 2025 10% tiền",
+  "url": "https://vipco.petrolimex.com.vn/nd/tin-hd/to-chuc-thanh-cong-dhdcd-thuong-nien-nam-2026.html",
+  "opened_at": "2026-10-10",
+  "quote": "Sáng ngày 13/4/2026, tại Hội trường tầng 7 Tòa nhà Hàng Hải Liên Minh ... phương án chia cổ tức năm 2025: 10% bằng tiền mặt",
+  "status": "match",
+  "note": "VIP. Mở lại 10/10/2026 qua WebFetch; kế hoạch 2026 không có số"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Tàu mới lùi sang 1H2026; lãi tiền gửi 32% LNTT",
+  "value": "kế hoạch tàu <50.000 DWT lùi sang nửa đầu 2026; TC 1 năm product/chem -7% YTD; lãi tiền gửi = 32% LNTT",
+  "url": "https://elibook.vn/2026/01/13/vip-cham-tre-trong-viec-mo-rong-doi-tau-tiep-tuc-cho-doi-cu-hich-tu-doi-tau-moi-trong-boi-canh-gia-cuoc-ha-nhiet/",
+  "opened_at": "2026-10-10",
+  "quote": "Kế hoạch bổ sung tàu chở dầu/hóa chất dưới 50,000 DWT bị lùi sang nửa đầu 2026, khiến triển vọng tăng trưởng ngắn hạn bị ảnh hưởng trong bối cảnh giá cước cho thuê tàu giảm ~7%.",
+  "status": "match",
+  "note": "VIP. elibook tóm lược BSC 13/01/2026; nguồn thứ cấp; đến 10/10/2026 chưa thấy CBTT nhận tàu"
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH 2026",
+  "value": "SL >7 triệu tấn (+3%); DT 4.851 tỷ (+39%); LNTT 275,5 tỷ (-27,7%)",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-van-tai-bien-viet-nam-vos-nam-2026-dat-muc-tieu-loi-nhuan-2026-di-lui-bien-dong-nhan-su-hdqt.html",
+  "opened_at": "2026-10-10",
+  "quote": "Năm 2026, doanh nghiệp đặt mục tiêu sản lượng hơn 7 triệu tấn và doanh thu 4.851 tỷ đồng, tăng lần lượt 3% và 39% so với năm trước. Tuy nhiên, lợi nhuận trước thuế dự kiến giảm 27,7% xuống còn 275,5 tỷ đồng.",
+  "status": "match",
+  "note": "VOS. baophapluat 19/05/2026"
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH mua/bán tàu 2026",
+  "value": "đóng 2 MR, mua 1-2 container, thuê 1-2 hàng rời + 1 tàu dầu; bán Vosco Sky; cân nhắc bán/S&LB 1-3 Supramax",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-van-tai-bien-viet-nam-vos-nam-2026-dat-muc-tieu-loi-nhuan-2026-di-lui-bien-dong-nhan-su-hdqt.html",
+  "opened_at": "2026-10-10",
+  "quote": "trong năm nay Vosco dự kiến đóng mới 2 tàu dầu sản phẩm cỡ MR, mua thêm 1 - 2 tàu container, đồng thời thuê thêm 1 - 2 tàu hàng rời và 1 tàu dầu sản phẩm.",
+  "status": "match",
+  "note": "VOS."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Bán tàu 2026",
+  "value": "chỉ dự kiến bán một tàu Vosco Sky (năm ngoái bán Vosco Star và Vosco Unity)",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-van-tai-bien-viet-nam-vos-nam-2026-dat-muc-tieu-loi-nhuan-2026-di-lui-bien-dong-nhan-su-hdqt.html",
+  "opened_at": "2026-10-10",
+  "quote": "Cụ thể, công ty chỉ dự kiến bán một tàu là Vosco Sky, trong khi năm ngoái nguồn lợi nhuận được đóng góp lớn nhờ việc bán thành công bộ đôi tàu Vosco Star và Vosco Unity.",
+  "status": "match",
+  "note": "VOS."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Đóng mới 2 MR",
+  "value": "~50.000 DWT/tàu, Hàn Quốc, ≤52 triệu USD/tàu, giao 6/2028 và 8/2028; đội tàu lên 20 chiếc",
+  "url": "https://mekongasean.vn/vosco-muon-dau-tu-khoang-104-trieu-usd-dong-2-tau-moi-54013.html",
+  "opened_at": "2026-10-10",
+  "quote": "Mỗi tàu có trọng tải khoảng 50.000 DWT, dự kiến được đóng tại Hàn Quốc, trong đó tàu thứ nhất sẽ được bàn giao vào cuối tháng 6/2028 và tàu thứ hai vào cuối tháng 8/2028.",
+  "status": "match",
+  "note": "VOS. mekongasean 14/04/2026"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Đội tàu hiện tại",
+  "value": "18 tàu: 12 hàng khô, 2 container, 4 dầu sản phẩm (theo WebFetch); sau đóng mới: 6 tàu dầu, 20 tàu",
+  "url": "https://mekongasean.vn/vosco-muon-dau-tu-khoang-104-trieu-usd-dong-2-tau-moi-54013.html",
+  "opened_at": "2026-10-10",
+  "quote": "Sau khi hoàn tất đầu tư, đội tàu dầu sản phẩm của Vosco sẽ tăng lên 6 chiếc, nâng tổng quy mô đội tàu lên 20 chiếc.",
+  "status": "match",
+  "note": "VOS. cơ cấu 12/2/4 lấy từ tóm lược WebFetch của cùng bài; tổng DWT ~670.000 chỉ xuất hiện trong đoạn trích tìm kiếm -> không dùng"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Mục tiêu 2030 & cổ tức 2025",
+  "value": "1,2 triệu DWT năm 2030; tuổi tàu <10 năm 2035; cổ tức 2025 tiền mặt 9% (~126 tỷ)",
+  "url": "https://mekongasean.vn/chu-tich-vosco-khong-dau-tu-doi-tau-se-gia-hoa-55246.html",
+  "opened_at": "2026-10-10",
+  "quote": "doanh nghiệp đặt kế hoạch nâng quy mô đội tàu lên khoảng 1,2 triệu DWT vào năm 2030; đồng thời đưa tuổi tàu trung bình xuống dưới 10 năm vào năm 2035",
+  "status": "match",
+  "note": "VOS. mekongasean 15/05/2026"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Cổ tức 2025",
+  "value": "9% tiền mặt, ~126 tỷ",
+  "url": "https://mekongasean.vn/chu-tich-vosco-khong-dau-tu-doi-tau-se-gia-hoa-55246.html",
+  "opened_at": "2026-10-10",
+  "quote": "Với kết quả đạt được, doanh nghiệp đề xuất chia cổ tức năm 2025 bằng tiền mặt tỷ lệ 9%, tương đương phải chi khoảng 126 tỷ đồng.",
+  "status": "match",
+  "note": "VOS."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Q2/2026 & 6T/2026",
+  "value": "Q2 DTT >922 tỷ (+10%), LNST ~43 tỷ (x4); 6T DTT >1.630 tỷ (+26%), LNST ~46 tỷ (cùng kỳ lỗ 44 tỷ)",
+  "url": "https://doanhnhan.baophapluat.vn/loi-nhuan-vosco-vos-quy-ii-tang-gap-bon-lan-nho-suc-bat-tu-mang-van-tai-bien.html",
+  "opened_at": "2026-10-10",
+  "quote": "Lũy kế sáu tháng đầu năm, Vosco mang về hơn 1.630 tỷ đồng doanh thu thuần, tăng 26%. Lợi nhuận sau thuế đạt gần 46 tỷ đồng, đảo chiều ngoạn mục so với khoản lỗ 44 tỷ đồng của nửa đầu năm 2025.",
+  "status": "match",
+  "note": "VOS. baophapluat 29/07/2026"
+ },
+ {
+  "block": "vt-60",
+  "claim": "% KH LN 6T/2026",
+  "value": ">21% (LNTT 6T 59 tỷ / KH 275,5 tỷ)",
+  "url": "https://mekongasean.vn/van-tai-bien-quy-22026-nguoi-thang-lon-ke-hut-hoi-58346.html",
+  "opened_at": "2026-10-10",
+  "quote": "dù quý 2 tăng tốc mạnh (lãi trước thuế nửa đầu năm đạt 59 tỷ đồng, cải thiện mạnh so với khoản lỗ 44 tỷ đồng cùng kỳ năm trước), nhưng doanh nghiệp mới chỉ hoàn thành hơn 21% chặng đường lợi nhuận sau 6 tháng.",
+  "status": "match",
+  "note": "VOS."
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH 2026",
+  "value": "Tổng DT 790,2 tỷ; LNTT 130 tỷ (+139,6%)",
+  "url": "https://baodautu.vn/vinaship-len-ke-hoach-lai-tham-vong-130-ty-dong-trong-nam-2026-d547526.html",
+  "opened_at": "2026-10-10",
+  "quote": "Trong năm 2026, Vinaship đặt kế hoạch tổng doanh thu 790,2 tỷ đồng, lợi nhuận trước thuế dự kiến 130 tỷ đồng.",
+  "status": "match",
+  "note": "VNA. baodautu 19/03/2026"
+ },
+ {
+  "block": "vt-60",
+  "claim": "KQ 2025",
+  "value": "DT 690,5 tỷ (92,69% KH); LNTT 54,26 tỷ (46,18% KH)",
+  "url": "https://baodautu.vn/vinaship-len-ke-hoach-lai-tham-vong-130-ty-dong-trong-nam-2026-d547526.html",
+  "opened_at": "2026-10-10",
+  "quote": "kết thúc năm 2025, Vinaship ghi nhận doanh thu hoạt động sản xuất kinh doanh 690,5 tỷ đồng, hoàn thành 92,69% so với kế hoạch và lợi nhuận trước thuế đạt 54,26 tỷ đồng, hoàn thành 46,18% so với kế hoạch năm 2025.",
+  "status": "match",
+  "note": "VNA."
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH mua tàu 2026",
+  "value": "2 tàu hàng khô cũ 28.000-35.000 DWT, đóng 2009-2014, 226-305 tỷ/tàu; đội tàu dự kiến 6 chiếc ~140.000 DWT",
+  "url": "https://baodautu.vn/vinaship-len-ke-hoach-lai-tham-vong-130-ty-dong-trong-nam-2026-d547526.html",
+  "opened_at": "2026-10-10",
+  "quote": "kế hoạch đầu tư 2 tàu hàng khô đã qua sử dụng với trọng tải từ 28.000 đến 35.000 DWT, đóng trong khoảng từ năm 2009 đến năm 2014, tổng vốn đầu tư dự kiến từ 226 – 305 tỷ đồng/tàu",
+  "status": "match",
+  "note": "VNA."
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH bán tàu 2026",
+  "value": "Pearl trước T2/2026, Gold trước T4/2026, Mỹ Hưng trước T11/2026",
+  "url": "https://baodautu.vn/vinaship-len-ke-hoach-lai-tham-vong-130-ty-dong-trong-nam-2026-d547526.html",
+  "opened_at": "2026-10-10",
+  "quote": "Ngược lại, bán thanh lý tàu Vinaship Pearl trước tháng 2/2026, tàu Vinaship Gold trước tháng 4/2026, tàu Mỹ Hưng trước tháng 11/2026.",
+  "status": "match",
+  "note": "VNA."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Đội tàu đầu 2026",
+  "value": "4 tàu, 76.230 DWT: Mỹ Hưng 6.595 (2003), Gold 13.245 (2008), Unity 28.189 (2012), Harmony 28.201 (2010)",
+  "url": "https://www.tinnhanhchungkhoan.vn/vinaship-vna-se-khong-tra-co-tuc-nam-2025-va-len-ke-hoach-mua-lai-2-tau-post388328.html",
+  "opened_at": "2026-10-10",
+  "quote": "Được biết, Vinaship đang sở hữu 4 tàu với tổng trọng tải 76.230 DWT.",
+  "status": "match",
+  "note": "VNA. tinnhanhchungkhoan 07/04/2026; Gold đã bán Q2/2026, mua thêm Amity -> cần cập nhật"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Cổ tức 2025",
+  "value": "không trả cổ tức 2025",
+  "url": "https://www.tinnhanhchungkhoan.vn/vinaship-vna-se-khong-tra-co-tuc-nam-2025-va-len-ke-hoach-mua-lai-2-tau-post388328.html",
+  "opened_at": "2026-10-10",
+  "quote": "Về cổ tức, Vinaship trình cổ đông không trả cổ tức trong năm 2025 cho cổ đông.",
+  "status": "match",
+  "note": "VNA."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Bán Vinaship Gold",
+  "value": "đấu giá 67,2 tỷ, giao T4/2026",
+  "url": "https://www.tinnhanhchungkhoan.vn/vinaship-vna-se-khong-tra-co-tuc-nam-2025-va-len-ke-hoach-mua-lai-2-tau-post388328.html",
+  "opened_at": "2026-10-10",
+  "quote": "Trong đó, riêng tàu Vinaship Gold đã đấu giá thành công giá 67,2 tỷ đồng, dự kiến chuyển cho người mua tháng 4/2026.",
+  "status": "match",
+  "note": "VNA."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Q2/2026 & 6T/2026",
+  "value": "Q2 DTT 146 tỷ (-24%), LNST 49 tỷ (46 tỷ từ bán Gold; đã mua Vinaship Amity); 6T DTT 257 tỷ (-20%), LNST 86 tỷ",
+  "url": "https://mekongasean.vn/van-tai-bien-quy-22026-nguoi-thang-lon-ke-hut-hoi-58346.html",
+  "opened_at": "2026-10-10",
+  "quote": "Theo báo cáo giải trình, Vinaship cho biết, trong kỳ, công ty đã nhận về 46 tỷ đồng từ việc thanh lý tàu Vinaship Gold và mua thành công tàu Vinaship Amity.",
+  "status": "match",
+  "note": "VNA."
+ },
+ {
+  "block": "vt-60",
+  "claim": "6T/2026",
+  "value": "DTT 257 tỷ (-20%), LNST 86 tỷ",
+  "url": "https://mekongasean.vn/van-tai-bien-quy-22026-nguoi-thang-lon-ke-hut-hoi-58346.html",
+  "opened_at": "2026-10-10",
+  "quote": "Lũy kế 6 tháng đầu năm, VNA đạt 257 tỷ đồng doanh thu thuần, giảm 20% YoY; lãi sau thuế đạt 86 tỷ đồng, tăng mạnh so với mức 326 triệu đồng ở quý 2 năm ngoái.",
+  "status": "match",
+  "note": "VNA. LNST 6T/2026 86 tỷ ~ 66% KH LNTT 130 tỷ (tự tính, so LNST với LNTT)"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Q1/2026",
+  "value": "DTT 111 tỷ (-13%), LNST 37 tỷ; 61 tỷ từ bán Pearl + 28 tỷ cho thuê tàu ngoài",
+  "url": "https://mekongasean.vn/nganh-van-tai-bien-quy-12026-hau-het-tang-truong-vinaship-lai-dot-bien-nho-ban-tau-54834.html",
+  "opened_at": "2026-10-10",
+  "quote": "bao gồm 61 tỷ đồng từ thanh lý tàu Vinaship Pearl và hơn 28 tỷ đồng từ hoạt động cho thuê tàu ngoài, qua đó bù đắp sự suy giảm của mảng vận tải.",
+  "status": "match",
+  "note": "VNA. mekongasean 05/05/2026"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Q2/2026",
+  "value": "DTT >1.533 tỷ (+20%), LNST 467 tỷ (+13%)",
+  "url": "https://mekongasean.vn/van-tai-bien-quy-22026-nguoi-thang-lon-ke-hut-hoi-58346.html",
+  "opened_at": "2026-10-10",
+  "quote": "CTCP Vận tải và Xếp dỡ Hải An (HoSE: HAH) cũng ghi nhận kết quả kinh doanh tăng trưởng trong quý 2 với doanh thu thuần đạt hơn 1.533 tỷ đồng, tăng 20% YoY; lãi sau thuế tăng 13% YoY lên mức 467 tỷ đồng.",
+  "status": "match",
+  "note": "HAH."
+ },
+ {
+  "block": "vt-60",
+  "claim": "6T/2026 & % KH",
+  "value": "DTT 2.798 tỷ (+14%), LNST 818 tỷ (+19%); 65% KH LN",
+  "url": "https://mekongasean.vn/van-tai-bien-quy-22026-nguoi-thang-lon-ke-hut-hoi-58346.html",
+  "opened_at": "2026-10-10",
+  "quote": "Lũy kế 6 tháng đầu năm 2026, công ty ghi nhận doanh thu thuần đạt 2.798 tỷ đồng, tăng 14% YoY từ 2.444 tỷ đồng. Lợi nhuận sau thuế công ty đạt 818 tỷ đồng, tăng 19% YoY từ 688 tỷ đồng.",
+  "status": "match",
+  "note": "HAH."
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH 2026",
+  "value": "DT 5.140 tỷ (-0,2%); LNST 1.250 tỷ (-11%)",
+  "url": "https://mekongasean.vn/dhdcd-hai-an-muc-tieu-lai-giam-11-huy-dong-gan-1900-ty-dong-trai-phieu-55971.html",
+  "opened_at": "2026-10-10",
+  "quote": "ban lãnh đạo HAH trình cổ đông kế hoạch doanh thu năm 2026 ở mức 5.140 tỷ đồng, lợi nhuận sau thuế dự kiến đạt 1.250 tỷ đồng, lần lượt giảm 0,2% và 11% so với kết quả thực hiện năm 2025.",
+  "status": "match",
+  "note": "HAH. mekongasean 06/06/2026; elibook ghi 5.500/1.000 tỷ -> mâu thuẫn, ưu tiên mekongasean"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Cổ tức",
+  "value": "2025: 20% tiền mặt (2.000đ); 2026 đề xuất 30%",
+  "url": "https://mekongasean.vn/dhdcd-hai-an-muc-tieu-lai-giam-11-huy-dong-gan-1900-ty-dong-trai-phieu-55971.html",
+  "opened_at": "2026-10-10",
+  "quote": "công ty dự kiến chia cổ tức năm 2025 bằng tiền mặt với tỷ lệ 20%, tương ứng cổ đông sở hữu một cổ phiếu sẽ nhận 2.000 đồng. Đối với năm 2026, mức cổ tức được đề xuất nâng lên 30%, tức 3.000 đồng/cổ phiếu.",
+  "status": "match",
+  "note": "HAH."
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH mua/đóng tàu 2026",
+  "value": "mua 1-2 tàu cũ 2.500-3.500 TEU; 4 HĐ đóng 3.000 TEU (2025) + 2 HĐ 7.100 TEU (2026); trái phiếu kèm CQ 1.883 tỷ",
+  "url": "https://mekongasean.vn/dhdcd-hai-an-muc-tieu-lai-giam-11-huy-dong-gan-1900-ty-dong-trai-phieu-55971.html",
+  "opened_at": "2026-10-10",
+  "quote": "Doanh nghiệp dự kiến tìm kiếm cơ hội mua từ 1 - 2 tàu container cũ từ 2.500 - 3.500 Teus nhằm bổ sung năng lực đội tàu; đồng thời, tiếp tục theo dõi và triển khai 4 hợp đồng đóng mới tàu 3.000 Teus đã ký trong năm 2025 cùng 2 hợp đồng đóng mới tàu 7.100 Teus ký trong năm 2026.",
+  "status": "match",
+  "note": "HAH."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Chốt cổ tức 2025",
+  "value": "chốt 15/7/2026, 20% = 2.000đ/cp, ~377 tỷ",
+  "url": "https://mekongasean.vn/van-tai-va-xep-do-hai-an-sap-chi-gan-377-ty-dong-tra-co-tuc-56911.html",
+  "opened_at": "2026-10-10",
+  "quote": "Tỷ lệ thực hiện là 20%/cổ phiếu, tương ứng một cổ phiếu được nhận 2.000 đồng. Với hơn 188 triệu cổ phiếu đang lưu hành, HAH ước tính chi gần 377 tỷ đồng cho đợt trả cổ tức này.",
+  "status": "match",
+  "note": "HAH."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Đội tàu 6T/2026",
+  "value": "20 tàu, 33.070 TEU (+13,1% YoY), chủ yếu 1.800-3.000 TEU; hiệu suất 90-95%",
+  "url": "https://shinhansec.com.vn/uploads/report/SSV_HAH_Update_Q2_2026_VN.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "Trong nửa đầu năm, HAH tiếp tục mở rộng đội tàu lên 20 chiếc, chủ yếu thuộc phân khúc 1,800–3,000 TEU, nâng tổng sức chở lên 33,070 TEU (+13.1% YoY)",
+  "status": "match",
+  "note": "HAH. SSV 12/08/2026, pdftotext; tuổi bình quân không nêu"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Rủi ro (SSV)",
+  "value": "giá cước giảm; kinh tế suy giảm; nguồn cung tàu tăng mạnh",
+  "url": "https://shinhansec.com.vn/uploads/report/SSV_HAH_Update_Q2_2026_VN.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "Rủi ro: (1) giá cước vận tải biển giảm, (2) kinh tế suy giảm và (3) nguồn cung tàu tăng mạnh.",
+  "status": "match",
+  "note": "HAH."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Dự phóng SSV",
+  "value": "TP 59.500; DT 2026F 5.314 tỷ; LNST 2026F 1.491 tỷ",
+  "url": "https://shinhansec.com.vn/uploads/report/SSV_HAH_Update_Q2_2026_VN.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "Dựa trên phương pháp DCF, chúng tôi cập nhật giá mục tiêu của HAH ở mức 59,500 đồng.",
+  "status": "match",
+  "note": "HAH."
+ },
+ {
+  "block": "vt-60",
+  "claim": "TC vs tự khai thác",
+  "value": "12 tàu cho thuê định hạn / 8 tàu tự vận hành (60% TC theo số tàu)",
+  "url": "https://elibook.vn/2026/06/11/dai-hoi-dong-co-dong-hai-an-hah-nam-2026-hai-trinh-vuon-tam-khu-vuc-va-chien-luoc-dau-tu-xuyen-chu-ky-day-tao-bao/",
+  "opened_at": "2026-10-10",
+  "quote": "Bên cạnh việc vận hành đội tàu hiện tại gồm 12 tàu cho thuê định hạn và 8 tàu tự vận hành, Hải An đang triển khai chương trình đóng mới tàu biển lớn nhất từ trước đến nay với việc đặt đóng 8 tàu mới tại các nhà máy đóng tàu hàng đầu Trung Quốc.",
+  "status": "match",
+  "note": "HAH. elibook 11/06/2026 (tường thuật ĐHĐCĐ, nguồn thứ cấp)"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Chương trình đóng mới",
+  "value": "8 tàu: 4x3.000 TEU + 4x7.100 TEU, 552 triệu USD, giao cuối 2027 - 4/2029; mục tiêu 60.000 TEU 2028",
+  "url": "https://elibook.vn/2026/06/11/dai-hoi-dong-co-dong-hai-an-hah-nam-2026-hai-trinh-vuon-tam-khu-vuc-va-chien-luoc-dau-tu-xuyen-chu-ky-day-tao-bao/",
+  "opened_at": "2026-10-10",
+  "quote": "Dự án này bao gồm 4 tàu container công suất 3,000 TEU và 4 tàu siêu lớn 7,100 TEU , với tổng vốn đầu tư lên tới 552 triệu USD , dự kiến bàn giao dần từ cuối năm 2027 đến tháng 4/2029.",
+  "status": "match",
+  "note": "HAH. mekongasean ghi 4 HĐ 3.000 + 2 HĐ 7.100 TEU đã ký -> số 7.100 TEU khác nhau giữa 2 nguồn"
+ },
+ {
+  "block": "vt-60",
+  "claim": "KH 2026",
+  "value": "DT 3.200 tỷ; LNTT 130 tỷ (+6,6%); đầu tư 1.047 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/gas-shipping-gsp-dat-muc-tieu-lai-130-ty-dong-trong-nam-2026.html",
+  "opened_at": "2026-10-10",
+  "quote": "trong năm 2026, doanh nghiệp đặt mục tiêu doanh thu đạt 3.200 tỷ đồng và lợi nhuận trước thuế 130 tỷ đồng, tăng khoảng 6,6% so với kết quả thực hiện năm 2025.",
+  "status": "match",
+  "note": "GSP. baophapluat 14/04/2026"
+ },
+ {
+  "block": "vt-60",
+  "claim": "KQ 2025",
+  "value": "DT 3.647 tỷ (+59%, vượt 46% KH); LNTT 122 tỷ (102% KH)",
+  "url": "https://doanhnhan.baophapluat.vn/gas-shipping-gsp-dat-muc-tieu-lai-130-ty-dong-trong-nam-2026.html",
+  "opened_at": "2026-10-10",
+  "quote": "kết thúc năm 2025, Gas Shipping ghi nhận kết quả kinh doanh tích cực với doanh thu đạt 3.647 tỷ đồng, vượt 46% kế hoạch và tăng 59% so với cùng kỳ. Lợi nhuận trước thuế đạt 122 tỷ đồng, hoàn thành 102% mục tiêu đề ra.",
+  "status": "match",
+  "note": "GSP."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Đội tàu (tài liệu ĐHĐCĐ 4/2026)",
+  "value": "9 tàu LPG định áp 1.800-5.000 DWT + 2 tàu hóa chất ~20.000 DWT; tàu mới giao Q2/2026",
+  "url": "https://doanhnhan.baophapluat.vn/gas-shipping-gsp-dat-muc-tieu-lai-130-ty-dong-trong-nam-2026.html",
+  "opened_at": "2026-10-10",
+  "quote": "Hiện tại, Gas Shipping sở hữu đội tàu gồm 9 tàu chở LPG định áp với tải trọng từ 1.800 đến 5.000 DWT và 2 tàu chở hóa chất khoảng 20.000 DWT.",
+  "status": "match",
+  "note": "GSP. mâu thuẫn với bài 15/12/2025 (7 LPG + 2 hóa chất, ~63.000 DWT); có thể gồm tàu thuê/tàu sắp nhận"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Cổ tức 2025 & KH đầu tư thêm",
+  "value": "cổ tức 2025 bằng cổ phiếu 10%; xem xét thêm 1 tàu dầu/hóa chất ≤25.000 DWT hoặc tàu SR",
+  "url": "https://doanhnhan.baophapluat.vn/gas-shipping-gsp-dat-muc-tieu-lai-130-ty-dong-trong-nam-2026.html",
+  "opened_at": "2026-10-10",
+  "quote": "Doanh nghiệp cũng sẽ theo dõi sát diễn biến thị trường để xem xét đầu tư thêm một tàu dầu/hóa chất có tải trọng đến 25.000 DWT hoặc một tàu SR.",
+  "status": "match",
+  "note": "GSP."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Đội tàu 12/2025 & tàu thứ 10",
+  "value": "9 tàu (7 LPG + 2 dầu hóa chất) ~63.000 DWT; mua thêm LPG ~5.000 CBM (vay Shinhan 7 năm)",
+  "url": "https://doanhnhan.baophapluat.vn/gas-shipping-gsp-muon-vay-von-ngan-hang-de-bo-sung-tau-thu-10-89818.html",
+  "opened_at": "2026-10-10",
+  "quote": "Hiện Doanh nghiệp đang sở hữu 9 tàu, gồm 7 tàu LPG và 2 tàu dầu hóa chất, với tổng tải trọng khoảng 63.000 DWT.",
+  "status": "match",
+  "note": "GSP. baophapluat 15/12/2025"
+ },
+ {
+  "block": "vt-60",
+  "claim": "Q2/2026",
+  "value": "DTT 1.488 tỷ (+13 tỷ YoY); LNTT 18,5 tỷ (-44%); LNST 14,5 tỷ (-46%)",
+  "url": "https://mekongasean.vn/cong-ty-con-cua-pvtrans-bao-lai-quy-2-giam-gan-mot-nua-57398.html",
+  "opened_at": "2026-10-10",
+  "quote": "Khấu trừ các khoản chi phí, công ty báo lãi trước thuế hơn 18,5 tỷ đồng, giảm 44% YoY; lãi sau thuế đạt 14,5 tỷ đồng, giảm 46% YoY.",
+  "status": "match",
+  "note": "GSP. mekongasean 16/07/2026"
+ },
+ {
+  "block": "vt-60",
+  "claim": "6T/2026 & % KH",
+  "value": "DTT 2.202 tỷ (+13%); LNST ~41 tỷ (-26,7%); 39% KH LNST 104 tỷ",
+  "url": "https://mekongasean.vn/cong-ty-con-cua-pvtrans-bao-lai-quy-2-giam-gan-mot-nua-57398.html",
+  "opened_at": "2026-10-10",
+  "quote": "Lũy kế 6 tháng đầu năm 2026 , doanh nghiệp thu về 2.202 tỷ đồng doanh thu thuần, tăng 13% YoY từ 1.949 tỷ đồng; lợi nhuận sau thuế giảm 26,7% YoY, từ 56 tỷ đồng xuống còn gần 41 tỷ đồng.",
+  "status": "match",
+  "note": "GSP."
+ },
+ {
+  "block": "vt-60",
+  "claim": "Nguyên nhân giảm lãi",
+  "value": "thị trường khó khăn, cạnh tranh gay gắt, chi phí khai thác tăng",
+  "url": "https://mekongasean.vn/cong-ty-con-cua-pvtrans-bao-lai-quy-2-giam-gan-mot-nua-57398.html",
+  "opened_at": "2026-10-10",
+  "quote": "đà sụt giảm của lợi nhuận chủ yếu do thị trường vận tải trong kỳ diễn biến khó khăn và cạnh tranh gay gắt, khiến hoạt động khai thác gặp nhiều thách thức, trong khi chi phí khai thác và các chi phí liên quan gia tăng",
+  "status": "match",
+  "note": "GSP."
+ },
+ {
+  "block": "vt-61",
+  "claim": "Baltic TCE 02/10/2026 (gần nhất)",
+  "value": "TD3C VLCC 1.286.655 $/day; TD7 Aframax 305.166; TD19 Aframax Med 292.576; TC17 MR 116.097; TC14 MR 52.004; TC2 MR 14.577; TC5 LR1 196.155",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-02.10.2026-HSN.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "BALTIC TCE DIRTY 02/10/2026 | TD3C ME Gulf / China 270,000 1,286,655 | TD7 UKC / UKC 80,000 305,166 | TD19 Med / Med 80,000 292,576 | BALTIC TCE CLEAN | TC2 Cont / USAC 37,000 14,577 | TC14 USG / UKC 38,000 52,004 | TC17 ME Gulf / EAFR 35,000 116,097",
+  "status": "match",
+  "note": "Cước tàu dầu. Affinity Tanker Weekly 02 OCT 2026, pdftotext; mức bất thường do xung đột Hormuz"
+ },
+ {
+  "block": "vt-61",
+  "claim": "BDTI/BCTI 25/09/2026",
+  "value": "BDTI 6586; BCTI 2414",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-02.10.2026-HSN.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "25/09/2026 6586 2414",
+  "status": "match",
+  "note": "Cước tàu dầu."
+ },
+ {
+  "block": "vt-61",
+  "claim": "Baltic TCE 25/09/2026 (cuối Q3/2026)",
+  "value": "TD3C 1.234.685; TD7 314.796; TD19 288.783; TC5 187.550; TC17 112.326; TC14 29.328; TC2 6.380",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/09/Affinity-Tanker-Weekly-25.09.2026-HSN.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "TD3C ME Gulf / China 270,000 1,234,685 | TD7 UKC / UKC 80,000 314,796 | TD19 Med / Med 80,000 288,783 | TC5 ME Gulf / Japan 55,000 187,550 | TC14 USG / UKC 38,000 29,328 | TC17 ME Gulf / EAFR 35,000 112,326",
+  "status": "match",
+  "note": "Cước tàu dầu. Affinity 25 SEP 2026; BDTI 18/09: 5366, BCTI 2160"
+ },
+ {
+  "block": "vt-61",
+  "claim": "Baltic TCE 19/06/2026 (gần cuối Q2/2026)",
+  "value": "TD3C 490.423; TD7 41.315; TD19 50.829; TC5 99.269; TC17 65.481; TC14 10.143; TC2 6.304",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/06/Affinity-Tanker-Weekly-19.06.2026-HSN.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "TD3C ME Gulf / China 270,000 490,423 | TD7 UKC / UKC 80,000 41,315 | TD19 Med / Med 80,000 50,829 | TC2 Cont / USAC 37,000 6,304 | TC5 ME Gulf / Japan 55,000 99,269 | TC14 USG / UKC 38,000 10,143 | TC17 ME Gulf / EAFR 35,000 65,481",
+  "status": "match",
+  "note": "Cước tàu dầu. bản 26/06/2026 không tải được; dùng 19/06"
+ },
+ {
+  "block": "vt-61",
+  "claim": "Baltic TCE 03/07/2026 (đầu Q3)",
+  "value": "TD3C 290.853; TD7 36.066; TD19 34.688; TC5 61.171; TC17 61.084; TC14 27.307; TC2 4.806",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/07/Affinity-Tanker-Weekly-03.07.2026-HSN.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "TD3C ME Gulf / China 270,000 290,853 | TD7 UKC / UKC 80,000 36,066 | TD19 Med / Med 80,000 34,688 | TC2 Cont / USAC 37,000 4,806 | TC5 ME Gulf / Japan 55,000 61,171 | TC14 USG / UKC 38,000 27,307 | TC17 ME Gulf / EAFR 35,000 61,084",
+  "status": "match",
+  "note": "Cước tàu dầu."
+ },
+ {
+  "block": "vt-61",
+  "claim": "Baltic TCE 20/03/2026 (gần cuối Q1/2026, đỉnh xung đột)",
+  "value": "TD3C 384.449; TD7 191.767; TD19 185.475; TC5 62.439; TC17 65.612; TC14 68.590; TC2 18.983",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/03/Affinity-Tanker-Weekly-20.03.2026-HSN.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "TD3C ME Gulf / China 270,000 384,449 | TD7 UKC / UKC 80,000 191,767 | TD19 Med / Med 80,000 185,475 | TC2 Cont / USAC 37,000 18,983 | TC5 ME Gulf / Japan 55,000 62,439 | TC14 USG / UKC 38,000 68,590 | TC17 ME Gulf / EAFR 35,000 65,612",
+  "status": "match",
+  "note": "Cước tàu dầu. bản 27/03/2026 không tải được; dùng 20/03"
+ },
+ {
+  "block": "vt-61",
+  "claim": "Baltic TCE 19/12/2025 (cuối Q4/2025)",
+  "value": "TD3C 110.068; TD7 71.230; TD19 69.018; TC5 28.705; TC17 28.184; TC14 21.574; TC2 9.765; BDTI 12/12: 1401, BCTI 751",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2025/12/Affinity-Tanker-Weekly-19.12.2025-HSN.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "TD3C ME Gulf / China 270,000 110,068 | TD7 UKC / UKC 80,000 71,230 | TD19 Med / Med 80,000 69,018 | TC2 Cont / USAC 37,000 9,765 | TC5 ME Gulf / Japan 55,000 28,705 | TC14 USG / UKC 38,000 21,574 | TC17 ME Gulf / EAFR 35,000 28,184",
+  "status": "match",
+  "note": "Cước tàu dầu."
+ },
+ {
+  "block": "vt-61",
+  "claim": "Baltic TCE 09/01/2026 (trước xung đột)",
+  "value": "TD3C 59.536; TD7 56.863; TD19 49.092; TC5 31.766; TC17 24.341; TC14 21.883; TC2 6.361; BDTI 02/01: 1259, BCTI 713",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/01/Affinity-Tanker-Weekly-09.01.2026-HSN.pdf",
+  "opened_at": "2026-10-10",
+  "quote": "TD3C ME Gulf / China 270,000 59,536 | TD7 UKC / UKC 80,000 56,863 | TD19 Med / Med 80,000 49,092 | TC2 Cont / USAC 37,000 6,361 | TC5 ME Gulf / Japan 55,000 31,766 | TC14 USG / UKC 38,000 21,883 | TC17 ME Gulf / EAFR 35,000 24,341",
+  "status": "match",
+  "note": "Cước tàu dầu."
+ },
+ {
+  "block": "vt-61",
+  "claim": "Clarksons Q3/2026 bình quân",
+  "value": "VLCC 277.995 $/day; Suezmax 228.262; Aframax 119.189; MR 31.157 (cuối quý 60.000); VLGC 154.853; Capesize 33.100; ClarkSea 46.384",
+  "url": "https://indiashippingnews.com/?p=98017",
+  "opened_at": "2026-10-10",
+  "quote": "The unprecedented strength in the VLCC market has filtered down into Suezmax (Q3 avg a record $228,262/day) and Aframax ($119,189/day). The product tanker market has been more modest by comparison but still averaged $31,157/day for MRs and firmed to $60,000/day by quarter end.",
+  "status": "match",
+  "note": "Cước tàu dầu. indiashippingnews 07/10/2026 dẫn Clarksons Research"
+ },
+ {
+  "block": "vt-61",
+  "claim": "Clarksons Q3/2026 VLCC & ClarkSea",
+  "value": "VLCC Q3 avg 277.995; ClarkSea Index Q3 46.384 $/day (kỷ lục)",
+  "url": "https://indiashippingnews.com/?p=98017",
+  "opened_at": "2026-10-10",
+  "quote": "This combination of improved volumes plus additional “ inefficiencies ” and distances has pushed VLCC earnings to exceptional levels (>$600,000/day, Q3 avg $277,995/day, some routes now over $1.6m/day)",
+  "status": "match",
+  "note": "Cước tàu dầu."
+ },
+ {
+  "block": "vt-61",
+  "claim": "Đầu T10/2026 (Clarksons qua ShipUniverse)",
+  "value": "VLCC ~660.000; Suezmax ~630.000; MR clean 64.000; VLGC USG-Japan 194.000; dry bulk ~23.000 $/day",
+  "url": "https://www.shipuniverse.com/?p=21695",
+  "opened_at": "2026-10-10",
+  "quote": "Clean MR earnings have doubled since early September to $64,000/day, US Gulf-to-Japan VLGC earnings are near a record $194,000/day, 6,500-CEU car-carrier one-year charter rates have reached $95,000/day, dry bulk remains firm near $23,000/day",
+  "status": "match",
+  "note": "Cước tàu dầu. shipuniverse 05/10/2026, nguồn thứ cấp"
+ },
+ {
+  "block": "vt-62",
+  "claim": "BDI/BSI 08/10/2026 (gần nhất)",
+  "value": "BDI 2.973; BCI 4.512 ($40.923); BPI 2.410 ($21.688); BSI 1.808 ($22.851); BHSI 1.000 ($18.004)",
+  "url": "https://www.handybulk.com/baltic-dry-index/",
+  "opened_at": "2026-10-10",
+  "quote": "8-October-2026 The Baltic Dry Index (BDI) decreased by 21 points to reach 2,973 points.",
+  "status": "match",
+  "note": "Hàng rời. handybulk; BSI/TCE theo tóm lược WebFetch cùng trang"
+ },
+ {
+  "block": "vt-62",
+  "claim": "BDI 01/10/2026",
+  "value": "BDI 3.140; BSI 1.794 ($22.681)",
+  "url": "https://www.handybulk.com/baltic-dry-index/",
+  "opened_at": "2026-10-10",
+  "quote": "1-October-2026 The Baltic Dry Index (BDI) increased by 27 points to reach 3,140 points.",
+  "status": "match",
+  "note": "Hàng rời."
+ },
+ {
+  "block": "vt-62",
+  "claim": "Cuối Q3/2026 (30/09)",
+  "value": "BDI 3.113; BSI 1.797, Supramax TCE $22.714",
+  "url": "https://www.handybulk.com/baltic-dry-index/2026/september/",
+  "opened_at": "2026-10-10",
+  "quote": "30-September-2026 The Baltic Dry Index (BDI) decreased by 65 points to reach 3,113 points. The Baltic Supramax Index (BSI) remained unchanged at 1,797 points, with average daily earnings for supramax bulk carriers increased by $4 to $22,714.",
+  "status": "match",
+  "note": "Hàng rời."
+ },
+ {
+  "block": "vt-62",
+  "claim": "Cuối Q2/2026 (30/06)",
+  "value": "BDI 2.501; BSI 1.667, Supramax TCE $21.076",
+  "url": "https://www.handybulk.com/baltic-dry-index/2026/june/",
+  "opened_at": "2026-10-10",
+  "quote": "30-June-2026 The Baltic Dry Index (BDI) increased by 11 points to reach 2,501 points. The Baltic Supramax Index (BSI) decreased by 1 point to 1,667 points, with average daily earnings for supramax bulk carriers decreased by $8 to $21,076.",
+  "status": "match",
+  "note": "Hàng rời."
+ },
+ {
+  "block": "vt-62",
+  "claim": "Cuối Q1/2026 (31/03)",
+  "value": "BDI 1.995; BSI 1.202, Supramax TCE $15.190",
+  "url": "https://www.handybulk.com/baltic-dry-index/2026/march/",
+  "opened_at": "2026-10-10",
+  "quote": "31-March-2026 The Baltic Dry Index (BDI) decreased by 22 points to reach 1,995 points. The Baltic Supramax Index (BSI) decreased by 1 point to 1,202 points, with average daily earnings for supramax bulk carriers decreased by $18 to $15,190.",
+  "status": "match",
+  "note": "Hàng rời."
+ },
+ {
+  "block": "vt-62",
+  "claim": "Cuối Q4/2025 (23/12, phiên cuối)",
+  "value": "BDI 1.889; BSI 1.162, Supramax TCE $14.687",
+  "url": "https://www.handybulk.com/baltic-dry-index/2025/december/",
+  "opened_at": "2026-10-10",
+  "quote": "23-December-2025 The Baltic Dry Index (BDI) decreased by 90 points to reach 1,889 points. The Baltic Supramax Index (BSI) decreased by 31 points to 1,162 points, with average daily earnings for supramax bulk carriers decreased by $396 to $14,687.",
+  "status": "match",
+  "note": "Hàng rời."
+ },
+ {
+  "block": "vt-62",
+  "claim": "HARPEX 09/10/2026 & giá thuê theo cỡ",
+  "value": "HARPEX 2.468; 1.100 TEU $11.500; 1.700 TEU $18.500; 2.500 TEU $38.000; 2.700 TEU $44.000; 3.500 TEU $46.000; 4.250 TEU $49.000 (6-12 tháng)",
+  "url": "https://www.harperpetersen.com/harpex",
+  "opened_at": "2026-10-10",
+  "quote": "09-Oct-2026 2,468 11,500 18,500 35,000 38,000 44,000 46,000 49,000 58,000 72,000 79,000",
+  "status": "match",
+  "note": "Container. cột: Index, 700, 1100, 1700, 1800, 2500, 2700, 3500, 4250, 6500, 8500 TEU; curl trang Harper Petersen"
+ },
+ {
+  "block": "vt-62",
+  "claim": "HARPEX 25/09/2026 (cuối Q3)",
+  "value": "2.450; 1.700 TEU $18.000; 2.500 TEU $38.000; 2.700 TEU $43.000",
+  "url": "https://www.harperpetersen.com/harpex",
+  "opened_at": "2026-10-10",
+  "quote": "25-Sep-2026 2,450 11,000 18,000 35,000 38,000 43,000 45,000 49,000 58,000 72,000 79,000",
+  "status": "match",
+  "note": "Container."
+ },
+ {
+  "block": "vt-62",
+  "claim": "New ConTex T8/2026 (Alphaliner/DynaLiners qua Container News)",
+  "value": "1.700 TEU $33.877/ngày; 2.500 TEU $37.227; 2.700 TEU $40.052; Harpex T8 avg 2.371, 2026 high 2.447",
+  "url": "https://container-news.com/containership-charter-rates-strengthen-as-mid-sized-tonnage-leads-gains/",
+  "opened_at": "2026-10-10",
+  "quote": "Its New ConTex assessment reached US$33,877 per day in August, compared with US$33,025 in July and US$26,760 in August 2025, representing an annual increase of 26.6%. The 2,500 TEU assessment rose to US$37,227 per day from US$35,423 in July.",
+  "status": "match",
+  "note": "Container. Container News 06/10/2026; New ConTex 1.700 TEU khác xa HARPEX 1.700 TEU ($18.500) do kỳ hạn/định nghĩa khác"
+ },
+ {
+  "block": "vt-62",
+  "claim": "Supramax 2011 (15 tuổi) bán 10/2026",
+  "value": "Ipsea Colossus 58.800 DWT, 2011: USD 20,75 mil (VV 19,5 mil)",
+  "url": "https://www.hellenicshippingnews.com/weekly-vessel-valuations-report-october-6-2026/",
+  "opened_at": "2026-10-10",
+  "quote": "Supramax Ipsea Colossus (58,800 DWT, 2011, Kawasaki) sold by K Line Singapore Pte for USD 20.75 mil, VV Value USD 19.5 mil.",
+  "status": "match",
+  "note": "Giá tàu. VesselsValue weekly 06/10/2026; không có benchmark 10 tuổi chuẩn"
+ },
+ {
+  "block": "vt-62",
+  "claim": "MR2 2013 (13 tuổi) bán 10/2026",
+  "value": "Pacific Onyx 50.000 DWT, 2013: USD 35,0 mil (VV 30,53 mil)",
+  "url": "https://www.hellenicshippingnews.com/weekly-vessel-valuations-report-october-6-2026/",
+  "opened_at": "2026-10-10",
+  "quote": "MR2 Pacific Onyx (50,000 DWT, Mar 2013, Onomichi) sold DD passed to Asian buyers for USD 35.0 mil, VV Value USD 30.53 mil.",
+  "status": "match",
+  "note": "Giá tàu."
+ },
+ {
+  "block": "vt-62",
+  "claim": "Giá đóng mới MR (6/2026)",
+  "value": "~US$52M; resale MR hiện đại ~US$55M",
+  "url": "https://www.rivieramm.com/news-content-hub/greek-owner-centrofin-snaps-up-newbuild-mr-tanker-in-resale-market-move-89168",
+  "opened_at": "2026-10-10",
+  "quote": "Greek shipbrokers estimate the resale value of a modern MR tanker at around US$55M, compared with current newbuilding prices of approximately US$52M.",
+  "status": "match",
+  "note": "Giá tàu. Riviera 23/06/2026"
+ },
+ {
+  "block": "vt-62",
+  "claim": "Ultramax 5 tuổi & biến động giá 4T/2026",
+  "value": "Ultramax 5 tuổi >$37,1M; NB/5y/10y Ultramax +10%/+13%/+20% trong 4T/2026",
+  "url": "https://www.hellenicshippingnews.com/geared-bulker-values-surge-on-robust-demand-for-modern-vessels/",
+  "opened_at": "2026-10-10",
+  "quote": "Over the first four months of 2026, new, five-year-old and 10-year-old Ultramax prices increased by approximately 10%, 13%, and 20% respectively. MSI data shows a five-year-old Kamsarmax priced at around $37 Mn, while a five-year-old Ultramax is valued slightly higher at just over $37.1 Mn.",
+  "status": "match",
+  "note": "Giá tàu. HSN/MSI 03/06/2026; không có giá tuyệt đối Supramax 10 tuổi"
+ },
+ {
+  "block": "vt-62",
+  "claim": "VLCC NB / 5 tuổi / resale (9/2026)",
+  "value": "NB ~$130m; 5 tuổi ~$151m; resale ~$178m; 20 tuổi $71,1m; orderbook 20,1% số tàu / 25,0% DWT",
+  "url": "https://www.breakwaveadvisors.com/insights/2026/9/2/tanker-1h-2026-strong-vlcc-earnings-drive-newbuilding-and-secondhand-investment",
+  "opened_at": "2026-10-10",
+  "quote": "A five-year-old VLCC is assessed at about $151m against $130m for a newbuilding contract, while prompt resale tonnage commands roughly $178m, a premium of some $48m over a new order.",
+  "status": "match",
+  "note": "Giá tàu. Breakwave 02/09/2026"
+ },
+ {
+  "block": "vt-62",
+  "claim": "Nhận định giá tàu cũ 5-10 tuổi (BSC 4/2026)",
+  "value": "giá tàu 5-10 tuổi 'hiện thấp' hỗ trợ VTO mua tàu 1H2026; tàu mới +~19% trọng tải",
+  "url": "https://www.bsc.com.vn/Report/ReportFile/15166",
+  "opened_at": "2026-10-10",
+  "quote": "tàu mới có thể giúp tăng thêm khoảng 19% tổng trọng tải đội tàu hiện tại, trong bối cảnh giá tàu 5–10 năm tuổi hiện thấp",
+  "status": "match",
+  "note": "Giá tàu."
+ }
+]

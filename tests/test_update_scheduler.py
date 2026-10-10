@@ -224,7 +224,7 @@ class RegistryTests(unittest.TestCase):
 
     def test_every_dashboard_block_is_scheduled(self):
         covered = {b for i in self.reg['items'] for b in i['where'].get('blocks', [])}
-        for page in ('Dau-khi', 'Sugar', 'Dien', 'Bat-dong-san', 'Det-may', 'Cang-bien', 'Nong-nghiep', 'Thuy-san'):
+        for page in ('Dau-khi', 'Sugar', 'Dien', 'Bat-dong-san', 'Det-may', 'Cang-bien', 'Nong-nghiep', 'Thuy-san', 'Van-tai-bien'):
             text = (ROOT / page / 'index.html').read_text(encoding='utf-8')
             for block, kind in re.findall(r'data-block-id="([^"]+)" data-update-kind="([^"]+)"', text):
                 with self.subTest(block):
@@ -233,6 +233,8 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual(wi, {b for i in self.reg['items'] if i['tier'] == 'B' and 'wiContract' not in i for b in i['wiBlocks']})
         sf_contract = json.loads((ROOT / 'data/seafood-wi-contract.json').read_text())
         self.assertEqual({c['block'] for c in sf_contract['calls'] if c.get('cadence') != 'fixed'}, {b for i in self.reg['items'] if i.get('wiContract') == 'data/seafood-wi-contract.json' for b in i['wiBlocks']})
+        sh_contract = json.loads((ROOT / 'data/shipping-wi-contract.json').read_text())
+        self.assertEqual({c['block'] for c in sh_contract['calls'] if c.get('cadence') != 'fixed'}, {b for i in self.reg['items'] if i.get('wiContract') == 'data/shipping-wi-contract.json' for b in i['wiBlocks']})
         ag_contract = json.loads((ROOT / 'data/agri-wi-contract.json').read_text())
         self.assertEqual({c['block'] for c in ag_contract['calls'] if c.get('cadence') != 'fixed'}, {b for i in self.reg['items'] if i.get('wiContract') == 'data/agri-wi-contract.json' for b in i['wiBlocks']})
         pt_contract = json.loads((ROOT / 'data/port-wi-contract.json').read_text())
