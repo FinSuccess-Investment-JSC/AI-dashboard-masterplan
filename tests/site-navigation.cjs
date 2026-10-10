@@ -45,6 +45,11 @@ const prefix = '/AI-dashboard-masterplan/';
     }
     await page.goto(base+'?v='+manifest.version);
     assert.equal(await page.locator('#readyDashboards a').count(), 9);
+    // Stock-style search: ticker → sector page with the comparison filtered to that ticker.
+    await page.fill('#fsQuery','VHC');await page.press('#fsQuery','Enter');await page.waitForURL(/Thuy-san\/.*ma=VHC/);
+    await page.waitForFunction(()=>document.getElementById('comparison-search')?.value==='VHC');
+    assert.equal(await page.locator('.comparison-table tbody tr').count(),1);
+    await page.goto(base+'?v='+manifest.version);
     for (const key of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood']) {
       await page.locator('#readyDashboards [data-site-route="'+key+'"]').click();
       await checkRoute(key);

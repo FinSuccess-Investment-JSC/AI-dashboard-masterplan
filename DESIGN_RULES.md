@@ -81,3 +81,4 @@ Người dùng yêu cầu font, cỡ chữ và cách trình bày giống Stock d
 - Tiêu đề mục 22px navy có vạch teal bên trái; tiêu đề chart 16px; chữ phụ 12–13px `#596272`.
 - Ô chỉ số: nhãn in hoa 11px, số 22px đậm 800 navy. Bảng 13px, tiêu đề nền `#F0F4FF`. Card viền `#d9dde4`, bo 16px, padding 22px.
 - Trang có `.topbar` (trang tổng, Ngân hàng): nền trắng, ẩn chữ thương hiệu vì đã có logo.
+- Ô **Tra cứu ngành · mã cổ phiếu** dưới logo, cùng kiểu với "Tra cứu cổ phiếu" của Stock dashboard (`_template/tools/build_stock_site.py`): gõ tên ngành (không dấu cũng được) hoặc mã; chọn mã mở trang ngành ở Tổng quan › So sánh tài chính, lọc sẵn mã (`?ma=`). Danh sách mã lấy từ `data/company-comparison.js`; code trong `assets/site-navigation.js`.
