@@ -1479,6 +1479,7 @@
   },
   "news.vasep": {
    "seen": [
+    "e4897ce3e388fc04",
     "d281248ab485daa1",
     "303c99a181e7b9b2",
     "492bfc77d55386bd",
@@ -1508,10 +1509,12 @@
     "53a7c4f4ad28c29c",
     "9e6a12a13c89bf7a",
     "d2d32128058c8df1"
-   ]
+   ],
+   "lastNew": "2026-10-10T21:42:25+07:00"
   },
   "news.shipping-policy": {
    "seen": [
+    "6002c38d403aae0a",
     "69442ff23919ac0a",
     "af4d34b14aa7a0a7",
     "a67f33ccaf872fc5",
@@ -1545,7 +1548,8 @@
     "506056dfbbb5cc38",
     "e09ce7e2766b145a",
     "489f66b7b29e12c2"
-   ]
+   ],
+   "lastNew": "2026-10-10T21:42:25+07:00"
   }
  },
  "queue": [
@@ -2007,8 +2011,30 @@
    "reasons": [
     "lịch 10/10 07:00"
    ],
-   "signals": []
+   "signals": [
+    {
+     "watcher": "news.vasep",
+     "seenAt": "2026-10-10T21:42:25+07:00",
+     "what": "Một ngành hàng mang về hơn 9 tỷ USD cho Việt Nam sau 9 tháng, riêng Trung Quốc mua tới 1/4 - CafeF — https://news.google.com/rss/articles/CBMiyAFBVV95cUxQUTAzNU1aNjFWSUNhOVQ0Tmtub0k0b0hzUVJtb1lkOElpUUtiUGdRRWtjR1p2dG1vaVNidk1ScHFLX2RZbzFYUnhia2tETHBhZzZHTFVFVkdDRW0yNHBxd2dSTVB4b1BpQnBEZVA3dnFOa1JkRlNiYTVJYlZNdzlfbVhUNXNXS3l6U2N0SGlQZ2pqczQ2TktqMFpIQVVjd0dKUEJiSV9uSWJqNUt5OWd4dmVybWczYVc2NXhxaVBjWEtpUktLcVFqYQ?oc=5"
+    }
+   ]
+  },
+  {
+   "id": "shipping.policy",
+   "tier": "C",
+   "title": "USTR phí cảng (hết hoãn ~10/11/2026), OFAC/EU cấm vận, IMO NZF (4/12/2026), EU ETS; Bộ luật Hàng hải (QH kỳ 2 10/2026), TT phí hàng hải",
+   "since": "2026-10-10T21:42:25+07:00",
+   "reasons": [
+    "watcher báo có công bố mới"
+   ],
+   "signals": [
+    {
+     "watcher": "news.shipping-policy",
+     "seenAt": "2026-10-10T21:42:25+07:00",
+     "what": "Bộ luật Hàng hải và Đường thủy Việt Nam (sửa đổi): Cần làm rõ cơ sở thực tiễn - Tạp chí Diễn đàn Doanh nghiệp — https://news.google.com/rss/articles/CBMiugFBVV95cUxPSHVybnRHTWxaOHR1X0FPUjlvYjlfb3d5QmNrbjBpVVFCVnk0SGg5VHROSFl6Y1NEdWxjTklwODk1LVgxSThIZzdEbjRFV09vYkZNb0Q4bGE1akRSZmd4TDRTX1h1aEp6ZVA0WXZyVGg0U0Fha183V0plTEJrOG1JMzJvS1Rvd3NKLXRub09RNlM4clZYUWxveEdxZ2s0VVRhUU1MSnNEWGphaFJ5d1BYWkhGVmVicHAzbnc?oc=5"
+    }
+   ]
   }
  ],
- "updatedAt": "2026-10-10T13:18:47+07:00"
+ "updatedAt": "2026-10-10T21:42:25+07:00"
 }

@@ -1,8 +1,7 @@
-# Lịch cập nhật — 10/10/2026 13:18
+# Lịch cập nhật — 10/10/2026 21:42
 
-- watcher fr.vn-seafood: lập baseline 0 mục
-- watcher news.vasep: lập baseline 29 mục
-- watcher news.shipping-policy: lập baseline 33 mục
+- 🆕 news.vasep: 1 mục mới — Một ngành hàng mang về hơn 9 tỷ USD cho Việt Nam sau 9 tháng, riêng Trung Quốc mua tới 1/4 - CafeF — https://news.google.com/rss/articles/CBMiyAFBVV95cUxQUTAzNU1aNjFWSUNhOVQ0Tmtub0k0b0hzUVJtb1lkOElpUUtiUGdRRWtjR1p2dG1vaVNidk1ScHFLX2RZbzFYUnhia2tETHBhZzZHTFVFVkdDRW0yNHBxd2dSTVB4b1BpQnBEZVA3dnFOa1JkRlNiYTVJYlZNdzlfbVhUNXNXS3l6U2N0SGlQZ2pqczQ2TktqMFpIQVVjd0dKUEJiSV9uSWJqNUt5OWd4dmVybWczYVc2NXhxaVBjWEtpUktLcVFqYQ?oc=5
+- 🆕 news.shipping-policy: 1 mục mới — Bộ luật Hàng hải và Đường thủy Việt Nam (sửa đổi): Cần làm rõ cơ sở thực tiễn - Tạp chí Diễn đàn Doanh nghiệp — https://news.google.com/rss/articles/CBMiugFBVV95cUxPSHVybnRHTWxaOHR1X0FPUjlvYjlfb3d5QmNrbjBpVVFCVnk0SGg5VHROSFl6Y1NEdWxjTklwODk1LVgxSThIZzdEbjRFV09vYkZNb0Q4bGE1akRSZmd4TDRTX1h1aEp6ZVA0WXZyVGg0U0Fha183V0plTEJrOG1JMzJvS1Rvd3NKLXRub09RNlM4clZYUWxveEdxZ2s0VVRhUU1MSnNEWGphaFJ5d1BYWkhGVmVicHAzbnc?oc=5
 - ❌ oil.retail-fuel lỗi 2 ngày: retail_fuel
 - → hàng chờ [C] sugar.domestic: lịch 01/10 07:00
 - → hàng chờ [C] sugar.crop: lịch 05/10 07:00
@@ -43,4 +42,5 @@
 - → hàng chờ [C] agri.weather: lịch 10/10 07:00
 - → hàng chờ [B] seafood.wi.monthly: lịch 10/10 07:00
 - → hàng chờ [C] seafood.trade: lịch 10/10 07:00
-- Hàng chờ Claude: 41 mục — sugar.domestic, sugar.crop, bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, sugar.ai.cycle, bank.ai.read, oil.supply-news
+- → hàng chờ [C] shipping.policy: watcher báo có công bố mới
+- Hàng chờ Claude: 42 mục — sugar.domestic, sugar.crop, bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, sugar.ai.cycle, bank.ai.read, oil.supply-news
