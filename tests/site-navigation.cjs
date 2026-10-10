@@ -37,21 +37,25 @@ const prefix = '/AI-dashboard-masterplan/';
       await page.waitForURL(url => url.pathname === expected(key));
       await page.waitForLoadState('networkidle');
       assert.equal(new URL(page.url()).searchParams.get('v'), manifest.version);
-      assert.equal(await page.locator('[data-site-navigation] [aria-current="page"]').getAttribute('data-site-route'), key);
+      if (key === 'home') assert.equal(await page.locator('[data-site-navigation] [aria-current="page"]').count(), 0);
+      else assert.equal(await page.locator('[data-site-navigation] [aria-current="page"]').getAttribute('data-site-route'), key);
     }
     for (const [hash,key] of [['ngan-hang','bank'],['dau-khi','oil'],['duong','sugar'],['dien','power'],['bat-dong-san','realestate'],['det-may','textile'],['cang-bien','port'],['nong-nghiep','agri'],['thuy-san','seafood']]) {
       await page.goto(base+'?v=20260911#'+hash);
       await checkRoute(key);
     }
     await page.goto(base+'?v='+manifest.version);
-    assert.equal(await page.locator('#readyDashboards a').count(), 9);
+    // Trang gốc chỉ còn logo, ô tra cứu ngành và thanh chọn 9 ngành.
+    assert.equal(await page.locator('[data-site-navigation] a').count(), 9);
+    assert.equal(await page.getAttribute('#fsQuery','placeholder'), 'Nhập tên ngành…');
+    await page.fill('#fsQuery','thuy');assert.equal(await page.locator('#fsOptions .option').first().locator('b').textContent(),'Thủy sản');
     // Stock-style search: ticker → sector page with the comparison filtered to that ticker.
     await page.fill('#fsQuery','VHC');await page.press('#fsQuery','Enter');await page.waitForURL(/Thuy-san\/.*ma=VHC/);
     await page.waitForFunction(()=>document.getElementById('comparison-search')?.value==='VHC');
     assert.equal(await page.locator('.comparison-table tbody tr').count(),1);
     await page.goto(base+'?v='+manifest.version);
     for (const key of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood']) {
-      await page.locator('#readyDashboards [data-site-route="'+key+'"]').click();
+      await page.locator('[data-site-navigation] [data-site-route="'+key+'"]').click();
       await checkRoute(key);
       const tabCount=key==='bank'||key==='port'||key==='agri'||key==='seafood'?7:key==='realestate'?8:6;assert.equal(await page.locator('.majortabbtn').count(), tabCount);
       assert.ok(await page.locator('svg').count() > 10);
@@ -68,7 +72,7 @@ const prefix = '/AI-dashboard-masterplan/';
         assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth+1), `${key} overflows at ${width}`);
         await page.screenshot({path:`/private/tmp/navigation-${key}-${width}.png`});
       }
-      await page.locator('[data-site-navigation] [data-site-route="home"]').click();
+      await page.locator('.fs-brandbar [data-site-route="home"]').click();
       await checkRoute('home');
     }
     for (const from of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood']) {
@@ -82,7 +86,7 @@ const prefix = '/AI-dashboard-masterplan/';
     }
     await page.goto(base+'duong/');
     await checkRoute('sugar');
-    await page.locator('[data-site-navigation] [data-site-route="home"]').click();
+    await page.locator('.fs-brandbar [data-site-route="home"]').click();
     await checkRoute('home');
     for (const width of [1440,390]) {
       await page.setViewportSize({width,height:1000});
@@ -91,7 +95,7 @@ const prefix = '/AI-dashboard-masterplan/';
     }
     assert.deepEqual(errors, []);
     assert.deepEqual(missing, []);
-    console.log(JSON.stringify({result:'PASS',base,version:manifest.version,checks:'6 hub cards, legacy hashes, 30 cross-sector paths + Back, 25 section tabs, charts/data, home, duong alias, desktop/390px, no JS/HTTP errors'}));
+    console.log(JSON.stringify({result:'PASS',base,version:manifest.version,checks:'search-only home, legacy hashes, 30 cross-sector paths + Back, 25 section tabs, charts/data, home, duong alias, desktop/390px, no JS/HTTP errors'}));
   } finally {
     if(browser) await browser.close();
     if(server) await new Promise(resolve => server.close(resolve));

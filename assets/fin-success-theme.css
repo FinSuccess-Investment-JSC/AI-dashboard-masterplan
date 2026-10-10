@@ -319,3 +319,10 @@ td { padding: 7px 10px; border-bottom: 1px solid #dce1e9; }
 .fs-search + * { margin-top: 14px; }
 @media(max-width:600px){.fs-search{padding:0 14px;margin-top:12px}.fs-search input{font-size:14px}.fs-search .option span{font-size:12px}}
 @media print{.fs-search{display:none}}
+/* Trang gốc chỉ còn logo, ô tra cứu ngành và thanh chọn ngành (10/10/2026). */
+body.fs-home .fs-search { margin-top: 48px; }
+body.fs-home .fs-search form { margin: 0 auto; }
+body.fs-home .fs-search label { text-align: left; }
+.fs-home-main { min-height: 40vh; }
+.fs-brandbar a { display: inline-block; }
+body.fs-home .fs-search { margin-bottom: 32px; } body.fs-home nav.site-navigation { border-top: 1px solid #dce1e9; }

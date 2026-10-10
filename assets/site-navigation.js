@@ -37,9 +37,9 @@
   const SECTOR_WORDS = {home:'trang tổng hub', oil:'dầu khí oil gas xăng', sugar:'đường mía sugar', bank:'ngân hàng bank tín dụng', power:'điện power năng lượng', realestate:'bất động sản bds kcn khu công nghiệp nhà ở', textile:'dệt may sợi garment', port:'cảng biển kho bãi logistics vận tải', agri:'nông nghiệp thực phẩm gạo cà phê cao su chăn nuôi heo sữa bia', seafood:'thủy sản cá tra tôm seafood'};
   function mountSearch() {
     const sec = document.createElement('section'); sec.className = 'fs-search'; sec.setAttribute('aria-label', 'Tìm dashboard ngành');
-    sec.innerHTML = '<form id="fsSearch" role="search" autocomplete="off"><label for="fsQuery">Tra cứu ngành · mã cổ phiếu</label>'
+    sec.innerHTML = '<form id="fsSearch" role="search" autocomplete="off"><label for="fsQuery">Tra cứu ngành</label>'
       + '<div class="search-box"><span class="search-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></span>'
-      + '<input id="fsQuery" type="search" placeholder="Nhập tên ngành hoặc mã cổ phiếu…" aria-controls="fsOptions" aria-expanded="false" aria-describedby="fsMessage" spellcheck="false">'
+      + '<input id="fsQuery" type="search" placeholder="Nhập tên ngành…" aria-controls="fsOptions" aria-expanded="false" aria-describedby="fsMessage" spellcheck="false">'
       + '<button type="submit" aria-label="Mở dashboard" title="Mở dashboard (Enter)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></button></div>'
       + '<div class="options" id="fsOptions" role="listbox" aria-label="Kết quả phù hợp"></div><div class="message" id="fsMessage" role="status"></div></form>';
     document.querySelector('.fs-brandbar').after(sec);
@@ -47,7 +47,7 @@
     const norm = t => String(t || '').toLocaleLowerCase('vi').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
     let entries = [], loaded = false, matches = [], selected = 0;
     function build() {
-      entries = ['oil','sugar','bank','power','realestate','textile','port','agri','seafood','home'].map(k => ({kind:'sector', code:routes[k].label, sub:k === 'home' ? 'Danh sách mọi dashboard' : 'Dashboard ngành', key:k, words:norm(routes[k].label + ' ' + SECTOR_WORDS[k])}));
+      entries = ['oil','sugar','bank','power','realestate','textile','port','agri','seafood'].map(k => ({kind:'sector', code:routes[k].label, sub:'Dashboard ngành', key:k, words:norm(routes[k].label + ' ' + SECTOR_WORDS[k])}));
       const companies = (window.COMPANY_COMPARISON && window.COMPANY_COMPARISON.companies) || [];
       companies.forEach(c => { if (!routes[c.sector]) return; entries.push({kind:'stock', code:c.symbol, sub:routes[c.sector].label + (c.group ? ' · ' + c.group : ''), key:c.sector, words:norm(c.symbol + ' ' + c.group)}); });
       loaded = companies.length > 0;
@@ -78,7 +78,7 @@
       if (!q) { input.focus(); render(); return; }
       const m = entries.find(e => norm(e.code) === q) || matches[selected];
       if (m) { go(m); return; }
-      close(); message.textContent = loaded ? 'Chưa có dashboard cho ngành hoặc mã này.' : 'Đang tải danh sách mã, thử lại sau giây lát.';
+      close(); message.textContent = loaded ? 'Chưa có dashboard cho ngành này.' : 'Đang tải danh sách mã, thử lại sau giây lát.';
     });
     ['focus', 'click', 'input'].forEach(t => input.addEventListener(t, () => { ensureCompanies(); render(); }));
     input.addEventListener('keydown', ev => {
@@ -105,8 +105,9 @@
     if (!document.querySelector('.fs-brandbar') && document.querySelector('[data-site-navigation]')) {
       const bar = document.createElement('div'); bar.className = 'fs-brandbar';
       const inner = document.createElement('div'); inner.className = 'in';
+      const home = document.createElement('a'); home.dataset.siteRoute = 'home'; home.href = href('home'); home.setAttribute('aria-label', 'FinSuccess · tra cứu ngành');
       const logo = document.createElement('img'); logo.src = new URL('assets/fin-success-logo.png', root).href; logo.alt = 'FinSuccess';
-      inner.append(logo); bar.append(inner); document.body.prepend(bar);
+      home.append(logo); inner.append(home); bar.append(inner); document.body.prepend(bar);
     }
     if (document.querySelector('.fs-brandbar') && !document.querySelector('.fs-search')) mountSearch();
     // Sector title band sits above the major tabs, like the ticker band in the Stock dashboard.
@@ -117,7 +118,7 @@
       nav.classList.add('site-navigation');
       nav.setAttribute('aria-label','Điều hướng dashboard ngành');
       nav.replaceChildren();
-      for (const key of ['home','oil','sugar','bank','power','realestate','textile','port','agri','seafood']) {
+      for (const key of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood']) {
         const link = document.createElement('a');
         link.href = href(key);
         link.dataset.siteRoute = key;

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>FinSuccess Industry Dashboard Database</title>
 <link rel="stylesheet" href="assets/site-navigation.css?v=54a3825f55f4">
-<script src="assets/site-navigation.js?v=d6e893473a99" data-release="20261010-search-r1"></script>
+<script src="assets/site-navigation.js?v=f851d8545ce0" data-release="20261010-home-search-r1"></script>
 <style>
 :root{--navy:#11255a;--navy2:#1d3678;--accent:#27af95;--accent2:#2fd0b2;--page:#f5f7fc;--card:#fff;--ink:#101318;--ink2:#3d4653;--muted:#6b7686;--line:#dfe6f7;--hair:#eaf0fb;--soft:#eef5f8;--red:#b8443a;--shadow:0 1px 2px rgba(17,37,90,.04),0 10px 28px rgba(17,37,90,.06)}
 *{box-sizing:border-box}
@@ -39,107 +39,10 @@ table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}th,td{pa
 @media(max-width:900px){.ready-grid{grid-template-columns:1fr}}
 @media(max-width:900px){.layout{grid-template-columns:1fr}.side{position:static}.two,.facts{grid-template-columns:1fr}.wrap{padding:14px}.hero h1{font-size:27px}}
 </style>
-<link rel="stylesheet" href="assets/fin-success-theme.css?v=b740d2574451">
+<link rel="stylesheet" href="assets/fin-success-theme.css?v=026637e2870a">
 </head>
-<body>
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="brand">FinSuccess Research<small>Industry Dashboard Master Database</small></div>
-    <nav class="topnav" data-site-navigation="home">
-      <a href="./">Trang tổng</a><a href="Dau-khi/">Dầu khí</a><a href="Sugar/">Đường</a><a href="Bank/">Ngân hàng</a>
-    </nav>
-  </div>
-</div>
-<main class="wrap">
-  <section class="hero">
-    <h1>Master database <em>dashboard ngành</em></h1>
-    <p>Chọn ngành để mở dashboard đầy đủ. Năm dashboard Dầu khí, Đường, Ngân hàng, Điện và Bất động sản cùng dùng phiên bản mới nhất đã xuất bản từ project. Trong mỗi ngành, dùng thanh điều hướng phía trên để chuyển ngành hoặc quay về trang tổng.</p>
-    <div class="meta">
-      <span class="pill">5 dashboard ngành</span>
-      <span class="pill">Giao diện cập nhật 06/10/2026</span>
-      <span class="pill">Kỳ số liệu riêng tại từng chart</span>
-      <a class="pill" data-site-route="plan" href="Masterplan/">Master plan ↗</a>
-    </div>
-  </section>
-  <section class="ready-grid" id="readyDashboards" aria-label="Mở dashboard ngành"></section>
-  <p class="site-release-inline" data-release-label></p>
-  <details class="planned-industries"><summary>Các ngành đang chuẩn bị</summary><section class="layout">
-    <aside class="side" id="industryTabs"></aside>
-    <div id="industryPanes"></div>
-  </section></details>
-</main>
-<script>
-const industries=[
-  {id:"dau-khi",name:"Dầu khí",status:"ready",folder:"Dau-khi/",headline:"Dashboard ngành Dầu khí Việt Nam",desc:"Bản dashboard đã được cập nhật mới nhất, bao gồm cung-cầu, giá dầu/crack spread, tồn kho, Hormuz, policy, catalyst/risk và key players.",metrics:[["7","tab phân tích"],["2022-2027E","global balance"],["11/09/2026","bản cập nhật mới nhất"],["Public-source","ưu tiên nguồn"]],watch:["Cung-cầu dầu và nhiên liệu lỏng toàn cầu","Crack diesel/gasoline và Brent","EIA tồn kho, IMF PortWatch Hormuz","Cơ chế điều hành giá xăng dầu trong nước"],sources:"EIA, IEA/OPEC, IMF PortWatch, PVN/Petrotimes, Bộ Công Thương và các source public đã được cập nhật vào dashboard chính."},
-  {id:"duong",name:"Đường",status:"ready",folder:"Sugar/",headline:"Dashboard ngành Đường",desc:"Đã có dashboard Đường được cập nhật mới nhất trong project, với các section cung-cầu, giá chi phí margin, policy/trade/tax, catalyst/risk và key players.",metrics:[["1","dashboard chính thức"],["11/09/2026","bản cập nhật mới nhất"],["Static HTML","triển khai"],["Ready","đã tích hợp web tổng"]],watch:["Giá đường thế giới và trong nước","Sản lượng mía/đường Việt Nam","Quota nhập khẩu, ATIGA, đường lậu","Biên lợi nhuận doanh nghiệp đường"],sources:"USDA FAS PSD, World Bank Pink Sheet, VSSA, Viện Nghiên cứu Mía Đường và các nguồn công bố đã được tích hợp trong dashboard Đường."},
-  {id:"ngan-hang",name:"Ngân hàng",status:"ready",folder:"Bank/",headline:"Dashboard ngành Ngân hàng Việt Nam",desc:"Bảy tab theo flow cung vốn – tín dụng – biên lợi nhuận – chính sách – rủi ro, với dữ liệu Eximbank, IFC, pháp lý và Wi bundle session-only đã được tích hợp.",metrics:[["7","tab phân tích"],["20","Wi blocks đã nối"],["11/09/2026","Wi bundle checked"],["Ready","đã tích hợp web tổng"]],watch:["Huy động so với tín dụng","Giá vốn, NIM và CASA","Nợ nhóm 2, NPL và credit cost","OMO, tỷ giá, room và tỷ lệ an toàn"],sources:"Eximbank, IFC, Công báo, Tạp chí Ngân hàng và Wi bundle đã được tích hợp. Các khối còn thiếu/giới hạn vẫn được giữ rõ trên dashboard để không lẫn lộn dữ liệu và suy luận."},
-  {id:"chung-khoan",name:"Chứng khoán",status:"planned",headline:"Chứng khoán",desc:"Chưa dựng dashboard ngành.",watch:["Thanh khoản thị trường","Margin lending","IPO/upgrading story","Broker market share"]},
-  {id:"bds",name:"Bất động sản",status:"ready",folder:"Bat-dong-san/",headline:"Dashboard ngành Bất động sản Việt Nam",desc:"Nhà ở và khu công nghiệp: trái phiếu, tín dụng, FDI, giá nhà, bảng giá đất, pháp lý dự án và 20 doanh nghiệp niêm yết.",metrics:[["9","tab phân tích"],["20","doanh nghiệp theo dõi"],["Hằng ngày","trái phiếu BĐS (HNX · Wi)"],["Public-source","ưu tiên nguồn"]],watch:["Đáo hạn và chậm trả trái phiếu BĐS","Tín dụng, lãi vay mua nhà, FDI","Giá nhà Hà Nội, TP.HCM; lấp đầy KCN","Bảng giá đất, Luật Đất đai sửa đổi, dự án tồn đọng"]},
-  {id:"det-may",name:"Dệt may",status:"ready",folder:"Det-may/",headline:"Dashboard ngành Dệt may Việt Nam",desc:"Xuất khẩu theo thị trường, thuế Mỹ và quy tắc xuất xứ, giá bông – xơ – sợi, tồn kho nhãn hàng và 7 doanh nghiệp niêm yết.",metrics:[["9","tab phân tích"],["7","doanh nghiệp theo dõi"],["Hằng ngày","xuất khẩu, giá bông (Wi)"],["Public-source","ưu tiên nguồn"]],watch:["Xuất khẩu sang Mỹ","Thuế Mục 301 và hạn ngạch đối thủ","Giá bông, xơ PSF, chênh giá sợi","Tồn kho nhãn hàng"]},
-  {id:"kcn",name:"Khu công nghiệp",status:"planned",headline:"Khu công nghiệp",desc:"Chưa dựng dashboard ngành.",watch:["FDI đăng ký/giải ngân","Giá thuê đất KCN","Diện tích sẵn sàng cho thuê","Tiến độ pháp lý dự án mới"]},
-  {id:"ban-le",name:"Bán lẻ",status:"planned",headline:"Bán lẻ",desc:"Chưa dựng dashboard ngành.",watch:["SSSG và traffic","Thu nhập/niềm tin tiêu dùng","Mở mới/đóng cửa hàng","Gross margin và inventory"]},
-  {id:"thep",name:"Thép",status:"planned",headline:"Thép",desc:"Chưa dựng dashboard ngành.",watch:["HRC/rebar spread","Quặng sắt, than cốc","Sản lượng tiêu thụ nội địa/xuất khẩu","China supply và trade defense"]},
-  {id:"dien",name:"Điện",status:"ready",folder:"Dien/",headline:"Dashboard ngành Điện Việt Nam",desc:"Sản lượng và cơ cấu nguồn điện hằng ngày, giá than/LNG, thủy văn và El Niño, giá điện, Quy hoạch điện VIII và 18 doanh nghiệp niêm yết.",metrics:[["7","tab phân tích"],["18","doanh nghiệp theo dõi"],["Hằng ngày","sản lượng hệ thống EVN"],["Public-source","ưu tiên nguồn"]],watch:["Sản lượng, Pmax và cơ cấu nguồn","Thủy văn, El Niño, giá than và LNG","Giá bán lẻ điện, tài chính EVN, giá thị trường","Quy hoạch điện VIII, DPPA, LNG và gió ngoài khơi"]},
-  {id:"phan-bon",name:"Phân bón",status:"planned",headline:"Phân bón",desc:"Chưa dựng dashboard ngành.",watch:["Urea/NPK prices","Gas/coal feedstock cost","Xuất nhập khẩu","Vụ mùa và tồn kho"]},
-  {id:"cang-bien",name:"Cảng & kho bãi",status:"ready",folder:"Cang-bien/",headline:"Dashboard ngành Cảng & kho bãi Việt Nam",desc:"Sản lượng XNK và vận chuyển, giá bốc xếp và cước container, cạnh tranh cụm cảng, dự án cảng mới và 12 doanh nghiệp.",metrics:[["8","tab phân tích"],["12","doanh nghiệp theo dõi"],["Hằng ngày","XNK, vận chuyển, định giá (Wi)"],["Public-source","ưu tiên nguồn"]],watch:["Sản lượng container, XNK","Giá bốc xếp tàu mẹ","Công suất mới Hải Phòng, Cái Mép","Cước, giá thuê tàu"]},
-  {id:"nong-nghiep",name:"Nông nghiệp & thực phẩm",status:"ready",folder:"Nong-nghiep/",headline:"Dashboard ngành Nông nghiệp & thực phẩm Việt Nam",desc:"Gạo, cà phê, cao su; chăn nuôi và thức ăn; thực phẩm – đồ uống; El Niño và mùa vụ; 12 doanh nghiệp.",metrics:[["8","tab phân tích"],["12","doanh nghiệp theo dõi"],["Hằng ngày","XNK, giá hàng hóa, định giá (Wi)"],["NOAA","ENSO tự động"]],watch:["Giá cao su, cà phê, gạo XK","Heo hơi vs ngô, khô đậu","Bán lẻ, bia, sữa","El Niño, mặn ĐBSCL"]},
-  {id:"thuy-san",name:"Thủy sản",status:"ready",folder:"Thuy-san/",headline:"Dashboard ngành Thủy sản Việt Nam",desc:"Cá tra và tôm: XK theo thị trường, giá nguyên liệu và thức ăn, thuế CBPG/CVD và Mục 301 của Mỹ, 7 doanh nghiệp.",metrics:[["8","tab phân tích"],["7","doanh nghiệp theo dõi"],["Hằng ngày","XK, giá cá, tôm, định giá (Wi)"],["Federal Register","thuế CBPG có nguồn gốc"]],watch:["XK sang Trung Quốc vs Mỹ","Giá cá tra, tôm nguyên liệu","CBPG POR cá tra, tôm","Giá khô đậu, ngô"]}
-];
-const tabs=document.getElementById("industryTabs");
-const panes=document.getElementById("industryPanes");
-const statusLabel={ready:"Đã có",planned:"Chưa dựng"};
-const statusClass={ready:"s-ready",planned:"s-empty"};
-function render(){
-  const routeFor={"dau-khi":"oil","duong":"sugar","ngan-hang":"bank","dien":"power","bds":"realestate","det-may":"textile","cang-bien":"port","nong-nghiep":"agri","thuy-san":"seafood"};
-  const descriptions={
-    "dau-khi":["Hormuz theo ngày & bình quân 7 ngày","Brent futures, đường cong WTI và crack","Cung – cầu Thế giới / Việt Nam"],
-    "duong":["Sugar No.11 futures và World Bank tháng","USDA: bốn trung tâm cung đường lớn","Cung – cầu Thế giới / Việt Nam"],
-    "ngan-hang":["20 nhóm dữ liệu Wi đã tích hợp","Huy động, tín dụng, NIM và chất lượng tài sản","So sánh ngân hàng, Catalyst / Risk"],
-    "dien":["Sản lượng, Pmax và cơ cấu nguồn hằng ngày (EVN)","Thủy văn & El Niño, giá than và LNG","Giá điện, Quy hoạch điện VIII, 18 doanh nghiệp"],
-    "det-may":["Xuất khẩu dệt may theo tháng và thị trường (Wi)","Thuế Mỹ, xuất xứ, nhập khẩu may mặc Mỹ","Giá bông – xơ – sợi, nhãn hàng, 7 doanh nghiệp"],
-    "cang-bien":["XNK, vận chuyển biển, hàng không theo tháng (Wi)","Giá bốc xếp, cước WCI, cạnh tranh Cái Mép","Dự án cảng mới, 12 doanh nghiệp"],
-    "nong-nghiep":["XK gạo, cà phê, cao su; heo hơi, ngô, khô đậu (Wi)","Bán lẻ, bia, sữa; thuế TTĐB","ENSO NOAA, lịch mùa vụ, 12 doanh nghiệp"],
-    "thuy-san":["XK thủy sản theo thị trường (Wi)","Giá cá tra, tôm, thức ăn","CBPG, CVD, Mục 301 · 7 doanh nghiệp"],
-    "bds":["Trái phiếu BĐS: phát hành, chậm trả, lịch đáo hạn (HNX · Wi)","FDI, tín dụng, giá nhà, lấp đầy KCN","Bảng giá đất, pháp lý dự án, 20 doanh nghiệp"]
-  };
-  document.getElementById('readyDashboards').innerHTML=industries.filter(x=>x.status==='ready').map(x=>`<article class="card industry-card" data-industry="${x.id}"><span class="status s-ready">Dashboard đã cập nhật</span><h2>${x.name}</h2><p class="sub">${x.headline}</p><ul>${descriptions[x.id].map(t=>`<li>${t}</li>`).join('')}</ul><p class="sub">Nguồn, ngày dữ liệu và hạn chế được ghi tại từng biểu đồ.</p><div class="actions"><a class="btn primary" data-site-route="${routeFor[x.id]}" href="${DashboardSite.href(routeFor[x.id])}">Mở dashboard ${x.name} →</a></div></article>`).join('');
-  const planned=industries.filter(x=>x.status!=='ready');
-  tabs.innerHTML=planned.map((x,i)=>`<button class="tab ${i===0?"active":""}" data-id="${x.id}"><strong>${x.name}</strong><span>${statusLabel[x.status]}</span></button>`).join("");
-  panes.innerHTML=planned.map((x,i)=>{
-    const ready=x.status==="ready"&&x.folder;
-    const metrics=x.metrics||[["Chưa có","dashboard"],["Cần","source map"],["Cần","watch KPIs"],["Cần","template"]];
-    return `<article class="pane ${i===0?"active":""}" id="pane-${x.id}">
-      <div class="grid">
-        <section class="card">
-          <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap">
-            <div><h2>${x.headline}</h2><p class="sub">${x.desc}</p></div>
-            <span class="status ${statusClass[x.status]}">${statusLabel[x.status]}</span>
-          </div>
-          <div class="facts">${metrics.map(m=>`<div class="fact"><b>${m[0]}</b><span>${m[1]}</span></div>`).join("")}</div>
-          <div class="actions">${ready?`<a class="btn primary" href="${x.folder}">Mở dashboard ${x.name}</a><a class="btn" href="${x.folder}index.html">Mở file index ngành</a>`:`<a class="btn disabled" href="#">Chưa có dashboard</a>`}</div>
-        </section>
-        <section class="grid two">
-          <div class="card"><h3>Watch KPIs cần có</h3><table><thead><tr><th>Nhóm chỉ số</th><th>Mục tiêu</th></tr></thead><tbody>${(x.watch||[]).map(w=>`<tr><td><b>${w}</b></td><td>Theo dõi xu hướng ngành và điểm đảo chiều thesis.</td></tr>`).join("")}</tbody></table></div>
-          <div class="card"><h3>Source & automation</h3><p class="sub">${x.sources||"Chưa map nguồn. Khi dựng dashboard, mỗi chart/table cần ghi rõ nguồn public, tần suất cập nhật và phần nào chưa machine-readable."}</p><div class="note ${ready?"":"warn"}" style="margin-top:12px">${ready?"Dashboard này đã có file riêng. Khi edit trong VSCode, thay đổi file trong đúng thư mục ngành rồi commit/push là website public sẽ cập nhật theo.":"Ngành này là placeholder trong master database. Khi dựng ngành mới, tạo một thư mục cùng cấp root và thêm path vào database này."}</div></div>
-        </section>
-      </div>
-    </article>`;
-  }).join("");
-  document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>selectIndustry(btn.dataset.id,true)));
-}
-function selectIndustry(id,pushHash){
-  document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x.dataset.id===id));
-  document.querySelectorAll(".pane").forEach(x=>x.classList.toggle("active",x.id==="pane-"+id));
-  if(pushHash) history.replaceState(null,"","#"+id);
-}
-render();
-const initial=(location.hash||"").replace("#","");
-const initialIndustry=industries.find(x=>x.id===initial);
-if(initialIndustry&&initialIndustry.status!=="ready"){
-  document.querySelector('.planned-industries').open=true;
-  selectIndustry(initial,false);
-}
-window.addEventListener("hashchange",()=>{const id=(location.hash||"").replace("#","");const target=industries.find(x=>x.id===id);if(target&&target.status!=="ready"){selectIndustry(id,false);}});
-</script>
+<body class="fs-home">
+<nav data-site-navigation="home" aria-label="Điều hướng dashboard ngành"></nav>
+<main class="fs-home-main"></main>
 </body>
 </html>
