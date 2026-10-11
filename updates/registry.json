@@ -89,6 +89,13 @@
       "url": "https://news.google.com/rss/search?q=%22doanh%20thu%20ph%C3%AD%20b%E1%BA%A3o%20hi%E1%BB%83m%22&hl=vi&gl=VN&ceid=VN:vi",
       "match": "doanh thu phí bảo hiểm|Luật Kinh doanh bảo hiểm|bancassurance|bồi thường",
       "note": "Bộ Tài chính công bố số thị trường hằng tháng/quý qua báo ngành tài chính"
+    },
+    {
+      "id": "news.retail",
+      "kind": "rss",
+      "url": "https://news.google.com/rss/search?q=%22t%E1%BB%95ng%20m%E1%BB%A9c%20b%C3%A1n%20l%E1%BA%BB%22%20OR%20VAMA%20OR%20%22thu%E1%BA%BF%20ti%C3%AAu%20th%E1%BB%A5%20%C4%91%E1%BA%B7c%20bi%E1%BB%87t%22&hl=vi&gl=VN&ceid=VN:vi",
+      "match": "tổng mức bán lẻ|VAMA|tiêu thụ đặc biệt|thương mại điện tử|Nghị định 24",
+      "note": "NSO công bố ngày 6; VAMA giữa tháng"
     }
   ],
   "items": [
@@ -1592,7 +1599,7 @@
         "type": "none"
       },
       "where": {
-        "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html, Xay-dung/index.html, Bao-hiem/index.html",
+        "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html, Xay-dung/index.html, Bao-hiem/index.html, Ban-le/index.html",
         "blocks": [
           "dau-khi-01",
           "dau-khi-03",
@@ -1626,7 +1633,10 @@
           "xd-90",
           "bh-01",
           "bh-04",
-          "bh-90"
+          "bh-90",
+          "bl-01",
+          "bl-04",
+          "bl-90"
         ]
       }
     },
@@ -3798,6 +3808,247 @@
         ]
       },
       "how": "Cập nhật bh-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/insurance-dashboard.js.",
+      "gates": [
+        "Số khớp chart",
+        "Không đụng ô analyst"
+      ]
+    },
+    {
+      "id": "retail.wi.monthly",
+      "tier": "B",
+      "title": "Wi: tổng mức bán lẻ, CPI, khách quốc tế, tiền gửi, tín dụng, sản lượng xe, bia, sữa, IIP",
+      "wiBlocks": [
+        "macro_retail_a",
+        "macro_retail_b"
+      ],
+      "wiContract": "data/retail-wi-contract.json",
+      "schedule": {
+        "type": "monthly",
+        "at": "07:00",
+        "days": [
+          3,
+          15
+        ]
+      },
+      "publication": "NSO ngày 3–6 hằng tháng; tiền gửi, tín dụng NHNN chậm 1–2 tháng",
+      "source": {
+        "name": "WiData qua WiMCP",
+        "url": "https://widata.vn/"
+      },
+      "where": {
+        "page": "Ban-le/index.html",
+        "file": "data/retail-wi-data.js",
+        "blocks": [
+          "bl-10",
+          "bl-11",
+          "bl-12",
+          "bl-20",
+          "bl-22",
+          "bl-30",
+          "bl-31",
+          "bl-33"
+        ]
+      },
+      "how": "Trong cửa sổ công bố, gọi lại hai lời gọi macro_retail_a, macro_retail_b trong data/retail-wi-contract.json; có tháng mới thì chạy python3 scripts/build_retail_wi.py.",
+      "gates": [
+        "Không chép tay số"
+      ]
+    },
+    {
+      "id": "retail.wi.weekly",
+      "tier": "B",
+      "title": "Wi: đường thô, dầu cọ, khô đậu nành, ngô",
+      "wiBlocks": [
+        "commodity_retail"
+      ],
+      "wiContract": "data/retail-wi-contract.json",
+      "schedule": {
+        "type": "weekly",
+        "day": "mon",
+        "at": "07:00"
+      },
+      "publication": "Giá ngày, hiển thị cuối tháng",
+      "source": {
+        "name": "WiData qua WiMCP",
+        "url": "https://widata.vn/"
+      },
+      "where": {
+        "page": "Ban-le/index.html",
+        "file": "data/retail-wi-data.js",
+        "blocks": [
+          "bl-32"
+        ]
+      },
+      "how": "Gọi lại commodity_retail với to_time = hôm nay rồi chạy python3 scripts/build_retail_wi.py.",
+      "gates": [
+        "Không chép tay số"
+      ]
+    },
+    {
+      "id": "retail.wi.valuation",
+      "tier": "B",
+      "title": "Wi: định giá phân ngành bán lẻ, phân phối, xe, sữa, bia theo phiên",
+      "wiBlocks": [
+        "sector_ratio_recent"
+      ],
+      "wiContract": "data/retail-wi-contract.json",
+      "schedule": {
+        "type": "daily",
+        "at": "07:00",
+        "days": "mon-fri"
+      },
+      "publication": "Theo phiên giao dịch",
+      "source": {
+        "name": "WiData qua WiMCP",
+        "url": "https://widata.vn/"
+      },
+      "where": {
+        "page": "Ban-le/index.html",
+        "file": "data/retail-wi-data.js",
+        "blocks": [
+          "bl-03"
+        ]
+      },
+      "how": "Gọi lại sector_ratio_recent với to_time = hôm nay rồi chạy script build.",
+      "gates": [
+        "Không chép tay số"
+      ]
+    },
+    {
+      "id": "retail.market",
+      "tier": "C",
+      "title": "Sức mua toàn thị trường, VAMA/VAMM/VinFast, giá vàng, TMĐT, mạng lưới cửa hàng, số tháng MWG/FRT/PNJ",
+      "schedule": {
+        "type": "monthly",
+        "at": "07:00",
+        "days": [
+          8,
+          20
+        ]
+      },
+      "publication": "NSO ngày 6; VAMA ~10–12; MWG, PNJ báo tháng ~20",
+      "source": {
+        "name": "VAMA",
+        "url": "https://vama.org.vn/"
+      },
+      "where": {
+        "page": "Ban-le/index.html",
+        "blocks": [
+          "bl-02",
+          "bl-13",
+          "bl-14",
+          "bl-21",
+          "bl-23"
+        ]
+      },
+      "how": "Mở bài công bố mới; cập nhật bảng và chart chRetailMix, chStores trong assets/retail-dashboard.js; thêm evidence.",
+      "gates": [
+        "Mở trang gốc",
+        "Ghi kỳ số liệu"
+      ],
+      "watch": [
+        "news.retail"
+      ]
+    },
+    {
+      "id": "retail.policy",
+      "tier": "C",
+      "title": "VAT 2%, thuế TTĐB bia và nước giải khát, luật TMĐT, NĐ 24 vàng, lệ phí trước bạ, lương",
+      "schedule": {
+        "type": "watch",
+        "note": "Mốc: 31/12/2026 hết giảm VAT; 1/1/2027 TTĐB NGK 8%, bia bậc 70%; 3/2027 TTĐB xe điện"
+      },
+      "publication": "Theo sự kiện",
+      "source": {
+        "name": "Bộ Tài chính",
+        "url": "https://mof.gov.vn/"
+      },
+      "where": {
+        "page": "Ban-le/index.html",
+        "blocks": [
+          "bl-50"
+        ]
+      },
+      "how": "Mở văn bản gốc; cập nhật bảng bl-50 và evidence.",
+      "gates": [
+        "Mở văn bản gốc",
+        "Ghi ngày hiệu lực"
+      ],
+      "watch": [
+        "news.retail"
+      ]
+    },
+    {
+      "id": "retail.companies",
+      "tier": "C",
+      "status": "manual",
+      "title": "Doanh nghiệp bán lẻ, tiêu dùng: kế hoạch, kết quả, cửa hàng",
+      "schedule": {
+        "type": "none"
+      },
+      "publication": "BCTC quý; chỉ cập nhật khi người dùng yêu cầu",
+      "source": {
+        "name": "BCTC công bố",
+        "url": "https://www.hsx.vn/"
+      },
+      "where": {
+        "page": "Ban-le/index.html",
+        "blocks": [
+          "bl-60",
+          "bl-61"
+        ]
+      },
+      "how": "Khi người dùng nhắn: cập nhật bảng bl-60, bl-61 và evidence.",
+      "gates": [
+        "Link BCTC hoặc bài dẫn"
+      ]
+    },
+    {
+      "id": "retail.hot-topics",
+      "tier": "C",
+      "title": "Chủ đề nóng: PNJ kim cương, Bách Hóa Xanh/Long Châu, thuế TTĐB, TMĐT",
+      "schedule": {
+        "type": "weekly",
+        "day": "mon",
+        "at": "07:00"
+      },
+      "publication": "Theo sự kiện",
+      "source": {
+        "name": "Mekong ASEAN",
+        "url": "https://mekongasean.vn/"
+      },
+      "where": {
+        "page": "Ban-le/index.html",
+        "blocks": [
+          "bl-t1",
+          "bl-t2",
+          "bl-t3",
+          "bl-t4"
+        ]
+      },
+      "how": "Thêm mốc mới có ngày và link.",
+      "gates": [
+        "Mỗi dòng có ngày + link"
+      ]
+    },
+    {
+      "id": "retail.ai.cycle",
+      "tier": "D",
+      "title": "Bán lẻ: vị trí chu kỳ, đọc nhanh, Catalyst/Risk",
+      "schedule": {
+        "type": "data",
+        "sources": [],
+        "minDays": 7,
+        "material": [],
+        "note": "Viết lại khi có số bán lẻ/CPI tháng mới, BCTC quý, hoặc chính sách thuế đổi"
+      },
+      "where": {
+        "page": "Ban-le/index.html",
+        "blocks": [
+          "bl-02"
+        ]
+      },
+      "how": "Cập nhật bl-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/retail-dashboard.js.",
       "gates": [
         "Số khớp chart",
         "Không đụng ô analyst"

@@ -1,0 +1,1502 @@
+[
+ {
+  "block": "bl-13",
+  "claim": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng 9T/2026",
+  "value": "5.925,7 nghìn tỷ đồng; +13,4% YoY danh nghĩa; +7,8% loại trừ giá",
+  "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+  "opened_at": "2026-10-11",
+  "quote": "Tính chung chín tháng năm 2026, tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng theo giá hiện hành ước đạt 5.925,7 nghìn tỷ đồng, tăng 13,4% so với cùng kỳ năm trước, nếu loại trừ yếu tố giá tăng 7,8% (năm 2025 tăng 7,2%).",
+  "status": "match",
+  "note": "R1. Cục Thống kê (NSO), Báo cáo KT-XH quý III và 9 tháng 2026, 10/2026"
+ },
+ {
+  "block": "bl-13",
+  "claim": "Tổng mức bán lẻ HH&DVTD quý III/2026",
+  "value": "2.039,0 nghìn tỷ đồng; +3,3% QoQ; +14,5% YoY",
+  "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+  "opened_at": "2026-10-11",
+  "quote": "Trong quý III/2026, tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng theo giá hiện hành ước đạt 2.039,0 nghìn tỷ đồng, tăng 3,3% so với quý trước và tăng 14,5% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "R1. NSO, Báo cáo KT-XH quý III và 9 tháng 2026"
+ },
+ {
+  "block": "bl-13",
+  "claim": "Doanh thu bán lẻ hàng hóa 9T/2026",
+  "value": "4.463,6 nghìn tỷ đồng; 75,3% tổng mức; +12,8% YoY",
+  "url": "https://www.vietnamplus.vn/nguoi-tieu-dung-viet-manh-tay-chi-tieu-hon-5925-nghin-ty-dong-trong-9-thang-post1139808.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Hoạt động chi tiêu của người tiêu dùng Việt trong 9 tháng qua cho thấy sự khởi sắc đồng đều ở các nhóm ngành, trong đó doanh thu bán lẻ hàng hóa đóng vai trò chủ đạo khi đạt 4.463,6 nghìn tỷ đồng, chiếm 75,3% quy mô thị trường và tăng 12,8% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "R1. VietnamPlus dẫn số liệu Cục Thống kê, 03/10/2026"
+ },
+ {
+  "block": "bl-13",
+  "claim": "Doanh thu lưu trú ăn uống và du lịch lữ hành 9T/2026",
+  "value": "Lưu trú, ăn uống 758,6 nghìn tỷ (+16,7%); du lịch lữ hành 78,1 nghìn tỷ (+17,9%); dịch vụ khác 625,4 nghìn tỷ (+13,4%)",
+  "url": "https://www.vietnamplus.vn/nguoi-tieu-dung-viet-manh-tay-chi-tieu-hon-5925-nghin-ty-dong-trong-9-thang-post1139808.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể, doanh thu dịch vụ lưu trú và ăn uống tăng 16,7%, đạt 758,6 nghìn tỷ đồng, doanh thu du lịch lữ hành tăng 17,9%, đạt 78,1 nghìn tỷ đồng và dịch vụ khác tăng 13,4%, đạt 625,4 nghìn tỷ đồng.",
+  "status": "match",
+  "note": "R1. VietnamPlus dẫn số liệu Cục Thống kê, 03/10/2026"
+ },
+ {
+  "block": "bl-13",
+  "claim": "Khách quốc tế đến Việt Nam 9T/2026",
+  "value": "17,7 triệu lượt; +14,5% YoY",
+  "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+  "opened_at": "2026-10-11",
+  "quote": "Tính chung chín tháng năm 2026, khách quốc tế đến Việt Nam đạt 17,7 triệu lượt người, tăng 14,5% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "R1. NSO, Báo cáo KT-XH quý III và 9 tháng 2026"
+ },
+ {
+  "block": "bl-13",
+  "claim": "CPI bình quân 9T/2026 và lạm phát cơ bản",
+  "value": "CPI 9T +4,52% YoY; lạm phát cơ bản +4,26%; CPI tháng 9 +5,08% YoY",
+  "url": "https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+  "opened_at": "2026-10-11",
+  "quote": "Bình quân chín tháng năm 2026, CPI tăng 4,52% so với cùng kỳ năm trước; lạm phát cơ bản tăng 4,26%.",
+  "status": "match",
+  "note": "R1. NSO, Báo cáo KT-XH quý III và 9 tháng 2026 (CPI tháng 9: +0,62% MoM, +5,08% YoY cùng trang)"
+ },
+ {
+  "block": "bl-13",
+  "claim": "Thu nhập bình quân người lao động quý III/2026",
+  "value": "9,2 triệu đồng/tháng; +823,8 nghìn đồng (+9,9%) YoY",
+  "url": "https://www.nso.gov.vn/tin-tuc-thong-ke/2026/10/thong-cao-bao-chi-ve-tinh-hinh-lao-dong-viec-lam-quy-iii-va-9-thang-nam-2026/",
+  "opened_at": "2026-10-11",
+  "quote": "Thu nhập bình quân của người lao động quý III/2026 đạt 9,2 triệu đồng/tháng, cao hơn 215,5 nghìn đồng so với quý II/2026 và cao hơn 823,8 nghìn đồng (tương ứng tăng 9,9%) so với cùng kỳ năm 2025.",
+  "status": "match",
+  "note": "R1. NSO, Thông cáo báo chí lao động việc làm quý III và 9 tháng 2026, 10/2026"
+ },
+ {
+  "block": "bl-13",
+  "claim": "Tỷ lệ thất nghiệp trong độ tuổi lao động quý III/2026",
+  "value": "2,22% (bằng quý trước và cùng kỳ)",
+  "url": "https://www.nso.gov.vn/tin-tuc-thong-ke/2026/10/thong-cao-bao-chi-ve-tinh-hinh-lao-dong-viec-lam-quy-iii-va-9-thang-nam-2026/",
+  "opened_at": "2026-10-11",
+  "quote": "Trong quý III/2026, tỷ lệ thất nghiệp trong độ tuổi lao động là 2,22%, tương đương quý trước và cùng kỳ năm trước.",
+  "status": "match",
+  "note": "R1. NSO, Thông cáo báo chí lao động việc làm quý III và 9 tháng 2026"
+ },
+ {
+  "block": "bl-21",
+  "claim": "Doanh số VAMA tháng 9/2026",
+  "value": "35.094 xe; +38% MoM; hybrid +56%",
+  "url": "https://www.vietnamplus.vn/doanh-so-ban-oto-tai-viet-nam-tang-38-xe-hybrid-tang-toc-post1141084.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Chiều 9/10, Hiệp hội các nhà sản xuất ôtô Việt Nam (VAMA) công bố doanh số bán hàng toàn thị trường của các đơn vị thành viên trong tháng 9/2026 đạt 35.094 xe, tăng 38% so với trước; trong đó, xe hybrid tăng 56%, trong khi xe nhập khẩu tiếp tục vượt xe lắp ráp về tốc độ tăng trưởng.",
+  "status": "match",
+  "note": "R2. VietnamPlus, 09/10/2026, dẫn VAMA"
+ },
+ {
+  "block": "bl-21",
+  "claim": "Doanh số VAMA 9T/2026",
+  "value": "282.029 xe; +12% YoY",
+  "url": "https://www.vietnamplus.vn/doanh-so-ban-oto-tai-viet-nam-tang-38-xe-hybrid-tang-toc-post1141084.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Tính đến hết tháng 9/2026, doanh số ôtô toàn thị trường đạt 282.029 xe các loại, tăng 12% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "R2. VietnamPlus, 09/10/2026, dẫn VAMA (chưa gồm VinFast, Hyundai TC)"
+ },
+ {
+  "block": "bl-21",
+  "claim": "Xe nhập khẩu vs lắp ráp 9T/2026 (VAMA)",
+  "value": "Nhập khẩu +22%; lắp ráp trong nước +2%",
+  "url": "https://www.vietnamplus.vn/doanh-so-ban-oto-tai-viet-nam-tang-38-xe-hybrid-tang-toc-post1141084.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Đáng chú ý, doanh số xe nhập khẩu nguyên chiếc tăng 22% trong 9 tháng, cao hơn đáng kể mức tăng 2% của xe lắp ráp trong nước.",
+  "status": "match",
+  "note": "R2. VietnamPlus, 09/10/2026, dẫn VAMA"
+ },
+ {
+  "block": "bl-21",
+  "claim": "Xe hybrid VAMA 9T/2026",
+  "value": "16.057 xe; +64% YoY",
+  "url": "https://www.vietnamplus.vn/doanh-so-ban-oto-tai-viet-nam-tang-38-xe-hybrid-tang-toc-post1141084.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 9 tháng, doanh số xe hybrid của các thành viên VAMA đạt 16.057 chiếc, tăng 64% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "R2. VietnamPlus, 09/10/2026"
+ },
+ {
+  "block": "bl-21",
+  "claim": "Doanh số VinFast tại Việt Nam tháng 8/2026 và lũy kế 8T",
+  "value": "20.161 xe tháng 8; 154.073 xe lũy kế từ đầu năm",
+  "url": "https://tienphong.vn/vinfast-ban-20161-xe-o-to-dien-tai-viet-nam-trong-thang-82026-post1875712.tpo",
+  "opened_at": "2026-10-11",
+  "quote": "Ngày 11/9/2026 - VinFast công bố đã bàn giao 20.161 xe ô tô điện các loại cho khách hàng tại Việt Nam trong tháng 8/2026, nâng tổng số xe bán ra kể từ đầu năm lên 154.073 xe.",
+  "status": "match",
+  "note": "R2. Tiền Phong, 12/09/2026 (số tháng 9 chưa công bố lúc mở trang)"
+ },
+ {
+  "block": "bl-21",
+  "claim": "Doanh số VinFast Việt Nam 6T/2026",
+  "value": "115.916 xe; +72% YoY (cùng kỳ 67.569)",
+  "url": "https://www.just-auto.com/newsletters/vinfasts-domestic-sales-surge-58-in-june",
+  "opened_at": "2026-10-11",
+  "quote": "In the first six months of the year, the company sold a total of 115,916 vehicles in Vietnam, up by 72% compared with 67,569 units in the same period last year.",
+  "status": "match",
+  "note": "R2. Just Auto, 7/2026"
+ },
+ {
+  "block": "bl-21",
+  "claim": "Lệ phí trước bạ ô tô điện chạy pin",
+  "value": "0% lần đầu kéo dài 01/3/2027–31/12/2030 (NĐ 202/2026 ngày 08/6/2026); NĐ 51/2025 áp 0% đến hết tháng 2/2027",
+  "url": "https://lsvn.vn/o-to-dien-duoc-ap-dung-le-phi-truoc-ba-lan-dau-0-den-het-nam-2030-a173952.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể, từ ngày 01/3/2027 đến hết ngày 31/12/2030, ô tô điện chạy pin đăng ký lần đầu sẽ tiếp tục được miễn 100% lệ phí trước bạ (mức thu 0%).",
+  "status": "match",
+  "note": "R2. Tạp chí Luật sư Việt Nam, 09/06/2026"
+ },
+ {
+  "block": "bl-21",
+  "claim": "Doanh số xe máy VAMM quý III và 9T/2026",
+  "value": "Quý 3: 686.661 xe (+10,4% YoY); 9T: 2.054.213 xe",
+  "url": "https://www.vietnamplus.vn/doanh-so-xe-may-viet-nam-vuot-2-trieu-chiec-xe-xang-van-tang-truong-post1141075.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Trong đó, quý 1 đạt 729.121 xe, tăng 8,3%; quý 2 đạt 638.431 xe, tăng 4,4%; quý 3 đạt 686.661 xe, tăng 10,4% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "R2. VietnamPlus, 09/10/2026, dẫn VAMM (9T: 2.054.213 xe cùng bài)"
+ },
+ {
+  "block": "bl-23",
+  "claim": "Giá vàng miếng SJC sáng 11/10/2026",
+  "value": "141,8–144,8 triệu đồng/lượng (mua–bán); chênh lệch 3 triệu",
+  "url": "https://vov.vn/thi-truong/gia-vang-hom-nay-1110-vang-trong-nuoc-di-ngang-post1340142.vov",
+  "opened_at": "2026-10-11",
+  "quote": "Giá vàng hôm nay, sáng 11/10, Công ty VBĐQ Sài Gòn niêm yết giá vàng mua vào ở mức 141,8 triệu đồng/lượng, giá bán ra là 144,8 triệu đồng/lượng đi ngang so với phiên giao dịch liền trước.",
+  "status": "match",
+  "note": "R3. VOV, 11/10/2026"
+ },
+ {
+  "block": "bl-23",
+  "claim": "Giá vàng nhẫn 11/10/2026",
+  "value": "SJC nhẫn 141,3–144,3 triệu/lượng; DOJI nhẫn 9999 140,3–144,3 triệu/lượng",
+  "url": "https://vov.vn/thi-truong/gia-vang-hom-nay-1110-vang-trong-nuoc-di-ngang-post1340142.vov",
+  "opened_at": "2026-10-11",
+  "quote": "DOJI đang niêm yết giá vàng nhẫn tròn 9999 Hưng Thịnh Vượng ở mức 140,3-144,3 triệu đồng/lượng (mua vào - bán ra).",
+  "status": "match",
+  "note": "R3. VOV, 11/10/2026 (SJC nhẫn 141,3–144,3 cùng bài)"
+ },
+ {
+  "block": "bl-23",
+  "claim": "Chênh lệch vàng SJC với giá thế giới quy đổi 11/10/2026",
+  "value": "Thế giới ~4.152 USD/oz ≈ 131,7 triệu/lượng (tỷ giá 26.070); SJC bán ra cao hơn 13,1 triệu/lượng",
+  "url": "https://vov.vn/thi-truong/gia-vang-hom-nay-1110-vang-trong-nuoc-di-ngang-post1340142.vov",
+  "opened_at": "2026-10-11",
+  "quote": "Quy đổi theo tỷ giá ngoại tệ tại Vietcombank ngày 11/10: 1 USD = 26.070 VND, giá vàng thế giới tương đương 131,7 triệu đồng/lượng, thấp hơn giá vàng SJC bán ra 13,1 triệu đồng/lượng.",
+  "status": "match",
+  "note": "R3. VOV, 11/10/2026"
+ },
+ {
+  "block": "bl-23",
+  "claim": "Nghị định 232/2025/NĐ-CP sửa Nghị định 24/2012 về kinh doanh vàng",
+  "value": "Hiệu lực 10/10/2025; xóa độc quyền Nhà nước sản xuất vàng miếng sau 13 năm",
+  "url": "https://vov.vn/thi-truong/gia-vang/chinh-thuc-xoa-bo-co-che-nha-nuoc-doc-quyen-san-xuat-vang-mieng-post1236837.vov",
+  "opened_at": "2026-10-11",
+  "quote": "Nghị định 232/2025/NĐ-CP sửa đổi bổ sung một số điều của Nghị định số 24/2012 của Chính phủ về quản lý hoạt động kinh doanh vàng chính thức có hiệu lực từ hôm nay 10/10, đánh dấu bước tiến quan trọng trong lĩnh vực quản lý kinh doanh vàng khi xóa độc quyền vàng miếng của nhà nước.",
+  "status": "match",
+  "note": "R3. VOV, 10/10/2025"
+ },
+ {
+  "block": "bl-23",
+  "claim": "Điều kiện vốn để được cấp phép sản xuất vàng miếng/nhập khẩu vàng",
+  "value": "Doanh nghiệp vốn điều lệ ≥1.000 tỷ đồng; ngân hàng ≥50.000 tỷ đồng",
+  "url": "https://vov.vn/thi-truong/gia-vang/chinh-thuc-xoa-bo-co-che-nha-nuoc-doc-quyen-san-xuat-vang-mieng-post1236837.vov",
+  "opened_at": "2026-10-11",
+  "quote": "Họ cũng phải đáp ứng điều kiện về vốn, với doanh nghiệp là từ 1.000 tỷ đồng trở lên, ngân hàng có vốn điều lệ từ 50.000 tỷ đồng trở lên.",
+  "status": "match",
+  "note": "R3. VOV, 10/10/2025"
+ },
+ {
+  "block": "bl-23",
+  "claim": "Hồ sơ xin cấp phép sản xuất vàng miếng và nhập khẩu vàng nguyên liệu tại NHNN",
+  "value": "11 hồ sơ (họp báo NHNN 14/4/2026)",
+  "url": "https://vnbusiness.vn/da-co-11-ho-so-xin-cap-phep-san-xuat-vang-mieng-than-trong-xem-xet-nhap-khau-vang-nguyen-lieu.html",
+  "opened_at": "2026-10-11",
+  "quote": "Ông Đào Xuân Tuấn, Cục trưởng Cục Quản lý ngoại hối cho biết NHNN đã nhận được 11 hồ sơ đề nghị cấp Giấy phép sản xuất vàng miếng của doanh nghiệp, ngân hàng thương mại.",
+  "status": "match",
+  "note": "R3. VnBusiness, 14/04/2026"
+ },
+ {
+  "block": "bl-23",
+  "claim": "PNJ: kết quả 2025 và trạng thái xin cấp phép nhập khẩu vàng",
+  "value": "LNST 2025 kỷ lục 2.829 tỷ đồng (+34%); đã nộp hồ sơ xin cấp phép sản xuất vàng miếng và nhập khẩu vàng, chờ NHNN",
+  "url": "https://doanhnhan.baophapluat.vn/pnj-xin-co-che-nhap-khau-vang-muon-hop-tac-gia-cong-voi-cac-ngan-hang-thuong-mai-giua-luc-lai-rong-lap-dinh-lich-su.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lợi nhuận sau thuế thiết lập kỷ lục mới ở mức 2.829 tỷ đồng, tăng 34% so với năm 2024.",
+  "status": "match",
+  "note": "R3. Doanh nhân - Báo Pháp luật VN, 26/01/2026; câu \"PNJ đã nộp hồ sơ xin cấp phép sản xuất vàng miếng và nhập khẩu vàng... chờ quyết định phê duyệt chính thức từ Ngân hàng Nhà nước\" cùng bài"
+ },
+ {
+  "block": "bl-23",
+  "claim": "Dự thảo nghị định sửa NĐ 24 (vòng 2) về vàng trang sức, mỹ nghệ",
+  "value": "Đề xuất xóa toàn bộ giấy phép con cho vàng trang sức; dự kiến hiệu lực 1/7/2026",
+  "url": "https://vietnamfinance.vn/sua-doi-nghi-dinh-24-nhieu-thay-doi-ve-san-xuat-kinh-doanh-vang-trang-suc-d145528.html",
+  "opened_at": "2026-10-11",
+  "quote": "(VNF) - Dự thảo nghị định mới đề xuất sửa đổi nhiều quy định mang tính \"cởi trói\" cho vàng trang sức, mỹ nghệ, trong đó có việc xóa bỏ toàn bộ giấy phép con cho vàng trang sức từ 1/7/2026.",
+  "status": "match",
+  "note": "R3. VietnamFinance, 2026 (dự thảo NHNN lấy ý kiến; chưa xác nhận đã ban hành)"
+ },
+ {
+  "block": "bl-50",
+  "claim": "Nghị quyết Quốc hội giảm 2% thuế GTGT",
+  "value": "Hiệu lực 1/7/2025 đến hết 31/12/2026 (QH thông qua 17/6/2025, 452/453 tán thành)",
+  "url": "https://baodauthau.vn/quoc-hoi-thong-qua-giam-2-thue-vat-voi-nhieu-hang-hoa-dich-vu-den-het-nam-2026-post180339.html",
+  "opened_at": "2026-10-11",
+  "quote": "Nghị quyết có hiệu lực thi hành từ ngày 1/7/2025 đến hết ngày 31/12/2026.",
+  "status": "match",
+  "note": "R4. Báo Đấu thầu, 17/06/2025"
+ },
+ {
+  "block": "bl-50",
+  "claim": "Thuế TTĐB bia theo Luật Thuế TTĐB 2025",
+  "value": "Bia 65% năm 2026, tăng 5%/năm từ 2027 lên 90% năm 2031",
+  "url": "https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm",
+  "opened_at": "2026-10-11",
+  "quote": "Bia áp dụng mức 65% vào năm 2026 và tăng lên 90% vào năm 2031.",
+  "status": "match",
+  "note": "R4. VnEconomy, 11/07/2025 (công bố lệnh Chủ tịch nước); Luật Thuế TTĐB thông qua 14/6/2025, hiệu lực 01/01/2026 theo tapchitoaan.vn (đã mở)"
+ },
+ {
+  "block": "bl-50",
+  "claim": "Thuế TTĐB rượu theo Luật Thuế TTĐB 2025",
+  "value": "Rượu ≥20 độ 65%→90% (2026→2031); rượu <20 độ 35%→60%",
+  "url": "https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm",
+  "opened_at": "2026-10-11",
+  "quote": "Liên quan đến bia, rượu và nước ngọt: tăng từ mức 65% hiện hành vào năm 2026 lên 90% vào năm 2031 đối với rượu từ 20 độ trở lên và tăng từ mức 35% lên 60% đối với rượu dưới 20 độ.",
+  "status": "match",
+  "note": "R4. VnEconomy, 11/07/2025"
+ },
+ {
+  "block": "bl-50",
+  "claim": "Thuế TTĐB nước giải khát có đường",
+  "value": "Đường >5g/100ml: 8% từ 2027, 10% từ 2028",
+  "url": "https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm",
+  "opened_at": "2026-10-11",
+  "quote": "Nước giải khát có hàm lượng đường trên 5g/100ml sẽ áp dụng mức thuế suất 8% (từ năm 2027) và 10% (từ năm 2028).",
+  "status": "match",
+  "note": "R4. VnEconomy, 11/07/2025"
+ },
+ {
+  "block": "bl-50",
+  "claim": "Bỏ miễn thuế hàng nhập khẩu giá trị nhỏ qua chuyển phát nhanh/TMĐT",
+  "value": "Quyết định 01/2025/QĐ-TTg hiệu lực 18/2/2025, áp VAT với hàng nhập khẩu dưới 1 triệu đồng",
+  "url": "https://vneconomy.vn/hang-hoa-tren-cac-san-thuong-mai-co-kha-nang-tang-gia-sau-chinh-sach-ngung-mien-thue-nhap-khau.htm",
+  "opened_at": "2026-10-11",
+  "quote": "Quyết định 01/2025/QĐ-TTg có hiệu lực từ ngày 18/2/2025, chính thức áp thuế VAT với hàng nhập khẩu dưới 1 triệu đồng bán qua chuyển phát nhanh…",
+  "status": "match",
+  "note": "R4. VnEconomy, 19/02/2025"
+ },
+ {
+  "block": "bl-50",
+  "claim": "Luật Thương mại điện tử",
+  "value": "QH thông qua 10/12/2025; hiệu lực 1/7/2026; nền tảng nước ngoài không hiện diện phải ký quỹ; định danh người livestream",
+  "url": "https://baodauthau.vn/8-noi-dung-moi-noi-bat-cua-luat-thuong-mai-dien-tu-post191869.html",
+  "opened_at": "2026-10-11",
+  "quote": "(BĐT) - Luật Thương mại điện tử (TMĐT) được Quốc hội khóa XV thông qua tại Kỳ họp thứ 10 ngày 10/12/2025 và có hiệu lực từ ngày 1/7/2026 có 8 nội dung mới, nổi bật.",
+  "status": "match",
+  "note": "R4. Báo Đấu thầu, 06/01/2026"
+ },
+ {
+  "block": "bl-50",
+  "claim": "Lương tối thiểu vùng 2026 (Nghị định 293/2025/NĐ-CP)",
+  "value": "Tăng bình quân 7,2% từ 1/1/2026; vùng I 5.310.000 đ/tháng; vùng IV 3.700.000 đ/tháng",
+  "url": "https://nhadautu.vn/chinh-thuc-tang-luong-toi-thieu-vung-tu-1-1-2026-d100632.html",
+  "opened_at": "2026-10-11",
+  "quote": "Như vậy, mức lương tối thiểu nêu trên tăng từ 250.000 đồng - 350.000 đồng/tháng (tương ứng tỷ lệ bình quân 7,2%) so với mức lương tối thiểu hiện hành quy định tại Nghị định 74/2024/NĐ-CP.",
+  "status": "match",
+  "note": "R4. Nhà Đầu tư, 11/2025 (NĐ 293/2025 ngày 10/11/2025, hiệu lực 1/1/2026)"
+ },
+ {
+  "block": "bl-50",
+  "claim": "Lương cơ sở 2026 (Nghị định 161/2026/NĐ-CP)",
+  "value": "2,34 → 2,53 triệu đồng/tháng từ 1/7/2026",
+  "url": "https://nhadautu.vn/chinh-thuc-tang-luong-co-so-len-253-trieu-dong-tu-ngay-1-7-d105043.html",
+  "opened_at": "2026-10-11",
+  "quote": "Từ ngày 1/7/2026, mức lương cơ sở sẽ chính thức tăng lên 2,53 triệu đồng/tháng theo quy định mới của Chính phủ, áp dụng đối với cán bộ, công chức, viên chức và lực lượng vũ trang.",
+  "status": "match",
+  "note": "R4. Nhà Đầu tư, 5/2026 (NĐ 161/2026 ngày 15/5/2026)"
+ },
+ {
+  "block": "bl-14",
+  "claim": "GMV 4 sàn TMĐT 2025 (YouNet ECI)",
+  "value": "458.160 tỷ đồng; +26% YoY",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-thuong-mai-dien-tu-2025-dat-hon-458-000-ty-dong-tiktok-shop-pha-hoi-nong-len-shopee.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tổng giá trị giao dịch trên bốn sàn thương mại điện tử lớn nhất Việt Nam đạt 458.160 tỷ đồng trong năm 2025, ghi nhận mức tăng 26% so với năm trước.",
+  "status": "match",
+  "note": "R5. Doanh nhân - Báo Pháp luật VN, 14/03/2026, dẫn YouNet ECI (công bố 12/3)"
+ },
+ {
+  "block": "bl-14",
+  "claim": "Thị phần Shopee 2025 (YouNet ECI)",
+  "value": "57,5%; doanh thu +6% YoY",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-thuong-mai-dien-tu-2025-dat-hon-458-000-ty-dong-tiktok-shop-pha-hoi-nong-len-shopee.html",
+  "opened_at": "2026-10-11",
+  "quote": "Shopee tiếp tục giữ vị trí nền tảng lớn nhất Việt Nam với doanh thu tăng 6% so với năm 2024, chiếm lĩnh 57,5% thị phần.",
+  "status": "match",
+  "note": "R5. Doanh nhân - Báo Pháp luật VN, 14/03/2026"
+ },
+ {
+  "block": "bl-14",
+  "claim": "Doanh số 4 sàn TMĐT 2025 (Metric.vn)",
+  "value": "429.700 tỷ đồng; +34,75% YoY (2024: 318.900 tỷ)",
+  "url": "https://daibieunhandan.vn/toan-canh-thuong-mai-dien-tu-2025-cuoc-dua-song-ma-va-su-thanh-loc-khac-nghiet-10404029.html",
+  "opened_at": "2026-10-11",
+  "quote": "Báo cáo từ nền tảng tổng hợp và khai thác dữ liệu Metric.vn cho thấy, trong năm 2025, tổng doanh thu từ 4 sàn TMĐT hàng đầu gồm Shopee, TikTok Shop, Lazada và Tiki đã chạm mốc 429.700 tỷ đồng, tăng trưởng mạnh mẽ 34,75% so với năm 2024 (năm 2024 đạt 318.900 tỷ đồng, bao gồm cả Sendo).",
+  "status": "match",
+  "note": "R5. Đại biểu Nhân dân, 17/01/2026"
+ },
+ {
+  "block": "bl-14",
+  "claim": "Doanh số 4 sàn TMĐT 6T/2026 (Metric.vn)",
+  "value": "~291.600 tỷ đồng; +44,11% YoY; quý II ~143.000 tỷ (+41,62%)",
+  "url": "https://nguoiquansat.vn/bo-tui-gan-292-000-ty-dong-sau-6-thang-thuong-mai-dien-tu-viet-nam-tang-toc-ngoai-suc-tuong-tuong-306108.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trong 6 tháng đầu năm 2026, tổng doanh số của 4 sàn thương mại điện tử lớn gồm Shopee, TikTok Shop, Lazada và Tiki đạt khoảng 291.600 tỷ đồng, tăng 44,11% so với cùng kỳ năm 2025.",
+  "status": "match",
+  "note": "R5. Người Quan Sát, 24/07/2026, dẫn Metric.vn"
+ },
+ {
+  "block": "bl-14",
+  "claim": "Thị phần sàn 6T/2026 (YouNet ECI)",
+  "value": "GMV 264,8 nghìn tỷ (+19%); Shopee 54,5% (+15%); TikTok Shop 43,4% (từ 42%)",
+  "url": "https://www.vietnamplus.vn/doanh-thu-thi-truong-thuong-mai-dien-tu-viet-nam-ra-sao-trong-thoi-gian-qua-post1129441.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể, Shopee tiếp tục giữ vị trí nền tảng lớn nhất với 54,5% thị phần, tăng trưởng 15% so với doanh thu cùng kỳ năm 2025.",
+  "status": "match",
+  "note": "R5. VietnamPlus, 11/08/2026, dẫn YouNet ECI (TikTok Shop 43,4% cùng bài)"
+ },
+ {
+  "block": "bl-14",
+  "claim": "Số cửa hàng WinCommerce (WinMart/WinMart+) cuối quý II/2026",
+  "value": "5.141 cửa hàng; mở mới thuần 324 trong quý",
+  "url": "https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html",
+  "opened_at": "2026-10-11",
+  "quote": "Chuỗi này đã mở mới thuần 324 điểm bán, nâng tổng quy mô lên 5.141 cửa hàng trên toàn quốc.",
+  "status": "match",
+  "note": "R5. Doanh nhân - Báo Pháp luật VN, KQKD Masan quý II/2026 (7/2026)"
+ },
+ {
+  "block": "bl-14",
+  "claim": "Số cửa hàng Bách Hóa Xanh cuối tháng 8/2026",
+  "value": "3.612 cửa hàng (cuối tháng 7: 3.378); doanh thu 8T >40.000 tỷ",
+  "url": "https://thitruongtaichinhtiente.vn/bach-hoa-xanh-tang-toc-doanh-thu-8-thang-vuot-40-000-ty-dong-mo-moi-hon-1-000-cua-hang-85540.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tính đến cuối tháng 8/2026, Bách Hóa Xanh có 3.612 cửa hàng, tăng đáng kể so với 3.378 cửa hàng vào cuối tháng 7.",
+  "status": "match",
+  "note": "R5. Thị trường Tài chính Tiền tệ, 14/09/2026, dẫn MWG"
+ },
+ {
+  "block": "bl-14",
+  "claim": "Mạng lưới Long Châu cuối tháng 6/2026",
+  "value": "2.639 nhà thuốc; 236 trung tâm tiêm chủng; doanh thu 6T 21.448 tỷ (+33%)",
+  "url": "https://cafef.vn/doanh-thu-fpt-retail-dat-30743-ty-dong-trong-nua-dau-nam-2026-188260729175454766.chn",
+  "opened_at": "2026-10-11",
+  "quote": "Tính đến hết tháng 6/2026, hệ thống Long Châu sở hữu 2.639 nhà thuốc và 236 trung tâm tiêm chủng.",
+  "status": "match",
+  "note": "R5. CafeF, 29/07/2026, dẫn FPT Retail"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Kế hoạch 2026 (ĐHĐCĐ 18/4/2026): doanh thu / LNST",
+  "value": "185.000 tỷ (+19%) / 9.200 tỷ đồng (+30%)",
+  "url": "https://baodautu.vn/dhdcd-the-gioi-di-dong-khong-thay-doi-ke-hoach-lai-9200-ty-dong-trong-nam-2026-d573054.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trong năm 2026, Thế giới Di động đặt kế hoạch doanh thu 185.000 tỷ đồng, tăng 19% so với cùng kỳ, lợi nhuận sau thuế dự kiến 9.200 tỷ đồng, tăng 30% so với thực hiện trong năm 2025.",
+  "status": "match",
+  "note": "MWG. baodautu.vn, bài ĐHĐCĐ 18/04/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Cổ tức tiền mặt 2025 (chi trong Q3-Q4/2026)",
+  "value": "20% (2.000 đ/cp), gần 3.000 tỷ đồng - cao nhất lịch sử",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-the-gioi-di-dong-mwg-2026-muc-tieu-loi-nhuan-ky-luc-9-200-ty-bao-chi-3-000-ty-tra-co-tuc-va-tham-vong-ipo-bach-hoa-xanh.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể, mỗi cổ phiếu sẽ nhận 2.000 đồng, chia làm hai đợt vào quý 3 và quý 4 năm nay. Với gần 1,47 tỷ cổ phiếu đang lưu hành, doanh nghiệp dự kiến giải ngân gần 3.000 tỷ đồng. Đây là mức cổ tức bằng tiền mặt cao nhất kể từ khi công ty đi vào hoạt động.",
+  "status": "match",
+  "note": "MWG. doanhnhan.baophapluat.vn, bài ĐHĐCĐ 18/04/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ Q2/2026: doanh thu thuần / LNST",
+  "value": "48.751 tỷ (+30%) / 3.355 tỷ đồng (gấp đôi 1.658 tỷ Q2/2025)",
+  "url": "https://doanhnhan.baophapluat.vn/quy-mo-tien-cua-the-gioi-di-dong-mwg-vot-len-63-600-ty-dong-loi-nhuan-ban-nien-tang-82.html",
+  "opened_at": "2026-10-11",
+  "quote": "Doanh thu thuần trong quý đạt 48.751 tỷ đồng, tăng khoảng 30% so với cùng kỳ năm trước. Lợi nhuận sau thuế quý II đạt 3.355 tỷ đồng, cao hơn gấp đôi so với mức 1.658 tỷ đồng của quý II/2025.",
+  "status": "match",
+  "note": "MWG. doanhnhan.baophapluat.vn, bài 03/08/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ 6T/2026: doanh thu thuần / LNST (6T ≈ 66% KH LNST, tự tính)",
+  "value": "95.213 tỷ (+29%) / 6.112 tỷ đồng (+82%)",
+  "url": "https://doanhnhan.baophapluat.vn/quy-mo-tien-cua-the-gioi-di-dong-mwg-vot-len-63-600-ty-dong-loi-nhuan-ban-nien-tang-82.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế sáu tháng đầu năm 2026, tổng doanh thu thuần toàn hệ thống đạt 95.213 tỷ đồng, tăng 29%. Lợi nhuận sau thuế bán niên ghi nhận 6.112 tỷ đồng, tăng 82% so với nửa đầu năm ngoái.",
+  "status": "match",
+  "note": "MWG. doanhnhan.baophapluat.vn, bài 03/08/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ 8T/2026: doanh thu thuần hợp nhất và % kế hoạch",
+  "value": "129.431 tỷ đồng (+29%), ~70% KH 185.000 tỷ",
+  "url": "https://thitruongtaichinhtiente.vn/bach-hoa-xanh-tang-toc-doanh-thu-8-thang-vuot-40-000-ty-dong-mo-moi-hon-1-000-cua-hang-85540.html",
+  "opened_at": "2026-10-11",
+  "quote": "Công ty CP Đầu tư Thế Giới Di Động (MWG) ghi nhận doanh thu thuần đạt 129.431 tỷ đồng, tăng 29% so với cùng kỳ năm trước. So với kế hoạch doanh thu 185.000 tỷ đồng cho cả năm, doanh nghiệp đã hoàn thành khoảng 70% mục tiêu đề ra.",
+  "status": "match",
+  "note": "MWG. thitruongtaichinhtiente.vn, bài 14/09/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Bách Hóa Xanh 8T/2026: doanh thu và tốc độ mở mới",
+  "value": "~40.100 tỷ đồng (+32%); >1.000 cửa hàng mở mới trong 8T, đều có lợi nhuận hoạt động dương",
+  "url": "https://thitruongtaichinhtiente.vn/bach-hoa-xanh-tang-toc-doanh-thu-8-thang-vuot-40-000-ty-dong-mo-moi-hon-1-000-cua-hang-85540.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 8 tháng năm 2026, Bách Hóa Xanh ghi nhận doanh thu khoảng 40.100 tỷ đồng, tăng gần 32% so với cùng kỳ. Hơn 1.000 cửa hàng mở mới trong 8 tháng đều ghi nhận lợi nhuận hoạt động dương, sau khi tính cả chi phí kho vận.",
+  "status": "match",
+  "note": "MWG. thitruongtaichinhtiente.vn, bài 14/09/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Nhóm Điện Máy Xanh (TGDĐ, ĐMX, TopZone, EraBlue) 8T/2026: doanh thu, SSSG",
+  "value": "86.800 tỷ đồng (+29%); SSSG 30%; mua trả chậm +44%, chiếm 38% doanh thu",
+  "url": "https://thitruongtaichinhtiente.vn/bach-hoa-xanh-tang-toc-doanh-thu-8-thang-vuot-40-000-ty-dong-mo-moi-hon-1-000-cua-hang-85540.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 8 tháng, nhóm này đạt doanh thu 86.800 tỷ đồng, tăng 29% so với cùng kỳ. MWG cho biết tăng trưởng được ghi nhận trên tất cả các chuỗi và nhóm sản phẩm chính, với động lực chủ yếu đến từ hệ thống cửa hàng hiện hữu. Tăng trưởng doanh thu trên cùng cửa hàng (SSSG) đạt 30%.",
+  "status": "match",
+  "note": "MWG. thitruongtaichinhtiente.vn, bài 14/09/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "CTCP Đầu tư Điện Máy Xanh 9T/2026: doanh thu hợp nhất, % KH; tháng 9 kỷ lục",
+  "value": "99.460 tỷ đồng (+29%), 81% KH 122.500 tỷ; tháng 9 hơn 12.400 tỷ",
+  "url": "https://thitruongtaichinhtiente.vn/dien-may-xanh-tien-sat-moc-doanh-thu-100-000-ty-dong-sau-9-thang-86085.html",
+  "opened_at": "2026-10-11",
+  "quote": "Công ty CP Đầu tư Điện Máy Xanh (DMX) vừa công bố kết quả kinh doanh 9 tháng năm 2026 với doanh thu hợp nhất đạt 99.460 tỷ đồng, hoàn thành 81% kế hoạch năm. Riêng tháng 9, doanh thu đạt hơn 12.400 tỷ đồng, cao nhất kể từ đầu năm và vượt cả tháng cao điểm Tết Nguyên đán.",
+  "status": "match",
+  "note": "MWG. thitruongtaichinhtiente.vn, bài 06/10/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Số cửa hàng Điện Máy Xanh / Thế Giới Di Động / TopZone cuối tháng 9/2026",
+  "value": "1.998 (-10 so đầu năm) / 919 (-8) / 86 (+1)",
+  "url": "https://thitruongtaichinhtiente.vn/dien-may-xanh-tien-sat-moc-doanh-thu-100-000-ty-dong-sau-9-thang-86085.html",
+  "opened_at": "2026-10-11",
+  "quote": "Đến cuối tháng 9/2026, Điện Máy Xanh có 1.998 cửa hàng, giảm 10 cửa hàng so với đầu năm; Thế Giới Di Động có 919 cửa hàng, giảm 8 cửa hàng. TopZone có 86 cửa hàng, tăng 1 cửa hàng.",
+  "status": "match",
+  "note": "MWG. thitruongtaichinhtiente.vn, bài 06/10/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "EraBlue (Indonesia) 9T/2026: doanh thu quy đổi, tăng trưởng, số cửa hàng và mục tiêu",
+  "value": "4.635 tỷ đồng (+86% theo Rupiah, SSSG 13%); 337 cửa hàng cuối T9 (+156 so đầu năm); mục tiêu 500 (2027), 1.000 (2030)",
+  "url": "https://thitruongtaichinhtiente.vn/dien-may-xanh-tien-sat-moc-doanh-thu-100-000-ty-dong-sau-9-thang-86085.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 9 tháng năm 2026, doanh thu EraBlue quy đổi đạt 4.635 tỷ đồng. Tăng trưởng doanh thu tính theo đồng Rupiah đạt 86%, trong khi doanh thu trên cùng cửa hàng tăng 13%. Đến cuối tháng 9/2026, chuỗi có 337 cửa hàng, tăng 156 cửa hàng so với đầu năm và tăng 193 cửa hàng so với cùng kỳ.",
+  "status": "match",
+  "note": "MWG. thitruongtaichinhtiente.vn, bài 06/10/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "IPO CTCP Đầu tư Điện Máy Xanh (dự kiến 2026)",
+  "value": "chào bán 16,3% cổ phiếu lưu hành, tối đa 179.500.400 cp; giá không thấp hơn giá sổ sách 16.163 đ/cp",
+  "url": "https://baodautu.vn/dhdcd-the-gioi-di-dong-khong-thay-doi-ke-hoach-lai-9200-ty-dong-trong-nam-2026-d573054.html",
+  "opened_at": "2026-10-11",
+  "quote": "Được biết, Công ty Điện máy Xanh dự kiến IPO với tỷ lệ 16,3% tổng số lượng cổ phiếu đang lưu hành, tương ứng chào bán tối đa 179.500.400 cổ phiếu",
+  "status": "match",
+  "note": "MWG. baodautu.vn, bài ĐHĐCĐ 18/04/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Kế hoạch 2026 (ĐHĐCĐ 17/4/2026): doanh thu / LNTT",
+  "value": "59.500 tỷ (+16%) / 1.550 tỷ đồng (+27%)",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-2026-fpt-retail-frt-chot-muc-tieu-doanh-thu-59-500-ty-dong-dua-hon-30-loai-thuoc-hiem-the-gioi-ve-viet-nam.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trong năm tài chính 2026, FPT Retail đặt mục tiêu doanh thu thuần đạt 59.500 tỷ đồng, tăng trưởng 16% so với năm 2025. Chỉ tiêu lợi nhuận trước thuế được kỳ vọng đạt 1.550 tỷ đồng, tương ứng mức tăng 27%.",
+  "status": "match",
+  "note": "FRT. doanhnhan.baophapluat.vn, bài ĐHĐCĐ 17/04/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Nền 2025: doanh thu / LNTT / LNST; Long Châu 2025",
+  "value": "51.083 tỷ (+27%) / 1.219 tỷ / 984 tỷ đồng; Long Châu 34.501 tỷ (68% DT), 2.640 điểm",
+  "url": "https://mekongasean.vn/ke-hoach-kinh-doanh-nam-2026-cua-fpt-retail-51703.html",
+  "opened_at": "2026-10-11",
+  "quote": "Năm 2025, FPT Retail đạt tổng doanh thu 51.083 tỷ đồng, tăng 27% so với năm 2024; lợi nhuận trước thuế và sau thuế lần lượt đạt 1.219 tỷ đồng và 984 tỷ đồng; lần lượt tăng 131% và 141%.",
+  "status": "match",
+  "note": "FRT. mekongasean.vn, bài 07/02/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ 6T/2026: doanh thu hợp nhất / LNTT và % kế hoạch",
+  "value": "30.743 tỷ (+33%, 52% KH) / 1.038 tỷ đồng (67% KH)",
+  "url": "https://cafef.vn/doanh-thu-fpt-retail-dat-30743-ty-dong-trong-nua-dau-nam-2026-nha-thuoc-long-chau-dan-dat-da-tang-truong-188260729174415306.chn",
+  "opened_at": "2026-10-11",
+  "quote": "công bố kết quả kinh doanh 6 tháng đầu năm 2026 với doanh thu hợp nhất đạt 30.743 tỷ đồng, tăng 33% so với cùng kỳ và hoàn thành 52% kế hoạch năm. Lợi nhuận trước thuế đạt 1.038 tỷ đồng và hoàn thành 67% kế hoạch năm 2026.",
+  "status": "match",
+  "note": "FRT. cafef.vn, bài 29/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Long Châu 6T/2026: doanh thu, doanh thu/nhà thuốc",
+  "value": "21.448 tỷ đồng (+33%, 52% KH); 1,3 tỷ đồng/nhà thuốc/tháng",
+  "url": "https://cafef.vn/doanh-thu-fpt-retail-dat-30743-ty-dong-trong-nua-dau-nam-2026-nha-thuoc-long-chau-dan-dat-da-tang-truong-188260729174415306.chn",
+  "opened_at": "2026-10-11",
+  "quote": "Trong 6 tháng đầu năm 2026, chuỗi Long Châu ghi nhận doanh thu 21.448 tỷ đồng, tăng 33% so với cùng kỳ và hoàn thành 52% kế hoạch năm. Doanh thu trung bình đạt 1,3 tỷ đồng/nhà thuốc/tháng, tiếp tục cải thiện so với mức bình quân năm 2025",
+  "status": "match",
+  "note": "FRT. cafef.vn, bài 29/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Mạng lưới Long Châu cuối tháng 6/2026",
+  "value": "2.639 nhà thuốc + 236 trung tâm tiêm chủng",
+  "url": "https://cafef.vn/doanh-thu-fpt-retail-dat-30743-ty-dong-trong-nua-dau-nam-2026-nha-thuoc-long-chau-dan-dat-da-tang-truong-188260729174415306.chn",
+  "opened_at": "2026-10-11",
+  "quote": "Tính đến hết tháng 6/2026, hệ thống Long Châu sở hữu 2.639 nhà thuốc và 236 trung tâm tiêm chủng, tiếp tục mở rộng mạng lưới trên toàn quốc",
+  "status": "match",
+  "note": "FRT. cafef.vn, bài 29/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Kế hoạch mở mới Long Châu 2026",
+  "value": "thêm 450 điểm bán và trung tâm tiêm chủng (mở chọn lọc); >30 thuốc thế hệ mới",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-2026-fpt-retail-frt-chot-muc-tieu-doanh-thu-59-500-ty-dong-dua-hon-30-loai-thuoc-hiem-the-gioi-ve-viet-nam.html",
+  "opened_at": "2026-10-11",
+  "quote": "FPT Long Châu tiếp tục giữ vai trò là động lực tăng trưởng chính của FPT Retail với kế hoạch mở rộng thêm 450 điểm bán và trung tâm tiêm chủng trong năm 2026.",
+  "status": "match",
+  "note": "FRT. doanhnhan.baophapluat.vn, bài ĐHĐCĐ 17/04/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "FPT Shop 6T/2026: doanh thu, doanh thu/cửa hàng",
+  "value": "9.387 tỷ đồng (+32%, 51% KH); 2,5 tỷ đồng/cửa hàng/tháng (+34%)",
+  "url": "https://cafef.vn/doanh-thu-fpt-retail-dat-30743-ty-dong-trong-nua-dau-nam-2026-nha-thuoc-long-chau-dan-dat-da-tang-truong-188260729174415306.chn",
+  "opened_at": "2026-10-11",
+  "quote": "Chuỗi FPT Shop ghi nhận doanh thu 9.387 tỷ đồng, tăng 32% so với cùng kỳ và hoàn thành 51% kế hoạch năm 2026. Doanh thu trung bình đạt 2,5 tỷ đồng/cửa hàng/tháng, tăng hơn 34% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "FRT. cafef.vn, bài 29/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ Q1/2026: LNTT / LNST; FPT Shop có lãi",
+  "value": "472 tỷ (+73%) / 374,6 tỷ đồng (+76%); FPT Shop lãi 16,5 tỷ (cùng kỳ lỗ 18,5 tỷ); 621 cửa hàng",
+  "url": "https://nhadautu.vn/fpt-retail-mo-them-100-nha-thuoc-long-chau-hang-ton-kho-tang-hon-2500-ty-dong-d104649.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lợi nhuận trước thuế đạt 472 tỷ đồng, tăng 73% và hoàn thành 30% kế hoạch năm 2026. Lợi nhuận sau thuế đạt 374,6 tỷ đồng, tăng 76%.",
+  "status": "match",
+  "note": "FRT. nhadautu.vn, bài 29/04/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Rủi ro vốn lưu động cuối Q1/2026: tồn kho và vay ngắn hạn",
+  "value": "tồn kho 14.447,6 tỷ (+2.500 tỷ/quý); vay ngắn hạn 12.381 tỷ (từ 10.051 tỷ)",
+  "url": "https://nhadautu.vn/fpt-retail-mo-them-100-nha-thuoc-long-chau-hang-ton-kho-tang-hon-2500-ty-dong-d104649.html",
+  "opened_at": "2026-10-11",
+  "quote": "Đáng chú ý, giá trị hàng tồn kho tăng mạnh từ 11.927 tỷ đồng lên 14.447,6 tỷ đồng, tương đương mức tăng hơn 2.500 tỷ đồng chỉ sau một quý.",
+  "status": "match",
+  "note": "FRT. nhadautu.vn, bài 29/04/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Kế hoạch 2026 (ĐHĐCĐ 22/4/2026): doanh thu / LNST",
+  "value": "31.500 tỷ (+18%) / 660 tỷ đồng (+20%)",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-digiworld-dgw-2026-lai-quy-1-vuot-200-ty-dong-he-lo-ly-do-chua-ban-xe-dien-ma-chon-kinh-doanh-dau-nhot.html",
+  "opened_at": "2026-10-11",
+  "quote": "Năm 2026, Digiworld đặt kế hoạch doanh thu 31.500 tỷ đồng và lợi nhuận sau thuế 660 tỷ đồng. Các chỉ tiêu này tương ứng mức tăng trưởng 18% và 20% so với kết quả thực hiện năm trước.",
+  "status": "match",
+  "note": "DGW. doanhnhan.baophapluat.vn, bài ĐHĐCĐ 22/04/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ Q2/2026: doanh thu / LNST (kỷ lục)",
+  "value": "7.273,33 tỷ (+26,9%) / 309,05 tỷ đồng (+160,6%)",
+  "url": "https://doanhnhan.baophapluat.vn/digiworld-dgw-bao-lai-ban-nien-vuot-troi-co-dong-lon-gom-mua-giua-da-giam-gia-co-phieu.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tổng doanh thu trong kỳ đạt 7.273,33 tỷ đồng, tăng 26,9% so với quý II/2025.",
+  "status": "match",
+  "note": "DGW. doanhnhan.baophapluat.vn, bài ~08/08/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ Q2/2026: LNST",
+  "value": "309,05 tỷ đồng (+160,6%), cao nhất lịch sử",
+  "url": "https://doanhnhan.baophapluat.vn/digiworld-dgw-bao-lai-ban-nien-vuot-troi-co-dong-lon-gom-mua-giua-da-giam-gia-co-phieu.html",
+  "opened_at": "2026-10-11",
+  "quote": "Dù chi phí đội lên đáng kể, doanh nghiệp vẫn báo lãi sau thuế quý II/2026 đạt 309,05 tỷ đồng, tăng 160,6% so với năm trước.",
+  "status": "match",
+  "note": "DGW. doanhnhan.baophapluat.vn, bài ~08/08/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ 6T/2026: doanh thu / LNST / % KH LNST",
+  "value": "15.773,5 tỷ (+40,2%) / 510,93 tỷ đồng (+127,1%) / 77,4% KH",
+  "url": "https://doanhnhan.baophapluat.vn/digiworld-dgw-bao-lai-ban-nien-vuot-troi-co-dong-lon-gom-mua-giua-da-giam-gia-co-phieu.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tính chung lũy kế nửa đầu năm 2026, Digiworld mang về 15.773,5 tỷ đồng doanh thu và 510,93 tỷ đồng lợi nhuận sau thuế, lần lượt tăng 40,2% và 127,1%.",
+  "status": "match",
+  "note": "DGW. doanhnhan.baophapluat.vn, bài ~08/08/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Biên lợi nhuận gộp Q2/2026",
+  "value": "8,5% → 13%; lợi nhuận gộp 943,21 tỷ (+93,5%)",
+  "url": "https://doanhnhan.baophapluat.vn/digiworld-dgw-bao-lai-ban-nien-vuot-troi-co-dong-lon-gom-mua-giua-da-giam-gia-co-phieu.html",
+  "opened_at": "2026-10-11",
+  "quote": "Sự thay đổi trong cơ cấu phân phối hàng hóa giúp biên lợi nhuận gộp của doanh nghiệp được cải thiện rõ rệt từ mức 8,5% lên 13%. Qua đó, lợi nhuận gộp trong kỳ vọt lên mức 943,21 tỷ đồng, tương ứng mức tăng 93,5% (đóng góp thêm 455,88 tỷ đồng) so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "DGW. doanhnhan.baophapluat.vn, bài ~08/08/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Động lực Q2/2026: laptop & tablet (giá bán +20% do RAM/chip), thị phần",
+  "value": "laptop/tablet >2.500 tỷ (+37%, thị trường +29%); thiết bị văn phòng >2.000 tỷ (+47%); gia dụng 476 tỷ (+38%)",
+  "url": "https://doanhnhan.baophapluat.vn/digiworld-dgw-bao-lai-quy-ii-cao-ky-luc-co-cau-lai-danh-muc-dau-tu-chung-khoan.html",
+  "opened_at": "2026-10-11",
+  "quote": "Đóng góp lớn nhất vào cơ cấu doanh thu là mảng máy tính xách tay và máy tính bảng với con số vượt 2.500 tỷ đồng, tăng trưởng 37%. Đại diện công ty cho biết sự bứt phá này xuất phát từ việc mặt bằng giá bán sản phẩm tăng khoảng 20% do chi phí bộ nhớ (RAM) và linh kiện bán dẫn neo ở mức cao.",
+  "status": "match",
+  "note": "DGW. doanhnhan.baophapluat.vn, bài cuối 07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Rủi ro/nhận định: giá RAM, chip tăng kéo dài; laptop cả năm",
+  "value": "giá RAM/chip tăng có thể đến hết 2027; mục tiêu laptop 2026 +~20%",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-digiworld-dgw-2026-lai-quy-1-vuot-200-ty-dong-he-lo-ly-do-chua-ban-xe-dien-ma-chon-kinh-doanh-dau-nhot.html",
+  "opened_at": "2026-10-11",
+  "quote": "Đánh giá về thị trường thiết bị công nghệ (ICT) năm 2026, ban lãnh đạo dự báo giá RAM và chip trên toàn cầu tiếp tục tăng và có thể kéo dài đến hết năm 2027, từ đó thiết lập một mặt bằng giá mới.",
+  "status": "match",
+  "note": "DGW. doanhnhan.baophapluat.vn, bài ĐHĐCĐ 22/04/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Tái cơ cấu đầu tư tài chính Q2/2026",
+  "value": "danh mục cổ phiếu 772 → ~301 tỷ đồng; bán hết TCB, VPB, giảm HPG; mua ~200 tỷ KBC",
+  "url": "https://doanhnhan.baophapluat.vn/digiworld-dgw-bao-lai-quy-ii-cao-ky-luc-co-cau-lai-danh-muc-dau-tu-chung-khoan.html",
+  "opened_at": "2026-10-11",
+  "quote": "Danh mục đầu tư cổ phiếu của công ty đã được thu hẹp mạnh mẽ từ mức 772 tỷ đồng xuống còn gần 301 tỷ đồng.",
+  "status": "match",
+  "note": "DGW. doanhnhan.baophapluat.vn, bài cuối 07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Diễn biến cổ phiếu và cổ đông lớn mua vào",
+  "value": "DGW -39,4% (04/02-27/07/2026, 54.670 → 33.150 đ); Created Future (liên quan Chủ tịch) đăng ký mua 2 triệu cp",
+  "url": "https://doanhnhan.baophapluat.vn/digiworld-dgw-bao-lai-ban-nien-vuot-troi-co-dong-lon-gom-mua-giua-da-giam-gia-co-phieu.html",
+  "opened_at": "2026-10-11",
+  "quote": "Thống kê từ ngày 04/02 đến ngày 27/07/2026, thị giá DGW đã sụt giảm tới 39,4%, rơi từ vùng 54.670 đồng xuống còn 33.150 đồng/cổ phiếu.",
+  "status": "match",
+  "note": "DGW. doanhnhan.baophapluat.vn, bài ~08/08/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Kế hoạch 2026 (ĐHĐCĐ 24/4/2026): tổng doanh thu / LNST; % KH sau 6T",
+  "value": "23.000 tỷ (+5%) / 318,4 tỷ đồng (-9%); 6T đạt 63,5% KH LNST",
+  "url": "https://nhadautu.vn/nua-dau-nam-2026-petrosetco-hoan-thanh-hon-63-ke-hoach-nam-d106688.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trước đó, ĐHĐCĐ thường niên năm 2026 của Petrosetco đã thông qua kế hoạch tổng doanh thu 23.000 tỷ đồng, tăng 5% so với cùng kỳ, lợi nhuận sau thuế dự kiến 318,4 tỷ đồng, giảm 9% so với thực hiện trong năm 2025. Tính ra, Petrosetco đã hoàn thành 63,5% so với kế hoạch năm.",
+  "status": "match",
+  "note": "PET. nhadautu.vn, bài 31/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ Q2/2026: doanh thu / biên gộp",
+  "value": "6.967,82 tỷ đồng (+47,6%); biên gộp 4,3% → 6,16%, lãi gộp 428,99 tỷ (+113%)",
+  "url": "https://nhadautu.vn/nua-dau-nam-2026-petrosetco-hoan-thanh-hon-63-ke-hoach-nam-d106688.html",
+  "opened_at": "2026-10-11",
+  "quote": "doanh thu trong kỳ đạt 6.967,82 tỷ đồng, tăng 47,6% so với cùng kỳ năm trước. Biên lợi nhuận gộp cải thiện từ 4,3% lên 6,16%, nhờ vậy, lãi gộp công ty tăng mạnh 113% đạt 428,99 tỷ đồng.",
+  "status": "match",
+  "note": "PET. nhadautu.vn, bài 31/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ Q2/2026: LNST",
+  "value": "101,24 tỷ đồng (+85,3%)",
+  "url": "https://nhadautu.vn/nua-dau-nam-2026-petrosetco-hoan-thanh-hon-63-ke-hoach-nam-d106688.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trừ các chi phí, Petrosetco báo lợi nhuận sau thuế đạt 101,24 tỷ đồng, tăng 85,3% so với cùng kỳ năm trước",
+  "status": "match",
+  "note": "PET. nhadautu.vn, bài 31/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ 6T/2026: doanh thu / LNST",
+  "value": "13.096,9 tỷ (+50%) / 202,08 tỷ đồng (+97,4%)",
+  "url": "https://nhadautu.vn/nua-dau-nam-2026-petrosetco-hoan-thanh-hon-63-ke-hoach-nam-d106688.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trong nửa đầu năm 2026, doanh thu công ty đạt 13.096,9 tỷ đồng, tăng 50% so với cùng kỳ; lợi nhuận sau thuế 202,08 tỷ đồng, tăng 97,4% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "PET. nhadautu.vn, bài 31/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Chi phí Q2/2026 tăng mạnh (áp lực biên)",
+  "value": "chi phí bán hàng +62% lên 186 tỷ; chi phí QLDN +81% lên 88,5 tỷ; chi phí tài chính +15% lên >93 tỷ",
+  "url": "https://mekongasean.vn/chi-phi-leo-thang-petrosetco-van-bao-lai-quy-2-tang-manh-57949.html",
+  "opened_at": "2026-10-11",
+  "quote": "Chi phí tài chính tăng 15% YoY lên hơn 93 tỷ đồng, chủ yếu là chi phí lãi vay. Chi phí bán hàng và chi phí quản lý doanh nghiệp cũng lần lượt tăng 62% và 81% YoY, lên mức 186 tỷ đồng và 88,5 tỷ đồng.",
+  "status": "match",
+  "note": "PET. mekongasean.vn, bài 31/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Tăng vốn 2026: cổ tức cổ phiếu 5% + cổ phiếu thưởng 40%",
+  "value": "~48 triệu cp (5,33 triệu cổ tức + 42,69 triệu thưởng); vốn điều lệ 1.073 → ~1.553 tỷ đồng",
+  "url": "https://mekongasean.vn/petrosetco-phat-ha-nh-48-trieu-co-phieu-nang-von-len-1553-ty-do-ng-55921.html",
+  "opened_at": "2026-10-11",
+  "quote": "Petrosetco dự kiến phát hành hơn 5,33 triệu cổ phiếu để trả cổ tức với tỷ lệ 5%, đồng thời phát hành gần 42,69 triệu cổ phiếu thưởng cho cổ đông hiện hữu theo tỷ lệ 40%. Tổng số lượng cổ phiếu phát hành trong đợt này đạt khoảng 48 triệu đơn vị.",
+  "status": "match",
+  "note": "PET. mekongasean.vn, bài 04/06/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Chào bán cho cổ đông hiện hữu (ĐHĐCĐ 24/4/2026)",
+  "value": "106,7 triệu cp giá 10.000 đ/cp, thu >1.000 tỷ đồng (dự án Cape Pearl Thanh Đa, tái cấu trúc tài chính)",
+  "url": "https://mekongasean.vn/petrosetco-phat-ha-nh-48-trieu-co-phieu-nang-von-len-1553-ty-do-ng-55921.html",
+  "opened_at": "2026-10-11",
+  "quote": "cổ đông Petrosetco cũng đã thông qua kế hoạch chào bán 106,7 triệu cổ phiếu cho cổ đông hiện hữu với giá 10.000 đồng/cổ phiếu. Đợt phát hành này dự kiến mang về hơn 1.000 tỷ đồng nhằm đáp ứng nhu cầu đầu tư của công ty, các công ty con và công ty liên kết.",
+  "status": "match",
+  "note": "PET. mekongasean.vn, bài 04/06/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Mở rộng sang hạ tầng: góp vốn 3 pháp nhân BT xử lý nước thải với Gelex Infra, Viconship",
+  "value": "2.200 tỷ đồng góp vốn (51%/41%/41%); tổng mức đầu tư 3 dự án ~36.700 tỷ; đến 30/6 mới góp 13,3 tỷ",
+  "url": "https://mekongasean.vn/chi-phi-leo-thang-petrosetco-van-bao-lai-quy-2-tang-manh-57949.html",
+  "opened_at": "2026-10-11",
+  "quote": "cổ đông công ty đã thông qua kế hoạch dành 2.200 tỷ đồng để góp vốn vào ba pháp nhân: Công ty TNHH Hạ tầng Gelex Bắc Sài Gòn 1 (sở hữu 51%), Công ty TNHH Đầu tư Hạ tầng Gelex Bắc Sài Gòn 2 (41%) và Công ty TNHH Hạ tầng Gelex Tây Thành phố (41%).",
+  "status": "match",
+  "note": "PET. mekongasean.vn, bài 31/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Rủi ro cân đối vốn 30/6/2026: phải thu và nợ vay ngắn hạn",
+  "value": "phải thu ngắn hạn 5.976 tỷ (43% tài sản); vay ngắn hạn 6.805 tỷ; tổng tài sản 13.945 tỷ",
+  "url": "https://mekongasean.vn/chi-phi-leo-thang-petrosetco-van-bao-lai-quy-2-tang-manh-57949.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trong đó, các khoản phải thu ngắn hạn đạt 5.976 tỷ đồng, chiếm 43% tổng tài sản; tiền và khoản đầu tư tài chính ngắn hạn là 4.624 tỷ đồng, tương đương 33% tổng tài sản.",
+  "status": "match",
+  "note": "PET. mekongasean.vn, bài 31/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Kế hoạch 2026 ban đầu (ĐHĐCĐ 22/4/2026): doanh thu / LNST / cổ tức",
+  "value": "48.660 tỷ (+37%) / 3.409 tỷ đồng (+21%) / cổ tức tiền 20%",
+  "url": "https://vietnamfinance.vn/pnj-dat-muc-tieu-lai-ky-luc-sau-nam-kho-nhat-than-trong-hon-khi-mo-rong-chuoi-d143834.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể, doanh nghiệp đặt mục tiêu doanh thu đạt 48.660 tỷ đồng, tăng 37% so với năm trước, trong khi lợi nhuận sau thuế dự kiến đạt 3.409 tỷ đồng, tăng 21%.",
+  "status": "match",
+  "note": "PNJ. vietnamfinance.vn, bài 22/04/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Kế hoạch 2026 ĐIỀU CHỈNH (trình ĐHĐCĐ bất thường 21/10/2026): doanh thu / LNST",
+  "value": "39.057 tỷ (+10%) / LỖ 6.271 tỷ đồng (2025 lãi 2.828 tỷ)",
+  "url": "https://mekongasean.vn/pnj-du-kien-lo-hon-6000-ty-dong-ha-ty-le-co-tuc-60015.html",
+  "opened_at": "2026-10-11",
+  "quote": "Sau khi tính khoản dự phòng trên, HĐQT PNJ trình cổ đông thông qua kế hoạch doanh thu năm 2026 ở mức 39.057 tỷ đồng, tăng 10% so với mức thực hiện năm 2025; lợi nhuận sau thuế âm 6.271 tỷ đồng, so với mức lãi 2.828 tỷ đồng năm 2025.",
+  "status": "match",
+  "note": "PNJ. mekongasean.vn, bài 25/09/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Dự phòng chính sách thu đổi dự kiến trích lập 2026 (giả định 80% hàng đã bán được bán lại/đổi)",
+  "value": "7.071 tỷ đồng; loại trừ dự phòng, LNST cốt lõi 2026 ~800 tỷ",
+  "url": "https://mekongasean.vn/pnj-du-kien-lo-hon-6000-ty-dong-ha-ty-le-co-tuc-60015.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trên cơ sở đó, PNJ dự kiến trích lập dự phòng với giả định khách hàng thực hiện bán lại hoặc đổi đối với 80% lượng hàng hóa công ty đã bán, tương ứng giá trị trích lập dự phòng hơn 7.071 tỷ đồng.",
+  "status": "match",
+  "note": "PNJ. mekongasean.vn, bài 25/09/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Cổ tức điều chỉnh và huy động vốn",
+  "value": "cổ tức 2025: 20% → 10% (đã tạm ứng 10%); 2026: 0%; huy động tối đa 8.000 tỷ đồng",
+  "url": "https://doanhnhan.baophapluat.vn/vang-bac-da-quy-phu-nhuan-pnj-bat-ngo-dieu-chinh-ke-hoach-bao-lo-hon-6-200-ty-dong-khong-chia-co-tuc-tien-mat-nam-2026.html",
+  "opened_at": "2026-10-11",
+  "quote": "Bên cạnh đó, nhằm chuẩn bị nguồn lực ứng phó với tình hình mới, doanh nghiệp đã trình cổ đông chủ trương huy động khối lượng vốn tối đa lên đến 8.000 tỷ đồng.",
+  "status": "match",
+  "note": "PNJ. doanhnhan.baophapluat.vn, bài cuối 09/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ Q1/2026: doanh thu thuần / LNST (kỷ lục nhờ vàng 24K +324,7%)",
+  "value": "17.245 tỷ (+79%) / 1.467 tỷ đồng (gấp đôi); 430 cửa hàng cuối T3",
+  "url": "https://doanhnhan.baophapluat.vn/bung-no-mang-vang-24k-loi-nhuan-cua-vang-bac-da-quy-phu-nhuan-pnj-quy-i-2026-cao-gap-doi-cung-ky.html",
+  "opened_at": "2026-10-11",
+  "quote": "Doanh nghiệp trong 3 tháng đầu năm ghi nhận doanh thu thuần đạt đỉnh 17.245 tỷ đồng, tăng 79% so với cùng kỳ. Lợi nhuận sau thuế đạt 1.467 tỷ đồng, cao hơn gấp đôi so với quý I/2025.",
+  "status": "match",
+  "note": "PNJ. doanhnhan.baophapluat.vn, bài 22/04/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ Q2/2026: doanh thu thuần / LNST (lỗ đầu tiên từ khi niêm yết, do dự phòng mua lại kim cương 865 tỷ)",
+  "value": "8.484 tỷ (+11,9%) / -283 tỷ đồng (-164,7%)",
+  "url": "https://vneconomy.vn/pnj-bao-lo-quy-2-do-trich-lap-du-phong-uoc-tinh-865-ty-dong.htm",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể: trong quý 2/2026, PNJ ghi nhận doanh thu thuần đạt 8,484 tỷ đồng, tăng 11,9% so với cùng kỳ, và lợi nhuận sau thuế đạt âm 283 tỷ đồng, giảm 164,7% so với cùng kỳ.",
+  "status": "match",
+  "note": "PNJ. vneconomy.vn, bài 30/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Biên gộp 6T/2026 và cơ cấu doanh thu",
+  "value": "biên gộp 19,4% (cùng kỳ 21,4%); vàng 24K +169,3%; bán lẻ +13,6%; bán sỉ +28%",
+  "url": "https://vneconomy.vn/pnj-bao-lo-quy-2-do-trich-lap-du-phong-uoc-tinh-865-ty-dong.htm",
+  "opened_at": "2026-10-11",
+  "quote": "Về biên lợi nhuận gộp trung bình trong 6 tháng năm 2026 đạt 19,4%, giảm nhẹ so với mức 21,4% cùng kỳ năm 2025.",
+  "status": "match",
+  "note": "PNJ. vneconomy.vn, bài 30/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ 6T/2026 sau kiểm toán (công bố 4/9): LNST công ty mẹ",
+  "value": "729 tỷ đồng (-35% YoY), giảm 38% so với 1.184 tỷ tự lập; tổng dự phòng kim cương đến 3/9: 2.267 tỷ",
+  "url": "https://elibook.vn/2026/09/08/pnj-trang-an-vu-kim-cuong-nhung-hoa-don-du-phong-thi-chua-xong-va-cuoc-thay-mau-co-dong-van-dang-tiep-dien/",
+  "opened_at": "2026-10-11",
+  "quote": "lợi nhuận sau thuế cổ đông công ty mẹ chỉ còn 729 tỷ đồng (-35% YoY), thấp hơn tới 38% so với con số 1,184 tỷ đồng chưa kiểm toán công bố trước đó một tháng.",
+  "status": "match",
+  "note": "PNJ. elibook.vn, bài 08/09/2026 (tổng hợp; đối chiếu BCTC soát xét khi dùng)"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Mua lại hàng từ khách 1/7-3/9/2026 và tổn thất ghi nhận",
+  "value": "mua lại gần 4.997 tỷ đồng; tổn thất ~1.446 tỷ đồng",
+  "url": "https://nguoiquansat.vn/pnj-bao-lo-hai-thang-dau-quy-iii-2026-318915.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trước đó, từ ngày 1/7 đến 3/9, PNJ đã mua lại gần 4.997 tỷ đồng hàng hóa từ khách hàng và ghi nhận tổn thất khoảng 1.446 tỷ đồng.",
+  "status": "match",
+  "note": "PNJ. nguoiquansat.vn, bài 28/09/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ tháng 7-8/2026: doanh thu thuần / lợi nhuận gộp / LNST",
+  "value": "5.695 tỷ (+4,5%) / 550 tỷ (-45,4%) / LỖ 61 tỷ đồng (cùng kỳ lãi 325 tỷ); biên gộp ~10%",
+  "url": "https://mekongasean.vn/pnj-se-tai-thiet-nhu-the-nao-sau-cu-soc-kim-cuong-60086.html",
+  "opened_at": "2026-10-11",
+  "quote": "hai tháng đầu quý 3/2026 (tháng 7 và tháng 8), công ty đạt doanh thu thuần 5.695 tỷ đồng, tăng 4,5% so với cùng kỳ năm trước (YoY). Tuy nhiên, lợi nhuận gộp giảm 45,4% (YoY), còn 550 tỷ đồng; lợi nhuận sau thuế âm 61 tỷ đồng, so với cùng kỳ lãi 325 tỷ đồng.",
+  "status": "match",
+  "note": "PNJ. mekongasean.vn, bài 28/09/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Mạng lưới cuối tháng 8/2026 và kế hoạch tái cấu trúc",
+  "value": "432 điểm (424 PNJ, 3 Style, 4 CAO, 1 TT sỉ); 8T mở 9/đóng 8; cả năm 2026 đóng 25-30, mở ~10",
+  "url": "https://mekongasean.vn/pnj-se-tai-thiet-nhu-the-nao-sau-cu-soc-kim-cuong-60086.html",
+  "opened_at": "2026-10-11",
+  "quote": "Đến cuối tháng 8/2026, hệ thống có tổng cộng 432 điểm, gồm 424 cửa hàng PNJ, 3 Style by PNJ, 4 CAO Fine Jewellery và một trung tâm kinh doanh sỉ. Trong 8 tháng đầu năm, doanh nghiệp mở 9 và đóng 8 cửa hàng.",
+  "status": "match",
+  "note": "PNJ. mekongasean.vn, bài 28/09/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Thanh khoản: vay 700 tỷ từ gia đình Chủ tịch; kiểm định kim cương độc lập",
+  "value": "700 tỷ đồng đã giải ngân; 100% mẫu AIGS kiểm định là kim cương thiên nhiên",
+  "url": "https://mekongasean.vn/pnj-se-tai-thiet-nhu-the-nao-sau-cu-soc-kim-cuong-60086.html",
+  "opened_at": "2026-10-11",
+  "quote": "Công ty đã được giải ngân 700 tỷ đồng tiền vay từ gia đình bà Cao Thị Ngọc Dung – Chủ tịch HĐQT PNJ, nhằm bổ sung vốn lưu động và chuẩn bị nguyên liệu cho các giai đoạn kinh doanh cao điểm.",
+  "status": "match",
+  "note": "PNJ. mekongasean.vn, bài 28/09/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Kế hoạch 2026: LNTT (chưa gồm VFG)",
+  "value": "180–200 tỷ đồng, gấp 4–5 lần 2025",
+  "url": "https://vneconomy.vn/chu-tich-haxaco-phan-phoi-xe-dien-vinfast-la-dong-luc-tang-truong-loi-nhuan-cua-hax-thoi-gian-toi.htm",
+  "opened_at": "2026-10-11",
+  "quote": "Về kế hoạch kinh doanh, Haxaco Group đặt mục tiêu lợi nhuận trước thuế năm 2026 trong khoảng 180–200 tỷ đồng, cao gấp 4–5 lần so với kết quả năm 2025.",
+  "status": "match",
+  "note": "HAX. vneconomy.vn, bài 29/01/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ Q2/2026 hợp nhất (gồm Tương Lai Việt - đại lý VinFast từ cuối Q1): doanh thu / LNTT",
+  "value": "1.558,8 tỷ (+51,5%) / 29,6 tỷ đồng (+69,1%); lợi nhuận gộp 90,2 tỷ (-1%)",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/haxaco-kinh-doanh-ra-sao-sau-khi-mua-cong-ty-phan-phoi-xe-vinfast-35252657",
+  "opened_at": "2026-10-11",
+  "quote": "ghi nhận doanh thu thuần hơn 1.558,8 tỷ đồng, tăng 51,5% so với cùng kỳ năm trước (YoY). Giá vốn hàng bán đạt 1.468,5 tỷ đồng, tăng 56,6% YoY; lợi nhuận gộp đạt 90,2 tỷ đồng, giảm 900 triệu đồng, tương đương 1%.",
+  "status": "match",
+  "note": "HAX. dnse.com.vn, bài 29/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ 6T/2026 hợp nhất: doanh thu / LNTT / % KH",
+  "value": "2.656,2 tỷ (+33,6%) / 49,8 tỷ đồng (+23,9%) / ~24,9% KH 200 tỷ",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/haxaco-kinh-doanh-ra-sao-sau-khi-mua-cong-ty-phan-phoi-xe-vinfast-35252657",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 6 tháng đầu năm 2026, doanh thu thuần của Haxaco đạt 2.656,2 tỷ đồng, tăng 33,6% so với nửa đầu năm 2025. Lãi trước thuế đạt 49,8 tỷ đồng, tăng 23,9%. Năm nay, Haxaco đặt mục tiêu lợi nhuận trước thuế 200 tỷ đồng. Như vậy sau nửa đầu năm, doanh nghiệp đã hoàn thành khoảng 24,9% kế hoạch năm.",
+  "status": "match",
+  "note": "HAX. dnse.com.vn, bài 29/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ 6T/2026: lãi ròng hợp nhất",
+  "value": "37,2 tỷ đồng (+38,9%); Q2 LNST 21,9 tỷ (+13%)",
+  "url": "https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html",
+  "opened_at": "2026-10-11",
+  "quote": "Sau 6 tháng, Haxaco thu về 2.656,29 tỷ đồng doanh thu, tăng 33,6% và lãi ròng 37,2 tỷ đồng, tăng 38,9%.",
+  "status": "match",
+  "note": "HAX. nhadautu.vn, bài 10/08/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Thương vụ Tập đoàn Tương Lai Việt (đại lý VinFast)",
+  "value": "nhận chuyển nhượng 9,75 triệu cp = 65% vốn (tháng 3/2026); lợi thế thương mại 208,6 tỷ",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/haxaco-kinh-doanh-ra-sao-sau-khi-mua-cong-ty-phan-phoi-xe-vinfast-35252657",
+  "opened_at": "2026-10-11",
+  "quote": "Hồi tháng 3/2026, HĐQT Haxaco thông qua nghị quyết nhận chuyển nhượng 9,75 triệu cổ phần, tương ứng 65% vốn điều lệ của CTCP Tập đoàn Tương Lai Việt.",
+  "status": "match",
+  "note": "HAX. dnse.com.vn, bài 29/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Cổ tức từ PTM (phân phối MG) hỗ trợ lợi nhuận 6T/2026 (số theo bài DNPL, thấp hơn số hợp nhất của DNSE/nhadautu)",
+  "value": "doanh thu tài chính 6T 49,7 tỷ (+150,1%), trong đó cổ tức PTM 49,5 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/suc-mua-xe-sang-phuc-hoi-giup-haxaco-hax-loi-nguoc-dong-chuyen-tu-lo-sang-lai-trong-quy-ii-2026.html",
+  "opened_at": "2026-10-11",
+  "quote": "Doanh thu hoạt động tài chính của Haxaco 6 tháng đầu năm 2026 đạt hơn 49,7 tỷ đồng, tăng 150,1% so với cùng kỳ năm 2025. Đóng góp chủ yếu đến từ cổ tức, lợi nhuận được chia từ Công ty cổ phần Sản xuất thương mại và dịch vụ Ô tô PTM với khoản tiền hơn 49,5 tỷ đồng.",
+  "status": "match",
+  "note": "HAX. doanhnhan.baophapluat.vn, bài cuối 07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Rủi ro nợ vay và tồn kho 30/6/2026 (hợp nhất)",
+  "value": "nợ phải trả 1.942 tỷ (+75,1%); vay ngắn hạn 1.402 tỷ (+47,5%); tồn kho 1.759,6 tỷ (+20,8%)",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/haxaco-kinh-doanh-ra-sao-sau-khi-mua-cong-ty-phan-phoi-xe-vinfast-35252657",
+  "opened_at": "2026-10-11",
+  "quote": "Bên kia bảng cân đối kế toán, tổng nợ phải trả của doanh nghiệp đạt 1.942 tỷ đồng, tăng 75,1% so với thời điểm đầu năm.",
+  "status": "match",
+  "note": "HAX. dnse.com.vn, bài 29/07/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Thị trường ô tô (VAMA) tháng 9 và 9T/2026",
+  "value": "T9: 35.094 xe (+38% MoM); 9T: 282.029 xe (+12%); xe nhập +22%, lắp ráp +2%; hybrid 9T 16.057 xe (+64%)",
+  "url": "https://www.vietnamplus.vn/doanh-so-ban-oto-tai-viet-nam-tang-38-xe-hybrid-tang-toc-post1141084.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Tính đến hết tháng 9/2026, doanh số ôtô toàn thị trường đạt 282.029 xe các loại, tăng 12% so với cùng kỳ năm trước. Trong đó, xe du lịch tăng 9%, xe thương mại tăng 17% và xe chuyên dụng tăng 62%.",
+  "status": "match",
+  "note": "HAX. vietnamplus.vn, bài 09/10/2026 (Mercedes-Benz không báo cáo VAMA)"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Kế hoạch 2026 (ĐHĐCĐ 5/6/2026): doanh thu hợp nhất / LNST (2025 có lãi đột biến dự án Cần Giờ)",
+  "value": "22.094 tỷ (-21% so 27.810 tỷ) / ~159 tỷ đồng (-68% so 499 tỷ)",
+  "url": "https://nhadautu.vn/chu-tich-savico-co-dong-lon-chua-co-ke-hoach-thoai-von-d105473.html",
+  "opened_at": "2026-10-11",
+  "quote": "chỉ tiêu doanh thu hợp nhất đặt ra ở mức 22.094 tỷ đồng, giảm 21% so với mức thực hiện 27.810 tỷ đồng của năm 2025. Đáng chú ý, mục tiêu lợi nhuận sau thuế khoảng 159 tỷ đồng, giảm tới 68% so với con số 499 tỷ đồng đạt được trong năm trước",
+  "status": "match",
+  "note": "SVC. nhadautu.vn, bài 05/06/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ Q1/2026: doanh thu / LNST",
+  "value": "6.449 tỷ (+16,2%) / 34 tỷ đồng (+5,66%)",
+  "url": "https://nhadautu.vn/chu-tich-savico-co-dong-lon-chua-co-ke-hoach-thoai-von-d105473.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể, doanh thu bán hàng và cung cấp dịch vụ trong quý đạt 6.449 tỷ đồng, tăng 16,2% so với mức 5.549 tỷ đồng của quý 1/2025. Lợi nhuận sau thuế tương ứng đạt 34 tỷ đồng, tăng trưởng 5,66% so với cùng kỳ năm ngoái.",
+  "status": "match",
+  "note": "SVC. nhadautu.vn, bài 05/06/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ Q2/2026: doanh thu thuần / LNST",
+  "value": "6.145 tỷ (-9,36%) / 69 tỷ đồng (-41%)",
+  "url": "https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo BCTC hợp nhất quý II/2026, Savico ghi nhận 6.145 tỷ đồng doanh thu thuần, giảm 9,36% so với cùng kỳ; lợi nhuận sau thuế đạt 69 tỷ đồng, giảm 41%.",
+  "status": "match",
+  "note": "SVC. nhadautu.vn, bài 10/08/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "KQ 6T/2026: doanh thu thuần / lãi ròng / % KH",
+  "value": "12.593,29 tỷ (tăng nhẹ) / 103,5 tỷ đồng (-30%); 56% KH doanh thu, 65% KH lợi nhuận",
+  "url": "https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế nửa đầu năm, doanh thu thuần đạt 12.593,29 tỷ đồng, tăng nhẹ, trong khi lãi ròng giảm 30% xuống 103,5 tỷ đồng. Savico cho biết lợi nhuận giảm chủ yếu do không còn khoản lãi đột biến từ chuyển nhượng khoản đầu tư trong khi hoạt động kinh doanh cốt lõi duy trì ổn định.",
+  "status": "match",
+  "note": "SVC. nhadautu.vn, bài 10/08/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Rút tờ trình tăng vốn 2026; UBCKNN gia hạn điều kiện công ty đại chúng",
+  "value": "tạm rút tờ trình chào bán tăng vốn (không tăng vốn năm nay); UBCKNN gia hạn thêm 1 năm",
+  "url": "https://nhadautu.vn/chu-tich-savico-co-dong-lon-chua-co-ke-hoach-thoai-von-d105473.html",
+  "opened_at": "2026-10-11",
+  "quote": "do các cổ đông lớn không có kế hoạch thoái vốn, công ty đã thống nhất tạm rút kế hoạch này và đang tìm kiếm giải pháp khác. Phía UBCKNN cũng đã chấp thuận gia hạn thêm 1 năm",
+  "status": "match",
+  "note": "SVC. nhadautu.vn, bài 05/06/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Thị trường ô tô 6T/2026 (VAMA + VinFast + HTC)",
+  "value": "328.818 xe (+29,3%): VAMA & nhập khẩu 187.833, VinFast 115.916, Hyundai Thành Công 25.069",
+  "url": "https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trong đó, doanh số của các thành viên VAMA và các hãng xe nhập khẩu đạt 187.833 xe, VinFast bàn giao 115.916 xe, còn Hyundai Thành Công bán 25.069 xe.",
+  "status": "match",
+  "note": "SVC. nhadautu.vn, bài 10/08/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Thị trường ô tô (VAMA) tháng 8/2026 - tháng Ngâu",
+  "value": "25.395 xe (-25% MoM, -2% YoY); 8T toàn thị trường +12%; thành viên VAMA 8T 193.898 xe (+8%)",
+  "url": "https://tapchikinhtetaichinh.vn/doanh-so-o-to-thang-8-giam-25-so-voi-thang-truoc-166849.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo báo cáo của Hiệp hội Các nhà sản xuất ô tô Việt Nam (VAMA), trong tháng 8/2026, doanh số bán hàng toàn thị trường đạt 25.395 xe, giảm 25% so với tháng 7 và giảm 2% so với cùng kỳ năm 2025.",
+  "status": "match",
+  "note": "SVC. tapchikinhtetaichinh.vn, bài 09/2026"
+ },
+ {
+  "block": "bl-60",
+  "claim": "Chính sách hỗ trợ xe điện (ảnh hưởng cơ cấu thị trường đại lý)",
+  "value": "lệ phí trước bạ 0% xe điện đến hết 2030 (NĐ 202/2026); TTĐB xe điện 1-3% → 4-11% từ 3/2027; dự báo VIRAC thị trường 2026 +10-15%",
+  "url": "https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo Luật Thuế tiêu thụ đặc biệt có hiệu lực từ đầu năm 2026, xe điện chạy pin dưới 24 chỗ hiện chịu thuế suất từ 1-3% tùy loại. Theo lộ trình hiện hành, mức thuế này sẽ tăng lên 4-11% từ tháng 3/2027.",
+  "status": "match",
+  "note": "SVC. nhadautu.vn, bài 10/08/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Kế hoạch 2026 (ĐHĐCĐ 22/4/2026): doanh thu hợp nhất / LNST / cổ tức",
+  "value": "66.477 tỷ (+4,3%) / 9.828 tỷ đồng (+4,4%) / cổ tức tiền ≥50% LNST",
+  "url": "https://thitruongtaichinhtiente.vn/dhdcd-vinamilk-loi-nhuan-quy-i-tang-55-thi-truong-sua-viet-nam-con-nhieu-du-dia-82341.html",
+  "opened_at": "2026-10-11",
+  "quote": "Năm 2026, Vinamilk đặt kế hoạch doanh thu hợp nhất 66.477 tỷ đồng và lợi nhuận sau thuế 9.828 tỷ đồng, lần lượt tăng 4,3% và 4,4% so với thực hiện 2025. Cổ tức tiền mặt năm 2026 tối thiểu bằng 50% lợi nhuận sau thuế hợp nhất.",
+  "status": "match",
+  "note": "VNM. thitruongtaichinhtiente.vn, bài 22/04/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Nền 2025: doanh thu thuần / LNST; cổ tức 2025",
+  "value": "63.724 tỷ (+3,1%) / 9.414 tỷ đồng (-0,4%); cổ tức 2025 43,5% (4.350 đ/cp)",
+  "url": "https://mekongasean.vn/vinamilk-dat-muc-tieu-lai-hon-9800-ty-nam-2026-co-tuc-toi-thieu-50-53451.html",
+  "opened_at": "2026-10-11",
+  "quote": "Kết thúc năm 2025, doanh nghiệp đầu ngành sữa Việt Nam đạt 63.724 tỷ đồng doanh thu thuần, tăng 3,1% so với cùng kỳ năm 2024 (YoY); lợi nhuận sau thuế giảm nhẹ 0,4% YoY, xuống còn 9.414 tỷ đồng.",
+  "status": "match",
+  "note": "VNM. mekongasean.vn, bài 01/04/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "KQ Q2/2026 (sơ bộ): doanh thu / LNST",
+  "value": "18.856 tỷ (+12,5%) / 3.184 tỷ đồng (+28%)",
+  "url": "https://24hmoney.vn/news/vinamilk-bao-lai-quy-2-2026-tang-28-xuat-khau-va-cong-ty-con-la-dong-luc-chinh-c30a2811474.html",
+  "opened_at": "2026-10-11",
+  "quote": "Công ty Cổ phần Sữa Việt Nam (VNM) vừa công bố kết quả kinh doanh sơ bộ quý 2/2026 với doanh thu và lợi nhuận sau thuế lần lượt tăng 12,5% và 28% so với cùng kỳ, đạt 18.856 tỷ đồng và 3.184 tỷ đồng.",
+  "status": "match",
+  "note": "VNM. 24hmoney.vn, bài 24/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "KQ 6T/2026: tổng doanh thu / LNST / % KH",
+  "value": "35.034 tỷ (+17,7%) / 5.643 tỷ đồng (+38,4%); 50% KH doanh thu, 55% KH lợi nhuận",
+  "url": "https://24hmoney.vn/news/vinamilk-bao-lai-quy-2-2026-tang-28-xuat-khau-va-cong-ty-con-la-dong-luc-chinh-c30a2811474.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 6 tháng đầu năm 2026, tổng doanh thu đạt 35.034 tỷ đồng, tăng 17,7% YoY, trong khi lợi nhuận sau thuế tăng mạnh 38,4%, lên mức 5.643 tỷ đồng.",
+  "status": "match",
+  "note": "VNM. 24hmoney.vn, bài 24/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Nội địa và xuất khẩu Q2 / 6T 2026",
+  "value": "nội địa 14.616 tỷ (+6,8%) / 26.596 tỷ (+12,6%); xuất khẩu 2.664 tỷ (+41,2%) / 4.990 tỷ (+42,3%)",
+  "url": "https://24hmoney.vn/news/vinamilk-bao-lai-quy-2-2026-tang-28-xuat-khau-va-cong-ty-con-la-dong-luc-chinh-c30a2811474.html",
+  "opened_at": "2026-10-11",
+  "quote": "Mảng xuất khẩu tiếp tục là điểm sáng nổi bật nhất, với doanh thu thuần tăng tới 41,2% trong quý 2 và 42,3% trong 6 tháng đầu năm, tương ứng đạt 2.664 tỷ đồng và 4.990 tỷ đồng.",
+  "status": "match",
+  "note": "VNM. 24hmoney.vn, bài 24/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Biên lợi nhuận ròng 6T/2026 và chi phí nguyên liệu",
+  "value": "16,1% (cùng kỳ 17%); chi phí nguyên liệu đầu vào giảm (Driftwood: sữa tươi nguyên liệu giảm)",
+  "url": "https://doanhnhan.baophapluat.vn/vinamilk-vnm-bao-lai-nua-dau-nam-2026-tang-manh-38-xuat-khau-dong-vai-tro-diem-sang.html",
+  "opened_at": "2026-10-11",
+  "quote": "Biên lợi nhuận ròng trong nửa đầu năm ghi nhận mức 16,1%, thấp hơn tỷ lệ 17% của cùng kỳ năm trước do quá trình tối ưu hóa danh mục sản phẩm và sự sụt giảm của chi phí nguyên liệu đầu vào.",
+  "status": "match",
+  "note": "VNM. doanhnhan.baophapluat.vn, bài cuối 07/2026 (theo báo cáo sơ bộ Vietcap)"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Công ty con: Angkor Milk, Driftwood 6T/2026",
+  "value": "Angkor Milk: DT +218,4%, LNST +187,9%; Driftwood: LNST +51,5%",
+  "url": "https://24hmoney.vn/news/vinamilk-bao-lai-quy-2-2026-tang-28-xuat-khau-va-cong-ty-con-la-dong-luc-chinh-c30a2811474.html",
+  "opened_at": "2026-10-11",
+  "quote": "Nổi bật nhất là Angkor Milk, khi doanh thu thuần và lợi nhuận sau thuế quý 2 lần lượt tăng vọt 241,7% và 209,9% so với cùng kỳ, còn tính chung 6 tháng mức tăng đạt 218,4% và 187,9%.",
+  "status": "match",
+  "note": "VNM. 24hmoney.vn, bài 24/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Sức mua ngành sữa (rủi ro) và mạng lưới cửa hàng",
+  "value": "ngành sữa Q1/2026 vẫn -3,7% YoY (2025: -2,4%); cửa hàng 800 → mục tiêu 1.000 trong 2026; đàn bò >130.000 con, 410.000 tấn sữa tươi",
+  "url": "https://thitruongtaichinhtiente.vn/dhdcd-vinamilk-loi-nhuan-quy-i-tang-55-thi-truong-sua-viet-nam-con-nhieu-du-dia-82341.html",
+  "opened_at": "2026-10-11",
+  "quote": "Đánh giá sức mua, bà Liên cho biết, bức tranh chung của ngành sữa vẫn chưa thực sự khả quan, vẫn âm 3,7% so với cùng kỳ.",
+  "status": "match",
+  "note": "VNM. thitruongtaichinhtiente.vn, bài 22/04/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Kế hoạch 2026 (ĐHĐCĐ 23/4/2026): doanh thu thuần / LNST; % KH sau 6T",
+  "value": "28.959 tỷ (+12%) / 4.937 tỷ đồng (+8%); 6T đạt 46% KH doanh thu, 50% KH lợi nhuận",
+  "url": "https://vietnamfinance.vn/mot-quy-tang-gia-2-lan-bia-sai-gon-van-khong-cai-thien-doanh-thu-va-loi-nhuan-d148046.html",
+  "opened_at": "2026-10-11",
+  "quote": "Năm 2026, Sabeco đặt mục tiêu doanh thu thuần 28.959 tỷ đồng và lợi nhuận sau thuế 4.937 tỷ đồng, tăng lần lượt 12% và 8% so với năm 2025. Sau nửa đầu năm, doanh nghiệp đã hoàn thành khoảng 46% kế hoạch doanh thu và 50% mục tiêu lợi nhuận.",
+  "status": "match",
+  "note": "SAB. vietnamfinance.vn, bài 25/07/2026 (bài NHSV nêu KH 28.316/4.609 tỷ - khác số, cần đối chiếu tài liệu ĐHĐCĐ)"
+ },
+ {
+  "block": "bl-61",
+  "claim": "KQ Q2/2026: doanh thu thuần / LNST",
+  "value": "6.888 tỷ (+1,2%) / 1.243 tỷ đồng (-0,6%); lợi nhuận ròng 1.167 tỷ (-3%)",
+  "url": "https://mekongasean.vn/bien-loi-nhuan-gop-cua-sabeco-cai-thien-manh-57663.html",
+  "opened_at": "2026-10-11",
+  "quote": "Kết quả, lợi nhuận sau thuế của Sabeco đạt 1.243 tỷ đồng, giảm 0,6% YoY.",
+  "status": "match",
+  "note": "SAB. mekongasean.vn, bài 24/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Biên lợi nhuận gộp Q2/2026 (malt, gạo thuận lợi)",
+  "value": "38,66% (Q2/2025: 35,98%, +2,68 điểm %); lợi nhuận gộp 2.663 tỷ (+8,8%)",
+  "url": "https://mekongasean.vn/bien-loi-nhuan-gop-cua-sabeco-cai-thien-manh-57663.html",
+  "opened_at": "2026-10-11",
+  "quote": "Giá vốn hàng bán tăng chậm hơn doanh thu giúp lợi nhuận gộp đạt 2.663 tỷ đồng, tăng 8,8%. Nhờ đó, biên lợi nhuận gộp của doanh nghiệp tăng từ 35,98% trong quý 2/2025 lên 38,66% trong quý 2 năm nay, cải thiện 2,68 điểm phần trăm.",
+  "status": "match",
+  "note": "SAB. mekongasean.vn, bài 24/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "KQ 6T/2026: doanh thu thuần / LNST / biên gộp",
+  "value": "13.345 tỷ (+5,8%) / 2.489 tỷ đồng (+21,4%); biên gộp 37,98% (cùng kỳ 34,24%)",
+  "url": "https://mekongasean.vn/bien-loi-nhuan-gop-cua-sabeco-cai-thien-manh-57663.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 6 tháng đầu năm 2026, công ty đạt doanh thu thuần 13.345 tỷ đồng, tăng 5,8% YoY; lợi nhuận sau thuế đạt 2.489 tỷ đồng, tăng 21,4% YoY. Lợi nhuận tăng trưởng hai con số chủ yếu do cải thiện biên lợi nhuận gộp, từ mức 34,24% của cùng kỳ năm trước lên 37,98%.",
+  "status": "match",
+  "note": "SAB. mekongasean.vn, bài 24/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Tăng giá bán và chi phí bán hàng 2026",
+  "value": "2 đợt tăng giá tháng 4-5/2026, thêm 1 đợt tháng 7; chi phí bán hàng Q2 +26% lên 1.154 tỷ",
+  "url": "https://vietnamfinance.vn/mot-quy-tang-gia-2-lan-bia-sai-gon-van-khong-cai-thien-doanh-thu-va-loi-nhuan-d148046.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo giải trình của doanh nghiệp, doanh thu quý II tăng so với cùng kỳ chủ yếu nhờ tác động từ hai đợt điều chỉnh giá bán trong tháng 4 và tháng 5/2026. Sang tháng 7, Sabeco tiếp tục thực hiện thêm một đợt tăng giá.",
+  "status": "match",
+  "note": "SAB. vietnamfinance.vn, bài 25/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Tiền mặt và nợ vay 30/6/2026",
+  "value": "tiền + tiền gửi 20.743 tỷ đồng (~65% tài sản); nợ vay 367 tỷ (-31%)",
+  "url": "https://doanhnhan.baophapluat.vn/sabeco-sab-thu-hon-2-480-ty-dong-lai-sau-thue-nua-dau-nam-2026-hoan-thanh-50-ke-hoach.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cơ cấu tài sản cho thấy mức độ an toàn thanh khoản cao khi khoản mục tiền và tiền gửi ngân hàng ghi nhận 20.743 tỷ đồng.",
+  "status": "match",
+  "note": "SAB. doanhnhan.baophapluat.vn, bài cuối 07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Cổ tức tiền mặt 2025 và 2026",
+  "value": "2025: 5.000 đ/cp (đợt còn lại 3.000 đ, ~3.848 tỷ, trả 28/8/2026); 2026: duy trì 5.000 đ/cp (50%)",
+  "url": "https://mekongasean.vn/bien-loi-nhuan-gop-cua-sabeco-cai-thien-manh-57663.html",
+  "opened_at": "2026-10-11",
+  "quote": "Sabeco sẽ chốt danh sách cổ đông để thực hiện chi trả phần cổ tức còn lại của năm 2025 với tỷ lệ 30%, tương ứng mỗi cổ phiếu nhận 3.000 đồng. Với hơn 1,28 tỷ cổ phiếu đang lưu hành, Sabeco dự kiến sẽ chi khoảng 3.848 tỷ đồng cho đợt thanh toán này",
+  "status": "match",
+  "note": "SAB. mekongasean.vn, bài 24/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Rủi ro: lộ trình thuế tiêu thụ đặc biệt bia",
+  "value": "65% → 70% năm 2027, +5%/năm, 90% năm 2031",
+  "url": "https://doanhnhan.baophapluat.vn/sabeco-sab-chot-muc-tieu-lai-4-800-ty-dong-len-ke-hoach-tra-co-tuc-tien-mat-ty-le-50.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo quy định mới, thuế tiêu thụ đặc biệt áp dụng cho mặt hàng bia sẽ tăng từ mức 65% hiện hành lên 70% vào năm 2027, sau đó tiếp tục tăng thêm 5% mỗi năm để chạm ngưỡng 90% vào năm 2031.",
+  "status": "match",
+  "note": "SAB. doanhnhan.baophapluat.vn, bài tài liệu ĐHĐCĐ 04/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Nguyên liệu đầu vào ngành bia 2025 (malt, gạo, nhôm hạ nhiệt)",
+  "value": "biên gộp trung bình ngành bia gần 29% (2024: 24,6%)",
+  "url": "https://doanhnhan.baophapluat.vn/sabeco-sab-chot-muc-tieu-lai-4-800-ty-dong-len-ke-hoach-tra-co-tuc-tien-mat-ty-le-50.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tuy nhiên, lợi nhuận ròng của các doanh nghiệp vẫn tăng vọt nhờ giá các loại nguyên liệu đầu vào như malt, gạo và nhôm hạ nhiệt. Yếu tố này giúp biên lợi nhuận gộp trung bình của toàn ngành bia được cải thiện lên mức gần 29%, cao hơn đáng kể so với con số 24,6% của năm 2024.",
+  "status": "match",
+  "note": "SAB. doanhnhan.baophapluat.vn, bài tài liệu ĐHĐCĐ 04/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Dự báo thị trường bia (Euromonitor) và dự báo NHSV cho SAB 2026",
+  "value": "thị trường +~5%/năm 2025-2030, ~10 tỷ USD, 4-4,5 tỷ lít/năm; NHSV: LNST 2026 4.900 tỷ (+11%), giá mục tiêu 55.555 đ",
+  "url": "https://doanhnhan.baophapluat.vn/bien-loi-nhuan-len-cao-nhat-nhieu-nam-sabeco-sab-duoc-nhsv-du-bao-lai-4-900-ty-dong.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo số liệu Euromonitor, thị trường bia Việt Nam được dự báo tăng trưởng bình quân khoảng 5% mỗi năm trong giai đoạn 2025 - 2030, hướng tới quy mô khoảng 10 tỷ USD. Sản lượng tiêu thụ bình quân dự kiến duy trì quanh 4 - 4,5 tỷ lít/năm.",
+  "status": "match",
+  "note": "SAB. doanhnhan.baophapluat.vn, bài 28/09/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Kế hoạch 2026 (ĐHĐCĐ 4/4/2026): doanh thu / LNST",
+  "value": "10.500 tỷ (-5%) / 1.512 tỷ đồng (-21%)",
+  "url": "https://mekongasean.vn/duong-quang-ngai-dat-muc-tieu-loi-nhuan-nam-2026-giam-21-52795.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo tờ trình của HĐQT doanh nghiệp, QNS đặt mục tiêu doanh thu và lợi nhuận sau thuế năm 2026 lần lượt đạt 10.500 tỷ đồng và 1.512 tỷ đồng, tương ứng giảm 5% và 21% so với thực hiện năm 2025.",
+  "status": "match",
+  "note": "QNS. mekongasean.vn, bài 17/03/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "KQ Q2/2026: doanh thu thuần / lợi nhuận gộp",
+  "value": "3.288 tỷ (+12,7%) / 1.169 tỷ đồng (+21,4%); giá vốn +8,4%",
+  "url": "https://vietnamfinance.vn/duong-quang-ngai-lai-gan-1000-ty-dong-sau-6-thang-hang-ton-kho-tang-manh-d148824.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể, trong quý II, doanh thu thuần của doanh nghiệp đạt 3.288 tỷ đồng, tăng 12,7% so với cùng kỳ năm trước. Giá vốn hàng bán tăng 8,4%, lên 2.119 tỷ đồng, qua đó lợi nhuận gộp đạt 1.169 tỷ đồng, tăng 21,4%.",
+  "status": "match",
+  "note": "QNS. vietnamfinance.vn, bài 10/08/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "KQ Q2/2026: LNST",
+  "value": "566,6 tỷ đồng (+3,8%); chi phí đi vay 58,8 tỷ",
+  "url": "https://vietnamfinance.vn/duong-quang-ngai-lai-gan-1000-ty-dong-sau-6-thang-hang-ton-kho-tang-manh-d148824.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lợi nhuận sau thuế đạt 566,6 tỷ đồng, tăng 3,8%.",
+  "status": "match",
+  "note": "QNS. vietnamfinance.vn, bài 10/08/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "KQ 6T/2026: doanh thu thuần / LNST (≈63% KH LNST, tự tính)",
+  "value": "6.052 tỷ (+16,7%) / 958 tỷ đồng (+2,2%)",
+  "url": "https://vietnamfinance.vn/duong-quang-ngai-lai-gan-1000-ty-dong-sau-6-thang-hang-ton-kho-tang-manh-d148824.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 6 tháng đầu năm, doanh thu thuần của Đường Quảng Ngãi đạt 6.052 tỷ đồng, tăng 16,7% so với cùng kỳ năm 2025. Lợi nhuận sau thuế đạt 958 tỷ đồng, tăng 2,2%.",
+  "status": "match",
+  "note": "QNS. vietnamfinance.vn, bài 10/08/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Rủi ro vốn lưu động 30/6/2026: tồn kho và vay ngắn hạn tăng mạnh",
+  "value": "tồn kho 2.310 tỷ (+69,3% so 1.364 tỷ đầu năm); vay ngắn hạn 3.794 tỷ (+49,6%)",
+  "url": "https://vietnamfinance.vn/duong-quang-ngai-lai-gan-1000-ty-dong-sau-6-thang-hang-ton-kho-tang-manh-d148824.html",
+  "opened_at": "2026-10-11",
+  "quote": "Đáng chú ý, hàng tồn kho tại cuối quý II đạt 2.310 tỷ đồng, tăng 69,3% so với mức 1.364 tỷ đồng hồi đầu năm.",
+  "status": "match",
+  "note": "QNS. vietnamfinance.vn, bài 10/08/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Tiền gửi/đầu tư tài chính ngắn hạn 30/6/2026",
+  "value": "8.468,6 tỷ đồng (+3,3%), hơn một nửa tổng tài sản 15.845 tỷ",
+  "url": "https://vietnamfinance.vn/duong-quang-ngai-lai-gan-1000-ty-dong-sau-6-thang-hang-ton-kho-tang-manh-d148824.html",
+  "opened_at": "2026-10-11",
+  "quote": "Bên cạnh đó, Đường Quảng Ngãi đang nắm giữ 8.468,6 tỷ đồng đầu tư tài chính ngắn hạn, tăng 3,3% so với đầu năm. Khoản đầu tư này hiện chiếm hơn một nửa tổng tài sản của doanh nghiệp.",
+  "status": "match",
+  "note": "QNS. vietnamfinance.vn, bài 10/08/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Cổ tức: tạm ứng đợt 1/2026 và kế hoạch",
+  "value": "10% (1.000 đ/cp, ~368 tỷ, trả 27/8/2026); KH 2026 ≥15%; cổ tức 2025 tổng 40% (~1.470 tỷ)",
+  "url": "https://mekongasean.vn/duong-quang-ngai-chi-368-ty-dong-tam-ung-co-tuc-nam-2026-58245.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cổ tức bằng tiền mặt, tỷ lệ thực hiện là 10%, tức cổ đông sở hữu một cổ phiếu sẽ được nhận 1.000 đồng. Thời gian thanh toán dự kiến bắt đầu từ ngày 27/08/2026.",
+  "status": "match",
+  "note": "QNS. mekongasean.vn, bài 08/08/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Rủi ro ngành đường (nhận định HĐQT trong tờ trình ĐHĐCĐ 2026)",
+  "value": "giá đường giảm, tồn kho cao, đường nhập lậu, nhập khẩu HFCS tăng; FMCG sức mua yếu",
+  "url": "https://mekongasean.vn/duong-quang-ngai-dat-muc-tieu-loi-nhuan-nam-2026-giam-21-52795.html",
+  "opened_at": "2026-10-11",
+  "quote": "Ngành mía đường còn chịu áp lực lớn từ giá đường giảm, tồn kho cao, đường nhập lậu, gian lận thương mại và gia tăng nhập khẩu đường lỏng siro ngô HFCS",
+  "status": "match",
+  "note": "QNS. mekongasean.vn, bài 17/03/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Kế hoạch 2026 ban đầu (ĐHĐCĐ 24/4/2026): LNST; cổ tức 2025",
+  "value": "7.250–7.900 tỷ đồng; không chia cổ tức 2025",
+  "url": "https://mekongasean.vn/chu-tich-masan-wincommerce-se-tra-lai-cho-co-dong-3000-ty-dong-54500.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tập đoàn Masan lên kế hoạch lợi nhuận sau thuế 7.250 – 7.900 tỷ đồng trong năm 2026; đồng thời trình cổ đông phương án không chia cổ tức năm 2025.",
+  "status": "match",
+  "note": "MSN. mekongasean.vn, bài 24/04/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Kế hoạch 2026 NÂNG (đề xuất sau Q2): doanh thu / LNST / lợi nhuận ròng",
+  "value": "98.000–105.000 tỷ / 10.000–11.500 tỷ đồng / ~8.000 tỷ (gấp đôi 2025)",
+  "url": "https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html",
+  "opened_at": "2026-10-11",
+  "quote": "Dựa trên gia tốc tăng trưởng này, ban lãnh đạo Masan đề xuất nâng kế hoạch kinh doanh năm 2026 với mục tiêu doanh thu dao động từ 98.000 đến 105.000 tỷ đồng, đi kèm lợi nhuận sau thuế từ 10.000 đến 11.500 tỷ đồng.",
+  "status": "match",
+  "note": "MSN. doanhnhan.baophapluat.vn, bài 27/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "KQ Q2/2026: doanh thu thuần / LNST (kỷ lục quý)",
+  "value": "28.118 tỷ (+54%) / 3.800 tỷ đồng (gấp 2,3 lần)",
+  "url": "https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html",
+  "opened_at": "2026-10-11",
+  "quote": "Quý II/2026, Công ty Cổ phần Tập đoàn Masan ghi nhận doanh thu thuần đạt 28.118 tỷ đồng, tăng 54% so với cùng kỳ năm ngoái. Điểm sáng lớn nhất nằm ở lợi nhuận sau thuế khi con số này vọt lên 3.800 tỷ đồng, cao gấp 2,3 lần.",
+  "status": "match",
+  "note": "MSN. doanhnhan.baophapluat.vn, bài 27/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "KQ 6T/2026: LNST / lợi nhuận ròng",
+  "value": "5.773 tỷ / 4.371 tỷ đồng (gấp 3 lần bán niên 2025)",
+  "url": "https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế sáu tháng đầu năm, lợi nhuận sau thuế của tập đoàn vươn lên mức 5.773 tỷ đồng, trong khi lợi nhuận ròng đạt 4.371 tỷ đồng, cao gấp ba lần bán niên 2025.",
+  "status": "match",
+  "note": "MSN. doanhnhan.baophapluat.vn, bài 27/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "WinCommerce Q2/2026: doanh thu, LNST, số cửa hàng",
+  "value": "11.629 tỷ (+27%); LNST 142 tỷ (gấp 14 lần); +324 điểm bán thuần, 5.141 cửa hàng; >90% cửa hàng mới hòa vốn EBITDA",
+  "url": "https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tại nền tảng bán lẻ, WinCommerce ghi nhận doanh thu 11.629 tỷ đồng, tăng 27%, qua đó báo lãi sau thuế đột biến 142 tỷ đồng, cao gấp 14 lần cùng kỳ. Chuỗi này đã mở mới thuần 324 điểm bán, nâng tổng quy mô lên 5.141 cửa hàng trên toàn quốc.",
+  "status": "match",
+  "note": "MSN. doanhnhan.baophapluat.vn, bài 27/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "WinCommerce mục tiêu 2026",
+  "value": "6.000 cửa hàng cuối 2026; ~70% cửa hàng mở mới ở nông thôn; kỳ vọng lợi nhuận ~3.000 tỷ",
+  "url": "https://mekongasean.vn/chu-tich-masan-wincommerce-se-tra-lai-cho-co-dong-3000-ty-dong-54500.html",
+  "opened_at": "2026-10-11",
+  "quote": "Các mô hình này giúp doanh nghiệp mở rộng hệ thống WinCommerce trên toàn quốc, dự kiến đạt 6.000 cửa hàng trong năm 2026.",
+  "status": "match",
+  "note": "MSN. mekongasean.vn, bài 24/04/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Masan Consumer Q2/2026 và biên gộp Q1",
+  "value": "doanh thu Q2 7.165 tỷ (+14%); hóa mỹ phẩm +33%; biên gộp Q1 46,7%",
+  "url": "https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cùng với hệ thống bán lẻ, Masan Consumer tiếp tục là trụ cột vững chắc khi đóng góp 7.165 tỷ đồng doanh thu, tăng 14%.",
+  "status": "match",
+  "note": "MSN. doanhnhan.baophapluat.vn, bài 27/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Masan High-Tech Materials Q2/2026 (giá APT)",
+  "value": "doanh thu 8.138 tỷ (gấp 5 lần); LNST 1.666 tỷ (cùng kỳ 6 tỷ); giá APT bình quân 3.245 USD/mtu",
+  "url": "https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html",
+  "opened_at": "2026-10-11",
+  "quote": "Doanh thu của đơn vị này đạt 8.138 tỷ đồng, cao gấp 5 lần, giúp lợi nhuận sau thuế nhảy vọt lên 1.666 tỷ đồng so với mức vỏn vẹn 6 tỷ đồng của cùng kỳ. Nguyên nhân trực tiếp đến từ việc giá APT bình quân quý II đạt 3.245 USD/mtu",
+  "status": "match",
+  "note": "MSN. doanhnhan.baophapluat.vn, bài 27/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Techcombank đóng góp lợi nhuận Q2/2026",
+  "value": "1.450 tỷ đồng (+19%)",
+  "url": "https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html",
+  "opened_at": "2026-10-11",
+  "quote": "công ty liên kết Techcombank tiếp tục là một trụ cột tài chính vững chắc khi đóng góp 1.450 tỷ đồng vào lợi nhuận quý II của Masan, tương ứng mức tăng 19% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "MSN. doanhnhan.baophapluat.vn, bài 27/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Đòn bẩy MSR và định hướng cổ tức",
+  "value": "nợ ròng/EBITDA 2,1 → 1,7 lần cuối 2026; cổ tức MSR từ 2027",
+  "url": "https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html",
+  "opened_at": "2026-10-11",
+  "quote": "Ban lãnh đạo dự kiến giảm tỷ lệ nợ ròng trên EBITDA từ 2,1 lần xuống 1,7 lần vào cuối năm 2026, đưa doanh nghiệp tiến tới trạng thái tiền mặt ròng và sẵn sàng cho kế hoạch chia cổ tức từ năm 2027.",
+  "status": "match",
+  "note": "MSN. doanhnhan.baophapluat.vn, bài 27/07/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Kế hoạch 2026: doanh thu thuần / LNTT; % KH sau 6T (tự lập)",
+  "value": "12.000 tỷ (+32%) / 700 tỷ đồng (-4%); 6T tự lập đạt 36,2% DT, 13% LNTT",
+  "url": "https://mekongasean.vn/lai-quy-2-giam-60-kido-moi-hoan-thanh-13-ke-hoach-loi-nhuan-nam-58037.html",
+  "opened_at": "2026-10-11",
+  "quote": "Năm 2026, Kido đặt mục tiêu doanh thu thuần 12.000 tỷ đồng và lợi nhuận trước thuế 700 tỷ đồng. Như vậy, sau 6 tháng đầu năm, doanh nghiệp đã hoàn thành 36,2% kế hoạch doanh thu và 13% mục tiêu lợi nhuận cả năm.",
+  "status": "match",
+  "note": "KDC. mekongasean.vn, bài 03/08/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "KQ Q2/2026: doanh thu thuần (thấp nhất từ Q2/2024)",
+  "value": "1.863,8 tỷ đồng (-7,3%)",
+  "url": "https://mekongasean.vn/lai-quy-2-giam-60-kido-moi-hoan-thanh-13-ke-hoach-loi-nhuan-nam-58037.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo báo cáo tài chính hợp nhất quý 2/2026 của CTCP Tập đoàn Kido (HOSE: KDC), doanh thu thuần đạt 1.863,8 tỷ đồng, giảm 7,3% so với cùng kỳ năm trước (YoY). Đây là mức doanh thu theo quý thấp nhất của doanh nghiệp kể từ quý 2/2024.",
+  "status": "match",
+  "note": "KDC. mekongasean.vn, bài 03/08/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "KQ Q2/2026: LNTT và nguyên nhân",
+  "value": "52,9 tỷ đồng (-60%): không còn lãi thanh lý đầu tư, lãi liên doanh liên kết giảm 52% còn 31 tỷ",
+  "url": "https://mekongasean.vn/lai-quy-2-giam-60-kido-moi-hoan-thanh-13-ke-hoach-loi-nhuan-nam-58037.html",
+  "opened_at": "2026-10-11",
+  "quote": "Kết quả, lợi nhuận trước thuế quý 2/2026 đạt 52,9 tỷ đồng, giảm 60% so với quý 2/2025.",
+  "status": "match",
+  "note": "KDC. mekongasean.vn, bài 03/08/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Biên lợi nhuận gộp Q2/2026 (giá vốn giảm)",
+  "value": "18,5% → 21,9%; lợi nhuận gộp 408,2 tỷ (+9,8%); giá vốn -11,2%",
+  "url": "https://mekongasean.vn/lai-quy-2-giam-60-kido-moi-hoan-thanh-13-ke-hoach-loi-nhuan-nam-58037.html",
+  "opened_at": "2026-10-11",
+  "quote": "Giá vốn hàng bán giảm 11,2% YoY, xuống còn 1.455,5 tỷ đồng. Lợi nhuận gộp tăng 9,8% lên 408,2 tỷ đồng; biên lợi nhuận gộp được cải thiện từ 18,5% lên 21,9%.",
+  "status": "match",
+  "note": "KDC. mekongasean.vn, bài 03/08/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "KQ 6T/2026: doanh thu thuần và cơ cấu ngành",
+  "value": "4.345,4 tỷ (+4,5%): dầu ăn 3.255,2 tỷ (+1,5%), thực phẩm 964 tỷ (+58%), khác 126,2 tỷ (-62,8%)",
+  "url": "https://mekongasean.vn/lai-quy-2-giam-60-kido-moi-hoan-thanh-13-ke-hoach-loi-nhuan-nam-58037.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 6 tháng đầu năm 2026, doanh thu thuần của Kido đạt 4.345,4 tỷ đồng, tăng 4,5% so với cùng kỳ. Trong đó, ngành dầu ăn mang về 3.255,2 tỷ đồng, tăng 1,5%; ngành hàng thực phẩm đạt 964 tỷ đồng, tăng 58%; trong khi các ngành khác đạt 126,2 tỷ đồng, giảm 62,8%.",
+  "status": "match",
+  "note": "KDC. mekongasean.vn, bài 03/08/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "LNTT 6T/2026 sau soát xét (bổ sung lãi từ NutiKD)",
+  "value": "148,7 tỷ đồng (+64% so 90,6 tỷ tự lập; +77% YoY); thêm ~57 tỷ từ NutiKD; ≈21% KH",
+  "url": "https://mekongasean.vn/loi-nhuan-kido-tang-manh-sau-soat-xet-6-thang-dau-nam-2026-59181.html",
+  "opened_at": "2026-10-11",
+  "quote": "CTCP Tập đoàn Kido (HOSE: KDC) vừa công bố báo cáo tài chính soát xét bán niên năm 2026, ghi nhận lợi nhuận trước thuế gần 149 tỷ đồng, tăng 64% so với mức 90,6 tỷ đồng trong báo cáo tự lập, tương ứng tăng hơn 58 tỷ đồng.",
+  "status": "match",
+  "note": "KDC. mekongasean.vn, bài 03/09/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Rủi ro thanh khoản 30/6/2026: tiền giảm mạnh, vay ngắn hạn lớn",
+  "value": "tiền và tương đương 450 tỷ (-71% từ 1.542 tỷ); vay ngắn hạn >3.516 tỷ; nợ phải trả 6.576 tỷ (+6,6%)",
+  "url": "https://doanhnhan.baophapluat.vn/lai-truoc-thue-ban-nien-cua-kido-kdc-tang-manh-sau-soat-xet.html",
+  "opened_at": "2026-10-11",
+  "quote": "Đáng chú ý nhất là tiền và các khoản tương đương tiền giảm tới 71%, từ 1.542 tỷ đồng đầu năm xuống còn 450 tỷ đồng vào cuối tháng 6.",
+  "status": "match",
+  "note": "KDC. doanhnhan.baophapluat.vn, bài 09/2026"
+ },
+ {
+  "block": "bl-61",
+  "claim": "Chi phí tài chính Q2/2026",
+  "value": "80,2 tỷ đồng (+49,6%)",
+  "url": "https://mekongasean.vn/lai-quy-2-giam-60-kido-moi-hoan-thanh-13-ke-hoach-loi-nhuan-nam-58037.html",
+  "opened_at": "2026-10-11",
+  "quote": "Riêng chi phí tài chính tăng 49,6% YoY, lên 80,2 tỷ đồng.",
+  "status": "match",
+  "note": "KDC. mekongasean.vn, bài 03/08/2026"
+ }
+]

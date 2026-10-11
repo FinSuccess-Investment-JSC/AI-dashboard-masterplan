@@ -369,6 +369,46 @@
    "lastAttempt": "2026-10-11T15:38:38+07:00",
    "lastSuccess": "2026-10-11T15:38:38+07:00",
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "retail.wi.monthly": {
+   "lastAttempt": "2026-10-11T17:03:32+07:00",
+   "lastSuccess": "2026-10-11T17:03:32+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "retail.wi.weekly": {
+   "lastAttempt": "2026-10-11T17:03:32+07:00",
+   "lastSuccess": "2026-10-11T17:03:32+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "retail.wi.valuation": {
+   "lastAttempt": "2026-10-11T17:03:32+07:00",
+   "lastSuccess": "2026-10-11T17:03:32+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "retail.market": {
+   "lastAttempt": "2026-10-11T17:03:32+07:00",
+   "lastSuccess": "2026-10-11T17:03:32+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "retail.policy": {
+   "lastAttempt": "2026-10-11T17:03:32+07:00",
+   "lastSuccess": "2026-10-11T17:03:32+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "retail.companies": {
+   "lastAttempt": "2026-10-11T17:03:33+07:00",
+   "lastSuccess": "2026-10-11T17:03:33+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "retail.hot-topics": {
+   "lastAttempt": "2026-10-11T17:03:33+07:00",
+   "lastSuccess": "2026-10-11T17:03:33+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "retail.ai.cycle": {
+   "lastAttempt": "2026-10-11T17:03:33+07:00",
+   "lastSuccess": "2026-10-11T17:03:33+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   }
  },
  "watchers": {
@@ -2156,5 +2196,5 @@
    ]
   }
  ],
- "updatedAt": "2026-10-11T15:38:38+07:00"
+ "updatedAt": "2026-10-11T17:03:33+07:00"
 }

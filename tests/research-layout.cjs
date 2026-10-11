@@ -5,7 +5,7 @@ const root=path.resolve(__dirname,'..');fs.mkdirSync('/private/tmp/dashboard-red
 const server=http.createServer((req,res)=>{let name=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(name.endsWith('/'))name+='index.html';const file=path.resolve(root,'.'+name);if(!file.startsWith(root+path.sep)||!fs.existsSync(file)){res.writeHead(404).end();return}res.setHeader('Content-Type',({'.js':'application/javascript','.css':'text/css','.html':'text/html'})[path.extname(file)]||'application/octet-stream');res.end(fs.readFileSync(file))});
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const base='http://127.0.0.1:'+server.address().port+'/';
 const b=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});const p=await b.newPage({viewport:{width:1440,height:1000}});const errors=[];p.on('pageerror',e=>errors.push(e.message));
-const SECTORS=process.env.SECTORS?process.env.SECTORS.split(','):['Dau-khi','Sugar','Bank','Dien','Bat-dong-san','Det-may','Cang-bien','Nong-nghiep','Thuy-san','Van-tai-bien','Xay-dung','Bao-hiem'];
+const SECTORS=process.env.SECTORS?process.env.SECTORS.split(','):['Dau-khi','Sugar','Bank','Dien','Bat-dong-san','Det-may','Cang-bien','Nong-nghiep','Thuy-san','Van-tai-bien','Xay-dung','Bao-hiem','Ban-le'];
 try { for(const sector of SECTORS){
  await p.goto(base+sector+'/');await p.waitForSelector('body[data-editorial-ready="true"]');
  const tabCount=sector==='Bank'||sector==='Cang-bien'||sector==='Nong-nghiep'||sector==='Thuy-san'||sector==='Van-tai-bien'||sector==='Xay-dung'?7:sector==='Bat-dong-san'?8:6;assert.equal(await p.locator('.majortabbtn').count(),tabCount);
@@ -27,7 +27,7 @@ try { for(const sector of SECTORS){
  await p.locator('.majortabbtn').first().click();
  await p.waitForSelector('body[data-sources-ready="true"]');
  assert.ok(await p.evaluate(()=>Boolean(document.querySelector('.business-models').compareDocumentPosition(document.querySelector('.financial-comparison'))&Node.DOCUMENT_POSITION_FOLLOWING)));
- const symbol=sector==='Dau-khi'?'GAS':sector==='Sugar'?'SBT':sector==='Dien'?'POW':sector==='Bat-dong-san'?'VHM':sector==='Det-may'?'TNG':sector==='Cang-bien'?'GMD':sector==='Nong-nghiep'?'DBC':sector==='Thuy-san'?'ANV':sector==='Van-tai-bien'?'PVT':sector==='Xay-dung'?'HPG':sector==='Bao-hiem'?'BVH':'VCB';
+ const symbol=sector==='Dau-khi'?'GAS':sector==='Sugar'?'SBT':sector==='Dien'?'POW':sector==='Bat-dong-san'?'VHM':sector==='Det-may'?'TNG':sector==='Cang-bien'?'GMD':sector==='Nong-nghiep'?'DBC':sector==='Thuy-san'?'ANV':sector==='Van-tai-bien'?'PVT':sector==='Xay-dung'?'HPG':sector==='Bao-hiem'?'BVH':sector==='Ban-le'?'MWG':'VCB';
  const compTab=p.locator('#pane-mt1 button',{hasText:'So sánh tài chính'});if(await compTab.count())await compTab.first().click();
  await p.locator('#comparison-search').fill(symbol);assert.equal(await p.locator('.comparison-table tbody tr').count(),1);
  for(const period of ['year','quarter']){await p.locator('#comparison-period').selectOption(period);assert.equal(await p.locator('.comparison-table [data-metric="roe"]').getAttribute('data-value'),await p.evaluate(({symbol,period})=>String(window.COMPANY_COMPARISON.companies.find(r=>r.symbol===symbol)[period].values.roe),{symbol,period}));}
@@ -51,7 +51,7 @@ try { for(const sector of SECTORS){
  }
  }
  await p.locator('.majortabbtn').nth(1).click();
- if(['Bat-dong-san','Det-may','Cang-bien','Nong-nghiep','Thuy-san','Van-tai-bien','Xay-dung','Bao-hiem'].includes(sector)){ // no fast-price chart: check the two supply panes only
+ if(['Bat-dong-san','Det-may','Cang-bien','Nong-nghiep','Thuy-san','Van-tai-bien','Xay-dung','Bao-hiem','Ban-le'].includes(sector)){ // no fast-price chart: check the two supply panes only
   await p.locator('#supply-tab-0').focus();await p.keyboard.press('ArrowRight');assert.equal(await p.locator('#supply-vietnam').isVisible(),true);
  }else if(sector!=='Bank'){
   await p.locator('#supply-tab-0').click();if(sector==='Dau-khi')await p.locator('#world-sub-0').click();await p.locator('#price-frequency').selectOption('week');const n=await p.locator('#chFastPrice svg').count();assert.equal(n,1);

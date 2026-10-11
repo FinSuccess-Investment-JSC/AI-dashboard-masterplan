@@ -2,11 +2,11 @@
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": "mcp__.*WiMCP__.*",
+        "matcher": "WiMCP",
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/wi_capture.py\""
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/scripts/wi_capture.py"
           }
         ]
       }

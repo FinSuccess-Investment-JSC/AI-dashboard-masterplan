@@ -323,3 +323,11 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Cung – cầu bằng chart:** phí gốc YoY so bồi thường YoY theo quý (`chNlSD`), toàn thị trường phí phi nhân thọ / nhân thọ / chi trả 9T (`chMarket`, cột 2025 suy ra từ % công bố), nghiệp vụ phi nhân thọ (`chNlLines`).
 - **So sánh tài chính:** thêm `insurance` vào `scripts/update_company_comparison.py` (7 mã chạy được, 0 lỗi).
 - **Test điều hướng:** đổi chờ `networkidle` → `load` trong `checkRoute` — với 12 ngành, 132 lượt chuyển trang thì thỉnh thoảng có trang giữ kết nối quá 30 giây làm test timeout ngẫu nhiên.
+
+## 26. Dashboard Bán lẻ & tiêu dùng (11/10/2026) · dự án chuyển sang OneDrive
+
+- **Phạm vi người dùng chốt:** 12 mã MWG, FRT, DGW, PET · PNJ, HAX, SVC · VNM, SAB, QNS, MSN, KDC; 6 tab chuẩn; sub-tab **Bán lẻ hiện đại & điện máy / Hàng lâu bền / Hàng tiêu dùng nhanh**. VNM, SAB, QNS, MSN **để ở cả hai** dashboard (Nông nghiệp đọc giá nguyên liệu, Bán lẻ đọc sức mua).
+- **Trang:** `Ban-le/index.html` (`data-sector="retail"`), renderer `assets/retail-dashboard.js` (`window.RETAIL_BRIEF`). Mã card `bl-*`, lịch `retail.*`.
+- **Wi (nhóm B):** `data/retail-wi-contract.json` → `scripts/build_retail_wi.py`. Macro tách hai lời gọi (`macro_retail_a`, `macro_retail_b`) vì 16 chỉ tiêu × 120 kỳ vượt trần kết quả; `build_macro` gộp nhiều response. Wi không có sữa bột WMP, lúa mạch, nhôm; PNJ không rõ phân ngành GICS trên Wi (113 trống, 206 lệch) nên P/E trang sức không vẽ.
+- **Cung – cầu bằng chart:** cấu phần sức mua 9T (`chRetailMix`), mạng lưới cửa hàng các chuỗi (`chStores`) — số từ evidence.
+- **Sự cố 11/10/2026:** iCloud "Optimize Mac Storage" đẩy 1.947 file của bản `~/Documents/FinSuccess/AI dashboard` lên mây (kể cả `.git/HEAD`), không tải lại được trong 30 phút. Dự án **clone lại vào `~/Library/CloudStorage/OneDrive-Personal/FinSuccess/AI dashboard`** (người dùng chọn, giống Stock dashboard). Phải tạo lại `.claude/settings.json` (hook `scripts/wi_capture.py`, không trong git) và gọi lại Wi vì `data/raw/wi/.inbox` không trong git. Khuyến nghị: đặt "Always Keep on This Device" cho thư mục OneDrive; bản Documents cũ không dùng nữa.
