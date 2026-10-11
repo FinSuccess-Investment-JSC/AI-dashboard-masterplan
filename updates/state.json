@@ -279,6 +279,51 @@
    "lastAttempt": "2026-10-10T10:47:46+07:00",
    "lastSuccess": "2026-10-10T10:47:46+07:00",
    "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+  },
+  "construction.wi.monthly": {
+   "lastAttempt": "2026-10-11T13:59:18+07:00",
+   "lastSuccess": "2026-10-11T13:59:18+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "construction.wi.weekly": {
+   "lastAttempt": "2026-10-11T13:59:18+07:00",
+   "lastSuccess": "2026-10-11T13:59:18+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "construction.wi.valuation": {
+   "lastAttempt": "2026-10-11T13:59:18+07:00",
+   "lastSuccess": "2026-10-11T13:59:18+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "construction.disbursement": {
+   "lastAttempt": "2026-10-11T13:59:18+07:00",
+   "lastSuccess": "2026-10-11T13:59:18+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "construction.policy": {
+   "lastAttempt": "2026-10-11T13:59:18+07:00",
+   "lastSuccess": "2026-10-11T13:59:18+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "construction.prices": {
+   "lastAttempt": "2026-10-11T13:59:18+07:00",
+   "lastSuccess": "2026-10-11T13:59:18+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "construction.companies": {
+   "lastAttempt": "2026-10-11T13:59:18+07:00",
+   "lastSuccess": "2026-10-11T13:59:18+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "construction.hot-topics": {
+   "lastAttempt": "2026-10-11T13:59:18+07:00",
+   "lastSuccess": "2026-10-11T13:59:18+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "construction.ai.cycle": {
+   "lastAttempt": "2026-10-11T13:59:19+07:00",
+   "lastSuccess": "2026-10-11T13:59:19+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   }
  },
  "watchers": {
@@ -2066,5 +2111,5 @@
    ]
   }
  ],
- "updatedAt": "2026-10-11T13:19:02+07:00"
+ "updatedAt": "2026-10-11T13:59:19+07:00"
 }

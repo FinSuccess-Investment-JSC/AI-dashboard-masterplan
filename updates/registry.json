@@ -75,6 +75,13 @@
       "url": "https://news.google.com/rss/search?q=%22B%E1%BB%99%20lu%E1%BA%ADt%20H%C3%A0ng%20h%E1%BA%A3i%22%20OR%20%22USTR%20port%20fee%22%20OR%20%22IMO%20Net-Zero%22&hl=vi&gl=VN&ceid=VN:vi",
       "match": "Hàng hải|USTR|Net-Zero|OFAC|phí hàng hải",
       "note": "ustr.gov, imo.org không mở trực tiếp; theo tin rồi mở hãng luật/P&I"
+    },
+    {
+      "id": "news.public-investment",
+      "kind": "rss",
+      "url": "https://news.google.com/rss/search?q=%22gi%E1%BA%A3i%20ng%C3%A2n%20v%E1%BB%91n%20%C4%91%E1%BA%A7u%20t%C6%B0%20c%C3%B4ng%22&hl=vi&gl=VN&ceid=VN:vi",
+      "match": "giải ngân|đầu tư công|chống bán phá giá|đường sắt tốc độ cao",
+      "note": "Bộ Tài chính báo cáo giải ngân đầu tháng; mof.gov.vn khó mở, theo tin rồi mở bài dẫn báo cáo"
     }
   ],
   "items": [
@@ -1578,7 +1585,7 @@
         "type": "none"
       },
       "where": {
-        "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html",
+        "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html, Xay-dung/index.html",
         "blocks": [
           "dau-khi-01",
           "dau-khi-03",
@@ -1606,7 +1613,10 @@
           "ts-90",
           "vt-01",
           "vt-04",
-          "vt-90"
+          "vt-90",
+          "xd-01",
+          "xd-04",
+          "xd-90"
         ]
       }
     },
@@ -3242,6 +3252,274 @@
         ]
       },
       "how": "Cập nhật vt-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/shipping-dashboard.js.",
+      "gates": [
+        "Số khớp chart",
+        "Không đụng ô analyst"
+      ]
+    },
+    {
+      "id": "construction.wi.monthly",
+      "tier": "B",
+      "title": "Wi: vốn NSNN thực hiện, sản lượng thép, xi măng, IIP, XK thép, clinker, tín dụng, GDP xây dựng",
+      "wiBlocks": [
+        "macro_construction"
+      ],
+      "wiContract": "data/construction-wi-contract.json",
+      "schedule": {
+        "type": "monthly",
+        "at": "07:00",
+        "days": [
+          3,
+          15
+        ]
+      },
+      "publication": "NSO ngày 3 hằng tháng (vốn NSNN, sản lượng); XK theo Hải quan; tín dụng NHNN chậm 1–2 tháng; GDP theo quý",
+      "source": {
+        "name": "WiData qua WiMCP",
+        "url": "https://widata.vn/"
+      },
+      "where": {
+        "page": "Xay-dung/index.html",
+        "file": "data/construction-wi-data.js",
+        "blocks": [
+          "xd-11",
+          "xd-12",
+          "xd-20",
+          "xd-21",
+          "xd-30",
+          "xd-31",
+          "xd-40",
+          "xd-41"
+        ]
+      },
+      "how": "Trong cửa sổ công bố, gọi lại lời gọi macro_construction trong data/construction-wi-contract.json; có tháng mới thì chạy python3 scripts/build_construction_wi.py, chưa có thì --done \"chưa có kỳ mới\". Kết quả vượt trần: build_realestate_wi.py --restore.",
+      "gates": [
+        "Không chép tay số"
+      ]
+    },
+    {
+      "id": "construction.wi.weekly",
+      "tier": "B",
+      "title": "Wi: thép CB300 Hòa Phát, HRC, quặng, than cốc, than Newcastle, thép phế, nhựa đường; xi măng, đá (Sở XD)",
+      "wiBlocks": [
+        "commodity_construction"
+      ],
+      "wiContract": "data/construction-wi-contract.json",
+      "schedule": {
+        "type": "weekly",
+        "day": "mon",
+        "at": "07:00"
+      },
+      "publication": "Giá ngày, hiển thị cuối tháng; xi măng, đá giá tháng",
+      "source": {
+        "name": "WiData qua WiMCP",
+        "url": "https://widata.vn/"
+      },
+      "where": {
+        "page": "Xay-dung/index.html",
+        "file": "data/construction-wi-data.js",
+        "blocks": [
+          "xd-10",
+          "xd-22"
+        ]
+      },
+      "how": "Gọi lại lời gọi commodity_construction với to_time = hôm nay, rồi chạy python3 scripts/build_construction_wi.py.",
+      "gates": [
+        "Không chép tay số"
+      ]
+    },
+    {
+      "id": "construction.wi.valuation",
+      "tier": "B",
+      "title": "Wi: định giá phân ngành thép, xi măng, đá, xây dựng (P/E, P/B, vốn hóa) theo phiên",
+      "wiBlocks": [
+        "sector_ratio_recent"
+      ],
+      "wiContract": "data/construction-wi-contract.json",
+      "schedule": {
+        "type": "daily",
+        "at": "07:00",
+        "days": "mon-fri"
+      },
+      "publication": "Theo phiên giao dịch",
+      "source": {
+        "name": "WiData qua WiMCP",
+        "url": "https://widata.vn/"
+      },
+      "where": {
+        "page": "Xay-dung/index.html",
+        "file": "data/construction-wi-data.js",
+        "blocks": [
+          "xd-03"
+        ]
+      },
+      "how": "Gọi lại lời gọi sector_ratio_recent trong data/construction-wi-contract.json với to_time = hôm nay, rồi chạy script build tương ứng.",
+      "gates": [
+        "Không chép tay số"
+      ]
+    },
+    {
+      "id": "construction.disbursement",
+      "tier": "C",
+      "title": "Giải ngân đầu tư công so kế hoạch (Bộ Tài chính); dự án trọng điểm",
+      "schedule": {
+        "type": "monthly",
+        "at": "07:00",
+        "days": [
+          1,
+          10
+        ]
+      },
+      "publication": "Bộ Tài chính báo cáo đầu tháng (vd 818/BC-BTC 02/10/2026)",
+      "source": {
+        "name": "Bộ Tài chính",
+        "url": "https://mof.gov.vn/"
+      },
+      "where": {
+        "page": "Xay-dung/index.html",
+        "blocks": [
+          "xd-02",
+          "xd-32",
+          "xd-42"
+        ]
+      },
+      "how": "Mở báo cáo/bài dẫn số giải ngân lũy kế mới; cập nhật bảng xd-42, chart chPubPlan (assets/construction-dashboard.js) và dự án xd-32; thêm dòng evidence.",
+      "gates": [
+        "Mở trang gốc",
+        "Ghi số báo cáo, ngày"
+      ],
+      "watch": [
+        "news.public-investment"
+      ]
+    },
+    {
+      "id": "construction.policy",
+      "tier": "C",
+      "title": "Luật đầu tư công, đấu thầu, cơ chế đường sắt; CBPG thép, Mục 232, EU; thuế XK clinker",
+      "schedule": {
+        "type": "watch",
+        "note": "Mốc: 12/2026 khởi công ĐSTĐC; hết 2026 thuế XK clinker 5%"
+      },
+      "publication": "Theo sự kiện",
+      "source": {
+        "name": "Bộ Công Thương – phòng vệ thương mại",
+        "url": "https://trav.gov.vn/"
+      },
+      "where": {
+        "page": "Xay-dung/index.html",
+        "blocks": [
+          "xd-13",
+          "xd-23",
+          "xd-50",
+          "xd-51"
+        ]
+      },
+      "how": "Mở văn bản/thông cáo gốc; cập nhật bảng và evidence.",
+      "gates": [
+        "Mở văn bản gốc",
+        "Ghi ngày hiệu lực"
+      ],
+      "watch": [
+        "news.public-investment"
+      ]
+    },
+    {
+      "id": "construction.prices",
+      "tier": "C",
+      "title": "Giá vật liệu tại công trình: thép, xi măng, đá, cát (phía Nam)",
+      "schedule": {
+        "type": "weekly",
+        "day": "mon",
+        "at": "07:00"
+      },
+      "publication": "Báo giá tuần; phụ lục giá Sở Xây dựng theo tháng",
+      "source": {
+        "name": "Báo Đấu thầu",
+        "url": "https://baodauthau.vn/"
+      },
+      "where": {
+        "page": "Xay-dung/index.html",
+        "blocks": [
+          "xd-62"
+        ]
+      },
+      "how": "Cập nhật bảng xd-62 với số mới có ngày, khu vực; thêm evidence.",
+      "gates": [
+        "Mở trang gốc",
+        "Ghi ngày, khu vực"
+      ]
+    },
+    {
+      "id": "construction.companies",
+      "tier": "C",
+      "status": "manual",
+      "title": "Doanh nghiệp xây dựng, VLXD: kế hoạch, kết quả, backlog",
+      "schedule": {
+        "type": "none"
+      },
+      "publication": "BCTC quý; chỉ cập nhật khi người dùng yêu cầu",
+      "source": {
+        "name": "BCTC công bố",
+        "url": "https://www.hsx.vn/"
+      },
+      "where": {
+        "page": "Xay-dung/index.html",
+        "blocks": [
+          "xd-60",
+          "xd-61"
+        ]
+      },
+      "how": "Khi người dùng nhắn: cập nhật bảng xd-60, xd-61 và evidence.",
+      "gates": [
+        "Link BCTC hoặc bài dẫn"
+      ]
+    },
+    {
+      "id": "construction.hot-topics",
+      "tier": "C",
+      "title": "Chủ đề nóng: đường sắt, HRC, dòng tiền nhà thầu, giá vật liệu",
+      "schedule": {
+        "type": "weekly",
+        "day": "mon",
+        "at": "07:00"
+      },
+      "publication": "Theo sự kiện",
+      "source": {
+        "name": "Báo Đầu tư",
+        "url": "https://baodautu.vn/"
+      },
+      "where": {
+        "page": "Xay-dung/index.html",
+        "blocks": [
+          "xd-t1",
+          "xd-t2",
+          "xd-t3",
+          "xd-t4"
+        ]
+      },
+      "how": "Thêm mốc mới có ngày và link.",
+      "gates": [
+        "Mỗi dòng có ngày + link"
+      ]
+    },
+    {
+      "id": "construction.ai.cycle",
+      "tier": "D",
+      "title": "Xây dựng · VLXD: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
+      "schedule": {
+        "type": "data",
+        "sources": [],
+        "minDays": 7,
+        "material": [],
+        "note": "Viết lại khi có số giải ngân tháng mới, giá thép/HRC đổi ≥5%, hoặc BCTC quý"
+      },
+      "where": {
+        "page": "Xay-dung/index.html",
+        "blocks": [
+          "xd-02"
+        ]
+      },
+      "how": "Cập nhật xd-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/construction-dashboard.js.",
       "gates": [
         "Số khớp chart",
         "Không đụng ô analyst"
