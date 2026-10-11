@@ -26,6 +26,7 @@ UNIVERSE={
  'shipping':[('PVT','hose','Tàu dầu & khí'),('VTO','hose','Tàu dầu & khí'),('VIP','hose','Tàu dầu & khí'),('PVP','hose','Tàu dầu & khí'),('GSP','hose','Tàu dầu & khí'),('VOS','hose','Hàng rời'),('VNA','upcom','Hàng rời'),('HAH','hose','Container')],
  'construction':[('HPG','hose','Thép'),('HSG','hose','Thép'),('NKG','hose','Thép'),('HT1','hose','Xi măng'),('BCC','hnx','Xi măng'),('VLB','upcom','Đá, VLXD'),('KSB','hose','Đá, VLXD'),('DHA','hose','Đá, VLXD'),('PLC','hnx','Đá, VLXD'),('VGC','hose','Đá, VLXD'),('CTD','hose','Xây dựng'),('HBC','upcom','Xây dựng'),('VCG','hose','Xây dựng'),('FCN','hose','Xây dựng'),('DPG','hose','Xây dựng'),('C4G','upcom','Hạ tầng'),('LCG','hose','Hạ tầng'),('HHV','hose','Hạ tầng'),('CII','hose','Hạ tầng'),('HUT','hnx','Hạ tầng')],
 
+ 'insurance':[('BVH','hose','Tập đoàn'),('PVI','hnx','Phi nhân thọ'),('BMI','hose','Phi nhân thọ'),('MIG','hose','Phi nhân thọ'),('PTI','hnx','Phi nhân thọ'),('BIC','hose','Phi nhân thọ'),('VNR','hnx','Tái bảo hiểm')],
  'bank':[(s,'hose',g) for s,g in [('VCB','Quốc doanh'),('CTG','Quốc doanh'),('BID','Quốc doanh'),('TCB','Tư nhân'),('VPB','Tư nhân'),('MBB','Tư nhân'),('ACB','Tư nhân'),('HDB','Tư nhân'),('TPB','Tư nhân'),('VIB','Tư nhân'),('SHB','Tư nhân')]]}
 PAGES={'income_year':'financials/income-statement/','balance_year':'financials/balance-sheet/','income_quarter':'financials/income-statement/?p=quarterly','balance_quarter':'financials/balance-sheet/?p=quarterly','valuation':'financials/ratios/?p=quarterly'}
 

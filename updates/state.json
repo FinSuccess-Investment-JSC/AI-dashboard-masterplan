@@ -324,6 +324,51 @@
    "lastAttempt": "2026-10-11T13:59:19+07:00",
    "lastSuccess": "2026-10-11T13:59:19+07:00",
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "insurance.wi.quarterly": {
+   "lastAttempt": "2026-10-11T15:38:36+07:00",
+   "lastSuccess": "2026-10-11T15:38:36+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "insurance.wi.monthly": {
+   "lastAttempt": "2026-10-11T15:38:36+07:00",
+   "lastSuccess": "2026-10-11T15:38:36+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "insurance.wi.weekly": {
+   "lastAttempt": "2026-10-11T15:38:36+07:00",
+   "lastSuccess": "2026-10-11T15:38:36+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "insurance.wi.valuation": {
+   "lastAttempt": "2026-10-11T15:38:36+07:00",
+   "lastSuccess": "2026-10-11T15:38:36+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "insurance.market": {
+   "lastAttempt": "2026-10-11T15:38:37+07:00",
+   "lastSuccess": "2026-10-11T15:38:37+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "insurance.policy": {
+   "lastAttempt": "2026-10-11T15:38:37+07:00",
+   "lastSuccess": "2026-10-11T15:38:37+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "insurance.companies": {
+   "lastAttempt": "2026-10-11T15:38:37+07:00",
+   "lastSuccess": "2026-10-11T15:38:37+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "insurance.hot-topics": {
+   "lastAttempt": "2026-10-11T15:38:38+07:00",
+   "lastSuccess": "2026-10-11T15:38:38+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+  },
+  "insurance.ai.cycle": {
+   "lastAttempt": "2026-10-11T15:38:38+07:00",
+   "lastSuccess": "2026-10-11T15:38:38+07:00",
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   }
  },
  "watchers": {
@@ -2111,5 +2156,5 @@
    ]
   }
  ],
- "updatedAt": "2026-10-11T13:59:19+07:00"
+ "updatedAt": "2026-10-11T15:38:38+07:00"
 }

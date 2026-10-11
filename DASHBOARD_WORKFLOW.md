@@ -314,3 +314,12 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Wi (nhóm B):** `data/construction-wi-contract.json` → `scripts/build_construction_wi.py`. Vốn NSNN 76847 (cùng 76848 TƯ, 76859 ĐP, 233852 Bộ XD) là **số trong tháng, không phải lũy kế** — renderer tự cộng dồn. Không vẽ GDP xây dựng giá so sánh 80109: 2026 nhảy +60% (NSO công bố GTTT 9T chỉ +12,22%), nhiều khả năng đổi năm gốc; dùng giá hiện hành 79913. Xuất khẩu sắt thép 87985 nhỏ hơn nhiều số Hải quan — chỉ đọc xu hướng.
 - **Cung – cầu bằng chart** (theo yêu cầu 10/10): xi măng công suất so tiêu thụ + xuất khẩu (`chCementSD`), kế hoạch so giải ngân (`chPubPlan`) — số từ evidence, vẽ trong renderer.
 - **Bằng chứng:** `data/construction/evidence.json` 232 dòng. Lượt nghiên cứu đầu bị dừng vì hết hạn mức phiên khi chạy 7 agent song song; chạy lại 3 agent hẹp tái dùng trang đã tải (`scratchpad/dl-xd*`, URL lấy từ canonical/og:url). Giữ ≤3 agent nghiên cứu đồng thời.
+
+## 25. Dashboard Bảo hiểm (11/10/2026)
+
+- **Phạm vi người dùng chốt:** 7 mã BVH, PVI, BMI, MIG, PTI, BIC, VNR; **không có tab riêng** (6 tab chuẩn). Sub-tab Bức tranh ngành: Phi nhân thọ / Nhân thọ / Đầu tư & lãi suất.
+- **Trang:** `Bao-hiem/index.html` (`data-sector="insurance"`), renderer `assets/insurance-dashboard.js` (`window.INSURANCE_BRIEF`). Mã card `bh-*`, lịch `insurance.*`.
+- **Wi (nhóm B):** `data/insurance-wi-contract.json` → `scripts/build_insurance_wi.py` (thêm bộ dựng `build_fs` cho `sector_fs_ins` và `build_gbond` cho lợi suất TPCP). Wi không có chuỗi vĩ mô doanh thu phí; dùng **BCTC tổng hợp ngành theo GICS** (151 nhân thọ & sức khỏe, 285 phi nhân thọ, 154 tái bảo hiểm): phí gốc is01_1, phí thuần is03, bồi thường is15 (âm), LN tài chính is25. Phân ngành 151 trên sàn **chỉ có BVH** (hợp nhất cả Bảo hiểm Bảo Việt) — ghi rõ trên chart. Tỷ lệ bồi thường tự tính = is15/is03, không phải tỷ lệ chuẩn.
+- **Cung – cầu bằng chart:** phí gốc YoY so bồi thường YoY theo quý (`chNlSD`), toàn thị trường phí phi nhân thọ / nhân thọ / chi trả 9T (`chMarket`, cột 2025 suy ra từ % công bố), nghiệp vụ phi nhân thọ (`chNlLines`).
+- **So sánh tài chính:** thêm `insurance` vào `scripts/update_company_comparison.py` (7 mã chạy được, 0 lỗi).
+- **Test điều hướng:** đổi chờ `networkidle` → `load` trong `checkRoute` — với 12 ngành, 132 lượt chuyển trang thì thỉnh thoảng có trang giữ kết nối quá 30 giây làm test timeout ngẫu nhiên.

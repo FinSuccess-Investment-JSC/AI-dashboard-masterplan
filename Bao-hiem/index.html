@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ngành Bảo hiểm Việt Nam · FinSuccess Research</title>
+<style>
+:root{
+  color-scheme: light;
+  /* ---- token lấy từ website công ty https://fisc.vn ---- */
+  --navy:#11255a; --navy2:#19316f; --navy3:#223567;
+  --accent:#27af95; --accent-bright:#2fd0b2; --accent-soft:#e6f5f1;
+  --tint:#dfe6f7; --tint-soft:#f5f7fc;
+  --bg:#ffffff; --page:#f5f7fc; --card:#ffffff;
+  --ink:#0d0d0d; --ink2:#3d4653; --muted:#6b7686;
+  --line:#dfe6f7; --hair:#eaeff9;
+  --brand:#11255a; --brand2:#19316f; --brand-deep:#11255a; --gold:#b8801f; --gold-soft:#fdf3e0;
+  --soft:#f5f7fc; --warn-bg:#fdf3e0; --danger-bg:#fbeae7;
+  --chart-surface:#ffffff; --grid:#e8edf7; --axis:#c6cfe0;
+  --s1:#1f4e9c; --s2:#d1583f; --s3:#27af95; --s4:#d99000; --s5:#a45bb8; --s6:#2f8f4e; --s7:#4b5bd4; --s8:#b8443a;
+  --good:#2f8f4e; --warning:#d99000; --serious:#dd7f4e; --critical:#c0392b;
+  --shadow:0 1px 2px rgba(17,37,90,.04), 0 6px 18px rgba(17,37,90,.05);
+  --radius:8px;
+}
+body{font-family:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,.hero h1,.intro h1{font-family:"Newsreader","Iowan Old Style",Georgia,serif;font-weight:600;letter-spacing:-.01em}
+h1 em,h2 em,.accent{font-style:italic;color:var(--accent);font-weight:500}
+.hero h1 em{color:var(--accent-bright)}
+table,.kpi .value,.value,td,th{font-family:"Inter",ui-sans-serif,system-ui,sans-serif;font-variant-numeric:tabular-nums}
+
+/* ---- thanh nhận diện công ty ---- */
+.fiscbar{background:linear-gradient(103deg,var(--navy) 0%,var(--navy3) 58%,#2c4a86 100%);color:#fff}
+.fiscbar-inner{max-width:1460px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.fiscbar img{height:34px;width:auto;display:block}
+.fiscbar .fiscbar-doc{font-size:12.5px;font-weight:600;color:#c9d6f0;letter-spacing:.2px}
+.fiscbar .fiscbar-doc b{color:#fff;font-weight:700}
+.fiscbar .fiscbar-nav{display:flex;gap:16px;flex-wrap:wrap}
+.fiscbar .fiscbar-nav a{color:#c9d6f0;text-decoration:none;font-size:12.5px;font-weight:600}
+.fiscbar .fiscbar-nav a:hover{color:var(--accent-bright)}
+
+/* ---- nguồn dạng link ---- */
+.source-note a,.conf-note a,.src-link{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(39,175,149,.35);font-weight:600}
+.source-note a:hover,.conf-note a:hover,.src-link:hover{color:var(--navy2);border-bottom-color:var(--navy2)}
+.source-note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6}
+.srcrow{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:6px}
+.srcrow a{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 9px;background:var(--tint-soft)}
+.srcrow a:after{content:"↗";font-size:9px;opacity:.7}
+.srcrow a:hover{border-color:var(--accent);background:var(--accent-soft)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important; scroll-behavior:auto!important} }
+body{margin:0;background:var(--page);color:var(--ink);font-family:ui-sans-serif,"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:proportional-nums}
+table{font-variant-numeric:tabular-nums}
+header{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--bg) 90%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{max-width:1460px;margin:auto;padding:12px 22px;display:flex;gap:16px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:.3px;font-size:13px;color:var(--ink)}
+.navlinks{display:flex;gap:14px;flex-wrap:wrap}
+.navlinks a{text-decoration:none;color:var(--muted);font-size:12.5px;font-weight:700}
+.navlinks a:hover{color:var(--brand)}
+.container{max-width:1460px;margin:auto;padding:22px}
+.hero{padding:26px 28px;border-radius:20px;background:linear-gradient(120deg,var(--brand-deep),var(--brand2));color:#fff;box-shadow:var(--shadow)}
+.hero h1{margin:0 0 8px;font-size:30px;line-height:1.15;text-wrap:balance}
+.hero p{margin:0;color:#dbeadb;max-width:920px;font-size:14.5px;line-height:1.55}
+.tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tag{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);padding:6px 10px;border-radius:999px;font-size:11.5px;font-weight:700}
+.insight{margin-top:16px;padding:13px 15px;background:rgba(255,255,255,.1);border-left:4px solid var(--gold);border-radius:10px;font-size:13.5px;line-height:1.6}
+.insight b{color:#fff}
+.grid{display:grid;gap:14px}
+.power-seasonal-grid{grid-template-columns:minmax(0,1fr);margin-top:14px}
+.power-seasonal-status{font-size:12px;color:var(--ink2);margin:0 0 2px}
+.kpis{grid-template-columns:repeat(6,minmax(150px,1fr));margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+.kpi .label{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.kpi .value{font-size:23px;font-weight:800;margin:6px 0 2px}
+.kpi .delta{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:700;padding:2px 7px;border-radius:999px;margin-bottom:4px}
+.kpi .delta.d-good{color:var(--good);background:color-mix(in srgb, var(--good) 14%, transparent)}
+.kpi .delta.d-warn{color:#8a6a10;background:var(--warn-bg)}
+:root[data-theme="dark"] .kpi .delta.d-warn,@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .kpi .delta.d-warn{color:var(--warning)}}
+.kpi .delta.d-bad{color:var(--critical);background:color-mix(in srgb, var(--critical) 12%, transparent)}
+.kpi .sub{font-size:11px;color:var(--muted);line-height:1.4}
+.kpi .spark{margin-top:6px;display:block}
+.section{margin-top:26px}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:0 0 12px;flex-wrap:wrap}
+.sectionhead h2{margin:0;font-size:20px}
+.sectionhead p{margin:2px 0 0;color:var(--muted);font-size:12.5px;max-width:640px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:var(--shadow)}
+.two{grid-template-columns:1.5fr 1fr}
+.three{grid-template-columns:repeat(3,1fr)}
+.four{grid-template-columns:repeat(4,1fr)}
+.chart-title{font-size:13.5px;font-weight:750;margin:0 0 2px}
+.chart-sub{font-size:11.5px;color:var(--muted);margin:0 0 8px}
+.chartsvg{display:block;width:100%;height:auto;overflow:visible}
+.gridline{stroke:var(--grid);stroke-width:1}
+.axisline{stroke:var(--axis);stroke-width:1}
+.axislabel{font-size:9px;fill:var(--muted)}
+.catlabel{font-size:9px;fill:var(--muted)}
+.endlabel{font-size:10px;fill:var(--ink2);font-weight:700}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 4px;font-size:11.5px;color:var(--ink2)}
+.legend .li{display:inline-flex;align-items:center;gap:6px}
+.legend .sw{width:12px;height:3px;border-radius:2px;display:inline-block}
+.legend .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.source-note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+.conf-note{font-size:11px;color:var(--muted);margin-top:2px;font-style:italic}
+details.dtable{margin-top:8px}
+details.dtable summary{cursor:pointer;font-size:11.5px;font-weight:700;color:var(--brand);list-style:none;display:inline-flex;align-items:center;gap:4px}
+details.dtable summary::-webkit-details-marker{display:none}
+details.dtable summary:before{content:"▸";font-size:10px}
+details.dtable[open] summary:before{content:"▾"}
+.dtable table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:8px}
+.dtable th,.dtable td{padding:6px 7px;border-bottom:1px solid var(--hair);text-align:left}
+.dtable th{color:var(--muted);font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.3px}
+.chtip{position:fixed;z-index:100;pointer-events:none;background:var(--ink);color:var(--bg);border-radius:10px;padding:8px 10px;font-size:11.5px;box-shadow:0 8px 20px rgba(0,0,0,.25);display:none;max-width:240px}
+.chtip-title{font-weight:800;margin-bottom:4px}
+.chtip-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:1px 0}
+.chtip-key{display:flex;align-items:center;gap:5px;opacity:.85}
+.chtip-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+.chtip-val{font-weight:800}
+.hitband{cursor:crosshair}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tabbtn{border:1px solid var(--line);background:var(--card);color:var(--brand);padding:7px 12px;border-radius:999px;font-weight:750;cursor:pointer;font-size:12.5px}
+.tabbtn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.tabpane{display:none} .tabpane.active{display:block}
+.tabpane p{font-size:13px;line-height:1.6;margin:0 0 6px}
+.timeline{position:relative;margin:8px 0 0;padding-left:24px}
+.timeline:before{content:"";position:absolute;left:7px;top:3px;bottom:3px;width:2px;background:var(--line)}
+.event{position:relative;margin:0 0 16px}
+.event:before{content:"";position:absolute;left:-21px;top:5px;width:10px;height:10px;background:var(--gold);border-radius:50%;box-shadow:0 0 0 3px var(--gold-soft)}
+.event b{display:block;font-size:13.5px} .event small{color:var(--muted);font-weight:700}
+.event p{margin:3px 0 0;font-size:12.5px;color:var(--ink2);line-height:1.5}
+.driver{padding:14px;border-radius:14px;background:var(--soft);border:1px solid var(--line)}
+.driver h3{margin:0 0 6px;font-size:14px} .driver p{margin:0;color:var(--ink2);font-size:12.5px;line-height:1.5}
+.scenario{border-radius:14px;padding:15px;border:1px solid var(--line);background:var(--card);cursor:pointer}
+.scenario:hover{box-shadow:var(--shadow)}
+.scenario.active{outline:2px solid var(--brand)}
+.scenario .range{font-size:22px;font-weight:800;margin:5px 0}
+.badge{display:inline-flex;padding:4px 9px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.2px}
+.base{background:var(--soft);color:var(--brand)} .bull{background:var(--warn-bg);color:#7a5b13} .bear{background:var(--danger-bg);color:#8a3d2e}
+.scenarioDetail{margin-top:14px;padding:14px 15px;border-radius:12px;background:var(--soft);border:1px dashed var(--line);color:var(--ink2);font-size:13px;line-height:1.6}
+.tablewrap{overflow:auto}
+table.plain{width:100%;border-collapse:collapse;font-size:12.5px}
+.plain th,.plain td{padding:9px 8px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}
+.plain th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.3px}
+.note{font-size:11.5px;color:var(--muted);line-height:1.55}
+.flagbox{background:var(--warn-bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:12.5px;line-height:1.6;color:var(--ink2);margin-top:10px}
+.flagbox b{color:var(--ink)}
+.footer{padding:26px 0 8px;color:var(--muted);font-size:11.5px}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--soft);color:var(--brand)}
+a{color:var(--brand)}
+@media(max-width:1150px){.kpis{grid-template-columns:repeat(3,1fr)}.two,.three,.four{grid-template-columns:1fr}}
+@media(max-width:700px){.container{padding:14px}.hero h1{font-size:24px}.kpis{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
+.majortabs{position:sticky;top:47px;z-index:25;background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.majortabrow{max-width:1460px;margin:auto;padding:10px 22px;display:flex;gap:8px;flex-wrap:wrap}
+.majortabbtn{border:1px solid var(--line);background:var(--card);color:var(--ink2);padding:8px 14px;border-radius:999px;font-weight:750;cursor:pointer;font-size:12.5px;white-space:nowrap}
+.majortabbtn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.majorpane{display:none}
+.majorpane.active{display:block}
+.subhead{font-size:15px;margin:22px 0 4px}
+.subhead:first-of-type{margin-top:4px}
+.subsub{font-size:12px;color:var(--muted);margin:0 0 12px;max-width:700px}
+.catriskgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.catbox,.riskbox{border-radius:14px;padding:14px 16px;border:1px solid var(--line)}
+.catbox{background:color-mix(in srgb, var(--good) 8%, var(--card))}
+.riskbox{background:color-mix(in srgb, var(--critical) 7%, var(--card))}
+.catbox h3,.riskbox h3{margin:0 0 8px;font-size:14px}
+.catbox ul,.riskbox ul{margin:0;padding-left:18px;font-size:12.5px;line-height:1.6;color:var(--ink2)}
+.catbox li,.riskbox li{margin-bottom:6px}
+.profilegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.profilecard{border-radius:14px;padding:14px 16px;border:1px solid var(--line);background:var(--card)}
+.profilecard h3{margin:0;font-size:15px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.profilecard .exch{font-size:10px;font-weight:800;color:var(--brand);background:var(--soft);padding:2px 8px;border-radius:999px}
+.profilecard p{margin:7px 0 0;font-size:12.5px;color:var(--ink2);line-height:1.55}
+.profilecard .stats{display:flex;gap:16px;margin-top:9px;flex-wrap:wrap}
+.profilecard .stat{font-size:11px;color:var(--muted)}
+.profilecard .stat b{display:block;font-size:15px;color:var(--ink);font-weight:800}
+@media(max-width:1150px){.catriskgrid,.profilegrid{grid-template-columns:1fr}}
+@media(max-width:700px){.majortabrow{padding:8px 14px}}
+
+/* ---- ghi de theo nhan dien FiSC ---- */
+.majortabs{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);border-top:0}
+.majortabbtn{font-weight:650}
+.majortabbtn.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.card{border-radius:var(--radius);border-color:var(--line)}
+.kpi{border-radius:var(--radius)}
+.hero{border-radius:18px;background:linear-gradient(103deg,var(--navy) 0%,var(--navy3) 58%,#2c4a86 100%)}
+.hero p{color:#d6e4ef}
+.insight{border-left-color:var(--accent-bright);background:rgba(255,255,255,.09)}
+.tag{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.22)}
+.sectionhead h2{font-size:21px}
+.subhead{font-family:"Newsreader","Iowan Old Style",Georgia,serif;font-weight:600;font-size:17px;color:var(--navy2)}
+details.dtable summary{color:var(--accent)}
+.scenario.active{outline-color:var(--accent)}
+.note{background:var(--tint-soft);border-left:3px solid var(--accent);padding:10px 12px;border-radius:10px;font-size:12.5px;line-height:1.6;color:var(--ink2)}
+code{background:var(--tint-soft);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:11px}
+.footer{border-top:1px solid var(--line);margin-top:26px}
+ul.list{margin:0;padding-left:18px;font-size:12.5px;line-height:1.65;color:var(--ink2)}
+ul.list li{margin-bottom:7px}
+.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+.scenario-detail{margin-top:14px;padding:14px 15px;border-radius:12px;background:var(--tint-soft);border:1px solid var(--line);color:var(--ink2);font-size:13px;line-height:1.65}
+.scenario-detail b{color:var(--ink)}
+@media(max-width:900px){.scenarios{grid-template-columns:1fr}}
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}.fiscbar-inner{padding:12px 14px}}
+
+.hero a,.tag a,.insight a,.fiscbar a{color:var(--accent-bright);border-bottom-color:rgba(47,208,178,.45)}
+.hero a:hover,.tag a:hover,.insight a:hover{color:#fff;border-bottom-color:#fff}
+
+/* ---- polish v1.1: research-dashboard readability ---- */
+body{font-size:14px;line-height:1.45}
+.container{padding-top:18px;padding-bottom:18px}
+.hero{border-radius:12px;padding:22px 24px}
+.hero h1{font-size:32px;line-height:1.08}
+.hero p{font-size:13.5px;max-width:980px}
+.insight{border-radius:8px;font-size:13px;line-height:1.55;max-width:1240px}
+.kpis{gap:10px;margin:14px 0}
+.kpi{padding:12px;min-height:128px}
+.kpi .label{font-size:10px;letter-spacing:.35px}
+.kpi .value{font-size:24px;line-height:1;margin:7px 0 4px}
+.kpi .sub{font-size:10.5px}
+.section{margin-top:22px}
+.sectionhead{align-items:flex-start;margin-bottom:10px}
+.sectionhead h2{font-size:22px;line-height:1.1}
+.sectionhead p{font-size:12.5px;max-width:880px;line-height:1.55}
+.card,.kpi,.driver,.scenario,.scenario-detail,.note,.flagbox,.profilecard,.catbox,.riskbox{border-radius:8px}
+.card{padding:14px}
+.chart-title{font-size:14px;line-height:1.3;color:var(--navy);font-weight:800}
+.chart-sub{font-size:11px;line-height:1.4;margin-bottom:6px}
+.card [id^="ch"]{min-height:230px}
+.chartsvg{margin-top:2px}
+.axislabel,.catlabel{font-size:9.5px}
+.endlabel{font-size:10.5px}
+.legend{font-size:11px;gap:10px 14px}
+.source-note,.conf-note{font-size:11px;line-height:1.45}
+.conf-note{padding-top:4px}
+.tablewrap{border:1px solid var(--hair);border-radius:8px;background:var(--card);overflow:auto}
+.tablewrap table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;line-height:1.45}
+.tablewrap th,.tablewrap td{padding:8px 9px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}
+.tablewrap th{position:sticky;top:0;z-index:1;background:var(--tint-soft);color:var(--navy2);font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.25px}
+.tablewrap tbody tr:nth-child(even){background:color-mix(in srgb, var(--tint-soft) 42%, transparent)}
+.tablewrap tbody tr:hover{background:var(--accent-soft)}
+.tablewrap tbody tr:last-child td{border-bottom:0}
+.tablewrap td:first-child{font-weight:650;color:var(--ink)}
+.tablewrap td b{color:var(--navy)}
+.focus-card{border-left:4px solid var(--accent);box-shadow:0 1px 2px rgba(17,37,90,.05),0 10px 28px rgba(39,175,149,.08)}
+.focus-card .chart-title,.focus-card h3{color:var(--navy)}
+.confidence-table tbody tr:nth-child(1) td:nth-child(2){color:var(--good);font-weight:800}
+.confidence-table tbody tr:nth-child(2) td:nth-child(2),.confidence-table tbody tr:nth-child(3) td:nth-child(2),.confidence-table tbody tr:nth-child(4) td:nth-child(2){color:var(--warning);font-weight:800}
+.confidence-table tbody tr:nth-child(5) td:nth-child(2){color:var(--critical);font-weight:800}
+.global-balance-table td:nth-child(3),.watch-table td:nth-child(3){font-weight:600;color:var(--ink)}
+.global-balance-table td:nth-child(4),.watch-table td:nth-child(4){background:color-mix(in srgb, var(--accent-soft) 45%, transparent)}
+.viz-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;margin:12px 0 10px}
+.viz-block{min-width:0;border-top:1px solid var(--hair);padding-top:10px}
+.viz-block [id^="ch"]{min-height:220px}
+.signal-line{margin:9px 0 0;padding:10px 12px;border-left:3px solid var(--accent);border-radius:8px;background:var(--tint-soft);font-size:12.5px;line-height:1.55;color:var(--ink2)}
+.signal-line b{color:var(--navy)}
+.data-gap{margin-top:8px;padding:10px 12px;border-left:4px solid var(--critical);border-radius:8px;background:var(--danger-bg);color:#7c241b;font-size:12px;line-height:1.5}
+.data-gap b{color:#6d1d14}
+.gap-row td{background:var(--danger-bg)!important;color:#7c241b}
+.gap-row td b{color:#6d1d14}
+.mini-matrix{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}
+.mini-cell{border:1px solid var(--hair);border-radius:8px;padding:10px;background:var(--tint-soft)}
+.mini-cell .k{font-size:10px;text-transform:uppercase;font-weight:800;color:var(--muted);letter-spacing:.25px}
+.mini-cell .v{font-size:18px;font-weight:850;color:var(--navy);margin-top:4px}
+.mini-cell .s{font-size:11px;color:var(--ink2);line-height:1.35;margin-top:4px}
+.catalyst-map{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.factor-card{border:1px solid var(--line);border-radius:8px;padding:12px;background:var(--card)}
+.factor-card.good{border-left:4px solid var(--good)}
+.factor-card.bad{border-left:4px solid var(--critical)}
+.factor-card h3{margin:0 0 8px;font-size:13px;color:var(--navy)}
+.factor-card .metric{font-size:20px;font-weight:850;color:var(--ink);line-height:1}
+.factor-card .label2{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4}
+.factor-card .impact{margin-top:8px;font-size:12px;color:var(--ink2);line-height:1.45}
+.law-cta{display:block;margin:0 0 12px;padding:13px 14px;border:1px solid color-mix(in srgb, var(--accent) 55%, var(--line));border-left:5px solid var(--accent);border-radius:8px;background:linear-gradient(90deg, color-mix(in srgb, var(--accent-soft) 72%, #fff), #fff);text-decoration:none;color:var(--ink)}
+.law-cta .eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.28px;font-weight:850;color:var(--accent)}
+.law-cta .title{margin-top:3px;font-size:17px;font-weight:850;color:var(--navy)}
+.law-cta .desc{margin-top:4px;font-size:12px;line-height:1.45;color:var(--ink2)}
+.srcrow{gap:5px 8px}
+.srcrow a{font-size:10.5px;border-radius:999px;padding:3px 8px}
+.subhead{margin-top:20px;margin-bottom:8px}
+.scenarios{gap:10px}
+.scenario{padding:13px}
+.scenario .range{font-size:20px;line-height:1.15}
+@media(max-width:700px){
+  .hero{padding:18px}
+  .hero h1{font-size:25px}
+  .insight{font-size:12.5px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .tablewrap th,.tablewrap td{padding:7px 8px}
+  .viz-grid{grid-template-columns:1fr}
+  .mini-matrix,.catalyst-map{grid-template-columns:1fr}
+}
+
+</style>
+<link rel="stylesheet" href="../assets/dashboard-ui.css?v=123c08b8ffcd">
+<script src="../assets/chart-types.js?v=5b81f0f266ee"></script>
+<script src="../data/daily-data.js?v=014c3ea66f41" defer></script>
+<script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
+<script src="../assets/sector-runtime.js?v=9267bc5aeb1b" defer></script>
+<script src="../assets/sector-content.js?v=0c9736ea4e68" defer></script>
+<script src="../assets/sector-layout.js?v=16ce1255063a" defer></script>
+<script src="../data/insurance-wi-data.js?v=9ee1eabf77f0" defer></script>
+<script src="../assets/insurance-dashboard.js?v=3c4d33e83e45" defer></script>
+<script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
+<script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
+<script src="../assets/catalyst-board.js?v=aa769f61f419" defer></script>
+<script src="../data/company-valuation.js?v=678e26cbb6ac" defer></script>
+<script src="../data/company-comparison.js?v=3dee8a8cbd19" defer></script>
+<script src="../assets/financial-comparison.js?v=c2d94f7d0b29" defer></script>
+<script src="../assets/research-layout.js?v=6432a257643f" defer></script>
+<script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
+<script src="../assets/research-editorial.js?v=4f84b5281916" defer></script>
+<script src="../assets/pane-subtabs.js?v=2b98a7b3d600" defer></script>
+<script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
+<script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
+<link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
+<script src="../assets/site-navigation.js?v=8f7da8c35e05" data-release="20261011-insurance-r1"></script>
+<link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
+<link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
+<link rel="stylesheet" href="../assets/fin-success-theme.css?v=ae5d52d8722e">
+<style>
+/* Catalyst dạng "biến số đang thay đổi": chữ dài, không ép một dòng */
+body[data-sector="insurance"] .cr-score-table{table-layout:fixed;width:100%}
+body[data-sector="insurance"] .cr-score-table td,body[data-sector="insurance"] .cr-score-table th{white-space:normal;text-align:left;vertical-align:top;font-size:12.5px;line-height:1.5}
+body[data-sector="insurance"] .cr-score-table th:nth-child(1){width:22%}
+body[data-sector="insurance"] .cr-score-table th:nth-child(2){width:32%}
+body[data-sector="insurance"] .cr-score-table th:nth-child(3){width:22%}
+body[data-sector="insurance"] .cr-score-table th:nth-child(4){width:9%}
+body[data-sector="insurance"] .cr-score-table th:nth-child(5){width:15%}
+@media (max-width:700px){body[data-sector="insurance"] .cr-score-table{table-layout:auto;min-width:640px}}
+/* Catalyst dạng thẻ */
+body[data-sector="insurance"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2,#4a5568)}
+.tx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.tx-tile{border:1px solid var(--line,#dfe7ef);border-radius:12px;padding:12px 14px;background:var(--card,#fff);border-top:3px solid #9aa5b1;display:flex;flex-direction:column;gap:6px}
+.tx-tile[data-state="good"]{border-top-color:#27af95}.tx-tile[data-state="risk"]{border-top-color:#d1583f}.tx-tile[data-state="watch"]{border-top-color:#c29100}
+.tx-top{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700}
+.tx-dot{width:9px;height:9px;border-radius:50%;background:#9aa5b1}
+.tx-tile[data-state="good"] .tx-dot{background:#27af95}.tx-tile[data-state="risk"] .tx-dot{background:#d1583f}.tx-tile[data-state="watch"] .tx-dot{background:#c29100}
+.tx-tile[data-state="good"] .tx-chip{color:#1d8a76}.tx-tile[data-state="risk"] .tx-chip{color:#b8412c}.tx-tile[data-state="watch"] .tx-chip{color:#8a6a00}
+.tx-tile h5{margin:0;font-size:13.5px;line-height:1.35;color:var(--navy,#11255a)}
+.tx-big{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.tx-big strong{font-size:26px;line-height:1.1;color:var(--navy,#11255a)}.tx-big small{font-size:11.5px;color:#5b6778}
+.tx-ev{margin:0;font-size:12.5px;line-height:1.5;color:#3d4a5c}
+.tx-who{display:flex;gap:6px;flex-wrap:wrap}.tx-tag{font-size:11px;font-weight:650;padding:2px 8px;border-radius:999px;background:#eef2f6;color:#3d4a5c}
+.tx-tag[data-dir="up"]{background:#e3f5f0;color:#1d8a76}.tx-tag[data-dir="down"]{background:#fbe9e5;color:#b8412c}
+.tx-cond{margin:0;margin-top:auto;padding-top:6px;border-top:1px dashed #dfe7ef;font-size:11.5px;line-height:1.45;color:#5b6778}
+.tx-link{font-size:11.5px;font-weight:650}
+.tx-tablefold{margin-top:14px}.tx-tablefold>summary{cursor:pointer;font-size:12px;font-weight:650;color:#355978}
+</style>
+</head>
+<body data-sector="insurance">
+<nav data-site-navigation="insurance" aria-label="Điều hướng dashboard ngành"></nav>
+<div class="fiscbar"><span>Dashboard ngành · Bảo hiểm · khung nghiên cứu gốc 11/10/2026</span></div>
+
+<nav class="majortabs">
+  <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst / Risk</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
+</nav>
+
+<div class="container">
+  <section class="hero">
+    <h1>Bức tranh ngành <em>bảo hiểm</em> Việt Nam</h1>
+    <p>Phi nhân thọ thường có lãi bảo hiểm mỏng, lợi nhuận đến chủ yếu từ đầu tư quỹ dự phòng. Nhân thọ giữ quỹ dài hạn lớn và chưa thoát khủng hoảng kênh ngân hàng.</p>
+    <div class="tagrow">
+      <span class="tag">Bản nghiên cứu: 11/10/2026</span>
+      <span class="tag">Phí, bồi thường doanh nghiệp niêm yết: <a href="https://widata.vn/" target="_blank" rel="noopener">BCTC tổng hợp ngành qua MCP Wi</a></span>
+      <span class="tag">Toàn thị trường: <a href="https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html" target="_blank" rel="noopener">Bộ Tài chính qua Tạp chí KTTC</a></span>
+    </div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> đang tải số Wi.</div>
+  </section>
+  <div class="majorpane active" data-tab="mt1" id="pane-mt1">
+    <div class="sectionhead"><div><h2>1. Tổng quan ngành bảo hiểm</h2><p>7 doanh nghiệp niêm yết: Bảo Việt (BVH, gồm nhân thọ), phi nhân thọ PVI, BMI, MIG, PTI, BIC và tái bảo hiểm VNR.</p></div></div>
+    <section class="grid kpis">
+      <div class="kpi"><div class="label">Phí gốc phi nhân thọ niêm yết</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-nlprem"></div></div>
+      <div class="kpi"><div class="label">Tỷ lệ bồi thường PNT</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-loss"></div></div>
+      <div class="kpi"><div class="label">Phí gốc Bảo Việt</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-lifeprem"></div></div>
+      <div class="kpi"><div class="label">TPCP 10 năm</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-yield"></div></div>
+      <div class="kpi"><div class="label">Lãi huy động 12 tháng</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-dep"></div></div>
+      <div class="kpi"><div class="label">P/B phi nhân thọ</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-pb"></div></div>
+    </section>
+    <div class="grid two">
+      <div class="card" data-block-id="bh-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <h3 style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3>
+        <p style="font-size:12.5px;line-height:1.6;margin:0">Phí vào, bồi thường ra, quỹ dự phòng đầu tư vào tiền gửi và trái phiếu.</p>
+      </div>
+      <div class="card" data-block-id="bh-02" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
+        <h3 style="margin-top:0;font-size:13.5px">Vị trí trong chu kỳ</h3>
+        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Thị trường hai tốc độ.</mark> 9T/2026 tổng phí <b>175,8 nghìn tỷ (+2,4%)</b>: phi nhân thọ <b>+15,1%</b> (74,1 nghìn tỷ), nhân thọ <b>−5,2%</b> (101,7 nghìn tỷ). Chi trả quyền lợi +13,1%, nhanh hơn phí.</p>
+        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Phi nhân thọ đang ở pha tốt.</mark> Sức khỏe +20,7%, tài sản & kỹ thuật +17,3%; tỷ lệ bồi thường gốc 8T chỉ <b>32,3%</b>. Rủi ro là mùa bão cuối năm (Yagi 2024 ước 11.465 tỷ thiệt hại thuộc phạm vi bảo hiểm).</p>
+        <p style="font-size:12.5px;line-height:1.65;margin-bottom:0"><mark class="key-phrase">Lãi suất đã quay đầu tăng.</mark> TPCP 10 năm lên ~4,6% (một năm trước ~3,8%), huy động 12 tháng Big4 5,9% — thu nhập đầu tư của cả ngành tăng dần khi tiền gửi cũ tái tục.</p>
+        <div class="source-note">Nguồn: <a href="https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html" target="_blank" rel="noopener">Tạp chí KTTC – 9T/2026</a> · <a href="https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html" target="_blank" rel="noopener">TTTC-TT – 8T/2026</a> · <a href="https://www.tinnhanhchungkhoan.vn/tinh-den-ngay-2211-cac-cong-ty-bao-hiem-tam-ung-boi-thuong-471-ty-dong-sau-bao-yagi-post359364.html" target="_blank" rel="noopener">TNCK – Yagi</a> · <a href="https://thitruongtaichinhtiente.vn/lai-suat-dau-thang-10-2026-tiet-kiem-giu-nhip-on-dinh-chung-chi-tien-gui-hut-khach-85944.html" target="_blank" rel="noopener">Lãi suất 10/2026</a></div>
+      </div>
+    </div>
+    <div class="card sector-valuation" style="margin-top:14px" data-block-id="bh-03" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">P/B nhân thọ, phi nhân thọ, tái bảo hiểm — theo phiên</div>
+        <div class="chart-sub">lần · GICS cấp 4 của Wi · mỗi 5 phiên · P/E ở bảng</div>
+        <div id="chSectorVal"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-sector-val"></table></div></details>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bh-04" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Doanh nghiệp theo dõi và biến quyết định</h3>
+      <div class="tablewrap"><table><thead><tr><th>Nhóm</th><th>Mã</th><th>Lợi nhuận đến từ</th><th>Biến quyết định</th></tr></thead><tbody><tr><td><b>Tập đoàn (nhân thọ + phi nhân thọ)</b></td><td>BVH</td><td>Bảo Việt Nhân thọ (dẫn đầu khai thác mới), Bảo hiểm Bảo Việt, quỹ đầu tư rất lớn</td><td>Phí nhân thọ, lãi suất TPCP và tiền gửi, kênh ngân hàng</td></tr><tr><td><b>Phi nhân thọ</b></td><td>PVI · BMI · MIG · PTI · BIC</td><td>Lãi bảo hiểm gốc mỏng + lãi đầu tư; PVI mạnh năng lượng, kỹ thuật; MIG, PTI, BIC mạnh xe, sức khỏe và kênh ngân hàng mẹ</td><td>Tăng trưởng phí, tỷ lệ bồi thường, thiên tai, lãi suất</td></tr><tr><td><b>Tái bảo hiểm</b></td><td>VNR</td><td>Nhận tái từ các công ty phi nhân thọ; lãi đầu tư chiếm phần lớn lợi nhuận</td><td>Thiên tai, tổn thất lớn, lãi suất</td></tr></tbody></table></div>
+      <div class="source-note">P/E, P/B, vốn hóa cập nhật mỗi phiên (VNDirect); số BCTC từng doanh nghiệp chỉ cập nhật khi người dùng yêu cầu. Số tổng hợp ngành (phí, bồi thường, lãi tài chính) lấy tự động từ Wi.</div>
+    </div>
+  </div>
+  <div class="majorpane" data-tab="mt2" id="pane-mt2">
+  <section class="section">
+    <div class="sectionhead"><div><h2>2. Cung – Cầu</h2><p>Cầu là phí bảo hiểm; "cung" là rủi ro phải trả (bồi thường); lợi nhuận đến từ chênh lệch hai bên và đầu tư quỹ.</p></div></div>
+    <h3 class="subhead">Phi nhân thọ</h3>
+    <div class="grid two">
+      <div class="card" data-block-id="bh-10" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Phí bảo hiểm phi nhân thọ (doanh nghiệp niêm yết)</div>
+        <div class="chart-sub">nghìn tỷ đồng · theo quý</div>
+        <div id="chNlPrem"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-nl-prem"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bh-11" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Phí tăng so bồi thường tăng</div>
+        <div class="chart-sub">% so cùng kỳ · theo quý</div>
+        <div id="chNlSD"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-nl-sd"></table></div></details>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="bh-12" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Tỷ lệ bồi thường</div>
+        <div class="chart-sub">% doanh thu phí thuần · theo quý</div>
+        <div id="chNlLoss"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-nl-loss"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bh-13" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Phi nhân thọ theo nghiệp vụ (toàn thị trường)</div>
+        <div class="chart-sub">nghìn tỷ đồng · 8T/2026 · % so cùng kỳ ở nhãn</div>
+        <div id="chNlLines"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table class="compare-table"><thead><tr><th>Nghiệp vụ</th><th>8T/2026 (tỷ)</th><th>YoY</th></tr></thead><tbody><tr><td>Tổng phi nhân thọ</td><td>66.191</td><td>+16,6%</td></tr><tr><td>Sức khỏe</td><td>23.979 (36,2%)</td><td>+20,7%</td></tr><tr><td>Tài sản & kỹ thuật</td><td>18.600</td><td>+17,3%</td></tr><tr><td>Xe cơ giới</td><td>14.501</td><td>+8,2%</td></tr><tr><td>Bồi thường gốc</td><td>21.365 (tỷ lệ 32,3%)</td><td>—</td></tr></tbody></table></div></details>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="bh-14" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Cầu bảo hiểm xe: sản lượng ô tô, xe máy</div>
+        <div class="chart-sub">theo tháng</div>
+        <div id="chNlDemand"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-nl-demand"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bh-15" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Thị phần phi nhân thọ 10T/2025</div>
+        <div class="chart-sub">% doanh thu phí gốc</div>
+        <div class="tablewrap"><table class="compare-table"><thead><tr><th>Doanh nghiệp</th><th>Thị phần</th><th>Mã niêm yết</th></tr></thead><tbody><tr><td>PVI</td><td><b>17,7%</b> (12.749 tỷ)</td><td>PVI</td></tr><tr><td>Bảo Việt</td><td>12,9% (9.292 tỷ)</td><td>BVH</td></tr><tr><td>Bảo Minh</td><td>7,1%</td><td>BMI</td></tr><tr><td>MIC (Quân đội)</td><td>5,9%</td><td>MIG</td></tr><tr><td>BIC</td><td>5,7%</td><td>BIC</td></tr></tbody></table></div>
+        <div class="source-note">Nguồn: <a href="https://thoibaotaichinhvietnam.vn/mieng-banh-bao-hiem-phi-nhan-tho-lon-dan-cuoc-dua-gianh-thi-phan-them-gay-gat-191154-191154.html" target="_blank" rel="noopener">Thời báo Tài chính</a>. Phi nhân thọ cả năm 2025: 88.425 tỷ (+11%).</div>
+      </div>
+    </div>
+    <h3 class="subhead">Nhân thọ</h3>
+    <div class="grid two">
+      <div class="card" data-block-id="bh-20" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Phí gốc và chi trả quyền lợi — Bảo Việt</div>
+        <div class="chart-sub">nghìn tỷ đồng · theo quý</div>
+        <div id="chLifePrem"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-life-prem"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bh-21" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Thị trường nhân thọ: phí và khai thác mới</div>
+        <div class="chart-sub">toàn thị trường · kỳ công bố gần nhất</div>
+        <div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>Số</th><th>Ý nghĩa</th></tr></thead><tbody><tr><td>Phí nhân thọ 9T/2026</td><td><b>101,7 nghìn tỷ, −5,2%</b></td><td>Năm thứ ba giảm</td></tr><tr><td>Phí nhân thọ 2025</td><td>148.786 tỷ (62,7% toàn ngành)</td><td>—</td></tr><tr><td>Phí khai thác mới 8T/2026</td><td>14.105 tỷ, <b>−11,7%</b></td><td>Hợp đồng mới chưa hồi</td></tr><tr><td>Hợp đồng mới 8T/2026</td><td>1.033.926 (+2,9%)</td><td>Số hợp đồng tăng nhưng giá trị nhỏ hơn</td></tr><tr><td>Hợp đồng có hiệu lực</td><td>11.292.491 (−2,6%)</td><td>Hủy, đáo hạn nhiều hơn mới</td></tr><tr><td>Khai thác mới 7T/2024</td><td>13.960 tỷ (−19%, chưa bằng nửa 2022)</td><td>Đáy sau khủng hoảng bancassurance</td></tr><tr><td>Thị phần khai thác mới 10T/2025</td><td>Bảo Việt Nhân thọ <b>21,7%</b> (dẫn đầu), AIA 12,1% (thứ 3)</td><td>BVH giành thị phần trong lúc thị trường giảm</td></tr></tbody></table></div>
+        <div class="source-note">Nguồn: <a href="https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html" target="_blank" rel="noopener">Tạp chí KTTC</a> · <a href="https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html" target="_blank" rel="noopener">TTTC-TT</a> · <a href="https://vietnamfinance.vn/doanh-thu-bao-hiem-nhan-tho-tiep-tuc-giam-ky-vong-tro-lai-nho-phap-ly-d117586.html" target="_blank" rel="noopener">VietnamFinance</a> · <a href="https://thoibaotaichinhvietnam.vn/thi-phan-doanh-nghiep-bao-hiem-nhan-tho-bien-dong-manh-trong-giai-doan-tai-cau-truc-190715-190715.html" target="_blank" rel="noopener">Thời báo Tài chính</a></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bh-22" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+      <div class="chart-title">Cung – cầu toàn thị trường: phí so chi trả</div>
+      <div class="chart-sub">nghìn tỷ đồng · 9 tháng</div>
+      <div id="chMarket" style="max-width:680px"></div>
+    </div>
+    <h3 class="subhead">Đầu tư &amp; lãi suất</h3>
+    <div class="grid two">
+      <div class="card" data-block-id="bh-30" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="chart-title">Lợi suất TPCP 10 năm và lãi huy động 12 tháng</div>
+        <div class="chart-sub">%/năm · cuối tháng</div>
+        <div id="chYield"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-yield"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bh-31" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Lợi nhuận hoạt động tài chính</div>
+        <div class="chart-sub">tỷ đồng · theo quý</div>
+        <div id="chFin"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-fin"></table></div></details>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bh-32" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+      <div class="chart-title">Quy mô quỹ đầu tư toàn ngành</div>
+      <div class="chart-sub">kỳ công bố gần nhất</div>
+      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>2025</th><th>9T/2026</th></tr></thead><tbody><tr><td>Tổng tài sản</td><td>~1.114 nghìn tỷ (+8,58%)</td><td><b>1.211,7 nghìn tỷ (+10,9%)</b></td></tr><tr><td>Đầu tư trở lại nền kinh tế</td><td>958.987 tỷ (+10,31%)</td><td><b>1.062,1 nghìn tỷ (+14,1%)</b></td></tr><tr><td>Lãi suất 12 tháng Big4 / 35 ngân hàng</td><td>—</td><td>5,9% / 3,7–7,8% (đầu 10/2026)</td></tr><tr><td>Trúng thầu TPCP 10 năm</td><td>—</td><td>4,43% (phiên cuối 9/2026)</td></tr></tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Giới hạn tỷ lệ đầu tư trái phiếu doanh nghiệp, cổ phiếu của doanh nghiệp bảo hiểm chưa có trong nguồn mở được. Lợi suất TPCP trên chart là lợi suất thứ cấp (Wi), khác lãi suất trúng thầu.</div></details>
+      <div class="source-note">Nguồn: <a href="https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html" target="_blank" rel="noopener">Tạp chí KTTC</a> · <a href="https://thoibaotaichinhvietnam.vn/thi-truong-bao-hiem-giu-da-tang-truong-cung-co-nen-tang-cho-giai-doan-moi-189319-189319.html" target="_blank" rel="noopener">Thời báo Tài chính 2025</a> · <a href="https://thitruongtaichinhtiente.vn/lai-suat-dau-thang-10-2026-tiet-kiem-giu-nhip-on-dinh-chung-chi-tien-gui-hut-khach-85944.html" target="_blank" rel="noopener">TTTC-TT</a> · <a href="https://thoibaotaichinhvietnam.vn/thanh-khoan-thi-truong-trai-phieu-chinh-phu-tang-manh-trong-thang-9-205140.html" target="_blank" rel="noopener">TBTC – TPCP</a></div>
+    </div>
+  </section>
+  </div>
+  <div class="majorpane" data-tab="mt3" id="pane-mt3">
+  <section id="price" class="section">
+    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Tỷ lệ bồi thường, lãi tài chính nằm trong từng nhóm ở Bức tranh ngành.</p></div></div>
+  </section>
+  </div>
+  <div class="majorpane" data-tab="mt4" id="pane-mt4">
+  <section id="policy" class="section">
+    <div class="sectionhead"><div><h2>4. Policy / Trade / Tax</h2><p>Khung pháp lý sau khủng hoảng bancassurance và lộ trình vốn theo rủi ro.</p></div></div>
+    <div class="card" data-block-id="bh-50" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Luật, nghị định, thông tư</h3>
+      <div class="tablewrap"><table><thead><tr><th>Văn bản</th><th>Hiệu lực</th><th>Nội dung</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Luật Kinh doanh bảo hiểm 08/2022/QH15</b></td><td>01/01/2023</td><td>Khung mới cho sản phẩm, đại lý, bancassurance, vốn</td><td>Cả ngành</td><td><a href="https://thitruongtaichinhtiente.vn/sua-doi-luat-kinh-doanh-bao-hiem-go-nut-that-tao-da-phat-trien-thi-truong-69854.html" target="_blank" rel="noopener">TTTC-TT</a></td></tr><tr><td><b>Nghị định 46/2023</b></td><td>01/07/2023 (một số điều từ 1/1/2023)</td><td>Hướng dẫn luật: vốn, đầu tư, tài chính doanh nghiệp bảo hiểm</td><td>Cả ngành</td><td><a href="https://thoibaotaichinhvietnam.vn/ban-hanh-nghi-dinh-huong-dan-thi-hanh-luat-kinh-doanh-bao-hiem-131228.html" target="_blank" rel="noopener">TBTC</a></td></tr><tr><td><b>Thông tư 67/2023</b></td><td>2023</td><td>Ngân hàng <b>không được bán bảo hiểm liên kết đầu tư 60 ngày trước và sau</b> giải ngân khoản vay</td><td>▼ BVH (nhân thọ) · MIG, BIC, PTI ít hơn</td><td><a href="https://vneconomy.vn/bo-sung-nhieu-quy-dinh-moi-nang-chat-ngan-tinh-trang-ep-khach-hang-mua-bao-hiem.htm" target="_blank" rel="noopener">VnEconomy</a></td></tr><tr><td><b>Vốn theo rủi ro (RBC)</b></td><td>Mốc luật 2028</td><td>Bộ Tài chính cho rằng áp dụng từ 2028 là khó (dự thảo sửa luật 8/2025)</td><td>Doanh nghiệp vốn mỏng</td><td><a href="https://thitruongtaichinhtiente.vn/sua-doi-luat-kinh-doanh-bao-hiem-go-nut-that-tao-da-phat-trien-thi-truong-69854.html" target="_blank" rel="noopener">TTTC-TT</a></td></tr></tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Luật sửa đổi 2025, nghị định sửa Nghị định 46 năm 2026 và lộ trình RBC cụ thể chỉ thấy trong đoạn trích tìm kiếm, chưa mở được văn bản — chưa đưa lên bảng. Giới hạn đầu tư trái phiếu doanh nghiệp, cổ phiếu cũng chưa có nguồn mở được.</div></details>
+    </div>
+  </section>
+  </div>
+  <div class="majorpane" data-tab="mt5" id="pane-mt5">
+  <section class="section">
+    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ Wi (phí, bồi thường, lãi tài chính tổng hợp ngành, lãi suất, định giá).</p></div></div>
+    <div class="catriskgrid">
+      <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
+        <h3>Catalyst — yếu tố hỗ trợ</h3>
+        <ul><li><b>Phi nhân thọ +15,1%</b> 9T, sức khỏe +20,7% <span class="muted">(liên tục · PVI · BMI · MIG · PTI · BIC)</span></li><li><b>Lãi suất tăng</b>: TPCP 10 năm ~4,6%, huy động 12T 5,9% <span class="muted">(2–4 quý · BVH · cả ngành)</span></li><li><b>BVH dẫn đầu khai thác mới nhân thọ</b> 21,7% <span class="muted">(BVH)</span></li></ul>
+      </div>
+      <div class="riskbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
+        <h3>Risk — rủi ro</h3>
+        <ul><li><b>Mùa bão 9–11</b>: một cơn bão như Yagi (11.465 tỷ thiệt hại ước tính) xóa lãi bảo hiểm cả năm <span class="muted">(Q4 · phi nhân thọ · VNR)</span></li><li><b>Nhân thọ chưa hồi</b>: phí −5,2%, khai thác mới −11,7% <span class="muted">(BVH)</span></li><li><b>Chi trả quyền lợi +13,1%</b>, nhanh hơn phí <span class="muted">(cả ngành)</span></li></ul>
+      </div>
+    </div>
+    <div class="srcrow"><a href="https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html" target="_blank" rel="noopener">Thị trường 9T/2026</a><a href="https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html" target="_blank" rel="noopener">Thị trường 8T/2026</a></div>
+  </section>
+  </div>
+  <div class="majorpane" data-tab="mt6" id="pane-mt6">
+  <section class="section">
+    <div class="sectionhead"><div><h2>6. Key players</h2><p>7 doanh nghiệp niêm yết. Bảng so sánh tài chính và định giá hằng ngày ở Tổng quan.</p></div></div>
+    <div class="card" data-block-id="bh-60" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">7 doanh nghiệp: kế hoạch, kết quả 6T/2026, bồi thường và đầu tư</h3>
+      <div class="tablewrap"><table><thead><tr><th>Mã</th><th>Kế hoạch 2026 (tỷ)</th><th>6T/2026 (LNTT, tỷ · YoY · %KH)</th><th>Bồi thường, đầu tư</th><th>Rủi ro, điểm cần biết</th><th>Nguồn</th></tr></thead><tbody>
+      <tr><td><b>BVH</b></td><td>Chưa có trong nguồn mở được</td><td><b>2.289 · +34,5%</b>; DT 32.004 (+9,2%); Q2 LNTT 1.283 (+50%)</td><td>Q2 lãi gộp bảo hiểm 983 tỷ, lãi tài chính 3.238 tỷ; tiền gửi ~166,7 nghìn tỷ; tổng tài sản 315.683 tỷ</td><td>Lãi phụ thuộc đầu tư; phí thuần 6T −1%</td><td><a href="https://nhadautu.vn/tap-doan-bao-viet-bvh-tong-doanh-thu-hop-nhat-6-thang-dau-nam-2026-dat-hon-32000-ty-dong-tang-truong-92-d106710.html" target="_blank" rel="noopener">Nhà đầu tư</a> · <a href="https://mekongasean.vn/bao-viet-bao-lai-quy-2-tang-50-dau-tu-hon-4200-ty-dong-vao-co-phieu-57996.html" target="_blank" rel="noopener">Mekong ASEAN</a></td></tr>
+      <tr><td><b>PVI</b></td><td>DT 28.815 / LNTT 1.243; cổ tức 30%</td><td><b>1.240 · +31,8% · ~100%</b>; tổng phí 15.731</td><td>Q2 bồi thường 3.179 (+67%), thu bồi thường nhượng tái 2.472 (+~90%); danh mục ~20.000 tỷ, 72% tiền gửi</td><td>Tái bảo hiểm ~40% doanh thu (đối tác HDI)</td><td><a href="https://thoibaotaichinhvietnam.vn/pvi-sap-can-dich-ke-hoach-loi-nhuan-chi-sau-6-thang-danh-muc-dau-tu-tien-sat-20-000-ty-dong-201195.html" target="_blank" rel="noopener">TBTC</a> · <a href="https://vietnamfinance.vn/bao-hiem-pvi-phi-tai-bao-hiem-tiep-tuc-tang-dong-gop-40-doanh-thu-d148324.html" target="_blank" rel="noopener">VietnamFinance</a></td></tr>
+      <tr><td><b>MIG</b></td><td>Phí gốc ~7.038 (+30%) / LNTT ~550; cổ tức 10%</td><td>245 · +5,9% · ~45%; phí gốc 3.518 (+33,6%)</td><td>Bancassurance 1.514 tỷ (+72%); Q2 bồi thường 422 (+11%)</td><td>Lãi tăng chậm hơn phí</td><td><a href="https://thoibaotaichinhvietnam.vn/mic-tang-truong-33-6-doanh-thu-phi-bao-hiem-goc-nam-thu-hai-lien-tiep-duoc-am-best-xep-hang-b-201565.html" target="_blank" rel="noopener">TBTC</a> · <a href="https://mekongasean.vn/doanh-thu-tang-manh-bao-hiem-quan-doi-lai-hon-117-ty-dong-trong-quy-22026-57717.html" target="_blank" rel="noopener">Mekong ASEAN</a></td></tr>
+      <tr><td><b>PTI</b></td><td>DT 4.139 / LNTT 320 (−14%)</td><td>~166 · −15%; Q2 ~83 (−24%)</td><td>Combined ratio 2025 91,85%; Q2 bồi thường 371 (+48%)</td><td>ĐHĐCĐ không thông qua phương án cổ tức; DB Insurance cổ đông lớn</td><td><a href="https://mekongasean.vn/pti-lai-quy-2-giam-24-do-chi-phi-boi-thuong-tang-manh-58110.html" target="_blank" rel="noopener">Mekong ASEAN</a> · <a href="https://thoibaotaichinhvietnam.vn/pti-dat-ke-hoach-than-trong-va-tang-von-dieu-le-hon-600-ty-dong-trong-nam-2026-196173.html" target="_blank" rel="noopener">TBTC</a></td></tr>
+      <tr><td><b>BIC</b></td><td>Phí 6.230 / LNTT 780</td><td>288,8 · 37% (TBTC); Mekong ASEAN ghi 267 (−33%)</td><td>Bồi thường ~872 (+34%); danh mục ~7.500 tỷ</td><td>Mất khoản chốt lời chứng khoán cùng kỳ</td><td><a href="https://thoibaotaichinhvietnam.vn/bao-hiem-bic-bao-lai-tang-manh-trong-quy-ii-mo-rong-danh-muc-dau-tu-len-gan-7-500-ty-dong-201645.html" target="_blank" rel="noopener">TBTC</a> · <a href="https://mekongasean.vn/chi-phi-boi-thuong-tang-hon-40-loi-nhuan-quy-2-cua-bic-giam-2-chu-so-58036.html" target="_blank" rel="noopener">Mekong ASEAN</a></td></tr>
+      <tr><td><b>BMI</b></td><td>DT 7.260 / LNTT ≥340; combined ratio ≤97%</td><td>LNST 182 · +27%; Q2 127 (+57%)</td><td>Dự phòng phải thu khó đòi 163,6 tỷ (Q1)</td><td>Q1 lãi giảm vì bồi thường</td><td><a href="https://vnbusiness.vn/loi-nhuan-nganh-bao-hiem-phan-hoa-manh-doanh-nghiep-nhieu-tien-gui-chiem-uu-the.html" target="_blank" rel="noopener">VnBusiness</a> · <a href="https://doanhnhan.baophapluat.vn/dhdcd-bao-minh-bmi-chu-tich-giai-trinh-ve-khoan-tai-san-thieu-156-ty-dong-khien-co-phieu-bi-cat-margin.html" target="_blank" rel="noopener">DN&amp;PL</a></td></tr>
+      <tr><td><b>VNR</b></td><td>DT 4.266 / LNTT 560; cổ tức tiền 10%</td><td>290 · +17% · 52%</td><td>Lãi gộp tài chính 257 tỷ so lãi gộp bảo hiểm ~70 tỷ; danh mục 6.382 tỷ</td><td>Q2 biên gộp bảo hiểm 6,70% → 3,35%</td><td><a href="https://thoibaotaichinhvietnam.vn/bo-trung-nhieu-gio-danh-muc-dau-tu-da-dang-giup-tai-bao-hiem-vinare-bao-lai-hon-290-ty-dong-201416.html" target="_blank" rel="noopener">TBTC</a> · <a href="https://doanhnhan.baophapluat.vn/chi-phi-boi-thuong-tang-vot-tai-bao-hiem-quoc-gia-vnr-sut-giam-loi-nhuan-quy-ii.html" target="_blank" rel="noopener">DN&amp;PL</a></td></tr>
+      </tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Chưa có KQ 9T/2026. Kế hoạch 2026 của BVH chưa có nguồn mở được. BIC: hai báo lệch số LNTT 6T (288,8 và 267 tỷ) — cần đối chiếu BCTC. BMI dùng LNST vì nguồn không nêu LNTT. Số BCTC cập nhật khi người dùng yêu cầu.</div></details>
+    </div>
+  </section>
+  </div>
+  <div class="majorpane" data-tab="mt7" id="pane-mt7">
+    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Ba câu chuyện đang dẫn dắt ngành.</p></div></div>
+    <div data-topic-key="bancassurance" data-topic-segment="Nhân thọ" data-topic-title="Nhân thọ sau khủng hoảng bancassurance">
+      <div class="card" data-block-id="bh-t1" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Khai thác mới 7T/2024 chưa bằng nửa 2022; liên kết đầu tư giảm >32% năm 2024</li><li>8T/2026 khai thác mới vẫn −11,7%; hợp đồng có hiệu lực −2,6%</li><li>Thông tư 67/2023 cấm bán liên kết đầu tư 60 ngày quanh khoản vay</li></ul>
+        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> BVH (giành thị phần 21,7% nhưng thị trường thu hẹp)</p>
+        <div class="source-note">Nguồn: <a href="https://vietnamfinance.vn/doanh-thu-bao-hiem-nhan-tho-tiep-tuc-giam-ky-vong-tro-lai-nho-phap-ly-d117586.html" target="_blank" rel="noopener">VietnamFinance</a> · <a href="https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html" target="_blank" rel="noopener">TTTC-TT</a> · <a href="https://vneconomy.vn/bo-sung-nhieu-quy-dinh-moi-nang-chat-ngan-tinh-trang-ep-khach-hang-mua-bao-hiem.htm" target="_blank" rel="noopener">VnEconomy</a></div>
+      </div>
+    </div>
+    <div data-topic-key="health" data-topic-segment="Phi nhân thọ" data-topic-title="Bảo hiểm sức khỏe dẫn tăng trưởng">
+      <div class="card" data-block-id="bh-t2" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Sức khỏe 8T/2026 23.979 tỷ (+20,7%), chiếm 36,2% phi nhân thọ</li><li>Tài sản & kỹ thuật +17,3%; xe cơ giới +8,2%</li><li>Tỷ lệ bồi thường gốc 8T 32,3%</li></ul>
+        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▲ PVI · BMI · MIG · PTI · BIC</p>
+        <div class="source-note">Nguồn: <a href="https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html" target="_blank" rel="noopener">TTTC-TT</a></div>
+      </div>
+    </div>
+    <div data-topic-key="rates" data-topic-segment="Đầu tư &amp; lãi suất" data-topic-title="Lãi suất tăng: lợi nhuận đầu tư quay lại">
+      <div class="card" data-block-id="bh-t3" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Huy động 12T Big4 5,9% đầu 10/2026; trúng thầu TPCP 10 năm 4,43%</li><li>Đầu tư trở lại nền kinh tế 9T/2026 1.062,1 nghìn tỷ (+14,1%)</li></ul>
+        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▲ BVH (quỹ lớn nhất) · VNR · BMI</p>
+        <div class="source-note">Nguồn: <a href="https://thitruongtaichinhtiente.vn/lai-suat-dau-thang-10-2026-tiet-kiem-giu-nhip-on-dinh-chung-chi-tien-gui-hut-khach-85944.html" target="_blank" rel="noopener">TTTC-TT</a> · <a href="https://thoibaotaichinhvietnam.vn/thanh-khoan-thi-truong-trai-phieu-chinh-phu-tang-manh-trong-thang-9-205140.html" target="_blank" rel="noopener">TBTC</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px" data-block-id="bh-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+    <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Phí, bồi thường, lãi tài chính doanh nghiệp niêm yết</b></td><td>BCTC tổng hợp ngành (GICS) qua Wi</td><td>Quý</td><td>Routine Claude (Wi) sau mùa BCTC</td></tr><tr><td><b>TPCP 10 năm, lãi huy động</b></td><td>HNX, NHNN qua Wi</td><td>Ngày / tháng</td><td>Routine Claude hằng tuần (Wi)</td></tr><tr><td><b>Sản lượng ô tô, xe máy</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a> qua Wi</td><td>Tháng</td><td>Routine Claude (Wi)</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td>Wi; <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Wi hằng ngày; script mỗi lượt job</td></tr><tr><td><b>Toàn thị trường, nghiệp vụ, thị phần, chính sách</b></td><td>Bộ Tài chính, Hiệp hội Bảo hiểm qua báo (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC từng doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="source-note" id="wi-built">Dựng từ WiMCP; các lời gọi ghi trong data/insurance-wi-contract.json.</div>
+  </div>
+  <div class="footer">Vietnam Insurance Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 11/10/2026.</div>
+</div>
+<script>
+/* ---------- tiny SVG chart engine ---------- */
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs){
+  const e=document.createElementNS(NS,tag);
+  if(attrs){ for(const k in attrs){ e.setAttribute(k, attrs[k]); } }
+  return e;
+}
+function txt(tag,attrs,text){ const e=el(tag,attrs); if(text!==undefined) e.textContent=text; return e; }
+function niceMax(v){
+  if(v<=0) return 1;
+  const mag=Math.pow(10,Math.floor(Math.log10(v)));
+  const n=v/mag;
+  let step;
+  if(n<=1) step=1; else if(n<=2) step=2; else if(n<=2.5) step=2.5; else if(n<=5) step=5; else step=10;
+  return step*mag;
+}
+function fmt(v,d){
+  d = d===undefined?0:d;
+  return Number(v).toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d});
+}
+let tipEl=null;
+function tipBox(){
+  if(!tipEl){ tipEl=document.createElement('div'); tipEl.className='chtip'; document.body.appendChild(tipEl); }
+  return tipEl;
+}
+function showTip(evt,title,rows){
+  const t=tipBox();
+  t.innerHTML='';
+  const h=document.createElement('div'); h.className='chtip-title'; h.textContent=title; t.appendChild(h);
+  rows.forEach(r=>{
+    const row=document.createElement('div'); row.className='chtip-row';
+    const key=document.createElement('span'); key.className='chtip-key';
+    if(r.color){ const dot=document.createElement('span'); dot.className='chtip-dot'; dot.style.background=r.color; key.appendChild(dot); }
+    const kt=document.createElement('span'); kt.textContent=r.label; key.appendChild(kt);
+    const val=document.createElement('span'); val.className='chtip-val'; val.textContent=r.value;
+    row.appendChild(key); row.appendChild(val);
+    t.appendChild(row);
+  });
+  t.style.display='block';
+  moveTip(evt);
+}
+function moveTip(evt){
+  const t=tipBox();
+  const pad=16;
+  let x=evt.clientX+pad, y=evt.clientY+pad;
+  const rect=t.getBoundingClientRect();
+  if(x+rect.width>window.innerWidth-8) x=evt.clientX-rect.width-pad;
+  if(y+rect.height>window.innerHeight-8) y=evt.clientY-rect.height-pad;
+  t.style.left=x+'px'; t.style.top=y+'px';
+}
+function hideTip(){ if(tipEl) tipEl.style.display='none'; }
+
+function baseSvg(W,H,label){
+  return el('svg',{viewBox:'0 0 '+W+' '+H, width:'100%', height:H, class:'chartsvg', role:'img', 'aria-label':label||''});
+}
+function floatRange(minV,maxV){
+  const span=(maxV-minV)||Math.abs(maxV)||1;
+  const step=niceMax(span/4);
+  const lo=Math.floor((minV-span*0.15)/step)*step;
+  const hi=Math.ceil((maxV+span*0.15)/step)*step;
+  return [minV<0?lo:Math.max(lo,0), hi]; // negative series (YoY %) keep their own floor
+}
+function yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,digits,yMin,steps=4){
+  yMin=yMin||0;
+  const yToPx=(v)=> padT + plotH*(1-(v-yMin)/(yMax-yMin));
+  for(let i=0;i<=steps;i++){
+    const v=yMin+(yMax-yMin)*i/steps;
+    const y=yToPx(v);
+    svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:y,y2:y,class:'gridline'}));
+    svg.appendChild(txt('text',{x:padL-8,y:y+3,'text-anchor':'end',class:'axislabel'}, fmt(v,digits)));
+  }
+  return yToPx;
+}
+
+/* categorical bar / combo chart */
+function barLineChartBase(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host) return;
+  const cats=opts.categories, n=cats.length;
+  const rotate = opts.rotateLabels===false ? false : n>8;
+  const W=640, H=260;
+  const padL=50,padR=14,padT=14,padB= rotate?56:30;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  let maxV=0;
+  opts.series.forEach(s=> s.values.forEach(v=>{ if(v!=null && v>maxV) maxV=v; }));
+  let yMin=0, yMax=niceMax(maxV*1.15);
+  if(opts.zeroBase===false && opts.series.every(s=>s.kind==='line')){
+    let mn=Infinity; opts.series.forEach(s=>s.values.forEach(v=>{ if(v!=null && v<mn) mn=v; }));
+    const r=floatRange(mn,maxV); yMin=r[0]; yMax=r[1];
+  }
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits,yMin,opts.yGridSteps||4);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  const band=plotW/n;
+  const barSeries=opts.series.filter(s=>s.kind!=='line');
+  const lineSeries=opts.series.filter(s=>s.kind==='line');
+  const barW=Math.min(24, band*0.62/(barSeries.length||1));
+  const linePts={};
+  lineSeries.forEach(s=>{ linePts[s.name]=[]; });
+
+  cats.forEach((cat,i)=>{
+    const bandX=padL+i*band;
+    const cx=bandX+band/2;
+    const rows=[];
+    barSeries.forEach((s,si)=>{
+      const v=s.values[i];
+      const gx = cx - (barSeries.length*barW)/2 + si*barW;
+      if(v!=null){
+        const y0=yToPx(0), y1=yToPx(v);
+        const r=el('rect',{x:gx+1,y:Math.min(y0,y1),width:Math.max(barW-2,2),height:Math.max(Math.abs(y0-y1),1),rx:3,ry:3,fill:s.color, opacity: s.confArr && s.confArr[i]===false ? 0.55 : 1});
+        r.appendChild(txt('title',{},cat+' — '+s.name+': '+fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+        svg.appendChild(r);
+        if(i===n-1){ svg.appendChild(txt('text',{x:gx+barW/2,y:Math.min(y0,y1)-6,'text-anchor':'middle',class:'endlabel',fill:s.color},fmt(v,opts.digits))); }
+        rows.push({label:s.name,value:fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):''),color:s.color});
+      }
+    });
+    lineSeries.forEach(s=>{
+      const v=s.values[i];
+      if(v!=null){ linePts[s.name].push([cx, yToPx(v)]); rows.push({label:s.name,value:fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):''),color:s.color}); }
+      else { linePts[s.name].push(null); }
+    });
+    const hit=el('rect',{x:bandX,y:padT,width:band,height:plotH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, cat, rows));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    hit.addEventListener('focus',e=>showTip({clientX:bandX+ (host.getBoundingClientRect ? host.getBoundingClientRect().left:0), clientY:80}, cat, rows));
+    hit.addEventListener('blur',hideTip);
+    svg.appendChild(hit);
+    const lx=cx, ly=padT+plotH+14;
+    const everyN = opts.maxLabels ? Math.max(1,Math.ceil(n/opts.maxLabels)) : n>24 ? Math.ceil(n/18) : 1;
+    if(i%everyN===0 || i===n-1){
+      const label=txt('text',{x:lx,y:ly,'text-anchor': rotate?'end':'middle',class:'catlabel'}, opts.tickLabels?.[i]||cat);
+      if(rotate) label.setAttribute('transform','rotate(-40 '+lx+' '+ly+')');
+      svg.appendChild(label);
+    }
+  });
+
+  const endLabelY=[];
+  lineSeries.forEach(s=>{
+    const pts=linePts[s.name].filter(p=>p);
+    if(pts.length>1){
+      let d='', pen=false;
+      linePts[s.name].forEach(p=>{if(!p){pen=false;return;}d+=(pen?' L':' M')+p[0]+','+p[1];pen=true;});
+      svg.appendChild(el('path',{d:d,fill:'none',stroke:s.color,'stroke-width':s.strokeWidth||2,'stroke-linecap':'round','stroke-linejoin':'round'}));
+    }
+    linePts[s.name].forEach((p,i)=>{
+      if(!p) return;
+      if(s.markers!==false){
+        const c=el('circle',{cx:p[0],cy:p[1],r:3.5,fill:s.color,stroke:'var(--card)','stroke-width':1.5});
+        svg.appendChild(c);
+      }
+      if(i===n-1){
+        let ly=p[1]-12;
+        while(endLabelY.some(v=>Math.abs(v-ly)<13)) ly-=14;
+        endLabelY.push(ly);
+        svg.appendChild(txt('text',{x:p[0],y:ly,'text-anchor':'middle',class:'endlabel',fill:s.color}, fmt(s.values[i],opts.digits)));
+      }
+    });
+  });
+
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* single-series line chart, evenly spaced (for monthly world price) */
+function lineChartBase(containerId, opts){
+  const labels=opts.labels, n=labels.length;
+  const W=640,H=260;
+  const padL=44,padR=14,padT=14,padB=30;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const maxV=Math.max.apply(null, opts.values);
+  const minV=Math.min.apply(null, opts.values);
+  let yMin=0, yMax=niceMax(maxV*1.1);
+  if(opts.zeroBase===false){ const r=floatRange(minV,maxV); yMin=r[0]; yMax=r[1]; }
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits,yMin);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  const step=plotW/(n-1);
+  const pts=opts.values.map((v,i)=>[padL+i*step, yToPx(v)]);
+  const areaD='M'+pts.map(p=>p[0]+','+p[1]).join(' L')+' L'+pts[pts.length-1][0]+','+(padT+plotH)+' L'+pts[0][0]+','+(padT+plotH)+' Z';
+  svg.appendChild(el('path',{d:areaD,fill:opts.color,opacity:0.1}));
+  const lineD='M'+pts.map(p=>p[0]+','+p[1]).join(' L');
+  svg.appendChild(el('path',{d:lineD,fill:'none',stroke:opts.color,'stroke-width':2,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  labels.forEach((lab,i)=>{
+    const showTick = (i%Math.max(1,Math.ceil(n/10))===0)||i===n-1;
+    const hit=el('rect',{x:padL+i*step-step/2,y:padT,width:step,height:plotH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, lab, [{label:opts.seriesName||'Giá trị',value:fmt(opts.values[i],opts.digits)+(opts.unit?(' '+opts.unit):''),color:opts.color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    svg.appendChild(hit);
+    const c=el('circle',{cx:pts[i][0],cy:pts[i][1],r:2.6,fill:opts.color,stroke:'var(--card)','stroke-width':1});
+    svg.appendChild(c);
+    if(showTick){
+      svg.appendChild(txt('text',{x:pts[i][0],y:padT+plotH+14,'text-anchor':'middle',class:'catlabel'}, lab));
+    }
+    if(i===n-1){ svg.appendChild(txt('text',{x:pts[i][0],y:pts[i][1]-10,'text-anchor':'end',class:'endlabel',fill:opts.color}, fmt(opts.values[i],opts.digits))); }
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* chart-type switcher (assets/chart-types.js): native view = renderer above */
+function barLineChart(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host||!window.ChartTypes) return barLineChartBase(containerId, opts);
+  ChartTypes.mount(host,{categories:opts.categories,tickLabels:opts.tickLabels,series:opts.series.map(s=>({name:s.name,color:s.color,kind:s.kind,values:s.values,conf:s.confArr,strokeWidth:s.strokeWidth})),unit:opts.unit,digits:opts.digits,zeroBase:opts.zeroBase,height:opts.height,stackable:opts.stackable,aria:opts.ariaLabel},()=>barLineChartBase(containerId,opts));
+}
+function lineChart(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host||!window.ChartTypes) return lineChartBase(containerId, opts);
+  ChartTypes.mount(host,{categories:opts.labels,series:[{name:opts.seriesName||'Giá trị',color:opts.color,kind:'line',values:opts.values}],unit:opts.unit,digits:opts.digits,zeroBase:opts.zeroBase,height:opts.height,aria:opts.ariaLabel},()=>lineChartBase(containerId,opts));
+}
+
+/* multi-series real-date range/dot chart (VN price) */
+function rangeDotChart(containerId, opts){
+  const W=640,H=260;
+  const padL=48,padR=14,padT=14,padB=28;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const domainStart=opts.domain[0].getTime(), domainEnd=opts.domain[1].getTime();
+  const xOf=(d)=> padL + plotW*( (d.getTime()-domainStart) / (domainEnd-domainStart) );
+  let maxV=0;
+  opts.series.forEach(s=> s.points.forEach(p=>{ if(p.high>maxV) maxV=p.high; }));
+  const yMax=niceMax(maxV*1.1);
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  for(let y=opts.domain[0].getFullYear(); y<=opts.domain[1].getFullYear(); y++){
+    const d=new Date(y+'-01-01T00:00:00');
+    if(d<opts.domain[0]||d>opts.domain[1]) continue;
+    const x=xOf(d);
+    svg.appendChild(el('line',{x1:x,x2:x,y1:padT,y2:padT+plotH,class:'gridline'}));
+    svg.appendChild(txt('text',{x:x,y:padT+plotH+13,'text-anchor':'start',class:'catlabel'}, String(y)));
+  }
+  opts.series.forEach(s=>{
+    s.points.forEach(p=>{
+      const d=new Date(p.date+'T00:00:00');
+      const x=xOf(d);
+      const yLow=yToPx(p.low), yHigh=yToPx(p.high), yMid=yToPx(p.mid);
+      if(p.high>p.low){ svg.appendChild(el('line',{x1:x,x2:x,y1:yHigh,y2:yLow,stroke:s.color,'stroke-width':2,opacity:0.55})); }
+      const c=el('circle',{cx:x,cy:yMid,r: p.conf===false?4:4.5, fill: p.conf===false? 'var(--card)':s.color, stroke:s.color,'stroke-width':2});
+      const hit=el('circle',{cx:x,cy:yMid,r:13,fill:'transparent',class:'hitband',tabindex:'0'});
+      const label=p.label+(p.conf===false?' (độ tin cậy thấp)':'');
+      hit.addEventListener('pointerenter',e=>showTip(e, p.date.split('-').reverse().join('/'), [{label:label,value:fmt(p.low)+'–'+fmt(p.high)+' đ/kg',color:s.color}]));
+      hit.addEventListener('pointermove',moveTip);
+      hit.addEventListener('pointerleave',hideTip);
+      svg.appendChild(hit);
+      svg.appendChild(c);
+    });
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* horizontal compare bars — single snapshot, N entities */
+function hbarCompare(containerId, opts){
+  const items=opts.items, n=items.length;
+  const W=640, padT=8, padB=8, rowH=Math.max(38,(260-padT-padB)/n); /* same total height as the other charts */
+  const H=padT+padB+rowH*n;
+  const padL=8, padR=64, labelW=opts.labelW||112;
+  const plotW=W-padL-padR-labelW;
+  const maxV=niceMax(Math.max.apply(null, items.map(it=>it.value))*1.15);
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  items.forEach((it,i)=>{
+    const y=padT+i*rowH;
+    const barH=Math.min(rowH-16,30), barY=y+(rowH-barH)/2;
+    const bw=plotW*(it.value/maxV);
+    svg.appendChild(txt('text',{x:padL+labelW-8,y:y+rowH/2+4,'text-anchor':'end',class:'catlabel',style:'font-weight:700'}, it.label));
+    const r=el('rect',{x:padL+labelW,y:barY,width:Math.max(bw,2),height:barH,rx:4,ry:4,fill:it.color});
+    r.appendChild(txt('title',{},it.label+': '+fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+    const hit=el('rect',{x:padL+labelW,y:barY,width:Math.max(bw,2),height:barH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, it.label, [{label:opts.unit||'Giá trị', value:fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):''), color:it.color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    svg.appendChild(r);
+    svg.appendChild(txt('text',{x:padL+labelW+bw+8,y:y+rowH/2+4,class:'endlabel',fill:'var(--ink2)'}, fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+    svg.appendChild(hit);
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+function balanceBarChart(containerId, opts){
+  const labels=opts.labels, values=opts.values, every=opts.labelEvery||1, digits=opts.digits??1;
+  const W=640,H=260,padL=52,padR=20,padT=16,padB=38;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const maxAbs=Math.max(opts.minScale||1, Math.max.apply(null, values.map(v=>Math.abs(v))))*1.2;
+  const zeroY=padT+plotH/2;
+  const svg=baseSvg(W,H,opts.ariaLabel||containerId);
+  [-1,0,1].forEach(t=>{
+    const y=zeroY-(plotH/2)*t;
+    svg.appendChild(el('line',{x1:padL,y1:y,x2:W-padR,y2:y,class:t===0?'axisline':'gridline'}));
+    svg.appendChild(txt('text',{x:padL-8,y:y+3,'text-anchor':'end',class:'axislabel'},fmt(t*maxAbs,digits)));
+  });
+  const band=plotW/labels.length, barW=Math.max(1,Math.min(46, band*(every>1?0.8:0.55)));
+  values.forEach((v,i)=>{
+    const x=padL+i*band+(band-barW)/2;
+    const yVal=zeroY-(plotH/2)*(v/maxAbs);
+    const y=Math.min(zeroY,yVal);
+    const h=Math.max(1,Math.abs(zeroY-yVal));
+    const color=v>=0?(opts.colors?.[0]||S3):(opts.colors?.[1]||S2);
+    svg.appendChild(el('rect',{x:x,y:y,width:barW,height:h,rx:every>1?0:4,ry:every>1?0:4,fill:color,opacity:.9}));
+    const hit=el('rect',{x:padL+i*band,y:padT,width:band,height:plotH,fill:'transparent',class:'hitband',tabindex:every>1?'-1':'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, labels[i], [{label:opts.name||'Cung - cầu', value:fmt(v,digits)+' '+(opts.unit||''), color:color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    if(every===1) svg.appendChild(txt('text',{x:x+barW/2,y:v>=0?y-5:y+h+12,'text-anchor':'middle',class:'endlabel',fill:'var(--ink2)'},fmt(v,digits)));
+    if((i%every===0&&labels.length-1-i>=every/2)||i===labels.length-1) svg.appendChild(txt('text',{x:x+barW/2,y:H-14,'text-anchor':'middle',class:'catlabel'},labels[i]));
+    svg.appendChild(hit);
+  });
+  if(every>1){const i=values.length-1,v=values[i],x=padL+i*band+band/2,yVal=zeroY-(plotH/2)*(v/maxAbs);svg.appendChild(txt('text',{x:x-4,y:v>=0?yVal-6:yVal+14,'text-anchor':'end',class:'endlabel',fill:'var(--ink2)'},fmt(v,digits)));}
+  svg.appendChild(txt('text',{x:padL,y:H-4,class:'axislabel'},opts.unit||''));
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+function sparkline(id, values, color){
+  const host=document.getElementById(id);
+  if(!host) return;
+  const W=100,H=26,pad=3;
+  const maxV=Math.max.apply(null, values), minV=Math.min.apply(null, values);
+  const range=(maxV-minV)||1;
+  const step=(W-pad*2)/(values.length-1);
+  const pts=values.map((v,i)=>[pad+i*step, H-pad-(H-pad*2)*((v-minV)/range)]);
+  const d='M'+pts.map(p=>p[0]+','+p[1]).join(' L');
+  host.appendChild(el('path',{d:d,fill:'none',stroke:color,'stroke-width':1.6,'stroke-linecap':'round','stroke-linejoin':'round',opacity:0.55}));
+  const last=pts[pts.length-1];
+  host.appendChild(el('circle',{cx:last[0],cy:last[1],r:2.4,fill:color}));
+}
+
+function fillTable(id, headers, rows){
+  const t=document.getElementById(id);
+  if(!t) return;
+  const thead=el('thead' ); // not svg NS, use html
+  t.innerHTML='';
+  const theadHtml=document.createElement('thead');
+  const trh=document.createElement('tr');
+  headers.forEach(h=>{ const th=document.createElement('th'); th.textContent=h; trh.appendChild(th); });
+  theadHtml.appendChild(trh); t.appendChild(theadHtml);
+  const tbody=document.createElement('tbody');
+  rows.forEach(r=>{
+    const tr=document.createElement('tr');
+    r.forEach(c=>{ const td=document.createElement('td'); td.textContent=c; tr.appendChild(td); });
+    tbody.appendChild(tr);
+  });
+  t.appendChild(tbody);
+}
+
+function showMajorTab(key, btn){
+  document.querySelectorAll(".majorpane").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll(".majortabbtn").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll('.majorpane[data-tab="'+key+'"]').forEach(x=>x.classList.add("active"));
+  const activeBtn = btn || Array.from(document.querySelectorAll(".majortabbtn")).find(x => (x.getAttribute("onclick") || "").indexOf("'"+key+"'") >= 0);
+  if(activeBtn) activeBtn.classList.add("active");
+  if(location.hash !== "#"+key) history.replaceState(null, "", "#"+key);
+}
+const initialTab = (location.hash || "").replace("#", "");
+if(document.querySelector('.majorpane[data-tab="'+initialTab+'"]')) showMajorTab(initialTab);
+window.addEventListener("hashchange", () => {
+  const nextTab = (location.hash || "").replace("#", "");
+  if(document.querySelector('.majorpane[data-tab="'+nextTab+'"]')) showMajorTab(nextTab);
+});
+</script>
+</body>
+</html>

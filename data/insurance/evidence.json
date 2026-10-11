@@ -1,0 +1,882 @@
+[
+ {
+  "block": "bh-22",
+  "claim": "Tổng DT phí bảo hiểm 9T2026",
+  "value": "175,8 nghìn tỷ đồng, +2,4% YoY",
+  "url": "https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tính chung 9 tháng, doanh thu phí toàn thị trường ước đạt 175,8 nghìn tỷ đồng, tăng 2,4%.",
+  "status": "match",
+  "note": "B1. Tạp chí Kinh tế Tài chính, theo báo cáo KT-XH Q3/9T 2026"
+ },
+ {
+  "block": "bh-22",
+  "claim": "DT phí phi nhân thọ 9T2026",
+  "value": "74,1 nghìn tỷ đồng, +15,1%",
+  "url": "https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html",
+  "opened_at": "2026-10-11",
+  "quote": "Bảo hiểm phi nhân thọ tiếp tục giữ vai trò dẫn dắt với doanh thu phí ước đạt 74,1 nghìn tỷ đồng, tăng 15,1%.",
+  "status": "match",
+  "note": "B1. Tạp chí Kinh tế Tài chính, theo báo cáo KT-XH Q3/9T 2026"
+ },
+ {
+  "block": "bh-22",
+  "claim": "DT phí nhân thọ 9T2026",
+  "value": "101,7 nghìn tỷ đồng, -5,2%",
+  "url": "https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trong khi đó, doanh thu phí bảo hiểm nhân thọ đạt khoảng 101,7 nghìn tỷ đồng, giảm 5,2%.",
+  "status": "match",
+  "note": "B1. Tạp chí Kinh tế Tài chính, theo báo cáo KT-XH Q3/9T 2026"
+ },
+ {
+  "block": "bh-22",
+  "claim": "DT phí quý III/2026",
+  "value": "57,9 nghìn tỷ đồng, +2,8%",
+  "url": "https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html",
+  "opened_at": "2026-10-11",
+  "quote": "tổng doanh thu phí bảo hiểm quý III ước đạt 57,9 nghìn tỷ đồng, tăng 2,8% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "B1. Tạp chí Kinh tế Tài chính, theo báo cáo KT-XH Q3/9T 2026"
+ },
+ {
+  "block": "bh-22",
+  "claim": "Chi trả quyền lợi 9T2026",
+  "value": "77,9 nghìn tỷ đồng, +13,1%",
+  "url": "https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trong chín tháng năm 2026, tổng chi trả quyền lợi bảo hiểm ước đạt 77,9 nghìn tỷ đồng, tăng 13,1% so với cùng kỳ năm 2025.",
+  "status": "match",
+  "note": "B1. Tạp chí Kinh tế Tài chính, theo báo cáo KT-XH Q3/9T 2026"
+ },
+ {
+  "block": "bh-22",
+  "claim": "Tổng tài sản 9T2026",
+  "value": "1.211,7 nghìn tỷ đồng, +10,9%",
+  "url": "https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tổng tài sản ước đạt 1.211,7 nghìn tỷ đồng, tăng 10,9%; tổng dự phòng nghiệp vụ tăng 8,2%; nguồn vốn chủ sở hữu của các doanh nghiệp bảo hiểm tăng 4,6%.",
+  "status": "match",
+  "note": "B1. Tạp chí Kinh tế Tài chính, theo báo cáo KT-XH Q3/9T 2026"
+ },
+ {
+  "block": "bh-22",
+  "claim": "Đầu tư trở lại nền kinh tế 9T2026",
+  "value": "1.062,1 nghìn tỷ đồng, +14,1%",
+  "url": "https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html",
+  "opened_at": "2026-10-11",
+  "quote": "Đặc biệt, tổng số tiền đầu tư trở lại nền kinh tế ước đạt 1.062,1 nghìn tỷ đồng, tăng 14,1%.",
+  "status": "match",
+  "note": "B1. Tạp chí Kinh tế Tài chính, theo báo cáo KT-XH Q3/9T 2026"
+ },
+ {
+  "block": "bh-22",
+  "claim": "Năm 2025: DT phí và chi trả quyền lợi",
+  "value": "DT phí 237.211 tỷ đồng (+3,96%); chi trả 91.845 tỷ đồng (+13,52%)",
+  "url": "https://thoibaotaichinhvietnam.vn/thi-truong-bao-hiem-giu-da-tang-truong-cung-co-nen-tang-cho-giai-doan-moi-189319-189319.html",
+  "opened_at": "2026-10-11",
+  "quote": "tổng doanh thu phí bảo hiểm ước đạt 237.211 tỷ đồng, tăng 3,96%; chi trả quyền lợi bảo hiểm ước đạt 91.845 tỷ đồng, tăng 13,52%.",
+  "status": "match",
+  "note": "B1. Thời báo Tài chính VN, hội nghị tổng kết Cục QLGSBH"
+ },
+ {
+  "block": "bh-22",
+  "claim": "Năm 2025: tổng tài sản, đầu tư trở lại nền kinh tế",
+  "value": "Tổng tài sản ~1.114 nghìn tỷ (+8,58%); đầu tư 958.987 tỷ (+10,31%)",
+  "url": "https://thoibaotaichinhvietnam.vn/thi-truong-bao-hiem-giu-da-tang-truong-cung-co-nen-tang-cho-giai-doan-moi-189319-189319.html",
+  "opened_at": "2026-10-11",
+  "quote": "tổng tài sản toàn thị trường ước đạt gần 1.114 triệu tỷ đồng, tăng 8,58% so với năm 2024; tổng vốn đầu tư trở lại nền kinh tế ước đạt 958.987 tỷ đồng, tăng 10,31%",
+  "status": "match",
+  "note": "B1. Thời báo Tài chính VN, hội nghị tổng kết Cục QLGSBH"
+ },
+ {
+  "block": "bh-22",
+  "claim": "Năm 2025: DT phí nhân thọ",
+  "value": "148.786 tỷ đồng, 62,7% toàn ngành",
+  "url": "https://thoibaotaichinhvietnam.vn/thi-phan-doanh-nghiep-bao-hiem-nhan-tho-bien-dong-manh-trong-giai-doan-tai-cau-truc-190715-190715.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trong đó, khối bảo hiểm nhân thọ đạt khoảng 148.786 tỷ đồng, chiếm 62,7% tổng doanh thu toàn ngành",
+  "status": "match",
+  "note": "B1. Thời báo Tài chính VN, số liệu Cục QLGSBH"
+ },
+ {
+  "block": "bh-21",
+  "claim": "Phí khai thác mới nhân thọ 7T2024",
+  "value": "13.960 tỷ đồng, -19% YoY, -50% so 2022",
+  "url": "https://vietnamfinance.vn/doanh-thu-bao-hiem-nhan-tho-tiep-tuc-giam-ky-vong-tro-lai-nho-phap-ly-d117586.html",
+  "opened_at": "2026-10-11",
+  "quote": "doanh thu phí bảo hiểm nhân thọ khai thác mới, tính trong 7 tháng năm 2024 đạt 13.960 tỷ đồng, giảm gần 19% so với cùng kỳ năm trước và giảm trên 50% so với cùng kỳ năm 2022",
+  "status": "match",
+  "note": "B2. VietnamFinance 2024, số liệu Cục QLGSBH"
+ },
+ {
+  "block": "bh-21",
+  "claim": "Phí khai thác mới liên kết đầu tư 2024",
+  "value": "giảm trên 32% YoY",
+  "url": "https://vietnamfinance.vn/doanh-thu-bao-hiem-nhan-tho-tiep-tuc-giam-ky-vong-tro-lai-nho-phap-ly-d117586.html",
+  "opened_at": "2026-10-11",
+  "quote": "doanh thu khai thác mới của nghiệp vụ bảo hiểm liên kết đầu tư giảm trên 32%, ở chiều ngược lại nghiệp vụ bảo hiểm hỗn hợp tăng gần 200%",
+  "status": "match",
+  "note": "B2. VietnamFinance 2024, số liệu Cục QLGSBH"
+ },
+ {
+  "block": "bh-21",
+  "claim": "Phí khai thác mới 10T2025",
+  "value": "19.483 tỷ đồng",
+  "url": "https://thoibaotaichinhvietnam.vn/thi-phan-doanh-nghiep-bao-hiem-nhan-tho-bien-dong-manh-trong-giai-doan-tai-cau-truc-190715-190715.html",
+  "opened_at": "2026-10-11",
+  "quote": "tổng doanh thu phí bảo hiểm khai thác mới trong 10 tháng 2025 ước đạt hơn 19.483 tỷ đồng.",
+  "status": "match",
+  "note": "B2. Thời báo Tài chính VN, số liệu Cục QLGSBH"
+ },
+ {
+  "block": "bh-21",
+  "claim": "Phí khai thác mới 8T2026",
+  "value": "14.105 tỷ đồng, -11,7%",
+  "url": "https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html",
+  "opened_at": "2026-10-11",
+  "quote": "doanh thu phí bảo hiểm khai thác mới ước đạt 14.105 tỷ đồng, giảm 11,7% so với cùng kỳ.",
+  "status": "match",
+  "note": "B2. Thị trường Tài chính Tiền tệ 08/10/2026, số liệu IAV"
+ },
+ {
+  "block": "bh-21",
+  "claim": "Hợp đồng khai thác mới 8T2026",
+  "value": "1.033.926 HĐ, +2,9%",
+  "url": "https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html",
+  "opened_at": "2026-10-11",
+  "quote": "thị trường bảo hiểm nhân thọ ghi nhận 1.033.926 hợp đồng khai thác mới, tăng 2,9% so với cùng kỳ năm 2025.",
+  "status": "match",
+  "note": "B2. Thị trường Tài chính Tiền tệ 08/10/2026, số liệu IAV"
+ },
+ {
+  "block": "bh-21",
+  "claim": "Hợp đồng có hiệu lực cuối 8T2026",
+  "value": "11.292.491 HĐ, -2,6%",
+  "url": "https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tổng số hợp đồng bảo hiểm có hiệu lực cuối kỳ đạt 11.292.491 hợp đồng, giảm 2,6% so với cùng kỳ năm 2025.",
+  "status": "match",
+  "note": "B2. Thị trường Tài chính Tiền tệ 08/10/2026, số liệu IAV"
+ },
+ {
+  "block": "bh-21",
+  "claim": "Thị phần khai thác mới 10T2025: Bảo Việt Nhân thọ",
+  "value": "21,7% (+5,1 điểm % so 2024), dẫn đầu",
+  "url": "https://thoibaotaichinhvietnam.vn/thi-phan-doanh-nghiep-bao-hiem-nhan-tho-bien-dong-manh-trong-giai-doan-tai-cau-truc-190715-190715.html",
+  "opened_at": "2026-10-11",
+  "quote": "Bảo Việt Nhân thọ nổi bật nhất khi chiếm 21,7% thị phần, tăng thêm 5,1 điểm phần trăm so với năm 2024",
+  "status": "match",
+  "note": "B2. Thời báo Tài chính VN, số liệu Cục QLGSBH"
+ },
+ {
+  "block": "bh-21",
+  "claim": "Thị phần khai thác mới 10T2025: AIA",
+  "value": "12,1%, thứ 3",
+  "url": "https://thoibaotaichinhvietnam.vn/thi-phan-doanh-nghiep-bao-hiem-nhan-tho-bien-dong-manh-trong-giai-doan-tai-cau-truc-190715-190715.html",
+  "opened_at": "2026-10-11",
+  "quote": "AIA cũng là điểm sáng đáng chú ý khi vươn lên thứ 3 với 12,1% thị phần, tăng mạnh 5,8 điểm phần trăm so với năm 2024",
+  "status": "match",
+  "note": "B2. Thời báo Tài chính VN, số liệu Cục QLGSBH"
+ },
+ {
+  "block": "bh-13",
+  "claim": "DT phí phi nhân thọ 8T2026 (IAV)",
+  "value": "66.191 tỷ đồng, +16,6%",
+  "url": "https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo IAV, doanh thu 8 tháng năm 2026 ước đạt 66.191 tỷ đồng, tăng 16,6% so với cùng kỳ năm 2025.",
+  "status": "match",
+  "note": "B3. Thị trường Tài chính Tiền tệ 08/10/2026, số liệu IAV"
+ },
+ {
+  "block": "bh-13",
+  "claim": "Sức khỏe 8T2026",
+  "value": "23.979 tỷ đồng, 36,2% thị trường, +20,7%",
+  "url": "https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html",
+  "opened_at": "2026-10-11",
+  "quote": "Bảo hiểm sức khỏe tiếp tục chiếm tỷ trọng lớn nhất với doanh thu 23.979 tỷ đồng, tương đương 36,2% tổng doanh thu thị trường, tăng 20,7% so với cùng kỳ.",
+  "status": "match",
+  "note": "B3. Thị trường Tài chính Tiền tệ 08/10/2026, số liệu IAV"
+ },
+ {
+  "block": "bh-13",
+  "claim": "Tài sản & kỹ thuật 8T2026",
+  "value": "18.600 tỷ đồng, +17,3%",
+  "url": "https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html",
+  "opened_at": "2026-10-11",
+  "quote": "Bảo hiểm tài sản và bảo hiểm kỹ thuật đạt doanh thu 18.600 tỷ đồng, chiếm 28,1% tổng doanh thu, tăng 17,3%.",
+  "status": "match",
+  "note": "B3. Thị trường Tài chính Tiền tệ 08/10/2026, số liệu IAV"
+ },
+ {
+  "block": "bh-13",
+  "claim": "Xe cơ giới 8T2026",
+  "value": "14.501 tỷ đồng, +8,2%",
+  "url": "https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html",
+  "opened_at": "2026-10-11",
+  "quote": "Bảo hiểm xe cơ giới đạt doanh thu 14.501 tỷ đồng, chiếm 21,9% tổng doanh thu thị trường, tăng 8,2%.",
+  "status": "match",
+  "note": "B3. Thị trường Tài chính Tiền tệ 08/10/2026, số liệu IAV"
+ },
+ {
+  "block": "bh-13",
+  "claim": "Bồi thường gốc phi nhân thọ 8T2026",
+  "value": "21.365 tỷ đồng, tỷ lệ 32,3%",
+  "url": "https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html",
+  "opened_at": "2026-10-11",
+  "quote": "Bồi thường bảo hiểm gốc đạt 21.365 tỷ đồng, tương ứng tỷ lệ bồi thường 32,3%.",
+  "status": "match",
+  "note": "B3. Thị trường Tài chính Tiền tệ 08/10/2026, số liệu IAV"
+ },
+ {
+  "block": "bh-13",
+  "claim": "Thị phần 10T2025: PVI, Bảo Việt",
+  "value": "PVI 17,7% (12.749 tỷ); Bảo Việt 12,9% (9.292 tỷ)",
+  "url": "https://thoibaotaichinhvietnam.vn/mieng-banh-bao-hiem-phi-nhan-tho-lon-dan-cuoc-dua-gianh-thi-phan-them-gay-gat-191154-191154.html",
+  "opened_at": "2026-10-11",
+  "quote": "PVI tiếp tục dẫn đầu với thị phần 17,7% trong 10 tháng 2025, cao hơn những năm trước dao động từ 14 - 17%.",
+  "status": "match",
+  "note": "B3. Thời báo Tài chính VN, số liệu Cục QLGSBH 10T2025"
+ },
+ {
+  "block": "bh-13",
+  "claim": "Thị phần 10T2025: Bảo Minh, MIC, BIC",
+  "value": "Bảo Minh 7,1%; MIC 5,9%; BIC 5,7%",
+  "url": "https://thoibaotaichinhvietnam.vn/mieng-banh-bao-hiem-phi-nhan-tho-lon-dan-cuoc-dua-gianh-thi-phan-them-gay-gat-191154-191154.html",
+  "opened_at": "2026-10-11",
+  "quote": "MIC và BIC thì sát nút, với thị phần lần lượt 5,9% và 5,7%, đều giảm so với cuối năm 2024, phản ánh áp lực cạnh tranh.",
+  "status": "match",
+  "note": "B3. Thời báo Tài chính VN, số liệu Cục QLGSBH 10T2025"
+ },
+ {
+  "block": "bh-13",
+  "claim": "DT phí phi nhân thọ năm 2025",
+  "value": "88.425 tỷ đồng, +11%",
+  "url": "https://thoibaotaichinhvietnam.vn/mieng-banh-bao-hiem-phi-nhan-tho-lon-dan-cuoc-dua-gianh-thi-phan-them-gay-gat-191154-191154.html",
+  "opened_at": "2026-10-11",
+  "quote": "đưa tổng doanh thu phí bảo hiểm khối phi nhân thọ ước 88.425 tỷ đồng, tăng 11%.",
+  "status": "match",
+  "note": "B3. Thời báo Tài chính VN, số liệu Cục QLGSBH 10T2025"
+ },
+ {
+  "block": "bh-13",
+  "claim": "Bão Yagi: ước thiệt hại thuộc phạm vi bảo hiểm (22/11/2024)",
+  "value": "11.465 tỷ đồng phi nhân thọ; đã tạm ứng 471 tỷ",
+  "url": "https://www.tinnhanhchungkhoan.vn/tinh-den-ngay-2211-cac-cong-ty-bao-hiem-tam-ung-boi-thuong-471-ty-dong-sau-bao-yagi-post359364.html",
+  "opened_at": "2026-10-11",
+  "quote": "các công ty bảo hiểm phi nhân thọ đã tiếp nhận được 14.662 thông tin thiệt hại về bảo hiểm phi nhân thọ, sức khoẻ ước tính là 11.465 tỷ đồng do bão Yagi gây ra.",
+  "status": "match",
+  "note": "B3. Tin nhanh chứng khoán, 11/2024, số liệu Cục QLGSBH"
+ },
+ {
+  "block": "bh-50",
+  "claim": "Luật KDBH 08/2022/QH15 hiệu lực",
+  "value": "1/1/2023",
+  "url": "https://thitruongtaichinhtiente.vn/sua-doi-luat-kinh-doanh-bao-hiem-go-nut-that-tao-da-phat-trien-thi-truong-69854.html",
+  "opened_at": "2026-10-11",
+  "quote": "Luật Kinh doanh bảo hiểm số 08/2022/QH15 được Quốc hội nước Cộng hòa xã hội chủ nghĩa Việt Nam khoá XV, kỳ họp thứ 3 thông qua vào ngày 16/6/2022, có hiệu lực từ ngày 1/1/2023.",
+  "status": "match",
+  "note": "B4. Thị trường Tài chính Tiền tệ 22/08/2025, dự thảo sửa luật"
+ },
+ {
+  "block": "bh-50",
+  "claim": "Nghị định 46/2023 hiệu lực",
+  "value": "1/7/2023 (một số điều từ 1/1/2023)",
+  "url": "https://thoibaotaichinhvietnam.vn/ban-hanh-nghi-dinh-huong-dan-thi-hanh-luat-kinh-doanh-bao-hiem-131228.html",
+  "opened_at": "2026-10-11",
+  "quote": "Nghị định 46/2023/NĐ-CP có hiệu từ ngày 1/7/2023 trừ các quy định sau có hiệu lực từ ngày 1/1/2023",
+  "status": "match",
+  "note": "B4. Thời báo Tài chính VN 07/2023"
+ },
+ {
+  "block": "bh-50",
+  "claim": "Thông tư 67/2023: cấm bán BH liên kết đầu tư quanh khoản vay",
+  "value": "60 ngày trước và sau giải ngân",
+  "url": "https://vneconomy.vn/bo-sung-nhieu-quy-dinh-moi-nang-chat-ngan-tinh-trang-ep-khach-hang-mua-bao-hiem.htm",
+  "opened_at": "2026-10-11",
+  "quote": "tổ chức tín dụng không được tư vấn, giới thiệu, chào bán, thu xếp việc giao kết hợp đồng bảo hiểm liên kết đầu tư cho khách hàng trong thời hạn trước 60 ngày và sau 60 ngày kể từ ngày giải ngân toàn bộ khoản vay.",
+  "status": "match",
+  "note": "B4. VnEconomy 11/2023"
+ },
+ {
+  "block": "bh-50",
+  "claim": "Vốn trên cơ sở rủi ro (RBC): mốc luật 2028, BTC đề xuất lùi/thử nghiệm",
+  "value": "2028",
+  "url": "https://thitruongtaichinhtiente.vn/sua-doi-luat-kinh-doanh-bao-hiem-go-nut-that-tao-da-phat-trien-thi-truong-69854.html",
+  "opened_at": "2026-10-11",
+  "quote": "Do đó, việc triển khai ngay mô hình vốn trên cơ sở rủi ro vào năm 2028 sẽ gặp khó khăn về nguồn lực và cơ sở hạ tầng thông tin.",
+  "status": "match",
+  "note": "B4. Thị trường Tài chính Tiền tệ 22/08/2025, dự thảo sửa luật"
+ },
+ {
+  "block": "bh-32",
+  "claim": "Lãi suất tiết kiệm 12 tháng Big4 (đầu 10/2026)",
+  "value": "5,9%/năm (VCB, BIDV, VietinBank)",
+  "url": "https://thitruongtaichinhtiente.vn/lai-suat-dau-thang-10-2026-tiet-kiem-giu-nhip-on-dinh-chung-chi-tien-gui-hut-khach-85944.html",
+  "opened_at": "2026-10-11",
+  "quote": "Vietcombank, BIDV và VietinBank cùng niêm yết lãi suất kỳ hạn 6 và 9 tháng ở mức 3,5%/năm, kỳ hạn 12 tháng ở mức 5,9%/năm và kỳ hạn 24 tháng ở mức 6,0%/năm.",
+  "status": "match",
+  "note": "B5. Thị trường Tài chính Tiền tệ 01/10/2026"
+ },
+ {
+  "block": "bh-32",
+  "claim": "Lãi suất 12 tháng 35 ngân hàng",
+  "value": "3,7%–7,8%/năm",
+  "url": "https://thitruongtaichinhtiente.vn/lai-suat-dau-thang-10-2026-tiet-kiem-giu-nhip-on-dinh-chung-chi-tien-gui-hut-khach-85944.html",
+  "opened_at": "2026-10-11",
+  "quote": "Xét riêng kỳ hạn 12 tháng, lãi suất huy động tại 35 ngân hàng trải từ 3,7% đến 7,8%/năm",
+  "status": "match",
+  "note": "B5. Thị trường Tài chính Tiền tệ 01/10/2026"
+ },
+ {
+  "block": "bh-32",
+  "claim": "Lãi suất trúng thầu TPCP 10 năm cuối 9/2026",
+  "value": "4,43%/năm",
+  "url": "https://thoibaotaichinhvietnam.vn/thanh-khoan-thi-truong-trai-phieu-chinh-phu-tang-manh-trong-thang-9-205140.html",
+  "opened_at": "2026-10-11",
+  "quote": "tại phiên đấu thầu cuối tháng 9, lãi suất trúng thầu trái phiếu Chính phủ kỳ hạn 5 năm đạt 4,27%/năm, kỳ hạn 10 năm đạt 4,43%/năm và kỳ hạn 30 năm đạt 4,62%/năm.",
+  "status": "match",
+  "note": "B5. Thời báo Tài chính VN 10/2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ 6T/2026 hợp nhất: tổng doanh thu",
+  "value": "32.004 tỷ đồng, +9,2% YoY",
+  "url": "https://nhadautu.vn/tap-doan-bao-viet-bvh-tong-doanh-thu-hop-nhat-6-thang-dau-nam-2026-dat-hon-32000-ty-dong-tang-truong-92-d106710.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tổng doanh thu hợp nhất 6 tháng đầu năm 2026 đạt 32.004 tỷ đồng, tăng trưởng 9,2% so với cùng kỳ năm 2025.",
+  "status": "match",
+  "note": "BVH. nhadautu.vn, bài sau BCTC Q2/2026 (T7-8/2026); số trước soát xét"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ 6T/2026 hợp nhất: LNTT / LNST",
+  "value": "2.289 tỷ (+34,5%) / 1.863 tỷ đồng (+33,9%)",
+  "url": "https://nhadautu.vn/tap-doan-bao-viet-bvh-tong-doanh-thu-hop-nhat-6-thang-dau-nam-2026-dat-hon-32000-ty-dong-tang-truong-92-d106710.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lợi nhuận trước thuế và sau thuế hợp nhất lần lượt đạt 2.289 tỷ đồng và 1.863 tỷ đồng, tăng trưởng lần lượt 34,5% và 33,9%.",
+  "status": "match",
+  "note": "BVH. nhadautu.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Q2/2026: phí bảo hiểm thuần đi ngang; LNTT quý",
+  "value": "phí thuần 10.447 tỷ (-0,2%); LNTT 1.283 tỷ (+50%)",
+  "url": "https://mekongasean.vn/bao-viet-bao-lai-quy-2-tang-50-dau-tu-hon-4200-ty-dong-vao-co-phieu-57996.html",
+  "opened_at": "2026-10-11",
+  "quote": "Kết quả, lợi nhuận trước thuế quý 2/2026 tại Tập đoàn Bảo Việt đạt 1.283 tỷ đồng, tăng 50% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "BVH. mekongasean.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Tách lãi Q2/2026: lãi gộp KD bảo hiểm vs lãi HĐ tài chính",
+  "value": "KDBH 983 tỷ (+66%) vs tài chính 3.238 tỷ (+18%)",
+  "url": "https://mekongasean.vn/bao-viet-bao-lai-quy-2-tang-50-dau-tu-hon-4200-ty-dong-vao-co-phieu-57996.html",
+  "opened_at": "2026-10-11",
+  "quote": "Chi phí tài chính cũng tăng mạnh 86% YoY lên 1.202 tỷ đồng, song lợi nhuận từ hoạt động tài chính vẫn đạt 3.238 tỷ đồng, tăng 18% YoY.",
+  "status": "match",
+  "note": "BVH. mekongasean.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Tách mảng 6T/2026: Bảo hiểm Bảo Việt (phi nhân thọ) và Bảo Việt Nhân thọ",
+  "value": "PNT doanh thu 7.404 tỷ (+21,1%), LNST +5,3%; Nhân thọ 23.803 tỷ (+5,3%)",
+  "url": "https://doanhnhan.baophapluat.vn/loi-nhuan-bao-viet-bvh-tang-gan-34-khoi-tai-san-can-moc-12-ty-usd.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể, Tổng Công ty Bảo hiểm Bảo Việt ghi nhận tổng doanh thu đạt 7.404 tỷ đồng, tăng trưởng 21,1% so với cùng kỳ, lợi nhuận sau thuế tăng 5,3%.",
+  "status": "match",
+  "note": "BVH. doanhnhan.baophapluat.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Danh mục 30/6/2026: tiền gửi ngắn hạn / dài hạn",
+  "value": "115.668 tỷ / 51.041 tỷ đồng; lãi suất cao nhất 8,6%",
+  "url": "https://mekongasean.vn/bao-viet-bao-lai-quy-2-tang-50-dau-tu-hon-4200-ty-dong-vao-co-phieu-57996.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể, tiền gửi ngắn hạn đạt 115.668 tỷ đồng, trong khi tiền gửi dài hạn (kỳ hạn trên một năm) đạt 51.041 tỷ đồng, với mức lãi suất cao nhất lên tới 8,6%/năm.",
+  "status": "match",
+  "note": "BVH. mekongasean.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Tổng tài sản hợp nhất 30/6/2026",
+  "value": "315.683 tỷ đồng (~12 tỷ USD), +8,2% so đầu năm",
+  "url": "https://nhadautu.vn/tap-doan-bao-viet-bvh-tong-doanh-thu-hop-nhat-6-thang-dau-nam-2026-dat-hon-32000-ty-dong-tang-truong-92-d106710.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tổng tài sản hợp nhất tại thời điểm 30/06/2026 đạt 315.683 tỷ đồng, tương đương khoảng 12 tỷ USD, tăng 8,2% so với thời điểm 31/12/2025.",
+  "status": "match",
+  "note": "BVH. nhadautu.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Dự phòng nghiệp vụ bảo hiểm 30/6/2026",
+  "value": "207.705 tỷ đồng, >72% nợ phải trả",
+  "url": "https://mekongasean.vn/bao-viet-bao-lai-quy-2-tang-50-dau-tu-hon-4200-ty-dong-vao-co-phieu-57996.html",
+  "opened_at": "2026-10-11",
+  "quote": "Ngược lại, dự phòng nghiệp vụ bảo hiểm lên tới 207.705 tỷ đồng, chiếm hơn 72% tổng nợ phải trả, tiếp tục là khoản mục lớn nhất trên bảng cân đối kế toán của tập đoàn.",
+  "status": "match",
+  "note": "BVH. mekongasean.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ Q1/2026: LNTT / LNST hợp nhất",
+  "value": "1.006 tỷ (+18,7%) / 816 tỷ đồng (+18,8%)",
+  "url": "https://doanhnhan.baophapluat.vn/tap-doan-bao-viet-bvh-chot-ngay-to-chuc-dhdcd-thuong-nien-2026-lai-quy-i-tang-truong-hon-18.html",
+  "opened_at": "2026-10-11",
+  "quote": "Về kết quả kinh doanh, quý I/2026, tổng doanh thu hợp nhất của BVH đạt 15.610 tỷ đồng, tăng 9,1% so với cùng kỳ năm 2025. Lợi nhuận trước thuế và sau thuế hợp nhất lần lượt đạt 1.006 tỷ đồng và 816 tỷ đồng, tăng trưởng 18,7% và 18,8%.",
+  "status": "match",
+  "note": "BVH. doanhnhan.baophapluat.vn, bài trước ĐHĐCĐ 2026 (Q2/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Kế hoạch 2026 hợp nhất: tổng doanh thu / LNTT / cổ tức",
+  "value": "28.815 tỷ / 1.243 tỷ đồng (-15% so TH 2025) / 30%",
+  "url": "https://thoibaotaichinhvietnam.vn/pvi-sap-can-dich-ke-hoach-loi-nhuan-chi-sau-6-thang-danh-muc-dau-tu-tien-sat-20-000-ty-dong-201195.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lợi nhuận trước thuế dự kiến đạt 1.243 tỷ đồng, thấp hơn gần 15% so với kết quả thực hiện năm 2025, nhưng cao hơn 14% so với kế hoạch năm 2025.",
+  "status": "match",
+  "note": "PVI. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ 6T/2026: LNTT",
+  "value": "1.239,65 tỷ đồng, +31,8% YoY, gần bằng KH năm",
+  "url": "https://thoibaotaichinhvietnam.vn/pvi-sap-can-dich-ke-hoach-loi-nhuan-chi-sau-6-thang-danh-muc-dau-tu-tien-sat-20-000-ty-dong-201195.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 6 tháng đầu năm 2026, PVI đạt 1.239,65 tỷ đồng lợi nhuận trước thuế, vẫn duy trì đà tăng mạnh 31,8%.",
+  "status": "match",
+  "note": "PVI. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ 6T/2026: phí gốc / phí nhận tái / tổng phí",
+  "value": "trên 9.000 tỷ (+12,2%) / 6.730,4 tỷ (+15,8%) / 15.731,3 tỷ (+13,7%)",
+  "url": "https://thoibaotaichinhvietnam.vn/pvi-sap-can-dich-ke-hoach-loi-nhuan-chi-sau-6-thang-danh-muc-dau-tu-tien-sat-20-000-ty-dong-201195.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể, doanh thu phí bảo hiểm gốc đạt trên 9.000 tỷ đồng, tăng 12,2% so với cùng kỳ; trong khi doanh thu phí nhận tái bảo hiểm đạt 6.730,4 tỷ đồng, tăng 15,8%, đưa tổng doanh thu phí bảo hiểm PVI tăng 13,7% lên 15.731,3 tỷ đồng.",
+  "status": "match",
+  "note": "PVI. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Tách lãi 6T/2026: lãi gộp KD bảo hiểm vs lãi tài chính",
+  "value": "KDBH 1.110 tỷ (+38%); tài chính >500 tỷ (+10,3%)",
+  "url": "https://thoibaotaichinhvietnam.vn/pvi-sap-can-dich-ke-hoach-loi-nhuan-chi-sau-6-thang-danh-muc-dau-tu-tien-sat-20-000-ty-dong-201195.html",
+  "opened_at": "2026-10-11",
+  "quote": "Nửa đầu năm 2026, lợi nhuận gộp từ hoạt động kinh doanh bảo hiểm của PVI đạt 1.110 tỷ đồng, tăng 38% so với cùng kỳ.",
+  "status": "match",
+  "note": "PVI. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Q2/2026: LNTT quý; chi bồi thường tăng mạnh",
+  "value": "LNTT 534,6 tỷ (+3,3%); chi bồi thường 3.178,8 tỷ (+67,1%)",
+  "url": "https://thoibaotaichinhvietnam.vn/pvi-sap-can-dich-ke-hoach-loi-nhuan-chi-sau-6-thang-danh-muc-dau-tu-tien-sat-20-000-ty-dong-201195.html",
+  "opened_at": "2026-10-11",
+  "quote": "Ở chiều ngược lại, chi bồi thường tăng mạnh 67,1%, lên 3.178,8 tỷ đồng, cho thấy doanh nghiệp đã gia tăng chi trả quyền lợi bảo hiểm cho khách hàng khi quy mô khai thác mở rộng.",
+  "status": "match",
+  "note": "PVI. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Q2/2026: thu bồi thường nhượng tái bảo hiểm (đối tác quốc tế, có HDI Global)",
+  "value": "2.472 tỷ đồng, +~90% YoY (kỳ trước 1.305 tỷ)",
+  "url": "https://vietnamfinance.vn/bao-hiem-pvi-phi-tai-bao-hiem-tiep-tuc-tang-dong-gop-40-doanh-thu-d148324.html",
+  "opened_at": "2026-10-11",
+  "quote": "Đáng chú ý, trong quý II/2026, thu bồi thường nhượng tái bảo hiểm của PVI tăng gần 90% so với cùng kỳ, khi đạt 2.472 tỷ đồng, (kỳ trước 1.305 tỷ đồng).",
+  "status": "match",
+  "note": "PVI. vietnamfinance.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Danh mục đầu tư cuối Q2/2026: quy mô, tỷ trọng tiền gửi",
+  "value": "sát 20.000 tỷ; tiền gửi >14.300 tỷ (72%)",
+  "url": "https://thoibaotaichinhvietnam.vn/pvi-sap-can-dich-ke-hoach-loi-nhuan-chi-sau-6-thang-danh-muc-dau-tu-tien-sat-20-000-ty-dong-201195.html",
+  "opened_at": "2026-10-11",
+  "quote": "Đến cuối quý II/2026, danh mục đầu tư tài chính của PVI tiếp tục mở rộng lên sát 20.000 tỷ đồng, trong đó, trên 14.300 tỷ đồng là tiền gửi ngân hàng (chiếm tỷ trọng 72%).",
+  "status": "match",
+  "note": "PVI. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Cổ tức 2025 (chốt 10/8/2026)",
+  "value": "33%: 23% tiền + 10% cổ phiếu, ~773 tỷ đồng",
+  "url": "https://thoibaotaichinhvietnam.vn/pvi-chi-dam-co-tuc-tren-770-ty-dong-kinh-doanh-vuot-bao-thien-tai-194343.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể, tỷ lệ chi trả cổ tức dự kiến 33%, trong đó 23% bằng tiền mặt và 10% bằng cổ phiếu, tương ứng quy mô chi trả gần 773 tỷ đồng, chiếm tới 96% lợi nhuận sau thuế năm 2025 có thể phân phối.",
+  "status": "match",
+  "note": "PVI. thoibaotaichinhvietnam.vn (TBTCO), bài trước ĐHĐCĐ 2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ 2025: LNTT, phí gốc kỷ lục",
+  "value": "LNTT 1.460 tỷ (vượt 34% KH); phí gốc 14.908 tỷ (+11,5%)",
+  "url": "https://thoibaotaichinhvietnam.vn/pvi-chi-dam-co-tuc-tren-770-ty-dong-kinh-doanh-vuot-bao-thien-tai-194343.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lợi nhuận trước thuế PVI năm 2025 đạt 1.460 tỷ đồng, vượt 34% kế hoạch, chủ yếu đến từ hiệu quả nghiệp vụ kinh doanh bảo hiểm, trong đó có đóng góp lớn từ hiệu quả kinh doanh tái bảo hiểm vượt trội.",
+  "status": "match",
+  "note": "PVI. thoibaotaichinhvietnam.vn (TBTCO), bài trước ĐHĐCĐ 2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Kế hoạch 2026: phí BH gốc / LNTT / cổ tức",
+  "value": "~7.038 tỷ (+30%) / ~550 tỷ đồng (+34,5%) / 10%",
+  "url": "https://mekongasean.vn/dhdcd-mic-2026-muc-tieu-top-3-thi-phan-bao-hiem-tim-doi-tac-chien-luoc-53786.html",
+  "opened_at": "2026-10-11",
+  "quote": "Bảo hiểm Quân đội cũng trình cổ đông mục tiêu doanh thu phí bảo hiểm gốc tăng trưởng 30% so với năm 2025 (YoY), dự kiến đạt khoảng 7.038 tỷ đồng và lợi nhuận năm 2026 ước đạt khoảng 550 tỷ đồng, tăng 34,5% YoY.",
+  "status": "match",
+  "note": "MIG. mekongasean.vn, ĐHĐCĐ 9/4/2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ 2025: phí gốc / LNTT",
+  "value": "5.414 tỷ (+7,9%) / 408,8 tỷ đồng (+32,7%)",
+  "url": "https://mekongasean.vn/dhdcd-mic-2026-muc-tieu-top-3-thi-phan-bao-hiem-tim-doi-tac-chien-luoc-53786.html",
+  "opened_at": "2026-10-11",
+  "quote": "Doanh thu bảo hiểm gốc đạt 5.414 tỷ đồng, tăng 7,9% so với năm 2024 và lợi nhuận trước thuế đạt 408,8 tỷ đồng, tăng 32,7%.",
+  "status": "match",
+  "note": "MIG. mekongasean.vn, ĐHĐCĐ 9/4/2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ 6T/2026: phí BH gốc / LNTT",
+  "value": "3.517,7 tỷ (+33,6%) / 245,2 tỷ đồng (+5,9%; ~44,6% KH)",
+  "url": "https://thoibaotaichinhvietnam.vn/mic-tang-truong-33-6-doanh-thu-phi-bao-hiem-goc-nam-thu-hai-lien-tiep-duoc-am-best-xep-hang-b-201565.html",
+  "opened_at": "2026-10-11",
+  "quote": "Doanh thu phí bảo hiểm gốc đạt 3.517,7 tỷ đồng, tăng 33,6% so với cùng kỳ năm trước; lợi nhuận trước thuế đạt 245,2 tỷ đồng, tăng 5,9%.",
+  "status": "match",
+  "note": "MIG. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Q2/2026: LNTT quý",
+  "value": "117,4 tỷ đồng, +11% YoY",
+  "url": "https://mekongasean.vn/doanh-thu-tang-manh-bao-hiem-quan-doi-lai-hon-117-ty-dong-trong-quy-22026-57717.html",
+  "opened_at": "2026-10-11",
+  "quote": "Do phát sinh khoản lỗ khác 4,4 tỷ đồng, lợi nhuận trước thuế của MIG trong quý 2/2026 đạt 117,4 tỷ đồng, tăng 11% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "MIG. mekongasean.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Q2/2026: lãi gộp KD bảo hiểm; chi bồi thường",
+  "value": "lãi gộp KDBH 171,5 tỷ (+13%); chi bồi thường 422,4 tỷ (+11%)",
+  "url": "https://mekongasean.vn/doanh-thu-tang-manh-bao-hiem-quan-doi-lai-hon-117-ty-dong-trong-quy-22026-57717.html",
+  "opened_at": "2026-10-11",
+  "quote": "Kết quả, lợi nhuận gộp từ hoạt động kinh doanh bảo hiểm đạt 171,5 tỷ đồng, tăng 13% so với cùng kỳ.",
+  "status": "match",
+  "note": "MIG. mekongasean.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Kênh bancassurance (MB) 6T/2026",
+  "value": "1.514 tỷ đồng, +72% YoY",
+  "url": "https://thoibaotaichinhvietnam.vn/mic-tang-truong-33-6-doanh-thu-phi-bao-hiem-goc-nam-thu-hai-lien-tiep-duoc-am-best-xep-hang-b-201565.html",
+  "opened_at": "2026-10-11",
+  "quote": "Doanh thu từ kênh bancassurance đạt 1.514 tỷ đồng, tăng 72% so với cùng kỳ, tiếp tục đóng vai trò quan trọng trong tăng trưởng của MIC.",
+  "status": "match",
+  "note": "MIG. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Tổng tài sản / dự phòng nghiệp vụ 30/6/2026",
+  "value": "gần 12.500 tỷ (+11%) / gần 5.500 tỷ đồng",
+  "url": "https://mekongasean.vn/doanh-thu-tang-manh-bao-hiem-quan-doi-lai-hon-117-ty-dong-trong-quy-22026-57717.html",
+  "opened_at": "2026-10-11",
+  "quote": "Về quy mô tài chính, tính đến ngày 30/6/2026, tổng tài sản của MIG đạt gần 12.500 tỷ đồng, tăng hơn 11% so với đầu năm.",
+  "status": "match",
+  "note": "MIG. mekongasean.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Kế hoạch 2026: doanh thu bảo hiểm / LNTT",
+  "value": "4.139 tỷ / 320 tỷ đồng (-14,2% so TH 2025)",
+  "url": "https://thoibaotaichinhvietnam.vn/pti-dat-ke-hoach-than-trong-va-tang-von-dieu-le-hon-600-ty-dong-trong-nam-2026-196173.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tại đại hội, doanh nghiệp trình cổ đông kế hoạch kinh doanh năm 2026 với doanh thu bảo hiểm dự kiến đạt 4.139 tỷ đồng và lợi nhuận trước thuế 320 tỷ đồng, thấp hơn 14,2% so với mức thực hiện năm 2025.",
+  "status": "match",
+  "note": "PTI. thoibaotaichinhvietnam.vn (TBTCO), ĐHĐCĐ 2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Combined ratio 2025",
+  "value": "91,85%",
+  "url": "https://thoibaotaichinhvietnam.vn/pti-dat-ke-hoach-than-trong-va-tang-von-dieu-le-hon-600-ty-dong-trong-nam-2026-196173.html",
+  "opened_at": "2026-10-11",
+  "quote": "PTI không tham gia các phân khúc có mức cạnh tranh phí cao khiến biên lợi nhuận thấp, qua đó duy trì tỷ lệ kết hợp (combined ratio) ở mức 91,85%.",
+  "status": "match",
+  "note": "PTI. thoibaotaichinhvietnam.vn (TBTCO), ĐHĐCĐ 2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ 2025: phí gốc / LNTT",
+  "value": "3.758 tỷ (82,6% KH) / 373 tỷ đồng (vượt 16,5% KH)",
+  "url": "https://mekongasean.vn/bao-hiem-buu-dien-khong-thong-qua-phuong-an-phat-hanh-co-phieu-tang-von-54377.html",
+  "opened_at": "2026-10-11",
+  "quote": "Năm 2025, PTI đạt tổng doanh thu bảo hiểm gốc 3.758 tỷ đồng, hoàn thành 82,6% kế hoạch; lợi nhuận trước thuế đạt 373 tỷ đồng, vượt 16,5% so với kế hoạch.",
+  "status": "match",
+  "note": "PTI. mekongasean.vn, ĐHĐCĐ 2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Cổ tức 2025: ĐHĐCĐ không thông qua cả hai phương án tiền mặt 0% và 10% (DB Insurance là cổ đông lớn)",
+  "value": "10% (~121 tỷ) bị bác",
+  "url": "https://mekongasean.vn/bao-hiem-buu-dien-khong-thong-qua-phuong-an-phat-hanh-co-phieu-tang-von-54377.html",
+  "opened_at": "2026-10-11",
+  "quote": "Do đó, Hội đồng quản trị trình Đại hội đồng cổ đông xem xét lựa chọn một trong hai phương án: không chia cổ tức tiền mặt (0%) hoặc chia cổ tức tiền mặt 10%, tương ứng số tiền chi trả gần 121 tỷ đồng.",
+  "status": "match",
+  "note": "PTI. mekongasean.vn, ĐHĐCĐ 2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Q2/2026: LNTT giảm do bồi thường tăng",
+  "value": "LNTT ~83 tỷ (-24%); chi bồi thường 371 tỷ (+48%)",
+  "url": "https://mekongasean.vn/pti-lai-quy-2-giam-24-do-chi-phi-boi-thuong-tang-manh-58110.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trong đó, tổng chi phí bồi thường bảo hiểm tăng tới 48% YoY, lên 371 tỷ đồng, chủ yếu do chi bồi thường gốc tăng và dự phòng bồi thường biến động.",
+  "status": "match",
+  "note": "PTI. mekongasean.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ 6T/2026: phí bảo hiểm / LNTT",
+  "value": "2.152 tỷ (+4%) / ~166 tỷ đồng (-15%)",
+  "url": "https://mekongasean.vn/pti-lai-quy-2-giam-24-do-chi-phi-boi-thuong-tang-manh-58110.html",
+  "opened_at": "2026-10-11",
+  "quote": "Sau khi chi phí quản lý doanh nghiệp giảm 6% xuống còn gần 57 tỷ đồng, lợi nhuận trước thuế 6 tháng của PTI đạt gần 166 tỷ đồng, giảm 15% so với cùng kỳ.",
+  "status": "match",
+  "note": "PTI. mekongasean.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Danh mục đầu tư 30/6/2026: dài hạn / ngắn hạn",
+  "value": "3.384 tỷ (+187%) / 1.226 tỷ đồng (-58%)",
+  "url": "https://mekongasean.vn/pti-lai-quy-2-giam-24-do-chi-phi-boi-thuong-tang-manh-58110.html",
+  "opened_at": "2026-10-11",
+  "quote": "Đầu tư tài chính dài hạn tăng mạnh 187%, đạt 3.384 tỷ đồng, trong khi đầu tư tài chính ngắn hạn giảm 58%, còn 1.226 tỷ đồng.",
+  "status": "match",
+  "note": "PTI. mekongasean.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Kế hoạch 2026: doanh thu phí (riêng lẻ) / LNTT hợp nhất",
+  "value": "6.230 tỷ (+17%) / 780 tỷ đồng (+~16%)",
+  "url": "https://thoibaotaichinhvietnam.vn/bao-hiem-bic-bao-lai-tang-manh-trong-quy-ii-mo-rong-danh-muc-dau-tu-len-gan-7-500-ty-dong-201645.html",
+  "opened_at": "2026-10-11",
+  "quote": "Năm 2026, Bảo hiểm BIC đề ra mục tiêu đạt tổng doanh thu phí bảo hiểm (theo báo cáo riêng lẻ của công ty mẹ) đạt 6.230 tỷ đồng, tăng 17%; lợi nhuận trước thuế hợp nhất đạt 780 tỷ đồng, tăng gần 16%.",
+  "status": "match",
+  "note": "BIC. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ 6T/2026 hợp nhất: LNTT",
+  "value": "288,8 tỷ đồng, 37% KH năm",
+  "url": "https://thoibaotaichinhvietnam.vn/bao-hiem-bic-bao-lai-tang-manh-trong-quy-ii-mo-rong-danh-muc-dau-tu-len-gan-7-500-ty-dong-201645.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 6 tháng đầu năm, BIC ghi nhận lợi nhuận trước thuế đạt 288,8 tỷ đồng, tương ứng đạt 37% kế hoạch năm.",
+  "status": "match",
+  "note": "BIC. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ 6T/2026 (BCTC mekongasean dẫn): LNTT / LNST giảm",
+  "value": "267 tỷ (-33%) / 206 tỷ đồng (-35%)",
+  "url": "https://mekongasean.vn/chi-phi-boi-thuong-tang-hon-40-loi-nhuan-quy-2-cua-bic-giam-2-chu-so-58036.html",
+  "opened_at": "2026-10-11",
+  "quote": "Dù chi phí quản lý doanh nghiệp giảm 5% xuống còn 365 tỷ đồng, lợi nhuận trước thuế lũy kế 6 tháng của BIC vẫn giảm 33% xuống 267 tỷ đồng.",
+  "status": "match",
+  "note": "BIC. mekongasean.vn, bài sau BCTC Q2/2026 (T7-8/2026); lệch với 288,8 tỷ của TBTCO, có thể khác phạm vi riêng lẻ/hợp nhất"
+ },
+ {
+  "block": "bh-60",
+  "claim": "6T/2026: phí BH gốc; nguyên nhân giảm lãi (không còn chốt lời CK)",
+  "value": "phí gốc 2.832,8 tỷ (+5,7%)",
+  "url": "https://thoibaotaichinhvietnam.vn/bao-hiem-bic-bao-lai-tang-manh-trong-quy-ii-mo-rong-danh-muc-dau-tu-len-gan-7-500-ty-dong-201645.html",
+  "opened_at": "2026-10-11",
+  "quote": "Phí bảo hiểm gốc duy trì đà tăng 5,7% lên 2.832,8 tỷ đồng, cho thấy hoạt động khai thác tiếp tục duy trì đà tăng trưởng.",
+  "status": "match",
+  "note": "BIC. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "6T/2026: chi bồi thường; lãi gộp KD bảo hiểm",
+  "value": "chi bồi thường ~872 tỷ (+34%); lãi gộp KDBH 453 tỷ (-13%)",
+  "url": "https://mekongasean.vn/chi-phi-boi-thuong-tang-hon-40-loi-nhuan-quy-2-cua-bic-giam-2-chu-so-58036.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo thuyết minh báo cáo tài chính, chi bồi thường bảo hiểm của BIC tăng 34% YoY lên gần 872 tỷ đồng, trong khi thu bồi thường nhượng tái bảo hiểm tăng 46% YoY lên 272 tỷ đồng.",
+  "status": "match",
+  "note": "BIC. mekongasean.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Danh mục đầu tư 30/6/2026: dài hạn / ngắn hạn / CK kinh doanh",
+  "value": "2.160,6 tỷ / 4.707,2 tỷ / 585,5 tỷ (tổng gần 7.500 tỷ)",
+  "url": "https://thoibaotaichinhvietnam.vn/bao-hiem-bic-bao-lai-tang-manh-trong-quy-ii-mo-rong-danh-muc-dau-tu-len-gan-7-500-ty-dong-201645.html",
+  "opened_at": "2026-10-11",
+  "quote": "Danh mục đầu tư cũng được cơ cấu theo hướng an toàn và ổn định hơn, với đầu tư dài hạn tăng gấp đôi lên 2.160,6 tỷ đồng; trong khi đầu tư ngắn hạn giảm 12,1% còn 4.707,2 tỷ đồng; chứng khoán kinh doanh đạt 585,5 tỷ đồng, tăng 28,3%.",
+  "status": "match",
+  "note": "BIC. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "6T/2026: lãi tiền gửi, cho vay / lãi trái phiếu",
+  "value": "159,6 tỷ (+19,2%) / 36,5 tỷ đồng (+23,8%)",
+  "url": "https://thoibaotaichinhvietnam.vn/bao-hiem-bic-bao-lai-tang-manh-trong-quy-ii-mo-rong-danh-muc-dau-tu-len-gan-7-500-ty-dong-201645.html",
+  "opened_at": "2026-10-11",
+  "quote": "Ngược lại, lãi tiền gửi, cho vay tăng 19,2% lên 159,6 tỷ đồng; lãi đầu tư trái phiếu tăng 23,8% lên 36,5 tỷ đồng và cổ tức tăng 10% lên 8,7 tỷ đồng, cho thấy nguồn thu từ các tài sản sinh lãi tiếp tục tăng trưởng.",
+  "status": "match",
+  "note": "BIC. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Tổng tài sản / VCSH hợp nhất 2025",
+  "value": "10.092 tỷ (+16,2%) / 3.383 tỷ đồng",
+  "url": "https://thitruongtaichinhtiente.vn/dhdcd-thuong-nien-bic-2026-loi-nhuan-tang-truong-chi-tra-co-tuc-vuot-ke-hoach-82742.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tổng tài sản hợp nhất năm 2025 của BIC đạt 10.092 tỷ đồng, tăng trưởng 16,2% so với năm 2024.",
+  "status": "match",
+  "note": "BIC. thitruongtaichinhtiente.vn, ĐHĐCĐ thường niên 2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Kế hoạch 2026: tổng doanh thu / LNTT tối thiểu",
+  "value": "7.260 tỷ (+2,08%) / 340 tỷ đồng (+12,6%)",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-bao-minh-bmi-chu-tich-giai-trinh-ve-khoan-tai-san-thieu-156-ty-dong-khien-co-phieu-bi-cat-margin.html",
+  "opened_at": "2026-10-11",
+  "quote": "Bước sang năm 2026, Bảo Minh đặt mục tiêu tổng doanh thu đạt 7.260 tỷ đồng (tăng 2,08% so với năm trước) và lợi nhuận trước thuế tối thiểu đạt 340 tỷ đồng (tăng 12,6%).",
+  "status": "match",
+  "note": "BMI. doanhnhan.baophapluat.vn, ĐHĐCĐ 2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Mục tiêu combined ratio 2026",
+  "value": "không vượt 97% phí giữ lại",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-bao-minh-bmi-chu-tich-giai-trinh-ve-khoan-tai-san-thieu-156-ty-dong-khien-co-phieu-bi-cat-margin.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trọng tâm của công ty là nâng cao chất lượng dịch vụ và kiểm soát chặt chẽ rủi ro, với mục tiêu gắt gao: duy trì tỷ lệ kết hợp (bồi thường và chi phí) không vượt quá 97% trên tổng doanh thu phí giữ lại.",
+  "status": "match",
+  "note": "BMI. doanhnhan.baophapluat.vn, ĐHĐCĐ 2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Cổ tức 2025",
+  "value": "15%: 5% tiền + 10% cổ phiếu",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-bao-minh-bmi-chu-tich-giai-trinh-ve-khoan-tai-san-thieu-156-ty-dong-khien-co-phieu-bi-cat-margin.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tại đại hội, cổ đông đã thông qua phương án phân phối lợi nhuận năm 2025 với tỷ lệ cổ tức 15%, trong đó 5% bằng tiền mặt và 10% bằng cổ phiếu.",
+  "status": "match",
+  "note": "BMI. doanhnhan.baophapluat.vn, ĐHĐCĐ 2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Q2/2026 và 6T/2026: LNST",
+  "value": "Q2 126,63 tỷ (+57,44%); 6T 182,19 tỷ đồng (+~27%)",
+  "url": "https://vnbusiness.vn/loi-nhuan-nganh-bao-hiem-phan-hoa-manh-doanh-nghiep-nhieu-tien-gui-chiem-uu-the.html",
+  "opened_at": "2026-10-11",
+  "quote": "Kết quả này đóng góp quan trọng vào con số lợi nhuận sau thuế lũy kế 6 tháng đầu năm ở mức 182,19 tỷ đồng, tăng gần 27% so với cùng kỳ.",
+  "status": "match",
+  "note": "BMI. vnbusiness.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ Q1/2026: LNTT / LNST giảm do bồi thường",
+  "value": "75,97 tỷ (-3,53%) / 55,56 tỷ đồng (-11,9%)",
+  "url": "https://doanhnhan.baophapluat.vn/loi-nhuan-quy-i-2026-cua-bao-minh-bmi-giam-do-chi-phi-boi-thuong-gia-tang.html",
+  "opened_at": "2026-10-11",
+  "quote": "Kết quả, lợi nhuận trước thuế quý I/2026 của Bảo Minh đạt 75,97 tỷ đồng, giảm 3,53%.",
+  "status": "match",
+  "note": "BMI. doanhnhan.baophapluat.vn, bài sau BCTC Q1/2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Q1/2026: dự phòng phải thu khó đòi",
+  "value": "163,6 tỷ đồng, +22,1% so cuối 2025",
+  "url": "https://doanhnhan.baophapluat.vn/loi-nhuan-quy-i-2026-cua-bao-minh-bmi-giam-do-chi-phi-boi-thuong-gia-tang.html",
+  "opened_at": "2026-10-11",
+  "quote": "Doanh nghiệp đã trích lập dự phòng phải thu ngắn hạn khó đòi ở mức 163,6 tỷ đồng, tăng 22,1% so với thời điểm cuối năm 2025.",
+  "status": "match",
+  "note": "BMI. doanhnhan.baophapluat.vn, bài sau BCTC Q1/2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Kế hoạch 2026: doanh thu / LNTT / cổ tức tiền",
+  "value": "4.266 tỷ (+10,2%) / 560 tỷ đồng (+10,3%) / 10%",
+  "url": "https://thoibaotaichinhvietnam.vn/tai-bao-hiem-vinare-phan-dau-nhieu-chi-tieu-tang-hai-chu-so-lai-560-ty-dong-194784.html",
+  "opened_at": "2026-10-11",
+  "quote": "Năm 2026, VINARE đặt mục tiêu doanh thu, trong đó gồm doanh thu phí bảo hiểm, đạt 4.266 tỷ đồng, tăng 10,2%; lợi nhuận trước thuế 560 tỷ đồng, tăng 10,3% và duy trì cổ tức tiền mặt 10%.",
+  "status": "match",
+  "note": "VNR. thoibaotaichinhvietnam.vn (TBTCO), ĐHĐCĐ 2026"
+ },
+ {
+  "block": "bh-60",
+  "claim": "KQ 6T/2026: LNTT / LNST",
+  "value": "290 tỷ (+17%) / 239 tỷ đồng (+12%)",
+  "url": "https://doanhnhan.baophapluat.vn/chi-phi-boi-thuong-tang-vot-tai-bao-hiem-quoc-gia-vnr-sut-giam-loi-nhuan-quy-ii.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lợi nhuận trước thuế bán niên đạt 290 tỷ đồng và lợi nhuận ròng thu về 239 tỷ đồng, tăng lần lượt 17% và 12%.",
+  "status": "match",
+  "note": "VNR. doanhnhan.baophapluat.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Tách lãi 6T/2026: lãi gộp tài chính vs KD bảo hiểm; %KH",
+  "value": "tài chính 257,1 tỷ (+21,6%) vs KDBH >70 tỷ; 52% KH",
+  "url": "https://thoibaotaichinhvietnam.vn/bo-trung-nhieu-gio-danh-muc-dau-tu-da-dang-giup-tai-bao-hiem-vinare-bao-lai-hon-290-ty-dong-201416.html",
+  "opened_at": "2026-10-11",
+  "quote": "Kết quả được hỗ trợ bởi hoạt động tài chính với lợi nhuận gộp 257,1 tỷ đồng, tăng 21,6%, trong khi lợi nhuận gộp hoạt động kinh doanh bảo hiểm tăng 3,4% lên hơn 70 tỷ đồng, nhờ kết quả ổn định trong quý I.",
+  "status": "match",
+  "note": "VNR. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Q2/2026: lãi gộp KD bảo hiểm giảm, biên gộp",
+  "value": "22 tỷ (-45%); biên 6,70% → 3,35%",
+  "url": "https://doanhnhan.baophapluat.vn/chi-phi-boi-thuong-tang-vot-tai-bao-hiem-quoc-gia-vnr-sut-giam-loi-nhuan-quy-ii.html",
+  "opened_at": "2026-10-11",
+  "quote": "Kết quả, lợi nhuận gộp hoạt động kinh doanh bảo hiểm giảm sâu 45% xuống còn 22 tỷ đồng, kéo theo biên lợi nhuận gộp rơi từ 6,70% xuống chỉ còn 3,35%.",
+  "status": "match",
+  "note": "VNR. doanhnhan.baophapluat.vn, bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Danh mục đầu tư 30/6/2026",
+  "value": "6.382 tỷ đồng; tiền gửi ngắn hạn 3.433,9 tỷ (98% ĐT ngắn hạn)",
+  "url": "https://thoibaotaichinhvietnam.vn/bo-trung-nhieu-gio-danh-muc-dau-tu-da-dang-giup-tai-bao-hiem-vinare-bao-lai-hon-290-ty-dong-201416.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tính đến ngày 30/6/2026, danh mục đầu tư tài chính của VINARE đạt 6.382 tỷ đồng, nhích nhẹ gần 2% so với đầu năm.",
+  "status": "match",
+  "note": "VNR. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Trái phiếu dài hạn 30/6/2026",
+  "value": "1.748,7 tỷ đồng, 60,7% ĐT dài hạn",
+  "url": "https://thoibaotaichinhvietnam.vn/bo-trung-nhieu-gio-danh-muc-dau-tu-da-dang-giup-tai-bao-hiem-vinare-bao-lai-hon-290-ty-dong-201416.html",
+  "opened_at": "2026-10-11",
+  "quote": "Ở danh mục đầu tư dài hạn, trái phiếu dài hạn vẫn chiếm tỷ trọng lớn nhất với 1.748,7 tỷ đồng, tương đương 60,7% danh mục.",
+  "status": "match",
+  "note": "VNR. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Cổ tức 2025 (thanh toán 14/8/2026)",
+  "value": "10% tiền + 5% cổ phiếu",
+  "url": "https://thoibaotaichinhvietnam.vn/bo-trung-nhieu-gio-danh-muc-dau-tu-da-dang-giup-tai-bao-hiem-vinare-bao-lai-hon-290-ty-dong-201416.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo đó, VINARE duy trì trả cổ tức bằng tiền với tỷ lệ 10% như nhiều năm nay, tương ứng 1 cổ phiếu được nhận 1.000 đồng, thời gian thanh toán dự kiến vào ngày 14/8/2026.",
+  "status": "match",
+  "note": "VNR. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-60",
+  "claim": "Sở hữu 25% Samsung Vina (SVI)",
+  "value": "400,9 tỷ đồng",
+  "url": "https://thoibaotaichinhvietnam.vn/bo-trung-nhieu-gio-danh-muc-dau-tu-da-dang-giup-tai-bao-hiem-vinare-bao-lai-hon-290-ty-dong-201416.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cùng với đó, VINARE hiện sở hữu 25% vốn tại Công ty TNHH Bảo hiểm Samsung Vina (SVI), với giá trị khoản đầu tư tăng 2,5% lên 400,9 tỷ đồng.",
+  "status": "match",
+  "note": "VNR. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ }
+]

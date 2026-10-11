@@ -82,6 +82,13 @@
       "url": "https://news.google.com/rss/search?q=%22gi%E1%BA%A3i%20ng%C3%A2n%20v%E1%BB%91n%20%C4%91%E1%BA%A7u%20t%C6%B0%20c%C3%B4ng%22&hl=vi&gl=VN&ceid=VN:vi",
       "match": "giải ngân|đầu tư công|chống bán phá giá|đường sắt tốc độ cao",
       "note": "Bộ Tài chính báo cáo giải ngân đầu tháng; mof.gov.vn khó mở, theo tin rồi mở bài dẫn báo cáo"
+    },
+    {
+      "id": "news.insurance",
+      "kind": "rss",
+      "url": "https://news.google.com/rss/search?q=%22doanh%20thu%20ph%C3%AD%20b%E1%BA%A3o%20hi%E1%BB%83m%22&hl=vi&gl=VN&ceid=VN:vi",
+      "match": "doanh thu phí bảo hiểm|Luật Kinh doanh bảo hiểm|bancassurance|bồi thường",
+      "note": "Bộ Tài chính công bố số thị trường hằng tháng/quý qua báo ngành tài chính"
     }
   ],
   "items": [
@@ -1585,7 +1592,7 @@
         "type": "none"
       },
       "where": {
-        "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html, Xay-dung/index.html",
+        "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html, Xay-dung/index.html, Bao-hiem/index.html",
         "blocks": [
           "dau-khi-01",
           "dau-khi-03",
@@ -1616,7 +1623,10 @@
           "vt-90",
           "xd-01",
           "xd-04",
-          "xd-90"
+          "xd-90",
+          "bh-01",
+          "bh-04",
+          "bh-90"
         ]
       }
     },
@@ -3520,6 +3530,274 @@
         ]
       },
       "how": "Cập nhật xd-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/construction-dashboard.js.",
+      "gates": [
+        "Số khớp chart",
+        "Không đụng ô analyst"
+      ]
+    },
+    {
+      "id": "insurance.wi.quarterly",
+      "tier": "B",
+      "title": "Wi: phí, bồi thường, lãi tài chính tổng hợp ngành bảo hiểm niêm yết",
+      "wiBlocks": [
+        "sector_fs_recent"
+      ],
+      "wiContract": "data/insurance-wi-contract.json",
+      "schedule": {
+        "type": "monthly",
+        "at": "07:00",
+        "days": [
+          1,
+          10
+        ]
+      },
+      "publication": "Sau mùa BCTC quý (20–30 tháng đầu quý sau; BCTC soát xét bán niên tháng 8)",
+      "source": {
+        "name": "WiData qua WiMCP",
+        "url": "https://widata.vn/"
+      },
+      "where": {
+        "page": "Bao-hiem/index.html",
+        "file": "data/insurance-wi-data.js",
+        "blocks": [
+          "bh-10",
+          "bh-11",
+          "bh-12",
+          "bh-20",
+          "bh-31"
+        ]
+      },
+      "how": "Gọi lại lời gọi sector_fs_recent; có quý mới thì chạy python3 scripts/build_insurance_wi.py, chưa có thì --done \"chưa có kỳ mới\".",
+      "gates": [
+        "Không chép tay số"
+      ]
+    },
+    {
+      "id": "insurance.wi.monthly",
+      "tier": "B",
+      "title": "Wi: lãi suất huy động 12 tháng, sản lượng ô tô, xe máy, huy động dân cư",
+      "wiBlocks": [
+        "macro_insurance"
+      ],
+      "wiContract": "data/insurance-wi-contract.json",
+      "schedule": {
+        "type": "monthly",
+        "at": "07:00",
+        "days": [
+          3,
+          15
+        ]
+      },
+      "publication": "NSO ngày 3 hằng tháng; lãi suất theo tháng",
+      "source": {
+        "name": "WiData qua WiMCP",
+        "url": "https://widata.vn/"
+      },
+      "where": {
+        "page": "Bao-hiem/index.html",
+        "file": "data/insurance-wi-data.js",
+        "blocks": [
+          "bh-14"
+        ]
+      },
+      "how": "Gọi lại lời gọi macro_insurance rồi chạy python3 scripts/build_insurance_wi.py.",
+      "gates": [
+        "Không chép tay số"
+      ]
+    },
+    {
+      "id": "insurance.wi.weekly",
+      "tier": "B",
+      "title": "Wi: lợi suất TPCP 10 năm",
+      "wiBlocks": [
+        "gbond_10y"
+      ],
+      "wiContract": "data/insurance-wi-contract.json",
+      "schedule": {
+        "type": "weekly",
+        "day": "mon",
+        "at": "07:00"
+      },
+      "publication": "Theo ngày",
+      "source": {
+        "name": "WiData qua WiMCP",
+        "url": "https://widata.vn/"
+      },
+      "where": {
+        "page": "Bao-hiem/index.html",
+        "file": "data/insurance-wi-data.js",
+        "blocks": [
+          "bh-30"
+        ]
+      },
+      "how": "Gọi lại gbond_10y với to_time = hôm nay rồi chạy python3 scripts/build_insurance_wi.py.",
+      "gates": [
+        "Không chép tay số"
+      ]
+    },
+    {
+      "id": "insurance.wi.valuation",
+      "tier": "B",
+      "title": "Wi: định giá phân ngành bảo hiểm (P/E, P/B, vốn hóa) theo phiên",
+      "wiBlocks": [
+        "sector_ratio_recent"
+      ],
+      "wiContract": "data/insurance-wi-contract.json",
+      "schedule": {
+        "type": "daily",
+        "at": "07:00",
+        "days": "mon-fri"
+      },
+      "publication": "Theo phiên giao dịch",
+      "source": {
+        "name": "WiData qua WiMCP",
+        "url": "https://widata.vn/"
+      },
+      "where": {
+        "page": "Bao-hiem/index.html",
+        "file": "data/insurance-wi-data.js",
+        "blocks": [
+          "bh-03"
+        ]
+      },
+      "how": "Gọi lại sector_ratio_recent với to_time = hôm nay rồi chạy script build.",
+      "gates": [
+        "Không chép tay số"
+      ]
+    },
+    {
+      "id": "insurance.market",
+      "tier": "C",
+      "title": "Toàn thị trường: phí, chi trả, nghiệp vụ, thị phần, khai thác mới nhân thọ",
+      "schedule": {
+        "type": "monthly",
+        "at": "07:00",
+        "days": [
+          5,
+          20
+        ]
+      },
+      "publication": "Bộ Tài chính / Hiệp hội Bảo hiểm công bố theo tháng, quý",
+      "source": {
+        "name": "Tạp chí Kinh tế Tài chính",
+        "url": "https://tapchikinhtetaichinh.vn/"
+      },
+      "where": {
+        "page": "Bao-hiem/index.html",
+        "blocks": [
+          "bh-02",
+          "bh-13",
+          "bh-15",
+          "bh-21",
+          "bh-22",
+          "bh-32"
+        ]
+      },
+      "how": "Mở bài công bố mới; cập nhật bảng và chart chMarket, chNlLines trong assets/insurance-dashboard.js; thêm evidence.",
+      "gates": [
+        "Mở trang gốc",
+        "Ghi kỳ số liệu"
+      ],
+      "watch": [
+        "news.insurance"
+      ]
+    },
+    {
+      "id": "insurance.policy",
+      "tier": "C",
+      "title": "Luật KDBH sửa đổi, nghị định, thông tư, RBC, giới hạn đầu tư",
+      "schedule": {
+        "type": "watch"
+      },
+      "publication": "Theo sự kiện",
+      "source": {
+        "name": "Bộ Tài chính",
+        "url": "https://mof.gov.vn/"
+      },
+      "where": {
+        "page": "Bao-hiem/index.html",
+        "blocks": [
+          "bh-50"
+        ]
+      },
+      "how": "Mở văn bản gốc; cập nhật bảng bh-50 và evidence.",
+      "gates": [
+        "Mở văn bản gốc",
+        "Ghi ngày hiệu lực"
+      ],
+      "watch": [
+        "news.insurance"
+      ]
+    },
+    {
+      "id": "insurance.companies",
+      "tier": "C",
+      "status": "manual",
+      "title": "Doanh nghiệp bảo hiểm: kế hoạch, kết quả",
+      "schedule": {
+        "type": "none"
+      },
+      "publication": "BCTC quý; chỉ cập nhật khi người dùng yêu cầu",
+      "source": {
+        "name": "BCTC công bố",
+        "url": "https://www.hsx.vn/"
+      },
+      "where": {
+        "page": "Bao-hiem/index.html",
+        "blocks": [
+          "bh-60"
+        ]
+      },
+      "how": "Khi người dùng nhắn: cập nhật bảng bh-60 và evidence.",
+      "gates": [
+        "Link BCTC hoặc bài dẫn"
+      ]
+    },
+    {
+      "id": "insurance.hot-topics",
+      "tier": "C",
+      "title": "Chủ đề nóng: bancassurance, sức khỏe, lãi suất",
+      "schedule": {
+        "type": "weekly",
+        "day": "mon",
+        "at": "07:00"
+      },
+      "publication": "Theo sự kiện",
+      "source": {
+        "name": "Thời báo Tài chính",
+        "url": "https://thoibaotaichinhvietnam.vn/"
+      },
+      "where": {
+        "page": "Bao-hiem/index.html",
+        "blocks": [
+          "bh-t1",
+          "bh-t2",
+          "bh-t3"
+        ]
+      },
+      "how": "Thêm mốc mới có ngày và link.",
+      "gates": [
+        "Mỗi dòng có ngày + link"
+      ]
+    },
+    {
+      "id": "insurance.ai.cycle",
+      "tier": "D",
+      "title": "Bảo hiểm: vị trí chu kỳ, đọc nhanh, Catalyst/Risk",
+      "schedule": {
+        "type": "data",
+        "sources": [],
+        "minDays": 7,
+        "material": [],
+        "note": "Viết lại khi có quý BCTC mới, số thị trường tháng mới, thiên tai lớn hoặc lãi suất đổi ≥30 điểm cơ bản"
+      },
+      "where": {
+        "page": "Bao-hiem/index.html",
+        "blocks": [
+          "bh-02"
+        ]
+      },
+      "how": "Cập nhật bh-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/insurance-dashboard.js.",
       "gates": [
         "Số khớp chart",
         "Không đụng ô analyst"
