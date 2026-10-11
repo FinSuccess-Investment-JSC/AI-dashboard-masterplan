@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-11T06:16:55.441438+00:00",
+  "run_at": "2026-10-11T15:02:34.787075+00:00",
   "errors": 0,
   "sources": {
     "wti": {
@@ -131,8 +131,8 @@
     "opec_capacity": {
       "status": "ok",
       "latest_observation": "2026-09-30",
-      "last_success_at": "2026-10-11T06:16:55.441438+00:00",
-      "last_checked_at": "2026-10-11T06:16:55.441438+00:00",
+      "last_success_at": "2026-10-11T15:02:34.787075+00:00",
+      "last_checked_at": "2026-10-11T15:02:34.787075+00:00",
       "error": null
     },
     "retail_fuel": {
@@ -152,8 +152,8 @@
     "world_balance": {
       "status": "ok",
       "latest_observation": "2027-12-31",
-      "last_success_at": "2026-10-11T06:16:55.441438+00:00",
-      "last_checked_at": "2026-10-11T06:16:55.441438+00:00",
+      "last_success_at": "2026-10-11T15:02:34.787075+00:00",
+      "last_checked_at": "2026-10-11T15:02:34.787075+00:00",
       "error": null
     },
     "sugar_vn_balance": {
@@ -208,8 +208,8 @@
     "vn_power_daily": {
       "status": "ok",
       "latest_observation": "2026-10-10",
-      "last_success_at": "2026-10-11T06:16:55.441438+00:00",
-      "last_checked_at": "2026-10-11T06:16:55.441438+00:00",
+      "last_success_at": "2026-10-11T15:02:34.787075+00:00",
+      "last_checked_at": "2026-10-11T15:02:34.787075+00:00",
       "error": null
     }
   }
