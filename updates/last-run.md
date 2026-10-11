@@ -1,8 +1,8 @@
-# Lịch cập nhật — 10/10/2026 21:42
+# Lịch cập nhật — 11/10/2026 13:19
 
-- 🆕 news.vasep: 1 mục mới — Một ngành hàng mang về hơn 9 tỷ USD cho Việt Nam sau 9 tháng, riêng Trung Quốc mua tới 1/4 - CafeF — https://news.google.com/rss/articles/CBMiyAFBVV95cUxQUTAzNU1aNjFWSUNhOVQ0Tmtub0k0b0hzUVJtb1lkOElpUUtiUGdRRWtjR1p2dG1vaVNidk1ScHFLX2RZbzFYUnhia2tETHBhZzZHTFVFVkdDRW0yNHBxd2dSTVB4b1BpQnBEZVA3dnFOa1JkRlNiYTVJYlZNdzlfbVhUNXNXS3l6U2N0SGlQZ2pqczQ2TktqMFpIQVVjd0dKUEJiSV9uSWJqNUt5OWd4dmVybWczYVc2NXhxaVBjWEtpUktLcVFqYQ?oc=5
-- 🆕 news.shipping-policy: 1 mục mới — Bộ luật Hàng hải và Đường thủy Việt Nam (sửa đổi): Cần làm rõ cơ sở thực tiễn - Tạp chí Diễn đàn Doanh nghiệp — https://news.google.com/rss/articles/CBMiugFBVV95cUxPSHVybnRHTWxaOHR1X0FPUjlvYjlfb3d5QmNrbjBpVVFCVnk0SGg5VHROSFl6Y1NEdWxjTklwODk1LVgxSThIZzdEbjRFV09vYkZNb0Q4bGE1akRSZmd4TDRTX1h1aEp6ZVA0WXZyVGg0U0Fha183V0plTEJrOG1JMzJvS1Rvd3NKLXRub09RNlM4clZYUWxveEdxZ2s0VVRhUU1MSnNEWGphaFJ5d1BYWkhGVmVicHAzbnc?oc=5
-- ❌ oil.retail-fuel lỗi 2 ngày: retail_fuel
+- 🆕 news.vasep: 3 mục mới — Xuất khẩu cá tra 8 tháng: Duy trì đà tăng, Trung Quốc và Brazil tạo lực đẩy - VASEP — https://news.google.com/rss/articles/CBMi3wFBVV95cUxNNlFNLWtETnFUdkppUmJ3bkM1cFRxbTduakVkdXFXZjNBM3Y4akpOWDRsQXROaVB4VUdydnhNQU8yNmR1Nk9qeVlMZ0U1dWxjemdOM1VUNmtmN0pnX1RKUnAyYU9DYXAyMDgxcDRnbEFUbmdFN2lzVURNX0dKZk9tZE5wQjd4Z3E4bDNJcmVGZ1JGa20zOVRnRXZnOFpFMUNUdHBNYkhoUnBqSm9BMVhpeElpZUZYdHBsWjRfdWVidmJXaVhtSHcxOUVuM093Ri10TzY0RFZNcG9xV0Fmb1dZ0gGuAUFVX3lxTE12eFR3SDFzbE5FdVVVdXpkLTRJTmdaR0t2SXRoSXE5cHpuckx4UFZ2R2ZuU2wyV1ZIYjhMeHUtMXBUc1ZvQ0ZpWXFpb0h4WWZpTGpJXzE0QnE0R1RDUTZvbUlwb0tDc1pFMmRlZjBVQXl1d1hMakZmdnJUUWNmaHBCYVFLUlVfMnhRRGdZNVlqaE1SeXJuai1iQ2RXS2hfeVg5UVRKQkJleTFuN3NGZw?oc=5; Xuất khẩu thủy sản Việt Nam tháng 8/2026 đạt 1,14 tỷ USD - Pháp Luật Plus — https://news.google.com/rss/articles/CBMingFBVV95cUxOcjdUa2s0bDRidkZ5eFBCazdMN3hOUjZLSDNaMzdhR0x1ZkhmZjh1ZGVLZWVBc0I0TmwxZFZoZlhZVVVISWFUR3Y2bU42bkNzXzAtbnpvcmJCNGN4NXNDRXJKUER0LXpCN3JoUEdHajYwbnd1Rkg2QzYzc2l6b1VWcXdyOGg2WjR5ejFWaEswanRVTTJuZjEyVjVFcVhNdw?oc=5; Infographic: Xuất khẩu Thuỷ sản của Việt Nam 11 tháng đầu năm 2025 - VASEP — https://news.google.com/rss/articles/CBMixwFBVV95cUxOWFQySU5TUm1OSEh3bDZJMEtadGo4eUlGWkJ2cThONTIzM0o3dXl1VnJ3V3hTRW5MdWFtX2lGSXMxaURtWDdhVTlmM1hybUFmV2I1bTdkN2FWdzM2R04xckFBN1lsMDNYcFlHVU10bHNnV1JnbFBVY0p6RGh5MnVOTnltSHJBNVRaVGt5MGZySW43NFY3dUc0SVo2ZzlSM2lyR0xiU2pZZ3p1Tjd3MV84ekdtT0VKV25pdjRxN3RkdFFhb0czdDlB0gGjAUFVX3lxTE45cUpOWkxDWGJSc3pCanIzU25nSEhzaE9KTFY4bXJFTm10UG95QWNTMWJURVAxVkVKWHZUcVFnX0tSLWZtUnhpcXJ5dzg1bmlncHdlVU5ZYnlEcnMtN0g5LVBjenkxS1BTY0ZCR2pJQlVwendUU3N2S0tTT0U4VXdOWVNKcGdCNXR3YkhSU0psMjZPUHFXRXZEamhDMmxqY2xqMTg?oc=5
+- 🆕 news.shipping-policy: 1 mục mới — Góp ý hoàn thiện Bộ luật Hàng hải và Đường thủy Việt Nam sửa đổi - VOH — https://news.google.com/rss/articles/CBMitAFBVV95cUxPTHFSRDREN1JGLXlxcmh5NWVxNEF2TjVPMFk1WExZQnFsVWMxZjdZUjFPUUsxWGc2VTJXWUZncTFYSjRMVEtSZC0wYmpFNTZweTFKWWRxbEszVi1xU2tpWDVHZGVSMGFvZGdNbUdDbVBQUEJEMlAyYVMtVHdYYU5oMHFkYWNjVTJUdGxZcHJMLXJOTmNDSUc2bngxczZOc2lFMjRqcFoxOGJfZXd1QTNWRldQQjA?oc=5
+- ❌ oil.retail-fuel lỗi 3 ngày: retail_fuel
 - → hàng chờ [C] sugar.domestic: lịch 01/10 07:00
 - → hàng chờ [C] sugar.crop: lịch 05/10 07:00
 - → hàng chờ [C] bank.policy: lịch 07/10 07:00
@@ -36,11 +36,11 @@
 - → hàng chờ [C] textile.policy: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [C] textile.hot-topics: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [D] textile.ai.cycle: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [B] port.wi.monthly: lịch 10/10 07:00
-- → hàng chờ [C] port.throughput: lịch 10/10 07:00
-- → hàng chờ [B] agri.wi.monthly: lịch 10/10 07:00
-- → hàng chờ [C] agri.weather: lịch 10/10 07:00
-- → hàng chờ [B] seafood.wi.monthly: lịch 10/10 07:00
-- → hàng chờ [C] seafood.trade: lịch 10/10 07:00
+- → hàng chờ [B] port.wi.monthly: lịch 11/10 07:00
+- → hàng chờ [C] port.throughput: lịch 11/10 07:00
+- → hàng chờ [B] agri.wi.monthly: lịch 11/10 07:00
+- → hàng chờ [C] agri.weather: lịch 11/10 07:00
+- → hàng chờ [B] seafood.wi.monthly: lịch 11/10 07:00
+- → hàng chờ [C] seafood.trade: lịch 11/10 07:00
 - → hàng chờ [C] shipping.policy: watcher báo có công bố mới
 - Hàng chờ Claude: 42 mục — sugar.domestic, sugar.crop, bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, sugar.ai.cycle, bank.ai.read, oil.supply-news
