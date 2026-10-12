@@ -1,10 +1,14 @@
 """Capture EVN reservoir observations around Vietnam midnight.
 
-Run at 00:15 Asia/Ho_Chi_Minh. A failed fetch/late source leaves existing data untouched.
+EVN serves any past instant through ?td=DD/MM/YYYY HH:MM, so a run at any hour can
+capture (or backfill) the 00:00 snapshot of earlier days. EVN times out requests from
+GitHub-hosted runners, so this runs from a machine in Vietnam. A failed fetch leaves
+existing data untouched.
 """
 import argparse
 import json
 import re
+import time
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -71,23 +75,51 @@ def parse(html, requested):
         raise ValueError('Duplicate reservoir in EVN response')
     return rows
 
+def fetch(requested):
+    td = requested.strftime('%d/%m/%Y %H:%M')
+    response = requests.get(URL, params={'td': td, 'vm': '', 'lv': '', 'hc': ''}, timeout=25,
+                            headers={'User-Agent':'FinSuccess hydro dashboard/1.0'})
+    response.raise_for_status()
+    return response.text
+
+def missing_days(start, end):
+    """Days in [start, end] without an archive file."""
+    day = start
+    while day <= end:
+        if not (RAW / f'{day.isoformat()}.json').exists():
+            yield day
+        day += timedelta(days=1)
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--html', help='Use saved HTML to inspect parser without publishing')
     ap.add_argument('--dry-run', action='store_true')
+    ap.add_argument('--date', help='Capture the 00:00 snapshot of this day (YYYY-MM-DD)')
+    ap.add_argument('--backfill-from', help='Capture every day from this date to today that has no archive file')
     args = ap.parse_args()
     now = datetime.now(TZ)
-    requested = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    today = now.date()
+    if args.backfill_from:
+        failed = 0
+        for day in missing_days(datetime.fromisoformat(args.backfill_from).date(), today):
+            try:
+                capture(datetime(day.year, day.month, day.day, tzinfo=TZ), now, dry_run=args.dry_run)
+            except (requests.RequestException, ValueError) as exc:
+                failed += 1
+                print(f'{day}: skipped ({exc})')
+            time.sleep(1)
+        if failed:
+            raise SystemExit(f'{failed} day(s) not captured; rerun to retry')
+        return
+    day = datetime.fromisoformat(args.date).date() if args.date else today
+    requested = datetime(day.year, day.month, day.day, tzinfo=TZ)
+    html = Path(args.html).read_text() if args.html else None
+    capture(requested, now, html=html, dry_run=args.dry_run or bool(args.html))
 
-    if args.html:
-        html = Path(args.html).read_text()
-    else:
-        response = requests.get(URL, timeout=25, headers={'User-Agent':'FinSuccess hydro dashboard/1.0'})
-        response.raise_for_status()
-        html = response.text
-    rows = parse(html, requested)
+def capture(requested, now, html=None, dry_run=False):
+    rows = parse(html if html is not None else fetch(requested), requested)
     print(f'{requested.date()}: {len(rows)} valid EVN rows within ±2h of 00:00')
-    if args.dry_run or args.html:
+    if dry_run:
         return
     if len(rows) < 15:
         raise ValueError('Too few timely EVN rows; keeping last-good')

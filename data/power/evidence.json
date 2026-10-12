@@ -1,0 +1,292 @@
+[
+ {
+  "block": "dien-17",
+  "claim": "Trần khung giá điện khí thiên nhiên 2026 (QĐ 1882/QĐ-BCT)",
+  "value": "3.410,64 đ/kWh",
+  "url": "https://moit.gov.vn/tin-tuc/phat-trien-nang-luong/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-nhiet-dien-khi-nam-2026.html",
+  "opened_at": "2026-10-12",
+  "quote": "Trong đó, mức giá tối đa (trần khung giá) được phê duyệt là 3.410,64 đồng/kWh.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Giá khí tham chiếu khung 2026",
+  "value": "11,98 USD/triệu BTU",
+  "url": "https://congthuong.vn/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-nhiet-dien-khi-nam-2026-466834.html",
+  "opened_at": "2026-10-12",
+  "quote": "Về thông số nhiên liệu, giá nhiên liệu chính (khí thiên nhiên) được tính ở mức 11,98 USD/triệu BTU; cước phí vận chuyển nhiên liệu chính đến nhà máy là 1,87 USD/triệu BTU.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Tỷ giá tham chiếu khung khí 2026",
+  "value": "26.378 đ/USD",
+  "url": "https://congthuong.vn/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-nhiet-dien-khi-nam-2026-466834.html",
+  "opened_at": "2026-10-12",
+  "quote": "Tỷ giá quy đổi được áp dụng trong phương án tính toán là 26.378 đồng/USD.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần khung giá điện khí thiên nhiên 2025",
+  "value": "3.069,38 đ/kWh",
+  "url": "https://vietnamfinance.vn/gia-tran-phat-dien-nhiet-dien-khi-tang-len-hon-3410-dong-kwh-d148211.html",
+  "opened_at": "2026-10-12",
+  "quote": "So với năm 2025, giá trần phát điện đối với các nhà máy nhiệt điện khí sử dụng khí thiên nhiên đã tăng khoảng 11,1%, từ 3.069,38 đồng/kWh lên 3.410,64 đồng/kWh.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần khung giá điện khí LNG 2025 (QĐ 1313/QĐ-BCT)",
+  "value": "3.327,42 đ/kWh",
+  "url": "https://sct.dongnai.gov.vn/vi/news/An-toan-thuc-pham/gia-dien-khi-lng-nam-2025-cao-nhat-la-3-327-42-dong-kwh-ht-13204.html",
+  "opened_at": "2026-10-12",
+  "quote": "Theo đó, mức giá tối đa (chưa bao gồm thuế giá trị gia tăng) của khung giá phát điện năm 2025 áp dụng cho loại hình nhà máy tua bin khí chu trình hỗn hợp sử dụng LNG quy định tại điểm a khoản 2 Điều 1 Thông tư số 09/2025/TT-BCT là 3.327,42 đồng/kWh.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần khung giá nhiệt điện than 2026 (QĐ 1692/QĐ-BCT)",
+  "value": "2.218,95 đ/kWh",
+  "url": "https://tapchicongthuong.vn/gia-phat-dien-toi-da-cho-nhiet-dien-than-nam-2026-la-2-218-95-dong-kwh-532494.htm",
+  "opened_at": "2026-10-12",
+  "quote": "Trong đó, mức giá tối đa là 2.218,95 đồng/kWh.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần khung giá thủy điện 2026 (QĐ 1127/QĐ-BCT)",
+  "value": "1.110 đ/kWh",
+  "url": "https://mekongasean.vn/bo-cong-thuong-phe-duyet-khung-gia-cho-thuy-dien-nam-2026-55273.html",
+  "opened_at": "2026-10-12",
+  "quote": "trong đó, mức giá tối đa được xác định là 1.110 đồng/kWh.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần khung giá thủy điện tích năng 2025 (QĐ 1198/QĐ-BCT)",
+  "value": "3.457,02 đ/kWh",
+  "url": "https://tapchicongthuong.vn/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-cho-thuy-dien-tich-nang-nam-2025-140187.htm",
+  "opened_at": "2026-10-12",
+  "quote": "g giá phát điện năm 2025 áp dụng cho loại hình nhà máy thủy điện tích năng theo quy định tại điểm a khoản 2 Điều 1 Thông tư số 09/2025/TT-BCT là 3.457,02 đồng/kWh (chưa bao gồm thuế giá trị gia tăng).",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần ĐMT mặt đất không lưu trữ 2025, miền Bắc/Trung/Nam (QĐ 988/QĐ-BCT)",
+  "value": "1.382,7 / 1.107,1 / 1.012,0 đ/kWh",
+  "url": "https://tapchicongthuong.vn/gia-phat-dien-toi-da-cho-nha-may-dien-mat-troi-la-1-876-57-dong-kwh-139270.htm",
+  "opened_at": "2026-10-12",
+  "quote": "Đối với nhà máy điện mặt trời mặt đất không có hệ thống pin tích trữ , mức giá tối đa (chưa bao gồm thuế giá trị gia tăng) cho khu vực miền Bắc là 1.382,7 đồng/kWh; miền Trung là 1.107,1 đồng/kWh; miền Nam là 1.012,0 đồng/kWh.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần ĐMT mặt đất có pin lưu trữ 2025, Bắc/Trung/Nam",
+  "value": "1.571,98 / 1.257,05 / 1.149,86 đ/kWh",
+  "url": "https://tapchicongthuong.vn/gia-phat-dien-toi-da-cho-nha-may-dien-mat-troi-la-1-876-57-dong-kwh-139270.htm",
+  "opened_at": "2026-10-12",
+  "quote": "Đối với nhà máy điện mặt trời mặt đất có hệ thống pin tích trữ , mức giá tối đa (chưa bao gồm thuế giá trị gia tăng) cho khu vực miền Bắc là 1.571,98 đồng/kWh; miền Trung là 1.257,05 đồng/kWh; miền Nam là 1.149,86 đồng/kWh.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần ĐMT nổi có pin lưu trữ 2025, Bắc/Trung/Nam",
+  "value": "1.876,57 / 1.487,18 / 1.367,13 đ/kWh",
+  "url": "https://tapchicongthuong.vn/gia-phat-dien-toi-da-cho-nha-may-dien-mat-troi-la-1-876-57-dong-kwh-139270.htm",
+  "opened_at": "2026-10-12",
+  "quote": "Đối với nhà máy điện mặt trời nổi có hệ thống pin tích trữ , mức giá tối đa (chưa bao gồm thuế giá trị gia tăng) cho khu vực miền Bắc là 1.876,57 đồng/kWh; miền Trung là 1.487,18 đồng/kWh; miền Nam là 1.367,13 đồng/kWh.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần gió trên bờ 2025, Bắc/Trung/Nam (QĐ 1508/QĐ-BCT)",
+  "value": "1.959,4 / 1.807,4 / 1.840,3 đ/kWh",
+  "url": "https://caselaw.vn/bai-viet/quyet-dinh-1508-qd-bct-phe-duyet-khung-gia-phat-dien-nha-may-dien-gio-nam-2025",
+  "opened_at": "2026-10-12",
+  "quote": "Điện gió trên đất liền Vùng miền Mức giá tối đa đồng/kWh) Miền Bắc 1.959,4 Miền Trung 1.807,4 Miền Nam 1.840,3",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần gió gần bờ 2025",
+  "value": "1.987,4 đ/kWh",
+  "url": "https://caselaw.vn/bai-viet/quyet-dinh-1508-qd-bct-phe-duyet-khung-gia-phat-dien-nha-may-dien-gio-nam-2025",
+  "opened_at": "2026-10-12",
+  "quote": "Điện gió gần bờ Vùng miền Mức giá tối đa (đồng/kWh) Tất cả các miền 1.987,4",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần gió ngoài khơi 2025, Bắc Bộ/Nam Trung Bộ/Nam Bộ (QĐ 1824/QĐ-BCT)",
+  "value": "3.975,1 / 3.078,9 / 3.868,5 đ/kWh",
+  "url": "https://tapchicongthuong.vn/phe-duyet-khung-gia-phat-dien-loai-hinh-nha-may-dien-gio-ngoai-khoi-nam-2025-142179.htm",
+  "opened_at": "2026-10-12",
+  "quote": "975,1 đồng/kWh; khu vực biển Nam Trung Bộ là 3.078,9 đồng/kWh; khu vực biển Nam Bộ là 3.868,5 đồng/kWh.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần điện sinh khối 2025 (QĐ 1008/QĐ-BCT)",
+  "value": "2.091,74 đ/kWh",
+  "url": "https://nangluongvietnam.vn/khung-gia-phat-dien-tu-nguon-dien-than-sinh-khoi-2025-va-nhap-khau-tu-lao-2026-34089.html",
+  "opened_at": "2026-10-12",
+  "quote": "Khung giá phát điện nhà máy điện sinh khối (Quyết định số 1008/QĐ-BCT ngày 14/4/2025): Khung giá phát điện cho nhà máy điện sinh khối năm 2025 là: 0-2.091,74 đồng/kWh (chưa bao gồm thuế giá trị gia tăng).",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần điện chất thải 2025 (QĐ 1251/QĐ-BCT)",
+  "value": "2.575,18 đ/kWh",
+  "url": "https://tapchicongthuong.vn/gia-phat-dien-toi-da-cho-dien-chat-thai-nam-2025-la-2-575-18-dong-kwh-140189.htm",
+  "opened_at": "2026-10-12",
+  "quote": "Giá phát điện tối đa cho điện chất thải năm 2025 là 2.575,18 đồng/kWh",
+  "status": "match",
+  "note": "Đoạn trích là tiêu đề bài"
+ },
+ {
+  "block": "dien-18",
+  "claim": "QĐ 768/QĐ-TTg: Gió trên bờ & gần bờ 2030",
+  "value": "26.066 - 38.029 MW",
+  "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Điện gió trên bờ và gần bờ 26.066 - 38.029 MW",
+  "status": "match",
+  "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.9"
+ },
+ {
+  "block": "dien-18",
+  "claim": "QĐ 768/QĐ-TTg: Gió ngoài khơi 2030–2035",
+  "value": "6.000 - 17.032 MW",
+  "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Điện gió ngoài khơi 6.000 - 17.032 MW đưa vào vận hành giai đoạn 2030 - 2035",
+  "status": "match",
+  "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.6"
+ },
+ {
+  "block": "dien-18",
+  "claim": "QĐ 768/QĐ-TTg: Mặt trời 2030 (tập trung + mái nhà)",
+  "value": "46.459 - 73.416 MW",
+  "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "điện mặt trời tập trung và điện mặt trời mái nhà ... 46.459 - 73.416 MW",
+  "status": "match",
+  "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.6"
+ },
+ {
+  "block": "dien-18",
+  "claim": "QĐ 768/QĐ-TTg: Sinh khối, rác 2030",
+  "value": "1.523 - 2.699; 1.441 - 2.137 MW",
+  "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Điện sinh khối 1.523 - 2.699 MW, điện sản xuất từ rác 1.441 - 2.137 MW",
+  "status": "match",
+  "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.10"
+ },
+ {
+  "block": "dien-18",
+  "claim": "QĐ 768/QĐ-TTg: Thủy điện 2030",
+  "value": "33.294 - 34.667 MW",
+  "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Thủy điện 33.294 - 34.667 MW",
+  "status": "match",
+  "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.10"
+ },
+ {
+  "block": "dien-18",
+  "claim": "QĐ 768/QĐ-TTg: Thủy điện tích năng đến 2030",
+  "value": "2.400 - 6.000 MW",
+  "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Phát triển các nhà máy thủy điện tích năng với quy mô công suất khoảng 2.400 - 6.000 MW đến năm 2030",
+  "status": "match",
+  "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.7"
+ },
+ {
+  "block": "dien-18",
+  "claim": "QĐ 768/QĐ-TTg: Lưu trữ 2030",
+  "value": "10.000 - 16.300 MW",
+  "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Nguồn lưu trữ 10.000 - 16.300 MW",
+  "status": "match",
+  "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.10"
+ },
+ {
+  "block": "dien-18",
+  "claim": "QĐ 768/QĐ-TTg: Nhiệt điện than 2030",
+  "value": "31.055 MW",
+  "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Nhiệt điện than 31.055 MW",
+  "status": "match",
+  "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.7"
+ },
+ {
+  "block": "dien-18",
+  "claim": "QĐ 768/QĐ-TTg: Khí trong nước 2030",
+  "value": "10.861 - 14.930 MW",
+  "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Năm 2030, tổng công suất các nhà máy sử dụng khí trong nước đạt 10.861-14.930 MW",
+  "status": "match",
+  "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.8"
+ },
+ {
+  "block": "dien-18",
+  "claim": "QĐ 768/QĐ-TTg: LNG 2030",
+  "value": "22.524 MW",
+  "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Đến năm 2030, tổng công suất các nguồn điện LNG đạt 22.524 MW",
+  "status": "match",
+  "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.8"
+ },
+ {
+  "block": "dien-18",
+  "claim": "QĐ 768/QĐ-TTg: Nguồn linh hoạt 2030",
+  "value": "2.000 - 3.000 MW",
+  "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Năm 2030, dự kiến phát triển 2.000 - 3.000 MW",
+  "status": "match",
+  "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.9"
+ },
+ {
+  "block": "dien-18",
+  "claim": "QĐ 768/QĐ-TTg: Điện hạt nhân 2030–2035",
+  "value": "4.000 - 6.400 MW",
+  "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Giai đoạn 2030 - 2035 sẽ đưa vào vận hành các Nhà máy điện hạt nhân Ninh Thuận 1&2 với quy mô đạt 4.000 - 6.400 MW",
+  "status": "match",
+  "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.7"
+ },
+ {
+  "block": "dien-18",
+  "claim": "QĐ 768/QĐ-TTg: Nhập khẩu điện 2030",
+  "value": "9.360 - 12.100 MW",
+  "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Nhập khẩu điện 9.360 - 12.100 MW từ Lào, Trung Quốc",
+  "status": "match",
+  "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.10"
+ }
+]

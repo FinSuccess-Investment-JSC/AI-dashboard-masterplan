@@ -1,11 +1,8 @@
 name: Capture EVN reservoirs at midnight
 
 "on":
-  schedule:
-    # 00:15 Asia/Ho_Chi_Minh; GitHub cron uses UTC.
-    - cron: '15 17 * * *'
-    # Retry at 01:15 if the source published its midnight readings late.
-    - cron: '15 18 * * *'
+  # EVN (hochuathuydien.evn.com.vn) times out connections from GitHub runners, so the daily
+  # capture runs on a machine in Vietnam: scripts/fetch_hydro_reservoirs.py --backfill-from.
   workflow_dispatch:
 
 permissions:
