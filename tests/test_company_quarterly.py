@@ -33,6 +33,10 @@ class CompanyQuarterlyTest(unittest.TestCase):
                 continue
             self.assertAlmostEqual(c['revenue'][-1], snap['values']['revenue'], delta=snap['values']['revenue'] * 0.02, msg=c['symbol'])
 
+    def test_history_starts_in_2021(self):
+        self.assertEqual(self.data['quarters'][0], 'Q1/2021')
+        self.assertEqual(len(self.data['quarters']), 22)
+
     def test_missing_companies_are_declared(self):
         have = {c['symbol'] for c in self.data['companies']}
         power = {s for s, c in self.comparison.items() if c['sector'] == 'power'}

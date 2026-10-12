@@ -4106,7 +4106,7 @@
     "blocks": [],
     "note": "chart xu hướng theo quý trong tab Tổng quan > So sánh tài chính, do assets/company-trend.js dựng từ data/company-quarterly.js"
    },
-   "how": "Gọi wi_data_companies get_data fs_nonfin (columns symbol,year,quarter,audit_status_id,is10,is20,is62; filters symbol các mã ngành điện, year 3 năm gần nhất, quarter 1-4) bằng đúng cách hai lượt trong data/raw/wi/fs_nonfin_power_quarterly.json (hook wi_capture lưu nguyên văn; không gõ lại số), cập nhật file thô, chạy python3 scripts/build_company_quarterly.py rồi python3 -m unittest tests.test_company_quarterly",
+   "how": "Gọi wi_data_companies get_data fs_nonfin (columns symbol,year,quarter,audit_status_id,is10,is20,is62; filters symbol các mã ngành điện, year 3 năm gần nhất, quarter 1-4) bằng đúng cách các lượt trong data/raw/wi/fs_nonfin_power_quarterly*.json (file 2021_2023 giữ nguyên; thêm quý mới vào file kỳ gần nhất) (hook wi_capture lưu nguyên văn; không gõ lại số), cập nhật file thô, chạy python3 scripts/build_company_quarterly.py rồi python3 -m unittest tests.test_company_quarterly",
    "gates": [
     "Số lấy nguyên văn từ Wi, không chép tay",
     "Doanh thu quý mới nhất khớp bản chụp Stock Analysis trong 2% (test)",
