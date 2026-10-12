@@ -341,3 +341,9 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Biên:** tự tính = lợi nhuận ÷ doanh thu; biên ngoài [-30%, 100%] vẽ tại mép (chấm rỗng) và liệt kê trong ghi chú.
 - **Dữ liệu:** `scripts/build_company_quarterly.py` → `data/company-quarterly.(json|js)`, trục chung từ Q1/2021, quý theo **ngày kết thúc kỳ** (năm tài chính lệch như mía đường không bị đẩy nhầm quý). Ngành Điện dùng BCTC quý Wi (`data/raw/wi/fs_nonfin_power_quarterly*.json`, vì Stock Analysis không có lãi gộp nhóm điện); ngành khác dùng lịch sử quý Stock Analysis do `scripts/update_company_comparison.py` lưu (`history`) và tự dựng lại chart sau mỗi lần chạy. Mã không có dữ liệu ghi vào `missing` và hiện trong ghi chú.
 - **Test:** `tests/test_company_quarterly.py` (độ dài chuỗi, biên khớp số tuyệt đối, doanh thu quý mới nhất khớp bảng so sánh trong 2%, mã thiếu được khai báo).
+
+## 28. BĐS: kỳ FDI thống nhất, tab Hạ tầng, chỉ số KCN theo VDSC (12/10/2026)
+
+- **Hai chart FDI cùng cách đo:** FDI đăng ký CBCT và FDI thực hiện đều là **lũy kế từ đầu năm đến cùng một tháng M**, so giữa các năm (M = tháng mới nhất có ở cả hai chuỗi). Không trộn chart năm với chart tháng trong cùng một hàng.
+- **Tab Hạ tầng (`mt12`, khai báo trong `routes` của `assets/research-layout.js`):** cao tốc kế hoạch/thực tế, thay đổi bản đồ quy hoạch (sáp nhập 34 tỉnh, KTM tự do, TTTC quốc tế, khu kinh tế), bảng dự án trọng điểm có trạng thái Đã khai thác/Đang làm/Kế hoạch. Mục chưa mở được nguồn gốc thì không đưa lên (ghi trong caveat).
+- **Chỉ số KCN theo báo cáo VDSC 01/2026 (người dùng gửi, không có bản công khai):** diện tích ký mới KBC/LHG/NTC/SIP, giá thuê và diện tích các KCN mở bán 2026, đất cao su chuyển sang KCN, FDI đăng ký mới theo quốc gia. Bằng chứng ghi trang PDF trong `data/realestate-market/evidence.json`, link về vdsc.com.vn.

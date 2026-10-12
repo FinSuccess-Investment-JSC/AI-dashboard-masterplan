@@ -294,6 +294,7 @@ body{font-size:14px;line-height:1.45}
   .mini-matrix,.catalyst-map{grid-template-columns:1fr}
 }
 
+.infra-pill{display:inline-block;border-radius:999px;padding:1px 8px;font-size:11px;font-weight:700;margin-right:4px}.infra-done{background:#e6f5f1;color:#1e7f68}.infra-build{background:#fdf3e0;color:#9a6b12}.infra-plan{background:#eef1f8;color:#51556b}.infra-table td{vertical-align:top}
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=123c08b8ffcd">
 <script src="../assets/chart-types.js?v=5b81f0f266ee"></script>
@@ -305,7 +306,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/sector-layout.js?v=7598aabaf529" defer></script>
 <script src="../data/realestate-market-history.js?v=1cac369b93be" defer></script>
 <script src="../assets/realestate-market-history.js?v=735e18211ab0" defer></script>
-<script src="../assets/realestate-dashboard.js?v=60a45e6f3b05" defer></script>
+<script src="../assets/realestate-dashboard.js?v=0e760640812c" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="../assets/catalyst-board.js?v=53c30c821e01" defer></script>
@@ -314,14 +315,14 @@ body{font-size:14px;line-height:1.45}
 <script src="../data/company-quarterly.js?v=9223b74733b8" defer></script>
 <script src="../assets/company-trend.js?v=3b441fb58d28" defer></script>
 <script src="../assets/financial-comparison.js?v=ed3ab15b7d9e" defer></script>
-<script src="../assets/research-layout.js?v=3e7f06660b8a" defer></script>
+<script src="../assets/research-layout.js?v=3d94690fc112" defer></script>
 <script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="../assets/research-editorial.js?v=06cbd5ac95fb" defer></script>
 <script src="../assets/pane-subtabs.js?v=399ada6c9150" defer></script>
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=dbaef00b3d33" data-release="20261012-r10"></script>
+<script src="../assets/site-navigation.js?v=dbaef00b3d33" data-release="20261012-r12"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=6385be151679">
@@ -340,6 +341,7 @@ body{font-size:14px;line-height:1.45}
   <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
   <button class="majortabbtn" onclick="showMajorTab('mt10',this)">8. Vốn &amp; Trái phiếu</button>
   <button class="majortabbtn" onclick="showMajorTab('mt11',this)">9. Pháp lý dự án</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt12',this)">10. Hạ tầng</button>
 </nav>
 
 <div class="container">
@@ -506,14 +508,14 @@ body{font-size:14px;line-height:1.45}
     <h3 class="subhead">Khu công nghiệp</h3>
     <div class="grid two">
       <div class="card" data-block-id="bds-09" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">FDI đăng ký vào công nghiệp chế biến, chế tạo — theo năm</div>
-        <div class="chart-sub">triệu USD · nguồn cầu chính của đất khu công nghiệp · năm hiện tại là lũy kế</div>
+        <div class="chart-title">FDI đăng ký vào công nghiệp chế biến, chế tạo — lũy kế cùng kỳ</div>
+        <div class="chart-sub">triệu USD · nguồn cầu chính của đất khu công nghiệp · cùng số tháng đầu năm mỗi năm</div>
         <div id="chFdiMfg"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-fdi-mfg"></table></div></details>
       </div>
       <div class="card" data-block-id="bds-10" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">Vốn FDI thực hiện — theo tháng</div>
-        <div class="chart-sub">triệu USD · toàn nền kinh tế · 9T/2026: 21,07 tỷ USD, cao nhất 5 năm</div>
+        <div class="chart-title">Vốn FDI thực hiện — lũy kế cùng kỳ</div>
+        <div class="chart-sub">triệu USD · toàn nền kinh tế · cùng mốc tháng với chart FDI đăng ký · 9T/2026: 21,07 tỷ USD, cao nhất 5 năm</div>
         <div id="chFdiRealized"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-fdi-realized"></table></div></details>
       </div>
@@ -542,6 +544,39 @@ body{font-size:14px;line-height:1.45}
         </table></div>
         <p class="chart-caveat">Các mốc khác kỳ; đất còn lại có thể gồm phần chưa GPMB, không đồng nghĩa đất sẵn sàng cho thuê. Không cộng ngang 7 mã.</p>
         <div class="source-note">Nguồn chi tiết mở từ ↗ ở từng dòng. * AI tính từ số gốc: IDC ~3.300 − 1.088 ≈ 2.200; BCM 3.397 − 944 = 2.453; SZC 1.180 − hơn 569 = dưới 611; LHG 96 + 75,9 + 86,8 = 258,7 và 258,7 − 30,8 ≈ 227,9. KBC chưa tìm được tổng đất thương phẩm và diện tích đã cho thuê cùng phạm vi với số còn lại. BCM gồm 490 ha thương phẩm Cây Trường chưa bắt đầu cho thuê tại thời điểm báo cáo; không tính phần VSIP liên doanh. LHG chỉ gồm ba KCN Long Hậu 1, 2 và 3.1; không gồm nhà xưởng. Theo công bố, không có lịch cập nhật cố định.</div>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="bds-44" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Diện tích ký mới của doanh nghiệp KCN</div>
+        <div class="chart-sub">ha · 2024 thực tế, 2025–2026 là dự phóng của VDSC</div>
+        <div id="chKcnLeased"></div>
+        <div class="source-note">Nguồn: <a href="https://www.vdsc.com.vn/" target="_blank" rel="noopener">VDSC · BĐS KCN "Vững vàng trước những cơn gió" (01/2026)</a>, tr. 10. NTC 2024 không có nhãn số trong báo cáo nên để trống.</div>
+      </div>
+      <div class="card" data-block-id="bds-45" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Giá thuê các KCN mở bán 2026</div>
+        <div class="chart-sub">USD/m² · KCN dự kiến triển khai trong 2026, kèm diện tích dự án</div>
+        <div id="chKcnRent"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-kcn-rent"></table></div></details>
+        <div class="source-note">Nguồn: <a href="https://www.vdsc.com.vn/" target="_blank" rel="noopener">VDSC · BĐS KCN "Vững vàng trước những cơn gió" (01/2026)</a>, tr. 7 (bảng trên bản đồ). Giá chào thuê theo chu kỳ thuê, không phải giá giao dịch bình quân.</div>
+      </div>
+      <div class="card" data-block-id="bds-46" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Đất cao su chuyển sang KCN</div>
+        <div class="chart-sub">ha · nguồn doanh thu đền bù của PHR, TRC, GVR</div>
+        <div class="tablewrap"><table><thead><tr><th>KCN</th><th>Địa phương</th><th>Quy mô (ha)</th><th>Triển khai</th></tr></thead><tbody>
+          <tr><td>Hiệp Thạnh giai đoạn 1 (TRC)</td><td>Tây Ninh</td><td><b>495</b></td><td>2025–2027</td></tr>
+          <tr><td>Chuyên ngành cơ khí · Thaco (PHR)</td><td>Tân Uyên, Bình Dương cũ</td><td><b>786</b></td><td>2025–2028</td></tr>
+          <tr><td>Bắc Đồng Phú giai đoạn 2</td><td>Bình Phước cũ</td><td><b>317</b></td><td>2025–2030</td></tr>
+          <tr><td>Minh Hưng III giai đoạn 2</td><td>Bình Phước cũ</td><td><b>483</b></td><td>2026–2030</td></tr>
+          <tr><td>Nam Đồng Phú giai đoạn 2</td><td>Bình Phước cũ</td><td><b>480</b></td><td>Sau 2025</td></tr>
+        </tbody></table></div>
+        <div class="source-note">Nguồn: <a href="https://www.vdsc.com.vn/" target="_blank" rel="noopener">VDSC · BĐS KCN "Vững vàng trước những cơn gió" (01/2026)</a>, tr. 11. Đơn giá đền bù VDSC giả định: PHR ~2,5 tỷ đồng/ha, TRC ~1,3 tỷ đồng/ha (tr. 22, 25).</div>
+      </div>
+      <div class="card" data-block-id="bds-47" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">FDI đăng ký mới theo quốc gia, 2025</div>
+        <div class="chart-sub">% tổng vốn đăng ký mới · FDI ngoài BĐS 2025 ước <b>36,7 tỷ USD (+15%)</b></div>
+        <div id="chFdiCountry"></div>
+        <div class="source-note">Nguồn: <a href="https://www.vdsc.com.vn/" target="_blank" rel="noopener">VDSC · BĐS KCN "Vững vàng trước những cơn gió" (01/2026)</a>, tr. 4–5 (GSO). Singapore chủ yếu vào BĐS; Trung Quốc chiếm gần 23% vốn đăng ký mới đến 10/2025.</div>
       </div>
     </div>
   </section>
@@ -934,6 +969,38 @@ body{font-size:14px;line-height:1.45}
       </div>
     </div>
   </div>
+  <div class="majorpane" data-tab="mt12" id="pane-mt12">
+  <section class="section">
+    <div class="sectionhead"><div><h2>Hạ tầng</h2><p>Dự án làm thay đổi bản đồ đất ở và đất KCN: sân bay, vành đai, cao tốc, cảng, đường sắt, và các thay đổi quy hoạch.</p></div></div>
+    <div class="grid two">
+      <div class="card" data-block-id="bds-48" data-update-kind="document" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Đường bộ cao tốc: kế hoạch và thực tế</div>
+        <div class="chart-sub">km · 2021–2025 vượt kế hoạch; mục tiêu ~5.000 km năm 2030</div>
+        <div id="chInfraExpressway"></div>
+        <div class="source-note">Nguồn: <a href="https://www.vdsc.com.vn/" target="_blank" rel="noopener">VDSC 01/2026, tr. 6, 9</a>. Báo Pháp luật TP.HCM ghi hơn 3.300 km khai thác đến hết 2025: <a href="https://tuoitre.vn/plo/tu-3000-km-cao-toc-den-muc-tieu-5000-km-kich-hoat-dong-luc-tang-truong-moi-post913149.html" target="_blank" rel="noopener">PLO 29/06/2026</a>.</div>
+      </div>
+      <div class="card" data-block-id="bds-49" data-update-kind="document" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Thay đổi bản đồ quy hoạch</div>
+        <div class="chart-sub">địa giới, khu thương mại tự do, khu kinh tế</div>
+        <div class="tablewrap"><table><thead><tr><th>Thay đổi</th><th>Nội dung</th><th>Nguồn</th></tr></thead><tbody>
+          <tr><td><b>Sáp nhập tỉnh</b></td><td>63 → <b>34</b> tỉnh/thành từ 1/7/2025; tên địa bàn KCN, quy hoạch tỉnh đổi theo</td><td><a href="https://nhadautu.vn/34-tinh-thanh-du-kien-hoat-dong-tu-1-7-2025-co-ten-nhu-the-nao-d96897.html" target="_blank" rel="noopener">Nhà đầu tư</a></td></tr>
+          <tr><td><b>KTM tự do Hải Phòng</b></td><td>~<b>6.292 ha</b>, QĐ 4068/QĐ-UBND; gắn KKT Đình Vũ – Cát Hải</td><td><a href="https://nhadautu.vn/thanh-lap-khu-thuong-mai-tu-do-hai-phong-gan-6300-ha-d100001.html" target="_blank" rel="noopener">Nhà đầu tư 17/10/2025</a></td></tr>
+          <tr><td><b>Trung tâm tài chính QT TP.HCM</b></td><td>Thủ tướng yêu cầu ra mắt chậm nhất 9/2/2026</td><td><a href="https://baovanhoa.vn/chinh-tri/thu-tuong-cham-nhat-ngay-922026-ra-mat-trung-tam-tai-chinh-quoc-te-tai-tphcm-197918.html" target="_blank" rel="noopener">Báo Văn hóa 16/01/2026</a></td></tr>
+          <tr><td><b>Khu kinh tế trọng điểm</b></td><td>Đình Vũ – Cát Hải (Tràng Duệ 3 · KBC), Vũng Áng (VHM), Chu Lai (Thaco), Nam Phú Yên (Hòa Tâm · HPG)</td><td><a href="https://www.vdsc.com.vn/" target="_blank" rel="noopener">VDSC 01/2026, tr. 6, 9</a></td></tr>
+        </tbody></table></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bds-50" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+      <div class="chart-title">Dự án hạ tầng trọng điểm</div>
+      <div class="chart-sub">trạng thái theo nguồn mới nhất mở được · ngày ở cột nguồn</div>
+      <div class="tablewrap"><table class="infra-table"><thead><tr><th>Dự án</th><th>Quy mô</th><th>Mốc</th><th>Trạng thái</th><th>Hưởng lợi</th><th>Nguồn</th></tr></thead><tbody>
+        <tr><td><b>Sân bay QT Long Thành GĐ1</b><br><small>Đồng Nai</small></td><td>—</td><td>Khai thác thương mại 12/2026</td><td><span class="infra-pill infra-build">Đang làm</span> Sản lượng ~77% hợp đồng</td><td>KCN, logistics Nhơn Trạch – Long Thành – Biên Hòa</td><td><a href="https://baodauthau.vn/san-bay-long-thanh-phan-dau-dua-vao-khai-thac-thuong-mai-trong-thang-122026-post201732.html" target="_blank" rel="noopener">29/06/2026</a></td></tr><tr><td><b>Cao tốc Biên Hòa – Vũng Tàu</b><br><small>Đồng Nai, TP.HCM</small></td><td>>54 km</td><td>Thông xe toàn tuyến 18/5/2026</td><td><span class="infra-pill infra-done">Đã khai thác</span> Đã khai thác</td><td>Phú Mỹ, cảng Cái Mép, KCN Đồng Nai</td><td><a href="https://daibieunhandan.vn/tp-dong-nai-chieu-nay-thong-xe-toan-tuyen-cao-toc-bien-hoa-vung-tau-10417254.html" target="_blank" rel="noopener">18/05/2026</a></td></tr><tr><td><b>Metro số 1 Bến Thành – Suối Tiên</b><br><small>TP.HCM</small></td><td>19,7 km</td><td>Đang khai thác</td><td><span class="infra-pill infra-done">Đã khai thác</span> ~19 triệu lượt khách năm đầu</td><td>Căn hộ dọc Thủ Đức – Xa lộ Hà Nội</td><td><a href="https://vtcnews.vn/sau-1-nam-van-hanh-metro-ben-thanh-suoi-tien-phuc-vu-gan-19-trieu-luot-khach-ar993676.html" target="_blank" rel="noopener">18/12/2025</a></td></tr><tr><td><b>Vành đai 3 TP.HCM</b><br><small>TP.HCM, Đồng Nai, Tây Ninh</small></td><td>>76 km · >75.300 tỷ</td><td>38,6 km trước 30/9; toàn tuyến chính 30/12/2026</td><td><span class="infra-pill infra-build">Đang làm</span> Đang nước rút</td><td>Nhơn Trạch, Củ Chi, Bình Chánh, Thuận An, Bến Lức</td><td><a href="https://vtcnews.vn/vanh-dai-3-qua-tp-hcm-va-dong-nai-chay-nuoc-rut-de-thong-xe-trong-nam-2026-ar1037017.html" target="_blank" rel="noopener">31/08/2026</a></td></tr><tr><td><b>Vành đai 4 Thủ đô (DATP 2.1)</b><br><small>Hà Nội</small></td><td>50,85 km</td><td>—</td><td><span class="infra-pill infra-build">Đang làm</span> ~90% khối lượng</td><td>KCN, đô thị phía Tây, Nam Hà Nội</td><td><a href="https://www.vietnamplus.vn/cac-du-an-tuyen-duong-vanh-dai-ha-noi-dong-loat-tang-toc-ve-dich-post1140466.vnp" target="_blank" rel="noopener">07/10/2026</a></td></tr><tr><td><b>Cao tốc TP.HCM – Mộc Bài</b><br><small>TP.HCM, Tây Ninh</small></td><td>>51 km</td><td>Hoàn thành 2027</td><td><span class="infra-pill infra-build">Đang làm</span> Đang thi công</td><td>KCN Tây Ninh (Long An cũ), Củ Chi, cửa khẩu Mộc Bài</td><td><a href="https://doanhnghiephoinhap.vn/day-nhanh-cao-toc-tp-ho-chi-minh-moc-bai-mo-rong-ket-noi-vung-dong-nam-bo-138139.html" target="_blank" rel="noopener">31/05/2026</a></td></tr><tr><td><b>Cao tốc TP.HCM – Thủ Dầu Một – Chơn Thành</b><br><small>TP.HCM, Đồng Nai</small></td><td>GPMB 8.283,2 tỷ</td><td>Bàn giao mặt bằng trước 2/9/2026</td><td><span class="infra-pill infra-build">Đang làm</span> Đang GPMB</td><td>KCN Bàu Bàng, Chơn Thành</td><td><a href="https://baodautu.vn/chot-han-giao-mat-bang-sach-du-an-cao-toc-tphcm---thu-dau-mot---chon-thanh-d640312.html" target="_blank" rel="noopener">10/07/2026</a></td></tr><tr><td><b>Metro số 2 Hà Nội</b><br><small>Hà Nội</small></td><td>~11 km · >35.000 tỷ</td><td>Khởi công 9/10/2025</td><td><span class="infra-pill infra-build">Đang làm</span> Đang thi công</td><td>Tây Hồ Tây, Ba Đình, trung tâm</td><td><a href="https://vneconomy.vn/ha-noi-khoi-cong-tuyen-metro-nam-thang-long-tran-hung-dao.htm" target="_blank" rel="noopener">09/10/2025</a></td></tr><tr><td><b>Vành đai 4 TP.HCM</b><br><small>TP.HCM, Đồng Nai, Tây Ninh</small></td><td>>159 km · GĐ1 122.774 tỷ</td><td>Lõi cao tốc dự kiến khởi công 2/9/2026</td><td><span class="infra-pill infra-plan">Kế hoạch</span> Kế hoạch</td><td>KCN vành ngoài: Bàu Bàng, Tân Uyên, Nhơn Trạch</td><td><a href="https://baodautu.vn/khoi-cong-phan-loi-cao-toc-vanh-dai-4-tphcm-vao-ngay-29-d657781.html" target="_blank" rel="noopener">30/07/2026</a></td></tr><tr><td><b>Cảng trung chuyển QT Cần Giờ</b><br><small>TP.HCM</small></td><td>571 ha · 21 triệu TEU/năm</td><td>—</td><td><span class="infra-pill infra-plan">Kế hoạch</span> Chưa có chủ trương đầu tư</td><td>Logistics ven biển TP.HCM</td><td><a href="https://baodautu.vn/cang-trung-chuyen-can-gio-cho-hoan-tat-thu-tuc-dau-tu-du-kien-khoi-dong-dip-304-d564715.html" target="_blank" rel="noopener">09/04/2026</a></td></tr><tr><td><b>Đường sắt tốc độ cao Bắc – Nam</b><br><small>15 tỉnh/thành</small></td><td>1.541 km · 1.713.548 tỷ</td><td>Cố gắng khởi công 12/2026</td><td><span class="infra-pill infra-plan">Kế hoạch</span> Kế hoạch</td><td>Đô thị quanh ga, tỉnh duyên hải</td><td><a href="https://www.sggp.org.vn/thang-12-2026-co-gang-khoi-cong-du-an-duong-sat-toc-do-cao-tren-truc-bac-nam-post788351.html" target="_blank" rel="noopener">30/03/2025</a></td></tr><tr><td><b>Đường sắt Lào Cai – Hà Nội – Hải Phòng</b><br><small>Lào Cai, Hà Nội, Hải Phòng</small></td><td>390,9 km · 8,369 tỷ USD</td><td>2025–2030</td><td><span class="infra-pill infra-plan">Kế hoạch</span> Kế hoạch</td><td>KCN Hải Phòng, logistics biên giới</td><td><a href="https://www.sggp.org.vn/thang-12-2026-co-gang-khoi-cong-du-an-duong-sat-toc-do-cao-tren-truc-bac-nam-post788351.html" target="_blank" rel="noopener">30/03/2025</a></td></tr>
+      </tbody></table></div>
+      <p class="chart-caveat">Cái Mép – Thị Vải, KTM tự do Đà Nẵng/TP.HCM và quy hoạch tỉnh sau sáp nhập chưa mở được nguồn gốc nên chưa đưa vào. Đường sắt và Cần Giờ dùng nguồn chưa có cập nhật 2026.</p>
+    </div>
+  </section>
+  </div>
+
 
   <div class="card" style="margin-top:14px" data-block-id="bds-40" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>

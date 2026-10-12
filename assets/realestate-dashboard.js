@@ -165,20 +165,47 @@ if(S('cpi_housing_yoy').length&&document.getElementById('chCpiHousing')){
  sourceLine('chCpiHousing',[SRC.nso,SRC.wi],mon(rs.at(-1).date),'Nhóm "Nhà ở và vật liệu xây dựng" trong CPI (chỉ tiêu 75708), gồm tiền thuê nhà, điện, nước, chất đốt và vật liệu sửa chữa. Không phải chỉ số giá nhà bán.');
  insight('chCpiHousing','Đây là thước đo chi phí ở, không phải giá mua nhà; tiền thuê nhà tăng kéo chỉ số lên là tín hiệu gián tiếp cho cầu thuê và cho lợi suất cho thuê. Giá căn hộ sơ cấp Hà Nội, TP.HCM nằm ở tab Giá – Chi phí – Margin theo báo cáo quý.');
 }
-// KCN
-if(S('fdi_mfg_ytd').length&&document.getElementById('chFdiMfg')){
- const rs=S('fdi_mfg_ytd'),years={};rs.forEach(r=>{years[r.date.slice(0,4)]=r});const ys=Object.keys(years).sort().slice(-7).map(k=>years[k]);
- barLineChart('chFdiMfg',{categories:ys.map(r=>r.date.slice(0,4)+(r.date.slice(5,7)!=='12'?' (đến T'+Number(r.date.slice(5,7))+')':'')),series:[{name:'FDI đăng ký · chế biến, chế tạo',color:C.navy,values:ys.map(r=>r.value)}],unit:'triệu USD',digits:0,height:260,rotateLabels:false});
- fillTable('tbl-fdi-mfg',['Kỳ','Triệu USD','So cùng kỳ'],ys.slice().reverse().map(r=>{const prev=rs.find(x=>x.date===String(Number(r.date.slice(0,4))-1)+r.date.slice(4));return [r.date.slice(0,4)+(r.date.slice(5,7)!=='12'?' (đến T'+Number(r.date.slice(5,7))+')':''),nf(r.value,0),prev?signed((r.value/prev.value-1)*100,1)+'%':'—']}));
- sourceLine('chFdiMfg',[SRC.fia,SRC.nso,SRC.wi],mon(rs.at(-1).date),'FDI đăng ký vào công nghiệp chế biến, chế tạo lũy kế từ đầu năm (chỉ tiêu 77100). Đây là nguồn cầu chính của đất khu công nghiệp.');
+// KCN · hai chart FDI cùng một cách đo: lũy kế từ đầu năm đến cùng một tháng M, so giữa các năm.
+// M = tháng mới nhất có ở cả hai chuỗi trong năm hiện tại (FDI đăng ký lũy kế sẵn; FDI thực hiện tự cộng tháng 1..M).
+const fdiYtd=(()=>{
+ const mfg=S('fdi_mfg_ytd'),real=S('fdi_realized');if(!mfg.length||!real.length)return null;
+ const year=mfg.at(-1).date.slice(0,4),m=Math.min(Number(mfg.at(-1).date.slice(5,7)),real.at(-1).date.slice(0,4)===year?Number(real.at(-1).date.slice(5,7)):12);
+ const mm=String(m).padStart(2,'0'),years=[...new Set(mfg.map(r=>r.date.slice(0,4)))].sort();
+ const mfgRows=years.map(y=>({y,v:mfg.find(r=>r.date===y+'-'+mm+'-01')?.value??null})).filter(r=>r.v!=null).slice(-7);
+ const realRows=[...new Set(real.map(r=>r.date.slice(0,4)))].sort().map(y=>{const ms=real.filter(r=>r.date.slice(0,4)===y&&Number(r.date.slice(5,7))<=m);return {y,v:ms.length===m?ms.reduce((a,r)=>a+r.value,0):null}}).filter(r=>r.v!=null).slice(-7);
+ return {m,mfgRows,realRows,realLast:real.at(-1)};
+})();
+const yoyCell=(rows,i)=>i>0&&rows[i-1].y===String(Number(rows[i].y)-1)?signed((rows[i].v/rows[i-1].v-1)*100,1)+'%':'—';
+if(fdiYtd&&document.getElementById('chFdiMfg')){
+ const {m,mfgRows:rs}=fdiYtd,lab=r=>m+'T/'+r.y;
+ barLineChart('chFdiMfg',{categories:rs.map(lab),series:[{name:'FDI đăng ký · chế biến, chế tạo · '+m+' tháng',color:C.navy,values:rs.map(r=>r.v)}],unit:'triệu USD',digits:0,height:260,rotateLabels:false});
+ fillTable('tbl-fdi-mfg',['Kỳ','Triệu USD','So cùng kỳ'],rs.map((r,i)=>[lab(r),nf(r.v,0),yoyCell(rs,i)]).reverse());
+ sourceLine('chFdiMfg',[SRC.fia,SRC.nso,SRC.wi],m+'T/'+rs.at(-1).y,'FDI đăng ký vào công nghiệp chế biến, chế tạo, lũy kế '+m+' tháng đầu mỗi năm (chỉ tiêu 77100). Nguồn chưa có số cả năm 2025 nên so cùng kỳ thay vì cả năm.');
  insight('chFdiMfg','Khách thuê KCN là nhà máy chế biến chế tạo, nên FDI nhóm này là chỉ báo cầu sớm 2–6 quý trước khi doanh nghiệp KCN ghi doanh thu bàn giao đất. Vốn đăng ký tăng nhưng dồn vào mở rộng nhà máy cũ sẽ không tạo cầu đất mới.');
 }
-if(S('fdi_realized').length&&document.getElementById('chFdiRealized')){
- const rs=S('fdi_realized'),roll=rs.map((r,i)=>({date:r.date,value:i>=11?rs.slice(i-11,i+1).reduce((a,x)=>a+x.value,0):null})).slice(-36),last=rs.slice(-36);
- barLineChart('chFdiRealized',{categories:last.map(r=>mon(r.date)),series:[{name:'Vốn thực hiện tháng',color:C.teal,values:last.map(r=>r.value)}],unit:'triệu USD',digits:0,height:260,rotateLabels:true});
- fillTable('tbl-fdi-realized',['Tháng','Vốn thực hiện (triệu USD)','12 tháng trượt (triệu USD)'],last.slice().reverse().map((r,i)=>[mon(r.date),nf(r.value,0),nf(roll.slice().reverse()[i]?.value,0)]));
- sourceLine('chFdiRealized',[SRC.fia,SRC.nso,SRC.wi],mon(rs.at(-1).date),'Vốn FDI thực hiện toàn nền kinh tế theo tháng (chỉ tiêu 76951); chưa tách riêng bất động sản. Tổng 12 tháng trượt tự tính.');
- insight('chFdiRealized','Vốn thực hiện là tiền đã vào nhà xưởng, máy móc — nó xác nhận FDI đăng ký có thành nhà máy thật hay không. Tháng 12 và tháng 6 thường cao do chốt kỳ.');
+if(fdiYtd&&document.getElementById('chFdiRealized')){
+ const {m,realRows:rs,realLast}=fdiYtd,lab=r=>m+'T/'+r.y;
+ barLineChart('chFdiRealized',{categories:rs.map(lab),series:[{name:'Vốn FDI thực hiện · '+m+' tháng',color:C.teal,values:rs.map(r=>r.v)}],unit:'triệu USD',digits:0,height:260,rotateLabels:false});
+ const monthly=S('fdi_realized').slice(-12).reverse();
+ fillTable('tbl-fdi-realized',['Kỳ','Triệu USD','So cùng kỳ'],rs.map((r,i)=>[lab(r),nf(r.v,0),yoyCell(rs,i)]).reverse().concat([['Tháng gần nhất','',''],...monthly.map(r=>[mon(r.date),nf(r.value,0),''])]));
+ sourceLine('chFdiRealized',[SRC.fia,SRC.nso,SRC.wi],mon(realLast.date),'Vốn FDI thực hiện toàn nền kinh tế, cộng tháng 1 đến tháng '+m+' mỗi năm (chỉ tiêu 76951, tự cộng); chưa tách riêng bất động sản. Cùng mốc '+m+' tháng với chart FDI đăng ký để so được; số theo tháng đến '+mon(realLast.date)+' ở bảng.');
+ insight('chFdiRealized','Vốn thực hiện là tiền đã vào nhà xưởng, máy móc — nó xác nhận FDI đăng ký có thành nhà máy thật hay không.');
+}
+// KCN theo khung chỉ số VDSC (01/2026): số nhập tay từ báo cáo, có dòng bằng chứng trong data/realestate-market/evidence.json.
+if(document.getElementById('chKcnLeased')){
+ const cos=['KBC','LHG','NTC','SIP'],v={2024:[28,2,null,75],'2025F':[138,4,15,45],'2026F':[165,4,26,67]};
+ barLineChart('chKcnLeased',{categories:cos,series:[{name:'2024',color:'#b8c7d9',values:v[2024]},{name:'2025F',color:C.teal,values:v['2025F']},{name:'2026F',color:C.navy,values:v['2026F']}],unit:'ha',digits:0,height:260,rotateLabels:false});
+}
+if(document.getElementById('chKcnRent')){
+ const rows=[['Lê Minh Xuân 03 (SIP)','Nam',287,300],['Lộc An – Bình Sơn (SIP)','Nam',498,220],['Tràng Duệ 03 (KBC)','Bắc',621,180],['Quế Võ II mở rộng (KBC)','Bắc',140,150],['Nam Tân Uyên 03 (NTC)','Nam',345,150],['Nam Sơn Hạp Lĩnh (KBC)','Bắc',300,148],['Phước Đông (SIP)','Nam',2189,80]];
+ hbarCompare('chKcnRent',{items:rows.map(r=>({label:r[0],value:r[3],color:r[1]==='Bắc'?C.plum:C.teal})),unit:'USD/m²',digits:0,height:260,labelW:190});
+ fillTable('tbl-kcn-rent',['KCN','Miền','Diện tích (ha)','Giá thuê (USD/m²)'],rows.map(r=>[r[0],r[1],nf(r[2],0),nf(r[3],0)]));
+}
+if(document.getElementById('chFdiCountry')){
+ hbarCompare('chFdiCountry',{items:[['Singapore',27,C.navy],['Trung Quốc',21,C.plum],['Hồng Kông',10,C.teal],['Khác',42,C.grey]].map(r=>({label:r[0],value:r[1],color:r[2]})),unit:'%',digits:0,height:200,labelW:110});
+}
+if(document.getElementById('chInfraExpressway')){
+ barLineChart('chInfraExpressway',{categories:['2011–2020','2021–2025','2026–2030'],series:[{name:'Kế hoạch',color:C.plum,values:[2000,3000,5000]},{name:'Thực tế',color:C.gold,values:[1163,3209,null]}],unit:'km',digits:0,height:260,rotateLabels:false});
 }
 if(S('iip_mfg_yoy').length&&document.getElementById('chIipMfg')){
  const rs=S('iip_mfg_yoy').slice(-36);
