@@ -4112,6 +4112,70 @@
     "Doanh thu quý mới nhất khớp bản chụp Stock Analysis trong 2% (test)",
     "Ghi mã thiếu dữ liệu vào missing (hiện CHP)"
    ]
+  },
+  {
+   "id": "realestate.kcn-broker",
+   "tier": "C",
+   "title": "Chỉ số KCN theo báo cáo ngành CTCK: ký mới, giá thuê, đất cao su chuyển KCN, FDI theo quốc gia",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     15,
+     15
+    ],
+    "at": "07:00"
+   },
+   "publication": "Báo cáo ngành KCN của CTCK (VDSC, ACBS, BVSC…) thường ra đầu năm và giữa năm",
+   "source": {
+    "name": "VDSC · Báo cáo ngành BĐS KCN",
+    "url": "https://www.vdsc.com.vn/"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "blocks": [
+     "bds-44",
+     "bds-45",
+     "bds-46",
+     "bds-47"
+    ]
+   },
+   "how": "Khi có báo cáo ngành KCN mới (VDSC hoặc CTCK khác) hoặc kết quả ký mới thực tế 2025–2026 của KBC, SIP, NTC, LHG: thay số dự phóng bằng số thực tế, giữ năm cũ; ghi trang và đoạn văn vào data/realestate-market/evidence.json",
+   "gates": [
+    "Mở được tài liệu gốc, ghi trang",
+    "Tách số thực tế và dự phóng",
+    "Không ước lượng từ chiều cao cột trong hình"
+   ]
+  },
+  {
+   "id": "realestate.infrastructure",
+   "tier": "C",
+   "title": "Hạ tầng: dự án trọng điểm và thay đổi bản đồ quy hoạch",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     1,
+     1
+    ],
+    "at": "07:00"
+   },
+   "publication": "Theo tiến độ dự án và văn bản",
+   "source": {
+    "name": "Báo Chính phủ, Bộ Xây dựng, báo ngành",
+    "url": "https://baochinhphu.vn/"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "blocks": [
+     "bds-48",
+     "bds-49",
+     "bds-50"
+    ]
+   },
+   "how": "Cập nhật trạng thái từng dự án (Long Thành khai thác 12/2026, Vành đai 3 toàn tuyến 30/12/2026, Vành đai 4 TP.HCM khởi công, đường sắt tốc độ cao khởi công 12/2026, Cần Giờ chủ trương); thêm Cái Mép – Thị Vải, KTM tự do Đà Nẵng/TP.HCM, quy hoạch tỉnh sau sáp nhập khi mở được nguồn gốc",
+   "gates": [
+    "Mỗi dòng có ngày nguồn và link đã mở",
+    "Phân biệt kế hoạch và đã khai thác"
+   ]
   }
  ]
 }
