@@ -1,85 +1,122 @@
-{
-  "checked_at": "2026-10-12",
-  "block_id": "bds-12",
-  "unit": "ha đất thương phẩm KCN",
-  "records": [
-    {
-      "ticker": "KBC",
-      "period": "2025-08-22",
-      "source_url": "https://acbs.com.vn/acbsmedia/2025/08/KBC_Cap-nhat_22.8.2025.pdf",
-      "source_location": "ACBS, trang 1",
-      "excerpt": "tổng diện tích KCN của KBC tăng lên hơn 6.400 ha và diện tích thương phẩm còn lại tăng lên 2.882 ha",
-      "commercial_ha": null,
-      "leased_ha": null,
-      "remaining_ha": 2882,
-      "limitation": "6.400 ha là diện tích KCN toàn dự án, không phải đất thương phẩm; không suy tổng và đã cho thuê."
-    },
-    {
-      "ticker": "IDC",
-      "period": "2026-01-28",
-      "source_url": "https://static1.vietstock.vn/edocs/18707/IDC_BVSC_20260128.pdf",
-      "source_location": "BVSC, trang 1-2",
-      "excerpt": "nâng tổng diện tích thương phẩm lên tới gần 3.300 ha; tổng diện tích thương phẩm còn lại có thể khai thác là 1.088 ha, trong đó 749 ha đã đền bù",
-      "commercial_ha_approx": 3300,
-      "leased_ha_approx_derived": 2200,
-      "remaining_ha": 1088,
-      "formula": "gần 3.300 - 1.088 ≈ 2.200"
-    },
-    {
-      "ticker": "BCM",
-      "period": "2025-11-28",
-      "source_url": "https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf",
-      "source_location": "ACBS, trang 3, Bảng 2",
-      "excerpt": "Tổng cộng: diện tích thương phẩm 3.397 ha; diện tích thương phẩm còn lại 944 ha. Cây Trường 490 ha: dự kiến bắt đầu đền bù và xây dựng hạ tầng từ 2026.",
-      "commercial_ha": 3397,
-      "leased_ha_derived": 2453,
-      "remaining_ha": 944,
-      "formula": "3.397 - 944 = 2.453",
-      "limitation": "Chỉ KCN do BCM trực tiếp làm chủ đầu tư; không gồm VSIP. Quỹ còn lại gồm Cây Trường chưa sẵn sàng."
-    },
-    {
-      "ticker": "SZC",
-      "period": "2025-Q1",
-      "source_url": "https://acbs.com.vn/Files/Domains/ACBS/WFL-1585/250414041206-1015-1015000001.pdf",
-      "source_location": "ACBS, trang 1",
-      "excerpt": "Tính đến cuối Q1/2025, SZC đã cho thuê KCN Sonadezi Châu Đức được hơn 569 hecta trên tổng diện tích thương phầm là 1.180 ha",
-      "commercial_ha": 1180,
-      "leased_ha_lower_bound": 569,
-      "remaining_ha_upper_bound_derived": 611,
-      "formula": "1.180 - hơn 569 < 611"
-    },
-    {
-      "ticker": "SIP",
-      "period": "2025-12-31",
-      "source_url": "https://nguoiquansat.vn/sip-dat-ke-hoach-di-lui-sau-nam-but-pha-loi-nhuan-du-kien-giam-40-283258.html",
-      "source_location": "Người Quan Sát dẫn Reatimes, đoạn 'Quỹ đất lớn'",
-      "excerpt": "diện tích thương phẩm khoảng 2.440ha. Diện tích đã cho thuê đạt hơn 1.500ha ... vẫn còn hơn 930 ha",
-      "commercial_ha_approx": 2440,
-      "leased_ha_lower_bound": 1500,
-      "remaining_ha_lower_bound": 930,
-      "limitation": "Các giá trị đã làm tròn, không ép phép cộng bằng đúng tổng."
-    },
-    {
-      "ticker": "VGC",
-      "period": "2025-07-10",
-      "source_url": "https://shs.com.vn/Sites/QuoteVN/SiteRoot/reportattach/20250710_17714_B%C3%A1o%20c%C3%A1o%20%C4%91%C3%A1nh%20gi%C3%A1%20doanh%20nghi%E1%BB%87p%20VGC%20%281%29.pdf",
-      "source_location": "SHS, trang 10, bảng KCN",
-      "excerpt": "Tổng 3.019 1.721 1.298; nguồn VGC, SHS tổng hợp",
-      "commercial_ha": 3019,
-      "leased_ha": 1721,
-      "remaining_ha": 1298
-    },
-    {
-      "ticker": "LHG",
-      "period": "2025-09-30",
-      "source_url": "https://www.tinnhanhchungkhoan.vn/long-hau-lhg-loi-nhuan-nguoc-chieu-gia-co-phieu-post382089.html",
-      "source_location": "Đầu tư Chứng khoán 15/12/2025 dẫn BVSC, đoạn ba KCN",
-      "excerpt": "đất thương phẩm 96 ha, đã lấp đầy 100%; diện tích thương phẩm 75,9 ha, cũng đạt tỷ lệ lấp đầy 100%; đất thương phẩm 86,8 ha, mới lấp đầy 65%, còn lại 30,8 ha",
-      "commercial_ha_derived": 258.7,
-      "leased_ha_approx_derived": 227.9,
-      "remaining_ha": 30.8,
-      "formula": "96 + 75,9 + 86,8 = 258,7; 258,7 - 30,8 = 227,9",
-      "limitation": "Ba KCN đang vận hành; không gồm nhà xưởng và dự án chưa phê duyệt."
-    }
-  ]
-}
+[
+ {
+  "block": "bds-12",
+  "claim": "ha đất thương phẩm KCN · KBC · đất thương phẩm còn lại",
+  "value": "2.882 ha",
+  "url": "https://acbs.com.vn/acbsmedia/2025/08/KBC_Cap-nhat_22.8.2025.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "tổng diện tích KCN của KBC tăng lên hơn 6.400 ha và diện tích thương phẩm còn lại tăng lên 2.882 ha",
+  "status": "match",
+  "note": "Kỳ 2025-08-22. {\"source_location\": \"ACBS, trang 1\", \"commercial_ha\": null, \"leased_ha\": null, \"remaining_ha\": 2882, \"limitation\": \"6.400 ha là diện tích KCN toàn dự án, không phải đất thương phẩm; không suy tổng và đã cho thuê.\"}"
+ },
+ {
+  "block": "bds-12",
+  "claim": "ha đất thương phẩm KCN · IDC · đất thương phẩm (xấp xỉ)",
+  "value": "3.300 ha",
+  "url": "https://static1.vietstock.vn/edocs/18707/IDC_BVSC_20260128.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "nâng tổng diện tích thương phẩm lên tới gần 3.300 ha; tổng diện tích thương phẩm còn lại có thể khai thác là 1.088 ha, trong đó 749 ha đã đền bù",
+  "status": "match",
+  "note": "Kỳ 2026-01-28. {\"source_location\": \"BVSC, trang 1-2\", \"commercial_ha_approx\": 3300, \"leased_ha_approx_derived\": 2200, \"remaining_ha\": 1088, \"formula\": \"gần 3.300 - 1.088 ≈ 2.200\"}"
+ },
+ {
+  "block": "bds-12",
+  "claim": "ha đất thương phẩm KCN · IDC · đất thương phẩm còn lại",
+  "value": "1.088 ha",
+  "url": "https://static1.vietstock.vn/edocs/18707/IDC_BVSC_20260128.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "nâng tổng diện tích thương phẩm lên tới gần 3.300 ha; tổng diện tích thương phẩm còn lại có thể khai thác là 1.088 ha, trong đó 749 ha đã đền bù",
+  "status": "match",
+  "note": "Kỳ 2026-01-28. {\"source_location\": \"BVSC, trang 1-2\", \"commercial_ha_approx\": 3300, \"leased_ha_approx_derived\": 2200, \"remaining_ha\": 1088, \"formula\": \"gần 3.300 - 1.088 ≈ 2.200\"}"
+ },
+ {
+  "block": "bds-12",
+  "claim": "ha đất thương phẩm KCN · BCM · đất thương phẩm",
+  "value": "3.397 ha",
+  "url": "https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Tổng cộng: diện tích thương phẩm 3.397 ha; diện tích thương phẩm còn lại 944 ha. Cây Trường 490 ha: dự kiến bắt đầu đền bù và xây dựng hạ tầng từ 2026.",
+  "status": "match",
+  "note": "Kỳ 2025-11-28. {\"source_location\": \"ACBS, trang 3, Bảng 2\", \"commercial_ha\": 3397, \"leased_ha_derived\": 2453, \"remaining_ha\": 944, \"formula\": \"3.397 - 944 = 2.453\", \"limitation\": \"Chỉ KCN do BCM trực tiếp làm chủ đầu tư; không gồm VSIP. Quỹ còn lại gồm Cây Trường chưa sẵn sàng.\"}"
+ },
+ {
+  "block": "bds-12",
+  "claim": "ha đất thương phẩm KCN · BCM · đất thương phẩm còn lại",
+  "value": "944 ha",
+  "url": "https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Tổng cộng: diện tích thương phẩm 3.397 ha; diện tích thương phẩm còn lại 944 ha. Cây Trường 490 ha: dự kiến bắt đầu đền bù và xây dựng hạ tầng từ 2026.",
+  "status": "match",
+  "note": "Kỳ 2025-11-28. {\"source_location\": \"ACBS, trang 3, Bảng 2\", \"commercial_ha\": 3397, \"leased_ha_derived\": 2453, \"remaining_ha\": 944, \"formula\": \"3.397 - 944 = 2.453\", \"limitation\": \"Chỉ KCN do BCM trực tiếp làm chủ đầu tư; không gồm VSIP. Quỹ còn lại gồm Cây Trường chưa sẵn sàng.\"}"
+ },
+ {
+  "block": "bds-12",
+  "claim": "ha đất thương phẩm KCN · SZC · đất thương phẩm",
+  "value": "1.180 ha",
+  "url": "https://acbs.com.vn/Files/Domains/ACBS/WFL-1585/250414041206-1015-1015000001.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Tính đến cuối Q1/2025, SZC đã cho thuê KCN Sonadezi Châu Đức được hơn 569 hecta trên tổng diện tích thương phầm là 1.180 ha",
+  "status": "match",
+  "note": "Kỳ 2025-Q1. {\"source_location\": \"ACBS, trang 1\", \"commercial_ha\": 1180, \"leased_ha_lower_bound\": 569, \"remaining_ha_upper_bound_derived\": 611, \"formula\": \"1.180 - hơn 569 < 611\"}"
+ },
+ {
+  "block": "bds-12",
+  "claim": "ha đất thương phẩm KCN · SZC · đã cho thuê (tối thiểu)",
+  "value": "569 ha",
+  "url": "https://acbs.com.vn/Files/Domains/ACBS/WFL-1585/250414041206-1015-1015000001.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Tính đến cuối Q1/2025, SZC đã cho thuê KCN Sonadezi Châu Đức được hơn 569 hecta trên tổng diện tích thương phầm là 1.180 ha",
+  "status": "match",
+  "note": "Kỳ 2025-Q1. {\"source_location\": \"ACBS, trang 1\", \"commercial_ha\": 1180, \"leased_ha_lower_bound\": 569, \"remaining_ha_upper_bound_derived\": 611, \"formula\": \"1.180 - hơn 569 < 611\"}"
+ },
+ {
+  "block": "bds-12",
+  "claim": "ha đất thương phẩm KCN · SIP · đất thương phẩm (xấp xỉ)",
+  "value": "2.440 ha",
+  "url": "https://nguoiquansat.vn/sip-dat-ke-hoach-di-lui-sau-nam-but-pha-loi-nhuan-du-kien-giam-40-283258.html",
+  "opened_at": "2026-10-12",
+  "quote": "diện tích thương phẩm khoảng 2.440ha. Diện tích đã cho thuê đạt hơn 1.500ha ... vẫn còn hơn 930 ha",
+  "status": "match",
+  "note": "Kỳ 2025-12-31. {\"source_location\": \"Người Quan Sát dẫn Reatimes, đoạn 'Quỹ đất lớn'\", \"commercial_ha_approx\": 2440, \"leased_ha_lower_bound\": 1500, \"remaining_ha_lower_bound\": 930, \"limitation\": \"Các giá trị đã làm tròn, không ép phép cộng bằng đúng tổng.\"}"
+ },
+ {
+  "block": "bds-12",
+  "claim": "ha đất thương phẩm KCN · SIP · đã cho thuê (tối thiểu)",
+  "value": "1.500 ha",
+  "url": "https://nguoiquansat.vn/sip-dat-ke-hoach-di-lui-sau-nam-but-pha-loi-nhuan-du-kien-giam-40-283258.html",
+  "opened_at": "2026-10-12",
+  "quote": "diện tích thương phẩm khoảng 2.440ha. Diện tích đã cho thuê đạt hơn 1.500ha ... vẫn còn hơn 930 ha",
+  "status": "match",
+  "note": "Kỳ 2025-12-31. {\"source_location\": \"Người Quan Sát dẫn Reatimes, đoạn 'Quỹ đất lớn'\", \"commercial_ha_approx\": 2440, \"leased_ha_lower_bound\": 1500, \"remaining_ha_lower_bound\": 930, \"limitation\": \"Các giá trị đã làm tròn, không ép phép cộng bằng đúng tổng.\"}"
+ },
+ {
+  "block": "bds-12",
+  "claim": "ha đất thương phẩm KCN · VGC · tổng / đã cho thuê / còn lại",
+  "value": "3.019 1.721 1.298",
+  "url": "https://shs.com.vn/Sites/QuoteVN/SiteRoot/reportattach/20250710_17714_B%C3%A1o%20c%C3%A1o%20%C4%91%C3%A1nh%20gi%C3%A1%20doanh%20nghi%E1%BB%87p%20VGC%20%281%29.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Tổng 3.019 1.721 1.298; nguồn VGC, SHS tổng hợp",
+  "status": "match",
+  "note": "Kỳ 2025-07-10. Thứ tự cột: thương phẩm, đã cho thuê, còn lại (ha). {\"source_location\": \"SHS, trang 10, bảng KCN\", \"commercial_ha\": 3019, \"leased_ha\": 1721, \"remaining_ha\": 1298}"
+ },
+ {
+  "block": "bds-12",
+  "claim": "ha đất thương phẩm KCN · LHG · đất thương phẩm còn lại",
+  "value": "30,8 ha",
+  "url": "https://www.tinnhanhchungkhoan.vn/long-hau-lhg-loi-nhuan-nguoc-chieu-gia-co-phieu-post382089.html",
+  "opened_at": "2026-10-12",
+  "quote": "đất thương phẩm 96 ha, đã lấp đầy 100%; diện tích thương phẩm 75,9 ha, cũng đạt tỷ lệ lấp đầy 100%; đất thương phẩm 86,8 ha, mới lấp đầy 65%, còn lại 30,8 ha",
+  "status": "match",
+  "note": "Kỳ 2025-09-30. {\"source_location\": \"Đầu tư Chứng khoán 15/12/2025 dẫn BVSC, đoạn ba KCN\", \"commercial_ha_derived\": 258.7, \"leased_ha_approx_derived\": 227.9, \"remaining_ha\": 30.8, \"formula\": \"96 + 75,9 + 86,8 = 258,7; 258,7 - 30,8 = 227,9\", \"limitation\": \"Ba KCN đang vận hành; không gồm nhà xưởng và dự án chưa phê duyệt.\"}"
+ },
+ {
+  "block": "bds-12",
+  "claim": "ha đất thương phẩm KCN · LHG · đất thương phẩm ba KCN (cộng ra 258,7 ha)",
+  "value": "96 ha; 75,9 ha; 86,8 ha",
+  "url": "https://www.tinnhanhchungkhoan.vn/long-hau-lhg-loi-nhuan-nguoc-chieu-gia-co-phieu-post382089.html",
+  "opened_at": "2026-10-12",
+  "quote": "đất thương phẩm 96 ha, đã lấp đầy 100%; diện tích thương phẩm 75,9 ha, cũng đạt tỷ lệ lấp đầy 100%; đất thương phẩm 86,8 ha, mới lấp đầy 65%, còn lại 30,8 ha",
+  "status": "match",
+  "note": "Số tổng 258,7 là tự cộng, không phải số nguồn: 96 + 75,9 + 86,8 = 258,7; 258,7 - 30,8 = 227,9"
+ }
+]
