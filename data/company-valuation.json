@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "checked_at": "2026-10-11T22:02:45+07:00",
+ "checked_at": "2026-10-12T09:20:32+07:00",
  "provider": "VNDirect finfo",
  "method": "P/E, P/B, vốn hóa của VNDirect tại ngày tham chiếu, điều chỉnh theo giá đóng cửa phiên mới nhất; EPS, BVPS, số cổ phiếu giữ nguyên đến kỳ BCTC sau.",
  "units": {
@@ -12,7 +12,8 @@
  "status": "partial",
  "errors": {
   "STK": "không có giá đóng cửa ngày 2026-04-28",
-  "LTG": "không có giá đóng cửa ngày 2024-09-27"
+  "LTG": "không có giá đóng cửa ngày 2024-09-27",
+  "SHB": "The read operation timed out"
  },
  "data_hash": "81ccdda590228e07f69ac6474b90432ac7d8b2928eff1dc31f03dbefac12c495",
  "latest_observation": "2026-10-09",
@@ -213,7 +214,8 @@
    "pb": 0.65,
    "market_cap": 48843.3,
    "basis_date": "2026-10-09",
-   "source_url": "https://dstock.vndirect.com.vn/tong-quan/SHB"
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/SHB",
+   "last_good": true
   },
   "POW": {
    "date": "2026-10-09",

@@ -7,6 +7,8 @@ cd "$(dirname "$0")/.."
 git pull -q --rebase origin main
 last=$(ls data/raw/evn-reservoirs/ 2>/dev/null | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}\.json$' | tail -1 | cut -c1-10 || true)
 from=$(python3 -c "import datetime as d,sys;print((d.date.fromisoformat(sys.argv[1])-d.timedelta(days=7)).isoformat())" "${last:-2026-08-28}")
+# Kiểm tra kết nối EVN mỗi lần chạy (không ghi file); lỗi mạng làm job thất bại rõ ràng.
+python3 scripts/fetch_hydro_reservoirs.py --date "$(date -u +%F)" --dry-run
 python3 scripts/fetch_hydro_reservoirs.py --backfill-from "$from" || echo "Một số ngày EVN không có số liệu; giữ trống."
 python3 scripts/update_hydro_reservoirs.py
 if git diff --quiet -- data/hydro-reservoirs.js && [ -z "$(git status --porcelain data/raw/evn-reservoirs)" ]; then
