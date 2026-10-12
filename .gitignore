@@ -16,6 +16,7 @@ data/raw/
 # Wi raw archives are the only rebuild source for data/bank-wi-data.js (no network job) - keep them
 !data/raw/
 data/raw/*
+!data/raw/evn-reservoirs/
 !data/raw/wi/
 data/.update.lock
 data/daily.json

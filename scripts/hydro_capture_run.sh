@@ -5,7 +5,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 git pull -q --rebase origin main
-last=$(ls data/raw/evn-reservoirs/????-??-??.json 2>/dev/null | tail -1 | xargs -n1 basename | cut -c1-10)
+last=$(ls data/raw/evn-reservoirs/ 2>/dev/null | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}\.json$' | tail -1 | cut -c1-10 || true)
 from=$(python3 -c "import datetime as d,sys;print((d.date.fromisoformat(sys.argv[1])-d.timedelta(days=7)).isoformat())" "${last:-2026-08-28}")
 python3 scripts/fetch_hydro_reservoirs.py --backfill-from "$from" || echo "Một số ngày EVN không có số liệu; giữ trống."
 python3 scripts/update_hydro_reservoirs.py

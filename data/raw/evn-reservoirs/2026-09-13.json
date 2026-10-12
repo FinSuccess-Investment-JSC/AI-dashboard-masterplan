@@ -1,0 +1,277 @@
+{
+  "source_url": "https://hochuathuydien.evn.com.vn/PageHoChuaThuyDienEmbedEVN.aspx",
+  "requested_date": "2026-09-13",
+  "captured_at": "2026-10-12T09:38:05.919157+07:00",
+  "rows": [
+    {
+      "reservoir": "A Vương",
+      "region": "Nam Trung Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 347.15,
+      "inflow": 373.82,
+      "spill": 0.0,
+      "generation": 0.0
+    },
+    {
+      "reservoir": "Bản Chát",
+      "region": "Tây Bắc Bộ",
+      "evn_time": "2026-09-12T23:00:00+07:00",
+      "offset_hours": -1.0,
+      "level": 470.97,
+      "inflow": 95.0,
+      "spill": 0.0,
+      "generation": 0.0
+    },
+    {
+      "reservoir": "Bản Vẽ",
+      "region": "Bắc Trung Bộ",
+      "evn_time": "2026-09-12T23:00:00+07:00",
+      "offset_hours": -1.0,
+      "level": 193.4,
+      "inflow": 314.0,
+      "spill": 0.0,
+      "generation": 0.0
+    },
+    {
+      "reservoir": "Huội Quảng",
+      "region": "Tây Bắc Bộ",
+      "evn_time": "2026-09-12T23:00:00+07:00",
+      "offset_hours": -1.0,
+      "level": 368.3,
+      "inflow": 39.0,
+      "spill": 0.0,
+      "generation": 0.0
+    },
+    {
+      "reservoir": "Hòa Bình",
+      "region": "Tây Bắc Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 109.59,
+      "inflow": 780.0,
+      "spill": 0.0,
+      "generation": 238.0
+    },
+    {
+      "reservoir": "Ialy",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-09-12T23:00:00+07:00",
+      "offset_hours": -1.0,
+      "level": 511.02,
+      "inflow": 737.0,
+      "spill": 0.0,
+      "generation": 612.0
+    },
+    {
+      "reservoir": "Khe Bố",
+      "region": "Bắc Trung Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 64.14,
+      "inflow": 440.0,
+      "spill": 0.0,
+      "generation": 487.7
+    },
+    {
+      "reservoir": "Lai Châu",
+      "region": "Tây Bắc Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 290.6,
+      "inflow": 1274.0,
+      "spill": 0.0,
+      "generation": 348.0
+    },
+    {
+      "reservoir": "Pleikrông",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-09-12T23:00:00+07:00",
+      "offset_hours": -1.0,
+      "level": 569.44,
+      "inflow": 575.0,
+      "spill": 370.0,
+      "generation": 205.0
+    },
+    {
+      "reservoir": "Quảng Trị",
+      "region": "Bắc Trung Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 477.59,
+      "inflow": 428.0,
+      "spill": 0.0,
+      "generation": 18.0
+    },
+    {
+      "reservoir": "Sê San 3",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-09-12T23:00:00+07:00",
+      "offset_hours": -1.0,
+      "level": 304.2,
+      "inflow": 647.0,
+      "spill": 161.0,
+      "generation": 486.0
+    },
+    {
+      "reservoir": "Sê San 3A",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-09-12T23:00:00+07:00",
+      "offset_hours": -1.0,
+      "level": 239.0,
+      "inflow": 676.0,
+      "spill": 76.0,
+      "generation": 600.0
+    },
+    {
+      "reservoir": "Sê San 4",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-09-12T23:00:00+07:00",
+      "offset_hours": -1.0,
+      "level": 214.5,
+      "inflow": 1123.0,
+      "spill": 448.0,
+      "generation": 675.0
+    },
+    {
+      "reservoir": "Sông Ba Hạ",
+      "region": "Nam Trung Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 101.98,
+      "inflow": 478.0,
+      "spill": 78.0,
+      "generation": 400.0
+    },
+    {
+      "reservoir": "Sông Bung 2",
+      "region": "Nam Trung Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 572.37,
+      "inflow": 144.78,
+      "spill": 0.0,
+      "generation": 30.6
+    },
+    {
+      "reservoir": "Sông Bung 4",
+      "region": "Nam Trung Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 206.45,
+      "inflow": 227.0,
+      "spill": 0.0,
+      "generation": 67.0
+    },
+    {
+      "reservoir": "Sông Hinh",
+      "region": "Nam Trung Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 197.0,
+      "inflow": 15.22,
+      "spill": 0.0,
+      "generation": 15.22
+    },
+    {
+      "reservoir": "Sông Tranh 2",
+      "region": "Nam Trung Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 146.3,
+      "inflow": 129.13,
+      "spill": 0.0,
+      "generation": 92.0
+    },
+    {
+      "reservoir": "Sơn La",
+      "region": "Tây Bắc Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 210.8,
+      "inflow": 979.0,
+      "spill": 0.0,
+      "generation": 146.0
+    },
+    {
+      "reservoir": "Thác Bà",
+      "region": "Tây Bắc Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 54.92,
+      "inflow": 320.0,
+      "spill": 0.0,
+      "generation": 0.0
+    },
+    {
+      "reservoir": "Thác Mơ",
+      "region": "Đông Nam Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 212.59,
+      "inflow": 394.81,
+      "spill": 0.0,
+      "generation": 170.0
+    },
+    {
+      "reservoir": "Trung Sơn",
+      "region": "Bắc Trung Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 152.98,
+      "inflow": 378.0,
+      "spill": 0.0,
+      "generation": 464.0
+    },
+    {
+      "reservoir": "Trị An",
+      "region": "Đông Nam Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 58.55,
+      "inflow": 1730.0,
+      "spill": 0.0,
+      "generation": 809.0
+    },
+    {
+      "reservoir": "Tuyên Quang",
+      "region": "Đông Bắc Bộ",
+      "evn_time": "2026-09-13T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 115.72,
+      "inflow": 431.0,
+      "spill": 0.0,
+      "generation": 0.0
+    },
+    {
+      "reservoir": "Vĩnh Sơn A",
+      "region": "Nam Trung Bộ",
+      "evn_time": "2026-09-12T23:00:00+07:00",
+      "offset_hours": -1.0,
+      "level": 766.97,
+      "inflow": 2.33,
+      "spill": 0.0,
+      "generation": 5.06
+    },
+    {
+      "reservoir": "Vĩnh Sơn B",
+      "region": "Nam Trung Bộ",
+      "evn_time": "2026-09-12T23:00:00+07:00",
+      "offset_hours": -1.0,
+      "level": 816.21,
+      "inflow": 1.32,
+      "spill": 0.0,
+      "generation": null
+    },
+    {
+      "reservoir": "Vĩnh Sơn C",
+      "region": "Nam Trung Bộ",
+      "evn_time": "2026-09-12T23:00:00+07:00",
+      "offset_hours": -1.0,
+      "level": 972.33,
+      "inflow": 1.17,
+      "spill": 0.0,
+      "generation": null
+    }
+  ]
+}
