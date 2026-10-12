@@ -288,5 +288,35 @@
   "quote": "Nhập khẩu điện 9.360 - 12.100 MW từ Lào, Trung Quốc",
   "status": "match",
   "note": "Bản ký là ảnh scan (không có lớp chữ); đoạn trích chép từ ảnh trang tr.10"
+ },
+ {
+  "block": "dien-18",
+  "claim": "Đề xuất BCT 09/2026: nhiệt điện than mới 2030",
+  "value": "5.300 MW",
+  "url": "https://danviet.vn/nguy-co-thieu-dien-tu-nam-2027-den-2030-bo-cong-thuong-de-xuat-dieu-chinh-quy-hoach-dien-8-va-xin-lai-evn-ve-bo-d1460184.html",
+  "opened_at": "2026-10-12",
+  "quote": "Phấn đấu đưa vào vận hành 5.300 MW nhiệt điện than mới năm 2030 tại các khu vực nằm gần trung tâm phụ tải (Quảng Ninh, Ninh Bình, Quảng Trị, Cần Thơ).",
+  "status": "match",
+  "note": "Dân Việt đăng 17/09/2026; bài không nêu ngày Bộ trình"
+ },
+ {
+  "block": "dien-18",
+  "claim": "Đề xuất BCT 09/2026: mặt trời tập trung 2029/2030",
+  "value": "5.500 MW (2029); 3.000 MW (2030)",
+  "url": "https://danviet.vn/nguy-co-thieu-dien-tu-nam-2027-den-2030-bo-cong-thuong-de-xuat-dieu-chinh-quy-hoach-dien-8-va-xin-lai-evn-ve-bo-d1460184.html",
+  "opened_at": "2026-10-12",
+  "quote": "Đảm bảo tiến độ đưa vào vận hành năm 2029 là 5.500 MW, năm 2030 là 3.000 MW nguồn điện mặt trời tập trung và 4.000 MW điện gió trên bờ và gần bờ năm 2029, 3.000 MW điện gió trên bờ và gần bờ năm 2030.",
+  "status": "match",
+  "note": "Dân Việt đăng 17/09/2026; bài không nêu ngày Bộ trình"
+ },
+ {
+  "block": "dien-18",
+  "claim": "Đề xuất BCT 09/2026: gió trên bờ và gần bờ 2029/2030",
+  "value": "4.000 MW (2029); 3.000 MW (2030)",
+  "url": "https://danviet.vn/nguy-co-thieu-dien-tu-nam-2027-den-2030-bo-cong-thuong-de-xuat-dieu-chinh-quy-hoach-dien-8-va-xin-lai-evn-ve-bo-d1460184.html",
+  "opened_at": "2026-10-12",
+  "quote": "Đảm bảo tiến độ đưa vào vận hành năm 2029 là 5.500 MW, năm 2030 là 3.000 MW nguồn điện mặt trời tập trung và 4.000 MW điện gió trên bờ và gần bờ năm 2029, 3.000 MW điện gió trên bờ và gần bờ năm 2030.",
+  "status": "match",
+  "note": "Dân Việt đăng 17/09/2026; bài không nêu ngày Bộ trình"
  }
 ]
