@@ -284,6 +284,8 @@ td { padding: 7px 10px; border-bottom: 1px solid #dce1e9; }
 }
 .research-header.fs-titleband { margin: 0; padding: 18px 24px; }
 .research-header.fs-titleband h1 { max-width: 1440px; margin: 0 auto; }
+/* Thanh tab căn thẳng hàng với tiêu đề (cùng khung 1440px) thay vì dính mép trái. */
+.research-header.fs-titleband ~ .majortabs { padding-inline: max(24px, calc((100% - 1440px) / 2)); }
 /* Trang tổng và Ngân hàng có .topbar riêng: nền trắng, bỏ chữ thương hiệu (đã có logo), nav cùng kiểu. */
 .topbar { background: #fff !important; color: #303540 !important; border-bottom: 1px solid #dce1e9; box-shadow: none; }
 .topbar .brand { display: none !important; }
