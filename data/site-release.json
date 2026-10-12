@@ -1,5 +1,5 @@
 {
-  "version": "20261012-r6",
+  "version": "20261012-r7",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -17,20 +17,20 @@
     "retail": "Ban-le/"
   },
   "files": {
-    "404.html": "7d94a4326bf6772cf1c636f8e1ced050506c72768a018d851945eb1e8460da34",
-    "Ban-le/index.html": "86700729c9dded07d68a848ca62367c87e543d4a96675f0f53330fe03f833687",
-    "Bank/index.html": "d3c302c838ed6afff4db16a4f85085303fa5ea81829572dcf8c5aa53f8780555",
-    "Bao-hiem/index.html": "652f6dbc27ac8b91795c40d611451fb7c23b3bad8640d3a86a9eeace7daef1ca",
-    "Bat-dong-san/index.html": "49226290fe13c26a7f94fe412e48c75d7e46938b951e8bb3459b06f1aa98b9f0",
-    "Cang-bien/index.html": "7c3cda407a4da1178c0d7cf6602962c616f331370894467d810e7a91a6cf47fa",
-    "Dau-khi/index.html": "5540c67f9f5f6febca9588222929986b9d994f58482ec6db9d9a4e8bb5a4d162",
-    "Det-may/index.html": "4b31b9918e78a15462430bfebbf9c2a1147b78c5c2320386fdbd26807a9073ec",
-    "Dien/index.html": "1754e5528dedae6bbaefe67f15fe1acd74f57d7b94f8ee2550c48d8bb44c82a5",
-    "Nong-nghiep/index.html": "dc895f9898fc55d3455e0b5600982cfb60d583f5a3547c70162945e5e645617b",
-    "Sugar/index.html": "113b0b06164811d8c3953b1cde6910bebd66a522601cfae6f17cf1c380b9a2e3",
-    "Thuy-san/index.html": "23129f160d9bf04146e8273b4b275d331cd1eed89cff0de802a1aff3a94756df",
-    "Van-tai-bien/index.html": "0627b9355763e29088fe366ae5d365713c8049a92020ab77a95c08b44180536b",
-    "Xay-dung/index.html": "212d5b509b47701928c42e7ac895cd22740923bd73de981df58b9f1ec043de6c",
+    "404.html": "c68bb25c4cb46fe267d75c1e866f411dc15a12e2ec1f822861d5800367ab4848",
+    "Ban-le/index.html": "16b5289f2af87ce9652dc40cf23ae97ac8a752f2eeb86b959d8383f983b3efcb",
+    "Bank/index.html": "081776487255f2550bea13477f900064e3cc76f2c56fdb400439c13f7279b346",
+    "Bao-hiem/index.html": "b1d69ca159a29dc6dd9d0fc0abdc61aa7f3633207e579493884c0c43eabff158",
+    "Bat-dong-san/index.html": "13b33b1f5c80154ec727f81a1a5a6ffe148927053025eb54535f2175b3f1a8d4",
+    "Cang-bien/index.html": "b7afd5187a44d97ca659dce31be6fedd7e3218d7f90ae97c5d334880153e6eff",
+    "Dau-khi/index.html": "f7c2e0717c5b60964410071c2e90f0ebd519cca024db57db73192f2de829b106",
+    "Det-may/index.html": "229b55a86bfc420d9b18d310bbde2c69ca0612159a47ea250496cdd59fac0b9d",
+    "Dien/index.html": "bb6b57cf54dfd704786d36e6734cdaff6a05632c6a49e3edf67080f95112694b",
+    "Nong-nghiep/index.html": "2a8f20f76f33edd7f947a9103d2dcfae483a51807323723835878ca8118d63c0",
+    "Sugar/index.html": "74f51855b66fae3fc285b94dedd95c6b76b5f6ffc14a2cbc7858ff622306d0ff",
+    "Thuy-san/index.html": "ebdfe34824d42b47450b503f18bb4f4fd6bbcd0bc4c896fbea04c90b67d58dac",
+    "Van-tai-bien/index.html": "dce61d101080d19f0f699b627f49b99e24f318808f38b8d1d82f1a6a12829e5f",
+    "Xay-dung/index.html": "bee4c16ddb6594038ef35b699d3b6549b07d42f7843f62e30831033b3849414b",
     "assets/agri-dashboard.js": "75c4c93780e6622c94a39e6eaf8c079baae744415878b145fcdf8510be55eb6b",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
@@ -85,8 +85,8 @@
     "data/seafood-wi-data.js": "7510439e76d6f85404862bf8560dfb04bace0ca8d4f58afcf881f9ad4998ae3b",
     "data/shipping-wi-data.js": "4728b8d71a3c50e3dac7127c3c79aa116a6c09d0db36be0d923a17176a43db99",
     "data/textile-wi-data.js": "4f1fc3b211fd842d69303a52c038caa639016145dbea30fa4c4fc0c865746839",
-    "duong/index.html": "6f1fcaf0fdb5e1ca4120e79e5b42fd42457852a569411b9894d950849640cc0f",
-    "index.html": "6b71702c2278e6bdc1728291279dee403060216e0f217e31d08a8d73495039c7"
+    "duong/index.html": "c690b155999057d5d425d949f0d0fd60fb59ad845ac06ee1c7aa02c30164f0a6",
+    "index.html": "b6be09769d0cf98f3824ef2ce5fc1cfaef16ab6ea0f0b7e8373b585ee622231a"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }

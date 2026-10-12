@@ -241,6 +241,10 @@ body{font-size:14px;line-height:1.45}
 .tablewrap tbody tr:last-child td{border-bottom:0}
 .tablewrap td:first-child{font-weight:650;color:var(--ink)}
 .tablewrap td b{color:var(--navy)}
+[data-block-id="bds-12"]{grid-column:1/-1}
+[data-block-id="bds-12"] .tablewrap table{min-width:650px;font-variant-numeric:tabular-nums}
+[data-block-id="bds-12"] .tablewrap td:nth-child(n+2):nth-child(-n+4){text-align:right;white-space:nowrap}
+[data-block-id="bds-12"] .tablewrap th:nth-child(n+2):nth-child(-n+4){text-align:right}
 .focus-card{border-left:4px solid var(--accent);box-shadow:0 1px 2px rgba(17,37,90,.05),0 10px 28px rgba(39,175,149,.08)}
 .focus-card .chart-title,.focus-card h3{color:var(--navy)}
 .confidence-table tbody tr:nth-child(1) td:nth-child(2){color:var(--good);font-weight:800}
@@ -315,7 +319,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=dbaef00b3d33" data-release="20261012-r6"></script>
+<script src="../assets/site-navigation.js?v=dbaef00b3d33" data-release="20261012-r7"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=0f8144efc23b">
@@ -519,18 +523,23 @@ body{font-size:14px;line-height:1.45}
         <div id="chIipMfg"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-iip-mfg"></table></div></details>
       </div>
-      <div class="card" data-block-id="bds-12" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-        <div class="chart-title">Lấp đầy &amp; cung mới đất khu công nghiệp — Q2/2026</div>
-        <div class="chart-sub">Cushman &amp; Wakefield 17/08/2026 · JLL 6T/2026</div>
+      <div class="card" data-block-id="bds-12" data-update-kind="document" data-cadence="irregular" data-refresh-status="snapshot">
+        <div class="chart-title">Quỹ đất KCN của 7 doanh nghiệp niêm yết</div>
+        <div class="chart-sub">ha đất thương phẩm · số cuối kỳ công bố gần nhất có thể đối chiếu từng doanh nghiệp</div>
         <div class="tablewrap"><table>
-          <thead><tr><th>Khu vực</th><th>Lấp đầy</th><th>Cung mới 6T/2026</th><th>Nhà xưởng (RBF) · kho (RBW)</th></tr></thead>
+          <thead><tr><th>Mã</th><th>Đất thương phẩm</th><th>Đã cho thuê</th><th>Còn lại</th><th>Mốc số liệu</th></tr></thead>
           <tbody>
-            <tr><td><b>Miền Bắc</b></td><td><b>64%</b> (−2,7 điểm % YoY)</td><td>+1.200 ha → &gt;25.200 ha (+15,7% YoY); RBF +472.000 m²</td><td>5,0 USD/m²/tháng · 86% — 4,9 · 85,7%</td></tr>
-            <tr><td><b>Miền Nam</b></td><td><b>76,3%</b> (TP.HCM 98,7% · Đồng Nai 88,4% · Tây Ninh 81,7%)</td><td>Không có kho mới trong Q2; RBF +56.000 m²</td><td>4,9 · 92% — 4,6 · 91,6%</td></tr>
-            <tr><td>Cả hai miền · JLL</td><td>—</td><td>Tổng cung ~41.000 ha (+1% YoY); thêm gần 2.000 ha đến cuối 2026</td><td>Bắc 5,3 / 4,5 · Nam 5,0 / 4,9 USD/m²/tháng</td></tr>
+            <tr><td><b>KBC</b></td><td>—</td><td>—</td><td><b>2.882</b></td><td>8/2025 <a href="https://acbs.com.vn/acbsmedia/2025/08/KBC_Cap-nhat_22.8.2025.pdf" target="_blank" rel="noopener" aria-label="Nguồn KBC: ACBS tháng 8 năm 2025">↗</a></td></tr>
+            <tr><td><b>IDC</b></td><td>~3.300</td><td>~2.200*</td><td><b>1.088</b></td><td>1/2026 <a href="https://static1.vietstock.vn/edocs/18707/IDC_BVSC_20260128.pdf" target="_blank" rel="noopener" aria-label="Nguồn IDC: BVSC tháng 1 năm 2026">↗</a></td></tr>
+            <tr><td><b>BCM</b></td><td>3.397</td><td>2.453*</td><td><b>944</b></td><td>11/2025 <a href="https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf" target="_blank" rel="noopener" aria-label="Nguồn BCM: ACBS tháng 11 năm 2025">↗</a></td></tr>
+            <tr><td><b>SZC</b></td><td>1.180</td><td>&gt;569</td><td><b>&lt;611*</b></td><td>Q1/2025 <a href="https://acbs.com.vn/Files/Domains/ACBS/WFL-1585/250414041206-1015-1015000001.pdf" target="_blank" rel="noopener" aria-label="Nguồn SZC: ACBS quý 1 năm 2025">↗</a></td></tr>
+            <tr><td><b>SIP</b></td><td>~2.440</td><td>&gt;1.500</td><td><b>&gt;930</b></td><td>12/2025 <a href="https://nguoiquansat.vn/sip-dat-ke-hoach-di-lui-sau-nam-but-pha-loi-nhuan-du-kien-giam-40-283258.html" target="_blank" rel="noopener" aria-label="Nguồn SIP: tổng hợp số doanh nghiệp cuối năm 2025">↗</a></td></tr>
+            <tr><td><b>VGC</b></td><td>3.019</td><td>1.721</td><td><b>1.298</b></td><td>7/2025 <a href="https://shs.com.vn/Sites/QuoteVN/SiteRoot/reportattach/20250710_17714_B%C3%A1o%20c%C3%A1o%20%C4%91%C3%A1nh%20gi%C3%A1%20doanh%20nghi%E1%BB%87p%20VGC%20%281%29.pdf" target="_blank" rel="noopener" aria-label="Nguồn VGC: SHS tháng 7 năm 2025">↗</a></td></tr>
+            <tr><td><b>LHG</b></td><td>258,7*</td><td>~227,9*</td><td><b>30,8</b></td><td>9T/2025 <a href="https://www.tinnhanhchungkhoan.vn/long-hau-lhg-loi-nhuan-nguoc-chieu-gia-co-phieu-post382089.html" target="_blank" rel="noopener" aria-label="Nguồn LHG: BVSC qua Đầu tư Chứng khoán tháng 12 năm 2025">↗</a></td></tr>
           </tbody>
         </table></div>
-        <div class="source-note">Nguồn: <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/northern-vietnam-industrial-property-market-maintains-growth-momentum" target="_blank" rel="noopener">Cushman &amp; Wakefield · miền Bắc</a> · <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/southern-vietnam-industrial-real-estate-maintains-stable-fundamentals" target="_blank" rel="noopener">miền Nam</a> · <a href="https://24hmoney.vn/news/jll-gia-thue-dat-cong-nghiep-tiep-tuc-tang-co-them-gan-2-000ha-den-cuoi-nam-2026-c3a2811536.html" target="_blank" rel="noopener">JLL 6T/2026</a>. Giá thuê đất nằm ở tab Giá – Chi phí – Margin.</div>
+        <p class="chart-caveat">Các mốc khác kỳ; đất còn lại có thể gồm phần chưa GPMB, không đồng nghĩa đất sẵn sàng cho thuê. Không cộng ngang 7 mã.</p>
+        <div class="source-note">Nguồn chi tiết mở từ ↗ ở từng dòng. * AI tính từ số gốc: IDC ~3.300 − 1.088 ≈ 2.200; BCM 3.397 − 944 = 2.453; SZC 1.180 − hơn 569 = dưới 611; LHG 96 + 75,9 + 86,8 = 258,7 và 258,7 − 30,8 ≈ 227,9. KBC chưa tìm được tổng đất thương phẩm và diện tích đã cho thuê cùng phạm vi với số còn lại. BCM gồm 490 ha thương phẩm Cây Trường chưa bắt đầu cho thuê tại thời điểm báo cáo; không tính phần VSIP liên doanh. LHG chỉ gồm ba KCN Long Hậu 1, 2 và 3.1; không gồm nhà xưởng. Theo công bố, không có lịch cập nhật cố định.</div>
       </div>
     </div>
   </section>
