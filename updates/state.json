@@ -434,7 +434,42 @@
    "lastSuccess": "2026-10-11T17:03:33+07:00",
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
-  "power.company-quarterly": {}
+  "power.company-quarterly": {},
+  "pharma.wi.monthly": {
+   "lastAttempt": "2026-10-12T14:05:24+07:00",
+   "lastSuccess": "2026-10-12T14:05:24+07:00",
+   "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026"
+  },
+  "pharma.wi.valuation": {
+   "lastAttempt": "2026-10-12T14:05:24+07:00",
+   "lastSuccess": "2026-10-12T14:05:24+07:00",
+   "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026"
+  },
+  "pharma.market": {
+   "lastAttempt": "2026-10-12T14:05:24+07:00",
+   "lastSuccess": "2026-10-12T14:05:24+07:00",
+   "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026"
+  },
+  "pharma.policy": {
+   "lastAttempt": "2026-10-12T14:05:24+07:00",
+   "lastSuccess": "2026-10-12T14:05:24+07:00",
+   "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026"
+  },
+  "pharma.companies": {
+   "lastAttempt": "2026-10-12T14:05:25+07:00",
+   "lastSuccess": "2026-10-12T14:05:25+07:00",
+   "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026"
+  },
+  "pharma.hot-topics": {
+   "lastAttempt": "2026-10-12T14:05:25+07:00",
+   "lastSuccess": "2026-10-12T14:05:25+07:00",
+   "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026"
+  },
+  "pharma.ai.cycle": {
+   "lastAttempt": "2026-10-12T14:05:25+07:00",
+   "lastSuccess": "2026-10-12T14:05:25+07:00",
+   "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026"
+  }
  },
  "watchers": {
   "nso.rss": {
@@ -3123,5 +3158,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-10-12T13:25:56+07:00"
+ "updatedAt": "2026-10-12T14:05:25+07:00"
 }
