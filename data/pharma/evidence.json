@@ -338,5 +338,175 @@
   "quote": "lợi nhuận trước thuế tăng 12,5%",
   "status": "match",
   "note": "mekongasean ghi ~502 tỷ, +12,6% (chưa mở)"
+ },
+ {
+  "block": "duoc-05",
+  "claim": "ETC/OTC 2023",
+  "value": "40%; 3,4 tỷ USD",
+  "url": "https://www.imexpharm.com/Data/Sites/1/media/ir/analyst%20report/vdsc_nganh-duoc_01jan2024_vie.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Doanh thu trên kênh ETC (bệnh viện) đạt 3,4 tỷ USD (+18%",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-05",
+  "claim": "OTC 2023",
+  "value": "5,1 tỷ USD",
+  "url": "https://www.imexpharm.com/Data/Sites/1/media/ir/analyst%20report/vdsc_nganh-duoc_01jan2024_vie.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "Doanh thu trên kênh OTC đạt 5,1 tỷ USD (-1% YoY), thị phần bị",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-05",
+  "claim": "Tỷ trọng ETC 2023",
+  "value": "40%",
+  "url": "https://www.imexpharm.com/Data/Sites/1/media/ir/analyst%20report/vdsc_nganh-duoc_01jan2024_vie.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "chiếm 40% (+4 pps YoY) quy mô thị trường",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-05",
+  "claim": "TT 40/2025: 5 nhóm",
+  "value": "05",
+  "url": "https://vnras.com/thong-tu-so-40-2025-tt-byt-quy-dinh-ve-dau-thau-thuoc-tai-co-so-y-te-cong-lap/",
+  "opened_at": "2026-10-12",
+  "quote": "Gói thầu thuốc generic được phân chia thành 05 nhóm theo tiêu chí kỹ thuật như sau",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-20",
+  "claim": "Long Châu 2020/2021",
+  "value": "400; 200",
+  "url": "https://www.bsc.com.vn/Report/ReportFile/9692",
+  "opened_at": "2026-10-12",
+  "quote": "400 nhà thuốc Long Châu (so với 200 vào cuối năm 2020)",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-20",
+  "claim": "Long Châu 2022",
+  "value": "937",
+  "url": "https://www.abs.vn/wp-content/uploads/2023/04/Bao-cao-cap-nhat-DHCD-2023-FRT.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "937 cửa hàng FPT Long Châu (+537 nhà thuốc so với đầu năm)",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-20",
+  "claim": "Long Châu 2023",
+  "value": "1.497",
+  "url": "https://acbs.com.vn/Files/Domains/ACBS/WFL-1585/240422081145-1015-1015000013.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "cuối 2023: 1.497 cửa hàng, bao phủ 63 tỉnh, thành phố",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-20",
+  "claim": "Trung tâm tiêm chủng 2023",
+  "value": "10",
+  "url": "https://acbs.com.vn/Files/Domains/ACBS/WFL-1585/240422081145-1015-1015000013.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "với 10 trung tâm được mở trong năm 2023",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-20",
+  "claim": "Long Châu 2024",
+  "value": "1.943",
+  "url": "https://mekongasean.vn/fpt-retail-gan-quay-ve-dinh-loi-nhuan-co-1943-nha-thuoc-long-chau-37786.html",
+  "opened_at": "2026-10-12",
+  "quote": "Tại thời điểm cuối năm 2024, chuỗi nhà thuốc này có 1.943 cửa hàng, tăng 446 cửa hàng so với đầu năm",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-20",
+  "claim": "Trung tâm tiêm chủng 2024",
+  "value": "126",
+  "url": "https://mekongasean.vn/fpt-retail-gan-quay-ve-dinh-loi-nhuan-co-1943-nha-thuoc-long-chau-37786.html",
+  "opened_at": "2026-10-12",
+  "quote": "mở mới 116 trung tâm, nâng tổng số lên 126",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-20",
+  "claim": "Long Châu 2025",
+  "value": "2.417; 223",
+  "url": "https://doanhnhan.baophapluat.vn/fpt-retail-frt-vuot-ke-hoach-kinh-doanh-nam-2025.html",
+  "opened_at": "2026-10-12",
+  "quote": "Long Châu có 2.417 nhà thuốc và 223 trung tâm tiêm chủn",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-22",
+  "claim": "TNH giường cấp phép",
+  "value": "700",
+  "url": "https://doanhnhan.baophapluat.vn/tap-doan-benh-vien-tnh-doi-ten-co-so-day-manh-mo-rong-he-thong-82248.html",
+  "opened_at": "2026-10-12",
+  "quote": "với tổng quy mô 700 giường bệnh đã được cấp phép",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-22",
+  "claim": "TNH Lạng Sơn",
+  "value": "300",
+  "url": "https://www.tinnhanhchungkhoan.vn/tnh-khai-truong-benh-vien-thu-tu-tai-lang-son-post394569.html",
+  "opened_at": "2026-10-12",
+  "quote": "quy mô 300 giường bệnh, tổng mức đầu tư gần 900 tỷ đồng",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-60",
+  "claim": "DHG KH 2026",
+  "value": "5.530; 1.007",
+  "url": "https://doanhnghiephoinhap.vn/duoc-hau-giang-bao-lai-quy-ii-tang-26-hoan-thanh-70-ke-hoach-loi-nhuan-sau-nua-dau-nam-144524.html",
+  "opened_at": "2026-10-12",
+  "quote": "doanh thu thuần hơn 5.530 tỷ đồng và lợi nhuận trước thuế 1.007 tỷ đồng",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-60",
+  "claim": "DBD KH 2026",
+  "value": "2.090; 375",
+  "url": "https://baodautu.vn/doanh-thu-dat-hon-1940-ty-dong-nam-2026-bidiphar-dat-muc-tieu-hon-2000-ty-dong-d576937.html",
+  "opened_at": "2026-10-12",
+  "quote": "tổng doanh thu mục tiêu đạt 2.090 tỷ đồng (tăng 7%); lợi nhuận trước thuế đạt 375 tỷ đồng",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-60",
+  "claim": "TRA KH 2026",
+  "value": "2.923; 306",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-2026-traphaco-tra-loi-nhuan-quy-1-but-toc-42-chot-dau-tu-nha-may-eu-gmp-700-ty-va-chia-thuong-co-phieu-1-1.html",
+  "opened_at": "2026-10-12",
+  "quote": "doanh nghiệp đặt chỉ tiêu doanh thu thuần 2.923 tỷ đồng và lợi nhuận hợp nhất sau thuế 306 tỷ đồng",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
+ },
+ {
+  "block": "duoc-60",
+  "claim": "DMC KH 2026",
+  "value": "2.210; 226",
+  "url": "https://extgw.dsc.com.vn/eback/uploads/DMC_Q1_26_a97da71bc9.pdf",
+  "opened_at": "2026-10-12",
+  "quote": "2.210 tỷ đồng và lợi nhuận sau thuế 226 tỷ đồng",
+  "status": "match",
+  "note": "Tải trực tiếp trang/PDF, kiểm chuỗi nguyên văn 12/10/2026"
  }
 ]
