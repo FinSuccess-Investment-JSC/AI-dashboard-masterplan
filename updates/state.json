@@ -43,14 +43,14 @@
    "attempts": 1
   },
   "oil.supply-news": {
-   "lastAttempt": "2026-10-06T16:22:10+07:00",
-   "lastSuccess": "2026-10-06T16:22:10+07:00",
-   "lastNote": "Rà petrotimes 06/10/2026: không có mốc mới về Dung Quất, Nghi Sơn, dự án khí; không sửa trang"
+   "lastAttempt": "2026-10-12T08:43:43+07:00",
+   "lastSuccess": "2026-10-12T08:43:43+07:00",
+   "lastNote": "Rà bài Petrotimes 06/10/2026 (Nghi Sơn): chỉ nêu vận hành công suất cao Q4/2026, TA2027; không có công suất/mốc dự án khí mới. Bài Dung Quất là đóng tàu, không liên quan. Giữ nguyên trang."
   },
   "oil.price-policy": {
-   "lastAttempt": "2026-10-06T16:22:10+07:00",
-   "lastSuccess": "2026-10-06T16:22:10+07:00",
-   "lastNote": "Rà moit.gov.vn 06/10/2026: chỉ có thông báo điều hành giá định kỳ, không có nghị định/thông tư/hướng dẫn Luật Dầu khí mới; không sửa trang"
+   "lastAttempt": "2026-10-12T08:43:43+07:00",
+   "lastSuccess": "2026-10-12T08:43:43+07:00",
+   "lastNote": "Không có nghị định/thông tư mới về cơ chế giá hay hướng dẫn Luật Dầu khí (hiệu lực 01/03/2027 giữ nguyên). Kỳ 01/10/2026 QĐ 2470/QĐ-BCT chỉ là điều hành giá kỳ, không đổi cơ chế."
   },
   "oil.bsr-annual": {},
   "oil.company-quarterly": {},
@@ -91,15 +91,39 @@
   "power.enso": {},
   "power.wb-energy": {},
   "power.futures": {},
-  "power.tariff-evn": {},
-  "power.policy": {},
-  "power.capacity": {},
-  "power.hot-topics": {},
+  "power.tariff-evn": {
+   "lastAttempt": "2026-10-12T08:43:43+07:00",
+   "lastSuccess": "2026-10-12T08:43:43+07:00",
+   "lastNote": "Không có quyết định giá bán lẻ mới; NĐ 278/2026 (09/07/2026) đã có trên trang. Tín hiệu Thông tư 65/2026 là về gạo, không liên quan. Giữ nguyên."
+  },
+  "power.policy": {
+   "lastAttempt": "2026-10-12T08:43:43+07:00",
+   "lastSuccess": "2026-10-12T08:43:43+07:00",
+   "lastNote": "Không thấy văn bản khung giá/PPA mới ngoài NĐ 278/2026 đã hiển thị; Thông tư 65/2026 là về gạo. Giữ nguyên."
+  },
+  "power.capacity": {
+   "lastAttempt": "2026-10-12T08:43:43+07:00",
+   "lastSuccess": "2026-10-12T08:43:43+07:00",
+   "lastNote": "Chưa có số công suất đặt chính thức mới; giữ nguyên."
+  },
+  "power.hot-topics": {
+   "lastAttempt": "2026-10-12T08:43:43+07:00",
+   "lastSuccess": "2026-10-12T08:43:43+07:00",
+   "lastNote": "Cập nhật ENSO theo NOAA CPC 08/10/2026: Niño-3.4 +2,1 °C, mạnh–rất mạnh đến T1–T3/2027 >83%, vượt +2,5 °C OND 83%; bản kế 12/11. Các dòng LNG/BESS/hạt nhân/gió ngoài khơi chưa rà lại lượt này."
+  },
   "power.ai.cycle": {},
-  "power.output-sources": {},
+  "power.output-sources": {
+   "lastAttempt": "2026-10-12T08:43:43+07:00",
+   "lastSuccess": "2026-10-12T08:43:43+07:00",
+   "lastNote": "Trang đã có 9T/2026 265,79 tỷ kWh (+9,3%) khớp tin 12/10; giữ nguyên."
+  },
   "realestate.wi.daily": {},
   "realestate.wi.weekly": {},
-  "realestate.market-quarterly": {},
+  "realestate.market-quarterly": {
+   "lastAttempt": "2026-10-12T08:43:43+07:00",
+   "lastSuccess": "2026-10-12T08:43:43+07:00",
+   "lastNote": "Chưa có báo cáo Q3/2026 của CBRE/Savills/Bộ Xây dựng (mới nhất Q2/2026); giữ nguyên, kiểm lại sau giữa tháng 10."
+  },
   "realestate.kcn-quarterly": {},
   "realestate.policy": {},
   "realestate.credit-rates": {},
@@ -2010,115 +2034,10 @@
    "signals": []
   },
   {
-   "id": "oil.supply-news",
-   "tier": "C",
-   "title": "Cân đối xăng dầu, chuỗi dự án khí",
-   "since": "2026-10-06T22:26:32+07:00",
-   "reasons": [
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-06T22:26:32+07:00",
-     "what": "PETROVIETNAM và các bên góp vốn trao đổi định hướng vận hành và phát triển dài hạn Nhà máy Lọc hóa dầu Nghi Sơn — https://petrovietnam.petrotimes.vn/petrovietnam-va-cac-ben-gop-von-trao-doi-dinh-huong-van-hanh-va-phat-trien-dai-han-nha-may-loc-hoa-dau-nghi-son-746389.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-08T13:34:35+07:00",
-     "what": "Giữ lửa nghề ở Nhà máy Đóng tàu Dung Quất — https://petrovietnam.petrotimes.vn/giu-lua-nghe-o-nha-may-dong-tau-dung-quat-746344.html"
-    }
-   ]
-  },
-  {
-   "id": "power.tariff-evn",
-   "tier": "C",
-   "title": "Giá bán lẻ điện, tài chính EVN, giá thị trường điện",
-   "since": "2026-10-06T22:26:32+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": [
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-07T13:22:49+07:00",
-     "what": "Bộ Công Thương ban hành Thông tư số 65/2026/TT-BCT về kinh doanh xuất khẩu gạo — /tin-tuc/thi-truong-nuoc-ngoai/quy-dinh-moi-ve-phan-bo-chi-tieu-xuat-khau-gao.html"
-    }
-   ]
-  },
-  {
-   "id": "power.policy",
-   "tier": "C",
-   "title": "Cơ chế giá điện, Quy hoạch điện VIII, DPPA, mái nhà, thị trường điện",
-   "since": "2026-10-06T22:26:32+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": [
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-07T13:22:49+07:00",
-     "what": "Bộ Công Thương ban hành Thông tư số 65/2026/TT-BCT về kinh doanh xuất khẩu gạo — /tin-tuc/thi-truong-nuoc-ngoai/quy-dinh-moi-ve-phan-bo-chi-tieu-xuat-khau-gao.html"
-    }
-   ]
-  },
-  {
-   "id": "power.capacity",
-   "tier": "C",
-   "title": "Công suất đặt theo nguồn, sản lượng năm",
-   "since": "2026-10-06T22:26:32+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "power.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: El Niño & thủy văn, giá điện & EVN, chuyển dịch năng lượng",
-   "since": "2026-10-06T22:26:32+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": [
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-07T13:22:49+07:00",
-     "what": "Bộ Công Thương ban hành Thông tư số 65/2026/TT-BCT về kinh doanh xuất khẩu gạo — /tin-tuc/thi-truong-nuoc-ngoai/quy-dinh-moi-ve-phan-bo-chi-tieu-xuat-khau-gao.html"
-    }
-   ]
-  },
-  {
    "id": "power.ai.cycle",
    "tier": "D",
    "title": "Điện: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
    "since": "2026-10-06T22:26:32+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "oil.price-policy",
-   "tier": "C",
-   "title": "Cơ chế điều hành giá xăng dầu, Luật Dầu khí",
-   "since": "2026-10-07T13:22:49+07:00",
-   "reasons": [
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-07T13:22:49+07:00",
-     "what": "Bộ Công Thương ban hành Thông tư số 65/2026/TT-BCT về kinh doanh xuất khẩu gạo — /tin-tuc/thi-truong-nuoc-ngoai/quy-dinh-moi-ve-phan-bo-chi-tieu-xuat-khau-gao.html"
-    }
-   ]
-  },
-  {
-   "id": "power.output-sources",
-   "tier": "C",
-   "title": "Sản lượng điện theo nguồn, lũy kế 9 tháng",
-   "since": "2026-10-08T13:34:35+07:00",
    "reasons": [
     "lần đầu: rà soát số đang hiển thị"
    ],
@@ -2138,16 +2057,6 @@
    "id": "realestate.wi.weekly",
    "tier": "B",
    "title": "Wi: lịch đáo hạn TPDN BĐS 2026–2027, giá thép, xi măng",
-   "since": "2026-10-08T13:34:35+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "realestate.market-quarterly",
-   "tier": "C",
-   "title": "Bộ Xây dựng, CBRE, Savills, VARS: giao dịch, tồn kho, cung mới, giá căn hộ HN/HCM",
    "since": "2026-10-08T13:34:35+07:00",
    "reasons": [
     "lần đầu: rà soát số đang hiển thị"
@@ -2418,5 +2327,5 @@
    ]
   }
  ],
- "updatedAt": "2026-10-11T22:08:02+07:00"
+ "updatedAt": "2026-10-12T08:43:43+07:00"
 }
