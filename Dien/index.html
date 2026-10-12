@@ -306,7 +306,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="../assets/catalyst-board.js?v=53c30c821e01" defer></script>
-<script src="../data/company-valuation.js?v=0c8e2ccbba99" defer></script>
+<script src="../data/company-valuation.js?v=164c030daf9d" defer></script>
 <script src="../data/company-comparison.js?v=c5aa1436fada" defer></script>
 <script src="../assets/financial-comparison.js?v=c2d94f7d0b29" defer></script>
 <script src="../assets/research-layout.js?v=3e7f06660b8a" defer></script>
@@ -316,7 +316,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=dbaef00b3d33" data-release="20261012-r3"></script>
+<script src="../assets/site-navigation.js?v=dbaef00b3d33" data-release="20261012-r4"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=0f8144efc23b">
@@ -1295,13 +1295,40 @@ document.getElementById('tbl-output-sources-summary').innerHTML=outputSources.ma
 fillTable('tbl-output-sources',['Nguồn','9T/2025 (tỷ kWh)','9T/2026 (tỷ kWh)','Tăng/giảm (tỷ kWh)','So cùng kỳ'],outputSources.map(s=>[s.name,fmt(s.before,2),fmt(s.after,2),signed(s.after-s.before,2),signed((s.after-s.before)/s.before*100,1)+'%']));
 
 /* Trần phát điện: từng cột giữ năm và vùng của quyết định gốc. */
-const generationCeilings=[
-  ['Mặt trời mặt đất · 25',1382.7,'#27af95'],['Mặt trời + BESS · 25',1571.98,'#27af95'],['Mặt trời nổi + BESS · 25',1876.57,'#27af95'],
-  ['Gió trên bờ · 25',1959.4,'#27af95'],['Gió gần bờ · 25',1987.4,'#27af95'],['Gió ngoài khơi · 25',3975.1,'#27af95'],
-  ['Thủy điện · 26',1110,'#27af95'],['Thủy điện tích năng · 25',3457.02,'#7f8fd6'],['Sinh khối · 25',2091.74,'#27af95'],['Điện rác · 25',2575.18,'#27af95'],
-  ['Than · 26',2218.95,'#1D2678'],['Khí · 25',3069.38,'#1D2678'],['Khí · 26',3410.64,'#1D2678'],['LNG · 25',3327.42,'#1D2678']
+const RE='#27af95',ST='#7f8fd6',TH='#1D2678';
+/* Trần khung giá mới nhất, nhóm theo năm quyết định; loại có giá theo miền lấy miền Bắc. */
+const generationCeilingYears=[
+  {year:'2025',bars:[['Mặt trời mặt đất',1382.7,RE],['Mặt trời + BESS',1571.98,RE],['Mặt trời nổi + BESS',1876.57,RE],['Gió trên bờ',1959.4,RE],['Gió gần bờ',1987.4,RE],['Gió ngoài khơi',3975.1,RE],['Thủy điện tích năng',3457.02,ST],['Sinh khối',2091.74,RE],['Điện rác',2575.18,RE],['Khí',3069.38,TH],['LNG',3327.42,TH]]},
+  {year:'2026',bars:[['Thủy điện',1110,RE],['Than',2218.95,TH],['Khí',3410.64,TH]]}
 ];
-hbarCompare('chGenerationCeilings',{items:generationCeilings.map(r=>({label:r[0],value:r[1],color:r[2]})),unit:'đ/kWh',digits:0,height:400,labelW:170});
+(function(){
+  const host=document.getElementById('chGenerationCeilings');if(!host)return;
+  const W=640,H=260,padL=50,padR=14,padT=22,padB=76,plotW=W-padL-padR,plotH=H-padT-padB;
+  const all=generationCeilingYears.flatMap(g=>g.bars),n=all.length,gap=14;
+  const slot=(plotW-gap*(generationCeilingYears.length-1))/n,bw=Math.min(slot*0.7,26);
+  const yMax=niceMax(Math.max(...all.map(b=>b[1]))*1.1);
+  const svg=baseSvg(W,H,'Trần khung giá phát điện mới nhất theo loại hình, nhóm theo năm quyết định');
+  const y=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,0,0,4);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  let x=padL;
+  generationCeilingYears.forEach((g,gi)=>{
+    const x0=x;
+    g.bars.forEach(([name,v,color])=>{
+      const cx=x+slot/2,top=y(v);
+      const r=el('rect',{x:cx-bw/2,y:top,width:bw,height:padT+plotH-top,rx:3,ry:3,fill:color});
+      r.appendChild(txt('title',{},g.year+' · '+name+': '+fmt(v,0)+' đ/kWh'));
+      svg.appendChild(r);
+      svg.appendChild(txt('text',{x:cx,y:top-5,'text-anchor':'middle',class:'endlabel',fill:color,'font-size':9},fmt(v,0)));
+      svg.appendChild(txt('text',{x:cx,y:padT+plotH+10,'text-anchor':'end',class:'catlabel','font-size':9,transform:'rotate(-40 '+cx+' '+(padT+plotH+10)+')'},name));
+      x+=slot;
+    });
+    const yy=H-8;
+    svg.appendChild(el('line',{x1:x0+3,x2:x-3,y1:yy-13,y2:yy-13,stroke:'#b8c7d9','stroke-width':1.2}));
+    svg.appendChild(txt('text',{x:(x0+x)/2,y:yy,'text-anchor':'middle',class:'catlabel','font-weight':700,'font-size':11},g.year));
+    x+=gap;
+  });
+  host.innerHTML='';host.appendChild(svg);
+})();
 
 /* Giá bán lẻ điện bình quân (đ/kWh, chưa VAT) theo ngày áp dụng */
 const tariffDates=['20/03/2019','04/05/2023','09/11/2023','11/10/2024','10/05/2025'],tariffVals=[1864.44,1920.3732,2006.79,2103.1159,2204.0655],tariffChange=['+8,36%','+3%','+4,5%','+4,8%','+4,8%'];
