@@ -110,6 +110,13 @@
    "url": "https://news.google.com/rss/search?q=%22khung+gi%C3%A1+ph%C3%A1t+%C4%91i%E1%BB%87n%22+OR+%22Quy+ho%E1%BA%A1ch+%C4%91i%E1%BB%87n+VIII%22+OR+%22gi%C3%A1+b%C3%A1n+l%E1%BA%BB+%C4%91i%E1%BB%87n%22&hl=vi&gl=VN&ceid=VN:vi",
    "match": "khung giá|giá bán lẻ|biểu giá|điều chỉnh Quy hoạch điện|Quy hoạch điện VIII điều chỉnh",
    "note": "Tin khung giá phát điện (mặt trời, gió, LNG, BESS 2026 chưa duyệt), điều chỉnh QĐ 768, giá bán lẻ"
+  },
+  {
+   "id": "news.pharma",
+   "kind": "rss",
+   "url": "https://news.google.com/rss/search?q=%22%C4%91%E1%BA%A5u%20th%E1%BA%A7u%20thu%E1%BB%91c%22%20OR%20%22Lu%E1%BA%ADt%20D%C6%B0%E1%BB%A3c%22%20OR%20%22C%E1%BB%A5c%20Qu%E1%BA%A3n%20l%C3%BD%20D%C6%B0%E1%BB%A3c%22%20OR%20%22Long%20Ch%C3%A2u%22&hl=vi&gl=VN&ceid=VN:vi",
+   "match": "đấu thầu thuốc|Luật Dược|Quản lý Dược|số đăng ký|BHYT|Long Châu|giá thuốc",
+   "note": "Theo sự kiện; BHXH công bố theo quý"
   }
  ],
  "items": [
@@ -1613,7 +1620,7 @@
     "type": "none"
    },
    "where": {
-    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html, Xay-dung/index.html, Bao-hiem/index.html, Ban-le/index.html",
+    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html, Xay-dung/index.html, Bao-hiem/index.html, Ban-le/index.html, Duoc/index.html",
     "blocks": [
      "dau-khi-01",
      "dau-khi-03",
@@ -1650,7 +1657,10 @@
      "bh-90",
      "bl-01",
      "bl-04",
-     "bl-90"
+     "bl-90",
+     "duoc-01",
+     "duoc-04",
+     "duoc-90"
     ]
    }
   },
@@ -4175,6 +4185,211 @@
    "gates": [
     "Mỗi dòng có ngày nguồn và link đã mở",
     "Phân biệt kế hoạch và đã khai thác"
+   ]
+  },
+  {
+   "id": "pharma.wi.monthly",
+   "tier": "B",
+   "title": "Wi: nhập khẩu thuốc, nguyên liệu dược, IIP thuốc, GDP y tế, CPI y tế, tỷ giá",
+   "wiBlocks": [
+    "macro_pharma",
+    "macro_pharma_cpi_fx"
+   ],
+   "wiContract": "data/pharma-wi-contract.json",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     7,
+     15
+    ]
+   },
+   "publication": "NSO ngày 6 hằng tháng; Hải quan chi tiết mặt hàng chậm ~2 tuần; GDP theo quý",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "file": "data/pharma-wi-data.js",
+    "blocks": [
+     "duoc-10",
+     "duoc-11",
+     "duoc-12",
+     "duoc-21"
+    ]
+   },
+   "how": "Gọi lại macro_pharma, macro_pharma_cpi_fx trong data/pharma-wi-contract.json; có tháng mới thì chạy python3 scripts/build_pharma_wi.py.",
+   "gates": [
+    "Không chép tay số",
+    "CPI y tế đổi gốc từ T1/2025: không tính YoY qua mốc"
+   ]
+  },
+  {
+   "id": "pharma.wi.valuation",
+   "tier": "B",
+   "title": "Wi: P/E, P/B ngành dược theo phiên",
+   "wiBlocks": [
+    "sector_ratio_pharma"
+   ],
+   "wiContract": "data/pharma-wi-contract.json",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Theo phiên giao dịch",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "file": "data/pharma-wi-data.js",
+    "blocks": [
+     "duoc-03"
+    ]
+   },
+   "how": "Gọi lại sector_ratio_pharma với to_time = hôm nay rồi chạy python3 scripts/build_pharma_wi.py.",
+   "gates": [
+    "Không chép tay số"
+   ]
+  },
+  {
+   "id": "pharma.market",
+   "tier": "C",
+   "title": "BHYT, đấu thầu, quy mô thị trường dược, Long Châu, TNH",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     10
+    ]
+   },
+   "publication": "BHXH theo quý/năm; FRT, TNH theo quý; thị trường theo báo cáo năm",
+   "source": {
+    "name": "BHXH Việt Nam",
+    "url": "https://baohiemxahoi.gov.vn/"
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "blocks": [
+     "duoc-05",
+     "duoc-13",
+     "duoc-20",
+     "duoc-22"
+    ]
+   },
+   "how": "Mở bài/công bố mới; cập nhật bảng và window.PHARMA_DOCS trong Duoc/index.html; thêm evidence.",
+   "gates": [
+    "Mở trang gốc",
+    "Ghi kỳ số liệu"
+   ],
+   "watch": [
+    "news.pharma"
+   ]
+  },
+  {
+   "id": "pharma.policy",
+   "tier": "C",
+   "title": "Luật Dược, NĐ 163/2025, TT 40/2025 đấu thầu, gia hạn số đăng ký, giá thuốc",
+   "schedule": {
+    "type": "watch",
+    "note": "Theo đợt cấp/gia hạn số đăng ký của Cục Quản lý Dược và văn bản mới của Bộ Y tế"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Cục Quản lý Dược",
+    "url": "https://dav.gov.vn/"
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "blocks": [
+     "duoc-06",
+     "duoc-50"
+    ]
+   },
+   "how": "Mở văn bản gốc; cập nhật bảng duoc-06, duoc-50 và evidence.",
+   "gates": [
+    "Mở văn bản gốc",
+    "Ghi ngày hiệu lực"
+   ],
+   "watch": [
+    "news.pharma"
+   ]
+  },
+  {
+   "id": "pharma.companies",
+   "tier": "C",
+   "status": "manual",
+   "title": "Doanh nghiệp dược, y tế: kế hoạch, kết quả",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "BCTC quý; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "BCTC công bố",
+    "url": "https://www.hsx.vn/"
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "blocks": [
+     "duoc-60"
+    ]
+   },
+   "how": "Khi người dùng nhắn: cập nhật bảng duoc-60 và evidence.",
+   "gates": [
+    "Link BCTC hoặc bài dẫn"
+   ]
+  },
+  {
+   "id": "pharma.hot-topics",
+   "tier": "C",
+   "title": "Chủ đề nóng: đấu thầu 5 nhóm GMP, Long Châu, TNH",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Nhà đầu tư",
+    "url": "https://nhadautu.vn/"
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "blocks": [
+     "duoc-t1",
+     "duoc-t2",
+     "duoc-t3"
+    ]
+   },
+   "how": "Thêm mốc mới có ngày và link.",
+   "gates": [
+    "Mỗi dòng có ngày + link"
+   ]
+  },
+  {
+   "id": "pharma.ai.cycle",
+   "tier": "D",
+   "title": "Dược & y tế: vị trí chu kỳ, đọc nhanh, Catalyst/Risk",
+   "schedule": {
+    "type": "data",
+    "sources": [],
+    "minDays": 7,
+    "material": [],
+    "note": "Viết lại khi có số nhập khẩu/IIP tháng mới, BCTC quý, hoặc chính sách đấu thầu đổi"
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "blocks": [
+     "duoc-02"
+    ]
+   },
+   "how": "Cập nhật duoc-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/pharma-dashboard.js.",
+   "gates": [
+    "Số khớp chart",
+    "Không đụng ô analyst"
    ]
   }
  ]

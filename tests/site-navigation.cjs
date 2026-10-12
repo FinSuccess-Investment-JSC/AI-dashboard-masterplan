@@ -8,7 +8,7 @@ const http = require('node:http');
 const root = path.resolve(__dirname, '..');
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'data/site-release.json')));
 const prefix = '/AI-dashboard-masterplan/';
-const SECTOR_LABEL={oil:'Dầu khí',sugar:'Đường',bank:'Ngân hàng',power:'Điện',realestate:'Bất động sản',textile:'Dệt may',port:'Cảng & kho bãi',agri:'Nông nghiệp & thực phẩm',seafood:'Thủy sản',shipping:'Vận tải biển',construction:'Xây dựng · VLXD · Đầu tư công',insurance:'Bảo hiểm',retail:'Bán lẻ & tiêu dùng'};
+const SECTOR_LABEL={oil:'Dầu khí',sugar:'Đường',bank:'Ngân hàng',power:'Điện',realestate:'Bất động sản',textile:'Dệt may',port:'Cảng & kho bãi',agri:'Nông nghiệp & thực phẩm',seafood:'Thủy sản',shipping:'Vận tải biển',construction:'Xây dựng · VLXD · Đầu tư công',insurance:'Bảo hiểm',retail:'Bán lẻ & tiêu dùng',pharma:'Dược & y tế'};
 (async () => {
   let server, browser;
   try {
@@ -43,13 +43,13 @@ const SECTOR_LABEL={oil:'Dầu khí',sugar:'Đường',bank:'Ngân hàng',power:
       if (key === 'home') assert.equal(await page.locator('[data-site-navigation] [aria-current="page"]').count(), 0);
       else assert.equal(await page.locator('[data-site-navigation] [aria-current="page"]').getAttribute('data-site-route'), key);
     }
-    for (const [hash,key] of [['ngan-hang','bank'],['dau-khi','oil'],['duong','sugar'],['dien','power'],['bat-dong-san','realestate'],['det-may','textile'],['cang-bien','port'],['nong-nghiep','agri'],['thuy-san','seafood'],['van-tai-bien','shipping'],['xay-dung','construction'],['bao-hiem','insurance'],['ban-le','retail']]) {
+    for (const [hash,key] of [['ngan-hang','bank'],['dau-khi','oil'],['duong','sugar'],['dien','power'],['bat-dong-san','realestate'],['det-may','textile'],['cang-bien','port'],['nong-nghiep','agri'],['thuy-san','seafood'],['van-tai-bien','shipping'],['xay-dung','construction'],['bao-hiem','insurance'],['ban-le','retail'],['duoc','pharma']]) {
       await page.goto(base+'?v=20260911#'+hash);
       await checkRoute(key);
     }
     await page.goto(base+'?v='+manifest.version);
     // Trang gốc chỉ còn logo, ô tra cứu ngành và thanh chọn 9 ngành.
-    assert.equal(await page.locator('[data-site-navigation] a').count(), 13);
+    assert.equal(await page.locator('[data-site-navigation] a').count(), 14);
     assert.equal(await page.getAttribute('#fsQuery','placeholder'), 'Nhập tên ngành…');
     await page.fill('#fsQuery','thuy');assert.equal(await page.locator('#fsOptions .option').first().locator('b').textContent(),'Thủy sản');
     // Stock-style search: ticker → sector page with the comparison filtered to that ticker.
@@ -57,7 +57,7 @@ const SECTOR_LABEL={oil:'Dầu khí',sugar:'Đường',bank:'Ngân hàng',power:
     await page.waitForFunction(()=>document.getElementById('comparison-search')?.value==='VHC');
     assert.equal(await page.locator('.comparison-table tbody tr').count(),1);
     await page.goto(base+'?v='+manifest.version);
-    for (const key of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood','shipping','construction','insurance','retail']) {
+    for (const key of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood','shipping','construction','insurance','retail','pharma']) {
       await goVia(key);
       await checkRoute(key);
       const tabCount=key==='bank'||key==='port'||key==='agri'||key==='seafood'||key==='shipping'||key==='construction'?7:key==='realestate'?8:6;assert.equal(await page.locator('.majortabbtn').count(), tabCount);
@@ -78,8 +78,8 @@ const SECTOR_LABEL={oil:'Dầu khí',sugar:'Đường',bank:'Ngân hàng',power:
       await page.locator('.fs-brandbar [data-site-route="home"]').click();
       await checkRoute('home');
     }
-    for (const from of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood','shipping','construction','insurance','retail']) {
-      for (const to of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood','shipping','construction','insurance','retail'].filter(key => key !== from)) {
+    for (const from of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood','shipping','construction','insurance','retail','pharma']) {
+      for (const to of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood','shipping','construction','insurance','retail','pharma'].filter(key => key !== from)) {
         await page.goto(base+manifest.routes[from]+'?v='+manifest.version);
         await goVia(to);
         await checkRoute(to);

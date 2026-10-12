@@ -1,0 +1,342 @@
+[
+ {
+  "block": "duoc-policy",
+  "claim": "Quốc hội thông qua Luật sửa đổi Luật Dược (44/2024/QH15) ngày 21/11/2024",
+  "value": "21/11",
+  "url": "https://lsvn.vn/07-nhom-diem-moi-trong-luat-sua-doi-bo-sung-mot-so-dieu-cua-luat-duoc-vua-duoc-thong-qua-a150270.html",
+  "opened_at": "2026-10-12",
+  "quote": "Tại phiên họp ngày 21/11, Quốc hội đã chính thức thông qua Luật sửa đổi, bổ sung một số điều của Luật Dược.",
+  "status": "match",
+  "note": "Năm 2024 suy từ ngày đăng bài 22/11/2024"
+ },
+ {
+  "block": "duoc-policy",
+  "claim": "Tỷ lệ đại biểu tán thành Luật Dược sửa đổi",
+  "value": "88,94",
+  "url": "https://lsvn.vn/07-nhom-diem-moi-trong-luat-sua-doi-bo-sung-mot-so-dieu-cua-luat-duoc-vua-duoc-thong-qua-a150270.html",
+  "opened_at": "2026-10-12",
+  "quote": "Với kết quả 88,94% đại biểu tham gia biểu quyết tán thành thông qua",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-policy",
+  "claim": "Luật Dược sửa đổi 2024 có hiệu lực từ 1/7/2025",
+  "value": "01/7/2025",
+  "url": "https://hethongphapluat.com/phap-luat/chinh-sach-phap-luat-tin-tuc/luat-duoc-sua-doi-2024-coi-troi-cho-kinh-doanh-thuoc-online-va-chuoi-nha-thuoc.html",
+  "opened_at": "2026-10-12",
+  "quote": "sẽ chính thức có hiệu lực thi hành từ ngày 01/7/2025.",
+  "status": "match",
+  "note": "Luật cũng thừa nhận kinh doanh thuốc theo phương thức thương mại điện tử (cùng trang)"
+ },
+ {
+  "block": "duoc-policy",
+  "claim": "Nghị định 163/2025/NĐ-CP hướng dẫn Luật Dược (gồm quản lý giá thuốc, công bố giá bán buôn dự kiến) hiệu lực 01/07/2025",
+  "value": "01/07/2025",
+  "url": "https://hethongphapluat.com/nghi-dinh-163-2025-nd-cp-huong-dan-va-bien-phap-de-to-chuc-thi-hanh-luat-duoc/chuong-8",
+  "opened_at": "2026-10-12",
+  "quote": "Ngày hiệu lực: 01/07/2025",
+  "status": "match",
+  "note": "Luật sửa đổi quy định công bố, công bố lại giá bán buôn thuốc dự kiến áp dụng đối với thuốc kê đơn (lsvn.vn)"
+ },
+ {
+  "block": "duoc-policy",
+  "claim": "Cục QLD gia hạn GĐKLH hơn 700 thuốc, trong đó 603 thuốc sản xuất trong nước",
+  "value": "603",
+  "url": "https://doanhnghiephoinhap.vn/hon-700-san-pham-thuoc-phuc-vu-dau-thau-mua-sam-duoc-gia-han-dang-ky-luu-hanh-101211.html",
+  "opened_at": "2026-10-12",
+  "quote": "có 603 loại thuốc sản xuất trong nước được cấp lại giấy đăng ký lưu hành",
+  "status": "match",
+  "note": "Bài đăng 14/04/2025; không ghi số quyết định. 395 thuốc gia hạn 5 năm, 175 thuốc 3 năm"
+ },
+ {
+  "block": "duoc-policy",
+  "claim": "Thông tư 40/2025/TT-BYT về đấu thầu thuốc có hiệu lực 25/10/2025, thay thế TT 07/2024",
+  "value": "25/10/2025",
+  "url": "https://hethongphapluat.com/phap-luat/node/2259",
+  "opened_at": "2026-10-12",
+  "quote": "Từ ngày 25/10/2025, Thông tư 40/2025/TT-BYT chính thức có hiệu lực",
+  "status": "match",
+  "note": "Trang ghi: thay thế hoàn toàn Thông tư 07/2024/TT-BYT"
+ },
+ {
+  "block": "duoc-policy",
+  "claim": "Gói thầu thuốc generic chia 5 nhóm theo tiêu chuẩn GMP (TT 40/2025)",
+  "value": "05",
+  "url": "https://hethongphapluat.com/phap-luat/node/2259",
+  "opened_at": "2026-10-12",
+  "quote": "Được chia thành 05 nhóm dựa trên tiêu chuẩn GMP",
+  "status": "match",
+  "note": "Trang không nêu chi tiết nhóm 1/EU-GMP; ưu tiên SX trong nước chỉ nêu cho dược liệu/thuốc cổ truyền đạt GACP"
+ },
+ {
+  "block": "duoc-bhyt",
+  "claim": "Chi phí KCB BHYT đề nghị thanh toán năm 2025 (ước)",
+  "value": "161.628",
+  "url": "https://daibieunhandan.vn/bao-hiem-xa-hoi-viet-nam-no-luc-but-pha-vung-tru-cot-an-sinh-10401248.html",
+  "opened_at": "2026-10-12",
+  "quote": "chi phí đề nghị thanh toán khoảng 161.628 tỷ đồng",
+  "status": "match",
+  "note": "Tăng 14,3% so với 2024; nguồn khác (tapchikinhtetaichinh) ghi 166.447 tỷ - chưa mở"
+ },
+ {
+  "block": "duoc-bhyt",
+  "claim": "Lượt KCB BHYT năm 2025 (ước)",
+  "value": "195,5",
+  "url": "https://daibieunhandan.vn/bao-hiem-xa-hoi-viet-nam-no-luc-but-pha-vung-tru-cot-an-sinh-10401248.html",
+  "opened_at": "2026-10-12",
+  "quote": "Năm 2025, ước có khoảng 195,5 triệu lượt khám chữa bệnh BHYT",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-bhyt",
+  "claim": "Tỷ lệ bao phủ BHYT năm 2025",
+  "value": "95,1",
+  "url": "https://daibieunhandan.vn/bao-hiem-xa-hoi-viet-nam-no-luc-but-pha-vung-tru-cot-an-sinh-10401248.html",
+  "opened_at": "2026-10-12",
+  "quote": "BHYT đạt trên 95,1% dân số, đưa Việt Nam sớm hoàn thành mục tiêu BHYT toàn dân.",
+  "status": "match",
+  "note": "Số người tham gia tuyệt đối không có trên trang này"
+ },
+ {
+  "block": "duoc-market",
+  "claim": "Chi tiêu thuốc bình quân năm 2025 theo Cục Quản lý Dược",
+  "value": "78,3",
+  "url": "https://stockbiz.vn/tin-tuc/cuoc-chien-moi-cua-nganh-duoc/40361759",
+  "opened_at": "2026-10-12",
+  "quote": "chi tiêu bình quân của Việt Nam đạt 78,3 USD/người vào năm 2025",
+  "status": "match",
+  "note": "Dẫn báo cáo Cục Quản lý dược (Bộ Y tế)"
+ },
+ {
+  "block": "duoc-market",
+  "claim": "Quy mô thị trường dược 2025 theo IMARC",
+  "value": "7,98",
+  "url": "https://stockbiz.vn/tin-tuc/cuoc-chien-moi-cua-nganh-duoc/40361759",
+  "opened_at": "2026-10-12",
+  "quote": "quy mô thị trường dược phẩm Việt Nam ước tính định giá 7,98 tỷ USD vào năm 2025.",
+  "status": "match",
+  "note": "Nguồn tổ chức nghiên cứu, không phải Cục QLD"
+ },
+ {
+  "block": "duoc-market",
+  "claim": "Thị trường dược tăng từ 2,7 tỷ USD (2015) lên 7 tỷ USD (2022)",
+  "value": "7",
+  "url": "https://tuoitre.vn/plo/thi-truong-duoc-pham-viet-nam-du-bao-dat-hon-10-ti-usd-nam-2026-post757134.html",
+  "opened_at": "2026-10-12",
+  "quote": "tổng giá trị ước tính tăng từ khoảng 2,7 tỉ USD trong năm 2015 lên 7 tỉ USD vào năm 2022",
+  "status": "match",
+  "note": "URL plo.vn chuyển hướng sang tuoitre.vn/plo"
+ },
+ {
+  "block": "duoc-market",
+  "claim": "Dự báo thị trường dược vượt 10 tỷ USD năm 2026",
+  "value": "10",
+  "url": "https://tuoitre.vn/plo/thi-truong-duoc-pham-viet-nam-du-bao-dat-hon-10-ti-usd-nam-2026-post757134.html",
+  "opened_at": "2026-10-12",
+  "quote": "dự báo đạt hơn 10 tỉ USD vào năm 2026",
+  "status": "match",
+  "note": "Là dự báo"
+ },
+ {
+  "block": "duoc-stores",
+  "claim": "FRT: số nhà thuốc Long Châu cuối 6/2026",
+  "value": "2.639",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-fpt-retail-frt-vuot-30-700-ty-dong-ban-nien-2026-chuoi-long-chau-tiep-tuc-dan-dat-da-tang-truong.html",
+  "opened_at": "2026-10-12",
+  "quote": "Tính đến cuối tháng 06/2026, quy mô của Long Châu đã đạt 2.639 nhà thuốc và 236 trung tâm tiêm chủng trên toàn quốc.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-stores",
+  "claim": "FRT: số trung tâm tiêm chủng Long Châu cuối 6/2026",
+  "value": "236",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-fpt-retail-frt-vuot-30-700-ty-dong-ban-nien-2026-chuoi-long-chau-tiep-tuc-dan-dat-da-tang-truong.html",
+  "opened_at": "2026-10-12",
+  "quote": "Tính đến cuối tháng 06/2026, quy mô của Long Châu đã đạt 2.639 nhà thuốc và 236 trung tâm tiêm chủng trên toàn quốc.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-stores",
+  "claim": "FRT: doanh thu Long Châu 6T/2026 (tỷ đồng), +33% YoY",
+  "value": "21.448",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-fpt-retail-frt-vuot-30-700-ty-dong-ban-nien-2026-chuoi-long-chau-tiep-tuc-dan-dat-da-tang-truong.html",
+  "opened_at": "2026-10-12",
+  "quote": "mạng lưới này ghi nhận doanh thu 21.448 tỷ đồng, tăng 33% so với cùng kỳ",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-stores",
+  "claim": "FRT: doanh thu bình quân Long Châu (tỷ đồng/nhà thuốc/tháng) 6T/2026",
+  "value": "1,3",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-fpt-retail-frt-vuot-30-700-ty-dong-ban-nien-2026-chuoi-long-chau-tiep-tuc-dan-dat-da-tang-truong.html",
+  "opened_at": "2026-10-12",
+  "quote": "doanh thu trung bình vươn lên mức 1,3 tỷ đồng/nhà thuốc/tháng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-stores",
+  "claim": "FRT: doanh thu hợp nhất 6T/2026 (tỷ đồng), +33%",
+  "value": "30.743",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-fpt-retail-frt-vuot-30-700-ty-dong-ban-nien-2026-chuoi-long-chau-tiep-tuc-dan-dat-da-tang-truong.html",
+  "opened_at": "2026-10-12",
+  "quote": "doanh thu hợp nhất bán niên đạt 30.743 tỷ đồng, tăng 33% so với cùng kỳ năm trước",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-stores",
+  "claim": "FRT: LNTT 6T/2026 (tỷ đồng), 67% kế hoạch",
+  "value": "1.038",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-fpt-retail-frt-vuot-30-700-ty-dong-ban-nien-2026-chuoi-long-chau-tiep-tuc-dan-dat-da-tang-truong.html",
+  "opened_at": "2026-10-12",
+  "quote": "lợi nhuận trước thuế ghi nhận sự bứt phá khi đạt 1.038 tỷ đồng, tương ứng tỷ lệ hoàn thành 67% chỉ tiêu lợi nhuận",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-tnh",
+  "claim": "TNH: kế hoạch doanh thu 2026 (tỷ đồng), +64%",
+  "value": "836",
+  "url": "https://vietnamfinance.vn/benh-vien-duy-nhat-tren-hose-len-ke-hoach-lo-51-ty-dong-trong-nam-2026-d144699.html",
+  "opened_at": "2026-10-12",
+  "quote": "dự kiến đạt 836 tỷ đồng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-tnh",
+  "claim": "TNH: kế hoạch lỗ sau thuế 2026 (tỷ đồng)",
+  "value": "51",
+  "url": "https://vietnamfinance.vn/benh-vien-duy-nhat-tren-hose-len-ke-hoach-lo-51-ty-dong-trong-nam-2026-d144699.html",
+  "opened_at": "2026-10-12",
+  "quote": "lỗ sau thuế tới hơn 51 tỷ đồng trong năm 2026",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-tnh",
+  "claim": "TNH: doanh thu Q2/2026 (tỷ đồng), +30%",
+  "value": "159",
+  "url": "https://nhadautu.vn/them-benh-vien-moi-di-vao-van-hanh-tap-doan-tnh-noi-dai-chuoi-lo-sang-quy-thu-7-d106808.html",
+  "opened_at": "2026-10-12",
+  "quote": "doanh thu đạt 159 tỷ đồng, tăng 30% so với cùng kỳ năm trước",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-tnh",
+  "claim": "TNH: lỗ sau thuế Q2/2026 (tỷ đồng)",
+  "value": "25,3",
+  "url": "https://nhadautu.vn/them-benh-vien-moi-di-vao-van-hanh-tap-doan-tnh-noi-dai-chuoi-lo-sang-quy-thu-7-d106808.html",
+  "opened_at": "2026-10-12",
+  "quote": "lỗ sau thuế 25,3 tỷ đồng",
+  "status": "match",
+  "note": "lỗ quý thứ 7 liên tiếp"
+ },
+ {
+  "block": "duoc-tnh",
+  "claim": "TNH: doanh thu 6T/2026 (tỷ đồng), +28%",
+  "value": "276",
+  "url": "https://nhadautu.vn/them-benh-vien-moi-di-vao-van-hanh-tap-doan-tnh-noi-dai-chuoi-lo-sang-quy-thu-7-d106808.html",
+  "opened_at": "2026-10-12",
+  "quote": "doanh thu đạt 276 tỷ đồng, tăng 28% so với cùng kỳ năm trước",
+  "status": "match",
+  "note": "BV TNH Lạng Sơn hoạt động từ 15/7/2026"
+ },
+ {
+  "block": "duoc-players",
+  "claim": "DHG: lãi ròng 6T/2026 (tỷ đồng), +22%",
+  "value": "614",
+  "url": "https://vcci.com.vn/tin-tuc/nhieu-diem-sang-trong-buc-tranh-ban-nien-2026-cua-nganh-duoc",
+  "opened_at": "2026-10-12",
+  "quote": "DHG lãi ròng 614 tỷ đồng sau 6 tháng, tăng 22% so với cùng kỳ.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-players",
+  "claim": "DHG: lãi ròng Q2/2026 (tỷ đồng), +26%",
+  "value": "299",
+  "url": "https://vcci.com.vn/tin-tuc/nhieu-diem-sang-trong-buc-tranh-ban-nien-2026-cua-nganh-duoc",
+  "opened_at": "2026-10-12",
+  "quote": "299 tỷ đồng lãi ròng (tăng 26%) trong quý 2",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-players",
+  "claim": "IMP: lãi ròng 6T/2026 (tỷ đồng), +7%",
+  "value": "176",
+  "url": "https://vcci.com.vn/tin-tuc/nhieu-diem-sang-trong-buc-tranh-ban-nien-2026-cua-nganh-duoc",
+  "opened_at": "2026-10-12",
+  "quote": "Lũy kế 6 tháng, IMP đạt 176 tỷ đồng lãi ròng, tăng 7%.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-players",
+  "claim": "TRA: lãi ròng 6T/2026 (tỷ đồng), +8%",
+  "value": "119",
+  "url": "https://vcci.com.vn/tin-tuc/nhieu-diem-sang-trong-buc-tranh-ban-nien-2026-cua-nganh-duoc",
+  "opened_at": "2026-10-12",
+  "quote": "Lũy kế 6 tháng, lợi nhuận 2 doanh nghiệp lần lượt đạt 119 tỷ và 49 tỷ đồng, tăng tương ứng 8% và 7%.",
+  "status": "match",
+  "note": "câu ghép TRA (119 tỷ, +8%) và OPC (49 tỷ, +7%)"
+ },
+ {
+  "block": "duoc-players",
+  "claim": "TRA: lãi ròng Q2/2026 (tỷ đồng), +38%",
+  "value": "58",
+  "url": "https://vcci.com.vn/tin-tuc/nhieu-diem-sang-trong-buc-tranh-ban-nien-2026-cua-nganh-duoc",
+  "opened_at": "2026-10-12",
+  "quote": "58 tỷ đồng lãi ròng, tăng 38%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-players",
+  "claim": "DVN: lãi ròng lũy kế 6T/2026 (tỷ đồng), +22%",
+  "value": "263",
+  "url": "https://vcci.com.vn/tin-tuc/nhieu-diem-sang-trong-buc-tranh-ban-nien-2026-cua-nganh-duoc",
+  "opened_at": "2026-10-12",
+  "quote": "kết quả lũy kế của DVN vẫn tăng 22%, đạt 263 tỷ đồng.",
+  "status": "match",
+  "note": "Q2 giảm 14% còn 121 tỷ (theo bài)"
+ },
+ {
+  "block": "duoc-players",
+  "claim": "DBD: lãi ròng Q1/2026 (tỷ đồng), đi ngang",
+  "value": "80",
+  "url": "https://doanhnhan.baophapluat.vn/loi-nhuan-doanh-nghiep-nganh-duoc-quy-1-2026-phan-hoa-nhieu-ong-lon-bao-lai-dam-nho-toi-uu-chi-phi.html",
+  "opened_at": "2026-10-12",
+  "quote": "ghi nhận lợi nhuận đi ngang ở mức 80 tỷ đồng (giảm chưa tới 1%)",
+  "status": "match",
+  "note": "chỉ có Q1/2026, chưa có 6T"
+ },
+ {
+  "block": "duoc-players",
+  "claim": "IMP: kế hoạch doanh thu gộp 2026 (tỷ đồng)",
+  "value": "3.200",
+  "url": "https://vietnamnet.vn/imexpharm-dat-muc-tieu-tang-truong-2-chu-so-doanh-thu-3-200-ty-dong-2509299.html",
+  "opened_at": "2026-10-12",
+  "quote": "mục tiêu doanh thu gộp đạt 3.200 tỷ đồng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "duoc-players",
+  "claim": "IMP: kế hoạch LNTT 2026 tăng (%)",
+  "value": "12,5",
+  "url": "https://vietnamnet.vn/imexpharm-dat-muc-tieu-tang-truong-2-chu-so-doanh-thu-3-200-ty-dong-2509299.html",
+  "opened_at": "2026-10-12",
+  "quote": "lợi nhuận trước thuế tăng 12,5%",
+  "status": "match",
+  "note": "mekongasean ghi ~502 tỷ, +12,6% (chưa mở)"
+ }
+]

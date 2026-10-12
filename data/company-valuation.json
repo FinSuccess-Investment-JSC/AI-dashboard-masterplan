@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "checked_at": "2026-10-12T13:23:21+07:00",
+ "checked_at": "2026-10-12T13:54:17+07:00",
  "provider": "VNDirect finfo",
  "method": "P/E, P/B, vốn hóa của VNDirect tại ngày tham chiếu, điều chỉnh theo giá đóng cửa phiên mới nhất; EPS, BVPS, số cổ phiếu giữ nguyên đến kỳ BCTC sau.",
  "units": {
@@ -11,10 +11,9 @@
  },
  "status": "partial",
  "errors": {
-  "STK": "không có giá đóng cửa ngày 2026-04-28",
-  "LTG": "không có giá đóng cửa ngày 2024-09-27"
+  "TNH": "không có giá đóng cửa ngày 2025-05-05"
  },
- "data_hash": "81ccdda590228e07f69ac6474b90432ac7d8b2928eff1dc31f03dbefac12c495",
+ "data_hash": "13d127e4a405f24652248abb8e89d4620f49326a18e04f34ce31c0774e8e25c0",
  "latest_observation": "2026-10-09",
  "companies": {
   "GAS": {
@@ -1231,6 +1230,60 @@
    "market_cap": 1669.5,
    "basis_date": "2026-10-09",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SVC"
+  },
+  "DHG": {
+   "date": "2026-10-09",
+   "close": 89.2,
+   "pe": 12.1,
+   "pb": 3.41,
+   "market_cap": 11662.5,
+   "basis_date": "2026-10-09",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/DHG"
+  },
+  "IMP": {
+   "date": "2026-10-09",
+   "close": 37.0,
+   "pe": 15.81,
+   "pb": 2.53,
+   "market_cap": 5698.3,
+   "basis_date": "2026-10-09",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/IMP"
+  },
+  "DBD": {
+   "date": "2026-10-09",
+   "close": 46.35,
+   "pe": 15.1,
+   "pb": 2.83,
+   "market_cap": 4379.6,
+   "basis_date": "2026-10-09",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/DBD"
+  },
+  "TRA": {
+   "date": "2026-10-09",
+   "close": 36.0,
+   "pe": 11.82,
+   "pb": 2.13,
+   "market_cap": 2984.4,
+   "basis_date": "2026-10-09",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/TRA"
+  },
+  "DMC": {
+   "date": "2026-10-09",
+   "close": 53.3,
+   "pe": 8.09,
+   "pb": 1.17,
+   "market_cap": 1851.0,
+   "basis_date": "2026-10-09",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/DMC"
+  },
+  "DVN": {
+   "date": "2026-10-09",
+   "close": 17.2,
+   "pe": 5.89,
+   "pb": 1.07,
+   "market_cap": 4041.6,
+   "basis_date": "2026-10-09",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/DVN"
   }
  },
  "history": {
@@ -3652,7 +3705,61 @@
     0.83,
     1669.5
    ]
+  ],
+  "DHG": [
+   [
+    "2026-10-09",
+    89.2,
+    12.1,
+    3.41,
+    11662.5
+   ]
+  ],
+  "IMP": [
+   [
+    "2026-10-09",
+    37.0,
+    15.81,
+    2.53,
+    5698.3
+   ]
+  ],
+  "DBD": [
+   [
+    "2026-10-09",
+    46.35,
+    15.1,
+    2.83,
+    4379.6
+   ]
+  ],
+  "TRA": [
+   [
+    "2026-10-09",
+    36.0,
+    11.82,
+    2.13,
+    2984.4
+   ]
+  ],
+  "DMC": [
+   [
+    "2026-10-09",
+    53.3,
+    8.09,
+    1.17,
+    1851.0
+   ]
+  ],
+  "DVN": [
+   [
+    "2026-10-09",
+    17.2,
+    5.89,
+    1.07,
+    4041.6
+   ]
   ]
  },
- "changed_at": "2026-10-11T16:59:06+07:00"
+ "changed_at": "2026-10-12T13:54:17+07:00"
 }
