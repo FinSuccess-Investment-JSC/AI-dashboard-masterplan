@@ -111,6 +111,26 @@ def build_period(tables,kind):
   if metrics[key] is not None:metrics[key]/=1000 # millions VND -> billions VND
  return {'end':end,'label':p['label'],'values':metrics,'source_urls':[income['url'],balance['url']],'checked_at':min(income['checked_at'],balance['checked_at']),'method':'Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist.'}
 
+def build_history(tables):
+ """Quarterly revenue, gross profit and net income (billion VND) for the trend chart; missing stays None."""
+ income=tables.get('income_quarter')
+ if not income:return None
+ keys=('Revenues Before Loan Losses','Total Revenue','Revenue')
+ revenue_key=next((k for k in keys if k in income['rows']),None)
+ out={'quarters':[],'revenue':[],'gross_profit':[],'net_income':[],'source_url':income['url'],'checked_at':income['checked_at']}
+ for i,p in reversed(list(enumerate(income['periods']))):
+  # Calendar quarter from the period end date: fiscal labels (e.g. SBT 'Q1 2027' ending Sep 2026) differ.
+  if not re.fullmatch(r'Q[1-4] \d{4}',p['label'] or '') or not re.fullmatch(r'\d{4}-\d{2}-\d{2}',p['end'] or ''):continue
+  y,mo=int(p['end'][:4]),int(p['end'][5:7])
+  if mo not in (3,6,9,12):continue  # non-standard quarter ends are skipped, never shifted
+  val=lambda name:(income['rows'].get(name) or [None]*len(income['periods']))[i]
+  conv=lambda v:None if v is None else round(v/1000,3)
+  out['quarters'].append(f'Q{mo//3}/{y}')
+  out['revenue'].append(conv(val(revenue_key)) if revenue_key else None)
+  out['gross_profit'].append(conv(val('Gross Profit')))
+  out['net_income'].append(conv(val('Net Income to Common')))
+ return out if out['quarters'] else None
+
 def main():
  path=ROOT/'data/company-comparison.json';old=json.loads(path.read_text()) if path.exists() else {'companies':[]};previous={r['symbol']:r for r in old['companies']}
  jobs=[]
@@ -132,6 +152,9 @@ def main():
     try:row[kind]=build_period(t,kind)
     except ValueError as e:row['errors'].append(str(e))
     if row[kind] is None and previous.get(symbol,{}).get(kind):row[kind]=previous[symbol][kind];row[kind]['last_good']=True
+   try:row['history']=build_history(t)
+   except (ValueError,KeyError,TypeError) as e:row['errors'].append('history: '+str(e))
+   if row.get('history') is None and previous.get(symbol,{}).get('history'):row['history']=previous[symbol]['history']
    v=t.get('valuation')
    if v:
     current=next((p for p in v['periods'] if p['label']=='Current'),None)
@@ -146,4 +169,9 @@ def main():
  content=json.dumps(payload,ensure_ascii=False,indent=2)
  for target,text in [(path,content+'\n'),(ROOT/'data/company-comparison.js','window.COMPANY_COMPARISON = '+content+';\n')]:
   temp=target.with_suffix(target.suffix+'.tmp');temp.write_text(text);temp.replace(target)
-if __name__=='__main__':main()
+if __name__=='__main__':
+ main()
+ # Trend chart data (assets/company-trend.js) is rebuilt from the same snapshot so table and chart never diverge.
+ sys.path.insert(0,str(ROOT/'scripts'))
+ from build_company_quarterly import build
+ build()

@@ -384,3 +384,10 @@ body.fs-home .fs-search { margin-bottom: 32px; } body.fs-home nav.site-navigatio
 .company-trend .ct-legend-item .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
 .company-trend .ct-legend-item.off{text-decoration:line-through;color:#9aa3b2}
 .company-trend .ct-legend-item.off .dot{opacity:.35}
+.company-trend .company-trend-chart{width:100%;overflow:hidden}
+.company-trend .ct-svg{display:block;max-width:100%;height:auto}
+.company-trend .ct-svg text{font-size:11px;font-weight:500;fill:#6b7686;font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+.company-trend .ct-source{margin-top:8px;font-size:11.5px;color:#6b7686}
+.company-trend .ct-source summary{cursor:pointer;font-weight:600}
+.company-trend .ct-source-btn{border:1px solid var(--line,#dfe6f7);border-radius:8px;background:#f5f7fc;color:#1D2678;padding:4px 10px;font:inherit;font-size:11.5px;font-weight:700;cursor:pointer}
+.company-trend .ct-source-panel{margin-top:6px}

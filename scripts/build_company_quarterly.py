@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SECTORS = {'power': ['fs_nonfin_power_quarterly_2021_2023.json', 'fs_nonfin_power_quarterly.json']}
+FIRST_YEAR = 2021
 NOTES = {'TV2': 'Trước Q2/2025 là báo cáo đơn lẻ, từ Q2/2025 là báo cáo hợp nhất; số kỳ trước và sau không cùng phạm vi.'}
 
 
@@ -37,12 +38,25 @@ def build():
         all_q |= {(y, q) for _, y, q in rows}
         sector_symbols = [c['symbol'] for c in comp['companies'] if c['sector'] == sector]
         symbols = [s for s in sector_symbols if any(k[0] == s for k in rows)]
-        missing += [{'symbol': s, 'group': groups[s]} for s in sector_symbols if s not in symbols]
+        missing += [{'symbol': s, 'group': groups[s], 'sector': sector} for s in sector_symbols if s not in symbols]
         for s in symbols:
             out_companies.append({'sector': sector, 'symbol': s, 'group': groups[s], 'note': NOTES.get(s),
                                   'rows': {f'{y}Q{q}': {'revenue': r['is10'], 'gross_profit': r['is20'], 'net_income': r['is62'], 'audit': r['audit_status_id']}
                                            for (sym, y, q), r in rows.items() if sym == s}})
-    qs = sorted(all_q)
+    # Other sectors: quarterly history saved by scripts/update_company_comparison.py (Stock Analysis).
+    sa_rows = {}
+    for row in comp['companies']:
+        if row['sector'] in SECTORS:
+            continue
+        h = row.get('history')
+        if not h:
+            missing.append({'symbol': row['symbol'], 'group': row['group'], 'sector': row['sector']})
+            continue
+        sa_rows[(row['sector'], row['symbol'])] = (row, h)
+        for label in h['quarters']:
+            q, y = label[1], label[3:]
+            all_q.add((int(y), int(q)))
+    qs = sorted(q for q in all_q if q[0] >= FIRST_YEAR)  # a few providers list sparse quarters back to 2013
     labels = [f'Q{q}/{y}' for y, q in qs]
     keys = [f'{y}Q{q}' for y, q in qs]
     companies = []
@@ -57,12 +71,23 @@ def build():
             y, q = have[-1].split('Q')
             extra = f'Wi chỉ có dữ liệu đến Q{q}/{y}.'
             note = f'{note} {extra}' if note else extra
-        companies.append({'sector': c['sector'], 'symbol': c['symbol'], 'group': c['group'], 'note': note,
+        companies.append({'sector': c['sector'], 'symbol': c['symbol'], 'group': c['group'], 'note': note, 'source': 'wi',
                           'revenue': rev, 'gross_profit': gp, 'net_income': ni,
                           'gross_margin': ratio(gp, rev), 'net_margin': ratio(ni, rev),
                           'audit': [c['rows'].get(k, {}).get('audit') for k in keys]})
+    for (sector, symbol), (row, h) in sa_rows.items():
+        pos = {lab: i for i, lab in enumerate(h['quarters'])}
+        pick = lambda arr: [arr[pos[l]] if l in pos else None for l in labels]
+        rev, gp, ni = pick(h['revenue']), pick(h['gross_profit']), pick(h['net_income'])
+        ratio = lambda a, b: [round(x / y * 100, 2) if x is not None and y else None for x, y in zip(a, b)]
+        note = {'bank': 'Doanh thu = tổng thu nhập trước dự phòng; ngân hàng không có lãi gộp.',
+                'insurance': 'Doanh thu = tổng doanh thu; bảo hiểm không có lãi gộp.'}.get(sector)
+        companies.append({'sector': sector, 'symbol': symbol, 'group': row['group'], 'note': note, 'source': 'sa',
+                          'revenue': rev, 'gross_profit': gp, 'net_income': ni,
+                          'gross_margin': ratio(gp, rev), 'net_margin': ratio(ni, rev), 'audit': [None] * len(labels)})
     payload = {'schema': 1, 'source': 'WiData · BCTC hợp nhất quý (fs_nonfin: doanh thu thuần, lợi nhuận gộp, LNST cổ đông công ty mẹ)',
-               'captured_at': max(checked), 'unit': 'tỷ VND', 'quarters': labels, 'missing': missing, 'companies': companies}
+               'sources': {'wi': {'name': 'WiData · BCTC quý (fs_nonfin)', 'url': 'https://widata.vn/'}, 'sa': {'name': 'Stock Analysis / S&P Global Market Intelligence · BCTC quý', 'url': 'https://stockanalysis.com/'}},
+               'captured_at': max(checked), 'sa_checked_at': (comp.get('checked_at') or '')[:10], 'unit': 'tỷ VND', 'quarters': labels, 'missing': missing, 'companies': companies}
     text = json.dumps(payload, ensure_ascii=False, separators=(',', ':'))
     (ROOT / 'data/company-quarterly.json').write_text(text + '\n')
     (ROOT / 'data/company-quarterly.js').write_text('window.COMPANY_QUARTERLY=' + text + ';\n')

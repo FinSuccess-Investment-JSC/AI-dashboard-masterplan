@@ -19,9 +19,12 @@ class CompanyQuarterlyTest(unittest.TestCase):
     def test_margins_are_ratios_of_the_amounts(self):
         for c in self.data['companies']:
             for rev, gp, ni, gm, nm in zip(c['revenue'], c['gross_profit'], c['net_income'], c['gross_margin'], c['net_margin']):
-                if rev:
+                if rev and gp is not None:
                     self.assertAlmostEqual(gm, gp / rev * 100, delta=0.01)
+                if rev and ni is not None:
                     self.assertAlmostEqual(nm, ni / rev * 100, delta=0.01)
+                if gp is None:
+                    self.assertIsNone(gm)
 
     def test_revenue_matches_independent_snapshot(self):
         """Latest quarter revenue from Wi must agree with the Stock Analysis snapshot used by the table."""
@@ -38,9 +41,9 @@ class CompanyQuarterlyTest(unittest.TestCase):
         self.assertEqual(len(self.data['quarters']), 22)
 
     def test_missing_companies_are_declared(self):
-        have = {c['symbol'] for c in self.data['companies']}
-        power = {s for s, c in self.comparison.items() if c['sector'] == 'power'}
-        self.assertEqual(power - have, {m['symbol'] for m in self.data['missing']})
+        have = {(c['sector'], c['symbol']) for c in self.data['companies']}
+        rows = {(c['sector'], c['symbol']) for c in json.loads((ROOT / 'data/company-comparison.json').read_text())['companies']}
+        self.assertEqual(rows - have, {(m['sector'], m['symbol']) for m in self.data['missing']})
 
 
 if __name__ == '__main__':
