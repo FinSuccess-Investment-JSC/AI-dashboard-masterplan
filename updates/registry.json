@@ -4067,6 +4067,51 @@
     "Số khớp chart",
     "Không đụng ô analyst"
    ]
+  },
+  {
+   "id": "power.company-quarterly",
+   "tier": "C",
+   "title": "BCTC quý các doanh nghiệp điện: doanh thu, lãi gộp, lãi ròng, biên",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); Wi cập nhật theo công bố",
+   "source": {
+    "name": "WiData · fs_nonfin",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [],
+    "note": "chart xu hướng theo quý trong tab Tổng quan > So sánh tài chính, do assets/company-trend.js dựng từ data/company-quarterly.js"
+   },
+   "how": "Gọi wi_data_companies get_data fs_nonfin (columns symbol,year,quarter,audit_status_id,is10,is20,is62; filters symbol các mã ngành điện, year 3 năm gần nhất, quarter 1-4) bằng đúng cách hai lượt trong data/raw/wi/fs_nonfin_power_quarterly.json (hook wi_capture lưu nguyên văn; không gõ lại số), cập nhật file thô, chạy python3 scripts/build_company_quarterly.py rồi python3 -m unittest tests.test_company_quarterly",
+   "gates": [
+    "Số lấy nguyên văn từ Wi, không chép tay",
+    "Doanh thu quý mới nhất khớp bản chụp Stock Analysis trong 2% (test)",
+    "Ghi mã thiếu dữ liệu vào missing (hiện CHP)"
+   ]
   }
  ]
 }

@@ -53,6 +53,7 @@ function mount(host,{sector,sources}){
  rows.forEach(r=>{const n=make('p');n.append(make('b','',r.symbol+' · '));const urls=new Set([...(r.year?.source_urls||[]),...(r.quarter?.source_urls||[]),r.quote?.source_url].filter(Boolean));urls.forEach((url,i)=>{const a=make('a','',url.includes('vndirect')?'Định giá VNDirect ↗':i===urls.size-1&&url.includes('ratios')?'Định giá ↗':url.includes('balance-sheet')?'CĐKT '+(url.includes('quarterly')?'quý':'năm')+' ↗':'KQKD '+(url.includes('quarterly')?'quý':'năm')+' ↗');a.href=url;a.target='_blank';a.rel='noopener';n.append(a,' · ')});if(!urls.size)n.append('Chưa lấy được dữ liệu công khai cho đúng mã/sàn.');body.append(n)});source.append(body);host.append(source);
  const registry=make('details','research-fold');registry.append(make('summary','','Nguồn bảng so sánh tài chính'));const registryBody=body.cloneNode(true);registryBody.className='research-detail';registry.append(registryBody);sources.append(registry);
  draw();
+ const trend=window.CompanyTrend?.mount(host,{sector});if(trend)host.insertBefore(trend,tools);
 }
 if(typeof window!=='undefined')window.FinancialComparison={mount,compare};
 if(typeof module!=='undefined'&&module.exports)module.exports={compare};
