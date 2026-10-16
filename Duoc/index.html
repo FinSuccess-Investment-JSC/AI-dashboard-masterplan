@@ -293,21 +293,21 @@ body{font-size:14px;line-height:1.45}
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=123c08b8ffcd">
 <script src="../assets/chart-types.js?v=5b81f0f266ee"></script>
-<script src="../data/daily-data.js?v=b3c68ee7fa70" defer></script>
+<script src="../data/daily-data.js?v=1894d8e3ef20" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=82b412aede70" defer></script>
 <script src="../assets/sector-content.js?v=be87392226ce" defer></script>
 <script src="../assets/sector-layout.js?v=68a0b4e1b045" defer></script>
-<script src="../data/pharma-wi-data.js?v=f6dd19ff5f41" defer></script>
-<script src="../assets/pharma-dashboard.js?v=e82b750c96e2" defer></script>
+<script src="../data/pharma-public-data.js?v=35d0f2bea130" defer></script>
+<script src="../assets/pharma-dashboard.js?v=1841a48d63a3" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="../assets/catalyst-board.js?v=23beb481800b" defer></script>
-<script src="../data/company-valuation.js?v=6dcb886393f9" defer></script>
-<script src="../data/company-comparison.js?v=b17256b8f80c" defer></script>
-<script src="../data/company-quarterly.js?v=886bf9d1d2f9" defer></script>
-<script src="../assets/company-trend.js?v=3b441fb58d28" defer></script>
-<script src="../assets/financial-comparison.js?v=ed3ab15b7d9e" defer></script>
+<script src="../assets/catalyst-board.js?v=5a3e399e6332" defer></script>
+<script src="../data/company-valuation.js?v=bf41744104c6" defer></script>
+<script src="../data/company-comparison.js?v=103f46ce84de" defer></script>
+<script src="../data/company-quarterly.js?v=2485558b3201" defer></script>
+<script src="../assets/company-trend.js?v=c917c1529e17" defer></script>
+<script src="../assets/financial-comparison.js?v=915100cada6a" defer></script>
 <script src="../assets/research-layout.js?v=391996812add" defer></script>
 <script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="../assets/research-editorial.js?v=dac2ec8ce2ed" defer></script>
@@ -315,7 +315,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261012-pharma2"></script>
+<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261016T060939Z"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=6385be151679">
@@ -368,19 +368,19 @@ body[data-sector="pharma"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spa
     <p>Cầu tăng đều theo dân số già và BHYT; biên nhà sản xuất do giá API nhập, tỷ giá và giá trúng thầu quyết định.</p>
     <div class="tagrow">
       <span class="tag">Bản nghiên cứu: 12/10/2026</span>
-      <span class="tag">Nhập khẩu, IIP, CPI, tỷ giá: <a href="https://widata.vn/" target="_blank" rel="noopener">NSO, Hải quan qua MCP Wi</a></span>
+      <span class="tag">Nhập khẩu, IIP, CPI, tỷ giá: NSO, Hải quan</span>
     </div>
-    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> đang tải số Wi.</div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm trống (chưa có nguồn công khai thay thế).</div>
   </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
     <div class="sectionhead"><div><h2>1. Tổng quan ngành dược &amp; y tế</h2><p>8 doanh nghiệp: dược phẩm (DHG, IMP, DBD, TRA, DMC, DVN), dịch vụ y tế (FRT – Long Châu, TNH).</p></div></div>
     <section class="grid kpis">
-      <div class="kpi"><div class="label">Thuốc nhập khẩu</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan · Wi</div><div id="spk-import"></div></div>
-      <div class="kpi"><div class="label">Nguyên liệu dược nhập</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan · Wi</div><div id="spk-api"></div></div>
-      <div class="kpi"><div class="label">IIP sản xuất thuốc</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO · Wi</div><div id="spk-iip"></div></div>
-      <div class="kpi"><div class="label">CPI thuốc &amp; y tế</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO · Wi</div><div id="spk-cpi"></div></div>
-      <div class="kpi"><div class="label">Tỷ giá trung tâm</div><div class="value">—</div><div class="delta"></div><div class="sub">NHNN · Wi</div><div id="spk-fx"></div></div>
-      <div class="kpi"><div class="label">P/E ngành dược</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-pe"></div></div>
+      <div class="kpi"><div class="label">Thuốc nhập khẩu</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan</div><div id="spk-import"></div></div>
+      <div class="kpi"><div class="label">Nguyên liệu dược nhập</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan</div><div id="spk-api"></div></div>
+      <div class="kpi"><div class="label">IIP sản xuất thuốc</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-iip"></div></div>
+      <div class="kpi"><div class="label">CPI thuốc &amp; y tế</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-cpi"></div></div>
+      <div class="kpi"><div class="label">Tỷ giá trung tâm</div><div class="value">—</div><div class="delta"></div><div class="sub">NHNN</div><div id="spk-fx"></div></div>
+      <div class="kpi"><div class="label">P/E ngành dược</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pe"></div></div>
     </section>
     <div class="grid two">
       <div class="card" data-block-id="duoc-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -397,7 +397,7 @@ body[data-sector="pharma"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spa
     </div>
     <div class="card sector-valuation" style="margin-top:14px" data-block-id="duoc-03" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">Định giá ngành dược — theo phiên</div>
-        <div class="chart-sub">lần · GICS cấp 4 của Wi · mỗi 5 phiên</div>
+        <div class="chart-sub">lần · GICS cấp 4 · mỗi 5 phiên</div>
         <div id="chSectorVal"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-sector-val"></table></div></details>
     </div>
@@ -510,7 +510,7 @@ body[data-sector="pharma"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spa
   </div>
   <div class="majorpane" data-tab="mt5" id="pane-mt5">
   <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ Wi (nhập khẩu, IIP, tỷ giá, CPI y tế, GDP y tế, định giá).</p></div></div>
+    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai (nhập khẩu, IIP, tỷ giá, CPI y tế, GDP y tế, định giá).</p></div></div>
     <div class="catriskgrid">
       <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3>Catalyst — yếu tố hỗ trợ</h3>
@@ -569,8 +569,8 @@ body[data-sector="pharma"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spa
   </div>
   <div class="card" style="margin-top:14px" data-block-id="duoc-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Nhập khẩu dược, nguyên liệu; IIP; CPI y tế; GDP y tế</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a>, <a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan</a> qua Wi</td><td>Tháng / quý</td><td>Routine Claude (Wi)</td></tr><tr><td><b>Tỷ giá trung tâm</b></td><td><a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN</a> qua Wi</td><td>Tháng</td><td>Cùng lời gọi hằng tháng</td></tr><tr><td><b>P/E, P/B ngành dược; từng mã</b></td><td>Wi; <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Wi hằng ngày; script mỗi lượt job</td></tr><tr><td><b>BHYT, đấu thầu, pháp lý, Long Châu, TNH</b></td><td>Báo, cơ quan nhà nước (link tại từng thẻ)</td><td>Quý / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC từng doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
-    <div class="source-note" id="wi-built">Dựng từ WiMCP; các lời gọi ghi trong data/pharma-wi-contract.json.</div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Nhập khẩu dược, nguyên liệu; IIP; CPI y tế; GDP y tế</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a>, <a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan</a></td><td>Tháng / quý</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>Tỷ giá trung tâm</b></td><td><a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN</a></td><td>Tháng</td><td>Cùng lời gọi hằng tháng</td></tr><tr><td><b>P/E, P/B ngành dược; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>BHYT, đấu thầu, pháp lý, Long Châu, TNH</b></td><td>Báo, cơ quan nhà nước (link tại từng thẻ)</td><td>Quý / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC từng doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
   </div>
   <div class="footer">Vietnam Pharma &amp; Healthcare Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 12/10/2026.</div>
 </div>

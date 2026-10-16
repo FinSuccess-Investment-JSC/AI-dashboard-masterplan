@@ -293,21 +293,21 @@ body{font-size:14px;line-height:1.45}
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=123c08b8ffcd">
 <script src="../assets/chart-types.js?v=5b81f0f266ee"></script>
-<script src="../data/daily-data.js?v=b3c68ee7fa70" defer></script>
+<script src="../data/daily-data.js?v=1894d8e3ef20" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=82b412aede70" defer></script>
 <script src="../assets/sector-content.js?v=be87392226ce" defer></script>
 <script src="../assets/sector-layout.js?v=68a0b4e1b045" defer></script>
-<script src="../data/insurance-wi-data.js?v=9ee1eabf77f0" defer></script>
-<script src="../assets/insurance-dashboard.js?v=3c4d33e83e45" defer></script>
+<script src="../data/insurance-public-data.js?v=bd151920566f" defer></script>
+<script src="../assets/insurance-dashboard.js?v=7f5604330d08" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="../assets/catalyst-board.js?v=23beb481800b" defer></script>
-<script src="../data/company-valuation.js?v=6dcb886393f9" defer></script>
-<script src="../data/company-comparison.js?v=b17256b8f80c" defer></script>
-<script src="../data/company-quarterly.js?v=886bf9d1d2f9" defer></script>
-<script src="../assets/company-trend.js?v=3b441fb58d28" defer></script>
-<script src="../assets/financial-comparison.js?v=ed3ab15b7d9e" defer></script>
+<script src="../assets/catalyst-board.js?v=5a3e399e6332" defer></script>
+<script src="../data/company-valuation.js?v=bf41744104c6" defer></script>
+<script src="../data/company-comparison.js?v=103f46ce84de" defer></script>
+<script src="../data/company-quarterly.js?v=2485558b3201" defer></script>
+<script src="../assets/company-trend.js?v=c917c1529e17" defer></script>
+<script src="../assets/financial-comparison.js?v=915100cada6a" defer></script>
 <script src="../assets/research-layout.js?v=391996812add" defer></script>
 <script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="../assets/research-editorial.js?v=dac2ec8ce2ed" defer></script>
@@ -315,7 +315,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261012-pharma2"></script>
+<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261016T060939Z"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=6385be151679">
@@ -368,20 +368,20 @@ body[data-sector="insurance"] .tx-group{margin:18px 0 8px;font-size:12px;letter-
     <p>Phi nhân thọ thường có lãi bảo hiểm mỏng, lợi nhuận đến chủ yếu từ đầu tư quỹ dự phòng. Nhân thọ giữ quỹ dài hạn lớn và chưa thoát khủng hoảng kênh ngân hàng.</p>
     <div class="tagrow">
       <span class="tag">Bản nghiên cứu: 11/10/2026</span>
-      <span class="tag">Phí, bồi thường doanh nghiệp niêm yết: <a href="https://widata.vn/" target="_blank" rel="noopener">BCTC tổng hợp ngành qua MCP Wi</a></span>
+      <span class="tag">Phí, bồi thường doanh nghiệp niêm yết: BCTC tổng hợp ngành</span>
       <span class="tag">Toàn thị trường: <a href="https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html" target="_blank" rel="noopener">Bộ Tài chính qua Tạp chí KTTC</a></span>
     </div>
-    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> đang tải số Wi.</div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm trống (chưa có nguồn công khai thay thế).</div>
   </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
     <div class="sectionhead"><div><h2>1. Tổng quan ngành bảo hiểm</h2><p>7 doanh nghiệp niêm yết: Bảo Việt (BVH, gồm nhân thọ), phi nhân thọ PVI, BMI, MIG, PTI, BIC và tái bảo hiểm VNR.</p></div></div>
     <section class="grid kpis">
-      <div class="kpi"><div class="label">Phí gốc phi nhân thọ niêm yết</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-nlprem"></div></div>
-      <div class="kpi"><div class="label">Tỷ lệ bồi thường PNT</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-loss"></div></div>
-      <div class="kpi"><div class="label">Phí gốc Bảo Việt</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-lifeprem"></div></div>
-      <div class="kpi"><div class="label">TPCP 10 năm</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-yield"></div></div>
-      <div class="kpi"><div class="label">Lãi huy động 12 tháng</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-dep"></div></div>
-      <div class="kpi"><div class="label">P/B phi nhân thọ</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-pb"></div></div>
+      <div class="kpi"><div class="label">Phí gốc phi nhân thọ niêm yết</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-nlprem"></div></div>
+      <div class="kpi"><div class="label">Tỷ lệ bồi thường PNT</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-loss"></div></div>
+      <div class="kpi"><div class="label">Phí gốc Bảo Việt</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-lifeprem"></div></div>
+      <div class="kpi"><div class="label">TPCP 10 năm</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-yield"></div></div>
+      <div class="kpi"><div class="label">Lãi huy động 12 tháng</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-dep"></div></div>
+      <div class="kpi"><div class="label">P/B phi nhân thọ</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pb"></div></div>
     </section>
     <div class="grid two">
       <div class="card" data-block-id="bh-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -398,14 +398,14 @@ body[data-sector="insurance"] .tx-group{margin:18px 0 8px;font-size:12px;letter-
     </div>
     <div class="card sector-valuation" style="margin-top:14px" data-block-id="bh-03" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">P/B nhân thọ, phi nhân thọ, tái bảo hiểm — theo phiên</div>
-        <div class="chart-sub">lần · GICS cấp 4 của Wi · mỗi 5 phiên · P/E ở bảng</div>
+        <div class="chart-sub">lần · GICS cấp 4 · mỗi 5 phiên · P/E ở bảng</div>
         <div id="chSectorVal"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-sector-val"></table></div></details>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="bh-04" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
       <h3 style="margin-top:0;font-size:13.5px">Doanh nghiệp theo dõi và biến quyết định</h3>
       <div class="tablewrap"><table><thead><tr><th>Nhóm</th><th>Mã</th><th>Lợi nhuận đến từ</th><th>Biến quyết định</th></tr></thead><tbody><tr><td><b>Tập đoàn (nhân thọ + phi nhân thọ)</b></td><td>BVH</td><td>Bảo Việt Nhân thọ (dẫn đầu khai thác mới), Bảo hiểm Bảo Việt, quỹ đầu tư rất lớn</td><td>Phí nhân thọ, lãi suất TPCP và tiền gửi, kênh ngân hàng</td></tr><tr><td><b>Phi nhân thọ</b></td><td>PVI · BMI · MIG · PTI · BIC</td><td>Lãi bảo hiểm gốc mỏng + lãi đầu tư; PVI mạnh năng lượng, kỹ thuật; MIG, PTI, BIC mạnh xe, sức khỏe và kênh ngân hàng mẹ</td><td>Tăng trưởng phí, tỷ lệ bồi thường, thiên tai, lãi suất</td></tr><tr><td><b>Tái bảo hiểm</b></td><td>VNR</td><td>Nhận tái từ các công ty phi nhân thọ; lãi đầu tư chiếm phần lớn lợi nhuận</td><td>Thiên tai, tổn thất lớn, lãi suất</td></tr></tbody></table></div>
-      <div class="source-note">P/E, P/B, vốn hóa cập nhật mỗi phiên (VNDirect); số BCTC từng doanh nghiệp chỉ cập nhật khi người dùng yêu cầu. Số tổng hợp ngành (phí, bồi thường, lãi tài chính) lấy tự động từ Wi.</div>
+      <div class="source-note">P/E, P/B, vốn hóa cập nhật mỗi phiên (VNDirect); số BCTC từng doanh nghiệp chỉ cập nhật khi người dùng yêu cầu. Số tổng hợp ngành (phí, bồi thường, lãi tài chính) tạm để trống (chưa có nguồn công khai thay thế).</div>
     </div>
   </div>
   <div class="majorpane" data-tab="mt2" id="pane-mt2">
@@ -493,7 +493,7 @@ body[data-sector="insurance"] .tx-group{margin:18px 0 8px;font-size:12px;letter-
       <div class="chart-title">Quy mô quỹ đầu tư toàn ngành</div>
       <div class="chart-sub">kỳ công bố gần nhất</div>
       <div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>2025</th><th>9T/2026</th></tr></thead><tbody><tr><td>Tổng tài sản</td><td>~1.114 nghìn tỷ (+8,58%)</td><td><b>1.211,7 nghìn tỷ (+10,9%)</b></td></tr><tr><td>Đầu tư trở lại nền kinh tế</td><td>958.987 tỷ (+10,31%)</td><td><b>1.062,1 nghìn tỷ (+14,1%)</b></td></tr><tr><td>Lãi suất 12 tháng Big4 / 35 ngân hàng</td><td>—</td><td>5,9% / 3,7–7,8% (đầu 10/2026)</td></tr><tr><td>Trúng thầu TPCP 10 năm</td><td>—</td><td>4,43% (phiên cuối 9/2026)</td></tr></tbody></table></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Giới hạn tỷ lệ đầu tư trái phiếu doanh nghiệp, cổ phiếu của doanh nghiệp bảo hiểm chưa có trong nguồn mở được. Lợi suất TPCP trên chart là lợi suất thứ cấp (Wi), khác lãi suất trúng thầu.</div></details>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Giới hạn tỷ lệ đầu tư trái phiếu doanh nghiệp, cổ phiếu của doanh nghiệp bảo hiểm chưa có trong nguồn mở được. Lợi suất TPCP trên chart là lợi suất thứ cấp, khác lãi suất trúng thầu.</div></details>
       <div class="source-note">Nguồn: <a href="https://tapchikinhtetaichinh.vn/doanh-thu-phi-bao-hiem-dat-gan-176-nghin-ty-dong-sau-9-thang-168594.html" target="_blank" rel="noopener">Tạp chí KTTC</a> · <a href="https://thoibaotaichinhvietnam.vn/thi-truong-bao-hiem-giu-da-tang-truong-cung-co-nen-tang-cho-giai-doan-moi-189319-189319.html" target="_blank" rel="noopener">Thời báo Tài chính 2025</a> · <a href="https://thitruongtaichinhtiente.vn/lai-suat-dau-thang-10-2026-tiet-kiem-giu-nhip-on-dinh-chung-chi-tien-gui-hut-khach-85944.html" target="_blank" rel="noopener">TTTC-TT</a> · <a href="https://thoibaotaichinhvietnam.vn/thanh-khoan-thi-truong-trai-phieu-chinh-phu-tang-manh-trong-thang-9-205140.html" target="_blank" rel="noopener">TBTC – TPCP</a></div>
     </div>
   </section>
@@ -515,7 +515,7 @@ body[data-sector="insurance"] .tx-group{margin:18px 0 8px;font-size:12px;letter-
   </div>
   <div class="majorpane" data-tab="mt5" id="pane-mt5">
   <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ Wi (phí, bồi thường, lãi tài chính tổng hợp ngành, lãi suất, định giá).</p></div></div>
+    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai (phí, bồi thường, lãi tài chính tổng hợp ngành, lãi suất, định giá).</p></div></div>
     <div class="catriskgrid">
       <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3>Catalyst — yếu tố hỗ trợ</h3>
@@ -573,8 +573,8 @@ body[data-sector="insurance"] .tx-group{margin:18px 0 8px;font-size:12px;letter-
   </div>
   <div class="card" style="margin-top:14px" data-block-id="bh-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Phí, bồi thường, lãi tài chính doanh nghiệp niêm yết</b></td><td>BCTC tổng hợp ngành (GICS) qua Wi</td><td>Quý</td><td>Routine Claude (Wi) sau mùa BCTC</td></tr><tr><td><b>TPCP 10 năm, lãi huy động</b></td><td>HNX, NHNN qua Wi</td><td>Ngày / tháng</td><td>Routine Claude hằng tuần (Wi)</td></tr><tr><td><b>Sản lượng ô tô, xe máy</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a> qua Wi</td><td>Tháng</td><td>Routine Claude (Wi)</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td>Wi; <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Wi hằng ngày; script mỗi lượt job</td></tr><tr><td><b>Toàn thị trường, nghiệp vụ, thị phần, chính sách</b></td><td>Bộ Tài chính, Hiệp hội Bảo hiểm qua báo (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC từng doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
-    <div class="source-note" id="wi-built">Dựng từ WiMCP; các lời gọi ghi trong data/insurance-wi-contract.json.</div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Phí, bồi thường, lãi tài chính doanh nghiệp niêm yết</b></td><td>BCTC tổng hợp ngành (GICS)</td><td>Quý</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>TPCP 10 năm, lãi huy động</b></td><td>HNX, NHNN</td><td>Ngày / tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>Sản lượng ô tô, xe máy</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a></td><td>Tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Toàn thị trường, nghiệp vụ, thị phần, chính sách</b></td><td>Bộ Tài chính, Hiệp hội Bảo hiểm qua báo (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC từng doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
   </div>
   <div class="footer">Vietnam Insurance Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 11/10/2026.</div>
 </div>

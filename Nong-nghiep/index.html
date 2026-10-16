@@ -293,21 +293,21 @@ body{font-size:14px;line-height:1.45}
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=123c08b8ffcd">
 <script src="../assets/chart-types.js?v=5b81f0f266ee"></script>
-<script src="../data/daily-data.js?v=b3c68ee7fa70" defer></script>
+<script src="../data/daily-data.js?v=1894d8e3ef20" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=82b412aede70" defer></script>
 <script src="../assets/sector-content.js?v=be87392226ce" defer></script>
 <script src="../assets/sector-layout.js?v=68a0b4e1b045" defer></script>
-<script src="../data/agri-wi-data.js?v=2cdb7619c74b" defer></script>
-<script src="../assets/agri-dashboard.js?v=75c4c93780e6" defer></script>
+<script src="../data/agri-public-data.js?v=964446c17eda" defer></script>
+<script src="../assets/agri-dashboard.js?v=2aa00b8a20bf" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="../assets/catalyst-board.js?v=23beb481800b" defer></script>
-<script src="../data/company-valuation.js?v=6dcb886393f9" defer></script>
-<script src="../data/company-comparison.js?v=b17256b8f80c" defer></script>
-<script src="../data/company-quarterly.js?v=886bf9d1d2f9" defer></script>
-<script src="../assets/company-trend.js?v=3b441fb58d28" defer></script>
-<script src="../assets/financial-comparison.js?v=ed3ab15b7d9e" defer></script>
+<script src="../assets/catalyst-board.js?v=5a3e399e6332" defer></script>
+<script src="../data/company-valuation.js?v=bf41744104c6" defer></script>
+<script src="../data/company-comparison.js?v=103f46ce84de" defer></script>
+<script src="../data/company-quarterly.js?v=2485558b3201" defer></script>
+<script src="../assets/company-trend.js?v=c917c1529e17" defer></script>
+<script src="../assets/financial-comparison.js?v=915100cada6a" defer></script>
 <script src="../assets/research-layout.js?v=391996812add" defer></script>
 <script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="../assets/research-editorial.js?v=dac2ec8ce2ed" defer></script>
@@ -315,7 +315,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261012-pharma2"></script>
+<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261016T060939Z"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=6385be151679">
@@ -369,20 +369,20 @@ body[data-sector="agri"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spaci
     <p>Ba chuỗi chạy theo ba lực khác nhau: cây trồng xuất khẩu theo giá thế giới và thời tiết; chăn nuôi theo giá heo hơi so với giá ngô, khô đậu; thực phẩm – đồ uống theo sức mua và thuế. Đọc tách, không gộp.</p>
     <div class="tagrow">
       <span class="tag">Bản nghiên cứu: 09/10/2026</span>
-      <span class="tag">XNK, sản lượng, giá: <a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan, NSO · qua MCP Wi</a></span>
+      <span class="tag">XNK, sản lượng, giá: <a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan, NSO</a></span>
       <span class="tag">ENSO: <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC</a></span>
     </div>
-    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> đang tải số Wi.</div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm trống (chưa có nguồn công khai thay thế).</div>
   </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
     <div class="sectionhead"><div><h2>1. Tổng quan ngành nông nghiệp &amp; thực phẩm</h2><p>Cây trồng xuất khẩu nhận giá thế giới; chăn nuôi mua ngô, đậu tương nhập khẩu và bán heo theo giá trong nước; thực phẩm – đồ uống bán cho người tiêu dùng trong nước, chịu thuế tiêu thụ đặc biệt.</p></div></div>
     <section class="grid kpis">
-      <div class="kpi"><div class="label">Cà phê Robusta ICE</div><div class="value">—</div><div class="delta"></div><div class="sub">ICE · Wi</div><div id="spk-robusta"></div></div>
-      <div class="kpi"><div class="label">Cao su TSR20 SGX</div><div class="value">—</div><div class="delta"></div><div class="sub">SGX · Wi</div><div id="spk-rubber"></div></div>
-      <div class="kpi"><div class="label">Giá XK gạo bình quân</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan · Wi</div><div id="spk-rice"></div></div>
-      <div class="kpi"><div class="label">Heo hơi toàn quốc</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-hog"></div></div>
-      <div class="kpi"><div class="label">Ngô CBOT</div><div class="value">—</div><div class="delta"></div><div class="sub">CME · Wi</div><div id="spk-corn"></div></div>
-      <div class="kpi"><div class="label">Bán lẻ hàng hóa</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO · Wi</div><div id="spk-retail"></div></div>
+      <div class="kpi"><div class="label">Cà phê Robusta ICE</div><div class="value">—</div><div class="delta"></div><div class="sub">ICE</div><div id="spk-robusta"></div></div>
+      <div class="kpi"><div class="label">Cao su TSR20 SGX</div><div class="value">—</div><div class="delta"></div><div class="sub">SGX</div><div id="spk-rubber"></div></div>
+      <div class="kpi"><div class="label">Giá XK gạo bình quân</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan</div><div id="spk-rice"></div></div>
+      <div class="kpi"><div class="label">Heo hơi toàn quốc</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-hog"></div></div>
+      <div class="kpi"><div class="label">Ngô CBOT</div><div class="value">—</div><div class="delta"></div><div class="sub">CME</div><div id="spk-corn"></div></div>
+      <div class="kpi"><div class="label">Bán lẻ hàng hóa</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-retail"></div></div>
     </section>
     <div class="grid two">
       <div class="card" data-block-id="nn-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -394,12 +394,12 @@ body[data-sector="agri"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spaci
         <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Cây trồng phân hóa.</mark> Cao su TSR20 <b>+52%</b> YoY, giá XK cao su <b>+27%</b>; Robusta <b>−24%</b>, giá XK cà phê <b>−21%</b>; kim ngạch gạo 9T <b>−12%</b>.</p>
         <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Chăn nuôi bị ép biên.</mark> Heo hơi về <b>~53 nghìn đ/kg</b> (đỉnh T1/2026 ~78), trong khi ngô CBOT <b>+16%</b>, khô đậu <b>+13%</b> YoY.</p>
         <p style="font-size:12.5px;line-height:1.65;margin-bottom:0"><mark class="key-phrase">Tiêu dùng trong nước khỏe; El Niño mạnh.</mark> Bán lẻ hàng hóa 9T <b>+12%</b>, bia <b>+15%</b>. NOAA: Niño-3.4 <b>+2,1 °C</b>, khả năng El Niño mạnh kỷ lục 10–12/2026, mạnh đến rất mạnh tới Q1/2027 → hạn Tây Nguyên, mặn ĐBSCL.</p>
-        <div class="source-note">Nguồn: số Wi tại các chart · <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC 08/10/2026</a></div>
+        <div class="source-note">Nguồn: số liệu tại các chart · <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC 08/10/2026</a></div>
       </div>
     </div>
     <div class="card sector-valuation" style="margin-top:14px" data-block-id="nn-03" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">P/E các phân ngành nông nghiệp, thực phẩm — theo phiên</div>
-        <div class="chart-sub">lần · GICS cấp 4 của Wi · mỗi 5 phiên · P/B ở bảng</div>
+        <div class="chart-sub">lần · GICS cấp 4 · mỗi 5 phiên · P/B ở bảng</div>
         <div id="chSectorVal"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-sector-val"></table></div></details>
     </div>
@@ -523,7 +523,7 @@ body[data-sector="agri"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spaci
   </div>
   <div class="majorpane" data-tab="mt5" id="pane-mt5">
   <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ Wi (giá hàng hóa, XNK, sản lượng, bán lẻ, định giá) và NOAA (ENSO).</p></div></div>
+    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai (giá hàng hóa, XNK, sản lượng, bán lẻ, định giá) và NOAA (ENSO).</p></div></div>
     <div class="catriskgrid">
       <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3>Catalyst — yếu tố hỗ trợ</h3>
@@ -572,7 +572,7 @@ body[data-sector="agri"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spaci
     </div>
     <div data-topic-key="hog_cycle" data-topic-segment="Chăn nuôi &amp; thức ăn" data-topic-title="Giá heo giảm, thức ăn tăng">
       <div class="card" data-block-id="nn-t2" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Heo hơi 54–56 nghìn đ/kg ngày 06/10/2026; đỉnh ~78 nghìn đ/kg cuối T1/2026 (Wi)</li><li>Đàn heo doanh nghiệp tăng nhanh (BAF xuất bán 6T +61%)</li></ul>
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Đàn heo doanh nghiệp tăng nhanh (BAF xuất bán 6T +61%)</li></ul>
         <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▼ DBC · BAF · HAG</p>
         <div class="source-note">Nguồn: <a href="https://baolaocai.vn/gia-lon-hoi-hom-nay-6102026-cao-nhat-56000-dongkg-post911190.html" target="_blank" rel="noopener">Báo Lào Cai 06/10/2026</a> · <a href="https://tapchicongthuong.vn/baf-tang-61--san-luong-heo-6-thang-dau-nam-2026--day-manh-dau-tu-cho-chu-ky-tang-truong-moi-538213.htm" target="_blank" rel="noopener">Tạp chí Công Thương</a></div>
       </div>
@@ -618,8 +618,8 @@ body[data-sector="agri"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spaci
   </div>
   <div class="card" style="margin-top:14px" data-block-id="nn-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa; giá XK bình quân</b></td><td><a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan</a> qua MCP Wi</td><td>Tháng</td><td>Routine Claude hằng ngày (Wi)</td></tr><tr><td><b>Bán lẻ, CPI, IIP, sản lượng bia, sữa, thức ăn</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a> qua Wi</td><td>Tháng</td><td>Routine Claude hằng ngày (Wi)</td></tr><tr><td><b>Heo hơi, gạo nội địa, Robusta, TSR20, ngô, khô đậu</b></td><td>Wi</td><td>Ngày · hiển thị cuối tháng</td><td>Routine Claude hằng tuần (Wi)</td></tr><tr><td><b>ONI, Niño-3.4</b></td><td><a href="https://www.cpc.ncep.noaa.gov/" target="_blank" rel="noopener">NOAA CPC</a></td><td>Tháng / tuần</td><td>Script GitHub mỗi lượt job (dùng chung với Điện)</td></tr><tr><td><b>P/E, P/B nhóm ngành; từng mã</b></td><td>Wi; <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Wi hằng ngày; script mỗi lượt job</td></tr><tr><td><b>Chính sách, mùa vụ, chủ đề nóng</b></td><td>Báo chí, văn bản (link tại từng thẻ)</td><td>Theo sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
-    <div class="source-note" id="wi-built">Dựng từ WiMCP; các lời gọi ghi trong data/agri-wi-contract.json.</div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa; giá XK bình quân</b></td><td><a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan</a></td><td>Tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>Bán lẻ, CPI, IIP, sản lượng bia, sữa, thức ăn</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a></td><td>Tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>Heo hơi, gạo nội địa, Robusta, TSR20, ngô, khô đậu</b></td><td>Tạm trống (chưa có nguồn công khai)</td><td>Ngày · hiển thị cuối tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>ONI, Niño-3.4</b></td><td><a href="https://www.cpc.ncep.noaa.gov/" target="_blank" rel="noopener">NOAA CPC</a></td><td>Tháng / tuần</td><td>Script GitHub mỗi lượt job (dùng chung với Điện)</td></tr><tr><td><b>P/E, P/B nhóm ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Chính sách, mùa vụ, chủ đề nóng</b></td><td>Báo chí, văn bản (link tại từng thẻ)</td><td>Theo sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
   </div>
   <div class="footer">Vietnam Agriculture &amp; Food Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 09/10/2026.</div>
 </div>

@@ -1665,19 +1665,9 @@
    }
   },
   {
-   "id": "realestate.wi.daily",
-   "tier": "B",
-   "title": "Wi: TPDN BĐS (phát hành, dư nợ, chậm trả), vĩ mô (FDI, GDP, CPI nhà ở, tín dụng, lãi suất), định giá 4 phân ngành",
-   "wiBlocks": [
-    "cbond_cashflow",
-    "cbond_issuance",
-    "macro_core",
-    "macro_kcn",
-    "sector_ratio_recent",
-    "fdi_sector",
-    "refi_recent"
-   ],
-   "wiContract": "data/realestate-wi-contract.json",
+   "id": "realestate.public.daily",
+   "tier": "C",
+   "title": "TPDN BĐS (phát hành, dư nợ, chậm trả), vĩ mô (FDI, GDP, CPI nhà ở, tín dụng, lãi suất), định giá 4 phân ngành",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -1685,12 +1675,12 @@
    },
    "publication": "HNX theo CBTT; NSO ngày 6; NHNN trễ 1–3 tháng; định giá theo phiên",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Bat-dong-san/index.html",
-    "file": "data/realestate-wi-data.js",
+    "file": "data/realestate-public-data.js",
     "blocks": [
      "bds-04",
      "bds-05",
@@ -1710,36 +1700,31 @@
      "bds-05d"
     ]
    },
-   "how": "Gọi lại đúng các lời gọi WiMCP trong data/realestate-wi-contract.json (hook wi_capture.py lưu kết quả), rồi chạy python3 scripts/build_realestate_wi.py; kiểm số mới nhất đổi hợp lý trước khi commit data/realestate-wi-data.js.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số",
-    "Tháng chưa khép sổ không vẽ",
-    "Giữ last-good khi Wi lỗi"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "realestate.wi.weekly",
-   "tier": "B",
-   "title": "Wi: lịch đáo hạn TPDN BĐS 2026–2027, giá thép, xi măng",
-   "wiBlocks": [
-    "cbond_maturity_2026",
-    "cbond_maturity_2027",
-    "commodity"
-   ],
-   "wiContract": "data/realestate-wi-contract.json",
+   "id": "realestate.public.weekly",
+   "tier": "C",
+   "title": "lịch đáo hạn TPDN BĐS 2026–2027, giá thép, xi măng",
    "schedule": {
     "type": "weekly",
     "day": "mon",
     "at": "07:00"
    },
-   "publication": "Lịch đáo hạn tính lại mỗi lần Wi cập nhật; giá VLXD theo đợt",
+   "publication": "Lịch đáo hạn tính lại mỗi lần nguồn công khai cập nhật; giá VLXD theo đợt",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Bat-dong-san/index.html",
-    "file": "data/realestate-wi-data.js",
+    "file": "data/realestate-public-data.js",
     "blocks": [
      "bds-14",
      "bds-15",
@@ -1747,11 +1732,13 @@
      "bds-32"
     ]
    },
-   "how": "Gọi lại đúng các lời gọi WiMCP trong data/realestate-wi-contract.json (hook wi_capture.py lưu kết quả), rồi chạy python3 scripts/build_realestate_wi.py; kiểm số mới nhất đổi hợp lý trước khi commit data/realestate-wi-data.js. Lịch đáo hạn 2027 vượt trần hiển thị của tool: dùng --restore với file tool-results.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Lọc sector_l1 = Bất động sản khi dựng",
-    "Ghi rõ số dòng bị cắt nếu total_count > returned"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
    "id": "realestate.market-quarterly",
@@ -2001,23 +1988,16 @@
      "bds-02"
     ]
    },
-   "how": "Cập nhật số và nhận định trong bds-02 và catbox/riskbox theo số mới; bảng tín hiệu tự tính từ Wi",
+   "how": "Cập nhật số và nhận định trong bds-02 và catbox/riskbox theo số mới; bảng tín hiệu tự tính từ dữ liệu công khai",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
    ]
   },
   {
-   "id": "textile.wi.daily",
-   "tier": "B",
-   "title": "Wi: xuất nhập khẩu dệt may theo tháng và thị trường, sản lượng, IIP, bán lẻ quần áo Mỹ, định giá hai phân ngành",
-   "wiBlocks": [
-    "macro_trade",
-    "sector_ratio_recent",
-    "mkt_monthly",
-    "mkt_yearly"
-   ],
-   "wiContract": "data/textile-wi-contract.json",
+   "id": "textile.public.daily",
+   "tier": "C",
+   "title": "xuất nhập khẩu dệt may theo tháng và thị trường, sản lượng, IIP, bán lẻ quần áo Mỹ, định giá hai phân ngành",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -2025,12 +2005,12 @@
    },
    "publication": "Hải quan, NSO đầu tháng; US Census giữa tháng; định giá theo phiên",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Det-may/index.html",
-    "file": "data/textile-wi-data.js",
+    "file": "data/textile-public-data.js",
     "blocks": [
      "dm-04",
      "dm-05",
@@ -2043,44 +2023,43 @@
      "dm-27"
     ]
    },
-   "how": "Gọi lại đúng các lời gọi WiMCP trong data/textile-wi-contract.json (hook wi_capture.py lưu kết quả), rồi chạy python3 scripts/build_textile_wi.py. Lời gọi macro_trade vượt trần hiển thị: dùng python3 scripts/build_realestate_wi.py --restore <file tool-results> <capture>. Với sector_ratio_recent đặt to_time = hôm nay.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Số tháng mới nhất hợp lý so tháng trước",
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "textile.wi.weekly",
-   "tier": "B",
-   "title": "Wi: giá bông ICE, sợi và bông Trung Quốc, xơ PSF, PTA, MEG",
-   "wiBlocks": [
-    "commodity_cotton",
-    "commodity_recent"
-   ],
-   "wiContract": "data/textile-wi-contract.json",
+   "id": "textile.public.weekly",
+   "tier": "A",
+   "title": "giá bông ICE, sợi và bông Trung Quốc, xơ PSF, PTA, MEG",
    "schedule": {
-    "type": "weekly",
-    "day": "mon",
-    "at": "07:00"
+    "type": "policy",
+    "note": "mỗi lượt refresh; IMF/FRED cập nhật hằng tháng"
    },
-   "publication": "Giá ngày; hiển thị cuối tháng",
+   "publication": "IMF bình quân tháng (trễ 1–3 tháng); EIA/ICE theo phiên, lấy giá cuối tháng",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "IMF Primary Commodity Prices (FRED), EIA, ICE",
+    "url": "https://fred.stlouisfed.org/"
    },
    "where": {
     "page": "Det-may/index.html",
-    "file": "data/textile-wi-data.js",
+    "file": "data/textile-public-data.js",
     "blocks": [
      "dm-10",
      "dm-11",
      "dm-12"
     ]
    },
-   "how": "Gọi lại hai lời gọi commodity với to_time = hôm nay (giữ from_time), rồi chạy python3 scripts/build_textile_wi.py.",
+   "how": "python3 scripts/build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Chỉ nguồn công khai (IMF/FRED, EIA, ICE); không dùng số Wi",
+    "Ghi rõ đơn vị và phép quy đổi trong data/<ngành>-public-data.json"
+   ],
+   "job": "build_sector_public.py (mỗi lượt refresh)",
+   "note": "Chỉ các chuỗi có nguồn công khai tương đương; chuỗi nội địa và chỉ số Baltic để trống."
   },
   {
    "id": "textile.trade-tariff",
@@ -2248,20 +2227,16 @@
      "dm-02"
     ]
    },
-   "how": "Cập nhật số và nhận định trong dm-02 và catbox/riskbox; bảng tín hiệu tự tính từ Wi.",
+   "how": "Cập nhật số và nhận định trong dm-02 và catbox/riskbox; bảng tín hiệu tự tính từ dữ liệu công khai.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
    ]
   },
   {
-   "id": "port.wi.monthly",
-   "tier": "B",
-   "title": "Wi: XNK, vận chuyển hàng hóa đường biển, hàng không, thủy nội địa",
-   "wiBlocks": [
-    "macro_transport"
-   ],
-   "wiContract": "data/port-wi-contract.json",
+   "id": "port.public.monthly",
+   "tier": "C",
+   "title": "XNK, vận chuyển hàng hóa đường biển, hàng không, thủy nội địa",
    "schedule": {
     "type": "monthly",
     "at": "07:00",
@@ -2272,12 +2247,12 @@
    },
    "publication": "NSO (vận chuyển, chỉ số giá) ngày 3–6; Hải quan XNK sơ bộ đầu tháng, chính thức giữa tháng",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Cang-bien/index.html",
-    "file": "data/port-wi-data.js",
+    "file": "data/port-public-data.js",
     "blocks": [
      "cg-07",
      "cg-10",
@@ -2286,19 +2261,18 @@
      "cg-18"
     ]
    },
-   "how": "Trong cửa sổ công bố, mỗi ngày làm việc gọi lại lời gọi macro_transport trong data/port-wi-contract.json; nếu Wi đã có tháng mới thì chạy script build, nếu chưa thì --done với ghi chú \"chưa có kỳ mới\". Kết quả vượt trần hiển thị: build_realestate_wi.py --restore.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "port.wi.weekly",
-   "tier": "B",
-   "title": "Wi: Baltic Dry Index",
-   "wiBlocks": [
-    "commodity_freight"
-   ],
-   "wiContract": "data/port-wi-contract.json",
+   "id": "port.public.weekly",
+   "tier": "C",
+   "title": "Baltic Dry Index",
    "schedule": {
     "type": "weekly",
     "day": "mon",
@@ -2306,20 +2280,23 @@
    },
    "publication": "Giá ngày; hiển thị cuối tháng",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Cang-bien/index.html",
-    "file": "data/port-wi-data.js",
+    "file": "data/port-public-data.js",
     "blocks": [
      "cg-15"
     ]
    },
-   "how": "Gọi lại lời gọi commodity với to_time = hôm nay (giữ from_time), rồi chạy python3 scripts/build_port_wi.py.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
    "id": "port.freight",
@@ -2510,20 +2487,16 @@
      "cg-02"
     ]
    },
-   "how": "Cập nhật số và nhận định trong cg-02 và catbox/riskbox; thẻ tín hiệu tự tính từ Wi trong assets/port-dashboard.js.",
+   "how": "Cập nhật số và nhận định trong cg-02 và catbox/riskbox; thẻ tín hiệu tự tính từ dữ liệu công khai trong assets/port-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
    ]
   },
   {
-   "id": "agri.wi.monthly",
-   "tier": "B",
-   "title": "Wi: XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa",
-   "wiBlocks": [
-    "macro_agri"
-   ],
-   "wiContract": "data/agri-wi-contract.json",
+   "id": "agri.public.monthly",
+   "tier": "C",
+   "title": "XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa",
    "schedule": {
     "type": "monthly",
     "at": "07:00",
@@ -2534,12 +2507,12 @@
    },
    "publication": "NSO (bán lẻ, CPI, IIP, sản lượng) ngày 3–6; Hải quan XNK theo mặt hàng đầu–giữa tháng",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Nong-nghiep/index.html",
-    "file": "data/agri-wi-data.js",
+    "file": "data/agri-public-data.js",
     "blocks": [
      "nn-10",
      "nn-11",
@@ -2551,32 +2524,30 @@
      "nn-33"
     ]
    },
-   "how": "Trong cửa sổ công bố, mỗi ngày làm việc gọi lại lời gọi macro_agri trong data/agri-wi-contract.json; nếu Wi đã có tháng mới thì chạy script build, nếu chưa thì --done với ghi chú \"chưa có kỳ mới\". Kết quả vượt trần hiển thị: build_realestate_wi.py --restore.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "agri.wi.weekly",
-   "tier": "B",
-   "title": "Wi: heo hơi, gạo nội địa, Robusta, TSR20, ngô, khô đậu CBOT",
-   "wiBlocks": [
-    "commodity_agri"
-   ],
-   "wiContract": "data/agri-wi-contract.json",
+   "id": "agri.public.weekly",
+   "tier": "A",
+   "title": "heo hơi, gạo nội địa, Robusta, TSR20, ngô, khô đậu CBOT",
    "schedule": {
-    "type": "weekly",
-    "day": "mon",
-    "at": "07:00"
+    "type": "policy",
+    "note": "mỗi lượt refresh; IMF/FRED cập nhật hằng tháng"
    },
-   "publication": "Giá ngày; hiển thị cuối tháng",
+   "publication": "IMF bình quân tháng (trễ 1–3 tháng); EIA/ICE theo phiên, lấy giá cuối tháng",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "IMF Primary Commodity Prices (FRED), EIA, ICE",
+    "url": "https://fred.stlouisfed.org/"
    },
    "where": {
     "page": "Nong-nghiep/index.html",
-    "file": "data/agri-wi-data.js",
+    "file": "data/agri-public-data.js",
     "blocks": [
      "nn-12",
      "nn-13",
@@ -2584,10 +2555,13 @@
      "nn-21"
     ]
    },
-   "how": "Gọi lại lời gọi commodity với to_time = hôm nay (giữ from_time), rồi chạy python3 scripts/build_agri_wi.py.",
+   "how": "python3 scripts/build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Chỉ nguồn công khai (IMF/FRED, EIA, ICE); không dùng số Wi",
+    "Ghi rõ đơn vị và phép quy đổi trong data/<ngành>-public-data.json"
+   ],
+   "job": "build_sector_public.py (mỗi lượt refresh)",
+   "note": "Chỉ các chuỗi có nguồn công khai tương đương; chuỗi nội địa và chỉ số Baltic để trống."
   },
   {
    "id": "agri.enso",
@@ -2752,13 +2726,9 @@
    ]
   },
   {
-   "id": "seafood.wi.monthly",
-   "tier": "B",
-   "title": "Wi: XK thủy sản tổng và theo Mỹ, Trung Quốc, Nhật, Hàn",
-   "wiBlocks": [
-    "macro_seafood"
-   ],
-   "wiContract": "data/seafood-wi-contract.json",
+   "id": "seafood.public.monthly",
+   "tier": "C",
+   "title": "XK thủy sản tổng và theo Mỹ, Trung Quốc, Nhật, Hàn",
    "schedule": {
     "type": "monthly",
     "at": "07:00",
@@ -2769,53 +2739,54 @@
    },
    "publication": "Hải quan: tổng thủy sản đầu tháng; theo nước (bảng 87) cuối tháng sau (vd T8 có ngày 30/09)",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Thuy-san/index.html",
-    "file": "data/seafood-wi-data.js",
+    "file": "data/seafood-public-data.js",
     "blocks": [
      "ts-10",
      "ts-14"
     ]
    },
-   "how": "Trong cửa sổ công bố, mỗi ngày làm việc gọi lại lời gọi macro_seafood trong data/seafood-wi-contract.json; nếu Wi đã có tháng mới thì chạy script build, nếu chưa thì --done với ghi chú \"chưa có kỳ mới\". Kết quả vượt trần hiển thị: build_realestate_wi.py --restore.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "seafood.wi.weekly",
-   "tier": "B",
-   "title": "Wi: giá cá tra nguyên liệu, cá giống, tôm thẻ 50 con; khô đậu, ngô CBOT",
-   "wiBlocks": [
-    "commodity_seafood"
-   ],
-   "wiContract": "data/seafood-wi-contract.json",
+   "id": "seafood.public.weekly",
+   "tier": "A",
+   "title": "giá cá tra nguyên liệu, cá giống, tôm thẻ 50 con; khô đậu, ngô CBOT",
    "schedule": {
-    "type": "weekly",
-    "day": "mon",
-    "at": "07:00"
+    "type": "policy",
+    "note": "mỗi lượt refresh; IMF/FRED cập nhật hằng tháng"
    },
-   "publication": "Giá ngày; hiển thị cuối tháng",
+   "publication": "IMF bình quân tháng (trễ 1–3 tháng); EIA/ICE theo phiên, lấy giá cuối tháng",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "IMF Primary Commodity Prices (FRED), EIA, ICE",
+    "url": "https://fred.stlouisfed.org/"
    },
    "where": {
     "page": "Thuy-san/index.html",
-    "file": "data/seafood-wi-data.js",
+    "file": "data/seafood-public-data.js",
     "blocks": [
      "ts-11",
      "ts-13",
      "ts-20"
     ]
    },
-   "how": "Gọi lại lời gọi commodity với to_time = hôm nay, rồi chạy python3 scripts/build_seafood_wi.py.",
+   "how": "python3 scripts/build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Chỉ nguồn công khai (IMF/FRED, EIA, ICE); không dùng số Wi",
+    "Ghi rõ đơn vị và phép quy đổi trong data/<ngành>-public-data.json"
+   ],
+   "job": "build_sector_public.py (mỗi lượt refresh)",
+   "note": "Chỉ các chuỗi có nguồn công khai tương đương; chuỗi nội địa và chỉ số Baltic để trống."
   },
   {
    "id": "seafood.duties",
@@ -2955,13 +2926,9 @@
    ]
   },
   {
-   "id": "port.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
-   "wiBlocks": [
-    "sector_ratio_recent"
-   ],
-   "wiContract": "data/port-wi-contract.json",
+   "id": "port.public.valuation",
+   "tier": "C",
+   "title": "định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -2969,29 +2936,28 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Cang-bien/index.html",
-    "file": "data/port-wi-data.js",
+    "file": "data/port-public-data.js",
     "blocks": [
      "cg-13"
     ]
    },
-   "how": "Gọi lại lời gọi sector_ratio_recent trong data/port-wi-contract.json với to_time = hôm nay, rồi chạy script build tương ứng.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "agri.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
-   "wiBlocks": [
-    "sector_ratio_recent"
-   ],
-   "wiContract": "data/agri-wi-contract.json",
+   "id": "agri.public.valuation",
+   "tier": "C",
+   "title": "định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -2999,29 +2965,28 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Nong-nghiep/index.html",
-    "file": "data/agri-wi-data.js",
+    "file": "data/agri-public-data.js",
     "blocks": [
      "nn-03"
     ]
    },
-   "how": "Gọi lại lời gọi sector_ratio_recent trong data/agri-wi-contract.json với to_time = hôm nay, rồi chạy script build tương ứng.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "seafood.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
-   "wiBlocks": [
-    "sector_ratio_recent"
-   ],
-   "wiContract": "data/seafood-wi-contract.json",
+   "id": "seafood.public.valuation",
+   "tier": "C",
+   "title": "định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -3029,29 +2994,28 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Thuy-san/index.html",
-    "file": "data/seafood-wi-data.js",
+    "file": "data/seafood-public-data.js",
     "blocks": [
      "ts-03"
     ]
    },
-   "how": "Gọi lại lời gọi sector_ratio_recent trong data/seafood-wi-contract.json với to_time = hôm nay, rồi chạy script build tương ứng.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "shipping.wi.daily",
-   "tier": "B",
-   "title": "Wi: BDTI, BCTI, BDI; vận chuyển đường biển, chỉ số giá vận tải, XNK",
-   "wiBlocks": [
-    "macro_shipping"
-   ],
-   "wiContract": "data/shipping-wi-contract.json",
+   "id": "shipping.public.daily",
+   "tier": "C",
+   "title": "BDTI, BCTI, BDI; vận chuyển đường biển, chỉ số giá vận tải, XNK",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -3059,12 +3023,12 @@
    },
    "publication": "Baltic theo phiên; NSO tháng ngày 3; chỉ số giá vận tải theo quý",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Van-tai-bien/index.html",
-    "file": "data/shipping-wi-data.js",
+    "file": "data/shipping-public-data.js",
     "blocks": [
      "vt-10",
      "vt-20",
@@ -3073,49 +3037,46 @@
      "vt-30"
     ]
    },
-   "how": "Gọi lại lời gọi macro_shipping trong data/shipping-wi-contract.json với to_time = hôm nay, rồi chạy python3 scripts/build_shipping_wi.py. Kết quả vượt trần hiển thị: build_realestate_wi.py --restore.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "shipping.wi.weekly",
-   "tier": "B",
-   "title": "Wi: Brent, dầu nhiên liệu Trung Quốc",
-   "wiBlocks": [
-    "commodity_shipping"
-   ],
-   "wiContract": "data/shipping-wi-contract.json",
+   "id": "shipping.public.weekly",
+   "tier": "A",
+   "title": "Brent, dầu nhiên liệu Trung Quốc",
    "schedule": {
-    "type": "weekly",
-    "day": "mon",
-    "at": "07:00"
+    "type": "policy",
+    "note": "mỗi lượt refresh; IMF/FRED cập nhật hằng tháng"
    },
-   "publication": "Giá ngày; hiển thị cuối tháng",
+   "publication": "IMF bình quân tháng (trễ 1–3 tháng); EIA/ICE theo phiên, lấy giá cuối tháng",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "IMF Primary Commodity Prices (FRED), EIA, ICE",
+    "url": "https://fred.stlouisfed.org/"
    },
    "where": {
     "page": "Van-tai-bien/index.html",
-    "file": "data/shipping-wi-data.js",
+    "file": "data/shipping-public-data.js",
     "blocks": [
      "vt-11"
     ]
    },
-   "how": "Gọi lại lời gọi commodity_shipping với to_time = hôm nay, rồi chạy python3 scripts/build_shipping_wi.py.",
+   "how": "python3 scripts/build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Chỉ nguồn công khai (IMF/FRED, EIA, ICE); không dùng số Wi",
+    "Ghi rõ đơn vị và phép quy đổi trong data/<ngành>-public-data.json"
+   ],
+   "job": "build_sector_public.py (mỗi lượt refresh)",
+   "note": "Chỉ các chuỗi có nguồn công khai tương đương; chuỗi nội địa và chỉ số Baltic để trống."
   },
   {
-   "id": "shipping.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành vận tải đường thủy, cảng (P/E, P/B, vốn hóa) theo phiên",
-   "wiBlocks": [
-    "sector_ratio_recent"
-   ],
-   "wiContract": "data/shipping-wi-contract.json",
+   "id": "shipping.public.valuation",
+   "tier": "C",
+   "title": "định giá phân ngành vận tải đường thủy, cảng (P/E, P/B, vốn hóa) theo phiên",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -3123,20 +3084,23 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Van-tai-bien/index.html",
-    "file": "data/shipping-wi-data.js",
+    "file": "data/shipping-public-data.js",
     "blocks": [
      "vt-03"
     ]
    },
-   "how": "Gọi lại lời gọi sector_ratio_recent trong data/shipping-wi-contract.json với to_time = hôm nay, rồi chạy script build tương ứng.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
    "id": "shipping.outlook",
@@ -3302,13 +3266,9 @@
    ]
   },
   {
-   "id": "construction.wi.monthly",
-   "tier": "B",
-   "title": "Wi: vốn NSNN thực hiện, sản lượng thép, xi măng, IIP, XK thép, clinker, tín dụng, GDP xây dựng",
-   "wiBlocks": [
-    "macro_construction"
-   ],
-   "wiContract": "data/construction-wi-contract.json",
+   "id": "construction.public.monthly",
+   "tier": "C",
+   "title": "vốn NSNN thực hiện, sản lượng thép, xi măng, IIP, XK thép, clinker, tín dụng, GDP xây dựng",
    "schedule": {
     "type": "monthly",
     "at": "07:00",
@@ -3319,12 +3279,12 @@
    },
    "publication": "NSO ngày 3 hằng tháng (vốn NSNN, sản lượng); XK theo Hải quan; tín dụng NHNN chậm 1–2 tháng; GDP theo quý",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Xay-dung/index.html",
-    "file": "data/construction-wi-data.js",
+    "file": "data/construction-public-data.js",
     "blocks": [
      "xd-11",
      "xd-12",
@@ -3336,19 +3296,18 @@
      "xd-41"
     ]
    },
-   "how": "Trong cửa sổ công bố, gọi lại lời gọi macro_construction trong data/construction-wi-contract.json; có tháng mới thì chạy python3 scripts/build_construction_wi.py, chưa có thì --done \"chưa có kỳ mới\". Kết quả vượt trần: build_realestate_wi.py --restore.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "construction.wi.weekly",
-   "tier": "B",
-   "title": "Wi: thép CB300 Hòa Phát, HRC, quặng, than cốc, than Newcastle, thép phế, nhựa đường; xi măng, đá (Sở XD)",
-   "wiBlocks": [
-    "commodity_construction"
-   ],
-   "wiContract": "data/construction-wi-contract.json",
+   "id": "construction.public.weekly",
+   "tier": "C",
+   "title": "thép CB300 Hòa Phát, HRC, quặng, than cốc, than Newcastle, thép phế, nhựa đường; xi măng, đá (Sở XD)",
    "schedule": {
     "type": "weekly",
     "day": "mon",
@@ -3356,30 +3315,29 @@
    },
    "publication": "Giá ngày, hiển thị cuối tháng; xi măng, đá giá tháng",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Xay-dung/index.html",
-    "file": "data/construction-wi-data.js",
+    "file": "data/construction-public-data.js",
     "blocks": [
      "xd-10",
      "xd-22"
     ]
    },
-   "how": "Gọi lại lời gọi commodity_construction với to_time = hôm nay, rồi chạy python3 scripts/build_construction_wi.py.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "construction.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành thép, xi măng, đá, xây dựng (P/E, P/B, vốn hóa) theo phiên",
-   "wiBlocks": [
-    "sector_ratio_recent"
-   ],
-   "wiContract": "data/construction-wi-contract.json",
+   "id": "construction.public.valuation",
+   "tier": "C",
+   "title": "định giá phân ngành thép, xi măng, đá, xây dựng (P/E, P/B, vốn hóa) theo phiên",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -3387,20 +3345,23 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Xay-dung/index.html",
-    "file": "data/construction-wi-data.js",
+    "file": "data/construction-public-data.js",
     "blocks": [
      "xd-03"
     ]
    },
-   "how": "Gọi lại lời gọi sector_ratio_recent trong data/construction-wi-contract.json với to_time = hôm nay, rồi chạy script build tương ứng.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
    "id": "construction.disbursement",
@@ -3570,13 +3531,9 @@
    ]
   },
   {
-   "id": "insurance.wi.quarterly",
-   "tier": "B",
-   "title": "Wi: phí, bồi thường, lãi tài chính tổng hợp ngành bảo hiểm niêm yết",
-   "wiBlocks": [
-    "sector_fs_recent"
-   ],
-   "wiContract": "data/insurance-wi-contract.json",
+   "id": "insurance.public.quarterly",
+   "tier": "C",
+   "title": "phí, bồi thường, lãi tài chính tổng hợp ngành bảo hiểm niêm yết",
    "schedule": {
     "type": "monthly",
     "at": "07:00",
@@ -3587,12 +3544,12 @@
    },
    "publication": "Sau mùa BCTC quý (20–30 tháng đầu quý sau; BCTC soát xét bán niên tháng 8)",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Bao-hiem/index.html",
-    "file": "data/insurance-wi-data.js",
+    "file": "data/insurance-public-data.js",
     "blocks": [
      "bh-10",
      "bh-11",
@@ -3601,19 +3558,18 @@
      "bh-31"
     ]
    },
-   "how": "Gọi lại lời gọi sector_fs_recent; có quý mới thì chạy python3 scripts/build_insurance_wi.py, chưa có thì --done \"chưa có kỳ mới\".",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "insurance.wi.monthly",
-   "tier": "B",
-   "title": "Wi: lãi suất huy động 12 tháng, sản lượng ô tô, xe máy, huy động dân cư",
-   "wiBlocks": [
-    "macro_insurance"
-   ],
-   "wiContract": "data/insurance-wi-contract.json",
+   "id": "insurance.public.monthly",
+   "tier": "C",
+   "title": "lãi suất huy động 12 tháng, sản lượng ô tô, xe máy, huy động dân cư",
    "schedule": {
     "type": "monthly",
     "at": "07:00",
@@ -3624,29 +3580,28 @@
    },
    "publication": "NSO ngày 3 hằng tháng; lãi suất theo tháng",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Bao-hiem/index.html",
-    "file": "data/insurance-wi-data.js",
+    "file": "data/insurance-public-data.js",
     "blocks": [
      "bh-14"
     ]
    },
-   "how": "Gọi lại lời gọi macro_insurance rồi chạy python3 scripts/build_insurance_wi.py.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "insurance.wi.weekly",
-   "tier": "B",
-   "title": "Wi: lợi suất TPCP 10 năm",
-   "wiBlocks": [
-    "gbond_10y"
-   ],
-   "wiContract": "data/insurance-wi-contract.json",
+   "id": "insurance.public.weekly",
+   "tier": "C",
+   "title": "lợi suất TPCP 10 năm",
    "schedule": {
     "type": "weekly",
     "day": "mon",
@@ -3654,29 +3609,28 @@
    },
    "publication": "Theo ngày",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Bao-hiem/index.html",
-    "file": "data/insurance-wi-data.js",
+    "file": "data/insurance-public-data.js",
     "blocks": [
      "bh-30"
     ]
    },
-   "how": "Gọi lại gbond_10y với to_time = hôm nay rồi chạy python3 scripts/build_insurance_wi.py.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "insurance.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành bảo hiểm (P/E, P/B, vốn hóa) theo phiên",
-   "wiBlocks": [
-    "sector_ratio_recent"
-   ],
-   "wiContract": "data/insurance-wi-contract.json",
+   "id": "insurance.public.valuation",
+   "tier": "C",
+   "title": "định giá phân ngành bảo hiểm (P/E, P/B, vốn hóa) theo phiên",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -3684,20 +3638,23 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Bao-hiem/index.html",
-    "file": "data/insurance-wi-data.js",
+    "file": "data/insurance-public-data.js",
     "blocks": [
      "bh-03"
     ]
    },
-   "how": "Gọi lại sector_ratio_recent với to_time = hôm nay rồi chạy script build.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
    "id": "insurance.market",
@@ -3838,14 +3795,9 @@
    ]
   },
   {
-   "id": "retail.wi.monthly",
-   "tier": "B",
-   "title": "Wi: tổng mức bán lẻ, CPI, khách quốc tế, tiền gửi, tín dụng, sản lượng xe, bia, sữa, IIP",
-   "wiBlocks": [
-    "macro_retail_a",
-    "macro_retail_b"
-   ],
-   "wiContract": "data/retail-wi-contract.json",
+   "id": "retail.public.monthly",
+   "tier": "C",
+   "title": "tổng mức bán lẻ, CPI, khách quốc tế, tiền gửi, tín dụng, sản lượng xe, bia, sữa, IIP",
    "schedule": {
     "type": "monthly",
     "at": "07:00",
@@ -3856,12 +3808,12 @@
    },
    "publication": "NSO ngày 3–6 hằng tháng; tiền gửi, tín dụng NHNN chậm 1–2 tháng",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Ban-le/index.html",
-    "file": "data/retail-wi-data.js",
+    "file": "data/retail-public-data.js",
     "blocks": [
      "bl-10",
      "bl-11",
@@ -3873,49 +3825,46 @@
      "bl-33"
     ]
    },
-   "how": "Trong cửa sổ công bố, gọi lại hai lời gọi macro_retail_a, macro_retail_b trong data/retail-wi-contract.json; có tháng mới thì chạy python3 scripts/build_retail_wi.py.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "retail.wi.weekly",
-   "tier": "B",
-   "title": "Wi: đường thô, dầu cọ, khô đậu nành, ngô",
-   "wiBlocks": [
-    "commodity_retail"
-   ],
-   "wiContract": "data/retail-wi-contract.json",
+   "id": "retail.public.weekly",
+   "tier": "A",
+   "title": "đường thô, dầu cọ, khô đậu nành, ngô",
    "schedule": {
-    "type": "weekly",
-    "day": "mon",
-    "at": "07:00"
+    "type": "policy",
+    "note": "mỗi lượt refresh; IMF/FRED cập nhật hằng tháng"
    },
-   "publication": "Giá ngày, hiển thị cuối tháng",
+   "publication": "IMF bình quân tháng (trễ 1–3 tháng); EIA/ICE theo phiên, lấy giá cuối tháng",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "IMF Primary Commodity Prices (FRED), EIA, ICE",
+    "url": "https://fred.stlouisfed.org/"
    },
    "where": {
     "page": "Ban-le/index.html",
-    "file": "data/retail-wi-data.js",
+    "file": "data/retail-public-data.js",
     "blocks": [
      "bl-32"
     ]
    },
-   "how": "Gọi lại commodity_retail với to_time = hôm nay rồi chạy python3 scripts/build_retail_wi.py.",
+   "how": "python3 scripts/build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Chỉ nguồn công khai (IMF/FRED, EIA, ICE); không dùng số Wi",
+    "Ghi rõ đơn vị và phép quy đổi trong data/<ngành>-public-data.json"
+   ],
+   "job": "build_sector_public.py (mỗi lượt refresh)",
+   "note": "Chỉ các chuỗi có nguồn công khai tương đương; chuỗi nội địa và chỉ số Baltic để trống."
   },
   {
-   "id": "retail.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành bán lẻ, phân phối, xe, sữa, bia theo phiên",
-   "wiBlocks": [
-    "sector_ratio_recent"
-   ],
-   "wiContract": "data/retail-wi-contract.json",
+   "id": "retail.public.valuation",
+   "tier": "C",
+   "title": "định giá phân ngành bán lẻ, phân phối, xe, sữa, bia theo phiên",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -3923,20 +3872,23 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Ban-le/index.html",
-    "file": "data/retail-wi-data.js",
+    "file": "data/retail-public-data.js",
     "blocks": [
      "bl-03"
     ]
    },
-   "how": "Gọi lại sector_ratio_recent với to_time = hôm nay rồi chạy script build.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
    "id": "retail.market",
@@ -4106,19 +4058,19 @@
      ]
     ]
    },
-   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); Wi cập nhật theo công bố",
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
    "source": {
-    "name": "WiData · fs_nonfin",
-    "url": "https://widata.vn/"
+    "name": "VNDirect finfo · BCTC hợp nhất quý",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
    },
    "where": {
     "page": "Dien/index.html",
     "blocks": [],
     "note": "chart xu hướng theo quý trong tab Tổng quan > So sánh tài chính, do assets/company-trend.js dựng từ data/company-quarterly.js"
    },
-   "how": "Gọi wi_data_companies get_data fs_nonfin (columns symbol,year,quarter,audit_status_id,is10,is20,is62; filters symbol các mã ngành điện, year 3 năm gần nhất, quarter 1-4) bằng đúng cách các lượt trong data/raw/wi/fs_nonfin_power_quarterly*.json (file 2021_2023 giữ nguyên; thêm quý mới vào file kỳ gần nhất) (hook wi_capture lưu nguyên văn; không gõ lại số), cập nhật file thô, chạy python3 scripts/build_company_quarterly.py rồi python3 -m unittest tests.test_company_quarterly",
+   "how": "python scripts/fetch_public_fs.py && python scripts/build_company_quarterly.py (VNDirect finfo, BCTC hợp nhất quý riêng)",
    "gates": [
-    "Số lấy nguyên văn từ Wi, không chép tay",
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; ô lệch >1% so với bản cũ để null",
     "Doanh thu quý mới nhất khớp bản chụp Stock Analysis trong 2% (test)",
     "Ghi mã thiếu dữ liệu vào missing (hiện CHP)"
    ]
@@ -4188,14 +4140,9 @@
    ]
   },
   {
-   "id": "pharma.wi.monthly",
-   "tier": "B",
-   "title": "Wi: nhập khẩu thuốc, nguyên liệu dược, IIP thuốc, GDP y tế, CPI y tế, tỷ giá",
-   "wiBlocks": [
-    "macro_pharma",
-    "macro_pharma_cpi_fx"
-   ],
-   "wiContract": "data/pharma-wi-contract.json",
+   "id": "pharma.public.monthly",
+   "tier": "C",
+   "title": "nhập khẩu thuốc, nguyên liệu dược, IIP thuốc, GDP y tế, CPI y tế, tỷ giá",
    "schedule": {
     "type": "monthly",
     "at": "07:00",
@@ -4206,12 +4153,12 @@
    },
    "publication": "NSO ngày 6 hằng tháng; Hải quan chi tiết mặt hàng chậm ~2 tuần; GDP theo quý",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Duoc/index.html",
-    "file": "data/pharma-wi-data.js",
+    "file": "data/pharma-public-data.js",
     "blocks": [
      "duoc-10",
      "duoc-11",
@@ -4219,20 +4166,18 @@
      "duoc-21"
     ]
    },
-   "how": "Gọi lại macro_pharma, macro_pharma_cpi_fx trong data/pharma-wi-contract.json; có tháng mới thì chạy python3 scripts/build_pharma_wi.py.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số",
-    "CPI y tế đổi gốc từ T1/2025: không tính YoY qua mốc"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
-   "id": "pharma.wi.valuation",
-   "tier": "B",
-   "title": "Wi: P/E, P/B ngành dược theo phiên",
-   "wiBlocks": [
-    "sector_ratio_pharma"
-   ],
-   "wiContract": "data/pharma-wi-contract.json",
+   "id": "pharma.public.valuation",
+   "tier": "C",
+   "title": "P/E, P/B ngành dược theo phiên",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -4240,20 +4185,23 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "WiData qua WiMCP",
-    "url": "https://widata.vn/"
+    "name": "Chưa có nguồn công khai thay thế",
+    "url": ""
    },
    "where": {
     "page": "Duoc/index.html",
-    "file": "data/pharma-wi-data.js",
+    "file": "data/pharma-public-data.js",
     "blocks": [
      "duoc-03"
     ]
    },
-   "how": "Gọi lại sector_ratio_pharma với to_time = hôm nay rồi chạy python3 scripts/build_pharma_wi.py.",
+   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
    "gates": [
-    "Không chép tay số"
-   ]
+    "Không dùng số Wi",
+    "Thiếu nguồn công khai thì để trống"
+   ],
+   "status": "blocked",
+   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
   },
   {
    "id": "pharma.market",

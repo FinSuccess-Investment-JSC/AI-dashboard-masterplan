@@ -299,22 +299,22 @@ body{font-size:14px;line-height:1.45}
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=123c08b8ffcd">
 <script src="../assets/chart-types.js?v=5b81f0f266ee"></script>
 <script src="../data/daily-data.js?v=1894d8e3ef20" defer></script>
-<script src="../data/realestate-wi-data.js?v=5ee104198297" defer></script>
+<script src="../data/realestate-public-data.js?v=c247bb853a55" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=82b412aede70" defer></script>
 <script src="../assets/sector-content.js?v=be87392226ce" defer></script>
 <script src="../assets/sector-layout.js?v=68a0b4e1b045" defer></script>
 <script src="../data/realestate-market-history.js?v=1cac369b93be" defer></script>
 <script src="../assets/realestate-market-history.js?v=735e18211ab0" defer></script>
-<script src="../assets/realestate-dashboard.js?v=0e760640812c" defer></script>
+<script src="../assets/realestate-dashboard.js?v=e659bc7fd043" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="../assets/catalyst-board.js?v=23beb481800b" defer></script>
+<script src="../assets/catalyst-board.js?v=5a3e399e6332" defer></script>
 <script src="../data/company-valuation.js?v=bf41744104c6" defer></script>
 <script src="../data/company-comparison.js?v=103f46ce84de" defer></script>
-<script src="../data/company-quarterly.js?v=886bf9d1d2f9" defer></script>
-<script src="../assets/company-trend.js?v=3b441fb58d28" defer></script>
-<script src="../assets/financial-comparison.js?v=ed3ab15b7d9e" defer></script>
+<script src="../data/company-quarterly.js?v=2485558b3201" defer></script>
+<script src="../assets/company-trend.js?v=c917c1529e17" defer></script>
+<script src="../assets/financial-comparison.js?v=915100cada6a" defer></script>
 <script src="../assets/research-layout.js?v=391996812add" defer></script>
 <script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="../assets/research-editorial.js?v=dac2ec8ce2ed" defer></script>
@@ -322,7 +322,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261016T045833Z"></script>
+<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261016T060939Z"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=6385be151679">
@@ -350,22 +350,22 @@ body{font-size:14px;line-height:1.45}
     <p>Nhà ở đi theo pháp lý – vốn – lãi suất; khu công nghiệp đi theo FDI – quỹ đất sạch. Đọc theo từng khâu, không gom thành một con số chung.</p>
     <div class="tagrow">
       <span class="tag">Bản nghiên cứu: 08/10/2026</span>
-      <span class="tag">Trái phiếu: <a href="https://cbonds.hnx.vn/" target="_blank" rel="noopener">HNX · qua MCP Wi</a></span>
+      <span class="tag">Trái phiếu: <a href="https://cbonds.hnx.vn/" target="_blank" rel="noopener">HNX</a></span>
       <span class="tag">Thị trường: <a href="https://moc.gov.vn/" target="_blank" rel="noopener">Bộ Xây dựng · báo cáo quý</a></span>
       <span class="tag">Mọi khoảng trống dữ liệu được hiển thị là khoảng trống</span>
     </div>
-    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> đang tải số Wi.</div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm trống (chưa có nguồn công khai thay thế).</div>
   </section>
 
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
     <div class="sectionhead"><div><h2>1. Tổng quan ngành bất động sản</h2><p>Hai mảng chạy bằng hai động cơ khác nhau. Nhà ở: pháp lý và vốn quyết định khi nào được bán, lãi suất quyết định ai mua. Khu công nghiệp: FDI chế biến chế tạo và quỹ đất đã đền bù.</p></div></div>
     <section class="grid kpis">
-      <div class="kpi"><div class="label">P/B BĐS dân cư</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-pb"></div></div>
-      <div class="kpi"><div class="label">Gốc TPDN BĐS đến hạn 12T</div><div class="value">—</div><div class="delta"></div><div class="sub">HNX · Wi</div><div id="spk-maturity"></div></div>
-      <div class="kpi"><div class="label">TPDN BĐS chậm trả</div><div class="value">—</div><div class="delta"></div><div class="sub">HNX · Wi</div><div id="spk-late"></div></div>
-      <div class="kpi"><div class="label">FDI đăng ký vào BĐS</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO · Wi</div><div id="spk-fdi"></div></div>
-      <div class="kpi"><div class="label">CPI nhà ở &amp; VLXD</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO · Wi</div><div id="spk-cpi"></div></div>
-      <div class="kpi"><div class="label">Lãi suất tái cấp vốn</div><div class="value">—</div><div class="delta"></div><div class="sub">NHNN · Wi</div><div id="spk-refi"></div></div>
+      <div class="kpi"><div class="label">P/B BĐS dân cư</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pb"></div></div>
+      <div class="kpi"><div class="label">Gốc TPDN BĐS đến hạn 12T</div><div class="value">—</div><div class="delta"></div><div class="sub">HNX</div><div id="spk-maturity"></div></div>
+      <div class="kpi"><div class="label">TPDN BĐS chậm trả</div><div class="value">—</div><div class="delta"></div><div class="sub">HNX</div><div id="spk-late"></div></div>
+      <div class="kpi"><div class="label">FDI đăng ký vào BĐS</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-fdi"></div></div>
+      <div class="kpi"><div class="label">CPI nhà ở &amp; VLXD</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-cpi"></div></div>
+      <div class="kpi"><div class="label">Lãi suất tái cấp vốn</div><div class="value">—</div><div class="delta"></div><div class="sub">NHNN</div><div id="spk-refi"></div></div>
     </section>
     <div class="grid two">
       <div class="card" data-block-id="bds-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -377,7 +377,7 @@ body{font-size:14px;line-height:1.45}
         <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Nhà ở: giá đỉnh, thanh khoản chững.</mark> Giá căn hộ sơ cấp Hà Nội <b>95–116 triệu đ/m²</b> (+21–27% YoY), TP.HCM <b>76 triệu đ/m²</b> (+16% YoY), nhưng giao dịch cả nước Q2/2026 chỉ bằng <b>63,7%</b> cùng kỳ và tồn kho nhà riêng lẻ của chủ đầu tư tăng <b>46,4%</b> so quý trước. Lãi vay mua nhà thả nổi <b>13–16%</b>.</p>
         <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Vốn: đảo nợ được nhưng đắt.</mark> Trái phiếu bất động sản vẫn phát hành với lãi suất <b>11–12,5%</b>; dư nợ chậm trả giảm chậm; ba đỉnh đáo hạn <b>12/2026</b>, <b>8/2027</b>, <b>12/2027</b>.</p>
         <p style="font-size:12.5px;line-height:1.65;margin-bottom:0"><mark class="key-phrase">Khu công nghiệp: cầu mạnh, cung mới nhiều.</mark> FDI đăng ký 9T/2026 <b>50,36 tỷ USD</b> (+76,4%), thực hiện cao nhất 5 năm; giá thuê đất miền Nam <b>186,4 USD/m²/kỳ</b>, miền Bắc lấp đầy giảm còn <b>64%</b> vì thêm 1.200 ha cung mới.</p>
-        <div class="source-note">Nguồn: <a href="https://vov.vn/kinh-te/bat-dong-san-quy-ii2026-giao-dich-dat-nen-giam-hon-40-ton-kho-464-post1326015.vov" target="_blank" rel="noopener">Bộ Xây dựng Q2/2026 (VOV 21/08/2026)</a> · <a href="https://doanhnhan.baophapluat.vn/nguon-cung-nha-ha-noi-lap-dinh-5-nam-phan-khuc-cao-cap-tiep-tuc-chiem-uu-the.html" target="_blank" rel="noopener">CBRE Q2/2026</a> · <a href="https://cafef.vn/chung-cu-ha-noi-vang-bong-can-ho-duoi-70-trieu-dong-m2-188260814143655062.chn" target="_blank" rel="noopener">Savills Q2/2026</a> · <a href="https://thitruongtaichinhtiente.vn/9-thang-nam-2026-fdi-thuc-hien-dat-21-07-ty-usd-cao-nhat-5-nam-86014.html" target="_blank" rel="noopener">FDI 9T/2026 (NSO)</a> · <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/northern-vietnam-industrial-property-market-maintains-growth-momentum" target="_blank" rel="noopener">Cushman &amp; Wakefield Q2/2026</a> · TPDN: Wi/HNX (tab Vốn &amp; Trái phiếu).</div>
+        <div class="source-note">Nguồn: <a href="https://vov.vn/kinh-te/bat-dong-san-quy-ii2026-giao-dich-dat-nen-giam-hon-40-ton-kho-464-post1326015.vov" target="_blank" rel="noopener">Bộ Xây dựng Q2/2026 (VOV 21/08/2026)</a> · <a href="https://doanhnhan.baophapluat.vn/nguon-cung-nha-ha-noi-lap-dinh-5-nam-phan-khuc-cao-cap-tiep-tuc-chiem-uu-the.html" target="_blank" rel="noopener">CBRE Q2/2026</a> · <a href="https://cafef.vn/chung-cu-ha-noi-vang-bong-can-ho-duoi-70-trieu-dong-m2-188260814143655062.chn" target="_blank" rel="noopener">Savills Q2/2026</a> · <a href="https://thitruongtaichinhtiente.vn/9-thang-nam-2026-fdi-thuc-hien-dat-21-07-ty-usd-cao-nhat-5-nam-86014.html" target="_blank" rel="noopener">FDI 9T/2026 (NSO)</a> · <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/northern-vietnam-industrial-property-market-maintains-growth-momentum" target="_blank" rel="noopener">Cushman &amp; Wakefield Q2/2026</a> · TPDN: HNX (tab Vốn &amp; Trái phiếu).</div>
       </div>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="bds-03" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -584,7 +584,7 @@ body{font-size:14px;line-height:1.45}
 
   <div class="majorpane" data-tab="mt3" id="pane-mt3">
   <section id="price" class="section">
-    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Giá sơ cấp theo báo cáo quý, chi phí vật liệu và lãi suất theo Wi, định giá bốn phân ngành theo phiên.</p></div></div>
+    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Giá sơ cấp theo báo cáo quý, chi phí vật liệu và lãi suất theo nguồn công khai, định giá bốn phân ngành theo phiên.</p></div></div>
     <div class="grid two">
       <div class="card" data-block-id="bds-13" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
         <div class="chart-title">Giá căn hộ sơ cấp — Hà Nội, TP.HCM từ 2023</div>
@@ -626,14 +626,14 @@ body{font-size:14px;line-height:1.45}
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="bds-17" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">P/B nhà ở, cho thuê, môi giới — theo phiên</div>
-        <div class="chart-sub">lần · GICS cấp 4 của Wi · mỗi 5 phiên · BĐS công nghiệp ở pane Khu công nghiệp</div>
+        <div class="chart-sub">lần · GICS cấp 4 · mỗi 5 phiên · BĐS công nghiệp ở pane Khu công nghiệp</div>
         <div id="chSectorPb"></div>
         <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>BĐS dân cư</span><span class="li"><span class="dot" style="background:#c29100"></span>Cho thuê</span><span class="li"><span class="dot" style="background:#861C52"></span>Môi giới</span></div>
         <details class="dtable" open><summary>Phiên mới nhất</summary><div class="tablewrap"><table id="tbl-sector-pb"></table></div></details>
       </div>
       <div class="card" data-block-id="bds-41" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">P/B và P/E bất động sản công nghiệp — theo phiên</div>
-        <div class="chart-sub">lần · phân ngành GICS cấp 4 của Wi (KBC, IDC, BCM, SZC, SIP, VGC, LHG…) · mỗi 5 phiên</div>
+        <div class="chart-sub">lần · phân ngành GICS cấp 4 (KBC, IDC, BCM, SZC, SIP, VGC, LHG…) · mỗi 5 phiên</div>
         <div id="chIpPb"></div>
         <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>P/B</span><span class="li"><span class="dot" style="background:#c29100"></span>P/E ÷ 10</span></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-ip-pb"></table></div></details>
@@ -713,7 +713,7 @@ body{font-size:14px;line-height:1.45}
 
   <div class="majorpane" data-tab="mt5" id="pane-mt5">
   <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ Wi: trái phiếu, tín dụng, FDI, CPI nhà ở, định giá.</p></div></div>
+    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai: trái phiếu, tín dụng, FDI, CPI nhà ở, định giá.</p></div></div>
     <div class="catriskgrid">
       <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3>Catalyst — yếu tố hỗ trợ</h3>
@@ -829,7 +829,7 @@ body{font-size:14px;line-height:1.45}
   </div>
 
   <div class="majorpane" data-tab="mt10" id="pane-mt10">
-    <div class="sectionhead"><div><h2>8. Vốn &amp; Trái phiếu</h2><p>Trái phiếu bất động sản theo tháng từ HNX qua Wi: phát hành, dư nợ, chậm trả, lịch đáo hạn. Số chung toàn ngành (Wi không tách KCN); thực chất phần lớn là chủ đầu tư nhà ở — phần của 7 mã KCN ghi riêng ở bảng tổ chức phát hành. Tín dụng và lãi suất từ NHNN.</p></div></div>
+    <div class="sectionhead"><div><h2>8. Vốn &amp; Trái phiếu</h2><p>Trái phiếu bất động sản theo tháng từ HNX: phát hành, dư nợ, chậm trả, lịch đáo hạn. Số chung toàn ngành (Nguồn công khai chưa tách KCN); thực chất phần lớn là chủ đầu tư nhà ở — phần của 7 mã KCN ghi riêng ở bảng tổ chức phát hành. Tín dụng và lãi suất từ NHNN.</p></div></div>
     <div class="bds-bond">
       <div class="grid two">
         <div class="card" data-block-id="bds-28" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
@@ -866,7 +866,7 @@ body{font-size:14px;line-height:1.45}
         <div class="chart-sub">tỷ VND · 15 tổ chức · mã nội bộ HNX cho doanh nghiệp chưa niêm yết</div>
         <p class="research-caption" id="bond-kcn-share"></p>
         <div class="tablewrap"><table id="tbl-bond-top"></table></div>
-        <div class="source-note">Đối chiếu thị trường: VIS Rating ước ~253.000 tỷ TPDN toàn thị trường đáo hạn 12 tháng tới (10/2026 ~24.000; 11/2026 ~20.000; 12/2026 ~31.000 tỷ); BĐS chiếm 55,6% giá trị đáo hạn còn lại của 2026 (VBMA). <a href="https://thoibaotaichinhvietnam.vn/hon-250-000-ty-dong-trai-phieu-doanh-nghiep-se-dao-han-trong-12-thang-toi-203448.html" target="_blank" rel="noopener">Thời báo Tài chính 08/09/2026</a> · <a href="https://doanhnhan.baophapluat.vn/gan-290-000-ty-dong-trai-phieu-doanh-nghiep-duoc-huy-dong-bat-dong-san-doi-mat-ap-luc-dao-han-lon.html" target="_blank" rel="noopener">VBMA 7T/2026</a>. Số Wi tính riêng gốc còn lại của ngành BĐS nên thấp hơn ước tính toàn thị trường.</div>
+        <div class="source-note">Đối chiếu thị trường: VIS Rating ước ~253.000 tỷ TPDN toàn thị trường đáo hạn 12 tháng tới (10/2026 ~24.000; 11/2026 ~20.000; 12/2026 ~31.000 tỷ); BĐS chiếm 55,6% giá trị đáo hạn còn lại của 2026 (VBMA). <a href="https://thoibaotaichinhvietnam.vn/hon-250-000-ty-dong-trai-phieu-doanh-nghiep-se-dao-han-trong-12-thang-toi-203448.html" target="_blank" rel="noopener">Thời báo Tài chính 08/09/2026</a> · <a href="https://doanhnhan.baophapluat.vn/gan-290-000-ty-dong-trai-phieu-doanh-nghiep-duoc-huy-dong-bat-dong-san-doi-mat-ap-luc-dao-han-lon.html" target="_blank" rel="noopener">VBMA 7T/2026</a>. Số Nguồn tính riêng gốc còn lại của ngành BĐS nên thấp hơn ước tính toàn thị trường.</div>
       </div>
     </div>
     <div class="bds-credit">
@@ -1007,18 +1007,18 @@ body{font-size:14px;line-height:1.45}
     <div class="tablewrap"><table>
       <thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead>
       <tbody>
-        <tr><td><b>Trái phiếu BĐS: phát hành, dư nợ, chậm trả, đáo hạn</b></td><td><a href="https://cbonds.hnx.vn/" target="_blank" rel="noopener">HNX</a> qua MCP Wi</td><td>Tháng · lịch đáo hạn tính lại mỗi lần cập nhật</td><td>Routine Claude hằng ngày (Wi) → <code>scripts/build_realestate_wi.py</code></td></tr>
-        <tr><td><b>GDP BĐS, CPI nhà ở, FDI, IIP</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a>, <a href="https://fia.mpi.gov.vn/" target="_blank" rel="noopener">Cục Đầu tư nước ngoài</a> qua Wi</td><td>Tháng / quý · NSO công bố ngày 6</td><td>Routine Claude hằng ngày (Wi)</td></tr>
-        <tr><td><b>Tín dụng, tiền gửi, lãi suất điều hành</b></td><td><a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN</a> qua Wi</td><td>Tháng · trễ 1–3 tháng</td><td>Routine Claude hằng ngày (Wi)</td></tr>
-        <tr><td><b>Giá thép, xi măng</b></td><td>Hòa Phát, công bố giá VLXD qua Wi</td><td>Ngày / tháng</td><td>Routine Claude hằng tuần (Wi)</td></tr>
-        <tr><td><b>P/B, P/E bốn phân ngành</b></td><td>Wi sector_ratio_daily</td><td>Phiên</td><td>Routine Claude hằng ngày (Wi)</td></tr>
+        <tr><td><b>Trái phiếu BĐS: phát hành, dư nợ, chậm trả, đáo hạn</b></td><td><a href="https://cbonds.hnx.vn/" target="_blank" rel="noopener">HNX</a></td><td>Tháng · lịch đáo hạn tính lại mỗi lần cập nhật</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr>
+        <tr><td><b>GDP BĐS, CPI nhà ở, FDI, IIP</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a>, <a href="https://fia.mpi.gov.vn/" target="_blank" rel="noopener">Cục Đầu tư nước ngoài</a></td><td>Tháng / quý · NSO công bố ngày 6</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr>
+        <tr><td><b>Tín dụng, tiền gửi, lãi suất điều hành</b></td><td><a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN</a></td><td>Tháng · trễ 1–3 tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr>
+        <tr><td><b>Giá thép, xi măng</b></td><td>Hòa Phát, công bố giá VLXD</td><td>Ngày / tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr>
+        <tr><td><b>P/B, P/E bốn phân ngành</b></td><td>Tạm trống (chưa có nguồn công khai)</td><td>Phiên</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr>
         <tr><td><b>P/E, P/B, vốn hóa từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script GitHub mỗi lượt job</td></tr>
         <tr><td><b>Cung, giao dịch, giá nhà; lấp đầy, giá thuê KCN; pháp lý</b></td><td>Bộ Xây dựng, CBRE, Savills, Cushman &amp; Wakefield, JLL, VARS, văn bản Chính phủ (link tại từng thẻ)</td><td>Quý / theo sự kiện</td><td>Routine tài liệu thứ Hai</td></tr>
         <tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr>
         <tr class="gap-row"><td><b>Tín dụng kinh doanh BĐS theo tháng, lãi suất vay mua nhà theo chuỗi, số căn mở bán theo tháng</b></td><td>NHNN, ngân hàng, CBRE</td><td>—</td><td>Chưa có nguồn máy đọc được; giữ các mốc rời theo báo cáo</td></tr>
       </tbody>
     </table></div>
-    <div class="source-note" id="wi-built">Dựng từ WiMCP; các lời gọi ghi trong data/realestate-wi-contract.json.</div>
+    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
   </div>
   <div class="footer">Vietnam Real Estate Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 08/10/2026.</div>
 </div>

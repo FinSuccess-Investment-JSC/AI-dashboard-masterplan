@@ -49,11 +49,17 @@ jobs:
           else
             python scripts/refresh_release.py --prepare-release --notify-file .notify.txt "${extra[@]}"
           fi
-      # Tiers B/C/D (Wi, documents, AI text): queue due items for the 08:00 Claude routine
+      # Tiers B/C/D (bank Wi routine, documents, AI text): queue due items for the 08:00 Claude routine
       # (updates/ROUTINE.md) and check publication pages. Never blocks publishing tier A.
       - name: Queue Wi, document and AI-text updates
         continue-on-error: true
         run: python scripts/update_scheduler.py --run --watch --notify-file .notify.txt
+      # Public replacements for the removed Wi company/sector data (IMF/FRED, EIA, ICE, VNDirect finfo).
+      - name: Refresh public sector commodities and company quarterly statements
+        continue-on-error: true
+        run: |
+          python scripts/build_sector_public.py
+          python scripts/fetch_public_fs.py && python scripts/build_company_quarterly.py
       - name: Validate generated data
         run: |
           python -m unittest discover -s tests
@@ -64,7 +70,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           DATA_CHANGED: ${{ steps.refresh.outputs.changed }}
         run: |
-          git add data/daily-data.js data/update-status.json data/bank-public-data.js data/company-valuation.js data/company-valuation.json data/company-comparison.js data/company-comparison.json data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html Dien/index.html Bat-dong-san/index.html Det-may/index.html data/realestate-wi-data.js data/realestate-wi-data.json updates/state.json updates/last-run.md
+          git add data/daily-data.js data/update-status.json data/bank-public-data.js data/company-valuation.js data/company-valuation.json data/company-comparison.js data/company-comparison.json data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html Dien/index.html Bat-dong-san/index.html Det-may/index.html data/*-public-data.js data/*-public-data.json data/company-quarterly.js data/company-quarterly.json data/raw/public updates/state.json updates/last-run.md
           if git diff --cached --quiet; then
             echo 'No observations, source statuses or schedule state changed.'
             exit 0

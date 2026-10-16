@@ -293,21 +293,21 @@ body{font-size:14px;line-height:1.45}
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=123c08b8ffcd">
 <script src="../assets/chart-types.js?v=5b81f0f266ee"></script>
-<script src="../data/daily-data.js?v=b3c68ee7fa70" defer></script>
+<script src="../data/daily-data.js?v=1894d8e3ef20" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=82b412aede70" defer></script>
 <script src="../assets/sector-content.js?v=be87392226ce" defer></script>
 <script src="../assets/sector-layout.js?v=68a0b4e1b045" defer></script>
-<script src="../data/seafood-wi-data.js?v=7510439e76d6" defer></script>
-<script src="../assets/seafood-dashboard.js?v=35ca82602582" defer></script>
+<script src="../data/seafood-public-data.js?v=d3b41b9952e2" defer></script>
+<script src="../assets/seafood-dashboard.js?v=c7719310c333" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="../assets/catalyst-board.js?v=23beb481800b" defer></script>
-<script src="../data/company-valuation.js?v=6dcb886393f9" defer></script>
-<script src="../data/company-comparison.js?v=b17256b8f80c" defer></script>
-<script src="../data/company-quarterly.js?v=886bf9d1d2f9" defer></script>
-<script src="../assets/company-trend.js?v=3b441fb58d28" defer></script>
-<script src="../assets/financial-comparison.js?v=ed3ab15b7d9e" defer></script>
+<script src="../assets/catalyst-board.js?v=5a3e399e6332" defer></script>
+<script src="../data/company-valuation.js?v=bf41744104c6" defer></script>
+<script src="../data/company-comparison.js?v=103f46ce84de" defer></script>
+<script src="../data/company-quarterly.js?v=2485558b3201" defer></script>
+<script src="../assets/company-trend.js?v=c917c1529e17" defer></script>
+<script src="../assets/financial-comparison.js?v=915100cada6a" defer></script>
 <script src="../assets/research-layout.js?v=391996812add" defer></script>
 <script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="../assets/research-editorial.js?v=dac2ec8ce2ed" defer></script>
@@ -315,7 +315,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261012-pharma2"></script>
+<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261016T060939Z"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=6385be151679">
@@ -369,20 +369,20 @@ body[data-sector="seafood"] .tx-group{margin:18px 0 8px;font-size:12px;letter-sp
     <p>Cá tra và tôm là hai chuỗi riêng: cá tra nuôi khép kín trong nước, bán sang Mỹ, Trung Quốc; tôm cạnh tranh với Ecuador, Ấn Độ. Thuế Mỹ quyết định biên của cả hai.</p>
     <div class="tagrow">
       <span class="tag">Bản nghiên cứu: 09/10/2026</span>
-      <span class="tag">XK, giá nguyên liệu: <a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan · qua MCP Wi</a></span>
+      <span class="tag">XK, giá nguyên liệu: <a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan</a></span>
       <span class="tag">Thuế CBPG: <a href="https://www.federalregister.gov/" target="_blank" rel="noopener">Federal Register</a></span>
     </div>
-    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> đang tải số Wi.</div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm trống (chưa có nguồn công khai thay thế).</div>
   </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
     <div class="sectionhead"><div><h2>1. Tổng quan ngành thủy sản</h2><p>Doanh nghiệp tự nuôi một phần nguyên liệu, chế biến và xuất khẩu. Biên = giá bán XK − giá cá, tôm nguyên liệu (hoặc giá thành tự nuôi, chủ yếu là thức ăn) − thuế ở nước nhập.</p></div></div>
     <section class="grid kpis">
-      <div class="kpi"><div class="label">XK hàng thủy sản</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan · Wi</div><div id="spk-exp"></div></div>
-      <div class="kpi"><div class="label">XK thủy sản sang Trung Quốc</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan · Wi</div><div id="spk-cn"></div></div>
-      <div class="kpi"><div class="label">XK thủy sản sang Mỹ</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan · Wi</div><div id="spk-us"></div></div>
-      <div class="kpi"><div class="label">Cá tra nguyên liệu</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-pang"></div></div>
-      <div class="kpi"><div class="label">Tôm thẻ 50 con/kg</div><div class="value">—</div><div class="delta"></div><div class="sub">Cà Mau · Wi</div><div id="spk-shrimp"></div></div>
-      <div class="kpi"><div class="label">P/E thủy sản</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-pe"></div></div>
+      <div class="kpi"><div class="label">XK hàng thủy sản</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan</div><div id="spk-exp"></div></div>
+      <div class="kpi"><div class="label">XK thủy sản sang Trung Quốc</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan</div><div id="spk-cn"></div></div>
+      <div class="kpi"><div class="label">XK thủy sản sang Mỹ</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan</div><div id="spk-us"></div></div>
+      <div class="kpi"><div class="label">Cá tra nguyên liệu</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pang"></div></div>
+      <div class="kpi"><div class="label">Tôm thẻ 50 con/kg</div><div class="value">—</div><div class="delta"></div><div class="sub">Cà Mau</div><div id="spk-shrimp"></div></div>
+      <div class="kpi"><div class="label">P/E thủy sản</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pe"></div></div>
     </section>
     <div class="grid two">
       <div class="card" data-block-id="ts-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -391,15 +391,15 @@ body[data-sector="seafood"] .tx-group{margin:18px 0 8px;font-size:12px;letter-sp
       </div>
       <div class="card" data-block-id="ts-02" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3 style="margin-top:0;font-size:13.5px">Vị trí trong chu kỳ</h3>
-        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Trung Quốc thay Mỹ làm động lực.</mark> XK thủy sản 9T/2026 <b>+11,5%</b>; sang Trung Quốc 8T <b>+34%</b>, sang Mỹ chỉ <b>+1,5%</b> (Wi).</p>
+        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Trung Quốc thay Mỹ làm động lực.</mark> XK thủy sản 9T/2026 <b>+11,5%</b>; sang Trung Quốc 8T <b>+34%</b>, sang Mỹ chỉ <b>+1,5%</b>.</p>
         <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Thuế Mỹ tăng lên.</mark> Mục 301 thêm <b>12,5%</b> từ 24/07/2026; CBPG cá tra POR21: Nam Việt <b>0,84 USD/kg</b> (từ 0 ở POR20); tôm POR19 sơ bộ Sao Ta <b>10,76%</b>.</p>
         <p style="font-size:12.5px;line-height:1.65;margin-bottom:0"><mark class="key-phrase">Biên phân hóa.</mark> Cá tra nguyên liệu ~30 nghìn đ/kg (giá thành nuôi 24–26 nghìn); thức ăn tăng (khô đậu <b>+13%</b> YoY) — ANV biên gộp Q2 còn <b>16,1%</b>; nhà tôm hưởng giá tôm nguyên liệu giảm.</p>
-        <div class="source-note">Nguồn: số Wi tại các chart · <a href="https://www.federalregister.gov/d/2026-16553" target="_blank" rel="noopener">Federal Register – cá tra POR21</a> · <a href="https://www.federalregister.gov/d/2026-09465" target="_blank" rel="noopener">Federal Register – tôm POR19 sơ bộ</a> · <a href="https://moit.gov.vn/en/news/u.s.-trade-representative-issues-final-determination-in-section-301-investigation-covering-60-economies.html" target="_blank" rel="noopener">Bộ Công Thương – Mục 301</a> · <a href="https://doanhnhan.baophapluat.vn/nam-viet-anv-quy-ii-2026-doanh-thu-tang-nhung-loi-nhuan-lao-doc-toi-60.html" target="_blank" rel="noopener">Doanh nhân – ANV Q2</a></div>
+        <div class="source-note">Nguồn: số liệu tại các chart · <a href="https://www.federalregister.gov/d/2026-16553" target="_blank" rel="noopener">Federal Register – cá tra POR21</a> · <a href="https://www.federalregister.gov/d/2026-09465" target="_blank" rel="noopener">Federal Register – tôm POR19 sơ bộ</a> · <a href="https://moit.gov.vn/en/news/u.s.-trade-representative-issues-final-determination-in-section-301-investigation-covering-60-economies.html" target="_blank" rel="noopener">Bộ Công Thương – Mục 301</a> · <a href="https://doanhnhan.baophapluat.vn/nam-viet-anv-quy-ii-2026-doanh-thu-tang-nhung-loi-nhuan-lao-doc-toi-60.html" target="_blank" rel="noopener">Doanh nhân – ANV Q2</a></div>
       </div>
     </div>
     <div class="card sector-valuation" style="margin-top:14px" data-block-id="ts-03" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">P/E ngành thủy sản — theo phiên</div>
-        <div class="chart-sub">lần · GICS cấp 4 của Wi · mỗi 5 phiên · P/B ở bảng</div>
+        <div class="chart-sub">lần · GICS cấp 4 · mỗi 5 phiên · P/B ở bảng</div>
         <div id="chSectorVal"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-sector-val"></table></div></details>
     </div>
@@ -411,7 +411,7 @@ body[data-sector="seafood"] .tx-group{margin:18px 0 8px;font-size:12px;letter-sp
   </div>
   <div class="majorpane" data-tab="mt2" id="pane-mt2">
   <section class="section">
-    <div class="sectionhead"><div><h2>2. Cung – Cầu</h2><p>Hai chuỗi: cá tra và tôm. Thị trường XK đọc ở chuỗi cá tra (số Wi là toàn ngành thủy sản).</p></div></div>
+    <div class="sectionhead"><div><h2>2. Cung – Cầu</h2><p>Hai chuỗi: cá tra và tôm. Thị trường XK đọc ở chuỗi cá tra (số Nguồn là toàn ngành thủy sản).</p></div></div>
     <h3 class="subhead">Cá tra</h3>
     <div class="grid two">
       <div class="card" data-block-id="ts-10" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
@@ -484,7 +484,7 @@ body[data-sector="seafood"] .tx-group{margin:18px 0 8px;font-size:12px;letter-sp
   </div>
   <div class="majorpane" data-tab="mt5" id="pane-mt5">
   <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ Wi (XK theo thị trường, giá nguyên liệu, thức ăn, định giá) và văn bản thuế Mỹ.</p></div></div>
+    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai (XK theo thị trường, giá nguyên liệu, thức ăn, định giá) và văn bản thuế Mỹ.</p></div></div>
     <div class="catriskgrid">
       <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3>Catalyst — yếu tố hỗ trợ</h3>
@@ -580,8 +580,8 @@ body[data-sector="seafood"] .tx-group{margin:18px 0 8px;font-size:12px;letter-sp
   </div>
   <div class="card" style="margin-top:14px" data-block-id="ts-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>XK thủy sản tổng và theo thị trường</b></td><td><a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan</a> qua MCP Wi</td><td>Tháng</td><td>Routine Claude hằng ngày (Wi)</td></tr><tr><td><b>Giá cá tra, cá giống, tôm thẻ; khô đậu, ngô CBOT</b></td><td>Wi</td><td>Ngày · hiển thị cuối tháng</td><td>Routine Claude hằng tuần (Wi)</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td>Wi; <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Wi hằng ngày; script mỗi lượt job</td></tr><tr><td><b>CBPG, CVD, thuế Mỹ</b></td><td><a href="https://www.federalregister.gov/" target="_blank" rel="noopener">Federal Register</a></td><td>Theo kết luận</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>XK cá tra, tôm (VASEP), IUU, MMPA, chủ đề nóng</b></td><td>VASEP, báo chí (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
-    <div class="source-note" id="wi-built">Dựng từ WiMCP; các lời gọi ghi trong data/seafood-wi-contract.json.</div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>XK thủy sản tổng và theo thị trường</b></td><td><a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan</a></td><td>Tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>Giá cá tra, cá giống, tôm thẻ; khô đậu, ngô CBOT</b></td><td>Tạm trống (chưa có nguồn công khai)</td><td>Ngày · hiển thị cuối tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>CBPG, CVD, thuế Mỹ</b></td><td><a href="https://www.federalregister.gov/" target="_blank" rel="noopener">Federal Register</a></td><td>Theo kết luận</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>XK cá tra, tôm (VASEP), IUU, MMPA, chủ đề nóng</b></td><td>VASEP, báo chí (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
   </div>
   <div class="footer">Vietnam Seafood Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 09/10/2026.</div>
 </div>

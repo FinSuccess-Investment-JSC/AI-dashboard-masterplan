@@ -1,11 +1,11 @@
 /* Ports & warehousing dashboard: value chain, Cảng / Vận tải biển / Kho bãi panes and every chart
-   drawn from window.PORT_WI (scripts/build_port_wi.py from WiMCP captures) and from the dated
+   drawn from window.PORT_PUBLIC (scripts/build_sector_public.py: public commodity series only) and from the dated
    document figures shown in the HTML tables. Also publishes window.PORT_BRIEF for catalyst-board.js.
    Runs before research-layout.js; uses the page's inline chart helpers. */
 (() => {
 'use strict';
 if(document.body.dataset.sector!=='port')return;
-const W=window.PORT_WI||{blocks:{}},B=W.blocks||{};
+const W=window.PORT_PUBLIC||{blocks:{}},B=W.blocks||{};
 const make=(tag,cls,text)=>{const e=document.createElement(tag);e.className=cls||'';if(text)e.textContent=text;return e};
 const nf=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
 const short=d=>d?d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(0,4):'—';
@@ -15,7 +15,7 @@ const signed=(v,d=1)=>v==null||!Number.isFinite(v)?'—':(v>0?'+':'')+nf(v,d);
 const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b7686',green:'#27af95',red:'#d1583f'};
 const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
-const SRC={customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],baltic:['Baltic Exchange','https://www.balticexchange.com/'],drewry:['Drewry WCI','https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry'],wi:['MCP Wi (Widata)',null]};
+const SRC={customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],baltic:['Baltic Exchange','https://www.balticexchange.com/'],drewry:['Drewry WCI','https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry'],wi:['Nguồn công khai',null]};
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -68,9 +68,9 @@ function sourceLine(id,parts,period,method,wi=true){
  const host=document.getElementById(id);if(!host)return;const block=host.closest('.card');
  const n=make('div','source-note cadence-note');n.append('Nguồn: ');
  parts.forEach(([name,url],i)=>{if(i)n.append(' · ');if(url){const a=make('a','',name);a.href=url;a.target='_blank';a.rel='noopener';n.append(a)}else n.append(name)});
- n.append(` · Kỳ cuối: ${period}`+(wi?` · Wi kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`:''));host.after(n);
+ n.append(` · Kỳ cuối: ${period}`+(wi?` · Kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`:''));host.after(n);
  if(method)n.after(make('div','source-note method-note',method));
- if(block&&wi){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='wi'}
+ if(block&&wi){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='public'}
 }
 function insight(id,text){const block=document.getElementById(id)?.closest('.card');if(!block)return;const n=make('div','chart-insight');n.dataset.inputOwner='ai';n.innerHTML='<b>Cách hiểu trong bối cảnh ngành · AI:</b> ';n.append(text);block.append(n)}
 function legend(id,items){const host=document.getElementById(id);if(!host)return;const l=make('div','legend');items.forEach(([n,c])=>{const s=make('span','li'),d=make('span','dot');d.style.background=c;s.append(d,n);l.append(s)});host.after(l)}
@@ -118,7 +118,7 @@ if(document.getElementById('chTariff')){
  legend('chTariff',[['TT 39/2023 · từ 15/02/2024',C.teal],['Sửa QĐ 810 · từ 01/02/2026',C.navy]]);
  insight('chTariff','Hai lần tăng liên tiếp (~10% mỗi lần) nâng sàn giá tàu mẹ khoảng 21% so với 2023. Cảng nước sâu thường thu sát sàn vì cạnh tranh giành hãng tàu, nên mức sàn gần như là giá thực thu: đây là nguồn tăng doanh thu/TEU trực tiếp cho GMD (Gemalink), PHP (Lạch Huyện), SGP (liên doanh Cái Mép).');
 }
-// Chỉ số giá dịch vụ (Wi, quý)
+// Chỉ số giá dịch vụ (quý)
 const ph=S('ppi_handling'),pw=S('ppi_warehouse'),ps=S('ppi_sea');
 if(ph.length&&document.getElementById('chPpi')){
  const wm=byMonth(pw),sm=byMonth(ps),rs=ph.slice(-16);
@@ -136,7 +136,7 @@ if(document.getElementById('chCaiMep')){
  sourceLine('chCaiMep',[['SGGP · Đầu tư Tài chính','https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html']],'Q1/2026','Tỷ trọng = sản lượng bến / tổng cụm 1,94 triệu TEU, tính từ hai số trong cùng bài.',false);
  insight('chCaiMep','Gemalink giữ khoảng 27% cụm; nhịp Q1 (523 nghìn TEU, quy năm ~2,1 triệu) đã vượt công suất thiết kế giai đoạn 1, nên Gemalink 2 (Q4/2027) là điều kiện để GMD tăng tiếp. SSIT tăng 47% vì nhận thêm tuyến mới: hãng tàu đang chia hàng cho nhiều bến, giới hạn khả năng tăng giá của từng bến.');
 }
-// Vận chuyển đường biển (Wi)
+// Vận chuyển đường biển
 const sea=S('sea_freight'),ov=S('overseas_freight');
 if(sea.length&&document.getElementById('chSea')){
  const om=byMonth(ov),rs=sea.slice(-36);
@@ -151,10 +151,10 @@ const bdi=S('bdi');
 if(bdi.length&&document.getElementById('chBdi')){
  barLineChart('chBdi',{categories:bdi.map(r=>mon(r.date)),series:[{name:'BDI',color:C.gold,kind:'line',values:bdi.map(r=>r.value)}],unit:'điểm',digits:0,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-bdi',['Kỳ','Điểm','So cùng kỳ'],bdi.slice().reverse().map(r=>[short(r.date),nf(r.value,0),signed(yoyAt(bdi,r),1)+'%']));
- sourceLine('chBdi',[SRC.baltic,SRC.wi],short(bdi.at(-1).date),'Baltic Dry Index (73982), Wi nén chuỗi ngày về điểm cuối tháng. Chỉ số tàu hàng rời, không dùng cho tàu container.');
+ sourceLine('chBdi',[SRC.baltic,SRC.wi],short(bdi.at(-1).date),'Baltic Dry Index (73982), Nguồn nén chuỗi ngày về điểm cuối tháng. Chỉ số tàu hàng rời, không dùng cho tàu container.');
  insight('chBdi','BDI đo cước hàng rời (than, quặng, ngũ cốc): liên quan tới cảng tổng hợp (CDN, SGP thép, PDN) hơn là cảng container. BDI cao hơn cùng kỳ khoảng 50% phản ánh cầu nguyên liệu và tàu chạy vòng xa.');
 }
-// Hàng không, thủy nội địa (Wi)
+// Hàng không, thủy nội địa
 const air=S('air_freight');
 if(air.length&&document.getElementById('chAir')){
  const rs=air.slice(-36);
@@ -171,15 +171,15 @@ if(inl.length&&document.getElementById('chInland')){
  sourceLine('chInland',[SRC.nso,SRC.wi],mon(inl.at(-1).date),'Hàng hóa vận chuyển đường thủy nội địa (82586), gồm cả vật liệu xây dựng, không riêng container.');
  insight('chInland','Sà lan là đường nối Cái Mép với Cát Lái, ICD Thủ Đức, Bình Dương: tăng nhanh nghĩa là hàng tàu mẹ cần nhiều kho bãi, depot (TCL, STG). Chuỗi gồm cả cát, đá xây dựng nên chỉ đọc xu hướng.');
 }
-// P/E ngành (Wi)
+// P/E ngành
 if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
  const ids=[['309','Cảng & dịch vụ hàng hải',C.navy],['186','Hỗ trợ vận tải đường thủy',C.teal],['185','Vận tải hàng hóa đường thủy',C.plum],['182','Logistics',C.gold]].filter(([id])=>sec[id]?.records?.length);
  const dates=[...new Set(ids.flatMap(([id])=>sec[id].records.map(r=>r[0])))].sort(),weekly=dates.filter((d,i)=>i%5===0||i===dates.length-1);
  const at=(id,d,k)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[k]:null};
  barLineChart('chSectorVal',{categories:weekly.map(d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4)),series:ids.map(([id,name,color])=>({name:'P/E '+name,color,kind:'line',values:weekly.map(d=>at(id,d,1))})),unit:'x',digits:1,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',ids.map(([,n,c])=>[n,c]));
- fillTable('tbl-sector-val',['Phân ngành (GICS Wi)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],[...ids,['183','Hỗ trợ vận tải hàng không']].filter(([id])=>sec[id]?.records?.length).map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
- sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'Wi sector_ratio_daily: 309, 186, 185, 182 (bảng có thêm 183). Vẽ mỗi 5 phiên. Wi gán mã vào phân ngành theo cách riêng; định giá tổng hợp bị chi phối bởi mã lớn (GMD, PHP, HAH).');
+ fillTable('tbl-sector-val',['Phân ngành (GICS)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],[...ids,['183','Hỗ trợ vận tải hàng không']].filter(([id])=>sec[id]?.records?.length).map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
+ sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'309, 186, 185, 182 (bảng có thêm 183). Vẽ mỗi 5 phiên. Nguồn gán mã vào phân ngành theo cách riêng; định giá tổng hợp bị chi phối bởi mã lớn (GMD, PHP, HAH).');
  insight('chSectorVal','P/E nhóm cảng quanh 12 lần, thấp hơn đầu năm (14–15 lần) dù lợi nhuận 6T tăng mạnh: thị trường chiết khấu phần lãi một lần và rủi ro dư cung Hải Phòng. Nhóm hỗ trợ vận tải đường thủy P/E trên 20 lần là do vài mã vốn hóa lớn, không đại diện cả nhóm.');
 }
 // Dự án: công suất mới, vốn
@@ -213,7 +213,7 @@ kpi('spk-pe',peL?nf(peL[1],1)+'x':'—',peL?'P/E cảng & dịch vụ hàng hả
 const seaYtd=ytdYo(sea),tradeYtd=(()=>{const l=ex.at(-1);if(!l)return null;const y=l.date.slice(0,4),m=l.date.slice(5,7),sum=yy=>[...ex,...im].filter(r=>r.date.slice(0,4)===yy&&r.date.slice(5,7)<=m).reduce((a,r)=>a+r.value,0),p=sum(String(y-1));return p?(sum(y)/p-1)*100:null})();
 const quick=document.querySelector('.hero .insight');
 if(quick&&eL){
- quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu Wi: '),`XNK ${mon(eL.date)} ${nf(trade/1000,1)} tỷ USD (${signed(tradeY,1)}% YoY), lũy kế năm ${signed(tradeYtd,1)}%. `+(sL?`Vận chuyển đường biển ${mon(sL.date)} ${nf(sL.value/1000,1)} triệu tấn (${signed(yoyAt(sea,sL),1)}%), lũy kế ${signed(seaYtd,1)}%. `:'')+(bL?`BDI ${nf(bL.value,0)} điểm. `:'')+(peL?`P/E cảng ${nf(peL[1],1)}x.`:''));
+ quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai: '),`XNK ${mon(eL.date)} ${nf(trade/1000,1)} tỷ USD (${signed(tradeY,1)}% YoY), lũy kế năm ${signed(tradeYtd,1)}%. `+(sL?`Vận chuyển đường biển ${mon(sL.date)} ${nf(sL.value/1000,1)} triệu tấn (${signed(yoyAt(sea,sL),1)}%), lũy kế ${signed(seaYtd,1)}%. `:'')+(bL?`BDI ${nf(bL.value,0)} điểm. `:'')+(peL?`P/E cảng ${nf(peL[1],1)}x.`:''));
  Object.assign(quick.dataset,{updateKind:'ai',cadence:'on-data-change',refreshStatus:'derived'});
 }
 // Catalyst brief: one tile per moving variable (rendered by catalyst-board.js).
@@ -236,5 +236,5 @@ window.PORT_BRIEF={
  score,
  events:[['Đầu tháng','Hải quan, NSO: XNK, vận chuyển tháng trước'],['Thứ Năm','Drewry WCI'],['20–30/10','BCTC quý III'],['10/2026','Khởi công cảng Cần Giờ (dự kiến)'],['Q4/2027','Gemalink 2 khai thác']]
 };
-const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ WiMCP lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; các lời gọi ghi trong data/port-wi-contract.json.';
+const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; giá hàng hóa: IMF/FRED, EIA, ICE.';
 })();

@@ -107,8 +107,6 @@ Still open:
 3. Wi (Bank) refresh: schedule a Claude routine that reruns `data/bank-wi-contract.json` with WiMCP and `scripts/build_bank_wi.py`, then opens a commit for the job to publish.
 4. Remove the old local cron block `FIN_SUCCESS_SECTOR_DASHBOARDS` (between its START/END markers) if still present.
 
-- `scripts/build_textile_wi.py`: dựng `data/textile-wi-data.js` từ capture WiMCP theo `data/textile-wi-contract.json` (dashboard Dệt may), dùng chung hàm của build_realestate_wi.py.
-- `scripts/build_realestate_wi.py`: dựng `data/realestate-wi-data.js` từ capture WiMCP theo `data/realestate-wi-contract.json` (dashboard Bất động sản); `--restore` chép kết quả vượt trần hiển thị vào capture.
 
 ### EVN reservoir archive
 
@@ -120,3 +118,7 @@ The exact user workbook is retained in the private `AI_WORKSPACE/source-archives
 
 ## check_evidence.py
 Bằng chứng số tài liệu: `python3 scripts/check_evidence.py` (cấu trúc, chạy trong test) và `--fetch` (mở lại link, ghi `data/evidence-status.json`; cần `pdftotext` cho PDF). Xem DASHBOARD_WORKFLOW §20.
+
+## Public replacements for removed Wi data (16/10/2026)
+
+Wi data is banned outside Bank. `build_sector_public.py` writes `data/<sector>-public-data.(json|js)` (IMF/FRED, EIA, ICE commodity series); `fetch_public_fs.py` writes `data/raw/public/fs_power_quarterly_vndirect.json` (VNDirect finfo consolidated discrete quarters; cells that disagreed >1% with the removed snapshot are kept null via `nulled`), consumed by `build_company_quarterly.py`. Both run in `refresh-data.yml`.

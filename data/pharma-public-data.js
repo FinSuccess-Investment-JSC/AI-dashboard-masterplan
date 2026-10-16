@@ -1,0 +1,1 @@
+window.PHARMA_PUBLIC = {"schema":1,"built_at":"2026-10-16T06:04:43Z","provider":"Nguồn công khai (IMF/FRED, EIA, ICE)","blocks":{},"absent":["macro","sector_ratio","commodity"],"note":"Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành chưa có nguồn công khai thay thế; để trống."};

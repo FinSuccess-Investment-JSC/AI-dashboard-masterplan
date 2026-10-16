@@ -1,11 +1,11 @@
 /* Pharma & healthcare dashboard (Dược & y tế): value chain, Dược phẩm / Dịch vụ y tế panes and sector valuation
-   from window.PHARMA_WI (scripts/build_pharma_wi.py from WiMCP captures: drug imports, API imports, IIP, CPI health, FX, GDP health).
+   from window.PHARMA_PUBLIC (scripts/build_sector_public.py: public commodity series only): drug imports, API imports, IIP, CPI health, FX, GDP health).
    Document figures sit in the HTML and in window.PHARMA_DOCS below; every one is backed by data/pharma/evidence.json.
    Publishes window.PHARMA_BRIEF for catalyst-board.js. Runs before research-layout.js; uses the page's inline chart helpers. */
 (() => {
 'use strict';
 if(document.body.dataset.sector!=='pharma')return;
-const W=window.PHARMA_WI||{blocks:{}},B=W.blocks||{};
+const W=window.PHARMA_PUBLIC||{blocks:{}},B=W.blocks||{};
 const make=(tag,cls,text)=>{const e=document.createElement(tag);e.className=cls||'';if(text)e.textContent=text;return e};
 const nf=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
 const short=d=>d?d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(0,4):'—';
@@ -15,7 +15,7 @@ const signed=(v,d=1)=>v==null||!Number.isFinite(v)?'—':(v>0?'+':'')+nf(v,d);
 const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b7686',green:'#27af95',red:'#d1583f'};
 const macro=B.macro?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
-const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],wi:['MCP Wi (Widata)',null]};
+const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],wi:['Nguồn công khai',null]};
 const S=k=>macro[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -70,9 +70,9 @@ function sourceLine(id,parts,period,method,wi=true){
  const host=document.getElementById(id);if(!host)return;const block=host.closest('.card');
  const n=make('div','source-note cadence-note');n.append('Nguồn: ');
  parts.forEach(([name,url],i)=>{if(i)n.append(' · ');if(url){const a=make('a','',name);a.href=url;a.target='_blank';a.rel='noopener';n.append(a)}else n.append(name)});
- n.append(` · Kỳ cuối: ${period}`+(wi?` · Wi kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`:''));host.after(n);
+ n.append(` · Kỳ cuối: ${period}`+(wi?` · Kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`:''));host.after(n);
  if(method)n.after(make('div','source-note method-note',method));
- if(block&&wi){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='wi'}
+ if(block&&wi){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='public'}
 }
 function insight(id,text){const block=document.getElementById(id)?.closest('.card');if(!block)return;const n=make('div','chart-insight');n.dataset.inputOwner='ai';n.innerHTML='<b>Cách hiểu trong bối cảnh ngành · AI:</b> ';n.append(text);block.append(n)}
 function legend(id,items){const host=document.getElementById(id);if(!host)return;const l=make('div','legend');items.forEach(([n,c])=>{const s=make('span','li'),d=make('span','dot');d.style.background=c;s.append(d,n);l.append(s)});host.after(l)}
@@ -101,7 +101,7 @@ if(fx.length&&document.getElementById('chCost')){
  barLineChart('chCost',{categories:base.map(r=>mon(r.date)),series:[{name:'Tỷ giá trung tâm (chỉ số T1/2025=100)',color:C.navy,kind:'line',values:base.map(r=>r.value/base[0].value*100)},{name:'CPI thuốc & dịch vụ y tế (T1/2025=100)',color:C.plum,kind:'line',values:base.map(r=>{const c=cm[ym(r.date)],b=cm[ym(base[0].date)];return c&&b?c.value/b.value*100:null})}],unit:'',digits:1,height:260,rotateLabels:true,zeroBase:false});
  legend('chCost',[['Tỷ giá USD/VND',C.navy],['CPI thuốc & dịch vụ y tế',C.plum]]);
  fillTable('tbl-cost',['Tháng','Tỷ giá trung tâm (VND)','CPI y tế (2024=100)'],fx.filter(r=>r.date>='2025-01').reverse().map(r=>[mon(r.date),nf(r.value,0),nf(cm[ym(r.date)]?.value,2)]));
- sourceLine('chCost',[SRC.sbv,SRC.nso,SRC.wi],mon(fx.at(-1).date),'Tỷ giá trung tâm bình quân tháng (242638); CPI thuốc và dịch vụ y tế (75779). Wi đổi gốc chỉ số CPI từ T1/2025 nên chart bắt đầu từ đó.');
+ sourceLine('chCost',[SRC.sbv,SRC.nso,SRC.wi],mon(fx.at(-1).date),'Tỷ giá trung tâm bình quân tháng (242638); CPI thuốc và dịch vụ y tế (75779). Nguồn đổi gốc chỉ số CPI từ T1/2025 nên chart bắt đầu từ đó.');
  const fy=yoyAt(fx,fx.at(-1)),cy=yoyAt(cpi,cpi.at(-1));
  insight('chCost','Tỷ giá '+signed(fy,1)+'% so cùng kỳ, CPI thuốc & dịch vụ y tế '+signed(cy,1)+'%: '+(fy>cy+1?'chi phí API (trả bằng USD) tăng nhanh hơn giá bán':'giá bán đang theo kịp chi phí nhập')+'. Giá trúng thầu cố định theo kỳ thầu 12–24 tháng nên khi tỷ giá tăng nhanh, biên gộp nhà sản xuất chịu phần chênh trước.');
 }
@@ -120,7 +120,7 @@ if(v222.length&&document.getElementById('chSectorVal')){
  barLineChart('chSectorVal',{categories:weekly.map(r=>r[0].slice(8,10)+'/'+r[0].slice(5,7)+'/'+r[0].slice(2,4)),series:[{name:'P/E ngành dược',color:C.navy,kind:'line',values:weekly.map(r=>r[1])},{name:'P/B ×10',color:C.teal,kind:'line',values:weekly.map(r=>r[2]*10)}],unit:'x',digits:1,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',[['P/E',C.navy],['P/B (nhân 10 để cùng trục)',C.teal]]);
  fillTable('tbl-sector-val',['Phiên','P/E','P/B'],v222.slice().reverse().map(r=>[short(r[0]),nf(r[1],2),nf(r[2],2)]));
- sourceLine('chSectorVal',[SRC.wi],short(v222.at(-1)[0]),'Wi sector_ratio_daily, GICS 222 Dược phẩm (vốn hóa toàn phân ngành). Mỗi 5 phiên. Bán lẻ thuốc (115) trống trên Wi; cơ sở y tế (178) lỗ nên P/E âm, không vẽ.');
+ sourceLine('chSectorVal',[SRC.wi],short(v222.at(-1)[0]),'GICS 222 Dược phẩm (vốn hóa toàn phân ngành). Mỗi 5 phiên. Bán lẻ thuốc (115) trống trong nguồn; cơ sở y tế (178) lỗ nên P/E âm, không vẽ.');
  const f=v222[0],l=v222.at(-1);
  insight('chSectorVal','P/E ngành dược '+nf(l[1],1)+'x, giảm từ '+nf(f[1],1)+'x đầu tháng 4 — giá cổ phiếu đi ngang trong khi lợi nhuận 12 tháng tăng. Mức ~12–13x thấp hơn nhóm bán lẻ, phản ánh tăng trưởng chậm và rủi ro giá thầu.');
 }
@@ -143,7 +143,7 @@ kpi('spk-fx',fL?nf(fL.value,0):'—',fL?'VND/USD trung tâm · '+mon(fL.date):'�
 kpi('spk-pe',vL?nf(vL[1],1)+'x':'—',vL?'P/E ngành dược · '+short(vL[0]):'—',vL?'P/B '+nf(vL[2],2)+'x':'',v222.slice(-30).map(r=>r[1]),C.grey);
 const quick=document.querySelector('.hero .insight');
 if(quick&&iL){
- quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu Wi: '),`Thuốc nhập ${mon(iL.date)} ${nf(iL.value,0)} triệu USD (lũy kế ${signed(impY,0)}%); nguyên liệu dược lũy kế ${signed(apiY,0)}%. IIP sản xuất thuốc ${signed(pL?.value,0)}%. Tỷ giá ${signed(fxY,1)}% YoY, CPI y tế ${signed(cpiY,1)}%. P/E ngành dược ${vL?nf(vL[1],1):'—'}x.`);
+ quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai: '),`Thuốc nhập ${mon(iL.date)} ${nf(iL.value,0)} triệu USD (lũy kế ${signed(impY,0)}%); nguyên liệu dược lũy kế ${signed(apiY,0)}%. IIP sản xuất thuốc ${signed(pL?.value,0)}%. Tỷ giá ${signed(fxY,1)}% YoY, CPI y tế ${signed(cpiY,1)}%. P/E ngành dược ${vL?nf(vL[1],1):'—'}x.`);
  Object.assign(quick.dataset,{updateKind:'ai',cadence:'on-data-change',refreshStatus:'derived'});
 }
 const row=(group,name,big,evidence,cond,st,who,chart)=>({group,name,big,chart,st,mid:[evidence,cond],end:[who]});
@@ -163,5 +163,5 @@ window.PHARMA_BRIEF={
  score,
  events:[['Đầu tháng','NSO: IIP, CPI; Hải quan: nhập khẩu dược'],['20–30/10','BCTC quý III'],['Theo đợt','Cục Quản lý Dược: cấp, gia hạn số đăng ký thuốc'],['Theo kỳ thầu','Kết quả đấu thầu tập trung quốc gia, BHYT']]
 };
-const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ WiMCP lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; các lời gọi ghi trong data/pharma-wi-contract.json.';
+const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; giá hàng hóa: IMF/FRED, EIA, ICE.';
 })();

@@ -101,9 +101,9 @@ function mount(host,{sector}){
   const chart=make('div','company-trend-chart'),legend=make('div','legend ct-legend'),tip=make('div','chtip ct-tip'),note=make('div'),
     src=make('div','source-note');
   src.append('Nguồn: ');
-  const used=[...new Set(base.map(c=>c.source||'wi'))];
-  used.forEach((k,i)=>{const info=data.sources?.[k]||{name:data.source,url:'https://widata.vn/'};const a=make('a','',info.name);a.href=info.url;a.target='_blank';a.rel='noopener';if(i)src.append(' · ');src.append(a)});
-  const day=used.includes('wi')?data.captured_at:data.sa_checked_at||data.captured_at;
+  const used=[...new Set(base.map(c=>c.source||'vnd'))];
+  used.forEach((k,i)=>{const info=data.sources?.[k]||{name:data.source,url:'https://api-finfo.vndirect.com.vn/v4/financial_statements'};const a=make('a','',info.name);a.href=info.url;a.target='_blank';a.rel='noopener';if(i)src.append(' · ');src.append(a)});
+  const day=used.includes('vnd')?data.captured_at:data.sa_checked_at||data.captured_at;
   src.append(`. Cập nhật ${day.split('-').reverse().join('/')}. Biên = lợi nhuận ÷ doanh thu thuần (tự tính); lãi ròng là lợi nhuận sau thuế thuộc cổ đông công ty mẹ. Năm = tổng 4 quý, chỉ năm có đủ 4 quý. Quý mới nhất có thể chưa kiểm toán.`);
   const more=make('div','ct-source'),toggle=make('button','ct-source-btn','ⓘ Nguồn & ghi chú'),panel=make('div','ct-source-panel');toggle.type='button';toggle.setAttribute('aria-expanded','false');panel.hidden=true;panel.append(note,src);toggle.onclick=()=>{panel.hidden=!panel.hidden;toggle.setAttribute('aria-expanded',String(!panel.hidden))};more.append(toggle,panel);
   card.append(top,quick,controls,chart,legend,tip,more);

@@ -77,7 +77,7 @@
     ];
     [[0,['enso_oni'],62],[1,['coal_newcastle','lng_jkm',wbk].filter(Boolean),45],[3,['vn_power_daily'],7]].forEach(([i,ids,days])=>{const live=ids.filter(k=>feeds[k]?.records?.length);if(!live.length){rows[i].status='Thiếu dữ liệu';rows[i].metric='—'}else if(live.every(k=>feeds[k].status!=='ok'||Date.now()-Date.parse(feeds[k].latest_observation)>days*86400000)){rows[i].status='Chờ cập nhật'}});
   }else if(re||tx||pt||ag||sf||sh||xd||bh||bl||ph){
-    rows=[]; // the verdict board below reads window.REALESTATE_WI directly; no legacy tiles
+    rows=[]; // the verdict board below reads window.REALESTATE_PUBLIC directly; no legacy tiles
   }else if(!bank){
     const wb=feeds.sugar_monthly,last=wb?.records?.at(-1),stock=monitors[1]?.querySelector('strong')?.textContent||'—',hfcs=monitors[2]?.querySelector('strong')?.textContent||'—';
     rows=[
@@ -275,7 +275,7 @@
       events:[['Đầu tháng','EVN sản lượng tháng'],['Giữa tháng','NOAA cập nhật ONI'],['Từ 20/10','BCTC quý III'],['Từ 11/2026','Mùa khô thủy điện']]
     });
   }else if(re){
-    const R=window.REALESTATE_DASHBOARD||{},B=window.REALESTATE_WI?.blocks||{},cash=(B.cbond_cashflow?.records||[]).filter(r=>!r.partial),iss=B.cbond_issuance?.records||[];
+    const R=window.REALESTATE_DASHBOARD||{},B=window.REALESTATE_PUBLIC?.blocks||{},cash=(B.cbond_cashflow?.records||[]).filter(r=>!r.partial),iss=B.cbond_issuance?.records||[];
     const lc=cash.at(-1),pc=cash.at(-2),due3=(R.next12||[]).slice(0,3).reduce((a,r)=>a+r.due,0),dueShare=lc?due3/lc.outstanding_value*100:null;
     const issNow=iss.slice(-3).reduce((a,r)=>a+r.value,0),issPrev=iss.slice(-6,-3).reduce((a,r)=>a+r.value,0),issChg=issPrev?(issNow/issPrev-1)*100:null;
     const mac=B.macro?.series||{},yoyLast=(k,lag)=>{const rs=mac[k]?.records||[],a=rs.at(-1),b=rs.at(-1-lag);return a&&b?(a.value/b.value-1)*100:null};
@@ -287,7 +287,7 @@
     const row=(name,now,prev,unit,d,th,st,who,chart,group='Nhà ở')=>({name,chart,st,group,mid:[S(now,d,unit),prev===undefined?'—':D(now,prev,d),th],end:[who]});
     const fm=mac.fdi_mfg_ytd?.records||[],fmL=fm.at(-1),fmP=fmL&&fm.find(r=>r.date===String(Number(fmL.date.slice(0,4))-1)+fmL.date.slice(4)),fmChg=fmL&&fmP?(fmL.value/fmP.value-1)*100:null;
     const iip=mac.iip_mfg_yoy?.records||[],iipL=iip.at(-1),iip3=iip.slice(-3).reduce((a,r)=>a+r.value,0)/Math.max(1,iip.slice(-3).length);
-    const ipb=window.REALESTATE_WI?.blocks?.sector_ratio?.by_sector?.['157']?.records||[],ipbL=ipb.at(-1),ipbP=ipb.at(-6);
+    const ipb=window.REALESTATE_PUBLIC?.blocks?.sector_ratio?.by_sector?.['157']?.records||[],ipbL=ipb.at(-1),ipbP=ipb.at(-6);
     renderBrief({
       headline:(dueSt==='risk'||lateSt==='risk')?'Nhà ở: áp lực đáo hạn trái phiếu còn nặng · khu công nghiệp thuận nhờ FDI':housingUp?'Nhà ở: vốn đang dễ thở hơn · khu công nghiệp thuận nhờ FDI':'Nhà ở trung tính về vốn · khu công nghiệp '+(kcnUp?'thuận nhờ FDI':'chờ FDI'),
       segs:[['Nhà ở','VHM · NVL · KDH · NLG · DXG · PDR…',lc?(housingUp?'up':dueSt==='risk'||lateSt==='risk'?'down':'flat'):'na',lc?'Đáo hạn 3T = '+num(dueShare,1)+'% dư nợ':'Thiếu TPDN'],['Khu công nghiệp','KBC · IDC · BCM · SZC · SIP · VGC · LHG',fdiChg==null?'na':kcnUp?'up':'down',fdiChg==null?'Thiếu FDI':'FDI BĐS '+(fdiChg>0?'+':'')+num(fdiChg,0)+'% YoY'],['Cho thuê','VRE',cpi==null?'na':cpi>=7?'up':'flat',cpi==null?'Thiếu CPI':'CPI nhà ở '+num(cpi,1)+'%'],['Môi giới','DXS','na','Chờ số giao dịch Q3']],
@@ -308,7 +308,7 @@
   }else if(tx||pt||ag||sf||sh||xd||bh||bl||ph){
     let score;if(pt||ag||sf||sh||xd||bh||bl||ph){const BR=pt?window.PORT_BRIEF:ag?window.AGRI_BRIEF:sh?window.SHIPPING_BRIEF:xd?window.CONSTRUCTION_BRIEF:bh?window.INSURANCE_BRIEF:bl?window.RETAIL_BRIEF:ph?window.PHARMA_BRIEF:window.SEAFOOD_BRIEF;score=BR?.score||[];renderBrief(BR||{headline:'Thiếu dữ liệu',segs:[],headers:[],score:[],events:[]})}else{
     // Thesis delta: one row per variable that is moving — evidence (latest number), direction, who gains/loses, what would reverse it.
-    const T=window.TEXTILE_DASHBOARD||{},M=window.TEXTILE_WI?.blocks?.macro?.series||{},Cm=window.TEXTILE_WI?.blocks?.commodity?.series||{},Sec=window.TEXTILE_WI?.blocks?.sector_ratio?.by_sector||{};
+    const T=window.TEXTILE_DASHBOARD||{},M=window.TEXTILE_PUBLIC?.blocks?.macro?.series||{},Cm=window.TEXTILE_PUBLIC?.blocks?.commodity?.series||{},Sec=window.TEXTILE_PUBLIC?.blocks?.sector_ratio?.by_sector||{};
     const R=k=>M[k]?.records||Cm[k]?.records||[];
     const mon=d=>'T'+Number(d.slice(5,7))+'/'+d.slice(2,4);
     const yo=(rs,r)=>{if(!r)return null;const p=rs.find(x=>x.date.slice(0,7)===String(Number(r.date.slice(0,4))-1)+r.date.slice(4,7));return p&&p.value?(r.value/p.value-1)*100:null};

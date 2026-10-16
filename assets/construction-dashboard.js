@@ -1,11 +1,11 @@
 /* Construction dashboard (Xây dựng · VLXD · Đầu tư công): value chain, Thép / Xi măng & VLXD / Xây dựng & hạ tầng panes,
-   public-investment tab and sector valuation from window.CONSTRUCTION_WI (scripts/build_construction_wi.py from WiMCP captures).
+   public-investment tab and sector valuation from window.CONSTRUCTION_PUBLIC (scripts/build_sector_public.py: public commodity series only).
    Document figures sit in the HTML tables and are backed by data/construction/evidence.json.
    Publishes window.CONSTRUCTION_BRIEF for catalyst-board.js. Runs before research-layout.js; uses the page's inline chart helpers. */
 (() => {
 'use strict';
 if(document.body.dataset.sector!=='construction')return;
-const W=window.CONSTRUCTION_WI||{blocks:{}},B=W.blocks||{};
+const W=window.CONSTRUCTION_PUBLIC||{blocks:{}},B=W.blocks||{};
 const make=(tag,cls,text)=>{const e=document.createElement(tag);e.className=cls||'';if(text)e.textContent=text;return e};
 const nf=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
 const short=d=>d?d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(0,4):'—';
@@ -15,7 +15,7 @@ const signed=(v,d=1)=>v==null||!Number.isFinite(v)?'—':(v>0?'+':'')+nf(v,d);
 const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b7686',green:'#27af95',red:'#d1583f'};
 const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
-const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],moc:['Sở Xây dựng (công bố giá)','https://moc.gov.vn/'],wi:['MCP Wi (Widata)',null]};
+const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],moc:['Sở Xây dựng (công bố giá)','https://moc.gov.vn/'],wi:['Nguồn công khai',null]};
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -71,9 +71,9 @@ function sourceLine(id,parts,period,method,wi=true){
  const host=document.getElementById(id);if(!host)return;const block=host.closest('.card');
  const n=make('div','source-note cadence-note');n.append('Nguồn: ');
  parts.forEach(([name,url],i)=>{if(i)n.append(' · ');if(url){const a=make('a','',name);a.href=url;a.target='_blank';a.rel='noopener';n.append(a)}else n.append(name)});
- n.append(` · Kỳ cuối: ${period}`+(wi?` · Wi kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`:''));host.after(n);
+ n.append(` · Kỳ cuối: ${period}`+(wi?` · Kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`:''));host.after(n);
  if(method)n.after(make('div','source-note method-note',method));
- if(block&&wi){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='wi'}
+ if(block&&wi){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='public'}
 }
 function insight(id,text){const block=document.getElementById(id)?.closest('.card');if(!block)return;const n=make('div','chart-insight');n.dataset.inputOwner='ai';n.innerHTML='<b>Cách hiểu trong bối cảnh ngành · AI:</b> ';n.append(text);block.append(n)}
 function legend(id,items){const host=document.getElementById(id);if(!host)return;const l=make('div','legend');items.forEach(([n,c])=>{const s=make('span','li'),d=make('span','dot');d.style.background=c;s.append(d,n);l.append(s)});host.after(l)}
@@ -89,7 +89,7 @@ if(rebar.length&&hrc.length&&document.getElementById('chSteelPrice')){
  legend('chSteelPrice',[['Thép CB300 HPG (VND)',C.navy],['HRC TQ',C.teal],['Quặng sắt',C.gold],['Than cốc',C.plum]]);
  const rm=byMonth(rebar),om=byMonth(ore),cm=byMonth(coke);
  fillTable('tbl-steel-price',['Kỳ','Thép CB300 HPG (nghìn đ/kg)','HRC TQ (CNY/tấn)','Quặng sắt (CNY/tấn)','Than cốc (CNY/tấn)'],hrc.slice().reverse().map(r=>[short(r.date),nf(rm[ym(r.date)]?.value,2),nf(r.value,0),nf(om[ym(r.date)]?.value,1),nf(cm[ym(r.date)]?.value,0)]));
- sourceLine('chSteelPrice',[['Hòa Phát · sàn Đại Liên, Thượng Hải qua Wi',null]],short(hrc.at(-1).date),'Chỉ số T1/2024 = 100 để bốn chuỗi khác đơn vị cùng trục. Thép CB300 D10 Hòa Phát (74362, giá bán lẻ công bố), HRC giao ngay TQ (203148), quặng sắt (73987), than cốc (203129). Một tấn thép cần hơn một tấn quặng cộng than, nên không trừ trực tiếp ra biên.');
+ sourceLine('chSteelPrice',[['Hòa Phát · sàn Đại Liên, Thượng Hải',null]],short(hrc.at(-1).date),'Chỉ số T1/2024 = 100 để bốn chuỗi khác đơn vị cùng trục. Thép CB300 D10 Hòa Phát (74362, giá bán lẻ công bố), HRC giao ngay TQ (203148), quặng sắt (73987), than cốc (203129). Một tấn thép cần hơn một tấn quặng cộng than, nên không trừ trực tiếp ra biên.');
  const rL=rebar.at(-1),hL=hrc.at(-1),oL=ore.at(-1),cL=coke.at(-1);
  insight('chSteelPrice','Giá thép xây dựng Hòa Phát '+nf(rL.value,2)+' nghìn đ/kg ('+signed(yoyAt(rebar,rL),0)+'% YoY), HRC Trung Quốc '+signed(yoyAt(hrc,hL),0)+'%, quặng sắt '+signed(yoyAt(ore,oL),0)+'% nhưng than cốc '+signed(yoyAt(coke,cL),0)+'%. Giá bán trong nước giữ được trong khi quặng rẻ đi → biên thép xây dựng tốt; than cốc tăng ăn bớt một phần. HRC Trung Quốc yếu vẫn là trần giá cho HRC Việt Nam dù đã có thuế chống bán phá giá.');
 }
@@ -105,7 +105,7 @@ if(sexp.length&&document.getElementById('chSteelExp')){
  const rs=sexp.slice(-36);
  barLineChart('chSteelExp',{categories:rs.map(r=>mon(r.date)),series:[{name:'Xuất khẩu sắt thép',color:C.gold,values:rs.map(r=>r.value)}],unit:'triệu USD',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-steel-exp',['Tháng','Triệu USD','YoY'],sexp.slice().reverse().map(r=>[mon(r.date),nf(r.value,1),signed(yoyAt(sexp,r),0)+'%']));
- sourceLine('chSteelExp',[SRC.customs,SRC.wi],mon(sexp.at(-1).date),'Mã 87985 trong bảng xuất khẩu theo mặt hàng của Wi. Chuỗi này nhỏ hơn nhiều số Hải quan công bố cho "sắt thép các loại" (vài trăm triệu USD/tháng) — nhiều khả năng chỉ là một thị trường hoặc một nhóm hàng; dùng để xem xu hướng, chưa đối chiếu được phạm vi.');
+ sourceLine('chSteelExp',[SRC.customs,SRC.wi],mon(sexp.at(-1).date),'Mã 87985 trong bảng xuất khẩu theo mặt hàng. Chuỗi này nhỏ hơn nhiều số Hải quan công bố cho "sắt thép các loại" (vài trăm triệu USD/tháng) — nhiều khả năng chỉ là một thị trường hoặc một nhóm hàng; dùng để xem xu hướng, chưa đối chiếu được phạm vi.');
  insight('chSteelExp','Tháng 7–8/2026 cao gấp 3–4 lần cùng kỳ, sau một năm 2025 rất thấp vì Mỹ nâng thuế Mục 232 lên 50% và EU siết hạn ngạch. Mức tăng chủ yếu do nền thấp; xuất khẩu thép vẫn là kênh xả hàng khi cầu trong nước yếu, không phải động lực chính.');
 }
 // Xi măng & VLXD
@@ -132,7 +132,7 @@ if(cp.length&&document.getElementById('chVlxdPrice')){
  legend('chVlxdPrice',[['Xi măng',C.navy],['Đá 1x2',C.grey],['Nhựa đường',C.plum],['Than Newcastle',C.gold]]);
  const cm=byMonth(cp),sm=byMonth(stone),km=byMonth(coal);
  fillTable('tbl-vlxd-price',['Kỳ','Xi măng (nghìn đ/kg)','Đá 1x2 (nghìn đ/tấn)','Nhựa đường (CNY/tấn)','Than Newcastle (USD/tấn)'],asph.slice().reverse().map(r=>[short(r.date),nf(cm[ym(r.date)]?.value,3),nf(sm[ym(r.date)]?.value,1),nf(r.value,0),nf(km[ym(r.date)]?.value,1)]));
- sourceLine('chVlxdPrice',[SRC.moc,['Sunsir, ICE qua Wi',null]],short(asph.at(-1).date),'Chỉ số T1/2024 = 100. Xi măng (80961) và đá 1x2 (80968) là giá tháng Sở Xây dựng công bố; nhựa đường (203138, giá Trung Quốc) và than Newcastle (203036) là giá ngày, nén cuối tháng. Wi chưa có giá cát.');
+ sourceLine('chVlxdPrice',[SRC.moc,['Sunsir, ICE',null]],short(asph.at(-1).date),'Chỉ số T1/2024 = 100. Xi măng (80961) và đá 1x2 (80968) là giá tháng Sở Xây dựng công bố; nhựa đường (203138, giá Trung Quốc) và than Newcastle (203036) là giá ngày, nén cuối tháng. Nguồn chưa có giá cát.');
  const aL=asph.at(-1),kL=coal.at(-1);
  insight('chVlxdPrice','Nhựa đường '+signed(yoyAt(asph,aL),0)+'% YoY và than Newcastle '+signed(yoyAt(coal,kL),0)+'% đi theo giá dầu, than thế giới — chi phí của nhà thầu đường (C4G, HHV, LCG) và xi măng (HT1, BCC) tăng nhanh. Giá công bố của xi măng, đá chỉ tăng 5–10%: phần chênh doanh nghiệp tự gánh, hoặc được bù qua điều chỉnh giá hợp đồng chậm vài quý.');
 }
@@ -159,8 +159,8 @@ if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
  const at=(id,d,k)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[k]:null};
  barLineChart('chSectorVal',{categories:weekly.map(d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4)),series:ids.map(([id,name,color])=>({name:'P/B '+name,color,kind:'line',values:weekly.map(d=>at(id,d,2))})),unit:'x',digits:1,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',ids.map(([,n,c])=>[n,c]));
- fillTable('tbl-sector-val',['Phân ngành (GICS Wi)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),r[1]>0&&r[1]<200?nf(r[1],1):'—',nf(r[3]/1000,1),short(r[0])]}));
- sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'Wi sector_ratio_daily: sản xuất thép (281), xi măng (264), khai thác đá (260), xây dựng cầu đường (170), xây dựng công trình khác (171). Vẽ P/B vì P/E nhóm xây dựng công trình khác âm cuối 2025 (lỗ) và nhảy khi BCTC mới vào. Mỗi 5 phiên.');
+ fillTable('tbl-sector-val',['Phân ngành (GICS)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),r[1]>0&&r[1]<200?nf(r[1],1):'—',nf(r[3]/1000,1),short(r[0])]}));
+ sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'sản xuất thép (281), xi măng (264), khai thác đá (260), xây dựng cầu đường (170), xây dựng công trình khác (171). Vẽ P/B vì P/E nhóm xây dựng công trình khác âm cuối 2025 (lỗ) và nhảy khi BCTC mới vào. Mỗi 5 phiên.');
  insight('chSectorVal','Thép (P/E ~8x, P/B ~1,1x) và khai thác đá (P/E ~5x) rẻ nhất; xây dựng cầu đường P/B cao (~4,6x) vì thị trường đã trả trước cho chu kỳ đầu tư công. P/B thép đã giảm từ ~1,5x (T4/2026) — thị trường lo giá HRC Trung Quốc và nợ vay, dù lợi nhuận Hòa Phát tăng mạnh.');
 }
 // Giải ngân đầu tư công
@@ -208,7 +208,7 @@ kpi('spk-asphalt',aL?nf(aL.value,0):'—',aL?'CNY/tấn · '+short(aL.date):'—
 kpi('spk-pe',peL?nf(peL[1],1)+'x':'—',peL?'P/E thép · '+short(peL[0]):'—',peL?'P/B '+nf(peL[2],2)+'x':'',pe.slice(-30).map(r=>r[1]),C.grey);
 const quick=document.querySelector('.hero .insight');
 if(quick&&piLast){
- quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu Wi: '),`Vốn NSNN thực hiện ${Number(piMo)}T/${piY} ${nf(ytdSum(pi,piY,piMo)/1000,0)} nghìn tỷ (${signed(ytdYo(pi),0)}%). Thép CB300 Hòa Phát ${nf(rL?.value,2)} nghìn đ/kg (${signed(yoyAt(rebar,rL),0)}%), HRC Trung Quốc ${signed(yoyAt(hrc,hL),0)}%. Xi măng lũy kế ${signed(ytdYo(cem),0)}%. Nhựa đường ${signed(yoyAt(asph,aL),0)}%. P/E thép ${peL?nf(peL[1],1):'—'}x.`);
+ quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai: '),`Vốn NSNN thực hiện ${Number(piMo)}T/${piY} ${nf(ytdSum(pi,piY,piMo)/1000,0)} nghìn tỷ (${signed(ytdYo(pi),0)}%). Thép CB300 Hòa Phát ${nf(rL?.value,2)} nghìn đ/kg (${signed(yoyAt(rebar,rL),0)}%), HRC Trung Quốc ${signed(yoyAt(hrc,hL),0)}%. Xi măng lũy kế ${signed(ytdYo(cem),0)}%. Nhựa đường ${signed(yoyAt(asph,aL),0)}%. P/E thép ${peL?nf(peL[1],1):'—'}x.`);
  Object.assign(quick.dataset,{updateKind:'ai',cadence:'on-data-change',refreshStatus:'derived'});
 }
 const piYo=ytdYo(pi),rY=yoyAt(rebar,rL),hY=yoyAt(hrc,hL),oY=yoyAt(ore,ore.at(-1)),kY=yoyAt(coke,coke.at(-1)),cY=ytdYo(cem),aY=yoyAt(asph,aL),coY=yoyAt(coal,coal.at(-1)),crY=yoyAt(cred,cred.at(-1)),barY=ytdYo(bar);
@@ -228,7 +228,7 @@ window.CONSTRUCTION_BRIEF={
  segs:[['Thép','HPG · HSG · NKG',rY!=null&&rY>3?'up':'flat','CB300 '+signed(rY,0)+'%'],['Xi măng & VLXD','HT1 · BCC · VLB · KSB · DHA · PLC · VGC',cY!=null&&cY>5?'up':'flat','Xi măng '+signed(cY,0)+'%'],['Xây dựng & hạ tầng','CTD · HBC · VCG · FCN · DPG · C4G · LCG · HHV · CII · HUT',piYo!=null&&piYo>15?'up':'flat','NSNN '+signed(piYo,0)+'%']],
  headers:['Biến số đang thay đổi','Đang thấy (số mới nhất)','Đổi đánh giá khi','','Hưởng lợi ▲ / chịu thiệt ▼'],
  score,
- events:[['Đầu tháng','NSO: vốn NSNN thực hiện, sản lượng thép, xi măng'],['Hằng tuần','Giá thép, HRC, quặng, than (Wi)'],['20–30/10','BCTC quý III'],['Cuối năm','Giao kế hoạch vốn 2027; khởi công đường sắt']]
+ events:[['Đầu tháng','NSO: vốn NSNN thực hiện, sản lượng thép, xi măng'],['Hằng tuần','Giá thép, HRC, quặng, than'],['20–30/10','BCTC quý III'],['Cuối năm','Giao kế hoạch vốn 2027; khởi công đường sắt']]
 };
-const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ WiMCP lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; các lời gọi ghi trong data/construction-wi-contract.json.';
+const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; giá hàng hóa: IMF/FRED, EIA, ICE.';
 })();

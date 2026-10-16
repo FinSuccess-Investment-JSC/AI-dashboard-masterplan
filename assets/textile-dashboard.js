@@ -1,11 +1,11 @@
 /* Textile & garment dashboard: value chain, Sợi / Dệt nhuộm – May panes and every chart
-   drawn from window.TEXTILE_WI (scripts/build_textile_wi.py from WiMCP captures) and from
+   drawn from window.TEXTILE_PUBLIC (scripts/build_sector_public.py: public commodity series only) and from
    the document figures in data/textile/*.json (shown as HTML tables, charted here).
    Runs before research-layout.js; uses the page's inline chart helpers. */
 (() => {
 'use strict';
 if(document.body.dataset.sector!=='textile')return;
-const W=window.TEXTILE_WI||{blocks:{}},B=W.blocks||{};
+const W=window.TEXTILE_PUBLIC||{blocks:{}},B=W.blocks||{};
 const make=(tag,cls,text)=>{const e=document.createElement(tag);e.className=cls||'';if(text)e.textContent=text;return e};
 const nf=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
 const short=d=>d?d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(0,4):'—';
@@ -14,7 +14,7 @@ const signed=(v,d=1)=>v==null||!Number.isFinite(v)?'—':(v>0?'+':'')+nf(v,d);
 const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b7686',green:'#27af95',red:'#d1583f'};
 const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
-const SRC={customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],census:['US Census · bán lẻ','https://www.census.gov/retail/'],ice:['ICE Cotton No.2','https://www.ice.com/products/254/Cotton-No-2-Futures'],wi:['MCP Wi (Widata)',null]};
+const SRC={customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],census:['US Census · bán lẻ','https://www.census.gov/retail/'],ice:['IMF Primary Commodity Prices (FRED)','https://fred.stlouisfed.org/series/PCOTTINDUSDM'],wi:['Nguồn công khai',null]};
 const S=k=>macro[k]?.records||[],P=k=>com[k]?.records||[];
 // Month-end key so daily commodity points and month-start macro points share one axis.
 const ym=d=>d.slice(0,7);
@@ -70,9 +70,9 @@ function sourceLine(id,parts,period,method){
  const host=document.getElementById(id);if(!host)return;const block=host.closest('.card');
  const n=make('div','source-note cadence-note');n.append('Nguồn: ');
  parts.forEach(([name,url],i)=>{if(i)n.append(' · ');if(url){const a=make('a','',name);a.href=url;a.target='_blank';a.rel='noopener';n.append(a)}else n.append(name)});
- n.append(` · Kỳ cuối: ${period} · Wi kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`);host.after(n);
+ n.append(` · Kỳ cuối: ${period} · Kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`);host.after(n);
  if(method)n.after(make('div','source-note method-note',method));
- if(block){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='wi'}
+ if(block){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='public'}
 }
 function insight(id,text){const block=document.getElementById(id)?.closest('.card');if(!block)return;const n=make('div','chart-insight');n.dataset.inputOwner='ai';n.innerHTML='<b>Cách hiểu trong bối cảnh ngành · AI:</b> ';n.append(text);block.append(n)}
 function legend(id,items){const host=document.getElementById(id);if(!host)return;const l=make('div','legend');items.forEach(([n,c])=>{const s=make('span','li'),d=make('span','dot');d.style.background=c;s.append(d,n);l.append(s)});host.after(l)}
@@ -98,7 +98,7 @@ if(us.length&&exp.length&&document.getElementById('chExportMkt')){
  stack('chExportMkt',{categories:rs.map(r=>mon(r.date)),series:[{name:'Mỹ',color:C.navy,values:rs.map(r=>r.value)},{name:'Nhật Bản',color:C.gold,values:rs.map(r=>v(jm,r))},{name:'Hàn Quốc',color:C.teal,values:rs.map(r=>v(km,r))},{name:'Trung Quốc',color:C.red,values:rs.map(r=>v(cm,r))},{name:'Khác (EU, Canada, Anh…)',color:C.grey,values:rest}],unit:'triệu USD',digits:0,aria:'Xuất khẩu dệt may theo thị trường'});
  legend('chExportMkt',[['Mỹ',C.navy],['Nhật Bản',C.gold],['Hàn Quốc',C.teal],['Trung Quốc',C.red],['Khác (EU, Canada, Anh…)',C.grey]]);
  fillTable('tbl-export-mkt',['Tháng','Mỹ','Nhật Bản','Hàn Quốc','Trung Quốc','Khác','Tỷ trọng Mỹ'],us.slice().reverse().map(r=>{const t=em[ym(r.date)],j=v(jm,r),k=v(km,r),c=v(cm,r);return [mon(r.date),nf(r.value,0),nf(j,0),nf(k,0),nf(c,0),t&&j!=null&&k!=null&&c!=null?nf(t.value-r.value-j-k-c,0):'—',t?nf(r.value/t.value*100,1)+'%':'—']}));
- sourceLine('chExportMkt',[SRC.customs,SRC.wi],mon(us.at(-1).date),'Hàng dệt, may sang Hoa Kỳ (87978), Nhật Bản (88750), Hàn Quốc (88065), Trung Quốc (88023); "khác" = tổng (83528) trừ bốn nước. Wi chỉ có số theo tháng cho các nước này; EU, Canada, Anh có số theo năm ở tab XK & thuế quan.');
+ sourceLine('chExportMkt',[SRC.customs,SRC.wi],mon(us.at(-1).date),'Hàng dệt, may sang Hoa Kỳ (87978), Nhật Bản (88750), Hàn Quốc (88065), Trung Quốc (88023); "khác" = tổng (83528) trừ bốn nước. Nguồn chỉ có số theo tháng cho các nước này; EU, Canada, Anh có số theo năm ở tab XK & thuế quan.');
  insight('chExportMkt','Mỹ chiếm khoảng một nửa kim ngạch nên thuế Mỹ quyết định nhịp ngành. Tỷ trọng Mỹ tăng trước các mốc thuế (giao hàng sớm) rồi giảm sau; theo dõi tỷ trọng Mỹ sau 24/07/2026 khi thuế Mục 301 12,5% có hiệu lực.');
 }
 // Sản lượng quần áo & IIP
@@ -127,7 +127,7 @@ if(yx.length&&document.getElementById('chYarnExp')){
  const rs=yx.slice(-36);
  barLineChart('chYarnExp',{categories:rs.map(r=>mon(r.date)),series:[{name:'XK xơ, sợi dệt',color:C.plum,values:rs.map(r=>r.value)}],unit:'triệu USD',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-yarn-exp',['Tháng','Triệu USD','So cùng kỳ','Sang Mỹ (triệu USD)'],yx.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),signed(yoyAt(yx,r),1)+'%',nf(byMonth(S('exp_yarn_us'))[ym(r.date)]?.value,1)]));
- sourceLine('chYarnExp',[SRC.customs,SRC.wi],mon(yx.at(-1).date),'Xuất khẩu xơ, sợi dệt các loại (83527); cột sang Mỹ (87977). Thị trường chính của sợi Việt Nam là Trung Quốc, Hàn Quốc, Thổ Nhĩ Kỳ; Wi chưa có chuỗi theo các nước này trong contract.');
+ sourceLine('chYarnExp',[SRC.customs,SRC.wi],mon(yx.at(-1).date),'Xuất khẩu xơ, sợi dệt các loại (83527); cột sang Mỹ (87977). Thị trường chính của sợi Việt Nam là Trung Quốc, Hàn Quốc, Thổ Nhĩ Kỳ; Nguồn chưa có chuỗi theo các nước này trong contract.');
  insight('chYarnExp','Kim ngạch sợi đi theo giá xơ và cầu dệt của Trung Quốc nhiều hơn theo đơn may Mỹ. Với STK, phần xuất khẩu chịu rủi ro điều tra chống bán phá giá sợi polyester ở Mỹ, Thổ Nhĩ Kỳ, Ấn Độ.');
 }
 const fn=S('fabric_natural'),fs=S('fabric_synthetic'),iipT=S('iip_textile');
@@ -143,9 +143,9 @@ if(fn.length&&document.getElementById('chFabric')){
 const cot=P('cotton_ice');
 if(cot.length&&document.getElementById('chCotton')){
  const rs=cot;
- barLineChart('chCotton',{categories:rs.map(r=>mon(r.date)),series:[{name:'Bông ICE No.2',color:C.teal,kind:'line',values:rs.map(r=>r.value)}],unit:'US cent/lb',digits:2,height:260,zeroBase:false,rotateLabels:true});
+ barLineChart('chCotton',{categories:rs.map(r=>mon(r.date)),series:[{name:'Bông Cotlook A',color:C.teal,kind:'line',values:rs.map(r=>r.value)}],unit:'US cent/lb',digits:2,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-cotton',['Kỳ','US cent/lb','So cùng kỳ'],rs.slice().reverse().map(r=>[short(r.date),nf(r.value,2),signed(yoyAt(rs,r),1)+'%']));
- sourceLine('chCotton',[SRC.ice,SRC.wi],short(cot.at(-1).date),'Chỉ tiêu 74393 (Cotton No.2, Wi ghi tên "Vải cotton"); chuỗi ngày được Wi nén về giá cuối tháng.');
+ sourceLine('chCotton',[SRC.ice],short(cot.at(-1).date),'Bông Cotlook A Index (IMF Primary Commodity Prices, FRED PCOTTINDUSDM), bình quân tháng, US cent/lb. Khác giá hợp đồng ICE Cotton No.2.');
  insight('chCotton','Bông là chi phí lớn nhất của sợi cotton, nên giá bông là biến số trực tiếp của ADS và các nhà sợi bông. Với nhà may, bông chỉ ảnh hưởng gián tiếp qua giá vải và thường được chuyển sang nhãn hàng ở đơn FOB.');
 }
 const yc=P('yarn_cn'),cc=P('cotton_cn');
@@ -154,7 +154,7 @@ if(yc.length&&cc.length&&document.getElementById('chYarnSpread')){
  barLineChart('chYarnSpread',{categories:rs.map(r=>mon(r.date)),series:[{name:'Sợi cotton',color:C.navy,kind:'line',values:rs.map(r=>r.value)},{name:'Bông xơ',color:C.teal,kind:'line',values:rs.map(r=>cm[ym(r.date)].value)},{name:'Chênh lệch sợi – bông',color:C.gold,values:rs.map(r=>r.value-cm[ym(r.date)].value)}],unit:'CNY/tấn',digits:0,height:260,rotateLabels:true});
  legend('chYarnSpread',[['Sợi cotton',C.navy],['Bông xơ',C.teal],['Chênh lệch',C.gold]]);
  fillTable('tbl-yarn-spread',['Kỳ','Sợi (CNY/t)','Bông (CNY/t)','Chênh lệch'],rs.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),nf(cm[ym(r.date)].value,0),nf(r.value-cm[ym(r.date)].value,0)]));
- sourceLine('chYarnSpread',[['Sàn Trung Quốc qua Wi',null]],short(yc.at(-1).date),'Sợi cotton Trung Quốc (73979) trừ bông xơ (203165), cùng đơn vị CNY/tấn và cùng sàn. Chênh lệch là biên gia công kéo sợi trước chi phí điện, lao động; không phải biên của doanh nghiệp Việt Nam.');
+ sourceLine('chYarnSpread',[['Sàn Trung Quốc',null]],short(yc.at(-1).date),'Sợi cotton Trung Quốc (73979) trừ bông xơ (203165), cùng đơn vị CNY/tấn và cùng sàn. Chênh lệch là biên gia công kéo sợi trước chi phí điện, lao động; không phải biên của doanh nghiệp Việt Nam.');
  insight('chYarnSpread','Chênh lệch sợi – bông là thước đo biên kéo sợi của cả vùng: thu hẹp nghĩa là nhà sợi không chuyển được giá bông sang khách. Nhà sợi Việt Nam bán theo giá sợi Trung Quốc nên đi cùng chiều.');
 }
 const psf=P('psf'),pta=P('pta'),meg=P('meg');
@@ -163,7 +163,7 @@ if(psf.length&&document.getElementById('chPoly')){
  barLineChart('chPoly',{categories:rs.map(r=>mon(r.date)),series:[{name:'Xơ PSF',color:C.navy,kind:'line',values:rs.map(r=>r.value)},{name:'PTA',color:C.gold,kind:'line',values:rs.map(r=>tm[ym(r.date)]?.value??null)},{name:'MEG',color:C.plum,kind:'line',values:rs.map(r=>mm[ym(r.date)]?.value??null)}],unit:'CNY/tấn',digits:0,height:260,zeroBase:false,rotateLabels:true});
  legend('chPoly',[['Xơ PSF',C.navy],['PTA',C.gold],['MEG',C.plum]]);
  fillTable('tbl-poly',['Kỳ','PSF','PTA','MEG','PSF − (0,86·PTA + 0,34·MEG)'],rs.slice().reverse().map(r=>{const a=tm[ym(r.date)]?.value,b=mm[ym(r.date)]?.value;return [mon(r.date),nf(r.value,0),nf(a,0),nf(b,0),a&&b?nf(r.value-0.86*a-0.34*b,0):'—']}));
- sourceLine('chPoly',[['Sàn Trung Quốc qua Wi',null]],short(psf.at(-1).date),'Xơ polyester dạng sợi (203213), PTA (203220), MEG (203187). Cột chênh lệch dùng định mức 0,86 tấn PTA + 0,34 tấn MEG cho 1 tấn polyester (định mức ngành phổ biến, không phải số của STK).');
+ sourceLine('chPoly',[['Sàn Trung Quốc',null]],short(psf.at(-1).date),'Xơ polyester dạng sợi (203213), PTA (203220), MEG (203187). Cột chênh lệch dùng định mức 0,86 tấn PTA + 0,34 tấn MEG cho 1 tấn polyester (định mức ngành phổ biến, không phải số của STK).');
  insight('chPoly','Sợi filament polyester của STK đi theo giá PTA/MEG (tức giá dầu) và chênh lệch so với giá sợi Trung Quốc bán phá giá. PTA, MEG tăng mạnh từ tháng 8/2026 làm giá đầu vào tăng; STK chỉ giữ được biên nếu giá sợi tăng theo.');
 }
 if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
@@ -172,8 +172,8 @@ if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
  const at=(id,d,k)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[k]:null};
  barLineChart('chSectorVal',{categories:weekly.map(d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4)),series:ids.map(([id,name,color])=>({name:'P/E '+name,color,kind:'line',values:weekly.map(d=>at(id,d,1))})),unit:'x',digits:2,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',ids.map(([,n,c])=>[n,c]));
- fillTable('tbl-sector-val',['Phân ngành (GICS Wi)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],2),nf(r[3]/1000,1),short(r[0])]}));
- sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'Wi sector_ratio_daily, phân ngành 204 và 207; vẽ mỗi 5 phiên. Phân ngành 252 (sợi tổng hợp, có STK) chưa có số trên Wi. Định giá tổng hợp bị chi phối bởi mã lớn.');
+ fillTable('tbl-sector-val',['Phân ngành (GICS)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],2),nf(r[3]/1000,1),short(r[0])]}));
+ sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'phân ngành 204 và 207; vẽ mỗi 5 phiên. Phân ngành 252 (sợi tổng hợp, có STK) chưa có số trong nguồn. Định giá tổng hợp bị chi phối bởi mã lớn.');
  insight('chSectorVal','P/E ngành may quanh 6,5–7 lần, thấp hơn vùng 9–11 lần của giữa 2025: thị trường đang chiết khấu rủi ro thuế Mỹ và đơn hàng nửa cuối năm. Định giá chỉ mở rộng khi có bằng chứng đơn hàng 2027.');
 }
 // US retail
@@ -231,7 +231,7 @@ if(S('y_us').length&&document.getElementById('chMktYear')){
  stack('chMktYear',{categories:ys,series:yk.map(([k,n,c],i)=>({name:n,color:c,values:ys.map(y=>at(i,y))})),unit:'triệu USD',digits:0,aria:'Xuất khẩu dệt may theo thị trường theo năm'});
  legend('chMktYear',yk.map(([,n,c])=>[n,c]));
  fillTable('tbl-mkt-year',['Năm',...yk.map(x=>x[1]),'Tăng Mỹ YoY'],ys.slice().reverse().map(y=>[y,...yk.map((_,i)=>nf(at(i,y),0)),at(0,String(y-1))?signed((at(0,y)/at(0,String(y-1))-1)*100,1)+'%':'—']));
- sourceLine('chMktYear',[SRC.customs,SRC.wi],S('y_us').at(-1).date.slice(0,4),'Hàng dệt, may theo nước đến, số năm của hải quan (bảng 87 Wi: 279542 Mỹ, 279802 Nhật, 279716 Hàn, 279632 Trung Quốc, 279996 Canada, 278542 Hà Lan, 278606 Đức, 280130 Anh). Năm 2026 chưa đủ năm nên chưa có.');
+ sourceLine('chMktYear',[SRC.customs,SRC.wi],S('y_us').at(-1).date.slice(0,4),'Hàng dệt, may theo nước đến, số năm của hải quan (bảng 87: 279542 Mỹ, 279802 Nhật, 279716 Hàn, 279632 Trung Quốc, 279996 Canada, 278542 Hà Lan, 278606 Đức, 280130 Anh). Năm 2026 chưa đủ năm nên chưa có.');
  insight('chMktYear','Từ 2013 Mỹ tăng gấp đôi và luôn chiếm khoảng một nửa; Hà Lan (cửa ngõ EU, gần gấp đôi), Anh và Canada tăng nhanh nhất sau 2021 nhờ EVFTA, UKVFTA, CPTPP, trong khi Hàn Quốc đi ngang. Đa dạng hóa có thật nhưng quy mô các thị trường mới vẫn nhỏ so với Mỹ.');
 }
 if(us.length&&document.getElementById('chUsYtd')){
@@ -264,9 +264,9 @@ const ytd=y=>exp.filter(r=>r.date.slice(0,4)===y&&eL&&r.date.slice(5,7)<=eL.date
 const quick=document.querySelector('.hero .insight');
 if(quick&&eL){
  const y=eL.date.slice(0,4),now=ytd(y),prev=ytd(String(Number(y)-1));
- quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu Wi: '),`Xuất khẩu hàng dệt, may ${y} đến T${Number(eL.date.slice(5,7))}: ${nf(now/1000,1)} tỷ USD (${signed((now/prev-1)*100,1)}% so cùng kỳ); riêng T${Number(eL.date.slice(5,7))} ${nf(eL.value/1000,2)} tỷ USD (${signed(yoyAt(exp,eL),1)}%). `+(uL?`Sang Mỹ T${Number(uL.date.slice(5,7))}: ${nf(uL.value/1000,2)} tỷ USD (${signed(yoyAt(us,uL),1)}%). `:'')+(cL?`Bông ICE ${nf(cL.value,1)} cent/lb (${signed(yoyAt(cot,cL),0)}% YoY). `:'')+(mL?`P/E ngành may ${nf(mL[1],1)}x.`:''));
+ quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai: '),`Xuất khẩu hàng dệt, may ${y} đến T${Number(eL.date.slice(5,7))}: ${nf(now/1000,1)} tỷ USD (${signed((now/prev-1)*100,1)}% so cùng kỳ); riêng T${Number(eL.date.slice(5,7))} ${nf(eL.value/1000,2)} tỷ USD (${signed(yoyAt(exp,eL),1)}%). `+(uL?`Sang Mỹ T${Number(uL.date.slice(5,7))}: ${nf(uL.value/1000,2)} tỷ USD (${signed(yoyAt(us,uL),1)}%). `:'')+(cL?`Bông ICE ${nf(cL.value,1)} cent/lb (${signed(yoyAt(cot,cL),0)}% YoY). `:'')+(mL?`P/E ngành may ${nf(mL[1],1)}x.`:''));
  Object.assign(quick.dataset,{updateKind:'ai',cadence:'on-data-change',refreshStatus:'derived'});
 }
 window.TEXTILE_DASHBOARD={ytd:eL?{now:ytd(eL.date.slice(0,4)),prev:ytd(String(Number(eL.date.slice(0,4))-1)),month:eL.date}:null};
-const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ WiMCP lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; các lời gọi ghi trong data/textile-wi-contract.json.';
+const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; giá hàng hóa: IMF/FRED, EIA, ICE.';
 })();

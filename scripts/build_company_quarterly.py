@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build data/company-quarterly.(json|js): quarterly revenue, gross profit and net income per company.
 
-Input: verbatim Wi fs_nonfin results in data/raw/wi/fs_nonfin_<sector>_quarterly*.json (one file per period range) (is10 net revenue,
-is20 gross profit, is62 profit after tax of parent shareholders, VND). Amounts are converted to billion VND;
+Input: VNDirect finfo snapshot data/raw/public/fs_<sector>_quarterly_vndirect.json (scripts/fetch_public_fs.py:
+21001 net revenue, 23100 gross profit, 23000 profit after tax of parent shareholders, VND). Amounts are converted to billion VND;
 margins are derived here as gross profit / revenue and net profit / revenue (self-computed, stated on the page).
 Company list and groups come from data/company-comparison.json so the chart and the table always agree.
 """
@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SECTORS = {'power': ['fs_nonfin_power_quarterly_2021_2023.json', 'fs_nonfin_power_quarterly.json']}
+SECTORS = {'power': 'fs_power_quarterly_vndirect.json'}  # scripts/fetch_public_fs.py
 FIRST_YEAR = 2021
 NOTES = {'TV2': 'Trước Q2/2025 là báo cáo đơn lẻ, từ Q2/2025 là báo cáo hợp nhất; số kỳ trước và sau không cùng phạm vi.'}
 
@@ -24,24 +24,16 @@ def build():
     groups = {c['symbol']: c['group'] for c in comp['companies']}
     out_companies, all_q, checked, missing = [], set(), [], []
     for sector, name in SECTORS.items():
-        rows = {}
-        for name_ in name:
-            raw = json.loads((ROOT / 'data/raw/wi' / name_).read_text())
-            checked.append(raw['captured'])
-            for call in raw['calls']:
-                for values in call['dong']:
-                    r = dict(zip(call['cot'], values))
-                    key = (r['symbol'], r['year'], r['quarter'])
-                    if key in rows and rows[key].get('consolidation_id') == 2 and r.get('consolidation_id') != 2:
-                        continue  # prefer the consolidated row when both exist
-                    rows[key] = r
+        raw = json.loads((ROOT / 'data/raw/public' / name).read_text())
+        checked.append(raw['captured'])
+        rows = {(sym, int(k[:4]), int(k[5])): v for sym, per in raw['rows'].items() for k, v in per.items()}
         all_q |= {(y, q) for _, y, q in rows}
         sector_symbols = [c['symbol'] for c in comp['companies'] if c['sector'] == sector]
         symbols = [s for s in sector_symbols if any(k[0] == s for k in rows)]
         missing += [{'symbol': s, 'group': groups[s], 'sector': sector} for s in sector_symbols if s not in symbols]
         for s in symbols:
             out_companies.append({'sector': sector, 'symbol': s, 'group': groups[s], 'note': NOTES.get(s),
-                                  'rows': {f'{y}Q{q}': {'revenue': r['is10'], 'gross_profit': r['is20'], 'net_income': r['is62'], 'audit': r['audit_status_id']}
+                                  'rows': {f'{y}Q{q}': {'revenue': r['revenue'], 'gross_profit': r['gross_profit'], 'net_income': r['net_income'], 'audit': None}
                                            for (sym, y, q), r in rows.items() if sym == s}})
     # Other sectors: quarterly history saved by scripts/update_company_comparison.py (Stock Analysis).
     sa_rows = {}
@@ -69,9 +61,9 @@ def build():
         note = c['note']
         if have[-1] != keys[-1]:
             y, q = have[-1].split('Q')
-            extra = f'Wi chỉ có dữ liệu đến Q{q}/{y}.'
+            extra = f'Nguồn chỉ có dữ liệu đến Q{q}/{y}.'
             note = f'{note} {extra}' if note else extra
-        companies.append({'sector': c['sector'], 'symbol': c['symbol'], 'group': c['group'], 'note': note, 'source': 'wi',
+        companies.append({'sector': c['sector'], 'symbol': c['symbol'], 'group': c['group'], 'note': note, 'source': 'vnd',
                           'revenue': rev, 'gross_profit': gp, 'net_income': ni,
                           'gross_margin': ratio(gp, rev), 'net_margin': ratio(ni, rev),
                           'audit': [c['rows'].get(k, {}).get('audit') for k in keys]})
@@ -85,8 +77,8 @@ def build():
         companies.append({'sector': sector, 'symbol': symbol, 'group': row['group'], 'note': note, 'source': 'sa',
                           'revenue': rev, 'gross_profit': gp, 'net_income': ni,
                           'gross_margin': ratio(gp, rev), 'net_margin': ratio(ni, rev), 'audit': [None] * len(labels)})
-    payload = {'schema': 1, 'source': 'WiData · BCTC hợp nhất quý (fs_nonfin: doanh thu thuần, lợi nhuận gộp, LNST cổ đông công ty mẹ)',
-               'sources': {'wi': {'name': 'WiData · BCTC quý (fs_nonfin)', 'url': 'https://widata.vn/'}, 'sa': {'name': 'Stock Analysis / S&P Global Market Intelligence · BCTC quý', 'url': 'https://stockanalysis.com/'}},
+    payload = {'schema': 1, 'source': 'BCTC hợp nhất quý (VNDirect finfo: doanh thu thuần, lợi nhuận gộp, LNST cổ đông công ty mẹ)',
+               'sources': {'vnd': {'name': 'BCTC hợp nhất quý (VNDirect finfo)', 'url': 'https://api-finfo.vndirect.com.vn/v4/financial_statements'}, 'sa': {'name': 'Stock Analysis / S&P Global Market Intelligence · BCTC quý', 'url': 'https://stockanalysis.com/'}},
                'captured_at': max(checked), 'sa_checked_at': (comp.get('checked_at') or '')[:10], 'unit': 'tỷ VND', 'quarters': labels, 'missing': missing, 'companies': companies}
     text = json.dumps(payload, ensure_ascii=False, separators=(',', ':'))
     (ROOT / 'data/company-quarterly.json').write_text(text + '\n')

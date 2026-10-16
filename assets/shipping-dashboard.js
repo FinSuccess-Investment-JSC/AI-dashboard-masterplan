@@ -1,11 +1,11 @@
-/* Shipping dashboard: value chain, Tàu dầu & khí / Hàng rời / Container panes, charts from window.SHIPPING_WI
-   (scripts/build_shipping_wi.py from WiMCP captures) and the shared PortWatch chokepoint feeds in window.SECTOR_DAILY
+/* Shipping dashboard: value chain, Tàu dầu & khí / Hàng rời / Container panes, charts from window.SHIPPING_PUBLIC
+   (scripts/build_sector_public.py: public commodity series only) and the shared PortWatch chokepoint feeds in window.SECTOR_DAILY
    (hormuz, bab_el_mandeb). Document figures sit in the HTML tables and are backed by data/shipping/evidence.json.
    Publishes window.SHIPPING_BRIEF for catalyst-board.js. Runs before research-layout.js; uses the page's inline chart helpers. */
 (() => {
 'use strict';
 if(document.body.dataset.sector!=='shipping')return;
-const W=window.SHIPPING_WI||{blocks:{}},B=W.blocks||{},D=window.SECTOR_DAILY?.sources||{};
+const W=window.SHIPPING_PUBLIC||{blocks:{}},B=W.blocks||{},D=window.SECTOR_DAILY?.sources||{};
 const make=(tag,cls,text)=>{const e=document.createElement(tag);e.className=cls||'';if(text)e.textContent=text;return e};
 const nf=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
 const short=d=>d?d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(0,4):'—';
@@ -15,7 +15,7 @@ const signed=(v,d=1)=>v==null||!Number.isFinite(v)?'—':(v>0?'+':'')+nf(v,d);
 const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b7686',green:'#27af95',red:'#d1583f'};
 const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
-const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],baltic:['Baltic Exchange','https://www.balticexchange.com/'],portwatch:['IMF PortWatch','https://portwatch.imf.org/'],wi:['MCP Wi (Widata)',null]};
+const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],baltic:['Baltic Exchange','https://www.balticexchange.com/'],portwatch:['IMF PortWatch','https://portwatch.imf.org/'],wi:['Nguồn công khai',null]};
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -70,9 +70,9 @@ function sourceLine(id,parts,period,method,wi=true){
  const host=document.getElementById(id);if(!host)return;const block=host.closest('.card');
  const n=make('div','source-note cadence-note');n.append('Nguồn: ');
  parts.forEach(([name,url],i)=>{if(i)n.append(' · ');if(url){const a=make('a','',name);a.href=url;a.target='_blank';a.rel='noopener';n.append(a)}else n.append(name)});
- n.append(` · Kỳ cuối: ${period}`+(wi?` · Wi kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`:''));host.after(n);
+ n.append(` · Kỳ cuối: ${period}`+(wi?` · Kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`:''));host.after(n);
  if(method)n.after(make('div','source-note method-note',method));
- if(block&&wi){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='wi'}
+ if(block&&wi){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='public'}
 }
 function insight(id,text){const block=document.getElementById(id)?.closest('.card');if(!block)return;const n=make('div','chart-insight');n.dataset.inputOwner='ai';n.innerHTML='<b>Cách hiểu trong bối cảnh ngành · AI:</b> ';n.append(text);block.append(n)}
 function legend(id,items){const host=document.getElementById(id);if(!host)return;const l=make('div','legend');items.forEach(([n,c])=>{const s=make('span','li'),d=make('span','dot');d.style.background=c;s.append(d,n);l.append(s)});host.after(l)}
@@ -86,7 +86,7 @@ if(bdti.length&&document.getElementById('chTanker')){
  lines('chTanker',bdti,[['BDTI (dầu thô)',C.navy,r=>r.value],['BCTI (dầu sản phẩm)',C.teal,r=>cm[ym(r.date)]?.value??null]],'điểm',0,true);
  legend('chTanker',[['BDTI · dầu thô',C.navy],['BCTI · dầu sản phẩm',C.teal]]);
  fillTable('tbl-tanker',['Kỳ','BDTI','BDTI YoY','BCTI','BCTI YoY'],bdti.slice().reverse().map(r=>{const c=cm[ym(r.date)];return [short(r.date),nf(r.value,0),signed(yoyAt(bdti,r),0)+'%',nf(c?.value,0),signed(yoyAt(bcti,c),0)+'%']}));
- sourceLine('chTanker',[SRC.baltic,SRC.wi],short(bdti.at(-1).date),'Baltic Dirty Tanker Index (73983) và Clean Tanker Index (73984), Wi nén chuỗi ngày về cuối tháng. Chỉ số cước thế giới, không phải cước PVT, VTO ký được.');
+ sourceLine('chTanker',[SRC.baltic,SRC.wi],short(bdti.at(-1).date),'Baltic Dirty Tanker Index (73983) và Clean Tanker Index (73984), Nguồn nén chuỗi ngày về cuối tháng. Chỉ số cước thế giới, không phải cước PVT, VTO ký được.');
  insight('chTanker','BDTI '+nf(bdti.at(-1).value,0)+' điểm là mức cao nhất của chuỗi, gấp hơn 5 lần một năm trước; BCTI cũng gấp gần 4 lần. Nguyên nhân là Hormuz gần như đóng từ tháng 3/2026 (xem tab Địa chính trị): dầu Trung Đông phải đi vòng, tấn-dặm tăng trong khi cung tàu không đổi. Doanh nghiệp Việt Nam hưởng lợi ở phần tàu chạy spot và khi hợp đồng TC đáo hạn được ký lại; phần đang khóa giá chưa thấy ngay.');
 }
 if(brent.length&&document.getElementById('chFuel')){
@@ -94,14 +94,14 @@ if(brent.length&&document.getElementById('chFuel')){
  lines('chFuel',brent,[['Brent (USD/thùng)',C.gold,r=>r.value],['Dầu nhiên liệu TQ (CNY/tấn ÷100)',C.plum,r=>fm[ym(r.date)]?fm[ym(r.date)].value/100:null]],'',1,true);
  legend('chFuel',[['Brent USD/thùng',C.gold],['Dầu nhiên liệu CNY/tấn ÷100',C.plum]]);
  fillTable('tbl-fuel',['Kỳ','Brent (USD/thùng)','Brent YoY','Dầu nhiên liệu (CNY/tấn)','YoY'],brent.slice().reverse().map(r=>{const f=fm[ym(r.date)];return [short(r.date),nf(r.value,2),signed(yoyAt(brent,r),0)+'%',nf(f?.value,0),signed(yoyAt(fo,f),0)+'%']}));
- sourceLine('chFuel',[['ICE · sàn Trung Quốc qua Wi',null]],short(brent.at(-1).date),'Brent (203085) và dầu nhiên liệu spot Trung Quốc (203125, chia 100 để cùng trục). Wi không có VLSFO Singapore; dầu nhiên liệu Trung Quốc là proxy xu hướng.');
+ sourceLine('chFuel',[['EIA · Brent spot','https://www.eia.gov/dnav/pet/hist/RBRTEd.htm']],short(brent.at(-1).date),'Brent spot (EIA), giá phiên cuối mỗi tháng. Chưa có nguồn công khai cho dầu nhiên liệu Trung Quốc, VLSFO Singapore nên để trống.');
  insight('chFuel','Nhiên liệu là chi phí biến đổi lớn nhất của chuyến đi. Brent +'+nf(yoyAt(brent,brent.at(-1)),0)+'% YoY đẩy chi phí lên, nhưng với tàu cho thuê định hạn thì người thuê trả nhiên liệu, nên PVT, GSP ít bị ảnh hưởng hơn VOS, VNA chạy chuyến.');
 }
 // Hàng rời
 if(bdi.length&&document.getElementById('chBdi')){
  lines('chBdi',bdi,[['BDI',C.gold,r=>r.value]],'điểm',0,true);
  fillTable('tbl-bdi',['Kỳ','Điểm','So cùng kỳ'],bdi.slice().reverse().map(r=>[short(r.date),nf(r.value,0),signed(yoyAt(bdi,r),0)+'%']));
- sourceLine('chBdi',[SRC.baltic,SRC.wi],short(bdi.at(-1).date),'Baltic Dry Index (73982), Wi nén về cuối tháng. VOS, VNA chạy tàu Supramax/Handysize; BDI gồm cả Capesize nên biên độ lớn hơn cước thực của hai mã.');
+ sourceLine('chBdi',[SRC.baltic,SRC.wi],short(bdi.at(-1).date),'Baltic Dry Index (73982), Nguồn nén về cuối tháng. VOS, VNA chạy tàu Supramax/Handysize; BDI gồm cả Capesize nên biên độ lớn hơn cước thực của hai mã.');
  insight('chBdi','BDI quanh 2.900–3.200 điểm từ tháng 5/2026, cao hơn cùng kỳ gần 50% và gấp 4 lần đáy đầu 2025: cầu than, quặng, ngũ cốc tốt trong khi orderbook hàng rời thấp. Đây là cửa sổ để VOS, VNA bán tàu cũ giá cao hoặc ký TC dài.');
 }
 const sea=S('sea_freight'),ov=S('overseas_freight');
@@ -122,7 +122,7 @@ if(ps.length&&document.getElementById('chPpi')){
  sourceLine('chPpi',[SRC.nso,SRC.wi],qtr(ps.at(-1).date),'Chỉ số giá sản xuất dịch vụ vận tải ven biển và viễn dương (75662), đường thủy (75661), % so cùng kỳ.');
  insight('chPpi','Giá dịch vụ vận tải biển trong nước tăng ~12% YoY hai quý liền, cao nhất từ 2022: cước thế giới đã truyền vào giá doanh nghiệp Việt Nam ký được, không chỉ ở chỉ số Baltic.');
 }
-// Container (số Wi của toàn ngành đã ở trên; chart riêng dùng XNK làm cầu)
+// Container (số liệu của toàn ngành đã ở trên; chart riêng dùng XNK làm cầu)
 const ex=S('exports'),im=S('imports');
 /* Grouped bars for supply vs demand growth (document figures, can be negative). */
 function groupBars(id,o){
@@ -170,7 +170,7 @@ if(ex.length&&document.getElementById('chTrade')){
  barLineChart('chTrade',{categories:rs.map(r=>mon(r.date)),series:[{name:'XNK (tỷ USD)',color:C.navy,values:rs.map(r=>(r.value+(imm[ym(r.date)]?.value||0))/1000)}],unit:'tỷ USD',digits:1,height:260,rotateLabels:true});
  fillTable('tbl-trade',['Tháng','XNK (tỷ USD)','So cùng kỳ'],ex.slice().reverse().map(r=>{const t=r.value+(imm[ym(r.date)]?.value||0),p=ex.find(x=>x.date.slice(0,7)===String(Number(r.date.slice(0,4))-1)+r.date.slice(4,7)),pt=p?p.value+(imm[ym(p.date)]?.value||0):null;return [mon(r.date),nf(t/1000,1),pt?signed((t/pt-1)*100,1)+'%':'—']}));
  sourceLine('chTrade',[['Hải quan Việt Nam','https://www.customs.gov.vn/'],SRC.wi],mon(ex.at(-1).date),'Xuất khẩu (83479) + nhập khẩu (92728). Cầu của hàng container nội Á mà HAH chở; giá trị USD, không phải TEU.');
- insight('chTrade','XNK tăng trên 25% lũy kế là nền cầu tốt cho tuyến nội Á của HAH. Cước container (SCFI, WCI) không có trên Wi — xem dashboard Cảng & kho bãi, nơi đã có WCI theo tuần.');
+ insight('chTrade','XNK tăng trên 25% lũy kế là nền cầu tốt cho tuyến nội Á của HAH. Cước container (SCFI, WCI) không có trong nguồn — xem dashboard Cảng & kho bãi, nơi đã có WCI theo tuần.');
 }
 // Định giá
 if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
@@ -179,8 +179,8 @@ if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
  const at=(id,d,k)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[k]:null};
  barLineChart('chSectorVal',{categories:weekly.map(d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4)),series:ids.map(([id,name,color])=>({name:'P/E '+name,color,kind:'line',values:weekly.map(d=>at(id,d,1))})),unit:'x',digits:1,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',ids.map(([,n,c])=>[n,c]));
- fillTable('tbl-sector-val',['Phân ngành (GICS Wi)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
- sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'Wi sector_ratio_daily: vận tải hàng hóa đường thủy (185, gồm PVT, VOS, HAH…), cảng & dịch vụ hàng hải (309). Vẽ mỗi 5 phiên.');
+ fillTable('tbl-sector-val',['Phân ngành (GICS)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
+ sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'vận tải hàng hóa đường thủy (185, gồm PVT, VOS, HAH…), cảng & dịch vụ hàng hải (309). Vẽ mỗi 5 phiên.');
  insight('chSectorVal','P/E vận tải đường thủy ~11 lần, gần như không đổi so với đầu 2025 dù BDTI tăng 5 lần: thị trường coi cước tanker hiện tại là bất thường (do Hormuz) và chưa trả thêm cho lợi nhuận đột biến. Nếu cước giữ cao qua 2027, lợi nhuận TC ký lại sẽ kéo P/E xuống thấp hơn nữa.');
 }
 // Địa chính trị: PortWatch chokepoints (shared daily feed)
@@ -214,7 +214,7 @@ kpi('spk-brent',bL?nf(bL.value,1):'—',bL?'USD/thùng · '+short(bL.date):'—'
 kpi('spk-pe',peL?nf(peL[1],1)+'x':'—',peL?'P/E vận tải đường thủy · '+short(peL[0]):'—',peL?'P/B '+nf(peL[2],2)+'x':'',pe.slice(-30).map(r=>r[1]),C.grey);
 const quick=document.querySelector('.hero .insight');
 if(quick&&tL){
- quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu Wi, PortWatch: '),`BDTI ${nf(tL.value,0)} điểm (${signed(yoyAt(bdti,tL),0)}% YoY), BCTI ${nf(cL?.value,0)}, BDI ${nf(dL?.value,0)} (${signed(yoyAt(bdi,dL),0)}%). Hormuz ${hzM.length?nf(hzM.at(-1).value,0):'—'} lượt/ngày. Brent ${nf(bL?.value,0)} USD/thùng. Vận chuyển đường biển của đội tàu VN lũy kế ${signed(ytdYo(sea),0)}%. P/E vận tải đường thủy ${peL?nf(peL[1],1):'—'}x.`);
+ quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai, PortWatch: '),`BDTI ${nf(tL.value,0)} điểm (${signed(yoyAt(bdti,tL),0)}% YoY), BCTI ${nf(cL?.value,0)}, BDI ${nf(dL?.value,0)} (${signed(yoyAt(bdi,dL),0)}%). Hormuz ${hzM.length?nf(hzM.at(-1).value,0):'—'} lượt/ngày. Brent ${nf(bL?.value,0)} USD/thùng. Vận chuyển đường biển của đội tàu VN lũy kế ${signed(ytdYo(sea),0)}%. P/E vận tải đường thủy ${peL?nf(peL[1],1):'—'}x.`);
  Object.assign(quick.dataset,{updateKind:'ai',cadence:'on-data-change',refreshStatus:'derived'});
 }
 const tY=yoyAt(bdti,tL),cY=yoyAt(bcti,cL),dY=yoyAt(bdi,dL),bY=yoyAt(brent,bL),hzNow=hzM.length?hzM.at(-1).value:null,hzBase=mean(hz.filter(r=>r.date.startsWith('2023')).map(r=>r.total)),seaY=ytdYo(sea),ppL=ps.at(-1);
@@ -236,5 +236,5 @@ window.SHIPPING_BRIEF={
  score,
  events:[['Hằng ngày','Baltic: BDTI, BCTI, BDI · PortWatch: Hormuz, Biển Đỏ'],['Đầu tháng','NSO: vận chuyển tháng trước'],['20–30/10','BCTC quý III'],['Theo sự kiện','Đàm phán Trung Đông; hãng tàu công bố quay lại Suez']]
 };
-const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ WiMCP lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; các lời gọi ghi trong data/shipping-wi-contract.json.';
+const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; giá hàng hóa: IMF/FRED, EIA, ICE.';
 })();

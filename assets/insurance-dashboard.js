@@ -1,11 +1,11 @@
 /* Insurance dashboard (Bảo hiểm): value chain, Phi nhân thọ / Nhân thọ / Đầu tư & lãi suất panes and sector valuation
-   from window.INSURANCE_WI (scripts/build_insurance_wi.py from WiMCP captures: sector aggregate P&L, bond yield, deposit rate).
+   from window.INSURANCE_PUBLIC (scripts/build_sector_public.py: public commodity series only): sector aggregate P&L, bond yield, deposit rate).
    Document figures sit in the HTML tables and are backed by data/insurance/evidence.json.
    Publishes window.INSURANCE_BRIEF for catalyst-board.js. Runs before research-layout.js; uses the page's inline chart helpers. */
 (() => {
 'use strict';
 if(document.body.dataset.sector!=='insurance')return;
-const W=window.INSURANCE_WI||{blocks:{}},B=W.blocks||{};
+const W=window.INSURANCE_PUBLIC||{blocks:{}},B=W.blocks||{};
 const make=(tag,cls,text)=>{const e=document.createElement(tag);e.className=cls||'';if(text)e.textContent=text;return e};
 const nf=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
 const short=d=>d?d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(0,4):'—';
@@ -15,7 +15,7 @@ const signed=(v,d=1)=>v==null||!Number.isFinite(v)?'—':(v>0?'+':'')+nf(v,d);
 const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b7686',green:'#27af95',red:'#d1583f'};
 const macro=B.macro?.series||{},com={},sec=B.sector_ratio?.by_sector||{},fs=B.fs?.by_sector||{},gb=B.gbond?.records||[];
 const checked=B.macro?.captured_at||W.built_at||'';
-const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],fsw:['BCTC tổng hợp ngành (GICS) qua Wi',null],hnx:['HNX – lợi suất TPCP','https://hnx.vn/'],wi:['MCP Wi (Widata)',null]};
+const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],fsw:['BCTC tổng hợp ngành (GICS)',null],hnx:['HNX – lợi suất TPCP','https://hnx.vn/'],wi:['Nguồn công khai',null]};
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -71,9 +71,9 @@ function sourceLine(id,parts,period,method,wi=true){
  const host=document.getElementById(id);if(!host)return;const block=host.closest('.card');
  const n=make('div','source-note cadence-note');n.append('Nguồn: ');
  parts.forEach(([name,url],i)=>{if(i)n.append(' · ');if(url){const a=make('a','',name);a.href=url;a.target='_blank';a.rel='noopener';n.append(a)}else n.append(name)});
- n.append(` · Kỳ cuối: ${period}`+(wi?` · Wi kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`:''));host.after(n);
+ n.append(` · Kỳ cuối: ${period}`+(wi?` · Kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`:''));host.after(n);
  if(method)n.after(make('div','source-note method-note',method));
- if(block&&wi){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='wi'}
+ if(block&&wi){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='public'}
 }
 function insight(id,text){const block=document.getElementById(id)?.closest('.card');if(!block)return;const n=make('div','chart-insight');n.dataset.inputOwner='ai';n.innerHTML='<b>Cách hiểu trong bối cảnh ngành · AI:</b> ';n.append(text);block.append(n)}
 function legend(id,items){const host=document.getElementById(id);if(!host)return;const l=make('div','legend');items.forEach(([n,c])=>{const s=make('span','li'),d=make('span','dot');d.style.background=c;s.append(d,n);l.append(s)});host.after(l)}
@@ -91,7 +91,7 @@ if(NL.length&&document.getElementById('chNlPrem')){
  barLineChart('chNlPrem',{categories:rs.map(r=>q(r[0])),series:[{name:'Phí bảo hiểm gốc',color:C.navy,values:rs.map(r=>r[1]/1000)},{name:'Doanh thu phí thuần',color:C.teal,kind:'line',values:rs.map(r=>r[2]/1000)}],unit:'nghìn tỷ',digits:1,height:260,rotateLabels:true});
  legend('chNlPrem',[['Phí bảo hiểm gốc',C.navy],['Doanh thu phí thuần',C.teal]]);
  fillTable('tbl-nl-prem',['Quý','Phí gốc (tỷ)','YoY','Phí thuần (tỷ)','YoY'],NL.map((r,i)=>[q(r[0]),nf(r[1],0),signed(yoyQ(NL,i,1),1)+'%',nf(r[2],0),signed(yoyQ(NL,i,2),1)+'%']).reverse());
- sourceLine('chNlPrem',[SRC.fsw],q(NL.at(-1)[0]),'Tổng BCTC các doanh nghiệp phi nhân thọ niêm yết (phân ngành GICS 285 của Wi: PVI, BMI, MIG, PTI, BIC…), không phải toàn thị trường. Phí gốc (is01_1) là phí khai thác trực tiếp; phí thuần (is03) sau nhượng tái và giảm trừ.');
+ sourceLine('chNlPrem',[SRC.fsw],q(NL.at(-1)[0]),'Tổng BCTC các doanh nghiệp phi nhân thọ niêm yết (phân ngành GICS 285: PVI, BMI, MIG, PTI, BIC…), không phải toàn thị trường. Phí gốc (is01_1) là phí khai thác trực tiếp; phí thuần (is03) sau nhượng tái và giảm trừ.');
  const i=NL.length-1;
  insight('chNlPrem','Phí gốc phi nhân thọ niêm yết Q'+NL.at(-1)[0].slice(-1)+' '+signed(yoyQ(NL,i,1),0)+'% YoY, quý thứ ba liên tiếp tăng hai chữ số: bảo hiểm sức khỏe, xe cơ giới và tài sản đều tăng theo tín dụng, sản xuất ô tô. Phí thuần tăng chậm hơn ('+signed(yoyQ(NL,i,2),0)+'%) vì phần nhượng tái của các hợp đồng tài sản lớn tăng.');
 }
@@ -126,7 +126,7 @@ if(LF.length&&document.getElementById('chLifePrem')){
  barLineChart('chLifePrem',{categories:rs.map(r=>q(r[0])),series:[{name:'Phí bảo hiểm gốc',color:C.plum,values:rs.map(r=>r[1]/1000)},{name:'Chi bồi thường, trả tiền BH',color:C.grey,kind:'line',values:rs.map(r=>r[3]/1000)}],unit:'nghìn tỷ',digits:1,height:260,rotateLabels:true});
  legend('chLifePrem',[['Phí bảo hiểm gốc',C.plum],['Chi trả quyền lợi',C.grey]]);
  fillTable('tbl-life-prem',['Quý','Phí gốc (tỷ)','YoY','Chi trả (tỷ)','Chi trả / phí thuần'],LF.map((r,i)=>[q(r[0]),nf(r[1],0),signed(yoyQ(LF,i,1),1)+'%',nf(r[3],0),nf(lossR(r),0)+'%']).reverse());
- sourceLine('chLifePrem',[SRC.fsw],q(LF.at(-1)[0]),'Phân ngành GICS 151 "bảo hiểm nhân thọ và sức khỏe" của Wi. Trên sàn chỉ có BVH thuộc nhóm này nên chuỗi thực chất là BCTC hợp nhất Bảo Việt (gồm cả Bảo hiểm Bảo Việt phi nhân thọ). Không đại diện cho cả thị trường nhân thọ (Prudential, Manulife, AIA… không niêm yết).');
+ sourceLine('chLifePrem',[SRC.fsw],q(LF.at(-1)[0]),'Phân ngành GICS 151 "bảo hiểm nhân thọ và sức khỏe". Trên sàn chỉ có BVH thuộc nhóm này nên chuỗi thực chất là BCTC hợp nhất Bảo Việt (gồm cả Bảo hiểm Bảo Việt phi nhân thọ). Không đại diện cho cả thị trường nhân thọ (Prudential, Manulife, AIA… không niêm yết).');
  const i=LF.length-1;
  insight('chLifePrem','Phí gốc Bảo Việt '+signed(yoyQ(LF,i,1),0)+'% YoY — gần như đi ngang từ 2023: nhân thọ chưa thoát khủng hoảng niềm tin sau bancassurance, phí khai thác mới thấp và hợp đồng cũ đáo hạn. Chi trả quyền lợi ~'+nf(lossR(LF.at(-1)),0)+'% phí thuần là mức cao, phần lớn là đáo hạn và hủy hợp đồng.');
 }
@@ -157,8 +157,8 @@ if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
  const at=(id,d,k)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[k]:null};
  barLineChart('chSectorVal',{categories:weekly.map(d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4)),series:ids.map(([id,name,color])=>({name:'P/B '+name,color,kind:'line',values:weekly.map(d=>at(id,d,2))})),unit:'x',digits:2,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',ids.map(([,n,c])=>[n,c]));
- fillTable('tbl-sector-val',['Phân ngành (GICS Wi)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
- sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'Wi sector_ratio_daily: nhân thọ và sức khỏe (151 — chỉ BVH), phi nhân thọ (285), tái bảo hiểm (154 — VNR). Vẽ P/B vì bảo hiểm thường định giá theo giá trị sổ sách. Mỗi 5 phiên.');
+ fillTable('tbl-sector-val',['Phân ngành (GICS)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
+ sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'nhân thọ và sức khỏe (151 — chỉ BVH), phi nhân thọ (285), tái bảo hiểm (154 — VNR). Vẽ P/B vì bảo hiểm thường định giá theo giá trị sổ sách. Mỗi 5 phiên.');
  insight('chSectorVal','P/B Bảo Việt tăng từ ~1,6x (cuối 2025) lên ~2,3x — thị trường trả trước cho lãi suất cao hơn và kỳ vọng nhân thọ hồi phục. Phi nhân thọ lại giảm từ ~1,7x về ~1,25x dù phí gốc tăng 20%: lo ngại mùa bão và lãi bảo hiểm mỏng. VNR quanh 1,15x, ổn định nhất.');
 }
 
@@ -185,7 +185,7 @@ kpi('spk-dep',dL?nf(dL.value,2)+'%':'—',dL?'huy động 12T NHTM lớn · '+mo
 kpi('spk-pb',nlV?nf(nlV[2],2)+'x':'—',nlV?'P/B phi nhân thọ · '+short(nlV[0]):'—',lfV?'BVH '+nf(lfV[2],2)+'x':'',nlS.slice(-30).map(r=>r[2]),C.grey);
 const quick=document.querySelector('.hero .insight');
 if(quick&&nL){
- quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu Wi: '),`Phí gốc phi nhân thọ niêm yết ${q(nL[0])} ${nf(nL[1]/1000,1)} nghìn tỷ (${signed(nlY,0)}%), tỷ lệ bồi thường ${nf(lr,0)}%. Bảo Việt phí gốc ${signed(lfY,0)}%. Lợi nhuận tài chính phi nhân thọ ${signed(finY,0)}%. TPCP 10 năm ${nf(gL?.value,2)}%, huy động 12 tháng ${nf(dL?.value,2)}%. P/B phi nhân thọ ${nlV?nf(nlV[2],2):'—'}x, BVH ${lfV?nf(lfV[2],2):'—'}x.`);
+ quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai: '),`Phí gốc phi nhân thọ niêm yết ${q(nL[0])} ${nf(nL[1]/1000,1)} nghìn tỷ (${signed(nlY,0)}%), tỷ lệ bồi thường ${nf(lr,0)}%. Bảo Việt phí gốc ${signed(lfY,0)}%. Lợi nhuận tài chính phi nhân thọ ${signed(finY,0)}%. TPCP 10 năm ${nf(gL?.value,2)}%, huy động 12 tháng ${nf(dL?.value,2)}%. P/B phi nhân thọ ${nlV?nf(nlV[2],2):'—'}x, BVH ${lfV?nf(lfV[2],2):'—'}x.`);
  Object.assign(quick.dataset,{updateKind:'ai',cadence:'on-data-change',refreshStatus:'derived'});
 }
 const row=(group,name,big,evidence,cond,st,who,chart)=>({group,name,big,chart,st,mid:[evidence,cond],end:[who]});
@@ -202,7 +202,7 @@ window.INSURANCE_BRIEF={
  segs:[['Phi nhân thọ','PVI · BMI · MIG · PTI · BIC',nlY!=null&&nlY>12?'up':'flat','Phí gốc '+signed(nlY,0)+'%'],['Nhân thọ','BVH',lfY!=null&&lfY>8?'up':'flat','Phí gốc '+signed(lfY,0)+'%'],['Tái bảo hiểm','VNR','flat','Bồi thường/phí '+nf(lossR(RE.at(-1)),0)+'%']],
  headers:['Biến số đang thay đổi','Đang thấy (số mới nhất)','Đổi đánh giá khi','','Hưởng lợi ▲ / chịu thiệt ▼'],
  score,
- events:[['Hằng tuần','Lợi suất TPCP, lãi suất huy động (Wi)'],['Đầu tháng','NSO: sản lượng ô tô, xe máy'],['20–30/10','BCTC quý III — số tổng hợp ngành cập nhật'],['Mùa bão 9–11','Thiên tai lớn → bồi thường phi nhân thọ, VNR']]
+ events:[['Hằng tuần','Lợi suất TPCP, lãi suất huy động'],['Đầu tháng','NSO: sản lượng ô tô, xe máy'],['20–30/10','BCTC quý III — số tổng hợp ngành cập nhật'],['Mùa bão 9–11','Thiên tai lớn → bồi thường phi nhân thọ, VNR']]
 };
-const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ WiMCP lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; các lời gọi ghi trong data/insurance-wi-contract.json.';
+const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; giá hàng hóa: IMF/FRED, EIA, ICE.';
 })();

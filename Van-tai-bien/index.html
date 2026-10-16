@@ -293,21 +293,21 @@ body{font-size:14px;line-height:1.45}
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=123c08b8ffcd">
 <script src="../assets/chart-types.js?v=5b81f0f266ee"></script>
-<script src="../data/daily-data.js?v=b3c68ee7fa70" defer></script>
+<script src="../data/daily-data.js?v=1894d8e3ef20" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=82b412aede70" defer></script>
 <script src="../assets/sector-content.js?v=be87392226ce" defer></script>
 <script src="../assets/sector-layout.js?v=68a0b4e1b045" defer></script>
-<script src="../data/shipping-wi-data.js?v=4728b8d71a3c" defer></script>
-<script src="../assets/shipping-dashboard.js?v=4d241be96d94" defer></script>
+<script src="../data/shipping-public-data.js?v=a9f81e2adbf7" defer></script>
+<script src="../assets/shipping-dashboard.js?v=ad4d742e8a97" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="../assets/catalyst-board.js?v=23beb481800b" defer></script>
-<script src="../data/company-valuation.js?v=6dcb886393f9" defer></script>
-<script src="../data/company-comparison.js?v=b17256b8f80c" defer></script>
-<script src="../data/company-quarterly.js?v=886bf9d1d2f9" defer></script>
-<script src="../assets/company-trend.js?v=3b441fb58d28" defer></script>
-<script src="../assets/financial-comparison.js?v=ed3ab15b7d9e" defer></script>
+<script src="../assets/catalyst-board.js?v=5a3e399e6332" defer></script>
+<script src="../data/company-valuation.js?v=bf41744104c6" defer></script>
+<script src="../data/company-comparison.js?v=103f46ce84de" defer></script>
+<script src="../data/company-quarterly.js?v=2485558b3201" defer></script>
+<script src="../assets/company-trend.js?v=c917c1529e17" defer></script>
+<script src="../assets/financial-comparison.js?v=915100cada6a" defer></script>
 <script src="../assets/research-layout.js?v=391996812add" defer></script>
 <script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="../assets/research-editorial.js?v=dac2ec8ce2ed" defer></script>
@@ -315,7 +315,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
-<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261012-pharma2"></script>
+<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261016T060939Z"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=6385be151679">
@@ -369,20 +369,20 @@ body[data-sector="shipping"] .tx-group{margin:18px 0 8px;font-size:12px;letter-s
     <p>Cước là biến số lớn nhất, nhưng doanh nghiệp chỉ nhận cước thị trường ở phần tàu chạy chuyến; phần cho thuê định hạn khóa giá 1–3 năm. Eo biển đóng làm tăng tấn-dặm, không phải cầu hàng.</p>
     <div class="tagrow">
       <span class="tag">Bản nghiên cứu: 10/10/2026</span>
-      <span class="tag">Cước, nhiên liệu: <a href="https://www.balticexchange.com/" target="_blank" rel="noopener">Baltic, ICE · qua MCP Wi</a></span>
+      <span class="tag">Cước, nhiên liệu: <a href="https://www.balticexchange.com/" target="_blank" rel="noopener">Baltic, ICE</a></span>
       <span class="tag">Eo biển: <a href="https://portwatch.imf.org/" target="_blank" rel="noopener">IMF PortWatch</a></span>
     </div>
-    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> đang tải số Wi.</div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm trống (chưa có nguồn công khai thay thế).</div>
   </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
     <div class="sectionhead"><div><h2>1. Tổng quan ngành vận tải biển</h2><p>Doanh thu = ngày tàu hoạt động × cước (TCE). Cước theo chỉ số thế giới từng phân khúc; chi phí lớn là nhiên liệu (nếu chạy chuyến), khấu hao và lãi vay USD.</p></div></div>
     <section class="grid kpis">
-      <div class="kpi"><div class="label">BDTI · cước dầu thô</div><div class="value">—</div><div class="delta"></div><div class="sub">Baltic · Wi</div><div id="spk-bdti"></div></div>
-      <div class="kpi"><div class="label">BCTI · cước dầu sản phẩm</div><div class="value">—</div><div class="delta"></div><div class="sub">Baltic · Wi</div><div id="spk-bcti"></div></div>
-      <div class="kpi"><div class="label">BDI · cước hàng rời</div><div class="value">—</div><div class="delta"></div><div class="sub">Baltic · Wi</div><div id="spk-bdi"></div></div>
+      <div class="kpi"><div class="label">BDTI · cước dầu thô</div><div class="value">—</div><div class="delta"></div><div class="sub">Baltic</div><div id="spk-bdti"></div></div>
+      <div class="kpi"><div class="label">BCTI · cước dầu sản phẩm</div><div class="value">—</div><div class="delta"></div><div class="sub">Baltic</div><div id="spk-bcti"></div></div>
+      <div class="kpi"><div class="label">BDI · cước hàng rời</div><div class="value">—</div><div class="delta"></div><div class="sub">Baltic</div><div id="spk-bdi"></div></div>
       <div class="kpi"><div class="label">Hormuz</div><div class="value">—</div><div class="delta"></div><div class="sub">PortWatch</div><div id="spk-hormuz"></div></div>
-      <div class="kpi"><div class="label">Brent</div><div class="value">—</div><div class="delta"></div><div class="sub">ICE · Wi</div><div id="spk-brent"></div></div>
-      <div class="kpi"><div class="label">P/E vận tải đường thủy</div><div class="value">—</div><div class="delta"></div><div class="sub">Wi</div><div id="spk-pe"></div></div>
+      <div class="kpi"><div class="label">Brent</div><div class="value">—</div><div class="delta"></div><div class="sub">ICE</div><div id="spk-brent"></div></div>
+      <div class="kpi"><div class="label">P/E vận tải đường thủy</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pe"></div></div>
     </section>
     <div class="grid two">
       <div class="card" data-block-id="vt-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -399,7 +399,7 @@ body[data-sector="shipping"] .tx-group{margin:18px 0 8px;font-size:12px;letter-s
     </div>
     <div class="card sector-valuation" style="margin-top:14px" data-block-id="vt-03" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">P/E vận tải đường thủy và cảng — theo phiên</div>
-        <div class="chart-sub">lần · GICS cấp 4 của Wi · mỗi 5 phiên · P/B ở bảng</div>
+        <div class="chart-sub">lần · GICS cấp 4 · mỗi 5 phiên · P/B ở bảng</div>
         <div id="chSectorVal"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-sector-val"></table></div></details>
     </div>
@@ -478,7 +478,7 @@ body[data-sector="shipping"] .tx-group{margin:18px 0 8px;font-size:12px;letter-s
       <div class="chart-sub">% tăng trưởng · khối lượng so đội tàu 34 triệu TEU</div>
       <div id="chSdCont"></div>
       <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>Số</th><th>Ý nghĩa</th></tr></thead><tbody><tr><td>Khối lượng 7T/2026</td><td>+5,1% YoY</td><td>Cầu hàng vẫn tăng</td></tr><tr><td>Đội tàu 2026 / 2027</td><td>+4,6% / <b>+9%</b></td><td>Cung tăng mạnh 2027</td></tr><tr><td>Orderbook</td><td><b>&gt;14 triệu TEU = 42% đội tàu</b></td><td>Cao nhất ba phân khúc</td></tr><tr><td>Nếu Suez bình thường hoàn toàn</td><td>Cầu tàu <b>−10%</b></td><td>Tấn-dặm mất đi → thừa tàu, giá thuê tàu giảm</td></tr></tbody></table></div></details>
-        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Cước container (SCFI, WCI) và giá thuê tàu không có trên Wi; WCI theo tuần xem ở dashboard Cảng &amp; kho bãi.</div></details>
+        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Cước container (SCFI, WCI) và giá thuê tàu không có trong nguồn; WCI theo tuần xem ở dashboard Cảng &amp; kho bãi.</div></details>
         <div class="source-note">Nguồn: <a href="https://cyprusshippingnews.com/2026/09/28/bimcos-container-shipping-market-overview-outlook-september-2026-is-out/" target="_blank" rel="noopener">BIMCO container 9/2026</a></div>
       </div>
     </div>
@@ -507,7 +507,7 @@ body[data-sector="shipping"] .tx-group{margin:18px 0 8px;font-size:12px;letter-s
   </div>
   <div class="majorpane" data-tab="mt5" id="pane-mt5">
   <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ Wi (Baltic, Brent, vận chuyển, định giá) và PortWatch (Hormuz, Biển Đỏ).</p></div></div>
+    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai (Baltic, Brent, vận chuyển, định giá) và PortWatch (Hormuz, Biển Đỏ).</p></div></div>
     <div class="catriskgrid">
       <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3>Catalyst — yếu tố hỗ trợ</h3>
@@ -614,8 +614,8 @@ body[data-sector="shipping"] .tx-group{margin:18px 0 8px;font-size:12px;letter-s
   </div>
   <div class="card" style="margin-top:14px" data-block-id="vt-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>BDTI, BCTI, BDI, Brent, dầu nhiên liệu</b></td><td>Baltic Exchange, ICE, sàn TQ qua MCP Wi</td><td>Ngày · hiển thị cuối tháng</td><td>Routine Claude hằng tuần (Wi)</td></tr><tr><td><b>Hormuz, Bab el-Mandeb</b></td><td><a href="https://portwatch.imf.org/" target="_blank" rel="noopener">IMF PortWatch</a></td><td>Ngày</td><td>Script GitHub mỗi lượt job (dùng chung với Dầu khí)</td></tr><tr><td><b>Vận chuyển đường biển, chỉ số giá vận tải, XNK</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a>, Hải quan qua Wi</td><td>Tháng / quý</td><td>Routine Claude trong cửa sổ công bố (Wi)</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td>Wi; <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Wi hằng ngày; script mỗi lượt job</td></tr><tr><td><b>BIMCO, Clarksons, Suez, cấm vận, USTR, IMO</b></td><td>Thông cáo qua báo ngành, hãng luật (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
-    <div class="source-note" id="wi-built">Dựng từ WiMCP; các lời gọi ghi trong data/shipping-wi-contract.json.</div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>BDTI, BCTI, BDI, Brent, dầu nhiên liệu</b></td><td>Baltic Exchange, ICE, sàn TQ</td><td>Ngày · hiển thị cuối tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>Hormuz, Bab el-Mandeb</b></td><td><a href="https://portwatch.imf.org/" target="_blank" rel="noopener">IMF PortWatch</a></td><td>Ngày</td><td>Script GitHub mỗi lượt job (dùng chung với Dầu khí)</td></tr><tr><td><b>Vận chuyển đường biển, chỉ số giá vận tải, XNK</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a>, Hải quan</td><td>Tháng / quý</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>BIMCO, Clarksons, Suez, cấm vận, USTR, IMO</b></td><td>Thông cáo qua báo ngành, hãng luật (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
   </div>
   <div class="footer">Vietnam Shipping Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 10/10/2026.</div>
 </div>

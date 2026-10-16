@@ -27,18 +27,18 @@ class CompanyQuarterlyTest(unittest.TestCase):
                     self.assertIsNone(gm)
 
     def test_revenue_matches_independent_snapshot(self):
-        """Latest quarter revenue from Wi must agree with the Stock Analysis snapshot used by the table."""
+        """Latest quarter revenue must agree with the Stock Analysis snapshot used by the table."""
         last = self.data['quarters'][-1]  # e.g. Q2/2026
         q, y = last[1], last[3:]
         for c in self.data['companies']:
             snap = (self.comparison.get(c['symbol']) or {}).get('quarter')
             if c['revenue'][-1] is None or not snap or snap['label'] != f'Q{q} {y}' or not snap['values'].get('revenue'):
-                continue  # e.g. CHP: Wi has no recent quarter, declared in the note
+                continue  # e.g. CHP: no recent quarter, declared in the note
             self.assertAlmostEqual(c['revenue'][-1], snap['values']['revenue'], delta=snap['values']['revenue'] * 0.02, msg=c['symbol'])
 
     def test_history_starts_in_2021(self):
         self.assertEqual(self.data['quarters'][0], 'Q1/2021')
-        self.assertEqual(len(self.data['quarters']), 22)
+        self.assertGreaterEqual(len(self.data['quarters']), 22)
 
     def test_missing_companies_are_declared(self):
         have = {(c['sector'], c['symbol']) for c in self.data['companies']}

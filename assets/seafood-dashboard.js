@@ -1,11 +1,11 @@
-/* Seafood dashboard: value chain, Cá tra / Tôm panes and charts from window.SEAFOOD_WI
-   (scripts/build_seafood_wi.py from WiMCP captures) plus duty and VASEP figures backed by
+/* Seafood dashboard: value chain, Cá tra / Tôm panes and charts from window.SEAFOOD_PUBLIC
+   (scripts/build_sector_public.py: public commodity series only) plus duty and VASEP figures backed by
    data/seafood/evidence.json. Publishes window.SEAFOOD_BRIEF for catalyst-board.js.
    Runs before research-layout.js; uses the page's inline chart helpers. */
 (() => {
 'use strict';
 if(document.body.dataset.sector!=='seafood')return;
-const W=window.SEAFOOD_WI||{blocks:{}},B=W.blocks||{};
+const W=window.SEAFOOD_PUBLIC||{blocks:{}},B=W.blocks||{};
 const make=(tag,cls,text)=>{const e=document.createElement(tag);e.className=cls||'';if(text)e.textContent=text;return e};
 const nf=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
 const short=d=>d?d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(0,4):'—';
@@ -14,7 +14,7 @@ const signed=(v,d=1)=>v==null||!Number.isFinite(v)?'—':(v>0?'+':'')+nf(v,d);
 const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b7686',green:'#27af95',red:'#d1583f'};
 const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
-const SRC={customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],wi:['MCP Wi (Widata)',null]};
+const SRC={ice:['IMF Primary Commodity Prices (FRED)','https://fred.stlouisfed.org/'],customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],wi:['Nguồn công khai',null]};
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -67,9 +67,9 @@ function sourceLine(id,parts,period,method,wi=true){
  const host=document.getElementById(id);if(!host)return;const block=host.closest('.card');
  const n=make('div','source-note cadence-note');n.append('Nguồn: ');
  parts.forEach(([name,url],i)=>{if(i)n.append(' · ');if(url){const a=make('a','',name);a.href=url;a.target='_blank';a.rel='noopener';n.append(a)}else n.append(name)});
- n.append(` · Kỳ cuối: ${period}`+(wi?` · Wi kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`:''));host.after(n);
+ n.append(` · Kỳ cuối: ${period}`+(wi?` · Kiểm: ${checked?short(checked.slice(0,4)+'-'+checked.slice(4,6)+'-'+checked.slice(6,8)):'—'}`:''));host.after(n);
  if(method)n.after(make('div','source-note method-note',method));
- if(block&&wi){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='wi'}
+ if(block&&wi){block.dataset.refreshStatus='loaded';block.dataset.sourceIds='public'}
 }
 function insight(id,text){const block=document.getElementById(id)?.closest('.card');if(!block)return;const n=make('div','chart-insight');n.dataset.inputOwner='ai';n.innerHTML='<b>Cách hiểu trong bối cảnh ngành · AI:</b> ';n.append(text);block.append(n)}
 function legend(id,items){const host=document.getElementById(id);if(!host)return;const l=make('div','legend');items.forEach(([n,c])=>{const s=make('span','li'),d=make('span','dot');d.style.background=c;s.append(d,n);l.append(s)});host.after(l)}
@@ -104,7 +104,7 @@ if(pa.length&&document.getElementById('chPang')){
  barLineChart('chPang',{categories:pa.map(r=>mon(r.date)),series:[{name:'Cá tra thịt trắng',color:C.navy,kind:'line',values:pa.map(r=>r.value)},{name:'Cá tra giống',color:C.gold,kind:'line',values:pa.map(r=>fm[ym(r.date)]?.value??null)}],unit:'nghìn đ/kg',digits:1,height:260,zeroBase:true,rotateLabels:true});
  legend('chPang',[['Cá nguyên liệu',C.navy],['Cá giống',C.gold]]);
  fillTable('tbl-pang',['Kỳ','Cá nguyên liệu','So cùng kỳ','Cá giống'],pa.slice().reverse().map(r=>[short(r.date),nf(r.value,1),signed(yoyAt(pa,r),1)+'%',nf(fm[ym(r.date)]?.value,0)]));
- sourceLine('chPang',[['Wi',null]],short(pa.at(-1).date),'Cá tra thịt trắng nguyên liệu (74384) và cá tra giống (264825), ĐBSCL, Wi nén về cuối tháng. Hai mắt xích khác nhau, không thay thế nhau.');
+ sourceLine('chPang',[SRC.wi],short(pa.at(-1).date),'Cá tra thịt trắng nguyên liệu (74384) và cá tra giống (264825), ĐBSCL, Nguồn nén về cuối tháng. Hai mắt xích khác nhau, không thay thế nhau.');
  insight('chPang','Cá nguyên liệu đi trong vùng 25–33 nghìn đ/kg từ 2023, trên giá thành nuôi 24–26 nghìn đ/kg (DN Hội nhập): hộ nuôi có lãi nên cung ổn định. Cá giống biến động mạnh theo mùa (cao đầu năm, thấp giữa năm); giá giống cao đầu 2026 báo hiệu thả nuôi nhiều, có thể làm cá nguyên liệu dồi dào hơn cuối năm.');
 }
 if(document.getElementById('chVasep')){
@@ -117,16 +117,16 @@ const sm=S('soymeal'),co=S('corn');
 if(sm.length&&document.getElementById('chFeed')){
  const cm=byMonth(co),rs=sm.slice(-24);
  barLineChart('chFeed',{categories:rs.map(r=>mon(r.date)),series:[{name:'Khô đậu YoY',color:C.green,kind:'line',values:rs.map(r=>yoyAt(sm,r))},{name:'Ngô YoY',color:C.gold,kind:'line',values:rs.map(r=>yoyAt(co,cm[ym(r.date)]))}],unit:'%',digits:1,height:260,zeroBase:false,rotateLabels:true});
- legend('chFeed',[['Khô đậu CBOT',C.green],['Ngô CBOT',C.gold]]);
- fillTable('tbl-feed',['Kỳ','Khô đậu (USD/short ton)','Ngô (US cent/bushel)','Khô đậu YoY','Ngô YoY'],sm.slice().reverse().map(r=>{const c=cm[ym(r.date)];return [short(r.date),nf(r.value,1),nf(c?.value,1),signed(yoyAt(sm,r),1)+'%',signed(yoyAt(co,c),1)+'%']}));
- sourceLine('chFeed',[['CME/CBOT qua Wi',null]],short(sm.at(-1).date),'Khô đậu tương CBOT (203092), ngô CBOT (203105). Vẽ % so cùng kỳ vì khác đơn vị.');
- insight('chFeed','Khô đậu và ngô cùng tăng 13–16% YoY từ quý III: chi phí thức ăn cá tra tăng trong khi giá cá nguyên liệu đi ngang, khớp với biên gộp Q2 của ANV giảm còn 16,1%. Nhà tôm ít bị ảnh hưởng vì mua tôm của hộ nuôi.');
+ legend('chFeed',[['Khô đậu (IMF)',C.green],['Ngô (IMF)',C.gold]]);
+ fillTable('tbl-feed',['Kỳ','Khô đậu (USD/tấn)','Ngô (US cent/bushel)','Khô đậu YoY','Ngô YoY'],sm.slice().reverse().map(r=>{const c=cm[ym(r.date)];return [short(r.date),nf(r.value,1),nf(c?.value,1),signed(yoyAt(sm,r),1)+'%',signed(yoyAt(co,c),1)+'%']}));
+ sourceLine('chFeed',[SRC.ice],short(sm.at(-1).date),'IMF Primary Commodity Prices (FRED): khô đậu tương PSMEAUSDM (USD/tấn), ngô PMAIZMTUSDM quy sang US cent/bushel; bình quân tháng. Vẽ % so cùng kỳ vì khác đơn vị.');
+ insight('chFeed','Khô đậu '+signed(yoyAt(sm,sm.at(-1)),1)+'% và ngô '+signed(yoyAt(co,co.at(-1)),1)+'% so cùng kỳ ('+mon(sm.at(-1).date)+'): đầu vào thức ăn của cá tra.');
 }
 const sh=S('shrimp50');
 if(sh.length&&document.getElementById('chShrimp')){
  barLineChart('chShrimp',{categories:sh.map(r=>mon(r.date)),series:[{name:'Tôm thẻ 50 con/kg',color:C.plum,kind:'line',values:sh.map(r=>r.value)}],unit:'nghìn đ/kg',digits:1,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-shrimp',['Kỳ','Nghìn đ/kg','So cùng kỳ'],sh.slice().reverse().map(r=>[short(r.date),nf(r.value,1),signed(yoyAt(sh,r),1)+'%']));
- sourceLine('chShrimp',[['Wi',null]],short(sh.at(-1).date),'Tôm thẻ chân trắng cỡ 50 con/kg tại Cà Mau (74379), Wi nén về cuối tháng. Không dùng chuỗi tôm không phân cỡ (264644) vì đứng yên nhiều tháng.');
+ sourceLine('chShrimp',[SRC.wi],short(sh.at(-1).date),'Tôm thẻ chân trắng cỡ 50 con/kg tại Cà Mau (74379), Nguồn nén về cuối tháng. Không dùng chuỗi tôm không phân cỡ (264644) vì đứng yên nhiều tháng.');
  insight('chShrimp','Giá tôm nguyên liệu giảm từ đỉnh 146 nghìn đ/kg (12/2025) về ~108 nghìn: đầu vào rẻ hơn cho FMC, MPC, trong khi giá bán XK không giảm tương ứng — giải thích lợi nhuận 6T của FMC +81,5%, MPC +127,5% dù doanh thu FMC giảm.');
 }
 if(document.getElementById('chMkt2')){
@@ -160,8 +160,8 @@ if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
  const at=(id,d,k)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[k]:null};
  barLineChart('chSectorVal',{categories:weekly.map(d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4)),series:ids.map(([id,name,color])=>({name:'P/E '+name,color,kind:'line',values:weekly.map(d=>at(id,d,1))})),unit:'x',digits:1,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',ids.map(([,n,c])=>[n,c]));
- fillTable('tbl-sector-val',['Phân ngành (GICS Wi)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
- sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'Wi sector_ratio_daily: nuôi trồng và chế biến thủy sản (238), thức ăn chăn nuôi (235). Vẽ mỗi 5 phiên.');
+ fillTable('tbl-sector-val',['Phân ngành (GICS)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
+ sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'nuôi trồng và chế biến thủy sản (238), thức ăn chăn nuôi (235). Vẽ mỗi 5 phiên.');
  insight('chSectorVal','P/E thủy sản giảm từ ~23 lần đầu 2025 về ~11 lần: lợi nhuận phục hồi nhanh hơn giá cổ phiếu, và thị trường chiết khấu thuế Mỹ (Mục 301, CBPG POR21).');
 }
 
@@ -175,7 +175,7 @@ kpi('spk-shrimp',sL?nf(sL.value,1):'—',sL?'nghìn đ/kg · '+short(sL.date):'�
 kpi('spk-pe',peL?nf(peL[1],1)+'x':'—',peL?'P/E thủy sản · '+short(peL[0]):'—',peL?'P/B '+nf(peL[2],2)+'x':'',pe.slice(-30).map(r=>r[1]),C.grey);
 const quick=document.querySelector('.hero .insight');
 if(quick&&eL){
- quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu Wi: '),`XK thủy sản ${mon(eL.date)} ${nf(eL.value,0)} triệu USD (${signed(yoyAt(ex,eL),1)}%), lũy kế ${signed(ytdYo(ex),1)}%. Sang Trung Quốc lũy kế ${signed(ytdYo(cn),0)}%, sang Mỹ ${signed(ytdYo(us),0)}% (đến ${uL?mon(uL.date):''}). Cá tra nguyên liệu ${nf(pL?.value,1)}, tôm thẻ 50 con ${nf(sL?.value,1)} nghìn đ/kg. Khô đậu ${signed(yoyAt(sm,sm.at(-1)),0)}% YoY.`);
+ quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai: '),`XK thủy sản ${mon(eL.date)} ${nf(eL.value,0)} triệu USD (${signed(yoyAt(ex,eL),1)}%), lũy kế ${signed(ytdYo(ex),1)}%. Sang Trung Quốc lũy kế ${signed(ytdYo(cn),0)}%, sang Mỹ ${signed(ytdYo(us),0)}% (đến ${uL?mon(uL.date):''}). Cá tra nguyên liệu ${nf(pL?.value,1)}, tôm thẻ 50 con ${nf(sL?.value,1)} nghìn đ/kg. Khô đậu ${signed(yoyAt(sm,sm.at(-1)),0)}% YoY.`);
  Object.assign(quick.dataset,{updateKind:'ai',cadence:'on-data-change',refreshStatus:'derived'});
 }
 const cnY=ytdYo(cn),usY=ytdYo(us),smY=yoyAt(sm,sm.at(-1)),shY=yoyAt(sh,sL);
@@ -196,5 +196,5 @@ window.SEAFOOD_BRIEF={
  score,
  events:[['Đầu tháng','Hải quan, VASEP: XK tháng trước'],['Hằng tháng','VHC, FMC công bố doanh số tháng'],['20–30/10','BCTC quý III'],['Theo lịch DOC','Kết luận cuối POR19 tôm; POR22 cá tra']]
 };
-const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ WiMCP lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; các lời gọi ghi trong data/seafood-wi-contract.json.';
+const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; giá hàng hóa: IMF/FRED, EIA, ICE.';
 })();
