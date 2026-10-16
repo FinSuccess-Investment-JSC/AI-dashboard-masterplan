@@ -16,6 +16,7 @@ const cash=B.cbond_cashflow?.records||[],iss=B.cbond_issuance?.records||[],mat=B
 const built=W.built_at?new Date(W.built_at).toLocaleDateString('vi-VN'):'—';
 const checked=B.cbond_cashflow?.captured_at||W.built_at||'';
 const SRC={hnx:['HNX · Trái phiếu doanh nghiệp','https://cbonds.hnx.vn/'],nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],fia:['Cục Đầu tư nước ngoài · FDI','https://fia.mpi.gov.vn/'],wi:['Nguồn công khai',null]};
+for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 
 // ---------- 1. Value chain (Tổng quan) ----------
 const chain=document.querySelector('[data-block-id="bds-01"]');
@@ -74,21 +75,21 @@ if(iss.length&&document.getElementById('chBondIssuance')){
  const rs=iss.slice(-36);
  barLineChart('chBondIssuance',{categories:rs.map(r=>mon(r.date)),series:[{name:'Giá trị phát hành',color:C.navy,values:rs.map(r=>r.value)}],unit:'tỷ VND',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-bond-issuance',['Tháng','Giá trị (tỷ VND)','Số đợt','Lãi suất BQ (%)','1–3 năm (tỷ)','3–5 năm (tỷ)'],rs.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),r.issue_count,r.wavg_coupon==null?'—':nf(r.wavg_coupon,2),nf(r.buckets['1-3 năm']||0,0),nf(r.buckets['3-5 năm']||0,0)]));
- sourceLine('chBondIssuance',[SRC.hnx,SRC.wi],mon(rs.at(-1).date),'lọc ngành cấp 1 = Bất động sản, VND; cộng các nhóm kỳ hạn và hình thức phát hành theo tháng. Lãi suất bình quân gia quyền theo giá trị, chỉ đợt có lãi suất. Tháng hiện tại là số tạm tính.');
+ sourceLine('chBondIssuance',[SRC.hnx],mon(rs.at(-1).date),'lọc ngành cấp 1 = Bất động sản, VND; cộng các nhóm kỳ hạn và hình thức phát hành theo tháng. Lãi suất bình quân gia quyền theo giá trị, chỉ đợt có lãi suất. Tháng hiện tại là số tạm tính.');
  insight('chBondIssuance','Phát hành mới là kênh đảo nợ chính của chủ đầu tư nhà ở. Đọc giá trị cùng lãi suất: phát hành tăng nhưng lãi suất 11–12% nghĩa là thị trường vẫn đòi phần bù rủi ro cao. Vài đợt lớn của một tổ chức có thể làm một tháng nhảy vọt.');
 }
 if(closed.length&&document.getElementById('chBondOutstanding')){
  const rs=closed.slice(-48);
  barLineChart('chBondOutstanding',{categories:rs.map(r=>mon(r.date)),series:[{name:'Dư nợ cuối tháng',color:C.navy,kind:'line',values:rs.map(r=>r.outstanding_value/1000)},{name:'Gốc đã trả trong tháng (nghìn tỷ)',color:C.teal,values:rs.map(r=>r.principal_paid/1000)}],unit:'nghìn tỷ VND',digits:1,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-bond-outstanding',['Tháng','Dư nợ (tỷ VND)','Số mã lưu hành','Gốc phải trả (tỷ)','Gốc đã trả (tỷ)','Mua lại trước hạn (tỷ)'],rs.slice().reverse().map(r=>[mon(r.date),nf(r.outstanding_value,0),r.outstanding_bond_count,nf(r.principal_due,0),nf(r.principal_paid,0),nf(r.principal_buyback,0)]));
- sourceLine('chBondOutstanding',[SRC.hnx,SRC.wi],mon(rs.at(-1).date),'ngành Bất động sản, VND. Dư nợ ước tính = giá trị phát hành − gốc đã trả lũy kế; loại mã hủy/thất bại. Tháng chưa khép sổ không vẽ.');
+ sourceLine('chBondOutstanding',[SRC.hnx],mon(rs.at(-1).date),'ngành Bất động sản, VND. Dư nợ ước tính = giá trị phát hành − gốc đã trả lũy kế; loại mã hủy/thất bại. Tháng chưa khép sổ không vẽ.');
  insight('chBondOutstanding','Dư nợ đi ngang trong khi gốc đã trả thấp cho thấy phần lớn nghĩa vụ đang được gia hạn hoặc đảo bằng phát hành mới, không phải trả bằng tiền bán hàng. Đặt cạnh lịch đáo hạn và dư nợ chậm trả trước khi kết luận áp lực đã qua.');
 }
 if(closed.length&&document.getElementById('chBondLate')){
  const rs=closed.slice(-36);
  barLineChart('chBondLate',{categories:rs.map(r=>mon(r.date)),series:[{name:'Dư nợ chậm trả (gốc + lãi)',color:C.red,values:rs.map(r=>r.late_payment_debt/1000)}],unit:'nghìn tỷ VND',digits:1,height:260,rotateLabels:true});
  fillTable('tbl-bond-late',['Tháng','Chậm trả gốc + lãi (tỷ)','Riêng gốc (tỷ)','Số mã chậm trả','Mã mới chậm trả','Số DN chậm trả','Tỷ lệ trả đúng hạn'],rs.slice().reverse().map(r=>[mon(r.date),nf(r.late_payment_debt,0),nf(r.late_principal_debt,0),r.late_bond_count,r.new_late_bond_count,r.late_issuer_count,r.ontime_ratio==null?'—':nf(r.ontime_ratio*100,0)+'%']));
- sourceLine('chBondLate',[SRC.hnx,SRC.wi],mon(rs.at(-1).date),'Số dư cuối tháng theo công bố thanh toán gốc/lãi trên HNX, không cộng dồn qua các tháng. Số mã mới chậm trả = có nợ chậm trả tháng này và bằng 0 tháng trước.');
+ sourceLine('chBondLate',[SRC.hnx],mon(rs.at(-1).date),'Số dư cuối tháng theo công bố thanh toán gốc/lãi trên HNX, không cộng dồn qua các tháng. Số mã mới chậm trả = có nợ chậm trả tháng này và bằng 0 tháng trước.');
  insight('chBondLate','Dư nợ chậm trả giảm có thể do trả thật, do mua lại hoặc do gia hạn được chấp thuận rồi xóa khỏi danh sách chậm trả. Số doanh nghiệp chậm trả giảm chậm hơn số tiền nghĩa là vấn đề tập trung ở vài tổ chức lớn.');
 }
 if(mat.length&&document.getElementById('chBondMaturity')){
@@ -96,7 +97,7 @@ if(mat.length&&document.getElementById('chBondMaturity')){
  barLineChart('chBondMaturity',{categories:rs.map(r=>mon(r.date)),series:[{name:'Gốc đến hạn',color:C.navy,values:rs.map(r=>r.due)},{name:'Lãi ước tính',color:C.teal,values:rs.map(r=>r.interest)}],unit:'tỷ VND',digits:0,height:260,rotateLabels:true,stackable:true});
  fillTable('tbl-bond-maturity',['Tháng','Gốc đến hạn (tỷ VND)','Lãi ước tính (tỷ)','Số mã có dòng tiền'],rs.map(r=>[mon(r.date),nf(r.due,0),nf(r.interest,0),r.bond_count]));
  const top=document.getElementById('tbl-bond-top');if(top)fillTable('tbl-bond-top',['Tổ chức phát hành','Mã','Gốc đến hạn tới cuối 2027 (tỷ VND)','Tháng đáo hạn'],topIssuers.map(t=>[t.name,t.symbol,nf(t.due,0),t.months.map(m=>'T'+Number(m.slice(5))+'/'+m.slice(2,4)).join(', ')]));
- sourceLine('chBondMaturity',[SRC.hnx,SRC.wi],mon(rs.at(-1).date),'năm 2026 và 2027, VND, lọc ngành cấp 1 = Bất động sản (endpoint không lọc ngành phía server). Năm 2027 nguồn có 1.002 dòng toàn thị trường, tool trả 1.000; có thể thiếu tối đa 2 dòng nhỏ. Mã chưa niêm yết mang mã nội bộ của HNX.');
+ sourceLine('chBondMaturity',[SRC.hnx],mon(rs.at(-1).date),'năm 2026 và 2027, VND, lọc ngành cấp 1 = Bất động sản (endpoint không lọc ngành phía server). Năm 2027 nguồn có 1.002 dòng toàn thị trường, tool trả 1.000; có thể thiếu tối đa 2 dòng nhỏ. Mã chưa niêm yết mang mã nội bộ của HNX.');
  insight('chBondMaturity','Tháng 12/2026 và tháng 8, 12/2027 là ba đỉnh đáo hạn. Gốc đến hạn của một tổ chức lớn có thể chiếm hơn nửa một tháng, nên đọc bảng tổ chức phát hành bên dưới trước khi nói "ngành" chịu áp lực. Lãi ước tính của mã thả nổi là giả định.');
 }
 // Credit & rates
@@ -104,21 +105,21 @@ if(S('credit_construction').length&&document.getElementById('chCreditRe')){
  const cc=S('credit_construction'),tot=S('credit_total'),yc=yoy(cc,12).slice(-36),yt=yoy(tot,12).slice(-36);
  barLineChart('chCreditRe',{categories:yc.map(r=>mon(r.date)),series:[{name:'Tín dụng xây dựng · YoY',color:C.navy,kind:'line',values:yc.map(r=>r.value)},{name:'Tổng tín dụng · YoY',color:C.grey,kind:'line',values:yt.filter(r=>yc.some(x=>x.date===r.date)).map(r=>r.value)}],unit:'%',digits:1,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-credit-re',['Tháng','Dư nợ xây dựng (tỷ VND)','YoY xây dựng','Tổng dư nợ (tỷ VND)','YoY tổng'],cc.slice(-24).reverse().map(r=>{const t=tot.find(x=>x.date===r.date),a=yc.find(x=>x.date===r.date),b=yt.find(x=>x.date===r.date);return [mon(r.date),nf(r.value,0),a?.value==null?'—':nf(a.value,1)+'%',t?nf(t.value,0):'—',b?.value==null?'—':nf(b.value,1)+'%']}));
- sourceLine('chCreditRe',[SRC.sbv,SRC.wi],mon(cc.at(-1).date),'Dư nợ tín dụng theo ngành kinh tế của NHNN (chỉ tiêu 75926 xây dựng, 75931 tổng). YoY tự tính so cùng tháng năm trước. Chưa có chuỗi tín dụng kinh doanh bất động sản riêng; proxy từ thuyết minh BCTC ngân hàng nằm ở thẻ bên cạnh.');
+ sourceLine('chCreditRe',[SRC.sbv],mon(cc.at(-1).date),'Dư nợ tín dụng theo ngành kinh tế của NHNN ( xây dựng, 75931 tổng). YoY tự tính so cùng tháng năm trước. Chưa có chuỗi tín dụng kinh doanh bất động sản riêng; proxy từ thuyết minh BCTC ngân hàng nằm ở thẻ bên cạnh.');
  insight('chCreditRe','Tín dụng xây dựng tăng nhanh hơn tổng tín dụng nghĩa là dòng vốn ngân hàng đang nghiêng về đầu tư và dự án; đây là đầu vào cho nguồn cung 1–2 năm tới chứ không phải cầu mua nhà. Cầu mua nhà cần chuỗi cho vay tiêu dùng mua nhà, hiện chưa có.');
 }
 if(S('credit_total').length&&S('deposits_total').length&&document.getElementById('chCreditGap')){
  const ct=S('credit_total'),dp=S('deposits_total'),y1=yoy(ct,12),y2=yoy(dp,12),dates=y2.map(r=>r.date).filter(d=>y1.some(x=>x.date===d)).slice(-36);
  barLineChart('chCreditGap',{categories:dates.map(mon),series:[{name:'Tín dụng · YoY',color:C.navy,kind:'line',values:dates.map(d=>y1.find(x=>x.date===d)?.value??null)},{name:'Tiền gửi · YoY',color:C.teal,kind:'line',values:dates.map(d=>y2.find(x=>x.date===d)?.value??null)}],unit:'%',digits:1,height:260,zeroBase:false,rotateLabels:true});
  const last=dates.at(-1);fillTable('tbl-credit-gap',['Tháng','Tín dụng YoY','Tiền gửi YoY','Tín dụng / tiền gửi'],dates.slice().reverse().map(d=>{const a=ct.find(x=>x.date===d),b=dp.find(x=>x.date===d);return [mon(d),nf(y1.find(x=>x.date===d)?.value,1)+'%',nf(y2.find(x=>x.date===d)?.value,1)+'%',a&&b?nf(a.value/b.value,3):'—']}));
- sourceLine('chCreditGap',[SRC.sbv,SRC.wi],mon(last),'Tổng dư nợ (75931) và tổng tiền gửi (75920) của NHNN; tiền gửi thường công bố trễ hơn tín dụng 1–2 tháng. NHNN đổi phương pháp thống kê tiền gửi tháng 9–10/2025, Nguồn dùng bảng đã điều chỉnh.');
+ sourceLine('chCreditGap',[SRC.sbv],mon(last),'Tổng dư nợ và tổng tiền gửi của NHNN; tiền gửi thường công bố trễ hơn tín dụng 1–2 tháng. NHNN đổi phương pháp thống kê tiền gửi tháng 9–10/2025, Nguồn dùng bảng đã điều chỉnh.');
  insight('chCreditGap','Tín dụng tăng nhanh hơn tiền gửi là lý do lãi suất huy động nhích lên dù lãi suất điều hành đứng yên. Với bất động sản, khoảng cách này đi trước lãi suất vay mua nhà vài tháng và đi trước room tín dụng cho chủ đầu tư.');
 }
 if(S('refi_rate').length&&document.getElementById('chRefiRate')){
  const rs=S('refi_rate'),byM={};rs.forEach(r=>{byM[r.date.slice(0,7)]=r});const ms=Object.keys(byM).sort().map(k=>byM[k]);
  barLineChart('chRefiRate',{categories:ms.map(r=>mon(r.date)),series:[{name:'Lãi suất tái cấp vốn',color:C.navy,kind:'line',values:ms.map(r=>r.value)}],unit:'%/năm',digits:2,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-refi',['Tháng','%/năm'],ms.slice().reverse().map(r=>[mon(r.date),nf(r.value,2)]));
- sourceLine('chRefiRate',[SRC.sbv,SRC.wi],short(rs.at(-1).date),'Lãi suất tái cấp vốn (chỉ tiêu 81497), giá trị cuối mỗi tháng từ 2016 (Nguồn giới hạn lookback 10 năm). Chưa có chuỗi lãi suất cho vay mua nhà công bố đều; xem thẻ tín dụng để biết chênh tín dụng – tiền gửi.');
+ sourceLine('chRefiRate',[SRC.sbv],short(rs.at(-1).date),'Lãi suất tái cấp vốn, giá trị cuối mỗi tháng từ 2016 (Nguồn giới hạn lookback 10 năm). Chưa có chuỗi lãi suất cho vay mua nhà công bố đều; xem thẻ tín dụng để biết chênh tín dụng – tiền gửi.');
  insight('chRefiRate','Lãi suất điều hành đứng yên từ giữa 2023 nên biến số thật của người mua nhà là lãi suất thả nổi sau ưu đãi của từng ngân hàng, đi theo lãi suất huy động 12 tháng. Chính sách tiền tệ nới nhưng chi phí vay mua nhà có thể vẫn tăng khi tín dụng chạy nhanh hơn tiền gửi.');
 }
 // Supply-demand proxies (Nhà ở)
@@ -126,7 +127,7 @@ if(S('gdp_re_q').length&&document.getElementById('chGdpRe')){
  const rs=S('gdp_re_q'),y=yoy(rs,4),last=rs.slice(-12),ly=y.slice(-12);
  barLineChart('chGdpRe',{categories:last.map(r=>quarter(r.date)),series:[{name:'GDP kinh doanh BĐS (nghìn tỷ)',color:C.navy,values:last.map(r=>r.value/1000)}],unit:'nghìn tỷ VND',digits:1,height:260,rotateLabels:false});
  fillTable('tbl-gdp-re',['Quý','GDP BĐS (tỷ VND)','So cùng kỳ'],rs.slice(-16).reverse().map(r=>[quarter(r.date),nf(r.value,0),signed(y.find(x=>x.date===r.date)?.value,1)+'%']));
- sourceLine('chGdpRe',[SRC.nso,SRC.wi],quarter(rs.at(-1).date),'GDP hoạt động kinh doanh bất động sản theo quý, giá hiện hành (chỉ tiêu 80032). So cùng kỳ tự tính trên giá hiện hành nên gồm cả yếu tố giá; không phải tăng trưởng thực.');
+ sourceLine('chGdpRe',[SRC.nso],quarter(rs.at(-1).date),'GDP hoạt động kinh doanh bất động sản theo quý, giá hiện hành. So cùng kỳ tự tính trên giá hiện hành nên gồm cả yếu tố giá; không phải tăng trưởng thực.');
  insight('chGdpRe','Giá trị gia tăng ngành bất động sản theo quý là thước đo hoạt động rộng nhất có lịch công bố cố định (ngày 6 tháng đầu quý). Quý IV luôn cao vì ghi nhận bàn giao cuối năm; so cùng kỳ, không so quý liền trước.');
 }
 if(S('fdi_re_ytd').length&&document.getElementById('chFdiRe')){
@@ -135,7 +136,7 @@ if(S('fdi_re_ytd').length&&document.getElementById('chFdiRe')){
  barLineChart('chFdiRe',{categories:ys.map(r=>r.date.slice(0,4)+(r.date.slice(5,7)!=='12'?' (đến T'+Number(r.date.slice(5,7))+')':'')),series:[{name:'FDI đăng ký vào kinh doanh BĐS',color:C.navy,values:ys.map(r=>r.value)}],unit:'triệu USD',digits:0,height:260,rotateLabels:false});
  const sameLast=rs.find(r=>r.date===String(Number(ytd)-1)+latest.date.slice(4));
  fillTable('tbl-fdi-re',['Kỳ','Triệu USD','So cùng kỳ'],ys.slice().reverse().map(r=>{const prev=rs.find(x=>x.date===String(Number(r.date.slice(0,4))-1)+r.date.slice(4));return [r.date.slice(0,4)+(r.date.slice(5,7)!=='12'?' (đến T'+Number(r.date.slice(5,7))+')':''),nf(r.value,0),prev?signed((r.value/prev.value-1)*100,1)+'%':'—']}));
- sourceLine('chFdiRe',[SRC.fia,SRC.nso,SRC.wi],mon(latest.date),'Vốn đăng ký (cấp mới + điều chỉnh + góp vốn mua cổ phần) vào hoạt động kinh doanh bất động sản, lũy kế từ đầu năm (chỉ tiêu 77101). Năm chưa kết thúc ghi rõ tháng cuối; so cùng kỳ dùng cùng số tháng.');
+ sourceLine('chFdiRe',[SRC.fia,SRC.nso],mon(latest.date),'Vốn đăng ký (cấp mới + điều chỉnh + góp vốn mua cổ phần) vào hoạt động kinh doanh bất động sản, lũy kế từ đầu năm. Năm chưa kết thúc ghi rõ tháng cuối; so cùng kỳ dùng cùng số tháng.');
  insight('chFdiRe','FDI vào bất động sản chủ yếu chảy vào khu công nghiệp, kho vận và nhà ở cao cấp, nên là tín hiệu cho nhóm KCN và cho thuê hơn là nhà ở đại chúng. Vốn đăng ký có thể dồn vào một thương vụ lớn; cần đối chiếu vốn thực hiện.');
 }
 if(S('fdi_re_monthly').length&&document.getElementById('chFdiReMonthly')){
@@ -143,7 +144,7 @@ if(S('fdi_re_monthly').length&&document.getElementById('chFdiReMonthly')){
  barLineChart('chFdiReMonthly',{categories:rs.map(r=>mon(r.date)),series:[{name:'FDI đăng ký vào BĐS',color:C.navy,values:rs.map(r=>r.value)}],unit:'triệu USD',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-fdi-re-monthly',['Tháng','Triệu USD'],S('fdi_re_monthly').slice().reverse().map(r=>[mon(r.date),nf(r.value,0)]));
  const all=S('fdi_re_monthly'),gaps=[];for(let i=1;i<all.length;i++){const a=new Date(all[i-1].date),b=new Date(all[i].date),m=(b.getFullYear()-a.getFullYear())*12+b.getMonth()-a.getMonth();if(m>1)gaps.push(mon(all[i-1].date)+' → '+mon(all[i].date))}
- sourceLine('chFdiReMonthly',[SRC.fia,SRC.nso,SRC.wi],mon(rs.at(-1).date),'Vốn đăng ký ròng trong tháng vào hoạt động kinh doanh bất động sản (chỉ tiêu 77215): cấp mới + điều chỉnh + góp vốn. Một dự án lớn có thể tạo đỉnh đơn lẻ (6/2026: 3,46 tỷ USD).'+(gaps.length?' Thiếu tháng: '+gaps.join(', ')+'.':''));
+ sourceLine('chFdiReMonthly',[SRC.fia,SRC.nso],mon(rs.at(-1).date),'Vốn đăng ký ròng trong tháng vào hoạt động kinh doanh bất động sản: cấp mới + điều chỉnh + góp vốn. Một dự án lớn có thể tạo đỉnh đơn lẻ (6/2026: 3,46 tỷ USD).'+(gaps.length?' Thiếu tháng: '+gaps.join(', ')+'.':''));
  insight('chFdiReMonthly','Chuỗi tháng cho thấy FDI vào BĐS đi theo từng thương vụ chứ không đều: vài tháng một dự án lớn chiếm gần hết cả năm. Đọc cùng danh sách dự án lớn bên dưới để biết tháng đột biến đến từ KCN, khu đô thị hay data center.');
 }
 if(S('fdi_re_ytd').length&&document.getElementById('chFdiSector')){
@@ -154,14 +155,14 @@ if(S('fdi_re_ytd').length&&document.getElementById('chFdiSector')){
  barLineChart('chFdiSector',{categories:ys.map(lab),series:keys.map(([k,n,c],i)=>({name:n,color:c,values:ys.map(y=>maps[i][y]?.value??null)})),unit:'triệu USD',digits:0,height:260,rotateLabels:false,stackable:true});
  const host=document.getElementById('chFdiSector'),lg=make('div','legend');keys.forEach(([,n,c])=>{const s=make('span','li'),d=make('span','dot');d.style.background=c;s.append(d,n);lg.append(s)});host.after(lg);
  fillTable('tbl-fdi-sector',['Năm',...keys.map(k=>k[1])],ys.slice().reverse().map(y=>[lab(y),...maps.map(m=>nf(m[y]?.value,0))]));
- sourceLine('chFdiSector',[SRC.fia,SRC.nso,SRC.wi],mon(S('fdi_re_ytd').at(-1).date),'Vốn đăng ký lũy kế từ đầu năm theo ngành (bảng 24: 77101, 77112, 77108, 77104, 77102); năm đã qua lấy số tháng 12. Data center có thể nằm ở thông tin – truyền thông hoặc BĐS tùy cách cấp phép; kho vận nằm ở vận tải kho bãi.');
+ sourceLine('chFdiSector',[SRC.fia,SRC.nso],mon(S('fdi_re_ytd').at(-1).date),'Vốn đăng ký lũy kế từ đầu năm theo ngành (bảng 24: 77101, 77112, 77108, 77104, 77102); năm đã qua lấy số tháng 12. Data center có thể nằm ở thông tin – truyền thông hoặc BĐS tùy cách cấp phép; kho vận nằm ở vận tải kho bãi.');
  insight('chFdiSector','Ngoài kinh doanh BĐS, các ngành "ăn đất" như data center, kho vận và khách sạn cũng là cầu thuê đất KCN và đất thương mại. Năm 2026 thông tin – truyền thông lên gần 3,2 tỷ USD đến T8, cùng lúc với loạt dự án data center ở TP.HCM trong danh sách dự án lớn; Nguồn công khai chưa tách riêng data center nên đây là đối chiếu, chưa phải phân rã.');
 }
 if(S('cpi_housing_yoy').length&&document.getElementById('chCpiHousing')){
  const rs=S('cpi_housing_yoy').slice(-36);
  barLineChart('chCpiHousing',{categories:rs.map(r=>mon(r.date)),series:[{name:'CPI nhà ở & VLXD · YoY',color:C.plum,kind:'line',values:rs.map(r=>r.value)}],unit:'%',digits:2,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-cpi-housing',['Tháng','YoY (%)','Chỉ số (2024 = 100)'],rs.slice().reverse().map(r=>[mon(r.date),nf(r.value,2),nf(S('cpi_housing_index').find(x=>x.date===r.date)?.value,2)]));
- sourceLine('chCpiHousing',[SRC.nso,SRC.wi],mon(rs.at(-1).date),'Nhóm "Nhà ở và vật liệu xây dựng" trong CPI (chỉ tiêu 75708), gồm tiền thuê nhà, điện, nước, chất đốt và vật liệu sửa chữa. Không phải chỉ số giá nhà bán.');
+ sourceLine('chCpiHousing',[SRC.nso],mon(rs.at(-1).date),'Nhóm "Nhà ở và vật liệu xây dựng" trong CPI, gồm tiền thuê nhà, điện, nước, chất đốt và vật liệu sửa chữa. Không phải chỉ số giá nhà bán.');
  insight('chCpiHousing','Đây là thước đo chi phí ở, không phải giá mua nhà; tiền thuê nhà tăng kéo chỉ số lên là tín hiệu gián tiếp cho cầu thuê và cho lợi suất cho thuê. Giá căn hộ sơ cấp Hà Nội, TP.HCM nằm ở tab Giá – Chi phí – Margin theo báo cáo quý.');
 }
 // KCN · hai chart FDI cùng một cách đo: lũy kế từ đầu năm đến cùng một tháng M, so giữa các năm.
@@ -179,7 +180,7 @@ if(fdiYtd&&document.getElementById('chFdiMfg')){
  const {m,mfgRows:rs}=fdiYtd,lab=r=>m+'T/'+r.y;
  barLineChart('chFdiMfg',{categories:rs.map(lab),series:[{name:'FDI đăng ký · chế biến, chế tạo · '+m+' tháng',color:C.navy,values:rs.map(r=>r.v)}],unit:'triệu USD',digits:0,height:260,rotateLabels:false});
  fillTable('tbl-fdi-mfg',['Kỳ','Triệu USD','So cùng kỳ'],rs.map((r,i)=>[lab(r),nf(r.v,0),yoyCell(rs,i)]).reverse());
- sourceLine('chFdiMfg',[SRC.fia,SRC.nso,SRC.wi],m+'T/'+rs.at(-1).y,'FDI đăng ký vào công nghiệp chế biến, chế tạo, lũy kế '+m+' tháng đầu mỗi năm (chỉ tiêu 77100). Nguồn chưa có số cả năm 2025 nên so cùng kỳ thay vì cả năm.');
+ sourceLine('chFdiMfg',[SRC.fia,SRC.nso],m+'T/'+rs.at(-1).y,'FDI đăng ký vào công nghiệp chế biến, chế tạo, lũy kế '+m+' tháng đầu mỗi năm (chỉ tiêu 77100). Nguồn chưa có số cả năm 2025 nên so cùng kỳ thay vì cả năm.');
  insight('chFdiMfg','Khách thuê KCN là nhà máy chế biến chế tạo, nên FDI nhóm này là chỉ báo cầu sớm 2–6 quý trước khi doanh nghiệp KCN ghi doanh thu bàn giao đất. Vốn đăng ký tăng nhưng dồn vào mở rộng nhà máy cũ sẽ không tạo cầu đất mới.');
 }
 if(fdiYtd&&document.getElementById('chFdiRealized')){
@@ -187,7 +188,7 @@ if(fdiYtd&&document.getElementById('chFdiRealized')){
  barLineChart('chFdiRealized',{categories:rs.map(lab),series:[{name:'Vốn FDI thực hiện · '+m+' tháng',color:C.teal,values:rs.map(r=>r.v)}],unit:'triệu USD',digits:0,height:260,rotateLabels:false});
  const monthly=S('fdi_realized').slice(-12).reverse();
  fillTable('tbl-fdi-realized',['Kỳ','Triệu USD','So cùng kỳ'],rs.map((r,i)=>[lab(r),nf(r.v,0),yoyCell(rs,i)]).reverse().concat([['Tháng gần nhất','',''],...monthly.map(r=>[mon(r.date),nf(r.value,0),''])]));
- sourceLine('chFdiRealized',[SRC.fia,SRC.nso,SRC.wi],mon(realLast.date),'Vốn FDI thực hiện toàn nền kinh tế, cộng tháng 1 đến tháng '+m+' mỗi năm (chỉ tiêu 76951, tự cộng); chưa tách riêng bất động sản. Cùng mốc '+m+' tháng với chart FDI đăng ký để so được; số theo tháng đến '+mon(realLast.date)+' ở bảng.');
+ sourceLine('chFdiRealized',[SRC.fia,SRC.nso],mon(realLast.date),'Vốn FDI thực hiện toàn nền kinh tế, cộng tháng 1 đến tháng '+m+' mỗi năm (chỉ tiêu 76951, tự cộng); chưa tách riêng bất động sản. Cùng mốc '+m+' tháng với chart FDI đăng ký để so được; số theo tháng đến '+mon(realLast.date)+' ở bảng.');
  insight('chFdiRealized','Vốn thực hiện là tiền đã vào nhà xưởng, máy móc — nó xác nhận FDI đăng ký có thành nhà máy thật hay không.');
 }
 // KCN theo khung chỉ số VDSC (01/2026): số nhập tay từ báo cáo, có dòng bằng chứng trong data/realestate-market/evidence.json.
@@ -210,7 +211,7 @@ if(S('iip_mfg_yoy').length&&document.getElementById('chIipMfg')){
  const rs=S('iip_mfg_yoy').slice(-36);
  barLineChart('chIipMfg',{categories:rs.map(r=>mon(r.date)),series:[{name:'IIP chế biến, chế tạo · YoY',color:C.navy,kind:'line',values:rs.map(r=>r.value)}],unit:'%',digits:1,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-iip-mfg',['Tháng','YoY (%)'],rs.slice().reverse().map(r=>[mon(r.date),nf(r.value,2)]));
- sourceLine('chIipMfg',[SRC.nso,SRC.wi],mon(rs.at(-1).date),'Chỉ số sản xuất công nghiệp nhóm chế biến, chế tạo, so cùng kỳ (chỉ tiêu 202899). Tháng Tết (1–2) nhiễu mạnh.');
+ sourceLine('chIipMfg',[SRC.nso],mon(rs.at(-1).date),'Chỉ số sản xuất công nghiệp nhóm chế biến, chế tạo, so cùng kỳ. Tháng Tết (1–2) nhiễu mạnh.');
  insight('chIipMfg','Sản xuất của khách thuê tăng là điều kiện để họ mở rộng mặt bằng và trả tiền thuê đúng hạn; IIP giảm hai quý liên tiếp thường đi trước hoãn ký hợp đồng thuê mới.');
 }
 // Prices & valuation

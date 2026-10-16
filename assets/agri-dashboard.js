@@ -15,6 +15,7 @@ const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b76
 const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
 const SRC={ice:['IMF Primary Commodity Prices (FRED)','https://fred.stlouisfed.org/'],customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],noaa:['NOAA CPC','https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml'],wi:['Nguồn công khai',null]};
+for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -84,7 +85,7 @@ if(er.length&&document.getElementById('chExp')){
  stack('chExp',{categories:rs.map(r=>mon(r.date)),series:[{name:'Gạo',color:C.gold,values:rs.map(r=>r.value)},{name:'Cà phê',color:C.plum,values:rs.map(r=>cm[ym(r.date)]?.value??null)},{name:'Cao su',color:C.navy,values:rs.map(r=>bm[ym(r.date)]?.value??null)}],unit:'triệu USD',digits:0,aria:'Xuất khẩu gạo, cà phê, cao su'});
  legend('chExp',[['Gạo',C.gold],['Cà phê',C.plum],['Cao su',C.navy]]);
  fillTable('tbl-exp',['Tháng','Gạo','Cà phê','Cao su','Gạo YoY','Cà phê YoY','Cao su YoY'],er.slice().reverse().map(r=>{const c=cm[ym(r.date)],b=bm[ym(r.date)];return [mon(r.date),nf(r.value,0),nf(c?.value,0),nf(b?.value,0),signed(yoyAt(er,r),1)+'%',signed(yoyAt(ec,c),1)+'%',signed(yoyAt(eb,b),1)+'%']}));
- sourceLine('chExp',[SRC.customs,SRC.wi],mon(er.at(-1).date),'Kim ngạch xuất khẩu gạo (83505), cà phê (83502), cao su (83520). Ba mặt hàng khác nhau, cộng chỉ để xem quy mô.');
+ sourceLine('chExp',[SRC.customs],mon(er.at(-1).date),'Kim ngạch xuất khẩu gạo, cà phê, cao su. Ba mặt hàng khác nhau, cộng chỉ để xem quy mô.');
  insight('chExp','Lũy kế 9T/2026 cả ba mặt hàng đều thấp hơn cùng kỳ (gạo '+signed(ytdYo(er),0)+'%, cà phê '+signed(ytdYo(ec),0)+'%, cao su '+signed(ytdYo(eb),0)+'%) nhưng vì lý do khác nhau: gạo mất thị trường Philippines, Indonesia; cà phê giảm giá từ đỉnh 2025; cao su giảm lượng nhưng giá đang tăng. Mùa cà phê mới bắt đầu tháng 10–12 nên số quý IV mới cho biết niên vụ 2026/27.');
 }
 const pr=S('px_rice'),pc=S('px_coffee'),pb=S('px_rubber');
@@ -93,7 +94,7 @@ if(pr.length&&document.getElementById('chPx')){
  lines('chPx',pr.slice(-36),[['Gạo',C.gold,r=>r.value],['Cà phê',C.plum,r=>cm[ym(r.date)]?.value??null],['Cao su',C.navy,r=>bm[ym(r.date)]?.value??null]],'USD/kg',2,true);
  legend('chPx',[['Gạo',C.gold],['Cà phê',C.plum],['Cao su',C.navy]]);
  fillTable('tbl-px',['Tháng','Gạo','Cà phê','Cao su'],pr.slice().reverse().map(r=>[mon(r.date),nf(r.value,3),nf(cm[ym(r.date)]?.value,3),nf(bm[ym(r.date)]?.value,3)]));
- sourceLine('chPx',[SRC.customs,SRC.wi],mon(pr.at(-1).date),'Giá xuất khẩu bình quân = kim ngạch / lượng của hải quan (92095, 92092, 92098). Phản ánh cả cơ cấu chủng loại, không chỉ giá thị trường.');
+ sourceLine('chPx',[SRC.customs],mon(pr.at(-1).date),'Giá xuất khẩu bình quân = kim ngạch / lượng của hải quan. Phản ánh cả cơ cấu chủng loại, không chỉ giá thị trường.');
  insight('chPx','Giá XK bình quân trễ giá sàn 1–2 tháng vì hợp đồng ký trước. Cà phê đã giảm khoảng 20% so cùng kỳ, cao su tăng gần 30%: thu nhập của nhà trồng cao su (GVR, DPR, PHR) đang tốt hơn rõ rệt so với cà phê. Gạo nhích lên nhưng vẫn thấp xa đỉnh 2024 khi Ấn Độ cấm xuất khẩu.');
 }
 const ro=S('robusta'),ts=S('tsr20');
@@ -102,14 +103,14 @@ if(ro.length&&document.getElementById('chWorld')){
  lines('chWorld',ro,[['Robusta (USD/tấn)',C.plum,r=>r.value],['TSR20 (US cent/kg ×10)',C.navy,r=>tm[ym(r.date)]?tm[ym(r.date)].value*10:null]],'',0,true);
  legend('chWorld',[['Robusta USD/tấn',C.plum],['TSR20 US cent/kg ×10',C.navy]]);
  fillTable('tbl-world',['Kỳ','Robusta (USD/tấn)','Robusta YoY','TSR20 (US cent/kg)','TSR20 YoY'],ro.slice().reverse().map(r=>{const t=tm[ym(r.date)];return [short(r.date),nf(r.value,0),signed(yoyAt(ro,r),1)+'%',nf(t?.value,1),signed(yoyAt(ts,t),1)+'%']}));
- sourceLine('chWorld',[SRC.ice],short(ro.at(-1).date),'Robusta: IMF Primary Commodity Prices (FRED PCOFFROBUSDM), bình quân tháng, quy từ US cent/lb sang USD/tấn (×22,0462). Cao su TSR20 chưa có nguồn công khai thay thế nên để trống.');
- insight('chWorld','Robusta '+nf(ro.at(-1).value,0)+' USD/tấn ('+mon(ro.at(-1).date)+', '+signed(yoyAt(ro,ro.at(-1)),1)+'% so cùng kỳ).');
+ sourceLine('chWorld',[SRC.ice],short(ro.at(-1).date),'Robusta: IMF Primary Commodity Prices (FRED PCOFFROBUSDM), bình quân tháng, quy từ US cent/lb sang USD/tấn (×22,0462). Cao su: IMF PRUBBUSDM (giá Singapore/Malaysia, gần TSR20), quy sang US cent/kg (×2,20462).');
+ insight('chWorld','Robusta '+nf(ro.at(-1).value,0)+' USD/tấn ('+mon(ro.at(-1).date)+', '+signed(yoyAt(ro,ro.at(-1)),1)+'% so cùng kỳ)'+(ts.length?'; cao su '+nf(ts.at(-1).value,1)+' US cent/kg ('+signed(yoyAt(ts,ts.at(-1)),1)+'%)':'')+'.');
 }
 const r5=S('rice5');
 if(r5.length&&document.getElementById('chRice')){
  lines('chRice',r5,[['Gạo 5% tấm',C.gold,r=>r.value]],'nghìn đ/kg',2,false);
  fillTable('tbl-rice',['Kỳ','Nghìn đ/kg','So cùng kỳ'],r5.slice().reverse().map(r=>[short(r.date),nf(r.value,3),signed(yoyAt(r5,r),1)+'%']));
- sourceLine('chRice',[SRC.wi],short(r5.at(-1).date),'Gạo thành phẩm 5% tấm (74351), giá nội địa tại ĐBSCL, Nguồn nén về cuối tháng.');
+ sourceLine('chRice',[SRC.wi],short(r5.at(-1).date),'Gạo thành phẩm 5% tấm, giá nội địa tại ĐBSCL.');
  insight('chRice','Giá gạo nội địa giảm ~40% từ cuối 2023 rồi hồi lại từ 4/2026. Đây là giá nhà XK (LTG, PAN) mua vào; giá nội địa tăng nhanh hơn giá XK sẽ ép biên xuất khẩu.');
 }
 // Chăn nuôi
@@ -117,7 +118,7 @@ const hog=S('hog');
 if(hog.length&&document.getElementById('chHog')){
  lines('chHog',hog,[['Heo hơi',C.red,r=>r.value]],'nghìn đ/kg',1,false);
  fillTable('tbl-hog',['Kỳ','Nghìn đ/kg','So cùng kỳ'],hog.slice().reverse().map(r=>[short(r.date),nf(r.value,1),signed(yoyAt(hog,r),1)+'%']));
- sourceLine('chHog',[SRC.wi],short(hog.at(-1).date),'Heo hơi trong nước, chuỗi toàn quốc (74124), Nguồn nén về cuối tháng. Không dùng ba chuỗi vùng.');
+ sourceLine('chHog',[SRC.wi],short(hog.at(-1).date),'Heo hơi trong nước, chuỗi toàn quốc. Không dùng ba chuỗi vùng.');
  insight('chHog','Giá heo giảm từ ~78 (T1) xuống ~53 nghìn đ/kg: mức này đã gần vùng hòa vốn của nhiều trang trại khi giá thức ăn tăng, nên lợi nhuận mảng heo của DBC, BAF bị thu hẹp mạnh (DBC LNST 6T −35%). Đàn của doanh nghiệp lớn tăng nhanh (BAF +61% xuất bán) làm cung tăng; ASF là biến số có thể đảo chiều cung.');
 }
 const co=S('corn'),sm=S('soymeal');
@@ -135,7 +136,7 @@ if(ic.length&&document.getElementById('chFeedImp')){
  stack('chFeedImp',{categories:rs.map(r=>mon(r.date)),series:[{name:'Ngô',color:C.gold,values:rs.map(r=>r.value)},{name:'Đậu tương',color:C.green,values:rs.map(r=>sm2[ym(r.date)]?.value??null)},{name:'Thức ăn gia súc & nguyên liệu',color:C.navy,values:rs.map(r=>fm[ym(r.date)]?.value??null)}],unit:'triệu USD',digits:0,aria:'Nhập khẩu nguyên liệu thức ăn'});
  legend('chFeedImp',[['Ngô',C.gold],['Đậu tương',C.green],['Thức ăn gia súc & nguyên liệu',C.navy]]);
  fillTable('tbl-feedimp',['Tháng','Ngô','Đậu tương','Thức ăn & NL'],ic.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),nf(sm2[ym(r.date)]?.value,0),nf(fm[ym(r.date)]?.value,0)]));
- sourceLine('chFeedImp',[SRC.customs,SRC.wi],mon(ic.at(-1).date),'Nhập khẩu ngô (92781), đậu tương (92756), thức ăn gia súc và nguyên liệu (92776, gồm khô đậu).');
+ sourceLine('chFeedImp',[SRC.customs],mon(ic.at(-1).date),'Nhập khẩu ngô, đậu tương, thức ăn gia súc và nguyên liệu.');
  insight('chFeedImp','Nhập ngô lũy kế 9T +29%, đậu tương +53% theo giá trị: vừa do giá tăng vừa do đàn heo, gia cầm lớn lên. Việt Nam nhập gần như toàn bộ đậu tương, nên tỷ giá USD/VND cũng là chi phí của nhà chăn nuôi.');
 }
 const fd=S('feed');
@@ -143,7 +144,7 @@ if(fd.length&&document.getElementById('chFeed')){
  const rs=fd.slice(-36);
  barLineChart('chFeed',{categories:rs.map(r=>mon(r.date)),series:[{name:'Thức ăn gia súc',color:C.teal,values:rs.map(r=>r.value)}],unit:'nghìn tấn',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-feed',['Tháng','Nghìn tấn','So cùng kỳ'],fd.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),signed(yoyAt(fd,r),1)+'%']));
- sourceLine('chFeed',[SRC.nso,SRC.wi],mon(fd.at(-1).date),'Sản lượng thức ăn cho gia súc (82118), NSO.');
+ sourceLine('chFeed',[SRC.nso],mon(fd.at(-1).date),'Sản lượng thức ăn cho gia súc, NSO.');
  insight('chFeed','Sản lượng thức ăn 9T +10% cho thấy đàn vật nuôi đang mở rộng; cung thịt tăng là một lý do giá heo giảm. Khi thức ăn tăng chậm lại hoặc âm, đàn đang thu hẹp và giá heo thường hồi sau 2–3 quý.');
 }
 // Thực phẩm & đồ uống
@@ -152,7 +153,7 @@ if(rt.length&&document.getElementById('chRetail')){
  const rs=rt.slice(-36);
  barLineChart('chRetail',{categories:rs.map(r=>mon(r.date)),series:[{name:'Bán lẻ hàng hóa',color:C.navy,values:rs.map(r=>r.value/1000)}],unit:'nghìn tỷ',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-retail',['Tháng','Nghìn tỷ đồng','So cùng kỳ'],rt.slice().reverse().map(r=>[mon(r.date),nf(r.value/1000,1),signed(yoyAt(rt,r),1)+'%']));
- sourceLine('chRetail',[SRC.nso,SRC.wi],mon(rt.at(-1).date),'Doanh thu bán lẻ hàng hóa (74450), giá hiện hành, gồm cả lạm phát.');
+ sourceLine('chRetail',[SRC.nso],mon(rt.at(-1).date),'Doanh thu bán lẻ hàng hóa, giá hiện hành, gồm cả lạm phát.');
  insight('chRetail','Bán lẻ hàng hóa 9T +12% danh nghĩa; trừ CPI hàng ăn ~4% còn khoảng 7–8% thực: sức mua đủ tốt cho VNM, MSN, KDC tăng sản lượng mà không phải giảm giá.');
 }
 const be=S('beer'),mk=S('fresh_milk');
@@ -161,7 +162,7 @@ if(be.length&&document.getElementById('chBev')){
  barLineChart('chBev',{categories:rs.map(r=>mon(r.date)),series:[{name:'Bia',color:C.gold,values:rs.map(r=>r.value)},{name:'Sữa tươi',color:C.teal,kind:'line',values:rs.map(r=>mm[ym(r.date)]?.value??null)}],unit:'triệu lít',digits:0,height:260,rotateLabels:true});
  legend('chBev',[['Bia',C.gold],['Sữa tươi',C.teal]]);
  fillTable('tbl-bev',['Tháng','Bia','Bia YoY','Sữa tươi','Sữa tươi YoY','Sữa bột (nghìn tấn)'],be.slice().reverse().map(r=>{const m=mm[ym(r.date)],p=byMonth(S('milk_powder'))[ym(r.date)];return [mon(r.date),nf(r.value,0),signed(yoyAt(be,r),1)+'%',nf(m?.value,0),signed(yoyAt(mk,m),1)+'%',nf(p?.value,1)]}));
- sourceLine('chBev',[SRC.nso,SRC.wi],mon(be.at(-1).date),'Sản lượng bia (82086), sữa tươi (82116), sữa bột (82084, ở bảng) của toàn ngành, NSO.');
+ sourceLine('chBev',[SRC.nso],mon(be.at(-1).date),'Sản lượng bia, sữa tươi, sữa bột của toàn ngành, NSO.');
  insight('chBev','Bia 9T +15% sau hai năm giảm vì NĐ 100 (nồng độ cồn): nền thấp và du lịch hồi phục. Đây là năm cuối trước khi thuế TTĐB bia tăng từ 2027, nên một phần có thể là tích trữ. Sữa tươi +3% đi đều, phù hợp với VNM giành thêm thị phần chứ không phải thị trường tăng nhanh.');
 }
 const fi=S('iip_food'),bi=S('iip_bev'),cf=S('cpi_food'),cb=S('cpi_bev');
@@ -170,7 +171,7 @@ if(fi.length&&document.getElementById('chIip')){
  lines('chIip',fi.slice(-24),[['IIP chế biến thực phẩm',C.navy,r=>r.value],['IIP đồ uống',C.gold,r=>bm[ym(r.date)]?.value??null],['CPI hàng ăn',C.red,r=>fm[ym(r.date)]?.value??null],['CPI đồ uống, thuốc lá',C.plum,r=>cbm[ym(r.date)]?.value??null]],'%',1,false);
  legend('chIip',[['IIP thực phẩm',C.navy],['IIP đồ uống',C.gold],['CPI hàng ăn',C.red],['CPI đồ uống',C.plum]]);
  fillTable('tbl-iip',['Tháng','IIP thực phẩm','IIP đồ uống','CPI hàng ăn','CPI đồ uống'],fi.slice().reverse().map(r=>[mon(r.date),nf(r.value,2),nf(bm[ym(r.date)]?.value,2),nf(fm[ym(r.date)]?.value,2),nf(cbm[ym(r.date)]?.value,2)]));
- sourceLine('chIip',[SRC.nso,SRC.wi],mon(fi.at(-1).date),'IIP sản xuất chế biến thực phẩm (202900), đồ uống (202901); CPI hàng ăn và dịch vụ ăn uống (75702), đồ uống và thuốc lá (75706). Tất cả % so cùng kỳ.');
+ sourceLine('chIip',[SRC.nso],mon(fi.at(-1).date),'IIP sản xuất chế biến thực phẩm, đồ uống; CPI hàng ăn và dịch vụ ăn uống, đồ uống và thuốc lá. Tất cả % so cùng kỳ.');
  insight('chIip','IIP đồ uống tăng hơn 20% YoY tháng 9 khớp với sản lượng bia. CPI hàng ăn ~4% cho thấy giá bán lẻ thực phẩm đang tăng, thuận cho nhà sản xuất chuyển chi phí nguyên liệu vào giá.');
 }
 const ml=S('imp_milk');
@@ -178,7 +179,7 @@ if(ml.length&&document.getElementById('chMilk')){
  const rs=ml.slice(-36);
  barLineChart('chMilk',{categories:rs.map(r=>mon(r.date)),series:[{name:'Nhập khẩu sữa',color:C.teal,values:rs.map(r=>r.value)}],unit:'triệu USD',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-milk',['Tháng','Triệu USD','So cùng kỳ'],ml.slice().reverse().map(r=>[mon(r.date),nf(r.value,1),signed(yoyAt(ml,r),1)+'%']));
- sourceLine('chMilk',[SRC.customs,SRC.wi],mon(ml.at(-1).date),'Nhập khẩu sữa và sản phẩm sữa (92795), giá trị USD. Chưa có giá sữa bột GDT để tách lượng và giá.');
+ sourceLine('chMilk',[SRC.customs],mon(ml.at(-1).date),'Nhập khẩu sữa và sản phẩm sữa, giá trị USD. Chưa có giá sữa bột GDT để tách lượng và giá.');
  insight('chMilk','Nhà sữa nhập phần lớn sữa bột nguyên liệu; nhập khẩu 9T +10% về giá trị. Không có giá GDT nên chưa tách được giá hay lượng — biên gộp của VNM là nơi kiểm tra hiệu ứng giá.');
 }
 // Định giá

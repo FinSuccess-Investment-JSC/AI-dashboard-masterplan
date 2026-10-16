@@ -16,6 +16,7 @@ const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b76
 const macro=B.macro?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
 const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],wi:['Nguồn công khai',null]};
+for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 const S=k=>macro[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -85,14 +86,14 @@ if(imp.length&&document.getElementById('chImports')){
  barLineChart('chImports',{categories:rs.map(r=>mon(r.date)),series:[{name:'Dược phẩm thành phẩm',color:C.navy,values:rs.map(r=>r.value)},{name:'Nguyên phụ liệu dược',color:C.gold,kind:'line',values:rs.map(r=>am[ym(r.date)]?.value??null)}],unit:'triệu USD',digits:0,height:260,rotateLabels:true});
  legend('chImports',[['Thuốc thành phẩm nhập',C.navy],['Nguyên phụ liệu dược (API, tá dược)',C.gold]]);
  fillTable('tbl-imports',['Tháng','Thành phẩm (triệu USD)','YoY','Nguyên phụ liệu (triệu USD)','YoY'],imp.slice().reverse().map(r=>{const a=am[ym(r.date)];return [mon(r.date),nf(r.value,1),signed(yoyAt(imp,r),0)+'%',nf(a?.value,1),signed(yoyAt(api,a),0)+'%']}));
- sourceLine('chImports',[SRC.customs,SRC.wi],mon(imp.at(-1).date),'Nhập khẩu dược phẩm (92777) và nguyên phụ liệu dược phẩm (92771). Thành phẩm nhập là hàng cạnh tranh với thuốc sản xuất trong nước; nguyên phụ liệu là đầu vào của nhà máy.');
+ sourceLine('chImports',[SRC.customs],mon(imp.at(-1).date),'Nhập khẩu dược phẩm và nguyên phụ liệu dược phẩm. Thành phẩm nhập là hàng cạnh tranh với thuốc sản xuất trong nước; nguyên phụ liệu là đầu vào của nhà máy.');
  insight('chImports','Thuốc thành phẩm nhập lũy kế '+signed(ytdYo(imp),0)+'%, nguyên phụ liệu '+signed(ytdYo(api),0)+'%. Thuốc ngoại vẫn chiếm phần lớn giá trị tiền thuốc (~4 tỷ USD/năm), cạnh tranh trực tiếp ở nhóm 1–2 đấu thầu. Nguyên liệu nhập nhỏ về giá trị nhưng quyết định giá vốn của DHG, IMP, DBD.');
 }
 if(iip.length&&document.getElementById('chIip')){
  const rs=iip.slice(-36);
  barLineChart('chIip',{categories:rs.map(r=>mon(r.date)),series:[{name:'IIP sản xuất thuốc',color:C.teal,kind:'line',values:rs.map(r=>r.value)}],unit:'%',digits:0,height:260,rotateLabels:true,zeroBase:false});
  fillTable('tbl-iip',['Tháng','IIP so cùng kỳ (%)'],iip.slice().reverse().map(r=>[mon(r.date),signed(r.value,1)]));
- sourceLine('chIip',[SRC.nso,SRC.wi],mon(iip.at(-1).date),'IIP sản xuất thuốc, hóa dược và dược liệu (202911), % so cùng kỳ. Không có sản lượng tuyệt đối.');
+ sourceLine('chIip',[SRC.nso],mon(iip.at(-1).date),'IIP sản xuất thuốc, hóa dược và dược liệu, % so cùng kỳ. Không có sản lượng tuyệt đối.');
  const last3=iip.slice(-3).map(r=>r.value);
  insight('chIip','Ba tháng gần nhất '+last3.map(v=>signed(v,0)+'%').join(', ')+': nhà máy chạy cao hơn năm trước sau giai đoạn âm đầu năm. Chuỗi biến động mạnh theo tháng (mùa đấu thầu, Tết) nên đọc theo xu hướng quý.');
 }
@@ -101,7 +102,7 @@ if(fx.length&&document.getElementById('chCost')){
  barLineChart('chCost',{categories:base.map(r=>mon(r.date)),series:[{name:'Tỷ giá trung tâm (chỉ số T1/2025=100)',color:C.navy,kind:'line',values:base.map(r=>r.value/base[0].value*100)},{name:'CPI thuốc & dịch vụ y tế (T1/2025=100)',color:C.plum,kind:'line',values:base.map(r=>{const c=cm[ym(r.date)],b=cm[ym(base[0].date)];return c&&b?c.value/b.value*100:null})}],unit:'',digits:1,height:260,rotateLabels:true,zeroBase:false});
  legend('chCost',[['Tỷ giá USD/VND',C.navy],['CPI thuốc & dịch vụ y tế',C.plum]]);
  fillTable('tbl-cost',['Tháng','Tỷ giá trung tâm (VND)','CPI y tế (2024=100)'],fx.filter(r=>r.date>='2025-01').reverse().map(r=>[mon(r.date),nf(r.value,0),nf(cm[ym(r.date)]?.value,2)]));
- sourceLine('chCost',[SRC.sbv,SRC.nso,SRC.wi],mon(fx.at(-1).date),'Tỷ giá trung tâm bình quân tháng (242638); CPI thuốc và dịch vụ y tế (75779). Nguồn đổi gốc chỉ số CPI từ T1/2025 nên chart bắt đầu từ đó.');
+ sourceLine('chCost',[SRC.sbv,SRC.nso],mon(fx.at(-1).date),'Tỷ giá trung tâm bình quân tháng; CPI thuốc và dịch vụ y tế. Nguồn đổi gốc chỉ số CPI từ T1/2025 nên chart bắt đầu từ đó.');
  const fy=yoyAt(fx,fx.at(-1)),cy=yoyAt(cpi,cpi.at(-1));
  insight('chCost','Tỷ giá '+signed(fy,1)+'% so cùng kỳ, CPI thuốc & dịch vụ y tế '+signed(cy,1)+'%: '+(fy>cy+1?'chi phí API (trả bằng USD) tăng nhanh hơn giá bán':'giá bán đang theo kịp chi phí nhập')+'. Giá trúng thầu cố định theo kỳ thầu 12–24 tháng nên khi tỷ giá tăng nhanh, biên gộp nhà sản xuất chịu phần chênh trước.');
 }
@@ -109,7 +110,7 @@ if(gdp.length&&document.getElementById('chGdpHealth')){
  const yrs=[...new Set(gdp.map(r=>r.date.slice(0,4)))].sort(),q9=yrs.map(y=>gdp.find(r=>r.date===y+'-09-01')).filter(Boolean);
  barLineChart('chGdpHealth',{categories:q9.map(r=>'9T/'+r.date.slice(0,4)),series:[{name:'GDP y tế & cứu trợ xã hội 9 tháng',color:C.teal,values:q9.map(r=>r.value/1000)}],unit:'nghìn tỷ',digits:0,height:260});
  fillTable('tbl-gdp',['Kỳ','Nghìn tỷ đồng (lũy kế, danh nghĩa)'],gdp.slice().reverse().map(r=>[qtr(r.date)+' lũy kế',nf(r.value/1000,1)]));
- sourceLine('chGdpHealth',[SRC.nso,SRC.wi],qtr(gdp.at(-1).date),'GDP danh nghĩa ngành y tế và hoạt động cứu trợ xã hội (79925), lũy kế từ đầu năm; so cùng kỳ 9 tháng. Không tách chi tiêu thuốc.');
+ sourceLine('chGdpHealth',[SRC.nso],qtr(gdp.at(-1).date),'GDP danh nghĩa ngành y tế và hoạt động cứu trợ xã hội, lũy kế từ đầu năm; so cùng kỳ 9 tháng. Không tách chi tiêu thuốc.');
  const l=q9.at(-1),p=q9.at(-2);
  insight('chGdpHealth','Giá trị tăng thêm ngành y tế 9T/'+l.date.slice(0,4)+' '+nf(l.value/1000,0)+' nghìn tỷ, '+signed((l.value/p.value-1)*100,0)+'% so cùng kỳ — cầu dịch vụ y tế tăng nhanh hơn GDP chung, là nền của bệnh viện tư (TNH) và chuỗi nhà thuốc.');
 }

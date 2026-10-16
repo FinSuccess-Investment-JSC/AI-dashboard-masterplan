@@ -16,6 +16,7 @@ const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b76
 const macro=B.macro?.series||{},com={},sec=B.sector_ratio?.by_sector||{},fs=B.fs?.by_sector||{},gb=B.gbond?.records||[];
 const checked=B.macro?.captured_at||W.built_at||'';
 const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],fsw:['BCTC tổng hợp ngành (GICS)',null],hnx:['HNX – lợi suất TPCP','https://hnx.vn/'],wi:['Nguồn công khai',null]};
+for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -117,7 +118,7 @@ if(car.length&&document.getElementById('chNlDemand')){
  barLineChart('chNlDemand',{categories:rs.map(r=>mon(r.date)),series:[{name:'Ô tô (nghìn chiếc)',color:C.navy,values:rs.map(r=>r.value)},{name:'Xe máy (chục nghìn chiếc)',color:C.teal,kind:'line',values:rs.map(r=>(mm[ym(r.date)]?.value??NaN)/10)}],unit:'',digits:0,height:260,rotateLabels:true});
  legend('chNlDemand',[['Ô tô, nghìn chiếc',C.navy],['Xe máy, chục nghìn chiếc',C.teal]]);
  fillTable('tbl-nl-demand',['Tháng','Ô tô (nghìn)','YoY','Xe máy (nghìn)','YoY'],car.slice().reverse().map(r=>{const m=mm[ym(r.date)];return [mon(r.date),nf(r.value,1),signed(yoyAt(car,r),0)+'%',nf(m?.value,0),signed(yoyAt(moto,m),0)+'%']}));
- sourceLine('chNlDemand',[SRC.nso,SRC.wi],mon(car.at(-1).date),'Sản lượng sản xuất ô tô (82112), xe máy (82109; chia 10 để cùng trục). Xe cơ giới là nghiệp vụ lớn thứ hai của phi nhân thọ (sau sức khỏe); sản lượng xe là chỉ báo dẫn của phí xe cơ giới.');
+ sourceLine('chNlDemand',[SRC.nso],mon(car.at(-1).date),'Sản lượng sản xuất ô tô, xe máy. Xe cơ giới là nghiệp vụ lớn thứ hai của phi nhân thọ (sau sức khỏe); sản lượng xe là chỉ báo dẫn của phí xe cơ giới.');
  insight('chNlDemand','Lũy kế sản lượng ô tô '+signed(ytdYo(car),0)+'%, xe máy '+signed(ytdYo(moto),0)+'%: xe mới bán ra là phí bảo hiểm vật chất xe mới, hỗ trợ trực tiếp PTI, MIG, BIC (mạnh ở kênh xe).');
 }
 // Nhân thọ
@@ -138,7 +139,7 @@ if(gb.length&&document.getElementById('chYield')){
  legend('chYield',[['TPCP 10 năm',C.navy],['Huy động 12 tháng',C.teal]]);
  fillTable('tbl-yield',['Tháng','TPCP 10 năm (%)','Huy động 12T (%)'],months.slice().reverse().map(m=>[mon(m+'-01'),nf(bm[m].value,3),nf(dm[m]?.value,2)]));
  const L=gb.at(-1),Y=gb.find(r=>r.date>=String(Number(L.date.slice(0,4))-1)+L.date.slice(4));
- sourceLine('chYield',[SRC.hnx,SRC.wi],short(L.date),'Lợi suất TPCP Việt Nam 10 năm (234526, cuối tháng) và lãi suất huy động 12 tháng bình quân nhóm NHTM lớn (242557).');
+ sourceLine('chYield',[SRC.hnx],short(L.date),'Lợi suất TPCP Việt Nam 10 năm và lãi suất huy động 12 tháng bình quân nhóm NHTM lớn.');
  insight('chYield','TPCP 10 năm '+nf(L.value,2)+'%, cao hơn một năm trước '+nf((L.value-(Y?.value??L.value))*100,0)+' điểm cơ bản; lãi huy động 12 tháng '+nf(dep.at(-1)?.value,2)+'% (một năm trước '+nf(dep.find(r=>r.date.slice(0,7)===String(Number(dep.at(-1).date.slice(0,4))-1)+dep.at(-1).date.slice(4,7))?.value,2)+'%). Doanh nghiệp bảo hiểm để phần lớn quỹ vào tiền gửi và TPCP: lãi suất tăng kéo thu nhập đầu tư lên dần khi tiền gửi cũ đáo hạn và tái tục ở lãi mới — tác động trễ 2–4 quý, mạnh nhất với nhân thọ (quỹ lớn, kỳ hạn dài).');
 }
 if(NL.length&&document.getElementById('chFin')){

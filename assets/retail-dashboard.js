@@ -16,6 +16,7 @@ const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b76
 const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
 const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],ice:['ICE, CBOT, Bursa Malaysia',null],wi:['Nguồn công khai',null]};
+for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -87,7 +88,7 @@ if(rt.length&&document.getElementById('chRetail')){
  barLineChart('chRetail',{categories:rs.map(r=>mon(r.date)),series:[{name:'Tổng mức bán lẻ HH & DV',color:C.navy,values:rs.map(r=>r.value/1000)},{name:'Bán lẻ hàng hóa',color:C.teal,kind:'line',values:rs.map(r=>(gm[ym(r.date)]?.value??NaN)/1000)}],unit:'nghìn tỷ',digits:0,height:260,rotateLabels:true});
  legend('chRetail',[['Tổng mức bán lẻ HH & DV',C.navy],['Bán lẻ hàng hóa',C.teal]]);
  fillTable('tbl-retail',['Tháng','Tổng (nghìn tỷ)','YoY','Hàng hóa (nghìn tỷ)','YoY'],rt.slice().reverse().map(r=>{const g=gm[ym(r.date)];return [mon(r.date),nf(r.value/1000,1),signed(yoyAt(rt,r),1)+'%',nf((g?.value??NaN)/1000,1),signed(yoyAt(rg,g),1)+'%']}));
- sourceLine('chRetail',[SRC.nso,SRC.wi],mon(rt.at(-1).date),'Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng (74449), trong đó bán lẻ hàng hóa (74450); giá hiện hành, chưa loại trừ giá.');
+ sourceLine('chRetail',[SRC.nso],mon(rt.at(-1).date),'Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng, trong đó bán lẻ hàng hóa; giá hiện hành, chưa loại trừ giá.');
  insight('chRetail','Tổng mức bán lẻ lũy kế '+signed(ytdYo(rt),0)+'% danh nghĩa; NSO công bố loại trừ giá 9T/2026 +7,8%. Phần tăng thực ~8% là nền doanh thu của MWG, FRT, PNJ; phần còn lại là giá (CPI ~5%). Tháng gần nhất '+signed(yoyAt(rt,rt.at(-1)),0)+'% — tốc độ danh nghĩa cao nhất từ 2022.');
 }
 if(cpi.length&&document.getElementById('chCpi')){
@@ -95,14 +96,14 @@ if(cpi.length&&document.getElementById('chCpi')){
  barLineChart('chCpi',{categories:rs.map(r=>mon(r.date)),series:[{name:'CPI chung',color:C.navy,kind:'line',values:rs.map(r=>r.value)},{name:'Hàng ăn & dịch vụ ăn uống',color:C.gold,kind:'line',values:rs.map(r=>fm[ym(r.date)]?.value??null)},{name:'Đồ uống & thuốc lá',color:C.plum,kind:'line',values:rs.map(r=>bm[ym(r.date)]?.value??null)}],unit:'%',digits:1,height:260,rotateLabels:true,zeroBase:true});
  legend('chCpi',[['CPI chung',C.navy],['Hàng ăn, ăn uống',C.gold],['Đồ uống, thuốc lá',C.plum]]);
  fillTable('tbl-cpi',['Tháng','CPI chung','Hàng ăn & ăn uống','Đồ uống & thuốc lá'],cpi.slice().reverse().map(r=>[mon(r.date),nf(r.value,2)+'%',nf(fm[ym(r.date)]?.value,2)+'%',nf(bm[ym(r.date)]?.value,2)+'%']));
- sourceLine('chCpi',[SRC.nso,SRC.wi],mon(cpi.at(-1).date),'CPI so cùng kỳ (75701) và hai nhóm hàng liên quan tiêu dùng (75702, 75706).');
- insight('chCpi','CPI '+nf(cpi.at(-1).value,1)+'% là mức cao nhất từ 2020: giá tăng giúp doanh thu danh nghĩa của nhà bán lẻ đẹp hơn nhưng bào mòn sức mua thực; nhóm đồ uống tăng ~4,3% phản ánh thuế TTĐB bia từ 2026 bắt đầu vào giá bán.');
+ sourceLine('chCpi',[SRC.nso],mon(cpi.at(-1).date),'CPI so cùng kỳ và hai nhóm hàng liên quan tiêu dùng.');
+ insight('chCpi','CPI '+nf(cpi.at(-1).value,1)+'% là mức cao nhất kể từ đầu 2020: giá tăng giúp doanh thu danh nghĩa của nhà bán lẻ đẹp hơn nhưng bào mòn sức mua thực; nhóm đồ uống tăng ~4,3% phản ánh thuế TTĐB bia từ 2026 bắt đầu vào giá bán.');
 }
 if(tour.length&&document.getElementById('chTourist')){
  const rs=tour.slice(-36);
  barLineChart('chTourist',{categories:rs.map(r=>mon(r.date)),series:[{name:'Khách quốc tế',color:C.teal,values:rs.map(r=>r.value/1000)}],unit:'triệu lượt',digits:2,height:260,rotateLabels:true});
  fillTable('tbl-tourist',['Tháng','Triệu lượt','YoY'],tour.slice().reverse().map(r=>[mon(r.date),nf(r.value/1000,3),signed(yoyAt(tour,r),0)+'%']));
- sourceLine('chTourist',[SRC.nso,SRC.wi],mon(tour.at(-1).date),'Tổng khách quốc tế đến Việt Nam (81412).');
+ sourceLine('chTourist',[SRC.nso],mon(tour.at(-1).date),'Tổng khách quốc tế đến Việt Nam.');
  insight('chTourist','Khách quốc tế lũy kế '+signed(ytdYo(tour),0)+'% — kênh cầu thứ hai của ăn uống, trang sức (PNJ ở sân bay, trung tâm) và bia (SAB kênh on-trade). Mùa cao điểm quý IV–quý I quyết định doanh thu PNJ và SAB.');
 }
 if(dep.length&&document.getElementById('chCredit')){
@@ -110,7 +111,7 @@ if(dep.length&&document.getElementById('chCredit')){
  barLineChart('chCredit',{categories:rs.map(r=>mon(r.date)),series:[{name:'Tiền gửi dân cư YoY',color:C.navy,kind:'line',values:rs.map(r=>yoyAt(dep,r))},{name:'Tín dụng toàn nền kinh tế YoY',color:C.red,kind:'line',values:rs.map(r=>cm[ym(r.date)]?yoyAt(cred,cm[ym(r.date)]):null)}],unit:'%',digits:1,height:260,rotateLabels:true,zeroBase:true});
  legend('chCredit',[['Tiền gửi dân cư',C.navy],['Tín dụng',C.red]]);
  fillTable('tbl-credit',['Tháng','Tiền gửi dân cư (nghìn tỷ)','YoY','Tín dụng (nghìn tỷ)','YoY'],dep.slice().reverse().map(r=>{const c=cm[ym(r.date)];return [mon(r.date),nf(r.value/1000,0),signed(yoyAt(dep,r),1)+'%',nf((c?.value??NaN)/1000,0),signed(yoyAt(cred,c),1)+'%']}));
- sourceLine('chCredit',[SRC.sbv,SRC.wi],mon(dep.at(-1).date),'Tiền gửi của dân cư đã điều chỉnh (265987) và tổng tín dụng trong nền kinh tế (75931). Nguồn công khai chưa tách tín dụng tiêu dùng.');
+ sourceLine('chCredit',[SRC.sbv],mon(dep.at(-1).date),'Tiền gửi của dân cư đã điều chỉnh và tổng tín dụng trong nền kinh tế. Nguồn công khai chưa tách tín dụng tiêu dùng.');
  insight('chCredit','Tiền gửi dân cư '+signed(yoyAt(dep,dep.at(-1)),0)+'% và tín dụng '+signed(yoyAt(cred,cred.at(-1)),0)+'%: hộ gia đình vừa tiết kiệm nhiều hơn vừa vay nhiều hơn — tiền chưa chảy mạnh sang hàng lâu bền. Lãi suất huy động tăng gần 1 điểm % trong một năm là lực cản với ô tô, điện máy trả góp.');
 }
 // Hàng lâu bền: xe
@@ -120,14 +121,14 @@ if(car.length&&document.getElementById('chCar')){
  barLineChart('chCar',{categories:rs.map(r=>mon(r.date)),series:[{name:'Ô tô sản xuất (nghìn chiếc)',color:C.navy,values:rs.map(r=>r.value)},{name:'Nhập khẩu ô tô (chục triệu USD)',color:C.gold,kind:'line',values:rs.map(r=>(im[ym(r.date)]?.value??NaN)/10)}],unit:'',digits:0,height:260,rotateLabels:true});
  legend('chCar',[['Ô tô sản xuất, nghìn chiếc',C.navy],['Nhập khẩu ô tô, chục triệu USD',C.gold]]);
  fillTable('tbl-car',['Tháng','Ô tô SX (nghìn)','YoY','Nhập khẩu (triệu USD)','YoY'],car.slice().reverse().map(r=>{const i=im[ym(r.date)];return [mon(r.date),nf(r.value,1),signed(yoyAt(car,r),0)+'%',nf(i?.value,0),signed(yoyAt(cimp,i),0)+'%']}));
- sourceLine('chCar',[SRC.nso,SRC.customs,SRC.wi],mon(car.at(-1).date),'Sản lượng sản xuất ô tô (82112) và nhập khẩu ô tô nguyên chiếc (92797, chia 10 để cùng trục). Doanh số VAMA ở bảng Key players.');
+ sourceLine('chCar',[SRC.nso,SRC.customs],mon(car.at(-1).date),'Sản lượng sản xuất ô tô và nhập khẩu ô tô nguyên chiếc. Doanh số VAMA ở bảng Key players.');
  insight('chCar','Sản xuất ô tô lũy kế '+signed(ytdYo(car),0)+'%, nhập khẩu '+signed(ytdYo(cimp),0)+'%: cầu xe mới vẫn tăng hai chữ số, nghiêng về xe nhập và xe điện (lệ phí trước bạ 0% đến 2030). HAX, SVC bán xe xăng nhập nên hưởng phần nhập khẩu; xe điện VinFast không qua đại lý niêm yết.');
 }
 if(moto.length&&document.getElementById('chMoto')){
  const rs=moto.slice(-36);
  barLineChart('chMoto',{categories:rs.map(r=>mon(r.date)),series:[{name:'Xe máy sản xuất',color:C.teal,values:rs.map(r=>r.value)}],unit:'nghìn chiếc',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-moto',['Tháng','Nghìn chiếc','YoY'],moto.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),signed(yoyAt(moto,r),0)+'%']));
- sourceLine('chMoto',[SRC.nso,SRC.wi],mon(moto.at(-1).date),'Sản lượng sản xuất xe máy (82109). VAMM bán ra ở bảng Key players.');
+ sourceLine('chMoto',[SRC.nso],mon(moto.at(-1).date),'Sản lượng sản xuất xe máy. VAMM bán ra ở bảng Key players.');
  insight('chMoto','Xe máy lũy kế '+signed(ytdYo(moto),0)+'%: thị trường đã bão hòa, tăng thêm chủ yếu do xe điện; là chỉ báo sức mua nhóm thu nhập trung bình, cùng nhóm khách của điện máy trả góp.');
 }
 // Tiêu dùng nhanh
@@ -138,7 +139,7 @@ if(beer.length&&document.getElementById('chFmcgOut')){
  legend('chFmcgOut',[['Bia',C.gold],['Sữa tươi',C.navy]]);
  const pm=byMonth(mp);
  fillTable('tbl-fmcg-out',['Tháng','Bia (triệu lít)','YoY','Sữa tươi (triệu lít)','YoY','Sữa bột (nghìn tấn)'],beer.slice().reverse().map(r=>{const m=mm[ym(r.date)];return [mon(r.date),nf(r.value,0),signed(yoyAt(beer,r),0)+'%',nf(m?.value,0),signed(yoyAt(milk,m),0)+'%',nf(pm[ym(r.date)]?.value,1)]}));
- sourceLine('chFmcgOut',[SRC.nso,SRC.wi],mon(beer.at(-1).date),'Sản lượng công nghiệp bia (82086), sữa tươi (82116), sữa bột (82084). Sản lượng toàn ngành, không phải của SAB, VNM.');
+ sourceLine('chFmcgOut',[SRC.nso],mon(beer.at(-1).date),'Sản lượng công nghiệp bia, sữa tươi, sữa bột. Sản lượng toàn ngành, không phải của SAB, VNM.');
  insight('chFmcgOut','Bia lũy kế '+signed(ytdYo(beer),0)+'% — hồi mạnh sau hai năm giảm vì Nghị định 100 và sức mua; sữa tươi '+signed(ytdYo(milk),0)+'%. IIP đồ uống tháng gần nhất '+signed(iipB.at(-1)?.value,0)+'%: nhà máy chạy trước mùa Tết và trước khi thuế TTĐB bia tăng bậc 2027.');
 }
 if(iipF.length&&document.getElementById('chIip')){
@@ -146,7 +147,7 @@ if(iipF.length&&document.getElementById('chIip')){
  barLineChart('chIip',{categories:rs.map(r=>mon(r.date)),series:[{name:'Chế biến thực phẩm',color:C.navy,kind:'line',values:rs.map(r=>r.value)},{name:'Sản xuất đồ uống',color:C.gold,kind:'line',values:rs.map(r=>bm[ym(r.date)]?.value??null)}],unit:'%',digits:0,height:260,rotateLabels:true,zeroBase:false});
  legend('chIip',[['Chế biến thực phẩm',C.navy],['Đồ uống',C.gold]]);
  fillTable('tbl-iip',['Tháng','Thực phẩm YoY','Đồ uống YoY'],iipF.slice().reverse().map(r=>[mon(r.date),signed(r.value,1)+'%',signed(bm[ym(r.date)]?.value,1)+'%']));
- sourceLine('chIip',[SRC.nso,SRC.wi],mon(iipF.at(-1).date),'IIP sản xuất chế biến thực phẩm (202900) và đồ uống (202901), % so cùng kỳ.');
+ sourceLine('chIip',[SRC.nso],mon(iipF.at(-1).date),'IIP sản xuất chế biến thực phẩm và đồ uống, % so cùng kỳ.');
  insight('chIip','Thực phẩm '+signed(iipF.at(-1).value,0)+'%, đồ uống '+signed(iipB.at(-1).value,0)+'% tháng gần nhất — cả hai tăng hai chữ số liên tiếp từ tháng 7, là mức mạnh nhất kể từ 2022. Cầu nội địa và xuất khẩu thực phẩm (MSN, KDC, VNM) cùng tốt lên.');
 }
 const sugar=S('sugar'),palm=S('palm_oil'),soy=S('soymeal'),corn=S('corn');

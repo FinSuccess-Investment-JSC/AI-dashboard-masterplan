@@ -16,6 +16,7 @@ const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b76
 const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
 const SRC={customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],baltic:['Baltic Exchange','https://www.balticexchange.com/'],drewry:['Drewry WCI','https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry'],wi:['Nguồn công khai',null]};
+for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -85,7 +86,7 @@ if(ex.length&&document.getElementById('chTrade')){
  stack('chTrade',{categories:rs.map(r=>mon(r.date)),series:[{name:'Xuất khẩu',color:C.navy,values:rs.map(r=>r.value/1000)},{name:'Nhập khẩu',color:C.teal,values:rs.map(r=>imm[ym(r.date)]?imm[ym(r.date)].value/1000:null)}],unit:'tỷ USD',digits:1,aria:'Xuất nhập khẩu hàng hóa theo tháng'});
  legend('chTrade',[['Xuất khẩu',C.navy],['Nhập khẩu',C.teal]]);
  fillTable('tbl-trade',['Tháng','Xuất khẩu','Nhập khẩu','Tổng XNK','Tổng so cùng kỳ'],ex.slice().reverse().map(r=>{const i=imm[ym(r.date)]?.value,tot=i!=null?r.value+i:null,pr=ex.find(x=>x.date.slice(0,7)===String(Number(r.date.slice(0,4))-1)+r.date.slice(4,7)),pi=pr?imm[ym(pr.date)]?.value:null;return [mon(r.date),nf(r.value/1000,2),nf(i/1000,2),nf(tot/1000,2),pr&&pi!=null&&tot!=null?signed((tot/(pr.value+pi)-1)*100,1)+'%':'—']}));
- sourceLine('chTrade',[SRC.customs,SRC.wi],mon(ex.at(-1).date),'Xuất khẩu (83479) và nhập khẩu (92728) hàng hóa, triệu USD đổi sang tỷ USD. Giá trị USD, không phải sản lượng container: giá hàng tăng (điện tử) làm kim ngạch tăng nhanh hơn TEU.');
+ sourceLine('chTrade',[SRC.customs],mon(ex.at(-1).date),'Xuất khẩu và nhập khẩu hàng hóa, triệu USD đổi sang tỷ USD. Giá trị USD, không phải sản lượng container: giá hàng tăng (điện tử) làm kim ngạch tăng nhanh hơn TEU.');
  insight('chTrade','Kim ngạch XNK là chỉ báo cầu sớm nhất của cảng container, có hằng tháng trong khi sản lượng cảng chỉ công bố theo quý. Kim ngạch lũy kế 2026 tăng khoảng 30% trong khi TEU cả nước 5T chỉ +14% cho thấy phần lớn tăng trưởng đến từ hàng giá trị cao (điện tử, máy tính) ít container; vì vậy không suy thẳng TEU từ USD.');
 }
 // Hàng qua cảng toàn quốc (tài liệu)
@@ -125,7 +126,7 @@ if(ph.length&&document.getElementById('chPpi')){
  barLineChart('chPpi',{categories:rs.map(r=>qtr(r.date)),series:[{name:'Bốc xếp',color:C.navy,kind:'line',values:rs.map(r=>r.value)},{name:'Kho bãi, hỗ trợ vận tải',color:C.teal,kind:'line',values:rs.map(r=>wm[ym(r.date)]?.value??null)},{name:'Vận tải ven biển, viễn dương',color:C.plum,kind:'line',values:rs.map(r=>sm[ym(r.date)]?.value??null)}],unit:'%',digits:1,height:260,zeroBase:false,rotateLabels:false});
  legend('chPpi',[['Bốc xếp',C.navy],['Kho bãi, hỗ trợ vận tải',C.teal],['Vận tải ven biển, viễn dương',C.plum]]);
  fillTable('tbl-ppi',['Quý','Bốc xếp','Kho bãi','Vận tải biển'],ph.slice().reverse().map(r=>[qtr(r.date),nf(r.value,2),nf(wm[ym(r.date)]?.value,2),nf(sm[ym(r.date)]?.value,2)]));
- sourceLine('chPpi',[SRC.nso,SRC.wi],qtr(ph.at(-1).date),'Chỉ số giá sản xuất dịch vụ so cùng kỳ: bốc xếp hàng hóa (75667), kho bãi và hỗ trợ vận tải (75665), vận tải ven biển và viễn dương (75662).');
+ sourceLine('chPpi',[SRC.nso],qtr(ph.at(-1).date),'Chỉ số giá sản xuất dịch vụ so cùng kỳ: bốc xếp hàng hóa, kho bãi và hỗ trợ vận tải, vận tải ven biển và viễn dương.');
  insight('chPpi','Giá bốc xếp toàn quốc tăng 3–4% YoY từ Q2/2026, thấp hơn mức +10% của khung giá tàu mẹ vì chỉ số tính cả cảng hạ lưu, hàng rời, nơi giá không tăng. Giá vận tải biển tăng 12% cho thấy cước, thuê tàu đang cao: thuận cho HAH, nhưng là chi phí cho chủ hàng.');
 }
 // Cạnh tranh Cái Mép
@@ -143,15 +144,15 @@ if(sea.length&&document.getElementById('chSea')){
  barLineChart('chSea',{categories:rs.map(r=>mon(r.date)),series:[{name:'Đường biển',color:C.navy,values:rs.map(r=>r.value/1000)},{name:'Vận chuyển ngoài nước (mọi phương thức)',color:C.plum,kind:'line',values:rs.map(r=>om[ym(r.date)]?om[ym(r.date)].value/1000:null)}],unit:'triệu tấn',digits:1,height:260,rotateLabels:true});
  legend('chSea',[['Đường biển',C.navy],['Ngoài nước (mọi phương thức)',C.plum]]);
  fillTable('tbl-sea',['Tháng','Đường biển (triệu tấn)','So cùng kỳ','Ngoài nước (triệu tấn)'],sea.slice().reverse().map(r=>[mon(r.date),nf(r.value/1000,2),signed(yoyAt(sea,r),1)+'%',nf((om[ym(r.date)]?.value??NaN)/1000,2)]));
- sourceLine('chSea',[SRC.nso,SRC.wi],mon(sea.at(-1).date),'Khối lượng hàng hóa do doanh nghiệp vận tải Việt Nam chở bằng đường biển (82585) và vận chuyển ngoài nước (82583). Không phải hàng qua cảng: hãng tàu nước ngoài chở phần lớn hàng XNK.');
- insight('chSea','Chuỗi này đo việc làm của đội tàu Việt Nam (HAH, VOS, PVT…), không đo sản lượng cảng. Lũy kế 9T tăng gần 10% (chuyến ngoài nước +12%) nghĩa là đội tàu trong nước đang chạy đầy, hỗ trợ cước và giá thuê tàu nội Á.');
+ sourceLine('chSea',[SRC.nso],mon(sea.at(-1).date),'Khối lượng hàng hóa do doanh nghiệp vận tải Việt Nam chở bằng đường biển và vận chuyển ngoài nước. Không phải hàng qua cảng: hãng tàu nước ngoài chở phần lớn hàng XNK.');
+ insight('chSea','Chuỗi này đo việc làm của đội tàu Việt Nam (HAH, VOS, PVT…), không đo sản lượng cảng. Lũy kế '+signed(ytdYo(sea),0)+'% (chuyến ngoài nước '+signed(ytdYo(S('overseas_freight')),0)+'%) nghĩa là đội tàu trong nước đang chạy đầy, hỗ trợ cước và giá thuê tàu nội Á.');
 }
 // BDI
 const bdi=S('bdi');
 if(bdi.length&&document.getElementById('chBdi')){
  barLineChart('chBdi',{categories:bdi.map(r=>mon(r.date)),series:[{name:'BDI',color:C.gold,kind:'line',values:bdi.map(r=>r.value)}],unit:'điểm',digits:0,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-bdi',['Kỳ','Điểm','So cùng kỳ'],bdi.slice().reverse().map(r=>[short(r.date),nf(r.value,0),signed(yoyAt(bdi,r),1)+'%']));
- sourceLine('chBdi',[SRC.baltic,SRC.wi],short(bdi.at(-1).date),'Baltic Dry Index (73982), Nguồn nén chuỗi ngày về điểm cuối tháng. Chỉ số tàu hàng rời, không dùng cho tàu container.');
+ sourceLine('chBdi',[SRC.baltic],short(bdi.at(-1).date),'Baltic Dry Index, nén chuỗi ngày về điểm cuối tháng. Chỉ số tàu hàng rời, không dùng cho tàu container.');
  insight('chBdi','BDI đo cước hàng rời (than, quặng, ngũ cốc): liên quan tới cảng tổng hợp (CDN, SGP thép, PDN) hơn là cảng container. BDI cao hơn cùng kỳ khoảng 50% phản ánh cầu nguyên liệu và tàu chạy vòng xa.');
 }
 // Hàng không, thủy nội địa
@@ -160,7 +161,7 @@ if(air.length&&document.getElementById('chAir')){
  const rs=air.slice(-36);
  barLineChart('chAir',{categories:rs.map(r=>mon(r.date)),series:[{name:'Hàng không',color:C.teal,values:rs.map(r=>r.value)}],unit:'nghìn tấn',digits:1,height:260,rotateLabels:true});
  fillTable('tbl-air',['Tháng','Nghìn tấn','So cùng kỳ'],air.slice().reverse().map(r=>[mon(r.date),nf(r.value,1),signed(yoyAt(air,r),1)+'%']));
- sourceLine('chAir',[SRC.nso,SRC.wi],mon(air.at(-1).date),'Hàng hóa do hãng hàng không Việt Nam vận chuyển (82588). Không gồm hãng nước ngoài, nên không bằng sản lượng nhà ga SCS.');
+ sourceLine('chAir',[SRC.nso],mon(air.at(-1).date),'Hàng hóa do hãng hàng không Việt Nam vận chuyển. Không gồm hãng nước ngoài, nên không bằng sản lượng nhà ga SCS.');
  insight('chAir','Hãng Việt Nam chỉ chở một phần hàng quốc tế, nên chuỗi này là chỉ báo xu hướng chứ không phải sản lượng SCS. Lũy kế 9T chỉ +2% trong khi sản lượng SCS Q2/2026 giảm 8%: hàng quốc tế qua hãng nước ngoài (tuyến Trung Đông) là phần yếu.');
 }
 const inl=S('inland_freight');
@@ -168,7 +169,7 @@ if(inl.length&&document.getElementById('chInland')){
  const rs=inl.slice(-36);
  barLineChart('chInland',{categories:rs.map(r=>mon(r.date)),series:[{name:'Thủy nội địa',color:C.navy,values:rs.map(r=>r.value/1000)}],unit:'triệu tấn',digits:1,height:260,rotateLabels:true});
  fillTable('tbl-inland',['Tháng','Triệu tấn','So cùng kỳ'],inl.slice().reverse().map(r=>[mon(r.date),nf(r.value/1000,2),signed(yoyAt(inl,r),1)+'%']));
- sourceLine('chInland',[SRC.nso,SRC.wi],mon(inl.at(-1).date),'Hàng hóa vận chuyển đường thủy nội địa (82586), gồm cả vật liệu xây dựng, không riêng container.');
+ sourceLine('chInland',[SRC.nso],mon(inl.at(-1).date),'Hàng hóa vận chuyển đường thủy nội địa, gồm cả vật liệu xây dựng, không riêng container.');
  insight('chInland','Sà lan là đường nối Cái Mép với Cát Lái, ICD Thủ Đức, Bình Dương: tăng nhanh nghĩa là hàng tàu mẹ cần nhiều kho bãi, depot (TCL, STG). Chuỗi gồm cả cát, đá xây dựng nên chỉ đọc xu hướng.');
 }
 // P/E ngành

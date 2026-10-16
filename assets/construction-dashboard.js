@@ -16,6 +16,7 @@ const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b76
 const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
 const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],moc:['Sở Xây dựng (công bố giá)','https://moc.gov.vn/'],wi:['Nguồn công khai',null]};
+for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -98,14 +99,14 @@ if(rolled.length&&document.getElementById('chSteelOut')){
  barLineChart('chSteelOut',{categories:rs.map(r=>mon(r.date)),series:[{name:'Thép cán',color:C.navy,values:rs.map(r=>r.value)},{name:'Thép thanh, thép góc',color:C.teal,kind:'line',values:rs.map(r=>bm[ym(r.date)]?.value??null)}],unit:'nghìn tấn',digits:0,height:260,rotateLabels:true});
  legend('chSteelOut',[['Thép cán',C.navy],['Thép thanh, thép góc',C.teal]]);
  fillTable('tbl-steel-out',['Tháng','Thép cán (nghìn tấn)','YoY','Thép thanh, góc (nghìn tấn)','YoY'],rolled.slice().reverse().map(r=>{const b=bm[ym(r.date)];return [mon(r.date),nf(r.value,0),signed(yoyAt(rolled,r),1)+'%',nf(b?.value,0),signed(yoyAt(bar,b),1)+'%']}));
- sourceLine('chSteelOut',[SRC.nso,SRC.wi],mon(rolled.at(-1).date),'Sản lượng công nghiệp: thép cán (82123), thép thanh, thép góc (82124). Sản lượng sản xuất, không phải tiêu thụ; thép thanh, góc là phần dùng cho xây dựng.');
+ sourceLine('chSteelOut',[SRC.nso],mon(rolled.at(-1).date),'Sản lượng công nghiệp: thép cán, thép thanh, thép góc. Sản lượng sản xuất, không phải tiêu thụ; thép thanh, góc là phần dùng cho xây dựng.');
  insight('chSteelOut','Lũy kế thép cán '+signed(ytdYo(rolled),0)+'%, thép thanh, góc '+signed(ytdYo(bar),0)+'%: phần thép xây dựng tăng chậm hơn tổng vì phần tăng mạnh là HRC từ Dung Quất 2. Thép thanh tháng 7–9 cao hơn cùng kỳ 20–30% — cầu xây dựng đã hồi, khớp với giải ngân đầu tư công tăng.');
 }
 if(sexp.length&&document.getElementById('chSteelExp')){
  const rs=sexp.slice(-36);
  barLineChart('chSteelExp',{categories:rs.map(r=>mon(r.date)),series:[{name:'Xuất khẩu sắt thép',color:C.gold,values:rs.map(r=>r.value)}],unit:'triệu USD',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-steel-exp',['Tháng','Triệu USD','YoY'],sexp.slice().reverse().map(r=>[mon(r.date),nf(r.value,1),signed(yoyAt(sexp,r),0)+'%']));
- sourceLine('chSteelExp',[SRC.customs,SRC.wi],mon(sexp.at(-1).date),'Mã 87985 trong bảng xuất khẩu theo mặt hàng. Chuỗi này nhỏ hơn nhiều số Hải quan công bố cho "sắt thép các loại" (vài trăm triệu USD/tháng) — nhiều khả năng chỉ là một thị trường hoặc một nhóm hàng; dùng để xem xu hướng, chưa đối chiếu được phạm vi.');
+ sourceLine('chSteelExp',[SRC.customs],mon(sexp.at(-1).date),'Mã 87985 trong bảng xuất khẩu theo mặt hàng. Chuỗi này nhỏ hơn nhiều số Hải quan công bố cho "sắt thép các loại" (vài trăm triệu USD/tháng) — nhiều khả năng chỉ là một thị trường hoặc một nhóm hàng; dùng để xem xu hướng, chưa đối chiếu được phạm vi.');
  insight('chSteelExp','Tháng 7–8/2026 cao gấp 3–4 lần cùng kỳ, sau một năm 2025 rất thấp vì Mỹ nâng thuế Mục 232 lên 50% và EU siết hạn ngạch. Mức tăng chủ yếu do nền thấp; xuất khẩu thép vẫn là kênh xả hàng khi cầu trong nước yếu, không phải động lực chính.');
 }
 // Xi măng & VLXD
@@ -115,14 +116,14 @@ if(cem.length&&document.getElementById('chCement')){
  barLineChart('chCement',{categories:rs.map(r=>mon(r.date)),series:[{name:'Xi măng',color:C.navy,values:rs.map(r=>r.value)}],unit:'triệu tấn',digits:1,height:260,rotateLabels:true});
  const im=byMonth(iipN);
  fillTable('tbl-cement',['Tháng','Sản lượng (triệu tấn)','YoY','IIP khoáng phi kim YoY'],cem.slice().reverse().map(r=>[mon(r.date),nf(r.value,2),signed(yoyAt(cem,r),1)+'%',signed(im[ym(r.date)]?.value,1)+'%']));
- sourceLine('chCement',[SRC.nso,SRC.wi],mon(cem.at(-1).date),'Sản lượng xi măng (82101). Bảng kèm IIP sản xuất sản phẩm từ khoáng phi kim (202913) — gộp xi măng, gạch, kính, không tách được. Chuỗi xi măng có tháng nhảy bất thường (vd T3/2026 16,6 triệu tấn rồi T4 10,5) do cách NSO cập nhật ước tính; đọc theo lũy kế.');
+ sourceLine('chCement',[SRC.nso],mon(cem.at(-1).date),'Sản lượng xi măng. Bảng kèm IIP sản xuất sản phẩm từ khoáng phi kim — gộp xi măng, gạch, kính, không tách được. Chuỗi xi măng có tháng nhảy bất thường (vd T3/2026 16,6 triệu tấn rồi T4 10,5) do cách NSO cập nhật ước tính; đọc theo lũy kế.');
  insight('chCement','Lũy kế xi măng '+signed(ytdYo(cem),0)+'%, IIP khoáng phi kim tháng gần nhất '+signed(iipN.at(-1)?.value,0)+'%. Sản lượng tăng nhưng ngành vẫn dư công suất (công suất trên 130 triệu tấn/năm, tiêu thụ nội địa 2025 ước 75 triệu tấn, xuất khẩu 37,5 triệu tấn) — giá khó tăng mạnh, biên phụ thuộc giá than.');
 }
 if(cexp.length&&document.getElementById('chCementExp')){
  const rs=cexp.slice(-36);
  barLineChart('chCementExp',{categories:rs.map(r=>mon(r.date)),series:[{name:'Clinker và xi măng',color:C.teal,values:rs.map(r=>r.value)}],unit:'triệu USD',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-cement-exp',['Tháng','Triệu USD','YoY'],cexp.slice().reverse().map(r=>[mon(r.date),nf(r.value,1),signed(yoyAt(cexp,r),0)+'%']));
- sourceLine('chCementExp',[SRC.customs,SRC.wi],mon(cexp.at(-1).date),'Xuất khẩu clinker và xi măng (83511), giá trị USD.');
+ sourceLine('chCementExp',[SRC.customs],mon(cexp.at(-1).date),'Xuất khẩu clinker và xi măng, giá trị USD.');
  insight('chCementExp','Lũy kế xuất khẩu '+signed(ytdYo(cexp),0)+'%. Xuất khẩu là van xả cho phần dư công suất, biên thấp hơn bán trong nước; khi giá than tăng, xuất khẩu clinker gần như hòa vốn.');
 }
 const cp=S('cement_price'),stone=S('stone_1x2'),asph=S('asphalt'),coal=S('coal_newcastle');
@@ -142,14 +143,14 @@ if(cred.length&&document.getElementById('chCredit')){
  const rs=cred.slice(-36);
  barLineChart('chCredit',{categories:rs.map(r=>mon(r.date)),series:[{name:'Dư nợ tín dụng xây dựng',color:C.navy,values:rs.map(r=>r.value/1000)}],unit:'nghìn tỷ',digits:0,height:260,rotateLabels:true,zeroBase:false});
  fillTable('tbl-credit',['Tháng','Dư nợ (nghìn tỷ)','YoY'],cred.slice().reverse().map(r=>[mon(r.date),nf(r.value/1000,0),signed(yoyAt(cred,r),1)+'%']));
- sourceLine('chCredit',[SRC.sbv,SRC.wi],mon(cred.at(-1).date),'Dư nợ tín dụng ngành xây dựng (75926), cuối tháng.');
+ sourceLine('chCredit',[SRC.sbv],mon(cred.at(-1).date),'Dư nợ tín dụng ngành xây dựng, cuối tháng.');
  insight('chCredit','Tín dụng xây dựng '+signed(yoyAt(cred,cred.at(-1)),0)+'% YoY, nhanh hơn tăng trưởng tín dụng chung: nhà thầu vay vốn lưu động theo khối lượng đầu tư công và nhà ở. Mặt trái là nợ vay và phải thu của nhà thầu tăng cùng (xem Key players).');
 }
 if(gdpN.length&&document.getElementById('chGdpCons')){
  const rs=gdpN.filter(r=>r.date>='2022-01').map(r=>({date:r.date,value:yoyAt(gdpN,r)})).filter(r=>r.value!=null);
  barLineChart('chGdpCons',{categories:rs.map(r=>qtr(r.date)),series:[{name:'GDP xây dựng lũy kế, giá hiện hành',color:C.teal,values:rs.map(r=>r.value)}],unit:'%',digits:1,height:260,rotateLabels:false});
  fillTable('tbl-gdp-cons',['Kỳ (lũy kế)','GDP xây dựng giá hiện hành (nghìn tỷ)','YoY'],gdpN.slice().reverse().map(r=>[qtr(r.date),nf(r.value/1000,0),signed(yoyAt(gdpN,r),1)+'%']));
- sourceLine('chGdpCons',[SRC.nso,SRC.wi],qtr(gdpN.at(-1).date),'GDP ngành xây dựng giá hiện hành, lũy kế từ đầu năm (79913), % so cùng kỳ. Không vẽ chuỗi giá so sánh (80109): năm 2026 nhảy +60% so cùng kỳ, nhiều khả năng đổi năm gốc, không so được với các năm trước.');
+ sourceLine('chGdpCons',[SRC.nso],qtr(gdpN.at(-1).date),'GDP ngành xây dựng giá hiện hành, lũy kế từ đầu năm, % so cùng kỳ. Không vẽ chuỗi giá so sánh: năm 2026 nhảy +60% so cùng kỳ, nhiều khả năng đổi năm gốc, không so được với các năm trước.');
  insight('chGdpCons','GDP xây dựng giá hiện hành 9T/2026 '+signed(yoyAt(gdpN,gdpN.at(-1)),0)+'%, nhanh nhất từ 2022. Phần tăng gồm cả giá vật liệu; khối lượng thực tăng ít hơn.');
 }
 // Định giá
@@ -171,7 +172,7 @@ if(pi.length&&document.getElementById('chPubInv')){
  legend('chPubInv',[['Trung ương',C.navy],['Địa phương',C.teal]]);
  const cm=byMonth(piC);
  fillTable('tbl-pub-inv',['Tháng','Tổng (nghìn tỷ)','YoY','Trung ương','Địa phương','Bộ Xây dựng'],pi.slice().reverse().map(r=>{const k=ym(r.date),mm=byMonth(piM)[k];return [mon(r.date),nf(r.value/1000,1),signed(yoyAt(pi,r),1)+'%',nf((cm[k]?.value??NaN)/1000,1),nf((lm[k]?.value??NaN)/1000,1),nf((mm?.value??NaN)/1000,2)]}));
- sourceLine('chPubInv',[SRC.nso,SRC.wi],mon(pi.at(-1).date),'Vốn đầu tư thực hiện từ ngân sách Nhà nước trong tháng (76847), tách Trung ương (76848) và địa phương (76859). Đây là số NSO thống kê, khác số giải ngân Bộ Tài chính báo cáo theo kế hoạch vốn (xem bảng dưới).');
+ sourceLine('chPubInv',[SRC.nso],mon(pi.at(-1).date),'Vốn đầu tư thực hiện từ ngân sách Nhà nước trong tháng, tách Trung ương và địa phương. Đây là số NSO thống kê, khác số giải ngân Bộ Tài chính báo cáo theo kế hoạch vốn (xem bảng dưới).');
  const L=pi.at(-1),y=L.date.slice(0,4),m=L.date.slice(5,7);
  insight('chPubInv','9T/'+y+' vốn NSNN thực hiện '+nf(ytdSum(pi,y,m)/1000,0)+' nghìn tỷ, '+signed(ytdYo(pi),0)+'% so cùng kỳ; tháng '+Number(m)+' '+signed(yoyAt(pi,L),0)+'%. Địa phương chiếm ~85% và tăng nhanh — sau sáp nhập tỉnh, vốn dồn vào dự án liên tỉnh, vành đai. Vốn Trung ương qua Bộ Xây dựng (gồm cao tốc) lại thấp hơn năm ngoái: các dự án cao tốc lớn đã qua đỉnh giải ngân, nhóm mới (đường sắt) chưa vào khối lượng.');
 }
@@ -181,8 +182,8 @@ if(pi.length&&document.getElementById('chPubYtd')){
  barLineChart('chPubYtd',{categories:Array.from({length:12},(_,i)=>'T'+(i+1)),series:years.map((y,i)=>({name:y,color:cols[i],kind:'line',values:cum(y)})),unit:'nghìn tỷ',digits:0,height:260,zeroBase:true,rotateLabels:false});
  legend('chPubYtd',years.map((y,i)=>[y,cols[i]]));
  fillTable('tbl-pub-ytd',['Tháng',...years],Array.from({length:12},(_,i)=>['T'+(i+1),...years.map(y=>nf(cum(y)[i],0))]));
- sourceLine('chPubYtd',[SRC.nso,SRC.wi],mon(pi.at(-1).date),'Cộng dồn vốn NSNN thực hiện theo tháng (76847) cho từng năm.');
- insight('chPubYtd','Đường 2026 nằm trên mọi năm trước từ tháng 2 và khoảng cách với 2025 đang mở rộng. Theo mùa vụ, quý IV thường chiếm 30–35% cả năm — nếu giữ nhịp, cả năm 2026 vượt 1 triệu tỷ.');
+ sourceLine('chPubYtd',[SRC.nso],mon(pi.at(-1).date),'Cộng dồn vốn NSNN thực hiện theo tháng cho từng năm.');
+ insight('chPubYtd','Đường 2026 nằm trên mọi năm trước từ tháng 2 và khoảng cách với 2025 đang mở rộng. Theo mùa vụ, quý IV thường chiếm 30–35% cả năm, nên cả năm 2026 có thể quanh 0,95–1 triệu tỷ nếu giữ nhịp.');
 }
 
 // Tài liệu: cung – cầu xi măng, kế hoạch so giải ngân (số có evidence)

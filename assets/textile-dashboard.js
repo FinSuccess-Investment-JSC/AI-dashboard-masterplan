@@ -15,6 +15,7 @@ const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b76
 const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
 const SRC={customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],census:['US Census · bán lẻ','https://www.census.gov/retail/'],ice:['IMF Primary Commodity Prices (FRED)','https://fred.stlouisfed.org/series/PCOTTINDUSDM'],wi:['Nguồn công khai',null]};
+for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 const S=k=>macro[k]?.records||[],P=k=>com[k]?.records||[];
 // Month-end key so daily commodity points and month-start macro points share one axis.
 const ym=d=>d.slice(0,7);
@@ -86,7 +87,7 @@ if(exp.length&&document.getElementById('chExport')){
  const rs=exp.slice(-36);
  barLineChart('chExport',{categories:rs.map(r=>mon(r.date)),series:[{name:'XK hàng dệt, may',color:C.navy,values:rs.map(r=>r.value)}],unit:'triệu USD',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-export',['Tháng','Triệu USD','So cùng kỳ'],exp.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),signed(yoyAt(exp,r),1)+'%']));
- sourceLine('chExport',[SRC.customs,SRC.wi],mon(exp.at(-1).date),'Kim ngạch xuất khẩu nhóm "Hàng dệt, may" theo hải quan (chỉ tiêu 83528). Không gồm xơ sợi, vải, nguyên phụ liệu; VITAS công bố "toàn ngành" gồm cả các nhóm này nên con số lớn hơn.');
+ sourceLine('chExport',[SRC.customs],mon(exp.at(-1).date),'Kim ngạch xuất khẩu nhóm "Hàng dệt, may" theo hải quan. Không gồm xơ sợi, vải, nguyên phụ liệu; VITAS công bố "toàn ngành" gồm cả các nhóm này nên con số lớn hơn.');
  insight('chExport','Đây là doanh thu gộp của khâu may. Tháng 1–2 nhiễu vì Tết; so cùng kỳ quan trọng hơn so tháng trước. Xuất khẩu tăng nhưng đơn giá giảm (nhập khẩu may mặc của Mỹ: Việt Nam +1,1% giá trị, +3,3% lượng 6T/2026) nghĩa là doanh nghiệp đang giữ đơn bằng giá.');
 }
 // Theo thị trường
@@ -98,7 +99,7 @@ if(us.length&&exp.length&&document.getElementById('chExportMkt')){
  stack('chExportMkt',{categories:rs.map(r=>mon(r.date)),series:[{name:'Mỹ',color:C.navy,values:rs.map(r=>r.value)},{name:'Nhật Bản',color:C.gold,values:rs.map(r=>v(jm,r))},{name:'Hàn Quốc',color:C.teal,values:rs.map(r=>v(km,r))},{name:'Trung Quốc',color:C.red,values:rs.map(r=>v(cm,r))},{name:'Khác (EU, Canada, Anh…)',color:C.grey,values:rest}],unit:'triệu USD',digits:0,aria:'Xuất khẩu dệt may theo thị trường'});
  legend('chExportMkt',[['Mỹ',C.navy],['Nhật Bản',C.gold],['Hàn Quốc',C.teal],['Trung Quốc',C.red],['Khác (EU, Canada, Anh…)',C.grey]]);
  fillTable('tbl-export-mkt',['Tháng','Mỹ','Nhật Bản','Hàn Quốc','Trung Quốc','Khác','Tỷ trọng Mỹ'],us.slice().reverse().map(r=>{const t=em[ym(r.date)],j=v(jm,r),k=v(km,r),c=v(cm,r);return [mon(r.date),nf(r.value,0),nf(j,0),nf(k,0),nf(c,0),t&&j!=null&&k!=null&&c!=null?nf(t.value-r.value-j-k-c,0):'—',t?nf(r.value/t.value*100,1)+'%':'—']}));
- sourceLine('chExportMkt',[SRC.customs,SRC.wi],mon(us.at(-1).date),'Hàng dệt, may sang Hoa Kỳ (87978), Nhật Bản (88750), Hàn Quốc (88065), Trung Quốc (88023); "khác" = tổng (83528) trừ bốn nước. Nguồn chỉ có số theo tháng cho các nước này; EU, Canada, Anh có số theo năm ở tab XK & thuế quan.');
+ sourceLine('chExportMkt',[SRC.customs],mon(us.at(-1).date),'Hàng dệt, may sang Hoa Kỳ, Nhật Bản, Hàn Quốc, Trung Quốc; "khác" = tổng trừ bốn nước. Nguồn chỉ có số theo tháng cho các nước này; EU, Canada, Anh có số theo năm ở tab XK & thuế quan.');
  insight('chExportMkt','Mỹ chiếm khoảng một nửa kim ngạch nên thuế Mỹ quyết định nhịp ngành. Tỷ trọng Mỹ tăng trước các mốc thuế (giao hàng sớm) rồi giảm sau; theo dõi tỷ trọng Mỹ sau 24/07/2026 khi thuế Mục 301 12,5% có hiệu lực.');
 }
 // Sản lượng quần áo & IIP
@@ -108,7 +109,7 @@ if(gar.length&&document.getElementById('chGarment')){
  barLineChart('chGarment',{categories:rs.map(r=>mon(r.date)),series:[{name:'Quần áo mặc thường (triệu cái)',color:C.teal,values:rs.map(r=>r.value)},{name:'IIP trang phục YoY (%) ×10',color:C.plum,kind:'line',values:rs.map(r=>im[ym(r.date)]?im[ym(r.date)].value*10:null)}],unit:'',digits:0,height:260,rotateLabels:true});
  legend('chGarment',[['Quần áo (triệu cái)',C.teal],['IIP trang phục YoY ×10',C.plum]]);
  fillTable('tbl-garment',['Tháng','Quần áo (triệu cái)','IIP trang phục YoY (%)'],gar.slice().reverse().map(r=>[mon(r.date),nf(r.value,1),nf(im[ym(r.date)]?.value,2)]));
- sourceLine('chGarment',[SRC.nso,SRC.wi],mon(gar.at(-1).date),'Sản lượng quần áo mặc thường (82090) và IIP sản xuất trang phục so cùng kỳ (202904). IIP nhân 10 để cùng trục.');
+ sourceLine('chGarment',[SRC.nso],mon(gar.at(-1).date),'Sản lượng quần áo mặc thường và IIP sản xuất trang phục so cùng kỳ. IIP nhân 10 để cùng trục.');
  insight('chGarment','Sản lượng đo việc làm của nhà máy, xuất khẩu đo doanh thu: sản lượng tăng nhanh hơn kim ngạch nghĩa là đơn giá gia công đang giảm hoặc chuyển sang hàng đơn giản.');
 }
 // Nhập khẩu nguyên liệu
@@ -118,7 +119,7 @@ if(S('imp_fabric').length&&document.getElementById('chImport')){
  stack('chImport',{categories:base.map(r=>mon(r.date)),series:imp.map(([k,n,c],i)=>({name:n,color:c,values:base.map(r=>maps[i][ym(r.date)]?.value??null)})),unit:'triệu USD',digits:0,aria:'Nhập khẩu nguyên liệu dệt may'});
  legend('chImport',imp.map(([,n,c])=>[n,c]));
  fillTable('tbl-import',['Tháng',...imp.map(x=>x[1])],S('imp_fabric').slice().reverse().map(r=>[mon(r.date),...maps.map(m=>nf(m[ym(r.date)]?.value,0))]));
- sourceLine('chImport',[SRC.customs,SRC.wi],mon(S('imp_fabric').at(-1).date),'Nhập khẩu vải (92752), nguyên phụ liệu dệt may da giày (92769, gồm cả da giày), bông (92778), xơ sợi (92787).');
+ sourceLine('chImport',[SRC.customs],mon(S('imp_fabric').at(-1).date),'Nhập khẩu vải, nguyên phụ liệu dệt may da giày, bông, xơ sợi.');
  insight('chImport','Nhập vải và phụ liệu là chỉ báo đơn hàng sớm 1–2 tháng của khâu may: nhà may nhập vải trước khi cắt may. Nhập bông là chỉ báo sản lượng của nhà sợi bông như ADS.');
 }
 // Sợi
@@ -127,7 +128,7 @@ if(yx.length&&document.getElementById('chYarnExp')){
  const rs=yx.slice(-36);
  barLineChart('chYarnExp',{categories:rs.map(r=>mon(r.date)),series:[{name:'XK xơ, sợi dệt',color:C.plum,values:rs.map(r=>r.value)}],unit:'triệu USD',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-yarn-exp',['Tháng','Triệu USD','So cùng kỳ','Sang Mỹ (triệu USD)'],yx.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),signed(yoyAt(yx,r),1)+'%',nf(byMonth(S('exp_yarn_us'))[ym(r.date)]?.value,1)]));
- sourceLine('chYarnExp',[SRC.customs,SRC.wi],mon(yx.at(-1).date),'Xuất khẩu xơ, sợi dệt các loại (83527); cột sang Mỹ (87977). Thị trường chính của sợi Việt Nam là Trung Quốc, Hàn Quốc, Thổ Nhĩ Kỳ; Nguồn chưa có chuỗi theo các nước này trong contract.');
+ sourceLine('chYarnExp',[SRC.customs],mon(yx.at(-1).date),'Xuất khẩu xơ, sợi dệt các loại; cột sang Mỹ. Thị trường chính của sợi Việt Nam là Trung Quốc, Hàn Quốc, Thổ Nhĩ Kỳ; Nguồn chưa có chuỗi theo các nước này trong contract.');
  insight('chYarnExp','Kim ngạch sợi đi theo giá xơ và cầu dệt của Trung Quốc nhiều hơn theo đơn may Mỹ. Với STK, phần xuất khẩu chịu rủi ro điều tra chống bán phá giá sợi polyester ở Mỹ, Thổ Nhĩ Kỳ, Ấn Độ.');
 }
 const fn=S('fabric_natural'),fs=S('fabric_synthetic'),iipT=S('iip_textile');
@@ -136,7 +137,7 @@ if(fn.length&&document.getElementById('chFabric')){
  stack('chFabric',{categories:rs.map(r=>mon(r.date)),series:[{name:'Vải từ sợi tự nhiên',color:C.teal,values:rs.map(r=>r.value)},{name:'Vải từ sợi tổng hợp, nhân tạo',color:C.navy,values:rs.map(r=>sm[ym(r.date)]?.value??null)}],unit:'triệu m²',digits:1,aria:'Sản lượng vải'});
  legend('chFabric',[['Sợi tự nhiên',C.teal],['Sợi tổng hợp, nhân tạo',C.navy]]);
  fillTable('tbl-fabric',['Tháng','Vải tự nhiên','Vải tổng hợp','IIP dệt YoY (%)'],fn.slice().reverse().map(r=>[mon(r.date),nf(r.value,1),nf(sm[ym(r.date)]?.value,1),nf(im[ym(r.date)]?.value,2)]));
- sourceLine('chFabric',[SRC.nso,SRC.wi],mon(fn.at(-1).date),'Sản lượng vải (82088, 82089) và IIP ngành dệt so cùng kỳ (202903). Hai loại vải khác nguyên liệu, cộng lại chỉ để xem tổng khối lượng.');
+ sourceLine('chFabric',[SRC.nso],mon(fn.at(-1).date),'Sản lượng vải và IIP ngành dệt so cùng kỳ. Hai loại vải khác nguyên liệu, cộng lại chỉ để xem tổng khối lượng.');
  insight('chFabric','Vải tổng hợp là đầu ra của sợi polyester (STK); vải tự nhiên dùng sợi bông (ADS). Sản lượng vải trong nước tăng là điều kiện để nhà may giảm phụ thuộc vải Trung Quốc và đáp ứng quy tắc xuất xứ.');
 }
 // Giá
@@ -183,7 +184,7 @@ if(ur.length&&document.getElementById('chUsRetail')){
  barLineChart('chUsRetail',{categories:rs.map(r=>mon(r.date)),series:[{name:'Bán lẻ quần áo (tỷ USD)',color:C.navy,values:rs.map(r=>r.value)},{name:'So cùng kỳ (%)',color:C.plum,kind:'line',values:rs.map(r=>ymap[ym(r.date)]?.value??null)}],unit:'',digits:1,height:260,rotateLabels:true});
  legend('chUsRetail',[['Bán lẻ quần áo, phụ kiện (tỷ USD)',C.navy],['So cùng kỳ (%)',C.plum]]);
  fillTable('tbl-us-retail',['Tháng','Tỷ USD','So cùng kỳ (%)'],ur.slice().reverse().map(r=>[mon(r.date),nf(r.value,2),nf(ymap[ym(r.date)]?.value,2)]));
- sourceLine('chUsRetail',[SRC.census,SRC.wi],mon(ur.at(-1).date),'Doanh thu bán lẻ nhóm quần áo và phụ kiện của Mỹ (chỉ tiêu 652, so cùng kỳ 348). Giá trị danh nghĩa, gồm cả lạm phát giá quần áo.');
+ sourceLine('chUsRetail',[SRC.census],mon(ur.at(-1).date),'Doanh thu bán lẻ nhóm quần áo và phụ kiện của Mỹ (chỉ tiêu 652, so cùng kỳ 348). Giá trị danh nghĩa, gồm cả lạm phát giá quần áo.');
  insight('chUsRetail','Bán lẻ quần áo Mỹ là cầu cuối cùng của khoảng một nửa kim ngạch dệt may Việt Nam. Tăng trưởng dương và ổn định giúp nhãn hàng giải phóng tồn kho rồi đặt đơn mới sau 1–2 quý.');
 }
 // ---------- Document figures (data/textile/*.json, mirrored in the HTML tables) ----------
@@ -231,7 +232,7 @@ if(S('y_us').length&&document.getElementById('chMktYear')){
  stack('chMktYear',{categories:ys,series:yk.map(([k,n,c],i)=>({name:n,color:c,values:ys.map(y=>at(i,y))})),unit:'triệu USD',digits:0,aria:'Xuất khẩu dệt may theo thị trường theo năm'});
  legend('chMktYear',yk.map(([,n,c])=>[n,c]));
  fillTable('tbl-mkt-year',['Năm',...yk.map(x=>x[1]),'Tăng Mỹ YoY'],ys.slice().reverse().map(y=>[y,...yk.map((_,i)=>nf(at(i,y),0)),at(0,String(y-1))?signed((at(0,y)/at(0,String(y-1))-1)*100,1)+'%':'—']));
- sourceLine('chMktYear',[SRC.customs,SRC.wi],S('y_us').at(-1).date.slice(0,4),'Hàng dệt, may theo nước đến, số năm của hải quan (bảng 87: 279542 Mỹ, 279802 Nhật, 279716 Hàn, 279632 Trung Quốc, 279996 Canada, 278542 Hà Lan, 278606 Đức, 280130 Anh). Năm 2026 chưa đủ năm nên chưa có.');
+ sourceLine('chMktYear',[SRC.customs],S('y_us').at(-1).date.slice(0,4),'Hàng dệt, may theo nước đến, số năm của hải quan (bảng 87: 279542 Mỹ, 279802 Nhật, 279716 Hàn, 279632 Trung Quốc, 279996 Canada, 278542 Hà Lan, 278606 Đức, 280130 Anh). Năm 2026 chưa đủ năm nên chưa có.');
  insight('chMktYear','Từ 2013 Mỹ tăng gấp đôi và luôn chiếm khoảng một nửa; Hà Lan (cửa ngõ EU, gần gấp đôi), Anh và Canada tăng nhanh nhất sau 2021 nhờ EVFTA, UKVFTA, CPTPP, trong khi Hàn Quốc đi ngang. Đa dạng hóa có thật nhưng quy mô các thị trường mới vẫn nhỏ so với Mỹ.');
 }
 if(us.length&&document.getElementById('chUsYtd')){
@@ -241,7 +242,7 @@ if(us.length&&document.getElementById('chUsYtd')){
  barLineChart('chUsYtd',{categories:ys.map(y=>y+(years[y].last.date.slice(5,7)!=='12'?' (đến T'+Number(years[y].last.date.slice(5,7))+')':'')),series:[{name:'Cả năm / lũy kế',color:C.navy,values:ys.map(y=>years[y].sum)},{name:'Cùng kỳ đến T'+Number(lastM),color:C.teal,values:ys.map(y=>same(y))}],unit:'triệu USD',digits:0,height:260,rotateLabels:false});
  legend('chUsYtd',[['Cả năm (năm hiện tại: lũy kế)',C.navy],['Cùng số tháng',C.teal]]);
  fillTable('tbl-us-ytd',['Năm','Cả năm / lũy kế','Cùng kỳ đến T'+Number(lastM),'So cùng kỳ'],ys.slice().reverse().map(y=>{const p=String(Number(y)-1);return [y,nf(years[y].sum,0),nf(same(y),0),years[p]?signed((same(y)/same(p)-1)*100,1)+'%':'—']}));
- sourceLine('chUsYtd',[SRC.customs,SRC.wi],mon(us.at(-1).date),'Cộng các tháng của chỉ tiêu 87978 (hàng dệt, may sang Hoa Kỳ). Cột cùng kỳ cộng đúng số tháng như năm hiện tại.');
+ sourceLine('chUsYtd',[SRC.customs],mon(us.at(-1).date),'Cộng các tháng của  (hàng dệt, may sang Hoa Kỳ). Cột cùng kỳ cộng đúng số tháng như năm hiện tại.');
  insight('chUsYtd','So lũy kế cùng số tháng mới đọc được năm 2026 đang nhanh hay chậm hơn năm trước; số cả năm 2025 của hải quan có thể khác số VITAS 17,8 tỷ USD vì khác phạm vi nhóm hàng.');
 }
 if(document.getElementById('chBrands')){

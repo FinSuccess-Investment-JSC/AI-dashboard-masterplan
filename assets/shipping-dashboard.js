@@ -16,6 +16,7 @@ const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b76
 const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
 const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],baltic:['Baltic Exchange','https://www.balticexchange.com/'],portwatch:['IMF PortWatch','https://portwatch.imf.org/'],wi:['Nguồn công khai',null]};
+for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -86,7 +87,7 @@ if(bdti.length&&document.getElementById('chTanker')){
  lines('chTanker',bdti,[['BDTI (dầu thô)',C.navy,r=>r.value],['BCTI (dầu sản phẩm)',C.teal,r=>cm[ym(r.date)]?.value??null]],'điểm',0,true);
  legend('chTanker',[['BDTI · dầu thô',C.navy],['BCTI · dầu sản phẩm',C.teal]]);
  fillTable('tbl-tanker',['Kỳ','BDTI','BDTI YoY','BCTI','BCTI YoY'],bdti.slice().reverse().map(r=>{const c=cm[ym(r.date)];return [short(r.date),nf(r.value,0),signed(yoyAt(bdti,r),0)+'%',nf(c?.value,0),signed(yoyAt(bcti,c),0)+'%']}));
- sourceLine('chTanker',[SRC.baltic,SRC.wi],short(bdti.at(-1).date),'Baltic Dirty Tanker Index (73983) và Clean Tanker Index (73984), Nguồn nén chuỗi ngày về cuối tháng. Chỉ số cước thế giới, không phải cước PVT, VTO ký được.');
+ sourceLine('chTanker',[SRC.baltic],short(bdti.at(-1).date),'Baltic Dirty Tanker Index và Clean Tanker Index, nén chuỗi ngày về cuối tháng. Chỉ số cước thế giới, không phải cước PVT, VTO ký được.');
  insight('chTanker','BDTI '+nf(bdti.at(-1).value,0)+' điểm là mức cao nhất của chuỗi, gấp hơn 5 lần một năm trước; BCTI cũng gấp gần 4 lần. Nguyên nhân là Hormuz gần như đóng từ tháng 3/2026 (xem tab Địa chính trị): dầu Trung Đông phải đi vòng, tấn-dặm tăng trong khi cung tàu không đổi. Doanh nghiệp Việt Nam hưởng lợi ở phần tàu chạy spot và khi hợp đồng TC đáo hạn được ký lại; phần đang khóa giá chưa thấy ngay.');
 }
 if(brent.length&&document.getElementById('chFuel')){
@@ -101,7 +102,7 @@ if(brent.length&&document.getElementById('chFuel')){
 if(bdi.length&&document.getElementById('chBdi')){
  lines('chBdi',bdi,[['BDI',C.gold,r=>r.value]],'điểm',0,true);
  fillTable('tbl-bdi',['Kỳ','Điểm','So cùng kỳ'],bdi.slice().reverse().map(r=>[short(r.date),nf(r.value,0),signed(yoyAt(bdi,r),0)+'%']));
- sourceLine('chBdi',[SRC.baltic,SRC.wi],short(bdi.at(-1).date),'Baltic Dry Index (73982), Nguồn nén về cuối tháng. VOS, VNA chạy tàu Supramax/Handysize; BDI gồm cả Capesize nên biên độ lớn hơn cước thực của hai mã.');
+ sourceLine('chBdi',[SRC.baltic],short(bdi.at(-1).date),'Baltic Dry Index. VOS, VNA chạy tàu Supramax/Handysize; BDI gồm cả Capesize nên biên độ lớn hơn cước thực của hai mã.');
  insight('chBdi','BDI quanh 2.900–3.200 điểm từ tháng 5/2026, cao hơn cùng kỳ gần 50% và gấp 4 lần đáy đầu 2025: cầu than, quặng, ngũ cốc tốt trong khi orderbook hàng rời thấp. Đây là cửa sổ để VOS, VNA bán tàu cũ giá cao hoặc ký TC dài.');
 }
 const sea=S('sea_freight'),ov=S('overseas_freight');
@@ -110,7 +111,7 @@ if(sea.length&&document.getElementById('chSea')){
  barLineChart('chSea',{categories:rs.map(r=>mon(r.date)),series:[{name:'Đường biển',color:C.navy,values:rs.map(r=>r.value/1000)},{name:'Ngoài nước (mọi phương thức)',color:C.plum,kind:'line',values:rs.map(r=>om[ym(r.date)]?om[ym(r.date)].value/1000:null)}],unit:'triệu tấn',digits:1,height:260,rotateLabels:true});
  legend('chSea',[['Đường biển',C.navy],['Ngoài nước',C.plum]]);
  fillTable('tbl-sea',['Tháng','Đường biển (triệu tấn)','YoY','Ngoài nước (triệu tấn)','YoY'],sea.slice().reverse().map(r=>{const o=om[ym(r.date)];return [mon(r.date),nf(r.value/1000,2),signed(yoyAt(sea,r),1)+'%',nf((o?.value??NaN)/1000,2),signed(yoyAt(ov,o),1)+'%']}));
- sourceLine('chSea',[SRC.nso,SRC.wi],mon(sea.at(-1).date),'Khối lượng hàng do doanh nghiệp vận tải Việt Nam chở bằng đường biển (82585) và vận chuyển ngoài nước (82583). Đo việc làm của đội tàu Việt Nam, không phải hàng qua cảng.');
+ sourceLine('chSea',[SRC.nso],mon(sea.at(-1).date),'Khối lượng hàng do doanh nghiệp vận tải Việt Nam chở bằng đường biển và vận chuyển ngoài nước. Đo việc làm của đội tàu Việt Nam, không phải hàng qua cảng.');
  insight('chSea','Lũy kế 9T/2026 đường biển '+signed(ytdYo(sea),0)+'%, chuyến ngoài nước '+signed(ytdYo(ov),0)+'%: đội tàu Việt Nam đang chạy nhiều hơn, khớp với cước cao. Luân chuyển (tấn-km) lũy kế '+signed(yoyAt(S('sea_tonkm_ytd'),S('sea_tonkm_ytd').at(-1)),0)+'% — quãng đường dài hơn là dấu hiệu tuyến đi vòng.');
 }
 const ps=S('ppi_sea'),pw=S('ppi_water');
@@ -119,7 +120,7 @@ if(ps.length&&document.getElementById('chPpi')){
  barLineChart('chPpi',{categories:rs.map(r=>qtr(r.date)),series:[{name:'Ven biển & viễn dương',color:C.navy,kind:'line',values:rs.map(r=>r.value)},{name:'Đường thủy (chung)',color:C.teal,kind:'line',values:rs.map(r=>wm[ym(r.date)]?.value??null)}],unit:'%',digits:1,height:260,zeroBase:false,rotateLabels:false});
  legend('chPpi',[['Ven biển & viễn dương',C.navy],['Đường thủy chung',C.teal]]);
  fillTable('tbl-ppi',['Quý','Ven biển & viễn dương','Đường thủy chung'],ps.slice().reverse().map(r=>[qtr(r.date),nf(r.value,2),nf(wm[ym(r.date)]?.value,2)]));
- sourceLine('chPpi',[SRC.nso,SRC.wi],qtr(ps.at(-1).date),'Chỉ số giá sản xuất dịch vụ vận tải ven biển và viễn dương (75662), đường thủy (75661), % so cùng kỳ.');
+ sourceLine('chPpi',[SRC.nso],qtr(ps.at(-1).date),'Chỉ số giá sản xuất dịch vụ vận tải ven biển và viễn dương, đường thủy, % so cùng kỳ.');
  insight('chPpi','Giá dịch vụ vận tải biển trong nước tăng ~12% YoY hai quý liền, cao nhất từ 2022: cước thế giới đã truyền vào giá doanh nghiệp Việt Nam ký được, không chỉ ở chỉ số Baltic.');
 }
 // Container (số liệu của toàn ngành đã ở trên; chart riêng dùng XNK làm cầu)

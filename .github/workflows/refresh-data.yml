@@ -39,6 +39,7 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y tesseract-ocr
           fi
+          command -v pdftotext >/dev/null 2>&1 || sudo apt-get install -y poppler-utils
       - name: Refresh and prepare changed data
         id: refresh
         run: |
@@ -54,10 +55,13 @@ jobs:
       - name: Queue Wi, document and AI-text updates
         continue-on-error: true
         run: python scripts/update_scheduler.py --run --watch --notify-file .notify.txt
-      # Public replacements for the removed Wi company/sector data (IMF/FRED, EIA, ICE, VNDirect finfo).
+      # Public replacements for the removed Wi company/sector data (NSO, Hải quan, SHFE, IMF/FRED, EIA, ICE, VNDirect finfo).
       - name: Refresh public sector commodities and company quarterly statements
         continue-on-error: true
         run: |
+          python scripts/fetch_nso.py --recent 70 || true
+          python scripts/fetch_customs.py --recent 45 || true
+          python scripts/fetch_shfe.py || true
           python scripts/build_sector_public.py
           python scripts/fetch_public_fs.py && python scripts/build_company_quarterly.py
       - name: Validate generated data

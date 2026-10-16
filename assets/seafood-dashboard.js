@@ -15,6 +15,7 @@ const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b76
 const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
 const SRC={ice:['IMF Primary Commodity Prices (FRED)','https://fred.stlouisfed.org/'],customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],wi:['Nguồn công khai',null]};
+for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
@@ -85,7 +86,7 @@ if(us.length&&document.getElementById('chMkt')){
  stack('chMkt',{categories:rs.map(r=>mon(r.date)),series:[{name:'Trung Quốc',color:C.red,values:rs.map(r=>v(cm,r))},{name:'Mỹ',color:C.navy,values:rs.map(r=>r.value)},{name:'Nhật Bản',color:C.gold,values:rs.map(r=>v(jm,r))},{name:'Hàn Quốc',color:C.teal,values:rs.map(r=>v(km,r))},{name:'Khác (EU, ASEAN…)',color:C.grey,values:rest}],unit:'triệu USD',digits:0,aria:'Xuất khẩu thủy sản theo thị trường'});
  legend('chMkt',[['Trung Quốc',C.red],['Mỹ',C.navy],['Nhật Bản',C.gold],['Hàn Quốc',C.teal],['Khác (EU, ASEAN…)',C.grey]]);
  fillTable('tbl-mkt',['Tháng','Tổng','Trung Quốc','Mỹ','Nhật','Hàn','TQ YoY','Mỹ YoY'],us.slice().reverse().map(r=>[mon(r.date),nf(v(em,r),0),nf(v(cm,r),0),nf(r.value,0),nf(v(jm,r),0),nf(v(km,r),0),signed(yoyAt(cn,cm[ym(r.date)]),1)+'%',signed(yoyAt(us,r),1)+'%']));
- sourceLine('chMkt',[SRC.customs,SRC.wi],mon(us.at(-1).date),'XK hàng thủy sản (83499) và theo nước: Mỹ (87957), Trung Quốc (87997), Nhật (88726), Hàn (88042). Số theo nước có đến tháng 8; tổng có đến tháng 9. Gồm cả cá tra, tôm, hải sản khai thác.');
+ sourceLine('chMkt',[SRC.customs],mon(us.at(-1).date),'XK hàng thủy sản và theo nước: Mỹ, Trung Quốc, Nhật, Hàn. Số theo nước có đến tháng 8; tổng có đến tháng 9. Gồm cả cá tra, tôm, hải sản khai thác.');
  insight('chMkt','Lũy kế 8T/2026: sang Trung Quốc '+signed(ytdYo(cn),0)+'%, sang Mỹ '+signed(ytdYo(us),0)+'%. Trung Quốc lớn hơn Mỹ và là thị trường lớn duy nhất tăng mạnh; thuế Mục 301 từ 24/07/2026 làm Mỹ khó phục hồi. Doanh nghiệp bán nhiều sang Trung Quốc (VHC +56% tháng 8) bù được phần mất ở Mỹ; doanh nghiệp phụ thuộc Mỹ thì không.');
 }
 if(us.length&&document.getElementById('chMktYear')){
@@ -95,7 +96,7 @@ if(us.length&&document.getElementById('chMktYear')){
  barLineChart('chMktYear',{categories:ys,series:ser.map(([n,rs,c])=>({name:n,color:c,kind:'line',values:ys.map(y=>sumY(rs,y))})),unit:'triệu USD',digits:0,height:260,zeroBase:true,rotateLabels:false});
  legend('chMktYear',ser.map(([n,,c])=>[n,c]));
  fillTable('tbl-mkt-year',['Năm',...ser.map(s=>s[0]),'Tổng thủy sản'],ys.slice().reverse().map(y=>[y,...ser.map(([,rs])=>nf(sumY(rs,y),0)),nf(sumY(ex,y),0)]));
- sourceLine('chMktYear',[SRC.customs,SRC.wi],ys.at(-1),'Cộng 12 tháng của các chỉ tiêu theo nước (87957, 87997, 88726, 88042). Năm hiện tại chưa đủ 12 tháng nên không vẽ.');
+ sourceLine('chMktYear',[SRC.customs],ys.at(-1),'Cộng 12 tháng của các chỉ tiêu theo nước. Năm hiện tại chưa đủ 12 tháng nên không vẽ.');
  const y1=ys.at(-1);insight('chMktYear','Năm '+y1+': Trung Quốc '+nf(sumY(cn,y1),0)+' so với Mỹ '+nf(sumY(us,y1),0)+' triệu USD. Mỹ từng là thị trường lớn nhất; khoảng cách giữa hai thị trường cho biết doanh nghiệp phụ thuộc Mỹ (thuế CBPG, Mục 301) có còn đường thay thế hay không.');
 }
 const pa=S('pangasius'),fry=S('pangasius_fry');
@@ -104,7 +105,7 @@ if(pa.length&&document.getElementById('chPang')){
  barLineChart('chPang',{categories:pa.map(r=>mon(r.date)),series:[{name:'Cá tra thịt trắng',color:C.navy,kind:'line',values:pa.map(r=>r.value)},{name:'Cá tra giống',color:C.gold,kind:'line',values:pa.map(r=>fm[ym(r.date)]?.value??null)}],unit:'nghìn đ/kg',digits:1,height:260,zeroBase:true,rotateLabels:true});
  legend('chPang',[['Cá nguyên liệu',C.navy],['Cá giống',C.gold]]);
  fillTable('tbl-pang',['Kỳ','Cá nguyên liệu','So cùng kỳ','Cá giống'],pa.slice().reverse().map(r=>[short(r.date),nf(r.value,1),signed(yoyAt(pa,r),1)+'%',nf(fm[ym(r.date)]?.value,0)]));
- sourceLine('chPang',[SRC.wi],short(pa.at(-1).date),'Cá tra thịt trắng nguyên liệu (74384) và cá tra giống (264825), ĐBSCL, Nguồn nén về cuối tháng. Hai mắt xích khác nhau, không thay thế nhau.');
+ sourceLine('chPang',[SRC.wi],short(pa.at(-1).date),'Cá tra thịt trắng nguyên liệu và cá tra giống, ĐBSCL. Hai mắt xích khác nhau, không thay thế nhau.');
  insight('chPang','Cá nguyên liệu đi trong vùng 25–33 nghìn đ/kg từ 2023, trên giá thành nuôi 24–26 nghìn đ/kg (DN Hội nhập): hộ nuôi có lãi nên cung ổn định. Cá giống biến động mạnh theo mùa (cao đầu năm, thấp giữa năm); giá giống cao đầu 2026 báo hiệu thả nuôi nhiều, có thể làm cá nguyên liệu dồi dào hơn cuối năm.');
 }
 if(document.getElementById('chVasep')){
@@ -126,7 +127,7 @@ const sh=S('shrimp50');
 if(sh.length&&document.getElementById('chShrimp')){
  barLineChart('chShrimp',{categories:sh.map(r=>mon(r.date)),series:[{name:'Tôm thẻ 50 con/kg',color:C.plum,kind:'line',values:sh.map(r=>r.value)}],unit:'nghìn đ/kg',digits:1,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-shrimp',['Kỳ','Nghìn đ/kg','So cùng kỳ'],sh.slice().reverse().map(r=>[short(r.date),nf(r.value,1),signed(yoyAt(sh,r),1)+'%']));
- sourceLine('chShrimp',[SRC.wi],short(sh.at(-1).date),'Tôm thẻ chân trắng cỡ 50 con/kg tại Cà Mau (74379), Nguồn nén về cuối tháng. Không dùng chuỗi tôm không phân cỡ (264644) vì đứng yên nhiều tháng.');
+ sourceLine('chShrimp',[SRC.wi],short(sh.at(-1).date),'Tôm thẻ chân trắng cỡ 50 con/kg tại Cà Mau. Không dùng chuỗi tôm không phân cỡ vì đứng yên nhiều tháng.');
  insight('chShrimp','Giá tôm nguyên liệu giảm từ đỉnh 146 nghìn đ/kg (12/2025) về ~108 nghìn: đầu vào rẻ hơn cho FMC, MPC, trong khi giá bán XK không giảm tương ứng — giải thích lợi nhuận 6T của FMC +81,5%, MPC +127,5% dù doanh thu FMC giảm.');
 }
 if(document.getElementById('chMkt2')){
