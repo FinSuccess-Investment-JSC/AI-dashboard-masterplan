@@ -92,3 +92,44 @@ def build(sector, cache, errors):
             'source': 'VNDirect finfo · P/E, P/B, vốn hóa từng mã theo phiên; tổng hợp rổ mã theo dõi',
             'url': 'https://dstock.vndirect.com.vn/',
             'method': 'P/E = Σ vốn hóa / Σ (vốn hóa / P/E); P/B tương tự. Một phiên cần ≥ 1/2 số mã của rổ.'}
+
+
+# Insurance statement aggregates (quarterly, discrete) from VNDirect finfo financial_statements, modelType 412.
+FS_URL = ('https://api-finfo.vndirect.com.vn/v4/financial_statements?q=code:{t}~reportType:QUARTER~modelType:412'
+          '~fiscalDate:gte:{since}&size=9000')
+FS_ITEMS = {'direct_premium': (21410, 1), 'net_premium': (21440, 1), 'claims': (22195, -1), 'fin_revenue': (21500, 1), 'fin_profit': (22175, 1)}
+FS_BASKETS = {'151': ('Nhân thọ (BVH)', 'BVH'), '285': ('Phi nhân thọ (PVI, BMI, MIG, PTI, BIC)', 'PVI BMI MIG PTI BIC'), '154': ('Tái bảo hiểm (VNR)', 'VNR')}
+
+
+def insurance_fs(errors, since='2015-01-01'):
+    per = {}
+    for t in sorted({x for _, tk in FS_BASKETS.values() for x in tk.split()}):
+        try:
+            out = subprocess.run(['curl', '-sfL', '-m', '90', '-A', 'Mozilla/5.0', FS_URL.format(t=t, since=since)],
+                                 check=True, capture_output=True, text=True).stdout
+            rows = json.loads(out)['data']
+        except Exception as e:
+            errors[t] = str(e)[:120]
+            continue
+        q = defaultdict(dict)
+        for r in rows:
+            y, m = int(r['fiscalDate'][:4]), int(r['fiscalDate'][5:7])
+            q[f'{y}-Q{(m - 1) // 3 + 1}'][int(r['itemCode'])] = r['numericValue']
+        per[t] = q
+    cols = ['quarter'] + list(FS_ITEMS)
+    by = {}
+    for bid, (name, tk) in FS_BASKETS.items():
+        members = tk.split()
+        quarters = sorted(set.intersection(*[set(per.get(t, {})) for t in members])) if all(t in per for t in members) else []
+        recs = []
+        for qq in quarters:
+            row = [qq]
+            for f, (code, sign) in FS_ITEMS.items():
+                vals = [per[t][qq].get(code) for t in members]
+                row.append(round(sum(v for v in vals if v is not None) * sign / 1e9, 3) if any(v is not None for v in vals) else None)
+            recs.append(row)
+        if recs:
+            by[bid] = {'name': name, 'members': members, 'records': recs}
+    return {'columns': cols, 'by_sector': by, 'unit': 'tỷ VND',
+            'source': 'VNDirect finfo · BCTC hợp nhất quý (mẫu bảo hiểm)', 'url': 'https://dstock.vndirect.com.vn/',
+            'method': 'Cộng BCTC quý của các mã trong rổ: phí gốc (21410), phí thuần (21440), tổng chi bồi thường (22195, đổi dấu), doanh thu tài chính (21500), lợi nhuận tài chính (22175).'}

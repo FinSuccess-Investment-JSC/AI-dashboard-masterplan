@@ -71,18 +71,30 @@ NSO = {
     'tourists': ('tourists', 'Khách quốc tế', 'nghìn lượt', 0.001),
     'fabric_natural': ('fabric_natural', 'Sản lượng vải dệt từ sợi tự nhiên', 'triệu m²', 1), 'fabric_synthetic': ('fabric_synthetic', 'Sản lượng vải dệt từ sợi tổng hợp, nhân tạo', 'triệu m²', 1),
     'garments': ('garments', 'Sản lượng quần áo mặc thường', 'triệu cái', 1),
+    'gdp_construction_nominal': ('gdp_construction_nominal', 'GDP ngành xây dựng (giá hiện hành), lũy kế', 'tỷ VND', 1),
+    'gdp_construction_real': ('gdp_construction_real', 'GDP ngành xây dựng (giá so sánh), lũy kế', 'tỷ VND', 1),
+    'gdp_construction_q': ('gdp_construction_q', 'GDP ngành xây dựng theo quý (giá hiện hành)', 'tỷ VND', 1),
+    'gdp_re_q': ('gdp_re_q', 'GDP hoạt động kinh doanh BĐS theo quý (giá hiện hành)', 'tỷ VND', 1),
+    'gdp_re_ytd': ('gdp_re_ytd', 'GDP hoạt động kinh doanh BĐS lũy kế', 'tỷ VND', 1),
+    'gdp_health': ('gdp_health', 'GDP y tế và cứu trợ xã hội (danh nghĩa, lũy kế năm)', 'tỷ VND', 1),
+    'ppi_handling': ('ppi_handling', 'Chỉ số giá dịch vụ bốc xếp hàng hóa, so cùng kỳ', '%', 1),
+    'ppi_warehouse': ('ppi_warehouse', 'Chỉ số giá kho bãi và hỗ trợ vận tải, so cùng kỳ', '%', 1),
+    'ppi_sea': ('ppi_sea', 'Chỉ số giá vận tải ven biển và viễn dương, so cùng kỳ', '%', 1),
+    'ppi_water': ('ppi_water', 'Chỉ số giá vận tải đường thủy, so cùng kỳ', '%', 1),
 }
+QUARTERLY = {k for k in NSO if k.startswith(('gdp_', 'ppi_'))}
+GDP_SINCE = '2024-01'  # earlier quarters were revised a lot after release; the workbooks only hold the release vintage
 MACRO = {
     'agri': ['retail_goods', 'cpi_food', 'cpi_bev', 'beer', 'fresh_milk', 'milk_powder', 'feed', 'iip_food', 'iip_bev'],
-    'construction': ['pub_inv', 'pub_inv_central', 'pub_inv_local', 'pub_inv_moc', 'cement_output', 'steel_rolled', 'steel_bar', 'iip_nonmetal', 'iip_metal'],
+    'construction': ['pub_inv', 'pub_inv_central', 'pub_inv_local', 'pub_inv_moc', 'cement_output', 'steel_rolled', 'steel_bar', 'iip_nonmetal', 'iip_metal', 'gdp_construction_nominal', 'gdp_construction_real'],
     'insurance': ['car_output', 'moto_output'],
-    'port': ['sea_freight', 'overseas_freight', 'air_freight', 'inland_freight'],
-    'realestate': ['cpi_housing_index', 'cpi_housing_yoy', 'iip_mfg_yoy'],
+    'port': ['sea_freight', 'overseas_freight', 'air_freight', 'inland_freight', 'ppi_handling', 'ppi_warehouse', 'ppi_sea'],
+    'realestate': ['cpi_housing_index', 'cpi_housing_yoy', 'iip_mfg_yoy', 'gdp_re_q', 'gdp_re_ytd', 'gdp_construction_q'],
     'retail': ['retail_total', 'retail_goods', 'cpi_yoy', 'tourists', 'cpi_food_yoy', 'cpi_bev_yoy', 'beer_output', 'milk_output', 'milkpowder_output', 'iip_food', 'iip_bev', 'car_output', 'moto_output'],
     'seafood': ['iip_food'],
-    'shipping': ['sea_freight', 'overseas_freight', 'sea_tonkm_ytd'],
+    'shipping': ['sea_freight', 'overseas_freight', 'sea_tonkm_ytd', 'ppi_sea', 'ppi_water'],
     'textile': ['fabric_natural', 'fabric_synthetic', 'garments', 'iip_textile', 'iip_apparel'],
-    'pharma': ['iip_pharma', 'cpi_health'],
+    'pharma': ['iip_pharma', 'cpi_health', 'gdp_health'],
 }
 
 
@@ -94,9 +106,11 @@ def macro_series(sector):
     out = {}
     for k in MACRO.get(sector, []):
         nk, name, unit, f = NSO[k]
-        recs = [{'date': m + '-01', 'value': round(v * f, 4)} for m, v in sorted(d['series'].get(nk, {}).items())]
+        recs = [{'date': m + '-01', 'value': round(v * f, 4)} for m, v in sorted(d['series'].get(nk, {}).items())
+                if not (k.startswith('gdp_') and m < GDP_SINCE)]
         if recs:
-            out[k] = {'name': name, 'unit': unit, 'time_type': 'monthly', 'source': d['source'], 'url': d['url'], 'records': recs}
+            out[k] = {'name': name, 'unit': unit, 'time_type': 'quarterly' if k in QUARTERLY else 'monthly',
+                      'source': d['source'], 'url': d['url'], 'records': recs}
     if sector == 'construction' and 'pub_inv' in out:  # month vs same month last year, from the levels
         lv = {r['date']: r['value'] for r in out['pub_inv']['records']}
         recs = [{'date': dte, 'value': round((v / lv[f'{int(dte[:4]) - 1}{dte[4:]}'] - 1) * 100, 2)}
@@ -132,7 +146,7 @@ CUSTOMS = {
 }
 TEXTILE_YEARLY = {'y_us': 'exp_textile_us', 'y_jp': 'exp_textile_jp', 'y_kr': 'exp_textile_kr', 'y_cn': 'exp_textile_cn',
                   'y_de': 'exp_textile_de', 'y_nl': 'exp_textile_nl', 'y_uk': 'exp_textile_uk', 'y_ca': 'exp_textile_ca'}
-SHFE = {'construction': {'hrc': 'hc', 'hrc_fut': 'hc', 'asphalt': 'bu'}, 'shipping': {'fuel_oil_cn': 'fu'}}
+SHFE = {'construction': {'hrc': 'hc', 'hrc_fut': 'hc', 'rebar_cn': 'rb', 'asphalt': 'bu'}, 'shipping': {'fuel_oil_cn': 'fu'}}
 
 
 def customs_series(sector):
@@ -247,6 +261,18 @@ def main():
             blocks['macro'] = {'series': ms, 'captured_at': now[:10]}
         verr = {}
         sr = SV.build(sector, vcache, verr)
+        if sector == 'insurance':
+            blocks['fs'] = SV.insurance_fs(verr)
+            hy = ROOT / 'data/raw/public/hnx-yield-10y.json'
+            if hy.exists():
+                h = json.loads(hy.read_text())
+                blocks['gbond'] = {'records': [{'date': r['date'], 'value': round(r['value'], 3)} for r in h['records'].values()],
+                                   'source': h['source'], 'url': h['url']}
+                dp = h.get('deposit_12m', {})
+                if dp.get('records'):
+                    blocks.setdefault('macro', {'series': {}, 'captured_at': now[:10]})['series']['deposit_12m'] = {
+                        'name': 'Lãi suất tiết kiệm 12 tháng Vietcombank', 'unit': '%', 'time_type': 'monthly', 'source': dp['source'],
+                        'url': dp['url'], 'records': [{'date': m + '-01', 'value': r['value']} for m, r in dp['records'].items()]}
         if sr and sr['by_sector']:
             sr['captured_at'], sr['errors'] = now[:10], verr
             blocks['sector_ratio'] = sr

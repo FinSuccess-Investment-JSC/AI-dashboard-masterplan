@@ -298,7 +298,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/sector-runtime.js?v=82b412aede70" defer></script>
 <script src="../assets/sector-content.js?v=be87392226ce" defer></script>
 <script src="../assets/sector-layout.js?v=68a0b4e1b045" defer></script>
-<script src="../data/seafood-public-data.js?v=a0cffdb5bc34" defer></script>
+<script src="../data/seafood-public-data.js?v=41b3e553700c" defer></script>
 <script src="../assets/seafood-dashboard.js?v=ca5944a52423" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
@@ -316,7 +316,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
 <script src="../assets/source-gap.js?v=9a4b7a0c2c99" defer></script>
-<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261017-macro"></script>
+<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261017-macro2"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=3d4f581ec180">
@@ -581,7 +581,7 @@ body[data-sector="seafood"] .tx-group{margin:18px 0 8px;font-size:12px;letter-sp
   </div>
   <div class="card" style="margin-top:14px" data-block-id="ts-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>XK thủy sản tổng và theo thị trường</b></td><td><a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan</a></td><td>Tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>Giá cá tra, cá giống, tôm thẻ; khô đậu, ngô CBOT</b></td><td>Tạm trống (chưa có nguồn công khai)</td><td>Ngày · hiển thị cuối tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>CBPG, CVD, thuế Mỹ</b></td><td><a href="https://www.federalregister.gov/" target="_blank" rel="noopener">Federal Register</a></td><td>Theo kết luận</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>XK cá tra, tôm (VASEP), IUU, MMPA, chủ đề nóng</b></td><td>VASEP, báo chí (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>XK thủy sản tổng và theo thị trường</b></td><td><a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Giá cá tra, cá giống, tôm thẻ; khô đậu, ngô CBOT</b></td><td><a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">IMF qua FRED</a> (khô đậu, ngô)</td><td>Ngày · hiển thị cuối tháng</td><td>Khô đậu, ngô: Script mỗi lượt job; cá tra, tôm: chưa có nguồn công khai thay thế</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>CBPG, CVD, thuế Mỹ</b></td><td><a href="https://www.federalregister.gov/" target="_blank" rel="noopener">Federal Register</a></td><td>Theo kết luận</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>XK cá tra, tôm (VASEP), IUU, MMPA, chủ đề nóng</b></td><td>VASEP, báo chí (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
     <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
   </div>
   <div class="footer">Vietnam Seafood Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 09/10/2026.</div>

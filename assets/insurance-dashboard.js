@@ -15,7 +15,7 @@ const signed=(v,d=1)=>v==null||!Number.isFinite(v)?'—':(v>0?'+':'')+nf(v,d);
 const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b7686',green:'#27af95',red:'#d1583f'};
 const macro=B.macro?.series||{},com={},sec=B.sector_ratio?.by_sector||{},fs=B.fs?.by_sector||{},gb=B.gbond?.records||[];
 const checked=B.macro?.captured_at||W.built_at||'';
-const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],fsw:['BCTC tổng hợp ngành (GICS)',null],hnx:['HNX – lợi suất TPCP','https://hnx.vn/'],wi:['Nguồn công khai',null]};
+const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],fsw:['VNDirect · BCTC quý các DN niêm yết','https://dstock.vndirect.com.vn/'],hnx:['HNX – lợi suất TPCP','https://hnx.vn/'],wi:['Nguồn công khai',null]};
 for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
@@ -92,24 +92,24 @@ if(NL.length&&document.getElementById('chNlPrem')){
  barLineChart('chNlPrem',{categories:rs.map(r=>q(r[0])),series:[{name:'Phí bảo hiểm gốc',color:C.navy,values:rs.map(r=>r[1]/1000)},{name:'Doanh thu phí thuần',color:C.teal,kind:'line',values:rs.map(r=>r[2]/1000)}],unit:'nghìn tỷ',digits:1,height:260,rotateLabels:true});
  legend('chNlPrem',[['Phí bảo hiểm gốc',C.navy],['Doanh thu phí thuần',C.teal]]);
  fillTable('tbl-nl-prem',['Quý','Phí gốc (tỷ)','YoY','Phí thuần (tỷ)','YoY'],NL.map((r,i)=>[q(r[0]),nf(r[1],0),signed(yoyQ(NL,i,1),1)+'%',nf(r[2],0),signed(yoyQ(NL,i,2),1)+'%']).reverse());
- sourceLine('chNlPrem',[SRC.fsw],q(NL.at(-1)[0]),'Tổng BCTC các doanh nghiệp phi nhân thọ niêm yết (phân ngành GICS 285: PVI, BMI, MIG, PTI, BIC…), không phải toàn thị trường. Phí gốc (is01_1) là phí khai thác trực tiếp; phí thuần (is03) sau nhượng tái và giảm trừ.');
+ sourceLine('chNlPrem',[SRC.fsw],q(NL.at(-1)[0]),'Cộng BCTC quý của 5 DN phi nhân thọ niêm yết (PVI, BMI, MIG, PTI, BIC), không phải toàn thị trường. Phí gốc là phí khai thác trực tiếp; phí thuần sau nhượng tái và giảm trừ.');
  const i=NL.length-1;
- insight('chNlPrem','Phí gốc phi nhân thọ niêm yết Q'+NL.at(-1)[0].slice(-1)+' '+signed(yoyQ(NL,i,1),0)+'% YoY, quý thứ ba liên tiếp tăng hai chữ số: bảo hiểm sức khỏe, xe cơ giới và tài sản đều tăng theo tín dụng, sản xuất ô tô. Phí thuần tăng chậm hơn ('+signed(yoyQ(NL,i,2),0)+'%) vì phần nhượng tái của các hợp đồng tài sản lớn tăng.');
+ insight('chNlPrem','Phí gốc 5 DN phi nhân thọ Q'+NL.at(-1)[0].slice(-1)+'/'+NL.at(-1)[0].slice(0,4)+' '+signed(yoyQ(NL,i,1),0)+'% YoY (quý trước '+signed(yoyQ(NL,i-1,1),0)+'%); phí thuần '+signed(yoyQ(NL,i,2),0)+'%. Phí thuần chậm hơn phí gốc khi phần nhượng tái tăng.');
 }
 if(NL.length&&document.getElementById('chNlSD')){
  const rs=NL.slice(-8),idx0=NL.length-8;
  barLineChart('chNlSD',{categories:rs.map(r=>q(r[0])),series:[{name:'Phí bảo hiểm gốc YoY',color:C.navy,values:rs.map((r,j)=>yoyQ(NL,idx0+j,1))},{name:'Bồi thường YoY',color:C.red,values:rs.map((r,j)=>yoyQ(NL,idx0+j,3))}],unit:'%',digits:0,height:260,rotateLabels:false,zeroBase:true});
  legend('chNlSD',[['Phí gốc (cầu bảo hiểm)',C.navy],['Bồi thường',C.red]]);
  fillTable('tbl-nl-sd',['Quý','Phí gốc YoY','Bồi thường YoY'],rs.map((r,j)=>[q(r[0]),signed(yoyQ(NL,idx0+j,1),1)+'%',signed(yoyQ(NL,idx0+j,3),1)+'%']).reverse());
- sourceLine('chNlSD',[SRC.fsw],q(NL.at(-1)[0]),'So tốc độ tăng phí gốc với tốc độ tăng tổng chi bồi thường và trả tiền bảo hiểm (is15) của nhóm phi nhân thọ niêm yết. Phí tăng nhanh hơn bồi thường thì biên bảo hiểm cải thiện.');
- insight('chNlSD','Đây là "cung – cầu" của bảo hiểm: phí là cầu mua bảo hiểm, bồi thường là chi phí của rủi ro đã bán. Q3/2024 bồi thường vọt do bão Yagi; năm 2025 bồi thường giảm lại về mức thường. Gần đây phí tăng ~20% trong khi bồi thường chỉ tăng vài %, nên lãi bảo hiểm gốc đang tốt lên — nếu không có thiên tai lớn trong mùa bão cuối năm.');
+ sourceLine('chNlSD',[SRC.fsw],q(NL.at(-1)[0]),'So tốc độ tăng phí gốc với tốc độ tăng tổng chi bồi thường của 5 DN phi nhân thọ niêm yết. Phí tăng nhanh hơn bồi thường thì biên bảo hiểm cải thiện.');
+ insight('chNlSD','Đây là "cung – cầu" của bảo hiểm: phí là cầu mua bảo hiểm, bồi thường là chi phí của rủi ro đã bán. Q3/2024 bồi thường vọt do bão Yagi; năm 2025 bồi thường giảm lại về mức thường. Quý gần nhất phí '+signed(yoyQ(NL,NL.length-1,1),0)+'%, bồi thường '+signed(yoyQ(NL,NL.length-1,3),0)+'% YoY: phí tăng nhanh hơn bồi thường thì lãi bảo hiểm gốc tốt lên.');
 }
 if(NL.length&&document.getElementById('chNlLoss')){
  const rs=NL.slice(-16),rm=Object.fromEntries(RE.map(r=>[r[0],r]));
  barLineChart('chNlLoss',{categories:rs.map(r=>q(r[0])),series:[{name:'Phi nhân thọ',color:C.navy,kind:'line',values:rs.map(lossR)},{name:'Tái bảo hiểm',color:C.gold,kind:'line',values:rs.map(r=>lossR(rm[r[0]]))}],unit:'%',digits:0,height:260,rotateLabels:true,zeroBase:true});
  legend('chNlLoss',[['Phi nhân thọ',C.navy],['Tái bảo hiểm (VNR)',C.gold]]);
  fillTable('tbl-nl-loss',['Quý','Phi nhân thọ (%)','Tái bảo hiểm (%)'],NL.map(r=>[q(r[0]),nf(lossR(r),1),nf(lossR(rm[r[0]]),1)]).reverse());
- sourceLine('chNlLoss',[SRC.fsw],q(NL.at(-1)[0]),'Tỷ lệ = tổng chi bồi thường và trả tiền bảo hiểm (is15) / doanh thu phí bảo hiểm thuần (is03), tự tính trên số tổng hợp ngành. Đây không phải tỷ lệ bồi thường thuần chuẩn (chưa trừ thu đòi người thứ ba, chưa tính tăng dự phòng) — dùng để xem xu hướng.');
+ sourceLine('chNlLoss',[SRC.fsw],q(NL.at(-1)[0]),'Tỷ lệ = tổng chi bồi thường / doanh thu phí bảo hiểm thuần, tự tính trên tổng BCTC của rổ (5 DN phi nhân thọ; VNR). Đây không phải tỷ lệ bồi thường thuần chuẩn (chưa trừ thu đòi người thứ ba, chưa tính tăng dự phòng) — dùng để xem xu hướng.');
  insight('chNlLoss','Tỷ lệ bồi thường phi nhân thọ quanh '+nf(lossR(NL.at(-1)),0)+'%, thấp hơn đỉnh Q3/2024 (~49% do Yagi). Tái bảo hiểm (VNR) dao động mạnh hơn vì nhận phần rủi ro thiên tai, cháy nổ lớn: một sự kiện lớn đủ đẩy tỷ lệ của VNR vượt 60–80% trong quý.');
 }
 const car=S('car_output'),moto=S('moto_output');
@@ -127,7 +127,7 @@ if(LF.length&&document.getElementById('chLifePrem')){
  barLineChart('chLifePrem',{categories:rs.map(r=>q(r[0])),series:[{name:'Phí bảo hiểm gốc',color:C.plum,values:rs.map(r=>r[1]/1000)},{name:'Chi bồi thường, trả tiền BH',color:C.grey,kind:'line',values:rs.map(r=>r[3]/1000)}],unit:'nghìn tỷ',digits:1,height:260,rotateLabels:true});
  legend('chLifePrem',[['Phí bảo hiểm gốc',C.plum],['Chi trả quyền lợi',C.grey]]);
  fillTable('tbl-life-prem',['Quý','Phí gốc (tỷ)','YoY','Chi trả (tỷ)','Chi trả / phí thuần'],LF.map((r,i)=>[q(r[0]),nf(r[1],0),signed(yoyQ(LF,i,1),1)+'%',nf(r[3],0),nf(lossR(r),0)+'%']).reverse());
- sourceLine('chLifePrem',[SRC.fsw],q(LF.at(-1)[0]),'Phân ngành GICS 151 "bảo hiểm nhân thọ và sức khỏe". Trên sàn chỉ có BVH thuộc nhóm này nên chuỗi thực chất là BCTC hợp nhất Bảo Việt (gồm cả Bảo hiểm Bảo Việt phi nhân thọ). Không đại diện cho cả thị trường nhân thọ (Prudential, Manulife, AIA… không niêm yết).');
+ sourceLine('chLifePrem',[SRC.fsw],q(LF.at(-1)[0]),'BCTC hợp nhất Bảo Việt (BVH) (gồm cả Bảo hiểm Bảo Việt phi nhân thọ). Không đại diện cho cả thị trường nhân thọ (Prudential, Manulife, AIA… không niêm yết).');
  const i=LF.length-1;
  insight('chLifePrem','Phí gốc Bảo Việt '+signed(yoyQ(LF,i,1),0)+'% YoY — gần như đi ngang từ 2023: nhân thọ chưa thoát khủng hoảng niềm tin sau bancassurance, phí khai thác mới thấp và hợp đồng cũ đáo hạn. Chi trả quyền lợi ~'+nf(lossR(LF.at(-1)),0)+'% phí thuần là mức cao, phần lớn là đáo hạn và hủy hợp đồng.');
 }
@@ -135,19 +135,19 @@ if(LF.length&&document.getElementById('chLifePrem')){
 const dep=S('deposit_12m');
 if(gb.length&&document.getElementById('chYield')){
  const bm={};gb.forEach(r=>{bm[r.date.slice(0,7)]=r});const months=Object.keys(bm).sort(),dm=byMonth(dep);
- barLineChart('chYield',{categories:months.map(m=>mon(m+'-01')),series:[{name:'TPCP 10 năm',color:C.navy,kind:'line',values:months.map(m=>bm[m].value)},{name:'Huy động 12T NHTM lớn',color:C.teal,kind:'line',values:months.map(m=>dm[m]?.value??null)}],unit:'%',digits:2,height:260,rotateLabels:true,zeroBase:false});
+ barLineChart('chYield',{categories:months.map(m=>mon(m+'-01')),series:[{name:'TPCP 10 năm (HNX)',color:C.navy,kind:'line',values:months.map(m=>bm[m].value)},{name:'Tiết kiệm 12T Vietcombank',color:C.teal,kind:'line',values:months.map(m=>dm[m]?.value??null)}],unit:'%',digits:2,height:260,rotateLabels:true,zeroBase:false});
  legend('chYield',[['TPCP 10 năm',C.navy],['Huy động 12 tháng',C.teal]]);
  fillTable('tbl-yield',['Tháng','TPCP 10 năm (%)','Huy động 12T (%)'],months.slice().reverse().map(m=>[mon(m+'-01'),nf(bm[m].value,3),nf(dm[m]?.value,2)]));
  const L=gb.at(-1),Y=gb.find(r=>r.date>=String(Number(L.date.slice(0,4))-1)+L.date.slice(4));
- sourceLine('chYield',[SRC.hnx],short(L.date),'Lợi suất TPCP Việt Nam 10 năm và lãi suất huy động 12 tháng bình quân nhóm NHTM lớn.');
- insight('chYield','TPCP 10 năm '+nf(L.value,2)+'%, cao hơn một năm trước '+nf((L.value-(Y?.value??L.value))*100,0)+' điểm cơ bản; lãi huy động 12 tháng '+nf(dep.at(-1)?.value,2)+'% (một năm trước '+nf(dep.find(r=>r.date.slice(0,7)===String(Number(dep.at(-1).date.slice(0,4))-1)+dep.at(-1).date.slice(4,7))?.value,2)+'%). Doanh nghiệp bảo hiểm để phần lớn quỹ vào tiền gửi và TPCP: lãi suất tăng kéo thu nhập đầu tư lên dần khi tiền gửi cũ đáo hạn và tái tục ở lãi mới — tác động trễ 2–4 quý, mạnh nhất với nhân thọ (quỹ lớn, kỳ hạn dài).');
+ sourceLine('chYield',[['HNX · đường cong lợi suất TPCP',B.gbond?.url||'https://hnx.vn/vi-vn/trai-phieu/duong-cong-loi-suat.html'],['Vietcombank · lãi suất tiết kiệm',macro.deposit_12m?.url||null]],short(L.date),'TPCP 10 năm: par yield trên đường cong lợi suất HNX, ngày cuối tháng. Huy động 12 tháng: lãi tiết kiệm cá nhân 12 tháng Vietcombank công bố; nguồn không có lịch sử nên chuỗi bắt đầu từ 10/2026.');
+ insight('chYield','TPCP 10 năm '+nf(L.value,2)+'%, cao hơn một năm trước '+nf((L.value-(Y?.value??L.value))*100,0)+' điểm cơ bản; lãi tiết kiệm 12 tháng Vietcombank '+nf(dep.at(-1)?.value,2)+'%. Doanh nghiệp bảo hiểm để phần lớn quỹ vào tiền gửi và TPCP: lãi suất tăng kéo thu nhập đầu tư lên dần khi tiền gửi cũ đáo hạn và tái tục ở lãi mới — tác động trễ 2–4 quý, mạnh nhất với nhân thọ (quỹ lớn, kỳ hạn dài).');
 }
 if(NL.length&&document.getElementById('chFin')){
  const rs=NL.slice(-16),lm=Object.fromEntries(LF.map(r=>[r[0],r]));
  barLineChart('chFin',{categories:rs.map(r=>q(r[0])),series:[{name:'Phi nhân thọ',color:C.navy,values:rs.map(r=>r[5])},{name:'Nhân thọ (BVH)',color:C.plum,kind:'line',values:rs.map(r=>lm[r[0]]?.[5]??null)}],unit:'tỷ',digits:0,height:260,rotateLabels:true});
  legend('chFin',[['Phi nhân thọ niêm yết',C.navy],['Bảo Việt (BVH)',C.plum]]);
  fillTable('tbl-fin',['Quý','LN tài chính PNT (tỷ)','YoY','LN tài chính BVH (tỷ)','YoY'],NL.map((r,i)=>{const l=LF.findIndex(x=>x[0]===r[0]);return [q(r[0]),nf(r[5],0),signed(yoyQ(NL,i,5),0)+'%',nf(LF[l]?.[5],0),signed(l>=0?yoyQ(LF,l,5):null,0)+'%']}).reverse());
- sourceLine('chFin',[SRC.fsw],q(NL.at(-1)[0]),'Lợi nhuận hoạt động tài chính (is25) — lãi tiền gửi, trái phiếu, cổ tức, lãi kinh doanh chứng khoán trừ chi phí tài chính.');
+ sourceLine('chFin',[SRC.fsw],q(NL.at(-1)[0]),'Lợi nhuận hoạt động tài chính — lãi tiền gửi, trái phiếu, cổ tức, lãi kinh doanh chứng khoán trừ chi phí tài chính.');
  const i=NL.length-1,l=LF.length-1;
  insight('chFin','Lợi nhuận tài chính phi nhân thọ '+signed(yoyQ(NL,i,5),0)+'% YoY, Bảo Việt '+signed(yoyQ(LF,l,5),0)+'%: lãi suất tăng từ cuối 2025 bắt đầu vào kết quả. Với phi nhân thọ, phần này thường bằng hoặc lớn hơn lãi bảo hiểm gốc — là động lực lợi nhuận chính 2026–2027 nếu lãi suất giữ mức hiện tại.');
 }
@@ -182,7 +182,7 @@ kpi('spk-nlprem',nL?nf(nL[1]/1000,1):'—',nL?'nghìn tỷ phí gốc PNT · '+q
 kpi('spk-loss',lr!=null?nf(lr,0)+'%':'—',nL?'bồi thường / phí thuần PNT · '+q(nL[0]):'—',NL.length>4?'cùng kỳ '+nf(lossR(NL[nI-4]),0)+'%':'',NL.slice(-8).map(lossR),C.red);
 kpi('spk-lifeprem',lL?nf(lL[1]/1000,1):'—',lL?'nghìn tỷ phí gốc BVH · '+q(lL[0]):'—',lL?signed(lfY,0)+'% so cùng kỳ':'',LF.slice(-8).map(r=>r[1]),C.plum);
 kpi('spk-yield',gL?nf(gL.value,2)+'%':'—',gL?'TPCP 10 năm · '+short(gL.date):'—',gY!=null?signed(gY*100,0)+' đcb so cùng kỳ':'',gb.filter((r,i)=>i%20===0).slice(-12).map(r=>r.value),C.navy);
-kpi('spk-dep',dL?nf(dL.value,2)+'%':'—',dL?'huy động 12T NHTM lớn · '+mon(dL.date):'—',dL?signed(dL.value-(dep.find(r=>r.date.slice(0,7)===String(Number(dL.date.slice(0,4))-1)+dL.date.slice(4,7))?.value??dL.value),2)+' điểm % YoY':'',dep.slice(-12).map(r=>r.value),C.teal);
+kpi('spk-dep',dL?nf(dL.value,2)+'%':'—',dL?'tiết kiệm 12T Vietcombank · '+mon(dL.date):'—',(()=>{const p=dL&&dep.find(r=>r.date.slice(0,7)===String(Number(dL.date.slice(0,4))-1)+dL.date.slice(4,7));return p?signed(dL.value-p.value,2)+' điểm % YoY':''})(),dep.slice(-12).map(r=>r.value),C.teal);
 kpi('spk-pb',nlV?nf(nlV[2],2)+'x':'—',nlV?'P/B phi nhân thọ · '+short(nlV[0]):'—',lfV?'BVH '+nf(lfV[2],2)+'x':'',nlS.slice(-30).map(r=>r[2]),C.grey);
 const quick=document.querySelector('.hero .insight');
 if(quick&&nL){

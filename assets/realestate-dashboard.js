@@ -127,7 +127,7 @@ if(S('gdp_re_q').length&&document.getElementById('chGdpRe')){
  const rs=S('gdp_re_q'),y=yoy(rs,4),last=rs.slice(-12),ly=y.slice(-12);
  barLineChart('chGdpRe',{categories:last.map(r=>quarter(r.date)),series:[{name:'GDP kinh doanh BĐS (nghìn tỷ)',color:C.navy,values:last.map(r=>r.value/1000)}],unit:'nghìn tỷ VND',digits:1,height:260,rotateLabels:false});
  fillTable('tbl-gdp-re',['Quý','GDP BĐS (tỷ VND)','So cùng kỳ'],rs.slice(-16).reverse().map(r=>[quarter(r.date),nf(r.value,0),signed(y.find(x=>x.date===r.date)?.value,1)+'%']));
- sourceLine('chGdpRe',[SRC.nso],quarter(rs.at(-1).date),'GDP hoạt động kinh doanh bất động sản theo quý, giá hiện hành. So cùng kỳ tự tính trên giá hiện hành nên gồm cả yếu tố giá; không phải tăng trưởng thực.');
+ sourceLine('chGdpRe',[SRC.nso],quarter(rs.at(-1).date),'GDP hoạt động kinh doanh bất động sản theo quý, giá hiện hành, từ 2024; mỗi quý là số công bố lúc đó (sơ bộ), chưa gồm điều chỉnh năm sau. So cùng kỳ tự tính trên giá hiện hành nên gồm cả yếu tố giá; không phải tăng trưởng thực.');
  insight('chGdpRe','Giá trị gia tăng ngành bất động sản theo quý là thước đo hoạt động rộng nhất có lịch công bố cố định (ngày 6 tháng đầu quý). Quý IV luôn cao vì ghi nhận bàn giao cuối năm; so cùng kỳ, không so quý liền trước.');
 }
 if(S('fdi_re_ytd').length&&document.getElementById('chFdiRe')){

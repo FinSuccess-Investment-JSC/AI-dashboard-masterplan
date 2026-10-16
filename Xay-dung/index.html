@@ -298,8 +298,8 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/sector-runtime.js?v=82b412aede70" defer></script>
 <script src="../assets/sector-content.js?v=be87392226ce" defer></script>
 <script src="../assets/sector-layout.js?v=68a0b4e1b045" defer></script>
-<script src="../data/construction-public-data.js?v=c0d1892fba37" defer></script>
-<script src="../assets/construction-dashboard.js?v=890650e86662" defer></script>
+<script src="../data/construction-public-data.js?v=9c0b472a9bb2" defer></script>
+<script src="../assets/construction-dashboard.js?v=f787527752cf" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="../assets/catalyst-board.js?v=5a3e399e6332" defer></script>
@@ -316,7 +316,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
 <script src="../assets/source-gap.js?v=9a4b7a0c2c99" defer></script>
-<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261017-macro"></script>
+<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261017-macro2"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=3d4f581ec180">
@@ -629,7 +629,7 @@ body[data-sector="construction"] .tx-group{margin:18px 0 8px;font-size:12px;lett
   </div>
   <div class="card" style="margin-top:14px" data-block-id="xd-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Vốn NSNN, sản lượng thép, xi măng, IIP, XK</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a>, Hải quan</td><td>Tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>Giá thép, HRC, quặng, than, nhựa đường</b></td><td>Hòa Phát, sàn Trung Quốc, ICE</td><td>Ngày · hiển thị cuối tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>Giá xi măng, đá (Sở Xây dựng)</b></td><td>Tạm trống (chưa có nguồn công khai)</td><td>Tháng</td><td>Cùng lời gọi hằng tuần</td></tr><tr><td><b>Tín dụng, GDP xây dựng</b></td><td><a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN</a>, NSO</td><td>Tháng / quý</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Giải ngân so kế hoạch, dự án, chính sách</b></td><td>Bộ Tài chính, Bộ Công Thương qua báo (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Vốn NSNN, sản lượng thép, xi măng, IIP, XK</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a>, <a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Giá thép, HRC, quặng, than, nhựa đường</b></td><td><a href="https://www.shfe.com.cn/eng/Market/Futures/" target="_blank" rel="noopener">SHFE</a> (HRC, thép thanh, nhựa đường), IMF (quặng sắt), ICE (than)</td><td>Ngày · hiển thị cuối tháng</td><td>Script mỗi lượt job; giá CB300 Hòa Phát, than cốc chưa có nguồn thay thế</td></tr><tr><td><b>Giá xi măng, đá (Sở Xây dựng)</b></td><td>Tạm trống (chưa có nguồn công khai)</td><td>Tháng</td><td>Cùng lời gọi hằng tuần</td></tr><tr><td><b>Tín dụng, GDP xây dựng</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng / quý</td><td>Script mỗi lượt job · GDP từ 2024; tín dụng ngành chưa có nguồn thay thế</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Giải ngân so kế hoạch, dự án, chính sách</b></td><td>Bộ Tài chính, Bộ Công Thương qua báo (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
     <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
   </div>
   <div class="footer">Vietnam Construction &amp; Materials Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 11/10/2026.</div>

@@ -110,7 +110,7 @@ if(gdp.length&&document.getElementById('chGdpHealth')){
  const yrs=[...new Set(gdp.map(r=>r.date.slice(0,4)))].sort(),q9=yrs.map(y=>gdp.find(r=>r.date===y+'-09-01')).filter(Boolean);
  barLineChart('chGdpHealth',{categories:q9.map(r=>'9T/'+r.date.slice(0,4)),series:[{name:'GDP y tế & cứu trợ xã hội 9 tháng',color:C.teal,values:q9.map(r=>r.value/1000)}],unit:'nghìn tỷ',digits:0,height:260});
  fillTable('tbl-gdp',['Kỳ','Nghìn tỷ đồng (lũy kế, danh nghĩa)'],gdp.slice().reverse().map(r=>[qtr(r.date)+' lũy kế',nf(r.value/1000,1)]));
- sourceLine('chGdpHealth',[SRC.nso],qtr(gdp.at(-1).date),'GDP danh nghĩa ngành y tế và hoạt động cứu trợ xã hội, lũy kế từ đầu năm; so cùng kỳ 9 tháng. Không tách chi tiêu thuốc.');
+ sourceLine('chGdpHealth',[SRC.nso],qtr(gdp.at(-1).date),'GDP danh nghĩa ngành y tế và hoạt động cứu trợ xã hội, lũy kế từ đầu năm, từ 2024 (số công bố lúc đó, sơ bộ); so cùng kỳ 9 tháng. Không tách chi tiêu thuốc.');
  const l=q9.at(-1),p=q9.at(-2);
  insight('chGdpHealth','Giá trị tăng thêm ngành y tế 9T/'+l.date.slice(0,4)+' '+nf(l.value/1000,0)+' nghìn tỷ, '+signed((l.value/p.value-1)*100,0)+'% so cùng kỳ — cầu dịch vụ y tế tăng nhanh hơn GDP chung, là nền của bệnh viện tư (TNH) và chuỗi nhà thuốc.');
 }

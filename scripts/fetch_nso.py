@@ -194,6 +194,86 @@ def columns(kind, hs, y, m):
     return col
 
 
+ROMAN = {3: 'i', 6: 'ii', 9: 'iii', 12: 'iv'}
+# key -> (table, label regex, field): field 'q' quarter value, 'ytd' year to date, 'qyoy' quarter vs same quarter last year - 100
+QSPEC = {
+    'gdp_construction_q': ('gdp_n', r'^xây dựng$', 'q'), 'gdp_construction_nominal': ('gdp_n', r'^xây dựng$', 'ytd'),
+    'gdp_construction_real': ('gdp_r', r'^xây dựng$', 'ytd'),
+    'gdp_re_q': ('gdp_n', r'^hoạt động kinh doanh bất động sản', 'q'), 'gdp_re_ytd': ('gdp_n', r'^hoạt động kinh doanh bất động sản', 'ytd'),
+    'gdp_health': ('gdp_n', r'^y tế và hoạt động trợ giúp xã hội', 'ytd'),
+    'ppi_handling': ('ppi_t', r'^dịch vụ bốc xếp', 'qyoy'), 'ppi_warehouse': ('ppi_t', r'^dịch vụ kho bãi', 'qyoy'),
+    'ppi_sea': ('ppi_t', r'^dịch vụ vận tải (đường )?ven biển', 'qyoy'), 'ppi_water': ('ppi_t', r'^dịch vụ vận tải đường (thủy|thuỷ)$', 'qyoy'),
+}
+
+
+def quarter_kind(ws):
+    head = ' '.join(norm(c) for r in ws.iter_rows(max_row=3, values_only=True) for c in r if c)
+    if re.search(r'tổng sản phẩm trong nước', head) and 'grdp' not in head and 'bình quân' not in head:
+        return 'gdp_r' if 'so sánh' in head else 'gdp_n' if 'hiện hành' in head else None
+    if re.search(r'chỉ số giá (cước )?vận tải', head):
+        return 'ppi_t'
+    return None
+
+
+def parse_quarterly(wb, y, m):
+    r = ROMAN[m]
+    out = {}
+    jobs = []
+    for ws in wb.worksheets:
+        kind = quarter_kind(ws)
+        if not kind:
+            continue
+        head = ' '.join(norm(c) for rr in ws.iter_rows(max_row=8, values_only=True) for c in rr if c)
+        if kind.startswith('gdp') and m == 3 and 'hiện hành' in head and 'so sánh' in head:
+            jobs += [(ws, 'gdp_n'), (ws, 'gdp_r')]
+        else:
+            jobs.append((ws, kind))
+    for ws, kind in jobs:
+        rows = list(ws.iter_rows(values_only=True))
+        first, hs = headers(ws, rows)
+        if first is None:
+            continue
+        qrx = re.compile(r'quý %s(?![iv])' % r)
+        col = {}
+        for i, h in enumerate(hs):
+            if not h or 'cơ cấu' in h:
+                continue
+            cmp_ = 'so với' in h or 'cùng kỳ' in h or '%' in h
+            if kind == 'ppi_t':
+                if qrx.search(h) and 'năm %d' % (y - 1) in h and 'ytd' not in h and 'qyoy' not in col:
+                    col['qyoy'] = i
+                elif qrx.search(h) and 'ytd' not in h and 'first_q' not in col:
+                    col['first_q'] = i  # year row left blank: the first 'quý r' column is the same quarter last year
+                continue
+            if m == 3 and 'tổng số' in h and ('hiện hành' in h or 'so sánh' in h):
+                if ('hiện hành' in h) == (kind == 'gdp_n') and 'q' not in col:
+                    col['q'] = i
+                continue
+            if cmp_:
+                continue
+            ytd = 'ytd%d' % m in h or (m == 12 and re.search(r'(cả )?năm 20\d\d', h) and 'quý' not in h)
+            if ytd and 'ytd' not in col:
+                col['ytd'] = i
+            elif qrx.search(h) and 'q' not in col and not ytd:
+                col['q'] = i
+        if kind == 'ppi_t' and 'qyoy' not in col and 'first_q' in col:
+            col['qyoy'] = col['first_q']
+        if m == 3:
+            col.setdefault('ytd', col.get('q'))
+            col.setdefault('q', col.get('ytd'))
+        for row in rows[first:]:
+            lb = label(row)
+            if not lb:
+                continue
+            for key, (k, rx, field) in QSPEC.items():
+                if k != kind or key in out or field not in col or col[field] is None or not re.search(rx, lb):
+                    continue
+                v = row[col[field]] if col[field] < len(row) else None
+                if isinstance(v, (int, float)):
+                    out[key] = {'cur': v - 100 if field == 'qyoy' else v}
+    return out
+
+
 def parse(path):
     wb = openpyxl.load_workbook(path, data_only=True)
     sheets = {}
@@ -247,6 +327,8 @@ def parse(path):
                          'ly': cv / yo * 100 if cv is not None and yo else None}
                 if any(x is not None for x in v.values()):
                     out[key] = v
+    if m % 3 == 0:
+        out.update(parse_quarterly(wb, y, m))
     return rm, out
 
 

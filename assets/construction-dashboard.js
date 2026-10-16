@@ -84,15 +84,16 @@ const BASE='2024-01';
 
 // Thép
 const rebar=S('rebar_hpg'),hrc=S('hrc'),ore=S('iron_ore'),coke=S('coke'),rolled=S('steel_rolled'),bar=S('steel_bar'),sexp=S('steel_export');
-if(rebar.length&&hrc.length&&document.getElementById('chSteelPrice')){
- const ri=byMonth(idx(rebar,BASE)),hi=byMonth(idx(hrc,BASE)),oi=byMonth(idx(ore,BASE)),ci=byMonth(idx(coke,BASE)),base=hrc.filter(r=>r.date.slice(0,7)>=BASE);
- lines('chSteelPrice',base,[['Thép CB300 Hòa Phát',C.navy,r=>ri[ym(r.date)]?.value??null],['HRC Trung Quốc',C.teal,r=>hi[ym(r.date)]?.value??null],['Quặng sắt',C.gold,r=>oi[ym(r.date)]?.value??null],['Than cốc',C.plum,r=>ci[ym(r.date)]?.value??null]],'',0);
- legend('chSteelPrice',[['Thép CB300 HPG (VND)',C.navy],['HRC TQ',C.teal],['Quặng sắt',C.gold],['Than cốc',C.plum]]);
- const rm=byMonth(rebar),om=byMonth(ore),cm=byMonth(coke);
- fillTable('tbl-steel-price',['Kỳ','Thép CB300 HPG (nghìn đ/kg)','HRC TQ (CNY/tấn)','Quặng sắt (CNY/tấn)','Than cốc (CNY/tấn)'],hrc.slice().reverse().map(r=>[short(r.date),nf(rm[ym(r.date)]?.value,2),nf(r.value,0),nf(om[ym(r.date)]?.value,1),nf(cm[ym(r.date)]?.value,0)]));
- sourceLine('chSteelPrice',[['Hòa Phát · sàn Đại Liên, Thượng Hải',null]],short(hrc.at(-1).date),'Chỉ số T1/2024 = 100 để bốn chuỗi khác đơn vị cùng trục. Thép CB300 D10 Hòa Phát (74362, giá bán lẻ công bố), HRC giao ngay TQ (203148), quặng sắt (73987), than cốc (203129). Một tấn thép cần hơn một tấn quặng cộng than, nên không trừ trực tiếp ra biên.');
- const rL=rebar.at(-1),hL=hrc.at(-1),oL=ore.at(-1),cL=coke.at(-1);
- insight('chSteelPrice','Giá thép xây dựng Hòa Phát '+nf(rL.value,2)+' nghìn đ/kg ('+signed(yoyAt(rebar,rL),0)+'% YoY), HRC Trung Quốc '+signed(yoyAt(hrc,hL),0)+'%, quặng sắt '+signed(yoyAt(ore,oL),0)+'% nhưng than cốc '+signed(yoyAt(coke,cL),0)+'%. Giá bán trong nước giữ được trong khi quặng rẻ đi → biên thép xây dựng tốt; than cốc tăng ăn bớt một phần. HRC Trung Quốc yếu vẫn là trần giá cho HRC Việt Nam dù đã có thuế chống bán phá giá.');
+const rbc=S('rebar_cn');
+if(hrc.length&&document.getElementById('chSteelPrice')){
+ const ri=byMonth(idx(rbc,BASE)),hi=byMonth(idx(hrc,BASE)),oi=byMonth(idx(ore,BASE)),base=hrc.filter(r=>r.date.slice(0,7)>=BASE);
+ lines('chSteelPrice',base,[['Thép thanh vằn SHFE',C.navy,r=>ri[ym(r.date)]?.value??null],['HRC SHFE',C.teal,r=>hi[ym(r.date)]?.value??null],['Quặng sắt',C.gold,r=>oi[ym(r.date)]?.value??null]],'',0);
+ legend('chSteelPrice',[['Thép thanh vằn SHFE',C.navy],['HRC SHFE',C.teal],['Quặng sắt (IMF)',C.gold]]);
+ const rm=byMonth(rbc),om=byMonth(ore);
+ fillTable('tbl-steel-price',['Kỳ','Thép thanh vằn SHFE (CNY/tấn)','HRC SHFE (CNY/tấn)','Quặng sắt IMF (USD/tấn)'],hrc.slice().reverse().map(r=>[short(r.date),nf(rm[ym(r.date)]?.value,0),nf(r.value,0),nf(om[ym(r.date)]?.value,1)]));
+ sourceLine('chSteelPrice',[['SHFE · dữ liệu giao dịch ngày','https://www.shfe.com.cn/eng/Market/Futures/'],['IMF qua FRED (PIORECRUSDM)','https://fred.stlouisfed.org/series/PIORECRUSDM']],short(hrc.at(-1).date),'Chỉ số T1/2024 = 100 để ba chuỗi khác đơn vị cùng trục. Thép thanh vằn và HRC: giá thanh toán hợp đồng chính (OI lớn nhất) của SHFE, phiên cuối tháng; quặng sắt: IMF, CFR Trung Quốc, bình quân tháng. Giá thép CB300 Hòa Phát và than cốc chưa có nguồn công khai thay thế.');
+ const hL=hrc.at(-1),oL=ore.at(-1),bL=rbc.at(-1);
+ insight('chSteelPrice','HRC SHFE '+nf(hL.value,0)+' CNY/tấn ('+signed(yoyAt(hrc,hL),0)+'% YoY), thép thanh vằn '+signed(yoyAt(rbc,bL),0)+'%, quặng sắt '+signed(yoyAt(ore,oL),0)+'% ('+mon(oL.date)+'). Giá thép Trung Quốc là trần giá cho HRC Việt Nam dù đã có thuế chống bán phá giá.');
 }
 if(rolled.length&&document.getElementById('chSteelOut')){
  const bm=byMonth(bar),rs=rolled.slice(-36);
@@ -127,15 +128,15 @@ if(cexp.length&&document.getElementById('chCementExp')){
  insight('chCementExp','Lũy kế xuất khẩu '+signed(ytdYo(cexp),0)+'%. Xuất khẩu là van xả cho phần dư công suất, biên thấp hơn bán trong nước; khi giá than tăng, xuất khẩu clinker gần như hòa vốn.');
 }
 const cp=S('cement_price'),stone=S('stone_1x2'),asph=S('asphalt'),coal=S('coal_newcastle');
-if(cp.length&&document.getElementById('chVlxdPrice')){
- const ci=byMonth(idx(cp,BASE)),si=byMonth(idx(stone,BASE)),ai=byMonth(idx(asph,BASE)),ki=byMonth(idx(coal,BASE)),base=asph.filter(r=>r.date.slice(0,7)>=BASE);
- lines('chVlxdPrice',base,[['Xi măng (Sở XD)',C.navy,r=>ci[ym(r.date)]?.value??null],['Đá 1x2 (Sở XD)',C.grey,r=>si[ym(r.date)]?.value??null],['Nhựa đường',C.plum,r=>ai[ym(r.date)]?.value??null],['Than Newcastle',C.gold,r=>ki[ym(r.date)]?.value??null]],'',0);
- legend('chVlxdPrice',[['Xi măng',C.navy],['Đá 1x2',C.grey],['Nhựa đường',C.plum],['Than Newcastle',C.gold]]);
- const cm=byMonth(cp),sm=byMonth(stone),km=byMonth(coal);
- fillTable('tbl-vlxd-price',['Kỳ','Xi măng (nghìn đ/kg)','Đá 1x2 (nghìn đ/tấn)','Nhựa đường (CNY/tấn)','Than Newcastle (USD/tấn)'],asph.slice().reverse().map(r=>[short(r.date),nf(cm[ym(r.date)]?.value,3),nf(sm[ym(r.date)]?.value,1),nf(r.value,0),nf(km[ym(r.date)]?.value,1)]));
- sourceLine('chVlxdPrice',[SRC.moc,['Sunsir, ICE',null]],short(asph.at(-1).date),'Chỉ số T1/2024 = 100. Xi măng (80961) và đá 1x2 (80968) là giá tháng Sở Xây dựng công bố; nhựa đường (203138, giá Trung Quốc) và than Newcastle (203036) là giá ngày, nén cuối tháng. Nguồn chưa có giá cát.');
+if(asph.length&&document.getElementById('chVlxdPrice')){
+ const ai=byMonth(idx(asph,BASE)),ki=byMonth(idx(coal,BASE)),base=asph.filter(r=>r.date.slice(0,7)>=BASE);
+ lines('chVlxdPrice',base,[['Nhựa đường SHFE',C.plum,r=>ai[ym(r.date)]?.value??null],['Than Newcastle',C.gold,r=>ki[ym(r.date)]?.value??null]],'',0);
+ legend('chVlxdPrice',[['Nhựa đường SHFE',C.plum],['Than Newcastle',C.gold]]);
+ const km=byMonth(coal);
+ fillTable('tbl-vlxd-price',['Kỳ','Nhựa đường SHFE (CNY/tấn)','Than Newcastle (USD/tấn)'],asph.slice().reverse().map(r=>[short(r.date),nf(r.value,0),nf(km[ym(r.date)]?.value,1)]));
+ sourceLine('chVlxdPrice',[['SHFE · dữ liệu giao dịch ngày','https://www.shfe.com.cn/eng/Market/Futures/'],['ICE Newcastle',com.coal_newcastle?.url||null]],short(asph.at(-1).date),'Chỉ số T1/2024 = 100. Nhựa đường: giá thanh toán hợp đồng chính SHFE, phiên cuối tháng; than Newcastle: ICE, phiên cuối tháng. Giá xi măng, đá 1x2 của Sở Xây dựng chưa có nguồn công khai dạng dữ liệu.');
  const aL=asph.at(-1),kL=coal.at(-1);
- insight('chVlxdPrice','Nhựa đường '+signed(yoyAt(asph,aL),0)+'% YoY và than Newcastle '+signed(yoyAt(coal,kL),0)+'% đi theo giá dầu, than thế giới — chi phí của nhà thầu đường (C4G, HHV, LCG) và xi măng (HT1, BCC) tăng nhanh. Giá công bố của xi măng, đá chỉ tăng 5–10%: phần chênh doanh nghiệp tự gánh, hoặc được bù qua điều chỉnh giá hợp đồng chậm vài quý.');
+ insight('chVlxdPrice','Nhựa đường '+signed(yoyAt(asph,aL),0)+'% YoY và than Newcastle '+signed(yoyAt(coal,kL),0)+'% — chi phí của nhà thầu đường (C4G, HHV, LCG) và xi măng (HT1, BCC) đi theo giá dầu, than thế giới.');
 }
 // Xây dựng & hạ tầng
 const cred=S('credit_construction'),gdpN=S('gdp_construction_nominal');
@@ -147,11 +148,11 @@ if(cred.length&&document.getElementById('chCredit')){
  insight('chCredit','Tín dụng xây dựng '+signed(yoyAt(cred,cred.at(-1)),0)+'% YoY, nhanh hơn tăng trưởng tín dụng chung: nhà thầu vay vốn lưu động theo khối lượng đầu tư công và nhà ở. Mặt trái là nợ vay và phải thu của nhà thầu tăng cùng (xem Key players).');
 }
 if(gdpN.length&&document.getElementById('chGdpCons')){
- const rs=gdpN.filter(r=>r.date>='2022-01').map(r=>({date:r.date,value:yoyAt(gdpN,r)})).filter(r=>r.value!=null);
+ const rs=gdpN.filter(r=>r.date>='2025-01').map(r=>({date:r.date,value:yoyAt(gdpN,r)})).filter(r=>r.value!=null);
  barLineChart('chGdpCons',{categories:rs.map(r=>qtr(r.date)),series:[{name:'GDP xây dựng lũy kế, giá hiện hành',color:C.teal,values:rs.map(r=>r.value)}],unit:'%',digits:1,height:260,rotateLabels:false});
  fillTable('tbl-gdp-cons',['Kỳ (lũy kế)','GDP xây dựng giá hiện hành (nghìn tỷ)','YoY'],gdpN.slice().reverse().map(r=>[qtr(r.date),nf(r.value/1000,0),signed(yoyAt(gdpN,r),1)+'%']));
- sourceLine('chGdpCons',[SRC.nso],qtr(gdpN.at(-1).date),'GDP ngành xây dựng giá hiện hành, lũy kế từ đầu năm, % so cùng kỳ. Không vẽ chuỗi giá so sánh: năm 2026 nhảy +60% so cùng kỳ, nhiều khả năng đổi năm gốc, không so được với các năm trước.');
- insight('chGdpCons','GDP xây dựng giá hiện hành 9T/2026 '+signed(yoyAt(gdpN,gdpN.at(-1)),0)+'%, nhanh nhất từ 2022. Phần tăng gồm cả giá vật liệu; khối lượng thực tăng ít hơn.');
+ sourceLine('chGdpCons',[SRC.nso],qtr(gdpN.at(-1).date),'GDP ngành xây dựng giá hiện hành, lũy kế từ đầu năm, % so cùng kỳ, từ 2024; số công bố lúc đó (sơ bộ), chưa gồm điều chỉnh năm sau. Không vẽ chuỗi giá so sánh: năm 2026 nhảy +60% so cùng kỳ, nhiều khả năng đổi năm gốc, không so được với các năm trước.');
+ insight('chGdpCons','GDP xây dựng giá hiện hành 9T/2026 '+signed(yoyAt(gdpN,gdpN.at(-1)),0)+'%. Phần tăng gồm cả giá vật liệu; khối lượng thực tăng ít hơn.');
 }
 // Định giá
 if(Object.keys(sec).length&&document.getElementById('chSectorVal')){

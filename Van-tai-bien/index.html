@@ -298,7 +298,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/sector-runtime.js?v=82b412aede70" defer></script>
 <script src="../assets/sector-content.js?v=be87392226ce" defer></script>
 <script src="../assets/sector-layout.js?v=68a0b4e1b045" defer></script>
-<script src="../data/shipping-public-data.js?v=020cf55d71e2" defer></script>
+<script src="../data/shipping-public-data.js?v=bdf40407096b" defer></script>
 <script src="../assets/shipping-dashboard.js?v=72d274e4299b" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
@@ -316,7 +316,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
 <script src="../assets/source-gap.js?v=9a4b7a0c2c99" defer></script>
-<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261017-macro"></script>
+<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261017-macro2"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=3d4f581ec180">
@@ -615,7 +615,7 @@ body[data-sector="shipping"] .tx-group{margin:18px 0 8px;font-size:12px;letter-s
   </div>
   <div class="card" style="margin-top:14px" data-block-id="vt-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>BDTI, BCTI, BDI, Brent, dầu nhiên liệu</b></td><td>Baltic Exchange, ICE, sàn TQ</td><td>Ngày · hiển thị cuối tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>Hormuz, Bab el-Mandeb</b></td><td><a href="https://portwatch.imf.org/" target="_blank" rel="noopener">IMF PortWatch</a></td><td>Ngày</td><td>Script GitHub mỗi lượt job (dùng chung với Dầu khí)</td></tr><tr><td><b>Vận chuyển đường biển, chỉ số giá vận tải, XNK</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a>, Hải quan</td><td>Tháng / quý</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>BIMCO, Clarksons, Suez, cấm vận, USTR, IMO</b></td><td>Thông cáo qua báo ngành, hãng luật (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>BDTI, BCTI, BDI, Brent, dầu nhiên liệu</b></td><td><a href="https://www.eia.gov/dnav/pet/hist/RBRTEd.htm" target="_blank" rel="noopener">EIA</a> (Brent), <a href="https://www.shfe.com.cn/eng/Market/Futures/" target="_blank" rel="noopener">SHFE</a> (dầu nhiên liệu)</td><td>Ngày · hiển thị cuối tháng</td><td>Brent, dầu nhiên liệu: Script mỗi lượt job; Baltic BDI/BDTI/BCTI: chưa có nguồn công khai thay thế</td></tr><tr><td><b>Hormuz, Bab el-Mandeb</b></td><td><a href="https://portwatch.imf.org/" target="_blank" rel="noopener">IMF PortWatch</a></td><td>Ngày</td><td>Script GitHub mỗi lượt job (dùng chung với Dầu khí)</td></tr><tr><td><b>Vận chuyển đường biển, chỉ số giá vận tải, XNK</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a>, <a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng / quý</td><td>Script mỗi lượt job</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>BIMCO, Clarksons, Suez, cấm vận, USTR, IMO</b></td><td>Thông cáo qua báo ngành, hãng luật (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
     <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
   </div>
   <div class="footer">Vietnam Shipping Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 10/10/2026.</div>
