@@ -261,6 +261,13 @@ def main():
             blocks['macro'] = {'series': ms, 'captured_at': now[:10]}
         verr = {}
         sr = SV.build(sector, vcache, verr)
+        cb = ROOT / 'data/raw/public/cbonds-realestate.json'
+        if sector == 'realestate' and cb.exists():
+            c = json.loads(cb.read_text())
+            meta = {'source': c['source'], 'url': c['url'], 'captured_at': c['captured'], 'definition': c['definition'], 'unit': 'tỷ VND'}
+            blocks['cbond_issuance'] = {**meta, 'records': c['issuance']}
+            blocks['cbond_maturity'] = {**meta, 'records': c['maturity'], 'top_issuers': c['top_issuers'],
+                                        'outstanding_value': c['outstanding_value'], 'outstanding_bonds': c['outstanding_bonds']}
         if sector == 'insurance':
             blocks['fs'] = SV.insurance_fs(verr)
             hy = ROOT / 'data/raw/public/hnx-yield-10y.json'

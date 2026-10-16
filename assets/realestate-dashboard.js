@@ -66,7 +66,7 @@ function sourceLine(id,parts,period,method){
 }
 function insight(id,text){const block=document.getElementById(id)?.closest('.card');if(!block)return;const n=make('div','chart-insight');n.dataset.inputOwner='ai';n.innerHTML='<b>Cách hiểu trong bối cảnh ngành · AI:</b> ';n.append(text);block.append(n)}
 function gap(id,text){const host=document.getElementById(id);if(host)host.replaceChildren(make('div','gap-empty',text))}
-function kpi(spark,value,sub,delta,series,color=C.navy){const sp=document.getElementById(spark),card=sp?.closest('.kpi');if(!card)return;card.querySelector('.value').textContent=value;card.querySelector('.sub').textContent=sub;card.querySelector('.delta').textContent=delta;sp.replaceChildren();if(series?.length)sparkline(spark,series,color)}
+function kpi(spark,value,sub,delta,series,color=C.navy){const sp=document.getElementById(spark),card=sp?.closest('.kpi');if(!card)return;card.querySelector('.value').textContent=value;card.querySelector('.sub').textContent=sub;card.querySelector('.delta').textContent=delta;sp.replaceChildren();const sv=(series||[]).filter(Number.isFinite);if(sv.length>1)sparkline(spark,sv,color)}
 const signed=(v,d=1)=>v==null?'—':(v>0?'+':'')+nf(v,d);
 
 // Bonds (Vốn & Trái phiếu)
@@ -75,7 +75,7 @@ if(iss.length&&document.getElementById('chBondIssuance')){
  const rs=iss.slice(-36);
  barLineChart('chBondIssuance',{categories:rs.map(r=>mon(r.date)),series:[{name:'Giá trị phát hành',color:C.navy,values:rs.map(r=>r.value)}],unit:'tỷ VND',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-bond-issuance',['Tháng','Giá trị (tỷ VND)','Số đợt','Lãi suất BQ (%)','1–3 năm (tỷ)','3–5 năm (tỷ)'],rs.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),r.issue_count,r.wavg_coupon==null?'—':nf(r.wavg_coupon,2),nf(r.buckets['1-3 năm']||0,0),nf(r.buckets['3-5 năm']||0,0)]));
- sourceLine('chBondIssuance',[SRC.hnx],mon(rs.at(-1).date),'lọc ngành cấp 1 = Bất động sản, VND; cộng các nhóm kỳ hạn và hình thức phát hành theo tháng. Lãi suất bình quân gia quyền theo giá trị, chỉ đợt có lãi suất. Tháng hiện tại là số tạm tính.');
+ sourceLine('chBondIssuance',[SRC.hnx],mon(rs.at(-1).date),'Tổ chức phát hành có lĩnh vực hoạt động "Bất động sản" trên HNX (419 DN), VND; giá trị = khối lượng × mệnh giá theo ngày phát hành. Lãi suất bình quân gia quyền theo giá trị. Tháng hiện tại là số tạm tính; HNX đăng tin trễ vài tuần sau ngày phát hành.');
  insight('chBondIssuance','Phát hành mới là kênh đảo nợ chính của chủ đầu tư nhà ở. Đọc giá trị cùng lãi suất: phát hành tăng nhưng lãi suất 11–12% nghĩa là thị trường vẫn đòi phần bù rủi ro cao. Vài đợt lớn của một tổ chức có thể làm một tháng nhảy vọt.');
 }
 if(closed.length&&document.getElementById('chBondOutstanding')){
@@ -94,11 +94,11 @@ if(closed.length&&document.getElementById('chBondLate')){
 }
 if(mat.length&&document.getElementById('chBondMaturity')){
  const now=new Date().toISOString().slice(0,7),rs=mat.filter(r=>r.date.slice(0,7)>=now);
- barLineChart('chBondMaturity',{categories:rs.map(r=>mon(r.date)),series:[{name:'Gốc đến hạn',color:C.navy,values:rs.map(r=>r.due)},{name:'Lãi ước tính',color:C.teal,values:rs.map(r=>r.interest)}],unit:'tỷ VND',digits:0,height:260,rotateLabels:true,stackable:true});
- fillTable('tbl-bond-maturity',['Tháng','Gốc đến hạn (tỷ VND)','Lãi ước tính (tỷ)','Số mã có dòng tiền'],rs.map(r=>[mon(r.date),nf(r.due,0),nf(r.interest,0),r.bond_count]));
+ barLineChart('chBondMaturity',{categories:rs.map(r=>mon(r.date)),series:[{name:'Gốc đến hạn',color:C.navy,values:rs.map(r=>r.due)},{name:'Lãi dồn tích ước tính',color:C.teal,values:rs.map(r=>r.interest)}],unit:'tỷ VND',digits:0,height:260,rotateLabels:true,stackable:true});
+ fillTable('tbl-bond-maturity',['Tháng','Gốc đến hạn (tỷ VND)','Lãi dồn tích (tỷ)','Số mã đáo hạn'],rs.map(r=>[mon(r.date),nf(r.due,0),nf(r.interest,0),r.bond_count]));
  const top=document.getElementById('tbl-bond-top');if(top)fillTable('tbl-bond-top',['Tổ chức phát hành','Mã','Gốc đến hạn tới cuối 2027 (tỷ VND)','Tháng đáo hạn'],topIssuers.map(t=>[t.name,t.symbol,nf(t.due,0),t.months.map(m=>'T'+Number(m.slice(5))+'/'+m.slice(2,4)).join(', ')]));
- sourceLine('chBondMaturity',[SRC.hnx],mon(rs.at(-1).date),'năm 2026 và 2027, VND, lọc ngành cấp 1 = Bất động sản (endpoint không lọc ngành phía server). Năm 2027 nguồn có 1.002 dòng toàn thị trường, tool trả 1.000; có thể thiếu tối đa 2 dòng nhỏ. Mã chưa niêm yết mang mã nội bộ của HNX.');
- insight('chBondMaturity','Tháng 12/2026 và tháng 8, 12/2027 là ba đỉnh đáo hạn. Gốc đến hạn của một tổ chức lớn có thể chiếm hơn nửa một tháng, nên đọc bảng tổ chức phát hành bên dưới trước khi nói "ngành" chịu áp lực. Lãi ước tính của mã thả nổi là giả định.');
+ sourceLine('chBondMaturity',[SRC.hnx],mon(rs.at(-1).date),'Trái phiếu đang lưu hành của tổ chức có lĩnh vực "Bất động sản" trên HNX, VND: gốc = khối lượng còn lưu hành × mệnh giá, xếp theo tháng đáo hạn. Lãi = dồn tích tháng (còn lưu hành × lãi suất phát hành / 12), không phải lịch trả lãi; mã thả nổi dùng lãi suất lúc phát hành.');
+ insight('chBondMaturity','Ba tháng đáo hạn lớn nhất: '+rs.slice().sort((a,b)=>b.due-a.due).slice(0,3).map(r=>mon(r.date)+' ('+nf(r.due/1000,1)+' nghìn tỷ)').join(', ')+'. Gốc đến hạn của một tổ chức lớn có thể chiếm hơn nửa một tháng, nên đọc bảng tổ chức phát hành bên dưới trước khi nói "ngành" chịu áp lực. Lãi của mã thả nổi là giả định.');
 }
 // Credit & rates
 if(S('credit_construction').length&&document.getElementById('chCreditRe')){
