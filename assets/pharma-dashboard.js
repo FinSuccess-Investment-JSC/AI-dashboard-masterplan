@@ -120,9 +120,9 @@ if(v222.length&&document.getElementById('chSectorVal')){
  barLineChart('chSectorVal',{categories:weekly.map(r=>r[0].slice(8,10)+'/'+r[0].slice(5,7)+'/'+r[0].slice(2,4)),series:[{name:'P/E ngành dược',color:C.navy,kind:'line',values:weekly.map(r=>r[1])},{name:'P/B ×10',color:C.teal,kind:'line',values:weekly.map(r=>r[2]*10)}],unit:'x',digits:1,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',[['P/E',C.navy],['P/B (nhân 10 để cùng trục)',C.teal]]);
  fillTable('tbl-sector-val',['Phiên','P/E','P/B'],v222.slice().reverse().map(r=>[short(r[0]),nf(r[1],2),nf(r[2],2)]));
- sourceLine('chSectorVal',[SRC.wi],short(v222.at(-1)[0]),'GICS 222 Dược phẩm (vốn hóa toàn phân ngành). Mỗi 5 phiên. Bán lẻ thuốc (115) trống trong nguồn; cơ sở y tế (178) lỗ nên P/E âm, không vẽ.');
+ sourceLine('chSectorVal',[['VNDirect finfo','https://dstock.vndirect.com.vn/']],short(v222.at(-1)[0]),'Rổ mã theo dõi: Dược phẩm (DHG, IMP, DBD, TRA, DMC, DVN). P/E = tổng vốn hóa / tổng lợi nhuận (vốn hóa ÷ P/E từng mã, VNDirect); mã lỗ không có P/E chỉ vào P/B và vốn hóa. Không phải toàn ngành. Vẽ mỗi 5 phiên.');
  const f=v222[0],l=v222.at(-1);
- insight('chSectorVal','P/E ngành dược '+nf(l[1],1)+'x, giảm từ '+nf(f[1],1)+'x đầu tháng 4 — giá cổ phiếu đi ngang trong khi lợi nhuận 12 tháng tăng. Mức ~12–13x thấp hơn nhóm bán lẻ, phản ánh tăng trưởng chậm và rủi ro giá thầu.');
+ insight('chSectorVal',(()=>{const L=[['222','Dược phẩm']].filter(([id])=>sec[id]?.records?.length);const l0=sec[L[0][0]].records.at(-1);return 'P/E rổ mã theo dõi, phiên '+short(l0[0])+': '+L.map(([id,name])=>{const r=sec[id].records,l=r.at(-1),y=r.find(x=>x[0]>=String(+l[0].slice(0,4)-1)+l[0].slice(4));return name+' '+nf(l[1],(1==2?2:1))+'x'+(y&&y[1]!=null?' (1 năm trước '+nf(y[1],(1==2?2:1))+'x)':'')}).join('; ')+'.'})());
 }
 // Tài liệu: chart từ số có evidence (window.PHARMA_DOCS khai báo trong trang)
 const D=window.PHARMA_DOCS||{};

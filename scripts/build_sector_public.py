@@ -9,6 +9,9 @@ and the pages show '—'. Unit conversions are stated per series.
 import csv, datetime as dt, io, json, ssl, sys, time, urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import sector_valuation_public as SV  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 FRED = 'https://fred.stlouisfed.org/graph/fredgraph.csv?id={}'
 IMF = 'IMF Primary Commodity Prices (FRED), bình quân tháng'
@@ -81,18 +84,24 @@ def build_series(key, cache, F):
 
 
 def main():
-    F, cache = feeds(), {}
+    F, cache, vcache = feeds(), {}, {}
     now = dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
     for sector, keys in SECTORS.items():
         series = {k: build_series(k, cache, F) for k in keys}
         blocks = {'commodity': {'series': series, 'captured_at': now[:10]}} if series else {}
-        bundle = {'schema': 1, 'built_at': now, 'provider': 'Nguồn công khai (IMF/FRED, EIA, ICE)', 'blocks': blocks,
-                  'absent': ['macro', 'sector_ratio'] + (['commodity'] if not series else []),
+        verr = {}
+        sr = SV.build(sector, vcache, verr)
+        if sr and sr['by_sector']:
+            sr['captured_at'], sr['errors'] = now[:10], verr
+            blocks['sector_ratio'] = sr
+        bundle = {'schema': 1, 'built_at': now, 'provider': 'Nguồn công khai (IMF/FRED, EIA, ICE, VNDirect)', 'blocks': blocks,
+                  'absent': [k for k in ('macro', 'sector_ratio', 'commodity') if k not in blocks],
                   'note': 'Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành chưa có nguồn công khai thay thế; để trống.'}
         text = json.dumps(bundle, ensure_ascii=False, separators=(',', ':'))
         (ROOT / f'data/{sector}-public-data.json').write_text(text + '\n')
         (ROOT / f'data/{sector}-public-data.js').write_text(f'window.{GLOBAL[sector]} = ' + text.replace('<', '\\u003c') + ';\n')
-        print(sector, {k: (len(v['records']), v['records'][-1]['date'] if v['records'] else None) for k, v in series.items()})
+        print(sector, {k: (len(v['records']), v['records'][-1]['date'] if v['records'] else None) for k, v in series.items()},
+              {i: (len(b['records']), b['records'][-1][0]) for i, b in (sr or {}).get('by_sector', {}).items()}, verr or '')
     return 0
 
 

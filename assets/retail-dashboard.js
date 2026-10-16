@@ -162,14 +162,14 @@ if(sugar.length&&document.getElementById('chInputs')){
 }
 // Định giá
 if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
- const ids=[['220','Chuỗi bán lẻ tổng hợp (MWG…)',C.navy],['215','Phân phối điện, điện tử',C.grey],['224','Bán lẻ xe cơ giới',C.teal],['239','Sữa',C.plum],['120','Bia',C.gold]].filter(([id])=>sec[id]?.records?.length);
+ const ids=[['220','Chuỗi bán lẻ (MWG, FRT)',C.navy],['215','Phân phối điện tử',C.grey],['224','Bán lẻ xe',C.teal],['239','Sữa',C.plum],['120','Bia',C.gold]].filter(([id])=>sec[id]?.records?.length);
  const dates=[...new Set(ids.flatMap(([id])=>sec[id].records.map(r=>r[0])))].sort(),weekly=dates.filter((d,i)=>i%5===0||i===dates.length-1);
  const at=(id,d,k)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[k]:null};
  barLineChart('chSectorVal',{categories:weekly.map(d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4)),series:ids.map(([id,name,color])=>({name:'P/E '+name,color,kind:'line',values:weekly.map(d=>{const v=at(id,d,1);return v>0&&v<60?v:null})})),unit:'x',digits:1,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',ids.map(([,n,c])=>[n,c]));
- fillTable('tbl-sector-val',['Phân ngành (GICS)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
- sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'chuỗi cửa hàng tổng hợp (220), phân phối điện, điện tử (215), bán lẻ xe cơ giới (224), sữa (239), bia (120). PNJ không rõ phân ngành trong nguồn nên không vẽ. Mỗi 5 phiên.');
- insight('chSectorVal','P/E chuỗi bán lẻ ~14x, giảm từ ~21x đầu 2026 khi lợi nhuận MWG tăng nhanh hơn giá; sữa ~11,5x và bia ~10,8x đang ở vùng thấp nhiều năm — thị trường trả giá thấp cho tăng trưởng chậm của VNM, SAB dù sản lượng ngành đang hồi.');
+ fillTable('tbl-sector-val',['Rổ mã','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
+ sourceLine('chSectorVal',[['VNDirect finfo','https://dstock.vndirect.com.vn/']],short(dates.at(-1)),'Rổ mã theo dõi: Chuỗi bán lẻ (MWG, FRT) (MWG, FRT); Phân phối điện tử (DGW, PET); Bán lẻ xe (HAX, SVC); Sữa (VNM); Bia (SAB). P/E = tổng vốn hóa / tổng lợi nhuận (vốn hóa ÷ P/E từng mã, VNDirect); mã lỗ không có P/E chỉ vào P/B và vốn hóa. Không phải toàn ngành. Vẽ mỗi 5 phiên.');
+ insight('chSectorVal',(()=>{const L=ids.filter(([id])=>sec[id]?.records?.length);const l0=sec[L[0][0]].records.at(-1);return 'P/E rổ mã theo dõi, phiên '+short(l0[0])+': '+L.map(([id,name])=>{const r=sec[id].records,l=r.at(-1),y=r.find(x=>x[0]>=String(+l[0].slice(0,4)-1)+l[0].slice(4));return name+' '+nf(l[1],(1==2?2:1))+'x'+(y&&y[1]!=null?' (1 năm trước '+nf(y[1],(1==2?2:1))+'x)':'')}).join('; ')+'.'})());
 }
 
 // Tài liệu: cấu phần sức mua và mạng lưới cửa hàng (số có evidence)

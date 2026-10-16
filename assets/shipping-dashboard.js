@@ -174,14 +174,14 @@ if(ex.length&&document.getElementById('chTrade')){
 }
 // Định giá
 if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
- const ids=[['185','Vận tải hàng hóa đường thủy',C.navy],['309','Cảng & dịch vụ hàng hải',C.teal]].filter(([id])=>sec[id]?.records?.length);
+ const ids=[['185','Vận tải biển',C.navy],['309','Cảng',C.teal]].filter(([id])=>sec[id]?.records?.length);
  const dates=[...new Set(ids.flatMap(([id])=>sec[id].records.map(r=>r[0])))].sort(),weekly=dates.filter((d,i)=>i%5===0||i===dates.length-1);
  const at=(id,d,k)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[k]:null};
  barLineChart('chSectorVal',{categories:weekly.map(d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4)),series:ids.map(([id,name,color])=>({name:'P/E '+name,color,kind:'line',values:weekly.map(d=>at(id,d,1))})),unit:'x',digits:1,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',ids.map(([,n,c])=>[n,c]));
- fillTable('tbl-sector-val',['Phân ngành (GICS)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
- sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'vận tải hàng hóa đường thủy (185, gồm PVT, VOS, HAH…), cảng & dịch vụ hàng hải (309). Vẽ mỗi 5 phiên.');
- insight('chSectorVal','P/E vận tải đường thủy ~11 lần, gần như không đổi so với đầu 2025 dù BDTI tăng 5 lần: thị trường coi cước tanker hiện tại là bất thường (do Hormuz) và chưa trả thêm cho lợi nhuận đột biến. Nếu cước giữ cao qua 2027, lợi nhuận TC ký lại sẽ kéo P/E xuống thấp hơn nữa.');
+ fillTable('tbl-sector-val',['Rổ mã','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
+ sourceLine('chSectorVal',[['VNDirect finfo','https://dstock.vndirect.com.vn/']],short(dates.at(-1)),'Rổ mã theo dõi: Vận tải biển (PVT, VTO, VIP, PVP, GSP, VOS, VNA, HAH); Cảng (GMD, PHP, SGP, VSC, CDN, DVP, PDN). P/E = tổng vốn hóa / tổng lợi nhuận (vốn hóa ÷ P/E từng mã, VNDirect); mã lỗ không có P/E chỉ vào P/B và vốn hóa. Không phải toàn ngành. Vẽ mỗi 5 phiên.');
+ insight('chSectorVal',(()=>{const L=ids.filter(([id])=>sec[id]?.records?.length);const l0=sec[L[0][0]].records.at(-1);return 'P/E rổ mã theo dõi, phiên '+short(l0[0])+': '+L.map(([id,name])=>{const r=sec[id].records,l=r.at(-1),y=r.find(x=>x[0]>=String(+l[0].slice(0,4)-1)+l[0].slice(4));return name+' '+nf(l[1],(1==2?2:1))+'x'+(y&&y[1]!=null?' (1 năm trước '+nf(y[1],(1==2?2:1))+'x)':'')}).join('; ')+'.'})());
 }
 // Địa chính trị: PortWatch chokepoints (shared daily feed)
 const hz=D.hormuz?.records||[],bm=D.bab_el_mandeb?.records||[];

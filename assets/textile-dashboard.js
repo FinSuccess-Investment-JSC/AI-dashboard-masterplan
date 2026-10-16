@@ -167,14 +167,14 @@ if(psf.length&&document.getElementById('chPoly')){
  insight('chPoly','Sợi filament polyester của STK đi theo giá PTA/MEG (tức giá dầu) và chênh lệch so với giá sợi Trung Quốc bán phá giá. PTA, MEG tăng mạnh từ tháng 8/2026 làm giá đầu vào tăng; STK chỉ giữ được biên nếu giá sợi tăng theo.');
 }
 if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
- const ids=[['204','May mặc công nghiệp',C.navy],['207','Sợi và vải thành phẩm',C.teal]].filter(([id])=>sec[id]?.records?.length);
+ const ids=[['204','May',C.navy],['207','Sợi',C.teal]].filter(([id])=>sec[id]?.records?.length);
  const dates=[...new Set(ids.flatMap(([id])=>sec[id].records.map(r=>r[0])))].sort(),weekly=dates.filter((d,i)=>i%5===0||i===dates.length-1);
  const at=(id,d,k)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[k]:null};
  barLineChart('chSectorVal',{categories:weekly.map(d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4)),series:ids.map(([id,name,color])=>({name:'P/E '+name,color,kind:'line',values:weekly.map(d=>at(id,d,1))})),unit:'x',digits:2,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',ids.map(([,n,c])=>[n,c]));
- fillTable('tbl-sector-val',['Phân ngành (GICS)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],2),nf(r[3]/1000,1),short(r[0])]}));
- sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'phân ngành 204 và 207; vẽ mỗi 5 phiên. Phân ngành 252 (sợi tổng hợp, có STK) chưa có số trong nguồn. Định giá tổng hợp bị chi phối bởi mã lớn.');
- insight('chSectorVal','P/E ngành may quanh 6,5–7 lần, thấp hơn vùng 9–11 lần của giữa 2025: thị trường đang chiết khấu rủi ro thuế Mỹ và đơn hàng nửa cuối năm. Định giá chỉ mở rộng khi có bằng chứng đơn hàng 2027.');
+ fillTable('tbl-sector-val',['Rổ mã','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],2),nf(r[3]/1000,1),short(r[0])]}));
+ sourceLine('chSectorVal',[['VNDirect finfo','https://dstock.vndirect.com.vn/']],short(dates.at(-1)),'Rổ mã theo dõi: May (TCM, TNG, MSH, GIL); Sợi (STK, ADS). P/E = tổng vốn hóa / tổng lợi nhuận (vốn hóa ÷ P/E từng mã, VNDirect); mã lỗ không có P/E chỉ vào P/B và vốn hóa. Không phải toàn ngành. Vẽ mỗi 5 phiên.');
+ insight('chSectorVal',(()=>{const L=ids.filter(([id])=>sec[id]?.records?.length);const l0=sec[L[0][0]].records.at(-1);return 'P/E rổ mã theo dõi, phiên '+short(l0[0])+': '+L.map(([id,name])=>{const r=sec[id].records,l=r.at(-1),y=r.find(x=>x[0]>=String(+l[0].slice(0,4)-1)+l[0].slice(4));return name+' '+nf(l[1],(1==2?2:1))+'x'+(y&&y[1]!=null?' (1 năm trước '+nf(y[1],(1==2?2:1))+'x)':'')}).join('; ')+'.'})());
 }
 // US retail
 const ur=S('us_apparel_retail'),uy=S('us_apparel_retail_yoy');

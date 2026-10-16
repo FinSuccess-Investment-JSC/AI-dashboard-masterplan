@@ -154,14 +154,14 @@ if(gdpN.length&&document.getElementById('chGdpCons')){
 }
 // Định giá
 if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
- const ids=[['281','Thép',C.navy],['264','Xi măng',C.teal],['260','Khai thác đá',C.gold],['170','Xây dựng cầu đường',C.plum],['171','Xây dựng công trình khác',C.grey]].filter(([id])=>sec[id]?.records?.length);
+ const ids=[['281','Thép',C.navy],['264','Xi măng',C.teal],['260','Đá, VLXD',C.gold],['170','Hạ tầng, cầu đường',C.plum],['171','Xây dựng công trình',C.grey]].filter(([id])=>sec[id]?.records?.length);
  const dates=[...new Set(ids.flatMap(([id])=>sec[id].records.map(r=>r[0])))].sort(),weekly=dates.filter((d,i)=>i%5===0||i===dates.length-1);
  const at=(id,d,k)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[k]:null};
  barLineChart('chSectorVal',{categories:weekly.map(d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4)),series:ids.map(([id,name,color])=>({name:'P/B '+name,color,kind:'line',values:weekly.map(d=>at(id,d,2))})),unit:'x',digits:1,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',ids.map(([,n,c])=>[n,c]));
- fillTable('tbl-sector-val',['Phân ngành (GICS)','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),r[1]>0&&r[1]<200?nf(r[1],1):'—',nf(r[3]/1000,1),short(r[0])]}));
- sourceLine('chSectorVal',[SRC.wi],short(dates.at(-1)),'sản xuất thép (281), xi măng (264), khai thác đá (260), xây dựng cầu đường (170), xây dựng công trình khác (171). Vẽ P/B vì P/E nhóm xây dựng công trình khác âm cuối 2025 (lỗ) và nhảy khi BCTC mới vào. Mỗi 5 phiên.');
- insight('chSectorVal','Thép (P/E ~8x, P/B ~1,1x) và khai thác đá (P/E ~5x) rẻ nhất; xây dựng cầu đường P/B cao (~4,6x) vì thị trường đã trả trước cho chu kỳ đầu tư công. P/B thép đã giảm từ ~1,5x (T4/2026) — thị trường lo giá HRC Trung Quốc và nợ vay, dù lợi nhuận Hòa Phát tăng mạnh.');
+ fillTable('tbl-sector-val',['Rổ mã','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),r[1]>0&&r[1]<200?nf(r[1],1):'—',nf(r[3]/1000,1),short(r[0])]}));
+ sourceLine('chSectorVal',[['VNDirect finfo','https://dstock.vndirect.com.vn/']],short(dates.at(-1)),'Rổ mã theo dõi: Thép (HPG, HSG, NKG); Xi măng (HT1, BCC); Đá, VLXD (KSB, DHA, VLB, PLC); Hạ tầng, cầu đường (C4G, LCG, HHV, CII, HUT); Xây dựng công trình (CTD, HBC, VCG, FCN, DPG). P/E = tổng vốn hóa / tổng lợi nhuận (vốn hóa ÷ P/E từng mã, VNDirect); mã lỗ không có P/E chỉ vào P/B và vốn hóa. Không phải toàn ngành. Vẽ mỗi 5 phiên.');
+ insight('chSectorVal',(()=>{const L=ids.filter(([id])=>sec[id]?.records?.length);const l0=sec[L[0][0]].records.at(-1);return 'P/B rổ mã theo dõi, phiên '+short(l0[0])+': '+L.map(([id,name])=>{const r=sec[id].records,l=r.at(-1),y=r.find(x=>x[0]>=String(+l[0].slice(0,4)-1)+l[0].slice(4));return name+' '+nf(l[2],(2==2?2:1))+'x'+(y&&y[2]!=null?' (1 năm trước '+nf(y[2],(2==2?2:1))+'x)':'')}).join('; ')+'.'})());
 }
 // Giải ngân đầu tư công
 const pi=S('pub_inv'),piC=S('pub_inv_central'),piL=S('pub_inv_local'),piM=S('pub_inv_moc');
