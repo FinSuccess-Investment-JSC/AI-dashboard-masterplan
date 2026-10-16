@@ -391,3 +391,10 @@ body.fs-home .fs-search { margin-bottom: 32px; } body.fs-home nav.site-navigatio
 .company-trend .ct-source summary{cursor:pointer;font-weight:600}
 .company-trend .ct-source-btn{border:1px solid var(--line,#dfe6f7);border-radius:8px;background:#f5f7fc;color:#1D2678;padding:4px 10px;font:inherit;font-size:11.5px;font-weight:700;cursor:pointer}
 .company-trend .ct-source-panel{margin-top:6px}
+
+/* Blocks with no public source after the Wi removal (assets/source-gap.js). */
+:root{--fs-gap:#c62828;--fs-soft-gap:#fdecea}
+.card.source-gap{border:2px solid var(--fs-gap);background:var(--fs-soft-gap)}
+.source-gap-note{margin:6px 0 8px;padding:6px 10px;border-radius:6px;background:var(--fs-gap);color:#fff;font-weight:700;font-size:13px}
+.kpi.source-gap{border:2px solid var(--fs-gap);background:var(--fs-soft-gap)}
+.kpi.source-gap .sub{color:var(--fs-gap);font-weight:700}
