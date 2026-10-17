@@ -207,6 +207,34 @@ def sbv_series(sector):
             for k in SBV.get(sector, []) if d['series'].get(k)}
 
 
+FIA_FILE = ROOT / 'data/raw/public/fia-fdi.json'
+FIA_NAMES = {'fdi_re_ytd': 'FDI đăng ký vào kinh doanh BĐS, lũy kế từ đầu năm', 'fdi_mfg_ytd': 'FDI đăng ký vào công nghiệp chế biến, chế tạo, lũy kế từ đầu năm',
+             'fdi_construction_ytd': 'FDI đăng ký vào xây dựng, lũy kế từ đầu năm', 'fdi_accommodation_ytd': 'FDI đăng ký vào lưu trú và ăn uống, lũy kế từ đầu năm',
+             'fdi_transport_ytd': 'FDI đăng ký vào vận tải kho bãi, lũy kế từ đầu năm', 'fdi_ict_ytd': 'FDI đăng ký vào thông tin và truyền thông, lũy kế từ đầu năm',
+             'fdi_realized_ytd': 'Vốn FDI thực hiện, lũy kế từ đầu năm', 'fdi_re_stock': 'FDI đăng ký vào kinh doanh BĐS, lũy kế còn hiệu lực'}
+
+
+def fia_series(sector):
+    if sector != 'realestate' or not FIA_FILE.exists():
+        return {}
+    d = json.loads(FIA_FILE.read_text())
+    S = d['series']
+    out = {k: {'name': n, 'unit': 'triệu USD', 'time_type': 'monthly', 'source': d['source'], 'url': d['url'],
+               'records': [{'date': m + '-01', 'value': v} for m, v in S[k].items()]} for k, n in FIA_NAMES.items() if S.get(k)}
+    for src, dst, name in (('fdi_re_ytd', 'fdi_re_monthly', 'FDI đăng ký vào kinh doanh BĐS theo tháng (ròng)'),
+                           ('fdi_realized_ytd', 'fdi_realized', 'Vốn FDI thực hiện theo tháng')):
+        y = S.get(src, {})
+        recs = []
+        for m, v in sorted(y.items()):
+            yy, mm = int(m[:4]), int(m[5:])
+            prev = None if mm == 1 else y.get(f'{yy}-{mm - 1:02d}')
+            if mm == 1 or prev is not None:
+                recs.append({'date': m + '-01', 'value': round(v - (prev or 0), 2)})
+        if recs:
+            out[dst] = {'name': name, 'unit': 'triệu USD', 'time_type': 'monthly', 'source': d['source'], 'url': d['url'], 'records': recs}
+    return out
+
+
 def shfe_series(sector):
     if not SHFE_FILE.exists() or sector not in SHFE:
         return {}
@@ -284,6 +312,7 @@ def main():
         ms = macro_series(sector)
         ms.update(customs_series(sector))
         ms.update(sbv_series(sector))
+        ms.update(fia_series(sector))
         if sector == 'textile':
             ms.update(us_apparel())
         sh = {**shfe_series(sector), **market_series(sector)}

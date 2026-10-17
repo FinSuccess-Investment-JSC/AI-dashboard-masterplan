@@ -58,26 +58,31 @@ def articles(sid, fields):
 
 
 def central_rate(old, since='2023-01-01'):
+    """Newest first, page by page, until the page reaches dates already stored (or `since`)."""
     daily = dict(old)
-    start = max([since] + [d for d in daily]) if daily else since
+    stop = max(daily) if daily else since
     page = 1
     while True:
-        d = get(FX, {'pageSize': 100, 'page': page, 'sort': 'datePublished:desc',
-                     'filter': f"datePublished ge {start}T00:00:00Z"})
+        d = get(FX, {'pageSize': 100, 'page': page, 'sort': 'datePublished:desc'})
+        dates = []
         for it in d.get('items', []):
             f = {c['name']: c['contentFieldValue'].get('data') for c in it['contentFields']}
             m = re.match(r'(\d\d)/(\d\d)/(\d{4})$', it.get('title', ''))
             if m and f.get('TyGiaSo'):
-                daily[f'{m.group(3)}-{m.group(2)}-{m.group(1)}'] = float(f['TyGiaSo'])
-        if page >= d.get('lastPage', 1):
-            return daily
+                k = f'{m.group(3)}-{m.group(2)}-{m.group(1)}'
+                daily[k] = float(f['TyGiaSo'])
+                dates.append(k)
+        if not dates or min(dates) < stop or page >= d.get('lastPage', 1):
+            return {k: v for k, v in daily.items() if k >= since}
         page += 1
 
 
 def main():
+    import sys
+    fx_only = '--fx-only' in sys.argv
     old = json.loads(OUT.read_text()) if OUT.exists() else {}
     S = old.get('series', {})
-    for sid, fields in ((10034332, CREDIT), (10038520, MONEY)):
+    for sid, fields in (() if fx_only else ((10034332, CREDIT), (10038520, MONEY))):
         try:
             for k, v in articles(sid, fields).items():
                 S.setdefault(k, {}).update(v)

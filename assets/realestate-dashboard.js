@@ -15,7 +15,7 @@ const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.
 const cash=B.cbond_cashflow?.records||[],iss=B.cbond_issuance?.records||[],mat=B.cbond_maturity?.records||[],topIssuers=B.cbond_maturity?.top_issuers||[];
 const built=W.built_at?new Date(W.built_at).toLocaleDateString('vi-VN'):'—';
 const checked=B.cbond_cashflow?.captured_at||W.built_at||'';
-const SRC={hnx:['HNX · Trái phiếu doanh nghiệp','https://cbonds.hnx.vn/'],nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],fia:['Cục Đầu tư nước ngoài · FDI','https://fia.mpi.gov.vn/'],wi:['Nguồn công khai',null]};
+const SRC={hnx:['HNX · Trái phiếu doanh nghiệp','https://cbonds.hnx.vn/'],nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],fia:['Cục Đầu tư nước ngoài · FDI','https://fia.mof.gov.vn/List/CatID/5102536e-ffed-4c97-83c9-24788f5e7d0c'],wi:['Nguồn công khai',null]};
 for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 
 // ---------- 1. Value chain (Tổng quan) ----------
@@ -144,7 +144,7 @@ if(S('fdi_re_monthly').length&&document.getElementById('chFdiReMonthly')){
  barLineChart('chFdiReMonthly',{categories:rs.map(r=>mon(r.date)),series:[{name:'FDI đăng ký vào BĐS',color:C.navy,values:rs.map(r=>r.value)}],unit:'triệu USD',digits:0,height:260,rotateLabels:true});
  fillTable('tbl-fdi-re-monthly',['Tháng','Triệu USD'],S('fdi_re_monthly').slice().reverse().map(r=>[mon(r.date),nf(r.value,0)]));
  const all=S('fdi_re_monthly'),gaps=[];for(let i=1;i<all.length;i++){const a=new Date(all[i-1].date),b=new Date(all[i].date),m=(b.getFullYear()-a.getFullYear())*12+b.getMonth()-a.getMonth();if(m>1)gaps.push(mon(all[i-1].date)+' → '+mon(all[i].date))}
- sourceLine('chFdiReMonthly',[SRC.fia,SRC.nso],mon(rs.at(-1).date),'Vốn đăng ký ròng trong tháng vào hoạt động kinh doanh bất động sản: cấp mới + điều chỉnh + góp vốn. Một dự án lớn có thể tạo đỉnh đơn lẻ (6/2026: 3,46 tỷ USD).'+(gaps.length?' Thiếu tháng: '+gaps.join(', ')+'.':''));
+ sourceLine('chFdiReMonthly',[SRC.fia,SRC.nso],mon(rs.at(-1).date),'Vốn đăng ký ròng trong tháng vào hoạt động kinh doanh bất động sản: cấp mới + điều chỉnh + góp vốn. Tháng = lũy kế tháng này − lũy kế tháng trước; chỉ có khi đủ hai báo cáo liền nhau.'+(gaps.length?' Thiếu tháng: '+gaps.join(', ')+'.':''));
  insight('chFdiReMonthly','Chuỗi tháng cho thấy FDI vào BĐS đi theo từng thương vụ chứ không đều: vài tháng một dự án lớn chiếm gần hết cả năm. Đọc cùng danh sách dự án lớn bên dưới để biết tháng đột biến đến từ KCN, khu đô thị hay data center.');
 }
 if(S('fdi_re_ytd').length&&document.getElementById('chFdiSector')){
@@ -155,8 +155,8 @@ if(S('fdi_re_ytd').length&&document.getElementById('chFdiSector')){
  barLineChart('chFdiSector',{categories:ys.map(lab),series:keys.map(([k,n,c],i)=>({name:n,color:c,values:ys.map(y=>maps[i][y]?.value??null)})),unit:'triệu USD',digits:0,height:260,rotateLabels:false,stackable:true});
  const host=document.getElementById('chFdiSector'),lg=make('div','legend');keys.forEach(([,n,c])=>{const s=make('span','li'),d=make('span','dot');d.style.background=c;s.append(d,n);lg.append(s)});host.after(lg);
  fillTable('tbl-fdi-sector',['Năm',...keys.map(k=>k[1])],ys.slice().reverse().map(y=>[lab(y),...maps.map(m=>nf(m[y]?.value,0))]));
- sourceLine('chFdiSector',[SRC.fia,SRC.nso],mon(S('fdi_re_ytd').at(-1).date),'Vốn đăng ký lũy kế từ đầu năm theo ngành (bảng 24: 77101, 77112, 77108, 77104, 77102); năm đã qua lấy số tháng 12. Data center có thể nằm ở thông tin – truyền thông hoặc BĐS tùy cách cấp phép; kho vận nằm ở vận tải kho bãi.');
- insight('chFdiSector','Ngoài kinh doanh BĐS, các ngành "ăn đất" như data center, kho vận và khách sạn cũng là cầu thuê đất KCN và đất thương mại. Năm 2026 thông tin – truyền thông lên gần 3,2 tỷ USD đến T8, cùng lúc với loạt dự án data center ở TP.HCM trong danh sách dự án lớn; Nguồn công khai chưa tách riêng data center nên đây là đối chiếu, chưa phải phân rã.');
+ sourceLine('chFdiSector',[SRC.fia,SRC.nso],mon(S('fdi_re_ytd').at(-1).date),'Vốn đăng ký lũy kế từ đầu năm theo ngành; năm đã qua lấy số tháng 12. Data center có thể nằm ở thông tin – truyền thông hoặc BĐS tùy cách cấp phép; kho vận nằm ở vận tải kho bãi.');
+ insight('chFdiSector','Ngoài kinh doanh BĐS, các ngành "ăn đất" như data center, kho vận và khách sạn cũng là cầu thuê đất KCN và đất thương mại. Năm 2026 thông tin – truyền thông lên '+nf(S('fdi_ict_ytd').at(-1)?.value/1000,1)+' tỷ USD đến T'+Number(S('fdi_ict_ytd').at(-1)?.date.slice(5,7))+', cùng lúc với loạt dự án data center ở TP.HCM trong danh sách dự án lớn; Nguồn công khai chưa tách riêng data center nên đây là đối chiếu, chưa phải phân rã.');
 }
 if(S('cpi_housing_yoy').length&&document.getElementById('chCpiHousing')){
  const rs=S('cpi_housing_yoy').slice(-36);
@@ -168,11 +168,11 @@ if(S('cpi_housing_yoy').length&&document.getElementById('chCpiHousing')){
 // KCN · hai chart FDI cùng một cách đo: lũy kế từ đầu năm đến cùng một tháng M, so giữa các năm.
 // M = tháng mới nhất có ở cả hai chuỗi trong năm hiện tại (FDI đăng ký lũy kế sẵn; FDI thực hiện tự cộng tháng 1..M).
 const fdiYtd=(()=>{
- const mfg=S('fdi_mfg_ytd'),real=S('fdi_realized');if(!mfg.length||!real.length)return null;
+ const mfg=S('fdi_mfg_ytd'),realY=S('fdi_realized_ytd'),real=realY.length?realY:S('fdi_realized');if(!mfg.length||!real.length)return null;
  const year=mfg.at(-1).date.slice(0,4),m=Math.min(Number(mfg.at(-1).date.slice(5,7)),real.at(-1).date.slice(0,4)===year?Number(real.at(-1).date.slice(5,7)):12);
  const mm=String(m).padStart(2,'0'),years=[...new Set(mfg.map(r=>r.date.slice(0,4)))].sort();
  const mfgRows=years.map(y=>({y,v:mfg.find(r=>r.date===y+'-'+mm+'-01')?.value??null})).filter(r=>r.v!=null).slice(-7);
- const realRows=[...new Set(real.map(r=>r.date.slice(0,4)))].sort().map(y=>{const ms=real.filter(r=>r.date.slice(0,4)===y&&Number(r.date.slice(5,7))<=m);return {y,v:ms.length===m?ms.reduce((a,r)=>a+r.value,0):null}}).filter(r=>r.v!=null).slice(-7);
+ const realRows=[...new Set(real.map(r=>r.date.slice(0,4)))].sort().map(y=>{if(realY.length)return {y,v:realY.find(r=>r.date===y+'-'+mm+'-01')?.value??null};const ms=real.filter(r=>r.date.slice(0,4)===y&&Number(r.date.slice(5,7))<=m);return {y,v:ms.length===m?ms.reduce((a,r)=>a+r.value,0):null}}).filter(r=>r.v!=null).slice(-7);
  return {m,mfgRows,realRows,realLast:real.at(-1)};
 })();
 const yoyCell=(rows,i)=>i>0&&rows[i-1].y===String(Number(rows[i].y)-1)?signed((rows[i].v/rows[i-1].v-1)*100,1)+'%':'—';
@@ -180,7 +180,7 @@ if(fdiYtd&&document.getElementById('chFdiMfg')){
  const {m,mfgRows:rs}=fdiYtd,lab=r=>m+'T/'+r.y;
  barLineChart('chFdiMfg',{categories:rs.map(lab),series:[{name:'FDI đăng ký · chế biến, chế tạo · '+m+' tháng',color:C.navy,values:rs.map(r=>r.v)}],unit:'triệu USD',digits:0,height:260,rotateLabels:false});
  fillTable('tbl-fdi-mfg',['Kỳ','Triệu USD','So cùng kỳ'],rs.map((r,i)=>[lab(r),nf(r.v,0),yoyCell(rs,i)]).reverse());
- sourceLine('chFdiMfg',[SRC.fia,SRC.nso],m+'T/'+rs.at(-1).y,'FDI đăng ký vào công nghiệp chế biến, chế tạo, lũy kế '+m+' tháng đầu mỗi năm (chỉ tiêu 77100). Nguồn chưa có số cả năm 2025 nên so cùng kỳ thay vì cả năm.');
+ sourceLine('chFdiMfg',[SRC.fia,SRC.nso],m+'T/'+rs.at(-1).y,'FDI đăng ký vào công nghiệp chế biến, chế tạo, lũy kế '+m+' tháng đầu mỗi năm . Năm trước suy từ % tăng/giảm cùng kỳ trong báo cáo.');
  insight('chFdiMfg','Khách thuê KCN là nhà máy chế biến chế tạo, nên FDI nhóm này là chỉ báo cầu sớm 2–6 quý trước khi doanh nghiệp KCN ghi doanh thu bàn giao đất. Vốn đăng ký tăng nhưng dồn vào mở rộng nhà máy cũ sẽ không tạo cầu đất mới.');
 }
 if(fdiYtd&&document.getElementById('chFdiRealized')){
@@ -188,7 +188,7 @@ if(fdiYtd&&document.getElementById('chFdiRealized')){
  barLineChart('chFdiRealized',{categories:rs.map(lab),series:[{name:'Vốn FDI thực hiện · '+m+' tháng',color:C.teal,values:rs.map(r=>r.v)}],unit:'triệu USD',digits:0,height:260,rotateLabels:false});
  const monthly=S('fdi_realized').slice(-12).reverse();
  fillTable('tbl-fdi-realized',['Kỳ','Triệu USD','So cùng kỳ'],rs.map((r,i)=>[lab(r),nf(r.v,0),yoyCell(rs,i)]).reverse().concat([['Tháng gần nhất','',''],...monthly.map(r=>[mon(r.date),nf(r.value,0),''])]));
- sourceLine('chFdiRealized',[SRC.fia,SRC.nso],mon(realLast.date),'Vốn FDI thực hiện toàn nền kinh tế, cộng tháng 1 đến tháng '+m+' mỗi năm (chỉ tiêu 76951, tự cộng); chưa tách riêng bất động sản. Cùng mốc '+m+' tháng với chart FDI đăng ký để so được; số theo tháng đến '+mon(realLast.date)+' ở bảng.');
+ sourceLine('chFdiRealized',[SRC.fia,SRC.nso],mon(realLast.date),'Vốn FDI thực hiện toàn nền kinh tế, cộng tháng 1 đến tháng '+m+' mỗi năm (báo cáo lũy kế của Cục Đầu tư nước ngoài); chưa tách riêng bất động sản. Cùng mốc '+m+' tháng với chart FDI đăng ký để so được; số theo tháng đến '+mon(realLast.date)+' ở bảng.');
  insight('chFdiRealized','Vốn thực hiện là tiền đã vào nhà xưởng, máy móc — nó xác nhận FDI đăng ký có thành nhà máy thật hay không.');
 }
 // KCN theo khung chỉ số VDSC (01/2026): số nhập tay từ báo cáo, có dòng bằng chứng trong data/realestate-market/evidence.json.
