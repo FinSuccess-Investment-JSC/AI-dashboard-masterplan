@@ -1,5 +1,5 @@
 {
-  "version": "20261017-fdi",
+  "version": "20261017-fdi2",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -18,21 +18,21 @@
     "pharma": "Duoc/"
   },
   "files": {
-    "404.html": "894afa949232ff434e6e6ec01ea16abf80b269c71a1e6713a02e098d06e67cc7",
-    "Ban-le/index.html": "39f68ea753d100fac8e7b6e5f9654c632b900091b552f90025da9e4103e0d37f",
-    "Bank/index.html": "ba4b2d2a70d1b63ef8703d57b73dea45dfe4ec19d999c171083abe0e468db0cd",
-    "Bao-hiem/index.html": "d6d6ab0ced17cf20ee63ed946b45bf2fa1fa0736f3e1524251d7d9ae24c02fb2",
-    "Bat-dong-san/index.html": "e816222b8f8ba39a7297d48784af3eec64a7d79db9534db772cbc25ebb202d02",
-    "Cang-bien/index.html": "d63cf5e205f95882c5a1ea4e9dc4381974bf0038e55d9e42c4ca36caafb3c105",
-    "Dau-khi/index.html": "e6ac26cf32c27f74ad8c428e49d4fec2f17e99dd61f337479653c2dc2088f343",
-    "Det-may/index.html": "7d3ec613c31c79945f6f093cc679aa551bad7224ab44ba23fae96846aa1c3fc7",
-    "Dien/index.html": "eee01a23dd91292c5e552a8a058dc0f14ed2cb3333f7f6d8fd56cd2106626f6d",
-    "Duoc/index.html": "46c3e92819d3f94648c5fac22a8cb29ea43358eb32b0f4300d4f7931ea4e56ef",
-    "Nong-nghiep/index.html": "6f60915f0c8f2f9527c2a8bb6d6d1edd9aeb9cba3e0a1e81f5f649b933a24b0a",
-    "Sugar/index.html": "059c6e9a0f693d405ec26521fdcfafc807c4aa5e95c97e5c1aec51b13049596d",
-    "Thuy-san/index.html": "a27c3bcccba3c5e2a55b382aff40b5374263ab2745c1e444ece660fb5d1a156a",
-    "Van-tai-bien/index.html": "51b972a0e2568414c16d75463e1afa4ecec078bd8b5ed69798b844f304aae32e",
-    "Xay-dung/index.html": "dfafaccaf357a28dca8b980e68c9692895957ae10085c8ee99aa25133fab4f57",
+    "404.html": "7b71046a5b53d2bf405cb598265b5cf1d2ed624b664845a6390701d0d6752288",
+    "Ban-le/index.html": "4ade63c981335dcd7c67a278c6d299c67f5c7c29dea3f83fa544b694142f4c83",
+    "Bank/index.html": "ba81478b248f6273e313e95c1ad76d83f12eb4836e7b2e2b742512563fa3726f",
+    "Bao-hiem/index.html": "a418901e2c6995089e12da542019b25e674e7f8b7ef96b7c4fe9d9d2bce610ec",
+    "Bat-dong-san/index.html": "463d20a92f5ecd52e20f1041b6c3207c2e65ab6d05520c3f1dfcb4da9d52f17f",
+    "Cang-bien/index.html": "5b6a128e8db808ffc5027b2db7b850875f61706ab95c10ce232ebe8ccd6bed22",
+    "Dau-khi/index.html": "0e2f244106be059720ac8c7a5751c9b287caf2e62257b829ff88a6809bb87690",
+    "Det-may/index.html": "44df2811c92dfd03db9427bf0576ab7e148b52d2c1b8a5b2676c02629bb779cf",
+    "Dien/index.html": "fde92c6cb0ae5bcfd94ad0d22a9104fb31f81762cfb8b05027574d7db4c4d790",
+    "Duoc/index.html": "43bdc33769706155c12a54e9f1922e5b641ffb0b4f9573137357e106f4a2cdb7",
+    "Nong-nghiep/index.html": "e4f94d553344fbb8a236c8f0bf187e58ac8933d42cd9887dd362a385da503174",
+    "Sugar/index.html": "d28beec270094d81a7e984a7414681bbf931913012c9c3272c4d302c10083243",
+    "Thuy-san/index.html": "ef6c5a88f73d20382be0fdcf9459339f37ac81aefc3f47df636a71631c5f0fcb",
+    "Van-tai-bien/index.html": "d829774b6ac94f8ada77ef798e7da0d6ce64270b81fb56aebfd67eb839ccf409",
+    "Xay-dung/index.html": "878fbdea431b280c2ef70522450b876053ddf5f147822e3777bf018da1558b15",
     "assets/agri-dashboard.js": "66f00fbd66f976e2f735744ce426282d06af2b48a572fecace7aebd4082ea489",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
@@ -90,8 +90,8 @@
     "data/seafood-public-data.js": "5a99ce705eefc7092d73b96fb79d87070a8b57c559e753be68b06e800a0ff6ff",
     "data/shipping-public-data.js": "995df375710e589f40f6e827aa09324a07971838e00c28771896419bdbe6ce63",
     "data/textile-public-data.js": "fb3d5dd5b6bd7f4d2b4ffa9e1ce5b5251ea978494a2b1839599165724dbf9bb1",
-    "duong/index.html": "20428e15eafbae7f370568331494a20de4b8c0af053a7419e7cea420e723d6c2",
-    "index.html": "a1cefcada3791f77f318c5640bfda57b96131a72eda0a04dfd25c414b2611eb6"
+    "duong/index.html": "8203caeb3214ebe2a95b0c5d6459d64a69a119f033a662cddc40186e5cde414d",
+    "index.html": "fb481f9253a5346e136ead84f81f3a30dcd33d9f94fe3e00fa38c3b9d8a93ab1"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }
