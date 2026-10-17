@@ -102,8 +102,8 @@ if(brent.length&&document.getElementById('chFuel')){
 if(bdi.length&&document.getElementById('chBdi')){
  lines('chBdi',bdi,[['BDI',C.gold,r=>r.value]],'điểm',0,true);
  fillTable('tbl-bdi',['Kỳ','Điểm','So cùng kỳ'],bdi.slice().reverse().map(r=>[short(r.date),nf(r.value,0),signed(yoyAt(bdi,r),0)+'%']));
- sourceLine('chBdi',[SRC.baltic],short(bdi.at(-1).date),'Baltic Dry Index. VOS, VNA chạy tàu Supramax/Handysize; BDI gồm cả Capesize nên biên độ lớn hơn cước thực của hai mã.');
- insight('chBdi','BDI quanh 2.900–3.200 điểm từ tháng 5/2026, cao hơn cùng kỳ gần 50% và gấp 4 lần đáy đầu 2025: cầu than, quặng, ngũ cốc tốt trong khi orderbook hàng rời thấp. Đây là cửa sổ để VOS, VNA bán tàu cũ giá cao hoặc ký TC dài.');
+ sourceLine('chBdi',[['Baltic Exchange qua CNBC (.BADI)','https://www.cnbc.com/quotes/.BADI']],short(bdi.at(-1).date),'Baltic Dry Index, phiên cuối mỗi tháng (CNBC). VOS, VNA chạy tàu Supramax/Handysize; BDI gồm cả Capesize nên biên độ lớn hơn cước thực của hai mã.');
+ insight('chBdi','BDI '+nf(bdi.at(-1).value,0)+' điểm ('+short(bdi.at(-1).date)+'), '+signed(yoyAt(bdi,bdi.at(-1)),0)+'% so cùng kỳ: cầu than, quặng, ngũ cốc tốt trong khi orderbook hàng rời thấp. Đây là cửa sổ để VOS, VNA bán tàu cũ giá cao hoặc ký TC dài.');
 }
 const sea=S('sea_freight'),ov=S('overseas_freight');
 if(sea.length&&document.getElementById('chSea')){

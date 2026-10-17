@@ -107,12 +107,12 @@ if(tour.length&&document.getElementById('chTourist')){
  insight('chTourist','Khách quốc tế lũy kế '+signed(ytdYo(tour),0)+'% — kênh cầu thứ hai của ăn uống, trang sức (PNJ ở sân bay, trung tâm) và bia (SAB kênh on-trade). Mùa cao điểm quý IV–quý I quyết định doanh thu PNJ và SAB.');
 }
 if(dep.length&&document.getElementById('chCredit')){
- const rs=dep.slice(-36),cm=byMonth(cred);
+ const rs=dep.filter(r=>Number.isFinite(yoyAt(dep,r))).slice(-36),cm=byMonth(cred);
  barLineChart('chCredit',{categories:rs.map(r=>mon(r.date)),series:[{name:'Tiền gửi dân cư YoY',color:C.navy,kind:'line',values:rs.map(r=>yoyAt(dep,r))},{name:'Tín dụng toàn nền kinh tế YoY',color:C.red,kind:'line',values:rs.map(r=>cm[ym(r.date)]?yoyAt(cred,cm[ym(r.date)]):null)}],unit:'%',digits:1,height:260,rotateLabels:true,zeroBase:true});
  legend('chCredit',[['Tiền gửi dân cư',C.navy],['Tín dụng',C.red]]);
  fillTable('tbl-credit',['Tháng','Tiền gửi dân cư (nghìn tỷ)','YoY','Tín dụng (nghìn tỷ)','YoY'],dep.slice().reverse().map(r=>{const c=cm[ym(r.date)];return [mon(r.date),nf(r.value/1000,0),signed(yoyAt(dep,r),1)+'%',nf((c?.value??NaN)/1000,0),signed(yoyAt(cred,c),1)+'%']}));
- sourceLine('chCredit',[SRC.sbv],mon(dep.at(-1).date),'Tiền gửi của dân cư đã điều chỉnh và tổng tín dụng trong nền kinh tế. Nguồn công khai chưa tách tín dụng tiêu dùng.');
- insight('chCredit','Tiền gửi dân cư '+signed(yoyAt(dep,dep.at(-1)),0)+'% và tín dụng '+signed(yoyAt(cred,cred.at(-1)),0)+'%: hộ gia đình vừa tiết kiệm nhiều hơn vừa vay nhiều hơn — tiền chưa chảy mạnh sang hàng lâu bền. Lãi suất huy động tăng gần 1 điểm % trong một năm là lực cản với ô tô, điện máy trả góp.');
+ sourceLine('chCredit',[SRC.sbv],mon(dep.at(-1).date),'Tiền gửi của dân cư và tổng dư nợ tín dụng nền kinh tế (NHNN, số liệu từ 01/2025). NHNN đổi phương pháp thống kê tiền gửi từ 10/2025 nên so cùng kỳ quanh mốc này có sai lệch. Nguồn công khai chưa tách tín dụng tiêu dùng.');
+ insight('chCredit','Tín dụng '+signed(yoyAt(cred,cred.at(-1)),0)+'% so cùng kỳ ('+mon(cred.at(-1).date)+'). Tiền gửi dân cư '+signed(yoyAt(dep,dep.at(-1)),0)+'% chủ yếu do NHNN phân tổ lại khu vực từ 10/2025, chưa phải tiết kiệm tăng thật; đọc lại khi có đủ 12 tháng cùng phương pháp (từ 10/2026).');
 }
 // Hàng lâu bền: xe
 const car=S('car_output'),moto=S('moto_output'),cimp=S('car_import');

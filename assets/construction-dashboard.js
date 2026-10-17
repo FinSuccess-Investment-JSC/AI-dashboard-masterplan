@@ -144,7 +144,7 @@ if(cred.length&&document.getElementById('chCredit')){
  const rs=cred.slice(-36);
  barLineChart('chCredit',{categories:rs.map(r=>mon(r.date)),series:[{name:'Dư nợ tín dụng xây dựng',color:C.navy,values:rs.map(r=>r.value/1000)}],unit:'nghìn tỷ',digits:0,height:260,rotateLabels:true,zeroBase:false});
  fillTable('tbl-credit',['Tháng','Dư nợ (nghìn tỷ)','YoY'],cred.slice().reverse().map(r=>[mon(r.date),nf(r.value/1000,0),signed(yoyAt(cred,r),1)+'%']));
- sourceLine('chCredit',[SRC.sbv],mon(cred.at(-1).date),'Dư nợ tín dụng ngành xây dựng, cuối tháng.');
+ sourceLine('chCredit',[SRC.sbv],mon(cred.at(-1).date),'Dư nợ tín dụng ngành xây dựng, cuối tháng (NHNN, số liệu từ 01/2025).');
  insight('chCredit','Tín dụng xây dựng '+signed(yoyAt(cred,cred.at(-1)),0)+'% YoY, nhanh hơn tăng trưởng tín dụng chung: nhà thầu vay vốn lưu động theo khối lượng đầu tư công và nhà ở. Mặt trái là nợ vay và phải thu của nhà thầu tăng cùng (xem Key players).');
 }
 if(gdpN.length&&document.getElementById('chGdpCons')){

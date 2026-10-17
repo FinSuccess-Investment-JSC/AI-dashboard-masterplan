@@ -155,7 +155,7 @@ if(yc.length&&cc.length&&document.getElementById('chYarnSpread')){
  barLineChart('chYarnSpread',{categories:rs.map(r=>mon(r.date)),series:[{name:'Sợi cotton',color:C.navy,kind:'line',values:rs.map(r=>r.value)},{name:'Bông xơ',color:C.teal,kind:'line',values:rs.map(r=>cm[ym(r.date)].value)},{name:'Chênh lệch sợi – bông',color:C.gold,values:rs.map(r=>r.value-cm[ym(r.date)].value)}],unit:'CNY/tấn',digits:0,height:260,rotateLabels:true});
  legend('chYarnSpread',[['Sợi cotton',C.navy],['Bông xơ',C.teal],['Chênh lệch',C.gold]]);
  fillTable('tbl-yarn-spread',['Kỳ','Sợi (CNY/t)','Bông (CNY/t)','Chênh lệch'],rs.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),nf(cm[ym(r.date)].value,0),nf(r.value-cm[ym(r.date)].value,0)]));
- sourceLine('chYarnSpread',[['Sàn Trung Quốc',null]],short(yc.at(-1).date),'Sợi cotton Trung Quốc (73979) trừ bông xơ (203165), cùng đơn vị CNY/tấn và cùng sàn. Chênh lệch là biên gia công kéo sợi trước chi phí điện, lao động; không phải biên của doanh nghiệp Việt Nam.');
+ sourceLine('chYarnSpread',[['Sina Finance · ZCE','https://finance.sina.com.cn/futures/quotes/CY0.shtml']],short(yc.at(-1).date),'Hợp đồng liên tục sợi cotton (CY) trừ bông (CF) trên sàn Trịnh Châu, giá đóng cửa phiên cuối tháng, cùng CNY/tấn; chuỗi liên tục có bước nhảy khi chuyển hợp đồng. Chênh lệch là biên gia công kéo sợi trước chi phí điện, lao động; không phải biên của doanh nghiệp Việt Nam.');
  insight('chYarnSpread','Chênh lệch sợi – bông là thước đo biên kéo sợi của cả vùng: thu hẹp nghĩa là nhà sợi không chuyển được giá bông sang khách. Nhà sợi Việt Nam bán theo giá sợi Trung Quốc nên đi cùng chiều.');
 }
 const psf=P('psf'),pta=P('pta'),meg=P('meg');
@@ -164,8 +164,8 @@ if(psf.length&&document.getElementById('chPoly')){
  barLineChart('chPoly',{categories:rs.map(r=>mon(r.date)),series:[{name:'Xơ PSF',color:C.navy,kind:'line',values:rs.map(r=>r.value)},{name:'PTA',color:C.gold,kind:'line',values:rs.map(r=>tm[ym(r.date)]?.value??null)},{name:'MEG',color:C.plum,kind:'line',values:rs.map(r=>mm[ym(r.date)]?.value??null)}],unit:'CNY/tấn',digits:0,height:260,zeroBase:false,rotateLabels:true});
  legend('chPoly',[['Xơ PSF',C.navy],['PTA',C.gold],['MEG',C.plum]]);
  fillTable('tbl-poly',['Kỳ','PSF','PTA','MEG','PSF − (0,86·PTA + 0,34·MEG)'],rs.slice().reverse().map(r=>{const a=tm[ym(r.date)]?.value,b=mm[ym(r.date)]?.value;return [mon(r.date),nf(r.value,0),nf(a,0),nf(b,0),a&&b?nf(r.value-0.86*a-0.34*b,0):'—']}));
- sourceLine('chPoly',[['Sàn Trung Quốc',null]],short(psf.at(-1).date),'Xơ polyester dạng sợi (203213), PTA (203220), MEG (203187). Cột chênh lệch dùng định mức 0,86 tấn PTA + 0,34 tấn MEG cho 1 tấn polyester (định mức ngành phổ biến, không phải số của STK).');
- insight('chPoly','Sợi filament polyester của STK đi theo giá PTA/MEG (tức giá dầu) và chênh lệch so với giá sợi Trung Quốc bán phá giá. PTA, MEG tăng mạnh từ tháng 8/2026 làm giá đầu vào tăng; STK chỉ giữ được biên nếu giá sợi tăng theo.');
+ sourceLine('chPoly',[['Sina Finance · ZCE, DCE','https://finance.sina.com.cn/futures/quotes/PF0.shtml']],short(psf.at(-1).date),'Hợp đồng liên tục xơ polyester PSF (PF), PTA (TA) sàn Trịnh Châu, MEG (EG) sàn Đại Liên; giá đóng cửa phiên cuối tháng. Cột chênh lệch dùng định mức 0,86 tấn PTA + 0,34 tấn MEG cho 1 tấn polyester (định mức ngành phổ biến, không phải số của STK).');
+ insight('chPoly','Sợi filament polyester của STK đi theo giá PTA/MEG (tức giá dầu) và chênh lệch so với giá sợi Trung Quốc bán phá giá. PTA '+signed(yoyAt(S('pta'),S('pta').at(-1)),0)+'%, MEG '+signed(yoyAt(S('meg'),S('meg').at(-1)),0)+'% so cùng kỳ; STK chỉ giữ được biên nếu giá sợi tăng theo.');
 }
 if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
  const ids=[['204','May',C.navy],['207','Sợi',C.teal]].filter(([id])=>sec[id]?.records?.length);

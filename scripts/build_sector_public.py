@@ -176,6 +176,37 @@ def customs_series(sector):
     return out
 
 
+MARKETS_FILE = ROOT / 'data/raw/public/markets-monthly.json'
+MARKETS = {'shipping': ['bdi'], 'port': ['bdi'], 'textile': ['yarn_cn', 'cotton_cn', 'psf', 'pta', 'meg']}
+
+
+def market_series(sector):
+    if not MARKETS_FILE.exists():
+        return {}
+    S = json.loads(MARKETS_FILE.read_text())['series']
+    return {k: {'name': S[k]['name'], 'unit': S[k]['unit'], 'time_type': 'monthly', 'source': S[k]['source'], 'url': S[k]['url'],
+                'records': [{'date': r['date'], 'value': r['value']} for r in S[k]['records'].values()]}
+            for k in MARKETS.get(sector, []) if k in S}
+
+
+SBV_FILE = ROOT / 'data/raw/public/sbv-monthly.json'
+SBV_NAMES = {'credit_total': ('Tổng dư nợ tín dụng nền kinh tế', 'tỷ VND'), 'credit_construction': ('Dư nợ tín dụng ngành xây dựng', 'tỷ VND'),
+             'household_deposits': ('Tiền gửi của dân cư', 'tỷ VND'), 'deposits_total': ('Tiền gửi của TCKT và dân cư', 'tỷ VND'),
+             'usdvnd': ('Tỷ giá trung tâm USD/VND (bình quân tháng)', 'VND')}
+SBV = {'retail': ['household_deposits', 'credit_total'], 'realestate': ['credit_construction', 'credit_total', 'deposits_total'],
+       'construction': ['credit_construction'], 'insurance': ['household_deposits'], 'pharma': ['usdvnd']}
+
+
+def sbv_series(sector):
+    if not SBV_FILE.exists():
+        return {}
+    d = json.loads(SBV_FILE.read_text())
+    url = d['pages']['fx'] if sector == 'pharma' else d['pages']['credit']
+    return {k: {'name': SBV_NAMES[k][0], 'unit': SBV_NAMES[k][1], 'time_type': 'monthly', 'source': d['source'], 'url': url,
+                'records': [{'date': m + '-01', 'value': v} for m, v in d['series'][k].items()]}
+            for k in SBV.get(sector, []) if d['series'].get(k)}
+
+
 def shfe_series(sector):
     if not SHFE_FILE.exists() or sector not in SHFE:
         return {}
@@ -252,9 +283,10 @@ def main():
         blocks = {'commodity': {'series': series, 'captured_at': now[:10]}} if series else {}
         ms = macro_series(sector)
         ms.update(customs_series(sector))
+        ms.update(sbv_series(sector))
         if sector == 'textile':
             ms.update(us_apparel())
-        sh = shfe_series(sector)
+        sh = {**shfe_series(sector), **market_series(sector)}
         if sh:
             blocks.setdefault('commodity', {'series': {}, 'captured_at': now[:10]})['series'].update(sh)
         if ms:

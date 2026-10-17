@@ -152,8 +152,8 @@ const bdi=S('bdi');
 if(bdi.length&&document.getElementById('chBdi')){
  barLineChart('chBdi',{categories:bdi.map(r=>mon(r.date)),series:[{name:'BDI',color:C.gold,kind:'line',values:bdi.map(r=>r.value)}],unit:'điểm',digits:0,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-bdi',['Kỳ','Điểm','So cùng kỳ'],bdi.slice().reverse().map(r=>[short(r.date),nf(r.value,0),signed(yoyAt(bdi,r),1)+'%']));
- sourceLine('chBdi',[SRC.baltic],short(bdi.at(-1).date),'Baltic Dry Index, nén chuỗi ngày về điểm cuối tháng. Chỉ số tàu hàng rời, không dùng cho tàu container.');
- insight('chBdi','BDI đo cước hàng rời (than, quặng, ngũ cốc): liên quan tới cảng tổng hợp (CDN, SGP thép, PDN) hơn là cảng container. BDI cao hơn cùng kỳ khoảng 50% phản ánh cầu nguyên liệu và tàu chạy vòng xa.');
+ sourceLine('chBdi',[['Baltic Exchange qua CNBC (.BADI)','https://www.cnbc.com/quotes/.BADI']],short(bdi.at(-1).date),'Baltic Dry Index, phiên cuối mỗi tháng (chuỗi ngày CNBC). Chỉ số tàu hàng rời, không dùng cho tàu container.');
+ insight('chBdi','BDI đo cước hàng rời (than, quặng, ngũ cốc): liên quan tới cảng tổng hợp (CDN, SGP thép, PDN) hơn là cảng container. BDI '+signed(yoyAt(bdi,bdi.at(-1)),0)+'% so cùng kỳ ('+short(bdi.at(-1).date)+') phản ánh cầu nguyên liệu và tàu chạy vòng xa.');
 }
 // Hàng không, thủy nội địa
 const air=S('air_freight');
