@@ -15,6 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'data/raw/public/markets-monthly.json'
 CNBC = 'https://ts-api.cnbc.com/harmony/app/charts/{span}.json?symbol=.BADI'
+CNBC_QUOTE = ('https://quote.cnbc.com/quote-html-webservice/restQuote/symbolType/symbol?symbols=.BADI'
+              '&requestMethod=itv&noform=1&partnerId=2&fund=1&exthrs=1&output=json')  # fallback: latest close only
 SINA = 'https://stock2.finance.sina.com.cn/futures/api/jsonp.php/x=/InnerFuturesNewService.getDailyKLine?symbol={s}'
 FUT = {'yarn_cn': ('CY0', 'Sợi cotton (ZCE, hợp đồng liên tục)'), 'cotton_cn': ('CF0', 'Bông (ZCE, hợp đồng liên tục)'),
        'psf': ('PF0', 'Xơ polyester PSF (ZCE, hợp đồng liên tục)'), 'pta': ('TA0', 'PTA (ZCE, hợp đồng liên tục)'),
@@ -44,7 +46,19 @@ def main():
         S['bdi'] = {'name': 'Baltic Dry Index', 'unit': 'điểm', 'source': 'Baltic Exchange qua CNBC (.BADI)',
                     'url': 'https://www.cnbc.com/quotes/.BADI', 'records': month_end([x for x in bars if x[0] >= '2019-01-01'])}
     except Exception as e:
-        print('bdi', e)
+        print('bdi chart', e)
+        try:  # keep stored history, update the current month from the quote endpoint
+            q = json.loads(get(CNBC_QUOTE))['FormattedQuoteResult']['FormattedQuote'][0]
+            d, v = q['last_time'][:10], float(q['last'].replace(',', ''))
+            if not re.match(r'\d{4}-\d\d-\d\d$', d) or not 100 <= v <= 20000:
+                raise ValueError(f'BDI quote out of range: {d} {v}')
+            rec = S.get('bdi', {}).get('records', {})
+            if d >= rec.get(d[:7], {}).get('date', ''):
+                rec[d[:7]] = {'date': d, 'value': v}
+            S.setdefault('bdi', {'name': 'Baltic Dry Index', 'unit': 'điểm', 'source': 'Baltic Exchange qua CNBC (.BADI)',
+                                 'url': 'https://www.cnbc.com/quotes/.BADI'})['records'] = dict(sorted(rec.items()))
+        except Exception as e2:
+            print('bdi quote', e2)
     for key, (sym, name) in FUT.items():
         try:
             t = get(SINA.format(s=sym))
