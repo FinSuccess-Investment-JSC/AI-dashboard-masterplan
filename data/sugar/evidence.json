@@ -1,57 +1,145 @@
 [
- {
-  "block": "sugar-06",
-  "claim": "RS TP.HCM 15/9/2026",
-  "value": "18.400 - 19.700",
-  "url": "https://vietstock.vn/2026/10/gia-duong-trong-nuoc-nguoc-chieu-the-gioi-118-1499968.htm",
-  "opened_at": "2026-10-19",
-  "quote": "giá đường kính trắng từ mức 18.600 - 20.000 đồng/kg vào đầu tháng giảm xuống còn 18.400 - 19.700 đồng/kg vào ngày 15/9",
-  "status": "match",
-  "correct_value": "",
-  "note": ""
- },
- {
-  "block": "sugar-06",
-  "claim": "RE TP.HCM 15/9/2026",
-  "value": "19.700 - 20.800",
-  "url": "https://vietstock.vn/2026/10/gia-duong-trong-nuoc-nguoc-chieu-the-gioi-118-1499968.htm",
-  "opened_at": "2026-10-19",
-  "quote": "Giá đường tinh luyện cũng giảm từ 20.000 - 21.000 đồng/kg xuống còn 19.700 - 20.800 đồng/kg",
-  "status": "match",
-  "correct_value": "",
-  "note": ""
- },
- {
-  "block": "sugar-06",
-  "claim": "RS bình quân T7/2026",
-  "value": "16.800",
-  "url": "https://danviet.vn/gia-duong-viet-nam-dang-tang-tuong-la-mung-hoa-ra-van-thap-nhat-khu-vuc-d1452235.html",
-  "opened_at": "2026-10-19",
-  "quote": "giá đường bình quân tại Việt Nam chỉ ở mức 16.800 đồng/kg",
-  "status": "match",
-  "correct_value": "",
-  "note": ""
- },
- {
-  "block": "sugar-07",
-  "claim": "Philippines, Indonesia, Trung Quốc T7/2026",
-  "value": "27.527",
-  "url": "https://dantri.com.vn/kinh-doanh/gia-nong-san-ngay-168-gia-duong-viet-nam-thap-nhat-khu-vuc-20260816073400918.htm",
-  "opened_at": "2026-10-19",
-  "quote": "Giá đường tại Philippines lên tới 27.527 đồng/kg, Indonesia 26.706 đồng/kg và Trung Quốc 19.504 đồng/kg",
-  "status": "match",
-  "correct_value": "",
-  "note": ""
- },
- {
-  "block": "sugar-10",
-  "claim": "Mía ép 2025/26 đến 31/7/2026",
-  "value": "13,586",
-  "url": "https://dantri.com.vn/kinh-doanh/gia-nong-san-ngay-168-gia-duong-viet-nam-thap-nhat-khu-vuc-20260816073400918.htm",
-  "opened_at": "2026-10-19",
-  "quote": "13,586 triệu tấn mía được đưa vào chế biến, sản xuất 1,3258 triệu tấn đường các loại",
-  "status": "match",
-  "correct_value": "",
-  "note": ""
- }
+  {
+    "block": "sugar-06",
+    "claim": "RS TP.HCM 15/9/2026",
+    "value": "18.400 - 19.700",
+    "url": "https://vietstock.vn/2026/10/gia-duong-trong-nuoc-nguoc-chieu-the-gioi-118-1499968.htm",
+    "opened_at": "2026-10-19",
+    "quote": "giá đường kính trắng từ mức 18.600 - 20.000 đồng/kg vào đầu tháng giảm xuống còn 18.400 - 19.700 đồng/kg vào ngày 15/9",
+    "status": "match",
+    "correct_value": "",
+    "note": ""
+  },
+  {
+    "block": "sugar-06",
+    "claim": "RE TP.HCM 15/9/2026",
+    "value": "19.700 - 20.800",
+    "url": "https://vietstock.vn/2026/10/gia-duong-trong-nuoc-nguoc-chieu-the-gioi-118-1499968.htm",
+    "opened_at": "2026-10-19",
+    "quote": "Giá đường tinh luyện cũng giảm từ 20.000 - 21.000 đồng/kg xuống còn 19.700 - 20.800 đồng/kg",
+    "status": "match",
+    "correct_value": "",
+    "note": ""
+  },
+  {
+    "block": "sugar-06",
+    "claim": "RS bình quân T7/2026",
+    "value": "16.800",
+    "url": "https://danviet.vn/gia-duong-viet-nam-dang-tang-tuong-la-mung-hoa-ra-van-thap-nhat-khu-vuc-d1452235.html",
+    "opened_at": "2026-10-19",
+    "quote": "giá đường bình quân tại Việt Nam chỉ ở mức 16.800 đồng/kg",
+    "status": "match",
+    "correct_value": "",
+    "note": ""
+  },
+  {
+    "block": "sugar-07",
+    "claim": "Philippines, Indonesia, Trung Quốc T7/2026",
+    "value": "27.527",
+    "url": "https://dantri.com.vn/kinh-doanh/gia-nong-san-ngay-168-gia-duong-viet-nam-thap-nhat-khu-vuc-20260816073400918.htm",
+    "opened_at": "2026-10-19",
+    "quote": "Giá đường tại Philippines lên tới 27.527 đồng/kg, Indonesia 26.706 đồng/kg và Trung Quốc 19.504 đồng/kg",
+    "status": "match",
+    "correct_value": "",
+    "note": ""
+  },
+  {
+    "block": "sugar-10",
+    "claim": "Mía ép 2025/26 đến 31/7/2026",
+    "value": "13,586",
+    "url": "https://dantri.com.vn/kinh-doanh/gia-nong-san-ngay-168-gia-duong-viet-nam-thap-nhat-khu-vuc-20260816073400918.htm",
+    "opened_at": "2026-10-19",
+    "quote": "13,586 triệu tấn mía được đưa vào chế biến, sản xuất 1,3258 triệu tấn đường các loại",
+    "status": "match",
+    "correct_value": "",
+    "note": ""
+  },
+  {
+    "block": "sugar-11",
+    "claim": "Czarnikow 2026/27",
+    "value": "-100,000 MT",
+    "url": "https://www.barchart.com/story/news/4359559/global-supply-fears-underpin-sugar-prices",
+    "opened_at": "2026-10-19",
+    "quote": "Sugar trader Czarnikow on June 11 cut its global 2026/27 sugar balance estimate from a surplus of 1.4 MMT to a deficit of -100,000 MT",
+    "status": "match",
+    "correct_value": "",
+    "note": ""
+  },
+  {
+    "block": "sugar-11",
+    "claim": "ISO 2026/27",
+    "value": "-200,000 MT",
+    "url": "https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit",
+    "opened_at": "2026-10-19",
+    "quote": "the International Sugar Organization (ISO) projected a 2026/27 global sugar deficit of -200,000 MT",
+    "status": "match",
+    "correct_value": "",
+    "note": ""
+  },
+  {
+    "block": "sugar-11",
+    "claim": "Covrig 2026/27",
+    "value": "-300,000 MT",
+    "url": "https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit",
+    "opened_at": "2026-10-19",
+    "quote": "Covrig Analytics said it now expects a global sugar deficit in 2026/27 of -300,000 MT",
+    "status": "match",
+    "correct_value": "",
+    "note": ""
+  },
+  {
+    "block": "sugar-11",
+    "claim": "StoneX 2026/27",
+    "value": "-1.7 MMT",
+    "url": "https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit",
+    "opened_at": "2026-10-19",
+    "quote": "StoneX on July 28 raised its 2026/27 global sugar deficit forecast to -1.7 MMT",
+    "status": "match",
+    "correct_value": "",
+    "note": "slide gốc ghi -0,9, không tìm thấy nguồn"
+  },
+  {
+    "block": "sugar-11",
+    "claim": "Green Pool 2026/27",
+    "value": "-3.2 MMT",
+    "url": "https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit",
+    "opened_at": "2026-10-19",
+    "quote": "Green Pool Commodity Specialists last Thursday projected a 2026/27 global sugar deficit of -3.2 MMT",
+    "status": "match",
+    "correct_value": "",
+    "note": ""
+  },
+  {
+    "block": "sugar-12",
+    "claim": "EU 2026/27",
+    "value": "-19%",
+    "url": "https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit",
+    "opened_at": "2026-10-19",
+    "quote": "EU 2026/27 sugar production is expected to drop -19% y/y to 13.4 MMT",
+    "status": "match",
+    "correct_value": "",
+    "note": ""
+  },
+  {
+    "block": "sugar-12",
+    "claim": "Brazil Conab 2026/27",
+    "value": "2,9%",
+    "url": "https://www.brasilagro.com.br/conteudo/conab-projeta-queda-na-producao-de-acucar-e-alta-no-etanol.html",
+    "opened_at": "2026-10-19",
+    "quote": "devem ser produzidas 42,89 milhões de toneladas do adoçante na safra 2026/27, redução de 2,9% em relação à 2025/26",
+    "status": "match",
+    "correct_value": "",
+    "note": ""
+  },
+  {
+    "block": "sugar-12",
+    "claim": "India USDA 2026/27",
+    "value": "+12%",
+    "url": "https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit",
+    "opened_at": "2026-10-19",
+    "quote": "FAS predicted that India's 2026/27 sugar production would increase by +12% y/y to 33.6 MMT",
+    "status": "match",
+    "correct_value": "",
+    "note": ""
+  }
 ]

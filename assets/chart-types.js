@@ -221,7 +221,10 @@
     body.dataset.ctType = type;
     body.insertAdjacentHTML('beforeend', legendHtml(entry));
     // Page legends next to the chart are replaced by the clickable one.
-    if (body.querySelector('.cts-legend')) [body.previousElementSibling, body.nextElementSibling].forEach(n => { if (n && n.classList.contains('legend')) n.hidden = true; });
+    if (body.querySelector('.cts-legend')) {
+      const card = body.closest('.card'), one = card && card.querySelectorAll('.cts-legend').length === 1;
+      (one ? [...card.querySelectorAll('.legend')] : [body.previousElementSibling, body.nextElementSibling]).forEach(n => { if (n && n.classList.contains('legend') && !body.contains(n)) n.hidden = true; });
+    }
     // Mounted charts keep the toolbar inside the host so it moves with the chart.
     if (entry.bar) { syncBar(entry); body.prepend(entry.bar); }
     body.dispatchEvent(new CustomEvent('ct:render', {bubbles: true, detail: {type}}));
