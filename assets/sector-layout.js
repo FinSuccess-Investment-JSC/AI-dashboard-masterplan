@@ -101,7 +101,10 @@ else{
   const h=make('div');h.id='ch-sugar-country-yoy';c.append(h);
   const model={categories:pairs.map(([n])=>n),tickLabels:pairs.map(([n,k])=>n+'\n'+sg(pct(k))),allTicks:true,series:[{name:`${y-1}/${String(y).slice(2)}`,color:'#C9CED8',kind:'bar',values:pairs.map(([,k])=>prev[k]*1000)},{name:`${y}/${String(y+1).slice(2)}*`,color:'#2938A8',kind:'bar',values:pairs.map(([,k])=>cur[k]*1000)}],unit:'nghìn tấn',digits:0,time:false,aria:'Sản lượng đường theo nước'};
   if(window.ChartTypes)ChartTypes.mount(h,{...model,native:'bar'},()=>{h.innerHTML=ChartTypes.render({...model,width:h.clientWidth||640},'bar')});
-  source(c,s,'USDA PSD, Sugar Centrifugal, Production; '+y+'/'+String(y+1).slice(2)+' là dự báo USDA. EU theo USDA giảm '+fmt(Math.abs(pct('eu')),1)+'%; khác số −19% của EU Sugar Market Observatory ở chart biến động sản lượng (khác nguồn và kỳ dự báo).');
+  // Dự báo của nguồn khác cho cùng niên vụ, đặt cạnh số USDA thay vì một chart riêng (tránh hai chart lệch số).
+  const alt=make('div','chart-caveat');alt.dataset.blockId='sugar-12';const L=(t,u)=>{const x=make('a','',t);x.href=u;x.target='_blank';x.rel='noopener';return x};
+  alt.append('Nguồn khác cho '+y+'/'+String(y+1).slice(2)+': EU −19% (EU Sugar Market Observatory, 27/08, qua ',L('Barchart','https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit'),') so với USDA '+sg(pct('eu'))+'; Brazil −2,9% (',L('Conab 20/08','https://www.brasilagro.com.br/conteudo/conab-projeta-queda-na-producao-de-acucar-e-alta-no-etanol.html'),') so với USDA '+sg(pct('brazil'))+'. Số USDA Ấn Độ là dự báo 05/2026, trước khi gió mùa thiếu hụt.');c.append(alt);
+  source(c,s,'USDA PSD, Sugar Centrifugal, Production; '+y+'/'+String(y+1).slice(2)+' là dự báo USDA, khác kỳ với dự báo của EU và Conab.');
  }
  // Tỷ trọng thế giới theo nước (USDA PSD): cung = sản xuất; cầu = nhập khẩu, tiêu dùng. Phần còn lại gộp "Nước khác" để tổng 100%.
  const sh=src.sugar_world_shares;
@@ -144,7 +147,6 @@ else{
   if(gap)c.append(make('div','source-note data-gap',gap));
   const row=make('div','source-note');row.append('Nguồn: ');refs.forEach(([t,u],i)=>{if(i)row.append(' · ');const a=make('a','',t);a.href=u;a.target='_blank';a.rel='noopener';row.append(a)});c.append(row)};
  fcBar('sugar-11','Dự báo cán cân đường thế giới niên vụ 2026/27','Triệu tấn · âm = thiếu hụt · số mới nhất của từng tổ chức',[['Czarnikow (11/06)',-0.1],['ISO (01/09)',-0.2],['Covrig (03/08)',-0.3],['StoneX (28/07)',-1.7],['Green Pool (27/08)',-3.2]],'triệu tấn',1,[['Barchart 02/09/2026','https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit'],['Barchart 31/08/2026','https://www.barchart.com/story/news/4359559/global-supply-fears-underpin-sugar-prices']]);
- fcBar('sugar-12','Biến động sản lượng đường niên vụ 2026/27','% so với niên vụ 2025/26',[['EU',-19],['Brazil',-2.9],['Ấn Độ*',12]],'%',1,[['Barchart 02/09/2026 (EU: EU Sugar Market Observatory; Ấn Độ: USDA FAS)','https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit'],['Brazil: Conab 20/08/2026 qua BrasilAgro','https://www.brasilagro.com.br/conteudo/conab-projeta-queda-na-producao-de-acucar-e-alta-no-etanol.html']],'Thái Lan: chưa mở được nguồn gốc OCSB cho số −12,5%, chưa đưa lên. * Ấn Độ là dự báo USDA 05/2026, trước khi gió mùa thiếu hụt.');
 }
 const tabs=make('div','supply-tabs');tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','Phạm vi cung cầu');
 const panes=[world,vn];function select(i){panes.forEach((p,j)=>{p.hidden=i!==j;const b=tabs.children[j];b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1})}
