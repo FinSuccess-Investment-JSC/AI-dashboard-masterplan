@@ -361,22 +361,28 @@
       events:[['Từ 15/10','BCTC quý III ngân hàng'],['Hằng ngày','OMO · liên ngân hàng · tỷ giá'],['Hằng tháng','SBV tín dụng, huy động'],['Đầu tháng','GSO: CPI, tăng trưởng']]
     });
   }else{
-    const fut=rec('sugar_futures'),wbm=rec('sugar_monthly'),bal=rec('sugar_vn_balance'),prod=rec('sugar_producers');
+    const fut=rec('sugar_futures'),wbm=rec('sugar_monthly'),bal=rec('sugar_vn_balance'),prod=rec('sugar_producers'),wsh=rec('sugar_world_shares'),oni=rec('enso_oni');
+    const stu=r=>r&&r.use_total?r.stocks_total/r.use_total*100:null,w0=wsh.at(-1),w1=wsh.at(-2),o0=oni.at(-1)?.oni;
     const fd=pct(v(fut),mean(fut,63)),b0=bal.at(-1),b1=bal.at(-2),ratio=b=>b?b.end_stock/b.consumption*100:null;
     const pr=r=>r?r.brazil+r.eu+r.india+r.thailand:null,pg=pct(pr(prod.at(-1)),pr(prod.at(-2))),ig=pct(b0?.imports,b1?.imports);
     const up=fd!=null&&fd>=5,dn=fd!=null&&fd<=-5;
     const row=(name,mid,th,st,who,chart)=>({name,chart,st,mid:[...mid,th],end:[who]});
     renderBrief({
-      headline:fd==null?'Chưa đủ giá đường thế giới để kết luận':up?'Giá đường thế giới tăng · lợi cho tự chủ mía, áp lực chi phí cho nhà nhập nguyên liệu':dn?'Giá đường thế giới giảm · áp lực cho tự chủ mía, nhẹ chi phí cho nhà nhập nguyên liệu':'Giá đường thế giới đi ngang · chưa có tín hiệu phân hóa rõ',
+      // Kết luận hai vế: thế giới (giá futures so TB 3 tháng) và Việt Nam (tồn kho/tiêu thụ so kỳ trước).
+      headline:fd==null?'Chưa đủ giá đường thế giới để kết luận':(up?'Thế giới chuyển sang thiếu cung, giá bật lên (No.11 '+(fd>0?'+':'')+num(fd,0)+'% vs TB 3 tháng)':dn?'Giá đường thế giới giảm ('+num(fd,0)+'% vs TB 3 tháng)':'Giá đường thế giới đi ngang')+(b0&&b1?(ratio(b1)-ratio(b0)>=1?' · Việt Nam: tồn kho/tiêu thụ giảm còn '+num(ratio(b0),0)+'%, giá trong nước có dư địa theo giá thế giới':' · Việt Nam chưa hưởng ngay: tồn kho vẫn cao ('+num(ratio(b0),0)+'% tiêu thụ, '+(ratio(b0)>ratio(b1)?'tăng':'gần như không giảm')+'), giá trong nước chờ tồn kho được tiêu bớt'):''),
       segs:[['Tự chủ mía','',fd==null?'na':up?'up':dn?'down':'flat',fd==null?'Thiếu giá':'Giá TG '+(fd>0?'+':'')+num(fd,1)+'% vs TB 3T'],['Nhập nguyên liệu','',fd==null?'na':up?'down':dn?'up':'flat',fd==null?'Thiếu giá':up?'Đường thô đắt lên':dn?'Đường thô rẻ đi':'Trung tính']],
       headers:['Tín hiệu','Mới nhất','Kỳ trước','Ngưỡng','','Ai chịu'],
       score:[
-        row('Sugar No.11 (kỳ hạn gần)',[S(v(fut),2,' cent/lb'),D(v(fut),p(fut),2)],'±10% vs TB 3T',fd==null?'na':fd<=-10?'risk':fd>=10?'good':Math.abs(fd)>=5?'watch':'info','Tự chủ mía · Nhập nguyên liệu','chWorldRecent'),
+        row('Sugar No.11 (kỳ hạn gần)',[S(v(fut),2,' cent/lb'),D(v(fut),p(fut),2)],'±10% vs TB 3T',fd==null?'na':fd<=-10?'risk':fd>=10?'good':Math.abs(fd)>=5?'watch':'info','Tự chủ mía · Nhập nguyên liệu','chFastPrice'),
         row('Giá đường World Bank (tháng)',[S(v(wbm)==null?null:v(wbm)/2.20462*100,1,' cent/lb'),D(v(wbm)==null?null:v(wbm)/2.20462*100,wbm.at(-2)?.value==null?null:wbm.at(-2).value/2.20462*100,1)],'—',v(wbm)==null?'na':'info','Toàn ngành','chFastPrice'),
         row('Tồn kho / tiêu thụ VN',[S(ratio(b0),1,'%'),D(ratio(b0),ratio(b1),1)],'Giảm qua các kỳ',b0&&b1?ratio(b0)<ratio(b1)?'good':'risk':'na','Toàn ngành','chStocks'),
         row('Nhập khẩu đường VN',[S(b0?.imports,0,' nghìn tấn'),D(b0?.imports,b1?.imports,0)],'±3% so năm trước',ig==null?'na':ig>3?'risk':ig<-3?'good':'info','Nhập nguyên liệu','chImports'),
+        row('Dự báo cán cân TG 2026/27',['−0,1 đến −3,2 tr tấn','5/5 tổ chức dự báo thiếu'],'Đổi dấu sang dư','info','Giá thế giới','ch-sugar-11'),
+        row('Tồn kho / tiêu thụ thế giới (USDA)',[S(stu(w0),1,'%'),D(stu(w0),stu(w1),1)],'Giảm = thắt cung',w0&&w1?stu(w0)<stu(w1)?'good':'info':'na','Giá thế giới','ch-sugar-cycle-stu'),
+        row('ENSO (ONI)',[S(o0,2,' °C'),oni.at(-1)?.season+' '+(oni.at(-1)?.year||'')],'≥ +1,5 = El Niño mạnh',o0==null?'na':o0>=1.5?'watch':'info','Vụ mía 2027/28 Ấn Độ, Thái Lan','ch-sugar-cycle-enso'),
+        row('Giá đường trắng trong nước',['18,4–19,7 nghìn đ/kg','15/09/2026 (VSSA)'],'> 20 nghìn = tồn kho đã giảm','risk','Tự chủ mía','chVnPrice'),
         row('Cung 4 trung tâm (BR, EU, IN, TH)',[S(pr(prod.at(-1)),1,' triệu tấn'),D(pr(prod.at(-1)),pr(prod.at(-2)),1)],'±2% so năm trước',pg==null?'na':pg>=2?'risk':pg<=-2?'good':'info','Giá thế giới',null)],
-      events:[['Từ 20/10','BCTC quý III'],['Đầu tháng','World Bank giá hàng hóa'],['Giữa tháng 11','USDA PSD cập nhật'],['Thường T11–T12','Mở vụ ép mới']]
+      events:[['Từ 20/10','BCTC quý III'],['Giữa tháng 11','USDA PSD: có hạ sản lượng Ấn Độ không'],['Thường T11–T12','Mở vụ ép 26/27: giá mía, giá bán đầu vụ'],['Đầu tháng','NOAA ONI · World Bank giá hàng hóa']]
     });
   }
   // Enter the requested tab at its decision board, avoiding the repeated hero.
