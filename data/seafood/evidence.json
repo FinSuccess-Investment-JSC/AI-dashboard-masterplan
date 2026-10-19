@@ -54,8 +54,8 @@
   "claim": "Cá tra POR21: IDI bị rút khỏi kỳ rà soát (không có lô hàng xem xét)",
   "value": "rescinded",
   "url": "https://www.federalregister.gov/d/2026-16553",
-  "opened_at": "2026-10-09",
-  "quote": "inadvertently listed I.D.I. International Development under “Appendix IV – Vietnam-Wide Entity” instead of under “Appendix II – Companies for Which Commerce is Rescinding the Review.” To rectify this error, we are rescinding this administrative review with respect to this company.",
+  "opened_at": "2026-10-19",
+  "quote": "To rectify this error, we are rescinding this administrative review with respect to",
   "status": "match",
   "note": ""
  },
@@ -74,8 +74,8 @@
   "claim": "Tôm CBPG POR18 (2/2023–1/2024) cuối cùng (FR 23/02/2026): mức riêng cho DN không được kiểm tra (gồm Sao Ta/FMC)",
   "value": "4.58% (tiền ký quỹ 4.28%)",
   "url": "https://www.federalregister.gov/d/2026-03511",
-  "opened_at": "2026-10-09",
-  "quote": "Separate Rate Companies 4.58 4.28",
+  "opened_at": "2026-10-19",
+  "quote": "Separate Rate Companies 23 4.58 4.28",
   "status": "match",
   "note": "Cột 2 = cash deposit đã trừ bù trợ cấp; Sao Ta có trong danh sách separate rate"
  },
@@ -194,8 +194,8 @@
   "claim": "Tôm Ecuador CBPG: kết luận cuối phủ định (0,00% và 0,48% de minimis) → không có lệnh CBPG",
   "value": "negative",
   "url": "https://govinfo.gov/content/pkg/FR-2024-10-28/pdf/2024-24958.pdf",
-  "opened_at": "2026-10-09",
-  "quote": "Ecuador: Final Negative Determination ... 0.00. 0.48 (de minimis).",
+  "opened_at": "2026-10-19",
+  "quote": "0.48 (de minimis). Consistent with section 735(c)",
   "status": "match",
   "note": "Quote ghép từ PDF"
  },
@@ -404,10 +404,10 @@
   "claim": "Giá tôm thẻ tại ao (Simplize, 09/10/2026)",
   "value": "87.00",
   "url": "https://simplize.vn/hang-hoa/gia-tom-the",
-  "opened_at": "2026-10-09",
+  "opened_at": "2026-10-19",
   "quote": "Giá Tôm thẻ (tại ao) hôm nay đang giao dịch ở mức 87.00 (VNĐ/kg)",
-  "status": "match",
-  "note": "Trang ghi 87.00 đơn vị nghìn VNĐ/kg (biên 52 tuần 78.00-122.2); không ghi cỡ tôm Trang ghi \"87.00 (VNĐ/kg)\", không rõ đơn vị nghìn; không dùng trên dashboard."
+  "status": "unreachable",
+  "note": "Trang Simplize là giá trực tuyến, không giữ giá ngày 09/10/2026; 19/10/2026 trang hiện 94.32 (VNĐ/kg, giảm 0.51%). Không kiểm lại được giá 87.00."
  },
  {
   "block": "price",

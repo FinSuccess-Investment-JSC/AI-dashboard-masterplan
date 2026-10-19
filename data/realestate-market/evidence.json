@@ -34,8 +34,8 @@
   "claim": "ha đất thương phẩm KCN · BCM · đất thương phẩm",
   "value": "3.397 ha",
   "url": "https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf",
-  "opened_at": "2026-10-12",
-  "quote": "Tổng cộng: diện tích thương phẩm 3.397 ha; diện tích thương phẩm còn lại 944 ha. Cây Trường 490 ha: dự kiến bắt đầu đền bù và xây dựng hạ tầng từ 2026.",
+  "opened_at": "2026-10-19",
+  "quote": "Tổng cộng 5.925 3.397 944 25.049",
   "status": "match",
   "note": "Kỳ 2025-11-28. {\"source_location\": \"ACBS, trang 3, Bảng 2\", \"commercial_ha\": 3397, \"leased_ha_derived\": 2453, \"remaining_ha\": 944, \"formula\": \"3.397 - 944 = 2.453\", \"limitation\": \"Chỉ KCN do BCM trực tiếp làm chủ đầu tư; không gồm VSIP. Quỹ còn lại gồm Cây Trường chưa sẵn sàng.\"}"
  },
@@ -44,8 +44,8 @@
   "claim": "ha đất thương phẩm KCN · BCM · đất thương phẩm còn lại",
   "value": "944 ha",
   "url": "https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf",
-  "opened_at": "2026-10-12",
-  "quote": "Tổng cộng: diện tích thương phẩm 3.397 ha; diện tích thương phẩm còn lại 944 ha. Cây Trường 490 ha: dự kiến bắt đầu đền bù và xây dựng hạ tầng từ 2026.",
+  "opened_at": "2026-10-19",
+  "quote": "Tổng cộng 5.925 3.397 944 25.049",
   "status": "match",
   "note": "Kỳ 2025-11-28. {\"source_location\": \"ACBS, trang 3, Bảng 2\", \"commercial_ha\": 3397, \"leased_ha_derived\": 2453, \"remaining_ha\": 944, \"formula\": \"3.397 - 944 = 2.453\", \"limitation\": \"Chỉ KCN do BCM trực tiếp làm chủ đầu tư; không gồm VSIP. Quỹ còn lại gồm Cây Trường chưa sẵn sàng.\"}"
  },
@@ -64,8 +64,8 @@
   "claim": "ha đất thương phẩm KCN · SZC · đã cho thuê (tối thiểu)",
   "value": "569 ha",
   "url": "https://acbs.com.vn/Files/Domains/ACBS/WFL-1585/250414041206-1015-1015000001.pdf",
-  "opened_at": "2026-10-12",
-  "quote": "Tính đến cuối Q1/2025, SZC đã cho thuê KCN Sonadezi Châu Đức được hơn 569 hecta trên tổng diện tích thương phầm là 1.180 ha",
+  "opened_at": "2026-10-19",
+  "quote": "Tính đến cuối Q1/2025, SZC đã cho thuê KCN Sonadezi Châu Đức được hơn 569",
   "status": "match",
   "note": "Kỳ 2025-Q1. {\"source_location\": \"ACBS, trang 1\", \"commercial_ha\": 1180, \"leased_ha_lower_bound\": 569, \"remaining_ha_upper_bound_derived\": 611, \"formula\": \"1.180 - hơn 569 < 611\"}"
  },
@@ -126,8 +126,8 @@
   "url": "https://www.vdsc.com.vn/",
   "opened_at": "2026-10-12",
   "quote": "28 2 75 138 4 15 45 165 4 26 67",
-  "status": "match",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 10. Nhãn số trên chart, thứ tự theo cột trong PDF; NTC 2024 không có nhãn."
+  "status": "unreachable",
+  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 10. Nhãn số trên chart, thứ tự theo cột trong PDF; NTC 2024 không có nhãn. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
  },
  {
   "block": "bds-44",
@@ -136,8 +136,8 @@
   "url": "https://www.vdsc.com.vn/",
   "opened_at": "2026-10-12",
   "quote": "Tổng diện tích cho thuê đất KCN ký mới trong năm 2026 kỳ vọng hồi phục và đạt 67ha (+50%YoY)",
-  "status": "match",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 15."
+  "status": "unreachable",
+  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 15. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
  },
  {
   "block": "bds-44",
@@ -146,8 +146,8 @@
   "url": "https://www.vdsc.com.vn/",
   "opened_at": "2026-10-12",
   "quote": "Tổng diện tích cho thuê đất KCN ký mới trong năm 2026 kỳ vọng đạt 165ha (+20%YoY)",
-  "status": "match",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 18."
+  "status": "unreachable",
+  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 18. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
  },
  {
   "block": "bds-45",
@@ -156,8 +156,8 @@
   "url": "https://www.vdsc.com.vn/",
   "opened_at": "2026-10-12",
   "quote": "Quế Võ II mở rộng (KBC) Diện tích 140 ha Giá thuê 150; Nam Sơn Hạp Lĩnh (KBC) 300ha 148; Tràng Duệ 03 (KBC) 621ha 180; Nam Tân Uyên 03 (NTC) 345ha 150; Phước Đông (SIP) 2.189ha 80; Lộc An – Bình Sơn (SIP) 498ha 220; Lê Minh Xuân 03 (SIP) 287ha 300",
-  "status": "match",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 7. Bảng nằm trong hình bản đồ, chép từ ảnh trang."
+  "status": "unreachable",
+  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 7. Bảng nằm trong hình bản đồ, chép từ ảnh trang. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
  },
  {
   "block": "bds-46",
@@ -166,8 +166,8 @@
   "url": "https://www.vdsc.com.vn/",
   "opened_at": "2026-10-12",
   "quote": "Hiệp Thạnh (giai đoạn 1) Phước Thạnh, Tây Ninh 495 2025-2027 KCN chuyên ngành cơ khí (Thaco) Tân Uyên, Bình Dương 786 2025-2028 Bắc Đồng Phú giai đoạn 2 Đồng Phú, Bình Phước 317 2025-2030 Minh Hưng III giai đoạn 2 Minh Hưng, Bình Phước 483 2026-2030 Nam Đồng Phú giai đoạn 2 Đồng Phú, Bình Phước 480",
-  "status": "match",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 11."
+  "status": "unreachable",
+  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 11. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
  },
  {
   "block": "bds-46",
@@ -196,8 +196,8 @@
   "url": "https://www.vdsc.com.vn/",
   "opened_at": "2026-10-12",
   "quote": "27% 21% 10% 42% Singapore Trung Quốc HongKong Khác",
-  "status": "match",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 5. Vòng ngoài của biểu đồ (vòng trong là 2024)."
+  "status": "unreachable",
+  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 5. Vòng ngoài của biểu đồ (vòng trong là 2024). Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
  },
  {
   "block": "bds-47",
@@ -206,8 +206,8 @@
   "url": "https://www.vdsc.com.vn/",
   "opened_at": "2026-10-12",
   "quote": "giá trị vốn FDI đăng ký cấp mới (loại trừ lĩnh vực BĐS) dự kiến tiếp tục ghi nhận tăng trưởng và đạt 36,7 tỷ USD (+15%YoY",
-  "status": "match",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 4."
+  "status": "unreachable",
+  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 4. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
  },
  {
   "block": "bds-47",
@@ -226,8 +226,8 @@
   "url": "https://www.vdsc.com.vn/",
   "opened_at": "2026-10-12",
   "quote": "Kế hoạch và mục tiêu đường bộ cao tốc qua các giai đoạn (km) 2.000 3.000 5.000 1.163 3.209",
-  "status": "match",
-  "note": "VDSC 01/2026 tr. 6, file PDF người dùng gửi."
+  "status": "unreachable",
+  "note": "VDSC 01/2026 tr. 6, file PDF người dùng gửi. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
  },
  {
   "block": "bds-48",

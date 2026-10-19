@@ -30,7 +30,8 @@ def digits(text):
 
 
 def norm(text):
-    text = html.unescape(re.sub(r'<[^>]+>', ' ', text))
+    import unicodedata  # PDFs may store Vietnamese accents as combining marks
+    text = unicodedata.normalize('NFC', html.unescape(re.sub(r'<[^>]+>', ' ', text)))
     return re.sub(r'\s+', ' ', text).strip().lower()
 
 
@@ -64,6 +65,10 @@ def load():
     return rows
 
 
+class IsPdf(Exception):
+    pass
+
+
 def fetch(url):
     """certifi CA bundle when available (macOS python.org builds ship without system roots); curl as fallback."""
     req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (FinSuccess evidence check)'})
@@ -75,6 +80,8 @@ def fetch(url):
     try:
         with urllib.request.urlopen(req, timeout=30, context=ctx) as r:
             body = r.read()
+        if body[:4] == b'%PDF':  # PDF served from a url without .pdf (e.g. BSC ReportFile/<id>)
+            raise IsPdf
         if body[:2] == b'\x1f\x8b':  # some news sites gzip even when the request does not ask for it
             import gzip
             body = gzip.decompress(body)
@@ -113,7 +120,10 @@ def main(argv=None):
         url = e['url']
         try:
             if url not in pages:
-                pages[url] = norm(pdf_text(url) if url.lower().split('?')[0].endswith('.pdf') else fetch(url))
+                try:
+                    pages[url] = norm(pdf_text(url) if url.lower().split('?')[0].endswith('.pdf') else fetch(url))
+                except IsPdf:
+                    pages[url] = norm(pdf_text(url))
             page = pages[url]
             if norm(e['quote'])[:120] in page:
                 state = 'ok'

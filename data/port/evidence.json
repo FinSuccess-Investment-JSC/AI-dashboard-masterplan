@@ -70,8 +70,8 @@
   "claim": "Gemalink Q1/2026",
   "value": "523 nghìn TEU, +17%",
   "url": "https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html",
-  "opened_at": "2026-10-09",
-  "quote": "rưởng tích cực, khẳng định vai trò cửa ngõ xuất nhập khẩu và trung chuyển quốc tế quan trọng của khu vực phía Nam. Cảng Gemalink tiếp tục dẫn đầu với hơn 523.000 TEU, tăng 17% so với cùng kỳ Theo số liệu của Hiệp hội Cảng biển Việt Nam (VPA), sản lượng container tuyến chính (m",
+  "opened_at": "2026-10-19",
+  "quote": "Trong các cảng thành phần, cảng Gemalink tiếp tục dẫn đầu với hơn 523.000 TEU, tăng 17% so với cùng kỳ.",
   "status": "match",
   "correct_value": "",
   "note": ""
@@ -136,8 +136,8 @@
   "claim": "SGP 2025 container",
   "value": "280 nghìn TEU +13%",
   "url": "https://saigonport.vn/wp-content/uploads/2026/04/VN_04-Bao-cao-cua-HDQT-tai-DHDCD-2026.pdf",
-  "opened_at": "2026-10-09",
-  "quote": "196 tỷ đồng. 6. Báo cáo thực hiện hoạt động kinh doanh khai thác: - Về hàng container: Sản lượng container thông qua là 280.000 teus, tăng 13% so cùng kỳ, đạt 113% so với kế hoạch năm 2025 do nhu cầu vận chuyển nội địa tăng vào các tháng cuối năm. - Về hàng sắt ",
+  "opened_at": "2026-10-19",
+  "quote": "Về hàng container: Sản lượng container thông qua là 280.000 teus, tăng 13% so cùng kỳ",
   "status": "match",
   "correct_value": "",
   "note": ""
@@ -246,55 +246,55 @@
   "claim": "WCI tổng hợp 08/10",
   "value": "4.351 USD/FEU (−2%)",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
-  "opened_at": "2026-10-09",
+  "opened_at": "2026-10-19",
   "quote": "for Thursday, 08 Oct 2026 The Drewry World Container Index (WCI), the benchmark widely referenced by procurement teams, fell 2% to $4,351 per 40ft container, driven by a decrease in rates on the Transpacific and Asia-Europe trade routes as demand weakened d",
-  "status": "match",
+  "status": "unreachable",
   "correct_value": "",
-  "note": ""
+  "note": "Trang Drewry cập nhật hằng tuần, bản đánh giá 08/10/2026 đã bị thay; 19/10 trang chỉ còn bản 15/10/2026 (WCI $4,485, SH–LA $7,884, SH–NY $10,075). Không tìm được bản lưu 08/10; số trên dashboard chưa kiểm lại được."
  },
  {
   "block": "cg-04",
   "claim": "WCI Thượng Hải–New York",
   "value": "10.220",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
-  "opened_at": "2026-10-09",
+  "opened_at": "2026-10-19",
   "quote": "ates from Shanghai to Los Angeles fell 3% to $7,624 per 40ft container, while from Shanghai to New York decreased 2% to $10,220 per 40ft container. According to Drewry’s Container Capacity Insight , four blank sailings have been announced for next",
-  "status": "match",
+  "status": "unreachable",
   "correct_value": "",
-  "note": ""
+  "note": "Trang Drewry cập nhật hằng tuần, bản đánh giá 08/10/2026 đã bị thay; 19/10 trang chỉ còn bản 15/10/2026 (WCI $4,485, SH–LA $7,884, SH–NY $10,075). Không tìm được bản lưu 08/10; số trên dashboard chưa kiểm lại được."
  },
  {
   "block": "cg-04",
   "claim": "WCI Thượng Hải–Los Angeles",
   "value": "7.624",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
-  "opened_at": "2026-10-09",
+  "opened_at": "2026-10-19",
   "quote": "and weakened during China’s Golden Week. On the Transpacific trade route, rates from Shanghai to Los Angeles fell 3% to $7,624 per 40ft container, while from Shanghai to New York decreased 2% to $10,220 per 40ft container. According to Drewry’s C",
-  "status": "match",
+  "status": "unreachable",
   "correct_value": "",
-  "note": ""
+  "note": "Trang Drewry cập nhật hằng tuần, bản đánh giá 08/10/2026 đã bị thay; 19/10 trang chỉ còn bản 15/10/2026 (WCI $4,485, SH–LA $7,884, SH–NY $10,075). Không tìm được bản lưu 08/10; số trên dashboard chưa kiểm lại được."
  },
  {
   "block": "cg-04",
   "claim": "WCI Thượng Hải–Genoa",
   "value": "3.696",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
-  "opened_at": "2026-10-09",
+  "opened_at": "2026-10-19",
   "quote": " from Shanghai to Rotterdam fell 2% to $3,337 per 40ft container, while those from Shanghai to Genoa remained stable at $3,696 per 40ft container. According to Drewry’s Container Capacity Insight , six blank sailings have been announced for next ",
-  "status": "match",
+  "status": "unreachable",
   "correct_value": "",
-  "note": ""
+  "note": "Trang Drewry cập nhật hằng tuần, bản đánh giá 08/10/2026 đã bị thay; 19/10 trang chỉ còn bản 15/10/2026 (WCI $4,485, SH–LA $7,884, SH–NY $10,075). Không tìm được bản lưu 08/10; số trên dashboard chưa kiểm lại được."
  },
  {
   "block": "cg-04",
   "claim": "WCI Thượng Hải–Rotterdam",
   "value": "3.337",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
-  "opened_at": "2026-10-09",
+  "opened_at": "2026-10-19",
   "quote": "y expects rates to remain stable next week. On the Asia–Europe trade route, rates from Shanghai to Rotterdam fell 2% to $3,337 per 40ft container, while those from Shanghai to Genoa remained stable at $3,696 per 40ft container. According to Drewr",
-  "status": "match",
+  "status": "unreachable",
   "correct_value": "",
-  "note": ""
+  "note": "Trang Drewry cập nhật hằng tuần, bản đánh giá 08/10/2026 đã bị thay; 19/10 trang chỉ còn bản 15/10/2026 (WCI $4,485, SH–LA $7,884, SH–NY $10,075). Không tìm được bản lưu 08/10; số trên dashboard chưa kiểm lại được."
  },
  {
   "block": "cg-04",
@@ -444,8 +444,8 @@
   "claim": "chCaiMep: tổng cụm và 3 bến",
   "value": "1,94 triệu; 523/371/269 nghìn TEU",
   "url": "https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html",
-  "opened_at": "2026-10-09",
-  "quote": " cửa ngõ xuất nhập khẩu và trung chuyển quốc tế quan trọng của khu vực phía Nam. Cảng Gemalink tiếp tục dẫn đầu với hơn 523.000 TEU, tăng 17% so với cùng kỳ Theo số liệu của Hiệp hội Cảng biển Việt Nam (VPA), sản lượng container tuyến chính (mainline) qua cụm c",
+  "opened_at": "2026-10-19",
+  "quote": "sản lượng container tuyến chính (mainline) qua cụm cảng trong 3 tháng đầu năm đạt khoảng 1,94 triệu TEU, tăng 13% so với cùng kỳ năm 2025.",
   "status": "match",
   "correct_value": "",
   "note": ""
@@ -730,8 +730,8 @@
   "claim": "SGP KH 2026 hợp nhất",
   "value": "DT 1.554 · LN 481",
   "url": "https://saigonport.vn/wp-content/uploads/2026/04/VN_04-Bao-cao-cua-HDQT-tai-DHDCD-2026.pdf",
-  "opened_at": "2026-10-09",
-  "quote": ". - Doanh thu: 1.253 tỷ đồng. - Lợi nhuận: 474,4 tỷ đồng. Đối với các chỉ tiêu hợp nhất: - Sản lượng: 13.250.000 tấn. - Doanh thu: 1.554 tỷ đồng. - Lợi nhuận: 481,4 tỷ đồng. 3. Giải pháp thực hiện: 3.1. Về khai thác Cảng: - Có chính sách, kế hoạch chăm sóc các khách hàng hiện hữu để ",
+  "opened_at": "2026-10-19",
+  "quote": "Đối với các chỉ tiêu hợp nhất: - Sản lượng: 13.250.000 tấn. - Doanh thu: 1.554 tỷ đồng. - Lợi nhuận: 481,4 tỷ đồng.",
   "status": "match",
   "correct_value": "",
   "note": ""
