@@ -235,6 +235,23 @@ def fia_series(sector):
     return out
 
 
+SXD_FILE = ROOT / 'data/raw/public/sxd-hanoi-quarterly.json'
+SXD = {'construction': {'cement_price': 'cement_pcb40', 'stone_1x2': 'da_1x2', 'sand_yellow': 'cat_vang'},
+       'realestate': {'cement_price': 'cement_pcb40'}}
+
+
+def sxd_series(sector):
+    if not SXD_FILE.exists() or sector not in SXD:
+        return {}
+    d = json.loads(SXD_FILE.read_text())
+    q0 = lambda q: f'{q[:4]}-{(int(q[-1]) - 1) * 3 + 1:02d}-01'
+    return {k: {'name': d['names'][p] + ', Hà Nội', 'unit': d['units'][p], 'time_type': 'quarterly', 'source': d['source'],
+                'url': d['files'][max(d['series'][p])]['page'],
+                'records': [{'date': q0(q), 'period': q, 'value': r['value'], 'n': r['n'], 'min': r['min'], 'max': r['max']}
+                            for q, r in sorted(d['series'][p].items())]}
+            for k, p in SXD[sector].items() if d['series'].get(p)}
+
+
 def shfe_series(sector):
     if not SHFE_FILE.exists() or sector not in SHFE:
         return {}
@@ -315,7 +332,7 @@ def main():
         ms.update(fia_series(sector))
         if sector == 'textile':
             ms.update(us_apparel())
-        sh = {**shfe_series(sector), **market_series(sector)}
+        sh = {**shfe_series(sector), **market_series(sector), **sxd_series(sector)}
         if sh:
             blocks.setdefault('commodity', {'series': {}, 'captured_at': now[:10]})['series'].update(sh)
         if ms:

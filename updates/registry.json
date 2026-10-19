@@ -1731,13 +1731,12 @@
      "bds-32"
     ]
    },
-   "how": "python3 scripts/fetch_cbonds.py && python3 scripts/fetch_shfe.py → build_sector_public.py (chạy trong refresh-data.yml)",
+   "how": "python3 scripts/fetch_cbonds.py && python3 scripts/fetch_shfe.py && python3 scripts/fetch_sxd_hanoi.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
     "Chỉ nguồn công khai gốc; không dùng số Wi",
     "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "job": "refresh-data.yml (mỗi lượt refresh)",
-   "note": "Còn trống: Giá xi măng nội địa chưa có nguồn công khai"
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "realestate.market-quarterly",
@@ -3305,7 +3304,7 @@
    },
    "publication": "Giá ngày, hiển thị cuối tháng; xi măng, đá giá tháng",
    "source": {
-    "name": "SHFE, IMF (FRED), Sina",
+    "name": "SHFE, IMF (FRED), Sina, Sở Xây dựng Hà Nội",
     "url": "https://www.shfe.com.cn/"
    },
    "where": {
@@ -3313,16 +3312,17 @@
     "file": "data/construction-public-data.js",
     "blocks": [
      "xd-10",
-     "xd-22"
+     "xd-22",
+     "xd-24"
     ]
    },
-   "how": "python3 scripts/fetch_shfe.py && python3 scripts/fetch_markets.py → build_sector_public.py (chạy trong refresh-data.yml)",
+   "how": "python3 scripts/fetch_shfe.py && python3 scripts/fetch_markets.py && python3 scripts/fetch_sxd_hanoi.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
     "Chỉ nguồn công khai gốc; không dùng số Wi",
     "Thiếu nguồn thì để trống, không điền tay"
    ],
    "job": "refresh-data.yml (mỗi lượt refresh)",
-   "note": "Còn trống: Thép CB300 Hòa Phát, thép phế, xi măng, đá (Sở XD) chưa có nguồn"
+   "note": "Còn trống: thép CB300 Hòa Phát, thép phế. Xi măng, đá, cát: Hà Nội theo quý, lịch sử từ Q3/2026"
   },
   {
    "id": "construction.public.valuation",

@@ -67,6 +67,7 @@ jobs:
           python scripts/fetch_markets.py || true
           python scripts/fetch_sbv.py || true
           python scripts/fetch_fia.py || true
+          python scripts/fetch_sxd_hanoi.py || true
           python scripts/build_sector_public.py
           python scripts/fetch_public_fs.py && python scripts/build_company_quarterly.py
       - name: Validate generated data

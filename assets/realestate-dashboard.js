@@ -224,11 +224,11 @@ if(steel.length&&document.getElementById('chSteel')){
  insight('chSteel','Thép chiếm phần lớn chi phí kết cấu; giá tăng 10% làm chi phí xây dựng căn hộ tăng khoảng 1–2% tùy loại hình. Với chủ đầu tư đã khóa giá bán, thép tăng ăn vào biên; với dự án chưa mở bán, nó đẩy giá sơ cấp.');
 }
 if(cement.length&&document.getElementById('chCement')){
- const rs=cement.slice(-36);
- barLineChart('chCement',{categories:rs.map(r=>mon(r.date)),series:[{name:'Xi măng',color:C.grey,kind:'line',values:rs.map(r=>r.value)}],unit:'nghìn VND/kg',digits:3,height:260,zeroBase:false,rotateLabels:true});
- fillTable('tbl-cement',['Tháng','nghìn VND/kg'],rs.slice().reverse().map(r=>[mon(r.date),nf(r.value,3)]));
- sourceLine('chCement',[['Giá vật liệu xây dựng trong nước',null]],mon(cement.at(-1).date),'Chỉ tiêu 80961, giá tháng tổng hợp từ công bố giá vật liệu địa phương. Thay đổi theo bậc vì nguồn cập nhật theo đợt.');
- insight('chCement','Xi măng ít biến động hơn thép và chỉ đổi theo đợt công bố; dùng như nền chi phí, không dùng để bắt điểm đảo chiều.');
+ const rs=cement.slice(-12),ql=r=>r.period?'Q'+r.period.slice(-1)+'/'+r.period.slice(0,4):mon(r.date);
+ if(rs.length>=3)barLineChart('chCement',{categories:rs.map(ql),series:[{name:'Xi măng bao PCB40',color:C.grey,kind:'line',values:rs.map(r=>r.value)}],unit:'VND/tấn',digits:0,height:260,zeroBase:false});
+ fillTable('tbl-cement',['Quý','VND/tấn (trung vị)','Khoảng giá','Số nhà sản xuất'],rs.slice().reverse().map(r=>[ql(r),nf(r.value,0),nf(r.min,0)+' – '+nf(r.max,0),String(r.n)]));
+ sourceLine('chCement',[['Sở Xây dựng Hà Nội · công bố giá VLXD',com.cement_price?.url||null]],ql(cement.at(-1)),'Phụ lục 1, giá chưa VAT; trung vị xi măng bao PCB40 các nhà sản xuất (bỏ hàng rời, loại đa dụng). Lịch sử từ Q3/2026; vẽ chart khi đủ 3 quý.');
+ if(rs.length<3){const t=document.getElementById('tbl-cement'),d=t.closest('details');document.getElementById('chCement').replaceWith(t.closest('.tablewrap'));d?.remove()}  // under 3 quarters: show the table in place of the chart
 }
 if(Object.keys(sec).length&&document.getElementById('chSectorPb')){
  const ids=[['160','BĐS dân cư',C.navy],['159','Cho thuê',C.gold],['161','Môi giới',C.plum]].filter(([id])=>sec[id]?.records?.length);

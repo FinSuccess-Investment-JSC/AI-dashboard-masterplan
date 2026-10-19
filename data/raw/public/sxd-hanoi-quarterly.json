@@ -1,0 +1,46 @@
+{
+"source": "Sở Xây dựng Hà Nội · công bố giá vật liệu xây dựng (chưa VAT)",
+"url": "https://soxaydung.hanoi.gov.vn/kinh-te-vat-lieu-xay-dung",
+"names": {
+"cat_vang": "Cát vàng (trung vị các bãi)",
+"da_1x2": "Đá 1x2 (trung vị các mỏ, bãi)",
+"cement_pcb40": "Xi măng bao PCB40 (trung vị các nhà sản xuất)"
+},
+"units": {
+"cat_vang": "VND/m3",
+"da_1x2": "VND/m3",
+"cement_pcb40": "VND/tấn"
+},
+"files": {
+"2026-Q3": {
+"page": "https://soxaydung.hanoi.gov.vn/kinh-te-vat-lieu-xay-dung/cong-bo-gia-mot-so-vat-lieu-xay-dung-quy-iii-nam-2026-2661261019081035026.htm",
+"pdf": "https://sqhx-hanoi.mediacdn.vn/91579363132710912/2026/10/19/1510-phu-luc-1-cong-bo-gia-mot-so-vat-lieu-quy-3-nam-2026-1792372175453787807904.pdf"
+}
+},
+"series": {
+"cat_vang": {
+"2026-Q3": {
+"value": 663333.5,
+"n": 4,
+"min": 636364.0,
+"max": 700000.0
+}
+},
+"da_1x2": {
+"2026-Q3": {
+"value": 675000.0,
+"n": 3,
+"min": 527273.0,
+"max": 700000.0
+}
+},
+"cement_pcb40": {
+"2026-Q3": {
+"value": 1450000.0,
+"n": 6,
+"min": 1324074.0,
+"max": 1694444.0
+}
+}
+}
+}

@@ -128,13 +128,25 @@ if(cexp.length&&document.getElementById('chCementExp')){
  insight('chCementExp','Lũy kế xuất khẩu '+signed(ytdYo(cexp),0)+'%. Xuất khẩu là van xả cho phần dư công suất, biên thấp hơn bán trong nước; khi giá than tăng, xuất khẩu clinker gần như hòa vốn.');
 }
 const cp=S('cement_price'),stone=S('stone_1x2'),asph=S('asphalt'),coal=S('coal_newcastle');
+const qlab=r=>'Q'+r.period.slice(-1)+'/'+r.period.slice(0,4),sand=S('sand_yellow');
+if(cp.length&&document.getElementById('tbl-sxd')){
+ const mats=[['Xi măng bao PCB40','đ/tấn',cp],['Đá 1x2','đ/m³',stone],['Cát vàng','đ/m³',sand]].filter(m=>m[2].length);
+ const qs=[...new Set(mats.flatMap(m=>m[2].map(r=>r.period)))].sort().slice(-4);
+ if(qs.length>=3){const base=cp.filter(r=>qs.includes(r.period)),by=m=>Object.fromEntries(m.map(r=>[r.period,r]));
+  const bm=mats.map(m=>[m[0],by(m[2])]),b0=qs[0];
+  barLineChart('chSxd',{categories:qs.map(q=>qlab({period:q})),series:bm.map(([n,o],i)=>({name:n,color:[C.navy,C.gold,C.plum][i],kind:'line',values:qs.map(q=>o[q]&&o[b0]?o[q].value/o[b0].value*100:null)})),unit:'chỉ số '+qlab({period:b0})+' = 100',digits:0,height:240,zeroBase:false});
+  legend('chSxd',bm.map(([n],i)=>[n,[C.navy,C.gold,C.plum][i]]))}
+ else document.getElementById('chSxd')?.remove();  // under 3 quarters: table only
+ fillTable('tbl-sxd',['Vật liệu',...qs.map(q=>qlab({period:q})),'Khoảng giá kỳ cuối','Số điểm'],mats.map(([n,u,rs])=>{const o=Object.fromEntries(rs.map(r=>[r.period,r])),L=rs.at(-1);return [n+' ('+u+')',...qs.map(q=>o[q]?nf(o[q].value,0):'—'),nf(L.min,0)+' – '+nf(L.max,0),String(L.n)]}));
+ sourceLine('tbl-sxd',[['Sở Xây dựng Hà Nội · công bố giá VLXD',com.cement_price?.url||'https://soxaydung.hanoi.gov.vn/kinh-te-vat-lieu-xay-dung']],qlab(cp.at(-1)),'Phụ lục 1, giá chưa VAT. Trung vị các nhà sản xuất (xi măng, bỏ hàng rời và loại đa dụng) hoặc các mỏ, bãi (đá, cát). Website đổi hệ thống năm 2026, lịch sử bắt đầu từ Q3/2026.');
+}
 if(asph.length&&document.getElementById('chVlxdPrice')){
  const ai=byMonth(idx(asph,BASE)),ki=byMonth(idx(coal,BASE)),base=asph.filter(r=>r.date.slice(0,7)>=BASE);
  lines('chVlxdPrice',base,[['Nhựa đường SHFE',C.plum,r=>ai[ym(r.date)]?.value??null],['Than Newcastle',C.gold,r=>ki[ym(r.date)]?.value??null]],'',0);
  legend('chVlxdPrice',[['Nhựa đường SHFE',C.plum],['Than Newcastle',C.gold]]);
  const km=byMonth(coal);
  fillTable('tbl-vlxd-price',['Kỳ','Nhựa đường SHFE (CNY/tấn)','Than Newcastle (USD/tấn)'],asph.slice().reverse().map(r=>[short(r.date),nf(r.value,0),nf(km[ym(r.date)]?.value,1)]));
- sourceLine('chVlxdPrice',[['SHFE · dữ liệu giao dịch ngày','https://www.shfe.com.cn/eng/Market/Futures/'],['ICE Newcastle',com.coal_newcastle?.url||null]],short(asph.at(-1).date),'Chỉ số T1/2024 = 100. Nhựa đường: giá thanh toán hợp đồng chính SHFE, phiên cuối tháng; than Newcastle: ICE, phiên cuối tháng. Giá xi măng, đá 1x2 của Sở Xây dựng chưa có nguồn công khai dạng dữ liệu.');
+ sourceLine('chVlxdPrice',[['SHFE · dữ liệu giao dịch ngày','https://www.shfe.com.cn/eng/Market/Futures/'],['ICE Newcastle',com.coal_newcastle?.url||null]],short(asph.at(-1).date),'Chỉ số T1/2024 = 100. Nhựa đường: giá thanh toán hợp đồng chính SHFE, phiên cuối tháng; than Newcastle: ICE, phiên cuối tháng. Giá xi măng, đá, cát của Sở Xây dựng Hà Nội ở thẻ bên cạnh (theo quý).');
  const aL=asph.at(-1),kL=coal.at(-1);
  insight('chVlxdPrice','Nhựa đường '+signed(yoyAt(asph,aL),0)+'% YoY và than Newcastle '+signed(yoyAt(coal,kL),0)+'% — chi phí của nhà thầu đường (C4G, HHV, LCG) và xi măng (HT1, BCC) đi theo giá dầu, than thế giới.');
 }

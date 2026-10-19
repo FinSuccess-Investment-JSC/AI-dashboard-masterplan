@@ -8,7 +8,7 @@ function mark(){
  document.querySelectorAll('.card[data-update-kind="periodic"]').forEach(card=>{
   if(card.classList.contains('source-gap'))return;
   const hosts=[...card.querySelectorAll('div[id^="ch"]')];
-  if(!hosts.length||hosts.some(h=>h.childElementCount))return;
+  if(!hosts.length||hosts.some(h=>h.childElementCount)||card.querySelector('table tr'))return;  // a filled table counts as data (e.g. series too short to chart)
   card.classList.add('source-gap');
   const n=document.createElement('div');n.className='source-gap-note';n.textContent=NOTE;
   hosts[0].before(n);
