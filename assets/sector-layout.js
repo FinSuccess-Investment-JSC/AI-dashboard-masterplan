@@ -41,8 +41,9 @@ function card(id,title,subtitle,kind='public',cadence='daily'){
  const c=make('div','card');Object.assign(c.dataset,{blockId:id,updateKind:kind,cadence});c.append(make('div','chart-title',title),make('div','chart-sub',subtitle));return c;
 }
 function source(c,s,method){
+ const PAGE={'https://apps.fas.usda.gov/psdonline/downloads/psd_sugar_csv.zip':'https://apps.fas.usda.gov/psdonline/app/index.html#/app/advQuery'};
  c.dataset.refreshStatus=s.status==='ok'?'loaded':'last-good';c.dataset.sourceIds=Object.keys(src).find(k=>src[k]===s)||'';
- const row=make('div','source-note');const a=make('a','',s.source_name);a.href=s.source_url;a.target='_blank';a.rel='noopener';row.append('Nguồn: ',a,` · ${s.observation_frequency==='marketing year'?'Niên vụ bắt đầu: '+s.latest_observation.slice(0,4):'Kỳ cuối: '+s.latest_observation} · Kiểm tra: ${s.last_checked_at?.slice(0,10)||'—'}`);c.append(row);
+ const row=make('div','source-note');const a=make('a','',s.source_name);a.href=PAGE[s.source_url]||s.source_url;a.target='_blank';a.rel='noopener';row.append('Nguồn: ',a,` · ${s.observation_frequency==='marketing year'?'Niên vụ bắt đầu: '+s.latest_observation.slice(0,4):'Kỳ cuối: '+s.latest_observation} · Kiểm tra: ${s.last_checked_at?.slice(0,10)||'—'}`);c.append(row);
  if(s.status!=='ok')c.append(make('div','refresh-note is-stale','Lần tải mới lỗi; giữ dữ liệu tốt gần nhất.'));
  c.append(make('div','source-note method-note',method));
 }
@@ -133,7 +134,7 @@ else{
   const pick=f=>on.map(r=>f(r.oni)?r.oni:null);
   const m3={categories:on.map(r=>r.date.slice(0,7)),tickLabels:on.map(r=>r.date.slice(0,4)),series:[{name:'El Niño',color:'#C8102E',kind:'bar',values:pick(v=>v>=0.5)},{name:'La Niña',color:'#2E7BC4',kind:'bar',values:pick(v=>v<=-0.5)},{name:'Trung tính',color:'#C9CED8',kind:'bar',values:pick(v=>v>-0.5&&v<0.5)}],unit:'°C',digits:2,stackable:true,aria:'Chỉ số ENSO ONI'};
   ChartTypes.mount(h3,{...m3,native:'stack'},()=>{h3.innerHTML=ChartTypes.render({...m3,width:h3.clientWidth||640},'stack')});
-  const row=make('div','source-note');row.append('Nguồn: ');[['World Bank Pink Sheet',wbm.source_url],['USDA FAS PSD',sh.source_url],['NOAA CPC ONI',oni.source_url]].forEach(([t,u],i)=>{if(i)row.append(' · ');const a=make('a','',t);a.href=u;a.target='_blank';a.rel='noopener';row.append(a)});c.append(row);
+  const row=make('div','source-note');row.append('Nguồn: ');[['World Bank Pink Sheet','https://www.worldbank.org/en/research/commodity-markets'],['USDA FAS PSD','https://apps.fas.usda.gov/psdonline/app/index.html#/app/advQuery'],['NOAA CPC ONI','https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php']].forEach(([t,u],i)=>{if(i)row.append(' · ');const a=make('a','',t);a.href=u;a.target='_blank';a.rel='noopener';row.append(a)});c.append(row);
   c.append(make('div','source-note method-note','Tồn kho/tiêu thụ = tổng tồn kho cuối kỳ ÷ tổng tiêu thụ (Total Disappearance) của các nước trong PSD. ONI là trung bình trượt 3 tháng, gắn vào tháng cuối. Thời tiết tác động lên vụ mía thường trễ 6–12 tháng.'));
  }
  // Dự báo 2026/27 từ tài liệu: số đã mở trang gốc, câu trích lưu ở data/sugar/evidence.json (sugar-11, sugar-12).
@@ -143,7 +144,7 @@ else{
   if(gap)c.append(make('div','source-note data-gap',gap));
   const row=make('div','source-note');row.append('Nguồn: ');refs.forEach(([t,u],i)=>{if(i)row.append(' · ');const a=make('a','',t);a.href=u;a.target='_blank';a.rel='noopener';row.append(a)});c.append(row)};
  fcBar('sugar-11','Dự báo cán cân đường thế giới niên vụ 2026/27','Triệu tấn · âm = thiếu hụt · số mới nhất của từng tổ chức',[['Czarnikow (11/06)',-0.1],['ISO (01/09)',-0.2],['Covrig (03/08)',-0.3],['StoneX (28/07)',-1.7],['Green Pool (27/08)',-3.2]],'triệu tấn',1,[['Barchart 02/09/2026','https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit'],['Barchart 31/08/2026','https://www.barchart.com/story/news/4359559/global-supply-fears-underpin-sugar-prices']]);
- fcBar('sugar-12','Biến động sản lượng đường niên vụ 2026/27','% so với niên vụ 2025/26',[['EU',-19],['Brazil',-2.9],['Ấn Độ*',12]],'%',1,[['EU Sugar Market Observatory, Ấn Độ: USDA FAS qua Barchart','https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit'],['Brazil: Conab 20/08/2026 qua BrasilAgro','https://www.brasilagro.com.br/conteudo/conab-projeta-queda-na-producao-de-acucar-e-alta-no-etanol.html']],'Thái Lan: chưa mở được nguồn gốc OCSB cho số −12,5%, chưa đưa lên. * Ấn Độ là dự báo USDA 05/2026, trước khi gió mùa thiếu hụt.');
+ fcBar('sugar-12','Biến động sản lượng đường niên vụ 2026/27','% so với niên vụ 2025/26',[['EU',-19],['Brazil',-2.9],['Ấn Độ*',12]],'%',1,[['Barchart 02/09/2026 (EU: EU Sugar Market Observatory; Ấn Độ: USDA FAS)','https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit'],['Brazil: Conab 20/08/2026 qua BrasilAgro','https://www.brasilagro.com.br/conteudo/conab-projeta-queda-na-producao-de-acucar-e-alta-no-etanol.html']],'Thái Lan: chưa mở được nguồn gốc OCSB cho số −12,5%, chưa đưa lên. * Ấn Độ là dự báo USDA 05/2026, trước khi gió mùa thiếu hụt.');
 }
 const tabs=make('div','supply-tabs');tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','Phạm vi cung cầu');
 const panes=[world,vn];function select(i){panes.forEach((p,j)=>{p.hidden=i!==j;const b=tabs.children[j];b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1})}
