@@ -1,6 +1,6 @@
 {
-  "run_at": "2026-10-19T03:48:39.086715+00:00",
-  "errors": 1,
+  "run_at": "2026-10-19T09:06:33.267218+00:00",
+  "errors": 0,
   "sources": {
     "wti": {
       "status": "ok",
@@ -210,6 +210,13 @@
       "latest_observation": "2026-10-17",
       "last_success_at": "2026-10-19T03:48:39.086715+00:00",
       "last_checked_at": "2026-10-19T03:48:39.086715+00:00",
+      "error": null
+    },
+    "sugar_world_shares": {
+      "status": "ok",
+      "latest_observation": "2026-01-01",
+      "last_success_at": "2026-10-19T09:06:33.267218+00:00",
+      "last_checked_at": "2026-10-19T09:06:33.267218+00:00",
       "error": null
     }
   }

@@ -77,6 +77,7 @@
     if (!vals.length) return '<div class="gap-empty">Không có dữ liệu hợp lệ.</div>';
     const zero = type === 'bar' || type === 'stack' || stacked || model.zeroBase !== false;
     const d = domain(Math.min(...vals), Math.max(...vals), zero);
+    if (model.yMax != null && d.max > model.yMax) d.max = model.yMax;  // share charts stop at 100%
     const Y = v => T + ph * (d.max - v) / (d.max - d.min);
     const X = i => L + band * (i + 0.5);
     const base = Y(Math.max(d.min, Math.min(0, d.max)));

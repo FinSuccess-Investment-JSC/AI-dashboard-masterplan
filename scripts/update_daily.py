@@ -286,6 +286,42 @@ def load_sugar_producers():
         'publication_frequency':'semiannual','unit':'million tonnes raw value','records':records,
         'raw_sha256':hashlib.sha256(raw).hexdigest()},raw
 
+# World shares by country (supply = production; demand = imports, human consumption). Country lists are
+# fixed so the stacked chart keeps the same colors; the rest of the world is "other", so shares sum to 100%.
+SUGAR_SHARE_GROUPS={'prod':('Production',['Brazil','India','European Union','China','Thailand','United States']),
+    'imp':('Imports',['China','Indonesia','United States','United Arab Emirates','European Union','India']),
+    'cons':('Human Dom. Consumption',['India','China','European Union','United States','Brazil','Indonesia'])}
+def share_key(country):return country.lower().replace(' ','_')
+def load_sugar_world_shares():
+    raw=fetch(PSD_SUGAR);z=zipfile.ZipFile(io.BytesIO(raw))
+    if sum(i.file_size for i in z.infolist())>60_000_000:raise ValueError('PSD archive exceeds limit')
+    totals={};parts={}
+    attrs={a:g for g,(a,_) in SUGAR_SHARE_GROUPS.items()}
+    for r in csv.DictReader(io.TextIOWrapper(z.open('psd_sugar.csv'),encoding='utf-8-sig')):
+        g=attrs.get(r['Attribute_Description']);year=int(r['Market_Year'])
+        if not g or year<2010:continue
+        if r['Commodity_Code']!='0612000' or r['Unit_Description']!='(1000 MT)':raise ValueError('PSD identity/unit mismatch')
+        v=float(r['Value'])/1000;totals[(g,year)]=totals.get((g,year),0)+v
+        if r['Country_Name'] in SUGAR_SHARE_GROUPS[g][1]:parts[(g,year,share_key(r['Country_Name']))]=v
+    years=sorted({y for _,y in totals});records=[];fields=[]
+    for g,(_,countries) in SUGAR_SHARE_GROUPS.items():
+        fields+=[f'{g}_{share_key(c)}' for c in countries]+[f'{g}_other',f'{g}_total']
+    for y in years:
+        row={'date':f'{y}-01-01','market_year':y}
+        for g,(_,countries) in SUGAR_SHARE_GROUPS.items():
+            t=totals.get((g,y))
+            if not t:raise ValueError(f'PSD world total missing {g} {y}')
+            known=0
+            for c in countries:
+                v=parts.get((g,y,share_key(c)))
+                if v is None:raise ValueError(f'PSD country missing {g} {c} {y}')
+                row[f'{g}_{share_key(c)}']=round(v,3);known+=v
+            row[f'{g}_other']=round(t-known,3);row[f'{g}_total']=round(t,3)
+        records.append(row)
+    return {'source_url':PSD_SUGAR,'source_name':'USDA FAS PSD','observation_frequency':'marketing year',
+        'publication_frequency':'semiannual','unit':'million tonnes raw value','records':normalize(records,fields),
+        'raw_sha256':hashlib.sha256(raw).hexdigest()},raw
+
 def merge_good(old, fresh, floor):
     latest=max(r['date'] for r in fresh['records'])
     previous=old.get('latest_observation') or floor
@@ -327,7 +363,7 @@ def main():
     try:
         cache=out/'daily.json';bundle=previous_bundle(out)
         tasks={k:(lambda k=k,s=s:load_eia(k,s)) for k,s in EIA.items()}
-        tasks.update(hormuz=load_portwatch,bab_el_mandeb=lambda:load_portwatch('chokepoint4'),middle_east_crude_exports=lambda:load_middle_east_exports(bundle['sources'].get('middle_east_crude_exports',{}).get('records')),wti_curve=load_curve,brent_futures=lambda:load_daily_futures("BZ=F","USD/barrel"),sugar_futures=load_sugar_futures,sugar_vn_balance=load_sugar_vn_balance,sugar_monthly=load_wb_sugar,sugar_producers=load_sugar_producers,
+        tasks.update(hormuz=load_portwatch,bab_el_mandeb=lambda:load_portwatch('chokepoint4'),middle_east_crude_exports=lambda:load_middle_east_exports(bundle['sources'].get('middle_east_crude_exports',{}).get('records')),wti_curve=load_curve,brent_futures=lambda:load_daily_futures("BZ=F","USD/barrel"),sugar_futures=load_sugar_futures,sugar_vn_balance=load_sugar_vn_balance,sugar_monthly=load_wb_sugar,sugar_producers=load_sugar_producers,sugar_world_shares=load_sugar_world_shares,
                      singapore_cracks=lambda:load_singapore_cracks(bundle['sources'].get('singapore_cracks',{}).get('records')),
                      retail_fuel=lambda:load_retail_fuel(bundle['sources'].get('retail_fuel',{}).get('records')),
                      opec_capacity=load_steo_capacity,world_balance=load_world_balance,wti_cot=load_wti_cot,

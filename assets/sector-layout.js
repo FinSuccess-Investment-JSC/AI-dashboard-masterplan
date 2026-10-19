@@ -92,6 +92,22 @@ else{
  source(c,s,'USDA PSD, Sugar Centrifugal, Production; nghìn tấn quy đổi giá trị thô chia 1.000. Chọn Brazil, India, Thailand, European Union; không cộng các nước thành tổng thế giới. Năm trên trục là năm bắt đầu niên vụ địa phương, không cùng một kỳ lịch toàn cầu. * Kỳ gần nhất có thể được USDA ước tính/dự báo và điều chỉnh; lịch báo cáo đường tháng 5 và 11.');
  c.append(make('div','chart-insight','AI · bối cảnh ngành: Theo dõi sản lượng Brazil, Ấn Độ và Thái Lan để nhận diện thay đổi nguồn cung có thể giao dịch quốc tế. Sản lượng tăng chưa chắc xuất khẩu tăng nếu tiêu thụ, ethanol hoặc hạn chế xuất khẩu hấp thụ phần tăng. Đây là đối chiếu các trung tâm cung, chưa phải tổng cân bằng toàn cầu.'));
  }else c.append(make('div','source-note','Chưa tải được USDA PSD. Không suy diễn số liệu thế giới từ cân đối Việt Nam.'));
+ // Tỷ trọng thế giới theo nước (USDA PSD): cung = sản xuất; cầu = nhập khẩu, tiêu dùng. Phần còn lại gộp "Nước khác" để tổng 100%.
+ const sh=src.sugar_world_shares;
+ if(sh?.records?.length){
+  const VN={brazil:'Brazil',india:'Ấn Độ',european_union:'EU',china:'Trung Quốc',thailand:'Thái Lan',united_states:'Mỹ',indonesia:'Indonesia',united_arab_emirates:'UAE',other:'Nước khác'};
+  const COL={brazil:'#2938A8',india:'#59C5C8',european_union:'#c29100',china:'#C8102E',thailand:'#861C52',united_states:'#5B6B8C',indonesia:'#2E8B57',united_arab_emirates:'#E07B39',other:'#C9CED8'};
+  const keys=g=>Object.keys(sh.records[0]).filter(k=>k.startsWith(g+'_')&&k!==g+'_total').map(k=>k.slice(g.length+1));
+  const rs=sh.records.slice(-12),lab=rs.map(r=>String(r.market_year)+(r.market_year>=2025?'*':''));
+  const share=(id,g,title,sub)=>{const c=card(id,title,sub,'periodic','semiannual');world.append(c);const h=make('div');h.id='ch-'+id;c.append(h);
+   const model={categories:lab,series:keys(g).map(k=>({name:VN[k]||k,color:COL[k]||'#999',kind:'bar',values:rs.map(r=>+(r[g+'_'+k]/r[g+'_total']*100).toFixed(1))})),unit:'%',digits:1,stackable:true,time:true,yMax:100,aria:title};
+   if(window.ChartTypes)ChartTypes.mount(h,{...model,native:'stack'},()=>{h.innerHTML=ChartTypes.render(model,'stack')});
+   const L=rs.at(-1);c.append(make('div','source-note','Tổng thế giới '+fmt(L[g+'_total'],1)+' triệu tấn ('+L.market_year+'*, ước tính).'));
+   source(c,sh,'USDA PSD, Sugar Centrifugal, giá trị thô. Tỷ trọng = nước ÷ tổng các nước trong PSD cùng năm; EU tính là một khối. Năm trên trục là năm bắt đầu niên vụ của từng nước.')};
+  share('sugar-world-share-prod','prod','Tỷ trọng sản xuất đường thế giới','% sản lượng toàn cầu · Cung');
+  share('sugar-world-share-imp','imp','Tỷ trọng nhập khẩu đường thế giới','% tổng nhập khẩu · Cầu');
+  share('sugar-world-share-cons','cons','Tỷ trọng tiêu dùng đường thế giới','% tiêu dùng toàn cầu · Cầu');
+ }
  // Dự báo 2026/27 từ tài liệu: số đã mở trang gốc, câu trích lưu ở data/sugar/evidence.json (sugar-11, sugar-12).
  const fcBar=(id,title,sub,rows,unit,digits,refs,gap)=>{const c=card(id,title,sub,'periodic','on-publish');world.append(c);const h=make('div');h.id='ch-'+id;c.append(h);
   const model={categories:rows.map(r=>r[0]),series:[{name:title,color:'#2938A8',kind:'bar',values:rows.map(r=>r[1])}],unit,digits,stackable:false,time:false,aria:title};
