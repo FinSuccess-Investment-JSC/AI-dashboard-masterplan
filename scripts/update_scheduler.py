@@ -83,7 +83,7 @@ def last_slot(sched: dict, now: datetime) -> datetime | None:
             if d.weekday() == target and _at(d, sched['at']) <= now:
                 return _at(d, sched['at'])
     elif kind == 'monthly':
-        first, last = sched['days']
+        first, last = sched['days'][0], sched['days'][-1]  # [day] or [first, last]
         for back in range(40):
             d = today - timedelta(days=back)
             if first <= d.day <= last and _at(d, sched['at']) <= now:

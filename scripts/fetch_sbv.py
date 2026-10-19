@@ -25,12 +25,17 @@ CREDIT = {'credit_total': 'soDuTongCong', 'credit_construction': 'soDuXayDung', 
 MONEY = {'m2': 'soDuTongPhuongTienThanhToan', 'deposits_firms': 'soDuTienGuiCuaCacTCKT', 'household_deposits': 'soDuTienGuiCuaDanCu'}
 
 
-def get(url, params=None):
+def get(url, params=None, tries=3):
     args = ['curl', '-sfL', '-m', '90', '-A', UA, '-G', url]
     for k, v in (params or {}).items():
         args += ['--data-urlencode', f'{k}={v}']
-    time.sleep(12)
-    return json.loads(subprocess.run(args, check=True, capture_output=True, text=True).stdout)
+    for i in range(tries):
+        time.sleep(12 if i == 0 else 60 * i)  # the firewall blocks bursts; back off longer after a rejection
+        try:
+            return json.loads(subprocess.run(args, check=True, capture_output=True, text=True).stdout)
+        except subprocess.CalledProcessError:
+            if i == tries - 1:
+                raise
 
 
 def vnum(t):
@@ -58,18 +63,25 @@ def articles(sid, fields):
 
 
 def central_rate(old, since='2023-01-01'):
-    """Newest first, page by page, until the page reaches dates already stored (or `since`)."""
+    """Newest first, page by page, until the page reaches dates already stored (or `since`). While stored history
+    does not reach back to `since` (an earlier run was cut off), page down to `since` again. A page that still fails
+    after retries ends the walk with what was read so far; the next run continues the backfill."""
     daily = dict(old)
-    stop = max(daily) if daily else since
+    complete = daily and min(daily) <= (dt.date.fromisoformat(since) + dt.timedelta(days=10)).isoformat()
+    stop = max(daily) if complete else since
     page = 1
     while True:
-        d = get(FX, {'pageSize': 100, 'page': page, 'sort': 'datePublished:desc'})
+        try:
+            d = get(FX, {'pageSize': 100, 'page': page, 'sort': 'datePublished:desc'})
+        except subprocess.CalledProcessError as e:
+            print('fx page', page, e)
+            return {k: v for k, v in daily.items() if k >= since}
         dates = []
         for it in d.get('items', []):
             f = {c['name']: c['contentFieldValue'].get('data') for c in it['contentFields']}
             m = re.match(r'(\d\d)/(\d\d)/(\d{4})$', it.get('title', ''))
-            if m and f.get('TyGiaSo'):
-                k = f'{m.group(3)}-{m.group(2)}-{m.group(1)}'
+            k = m and f'{m.group(3)}-{m.group(2)}-{m.group(1)}'
+            if k and f.get('TyGiaSo') and k <= dt.date.today().isoformat():  # SBV titles carry typos, e.g. "17/11/2026" posted in 2025
                 daily[k] = float(f['TyGiaSo'])
                 dates.append(k)
         if not dates or min(dates) < stop or page >= d.get('lastPage', 1):

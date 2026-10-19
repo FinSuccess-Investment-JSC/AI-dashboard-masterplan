@@ -1,0 +1,908 @@
+{
+"source": "Sở Giao dịch Hợp đồng tương lai Thượng Hải (SHFE) · dữ liệu giao dịch ngày",
+"url": "https://www.shfe.com.cn/eng/Market/Futures/",
+"names": {
+"hc": "Thép cuộn cán nóng HRC (SHFE, hợp đồng chính)",
+"rb": "Thép thanh vằn (SHFE, hợp đồng chính)",
+"bu": "Nhựa đường (SHFE, hợp đồng chính)",
+"fu": "Dầu nhiên liệu (SHFE, hợp đồng chính)"
+},
+"series": {
+"hc": {
+"2023-10": {
+"date": "2023-10-31",
+"value": 3846,
+"contract": "hc2401",
+"final": true
+},
+"2023-11": {
+"date": "2023-11-30",
+"value": 3987,
+"contract": "hc2405",
+"final": true
+},
+"2023-12": {
+"date": "2023-12-29",
+"value": 4110,
+"contract": "hc2405",
+"final": true
+},
+"2024-01": {
+"date": "2024-01-31",
+"value": 4025,
+"contract": "hc2405",
+"final": true
+},
+"2024-02": {
+"date": "2024-02-29",
+"value": 3909,
+"contract": "hc2405",
+"final": true
+},
+"2024-03": {
+"date": "2024-03-29",
+"value": 3619,
+"contract": "hc2410",
+"final": true
+},
+"2024-04": {
+"date": "2024-04-30",
+"value": 3818,
+"contract": "hc2410",
+"final": true
+},
+"2024-05": {
+"date": "2024-05-31",
+"value": 3840,
+"contract": "hc2410",
+"final": true
+},
+"2024-06": {
+"date": "2024-06-28",
+"value": 3736,
+"contract": "hc2410",
+"final": true
+},
+"2024-07": {
+"date": "2024-07-31",
+"value": 3478,
+"contract": "hc2410",
+"final": true
+},
+"2024-08": {
+"date": "2024-08-30",
+"value": 3346,
+"contract": "hc2501",
+"final": true
+},
+"2024-09": {
+"date": "2024-09-30",
+"value": 3563,
+"contract": "hc2501",
+"final": true
+},
+"2024-10": {
+"date": "2024-10-31",
+"value": 3591,
+"contract": "hc2501",
+"final": true
+},
+"2024-11": {
+"date": "2024-11-29",
+"value": 3492,
+"contract": "hc2501",
+"final": true
+},
+"2024-12": {
+"date": "2024-12-31",
+"value": 3423,
+"contract": "hc2505",
+"final": true
+},
+"2025-01": {
+"date": "2025-01-27",
+"value": 3473,
+"contract": "hc2505",
+"final": true
+},
+"2025-02": {
+"date": "2025-02-28",
+"value": 3412,
+"contract": "hc2505",
+"final": true
+},
+"2025-03": {
+"date": "2025-03-31",
+"value": 3351,
+"contract": "hc2505",
+"final": true
+},
+"2025-04": {
+"date": "2025-04-30",
+"value": 3202,
+"contract": "hc2510",
+"final": true
+},
+"2025-05": {
+"date": "2025-05-30",
+"value": 3084,
+"contract": "hc2510",
+"final": true
+},
+"2025-06": {
+"date": "2025-06-30",
+"value": 3134,
+"contract": "hc2510",
+"final": true
+},
+"2025-07": {
+"date": "2025-07-31",
+"value": 3421,
+"contract": "hc2510",
+"final": true
+},
+"2025-08": {
+"date": "2025-08-29",
+"value": 3356,
+"contract": "hc2601",
+"final": true
+},
+"2025-09": {
+"date": "2025-09-30",
+"value": 3274,
+"contract": "hc2601",
+"final": true
+},
+"2025-10": {
+"date": "2025-10-31",
+"value": 3315,
+"contract": "hc2601",
+"final": true
+},
+"2025-11": {
+"date": "2025-11-28",
+"value": 3293,
+"contract": "hc2601",
+"final": true
+},
+"2025-12": {
+"date": "2025-12-31",
+"value": 3274,
+"contract": "hc2605",
+"final": true
+},
+"2026-01": {
+"date": "2026-01-30",
+"value": 3302,
+"contract": "hc2605",
+"final": true
+},
+"2026-02": {
+"date": "2026-02-27",
+"value": 3208,
+"contract": "hc2605",
+"final": true
+},
+"2026-03": {
+"date": "2026-03-31",
+"value": 3317,
+"contract": "hc2610",
+"final": true
+},
+"2026-04": {
+"date": "2026-04-30",
+"value": 3413,
+"contract": "hc2610",
+"final": true
+},
+"2026-05": {
+"date": "2026-05-29",
+"value": 3378,
+"contract": "hc2610",
+"final": true
+},
+"2026-06": {
+"date": "2026-06-30",
+"value": 3311,
+"contract": "hc2610",
+"final": true
+},
+"2026-07": {
+"date": "2026-07-31",
+"value": 3230,
+"contract": "hc2610",
+"final": true
+},
+"2026-08": {
+"date": "2026-08-31",
+"value": 3398,
+"contract": "hc2701",
+"final": true
+},
+"2026-09": {
+"date": "2026-09-30",
+"value": 3282,
+"contract": "hc2701",
+"final": true
+},
+"2026-10": {
+"date": "2026-10-16",
+"value": 3239,
+"contract": "hc2701",
+"final": false
+}
+},
+"rb": {
+"2023-10": {
+"date": "2023-10-31",
+"value": 3729,
+"contract": "rb2401",
+"final": true
+},
+"2023-11": {
+"date": "2023-11-30",
+"value": 3911,
+"contract": "rb2405",
+"final": true
+},
+"2023-12": {
+"date": "2023-12-29",
+"value": 4000,
+"contract": "rb2405",
+"final": true
+},
+"2024-01": {
+"date": "2024-01-31",
+"value": 3895,
+"contract": "rb2405",
+"final": true
+},
+"2024-02": {
+"date": "2024-02-29",
+"value": 3795,
+"contract": "rb2405",
+"final": true
+},
+"2024-03": {
+"date": "2024-03-29",
+"value": 3475,
+"contract": "rb2410",
+"final": true
+},
+"2024-04": {
+"date": "2024-04-30",
+"value": 3670,
+"contract": "rb2410",
+"final": true
+},
+"2024-05": {
+"date": "2024-05-31",
+"value": 3715,
+"contract": "rb2410",
+"final": true
+},
+"2024-06": {
+"date": "2024-06-28",
+"value": 3537,
+"contract": "rb2410",
+"final": true
+},
+"2024-07": {
+"date": "2024-07-31",
+"value": 3319,
+"contract": "rb2410",
+"final": true
+},
+"2024-08": {
+"date": "2024-08-30",
+"value": 3299,
+"contract": "rb2501",
+"final": true
+},
+"2024-09": {
+"date": "2024-09-30",
+"value": 3471,
+"contract": "rb2501",
+"final": true
+},
+"2024-10": {
+"date": "2024-10-31",
+"value": 3434,
+"contract": "rb2501",
+"final": true
+},
+"2024-11": {
+"date": "2024-11-29",
+"value": 3327,
+"contract": "rb2501",
+"final": true
+},
+"2024-12": {
+"date": "2024-12-31",
+"value": 3312,
+"contract": "rb2505",
+"final": true
+},
+"2025-01": {
+"date": "2025-01-27",
+"value": 3371,
+"contract": "rb2505",
+"final": true
+},
+"2025-02": {
+"date": "2025-02-28",
+"value": 3318,
+"contract": "rb2505",
+"final": true
+},
+"2025-03": {
+"date": "2025-03-31",
+"value": 3173,
+"contract": "rb2505",
+"final": true
+},
+"2025-04": {
+"date": "2025-04-30",
+"value": 3096,
+"contract": "rb2510",
+"final": true
+},
+"2025-05": {
+"date": "2025-05-30",
+"value": 2963,
+"contract": "rb2510",
+"final": true
+},
+"2025-06": {
+"date": "2025-06-30",
+"value": 3009,
+"contract": "rb2510",
+"final": true
+},
+"2025-07": {
+"date": "2025-07-31",
+"value": 3243,
+"contract": "rb2510",
+"final": true
+},
+"2025-08": {
+"date": "2025-08-29",
+"value": 3175,
+"contract": "rb2601",
+"final": true
+},
+"2025-09": {
+"date": "2025-09-30",
+"value": 3090,
+"contract": "rb2601",
+"final": true
+},
+"2025-10": {
+"date": "2025-10-31",
+"value": 3109,
+"contract": "rb2601",
+"final": true
+},
+"2025-11": {
+"date": "2025-11-28",
+"value": 3098,
+"contract": "rb2601",
+"final": true
+},
+"2025-12": {
+"date": "2025-12-31",
+"value": 3127,
+"contract": "rb2605",
+"final": true
+},
+"2026-01": {
+"date": "2026-01-30",
+"value": 3147,
+"contract": "rb2605",
+"final": true
+},
+"2026-02": {
+"date": "2026-02-27",
+"value": 3059,
+"contract": "rb2605",
+"final": true
+},
+"2026-03": {
+"date": "2026-03-31",
+"value": 3130,
+"contract": "rb2605",
+"final": true
+},
+"2026-04": {
+"date": "2026-04-30",
+"value": 3204,
+"contract": "rb2610",
+"final": true
+},
+"2026-05": {
+"date": "2026-05-29",
+"value": 3157,
+"contract": "rb2610",
+"final": true
+},
+"2026-06": {
+"date": "2026-06-30",
+"value": 3084,
+"contract": "rb2610",
+"final": true
+},
+"2026-07": {
+"date": "2026-07-31",
+"value": 3013,
+"contract": "rb2610",
+"final": true
+},
+"2026-08": {
+"date": "2026-08-31",
+"value": 3186,
+"contract": "rb2701",
+"final": true
+},
+"2026-09": {
+"date": "2026-09-30",
+"value": 3116,
+"contract": "rb2701",
+"final": true
+},
+"2026-10": {
+"date": "2026-10-16",
+"value": 3072,
+"contract": "rb2701",
+"final": false
+}
+},
+"bu": {
+"2023-10": {
+"date": "2023-10-31",
+"value": 3728,
+"contract": "bu2401",
+"final": true
+},
+"2023-11": {
+"date": "2023-11-30",
+"value": 3699,
+"contract": "bu2403",
+"final": true
+},
+"2023-12": {
+"date": "2023-12-29",
+"value": 3678,
+"contract": "bu2403",
+"final": true
+},
+"2024-01": {
+"date": "2024-01-31",
+"value": 3751,
+"contract": "bu2406",
+"final": true
+},
+"2024-02": {
+"date": "2024-02-29",
+"value": 3689,
+"contract": "bu2406",
+"final": true
+},
+"2024-03": {
+"date": "2024-03-29",
+"value": 3703,
+"contract": "bu2406",
+"final": true
+},
+"2024-04": {
+"date": "2024-04-30",
+"value": 3778,
+"contract": "bu2409",
+"final": true
+},
+"2024-05": {
+"date": "2024-05-31",
+"value": 3671,
+"contract": "bu2409",
+"final": true
+},
+"2024-06": {
+"date": "2024-06-28",
+"value": 3644,
+"contract": "bu2409",
+"final": true
+},
+"2024-07": {
+"date": "2024-07-31",
+"value": 3503,
+"contract": "bu2410",
+"final": true
+},
+"2024-08": {
+"date": "2024-08-30",
+"value": 3374,
+"contract": "bu2411",
+"final": true
+},
+"2024-09": {
+"date": "2024-09-30",
+"value": 3071,
+"contract": "bu2412",
+"final": true
+},
+"2024-10": {
+"date": "2024-10-31",
+"value": 3266,
+"contract": "bu2501",
+"final": true
+},
+"2024-11": {
+"date": "2024-11-29",
+"value": 3473,
+"contract": "bu2501",
+"final": true
+},
+"2024-12": {
+"date": "2024-12-31",
+"value": 3682,
+"contract": "bu2503",
+"final": true
+},
+"2025-01": {
+"date": "2025-01-27",
+"value": 3714,
+"contract": "bu2503",
+"final": true
+},
+"2025-02": {
+"date": "2025-02-28",
+"value": 3676,
+"contract": "bu2506",
+"final": true
+},
+"2025-03": {
+"date": "2025-03-31",
+"value": 3596,
+"contract": "bu2506",
+"final": true
+},
+"2025-04": {
+"date": "2025-04-30",
+"value": 3406,
+"contract": "bu2506",
+"final": true
+},
+"2025-05": {
+"date": "2025-05-30",
+"value": 3417,
+"contract": "bu2509",
+"final": true
+},
+"2025-06": {
+"date": "2025-06-30",
+"value": 3556,
+"contract": "bu2509",
+"final": true
+},
+"2025-07": {
+"date": "2025-07-31",
+"value": 3650,
+"contract": "bu2510",
+"final": true
+},
+"2025-08": {
+"date": "2025-08-29",
+"value": 3482,
+"contract": "bu2511",
+"final": true
+},
+"2025-09": {
+"date": "2025-09-30",
+"value": 3427,
+"contract": "bu2511",
+"final": true
+},
+"2025-10": {
+"date": "2025-10-31",
+"value": 3252,
+"contract": "bu2601",
+"final": true
+},
+"2025-11": {
+"date": "2025-11-28",
+"value": 2987,
+"contract": "bu2602",
+"final": true
+},
+"2025-12": {
+"date": "2025-12-31",
+"value": 3029,
+"contract": "bu2603",
+"final": true
+},
+"2026-01": {
+"date": "2026-01-30",
+"value": 3468,
+"contract": "bu2603",
+"final": true
+},
+"2026-02": {
+"date": "2026-02-27",
+"value": 3351,
+"contract": "bu2606",
+"final": true
+},
+"2026-03": {
+"date": "2026-03-31",
+"value": 4536,
+"contract": "bu2606",
+"final": true
+},
+"2026-04": {
+"date": "2026-04-30",
+"value": 4439,
+"contract": "bu2606",
+"final": true
+},
+"2026-05": {
+"date": "2026-05-29",
+"value": 4178,
+"contract": "bu2609",
+"final": true
+},
+"2026-06": {
+"date": "2026-06-30",
+"value": 3811,
+"contract": "bu2609",
+"final": true
+},
+"2026-07": {
+"date": "2026-07-31",
+"value": 4107,
+"contract": "bu2609",
+"final": true
+},
+"2026-08": {
+"date": "2026-08-31",
+"value": 4736,
+"contract": "bu2610",
+"final": true
+},
+"2026-09": {
+"date": "2026-09-30",
+"value": 5091,
+"contract": "bu2611",
+"final": true
+},
+"2026-10": {
+"date": "2026-10-16",
+"value": 4470,
+"contract": "bu2701",
+"final": false
+}
+},
+"fu": {
+"2023-10": {
+"date": "2023-10-31",
+"value": 3262,
+"contract": "fu2401",
+"final": true
+},
+"2023-11": {
+"date": "2023-11-30",
+"value": 3203,
+"contract": "fu2401",
+"final": true
+},
+"2023-12": {
+"date": "2023-12-29",
+"value": 2962,
+"contract": "fu2403",
+"final": true
+},
+"2024-01": {
+"date": "2024-01-31",
+"value": 3139,
+"contract": "fu2405",
+"final": true
+},
+"2024-02": {
+"date": "2024-02-29",
+"value": 3111,
+"contract": "fu2405",
+"final": true
+},
+"2024-03": {
+"date": "2024-03-29",
+"value": 3389,
+"contract": "fu2409",
+"final": true
+},
+"2024-04": {
+"date": "2024-04-30",
+"value": 3507,
+"contract": "fu2409",
+"final": true
+},
+"2024-05": {
+"date": "2024-05-31",
+"value": 3502,
+"contract": "fu2409",
+"final": true
+},
+"2024-06": {
+"date": "2024-06-28",
+"value": 3559,
+"contract": "fu2409",
+"final": true
+},
+"2024-07": {
+"date": "2024-07-31",
+"value": 3163,
+"contract": "fu2411",
+"final": true
+},
+"2024-08": {
+"date": "2024-08-30",
+"value": 3032,
+"contract": "fu2411",
+"final": true
+},
+"2024-09": {
+"date": "2024-09-30",
+"value": 2726,
+"contract": "fu2501",
+"final": true
+},
+"2024-10": {
+"date": "2024-10-31",
+"value": 2984,
+"contract": "fu2501",
+"final": true
+},
+"2024-11": {
+"date": "2024-11-29",
+"value": 3149,
+"contract": "fu2503",
+"final": true
+},
+"2024-12": {
+"date": "2024-12-31",
+"value": 3302,
+"contract": "fu2503",
+"final": true
+},
+"2025-01": {
+"date": "2025-01-27",
+"value": 3399,
+"contract": "fu2505",
+"final": true
+},
+"2025-02": {
+"date": "2025-02-28",
+"value": 3288,
+"contract": "fu2505",
+"final": true
+},
+"2025-03": {
+"date": "2025-03-31",
+"value": 3143,
+"contract": "fu2507",
+"final": true
+},
+"2025-04": {
+"date": "2025-04-30",
+"value": 2937,
+"contract": "fu2507",
+"final": true
+},
+"2025-05": {
+"date": "2025-05-30",
+"value": 2793,
+"contract": "fu2509",
+"final": true
+},
+"2025-06": {
+"date": "2025-06-30",
+"value": 2990,
+"contract": "fu2509",
+"final": true
+},
+"2025-07": {
+"date": "2025-07-31",
+"value": 2953,
+"contract": "fu2509",
+"final": true
+},
+"2025-08": {
+"date": "2025-08-29",
+"value": 2797,
+"contract": "fu2601",
+"final": true
+},
+"2025-09": {
+"date": "2025-09-30",
+"value": 2870,
+"contract": "fu2601",
+"final": true
+},
+"2025-10": {
+"date": "2025-10-31",
+"value": 2751,
+"contract": "fu2601",
+"final": true
+},
+"2025-11": {
+"date": "2025-11-28",
+"value": 2486,
+"contract": "fu2601",
+"final": true
+},
+"2025-12": {
+"date": "2025-12-31",
+"value": 2456,
+"contract": "fu2603",
+"final": true
+},
+"2026-01": {
+"date": "2026-01-30",
+"value": 2855,
+"contract": "fu2605",
+"final": true
+},
+"2026-02": {
+"date": "2026-02-27",
+"value": 2923,
+"contract": "fu2605",
+"final": true
+},
+"2026-03": {
+"date": "2026-03-31",
+"value": 4504,
+"contract": "fu2605",
+"final": true
+},
+"2026-04": {
+"date": "2026-04-30",
+"value": 4462,
+"contract": "fu2606",
+"final": true
+},
+"2026-05": {
+"date": "2026-05-29",
+"value": 3793,
+"contract": "fu2609",
+"final": true
+},
+"2026-06": {
+"date": "2026-06-30",
+"value": 2969,
+"contract": "fu2609",
+"final": true
+},
+"2026-07": {
+"date": "2026-07-31",
+"value": 3575,
+"contract": "fu2609",
+"final": true
+},
+"2026-08": {
+"date": "2026-08-31",
+"value": 3738,
+"contract": "fu2611",
+"final": true
+},
+"2026-09": {
+"date": "2026-09-30",
+"value": 4376,
+"contract": "fu2611",
+"final": true
+},
+"2026-10": {
+"date": "2026-10-16",
+"value": 4770,
+"contract": "fu2701",
+"final": false
+}
+}
+}
+}

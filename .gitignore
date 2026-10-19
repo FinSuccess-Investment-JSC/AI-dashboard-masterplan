@@ -18,6 +18,8 @@ data/raw/
 data/raw/*
 !data/raw/evn-reservoirs/
 !data/raw/wi/
+# public-source history: CI fetchers run with --recent and merge into these files
+!data/raw/public/
 data/.update.lock
 data/daily.json
 data/.bank-update.lock
