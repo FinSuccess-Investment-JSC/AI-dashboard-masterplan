@@ -4370,6 +4370,33 @@
    ],
    "job": "refresh-data.yml (mỗi lượt refresh)",
    "note": "Tôm: cỡ 50–100 con/kg, khác chuỗi Cà Mau 50 con/kg cũ"
+  },
+  {
+   "id": "port.public.wci",
+   "tier": "A",
+   "title": "Drewry WCI tổng hợp và 4 tuyến Thượng Hải (tuần)",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh; Drewry công bố thứ Năm"
+   },
+   "publication": "Drewry hằng tuần (thứ Năm); trang chỉ giữ tuần mới nhất",
+   "source": {
+    "name": "Drewry World Container Index",
+    "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "file": "data/port-public-data.js",
+    "blocks": [
+     "cg-04"
+    ]
+   },
+   "how": "python3 scripts/fetch_drewry_wci.py → build_sector_public.py (chạy trong refresh-data.yml)",
+   "gates": [
+    "Lưu câu gốc của từng số trong data/raw/public/drewry-wci-weekly.json",
+    "Không nội suy tuần thiếu"
+   ],
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   }
  ]
 }

@@ -375,6 +375,10 @@ def main():
             blocks['macro'] = {'series': ms, 'captured_at': now[:10]}
         verr = {}
         sr = SV.build(sector, vcache, verr)
+        wf = ROOT / 'data/raw/public/drewry-wci-weekly.json'
+        if sector == 'port' and wf.exists():
+            w = json.loads(wf.read_text())
+            blocks['wci'] = {'source': w['source'], 'url': w['url'], 'unit': w['unit'], 'checked': w['checked'], 'weeks': w['weeks']}
         cb = ROOT / 'data/raw/public/cbonds-realestate.json'
         if sector == 'realestate' and cb.exists():
             c = json.loads(cb.read_text())

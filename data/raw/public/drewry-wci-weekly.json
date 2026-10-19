@@ -1,0 +1,34 @@
+{
+"source": "Drewry World Container Index",
+"url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
+"unit": "USD/FEU",
+"checked": "2026-10-19",
+"weeks": {
+"2026-08-20": {
+"composite": 4526
+},
+"2026-10-08": {
+"composite": 4351,
+"new_york": 10220,
+"los_angeles": 7624,
+"genoa": 3696,
+"rotterdam": 3337
+},
+"2026-10-15": {
+"composite": 4485,
+"rotterdam": 3522,
+"genoa": 3945,
+"los_angeles": 7884,
+"new_york": 10075
+}
+},
+"quotes": {
+"2026-10-15": {
+"composite": "World Container Index (WCI), the benchmark widely referenced by procurement teams, rose 3% to $4,485",
+"rotterdam": "Shanghai to Rotterdam increased 6% to $3,522 per 40ft",
+"genoa": "Shanghai to Genoa grew 7% to $3,945 per 40ft",
+"los_angeles": "Shanghai to Los Angeles inched up 3% to $7,884 per 40ft",
+"new_york": "Shanghai to New York fell 1% to $10,075 per 40ft"
+}
+}
+}

@@ -70,6 +70,7 @@ jobs:
           python scripts/fetch_sxd_hanoi.py || true
           python scripts/fetch_vfa_rice.py || true
           python scripts/fetch_vasep_prices.py || true
+          python scripts/fetch_drewry_wci.py || true
           python scripts/build_sector_public.py
           python scripts/fetch_public_fs.py && python scripts/build_company_quarterly.py
       - name: Validate generated data
