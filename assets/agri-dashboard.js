@@ -106,12 +106,13 @@ if(ro.length&&document.getElementById('chWorld')){
  sourceLine('chWorld',[SRC.ice],short(ro.at(-1).date),'Robusta: IMF Primary Commodity Prices (FRED PCOFFROBUSDM), bình quân tháng, quy từ US cent/lb sang USD/tấn (×22,0462). Cao su: IMF PRUBBUSDM (giá Singapore/Malaysia, gần TSR20), quy sang US cent/kg (×2,20462).');
  insight('chWorld','Robusta '+nf(ro.at(-1).value,0)+' USD/tấn ('+mon(ro.at(-1).date)+', '+signed(yoyAt(ro,ro.at(-1)),1)+'% so cùng kỳ)'+(ts.length?'; cao su '+nf(ts.at(-1).value,1)+' US cent/kg ('+signed(yoyAt(ts,ts.at(-1)),1)+'%)':'')+'.');
 }
-const r5=S('rice5');
+const S_url=k=>(B.macro?.series?.[k]||B.commodity?.series?.[k])?.url,r5=S('rice5');
 if(r5.length&&document.getElementById('chRice')){
  lines('chRice',r5,[['Gạo 5% tấm',C.gold,r=>r.value]],'nghìn đ/kg',2,false);
  fillTable('tbl-rice',['Kỳ','Nghìn đ/kg','So cùng kỳ'],r5.slice().reverse().map(r=>[short(r.date),nf(r.value,3),signed(yoyAt(r5,r),1)+'%']));
- sourceLine('chRice',[SRC.wi],short(r5.at(-1).date),'Gạo thành phẩm 5% tấm, giá nội địa tại ĐBSCL.');
- insight('chRice','Giá gạo nội địa giảm ~40% từ cuối 2023 rồi hồi lại từ 4/2026. Đây là giá nhà XK (LTG, PAN) mua vào; giá nội địa tăng nhanh hơn giá XK sẽ ép biên xuất khẩu.');
+ sourceLine('chRice',[['Hiệp hội Lương thực Việt Nam (VFA) · giá lúa gạo nội địa',S_url('rice5')||'https://vietfood.org.vn/gia-lua-gao-noi-dia/']],short(r5.at(-1).date),'Gạo thành phẩm xuất khẩu 5% tấm, không bao, tại mạn; giá bình quân các tỉnh ĐBSCL theo tuần. Lịch sử từ 2024 (VFA thiếu bài 2023).');
+ {const y=r5.filter(r=>r.date>=r5.at(-1).date.slice(0,4)-1+r5.at(-1).date.slice(4)),lo=y.reduce((a,r)=>r.value<a.value?r:a),hi=y.reduce((a,r)=>r.value>a.value?r:a),L=r5.at(-1);
+ insight('chRice','12 tháng qua: đáy '+nf(lo.value,1)+' ('+mon(lo.date)+'), đỉnh '+nf(hi.value,1)+' ('+mon(hi.date)+'), nay '+nf(L.value,1)+' nghìn đ/kg. Đây là giá nhà XK (LTG, PAN) mua vào; giá nội địa tăng nhanh hơn giá XK sẽ ép biên xuất khẩu.')}
 }
 // Chăn nuôi
 const hog=S('hog');

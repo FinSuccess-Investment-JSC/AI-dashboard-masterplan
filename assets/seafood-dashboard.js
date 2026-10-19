@@ -14,7 +14,7 @@ const signed=(v,d=1)=>v==null||!Number.isFinite(v)?'—':(v>0?'+':'')+nf(v,d);
 const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b7686',green:'#27af95',red:'#d1583f'};
 const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
 const checked=B.macro?.captured_at||W.built_at||'';
-const SRC={ice:['IMF Primary Commodity Prices (FRED)','https://fred.stlouisfed.org/'],customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],wi:['Nguồn công khai',null]};
+const SRC={vasep:['VASEP · giá nguyên liệu thủy sản Đồng Tháp','https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc'],ice:['IMF Primary Commodity Prices (FRED)','https://fred.stlouisfed.org/'],customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],wi:['Nguồn công khai',null]};
 for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 const S=k=>macro[k]?.records||com[k]?.records||[];
 const ym=d=>d.slice(0,7);
@@ -105,7 +105,7 @@ if(pa.length&&document.getElementById('chPang')){
  barLineChart('chPang',{categories:pa.map(r=>mon(r.date)),series:[{name:'Cá tra thịt trắng',color:C.navy,kind:'line',values:pa.map(r=>r.value)},{name:'Cá tra giống',color:C.gold,kind:'line',values:pa.map(r=>fm[ym(r.date)]?.value??null)}],unit:'nghìn đ/kg',digits:1,height:260,zeroBase:true,rotateLabels:true});
  legend('chPang',[['Cá nguyên liệu',C.navy],['Cá giống',C.gold]]);
  fillTable('tbl-pang',['Kỳ','Cá nguyên liệu','So cùng kỳ','Cá giống'],pa.slice().reverse().map(r=>[short(r.date),nf(r.value,1),signed(yoyAt(pa,r),1)+'%',nf(fm[ym(r.date)]?.value,0)]));
- sourceLine('chPang',[SRC.wi],short(pa.at(-1).date),'Cá tra thịt trắng nguyên liệu và cá tra giống, ĐBSCL. Hai mắt xích khác nhau, không thay thế nhau.');
+ sourceLine('chPang',[SRC.vasep],short(pa.at(-1).date),'VASEP, giá tại Đồng Tháp theo tuần, điểm giữa khoảng giá: cá tra thịt trắng 0,7–1 kg/con và cá tra giống. Hai mắt xích khác nhau, không thay thế nhau.');
  insight('chPang','Cá nguyên liệu đi trong vùng 25–33 nghìn đ/kg từ 2023, trên giá thành nuôi 24–26 nghìn đ/kg (DN Hội nhập): hộ nuôi có lãi nên cung ổn định. Cá giống biến động mạnh theo mùa (cao đầu năm, thấp giữa năm); giá giống cao đầu 2026 báo hiệu thả nuôi nhiều, có thể làm cá nguyên liệu dồi dào hơn cuối năm.');
 }
 if(document.getElementById('chVasep')){
@@ -125,10 +125,10 @@ if(sm.length&&document.getElementById('chFeed')){
 }
 const sh=S('shrimp50');
 if(sh.length&&document.getElementById('chShrimp')){
- barLineChart('chShrimp',{categories:sh.map(r=>mon(r.date)),series:[{name:'Tôm thẻ 50 con/kg',color:C.plum,kind:'line',values:sh.map(r=>r.value)}],unit:'nghìn đ/kg',digits:1,height:260,zeroBase:false,rotateLabels:true});
+ barLineChart('chShrimp',{categories:sh.map(r=>mon(r.date)),series:[{name:'Tôm chân trắng',color:C.plum,kind:'line',values:sh.map(r=>r.value)}],unit:'nghìn đ/kg',digits:1,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-shrimp',['Kỳ','Nghìn đ/kg','So cùng kỳ'],sh.slice().reverse().map(r=>[short(r.date),nf(r.value,1),signed(yoyAt(sh,r),1)+'%']));
- sourceLine('chShrimp',[SRC.wi],short(sh.at(-1).date),'Tôm thẻ chân trắng cỡ 50 con/kg tại Cà Mau. Không dùng chuỗi tôm không phân cỡ vì đứng yên nhiều tháng.');
- insight('chShrimp','Giá tôm nguyên liệu giảm từ đỉnh 146 nghìn đ/kg (12/2025) về ~108 nghìn: đầu vào rẻ hơn cho FMC, MPC, trong khi giá bán XK không giảm tương ứng — giải thích lợi nhuận 6T của FMC +81,5%, MPC +127,5% dù doanh thu FMC giảm.');
+ sourceLine('chShrimp',[SRC.vasep],short(sh.at(-1).date),'VASEP, tôm chân trắng tại Đồng Tháp, cỡ '+((B.macro?.series?.shrimp50||B.commodity?.series?.shrimp50)?.size||'50–100 con/kg')+', điểm giữa khoảng giá theo tuần. Khoảng cỡ rộng nên giá ít nhạy; dùng để xem xu hướng, không so trực tiếp với giá Cà Mau 50 con/kg.');
+ {const L=sh.at(-1),flat=sh.filter(r=>r.value===L.value);insight('chShrimp','Giá VASEP tại Đồng Tháp đứng ở '+nf(L.value,1)+' nghìn đ/kg từ '+mon(flat[0].date)+': khoảng giá công bố rộng nên chuỗi ít nhạy, chỉ báo khi giá đổi bậc. Biên của FMC, MPC phụ thuộc chênh lệch giá tôm nguyên liệu với giá bán XK; cần đối chiếu với giá Cà Mau theo cỡ khi có nguồn.')}
 }
 if(document.getElementById('chMkt2')){
  const cats=['Trung Quốc (+HK với tôm)','Mỹ','EU'];

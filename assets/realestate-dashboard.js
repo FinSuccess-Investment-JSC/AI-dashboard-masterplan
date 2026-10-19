@@ -119,7 +119,7 @@ if(S('refi_rate').length&&document.getElementById('chRefiRate')){
  const rs=S('refi_rate'),byM={};rs.forEach(r=>{byM[r.date.slice(0,7)]=r});const ms=Object.keys(byM).sort().map(k=>byM[k]);
  barLineChart('chRefiRate',{categories:ms.map(r=>mon(r.date)),series:[{name:'Lãi suất tái cấp vốn',color:C.navy,kind:'line',values:ms.map(r=>r.value)}],unit:'%/năm',digits:2,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-refi',['Tháng','%/năm'],ms.slice().reverse().map(r=>[mon(r.date),nf(r.value,2)]));
- sourceLine('chRefiRate',[SRC.sbv],short(rs.at(-1).date),'Lãi suất tái cấp vốn, giá trị cuối mỗi tháng từ 2016 (Nguồn giới hạn lookback 10 năm). Chưa có chuỗi lãi suất cho vay mua nhà công bố đều; xem thẻ tín dụng để biết chênh tín dụng – tiền gửi.');
+ sourceLine('chRefiRate',[['NHNN · lãi suất điều hành','https://sbv.gov.vn/vi/l%C3%A3i-su%E1%BA%A5t1']],short(rs.at(-1).date),'Mức đang áp dụng theo QĐ 1123/QĐ-NHNN ngày 16/06/2023, tính từ tháng ban hành (trang NHNN ghi ngày áp dụng 19/03/2023, sớm hơn ngày quyết định). Trang chỉ công bố mức hiện hành; các lần điều chỉnh trước 06/2023 chưa đưa vào. Script kiểm trang mỗi lượt job, ghi nhận ngay khi NHNN đổi mức.');
  insight('chRefiRate','Lãi suất điều hành đứng yên từ giữa 2023 nên biến số thật của người mua nhà là lãi suất thả nổi sau ưu đãi của từng ngân hàng, đi theo lãi suất huy động 12 tháng. Chính sách tiền tệ nới nhưng chi phí vay mua nhà có thể vẫn tăng khi tín dụng chạy nhanh hơn tiền gửi.');
 }
 // Supply-demand proxies (Nhà ở)

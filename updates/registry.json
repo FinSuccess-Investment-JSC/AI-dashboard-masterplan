@@ -4320,6 +4320,56 @@
     "Số khớp chart",
     "Không đụng ô analyst"
    ]
+  },
+  {
+   "id": "agri.public.rice",
+   "tier": "A",
+   "title": "giá gạo thành phẩm XK 5% tấm, bình quân ĐBSCL (tuần)",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh; VFA đăng thứ Năm"
+   },
+   "publication": "VFA hằng tuần (thứ Năm)",
+   "source": {
+    "name": "Hiệp hội Lương thực Việt Nam (VFA)",
+    "url": "https://vietfood.org.vn/gia-lua-gao-noi-dia/"
+   },
+   "where": {
+    "page": "Nong-nghiep/index.html",
+    "file": "data/agri-public-data.js"
+   },
+   "how": "python3 scripts/fetch_vfa_rice.py → build_sector_public.py (chạy trong refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "refresh-data.yml (mỗi lượt refresh)",
+   "note": "VFA thiếu bài năm 2023; lịch sử chủ yếu từ 2024"
+  },
+  {
+   "id": "seafood.public.farmgate",
+   "tier": "A",
+   "title": "giá cá tra thịt trắng, cá tra giống, tôm chân trắng tại Đồng Tháp (tuần)",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh; VASEP đăng cuối tuần"
+   },
+   "publication": "VASEP hằng tuần",
+   "source": {
+    "name": "VASEP · giá nguyên liệu thủy sản Đồng Tháp",
+    "url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "file": "data/seafood-public-data.js"
+   },
+   "how": "python3 scripts/fetch_vasep_prices.py → build_sector_public.py (chạy trong refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Điểm giữa khoảng giá; lưu cỡ và khoảng gốc"
+   ],
+   "job": "refresh-data.yml (mỗi lượt refresh)",
+   "note": "Tôm: cỡ 50–100 con/kg, khác chuỗi Cà Mau 50 con/kg cũ"
   }
  ]
 }

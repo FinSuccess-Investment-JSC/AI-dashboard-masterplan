@@ -19,7 +19,7 @@ OUT = ROOT / 'data/raw/public/sbv-monthly.json'
 UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36'
 ART = 'https://sbv.gov.vn/o/article/v1.0/articles?scopeKey=20117&contentStructureId={sid}&pageSize=200'
 FX = 'https://sbv.gov.vn/o/headless-delivery/v1.0/content-structures/137473/structured-contents'
-PAGES = {'credit': 'https://sbv.gov.vn/vi/du-no-tin-dung-doi-voi-nen-kt-dttktt', 'money': 'https://sbv.gov.vn/vi/tong-phuong-tien-thanh-toan',
+PAGES = {'refi': 'https://sbv.gov.vn/vi/l%C3%A3i-su%E1%BA%A5t1', 'credit': 'https://sbv.gov.vn/vi/du-no-tin-dung-doi-voi-nen-kt-dttktt', 'money': 'https://sbv.gov.vn/vi/tong-phuong-tien-thanh-toan',
          'fx': 'https://sbv.gov.vn/vi/t%E1%BB%B7-gi%C3%A1-trung-t%C3%A2m'}
 CREDIT = {'credit_total': 'soDuTongCong', 'credit_construction': 'soDuXayDung', 'credit_industry': 'soDuCongNghiep'}
 MONEY = {'m2': 'soDuTongPhuongTienThanhToan', 'deposits_firms': 'soDuTienGuiCuaCacTCKT', 'household_deposits': 'soDuTienGuiCuaDanCu'}
@@ -89,6 +89,40 @@ def central_rate(old, since='2023-01-01'):
         page += 1
 
 
+RATES = 'https://sbv.gov.vn/vi/l%C3%A3i-su%E1%BA%A5t1'
+
+
+def policy_rates(old):
+    """Refinancing rate from the SBV interest-rate page, which shows only the rate in force with its decision.
+    Monthly records run from the decision month to now; earlier decisions are not on the page and stay empty.
+    The page's "Ngày áp dụng" for decision 1123 (16/06/2023) reads 19/03/2023, before the decision, so the
+    decision date is used."""
+    import html as H
+    for i in range(3):
+        time.sleep(12 if i == 0 else 60 * i)
+        try:
+            page = subprocess.run(['curl', '-sfL', '-m', '90', '-A', UA, RATES], check=True, capture_output=True, text=True).stdout
+            break
+        except subprocess.CalledProcessError:
+            if i == 2:
+                raise
+    for row in re.findall(r'<tr>(.*?)</tr>', page, re.S):
+        c = [H.unescape(re.sub('<[^>]+>', '', x)).strip() for x in re.findall(r'<td[^>]*>(.*?)</td>', row, re.S)]
+        if len(c) == 4 and c[0] == 'Lãi suất tái cấp vốn':
+            rate = float(c[1].rstrip('%').replace(',', '.'))
+            m = re.search(r'ngày (\d\d)/(\d\d)/(\d{4})', c[2])
+            if not m or not 0 < rate < 20:
+                raise ValueError(f'refi row unreadable: {c}')
+            start, out = f'{m.group(3)}-{m.group(2)}', dict(old)
+            d = dt.date.fromisoformat(start + '-01')
+            while d.isoformat()[:7] <= dt.date.today().isoformat()[:7]:
+                out.setdefault(d.isoformat()[:7], rate)  # never rewrite a month already recorded
+                d = (d + dt.timedelta(days=32)).replace(day=1)
+            out[dt.date.today().isoformat()[:7]] = rate
+            return out, {'rate': rate, 'decision': c[2], 'page_effective': c[3]}
+    raise ValueError('refi row missing')
+
+
 def main():
     import sys
     fx_only = '--fx-only' in sys.argv
@@ -103,6 +137,11 @@ def main():
     if S.get('deposits_firms') and S.get('household_deposits'):
         S['deposits_total'] = {m: S['deposits_firms'][m] + S['household_deposits'][m] for m in S['household_deposits'] if m in S['deposits_firms']}
     try:
+        S['refi_rate'], refi_doc = policy_rates(S.get('refi_rate', {}))
+    except Exception as e:
+        print('refi', e)
+        refi_doc = old.get('refi_decision')
+    try:
         daily = central_rate(old.get('central_rate_daily', {}))
     except Exception as e:
         print('fx', e)
@@ -114,7 +153,7 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({'source': 'Ngân hàng Nhà nước (sbv.gov.vn) · số liệu thống kê', 'pages': PAGES,
                                'series': {k: dict(sorted(v.items())) for k, v in S.items()},
-                               'central_rate_daily': dict(sorted(daily.items()))}, ensure_ascii=False, indent=0) + '\n')
+                               'central_rate_daily': dict(sorted(daily.items())), 'refi_decision': refi_doc}, ensure_ascii=False, indent=0) + '\n')
     print({k: (len(v), max(v) if v else None) for k, v in S.items()})
 
 

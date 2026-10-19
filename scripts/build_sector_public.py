@@ -6,7 +6,7 @@ daily public feeds already kept in data/daily-data.js (EIA Brent, ICE sugar No.1
 Macro (NSO/customs/SBV) and sector valuation aggregates have no public replacement yet: those blocks are absent
 and the pages show '—'. Unit conversions are stated per series.
 """
-import csv, datetime as dt, io, json, ssl, sys, time, urllib.request
+import csv, datetime as dt, io, json, re, ssl, sys, time, urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -190,10 +190,10 @@ def market_series(sector):
 
 
 SBV_FILE = ROOT / 'data/raw/public/sbv-monthly.json'
-SBV_NAMES = {'credit_total': ('Tổng dư nợ tín dụng nền kinh tế', 'tỷ VND'), 'credit_construction': ('Dư nợ tín dụng ngành xây dựng', 'tỷ VND'),
+SBV_NAMES = {'refi_rate': ('Lãi suất tái cấp vốn', '%/năm'), 'credit_total': ('Tổng dư nợ tín dụng nền kinh tế', 'tỷ VND'), 'credit_construction': ('Dư nợ tín dụng ngành xây dựng', 'tỷ VND'),
              'household_deposits': ('Tiền gửi của dân cư', 'tỷ VND'), 'deposits_total': ('Tiền gửi của TCKT và dân cư', 'tỷ VND'),
              'usdvnd': ('Tỷ giá trung tâm USD/VND (bình quân tháng)', 'VND')}
-SBV = {'retail': ['household_deposits', 'credit_total'], 'realestate': ['credit_construction', 'credit_total', 'deposits_total'],
+SBV = {'retail': ['household_deposits', 'credit_total'], 'realestate': ['credit_construction', 'credit_total', 'deposits_total', 'refi_rate'],
        'construction': ['credit_construction'], 'insurance': ['household_deposits'], 'pharma': ['usdvnd']}
 
 
@@ -250,6 +250,42 @@ def sxd_series(sector):
                 'records': [{'date': q0(q), 'period': q, 'value': r['value'], 'n': r['n'], 'min': r['min'], 'max': r['max']}
                             for q, r in sorted(d['series'][p].items())]}
             for k, p in SXD[sector].items() if d['series'].get(p)}
+
+
+VFA_FILE = ROOT / 'data/raw/public/vfa-rice-weekly.json'
+VASEP_FILE = ROOT / 'data/raw/public/vasep-dongthap-weekly.json'
+VASEP = {'pangasius': ('pangasius', 'Cá tra thịt trắng nguyên liệu, Đồng Tháp'), 'pangasius_fry': ('pangasius_fry', 'Cá tra giống, Đồng Tháp'),
+         'shrimp50': ('shrimp', 'Tôm chân trắng, Đồng Tháp')}
+
+
+def month_last(pairs, since='2019-01'):
+    last = {}
+    for d, v in sorted(pairs):
+        if d[:7] >= since:
+            last[d[:7]] = {'date': d, 'value': v}
+    return list(last.values())
+
+
+def farm_series(sector):
+    """Domestic prices from weekly posts, kept as the last week of each month: VFA 5% rice (agri), VASEP Đồng Tháp
+    pangasius and shrimp (seafood); thousand VND/kg."""
+    out = {}
+    if sector == 'agri' and VFA_FILE.exists():
+        d = json.loads(VFA_FILE.read_text())
+        out['rice5'] = {'name': 'Gạo thành phẩm XK 5% tấm, bình quân ĐBSCL', 'unit': 'nghìn VND/kg', 'time_type': 'monthly',
+                        'source': d['source'], 'url': d['url'], 'definition': d['definition'],
+                        'records': month_last((k, round(r['value'] / 1000, 3)) for k, r in d['records'].items())}
+    if sector == 'seafood' and VASEP_FILE.exists():
+        d = json.loads(VASEP_FILE.read_text())
+        for key, (src, name) in VASEP.items():
+            rs = d['series'].get(src, {})
+            if src == 'shrimp' and rs:  # VASEP moved from "100 con/kg" to "50 - 100 con/kg": keep the latest size band only
+                band = re.sub(r'\s', '', rs[max(rs)]['size'])
+                rs = {k: r for k, r in rs.items() if re.sub(r'\s', '', r['size']) == band}
+            if rs:
+                out[key] = {'name': name, 'unit': 'nghìn VND/kg', 'time_type': 'monthly', 'source': d['source'], 'url': d['url'],
+                            'size': rs[max(rs)]['size'], 'records': month_last((k, r['value']) for k, r in rs.items())}
+    return out
 
 
 def shfe_series(sector):
@@ -332,7 +368,7 @@ def main():
         ms.update(fia_series(sector))
         if sector == 'textile':
             ms.update(us_apparel())
-        sh = {**shfe_series(sector), **market_series(sector), **sxd_series(sector)}
+        sh = {**shfe_series(sector), **market_series(sector), **sxd_series(sector), **farm_series(sector)}
         if sh:
             blocks.setdefault('commodity', {'series': {}, 'captured_at': now[:10]})['series'].update(sh)
         if ms:

@@ -1,6 +1,7 @@
 {
 "source": "Ngân hàng Nhà nước (sbv.gov.vn) · số liệu thống kê",
 "pages": {
+"refi": "https://sbv.gov.vn/vi/l%C3%A3i-su%E1%BA%A5t1",
 "credit": "https://sbv.gov.vn/vi/du-no-tin-dung-doi-voi-nen-kt-dttktt",
 "money": "https://sbv.gov.vn/vi/tong-phuong-tien-thanh-toan",
 "fx": "https://sbv.gov.vn/vi/t%E1%BB%B7-gi%C3%A1-trung-t%C3%A2m"
@@ -563,5 +564,6 @@
 "2026-10-16": 25637.0,
 "2026-10-17": 25637.0,
 "2026-10-19": 25633.0
-}
+},
+"refi_decision": null
 }
