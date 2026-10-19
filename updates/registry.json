@@ -2751,8 +2751,7 @@
     "Chỉ nguồn công khai gốc; không dùng số Wi",
     "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "job": "refresh-data.yml (mỗi lượt refresh)",
-   "note": "Còn trống: Mới có XK thủy sản tổng; theo nước hiện là XK tổng sang Mỹ/TQ/Nhật/Hàn, chưa tách thủy sản (báo cáo 5X)"
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "seafood.public.weekly",
@@ -4155,8 +4154,7 @@
     "Chỉ nguồn công khai gốc; không dùng số Wi",
     "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "job": "refresh-data.yml (mỗi lượt refresh)",
-   "note": "Còn trống: Tỷ giá trung tâm NHNN đang lỗi (firewall)"
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "pharma.public.valuation",
