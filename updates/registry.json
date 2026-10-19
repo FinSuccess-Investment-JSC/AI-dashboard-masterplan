@@ -1666,7 +1666,7 @@
   },
   {
    "id": "realestate.public.daily",
-   "tier": "C",
+   "tier": "A",
    "title": "TPDN BĐS (phát hành, dư nợ, chậm trả), vĩ mô (FDI, GDP, CPI nhà ở, tín dụng, lãi suất), định giá 4 phân ngành",
    "schedule": {
     "type": "daily",
@@ -1675,8 +1675,8 @@
    },
    "publication": "HNX theo CBTT; NSO ngày 6; NHNN trễ 1–3 tháng; định giá theo phiên",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "HNX TPDN, Cục Thống kê, NHNN, Cục ĐTNN, VNDirect",
+    "url": "https://cbonds.hnx.vn/"
    },
    "where": {
     "page": "Bat-dong-san/index.html",
@@ -1700,17 +1700,16 @@
      "bds-05d"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_cbonds.py && python3 scripts/fetch_nso.py && python3 scripts/fetch_sbv.py && python3 scripts/fetch_fia.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "realestate.public.weekly",
-   "tier": "C",
+   "tier": "A",
    "title": "lịch đáo hạn TPDN BĐS 2026–2027, giá thép, xi măng",
    "schedule": {
     "type": "weekly",
@@ -1719,8 +1718,8 @@
    },
    "publication": "Lịch đáo hạn tính lại mỗi lần nguồn công khai cập nhật; giá VLXD theo đợt",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "HNX TPDN (lịch đáo hạn), SHFE",
+    "url": "https://cbonds.hnx.vn/"
    },
    "where": {
     "page": "Bat-dong-san/index.html",
@@ -1732,13 +1731,13 @@
      "bds-32"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_cbonds.py && python3 scripts/fetch_shfe.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)",
+   "note": "Còn trống: Giá xi măng nội địa chưa có nguồn công khai"
   },
   {
    "id": "realestate.market-quarterly",
@@ -1996,7 +1995,7 @@
   },
   {
    "id": "textile.public.daily",
-   "tier": "C",
+   "tier": "A",
    "title": "xuất nhập khẩu dệt may theo tháng và thị trường, sản lượng, IIP, bán lẻ quần áo Mỹ, định giá hai phân ngành",
    "schedule": {
     "type": "daily",
@@ -2005,8 +2004,8 @@
    },
    "publication": "Hải quan, NSO đầu tháng; US Census giữa tháng; định giá theo phiên",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "Cục Hải quan, Cục Thống kê, US Census (FRED), VNDirect",
+    "url": "https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294"
    },
    "where": {
     "page": "Det-may/index.html",
@@ -2023,13 +2022,12 @@
      "dm-27"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_customs.py && python3 scripts/fetch_nso.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "textile.public.weekly",
@@ -2235,7 +2233,7 @@
   },
   {
    "id": "port.public.monthly",
-   "tier": "C",
+   "tier": "A",
    "title": "XNK, vận chuyển hàng hóa đường biển, hàng không, thủy nội địa",
    "schedule": {
     "type": "monthly",
@@ -2247,8 +2245,8 @@
    },
    "publication": "NSO (vận chuyển, chỉ số giá) ngày 3–6; Hải quan XNK sơ bộ đầu tháng, chính thức giữa tháng",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "Cục Thống kê (NSO), Cục Hải quan",
+    "url": "https://www.nso.gov.vn/bao-cao-tinh-hinh-kinh-te-xa-hoi-hang-thang/"
    },
    "where": {
     "page": "Cang-bien/index.html",
@@ -2261,17 +2259,16 @@
      "cg-18"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_nso.py && python3 scripts/fetch_customs.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "port.public.weekly",
-   "tier": "C",
+   "tier": "A",
    "title": "Baltic Dry Index",
    "schedule": {
     "type": "weekly",
@@ -2280,8 +2277,8 @@
    },
    "publication": "Giá ngày; hiển thị cuối tháng",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "Baltic Dry Index qua CNBC (không chính thức)",
+    "url": "https://www.cnbc.com/quotes/.BADI"
    },
    "where": {
     "page": "Cang-bien/index.html",
@@ -2290,13 +2287,13 @@
      "cg-15"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_markets.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)",
+   "note": "Còn trống: Endpoint CNBC không chính thức, có thể hỏng"
   },
   {
    "id": "port.freight",
@@ -2495,7 +2492,7 @@
   },
   {
    "id": "agri.public.monthly",
-   "tier": "C",
+   "tier": "A",
    "title": "XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa",
    "schedule": {
     "type": "monthly",
@@ -2507,8 +2504,8 @@
    },
    "publication": "NSO (bán lẻ, CPI, IIP, sản lượng) ngày 3–6; Hải quan XNK theo mặt hàng đầu–giữa tháng",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "Cục Hải quan, Cục Thống kê",
+    "url": "https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294"
    },
    "where": {
     "page": "Nong-nghiep/index.html",
@@ -2524,13 +2521,12 @@
      "nn-33"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_customs.py && python3 scripts/fetch_nso.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "agri.public.weekly",
@@ -2727,7 +2723,7 @@
   },
   {
    "id": "seafood.public.monthly",
-   "tier": "C",
+   "tier": "A",
    "title": "XK thủy sản tổng và theo Mỹ, Trung Quốc, Nhật, Hàn",
    "schedule": {
     "type": "monthly",
@@ -2739,8 +2735,8 @@
    },
    "publication": "Hải quan: tổng thủy sản đầu tháng; theo nước (bảng 87) cuối tháng sau (vd T8 có ngày 30/09)",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "Cục Hải quan",
+    "url": "https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294"
    },
    "where": {
     "page": "Thuy-san/index.html",
@@ -2750,13 +2746,13 @@
      "ts-14"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_customs.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)",
+   "note": "Còn trống: Mới có XK thủy sản tổng; theo nước hiện là XK tổng sang Mỹ/TQ/Nhật/Hàn, chưa tách thủy sản (báo cáo 5X)"
   },
   {
    "id": "seafood.public.weekly",
@@ -2927,7 +2923,7 @@
   },
   {
    "id": "port.public.valuation",
-   "tier": "C",
+   "tier": "A",
    "title": "định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
    "schedule": {
     "type": "daily",
@@ -2936,8 +2932,8 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
    },
    "where": {
     "page": "Cang-bien/index.html",
@@ -2946,17 +2942,16 @@
      "cg-13"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/build_sector_public.py (gọi sector_valuation_public; chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "agri.public.valuation",
-   "tier": "C",
+   "tier": "A",
    "title": "định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
    "schedule": {
     "type": "daily",
@@ -2965,8 +2960,8 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
    },
    "where": {
     "page": "Nong-nghiep/index.html",
@@ -2975,17 +2970,16 @@
      "nn-03"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/build_sector_public.py (gọi sector_valuation_public; chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "seafood.public.valuation",
-   "tier": "C",
+   "tier": "A",
    "title": "định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
    "schedule": {
     "type": "daily",
@@ -2994,8 +2988,8 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
    },
    "where": {
     "page": "Thuy-san/index.html",
@@ -3004,17 +2998,16 @@
      "ts-03"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/build_sector_public.py (gọi sector_valuation_public; chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "shipping.public.daily",
-   "tier": "C",
+   "tier": "A",
    "title": "BDTI, BCTI, BDI; vận chuyển đường biển, chỉ số giá vận tải, XNK",
    "schedule": {
     "type": "daily",
@@ -3023,8 +3016,8 @@
    },
    "publication": "Baltic theo phiên; NSO tháng ngày 3; chỉ số giá vận tải theo quý",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "BDI qua CNBC, Cục Thống kê, Cục Hải quan",
+    "url": "https://www.cnbc.com/quotes/.BADI"
    },
    "where": {
     "page": "Van-tai-bien/index.html",
@@ -3037,13 +3030,13 @@
      "vt-30"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_markets.py && python3 scripts/fetch_nso.py && python3 scripts/fetch_customs.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)",
+   "note": "Còn trống: BDTI, BCTI chưa có nguồn công khai"
   },
   {
    "id": "shipping.public.weekly",
@@ -3075,7 +3068,7 @@
   },
   {
    "id": "shipping.public.valuation",
-   "tier": "C",
+   "tier": "A",
    "title": "định giá phân ngành vận tải đường thủy, cảng (P/E, P/B, vốn hóa) theo phiên",
    "schedule": {
     "type": "daily",
@@ -3084,8 +3077,8 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
    },
    "where": {
     "page": "Van-tai-bien/index.html",
@@ -3094,13 +3087,12 @@
      "vt-03"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/build_sector_public.py (gọi sector_valuation_public; chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "shipping.outlook",
@@ -3267,7 +3259,7 @@
   },
   {
    "id": "construction.public.monthly",
-   "tier": "C",
+   "tier": "A",
    "title": "vốn NSNN thực hiện, sản lượng thép, xi măng, IIP, XK thép, clinker, tín dụng, GDP xây dựng",
    "schedule": {
     "type": "monthly",
@@ -3279,8 +3271,8 @@
    },
    "publication": "NSO ngày 3 hằng tháng (vốn NSNN, sản lượng); XK theo Hải quan; tín dụng NHNN chậm 1–2 tháng; GDP theo quý",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "Cục Thống kê (NSO), Cục Hải quan, NHNN",
+    "url": "https://www.nso.gov.vn/bao-cao-tinh-hinh-kinh-te-xa-hoi-hang-thang/"
    },
    "where": {
     "page": "Xay-dung/index.html",
@@ -3296,17 +3288,16 @@
      "xd-41"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_nso.py && python3 scripts/fetch_customs.py && python3 scripts/fetch_sbv.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "construction.public.weekly",
-   "tier": "C",
+   "tier": "A",
    "title": "thép CB300 Hòa Phát, HRC, quặng, than cốc, than Newcastle, thép phế, nhựa đường; xi măng, đá (Sở XD)",
    "schedule": {
     "type": "weekly",
@@ -3315,8 +3306,8 @@
    },
    "publication": "Giá ngày, hiển thị cuối tháng; xi măng, đá giá tháng",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "SHFE, IMF (FRED), Sina",
+    "url": "https://www.shfe.com.cn/"
    },
    "where": {
     "page": "Xay-dung/index.html",
@@ -3326,17 +3317,17 @@
      "xd-22"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_shfe.py && python3 scripts/fetch_markets.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)",
+   "note": "Còn trống: Thép CB300 Hòa Phát, thép phế, xi măng, đá (Sở XD) chưa có nguồn"
   },
   {
    "id": "construction.public.valuation",
-   "tier": "C",
+   "tier": "A",
    "title": "định giá phân ngành thép, xi măng, đá, xây dựng (P/E, P/B, vốn hóa) theo phiên",
    "schedule": {
     "type": "daily",
@@ -3345,8 +3336,8 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
    },
    "where": {
     "page": "Xay-dung/index.html",
@@ -3355,13 +3346,12 @@
      "xd-03"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/build_sector_public.py (gọi sector_valuation_public; chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "construction.disbursement",
@@ -3532,7 +3522,7 @@
   },
   {
    "id": "insurance.public.quarterly",
-   "tier": "C",
+   "tier": "A",
    "title": "phí, bồi thường, lãi tài chính tổng hợp ngành bảo hiểm niêm yết",
    "schedule": {
     "type": "monthly",
@@ -3544,8 +3534,8 @@
    },
    "publication": "Sau mùa BCTC quý (20–30 tháng đầu quý sau; BCTC soát xét bán niên tháng 8)",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
    },
    "where": {
     "page": "Bao-hiem/index.html",
@@ -3558,17 +3548,16 @@
      "bh-31"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_public_fs.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "insurance.public.monthly",
-   "tier": "C",
+   "tier": "A",
    "title": "lãi suất huy động 12 tháng, sản lượng ô tô, xe máy, huy động dân cư",
    "schedule": {
     "type": "monthly",
@@ -3580,8 +3569,8 @@
    },
    "publication": "NSO ngày 3 hằng tháng; lãi suất theo tháng",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "Cục Thống kê, NHNN, Vietcombank",
+    "url": "https://www.nso.gov.vn/bao-cao-tinh-hinh-kinh-te-xa-hoi-hang-thang/"
    },
    "where": {
     "page": "Bao-hiem/index.html",
@@ -3590,17 +3579,16 @@
      "bh-14"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_nso.py && python3 scripts/fetch_sbv.py && python3 scripts/fetch_hnx_yield.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "insurance.public.weekly",
-   "tier": "C",
+   "tier": "A",
    "title": "lợi suất TPCP 10 năm",
    "schedule": {
     "type": "weekly",
@@ -3609,8 +3597,8 @@
    },
    "publication": "Theo ngày",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "HNX đường cong lợi suất",
+    "url": "https://hnx.vn/vi-vn/trai-phieu/duong-cong-loi-suat.html"
    },
    "where": {
     "page": "Bao-hiem/index.html",
@@ -3619,17 +3607,16 @@
      "bh-30"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_hnx_yield.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "insurance.public.valuation",
-   "tier": "C",
+   "tier": "A",
    "title": "định giá phân ngành bảo hiểm (P/E, P/B, vốn hóa) theo phiên",
    "schedule": {
     "type": "daily",
@@ -3638,8 +3625,8 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
    },
    "where": {
     "page": "Bao-hiem/index.html",
@@ -3648,13 +3635,12 @@
      "bh-03"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/build_sector_public.py (gọi sector_valuation_public; chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "insurance.market",
@@ -3796,7 +3782,7 @@
   },
   {
    "id": "retail.public.monthly",
-   "tier": "C",
+   "tier": "A",
    "title": "tổng mức bán lẻ, CPI, khách quốc tế, tiền gửi, tín dụng, sản lượng xe, bia, sữa, IIP",
    "schedule": {
     "type": "monthly",
@@ -3808,8 +3794,8 @@
    },
    "publication": "NSO ngày 3–6 hằng tháng; tiền gửi, tín dụng NHNN chậm 1–2 tháng",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "Cục Thống kê (NSO), Cục Hải quan, NHNN",
+    "url": "https://www.nso.gov.vn/bao-cao-tinh-hinh-kinh-te-xa-hoi-hang-thang/"
    },
    "where": {
     "page": "Ban-le/index.html",
@@ -3825,13 +3811,12 @@
      "bl-33"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_nso.py && python3 scripts/fetch_customs.py && python3 scripts/fetch_sbv.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "retail.public.weekly",
@@ -3863,7 +3848,7 @@
   },
   {
    "id": "retail.public.valuation",
-   "tier": "C",
+   "tier": "A",
    "title": "định giá phân ngành bán lẻ, phân phối, xe, sữa, bia theo phiên",
    "schedule": {
     "type": "daily",
@@ -3872,8 +3857,8 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
    },
    "where": {
     "page": "Ban-le/index.html",
@@ -3882,13 +3867,12 @@
      "bl-03"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/build_sector_public.py (gọi sector_valuation_public; chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "retail.market",
@@ -4141,7 +4125,7 @@
   },
   {
    "id": "pharma.public.monthly",
-   "tier": "C",
+   "tier": "A",
    "title": "nhập khẩu thuốc, nguyên liệu dược, IIP thuốc, GDP y tế, CPI y tế, tỷ giá",
    "schedule": {
     "type": "monthly",
@@ -4153,8 +4137,8 @@
    },
    "publication": "NSO ngày 6 hằng tháng; Hải quan chi tiết mặt hàng chậm ~2 tuần; GDP theo quý",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "Cục Thống kê (NSO), Cục Hải quan",
+    "url": "https://www.nso.gov.vn/bao-cao-tinh-hinh-kinh-te-xa-hoi-hang-thang/"
    },
    "where": {
     "page": "Duoc/index.html",
@@ -4166,17 +4150,17 @@
      "duoc-21"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/fetch_nso.py && python3 scripts/fetch_customs.py → build_sector_public.py (chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)",
+   "note": "Còn trống: Tỷ giá trung tâm NHNN đang lỗi (firewall)"
   },
   {
    "id": "pharma.public.valuation",
-   "tier": "C",
+   "tier": "A",
    "title": "P/E, P/B ngành dược theo phiên",
    "schedule": {
     "type": "daily",
@@ -4185,8 +4169,8 @@
    },
    "publication": "Theo phiên giao dịch",
    "source": {
-    "name": "Chưa có nguồn công khai thay thế",
-    "url": ""
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
    },
    "where": {
     "page": "Duoc/index.html",
@@ -4195,13 +4179,12 @@
      "duoc-03"
     ]
    },
-   "how": "Chưa có: cần script nguồn công khai (NSO/Hải quan/NHNN/HNX/VNDirect) cùng định nghĩa trước khi bật lại. Không gọi WiMCP.",
+   "how": "python3 scripts/build_sector_public.py (gọi sector_valuation_public; chạy trong refresh-data.yml)",
    "gates": [
-    "Không dùng số Wi",
-    "Thiếu nguồn công khai thì để trống"
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
    ],
-   "status": "blocked",
-   "todo": "Đã gỡ số nguồn công khai (tranh chấp pháp lý). Chưa có nguồn công khai thay thế cùng định nghĩa; khối hiển thị trống cho tới khi có script nguồn công khai (NSO/Hải quan/HNX/VNDirect)."
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
    "id": "pharma.market",
