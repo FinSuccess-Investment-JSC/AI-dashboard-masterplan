@@ -407,7 +407,7 @@
   "opened_at": "2026-10-19",
   "quote": "Giá Tôm thẻ (tại ao) hôm nay đang giao dịch ở mức 87.00 (VNĐ/kg)",
   "status": "unreachable",
-  "note": "Trang Simplize là giá trực tuyến, không giữ giá ngày 09/10/2026; 19/10/2026 trang hiện 94.32 (VNĐ/kg, giảm 0.51%). Không kiểm lại được giá 87.00."
+  "note": "Trang Simplize là giá trực tuyến, không giữ giá ngày 09/10/2026; 19/10/2026 trang hiện 94.32 (VNĐ/kg, giảm 0.51%). Không kiểm lại được giá 87.00. Từ 19/10/2026 dashboard không còn dùng giá Simplize (chart tôm chuyển sang VASEP Đồng Tháp); dòng giữ để lưu vết."
  },
  {
   "block": "price",

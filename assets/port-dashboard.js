@@ -99,19 +99,19 @@ if(document.getElementById('chThroughput')){
  insight('chThroughput','Container tăng nhanh hơn năm 2025 (+14% so với +11%) là tín hiệu cầu tốt cho cảng tàu mẹ. Nhưng tăng trưởng đều cả nước không có nghĩa từng cảng đều tăng: cung mới ở Lạch Huyện hút hàng của cảng hạ lưu Hải Phòng.');
 }
 // Cước container Drewry
-const wci=[['Thượng Hải – New York',10220],['Thượng Hải – Los Angeles',7624],['Thượng Hải – Genoa',3696],['Thượng Hải – Rotterdam',3337],['WCI tổng hợp',4351]];
+const wci=[['Thượng Hải – New York',10075],['Thượng Hải – Los Angeles',7884],['Thượng Hải – Genoa',3945],['Thượng Hải – Rotterdam',3522],['WCI tổng hợp',4485]];
 if(document.getElementById('chWci')){
  hbarCompare('chWci',{items:wci.map(([l,v],i)=>({label:l.replace('Thượng Hải – ','TH – '),value:v,color:i===4?C.navy:C.teal})),unit:'USD/FEU',digits:0,labelW:150,ariaLabel:'Drewry WCI theo tuyến'});
- fillTable('tbl-wci',['Tuyến','USD/FEU · 08/10/2026'],wci.map(([l,v])=>[l,nf(v,0)]));
- sourceLine('chWci',[SRC.drewry],'08/10/2026','Giá giao ngay container 40 feet, công bố thứ Năm hằng tuần.',false);
+ fillTable('tbl-wci',['Tuyến','USD/FEU · 15/10/2026'],wci.map(([l,v])=>[l,nf(v,0)]));
+ sourceLine('chWci',[SRC.drewry],'15/10/2026','Giá giao ngay container 40 feet, công bố thứ Năm hằng tuần.',false);
  insight('chWci','Tuyến xuyên Thái Bình Dương đắt gấp 2–3 lần tuyến Á – Âu: hàng Việt Nam đi Mỹ là phần sinh lãi của hãng tàu nên hãng ưu tiên giữ tuyến tàu mẹ vào Cái Mép. Với HAH (nội Á) chỉ số này là chỉ báo gián tiếp; cước nội Á không có trong WCI.');
 }
-const wk=[['20/08',4526],['08/10',4351]];
+const wk=[['20/08',4526],['08/10',4351],['15/10',4485]];
 if(document.getElementById('chWciWeeks')){
  barLineChart('chWciWeeks',{categories:wk.map(r=>r[0]),series:[{name:'WCI tổng hợp',color:C.navy,kind:'line',values:wk.map(r=>r[1])}],unit:'USD/FEU',digits:0,height:260,zeroBase:false,rotateLabels:false});
  fillTable('tbl-wci-weeks',['Tuần (2026)','USD/FEU'],wk.slice().reverse().map(r=>[r[0],nf(r[1],0)]));
- sourceLine('chWciWeeks',[SRC.drewry,['Hellenic Shipping News 20/08','https://www.hellenicshippingnews.com/?p=1144957']],'08/10/2026','Chỉ các tuần đã mở được trang gốc; không nối các tuần thiếu.',false);
- insight('chWciWeeks','WCI tổng hợp 08/10 thấp hơn 20/08 khoảng 4%; riêng Á – Âu đã giảm 13 tuần liền. Drewry kỳ vọng ổn định ngắn hạn, rủi ro giảm nếu tàu quay lại Suez nhanh (giải phóng tàu, thừa cung). Cước giảm ảnh hưởng HAH trước, cảng sau, vì cảng thu theo container chứ không theo cước.');
+ sourceLine('chWciWeeks',[SRC.drewry,['Hellenic Shipping News 20/08','https://www.hellenicshippingnews.com/?p=1144957']],'15/10/2026','Chỉ các tuần đã mở được trang gốc; không nối các tuần thiếu.',false);
+ insight('chWciWeeks','WCI tổng hợp 15/10 tăng 3% so 08/10, vẫn thấp hơn 20/08 khoảng 1%; Á – Âu tăng lại 6–7% sau 13 tuần giảm liền (hậu Tuần lễ Vàng). Hãng tàu đẩy giá FAK Á – Âu 4.500–4.800 USD/FEU từ 19/10 nhưng chưa chắc giữ được vì tàu tăng; rủi ro giảm nếu tàu quay lại Suez nhanh. Cước giảm ảnh hưởng HAH trước, cảng sau, vì cảng thu theo container chứ không theo cước.');
 }
 // Khung giá bốc dỡ
 if(document.getElementById('chTariff')){
@@ -226,7 +226,7 @@ const score=[
  row('Cầu & sản lượng','Hàng không quốc tế yếu',['−8%','sản lượng SCS Q2/26'],'SCS quốc tế 50.163 tấn (−8%); hãng Việt Nam '+(aL?mon(aL.date)+' '+signed(yoyAt(air,aL),1)+'%':'—'),'Sản lượng SCS quý trở lại tăng YoY','risk','▼ SCS · SGN','chAir'),
  row('Giá & cạnh tranh','Giá bốc xếp tàu mẹ tăng',['+10%','khung giá sàn từ 01/02/2026'],'Cái Mép, Lạch Huyện 63–73 USD/20\'; chỉ số giá bốc xếp '+(ppL?qtr(ppL.date)+' '+signed(ppL.value,1)+'% YoY':'—'),'Cảng giảm giá dưới sàn hoặc khung giá bị hoãn','good','▲ GMD · PHP · SGP','chTariff'),
  row('Giá & cạnh tranh','Dư cung Hải Phòng',['+2,5–3','triệu TEU công suất mới từ 2025'],'Lạch Huyện 3–6, Nam Đình Vũ 3 so với sản lượng 8,35 triệu TEU (2025)','Sản lượng Hải Phòng tăng > 15% hấp thụ cung mới','risk','▲ PHP · GMD ▼ VSC · DVP','chNewCap'),
- row('Giá & cạnh tranh','Cước container giảm nhẹ',['4.351','USD/FEU WCI 08/10'],'WCI −2% tuần 08/10, Á – Âu giảm 13 tuần liền; giá vận tải biển '+(psL?qtr(psL.date)+' '+signed(psL.value,1)+'% YoY':'—'),'WCI giảm > 15% trong một quý hoặc tàu quay lại Suez','watch','▼ HAH','chWciWeeks'),
+ row('Giá & cạnh tranh','Cước container hồi nhẹ',['4.485','USD/FEU WCI 15/10'],'WCI +3% tuần 15/10, Á – Âu tăng lại sau 13 tuần giảm; giá vận tải biển '+(psL?qtr(psL.date)+' '+signed(psL.value,1)+'% YoY':'—'),'WCI giảm > 15% trong một quý hoặc tàu quay lại Suez','watch','▼ HAH','chWciWeeks'),
  row('Cung mới phía Nam','Gemalink 2 · Cần Giờ',['Q4/2027','Gemalink 2 khai thác'],'Gemalink ~27% cụm Cái Mép; Cần Giờ 4,8 triệu TEU năm 2030, chưa khởi công','Cần Giờ khởi công đúng 10/2026; Cái Mép Hạ chậm','info','▲ GMD (2028) · SGP','chCaiMep'),
  row('Định giá','Định giá đã chiết khấu',[peL?nf(peL[1],1)+'x':'—','P/E cảng'],'P/E cảng '+(peL?nf(peL[1],1)+'x':'—')+(pe0?' (đầu kỳ '+nf(pe0[1],1)+'x, '+short(pe0[0])+')':''),'Lãi lõi quý III tăng tiếp khi bỏ thu nhập một lần',peL?'info':'na','GMD · PHP · VSC','chSectorVal')];
 const nGood=score.filter(r=>r.st==='good').length,nRisk=score.filter(r=>r.st==='risk').length;

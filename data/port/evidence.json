@@ -243,58 +243,58 @@
  },
  {
   "block": "cg-04",
-  "claim": "WCI tổng hợp 08/10",
-  "value": "4.351 USD/FEU (−2%)",
+  "claim": "WCI tổng hợp 15/10",
+  "value": "4.485",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
   "opened_at": "2026-10-19",
-  "quote": "for Thursday, 08 Oct 2026 The Drewry World Container Index (WCI), the benchmark widely referenced by procurement teams, fell 2% to $4,351 per 40ft container, driven by a decrease in rates on the Transpacific and Asia-Europe trade routes as demand weakened d",
-  "status": "unreachable",
+  "quote": "rose 3% to $4,485 per 40ft container",
+  "status": "match",
   "correct_value": "",
-  "note": "Trang Drewry cập nhật hằng tuần, bản đánh giá 08/10/2026 đã bị thay; 19/10 trang chỉ còn bản 15/10/2026 (WCI $4,485, SH–LA $7,884, SH–NY $10,075). Không tìm được bản lưu 08/10; số trên dashboard chưa kiểm lại được."
+  "note": "Bản đánh giá 15/10/2026 (trang Drewry chỉ giữ tuần mới nhất); dashboard cập nhật theo kỳ này 19/10/2026."
  },
  {
   "block": "cg-04",
   "claim": "WCI Thượng Hải–New York",
-  "value": "10.220",
+  "value": "10.075",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
   "opened_at": "2026-10-19",
-  "quote": "ates from Shanghai to Los Angeles fell 3% to $7,624 per 40ft container, while from Shanghai to New York decreased 2% to $10,220 per 40ft container. According to Drewry’s Container Capacity Insight , four blank sailings have been announced for next",
-  "status": "unreachable",
+  "quote": "rates from Shanghai to New York fell 1% to $10,075 per 40ft container",
+  "status": "match",
   "correct_value": "",
-  "note": "Trang Drewry cập nhật hằng tuần, bản đánh giá 08/10/2026 đã bị thay; 19/10 trang chỉ còn bản 15/10/2026 (WCI $4,485, SH–LA $7,884, SH–NY $10,075). Không tìm được bản lưu 08/10; số trên dashboard chưa kiểm lại được."
+  "note": "Bản đánh giá 15/10/2026 (trang Drewry chỉ giữ tuần mới nhất); dashboard cập nhật theo kỳ này 19/10/2026."
  },
  {
   "block": "cg-04",
   "claim": "WCI Thượng Hải–Los Angeles",
-  "value": "7.624",
+  "value": "7.884",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
   "opened_at": "2026-10-19",
-  "quote": "and weakened during China’s Golden Week. On the Transpacific trade route, rates from Shanghai to Los Angeles fell 3% to $7,624 per 40ft container, while from Shanghai to New York decreased 2% to $10,220 per 40ft container. According to Drewry’s C",
-  "status": "unreachable",
+  "quote": "rates from Shanghai to Los Angeles inched up 3% to $7,884 per 40ft container",
+  "status": "match",
   "correct_value": "",
-  "note": "Trang Drewry cập nhật hằng tuần, bản đánh giá 08/10/2026 đã bị thay; 19/10 trang chỉ còn bản 15/10/2026 (WCI $4,485, SH–LA $7,884, SH–NY $10,075). Không tìm được bản lưu 08/10; số trên dashboard chưa kiểm lại được."
+  "note": "Bản đánh giá 15/10/2026 (trang Drewry chỉ giữ tuần mới nhất); dashboard cập nhật theo kỳ này 19/10/2026."
  },
  {
   "block": "cg-04",
   "claim": "WCI Thượng Hải–Genoa",
-  "value": "3.696",
+  "value": "3.945",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
   "opened_at": "2026-10-19",
-  "quote": " from Shanghai to Rotterdam fell 2% to $3,337 per 40ft container, while those from Shanghai to Genoa remained stable at $3,696 per 40ft container. According to Drewry’s Container Capacity Insight , six blank sailings have been announced for next ",
-  "status": "unreachable",
+  "quote": "those from Shanghai to Genoa grew 7% to $3,945 per 40ft container",
+  "status": "match",
   "correct_value": "",
-  "note": "Trang Drewry cập nhật hằng tuần, bản đánh giá 08/10/2026 đã bị thay; 19/10 trang chỉ còn bản 15/10/2026 (WCI $4,485, SH–LA $7,884, SH–NY $10,075). Không tìm được bản lưu 08/10; số trên dashboard chưa kiểm lại được."
+  "note": "Bản đánh giá 15/10/2026 (trang Drewry chỉ giữ tuần mới nhất); dashboard cập nhật theo kỳ này 19/10/2026."
  },
  {
   "block": "cg-04",
   "claim": "WCI Thượng Hải–Rotterdam",
-  "value": "3.337",
+  "value": "3.522",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
   "opened_at": "2026-10-19",
-  "quote": "y expects rates to remain stable next week. On the Asia–Europe trade route, rates from Shanghai to Rotterdam fell 2% to $3,337 per 40ft container, while those from Shanghai to Genoa remained stable at $3,696 per 40ft container. According to Drewr",
-  "status": "unreachable",
+  "quote": "rates from Shanghai to Rotterdam increased 6% to $3,522 per 40ft container",
+  "status": "match",
   "correct_value": "",
-  "note": "Trang Drewry cập nhật hằng tuần, bản đánh giá 08/10/2026 đã bị thay; 19/10 trang chỉ còn bản 15/10/2026 (WCI $4,485, SH–LA $7,884, SH–NY $10,075). Không tìm được bản lưu 08/10; số trên dashboard chưa kiểm lại được."
+  "note": "Bản đánh giá 15/10/2026 (trang Drewry chỉ giữ tuần mới nhất); dashboard cập nhật theo kỳ này 19/10/2026."
  },
  {
   "block": "cg-04",
