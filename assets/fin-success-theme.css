@@ -180,6 +180,14 @@ body[data-sector="bank"] .wi-table-fold>summary:hover { background: #e9edff; }
 .ct-svg .axislabel, .ct-svg .catlabel { font-size: 12px; font-weight: 600; fill: #465064; }
 .ct-svg .endlabel { font-size: 12px; font-weight: 700; fill: var(--fs-ink); }
 .ct-svg .hitband:hover, .ct-svg .hitband:focus { fill: rgba(41,56,168,.06); outline: none; }
+.ct-axis { display: inline-flex; align-items: center; gap: 4px; margin-left: 8px; color: var(--fs-muted, #6b7380); font: 600 11px/1.3 var(--fs-font); }
+.cts-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 12px; margin: 6px 0 2px; }
+.cts-legend button { display: inline-flex; align-items: center; gap: 6px; padding: 2px 4px; border: 0; background: none; color: var(--fs-ink); font: 500 11.5px/1.4 var(--fs-font); cursor: pointer; }
+.cts-legend button i { width: 10px; height: 10px; border-radius: 2px; }
+.cts-legend button.off { color: #a3abb8; text-decoration: line-through; }
+.cts-legend button.off i { opacity: .3; }
+.cts-legend button:focus-visible { outline: 3px solid var(--fs-turquoise); outline-offset: 2px; }
+.ct-svg { max-width: 100%; height: auto; }
 .ct-tip { position: fixed; z-index: 120; pointer-events: none; max-width: 260px; padding: 8px 10px; border-radius: 10px; background: var(--fs-ink); color: #fff; font: 11.5px/1.45 var(--fs-font); box-shadow: 0 8px 20px rgba(0,0,0,.25); }
 .ct-tip-title { font-weight: 800; margin-bottom: 4px; }
 .ct-tip-row { display: flex; justify-content: space-between; gap: 14px; }

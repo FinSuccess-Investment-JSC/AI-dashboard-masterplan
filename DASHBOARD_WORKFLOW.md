@@ -358,3 +358,9 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Wi (nhóm B):** `data/pharma-wi-contract.json` → `scripts/build_pharma_wi.py` (đọc cả `data/raw/wi/.inbox/` và `data/raw/wi/pharma/`). Phiên dựng không có hook capture nên kết quả Wi được lưu nguyên văn vào `data/raw/wi/pharma/*.json` (cùng định dạng capture). Chỉ tiêu: nhập khẩu dược phẩm 92777 (hàng cạnh tranh) và nguyên phụ liệu 92771 (đầu vào), IIP thuốc 202911, GDP y tế 79925 (lũy kế), CPI thuốc & y tế 75779 (**Wi đổi gốc từ T1/2025** — không tính YoY qua mốc), tỷ giá trung tâm tháng 242638, P/E–P/B GICS 222. Bán lẻ thuốc (115) trống; cơ sở y tế (178) P/E âm nên không vẽ.
 - **So sánh tài chính:** `pharma` trong `scripts/update_company_comparison.py`; DVN không có trên Stock Analysis (404 mọi sàn) → ghi `missing`.
 - **Khoảng trống ghi trên trang:** tỷ trọng ETC/OTC, tiêu chí nhóm 1 từ văn bản gốc, số nhà thuốc Long Châu các năm trước, công suất giường TNH, kế hoạch 2026 của DHG/DBD/TRA/DMC/DVN, toàn văn Luật 44/2024 (thuvienphapluat 403).
+
+## 30. Mọi chart ngành theo điều khiển Stock dashboard (19/10/2026)
+
+- `assets/chart-types.js` thêm cho mọi chart đi qua `ChartTypes.mount/html`: nhóm **Trục Từ 0 / Vừa dữ liệu** cạnh nút kiểu chart (Vừa dữ liệu chỉ mở cho Đường/Miền; Cột luôn từ 0, nút khóa có tooltip) và **chú giải dưới chart bấm để ẩn/hiện chuỗi** (gạch ngang khi tắt, tooltip bỏ chuỗi đã ẩn). Chart ≥2 chuỗi mới có chú giải; `.legend` tĩnh của trang nằm sát chart bị ẩn để không trùng.
+- Góc nhìn mặc định vẫn do renderer gốc vẽ; khi đổi trục hoặc ẩn chuỗi, renderer chung vẽ theo bề rộng thật của khung (chữ không phóng to, không nhãn đầu đường) và vẽ lại khi đổi cỡ. Lựa chọn lưu trong trình duyệt (`fs_sector_chart_view_v1`).
+- Class `.cts-legend` (không dùng `.ct-legend`, đã thuộc `company-trend.js`).

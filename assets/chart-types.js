@@ -16,6 +16,9 @@
   const num = v => typeof v === 'number' && Number.isFinite(v);
   function readStore() { try { return JSON.parse(localStorage.getItem(STORE) || '{}') || {}; } catch (e) { return {}; } }
   function saved(key) { return readStore()[location.pathname + '#' + key]; }
+  const VIEW = 'fs_sector_chart_view_v1';
+  function readView(key) { try { return (JSON.parse(localStorage.getItem(VIEW) || '{}') || {})[location.pathname + '#' + key] || {}; } catch (e) { return {}; } }
+  function saveView(key, v) { try { const all = JSON.parse(localStorage.getItem(VIEW) || '{}') || {}; all[location.pathname + '#' + key] = v; localStorage.setItem(VIEW, JSON.stringify(all)); } catch (e) { /* view still changes */ } }
   function save(key, type) { try { const s = readStore(); s[location.pathname + '#' + key] = type; localStorage.setItem(STORE, JSON.stringify(s)); } catch (e) { /* view still switches */ } }
 
   function niceStep(span, ticks) {
@@ -60,7 +63,7 @@
     const label = i => String(model.tickLabels?.[i] ?? cats[i]);
     if (type === 'hbar') return renderH(model, main, over, f, label);
     // Uniform plot height so charts in one row/tab look the same size.
-    const W = 640, H = UNIFORM ? 260 : Math.max(240, model.height || 250), L = 52, R = 16, T = 16, B = 30;
+    const W = Math.max(280, Math.round(model.width || 640)), H = UNIFORM ? 260 : Math.max(240, model.height || 250), L = 52, R = 16, T = 16, B = 30;
     const pw = W - L - R, ph = H - T - B, band = pw / Math.max(n, 1);
     const stacked = type === 'stack' || (type === 'area' && model.stackable && main.length > 1 &&
       main.every(s => s.values.every(v => v == null || v >= 0)) && main.every(s => s.values.every(num)));
@@ -77,13 +80,13 @@
     const Y = v => T + ph * (d.max - v) / (d.max - d.min);
     const X = i => L + band * (i + 0.5);
     const base = Y(Math.max(d.min, Math.min(0, d.max)));
-    let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" class="chartsvg ct-svg" role="img" aria-label="${esc(model.aria || '')}">`;
+    let s = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" class="chartsvg ct-svg" role="img" aria-label="${esc(model.aria || '')}">`;
     for (let v = d.min; v <= d.max + d.step / 2; v += d.step) {
       s += `<line x1="${L}" x2="${W - R}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" class="gridline"/>`;
       s += `<text x="${L - 8}" y="${(Y(v) + 4).toFixed(1)}" text-anchor="end" class="axislabel">${esc(f(v))}</text>`;
     }
     s += `<line x1="${L}" x2="${W - R}" y1="${base.toFixed(1)}" y2="${base.toFixed(1)}" class="axisline"/>`;
-    const every = Math.max(1, Math.ceil(n / 8));
+    const every = Math.max(1, Math.ceil(n / Math.max(3, Math.floor(pw / 70))));
     cats.forEach((_, i) => {
       if (i % every === 0 || i === n - 1) {
         if (i !== n - 1 && n - 1 - i < every / 2 && i % every === 0 && i !== 0) return;
@@ -134,7 +137,7 @@
   }
   function renderH(model, main, over, f, label) {
     const all = main.concat(over), n = model.categories.length;
-    let rowH = Math.max(18, all.length * 9 + 8);const labelW = 84, W = 640, B = 22, R = 64;
+    let rowH = Math.max(18, all.length * 9 + 8);const labelW = 84, W = Math.max(280, Math.round(model.width || 640)), B = 22, R = 64;
     if (UNIFORM) rowH = Math.min(40, Math.max(rowH, (260 - 28) / n));
     const T = 6 + (UNIFORM ? Math.max(0, 260 - 28 - rowH * n) : 0);
     const H = T + B + rowH * n, L = labelW + 8, pw = W - L - R;
@@ -142,7 +145,7 @@
     if (!vals.length) return '<div class="gap-empty">Không có dữ liệu hợp lệ.</div>';
     const d = domain(Math.min(...vals), Math.max(...vals), true);
     const Xv = v => L + pw * (v - d.min) / (d.max - d.min);
-    let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" class="chartsvg ct-svg" role="img" aria-label="${esc(model.aria || '')}">`;
+    let s = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" class="chartsvg ct-svg" role="img" aria-label="${esc(model.aria || '')}">`;
     for (let v = d.min; v <= d.max + d.step / 2; v += d.step) {
       s += `<line x1="${Xv(v).toFixed(1)}" x2="${Xv(v).toFixed(1)}" y1="${T}" y2="${H - B}" class="gridline"/>`;
       s += `<text x="${Xv(v).toFixed(1)}" y="${H - 6}" text-anchor="middle" class="axislabel">${esc(f(v))}</text>`;
@@ -168,8 +171,34 @@
     return `<div class="ct-switch" role="group" aria-label="Kiểu biểu đồ" data-ct-for="${esc(id)}">` + TYPES.map(([t, name]) => {
       const why = reason(model, t);
       return `<button type="button" data-ct-type="${t}" aria-pressed="${t === current}"${why ? ` disabled title="${esc(why)}"` : ''}>${name}</button>`;
+    }).join('') + `<span class="ct-axis" role="group" aria-label="Trục"><span>Trục</span>` +
+      [['zero', 'Từ 0'], ['fit', 'Vừa dữ liệu']].map(([k, t]) => `<button type="button" data-ct-axis="${k}">${t}</button>`).join('') + '</span></div>';
+  }
+  // Bars always start at 0 (bar length = value); "Vừa dữ liệu" only for line/area views.
+  const fitAllowed = (entry) => entry.type === 'line' || (entry.type === 'area' && !entry.model.stackable);
+  function syncBar(entry) {
+    if (!entry.bar) return;
+    entry.bar.querySelectorAll('[data-ct-type]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.ctType === entry.type)));
+    const ok = fitAllowed(entry), fit = ok && entry.fit;
+    entry.bar.querySelectorAll('[data-ct-axis]').forEach(b => {
+      b.setAttribute('aria-pressed', String((b.dataset.ctAxis === 'fit') === fit));
+      const lock = b.dataset.ctAxis === 'fit' && !ok; b.disabled = lock;
+      if (lock) b.title = 'Cột bắt đầu từ 0 để độ dài cột đúng giá trị'; else b.removeAttribute('title');
+    });
+  }
+  function legendHtml(entry) {
+    const named = entry.model.series.filter(s => s.name);
+    if (named.length < 2) return '';
+    return '<div class="cts-legend" role="group" aria-label="Chú giải, bấm để ẩn/hiện">' + named.map(s => {
+      const off = entry.hidden.has(s.name);
+      return `<button type="button" data-ct-series="${esc(s.name)}" aria-pressed="${!off}" class="${off ? 'off' : ''}"><i style="background:${esc(s.color)}"></i>${esc(s.name)}</button>`;
     }).join('') + '</div>';
   }
+  function viewModel(entry, width) {
+    const m = entry.model, fit = fitAllowed(entry) && entry.fit;
+    return {...m, width, zeroBase: !fit, series: m.series.filter(s => !entry.hidden.has(s.name))};
+  }
+  const isDefault = entry => entry.type === native(entry.model) && !entry.hidden.size && entry.fit === entry.fit0;
   function choose(model) {
     const want = saved(model.key);
     return want && TYPES.some(([t]) => t === want) && !reason(model, want) ? want : native(model);
@@ -186,11 +215,15 @@
     const entry = registry.get(id); if (!entry) return;
     const body = entry.body || document.querySelector(`[data-ct-body="${CSS.escape(id)}"]`); if (!body) return;
     const type = entry.type;
-    if (type === native(entry.model)) entry.base(body);
-    else body.innerHTML = render(entry.model, type);
+    // Native renderer only for the untouched view; any axis/series change uses the shared renderer.
+    if (isDefault(entry)) entry.base(body);
+    else body.innerHTML = render(viewModel(entry, body.clientWidth || 640), type);
     body.dataset.ctType = type;
+    body.insertAdjacentHTML('beforeend', legendHtml(entry));
+    // Page legends next to the chart are replaced by the clickable one.
+    if (body.querySelector('.cts-legend')) [body.previousElementSibling, body.nextElementSibling].forEach(n => { if (n && n.classList.contains('legend')) n.hidden = true; });
     // Mounted charts keep the toolbar inside the host so it moves with the chart.
-    if (entry.bar) { entry.bar.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.ctType === type))); body.prepend(entry.bar); }
+    if (entry.bar) { syncBar(entry); body.prepend(entry.bar); }
     body.dispatchEvent(new CustomEvent('ct:render', {bubbles: true, detail: {type}}));
   }
 
@@ -203,8 +236,14 @@
     const type = choose(model);
     const tpl = document.createElement('template'); tpl.innerHTML = toolbar(id, model, type);
     document.querySelectorAll('.ct-switch').forEach(b => { if (b.dataset.ctFor === id) b.remove(); });
-    registry.set(id, {model, base: () => base(), body: host, type, bar: tpl.content.firstElementChild});
+    const v = readView(model.key), fit0 = model.zeroBase === false;
+    registry.set(id, {model, base: () => base(), body: host, type, bar: tpl.content.firstElementChild, fit0, fit: v.fit ?? fit0, hidden: new Set((v.hidden || []).filter(n => model.series.some(s => s.name === n)))});
     paint(id);
+    if (window.ResizeObserver && !host._ctRO) {
+      let w = host.clientWidth;
+      host._ctRO = new ResizeObserver(() => { const nw = host.clientWidth; if (Math.abs(nw - w) > 8) { w = nw; const e = registry.get(id); if (e && !isDefault(e)) paint(id); } });
+      host._ctRO.observe(host);
+    }
   }
   // Page renderer that returns an SVG string (Bank Wi engine).
   function html(model, svg) {
@@ -212,9 +251,14 @@
     normalize(model);
     model.key = model.key || model.aria || model.series.map(s => s.name).join('|') + '|' + (model.unit || '');
     const type = choose(model);
-    registry.set(id, {model, base: body => { body.innerHTML = svg; }, type});
-    const content = type === native(model) ? svg : render(model, type);
-    return toolbar(id, model, type) + `<div class="ct-body" data-ct-body="${id}" data-ct-type="${type}">${content}</div>`;
+    const v = readView(model.key), fit0 = model.zeroBase === false;
+    const entry = {model, base: body => { body.innerHTML = svg; }, type, fit0, fit: v.fit ?? fit0, hidden: new Set(v.hidden || [])};
+    registry.set(id, entry);
+    const content = isDefault(entry) ? svg : render(viewModel(entry, 640), type);
+    const tpl = document.createElement('template'); tpl.innerHTML = toolbar(id, model, type); entry.bar = tpl.content.firstElementChild; syncBar(entry);
+    // Toolbar stays outside the body here; paint() must not move it.
+    const bar = entry.bar.outerHTML; entry.bar = null;
+    return bar + `<div class="ct-body" data-ct-body="${id}" data-ct-type="${type}">${content}${legendHtml(entry)}</div>`;
   }
 
   let tip;
@@ -223,7 +267,7 @@
     if (!entry) return;
     const i = Number(target.dataset.ctI), m = entry.model, f = fmtOf(m);
     if (!tip) { tip = document.createElement('div'); tip.className = 'ct-tip'; tip.hidden = true; document.body.append(tip); }
-    const rows = m.series.filter(s => num(s.values[i])).map(s => `<div class="ct-tip-row"><span><i style="background:${esc(s.color)}"></i>${esc(s.name)}</span><b>${esc(f(s.values[i]))}${m.unit ? ' ' + esc(m.unit) : ''}</b></div>`);
+    const rows = m.series.filter(s => num(s.values[i]) && !entry.hidden?.has(s.name)).map(s => `<div class="ct-tip-row"><span><i style="background:${esc(s.color)}"></i>${esc(s.name)}</span><b>${esc(f(s.values[i]))}${m.unit ? ' ' + esc(m.unit) : ''}</b></div>`);
     tip.innerHTML = `<div class="ct-tip-title">${esc(m.categories[i])}</div>` + (rows.join('') || '<div class="ct-tip-row">Không có số liệu</div>');
     tip.hidden = false;
     const r = target.getBoundingClientRect(), x = evt?.clientX ?? r.left + r.width / 2, y = evt?.clientY ?? r.top;
@@ -236,10 +280,25 @@
   document.addEventListener('focusout', hideTip);
   window.addEventListener('scroll', hideTip, true);
   document.addEventListener('click', e => {
+    const lg = e.target.closest?.('.cts-legend button[data-ct-series]');
+    if (lg) {
+      const body = lg.closest('[data-ct-body],[id]'), id = body?.dataset.ctBody || body?.id, entry = registry.get(id); if (!entry) return;
+      const n = lg.dataset.ctSeries; entry.hidden.has(n) ? entry.hidden.delete(n) : entry.hidden.add(n);
+      saveView(entry.model.key, {fit: entry.fit, hidden: [...entry.hidden]}); paint(id); return;
+    }
+    const ax = e.target.closest?.('.ct-switch button[data-ct-axis]');
+    if (ax) {
+      if (ax.disabled) return;
+      const bar = ax.closest('.ct-switch'), id = bar.dataset.ctFor, entry = registry.get(id); if (!entry) return;
+      entry.fit = ax.dataset.ctAxis === 'fit'; saveView(entry.model.key, {fit: entry.fit, hidden: [...entry.hidden]});
+      if (!entry.bar) bar.querySelectorAll('[data-ct-axis]').forEach(b => b.setAttribute('aria-pressed', String(b === ax)));
+      paint(id); return;
+    }
     const btn = e.target.closest?.('.ct-switch button[data-ct-type]'); if (!btn || btn.disabled) return;
     const bar = btn.closest('.ct-switch'), id = bar.dataset.ctFor, entry = registry.get(id); if (!entry) return;
     entry.type = btn.dataset.ctType; save(entry.model.key, entry.type);
-    bar.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    bar.querySelectorAll('[data-ct-type]').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    if (!entry.bar) { const ok = fitAllowed(entry); bar.querySelectorAll('[data-ct-axis]').forEach(b => { b.setAttribute('aria-pressed', String((b.dataset.ctAxis === 'fit') === (ok && entry.fit))); b.disabled = b.dataset.ctAxis === 'fit' && !ok; }); }
     paint(id);
   });
 
