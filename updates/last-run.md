@@ -1,4 +1,80 @@
-# Lịch cập nhật — 19/10/2026 08:34
+# Lịch cập nhật — 19/10/2026 10:59
 
-- ❌ textile.trade-tariff (lần 1): trade.gov/otexa mở được nhưng chưa trích và xác minh được dữ liệu OTEXA/USTR mới cho 7 card; không cập nhật để tránh số chưa kiểm
-- Hàng chờ Claude: 74 mục — sugar.domestic, sugar.crop, bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, sugar.ai.cycle, bank.ai.read, power.ai.cycle
+- 🆕 pvn.news: 1 mục mới — Bộ Chính trị đồng ý cơ chế ưu đãi cao nhất cho phát triển Trung tâm lọc hóa dầu và năng lượng quốc gia tại KKT Dung Quất — https://petrotimes.vn/bo-chinh-tri-dong-y-co-che-uu-dai-cao-nhat-cho-phat-trien-trung-tam-loc-hoa-dau-va-nang-luong-quoc-gia-tai-kkt-dung-quat-746857.html
+- 🆕 moit.notices: 2 mục mới — Bộ Công Thương lấy ý kiến dự thảo quyết định về thành lập, tổ chức và hoạt động, cơ chế quản lý tài chính của Quỹ Thúc đẩy sử dụng năng lượn — /tin-tuc/bo-cong-thuong-lay-y-kien-du-thao-quyet-dinh-ve-viec-thanh-lap-to-chuc-va-hoat-dong-co-che-quan-ly-tai-chinh-cua-quy-thu.html; Bộ Công Thương hợp nhất 3 thông tư về an toàn thiết bị trong mỏ hầm lò — /tin-tuc/bo-cong-thuong-hop-nhat-3-thong-tu-ve-an-toan-thiet-bi-trong-mo-ham-lo.html
+- 🆕 news.vssa: 1 mục mới — Niên vụ 2025-2026 ngành mía đường đối diện nguy cơ đứt gãy - Fili.vn — https://news.google.com/rss/articles/CBMinwFBVV95cUxPTGFHZmktQVpJSUc4cU1GaGR3UFdwOGxFdG5kWkg0U1ZhWVFPdV94MWxVdlRTQkp0VjMzakcwcWgyVnp1NVRWbk1lZm80SFZUSVJHekV6TU9kS0JQcjBPclpSWlRwS2t0SW5COWpaeXNIdFY0QTF2Yjg4Z0I2R2kycDdFbThoTTg3RUpHb3dWZmVfMXFMdldxc1JUZFVLYlk?oc=5
+- 🆕 news.vasep: 5 mục mới — Xuất khẩu thủy sản quý IV đối mặt sức ép lớn từ thị trường Mỹ - VASEP — https://news.google.com/rss/articles/CBMi1wFBVV95cUxNa2dGcTBSUjlyczhFTG5wWjVvV3BQMlE0QWpyT19jZkdlbkVLcVRrUF9NdG0wWUpkc3hFZUtOTDZBQjVpV0Vkc3U4VUhEa2E3MVF4Rm01X3B4ZlZFOGZKWmN0d2s4UHRJUWNQcmxreFNuYnRGWnNHOGRpV013VWlkT0IwOGEtZWhxS09zRlhlSkVnWTREQ2MyRFNUbWtTNTBydGdZcFYxdUM0M3BJd3BCbDh1aGc5MFJ3YTluTmZHY01PVjV0Mk1fWktjcmlPdlk2ZHdyejV2NNIBngFBVV95cUxOeHVKTVc5OHJnT2p5M0ktWUtVUnhsZjVQQnR6Tkp0Q3RTN05zemxIQWlkeGstaV81YXlhOE12Q09jZW4tTzktaGlibzBEenZueXN3VERZdGQxNG1fdWdsUnFTRUVINUhuY0xPQmdWVVA2eFNPcXE1cTkwQUQyTTF4U25UMXdUTHp3aVVPMHUwQm90eTZuUVVxeWU4RmpzUQ?oc=5; Thặng dư thương mại nông, lâm, thủy sản 9 tháng đầu năm đạt 16,46 tỷ USD - Tạp chí Thủy sản Việt Nam — https://news.google.com/rss/articles/CBMiogFBVV95cUxNMUpXUEthQTRfSmVmWW5EUE8zR3Y4YXJYcVhYSWROVjFVTVpJdDdxN1hYVFo4aW9memNfV3dIMTZMSzE4SkY1VXp5NFk0OGhRenE0d3hiQ2I3MTNldUtFYlQyNUdXNmhPbmhPaEhna21hX2hrTEZQSFhVX3Zsb3Jpb2RwMmxFVTE3MVR4SDBiMkpFRm9IQTRGdnlWalVCV081ZHc?oc=5; Xuất khẩu thủy sản 8 tháng đạt 7,94 tỷ USD - Báo Nông nghiệp và Môi trường — https://news.google.com/rss/articles/CBMijgFBVV95cUxOM3dlTkFrMjUzWmx5QTc3Tm5vUFdyUzNSb05nSXdEc2F4NXIxWUhrenhtYUZhaFQ3V1E3blB0bW9DQk5tUmJ2OF9LWkxPV1p5all2emhzOUMtSXBTcllWN1hMZERpVzNfMTVFbGpDMVJDQjBjUXZNWXVPMWQyTlhHS3otaVdOdTBUSWlmSGN3?oc=5
+- 🆕 news.shipping-policy: 15 mục mới — Quốc hội sẽ xem xét Luật Nhà ở (sửa đổi), cho ý kiến Bộ luật Hàng hải và Đường thủy - Báo Xây dựng — https://news.google.com/rss/articles/CBMiwwFBVV95cUxOM1N4VXkyQkNFMzZvN0EyVUJCSUVHOHBFcHhjUFlTOGlidEtSTHhFY1o3N0s1bERCMmlTYTVVdEt4cmRCT1BHVk1EMVhIRDlvcHBsaUJLYUwwb0ljYW40OHJ4Z1ptYlVUTmQtVWZWVmpiRHplUzZNbHRSWE5fVzBpeUV4eWtiQWNDd2l6ZnRTbGRuVG1SSFJXWF9ESmJyZ1VyS1dwdVNrWnZ4MTNxNkZWcVVPNEtySThSdFlPbHhwRjFfUXc?oc=5; Bộ luật Hàng hải và Đường thủy Việt Nam (sửa đổi): Cần làm rõ cơ sở thực tiễn - Báo Diễn đàn Doanh nghiệp — https://news.google.com/rss/articles/CBMiugFBVV95cUxPSHVybnRHTWxaOHR1X0FPUjlvYjlfb3d5QmNrbjBpVVFCVnk0SGg5VHROSFl6Y1NEdWxjTklwODk1LVgxSThIZzdEbjRFV09vYkZNb0Q4bGE1akRSZmd4TDRTX1h1aEp6ZVA0WXZyVGg0U0Fha183V0plTEJrOG1JMzJvS1Rvd3NKLXRub09RNlM4clZYUWxveEdxZ2s0VVRhUU1MSnNEWGphaFJ5d1BYWkhGVmVicHAzbnc?oc=5; Đề xuất Bộ luật Hàng hải và Đường thủy Việt Nam: Thúc đẩy vận tải số, ưu tiên logistics đa phương thức - Thuonghieucongluan.com.vn — https://news.google.com/rss/articles/CBMi4AFBVV95cUxPMHhySVNKQVNQd2F0ZFYzUFFQcVlVUEpZZUhtY0c4elotMldEUnVHWUh2cjh4bG90LXZrSXJPTFpuRFZOcDRhNFpVazI2SkRRX2hNRk5hdkFKVmxKVWtyeHVhZjNHaVpzQWJHVkM1dW5tdDFzOWR4UzJWeGYzcFJWVWd0YmMzaGtJMDJnUEd4dG9yRFJERy1uYUo1djlOa2JGZF8zUGlTa05MWW1fbnJaSHd5bGVobVRqV1Q4NUtwdENUZTRyUXpEdXBhNF9ocEV1bzFVSlVfS0FseEV4VzVZbA?oc=5
+- 🆕 news.public-investment: 59 mục mới — Giải ngân vốn đầu tư công: Cần Thơ kiểm soát tiến độ các dự án trên 50 tỉ đồng - Laodong.vn — https://news.google.com/rss/articles/CBMiuwFBVV95cUxQTzBWUHJzQmdsT3cxUXBRazJhczlRVmdOUWhqM3BvLUZTWjVYR2JQcHVYOUpMLUlxZXN6aFF4VUdTTFQtMnR5MC1ZQTQybGpJODhpTW1zR1lKS1FXeVVpMjFSUlVaQVViQ01aX0tGeUJ0MzJFRDV5QlIxQm54c25ldHItejhVLVdmNHdhdVNQeWRlLWVKZm9QTUh4cVJSbGNKbHZzMXB2SUhLeW8zaldoem1hQ0FLVXNJX3Bn?oc=5; Thông tin mới nhất về giải ngân đầu tư công của Quảng Ngãi - Báo Dân Việt — https://news.google.com/rss/articles/CBMingFBVV95cUxQR2hjZjZsZjhzRzBEWGxOTFlwM0hzX1p3azk3WEY1WTlMMG12M000V0xyVEdXeEhKdkxOWWRkSFp2Q21FTUt3WS1xb0xzR0owd1dya2I1dG5oRWNyTF9NZlM3dTNGdFBzRGFpZDR5UGJNZzgybXREdUVwMS14ZXFFNV9Yb2ducWFTTkdnU3hwclRsbWNSZmF4LU80TDVBQQ?oc=5; Hải Phòng bứt phá vào nhóm đầu giải ngân vốn đầu tư công - Trung tâm Nội dung số và Truyền thông — https://news.google.com/rss/articles/CBMipwFBVV95cUxQTHBDTldTaDFPUmQ3NVcyUkVFbnllcWFXcTVjWnZ5SGRTUkFtbnhPLWsyOGRCQW9MVTFUbFY1Z1E1X2ZWUVRtalhFMzgxcGNsZW5taWw0bkx5b1BhdkZWakJPMWlvcmREMTQ1R0VwbUwzX0hXVlQ4WUVZNWU5UGNYSVJYM1YwLWZYM0I4el9XOHhGWEhldkVBYTJZLVV3dzFPWERIcVpFWQ?oc=5
+- 🆕 news.insurance: 3 mục mới — Sun Life ghi nhận tăng trưởng tích cực, doanh thu phí bảo hiểm tại Việt Nam đạt 1.480 tỉ đồng - tin.skydoor.net — https://news.google.com/rss/articles/CBMipAFBVV95cUxQVDJibVQ5NTVJUXVKZjNjRHNVemM1ZGJEU0NQMTBYb1dqZ3p5Z01sVDM1QU5XaWdKM0FncUxtdDhhUzZlendSd2o5b05FSGl5TEFJcE5SdGFrbEpMdzBFNU1OLWFneXRwNHFLYThZdmw0MlowdjRMSl9fajBsVVJvVHhpcHVJZHV3eTNjOG83SjYySXp0T3cyWlNzeVRmbXNaTGpkMQ?oc=5; Tổng doanh thu phí bảo hiểm toàn thị trường 9 tháng đạt 175,800 tỷ đồng, tăng 2.4% - Vietstock — https://news.google.com/rss/articles/CBMiwgFBVV95cUxOb19PVlBwOEpLNk9TVkdzeWc2MzFRVHZkbWtLRXkxV0VTNUk2dmZGNVdiMURmUzVPTWFlUVB6RUJsOWc0d0tTZXFxa3BLT0JRdDAtTHZ0NWxzN1Fxa2RMbnRMWGVLYWN1ekx6X0JTRjJIeE5HWUFHOHc4N0pfb1FlOVcwaGloNDlVY2ZuMTF5X3ZLSjRORVBNS0lDTGVfVk8tTDhiYUplQW9QSmJwdzRSRlBWa2dBLVFsX2RhOTN1M2ZxQQ?oc=5; MIC tăng trưởng 33,6% doanh thu phí bảo hiểm gốc, năm thứ hai đạt hạng B++ - CafeF — https://news.google.com/rss/articles/CBMirgFBVV95cUxPNVZFTkgxMjBJd3U0cUVoMnpEdHNoQUhCdzZfelNjMlM2WHZKN1ZSZWN0cS1DMmFDTVd1ODIwcnJhaWVWdlRfa0ZOZ082TExZbXlUZEtPN0dhMFJqbHd5RS1scFVaaDJ0SnloV2V0M3Z0YVp0YkpvdlRHdDhYY1d3YWJ3eVUxZWlDUHJrQ21WcjFpYnQ4eXBMV1dqS1NaenJLb1dfTzhiQVBsYWpEUWc?oc=5
+- 🆕 news.retail: 23 mục mới — Chuyên gia đề xuất giảm thuế tiêu thụ đặc biệt để hạ giá xăng - Laodong.vn — https://news.google.com/rss/articles/CBMipgFBVV95cUxNdnI3M21nSDJSV0ZBZllxNUVNbHRGeWxJRW9uUDllWm9rUHk2eUNYX2RkX00tY01FQlYwaGFBaGo5RWtYM3R5Rmk1blc2NmdNVWlYY2lzQVlPNVlDckplcGtaNmR3cEIxSWY5MTdtMkhNbmphYUNPSVZmUkppZFpWMDE2ckVhSlNZR2laQ3gwelBhTldyaUtpVnE0dzFrLTFqZlVUbW5R?oc=5; VAMA tăng trưởng 38% tháng 9: Điểm tựa Hybrid và kỳ vọng bùng nổ sức mua Q4/2026 - VnEconomy — https://news.google.com/rss/articles/CBMiswFBVV95cUxNSExNbl9hMW9zd3ViTEdiVDdaRzJCQXVIR0R0X0gtM1RwejBPeThJTF9CYUhyS1ZReEE1UWF0SWN4QXB2WnZNclRZVnhHaFlpMGFNRjE1cWI4LW1lSmlEMDhyVjV4UUd0TUVMTkN5U2FFMnVxXy1QLVhUWDVtZGo0TEYxR0FoTzFHNExrNFJ0ejhiSWlpUldqZVI1cUluZXBVTzVzaEI4cDZwLUs2SFNQTjc5RQ?oc=5; Hướng tới thương mại điện tử chiếm 20% tổng mức bán lẻ của cả nước - Báo Thanh tra — https://news.google.com/rss/articles/CBMiwgFBVV95cUxQaVFfR21Bb2tFbnRsUGt2UkQwb2xMU1FieVRrQVROcGdYV2YxQnpmRUp1QkVHQmhKZW5qeGZ6Rl9pMlZiLWQzckN1d3lSYVpyWnpnek1waVM3RmczbVhxRUdtVTBTSzJweTZKMER0eThqcUd2OThxUTlxMmFwTnlHV3JERGdTV2hBUzI2cXBnVDNBcUtKWUVDNXdNNGQ2TkpkcG1jcTdfSmR2cG5mZzE0bGZBZzVWNUpRYlNJNGViaEVMdw?oc=5
+- ⚠️ watcher moit.power-prices: URLError: <urlopen error [Errno 101] Network is unreachable>
+- 🆕 news.power-prices: 25 mục mới — Kết luận của Thủ tướng về các giải pháp bảo đảm cung ứng điện giai đoạn 2026-2030 và điều chỉnh Quy hoạch điện VIII điều chỉnh - Vietnam.vn — https://news.google.com/rss/articles/CBMi4wFBVV95cUxNblFRSUU3cmVfNXZybWRxY3hseHJmSTdfNmNqUjI1RlAzQ2lhdk9IQTJwYmVOWEdPeXZLUDdLZjNDNGI4d3BCY1Y3SHJwQS04M3h3eVQxN1BhRW42amxRZ1gzcXRRS2xmSTZMeFdOcUJPYURkaWl5NHZlNVdDSVVFOE0zclZhdXNnbDMxN3c5Q1A1cTlTc3dnVzBhSnpMX254SktFbFV4U0ltaUlCeVA5RElFNXVDM0N6c0liQWoxM2xqWE9fbDVrQmx1MGRyMlhOUnFuNEl3ZzhxOUFLeFdKR3Robw?oc=5; Làm rõ thời điểm áp dụng biểu giá bán lẻ điện sinh hoạt 5 bậc - baodautu — https://news.google.com/rss/articles/CBMimgFBVV95cUxQZDZNTEh0TTRKLUtTaUlRNXVOMHlpT1AxT1VGWFJ3SjIxLVpBV2t1cGdvQnBJMjhsZEs3bl9rYXo3dnlyOGNZWUhXdzJ2cXNOVi1yRm5jdDBLOWxsRDF3VFJVWGFFWHYydGJSNlpVUXRtcmJMdXpaMFg5cjdIZkw2MG5Yb2cwRTFlOEZudGgxWmpDMUI5aGxUUWVR?oc=5; Làm rõ thời điểm áp dụng biểu giá bán lẻ điện sinh hoạt 5 bậc - Báo Kiểm toán — https://news.google.com/rss/articles/CBMinAFBVV95cUxPTUxYWV9TRVVlNXRwWjR6SzllNEpPUVVDYWRLb2FDWGF3WUNfT0pNWFMtem5BSmc0ZEU4TnNmdks5WklKZzVBVlU2MGVPWU5KWm01anBaQUswaHoyLUJxSWFhQlVxUnFsSjR1d01rUHJhMzBNSkYwNVNHYWI3YjhFeHNQeFpZSm1pbU1raTRXSWVicDFWdU11Y1V3LVI?oc=5
+- watcher news.pharma: lập baseline 98 mục
+- ❌ oil.retail-fuel lỗi 11 ngày: retail_fuel
+- → hàng chờ [B] bank.wi.daily: lịch 19/10 07:00
+- → hàng chờ [B] bank.wi.monthly: lịch 19/10 07:00
+- → hàng chờ [C] oil.supply-news: watcher báo có công bố mới
+- → hàng chờ [C] oil.price-policy: watcher báo có công bố mới
+- → hàng chờ [C] sugar.domestic: lịch 01/10 07:00
+- → hàng chờ [C] sugar.crop: watcher báo có công bố mới
+- → hàng chờ [C] bank.policy: lịch 07/10 07:00
+- → hàng chờ [D] oil.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] oil.ai.balance: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] oil.ai.regime: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] oil.ai.channels: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] sugar.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] bank.ai.read: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] power.evn-reservoirs: lịch 19/10 07:00
+- → hàng chờ [C] power.tariff-evn: watcher báo có công bố mới
+- → hàng chờ [C] power.market-fmp: lịch 19/10 07:00
+- → hàng chờ [C] power.policy: lịch 19/10 07:00
+- → hàng chờ [C] power.output-sources: lịch 19/10 07:00
+- → hàng chờ [C] power.hot-topics: lịch 19/10 07:00
+- → hàng chờ [D] power.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] realestate.market-quarterly: lịch 19/10 07:00
+- → hàng chờ [C] realestate.fdi-projects: lịch 08/10 07:00
+- → hàng chờ [C] realestate.kcn-quarterly: lịch 19/10 07:00
+- → hàng chờ [C] realestate.policy: lịch 01/10 07:00
+- → hàng chờ [C] realestate.credit-rates: lịch 08/10 07:00
+- → hàng chờ [C] realestate.hot-topics: lịch 19/10 07:00
+- → hàng chờ [D] realestate.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] textile.trade-tariff: lịch 19/10 07:00
+- → hàng chờ [C] textile.orders-brands: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] textile.policy: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] textile.hot-topics: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] textile.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] port.freight: lịch 19/10 07:00
+- → hàng chờ [C] port.throughput: lịch 19/10 07:00
+- → hàng chờ [C] port.projects: lịch 19/10 07:00
+- → hàng chờ [C] port.hot-topics: lịch 19/10 07:00
+- → hàng chờ [C] agri.policy: lịch 19/10 07:00
+- → hàng chờ [C] agri.weather: lịch 16/10 07:00
+- → hàng chờ [C] agri.hot-topics: lịch 19/10 07:00
+- → hàng chờ [C] seafood.trade: lịch 19/10 07:00
+- → hàng chờ [C] seafood.hot-topics: lịch 19/10 07:00
+- → hàng chờ [C] shipping.outlook: lịch 19/10 07:00
+- → hàng chờ [C] shipping.policy: watcher báo có công bố mới
+- → hàng chờ [C] shipping.rates: lịch 19/10 07:00
+- → hàng chờ [C] shipping.hot-topics: lịch 19/10 07:00
+- → hàng chờ [D] shipping.ai.cycle: số liệu nền đổi: hormuz, bab_el_mandeb
+- → hàng chờ [C] construction.disbursement: watcher báo có công bố mới
+- → hàng chờ [C] construction.policy: watcher báo có công bố mới
+- → hàng chờ [C] construction.prices: lịch 19/10 07:00
+- → hàng chờ [C] construction.hot-topics: lịch 19/10 07:00
+- → hàng chờ [C] insurance.market: lịch 19/10 07:00
+- → hàng chờ [C] insurance.policy: watcher báo có công bố mới
+- → hàng chờ [C] insurance.hot-topics: lịch 19/10 07:00
+- → hàng chờ [C] retail.market: lịch 19/10 07:00
+- → hàng chờ [C] retail.policy: watcher báo có công bố mới
+- → hàng chờ [C] retail.hot-topics: lịch 19/10 07:00
+- → hàng chờ [C] power.company-quarterly: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] realestate.kcn-broker: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] realestate.infrastructure: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] pharma.hot-topics: lịch 19/10 07:00
+- Hàng chờ Claude: 85 mục — sugar.domestic, sugar.crop, bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, sugar.ai.cycle, bank.ai.read, power.ai.cycle
+
+## Cảnh báo
+
+- ⚠️ Watcher moit.power-prices không đọc được trang (URLError: <urlopen error [Errno 101] Network is unreachable>)
+- ❌ Nguồn tự động vẫn lỗi 11 ngày, web giữ số cũ — Giá bán lẻ xăng dầu Vùng 1 (Petrolimex) (retail_fuel: HTTPSConnectionPool(host='home.petrolimex.com.vn', port=443): Read timed out. (read timeout=30))

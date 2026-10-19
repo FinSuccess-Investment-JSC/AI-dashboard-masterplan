@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-16T04:52:35.131079+00:00",
+  "run_at": "2026-10-19T03:48:39.086715+00:00",
   "errors": 1,
   "sources": {
     "wti": {
@@ -47,15 +47,15 @@
     "hormuz": {
       "status": "ok",
       "latest_observation": "2026-10-11",
-      "last_success_at": "2026-10-16T04:52:35.131079+00:00",
-      "last_checked_at": "2026-10-16T04:52:35.131079+00:00",
+      "last_success_at": "2026-10-19T03:48:39.086715+00:00",
+      "last_checked_at": "2026-10-19T03:48:39.086715+00:00",
       "error": null
     },
     "bab_el_mandeb": {
       "status": "ok",
       "latest_observation": "2026-10-11",
-      "last_success_at": "2026-10-16T04:52:35.131079+00:00",
-      "last_checked_at": "2026-10-16T04:52:35.131079+00:00",
+      "last_success_at": "2026-10-19T03:48:39.086715+00:00",
+      "last_checked_at": "2026-10-19T03:48:39.086715+00:00",
       "error": null
     },
     "cushing": {
@@ -96,15 +96,15 @@
     "sugar_monthly": {
       "status": "ok",
       "latest_observation": "2026-09-30",
-      "last_success_at": "2026-10-12T06:23:07.244522+00:00",
-      "last_checked_at": "2026-10-12T06:23:07.244522+00:00",
+      "last_success_at": "2026-10-19T03:48:39.086715+00:00",
+      "last_checked_at": "2026-10-19T03:48:39.086715+00:00",
       "error": null
     },
     "middle_east_crude_exports": {
       "status": "ok",
       "latest_observation": "2026-07-01",
-      "last_success_at": "2026-10-12T06:23:07.244522+00:00",
-      "last_checked_at": "2026-10-12T06:23:07.244522+00:00",
+      "last_success_at": "2026-10-19T03:48:39.086715+00:00",
+      "last_checked_at": "2026-10-19T03:48:39.086715+00:00",
       "error": null
     },
     "sugar_producers": {
@@ -123,24 +123,24 @@
     },
     "wti_cot": {
       "status": "ok",
-      "latest_observation": "2026-10-06",
-      "last_success_at": "2026-10-13T16:20:47.688528+00:00",
-      "last_checked_at": "2026-10-13T16:20:47.688528+00:00",
+      "latest_observation": "2026-10-13",
+      "last_success_at": "2026-10-19T03:48:39.086715+00:00",
+      "last_checked_at": "2026-10-19T03:48:39.086715+00:00",
       "error": null
     },
     "opec_capacity": {
       "status": "ok",
       "latest_observation": "2026-09-30",
-      "last_success_at": "2026-10-15T13:38:34.459264+00:00",
-      "last_checked_at": "2026-10-15T13:38:34.459264+00:00",
+      "last_success_at": "2026-10-19T03:48:39.086715+00:00",
+      "last_checked_at": "2026-10-19T03:48:39.086715+00:00",
       "error": null
     },
     "retail_fuel": {
       "status": "error",
       "latest_observation": "2026-10-01",
       "last_success_at": "2026-10-08T06:32:48.308050+00:00",
-      "last_checked_at": "2026-10-16T04:52:35.131079+00:00",
-      "error": "Petrolimex product row missing or ambiguous: E5 RON 92"
+      "last_checked_at": "2026-10-19T03:48:39.086715+00:00",
+      "error": "HTTPSConnectionPool(host='home.petrolimex.com.vn', port=443): Read timed out. (read timeout=30)"
     },
     "singapore_cracks": {
       "status": "ok",
@@ -152,8 +152,8 @@
     "world_balance": {
       "status": "ok",
       "latest_observation": "2027-12-31",
-      "last_success_at": "2026-10-15T13:38:34.459264+00:00",
-      "last_checked_at": "2026-10-15T13:38:34.459264+00:00",
+      "last_success_at": "2026-10-19T03:48:39.086715+00:00",
+      "last_checked_at": "2026-10-19T03:48:39.086715+00:00",
       "error": null
     },
     "sugar_vn_balance": {
@@ -166,8 +166,8 @@
     "wb_energy_monthly": {
       "status": "ok",
       "latest_observation": "2026-09-30",
-      "last_success_at": "2026-10-12T06:23:07.244522+00:00",
-      "last_checked_at": "2026-10-12T06:23:07.244522+00:00",
+      "last_success_at": "2026-10-19T03:48:39.086715+00:00",
+      "last_checked_at": "2026-10-19T03:48:39.086715+00:00",
       "error": null
     },
     "coal_newcastle": {
@@ -180,8 +180,8 @@
     "enso_oni": {
       "status": "ok",
       "latest_observation": "2026-08-31",
-      "last_success_at": "2026-10-12T06:23:07.244522+00:00",
-      "last_checked_at": "2026-10-12T06:23:07.244522+00:00",
+      "last_success_at": "2026-10-19T03:48:39.086715+00:00",
+      "last_checked_at": "2026-10-19T03:48:39.086715+00:00",
       "error": null
     },
     "lng_jkm": {
@@ -194,8 +194,8 @@
     "nino34_weekly": {
       "status": "ok",
       "latest_observation": "2026-10-07",
-      "last_success_at": "2026-10-14T13:58:25.532181+00:00",
-      "last_checked_at": "2026-10-14T13:58:25.532181+00:00",
+      "last_success_at": "2026-10-19T03:48:39.086715+00:00",
+      "last_checked_at": "2026-10-19T03:48:39.086715+00:00",
       "error": null
     },
     "henry_hub": {
@@ -207,9 +207,9 @@
     },
     "vn_power_daily": {
       "status": "ok",
-      "latest_observation": "2026-10-14",
-      "last_success_at": "2026-10-16T04:52:35.131079+00:00",
-      "last_checked_at": "2026-10-16T04:52:35.131079+00:00",
+      "latest_observation": "2026-10-17",
+      "last_success_at": "2026-10-19T03:48:39.086715+00:00",
+      "last_checked_at": "2026-10-19T03:48:39.086715+00:00",
       "error": null
     }
   }
