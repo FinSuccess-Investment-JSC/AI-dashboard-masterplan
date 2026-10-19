@@ -224,7 +224,9 @@ routes.forEach(([key,label],i)=>{const b=make('button','majortabbtn',`${i+1}. ${
 window.showMajorTab=key=>select(key,true);window.addEventListener('hashchange',()=>select(location.hash.slice(1)));select(location.hash.slice(1));
 // Interactive futures: frequency changes aggregation; range only filters observations.
 const fastSrc=window.SECTOR_DAILY?.sources||{},powerFeed=['coal_newcastle','lng_jkm'].find(k=>fastSrc[k]?.records?.length)||'coal_newcastle';
-const feed=fastSrc[oil?'brent_futures':power?powerFeed:'sugar_futures'],chart=$('#chFastPrice');
+const futFeed=fastSrc[oil?'brent_futures':power?powerFeed:'sugar_futures'],chart=$('#chFastPrice');let feed=futFeed;
+// Đường: một card giá thô thế giới, chuyển Futures (ngày) / World Bank (tháng, quy về cent/lb). 1 kg = 2,20462 lb.
+const wbSugar=!oil&&!power&&fastSrc.sugar_monthly?.records?.length?{...fastSrc.sugar_monthly,records:fastSrc.sugar_monthly.records.map(r=>({date:r.date,value:Math.round(r.value/2.20462*10000)/100}))}:null;
 const fastName=oil?'Brent Futures':power?(powerFeed==='coal_newcastle'?'Than Newcastle':'LNG JKM'):'Sugar No.11 Futures',fastUnit=oil?'USD/thùng':power?(powerFeed==='coal_newcastle'?'USD/tấn':'USD/MMBtu'):'US cent/lb';
 if(chart&&feed?.records?.length){
  const card=chart.closest('.card'),control=make('div','chart-explore'),freq=make('select'),range=make('select'),start=make('input'),end=make('input');
@@ -232,7 +234,14 @@ if(chart&&feed?.records?.length){
  [['day','Ngày'],['week','Tuần'],['month','Tháng'],['year','Năm']].forEach(([v,t])=>{const o=make('option','',t);o.value=v;freq.append(o)});
  [['90','3 tháng'],['365','1 năm'],['all','Toàn bộ'],['custom','Tùy chọn']].forEach(([v,t])=>{const o=make('option','',t);o.value=v;range.append(o)});
  [[freq,'Kỳ'],[range,'Khoảng'],[start,'Từ'],[end,'Đến']].forEach(([n,t])=>{const l=make('label','',t);l.htmlFor=n.id;control.append(l,n)});
- const raw=feed.records,startDate=raw[0].date,endDate=raw.at(-1).date;start.min=end.min=startDate;start.max=end.max=endDate;start.value=startDate;end.value=endDate;
+ let raw,startDate,endDate;const setFeed=f=>{feed=f;raw=f.records;startDate=raw[0].date;endDate=raw.at(-1).date;start.min=end.min=startDate;start.max=end.max=endDate;start.value=startDate;end.value=endDate};setFeed(futFeed);
+ const sub=card.querySelector('.chart-sub'),subFut=sub?.textContent||'',fmtN=v=>v.toLocaleString('vi-VN',{maximumFractionDigits:2});
+ if(wbSugar){const srcSel=make('select');srcSel.id='price-source';[['fut','Futures No.11 · ngày'],['wb','World Bank · tháng']].forEach(([v,t])=>{const o=make('option','',t);o.value=v;srcSel.append(o)});const l=make('label','','Dữ liệu');l.htmlFor=srcSel.id;control.prepend(l,srcSel);
+  card.querySelector('.chart-title').textContent='Giá đường thô thế giới';
+  srcSel.addEventListener('change',()=>{const wb=srcSel.value==='wb';setFeed(wb?wbSugar:futFeed);freq.value=wb?'month':'day';[...freq.options].forEach(o=>o.disabled=wb&&o.value!=='month');range.value=wb?'all':'90';if(sub)sub.textContent=wb?'US cent/lb · bình quân tháng World Bank (quy đổi từ USD/kg) · '+fmtN(raw.at(-1).value)+' ('+endDate.slice(0,7)+')':subFut;draw()});
+  const wbLink=()=>{const btn=card.querySelector('.chart-source-action'),body=(btn&&document.getElementById(btn.getAttribute('aria-controls')))||card.querySelector('.source-details-body,.source-info-panel');if(!body||body.querySelector('.wb-src'))return;const p=make('p','source-note wb-src');const x=make('a','','World Bank Pink Sheet (Commodity Markets)');x.href='https://www.worldbank.org/en/research/commodity-markets';x.target='_blank';x.rel='noopener';p.append('Chế độ tháng: ',x,' · Sugar, world, USD/kg quy đổi cent/lb (1 kg = 2,20462 lb).');body.append(p)};wbLink();window.addEventListener('load',()=>setTimeout(wbLink,0));
+  ['chWorldRecent','chWorldLong'].forEach(id=>{const c=document.getElementById(id)?.closest('.card');if(c)c.hidden=true});
+ }
  const status=make('p','research-caption');status.setAttribute('aria-live','polite');chart.before(control);chart.after(status);
  const details=make('details','dtable');details.append(make('summary','','Bảng dữ liệu đang xem'));const tablewrap=make('div','tablewrap'),table=make('table');tablewrap.append(table);details.append(tablewrap);card.append(details);
  function draw(){
@@ -241,8 +250,8 @@ if(chart&&feed?.records?.length){
   if(!from||!to||from>to){chart.replaceChildren();table.replaceChildren();status.textContent='Chọn ngày bắt đầu không sau ngày kết thúc.';return}
   const rs=window.SectorMath.periodClose(raw.filter(r=>r.date>=from&&r.date<=to),freq.value);
   if(!rs.length){chart.replaceChildren();table.replaceChildren();status.textContent='Không có dữ liệu trong khoảng đã chọn.';return}
-  barLineChart('chFastPrice',{categories:rs.map(r=>r.date),series:[{name:fastName+(!oil&&!power&&feed.symbol&&feed.symbol!=='SB=F'?' · hợp đồng '+feed.symbol.replace('.NYB',''):''),kind:'line',color:'#2938A8',values:rs.map(r=>r.value)}],unit:fastUnit,digits:2,height:270,zeroBase:false});
-  status.textContent=rs.length+' điểm · '+from+' → '+to+(freq.value==='day'?'':' · close cuối mỗi kỳ, kỳ đầu/cuối có thể chưa đủ')+(feed.symbol&&feed.symbol!=='SB=F'&&!oil&&!power?' · Một hợp đồng '+feed.symbol.replace('.NYB','')+' (Yahoo không trả đủ chuỗi SB=F); không ghép các hợp đồng.':'');
+  const isWb=feed===wbSugar;barLineChart('chFastPrice',{categories:rs.map(r=>isWb?r.date.slice(0,7):r.date),series:[{name:(isWb?'Đường thô · World Bank':fastName)+(!oil&&!power&&feed.symbol&&feed.symbol!=='SB=F'?' · hợp đồng '+feed.symbol.replace('.NYB',''):''),kind:'line',color:'#2938A8',values:rs.map(r=>r.value)}],unit:fastUnit,digits:2,height:270,zeroBase:false});
+  status.textContent=rs.length+' điểm · '+from+' → '+to+(isWb?' · World Bank là bình quân tháng, futures là giá đóng cửa từng phiên; tháng gần nhất có thể lệch giá phiên hiện tại':freq.value==='day'?'':' · close cuối mỗi kỳ, kỳ đầu/cuối có thể chưa đủ')+(feed.symbol&&feed.symbol!=='SB=F'&&!oil&&!power?' · Một hợp đồng '+feed.symbol.replace('.NYB','')+' (Yahoo không trả đủ chuỗi SB=F); không ghép các hợp đồng.':'');
   table.replaceChildren();const h=make('tr');['Kỳ','Phiên quan sát','Giá đóng cửa'].forEach(t=>h.append(make('th','',t)));table.append(h);rs.forEach(r=>{const tr=make('tr');[r.date,r.last_date,r.value===null?'—':r.value.toLocaleString('vi-VN',{maximumFractionDigits:2})].forEach(t=>tr.append(make('td','',t)));table.append(tr)});
  }
  [freq,range,start,end].forEach(n=>n.addEventListener('change',draw));draw();
