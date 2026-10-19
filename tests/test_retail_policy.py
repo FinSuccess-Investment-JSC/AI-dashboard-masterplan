@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from petrolimex_prices import parse_prices, article_links
+from petrolimex_prices import parse_prices, article_links, issued_date
 from polling_policy import due, bank_due, VN
 
 
@@ -38,9 +38,30 @@ Mazut N°2B (3,58) Déng/kg 20.390 20.790'''
         with self.assertRaisesRegex(ValueError, 'ambiguous: E10'):
             parse_prices(ocr.replace('95 Mitre 5', '95-IIl Mitre 5'))
 
+    def test_petrolimex_grade_levels_from_2026_10_08(self):
+        # 08.10.2026 table: no "-III" suffix, only "Mức N"; diesel 0,05S read as "0,058".
+        ocr = '''X&ng E10 RON 95 Mic 5 Déngllit 29.050 29.630
+X&ng E10 RON 95 Mic 3 Déngllit 28.250 28.810
+X&ng E5 RON 92 Mic 2 Déngilit 27.700 28.250
+Diézen 0,001S Mtrc 5 Déngilit 30.520 31.130
+Diézen 0,058 Mtrc 2 Déngilit 29.120 29.700
+Dau Mazut 180 0,5S Déng/kg 27.490 28.030'''
+        self.assertEqual(parse_prices(ocr), {'e5': 27700, 'ron95': 28250, 'diesel': 29120})
+        # the stabilisation-fund table attached to the same notice is not a price table
+        with self.assertRaises(ValueError):
+            parse_prices('Mat hang IXang E5 va E10} Diézen 0,05 S-Il | Diézen 0,001 S-V | Mazut\nTrich Mtrc cai 0 200 200 0')
+
     def test_notice_date(self):
         html = '<a href="/ndi/thong-cao-bao-chi/ngay-24-9-2026.html">Petrolimex điều chỉnh giá xăng dầu từ 15 giờ 00 phút ngày 24.9.2026</a>'
         self.assertEqual(list(article_links(html)), ['2026-09-24'])
+
+    def test_undated_notice_and_issue_date(self):
+        html = ('<a href="/ndi/thong-cao-bao-chi/petrolimex-chu-dong-giam-gia.html">Petrolimex chủ động giảm giá xăng dầu 300 đồng/lít,kg</a>'
+                '<a href="/ndi/tin-tuc/khac.html">Giá xăng dầu thế giới</a>')
+        undated = set()
+        self.assertEqual(article_links(html, undated), {})
+        self.assertEqual(undated, {'https://home.petrolimex.com.vn/ndi/thong-cao-bao-chi/petrolimex-chu-dong-giam-gia.html'})
+        self.assertEqual(issued_date('<p>Petrolimex 03:00 CH @ Thứ Năm - 15 tháng 10, 2026</p>'), '2026-10-15')
 
     def test_release_windows_and_repeat_checks(self):
         thu = dt.datetime(2026, 10, 8, 7, 30, tzinfo=VN)
