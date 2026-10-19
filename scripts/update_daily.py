@@ -297,8 +297,12 @@ def load_sugar_world_shares():
     if sum(i.file_size for i in z.infolist())>60_000_000:raise ValueError('PSD archive exceeds limit')
     totals={};parts={}
     attrs={a:g for g,(a,_) in SUGAR_SHARE_GROUPS.items()}
+    stock={};use={}
     for r in csv.DictReader(io.TextIOWrapper(z.open('psd_sugar.csv'),encoding='utf-8-sig')):
-        g=attrs.get(r['Attribute_Description']);year=int(r['Market_Year'])
+        year=int(r['Market_Year'])
+        if year>=2010 and r['Attribute_Description']=='Ending Stocks':stock[year]=stock.get(year,0)+float(r['Value'])/1000
+        if year>=2010 and r['Attribute_Description']=='Total Disappearance':use[year]=use.get(year,0)+float(r['Value'])/1000
+        g=attrs.get(r['Attribute_Description'])
         if not g or year<2010:continue
         if r['Commodity_Code']!='0612000' or r['Unit_Description']!='(1000 MT)':raise ValueError('PSD identity/unit mismatch')
         v=float(r['Value'])/1000;totals[(g,year)]=totals.get((g,year),0)+v
@@ -306,6 +310,7 @@ def load_sugar_world_shares():
     years=sorted({y for _,y in totals});records=[];fields=[]
     for g,(_,countries) in SUGAR_SHARE_GROUPS.items():
         fields+=[f'{g}_{share_key(c)}' for c in countries]+[f'{g}_other',f'{g}_total']
+    fields+=['stocks_total','use_total']
     for y in years:
         row={'date':f'{y}-01-01','market_year':y}
         for g,(_,countries) in SUGAR_SHARE_GROUPS.items():
@@ -317,6 +322,8 @@ def load_sugar_world_shares():
                 if v is None:raise ValueError(f'PSD country missing {g} {c} {y}')
                 row[f'{g}_{share_key(c)}']=round(v,3);known+=v
             row[f'{g}_other']=round(t-known,3);row[f'{g}_total']=round(t,3)
+        if not use.get(y):raise ValueError(f'PSD use missing {y}')
+        row['stocks_total']=round(stock.get(y,0),3);row['use_total']=round(use[y],3)
         records.append(row)
     return {'source_url':PSD_SUGAR,'source_name':'USDA FAS PSD','observation_frequency':'marketing year',
         'publication_frequency':'semiannual','unit':'million tonnes raw value','records':normalize(records,fields),

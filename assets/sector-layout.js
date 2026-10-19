@@ -99,7 +99,7 @@ else{
   const c=card('sugar-country-yoy',`Dự báo sản lượng đường niên vụ ${y}/${String(y+1).slice(2)} theo nước`,`Nghìn tấn, giá trị thô · nhãn nước kèm % so niên vụ ${y-1}/${String(y).slice(2)}`,'periodic','semiannual');world.append(c);
   const h=make('div');h.id='ch-sugar-country-yoy';c.append(h);
   const model={categories:pairs.map(([n])=>n),tickLabels:pairs.map(([n,k])=>n+'\n'+sg(pct(k))),allTicks:true,series:[{name:`${y-1}/${String(y).slice(2)}`,color:'#C9CED8',kind:'bar',values:pairs.map(([,k])=>prev[k]*1000)},{name:`${y}/${String(y+1).slice(2)}*`,color:'#2938A8',kind:'bar',values:pairs.map(([,k])=>cur[k]*1000)}],unit:'nghìn tấn',digits:0,time:false,aria:'Sản lượng đường theo nước'};
-  if(window.ChartTypes)ChartTypes.mount(h,{...model,native:'bar'},()=>{h.innerHTML=ChartTypes.render(model,'bar')});
+  if(window.ChartTypes)ChartTypes.mount(h,{...model,native:'bar'},()=>{h.innerHTML=ChartTypes.render({...model,width:h.clientWidth||640},'bar')});
   source(c,s,'USDA PSD, Sugar Centrifugal, Production; '+y+'/'+String(y+1).slice(2)+' là dự báo USDA. EU theo USDA giảm '+fmt(Math.abs(pct('eu')),1)+'%; khác số −19% của EU Sugar Market Observatory ở chart biến động sản lượng (khác nguồn và kỳ dự báo).');
  }
  // Tỷ trọng thế giới theo nước (USDA PSD): cung = sản xuất; cầu = nhập khẩu, tiêu dùng. Phần còn lại gộp "Nước khác" để tổng 100%.
@@ -111,17 +111,35 @@ else{
   const rs=sh.records.slice(-12),lab=rs.map(r=>String(r.market_year)+(r.market_year>=2025?'*':''));
   const share=(id,g,title,sub)=>{const c=card(id,title,sub,'periodic','semiannual');world.append(c);const h=make('div');h.id='ch-'+id;c.append(h);
    const model={categories:lab,series:keys(g).map(k=>({name:VN[k]||k,color:COL[k]||'#999',kind:'bar',values:rs.map(r=>+(r[g+'_'+k]/r[g+'_total']*100).toFixed(1))})),unit:'%',digits:1,stackable:true,time:true,yMax:100,aria:title};
-   if(window.ChartTypes)ChartTypes.mount(h,{...model,native:'stack'},()=>{h.innerHTML=ChartTypes.render(model,'stack')});
+   if(window.ChartTypes)ChartTypes.mount(h,{...model,native:'stack'},()=>{h.innerHTML=ChartTypes.render({...model,width:h.clientWidth||640},'stack')});
    const L=rs.at(-1);c.append(make('div','source-note','Tổng thế giới '+fmt(L[g+'_total'],1)+' triệu tấn ('+L.market_year+'*, ước tính).'));
    source(c,sh,'USDA PSD, Sugar Centrifugal, giá trị thô. Tỷ trọng = nước ÷ tổng các nước trong PSD cùng năm; EU tính là một khối. Năm trên trục là năm bắt đầu niên vụ của từng nước.')};
   share('sugar-world-share-prod','prod','Tỷ trọng sản xuất đường thế giới','% sản lượng toàn cầu · Cung');
   share('sugar-world-share-imp','imp','Tỷ trọng nhập khẩu đường thế giới','% tổng nhập khẩu · Cầu');
   share('sugar-world-share-cons','cons','Tỷ trọng tiêu dùng đường thế giới','% tiêu dùng toàn cầu · Cầu');
  }
+ // Giá – tồn kho/tiêu thụ – ENSO: ba chart riêng trục, cùng mốc 2010 (không dùng hai trục để tránh giao cắt giả).
+ const wbm=src.sugar_monthly,oni=src.enso_oni;
+ if(sh?.records?.[0]?.stocks_total!=null&&wbm?.records?.length&&oni?.records?.length){
+  const c=card('sugar-cycle','Giá đường, tồn kho thế giới và ENSO, 2010 đến nay','Ba chart cùng mốc thời gian, mỗi chart một trục','periodic','monthly');world.append(c);c.style.gridColumn='1 / -1';
+  const sub=(id,t)=>{c.append(make('div','chart-sub',t));const h=make('div');h.id=id;c.append(h);return h};
+  const pr=wbm.records.filter(r=>r.date>='2010'),h1=sub('ch-sugar-cycle-price','Giá đường thế giới, USD/kg, bình quân tháng (World Bank)');
+  const m1={categories:pr.map(r=>r.date.slice(0,7)),tickLabels:pr.map(r=>r.date.slice(0,4)),series:[{name:'Giá đường',color:'#2938A8',kind:'line',values:pr.map(r=>r.value)}],unit:'USD/kg',digits:2,zeroBase:false,aria:'Giá đường thế giới'};
+  ChartTypes.mount(h1,m1,()=>{h1.innerHTML=ChartTypes.render({...m1,width:h1.clientWidth||640},'line')});
+  const st=sh.records.filter(r=>r.market_year>=2010),h2=sub('ch-sugar-cycle-stu','Tồn kho cuối kỳ / tiêu thụ toàn cầu, % (USDA PSD, năm bắt đầu niên vụ; * ước tính)');
+  const m2={categories:st.map(r=>String(r.market_year)+(r.market_year>=2025?'*':'')),series:[{name:'Tồn kho/tiêu thụ',color:'#861C52',kind:'line',values:st.map(r=>+(r.stocks_total/r.use_total*100).toFixed(1))}],unit:'%',digits:1,zeroBase:false,aria:'Tồn kho trên tiêu thụ'};
+  ChartTypes.mount(h2,m2,()=>{h2.innerHTML=ChartTypes.render({...m2,width:h2.clientWidth||640},'line')});
+  const on=oni.records.filter(r=>r.date>='2010'),h3=sub('ch-sugar-cycle-enso','ENSO, chỉ số ONI °C (NOAA): ≥ +0,5 El Niño, ≤ −0,5 La Niña');
+  const pick=f=>on.map(r=>f(r.oni)?r.oni:null);
+  const m3={categories:on.map(r=>r.date.slice(0,7)),tickLabels:on.map(r=>r.date.slice(0,4)),series:[{name:'El Niño',color:'#C8102E',kind:'bar',values:pick(v=>v>=0.5)},{name:'La Niña',color:'#2E7BC4',kind:'bar',values:pick(v=>v<=-0.5)},{name:'Trung tính',color:'#C9CED8',kind:'bar',values:pick(v=>v>-0.5&&v<0.5)}],unit:'°C',digits:2,stackable:true,aria:'Chỉ số ENSO ONI'};
+  ChartTypes.mount(h3,{...m3,native:'stack'},()=>{h3.innerHTML=ChartTypes.render({...m3,width:h3.clientWidth||640},'stack')});
+  const row=make('div','source-note');row.append('Nguồn: ');[['World Bank Pink Sheet',wbm.source_url],['USDA FAS PSD',sh.source_url],['NOAA CPC ONI',oni.source_url]].forEach(([t,u],i)=>{if(i)row.append(' · ');const a=make('a','',t);a.href=u;a.target='_blank';a.rel='noopener';row.append(a)});c.append(row);
+  c.append(make('div','source-note method-note','Tồn kho/tiêu thụ = tổng tồn kho cuối kỳ ÷ tổng tiêu thụ (Total Disappearance) của các nước trong PSD. ONI là trung bình trượt 3 tháng, gắn vào tháng cuối. Thời tiết tác động lên vụ mía thường trễ 6–12 tháng.'));
+ }
  // Dự báo 2026/27 từ tài liệu: số đã mở trang gốc, câu trích lưu ở data/sugar/evidence.json (sugar-11, sugar-12).
  const fcBar=(id,title,sub,rows,unit,digits,refs,gap)=>{const c=card(id,title,sub,'periodic','on-publish');world.append(c);const h=make('div');h.id='ch-'+id;c.append(h);
   const model={categories:rows.map(r=>r[0]),series:[{name:title,color:'#2938A8',kind:'bar',values:rows.map(r=>r[1])}],unit,digits,stackable:false,time:false,aria:title};
-  if(window.ChartTypes)ChartTypes.mount(h,{...model,native:'bar'},()=>{h.innerHTML=ChartTypes.render(model,'bar')});
+  if(window.ChartTypes)ChartTypes.mount(h,{...model,native:'bar'},()=>{h.innerHTML=ChartTypes.render({...model,width:h.clientWidth||640},'bar')});
   if(gap)c.append(make('div','source-note data-gap',gap));
   const row=make('div','source-note');row.append('Nguồn: ');refs.forEach(([t,u],i)=>{if(i)row.append(' · ');const a=make('a','',t);a.href=u;a.target='_blank';a.rel='noopener';row.append(a)});c.append(row)};
  fcBar('sugar-11','Dự báo cán cân đường thế giới niên vụ 2026/27','Triệu tấn · âm = thiếu hụt · số mới nhất của từng tổ chức',[['Czarnikow (11/06)',-0.1],['ISO (01/09)',-0.2],['Covrig (03/08)',-0.3],['StoneX (28/07)',-1.7],['Green Pool (27/08)',-3.2]],'triệu tấn',1,[['Barchart 02/09/2026','https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit'],['Barchart 31/08/2026','https://www.barchart.com/story/news/4359559/global-supply-fears-underpin-sugar-prices']]);

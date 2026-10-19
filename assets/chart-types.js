@@ -246,7 +246,7 @@
     paint(id);
     if (window.ResizeObserver && !host._ctRO) {
       let w = host.clientWidth;
-      host._ctRO = new ResizeObserver(() => { const nw = host.clientWidth; if (Math.abs(nw - w) > 8) { w = nw; const e = registry.get(id); if (e && !isDefault(e)) paint(id); } });
+      host._ctRO = new ResizeObserver(() => { const nw = host.clientWidth; if (nw && Math.abs(nw - w) > 8) { w = nw; if (registry.get(id)) paint(id); } });
       host._ctRO.observe(host);
     }
   }
