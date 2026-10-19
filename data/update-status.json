@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-19T09:06:33.267218+00:00",
+  "run_at": "2026-10-19T09:09:09.278304+00:00",
   "errors": 0,
   "sources": {
     "wti": {
@@ -110,8 +110,8 @@
     "sugar_producers": {
       "status": "ok",
       "latest_observation": "2026-01-01",
-      "last_success_at": "2026-10-06T04:37:13.187982+00:00",
-      "last_checked_at": "2026-10-06T04:37:13.187982+00:00",
+      "last_success_at": "2026-10-19T09:09:09.278304+00:00",
+      "last_checked_at": "2026-10-19T09:09:09.278304+00:00",
       "error": null
     },
     "us_production": {

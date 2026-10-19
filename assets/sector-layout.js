@@ -92,6 +92,16 @@ else{
  source(c,s,'USDA PSD, Sugar Centrifugal, Production; nghìn tấn quy đổi giá trị thô chia 1.000. Chọn Brazil, India, Thailand, European Union; không cộng các nước thành tổng thế giới. Năm trên trục là năm bắt đầu niên vụ địa phương, không cùng một kỳ lịch toàn cầu. * Kỳ gần nhất có thể được USDA ước tính/dự báo và điều chỉnh; lịch báo cáo đường tháng 5 và 11.');
  c.append(make('div','chart-insight','AI · bối cảnh ngành: Theo dõi sản lượng Brazil, Ấn Độ và Thái Lan để nhận diện thay đổi nguồn cung có thể giao dịch quốc tế. Sản lượng tăng chưa chắc xuất khẩu tăng nếu tiêu thụ, ethanol hoặc hạn chế xuất khẩu hấp thụ phần tăng. Đây là đối chiếu các trung tâm cung, chưa phải tổng cân bằng toàn cầu.'));
  }else c.append(make('div','source-note','Chưa tải được USDA PSD. Không suy diễn số liệu thế giới từ cân đối Việt Nam.'));
+ // Sản lượng 2 niên vụ gần nhất theo nước (USDA PSD), % so cùng kỳ ghi ở nhãn nước.
+ if(s?.records?.length&&'vietnam' in s.records.at(-1)){
+  const cur=s.records.at(-1),prev=s.records.at(-2),y=cur.market_year,pairs=[['Brazil','brazil'],['Ấn Độ','india'],['EU','eu'],['Trung Quốc','china'],['Thái Lan','thailand'],['Mỹ','us'],['Nga','russia'],['Việt Nam','vietnam']];
+  const pct=k=>(cur[k]/prev[k]-1)*100,sg=v=>(v>0?'+':v<0?'−':'')+fmt(Math.abs(v),1)+'%';
+  const c=card('sugar-country-yoy',`Dự báo sản lượng đường niên vụ ${y}/${String(y+1).slice(2)} theo nước`,`Nghìn tấn, giá trị thô · nhãn nước kèm % so niên vụ ${y-1}/${String(y).slice(2)}`,'periodic','semiannual');world.append(c);
+  const h=make('div');h.id='ch-sugar-country-yoy';c.append(h);
+  const model={categories:pairs.map(([n])=>n),tickLabels:pairs.map(([n,k])=>n+'\n'+sg(pct(k))),allTicks:true,series:[{name:`${y-1}/${String(y).slice(2)}`,color:'#C9CED8',kind:'bar',values:pairs.map(([,k])=>prev[k]*1000)},{name:`${y}/${String(y+1).slice(2)}*`,color:'#2938A8',kind:'bar',values:pairs.map(([,k])=>cur[k]*1000)}],unit:'nghìn tấn',digits:0,time:false,aria:'Sản lượng đường theo nước'};
+  if(window.ChartTypes)ChartTypes.mount(h,{...model,native:'bar'},()=>{h.innerHTML=ChartTypes.render(model,'bar')});
+  source(c,s,'USDA PSD, Sugar Centrifugal, Production; '+y+'/'+String(y+1).slice(2)+' là dự báo USDA. EU theo USDA giảm '+fmt(Math.abs(pct('eu')),1)+'%; khác số −19% của EU Sugar Market Observatory ở chart biến động sản lượng (khác nguồn và kỳ dự báo).');
+ }
  // Tỷ trọng thế giới theo nước (USDA PSD): cung = sản xuất; cầu = nhập khẩu, tiêu dùng. Phần còn lại gộp "Nước khác" để tổng 100%.
  const sh=src.sugar_world_shares;
  if(sh?.records?.length){

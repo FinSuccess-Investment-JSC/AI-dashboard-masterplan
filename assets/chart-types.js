@@ -63,7 +63,7 @@
     const label = i => String(model.tickLabels?.[i] ?? cats[i]);
     if (type === 'hbar') return renderH(model, main, over, f, label);
     // Uniform plot height so charts in one row/tab look the same size.
-    const W = Math.max(280, Math.round(model.width || 640)), H = UNIFORM ? 260 : Math.max(240, model.height || 250), L = 52, R = 16, T = 16, B = 30;
+    const W = Math.max(280, Math.round(model.width || 640)), H = UNIFORM ? 260 : Math.max(240, model.height || 250), L = 52, R = 16, T = 16, B = cats.some((_, i) => label(i).includes('\n')) ? 44 : 30;
     const pw = W - L - R, ph = H - T - B, band = pw / Math.max(n, 1);
     const stacked = type === 'stack' || (type === 'area' && model.stackable && main.length > 1 &&
       main.every(s => s.values.every(v => v == null || v >= 0)) && main.every(s => s.values.every(num)));
@@ -87,11 +87,12 @@
       s += `<text x="${L - 8}" y="${(Y(v) + 4).toFixed(1)}" text-anchor="end" class="axislabel">${esc(f(v))}</text>`;
     }
     s += `<line x1="${L}" x2="${W - R}" y1="${base.toFixed(1)}" y2="${base.toFixed(1)}" class="axisline"/>`;
-    const every = Math.max(1, Math.ceil(n / Math.max(3, Math.floor(pw / 70))));
+    const every = model.allTicks ? 1 : Math.max(1, Math.ceil(n / Math.max(3, Math.floor(pw / 70))));
     cats.forEach((_, i) => {
       if (i % every === 0 || i === n - 1) {
         if (i !== n - 1 && n - 1 - i < every / 2 && i % every === 0 && i !== 0) return;
-        s += `<text x="${X(i).toFixed(1)}" y="${H - 10}" text-anchor="middle" class="catlabel">${esc(label(i))}</text>`;
+        const parts = label(i).split('\n'), y0 = H - B + 16;
+        s += `<text x="${X(i).toFixed(1)}" y="${y0}" text-anchor="middle" class="catlabel">` + parts.map((t, k) => `<tspan x="${X(i).toFixed(1)}" dy="${k ? 13 : 0}">${esc(t)}</tspan>`).join('') + '</text>';
       }
     });
     const line = (values, color, width = 2.2, dots = n <= 40) => {

@@ -272,7 +272,7 @@ def load_wb_sugar():
 def load_sugar_producers():
     raw=fetch(PSD_SUGAR);z=zipfile.ZipFile(io.BytesIO(raw))
     if sum(i.file_size for i in z.infolist())>60_000_000:raise ValueError('PSD archive exceeds limit')
-    countries={'Brazil':'brazil','India':'india','Thailand':'thailand','European Union':'eu'}
+    countries={'Brazil':'brazil','India':'india','Thailand':'thailand','European Union':'eu','China':'china','United States':'us','Russia':'russia','Vietnam':'vietnam'}
     grouped={}
     for r in csv.DictReader(io.TextIOWrapper(z.open('psd_sugar.csv'),encoding='utf-8-sig')):
         if r['Country_Name'] not in countries or r['Attribute_Description']!='Production' or int(r['Market_Year'])<2010:continue
