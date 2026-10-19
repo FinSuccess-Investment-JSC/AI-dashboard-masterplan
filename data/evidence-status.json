@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-09T14:51:48Z",
+ "checked_at": "2026-10-19T07:28:11Z",
  "problems": [
   {
    "file": "data/agri/evidence.json",
@@ -27,13 +27,6 @@
    "block": "nn-t3",
    "claim": "EUDR DN lớn",
    "url": "https://trade.ec.europa.eu/access-to-markets/en/news/delay-until-december-2026-and-other-developments-implementation-eudr-regulation",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/agri/evidence.json",
-   "block": "nn-60",
-   "claim": "GVR 6T/2026",
-   "url": "https://nhandan.vn/sau-thang-nam-2026-tap-doan-vrg-dat-loi-nhuan-hon-6000-ty-dong-post978413.html",
    "state": "quote_changed"
   },
   {
@@ -72,10 +65,38 @@
    "state": "quote_changed"
   },
   {
-   "file": "data/port/evidence.json",
-   "block": "cg-03",
-   "claim": "Toàn quốc 5T/2026 hàng qua cảng",
-   "url": "https://baochinhphu.vn/giam-thu-tuc-hanh-chinh-hang-hoa-qua-cang-bien-tang-manh-102260528153427691.htm",
+   "file": "data/construction/evidence.json",
+   "block": "xd-60",
+   "claim": "Kế hoạch 2026: tổng doanh thu / LNST cổ đông mẹ (trước phân bổ lợi thế thương mại)",
+   "url": "https://fireant.vn/tin-tuc/cii-loi-nhuan-2026-du-kien-giam-34-cii-don-luc-cho-danh-muc-ha-tang-21-ty-usd/39372321",
+   "state": "unreachable: HTTPError"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-60",
+   "claim": "Cổ tức 2026 dự kiến",
+   "url": "https://fireant.vn/tin-tuc/cii-loi-nhuan-2026-du-kien-giam-34-cii-don-luc-cho-danh-muc-ha-tang-21-ty-usd/39372321",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-61",
+   "claim": "KQ 6T/2026: DT thuần / LNST / %KH",
+   "url": "https://fireant.vn/tin-tuc/ong-lon-xi-mang-bao-lai-tang-manh-nhom-dn-van-thua-lo-keo-dai/41472106",
+   "state": "unreachable: HTTPError"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-61",
+   "claim": "KQ Q2/2026: lợi nhuận",
+   "url": "https://fireant.vn/tin-tuc/ong-lon-xi-mang-bao-lai-tang-manh-nhom-dn-van-thua-lo-keo-dai/41472106",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-61",
+   "claim": "Tân Cang 3: mỏ trữ lượng lớn nhất",
+   "url": "https://www.bsc.com.vn/Report/ReportFile/14278",
    "state": "quote_changed"
   },
   {
@@ -94,6 +115,41 @@
   },
   {
    "file": "data/port/evidence.json",
+   "block": "cg-04",
+   "claim": "WCI tổng hợp 08/10",
+   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/port/evidence.json",
+   "block": "cg-04",
+   "claim": "WCI Thượng Hải–New York",
+   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/port/evidence.json",
+   "block": "cg-04",
+   "claim": "WCI Thượng Hải–Los Angeles",
+   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/port/evidence.json",
+   "block": "cg-04",
+   "claim": "WCI Thượng Hải–Genoa",
+   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/port/evidence.json",
+   "block": "cg-04",
+   "claim": "WCI Thượng Hải–Rotterdam",
+   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/port/evidence.json",
    "block": "cg-06",
    "claim": "chCaiMep: tổng cụm và 3 bến",
    "url": "https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html",
@@ -101,16 +157,450 @@
   },
   {
    "file": "data/port/evidence.json",
-   "block": "cg-15",
-   "claim": "Cái Mép Hạ",
-   "url": "https://baodauthau.vn/chay-nuoc-rut-trien-khai-du-an-cang-bien-tai-tphcm-khong-de-nha-dau-tu-vuong-thu-tuc-post196899.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/port/evidence.json",
    "block": "cg-t3",
    "claim": "SGP KH 2026 hợp nhất",
    "url": "https://saigonport.vn/wp-content/uploads/2026/04/VN_04-Bao-cao-cua-HDQT-tai-DHDCD-2026.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-18",
+   "claim": "QĐ 768/QĐ-TTg: Gió trên bờ & gần bờ 2030",
+   "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-18",
+   "claim": "QĐ 768/QĐ-TTg: Gió ngoài khơi 2030–2035",
+   "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-18",
+   "claim": "QĐ 768/QĐ-TTg: Mặt trời 2030 (tập trung + mái nhà)",
+   "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-18",
+   "claim": "QĐ 768/QĐ-TTg: Sinh khối, rác 2030",
+   "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-18",
+   "claim": "QĐ 768/QĐ-TTg: Thủy điện 2030",
+   "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-18",
+   "claim": "QĐ 768/QĐ-TTg: Thủy điện tích năng đến 2030",
+   "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-18",
+   "claim": "QĐ 768/QĐ-TTg: Lưu trữ 2030",
+   "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-18",
+   "claim": "QĐ 768/QĐ-TTg: Nhiệt điện than 2030",
+   "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-18",
+   "claim": "QĐ 768/QĐ-TTg: Khí trong nước 2030",
+   "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-18",
+   "claim": "QĐ 768/QĐ-TTg: LNG 2030",
+   "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-18",
+   "claim": "QĐ 768/QĐ-TTg: Nguồn linh hoạt 2030",
+   "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-18",
+   "claim": "QĐ 768/QĐ-TTg: Điện hạt nhân 2030–2035",
+   "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-18",
+   "claim": "QĐ 768/QĐ-TTg: Nhập khẩu điện 2030",
+   "url": "https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/realestate-market/evidence.json",
+   "block": "bds-12",
+   "claim": "ha đất thương phẩm KCN · BCM · đất thương phẩm",
+   "url": "https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/realestate-market/evidence.json",
+   "block": "bds-12",
+   "claim": "ha đất thương phẩm KCN · BCM · đất thương phẩm còn lại",
+   "url": "https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/realestate-market/evidence.json",
+   "block": "bds-12",
+   "claim": "ha đất thương phẩm KCN · SZC · đã cho thuê (tối thiểu)",
+   "url": "https://acbs.com.vn/Files/Domains/ACBS/WFL-1585/250414041206-1015-1015000001.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/realestate-market/evidence.json",
+   "block": "bds-44",
+   "claim": "Diện tích ký mới KBC, LHG, NTC, SIP 2024/2025F/2026F",
+   "url": "https://www.vdsc.com.vn/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/realestate-market/evidence.json",
+   "block": "bds-44",
+   "claim": "SIP ký mới 2026F",
+   "url": "https://www.vdsc.com.vn/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/realestate-market/evidence.json",
+   "block": "bds-44",
+   "claim": "KBC ký mới 2026F",
+   "url": "https://www.vdsc.com.vn/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/realestate-market/evidence.json",
+   "block": "bds-45",
+   "claim": "Diện tích và giá thuê 7 KCN mở bán 2026",
+   "url": "https://www.vdsc.com.vn/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/realestate-market/evidence.json",
+   "block": "bds-46",
+   "claim": "KCN trên đất cao su: quy mô",
+   "url": "https://www.vdsc.com.vn/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/realestate-market/evidence.json",
+   "block": "bds-47",
+   "claim": "Tỷ trọng vốn FDI đăng ký mới theo quốc gia 2025",
+   "url": "https://www.vdsc.com.vn/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/realestate-market/evidence.json",
+   "block": "bds-47",
+   "claim": "FDI đăng ký cấp mới ngoài BĐS 2025",
+   "url": "https://www.vdsc.com.vn/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/realestate-market/evidence.json",
+   "block": "bds-48",
+   "claim": "Cao tốc kế hoạch/thực tế theo giai đoạn",
+   "url": "https://www.vdsc.com.vn/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/retail/evidence.json",
+   "block": "bl-61",
+   "claim": "LNTT 6T/2026 sau soát xét (bổ sung lãi từ NutiKD)",
+   "url": "https://mekongasean.vn/loi-nhuan-kido-tang-manh-sau-soat-xet-6-thang-dau-nam-2026-59181.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/seafood/evidence.json",
+   "block": "ts-42",
+   "claim": "Cá tra POR21: IDI bị rút khỏi kỳ rà soát (không có lô hàng xem xét)",
+   "url": "https://www.federalregister.gov/d/2026-16553",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/seafood/evidence.json",
+   "block": "ts-42",
+   "claim": "Tôm CBPG POR18 (2/2023–1/2024) cuối cùng (FR 23/02/2026): mức riêng cho DN không được kiểm tra (gồm Sao Ta/FMC)",
+   "url": "https://www.federalregister.gov/d/2026-03511",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/seafood/evidence.json",
+   "block": "ts-42",
+   "claim": "Tôm Ecuador CBPG: kết luận cuối phủ định (0,00% và 0,48% de minimis) → không có lệnh CBPG",
+   "url": "https://govinfo.gov/content/pkg/FR-2024-10-28/pdf/2024-24958.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/seafood/evidence.json",
+   "block": "price",
+   "claim": "Giá tôm thẻ tại ao (Simplize, 09/10/2026)",
+   "url": "https://simplize.vn/hang-hoa/gia-tom-the",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-42",
+   "claim": "Lượt tàu qua Suez trung bình tháng 9/2026 (IMF PortWatch, AIS)",
+   "url": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-42",
+   "claim": "Lượt tàu qua Suez tháng 9/2023 (trước khủng hoảng) để so sánh",
+   "url": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-42",
+   "claim": "Lượt tàu qua Suez và Bab el-Mandeb 1–4/10/2026",
+   "url": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-42",
+   "claim": "Lượt tàu qua Hormuz tháng 9/2026 (PortWatch)",
+   "url": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-42",
+   "claim": "Mốc xung đột 2026",
+   "url": "https://gcaptain.com/hormuz-on-a-knife-edge-shipping-pays-the-price-as-the-iran-u-s-ceasefire-unravels/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-42",
+   "claim": "Phí bảo hiểm chiến tranh Hormuz tháng 7/2026",
+   "url": "https://gcaptain.com/hormuz-on-a-knife-edge-shipping-pays-the-price-as-the-iran-u-s-ceasefire-unravels/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-50",
+   "claim": "Mỹ tấn công 5 tàu dầu Iran 8/9/2026, 3 tàu có liên hệ shadow fleet Nga",
+   "url": "https://euromaidanpress.com/2026/09/10/3-of-5-iranian-tankers-hit-by-us-had-links-to-russias-shadow-fleet/",
+   "state": "unreachable: HTTPError"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-50",
+   "claim": "Phí cảng Mỹ với tàu Trung Quốc sở hữu/vận hành (Annex I)",
+   "url": "https://www.clydeco.com/en/insights/2025/10/impact-of-tariffs-to-charterparties-1",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-50",
+   "claim": "Phí cảng Mỹ với tàu đóng tại Trung Quốc (Annex II)",
+   "url": "https://www.clydeco.com/en/insights/2025/10/impact-of-tariffs-to-charterparties-1",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-50",
+   "claim": "Tạm hoãn phí USTR 1 năm",
+   "url": "https://www.hklaw.com/en/insights/publications/2025/11/ustr-port-fee-suspension-what-you-need-to-know",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-12",
+   "claim": "BIMCO dry bulk 7/2026",
+   "url": "https://cyprusshippingnews.com/2026/07/31/bimco-dry-bulk-shipping-market-overview-outlook-2/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-50",
+   "claim": "IMO Net-Zero Framework: hoãn 10/2025",
+   "url": "https://www.velaw.com/insights/imo-postpones-adoption-of-net-zero-framework/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-50",
+   "claim": "EU ETS hàng hải 100% từ 1/1/2026",
+   "url": "https://www.ukpandi.com/news-and-resources/news/article/eu-ets-and-shipping-from-1-january-2026/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-51",
+   "claim": "Đề án phát triển đội tàu vận tải biển (QĐ 1254/QĐ-BGTVT, 28/9/2022): mục tiêu thị phần",
+   "url": "https://daidoanket.vn/nang-tam-nang-chat-cho-doi-tau-bien-10233243.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-51",
+   "claim": "Thuế GTGT 0% vận tải quốc tế (Luật 48/2024/QH15 Điều 9, hiệu lực 1/7/2025; điều kiện NĐ 181/2025 Điều 18)",
+   "url": "https://thuehaiquan.tapchikinhtetaichinh.vn/chinh-sach-thue-nha-thau-doi-voi-dich-vu-van-tai-va-giao-nhan-hang-hoa-xuat-khau-164660.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-51",
+   "claim": "Ưu đãi xanh trong dự thảo Bộ luật",
+   "url": "https://doanhnghiephoinhap.vn/uu-dai-manh-cho-cang-xanh-mo-loi-chuyen-doi-ben-vung-nganh-hang-hai-viet-nam-141556.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-60",
+   "claim": "KQ 2025",
+   "url": "https://www.bsc.com.vn/Report/ReportFile/15166",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-60",
+   "claim": "KH 2026 (ĐHĐCĐ 22/04/2026)",
+   "url": "https://files.petrolimex.com.vn/pdfs/8fb3004feb6e476ab3d74cd47d96c59b/448e69f0965143b693fa1f7ea1b2c626/13%20Bao%20cao%20KQ%20kinh%20doanh%20quan%20tri%202025%20KH2026%20tong%20ket%20hoat%20dong%20HDQT%20NK2021-2025%20va%20dinh%20huong%202026-2031.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-60",
+   "claim": "KQ 2025 theo báo cáo HĐQT",
+   "url": "https://files.petrolimex.com.vn/pdfs/8fb3004feb6e476ab3d74cd47d96c59b/448e69f0965143b693fa1f7ea1b2c626/13%20Bao%20cao%20KQ%20kinh%20doanh%20quan%20tri%202025%20KH2026%20tong%20ket%20hoat%20dong%20HDQT%20NK2021-2025%20va%20dinh%20huong%202026-2031.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-60",
+   "claim": "Q2/2026 & Q1/2026 (BCTC, cafef)",
+   "url": "https://s.cafef.vn/bao-cao-tai-chinh/VTO/IncSta/2026/2/0/0/ket-qua-hoat-dong-kinh-doanh-.chn",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-60",
+   "claim": "Cùng kỳ 2025 để tính YoY",
+   "url": "https://s.cafef.vn/bao-cao-tai-chinh/VTO/IncSta/2025/4/0/0/ket-qua-hoat-dong-kinh-doanh-.chn",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-60",
+   "claim": "Đội tàu",
+   "url": "https://www.bvsc.com.vn/media/lo5njtei/bvsc-b%C3%A1o-c%C3%A1o-l%E1%BA%A7n-%C4%91%E1%BA%A7u-vip-022025.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-60",
+   "claim": "Q2/2026 & Q1/2026 (BCTC, cafef)",
+   "url": "https://s.cafef.vn/bao-cao-tai-chinh/VIP/IncSta/2026/2/0/0/ket-qua-hoat-dong-kinh-doanh-.chn",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-60",
+   "claim": "Cùng kỳ 2025",
+   "url": "https://s.cafef.vn/bao-cao-tai-chinh/VIP/IncSta/2025/4/0/0/ket-qua-hoat-dong-kinh-doanh-.chn",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-60",
+   "claim": "ĐHĐCĐ 2026 & cổ tức 2025",
+   "url": "https://vipco.petrolimex.com.vn/nd/tin-hd/to-chuc-thanh-cong-dhdcd-thuong-nien-nam-2026.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-60",
+   "claim": "Chốt cổ tức 2025",
+   "url": "https://mekongasean.vn/van-tai-va-xep-do-hai-an-sap-chi-gan-377-ty-dong-tra-co-tuc-56911.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-60",
+   "claim": "Dự phóng SSV",
+   "url": "https://shinhansec.com.vn/uploads/report/SSV_HAH_Update_Q2_2026_VN.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-61",
+   "claim": "Baltic TCE 02/10/2026 (gần nhất)",
+   "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-02.10.2026-HSN.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-61",
+   "claim": "Baltic TCE 25/09/2026 (cuối Q3/2026)",
+   "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/09/Affinity-Tanker-Weekly-25.09.2026-HSN.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-61",
+   "claim": "Baltic TCE 19/06/2026 (gần cuối Q2/2026)",
+   "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/06/Affinity-Tanker-Weekly-19.06.2026-HSN.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-61",
+   "claim": "Baltic TCE 03/07/2026 (đầu Q3)",
+   "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/07/Affinity-Tanker-Weekly-03.07.2026-HSN.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-61",
+   "claim": "Baltic TCE 20/03/2026 (gần cuối Q1/2026, đỉnh xung đột)",
+   "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/03/Affinity-Tanker-Weekly-20.03.2026-HSN.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-61",
+   "claim": "Baltic TCE 19/12/2025 (cuối Q4/2025)",
+   "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2025/12/Affinity-Tanker-Weekly-19.12.2025-HSN.pdf",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/shipping/evidence.json",
+   "block": "vt-61",
+   "claim": "Baltic TCE 09/01/2026 (trước xung đột)",
+   "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/01/Affinity-Tanker-Weekly-09.01.2026-HSN.pdf",
    "state": "quote_changed"
   }
  ]

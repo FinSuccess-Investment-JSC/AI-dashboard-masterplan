@@ -74,7 +74,11 @@ def fetch(url):
         ctx = None
     try:
         with urllib.request.urlopen(req, timeout=30, context=ctx) as r:
-            return r.read().decode('utf-8', 'replace')
+            body = r.read()
+        if body[:2] == b'\x1f\x8b':  # some news sites gzip even when the request does not ask for it
+            import gzip
+            body = gzip.decompress(body)
+        return body.decode('utf-8', 'replace')
     except urllib.error.URLError as exc:
         if not isinstance(getattr(exc, 'reason', None), ssl.SSLError):
             raise
