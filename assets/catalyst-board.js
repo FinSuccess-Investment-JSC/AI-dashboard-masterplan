@@ -82,7 +82,7 @@
     const wb=feeds.sugar_monthly,last=wb?.records?.at(-1),stock=monitors[1]?.querySelector('strong')?.textContent||'—',hfcs=monitors[2]?.querySelector('strong')?.textContent||'—';
     rows=[
       item('Áp lực tồn kho',stock,'2025/26E · bản lưu '+stamp,'Theo dõi','Khả năng tăng giá bán và tốc độ giải phóng hàng.','Tồn kho/tiêu thụ giảm qua các kỳ công bố cùng niên vụ.','Ước tính cuối niên vụ; chưa có chuỗi tồn kho tháng.',[['chStocks','Tồn kho'],['chSupplyDemand','Cân đối Việt Nam']],['cane','import']),
-      item('Giá bán & nguyên liệu',last?num(last.value,2)+' USD/kg':'—',last?'World Bank · '+last.date.slice(0,7):'Chưa có kỳ','Chưa đủ số','Biên phụ thuộc giá bán, giá mía hoặc chi phí đường thô nhập.','Giá bán cải thiện so chi phí đầu vào trên dữ liệu cùng kỳ.','Giá thế giới chưa phải spread của nhà máy; chưa đủ giá bán–mía cùng kỳ.',[['chVnPrice','Giá bán trong nước'],['chCanePrice','Giá mía'],['chWorldRecent','Giá thế giới']],['cane','import']),
+      item('Giá bán & nguyên liệu',last?num(last.value/2.20462*100,1)+' cent/lb':'—',last?'World Bank · '+last.date.slice(0,7):'Chưa có kỳ','Chưa đủ số','Biên phụ thuộc giá bán, giá mía hoặc chi phí đường thô nhập.','Giá bán cải thiện so chi phí đầu vào trên dữ liệu cùng kỳ.','Giá thế giới chưa phải spread của nhà máy; chưa đủ giá bán–mía cùng kỳ.',[['chVnPrice','Giá bán trong nước'],['chCanePrice','Giá mía'],['chFastPrice','Giá thế giới']],['cane','import']),
       item('Nhập khẩu & chất thay thế',hfcs,'HFCS 2024 · bản lưu '+stamp,'Chờ cập nhật','Áp lực cạnh tranh tại khách hàng công nghiệp.','Có số nhập khẩu mới cùng kỳ và bằng chứng thay đổi giá cạnh tranh.','HFCS 7T không so trực tiếp cả năm; đường lậu là ước tính.',[['chImports','Nhập khẩu'],['chHfcs','HFCS'],['chSmuggled','Ước tính đường lậu']],['cane','import']),
       item('Bảo hộ & thực thi','Cần đối chiếu văn bản hiệu lực','Theo sự kiện','Chưa xác minh','Mức bảo hộ và thực thi ảnh hưởng giá nhập quy đổi.','Xác minh phạm vi, mức thuế và kết quả thực thi trong công bố mới.','Mức thuế lịch sử chưa xác nhận là mức đang áp dụng.',[['chPolicyTax','Mốc thuế & giới hạn'],['chPolicyQuota','Hạn ngạch']],['cane','import'])
     ];
@@ -372,7 +372,7 @@
       headers:['Tín hiệu','Mới nhất','Kỳ trước','Ngưỡng','','Ai chịu'],
       score:[
         row('Sugar No.11 (kỳ hạn gần)',[S(v(fut),2,' cent/lb'),D(v(fut),p(fut),2)],'±10% vs TB 3T',fd==null?'na':fd<=-10?'risk':fd>=10?'good':Math.abs(fd)>=5?'watch':'info','Tự chủ mía · Nhập nguyên liệu','chWorldRecent'),
-        row('Giá đường World Bank (tháng)',[S(v(wbm),2,' USD/kg'),D(v(wbm),wbm.at(-2)?.value,2)],'—',v(wbm)==null?'na':'info','Toàn ngành','chWorldRecent'),
+        row('Giá đường World Bank (tháng)',[S(v(wbm)==null?null:v(wbm)/2.20462*100,1,' cent/lb'),D(v(wbm)==null?null:v(wbm)/2.20462*100,wbm.at(-2)?.value==null?null:wbm.at(-2).value/2.20462*100,1)],'—',v(wbm)==null?'na':'info','Toàn ngành','chFastPrice'),
         row('Tồn kho / tiêu thụ VN',[S(ratio(b0),1,'%'),D(ratio(b0),ratio(b1),1)],'Giảm qua các kỳ',b0&&b1?ratio(b0)<ratio(b1)?'good':'risk':'na','Toàn ngành','chStocks'),
         row('Nhập khẩu đường VN',[S(b0?.imports,0,' nghìn tấn'),D(b0?.imports,b1?.imports,0)],'±3% so năm trước',ig==null?'na':ig>3?'risk':ig<-3?'good':'info','Nhập nguyên liệu','chImports'),
         row('Cung 4 trung tâm (BR, EU, IN, TH)',[S(pr(prod.at(-1)),1,' triệu tấn'),D(pr(prod.at(-1)),pr(prod.at(-2)),1)],'±2% so năm trước',pg==null?'na':pg>=2?'risk':pg<=-2?'good':'info','Giá thế giới',null)],
