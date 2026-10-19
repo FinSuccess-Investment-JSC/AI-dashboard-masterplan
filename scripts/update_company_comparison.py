@@ -122,14 +122,23 @@ def build_history(tables):
  for i,p in reversed(list(enumerate(income['periods']))):
   # Calendar quarter from the period end date: fiscal labels (e.g. SBT 'Q1 2027' ending Sep 2026) differ.
   if not re.fullmatch(r'Q[1-4] \d{4}',p['label'] or '') or not re.fullmatch(r'\d{4}-\d{2}-\d{2}',p['end'] or ''):continue
-  y,mo=int(p['end'][:4]),int(p['end'][5:7])
-  if mo not in (3,6,9,12):continue  # non-standard quarter ends are skipped, never shifted
+  y,mo,d=int(p['end'][:4]),int(p['end'][5:7]),int(p['end'][8:10])
+  # Some filers date the quarter end 1 Jul instead of 30 Jun (LSS); the first days of a month belong to the previous month.
+  if d<=3:y,mo=(y-1,12) if mo==1 else (y,mo-1)
+  if mo not in (3,6,9,12):continue  # other non-standard quarter ends are skipped, never shifted
   val=lambda name:(income['rows'].get(name) or [None]*len(income['periods']))[i]
   conv=lambda v:None if v is None else round(v/1000,3)
   out['quarters'].append(f'Q{mo//3}/{y}')
   out['revenue'].append(conv(val(revenue_key)) if revenue_key else None)
   out['gross_profit'].append(conv(val('Gross Profit')))
   out['net_income'].append(conv(val('Net Income to Common')))
+ # Provider repeats the previous quarter verbatim for some filers (SLS, KTS): a later quarter identical on all
+ # three lines is a copy, not a result, so it is blanked rather than charted.
+ out['duplicates']=[]
+ for i in range(1,len(out['quarters'])):
+  cur=(out['revenue'][i],out['gross_profit'][i],out['net_income'][i])
+  if cur[0] is not None and cur==(out['revenue'][i-1],out['gross_profit'][i-1],out['net_income'][i-1]):
+   out['duplicates'].append(out['quarters'][i]);out['revenue'][i]=out['gross_profit'][i]=out['net_income'][i]=None
  return out if out['quarters'] else None
 
 def main():

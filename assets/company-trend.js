@@ -196,4 +196,6 @@ function mount(host,{sector}){
   return card;
 }
 if(typeof window!=='undefined')window.CompanyTrend={mount};
+// Extra placements: any <div data-company-trend="sector"> on the page gets its own copy (e.g. Đường, next to SBT margin).
+if(typeof document!=='undefined')document.querySelectorAll('[data-company-trend]').forEach(h=>{const t=mount(h,{sector:h.dataset.companyTrend});if(t){h.append(t);const ti=t.querySelector('h3,.chart-title');if(ti&&h.dataset.title)ti.textContent=h.dataset.title}if(!t)return;t.style.gridColumn='1 / -1';const place=()=>{const card=t,after=document.getElementById(h.dataset.after||'')?.closest('.card');if(card&&after&&after!==card&&after.nextElementSibling!==card)after.after(card)};place();window.addEventListener('load',()=>setTimeout(place,0))});
 })();
