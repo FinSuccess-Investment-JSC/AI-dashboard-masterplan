@@ -1,5 +1,6 @@
-Routine tuần 12/10/2026: xử lý 8 mục nhóm C.
-Điện: cập nhật ENSO theo NOAA 08/10/2026 (Niño-3.4 +2,1 °C; El Niño mạnh–rất mạnh đến T1–T3/2027 trên 83%; vượt +2,5 °C OND 83%).
-Giữ nguyên (không có số/văn bản mới): dầu khí cân đối & chính sách giá, điện giá bán lẻ/chính sách/công suất/sản lượng 9T, BĐS quý (chưa có báo cáo Q3).
-Còn 34 mục trong hàng chờ cho các lượt sau.
+Routine tuần 19/10/2026: 0/8 mục được cập nhật số, cả 8 ghi lỗi (--fail).
+Nguồn bị chặn trên cloud: cushmanwakefield.com (403), sbv.gov.vn (403), moc.gov.vn (SSL), genco3.com (503), fia.mpi.gov.vn (DNS/502).
+vanban.chinhphu.vn chỉ mở được trang chủ, chưa tra được văn bản đất đai.
+power.evn-reservoirs chạy bằng máy local; textile.trade-tariff chưa xác minh được số OTEXA/USTR.
+Không sửa trang nào, không đổi số liệu.
 Chưa kiểm giao diện bằng trình duyệt.

@@ -124,17 +124,49 @@
    "lastSuccess": "2026-10-12T08:43:43+07:00",
    "lastNote": "Chưa có báo cáo Q3/2026 của CBRE/Savills/Bộ Xây dựng (mới nhất Q2/2026); giữ nguyên, kiểm lại sau giữa tháng 10."
   },
-  "realestate.kcn-quarterly": {},
-  "realestate.policy": {},
-  "realestate.credit-rates": {},
-  "realestate.hot-topics": {},
+  "realestate.kcn-quarterly": {
+   "lastAttempt": "2026-10-19T08:34:05+07:00",
+   "lastError": "cushmanwakefield.com trả 403 (cloud bị chặn); chưa đọc được thông cáo quý",
+   "attempts": 1
+  },
+  "realestate.policy": {
+   "lastAttempt": "2026-10-19T08:34:05+07:00",
+   "lastError": "vanban.chinhphu.vn chỉ mở được trang chủ (155/QĐ-BCĐNO&TTBĐS 10/10/2026 là quy chế Ban Chỉ đạo, không đổi bảng Trước/Sau); không tra được số hiệu/hiệu lực văn bản đất đai, chưa xác minh",
+   "attempts": 1
+  },
+  "realestate.credit-rates": {
+   "lastAttempt": "2026-10-19T08:34:05+07:00",
+   "lastError": "sbv.gov.vn trả 403 trên cloud; chưa tìm được bài dẫn thay thế đã mở",
+   "attempts": 1
+  },
+  "realestate.hot-topics": {
+   "lastAttempt": "2026-10-19T08:34:05+07:00",
+   "lastError": "moc.gov.vn lỗi chứng chỉ SSL trên cloud; chưa đọc được nguồn để thêm mốc có ngày+link",
+   "attempts": 1
+  },
   "realestate.ai.cycle": {},
-  "power.evn-reservoirs": {},
-  "power.market-fmp": {},
-  "realestate.fdi-projects": {},
+  "power.evn-reservoirs": {
+   "lastAttempt": "2026-10-19T08:34:05+07:00",
+   "lastError": "mục chạy bằng workflow hydro/máy local (AGENTS.md: không lấy hồ EVN từ cloud); không xử lý trong routine",
+   "attempts": 1
+  },
+  "power.market-fmp": {
+   "lastAttempt": "2026-10-19T08:34:05+07:00",
+   "lastError": "genco3.com trả 503/reset kết nối; chưa đọc được bảng FMP PGV IR",
+   "attempts": 1
+  },
+  "realestate.fdi-projects": {
+   "lastAttempt": "2026-10-19T08:34:05+07:00",
+   "lastError": "fia.mpi.gov.vn không phân giải DNS/502 trên cloud",
+   "attempts": 1
+  },
   "textile.wi.daily": {},
   "textile.wi.weekly": {},
-  "textile.trade-tariff": {},
+  "textile.trade-tariff": {
+   "lastAttempt": "2026-10-19T08:34:05+07:00",
+   "lastError": "trade.gov/otexa mở được nhưng chưa trích và xác minh được dữ liệu OTEXA/USTR mới cho 7 card; không cập nhật để tránh số chưa kiểm",
+   "attempts": 1
+  },
   "textile.orders-brands": {},
   "textile.policy": {},
   "textile.hot-topics": {},
@@ -3158,5 +3190,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-10-12T14:05:25+07:00"
+ "updatedAt": "2026-10-19T08:34:05+07:00"
 }
