@@ -34,7 +34,7 @@ if(bank){
   if(usgc&&singapore)pricesWorld.prepend(usgc,singapore);
  }
  $$('[data-tab="mt3"] .section').forEach(s=>[...s.children].filter(n=>!n.matches('.sectionhead,.grid')).forEach(n=>pricesVN.append(n)));
- const cycle=block(oil?'dau-khi-02':power?'dien-02':re?'bds-02':tx?'dm-02':pt?'cg-02':ag?'nn-02':sf?'ts-02':sh?'vt-02':xd?'xd-02':bh?'bh-02':bl?'bl-02':ph?'duoc-02':'sugar-02');if(cycle){(re||tx||pt||ag||sf||sh||xd||bh||bl||ph?world:vn).append(cycle);cycle.prepend(make('p','research-caption',oil?'Phân tích AI ngày 03/09/2026 · chưa cập nhật theo số mới':power?'Phân tích AI ngày 06/10/2026':pt||ag||sf?'Phân tích AI ngày 09/10/2026':sh?'Phân tích AI ngày 10/10/2026':ph?'Phân tích AI ngày 12/10/2026':xd||bh||bl?'Phân tích AI ngày 11/10/2026':re||tx?'Phân tích AI ngày 08/10/2026':'Phân tích AI ngày 17/08/2026 · chưa cập nhật theo số mới'));}
+ const cycle=block(oil?'dau-khi-02':power?'dien-02':re?'bds-02':tx?'dm-02':pt?'cg-02':ag?'nn-02':sf?'ts-02':sh?'vt-02':xd?'xd-02':bh?'bh-02':bl?'bl-02':ph?'duoc-02':'sugar-02');if(cycle){(re||tx||pt||ag||sf||sh||xd||bh||bl||ph?world:vn).append(cycle);cycle.prepend(make('p','research-caption',oil?'Phân tích AI ngày 03/09/2026 · chưa cập nhật theo số mới':power?'Phân tích AI ngày 06/10/2026':pt||ag||sf?'Phân tích AI ngày 09/10/2026':sh?'Phân tích AI ngày 10/10/2026':ph?'Phân tích AI ngày 12/10/2026':xd||bh||bl?'Phân tích AI ngày 11/10/2026':re||tx?'Phân tích AI ngày 08/10/2026':'Phân tích AI ngày 19/10/2026'));}
  const kpis=overview.querySelector('.kpis');if(kpis)market.prepend(kpis);
  // All source/player detail stays available in Overview.
  [...pane(6).children].forEach(n=>overview.append(n));

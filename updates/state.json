@@ -55,9 +55,9 @@
   "oil.bsr-annual": {},
   "oil.company-quarterly": {},
   "sugar.domestic": {
-   "lastAttempt": "2026-10-06T16:22:10+07:00",
-   "lastError": "Nguồn qua news.google.com: không mở được bài gốc (link chuyển hướng), không xác minh được mốc giá VSSA mới; giữ số cũ",
-   "attempts": 1
+   "lastAttempt": "2026-10-19T14:22:07+07:00",
+   "lastSuccess": "2026-10-19T14:22:07+07:00",
+   "lastNote": "RS TP.HCM 18.400–19.700, RE 19.700–20.800 đ/kg ngày 15/9/2026 (VSSA qua Vietstock 08/10); so sánh khu vực T7 giữ nguyên, đã xác nhận"
   },
   "sugar.vn-balance": {
    "lastAttempt": "2026-10-06T16:22:10+07:00",
@@ -65,9 +65,9 @@
    "lastNote": "USDA PSD csv 06/10/2026: số niên vụ 2010/11–2025/26 không đổi; có thêm dự báo 2026/27 (sản lượng 1.350, nhập 825, tồn cuối 425 nghìn tấn) chưa thêm vào trang"
   },
   "sugar.crop": {
-   "lastAttempt": "2026-10-06T16:22:10+07:00",
-   "lastError": "Nguồn qua news.google.com: không mở được bài gốc, không xác minh được số tổng kết vụ; giữ số cũ",
-   "attempts": 1
+   "lastAttempt": "2026-10-19T14:22:07+07:00",
+   "lastSuccess": "2026-10-19T14:22:07+07:00",
+   "lastNote": "Chưa có tổng kết niên vụ 2025/26; mía ép 13,586 triệu tấn đến 31/7 khớp (Dân trí 16/08); diện tích, giá mía bình quân 25/26 chưa có nguồn"
   },
   "sugar.company": {},
   "sugar.trade": {
@@ -84,7 +84,15 @@
   "oil.ai.balance": {},
   "oil.ai.regime": {},
   "oil.ai.channels": {},
-  "sugar.ai.cycle": {},
+  "sugar.ai.cycle": {
+   "lastAttempt": "2026-10-19T14:22:07+07:00",
+   "lastSuccess": "2026-10-19T14:22:07+07:00",
+   "lastNote": "WB T9/2026 0,41 USD/kg, +32% từ đáy T2/2026, -29% so đỉnh T9/2023; câu chu kỳ tự tính từ số",
+   "snapshot": {
+    "sugar_monthly.value": 0.41,
+    "sugar_futures.value": 21.13
+   }
+  },
   "bank.ai.read": {},
   "market.valuation": {},
   "power.evn-daily": {},
@@ -2414,46 +2422,6 @@
  },
  "queue": [
   {
-   "id": "sugar.domestic",
-   "tier": "C",
-   "title": "Giá đường trong nước, so sánh khu vực",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị",
-    "lịch 01/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "sugar.crop",
-   "tier": "C",
-   "title": "Mía ép, diện tích, giá mía nguyên liệu",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị",
-    "lịch 05/10 07:00",
-    "lịch 12/10 07:00",
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "news.vssa",
-     "seenAt": "2026-10-06T22:26:32+07:00",
-     "what": "Sản lượng mía đường niên vụ 2020/2021 thấp nhất trong 20 năm qua - Thế giới tiếp thị — https://news.google.com/rss/articles/CBMixgFBVV95cUxNSGJFS2lGVnhIcC0tTEloSG1lNHNhWmk1MUVTdVlvN2RMNUdBS3BLSGdtUUEwUldDYjFhRElQbnEtWXNlbHZqdWFUTWF6aDNfaExrYlNfVDFnOGtWajhJak9ocm9xaWhySzNkNlk4QXVleXBKRTdTd3JSalV6cDl1VTFidy1DWkZzMkhQTXV3ZG1CakZlcGFxLURuX2VvM3NudEg1MXBXekFFQ25XdlVDR3BRandQVEVOSzFQVjRoZ2IxOVhUMVE?oc=5"
-    },
-    {
-     "watcher": "news.vssa",
-     "seenAt": "2026-10-07T13:22:49+07:00",
-     "what": "5 nhiệm vụ trọng tâm của ngành mía đường trong niên vụ mới - VnEconomy — https://news.google.com/rss/articles/CBMiiwFBVV95cUxPNm5FN2NqY19qdndYU3QxTk1pOVR5RFFUdHVSbExKZlN4SkNYZFEwUHdETEg1TDV4aDQxdVU2eGpJdVk2MEtnaVpaNmM2TGs0dHRGNHoyT254V3FQTzh2TUFFektaSmhzUnJIZlJ3ZHZXLUJQX0lfRTU4dUVwRjJCVmk4QVIyaU1uNTRV?oc=5"
-    },
-    {
-     "watcher": "news.vssa",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Niên vụ 2025-2026 ngành mía đường đối diện nguy cơ đứt gãy - Fili.vn — https://news.google.com/rss/articles/CBMinwFBVV95cUxPTGFHZmktQVpJSUc4cU1GaGR3UFdwOGxFdG5kWkg0U1ZhWVFPdV94MWxVdlRTQkp0VjMzakcwcWgyVnp1NVRWbk1lZm80SFZUSVJHekV6TU9kS0JQcjBPclpSWlRwS2t0SW5COWpaeXNIdFY0QTF2Yjg4Z0I2R2kycDdFbThoTTg3RUpHb3dWZmVfMXFMdldxc1JUZFVLYlk?oc=5"
-    }
-   ]
-  },
-  {
    "id": "bank.policy",
    "tier": "C",
    "title": "Bank: mốc pháp lý, bức tranh thế giới",
@@ -2499,16 +2467,6 @@
    "id": "oil.ai.channels",
    "tier": "D",
    "title": "Dầu khí: năm kênh truyền dẫn, PVT",
-   "since": "2026-10-06T14:14:07+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "sugar.ai.cycle",
-   "tier": "D",
-   "title": "Đường: vị trí trong chu kỳ",
    "since": "2026-10-06T14:14:07+07:00",
    "reasons": [
     "lần đầu: rà soát số đang hiển thị"
@@ -4286,5 +4244,5 @@
    ]
   }
  ],
- "updatedAt": "2026-10-19T12:14:48+07:00"
+ "updatedAt": "2026-10-19T14:22:07+07:00"
 }

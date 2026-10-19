@@ -1,0 +1,57 @@
+[
+ {
+  "block": "sugar-06",
+  "claim": "RS TP.HCM 15/9/2026",
+  "value": "18.400 - 19.700",
+  "url": "https://vietstock.vn/2026/10/gia-duong-trong-nuoc-nguoc-chieu-the-gioi-118-1499968.htm",
+  "opened_at": "2026-10-19",
+  "quote": "giá đường kính trắng từ mức 18.600 - 20.000 đồng/kg vào đầu tháng giảm xuống còn 18.400 - 19.700 đồng/kg vào ngày 15/9",
+  "status": "match",
+  "correct_value": "",
+  "note": ""
+ },
+ {
+  "block": "sugar-06",
+  "claim": "RE TP.HCM 15/9/2026",
+  "value": "19.700 - 20.800",
+  "url": "https://vietstock.vn/2026/10/gia-duong-trong-nuoc-nguoc-chieu-the-gioi-118-1499968.htm",
+  "opened_at": "2026-10-19",
+  "quote": "Giá đường tinh luyện cũng giảm từ 20.000 - 21.000 đồng/kg xuống còn 19.700 - 20.800 đồng/kg",
+  "status": "match",
+  "correct_value": "",
+  "note": ""
+ },
+ {
+  "block": "sugar-06",
+  "claim": "RS bình quân T7/2026",
+  "value": "16.800",
+  "url": "https://danviet.vn/gia-duong-viet-nam-dang-tang-tuong-la-mung-hoa-ra-van-thap-nhat-khu-vuc-d1452235.html",
+  "opened_at": "2026-10-19",
+  "quote": "giá đường bình quân tại Việt Nam chỉ ở mức 16.800 đồng/kg",
+  "status": "match",
+  "correct_value": "",
+  "note": ""
+ },
+ {
+  "block": "sugar-07",
+  "claim": "Philippines, Indonesia, Trung Quốc T7/2026",
+  "value": "27.527",
+  "url": "https://dantri.com.vn/kinh-doanh/gia-nong-san-ngay-168-gia-duong-viet-nam-thap-nhat-khu-vuc-20260816073400918.htm",
+  "opened_at": "2026-10-19",
+  "quote": "Giá đường tại Philippines lên tới 27.527 đồng/kg, Indonesia 26.706 đồng/kg và Trung Quốc 19.504 đồng/kg",
+  "status": "match",
+  "correct_value": "",
+  "note": ""
+ },
+ {
+  "block": "sugar-10",
+  "claim": "Mía ép 2025/26 đến 31/7/2026",
+  "value": "13,586",
+  "url": "https://dantri.com.vn/kinh-doanh/gia-nong-san-ngay-168-gia-duong-viet-nam-thap-nhat-khu-vuc-20260816073400918.htm",
+  "opened_at": "2026-10-19",
+  "quote": "13,586 triệu tấn mía được đưa vào chế biến, sản xuất 1,3258 triệu tấn đường các loại",
+  "status": "match",
+  "correct_value": "",
+  "note": ""
+ }
+]
