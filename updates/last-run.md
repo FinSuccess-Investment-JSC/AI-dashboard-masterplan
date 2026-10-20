@@ -1,13 +1,13 @@
-# Lịch cập nhật — 19/10/2026 22:58
+# Lịch cập nhật — 20/10/2026 12:16
 
-- 🆕 news.vasep: 1 mục mới — Infographic| Xuất khẩu thủy sản Việt Nam tháng 9 và 9 tháng năm 2026 - Báo Công Thương — https://news.google.com/rss/articles/CBMiowFBVV95cUxOaGxvNE5nR2xlcUZWaEtwRkhrSlRobFhUczhTRThEamlJQllHZDF5cjRtbHdtSWNwamVKbW9tbVZacGRvREVsVmlwc25UWVYwY2lmUFJ2SGNtSzhwX2liQ0Fyd3VySjBqam82NzI1TzVuSHdUTlhxVFQyc3BDYk5uZTU2TTNHYkdPUWNYOG53RW5BNWxIMlkzeGg4Nk1LcG9Sd3dV?oc=5
-- 🆕 news.public-investment: 7 mục mới — Hà Nội thí điểm chấm điểm giải ngân vốn đầu tư công - baodautu — https://news.google.com/rss/articles/CBMijAFBVV95cUxPMEhkNjloVGRMcFVqTjkxM0tYS05CUEFhT0pOMTVsczB4bU5wbHVTX0xncWV4WlU0dlFOUzVNa2x2WjhuWlpFNGRUOGhPSDdIUFRwRW9IdmpUejFZcG1vekJTVVlnMi1mXzNkSzd0dkN0TWwza1NtQ2t2anNJN1BqZDlUSGZ2b3RrVk1YSQ?oc=5; Bổ sung tiêu chí xếp loại "giải ngân rất tốt" vốn đầu tư công - VTV.vn — https://news.google.com/rss/articles/CBMingFBVV95cUxPQ0w4ZmJKM2tKc1UzTWlYcFhZU1BQRkg3OERQYmNxQVo5aUd3Y25rRFlEZk5Gdm1lZTRTUkNWSFJOU2RwaUhuRWtiem11Vms1OTZxMUlhR1RPREZwOGZ0X1RUNWhjTGVubzEyVG5kc0lKYzNwN056Z1JiUS1jaWNfem5zbWZWaE1pdTdYc0RWdUk3RUxySE5kTzQzTjFFZw?oc=5; Đẩy nhanh tiến độ giải ngân vốn đầu tư công - Báo Tuyên Quang — https://news.google.com/rss/articles/CBMiqAFBVV95cUxPNzlYU08yVUFhSEJFWFYzbkpqbDVWZFJPSTJFN1M2Qmw1WldKSnRBdmxyQmdBUk5WSVk4Nk12MDJXQTRLdnIzNjZyYV9ZRXBlMW1zRWdFYkoxR1k3VnNXQXZIZlFhSVM5VVVzdlBValJyVVlVNzhxT0V4bWdnRmVTZENKVFJXaVhVZmowVG1XTjNnT216UThGYUFtck5oeDNjTlo3T1BNOHI?oc=5
-- 🆕 news.retail: 4 mục mới — Tổng mức bán lẻ hàng hóa và dịch vụ tháng 10/2026 vượt kịch bản tăng trưởng - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMitgFBVV95cUxPWlBfSm9zdmJXcVpGSnMteWRiZmhySjdtMWluWFVmd1dWeG5QUEMwaFE1MjY0N3Z4LUt0NUVwR1hZNXhaVnkwLVJyQjBlbGFUdjV0MWxPT1BiWGRvRzNvN2RZZTkwaXFOSm1ZMVh5Q0V5ak5jOFc3QkRBRC1TN1BuQThqckkzV3dYekdVMk1KQWkxT0MydWNESE5xbEdHcW1RbGxGeFByUzFPMEpZVGxsdThEV2otQQ?oc=5; Làm rõ đối tượng không chịu thuế tiêu thụ đặc biệt theo quy định mới - Cổng thông tin điện tử tỉnh Hà Tĩnh — https://news.google.com/rss/articles/CBMipAFBVV95cUxPMy16RVJsUkl6UEFWZVd0VFhvRm9Xa2RQNTdpTzZTbkdwNTZpQnF6c2ZqRU1kdDQ1b3FDVmVxYnUtbGt2WVpDWnVUeVBLSnc2WF9LSm5TU1VnSFpDSjM1WmVmYllPOHNXNkhmYkpoenl2VGpjUWhscnBNTTVhVXB3MTlnalFLYjB4bUwxbUtXcnlUQ2liWi14MzJpZjAtbjVTQ2pTUw?oc=5; Hàng xuất khẩu quay vào nội địa, thuế tiêu thụ đặc biệt tính thế nào? - Tạp chí Kinh tế - Tài chính Online — https://news.google.com/rss/articles/CBMiwAFBVV95cUxPUFpiNTgyVnhRdWpmT19qdjlPWmcwYk9DXzhvdFJTWkFyRWRpNDdjV19GdmJtaFhLLTcxNnRPeVllMWk2RGQ5Y3dGNjlQZDFzdnF0dFA0ZXBmcXpKTHpmaXYwNi1DVjMwSGctZWhmUTBoSzZBTUlmM0doRDF5UHRyTk5lUmxoaWRoYjBubmJZVWVPSnZOWVd4ZHF4UjItMEE5QXRoY2FpZHVkNkJVZTFVS0VZODBYUGVLaFp4dG5EUHM?oc=5
-- watcher moit.power-prices: lập baseline 2 mục
-- 🆕 news.power-prices: 1 mục mới — Hà Tĩnh đẩy nhanh triển khai các dự án nguồn, lưới điện theo Quy hoạch điện VIII điều chỉnh - Cổng thông tin điện tử tỉnh Hà Tĩnh — https://news.google.com/rss/articles/CBMiwgFBVV95cUxQYUVkWXZReHdaU1NQNG01Y0hWajZ0VkRHSVhkNE9CQUl4dkZYTHBjNHczZzBDRXlheFBDQTAtUkdDQk16SkVLeFlTb25VRElYMnNtLUN3aEdRNnh6SnlNYWszcVNINE1JNDRlSTl4UDZTZ3BwODd3MVc4VWlhREMzMFBZVlpfWk8zZFdkaWFsQ3Q4dEZvU09saXFpWkNSeGNIRjNBanN3c2MxNTQxbWVwR1BVN01SbXBGdmNLN0lESWZtZw?oc=5
-- 🆕 news.pharma: 9 mục mới — Long Châu góp mặt trong Top 50 Doanh nghiệp Dẫn đầu về ESG 2026 của Forbes Việt Nam - Vietstock — https://news.google.com/rss/articles/CBMixwFBVV95cUxQelpNQWNweXF0RXdmNm1CRnFRdEhGeWh0ZVNCR2NiUmx6VmhYRGwtMHY1bnY2LXlja0ZaOG02b1dXM1QyZzNhRUs4MkJaa3BWd3NvR25CM0J3VHhRUlUxd2JTMWxiMDVTelBodDFZOURzZ0JIUDVtcG1ZWTNVMnNYNk43dWdoVXhQYXFPREpRT0EtNGItaVhlN3ZodkJGVzJEb2tJUEZnbG5qenllbF9WaEhhMG5lSHB2bzFrNWpIbTZ2NjdfaWI0?oc=5; Long Châu được Forbes Việt Nam vinh danh trong Top 50 Doanh nghiệp dẫn đầu về ESG 2026 - Tuổi Trẻ — https://news.google.com/rss/articles/CBMixwFBVV95cUxQcnlHdUpJRjZiY3czUkQ2RnhTV1Zod1FqSmwzdGNLOXZUZGhYeHA0ZnlsUGdKNmxOX0M4NVJkZFNoaW1Xd2RBTk9fWmZPckVUbXVMMk9hdTNVak54eXEyTnhmVmx5amJ2eEhZSk1LUldTTHQyZ3FUZHVZRDFqVDlfQ2RlSGtUWDI4dE02RUpucFA5RDE1SzJJb0ZPYVpIVVNPS1dDMzdPMGJtV2JKRE95UUdsQlBRY3lCbDF1NVdIa0xnU2I3ZDF3?oc=5; Long Châu và Hội Thầy thuốc trẻ Việt Nam hợp tác, đưa bác sĩ đến gần người dân - Thanh Niên — https://news.google.com/rss/articles/CBMivgFBVV95cUxPVlI0V3E4ZS1Sc09RbV93SGJGTjFyTXctWWFvZERRdXlSN0Z0VVJxLTh5QnZBeUFJOTUzOHUtaXZjTnN4ZDNmOXo4anZZelNfeHdsSHV2ZWc2bU0ySW1jT191Z1NQa2ZfSTNMWkpuQkN2Umpib202dmFURWlKdXB3SE03TnVjTEpZa0h3OFBqXzFLVnFwMXRSc3BRbzVFNERlcUNHV0xNN0RrQllKTjUxVzBIYi0tVC1IaF9UOUJn?oc=5
-- → hàng chờ [B] bank.wi.daily: lịch 19/10 07:00
+- 🆕 pvn.news: 2 mục mới — Tàu LNG Qatar mạo hiểm qua Biển Đỏ để đến châu Âu — https://nangluongquocte.petrotimes.vn/tau-lng-qatar-mao-hiem-qua-bien-do-de-den-chau-au-746910.html; Những bóng hồng trên công trường đóng tàu Dung Quất — https://petrotimes.vn/nhung-bong-hong-tren-cong-truong-dong-tau-dung-quat-746649.html
+- 🆕 news.shipping-policy: 1 mục mới — Sửa đổi Bộ luật Hàng hải và Đường thủy Việt Nam: Rà soát kỹ các điều ước quốc tế để nội luật hóa cho phù hợp - Cổng Thông tin điện tử Quốc h — https://news.google.com/rss/articles/CBMigwFBVV95cUxPOWlWUkt6VWtNSF9LZXBuVUwwWUc4U0piVGdFb2wzSURYUVZQU183d1JjWFdWWGNDc0w5OG5RZnR1ZGY3Qm9XNEQxWlYtQTZmdHU0aTRKQ0I2QzhXakt5NWxHanZfbHVuUGhoZXl4eXpsVk50STBoWDBCdi1FSVRqQ2xNaw?oc=5
+- 🆕 news.public-investment: 14 mục mới — TP.HCM tổng lực giải ngân vốn đầu tư công và tư - Báo Thanh Niên — https://news.google.com/rss/articles/CBMilAFBVV95cUxQejFGZ1hsbFlaOHRCUW1JVkNlU2xNSDRMZHR0RzRSVXdtSzlMamt3Z0Zvd3BwRXl6dXdVRlQwV05MRWd3MEhlckxPU3M2ZDRGdThRYW5VTGNBWXMyUG9fcUJwaFViQnpjNE4zQS01ZXlMdEwxeUllX0ZLMUhnWC1HdkRtUlVfbE9oN0JNQ2t6bjBzZzdB?oc=5; Hơn 1.200 tỷ đồng vốn đầu tư công cần Đắk Lắk “rã đông” - baodautu — https://news.google.com/rss/articles/CBMijwFBVV95cUxOUVBqSFR6X2pzLWFqQnpmM3V1NXNQejBjeWhIWFltQjlhZXhuVFdETG9VbUJTUkE0SVAyYUJrSHV0a05EY0JaWWU5NFpaYVZxRlZHbDNUSklKWjVXWjFpcl9OYVhudS1JQ2VFNm0wNEU0amk1TnJhMkpiZmlGdXNDd1R4a1lsMFRpLWszT1ZHRQ?oc=5; TP Hà Nội thí điểm chấm điểm giải ngân vốn đầu tư công - VTV.vn — https://news.google.com/rss/articles/CBMilwFBVV95cUxQdzlLMTJnRTFza2Q0RUp6NGJLNTZnTmhXeEdsMWZXYUkxLXNjTHZXaFI1eU05Y1NKMmZpbG9tRF8xeWNXa0VDaHdhLURiaUxwZHN1Qkk0Nk9yeTJuZ0JEd21ldlROaVRPMnltTWFZYWw4TFZpc3JSQmRQY3dPcDRiMHBmYndPTDFWMlVPT2s0aDRNR0IzWWhR?oc=5
+- 🆕 news.retail: 2 mục mới — Tổng mức bán lẻ hàng hóa và dịch vụ tháng 10/2026 vượt kịch bản tăng trưởng - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMirgFBVV95cUxOUlMyYWlnRkl0aF9fUjFKSXNzV0dNZXdfLUdmcHBRNl9OVUwzNU9aWVktYUVvTFJ4ZVJRR0J1MUY1UkhCN2RvMmZUb2ZCd254VS1GbkJsUS1xWWw4dDRMWkg2TXVzaENEVExvUkFLVTFMY2hnMDR2QkVPeDFHMnJ3SmRncTdXR3FCbHFuM2lOdHUtTzNOWks0cVRGUlZaay1IVXdOSHlyYzNDNEUxMUE?oc=5; Tổng mức bán lẻ hàng hóa và dịch vụ tháng 10/2026 vượt kịch bản tăng trưởng - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMirgFBVV95cUxOLXFwSXI1V3l5cFVKZXMtWEpwNHdNY0RDSkJvZnUydDFiWG8zYmxTTWU2emMyTktQczg0SThxd2dkVE9vSDk5cW9ZcUNPWEcwQkpTdVRmaElDR0d5YWNFS3NiemphOVdwc0duYVk2QzE5RDZ5ZFN4WGVMS09ncVRsSXpsQ09lUTkxN3FvN3ZNUnoyeW5qaWl4N3p3SEdDeFh5U0JwN1VXMTBfOGhBbEE?oc=5
+- 🆕 news.pharma: 11 mục mới — Long Châu hai năm liên tiếp là 'Doanh nghiệp xuất sắc Châu Á' - VnExpress — https://news.google.com/rss/articles/CBMimgFBVV95cUxQRGlqQkR0ejRsVDgwTWNsbjBod2VuN1FTNFhISlZxdXlVdTlNX1hUbTk3NFZGX0M2QnhBc3lzNmw1eF83cHhYOVFHVlpTV1I2UldIdngyYU9SVURfSU95aS1uVXlrMklfMVY0RTdBc1d5UWwxMTl6VnBJU2pZWjNMNjVlS3B2Y0pkcG05bEpDVkhCc3FfY3NVaUFn?oc=5; Lịch cúp điện Vĩnh Long ngày 21/10 và 22/10 Ba Tri, Bình Đại, Tân Quới, Mỏ Cày, Long Châu, Trung Thành, Chợ Lách và Trà Ôn mất điện diện rộn — https://news.google.com/rss/articles/CBMiiAJBVV95cUxNb1R0TUJLMXlXc01GUXFYN0F3SWhJcTBLUm5LaHUxZHI1UHMxdEg5SGtTZnBsakZwYlptbUFBMlNXQjNhRklmR05sZWpJaU1sakxMVm5fN3FUcFZORTh5VFJnRHZXYjdObW5faEtUWXczM2NPdVBBRDh3OV9QaWJuZDU1TU9rQ2c2eXpZMjJHa1NKUEhTWUY1VmF5Tnc1NXJyQWdmNUE5a29ZQjNuQlVTMEtYNzlLV3JrRnZEd0RBbkZ2SGdNNVlqcXlCek52S3RWLWJEWlBsWG9UZ3VLTjVLWGNsbFFxRWptQXZoaDBNZy1EYWxpWmxxYTdySWtxQllMYmFhUlQ4Tmw?oc=5; Chuỗi nhà thuốc đầu tiên hiện diện tại đặc khu Côn Đảo: Long Châu tầm soát ung thư miễn phí - Tuổi Trẻ — https://news.google.com/rss/articles/CBMizAFBVV95cUxQZDZDWlUtVzZPU3M5TWFCS1RhYlZ1alpQSTRJemlmMndMcS1IaWlnRDBBellBNmlHNThEVXJFWC1ZcTNiTUJKb2tTbmt4Q2xTZTAycDZNdEVxQ19yTFRGNmRfaURPLWw2UWlocjY2aHBHY29FLUlfX3Vjc2xQSkZ2azFTcGZsVHZpdnZsLUNWazd1MGpZNGVCOExrV2otMS11MjNUVHFkWV9TaU9OOE5UY2R6X1lNTHl2US1lUEZwSjE5N3ZwNmFOZG5SaUE?oc=5
+- → hàng chờ [B] bank.wi.daily: lịch 20/10 07:00
 - → hàng chờ [B] bank.wi.monthly: lịch 19/10 07:00
+- → hàng chờ [C] oil.supply-news: watcher báo có công bố mới
 - → hàng chờ [C] bank.policy: lịch 07/10 07:00
 - → hàng chờ [D] oil.ai.cycle: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [D] oil.ai.balance: lần đầu: rà soát số đang hiển thị
@@ -15,7 +15,7 @@
 - → hàng chờ [D] oil.ai.channels: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [D] bank.ai.read: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [C] power.evn-reservoirs: lịch 19/10 07:00
-- → hàng chờ [C] power.market-fmp: lịch 19/10 07:00
+- → hàng chờ [C] power.market-fmp: lịch 20/10 07:00
 - → hàng chờ [C] power.policy: lịch 19/10 07:00
 - → hàng chờ [C] power.output-sources: lịch 19/10 07:00
 - → hàng chờ [C] power.hot-topics: lịch 19/10 07:00
@@ -33,15 +33,16 @@
 - → hàng chờ [C] textile.hot-topics: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [D] textile.ai.cycle: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [C] port.freight: lịch 19/10 07:00
-- → hàng chờ [C] port.throughput: lịch 19/10 07:00
+- → hàng chờ [C] port.throughput: lịch 20/10 07:00
 - → hàng chờ [C] port.projects: lịch 19/10 07:00
 - → hàng chờ [C] port.hot-topics: lịch 19/10 07:00
 - → hàng chờ [C] agri.policy: lịch 19/10 07:00
 - → hàng chờ [C] agri.weather: lịch 16/10 07:00
 - → hàng chờ [C] agri.hot-topics: lịch 19/10 07:00
-- → hàng chờ [C] seafood.trade: lịch 19/10 07:00
+- → hàng chờ [C] seafood.trade: lịch 20/10 07:00
 - → hàng chờ [C] seafood.hot-topics: lịch 19/10 07:00
 - → hàng chờ [C] shipping.outlook: lịch 19/10 07:00
+- → hàng chờ [C] shipping.policy: watcher báo có công bố mới
 - → hàng chờ [C] shipping.rates: lịch 19/10 07:00
 - → hàng chờ [C] shipping.hot-topics: lịch 19/10 07:00
 - → hàng chờ [D] shipping.ai.cycle: số liệu nền đổi: hormuz, bab_el_mandeb
@@ -49,9 +50,9 @@
 - → hàng chờ [C] construction.policy: watcher báo có công bố mới
 - → hàng chờ [C] construction.prices: lịch 19/10 07:00
 - → hàng chờ [C] construction.hot-topics: lịch 19/10 07:00
-- → hàng chờ [C] insurance.market: lịch 19/10 07:00
+- → hàng chờ [C] insurance.market: lịch 20/10 07:00
 - → hàng chờ [C] insurance.hot-topics: lịch 19/10 07:00
-- → hàng chờ [C] retail.market: lịch 19/10 07:00
+- → hàng chờ [C] retail.market: lịch 20/10 07:00
 - → hàng chờ [C] retail.policy: watcher báo có công bố mới
 - → hàng chờ [C] retail.hot-topics: lịch 19/10 07:00
 - → hàng chờ [C] power.company-quarterly: lần đầu: rà soát số đang hiển thị
