@@ -257,6 +257,15 @@ if(chart&&feed?.records?.length){
  [freq,range,start,end].forEach(n=>n.addEventListener('change',draw));draw();
  const foot=card.querySelector('.chart-footer');foot?.querySelectorAll('.method-note').forEach(n=>{n.textContent=n.textContent.replace('90 phiên gần nhất,','Lọc khoảng ngày theo bộ chọn; tuần/tháng/năm lấy giá đóng cửa cuối có số,')});
 }
+// Sugar · Bức tranh ngành: one chain per pane (cung → cầu → cán cân/tồn kho → giá → biên); duplicate cards are hidden, not deleted.
+if(sector==='sugar'){
+ const card=sel=>{const n=typeof sel==='string'?$(sel):sel;return n?.closest('.card')||null};
+ const order=(pane,path,cards)=>{if(!pane)return;const p=pane.querySelector(':scope>.research-path');if(p)p.textContent=path;const g=make('div','research-grid');cards.filter(Boolean).forEach(c=>g.append(c));p?p.after(g):pane.prepend(g);g.dataset.sugarChain='1'};
+ [block('sugar-world-share-prod'),card('#chMargin'),block('sugar-02'),card('#chWorldRecent'),card('#chWorldLong')].forEach(c=>{if(c)c.hidden=true});
+ order(world,'Sản lượng các nước → cầu nhập khẩu & tiêu dùng → cán cân & tồn kho → giá',[block('sugar-world-production'),block('sugar-country-yoy'),block('sugar-world-share-imp'),block('sugar-world-share-cons'),card('#ch-sugar-11'),block('sugar-cycle'),block('fast-price')]);
+ order(vn,'Vùng mía → sản lượng so tiêu thụ → nhập khẩu (chính ngạch, lậu, HFCS) → tồn kho → giá bán so giá mía → biên doanh nghiệp',[card('#chCaneArea'),card('#chCaneCrush'),card('#chSupplyDemand'),block('sugar-14'),block('sugar-15'),block('sugar-16'),card('#chStocks'),card('#chVnPrice'),card('#chRegional'),card('#chCanePrice'),card('#chMargin'),$('#supply .company-trend')]); // hidden #chMargin stays as the anchor company-trend.js inserts after
+ [world,vn].forEach(pane=>pane&&[...pane.querySelectorAll(':scope>.grid,:scope>.research-grid,:scope>h3.subhead,:scope>.subsub')].filter(n=>!n.dataset.sugarChain&&!n.querySelector('.card:not([hidden])')).forEach(n=>n.hidden=true));
+}
 window.ResearchLayout={sector,make,fold,emphasize,hot,select,sources};
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){const d=document.activeElement?.closest('details.research-fold');if(d?.open){d.open=false;d.querySelector('summary').focus()}}});
 })();
