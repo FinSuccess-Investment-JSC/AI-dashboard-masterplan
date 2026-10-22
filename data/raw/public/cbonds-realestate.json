@@ -1,11 +1,11 @@
 {
 "source": "HNX · Chuyên trang thông tin trái phiếu doanh nghiệp",
 "url": "https://cbonds.hnx.vn/",
-"captured": "2026-10-21",
+"captured": "2026-10-22",
 "definition": "Tổ chức phát hành có lĩnh vực hoạt động \"Bất động sản\" trên HNX; VND",
 "issuer_count": 420,
 "outstanding_bonds": 910,
-"outstanding_value": 448364.8,
+"outstanding_value": 448300.8,
 "issuance": [
 {
 "date": "2020-12-01",
@@ -708,14 +708,14 @@
 {
 "date": "2026-10-01",
 "due": 2290.0,
-"interest": 3992.1,
+"interest": 3991.5,
 "bond_count": 3,
 "issuers": 3
 },
 {
 "date": "2026-11-01",
-"due": 7694.9,
-"interest": 3973.0,
+"due": 7630.9,
+"interest": 3972.5,
 "bond_count": 45,
 "issuers": 6
 },
@@ -882,7 +882,7 @@
 {
 "name": "Công ty cổ phần đầu tư phát triển bất động sản TNR holdings Việt Nam",
 "symbol": "TNR.BOND.01.2020.01, TNR.BOND.01.2020.02, TNR.BOND.01.2020.0",
-"due": 6702.6,
+"due": 6638.6,
 "months": [
 "2026-11",
 "2026-12",
