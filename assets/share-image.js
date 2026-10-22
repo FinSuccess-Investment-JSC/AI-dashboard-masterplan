@@ -86,10 +86,22 @@
   }
   async function snapshot(card){
     const h2c=await loadLib();
-    return h2c(card,{backgroundColor:'#ffffff',scale:Math.min(2.5,Math.max(2,window.devicePixelRatio||1)),useCORS:true,logging:false,onclone:(doc,node)=>{node.style.border='0';node.style.boxShadow='none';node.style.padding='8px';
+    // Chụp đủ nét cho khung 1600px: tăng scale theo bề rộng card, vẽ lại Chart.js ở mật độ điểm cao rồi trả về như cũ.
+    const scale=Math.min(4,Math.max(2,1600*1.25/Math.max(1,card.offsetWidth)));
+    const charts=window.Chart&&Chart.getChart?[...card.querySelectorAll('canvas')].map(c=>Chart.getChart(c)).filter(Boolean):[];
+    const dpr=charts.map(ch=>ch.options.devicePixelRatio);
+    charts.forEach(ch=>{ch.options.devicePixelRatio=scale;ch.resize();ch.update('none')});
+    const selects=[...card.querySelectorAll('select')].map(el=>({text:el.selectedOptions[0]?el.selectedOptions[0].textContent:'',cs:getComputedStyle(el),w:el.offsetWidth,h:el.offsetHeight}));
+    try{
+      return await h2c(card,{backgroundColor:'#ffffff',scale,useCORS:true,logging:false,onclone:(doc,node)=>{node.style.border='0';node.style.boxShadow='none';node.style.padding='8px';
         // Giữ thanh Chu kỳ / Số kỳ; bỏ cụm nút Trục.
-        node.querySelectorAll('span').forEach(x=>{if(!x.children.length&&x.textContent.trim()==='Trục'&&x.parentElement)x.parentElement.remove()})},
-      ignoreElements:n=>n.tagName==='BUTTON'||n.classList&&(n.classList.contains('fs-share-btn')||n.classList.contains('chart-card-actions')||n.classList.contains('chart-source-details')||n.tagName==='DETAILS'&&!n.open)});
+        node.querySelectorAll('span').forEach(x=>{if(!x.children.length&&x.textContent.trim()==='Trục'&&x.parentElement)x.parentElement.remove()});
+        // html2canvas vẽ <select> lệch chữ: thay bằng ô tĩnh cùng kích thước, chữ căn giữa dọc.
+        node.querySelectorAll('select').forEach((el,i)=>{const o=selects[i];if(!o)return;const d=doc.createElement('div'),t=doc.createElement('span'),a=doc.createElement('span');t.textContent=o.text;a.textContent='▾';d.append(t,a);
+          Object.assign(d.style,{display:'inline-flex',alignItems:'center',justifyContent:'space-between',gap:'8px',boxSizing:'border-box',width:o.w+'px',height:o.h+'px',padding:'0 10px',border:o.cs.border,borderRadius:o.cs.borderRadius,background:o.cs.backgroundColor,color:o.cs.color,font:o.cs.font,whiteSpace:'nowrap',overflow:'hidden',verticalAlign:'middle'});
+          el.replaceWith(d)})},
+        ignoreElements:n=>n.tagName==='BUTTON'||n.classList&&(n.classList.contains('fs-share-btn')||n.classList.contains('chart-card-actions')||n.classList.contains('chart-source-details')||n.tagName==='DETAILS'&&!n.open)});
+    }finally{charts.forEach((ch,i)=>{ch.options.devicePixelRatio=dpr[i];ch.resize();ch.update('none')})}
   }
   function wrapText(ctx,text,maxW,maxLines){
     const words=text.split(' '),out=[];let cur='';
@@ -103,13 +115,14 @@
     const ctx=cv.getContext('2d'),pad=Math.round(W*0.04),font='Arial, "Helvetica Neue", sans-serif';
     ctx.fillStyle='#ffffff';ctx.fillRect(0,0,W,Hh);
     // Logo nhỏ góc trái, tên mã/ngành nhỏ góc phải; chart chiếm gần hết khung, không thanh chân.
-    const top=Math.round(Hh*0.035),logoH=Math.round(Math.min(W,Hh)*0.045),lg=await loadLogo();
+    const top=Math.round(Hh*0.035),logoH=Math.round(Math.min(W,Hh)*0.075),lg=await loadLogo();
     if(lg)ctx.drawImage(lg,pad,top,lg.width*logoH/lg.height,logoH);
     else{ctx.fillStyle=NAVY;ctx.font=`700 ${logoH*0.7}px ${font}`;ctx.textBaseline='middle';ctx.fillText('FinSuccess',pad,top+logoH/2)}
     ctx.textAlign='right';ctx.textBaseline='middle';ctx.fillStyle=MUTED;ctx.font=`600 ${Math.round(logoH*0.38)}px ${font}`;
     ctx.fillText(wrapText(ctx,(p.ticker?p.ticker+' · ':'')+p.name,W*0.6,1)[0]||'',W-pad,top+logoH/2);ctx.textAlign='left';
     const y0=top+logoH+Math.round(Hh*0.02),bw=W-pad*2,bh=Hh-y0-Math.round(Hh*0.03);
     const s=Math.min(bw/shot.width,bh/shot.height),dw=shot.width*s,dh=shot.height*s;
+    ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
     ctx.drawImage(shot,pad+(bw-dw)/2,y0+(bh-dh)/2,dw,dh);
     return cv;
   }
