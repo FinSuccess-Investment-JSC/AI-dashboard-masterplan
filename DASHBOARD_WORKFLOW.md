@@ -364,3 +364,8 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - `assets/chart-types.js` thêm cho mọi chart đi qua `ChartTypes.mount/html`: nhóm **Trục Từ 0 / Vừa dữ liệu** cạnh nút kiểu chart (Vừa dữ liệu chỉ mở cho Đường/Miền; Cột luôn từ 0, nút khóa có tooltip) và **chú giải dưới chart bấm để ẩn/hiện chuỗi** (gạch ngang khi tắt, tooltip bỏ chuỗi đã ẩn). Chart ≥2 chuỗi mới có chú giải; `.legend` tĩnh của trang nằm sát chart bị ẩn để không trùng.
 - Góc nhìn mặc định vẫn do renderer gốc vẽ; khi đổi trục hoặc ẩn chuỗi, renderer chung vẽ theo bề rộng thật của khung (chữ không phóng to, không nhãn đầu đường) và vẽ lại khi đổi cỡ. Lựa chọn lưu trong trình duyệt (`fs_sector_chart_view_v1`).
 - Class `.cts-legend` (không dùng `.ct-legend`, đã thuộc `company-trend.js`).
+
+## 31. Chia sẻ ảnh chart (22/10/2026, áp cho mọi dashboard ngành và Stock dashboard)
+
+- Mọi card chart có nút **Chia sẻ ảnh** (module chung `assets/share-image.js`, nạp sau `chart-cards.js` ở mọi trang ngành; Stock dashboard dùng bản giống hệt ở `_template/share-image.js`, người dùng chốt 22/10/2026): bấm vào tạo ảnh PNG có logo FinSuccess, tên dashboard/mã, tiêu đề chart, kỳ dữ liệu, ngày cập nhật, link trang (kèm tab) và dòng “Không phải khuyến nghị mua bán.”; chọn khung **Ngang 16:9** (X · Telegram · Zalo) hoặc **Dọc 4:5** (Facebook · Instagram); caption soạn sẵn, sửa được; các nút **Chia sẻ…** (điện thoại mở thẳng Zalo/Telegram/Facebook/X, caption chép sẵn), **Tải ảnh**, **Chép ảnh**, **Chép caption**. Không gắn nút cho card chủ yếu là bảng dài (>12 dòng hiển thị). Chart mới tự có nút khi nằm trong `.card`/`.viz-block`; không viết bản sao logic theo trang.
+- Sửa module ở một repo thì chép y nguyên sang repo kia.
