@@ -84,8 +84,27 @@
     if(p.ticker)lines.push('$'+p.ticker);
     return lines.join('\n');
   }
-  async function snapshot(card){
+  async function snapshot(card,ratio){
     const h2c=await loadLib();
+    // Khung dọc: tạm thu hẹp card và kéo cao khung chart để chart lấp đầy 4:5, chụp xong trả lại như cũ.
+    const restore=[];
+    if(ratio==='tall'){
+      const box=[...card.querySelectorAll('canvas,svg')].map(n=>n.parentElement).filter(n=>n&&n.offsetHeight>120)[0];
+      const width=Math.min(card.offsetWidth,620);
+      restore.push([card,card.getAttribute('style')]);card.style.width=width+'px';card.style.maxWidth=width+'px';
+      if(box){
+        const extra=Math.round(width*1.17)-card.offsetHeight;
+        if(extra>0){restore.push([box,box.getAttribute('style')]);box.style.height=(box.offsetHeight+extra)+'px';box.style.maxHeight='none'}
+      }
+      (window.Chart&&Chart.getChart?[...card.querySelectorAll('canvas')].map(c=>Chart.getChart(c)).filter(Boolean):[]).forEach(ch=>{ch.resize();ch.update('none')});
+    }
+    try{return await shoot(card,h2c)}
+    finally{
+      restore.reverse().forEach(([n,st])=>st==null?n.removeAttribute('style'):n.setAttribute('style',st));
+      if(restore.length)(window.Chart&&Chart.getChart?[...card.querySelectorAll('canvas')].map(c=>Chart.getChart(c)).filter(Boolean):[]).forEach(ch=>{ch.resize();ch.update('none')});
+    }
+  }
+  async function shoot(card,h2c){
     // Chụp đủ nét cho khung 1600px: tăng scale theo bề rộng card, vẽ lại Chart.js ở mật độ điểm cao rồi trả về như cũ.
     const scale=Math.min(4,Math.max(2,1600*1.25/Math.max(1,card.offsetWidth)));
     const charts=window.Chart&&Chart.getChart?[...card.querySelectorAll('canvas')].map(c=>Chart.getChart(c)).filter(Boolean):[];
@@ -93,7 +112,7 @@
     charts.forEach(ch=>{ch.options.devicePixelRatio=scale;ch.resize();ch.update('none')});
     const selects=[...card.querySelectorAll('select')].map(el=>({text:el.selectedOptions[0]?el.selectedOptions[0].textContent:'',cs:getComputedStyle(el),w:el.offsetWidth,h:el.offsetHeight}));
     try{
-      return await h2c(card,{backgroundColor:'#ffffff',scale,useCORS:true,logging:false,onclone:(doc,node)=>{node.style.border='0';node.style.boxShadow='none';node.style.padding='8px';
+      return await h2c(card,{backgroundColor:'#ffffff',scale,useCORS:true,logging:false,onclone:(doc,node)=>{node.style.border='0';node.style.boxShadow='none';node.style.padding='4px';
         // Giữ thanh Chu kỳ / Số kỳ; bỏ cụm nút Trục.
         node.querySelectorAll('span').forEach(x=>{if(!x.children.length&&x.textContent.trim()==='Trục'&&x.parentElement)x.parentElement.remove()});
         // html2canvas vẽ <select> lệch chữ: thay bằng ô tĩnh cùng kích thước, chữ căn giữa dọc.
@@ -102,6 +121,16 @@
           el.replaceWith(d)})},
         ignoreElements:n=>n.tagName==='BUTTON'||n.classList&&(n.classList.contains('fs-share-btn')||n.classList.contains('chart-card-actions')||n.classList.contains('chart-source-details')||n.tagName==='DETAILS'&&!n.open)});
     }finally{charts.forEach((ch,i)=>{ch.options.devicePixelRatio=dpr[i];ch.resize();ch.update('none')})}
+  }
+  // Cắt bỏ viền trắng quanh nội dung của bản chụp (giữ lề nhỏ) để chart to nhất trong khung.
+  function trim(cv){
+    const w=cv.width,h=cv.height,d=cv.getContext('2d').getImageData(0,0,w,h).data;
+    let x0=w,y0=h,x1=-1,y1=-1;
+    for(let y=0;y<h;y+=2)for(let x=0;x<w;x+=2){const i=(y*w+x)*4;if(d[i]<240||d[i+1]<240||d[i+2]<240){if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y}}
+    if(x1<0)return cv;
+    const m=Math.round(Math.min(w,h)*0.015);x0=Math.max(0,x0-m);y0=Math.max(0,y0-m);x1=Math.min(w,x1+m);y1=Math.min(h,y1+m);
+    const out=document.createElement('canvas');out.width=x1-x0;out.height=y1-y0;out.getContext('2d').drawImage(cv,x0,y0,out.width,out.height,0,0,out.width,out.height);
+    return out;
   }
   function wrapText(ctx,text,maxW,maxLines){
     const words=text.split(' '),out=[];let cur='';
@@ -114,23 +143,26 @@
     const R=RATIOS[ratio],W=R.w,Hh=R.h,cv=document.createElement('canvas');cv.width=W;cv.height=Hh;
     const ctx=cv.getContext('2d'),pad=Math.round(W*0.04),font='Arial, "Helvetica Neue", sans-serif';
     ctx.fillStyle='#ffffff';ctx.fillRect(0,0,W,Hh);
-    // Logo nhỏ góc trái, tên mã/ngành nhỏ góc phải; chart chiếm gần hết khung, không thanh chân.
-    const top=Math.round(Hh*0.035),logoH=Math.round(Math.min(W,Hh)*0.075),lg=await loadLogo();
-    if(lg)ctx.drawImage(lg,pad,top,lg.width*logoH/lg.height,logoH);
-    else{ctx.fillStyle=NAVY;ctx.font=`700 ${logoH*0.7}px ${font}`;ctx.textBaseline='middle';ctx.fillText('FinSuccess',pad,top+logoH/2)}
-    ctx.textAlign='right';ctx.textBaseline='middle';ctx.fillStyle=MUTED;ctx.font=`600 ${Math.round(logoH*0.38)}px ${font}`;
-    ctx.fillText(wrapText(ctx,(p.ticker?p.ticker+' · ':'')+p.name,W*0.6,1)[0]||'',W-pad,top+logoH/2);ctx.textAlign='left';
-    const y0=top+logoH+Math.round(Hh*0.02),bw=W-pad*2,bh=Hh-y0-Math.round(Hh*0.03);
+    // Logo ngay trên góc trái của chart, tên mã/ngành canh phải theo mép chart; chart lớn nhất có thể, cả khối căn giữa.
+    const m=Math.round(Math.min(W,Hh)*0.025),logoH=Math.round(Math.min(W,Hh)*0.06),gap=Math.round(logoH*0.3),lg=await loadLogo();
+    const bw=W-m*2,bh=Hh-m*2-logoH-gap;
     const s=Math.min(bw/shot.width,bh/shot.height),dw=shot.width*s,dh=shot.height*s;
+    const dx=(W-dw)/2,top=(Hh-(logoH+gap+dh))/2,dy=top+logoH+gap;
+    if(lg)ctx.drawImage(lg,dx,top,lg.width*logoH/lg.height,logoH);
+    else{ctx.fillStyle=NAVY;ctx.font=`700 ${logoH*0.7}px ${font}`;ctx.textBaseline='middle';ctx.fillText('FinSuccess',dx,top+logoH/2)}
+    ctx.textAlign='right';ctx.textBaseline='middle';ctx.fillStyle=MUTED;ctx.font=`600 ${Math.round(logoH*0.36)}px ${font}`;
+    ctx.fillText(wrapText(ctx,(p.ticker?p.ticker+' · ':'')+p.name,dw*0.6,1)[0]||'',dx+dw,top+logoH/2);ctx.textAlign='left';
     ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
-    ctx.drawImage(shot,pad+(bw-dw)/2,y0+(bh-dh)/2,dw,dh);
+    ctx.drawImage(shot,dx,dy,dw,dh);
     return cv;
   }
   const toBlob=cv=>new Promise(ok=>cv.toBlob(ok,'image/png'));
   function fileName(p,c){const base=((p.ticker||p.name)+'-'+c.title).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').replace(/[^\w]+/g,'-').replace(/^-|-$/g,'').slice(0,80);return 'FinSuccess-'+base+'.png'}
 
   async function render(){
-    const {shot,ratio,p,c,url,ui}=state;ui.msg.textContent='';
+    const {ratio,p,c,url,ui}=state;ui.msg.textContent='';
+    if(!state.shots[ratio])state.shots[ratio]=trim(await snapshot(state.card,ratio));
+    const shot=state.shots[ratio];
     state.canvas=await compose(shot,ratio,p,c,url);
     state.blob=await toBlob(state.canvas);
     if(state.objUrl)URL.revokeObjectURL(state.objUrl);
@@ -181,11 +213,10 @@
   async function open(card,btn){
     if(state)close();
     const p=pageInfo(),c=cardInfo(card),url=pageUrl(),ui=buildModal();
-    state={card,p,c,url,ui,ratio:'wide',file:fileName(p,c),focus:btn};
+    state={card,p,c,url,ui,ratio:'wide',shots:{},file:fileName(p,c),focus:btn};
     ui.text.value=caption(p,c,url);
     try{
-      const shot=await snapshot(card);if(!state||state.ui!==ui)return;
-      state.shot=shot;await render();ui.prev.replaceChildren(ui.img);ui.busy(false);
+      await render();if(!state||state.ui!==ui)return;ui.prev.replaceChildren(ui.img);ui.busy(false);
     }catch(e){ui.prev.replaceChildren(el('span','', 'Không tạo được ảnh: '+e.message))}
   }
   // Card chủ yếu là bảng dài (chart chỉ phụ) không gắn nút: ảnh sẽ quá nhỏ để đọc.
