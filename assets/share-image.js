@@ -86,8 +86,10 @@
   }
   async function snapshot(card){
     const h2c=await loadLib();
-    return h2c(card,{backgroundColor:'#ffffff',scale:Math.min(2.5,Math.max(2,window.devicePixelRatio||1)),useCORS:true,logging:false,
-      ignoreElements:n=>n.tagName==='BUTTON'||n.tagName==='SELECT'||n.classList&&(n.classList.contains('fs-share-btn')||n.classList.contains('chart-card-actions')||n.classList.contains('chart-source-details')||n.tagName==='DETAILS'&&!n.open)});
+    return h2c(card,{backgroundColor:'#ffffff',scale:Math.min(2.5,Math.max(2,window.devicePixelRatio||1)),useCORS:true,logging:false,onclone:(doc,node)=>{node.style.border='0';node.style.boxShadow='none';node.style.padding='8px';
+        // Giữ thanh Chu kỳ / Số kỳ; bỏ cụm nút Trục.
+        node.querySelectorAll('span').forEach(x=>{if(!x.children.length&&x.textContent.trim()==='Trục'&&x.parentElement)x.parentElement.remove()})},
+      ignoreElements:n=>n.tagName==='BUTTON'||n.classList&&(n.classList.contains('fs-share-btn')||n.classList.contains('chart-card-actions')||n.classList.contains('chart-source-details')||n.tagName==='DETAILS'&&!n.open)});
   }
   function wrapText(ctx,text,maxW,maxLines){
     const words=text.split(' '),out=[];let cur='';
@@ -100,29 +102,15 @@
     const R=RATIOS[ratio],W=R.w,Hh=R.h,cv=document.createElement('canvas');cv.width=W;cv.height=Hh;
     const ctx=cv.getContext('2d'),pad=Math.round(W*0.04),font='Arial, "Helvetica Neue", sans-serif';
     ctx.fillStyle='#ffffff';ctx.fillRect(0,0,W,Hh);
-    ctx.fillStyle=NAVY;ctx.fillRect(0,0,W,10);ctx.fillStyle=TEAL;ctx.fillRect(0,10,W*0.22,4);
-    // Header: logo trái, tên dashboard phải.
-    const headH=Math.round(Hh*(ratio==='wide'?0.11:0.085)),lg=await loadLogo();
-    if(lg){const lh=headH*0.62,lw=lg.width*lh/lg.height;ctx.drawImage(lg,pad,14+(headH-lh)/2,lw,lh)}
-    else{ctx.fillStyle=NAVY;ctx.font=`700 ${headH*0.38}px ${font}`;ctx.textBaseline='middle';ctx.fillText('FinSuccess',pad,14+headH/2)}
-    ctx.textAlign='right';ctx.textBaseline='middle';ctx.fillStyle=NAVY;ctx.font=`700 ${Math.round(headH*0.27)}px ${font}`;
-    const right=wrapText(ctx,(p.ticker?p.ticker+' · ':'')+p.name,W*0.55,1)[0]||'';ctx.fillText(right,W-pad,14+headH/2);ctx.textAlign='left';
-    ctx.strokeStyle=LINE;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(pad,14+headH);ctx.lineTo(W-pad,14+headH);ctx.stroke();
-    // Footer 2 dòng: link trang; kỳ dữ liệu · ngày cập nhật | miễn trừ.
-    const footH=Math.round(Hh*(ratio==='wide'?0.1:0.085)),fy=Hh-footH,fs=Math.round(Math.min(W,Hh)*0.019);
-    ctx.strokeStyle=LINE;ctx.beginPath();ctx.moveTo(pad,fy);ctx.lineTo(W-pad,fy);ctx.stroke();
-    ctx.textBaseline='middle';ctx.font=`600 ${fs}px ${font}`;ctx.fillStyle=NAVY;
-    ctx.fillText(wrapText(ctx,url.replace(/^https?:\/\//,''),W-pad*2,1)[0],pad,fy+footH*0.33);
-    ctx.font=`${fs}px ${font}`;ctx.fillStyle=MUTED;
-    const disc='Không phải khuyến nghị mua bán.',dw0=ctx.measureText(disc).width;
-    const when=[c.period?'Kỳ '+c.period:'',p.updated?'Cập nhật '+p.updated:''].filter(Boolean).join(' · ');
-    if(when)ctx.fillText(wrapText(ctx,when,W-pad*2-dw0-fs*2,1)[0],pad,fy+footH*0.7);
-    ctx.textAlign='right';ctx.fillText(disc,W-pad,fy+footH*0.7);ctx.textAlign='left';
-    // Ảnh chart vừa khung giữa, giữ tỉ lệ.
-    const top=14+headH+pad*0.6,bottom=fy-pad*0.6,bw=W-pad*2,bh=bottom-top;
-    const s=Math.min(bw/shot.width,bh/shot.height),dw=shot.width*s,dh=shot.height*s,dx=pad+(bw-dw)/2,dy=top+(bh-dh)/2;
-    ctx.save();ctx.shadowColor='rgba(29,38,120,.14)';ctx.shadowBlur=24;ctx.shadowOffsetY=6;ctx.fillStyle='#fff';ctx.fillRect(dx,dy,dw,dh);ctx.restore();
-    ctx.drawImage(shot,dx,dy,dw,dh);ctx.strokeStyle=LINE;ctx.lineWidth=1.5;ctx.strokeRect(dx,dy,dw,dh);
+    // Logo nhỏ góc trái, tên mã/ngành nhỏ góc phải; chart chiếm gần hết khung, không thanh chân.
+    const top=Math.round(Hh*0.035),logoH=Math.round(Math.min(W,Hh)*0.045),lg=await loadLogo();
+    if(lg)ctx.drawImage(lg,pad,top,lg.width*logoH/lg.height,logoH);
+    else{ctx.fillStyle=NAVY;ctx.font=`700 ${logoH*0.7}px ${font}`;ctx.textBaseline='middle';ctx.fillText('FinSuccess',pad,top+logoH/2)}
+    ctx.textAlign='right';ctx.textBaseline='middle';ctx.fillStyle=MUTED;ctx.font=`600 ${Math.round(logoH*0.38)}px ${font}`;
+    ctx.fillText(wrapText(ctx,(p.ticker?p.ticker+' · ':'')+p.name,W*0.6,1)[0]||'',W-pad,top+logoH/2);ctx.textAlign='left';
+    const y0=top+logoH+Math.round(Hh*0.02),bw=W-pad*2,bh=Hh-y0-Math.round(Hh*0.03);
+    const s=Math.min(bw/shot.width,bh/shot.height),dw=shot.width*s,dh=shot.height*s;
+    ctx.drawImage(shot,pad+(bw-dw)/2,y0+(bh-dh)/2,dw,dh);
     return cv;
   }
   const toBlob=cv=>new Promise(ok=>cv.toBlob(ok,'image/png'));
