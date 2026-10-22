@@ -20,6 +20,13 @@
 "genoa": 3945,
 "los_angeles": 7884,
 "new_york": 10075
+},
+"2026-10-22": {
+"composite": 4585,
+"rotterdam": 3632,
+"genoa": 4152,
+"los_angeles": 8007,
+"new_york": 10166
 }
 },
 "quotes": {
@@ -29,6 +36,13 @@
 "genoa": "Shanghai to Genoa grew 7% to $3,945 per 40ft",
 "los_angeles": "Shanghai to Los Angeles inched up 3% to $7,884 per 40ft",
 "new_york": "Shanghai to New York fell 1% to $10,075 per 40ft"
+},
+"2026-10-22": {
+"composite": "World Container Index (WCI), the benchmark widely referenced by procurement teams, increased 2% to $4,585",
+"rotterdam": "Shanghai to Rotterdam increased 3% to $3,632 per 40ft",
+"genoa": "Shanghai to Genoa grew 5% to $4,152 per 40ft",
+"los_angeles": "Shanghai to Los Angeles rose 2% to $8,007 per 40ft",
+"new_york": "Shanghai to New York inched up 1% to $10,166 per 40ft"
 }
 }
 }
