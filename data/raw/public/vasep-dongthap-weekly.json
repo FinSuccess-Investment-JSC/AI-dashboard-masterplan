@@ -2,7 +2,7 @@
 "source": "VASEP · giá nguyên liệu thủy sản tại Đồng Tháp (tuần)",
 "url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc",
 "unit": "nghìn VND/kg (điểm giữa khoảng giá)",
-"checked": "2026-10-22",
+"checked": "2026-10-23",
 "series": {
 "pangasius": {
 "2014-06-11": {
@@ -3496,6 +3496,12 @@
 "size": "0,7 - 1,0 kg/con",
 "range": "30.000 - 34.000",
 "url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-10-10-16-10-2026-27142.html"
+},
+"2026-10-23": {
+"value": 35.0,
+"size": "0,7 - 1,0 kg/con",
+"range": "33.000 - 37.000",
+"url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-17-10-23-10-2026-27163.html"
 }
 },
 "pangasius_fry": {
@@ -3726,6 +3732,12 @@
 "size": "30 – 35 con/kg",
 "range": "52.000 - 60.000",
 "url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-10-10-16-10-2026-27142.html"
+},
+"2026-10-23": {
+"value": 55.0,
+"size": "30 – 35 con/kg",
+"range": "52.000 - 58.000",
+"url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-17-10-23-10-2026-27163.html"
 }
 },
 "shrimp": {
@@ -5120,6 +5132,12 @@
 "size": "50 - 100 con/kg",
 "range": "85.000 - 130.000",
 "url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-10-10-16-10-2026-27142.html"
+},
+"2026-10-23": {
+"value": 107.5,
+"size": "50 - 100 con/kg",
+"range": "85.000 - 130.000",
+"url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-17-10-23-10-2026-27163.html"
 }
 }
 },
@@ -5331,6 +5349,7 @@
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-17-01-23-01-2025-24749.html",
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-17-01-23-01-2026-26572.html",
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-17-10-23-10-2025-26371.html",
+"https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-17-10-23-10-2026-27163.html",
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-17-11-23-11-2017-15519.html",
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-17-11-23-11-2023-23766.html",
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-17-2-23-2-2017-15006.html",

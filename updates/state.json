@@ -1358,6 +1358,7 @@
   },
   "pvn.news": {
    "seen": [
+    "262ff5a6cc9fabe3",
     "f335badcee5e97a0",
     "cb1a51a01bea529c",
     "5642b13af493240a",
@@ -1370,7 +1371,7 @@
     "5e48bc24581143c1",
     "470c6ce74a73a25b"
    ],
-   "lastNew": "2026-10-21T12:18:04+07:00"
+   "lastNew": "2026-10-23T12:20:54+07:00"
   },
   "moit.notices": {
    "seen": [
@@ -1751,6 +1752,7 @@
   },
   "news.vasep": {
    "seen": [
+    "31e16a076c9a32ba",
     "856a9f7f6a895198",
     "bfdf0c6d69e57825",
     "85abac0d15d668d5",
@@ -1794,10 +1796,11 @@
     "9e6a12a13c89bf7a",
     "d2d32128058c8df1"
    ],
-   "lastNew": "2026-10-22T12:21:46+07:00"
+   "lastNew": "2026-10-23T12:20:54+07:00"
   },
   "news.shipping-policy": {
    "seen": [
+    "e7738fee4e03be76",
     "0840c1bbc537cc1f",
     "a90029015fe8d948",
     "ffc2756294092315",
@@ -1856,10 +1859,17 @@
     "e09ce7e2766b145a",
     "489f66b7b29e12c2"
    ],
-   "lastNew": "2026-10-22T21:11:54+07:00"
+   "lastNew": "2026-10-23T12:20:54+07:00"
   },
   "news.public-investment": {
    "seen": [
+    "6e3c03465e36266b",
+    "98681c35043ae668",
+    "ae4562c39dae073c",
+    "4c7c5c79fb3ccb78",
+    "2ffd3d39a7f96d25",
+    "c7f0a4e40907c170",
+    "d0686841ee48e4c0",
     "332e6500000c9777",
     "0c8c81e98b28f03d",
     "eaa35e03c8b42f5a",
@@ -2138,7 +2148,7 @@
     "a9dc3ce7573cfb4b",
     "c136a535a0237e84"
    ],
-   "lastNew": "2026-10-22T21:11:54+07:00"
+   "lastNew": "2026-10-23T12:20:54+07:00"
   },
   "news.insurance": {
    "seen": [
@@ -2183,6 +2193,8 @@
   },
   "news.retail": {
    "seen": [
+    "84c69ae2b4055ffb",
+    "7a9f858eb0cbbab8",
     "249994d41a287215",
     "823c43b5367ca696",
     "bef0de146189427f",
@@ -2324,7 +2336,7 @@
     "655044340c760fdb",
     "fb4c59f0162643ab"
    ],
-   "lastNew": "2026-10-22T21:11:54+07:00"
+   "lastNew": "2026-10-23T12:20:54+07:00"
   },
   "moit.power-prices": {
    "seen": [
@@ -2334,6 +2346,8 @@
   },
   "news.power-prices": {
    "seen": [
+    "37f4c40cbf36b41e",
+    "2df17591e5023207",
     "346acbc0ac4bd658",
     "d73ab735dfe45619",
     "5f5d177e22f71902",
@@ -2493,10 +2507,15 @@
     "41ddc1b9143721a2",
     "665b9d09899dadc1"
    ],
-   "lastNew": "2026-10-22T21:11:54+07:00"
+   "lastNew": "2026-10-23T12:20:54+07:00"
   },
   "news.pharma": {
    "seen": [
+    "9ef136386d3a0719",
+    "0c45001318d156e4",
+    "88b23a1f35420c48",
+    "fadac049ec1e704a",
+    "7678ec022beb2464",
     "c1c494aa80920aaf",
     "968a84848bffd20e",
     "422644b6f4d00fef",
@@ -2714,7 +2733,7 @@
     "dafce1840a27baa8",
     "a3f2552974bf4f5f"
    ],
-   "lastNew": "2026-10-22T21:11:54+07:00"
+   "lastNew": "2026-10-23T12:20:54+07:00"
   }
  },
  "queue": [
@@ -2885,7 +2904,8 @@
     "lịch 19/10 07:00",
     "lịch 20/10 07:00",
     "lịch 21/10 07:00",
-    "lịch 22/10 07:00"
+    "lịch 22/10 07:00",
+    "lịch 23/10 07:00"
    ],
    "signals": []
   },
@@ -3111,6 +3131,11 @@
      "watcher": "news.vasep",
      "seenAt": "2026-10-22T12:21:46+07:00",
      "what": "Xuất khẩu tôm 9 tháng đạt 3,7 tỷ USD: Sức bật từ châu Á và áp lực hạ nhiệt cuối năm - Tạp chí Doanh nghiệp và Hội nhập — https://news.google.com/rss/articles/CBMiwAFBVV95cUxQWUZFb211enZPazQ2eGVpTUV6RWJOVE9ZWFdHc0MzbEpBQV95ejBtSExPbkEyamFaQktTUGozZXFtTlFibnF4bE5qVUgyNHBlYUVweXNHYTNVZzN3LWFMZ05BNHpiS1lWYWdadm9BOVNicG5vcU05R192dVhIdS1najJabVJtRTg4dkNiOHRwcjd6ajJnVjNIYUhzZFhCVTFhMmNZcC05cG15WFdQeEViS3RiS0k4YUxYSG9mTmtRNkQ?oc=5"
+    },
+    {
+     "watcher": "news.vasep",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Xuất khẩu tôm 8 tháng 2026: Tăng trưởng vẫn tích cực, cạnh tranh chuyển sang hiệu quả và giá trị - VASEP — https://news.google.com/rss/articles/CBMi9wFBVV95cUxPYWg0U09XRVpzU3hjdnJ4NlQ5UWJvX0xESGw0VU9hUHpScHJqYUF0SldxQ3lCYlA4MEM1WndaSGNsdW1PY2RENlNOc1NMdm9BeGZ2MTJ1RUw0VEgtMTFOWm1mZmdNVGg4RVM5T3FPODFURDBpcmFHNlN3cEQ1R3hwZ1RGMmdOVXktbXc4TzBMdmxmMzVnQTZkQ1JiQXZZTHZjT2Njd2NWTVVrXzdSbGhNNEJEeEJvelhiLVZlSUJDeUFqWjIzS19tVVlfRFNXVDBIZ291ZjV0OURYWk9tVEdKRVNyTjZnQ0cwRmE4TGVjWVY0NGt2YzBr0gHKAUFVX3lxTE1QWUQ2RHlXZ2JBVHp1QXZyZnk1Q0UzZnVJSlJHQUsxQ25ubXdhR0NiY1k3MUJwckh0LUVKbVUxMHh5NXhCa0ZCNFlNeDJvUWxIcnlucm1mMGkxVVRwZzVIN0pSUDdnekI4SE1obzZnclRwNUFvdWtoTEJEN1h1M1dFdUd6VGVIb1RPQXRfV2NLZnpzRFdXWkZXV1ZWT3Y1MUg3RHFzenBUaW13V1o3cGY1QnM0X2tDbV8yMHVmY1VMVlpmM3JvalVrbkE?oc=5"
     }
    ]
   },
@@ -3123,11 +3148,6 @@
     "watcher báo có công bố mới"
    ],
    "signals": [
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-12T13:25:56+07:00",
-     "what": "Trình Chính phủ Nghị định sửa đổi, bổ sung quy định về quản lý hoạt động hàng hải trong tháng 8/2024 - Baodautu.vn — https://news.google.com/rss/articles/CBMiywFBVV95cUxQOG5WVDNWWm5sbkRUSnFzanhBNEtxMDZ4YmRPRHY1Uk5MajhHY2pkZFBoaTU2RW9zb09NZnZQMjVnX0tTLWVUc2FaZklGbWFhNHBBM1RKRmpGRElBY2FlcGo2WFRrbk9WSGJ5LWtfOXBuVjJmUXg4Nk4zT0RlMmFVVVI2SzNSWVFkdHhBOXNucUl2Q3Z1bW52bUxhTkNMSlNIVkRiZ3NWX2tRQ01HdlFPUS02U1ZORTFvenVHeUd1QnhzcW1WcmFPbmZzbw?oc=5"
-    },
     {
      "watcher": "news.shipping-policy",
      "seenAt": "2026-10-19T10:59:33+07:00",
@@ -3222,6 +3242,11 @@
      "watcher": "news.shipping-policy",
      "seenAt": "2026-10-22T21:11:54+07:00",
      "what": "VCCI lo tăng chi phí tuân thủ khi xây dựng Bộ luật Hàng hải và Đường thủy Việt Nam - baodautu — https://news.google.com/rss/articles/CBMitgFBVV95cUxNajRrS2FiY0lzdU1HTnNkTU54bG9oa2xHQmprS2IzU3d5MGd4alVDX1Z4X2JFYUNKcFZrVGFCX2Mtb2JnSkxQaGpfWGlJeHlDVHctbTBpQU9pN0JWZ29YZVFFWjlJVHJaaTY2ZFBTWnFUaGVQNFAyTDFVZTNidXJ1QjZQWUtPMTFqRlVjeUNjYkJaS0RBYWFBbVlrWG1aTkcyanVrMWhlYkZudlRIQm9Ea0JHNC02QQ?oc=5"
+    },
+    {
+     "watcher": "news.shipping-policy",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Ủy ban Thường vụ Quốc hội cho ý kiến về dự án Bộ luật Hàng hải và Đường thủy Việt Nam (sửa đổi) - Cổng Thông tin điện tử Quốc hội — https://news.google.com/rss/articles/CBMidEFVX3lxTE03RURfaThWeHFuVHUxRFc4Q3ZZa3doUXEwcS1vQTAzR0lLLXl1NlRJb0p5aXZ6VUF0QThvS1dlLV9TVGp2UTNKM1EzUXBpYWxYMDl0QmhBdjRNX1pnamlBemdzQmItRm42QndXRG05aG1pUzhJ?oc=5"
     }
    ]
   },
@@ -3235,7 +3260,8 @@
     "lịch 19/10 07:00",
     "lịch 20/10 07:00",
     "lịch 21/10 07:00",
-    "lịch 22/10 07:00"
+    "lịch 22/10 07:00",
+    "lịch 23/10 07:00"
    ],
    "signals": []
   },
@@ -3481,41 +3507,6 @@
     {
      "watcher": "news.public-investment",
      "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Áp lực giải ngân vốn đầu tư công, Đắk Lắk cần giải ngân hơn 2.500 tỷ đồng mỗi tháng - Tin nhanh chứng khoán — https://news.google.com/rss/articles/CBMixwFBVV95cUxQYTNFYks3YmlJUTM0anF1RnpSMi05ZGljSmZfOWkyZG4xc0hyaFpRclo3Nng3NWFSWVg3aUotc19xc2czaVRTUE1ZYWROaThxT0F0YkktV3B5bEFHdVhoU0t4eFh6NFQtb3NSczF2V0VxQXdib0RLbWRtRlBzcVRnejFOS3dXODVoSWlFRlBFV0pQMHk4WThvWmNLVzNNME5sSWJwT254OXp0MzNIZk1ZNjh2M1JIdDM1YzV1bm1UZTNIMmpfbks40gHHAUFVX3lxTFBhM0ViSzdiaUlRMzRqcXVGelIyLTlkaWNKZl85aTJkbjFzSHJoWlFyWjc2eDc1YVJZWDdpSi1zX3FzZzNpVFNQTVlhZE5pOHFPQXRiSS1XcHlsQUd1WGhTS3h4WHo0VC1vc1JzMXZXRXFBd2JvREttZG1GUHNxVGd6MU5Ld1c4NWhJaUVGUEVXSlAweThZOG9aY0tXM00wTmxJYnBPbng5enQzM0hmTVk2OHYzUkh0MzVjNXVubVRlM0gyal9uSzg?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Hà Nội tăng tốc giải ngân đầu tư công, thúc đẩy tăng trưởng kinh tế - Thuonghieucongluan.com.vn — https://news.google.com/rss/articles/CBMiswFBVV95cUxOalJzcXM5RUNqaHlNUUVzRG5BdGhzNFkzeDRINHYxYTBIZHFQdTBZZEV5UldOUFptMExDb0NHalUxN29qb3pzTGUxdVYwcHBNWlpwMnI1UTlXOVRxUE5FaVBOdWhBWTlDV1Bscko2cC04VUM1bzgtQkVqSW1fVTBiYVdkaVpUNVVpcXlXSGR6OUtTRHhHbFowVEhLT3FBLXBVNUtOZEdLTkpwX1dwNVJIcXZfbw?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Giải ngân đầu tư công ì ạch, Đắk Lắk yêu cầu thay cán bộ - vov.gov.vn — https://news.google.com/rss/articles/CBMikgFBVV95cUxNX0gwZHFtN0VkTDRfVEtIY0M1akZQMUs1TThVZ01YdzBNWFAtdy1EVVlYbXhUTklIVkRJS29raWRyM2ZjRWdUMy1aSEpKVXZaTFplMDJONUJTMUtXdnZSZ2Jkbmt1WmlmZEd6ek83U0hLN2VydmdDYkJkODFqQjFaMDR4UHlUbFJMaHJqUkhDN21BZw?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Giải ngân vốn đầu tư công đạt 64,6% kế hoạch năm 2026 - Thương hiệu và Pháp luật — https://news.google.com/rss/articles/CBMipgFBVV95cUxQaXRqcnpJejFrMEVpdkpaMXl3QWhiYXRHeDB1bk9zSUlMcmozSTY3SW1BdGFGM1RyZjBxVTBGMHFJTXlfbzc1Szl0UXI0NGxMUDB5ZXNqcFc2eXc2Rk1rbmVxaDdVSjRPWkR4UWw4QllSNE1yS0NvWTZEYnpHeE1KM1NIN0cwNGhPcHNaQ2lybUdPZFJtUjJCWWtrWF9aNXNZRy1LdWpR?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Đầu tư công tăng tốc những tháng cuối năm - Báo và Phát thanh, truyền hình Hải Phòng — https://news.google.com/rss/articles/CBMid0FVX3lxTFBmSHNERTkzcXk4aUFkNE8wVzJwQTZrel9uQVQ0N1gybk9TSU9qbi00a0l3TExPc2Z4Q2UzajJ3aEkyNTJUVEZUSzAtQmk2MXFHODdkTktoXzF0VjYxbkEySlk4XzBZRW1VT2FHUkFNQ0RBOUFBeVE4?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Lâm Đồng còn 80 dự án vướng mặt bằng, khẩn trương tháo gỡ để giải ngân - Laodong.vn — https://news.google.com/rss/articles/CBMiqwFBVV95cUxQQUdod3VqOERxSTR0aGk3enJIc2QtWXlwLW9zMk9VcERYVjRyQ1NsWEhwcjNmM2hCTXlxal9ZRVJJTHlqbWtUS3FOZlF5S2FjYTM3SGNfa21Qb1JDWjgyV3Zxdk9TY2xHaGlLSWQ1Vi04WHFIeXZGZ3NoMXFvSS0xVERSNmpuS3RRTXo4NnpaT1gyemEtN0RuVXg4bFhLcENmb2NaY3lFejJCakk?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Lâm Đồng cử lãnh đạo hỗ trợ tháo gỡ vướng mắc đầu tư công - Báo Lâm Đồng — https://news.google.com/rss/articles/CBMilgFBVV95cUxPUDM3TmxiYy1uckZ5X0NkRW1vdE1xbXhhUUtUQWtvU29FekwxaERyaUpTdDJCR085S1JtR1YwSXZTTXdBT0t5U2dBVHZpOTBlUGhSd1hSc2t1ajhhWFh3M09NcDhuMHZuLVVwZnhZaEMyTmhzYWl5SU1oa1FneDA2Sm5BRVpEZFRqdGlCS2xsRmtDSGZRcnc?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
      "what": "Lãnh đạo phường Sơn Nam kiểm tra thực địa, đôn đốc tiến độ thi công và giải ngân vốn đầu tư công năm 2026 tại các dự án trên địa bàn - CỔNG  — https://news.google.com/rss/articles/CBMi2gFBVV95cUxQc1c0QVBmeml1R2lmYlpZbGNBVnhybnNRdjc1QUV2Z3N1Um84aF9TaFp0c2tBdkxIVW05b0FBUzNpbGVJNV9GalRjZDB1QVFURVlPTU4wQU9EODRHbFNZUzl1VTB3Q29xVlhNc2xNWEZyV0dRUlhfajByVDNxMGhOVTFfSERrMUJEMmxQdzlMTW9rZ1Zfc0wzS0tia3dMdEg4WXhlb2I3M3RRM3hUWkdYenhGRHpXRnVMa0tPdTIzQmV6YkNFUnpMYnV0bkJWejhNeW14SDdpUkl5QQ?oc=5"
     },
     {
@@ -3577,6 +3568,41 @@
      "watcher": "news.public-investment",
      "seenAt": "2026-10-22T21:11:54+07:00",
      "what": "Dự án nâng cấp quốc lộ 91 đạt giá trị giải ngân hơn 85% - Vietnam.vn — https://news.google.com/rss/articles/CBMigwFBVV95cUxQdnlUdkZhU0R2bWRCRnc4cjJwMFlzdmM0a3ZvTzY1NnRXSWFvTUhJRlQ5UjhhbFVJX2xvX3NWYVZhelhOeHJwS0ZNQVFfdFo0WFNfNEFQU291N2JGLW8xOWdsbU1DYklCVExXNEFjWkR5eHZrSkFJWmxNMnFoZW1PTXNXQQ?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Giải ngân đầu tư công ì ạch, Đắk Lắk yêu cầu thay cán bộ - VOV.VN — https://news.google.com/rss/articles/CBMimgFBVV95cUxOQk1hUzA1M2FQRzd6a0NQS0M4dE9XNmVLLV9UZGJRWXFzQmlTVEhUNjRiTG5oLTNOalhydV9Qc0s1ejRjcVRCdW5QV29mU3Nnb1MyQXRJN3B3OVNUbWo1aGhGck84bUhSOFlCTzIyUGh2WWhJNG83Z0VVV3c4RGF3Tmd0NGZ3Rnh1enJNVmxxTWE3REM2ank5ZTd3?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Côn Đảo giải ngân đầu tư công: Xung lực mới cho kinh tế bắt đầu từ hạ tầng - VOH — https://news.google.com/rss/articles/CBMitAFBVV95cUxQUmoxN2swZDBrTVdxQ3FFcWM0Q1BDX3dGa2k4Yy1TTGRTdjJPejRWRnBPdUUxaVI1S2Z1Q3R4Y3BiblpyUXVxdFhFcFJpNVpYcFVCSy1WbmhySlJyMDBhNUlFYUtNZGZYS0tGVlBUd2VqWE1LSkc4bHN1d293RlJJNm9NRmRwT3phanBQVi1JVGQwR0otWng1eHhyRk1rczlranAtQ293WUxzM0hMU2FuTWk0ZHA?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Giải ngân đầu tư công đạt 64,6% kế hoạch, nhiều bộ ngành vẫn \"ì ạch\" - VOV.VN — https://news.google.com/rss/articles/CBMipAFBVV95cUxPbUMwWmZyTUJzSXNZbVZrTGxzalBvZkRMQk5mTFFtZlV2TFR2ekVwMFR0ZXlJb2tfOVQwcy1MZmh3UkZRSEdna0JNZDdsNHkyMktSLVB1ZnRfV01lbFVnUDk2M2NLYVZFMWRfRmJqMTJlMEtaNndXQloxRWFGZWFybkdkT0ktMGVtSW15WjBoREhHenU2djJZZnBNZTF0QkRhM2xGSw?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Đồng Tháp đẩy nhanh tiến độ giải ngân vốn đầu tư công - VOV.VN — https://news.google.com/rss/articles/CBMilwFBVV95cUxOekxnZktRZnFMaGhoMG5WeWFhTlo3TUZSVUF6QVAzZ0dQeHk2Rm5jV3N2MHZCY2p1WjFFb1IzS0FkcXVpdGpXZVZxbnN5ZHoyN1djRURtZkJvMU1nN3BvMGhSWml2cUZURUl0OU5lRzFCU2gtSVo4b3FLNUVBdWE1WTBvNEpGWFRkRzdHS3k0WnUwNFN6V2NB?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Giải ngân đầu tư công đạt 64,6% kế hoạch, nhiều bộ ngành vẫn \"ì ạch\" - Cổng thông tin đài tiếng nói Việt Nam — https://news.google.com/rss/articles/CBMinAFBVV95cUxOaEVyMzZQSnJMOFFYUk13SEtDSFR3Y0RXMS11d2l5TGFZX1ZtZjZDU2UxUENxSWJpcEt6Q3RNVG9QczdEMVJUdkM4dDRHS1kzX3d6b2I0MXhhbnZaeGpfd0ItVVdjRGVwNUp0WkJUNE9vdVN1ZjlGbzNVREJIXzRpQUk0NWJZenpkdm4wSWRDOVBlTUV6aGhMWkpNdHM?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Đắk Lắk siết trách nhiệm, đẩy nhanh tiến độ giải ngân vốn đầu tư công - Tạp chí Doanh nghiệp & Kinh tế xanh — https://news.google.com/rss/articles/CBMiswFBVV95cUxPZXlyNzc0Z2ItMFNKdlRXeF9qRmY4Y1pJV0MydXE3eTNOLVM1WTY5TlcyTDBpZTZGQlZCUlE2MGJPWU5hTlNZbUdZamJsZjlkeERNU0FGaEx3TER2ejhjNFd5SEtpNGY3elFXd3NQbHljb3g0U1NOTUNudmUxUjcwNEhkLTc1MjFYM0xNejZkQ19aa1FBSlJ5aFB1R0hERmh3NVJyQjBkQVFfbERYSXdPY1dUcw?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Hà Tĩnh thông qua 4 nghị quyết, thúc đẩy đầu tư công và phát triển văn hóa - Tạp chí Doanh nghiệp và Hội nhập — https://news.google.com/rss/articles/CBMitgFBVV95cUxPdHV6cHV5d0FYdm9ST2lrVXZ5TllpelY2ZmJUeVhVX2FYVTJ3cjMydGQ4eFdGNnlvYnEzRFl3cVFZc0RqcDFEZHl2VThlWFlIZ2stczBRa3JlcGdwdGRoLU1aODBkYWRjamN5ai1lTlk2RXI0Qmx0MmVxdjJhYmtiMXFQVDBnUFlOakw3TFQ1MUZYMWxBS3djTTNEMXVJQ1pWVjVRN2prb0FhNEstcGJ4LWVBRzMydw?oc=5"
     }
    ]
   },
@@ -3592,41 +3618,6 @@
     {
      "watcher": "news.public-investment",
      "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Áp lực giải ngân vốn đầu tư công, Đắk Lắk cần giải ngân hơn 2.500 tỷ đồng mỗi tháng - Tin nhanh chứng khoán — https://news.google.com/rss/articles/CBMixwFBVV95cUxQYTNFYks3YmlJUTM0anF1RnpSMi05ZGljSmZfOWkyZG4xc0hyaFpRclo3Nng3NWFSWVg3aUotc19xc2czaVRTUE1ZYWROaThxT0F0YkktV3B5bEFHdVhoU0t4eFh6NFQtb3NSczF2V0VxQXdib0RLbWRtRlBzcVRnejFOS3dXODVoSWlFRlBFV0pQMHk4WThvWmNLVzNNME5sSWJwT254OXp0MzNIZk1ZNjh2M1JIdDM1YzV1bm1UZTNIMmpfbks40gHHAUFVX3lxTFBhM0ViSzdiaUlRMzRqcXVGelIyLTlkaWNKZl85aTJkbjFzSHJoWlFyWjc2eDc1YVJZWDdpSi1zX3FzZzNpVFNQTVlhZE5pOHFPQXRiSS1XcHlsQUd1WGhTS3h4WHo0VC1vc1JzMXZXRXFBd2JvREttZG1GUHNxVGd6MU5Ld1c4NWhJaUVGUEVXSlAweThZOG9aY0tXM00wTmxJYnBPbng5enQzM0hmTVk2OHYzUkh0MzVjNXVubVRlM0gyal9uSzg?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Hà Nội tăng tốc giải ngân đầu tư công, thúc đẩy tăng trưởng kinh tế - Thuonghieucongluan.com.vn — https://news.google.com/rss/articles/CBMiswFBVV95cUxOalJzcXM5RUNqaHlNUUVzRG5BdGhzNFkzeDRINHYxYTBIZHFQdTBZZEV5UldOUFptMExDb0NHalUxN29qb3pzTGUxdVYwcHBNWlpwMnI1UTlXOVRxUE5FaVBOdWhBWTlDV1Bscko2cC04VUM1bzgtQkVqSW1fVTBiYVdkaVpUNVVpcXlXSGR6OUtTRHhHbFowVEhLT3FBLXBVNUtOZEdLTkpwX1dwNVJIcXZfbw?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Giải ngân đầu tư công ì ạch, Đắk Lắk yêu cầu thay cán bộ - vov.gov.vn — https://news.google.com/rss/articles/CBMikgFBVV95cUxNX0gwZHFtN0VkTDRfVEtIY0M1akZQMUs1TThVZ01YdzBNWFAtdy1EVVlYbXhUTklIVkRJS29raWRyM2ZjRWdUMy1aSEpKVXZaTFplMDJONUJTMUtXdnZSZ2Jkbmt1WmlmZEd6ek83U0hLN2VydmdDYkJkODFqQjFaMDR4UHlUbFJMaHJqUkhDN21BZw?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Giải ngân vốn đầu tư công đạt 64,6% kế hoạch năm 2026 - Thương hiệu và Pháp luật — https://news.google.com/rss/articles/CBMipgFBVV95cUxQaXRqcnpJejFrMEVpdkpaMXl3QWhiYXRHeDB1bk9zSUlMcmozSTY3SW1BdGFGM1RyZjBxVTBGMHFJTXlfbzc1Szl0UXI0NGxMUDB5ZXNqcFc2eXc2Rk1rbmVxaDdVSjRPWkR4UWw4QllSNE1yS0NvWTZEYnpHeE1KM1NIN0cwNGhPcHNaQ2lybUdPZFJtUjJCWWtrWF9aNXNZRy1LdWpR?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Đầu tư công tăng tốc những tháng cuối năm - Báo và Phát thanh, truyền hình Hải Phòng — https://news.google.com/rss/articles/CBMid0FVX3lxTFBmSHNERTkzcXk4aUFkNE8wVzJwQTZrel9uQVQ0N1gybk9TSU9qbi00a0l3TExPc2Z4Q2UzajJ3aEkyNTJUVEZUSzAtQmk2MXFHODdkTktoXzF0VjYxbkEySlk4XzBZRW1VT2FHUkFNQ0RBOUFBeVE4?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Lâm Đồng còn 80 dự án vướng mặt bằng, khẩn trương tháo gỡ để giải ngân - Laodong.vn — https://news.google.com/rss/articles/CBMiqwFBVV95cUxQQUdod3VqOERxSTR0aGk3enJIc2QtWXlwLW9zMk9VcERYVjRyQ1NsWEhwcjNmM2hCTXlxal9ZRVJJTHlqbWtUS3FOZlF5S2FjYTM3SGNfa21Qb1JDWjgyV3Zxdk9TY2xHaGlLSWQ1Vi04WHFIeXZGZ3NoMXFvSS0xVERSNmpuS3RRTXo4NnpaT1gyemEtN0RuVXg4bFhLcENmb2NaY3lFejJCakk?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "Lâm Đồng cử lãnh đạo hỗ trợ tháo gỡ vướng mắc đầu tư công - Báo Lâm Đồng — https://news.google.com/rss/articles/CBMilgFBVV95cUxPUDM3TmxiYy1uckZ5X0NkRW1vdE1xbXhhUUtUQWtvU29FekwxaERyaUpTdDJCR085S1JtR1YwSXZTTXdBT0t5U2dBVHZpOTBlUGhSd1hSc2t1ajhhWFh3M09NcDhuMHZuLVVwZnhZaEMyTmhzYWl5SU1oa1FneDA2Sm5BRVpEZFRqdGlCS2xsRmtDSGZRcnc?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-22T21:11:54+07:00",
      "what": "Lãnh đạo phường Sơn Nam kiểm tra thực địa, đôn đốc tiến độ thi công và giải ngân vốn đầu tư công năm 2026 tại các dự án trên địa bàn - CỔNG  — https://news.google.com/rss/articles/CBMi2gFBVV95cUxQc1c0QVBmeml1R2lmYlpZbGNBVnhybnNRdjc1QUV2Z3N1Um84aF9TaFp0c2tBdkxIVW05b0FBUzNpbGVJNV9GalRjZDB1QVFURVlPTU4wQU9EODRHbFNZUzl1VTB3Q29xVlhNc2xNWEZyV0dRUlhfajByVDNxMGhOVTFfSERrMUJEMmxQdzlMTW9rZ1Zfc0wzS0tia3dMdEg4WXhlb2I3M3RRM3hUWkdYenhGRHpXRnVMa0tPdTIzQmV6YkNFUnpMYnV0bkJWejhNeW14SDdpUkl5QQ?oc=5"
     },
     {
@@ -3688,6 +3679,41 @@
      "watcher": "news.public-investment",
      "seenAt": "2026-10-22T21:11:54+07:00",
      "what": "Dự án nâng cấp quốc lộ 91 đạt giá trị giải ngân hơn 85% - Vietnam.vn — https://news.google.com/rss/articles/CBMigwFBVV95cUxQdnlUdkZhU0R2bWRCRnc4cjJwMFlzdmM0a3ZvTzY1NnRXSWFvTUhJRlQ5UjhhbFVJX2xvX3NWYVZhelhOeHJwS0ZNQVFfdFo0WFNfNEFQU291N2JGLW8xOWdsbU1DYklCVExXNEFjWkR5eHZrSkFJWmxNMnFoZW1PTXNXQQ?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Giải ngân đầu tư công ì ạch, Đắk Lắk yêu cầu thay cán bộ - VOV.VN — https://news.google.com/rss/articles/CBMimgFBVV95cUxOQk1hUzA1M2FQRzd6a0NQS0M4dE9XNmVLLV9UZGJRWXFzQmlTVEhUNjRiTG5oLTNOalhydV9Qc0s1ejRjcVRCdW5QV29mU3Nnb1MyQXRJN3B3OVNUbWo1aGhGck84bUhSOFlCTzIyUGh2WWhJNG83Z0VVV3c4RGF3Tmd0NGZ3Rnh1enJNVmxxTWE3REM2ank5ZTd3?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Côn Đảo giải ngân đầu tư công: Xung lực mới cho kinh tế bắt đầu từ hạ tầng - VOH — https://news.google.com/rss/articles/CBMitAFBVV95cUxQUmoxN2swZDBrTVdxQ3FFcWM0Q1BDX3dGa2k4Yy1TTGRTdjJPejRWRnBPdUUxaVI1S2Z1Q3R4Y3BiblpyUXVxdFhFcFJpNVpYcFVCSy1WbmhySlJyMDBhNUlFYUtNZGZYS0tGVlBUd2VqWE1LSkc4bHN1d293RlJJNm9NRmRwT3phanBQVi1JVGQwR0otWng1eHhyRk1rczlranAtQ293WUxzM0hMU2FuTWk0ZHA?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Giải ngân đầu tư công đạt 64,6% kế hoạch, nhiều bộ ngành vẫn \"ì ạch\" - VOV.VN — https://news.google.com/rss/articles/CBMipAFBVV95cUxPbUMwWmZyTUJzSXNZbVZrTGxzalBvZkRMQk5mTFFtZlV2TFR2ekVwMFR0ZXlJb2tfOVQwcy1MZmh3UkZRSEdna0JNZDdsNHkyMktSLVB1ZnRfV01lbFVnUDk2M2NLYVZFMWRfRmJqMTJlMEtaNndXQloxRWFGZWFybkdkT0ktMGVtSW15WjBoREhHenU2djJZZnBNZTF0QkRhM2xGSw?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Đồng Tháp đẩy nhanh tiến độ giải ngân vốn đầu tư công - VOV.VN — https://news.google.com/rss/articles/CBMilwFBVV95cUxOekxnZktRZnFMaGhoMG5WeWFhTlo3TUZSVUF6QVAzZ0dQeHk2Rm5jV3N2MHZCY2p1WjFFb1IzS0FkcXVpdGpXZVZxbnN5ZHoyN1djRURtZkJvMU1nN3BvMGhSWml2cUZURUl0OU5lRzFCU2gtSVo4b3FLNUVBdWE1WTBvNEpGWFRkRzdHS3k0WnUwNFN6V2NB?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Giải ngân đầu tư công đạt 64,6% kế hoạch, nhiều bộ ngành vẫn \"ì ạch\" - Cổng thông tin đài tiếng nói Việt Nam — https://news.google.com/rss/articles/CBMinAFBVV95cUxOaEVyMzZQSnJMOFFYUk13SEtDSFR3Y0RXMS11d2l5TGFZX1ZtZjZDU2UxUENxSWJpcEt6Q3RNVG9QczdEMVJUdkM4dDRHS1kzX3d6b2I0MXhhbnZaeGpfd0ItVVdjRGVwNUp0WkJUNE9vdVN1ZjlGbzNVREJIXzRpQUk0NWJZenpkdm4wSWRDOVBlTUV6aGhMWkpNdHM?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Đắk Lắk siết trách nhiệm, đẩy nhanh tiến độ giải ngân vốn đầu tư công - Tạp chí Doanh nghiệp & Kinh tế xanh — https://news.google.com/rss/articles/CBMiswFBVV95cUxPZXlyNzc0Z2ItMFNKdlRXeF9qRmY4Y1pJV0MydXE3eTNOLVM1WTY5TlcyTDBpZTZGQlZCUlE2MGJPWU5hTlNZbUdZamJsZjlkeERNU0FGaEx3TER2ejhjNFd5SEtpNGY3elFXd3NQbHljb3g0U1NOTUNudmUxUjcwNEhkLTc1MjFYM0xNejZkQ19aa1FBSlJ5aFB1R0hERmh3NVJyQjBkQVFfbERYSXdPY1dUcw?oc=5"
+    },
+    {
+     "watcher": "news.public-investment",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Hà Tĩnh thông qua 4 nghị quyết, thúc đẩy đầu tư công và phát triển văn hóa - Tạp chí Doanh nghiệp và Hội nhập — https://news.google.com/rss/articles/CBMitgFBVV95cUxPdHV6cHV5d0FYdm9ST2lrVXZ5TllpelY2ZmJUeVhVX2FYVTJ3cjMydGQ4eFdGNnlvYnEzRFl3cVFZc0RqcDFEZHl2VThlWFlIZ2stczBRa3JlcGdwdGRoLU1aODBkYWRjamN5ai1lTlk2RXI0Qmx0MmVxdjJhYmtiMXFQVDBnUFlOakw3TFQ1MUZYMWxBS3djTTNEMXVJQ1pWVjVRN2prb0FhNEstcGJ4LWVBRzMydw?oc=5"
     }
    ]
   },
@@ -3901,16 +3927,6 @@
    "signals": [
     {
      "watcher": "news.retail",
-     "seenAt": "2026-10-19T22:58:13+07:00",
-     "what": "Hàng xuất khẩu quay vào nội địa, thuế tiêu thụ đặc biệt tính thế nào? - Tạp chí Kinh tế - Tài chính Online — https://news.google.com/rss/articles/CBMiwAFBVV95cUxPUFpiNTgyVnhRdWpmT19qdjlPWmcwYk9DXzhvdFJTWkFyRWRpNDdjV19GdmJtaFhLLTcxNnRPeVllMWk2RGQ5Y3dGNjlQZDFzdnF0dFA0ZXBmcXpKTHpmaXYwNi1DVjMwSGctZWhmUTBoSzZBTUlmM0doRDF5UHRyTk5lUmxoaWRoYjBubmJZVWVPSnZOWVd4ZHF4UjItMEE5QXRoY2FpZHVkNkJVZTFVS0VZODBYUGVLaFp4dG5EUHM?oc=5"
-    },
-    {
-     "watcher": "news.retail",
-     "seenAt": "2026-10-19T22:58:13+07:00",
-     "what": "Infographic | Đề xuất gia hạn thuế tiêu thụ đặc biệt cho xe điện - Báo Công Thương — https://news.google.com/rss/articles/CBMinAFBVV95cUxNVU1YUnFDUWFKb21OVW5OZ0RlSy1ZdllPM2JqNlRPWXh0dlpXRmxWNFZDZDRpelpmQlRPM1RGc0NFcDJJVFBLdGxKX2JBOEtydk1UZ3d6bjktbjd5LUtOZmV4UFR6eXp6NVRGbVYyaW8yTXdfa1o4eWtzT1RORzRmRU1hck4yM29zb3kxbGhOdTFHNEdyOHhHRElOR0k?oc=5"
-    },
-    {
-     "watcher": "news.retail",
      "seenAt": "2026-10-20T12:16:58+07:00",
      "what": "Tổng mức bán lẻ hàng hóa và dịch vụ tháng 10/2026 vượt kịch bản tăng trưởng - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMirgFBVV95cUxOUlMyYWlnRkl0aF9fUjFKSXNzV0dNZXdfLUdmcHBRNl9OVUwzNU9aWVktYUVvTFJ4ZVJRR0J1MUY1UkhCN2RvMmZUb2ZCd254VS1GbkJsUS1xWWw4dDRMWkg2TXVzaENEVExvUkFLVTFMY2hnMDR2QkVPeDFHMnJ3SmRncTdXR3FCbHFuM2lOdHUtTzNOWks0cVRGUlZaay1IVXdOSHlyYzNDNEUxMUE?oc=5"
     },
@@ -3998,6 +4014,16 @@
      "watcher": "news.retail",
      "seenAt": "2026-10-22T21:11:54+07:00",
      "what": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng tăng 11,1% trong 4 tháng đầu năm 2026 - Báo Quân đội nhân dân — https://news.google.com/rss/articles/CBMi0gFBVV95cUxQeW9oOEdGWnRtWkpjYm44UUI2Y2VwY2EwNVNOM1V1RUtmWTg5RkNfSUdFR0h0b056YThkbVM2RkZuMGNkN3R4cmp6OFN5YVI4MFh4V2NFcThFSDUzbERoOXFxNUk0TWcwZTdmaTY3am55UDZ5Yng1ZTgwRE1vV3EtcjFCQ0d5d3lJb3kwU3c4aVpUYmFWS2R2bUVMV05TYW9oUnJlNnNRbFRjcDBBMXo3NDZDd1dUOVozOWdCcFhZb0xiYjJRcjd5X1FqTE9pVE9BMnc?oc=5"
+    },
+    {
+     "watcher": "news.retail",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Nền kinh tế lớn thứ 2 Đông Nam Á sắp đánh thuế tiêu thụ đặc biệt 30% với xe điện nhập khẩu nguyên chiếc - nguoiquansat.vn — https://news.google.com/rss/articles/CBMi1AFBVV95cUxPRkJLZC1YQXhoTDVOeGM0NXIxVkZ3bHdCdEFHS1JQRHUwbUxnQ040YlI0aHZVeUxScm44dlZhcDJxbWNod1VyRFI5a3lDTGl5Wk9PTXFxbkxCTkxxTkhVRnRzTXBiZkhWRVMwU2pCSUh4dS01RjJqWDJrMm43YzFRcnh0b2tubGRsU2tnYjR3MXpJZzF2dXY0V21UUVZtSjlTWUpxSmRCcG1vTjI5Q29PWXNWTV9kNVdOSjFfVm1RWHRqOGVwUnZONzFvV0pVYmdWd0E4dg?oc=5"
+    },
+    {
+     "watcher": "news.retail",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "VAMA: Doanh số ô tô tháng 8 giảm tốc, bức tranh chung vẫn tích cực - news.cvs.vn — https://news.google.com/rss/articles/CBMie0FVX3lxTFB3eGJDWGsyNUhZSkRDUEswSXdBNEd5TTBWVHRCTDlRY2J2X0sxZVRvcENCVFI4bGE2dGphUnlDbV9lZ0czb0t0TXg2YkZOeHJMc3dVQTRXbldXVnRDbU9MMjFfSHdxNXpibGhHZlNGMUdyTDZqQ2YxMWNxMA?oc=5"
     }
    ]
   },
@@ -4012,16 +4038,6 @@
    "signals": [
     {
      "watcher": "news.retail",
-     "seenAt": "2026-10-19T22:58:13+07:00",
-     "what": "Hàng xuất khẩu quay vào nội địa, thuế tiêu thụ đặc biệt tính thế nào? - Tạp chí Kinh tế - Tài chính Online — https://news.google.com/rss/articles/CBMiwAFBVV95cUxPUFpiNTgyVnhRdWpmT19qdjlPWmcwYk9DXzhvdFJTWkFyRWRpNDdjV19GdmJtaFhLLTcxNnRPeVllMWk2RGQ5Y3dGNjlQZDFzdnF0dFA0ZXBmcXpKTHpmaXYwNi1DVjMwSGctZWhmUTBoSzZBTUlmM0doRDF5UHRyTk5lUmxoaWRoYjBubmJZVWVPSnZOWVd4ZHF4UjItMEE5QXRoY2FpZHVkNkJVZTFVS0VZODBYUGVLaFp4dG5EUHM?oc=5"
-    },
-    {
-     "watcher": "news.retail",
-     "seenAt": "2026-10-19T22:58:13+07:00",
-     "what": "Infographic | Đề xuất gia hạn thuế tiêu thụ đặc biệt cho xe điện - Báo Công Thương — https://news.google.com/rss/articles/CBMinAFBVV95cUxNVU1YUnFDUWFKb21OVW5OZ0RlSy1ZdllPM2JqNlRPWXh0dlpXRmxWNFZDZDRpelpmQlRPM1RGc0NFcDJJVFBLdGxKX2JBOEtydk1UZ3d6bjktbjd5LUtOZmV4UFR6eXp6NVRGbVYyaW8yTXdfa1o4eWtzT1RORzRmRU1hck4yM29zb3kxbGhOdTFHNEdyOHhHRElOR0k?oc=5"
-    },
-    {
-     "watcher": "news.retail",
      "seenAt": "2026-10-20T12:16:58+07:00",
      "what": "Tổng mức bán lẻ hàng hóa và dịch vụ tháng 10/2026 vượt kịch bản tăng trưởng - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMirgFBVV95cUxOUlMyYWlnRkl0aF9fUjFKSXNzV0dNZXdfLUdmcHBRNl9OVUwzNU9aWVktYUVvTFJ4ZVJRR0J1MUY1UkhCN2RvMmZUb2ZCd254VS1GbkJsUS1xWWw4dDRMWkg2TXVzaENEVExvUkFLVTFMY2hnMDR2QkVPeDFHMnJ3SmRncTdXR3FCbHFuM2lOdHUtTzNOWks0cVRGUlZaay1IVXdOSHlyYzNDNEUxMUE?oc=5"
     },
@@ -4109,6 +4125,16 @@
      "watcher": "news.retail",
      "seenAt": "2026-10-22T21:11:54+07:00",
      "what": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng tăng 11,1% trong 4 tháng đầu năm 2026 - Báo Quân đội nhân dân — https://news.google.com/rss/articles/CBMi0gFBVV95cUxQeW9oOEdGWnRtWkpjYm44UUI2Y2VwY2EwNVNOM1V1RUtmWTg5RkNfSUdFR0h0b056YThkbVM2RkZuMGNkN3R4cmp6OFN5YVI4MFh4V2NFcThFSDUzbERoOXFxNUk0TWcwZTdmaTY3am55UDZ5Yng1ZTgwRE1vV3EtcjFCQ0d5d3lJb3kwU3c4aVpUYmFWS2R2bUVMV05TYW9oUnJlNnNRbFRjcDBBMXo3NDZDd1dUOVozOWdCcFhZb0xiYjJRcjd5X1FqTE9pVE9BMnc?oc=5"
+    },
+    {
+     "watcher": "news.retail",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Nền kinh tế lớn thứ 2 Đông Nam Á sắp đánh thuế tiêu thụ đặc biệt 30% với xe điện nhập khẩu nguyên chiếc - nguoiquansat.vn — https://news.google.com/rss/articles/CBMi1AFBVV95cUxPRkJLZC1YQXhoTDVOeGM0NXIxVkZ3bHdCdEFHS1JQRHUwbUxnQ040YlI0aHZVeUxScm44dlZhcDJxbWNod1VyRFI5a3lDTGl5Wk9PTXFxbkxCTkxxTkhVRnRzTXBiZkhWRVMwU2pCSUh4dS01RjJqWDJrMm43YzFRcnh0b2tubGRsU2tnYjR3MXpJZzF2dXY0V21UUVZtSjlTWUpxSmRCcG1vTjI5Q29PWXNWTV9kNVdOSjFfVm1RWHRqOGVwUnZONzFvV0pVYmdWd0E4dg?oc=5"
+    },
+    {
+     "watcher": "news.retail",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "VAMA: Doanh số ô tô tháng 8 giảm tốc, bức tranh chung vẫn tích cực - news.cvs.vn — https://news.google.com/rss/articles/CBMie0FVX3lxTFB3eGJDWGsyNUhZSkRDUEswSXdBNEd5TTBWVHRCTDlRY2J2X0sxZVRvcENCVFI4bGE2dGphUnlDbV9lZ0czb0t0TXg2YkZOeHJMc3dVQTRXbldXVnRDbU9MMjFfSHdxNXpibGhHZlNGMUdyTDZqQ2YxMWNxMA?oc=5"
     }
    ]
   },
@@ -4181,6 +4207,11 @@
      "watcher": "pvn.news",
      "seenAt": "2026-10-21T12:18:04+07:00",
      "what": "Kỳ 4 Khi dòng khí trở thành chuỗi giá trị — https://petrovietnam.petrotimes.vn/ky-4-khi-dong-khi-tro-thanh-chuoi-gia-tri-746964.html"
+    },
+    {
+     "watcher": "pvn.news",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Mỹ tính tăng nguồn cung nhiên liệu từ nhà máy lọc dầu tại Texas — https://nangluongquocte.petrotimes.vn/my-tinh-tang-nguon-cung-nhien-lieu-tu-nha-may-loc-dau-tai-texas-746996.html"
     }
    ]
   },
@@ -4245,16 +4276,6 @@
     "lịch 19/10 07:00"
    ],
    "signals": [
-    {
-     "watcher": "news.power-prices",
-     "seenAt": "2026-10-21T12:18:04+07:00",
-     "what": "Bộ Công Thương điều chỉnh Quy hoạch điện VIII tỉnh Điện Biên ﻿ - bnews.vn — https://news.google.com/rss/articles/CBMikwFBVV95cUxOUkQwWTF5T1p6UDBCaXFqUDV1NlZHUW9nYXAzY2xjZk9CUk5IYTJiZElETXpiel96UklvX0dFbFNYWU1ocGhGVTBBanlBZ2tyTS1oRl96emRESHVKZGdaWEQ3OTY2cGphdFI5cnFERkV4eDA4QXV6ZG5PR1lfUWdJLWt1OVlXbnlpdmJHM0dOZm5xUkE?oc=5"
-    },
-    {
-     "watcher": "news.power-prices",
-     "seenAt": "2026-10-21T12:18:04+07:00",
-     "what": "Điều chỉnh Quy hoạch điện VIII phải đáp ứng yêu cầu phát triển mới - Tập đoàn Điện lực Việt Nam (EVN) — https://news.google.com/rss/articles/CBMitgFBVV95cUxPeVprN1VKV2RqZWdUakNPaTQwWlhFSVZ5ZWJ4NkQwUkVwZ1N5c2VHSGZEM0RWMnpZNzR1SllLaTBCZnEwYkN5UUlubUp2UENkdW1WaGpTOWM4VUtGRTc2VjZjMHVoZUo3QjkzdVhELWdjLVdBZEtaeTJDWWhYUWs0Vkd6bXhrRkRXR2QtLTdzUVNJUVVQX1hlRWpuZk8wclo5NTRKT0ZBOW1IYUVrc1I2TVp5N00yQQ?oc=5"
-    },
     {
      "watcher": "news.power-prices",
      "seenAt": "2026-10-21T12:18:04+07:00",
@@ -4344,6 +4365,16 @@
      "watcher": "news.power-prices",
      "seenAt": "2026-10-22T21:11:54+07:00",
      "what": "Đề xuất áp dụng giá bán lẻ điện theo khung giờ - Báo và Phát thanh Truyền hình Hà Nội — https://news.google.com/rss/articles/CBMiiwFBVV95cUxOYV9WNTktT3BrWnJMSWNnSks4OEYydUNOX29RVEllb0IyOUVuUVk0b0l5Q01MTEdNb2NxWFJLLTdVdmtvS3pYWlNvaVpHaVNfbURqRU5JRHUyRWNOQUk1OFhBbkg3Slppai1QQmQtUHhlOURzVjBCd3JSbUN5WnVLWTN3NUtmNnpMb3Rz?oc=5"
+    },
+    {
+     "watcher": "news.power-prices",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Bộ Công Thương đề xuất điều chỉnh quy định về giá bán lẻ điện sinh hoạt 5 bậc - Báo Công An Đà Nẵng — https://news.google.com/rss/articles/CBMiswFBVV95cUxQazJPQVVCS3NoZFJWU2JfTkVkaVJpYU81V3BEcXNxS19tQmRtQjdrMmk2UXVGckg3SnNCOXF4TjFjVE1nTnBfU2pXX2FGNFFTVDMxU0J6MzNuSXg0Ym9vQXdEUW5MQlJqRWNxV09NaXJTMW85TkxSRTZnY3o4WVJYaDlsSTFrRnVCNURFcEYzQnF3bVBKNXl0QklBUmJWbEtLQWhqT0Zld2Z4X0lfbVEyR0NCOA?oc=5"
+    },
+    {
+     "watcher": "news.power-prices",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Bộ Công thương dự kiến điều chỉnh quy định về giá bán lẻ điện sinh hoạt 5 bậc - giadinhvaphapluat.vn — https://news.google.com/rss/articles/CBMiuwFBVV95cUxNR3hvNkZONkNvaUphTW9BckhySFh6by16Z1dvY09oMGhjb3kycEhEd2ozRmJiQlllaTFYNVY0RS03WWtvdHJmWlRwbEVPRE52SG83WDhQRnQyUGdob2JBZWtjanZpZlJzUkdQRVd3UWVaRnpNVEtSRDBsQl9paW1IU3pwY29kRHJQMmhMaFJDbUFUTUxYb05ULVhxQXJ2ZmtzbzJqVnVadzFpNDFoSVdtcUtXUXJqOTRiVjhZ?oc=5"
     }
    ]
   },
@@ -4444,31 +4475,6 @@
    "signals": [
     {
      "watcher": "news.pharma",
-     "seenAt": "2026-10-21T21:13:37+07:00",
-     "what": "Cơ quan Thương mại và Đầu tư Chính phủ Australia kết nối 8 thương hiệu chăm sóc sức khỏe hàng đầu với Long Châu - Tuổi Trẻ — https://news.google.com/rss/articles/CBMi6AFBVV95cUxPSl9sSjAtOGR3OG04OEp5eW85M1Z2eVdJX0ZoeTljdEV2ZVBwT1hidHlnR2dobEhRY2c0V01TN2RaaVJzMXcyZWVSUGlPdTYzNHJ0bXg5bEZlWkUtdTJmbVBqQzBpdVU4dXVFTy14S0FXMDBsaFRHdDY3VXRJdUNLVlVOX1hoVWt2RXd6UXZOY00wQXRqQ2RJRy1VMzBtUGNFRGx3cHNpSWJkbGhycVBRcnBidkVDN2NYaWMzRnB1ZnI0dE1UWXRSMTdkX05sLXhEV1RCWC1NUVlLTlo5MVNpQUpISXp5UXR0?oc=5"
-    },
-    {
-     "watcher": "news.pharma",
-     "seenAt": "2026-10-21T21:13:37+07:00",
-     "what": "Định giá cổ phiếu FRT nếu Long Châu IPO - 24HMoney — https://news.google.com/rss/articles/CBMiiAFBVV95cUxOTUs4aWtoQlN5eGdTb25hN1F0QzRMTjV5Wk9BelVKb3hEaTZ2LVZPa085dUg0dGtheGFFaXprQUo3cFVuRHgxalZvZWJ3XzNNWFB4ZUdFS2JJVGZXX2E0M3h0ZkxWazgxMzJ5NEl1N3F6V185MkNzUFNDbFlQeDdrUUVlQUU3NXhR?oc=5"
-    },
-    {
-     "watcher": "news.pharma",
-     "seenAt": "2026-10-21T21:13:37+07:00",
-     "what": "Trí Khang Pharma cùng dược sĩ Long Châu cập nhật kiến thức chuyên sâu về tiêu hóa - Báo Sức khỏe & Đời sống — https://news.google.com/rss/articles/CBMiygFBVV95cUxQTjRBUFEyQUpiWHBOM1l6MHJYOTFBOGo3UDVTblBTbENoc2dLZEtzbGxqMnZ6Zmk2ZGdZSGpYdmM2RVpnTTJnXzVqbExXOFNjckRaVkwwQVhQRWpJVmNkTjdyb0ZrYWdjc0tnMjVfNi14RTNia0ZCc1pPWlVoanZiWWlQY050WVNuWWZmc2h4TzRNUDh2ZUtqNXlwa283Y3k0akRKM2JSUjg2ZXZVWGgwRzRnY19HVjY0WWY1aTFzVmRyS1kzMVRlT293?oc=5"
-    },
-    {
-     "watcher": "news.pharma",
-     "seenAt": "2026-10-22T12:21:46+07:00",
-     "what": "Long Châu vào Top 50 doanh nghiệp dẫn đầu về ESG 2026 - Báo Dân trí — https://news.google.com/rss/articles/CBMirAFBVV95cUxOWkhzUF93QVZEa2c4bmxSZGJVMzM2cUpIeDMwa2loZjQxdTZvYkZCSFhqNFAyc3ppRmtIclVDSE1rUkIyNXYxckpPbGR0WTRfNGo1N0pXRTJkVm93WkN1dkV5QnlNNUNEN2wwcVkxLXVTWmwxYjBrQ3d0VklOV3owM3lQOGR5T2tZUU9RMUE3RG1tM2J2UWtpQzBVLVZMcGlyY2NSV0hCSTIzREZG?oc=5"
-    },
-    {
-     "watcher": "news.pharma",
-     "seenAt": "2026-10-22T12:21:46+07:00",
-     "what": "Long Châu thắng lớn tại APEA 2026: Hai năm liền là \"Doanh nghiệp xuất sắc Châu Á\" - CafeBiz — https://news.google.com/rss/articles/CBMiuwFBVV95cUxQekVmUzdQbmVsZ29YWEdnUnZvd2NrM1VLVnpLYTFhN19VaERTVnJLaUdXR2RHYVduYl94T0tsRjU3bDczQjNPeEtNOEFkaldtNnI3Wm54a0Nia0g3U1Z6bk1RYUFXb1dHTmNTUlpybkRKc0tONm5PME04aVJ6UVdaMmdhbVpyemJaZXhMelBhMUNYcjgyZkZ6V0hsWE55dnRacXIwbTlYQXdvXy11NmI4NXZzOFlFWE5QdkZJ?oc=5"
-    },
-    {
-     "watcher": "news.pharma",
      "seenAt": "2026-10-22T12:21:46+07:00",
      "what": "Long Châu mở rộng 2.678 nhà thuốc khắp cả nước, tiếp cận chăm sóc sức khỏe cho hàng triệu người - Báo Tuổi Trẻ — https://news.google.com/rss/articles/CBMi0AFBVV95cUxPVFRlNjc4QTdic01QNHloNTBhTVVXZ0xRYXFkT3plOEhwMnB6X2x4a25QVXlaVEs4bFRPOTNkaUFNODk5VzVlVFFJNTJ0bThKcWlodC1HbUVtYldabXlac0dyNWFIaUJrd0xJS0d6bE9teGJoWkZsUGJ0VEdsRDBrV1hiOXl1bF9pUE9QXzRSNDZyb2lhbFAtNUI2aHZZQ0R5M2FVSkJkd1IxMHJVTnBONWxyR2lJZ0NZSTlZWUl4enVHY29ZcVNpOXF5aTZTME10?oc=5"
     },
@@ -4541,6 +4547,31 @@
      "watcher": "news.pharma",
      "seenAt": "2026-10-22T21:11:54+07:00",
      "what": "Đoàn viên Công an phường Long Châu tích cực tham gia hiến máu tình nguyện - Công an tỉnh Vĩnh Long — https://news.google.com/rss/articles/CBMi1AFBVV95cUxOQV9PWWE3TjhUTHpPUkxVR0ZaenhxWFVvd1k3X0ZSSTVWNXZhRlVKclVsWWp0ZU9DLTl5WDMzUTVLWGlwWVRHa0UtTnZRVXFCam4xd1FJZTc4OU5SYXo3MXJUSkthbjRINW5CS3lSRXFuRHBmMHJSMW5Xcm0zYkl0SXUwUjJlYlJVM3I3MEw4OXd4V05oTzgtNjVLNWpFWUU0bW5ldU5xbTBwdE1EYmZsVDZOUGtsM2x6TU1RT2tyd2NWbnlZTmxyZFBIQXQ4V19PQlU2MA?oc=5"
+    },
+    {
+     "watcher": "news.pharma",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Lãnh đạo FPT Retail chia sẻ về định hướng phát triển chuỗi Long Châu - Mekong ASEAN — https://news.google.com/rss/articles/CBMipAFBVV95cUxPNldadXNndFVVeFJob3BLb3ljT1lKQVBJTjNWcDZFUS0xbHVqY0dfaUFSZHB5SkkzanRYbWpubXpuVGYwN2pheF9vUWJRWkFYd2g4Wms2eG1WX2RJMmNxbXJGTzBmUXJnSExkMWEzaDNjS1BqYkdVaFF0czZyZmd5dTZtQlcyVVRYYnI0bDY3Z3prQjVaeG1DMFh0a0M5cDdLVEdSbg?oc=5"
+    },
+    {
+     "watcher": "news.pharma",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Bác sĩ đồng hành 1:1 tư vấn sức khỏe miễn phí tại Long Châu - CafeF — https://news.google.com/rss/articles/CBMiogFBVV95cUxOLWY4MzNGR2wxUDlrRVJVSjlpeDNZM2pja1k1OWRwYTdPdmpOcEFUWHRoNmpVSklSR1lsd1pKZFlJQUozQ3REOFhrZFVyd0ZmaXZIalpjZUZILWlYWGFwMkZIcVc4N3hJbl83NTVCX3hVT055bEhZMnFQNHhRRnNGQzNJY0VDSEpXWnhEc1FCR1ZrRnJhdGxEc0hiUWNNOUFlOVE?oc=5"
+    },
+    {
+     "watcher": "news.pharma",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "FPT Retail ghi dấu tại Better Choice Awards 2026 với 3 giải thưởng dành cho Long Châu và FPT Shop - Tuổi Trẻ — https://news.google.com/rss/articles/CBMi1gFBVV95cUxNaVFqUTVIRXBhY29VQU13LUYtYklpdENzQmF3MVVxWFFHRDhnVnZSRzZpVkpwNGxfd2pZY0p6R3MxdTNCMGozTjcyOGRyczREN2hrelZUalFjdHNGeVFWdVhFVDJscElfeXVHN1EtWnRYX3FjblFiSVk4UXZhNm9PZjJTbTJTdFl4NHczY2ZNeDZwdWVNa09CX3YxR2Z2b3kyaUs0RDI1M0FERl9la0txMnVQV1BuZDhjM3lNRE82bmhGamhCQlJxUzE0aFRRejM5bnhRdU9n?oc=5"
+    },
+    {
+     "watcher": "news.pharma",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Cổ phiếu FPT Retail hồi mạnh, Long Châu đến lúc đổi câu chuyện tăng trưởng - Nhadautu. — https://news.google.com/rss/articles/CBMiqgFBVV95cUxNS0Fxam5vZHQ1UXE5LXJlYXRKbk02UkhhRUxock5ZUlJoVlZzcTBxSUNMcVZWeGNFcGd6VkF4Z19jcVU5UVlBV1BwbmpPbFpKUmh1N3RXWnBaZWxCeDVZYnJaSUpEOGIwR2t2cnE5TnJnSE1fbnJrbTE2MnkzcGlwZ0VwMUN1aGdOT2lBUnZLYlI2WFE4RjBjajBySnRoRTRxc1hSVGlmeFltZw?oc=5"
+    },
+    {
+     "watcher": "news.pharma",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Long Châu - Mạng lưới kết nối chiến lược của các thương hiệu chăm sóc sức khỏe Úc tại Việt Nam - CafeF — https://news.google.com/rss/articles/CBMizAFBVV95cUxPQkpxZkdRUkUxaTNjSHRQVnJiemM4LUt3NTktcTVMSUJzYUt4VVVoNGpubDVRNnVXRlVGVm5DQkZHTUEzdmlyWUowdGREUFhmWlhTYVNzeUNyRVY2Tk9yWGhNaG5aT3VRV0FZMWRpZllrTFBRRExfUmxYLS1aMEFGSFlOQm1ERE5pVVdhdXAtOC1wdmdfRHItMHViWjdvQ0N4b2YzNTR5VHJGdWlPRXNDRlZsVmRvemZDQnFvVUF3bUFfdGRwSjRJWjJac1I?oc=5"
     }
    ]
   },
@@ -4555,31 +4586,6 @@
    "signals": [
     {
      "watcher": "news.pharma",
-     "seenAt": "2026-10-21T21:13:37+07:00",
-     "what": "Cơ quan Thương mại và Đầu tư Chính phủ Australia kết nối 8 thương hiệu chăm sóc sức khỏe hàng đầu với Long Châu - Tuổi Trẻ — https://news.google.com/rss/articles/CBMi6AFBVV95cUxPSl9sSjAtOGR3OG04OEp5eW85M1Z2eVdJX0ZoeTljdEV2ZVBwT1hidHlnR2dobEhRY2c0V01TN2RaaVJzMXcyZWVSUGlPdTYzNHJ0bXg5bEZlWkUtdTJmbVBqQzBpdVU4dXVFTy14S0FXMDBsaFRHdDY3VXRJdUNLVlVOX1hoVWt2RXd6UXZOY00wQXRqQ2RJRy1VMzBtUGNFRGx3cHNpSWJkbGhycVBRcnBidkVDN2NYaWMzRnB1ZnI0dE1UWXRSMTdkX05sLXhEV1RCWC1NUVlLTlo5MVNpQUpISXp5UXR0?oc=5"
-    },
-    {
-     "watcher": "news.pharma",
-     "seenAt": "2026-10-21T21:13:37+07:00",
-     "what": "Định giá cổ phiếu FRT nếu Long Châu IPO - 24HMoney — https://news.google.com/rss/articles/CBMiiAFBVV95cUxOTUs4aWtoQlN5eGdTb25hN1F0QzRMTjV5Wk9BelVKb3hEaTZ2LVZPa085dUg0dGtheGFFaXprQUo3cFVuRHgxalZvZWJ3XzNNWFB4ZUdFS2JJVGZXX2E0M3h0ZkxWazgxMzJ5NEl1N3F6V185MkNzUFNDbFlQeDdrUUVlQUU3NXhR?oc=5"
-    },
-    {
-     "watcher": "news.pharma",
-     "seenAt": "2026-10-21T21:13:37+07:00",
-     "what": "Trí Khang Pharma cùng dược sĩ Long Châu cập nhật kiến thức chuyên sâu về tiêu hóa - Báo Sức khỏe & Đời sống — https://news.google.com/rss/articles/CBMiygFBVV95cUxQTjRBUFEyQUpiWHBOM1l6MHJYOTFBOGo3UDVTblBTbENoc2dLZEtzbGxqMnZ6Zmk2ZGdZSGpYdmM2RVpnTTJnXzVqbExXOFNjckRaVkwwQVhQRWpJVmNkTjdyb0ZrYWdjc0tnMjVfNi14RTNia0ZCc1pPWlVoanZiWWlQY050WVNuWWZmc2h4TzRNUDh2ZUtqNXlwa283Y3k0akRKM2JSUjg2ZXZVWGgwRzRnY19HVjY0WWY1aTFzVmRyS1kzMVRlT293?oc=5"
-    },
-    {
-     "watcher": "news.pharma",
-     "seenAt": "2026-10-22T12:21:46+07:00",
-     "what": "Long Châu vào Top 50 doanh nghiệp dẫn đầu về ESG 2026 - Báo Dân trí — https://news.google.com/rss/articles/CBMirAFBVV95cUxOWkhzUF93QVZEa2c4bmxSZGJVMzM2cUpIeDMwa2loZjQxdTZvYkZCSFhqNFAyc3ppRmtIclVDSE1rUkIyNXYxckpPbGR0WTRfNGo1N0pXRTJkVm93WkN1dkV5QnlNNUNEN2wwcVkxLXVTWmwxYjBrQ3d0VklOV3owM3lQOGR5T2tZUU9RMUE3RG1tM2J2UWtpQzBVLVZMcGlyY2NSV0hCSTIzREZG?oc=5"
-    },
-    {
-     "watcher": "news.pharma",
-     "seenAt": "2026-10-22T12:21:46+07:00",
-     "what": "Long Châu thắng lớn tại APEA 2026: Hai năm liền là \"Doanh nghiệp xuất sắc Châu Á\" - CafeBiz — https://news.google.com/rss/articles/CBMiuwFBVV95cUxQekVmUzdQbmVsZ29YWEdnUnZvd2NrM1VLVnpLYTFhN19VaERTVnJLaUdXR2RHYVduYl94T0tsRjU3bDczQjNPeEtNOEFkaldtNnI3Wm54a0Nia0g3U1Z6bk1RYUFXb1dHTmNTUlpybkRKc0tONm5PME04aVJ6UVdaMmdhbVpyemJaZXhMelBhMUNYcjgyZkZ6V0hsWE55dnRacXIwbTlYQXdvXy11NmI4NXZzOFlFWE5QdkZJ?oc=5"
-    },
-    {
-     "watcher": "news.pharma",
      "seenAt": "2026-10-22T12:21:46+07:00",
      "what": "Long Châu mở rộng 2.678 nhà thuốc khắp cả nước, tiếp cận chăm sóc sức khỏe cho hàng triệu người - Báo Tuổi Trẻ — https://news.google.com/rss/articles/CBMi0AFBVV95cUxPVFRlNjc4QTdic01QNHloNTBhTVVXZ0xRYXFkT3plOEhwMnB6X2x4a25QVXlaVEs4bFRPOTNkaUFNODk5VzVlVFFJNTJ0bThKcWlodC1HbUVtYldabXlac0dyNWFIaUJrd0xJS0d6bE9teGJoWkZsUGJ0VEdsRDBrV1hiOXl1bF9pUE9QXzRSNDZyb2lhbFAtNUI2aHZZQ0R5M2FVSkJkd1IxMHJVTnBONWxyR2lJZ0NZSTlZWUl4enVHY29ZcVNpOXF5aTZTME10?oc=5"
     },
@@ -4652,9 +4658,34 @@
      "watcher": "news.pharma",
      "seenAt": "2026-10-22T21:11:54+07:00",
      "what": "Đoàn viên Công an phường Long Châu tích cực tham gia hiến máu tình nguyện - Công an tỉnh Vĩnh Long — https://news.google.com/rss/articles/CBMi1AFBVV95cUxOQV9PWWE3TjhUTHpPUkxVR0ZaenhxWFVvd1k3X0ZSSTVWNXZhRlVKclVsWWp0ZU9DLTl5WDMzUTVLWGlwWVRHa0UtTnZRVXFCam4xd1FJZTc4OU5SYXo3MXJUSkthbjRINW5CS3lSRXFuRHBmMHJSMW5Xcm0zYkl0SXUwUjJlYlJVM3I3MEw4OXd4V05oTzgtNjVLNWpFWUU0bW5ldU5xbTBwdE1EYmZsVDZOUGtsM2x6TU1RT2tyd2NWbnlZTmxyZFBIQXQ4V19PQlU2MA?oc=5"
+    },
+    {
+     "watcher": "news.pharma",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Lãnh đạo FPT Retail chia sẻ về định hướng phát triển chuỗi Long Châu - Mekong ASEAN — https://news.google.com/rss/articles/CBMipAFBVV95cUxPNldadXNndFVVeFJob3BLb3ljT1lKQVBJTjNWcDZFUS0xbHVqY0dfaUFSZHB5SkkzanRYbWpubXpuVGYwN2pheF9vUWJRWkFYd2g4Wms2eG1WX2RJMmNxbXJGTzBmUXJnSExkMWEzaDNjS1BqYkdVaFF0czZyZmd5dTZtQlcyVVRYYnI0bDY3Z3prQjVaeG1DMFh0a0M5cDdLVEdSbg?oc=5"
+    },
+    {
+     "watcher": "news.pharma",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Bác sĩ đồng hành 1:1 tư vấn sức khỏe miễn phí tại Long Châu - CafeF — https://news.google.com/rss/articles/CBMiogFBVV95cUxOLWY4MzNGR2wxUDlrRVJVSjlpeDNZM2pja1k1OWRwYTdPdmpOcEFUWHRoNmpVSklSR1lsd1pKZFlJQUozQ3REOFhrZFVyd0ZmaXZIalpjZUZILWlYWGFwMkZIcVc4N3hJbl83NTVCX3hVT055bEhZMnFQNHhRRnNGQzNJY0VDSEpXWnhEc1FCR1ZrRnJhdGxEc0hiUWNNOUFlOVE?oc=5"
+    },
+    {
+     "watcher": "news.pharma",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "FPT Retail ghi dấu tại Better Choice Awards 2026 với 3 giải thưởng dành cho Long Châu và FPT Shop - Tuổi Trẻ — https://news.google.com/rss/articles/CBMi1gFBVV95cUxNaVFqUTVIRXBhY29VQU13LUYtYklpdENzQmF3MVVxWFFHRDhnVnZSRzZpVkpwNGxfd2pZY0p6R3MxdTNCMGozTjcyOGRyczREN2hrelZUalFjdHNGeVFWdVhFVDJscElfeXVHN1EtWnRYX3FjblFiSVk4UXZhNm9PZjJTbTJTdFl4NHczY2ZNeDZwdWVNa09CX3YxR2Z2b3kyaUs0RDI1M0FERl9la0txMnVQV1BuZDhjM3lNRE82bmhGamhCQlJxUzE0aFRRejM5bnhRdU9n?oc=5"
+    },
+    {
+     "watcher": "news.pharma",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Cổ phiếu FPT Retail hồi mạnh, Long Châu đến lúc đổi câu chuyện tăng trưởng - Nhadautu. — https://news.google.com/rss/articles/CBMiqgFBVV95cUxNS0Fxam5vZHQ1UXE5LXJlYXRKbk02UkhhRUxock5ZUlJoVlZzcTBxSUNMcVZWeGNFcGd6VkF4Z19jcVU5UVlBV1BwbmpPbFpKUmh1N3RXWnBaZWxCeDVZYnJaSUpEOGIwR2t2cnE5TnJnSE1fbnJrbTE2MnkzcGlwZ0VwMUN1aGdOT2lBUnZLYlI2WFE4RjBjajBySnRoRTRxc1hSVGlmeFltZw?oc=5"
+    },
+    {
+     "watcher": "news.pharma",
+     "seenAt": "2026-10-23T12:20:54+07:00",
+     "what": "Long Châu - Mạng lưới kết nối chiến lược của các thương hiệu chăm sóc sức khỏe Úc tại Việt Nam - CafeF — https://news.google.com/rss/articles/CBMizAFBVV95cUxPQkpxZkdRUkUxaTNjSHRQVnJiemM4LUt3NTktcTVMSUJzYUt4VVVoNGpubDVRNnVXRlVGVm5DQkZHTUEzdmlyWUowdGREUFhmWlhTYVNzeUNyRVY2Tk9yWGhNaG5aT3VRV0FZMWRpZllrTFBRRExfUmxYLS1aMEFGSFlOQm1ERE5pVVdhdXAtOC1wdmdfRHItMHViWjdvQ0N4b2YzNTR5VHJGdWlPRXNDRlZsVmRvemZDQnFvVUF3bUFfdGRwSjRJWjJac1I?oc=5"
     }
    ]
   }
  ],
- "updatedAt": "2026-10-22T21:11:54+07:00"
+ "updatedAt": "2026-10-23T12:20:54+07:00"
 }
