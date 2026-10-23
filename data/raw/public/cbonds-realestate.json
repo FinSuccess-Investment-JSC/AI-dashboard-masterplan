@@ -5,7 +5,7 @@
 "definition": "Tổ chức phát hành có lĩnh vực hoạt động \"Bất động sản\" trên HNX; VND",
 "issuer_count": 420,
 "outstanding_bonds": 910,
-"outstanding_value": 447103.8,
+"outstanding_value": 447025.2,
 "issuance": [
 {
 "date": "2020-12-01",
@@ -708,14 +708,14 @@
 {
 "date": "2026-10-01",
 "due": 290.0,
-"interest": 3983.1,
+"interest": 3982.4,
 "bond_count": 2,
 "issuers": 2
 },
 {
 "date": "2026-11-01",
-"due": 7433.9,
-"interest": 3980.7,
+"due": 7355.3,
+"interest": 3980.0,
 "bond_count": 45,
 "issuers": 6
 },
@@ -882,7 +882,7 @@
 {
 "name": "Công ty cổ phần đầu tư phát triển bất động sản TNR holdings Việt Nam",
 "symbol": "TNR.BOND.01.2020.01, TNR.BOND.01.2020.02, TNR.BOND.01.2020.0",
-"due": 6441.6,
+"due": 6363.0,
 "months": [
 "2026-11",
 "2026-12",
