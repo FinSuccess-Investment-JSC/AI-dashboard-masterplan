@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-25T05:09:19.971699+00:00",
+  "run_at": "2026-10-25T13:19:56.716262+00:00",
   "errors": 0,
   "sources": {
     "wti": {
@@ -103,8 +103,8 @@
     "middle_east_crude_exports": {
       "status": "ok",
       "latest_observation": "2026-08-01",
-      "last_success_at": "2026-10-25T05:09:19.971699+00:00",
-      "last_checked_at": "2026-10-25T05:09:19.971699+00:00",
+      "last_success_at": "2026-10-25T13:19:56.716262+00:00",
+      "last_checked_at": "2026-10-25T13:19:56.716262+00:00",
       "error": null
     },
     "sugar_producers": {
@@ -208,8 +208,8 @@
     "vn_power_daily": {
       "status": "ok",
       "latest_observation": "2026-10-22",
-      "last_success_at": "2026-10-25T05:09:19.971699+00:00",
-      "last_checked_at": "2026-10-25T05:09:19.971699+00:00",
+      "last_success_at": "2026-10-25T13:19:56.716262+00:00",
+      "last_checked_at": "2026-10-25T13:19:56.716262+00:00",
       "error": null
     },
     "sugar_world_shares": {
