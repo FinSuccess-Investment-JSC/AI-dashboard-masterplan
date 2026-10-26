@@ -1,4 +1,66 @@
-# Lịch cập nhật — 26/10/2026 08:59
+# Lịch cập nhật — 26/10/2026 12:14
 
-- ✅ textile.hot-topics: Chỉ cập nhật dm-t2: VITAS 9T/2026 XK 35,72 tỷ USD +3,3% (VCCI 16/10/2026) và thêm dòng mốc. Các thẻ dm-t1,t3-t7 chưa rà lại. Thẻ khác còn mục tiêu 49-49,5 tỷ, VCCI ghi ~48 tỷ
+- ⚠️ watcher news.vssa: HTTP 503
+- ⚠️ watcher news.vasep: HTTP 503
+- ⚠️ watcher news.shipping-policy: HTTP 503
+- ⚠️ watcher news.public-investment: HTTP 503
+- ⚠️ watcher news.insurance: HTTP 503
+- ⚠️ watcher news.retail: HTTP 503
+- ⚠️ watcher news.power-prices: HTTP 503
+- ⚠️ watcher news.pharma: HTTP 503
+- → hàng chờ [B] bank.wi.daily: lịch 26/10 07:00
+- → hàng chờ [B] bank.wi.monthly: lịch 26/10 07:00
+- → hàng chờ [C] bank.policy: lịch 07/10 07:00
+- → hàng chờ [D] oil.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] oil.ai.balance: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] oil.ai.regime: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] oil.ai.channels: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] bank.ai.read: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] power.evn-reservoirs: lịch 26/10 07:00
+- → hàng chờ [C] power.market-fmp: lịch 25/10 07:00
+- → hàng chờ [C] power.policy: lịch 26/10 07:00
+- → hàng chờ [C] power.output-sources: lịch 26/10 07:00
+- → hàng chờ [C] power.hot-topics: lịch 26/10 07:00
+- → hàng chờ [D] power.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] realestate.market-quarterly: lịch 26/10 07:00
+- → hàng chờ [C] realestate.fdi-projects: lịch 08/10 07:00
+- → hàng chờ [C] realestate.kcn-quarterly: lịch 26/10 07:00
+- → hàng chờ [C] realestate.policy: lịch 01/10 07:00
+- → hàng chờ [C] realestate.credit-rates: lịch 08/10 07:00
+- → hàng chờ [C] realestate.hot-topics: lịch 26/10 07:00
+- → hàng chờ [D] realestate.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] textile.trade-tariff: lịch 26/10 07:00
+- → hàng chờ [C] textile.orders-brands: lịch 26/10 07:00
+- → hàng chờ [C] textile.policy: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [D] textile.ai.cycle: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] port.projects: lịch 26/10 07:00
+- → hàng chờ [C] port.hot-topics: lịch 26/10 07:00
+- → hàng chờ [C] agri.policy: lịch 26/10 07:00
+- → hàng chờ [C] agri.hot-topics: lịch 26/10 07:00
+- → hàng chờ [C] seafood.hot-topics: lịch 26/10 07:00
+- → hàng chờ [C] shipping.outlook: lịch 26/10 07:00
+- → hàng chờ [C] shipping.rates: lịch 26/10 07:00
+- → hàng chờ [C] shipping.hot-topics: lịch 26/10 07:00
+- → hàng chờ [D] shipping.ai.cycle: số liệu nền đổi: hormuz, bab_el_mandeb
+- → hàng chờ [C] construction.prices: lịch 26/10 07:00
+- → hàng chờ [C] construction.hot-topics: lịch 26/10 07:00
+- → hàng chờ [C] insurance.market: lịch 20/10 07:00
+- → hàng chờ [C] insurance.hot-topics: lịch 26/10 07:00
+- → hàng chờ [C] retail.market: lịch 20/10 07:00
+- → hàng chờ [C] retail.hot-topics: lịch 26/10 07:00
+- → hàng chờ [C] power.company-quarterly: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] realestate.kcn-broker: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] realestate.infrastructure: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] pharma.hot-topics: lịch 26/10 07:00
 - Hàng chờ Claude: 78 mục — bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, bank.ai.read, power.ai.cycle, realestate.wi.daily, realestate.wi.weekly, realestate.kcn-quarterly
+
+## Cảnh báo
+
+- ⚠️ Watcher news.vssa không đọc được trang (HTTP 503)
+- ⚠️ Watcher news.vasep không đọc được trang (HTTP 503)
+- ⚠️ Watcher news.shipping-policy không đọc được trang (HTTP 503)
+- ⚠️ Watcher news.public-investment không đọc được trang (HTTP 503)
+- ⚠️ Watcher news.insurance không đọc được trang (HTTP 503)
+- ⚠️ Watcher news.retail không đọc được trang (HTTP 503)
+- ⚠️ Watcher news.power-prices không đọc được trang (HTTP 503)
+- ⚠️ Watcher news.pharma không đọc được trang (HTTP 503)
