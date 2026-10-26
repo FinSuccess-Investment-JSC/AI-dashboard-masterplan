@@ -658,5 +658,60 @@
   "quote": "chi phí lãi vay ở mức 286,9 tỷ đồng tăng 41,1%",
   "status": "match",
   "note": ""
+ },
+ {
+  "block": "ts-12",
+  "claim": "XK thủy sản 9T/2026",
+  "value": "9,103 tỷ USD +11,4%",
+  "url": "https://thanhtra.com.vn/tieu-dung-AA9F50895/xuat-khau-thuy-san-vuot-9-ty-usd-tom-va-ca-tra-vung-vai-tro-chu-luc-98015f6b5.html",
+  "opened_at": "2026-10-26",
+  "quote": "tổng kim ngạch xuất khẩu thủy sản sau 9 tháng năm 2026 lên con số 9,103 tỷ USD, tăng 11,4% so với cùng kỳ",
+  "status": "match",
+  "correct_value": "",
+  "note": "Báo Thanh tra 14/10/2026 dẫn VASEP; chưa mở bản tin gốc VASEP."
+ },
+ {
+  "block": "ts-12",
+  "claim": "Tôm 9T/2026 (VASEP)",
+  "value": "3,75 tỷ USD +11%",
+  "url": "https://thanhtra.com.vn/tieu-dung-AA9F50895/xuat-khau-thuy-san-vuot-9-ty-usd-tom-va-ca-tra-vung-vai-tro-chu-luc-98015f6b5.html",
+  "opened_at": "2026-10-26",
+  "quote": "xuất khẩu tôm đạt 3,75 tỷ USD, tăng 11% so với cùng kỳ năm trước",
+  "status": "match",
+  "correct_value": "",
+  "note": "Báo Thanh tra 14/10/2026 dẫn VASEP; chưa mở bản tin gốc VASEP."
+ },
+ {
+  "block": "ts-12",
+  "claim": "Cá tra 9T/2026 (VASEP)",
+  "value": "1,74 tỷ USD +10,7%",
+  "url": "https://thanhtra.com.vn/tieu-dung-AA9F50895/xuat-khau-thuy-san-vuot-9-ty-usd-tom-va-ca-tra-vung-vai-tro-chu-luc-98015f6b5.html",
+  "opened_at": "2026-10-26",
+  "quote": "kim ngạch xuất khẩu 9 tháng đạt 1,74 tỷ USD, tăng 10,7%",
+  "status": "match",
+  "correct_value": "",
+  "note": "Báo Thanh tra 14/10/2026 dẫn VASEP; chưa mở bản tin gốc VASEP."
+ },
+ {
+  "block": "ts-12",
+  "claim": "TQ+HK 9T/2026 (VASEP)",
+  "value": "2,3 tỷ USD",
+  "url": "https://thanhtra.com.vn/tieu-dung-AA9F50895/xuat-khau-thuy-san-vuot-9-ty-usd-tom-va-ca-tra-vung-vai-tro-chu-luc-98015f6b5.html",
+  "opened_at": "2026-10-26",
+  "quote": "kim ngạch 9 tháng năm 2026 đạt 2,3 tỷ USD, chiếm khoảng 1/4 tổng xuất khẩu thủy sản",
+  "status": "match",
+  "correct_value": "",
+  "note": "Báo Thanh tra 14/10/2026 dẫn VASEP; chưa mở bản tin gốc VASEP."
+ },
+ {
+  "block": "ts-12",
+  "claim": "ASEAN, Hàn Quốc 9T/2026 (VASEP)",
+  "value": "620 triệu USD +21%; 652 triệu USD +6,1%",
+  "url": "https://thanhtra.com.vn/tieu-dung-AA9F50895/xuat-khau-thuy-san-vuot-9-ty-usd-tom-va-ca-tra-vung-vai-tro-chu-luc-98015f6b5.html",
+  "opened_at": "2026-10-26",
+  "quote": "lũy kế 9 tháng năm 2026 đạt 620 triệu USD, tăng 21%; Hàn Quốc cũng tăng, 9 tháng đạt 652 triệu USD, tăng 6,1%",
+  "status": "match",
+  "correct_value": "",
+  "note": "Báo Thanh tra 14/10/2026 dẫn VASEP; chưa mở bản tin gốc VASEP."
  }
 ]

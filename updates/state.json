@@ -172,9 +172,17 @@
    "lastError": "trade.gov/otexa mở được nhưng chưa trích và xác minh được dữ liệu OTEXA/USTR mới cho 7 card; không cập nhật để tránh số chưa kiểm",
    "attempts": 1
   },
-  "textile.orders-brands": {},
+  "textile.orders-brands": {
+   "lastAttempt": "2026-10-26T08:59:04+07:00",
+   "lastError": "Fast Retailing KQ FY2026 (08/10/2026): doanh thu 3,96 nghìn tỷ yên +16,6% (FashionUnited) nhưng không có số tồn kho; fastretailing.com chặn (403). Chưa thêm dòng; các hãng khác chưa có kỳ mới",
+   "attempts": 1
+  },
   "textile.policy": {},
-  "textile.hot-topics": {},
+  "textile.hot-topics": {
+   "lastAttempt": "2026-10-26T08:59:04+07:00",
+   "lastSuccess": "2026-10-26T08:59:04+07:00",
+   "lastNote": "Chỉ cập nhật dm-t2: VITAS 9T/2026 XK 35,72 tỷ USD +3,3% (VCCI 16/10/2026) và thêm dòng mốc. Các thẻ dm-t1,t3-t7 chưa rà lại. Thẻ khác còn mục tiêu 49-49,5 tỷ, VCCI ghi ~48 tỷ"
+  },
   "textile.ai.cycle": {},
   "agri.enso": {
    "lastAttempt": "2026-10-09T23:21:13+07:00",
@@ -187,14 +195,14 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "port.freight": {
-   "lastAttempt": "2026-10-09T23:21:13+07:00",
-   "lastSuccess": "2026-10-09T23:21:13+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-26T08:59:04+07:00",
+   "lastSuccess": "2026-10-26T08:59:04+07:00",
+   "lastNote": "WCI tổng hợp 4.585 USD/FEU (+2%) tuần 22/10/2026; NY 10.166, LA 8.007, Genoa 4.152, Rotterdam 3.632; Drewry, script fetch_drewry_wci.py"
   },
   "port.throughput": {
-   "lastAttempt": "2026-10-09T23:21:13+07:00",
-   "lastSuccess": "2026-10-09T23:21:13+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-26T08:59:04+07:00",
+   "lastSuccess": "2026-10-26T08:59:04+07:00",
+   "lastNote": "PHP 9T/2026: 38,1 triệu tấn (gần +28%), container +30,7% (Vietstock 23/10/2026). Chưa thấy số toàn quốc 9T của Cục Hàng hải; vmrcc.gov.vn không có tin sản lượng mới"
   },
   "port.policy": {
    "lastAttempt": "2026-10-09T23:21:13+07:00",
@@ -227,9 +235,9 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "agri.weather": {
-   "lastAttempt": "2026-10-09T23:21:14+07:00",
-   "lastSuccess": "2026-10-09T23:21:14+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-26T08:59:04+07:00",
+   "lastSuccess": "2026-10-26T08:59:04+07:00",
+   "lastNote": "NOAA CPC ENSO 08/10/2026 đã có trên trang (El Niño mạnh, >83%); bản kế tiếp 12/11/2026. USDA cà phê chưa có bản mới. Không sửa trang"
   },
   "agri.hot-topics": {
    "lastAttempt": "2026-10-09T23:21:14+07:00",
@@ -267,9 +275,9 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "seafood.trade": {
-   "lastAttempt": "2026-10-09T23:21:14+07:00",
-   "lastSuccess": "2026-10-09T23:21:14+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-26T08:59:04+07:00",
+   "lastSuccess": "2026-10-26T08:59:04+07:00",
+   "lastNote": "VASEP 9T/2026 (qua Thanh tra 14/10/2026): XK 9,103 tỷ USD +11,4%, tôm 3,75 tỷ +11%, cá tra 1,74 tỷ +10,7%; chưa mở được bản tin gốc VASEP; số theo thị trường vẫn 2T"
   },
   "seafood.hot-topics": {
    "lastAttempt": "2026-10-09T23:21:14+07:00",
@@ -317,9 +325,9 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
   },
   "shipping.policy": {
-   "lastAttempt": "2026-10-10T10:47:45+07:00",
-   "lastSuccess": "2026-10-10T10:47:45+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+   "lastAttempt": "2026-10-26T08:59:04+07:00",
+   "lastSuccess": "2026-10-26T08:59:04+07:00",
+   "lastNote": "Tín hiệu là bài bình luận dự thảo Bộ luật Hàng hải; không có mốc/ngày mới xác minh được. USTR/IMO/EU ETS không có văn bản mới truy cập được. Không sửa trang"
   },
   "shipping.rates": {
    "lastAttempt": "2026-10-10T10:47:45+07:00",
@@ -3076,16 +3084,6 @@
    "signals": []
   },
   {
-   "id": "textile.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng dệt may: thuế Mỹ, dịch chuyển đơn, phòng vệ sợi, bông, lao động, EU xanh, Bangladesh",
-   "since": "2026-10-08T22:52:40+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
    "id": "textile.ai.cycle",
    "tier": "D",
    "title": "Dệt may: vị trí trong chu kỳ, đọc nhanh, Catalyst/Risk",
@@ -3108,20 +3106,6 @@
    "signals": []
   },
   {
-   "id": "port.throughput",
-   "tier": "C",
-   "title": "Hàng hóa, container qua cảng toàn quốc, Hải Phòng, Cái Mép; sản lượng doanh nghiệp; cung – cầu cụm cảng",
-   "since": "2026-10-10T13:18:47+07:00",
-   "reasons": [
-    "lịch 10/10 07:00",
-    "lịch 11/10 07:00",
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00",
-    "lịch 20/10 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "agri.wi.monthly",
    "tier": "B",
    "title": "Wi: XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa",
@@ -3130,19 +3114,6 @@
     "lịch 10/10 07:00",
     "lịch 11/10 07:00",
     "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "agri.weather",
-   "tier": "C",
-   "title": "Bản tin ENSO NOAA, dự báo mặn, USDA cà phê/gạo, lịch mùa vụ",
-   "since": "2026-10-10T13:18:47+07:00",
-   "reasons": [
-    "lịch 10/10 07:00",
-    "lịch 11/10 07:00",
-    "lịch 12/10 07:00",
-    "lịch 16/10 07:00"
    ],
    "signals": []
   },
@@ -3157,207 +3128,6 @@
     "lịch 12/10 07:00"
    ],
    "signals": []
-  },
-  {
-   "id": "seafood.trade",
-   "tier": "C",
-   "title": "VASEP: XK cá tra, tôm theo thị trường; IUU; MMPA",
-   "since": "2026-10-10T13:18:47+07:00",
-   "reasons": [
-    "lịch 10/10 07:00",
-    "lịch 11/10 07:00",
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00",
-    "lịch 20/10 07:00"
-   ],
-   "signals": [
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-10T21:42:25+07:00",
-     "what": "Một ngành hàng mang về hơn 9 tỷ USD cho Việt Nam sau 9 tháng, riêng Trung Quốc mua tới 1/4 - CafeF — https://news.google.com/rss/articles/CBMiyAFBVV95cUxQUTAzNU1aNjFWSUNhOVQ0Tmtub0k0b0hzUVJtb1lkOElpUUtiUGdRRWtjR1p2dG1vaVNidk1ScHFLX2RZbzFYUnhia2tETHBhZzZHTFVFVkdDRW0yNHBxd2dSTVB4b1BpQnBEZVA3dnFOa1JkRlNiYTVJYlZNdzlfbVhUNXNXS3l6U2N0SGlQZ2pqczQ2TktqMFpIQVVjd0dKUEJiSV9uSWJqNUt5OWd4dmVybWczYVc2NXhxaVBjWEtpUktLcVFqYQ?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-11T13:19:02+07:00",
-     "what": "Xuất khẩu cá tra 8 tháng: Duy trì đà tăng, Trung Quốc và Brazil tạo lực đẩy - VASEP — https://news.google.com/rss/articles/CBMi3wFBVV95cUxNNlFNLWtETnFUdkppUmJ3bkM1cFRxbTduakVkdXFXZjNBM3Y4akpOWDRsQXROaVB4VUdydnhNQU8yNmR1Nk9qeVlMZ0U1dWxjemdOM1VUNmtmN0pnX1RKUnAyYU9DYXAyMDgxcDRnbEFUbmdFN2lzVURNX0dKZk9tZE5wQjd4Z3E4bDNJcmVGZ1JGa20zOVRnRXZnOFpFMUNUdHBNYkhoUnBqSm9BMVhpeElpZUZYdHBsWjRfdWVidmJXaVhtSHcxOUVuM093Ri10TzY0RFZNcG9xV0Fmb1dZ0gGuAUFVX3lxTE12eFR3SDFzbE5FdVVVdXpkLTRJTmdaR0t2SXRoSXE5cHpuckx4UFZ2R2ZuU2wyV1ZIYjhMeHUtMXBUc1ZvQ0ZpWXFpb0h4WWZpTGpJXzE0QnE0R1RDUTZvbUlwb0tDc1pFMmRlZjBVQXl1d1hMakZmdnJUUWNmaHBCYVFLUlVfMnhRRGdZNVlqaE1SeXJuai1iQ2RXS2hfeVg5UVRKQkJleTFuN3NGZw?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-11T13:19:02+07:00",
-     "what": "Xuất khẩu thủy sản Việt Nam tháng 8/2026 đạt 1,14 tỷ USD - Pháp Luật Plus — https://news.google.com/rss/articles/CBMingFBVV95cUxOcjdUa2s0bDRidkZ5eFBCazdMN3hOUjZLSDNaMzdhR0x1ZkhmZjh1ZGVLZWVBc0I0TmwxZFZoZlhZVVVISWFUR3Y2bU42bkNzXzAtbnpvcmJCNGN4NXNDRXJKUER0LXpCN3JoUEdHajYwbnd1Rkg2QzYzc2l6b1VWcXdyOGg2WjR5ejFWaEswanRVTTJuZjEyVjVFcVhNdw?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-11T13:19:02+07:00",
-     "what": "Infographic: Xuất khẩu Thuỷ sản của Việt Nam 11 tháng đầu năm 2025 - VASEP — https://news.google.com/rss/articles/CBMixwFBVV95cUxOWFQySU5TUm1OSEh3bDZJMEtadGo4eUlGWkJ2cThONTIzM0o3dXl1VnJ3V3hTRW5MdWFtX2lGSXMxaURtWDdhVTlmM1hybUFmV2I1bTdkN2FWdzM2R04xckFBN1lsMDNYcFlHVU10bHNnV1JnbFBVY0p6RGh5MnVOTnltSHJBNVRaVGt5MGZySW43NFY3dUc0SVo2ZzlSM2lyR0xiU2pZZ3p1Tjd3MV84ekdtT0VKV25pdjRxN3RkdFFhb0czdDlB0gGjAUFVX3lxTE45cUpOWkxDWGJSc3pCanIzU25nSEhzaE9KTFY4bXJFTm10UG95QWNTMWJURVAxVkVKWHZUcVFnX0tSLWZtUnhpcXJ5dzg1bmlncHdlVU5ZYnlEcnMtN0g5LVBjenkxS1BTY0ZCR2pJQlVwendUU3N2S0tTT0U4VXdOWVNKcGdCNXR3YkhSU0psMjZPUHFXRXZEamhDMmxqY2xqMTg?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Xuất khẩu thủy sản quý IV đối mặt sức ép lớn từ thị trường Mỹ - VASEP — https://news.google.com/rss/articles/CBMi1wFBVV95cUxNa2dGcTBSUjlyczhFTG5wWjVvV3BQMlE0QWpyT19jZkdlbkVLcVRrUF9NdG0wWUpkc3hFZUtOTDZBQjVpV0Vkc3U4VUhEa2E3MVF4Rm01X3B4ZlZFOGZKWmN0d2s4UHRJUWNQcmxreFNuYnRGWnNHOGRpV013VWlkT0IwOGEtZWhxS09zRlhlSkVnWTREQ2MyRFNUbWtTNTBydGdZcFYxdUM0M3BJd3BCbDh1aGc5MFJ3YTluTmZHY01PVjV0Mk1fWktjcmlPdlk2ZHdyejV2NNIBngFBVV95cUxOeHVKTVc5OHJnT2p5M0ktWUtVUnhsZjVQQnR6Tkp0Q3RTN05zemxIQWlkeGstaV81YXlhOE12Q09jZW4tTzktaGlibzBEenZueXN3VERZdGQxNG1fdWdsUnFTRUVINUhuY0xPQmdWVVA2eFNPcXE1cTkwQUQyTTF4U25UMXdUTHp3aVVPMHUwQm90eTZuUVVxeWU4RmpzUQ?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Thặng dư thương mại nông, lâm, thủy sản 9 tháng đầu năm đạt 16,46 tỷ USD - Tạp chí Thủy sản Việt Nam — https://news.google.com/rss/articles/CBMiogFBVV95cUxNMUpXUEthQTRfSmVmWW5EUE8zR3Y4YXJYcVhYSWROVjFVTVpJdDdxN1hYVFo4aW9memNfV3dIMTZMSzE4SkY1VXp5NFk0OGhRenE0d3hiQ2I3MTNldUtFYlQyNUdXNmhPbmhPaEhna21hX2hrTEZQSFhVX3Zsb3Jpb2RwMmxFVTE3MVR4SDBiMkpFRm9IQTRGdnlWalVCV081ZHc?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Xuất khẩu thủy sản 8 tháng đạt 7,94 tỷ USD - Báo Nông nghiệp và Môi trường — https://news.google.com/rss/articles/CBMijgFBVV95cUxOM3dlTkFrMjUzWmx5QTc3Tm5vUFdyUzNSb05nSXdEc2F4NXIxWUhrenhtYUZhaFQ3V1E3blB0bW9DQk5tUmJ2OF9LWkxPV1p5all2emhzOUMtSXBTcllWN1hMZERpVzNfMTVFbGpDMVJDQjBjUXZNWXVPMWQyTlhHS3otaVdOdTBUSWlmSGN3?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Infographic: Xuất khẩu Thuỷ sản của Việt Nam tháng 1 năm 2026 - VASEP — https://news.google.com/rss/articles/CBMiwAFBVV95cUxQUEFkM1UwRko1RjZGRjEySlhGaEZleG80NGE0M1lMNl9pdEV6Y25semJNcEpNdEc5ME1mRVhtTTJQbkh4dlB4UWVRQk92Wmw5SXVhVWRROF9jcGN2RG82azh2SXJJZmo3eU9ocjM4dEdFVU9DNFNPM2M5bjh0QzJUbFdpQTloSDlCNmJfZTBiOW51ejJVMWZLZWVuZ01mZk5jRmd0ejVmdkt0TnpWVUw4SmhlSER4NTA4ZUtVLU5nQUvSAZwBQVVfeXFMTzR2azFVN2pnTEozWF9mVWxaaHhQajNGb3FfR3U3eDFiUGtRM25PRXJ5UzVRVDJ3SU5udUpaNmVETDVtVzlDeWJWUVVnSXQ4Qk82ajJPRkJKSzNwZ3dOeUNVcS15RnEtaWtJMEFUZktrNmNIemU3WFNEa2VqY0s1QkxXR0EtUFZvY0ZRRGtxUmRSMTh4bTZpaEUxTjFY?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Xuất khẩu thủy sản quý IV đối mặt sức ép lớn - Báo Điện tử An ninh Thủ đô — https://news.google.com/rss/articles/CBMiiwFBVV95cUxPY0ZObkZ4M2hsU3VPMEx2eWtMN2ZfakZHM195cnlVeU5nLXROcFZxRkZKeE5aWHctT1pjQ29pSFgxWm5mV3RHeEpsU3RMRlE2UDYyMVo0dHJ4R2NvemxkLVdLRVVYOWZQam5pcUpWVHhHWFhTWHY2enpfME9oYnZxY3pfZnUyNUNTQ2pN?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-19T12:14:48+07:00",
-     "what": "Xuất khẩu thủy sản 9 tháng vượt 9 tỷ USD, quý IV tăng trưởng chậm lại - VASEP — https://news.google.com/rss/articles/CBMi4AFBVV95cUxOMzdrSjVqRk1IQ0hXOGVaWkc2bDFnUlRMeG9yY01XMWdlMzQ1N041LVo2LVozc0ZKNDVBMjk5Q0lqaWc3a0J4WllWbmNMaGt6c19XTGJrY2p6ZU5DN0NpeHZ5blotaC0zb2V3T21HSE01UjdqUWUwNEZFTkpWY3NOZjFHZkNQWVQ2WUV6RlBCajNpNC0yMkdaeTVWS1lvX3MydkV4em5KNU82UE4zZ3djakVnVVd5NnpwWW41N2ExQzlPVHJoclFpV1Y1dzZheUZMMXJLQS1oQ05DSGUyaEtDVQ?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-19T22:58:13+07:00",
-     "what": "Infographic| Xuất khẩu thủy sản Việt Nam tháng 9 và 9 tháng năm 2026 - Báo Công Thương — https://news.google.com/rss/articles/CBMiowFBVV95cUxOaGxvNE5nR2xlcUZWaEtwRkhrSlRobFhUczhTRThEamlJQllHZDF5cjRtbHdtSWNwamVKbW9tbVZacGRvREVsVmlwc25UWVYwY2lmUFJ2SGNtSzhwX2liQ0Fyd3VySjBqam82NzI1TzVuSHdUTlhxVFQyc3BDYk5uZTU2TTNHYkdPUWNYOG53RW5BNWxIMlkzeGg4Nk1LcG9Sd3dV?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-20T20:58:37+07:00",
-     "what": "Xuất khẩu cá tra 9 tháng đầu năm 2026: Điểm sáng từ thị trường Trung Quốc, Brazil và kỳ vọng phục hồi từ Hoa Kỳ - Tạp chí Doanh nghiệp và Hộ — https://news.google.com/rss/articles/CBMi5gFBVV95cUxQbDJBcWdoWWNmdmNoMjk0M2JyckdJR1FtLU9YbWRNck5iZHdJM3c2X2QxbGZUeFktZHNLWVFrSUk3RU5kV0VHak5qRlhlYVdDVzRqRW9Oa3lqQ0k4dzRiNFczRWt1ekNnb1NLNHdnTExPU3MzbDNlcDNybXBUaGN5UDZyeTEwMDhBWWowX1JBdU8zY0JKaDluSU14UVNKT2NmQmJlSVZ1RUxvd1ZSTmQ0OFp2R0Q5RWdtX3J4Z0p5VWNkeVVJbmxJWGhwcXBVY1l6X2ZPVFY4UzRSbDJ1Tk0zb2ttX25pQQ?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-22T12:21:46+07:00",
-     "what": "Xuất khẩu tôm 9 tháng đạt 3,7 tỷ USD: Sức bật từ châu Á và áp lực hạ nhiệt cuối năm - Tạp chí Doanh nghiệp và Hội nhập — https://news.google.com/rss/articles/CBMiwAFBVV95cUxQWUZFb211enZPazQ2eGVpTUV6RWJOVE9ZWFdHc0MzbEpBQV95ejBtSExPbkEyamFaQktTUGozZXFtTlFibnF4bE5qVUgyNHBlYUVweXNHYTNVZzN3LWFMZ05BNHpiS1lWYWdadm9BOVNicG5vcU05R192dVhIdS1najJabVJtRTg4dkNiOHRwcjd6ajJnVjNIYUhzZFhCVTFhMmNZcC05cG15WFdQeEViS3RiS0k4YUxYSG9mTmtRNkQ?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-23T12:20:54+07:00",
-     "what": "Xuất khẩu tôm 8 tháng 2026: Tăng trưởng vẫn tích cực, cạnh tranh chuyển sang hiệu quả và giá trị - VASEP — https://news.google.com/rss/articles/CBMi9wFBVV95cUxPYWg0U09XRVpzU3hjdnJ4NlQ5UWJvX0xESGw0VU9hUHpScHJqYUF0SldxQ3lCYlA4MEM1WndaSGNsdW1PY2RENlNOc1NMdm9BeGZ2MTJ1RUw0VEgtMTFOWm1mZmdNVGg4RVM5T3FPODFURDBpcmFHNlN3cEQ1R3hwZ1RGMmdOVXktbXc4TzBMdmxmMzVnQTZkQ1JiQXZZTHZjT2Njd2NWTVVrXzdSbGhNNEJEeEJvelhiLVZlSUJDeUFqWjIzS19tVVlfRFNXVDBIZ291ZjV0OURYWk9tVEdKRVNyTjZnQ0cwRmE4TGVjWVY0NGt2YzBr0gHKAUFVX3lxTE1QWUQ2RHlXZ2JBVHp1QXZyZnk1Q0UzZnVJSlJHQUsxQ25ubXdhR0NiY1k3MUJwckh0LUVKbVUxMHh5NXhCa0ZCNFlNeDJvUWxIcnlucm1mMGkxVVRwZzVIN0pSUDdnekI4SE1obzZnclRwNUFvdWtoTEJEN1h1M1dFdUd6VGVIb1RPQXRfV2NLZnpzRFdXWkZXV1ZWT3Y1MUg3RHFzenBUaW13V1o3cGY1QnM0X2tDbV8yMHVmY1VMVlpmM3JvalVrbkE?oc=5"
-    },
-    {
-     "watcher": "news.vasep",
-     "seenAt": "2026-10-23T20:51:19+07:00",
-     "what": "Xuất khẩu cá rô phi Việt Nam tháng 5/2026 đạt 14 triệu USD, tăng 18% - VASEP — https://news.google.com/rss/articles/CBMi2gFBVV95cUxPOVk1M2ZQUEZ6T2VBNGo3SXdrd3BwZTIxamgyYzcyX1NBcW9qeG9PdnZHUUFFMUI4UzF4RExOdDAxbnIzeV9FZDBXalhNS3A2cFg4TC1vOTk3cVg5WmtwU0d1cFF6SjJqX3pqa3RVS0x3UTJ4MDlFVTJPNldHVzVJY3ZHR1hia0wxN3dJSmhYZ1NleUJ2RWdXV1QyeENuWGxFSHpFbk5TYzVQc19uQURJOVdGRm9nejRuZ2N4NTNoMWFuUlNkNXdKUHV4R0xERjlGQ0JXdlJPN2xkZ9IBpAFBVV95cUxQNGRoc3JVRk9ZdlpTdzJESFBBRkdJOVRrZ3djQjJFSXFBOUo4dzZ3V0FyV3dvcjZ6Yjg2ZnpMTWRUMW1sbXVOcnIwLThaRUpsaVFHZWpkc1lvMk5XZThpVjlXWGpYbEZHeW5wZFU1MDljU01VWTNRRTZ1Nkh3R2tUMWNUMF8tU2dNZkxlWHl0N1lRV2hQRmdKeVl3THhJcnk3QWJabA?oc=5"
-    }
-   ]
-  },
-  {
-   "id": "shipping.policy",
-   "tier": "C",
-   "title": "USTR phí cảng (hết hoãn ~10/11/2026), OFAC/EU cấm vận, IMO NZF (4/12/2026), EU ETS; Bộ luật Hàng hải (QH kỳ 2 10/2026), TT phí hàng hải",
-   "since": "2026-10-10T21:42:25+07:00",
-   "reasons": [
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Đề xuất Bộ luật Hàng hải và Đường thủy Việt Nam: Thúc đẩy vận tải số, ưu tiên logistics đa phương thức - Thuonghieucongluan.com.vn — https://news.google.com/rss/articles/CBMi4AFBVV95cUxPMHhySVNKQVNQd2F0ZFYzUFFQcVlVUEpZZUhtY0c4elotMldEUnVHWUh2cjh4bG90LXZrSXJPTFpuRFZOcDRhNFpVazI2SkRRX2hNRk5hdkFKVmxKVWtyeHVhZjNHaVpzQWJHVkM1dW5tdDFzOWR4UzJWeGYzcFJWVWd0YmMzaGtJMDJnUEd4dG9yRFJERy1uYUo1djlOa2JGZF8zUGlTa05MWW1fbnJaSHd5bGVobVRqV1Q4NUtwdENUZTRyUXpEdXBhNF9ocEV1bzFVSlVfS0FseEV4VzVZbA?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Góp ý Dự thảo Bộ luật Hàng hải và Đường thủy Việt Nam (phiên bản họp thẩm định) - vibonline — https://news.google.com/rss/articles/CBMirwFBVV95cUxNaFI4QlY0MUt0bko1OFF6RXZKXy1uVjVKVGo3QlFndlJCbmFabldNd0dOanNHQ3hBbUFOeEhaamMxbXo0em1QbUlyQXE0UUw5aFlWTTVzdjFSdEFYTHFzY3NvTnVvb3ZiYTdfRFJPdVdMQTlIclZyaWF0R2Z3YkxTUGZnXzBqYUFNVExKaDNFZjZCblN4V2otRXBranpseXJxbFR3UWhzcFIxUWl3UkJJ?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Bộ luật Hàng hải và Đường thủy Việt Nam: Kiến tạo thể chế, phát huy lợi thế quốc gia - Báo Diễn đàn Doanh nghiệp — https://news.google.com/rss/articles/CBMixAFBVV95cUxOZjg3N1V4VDlEdGRZeHVOQ3gtaVJVSF9TYlhiWUpaWl9PSkRZMk9jaUh1R1dqUWtFUzdDV0pRYW9hbjF6UHZIVFJRNUFNYVhkdjBRMWphR0YtU2FDTE81bEo3TVZpeDdmTkJFc0QtVWFyREtKYkw5VmFOaDl4SlM4Z0tNNEZ2MVc3anNXZ0ZreFFUbHVCZlNhcmZOR2J4WS04b09lUm1ZOGtqN3dJUVhlUWx5aFhQTkd1RDBDN1BCWnF1ak1T?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Sửa đổi Bộ luật Hàng hải và Đường thủy Việt Nam: Rà soát kỹ các điều ước quốc tế để nội luật hóa cho phù hợp - Cổng Thông tin điện tử Quốc h — https://news.google.com/rss/articles/CBMidEFVX3lxTE1zVEtvcE1QcVJlUWtORXhjTW5HcG9jYlFJYlVzaHVvRnRxa29HMXJIYTFjREhIWm1SdkM4WE01ankyU1Nnb2VDNzFkZTRDYW5zTDYxYmJnQ3BpVkN2Y0RnbU1zMkJ5cm5xN05zVWdfV1l5NGs4?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "DIỄN ĐÀN DOANH NGHIỆP SỐ 69: Bộ luật Hàng hải và Đường thủy Việt Nam - Kiến tạo thể chế, phát huy lợi thế quốc gia - Báo Diễn đàn Doanh nghi — https://news.google.com/rss/articles/CBMi6gFBVV95cUxQQ0NFVm5hbWlBTDd6aHNhNmVwaWJ6c1pQbmt2S29KV1hWbU9WQ2tlTVI3aGJLemtRTFdQb3VKVW11V2NBb1BsblY3MkxOeGJ0c09Jb2ViYWpzcHFObHNmSG50SnlRUUhHWmxrT2RqZXZRVXVlVXRLd0dnZU9nXzNKMzF0cmNJdUpFNlpua0d5WEd2Y29MYWp1Mk5pOFNuNzl1b2RuTnRlMjgySHdBcTVmRmtIbVFSbUZxdHFUQ09FalpqT0VITkptUjV2WWQ4bDR3VUc2MTVYXzQ1a1lNYzRlbWdYR1d0NlZiU0E?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Chính phủ thông qua 06 chính sách của dự án Bộ luật Hàng hải và Đường thủy Việt Nam (sửa đổi) - baochinhphu.vn — https://news.google.com/rss/articles/CBMi0wFBVV95cUxPUXZCZmkwb2JFZ3lMS3NUZUdfdmg2cnBpYmVNUTAzSUpQTkhIOWFjYlJpX0dOTlQydUwybmtubEJoQ1ViSWRNSEJJZkpocVFyekFFZUJJSUYtUTd4OGZzZXRKdHVac3ZGYWtOSmplYnZ1N0xfSkVsTTFBdjZGa0pub045bXRCNmIzcV9fUTFRZkctT1V2Zl9nRHU5bXJ2THFzRi1MSGtGaTEzZUM0OHVrYVl5eDRaTnhiOXltQ3lvSmlncFZqRXRCWU5RY1dtXy1nWUtZ?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Chốt 6 nhóm chính sách của dự án Bộ luật Hàng hải và Đường thủy Việt Nam (sửa đổi) - Báo Công Lý — https://news.google.com/rss/articles/CBMiswFBVV95cUxNNUt5cDZFSE1BN2tYWVpna0xIU0p6Q3ZXU202SFIxU0JqMjZrQlF4TlhoWGZhWWFMcHdCR1ZGQWFCUmQ3S3RTMWNMUy1hQUk2cjhRWng2S1dudWlVMWJMS0k4Nng2ZkJwTElpd09vYnBIR0haTGtwbmpYTHpjcWo3V21SZ0F4VHIybmx1em1obDk0WUZGNW9JdFhGbFlOVTk1X0JyYk9NWDhQNFk2cE1CSzlmTQ?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Bộ luật Hàng hải mới nhất năm 2024 là Bộ luật nào? - Luật Minh Khuê — https://news.google.com/rss/articles/CBMieEFVX3lxTE9kUTFUMWQ3VnJtd0xGUnpRTUh6bHROcGZxTUw5SjQxMjBQSTVobmNYMFRDTDkzQ3AweFdsS3ZpWWJna0ktUU5jZXUwRjFCU0x2OHpMVXE5M2ZXMzF5OTQ0YUw0dGMzNU1MTk9OVF9feF9MS1FGdV9hbg?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Ưu đãi mạnh cho cảng xanh mở lối chuyển đổi bền vững ngành hàng hải Việt Nam - Tạp chí Doanh nghiệp và Hội nhập — https://news.google.com/rss/articles/CBMiugFBVV95cUxPUmQ1MVYzejZwUkVNSTItXy1YSmJKa3EzekN5M2d4V2dnQUQzdmluMzB1Vm5ZQUgtNG5UN29QV09kdy1Ga1lhRnZRcmNqY01ZRGduN2xCb0hWT0x1UnNLNTUxSEdzdnB4dTB5aHFNRXVpeldvbHBkbTZ5RV9MckVjckhXSjl3aHZsMXFkTmE4MjdLeFJNcTcwQV9Dc2lHZTNBckMzNThCM1pSQ3k4MjJzZVF3TDhIM2d5YXc?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Tạo hành lang pháp lý cho chuyển đổi xanh hàng hải, đường thủy - Báo Xây dựng — https://news.google.com/rss/articles/CBMiqgFBVV95cUxQWXJLd1dMZlJLWmZXc2NjQWtVYll1RDkyMEk1cFBKbERtUXF1VUJkSXhqTGQtUkJKakRNbUVNbk5fN1ZhWXFkUHhTRUw2ZkdqZ3NpRk1TaTRwS1laa3l0ZVpZV0hUNXRTYkN3bXpWaEFuVzNBdGF6RDh3MWp6c3djclQ5anNoQ3phM2lkdTV1TTdxQjAxakdyeFlHVlBiaFkyYmkzZ2w5SXd2dw?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Đồng hành cùng doanh nghiệp đóng tàu trong xây dựng và hoàn thiện pháp luật về hàng hải - dangcongsan.vn — https://news.google.com/rss/articles/CBMi4AFBVV95cUxPZTFBZG40X2NCSDhDeU9nOGg4VnZfV1NiejY3MmY0YjFORk9yWEtnSWJNcTR1N1U0cEpEMkVieXRPckRnaG4waWJhbEs3aGdTcmd2aHNFZU5nUVQ2ZzhDOTlPNXNsb2xObm5rRTRISjFCMVVLQWxESlhaanc4NkVZM1IwT2YycjV2VTYzN2dkRFFSbXloN3BVcXg0ZnQ3TjlPc2tTVFc1R2VMd0tzZWFDMkw0WGNNZG5hMFRhUDRSQTBhUDZhTmtoY0dQd19IZ1M4ZzN1d0pyazB3bkdUX1d5bg?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Hoàn thiện quy định quản lý hoạt động hàng hải - xaydungchinhsach.chinhphu.vn — https://news.google.com/rss/articles/CBMiqgFBVV95cUxPU282bFNUdmdhTHAxNWd4dW1GclU4VDJFNy1ydEpwcUg1bzg4RWtUM3k4TEtYMkoyaDktVGllRW9VMkYxcXVrYUhFUUYtQU5UVkF3S0gyU01TSXh4YkdCaFJ1eHM3WGUxX1ZXbG5TZy02NFpFaEFYNTFOaWQtMkMzRUsxejNxUnRiWWtvNnY2QzVqdzhheEhTTUtuNVBIQnZKTkRncXdDcGZ4UQ?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Điều kiện cung cấp dịch vụ bảo đảm an toàn hàng hải - baodautu — https://news.google.com/rss/articles/CBMiiwFBVV95cUxQU0R5ZlE1dF81eHhVLXVSWEs1NjFTVWxiZUF1TGFaZjlhdTRaa0dwTHBjeGlQcXVla3NwWS1ZRjZZS21uSldkeDZKWHFWNXBGSWhsSjlHNjBFckRFMl9jLTM0WWpDYmlwLWhSLXFXams4aTBRYTNmYkdkb0xuTXhxTy1kS1F0cmt6amFR?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-20T12:16:58+07:00",
-     "what": "Sửa đổi Bộ luật Hàng hải và Đường thủy Việt Nam: Rà soát kỹ các điều ước quốc tế để nội luật hóa cho phù hợp - Cổng Thông tin điện tử Quốc h — https://news.google.com/rss/articles/CBMigwFBVV95cUxPOWlWUkt6VWtNSF9LZXBuVUwwWUc4U0piVGdFb2wzSURYUVZQU183d1JjWFdWWGNDc0w5OG5RZnR1ZGY3Qm9XNEQxWlYtQTZmdHU0aTRKQ0I2QzhXakt5NWxHanZfbHVuUGhoZXl4eXpsVk50STBoWDBCdi1FSVRqQ2xNaw?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-21T21:13:37+07:00",
-     "what": "Doanh nghiệp hoa tiêu hàng hải chịu thêm khoản thu mới, chủ tàu có bị ảnh hưởng? - Vietnam.vn — https://news.google.com/rss/articles/CBMiowFBVV95cUxPNVM3c3hXcnQzOHF5T0tIQUNabG1YTEdpXzBvV0o2QlF3c2VCTHh0VWZZWXk1WXlVNnBHZEZYbFBmcVhhUmJuWkpEbVJDNnZQeFk3bVVyZHNYSGxJaXVvYVBxeWRNVEs2VHFKRHZQQy1CSHc2U0JSdkdzOGpmOEJqZ2dVY0ZfVkJRdmlBbktEc1NmMGNvMnhXUDFwN3lTOWhaMlJV?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-22T12:21:46+07:00",
-     "what": "Doanh nghiệp hoa tiêu hàng hải chịu thêm khoản thu mới, chủ tàu có bị ảnh hưởng? - dangcongsan.vn — https://news.google.com/rss/articles/CBMi1gFBVV95cUxOZkVxZXctSzBZVVNOczhkbkdkemwxcDZhMVN3ckhQY1RPQkgySU1WZGVaOXJ0d09IRlFqRGdZNlN3dURRbHJJTFNscjBKMjdET2pId3NPaWdVbEEzSDBVNFFWYWk1U2tTSGFJYnFmZUVHeEVQYm9pN3ZzOC1jVTEtOHJ6eVJfQmxzaTVVTDByMjZBaGJIbXRLaWptTHlreFhBUWMyNlhZaHJpMTZxcDM2OUVjTnI5OTlqdmF2Y1FrZ1JScEVHQndRbE8tYmMzRWJFSUo5XzN3?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-22T21:11:54+07:00",
-     "what": "VCCI lo tăng chi phí tuân thủ khi xây dựng Bộ luật Hàng hải và Đường thủy Việt Nam - baodautu — https://news.google.com/rss/articles/CBMitgFBVV95cUxNajRrS2FiY0lzdU1HTnNkTU54bG9oa2xHQmprS2IzU3d5MGd4alVDX1Z4X2JFYUNKcFZrVGFCX2Mtb2JnSkxQaGpfWGlJeHlDVHctbTBpQU9pN0JWZ29YZVFFWjlJVHJaaTY2ZFBTWnFUaGVQNFAyTDFVZTNidXJ1QjZQWUtPMTFqRlVjeUNjYkJaS0RBYWFBbVlrWG1aTkcyanVrMWhlYkZudlRIQm9Ea0JHNC02QQ?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-23T12:20:54+07:00",
-     "what": "Ủy ban Thường vụ Quốc hội cho ý kiến về dự án Bộ luật Hàng hải và Đường thủy Việt Nam (sửa đổi) - Cổng Thông tin điện tử Quốc hội — https://news.google.com/rss/articles/CBMidEFVX3lxTE03RURfaThWeHFuVHUxRFc4Q3ZZa3doUXEwcS1vQTAzR0lLLXl1NlRJb0p5aXZ6VUF0QThvS1dlLV9TVGp2UTNKM1EzUXBpYWxYMDl0QmhBdjRNX1pnamlBemdzQmItRm42QndXRG05aG1pUzhJ?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Dự thảo Bộ luật Hàng hải và Đường thủy Việt Nam: Bỏ rào cản đan xen, khơi thông nguồn lực - Người Đưa Tin — https://news.google.com/rss/articles/CBMi0wFBVV95cUxPM1FzeC1YdWxacW9JREZobWZERThyQWZBNC1lRzhaU0dheWhpcVpER0RpUVBFcnlhaVdkZkV5ZlRVcDdSYlhCSWowOGUtUDF6QW1KRVUweXpTNXEzVHVIcGdoTjQzaVRFNnVxMUFnZ2pGWS13cHJtZUdlZlJyUDV6QzNsbmN5NXRuOGlyT1dqcW5WQ2hJNDhzRTU0bWJWemFENUtfMVFQVEhPQVppTjJhekZJSFFxelotUGNCbXU4NmlwLXJxU1EzdFd3UHhQSFRWWmNJ?oc=5"
-    },
-    {
-     "watcher": "news.shipping-policy",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Hoàn thiện khung pháp lý, tạo dư địa phát triển ngành hàng hải, cảng biển và logistics - Tạp chí Diễn đàn Doanh nghiệp — https://news.google.com/rss/articles/CBMixwFBVV95cUxPeEsxcFRTQWIwRUdOMEY1bHJCVkNBRkZCMURzRG85LVpPMHNXRHN5R05lakZTY2lBV2dMcnhubkQxUW5UZ3lRc01QZFdqcFlnX2IycW1TLTdhZEtnNUtfek4zdGgxdmc4MGJ3SjY0Ui1OWU9xZmlYTC1WdFpsRHVWWWMyUzhzYzJnYUxDUE5ac2xEUEtpQzZ6OVdzUkowUjVMejJfZ1k3WUNCbXVRSTd3Nk5BZ1BEOHlteXQ0OF9YNVZ2LS1OUjZV?oc=5"
-    }
-   ]
   },
   {
    "id": "bank.wi.daily",
@@ -3392,17 +3162,6 @@
    "since": "2026-10-12T13:25:56+07:00",
    "reasons": [
     "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.freight",
-   "tier": "C",
-   "title": "Cước container Drewry WCI theo tuyến, SCFI; giá thuê tàu nếu có nguồn",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00"
    ],
    "signals": []
   },
@@ -4921,5 +4680,5 @@
    ]
   }
  ],
- "updatedAt": "2026-10-25T20:25:38+07:00"
+ "updatedAt": "2026-10-26T08:59:04+07:00"
 }

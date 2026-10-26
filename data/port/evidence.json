@@ -110,6 +110,17 @@
   "note": ""
  },
  {
+  "block": "cg-12",
+  "claim": "PHP 9T/2026 sản lượng",
+  "value": "38,1 triệu tấn gần +28%; container +30,7%",
+  "url": "https://vietstock.vn/2026/10/lai-truoc-thue-cang-hai-phong-tang-55-trong-9-thang-san-luong-container-qua-cac-ben-lach-huyen-dat-550-ngan-teu-737-1506063.htm",
+  "opened_at": "2026-10-26",
+  "quote": "Tổng sản lượng hàng hóa hợp nhất đạt 38.1 triệu tấn, tăng gần 28%. Riêng sản lượng container tăng 30.7% so với cùng kỳ.",
+  "status": "match",
+  "correct_value": "",
+  "note": "Bài Vietstock 23/10/2026 dẫn VIMC; không có TEU toàn cảng, chỉ HTIT gần 550 nghìn TEU."
+ },
+ {
   "block": "cg-03",
   "claim": "CDN 6T/2026 sản lượng",
   "value": "8,1 triệu tấn +11%",
@@ -243,58 +254,58 @@
  },
  {
   "block": "cg-04",
-  "claim": "WCI tổng hợp 15/10",
-  "value": "4.485",
+  "claim": "WCI tổng hợp 22/10",
+  "value": "4.585",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
-  "opened_at": "2026-10-19",
-  "quote": "rose 3% to $4,485 per 40ft container",
+  "opened_at": "2026-10-26",
+  "quote": "World Container Index (WCI), the benchmark widely referenced by procurement teams, increased 2% to $4,585",
   "status": "match",
   "correct_value": "",
-  "note": "Bản đánh giá 15/10/2026 (trang Drewry chỉ giữ tuần mới nhất); dashboard cập nhật theo kỳ này 19/10/2026."
+  "note": "Bản đánh giá 22/10/2026 (trang Drewry chỉ giữ tuần mới nhất); routine tuần 26/10/2026. Tuần 15/10 xem drewry-wci-weekly.json."
  },
  {
   "block": "cg-04",
   "claim": "WCI Thượng Hải–New York",
-  "value": "10.075",
+  "value": "10.166",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
-  "opened_at": "2026-10-19",
-  "quote": "rates from Shanghai to New York fell 1% to $10,075 per 40ft container",
+  "opened_at": "2026-10-26",
+  "quote": "Shanghai to New York inched up 1% to $10,166 per 40ft",
   "status": "match",
   "correct_value": "",
-  "note": "Bản đánh giá 15/10/2026 (trang Drewry chỉ giữ tuần mới nhất); dashboard cập nhật theo kỳ này 19/10/2026."
+  "note": "Bản đánh giá 22/10/2026 (trang Drewry chỉ giữ tuần mới nhất); routine tuần 26/10/2026. Tuần 15/10 xem drewry-wci-weekly.json."
  },
  {
   "block": "cg-04",
   "claim": "WCI Thượng Hải–Los Angeles",
-  "value": "7.884",
+  "value": "8.007",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
-  "opened_at": "2026-10-19",
-  "quote": "rates from Shanghai to Los Angeles inched up 3% to $7,884 per 40ft container",
+  "opened_at": "2026-10-26",
+  "quote": "Shanghai to Los Angeles rose 2% to $8,007 per 40ft",
   "status": "match",
   "correct_value": "",
-  "note": "Bản đánh giá 15/10/2026 (trang Drewry chỉ giữ tuần mới nhất); dashboard cập nhật theo kỳ này 19/10/2026."
+  "note": "Bản đánh giá 22/10/2026 (trang Drewry chỉ giữ tuần mới nhất); routine tuần 26/10/2026. Tuần 15/10 xem drewry-wci-weekly.json."
  },
  {
   "block": "cg-04",
   "claim": "WCI Thượng Hải–Genoa",
-  "value": "3.945",
+  "value": "4.152",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
-  "opened_at": "2026-10-19",
-  "quote": "those from Shanghai to Genoa grew 7% to $3,945 per 40ft container",
+  "opened_at": "2026-10-26",
+  "quote": "Shanghai to Genoa grew 5% to $4,152 per 40ft",
   "status": "match",
   "correct_value": "",
-  "note": "Bản đánh giá 15/10/2026 (trang Drewry chỉ giữ tuần mới nhất); dashboard cập nhật theo kỳ này 19/10/2026."
+  "note": "Bản đánh giá 22/10/2026 (trang Drewry chỉ giữ tuần mới nhất); routine tuần 26/10/2026. Tuần 15/10 xem drewry-wci-weekly.json."
  },
  {
   "block": "cg-04",
   "claim": "WCI Thượng Hải–Rotterdam",
-  "value": "3.522",
+  "value": "3.632",
   "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
-  "opened_at": "2026-10-19",
-  "quote": "rates from Shanghai to Rotterdam increased 6% to $3,522 per 40ft container",
+  "opened_at": "2026-10-26",
+  "quote": "Shanghai to Rotterdam increased 3% to $3,632 per 40ft",
   "status": "match",
   "correct_value": "",
-  "note": "Bản đánh giá 15/10/2026 (trang Drewry chỉ giữ tuần mới nhất); dashboard cập nhật theo kỳ này 19/10/2026."
+  "note": "Bản đánh giá 22/10/2026 (trang Drewry chỉ giữ tuần mới nhất); routine tuần 26/10/2026. Tuần 15/10 xem drewry-wci-weekly.json."
  },
  {
   "block": "cg-04",

@@ -293,20 +293,20 @@ body{font-size:14px;line-height:1.45}
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=123c08b8ffcd">
 <script src="../assets/chart-types.js?v=b2f1d328ffcd"></script>
-<script src="../data/daily-data.js?v=12ef77ab0dd6" defer></script>
+<script src="../data/daily-data.js?v=9b785aad27ac" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=82b412aede70" defer></script>
 <script src="../assets/sector-content.js?v=be87392226ce" defer></script>
 <script src="../assets/sector-layout.js?v=bd27077b325d" defer></script>
-<script src="../data/port-public-data.js?v=e5343fcc10ea" defer></script>
+<script src="../data/port-public-data.js?v=1b789646c28e" defer></script>
 <script src="../assets/port-dashboard.js?v=714acc69523d" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/share-image.js?v=dc5ee7399523" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="../assets/catalyst-board.js?v=c7ebb703d2de" defer></script>
-<script src="../data/company-valuation.js?v=5ad0b1257884" defer></script>
-<script src="../data/company-comparison.js?v=2c473a3e2381" defer></script>
-<script src="../data/company-quarterly.js?v=be6f01a1a62d" defer></script>
+<script src="../data/company-valuation.js?v=18b7326848e6" defer></script>
+<script src="../data/company-comparison.js?v=087a027be653" defer></script>
+<script src="../data/company-quarterly.js?v=c614691bb111" defer></script>
 <script src="../assets/company-trend.js?v=0886441afdd7" defer></script>
 <script src="../assets/financial-comparison.js?v=915100cada6a" defer></script>
 <script src="../assets/research-layout.js?v=91a0f661e4c2" defer></script>
@@ -317,7 +317,7 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
 <script src="../assets/source-gap.js?v=02afdd3cfa3d" defer></script>
-<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261022-share-image-4"></script>
+<script src="../assets/site-navigation.js?v=51b84dc23839" data-release="20261026T015904Z"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=3bdeb005cf69">
@@ -382,7 +382,7 @@ body[data-sector="port"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spaci
       <div class="kpi"><div class="label">Vận chuyển hàng hóa đường biển</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-sea"></div></div>
       <div class="kpi"><div class="label">Xuất nhập khẩu hàng hóa</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan</div><div id="spk-trade"></div></div>
       <div class="kpi"><div class="label">Hàng hóa vận chuyển hàng không</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-air"></div></div>
-      <div class="kpi"><div class="label">Cước container Drewry WCI</div><div class="value">4.485</div><div class="delta">+3% so tuần trước</div><div class="sub">USD/FEU · 15/10/2026</div><div id="spk-wci"></div></div>
+      <div class="kpi"><div class="label">Cước container Drewry WCI</div><div class="value">4.585</div><div class="delta">+2% so tuần trước</div><div class="sub">USD/FEU · 22/10/2026</div><div id="spk-wci"></div></div>
       <div class="kpi"><div class="label">Baltic Dry Index</div><div class="value">—</div><div class="delta"></div><div class="sub">Baltic</div><div id="spk-bdi"></div></div>
       <div class="kpi"><div class="label">P/E cảng &amp; dịch vụ hàng hải</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pe"></div></div>
     </section>
@@ -409,7 +409,7 @@ body[data-sector="port"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spaci
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="cg-04" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
         <div class="chart-title">Cước container Drewry WCI — tổng hợp và theo tuyến</div>
-        <div class="chart-sub">USD/FEU · 15/10/2026 · cột cuối là chỉ số tổng hợp</div>
+        <div class="chart-sub">USD/FEU · 22/10/2026 · cột cuối là chỉ số tổng hợp</div>
         <div id="chWci"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-wci"></table></div></details>
       </div>
@@ -418,7 +418,7 @@ body[data-sector="port"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spaci
         <div class="chart-sub">USD/FEU</div>
         <div id="chWciWeeks"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-wci-weeks"></table></div></details>
-        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Trang Drewry chỉ hiện tuần mới nhất; script <code>fetch_drewry_wci.py</code> lưu số mỗi lượt job nên chuỗi tuần tự dài thêm từ 15/10/2026 (20/08 và 08/10 mở tay). Chưa có chuỗi giá thuê tàu container (Harpex, New ConTex); Nguồn công khai chưa có chỉ số cước container.</div></details>
+        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Trang Drewry chỉ hiện tuần mới nhất; script <code>fetch_drewry_wci.py</code> lưu số mỗi lượt job nên chuỗi tuần tự dài thêm từ 15/10/2026 (20/08 và 08/10 mở tay); tuần 22/10 do script lưu, Drewry công bố 22/10/2026. Chưa có chuỗi giá thuê tàu container (Harpex, New ConTex); Nguồn công khai chưa có chỉ số cước container.</div></details>
       </div>
     </div>
     <div class="grid two" style="margin-top:14px">
@@ -482,7 +482,7 @@ body[data-sector="port"] .tx-group{margin:18px 0 8px;font-size:12px;letter-spaci
     <div class="card" style="margin-top:14px" data-block-id="cg-12" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
       <div class="chart-title">Sản lượng cụm cảng và doanh nghiệp</div>
       <div class="chart-sub">kỳ công bố gần nhất</div>
-      <div class="tablewrap"><table><thead><tr><th>Đối tượng</th><th>Kỳ</th><th>Sản lượng</th><th>So cùng kỳ</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Toàn quốc</b></td><td>2025</td><td>~1.170 triệu tấn · 34,36 triệu TEU</td><td>+12% · +11%</td><td><a href="https://vmrcc.gov.vn/tin-tuc/cuc-hang-hai-va-duong-thuy-viet-nam-to-chuc-hoi-nghi-tong-ket-cong-tac-nam-2025-va-trien-khai-ke-hoach-nam-2026-1907.html" target="_blank" rel="noopener">Cục Hàng hải và Đường thủy</a></td></tr><tr><td><b>Toàn quốc</b></td><td>5T/2026</td><td>&gt;546 triệu tấn · &gt;15 triệu TEU</td><td>+15% · +14%</td><td><a href="https://baochinhphu.vn/giam-thu-tuc-hanh-chinh-hang-hoa-qua-cang-bien-tang-manh-102260528153427691.htm" target="_blank" rel="noopener">Báo Chính phủ</a></td></tr><tr><td><b>Cảng Hải Phòng</b></td><td>8T/2026</td><td>134,34 triệu tấn</td><td>+11,7%</td><td><a href="https://bnews.vn/san-luong-hang-hoa-qua-cac-cang-hai-phong-vuot-kich-ban-8-thang/434888.html" target="_blank" rel="noopener">Bnews</a></td></tr><tr><td><b>Cái Mép – Thị Vải (tàu mẹ)</b></td><td>Q1/2026</td><td>1,94 triệu TEU</td><td>+13%</td><td><a href="https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html" target="_blank" rel="noopener">SGGP</a></td></tr><tr><td><b>PHP</b></td><td>6T/2026</td><td>24,33 triệu tấn · 1,22 triệu TEU</td><td>+26,7% · +31,5%</td><td><a href="https://mekongasean.vn/nganh-cang-bien-quy-22026-loat-doanh-nghiep-an-nen-lam-ra-58159.html" target="_blank" rel="noopener">MekongAsean</a></td></tr><tr><td><b>SGP</b></td><td>2025</td><td>11,81 triệu tấn · 280 nghìn TEU</td><td>+15% · +13%</td><td><a href="https://saigonport.vn/wp-content/uploads/2026/04/VN_04-Bao-cao-cua-HDQT-tai-DHDCD-2026.pdf" target="_blank" rel="noopener">SGP – Báo cáo HĐQT 2026</a></td></tr><tr><td><b>GMD · Nam Đình Vũ</b></td><td>2025 · KH 2026</td><td>~1,5 · 1,85 triệu TEU</td><td>—</td><td><a href="https://vietstock.vn/2026/05/vi-sao-gemadept-chua-lo-mat-loi-the-truoc-cuoc-dua-cang-bien-o-cai-mep-va-lach-huyen-737-1438822.htm" target="_blank" rel="noopener">Vietstock</a></td></tr><tr><td><b>Gemalink · CMIT · SSIT</b></td><td>Q1/2026</td><td>523 · 371 · 269 nghìn TEU</td><td>+17% · +14% · +47%</td><td><a href="https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html" target="_blank" rel="noopener">SGGP</a></td></tr></tbody></table></div>
+      <div class="tablewrap"><table><thead><tr><th>Đối tượng</th><th>Kỳ</th><th>Sản lượng</th><th>So cùng kỳ</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Toàn quốc</b></td><td>2025</td><td>~1.170 triệu tấn · 34,36 triệu TEU</td><td>+12% · +11%</td><td><a href="https://vmrcc.gov.vn/tin-tuc/cuc-hang-hai-va-duong-thuy-viet-nam-to-chuc-hoi-nghi-tong-ket-cong-tac-nam-2025-va-trien-khai-ke-hoach-nam-2026-1907.html" target="_blank" rel="noopener">Cục Hàng hải và Đường thủy</a></td></tr><tr><td><b>Toàn quốc</b></td><td>5T/2026</td><td>&gt;546 triệu tấn · &gt;15 triệu TEU</td><td>+15% · +14%</td><td><a href="https://baochinhphu.vn/giam-thu-tuc-hanh-chinh-hang-hoa-qua-cang-bien-tang-manh-102260528153427691.htm" target="_blank" rel="noopener">Báo Chính phủ</a></td></tr><tr><td><b>Cảng Hải Phòng</b></td><td>8T/2026</td><td>134,34 triệu tấn</td><td>+11,7%</td><td><a href="https://bnews.vn/san-luong-hang-hoa-qua-cac-cang-hai-phong-vuot-kich-ban-8-thang/434888.html" target="_blank" rel="noopener">Bnews</a></td></tr><tr><td><b>Cái Mép – Thị Vải (tàu mẹ)</b></td><td>Q1/2026</td><td>1,94 triệu TEU</td><td>+13%</td><td><a href="https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html" target="_blank" rel="noopener">SGGP</a></td></tr><tr><td><b>PHP</b></td><td>9T/2026</td><td>38,1 triệu tấn · TEU toàn cảng chưa công bố (HTIT gần 550 nghìn TEU)</td><td>gần +28% · +30,7%</td><td><a href="https://vietstock.vn/2026/10/lai-truoc-thue-cang-hai-phong-tang-55-trong-9-thang-san-luong-container-qua-cac-ben-lach-huyen-dat-550-ngan-teu-737-1506063.htm" target="_blank" rel="noopener">Vietstock 23/10/2026</a></td></tr><tr><td><b>SGP</b></td><td>2025</td><td>11,81 triệu tấn · 280 nghìn TEU</td><td>+15% · +13%</td><td><a href="https://saigonport.vn/wp-content/uploads/2026/04/VN_04-Bao-cao-cua-HDQT-tai-DHDCD-2026.pdf" target="_blank" rel="noopener">SGP – Báo cáo HĐQT 2026</a></td></tr><tr><td><b>GMD · Nam Đình Vũ</b></td><td>2025 · KH 2026</td><td>~1,5 · 1,85 triệu TEU</td><td>—</td><td><a href="https://vietstock.vn/2026/05/vi-sao-gemadept-chua-lo-mat-loi-the-truoc-cuoc-dua-cang-bien-o-cai-mep-va-lach-huyen-737-1438822.htm" target="_blank" rel="noopener">Vietstock</a></td></tr><tr><td><b>Gemalink · CMIT · SSIT</b></td><td>Q1/2026</td><td>523 · 371 · 269 nghìn TEU</td><td>+17% · +14% · +47%</td><td><a href="https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html" target="_blank" rel="noopener">SGGP</a></td></tr></tbody></table></div>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Chưa có sản lượng 2026 của VSC, DVP, PDN, TCL. Mỗi nguồn tính phạm vi khác nhau (tấn, TEU, tàu mẹ, hợp nhất), không cộng các dòng.</div></details>
     </div>
     <h3 class="subhead">Vận tải biển</h3>
