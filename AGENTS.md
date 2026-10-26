@@ -1,6 +1,6 @@
 # Project instructions
 
-- **Cấm dữ liệu Wi ngoài Bank (16/10/2026):** do tranh chấp pháp lý, không gọi WiMCP/WiData/Wifeed và không dùng lại số trong snapshot Wi cũ cho các dashboard doanh nghiệp/ngành (Bán lẻ, Bảo hiểm, BĐS, Cảng, Dệt may, Dược, Nông nghiệp, Thủy sản, Vận tải biển, Xây dựng, Điện, Đường). Nguồn thay thế: VNDirect finfo `financial_statements`/`ratios`/`stock_prices`, BCTC/CafeF, IMF Primary Commodity Prices qua FRED, EIA, ICE (`scripts/build_sector_public.py` → `data/<ngành>-public-data.js`; `scripts/fetch_public_fs.py` → `data/raw/public/`). Ô lệch >1% so với số cũ mà không xác nhận được từ BCTC thì để `null`. Số vĩ mô (NSO/Hải quan/NHNN), định giá tổng hợp ngành, TPDN BĐS và KQKD tổng hợp ngành bảo hiểm hiện để trống cho tới khi có script nguồn công khai.
+- **Dữ liệu Wi (người dùng chốt 26/10/2026):** được dùng lại WiMCP/WiData/Wifeed cho mọi dashboard (bỏ lệnh cấm ngoài Bank ngày 16/10/2026). Các script nguồn công khai (`scripts/build_sector_public.py`, `scripts/fetch_public_fs.py`) vẫn giữ làm nguồn bổ sung/đối chiếu.
 
 
 Before changing sector dashboards, read [DASHBOARD_WORKFLOW.md](DASHBOARD_WORKFLOW.md) and follow its shared chart annotation, data classification and QA rules. Use shared assets in `assets/` for consistent behavior. Preserve visible data limitations and existing data when doing UI-only changes.

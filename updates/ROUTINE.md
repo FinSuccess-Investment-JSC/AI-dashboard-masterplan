@@ -18,7 +18,7 @@ Mỗi mục có `where` (trang + card), `source`, `how`, `gates`, `signals` (tà
 
 Routine hằng ngày làm hết mục B; routine hằng tuần xử lý tối đa 8 mục đầu theo đúng thứ tự `--queue` in ra (đã sắp: B → C → D, mục chưa thử trước mục đã lỗi, mục cũ trước). Mục chưa làm cứ để trong hàng chờ cho lượt sau, không `--fail`.
 
-**B · Wi (Bank).** Không chép tay số Wi. Ngoài Bank tuyệt đối không gọi WiMCP hay dùng số Wi (tranh chấp pháp lý, 16/10/2026); các mục `*.public.*` là nhóm A hoặc `blocked`.
+**B · Wi (Bank).** Không chép tay số Wi. Từ 26/10/2026 mọi ngành được dùng WiMCP (bỏ lệnh cấm ngoài Bank 16/10/2026); các mục `*.public.*` vẫn là nhóm A.
 1. `python3 scripts/wi_ingest.py plan <id mục>` in danh sách lệnh WiMCP cần gọi.
 2. Gọi **đúng từng lệnh**: cùng tool, `action`, `indicator_id`/`endpoint_name`/`filters`/`indicator_code`, `from_time` không muộn hơn plan. Hook `scripts/wi_capture.py` tự lưu nguyên văn kết quả vào `data/raw/wi/.inbox/`.
 3. `python3 scripts/wi_ingest.py ingest <id mục>`: ghép kết quả vào từng file, đối chiếu kỳ chồng lấn, ghi Wi sửa số vào `revisions`. File báo "lỗi" hoặc "thiếu kết quả" giữ nguyên số cũ; gọi lại lệnh đó một lần, vẫn lỗi thì ghi vào `--fail`.
