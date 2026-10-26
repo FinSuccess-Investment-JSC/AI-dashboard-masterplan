@@ -406,3 +406,10 @@ body.fs-home .fs-search { margin-bottom: 32px; } body.fs-home nav.site-navigatio
 .source-gap-note{margin:6px 0 8px;padding:6px 10px;border-radius:6px;background:var(--fs-gap);color:#fff;font-weight:700;font-size:13px}
 .kpi.source-gap{border:2px solid var(--fs-gap);background:var(--fs-soft-gap)}
 .kpi.source-gap .sub{color:var(--fs-gap);font-weight:700}
+
+/* Áp design-rules FISC Market v3.2 (26/10/2026): chỉ phần hợp với palette FinSuccess đã chốt. */
+html,body{overflow-x:clip}
+table td,table th,.kpi .value{font-variant-numeric:tabular-nums}
+table tbody tr:hover td{background:rgba(89,197,200,.08)}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.card{transition:box-shadow .15s}.card:hover{box-shadow:0 12px 24px -6px rgba(29,38,120,.18),0 3px 7px rgba(29,38,120,.07)}}
+@media print{.card:hover{box-shadow:none}}

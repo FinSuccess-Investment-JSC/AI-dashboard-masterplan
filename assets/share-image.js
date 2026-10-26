@@ -5,7 +5,7 @@
   if(window.FinShareImage)return;
   const H2C='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
   const NAVY='#1D2678',INK='#303540',MUTED='#596272',LINE='#dce1e9',TEAL='#59C5C8';
-  const RATIOS={wide:{w:1600,h:900,label:'Ngang 16:9',hint:'X · Telegram · Zalo'},tall:{w:1080,h:1350,label:'Dọc 4:5',hint:'Facebook · Instagram'}};
+  const RATIOS={wide:{w:1920,h:1080,label:'Ngang 16:9',hint:'X · Telegram · Zalo'},tall:{w:1080,h:1350,label:'Dọc 4:5',hint:'Facebook · Instagram'}};
   const scriptSrc=(document.currentScript&&document.currentScript.src)||'';
   let lib=null,logo=null,state=null;
 
@@ -105,8 +105,8 @@
     }
   }
   async function shoot(card,h2c){
-    // Chụp đủ nét cho khung 1600px: tăng scale theo bề rộng card, vẽ lại Chart.js ở mật độ điểm cao rồi trả về như cũ.
-    const scale=Math.min(4,Math.max(2,1600*1.25/Math.max(1,card.offsetWidth)));
+    // Chụp đủ nét cho khung 1920px: tăng scale theo bề rộng card, vẽ lại Chart.js ở mật độ điểm cao rồi trả về như cũ.
+    const scale=Math.min(4,Math.max(2,1920*1.25/Math.max(1,card.offsetWidth)));
     const charts=window.Chart&&Chart.getChart?[...card.querySelectorAll('canvas')].map(c=>Chart.getChart(c)).filter(Boolean):[];
     const dpr=charts.map(ch=>ch.options.devicePixelRatio);
     charts.forEach(ch=>{ch.options.devicePixelRatio=scale;ch.resize();ch.update('none')});
