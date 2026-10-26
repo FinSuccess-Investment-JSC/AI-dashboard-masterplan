@@ -1,13 +1,10 @@
-# Lịch cập nhật — 26/10/2026 12:14
+# Lịch cập nhật — 26/10/2026 22:31
 
-- ⚠️ watcher news.vssa: HTTP 503
-- ⚠️ watcher news.vasep: HTTP 503
-- ⚠️ watcher news.shipping-policy: HTTP 503
-- ⚠️ watcher news.public-investment: HTTP 503
-- ⚠️ watcher news.insurance: HTTP 503
-- ⚠️ watcher news.retail: HTTP 503
-- ⚠️ watcher news.power-prices: HTTP 503
-- ⚠️ watcher news.pharma: HTTP 503
+- 🆕 news.shipping-policy: 2 mục mới — Góp ý hoàn thiện Bộ luật Hàng hải và Đường thủy Việt Nam (sửa đổi) - HTV — https://news.google.com/rss/articles/CBMipAFBVV95cUxOaWNlczVYRUJGMEJfSkcxd19QUFMtMUdjMzhPM3N6akpBdkZ3dE1WMVNwZDNCZ213TEFfZklIT0hmalIzTEgzNm1heThFVXBoTk1pWUlRRjZPTG5VV2VydnRWYXJJbldabGM0elBiSldFYXFLYVZiaUx0S2VsYkplZEI3eXpUaWFOYnNYNVowZVVhenNQTHpGZ0o5YzdYN2ZTaDhqUQ?oc=5; Bộ luật Hàng hải và Đường thủy Việt Nam - Kiến tạo thể chế, phát huy lợi thế quốc gia - Báo Diễn đàn Doanh nghiệp — https://news.google.com/rss/articles/CBMi6gFBVV95cUxQQ0NFVm5hbWlBTDd6aHNhNmVwaWJ6c1pQbmt2S29KV1hWbU9WQ2tlTVI3aGJLemtRTFdQb3VKVW11V2NBb1BsblY3MkxOeGJ0c09Jb2ViYWpzcHFObHNmSG50SnlRUUhHWmxrT2RqZXZRVXVlVXRLd0dnZU9nXzNKMzF0cmNJdUpFNlpua0d5WEd2Y29MYWp1Mk5pOFNuNzl1b2RuTnRlMjgySHdBcTVmRmtIbVFSbUZxdHFUQ09FalpqT0VITkptUjV2WWQ4bDR3VUc2MTVYXzQ1a1lNYzRlbWdYR1d0NlZiU0E?oc=5
+- 🆕 news.public-investment: 15 mục mới — Bộ Xây dựng siết tiến độ giải ngân vốn đầu tư công - CafeF — https://news.google.com/rss/articles/CBMikwFBVV95cUxNWWs1VlpsMl9mX2piUk5jd0RaRE1TUk9hNXl0MW5FVDFaU1NITThGcUNEM0RoQVpLUG12WllwVGVkbFpMSVdxV1lyLWVOVU8tZEFoMUJ5Qy0zVlRLbVhPVGxXVnRMZG1qZ2NZbC1KTHgxTEdwQ3ZPWHU3RFNYY2RySWNsbGJUR3FnbFZieXNyeWFad3c?oc=5; TP.HCM tăng tốc giải ngân vốn đầu tư công, gỡ điểm nghẽn từ cơ sở - Báo Dân Việt — https://news.google.com/rss/articles/CBMinAFBVV95cUxNU2E2ajFtdzhaTmVGUzRpc3pVNTBCa3QyMXVqY05wLXN0UnhaSW1ramQwTlU0ZDJKRG5YSVRXMEdyRFo3ZkZReHBzWmQxTDlJYkYyb0Y3Qk84LTFKaFMxNmhSd1lJTG01dUp5OWs4RjE3YXdJdDJZVGV4MkI1QlQ5M1ZCV1VNLTA3enpoaXBBd0Nfd3cxNHIzR3FnVks?oc=5; Quảng Ngãi yêu cầu cả hệ thống chính trị tập trung tháo gỡ khó khăn cho doanh nghiệp, đẩy nhanh giải ngân vốn đầu tư công - Báo Pháp Luật Vi — https://news.google.com/rss/articles/CBMi4gFBVV95cUxNVEVSU2RmS3R1OTNtQ1VqY0VSLTIwUjMzZ0JvSHF1aExrbHVkcFlVZi1pVVlEemJmRmhzTEVHTUc2LUlQZUF1NVZZQXZiSnZTdXBkSHlXVS1ZX3hiZTFTZlFoZEE5VlRTOGpjMnc3ajc4MmJ2ODUtX2pxeE1hX0I4MXlzQ3ozWl81N0JPcklIUEJQSkNzQXN5YnM0VGVOR2FZa3NvdVNJajNMVVA4MzZUQ29MZHB6RTlaMXJVODFvTERTbmlXNklaSmpnbEpRRUd6VUFpUGJSNVB0WFNxVXFyUWpn?oc=5
+- 🆕 news.insurance: 3 mục mới — Tổng doanh thu phí bảo hiểm toàn thị trường cả năm 2024 đạt mức 227.500 tỷ đồng - Thời báo Tài chính Việt Nam — https://news.google.com/rss/articles/CBMiwgFBVV95cUxOMHZ4dG1YVEM1VUZpNm1jdzJzd0ptREdSdFZhcVVTbUYtMmpvYTlxcWJwUWVHVExpTDVGQ2lsWnNKNGt3aXRfaGc0LTdoNGNVQ2pqd01hLUNvaktVZWlpWVdPZ2REcWxQd0Qyci1WYlFEZ18zTE5DN2dmSHlDNlhYaWNCT1ZzczlwcnVQaXMtQXIxVVZoNGpmY3pOeVVkNURfWkRmM1l5TFZiX1pXOW15aG9HemR1YWxkak9sMFF5b0VqUQ?oc=5; Infographics: 6 tháng đầu năm 2025, doanh thu phí bảo hiểm đạt 67.242 tỷ đồng - Thời báo Tài chính Việt Nam — https://news.google.com/rss/articles/CBMivAFBVV95cUxORUdMd21iaF9TQVpLbFZhQzhIeEtRM3JYRGU3QV9keDZnQlZrbzcwbzBPdkJOdEh6anhEczRRcktCQmVaR1JJMHZSOXdoRVhJUl9aUG04WVZXZ2tYTENjWDNPRF9KRnJyTEpMTWhSNktWOWtEYVlvT2xvMVBmOUJvREk4REJXZWJIRDM0MjZrVnlFVjQzWk1vNi1VMktieURESk5aVUdlRGpwY3Exbkc1dVhUbHU0UWJOMkItVQ?oc=5; Doanh thu phí bảo hiểm nhân thọ giảm 12% - Tạp chí Tài chính Doanh nghiệp — https://news.google.com/rss/articles/CBMijwFBVV95cUxNQ2xPbXlhMnhzTUZObDUyci1FdXVraVNUd241ZXQ4dmpVRGdxb3pXM0hocUJldEtFQ3BvZHI4bVRHRVJQRHV1Q1V5UFBjMWt2dFNPWGFKWWxqWUZ6ZjBYQVh0Yy1UcGtWZFZkN2JEMGZuUHpuU2JVbHJSRG1RdzdnRkZMU3ZZV0swV3BhMG1taw?oc=5
+- 🆕 news.power-prices: 2 mục mới — Sửa đổi quy định về cơ cấu biểu giá bán lẻ điện: Ba nhóm khách hàng sẽ được giảm tiền điện - Vietnam.vn — https://news.google.com/rss/articles/CBMisgFBVV95cUxNYVZteGc0a1g0Z2tNZHFsODkxUTNxS1R5S1l2YWN3VHJiTmN3ZzJ5WXktby1JNXhBOUhhODlaeXdGQTFQS0Q5MnZyQXlMdVloTEtIbXhnWVk4N09rOXlESnJrejhRaXN6TFhER2haYTFyaG14UFdiV2NVdldlUUxtWjVyS1F3aU1nNzFyeXdXemREVHdWYUx1MVpDV0w5WGF5c2lrcHA3SFQ2bl9iM1lFMlpR?oc=5; Phê duyệt nhiệm vụ lập Điều chỉnh Quy hoạch điện VIII - Mekong ASEAN — https://news.google.com/rss/articles/CBMikAFBVV95cUxNeHZLcThJM194cnZJanA1SS1BdVExejUxNUo2SG1HeU5HSkpiSG9SZmRibE90QU54dXFrQ1RoSEFUelVNNmZ5U2ZsdlVuTGZkQ2x0T1hRM2hDUnMwVk9CWXRDem95ODRxaHVLUmJqSEoyUkNhdVdqeDJYbDEycUNraHFvMW1yU09iUk12bjFSLUE?oc=5
+- 🆕 news.pharma: 10 mục mới — Long Châu, Boehringer Ingelheim nâng cao nhận thức dự phòng bệnh thận, tim ở người đái tháo đường - Báo Dân trí — https://news.google.com/rss/articles/CBMi4gFBVV95cUxPWnF6QXBOWFJxMXN1UFcxVjRlLWs1bkg3Yl9BZ0pGZV9HQ0RJQXZybURUOWZaeVNUbS1DVU9PcGl4ZjlnSjk2UG5pQ0J4WllkZTdwQVMtbXM3YjlwcFdMM09yUlJReF9hLXB2RmNGeEdZbHdWTFVEX1BGZjFIWVEzT2FvcVJYRVNZWnF4X1E3V1l1U0F3ODZPZ1pfZUtsTUZhem1OcWJfN21kLUFKdkk5OEY0c1VMYmwxRDBob2U4LWcyNHAxQUkyLWtfcnVRVFY1NFVJeHVlY3JrQkNuVm1YOXpn?oc=5; Long Châu cùng các đối tác y tế phát động dự án vì phụ nữ Việt Nam - Báo Sức khỏe & Đời sống — https://news.google.com/rss/articles/CBMitgFBVV95cUxOR1BMSGg0VFVRNnBMWFRFS2NLbUlGcFg5RHQyaU9EQzg4Rm02el9vMHZVWlNiZmtSb081bVlyWEhlWjZ3T3lEM3dMMXVIMWt6b2VWc1dIOVhfYTdWNzJoRWplOHRmcW9EcDlrX1NBWFRjZFJhT21pX1VZY1VKblRpdW4xaC1hMkZxRGRLaWlKRFIydnl0QV8yLWhmTzBQc0NqSGwzeVUwSE9DXzdFOTh6RVlhZzBPdw?oc=5; Doanh thu Long Châu tăng 33% so với cùng kỳ - Báo Thanh Niên — https://news.google.com/rss/articles/CBMijwFBVV95cUxNd202ZGhnMXlTZWNOMDEzNS12cHBzQnBFQUxvLTZCTnN5X19Xbm1HMlJiVmVwUnhWSV9sYy1ITEFaSm0wc255V25UZUt4VlAzSDFzTkszcl9VaEdGdExUVTlKZVRmM3pUZ0UwdEVUXzk1WXkyZkJ3WVBlZ1NVaGNPVThXaGZjckdiS3JJa3o0VQ?oc=5
 - → hàng chờ [B] bank.wi.daily: lịch 26/10 07:00
 - → hàng chờ [B] bank.wi.monthly: lịch 26/10 07:00
 - → hàng chờ [C] bank.policy: lịch 07/10 07:00
@@ -39,28 +36,23 @@
 - → hàng chờ [C] agri.hot-topics: lịch 26/10 07:00
 - → hàng chờ [C] seafood.hot-topics: lịch 26/10 07:00
 - → hàng chờ [C] shipping.outlook: lịch 26/10 07:00
+- → hàng chờ [C] shipping.policy: watcher báo có công bố mới
 - → hàng chờ [C] shipping.rates: lịch 26/10 07:00
 - → hàng chờ [C] shipping.hot-topics: lịch 26/10 07:00
 - → hàng chờ [D] shipping.ai.cycle: số liệu nền đổi: hormuz, bab_el_mandeb
+- → hàng chờ [C] construction.disbursement: watcher báo có công bố mới
+- → hàng chờ [C] construction.policy: watcher báo có công bố mới
 - → hàng chờ [C] construction.prices: lịch 26/10 07:00
 - → hàng chờ [C] construction.hot-topics: lịch 26/10 07:00
 - → hàng chờ [C] insurance.market: lịch 20/10 07:00
+- → hàng chờ [C] insurance.policy: watcher báo có công bố mới
 - → hàng chờ [C] insurance.hot-topics: lịch 26/10 07:00
 - → hàng chờ [C] retail.market: lịch 20/10 07:00
 - → hàng chờ [C] retail.hot-topics: lịch 26/10 07:00
 - → hàng chờ [C] power.company-quarterly: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [C] realestate.kcn-broker: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [C] realestate.infrastructure: lần đầu: rà soát số đang hiển thị
+- → hàng chờ [C] pharma.market: watcher báo có công bố mới
+- → hàng chờ [C] pharma.policy: watcher báo có công bố mới
 - → hàng chờ [C] pharma.hot-topics: lịch 26/10 07:00
-- Hàng chờ Claude: 78 mục — bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, bank.ai.read, power.ai.cycle, realestate.wi.daily, realestate.wi.weekly, realestate.kcn-quarterly
-
-## Cảnh báo
-
-- ⚠️ Watcher news.vssa không đọc được trang (HTTP 503)
-- ⚠️ Watcher news.vasep không đọc được trang (HTTP 503)
-- ⚠️ Watcher news.shipping-policy không đọc được trang (HTTP 503)
-- ⚠️ Watcher news.public-investment không đọc được trang (HTTP 503)
-- ⚠️ Watcher news.insurance không đọc được trang (HTTP 503)
-- ⚠️ Watcher news.retail không đọc được trang (HTTP 503)
-- ⚠️ Watcher news.power-prices không đọc được trang (HTTP 503)
-- ⚠️ Watcher news.pharma không đọc được trang (HTTP 503)
+- Hàng chờ Claude: 79 mục — bank.policy, oil.ai.cycle, oil.ai.balance, oil.ai.regime, oil.ai.channels, bank.ai.read, power.ai.cycle, realestate.wi.daily, realestate.wi.weekly, realestate.kcn-quarterly
