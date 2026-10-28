@@ -158,9 +158,9 @@
    "lastNote": "Chưa có số công suất đặt chính thức mới; giữ nguyên."
   },
   "power.hot-topics": {
-   "lastAttempt": "2026-10-12T08:43:43+07:00",
-   "lastSuccess": "2026-10-12T08:43:43+07:00",
-   "lastNote": "Cập nhật ENSO theo NOAA CPC 08/10/2026: Niño-3.4 +2,1 °C, mạnh–rất mạnh đến T1–T3/2027 >83%, vượt +2,5 °C OND 83%; bản kế 12/11. Các dòng LNG/BESS/hạt nhân/gió ngoài khơi chưa rà lại lượt này."
+   "lastAttempt": "2026-10-28T21:00:21+07:00",
+   "lastSuccess": "2026-10-28T21:00:21+07:00",
+   "lastNote": "NOAA 08/10/2026: >83% El Niño mạnh–rất mạnh tới JFM 2027 (sửa từ 'trên 90%')"
   },
   "power.ai.cycle": {
    "lastAttempt": "2026-10-28T18:13:36+07:00",
@@ -562,7 +562,11 @@
    "lastSuccess": "2026-10-11T17:03:33+07:00",
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
-  "power.company-quarterly": {},
+  "power.company-quarterly": {
+   "lastAttempt": "2026-10-28T21:00:21+07:00",
+   "lastSuccess": "2026-10-28T21:00:21+07:00",
+   "lastNote": "Q3/2026 từ VNDirect finfo: 11/18 mã điện (NT2, PPC, QTP, HND, BTP, VSH, CHP, SBA, SHP, TV2, GEX); POW, REE, TMP, GEG, HDG, TTA, PC1 chưa công bố"
+  },
   "pharma.wi.monthly": {
    "lastAttempt": "2026-10-12T14:05:24+07:00",
    "lastSuccess": "2026-10-12T14:05:24+07:00",
@@ -3601,16 +3605,6 @@
    "signals": []
   },
   {
-   "id": "power.company-quarterly",
-   "tier": "C",
-   "title": "BCTC quý các doanh nghiệp điện: doanh thu, lãi gộp, lãi ròng, biên",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
    "id": "oil.supply-news",
    "tier": "C",
    "title": "Cân đối xăng dầu, chuỗi dự án khí",
@@ -3708,33 +3702,6 @@
    ]
   },
   {
-   "id": "power.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: El Niño & thủy văn, giá điện & EVN, chuyển dịch năng lượng",
-   "since": "2026-10-19T10:59:33+07:00",
-   "reasons": [
-    "lịch 19/10 07:00",
-    "lịch 26/10 07:00"
-   ],
-   "signals": [
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Bộ Công Thương lấy ý kiến dự thảo quyết định về thành lập, tổ chức và hoạt động, cơ chế quản lý tài chính của Quỹ Thúc đẩy sử dụng năng lượn — /tin-tuc/bo-cong-thuong-lay-y-kien-du-thao-quyet-dinh-ve-viec-thanh-lap-to-chuc-va-hoat-dong-co-che-quan-ly-tai-chinh-cua-quy-thu.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Bộ Công Thương hợp nhất 3 thông tư về an toàn thiết bị trong mỏ hầm lò — /tin-tuc/bo-cong-thuong-hop-nhat-3-thong-tu-ve-an-toan-thiet-bi-trong-mo-ham-lo.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-22T12:21:46+07:00",
-     "what": "Bộ Công Thương lấy ý kiến dự thảo thông tư Quy định về đào tạo, cấp chứng chỉ quản lý năng lượng và kiểm toán viên năng lượng — /tin-tuc/bo-cong-thuong-lay-y-kien-thong-tu-quy-dinh-ve-dao-tao-cap-chung-chi-quan-ly-nang-luong-va-kiem-toan-vien-nang-luong.html"
-    }
-   ]
-  },
-  {
    "id": "realestate.market-quarterly",
    "tier": "C",
    "title": "Bộ Xây dựng, CBRE, Savills, DKRA: giao dịch, tồn kho, cung mới theo phân khúc/khu vực, giá căn hộ HN/HCM, tỉnh lớn",
@@ -3766,5 +3733,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-10-28T18:13:38+07:00"
+ "updatedAt": "2026-10-28T21:00:21+07:00"
 }
