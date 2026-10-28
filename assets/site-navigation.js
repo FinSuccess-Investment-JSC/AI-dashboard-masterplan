@@ -225,3 +225,103 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(mountToggle, 50)); else setTimeout(mountToggle, 50);
   addEventListener('load', mountToggle);
 })();
+
+// Lớp chuyển động dùng chung (28/10/2026): flow chart có hạt chạy, gạch chân tab trượt, số KPI đếm lên,
+// chart vẽ dần khi xuất hiện lần đầu. Chỉ đổi hình thức; tắt khi prefers-reduced-motion, in ra tĩnh.
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SVGNS = 'http://www.w3.org/2000/svg';
+  const seen = new WeakSet();
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { io.unobserve(e.target); (e.target._fsIn || (() => {}))(); } }), {threshold: .2}) : null;
+  const onView = (el, fn) => { if (seen.has(el)) return; seen.add(el); if (!io || reduce) return fn(); el._fsIn = fn; io.observe(el); };
+
+  /* ---- Flow chart: hạt chạy dọc mũi tên, sáng dòng nối khâu đang rê chuột ---- */
+  const flows = [];
+  function edgesOf(svg) {
+    return [...svg.querySelectorAll('path')].filter(p => !p.closest('marker,defs') && getComputedStyle(p).fill === 'none' && getComputedStyle(p).stroke !== 'none' && p.getTotalLength() > 30);
+  }
+  function setupFlow(svg) {
+    if (svg.dataset.fsFlow) return; const edges = edgesOf(svg); if (!edges.length) return;
+    svg.dataset.fsFlow = '1'; svg.classList.add('fs-flow');
+    const layer = document.createElementNS(SVGNS, 'g'); layer.setAttribute('class', 'fs-dots'); layer.setAttribute('aria-hidden', 'true');
+    edges.at(-1).after(layer);
+    const items = edges.map(p => {
+      const len = p.getTotalLength(), dashed = getComputedStyle(p).strokeDasharray !== 'none';
+      const n = Math.max(1, Math.round(len / (dashed ? 160 : 85)));
+      const dots = Array.from({length: n}, () => { const c = document.createElementNS(SVGNS, 'circle'); c.setAttribute('r', dashed ? 2.2 : 3.2); c.setAttribute('class', dashed ? 'fs-dot dim' : 'fs-dot'); layer.append(c); return c; });
+      const a = p.getPointAtLength(0), b = p.getPointAtLength(len);
+      return {p, len, dots, speed: dashed ? 22 : 46, a, b};
+    });
+    // Khâu (rect/khung) nối với dòng nào: đầu/cuối dòng nằm sát khung.
+    const boxes = [...svg.querySelectorAll('rect')].filter(r => !r.closest('marker,defs') && r.getBBox().width > 60 && r.getBBox().height > 24);
+    boxes.forEach(r => {
+      const g = r.parentNode.tagName === 'g' && r.parentNode !== svg ? r.parentNode : r; const bb = r.getBBox(), pad = 16;
+      const near = pt => pt.x >= bb.x - pad && pt.x <= bb.x + bb.width + pad && pt.y >= bb.y - pad && pt.y <= bb.y + bb.height + pad;
+      const mine = items.filter(it => near(it.a) || near(it.b));
+      if (!mine.length) return;
+      g.classList.add('fs-node');
+      const on = () => { svg.classList.add('fs-focus'); mine.forEach(it => it.p.classList.add('fs-hot')); };
+      const off = () => { svg.classList.remove('fs-focus'); items.forEach(it => it.p.classList.remove('fs-hot')); };
+      g.addEventListener('pointerenter', on); g.addEventListener('pointerleave', off);
+    });
+    const f = {svg, items, t0: performance.now(), visible: false};
+    flows.push(f);
+    const place = t => items.forEach(it => it.dots.forEach((c, i) => {
+      const s = ((t / 1000) * it.speed + i * it.len / it.dots.length) % it.len, pt = it.p.getPointAtLength(s);
+      c.setAttribute('cx', pt.x.toFixed(1)); c.setAttribute('cy', pt.y.toFixed(1));
+      c.style.opacity = Math.min(1, s / 24, (it.len - s) / 24).toFixed(2);
+    }));
+    f.place = place; place(1200);
+    if (io && !reduce) new IntersectionObserver(es => es.forEach(e => { f.visible = e.isIntersecting; })).observe(svg);
+  }
+  let raf = 0;
+  const tick = now => { flows.forEach(f => { if (f.visible && f.svg.isConnected) f.place(now - f.t0); }); raf = requestAnimationFrame(tick); };
+  if (!reduce) raf = requestAnimationFrame(tick);
+
+  /* ---- Gạch chân tab chính trượt theo tab đang chọn ---- */
+  function ink() {
+    const bar = document.querySelector('.majortabs'); if (!bar) return;
+    let line = bar.querySelector('.fs-ink'); if (!line) { line = document.createElement('span'); line.className = 'fs-ink'; line.setAttribute('aria-hidden', 'true'); bar.append(line); bar.classList.add('fs-has-ink'); }
+    const act = bar.querySelector('.majortabbtn.active, .majortabbtn[aria-selected="true"]'); if (!act) return;
+    line.style.width = act.offsetWidth + 'px'; line.style.transform = `translateX(${act.offsetLeft}px)`;
+  }
+  addEventListener('resize', ink);
+
+  /* ---- Số KPI đếm lên (giữ nguyên chữ gốc ở khung cuối) ---- */
+  function countUp(el) {
+    if (el.children.length) return;  // chỉ ô số thuần chữ, không phá phần tử con
+    const txt = el.textContent, m = txt.match(/-?[\d.]+(,\d+)?/); if (!m) return;
+    const raw = m[0], dec = (raw.split(',')[1] || '').length, val = parseFloat(raw.replace(/\./g, '').replace(',', '.'));
+    if (!isFinite(val)) return;
+    const t0 = performance.now(), dur = 750; let mine = txt;
+    const step = now => {
+      if (el.textContent !== mine) return;  // script dữ liệu vừa ghi số mới: dừng, không ghi đè
+      const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      mine = k < 1 ? txt.replace(raw, (val * e).toLocaleString('vi-VN', {minimumFractionDigits: dec, maximumFractionDigits: dec})) : txt;
+      el.textContent = mine;
+      if (k < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  /* ---- Quét phần đang hiện ---- */
+  function scan() {
+    document.querySelectorAll('.value-chain-scroll svg, svg.flow').forEach(svg => { if (svg.getBoundingClientRect().width) setupFlow(svg); });
+    document.querySelectorAll('.kpi .value').forEach(el => { if (el.offsetParent) onView(el, () => countUp(el)); });
+    document.querySelectorAll('svg.ct-svg, svg.chartsvg').forEach(svg => { if (svg.getBoundingClientRect().width) onView(svg, () => {
+      if (reduce) return;
+      svg.querySelectorAll('path').forEach(p => {
+        if (p.closest('marker,defs') || p.getAttribute('stroke-dasharray') || getComputedStyle(p).fill !== 'none') return;
+        const L = Math.ceil(p.getTotalLength()); if (!L) return;
+        p.style.strokeDasharray = L; p.style.setProperty('--l', L); p.classList.add('fs-stroke');
+        p.addEventListener('animationend', () => { p.style.strokeDasharray = ''; p.classList.remove('fs-stroke'); }, {once: true});
+      });
+      svg.classList.add('fs-draw');
+    }); });
+    ink();
+  }
+  const later = () => setTimeout(scan, 260);
+  if (document.readyState === 'complete') later(); else addEventListener('load', () => { scan(); setTimeout(scan, 1300); });
+  document.addEventListener('click', e => { if (e.target.closest('.majortabbtn, .tabbtn, [role="tab"]')) later(); });
+  let st = 0; addEventListener('scroll', () => { const s = scrollY > 120; if (s !== st) { st = s; document.documentElement.classList.toggle('fs-scrolled', s); } }, {passive: true});
+})();

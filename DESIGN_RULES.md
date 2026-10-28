@@ -114,3 +114,11 @@ Người dùng gửi bản "Rule thiết kế — Website Stock Dashboard" (tổ
 - `chart-types.js`: dòng `CHU KỲ` (đọc từ nhãn kỳ, không gộp kỳ) + `SỐ KỲ` (1/3/5/8/10/Tất cả, chỉ cắt bớt kỳ hiển thị); cụm `Từ 0 / Vừa dữ liệu` · `Số liệu` (mặc định tắt; nhãn màu theo nền, không đè/cắt, ẩn khi > 40 điểm) · `− / +` độ rộng cột (chỉ khi là cột); kéo vùng số trục để giãn/co, nhấp đúp về thang tự động. Lưu theo từng chart trong trình duyệt.
 - `site-navigation.js` lúc chạy: tiêu đề chart bỏ "— theo tháng/quý…", đơn vị đầu dòng phụ đưa vào ngoặc sau tiêu đề; phần còn lại của dòng phụ chuyển vào ⓘ (không mất chữ). Ngày `yyyy-mm-dd` hiển thị `dd/mm/yyyy`. Phím 1–9 chuyển tab, ⌘K/Ctrl+K mở ô tra cứu. Nút ◐ giao diện tối Navy đêm (`fs_theme_v1`, cùng khóa với Stock).
 - Không áp: Tab Tài chính 5 sub-tab, bảng `financials`, bảng nhập analyst, badge quan điểm (ngành không có tính năng tương ứng). Title band giữ nền trắng như Stock đang chạy.
+
+## Redesign giao diện (28/10/2026) — giữ nguyên cấu trúc, chỉ đổi hình thức
+Người dùng: "giữ format như cũ, chỉnh cách design, navigation, color, motion, animation, flow chart". Code ở block cuối `fin-success-theme.css` và "Lớp chuyển động dùng chung" cuối `site-navigation.js`:
+- Flow chart (`.value-chain-scroll svg`, `svg.flow` của Bank): hạt chạy dọc mọi mũi tên (nét đứt chạy chậm, nhạt); rê chuột vào một khâu thì sáng các dòng nối với khâu đó. Chỉ chạy khi sơ đồ đang trong màn hình.
+- Tab chính dính trên đầu, nền mờ, gạch chân gradient trượt theo tab chọn; bóng nhẹ khi cuộn.
+- Nội dung tab/sub-tab hiện dần 320 ms; chart vẽ dần lần đầu xuất hiện (cột mọc lên, đường vẽ ra); số KPI đếm lên 750 ms (dừng nếu script dữ liệu ghi số mới).
+- Hero: nhãn "DASHBOARD NGÀNH" + tên ngành 36px. Card không viền, bóng mềm. Thanh công cụ chart nhạt 62%, rõ khi rê chuột/focus (vẫn hiện, vẫn bấm được; màn hình cảm ứng luôn rõ).
+- Mọi chuyển động tắt khi `prefers-reduced-motion`; bản in tĩnh.
