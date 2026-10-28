@@ -148,3 +148,36 @@
     });
   });
 })();
+
+// Card chart như Stock dashboard (rule §5, 28/10/2026): một icon ⓘ cạnh tiêu đề chứa giải thích + nguồn,
+// thay hai nút "ⓘ Insight" / "ⓘ Nguồn" dưới chart. Chỉ di chuyển nút và nội dung, giữ nguyên popover.
+(() => {
+  function merge() {
+    document.querySelectorAll('.card, .viz-block, .opec-drivers').forEach(card => {
+      if (card.dataset.fsInfo) return;
+      const title = card.querySelector('.chart-title, h3');
+      const src = card.querySelector('.chart-source-action'), ins = card.querySelector('.chart-insight-action');
+      if (!title || (!src && !ins)) return;
+      card.dataset.fsInfo = '1';
+      const keep = src || ins;
+      if (src && ins) {
+        const sp = document.getElementById(src.getAttribute('aria-controls')), ip = document.getElementById(ins.getAttribute('aria-controls'));
+        if (sp && ip) {
+          const head = sp.querySelector('.info-heading');
+          const box = document.createElement('div'); box.className = 'fs-info-explain';
+          [...ip.childNodes].forEach(n => { if (!(n.classList && n.classList.contains('info-heading'))) box.append(n); });
+          head ? head.after(box) : sp.prepend(box);
+          ins.remove();
+        }
+      }
+      keep.textContent = 'ⓘ'; keep.classList.add('fs-title-info');
+      keep.setAttribute('aria-label', 'Ghi chú và nguồn: ' + title.textContent.trim());
+      title.append(keep);
+      const acts = card.querySelector('.chart-card-actions');
+      if (acts && !acts.children.length) acts.hidden = true;
+    });
+  }
+  const run = () => { merge(); setTimeout(merge, 1200); };
+  if (document.readyState === 'complete') run(); else addEventListener('load', run);
+  document.addEventListener('click', e => { if (e.target.closest('.majortabbtn, .tabbtn')) setTimeout(merge, 300); });
+})();

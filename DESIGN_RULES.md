@@ -99,3 +99,13 @@ Bổ sung 28/10/2026 (vòng 2–3, thay quy tắc sub-tab viên teal 08/10): ô 
 - KPI: nhãn 10.5px/700 in hoa, số Inter 700/28 navy; dải KPI một khung.
 - Bảng: tiêu đề 10.5px muted, không kẻ giữa hàng, hover nền teal rất nhạt.
 - Sub-tab và nút chart: segmented control xám, mục chọn nền trắng.
+
+## Rule thiết kế Stock Dashboard (người dùng gửi 28/10/2026) — chuẩn hiện hành
+
+Người dùng gửi bản "Rule thiết kế — Website Stock Dashboard" (tổng hợp từ CLAUDE.md Stock 28/10/2026); bản này **thay mục "Chuẩn tham chiếu"/Vòng 4 ở trên**. Áp vào ngành (block "Vòng 5" cuối `fin-success-theme.css` + đoạn cuối `site-navigation.js`):
+- Chỉ Inter, thang 12·13·14·16·20·24·30; không serif, không chữ gradient. Không lặp số thứ tự (tab không đánh số).
+- Brand bar trắng + logo + ô tra cứu; tên ngành dạng chip navy; tab chữ gạch chân teal như Stock đang chạy.
+- Sub-nav gọn 13px, cao 32–36px, ngang 10–14px.
+- Card chart: **một icon ⓘ cạnh tiêu đề** chứa giải thích + dòng `Nguồn:`; không còn nút "ⓘ Insight"/"ⓘ Nguồn" dưới chart (script gộp popover, giữ nguyên nội dung).
+- Hiệu ứng không đổi vùng vẽ (bỏ nhấc card khi hover); chuyển động 150–400 ms.
+- Phần rule Stock về Tab Tài chính 5 sub-tab, bảng `financials`, bảng nhập analyst, Consensus không áp cho ngành (không có tính năng tương ứng).

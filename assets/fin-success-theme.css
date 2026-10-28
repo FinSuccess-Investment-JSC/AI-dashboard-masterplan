@@ -519,3 +519,30 @@ table:not(.fintbl) td{border-bottom:0!important}
 table:not(.fintbl) tbody tr:nth-child(even) td{background:transparent}
 table tbody tr:hover td{background:#EEF8F8!important}
 @media print{.majortabs{position:static!important;box-shadow:none!important}.card:hover{transform:none}}
+
+/* ===== Vòng 5 (28/10/2026): theo "Rule thiết kế — Stock Dashboard" (CLAUDE.md Stock 28/10) =====
+   Ghi đè vòng 4: chỉ Inter (bỏ serif), tab/tiêu đề như Stock đang chạy, thang chữ 12·13·14·16·20·24·30. */
+.research-header h1{display:inline-block;padding:6px 16px;border-radius:10px;background:#F0F3FF;font:800 24px/1.25 var(--fs-font);letter-spacing:-.01em;color:#1D2678}
+.majortabs{position:static!important;max-width:none;margin:0!important;padding:0 max(24px,calc((100% - 1440px)/2))!important;gap:2px!important;background:#fff!important;border-bottom:1px solid #dce1e9!important;border-radius:0;box-shadow:none!important}
+.majortabbtn,.majortabbtn.active{border-radius:0!important;border-bottom:3px solid transparent!important;padding:13px 15px!important;font:600 14px/1.3 var(--fs-font)!important;color:#5a6682!important;background:transparent!important;box-shadow:none!important}
+.majortabbtn:hover{background:transparent!important;color:#1D2678!important}
+.majortabbtn.active,.majortabbtn[aria-selected="true"]{color:#1D2678!important;border-bottom-color:#59C5C8!important;background:transparent!important}
+@media(max-width:700px){.majortabs{margin:0!important;padding:0 14px!important}.majortabbtn,.majortabbtn.active{padding:11px 10px!important;font-size:13px!important}}
+/* Thẻ: bóng nhẹ như Stock, không nhấc khi hover (hiệu ứng không được đổi vùng vẽ). */
+.card,.kpi,.business-model,.research-topic,.tx-tile,.thesis-signal,.grid.kpis{border-color:#E6E9F2!important;box-shadow:var(--fs-shadow)!important}
+@media (hover:hover) and (pointer:fine){.card:hover{transform:none;box-shadow:var(--fs-shadow-h)!important}}
+/* KPI: nhãn 12px in hoa, số 24px (đúng thang). */
+.kpi .label{font-size:12px}
+.kpi .value{font-size:24px;font-weight:800}
+/* Sub-nav gọn: 13px, cao 32–36px, ngang 10–14px. */
+.supply-tabs .tabbtn,.world-subtabs .tabbtn,.pane-subtabs .tabbtn,.subtabs .tabbtn{font-size:13px!important;padding:8px 12px!important;min-height:32px}
+/* Bảng: chữ 13px, tiêu đề 12px. */
+table td{font-size:13px}
+table:not(.fintbl) th{font-size:12px}
+/* Icon ⓘ cạnh tiêu đề chart. */
+.fs-title-info{display:inline-grid!important;place-items:center;width:18px;height:18px;min-height:0!important;margin-left:6px;padding:0!important;border:0!important;border-radius:50%!important;background:transparent!important;color:#8A93A8!important;font:400 15px/1 var(--fs-font)!important;vertical-align:1px;cursor:pointer;box-shadow:none!important}
+.fs-title-info:hover,.fs-title-info[aria-expanded="true"]{color:#1D2678!important}
+.fs-info-explain{margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #EEF0F6}
+.fs-info-explain .chart-insight{margin:0;padding:0;border:0;background:none}
+.chart-title:has(.fs-title-info),.card h3:has(.fs-title-info){justify-content:flex-start!important;gap:0}
+.fs-title-info{margin-left:6px!important}
