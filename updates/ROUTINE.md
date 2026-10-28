@@ -1,8 +1,10 @@
 # Claude routine: xử lý hàng chờ cập nhật
 
 Hai routine trên cloud, không cần máy người dùng bật:
-- **Wi hằng ngày** — 08:00 thứ Hai–thứ Sáu, chỉ nhóm B: `--queue --tiers B`.
-- **Tài liệu + insight hằng tuần** — 08:30 thứ Hai, nhóm C và D: `--queue --tiers C,D`, tối đa 8 mục/lượt.
+- **Wi hằng ngày** — 09:00 thứ Hai–thứ Sáu, nhóm B của cả 10 ngành: `--queue --tiers B` (lệch giờ với các routine khác cũng dùng Widata, vì mỗi tài khoản chỉ giữ một kết nối).
+- **Tài liệu + insight** — 13:00 thứ Hai–thứ Sáu, nhóm C và D: `--queue --tiers C,D`, tối đa 10 mục/lượt (đủ cho ~40–50 mục tới hạn mỗi tuần).
+- **Nguồn chỉ mở từ IP Việt Nam** (hồ EVN, Cục ĐTNN, Sở Xây dựng Hà Nội) — launchd `com.finsuccess.sector.vn-runner` trên máy người dùng, 06:40 và 18:40 hằng ngày, chạy `scripts/hydro_capture_run.sh` trên bản clone `~/FinSuccess-runner/AI-dashboard-masterplan` (máy phải bật).
+- Nhóm A: job GitHub `refresh-data.yml` 07:30 và 15:30; lịch theo kỳ công bố của từng mục nằm trong `updates/registry.json`.
 
 Cả hai chạy sau job GitHub 07:30 đã xếp hàng chờ. Người dùng cho phép tự publish (06/10/2026); mọi thay đổi phải qua kiểm tra dưới đây. Routine chỉ dùng repo này (một repo/phiên để hook trong `.claude/settings.json` chạy); không cần repo ghi chú.
 
@@ -16,7 +18,7 @@ Cả hai chạy sau job GitHub 07:30 đã xếp hàng chờ. Người dùng cho 
 
 Mỗi mục có `where` (trang + card), `source`, `how`, `gates`, `signals` (tài liệu mới watcher thấy), `reasons`.
 
-Routine hằng ngày làm hết mục B; routine hằng tuần xử lý tối đa 8 mục đầu theo đúng thứ tự `--queue` in ra (đã sắp: B → C → D, mục chưa thử trước mục đã lỗi, mục cũ trước). Mục chưa làm cứ để trong hàng chờ cho lượt sau, không `--fail`.
+Routine Wi làm hết mục B; routine tài liệu xử lý tối đa 10 mục đầu theo đúng thứ tự `--queue` in ra (đã sắp: B → C → D, mục chưa thử trước mục đã lỗi, mục cũ trước). Mục chưa làm cứ để trong hàng chờ cho lượt sau, không `--fail`.
 
 **B · Wi (Bank).** Không chép tay số Wi. Từ 26/10/2026 mọi ngành được dùng WiMCP (bỏ lệnh cấm ngoài Bank 16/10/2026); các mục `*.public.*` vẫn là nhóm A.
 1. `python3 scripts/wi_ingest.py plan <id mục>` in danh sách lệnh WiMCP cần gọi.
