@@ -294,16 +294,16 @@ body{font-size:14px;line-height:1.45}
 }
 
 </style>
-<link rel="stylesheet" href="../assets/dashboard-ui.css?v=f2d33b5cb0f8">
+<link rel="stylesheet" href="../assets/dashboard-ui.css?v=bb176097f7f4">
 <script src="../assets/chart-types.js?v=50918dba25a4"></script>
 <script src="../data/daily-data.js?v=cdd56d302a7b" defer></script>
 <script src="../data/hydro-reservoirs.js?v=43459fea517b" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../assets/sector-runtime.js?v=82b412aede70" defer></script>
 <script src="../assets/sector-content.js?v=be87392226ce" defer></script>
-<script src="../assets/sector-layout.js?v=65fcea94ccaf" defer></script>
-<script src="../assets/power-visuals.js?v=81edf678fc07" defer></script>
-<script src="../assets/sector-ticker.js?v=56a05812110a" defer></script>
+<script src="../assets/sector-layout.js?v=071e761dfa07" defer></script>
+<script src="../assets/power-visuals.js?v=1df32ceecde6" defer></script>
+<script src="../assets/sector-ticker.js?v=d6661cc09301" defer></script>
 <script src="../assets/hydro-reservoirs.js?v=cd9258726355" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/share-image.js?v=f6b5e07e0f25" defer></script>
@@ -322,10 +322,10 @@ body{font-size:14px;line-height:1.45}
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
 <script src="../assets/source-gap.js?v=02afdd3cfa3d" defer></script>
-<script src="../assets/site-navigation.js?v=6b48604b03d1" data-release="20261028-fsv4"></script>
+<script src="../assets/site-navigation.js?v=6b48604b03d1" data-release="20261028-dien-visuals"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
-<link rel="stylesheet" href="../assets/fin-success-theme.css?v=ded022225605">
+<link rel="stylesheet" href="../assets/fin-success-theme.css?v=a01823ef6e95">
 </head>
 <body data-sector="power">
 <div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="power"><a href="../">Trang tổng</a><a href="../Dau-khi/">Dầu khí</a><a href="../Sugar/">Đường</a><a href="../Bank/">Ngân hàng</a><a href="../Dien/">Điện</a></nav><p class="site-release-note" data-release-label></p></div></div>
@@ -963,6 +963,12 @@ function moveTip(evt){
   t.style.left=x+'px'; t.style.top=y+'px';
 }
 function hideTip(){ if(tipEl) tipEl.style.display='none'; }
+// Bước nhãn trục X theo nhãn dài nhất (catlabel 9,5px ≈ 5,6px/ký tự); nhãn cuối luôn hiện, nhãn sát trước nó bị bỏ.
+function tickEvery(labels,plotW,minEvery=1){
+  const n=labels.length, w=Math.max(...labels.map(t=>String(t).length))*5.6+14;
+  return Math.max(minEvery,Math.ceil(n/Math.max(2,Math.floor(plotW/w))));
+}
+function showTickAt(i,n,every){ return i===n-1 || (i%every===0 && n-1-i>=every*0.7); }
 
 function baseSvg(W,H,label){
   return el('svg',{viewBox:'0 0 '+W+' '+H, width:'100%', height:H, class:'chartsvg', role:'img', 'aria-label':label||''});
@@ -1041,8 +1047,9 @@ function barLineChartBase(containerId, opts){
     hit.addEventListener('blur',hideTip);
     svg.appendChild(hit);
     const lx=cx, ly=padT+plotH+14;
-    const everyN = opts.maxLabels ? Math.max(1,Math.ceil(n/opts.maxLabels)) : n>24 ? Math.ceil(n/18) : 1;
-    if(i%everyN===0 || i===n-1){
+    const everyN = rotate ? (opts.maxLabels ? Math.max(1,Math.ceil(n/opts.maxLabels)) : n>24 ? Math.ceil(n/18) : 1)
+      : tickEvery(cats.map((c,k)=>opts.tickLabels?.[k]||c),plotW,opts.maxLabels?Math.ceil(n/opts.maxLabels):1);
+    if(showTickAt(i,n,everyN)){
       const label=txt('text',{x:lx,y:ly,'text-anchor': rotate?'end':'middle',class:'catlabel'}, opts.tickLabels?.[i]||cat);
       if(rotate) label.setAttribute('transform','rotate(-40 '+lx+' '+ly+')');
       svg.appendChild(label);
@@ -1095,7 +1102,7 @@ function lineChartBase(containerId, opts){
   const lineD='M'+pts.map(p=>p[0]+','+p[1]).join(' L');
   svg.appendChild(el('path',{d:lineD,fill:'none',stroke:opts.color,'stroke-width':2,'stroke-linecap':'round','stroke-linejoin':'round'}));
   labels.forEach((lab,i)=>{
-    const showTick = (i%Math.max(1,Math.ceil(n/10))===0)||i===n-1;
+    const showTick = showTickAt(i,n,tickEvery(opts.labels,plotW));
     const hit=el('rect',{x:padL+i*step-step/2,y:padT,width:step,height:plotH,fill:'transparent',class:'hitband',tabindex:'0'});
     hit.addEventListener('pointerenter',e=>showTip(e, lab, [{label:opts.seriesName||'Giá trị',value:fmt(opts.values[i],opts.digits)+(opts.unit?(' '+opts.unit):''),color:opts.color}]));
     hit.addEventListener('pointermove',moveTip);

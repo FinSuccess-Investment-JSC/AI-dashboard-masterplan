@@ -632,6 +632,9 @@ html.fs-scrolled .majortabs{box-shadow:0 6px 18px -10px rgba(29,38,120,.35)!impo
 svg.fs-draw rect[rx]:not(.hitband):not(.ct-yhit){transform-box:fill-box;transform-origin:50% 100%;animation:fsGrow .55s var(--fs-ease) both}
 svg.fs-draw path.fs-stroke{animation:fsDraw .9s var(--fs-ease) both}
 svg.fs-draw circle,svg.fs-draw text{animation:fsIn .5s .3s var(--fs-ease) both}
+/* Phần tử có sẵn transform (nhãn trục xoay −40°): chỉ hiện dần bằng opacity, vì transform của keyframes sẽ đè mất phép xoay. */
+@keyframes fsFade{from{opacity:0}to{opacity:1}}
+svg.fs-draw [transform]{animation-name:fsFade}
 /* Flow chart: hạt chạy, khâu sáng khi rê chuột. */
 .fs-flow .fs-dot{fill:var(--fs-dot);filter:drop-shadow(0 0 3px rgba(89,197,200,.7))}
 .fs-flow .fs-dot.dim{fill:#9AA3BD;filter:none}
