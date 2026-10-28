@@ -5,29 +5,6 @@ if(document.body.dataset.sector==='realestate'||document.body.dataset.sector==='
 const power=document.body.dataset.sector==='power',oil=!power&&!!document.getElementById('chCurve'),sugar=!oil&&!power,src=window.SECTOR_DAILY?.sources||{};
 const fmt=(v,n=2)=>v.toLocaleString('vi-VN',{maximumFractionDigits:n});
 const make=(tag,cls,text)=>{const e=document.createElement(tag);e.className=cls||'';if(text)e.textContent=text;return e};
-// Sơ đồ chuỗi kiểu mới (Điện, Đường, Dầu khí): mỗi dòng nguyên liệu giữ một màu từ đầu vào tới khách hàng, icon theo khâu,
-// mũi tên chạy; rê chuột sáng luồng trên/dưới của khâu, bấm khâu để xem các mã của khâu đó.
-const VC_ICON={
- coal:'<path d="M3 19l5-8 3 4 3-5 5 9z"/><path d="M8 11l1-2"/>',
- gas:'<path d="M12 3c3 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-5 3-7 1 2 2 3 3 3 0-3-1-5 0-7z"/>',
- water:'<path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/>',
- sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/>',
- factory:'<path d="M3 21V11l5 3v-3l5 3V5h3v16zM3 21h18M18 21V9h3v12"/>',
- dam:'<path d="M4 4h16v8H4zM3 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>',
- wind:'<circle cx="12" cy="9" r="1.4"/><path d="M12 10.4V22M12 9L6 5M12 9l6-2M12 9l1 7"/>',
- bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
- direct:'<path d="M3 12h16M14 7l5 5-5 5M3 6h6M3 18h6"/>',
- tower:'<path d="M12 2L7 22M12 2l5 20M6 7h12M8 13h8M7.5 17l9-4M16.5 17l-9-4"/>',
- home:'<path d="M3 11l9-7 9 7v10H3zM9 21v-6h6v6"/>',
- tool:'<path d="M15 4a5 5 0 0 0 5 5l-9 9a2.1 2.1 0 0 1-3-3l9-9a5 5 0 0 1-2-2z"/>',
- leaf:'<path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15M5 19l7-7"/>',
- ship:'<path d="M3 15l2 5h14l2-5zM6 15V9h12v6M12 9V4M9 6h6"/>',
- box:'<path d="M3 7l9-4 9 4v10l-9 4-9-4zM3 7l9 4 9-4M12 11v10"/>',
- store:'<path d="M4 10h16l-1-5H5zM5 10v10h14V10M9 20v-5h6v5"/>',
- truck:'<path d="M2 7h11v9H2zM13 10h4l3 3v3h-7"/><circle cx="6" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/>',
- rig:'<path d="M12 2L7 21M12 2l5 19M8 15h8M9.5 9h5M4 21h16"/>',
- refinery:'<path d="M4 21V9h4v12M10 21V5h4v16M16 21v-8h4v8M3 21h18M6 6V4M12 3V1"/>'
-};
 const chain=document.querySelector(`[data-block-id="${oil?'dau-khi':power?'dien':'sugar'}-01"]`);
 if(chain){
  const grid=chain.parentElement;grid.before(chain);chain.classList.add('value-chain-card');grid.style.gridTemplateColumns='1fr';
@@ -37,36 +14,7 @@ if(chain){
  const legend=make('div','source-note','Mũi tên liền: '+(power?'luồng điện/nhiên liệu chính':'luồng hàng chính')+' · Mũi tên đứt: '+(power?'xây lắp và thiết bị hỗ trợ lưới, không phải dòng điện.':oil?'dịch vụ hỗ trợ; không phải bước biến đổi dầu thành khí.':'quan hệ thay thế tại khách hàng công nghiệp.')+(power?' Độ dày luồng theo tỷ trọng sản lượng ngày; sơ đồ không biểu thị quan hệ sở hữu.':' Sơ đồ không biểu thị tỷ trọng hay quan hệ sở hữu.'));heading.nextElementSibling.after(legend);
  if(power){const refs=make('div','source-note');refs.innerHTML='Đối chiếu doanh nghiệp: <a href="https://bctn.genco3.com/thong-tin-chung/" target="_blank" rel="noopener">PGV · EVNGENCO3</a> · <a href="https://www.pecc1.com.vn/c3/gioi-thieu/Thong-tin-chung-2-406.aspx" target="_blank" rel="noopener">TV1 · PECC1</a> · <a href="https://www.pecc3.com.vn/gioi-thieu/" target="_blank" rel="noopener">TV3 · PECC3</a> · <a href="https://gelex.vn/tin-tuc-su-kien/gelex-electric-gioi-thieu-he-sinh-thai-san-pham-xanh-ben-vung.html" target="_blank" rel="noopener">GEE · GELEX Electric</a>. GEE ở nhánh thiết bị, không đại diện cho công suất phát điện.';legend.after(refs)}
 }
-function drawChain(cfg){
- const {N,E,H=74,height=470,lanes,labels=[],pct=()=>null,width=()=>null}=cfg,B=Object.fromEntries(N.map(n=>[n[0],n]));
- const R=id=>B[id][1]+B[id][3],cy=id=>B[id][2]+H/2;
- const path=([a,b,,d])=>typeof d==='function'?d(R,cy,B):d||(Math.abs(cy(a)-cy(b))<2?`M${R(a)} ${cy(a)} H${B[b][1]}`:`M${R(a)} ${cy(a)} C${(R(a)+B[b][1])/2} ${cy(a)},${(R(a)+B[b][1])/2} ${cy(b)},${B[b][1]} ${cy(b)}`);
- const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,colors=new Set(E.map(e=>e[2]));
- const edges=E.map((e,i)=>{const[a,b,c,,sup]=e,d=path(e),sw=width(a,b);return `<g class="vc-edge" data-a="${a}" data-b="${b}"><path d="${d}" class="edge-base" stroke="${c}"${sw?` style="stroke-width:${sw}px"`:''}/><path id="vce${i}" d="${d}" class="edge-flow${sup?' support':''}" stroke="${c}" marker-end="url(#vca-${c.slice(1)})"/>${reduce||sup?'':`<circle r="3.6" fill="${c}"><animateMotion dur="${2.4+i%4*.35}s" repeatCount="indefinite" begin="${(i*.37)%2}s"><mpath href="#vce${i}"/></animateMotion></circle>`}</g>`}).join('');
- const markers=[...colors].map(c=>`<marker id="vca-${c.slice(1)}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9Z" fill="${c}"/></marker>`).join('');
- const nodes=N.map(([id,x,y,w,c,ic,title,...sub])=>`<g class="vc-node" data-id="${id}" tabindex="0"><rect class="card" x="${x}" y="${y}" width="${w}" height="${H}" rx="12"/><rect x="${x}" y="${y+12}" width="4" height="${H-24}" rx="2" fill="${c}"/><circle cx="${x+30}" cy="${y+H/2}" r="17" fill="${c}"/><g class="ic" transform="translate(${x+18} ${y+H/2-12})">${VC_ICON[ic]}</g><text x="${x+56}" y="${y+(sub.length>1?24:sub.length?31:H/2+5)}" class="title">${title}</text>${sub.map((t,i)=>`<text x="${x+56}" y="${y+(sub.length>1?43:50)+i*16}" class="sub">${t}</text>`).join('')}${pct(id)!=null?`<rect x="${x+w-58}" y="${y-10}" width="52" height="20" rx="10" fill="${c}"/><text x="${x+w-32}" y="${y+4}" text-anchor="middle" class="vc-chip">${pct(id).toLocaleString('vi-VN',{maximumFractionDigits:1})}%</text>`:''}</g>`).join('');
- const lane=lanes.map(([t,x,w,bg,pill])=>`<rect class="chain-lane-bg" x="${x}" y="0" width="${w}" height="${height}" rx="16" fill="${bg}"/><rect x="${x+w/2-t.length*4.4-14}" y="14" width="${t.length*8.8+28}" height="24" rx="12" fill="${pill}"/><text x="${x+w/2}" y="30" text-anchor="middle" class="lane-pill">${t}</text>`).join('');
- const label=(x,y,t)=>`<rect class="edge-label-bg" x="${x-t.length*3.1-8}" y="${y-13}" width="${t.length*6.2+16}" height="19" rx="9.5"/><text x="${x}" y="${y}" text-anchor="middle" class="edge-label">${t}</text>`;
- const fig=make('div','value-chain-scroll');fig.tabIndex=0;fig.setAttribute('aria-label','Sơ đồ chuỗi giá trị; có thể cuộn ngang trên màn hình nhỏ');
- fig.innerHTML=`<svg class="vc2" data-fs-flow="1" viewBox="0 0 1170 ${height}" role="img" aria-labelledby="chain-title chain-desc"><title id="chain-title">${cfg.title}</title><desc id="chain-desc">${cfg.desc}</desc><defs>${markers}</defs>${lane}${edges}${nodes}${labels.map(l=>label(...l)).join('')}</svg>${cfg.foot||''}`;
- // Hover or focus a stage to keep only its upstream and downstream links lit.
- const svg=fig.firstElementChild,all=[...svg.querySelectorAll('.vc-edge')];
- const lit=id=>{const on=new Set([id]),walk=(dir)=>{let grow=true;const seen=new Set([id]);while(grow){grow=false;all.forEach(e=>{const[f,t]=dir?[e.dataset.a,e.dataset.b]:[e.dataset.b,e.dataset.a];if(seen.has(f)&&!seen.has(t)){seen.add(t);grow=true}});}seen.forEach(x=>on.add(x))};walk(1);walk(0);svg.classList.add('focus');svg.querySelectorAll('.vc-node').forEach(n=>n.classList.toggle('on',on.has(n.dataset.id)));all.forEach(e=>e.classList.toggle('on',on.has(e.dataset.a)&&on.has(e.dataset.b)))};
- const clear=()=>{svg.classList.remove('focus');svg.querySelectorAll('.on').forEach(n=>n.classList.remove('on'))};
- let picked=null;const status=make('div','vc-status');status.hidden=true;fig.append(status);
- const pick=n=>{const id=picked===n?null:n;picked=id;svg.querySelectorAll('.vc-node').forEach(x=>x.classList.toggle('picked',x===id));
-  const codes=id?[...new Set([...id.querySelectorAll('.sub')].flatMap(t=>t.textContent.match(/\b[A-Z][A-Z0-9]{2}\b/g)||[]))]:[],label=id?id.querySelector('.title').textContent:'';
-  if(cfg.table){
-   document.dispatchEvent(new CustomEvent('vc:select',{detail:id&&codes.length?{id:id.dataset.id,label,codes}:{}}));
-   status.innerHTML=id&&codes.length?`Đã lọc bảng doanh nghiệp theo <b>${label}</b> (${codes.join(', ')}) <button type="button">Xem bảng →</button>`:'';
-   status.querySelector('button')?.addEventListener('click',()=>{const t=document.querySelector(`[data-block-id="${cfg.table}"]`);const w=t?.closest('[hidden]');if(w)document.getElementById(w.getAttribute('aria-labelledby'))?.click();t?.scrollIntoView({behavior:'smooth',block:'start'})});
-  }else status.innerHTML=id&&codes.length?`<b>${label}</b>: ${codes.map(c=>`<span class="pv-chip" data-code="${c}">${c}</span>`).join(' ')} <small>bấm mã để xem định giá và tín hiệu</small>`:'';
-  status.hidden=!(id&&codes.length)};
- document.addEventListener('vc:select',e=>{if(!e.detail?.id&&picked){picked.classList.remove('picked');picked=null;status.hidden=true}});
- svg.querySelectorAll('.vc-node').forEach(n=>{n.addEventListener('click',()=>pick(n));n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(n)}});n.addEventListener('mouseenter',()=>lit(n.dataset.id));n.addEventListener('focus',()=>lit(n.dataset.id));n.addEventListener('mouseleave',clear);n.addEventListener('blur',clear)});
- if(cfg.legend){const lg=make('div','vc-legend');lg.innerHTML=cfg.legend.map(([c,t,dash])=>`<span><i style="background:${dash?`repeating-linear-gradient(90deg,${c} 0 4px,transparent 4px 7px)`:c}"></i>${t}</span>`).join('')+'<span>Rê chuột: xem luồng của khâu · bấm: '+(cfg.table?'lọc bảng doanh nghiệp':'xem các mã')+'</span>';fig.prepend(lg)}
- return fig;
-}
+function drawChain(cfg){return window.ValueChain.draw(cfg)}  // assets/value-chain.js; function để dùng được trước dòng khai báo
 function powerChain(){
  const C={coal:'#3d4653',gas:'#c98a00',hydro:'#2938A8',re:'#2a9fa3',dppa:'#861C52',grid:'#5a6682',build:'#b8801f'},H=74;
  const N=[
