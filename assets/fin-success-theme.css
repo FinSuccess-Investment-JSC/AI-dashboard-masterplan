@@ -750,3 +750,8 @@ html[data-theme="dark"] :is(.fsv-n .t,.fsv-n .v,.fsv-heat td){fill:#F3F5FF;color
 .fsv-heat td.na{background:transparent}
 html[data-theme="dark"] .fsv-heat tbody th{color:#F3F5FF!important}
 :root .fsv-heat table tbody tr td{background:var(--c,transparent)!important}
+/* Dải giá chạy nền navy như Stock dashboard (28/10/2026, đồng bộ với assets/sector-ticker.js) */
+.fsv-ticker{background:#11173f;border-color:#2a3470}
+.fsv-tk{border-right-color:rgba(255,255,255,.08)}
+.fsv-tk em{color:#dfe6f7}.fsv-tk b{color:#fff}
+.fsv-ticker .fsv-up{color:#4fd1a5}.fsv-ticker .fsv-dn{color:#ff8a80}

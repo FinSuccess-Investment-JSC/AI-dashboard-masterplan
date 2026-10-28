@@ -179,6 +179,7 @@
   const next=(dow,from=new Date())=>{const d=new Date(from);d.setHours(0,0,0,0);d.setDate(d.getDate()+(dow-d.getDay()+7)%7);return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')};
   // score row: {name,chart,st,mid:[cells],end:[cells]}; segs: [name,tickers,tilt(up|down|flat|na),why]
   function renderBrief({headline,segs=[],headers,score=[],events,priority}){
+    window.SECTOR_BRIEF={headline,segs,score}; // assets/sector-smart.js dựng bảng điều khiển đầu trang từ đây
     const brief=make('section','cr-brief');
     const head=make('div','cr-verdict card');head.append(make('span','cr-verdict-label','Kết luận hiện tại'),make('h3','',headline));
     brief.append(head);

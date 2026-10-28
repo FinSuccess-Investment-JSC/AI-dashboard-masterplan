@@ -1,7 +1,7 @@
 /* Sector factor ticker: a running strip of the inputs that move each sector, built from data already on the page. */
 (() => {
 'use strict';
-const sector=document.body.dataset.sector,src=window.SECTOR_DAILY?.sources||{};
+const sector=document.body.dataset.sector||(document.getElementById('chCurve')?'oil':window.SECTOR_DAILY?.sources?.sugar_futures?'sugar':''),src=window.SECTOR_DAILY?.sources||{};
 const num=(v,n=2)=>v.toLocaleString('vi-VN',{maximumFractionDigits:n,minimumFractionDigits:Math.min(n,v>=1000?0:n)});
 const day=d=>d?d.slice(8,10)+'/'+d.slice(5,7):'';
 // Last two records of a series, read through a field picker.
@@ -19,6 +19,15 @@ const CONFIG={
   ['Gió + mặt trời','vn_power_daily',r=>(r.wind||0)+(r.solar_farm||0)+(r.rooftop_solar||0)||NaN,'tr kWh',1],
   ['Than Úc (WB)','wb_energy_monthly',r=>r.coal_au,'USD/t',1],
   ['ONI · El Niño','enso_oni',r=>r.oni,'°C',2,true]
+ ],
+ // Dầu khí và Đường chưa có window.*_PUBLIC nên dải giá ở sector-visuals.js không chạy; dùng SECTOR_DAILY.
+ oil:[
+  ['Brent futures','brent_futures',null,'USD/thùng',2],['WTI','wti',null,'USD/thùng',2],['Brent giao ngay','brent',null,'USD/thùng',2],
+  ['Diesel Mỹ','diesel',null,'USD/gallon',3],['Xăng Mỹ','gasoline',null,'USD/gallon',3],['Henry Hub','henry_hub',null,'USD/MMBtu',2],
+  ['LNG JKM','lng_jkm',null,'USD/MMBtu',2],['Tồn kho dầu thô Mỹ','crude_stock',null,'tr thùng',1],['Cushing','cushing',null,'tr thùng',1],['Sản lượng dầu Mỹ','us_production',null,'tr thùng/ngày',2]
+ ],
+ sugar:[
+  ['Đường No.11','sugar_futures',null,'US cent/lb',2],['Đường TG (tháng)','sugar_monthly',null,'USD/kg',2],['Brent','brent_futures',null,'USD/thùng',2]
  ]
 };
 const rows=(CONFIG[sector]||[]).map(([label,key,pick,unit,dp,points])=>{const p=pair(key,pick||undefined);return p&&{label,unit,dp,points,...p}}).filter(Boolean);

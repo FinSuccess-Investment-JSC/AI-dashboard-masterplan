@@ -1,5 +1,5 @@
 /* Điện · lớp "thông minh" (28/10/2026): bảng điều khiển ngành (nhóm × yếu tố), ngăn trượt theo mã,
-   mục lục + tìm nhanh ⌘K, dòng kết luận số ở đầu khối dữ liệu. Chỉ đọc số đã có trên trang;
+   dòng kết luận số (mục lục, tìm nhanh và bắt click mã nằm ở sector-smart.js) ở đầu khối dữ liệu. Chỉ đọc số đã có trên trang;
    chiều tác động lấy theo thẻ "Doanh nghiệp kiếm tiền thế nào" và kết luận ở tab Catalyst. */
 (() => {
 'use strict';
@@ -92,7 +92,7 @@ function hub() {
   h.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => goTo(F.find(f => f.id === b.dataset.f).go())));
   h.querySelectorAll('.pv-mx-g').forEach(b => b.addEventListener('click', () => drawer(null, b.dataset.g)));
   h.querySelector('.pv-to-cat')?.addEventListener('click', e => { e.preventDefault(); goTo(document.querySelector('.cr-verdict')); });
-  h.querySelector('.pv-open-search').addEventListener('click', () => palette(true));
+  h.querySelector('.pv-open-search').addEventListener('click', () => window.SectorSmart?.palette(true));
 }
 
 /* ---------- 2. Ngăn trượt theo mã / nhóm ---------- */
@@ -131,81 +131,13 @@ function drawer(code, gid) {
   });
   document.body.classList.add('pv-drawer-open'); dr.focus();
 }
-const CODES = new Set(G.flatMap(g => g.codes));
-document.addEventListener('click', e => {
-  const t = e.target.closest('.fs-chip, .pv-chip, .pv-co header, td:first-child b');
-  if (!t || t.closest('.pv-drawer') || t.closest('.vc2')) return;
-  const code = (t.dataset.code || t.textContent).trim().match(/^[A-Z][A-Z0-9]{2}/)?.[0];
-  if (code && CODES.has(code)) { e.preventDefault(); drawer(code); }
-});
-
-/* ---------- 3. Mục lục + tìm nhanh ---------- */
-function blocksOf(root) {
-  return [...root.querySelectorAll('.sectionhead h2, h3.subhead, .card .chart-title, .card > h3, .business-models > h2, .cr-verdict')].filter(h => !h.closest('.pv-hub, .pv-drawer, details:not([open]) .card')).map(h => {
-    const box = h.closest('.card, section, .business-models') || h;
-    const label = h.classList.contains('cr-verdict') ? 'Kết luận Catalyst' : h.textContent.replace(/[ⓘ↗]/g, '').replace(/\s+/g, ' ').trim();
-    return {h, box, label: label.slice(0, 80), lvl: h.matches('h2, .sectionhead h2') ? 1 : h.matches('.subhead') ? 2 : 3};
-  }).filter(x => x.label);
+/* ---------- 3. Mục lục + tìm nhanh: dùng assets/sector-smart.js, chỉ đăng ký thêm yếu tố/nhóm và ngăn riêng ---------- */
+function register() {
+  const S = window.SectorSmart; if (!S) return;
+  S.openCode = code => { if (!groupOf(code)) return false; drawer(code); return true; };
+  S.index.push(...F.map(f => ({t: f.name, sub: f.d ? f.fmt(f.d) : '', kind: 'Yếu tố', run: () => goTo(f.go())})),
+    ...G.map(g => ({t: g.name, sub: g.codes.join(' · '), kind: 'Nhóm', run: () => drawer(null, g.id)})));
 }
-function toc() {
-  const box = el('nav', 'pv-toc'); box.setAttribute('aria-label', 'Mục lục tab đang mở');
-  const fab = el('div', 'pv-fab', '<button type="button" class="pv-fab-toc">☰ Mục lục</button><button type="button" class="pv-fab-k">⌕ Tìm <kbd>⌘K</kbd></button>');
-  document.body.append(box, fab);
-  const build = () => {
-    const pane = document.querySelector('.majorpane.active'); if (!pane) return;
-    const items = blocksOf(pane), seen = new Set();
-    box.innerHTML = `<div class="pv-toc-h">${document.querySelector('.majortabbtn[aria-selected="true"]')?.textContent || 'Mục lục'}</div>` + items.filter(x => !seen.has(x.label) && seen.add(x.label)).map((x, i) => `<a href="#" data-i="${i}" class="l${x.lvl}">${x.label}</a>`).join('');
-    const list = items.filter((x, i, a) => a.findIndex(y => y.label === x.label) === i);
-    box.querySelectorAll('a').forEach(a => a.onclick = e => { e.preventDefault(); goTo(list[+a.dataset.i].box); document.body.classList.remove('pv-toc-open'); });
-    box._list = list;
-  };
-  const spy = () => {
-    const list = box._list || []; let cur = -1;
-    list.forEach((x, i) => { const r = x.box.getBoundingClientRect(); if (r.height && r.top < 160) cur = i; });
-    box.querySelectorAll('a').forEach((a, i) => a.classList.toggle('on', i === cur));
-  };
-  build(); addEventListener('scroll', spy, {passive: true});
-  document.addEventListener('click', e => { if (e.target.closest('.majortabbtn, .pane-subtabs button')) setTimeout(build, 150); });
-  fab.querySelector('.pv-fab-toc').onclick = () => { build(); document.body.classList.toggle('pv-toc-open'); };
-  fab.querySelector('.pv-fab-k').onclick = () => palette(true);
-  document.addEventListener('click', e => { if (!e.target.closest('.pv-toc, .pv-fab')) document.body.classList.remove('pv-toc-open'); });
-}
-let pal = null;
-function palette(open) {
-  if (!pal) {
-    pal = el('div', 'pv-pal', '<div class="pv-pal-box" role="dialog" aria-label="Tìm nhanh"><input type="search" placeholder="Gõ mã (REE), yếu tố (than, El Niño) hoặc chủ đề…" aria-label="Tìm nhanh"><div class="pv-pal-list" role="listbox"></div><div class="pv-pal-foot">↑↓ chọn · Enter mở · Esc đóng</div></div>');
-    document.body.append(pal);
-    const inp = pal.querySelector('input'), list = pal.querySelector('.pv-pal-list');
-    let res = [], sel = 0;
-    const index = () => [
-      ...[...CODES].map(k => ({t: k, sub: groupOf(k).name + (V[k] ? ` · P/E ${nf(V[k].pe, 1)}x` : ''), kind: 'Mã', run: () => drawer(k)})),
-      ...F.map(f => ({t: f.name, sub: f.d ? f.fmt(f.d) : '', kind: 'Yếu tố', run: () => goTo(f.go())})),
-      ...G.map(g => ({t: g.name, sub: g.codes.join(' · '), kind: 'Nhóm', run: () => drawer(null, g.id)})),
-      ...[...document.querySelectorAll('.majorpane')].flatMap(p => { const tab = document.querySelector(`.majortabbtn[data-tab="${p.dataset.tab}"]`)?.textContent || ''; return blocksOf(p).map(x => ({t: x.label, sub: tab, kind: 'Khối', run: () => goTo(x.box)})); })
-    ].filter((x, i, a) => a.findIndex(y => y.t === x.t && y.kind === x.kind) === i);
-    const draw = () => {
-      const q = fold(inp.value.trim()), all = index();
-      res = (q ? all.filter(x => fold(x.t + ' ' + x.sub).includes(q)).sort((a, b) => (fold(b.t).startsWith(q) - fold(a.t).startsWith(q))) : all.filter(x => x.kind !== 'Khối')).slice(0, 12);
-      sel = 0;
-      list.innerHTML = res.length ? res.map((x, i) => `<div role="option" class="${i === sel ? 'on' : ''}" data-i="${i}"><em>${x.kind}</em><b>${x.t}</b><span>${x.sub}</span></div>`).join('') : '<p>Không có kết quả</p>';
-      list.querySelectorAll('[data-i]').forEach(d => d.onclick = () => pick(+d.dataset.i));
-    };
-    const pick = i => { const x = res[i]; if (!x) return; palette(false); x.run(); };
-    inp.addEventListener('input', draw);
-    inp.addEventListener('keydown', e => {
-      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); sel = (sel + (e.key === 'ArrowDown' ? 1 : -1) + res.length) % Math.max(1, res.length); list.querySelectorAll('[data-i]').forEach((d, i) => d.classList.toggle('on', i === sel)); list.children[sel]?.scrollIntoView({block: 'nearest'}); }
-      else if (e.key === 'Enter') { e.preventDefault(); pick(sel); } else if (e.key === 'Escape') palette(false);
-    });
-    pal.addEventListener('click', e => { if (e.target === pal) palette(false); });
-    pal._draw = draw;
-  }
-  pal.classList.toggle('open', open);
-  if (open) { const i = pal.querySelector('input'); i.value = ''; pal._draw(); setTimeout(() => i.focus(), 20); }
-}
-document.addEventListener('keydown', e => {
-  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); palette(!pal?.classList.contains('open')); }
-  else if (e.key === '/' && !e.target.closest('input, textarea, select, [contenteditable]')) { e.preventDefault(); palette(true); }
-});
 
 /* ---------- 4. Dòng kết luận số ở đầu khối dữ liệu ---------- */
 function keys() {
@@ -226,6 +158,6 @@ function keys() {
   }
 }
 
-function run() { hub(); toc(); keys(); }
+function run() { register(); hub(); keys(); }
 if (document.readyState === 'complete') setTimeout(run, 600); else addEventListener('load', () => setTimeout(run, 600));
 })();
