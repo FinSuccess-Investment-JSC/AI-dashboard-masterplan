@@ -1,0 +1,220 @@
+{
+ "schema": 1,
+ "about": "Các lời gọi WiMCP cho dashboard Nông nghiệp & thực phẩm. Routine Claude gọi lại đúng các lời gọi này (hook wi_capture.py lưu kết quả), rồi chạy scripts/build_agri_wi.py. Không chép tay số.",
+ "calls": [
+  {
+   "block": "macro_agri",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "83505,83502,83520,92095,92092,92098,92781,92756,92776,92795,74450,75702,75706,82086,82116,82084,82118,202900,202901",
+    "from_time": "2019-01-01",
+    "limit": 120
+   },
+   "cadence": "daily",
+   "note": "Kết quả vượt trần hiển thị: chép file tool-results vào capture bằng build_realestate_wi.py --restore."
+  },
+  {
+   "block": "commodity_agri",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "74124,74351,203105,203092,203096,203110",
+    "from_time": "2023-10-01",
+    "to_time": "2026-10-09",
+    "limit": 1000
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "Wi nén chuỗi ngày về cuối tháng. to_time = hôm nay khi gọi lại."
+  },
+  {
+   "block": "sector_ratio_recent",
+   "tool": "wi_data_sector",
+   "input": {
+    "action": "get_data",
+    "endpoint_name": "sector_ratio_daily",
+    "filters": "{\"sector_id\":\"282,239,240,235,120,241\"}",
+    "columns": "sector_id,trading_date,pe,pb,market_cap",
+    "by_time": "trading_date",
+    "from_time": "2026-01-01",
+    "to_time": "2026-10-09",
+    "limit": 1000
+   },
+   "cadence": "daily",
+   "match_keys": [
+    "action",
+    "endpoint_name",
+    "filters",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "Trần 1000 dòng (6 ngành × ~167 phiên): cửa sổ thực tế từ đầu 02/2026."
+  }
+ ],
+ "indicators": {
+  "83505": [
+   "exp_rice",
+   "Xuất khẩu gạo",
+   "triệu USD",
+   "monthly"
+  ],
+  "83502": [
+   "exp_coffee",
+   "Xuất khẩu cà phê",
+   "triệu USD",
+   "monthly"
+  ],
+  "83520": [
+   "exp_rubber",
+   "Xuất khẩu cao su",
+   "triệu USD",
+   "monthly"
+  ],
+  "92095": [
+   "px_rice",
+   "Giá xuất khẩu gạo bình quân",
+   "USD/kg",
+   "monthly"
+  ],
+  "92092": [
+   "px_coffee",
+   "Giá xuất khẩu cà phê bình quân",
+   "USD/kg",
+   "monthly"
+  ],
+  "92098": [
+   "px_rubber",
+   "Giá xuất khẩu cao su bình quân",
+   "USD/kg",
+   "monthly"
+  ],
+  "92781": [
+   "imp_corn",
+   "Nhập khẩu ngô",
+   "triệu USD",
+   "monthly"
+  ],
+  "92756": [
+   "imp_soy",
+   "Nhập khẩu đậu tương",
+   "triệu USD",
+   "monthly"
+  ],
+  "92776": [
+   "imp_feed",
+   "Nhập khẩu thức ăn gia súc và nguyên liệu",
+   "triệu USD",
+   "monthly"
+  ],
+  "92795": [
+   "imp_milk",
+   "Nhập khẩu sữa và sản phẩm sữa",
+   "triệu USD",
+   "monthly"
+  ],
+  "74450": [
+   "retail_goods",
+   "Bán lẻ hàng hóa",
+   "tỷ VND",
+   "monthly"
+  ],
+  "75702": [
+   "cpi_food",
+   "CPI hàng ăn và dịch vụ ăn uống, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "75706": [
+   "cpi_bev",
+   "CPI đồ uống và thuốc lá, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "82086": [
+   "beer",
+   "Sản lượng bia",
+   "triệu lít",
+   "monthly"
+  ],
+  "82116": [
+   "fresh_milk",
+   "Sản lượng sữa tươi",
+   "triệu lít",
+   "monthly"
+  ],
+  "82084": [
+   "milk_powder",
+   "Sản lượng sữa bột",
+   "nghìn tấn",
+   "monthly"
+  ],
+  "82118": [
+   "feed",
+   "Sản lượng thức ăn gia súc",
+   "nghìn tấn",
+   "monthly"
+  ],
+  "202900": [
+   "iip_food",
+   "IIP chế biến thực phẩm, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "202901": [
+   "iip_bev",
+   "IIP sản xuất đồ uống, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "74124": [
+   "hog",
+   "Heo hơi trong nước (toàn quốc)",
+   "nghìn VND/kg",
+   "daily"
+  ],
+  "74351": [
+   "rice5",
+   "Gạo thành phẩm 5% tấm (nội địa)",
+   "nghìn VND/kg",
+   "daily"
+  ],
+  "203105": [
+   "corn",
+   "Ngô CBOT",
+   "US cent/bushel",
+   "daily"
+  ],
+  "203092": [
+   "soymeal",
+   "Khô đậu tương CBOT",
+   "USD/short ton",
+   "daily"
+  ],
+  "203096": [
+   "robusta",
+   "Cà phê Robusta ICE",
+   "USD/tấn",
+   "daily"
+  ],
+  "203110": [
+   "tsr20",
+   "Cao su TSR20 SGX",
+   "US cent/kg",
+   "daily"
+  ]
+ },
+ "sectors": {
+  "282": "Cao su",
+  "239": "Sữa",
+  "240": "Chăn nuôi, chế biến thịt",
+  "235": "Thức ăn chăn nuôi",
+  "120": "Bia",
+  "241": "Thực phẩm đóng gói"
+ }
+}

@@ -91,7 +91,7 @@ if(hrc.length&&document.getElementById('chSteelPrice')){
  legend('chSteelPrice',[['Thép thanh vằn SHFE',C.navy],['HRC SHFE',C.teal],['Quặng sắt (IMF)',C.gold]]);
  const rm=byMonth(rbc),om=byMonth(ore);
  fillTable('tbl-steel-price',['Kỳ','Thép thanh vằn SHFE (CNY/tấn)','HRC SHFE (CNY/tấn)','Quặng sắt IMF (USD/tấn)'],hrc.slice().reverse().map(r=>[short(r.date),nf(rm[ym(r.date)]?.value,0),nf(r.value,0),nf(om[ym(r.date)]?.value,1)]));
- sourceLine('chSteelPrice',[['SHFE · dữ liệu giao dịch ngày','https://www.shfe.com.cn/eng/Market/Futures/'],['IMF qua FRED (PIORECRUSDM)','https://fred.stlouisfed.org/series/PIORECRUSDM']],short(hrc.at(-1).date),'Chỉ số T1/2024 = 100 để ba chuỗi khác đơn vị cùng trục. Thép thanh vằn và HRC: giá thanh toán hợp đồng chính (OI lớn nhất) của SHFE, phiên cuối tháng; quặng sắt: IMF, CFR Trung Quốc, bình quân tháng. Giá thép CB300 Hòa Phát và than cốc chưa có nguồn công khai thay thế.');
+ sourceLine('chSteelPrice',[['SHFE · dữ liệu giao dịch ngày','https://www.shfe.com.cn/eng/Market/Futures/'],['IMF qua FRED (PIORECRUSDM)','https://fred.stlouisfed.org/series/PIORECRUSDM']],short(hrc.at(-1).date),'Chỉ số T1/2024 = 100 để ba chuỗi khác đơn vị cùng trục. Thép thanh vằn và HRC: giá thanh toán hợp đồng chính (OI lớn nhất) của SHFE, phiên cuối tháng; quặng sắt: IMF, CFR Trung Quốc, bình quân tháng. Giá thép CB300 Hòa Phát và than cốc: WiData (WiMCP), Wi nén chuỗi ngày về cuối tháng.');
  const hL=hrc.at(-1),oL=ore.at(-1),bL=rbc.at(-1);
  insight('chSteelPrice','HRC SHFE '+nf(hL.value,0)+' CNY/tấn ('+signed(yoyAt(hrc,hL),0)+'% YoY), thép thanh vằn '+signed(yoyAt(rbc,bL),0)+'%, quặng sắt '+signed(yoyAt(ore,oL),0)+'% ('+mon(oL.date)+'). Giá thép Trung Quốc là trần giá cho HRC Việt Nam dù đã có thuế chống bán phá giá.');
 }

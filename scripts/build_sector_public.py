@@ -356,6 +356,36 @@ def build_series(key, cache, F):
     return {'name': name, 'unit': unit, 'time_type': 'monthly', 'source': src, 'url': url, 'records': recs}
 
 
+WI_SRC = {'source': 'WiData (WiMCP)', 'url': 'https://widata.vn/'}
+
+
+def merge_wi(sector, blocks):
+    """Lấp chỗ trống bằng data/<sector>-wi-data.json (scripts/build_<sector>_wi.py từ WiMCP, AGENTS.md 26/10/2026).
+    Nguồn gốc luôn ưu tiên: chỉ thêm chuỗi, mã ngành hoặc khối mà bản công khai không có hoặc rỗng; không trộn
+    hai nguồn trong một chuỗi. Mỗi chuỗi lấy từ Wi mang via='wi' để trang ghi đúng nguồn."""
+    f = ROOT / f'data/{sector}-wi-data.json'
+    if not f.exists():
+        return []
+    wi, filled = json.loads(f.read_text()).get('blocks', {}), []
+    for name in ('macro', 'commodity'):
+        for k, v in ((wi.get(name) or {}).get('series') or {}).items():
+            have = ((blocks.get(name) or {}).get('series') or {}).get(k)
+            if v.get('records') and not (have and have.get('records')):
+                blocks.setdefault(name, {'series': {}, 'captured_at': wi[name].get('captured_at')})['series'][k] = {**v, **WI_SRC, 'via': 'wi', 'captured_at': wi[name].get('captured_at')}
+                filled.append(f'{name}.{k}')
+    sr = (wi.get('sector_ratio') or {}).get('by_sector') or {}
+    for k, v in sr.items():
+        have = (blocks.get('sector_ratio') or {}).get('by_sector', {}).get(k)
+        if v.get('records') and not (have and have.get('records')):
+            blocks.setdefault('sector_ratio', {'by_sector': {}})['by_sector'][k] = {**v, 'via': 'wi'}
+            filled.append(f'sector_ratio.{k}')
+    for name, v in wi.items():
+        if name not in blocks and name not in ('macro', 'commodity', 'sector_ratio'):
+            blocks[name] = {**v, **WI_SRC, 'via': 'wi'}
+            filled.append(name)
+    return filled
+
+
 def main():
     F, cache, vcache = feeds(), {}, {}
     now = dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -401,9 +431,10 @@ def main():
         if sr and sr['by_sector']:
             sr['captured_at'], sr['errors'] = now[:10], verr
             blocks['sector_ratio'] = sr
-        bundle = {'schema': 1, 'built_at': now, 'provider': 'Nguồn công khai (IMF/FRED, EIA, ICE, VNDirect)', 'blocks': blocks,
-                  'absent': [k for k in ('macro', 'sector_ratio', 'commodity') if k not in blocks],
-                  'note': 'Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành chưa có nguồn công khai thay thế; để trống.'}
+        wi_filled = merge_wi(sector, blocks)
+        bundle = {'schema': 1, 'built_at': now, 'provider': 'Nguồn công khai (IMF/FRED, EIA, ICE, VNDirect)' + (' + WiData lấp chỗ thiếu' if wi_filled else ''),
+                  'blocks': blocks, 'wi_filled': wi_filled,
+                  'absent': [k for k in ('macro', 'sector_ratio', 'commodity') if k not in blocks]}
         text = json.dumps(bundle, ensure_ascii=False, separators=(',', ':'))
         (ROOT / f'data/{sector}-public-data.json').write_text(text + '\n')
         (ROOT / f'data/{sector}-public-data.js').write_text(f'window.{GLOBAL[sector]} = ' + text.replace('<', '\\u003c') + ';\n')

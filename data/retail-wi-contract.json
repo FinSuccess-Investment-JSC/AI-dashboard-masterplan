@@ -1,0 +1,200 @@
+{
+ "schema": 1,
+ "about": "Các lời gọi WiMCP cho dashboard Bán lẻ & tiêu dùng. Routine Claude gọi lại đúng các lời gọi này, rồi chạy scripts/build_retail_wi.py. Không chép tay số.",
+ "calls": [
+  {
+   "block": "macro_retail_a",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "74449,74450,265987,75931,75701,81412",
+    "from_time": "2019-01-01",
+    "limit": 100
+   },
+   "cadence": "monthly"
+  },
+  {
+   "block": "macro_retail_b",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "75702,75706,82086,82116,82084,202900,202901,82112,82109,92797",
+    "from_time": "2021-01-01",
+    "limit": 72
+   },
+   "cadence": "monthly",
+   "note": "Tách hai lời gọi macro vì gộp 16 chỉ tiêu × 120 kỳ vượt trần kết quả."
+  },
+  {
+   "block": "commodity_retail",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "74400,73972,203092,203105",
+    "from_time": "2023-10-01",
+    "to_time": "2026-10-11",
+    "limit": 800
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "Wi không có sữa bột WMP, lúa mạch, nhôm; đường, dầu cọ, khô đậu, ngô là đầu vào thực phẩm đồ uống có trên Wi."
+  },
+  {
+   "block": "sector_ratio_recent",
+   "tool": "wi_data_sector",
+   "input": {
+    "action": "get_data",
+    "endpoint_name": "sector_ratio_daily",
+    "filters": "{\"sector_id\":\"220,215,224,239,120\"}",
+    "columns": "sector_id,trading_date,pe,pb,market_cap",
+    "by_time": "trading_date",
+    "from_time": "2025-01-01",
+    "to_time": "2026-10-11",
+    "limit": 1000
+   },
+   "cadence": "daily",
+   "match_keys": [
+    "action",
+    "endpoint_name",
+    "filters",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "5 phân ngành × 1000 dòng ≈ 10 tháng. PNJ không rõ thuộc phân ngành nào trên Wi (113 trống, 206 lệch) nên không vẽ."
+  }
+ ],
+ "indicators": {
+  "74449": [
+   "retail_total",
+   "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ",
+   "tỷ VND",
+   "monthly"
+  ],
+  "74450": [
+   "retail_goods",
+   "Bán lẻ hàng hóa",
+   "tỷ VND",
+   "monthly"
+  ],
+  "265987": [
+   "household_deposits",
+   "Tiền gửi của dân cư (điều chỉnh)",
+   "tỷ VND",
+   "monthly"
+  ],
+  "75931": [
+   "credit_total",
+   "Tổng tín dụng trong nền kinh tế",
+   "tỷ VND",
+   "monthly"
+  ],
+  "75701": [
+   "cpi_yoy",
+   "CPI so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "81412": [
+   "tourists",
+   "Khách quốc tế",
+   "nghìn lượt",
+   "monthly"
+  ],
+  "75702": [
+   "cpi_food_yoy",
+   "CPI hàng ăn và dịch vụ ăn uống, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "75706": [
+   "cpi_bev_yoy",
+   "CPI đồ uống và thuốc lá, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "82086": [
+   "beer_output",
+   "Sản lượng bia",
+   "triệu lít",
+   "monthly"
+  ],
+  "82116": [
+   "milk_output",
+   "Sản lượng sữa tươi",
+   "triệu lít",
+   "monthly"
+  ],
+  "82084": [
+   "milkpowder_output",
+   "Sản lượng sữa bột",
+   "nghìn tấn",
+   "monthly"
+  ],
+  "202900": [
+   "iip_food",
+   "IIP chế biến thực phẩm, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "202901": [
+   "iip_bev",
+   "IIP sản xuất đồ uống, so cùng kỳ",
+   "%",
+   "monthly"
+  ],
+  "82112": [
+   "car_output",
+   "Sản lượng sản xuất ô tô",
+   "nghìn chiếc",
+   "monthly"
+  ],
+  "82109": [
+   "moto_output",
+   "Sản lượng sản xuất xe máy",
+   "nghìn chiếc",
+   "monthly"
+  ],
+  "92797": [
+   "car_import",
+   "Nhập khẩu ô tô nguyên chiếc",
+   "triệu USD",
+   "monthly"
+  ],
+  "74400": [
+   "sugar",
+   "Đường thô ICE",
+   "US cent/pound",
+   "daily"
+  ],
+  "73972": [
+   "palm_oil",
+   "Dầu cọ",
+   "MYR/tấn",
+   "daily"
+  ],
+  "203092": [
+   "soymeal",
+   "Khô đậu nành",
+   "USD/tấn",
+   "daily"
+  ],
+  "203105": [
+   "corn",
+   "Ngô CBOT",
+   "US cent/bushel",
+   "daily"
+  ]
+ },
+ "sectors": {
+  "220": "Chuỗi cửa hàng bán hàng tổng hợp",
+  "215": "Phân phối điện, điện tử",
+  "224": "Bán lẻ xe cơ giới",
+  "239": "Sữa và sản phẩm sữa",
+  "120": "Sản xuất bia"
+ }
+}
