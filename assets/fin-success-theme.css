@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 /* FinSuccess visual rules from Stock dashboard/CLAUDE.md and _template/brand.css.
    Shared by the hub and every sector page. Source/status meaning is preserved. */
 :root {
@@ -413,3 +414,30 @@ table td,table th,.kpi .value{font-variant-numeric:tabular-nums}
 table tbody tr:hover td{background:rgba(89,197,200,.08)}
 @media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.card{transition:box-shadow .15s}.card:hover{box-shadow:0 12px 24px -6px rgba(29,38,120,.18),0 3px 7px rgba(29,38,120,.07)}}
 @media print{.card:hover{box-shadow:none}}
+
+/* ===== Design rule của Stock dashboard (28/10/2026) =====
+   Nguồn: Stock dashboard/_template/brand.css + CLAUDE.md "Lớp giao diện dùng chung".
+   Chỉ đổi hình thức: font Inter, card bo 14px bóng nhẹ, tiêu đề mục 20px/800,
+   tiêu đề chart 14.5px có gạch dưới, ô chỉ số có vạch gradient khi hover, bảng kiểu Stock. */
+:root{--fs-font:Inter,Arial,system-ui,sans-serif;--fs-r:14px;--fs-shadow:0 1px 2px rgba(16,24,64,.04),0 4px 16px rgba(16,24,64,.05);--fs-shadow-h:0 2px 4px rgba(16,24,64,.06),0 10px 28px rgba(16,24,64,.09)}
+body,button,input,select,textarea,table,td,th,svg text{font-family:var(--fs-font)}
+.site-navigation a,.topbar .site-navigation a{font-family:var(--fs-font)}
+.majortabbtn,.majortabbtn.active{font-family:var(--fs-font)!important;letter-spacing:-.005em}
+.card,.kpi,.business-model,.research-topic,.tx-tile,.thesis-signal{border-radius:var(--fs-r);border-color:#E6E9F2;box-shadow:var(--fs-shadow)}
+.card .card{box-shadow:none}
+@media (hover:hover) and (pointer:fine){.card:hover{box-shadow:var(--fs-shadow-h);border-color:#D9DEEC}}
+.sectionhead h2,.research-roadmap>h2,.thesis-board .sectionhead h2{font-size:20px;font-weight:800;letter-spacing:-.015em}
+.sectionhead h2::before,.research-roadmap>h2::before{height:20px}
+.chart-title,.card h3{font-size:14.5px;font-weight:700;letter-spacing:-.01em}
+.card>h3,.card>.chart-head,.card>.chart-title{padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #EEF0F6}
+.kpi{position:relative;overflow:hidden}
+.kpi .value{letter-spacing:-.01em}
+.kpi::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(#2938A8,#59C5C8);opacity:0;transition:opacity .2s}
+.kpi:hover::after{opacity:1}
+table:not(.fintbl) th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--fs-muted);background:#F7F8FC!important}
+table:not(.fintbl) tbody tr:nth-child(even) td{background:rgba(29,38,120,.018)}
+table td,table th,.kpi .value,.num{font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1}
+@media (prefers-reduced-motion:reduce){.card,.kpi::after{transition:none}}
+@media print{.card,.kpi{box-shadow:none}.kpi::after{display:none}}
+/* Sơ đồ chuỗi giá trị tính khung theo độ rộng Arial; Inter rộng hơn làm chữ tràn khung. */
+.value-chain-scroll svg text,svg .chain-node~text{font-family:Arial,'Helvetica Neue',system-ui,sans-serif}

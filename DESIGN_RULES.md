@@ -32,7 +32,7 @@ surfaces. Data limitations stay visible in `.data-gap` and `.gap-row`.
 
 ## Type and copy
 
-Use Arial / Helvetica Neue / system sans across the hub and sector dashboards.
+Use Inter (Google Fonts, fallback Arial / system sans) across the hub and sector dashboards, like the Stock dashboard.
 Body text is dark ink; section headings and primary numbers are navy. Tables and
 numbers use tabular figures. Keep titles, units, period, actual/estimate/forecast
 labels and the source action clear. Secondary text stays beside the data it
@@ -84,3 +84,7 @@ Người dùng yêu cầu font, cỡ chữ và cách trình bày giống Stock d
 - (10/10/2026) Thanh chọn ngành ẩn ở mọi trang (CSS cuối fin-success-theme.css); chuyển ngành bằng ô Tra cứu ngành, gợi ý ngành không kèm chữ phụ.
 - (10/10/2026) Trang gốc bỏ lưới thẻ ngành, chỉ còn logo + ô "Tra cứu ngành" (placeholder "Nhập tên ngành…") + thanh chọn ngành; mục "Trang tổng" bỏ khỏi thanh điều hướng, bấm logo để về trang gốc. Gõ mã cổ phiếu vẫn tìm được nhưng không ghi trên nhãn.
 - Ô **Tra cứu ngành** dưới logo, cùng kiểu với "Tra cứu cổ phiếu" của Stock dashboard (`_template/tools/build_stock_site.py`): gõ tên ngành (không dấu cũng được) hoặc mã; chọn mã mở trang ngành ở Tổng quan › So sánh tài chính, lọc sẵn mã (`?ma=`). Danh sách mã lấy từ `data/company-comparison.js`; code trong `assets/site-navigation.js`.
+
+## Theo design rule Stock dashboard (28/10/2026)
+
+Người dùng yêu cầu dùng design rule của Stock dashboard cho dashboard ngành. Block cuối `assets/fin-success-theme.css` lấy theo `_template/brand.css`: font Inter; card bo 14px, viền `#E6E9F2`, bóng `--fs-shadow` (hover `--fs-shadow-h`); tiêu đề mục 20px/800; tiêu đề chart 14.5px có gạch dưới `#EEF0F6`; ô chỉ số hiện vạch gradient blue→turquoise khi hover; tiêu đề bảng (trừ `.fintbl`) in hoa 11px nền `#F7F8FC`, hàng chẵn tô rất nhạt. Thang chữ 12·13·14·16·20·24·30, không chữ gradient. Chỉ đổi hình thức; giữ nguyên nút, bộ lọc và giới hạn dữ liệu. Khi Stock đổi `brand.css`, cập nhật block này cho khớp.
