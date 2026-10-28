@@ -197,7 +197,7 @@
     const body=el('div','fs-share-body'),prev=el('div','fs-share-prev'),img=el('img');img.alt='Ảnh xem trước';prev.append(el('span','', 'Đang tạo ảnh…'));
     const side=el('div','fs-share-side'),rr=el('div','fs-share-ratio');
     const ratio=Object.entries(RATIOS).map(([k,r])=>{const b=el('button');b.type='button';b.dataset.ratio=k;b.append(r.label,el('small','',r.hint));rr.append(b);return b});
-    const lab=el('label','', 'CAPTION'),text=el('textarea');lab.htmlFor=text.id='fs-share-caption';
+    const lab=el('label','', 'CAPTION'),text=el('textarea');lab.htmlFor=text.id='fs-share-caption';lab.style.display=text.style.display='none';
     const acts=el('div','fs-share-acts'),bShare=el('button','primary','⇪ Chia sẻ…'),bDl=el('button','', 'Tải ảnh'),bImg=el('button','', 'Chép ảnh'),bCap=el('button','', 'Chép caption');
     acts.append(bShare,bDl,bImg,bCap);
     const msg=el('div','fs-share-msg');msg.setAttribute('aria-live','polite');
