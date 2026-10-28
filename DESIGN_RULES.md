@@ -109,3 +109,8 @@ Người dùng gửi bản "Rule thiết kế — Website Stock Dashboard" (tổ
 - Card chart: **một icon ⓘ cạnh tiêu đề** chứa giải thích + dòng `Nguồn:`; không còn nút "ⓘ Insight"/"ⓘ Nguồn" dưới chart (script gộp popover, giữ nguyên nội dung).
 - Hiệu ứng không đổi vùng vẽ (bỏ nhấc card khi hover); chuyển động 150–400 ms.
 - Phần rule Stock về Tab Tài chính 5 sub-tab, bảng `financials`, bảng nhập analyst, Consensus không áp cho ngành (không có tính năng tương ứng).
+
+### Đã áp toàn bộ rule Stock (28/10/2026, vòng 6–7) — chỉ đổi giao diện, không đổi số/nội dung
+- `chart-types.js`: dòng `CHU KỲ` (đọc từ nhãn kỳ, không gộp kỳ) + `SỐ KỲ` (1/3/5/8/10/Tất cả, chỉ cắt bớt kỳ hiển thị); cụm `Từ 0 / Vừa dữ liệu` · `Số liệu` (mặc định tắt; nhãn màu theo nền, không đè/cắt, ẩn khi > 40 điểm) · `− / +` độ rộng cột (chỉ khi là cột); kéo vùng số trục để giãn/co, nhấp đúp về thang tự động. Lưu theo từng chart trong trình duyệt.
+- `site-navigation.js` lúc chạy: tiêu đề chart bỏ "— theo tháng/quý…", đơn vị đầu dòng phụ đưa vào ngoặc sau tiêu đề; phần còn lại của dòng phụ chuyển vào ⓘ (không mất chữ). Ngày `yyyy-mm-dd` hiển thị `dd/mm/yyyy`. Phím 1–9 chuyển tab, ⌘K/Ctrl+K mở ô tra cứu. Nút ◐ giao diện tối Navy đêm (`fs_theme_v1`, cùng khóa với Stock).
+- Không áp: Tab Tài chính 5 sub-tab, bảng `financials`, bảng nhập analyst, badge quan điểm (ngành không có tính năng tương ứng). Title band giữ nền trắng như Stock đang chạy.

@@ -35,6 +35,31 @@
     if (zero && lo >= 0) min = 0;
     return {min, max, step};
   }
+  // Chu kỳ chỉ đọc từ nhãn kỳ; không gộp tháng thành quý/năm (giữ nguyên số liệu gốc).
+  function cycleOf(cats) {
+    const c = cats.map(String);
+    const all = re => c.every(x => re.test(x.trim()));
+    if (all(/^(T\d{1,2}|\d{1,2})\/\d{2,4}$/)) return ['Tháng', 'tháng'];
+    if (all(/^(Q|Quý ?)\d/i) || all(/^\d\/?Q|Q\d\/\d{2,4}$/i)) return ['Quý', 'quý'];
+    if (all(/^\d{4}[A-Z]?$/)) return ['Năm', 'năm'];
+    const day = x => { let m = x.match(/^(\d{4})-(\d{2})-(\d{2})/); if (m) return Date.UTC(+m[1], m[2] - 1, +m[3]); m = x.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); return m ? Date.UTC(+m[3], m[2] - 1, +m[1]) : NaN; };
+    const ts = c.map(x => day(x.trim()));
+    if (ts.length > 2 && ts.every(Number.isFinite)) {
+      const gaps = ts.slice(1).map((t, i) => Math.abs(t - ts[i]) / 864e5).sort((a, b) => a - b), g = gaps[gaps.length >> 1];
+      return g >= 27 ? ['Tháng', 'tháng'] : g >= 6 ? ['Tuần', 'tuần'] : ['Phiên', 'phiên'];
+    }
+    if (all(/^\d{1,2}\/\d{1,2}$/)) return ['Phiên', 'phiên'];
+    if (all(/^(W|Tuần ?)\d/i)) return ['Tuần', 'tuần'];
+    return ['Kỳ', 'kỳ'];
+  }
+  const COUNTS = [1, 3, 5, 8, 10];
+  function lum(hex) {
+    const m = String(hex).match(/^#?([0-9a-f]{6})$/i); if (!m) return 0.3;
+    const v = [0, 2, 4].map(i => parseInt(m[1].slice(i, i + 2), 16) / 255).map(c => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+    return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2];
+  }
+  // Chữ trắng trên nền tối, mực đậm trên nền sáng (tương phản ≥ 4,5:1 với 5 màu thương hiệu).
+  const inkOn = hex => lum(hex) > 0.28 ? '#1d2333' : '#fff';
   function isTime(cats) { return cats.length > 1 && cats.every(c => /\d/.test(String(c))); }
   function native(model) {
     if (model.native) return model.native;
@@ -77,12 +102,18 @@
     if (!vals.length) return '<div class="gap-empty">Không có dữ liệu hợp lệ.</div>';
     const zero = type === 'bar' || type === 'stack' || stacked || model.zeroBase !== false;
     const d = domain(Math.min(...vals), Math.max(...vals), zero);
+    if (model.yMult && model.yMult !== 1) {
+      const span = (d.max - d.min) * model.yMult;
+      if (zero && d.min === 0) d.max = span; else { const mid = (d.max + d.min) / 2; d.min = mid - span / 2; d.max = mid + span / 2; }
+      d.step = niceStep(span, 4);
+    }
     if (model.yMax != null && d.max > model.yMax) d.max = model.yMax;  // share charts stop at 100%
     const Y = v => T + ph * (d.max - v) / (d.max - d.min);
     const X = i => L + band * (i + 0.5);
     const base = Y(Math.max(d.min, Math.min(0, d.max)));
     let s = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" class="chartsvg ct-svg" role="img" aria-label="${esc(model.aria || '')}">`;
-    for (let v = d.min; v <= d.max + d.step / 2; v += d.step) {
+    for (let k = Math.ceil(d.min / d.step - 1e-9); k * d.step <= d.max + d.step * 1e-6; k++) {
+      const v = k * d.step || 0;
       s += `<line x1="${L}" x2="${W - R}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" class="gridline"/>`;
       s += `<text x="${L - 8}" y="${(Y(v) + 4).toFixed(1)}" text-anchor="end" class="axislabel">${esc(f(v))}</text>`;
     }
@@ -95,15 +126,25 @@
         s += `<text x="${X(i).toFixed(1)}" y="${y0}" text-anchor="middle" class="catlabel">` + parts.map((t, k) => `<tspan x="${X(i).toFixed(1)}" dy="${k ? 13 : 0}">${esc(t)}</tspan>`).join('') + '</text>';
       }
     });
+    const off = model.offset || 0, placed = [], showLabels = model.labels && n <= 40;
+    let labels = '';
+    const fits = (x, y, w) => {
+      const b = [x - w / 2 - 2, y - 11, x + w / 2 + 2, y + 2];
+      if (b[0] < L || b[2] > W - R || b[1] < T || b[3] > T + ph) return false;
+      if (placed.some(p => b[0] < p[2] && b[2] > p[0] && b[1] < p[3] && b[3] > p[1])) return false;
+      placed.push(b); return true;
+    };
+    const tag = (x, y, v, fill) => { const t = f(v), w = t.length * 6.3; if (fits(x, y, w)) labels += `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" class="ct-vlabel" fill="${fill}">${esc(t)}</text>`; };
     const line = (values, color, width = 2.2, dots = n <= 40) => {
       let p = '', pen = false;
       values.forEach((v, i) => { if (!num(v)) { pen = false; return; } p += (pen ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1); pen = true; });
       let out = p ? `<path d="${p}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round"/>` : '';
       if (dots) values.forEach((v, i) => { if (num(v)) out += `<circle cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="3" fill="${color}" stroke="#fff" stroke-width="1.2"/>`; });
+      if (showLabels) values.forEach((v, i) => { if (!num(v)) return; const y = Y(v); tag(X(i), y - 7 - 11 < T ? y + 16 : y - 7, v, '#1d2333'); });
       return out;
     };
     if (type === 'bar' || type === 'stack') {
-      const gw = Math.min(band * 0.72, type === 'stack' ? 34 : 26 * main.length), bw = type === 'stack' ? gw : gw / main.length;
+      const gw = Math.min(band * 0.92, Math.min(band * 0.72, type === 'stack' ? 34 : 26 * main.length) * (model.barScale || 1)), bw = type === 'stack' ? gw : gw / main.length;
       cats.forEach((_, i) => {
         let up = 0, down = 0;
         main.forEach((ser, k) => {
@@ -114,6 +155,12 @@
           const x = X(i) - gw / 2 + (type === 'stack' ? 0 : k * bw);
           const dim = ser.conf && ser.conf[i] === false ? ' opacity="0.55"' : '';
           s += `<rect x="${(x + 0.5).toFixed(1)}" y="${y0.toFixed(1)}" width="${Math.max(1, bw - 1).toFixed(1)}" height="${Math.max(1, y1 - y0).toFixed(1)}" rx="2" fill="${ser.color}"${dim}/>`;
+          if (showLabels) {
+            const cx = x + bw / 2, tw = f(v).length * 6.3;
+            if (type === 'stack') { if (y1 - y0 >= 14 && tw <= bw + 2) { const top = Math.max(y0, T), bot = Math.min(y1, T + ph); if (bot - top >= 14) tag(cx, (top + bot) / 2 + 4, v, inkOn(ser.color)); } }
+            else if (v >= 0) { if (y0 - 15 >= T) tag(cx, y0 - 4, v, '#1d2333'); else if (y1 - y0 >= 16) tag(cx, y0 + 13, v, inkOn(ser.color)); }
+            else if (y1 + 14 <= T + ph) tag(cx, y1 + 12, v, '#1d2333');
+          }
         });
       });
     } else if (type === 'area') {
@@ -134,7 +181,10 @@
       });
     } else main.forEach(ser => { s += line(ser.values, ser.color); });
     over.forEach(ser => { s += line(ser.values, ser.color, ser.strokeWidth || 2.6, false); });
-    cats.forEach((_, i) => { s += `<rect x="${(L + band * i).toFixed(1)}" y="${T}" width="${band.toFixed(2)}" height="${ph}" fill="transparent" class="hitband" data-ct-i="${i}" tabindex="0"/>`; });
+    s += labels;
+    cats.forEach((_, i) => { s += `<rect x="${(L + band * i).toFixed(1)}" y="${T}" width="${band.toFixed(2)}" height="${ph}" fill="transparent" class="hitband" data-ct-i="${i + off}" tabindex="0"/>`; });
+    // Kéo trên vùng số của trục để giãn/co, nhấp đúp để về thang tự động.
+    s += `<rect x="0" y="${T}" width="${L - 2}" height="${ph}" fill="transparent" class="ct-yhit"><title>Kéo để giãn/co trục · nhấp đúp để về thang tự động</title></rect>`;
     return s + '</svg>';
   }
   function renderH(model, main, over, f, label) {
@@ -161,28 +211,41 @@
         const v = ser.values[i]; if (!num(v)) return;
         const x0 = Xv(Math.min(v, 0)), x1 = Xv(Math.max(v, 0)), dim = ser.conf && ser.conf[i] === false ? ' opacity="0.55"' : '';
         s += `<rect x="${x0.toFixed(1)}" y="${(y + 3 + k * bh).toFixed(1)}" width="${Math.max(1, x1 - x0).toFixed(1)}" height="${Math.max(2, bh - 1).toFixed(1)}" rx="2" fill="${ser.color}"${dim}/>`;
-        if (all.length === 1) s += `<text x="${(x1 + 5).toFixed(1)}" y="${(y + rowH / 2 + 4).toFixed(1)}" class="endlabel">${esc(f(v))}</text>`;
+        if (all.length === 1 || (model.labels && bh >= 10)) s += `<text x="${(x1 + 5).toFixed(1)}" y="${(y + rowH / 2 + 4).toFixed(1)}" class="endlabel">${esc(f(v))}</text>`;
       });
-      s += `<rect x="0" y="${y}" width="${W}" height="${rowH}" fill="transparent" class="hitband" data-ct-i="${i}" tabindex="0"/>`;
+      s += `<rect x="0" y="${y}" width="${W}" height="${rowH}" fill="transparent" class="hitband" data-ct-i="${i + (model.offset || 0)}" tabindex="0"/>`;
     });
     return s + '</svg>';
   }
 
   /* ---------- toolbar, state, tooltip ---------- */
+  function periodHtml(model) {
+    if (!model.time) return '';
+    const n = model.categories.length, [cyc, unit] = cycleOf(model.categories);
+    const opts = COUNTS.filter(k => k < n).map(k => `<option value="${k}">${k}</option>`).join('') + `<option value="0">Tất cả (${n} ${unit})</option>`;
+    return `<span class="ct-period"><label>Chu kỳ <select data-ct-cycle disabled title="Chu kỳ theo nguồn dữ liệu; không gộp kỳ"><option>${cyc}</option></select></label>` +
+      `<label>Số kỳ <select data-ct-count>${opts}</select></label></span>`;
+  }
   function toolbar(id, model, current) {
-    return `<div class="ct-switch" role="group" aria-label="Kiểu biểu đồ" data-ct-for="${esc(id)}">` + TYPES.map(([t, name]) => {
+    return `<div class="ct-switch" role="group" aria-label="Kiểu biểu đồ" data-ct-for="${esc(id)}">` + periodHtml(model) + TYPES.map(([t, name]) => {
       const why = reason(model, t);
       return `<button type="button" data-ct-type="${t}" aria-pressed="${t === current}"${why ? ` disabled title="${esc(why)}"` : ''}>${name}</button>`;
     }).join('') + `<span class="ct-axis" role="group" aria-label="Trục"><span>Trục</span>` +
-      [['zero', 'Từ 0'], ['fit', 'Vừa dữ liệu']].map(([k, t]) => `<button type="button" data-ct-axis="${k}">${t}</button>`).join('') + '</span></div>';
+      [['zero', 'Từ 0'], ['fit', 'Vừa dữ liệu']].map(([k, t]) => `<button type="button" data-ct-axis="${k}">${t}</button>`).join('') +
+      `<button type="button" class="ct-values" data-ct-values aria-pressed="false">Số liệu</button>` +
+      `<button type="button" class="ct-bw" data-ct-bw="-1" aria-label="Thu hẹp cột">−</button><button type="button" class="ct-bw" data-ct-bw="1" aria-label="Kéo rộng cột">+</button></span></div>`;
   }
   // Bars always start at 0 (bar length = value); "Vừa dữ liệu" only for line/area views.
   const fitAllowed = (entry) => entry.type === 'line' || (entry.type === 'area' && !entry.model.stackable);
-  function syncBar(entry) {
-    if (!entry.bar) return;
-    entry.bar.querySelectorAll('[data-ct-type]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.ctType === entry.type)));
+  function syncBar(entry, bar = entry.bar) {
+    if (!bar) return;
+    bar.querySelectorAll('[data-ct-values]').forEach(b => b.setAttribute('aria-pressed', String(!!entry.labels)));
+    const cols = entry.type === 'bar' || entry.type === 'stack';
+    bar.querySelectorAll('[data-ct-bw]').forEach(b => { b.hidden = !cols; b.disabled = b.dataset.ctBw < 0 ? entry.bw <= 0.5 : entry.bw >= 2; });
+    bar.querySelectorAll('[data-ct-count]').forEach(sel => { const v = String(entry.count || 0); sel.querySelectorAll('option').forEach(o => o.toggleAttribute('selected', o.value === v)); sel.value = v; });
+    bar.querySelectorAll('[data-ct-type]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.ctType === entry.type)));
     const ok = fitAllowed(entry), fit = ok && entry.fit;
-    entry.bar.querySelectorAll('[data-ct-axis]').forEach(b => {
+    bar.querySelectorAll('[data-ct-axis]').forEach(b => {
       b.setAttribute('aria-pressed', String((b.dataset.ctAxis === 'fit') === fit));
       const lock = b.dataset.ctAxis === 'fit' && !ok; b.disabled = lock;
       if (lock) b.title = 'Cột bắt đầu từ 0 để độ dài cột đúng giá trị'; else b.removeAttribute('title');
@@ -197,10 +260,16 @@
     }).join('') + '</div>';
   }
   function viewModel(entry, width) {
-    const m = entry.model, fit = fitAllowed(entry) && entry.fit;
-    return {...m, width, zeroBase: !fit, series: m.series.filter(s => !entry.hidden.has(s.name))};
+    const m = entry.model, fit = fitAllowed(entry) && entry.fit, n = m.categories.length;
+    const k = m.time && entry.count && entry.count < n ? entry.count : n, o = n - k;
+    const cut = a => (a && a.length === n ? a.slice(o) : a);
+    return {...m, width, zeroBase: !fit, offset: o, categories: cut(m.categories), tickLabels: cut(m.tickLabels),
+      labels: !!entry.labels, barScale: entry.bw || 1, yMult: entry.ymult || 1,
+      series: m.series.filter(s => !entry.hidden.has(s.name)).map(s => ({...s, values: cut(s.values), conf: cut(s.conf)}))};
   }
-  const isDefault = entry => entry.type === native(entry.model) && !entry.hidden.size && entry.fit === entry.fit0;
+  const isDefault = entry => entry.type === native(entry.model) && !entry.hidden.size && entry.fit === entry.fit0 && !entry.count && !entry.labels && (entry.bw || 1) === 1 && (entry.ymult || 1) === 1;
+  const viewState = entry => ({fit: entry.fit, hidden: [...entry.hidden], count: entry.count || 0, labels: !!entry.labels, bw: entry.bw || 1});
+  const restore = (v, model) => ({count: model.time ? (v.count || 0) : 0, labels: !!v.labels, bw: v.bw || 1, ymult: 1});
   function choose(model) {
     const want = saved(model.key);
     return want && TYPES.some(([t]) => t === want) && !reason(model, want) ? want : native(model);
@@ -242,7 +311,7 @@
     const tpl = document.createElement('template'); tpl.innerHTML = toolbar(id, model, type);
     document.querySelectorAll('.ct-switch').forEach(b => { if (b.dataset.ctFor === id) b.remove(); });
     const v = readView(model.key), fit0 = model.zeroBase === false;
-    registry.set(id, {model, base: () => base(), body: host, type, bar: tpl.content.firstElementChild, fit0, fit: v.fit ?? fit0, hidden: new Set((v.hidden || []).filter(n => model.series.some(s => s.name === n)))});
+    registry.set(id, {model, base: () => base(), body: host, type, bar: tpl.content.firstElementChild, fit0, fit: v.fit ?? fit0, hidden: new Set((v.hidden || []).filter(n => model.series.some(s => s.name === n))), ...restore(v, model)});
     paint(id);
     if (window.ResizeObserver && !host._ctRO) {
       let w = host.clientWidth;
@@ -257,7 +326,7 @@
     model.key = model.key || model.aria || model.series.map(s => s.name).join('|') + '|' + (model.unit || '');
     const type = choose(model);
     const v = readView(model.key), fit0 = model.zeroBase === false;
-    const entry = {model, base: body => { body.innerHTML = svg; }, type, fit0, fit: v.fit ?? fit0, hidden: new Set(v.hidden || [])};
+    const entry = {model, base: body => { body.innerHTML = svg; }, type, fit0, fit: v.fit ?? fit0, hidden: new Set(v.hidden || []), ...restore(v, model)};
     registry.set(id, entry);
     const content = isDefault(entry) ? svg : render(viewModel(entry, 640), type);
     const tpl = document.createElement('template'); tpl.innerHTML = toolbar(id, model, type); entry.bar = tpl.content.firstElementChild; syncBar(entry);
@@ -289,22 +358,52 @@
     if (lg) {
       const body = lg.closest('[data-ct-body],[id]'), id = body?.dataset.ctBody || body?.id, entry = registry.get(id); if (!entry) return;
       const n = lg.dataset.ctSeries; entry.hidden.has(n) ? entry.hidden.delete(n) : entry.hidden.add(n);
-      saveView(entry.model.key, {fit: entry.fit, hidden: [...entry.hidden]}); paint(id); return;
+      saveView(entry.model.key, viewState(entry)); paint(id); return;
+    }
+    const vb = e.target.closest?.('.ct-switch button[data-ct-values], .ct-switch button[data-ct-bw]');
+    if (vb) {
+      if (vb.disabled) return;
+      const bar = vb.closest('.ct-switch'), id = bar.dataset.ctFor, entry = registry.get(id); if (!entry) return;
+      if (vb.dataset.ctValues != null) entry.labels = !entry.labels;
+      else entry.bw = Math.max(0.5, Math.min(2, Math.round(((entry.bw || 1) + 0.25 * Number(vb.dataset.ctBw)) * 100) / 100));
+      saveView(entry.model.key, viewState(entry)); paint(id); syncBar(entry, bar); return;
     }
     const ax = e.target.closest?.('.ct-switch button[data-ct-axis]');
     if (ax) {
       if (ax.disabled) return;
       const bar = ax.closest('.ct-switch'), id = bar.dataset.ctFor, entry = registry.get(id); if (!entry) return;
-      entry.fit = ax.dataset.ctAxis === 'fit'; saveView(entry.model.key, {fit: entry.fit, hidden: [...entry.hidden]});
+      entry.fit = ax.dataset.ctAxis === 'fit'; saveView(entry.model.key, viewState(entry));
       if (!entry.bar) bar.querySelectorAll('[data-ct-axis]').forEach(b => b.setAttribute('aria-pressed', String(b === ax)));
-      paint(id); return;
+      paint(id); syncBar(entry, bar); return;
     }
     const btn = e.target.closest?.('.ct-switch button[data-ct-type]'); if (!btn || btn.disabled) return;
     const bar = btn.closest('.ct-switch'), id = bar.dataset.ctFor, entry = registry.get(id); if (!entry) return;
     entry.type = btn.dataset.ctType; save(entry.model.key, entry.type);
     bar.querySelectorAll('[data-ct-type]').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
     if (!entry.bar) { const ok = fitAllowed(entry); bar.querySelectorAll('[data-ct-axis]').forEach(b => { b.setAttribute('aria-pressed', String((b.dataset.ctAxis === 'fit') === (ok && entry.fit))); b.disabled = b.dataset.ctAxis === 'fit' && !ok; }); }
-    paint(id);
+    paint(id); syncBar(entry, bar);
+  });
+  document.addEventListener('change', e => {
+    const sel = e.target.closest?.('.ct-switch select[data-ct-count]'); if (!sel) return;
+    const bar = sel.closest('.ct-switch'), id = bar.dataset.ctFor, entry = registry.get(id); if (!entry) return;
+    entry.count = Number(sel.value) || 0; saveView(entry.model.key, viewState(entry)); paint(id); syncBar(entry, bar);
+  });
+  const entryOf = el => { const body = el.closest('[data-ct-body],[id]'), id = body?.dataset.ctBody || body?.id; return registry.get(id) ? [id, registry.get(id)] : []; };
+  let drag = null, raf = 0;
+  document.addEventListener('pointerdown', e => {
+    const hit = e.target.closest?.('.ct-svg .ct-yhit'); if (!hit) return;
+    const [id, entry] = entryOf(hit); if (!entry) return;
+    drag = {id, entry, y: e.clientY, m: entry.ymult || 1}; e.preventDefault();
+  });
+  document.addEventListener('pointermove', e => {
+    if (!drag) return;
+    drag.entry.ymult = Math.max(0.25, Math.min(8, drag.m * Math.exp((e.clientY - drag.y) / 120)));
+    if (!raf) raf = requestAnimationFrame(() => { raf = 0; if (drag) paint(drag.id); });
+  });
+  document.addEventListener('pointerup', () => { drag = null; });
+  document.addEventListener('dblclick', e => {
+    const hit = e.target.closest?.('.ct-svg .ct-yhit'); if (!hit) return;
+    const [id, entry] = entryOf(hit); if (entry) { entry.ymult = 1; paint(id); }
   });
 
   window.ChartTypes = {mount, html, render, TYPES};

@@ -173,11 +173,55 @@
       keep.textContent = 'ⓘ'; keep.classList.add('fs-title-info');
       keep.setAttribute('aria-label', 'Ghi chú và nguồn: ' + title.textContent.trim());
       title.append(keep);
+      tidyTitle(card, title, document.getElementById(keep.getAttribute('aria-controls')));
       const acts = card.querySelector('.chart-card-actions');
       if (acts && !acts.children.length) acts.hidden = true;
     });
   }
-  const run = () => { merge(); setTimeout(merge, 1200); };
+  // Tiêu đề chỉ tên chỉ tiêu + (đơn vị) (rule §5): bỏ "— theo tháng"…, dòng phụ phương pháp/nguồn vào ⓘ. Không đổi chữ nội dung.
+  const UNIT = /(%|°C|USD|VND|đồng|tỷ|triệu|nghìn|tấn|thùng|kWh|MW|GW|TEU|m³|cent|điểm|lần|\/)/;
+  function tidyTitle(card, title, panel) {
+    const tn = [...title.childNodes].filter(n => n.nodeType === 3 && n.nodeValue.trim()).pop();
+    if (tn) tn.nodeValue = tn.nodeValue.replace(/\s*[—–,-]?\s*(theo|hằng|hàng)\s+(ngày|tuần|tháng|quý|năm|phiên)\s*$/i, '');
+    const sub = card.querySelector(':scope .chart-sub'); if (!sub || sub.closest('.ct-switch') || !panel) return;
+    const parts = sub.textContent.split(' · ').map(t => t.trim()).filter(Boolean);
+    let unit = '';
+    if (parts.length && parts[0].length <= 32 && UNIT.test(parts[0]) && !/(trung bình|so với|theo|không|chỉ)/i.test(parts[0])) unit = parts.shift();
+    if (unit && tn && !/\(.*\)\s*$/.test(tn.nodeValue)) tn.nodeValue = tn.nodeValue.replace(/\s*$/, ` (${unit})`);
+    else if (unit) parts.unshift(unit);
+    if (parts.length) {
+      const note = document.createElement('p'); note.className = 'fs-info-sub'; note.textContent = parts.join(' · ');
+      const head = panel.querySelector('.info-heading'); head ? head.after(note) : panel.prepend(note);
+    }
+    sub.hidden = true;
+  }
+  // Ngày hiển thị dd/mm/yyyy (rule §3).
+  function dmy(root) {
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {acceptNode: n => n.parentElement.closest('script,style,code,pre,textarea,select') ? 2 : (/\d{4}-\d{2}-\d{2}/.test(n.nodeValue) ? 1 : 2)});
+    const list = []; while (w.nextNode()) list.push(w.currentNode);
+    list.forEach(n => { n.nodeValue = n.nodeValue.replace(/\b(\d{4})-(\d{2})-(\d{2})\b/g, '$3/$2/$1'); });
+  }
+  const run = () => { merge(); dmy(document.body); setTimeout(() => { merge(); dmy(document.body); }, 1200); };
   if (document.readyState === 'complete') run(); else addEventListener('load', run);
-  document.addEventListener('click', e => { if (e.target.closest('.majortabbtn, .tabbtn')) setTimeout(merge, 300); });
+  document.addEventListener('click', e => { if (e.target.closest('.majortabbtn, .tabbtn')) setTimeout(() => { merge(); dmy(document.body); }, 300); });
+})();
+
+// Phím tắt như Stock (rule §11): 1–9 chuyển tab chính, ⌘K / Ctrl+K mở ô tra cứu. Giao diện tối Navy đêm (◐).
+(() => {
+  const THEME = 'fs_theme_v1';
+  try { const t = localStorage.getItem(THEME); if (t) document.documentElement.dataset.theme = t; } catch (e) { /* mặc định sáng */ }
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { const q = document.getElementById('fsQuery'); if (q) { e.preventDefault(); q.focus(); q.select(); } return; }
+    if (e.metaKey || e.ctrlKey || e.altKey || e.target.closest('input,textarea,select,[contenteditable]')) return;
+    if (/^[1-9]$/.test(e.key)) { const b = document.querySelectorAll('.majortabbtn')[e.key - 1]; if (b) { b.click(); b.focus(); } }
+  });
+  function mountToggle() {
+    const bar = document.querySelector('.fs-brandbar .in'); if (!bar || bar.querySelector('.fs-theme')) return;
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'fs-theme'; b.textContent = '◐';
+    b.title = 'Giao diện sáng / tối'; b.setAttribute('aria-label', 'Đổi giao diện sáng / tối');
+    b.onclick = () => { const dark = document.documentElement.dataset.theme !== 'dark'; document.documentElement.dataset.theme = dark ? 'dark' : 'light'; try { localStorage.setItem(THEME, dark ? 'dark' : 'light'); } catch (e) { /* chỉ phiên này */ } };
+    bar.append(b);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(mountToggle, 50)); else setTimeout(mountToggle, 50);
+  addEventListener('load', mountToggle);
 })();

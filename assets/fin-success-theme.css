@@ -546,3 +546,56 @@ table:not(.fintbl) th{font-size:12px}
 .fs-info-explain .chart-insight{margin:0;padding:0;border:0;background:none}
 .chart-title:has(.fs-title-info),.card h3:has(.fs-title-info){justify-content:flex-start!important;gap:0}
 .fs-title-info{margin-left:6px!important}
+/* Bộ chọn kỳ + Số liệu + −/+ (rule Stock §5). */
+.ct-switch{row-gap:8px}
+.ct-period{display:inline-flex;align-items:center;gap:14px;margin-right:auto;flex-wrap:wrap}
+.ct-period label{display:inline-flex;align-items:center;gap:6px;font:700 12px/1 var(--fs-font);letter-spacing:.05em;text-transform:uppercase;color:#596272}
+.ct-period select{font:500 13px/1.2 var(--fs-font);color:#1D2678;padding:6px 26px 6px 10px;border:1px solid #DCE1E9;border-radius:8px;background:#fff;min-height:32px;text-transform:none;letter-spacing:0}
+.ct-period select:disabled{opacity:1;color:#303540;background:#F7F8FC;cursor:default}
+.ct-axis .ct-values{margin-left:4px;border-left:1px solid #DCE1E9!important;border-radius:0 5px 5px 0}
+.ct-axis .ct-bw{min-width:22px;font-size:13px!important}
+.ct-axis .ct-bw[hidden]{display:none}
+.ct-svg .ct-vlabel{font:700 11px var(--fs-font);paint-order:stroke;pointer-events:none}
+.ct-svg .ct-yhit{cursor:ns-resize}
+@media print{.ct-switch{display:none!important}}
+.ct-period{flex:1 0 100%;margin:0 0 2px}
+.ct-switch>button{padding:4px 8px}
+/* Nút ◐ + ghi chú phụ trong ⓘ. */
+.fs-theme{flex:none;width:36px;height:36px;margin-left:10px;border:1px solid #DCE1E9;border-radius:9px;background:#fff;color:#1D2678;font-size:16px;cursor:pointer}
+.fs-brandbar .in .fs-search-inline{margin-left:auto}
+.fs-info-sub{margin:0 0 8px;color:#596272;font-size:12px}
+/* ===== Giao diện tối duy nhất: Navy đêm (rule Stock §2) ===== */
+html[data-theme="dark"]{color-scheme:dark}
+html[data-theme="dark"] body{background:#0B1026!important;color:#F3F5FF}
+html[data-theme="dark"] :is(.fs-brandbar,.research-header,.majortabs,.topbar,.site-navigation-shell){background:#0B1026!important;border-color:#232B52!important}
+html[data-theme="dark"] :is(.card,.kpi,.grid.kpis,.business-model,.research-topic,.tx-tile,.thesis-signal,.chart-info-panel,.source-popover,.table-fold>.table-fold-body,details,.tablewrap){background:#131A3A!important;border-color:#232B52!important;color:#F3F5FF;box-shadow:none!important}
+html[data-theme="dark"] .card .card{background:#18204A!important}
+html[data-theme="dark"] :is(h1,h2,h3,h4,.chart-title,.kpi .value,.sectionhead h2,.research-header h1,.info-heading,th,b,strong){color:#F3F5FF!important}
+html[data-theme="dark"] .research-header h1{background:#18204A}
+html[data-theme="dark"] :is(p,li,td,.chart-sub,.kpi .label,.kpi .sub,.source-note,.fs-info-sub,.sectionhead p,.research-caption,label,small){color:#98A0C8!important}
+html[data-theme="dark"] :is(.majortabbtn,.majortabbtn.active){color:#98A0C8!important}
+html[data-theme="dark"] :is(.majortabbtn.active,.majortabbtn[aria-selected="true"],.majortabbtn:hover){color:#F3F5FF!important}
+html[data-theme="dark"] th{background:#18204A!important}
+html[data-theme="dark"] td{border-color:#232B52!important}
+html[data-theme="dark"] table tbody tr:hover td{background:rgba(89,197,200,.08)!important}
+html[data-theme="dark"] :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs,.ct-switch>button){background:#18204A!important}
+html[data-theme="dark"] :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs) .tabbtn{color:#A2AACD!important}
+html[data-theme="dark"] :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs) .tabbtn[aria-selected="true"],html[data-theme="dark"] .ct-switch>button[aria-pressed="true"]{background:#2938A8!important;color:#fff!important}
+html[data-theme="dark"] .ct-switch>button{color:#C9CFEA}
+html[data-theme="dark"] :is(.ct-axis,.ct-period select,.fs-search .search-box,.fs-theme,input,select){background:#131A3A!important;border-color:#2A3360!important;color:#F3F5FF!important}
+html[data-theme="dark"] .ct-axis button[aria-pressed="true"]{background:#2938A8;color:#fff}
+html[data-theme="dark"] :is(.ct-svg .axislabel,.ct-svg .catlabel,.ct-svg .endlabel,svg text){fill:#98A0C8}
+html[data-theme="dark"] .ct-svg .ct-vlabel[fill="#1d2333"]{fill:#F3F5FF}
+html[data-theme="dark"] :is(.ct-svg .gridline,svg .gridline){stroke:#232B52}
+html[data-theme="dark"] .cts-legend button{color:#F3F5FF}
+html[data-theme="dark"] .fs-brandbar img{filter:brightness(0) invert(1)}
+html[data-theme="dark"] :is(.chart-insight,.flowbar,.research-flow){background:#18204A!important;color:#F3F5FF!important}
+html[data-theme="dark"] a{color:#59C5C8}
+html[data-theme="dark"] .ct-tip{background:#18204A;border:1px solid #2A3360}
+/* Bảng chụp ảnh luôn giữ bản sáng. */
+html[data-theme="dark"] .fs-share-modal *{color:revert}
+@media print{html[data-theme="dark"] body{background:#fff!important;color:#303540}}
+html[data-theme="dark"] .research-path{background:#18204A!important;color:#F3F5FF!important;border-color:#232B52!important}
+html[data-theme="dark"] .research-path *{color:#F3F5FF!important}
+html[data-theme="dark"] :is(.fs-share-btn,.fs-share-trigger,button.fs-share){background:#18204A!important;color:#F3F5FF!important;border-color:#2A3360!important}
+html[data-theme="dark"] .fs-share-modal :is(p,label,small,b,span,div,h3){color:#303540!important}
