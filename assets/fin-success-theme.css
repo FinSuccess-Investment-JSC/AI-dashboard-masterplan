@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap');
 /* FinSuccess visual rules from Stock dashboard/CLAUDE.md and _template/brand.css.
    Shared by the hub and every sector page. Source/status meaning is preserved. */
 :root {
@@ -487,3 +487,35 @@ table td,table th,.kpi .value,.num{font-variant-numeric:tabular-nums;font-featur
 .grid.kpis>.kpi:first-child{border-left:0!important}
 /* Tên ngành: chip đậm như ô mã của Stock. */
 .research-header h1{display:inline-block;padding:6px 16px;border-radius:10px;background:#F0F3FF;font-size:24px;font-weight:800;letter-spacing:-.01em}
+
+/* ===== Vòng 4 (28/10/2026): Stock /design/ + FISC Market design-rules v3.2 =====
+   Màu giữ 5 token FinSuccess (Stock). Kiểu chữ, KPI, segmented theo Stock /design/;
+   thẻ nổi, thanh tab, tiêu đề serif, bảng theo FISC Market. */
+:root{--fs-float:0 8px 18px -6px rgba(29,38,120,.16),0 2px 5px rgba(29,38,120,.06);--fs-float-h:0 12px 24px -6px rgba(29,38,120,.22),0 3px 7px rgba(29,38,120,.08);--fs-ease:cubic-bezier(.2,.7,.2,1)}
+/* Tiêu đề trang serif (FISC: Newsreader 500, -0.7px). */
+.research-header h1{display:block;padding:0;background:none;border-radius:0;font:500 34px/1.18 Newsreader,Georgia,serif;letter-spacing:-.7px;color:#1D2678}
+@media(max-width:700px){.research-header h1{font-size:28px}}
+/* Thanh tab chính (FISC): khung trắng nổi, mục chọn tô navy chữ trắng; sticky. */
+.majortabs{position:sticky!important;top:10px;z-index:30;display:flex;gap:4px!important;max-width:1392px;margin:14px auto 0!important;padding:5px!important;background:#fff!important;border:0!important;border-radius:14px;box-shadow:var(--fs-float)!important}
+.research-header.fs-titleband ~ .majortabs{padding-inline:5px!important}
+.majortabbtn,.majortabbtn.active{border:0!important;border-radius:10px!important;padding:10px 14px!important;font:600 13px/1.3 var(--fs-font)!important;color:#596272!important;transition:background .15s var(--fs-ease),color .15s}
+.majortabbtn:hover{background:rgba(29,38,120,.05)!important;color:#1D2678!important}
+.majortabbtn.active,.majortabbtn[aria-selected="true"]{background:#1D2678!important;color:#fff!important;border-bottom:0!important;box-shadow:0 6px 14px -4px rgba(29,38,120,.45)}
+@media(max-width:1440px){.majortabs{margin-inline:24px!important}}
+@media(max-width:700px){.majortabs{margin-inline:14px!important;top:6px}}
+/* Thẻ nổi (FISC): viền trong suốt, bóng float, hover nhấc 2px. */
+.card,.kpi,.business-model,.research-topic,.tx-tile,.thesis-signal,.grid.kpis{border-color:transparent!important;box-shadow:var(--fs-float)!important}
+.card .card{box-shadow:none!important;border-color:#EEF0F6!important}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.card{transition:transform .15s var(--fs-ease),box-shadow .15s}.card:hover{transform:translateY(-2px);box-shadow:var(--fs-float-h)!important}}
+/* KPI theo Stock /design/: nhãn 10.5px/700 in hoa, số 28px/700 navy. */
+.kpi .label{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#596272}
+.kpi .value{font-size:28px;font-weight:700;letter-spacing:-.01em;color:#1D2678}
+.grid.kpis>.kpi{box-shadow:none!important}
+/* Tiêu đề card: Inter 600/14 (Stock /design/). */
+.chart-title,.card h3{font-size:14px;font-weight:600;letter-spacing:0;color:#1D2678}
+/* Bảng (FISC): tiêu đề nhỏ muted nền nhạt, không kẻ giữa các hàng, hover nền nhạt. */
+table:not(.fintbl) th{font-size:10.5px;font-weight:600;border-bottom:1px solid #E2E7F1}
+table:not(.fintbl) td{border-bottom:0!important}
+table:not(.fintbl) tbody tr:nth-child(even) td{background:transparent}
+table tbody tr:hover td{background:#EEF8F8!important}
+@media print{.majortabs{position:static!important;box-shadow:none!important}.card:hover{transform:none}}
