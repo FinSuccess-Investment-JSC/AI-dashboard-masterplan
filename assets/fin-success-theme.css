@@ -646,3 +646,51 @@ html[data-theme="dark"] .research-header h1{color:#F3F5FF}
 @media (prefers-reduced-motion:reduce){.majorpane,.pane-subpane,.supply-pane,svg.fs-draw *{animation:none!important}.majortabs .fs-ink{transition:none}}
 @media print{.majortabs{position:static!important;backdrop-filter:none}.fs-dots,.fs-ink{display:none}.ct-switch{opacity:1}}
 .fs-flow .fs-dot{stroke:#fff;stroke-width:1}
+
+/* ===== Chữ thành hình (28/10/2026) ===== */
+.fs-ic{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.fs-ic-risk{color:#B3303F}.fs-ic-money{color:#1A7A50}.fs-ic-cost{color:#8A6400}.fs-ic-law{color:#861C52}.fs-ic-client,.fs-ic-globe{color:#2938A8}.fs-ic-make,.fs-ic-input{color:#2B8E91}.fs-ic-time{color:#596272}.fs-ic-dot{color:#A9B0C6}
+.fs-iconlist{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px}
+.fs-iconlist li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:start;font-size:13px;line-height:1.55}
+.fs-iconlist li .fs-ic{width:28px;height:28px;padding:5px;border-radius:8px;background:color-mix(in srgb,currentColor 11%,transparent)}
+.fs-num{color:#1D2678;font-weight:800;background:linear-gradient(transparent 62%,rgba(89,197,200,.28) 0);padding:0 1px}
+/* Bản đồ ngành: quy trình có mũi tên chạy. */
+.research-steps.fs-steps{display:flex!important;align-items:stretch;gap:0!important}
+.fs-steps>article{flex:1 1 0;min-width:0}
+.fs-steps h3{display:flex;align-items:center;gap:8px}
+.fs-steps h3 .fs-ic{width:30px;height:30px;padding:6px;border-radius:9px;background:color-mix(in srgb,currentColor 12%,transparent)}
+.fs-step-arrow{flex:0 0 34px;display:grid;place-items:center}
+.fs-step-arrow i{display:block;width:26px;height:2px;position:relative;background:repeating-linear-gradient(90deg,#59C5C8 0 6px,transparent 6px 10px);background-size:20px 2px;animation:fsMarch 1s linear infinite}
+.fs-step-arrow i::after{content:"";position:absolute;right:-2px;top:-4px;border-left:7px solid #59C5C8;border-top:5px solid transparent;border-bottom:5px solid transparent}
+@keyframes fsMarch{to{background-position:20px 0}}
+@media(max-width:800px){.research-steps.fs-steps{flex-direction:column}.fs-step-arrow{flex-basis:26px;transform:rotate(90deg)}}
+/* Chip mã. */
+.fs-chip{display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:6px;background:#EEF0F8;color:#1D2678;font:700 11.5px/1.5 var(--fs-font);letter-spacing:.02em}
+.fs-chip-lbl{display:inline-block;margin-right:6px;padding:2px 8px;border-radius:999px;background:#E7F5F5;color:#256f72;font:700 11px/1.5 var(--fs-font);text-transform:uppercase;letter-spacing:.05em}
+.fs-chip-lbl.alt{background:#F0F3FF;color:#2938A8;margin-left:6px}
+/* Data bar trong ô bảng. */
+td.fs-bar-cell{font-variant-numeric:tabular-nums}
+td.fs-bar-cell::after{content:"";display:block;width:calc(var(--w) * .9);max-width:120px;min-width:3px;height:5px;margin-top:5px;border-radius:3px;background:linear-gradient(90deg,#2938A8,#59C5C8)}
+td.fs-bar-cell.neg::after{background:#B3303F}
+/* Timeline trên bảng. */
+.fs-tl{margin:6px 0 12px;overflow-x:auto}
+.fs-tl svg{display:block;width:100%;min-width:640px;height:auto}
+.fs-tl .axis{stroke:#DCE1E9;stroke-width:2}
+.fs-tl .now{stroke:#B3303F;stroke-width:2;stroke-dasharray:3 3}
+.fs-tl .nowt{fill:#B3303F;font:700 11px var(--fs-font)}
+.fs-tl-m line{stroke:#B9C1D0}
+.fs-tl-m circle{fill:#2938A8;stroke:#fff;stroke-width:2}
+.fs-tl-m text{font:500 11.5px var(--fs-font);fill:#303540}
+.fs-tl-m text .d{font-weight:800;fill:#1D2678}
+/* Timeline dọc cho danh sách mốc ngày. */
+ul.fs-vtl{list-style:none!important;padding-left:0!important;position:relative}
+ul.fs-vtl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:linear-gradient(#2938A8,#59C5C8)}
+ul.fs-vtl>li{position:relative;padding-left:22px;margin-bottom:8px}
+ul.fs-vtl>li:has(.fs-vtl-d){display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline}
+ul.fs-vtl>li:not(:has(.fs-vtl-d))::before{width:8px;height:8px;left:2px;top:8px;border-width:2px;border-color:#59C5C8}
+ul.fs-vtl>li::before{content:"";position:absolute;left:0;top:6px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #2938A8;box-sizing:border-box}
+.fs-vtl-d{font-weight:800;color:#1D2678;white-space:nowrap;font-variant-numeric:tabular-nums}
+html[data-theme="dark"] :is(.fs-chip,.fs-chip-lbl.alt){background:#18204A;color:#F3F5FF}
+html[data-theme="dark"] .fs-num{color:#F3F5FF}
+html[data-theme="dark"] .fs-tl-m text{fill:#98A0C8}
+@media (prefers-reduced-motion:reduce){.fs-step-arrow i{animation:none}}

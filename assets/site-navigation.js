@@ -325,3 +325,122 @@
   document.addEventListener('click', e => { if (e.target.closest('.majortabbtn, .tabbtn, [role="tab"]')) later(); });
   let st = 0; addEventListener('scroll', () => { const s = scrollY > 120; if (s !== st) { st = s; document.documentElement.classList.toggle('fs-scrolled', s); } }, {passive: true});
 })();
+
+// Chữ thành hình (28/10/2026): đổi đoạn chữ dày thành sơ đồ, icon, data bar, timeline, chip mã.
+// Không xóa hay viết lại câu nào: chỉ tách câu, gắn icon, vẽ thêm hình từ chính số/ngày trong bảng.
+(() => {
+  const NS = 'http://www.w3.org/2000/svg';
+  const ICON = {
+    money: '<path d="M3 7h18v10H3z"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10v4M18 10v4"/>',
+    cost: '<path d="M12 3v18M16 7H10a2.5 2.5 0 0 0 0 5h4a2.5 2.5 0 0 1 0 5H7"/>',
+    risk: '<path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17h.01"/>',
+    client: '<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M16 4a3 3 0 0 1 0 6M21 20c0-2-1-4-3-4.6"/>',
+    make: '<path d="M3 20V10l6 3V9l6 3V5h6v15z"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+    input: '<path d="M4 7l8-4 8 4-8 4z"/><path d="M4 12l8 4 8-4M4 17l8 4 8-4"/>',
+    law: '<path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0zM17 7l-3 7a3 3 0 0 0 6 0z"/>',
+    time: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>',
+    dot: '<circle cx="12" cy="12" r="3"/>'
+  };
+  const RULES = [
+    ['risk', /rủi ro|chịu (thuế|rủi ro|phòng vệ|các vụ)|phòng vệ|chống bán phá giá|cạnh tranh|vướng|thiếu|áp lực|khâu yếu/i],
+    ['money', /doanh thu|thu nhập|lợi nhuận|biên|thu phí|cổ tức|chênh lệch giá/i],
+    ['cost', /chi phí|lương|giá (bông|xơ|nguyên|vốn|than|dầu)|giá thành/i],
+    ['law', /thuế|quy tắc|luật|nghị định|chính sách|hạn ngạch|xuất xứ/i],
+    ['client', /nhãn hàng|khách|đơn hàng|nhận đơn|người mua|bán cho/i],
+    ['time', /quý|tháng|năm|đi sau|chu kỳ/i],
+    ['input', /nguyên liệu|nhập|xơ|bông|vải|phụ liệu/i],
+    ['make', /kéo sợi|dệt|may|sản xuất|nhà máy|chế biến|gia công/i],
+    ['globe', /Mỹ|EU|Nhật|Trung Quốc|xuất khẩu|thị trường/i]
+  ];
+  const iconOf = t => (RULES.find(([, re]) => re.test(t)) || ['dot'])[0];
+  const svgIcon = k => `<svg class="fs-ic fs-ic-${k}" viewBox="0 0 24 24" aria-hidden="true">${ICON[k]}</svg>`;
+  const esc = s => s.replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'}[c]));
+  // Tô số trong câu (chữ giữ nguyên).
+  const NUM = /([+−-]?~?\d[\d.,]*(?:–\d[\d.,]*)?\s?(?:%|điểm %|tỷ USD|triệu USD|nghìn tỷ|tỷ đồng|tỷ|USD\/tấn|lần|x)(?![\p{L}]))/gu;
+  const markNums = html => html.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, txt) => tag || txt.replace(NUM, '<b class="fs-num">$1</b>'));
+  // Tách một <p> thành các dòng có icon; giữ nguyên HTML trong câu (link, <b>).
+  function sentences(p) {
+    if (p.dataset.fsVis || p.closest('.fs-iconlist,table,.chart-info-panel')) return;
+    if (p.querySelector("a,[title]")) { p.innerHTML = markNums(p.innerHTML); p.dataset.fsVis = "1"; return; }
+    const parts = p.innerHTML.split(/(?<=[.;])\s+(?=[A-ZĐÂÊÔƠƯÁÀẢÃẠ0-9<])/u).map(s => s.trim()).filter(Boolean);
+    if (parts.length < 2) { p.innerHTML = markNums(p.innerHTML); p.dataset.fsVis = '1'; return; }
+    const ul = document.createElement('ul'); ul.className = 'fs-iconlist'; ul.dataset.fsVis = '1';
+    ul.innerHTML = parts.map(s => { const t = s.replace(/<[^>]+>/g, ''); return `<li>${svgIcon(iconOf(t))}<span>${markNums(s)}</span></li>`; }).join('');
+    p.replaceWith(ul);
+  }
+  // Chuỗi mã "TCM · TNG · MSH" thành chip.
+  const TICKERS = /^\s*(?:Mã chịu tác động:\s*)?([A-Z]{3}(?:\s*[·,]\s*[A-Z]{3})+)\s*$/;
+  function chips(el) {
+    if (el.dataset.fsChips || el.children.length > 1) return;
+    const t = el.textContent, m = t.match(TICKERS); if (!m) return;
+    el.dataset.fsChips = '1';
+    el.innerHTML = (t.includes('Mã chịu') ? '<span class="fs-chip-lbl">Mã chịu tác động</span>' : '') + m[1].split(/\s*[·,]\s*/).map(s => `<span class="fs-chip">${s}</span>`).join('');
+  }
+  // Data bar trong cột số của bảng.
+  const numIn = t => { const m = String(t).trim().match(/^([+−-]?\d[\d.]*(?:,\d+)?)\s?(%|điểm %|x|lần)?$/); if (!m) return null; const v = parseFloat(m[1].replace(/\./g, '').replace(',', '.').replace('−', '-')); return isFinite(v) ? {v, u: m[2] || ''} : null; };
+  function bars(table) {
+    if (table.dataset.fsBars || table.classList.contains('fintbl') || table.closest('.chart-info-panel')) return;
+    table.dataset.fsBars = '1';
+    const rows = [...table.tBodies[0]?.rows || []]; if (rows.length < 3) return;
+    const heads = [...(table.tHead?.rows[0]?.cells || [])].map(c => c.textContent.trim());
+    const cols = Math.max(...rows.map(r => r.cells.length));
+    for (let c = 1; c < cols; c++) {
+      if (/nguồn|ghi chú|mã|văn bản|hiệu lực|ngày|kỳ/i.test(heads[c] || '')) continue;
+      const cells = rows.map(r => r.cells[c]).filter(Boolean);
+      const vals = cells.map(td => (td.querySelector('a') || td.textContent.length > 22) ? null : numIn(td.textContent));
+      const ok = vals.filter(v => v != null);
+      if (ok.length < Math.max(3, cells.length * .6) || new Set(ok.map(o => o.u)).size > 1) continue;  // cùng đơn vị mới so được
+      const max = Math.max(...ok.map(o => Math.abs(o.v))); if (!max) continue;
+      cells.forEach((td, i) => {
+        const v = vals[i]?.v; if (v == null) return;
+        td.classList.add('fs-bar-cell'); td.style.setProperty('--w', (Math.abs(v) / max * 100).toFixed(1) + '%');
+        if (v < 0) td.classList.add('neg');
+      });
+    }
+  }
+  // Timeline phía trên bảng có cột ngày hiệu lực.
+  const dmy = t => { const m = String(t).match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); return m ? Date.UTC(+m[3], m[2] - 1, +m[1]) : null; };
+  function tableTimeline(table) {
+    if (table.dataset.fsTl) return; table.dataset.fsTl = '1';
+    const heads = [...(table.tHead?.rows[0]?.cells || [])].map(c => c.textContent.trim());
+    const di = heads.findIndex(h => /hiệu lực|ngày|thời điểm|mốc/i.test(h)); if (di < 1) return;
+    const items = [...table.tBodies[0].rows].map(r => ({t: dmy(r.cells[di]?.textContent), label: (r.cells[0]?.textContent || '').trim(), d: (r.cells[di]?.textContent || '').trim()})).filter(x => x.t);
+    if (items.length < 3) return;
+    items.sort((a, b) => a.t - b.t);
+    const now = Date.now(), lo = Math.min(items[0].t, now), hi = Math.max(items.at(-1).t, now), W = 1000, X = t => 30 + (t - lo) / ((hi - lo) || 1) * (W - 60);
+    const lanes = []; // tránh chồng nhãn: xếp hàng so le
+    const marks = items.map((it, i) => { const x = X(it.t); let lane = 0; while (lanes[lane] != null && x - lanes[lane] < 170) lane++; lanes[lane] = x; const up = lane % 2 === 0, dy = 18 + Math.floor(lane / 2) * 30;
+      const lbl = it.label.length > 34 ? it.label.slice(0, 33) + '…' : it.label, y = up ? 60 - dy : 60 + dy + 10, anc = x < 160 ? 'start' : x > W - 160 ? 'end' : 'middle', tx = anc === 'start' ? x - 6 : anc === 'end' ? x + 6 : x;
+      return `<g class="fs-tl-m"><line x1="${x}" x2="${x}" y1="60" y2="${up ? y + 4 : y - 12}"/><circle cx="${x}" cy="60" r="5"/><text x="${tx}" y="${y}" text-anchor="${anc}"><tspan class="d" x="${tx}">${esc(it.d)}</tspan><tspan x="${tx}" dy="13">${esc(lbl)}</tspan></text><title>${esc(it.d + ' · ' + it.label)}</title></g>`; }).join('');
+    const H = 140 + Math.max(0, Math.ceil(lanes.length / 2) - 1) * 30;
+    const box = document.createElement('div'); box.className = 'fs-tl'; box.setAttribute('aria-hidden', 'true');
+    box.innerHTML = `<svg viewBox="0 ${-Math.max(0, Math.ceil(lanes.length / 2) - 1) * 30} ${W} ${H}"><line x1="20" x2="${W - 20}" y1="60" y2="60" class="axis"/><line x1="${X(now)}" x2="${X(now)}" y1="44" y2="76" class="now"/><text x="${X(now)}" y="38" text-anchor="middle" class="nowt">Hôm nay</text>${marks}</svg>`;
+    (table.closest('.tablewrap') || table).before(box);
+  }
+  // Danh sách mốc ngày thành timeline dọc.
+  const DATE_LI = /^\s*(?:[\p{L} ]{0,12})?(\d{1,2}\/\d{1,2}\/\d{4}|\d{1,2}\/\d{4}|Q\d\/\d{4}|\d{4})\s*:/u;
+  function listTimeline(ul) {
+    if (ul.dataset.fsTl) return; ul.dataset.fsTl = '1';
+    const lis = [...ul.children]; const hits = lis.filter(li => DATE_LI.test(li.textContent));
+    if (hits.length < 2 || hits.length < lis.length * .5) return;
+    ul.classList.add('fs-vtl');
+    hits.forEach(li => { const m = li.innerHTML.match(/^\s*([^:<]{1,30}):\s*/); if (m) li.innerHTML = `<span class="fs-vtl-d">${m[1]}</span><span>${li.innerHTML.slice(m[0].length)}</span>`; });
+  }
+  // Bản đồ ngành: các bước nối thành quy trình có mũi tên chạy.
+  function steps(box) {
+    if (box.dataset.fsSteps) return; box.dataset.fsSteps = '1'; box.classList.add('fs-steps');
+    [...box.children].forEach((a, i) => { const h = a.querySelector('h3'); if (h) h.insertAdjacentHTML('afterbegin', svgIcon(iconOf(h.textContent))); if (i) a.insertAdjacentHTML('beforebegin', '<span class="fs-step-arrow" aria-hidden="true"><i></i></span>'); });
+  }
+  function run() {
+    document.querySelectorAll('.research-steps').forEach(steps);
+    document.querySelectorAll('.research-steps article p, .business-model p, .research-topic p, .thesis-signal p').forEach(sentences);
+    document.querySelectorAll('.business-ticker, td, .card > p, li').forEach(chips);
+    document.querySelectorAll('.majorpane table').forEach(t => { if (t.offsetParent) { bars(t); tableTimeline(t); } });
+    document.querySelectorAll('.majorpane .card ul').forEach(listTimeline);
+    document.querySelectorAll('.research-caption').forEach(p => { if (!p.dataset.fsVis && /^Tác động:/.test(p.textContent)) { p.dataset.fsVis = '1'; p.innerHTML = p.innerHTML.replace(/^Tác động:\s*/, '<span class="fs-chip-lbl">Tác động</span>').replace(/\s·\s(qua\s)/, ' <span class="fs-chip-lbl alt">Kênh</span> '); } });
+  }
+  const later = () => setTimeout(run, 350);
+  if (document.readyState === 'complete') later(); else addEventListener('load', () => { run(); setTimeout(run, 1500); });
+  document.addEventListener('click', e => { if (e.target.closest('.majortabbtn, .tabbtn, summary')) later(); });
+})();

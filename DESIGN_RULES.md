@@ -122,3 +122,11 @@ Người dùng: "giữ format như cũ, chỉnh cách design, navigation, color,
 - Nội dung tab/sub-tab hiện dần 320 ms; chart vẽ dần lần đầu xuất hiện (cột mọc lên, đường vẽ ra); số KPI đếm lên 750 ms (dừng nếu script dữ liệu ghi số mới).
 - Hero: nhãn "DASHBOARD NGÀNH" + tên ngành 36px. Card không viền, bóng mềm. Thanh công cụ chart nhạt 62%, rõ khi rê chuột/focus (vẫn hiện, vẫn bấm được; màn hình cảm ứng luôn rõ).
 - Mọi chuyển động tắt khi `prefers-reduced-motion`; bản in tĩnh.
+
+## Chữ thành hình (28/10/2026)
+Người dùng: "nhiều chữ quá, biến chữ thành hình ảnh, chart, diagram, flowchart". Lớp "Chữ thành hình" cuối `site-navigation.js` (+ CSS cuối `fin-success-theme.css`) chạy cho mọi ngành, **không xóa/viết lại câu nào**:
+- Bản đồ ngành (`.research-steps`): các bước nối bằng mũi tên chạy, mỗi bước có icon; đoạn văn tách câu thành dòng có icon theo nghĩa (tiền vào, chi phí, rủi ro, luật/thuế, khách hàng, sản xuất, nhập, thị trường, thời gian).
+- "Doanh nghiệp kiếm tiền như thế nào" (`.business-model p`): tách câu + icon như trên.
+- Số trong câu (%, tỷ USD, lần…) tô nổi `.fs-num`.
+- Bảng: cột số cùng đơn vị (≥3 ô) có vạch data bar dưới số; bảng có cột "Hiệu lực/Ngày/Mốc" (≥3 ngày dd/mm/yyyy) có dải timeline phía trên kèm mốc "Hôm nay".
+- Danh sách có ≥ nửa dòng bắt đầu bằng mốc ngày → timeline dọc. Chuỗi mã "TCM · TNG" → chip. "Tác động: … · qua …" → nhãn TÁC ĐỘNG / KÊNH.
