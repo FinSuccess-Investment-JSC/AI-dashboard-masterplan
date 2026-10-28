@@ -673,8 +673,10 @@ html[data-theme="dark"] .research-header h1{color:#F3F5FF}
 .fs-chip-lbl.alt{background:#F0F3FF;color:#2938A8;margin-left:6px}
 /* Data bar trong ô bảng. */
 td.fs-bar-cell{font-variant-numeric:tabular-nums}
-td.fs-bar-cell::after{content:"";display:block;width:calc(var(--w) * .9);max-width:120px;min-width:3px;height:5px;margin-top:5px;border-radius:3px;background:linear-gradient(90deg,#2938A8,#59C5C8)}
-td.fs-bar-cell.neg::after{background:#B3303F}
+/* Data bar nằm sau con số (căn phải), không thêm dòng dưới số */
+td.fs-bar-cell{background:linear-gradient(to left,rgba(89,197,200,.18) calc(var(--w) * .92),transparent 0) no-repeat right 6px center/100% 48%}
+td.fs-bar-cell.neg{background-image:linear-gradient(to left,rgba(179,48,63,.16) calc(var(--w) * .92),transparent 0)}
+html[data-theme="dark"] td.fs-bar-cell{background-image:linear-gradient(to left,rgba(89,197,200,.2) calc(var(--w) * .92),transparent 0)}
 /* Timeline trên bảng. */
 .fs-tl{margin:6px 0 12px;overflow-x:auto}
 .fs-tl svg{display:block;width:100%;min-width:640px;height:auto}

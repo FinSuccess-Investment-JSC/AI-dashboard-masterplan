@@ -213,3 +213,47 @@ html[data-theme="dark"] .vc-status,html[data-theme="dark"] .pv-filter{background
 html[data-theme="dark"] .pv-bar span+span{box-shadow:inset 2px 0 0 #0B1026}
 html[data-theme="dark"] .tablewrap tbody tr:nth-child(2n){background:rgba(255,255,255,.035)}
 html[data-theme="dark"] .research-roadmap article{background:#131a3d!important;border-color:#2c3670!important;color:#d9def4}html[data-theme="dark"] .research-roadmap article h3{color:#F3F5FF!important}
+
+/* Điện · thẻ "kiếm tiền thế nào" */
+.business-model.pv-bm{position:relative;overflow:hidden;padding:18px 18px 14px;border-top:4px solid var(--c)}
+.pv-bm header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.pv-bm-ic{width:42px;height:42px;border-radius:12px;background:var(--c);display:grid;place-items:center;flex:none}
+.pv-bm-ic svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pv-bm h3{margin:0 0 5px;font-size:15px;color:#1D2678}
+.pv-bm-codes{display:flex;flex-wrap:wrap;gap:4px}.pv-bm-codes .pv-chip{font-size:10.5px;padding:1px 7px;font-weight:700}
+.pv-bm-stat{margin-left:auto;text-align:right;line-height:1.1}
+.pv-bm-stat b{display:block;font-size:24px;color:var(--c);font-variant-numeric:tabular-nums}.pv-bm-stat span{font-size:10.5px;color:#8f9bc4}
+.pv-bm-label{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8f9bc4;margin:10px 0 6px}
+.pv-bm-formula{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.pv-bm-term{padding:6px 10px;border-radius:8px;background:color-mix(in srgb,var(--c) 10%,#fff);border:1px solid color-mix(in srgb,var(--c) 28%,transparent);font-size:12.5px;font-weight:600;color:#1D2678}
+.pv-bm-formula i{font-style:normal;font-weight:800;color:var(--c);font-size:15px}
+.pv-bm-drivers{display:flex;flex-wrap:wrap;gap:6px}
+.pv-bm-drivers span{font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px}
+.pv-bm-drivers .pos{background:#e7f5ec;color:#2f8f4e}.pv-bm-drivers .neg{background:#fbeae7;color:#b8443a}
+.pv-bm-more{margin-top:12px;font-size:12.5px;color:#5a6682}.pv-bm-more summary{cursor:pointer;font-weight:600;color:#2938A8;font-size:12px}
+
+/* Điện · 18 doanh nghiệp dạng thẻ */
+.pv-view{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:#EEF0F6;margin:4px 0 12px}
+.pv-view button{border:0;background:transparent;padding:5px 14px;border-radius:999px;font-weight:700;font-size:12px;color:#5a6682;cursor:pointer}
+.pv-view button[aria-pressed="true"]{background:#fff;color:#1D2678;box-shadow:0 1px 3px rgba(29,38,120,.15)}
+.pv-cg-head{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#1D2678;margin:16px 0 8px}
+.pv-cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+.pv-co{border:1px solid #e3e7f2;border-left:4px solid var(--c);border-radius:12px;padding:12px 14px;background:#fff;display:flex;flex-direction:column;gap:9px;transition:transform .15s,box-shadow .15s}
+.pv-co:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(29,38,120,.1)}
+.pv-co header{display:flex;align-items:center;gap:8px}
+.pv-co header .pv-chip{font-size:13px;font-weight:800;padding:3px 10px}
+.pv-co header em{font-style:normal;font-size:11px;color:#8f9bc4;font-weight:600}
+.pv-co-val{margin-left:auto;text-align:right;line-height:1.05}
+.pv-co-val b{font-size:19px;color:#1D2678;font-variant-numeric:tabular-nums}.pv-co-val span{font-size:10.5px;color:#8f9bc4;margin-left:3px}
+.pv-co-val i{display:block;font-style:normal;font-size:11px;font-weight:700;color:#2938A8;margin-top:3px}
+.pv-co-asset{margin:0;font-size:12px;line-height:1.5;color:#303540;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pv-co:hover .pv-co-asset{-webkit-line-clamp:unset}
+.pv-co-tags{display:flex;flex-wrap:wrap;gap:4px}
+.pv-co-tags span{font-size:11px;padding:2px 8px;border-radius:6px;background:#f2f4fa;color:#3d4653}
+.pv-co-ev{display:flex;gap:7px;align-items:flex-start;font-size:11.5px;line-height:1.45;color:#5a6682;padding-top:8px;border-top:1px dashed #e3e7f2;margin-top:auto}
+.pv-co-ev svg{width:14px;height:14px;flex:none;margin-top:1px;fill:none;stroke:#8f9bc4;stroke-width:1.8}
+.pv-co-ev.key{color:#b8443a}.pv-co-ev.key svg{stroke:#b8443a}.pv-co-ev mark{background:none;color:inherit;font-weight:700}
+html[data-theme="dark"] .pv-co,html[data-theme="dark"] .pv-bm-term{background:#1a2250;border-color:#2c3670}
+html[data-theme="dark"] .pv-co-asset,html[data-theme="dark"] .pv-bm h3,html[data-theme="dark"] .pv-co-val b,html[data-theme="dark"] .pv-bm-term,html[data-theme="dark"] .pv-cg-head{color:#F3F5FF}
+html[data-theme="dark"] .pv-co-tags span{background:#232c5e;color:#d9def4}
+html[data-theme="dark"] .pv-view{background:#1a2250}html[data-theme="dark"] .pv-view button[aria-pressed="true"]{background:#2c3670;color:#fff}

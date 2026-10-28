@@ -147,6 +147,79 @@ function table() {
   });
 }
 
-function run() { topRow(); hydroMap(); heatmap(); table(); }
+/* ---- Doanh nghiệp kiếm tiền thế nào: công thức lợi nhuận + yếu tố tác động, chữ gốc vào "Chi tiết" ---- */
+const ICON = {
+  coal: '<path d="M3 21V11l5 3v-3l5 3V5h3v16zM3 21h18M18 21V9h3v12"/>',
+  hydro: '<path d="M4 4h16v8H4zM3 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>',
+  re: '<circle cx="12" cy="9" r="1.4"/><path d="M12 10.4V22M12 9L6 5M12 9l6-2M12 9l1 7"/>',
+  build: '<path d="M12 2L7 22M12 2l5 20M6 7h12M8 13h8M7.5 17l9-4M16.5 17l-9-4"/>'
+};
+// Công thức và chiều tác động lấy từ chính đoạn chữ của từng nhóm (research-layout.js), không thêm nhận định mới.
+const MODEL = {
+  'Nhiệt điện than & khí': {g: 'coalplant', ic: 'coal', share: r => r.coal + (r.gas || 0) + (r.oil || 0), shareLabel: 'than + khí',
+    f: [['Sản lượng huy động', '×'], ['Giá PPA + thị trường', '−'], ['Nhiên liệu than/khí', '−'], ['Khấu hao, lãi vay', '']],
+    d: [['Mức huy động ↑', 1], ['Giá thị trường ↑', 1], ['Nhiên liệu ↑ (chưa chuyển ngang)', -1], ['Nhà máy cũ: khấu hao ↓', 1]]},
+  'Thủy điện': {g: 'hydro', ic: 'hydro', share: r => r.hydro, shareLabel: 'thủy điện',
+    f: [['Nước về → sản lượng', '×'], ['Giá thị trường', '−'], ['Chi phí biến đổi ≈ 0', '']],
+    d: [['Năm nước nhiều', 1], ['El Niño: nước về ↓', -1], ['El Niño: giá thị trường ↑', 1]]},
+  'Năng lượng tái tạo': {g: 're', ic: 're', share: r => (r.wind || 0) + (r.solar_farm || 0) + (r.rooftop_solar || 0) + (r.solar || 0), shareLabel: 'gió + mặt trời',
+    f: [['Bức xạ, gió', '×'], ['Giá FIT / chuyển tiếp', '−'], ['Cắt giảm công suất', '']],
+    d: [['Cắt giảm công suất', -1], ['Đàm phán lại giá FIT', -1], ['Thanh toán chậm', -1], ['DPPA, QHĐ VIII mở dự án', 1]]},
+  'Xây lắp, tư vấn & thiết bị lưới': {g: 'build', ic: 'build',
+    f: [['Vốn EVN/NPT', '→'], ['Backlog hợp đồng', '→'], ['Doanh thu theo tiến độ', '']],
+    d: [['Đầu tư lưới theo QHĐ VIII', 1], ['Giải ngân EVN/NPT nhanh', 1], ['Giải ngân chậm', -1]]}
+};
+function businessCards() {
+  const sec = document.querySelector('.business-models'); if (!sec) return;
+  const last = daily.at(-1), tot = last && MIX.reduce((a, m) => a + (m[3](last) || 0), 0), V = window.COMPANY_VALUATION?.companies || {};
+  sec.querySelectorAll('article.business-model').forEach(art => {
+    const title = art.querySelector('h3')?.textContent.trim(), m = MODEL[title]; if (!m) return;
+    const codes = GROUP[m.g];  // chữ mã đã bị đổi thành chip dính liền, nên lấy theo nhóm
+    const c = GCOLOR[m.g], sh = m.share && tot ? m.share(last) / tot * 100 : null;
+    const cap = codes.reduce((a, k) => a + (V[k]?.market_cap || 0), 0);
+    const old = [...art.childNodes].filter(n => !(n.classList?.contains('business-ticker') || n.tagName === 'H3'));
+    const det = el('details', 'pv-bm-more', '<summary>Chi tiết</summary>'); old.forEach(n => det.append(n));
+    art.classList.add('pv-bm'); art.style.setProperty('--c', c);
+    art.querySelector('.business-ticker')?.remove(); art.querySelector('h3')?.remove();
+    art.insertAdjacentHTML('afterbegin', `<header><span class="pv-bm-ic"><svg viewBox="0 0 24 24">${ICON[m.ic]}</svg></span><div><h3>${title}</h3><div class="pv-bm-codes">${codes.map(k => `<span class="pv-chip" style="--c:${c}">${k}</span>`).join('')}</div></div>
+      <div class="pv-bm-stat">${sh != null ? `<b>${nf(sh)}%</b><span>sản lượng ${dm(last.date).slice(0, 5)}</span>` : `<b>${nf(cap / 1000, 1)}</b><span>nghìn tỷ vốn hóa</span>`}</div></header>
+      <div class="pv-bm-label">Lợi nhuận đến từ</div>
+      <div class="pv-bm-formula">${m.f.map(([t, op]) => `<span class="pv-bm-term">${t}</span>${op ? `<i>${op}</i>` : ''}`).join('')}</div>
+      <div class="pv-bm-label">Yếu tố tác động tới lãi</div>
+      <div class="pv-bm-drivers">${m.d.map(([t, s]) => `<span class="${s > 0 ? 'pos' : 'neg'}">${s > 0 ? '▲' : '▼'} ${t}</span>`).join('')}</div>`);
+    art.append(det);
+  });
+}
+
+/* ---- 18 doanh nghiệp: dạng thẻ (mặc định) / bảng ---- */
+function companyCards() {
+  const card = document.querySelector('[data-block-id="dien-03"]'), tb = card?.querySelector('table'); if (!tb || card.querySelector('.pv-cards')) return;
+  const V = window.COMPANY_VALUATION?.companies || {}, wrap = el('div', 'pv-cards');
+  let grid = null, gname = '';
+  [...tb.tBodies[0].rows].forEach(r => {
+    if (r.cells.length === 1) { gname = r.textContent.trim(); wrap.insertAdjacentHTML('beforeend', `<div class="pv-cg-head">${gname}</div>`); grid = el('div', 'pv-cg'); wrap.append(grid); return; }
+    const code = r.dataset.code, g = r.dataset.group, c = GCOLOR[g] || '#2938A8', v = V[code];
+    const ex = (r.cells[0].textContent.split('·')[1] || '').trim();
+    const drivers = r.cells[2].textContent.split(/;\s*/).map(t => t.trim()).filter(Boolean);
+    const ev = r.cells[3].innerHTML, key = !!r.cells[3].querySelector('mark');
+    const k = el('article', 'pv-co'); k.dataset.code = code; k.style.setProperty('--c', c);
+    k.innerHTML = `<header><span class="pv-chip" style="--c:${c}">${code}</span><em>${ex}</em>${v ? `<div class="pv-co-val"><b>${nf(v.market_cap / 1000, 1)}</b><span>nghìn tỷ</span><i>${v.pe > 0 ? 'P/E ' + nf(v.pe, 1) + 'x' : 'P/E —'}</i></div>` : ''}</header>
+      <p class="pv-co-asset">${r.cells[1].innerHTML}</p>
+      <div class="pv-co-tags">${drivers.map(t => `<span>${t}</span>`).join('')}</div>
+      <div class="pv-co-ev${key ? ' key' : ''}"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>${ev}</span></div>`;
+    grid.append(k);
+  });
+  const tw = card.querySelector('.tablewrap'), host = tw.closest('details') || tw;
+  const sw = el('div', 'pv-view', '<button type="button" aria-pressed="true">Thẻ</button><button type="button" aria-pressed="false">Bảng</button>');
+  host.before(sw); host.before(wrap); host.hidden = true;
+  sw.querySelectorAll('button').forEach((b, i) => b.addEventListener('click', () => { sw.querySelectorAll('button').forEach((x, j) => x.setAttribute('aria-pressed', String(i === j))); wrap.hidden = i === 1; host.hidden = i === 0; if (host.tagName === 'DETAILS') host.open = true; }));
+  document.addEventListener('vc:select', e => {
+    const set = e.detail?.id ? new Set(e.detail.codes) : null;
+    wrap.querySelectorAll('.pv-co').forEach(k => k.hidden = !!set && !set.has(k.dataset.code));
+    wrap.querySelectorAll('.pv-cg').forEach(g => { const hide = ![...g.children].some(k => !k.hidden); g.hidden = hide; g.previousElementSibling.hidden = hide; });
+  });
+}
+
+function run() { topRow(); hydroMap(); heatmap(); table(); businessCards(); setTimeout(companyCards, 200); }
 if (document.readyState === 'complete') setTimeout(run, 300); else addEventListener('load', () => setTimeout(run, 300));
 })();
