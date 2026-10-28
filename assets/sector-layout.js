@@ -33,9 +33,65 @@ if(chain){
  const boxes=nodes.map(([id,x,y,lines])=>`<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="9" class="chain-node"/><text x="${x+w/2}" y="${y+(lines.length===1?37:lines.length===3?17:27)}" text-anchor="middle">${lines.map((t,i)=>`<tspan x="${x+w/2}" dy="${i?19:0}">${t}</tspan>`).join('')}</text></g>`).join('');
  const figure=make('div','value-chain-scroll');figure.tabIndex=0;figure.setAttribute('aria-label','Sơ đồ chuỗi giá trị; có thể cuộn ngang trên màn hình nhỏ');
  figure.innerHTML=`<svg viewBox="0 0 1170 ${oil?535:power?505:465}" role="img" aria-labelledby="chain-title chain-desc"><title id="chain-title">Chuỗi giá trị ngành ${oil?'dầu khí':power?'điện':'đường'}</title><desc id="chain-desc">${power?'Than, khí/LNG, thủy năng, gió và mặt trời đi vào bốn nhóm nhà máy; EVN/EPTC mua điện theo hợp đồng và thị trường, NSMO điều độ; NPT truyền tải, các tổng công ty điện lực phân phối tới khách hàng. DPPA cho phép bán trực tiếp; xây lắp và thiết bị hỗ trợ lưới.':oil?'Dầu và khí đi theo hai nhánh chế biến riêng. Dịch vụ kỹ thuật hỗ trợ khai thác; vận tải hỗ trợ luân chuyển dầu và sản phẩm.':'Mía nội địa và đường thô nhập đi qua chế biến, cung cấp đường cho khách hàng công nghiệp và bán lẻ. Đường nhập và HFCS tạo cạnh tranh.'}</desc><defs><marker id="chain-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#2938A8"/></marker></defs>${(power?['NHIÊN LIỆU & NƯỚC','PHÁT ĐIỆN','MUA ĐIỆN · LƯỚI · KHÁCH HÀNG']:['ĐẦU VÀO / THƯỢNG NGUỒN','CHẾ BIẾN / TRUNG NGUỒN','ĐẦU RA / KHÁCH HÀNG']).map((t,i)=>`<rect x="${[0,290,640][i]}" y="0" width="${[275,335,525][i]}" height="${oil?530:power?500:460}" rx="12" fill="${['#edf5fc','#f0f7ef','#fff4e7'][i]}"/><text x="${[137,457,902][i]}" y="33" text-anchor="middle" class="chain-lane">${t}</text>`).join('')}${paths}${boxes}</svg>`;
- heading.after(figure);chain.append(make('div','chart-insight',power?'AI · cách đọc chuỗi: Mỗi nhóm nhà máy nhạy với một biến khác nhau. Nhiệt điện than nhạy giá than và mức huy động; điện khí/LNG nhạy giá khí và hợp đồng bao tiêu; thủy điện nhạy thủy văn (El Niño làm giảm nước về); năng lượng tái tạo nhạy giá FIT/khung giá chuyển tiếp và cắt giảm công suất. EVN là bên mua chính nên giá bán lẻ và tài chính EVN ảnh hưởng tốc độ thanh toán cho mọi nhà máy.':oil?'AI · cách đọc chuỗi: Theo từng nhánh dầu và khí để xác định biến lợi nhuận. Lọc dầu nhạy với crack và công suất vận hành; phân phối nhạy với giá vốn và tồn kho; khí nhạy với sản lượng tiêu thụ và điều khoản giá. Dịch vụ kỹ thuật hưởng tác động qua đầu tư và tiến độ dự án, thường có độ trễ so với giá dầu.':'AI · cách đọc chuỗi: Tách doanh nghiệp tự chủ vùng mía với doanh nghiệp phụ thuộc đường thô nhập để hiểu độ nhạy giá nguyên liệu. Đầu ra công nghiệp và bán lẻ có cơ chế giá khác nhau; đường nhập và HFCS làm thay đổi khả năng chuyển chi phí sang khách hàng.'));
+ heading.after(power?powerChain():figure);chain.append(make('div','chart-insight',power?'AI · cách đọc chuỗi: Mỗi nhóm nhà máy nhạy với một biến khác nhau. Nhiệt điện than nhạy giá than và mức huy động; điện khí/LNG nhạy giá khí và hợp đồng bao tiêu; thủy điện nhạy thủy văn (El Niño làm giảm nước về); năng lượng tái tạo nhạy giá FIT/khung giá chuyển tiếp và cắt giảm công suất. EVN là bên mua chính nên giá bán lẻ và tài chính EVN ảnh hưởng tốc độ thanh toán cho mọi nhà máy.':oil?'AI · cách đọc chuỗi: Theo từng nhánh dầu và khí để xác định biến lợi nhuận. Lọc dầu nhạy với crack và công suất vận hành; phân phối nhạy với giá vốn và tồn kho; khí nhạy với sản lượng tiêu thụ và điều khoản giá. Dịch vụ kỹ thuật hưởng tác động qua đầu tư và tiến độ dự án, thường có độ trễ so với giá dầu.':'AI · cách đọc chuỗi: Tách doanh nghiệp tự chủ vùng mía với doanh nghiệp phụ thuộc đường thô nhập để hiểu độ nhạy giá nguyên liệu. Đầu ra công nghiệp và bán lẻ có cơ chế giá khác nhau; đường nhập và HFCS làm thay đổi khả năng chuyển chi phí sang khách hàng.'));
+ if(power){const lg=make('div','vc-legend');lg.innerHTML=[['#3d4653','Than'],['#c98a00','Khí • LNG'],['#2938A8','Thủy điện'],['#2a9fa3','Tái tạo'],['#861C52','DPPA'],['#5a6682','Điện lên lưới']].map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join('')+'<span>Rê chuột vào một khâu để xem luồng của khâu đó</span>';heading.nextElementSibling.after(lg)}
  const legend=make('div','source-note','Mũi tên liền: luồng điện/nhiên liệu chính · Mũi tên đứt: '+(power?'xây lắp và thiết bị hỗ trợ lưới, không phải dòng điện.':oil?'dịch vụ hỗ trợ; không phải bước biến đổi dầu thành khí.':'quan hệ thay thế tại khách hàng công nghiệp.')+' Sơ đồ không biểu thị tỷ trọng hay quan hệ sở hữu.');figure.after(legend);
  if(power){const refs=make('div','source-note');refs.innerHTML='Đối chiếu doanh nghiệp: <a href="https://bctn.genco3.com/thong-tin-chung/" target="_blank" rel="noopener">PGV · EVNGENCO3</a> · <a href="https://www.pecc1.com.vn/c3/gioi-thieu/Thong-tin-chung-2-406.aspx" target="_blank" rel="noopener">TV1 · PECC1</a> · <a href="https://www.pecc3.com.vn/gioi-thieu/" target="_blank" rel="noopener">TV3 · PECC3</a> · <a href="https://gelex.vn/tin-tuc-su-kien/gelex-electric-gioi-thieu-he-sinh-thai-san-pham-xanh-ben-vung.html" target="_blank" rel="noopener">GEE · GELEX Electric</a>. GEE ở nhánh thiết bị, không đại diện cho công suất phát điện.';legend.after(refs)}
+}
+function powerChain(){
+ // Each energy source keeps one color from fuel to EVN, so a reader can follow a stream across the three lanes.
+ const C={coal:'#3d4653',gas:'#c98a00',hydro:'#2938A8',re:'#2a9fa3',dppa:'#861C52',grid:'#5a6682',build:'#b8801f'};
+ const I={
+  coal:'<path d="M3 19l5-8 3 4 3-5 5 9z"/><path d="M8 11l1-2"/>',
+  gas:'<path d="M12 3c3 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-5 3-7 1 2 2 3 3 3 0-3-1-5 0-7z"/>',
+  water:'<path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/>',
+  factory:'<path d="M3 21V11l5 3v-3l5 3V5h3v16zM3 21h18M18 21V9h3v12"/>',
+  dam:'<path d="M4 4h16v8H4zM3 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>',
+  wind:'<circle cx="12" cy="9" r="1.4"/><path d="M12 10.4V22M12 9L6 5M12 9l6-2M12 9l1 7"/>',
+  bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+  direct:'<path d="M3 12h16M14 7l5 5-5 5M3 6h6M3 18h6"/>',
+  tower:'<path d="M12 2L7 22M12 2l5 20M6 7h12M8 13h8M7.5 17l9-4M16.5 17l-9-4"/>',
+  home:'<path d="M3 11l9-7 9 7v10H3zM9 21v-6h6v6"/>',
+  tool:'<path d="M15 4a5 5 0 0 0 5 5l-9 9a2.1 2.1 0 0 1-3-3l9-9a5 5 0 0 1-2-2z"/>'
+ };
+ const N=[
+  ['coal',20,64,230,C.coal,'coal','Than','Nhập khẩu • trong nước'],
+  ['gasfuel',20,166,230,C.gas,'gas','Khí • LNG','Mỏ trong nước • LNG nhập'],
+  ['water',20,268,230,C.hydro,'water','Thủy năng','Thủy văn • El Niño'],
+  ['sunwind',20,370,230,C.re,'sun','Gió • mặt trời','Bức xạ • tốc độ gió'],
+  ['coalplant',318,64,262,C.coal,'factory','Nhiệt điện than','PPC • QTP • HND • BTP','POW • PGV'],
+  ['gasplant',318,166,262,C.gas,'gas','Điện khí • LNG','POW • NT2 • PGV'],
+  ['hydro',318,268,262,C.hydro,'dam','Thủy điện','REE • VSH • CHP','SBA • TMP • SHP'],
+  ['re',318,370,262,C.re,'wind','Năng lượng tái tạo','GEG • HDG • TTA • PC1'],
+  ['eptc',672,166,218,C.grid,'bolt','EVN / EPTC mua điện','NSMO điều độ • thị trường'],
+  ['dppa',672,370,218,C.dppa,'direct','DPPA','Mua bán điện trực tiếp'],
+  ['build',935,50,222,C.build,'tool','Xây lắp • thiết bị','TV1 • TV2 • TV3 (tư vấn)','PC1 • GEX • GEE'],
+  ['grid',935,166,222,C.grid,'tower','Truyền tải • phân phối','NPT • EVN PCs'],
+  ['customer',935,370,222,C.grid,'home','Khách hàng','Công nghiệp • hộ dân']
+ ],H=74,B=Object.fromEntries(N.map(n=>[n[0],n]));
+ const R=id=>B[id][1]+B[id][3],cy=id=>B[id][2]+H/2;
+ const E=[
+  ['coal','coalplant',C.coal],['gasfuel','gasplant',C.gas],['water','hydro',C.hydro],['sunwind','re',C.re],
+  ...[['coalplant',C.coal,-18],['gasplant',C.gas,-6],['hydro',C.hydro,6],['re',C.re,18]].map(([id,c,o])=>[id,'eptc',c,`M${R(id)} ${cy(id)} C626 ${cy(id)},626 ${cy('eptc')+o},672 ${cy('eptc')+o}`]),
+  ['re','dppa',C.dppa],['eptc','grid',C.grid],['dppa','customer',C.dppa],
+  ['grid','customer',C.grid,`M1046 ${166+H} V370`],['build','grid',C.build,`M1046 ${50+H} V166`,true]
+ ];
+ const path=([a,b,,d])=>d||`M${R(a)} ${cy(a)} H${B[b][1]}`;
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const edges=E.map((e,i)=>{const[a,b,c,,sup]=e,d=path(e);return `<g class="vc-edge" data-a="${a}" data-b="${b}"><path d="${d}" class="edge-base" stroke="${c}"/><path id="vce${i}" d="${d}" class="edge-flow${sup?' support':''}" stroke="${c}" marker-end="url(#vca-${c.slice(1)})"/>${reduce||sup?'':`<circle r="3.6" fill="${c}"><animateMotion dur="${2.4+i%4*.35}s" repeatCount="indefinite" begin="${(i*.37)%2}s"><mpath href="#vce${i}"/></animateMotion></circle>`}</g>`}).join('');
+ const markers=[...new Set(Object.values(C))].map(c=>`<marker id="vca-${c.slice(1)}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9Z" fill="${c}"/></marker>`).join('');
+ const nodes=N.map(([id,x,y,w,c,ic,title,...sub])=>`<g class="vc-node" data-id="${id}" tabindex="0"><rect class="card" x="${x}" y="${y}" width="${w}" height="${H}" rx="12"/><rect x="${x}" y="${y+12}" width="4" height="${H-24}" rx="2" fill="${c}"/><circle cx="${x+30}" cy="${y+H/2}" r="17" fill="${c}"/><g class="ic" transform="translate(${x+18} ${y+H/2-12})">${I[ic]}</g><text x="${x+56}" y="${y+(sub.length>1?24:31)}" class="title">${title}</text>${sub.map((t,i)=>`<text x="${x+56}" y="${y+(sub.length>1?43:50)+i*16}" class="sub">${t}</text>`).join('')}</g>`).join('');
+ const lanes=[['NHIÊN LIỆU & NƯỚC',0,270,'#eef3fb','#1D2678'],['PHÁT ĐIỆN',285,320,'#eefaf9','#2a9fa3'],['MUA ĐIỆN · LƯỚI · KHÁCH HÀNG',620,550,'#fbf6ea','#b8801f']].map(([t,x,w,bg,pill])=>`<rect class="chain-lane-bg" x="${x}" y="0" width="${w}" height="470" rx="16" fill="${bg}"/><rect x="${x+w/2-t.length*4.4-14}" y="14" width="${t.length*8.8+28}" height="24" rx="12" fill="${pill}"/><text x="${x+w/2}" y="30" text-anchor="middle" class="lane-pill">${t}</text>`).join('');
+ const label=(x,y,t)=>`<rect class="edge-label-bg" x="${x-t.length*3.1-8}" y="${y-13}" width="${t.length*6.2+16}" height="19" rx="9.5"/><text x="${x}" y="${y}" text-anchor="middle" class="edge-label">${t}</text>`;
+ const fig=make('div','value-chain-scroll');fig.tabIndex=0;fig.setAttribute('aria-label','Sơ đồ chuỗi giá trị; có thể cuộn ngang trên màn hình nhỏ');
+ fig.innerHTML=`<svg class="vc2" data-fs-flow="1" viewBox="0 0 1170 470" role="img" aria-labelledby="chain-title chain-desc"><title id="chain-title">Chuỗi giá trị ngành điện</title><desc id="chain-desc">Than, khí/LNG, thủy năng, gió và mặt trời đi vào bốn nhóm nhà máy; EVN/EPTC mua điện theo hợp đồng và thị trường, NSMO điều độ; NPT truyền tải, các tổng công ty điện lực phân phối tới khách hàng. DPPA cho phép bán trực tiếp; xây lắp và thiết bị hỗ trợ lưới.</desc><defs>${markers}</defs>${lanes}${edges}${nodes}${label(781,150,'PPA • thị trường bán buôn')}${label(1046,318,'giá bán lẻ EVN')}${label(781,356,'hợp đồng kỳ hạn')}</svg>`;
+ // Hover or focus a stage to keep only its upstream and downstream links lit.
+ const svg=fig.firstElementChild,all=[...svg.querySelectorAll('.vc-edge')];
+ const lit=id=>{const on=new Set([id]),walk=(dir)=>{let grow=true;const seen=new Set([id]);while(grow){grow=false;all.forEach(e=>{const[f,t]=dir?[e.dataset.a,e.dataset.b]:[e.dataset.b,e.dataset.a];if(seen.has(f)&&!seen.has(t)){seen.add(t);grow=true}});}seen.forEach(x=>on.add(x))};walk(1);walk(0);svg.classList.add('focus');svg.querySelectorAll('.vc-node').forEach(n=>n.classList.toggle('on',on.has(n.dataset.id)));all.forEach(e=>e.classList.toggle('on',on.has(e.dataset.a)&&on.has(e.dataset.b)))};
+ const clear=()=>{svg.classList.remove('focus');svg.querySelectorAll('.on').forEach(n=>n.classList.remove('on'))};
+ svg.querySelectorAll('.vc-node').forEach(n=>{n.addEventListener('mouseenter',()=>lit(n.dataset.id));n.addEventListener('focus',()=>lit(n.dataset.id));n.addEventListener('mouseleave',clear);n.addEventListener('blur',clear)});
+ return fig;
 }
 function card(id,title,subtitle,kind='public',cadence='daily'){
  const c=make('div','card');Object.assign(c.dataset,{blockId:id,updateKind:kind,cadence});c.append(make('div','chart-title',title),make('div','chart-sub',subtitle));return c;
