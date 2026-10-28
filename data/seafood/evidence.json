@@ -713,5 +713,38 @@
   "status": "match",
   "correct_value": "",
   "note": "Báo Thanh tra 14/10/2026 dẫn VASEP; chưa mở bản tin gốc VASEP."
+ },
+ {
+  "block": "ts-t1",
+  "claim": "XK thủy sản sang TQ + HK 9T/2026 (VASEP)",
+  "value": "2,3 tỷ USD; ~62% mức tăng",
+  "url": "https://thanhtra.com.vn/tieu-dung-AA9F50895/xuat-khau-thuy-san-vuot-9-ty-usd-tom-va-ca-tra-vung-vai-tro-chu-luc-98015f6b5.html",
+  "opened_at": "2026-10-28",
+  "quote": "Trung Quốc–Hồng Kông vẫn là điểm sáng nổi bật nhất, với kim ngạch 9 tháng năm 2026 đạt 2,3 tỷ USD",
+  "status": "match",
+  "correct_value": "",
+  "note": "Báo Thanh tra 14/10/2026 dẫn VASEP; bài không có số Mỹ 9T nên giữ dòng Mỹ 8T."
+ },
+ {
+  "block": "ts-t2",
+  "claim": "Cá tra CBPG POR 8/2021–7/2022 sửa theo phán quyết CIT: CASEAMEX và 4 công ty mức riêng (gồm IDI)",
+  "value": "$0.20/kg (trước $0.18/kg)",
+  "url": "https://www.govinfo.gov/content/pkg/FR-2026-09-22/html/2026-19373.htm",
+  "opened_at": "2026-10-28",
+  "quote": "we will apply the revised rate of $0.20 per kilogram to these companies",
+  "status": "match",
+  "correct_value": "",
+  "note": "FR 2026-19373 công bố 22/09/2026, hiệu lực 14/09/2026; bản gốc ghi mức cũ $0.18/kg cho CASEAMEX. federalregister.gov chuyển hướng unblock nên mở bản govinfo."
+ },
+ {
+  "block": "ts-t4",
+  "claim": "Tiến độ khắc phục 38 khuyến nghị IUU của EC đến 30/09/2026",
+  "value": "31 xong; 5 đang hoàn thiện; 2 đang làm rõ",
+  "url": "https://baodauthau.vn/viet-nam-quyet-tam-go-the-vang-iuu-trong-nam-2026-post209853.html",
+  "opened_at": "2026-10-28",
+  "quote": "Đến ngày 30/9/2026, Việt Nam đã thực hiện đầy đủ, có kết quả kiểm chứng 31 khuyến nghị; 5 khuyến nghị đang tiếp tục hoàn thiện và 2 khuyến nghị được trao đổi, làm rõ với EC",
+  "status": "match",
+  "correct_value": "",
+  "note": "Báo Đấu thầu 13/10/2026 dẫn Bộ Nông nghiệp và Môi trường."
  }
 ]

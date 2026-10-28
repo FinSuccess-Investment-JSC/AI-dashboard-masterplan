@@ -195,8 +195,8 @@ if(document.getElementById('chUsShare')){
  barLineChart('chUsShare',{categories:yrs,series:rows.map(([n,c,v])=>({name:n,color:c,kind:'line',values:v})),unit:'%',digits:1,height:260,zeroBase:false,rotateLabels:false});
  legend('chUsShare',rows.map(([n,c])=>[n,c]));
  fillTable('tbl-us-share',['Nước',...yrs],rows.map(([n,,v])=>[n,...v.map(x=>x==null?'—':nf(x,2)+'%')]).concat([['Tổng NK may mặc Mỹ (tỷ USD)','—','—','—','79,26','77,88','35,09 (6T)']]));
- fillTable('tbl-us-h1',['Nước','Giá trị YoY','Lượng (m² quy đổi) YoY','Đơn giá YoY'],[['Campuchia','+12,32%','—','—'],['Indonesia','+3,40%','—','—'],['Việt Nam','+1,08%','+3,30%','−2,15%'],['Bangladesh','−5,75%','−3,69%','−2,15%'],['Ấn Độ','−25,27%','−22,74%','−3,28%'],['Trung Quốc','−37,69%','−26,30%','−15,46%'],['Tổng','−8,04%','—','—']]);
- sourceLine('chUsShare',[['OTEXA','https://www.trade.gov/otexa-import-data'],['Just-Style 2019–21','https://www.just-style.com/features/analysis-china-market-share-of-us-apparel-imports-rises-after-four-year-lull/'],['Apparel Resources 2025','https://apparelresources.com/business-news/trade-business-news/bangladesh-raises-us-apparel-market-share-10-53-chinas-exports-decline/']],'5T/2026','2019–2021 theo Just-Style (có thể tính theo lượng); 2024 là 10 tháng đầu năm (Bangladesh: cả năm); 2025 cả năm theo giá trị; 5T/2026 theo OTEXA. Thiếu 2022–2023. Các năm khác cơ sở tính nên chỉ đọc xu hướng.');
+ fillTable('tbl-us-h1',['Nước','Giá trị YoY','Lượng (m² quy đổi) YoY','Đơn giá YoY'],[['Campuchia','+6,91%','+7,18%','—'],['Indonesia','+2,58%','+8,53%','—'],['Việt Nam','−0,76%','−0,18%','—'],['Pakistan','−3,83%','−0,27%','—'],['Bangladesh','−4,43%','−2,75%','−1,73%'],['Ấn Độ','−26,44%','−24,91%','−2,04%'],['Trung Quốc','−29,39%','−21,61%','−9,93%'],['Tổng (49,08 tỷ USD)','−7,42%','—','+1,71%']]);
+ sourceLine('chUsShare',[['OTEXA','https://www.trade.gov/otexa-import-data'],['Just-Style 2019–21','https://www.just-style.com/features/analysis-china-market-share-of-us-apparel-imports-rises-after-four-year-lull/'],['Apparel Resources 2025','https://apparelresources.com/business-news/trade-business-news/bangladesh-raises-us-apparel-market-share-10-53-chinas-exports-decline/'],['TBS 07/10/2026 (OTEXA 8T/2026)','https://www.tbsnews.net/economy/bangladesh-outperforms-rivals-us-apparel-imports-fall-scope-gains-remains-1565601']],'5T/2026','2019–2021 theo Just-Style (có thể tính theo lượng); 2024 là 10 tháng đầu năm (Bangladesh: cả năm); 2025 cả năm theo giá trị; 5T/2026 theo OTEXA. Thiếu 2022–2023. Các năm khác cơ sở tính nên chỉ đọc xu hướng.');
  insight('chUsShare','Trung Quốc mất khoảng 30 điểm % thị phần từ 2019, phần lớn sang Việt Nam (từ ~15% lên 22%) và một phần sang Bangladesh, Campuchia. Từ 24/07/2026 Việt Nam chịu thuế cao hơn các nước này 2,5 điểm %, nên tốc độ lấy thị phần là biến số cần theo dõi theo tháng.');
 }
 const isr=[['2019',2.30],['2020',2.25],['2021',2.09],['2022',2.37],['2023',2.27],['2024',2.22],['2025',2.15],['T1/26',2.16],['T2/26',2.10],['T3/26',2.11],['T4/26',2.13],['T5/26',2.11],['T6/26',2.14],['T7/26',2.11]];
@@ -246,11 +246,11 @@ if(us.length&&document.getElementById('chUsYtd')){
  insight('chUsYtd','So lũy kế cùng số tháng mới đọc được năm 2026 đang nhanh hay chậm hơn năm trước; số cả năm 2025 của hải quan có thể khác số VITAS 17,8 tỷ USD vì khác phạm vi nhóm hàng.');
 }
 if(document.getElementById('chBrands')){
- const rows=[['Nike',-3,-4],['Adidas',13,13],['H&M',3.7,0.3],['Inditex',9.3,7.6],['Gap',0,-2]];
+ const rows=[['Nike',-3,-4],['Adidas',13,13],['H&M',3.7,0.3],['Inditex',9.3,7.6],['Gap',0,-2],['Fast Retailing',20.8,16.6]];
  barLineChart('chBrands',{categories:rows.map(r=>r[0]),series:[{name:'Tồn kho YoY',color:C.plum,values:rows.map(r=>r[1])},{name:'Doanh thu YoY',color:C.teal,values:rows.map(r=>r[2])}],unit:'%',digits:1,height:260,rotateLabels:false});
  legend('chBrands',[['Tồn kho YoY',C.plum],['Doanh thu YoY',C.teal]]);
- fillTable('tbl-brands-chart',['Hãng','Kỳ','Tồn kho YoY','Doanh thu YoY'],[['Nike','Q1 FY27 (8/2026)','−3%','−4%'],['Adidas','Q2/2026','+13%','+13%'],['H&M','Q3 FY26 (8/2026)','+3,7%','+0,3%'],['Inditex','6T/2026 (7/2026)','+9,3%','+7,6%'],['Gap','Q2 FY26 (8/2026)','0%','−2%']]);
- insight('chBrands','Tồn kho tăng nhanh hơn doanh thu (Inditex, H&M) báo hiệu nhãn hàng sẽ chậm đặt đơn mới 1–2 quý; tồn kho giảm cùng doanh thu (Nike) là đang dọn kho, chưa phải tín hiệu tăng đơn. Adidas tăng tồn kho chủ động cho World Cup 2026.');
+ fillTable('tbl-brands-chart',['Hãng','Kỳ','Tồn kho YoY','Doanh thu YoY'],[['Nike','Q1 FY27 (8/2026)','−3%','−4%'],['Adidas','Q2/2026','+13%','+13%'],['H&M','Q3 FY26 (8/2026)','+3,7%','+0,3%'],['Inditex','6T/2026 (7/2026)','+9,3%','+7,6%'],['Gap','Q2 FY26 (8/2026)','0%','−2%'],['Fast Retailing','FY2026 (8/2026)','+20,8%','+16,6%']]);
+ insight('chBrands','Tồn kho tăng nhanh hơn doanh thu (Inditex, H&M, Fast Retailing +20,8% so với +16,6%) báo hiệu nhãn hàng sẽ chậm đặt đơn mới 1–2 quý; tồn kho giảm cùng doanh thu (Nike) là đang dọn kho, chưa phải tín hiệu tăng đơn. Adidas tăng tồn kho chủ động cho World Cup 2026.');
 }
 
 // ---------- 4. KPIs & quick read ----------

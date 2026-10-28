@@ -669,5 +669,27 @@
   "status": "match",
   "correct_value": "",
   "note": ""
+ },
+ {
+  "block": "nn-50",
+  "claim": "Philippines không dừng nhập gạo cuối 2026 (El Niño)",
+  "value": "không dừng nhập",
+  "url": "https://www.bworldonline.com/economy/2026/09/24/781334/rice-import-suspension-ruled-out-due-to-el-nino/",
+  "opened_at": "2026-10-28",
+  "quote": "THE Department of Agriculture (DA) said rice imports will not be suspended to ensure an adequate supply of the staple grain when El Niño peaks sometime later this year.",
+  "status": "match",
+  "correct_value": "",
+  "note": "BusinessWorld 24/09/2026; WebFetch 403, mở bằng curl."
+ },
+ {
+  "block": "nn-t2",
+  "claim": "Giá heo hơi toàn quốc ngày 23/10/2026",
+  "value": "46.000–51.000 đ/kg",
+  "url": "https://baovanhoa.vn/kinh-te/gia-heo-hoi-hom-nay-24102026-theo-doi-cung-cau-sau-dot-giam-278504.html",
+  "opened_at": "2026-10-28",
+  "quote": "Toàn quốc dao động 46.000–51.000 đồng/kg, chênh lệch 5.000 đồng/kg giữa hai đầu giá.",
+  "status": "match",
+  "correct_value": "",
+  "note": "Báo Văn hóa 24/10/2026, số tham chiếu ngày 23/10."
  }
 ]

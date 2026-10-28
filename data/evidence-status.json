@@ -1,445 +1,74 @@
 {
- "checked_at": "2026-10-26T01:58:42Z",
+ "checked_at": "2026-10-28T11:11:59Z",
  "problems": [
   {
-   "file": "data/agri/evidence.json",
-   "block": "nn-t1",
-   "claim": "Mặn sông Vàm Cỏ đầu 2027",
-   "url": "https://nongnghiepmoitruong.vn/giu-nguon-nuoc-truoc-el-nio-bai-1-gia-tang-suc-ep-d817899.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/agri/evidence.json",
-   "block": "nn-50",
-   "claim": "Thuế gạo linh hoạt 15–35% từ 01/2026 (EO 105)",
-   "url": "https://tribune.net.ph/2025/11/09/palace-extends-15-rice-import-tariff",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/agri/evidence.json",
-   "block": "nn-t3",
-   "claim": "Bắc Tân Uyên 1 đền bù",
-   "url": "https://nhadautu.vn/cao-su-phuoc-hoa-chia-thuong-tong-ty-le-94-ky-vong-lai-dot-bien-nho-den-bu-dat-d105349.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/agri/evidence.json",
-   "block": "nn-60",
-   "claim": "PHR kế hoạch 2026",
-   "url": "https://nhadautu.vn/cao-su-phuoc-hoa-chia-thuong-tong-ty-le-94-ky-vong-lai-dot-bien-nho-den-bu-dat-d105349.html",
+   "file": "data/construction/evidence.json",
+   "block": "xd-61",
+   "claim": "KQ Q2/2026: LNST công ty mẹ",
+   "url": "https://www.dnse.com.vn/senses/tin-tuc/bctc-quy-22026-dha-loi-nhuan-sau-thue-cong-ty-me-q22026-dat-2693-ty-dong-giam-1658-so-voi-cung-ky-35253135",
    "state": "quote_changed"
-  },
-  {
-   "file": "data/construction/evidence.json",
-   "block": "xd-60",
-   "claim": "KQ Q2/2026: doanh thu / LNST",
-   "url": "https://danviet.vn/loi-nhuan-tang-632-cienco4-giai-trinh-nhung-gi-d1450371.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/construction/evidence.json",
-   "block": "xd-60",
-   "claim": "KQ 6T/2026: doanh thu thuần",
-   "url": "https://danviet.vn/loi-nhuan-tang-632-cienco4-giai-trinh-nhung-gi-d1450371.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/construction/evidence.json",
-   "block": "xd-60",
-   "claim": "KQ 6T/2026: LNST (≈12,6% KH 150 tỷ)",
-   "url": "https://danviet.vn/loi-nhuan-tang-632-cienco4-giai-trinh-nhung-gi-d1450371.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/construction/evidence.json",
-   "block": "xd-60",
-   "claim": "Rủi ro: tổng vay và nợ thuê tài chính 30/6/2026",
-   "url": "https://danviet.vn/loi-nhuan-tang-632-cienco4-giai-trinh-nhung-gi-d1450371.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/construction/evidence.json",
-   "block": "xd-60",
-   "claim": "Rủi ro: phải thu ngắn hạn 30/6/2026",
-   "url": "https://danviet.vn/loi-nhuan-tang-632-cienco4-giai-trinh-nhung-gi-d1450371.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/construction/evidence.json",
-   "block": "xd-60",
-   "claim": "KQ 6T/2026: doanh thu hợp nhất / LNST (≈42% / 51% KH)",
-   "url": "https://nhadautu.vn/hhv-bao-lai-ban-nien-hon-389-ty-dong-d106705.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/construction/evidence.json",
-   "block": "xd-60",
-   "claim": "KQ Q2/2026: doanh thu / LNST",
-   "url": "https://nhadautu.vn/hhv-bao-lai-ban-nien-hon-389-ty-dong-d106705.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/construction/evidence.json",
-   "block": "xd-60",
-   "claim": "Doanh thu thu phí BOT 6T/2026",
-   "url": "https://nhadautu.vn/hhv-bao-lai-ban-nien-hon-389-ty-dong-d106705.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/construction/evidence.json",
-   "block": "xd-60",
-   "claim": "Hợp đồng xây lắp mới 6T/2026",
-   "url": "https://nhadautu.vn/hhv-bao-lai-ban-nien-hon-389-ty-dong-d106705.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/construction/evidence.json",
-   "block": "xd-60",
-   "claim": "Cao tốc Đồng Đăng - Trà Lĩnh GĐ1 (HHV sở hữu 40%): tiến độ",
-   "url": "https://nhadautu.vn/hhv-bao-lai-ban-nien-hon-389-ty-dong-d106705.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/construction/evidence.json",
-   "block": "xd-60",
-   "claim": "VETC 6T/2026: doanh thu thu phí; thị phần ETC",
-   "url": "https://nhadautu.vn/nua-dau-nam-2026-tasco-ghi-nhan-doanh-thu-gan-22000-ty-dong-loi-nhuan-tang-manh-d106845.html",
-   "state": "unreachable: HTTPError"
   },
   {
    "file": "data/construction/evidence.json",
    "block": "xd-61",
-   "claim": "KQ 6T/2026 (BCTC): DT thuần / LNST",
-   "url": "https://nhadautu.vn/gia-cat-da-tang-manh-doanh-nghiep-so-huu-mo-lon-but-toc-loi-nhuan-d107091.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/construction/evidence.json",
-   "block": "xd-62",
-   "claim": "Đá 1x2 giao dịch thị trường (tháng 8/2026 vs đầu năm)",
-   "url": "https://nhadautu.vn/gia-cat-da-tang-manh-doanh-nghiep-so-huu-mo-lon-but-toc-loi-nhuan-d107091.html",
+   "claim": "KQ 6T/2026: DT thuần / LNST công ty mẹ",
+   "url": "https://www.dnse.com.vn/senses/tin-tuc/bctc-quy-22026-dha-loi-nhuan-sau-thue-cong-ty-me-q22026-dat-2693-ty-dong-giam-1658-so-voi-cung-ky-35253135",
    "state": "quote_changed"
   },
   {
    "file": "data/construction/evidence.json",
-   "block": "xd-62",
-   "claim": "Cát xây dựng (tháng 8/2026)",
-   "url": "https://nhadautu.vn/gia-cat-da-tang-manh-doanh-nghiep-so-huu-mo-lon-but-toc-loi-nhuan-d107091.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/insurance/evidence.json",
-   "block": "bh-60",
-   "claim": "KQ 6T/2026 hợp nhất: tổng doanh thu",
-   "url": "https://nhadautu.vn/tap-doan-bao-viet-bvh-tong-doanh-thu-hop-nhat-6-thang-dau-nam-2026-dat-hon-32000-ty-dong-tang-truong-92-d106710.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/insurance/evidence.json",
-   "block": "bh-60",
-   "claim": "KQ 6T/2026 hợp nhất: LNTT / LNST",
-   "url": "https://nhadautu.vn/tap-doan-bao-viet-bvh-tong-doanh-thu-hop-nhat-6-thang-dau-nam-2026-dat-hon-32000-ty-dong-tang-truong-92-d106710.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/insurance/evidence.json",
-   "block": "bh-60",
-   "claim": "Tổng tài sản hợp nhất 30/6/2026",
-   "url": "https://nhadautu.vn/tap-doan-bao-viet-bvh-tong-doanh-thu-hop-nhat-6-thang-dau-nam-2026-dat-hon-32000-ty-dong-tang-truong-92-d106710.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/pharma/evidence.json",
-   "block": "duoc-tnh",
-   "claim": "TNH: doanh thu Q2/2026 (tỷ đồng), +30%",
-   "url": "https://nhadautu.vn/them-benh-vien-moi-di-vao-van-hanh-tap-doan-tnh-noi-dai-chuoi-lo-sang-quy-thu-7-d106808.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/pharma/evidence.json",
-   "block": "duoc-tnh",
-   "claim": "TNH: lỗ sau thuế Q2/2026 (tỷ đồng)",
-   "url": "https://nhadautu.vn/them-benh-vien-moi-di-vao-van-hanh-tap-doan-tnh-noi-dai-chuoi-lo-sang-quy-thu-7-d106808.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/pharma/evidence.json",
-   "block": "duoc-tnh",
-   "claim": "TNH: doanh thu 6T/2026 (tỷ đồng), +28%",
-   "url": "https://nhadautu.vn/them-benh-vien-moi-di-vao-van-hanh-tap-doan-tnh-noi-dai-chuoi-lo-sang-quy-thu-7-d106808.html",
+   "block": "xd-61",
+   "claim": "Lịch sử cổ tức",
+   "url": "https://www.dnse.com.vn/senses/tin-tuc/cong-ty-cung-cap-da-cho-du-an-san-bay-long-thanh-dat-muc-tieu-tang-lai-11-34141218",
    "state": "quote_changed"
   },
   {
    "file": "data/port/evidence.json",
-   "block": "cg-03",
-   "claim": "Cái Mép–Thị Vải Q1/2026 tàu mẹ",
-   "url": "https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html",
-   "state": "unreachable: URLError"
-  },
-  {
-   "file": "data/port/evidence.json",
-   "block": "cg-03",
-   "claim": "Gemalink Q1/2026",
-   "url": "https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/port/evidence.json",
-   "block": "cg-03",
-   "claim": "CMIT Q1/2026",
-   "url": "https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/port/evidence.json",
-   "block": "cg-03",
-   "claim": "SSIT Q1/2026",
-   "url": "https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/port/evidence.json",
-   "block": "cg-13",
-   "claim": "Hải Phòng 2025 container",
-   "url": "https://moc.gov.vn/vn/tin-tuc/1184/91079/cang-bien-hai-phong-phan-dau-dat-122-trieu-tan-hang-hoa-thong-qua-trong-nam-2026.aspx",
-   "state": "unreachable: CalledProcessError"
-  },
-  {
-   "file": "data/port/evidence.json",
-   "block": "cg-13",
-   "claim": "Hải Phòng KH 2026 container",
-   "url": "https://moc.gov.vn/vn/tin-tuc/1184/91079/cang-bien-hai-phong-phan-dau-dat-122-trieu-tan-hang-hoa-thong-qua-trong-nam-2026.aspx",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/port/evidence.json",
-   "block": "cg-06",
-   "claim": "chCaiMep: tổng cụm và 3 bến",
-   "url": "https://dttc.sggp.org.vn/cum-cang-cai-mep-thi-vai-don-nhan-gan-2-trieu-teu-sau-3-thang-post133521.html",
-   "state": "quote_changed"
+   "block": "cg-15",
+   "claim": "Cần Giờ vốn, ngày duyệt",
+   "url": "https://www.tinnhanhchungkhoan.vn/tphcm-thuc-nha-dau-tu-du-an-cang-quoc-te-can-gio-khoi-cong-trong-thang-10-post397552.html",
+   "state": "unreachable: RemoteDisconnected"
   },
   {
    "file": "data/port/evidence.json",
    "block": "cg-t3",
-   "claim": "CDN KH 2026",
-   "url": "https://nhadautu.vn/doanh-nghiep-cang-bien-tang-toc-loi-nhuan-cac-cang-thuoc-vimc-dan-song-d106784.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/port/evidence.json",
-   "block": "cg-t3",
-   "claim": "CDN 6T/2026",
-   "url": "https://nhadautu.vn/doanh-nghiep-cang-bien-tang-toc-loi-nhuan-cac-cang-thuoc-vimc-dan-song-d106784.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/port/evidence.json",
-   "block": "cg-t3",
-   "claim": "DVP 6T/2026",
-   "url": "https://nhadautu.vn/doanh-nghiep-cang-bien-tang-toc-loi-nhuan-cac-cang-thuoc-vimc-dan-song-d106784.html",
+   "claim": "SGN KH 2026",
+   "url": "https://www.dnse.com.vn/senses/tin-tuc/dhdcd-sgn-doanh-thu-6-thang-uoc-dat-816-ty-dong-loi-nhuan-van-bi-nen-boi-chi-phi-long-thanh-35238545",
    "state": "quote_changed"
   },
   {
    "file": "data/power/evidence.json",
-   "block": "dien-18",
-   "claim": "Đề xuất BCT 09/2026: nhiệt điện than mới 2030",
-   "url": "https://danviet.vn/nguy-co-thieu-dien-tu-nam-2027-den-2030-bo-cong-thuong-de-xuat-dieu-chinh-quy-hoach-dien-8-va-xin-lai-evn-ve-bo-d1460184.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/power/evidence.json",
-   "block": "dien-18",
-   "claim": "Đề xuất BCT 09/2026: mặt trời tập trung 2029/2030",
-   "url": "https://danviet.vn/nguy-co-thieu-dien-tu-nam-2027-den-2030-bo-cong-thuong-de-xuat-dieu-chinh-quy-hoach-dien-8-va-xin-lai-evn-ve-bo-d1460184.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/power/evidence.json",
-   "block": "dien-18",
-   "claim": "Đề xuất BCT 09/2026: gió trên bờ và gần bờ 2029/2030",
-   "url": "https://danviet.vn/nguy-co-thieu-dien-tu-nam-2027-den-2030-bo-cong-thuong-de-xuat-dieu-chinh-quy-hoach-dien-8-va-xin-lai-evn-ve-bo-d1460184.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/realestate-market/evidence.json",
-   "block": "bds-12",
-   "claim": "ha đất thương phẩm KCN · BCM · đất thương phẩm",
-   "url": "https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf",
-   "state": "unreachable: CalledProcessError"
-  },
-  {
-   "file": "data/realestate-market/evidence.json",
-   "block": "bds-12",
-   "claim": "ha đất thương phẩm KCN · BCM · đất thương phẩm còn lại",
-   "url": "https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/realestate-market/evidence.json",
-   "block": "bds-49",
-   "claim": "Sáp nhập tỉnh",
-   "url": "https://nhadautu.vn/34-tinh-thanh-du-kien-hoat-dong-tu-1-7-2025-co-ten-nhu-the-nao-d96897.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/realestate-market/evidence.json",
-   "block": "bds-49",
-   "claim": "KTM tự do Hải Phòng",
-   "url": "https://nhadautu.vn/thanh-lap-khu-thuong-mai-tu-do-hai-phong-gan-6300-ha-d100001.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-21",
-   "claim": "Doanh số VinFast Việt Nam 6T/2026",
-   "url": "https://www.just-auto.com/newsletters/vinfasts-domestic-sales-surge-58-in-june",
-   "state": "unreachable: IncompleteRead"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-23",
-   "claim": "Giá vàng miếng SJC sáng 11/10/2026",
-   "url": "https://vov.vn/thi-truong/gia-vang-hom-nay-1110-vang-trong-nuoc-di-ngang-post1340142.vov",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-23",
-   "claim": "Giá vàng nhẫn 11/10/2026",
-   "url": "https://vov.vn/thi-truong/gia-vang-hom-nay-1110-vang-trong-nuoc-di-ngang-post1340142.vov",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-23",
-   "claim": "Chênh lệch vàng SJC với giá thế giới quy đổi 11/10/2026",
-   "url": "https://vov.vn/thi-truong/gia-vang-hom-nay-1110-vang-trong-nuoc-di-ngang-post1340142.vov",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-23",
-   "claim": "Nghị định 232/2025/NĐ-CP sửa Nghị định 24/2012 về kinh doanh vàng",
-   "url": "https://vov.vn/thi-truong/gia-vang/chinh-thuc-xoa-bo-co-che-nha-nuoc-doc-quyen-san-xuat-vang-mieng-post1236837.vov",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-23",
-   "claim": "Điều kiện vốn để được cấp phép sản xuất vàng miếng/nhập khẩu vàng",
-   "url": "https://vov.vn/thi-truong/gia-vang/chinh-thuc-xoa-bo-co-che-nha-nuoc-doc-quyen-san-xuat-vang-mieng-post1236837.vov",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-50",
-   "claim": "Lương tối thiểu vùng 2026 (Nghị định 293/2025/NĐ-CP)",
-   "url": "https://nhadautu.vn/chinh-thuc-tang-luong-toi-thieu-vung-tu-1-1-2026-d100632.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-50",
-   "claim": "Lương cơ sở 2026 (Nghị định 161/2026/NĐ-CP)",
-   "url": "https://nhadautu.vn/chinh-thuc-tang-luong-co-so-len-253-trieu-dong-tu-ngay-1-7-d105043.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-60",
-   "claim": "KQ Q1/2026: LNTT / LNST; FPT Shop có lãi",
-   "url": "https://nhadautu.vn/fpt-retail-mo-them-100-nha-thuoc-long-chau-hang-ton-kho-tang-hon-2500-ty-dong-d104649.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-60",
-   "claim": "Rủi ro vốn lưu động cuối Q1/2026: tồn kho và vay ngắn hạn",
-   "url": "https://nhadautu.vn/fpt-retail-mo-them-100-nha-thuoc-long-chau-hang-ton-kho-tang-hon-2500-ty-dong-d104649.html",
+   "block": "dien-15",
+   "claim": "FMP bình quân tháng 9/2026 (PGV IR)",
+   "url": "https://www.genco3.com/data/files/20261017/639277939479590804_0.pdf",
    "state": "quote_changed"
   },
   {
    "file": "data/retail/evidence.json",
    "block": "bl-60",
-   "claim": "Kế hoạch 2026 (ĐHĐCĐ 24/4/2026): tổng doanh thu / LNST; % KH sau 6T",
-   "url": "https://nhadautu.vn/nua-dau-nam-2026-petrosetco-hoan-thanh-hon-63-ke-hoach-nam-d106688.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-60",
-   "claim": "KQ Q2/2026: doanh thu / biên gộp",
-   "url": "https://nhadautu.vn/nua-dau-nam-2026-petrosetco-hoan-thanh-hon-63-ke-hoach-nam-d106688.html",
+   "claim": "KQ Q2/2026 hợp nhất (gồm Tương Lai Việt - đại lý VinFast từ cuối Q1): doanh thu / LNTT",
+   "url": "https://www.dnse.com.vn/senses/tin-tuc/haxaco-kinh-doanh-ra-sao-sau-khi-mua-cong-ty-phan-phoi-xe-vinfast-35252657",
    "state": "quote_changed"
   },
   {
    "file": "data/retail/evidence.json",
    "block": "bl-60",
-   "claim": "KQ Q2/2026: LNST",
-   "url": "https://nhadautu.vn/nua-dau-nam-2026-petrosetco-hoan-thanh-hon-63-ke-hoach-nam-d106688.html",
+   "claim": "KQ 6T/2026 hợp nhất: doanh thu / LNTT / % KH",
+   "url": "https://www.dnse.com.vn/senses/tin-tuc/haxaco-kinh-doanh-ra-sao-sau-khi-mua-cong-ty-phan-phoi-xe-vinfast-35252657",
    "state": "quote_changed"
   },
   {
    "file": "data/retail/evidence.json",
    "block": "bl-60",
-   "claim": "KQ 6T/2026: doanh thu / LNST",
-   "url": "https://nhadautu.vn/nua-dau-nam-2026-petrosetco-hoan-thanh-hon-63-ke-hoach-nam-d106688.html",
+   "claim": "Thương vụ Tập đoàn Tương Lai Việt (đại lý VinFast)",
+   "url": "https://www.dnse.com.vn/senses/tin-tuc/haxaco-kinh-doanh-ra-sao-sau-khi-mua-cong-ty-phan-phoi-xe-vinfast-35252657",
    "state": "quote_changed"
   },
   {
    "file": "data/retail/evidence.json",
    "block": "bl-60",
-   "claim": "KQ 6T/2026: lãi ròng hợp nhất",
-   "url": "https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-60",
-   "claim": "Kế hoạch 2026 (ĐHĐCĐ 5/6/2026): doanh thu hợp nhất / LNST (2025 có lãi đột biến dự án Cần Giờ)",
-   "url": "https://nhadautu.vn/chu-tich-savico-co-dong-lon-chua-co-ke-hoach-thoai-von-d105473.html",
-   "state": "unreachable: HTTPError"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-60",
-   "claim": "KQ Q1/2026: doanh thu / LNST",
-   "url": "https://nhadautu.vn/chu-tich-savico-co-dong-lon-chua-co-ke-hoach-thoai-von-d105473.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-60",
-   "claim": "KQ Q2/2026: doanh thu thuần / LNST",
-   "url": "https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-60",
-   "claim": "KQ 6T/2026: doanh thu thuần / lãi ròng / % KH",
-   "url": "https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-60",
-   "claim": "Rút tờ trình tăng vốn 2026; UBCKNN gia hạn điều kiện công ty đại chúng",
-   "url": "https://nhadautu.vn/chu-tich-savico-co-dong-lon-chua-co-ke-hoach-thoai-von-d105473.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-60",
-   "claim": "Thị trường ô tô 6T/2026 (VAMA + VinFast + HTC)",
-   "url": "https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/retail/evidence.json",
-   "block": "bl-60",
-   "claim": "Chính sách hỗ trợ xe điện (ảnh hưởng cơ cấu thị trường đại lý)",
-   "url": "https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html",
+   "claim": "Rủi ro nợ vay và tồn kho 30/6/2026 (hợp nhất)",
+   "url": "https://www.dnse.com.vn/senses/tin-tuc/haxaco-kinh-doanh-ra-sao-sau-khi-mua-cong-ty-phan-phoi-xe-vinfast-35252657",
    "state": "quote_changed"
   },
   {
@@ -527,6 +156,41 @@
    "state": "quote_changed"
   },
   {
+   "file": "data/seafood/evidence.json",
+   "block": "VHC",
+   "claim": "KH 2026",
+   "url": "https://www.dnse.com.vn/senses/tin-tuc/loi-nhuan-nu-hoang-ca-tra-vinh-hoan-di-lui-trong-quy-ii2026-35254764",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/seafood/evidence.json",
+   "block": "VHC",
+   "claim": "KQ 6T/2026",
+   "url": "https://www.dnse.com.vn/senses/tin-tuc/loi-nhuan-nu-hoang-ca-tra-vinh-hoan-di-lui-trong-quy-ii2026-35254764",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/seafood/evidence.json",
+   "block": "ASM",
+   "claim": "KH 2026",
+   "url": "https://www.dnse.com.vn/senses/tin-tuc/tap-doan-sao-mai-bao-lai-tang-gan-3-lan-trong-nua-dau-nam-2026-35261263",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/seafood/evidence.json",
+   "block": "ASM",
+   "claim": "KQ 6T/2026",
+   "url": "https://www.dnse.com.vn/senses/tin-tuc/tap-doan-sao-mai-bao-lai-tang-gan-3-lan-trong-nua-dau-nam-2026-35261263",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/seafood/evidence.json",
+   "block": "ASM",
+   "claim": "Chi phí lãi vay Q2/2026",
+   "url": "https://www.dnse.com.vn/senses/tin-tuc/tap-doan-sao-mai-bao-lai-tang-gan-3-lan-trong-nua-dau-nam-2026-35261263",
+   "state": "quote_changed"
+  },
+  {
    "file": "data/shipping/evidence.json",
    "block": "vt-50",
    "claim": "Mỹ tấn công 5 tàu dầu Iran 8/9/2026, 3 tàu có liên hệ shadow fleet Nga",
@@ -535,31 +199,10 @@
   },
   {
    "file": "data/shipping/evidence.json",
-   "block": "vt-51",
-   "claim": "Cục Hàng hải và Đường thủy VN tổng kết 2025 (24/12/2025): đội tàu biển",
-   "url": "https://moc.gov.vn/vn/tin-tuc/1173/90629/cuc-hang-hai-va-duong-thuy-viet-nam-hoan-thien-the-che-tao-moi-truong-kinh-doanh-thong-thoang-minh-bach-on-dinh-an-toan.aspx",
-   "state": "unreachable: CalledProcessError"
-  },
-  {
-   "file": "data/shipping/evidence.json",
-   "block": "vt-51",
-   "claim": "Hàng qua cảng biển và cảng thủy nội địa 2025",
-   "url": "https://moc.gov.vn/vn/tin-tuc/1173/90629/cuc-hang-hai-va-duong-thuy-viet-nam-hoan-thien-the-che-tao-moi-truong-kinh-doanh-thong-thoang-minh-bach-on-dinh-an-toan.aspx",
-   "state": "quote_changed"
-  },
-  {
-   "file": "data/shipping/evidence.json",
    "block": "vt-60",
-   "claim": "Đội tàu",
-   "url": "https://www.bvsc.com.vn/media/lo5njtei/bvsc-b%C3%A1o-c%C3%A1o-l%E1%BA%A7n-%C4%91%E1%BA%A7u-vip-022025.pdf",
-   "state": "unreachable: CalledProcessError"
-  },
-  {
-   "file": "data/shipping/evidence.json",
-   "block": "vt-60",
-   "claim": "Mô hình TC với PG Tanker / spot",
-   "url": "https://www.bvsc.com.vn/media/lo5njtei/bvsc-b%C3%A1o-c%C3%A1o-l%E1%BA%A7n-%C4%91%E1%BA%A7u-vip-022025.pdf",
-   "state": "quote_changed"
+   "claim": "NPAT-MI 6T/2026 & cước chuẩn",
+   "url": "https://www.vietcap.com.vn/en/research-center/pvt-core-h1-2026-npat-mi-up-64-yoy-on-stronger-tanker-rates-fleet-expansion-slightly-above-expectations-earnings-flash",
+   "state": "unreachable: URLError"
   },
   {
    "file": "data/shipping/evidence.json",
@@ -567,13 +210,6 @@
    "claim": "HARPEX 25/09/2026 (cuối Q3)",
    "url": "https://www.harperpetersen.com/harpex",
    "state": "quote_changed"
-  },
-  {
-   "file": "data/sugar/evidence.json",
-   "block": "sugar-06",
-   "claim": "RS bình quân T7/2026",
-   "url": "https://danviet.vn/gia-duong-viet-nam-dang-tang-tuong-la-mung-hoa-ra-van-thap-nhat-khu-vuc-d1452235.html",
-   "state": "unreachable: HTTPError"
   },
   {
    "file": "data/sugar/evidence.json",

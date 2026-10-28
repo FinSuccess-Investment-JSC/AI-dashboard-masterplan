@@ -318,5 +318,15 @@
   "quote": "Đảm bảo tiến độ đưa vào vận hành năm 2029 là 5.500 MW, năm 2030 là 3.000 MW nguồn điện mặt trời tập trung và 4.000 MW điện gió trên bờ và gần bờ năm 2029, 3.000 MW điện gió trên bờ và gần bờ năm 2030.",
   "status": "match",
   "note": "Dân Việt đăng 17/09/2026; bài không nêu ngày Bộ trình"
+ },
+ {
+  "block": "dien-15",
+  "claim": "FMP bình quân tháng 9/2026 (PGV IR)",
+  "value": "1.555 đ/kWh",
+  "url": "https://www.genco3.com/data/files/20261017/639277939479590804_0.pdf",
+  "opened_at": "2026-10-28",
+  "quote": "GIÁ TOÀN PHẦN THỊ TRƯỜNG ĐIỆN BÌNH QUÂN (FMP) ... 2026 1.142 1.191 1.538 1.754 1.650 1.734 1.280 1.203 1.555",
+  "status": "match",
+  "note": "Bản tin Nhà đầu tư tháng 9/2026, trang 2, công bố 16/10/2026; T1–T8/2026 khớp số cũ"
  }
 ]

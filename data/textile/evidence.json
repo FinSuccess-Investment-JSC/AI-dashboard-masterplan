@@ -9,5 +9,93 @@
   "status": "match",
   "correct_value": "",
   "note": "VCCI 16/10/2026 dẫn VITAS (số ước). VCCI ghi mục tiêu cả năm ~48 tỷ; một số thẻ trên trang còn ghi 49–49,5 tỷ (nguồn tháng 9) cần xem lại."
+ },
+ {
+  "block": "dm-16",
+  "claim": "VN gia hạn thuế CBPG sợi filament polyester (TQ, Ấn Độ, Indonesia, Malaysia) 5 năm",
+  "value": "16/10/2026–15/10/2031; 3,36–54,9%; QĐ 2652/QĐ-BCT",
+  "url": "https://vietnamnews.vn/economy/1801989/viet-nam-extends-anti-dumping-duties-on-polyester-filament-yarn-for-five-years.html",
+  "opened_at": "2026-10-28",
+  "quote": "with rates ranging from 3.36 per cent to 54.9 per cent",
+  "status": "match",
+  "correct_value": "",
+  "note": "Viet Nam News 14/10/2026; bài nêu QĐ 2652/QD-BCT ngày 13/10, hiệu lực 16/10/2026 đến 15/10/2031; chưa mở văn bản QĐ gốc, chưa có mức từng nước."
+ },
+ {
+  "block": "dm-16",
+  "claim": "Ấn Độ DGTR kết luận cuối CBPG sợi spandex từ TQ & VN",
+  "value": "VN 794–1.262 USD/tấn (kiến nghị), 18/03/2026",
+  "url": "https://worldtradescanner.com/DGTR%20Issues%20Final%20Findings%20Recommending%20Anti-Dumping%20Duty%20on%20Elastomeric%20Filament%20Yarn.htm",
+  "opened_at": "2026-10-28",
+  "quote": "Vietnam – US$794 per MT to US$1262 per MT",
+  "status": "match",
+  "correct_value": "",
+  "note": "Bản tóm tắt thương mại, chưa mở văn bản DGTR gốc; chưa thấy thông báo áp thuế của Bộ Tài chính Ấn Độ."
+ },
+ {
+  "block": "dm-20",
+  "claim": "Nhập khẩu may mặc Mỹ 8T/2026 so cùng kỳ theo nước (OTEXA)",
+  "value": "Tổng 49,08 tỷ USD −7,42%; VN −0,76% (lượng −0,18%); TQ −29,39%; Ấn Độ −26,44%; Bangladesh −4,43%; Campuchia +6,91%; Indonesia +2,58%; Pakistan −3,83%",
+  "url": "https://www.tbsnews.net/economy/bangladesh-outperforms-rivals-us-apparel-imports-fall-scope-gains-remains-1565601",
+  "opened_at": "2026-10-28",
+  "quote": "US apparel imports fell 7.42% year-on-year to $49.08 billion in the first eight months of 2026, while imports from Bangladesh declined 4.43% to $5.39 billion",
+  "status": "match",
+  "correct_value": "",
+  "note": "TBS 07/10/2026 dẫn OTEXA; chưa mở bảng OTEXA gốc. Thay bảng 6T/2026 trong tbl-us-h1."
+ },
+ {
+  "block": "dm-20",
+  "claim": "NK may mặc Mỹ 8T/2026 theo nước (TQ, Ấn Độ, Pakistan, VN, Campuchia, Indonesia)",
+  "value": "TQ −29,39%; Ấn Độ −26,44%; Pakistan −3,83%; VN −0,76%; Campuchia +6,91%; Indonesia +2,58%",
+  "url": "https://www.tbsnews.net/economy/bangladesh-outperforms-rivals-us-apparel-imports-fall-scope-gains-remains-1565601",
+  "opened_at": "2026-10-28",
+  "quote": "Shipments from China and India fell 29.39% and 26.44%, respectively, while Pakistan declined 3.83% and Vietnam 0.76%.",
+  "status": "match",
+  "correct_value": "",
+  "note": "TBS 07/10/2026 dẫn OTEXA; chưa mở bảng OTEXA gốc. Thay bảng 6T/2026 trong tbl-us-h1."
+ },
+ {
+  "block": "dm-29",
+  "claim": "Fast Retailing tồn kho 31/08/2026 và doanh thu FY2026",
+  "value": "617.243 triệu yên (31/08/2025: 510.958); doanh thu 3.963.389 triệu yên (+16,6%)",
+  "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1008/2026100800271.pdf",
+  "opened_at": "2026-10-28",
+  "quote": "Inventories 510,958 617,243",
+  "status": "match",
+  "correct_value": "",
+  "note": "Báo cáo năm FY2026 trên HKEX 08/10/2026, bảng Consolidated Statement of Financial Position (triệu yên); YoY tự tính: tồn kho +20,8%, doanh thu 3.963.389/3.400.539 = +16,6%."
+ },
+ {
+  "block": "dm-02",
+  "claim": "XK dệt may 9T/2026 (VITAS)",
+  "value": "35,72 tỷ USD, +3,3%",
+  "url": "https://thuehaiquan.tapchikinhtetaichinh.vn/nang-noi-luc-de-tang-suc-canh-tranh-xuat-khau-cho-nganh-det-may-170388.html",
+  "opened_at": "2026-10-28",
+  "quote": "Chín tháng năm 2026, kim ngạch xuất khẩu dệt may đạt 35,72 tỷ USD, tăng 3,3% so với cùng kỳ",
+  "status": "match",
+  "correct_value": "",
+  "note": "Tạp chí Kinh tế Tài chính (Thuế – Hải quan) 23/10/2026 dẫn VITAS."
+ },
+ {
+  "block": "dm-02",
+  "claim": "XK may mặc 9T/2026",
+  "value": "28,24 tỷ USD, +2,2%",
+  "url": "https://thuehaiquan.tapchikinhtetaichinh.vn/nang-noi-luc-de-tang-suc-canh-tranh-xuat-khau-cho-nganh-det-may-170388.html",
+  "opened_at": "2026-10-28",
+  "quote": "Trong 9 tháng, kim ngạch xuất khẩu hàng may mặc đạt 28,24 tỷ USD, tăng 2,2% so với cùng kỳ",
+  "status": "match",
+  "correct_value": "",
+  "note": ""
+ },
+ {
+  "block": "dm-02",
+  "claim": "Mục tiêu XK dệt may 2026 (VITAS)",
+  "value": "48 tỷ USD",
+  "url": "https://thuehaiquan.tapchikinhtetaichinh.vn/nang-noi-luc-de-tang-suc-canh-tranh-xuat-khau-cho-nganh-det-may-170388.html",
+  "opened_at": "2026-10-28",
+  "quote": "VITAS xác định, mốc kim ngạch xuất khẩu 48 tỷ USD là mục tiêu phấn đấu năm 2026.",
+  "status": "match",
+  "correct_value": "",
+  "note": "Q4 cần ~12,28 tỷ USD theo cùng bài."
  }
 ]

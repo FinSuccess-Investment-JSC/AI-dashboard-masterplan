@@ -1498,5 +1498,45 @@
   "quote": "Riêng chi phí tài chính tăng 49,6% YoY, lên 80,2 tỷ đồng.",
   "status": "match",
   "note": "KDC. mekongasean.vn, bài 03/08/2026"
+ },
+ {
+  "block": "bl-14",
+  "claim": "Bách Hóa Xanh số cửa hàng cuối T9/2026",
+  "value": "3.904",
+  "url": "https://doanhnhan.baophapluat.vn/dau-tu-the-gioi-di-dong-mwg-thu-gan-148-000-ty-dong-sau-9-thang-bach-hoa-xanh-tang-truong-34.html",
+  "opened_at": "2026-10-28",
+  "quote": "3.904 cửa hàng Bách Hóa Xanh",
+  "status": "match",
+  "note": "DN&PL, bài 15/10/2026"
+ },
+ {
+  "block": "bl-t2",
+  "claim": "Bách Hóa Xanh doanh thu 9T/2026",
+  "value": "45.900 tỷ (+34%)",
+  "url": "https://doanhnhan.baophapluat.vn/dau-tu-the-gioi-di-dong-mwg-thu-gan-148-000-ty-dong-sau-9-thang-bach-hoa-xanh-tang-truong-34.html",
+  "opened_at": "2026-10-28",
+  "quote": "Bách Hóa Xanh đạt doanh thu lũy kế 9 tháng 45.900 tỷ đồng, tăng gần 34% so với cùng kỳ.",
+  "status": "match",
+  "note": "DN&PL, bài 15/10/2026"
+ },
+ {
+  "block": "bl-21",
+  "claim": "VinFast 9T/2026 và tháng 9",
+  "value": "177.697; 23.624",
+  "url": "https://vov.vn/o-to-xe-may/doanh-so-vinfast-thang-92026-tang-truong-an-tuong-voi-hon-23000-xe-ban-giao-post1340347.vov",
+  "opened_at": "2026-10-28",
+  "quote": "Lũy kế 9 tháng đầu năm, VinFast đã bán ra thị trường tổng cộng 177.697 xe",
+  "status": "match",
+  "note": "VOV, bài 11/10/2026; tháng 9: 'VinFast công bố đã bàn giao 23.624 ô tô điện các loại tại thị trường Việt Nam trong tháng 9/2026'"
+ },
+ {
+  "block": "bl-t1",
+  "claim": "PNJ Q3/2026 lỗ ròng; ĐHĐCĐ bất thường thông qua",
+  "value": "258 tỷ (Q3/2025 lãi 496 tỷ); KH lỗ 6.271 tỷ; tối đa 550 triệu cp",
+  "url": "https://vneconomy.vn/pnj-bao-lo-258-ty.htm",
+  "opened_at": "2026-10-28",
+  "quote": "ghi nhận lỗ ròng 258 tỷ đồng",
+  "status": "match",
+  "note": "VnEconomy, bài 22/10/2026; tỷ lệ biểu quyết chưa xác minh"
  }
 ]

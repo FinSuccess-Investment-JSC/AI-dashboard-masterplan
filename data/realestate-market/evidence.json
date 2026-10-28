@@ -1,392 +1,472 @@
 [
- {
-  "block": "bds-12",
-  "claim": "ha đất thương phẩm KCN · KBC · đất thương phẩm còn lại",
-  "value": "2.882 ha",
-  "url": "https://acbs.com.vn/acbsmedia/2025/08/KBC_Cap-nhat_22.8.2025.pdf",
-  "opened_at": "2026-10-12",
-  "quote": "tổng diện tích KCN của KBC tăng lên hơn 6.400 ha và diện tích thương phẩm còn lại tăng lên 2.882 ha",
-  "status": "match",
-  "note": "Kỳ 2025-08-22. {\"source_location\": \"ACBS, trang 1\", \"commercial_ha\": null, \"leased_ha\": null, \"remaining_ha\": 2882, \"limitation\": \"6.400 ha là diện tích KCN toàn dự án, không phải đất thương phẩm; không suy tổng và đã cho thuê.\"}"
- },
- {
-  "block": "bds-12",
-  "claim": "ha đất thương phẩm KCN · IDC · đất thương phẩm (xấp xỉ)",
-  "value": "3.300 ha",
-  "url": "https://static1.vietstock.vn/edocs/18707/IDC_BVSC_20260128.pdf",
-  "opened_at": "2026-10-12",
-  "quote": "nâng tổng diện tích thương phẩm lên tới gần 3.300 ha; tổng diện tích thương phẩm còn lại có thể khai thác là 1.088 ha, trong đó 749 ha đã đền bù",
-  "status": "match",
-  "note": "Kỳ 2026-01-28. {\"source_location\": \"BVSC, trang 1-2\", \"commercial_ha_approx\": 3300, \"leased_ha_approx_derived\": 2200, \"remaining_ha\": 1088, \"formula\": \"gần 3.300 - 1.088 ≈ 2.200\"}"
- },
- {
-  "block": "bds-12",
-  "claim": "ha đất thương phẩm KCN · IDC · đất thương phẩm còn lại",
-  "value": "1.088 ha",
-  "url": "https://static1.vietstock.vn/edocs/18707/IDC_BVSC_20260128.pdf",
-  "opened_at": "2026-10-12",
-  "quote": "nâng tổng diện tích thương phẩm lên tới gần 3.300 ha; tổng diện tích thương phẩm còn lại có thể khai thác là 1.088 ha, trong đó 749 ha đã đền bù",
-  "status": "match",
-  "note": "Kỳ 2026-01-28. {\"source_location\": \"BVSC, trang 1-2\", \"commercial_ha_approx\": 3300, \"leased_ha_approx_derived\": 2200, \"remaining_ha\": 1088, \"formula\": \"gần 3.300 - 1.088 ≈ 2.200\"}"
- },
- {
-  "block": "bds-12",
-  "claim": "ha đất thương phẩm KCN · BCM · đất thương phẩm",
-  "value": "3.397 ha",
-  "url": "https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf",
-  "opened_at": "2026-10-19",
-  "quote": "Tổng cộng 5.925 3.397 944 25.049",
-  "status": "match",
-  "note": "Kỳ 2025-11-28. {\"source_location\": \"ACBS, trang 3, Bảng 2\", \"commercial_ha\": 3397, \"leased_ha_derived\": 2453, \"remaining_ha\": 944, \"formula\": \"3.397 - 944 = 2.453\", \"limitation\": \"Chỉ KCN do BCM trực tiếp làm chủ đầu tư; không gồm VSIP. Quỹ còn lại gồm Cây Trường chưa sẵn sàng.\"}"
- },
- {
-  "block": "bds-12",
-  "claim": "ha đất thương phẩm KCN · BCM · đất thương phẩm còn lại",
-  "value": "944 ha",
-  "url": "https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf",
-  "opened_at": "2026-10-19",
-  "quote": "Tổng cộng 5.925 3.397 944 25.049",
-  "status": "match",
-  "note": "Kỳ 2025-11-28. {\"source_location\": \"ACBS, trang 3, Bảng 2\", \"commercial_ha\": 3397, \"leased_ha_derived\": 2453, \"remaining_ha\": 944, \"formula\": \"3.397 - 944 = 2.453\", \"limitation\": \"Chỉ KCN do BCM trực tiếp làm chủ đầu tư; không gồm VSIP. Quỹ còn lại gồm Cây Trường chưa sẵn sàng.\"}"
- },
- {
-  "block": "bds-12",
-  "claim": "ha đất thương phẩm KCN · SZC · đất thương phẩm",
-  "value": "1.180 ha",
-  "url": "https://acbs.com.vn/Files/Domains/ACBS/WFL-1585/250414041206-1015-1015000001.pdf",
-  "opened_at": "2026-10-12",
-  "quote": "Tính đến cuối Q1/2025, SZC đã cho thuê KCN Sonadezi Châu Đức được hơn 569 hecta trên tổng diện tích thương phầm là 1.180 ha",
-  "status": "match",
-  "note": "Kỳ 2025-Q1. {\"source_location\": \"ACBS, trang 1\", \"commercial_ha\": 1180, \"leased_ha_lower_bound\": 569, \"remaining_ha_upper_bound_derived\": 611, \"formula\": \"1.180 - hơn 569 < 611\"}"
- },
- {
-  "block": "bds-12",
-  "claim": "ha đất thương phẩm KCN · SZC · đã cho thuê (tối thiểu)",
-  "value": "569 ha",
-  "url": "https://acbs.com.vn/Files/Domains/ACBS/WFL-1585/250414041206-1015-1015000001.pdf",
-  "opened_at": "2026-10-19",
-  "quote": "Tính đến cuối Q1/2025, SZC đã cho thuê KCN Sonadezi Châu Đức được hơn 569",
-  "status": "match",
-  "note": "Kỳ 2025-Q1. {\"source_location\": \"ACBS, trang 1\", \"commercial_ha\": 1180, \"leased_ha_lower_bound\": 569, \"remaining_ha_upper_bound_derived\": 611, \"formula\": \"1.180 - hơn 569 < 611\"}"
- },
- {
-  "block": "bds-12",
-  "claim": "ha đất thương phẩm KCN · SIP · đất thương phẩm (xấp xỉ)",
-  "value": "2.440 ha",
-  "url": "https://nguoiquansat.vn/sip-dat-ke-hoach-di-lui-sau-nam-but-pha-loi-nhuan-du-kien-giam-40-283258.html",
-  "opened_at": "2026-10-12",
-  "quote": "diện tích thương phẩm khoảng 2.440ha. Diện tích đã cho thuê đạt hơn 1.500ha ... vẫn còn hơn 930 ha",
-  "status": "match",
-  "note": "Kỳ 2025-12-31. {\"source_location\": \"Người Quan Sát dẫn Reatimes, đoạn 'Quỹ đất lớn'\", \"commercial_ha_approx\": 2440, \"leased_ha_lower_bound\": 1500, \"remaining_ha_lower_bound\": 930, \"limitation\": \"Các giá trị đã làm tròn, không ép phép cộng bằng đúng tổng.\"}"
- },
- {
-  "block": "bds-12",
-  "claim": "ha đất thương phẩm KCN · SIP · đã cho thuê (tối thiểu)",
-  "value": "1.500 ha",
-  "url": "https://nguoiquansat.vn/sip-dat-ke-hoach-di-lui-sau-nam-but-pha-loi-nhuan-du-kien-giam-40-283258.html",
-  "opened_at": "2026-10-12",
-  "quote": "diện tích thương phẩm khoảng 2.440ha. Diện tích đã cho thuê đạt hơn 1.500ha ... vẫn còn hơn 930 ha",
-  "status": "match",
-  "note": "Kỳ 2025-12-31. {\"source_location\": \"Người Quan Sát dẫn Reatimes, đoạn 'Quỹ đất lớn'\", \"commercial_ha_approx\": 2440, \"leased_ha_lower_bound\": 1500, \"remaining_ha_lower_bound\": 930, \"limitation\": \"Các giá trị đã làm tròn, không ép phép cộng bằng đúng tổng.\"}"
- },
- {
-  "block": "bds-12",
-  "claim": "ha đất thương phẩm KCN · VGC · tổng / đã cho thuê / còn lại",
-  "value": "3.019 1.721 1.298",
-  "url": "https://shs.com.vn/Sites/QuoteVN/SiteRoot/reportattach/20250710_17714_B%C3%A1o%20c%C3%A1o%20%C4%91%C3%A1nh%20gi%C3%A1%20doanh%20nghi%E1%BB%87p%20VGC%20%281%29.pdf",
-  "opened_at": "2026-10-12",
-  "quote": "Tổng 3.019 1.721 1.298; nguồn VGC, SHS tổng hợp",
-  "status": "match",
-  "note": "Kỳ 2025-07-10. Thứ tự cột: thương phẩm, đã cho thuê, còn lại (ha). {\"source_location\": \"SHS, trang 10, bảng KCN\", \"commercial_ha\": 3019, \"leased_ha\": 1721, \"remaining_ha\": 1298}"
- },
- {
-  "block": "bds-12",
-  "claim": "ha đất thương phẩm KCN · LHG · đất thương phẩm còn lại",
-  "value": "30,8 ha",
-  "url": "https://www.tinnhanhchungkhoan.vn/long-hau-lhg-loi-nhuan-nguoc-chieu-gia-co-phieu-post382089.html",
-  "opened_at": "2026-10-12",
-  "quote": "đất thương phẩm 96 ha, đã lấp đầy 100%; diện tích thương phẩm 75,9 ha, cũng đạt tỷ lệ lấp đầy 100%; đất thương phẩm 86,8 ha, mới lấp đầy 65%, còn lại 30,8 ha",
-  "status": "match",
-  "note": "Kỳ 2025-09-30. {\"source_location\": \"Đầu tư Chứng khoán 15/12/2025 dẫn BVSC, đoạn ba KCN\", \"commercial_ha_derived\": 258.7, \"leased_ha_approx_derived\": 227.9, \"remaining_ha\": 30.8, \"formula\": \"96 + 75,9 + 86,8 = 258,7; 258,7 - 30,8 = 227,9\", \"limitation\": \"Ba KCN đang vận hành; không gồm nhà xưởng và dự án chưa phê duyệt.\"}"
- },
- {
-  "block": "bds-12",
-  "claim": "ha đất thương phẩm KCN · LHG · đất thương phẩm ba KCN (cộng ra 258,7 ha)",
-  "value": "96 ha; 75,9 ha; 86,8 ha",
-  "url": "https://www.tinnhanhchungkhoan.vn/long-hau-lhg-loi-nhuan-nguoc-chieu-gia-co-phieu-post382089.html",
-  "opened_at": "2026-10-12",
-  "quote": "đất thương phẩm 96 ha, đã lấp đầy 100%; diện tích thương phẩm 75,9 ha, cũng đạt tỷ lệ lấp đầy 100%; đất thương phẩm 86,8 ha, mới lấp đầy 65%, còn lại 30,8 ha",
-  "status": "match",
-  "note": "Số tổng 258,7 là tự cộng, không phải số nguồn: 96 + 75,9 + 86,8 = 258,7; 258,7 - 30,8 = 227,9"
- },
- {
-  "block": "bds-44",
-  "claim": "Diện tích ký mới KBC, LHG, NTC, SIP 2024/2025F/2026F",
-  "value": "28 2 75 138 4 15 45 165 4 26 67",
-  "url": "https://www.vdsc.com.vn/",
-  "opened_at": "2026-10-12",
-  "quote": "28 2 75 138 4 15 45 165 4 26 67",
-  "status": "unreachable",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 10. Nhãn số trên chart, thứ tự theo cột trong PDF; NTC 2024 không có nhãn. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
- },
- {
-  "block": "bds-44",
-  "claim": "SIP ký mới 2026F",
-  "value": "67ha (+50%YoY)",
-  "url": "https://www.vdsc.com.vn/",
-  "opened_at": "2026-10-12",
-  "quote": "Tổng diện tích cho thuê đất KCN ký mới trong năm 2026 kỳ vọng hồi phục và đạt 67ha (+50%YoY)",
-  "status": "unreachable",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 15. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
- },
- {
-  "block": "bds-44",
-  "claim": "KBC ký mới 2026F",
-  "value": "165ha (+20%YoY)",
-  "url": "https://www.vdsc.com.vn/",
-  "opened_at": "2026-10-12",
-  "quote": "Tổng diện tích cho thuê đất KCN ký mới trong năm 2026 kỳ vọng đạt 165ha (+20%YoY)",
-  "status": "unreachable",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 18. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
- },
- {
-  "block": "bds-45",
-  "claim": "Diện tích và giá thuê 7 KCN mở bán 2026",
-  "value": "140; 150; 300; 148; 621; 180; 345; 150; 2.189; 80; 498; 220; 287; 300",
-  "url": "https://www.vdsc.com.vn/",
-  "opened_at": "2026-10-12",
-  "quote": "Quế Võ II mở rộng (KBC) Diện tích 140 ha Giá thuê 150; Nam Sơn Hạp Lĩnh (KBC) 300ha 148; Tràng Duệ 03 (KBC) 621ha 180; Nam Tân Uyên 03 (NTC) 345ha 150; Phước Đông (SIP) 2.189ha 80; Lộc An – Bình Sơn (SIP) 498ha 220; Lê Minh Xuân 03 (SIP) 287ha 300",
-  "status": "unreachable",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 7. Bảng nằm trong hình bản đồ, chép từ ảnh trang. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
- },
- {
-  "block": "bds-46",
-  "claim": "KCN trên đất cao su: quy mô",
-  "value": "495; 786; 317; 483; 480",
-  "url": "https://www.vdsc.com.vn/",
-  "opened_at": "2026-10-12",
-  "quote": "Hiệp Thạnh (giai đoạn 1) Phước Thạnh, Tây Ninh 495 2025-2027 KCN chuyên ngành cơ khí (Thaco) Tân Uyên, Bình Dương 786 2025-2028 Bắc Đồng Phú giai đoạn 2 Đồng Phú, Bình Phước 317 2025-2030 Minh Hưng III giai đoạn 2 Minh Hưng, Bình Phước 483 2026-2030 Nam Đồng Phú giai đoạn 2 Đồng Phú, Bình Phước 480",
-  "status": "unreachable",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 11. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
- },
- {
-  "block": "bds-46",
-  "claim": "Đơn giá đền bù giả định PHR",
-  "value": "~2,5 tỷ đồng/ha",
-  "url": "https://www.vdsc.com.vn/",
-  "opened_at": "2026-10-12",
-  "quote": "tổng diện tích khoảng 786 ha và đơn giá ước tính ~2,5 tỷ đồng/ha",
-  "status": "match",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 22."
- },
- {
-  "block": "bds-46",
-  "claim": "Đơn giá đền bù giả định TRC",
-  "value": "khoảng 1,3 tỷ đồng/ha",
-  "url": "https://www.vdsc.com.vn/",
-  "opened_at": "2026-10-12",
-  "quote": "với đơn giá đền bù kỳ vọng khoảng 1,3 tỷ đồng/ha",
-  "status": "match",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 25."
- },
- {
-  "block": "bds-47",
-  "claim": "Tỷ trọng vốn FDI đăng ký mới theo quốc gia 2025",
-  "value": "27% 21% 10% 42%",
-  "url": "https://www.vdsc.com.vn/",
-  "opened_at": "2026-10-12",
-  "quote": "27% 21% 10% 42% Singapore Trung Quốc HongKong Khác",
-  "status": "unreachable",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 5. Vòng ngoài của biểu đồ (vòng trong là 2024). Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
- },
- {
-  "block": "bds-47",
-  "claim": "FDI đăng ký cấp mới ngoài BĐS 2025",
-  "value": "36,7 tỷ USD (+15%YoY",
-  "url": "https://www.vdsc.com.vn/",
-  "opened_at": "2026-10-12",
-  "quote": "giá trị vốn FDI đăng ký cấp mới (loại trừ lĩnh vực BĐS) dự kiến tiếp tục ghi nhận tăng trưởng và đạt 36,7 tỷ USD (+15%YoY",
-  "status": "unreachable",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 4. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
- },
- {
-  "block": "bds-47",
-  "claim": "Tỷ trọng FDI Trung Quốc đến 10/2025",
-  "value": "gần 23%",
-  "url": "https://www.vdsc.com.vn/",
-  "opened_at": "2026-10-12",
-  "quote": "Tính đến cuối tháng 10/2025, vốn FDI của Trung Quốc chiếm gần 23% tổng giá trị vốn đăng ký mới",
-  "status": "match",
-  "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 5."
- },
- {
-  "block": "bds-48",
-  "claim": "Cao tốc kế hoạch/thực tế theo giai đoạn",
-  "value": "2.000; 1.163; 3.000; 3.209; 5.000",
-  "url": "https://www.vdsc.com.vn/",
-  "opened_at": "2026-10-12",
-  "quote": "Kế hoạch và mục tiêu đường bộ cao tốc qua các giai đoạn (km) 2.000 3.000 5.000 1.163 3.209",
-  "status": "unreachable",
-  "note": "VDSC 01/2026 tr. 6, file PDF người dùng gửi. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
- },
- {
-  "block": "bds-48",
-  "claim": "Cao tốc khai thác đến hết 2025",
-  "value": "3.300 km",
-  "url": "https://tuoitre.vn/plo/tu-3000-km-cao-toc-den-muc-tieu-5000-km-kich-hoat-dong-luc-tang-truong-moi-post913149.html",
-  "opened_at": "2026-10-12",
-  "quote": "Đến hết năm 2025, cả nước đã đưa vào khai thác thơn 3.300 km cao tốc.",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-49",
-  "claim": "Sáp nhập tỉnh",
-  "value": "34",
-  "url": "https://nhadautu.vn/34-tinh-thanh-du-kien-hoat-dong-tu-1-7-2025-co-ten-nhu-the-nao-d96897.html",
-  "opened_at": "2026-10-12",
-  "quote": "34 đơn vị hành chính cấp tỉnh gồm 6 thành phố trực thuộc Trung ương",
-  "status": "match",
-  "note": "Bài đăng trước khi Quốc hội thông qua; hiệu lực 1/7/2025."
- },
- {
-  "block": "bds-49",
-  "claim": "KTM tự do Hải Phòng",
-  "value": "6.292 ha",
-  "url": "https://nhadautu.vn/thanh-lap-khu-thuong-mai-tu-do-hai-phong-gan-6300-ha-d100001.html",
-  "opened_at": "2026-10-12",
-  "quote": "Quyết định 4068/QĐ-UBND … tổng diện tích khoảng 6.292 ha",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-49",
-  "claim": "TTTC quốc tế TP.HCM",
-  "value": "9.2.2026",
-  "url": "https://baovanhoa.vn/chinh-tri/thu-tuong-cham-nhat-ngay-922026-ra-mat-trung-tam-tai-chinh-quoc-te-tai-tphcm-197918.html",
-  "opened_at": "2026-10-12",
-  "quote": "chậm nhất ngày 9.2.2026 ra mắt Trung tâm tài chính quốc tế tại TP.HCM",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-50",
-  "claim": "Long Thành khai thác thương mại",
-  "value": "12/2026; 77%",
-  "url": "https://baodauthau.vn/san-bay-long-thanh-phan-dau-dua-vao-khai-thac-thuong-mai-trong-thang-122026-post201732.html",
-  "opened_at": "2026-10-12",
-  "quote": "phấn đấu đưa vào khai thác thương mại trong tháng 12/2026 … đến nay giá trị sản lượng thực hiện toàn dự án đạt khoảng 77% tổng giá trị các hợp đồng đã ký.",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-50",
-  "claim": "Biên Hòa – Vũng Tàu thông xe",
-  "value": "18/5; 54km",
-  "url": "https://daibieunhandan.vn/tp-dong-nai-chieu-nay-thong-xe-toan-tuyen-cao-toc-bien-hoa-vung-tau-10417254.html",
-  "opened_at": "2026-10-12",
-  "quote": "Từ 17h ngày 18/5, toàn bộ hơn 54km tuyến chính cao tốc Biên Hòa – Vũng Tàu chính thức được vận hành đồng bộ.",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-50",
-  "claim": "Metro 1 lượt khách năm đầu",
-  "value": "19 triệu",
-  "url": "https://vtcnews.vn/sau-1-nam-van-hanh-metro-ben-thanh-suoi-tien-phuc-vu-gan-19-trieu-luot-khach-ar993676.html",
-  "opened_at": "2026-10-12",
-  "quote": "phục vụ gần 19 triệu lượt hành khách, vượt hơn 14% kế hoạch.",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-50",
-  "claim": "Vành đai 3 TP.HCM",
-  "value": "76 km; 75.300 tỷ; 38,6 km",
-  "url": "https://vtcnews.vn/vanh-dai-3-qua-tp-hcm-va-dong-nai-chay-nuoc-rut-de-thong-xe-trong-nam-2026-ar1037017.html",
-  "opened_at": "2026-10-12",
-  "quote": "tổng chiều dài hơn 76 km … tổng mức đầu tư hơn 75.300 tỷ đồng … dự án phấn đấu hoàn thành khoảng 38,6 km tuyến chính cao tốc",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-50",
-  "claim": "Vành đai 4 Thủ đô DATP 2.1",
-  "value": "90%",
-  "url": "https://www.vietnamplus.vn/cac-du-an-tuyen-duong-vanh-dai-ha-noi-dong-loat-tang-toc-ve-dich-post1140466.vnp",
-  "opened_at": "2026-10-12",
-  "quote": "tương đương khoảng 90%",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-50",
-  "claim": "Cao tốc TP.HCM – Mộc Bài",
-  "value": "51 km; 2027",
-  "url": "https://doanhnghiephoinhap.vn/day-nhanh-cao-toc-tp-ho-chi-minh-moc-bai-mo-rong-ket-noi-vung-dong-nam-bo-138139.html",
-  "opened_at": "2026-10-12",
-  "quote": "có tổng chiều dài hơn 51 km … Dự kiến dự án sẽ hoàn thành vào năm 2027.",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-50",
-  "claim": "TP.HCM – Thủ Dầu Một – Chơn Thành GPMB",
-  "value": "2/9/2026; 8.283,2 tỷ",
-  "url": "https://baodautu.vn/chot-han-giao-mat-bang-sach-du-an-cao-toc-tphcm---thu-dau-mot---chon-thanh-d640312.html",
-  "opened_at": "2026-10-12",
-  "quote": "bàn giao mặt bằng sạch phục vụ thi công Dự án trước ngày 2/9/2026. … Tổng mức đầu tư cho công tác giải phóng mặt bằng là 8.283,2 tỷ đồng.",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-50",
-  "claim": "Metro 2 Hà Nội",
-  "value": "35.000 tỷ; 11km",
-  "url": "https://vneconomy.vn/ha-noi-khoi-cong-tuyen-metro-nam-thang-long-tran-hung-dao.htm",
-  "opened_at": "2026-10-12",
-  "quote": "tổng mức đầu tư dự án trên 35.000 tỷ đồng … có chiều dài gần 11km",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-50",
-  "claim": "Vành đai 4 TP.HCM",
-  "value": "122.774 tỷ; 2/9",
-  "url": "https://baodautu.vn/khoi-cong-phan-loi-cao-toc-vanh-dai-4-tphcm-vao-ngay-29-d657781.html",
-  "opened_at": "2026-10-12",
-  "quote": "Tổng mức đầu tư dự kiến giai đoạn 1 của Dự án là 122.774 tỷ đồng … phần lõi cao tốc thuộc dự án đường Vành đai 4 TP.HCM dự kiến được khởi công vào ngày 2/9.",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-50",
-  "claim": "Cảng Cần Giờ",
-  "value": "571 ha; 21 triệu TEU",
-  "url": "https://baodautu.vn/cang-trung-chuyen-can-gio-cho-hoan-tat-thu-tuc-dau-tu-du-kien-khoi-dong-dip-304-d564715.html",
-  "opened_at": "2026-10-12",
-  "quote": "có quy mô 571 ha … công suất thiết kế 21 triệu TEU mỗi năm",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-50",
-  "claim": "ĐS tốc độ cao Bắc–Nam",
-  "value": "1.713.548 tỷ; 12-2026",
-  "url": "https://www.sggp.org.vn/thang-12-2026-co-gang-khoi-cong-du-an-duong-sat-toc-do-cao-tren-truc-bac-nam-post788351.html",
-  "opened_at": "2026-10-12",
-  "quote": "Sơ bộ tổng mức đầu tư là 1.713.548 tỷ đồng (khoảng 67,34 tỷ USD). … Thủ tướng yêu cầu cố gắng khởi công vào tháng 12-2026.",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "bds-50",
-  "claim": "ĐS Lào Cai – Hà Nội – Hải Phòng",
-  "value": "390,9km; 8,369 tỷ USD",
-  "url": "https://www.sggp.org.vn/thang-12-2026-co-gang-khoi-cong-du-an-duong-sat-toc-do-cao-tren-truc-bac-nam-post788351.html",
-  "opened_at": "2026-10-12",
-  "quote": "tổng chiều dài tuyến chính 390,9km, tuyến nhánh 27,9km … tổng mức đầu tư 8,369 tỷ USD",
-  "status": "match",
-  "note": ""
- }
+  {
+    "block": "bds-12",
+    "claim": "ha đất thương phẩm KCN · KBC · đất thương phẩm còn lại",
+    "value": "2.882 ha",
+    "url": "https://acbs.com.vn/acbsmedia/2025/08/KBC_Cap-nhat_22.8.2025.pdf",
+    "opened_at": "2026-10-12",
+    "quote": "tổng diện tích KCN của KBC tăng lên hơn 6.400 ha và diện tích thương phẩm còn lại tăng lên 2.882 ha",
+    "status": "match",
+    "note": "Kỳ 2025-08-22. {\"source_location\": \"ACBS, trang 1\", \"commercial_ha\": null, \"leased_ha\": null, \"remaining_ha\": 2882, \"limitation\": \"6.400 ha là diện tích KCN toàn dự án, không phải đất thương phẩm; không suy tổng và đã cho thuê.\"}"
+  },
+  {
+    "block": "bds-12",
+    "claim": "ha đất thương phẩm KCN · IDC · đất thương phẩm (xấp xỉ)",
+    "value": "3.300 ha",
+    "url": "https://static1.vietstock.vn/edocs/18707/IDC_BVSC_20260128.pdf",
+    "opened_at": "2026-10-12",
+    "quote": "nâng tổng diện tích thương phẩm lên tới gần 3.300 ha; tổng diện tích thương phẩm còn lại có thể khai thác là 1.088 ha, trong đó 749 ha đã đền bù",
+    "status": "match",
+    "note": "Kỳ 2026-01-28. {\"source_location\": \"BVSC, trang 1-2\", \"commercial_ha_approx\": 3300, \"leased_ha_approx_derived\": 2200, \"remaining_ha\": 1088, \"formula\": \"gần 3.300 - 1.088 ≈ 2.200\"}"
+  },
+  {
+    "block": "bds-12",
+    "claim": "ha đất thương phẩm KCN · IDC · đất thương phẩm còn lại",
+    "value": "1.088 ha",
+    "url": "https://static1.vietstock.vn/edocs/18707/IDC_BVSC_20260128.pdf",
+    "opened_at": "2026-10-12",
+    "quote": "nâng tổng diện tích thương phẩm lên tới gần 3.300 ha; tổng diện tích thương phẩm còn lại có thể khai thác là 1.088 ha, trong đó 749 ha đã đền bù",
+    "status": "match",
+    "note": "Kỳ 2026-01-28. {\"source_location\": \"BVSC, trang 1-2\", \"commercial_ha_approx\": 3300, \"leased_ha_approx_derived\": 2200, \"remaining_ha\": 1088, \"formula\": \"gần 3.300 - 1.088 ≈ 2.200\"}"
+  },
+  {
+    "block": "bds-12",
+    "claim": "ha đất thương phẩm KCN · BCM · đất thương phẩm",
+    "value": "3.397 ha",
+    "url": "https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf",
+    "opened_at": "2026-10-19",
+    "quote": "Tổng cộng 5.925 3.397 944 25.049",
+    "status": "match",
+    "note": "Kỳ 2025-11-28. {\"source_location\": \"ACBS, trang 3, Bảng 2\", \"commercial_ha\": 3397, \"leased_ha_derived\": 2453, \"remaining_ha\": 944, \"formula\": \"3.397 - 944 = 2.453\", \"limitation\": \"Chỉ KCN do BCM trực tiếp làm chủ đầu tư; không gồm VSIP. Quỹ còn lại gồm Cây Trường chưa sẵn sàng.\"}"
+  },
+  {
+    "block": "bds-12",
+    "claim": "ha đất thương phẩm KCN · BCM · đất thương phẩm còn lại",
+    "value": "944 ha",
+    "url": "https://rs.nguoiquansat.vn/bcpt/BCM/BCM_68_18182_58.pdf",
+    "opened_at": "2026-10-19",
+    "quote": "Tổng cộng 5.925 3.397 944 25.049",
+    "status": "match",
+    "note": "Kỳ 2025-11-28. {\"source_location\": \"ACBS, trang 3, Bảng 2\", \"commercial_ha\": 3397, \"leased_ha_derived\": 2453, \"remaining_ha\": 944, \"formula\": \"3.397 - 944 = 2.453\", \"limitation\": \"Chỉ KCN do BCM trực tiếp làm chủ đầu tư; không gồm VSIP. Quỹ còn lại gồm Cây Trường chưa sẵn sàng.\"}"
+  },
+  {
+    "block": "bds-12",
+    "claim": "ha đất thương phẩm KCN · SZC · đất thương phẩm",
+    "value": "1.180 ha",
+    "url": "https://acbs.com.vn/Files/Domains/ACBS/WFL-1585/250414041206-1015-1015000001.pdf",
+    "opened_at": "2026-10-12",
+    "quote": "Tính đến cuối Q1/2025, SZC đã cho thuê KCN Sonadezi Châu Đức được hơn 569 hecta trên tổng diện tích thương phầm là 1.180 ha",
+    "status": "match",
+    "note": "Kỳ 2025-Q1. {\"source_location\": \"ACBS, trang 1\", \"commercial_ha\": 1180, \"leased_ha_lower_bound\": 569, \"remaining_ha_upper_bound_derived\": 611, \"formula\": \"1.180 - hơn 569 < 611\"}"
+  },
+  {
+    "block": "bds-12",
+    "claim": "ha đất thương phẩm KCN · SZC · đã cho thuê (tối thiểu)",
+    "value": "569 ha",
+    "url": "https://acbs.com.vn/Files/Domains/ACBS/WFL-1585/250414041206-1015-1015000001.pdf",
+    "opened_at": "2026-10-19",
+    "quote": "Tính đến cuối Q1/2025, SZC đã cho thuê KCN Sonadezi Châu Đức được hơn 569",
+    "status": "match",
+    "note": "Kỳ 2025-Q1. {\"source_location\": \"ACBS, trang 1\", \"commercial_ha\": 1180, \"leased_ha_lower_bound\": 569, \"remaining_ha_upper_bound_derived\": 611, \"formula\": \"1.180 - hơn 569 < 611\"}"
+  },
+  {
+    "block": "bds-12",
+    "claim": "ha đất thương phẩm KCN · SIP · đất thương phẩm (xấp xỉ)",
+    "value": "2.440 ha",
+    "url": "https://nguoiquansat.vn/sip-dat-ke-hoach-di-lui-sau-nam-but-pha-loi-nhuan-du-kien-giam-40-283258.html",
+    "opened_at": "2026-10-12",
+    "quote": "diện tích thương phẩm khoảng 2.440ha. Diện tích đã cho thuê đạt hơn 1.500ha ... vẫn còn hơn 930 ha",
+    "status": "match",
+    "note": "Kỳ 2025-12-31. {\"source_location\": \"Người Quan Sát dẫn Reatimes, đoạn 'Quỹ đất lớn'\", \"commercial_ha_approx\": 2440, \"leased_ha_lower_bound\": 1500, \"remaining_ha_lower_bound\": 930, \"limitation\": \"Các giá trị đã làm tròn, không ép phép cộng bằng đúng tổng.\"}"
+  },
+  {
+    "block": "bds-12",
+    "claim": "ha đất thương phẩm KCN · SIP · đã cho thuê (tối thiểu)",
+    "value": "1.500 ha",
+    "url": "https://nguoiquansat.vn/sip-dat-ke-hoach-di-lui-sau-nam-but-pha-loi-nhuan-du-kien-giam-40-283258.html",
+    "opened_at": "2026-10-12",
+    "quote": "diện tích thương phẩm khoảng 2.440ha. Diện tích đã cho thuê đạt hơn 1.500ha ... vẫn còn hơn 930 ha",
+    "status": "match",
+    "note": "Kỳ 2025-12-31. {\"source_location\": \"Người Quan Sát dẫn Reatimes, đoạn 'Quỹ đất lớn'\", \"commercial_ha_approx\": 2440, \"leased_ha_lower_bound\": 1500, \"remaining_ha_lower_bound\": 930, \"limitation\": \"Các giá trị đã làm tròn, không ép phép cộng bằng đúng tổng.\"}"
+  },
+  {
+    "block": "bds-12",
+    "claim": "ha đất thương phẩm KCN · VGC · tổng / đã cho thuê / còn lại",
+    "value": "3.019 1.721 1.298",
+    "url": "https://shs.com.vn/Sites/QuoteVN/SiteRoot/reportattach/20250710_17714_B%C3%A1o%20c%C3%A1o%20%C4%91%C3%A1nh%20gi%C3%A1%20doanh%20nghi%E1%BB%87p%20VGC%20%281%29.pdf",
+    "opened_at": "2026-10-12",
+    "quote": "Tổng 3.019 1.721 1.298; nguồn VGC, SHS tổng hợp",
+    "status": "match",
+    "note": "Kỳ 2025-07-10. Thứ tự cột: thương phẩm, đã cho thuê, còn lại (ha). {\"source_location\": \"SHS, trang 10, bảng KCN\", \"commercial_ha\": 3019, \"leased_ha\": 1721, \"remaining_ha\": 1298}"
+  },
+  {
+    "block": "bds-12",
+    "claim": "ha đất thương phẩm KCN · LHG · đất thương phẩm còn lại",
+    "value": "30,8 ha",
+    "url": "https://www.tinnhanhchungkhoan.vn/long-hau-lhg-loi-nhuan-nguoc-chieu-gia-co-phieu-post382089.html",
+    "opened_at": "2026-10-12",
+    "quote": "đất thương phẩm 96 ha, đã lấp đầy 100%; diện tích thương phẩm 75,9 ha, cũng đạt tỷ lệ lấp đầy 100%; đất thương phẩm 86,8 ha, mới lấp đầy 65%, còn lại 30,8 ha",
+    "status": "match",
+    "note": "Kỳ 2025-09-30. {\"source_location\": \"Đầu tư Chứng khoán 15/12/2025 dẫn BVSC, đoạn ba KCN\", \"commercial_ha_derived\": 258.7, \"leased_ha_approx_derived\": 227.9, \"remaining_ha\": 30.8, \"formula\": \"96 + 75,9 + 86,8 = 258,7; 258,7 - 30,8 = 227,9\", \"limitation\": \"Ba KCN đang vận hành; không gồm nhà xưởng và dự án chưa phê duyệt.\"}"
+  },
+  {
+    "block": "bds-12",
+    "claim": "ha đất thương phẩm KCN · LHG · đất thương phẩm ba KCN (cộng ra 258,7 ha)",
+    "value": "96 ha; 75,9 ha; 86,8 ha",
+    "url": "https://www.tinnhanhchungkhoan.vn/long-hau-lhg-loi-nhuan-nguoc-chieu-gia-co-phieu-post382089.html",
+    "opened_at": "2026-10-12",
+    "quote": "đất thương phẩm 96 ha, đã lấp đầy 100%; diện tích thương phẩm 75,9 ha, cũng đạt tỷ lệ lấp đầy 100%; đất thương phẩm 86,8 ha, mới lấp đầy 65%, còn lại 30,8 ha",
+    "status": "match",
+    "note": "Số tổng 258,7 là tự cộng, không phải số nguồn: 96 + 75,9 + 86,8 = 258,7; 258,7 - 30,8 = 227,9"
+  },
+  {
+    "block": "bds-44",
+    "claim": "Diện tích ký mới KBC, LHG, NTC, SIP 2024/2025F/2026F",
+    "value": "28 2 75 138 4 15 45 165 4 26 67",
+    "url": "https://www.vdsc.com.vn/",
+    "opened_at": "2026-10-12",
+    "quote": "28 2 75 138 4 15 45 165 4 26 67",
+    "status": "unreachable",
+    "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 10. Nhãn số trên chart, thứ tự theo cột trong PDF; NTC 2024 không có nhãn. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
+  },
+  {
+    "block": "bds-44",
+    "claim": "SIP ký mới 2026F",
+    "value": "67ha (+50%YoY)",
+    "url": "https://www.vdsc.com.vn/",
+    "opened_at": "2026-10-12",
+    "quote": "Tổng diện tích cho thuê đất KCN ký mới trong năm 2026 kỳ vọng hồi phục và đạt 67ha (+50%YoY)",
+    "status": "unreachable",
+    "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 15. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
+  },
+  {
+    "block": "bds-44",
+    "claim": "KBC ký mới 2026F",
+    "value": "165ha (+20%YoY)",
+    "url": "https://www.vdsc.com.vn/",
+    "opened_at": "2026-10-12",
+    "quote": "Tổng diện tích cho thuê đất KCN ký mới trong năm 2026 kỳ vọng đạt 165ha (+20%YoY)",
+    "status": "unreachable",
+    "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 18. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
+  },
+  {
+    "block": "bds-45",
+    "claim": "Diện tích và giá thuê 7 KCN mở bán 2026",
+    "value": "140; 150; 300; 148; 621; 180; 345; 150; 2.189; 80; 498; 220; 287; 300",
+    "url": "https://www.vdsc.com.vn/",
+    "opened_at": "2026-10-12",
+    "quote": "Quế Võ II mở rộng (KBC) Diện tích 140 ha Giá thuê 150; Nam Sơn Hạp Lĩnh (KBC) 300ha 148; Tràng Duệ 03 (KBC) 621ha 180; Nam Tân Uyên 03 (NTC) 345ha 150; Phước Đông (SIP) 2.189ha 80; Lộc An – Bình Sơn (SIP) 498ha 220; Lê Minh Xuân 03 (SIP) 287ha 300",
+    "status": "unreachable",
+    "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 7. Bảng nằm trong hình bản đồ, chép từ ảnh trang. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
+  },
+  {
+    "block": "bds-46",
+    "claim": "KCN trên đất cao su: quy mô",
+    "value": "495; 786; 317; 483; 480",
+    "url": "https://www.vdsc.com.vn/",
+    "opened_at": "2026-10-12",
+    "quote": "Hiệp Thạnh (giai đoạn 1) Phước Thạnh, Tây Ninh 495 2025-2027 KCN chuyên ngành cơ khí (Thaco) Tân Uyên, Bình Dương 786 2025-2028 Bắc Đồng Phú giai đoạn 2 Đồng Phú, Bình Phước 317 2025-2030 Minh Hưng III giai đoạn 2 Minh Hưng, Bình Phước 483 2026-2030 Nam Đồng Phú giai đoạn 2 Đồng Phú, Bình Phước 480",
+    "status": "unreachable",
+    "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 11. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
+  },
+  {
+    "block": "bds-46",
+    "claim": "Đơn giá đền bù giả định PHR",
+    "value": "~2,5 tỷ đồng/ha",
+    "url": "https://www.vdsc.com.vn/",
+    "opened_at": "2026-10-12",
+    "quote": "tổng diện tích khoảng 786 ha và đơn giá ước tính ~2,5 tỷ đồng/ha",
+    "status": "match",
+    "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 22."
+  },
+  {
+    "block": "bds-46",
+    "claim": "Đơn giá đền bù giả định TRC",
+    "value": "khoảng 1,3 tỷ đồng/ha",
+    "url": "https://www.vdsc.com.vn/",
+    "opened_at": "2026-10-12",
+    "quote": "với đơn giá đền bù kỳ vọng khoảng 1,3 tỷ đồng/ha",
+    "status": "match",
+    "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 25."
+  },
+  {
+    "block": "bds-47",
+    "claim": "Tỷ trọng vốn FDI đăng ký mới theo quốc gia 2025",
+    "value": "27% 21% 10% 42%",
+    "url": "https://www.vdsc.com.vn/",
+    "opened_at": "2026-10-12",
+    "quote": "27% 21% 10% 42% Singapore Trung Quốc HongKong Khác",
+    "status": "unreachable",
+    "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 5. Vòng ngoài của biểu đồ (vòng trong là 2024). Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
+  },
+  {
+    "block": "bds-47",
+    "claim": "FDI đăng ký cấp mới ngoài BĐS 2025",
+    "value": "36,7 tỷ USD (+15%YoY",
+    "url": "https://www.vdsc.com.vn/",
+    "opened_at": "2026-10-12",
+    "quote": "giá trị vốn FDI đăng ký cấp mới (loại trừ lĩnh vực BĐS) dự kiến tiếp tục ghi nhận tăng trưởng và đạt 36,7 tỷ USD (+15%YoY",
+    "status": "unreachable",
+    "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 4. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
+  },
+  {
+    "block": "bds-47",
+    "claim": "Tỷ trọng FDI Trung Quốc đến 10/2025",
+    "value": "gần 23%",
+    "url": "https://www.vdsc.com.vn/",
+    "opened_at": "2026-10-12",
+    "quote": "Tính đến cuối tháng 10/2025, vốn FDI của Trung Quốc chiếm gần 23% tổng giá trị vốn đăng ký mới",
+    "status": "match",
+    "note": "Báo cáo VDSC \"Bất động sản khu công nghiệp – Vững vàng trước những cơn gió\" (dữ liệu 20/01/2026), file PDF người dùng gửi 12/10/2026; không có bản công khai, link về trang VDSC. Tr. 5."
+  },
+  {
+    "block": "bds-48",
+    "claim": "Cao tốc kế hoạch/thực tế theo giai đoạn",
+    "value": "2.000; 1.163; 3.000; 3.209; 5.000",
+    "url": "https://www.vdsc.com.vn/",
+    "opened_at": "2026-10-12",
+    "quote": "Kế hoạch và mục tiêu đường bộ cao tốc qua các giai đoạn (km) 2.000 3.000 5.000 1.163 3.209",
+    "status": "unreachable",
+    "note": "VDSC 01/2026 tr. 6, file PDF người dùng gửi. Kiểm 19/10/2026: không tìm thấy bản công khai của báo cáo, url là trang chủ nên không xác minh tự động được; số vẫn theo file PDF người dùng gửi."
+  },
+  {
+    "block": "bds-48",
+    "claim": "Cao tốc khai thác đến hết 2025",
+    "value": "3.300 km",
+    "url": "https://tuoitre.vn/plo/tu-3000-km-cao-toc-den-muc-tieu-5000-km-kich-hoat-dong-luc-tang-truong-moi-post913149.html",
+    "opened_at": "2026-10-12",
+    "quote": "Đến hết năm 2025, cả nước đã đưa vào khai thác thơn 3.300 km cao tốc.",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-49",
+    "claim": "Sáp nhập tỉnh",
+    "value": "34",
+    "url": "https://nhadautu.vn/34-tinh-thanh-du-kien-hoat-dong-tu-1-7-2025-co-ten-nhu-the-nao-d96897.html",
+    "opened_at": "2026-10-12",
+    "quote": "34 đơn vị hành chính cấp tỉnh gồm 6 thành phố trực thuộc Trung ương",
+    "status": "match",
+    "note": "Bài đăng trước khi Quốc hội thông qua; hiệu lực 1/7/2025."
+  },
+  {
+    "block": "bds-49",
+    "claim": "KTM tự do Hải Phòng",
+    "value": "6.292 ha",
+    "url": "https://nhadautu.vn/thanh-lap-khu-thuong-mai-tu-do-hai-phong-gan-6300-ha-d100001.html",
+    "opened_at": "2026-10-12",
+    "quote": "Quyết định 4068/QĐ-UBND … tổng diện tích khoảng 6.292 ha",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-49",
+    "claim": "TTTC quốc tế TP.HCM",
+    "value": "9.2.2026",
+    "url": "https://baovanhoa.vn/chinh-tri/thu-tuong-cham-nhat-ngay-922026-ra-mat-trung-tam-tai-chinh-quoc-te-tai-tphcm-197918.html",
+    "opened_at": "2026-10-12",
+    "quote": "chậm nhất ngày 9.2.2026 ra mắt Trung tâm tài chính quốc tế tại TP.HCM",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-50",
+    "claim": "Long Thành khai thác thương mại",
+    "value": "12/2026; 77%",
+    "url": "https://baodauthau.vn/san-bay-long-thanh-phan-dau-dua-vao-khai-thac-thuong-mai-trong-thang-122026-post201732.html",
+    "opened_at": "2026-10-12",
+    "quote": "phấn đấu đưa vào khai thác thương mại trong tháng 12/2026 … đến nay giá trị sản lượng thực hiện toàn dự án đạt khoảng 77% tổng giá trị các hợp đồng đã ký.",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-50",
+    "claim": "Biên Hòa – Vũng Tàu thông xe",
+    "value": "18/5; 54km",
+    "url": "https://daibieunhandan.vn/tp-dong-nai-chieu-nay-thong-xe-toan-tuyen-cao-toc-bien-hoa-vung-tau-10417254.html",
+    "opened_at": "2026-10-12",
+    "quote": "Từ 17h ngày 18/5, toàn bộ hơn 54km tuyến chính cao tốc Biên Hòa – Vũng Tàu chính thức được vận hành đồng bộ.",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-50",
+    "claim": "Metro 1 lượt khách năm đầu",
+    "value": "19 triệu",
+    "url": "https://vtcnews.vn/sau-1-nam-van-hanh-metro-ben-thanh-suoi-tien-phuc-vu-gan-19-trieu-luot-khach-ar993676.html",
+    "opened_at": "2026-10-12",
+    "quote": "phục vụ gần 19 triệu lượt hành khách, vượt hơn 14% kế hoạch.",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-50",
+    "claim": "Vành đai 3 TP.HCM",
+    "value": "76 km; 75.300 tỷ; 38,6 km",
+    "url": "https://vtcnews.vn/vanh-dai-3-qua-tp-hcm-va-dong-nai-chay-nuoc-rut-de-thong-xe-trong-nam-2026-ar1037017.html",
+    "opened_at": "2026-10-12",
+    "quote": "tổng chiều dài hơn 76 km … tổng mức đầu tư hơn 75.300 tỷ đồng … dự án phấn đấu hoàn thành khoảng 38,6 km tuyến chính cao tốc",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-50",
+    "claim": "Vành đai 4 Thủ đô DATP 2.1",
+    "value": "90%",
+    "url": "https://www.vietnamplus.vn/cac-du-an-tuyen-duong-vanh-dai-ha-noi-dong-loat-tang-toc-ve-dich-post1140466.vnp",
+    "opened_at": "2026-10-12",
+    "quote": "tương đương khoảng 90%",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-50",
+    "claim": "Cao tốc TP.HCM – Mộc Bài",
+    "value": "51 km; 2027",
+    "url": "https://doanhnghiephoinhap.vn/day-nhanh-cao-toc-tp-ho-chi-minh-moc-bai-mo-rong-ket-noi-vung-dong-nam-bo-138139.html",
+    "opened_at": "2026-10-12",
+    "quote": "có tổng chiều dài hơn 51 km … Dự kiến dự án sẽ hoàn thành vào năm 2027.",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-50",
+    "claim": "TP.HCM – Thủ Dầu Một – Chơn Thành GPMB",
+    "value": "2/9/2026; 8.283,2 tỷ",
+    "url": "https://baodautu.vn/chot-han-giao-mat-bang-sach-du-an-cao-toc-tphcm---thu-dau-mot---chon-thanh-d640312.html",
+    "opened_at": "2026-10-12",
+    "quote": "bàn giao mặt bằng sạch phục vụ thi công Dự án trước ngày 2/9/2026. … Tổng mức đầu tư cho công tác giải phóng mặt bằng là 8.283,2 tỷ đồng.",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-50",
+    "claim": "Metro 2 Hà Nội",
+    "value": "35.000 tỷ; 11km",
+    "url": "https://vneconomy.vn/ha-noi-khoi-cong-tuyen-metro-nam-thang-long-tran-hung-dao.htm",
+    "opened_at": "2026-10-12",
+    "quote": "tổng mức đầu tư dự án trên 35.000 tỷ đồng … có chiều dài gần 11km",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-50",
+    "claim": "Vành đai 4 TP.HCM",
+    "value": "122.774 tỷ; 2/9",
+    "url": "https://baodautu.vn/khoi-cong-phan-loi-cao-toc-vanh-dai-4-tphcm-vao-ngay-29-d657781.html",
+    "opened_at": "2026-10-12",
+    "quote": "Tổng mức đầu tư dự kiến giai đoạn 1 của Dự án là 122.774 tỷ đồng … phần lõi cao tốc thuộc dự án đường Vành đai 4 TP.HCM dự kiến được khởi công vào ngày 2/9.",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-50",
+    "claim": "Cảng Cần Giờ",
+    "value": "571 ha; 21 triệu TEU",
+    "url": "https://baodautu.vn/cang-trung-chuyen-can-gio-cho-hoan-tat-thu-tuc-dau-tu-du-kien-khoi-dong-dip-304-d564715.html",
+    "opened_at": "2026-10-12",
+    "quote": "có quy mô 571 ha … công suất thiết kế 21 triệu TEU mỗi năm",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-50",
+    "claim": "ĐS tốc độ cao Bắc–Nam",
+    "value": "1.713.548 tỷ; 12-2026",
+    "url": "https://www.sggp.org.vn/thang-12-2026-co-gang-khoi-cong-du-an-duong-sat-toc-do-cao-tren-truc-bac-nam-post788351.html",
+    "opened_at": "2026-10-12",
+    "quote": "Sơ bộ tổng mức đầu tư là 1.713.548 tỷ đồng (khoảng 67,34 tỷ USD). … Thủ tướng yêu cầu cố gắng khởi công vào tháng 12-2026.",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-50",
+    "claim": "ĐS Lào Cai – Hà Nội – Hải Phòng",
+    "value": "390,9km; 8,369 tỷ USD",
+    "url": "https://www.sggp.org.vn/thang-12-2026-co-gang-khoi-cong-du-an-duong-sat-toc-do-cao-tren-truc-bac-nam-post788351.html",
+    "opened_at": "2026-10-12",
+    "quote": "tổng chiều dài tuyến chính 390,9km, tuyến nhánh 27,9km … tổng mức đầu tư 8,369 tỷ USD",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "bds-07",
+    "claim": "Giao dịch BĐS thành công cả nước Q3/2026",
+    "value": "92.004",
+    "url": "https://vov.vn/kinh-te/thi-truong-bat-dong-san-luong-giao-dich-giam-sau-gia-nha-van-o-dinh-post1342677.vov",
+    "opened_at": "2026-10-28",
+    "quote": "cả nước có khoảng 92.004 giao dịch bất động sản thành công, bằng 92% so với quý II/2026",
+    "status": "match",
+    "note": "Kỳ Q3/2026, công bố 20/10/2026"
+  },
+  {
+    "block": "bds-07",
+    "claim": "Giao dịch căn hộ + nhà riêng lẻ Q3/2026",
+    "value": "22.847",
+    "url": "https://vov.vn/kinh-te/thi-truong-bat-dong-san-luong-giao-dich-giam-sau-gia-nha-van-o-dinh-post1342677.vov",
+    "opened_at": "2026-10-28",
+    "quote": "giao dịch căn hộ chung cư, nhà ở riêng lẻ đạt 22.847 căn, bằng khoảng 86% quý trước",
+    "status": "match",
+    "note": "Kỳ Q3/2026"
+  },
+  {
+    "block": "bds-07",
+    "claim": "Giao dịch đất nền Q3/2026",
+    "value": "69.157",
+    "url": "https://vov.vn/kinh-te/thi-truong-bat-dong-san-luong-giao-dich-giam-sau-gia-nha-van-o-dinh-post1342677.vov",
+    "opened_at": "2026-10-28",
+    "quote": "giao dịch đất nền đạt 69.157 nền, bằng 94%",
+    "status": "match",
+    "note": "Kỳ Q3/2026"
+  },
+  {
+    "block": "bds-07",
+    "claim": "Tồn kho BĐS Q3/2026 (27/34 địa phương)",
+    "value": "51.950",
+    "url": "https://tapchikinhtetaichinh.vn/giao-dich-bat-dong-san-giam-ton-kho-co-xu-huong-gia-tang-169551.html",
+    "opened_at": "2026-10-28",
+    "quote": "lượng bất động sản tồn kho theo báo cáo của 27/34 địa phương lên tới khoảng 51.950 căn, lô/nền",
+    "status": "match",
+    "note": "Kỳ Q3/2026, công bố 14/10/2026"
+  },
+  {
+    "block": "bds-02",
+    "claim": "Giao dịch BĐS thành công cả nước Q3/2026",
+    "value": "92.004",
+    "url": "https://vov.vn/kinh-te/thi-truong-bat-dong-san-luong-giao-dich-giam-sau-gia-nha-van-o-dinh-post1342677.vov",
+    "opened_at": "2026-10-28",
+    "quote": "cả nước có khoảng 92.004 giao dịch bất động sản thành công, bằng 92% so với quý II/2026",
+    "status": "match",
+    "note": "Kỳ Q3/2026, công bố 20/10/2026"
+  },
+  {
+    "block": "bds-02",
+    "claim": "Giao dịch căn hộ + nhà riêng lẻ Q3/2026",
+    "value": "22.847",
+    "url": "https://vov.vn/kinh-te/thi-truong-bat-dong-san-luong-giao-dich-giam-sau-gia-nha-van-o-dinh-post1342677.vov",
+    "opened_at": "2026-10-28",
+    "quote": "giao dịch căn hộ chung cư, nhà ở riêng lẻ đạt 22.847 căn, bằng khoảng 86% quý trước",
+    "status": "match",
+    "note": "Kỳ Q3/2026"
+  },
+  {
+    "block": "bds-02",
+    "claim": "Giao dịch đất nền Q3/2026",
+    "value": "69.157",
+    "url": "https://vov.vn/kinh-te/thi-truong-bat-dong-san-luong-giao-dich-giam-sau-gia-nha-van-o-dinh-post1342677.vov",
+    "opened_at": "2026-10-28",
+    "quote": "giao dịch đất nền đạt 69.157 nền, bằng 94%",
+    "status": "match",
+    "note": "Kỳ Q3/2026"
+  },
+  {
+    "block": "bds-02",
+    "claim": "Tồn kho BĐS Q3/2026 (27/34 địa phương)",
+    "value": "51.950",
+    "url": "https://tapchikinhtetaichinh.vn/giao-dich-bat-dong-san-giam-ton-kho-co-xu-huong-gia-tang-169551.html",
+    "opened_at": "2026-10-28",
+    "quote": "lượng bất động sản tồn kho theo báo cáo của 27/34 địa phương lên tới khoảng 51.950 căn, lô/nền",
+    "status": "match",
+    "note": "Kỳ Q3/2026, công bố 14/10/2026"
+  }
 ]
