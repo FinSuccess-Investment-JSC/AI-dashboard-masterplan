@@ -1,25 +1,25 @@
 {
-  "checked_at": "2026-10-09T01:15:26+00:00",
+  "checked_at": "2026-10-28T17:35:00+07:00",
   "blocks": {
     "funding": {
       "status": "loaded",
-      "latest_observation": "2026-06-01",
-      "data_hash": "c42b0981bc5c2c81b84706443e066b0677c9e1ca005682d1770ae89b7089b218"
+      "latest_observation": "2026-08-01",
+      "data_hash": "dff2ab9757e093ccd9234d945039fe50a96a1f36b8c50ccc9c8d5defc3bc2043"
     },
     "credit": {
       "status": "loaded",
-      "latest_observation": "2026-07-01",
-      "data_hash": "ce761c192a4a4d043c5342fad40186c30afa45bb4825baa8992650c0aab285d3"
+      "latest_observation": "2026-08-01",
+      "data_hash": "d7ebdf12d885ee74d53075d03742e4e29ca70fddec396665476acf9e23f54c99"
     },
     "credit-sectors": {
       "status": "loaded",
-      "latest_observation": "2026-07-01",
-      "data_hash": "baeaf9fdfa8318ed50aace2cef03bb89c74f9263a706afa5ead670f03f373036"
+      "latest_observation": "2026-08-01",
+      "data_hash": "bd90a5b3ad4b2552c9a7315341380dab123295b94b0310f8d16735ce7ea222c7"
     },
     "bonds": {
       "status": "loaded",
-      "latest_observation": "2026-09-30",
-      "data_hash": "703832a098802208bbc5ee32267bc65a24ed4cca24733dbb8449b16e8fc2f6f2"
+      "latest_observation": "2026-10-23",
+      "data_hash": "6bf1e288dd79b576d445d53b79ac0ee7cd833a8904517598b64076e4fafbf53f"
     },
     "other-funding": {
       "status": "loaded",
@@ -28,18 +28,18 @@
     },
     "services-demand": {
       "status": "loaded",
-      "latest_observation": "2026-10-08",
-      "data_hash": "a387ff7810afd9bdfc30b1dbcf6fcf17856b62a06f468ec7801fa3adcc7be108"
+      "latest_observation": "2026-10-28",
+      "data_hash": "9777033697ffe319b23c6132852e37b28c6462dc1bbbf091e38b259dfdd29198"
     },
     "deposit-rates": {
       "status": "loaded",
-      "latest_observation": "2026-10-08",
-      "data_hash": "383046af42ed6c64e8a93c05704f1ec9144df306bdb6b1082ecc4d45ea0fe6ca"
+      "latest_observation": "2026-10-28",
+      "data_hash": "1e1c0d6bd1bc5f73f99c2d6ad6abd79099b719eee54888249019c1150d72c64f"
     },
     "money-market": {
       "status": "loaded",
-      "latest_observation": "2026-10-07",
-      "data_hash": "7e5f564868c507ed82d76c3cc52b0bb1d849515cfbe8073a28afc544d3925f0b"
+      "latest_observation": "2026-10-27",
+      "data_hash": "7b2406e9a3e47c4f13680c44da0e8cf743806a1a721b40880f26a5f9491db836"
     },
     "bank-ratios": {
       "status": "loaded",
@@ -68,28 +68,28 @@
     },
     "omo": {
       "status": "loaded",
-      "latest_observation": "2026-10-08",
-      "data_hash": "7fea46afba8d8bb95f6fb2b3630113aa35712004ccae180d5f68929a3c05c5be"
+      "latest_observation": "2026-10-28",
+      "data_hash": "fba56a09a5a9b0e6e2b4332417db70f226b0fade0aca1925a4a4d00889bf6576"
     },
     "fx": {
       "status": "loaded",
-      "latest_observation": "2026-10-09",
-      "data_hash": "f54c8064a352c94ad8389f8cf5951143a44bf30e87b1f6953100ea5d0a44f91b"
+      "latest_observation": "2026-10-28",
+      "data_hash": "136cb93d43b7a0c3bbf7d91f8224ed4aaf6e07b124ddc47a82d1926950b7cdda"
     },
     "bonds-macro": {
       "status": "loaded",
-      "latest_observation": "2026-10-08",
-      "data_hash": "1c7b13c4ebdefe7eb629af73c45620da53063e250cc35ac8c428074e790fd75e"
+      "latest_observation": "2026-10-28",
+      "data_hash": "1e14d5a1100eeeb16d23f173f39b830e8484b1f8f08bb26434c6959e162e2ca4"
     },
     "macro": {
       "status": "loaded",
       "latest_observation": "2026-09-01",
-      "data_hash": "a97ba533798cff6b07bc3e61e5c2fd1cb2bfd7d830ab86cca5ffc7007d0fdef4"
+      "data_hash": "670d2901381c084c3f0ff952cb43a7878e55bac70c45bd7d15d640f13e94e786"
     },
     "forecast": {
       "status": "loaded",
-      "latest_observation": "2026-10-01",
-      "data_hash": "fdbf6ebff53037e0395d1f24031b11c5aae9e5931047c287dc447b2392f7e0c7"
+      "latest_observation": "2026-10-22",
+      "data_hash": "0e232118204f2620f2e852b3a62bdf94f04c9e0e3ce64f089256557839a98744"
     },
     "news": {
       "status": "loaded",
@@ -98,8 +98,8 @@
     },
     "valuation": {
       "status": "loaded",
-      "latest_observation": "2026-10-08",
-      "data_hash": "9238737f027b81cdb5a998e3c50298ef2c98d866252482a79fb757d6d43d4c04"
+      "latest_observation": "2026-10-27",
+      "data_hash": "219a20c93fbb4d987e7c2f308ee9468f6fe8e645b9e18cb811cda0d3ab7a2874"
     }
   }
 }

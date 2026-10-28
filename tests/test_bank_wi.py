@@ -48,7 +48,10 @@ class WiValidationTests(unittest.TestCase):
         gap = dict(b['data']['credit_minus_deposit_yoy_pp']['points'])
         cr = dict(b['data']['credit_total_yoy']['points']); dp = dict(b['data']['deposits_total_yoy']['points'])
         self.assertAlmostEqual(gap['2026-06-01'], cr['2026-06-01'] - dp['2026-06-01'], places=4)
-        self.assertNotIn('2026-07-01', gap)  # deposits lag credit; no cross-month subtraction
+        # deposits lag credit; a gap exists only for months with both series (no cross-month subtraction)
+        self.assertEqual(set(gap), set(cr) & set(dp))
+        for m, v in gap.items():
+            self.assertAlmostEqual(v, cr[m] - dp[m], places=4)
         self.assertIn('macro:302:265969', b['source_ids'])  # adjusted table, not raw 18
 
     def test_property_proxy_sample_and_no_extrapolation(self):

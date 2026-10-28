@@ -15,14 +15,14 @@
   "bank.eximbank": {},
   "comparison.financials": {},
   "bank.wi.daily": {
-   "lastAttempt": "2026-10-09T08:16:20+07:00",
-   "lastSuccess": "2026-10-09T08:16:20+07:00",
-   "lastNote": "Cập nhật 9/11 file Wi: lãi suất huy động đến 08/10, liên ngân hàng đến 07/10, tỷ giá đến 09/10, TPCP đến 08/10, định giá đến 08/10. Còn lỗi: gbond_primary_auctions (Wi bỏ cột winning_yield khi null, ingest từ chối, 2 lần) và news_bank (không có link PDF CBTT, cần người dùng)."
+   "lastAttempt": "2026-10-28T17:38:14+07:00",
+   "lastSuccess": "2026-10-28T17:38:14+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "bank.wi.monthly": {
-   "lastAttempt": "2026-10-06T14:42:11+07:00",
-   "lastSuccess": "2026-10-06T14:42:11+07:00",
-   "lastNote": "Tiền gửi T6, tín dụng T7, dự báo và TPDN đến 30/09; Wi sửa GDP Q2 8,39→8,81%"
+   "lastAttempt": "2026-10-28T17:38:14+07:00",
+   "lastSuccess": "2026-10-28T17:38:14+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "bank.wi.quarterly": {
    "lastAttempt": "2026-10-06T14:22:41+07:00",
@@ -122,8 +122,16 @@
    "lastSuccess": "2026-10-12T08:43:43+07:00",
    "lastNote": "Trang đã có 9T/2026 265,79 tỷ kWh (+9,3%) khớp tin 12/10; giữ nguyên."
   },
-  "realestate.wi.daily": {},
-  "realestate.wi.weekly": {},
+  "realestate.wi.daily": {
+   "lastAttempt": "2026-10-28T17:38:11+07:00",
+   "lastSuccess": "2026-10-28T17:38:11+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
+  },
+  "realestate.wi.weekly": {
+   "lastAttempt": "2026-10-28T17:38:11+07:00",
+   "lastSuccess": "2026-10-28T17:38:11+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
+  },
   "realestate.market-quarterly": {
    "lastAttempt": "2026-10-12T08:43:43+07:00",
    "lastSuccess": "2026-10-12T08:43:43+07:00",
@@ -165,8 +173,16 @@
    "lastError": "fia.mpi.gov.vn không phân giải DNS/502 trên cloud",
    "attempts": 1
   },
-  "textile.wi.daily": {},
-  "textile.wi.weekly": {},
+  "textile.wi.daily": {
+   "lastAttempt": "2026-10-28T17:38:12+07:00",
+   "lastSuccess": "2026-10-28T17:38:12+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
+  },
+  "textile.wi.weekly": {
+   "lastAttempt": "2026-10-28T17:38:12+07:00",
+   "lastSuccess": "2026-10-28T17:38:12+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
+  },
   "textile.trade-tariff": {
    "lastAttempt": "2026-10-19T08:34:05+07:00",
    "lastError": "trade.gov/otexa mở được nhưng chưa trích và xác minh được dữ liệu OTEXA/USTR mới cho 7 card; không cập nhật để tránh số chưa kiểm",
@@ -190,9 +206,9 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "port.wi.weekly": {
-   "lastAttempt": "2026-10-09T23:21:12+07:00",
-   "lastSuccess": "2026-10-09T23:21:12+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-28T17:38:15+07:00",
+   "lastSuccess": "2026-10-28T17:38:15+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "port.freight": {
    "lastAttempt": "2026-10-26T08:59:04+07:00",
@@ -225,9 +241,9 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "agri.wi.weekly": {
-   "lastAttempt": "2026-10-09T23:21:13+07:00",
-   "lastSuccess": "2026-10-09T23:21:13+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-28T17:38:15+07:00",
+   "lastSuccess": "2026-10-28T17:38:15+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "agri.policy": {
    "lastAttempt": "2026-10-09T23:21:14+07:00",
@@ -250,24 +266,24 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "port.wi.monthly": {
-   "lastAttempt": "2026-10-09T23:21:12+07:00",
-   "lastSuccess": "2026-10-09T23:21:12+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-28T17:38:13+07:00",
+   "lastSuccess": "2026-10-28T17:38:13+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "agri.wi.monthly": {
-   "lastAttempt": "2026-10-09T23:21:13+07:00",
-   "lastSuccess": "2026-10-09T23:21:13+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-28T17:38:13+07:00",
+   "lastSuccess": "2026-10-28T17:38:13+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "seafood.wi.monthly": {
-   "lastAttempt": "2026-10-09T23:21:14+07:00",
-   "lastSuccess": "2026-10-09T23:21:14+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-28T17:38:14+07:00",
+   "lastSuccess": "2026-10-28T17:38:14+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "seafood.wi.weekly": {
-   "lastAttempt": "2026-10-09T23:21:14+07:00",
-   "lastSuccess": "2026-10-09T23:21:14+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-28T17:38:15+07:00",
+   "lastSuccess": "2026-10-28T17:38:15+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "seafood.duties": {
    "lastAttempt": "2026-10-09T23:21:14+07:00",
@@ -290,34 +306,34 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "port.wi.valuation": {
-   "lastAttempt": "2026-10-09T23:21:15+07:00",
-   "lastSuccess": "2026-10-09T23:21:15+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-28T17:38:16+07:00",
+   "lastSuccess": "2026-10-28T17:38:16+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "agri.wi.valuation": {
-   "lastAttempt": "2026-10-09T23:21:15+07:00",
-   "lastSuccess": "2026-10-09T23:21:15+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-28T17:38:16+07:00",
+   "lastSuccess": "2026-10-28T17:38:16+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "seafood.wi.valuation": {
-   "lastAttempt": "2026-10-09T23:21:15+07:00",
-   "lastSuccess": "2026-10-09T23:21:15+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-28T17:38:16+07:00",
+   "lastSuccess": "2026-10-28T17:38:16+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "shipping.wi.daily": {
-   "lastAttempt": "2026-10-10T10:47:43+07:00",
-   "lastSuccess": "2026-10-10T10:47:43+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+   "lastAttempt": "2026-10-28T17:38:16+07:00",
+   "lastSuccess": "2026-10-28T17:38:16+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "shipping.wi.weekly": {
-   "lastAttempt": "2026-10-10T10:47:44+07:00",
-   "lastSuccess": "2026-10-10T10:47:44+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+   "lastAttempt": "2026-10-28T17:38:17+07:00",
+   "lastSuccess": "2026-10-28T17:38:17+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "shipping.wi.valuation": {
-   "lastAttempt": "2026-10-10T10:47:44+07:00",
-   "lastSuccess": "2026-10-10T10:47:44+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+   "lastAttempt": "2026-10-28T17:38:17+07:00",
+   "lastSuccess": "2026-10-28T17:38:17+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "shipping.outlook": {
    "lastAttempt": "2026-10-10T10:47:45+07:00",
@@ -350,19 +366,19 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
   },
   "construction.wi.monthly": {
-   "lastAttempt": "2026-10-11T13:59:18+07:00",
-   "lastSuccess": "2026-10-11T13:59:18+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T17:38:17+07:00",
+   "lastSuccess": "2026-10-28T17:38:17+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "construction.wi.weekly": {
-   "lastAttempt": "2026-10-11T13:59:18+07:00",
-   "lastSuccess": "2026-10-11T13:59:18+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T17:38:17+07:00",
+   "lastSuccess": "2026-10-28T17:38:17+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "construction.wi.valuation": {
-   "lastAttempt": "2026-10-11T13:59:18+07:00",
-   "lastSuccess": "2026-10-11T13:59:18+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T17:38:17+07:00",
+   "lastSuccess": "2026-10-28T17:38:17+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "construction.disbursement": {
    "lastAttempt": "2026-10-11T13:59:18+07:00",
@@ -400,19 +416,19 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
   "insurance.wi.monthly": {
-   "lastAttempt": "2026-10-11T15:38:36+07:00",
-   "lastSuccess": "2026-10-11T15:38:36+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T17:38:18+07:00",
+   "lastSuccess": "2026-10-28T17:38:18+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "insurance.wi.weekly": {
-   "lastAttempt": "2026-10-11T15:38:36+07:00",
-   "lastSuccess": "2026-10-11T15:38:36+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T17:38:18+07:00",
+   "lastSuccess": "2026-10-28T17:38:18+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "insurance.wi.valuation": {
-   "lastAttempt": "2026-10-11T15:38:36+07:00",
-   "lastSuccess": "2026-10-11T15:38:36+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T17:38:18+07:00",
+   "lastSuccess": "2026-10-28T17:38:18+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "insurance.market": {
    "lastAttempt": "2026-10-11T15:38:37+07:00",
@@ -440,19 +456,19 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
   "retail.wi.monthly": {
-   "lastAttempt": "2026-10-11T17:03:32+07:00",
-   "lastSuccess": "2026-10-11T17:03:32+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T17:38:18+07:00",
+   "lastSuccess": "2026-10-28T17:38:18+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "retail.wi.weekly": {
-   "lastAttempt": "2026-10-11T17:03:32+07:00",
-   "lastSuccess": "2026-10-11T17:03:32+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T17:38:18+07:00",
+   "lastSuccess": "2026-10-28T17:38:18+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "retail.wi.valuation": {
-   "lastAttempt": "2026-10-11T17:03:32+07:00",
-   "lastSuccess": "2026-10-11T17:03:32+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T17:38:18+07:00",
+   "lastSuccess": "2026-10-28T17:38:18+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "retail.market": {
    "lastAttempt": "2026-10-11T17:03:32+07:00",
@@ -3113,26 +3129,6 @@
    "signals": []
   },
   {
-   "id": "realestate.wi.daily",
-   "tier": "B",
-   "title": "Wi: TPDN BĐS (phát hành, dư nợ, chậm trả), vĩ mô (FDI, GDP, CPI nhà ở, tín dụng, lãi suất), định giá 4 phân ngành",
-   "since": "2026-10-08T13:34:35+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "realestate.wi.weekly",
-   "tier": "B",
-   "title": "Wi: lịch đáo hạn TPDN BĐS 2026–2027, giá thép, xi măng",
-   "since": "2026-10-08T13:34:35+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
    "id": "realestate.kcn-quarterly",
    "tier": "C",
    "title": "Cushman & Wakefield, JLL: lấp đầy, cung mới, giá thuê đất KCN",
@@ -3229,26 +3225,6 @@
    "signals": []
   },
   {
-   "id": "textile.wi.daily",
-   "tier": "B",
-   "title": "Wi: xuất nhập khẩu dệt may theo tháng và thị trường, sản lượng, IIP, bán lẻ quần áo Mỹ, định giá hai phân ngành",
-   "since": "2026-10-08T22:52:40+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "textile.wi.weekly",
-   "tier": "B",
-   "title": "Wi: giá bông ICE, sợi và bông Trung Quốc, xơ PSF, PTA, MEG",
-   "since": "2026-10-08T22:52:40+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
    "id": "textile.trade-tariff",
    "tier": "C",
    "title": "Thuế Mỹ (Mục 301, danh sách miễn trừ, hạn ngạch đối thủ), FTA, xuất xứ; nhập khẩu may mặc Mỹ (OTEXA); VITAS theo thị trường",
@@ -3292,82 +3268,6 @@
    "signals": []
   },
   {
-   "id": "port.wi.monthly",
-   "tier": "B",
-   "title": "Wi: XNK, vận chuyển hàng hóa đường biển, hàng không, thủy nội địa",
-   "since": "2026-10-10T13:18:47+07:00",
-   "reasons": [
-    "lịch 10/10 07:00",
-    "lịch 11/10 07:00",
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "agri.wi.monthly",
-   "tier": "B",
-   "title": "Wi: XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa",
-   "since": "2026-10-10T13:18:47+07:00",
-   "reasons": [
-    "lịch 10/10 07:00",
-    "lịch 11/10 07:00",
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "seafood.wi.monthly",
-   "tier": "B",
-   "title": "Wi: XK thủy sản tổng và theo Mỹ, Trung Quốc, Nhật, Hàn",
-   "since": "2026-10-10T13:18:47+07:00",
-   "reasons": [
-    "lịch 10/10 07:00",
-    "lịch 11/10 07:00",
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "bank.wi.daily",
-   "tier": "B",
-   "title": "Wi: lãi suất huy động, liên ngân hàng, OMO, tỷ giá, TPCP, định giá, tin tức",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00",
-    "lịch 20/10 07:00",
-    "lịch 21/10 07:00",
-    "lịch 22/10 07:00",
-    "lịch 23/10 07:00",
-    "lịch 26/10 07:00",
-    "lịch 27/10 07:00",
-    "lịch 28/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "bank.wi.monthly",
-   "tier": "B",
-   "title": "Wi: tiền gửi, cung tiền, tín dụng, tín dụng theo ngành, vĩ mô, dự báo, TPDN",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00",
-    "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.wi.weekly",
-   "tier": "B",
-   "title": "Wi: Baltic Dry Index",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "port.projects",
    "tier": "C",
    "title": "Dự án cảng mới: Lạch Huyện, Nam Đình Vũ, Gemalink, Cái Mép Hạ, Cần Giờ, Liên Chiểu, Long Thành",
@@ -3388,16 +3288,6 @@
     "lịch 12/10 07:00",
     "lịch 19/10 07:00",
     "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "agri.wi.weekly",
-   "tier": "B",
-   "title": "Wi: heo hơi, gạo nội địa, Robusta, TSR20, ngô, khô đậu CBOT",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
    ],
    "signals": []
   },
@@ -3426,16 +3316,6 @@
    "signals": []
   },
   {
-   "id": "seafood.wi.weekly",
-   "tier": "B",
-   "title": "Wi: giá cá tra nguyên liệu, cá giống, tôm thẻ 50 con; khô đậu, ngô CBOT",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "seafood.hot-topics",
    "tier": "C",
    "title": "Chủ đề nóng: Trung Quốc thay Mỹ, thuế Mỹ, thức ăn, MMPA/IUU",
@@ -3444,66 +3324,6 @@
     "lịch 12/10 07:00",
     "lịch 19/10 07:00",
     "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "agri.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "seafood.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành (P/E, P/B, vốn hóa) theo phiên",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "shipping.wi.daily",
-   "tier": "B",
-   "title": "Wi: BDTI, BCTI, BDI; vận chuyển đường biển, chỉ số giá vận tải, XNK",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "shipping.wi.weekly",
-   "tier": "B",
-   "title": "Wi: Brent, dầu nhiên liệu Trung Quốc",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "shipping.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành vận tải đường thủy, cảng (P/E, P/B, vốn hóa) theo phiên",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
    ],
    "signals": []
   },
@@ -3540,36 +3360,6 @@
     "lịch 12/10 07:00",
     "lịch 19/10 07:00",
     "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "construction.wi.monthly",
-   "tier": "B",
-   "title": "Wi: vốn NSNN thực hiện, sản lượng thép, xi măng, IIP, XK thép, clinker, tín dụng, GDP xây dựng",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "construction.wi.weekly",
-   "tier": "B",
-   "title": "Wi: thép CB300 Hòa Phát, HRC, quặng, than cốc, than Newcastle, thép phế, nhựa đường; xi măng, đá (Sở XD)",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "construction.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành thép, xi măng, đá, xây dựng (P/E, P/B, vốn hóa) theo phiên",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
    ],
    "signals": []
   },
@@ -3820,36 +3610,6 @@
    "signals": []
   },
   {
-   "id": "insurance.wi.monthly",
-   "tier": "B",
-   "title": "Wi: lãi suất huy động 12 tháng, sản lượng ô tô, xe máy, huy động dân cư",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "insurance.wi.weekly",
-   "tier": "B",
-   "title": "Wi: lợi suất TPCP 10 năm",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "insurance.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành bảo hiểm (P/E, P/B, vốn hóa) theo phiên",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "insurance.market",
    "tier": "C",
    "title": "Toàn thị trường: phí, chi trả, nghiệp vụ, thị phần, khai thác mới nhân thọ",
@@ -4082,36 +3842,6 @@
     "lịch 12/10 07:00",
     "lịch 19/10 07:00",
     "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "retail.wi.monthly",
-   "tier": "B",
-   "title": "Wi: tổng mức bán lẻ, CPI, khách quốc tế, tiền gửi, tín dụng, sản lượng xe, bia, sữa, IIP",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "retail.wi.weekly",
-   "tier": "B",
-   "title": "Wi: đường thô, dầu cọ, khô đậu nành, ngô",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "retail.wi.valuation",
-   "tier": "B",
-   "title": "Wi: định giá phân ngành bán lẻ, phân phối, xe, sữa, bia theo phiên",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00"
    ],
    "signals": []
   },
@@ -4982,5 +4712,5 @@
    ]
   }
  ],
- "updatedAt": "2026-10-28T13:11:51+07:00"
+ "updatedAt": "2026-10-28T17:38:18+07:00"
 }
