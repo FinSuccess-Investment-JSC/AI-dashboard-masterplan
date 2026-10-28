@@ -878,5 +878,65 @@
   "quote": "Cùng với đó, VINARE hiện sở hữu 25% vốn tại Công ty TNHH Bảo hiểm Samsung Vina (SVI), với giá trị khoản đầu tư tăng 2,5% lên 400,9 tỷ đồng.",
   "status": "match",
   "note": "VNR. thoibaotaichinhvietnam.vn (TBTCO), bài sau BCTC Q2/2026 (T7-8/2026)"
+ },
+ {
+  "block": "bh-13",
+  "claim": "DT phí phi nhân thọ 9T/2026 và bồi thường",
+  "value": "75.057 tỷ (+16,6%); bồi thường gốc 24.693 tỷ, tỷ lệ 32,9%",
+  "url": "https://www.tinnhanhchungkhoan.vn/doanh-thu-bao-hiem-phi-nhan-tho-9-thang-vuot-75000-ty-dong-tang-166-post400365.html",
+  "opened_at": "2026-10-28",
+  "quote": "Doanh thu thị trường bảo hiểm phi nhân thọ ước đạt 75.057 tỷ đồng, tăng 16,6% so với cùng kỳ.",
+  "status": "match",
+  "note": "Báo ĐTCK 28/10/2026, số Hiệp hội Bảo hiểm. Bồi thường bảo hiểm gốc ước đạt 24.693 tỷ đồng, tỷ lệ bồi thường 32,9% (chưa bao gồm dự phòng bồi thường)."
+ },
+ {
+  "block": "bh-13",
+  "claim": "Nghiệp vụ 9T/2026: sức khỏe, tài sản & kỹ thuật, xe cơ giới",
+  "value": "27.777 tỷ (+20,8%, 35,7%); 20.928 tỷ (27,7%, +17,53%); 16.290 tỷ (23,1%, +9,4%)",
+  "url": "https://www.tinnhanhchungkhoan.vn/doanh-thu-bao-hiem-phi-nhan-tho-9-thang-vuot-75000-ty-dong-tang-166-post400365.html",
+  "opened_at": "2026-10-28",
+  "quote": "Bảo hiểm tài sản và bảo hiểm kỹ thuật doanh thu đạt 20.928 tỷ đồng, chiếm tỷ trọng 27,7%,",
+  "status": "match",
+  "note": "Cùng bài: sức khỏe doanh thu đạt 27.777 tỷ đồng (bồi thường 23,7%); xe cơ giới doanh thu đạt hơn 16.290 tỷ đồng, chiếm tỷ trọng 23,1% (bồi thường 50,2%). Bài ghi tăng trưởng tài sản '17,53%%'."
+ },
+ {
+  "block": "bh-21",
+  "claim": "Nhân thọ 9T/2026: phí, khai thác mới, hợp đồng",
+  "value": "Phí 101.621 tỷ (−4%); khai thác mới 15.894 tỷ; HĐ mới 1.141.841 (+4,3%); HĐ hiệu lực 11.252.913 (−2,4%)",
+  "url": "https://vneconomy.vn/9-thang-hop-dong-bao-hiem-nhan-tho-khai-thac-moi-tang-43-chi-tra-quyen-loi-tang-hon-21.htm",
+  "opened_at": "2026-10-28",
+  "quote": "số hợp đồng khai thác mới đạt 1.141.841 hợp đồng, tăng 4,3% so với cùng kỳ năm 2025",
+  "status": "match",
+  "note": "VnEconomy 28/10/2026, số Hiệp hội Bảo hiểm. Cùng bài: ước đạt 101.621 tỷ đồng, giảm 4% so với cùng kỳ; có hiệu lực cuối kỳ đạt 11.252.913 hợp đồng, giảm 2,4%; chi trả khoảng 55.733 tỷ đồng, tăng 21,5%. Bài không nêu % tăng của phí khai thác mới."
+ },
+ {
+  "block": "bh-21",
+  "claim": "Phí khai thác mới nhân thọ 9T/2026, kênh ngân hàng",
+  "value": "15.894 tỷ; bancassurance gần 45%",
+  "url": "https://cafebiz.vn/bao-hiem-nhan-tho-thu-gan-16000-ty-dong-phi-moi-sau-9-thang-kenh-ngan-hang-van-la-ga-de-trung-vang-voi-gan-45-doanh-thu-176261028102204701.chn",
+  "opened_at": "2026-10-28",
+  "quote": "doanh thu phí bảo hiểm khai thác mới trong lĩnh vực bảo hiểm nhân thọ 9 tháng đầu năm 2026 ước đạt 15.894 tỷ đồng.",
+  "status": "match",
+  "note": "CafeBiz 28/10/2026. Kênh phân phối qua ngân hàng (bancassurance) chiếm khoảng gần 45%."
+ },
+ {
+  "block": "bh-50",
+  "claim": "Luật sửa đổi Luật Kinh doanh bảo hiểm",
+  "value": "Thông qua 10/12/2025; hiệu lực 01/01/2026; RBC song song đến 2030, một mô hình từ 2031",
+  "url": "https://thoibaotaichinhvietnam.vn/tu-nam-2026-don-gian-hoa-nhieu-thu-tuc-trong-kinh-doanh-bao-hiem-188539.html",
+  "opened_at": "2026-10-28",
+  "quote": "Luật này có hiệu lực từ ngày 1/1/2026.",
+  "status": "match",
+  "note": "TBTC 10/12/2025. Bãi bỏ dịch vụ phụ trợ bảo hiểm có hiệu lực từ 1/7/2026. Bài không nêu số hiệu luật."
+ },
+ {
+  "block": "bh-50",
+  "claim": "Thông tư 96/2026/TT-BTC sửa TT 67/2023",
+  "value": "Hiệu lực 02/07/2026; hoa hồng/thưởng đại lý từ 01/01/2027",
+  "url": "https://thoibaotaichinhvietnam.vn/thong-tu-so-962026tt-btc-sua-nhieu-quy-dinh-ve-hoa-hong-dai-ly-co-so-tinh-phi-nhieu-loai-bao-hiem-200336.html",
+  "opened_at": "2026-10-28",
+  "quote": "có hiệu lực thi hành kể từ ngày 2/7/2026",
+  "status": "match",
+  "note": "TBTC 08/07/2026: không vượt quá mức 30% phí bảo hiểm khai thác năm đầu thực tế thu được; bổ sung mức 7% phí bảo hiểm thực tế thu được đối với phương thức nộp phí 1 lần."
  }
 ]

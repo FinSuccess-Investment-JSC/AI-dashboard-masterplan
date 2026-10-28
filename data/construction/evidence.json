@@ -2328,5 +2328,55 @@
     "quote": "Đến hết ngày 15/10, giải ngân vốn đầu tư công đạt 660.739,5 tỷ đồng, bằng 64,6% kế hoạch Thủ tướng Chính phủ giao.",
     "status": "match",
     "note": "TBTCVN 20/10/2026. Tin 65,9% đến 22/10 (Vietstock) chưa mở được bài gốc nên chưa dùng."
+  },
+  {
+    "block": "xd-51",
+    "claim": "Rà soát lần 1 CBPG HRC Trung Quốc",
+    "value": "QĐ 1902/QĐ-BCT ngày 27/07/2026; đăng ký bên liên quan đến 21/10/2026",
+    "url": "https://trungtamwto.vn/chuyen-de/33118-bct-ban-hanh-quyet-dinh-ra-soat-lan-thu-nhat-viec-ap-dung-bien-phap-cbpg-doi-voi-can-nong-co-xuat-xu-tu-trung-quoc-ar01ad20",
+    "opened_at": "2026-10-28",
+    "quote": "ngày 27 tháng 7 năm 2026, Bộ Công Thương ban hành Quyết định số 1902/QĐ-BCT",
+    "status": "match",
+    "note": "Trung tâm WTO 29/07/2026; mã vụ việc AR01.AD20. Hạn cuối để đăng ký bên liên quan là ngày 21 tháng 10 năm 2026."
+  },
+  {
+    "block": "xd-51",
+    "claim": "Điều tra CBPG thanh thép dự ứng lực Trung Quốc",
+    "value": "QĐ 1903/QĐ-BCT ngày 27/07/2026",
+    "url": "https://trungtamwto.vn/chuyen-de/33117-bct-quyet-dinh-dieu-tra-ap-dung-bien-phap-cbpg-doi-voi-thanh-thep-du-ung-luc-nhap-khau-tu-trung-quoc",
+    "opened_at": "2026-10-28",
+    "quote": "Ngày 27 tháng 7 năm 2026, Bộ Công Thương ban hành Quyết định số 1903/QĐ-BCT",
+    "status": "match",
+    "note": "Trung tâm WTO 29/07/2026; HS 7227.20.00; 7228.20.11; 7228.20.19; 7229.20.00; bài không nêu biên độ phá giá."
+  },
+  {
+    "block": "xd-62",
+    "claim": "Giá thép Hòa Phát miền Nam 26/10/2026",
+    "value": "CB240 14.920 đ/kg; D10 CB300 14.720 đ/kg (không đổi từ 04/10)",
+    "url": "https://doanhnghiephoinhap.vn/gia-thep-hom-nay-26102026-thi-truong-cuon-can-nong-toan-cau-phan-hoa-ro-ret-152466.html",
+    "opened_at": "2026-10-28",
+    "quote": "Thép Hòa Phát: Thép cuộn CB240 có giá 14.920 đồng/kg; thép thanh vằn D10 CB300 có giá 14.720 đồng/kg.",
+    "status": "match",
+    "note": "DN Hội nhập 26/10/2026, mục miền Nam. Xi măng, đá, cát: không tìm được công bố mới hơn (Sở Xây dựng TP.HCM mới nhất tìm thấy là giá tháng 6/2026)."
+  },
+  {
+    "block": "xd-t1",
+    "claim": "Mốc khởi công đường sắt tốc độ cao Bắc–Nam",
+    "value": "Bộ Xây dựng nhắm 12/2027 (họp 08/09/2026)",
+    "url": "https://tapchikinhtetaichinh.vn/dat-muc-tieu-khoi-cong-du-an-duong-sat-toc-do-cao-bac-nam-vao-thang-12-2027-166477.html",
+    "opened_at": "2026-10-28",
+    "quote": "phải nỗ lực để khởi công dự án vào tháng 12/2027",
+    "status": "match",
+    "note": "TC KT-TC 09/09/2026; CafeF cùng ngày: Bộ Xây dựng đặt mục tiêu khởi công Dự án đường sắt tốc độ cao Bắc-Nam vào tháng 12/2027. Thay mốc cũ 12/2026."
+  },
+  {
+    "block": "xd-t2",
+    "claim": "Hòa Phát 9T/2026 thép thô, HRC",
+    "value": "Thép thô 10,7 triệu tấn (+35%); HRC 5,47 triệu tấn (+59%)",
+    "url": "https://thoibaotaichinhvietnam.vn/hoa-phat-ban-hon-10-3-trieu-tan-thep-trong-9-thang-205266.html",
+    "opened_at": "2026-10-28",
+    "quote": "Lũy kế 9 tháng năm 2026, Hòa Phát sản xuất 10,7 triệu tấn thép thô, tăng 35% ... HRC đạt 5,47 triệu tấn, tăng 59%",
+    "status": "match",
+    "note": "TBTC 13/10/2026; dùng cho xd-13 và xd-t2 (số vận hành, không phải BCTC)."
   }
 ]

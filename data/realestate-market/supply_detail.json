@@ -1,4 +1,9 @@
 [
+{"quarter":"Q3/2026","city":"TP.HCM & vùng phụ cận","source_firm":"DKRA","total_new_units":4000,"note":"Nguồn cung sơ cấp căn hộ >13.200 căn (-31% QoQ), TP.HCM ~94%; mở bán mới >4.000 căn; sức cầu căn hộ giảm tới 66% QoQ; giá thứ cấp giảm 4–7%; dự báo Q4/2026 mở bán mới 7.000–10.000 căn",
+ "by_segment":[{"segment":"Hạng A","units_or_share":null,"note":"chủ đạo ở khu trung tâm"},{"segment":"Hạng B, C","units_or_share":null,"note":"chủ đạo ở vùng ven"}],
+ "by_location":[{"area":"TP.HCM","units_or_share":"~94% nguồn cung sơ cấp"}],
+ "projects":[],
+ "sources":[{"label":"CafeF (DKRA Q3/2026, 12/10/2026)","url":"https://cafef.vn/luong-tieu-thu-can-ho-dat-nen-o-tphcm-va-vung-phu-can-giam-den-66-188261012122754748.chn"}]},
 {"quarter":"Q2/2026","city":"Hà Nội","source_firm":"CBRE","total_new_units":null,"note":"H1/2026 16.600 căn (cao nhất H1 từ 2020); Q2 bán >5.800 căn = 68% nguồn cung mới; giá sơ cấp TB ~95 tr/m2 (+12% QoQ, +21% YoY)",
  "by_segment":[{"segment":"<60 tr/m2","units_or_share":"0%","note":"quý thứ 2 liên tiếp không có"},{"segment":"80-100 tr/m2","units_or_share":"30%","note":"vietnamfinance ghi 80-110"},{"segment":">120 tr/m2","units_or_share":"35% (>3.000 căn, 4 dự án)","note":"Thanh Xuân, Tây Hồ, Đông Anh"}],
  "by_location":[{"area":"Thanh Xuân, Tây Hồ, Đông Anh (phân khúc >120 tr/m2)","units_or_share":">3.000 căn"}],

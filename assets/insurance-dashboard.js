@@ -171,9 +171,9 @@ if(document.getElementById('chMarket')){
  insight('chMarket','Toàn thị trường 9T/2026: phí +2,4% nhưng chi trả quyền lợi +13,1% — chi trả tăng nhanh gấp 5 lần phí. Phần lớn chi trả là nhân thọ (đáo hạn, hủy hợp đồng); phi nhân thọ thì ngược lại, phí tăng nhanh hơn bồi thường. Hai mảng đang đi ngược chiều.');
 }
 if(document.getElementById('chNlLines')){
- hbarCompare('chNlLines',{items:[{label:'Sức khỏe +20,7%',value:23.979,color:C.navy},{label:'Tài sản, kỹ thuật +17,3%',value:18.6,color:C.teal},{label:'Xe cơ giới +8,2%',value:14.501,color:C.gold},{label:'Bồi thường gốc',value:21.365,color:C.red}],unit:'nghìn tỷ',digits:1,labelW:170,ariaLabel:'Phi nhân thọ theo nghiệp vụ 8T/2026'});
- sourceLine('chNlLines',[['Hiệp hội Bảo hiểm qua Thị trường Tài chính Tiền tệ','https://thitruongtaichinhtiente.vn/thi-truong-bao-hiem-8-thang-hon-1-trieu-hop-dong-nhan-tho-doanh-thu-phi-nhan-tho-tang-16-6-86142.html']],'8T/2026','Toàn thị trường phi nhân thọ 66.191 tỷ (+16,6%). Bồi thường gốc 21.365 tỷ, tỷ lệ 32,3%.',false);
- insight('chNlLines','Sức khỏe là nghiệp vụ lớn nhất và tăng nhanh nhất — nhưng cũng có tỷ lệ bồi thường cao nhất; tài sản, kỹ thuật tăng theo đầu tư FDI và hạ tầng, là mảng mạnh của PVI. Xe cơ giới tăng chậm nhất dù sản lượng xe tăng mạnh: cạnh tranh giá phí.');
+ hbarCompare('chNlLines',{items:[{label:'Sức khỏe +20,8%',value:27.777,color:C.navy},{label:'Tài sản, kỹ thuật +17,5%',value:20.928,color:C.teal},{label:'Xe cơ giới +9,4%',value:16.29,color:C.gold},{label:'Bồi thường gốc',value:24.693,color:C.red}],unit:'nghìn tỷ',digits:1,labelW:170,ariaLabel:'Phi nhân thọ theo nghiệp vụ 9T/2026'});
+ sourceLine('chNlLines',[['Hiệp hội Bảo hiểm qua Báo Đầu tư Chứng khoán, 28/10/2026','https://www.tinnhanhchungkhoan.vn/doanh-thu-bao-hiem-phi-nhan-tho-9-thang-vuot-75000-ty-dong-tang-166-post400365.html']],'9T/2026','Toàn thị trường phi nhân thọ 75.057 tỷ (+16,6%). Bồi thường gốc 24.693 tỷ, tỷ lệ 32,9%.',false);
+ insight('chNlLines','Sức khỏe là nghiệp vụ lớn nhất và tăng nhanh nhất, tỷ lệ bồi thường 9T chỉ 23,7%; xe cơ giới bồi thường cao nhất (50,2%); tài sản, kỹ thuật tăng theo đầu tư FDI và hạ tầng, là mảng mạnh của PVI. Xe cơ giới tăng chậm nhất dù sản lượng xe tăng mạnh: cạnh tranh giá phí.');
 }
 // ---------- 4. KPIs, quick read, catalyst brief ----------
 const nI=NL.length-1,lI=LF.length-1,nL=NL.at(-1),lL=LF.at(-1),gL=gb.at(-1),dL=dep.at(-1),nlS=sec['285']?.records||[],nlV=nlS.at(-1),lfS=sec['151']?.records||[],lfV=lfS.at(-1);

@@ -468,5 +468,105 @@
     "quote": "lượng bất động sản tồn kho theo báo cáo của 27/34 địa phương lên tới khoảng 51.950 căn, lô/nền",
     "status": "match",
     "note": "Kỳ Q3/2026, công bố 14/10/2026"
+  },
+  {
+    "block": "bds-19",
+    "claim": "Luật Đất đai, Nhà ở, KD BĐS (sửa đổi) trình và thảo luận ở Tổ 22/10/2026",
+    "value": "22/10/2026",
+    "url": "https://baolamdong.vn/thong-cao-bao-chi-so-06-ky-hop-thu-2-quoc-hoi-khoa-xvi-470757.html",
+    "opened_at": "2026-10-28",
+    "quote": "Chiều 22/10, Quốc hội tiếp tục thảo luận ở Tổ về 03 dự án: Luật Đất đai (sửa đổi); Luật Nhà ở (sửa đổi); Luật Kinh doanh bất động sản (sửa đổi).",
+    "status": "match",
+    "note": "Thông cáo số 06, đăng 23/10/2026; chưa có biểu quyết"
+  },
+  {
+    "block": "bds-23",
+    "claim": "Giao dịch BĐS Q3/2026",
+    "value": "92.004",
+    "url": "https://baodauthau.vn/ton-kho-bat-dong-san-tang-quy-iii2026-ghi-nhan-khoang-92004-giao-dich-thanh-cong-post209850.html",
+    "opened_at": "2026-10-28",
+    "quote": "trong quý III/2026, cả nước ghi nhận khoảng 92.004 giao dịch bất động sản thành công, bằng 92% quý trước",
+    "status": "match",
+    "note": "Báo Đấu thầu 13/10/2026 dẫn Bộ Xây dựng"
+  },
+  {
+    "block": "bds-26",
+    "claim": "NOXH lũy kế đang triển khai",
+    "value": "947 dự án / 910.933 căn",
+    "url": "https://thanhtra.com.vn/nha-dat-57A4B2310/bo-xay-dung-cong-bo-tien-do-trien-khai-hon-910000-can-nha-o-xa-hoi-3bb816bd0.html",
+    "opened_at": "2026-10-28",
+    "quote": "lũy kế đến nay, cả nước có 947 dự án đang được triển khai với quy mô 910.933 căn",
+    "status": "match",
+    "note": "Họp báo Bộ Xây dựng 15/10/2026"
+  },
+  {
+    "block": "bds-13",
+    "claim": "Giá sơ cấp căn hộ Hà Nội Q3/2026 (CBRE)",
+    "value": "86",
+    "url": "https://doanhnhan.baophapluat.vn/nguon-cung-can-ho-ha-noi-quy-iii-2026-giam-40-thanh-khoan-di-xuong.html",
+    "opened_at": "2026-10-28",
+    "quote": "giá chào bán sơ cấp căn hộ trung bình toàn thị trường Hà Nội trong quý III/2026 đạt khoảng 86 triệu đồng/m²",
+    "status": "match",
+    "note": "Kỳ Q3/2026, công bố 16/10/2026"
+  },
+  {
+    "block": "bds-07",
+    "claim": "Căn hộ Hà Nội mở bán mới Q3/2026 (CBRE)",
+    "value": "6.200",
+    "url": "https://doanhnhan.baophapluat.vn/nguon-cung-can-ho-ha-noi-quy-iii-2026-giam-40-thanh-khoan-di-xuong.html",
+    "opened_at": "2026-10-28",
+    "quote": "ghi nhận khoảng 6.200 căn mở bán mới",
+    "status": "match",
+    "note": "Kỳ Q3/2026"
+  },
+  {
+    "block": "bds-07",
+    "claim": "Căn hộ Hà Nội bán được Q3/2026 (CBRE)",
+    "value": "3.900",
+    "url": "https://doanhnhan.baophapluat.vn/nguon-cung-can-ho-ha-noi-quy-iii-2026-giam-40-thanh-khoan-di-xuong.html",
+    "opened_at": "2026-10-28",
+    "quote": "lượng căn hộ bán được trong quý III đạt hơn 3.900 căn",
+    "status": "match",
+    "note": "Kỳ Q3/2026"
+  },
+  {
+    "block": "bds-08",
+    "claim": "Nguồn cung sơ cấp căn hộ TP.HCM & vùng phụ cận Q3/2026 (DKRA)",
+    "value": "13.200",
+    "url": "https://cafef.vn/luong-tieu-thu-can-ho-dat-nen-o-tphcm-va-vung-phu-can-giam-den-66-188261012122754748.chn",
+    "opened_at": "2026-10-28",
+    "quote": "nguồn cung sơ cấp đạt hơn 13.200 căn, giảm 31% so với quý trước",
+    "status": "match",
+    "note": "Kỳ Q3/2026, công bố 12/10/2026"
+  },
+  {
+    "block": "bds-08",
+    "claim": "Sức cầu căn hộ TP.HCM & vùng phụ cận Q3/2026 (DKRA)",
+    "value": "-66% QoQ",
+    "url": "https://cafef.vn/luong-tieu-thu-can-ho-dat-nen-o-tphcm-va-vung-phu-can-giam-den-66-188261012122754748.chn",
+    "opened_at": "2026-10-28",
+    "quote": "sức cầu căn hộ tại TP.HCM và vùng phụ cận đã giảm tới 66% so với quý trước",
+    "status": "match",
+    "note": "Kỳ Q3/2026"
+  },
+  {
+    "block": "bds-50",
+    "claim": "Vành đai 4 TP.HCM DATP 2-2 qua Đồng Nai khởi công",
+    "value": ">46 km · >16.000 tỷ",
+    "url": "https://tuoitre.vn/khoi-cong-duong-vanh-dai-4-tphcm-qua-dong-nai-tong-von-hon-16000-ti-100260930111731322.htm",
+    "opened_at": "2026-10-28",
+    "quote": "Dự án thành phần 2-2 đường vành đai 4 TP.HCM qua Đồng Nai dài hơn 46km, tổng mức đầu tư hơn 16.000 tỉ đồng",
+    "status": "match",
+    "note": "Tuổi Trẻ 30/09/2026; hoàn thành dự kiến 2029"
+  },
+  {
+    "block": "bds-50",
+    "claim": "Đường sắt tốc độ cao Bắc–Nam: mục tiêu khởi công",
+    "value": "12/2027",
+    "url": "https://cafef.vn/khi-nao-khoi-cong-sieu-du-an-duong-sat-toc-do-cao-bac-nam-188260909133305869.chn",
+    "opened_at": "2026-10-28",
+    "quote": "Bộ Xây dựng đặt mục tiêu khởi công Dự án đường sắt tốc độ cao Bắc-Nam vào tháng 12/2027.",
+    "status": "match",
+    "note": "CafeF 09/09/2026 (theo Tiền Phong)"
   }
 ]

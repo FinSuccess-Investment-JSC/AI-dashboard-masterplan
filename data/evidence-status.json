@@ -1,6 +1,132 @@
 {
- "checked_at": "2026-10-28T11:11:59Z",
+ "checked_at": "2026-10-28T14:30:15Z",
  "problems": [
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-42",
+   "claim": "USDA cà phê VN 2026/27",
+   "url": "https://apps.fas.usda.gov/psdonline/circulars/2026/07/coffee.pdf",
+   "state": "unreachable: CalledProcessError"
+  },
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-50",
+   "claim": "Mỹ miễn thuế đối ứng cà phê",
+   "url": "https://trungtamwto.vn/chuyen-de/31145-ong-trump-ky-sac-lenh-giam-thue-nong-san-nhap-khau-ca-phe-viet-nam-don-thoi-diem-vang-gia-tang-thi-phan",
+   "state": "unreachable: URLError"
+  },
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-51",
+   "claim": "Giảm thuế GTGT 2%",
+   "url": "https://lsvn.vn/chinh-thuc-giam-thue-gia-tri-gia-tang-tu-01-7-2025-den-het-31-12-2026-a159793.html",
+   "state": "unreachable: URLError"
+  },
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-t3",
+   "claim": "DPR giá bán bình quân",
+   "url": "https://mekongasean.vn/huong-loi-tu-gia-ban-lai-quy-22026-cua-cao-su-dong-phu-tang-60-57810.html",
+   "state": "unreachable: RemoteDisconnected"
+  },
+  {
+   "file": "data/agri/evidence.json",
+   "block": "nn-60",
+   "claim": "DPR KH và 6T",
+   "url": "https://mekongasean.vn/huong-loi-tu-gia-ban-lai-quy-22026-cua-cao-su-dong-phu-tang-60-57810.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-60",
+   "claim": "Tổng bán hàng thép 6T/2026 và thị phần thép xây dựng",
+   "url": "https://www.vietnamplus.vn/hoa-phat-san-xuat-7-trieu-tan-thep-trong-nua-dau-nam-2026-tang-36-post1123152.vnp",
+   "state": "unreachable: TimeoutError"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-60",
+   "claim": "Sản lượng Q2/2026 theo mảng",
+   "url": "https://www.vietnamplus.vn/hoa-phat-san-xuat-7-trieu-tan-thep-trong-nua-dau-nam-2026-tang-36-post1123152.vnp",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-60",
+   "claim": "Tổng công suất thép sau Dung Quất 2",
+   "url": "https://www.vietnamplus.vn/hoa-phat-san-xuat-7-trieu-tan-thep-trong-nua-dau-nam-2026-tang-36-post1123152.vnp",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-60",
+   "claim": "KQ Q2/2026 (theo ACBS/Elibook): doanh thu / LNST",
+   "url": "https://elibook.vn/2026/08/12/dpg-ket-qua-kinh-doanh-quy-2-tang-toc-nho-mang-xay-lap-acbs-ha-gia-muc-tieu-nhung-van-giu-khuyen-nghi-mua/",
+   "state": "unreachable: URLError"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-60",
+   "claim": "Hợp đồng mới 2026 (xây lắp cầu đường): cầu Trần Hưng Đạo, Vành đai 4; backlog xây lắp cuối Q2/2026",
+   "url": "https://elibook.vn/2026/08/12/dpg-ket-qua-kinh-doanh-quy-2-tang-toc-nho-mang-xay-lap-acbs-ha-gia-muc-tieu-nhung-van-giu-khuyen-nghi-mua/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-60",
+   "claim": "Backlog xây lắp cuối Q2/2026",
+   "url": "https://elibook.vn/2026/08/12/dpg-ket-qua-kinh-doanh-quy-2-tang-toc-nho-mang-xay-lap-acbs-ha-gia-muc-tieu-nhung-van-giu-khuyen-nghi-mua/",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-61",
+   "claim": "KQ 6T/2026: DT thuần / LNST / %KH",
+   "url": "https://vietnamfinance.vn/ong-lon-xi-mang-bao-lai-tang-manh-nhom-dn-van-thua-lo-keo-dai-d149188.html",
+   "state": "unreachable: URLError"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-61",
+   "claim": "Thị phần miền Trung – Tây Nguyên đến Nam Bộ",
+   "url": "https://vietbao.vn/don-hang-tro-lai-vi-sao-loi-nhuan-cua-doanh-nghiep-xi-mang-van-mong-604887.html",
+   "state": "unreachable: URLError"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-61",
+   "claim": "KQ Q2/2026: lợi nhuận",
+   "url": "https://vietnamfinance.vn/ong-lon-xi-mang-bao-lai-tang-manh-nhom-dn-van-thua-lo-keo-dai-d149188.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-61",
+   "claim": "KQ 6T/2026: doanh thu thuần",
+   "url": "https://vietbao.vn/don-hang-tro-lai-vi-sao-loi-nhuan-cua-doanh-nghiep-xi-mang-van-mong-604887.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-61",
+   "claim": "KQ 6T/2026: LNST hợp nhất (≈0% KH)",
+   "url": "https://vietbao.vn/don-hang-tro-lai-vi-sao-loi-nhuan-cua-doanh-nghiep-xi-mang-van-mong-604887.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-61",
+   "claim": "Rủi ro dư cung ngành: hiệu suất dây chuyền",
+   "url": "https://vietbao.vn/don-hang-tro-lai-vi-sao-loi-nhuan-cua-doanh-nghiep-xi-mang-van-mong-604887.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/construction/evidence.json",
+   "block": "xd-61",
+   "claim": "Công suất mỏ Tân Mỹ",
+   "url": "https://theleader.vn/ksb-dat-muc-tieu-doanh-thu-hon-1000-ty-dong-tang-toc-hai-tru-cot-cot-loi-d46537.html",
+   "state": "unreachable: URLError"
+  },
   {
    "file": "data/construction/evidence.json",
    "block": "xd-61",
@@ -23,17 +149,73 @@
    "state": "quote_changed"
   },
   {
-   "file": "data/port/evidence.json",
-   "block": "cg-15",
-   "claim": "Cần Giờ vốn, ngày duyệt",
-   "url": "https://www.tinnhanhchungkhoan.vn/tphcm-thuc-nha-dau-tu-du-an-cang-quoc-te-can-gio-khoi-cong-trong-thang-10-post397552.html",
-   "state": "unreachable: RemoteDisconnected"
+   "file": "data/insurance/evidence.json",
+   "block": "bh-60",
+   "claim": "KQ 6T/2026 hợp nhất: tổng doanh thu",
+   "url": "https://nhadautu.vn/tap-doan-bao-viet-bvh-tong-doanh-thu-hop-nhat-6-thang-dau-nam-2026-dat-hon-32000-ty-dong-tang-truong-92-d106710.html",
+   "state": "unreachable: HTTPError"
+  },
+  {
+   "file": "data/insurance/evidence.json",
+   "block": "bh-60",
+   "claim": "KQ 6T/2026 hợp nhất: LNTT / LNST",
+   "url": "https://nhadautu.vn/tap-doan-bao-viet-bvh-tong-doanh-thu-hop-nhat-6-thang-dau-nam-2026-dat-hon-32000-ty-dong-tang-truong-92-d106710.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/insurance/evidence.json",
+   "block": "bh-60",
+   "claim": "Q2/2026: phí bảo hiểm thuần đi ngang; LNTT quý",
+   "url": "https://mekongasean.vn/bao-viet-bao-lai-quy-2-tang-50-dau-tu-hon-4200-ty-dong-vao-co-phieu-57996.html",
+   "state": "unreachable: URLError"
+  },
+  {
+   "file": "data/insurance/evidence.json",
+   "block": "bh-60",
+   "claim": "Tách lãi Q2/2026: lãi gộp KD bảo hiểm vs lãi HĐ tài chính",
+   "url": "https://mekongasean.vn/bao-viet-bao-lai-quy-2-tang-50-dau-tu-hon-4200-ty-dong-vao-co-phieu-57996.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/insurance/evidence.json",
+   "block": "bh-60",
+   "claim": "Danh mục 30/6/2026: tiền gửi ngắn hạn / dài hạn",
+   "url": "https://mekongasean.vn/bao-viet-bao-lai-quy-2-tang-50-dau-tu-hon-4200-ty-dong-vao-co-phieu-57996.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/insurance/evidence.json",
+   "block": "bh-60",
+   "claim": "Tổng tài sản hợp nhất 30/6/2026",
+   "url": "https://nhadautu.vn/tap-doan-bao-viet-bvh-tong-doanh-thu-hop-nhat-6-thang-dau-nam-2026-dat-hon-32000-ty-dong-tang-truong-92-d106710.html",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/insurance/evidence.json",
+   "block": "bh-60",
+   "claim": "Dự phòng nghiệp vụ bảo hiểm 30/6/2026",
+   "url": "https://mekongasean.vn/bao-viet-bao-lai-quy-2-tang-50-dau-tu-hon-4200-ty-dong-vao-co-phieu-57996.html",
+   "state": "quote_changed"
   },
   {
    "file": "data/port/evidence.json",
    "block": "cg-t3",
    "claim": "SGN KH 2026",
    "url": "https://www.dnse.com.vn/senses/tin-tuc/dhdcd-sgn-doanh-thu-6-thang-uoc-dat-816-ty-dong-loi-nhuan-van-bi-nen-boi-chi-phi-long-thanh-35238545",
+   "state": "quote_changed"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-17",
+   "claim": "Trần gió trên bờ 2025, Bắc/Trung/Nam (QĐ 1508/QĐ-BCT)",
+   "url": "https://caselaw.vn/bai-viet/quyet-dinh-1508-qd-bct-phe-duyet-khung-gia-phat-dien-nha-may-dien-gio-nam-2025",
+   "state": "unreachable: TimeoutError"
+  },
+  {
+   "file": "data/power/evidence.json",
+   "block": "dien-17",
+   "claim": "Trần gió gần bờ 2025",
+   "url": "https://caselaw.vn/bai-viet/quyet-dinh-1508-qd-bct-phe-duyet-khung-gia-phat-dien-nha-may-dien-gio-nam-2025",
    "state": "quote_changed"
   },
   {
@@ -199,15 +381,15 @@
   },
   {
    "file": "data/shipping/evidence.json",
-   "block": "vt-60",
-   "claim": "NPAT-MI 6T/2026 & cước chuẩn",
-   "url": "https://www.vietcap.com.vn/en/research-center/pvt-core-h1-2026-npat-mi-up-64-yoy-on-stronger-tanker-rates-fleet-expansion-slightly-above-expectations-earnings-flash",
-   "state": "unreachable: URLError"
+   "block": "vt-62",
+   "claim": "HARPEX 25/09/2026 (cuối Q3)",
+   "url": "https://www.harperpetersen.com/harpex",
+   "state": "quote_changed"
   },
   {
    "file": "data/shipping/evidence.json",
    "block": "vt-62",
-   "claim": "HARPEX 25/09/2026 (cuối Q3)",
+   "claim": "HARPEX 23/10/2026 và giá thuê 2.500/1.700 TEU",
    "url": "https://www.harperpetersen.com/harpex",
    "state": "quote_changed"
   },

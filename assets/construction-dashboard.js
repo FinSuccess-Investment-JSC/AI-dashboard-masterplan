@@ -242,7 +242,7 @@ window.CONSTRUCTION_BRIEF={
  segs:[['Thép','HPG · HSG · NKG',rY!=null&&rY>3?'up':'flat','CB300 '+signed(rY,0)+'%'],['Xi măng & VLXD','HT1 · BCC · VLB · KSB · DHA · PLC · VGC',cY!=null&&cY>5?'up':'flat','Xi măng '+signed(cY,0)+'%'],['Xây dựng & hạ tầng','CTD · HBC · VCG · FCN · DPG · C4G · LCG · HHV · CII · HUT',piYo!=null&&piYo>15?'up':'flat','NSNN '+signed(piYo,0)+'%']],
  headers:['Biến số đang thay đổi','Đang thấy (số mới nhất)','Đổi đánh giá khi','','Hưởng lợi ▲ / chịu thiệt ▼'],
  score,
- events:[['Đầu tháng','NSO: vốn NSNN thực hiện, sản lượng thép, xi măng'],['Hằng tuần','Giá thép, HRC, quặng, than'],['20–30/10','BCTC quý III'],['Cuối năm','Giao kế hoạch vốn 2027; khởi công đường sắt']]
+ events:[['Đầu tháng','NSO: vốn NSNN thực hiện, sản lượng thép, xi măng'],['Hằng tuần','Giá thép, HRC, quặng, than'],['20–30/10','BCTC quý III'],['Cuối năm','Giao kế hoạch vốn 2027'],['12/2027','Mục tiêu khởi công đường sắt tốc độ cao Bắc–Nam']]
 };
 const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; giá hàng hóa: IMF/FRED, EIA, ICE.';
 })();

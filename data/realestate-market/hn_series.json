@@ -497,12 +497,17 @@
  {
   "quarter": "Q3/2026",
   "city": "Hanoi",
-  "price": null,
-  "price_unit": null,
-  "new_supply": null,
-  "sold": null,
-  "absorption_pct": null,
-  "note": "Not yet found published (as of 2026-10-08)",
-  "sources": []
+  "price": 86,
+  "price_unit": "VND mn/m2 (excl. VAT & maintenance, before discount)",
+  "new_supply": 6200,
+  "sold": 3900,
+  "absorption_pct": 63,
+  "note": "CBRE: -9% QoQ, -6% YoY; inner city ~102; secondary ~60 (-5% QoQ). sold '>3,900', supply 'about 6,200'; absorption = sold/new launches",
+  "sources": [
+   {
+    "label": "Báo Pháp luật (CBRE Q3/2026, 16/10/2026)",
+    "url": "https://doanhnhan.baophapluat.vn/nguon-cung-can-ho-ha-noi-quy-iii-2026-giam-40-thanh-khoan-di-xuong.html"
+   }
+  ]
  }
 ]

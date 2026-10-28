@@ -1,4 +1,3 @@
-# Lịch cập nhật — 28/10/2026 21:00
+# Lịch cập nhật — 28/10/2026 21:31
 
-- ✅ power.hot-topics: NOAA 08/10/2026: >83% El Niño mạnh–rất mạnh tới JFM 2027 (sửa từ 'trên 90%')
-- Hàng chờ Claude: 20 mục — realestate.kcn-quarterly, realestate.policy, realestate.hot-topics, realestate.fdi-projects, port.projects, port.hot-topics, shipping.outlook, shipping.rates, shipping.hot-topics, construction.policy
+- ✅ realestate.fdi-projects: FDI 9T BĐS 6,94 tỷ USD (16,0%); không có dự án ≥100 triệu USD mới mở được

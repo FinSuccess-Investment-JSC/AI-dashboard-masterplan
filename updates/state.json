@@ -40,14 +40,14 @@
    "attempts": 1
   },
   "oil.supply-news": {
-   "lastAttempt": "2026-10-12T08:43:43+07:00",
-   "lastSuccess": "2026-10-12T08:43:43+07:00",
-   "lastNote": "Rà bài Petrotimes 06/10/2026 (Nghi Sơn): chỉ nêu vận hành công suất cao Q4/2026, TA2027; không có công suất/mốc dự án khí mới. Bài Dung Quất là đóng tàu, không liên quan. Giữ nguyên trang."
+   "lastAttempt": "2026-10-28T21:31:36+07:00",
+   "lastSuccess": "2026-10-28T21:31:36+07:00",
+   "lastNote": "Bộ Chính trị đồng ý cơ chế Dung Quất 16/10/2026 (dự thảo NQ QH)"
   },
   "oil.price-policy": {
-   "lastAttempt": "2026-10-12T08:43:43+07:00",
-   "lastSuccess": "2026-10-12T08:43:43+07:00",
-   "lastNote": "Không có nghị định/thông tư mới về cơ chế giá hay hướng dẫn Luật Dầu khí (hiệu lực 01/03/2027 giữ nguyên). Kỳ 01/10/2026 QĐ 2470/QĐ-BCT chỉ là điều hành giá kỳ, không đổi cơ chế."
+   "lastAttempt": "2026-10-28T21:31:36+07:00",
+   "lastSuccess": "2026-10-28T21:31:36+07:00",
+   "lastNote": "không mới: moit.gov.vn điều hành giá tới 27/8/2026; tin watcher không liên quan giá"
   },
   "oil.bsr-annual": {},
   "oil.company-quarterly": {},
@@ -188,19 +188,19 @@
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "realestate.market-quarterly": {
-   "lastAttempt": "2026-10-12T08:43:43+07:00",
-   "lastSuccess": "2026-10-12T08:43:43+07:00",
-   "lastNote": "Chưa có báo cáo Q3/2026 của CBRE/Savills/Bộ Xây dựng (mới nhất Q2/2026); giữ nguyên, kiểm lại sau giữa tháng 10."
+   "lastAttempt": "2026-10-28T21:31:36+07:00",
+   "lastSuccess": "2026-10-28T21:31:36+07:00",
+   "lastNote": "CBRE HN Q3: 86 tr/m², ~6.200 mở bán, hấp thụ 63%; DKRA TP.HCM nguồn cung 13.200 (−31%); CBRE HCM, Savills Q3 chưa công bố"
   },
   "realestate.kcn-quarterly": {
-   "lastAttempt": "2026-10-28T18:13:36+07:00",
-   "lastError": "cushmanwakefield.com 403 cả từ máy VN",
-   "attempts": 2
+   "lastAttempt": "2026-10-28T21:31:36+07:00",
+   "lastSuccess": "2026-10-28T21:31:36+07:00",
+   "lastNote": "Cushman marketbeat mở được, mới nhất Q2/2026; chưa có Q3"
   },
   "realestate.policy": {
-   "lastAttempt": "2026-10-19T08:34:05+07:00",
-   "lastError": "vanban.chinhphu.vn chỉ mở được trang chủ (155/QĐ-BCĐNO&TTBĐS 10/10/2026 là quy chế Ban Chỉ đạo, không đổi bảng Trước/Sau); không tra được số hiệu/hiệu lực văn bản đất đai, chưa xác minh",
-   "attempts": 1
+   "lastAttempt": "2026-10-28T21:31:36+07:00",
+   "lastSuccess": "2026-10-28T21:31:36+07:00",
+   "lastNote": "QH thảo luận tổ 22/10/2026 sửa Luật Đất đai, Nhà ở, KDBĐS; chưa biểu quyết"
   },
   "realestate.credit-rates": {
    "lastAttempt": "2026-10-28T18:13:35+07:00",
@@ -208,9 +208,9 @@
    "lastNote": "28/10: không có số tín dụng BĐS 9/2026 mới; tổng dư nợ 20,75 triệu tỷ đã có; Kiểm tra bds-35/36"
   },
   "realestate.hot-topics": {
-   "lastAttempt": "2026-10-19T08:34:05+07:00",
-   "lastError": "moc.gov.vn lỗi chứng chỉ SSL trên cloud; chưa đọc được nguồn để thêm mốc có ngày+link",
-   "attempts": 1
+   "lastAttempt": "2026-10-28T21:31:36+07:00",
+   "lastSuccess": "2026-10-28T21:31:36+07:00",
+   "lastNote": "NOXH 947 dự án 910.933 căn (BXD 15/10); giao dịch Q3 92.004"
   },
   "realestate.ai.cycle": {
    "lastAttempt": "2026-10-28T18:13:36+07:00",
@@ -228,9 +228,9 @@
    "lastNote": "FMP T9/2026 1.555 đ/kWh (PGV bản tin 16/10); 9T bình quân 1.450"
   },
   "realestate.fdi-projects": {
-   "lastAttempt": "2026-10-28T18:13:36+07:00",
-   "lastError": "fia.mpi.gov.vn không phân giải DNS từ máy VN",
-   "attempts": 2
+   "lastAttempt": "2026-10-28T21:31:36+07:00",
+   "lastSuccess": "2026-10-28T21:31:36+07:00",
+   "lastNote": "FDI 9T BĐS 6,94 tỷ USD (16,0%); không có dự án ≥100 triệu USD mới mở được"
   },
   "textile.wi.daily": {
    "lastAttempt": "2026-10-28T17:38:12+07:00",
@@ -293,14 +293,14 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "port.projects": {
-   "lastAttempt": "2026-10-09T23:21:13+07:00",
-   "lastSuccess": "2026-10-09T23:21:13+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastSuccess": "2026-10-28T21:31:35+07:00",
+   "lastNote": "không mới: gemadept.com.vn tin 20/08; Cần Giờ chưa khởi công (cafef 26/10)"
   },
   "port.hot-topics": {
-   "lastAttempt": "2026-10-09T23:21:13+07:00",
-   "lastSuccess": "2026-10-09T23:21:13+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastSuccess": "2026-10-28T21:31:35+07:00",
+   "lastNote": "không mới: vmrcc.gov.vn; Cần Giờ chưa khởi công"
   },
   "port.ai.cycle": {
    "lastAttempt": "2026-10-09T23:21:13+07:00",
@@ -403,9 +403,9 @@
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "shipping.outlook": {
-   "lastAttempt": "2026-10-10T10:47:45+07:00",
-   "lastSuccess": "2026-10-10T10:47:45+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastSuccess": "2026-10-28T21:31:35+07:00",
+   "lastNote": "BIMCO mới nhất vẫn tanker 8/2026, bulk 7/2026, container 9/2026; thêm Suez 753k TEU"
   },
   "shipping.policy": {
    "lastAttempt": "2026-10-28T18:13:37+07:00",
@@ -413,9 +413,9 @@
    "lastNote": "tin thảo luận QH Bộ luật Hàng hải, không mốc mới"
   },
   "shipping.rates": {
-   "lastAttempt": "2026-10-10T10:47:45+07:00",
-   "lastSuccess": "2026-10-10T10:47:45+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastSuccess": "2026-10-28T21:31:35+07:00",
+   "lastNote": "Affinity 23/10: VLCC TD3C 1.294.761…; BDI 2.603, Supramax 23.806 (27/10); HARPEX 2.525 (23/10)"
   },
   "shipping.companies": {
    "lastAttempt": "2026-10-10T10:47:46+07:00",
@@ -423,9 +423,9 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
   },
   "shipping.hot-topics": {
-   "lastAttempt": "2026-10-10T10:47:46+07:00",
-   "lastSuccess": "2026-10-10T10:47:46+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
+   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastSuccess": "2026-10-28T21:31:35+07:00",
+   "lastNote": "Hormuz T10 28 vụ tấn công, 18/10 4 lượt (gCaptain 26/10); Suez 753k TEU/tuần (BIMCO 16/10)"
   },
   "shipping.ai.cycle": {
    "lastAttempt": "2026-10-28T18:13:37+07:00",
@@ -453,14 +453,14 @@
    "lastNote": "giải ngân đến 15/10/2026: 660.739,5 tỷ = 64,6% KH"
   },
   "construction.policy": {
-   "lastAttempt": "2026-10-11T13:59:18+07:00",
-   "lastSuccess": "2026-10-11T13:59:18+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastSuccess": "2026-10-28T21:31:35+07:00",
+   "lastNote": "QĐ 1902/1903/QĐ-BCT 27/07/2026 (rà soát CBPG HRC TQ, điều tra thép dự ứng lực); HPG 9T thép thô 10,7 triệu tấn"
   },
   "construction.prices": {
-   "lastAttempt": "2026-10-11T13:59:18+07:00",
-   "lastSuccess": "2026-10-11T13:59:18+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastSuccess": "2026-10-28T21:31:35+07:00",
+   "lastNote": "thép HPG miền Nam 26/10: CB240 14.920, CB300 14.720 đ/kg; xi măng/đá/cát không mới (SXD TP.HCM T6/2026)"
   },
   "construction.companies": {
    "lastAttempt": "2026-10-11T13:59:18+07:00",
@@ -468,9 +468,9 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
   "construction.hot-topics": {
-   "lastAttempt": "2026-10-11T13:59:18+07:00",
-   "lastSuccess": "2026-10-11T13:59:18+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastSuccess": "2026-10-28T21:31:35+07:00",
+   "lastNote": "ĐSTĐC Bắc–Nam khởi công lùi 12/2027 (BXD 08/09/2026)"
   },
   "construction.ai.cycle": {
    "lastAttempt": "2026-10-11T13:59:19+07:00",
@@ -498,14 +498,14 @@
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "insurance.market": {
-   "lastAttempt": "2026-10-11T15:38:37+07:00",
-   "lastSuccess": "2026-10-11T15:38:37+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastSuccess": "2026-10-28T21:31:35+07:00",
+   "lastNote": "IAV 9T/2026: PNT 75.057 tỷ +16,6%, bồi thường 32,9%; nhân thọ 101.621 tỷ −4%"
   },
   "insurance.policy": {
-   "lastAttempt": "2026-10-11T15:38:37+07:00",
-   "lastSuccess": "2026-10-11T15:38:37+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastSuccess": "2026-10-28T21:31:35+07:00",
+   "lastNote": "TT 96/2026/TT-BTC (hiệu lực 02/07/2026); RBC song song tới 2030"
   },
   "insurance.companies": {
    "lastAttempt": "2026-10-11T15:38:37+07:00",
@@ -513,9 +513,9 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
   "insurance.hot-topics": {
-   "lastAttempt": "2026-10-11T15:38:38+07:00",
-   "lastSuccess": "2026-10-11T15:38:38+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastSuccess": "2026-10-28T21:31:35+07:00",
+   "lastNote": "khai thác mới NT 9T 15.894 tỷ, ~45% qua ngân hàng"
   },
   "insurance.ai.cycle": {
    "lastAttempt": "2026-10-11T15:38:38+07:00",
@@ -630,8 +630,16 @@
   "retail.public.valuation": {},
   "pharma.public.monthly": {},
   "pharma.public.valuation": {},
-  "realestate.kcn-broker": {},
-  "realestate.infrastructure": {},
+  "realestate.kcn-broker": {
+   "lastAttempt": "2026-10-28T21:31:36+07:00",
+   "lastSuccess": "2026-10-28T21:31:36+07:00",
+   "lastNote": "không mới: MAS 29/01/2026, DSC KBC 07/08/2026; kbsec 400"
+  },
+  "realestate.infrastructure": {
+   "lastAttempt": "2026-10-28T21:31:36+07:00",
+   "lastSuccess": "2026-10-28T21:31:36+07:00",
+   "lastNote": "VĐ4 TP.HCM khởi công dự án 2-2 Đồng Nai; ĐSTĐC lùi 12/2027"
+  },
   "agri.public.rice": {},
   "seafood.public.farmgate": {},
   "port.public.wci": {}
@@ -3126,612 +3134,6 @@
    "lastNew": "2026-10-28T13:11:51+07:00"
   }
  },
- "queue": [
-  {
-   "id": "realestate.kcn-quarterly",
-   "tier": "C",
-   "title": "Cushman & Wakefield, JLL: lấp đầy, cung mới, giá thuê đất KCN",
-   "since": "2026-10-08T13:34:35+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị",
-    "lịch 19/10 07:00",
-    "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "realestate.policy",
-   "tier": "C",
-   "title": "Luật Đất đai, Nhà ở, KD BĐS, bảng giá đất, tín dụng BĐS, thuế BĐS",
-   "since": "2026-10-08T13:34:35+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị",
-    "lịch 01/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "realestate.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: dự án tồn đọng, giá nhà, bảng giá đất, NOXH, KCN & thuế quan, tái cấu trúc nợ; dự án theo dõi",
-   "since": "2026-10-08T13:34:35+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị",
-    "lịch 19/10 07:00",
-    "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "realestate.fdi-projects",
-   "tier": "C",
-   "title": "Dự án FDI lớn liên quan BĐS (KCN, nhà ở, văn phòng, nghỉ dưỡng, logistics–data center)",
-   "since": "2026-10-08T22:52:40+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị",
-    "lịch 08/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.projects",
-   "tier": "C",
-   "title": "Dự án cảng mới: Lạch Huyện, Nam Đình Vũ, Gemalink, Cái Mép Hạ, Cần Giờ, Liên Chiểu, Long Thành",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00",
-    "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng cảng: dư cung Hải Phòng, giá bốc xếp, Cần Giờ, Long Thành",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00",
-    "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "shipping.outlook",
-   "tier": "C",
-   "title": "BIMCO tanker/dry bulk/container, Clarksons, SCA Suez, bảo hiểm chiến tranh",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00",
-    "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "shipping.rates",
-   "tier": "C",
-   "title": "TCE tàu dầu (Affinity), BDI/Supramax (Handybulk), HARPEX, SCFI, giá tàu cũ",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00",
-    "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "shipping.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: Hormuz, Suez, cấm vận, orderbook",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00",
-    "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "construction.policy",
-   "tier": "C",
-   "title": "Luật đầu tư công, đấu thầu, cơ chế đường sắt; CBPG thép, Mục 232, EU; thuế XK clinker",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-27T21:57:43+07:00",
-     "what": "Ngọc Sơn thực hiện hiệu quả đầu tư công - Vietnam.vn — https://news.google.com/rss/articles/CBMib0FVX3lxTE45cDFBT1hsanV5VWx0d3dXRWZ1S2hRSnZBX3JycVMzenZDay1hVXl2ZGl0QVk5aXpCVW56UDctU044eHU2NHlXUktKY3R5S0JrNjJ3bm5HQ1FsV2tPRWxKWTRQVGRIdDN4MmNWTzU0QQ?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-27T21:57:43+07:00",
-     "what": "Đông Anh tạo đà phát triển từ giải phóng mặt bằng, đầu tư công - Vietnam.vn — https://news.google.com/rss/articles/CBMijAFBVV95cUxONlJ0MmpNZnVMWTNHZE5QVU02YmllYlhwQ2JreEN1T3J4Zk8zMHU3anpXd2xRZXZPYmpQeFg5aDJVWUNPeE42bUwwS1NldzItbmRNSWtXSHdaVFRSYldzS2VmRl9RUlRzczMtMXRFZG5RcGVOY3VjMHJPT0ZWTF9OMnBtZTZCeTFDcHdTaQ?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Chủ tịch UBND tỉnh Đắk Lắk yêu cầu không để vốn đầu tư công đã bố trí bị hủy, trả lại - Laodong.vn — https://news.google.com/rss/articles/CBMivwFBVV95cUxNdmdhZGNvNy0yNXEydDh0RGVJeEI1cG5Sbkh0akxVeWNKSnpFMXBDdWRfVDJ1TUhYZk16T0dXTEY2RWlDdlkxaGNjcXhxSzJiRUxsdU9YZ3pTZ0drRkswajdUZVpsSU5oaW9kVUlmSlREaVpGZXFMVVlVSDJnUFBIdUN2cmdESmV5NHV2bThwZlczblFZYklEMmpKMkxNT2dOdFNQZmpELVNpX2JveWZSMENXdElXTWVVN1dIUnBUZw?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Giải ngân vốn đầu tư công đến hết ngày 22/10 đạt 65.9% kế hoạch Thủ tướng giao - Vietstock — https://news.google.com/rss/articles/CBMivAFBVV95cUxPcERUTkZ1VjhMdlhZT3lneE9IV04wRHFQM2NxUF9MZjJZSEhkVWlUN1h1R2QxS1FfbEN2MGs0NkZWWk1GTE0ybXczckliMzFVRG9uOGVXemNQc1Z5aFVJTVhmRmdEWDZucjExdnprN1hoNDNRaG9rYzkzWHY4ZDhuUDRMVUM0cE9CQzc2YXVHcFJsbUtkUlBJaHZLR29sbTBJZU5Qcl9mc3loT3NveGtHM1g4RmdkUF9ITnQwWA?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Bộ Xây dựng siết tiến độ giải ngân vốn đầu tư công với nguyên tắc \"6 rõ\" - Pháp Luật Plus — https://news.google.com/rss/articles/CBMisAFBVV95cUxOUnVJazgwV0tJSVBuWDh3QTFzOXRmRmg1U2JTZHV0OXRVVEdBeWU3U1hOWkxLLUxSWEdnU3pYa2NsRHlPanFFNHV5YmxKZEUzRVhuTTBnNlhETm9ZM0FncVppSVVXS2RHRmVaVU9IRzNoOHNkeGNMQWlDY3pFajQ0SnlUM0VMNFhaaFRPRGlpNF9XMHZnR2JOX3B4dDhZT2lkMEdNdFUzTWE5al9zTTlzdQ?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Áp lực lớn với TP.HCM ở chặng nước rút giải ngân đầu tư công - Tin nhanh chứng khoán — https://news.google.com/rss/articles/CBMirgFBVV95cUxPUUlaMVNxZkFBdTVDa1phWExfTGtIMjB3NVJkVWNuR2NjQjF2S1JwNlBpYUkyWU82QnNHejFkRnZPdFUxZmFCcUZMalE5QmFNeGt1N1ZRNDJVMFNmMzFFUmdiVDU5QXJCbkVUNXNhSmpRQWxobk1HSDg4bjBNTzRvSEF6bHRtS0UxWHB0X2c2RUh4Z3ZWcWVXb2dNVUNHVjdvTVhDemg3VE5NY2tiM1HSAaoBQVVfeXFMUEJ5VldxNGpoemNWSUJSU1JYLVItYlV1ME9paHJ4Y2RoY1JCMlQxWkwzVHZMWlIzdG85UlFtYldDVGlOX01nX0tMSmlpWEZnanlRcEFVeWNqdnZfeFRIVUNpcjdybWZRbmVfMHVGc2FrNnZ1OHY1cm5XcXR2SXo1OW9ZVUV6SGljcGFvSGJHaHRRVWI4NlRiYnpaVVhiMGdGZDN5VGlLZzVlTmc?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Điểm sáng giải ngân vốn đầu tư công - Báo Nhân Dân điện tử — https://news.google.com/rss/articles/CBMiekFVX3lxTE9DenJ4Ukc2dFJaa212a0l5bXJFRHRGdllpS1ZWUTlTeDJIVE9Dc1lMYmRrQThrYTFJdklNemFqRDRhR2hhd0xURmVXRzM1VXY0cVNyUm5oUFhWMElwcVdjR3BwblotamxpclhjdmNRNkpsalo1bThBbVdn?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Giải ngân vốn đầu tư công: Không để vốn chờ, dự án chậm - Tài sản công — https://news.google.com/rss/articles/CBMimAFBVV95cUxPbHBIaHNwSjA1LVp4SVRQWnJSaUwxSU9sTnRqdzBMRGotOWpBTDFzdFBzME9ld3ZDbzM1TFQ3OWRqSGZjUzRaUXVhbHNzWmtaUjJ1c0Izak12bE9wWUlqeWFhcnN5WmlHU2lfcktIaHNLOEtTTGVsNkRWbkpzNmtxaGhSVjMtcW9ZZ3A3MWk1ZjlLYldaVWh4MQ?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Hơn 13.200 tỷ đồng vốn đầu tư công được giải ngân trong 1 tuần - Thời báo Tài chính Việt Nam — https://news.google.com/rss/articles/CBMirAFBVV95cUxPT1ZhcHM1aUkxRVJDNnd0NWoxLWxocHhhMVFXRUhRTUNOckVtdFZscmlNSTVrZkVvd1BIMUpWUkVmRVhFQTJJU3FqeWcwRmdXUmFXV3JKUFpkb3dDbjlXcHBPQkhGeVNBRjBTVG41R0hUZE5HcXE5SGkzN1QtZFhFUVdyUmdCTDh6WWIzcGtZVGdGRHA1UXdpZERGN1h4eWpkOGRJSzVZOW9qczVG?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Đôn đốc tiến độ giải ngân vốn đầu tư công năm 2026 - Báo Sơn La — https://news.google.com/rss/articles/CBMipgFBVV95cUxNNkRCWFJvRkdzekpyN2hkRmVTR21CRkNHRXNndUM4TmVTRWhkZzNiYWM4LTJWUHFTQVoyd01QdVh0Z2Y5VjJKMXNSZ1VnWUI3cmgyZXNzb2NuRUJNcXFFQ1R3eFotdTdHZThoR0xXdGVRajdBbHliZ0xlMG14T0NMMXVMbmpLeFJxQ0JNSWJUalNjQmdtWnFoQldXNGNVVVZnZFR5b0VB?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Tăng tốc giải ngân vốn đầu tư công chặng nước rút - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMiiwFBVV95cUxPTThfOEJDZ2xQa19xWFBfbUt5VHI5OG1uVC1wUXRqWWdWUnRTM0lITTVOU3NyMUpQUlcxZ1ZmR2VxMXRsTEFoYzE2bm5FbGVCNTVySVlyS0FxYnh0dzJ2YnhuQ3QtS2VlZkMwc2ktQm5id3NZdlJybWdkX1RwZnRUVXdzYjhMa3ZNQ2w0?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Giải ngân vốn đầu tư công đạt 65,9% kế hoạch, một số bộ, cơ quan chậm tiến độ - Báo Lào Cai điện tử — https://news.google.com/rss/articles/CBMirwFBVV95cUxPMjFnMEhubWlJYXFCdFFYYjVJaGlQd3NkUmRua3FGRVJ1dHFLMlFXYkV0MnZyR1loRGU4ajdsZW14WllNT0plQlpCYVVoWWVBMnNmQnJmNDFFUzc0bEFoclJVcFJ1RFRXSXh1N2JJYlY0VHRSODBJWXFTeUNfRm1jNEVPRnZFT3BqUy1SbVdqVjZ2YlFWV2tMSkZlWlpzeU9tWm1IVl9WTnJlcGNhR3Rr?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Xã Bảo Lạc giải ngân vốn đầu tư công đạt 44,87% kế hoạch - Báo Cao Bằng — https://news.google.com/rss/articles/CBMilAFBVV95cUxOMXEtUDhqa1JFRGZ5YjljbVJwUnNWNFZaMzVmQzhaZkVxSWlvc3JETlBUYnl0bUxRZXhFZzZJODRhTjZBdDdJdTU5S1gweDhON1M0eEVFVkpTMXFwQW00SERaQ2FlcEY1cDh3SklBRmRkeW9vQXQ4T25OX19KRFJkak9Ddi0weWxROGY4c0lwdlZFVlJj?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Có 40 đơn vị có tỷ lệ giải ngân vốn đầu tư công thấp - Tạp chí Tài chính Doanh nghiệp — https://news.google.com/rss/articles/CBMioAFBVV95cUxQSGozM29wZHRMQUk0cVdqU1BsX3RrcGptMEdiUkpmdHVubU52UkY4NllXbUF5bGJxczN0WkRzdXN3bWljWS0yN0VtZW12b0t4Y19fell4LVJGbnNsdUtPb3FNREhrdDgxLU5ndEJaUnVEc25XOVhkNEVEbVdfdGdhQW0wbzJlQ1V5Y3lpVHpsNW96WjFteFROMDljR2VvZDli?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "6 phường trung tâm của Đắk Lắk cũng chậm giải ngân vốn đầu tư công - VOV.VN — https://news.google.com/rss/articles/CBMiqAFBVV95cUxNUUlmeVhjZk1aVFRra2xncWdWQTJyQXdvbGpLMHhDa2o2UDkyVWJaNTQ1SU9UcHlneEthaF9Zc1REM0VVLVlkVXBxbUJXeU1WQ1dwejhSN3pya2YzejFLLWhQY2J5b3hnOWZWNk1LbnRQd2FVcjR4akQxdlZ0eE80YjdBMHl5LWtNbUg3RFd1TmJxZlczZUhWeGFFbzI0cmkxRGNXTWRLeUs?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Thanh Hóa tăng tốc giải ngân những tháng cuối năm - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMiiwFBVV95cUxPSU52Nk85bkQ0a1UxUmRUVXRtUVVDS3l5bjJISWJYclhpcXktSjdsVkdhWlN2djN6eDlZdkFpQ1pJWUxieGYzdE1TM214SS04bmZqdGlwOGlWMmZTOXBuaDVndWlEWUJySTl4OHh3c00wa2NOMlNYY2d4aHhmamI3WHJiVTBBWS1kUE8w?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Toàn tỉnh Thanh Hóa giải ngân gần 11.947 vốn đầu tư công - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMilAFBVV95cUxNaXRyWDVMTWJSVUF4ZHp3MlFTRDc3d0RIZ3dyU2V5cWFfUC14bjA2MkRBRml1bFQ1SWtrOGlkaUdxV2dYdDZvYm54UE9RdlM0Tzk5NS1NWmZQU3FkXzdBZlBoOXllMFJhRGF1Slk0ZUJ1MUJlRTZvY3FOUE9TTU4tdUQ3b3NtVU1WOEk2WUtpQ1Azb2lQ?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Phấn đấu giải ngân 100% kế hoạch vốn đầu tư công được giao - Vietnam.vn — https://news.google.com/rss/articles/CBMihwFBVV95cUxQTkN3eGNaSDQ2dWVtMDQ3Zm9Pam45eVpkMFJUZm8wYW10eWNYVDBOVHpXLXN5MlJUc21FSWVwMWJKQmZOYlBTY0t5OGxkd2owajRiWG5WanJXdWJaYU1QZkxnME1NcFJEd1dxbVgtT2RiNGpKS01VWC15NkRIRDdSMzhZUDk3WkE?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Giao chỉ tiêu giải ngân hằng tuần đối với vốn chương trình mục tiêu quốc gia - Vietnam.vn — https://news.google.com/rss/articles/CBMioAFBVV95cUxPSjByWnpzRHdSdXBwQUlpRUs2T09XYXhTdnlRSU9Pa2UzcnZMS2d3QmxwN1dnSWdGUFhMOS1kMG5sLUYzSEloN2VSbWZsNjVxUVZGWU04cGxpaTF0WFVRSFRLaUJVd3V3d0kwTEtKbjV0UmZsb1hoYkJqdXNQT0dwbm9VelExQ1JhMHg3bEE5bmpSWkE0TXdid09mRkprUWhT?oc=5"
-    },
-    {
-     "watcher": "news.public-investment",
-     "seenAt": "2026-10-28T13:11:51+07:00",
-     "what": "Nhiều phường ở TP HCM được thưởng trăm tỷ đồng vì giải ngân đầu tư công tốt - VnExpress — https://news.google.com/rss/articles/CBMirwFBVV95cUxORG94LXc3Q1ZrZHJZdVhnSVFYUjEwbnlXeXFMSDZtZVBndnlGVG4tRVphUnowZlRiajA2Y2I0dnAyMVRBY0F0MUhocmJ5czItOTJ5Vi14Qm5Pc1ZqM1R1dXAwckhpNUFRSmlLeVVIc0taeDJHZ1BSSnlzV1hibTlrSklFM1VtUEduWk5mWVhNemYzRlRMeGlhVEk2Tm9pX2dCV3V2WWxuXzlOa2o0X09V?oc=5"
-    }
-   ]
-  },
-  {
-   "id": "construction.prices",
-   "tier": "C",
-   "title": "Giá vật liệu tại công trình: thép, xi măng, đá, cát (phía Nam)",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00",
-    "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "construction.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: đường sắt, HRC, dòng tiền nhà thầu, giá vật liệu",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00",
-    "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "insurance.market",
-   "tier": "C",
-   "title": "Toàn thị trường: phí, chi trả, nghiệp vụ, thị phần, khai thác mới nhân thọ",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00",
-    "lịch 20/10 07:00"
-   ],
-   "signals": [
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-23T20:51:19+07:00",
-     "what": "Bảo hiểm DBV (AIC): Phí bảo hiểm gốc vượt 4.400 tỷ đồng, chi bồi thường tăng gần 80% - kinhtemoitruong.vn — https://news.google.com/rss/articles/CBMiuAFBVV95cUxQSER3UDdQaThNa2JhUzdPN1N4NW5LazZ0bGJ2dnN0UFZpQncyVW9oTVJHSFJGQVNDS3BOM01rUzU4cmtWM1NVTVNYOE5zazNEMVlTYjFUMDVYOXRJQjBxUlVjLUllQ1hYRzc5eGtuUFJDN3dpWHVZWHdKMGVRSFRrNG9OV05aTEVqN2R1cjBIVnp3NGxlM2hrX3FNNm5xMHI3SXptallsSl95MTJCQUdjWHFkSmpVQV9r?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-23T20:51:19+07:00",
-     "what": "Giảm mạnh chi bồi thường, Bảo hiểm Agribank tăng 56% lãi sau thuế quý 3 - Fili.vn — https://news.google.com/rss/articles/CBMirAFBVV95cUxQRmRkbW12Y0xYczc2SEZwaTBSbEFCNzI4V3RyTnZBY0FoTXZBa1pnUWltLUpMaWJfeW1jMjZ6Vk9KdTRfZVMyS1hPMVdYVnNsNE5nTDEtblR2ZnJPemdwQVdQTVcya0llQUFlQ29xYWV5SjZTNTQxVkplWTVFRGRvam9tYWFlZXZIeXRySmR3clJNSTFtcVdrZDRjR0ZwLVYtSDRJMkhqcXc3SVIx?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-23T20:51:19+07:00",
-     "what": "Số hợp đồng, doanh thu phí bảo hiểm nhân thọ tại Việt Nam đều đi xuống - An ninh Tiền tệ — https://news.google.com/rss/articles/CBMivAFBVV95cUxPT3BveGsyVVdicldvVXhCUWowVG9CT0Z6NzJpc3RrQWtGdENOekhjT0w3VDB1LXBSM054QWRZeWY2M0F1emNJVXZfQTltWUF2N1NlQkFRd25lUFpKVUlOQTI3cnA0OVVlWU5vUUZ3bFFJUEhDcHhGbXYxN3VYQzg5cHFPVC1mcmFTRnE4aUFkQ1RoSkdZZGthZks2bVBjVWtzQWFCMzhxR1Z0bkFqOXlPVVZBVmpiSnF2dGJPMA?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-24T11:58:34+07:00",
-     "what": "Tập đoàn Bảo hiểm DBV (AIC) báo lãi quý 3 hơn 7 tỷ đồng, doanh thu phí bảo hiểm gốc tăng 73% - Báo Pháp Luật Việt Nam — https://news.google.com/rss/articles/CBMixAFBVV95cUxOMTR6QkswelVmbXhKLU16V1pIVXNudHFseG9za1otTmtON0JEVUNSUHRsbndWb3NQUFdJX2UxMWNUVkFEeUd1MU4xQVhHMnYzRS1SLUVPTzlGcFNwUm1MUmJYY0VFRnhjZ2ZQM3hmaTZuRklVSnZlZGN2ZWZkQldDU3pBdTdJUTdkQ0E1dXlkOHcxQkV6VmdfS01reUh0anQ4eDRkOG5LMXZjN1NoLVBFelRSamZXbm12ZzMxQXBydDAyNmlM?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Doanh thu phí bảo hiểm trên GDP sụt giảm, chỉ tiêu Chiến lược tài chính toàn diện quốc gia chưa đạt - VietnamFinance — https://news.google.com/rss/articles/CBMi0wFBVV95cUxPUkZoZEprMEp1WUo4SUc0eWI5dXYxQ0VxSWFoaWlrLTdtMEU5UGw0V0ZHUUlUMFNjRzYwRnhoTWZXT1EyVFBqWGZnQ0U2WDRSa2xueUdLeEs0WGpPbloxcnRmWU90aHl4TnNPMWN6QU1CblVZbUlnN2cyUS1nV0c4QTVlTHByd2prRjZBZmlhQ2lmQ2Y4bGI3TFBXdjl6NzJQSVcyQWN4ZlF3RDNDZEFST3prUmdSblJERl9PdHR5dEZFTHUtcnY3SVJsWEN5YmJzZlpJ?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Thách thức mục tiêu doanh thu phí bảo hiểm 3,3-3,5% GDP - Tin nhanh chứng khoán — https://news.google.com/rss/articles/CBMipAFBVV95cUxNcDVyUFJCZFhqT2ZHRGZldDZmdkdfM2JZT3U2cXVXcm8zRGloVE5jb3BJbnpoVV9odWk5TXkxSU1FdlpwaE9YUTFZNVdRdnNQRS1EbnNWUE5WR0dVQVB4emJxNG1uRDF5U3Jkdkt5dTEwNGluZ0h3LWR5ajZ6R1kxTkNlUE9sa0VjaTZVX2lpT3ByVW56RElJUEYtbzQ1aDVSS1JVStIBoAFBVV95cUxOZ0tPQXdfVDA4dG1sd1R5SE9YakxDQ0dXd2N6OVpfQU9nUHVxLVRERFVsNkVuN3V0OGgyVlJJMmI3OWZ5UkxXOTRkNjJ5aUtlX1RmclVxeGlnVWt4ZDJYYjFVUWFWejVNVy1URnNZbEpWb0tfWlI0OTFyS2FVOVkyWEQtWmhuR05tWEF2dGdwaXZVMkdIdUtNQmR6aWtTbXBI?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "BIDV MetLife đạt doanh thu phí bảo hiểm hơn 2.100 tỷ đồng - VnExpress — https://news.google.com/rss/articles/CBMilwFBVV95cUxNbFh3aFR6SnE0M1R3Z2RycWFkLVVWRkd4SVBvTjI0Ri14UjVmUlQ5TFF2WmdXZWxDWHJITWh2clVwd2pHN0c0T2d5UHRPbi1TVUs0VjFXTWdpdDhyc2M2cldjTHE2emxSRlZvZ0xOdnlyeTdqS3VOSG9UUTVOS2VhTHBTcDRoU3h6VWNlQmV1dmZNWTF3RzRj?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "PJICO định hướng tăng doanh thu phí bảo hiểm, bầu thành viên HĐQT - Mekong ASEAN — https://news.google.com/rss/articles/CBMinwFBVV95cUxPYnZhb3UzcDZFQlJ3eHp3VjAtdjNfdGJOZGVMUlZoRTNDRjhXZFc2QzBBSXBORmE4ck0zdFJWOEZZd3ROMUxYYmhuaWZUSFpva2RhcW1BQ3BYQWlDLWNQdVZ5UnQxWUtIZlB4VVM3LW5CZmt1SDlPUzRKdXExT2FubUFSc1h0eUFMYzdWS2FNYmstMmRfZXpGTUR6ZFpyVjQ?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Năm 2025, tổng doanh thu phí bảo hiểm ước đạt 237.211 tỷ đồng, tăng 3,96% - Doanh nghiệp và Tiếp thị — https://news.google.com/rss/articles/CBMivgFBVV95cUxOOWpxSzNPQWE4ekJfNVFNZXdXVE9nbUYxMFp4cFdQbGJjN3kxLXpDbWgzdzdoaDI5YmhJeF8tY1ZpNjBFV3BYdmZ5LTNpWk01SHRWQ0s5eV9WOGNXZHFna0NWUm1YZWNjcmlLTlU2bm9rQ1E5YlZNQTZYeGwyRlpSMWluazNoRVU2YVBOZXNQamkxVWp5MEZsTmM5ZEdob1IzS0p5QVdDeENkT3ViV2Y1LW81aTVIMjdReThBZm1B?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Bộ Tài chính dự kiến doanh thu phí bảo hiểm 2025 giảm 3,29% so với 2022 - VnEconomy — https://news.google.com/rss/articles/CBMimgFBVV95cUxQVEFJTVVudUU0Z3BzYnQtREVUZ1lzS2ZvXzVvc0VfaVkzZGVPdDNoRUxBWU1NM2hCMFVIZkRXZjZMWHR5eTVhQzV6WEMxckZlVURwRXp1VFVuVGZZREZseVNoNndCMFZFUjhtSVRkaUk2MmlGcWU1MWpRbkcyanRIZW9sTnVGODFGbk9vSDVScThEX2pHZUdSaEZ3?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "6 tháng đầu năm 2025, tổng doanh thu phí bảo hiểm nhân thọ đạt 67.242 tỷ đồng - Thời báo Tài chính Việt Nam — https://news.google.com/rss/articles/CBMivgFBVV95cUxOMGJ2MmVOemhPeVVaODFhYk9xZDhFR0dTS2NvOU5iMDJ0QzB1ZHd3YVJkb1doYzF6anR1SG44QmU2amkwT2VEY2plNXJsaHNFaUpaZFhpUlByQTlRM0E3bUJFRlBhZW9JOWtGT01MOFVCc2dsRW51UkVBTWo2YUR2bFhIdDBwZkhaejFCS0FldDZNSjRobmFzdjExWEZUMmswYkpGdHRweXltYVYwcWlfcDBuLTdQZU5VUHR0WG93?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Doanh thu phí bảo hiểm nhân thọ khai thác mới giảm trên 30% sau 4 tháng đầu năm - VnEconomy — https://news.google.com/rss/articles/CBMipgFBVV95cUxPcTB6TGxYU0l5RHJ2Q1ZHLW9RX1pYT0w1OHRZcUxxSUdfYVhSa1lEZVNHWDU0cjNsaFF4eTVDck1wODViU2sybFY1SXRsUVZmRVhlMFl6QlJVTnRVNzBZT213Rk1nRzhrNUYtclZqN0x2SnJ6MnZJc3hUTEpUWThzV1lQcmdNQm16QWQteC1CckNkblQxR2dRSkRZWEFCMG12VHJNNTFR?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Tổng doanh thu phí bảo hiểm năm 2023 ước đạt 211.187 tỷ đồng - Tin nhanh chứng khoán — https://news.google.com/rss/articles/CBMirgFBVV95cUxPdzB1NXRUcDdoVGdPTGpEdWFpYnRTbEpBb2NNNXJ5cGlzeHZKT3BqZkpSbHNEbXRkVUEzNVNIc1ZZNmpMeXRnQmdFZmZBSVZQMk9ERzJFZ1k4NmJlY0VLZjJZRmx2OHhJQjRhTGVlLXJ3NjQxS09JaFZXa2tWb1pXbWloQXdrcDRDVnc0bUlpcFNBRERONy1BZ1d1R2lmT0NVRkUwVEtTdkk4aHRZNXfSAaoBQVVfeXFMTWdKeVowYi1kVXIzcGxzaHdtZjlmd3IwQy1LOEFTeUJIVWpIOFFKM09qRzBaYlo4bks0czBLdHQzVFVDUk1hSmVQQ0k2ZVphMVlyeHlseFA2b0ZUQXZUUENsVzkwZS1yUUt4eWhDUzVRSXo3ZHpRaVdTSFRYRWhtLVduNXlPT2NTeG1naEliMUxHVlRKSERLT19GaHAzcjRHdC1QMG9YOVJpcEE?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Tổng doanh thu phí bảo hiểm toàn thị trường cả năm 2024 đạt mức 227.500 tỷ đồng - Chứng khoán DNSE — https://news.google.com/rss/articles/CBMiwgFBVV95cUxNaG1USlVGSnEzNktVUkladkd6RU5yOWxjc2szbE5aYjB4bjdrQXlNSGZsMGtrRVNFUmxzblFpMGtsdG5qM044LUFORk5rZ3pUZklrSTFGQkRpaE9xOE1pdUVjcjNwOTQ5X3MzdEtLdVFUUjBHQS0zX096TXN1MHBPTmw4Qmxpc1piUGJtVW5kaWhpVVJwOFZJOGVZOVUydVFzbS1vaVB1T3cwWGhEbWhIbUFpSjI5UGw1ejdBcFBVdXZWdw?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Doanh thu phí bảo hiểm phi nhân thọ 9 tháng ước tăng 18% - Tin nhanh chứng khoán — https://news.google.com/rss/articles/CBMiqAFBVV95cUxNcXZ0TGtCenlhbzNEMjBPWFJ0VFpidkFKSUdKSkpiQ25RcXNtN2JZNFN4Z0p2cm5TRlFPbERvTXVaVW4yRnJ0SkZWMkJsNGp6dDhpZElMeWxqNTlQTFZWcUd1OFlUT0hKUldMTmxLbnBiSE5xU1Bkanh1VTVmbGsyMjVScmRndEpPWjYzZTJHZDVLaS16cVVqMUVWekJETnhLaWY4VHo2NzDSAaQBQVVfeXFMT0lsQ3VtLTFKYVRTYm9iSWMtNzVfTF9ad0VoR1otb09LRTRpUE1Bd3ZCaU15M1JpWFctT1JobE5tc1otV05wOUpLb1dQcUV3MkJEVmE1Sno3MTBBWjZqWVBfMTQ5LUtyQnBuZE9jODZhZ09uZjloYWpFa2lCRWowbjdVcThoeEhWcGJYdXF0OFhhTGZKZzd6WEZJRDBaSjZjeTFNWHY?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T20:25:38+07:00",
-     "what": "Tập đoàn Bảo hiểm DBV (AIC) báo lãi quý 3 hơn 7 tỷ đồng, doanh thu phí bảo hiểm gốc tăng 73% - Vietnam.vn — https://news.google.com/rss/articles/CBMisAFBVV95cUxONW1RUkNPbEFtXzRiSzFUbEZDWHRPNTJzdTE3VW9aM2FJdTduMmotLXg2ZkRqMzFLZE03M1YxTXF5U1prUm0tX3ZzdFhFNmc5Q3dfN3lPMGZiSlpteGVjTjdkQ2FIQUlqdktEdkJsNUl1TVF1TzdQamVWN3RBTWxyeDExVzlBQURuVmFZbHJSWEV1cVRfWXpzNnNkazRRZjZxbk5ITUxzSHlReEtBa0w2ZQ?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-26T22:31:03+07:00",
-     "what": "Tổng doanh thu phí bảo hiểm toàn thị trường cả năm 2024 đạt mức 227.500 tỷ đồng - Thời báo Tài chính Việt Nam — https://news.google.com/rss/articles/CBMiwgFBVV95cUxOMHZ4dG1YVEM1VUZpNm1jdzJzd0ptREdSdFZhcVVTbUYtMmpvYTlxcWJwUWVHVExpTDVGQ2lsWnNKNGt3aXRfaGc0LTdoNGNVQ2pqd01hLUNvaktVZWlpWVdPZ2REcWxQd0Qyci1WYlFEZ18zTE5DN2dmSHlDNlhYaWNCT1ZzczlwcnVQaXMtQXIxVVZoNGpmY3pOeVVkNURfWkRmM1l5TFZiX1pXOW15aG9HemR1YWxkak9sMFF5b0VqUQ?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-26T22:31:03+07:00",
-     "what": "Infographics: 6 tháng đầu năm 2025, doanh thu phí bảo hiểm đạt 67.242 tỷ đồng - Thời báo Tài chính Việt Nam — https://news.google.com/rss/articles/CBMivAFBVV95cUxORUdMd21iaF9TQVpLbFZhQzhIeEtRM3JYRGU3QV9keDZnQlZrbzcwbzBPdkJOdEh6anhEczRRcktCQmVaR1JJMHZSOXdoRVhJUl9aUG04WVZXZ2tYTENjWDNPRF9KRnJyTEpMTWhSNktWOWtEYVlvT2xvMVBmOUJvREk4REJXZWJIRDM0MjZrVnlFVjQzWk1vNi1VMktieURESk5aVUdlRGpwY3Exbkc1dVhUbHU0UWJOMkItVQ?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-26T22:31:03+07:00",
-     "what": "Doanh thu phí bảo hiểm nhân thọ giảm 12% - Tạp chí Tài chính Doanh nghiệp — https://news.google.com/rss/articles/CBMijwFBVV95cUxNQ2xPbXlhMnhzTUZObDUyci1FdXVraVNUd241ZXQ4dmpVRGdxb3pXM0hocUJldEtFQ3BvZHI4bVRHRVJQRHV1Q1V5UFBjMWt2dFNPWGFKWWxqWUZ6ZjBYQVh0Yy1UcGtWZFZkN2JEMGZuUHpuU2JVbHJSRG1RdzdnRkZMU3ZZV0swV3BhMG1taw?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-27T12:30:26+07:00",
-     "what": "Giảm mạnh chi bồi thường, Bảo hiểm Agribank tăng 56% lãi sau thuế quý 3 - Vietstock — https://news.google.com/rss/articles/CBMitAFBVV95cUxQUmtYYTRTblVfT1IwQ3ZWdDduT3FrbEtPaG43enlIckFvTTR6S2o3VnZfZzEyR3hZNXk3UTRBNHRtLXRYN1FsYW16UzV1Slk4V0hQeUJtQmFBVl9HbFE3X3ZEOUdHUGVvREg2UTJqQkktaFFxdEFqMDFfYVB3ZFZKMlc2NnJQVHpnc2h3ZDczTXVxeHNST09weW5kY00zdUxfcVhYV01kWVlKS29SQVUwdGFwYnA?oc=5"
-    }
-   ]
-  },
-  {
-   "id": "insurance.policy",
-   "tier": "C",
-   "title": "Luật KDBH sửa đổi, nghị định, thông tư, RBC, giới hạn đầu tư",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-23T20:51:19+07:00",
-     "what": "Bảo hiểm DBV (AIC): Phí bảo hiểm gốc vượt 4.400 tỷ đồng, chi bồi thường tăng gần 80% - kinhtemoitruong.vn — https://news.google.com/rss/articles/CBMiuAFBVV95cUxQSER3UDdQaThNa2JhUzdPN1N4NW5LazZ0bGJ2dnN0UFZpQncyVW9oTVJHSFJGQVNDS3BOM01rUzU4cmtWM1NVTVNYOE5zazNEMVlTYjFUMDVYOXRJQjBxUlVjLUllQ1hYRzc5eGtuUFJDN3dpWHVZWHdKMGVRSFRrNG9OV05aTEVqN2R1cjBIVnp3NGxlM2hrX3FNNm5xMHI3SXptallsSl95MTJCQUdjWHFkSmpVQV9r?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-23T20:51:19+07:00",
-     "what": "Giảm mạnh chi bồi thường, Bảo hiểm Agribank tăng 56% lãi sau thuế quý 3 - Fili.vn — https://news.google.com/rss/articles/CBMirAFBVV95cUxQRmRkbW12Y0xYczc2SEZwaTBSbEFCNzI4V3RyTnZBY0FoTXZBa1pnUWltLUpMaWJfeW1jMjZ6Vk9KdTRfZVMyS1hPMVdYVnNsNE5nTDEtblR2ZnJPemdwQVdQTVcya0llQUFlQ29xYWV5SjZTNTQxVkplWTVFRGRvam9tYWFlZXZIeXRySmR3clJNSTFtcVdrZDRjR0ZwLVYtSDRJMkhqcXc3SVIx?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-23T20:51:19+07:00",
-     "what": "Số hợp đồng, doanh thu phí bảo hiểm nhân thọ tại Việt Nam đều đi xuống - An ninh Tiền tệ — https://news.google.com/rss/articles/CBMivAFBVV95cUxPT3BveGsyVVdicldvVXhCUWowVG9CT0Z6NzJpc3RrQWtGdENOekhjT0w3VDB1LXBSM054QWRZeWY2M0F1emNJVXZfQTltWUF2N1NlQkFRd25lUFpKVUlOQTI3cnA0OVVlWU5vUUZ3bFFJUEhDcHhGbXYxN3VYQzg5cHFPVC1mcmFTRnE4aUFkQ1RoSkdZZGthZks2bVBjVWtzQWFCMzhxR1Z0bkFqOXlPVVZBVmpiSnF2dGJPMA?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-24T11:58:34+07:00",
-     "what": "Tập đoàn Bảo hiểm DBV (AIC) báo lãi quý 3 hơn 7 tỷ đồng, doanh thu phí bảo hiểm gốc tăng 73% - Báo Pháp Luật Việt Nam — https://news.google.com/rss/articles/CBMixAFBVV95cUxOMTR6QkswelVmbXhKLU16V1pIVXNudHFseG9za1otTmtON0JEVUNSUHRsbndWb3NQUFdJX2UxMWNUVkFEeUd1MU4xQVhHMnYzRS1SLUVPTzlGcFNwUm1MUmJYY0VFRnhjZ2ZQM3hmaTZuRklVSnZlZGN2ZWZkQldDU3pBdTdJUTdkQ0E1dXlkOHcxQkV6VmdfS01reUh0anQ4eDRkOG5LMXZjN1NoLVBFelRSamZXbm12ZzMxQXBydDAyNmlM?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Doanh thu phí bảo hiểm trên GDP sụt giảm, chỉ tiêu Chiến lược tài chính toàn diện quốc gia chưa đạt - VietnamFinance — https://news.google.com/rss/articles/CBMi0wFBVV95cUxPUkZoZEprMEp1WUo4SUc0eWI5dXYxQ0VxSWFoaWlrLTdtMEU5UGw0V0ZHUUlUMFNjRzYwRnhoTWZXT1EyVFBqWGZnQ0U2WDRSa2xueUdLeEs0WGpPbloxcnRmWU90aHl4TnNPMWN6QU1CblVZbUlnN2cyUS1nV0c4QTVlTHByd2prRjZBZmlhQ2lmQ2Y4bGI3TFBXdjl6NzJQSVcyQWN4ZlF3RDNDZEFST3prUmdSblJERl9PdHR5dEZFTHUtcnY3SVJsWEN5YmJzZlpJ?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Thách thức mục tiêu doanh thu phí bảo hiểm 3,3-3,5% GDP - Tin nhanh chứng khoán — https://news.google.com/rss/articles/CBMipAFBVV95cUxNcDVyUFJCZFhqT2ZHRGZldDZmdkdfM2JZT3U2cXVXcm8zRGloVE5jb3BJbnpoVV9odWk5TXkxSU1FdlpwaE9YUTFZNVdRdnNQRS1EbnNWUE5WR0dVQVB4emJxNG1uRDF5U3Jkdkt5dTEwNGluZ0h3LWR5ajZ6R1kxTkNlUE9sa0VjaTZVX2lpT3ByVW56RElJUEYtbzQ1aDVSS1JVStIBoAFBVV95cUxOZ0tPQXdfVDA4dG1sd1R5SE9YakxDQ0dXd2N6OVpfQU9nUHVxLVRERFVsNkVuN3V0OGgyVlJJMmI3OWZ5UkxXOTRkNjJ5aUtlX1RmclVxeGlnVWt4ZDJYYjFVUWFWejVNVy1URnNZbEpWb0tfWlI0OTFyS2FVOVkyWEQtWmhuR05tWEF2dGdwaXZVMkdIdUtNQmR6aWtTbXBI?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "BIDV MetLife đạt doanh thu phí bảo hiểm hơn 2.100 tỷ đồng - VnExpress — https://news.google.com/rss/articles/CBMilwFBVV95cUxNbFh3aFR6SnE0M1R3Z2RycWFkLVVWRkd4SVBvTjI0Ri14UjVmUlQ5TFF2WmdXZWxDWHJITWh2clVwd2pHN0c0T2d5UHRPbi1TVUs0VjFXTWdpdDhyc2M2cldjTHE2emxSRlZvZ0xOdnlyeTdqS3VOSG9UUTVOS2VhTHBTcDRoU3h6VWNlQmV1dmZNWTF3RzRj?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "PJICO định hướng tăng doanh thu phí bảo hiểm, bầu thành viên HĐQT - Mekong ASEAN — https://news.google.com/rss/articles/CBMinwFBVV95cUxPYnZhb3UzcDZFQlJ3eHp3VjAtdjNfdGJOZGVMUlZoRTNDRjhXZFc2QzBBSXBORmE4ck0zdFJWOEZZd3ROMUxYYmhuaWZUSFpva2RhcW1BQ3BYQWlDLWNQdVZ5UnQxWUtIZlB4VVM3LW5CZmt1SDlPUzRKdXExT2FubUFSc1h0eUFMYzdWS2FNYmstMmRfZXpGTUR6ZFpyVjQ?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Năm 2025, tổng doanh thu phí bảo hiểm ước đạt 237.211 tỷ đồng, tăng 3,96% - Doanh nghiệp và Tiếp thị — https://news.google.com/rss/articles/CBMivgFBVV95cUxOOWpxSzNPQWE4ekJfNVFNZXdXVE9nbUYxMFp4cFdQbGJjN3kxLXpDbWgzdzdoaDI5YmhJeF8tY1ZpNjBFV3BYdmZ5LTNpWk01SHRWQ0s5eV9WOGNXZHFna0NWUm1YZWNjcmlLTlU2bm9rQ1E5YlZNQTZYeGwyRlpSMWluazNoRVU2YVBOZXNQamkxVWp5MEZsTmM5ZEdob1IzS0p5QVdDeENkT3ViV2Y1LW81aTVIMjdReThBZm1B?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Bộ Tài chính dự kiến doanh thu phí bảo hiểm 2025 giảm 3,29% so với 2022 - VnEconomy — https://news.google.com/rss/articles/CBMimgFBVV95cUxQVEFJTVVudUU0Z3BzYnQtREVUZ1lzS2ZvXzVvc0VfaVkzZGVPdDNoRUxBWU1NM2hCMFVIZkRXZjZMWHR5eTVhQzV6WEMxckZlVURwRXp1VFVuVGZZREZseVNoNndCMFZFUjhtSVRkaUk2MmlGcWU1MWpRbkcyanRIZW9sTnVGODFGbk9vSDVScThEX2pHZUdSaEZ3?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "6 tháng đầu năm 2025, tổng doanh thu phí bảo hiểm nhân thọ đạt 67.242 tỷ đồng - Thời báo Tài chính Việt Nam — https://news.google.com/rss/articles/CBMivgFBVV95cUxOMGJ2MmVOemhPeVVaODFhYk9xZDhFR0dTS2NvOU5iMDJ0QzB1ZHd3YVJkb1doYzF6anR1SG44QmU2amkwT2VEY2plNXJsaHNFaUpaZFhpUlByQTlRM0E3bUJFRlBhZW9JOWtGT01MOFVCc2dsRW51UkVBTWo2YUR2bFhIdDBwZkhaejFCS0FldDZNSjRobmFzdjExWEZUMmswYkpGdHRweXltYVYwcWlfcDBuLTdQZU5VUHR0WG93?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Doanh thu phí bảo hiểm nhân thọ khai thác mới giảm trên 30% sau 4 tháng đầu năm - VnEconomy — https://news.google.com/rss/articles/CBMipgFBVV95cUxPcTB6TGxYU0l5RHJ2Q1ZHLW9RX1pYT0w1OHRZcUxxSUdfYVhSa1lEZVNHWDU0cjNsaFF4eTVDck1wODViU2sybFY1SXRsUVZmRVhlMFl6QlJVTnRVNzBZT213Rk1nRzhrNUYtclZqN0x2SnJ6MnZJc3hUTEpUWThzV1lQcmdNQm16QWQteC1CckNkblQxR2dRSkRZWEFCMG12VHJNNTFR?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Tổng doanh thu phí bảo hiểm năm 2023 ước đạt 211.187 tỷ đồng - Tin nhanh chứng khoán — https://news.google.com/rss/articles/CBMirgFBVV95cUxPdzB1NXRUcDdoVGdPTGpEdWFpYnRTbEpBb2NNNXJ5cGlzeHZKT3BqZkpSbHNEbXRkVUEzNVNIc1ZZNmpMeXRnQmdFZmZBSVZQMk9ERzJFZ1k4NmJlY0VLZjJZRmx2OHhJQjRhTGVlLXJ3NjQxS09JaFZXa2tWb1pXbWloQXdrcDRDVnc0bUlpcFNBRERONy1BZ1d1R2lmT0NVRkUwVEtTdkk4aHRZNXfSAaoBQVVfeXFMTWdKeVowYi1kVXIzcGxzaHdtZjlmd3IwQy1LOEFTeUJIVWpIOFFKM09qRzBaYlo4bks0czBLdHQzVFVDUk1hSmVQQ0k2ZVphMVlyeHlseFA2b0ZUQXZUUENsVzkwZS1yUUt4eWhDUzVRSXo3ZHpRaVdTSFRYRWhtLVduNXlPT2NTeG1naEliMUxHVlRKSERLT19GaHAzcjRHdC1QMG9YOVJpcEE?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Tổng doanh thu phí bảo hiểm toàn thị trường cả năm 2024 đạt mức 227.500 tỷ đồng - Chứng khoán DNSE — https://news.google.com/rss/articles/CBMiwgFBVV95cUxNaG1USlVGSnEzNktVUkladkd6RU5yOWxjc2szbE5aYjB4bjdrQXlNSGZsMGtrRVNFUmxzblFpMGtsdG5qM044LUFORk5rZ3pUZklrSTFGQkRpaE9xOE1pdUVjcjNwOTQ5X3MzdEtLdVFUUjBHQS0zX096TXN1MHBPTmw4Qmxpc1piUGJtVW5kaWhpVVJwOFZJOGVZOVUydVFzbS1vaVB1T3cwWGhEbWhIbUFpSjI5UGw1ejdBcFBVdXZWdw?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "Doanh thu phí bảo hiểm phi nhân thọ 9 tháng ước tăng 18% - Tin nhanh chứng khoán — https://news.google.com/rss/articles/CBMiqAFBVV95cUxNcXZ0TGtCenlhbzNEMjBPWFJ0VFpidkFKSUdKSkpiQ25RcXNtN2JZNFN4Z0p2cm5TRlFPbERvTXVaVW4yRnJ0SkZWMkJsNGp6dDhpZElMeWxqNTlQTFZWcUd1OFlUT0hKUldMTmxLbnBiSE5xU1Bkanh1VTVmbGsyMjVScmRndEpPWjYzZTJHZDVLaS16cVVqMUVWekJETnhLaWY4VHo2NzDSAaQBQVVfeXFMT0lsQ3VtLTFKYVRTYm9iSWMtNzVfTF9ad0VoR1otb09LRTRpUE1Bd3ZCaU15M1JpWFctT1JobE5tc1otV05wOUpLb1dQcUV3MkJEVmE1Sno3MTBBWjZqWVBfMTQ5LUtyQnBuZE9jODZhZ09uZjloYWpFa2lCRWowbjdVcThoeEhWcGJYdXF0OFhhTGZKZzd6WEZJRDBaSjZjeTFNWHY?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-25T20:25:38+07:00",
-     "what": "Tập đoàn Bảo hiểm DBV (AIC) báo lãi quý 3 hơn 7 tỷ đồng, doanh thu phí bảo hiểm gốc tăng 73% - Vietnam.vn — https://news.google.com/rss/articles/CBMisAFBVV95cUxONW1RUkNPbEFtXzRiSzFUbEZDWHRPNTJzdTE3VW9aM2FJdTduMmotLXg2ZkRqMzFLZE03M1YxTXF5U1prUm0tX3ZzdFhFNmc5Q3dfN3lPMGZiSlpteGVjTjdkQ2FIQUlqdktEdkJsNUl1TVF1TzdQamVWN3RBTWxyeDExVzlBQURuVmFZbHJSWEV1cVRfWXpzNnNkazRRZjZxbk5ITUxzSHlReEtBa0w2ZQ?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-26T22:31:03+07:00",
-     "what": "Tổng doanh thu phí bảo hiểm toàn thị trường cả năm 2024 đạt mức 227.500 tỷ đồng - Thời báo Tài chính Việt Nam — https://news.google.com/rss/articles/CBMiwgFBVV95cUxOMHZ4dG1YVEM1VUZpNm1jdzJzd0ptREdSdFZhcVVTbUYtMmpvYTlxcWJwUWVHVExpTDVGQ2lsWnNKNGt3aXRfaGc0LTdoNGNVQ2pqd01hLUNvaktVZWlpWVdPZ2REcWxQd0Qyci1WYlFEZ18zTE5DN2dmSHlDNlhYaWNCT1ZzczlwcnVQaXMtQXIxVVZoNGpmY3pOeVVkNURfWkRmM1l5TFZiX1pXOW15aG9HemR1YWxkak9sMFF5b0VqUQ?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-26T22:31:03+07:00",
-     "what": "Infographics: 6 tháng đầu năm 2025, doanh thu phí bảo hiểm đạt 67.242 tỷ đồng - Thời báo Tài chính Việt Nam — https://news.google.com/rss/articles/CBMivAFBVV95cUxORUdMd21iaF9TQVpLbFZhQzhIeEtRM3JYRGU3QV9keDZnQlZrbzcwbzBPdkJOdEh6anhEczRRcktCQmVaR1JJMHZSOXdoRVhJUl9aUG04WVZXZ2tYTENjWDNPRF9KRnJyTEpMTWhSNktWOWtEYVlvT2xvMVBmOUJvREk4REJXZWJIRDM0MjZrVnlFVjQzWk1vNi1VMktieURESk5aVUdlRGpwY3Exbkc1dVhUbHU0UWJOMkItVQ?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-26T22:31:03+07:00",
-     "what": "Doanh thu phí bảo hiểm nhân thọ giảm 12% - Tạp chí Tài chính Doanh nghiệp — https://news.google.com/rss/articles/CBMijwFBVV95cUxNQ2xPbXlhMnhzTUZObDUyci1FdXVraVNUd241ZXQ4dmpVRGdxb3pXM0hocUJldEtFQ3BvZHI4bVRHRVJQRHV1Q1V5UFBjMWt2dFNPWGFKWWxqWUZ6ZjBYQVh0Yy1UcGtWZFZkN2JEMGZuUHpuU2JVbHJSRG1RdzdnRkZMU3ZZV0swV3BhMG1taw?oc=5"
-    },
-    {
-     "watcher": "news.insurance",
-     "seenAt": "2026-10-27T12:30:26+07:00",
-     "what": "Giảm mạnh chi bồi thường, Bảo hiểm Agribank tăng 56% lãi sau thuế quý 3 - Vietstock — https://news.google.com/rss/articles/CBMitAFBVV95cUxQUmtYYTRTblVfT1IwQ3ZWdDduT3FrbEtPaG43enlIckFvTTR6S2o3VnZfZzEyR3hZNXk3UTRBNHRtLXRYN1FsYW16UzV1Slk4V0hQeUJtQmFBVl9HbFE3X3ZEOUdHUGVvREg2UTJqQkktaFFxdEFqMDFfYVB3ZFZKMlc2NnJQVHpnc2h3ZDczTXVxeHNST09weW5kY00zdUxfcVhYV01kWVlKS29SQVUwdGFwYnA?oc=5"
-    }
-   ]
-  },
-  {
-   "id": "insurance.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: bancassurance, sức khỏe, lãi suất",
-   "since": "2026-10-12T13:25:56+07:00",
-   "reasons": [
-    "lịch 12/10 07:00",
-    "lịch 19/10 07:00",
-    "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "oil.supply-news",
-   "tier": "C",
-   "title": "Cân đối xăng dầu, chuỗi dự án khí",
-   "since": "2026-10-19T10:59:33+07:00",
-   "reasons": [
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Bộ Chính trị đồng ý cơ chế ưu đãi cao nhất cho phát triển Trung tâm lọc hóa dầu và năng lượng quốc gia tại KKT Dung Quất — https://petrotimes.vn/bo-chinh-tri-dong-y-co-che-uu-dai-cao-nhat-cho-phat-trien-trung-tam-loc-hoa-dau-va-nang-luong-quoc-gia-tai-kkt-dung-quat-746857.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-20T12:16:58+07:00",
-     "what": "Tàu LNG Qatar mạo hiểm qua Biển Đỏ để đến châu Âu — https://nangluongquocte.petrotimes.vn/tau-lng-qatar-mao-hiem-qua-bien-do-de-den-chau-au-746910.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-20T12:16:58+07:00",
-     "what": "Những bóng hồng trên công trường đóng tàu Dung Quất — https://petrotimes.vn/nhung-bong-hong-tren-cong-truong-dong-tau-dung-quat-746649.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-20T20:58:37+07:00",
-     "what": "Giá LNG châu Á tăng mạnh trước những rủi ro vận tải biển tại Trung Đông — https://nangluongquocte.petrotimes.vn/gia-lng-chau-a-tang-manh-truoc-nhung-rui-ro-van-tai-bien-tai-trung-dong-746926.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-20T20:58:37+07:00",
-     "what": "ExxonMobil dự kiến lợi nhuận lọc dầu tăng 4 5 tỷ USD — https://nangluongquocte.petrotimes.vn/exxonmobil-du-kien-loi-nhuan-loc-dau-tang-4-5-ty-usd-746917.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-20T20:58:37+07:00",
-     "what": "Khởi công dự án Nhà máy nhiệt điện LNG Quảng Trạch II — https://petrotimes.vn/khoi-cong-du-an-nha-may-nhiet-dien-lng-quang-trach-ii-746921.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-21T12:18:04+07:00",
-     "what": "Ả Rập Xê út và các nhà máy lọc dầu châu Á vướng mắc về hợp đồng năm 2027 — https://nangluongquocte.petrotimes.vn/a-rap-xe-ut-va-cac-nha-may-loc-dau-chau-a-vuong-mac-ve-hop-dong-nam-2027-746968.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-21T12:18:04+07:00",
-     "what": "Kỳ 4 Khi dòng khí trở thành chuỗi giá trị — https://petrovietnam.petrotimes.vn/ky-4-khi-dong-khi-tro-thanh-chuoi-gia-tri-746964.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-23T12:20:54+07:00",
-     "what": "Mỹ tính tăng nguồn cung nhiên liệu từ nhà máy lọc dầu tại Texas — https://nangluongquocte.petrotimes.vn/my-tinh-tang-nguon-cung-nhien-lieu-tu-nha-may-loc-dau-tai-texas-746996.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-25T12:11:37+07:00",
-     "what": "PVSM tiếp nhận sửa chữa tàu Aquacharm hơn 182 000 tấn sau sự cố va chạm tại cảng Dung Quất — https://petrotimes.vn/pvsm-tiep-nhan-sua-chua-tau-aquacharm-hon-182-000-tan-sau-su-co-va-cham-tai-cang-dung-quat-747100.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-27T12:30:26+07:00",
-     "what": "Các nhà máy lọc dầu Nga tăng sản lượng diesel để thực hiện thỏa thuận với Mỹ — https://nangluongquocte.petrotimes.vn/cac-nha-may-loc-dau-nga-tang-san-luong-diesel-de-thuc-hien-thoa-thuan-voi-my-747178.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-27T12:30:26+07:00",
-     "what": "Bản tin Năng lượng Quốc tế 27 10 Nhà máy lọc dầu hàng đầu Ấn Độ giảm nhập khẩu từ Nga — https://nangluongquocte.petrotimes.vn/ban-tin-nang-luong-quoc-te-27-10-nha-may-loc-dau-hang-dau-an-do-giam-nhap-khau-tu-nga-747175.html"
-    }
-   ]
-  },
-  {
-   "id": "oil.price-policy",
-   "tier": "C",
-   "title": "Cơ chế điều hành giá xăng dầu, Luật Dầu khí",
-   "since": "2026-10-19T10:59:33+07:00",
-   "reasons": [
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Bộ Công Thương lấy ý kiến dự thảo quyết định về thành lập, tổ chức và hoạt động, cơ chế quản lý tài chính của Quỹ Thúc đẩy sử dụng năng lượn — /tin-tuc/bo-cong-thuong-lay-y-kien-du-thao-quyet-dinh-ve-viec-thanh-lap-to-chuc-va-hoat-dong-co-che-quan-ly-tai-chinh-cua-quy-thu.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-19T10:59:33+07:00",
-     "what": "Bộ Công Thương hợp nhất 3 thông tư về an toàn thiết bị trong mỏ hầm lò — /tin-tuc/bo-cong-thuong-hop-nhat-3-thong-tu-ve-an-toan-thiet-bi-trong-mo-ham-lo.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-22T12:21:46+07:00",
-     "what": "Bộ Công Thương lấy ý kiến dự thảo thông tư Quy định về đào tạo, cấp chứng chỉ quản lý năng lượng và kiểm toán viên năng lượng — /tin-tuc/bo-cong-thuong-lay-y-kien-thong-tu-quy-dinh-ve-dao-tao-cap-chung-chi-quan-ly-nang-luong-va-kiem-toan-vien-nang-luong.html"
-    }
-   ]
-  },
-  {
-   "id": "realestate.market-quarterly",
-   "tier": "C",
-   "title": "Bộ Xây dựng, CBRE, Savills, DKRA: giao dịch, tồn kho, cung mới theo phân khúc/khu vực, giá căn hộ HN/HCM, tỉnh lớn",
-   "since": "2026-10-19T10:59:33+07:00",
-   "reasons": [
-    "lịch 19/10 07:00",
-    "lịch 26/10 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "realestate.kcn-broker",
-   "tier": "C",
-   "title": "Chỉ số KCN theo báo cáo ngành CTCK: ký mới, giá thuê, đất cao su chuyển KCN, FDI theo quốc gia",
-   "since": "2026-10-19T10:59:33+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "realestate.infrastructure",
-   "tier": "C",
-   "title": "Hạ tầng: dự án trọng điểm và thay đổi bản đồ quy hoạch",
-   "since": "2026-10-19T10:59:33+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  }
- ],
- "updatedAt": "2026-10-28T21:00:21+07:00"
+ "queue": [],
+ "updatedAt": "2026-10-28T21:31:36+07:00"
 }
