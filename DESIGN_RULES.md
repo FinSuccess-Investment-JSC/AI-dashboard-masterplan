@@ -130,3 +130,10 @@ Người dùng: "nhiều chữ quá, biến chữ thành hình ảnh, chart, dia
 - Số trong câu (%, tỷ USD, lần…) tô nổi `.fs-num`.
 - Bảng: cột số cùng đơn vị (≥3 ô) có vạch data bar dưới số; bảng có cột "Hiệu lực/Ngày/Mốc" (≥3 ngày dd/mm/yyyy) có dải timeline phía trên kèm mốc "Hôm nay".
 - Danh sách có ≥ nửa dòng bắt đầu bằng mốc ngày → timeline dọc. Chuỗi mã "TCM · TNG" → chip. "Tác động: … · qua …" → nhãn TÁC ĐỘNG / KÊNH.
+
+## Hình hóa dữ liệu — `assets/sector-visuals.js` (28/10/2026)
+Load sau `data/*-public-data.js` ở 10 ngành dùng schema chung (chưa áp Dầu khí, Đường, Điện, Bank). Chỉ đọc số từ `window.*_PUBLIC`:
+- **Dải giá chạy** dưới tên ngành: chuỗi khối `commodity` + P/E `sector_ratio`, % so cùng kỳ; dừng khi rê chuột; đứng yên khi giảm chuyển động.
+- **Sparkline trong ô KPI có sẵn:** chỉ gắn khi số trên ô khớp số cuối của chuỗi (sai số 0,6%, thử ×1, ×1/1000, ×1000) và kỳ trên ô (Tn/yy) trùng kỳ cuối. Không khớp thì không gắn.
+- **Heatmap YoY 24 tháng** đầu tab Bức tranh ngành: tối đa 12 chuỗi tháng (bỏ chuỗi đơn vị %, bỏ tên trùng); |YoY| > 300% hiện ≫/≪ vì nền quá nhỏ.
+- **Sơ đồ dòng chảy theo giá trị** (cấu hình `FLOWS` theo ngành, hiện có Dệt may): độ dày ∝ √giá trị tháng gần nhất, hạt chạy; khâu thiếu số vẽ nét đứt.

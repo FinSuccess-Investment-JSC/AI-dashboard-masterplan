@@ -380,7 +380,7 @@
   // Data bar trong cột số của bảng.
   const numIn = t => { const m = String(t).trim().match(/^([+−-]?\d[\d.]*(?:,\d+)?)\s?(%|điểm %|x|lần)?$/); if (!m) return null; const v = parseFloat(m[1].replace(/\./g, '').replace(',', '.').replace('−', '-')); return isFinite(v) ? {v, u: m[2] || ''} : null; };
   function bars(table) {
-    if (table.dataset.fsBars || table.classList.contains('fintbl') || table.closest('.chart-info-panel')) return;
+    if (table.dataset.fsBars || table.classList.contains('fintbl') || table.closest('.chart-info-panel,.fsv-heat')) return;
     table.dataset.fsBars = '1';
     const rows = [...table.tBodies[0]?.rows || []]; if (rows.length < 3) return;
     const heads = [...(table.tHead?.rows[0]?.cells || [])].map(c => c.textContent.trim());
@@ -402,7 +402,7 @@
   // Timeline phía trên bảng có cột ngày hiệu lực.
   const dmy = t => { const m = String(t).match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); return m ? Date.UTC(+m[3], m[2] - 1, +m[1]) : null; };
   function tableTimeline(table) {
-    if (table.dataset.fsTl) return; table.dataset.fsTl = '1';
+    if (table.dataset.fsTl || table.closest('.fsv-heat')) return; table.dataset.fsTl = '1';
     const heads = [...(table.tHead?.rows[0]?.cells || [])].map(c => c.textContent.trim());
     const di = heads.findIndex(h => /hiệu lực|ngày|thời điểm|mốc/i.test(h)); if (di < 1) return;
     const items = [...table.tBodies[0].rows].map(r => ({t: dmy(r.cells[di]?.textContent), label: (r.cells[0]?.textContent || '').trim(), d: (r.cells[di]?.textContent || '').trim()})).filter(x => x.t);

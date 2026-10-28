@@ -694,3 +694,54 @@ html[data-theme="dark"] :is(.fs-chip,.fs-chip-lbl.alt){background:#18204A;color:
 html[data-theme="dark"] .fs-num{color:#F3F5FF}
 html[data-theme="dark"] .fs-tl-m text{fill:#98A0C8}
 @media (prefers-reduced-motion:reduce){.fs-step-arrow i{animation:none}}
+
+/* ===== Hình hóa dữ liệu (sector-visuals.js) ===== */
+.fsv-up{color:#1A7A50;font-weight:700}.fsv-dn{color:#B3303F;font-weight:700}
+/* Dải giá chạy. */
+.fsv-ticker{overflow:hidden;border-block:1px solid #E3E6EF;background:#fff;font:500 12.5px/1 var(--fs-font);-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.fsv-tk-run{display:inline-flex;white-space:nowrap;animation:fsvRun 60s linear infinite}
+.fsv-ticker:hover .fsv-tk-run{animation-play-state:paused}
+.fsv-ticker.still .fsv-tk-run{animation:none}.fsv-ticker.still{overflow-x:auto}.fsv-ticker.still .fsv-tk-dup{display:none}
+.fsv-tk-dup{display:inline-flex}
+.fsv-tk{display:inline-flex;align-items:baseline;gap:7px;padding:10px 18px;border-right:1px solid #EEF0F6}
+.fsv-tk em{font-style:normal;color:#596272;font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:11px}
+.fsv-tk b{color:#1D2678;font-weight:800;font-variant-numeric:tabular-nums}
+@keyframes fsvRun{to{transform:translateX(-50%)}}
+/* Sparkline trong ô KPI. */
+.kpi.fsv-has-spark .fsv-spark{display:block;width:100%;height:30px;margin-top:8px}
+.fsv-spark .fsv-line{stroke-dasharray:400;stroke-dashoffset:400;animation:fsDraw 1.1s .2s var(--fs-ease) forwards;--l:400}
+/* Heatmap YoY. */
+.fsv-heat{margin:16px 0}
+.fsv-note{margin:2px 0 10px;color:#596272;font-size:12.5px}
+.fsv-heat-wrap{overflow-x:auto}
+.fsv-heat table{border-collapse:separate;border-spacing:3px;width:100%;font-variant-numeric:tabular-nums}
+.fsv-heat th{background:none!important}
+.fsv-heat th,.fsv-heat td{border:0!important;padding:6px 2px!important;font:600 11px/1 var(--fs-font)!important;text-align:center;min-width:30px;text-transform:none!important;letter-spacing:0!important;color:#596272}
+.fsv-heat td{border-radius:5px;color:#1B2140}
+.fsv-heat td[style]{background-clip:padding-box}
+.fsv-heat tbody th{text-align:left;color:#1D2678!important;font-weight:700!important;padding-right:10px!important;min-width:170px;max-width:240px;line-height:1.3!important}
+.fsv-heat td.na{color:#B9C1D0}
+.fsv-heat tr:hover td{outline:1px solid rgba(29,38,120,.15)}
+
+/* Sơ đồ dòng chảy. */
+.fsv-flow-wrap{overflow-x:auto}
+.fsv-flow svg{display:block;width:100%;min-width:820px;height:auto}
+.fsv-e{fill:none;stroke-linecap:round;stroke-opacity:.22;transition:stroke-opacity .2s}
+.fsv-e:hover{stroke-opacity:.45}
+.fsv-e.nd{stroke:#A9B0C6;stroke-width:1.5;stroke-dasharray:4 6;stroke-opacity:1}
+.fsv-n rect{fill:#fff;stroke:#DCE1E9;stroke-width:1.5;transition:stroke .2s}
+.fsv-n:hover rect{stroke:#59C5C8;stroke-width:2.5}
+.fsv-n .t{font:700 13px var(--fs-font);fill:#303540}
+.fsv-n .v{font:800 18px var(--fs-font);fill:#1D2678}
+.fsv-n .s{font:500 11px var(--fs-font);fill:#596272}
+.fsv-n .u{font:700 11px var(--fs-font);fill:#1A7A50}.fsv-n .d{font:700 11px var(--fs-font);fill:#B3303F}
+html[data-theme="dark"] .fsv-ticker{background:#0B1026;border-color:#232B52}
+html[data-theme="dark"] .fsv-tk b{color:#F3F5FF}
+html[data-theme="dark"] .fsv-n rect{fill:#131A3A;stroke:#2A3360}
+html[data-theme="dark"] :is(.fsv-n .t,.fsv-n .v,.fsv-heat td){fill:#F3F5FF;color:#F3F5FF}
+@media (prefers-reduced-motion:reduce){.fsv-tk-run{animation:none}.fsv-spark .fsv-line{animation:none;stroke-dashoffset:0}}
+@media print{.fsv-tk-run{animation:none}.fsv-tk-dup{display:none}}
+
+.fsv-heat td.na{background:transparent}
+html[data-theme="dark"] .fsv-heat tbody th{color:#F3F5FF!important}
+:root .fsv-heat table tbody tr td{background:var(--c,transparent)!important}
