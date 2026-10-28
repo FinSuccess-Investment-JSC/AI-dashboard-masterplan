@@ -441,3 +441,39 @@ table td,table th,.kpi .value,.num{font-variant-numeric:tabular-nums;font-featur
 @media print{.card,.kpi{box-shadow:none}.kpi::after{display:none}}
 /* Sơ đồ chuỗi giá trị tính khung theo độ rộng Arial; Inter rộng hơn làm chữ tràn khung. */
 .value-chain-scroll svg text,svg .chain-node~text{font-family:Arial,'Helvetica Neue',system-ui,sans-serif}
+
+/* ===== Khớp hình Stock dashboard (28/10/2026, vòng 2) ===== */
+/* Header: logo trái, ô tra cứu phải cùng một hàng. */
+.fs-brandbar .in{justify-content:space-between;gap:24px;min-height:0;padding:16px 24px}
+.fs-brandbar img{height:46px}
+.fs-search.fs-search-inline{margin:0;padding:0;flex:0 1 560px;max-width:560px}
+.fs-search-inline label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.fs-search-inline .search-box{border:1px solid #cbd1e0;border-radius:12px;box-shadow:none}
+.fs-search-inline input{height:40px;font-size:14px}
+.fs-search-inline .search-icon{width:42px}
+.fs-search-inline button[type=submit]{width:32px;height:32px;margin:4px;border-radius:8px}
+@media(max-width:700px){.fs-brandbar .in{flex-wrap:wrap}.fs-search.fs-search-inline{flex-basis:100%;max-width:none}}
+/* Tiêu đề chart: không gạch dưới (Stock không có). */
+.card>h3,.card>.chart-head,.card>.chart-title{padding-bottom:0;border-bottom:0}
+.chart-title,.card h3{font-size:15px;font-weight:700;color:#1D2678}
+/* Nút kiểu chart: thanh xám liền, mục chọn nền trắng (seg-share-ctl của Stock). */
+.ct-switch{gap:0;align-items:center}
+.ct-switch>button:first-child{border-radius:7px 0 0 7px}
+.ct-switch>button{min-height:0;padding:4px 10px;border:0;border-radius:0;background:#F1F3F9;color:#5B6478;font:600 11.5px/1.3 var(--fs-font)}
+.ct-switch>button[aria-pressed="true"]{background:#fff;color:#1D2678;border-radius:7px;box-shadow:0 1px 3px rgba(16,24,64,.14);position:relative}
+.ct-switch>button:hover:not(:disabled):not([aria-pressed="true"]){background:#E8EBF4}
+.ct-switch>button:disabled{border-style:none;color:#a3abb8}
+.ct-switch>button:nth-last-of-type(1){border-radius:0 7px 7px 0}
+/* Cụm Trục: khung viền, mục chọn navy (axis-mode của Stock). */
+.ct-axis{margin-left:10px;gap:2px;padding:1px 1px 1px 7px;border:1px solid #DCE1E9;border-radius:8px;background:#fff;color:#596272;font:11px/1.2 var(--fs-font)}
+.ct-axis button{min-height:0;padding:3px 7px;border:0;border-radius:5px;background:transparent;color:#596272;font:600 11px/1.2 var(--fs-font)}
+.ct-axis button[aria-pressed="true"]{background:#1D2678;color:#fff}
+.ct-axis button:disabled{border-style:none}
+/* Chú giải: chấm tròn to như Stock. */
+.cts-legend{gap:4px 14px}
+.cts-legend button{font:500 13px/1.4 var(--fs-font);color:#303540}
+.cts-legend button i{width:14px;height:14px;border-radius:50%}
+.ct-svg .axislabel,.ct-svg .catlabel{font-size:13px;font-weight:500;fill:#303540}
+/* Ô chỉ số: nhãn chữ thường như ô breakdown của Stock. */
+.kpi .label{font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;color:#303540}
+.kpi .value{font-size:24px}

@@ -47,7 +47,10 @@
       + '<input id="fsQuery" type="search" placeholder="Nhập tên ngành…" aria-controls="fsOptions" aria-expanded="false" aria-describedby="fsMessage" spellcheck="false">'
       + '<button type="submit" aria-label="Mở dashboard" title="Mở dashboard (Enter)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></button></div>'
       + '<div class="options" id="fsOptions" role="listbox" aria-label="Kết quả phù hợp"></div><div class="message" id="fsMessage" role="status"></div></form>';
-    document.querySelector('.fs-brandbar').after(sec);
+    // Trang ngành: ô tra cứu cùng hàng logo như Stock dashboard; trang gốc giữ ô lớn dưới logo.
+    const inline = document.querySelector('.majortabs, [data-research-sector], body[data-sector]');
+    if (inline) { sec.classList.add('fs-search-inline'); document.querySelector('.fs-brandbar .in').append(sec); }
+    else document.querySelector('.fs-brandbar').after(sec);
     const form = sec.querySelector('form'), input = sec.querySelector('input'), options = sec.querySelector('.options'), message = sec.querySelector('.message');
     const norm = t => String(t || '').toLocaleLowerCase('vi').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
     let entries = [], loaded = false, matches = [], selected = 0;
