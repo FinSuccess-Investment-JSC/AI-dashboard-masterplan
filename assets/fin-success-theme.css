@@ -477,3 +477,13 @@ table td,table th,.kpi .value,.num{font-variant-numeric:tabular-nums;font-featur
 /* Ô chỉ số: nhãn chữ thường như ô breakdown của Stock. */
 .kpi .label{font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;color:#303540}
 .kpi .value{font-size:24px}
+/* Vòng 3: sub-tab kiểu fin-subnav của Stock (thanh xám liền, mục chọn nền trắng) thay viên teal 08/10. */
+.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs{display:inline-flex!important;flex-wrap:wrap;gap:2px!important;padding:3px;background:#F1F3F9!important;border:0!important;border-radius:10px;box-shadow:none!important;width:auto!important}
+.supply-tabs .tabbtn,.world-subtabs .tabbtn,.pane-subtabs .tabbtn,.subtabs .tabbtn{background:transparent!important;border:0!important;border-radius:8px!important;color:#5B6478!important;font:600 13px/1.3 var(--fs-font)!important;padding:7px 14px!important;box-shadow:none!important;min-height:0}
+.supply-tabs .tabbtn[aria-selected="true"],.world-subtabs .tabbtn[aria-selected="true"],.pane-subtabs .tabbtn[aria-selected="true"],.subtabs .tabbtn[aria-selected="true"]{background:#fff!important;color:#1D2678!important;font-weight:700!important;box-shadow:0 1px 3px rgba(16,24,64,.14)!important}
+/* Dải KPI: một khung, các ô ngăn bằng vạch dọc như dải breakdown của Stock. */
+.grid.kpis{gap:0!important;background:#fff;border:1px solid #E6E9F2;border-radius:14px;box-shadow:var(--fs-shadow);overflow:hidden}
+.grid.kpis>.kpi{border:0!important;border-radius:0!important;box-shadow:none!important;border-left:1px solid #EEF0F6!important;padding:16px 18px}
+.grid.kpis>.kpi:first-child{border-left:0!important}
+/* Tên ngành: chip đậm như ô mã của Stock. */
+.research-header h1{display:inline-block;padding:6px 16px;border-radius:10px;background:#F0F3FF;font-size:24px;font-weight:800;letter-spacing:-.01em}
