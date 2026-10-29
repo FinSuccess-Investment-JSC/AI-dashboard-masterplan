@@ -1,7 +1,4 @@
-Routine tuần 26/10/2026 (tài liệu + insight):
-- Cảng biển: Drewry WCI 22/10 = 4.585 USD/FEU (+2%); PHP 9T/2026 38,1 triệu tấn (gần +28%).
-- Thủy sản: VASEP 9T/2026 XK 9,103 tỷ USD (+11,4%), tôm 3,75 tỷ, cá tra 1,74 tỷ.
-- Dệt may: VITAS 9T/2026 XK 35,72 tỷ USD (+3,3%); các thẻ khác còn mục tiêu 49–49,5 tỷ (VCCI ghi ~48 tỷ).
-- Nông nghiệp, Vận tải biển (policy): không có số mới, không sửa trang.
-- Lỗi: textile.orders-brands (Fast Retailing thiếu số tồn kho; fastretailing.com chặn 403).
-- Chưa kiểm giao diện bằng trình duyệt.
+Routine Wi 29/10: KHÔNG cập nhật được.
+Hook wi_capture không lưu kết quả WiMCP vào data/raw/wi/.inbox/ (thư mục không tồn tại).
+Đã --fail pharma.wi.monthly và pharma.wi.valuation; không đổi số liệu.
+Cần kiểm tra hook trong .claude/settings.json trên môi trường cloud.

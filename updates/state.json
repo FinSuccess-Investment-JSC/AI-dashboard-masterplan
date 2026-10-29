@@ -568,14 +568,18 @@
    "lastNote": "Q3/2026 từ VNDirect finfo: 11/18 mã điện (NT2, PPC, QTP, HND, BTP, VSH, CHP, SBA, SHP, TV2, GEX); POW, REE, TMP, GEG, HDG, TTA, PC1 chưa công bố"
   },
   "pharma.wi.monthly": {
-   "lastAttempt": "2026-10-12T14:05:24+07:00",
+   "lastAttempt": "2026-10-29T09:05:03+07:00",
    "lastSuccess": "2026-10-12T14:05:24+07:00",
-   "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026"
+   "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026",
+   "lastError": "hook không lưu kết quả Wi",
+   "attempts": 1
   },
   "pharma.wi.valuation": {
-   "lastAttempt": "2026-10-12T14:05:24+07:00",
+   "lastAttempt": "2026-10-29T09:05:03+07:00",
    "lastSuccess": "2026-10-12T14:05:24+07:00",
-   "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026"
+   "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026",
+   "lastError": "hook không lưu kết quả Wi",
+   "attempts": 1
   },
   "pharma.market": {
    "lastAttempt": "2026-10-28T18:13:38+07:00",
@@ -3670,5 +3674,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-10-28T22:27:47+07:00"
+ "updatedAt": "2026-10-29T09:05:03+07:00"
 }
