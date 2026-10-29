@@ -112,7 +112,7 @@
     charts.forEach(ch=>{ch.options.devicePixelRatio=scale;ch.resize();ch.update('none')});
     const selects=[...card.querySelectorAll('select')].map(el=>({text:el.selectedOptions[0]?el.selectedOptions[0].textContent:'',cs:getComputedStyle(el),w:el.offsetWidth,h:el.offsetHeight}));
     try{
-      return await h2c(card,{backgroundColor:'#ffffff',scale,useCORS:true,logging:false,onclone:(doc,node)=>{node.style.border='0';node.style.boxShadow='none';node.style.padding='4px';
+      return await h2c(card,{backgroundColor:'#ffffff',scale,useCORS:true,logging:false,onclone:(doc,node)=>{node.style.border='0';node.style.boxShadow='none';node.style.padding='4px';node.style.background='#fff';node.classList.add('fs-shot-clean');const st=doc.createElement('style');st.textContent='.fs-shot-clean,.fs-shot-clean *{background-image:none!important}.fs-shot-clean::before,.fs-shot-clean::after{display:none!important}';doc.head.append(st);
         // Giữ thanh Chu kỳ / Số kỳ; bỏ cụm nút Trục.
         node.querySelectorAll('span').forEach(x=>{if(!x.children.length&&x.textContent.trim()==='Trục'&&x.parentElement)x.parentElement.remove()});
         // html2canvas vẽ <select> lệch chữ: thay bằng ô tĩnh cùng kích thước, chữ căn giữa dọc.
