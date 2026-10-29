@@ -1,4 +1,5 @@
-Routine Wi 29/10: KHÔNG cập nhật được.
-Hook wi_capture không lưu kết quả WiMCP vào data/raw/wi/.inbox/ (thư mục không tồn tại).
-Đã --fail pharma.wi.monthly và pharma.wi.valuation; không đổi số liệu.
-Cần kiểm tra hook trong .claude/settings.json trên môi trường cloud.
+Routine tài liệu 29/10: không sửa số liệu trang nào.
+Dầu khí: đã mở bài PV GAS–EVNGENCO3 (27/10), không có mốc FID/dòng khí mới -> không đổi.
+9 mục báo FAIL vì chỉ có link Google News, không mở được bài gốc: shipping.policy, construction.disbursement/policy, insurance.market/policy, retail.market/policy, pharma.market/policy.
+Cần xem tay: giải ngân đầu tư công ~673.000 tỷ (65,9%) và đề xuất TTĐB xăng 0%/giảm giá điện từ 1/11.
+Chưa kiểm giao diện bằng trình duyệt.

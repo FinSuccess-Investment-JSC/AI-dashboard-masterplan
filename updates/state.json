@@ -40,9 +40,9 @@
    "attempts": 1
   },
   "oil.supply-news": {
-   "lastAttempt": "2026-10-28T21:31:36+07:00",
-   "lastSuccess": "2026-10-28T21:31:36+07:00",
-   "lastNote": "Bộ Chính trị đồng ý cơ chế Dung Quất 16/10/2026 (dự thảo NQ QH)"
+   "lastAttempt": "2026-10-29T13:12:41+07:00",
+   "lastSuccess": "2026-10-29T13:12:41+07:00",
+   "lastNote": "Đã mở bài petrotimes 28/10/2026 (PV GAS–EVNGENCO3 họp 27/10): không có mốc FID/dòng khí mới; Thị Vải tái hóa 9,5 triệu Sm³/ngày là cập nhật công suất đã biết, chưa đủ gate để đổi mốc. Không sửa trang."
   },
   "oil.price-policy": {
    "lastAttempt": "2026-10-28T21:31:36+07:00",
@@ -408,9 +408,11 @@
    "lastNote": "BIMCO mới nhất vẫn tanker 8/2026, bulk 7/2026, container 9/2026; thêm Suez 753k TEU"
   },
   "shipping.policy": {
-   "lastAttempt": "2026-10-28T18:13:37+07:00",
+   "lastAttempt": "2026-10-29T13:12:41+07:00",
    "lastSuccess": "2026-10-28T18:13:37+07:00",
-   "lastNote": "tin thảo luận QH Bộ luật Hàng hải, không mốc mới"
+   "lastNote": "tin thảo luận QH Bộ luật Hàng hải, không mốc mới",
+   "lastError": "Không mở được bài gốc: tin chỉ là link news.google.com redirect, WebSearch không tìm ra bài/số tương ứng, nên không kết luận từ tiêu đề. Cần xem tay hoặc chạy lại khi có bài gốc.",
+   "attempts": 1
   },
   "shipping.rates": {
    "lastAttempt": "2026-10-28T21:31:35+07:00",
@@ -448,14 +450,18 @@
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "construction.disbursement": {
-   "lastAttempt": "2026-10-28T18:13:38+07:00",
+   "lastAttempt": "2026-10-29T13:12:41+07:00",
    "lastSuccess": "2026-10-28T18:13:38+07:00",
-   "lastNote": "giải ngân đến 15/10/2026: 660.739,5 tỷ = 64,6% KH"
+   "lastNote": "giải ngân đến 15/10/2026: 660.739,5 tỷ = 64,6% KH",
+   "lastError": "Không mở được bài gốc: tin chỉ là link news.google.com redirect, WebSearch không tìm ra bài/số tương ứng, nên không kết luận từ tiêu đề. Cần xem tay hoặc chạy lại khi có bài gốc.",
+   "attempts": 1
   },
   "construction.policy": {
-   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastAttempt": "2026-10-29T13:12:41+07:00",
    "lastSuccess": "2026-10-28T21:31:35+07:00",
-   "lastNote": "QĐ 1902/1903/QĐ-BCT 27/07/2026 (rà soát CBPG HRC TQ, điều tra thép dự ứng lực); HPG 9T thép thô 10,7 triệu tấn"
+   "lastNote": "QĐ 1902/1903/QĐ-BCT 27/07/2026 (rà soát CBPG HRC TQ, điều tra thép dự ứng lực); HPG 9T thép thô 10,7 triệu tấn",
+   "lastError": "Không mở được bài gốc: tin chỉ là link news.google.com redirect, WebSearch không tìm ra bài/số tương ứng, nên không kết luận từ tiêu đề. Cần xem tay hoặc chạy lại khi có bài gốc.",
+   "attempts": 1
   },
   "construction.prices": {
    "lastAttempt": "2026-10-28T21:31:35+07:00",
@@ -498,14 +504,18 @@
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "insurance.market": {
-   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastAttempt": "2026-10-29T13:12:41+07:00",
    "lastSuccess": "2026-10-28T21:31:35+07:00",
-   "lastNote": "IAV 9T/2026: PNT 75.057 tỷ +16,6%, bồi thường 32,9%; nhân thọ 101.621 tỷ −4%"
+   "lastNote": "IAV 9T/2026: PNT 75.057 tỷ +16,6%, bồi thường 32,9%; nhân thọ 101.621 tỷ −4%",
+   "lastError": "Không mở được bài gốc: tin chỉ là link news.google.com redirect, WebSearch không tìm ra bài/số tương ứng, nên không kết luận từ tiêu đề. Cần xem tay hoặc chạy lại khi có bài gốc.",
+   "attempts": 1
   },
   "insurance.policy": {
-   "lastAttempt": "2026-10-28T21:31:35+07:00",
+   "lastAttempt": "2026-10-29T13:12:41+07:00",
    "lastSuccess": "2026-10-28T21:31:35+07:00",
-   "lastNote": "TT 96/2026/TT-BTC (hiệu lực 02/07/2026); RBC song song tới 2030"
+   "lastNote": "TT 96/2026/TT-BTC (hiệu lực 02/07/2026); RBC song song tới 2030",
+   "lastError": "Không mở được bài gốc: tin chỉ là link news.google.com redirect, WebSearch không tìm ra bài/số tương ứng, nên không kết luận từ tiêu đề. Cần xem tay hoặc chạy lại khi có bài gốc.",
+   "attempts": 1
   },
   "insurance.companies": {
    "lastAttempt": "2026-10-11T15:38:37+07:00",
@@ -538,14 +548,18 @@
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "retail.market": {
-   "lastAttempt": "2026-10-28T18:13:38+07:00",
+   "lastAttempt": "2026-10-29T13:12:41+07:00",
    "lastSuccess": "2026-10-28T18:13:38+07:00",
-   "lastNote": "VinFast 9T 177.697 xe; BHX 3.904 cửa hàng, 9T 45.900 tỷ"
+   "lastNote": "VinFast 9T 177.697 xe; BHX 3.904 cửa hàng, 9T 45.900 tỷ",
+   "lastError": "Không mở được bài gốc: tin chỉ là link news.google.com redirect, WebSearch không tìm ra bài/số tương ứng, nên không kết luận từ tiêu đề. Cần xem tay hoặc chạy lại khi có bài gốc.",
+   "attempts": 1
   },
   "retail.policy": {
-   "lastAttempt": "2026-10-28T18:13:38+07:00",
+   "lastAttempt": "2026-10-29T13:12:41+07:00",
    "lastSuccess": "2026-10-28T18:13:38+07:00",
-   "lastNote": "TTĐB xăng 0% mới là đề xuất"
+   "lastNote": "TTĐB xăng 0% mới là đề xuất",
+   "lastError": "Không mở được bài gốc: tin chỉ là link news.google.com redirect, WebSearch không tìm ra bài/số tương ứng, nên không kết luận từ tiêu đề. Cần xem tay hoặc chạy lại khi có bài gốc.",
+   "attempts": 1
   },
   "retail.companies": {
    "lastAttempt": "2026-10-11T17:03:33+07:00",
@@ -582,14 +596,18 @@
    "attempts": 1
   },
   "pharma.market": {
-   "lastAttempt": "2026-10-28T18:13:38+07:00",
+   "lastAttempt": "2026-10-29T13:12:41+07:00",
    "lastSuccess": "2026-10-28T18:13:38+07:00",
-   "lastNote": "không có số Q3 Long Châu/FRT mới"
+   "lastNote": "không có số Q3 Long Châu/FRT mới",
+   "lastError": "Không mở được bài gốc: tin chỉ là link news.google.com redirect, WebSearch không tìm ra bài/số tương ứng, nên không kết luận từ tiêu đề. Cần xem tay hoặc chạy lại khi có bài gốc.",
+   "attempts": 1
   },
   "pharma.policy": {
-   "lastAttempt": "2026-10-28T18:13:38+07:00",
+   "lastAttempt": "2026-10-29T13:12:41+07:00",
    "lastSuccess": "2026-10-28T18:13:38+07:00",
-   "lastNote": "TT 32/2026/TT-BYT hiệu lực 01/10/2026"
+   "lastNote": "TT 32/2026/TT-BYT hiệu lực 01/10/2026",
+   "lastError": "Không mở được bài gốc: tin chỉ là link news.google.com redirect, WebSearch không tìm ra bài/số tương ứng, nên không kết luận từ tiêu đề. Cần xem tay hoặc chạy lại khi có bài gốc.",
+   "attempts": 1
   },
   "pharma.companies": {
    "lastAttempt": "2026-10-12T14:05:25+07:00",
@@ -3184,22 +3202,6 @@
  },
  "queue": [
   {
-   "id": "oil.supply-news",
-   "tier": "C",
-   "title": "Cân đối xăng dầu, chuỗi dự án khí",
-   "since": "2026-10-28T22:27:47+07:00",
-   "reasons": [
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-28T22:27:47+07:00",
-     "what": "PV GAS và EVNGENCO3 trao đổi giải pháp bảo đảm nguồn cung khí và LNG cho sản xuất điện — https://petrovietnam.petrotimes.vn/pv-gas-va-evngenco3-trao-doi-giai-phap-bao-dam-nguon-cung-khi-va-lng-cho-san-xuat-dien-747249.html"
-    }
-   ]
-  },
-  {
    "id": "shipping.policy",
    "tier": "C",
    "title": "USTR phí cảng (hết hoãn ~10/11/2026), OFAC/EU cấm vận, IMO NZF (4/12/2026), EU ETS; Bộ luật Hàng hải (QH kỳ 2 10/2026), TT phí hàng hải",
@@ -3674,5 +3676,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-10-29T09:05:03+07:00"
+ "updatedAt": "2026-10-29T13:12:41+07:00"
 }
