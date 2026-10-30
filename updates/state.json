@@ -152,9 +152,9 @@
    "lastNote": "không có QĐ giá bán lẻ mới sau QĐ 599/2025"
   },
   "power.policy": {
-   "lastAttempt": "2026-10-28T18:13:36+07:00",
-   "lastSuccess": "2026-10-28T18:13:36+07:00",
-   "lastNote": "watcher chỉ tin báo QHĐ VIII TP.HCM, không văn bản mới"
+   "lastAttempt": "2026-10-30T13:14:47+07:00",
+   "lastSuccess": "2026-10-30T13:14:47+07:00",
+   "lastNote": "Đã mở cafef.vn (27/10/2026): Phó TT yêu cầu EVN lập phương án giảm giá bán lẻ điện 1/11/2026-31/3/2027, chưa có số văn bản/mức giảm; khung giá khí 2026 (QĐ 1882) đã có trong evidence; tin khung giá chuyển tiếp là bài 2023. Không có số mới, không sửa trang."
   },
   "power.capacity": {
    "lastAttempt": "2026-10-12T08:43:43+07:00",
@@ -4147,57 +4147,6 @@
    "signals": []
   },
   {
-   "id": "power.policy",
-   "tier": "C",
-   "title": "Cơ chế giá điện, Quy hoạch điện VIII, DPPA, mái nhà, thị trường điện",
-   "since": "2026-10-29T13:21:58+07:00",
-   "reasons": [
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "news.power-prices",
-     "seenAt": "2026-10-29T13:21:58+07:00",
-     "what": "Khẩn trương rà soát, tính toán, giảm giá bán lẻ điện bình quân từ 1/11/2026 đến 31/3/2027 - Báo Sức khỏe & Đời sống — https://news.google.com/rss/articles/CBMi0AFBVV95cUxPa201ZTUxVWVyUFVVR0h1OTB0QTFZcENza240TWREX2ZPd2p0dDRqeUNxWTZDS1BOdkoycjZIdFg3RUt6eVdTRGJsYnJpNHpZX0dlNnliM0dNT1MwNFl0dTlxc2hvdkFuQjVZT3pIbGN3ZXJubFVMRjZHRzlic25sbVZzS3hURFlfWjk2WXh6VWFLRHZVclFKV2gzRXA5V0pRUldJM3ZTNVdiZy1jN3ZqOFZncXZwNWt2YllvMFRIWEl1YU54elk3dmhDaUxQNFY0?oc=5"
-    },
-    {
-     "watcher": "news.power-prices",
-     "seenAt": "2026-10-29T13:21:58+07:00",
-     "what": "Thực hiện Quy hoạch điện VIII điều chỉnh hiệu quả, đáp ứng tốt an ninh năng lượng quốc gia - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMiwAFBVV95cUxPbVA2MnZiUDNOdUlCcG1jeHFsSDhZSmh2ZlNLaDhLeG9WX0VfeVJhRFVUbFhTZHZGZlJObDgxRTlDdl9CMUpTNUFIY0pRYUhmZGgwcTlUWVdwVVl3aVBEbXlEV2hRX0VuSm5BZi1ONjRiRExMeV9BbGRlbG92WHBOMEk0R0tJb0Q1RVNXdnpCY1FKZy1BbnBGUl9vR3o1Qmoxbi1zOGhUbWNwaVppcTFCOXlrX0JIb1dvVktZQS1GM04?oc=5"
-    },
-    {
-     "watcher": "news.power-prices",
-     "seenAt": "2026-10-29T13:21:58+07:00",
-     "what": "Cấp bách điều chỉnh Quy hoạch điện VIII; khẩn trương xây dựng danh mục các công trình điện lực khẩn cấp - xaydungchinhsach.chinhphu.vn — https://news.google.com/rss/articles/CBMi9AFBVV95cUxQY3RRM2ktMk9lbTZLd3ZIMnUyeUU1aE5zYXlyNE4zczJXYXowMUhEdGwzRGlUOE82Zl9jcEI4Uy1KTnF0eWJNOFV1RDA1MG90Z05oX3A3TnZQeEp0d0NTbHdXeFRlcjRuMUlSR3B4Vl9XYXV2dy10U2dtQmZQSUpMSWpBVE1wbG41djJsMEFONEhhM3NKYVgwSUc2Q09LNDlCQkZLZjI3eFBiTzVjYnhEZkRZVG9XWXpsX3hFUWUwT1QzVDNWV2RBbHF6eW9tVE00TUJYeFgxS1M5ZVFpZ0FNcUx1VlVsV0VZTUg4SGlfYy0tbTRP?oc=5"
-    },
-    {
-     "watcher": "news.power-prices",
-     "seenAt": "2026-10-29T13:21:58+07:00",
-     "what": "Tăng giá bán lẻ điện bình quân 4,8% từ 10/5/2025 - xaydungchinhsach.chinhphu.vn — https://news.google.com/rss/articles/CBMiqgFBVV95cUxOYmtSY1JmTGNDbFdpVTBVRmtPMGRUR19yOE8wLWdOSDdFRmhmVDFKUFN5Y1pJYlc3QWVEcGozSjFZcVNRb2xIMnF3MVU1VG9scW9sQkdtdGNFb25lRTd5LWVXU09oYmI2WkhDMjFUU3lHWHY1eElwdDJkUTJsZFFySXdqanNKaGdzZTRJTnVOVnRRenZZaWNQUkhtTXpEek43M0tCY3VHQVFuUQ?oc=5"
-    },
-    {
-     "watcher": "news.power-prices",
-     "seenAt": "2026-10-29T13:21:58+07:00",
-     "what": "Bộ Công Thương ban hành khung giá phát điện nhà máy điện gió, điện mặt trời chuyển tiếp - Tập đoàn Điện lực Việt Nam (EVN) — https://news.google.com/rss/articles/CBMi0AFBVV95cUxOM0lMYWNGQXBMQ0VCS1ZsVmRiNDZ5ZTJiNnNueXM5ZVhfVWVERmVjMWcwdjFHRUhKWVFFT25qYkdmaWU5OFNIREwtV1ItQUNVRUFiaFI0c05aQzBzMFdWSTBqUlNGcWZMNnhhTVItcTlPd3h2OTVDRFh4S0x3enlmNml4TFRBTXBTQmdOUmRSSHJ6aWFJeWUyVGxlaWJsUUxhVnhnVko0M1FHejFRSDlCNUFmelJfN1RfYkpDSHZnTzZrVFI3Z0RvcVkzc0xzdENF?oc=5"
-    },
-    {
-     "watcher": "news.power-prices",
-     "seenAt": "2026-10-29T22:36:03+07:00",
-     "what": "Đề xuất sửa thời hạn áp dụng biểu giá bán lẻ điện cho sạc xe điện - xaydungchinhsach.chinhphu.vn — https://news.google.com/rss/articles/CBMiwwFBVV95cUxNNGh1T0QzUEhrZklwelVaNmgtVHRTYnY2ZDEwME02LVFtYjVXZmNzb1djTXlIM2RGRElGaWtUQmpEeXQ0YnBBV1JmRVpYTTJmVzM0MkhZWDdmTzRfUVgwd3BwS3dJQnhJQkk4RVhPT3Jtcy1xcl9OZmtQa3h0dnpSWk5CWWtobjkwclJzS09yUENvZWJhUHk2OUxiNE5ObTRsZGFIWkZ3QjJZdzZBTENwd3hIUzNLVnNHYkRpZ2xHWTZXeVU?oc=5"
-    },
-    {
-     "watcher": "news.power-prices",
-     "seenAt": "2026-10-29T22:36:03+07:00",
-     "what": "Phó thủ tướng chỉ đạo xem xét giảm giá bán lẻ điện bình quân từ ngày 1/11 - Vietnam.vn — https://news.google.com/rss/articles/CBMinAFBVV95cUxPVEUxMnhSampoRTNTd2Z6eUVaWGY4NWZUOGlYaUNrSm5YU2JWbmNzV1VQeDhvbm5acGh1RnNCQzZRNlhDMmF2YUpFS3lmN2tQYkpBTjJfblVSdzFTQlBWVjdZM2g1TGVqZDZzOWszYzNOZWI1b3BhUzU5UTlybmlVQUwzTzQ2MXJ5YjVQYTVPS3U2TUc4UmRwRHNaa1Q?oc=5"
-    },
-    {
-     "watcher": "news.power-prices",
-     "seenAt": "2026-10-29T22:36:03+07:00",
-     "what": "Bộ Công Thương phê duyệt khung giá phát điện nhiệt điện khí năm 2026 - Tạp chí điện tử Thương Trường — https://news.google.com/rss/articles/CBMiswFBVV95cUxOSHZKYnEzbE1ZbXpNZ1hFOFR0Y1N5ZjZ3dHBDNFk4TnFVTEJuYWVwc1BBNTQ4aHloUWxQeklYX0VoQ1pyVUw4MTZGdTA3VkVnbjAtMlFqUDlUWTlhU1NSNFhYZUl3ck16WUlxUmdaN3hkX0RtbW96emFDaHJGX2FQSG9GcnNNb0ZHQWZwQ2p4SERQdmhrYkQ2NjNDNWRRZ1ZEMEdmNzhUV2xoZzNnTGx1bUlIOA?oc=5"
-    }
-   ]
-  },
-  {
    "id": "realestate.wi.daily",
    "tier": "B",
    "title": "Wi: TPDN BĐS (phát hành, dư nợ, chậm trả), vĩ mô (FDI, GDP, CPI nhà ở, tín dụng, lãi suất), định giá 4 phân ngành",
@@ -4298,5 +4247,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-10-30T09:03:12+07:00"
+ "updatedAt": "2026-10-30T13:14:47+07:00"
 }

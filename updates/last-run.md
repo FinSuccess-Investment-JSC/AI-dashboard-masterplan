@@ -1,4 +1,4 @@
-# Lịch cập nhật — 30/10/2026 09:03
+# Lịch cập nhật — 30/10/2026 13:14
 
-- ❌ pharma.wi.valuation (lần 2): Widata bị đăng xuất (tài khoản đang kết nối nơi khác)
-- Hàng chờ Claude: 23 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
+- ✅ power.policy: Đã mở cafef.vn (27/10/2026): Phó TT yêu cầu EVN lập phương án giảm giá bán lẻ điện 1/11/2026-31/3/2027, chưa có số văn bản/mức giảm; khung giá khí 2026 (QĐ 1882) đã có trong evidence; tin khung giá chuyển tiếp là bài 2023. Không có số mới, không sửa trang.
+- Hàng chờ Claude: 22 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
