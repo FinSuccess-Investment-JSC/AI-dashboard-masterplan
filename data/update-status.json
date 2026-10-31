@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-31T06:10:19.824065+00:00",
+  "run_at": "2026-10-31T14:41:38.752403+00:00",
   "errors": 2,
   "sources": {
     "wti": {
@@ -48,15 +48,15 @@
       "status": "error",
       "latest_observation": "2026-10-25",
       "last_success_at": "2026-10-30T15:14:59.911205+00:00",
-      "last_checked_at": "2026-10-31T06:10:19.824065+00:00",
-      "error": "PortWatch: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']}"
+      "last_checked_at": "2026-10-31T14:41:38.752403+00:00",
+      "error": "PortWatch: {'code': 400, 'message': 'Cannot perform query. Invalid query parameters.', 'details': ['Unable to perform query. Please check your parameters.']}"
     },
     "bab_el_mandeb": {
       "status": "error",
       "latest_observation": "2026-10-25",
       "last_success_at": "2026-10-30T15:14:59.911205+00:00",
-      "last_checked_at": "2026-10-31T06:10:19.824065+00:00",
-      "error": "PortWatch: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']}"
+      "last_checked_at": "2026-10-31T14:41:38.752403+00:00",
+      "error": "PortWatch: {'code': 400, 'message': 'Cannot perform query. Invalid query parameters.', 'details': ['Unable to perform query. Please check your parameters.']}"
     },
     "cushing": {
       "status": "ok",
@@ -68,22 +68,22 @@
     "wti_curve": {
       "status": "ok",
       "latest_observation": "2026-10-30",
-      "last_success_at": "2026-10-31T06:10:19.824065+00:00",
-      "last_checked_at": "2026-10-31T06:10:19.824065+00:00",
+      "last_success_at": "2026-10-31T14:41:38.752403+00:00",
+      "last_checked_at": "2026-10-31T14:41:38.752403+00:00",
       "error": null
     },
     "brent_futures": {
       "status": "ok",
       "latest_observation": "2026-10-30",
-      "last_success_at": "2026-10-31T06:10:19.824065+00:00",
-      "last_checked_at": "2026-10-31T06:10:19.824065+00:00",
+      "last_success_at": "2026-10-31T14:41:38.752403+00:00",
+      "last_checked_at": "2026-10-31T14:41:38.752403+00:00",
       "error": null
     },
     "sugar_futures": {
       "status": "ok",
       "latest_observation": "2026-10-30",
-      "last_success_at": "2026-10-31T06:10:19.824065+00:00",
-      "last_checked_at": "2026-10-31T06:10:19.824065+00:00",
+      "last_success_at": "2026-10-31T14:41:38.752403+00:00",
+      "last_checked_at": "2026-10-31T14:41:38.752403+00:00",
       "error": null
     },
     "distillate_stock": {
@@ -124,8 +124,8 @@
     "wti_cot": {
       "status": "ok",
       "latest_observation": "2026-10-27",
-      "last_success_at": "2026-10-31T06:10:19.824065+00:00",
-      "last_checked_at": "2026-10-31T06:10:19.824065+00:00",
+      "last_success_at": "2026-10-31T14:41:38.752403+00:00",
+      "last_checked_at": "2026-10-31T14:41:38.752403+00:00",
       "error": null
     },
     "opec_capacity": {
@@ -138,15 +138,15 @@
     "retail_fuel": {
       "status": "ok",
       "latest_observation": "2026-10-29",
-      "last_success_at": "2026-10-31T06:10:19.824065+00:00",
-      "last_checked_at": "2026-10-31T06:10:19.824065+00:00",
+      "last_success_at": "2026-10-31T14:41:38.752403+00:00",
+      "last_checked_at": "2026-10-31T14:41:38.752403+00:00",
       "error": null
     },
     "singapore_cracks": {
       "status": "ok",
       "latest_observation": "2026-10-30",
-      "last_success_at": "2026-10-31T06:10:19.824065+00:00",
-      "last_checked_at": "2026-10-31T06:10:19.824065+00:00",
+      "last_success_at": "2026-10-31T14:41:38.752403+00:00",
+      "last_checked_at": "2026-10-31T14:41:38.752403+00:00",
       "error": null
     },
     "world_balance": {
@@ -173,8 +173,8 @@
     "coal_newcastle": {
       "status": "ok",
       "latest_observation": "2026-10-30",
-      "last_success_at": "2026-10-31T06:10:19.824065+00:00",
-      "last_checked_at": "2026-10-31T06:10:19.824065+00:00",
+      "last_success_at": "2026-10-31T14:41:38.752403+00:00",
+      "last_checked_at": "2026-10-31T14:41:38.752403+00:00",
       "error": null
     },
     "enso_oni": {
@@ -187,8 +187,8 @@
     "lng_jkm": {
       "status": "ok",
       "latest_observation": "2026-10-30",
-      "last_success_at": "2026-10-31T06:10:19.824065+00:00",
-      "last_checked_at": "2026-10-31T06:10:19.824065+00:00",
+      "last_success_at": "2026-10-31T14:41:38.752403+00:00",
+      "last_checked_at": "2026-10-31T14:41:38.752403+00:00",
       "error": null
     },
     "nino34_weekly": {
@@ -207,9 +207,9 @@
     },
     "vn_power_daily": {
       "status": "ok",
-      "latest_observation": "2026-10-29",
-      "last_success_at": "2026-10-31T06:10:19.824065+00:00",
-      "last_checked_at": "2026-10-31T06:10:19.824065+00:00",
+      "latest_observation": "2026-10-30",
+      "last_success_at": "2026-10-31T14:41:38.752403+00:00",
+      "last_checked_at": "2026-10-31T14:41:38.752403+00:00",
       "error": null
     },
     "sugar_world_shares": {
