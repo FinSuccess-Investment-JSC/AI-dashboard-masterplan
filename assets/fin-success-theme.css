@@ -802,3 +802,20 @@ html[data-theme="dark"] .majortabbtn.active{background:#2938A8!important;color:#
 /* ===== Font hệ thống (01/11/2026, theo yêu cầu): San Francisco trên Mac/iOS, Segoe UI trên Windows, Roboto trên Android ===== */
 :root{--fs-font:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}
 body,body *:not(.value-chain-scroll svg text):not(code):not(kbd):not(pre),.research-header h1,.research-header h1::before,.majortabbtn,.majortabbtn.active,svg text:not(.value-chain-scroll svg text){font-family:var(--fs-font)!important}
+/* ===== Bộ rule Design · UX/UI Stock (01/11/2026, bản gom từ CLAUDE.md + brand.css) ===== */
+:root{--fs-font:Arial,'Helvetica Neue',system-ui,sans-serif;--bg:#fbfcff;--card:#fff;--ink:#303540;--muted:#596272;--line:#dce1e9;--pos:#2B8E91;--warn:#8A6400}
+body{background:#fbfcff!important;color:#303540}
+/* Card: viền 1px #d9dde4, bo 16, padding 22, bóng rất nhẹ. */
+.card,.kpi,.grid.kpis,.business-model,.research-topic,.tx-tile,.thesis-signal{border:1px solid #d9dde4!important;border-radius:16px!important;box-shadow:0 1px 3px rgba(20,25,113,.035)!important}
+.card{padding:22px}
+@media (hover:hover) and (pointer:fine){.card:hover{box-shadow:0 1px 3px rgba(20,25,113,.035)!important}}
+@media(max-width:600px){.card{padding:16px}}
+/* ⓘ: icon tròn 15px nền #EEF1FB; popup nền navy chữ trắng 12px/1.6, bo 10, cao tối đa 70vh. */
+.chart-info-button{width:15px!important;height:15px!important;min-width:15px;border:0!important;background:#EEF1FB!important;color:#1D2678!important;font-size:10px!important;line-height:15px!important}
+.chart-info-panel{background:#1D2678!important;color:#fff!important;font-size:12px!important;line-height:1.6!important;border-radius:10px!important;max-height:70vh!important;border:0!important}
+.chart-info-panel *{color:#fff!important}.chart-info-panel a{color:#59C5C8!important}
+@media(hover:none){.chart-info-button{width:24px!important;height:24px!important;line-height:24px!important}}
+/* Sub-tab cỡ subnav: chữ 13px, cao 32–36px, padding ngang 10–14px. */
+.supply-tabs .tabbtn,.world-subtabs .tabbtn,.pane-subtabs .tabbtn,.subtabs .tabbtn{font-size:13px!important;min-height:32px;max-height:36px;padding:0 12px!important}
+html[data-theme="dark"] .card{border-color:#2A2A2A!important}
+html[data-theme="dark"] .chart-info-button{background:#1F1F1F!important;color:#FFD45D!important}
