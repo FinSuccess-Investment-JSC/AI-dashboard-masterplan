@@ -1,5 +1,5 @@
 {
-  "version": "20261101-hub-tiles",
+  "version": "20261101-hub-retail",
   "routes": {
     "home": "./",
     "oil": "Dau-khi/",
@@ -18,21 +18,21 @@
     "pharma": "Duoc/"
   },
   "files": {
-    "404.html": "d780689e38e2194a2a945e6d15b9a27527c70b6065ea9b725aff262248034d5f",
-    "Ban-le/index.html": "2488773e860cc64709fc52ee227d1415c5ad0e9a258a520a68541581e7a62a3a",
-    "Bank/index.html": "8e56fd0234db0a3bf0679f51c57c6f7e1914eafc0f2daa07219b80487ac4d59b",
-    "Bao-hiem/index.html": "3415cadc67be4986c6b368e649d0d9b7e329aade0bbe1bd0a7758f4f1327a11b",
-    "Bat-dong-san/index.html": "ed05bc3fd97b93d14253b755a0d7980336113cd3304248a2f857c2155ada8d7f",
-    "Cang-bien/index.html": "3b249d3f7993b7678f1ff9132acb6830471d468408f373a8c40444dff51221a2",
-    "Dau-khi/index.html": "cb70c33b621915debd1aa0747c6e66fb38946063d1dfe7724f48efb6bc431d95",
-    "Det-may/index.html": "fd5f7abeeb6d077f4e0c25d1f4995335d559eeff81e24c847fe1738913dc4999",
-    "Dien/index.html": "8d37b0572cd6a859f3c3ba5012915112013b9a56221677d76bc0fb01288c2ed6",
-    "Duoc/index.html": "043fe0068fa74066908ea79acdcfde3062b07ff11ac74d7300aaba36c8c1c411",
-    "Nong-nghiep/index.html": "11d561f5c343aae40a708618761cf9496d2e255aca1a19d92c7f19578a3df631",
-    "Sugar/index.html": "d0f5bb2bacf64b5e9a6b5e50e6048f0dbe18d08ed2e6077ea275657579863ab4",
-    "Thuy-san/index.html": "961ae2319e935034b2f23014d6dff8d10d87bff471481e883e4507901008b06c",
-    "Van-tai-bien/index.html": "c3775801295aecd93813bf8c11ad3b837bb71851783027fa8bad685f7f79d7ef",
-    "Xay-dung/index.html": "284c7fb0a6de8bf889d02e0f966fc8b88cfca0aaeb7f06b1109d83c1a2549c46",
+    "404.html": "320b9b518417ebea1a5820f4f3e92531fdac640979aa2e6c55cc55d6e812b975",
+    "Ban-le/index.html": "751cb822c35e6bb5d078b756e2b2dc2e6456e206e78985d8f4476aef4f2912a0",
+    "Bank/index.html": "d9d3c2099d92f9f6252df37842869f30ce7387074af387fa1d415d3371d88507",
+    "Bao-hiem/index.html": "d7418d49487aaac94eb7120976f89e0969e08f02b7ba0beb144b2336e8fc5044",
+    "Bat-dong-san/index.html": "5d82eece14399d94bcc83d039db0ec3ab09579af87a69154c5df7c9f2d9623b9",
+    "Cang-bien/index.html": "2a269970591f72e3bdcc0dbddf1f204e63f742f70c214a33513eb2bf48a6c089",
+    "Dau-khi/index.html": "7d58e69424635615372d740c1e63b906d881cc8c4db72e00886de07da8c4ca49",
+    "Det-may/index.html": "7672ec370d9a0ed8fab085c981dbb1f313f50d7d46cc3597ef0a6e627f134ab5",
+    "Dien/index.html": "d04dc816552cf81651f90e73e58fd850fbe7b01a2b36ea898ad4ad105a361bcb",
+    "Duoc/index.html": "efcd361b39f54e12d92abc57ed6896f0e4116e688109c76578922f16abe78843",
+    "Nong-nghiep/index.html": "ac0092e920fb99dc38b8c02101c37799c2e416ee88bf39821d9aed3b2c590d76",
+    "Sugar/index.html": "4215bfa19c53521bfbf4412285eee5e3c8330c5960148f172d4126f7fb39e1d2",
+    "Thuy-san/index.html": "8fea5920eecee6c390b61196bf4f5148dbd3b0c8dfe3c5d3514044ea06395d32",
+    "Van-tai-bien/index.html": "92d2a5099c93f7c27d44e0d618c6a18a78c83a876bc03c9ea69e9afee7efcb4f",
+    "Xay-dung/index.html": "bac07305c35aa2a70728255fffe06205f8be9e1d119461a22105dfbdcc14c769",
     "assets/agri-dashboard.js": "830a54469b3efa55601a2688b74e072e8d44f388c5e04c7453a414dee027a5a9",
     "assets/bank-content.js": "a0e5e524576d6e7fb5bbfbb9d2ef5a7600f8ab9bfa05134aa8fe2f26e4c804ea",
     "assets/bank-dashboard.css": "d1e4b007a137fe3d5d5d8f1a0f5c4ea4b9a5d673bad0ae26e491c3694d37854a",
@@ -74,7 +74,7 @@
     "assets/share-image.js": "ff76f597998ee55623050d0ff6693ed5fca2e77b950ad2e14f67c3321f874e2c",
     "assets/shipping-dashboard.js": "6e1025c961deefe35ff445fae4a6b606f0f9d3c46cc74a25370c8e071a5c6c1a",
     "assets/site-navigation.css": "54a3825f55f47d624459c2df4c1c82aa12c9fdafa9f1d3a59c54407153966029",
-    "assets/site-navigation.js": "ccb1d4839f7b5554036c238851e61bb9cfab609109a425027d41cd9e0db4d511",
+    "assets/site-navigation.js": "f1ab0eff069953f619ca8aad209d8ad7f0535b351655cea76bcd4cbd76748b03",
     "assets/source-gap.js": "02afdd3cfa3d69b77d8b64a54966383f294ef3e1a38892c25c0136a5fdf0d853",
     "assets/table-fold.js": "9c78488b28f67114a6d672d11a27c9ce27412ca8cf673d5146834280ef97e9aa",
     "assets/textile-dashboard.js": "b6e86003c6c388589491e1755d8eec7703a84e140d168cacdf3aca2791ab914c",
@@ -97,8 +97,8 @@
     "data/seafood-public-data.js": "a5887740c2484a4352bbb5f559049b300c008c76f102f27db89eb87846d28a85",
     "data/shipping-public-data.js": "032557ad72bf1960d0491b5b74555759952d84a14741010d06e937b50f7c543e",
     "data/textile-public-data.js": "9dda0e983e4dbe40dd74b8d1742843fe4ba7d0f7ebc22be3606b95c8c3cce7ba",
-    "duong/index.html": "23d057658a40f94f5d0d3b2343d4d6dc67fb23b0a9c0c09602c8911f77e039f0",
-    "index.html": "21e90fd34382a22871ac1934e3841f374052c9ce53bedb98589d687d92fb0a73"
+    "duong/index.html": "76a589a6929f5f37800eacd7b699b277fa1775b0ebd6e400ecf44f9835795b16",
+    "index.html": "15ca227f8a0b71dcf41a06c2b291d30691da85609b1ff2a873e519644f75f57b"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }

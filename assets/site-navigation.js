@@ -31,8 +31,9 @@
   }
   function redirectHubAlias() {
     const isHub = location.pathname === root.pathname || location.pathname === root.pathname+'index.html';
-    const key = aliases[location.hash.slice(1).toLowerCase()];
-    if (!isHub || !key) return false;
+    // Hub opens straight into a sector, like the Stock dashboard opens a ticker; default Bán lẻ.
+    const key = aliases[location.hash.slice(1).toLowerCase()] || 'retail';
+    if (!isHub) return false;
     document.documentElement.dataset.redirecting = 'true';
     location.replace(href(key));
     return true;
