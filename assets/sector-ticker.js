@@ -44,5 +44,5 @@ const track=document.createElement('div');track.className='ticker-track';
 for(let i=0;i<2;i++){const g=document.createElement('div');g.className='ticker-group';if(i)g.setAttribute('aria-hidden','true');rows.forEach(r=>g.append(item(r)));track.append(g)}
 track.style.setProperty('--ticker-dur',Math.max(30,rows.length*5)+'s');
 bar.append(track);
-const tabs=document.querySelector('.majortabs');tabs?tabs.before(bar):document.querySelector('.fiscbar')?.after(bar);
+const tabs=document.querySelector('.majortabs'),band=document.querySelector('.fs-titleband');band?band.after(bar):tabs?tabs.before(bar):document.querySelector('.fiscbar')?.after(bar);
 })();

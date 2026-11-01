@@ -786,3 +786,17 @@ html[data-theme="dark"] .fs-sector-tile{background:#161616;border-color:#2A2A2A;
 .research-header,.research-header.fs-titleband{padding-bottom:8px!important}
 .majortabs .majortabrow{max-width:none!important;width:auto!important;margin:0!important;padding:0!important;gap:4px!important;display:flex!important}
 .majortabs .fs-ink{display:none}
+/* ===== Đầu trang như Stock dashboard (01/11/2026): brand bar → dòng tên ngành trắng → ticker navy → tab trắng, tab chọn navy. Font Inter toàn trang. ===== */
+body,button,input,select,textarea,.majortabbtn,.research-header h1{font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif!important}
+.research-header,.research-header.fs-titleband{background:#F7F8FC!important;border-bottom:1px solid #E6E9F2!important;padding:14px max(24px,calc((100% - 1440px)/2))!important}
+.research-header h1{display:flex!important;align-items:center;gap:14px;font:700 24px/1.2 Inter,system-ui,sans-serif!important;letter-spacing:-.01em;color:#1D2678!important}
+.research-header h1::before{content:"NGÀNH";margin:0;padding:8px 14px;border-radius:10px;background:#EEF1FB;color:#1D2678;font:800 13px/1 Inter,system-ui,sans-serif;letter-spacing:.08em}
+.research-header :is(p,.research-caption,small,span){color:#596272}
+.majortabs,.research-header.fs-titleband ~ .majortabs{background:#fff!important;border-bottom:1px solid #E6E9F2!important;padding:0 max(24px,calc((100% - 1440px)/2))!important;box-shadow:none!important}
+.majortabbtn,.majortabbtn.active{color:#3D4660!important;background:transparent!important;border-radius:12px 12px 0 0!important;padding:13px 20px!important;font:600 14px/1.3 Inter,system-ui,sans-serif!important}
+.majortabbtn:hover{color:#1D2678!important;background:#F2F4FB!important}
+.majortabbtn.active,.majortabbtn[aria-selected="true"]{color:#fff!important;background:#1D2678!important;box-shadow:inset 0 -3px 0 #59C5C8!important}
+html[data-theme="dark"] .research-header{background:#161616!important;border-color:#2A2A2A!important}
+html[data-theme="dark"] .research-header h1::before{background:#1F1F1F;color:#FFD45D}
+html[data-theme="dark"] .majortabs{background:#0A0A0A!important;border-color:#2A2A2A!important}
+html[data-theme="dark"] .majortabbtn.active{background:#2938A8!important;color:#fff!important}

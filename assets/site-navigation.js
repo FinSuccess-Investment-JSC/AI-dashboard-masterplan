@@ -132,7 +132,7 @@
     document.querySelectorAll('.majortabbtn').forEach(b => { const t = b.firstChild; if (t && t.nodeType === 3) t.nodeValue = t.nodeValue.replace(/^\s*\d+\.\s*/, ''); });
     // Sector title band sits above the major tabs, like the ticker band in the Stock dashboard.
     const title = document.querySelector('.container > .research-header'), tabs = document.querySelector('nav.majortabs');
-    if (title && tabs) { title.classList.add('fs-titleband'); tabs.before(title); }
+    if (title && tabs) { title.classList.add('fs-titleband'); (document.querySelector('.sector-ticker') || tabs).before(title); }
     document.querySelectorAll('[data-site-navigation]').forEach(nav => {
       const active = nav.dataset.siteNavigation;
       nav.classList.add('site-navigation');
