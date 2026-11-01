@@ -566,38 +566,38 @@ table:not(.fintbl) th{font-size:12px}
 .fs-info-sub{margin:0 0 8px;color:#596272;font-size:12px}
 /* ===== Giao diện tối duy nhất: Navy đêm (rule Stock §2) ===== */
 html[data-theme="dark"]{color-scheme:dark}
-html[data-theme="dark"] body{background:#0B1026!important;color:#F3F5FF}
-html[data-theme="dark"] :is(.fs-brandbar,.research-header,.majortabs,.topbar,.site-navigation-shell){background:#0B1026!important;border-color:#232B52!important}
-html[data-theme="dark"] :is(.card,.kpi,.grid.kpis,.business-model,.research-topic,.tx-tile,.thesis-signal,.chart-info-panel,.source-popover,.table-fold>.table-fold-body,details,.tablewrap){background:#131A3A!important;border-color:#232B52!important;color:#F3F5FF;box-shadow:none!important}
-html[data-theme="dark"] .card .card{background:#18204A!important}
-html[data-theme="dark"] :is(h1,h2,h3,h4,.chart-title,.kpi .value,.sectionhead h2,.research-header h1,.info-heading,th,b,strong){color:#F3F5FF!important}
-html[data-theme="dark"] .research-header h1{background:#18204A}
-html[data-theme="dark"] :is(p,li,td,.chart-sub,.kpi .label,.kpi .sub,.source-note,.fs-info-sub,.sectionhead p,.research-caption,label,small){color:#98A0C8!important}
-html[data-theme="dark"] :is(.majortabbtn,.majortabbtn.active){color:#98A0C8!important}
-html[data-theme="dark"] :is(.majortabbtn.active,.majortabbtn[aria-selected="true"],.majortabbtn:hover){color:#F3F5FF!important}
-html[data-theme="dark"] th{background:#18204A!important}
-html[data-theme="dark"] td{border-color:#232B52!important}
+html[data-theme="dark"] body{background:#0A0A0A!important;color:#F5F5F5}
+html[data-theme="dark"] :is(.fs-brandbar,.research-header,.majortabs,.topbar,.site-navigation-shell){background:#0A0A0A!important;border-color:#2A2A2A!important}
+html[data-theme="dark"] :is(.card,.kpi,.grid.kpis,.business-model,.research-topic,.tx-tile,.thesis-signal,.chart-info-panel,.source-popover,.table-fold>.table-fold-body,details,.tablewrap){background:#161616!important;border-color:#2A2A2A!important;color:#F5F5F5;box-shadow:none!important}
+html[data-theme="dark"] .card .card{background:#1F1F1F!important}
+html[data-theme="dark"] :is(h1,h2,h3,h4,.chart-title,.kpi .value,.sectionhead h2,.research-header h1,.info-heading,th,b,strong){color:#F5F5F5!important}
+html[data-theme="dark"] .research-header h1{background:#1F1F1F}
+html[data-theme="dark"] :is(p,li,td,.chart-sub,.kpi .label,.kpi .sub,.source-note,.fs-info-sub,.sectionhead p,.research-caption,label,small){color:#A3A3A3!important}
+html[data-theme="dark"] :is(.majortabbtn,.majortabbtn.active){color:#A3A3A3!important}
+html[data-theme="dark"] :is(.majortabbtn.active,.majortabbtn[aria-selected="true"],.majortabbtn:hover){color:#F5F5F5!important}
+html[data-theme="dark"] th{background:#1F1F1F!important}
+html[data-theme="dark"] td{border-color:#2A2A2A!important}
 html[data-theme="dark"] table tbody tr:hover td{background:rgba(89,197,200,.08)!important}
-html[data-theme="dark"] :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs,.ct-switch>button){background:#18204A!important}
-html[data-theme="dark"] :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs) .tabbtn{color:#A2AACD!important}
+html[data-theme="dark"] :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs,.ct-switch>button){background:#1F1F1F!important}
+html[data-theme="dark"] :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs) .tabbtn{color:#A3A3A3!important}
 html[data-theme="dark"] :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs) .tabbtn[aria-selected="true"],html[data-theme="dark"] .ct-switch>button[aria-pressed="true"]{background:#2938A8!important;color:#fff!important}
-html[data-theme="dark"] .ct-switch>button{color:#C9CFEA}
-html[data-theme="dark"] :is(.ct-axis,.ct-period select,.fs-search .search-box,.fs-theme,input,select){background:#131A3A!important;border-color:#2A3360!important;color:#F3F5FF!important}
+html[data-theme="dark"] .ct-switch>button{color:#D4D4D4}
+html[data-theme="dark"] :is(.ct-axis,.ct-period select,.fs-search .search-box,.fs-theme,input,select){background:#161616!important;border-color:#2A2A2A!important;color:#F5F5F5!important}
 html[data-theme="dark"] .ct-axis button[aria-pressed="true"]{background:#2938A8;color:#fff}
-html[data-theme="dark"] :is(.ct-svg .axislabel,.ct-svg .catlabel,.ct-svg .endlabel,svg text){fill:#98A0C8}
-html[data-theme="dark"] .ct-svg .ct-vlabel[fill="#1d2333"]{fill:#F3F5FF}
-html[data-theme="dark"] :is(.ct-svg .gridline,svg .gridline){stroke:#232B52}
-html[data-theme="dark"] .cts-legend button{color:#F3F5FF}
+html[data-theme="dark"] :is(.ct-svg .axislabel,.ct-svg .catlabel,.ct-svg .endlabel,svg text){fill:#A3A3A3}
+html[data-theme="dark"] .ct-svg .ct-vlabel[fill="#1d2333"]{fill:#F5F5F5}
+html[data-theme="dark"] :is(.ct-svg .gridline,svg .gridline){stroke:#2A2A2A}
+html[data-theme="dark"] .cts-legend button{color:#F5F5F5}
 html[data-theme="dark"] .fs-brandbar img{filter:brightness(0) invert(1)}
-html[data-theme="dark"] :is(.chart-insight,.flowbar,.research-flow){background:#18204A!important;color:#F3F5FF!important}
+html[data-theme="dark"] :is(.chart-insight,.flowbar,.research-flow){background:#1F1F1F!important;color:#F5F5F5!important}
 html[data-theme="dark"] a{color:#59C5C8}
-html[data-theme="dark"] .ct-tip{background:#18204A;border:1px solid #2A3360}
+html[data-theme="dark"] .ct-tip{background:#1F1F1F;border:1px solid #2A2A2A}
 /* Bảng chụp ảnh luôn giữ bản sáng. */
 html[data-theme="dark"] .fs-share-modal *{color:revert}
 @media print{html[data-theme="dark"] body{background:#fff!important;color:#303540}}
-html[data-theme="dark"] .research-path{background:#18204A!important;color:#F3F5FF!important;border-color:#232B52!important}
-html[data-theme="dark"] .research-path *{color:#F3F5FF!important}
-html[data-theme="dark"] :is(.fs-share-btn,.fs-share-trigger,button.fs-share){background:#18204A!important;color:#F3F5FF!important;border-color:#2A3360!important}
+html[data-theme="dark"] .research-path{background:#1F1F1F!important;color:#F5F5F5!important;border-color:#2A2A2A!important}
+html[data-theme="dark"] .research-path *{color:#F5F5F5!important}
+html[data-theme="dark"] :is(.fs-share-btn,.fs-share-trigger,button.fs-share){background:#1F1F1F!important;color:#F5F5F5!important;border-color:#2A2A2A!important}
 html[data-theme="dark"] .fs-share-modal :is(p,label,small,b,span,div,h3){color:#303540!important}
 
 /* ===== Redesign giao diện (28/10/2026): màu, điều hướng, chuyển động, flow chart — giữ nguyên cấu trúc ===== */
@@ -644,8 +644,8 @@ svg.fs-draw [transform]{animation-name:fsFade}
 .fs-flow .fs-node{cursor:default;transition:filter .2s}
 .fs-flow .fs-node:hover{filter:drop-shadow(0 6px 12px rgba(29,38,120,.22))}
 .fs-flow .fs-node:hover rect{stroke:#59C5C8!important;stroke-width:2!important}
-html[data-theme="dark"]{--fs-page:#0B1026}
-html[data-theme="dark"] .research-header h1{color:#F3F5FF}
+html[data-theme="dark"]{--fs-page:#0A0A0A}
+html[data-theme="dark"] .research-header h1{color:#F5F5F5}
 @media (prefers-reduced-motion:reduce){.majorpane,.pane-subpane,.supply-pane,svg.fs-draw *{animation:none!important}.majortabs .fs-ink{transition:none}}
 @media print{.majortabs{position:static!important;backdrop-filter:none}.fs-dots,.fs-ink{display:none}.ct-switch{opacity:1}}
 .fs-flow .fs-dot{stroke:#fff;stroke-width:1}
@@ -695,9 +695,9 @@ ul.fs-vtl>li:has(.fs-vtl-d){display:grid;grid-template-columns:auto minmax(0,1fr
 ul.fs-vtl>li:not(:has(.fs-vtl-d))::before{width:8px;height:8px;left:2px;top:8px;border-width:2px;border-color:#59C5C8}
 ul.fs-vtl>li::before{content:"";position:absolute;left:0;top:6px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #2938A8;box-sizing:border-box}
 .fs-vtl-d{font-weight:800;color:#1D2678;white-space:nowrap;font-variant-numeric:tabular-nums}
-html[data-theme="dark"] :is(.fs-chip,.fs-chip-lbl.alt){background:#18204A;color:#F3F5FF}
-html[data-theme="dark"] .fs-num{color:#F3F5FF}
-html[data-theme="dark"] .fs-tl-m text{fill:#98A0C8}
+html[data-theme="dark"] :is(.fs-chip,.fs-chip-lbl.alt){background:#1F1F1F;color:#F5F5F5}
+html[data-theme="dark"] .fs-num{color:#F5F5F5}
+html[data-theme="dark"] .fs-tl-m text{fill:#A3A3A3}
 @media (prefers-reduced-motion:reduce){.fs-step-arrow i{animation:none}}
 
 /* ===== Hình hóa dữ liệu (sector-visuals.js) ===== */
@@ -740,15 +740,15 @@ html[data-theme="dark"] .fs-tl-m text{fill:#98A0C8}
 .fsv-n .v{font:800 18px var(--fs-font);fill:#1D2678}
 .fsv-n .s{font:500 11px var(--fs-font);fill:#596272}
 .fsv-n .u{font:700 11px var(--fs-font);fill:#1A7A50}.fsv-n .d{font:700 11px var(--fs-font);fill:#B3303F}
-html[data-theme="dark"] .fsv-ticker{background:#0B1026;border-color:#232B52}
-html[data-theme="dark"] .fsv-tk b{color:#F3F5FF}
-html[data-theme="dark"] .fsv-n rect{fill:#131A3A;stroke:#2A3360}
-html[data-theme="dark"] :is(.fsv-n .t,.fsv-n .v,.fsv-heat td){fill:#F3F5FF;color:#F3F5FF}
+html[data-theme="dark"] .fsv-ticker{background:#0A0A0A;border-color:#2A2A2A}
+html[data-theme="dark"] .fsv-tk b{color:#F5F5F5}
+html[data-theme="dark"] .fsv-n rect{fill:#161616;stroke:#2A2A2A}
+html[data-theme="dark"] :is(.fsv-n .t,.fsv-n .v,.fsv-heat td){fill:#F5F5F5;color:#F5F5F5}
 @media (prefers-reduced-motion:reduce){.fsv-tk-run{animation:none}.fsv-spark .fsv-line{animation:none;stroke-dashoffset:0}}
 @media print{.fsv-tk-run{animation:none}.fsv-tk-dup{display:none}}
 
 .fsv-heat td.na{background:transparent}
-html[data-theme="dark"] .fsv-heat tbody th{color:#F3F5FF!important}
+html[data-theme="dark"] .fsv-heat tbody th{color:#F5F5F5!important}
 :root .fsv-heat table tbody tr td{background:var(--c,transparent)!important}
 /* Dải giá chạy nền navy như Stock dashboard (28/10/2026, đồng bộ với assets/sector-ticker.js) */
 .fsv-ticker{background:#11173f;border-color:#2a3470}
@@ -760,3 +760,23 @@ html[data-theme="dark"] .fsv-heat tbody th{color:#F3F5FF!important}
 .fs-sector-tile{display:flex;align-items:center;min-height:58px;padding:12px 16px;background:#fff;border:1px solid #dce1e9;border-radius:12px;color:#1D2678;font-weight:750;font-size:14.5px;text-decoration:none;box-shadow:0 2px 8px rgba(20,25,113,.05);transition:border-color .15s,box-shadow .15s,transform .15s}
 .fs-sector-tile:hover,.fs-sector-tile:focus-visible{border-color:#1D2678;box-shadow:0 6px 18px rgba(20,25,113,.12);transform:translateY(-1px);outline:none}
 @media(max-width:600px){.fs-sector-grid{padding:0 14px;grid-template-columns:1fr 1fr}}
+
+/* ===== Theo DESIGN_RULES Stock (01/11/2026): title band navy + tab navy; nền tối đen, tiêu đề vàng; chuyển động ≤ 400 ms ===== */
+.research-header,.research-header.fs-titleband{background:#1D2678!important;padding:22px max(24px,calc((100% - 1440px)/2)) 18px!important;margin:0!important;border:0!important}
+.research-header h1{display:block;max-width:1440px;margin:0 auto;padding:0;background:none!important;font:800 30px/1.15 var(--fs-font);letter-spacing:-.02em;color:#fff!important}
+.research-header h1::before{color:#59C5C8}
+.research-header :is(p,.research-caption,small,span){color:rgba(255,255,255,.78)}
+@media(max-width:700px){.research-header h1{font-size:24px}}
+.majortabs,.research-header.fs-titleband ~ .majortabs{position:sticky!important;top:0;z-index:40;max-width:none!important;margin:0!important;border-radius:0!important;background:#1D2678!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:6px max(24px,calc((100% - 1440px)/2)) 8px!important;box-shadow:0 1px 0 rgba(255,255,255,.08)!important}
+.majortabbtn,.majortabbtn.active{color:rgba(255,255,255,.72)!important;background:transparent!important;border-radius:9px!important;box-shadow:none!important}
+.majortabbtn:hover{color:#fff!important;background:rgba(255,255,255,.08)!important}
+.majortabbtn.active,.majortabbtn[aria-selected="true"]{color:#fff!important;background:#2938A8!important}
+.majortabs .fs-ink{background:#59C5C8}
+svg.fs-draw rect[rx]:not(.hitband):not(.ct-yhit){animation-duration:.35s}
+svg.fs-draw path.fs-stroke{animation-duration:.4s}
+svg.fs-draw circle,svg.fs-draw text{animation-duration:.3s;animation-delay:.1s}
+@media (prefers-reduced-motion:reduce){svg.fs-draw *,.majorpane,.pane-subpane,.supply-pane{animation:none!important}}
+html[data-theme="dark"] body{background:#0A0A0A!important;color:#F5F5F5}
+html[data-theme="dark"] :is(.research-header,.majortabs){background:#161616!important;border-color:#2A2A2A!important}
+html[data-theme="dark"] :is(h1,h2,h3,h4,.chart-title,.sectionhead h2,.research-header h1,.info-heading,.card>h3){color:#FFD45D!important}
+html[data-theme="dark"] .fs-sector-tile{background:#161616;border-color:#2A2A2A;color:#FFD45D}

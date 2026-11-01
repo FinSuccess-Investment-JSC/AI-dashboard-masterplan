@@ -137,3 +137,9 @@ Load sau `data/*-public-data.js` ở 10 ngành dùng schema chung (chưa áp D�
 - **Sparkline trong ô KPI có sẵn:** chỉ gắn khi số trên ô khớp số cuối của chuỗi (sai số 0,6%, thử ×1, ×1/1000, ×1000) và kỳ trên ô (Tn/yy) trùng kỳ cuối. Không khớp thì không gắn.
 - **Heatmap YoY 24 tháng** đầu tab Bức tranh ngành: tối đa 12 chuỗi tháng (bỏ chuỗi đơn vị %, bỏ tên trùng); |YoY| > 300% hiện ≫/≪ vì nền quá nhỏ.
 - **Sơ đồ dòng chảy theo giá trị** (cấu hình `FLOWS` theo ngành, hiện có Dệt may): độ dày ∝ √giá trị tháng gần nhất, hạt chạy; khâu thiếu số vẽ nét đứt.
+
+## Đồng bộ Stock dashboard (01/11/2026)
+
+- Brand bar trắng + logo → title band navy `#1D2678` (tên ngành chữ trắng) → thanh tab navy, tab đang chọn nền `#2938A8`.
+- Giao diện tối duy nhất nền đen: nền `#0A0A0A`, card `#161616`, viền `#2A2A2A`, chữ `#F5F5F5` / phụ `#A3A3A3`, tiêu đề vàng ấm `#FFD45D`, nút chọn `#2938A8`. Ảnh chia sẻ giữ bản sáng.
+- Chuyển động 150–400 ms, tắt khi `prefers-reduced-motion`.
