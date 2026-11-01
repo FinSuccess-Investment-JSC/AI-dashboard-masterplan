@@ -143,3 +143,5 @@ Load sau `data/*-public-data.js` ở 10 ngành dùng schema chung (chưa áp D�
 - Brand bar trắng + logo → title band navy `#1D2678` (tên ngành chữ trắng) → thanh tab navy, tab đang chọn nền `#2938A8`.
 - Giao diện tối duy nhất nền đen: nền `#0A0A0A`, card `#161616`, viền `#2A2A2A`, chữ `#F5F5F5` / phụ `#A3A3A3`, tiêu đề vàng ấm `#FFD45D`, nút chọn `#2938A8`. Ảnh chia sẻ giữ bản sáng.
 - Chuyển động 150–400 ms, tắt khi `prefers-reduced-motion`.
+- **Font (chốt 01/11/2026, thay Inter):** font hệ thống `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif` (San Francisco trên Mac/iOS). Không tải font web. Riêng sơ đồ chuỗi giá trị giữ Arial vì khung chữ tính theo độ rộng Arial.
+- **Đầu trang:** brand bar → dòng tên ngành nền sáng có chip NGÀNH → ticker navy → thanh tab trắng, tab chọn navy gạch turquoise.
