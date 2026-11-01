@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap');
 /* FinSuccess visual rules from Stock dashboard/CLAUDE.md and _template/brand.css.
    Shared by the hub and every sector page. Source/status meaning is preserved. */
 :root {
@@ -819,3 +820,9 @@ body{background:#fbfcff!important;color:#303540}
 .supply-tabs .tabbtn,.world-subtabs .tabbtn,.pane-subtabs .tabbtn,.subtabs .tabbtn{font-size:13px!important;min-height:32px;max-height:36px;padding:0 12px!important}
 html[data-theme="dark"] .card{border-color:#2A2A2A!important}
 html[data-theme="dark"] .chart-info-button{background:#1F1F1F!important;color:#FFD45D!important}
+
+/* ===== Font như fisc-dashboard.vercel.app (01/11/2026, chốt cuối): Inter cho mọi chữ, Newsreader cho tên ngành (h1) và tiêu đề khối mô hình kinh doanh ===== */
+:root{--fs-font:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--fs-serif:Newsreader,Georgia,serif}
+body,body *:not(.value-chain-scroll svg text):not(code):not(kbd):not(pre),.majortabbtn,.majortabbtn.active,.research-header h1::before,svg text:not(.value-chain-scroll svg text){font-family:var(--fs-font)!important}
+:is(.research-header h1,.research-header h1 *):not(#fs-x):not(#fs-y){font-family:var(--fs-serif)!important;font-weight:500!important;letter-spacing:-.5px!important}
+:is(.business-model h3,.mb-head h3):not(#fs-x):not(#fs-y){font-family:var(--fs-serif)!important;font-weight:500!important;letter-spacing:-.4px}
