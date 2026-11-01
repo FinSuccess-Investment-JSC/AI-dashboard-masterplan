@@ -229,7 +229,7 @@
 "date": "2026-10-30",
 "value": 3179,
 "contract": "hc2701",
-"final": false
+"final": true
 }
 },
 "rb": {
@@ -453,7 +453,7 @@
 "date": "2026-10-30",
 "value": 3039,
 "contract": "rb2701",
-"final": false
+"final": true
 }
 },
 "bu": {
@@ -677,7 +677,7 @@
 "date": "2026-10-30",
 "value": 5204,
 "contract": "bu2701",
-"final": false
+"final": true
 }
 },
 "fu": {
@@ -901,7 +901,7 @@
 "date": "2026-10-30",
 "value": 5435,
 "contract": "fu2701",
-"final": false
+"final": true
 }
 }
 }
