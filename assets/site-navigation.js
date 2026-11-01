@@ -118,6 +118,15 @@
       home.append(logo); inner.append(home); bar.append(inner); document.body.prepend(bar);
     }
     if (document.querySelector('.fs-brandbar') && !document.querySelector('.fs-search')) mountSearch();
+    // Hub: sector tiles visible at once, one click opens the dashboard.
+    const hubMain = document.querySelector('.fs-home-main');
+    if (hubMain && !hubMain.querySelector('.fs-sector-grid')) {
+      const grid = document.createElement('div'); grid.className = 'fs-sector-grid'; grid.setAttribute('aria-label', 'Dashboard ngành');
+      for (const key of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood','shipping','construction','insurance','retail','pharma']) {
+        const a = document.createElement('a'); a.className = 'fs-sector-tile'; a.href = href(key); a.textContent = routes[key].label; grid.append(a);
+      }
+      hubMain.append(grid);
+    }
     // Tab chính không đánh số, như Stock dashboard (thứ tự tab giữ nguyên).
     document.querySelectorAll('.majortabbtn').forEach(b => { const t = b.firstChild; if (t && t.nodeType === 3) t.nodeValue = t.nodeValue.replace(/^\s*\d+\.\s*/, ''); });
     // Sector title band sits above the major tabs, like the ticker band in the Stock dashboard.
