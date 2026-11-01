@@ -71,6 +71,7 @@ const cellHTML = (g, f) => { const v = g.e[f.id] * f.s; return `<button type="bu
 
 /* ---------- 1. Bảng điều khiển ngành ---------- */
 function hub() {
+  return;  // Khối "… hôm nay" đầu trang đã bỏ theo yêu cầu 01/11/2026; kết luận xem ở tab Catalyst.
   const tabs = document.querySelector('.majortabs'); if (!tabs || document.querySelector('.pv-hub')) return;
   const verdict = document.querySelector('.cr-verdict h3')?.textContent.trim();
   const why = g => { const by = k => F.filter(f => g.e[f.id] * f.s === k).map(f => f.say); return {pos: by(1), neg: by(-1)}; };

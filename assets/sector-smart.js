@@ -44,6 +44,7 @@ const known = () => new Set([...groups().flatMap(g => g.codes), ...Object.keys(w
 
 /* ---------- Bảng điều khiển đầu trang ---------- */
 function hub() {
+  return;  // Khối "… hôm nay" đầu trang đã bỏ theo yêu cầu 01/11/2026; kết luận xem ở tab Catalyst.
   const B = window.SECTOR_BRIEF, tabs = document.querySelector('.majortabs');
   if (!B?.headline || !tabs || document.querySelector('.pv-hub')) return;
   const segs = (B.segs || []).filter(s => s[0]);
