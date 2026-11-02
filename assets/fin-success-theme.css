@@ -440,7 +440,7 @@ table td,table th,.kpi .value,.num{font-variant-numeric:tabular-nums;font-featur
 @media (prefers-reduced-motion:reduce){.card,.kpi::after{transition:none}}
 @media print{.card,.kpi{box-shadow:none}.kpi::after{display:none}}
 /* Sơ đồ chuỗi giá trị tính khung theo độ rộng Arial; Inter rộng hơn làm chữ tràn khung. */
-.value-chain-scroll svg text,svg .chain-node~text{font-family:Arial,'Helvetica Neue',system-ui,sans-serif}
+
 
 /* ===== Khớp hình Stock dashboard (28/10/2026, vòng 2) ===== */
 /* Header: logo trái, ô tra cứu phải cùng một hàng. */
@@ -802,7 +802,7 @@ html[data-theme="dark"] .majortabs{background:#0A0A0A!important;border-color:#2A
 html[data-theme="dark"] .majortabbtn.active{background:#2938A8!important;color:#fff!important}
 /* ===== Font hệ thống (01/11/2026, theo yêu cầu): San Francisco trên Mac/iOS, Segoe UI trên Windows, Roboto trên Android ===== */
 :root{--fs-font:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}
-body,body *:not(.value-chain-scroll svg text):not(code):not(kbd):not(pre),.research-header h1,.research-header h1::before,.majortabbtn,.majortabbtn.active,svg text:not(.value-chain-scroll svg text){font-family:var(--fs-font)!important}
+body,body *:not(code):not(kbd):not(pre),.research-header h1,.research-header h1::before,.majortabbtn,.majortabbtn.active,svg text{font-family:var(--fs-font)!important}
 /* ===== Bộ rule Design · UX/UI Stock (01/11/2026, bản gom từ CLAUDE.md + brand.css) ===== */
 :root{--fs-font:Arial,'Helvetica Neue',system-ui,sans-serif;--bg:#fbfcff;--card:#fff;--ink:#303540;--muted:#596272;--line:#dce1e9;--pos:#2B8E91;--warn:#8A6400}
 body{background:#fbfcff!important;color:#303540}
@@ -823,6 +823,6 @@ html[data-theme="dark"] .chart-info-button{background:#1F1F1F!important;color:#F
 
 /* ===== Font như fisc-dashboard.vercel.app (01/11/2026, chốt cuối): Inter cho mọi chữ, Newsreader cho tên ngành (h1) và tiêu đề khối mô hình kinh doanh ===== */
 :root{--fs-font:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--fs-serif:Newsreader,Georgia,serif}
-body,body *:not(.value-chain-scroll svg text):not(code):not(kbd):not(pre),.majortabbtn,.majortabbtn.active,.research-header h1::before,svg text:not(.value-chain-scroll svg text){font-family:var(--fs-font)!important}
+body,body *:not(code):not(kbd):not(pre),.majortabbtn,.majortabbtn.active,.research-header h1::before,svg text{font-family:var(--fs-font)!important}
 :is(.research-header h1,.research-header h1 *):not(#fs-x):not(#fs-y){font-family:var(--fs-serif)!important;font-weight:500!important;letter-spacing:-.5px!important}
 :is(.business-model h3,.mb-head h3):not(#fs-x):not(#fs-y){font-family:var(--fs-serif)!important;font-weight:500!important;letter-spacing:-.4px}

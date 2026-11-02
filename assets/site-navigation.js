@@ -105,6 +105,27 @@
       const box = document.getElementById('comparison-search'); if (box) { box.value = ma; box.dispatchEvent(new Event('input', {bubbles: true})); box.closest('section')?.scrollIntoView({block: 'start'}); }
     }, 300);
   }
+  // Sơ đồ chuỗi giá trị: khung có độ rộng cố định; đo chữ thật (Inter) và thu cỡ chữ khung nào bị tràn.
+  function fitChainText(root) {
+    root.querySelectorAll('rect.chain-node + text').forEach(t => {
+      const max = t.previousElementSibling.width.baseVal.value - 14, spans = [...t.querySelectorAll('tspan')];
+      if (t.dataset.fitBase) t.style.fontSize = t.dataset.fitBase + 'px';
+      const widest = Math.max(...(spans.length ? spans : [t]).map(n => n.getComputedTextLength()));
+      if (!widest) return;  // đang ẩn: đo lại khi hiện
+      const base = t.dataset.fitBase || (t.dataset.fitBase = parseFloat(getComputedStyle(t).fontSize));
+      if (widest > max) t.style.fontSize = (base * max / widest).toFixed(2) + 'px';
+    });
+  }
+  function watchChains() {
+    const run = () => document.querySelectorAll('.value-chain-scroll').forEach(fitChainText);
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(run);
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && fitChainText(e.target)));
+      const seen = new WeakSet(), scan = () => document.querySelectorAll('.value-chain-scroll').forEach(f => { if (!seen.has(f)) { seen.add(f); io.observe(f); } });
+      scan(); new MutationObserver(scan).observe(document.body, {childList: true, subtree: true});
+    }
+  }
+  document.addEventListener('DOMContentLoaded', () => setTimeout(watchChains, 0));
   window.DashboardSite = Object.freeze({root: root.href, version, routes, aliases, href, redirectHubAlias});
   // Resolve historical /?v=...#ngan-hang links before rendering hub previews.
   redirectHubAlias();
