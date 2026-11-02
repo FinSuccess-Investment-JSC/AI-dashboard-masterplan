@@ -1,3 +1,2 @@
-Routine tài liệu 30/10: xử lý 1/10 mục (power.policy: chưa có số/quyết định mới, chỉ là chỉ đạo giảm giá điện 1/11, không sửa trang).
-9 mục còn trong hàng chờ cho lượt sau.
-Chưa kiểm giao diện bằng trình duyệt.
+Routine Wi 02/11: KHÔNG chạy được. Connector WiMCP chưa xác thực (cần đăng nhập lại Widata trong claude.ai).
+Không có lời gọi Wi nào được thực hiện; 14 mục hàng chờ B bị --fail, số liệu giữ nguyên.

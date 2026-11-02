@@ -18,11 +18,11 @@
   "bank.eximbank": {},
   "comparison.financials": {},
   "bank.wi.daily": {
-   "lastAttempt": "2026-10-30T09:03:10+07:00",
+   "lastAttempt": "2026-11-02T09:02:52+07:00",
    "lastSuccess": "2026-10-28T17:38:14+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "Widata bị đăng xuất (tài khoản đang kết nối nơi khác)",
-   "attempts": 1
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 2
   },
   "bank.wi.monthly": {
    "lastAttempt": "2026-10-28T17:38:14+07:00",
@@ -183,11 +183,11 @@
    "lastNote": "EVN T10 chưa ra; giữ 9T 265,79 tỷ kWh"
   },
   "realestate.wi.daily": {
-   "lastAttempt": "2026-10-30T09:03:11+07:00",
+   "lastAttempt": "2026-11-02T09:02:52+07:00",
    "lastSuccess": "2026-10-28T17:38:11+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "Widata bị đăng xuất (tài khoản đang kết nối nơi khác)",
-   "attempts": 1
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 2
   },
   "realestate.wi.weekly": {
    "lastAttempt": "2026-10-28T17:38:11+07:00",
@@ -240,11 +240,11 @@
    "lastNote": "FDI 9T BĐS 6,94 tỷ USD (16,0%); không có dự án ≥100 triệu USD mới mở được"
   },
   "textile.wi.daily": {
-   "lastAttempt": "2026-10-30T09:03:11+07:00",
+   "lastAttempt": "2026-11-02T09:02:52+07:00",
    "lastSuccess": "2026-10-28T17:38:12+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "Widata bị đăng xuất (tài khoản đang kết nối nơi khác)",
-   "attempts": 1
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 2
   },
   "textile.wi.weekly": {
    "lastAttempt": "2026-10-28T17:38:12+07:00",
@@ -382,32 +382,32 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "port.wi.valuation": {
-   "lastAttempt": "2026-10-30T09:03:11+07:00",
+   "lastAttempt": "2026-11-02T09:02:52+07:00",
    "lastSuccess": "2026-10-28T17:38:16+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "Widata bị đăng xuất (tài khoản đang kết nối nơi khác)",
-   "attempts": 1
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 2
   },
   "agri.wi.valuation": {
-   "lastAttempt": "2026-10-30T09:03:11+07:00",
+   "lastAttempt": "2026-11-02T09:02:53+07:00",
    "lastSuccess": "2026-10-28T17:38:16+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "Widata bị đăng xuất (tài khoản đang kết nối nơi khác)",
-   "attempts": 1
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 2
   },
   "seafood.wi.valuation": {
-   "lastAttempt": "2026-10-30T09:03:11+07:00",
+   "lastAttempt": "2026-11-02T09:02:53+07:00",
    "lastSuccess": "2026-10-28T17:38:16+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "Widata bị đăng xuất (tài khoản đang kết nối nơi khác)",
-   "attempts": 1
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 2
   },
   "shipping.wi.daily": {
-   "lastAttempt": "2026-10-30T09:03:11+07:00",
+   "lastAttempt": "2026-11-02T09:02:53+07:00",
    "lastSuccess": "2026-10-28T17:38:16+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "Widata bị đăng xuất (tài khoản đang kết nối nơi khác)",
-   "attempts": 1
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 2
   },
   "shipping.wi.weekly": {
    "lastAttempt": "2026-10-28T17:38:17+07:00",
@@ -415,11 +415,11 @@
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "shipping.wi.valuation": {
-   "lastAttempt": "2026-10-30T09:03:11+07:00",
+   "lastAttempt": "2026-11-02T09:02:53+07:00",
    "lastSuccess": "2026-10-28T17:38:17+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "Widata bị đăng xuất (tài khoản đang kết nối nơi khác)",
-   "attempts": 1
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 2
   },
   "shipping.outlook": {
    "lastAttempt": "2026-10-28T21:31:35+07:00",
@@ -464,11 +464,11 @@
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "construction.wi.valuation": {
-   "lastAttempt": "2026-10-30T09:03:11+07:00",
+   "lastAttempt": "2026-11-02T09:02:53+07:00",
    "lastSuccess": "2026-10-28T17:38:17+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "Widata bị đăng xuất (tài khoản đang kết nối nơi khác)",
-   "attempts": 1
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 2
   },
   "construction.disbursement": {
    "lastAttempt": "2026-10-29T13:12:41+07:00",
@@ -505,9 +505,11 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
   "insurance.wi.quarterly": {
-   "lastAttempt": "2026-10-11T15:38:36+07:00",
+   "lastAttempt": "2026-11-02T09:02:52+07:00",
    "lastSuccess": "2026-10-11T15:38:36+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
+   "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026",
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 1
   },
   "insurance.wi.monthly": {
    "lastAttempt": "2026-10-28T17:38:18+07:00",
@@ -520,11 +522,11 @@
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "insurance.wi.valuation": {
-   "lastAttempt": "2026-10-30T09:03:12+07:00",
+   "lastAttempt": "2026-11-02T09:02:53+07:00",
    "lastSuccess": "2026-10-28T17:38:18+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "Widata bị đăng xuất (tài khoản đang kết nối nơi khác)",
-   "attempts": 1
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 2
   },
   "insurance.market": {
    "lastAttempt": "2026-10-29T13:12:41+07:00",
@@ -566,11 +568,11 @@
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ"
   },
   "retail.wi.valuation": {
-   "lastAttempt": "2026-10-30T09:03:12+07:00",
+   "lastAttempt": "2026-11-02T09:02:53+07:00",
    "lastSuccess": "2026-10-28T17:38:18+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "Widata bị đăng xuất (tài khoản đang kết nối nơi khác)",
-   "attempts": 1
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 2
   },
   "retail.market": {
    "lastAttempt": "2026-10-29T13:12:41+07:00",
@@ -607,18 +609,20 @@
    "lastNote": "Q3/2026 từ VNDirect finfo: 11/18 mã điện (NT2, PPC, QTP, HND, BTP, VSH, CHP, SBA, SHP, TV2, GEX); POW, REE, TMP, GEG, HDG, TTA, PC1 chưa công bố"
   },
   "pharma.wi.monthly": {
-   "lastAttempt": "2026-10-30T09:03:12+07:00",
+   "lastAttempt": "2026-11-02T09:02:53+07:00",
    "lastSuccess": "2026-10-12T14:05:24+07:00",
    "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026",
-   "lastError": "Widata bị đăng xuất (tài khoản đang kết nối nơi khác)",
-   "attempts": 2
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 3,
+   "stuck": true
   },
   "pharma.wi.valuation": {
-   "lastAttempt": "2026-10-30T09:03:12+07:00",
+   "lastAttempt": "2026-11-02T09:02:53+07:00",
    "lastSuccess": "2026-10-12T14:05:24+07:00",
    "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026",
-   "lastError": "Widata bị đăng xuất (tài khoản đang kết nối nơi khác)",
-   "attempts": 2
+   "lastError": "WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)",
+   "attempts": 3,
+   "stuck": true
   },
   "pharma.market": {
    "lastAttempt": "2026-10-29T13:12:41+07:00",
@@ -4909,5 +4913,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-01T22:32:10+07:00"
+ "updatedAt": "2026-11-02T09:02:53+07:00"
 }

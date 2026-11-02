@@ -1,43 +1,8 @@
-# Lịch cập nhật — 01/11/2026 22:32
+# Lịch cập nhật — 02/11/2026 09:02
 
-- 🆕 pvn.news: 1 mục mới — Nhật Bản vượt Trung Quốc trở thành quốc gia nhập khẩu LNG lớn nhất thế giới — https://petrotimes.vn/nhat-ban-vuot-trung-quoc-tro-thanh-quoc-gia-nhap-khau-lng-lon-nhat-the-gioi-747367.html
-- ⚠️ watcher fr.vn-seafood: không thấy mục nào trên trang
-- 🆕 news.vasep: 1 mục mới — Xuất khẩu tôm 2 tháng đầu năm 2026: Trung Quốc dẫn dắt, tôm hùm bứt phá - VASEP — https://news.google.com/rss/articles/CBMi1gFBVV95cUxOUXFXdkRBSWQxMnZoWjhyWDZGX0M2VjFsMTNPMFZFN2hXMGk2ZnZxSHBpUzNVWHY2NE1Nb2FVTWNmQkR4M1pQTTEwckMxSXRJdXVSdHBrZ0kwbGlIVmZUSjQ4bHM5TmlVQW5DU0c3alZDLXlGYmFLUnZ5blBLVHR6TGhwS3NScnEtcWhnTFhueG1FdXo4TDltZG1ldU1tU1ZoR2tkQW9DRHpMWjZBVFNUSHlnYjg4eVFfd0RiaVRRZUFER01vSjJlSTJsUV92RnAtWU56d19B0gGoAUFVX3lxTE8xNmdpaVRNX0dKa1VqNWloXzR4dzFwX05Ia0VwWTdFOUFBTmhXZTVkbmJPR2l0dnBlTWFHSXB2dkc2bVM3dVJFaFBpYWwxRk5UZFhYaE55MG4xNHNqZnV2blRaMWFfM3hxd1BlcHhZMmdDejYxR05PMUdGQU92bEx6M3UzVEFCU2xfNFVzTW43QkRHcjZKUklmbFJibU12NkJXX1hyV0lkWg?oc=5
-- 🆕 news.public-investment: 8 mục mới — TP.HCM đặt mục tiêu giải ngân 100% vốn đầu tư công, khen thưởng người làm tốt - Tuổi Trẻ — https://news.google.com/rss/articles/CBMitwFBVV95cUxNbXhZbU9VOW1QQUx5Skt6Vmt6czZZMEFDTHcwaldaeVRZY3RrWDZyS0RlOXZyOWhKYUc5NU5MMHVlQjNPdjdjR3JFdEVhZVdfQ2duR2RWbVp3N0JsbXBPLTZmV0c1eFVlWHktLUIyZFgtYWdiZXVHUEliUFN0OEVqQjJ5THVOd29KWUZodHJhWWU0ZDJ6bGItaGwwZ2NvV1kzOHFYd29UUlhMSThkdnJXenFYUVdHcms?oc=5; Hải Phòng: Xã Trường Tân giải ngân vốn đầu tư công đạt 98% kế hoạch - Thuonghieucongluan.com.vn — https://news.google.com/rss/articles/CBMisgFBVV95cUxNSTRBdk5WMW85a0lFSDlnUTYzLTl1eHM3Sy1xTkpWRHVDRldBaENISEppdVROcG5SRWVaUnppWGtuejZXUVJKZWk2TU5XTUYtc3RqNGg3QXQtNm1WUlRGMFh4cU05UEZvLU1aZUhTWUE4dlltZVAxejZjbkRoeFZHcTc1VUFEUkp2a2hqcFZrQjc5RGRRLUFnRXdFS0NVR1l6U1QyY2wzWGwwVDg5RXdoS1Zn?oc=5; Xã Hòa Xá giải ngân vốn đầu tư công đạt 99,17% - Báo và Phát thanh Truyền hình Hà Nội — https://news.google.com/rss/articles/CBMilAFBVV95cUxPaUhJNlhGdER3Q05zNFB5RWQxY3ZTS2hENnNrd3JVZWtRN2ZVRHZQb0lWaVlrNEMwcEJRdjZ6eUFxTkVSVjBTUVV0XzMtY1NOMm5iWXFWZTlFOGk0N2lGa0VLQ2Q1UFRxZUlPMmNJdzRGOGU4VDVrc0FrMzUxQmFqZFRNNnQ2LXlMTUM4OUJTUS16TXBu?oc=5
-- 🆕 news.retail: 31 mục mới — [Video] Thời sự 24h ngày 1/11/2026: Giảm thuế tiêu thụ đặc biệt đối với xăng, dầu, giảm 2% giá điện bình quân - Báo Nhân Dân điện tử — https://news.google.com/rss/articles/CBMi0gFBVV95cUxQUVVIRGV5ZF9HZ1ktSjdtaEhHZ0FKNW02dWFuSlRCVlRLVFhjcU0yVDNyaVNISlJqU2tFb3czZzZ5Rml0Z3g4UnNhRTJEaTQtM3NBcUlwREtGU195bHhlWmphWkFsWXVuZS1qNE9OMUtEdlJjaE5hTDY3Q3BlTTNEenpDNDNZTzhLZXoyVmcxZUdHanl2QmszNVA0OFBsc3hRYUVmdldvS2JvNWlzZTNlMF9BSFRUNGItb0hZU0RtTEM1MzRCcnNYbEd4NlVNbkRZZnc?oc=5; Thuế tiêu thụ đặc biệt về 0%, giá xăng đồng loạt giảm gần 2 nghìn đồng mỗi lít - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMirwFBVV95cUxPaGhyZzVESks2VWp1cmhsdkdvZjNTMkdYZkE3elR6SGdZbC1JM2dDclNOLXNCNDlhWTctTjY3Z19kVUtjcW5OS1JoMFJNeDh5N1pnYlBrX3ZGRVRDRzhLc2p1VnZhT3Z1QmdLWndrb2FoeEhob0hNekdmdzc4T0VxQU9tcUppZnpDSnQxX2MtZFRMeGVxVUtEOWNmbXltM2g2SXh6SlJnRXBHQVUyLXlR?oc=5; Nghị quyết 45: Xăng các loại được áp dụng thuế tiêu thụ đặc biệt 0% từ 01/11/2026 - hết 31/3/2027 - LuatVietnam — https://news.google.com/rss/articles/CBMi7AFBVV95cUxQS3p6ZC0yTGctNVZDZ2Vvc010YjhJWlk0ZTNjd0w3LTNCTWtobjZpWkNhLUFCY1hYbTlFc0tkRHIxcXMxZ2tHWWxudTlJWGZZUWY5aUR1TTFaWjRrUkN4bW5uaW5RanN6NFplRFBHVkZZZVZnNDlBVVRqdWhqVjAzVVpWRmtBeFI4bThrUXBzR3BGd3g5UzZud1dKMlFSYU1mUU9RS3VHMEZIcHBmbVM5LWc2NGh4NHZmSUtOTjdTSTg5SXVWZEF1RjJqZ0hveVBvdHNUY2FBX05nUTVoblVMdjFKZ1RmTHVQZ2pPeA?oc=5
-- 🆕 news.power-prices: 8 mục mới — Điều chỉnh giá bán lẻ điện bình quân từ 1/11/2026 - Tập đoàn Điện lực Việt Nam (EVN) — https://news.google.com/rss/articles/CBMiqgFBVV95cUxQdjJMWXhaMW9RY2NGNlk2alVvbVpIemtqYWZ5WVVYSGhYeUJHQW5sV05CRmxuZEx1MlY4ek9fTzZFRGRWTUFicHI2cXV0OWplWHFZQ19HWVlycWdDYnFDSFE4OTBETVN6VE56eEFpZGNIRUkyRGpmOTJENjNSR1VmdU5fLXQwYjUwZWk0WFQzWWRlOWFCeEVPa0NaSlJwZ0ZTaklOckRiQjFSQQ?oc=5; Giá bán lẻ điện bình quân giảm 2% từ ngày 1/11/2026 - Vietnam+ (VietnamPlus) — https://news.google.com/rss/articles/CBMilgFBVV95cUxQTTlJSXJZdjZUbmQyYk5DUVV6Y2xOVW0wQTNqNzRabXdRSmlqelNXblo1c0xoNFFLOWQ3RXVsaXJhUUJ3bUtNTU14aG45Wlk5NUh6S2pxZTNOSlZ2YXlwVG4xRi1KbnVFWmJtX3RzMFNvN29IQW1qMFp2ZnB5TjB6Z2ZNRHZVY09QVmdfellOSlcyLUF4QkE?oc=5; EVN giảm 2% giá bán lẻ điện bình quân từ ngày 1/11 - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMiiwFBVV95cUxPVklQZHVwUXlOYjd6bFBGbnlHS3FaWmZuZWJRX1ZUQnk3VU44cF9CYnFYSjcxU3c5OENBTGxCYnRXRzZiUEs3MWJXVTJhVEtfWXYyRXd3T2c2TkZUbmNXYlBrbzJpdTltVm5sUV9KVXlOR1R1ZFR2RlVRRUVfX3EzR3hKZTZCdTNaMjhV?oc=5
-- 🆕 news.pharma: 2 mục mới — Khám sức khỏe cho hơn 500 người dân phường Long Châu - Vietnam.vn — https://news.google.com/rss/articles/CBMigAFBVV95cUxNVUxrYVpDRFlKM0VfbW9wLV9SSWZneVVxTVpxT1hrNlhUWnRhcmVXTl9VMTEtVklnVF85M0hESnlZSmlWMllrTWl3X1JzZHJTLTR2bWMtejROX2w0RE5lNG1EY3dvSml5RE5rYk9tVGxvNnR0MjBvX1hvOC1QTHBGeA?oc=5; Long Châu cùng Boehringer Ingelheim tiên phong đưa tầm soát chuyên sâu tim mạch, thận, chuyển hóa đến gần người đái tháo đường - Kenh14.vn — https://news.google.com/rss/articles/CBMi-AFBVV95cUxQMExON29lX0xKSGE4UldhSU5sc0FmMjdxRjYwMHhaemwxenF5MUc1d0NVb0pxdmRFZEhUTFE2TmlNZ2QtTlZ2bWxOVTFSZVdjV2dDRFIyMU5iaDVaQ1B6aTNkTTJkTlIwdFZOVm9yeHlqU3FVWFBBYWg4TVlHUENDRk01b2dOVGgtMXRaWVZtdEZrX2lkekZXeHhXTU5rWVlMUHVDWG9VaXVVZWdRYzFENDZGSU02WlA1MjJ0TEFZVmZUQ2pBQjZoOWRnNFlSQlQzdlJRMEY3Z2owOVRhQ0wzbUk3dVZfeFRvdGo2M3I4RE8wNEhWYjI5OQ?oc=5
-- ❌ oil.portwatch lỗi 1 ngày: hormuz, bab_el_mandeb
-- → hàng chờ [B] bank.wi.daily: lịch 30/10 07:00
-- → hàng chờ [C] oil.supply-news: lịch 01/11 07:00
-- → hàng chờ [C] oil.price-policy: lịch 01/11 07:00
-- → hàng chờ [C] sugar.domestic: lịch 01/11 07:00
-- → hàng chờ [C] bank.policy: lịch 01/11 07:00
-- → hàng chờ [C] power.tariff-evn: lịch 01/11 07:00
-- → hàng chờ [C] power.policy: watcher báo có công bố mới
-- → hàng chờ [C] realestate.fdi-projects: lịch 01/11 07:00
-- → hàng chờ [C] realestate.policy: lịch 01/11 07:00
-- → hàng chờ [C] textile.policy: lịch 01/11 07:00
-- → hàng chờ [C] port.policy: lịch 01/11 07:00
-- → hàng chờ [C] seafood.trade: watcher báo có công bố mới
-- → hàng chờ [C] construction.disbursement: lịch 01/11 07:00
-- → hàng chờ [C] construction.policy: watcher báo có công bố mới
-- → hàng chờ [C] retail.market: watcher báo có công bố mới
-- → hàng chờ [C] retail.policy: watcher báo có công bố mới
-- → hàng chờ [C] realestate.infrastructure: lịch 01/11 07:00
-- → hàng chờ [C] pharma.market: watcher báo có công bố mới
-- → hàng chờ [C] pharma.policy: watcher báo có công bố mới
-- → hàng chờ [B] realestate.wi.daily: lịch 30/10 07:00
-- → hàng chờ [B] textile.wi.daily: lịch 30/10 07:00
-- → hàng chờ [B] port.wi.valuation: lịch 30/10 07:00
-- → hàng chờ [B] agri.wi.valuation: lịch 30/10 07:00
-- → hàng chờ [B] seafood.wi.valuation: lịch 30/10 07:00
-- → hàng chờ [B] shipping.wi.daily: lịch 30/10 07:00
-- → hàng chờ [B] shipping.wi.valuation: lịch 30/10 07:00
-- → hàng chờ [B] construction.wi.valuation: lịch 30/10 07:00
-- → hàng chờ [B] insurance.wi.quarterly: lịch 01/11 07:00
-- → hàng chờ [B] insurance.wi.valuation: lịch 30/10 07:00
-- → hàng chờ [B] retail.wi.valuation: lịch 30/10 07:00
-- → hàng chờ [B] pharma.wi.monthly: lịch 15/10 07:00
-- → hàng chờ [B] pharma.wi.valuation: lịch 30/10 07:00
+- ❌ pharma.wi.valuation (lần 3): WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)
 - Hàng chờ Claude: 36 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
+
+## Cảnh báo
+
+- ❌ Routine thất bại 3 lần với pharma.wi.valuation: WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)
