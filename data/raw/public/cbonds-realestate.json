@@ -5,7 +5,7 @@
 "definition": "Tổ chức phát hành có lĩnh vực hoạt động \"Bất động sản\" trên HNX; VND",
 "issuer_count": 421,
 "outstanding_bonds": 906,
-"outstanding_value": 444816.6,
+"outstanding_value": 444343.2,
 "issuance": [
 {
 "date": "2020-12-01",
@@ -707,8 +707,8 @@
 "maturity": [
 {
 "date": "2026-11-01",
-"due": 5436.7,
-"interest": 3963.1,
+"due": 4963.3,
+"interest": 3958.8,
 "bond_count": 43,
 "issuers": 4
 },
@@ -873,18 +873,6 @@
 ]
 },
 {
-"name": "Công ty cổ phần đầu tư phát triển bất động sản TNR holdings Việt Nam",
-"symbol": "TNR.BOND.01.2020.01, TNR.BOND.01.2020.02, TNR.BOND.01.2020.0",
-"due": 6344.4,
-"months": [
-"2026-11",
-"2026-12",
-"2027-01",
-"2027-02",
-"2027-12"
-]
-},
-{
 "name": "CTCP Đầu tư và Du lịch Vạn Hương",
 "symbol": "DRGCH2427001, DRGCH2427002, DRGCH2427003, DRGCH2427004, VANH",
 "due": 6286.3,
@@ -902,6 +890,18 @@
 "due": 6000.0,
 "months": [
 "2027-08"
+]
+},
+{
+"name": "Công ty cổ phần đầu tư phát triển bất động sản TNR holdings Việt Nam",
+"symbol": "TNR.BOND.01.2020.01, TNR.BOND.01.2020.02, TNR.BOND.01.2020.0",
+"due": 5871.0,
+"months": [
+"2026-11",
+"2026-12",
+"2027-01",
+"2027-02",
+"2027-12"
 ]
 }
 ]
