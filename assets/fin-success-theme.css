@@ -831,3 +831,4 @@ body,body *:not(code):not(kbd):not(pre),.majortabbtn,.majortabbtn.active,.resear
 :is(h2,.sectionhead h2,h2.sec):not(#fs-x){font-size:20px!important;font-weight:650!important}
 .chart-title:not(#fs-x){font-size:14px!important}
 body,body *{font-variant-numeric:tabular-nums}
+:is(code,kbd,pre,samp,tt,.mono,[class*="mono"]):not(#fs-x){font-family:var(--fs-font)!important}
