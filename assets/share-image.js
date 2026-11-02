@@ -9,11 +9,11 @@
   const scriptSrc=(document.currentScript&&document.currentScript.src)||'';
   let lib=null,logo=null,state=null;
 
-  const css=`.fs-share-btn{position:absolute;top:10px;right:10px;z-index:3;display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border:1px solid ${LINE};border-radius:999px;background:#fff;color:${NAVY};font:600 12px/1.3 Arial,system-ui,sans-serif;cursor:pointer;opacity:.78}
+  const css=`.fs-share-btn{position:absolute;top:10px;right:10px;z-index:3;display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border:1px solid ${LINE};border-radius:999px;background:#fff;color:${NAVY};font:600 12px/1.3 Inter,Arial,system-ui,sans-serif;cursor:pointer;opacity:.78}
 .fs-share-btn:hover,.fs-share-btn:focus-visible{opacity:1;border-color:${NAVY}}
 .fs-share-host{position:relative}
 .fs-share-host>h3:first-of-type,.fs-share-host>.chart-title:first-of-type{padding-right:118px}
-.fs-share-modal{position:fixed;inset:0;z-index:9999;background:rgba(16,22,48,.55);display:flex;align-items:center;justify-content:center;padding:16px;font-family:Arial,system-ui,sans-serif}
+.fs-share-modal{position:fixed;inset:0;z-index:9999;background:rgba(16,22,48,.55);display:flex;align-items:center;justify-content:center;padding:16px;font-family:Inter,Arial,system-ui,sans-serif}
 .fs-share-box{background:#fff;color:${INK};border-radius:14px;width:min(1120px,100%);max-height:calc(100vh - 32px);overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
 .fs-share-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid ${LINE};font-weight:700;color:${NAVY}}
 .fs-share-head button{border:0;background:none;font-size:22px;line-height:1;cursor:pointer;color:${MUTED}}
@@ -21,13 +21,13 @@
 .fs-share-prev{background:#f3f5fa;border-radius:10px;display:flex;align-items:center;justify-content:center;min-height:260px;padding:12px}
 .fs-share-prev img{max-width:100%;max-height:62vh;border-radius:6px;box-shadow:0 4px 18px rgba(0,0,0,.12)}
 .fs-share-ratio{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.fs-share-ratio button{text-align:left;padding:10px 12px;border:1px solid ${LINE};border-radius:10px;background:#fff;cursor:pointer;font:600 14px Arial,system-ui,sans-serif;color:${INK}}
+.fs-share-ratio button{text-align:left;padding:10px 12px;border:1px solid ${LINE};border-radius:10px;background:#fff;cursor:pointer;font:600 14px Inter,Arial,system-ui,sans-serif;color:${INK}}
 .fs-share-ratio button small{display:block;font-weight:400;color:${MUTED};margin-top:3px}
 .fs-share-ratio button[aria-pressed="true"]{border-color:${NAVY};background:#f0f4ff}
 .fs-share-side label{display:block;margin:16px 0 6px;font-size:12px;letter-spacing:.06em;color:${MUTED};font-weight:700}
-.fs-share-side textarea{width:100%;box-sizing:border-box;min-height:150px;padding:10px;border:1px solid ${LINE};border-radius:10px;font:14px/1.5 Arial,system-ui,sans-serif;color:${INK};resize:vertical}
+.fs-share-side textarea{width:100%;box-sizing:border-box;min-height:150px;padding:10px;border:1px solid ${LINE};border-radius:10px;font:14px/1.5 Inter,Arial,system-ui,sans-serif;color:${INK};resize:vertical}
 .fs-share-acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
-.fs-share-acts button{padding:11px;border:1px solid ${LINE};border-radius:10px;background:#fff;font:600 14px Arial,system-ui,sans-serif;color:${INK};cursor:pointer}
+.fs-share-acts button{padding:11px;border:1px solid ${LINE};border-radius:10px;background:#fff;font:600 14px Inter,Arial,system-ui,sans-serif;color:${INK};cursor:pointer}
 .fs-share-acts .primary{grid-column:1/-1;background:${NAVY};border-color:${NAVY};color:#fff}
 .fs-share-acts button:disabled{opacity:.5;cursor:wait}
 .fs-share-tip{margin-top:12px;font-size:12px;color:${MUTED};line-height:1.5}
@@ -141,7 +141,7 @@
   }
   async function compose(shot,ratio,p,c,url){
     const R=RATIOS[ratio],W=R.w,Hh=R.h,cv=document.createElement('canvas');cv.width=W;cv.height=Hh;
-    const ctx=cv.getContext('2d'),pad=Math.round(W*0.04),font='Arial, "Helvetica Neue", sans-serif';
+    const ctx=cv.getContext('2d'),pad=Math.round(W*0.04),font='Inter,Arial, "Helvetica Neue", sans-serif';
     ctx.fillStyle='#ffffff';ctx.fillRect(0,0,W,Hh);
     // Logo ngay trên góc trái của chart, tên mã/ngành canh phải theo mép chart; chart lớn nhất có thể, cả khối căn giữa.
     const m=Math.round(Math.min(W,Hh)*0.025),logoH=Math.round(Math.min(W,Hh)*0.06),gap=Math.round(logoH*0.3),lg=await loadLogo();
