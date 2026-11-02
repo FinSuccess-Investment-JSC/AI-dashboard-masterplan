@@ -45,14 +45,14 @@
    "attempts": 1
   },
   "oil.supply-news": {
-   "lastAttempt": "2026-10-29T13:12:41+07:00",
-   "lastSuccess": "2026-10-29T13:12:41+07:00",
-   "lastNote": "Đã mở bài petrotimes 28/10/2026 (PV GAS–EVNGENCO3 họp 27/10): không có mốc FID/dòng khí mới; Thị Vải tái hóa 9,5 triệu Sm³/ngày là cập nhật công suất đã biết, chưa đủ gate để đổi mốc. Không sửa trang."
+   "lastAttempt": "2026-11-02T13:18:09+07:00",
+   "lastSuccess": "2026-11-02T13:18:09+07:00",
+   "lastNote": "Đã mở 2 bài petrotimes 30/10/2026 (Houthi–Aramco; Nhật vượt TQ nhập LNG): không nêu Dung Quất/Nghi Sơn hay mốc dự án khí VN, không sửa trang"
   },
   "oil.price-policy": {
-   "lastAttempt": "2026-10-28T21:31:36+07:00",
-   "lastSuccess": "2026-10-28T21:31:36+07:00",
-   "lastNote": "không mới: moit.gov.vn điều hành giá tới 27/8/2026; tin watcher không liên quan giá"
+   "lastAttempt": "2026-11-02T13:18:09+07:00",
+   "lastSuccess": "2026-11-02T13:18:09+07:00",
+   "lastNote": "Đã mở moit.gov.vn Chỉ thị 12/CT-BCT 30/10/2026: chỉ về cung ứng/dự trữ dịp Tết, không có văn bản mới về cơ chế giá hay Luật Dầu khí, không sửa trang"
   },
   "oil.bsr-annual": {},
   "oil.company-quarterly": {},
@@ -148,14 +148,18 @@
   "power.wb-energy": {},
   "power.futures": {},
   "power.tariff-evn": {
-   "lastAttempt": "2026-10-28T18:13:36+07:00",
+   "lastAttempt": "2026-11-02T13:18:09+07:00",
    "lastSuccess": "2026-10-28T18:13:36+07:00",
-   "lastNote": "không có QĐ giá bán lẻ mới sau QĐ 599/2025"
+   "lastNote": "không có QĐ giá bán lẻ mới sau QĐ 599/2025",
+   "lastError": "Chưa xác nhận được quyết định giảm giá bán lẻ điện từ 1/11/2026 (chỉ có chỉ đạo, chưa mở được văn bản EVN/Bộ Công Thương; evn.com.vn chặn IP cloud). Không đổi 2.204,07 đ/kWh",
+   "attempts": 1
   },
   "power.policy": {
-   "lastAttempt": "2026-10-30T13:14:47+07:00",
+   "lastAttempt": "2026-11-02T13:18:09+07:00",
    "lastSuccess": "2026-10-30T13:14:47+07:00",
-   "lastNote": "Đã mở cafef.vn (27/10/2026): Phó TT yêu cầu EVN lập phương án giảm giá bán lẻ điện 1/11/2026-31/3/2027, chưa có số văn bản/mức giảm; khung giá khí 2026 (QĐ 1882) đã có trong evidence; tin khung giá chuyển tiếp là bài 2023. Không có số mới, không sửa trang."
+   "lastNote": "Đã mở cafef.vn (27/10/2026): Phó TT yêu cầu EVN lập phương án giảm giá bán lẻ điện 1/11/2026-31/3/2027, chưa có số văn bản/mức giảm; khung giá khí 2026 (QĐ 1882) đã có trong evidence; tin khung giá chuyển tiếp là bài 2023. Không có số mới, không sửa trang.",
+   "lastError": "Tín hiệu 'giảm 2% giá điện từ 1/11' chỉ là link chuyển hướng news.google.com; tìm kiếm chỉ thấy chỉ đạo Phó Thủ tướng 27/10 (xem xét giảm, 1/11/2026–31/3/2027), chưa mở được quyết định/bài gốc xác nhận mức 2%. Cần người xem",
+   "attempts": 1
   },
   "power.capacity": {
    "lastAttempt": "2026-10-12T08:43:43+07:00",
@@ -163,9 +167,9 @@
    "lastNote": "Chưa có số công suất đặt chính thức mới; giữ nguyên."
   },
   "power.hot-topics": {
-   "lastAttempt": "2026-10-28T21:00:21+07:00",
-   "lastSuccess": "2026-10-28T21:00:21+07:00",
-   "lastNote": "NOAA 08/10/2026: >83% El Niño mạnh–rất mạnh tới JFM 2027 (sửa từ 'trên 90%')"
+   "lastAttempt": "2026-11-02T13:18:09+07:00",
+   "lastSuccess": "2026-11-02T13:18:09+07:00",
+   "lastNote": "Tín hiệu watcher (Chỉ thị 12/CT-BCT, cảnh báo sớm RCEP) không liên quan ENSO/LNG/BESS/FIT; không sửa trang"
   },
   "power.ai.cycle": {
    "lastAttempt": "2026-10-28T18:13:36+07:00",
@@ -367,9 +371,11 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "seafood.trade": {
-   "lastAttempt": "2026-10-28T18:13:37+07:00",
+   "lastAttempt": "2026-11-02T13:18:10+07:00",
    "lastSuccess": "2026-10-28T18:13:37+07:00",
-   "lastNote": "không có số mới; VASEP 9T đã có"
+   "lastNote": "không có số mới; VASEP 9T đã có",
+   "lastError": "Báo cáo VASEP Quý III/2026 (cập nhật 30/10/2026) chỉ thấy tiêu đề trên vasep.com.vn, chưa mở được nội dung số liệu",
+   "attempts": 1
   },
   "seafood.hot-topics": {
    "lastAttempt": "2026-10-28T18:13:37+07:00",
@@ -4715,77 +4721,12 @@
    ]
   },
   {
-   "id": "oil.supply-news",
-   "tier": "C",
-   "title": "Cân đối xăng dầu, chuỗi dự án khí",
-   "since": "2026-10-30T22:20:58+07:00",
-   "reasons": [
-    "lịch 01/11 07:00",
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-10-30T22:20:58+07:00",
-     "what": "Houthi tấn công loạt nhà máy lọc dầu và cơ sở của Aramco — https://nangluongquocte.petrotimes.vn/houthi-tan-cong-loat-nha-may-loc-dau-va-co-so-cua-aramco-747309.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-01T22:32:10+07:00",
-     "what": "Nhật Bản vượt Trung Quốc trở thành quốc gia nhập khẩu LNG lớn nhất thế giới — https://petrotimes.vn/nhat-ban-vuot-trung-quoc-tro-thanh-quoc-gia-nhap-khau-lng-lon-nhat-the-gioi-747367.html"
-    }
-   ]
-  },
-  {
-   "id": "oil.price-policy",
-   "tier": "C",
-   "title": "Cơ chế điều hành giá xăng dầu, Luật Dầu khí",
-   "since": "2026-10-30T22:20:58+07:00",
-   "reasons": [
-    "lịch 01/11 07:00",
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-30T22:20:58+07:00",
-     "what": "Bộ Công Thương ban hành Chỉ thị bình ổn thị trường dịp cuối năm 2026 và Tết Nguyên đán Đinh Mùi 2027 — /tin-tuc/bo-cong-thuong-ban-hanh-chi-thi-binh-on-thi-truong-dip-cuoi-nam-2026-va-tet-nguyen-dan-dinh-mui-2027.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-31T21:46:53+07:00",
-     "what": "Thiết lập cơ chế cảnh báo sớm, gia tăng cơ hội tiếp cận thị trường RCEP — /tin-tuc/thi-truong-nuoc-ngoai/thi-truong-chau-a-chau-phi/thiet-lap-co-che-canh-bao-som-mo-rong-co-hoi-tiep-can-thi-truong-rcep.html"
-    }
-   ]
-  },
-  {
    "id": "power.tariff-evn",
    "tier": "C",
    "title": "Giá bán lẻ điện và tài chính EVN",
    "since": "2026-10-30T22:20:58+07:00",
    "reasons": [
     "lịch 01/11 07:00",
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-30T22:20:58+07:00",
-     "what": "Bộ Công Thương ban hành Chỉ thị bình ổn thị trường dịp cuối năm 2026 và Tết Nguyên đán Đinh Mùi 2027 — /tin-tuc/bo-cong-thuong-ban-hanh-chi-thi-binh-on-thi-truong-dip-cuoi-nam-2026-va-tet-nguyen-dan-dinh-mui-2027.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-10-31T21:46:53+07:00",
-     "what": "Thiết lập cơ chế cảnh báo sớm, gia tăng cơ hội tiếp cận thị trường RCEP — /tin-tuc/thi-truong-nuoc-ngoai/thi-truong-chau-a-chau-phi/thiet-lap-co-che-canh-bao-som-mo-rong-co-hoi-tiep-can-thi-truong-rcep.html"
-    }
-   ]
-  },
-  {
-   "id": "power.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: El Niño & thủy văn, giá điện & EVN, chuyển dịch năng lượng",
-   "since": "2026-10-30T22:20:58+07:00",
-   "reasons": [
     "watcher báo có công bố mới"
    ],
    "signals": [
@@ -4913,5 +4854,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-02T09:02:53+07:00"
+ "updatedAt": "2026-11-02T13:18:10+07:00"
 }

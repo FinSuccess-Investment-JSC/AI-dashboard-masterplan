@@ -1,2 +1,6 @@
-Routine Wi 02/11: KHÔNG chạy được. Connector WiMCP chưa xác thực (cần đăng nhập lại Widata trong claude.ai).
-Không có lời gọi Wi nào được thực hiện; 14 mục hàng chờ B bị --fail, số liệu giữ nguyên.
+Routine tài liệu 02/11: xử lý 6/22 mục, không sửa số liệu trang nào.
+Đóng không đổi: oil.supply-news, oil.price-policy, power.hot-topics.
+Cần xem: giá điện giảm 2% từ 1/11/2026 (power.policy, power.tariff-evn) chưa xác nhận được văn bản gốc, mới thấy chỉ đạo Phó Thủ tướng 27/10.
+seafood.trade: báo cáo VASEP Q3/2026 chưa mở được nội dung.
+Còn 16 mục trong hàng chờ.
+Chưa kiểm giao diện bằng trình duyệt.
