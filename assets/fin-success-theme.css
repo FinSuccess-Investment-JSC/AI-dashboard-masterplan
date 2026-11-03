@@ -832,3 +832,29 @@ body,body *:not(code):not(kbd):not(pre),.majortabbtn,.majortabbtn.active,.resear
 .chart-title:not(#fs-x){font-size:14px!important}
 body,body *{font-variant-numeric:tabular-nums}
 :is(code,kbd,pre,samp,tt,.mono,[class*="mono"]):not(#fs-x){font-family:var(--fs-font)!important}
+/* ===== Khớp trang Stock đang chạy (đo trên FRT, 03/11/2026) ===== */
+body{background:#F9FAFD!important;color:#334155}
+:root{--ink:#334155;--muted:#64748B;--line:#E3E8F0;--bg:#F9FAFD}
+/* Card: viền #D6DDE8, bo 12, padding 20/24, bóng hai lớp. */
+.card,.kpi,.grid.kpis,.business-model,.research-topic,.tx-tile,.thesis-signal{border:1px solid #D6DDE8!important;border-radius:12px!important;box-shadow:0 1px 2px rgba(15,23,42,.06),0 4px 14px rgba(15,23,42,.06)!important}
+.card{padding:20px 24px}
+@media (hover:hover) and (pointer:fine){.card:hover{box-shadow:0 1px 2px rgba(15,23,42,.06),0 4px 14px rgba(15,23,42,.06)!important}}
+@media(max-width:600px){.card{padding:16px}}
+/* Tiêu đề mục: nền teal nhạt kiểu dạ quang, #243878. */
+:is(.sectionhead h2,h2.sec,.majorpane h2:not(.card h2):not(.pv-hub h2)):not(#fs-x){display:inline-block;padding:2px 10px!important;border-radius:4px;border:0!important;background:linear-gradient(transparent 12%,rgba(89,197,200,.2) 12%,rgba(89,197,200,.2) 92%,transparent 92%)!important;color:#243878!important;letter-spacing:-.3px}
+:is(.sectionhead h2,h2.sec,.majorpane h2:not(.card h2))::before{display:none!important}
+.majorpane h2:not(.card h2){border-left:0!important;padding-left:10px!important}
+.sectionhead{border-left:0!important;padding-left:0!important}
+/* Tiêu đề card 16px #243878; chữ thường #334155. */
+.chart-title:not(#fs-x),.card>h3:not(#fs-x){font-size:16px!important;color:#243878!important}
+:is(p,li,td):not(#fs-x){color:#334155}
+/* Bảng: chữ 14px, td 7/10, viền #E3E8F0; th 12px/600 #64748B nền trong. */
+td:not(#fs-x){font-size:14px!important;padding:7px 10px;border-bottom:1px solid #E3E8F0}
+th:not(#fs-x){font-size:12px!important;font-weight:600!important;color:#64748B!important;background:transparent!important;padding:8px 10px}
+/* Tab: 13,5px, padding 13/15, bo 10 đủ góc, khoảng cách 8; tab chọn navy có bóng. */
+.majortabs .majortabrow,.majortabs{gap:8px!important}
+.majortabbtn,.majortabbtn.active{font-size:13.5px!important;padding:13px 15px!important;border-radius:10px!important;letter-spacing:-.0675px}
+.majortabbtn.active,.majortabbtn[aria-selected="true"]{box-shadow:0 6px 14px -4px rgba(29,38,120,.45)!important}
+html[data-theme="dark"] :is(.sectionhead h2,h2.sec){color:#FFD45D!important}
+html[data-theme="dark"] :is(p,li,td){color:#F5F5F5}
+html[data-theme="dark"] th{color:#A3A3A3!important}
