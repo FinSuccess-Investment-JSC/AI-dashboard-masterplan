@@ -1,8 +1,4 @@
-# Lịch cập nhật — 03/11/2026 09:02
+# Lịch cập nhật — 03/11/2026 13:12
 
-- ❌ pharma.wi.valuation (lần 4): WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)
-- Hàng chờ Claude: 67 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
-
-## Cảnh báo
-
-- ❌ Routine thất bại 4 lần với pharma.wi.valuation: WiMCP chưa được xác thực trong phiên routine (cần đăng nhập lại connector Widata)
+- ✅ port.policy: Đã mở vanban.chinhphu.vn (trang 1 danh sách, mới nhất 118/2026/VBHN-TT-NHNN ngày 30/10/2026): không có văn bản mới về chủ đề này; chỉ quét trang 1. Không sửa trang.
+- Hàng chờ Claude: 63 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly

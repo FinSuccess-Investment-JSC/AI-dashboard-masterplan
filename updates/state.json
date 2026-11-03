@@ -81,9 +81,9 @@
    "lastNote": "Rà trang chủ moit.gov.vn 06/10/2026: không thấy văn bản mới về hạn ngạch/HFCS/đường; không sửa trang"
   },
   "bank.policy": {
-   "lastAttempt": "2026-10-28T18:13:38+07:00",
-   "lastSuccess": "2026-10-28T18:13:38+07:00",
-   "lastNote": "TT29/2026/TT-NHNN hiệu lực 15/08/2026 (vnba.org.vn; sbv.gov.vn 403)"
+   "lastAttempt": "2026-11-03T13:12:04+07:00",
+   "lastSuccess": "2026-11-03T13:12:04+07:00",
+   "lastNote": "Đã mở vanban.chinhphu.vn (trang 1 danh sách, mới nhất 118/2026/VBHN-TT-NHNN ngày 30/10/2026): không có văn bản mới về chủ đề này; chỉ quét trang 1. Không sửa trang."
   },
   "oil.ai.cycle": {
    "lastAttempt": "2026-10-28T18:13:36+07:00",
@@ -215,9 +215,9 @@
    "lastNote": "Cushman marketbeat mở được, mới nhất Q2/2026; chưa có Q3"
   },
   "realestate.policy": {
-   "lastAttempt": "2026-10-28T21:31:36+07:00",
-   "lastSuccess": "2026-10-28T21:31:36+07:00",
-   "lastNote": "QH thảo luận tổ 22/10/2026 sửa Luật Đất đai, Nhà ở, KDBĐS; chưa biểu quyết"
+   "lastAttempt": "2026-11-03T13:12:04+07:00",
+   "lastSuccess": "2026-11-03T13:12:04+07:00",
+   "lastNote": "Đã mở vanban.chinhphu.vn (trang 1 danh sách, mới nhất 118/2026/VBHN-TT-NHNN ngày 30/10/2026): không có văn bản mới về chủ đề này; chỉ quét trang 1. Không sửa trang."
   },
   "realestate.credit-rates": {
    "lastAttempt": "2026-10-28T18:13:35+07:00",
@@ -275,9 +275,9 @@
    "lastNote": "Fast Retailing FY2026 tồn kho +20,8%, DT +16,6%"
   },
   "textile.policy": {
-   "lastAttempt": "2026-10-28T18:13:37+07:00",
-   "lastSuccess": "2026-10-28T18:13:37+07:00",
-   "lastNote": "AD10 sợi filament gia hạn 16/10/2026–15/10/2031 (QĐ 2652/QĐ-BCT)"
+   "lastAttempt": "2026-11-03T13:12:04+07:00",
+   "lastSuccess": "2026-11-03T13:12:04+07:00",
+   "lastNote": "Đã mở vanban.chinhphu.vn (trang 1 danh sách, mới nhất 118/2026/VBHN-TT-NHNN ngày 30/10/2026): không có văn bản mới về chủ đề này; chỉ quét trang 1. Không sửa trang."
   },
   "textile.hot-topics": {
    "lastAttempt": "2026-10-26T08:59:04+07:00",
@@ -312,9 +312,9 @@
    "lastNote": "PHP 9T/2026: 38,1 triệu tấn (gần +28%), container +30,7% (Vietstock 23/10/2026). Chưa thấy số toàn quốc 9T của Cục Hàng hải; vmrcc.gov.vn không có tin sản lượng mới"
   },
   "port.policy": {
-   "lastAttempt": "2026-10-09T23:21:13+07:00",
-   "lastSuccess": "2026-10-09T23:21:13+07:00",
-   "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
+   "lastAttempt": "2026-11-03T13:12:04+07:00",
+   "lastSuccess": "2026-11-03T13:12:04+07:00",
+   "lastNote": "Đã mở vanban.chinhphu.vn (trang 1 danh sách, mới nhất 118/2026/VBHN-TT-NHNN ngày 30/10/2026): không có văn bản mới về chủ đề này; chỉ quét trang 1. Không sửa trang."
   },
   "port.projects": {
    "lastAttempt": "2026-10-28T21:31:35+07:00",
@@ -4936,17 +4936,6 @@
    "signals": []
   },
   {
-   "id": "bank.policy",
-   "tier": "C",
-   "title": "Bank: mốc pháp lý, bức tranh thế giới",
-   "since": "2026-11-01T13:43:51+07:00",
-   "reasons": [
-    "lịch 01/11 07:00",
-    "lịch 02/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "realestate.fdi-projects",
    "tier": "C",
    "title": "Dự án FDI lớn liên quan BĐS (KCN, nhà ở, văn phòng, nghỉ dưỡng, logistics–data center)",
@@ -4954,36 +4943,6 @@
    "reasons": [
     "lịch 01/11 07:00",
     "lịch 02/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "realestate.policy",
-   "tier": "C",
-   "title": "Luật Đất đai, Nhà ở, KD BĐS, bảng giá đất, tín dụng BĐS, thuế BĐS",
-   "since": "2026-11-01T13:43:51+07:00",
-   "reasons": [
-    "lịch 01/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "textile.policy",
-   "tier": "C",
-   "title": "Lương tối thiểu, BHXH, thuế, EPR, yêu cầu xanh EU, phòng vệ thương mại sợi",
-   "since": "2026-11-01T13:43:51+07:00",
-   "reasons": [
-    "lịch 01/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.policy",
-   "tier": "C",
-   "title": "Khung giá bốc xếp, phí hạ tầng cảng biển, quy hoạch cảng, chủ trương dự án",
-   "since": "2026-11-01T13:43:51+07:00",
-   "reasons": [
-    "lịch 01/11 07:00"
    ],
    "signals": []
   },
@@ -5355,5 +5314,5 @@
    ]
   }
  ],
- "updatedAt": "2026-11-03T09:02:46+07:00"
+ "updatedAt": "2026-11-03T13:12:04+07:00"
 }

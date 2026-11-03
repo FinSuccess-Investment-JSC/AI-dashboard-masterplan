@@ -1,4 +1,4 @@
-Routine Wi 03/11: KHÔNG chạy được, 22 mục Wi đều bị --fail.
-Lý do: connector WiMCP/Widata chưa được xác thực trong phiên routine.
-Không sửa số liệu trang nào.
-Cần: đăng nhập lại connector Widata trong claude.ai (Settings → Connectors).
+Routine 13:00 03/11: xử lý 4/10 mục đầu hàng chờ (bank.policy, realestate.policy, textile.policy, port.policy): không có văn bản mới trên vanban.chinhphu.vn (chỉ quét trang 1).
+Chưa xử lý: sugar.domestic (không tìm thấy giá RS/RE tháng 11 từ nguồn gốc), realestate.fdi-projects và power.evn-reservoirs (nguồn chặn IP cloud, chờ runner).
+Còn 39 mục trong hàng chờ.
+Chưa kiểm giao diện bằng trình duyệt.
