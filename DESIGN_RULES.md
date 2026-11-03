@@ -151,3 +151,5 @@ Load sau `data/*-public-data.js` ở 10 ngành dùng schema chung (chưa áp D�
 ## Chuẩn = trang Stock đang chạy (chốt 03/11/2026, đè các thông số card/màu/tab ở trên)
 
 Đo trên trang Stock public (FRT). Nền `#F9FAFD`; chữ `#334155`, chữ phụ `#64748B`; card viền `#D6DDE8` bo 12px padding 20/24px bóng `0 1px 2px` + `0 4px 14px` rgba(15,23,42,.06); tiêu đề mục Inter 20/650 `#243878` nền dạ quang teal 20% (padding 2/10, bo 4); tiêu đề card 16px `#243878`; bảng td 14px padding 7/10 viền `#E3E8F0`, th 12px/600 `#64748B`; tab 13,5px padding 13/15 bo 10 cách 8, tab chọn navy có bóng. Khi Stock đổi giao diện, đo lại trang Stock rồi cập nhật theo. Đầu trang ngành vẫn là chip NGÀNH + ticker (ngành không có giá, badge, logo công ty).
+
+Bộ thông số này được ghi giống nhau ở cả hai project: tại đây và trong `CLAUDE.md` của Stock (`FinSuccess-dashboard-source`, mục "Bộ giao diện chung Stock + dashboard ngành"). Đổi ở bên nào thì cập nhật bên kia trong cùng đợt.
