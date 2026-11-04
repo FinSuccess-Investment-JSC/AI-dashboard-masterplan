@@ -1,6 +1,14 @@
 /* One project-relative route map for the hub and all sector dashboards. */
 (() => {
   'use strict';
+  // Nhúng trong website tổng (iframe hoặc ?embed=1): CSS ở site-navigation.css bỏ logo trùng, thu gọn đầu trang.
+  let embedded = /[?&]embed=1\b/.test(location.search);
+  try { embedded = embedded || window.self !== window.top; } catch (e) { embedded = true; }
+  if (embedded) {
+    document.documentElement.classList.add('fs-embed');
+    const measure = () => { const t = document.querySelector('.fs-titleband'); if (t) document.documentElement.style.setProperty('--fs-title-h', t.offsetHeight + 'px'); };
+    addEventListener('load', measure); addEventListener('resize', measure); addEventListener('scroll', measure, {passive: true});
+  }
   const script = document.currentScript;
   const root = new URL('../', script.src);
   const version = script.dataset.release;
