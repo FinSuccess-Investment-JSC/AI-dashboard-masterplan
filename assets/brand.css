@@ -991,7 +991,35 @@ html.fs-scrolled .brandbar{display:none}
 html.fs-scrolled .titleband{position:sticky;top:0;z-index:60;box-shadow:0 1px 0 #E3E8F0,0 4px 12px rgba(15,23,42,.06)}
 html.fs-scrolled .titleband .in{padding-top:6px!important;padding-bottom:6px!important}
 html.fs-scrolled .titleband :is(.logo-co,img){max-height:26px}
-html.fs-scrolled nav.tabs{position:sticky;top:52px;z-index:59}
+html.fs-scrolled nav.tabs{position:sticky;top:var(--fs-title-h,52px);z-index:59}
+/* Nhúng trong website tổng (iframe hoặc ?embed=1): bỏ logo/tìm kiếm/thanh giá trùng thanh của site, cuộn chỉ giữ thanh tab */
+html.fs-embed :is(.brandbar .logo,.fs-crumb){display:none!important}
+html.fs-embed.fs-scrolled .brandbar{display:block}
+html.fs-embed .mkt-tape{margin:4px 0 6px}
+html.fs-embed nav.tabs{padding-top:6px}
+html.fs-embed .brandbar .in{min-height:0;padding-top:0!important;padding-bottom:6px!important}
+html.fs-embed .brandbar .stock-search input{height:30px;font-size:13px}
+html.fs-embed .brandbar .stock-search button[type=submit]{width:24px;height:24px;margin:3px}
+html.fs-embed .fs-q{padding-top:4px!important;padding-bottom:4px!important;height:auto!important;min-height:0!important;font-size:12px!important}
+html.fs-embed .titleband{position:sticky;top:0;z-index:60;box-shadow:0 1px 0 #E3E8F0}
+html.fs-embed:not([data-theme=dark]) .titleband{background:#fff!important}
+html.fs-embed[data-theme=dark] .titleband{background:#0A0A0A!important}
+html.fs-embed nav.tabs{position:sticky;top:var(--fs-title-h,40px);z-index:59}
+@media(min-width:701px){
+html.fs-embed .titleband .in{padding-top:7px!important;padding-bottom:7px!important;gap:10px;min-height:0;flex-wrap:nowrap}
+html.fs-embed .titleband :is(.co-logo,.logo-co,img){height:24px;max-height:24px;margin-right:0;padding:2px 3px}
+html.fs-embed .titleband .tick{font-size:14px!important;padding:3px 10px!important;line-height:1.3}
+html.fs-embed .titleband h1{font-size:15px!important;line-height:1.2;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+html.fs-embed .titleband .px,html.fs-embed .titleband .px>*{display:inline-flex;align-items:baseline;gap:6px;padding:0;margin-top:0;margin-bottom:0}
+html.fs-embed .titleband .px .v{font-size:15px!important;line-height:1.2}
+html.fs-embed .titleband .badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px!important;font-size:12px!important;line-height:1.3;white-space:nowrap}
+html.fs-embed .titleband .badge *{font-size:10px!important;line-height:1.3;margin:0!important;display:inline}
+html.fs-embed .titleband .fs-mode button{padding:3px 9px}
+html.fs-embed .titleband .mkt-btn{height:26px;min-width:26px;padding:0 6px;font-size:12px}
+html.fs-embed .tabs button{padding-top:9px!important;padding-bottom:9px!important}
+}
+html.fs-embed section.tab{padding-top:20px}
+html.fs-embed section.tab>h2.sec:first-child{margin-top:0!important}
 html.fs-tape-off .mkt-tape{display:none!important}
 .fs-tape-tg{position:fixed;right:12px;bottom:12px;z-index:70;height:30px;padding:0 12px;border:1px solid #E3E8F0;border-radius:999px;background:#fff;color:#243878;font:600 12px Inter,Arial,sans-serif;box-shadow:0 2px 8px rgba(15,23,42,.08);cursor:pointer}
 /* KPI bấm được → mở chart liên quan */
@@ -1174,3 +1202,17 @@ html:root[data-theme=dark] body :is(input,select,textarea):focus{border-color:#5
 html:root[data-theme=dark] body .analyst-table input{background:#2A2614!important;color:#FFE9A6!important;border-color:#4A4220!important}
 html:root[data-theme=dark] body select option{background:#1F1F1F;color:#F5F5F5}
 .sankeywrap text{font-family:Inter,system-ui,Arial,sans-serif!important}
+/* Thanh tab nổi: khay trắng đổ bóng, tab chia đều, tab đang chọn khối xanh. Dùng chung cổ phiếu (.tabs-inner) và ngành (.majortabs/.major-tabs) */
+@media(min-width:701px){
+nav.tabs:not(.majortabs){background:transparent!important;backdrop-filter:none!important;border:0!important;box-shadow:none!important;padding:6px 20px!important}
+:is(.tabs-inner,.majortabs,.major-tabs){display:flex;align-items:center;gap:4px;padding:6px!important;background:#fff!important;backdrop-filter:none!important;border:0!important;border-radius:16px!important;box-shadow:0 4px 16px rgba(29,38,120,.10),0 1px 3px rgba(29,38,120,.06)!important}
+.tabs-inner{margin:0 auto;box-sizing:border-box}
+:is(.majortabs,.major-tabs){top:8px;margin:8px max(24px,calc((100% - 1392px)/2))!important;box-sizing:border-box;max-width:none}
+main.wrap>.major-tabs{margin:8px 0!important}
+:is(.tabs-inner>button[data-tab],.majortabbtn){flex:1 1 auto!important;justify-content:center;text-align:center;padding:9px 12px!important;border:0!important;border-radius:12px!important;background:transparent!important;color:#5a6682!important;box-shadow:none!important;white-space:nowrap;transition:background .15s,color .15s}
+:is(.tabs-inner>button[data-tab],.majortabbtn):hover{background:#F1F3FB!important;color:#1D2678!important}
+:is(.tabs-inner>button[data-tab].active,.majortabbtn.active,.majortabbtn[aria-selected="true"]){background:#2938A8!important;color:#fff!important;box-shadow:0 4px 12px rgba(41,56,168,.28)!important}
+:is(.tabs-inner>button[data-tab],.majortabbtn)::after,:is(.tabs-inner,.majortabs,.major-tabs) .mo-ink{display:none!important}
+:root[data-theme=dark] :is(.tabs-inner,.majortabs,.major-tabs){background:#161616!important;box-shadow:0 4px 16px rgba(0,0,0,.5)!important}
+:root[data-theme=dark] :is(.tabs-inner>button[data-tab],.majortabbtn):not(.active):hover{background:#2A2A2A!important;color:#fff!important}
+}
