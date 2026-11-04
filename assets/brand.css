@@ -1,0 +1,1176 @@
+/* FinSuccess dashboard visual system. Shared by source pages and inlined for deploy. */
+:root{--navy:#1D2678;--navy2:#1D2678;--green:#59C5C8;--green-d:#59C5C8;--purple:#861C52;--gold:#FFD45D;--blue:#2938A8;--ink:#303540;--muted:#596272;--line:#dce1e9;--bg:#fbfcff;--card:#fff;--pos:#2B8E91;--warn:#8A6400}
+body{font-family:Arial,'Helvetica Neue',system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+.wrap,.brandbar .in,.titleband .in,.tabs-inner{max-width:1440px}
+.brandbar{border-bottom:1px solid var(--line)}
+.brandbar .in{padding:20px 24px;min-height:90px}
+.brandbar img.logo{height:54px}
+.brandbar .doc{display:none}
+.titleband{background:#fff;color:var(--ink);border-bottom:1px solid var(--line)}
+.titleband .in{padding:18px 24px}
+.tick{background:#eef3ff;color:var(--navy);border-radius:10px}
+.titleband h1{color:var(--navy);font-weight:750}
+.titleband .px .l{color:var(--muted);opacity:1}
+.titleband .px .v{color:var(--navy)}
+.badge{background:#59C5C8;color:#1D2678;box-shadow:none;border-radius:9px}
+nav.tabs{background:#fff;border-bottom:1px solid var(--line);box-shadow:none}
+.tabs button{color:#5a6682}
+.tabs button:hover,.tabs button.active{color:var(--navy)}
+.tabs button.active{border-bottom-color:var(--green)}
+.wrap{padding:0 24px 48px}
+section.tab{padding-top:28px}
+h2.sec{font-size:22px;color:var(--navy);margin:8px 0 18px}
+h2.sec::before{background:var(--green)}
+h3.sub{font-size:16px;color:var(--navy)}
+.grid{gap:18px}
+.card,.shotcard{border:1px solid #d9dde4;border-radius:16px;box-shadow:0 1px 3px rgba(20,25,113,.035);padding:22px}
+.shotcard{padding:0}
+.kpi .l{color:var(--muted)}
+.kpi .v{color:var(--navy)}
+th{background:#f0f4ff;color:var(--navy)}
+tr.total td{background:#f5f8ff}
+.flowhead{background:#f0f4ff;border-left-color:var(--navy)}
+.note,.src,.flowlegend,.flowstep .s,.flowhead .p,.kpi .s,.shotfoot,.shotfoot .rt,details.dd>summary .hint{color:var(--muted)}
+.bandctl button.on{color:var(--navy)}
+.flowstep{background:#f8faff;border-color:#cdd8f5}
+.callout.green{background:#edfaf7}
+.btn.green{background:#2938A8}
+.btn:focus-visible,.tabs button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+@media(max-width:600px){.brandbar .in{min-height:72px;padding:14px 18px}.brandbar img.logo{height:42px}.titleband .in{padding:14px 18px}.wrap{padding:0 14px 32px}.card{padding:16px}}
+
+/* Five-color consulting palette shared across all current and future dashboards. */
+.pill.pos{background:#E7F5F5;color:#256F72}.pill.blue{background:#E9EDFF;color:var(--navy)}.pill.purple{background:#F7ECF2;color:var(--purple)}.pill.warn{background:#FFF5D4;color:#795900}
+.callout{border-left-color:var(--gold);background:#FFFAE9}
+table.fintbl thead th.gq{background:var(--blue)}
+.brkctl button.on,.subnav button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* PVS-style analyst entry tables across all stock dashboards. */
+.analyst-grid.analyst-grid{display:block!important;margin:14px 0}
+table.analyst-table{width:100%;min-width:520px;font-size:14px;table-layout:fixed}
+table.analyst-table th:first-child{width:44%}
+table.analyst-table th{background:#F0F3FF;color:#1D2678;font-weight:700;padding:12px 10px;text-transform:none;letter-spacing:normal}
+table.analyst-table td{padding:8px 10px;height:42px;border-bottom:1px solid #DDE2ED;background:#fff;color:var(--ink);font-weight:400}
+table.analyst-table input[type=number]{width:94px!important;max-width:100%;height:26px;padding:2px 8px!important;font:inherit!important;text-align:right;border:1px solid #CFD3E6!important;border-radius:6px!important;background:#FFFBEA!important;color:var(--ink)!important}
+table.analyst-table input:focus{outline:2px solid #1D2678;outline-offset:2px}
+table.analyst-table tr:hover td{background:#FAFBFF}
+
+/* Shared icon notes: hover/focus, click on touch screens, original text in print. */
+.icon-note{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;padding:0;border:0;border-radius:50%;background:#EEF1FB;color:#1D2678;font:700 11px Arial,sans-serif;cursor:help;vertical-align:middle;flex:none}
+.icon-note:focus-visible{outline:2px solid #59C5C8;outline-offset:2px}
+.icon-note-popup{position:fixed;z-index:9999;box-sizing:border-box;max-height:70vh;overflow:auto;padding:12px 14px;border:1px solid #D9DEF4;border-radius:10px;background:#1D2678;color:#fff;font:400 12px/1.6 Arial,sans-serif;box-shadow:0 6px 22px rgba(29,38,120,.2);white-space:normal}
+.icon-note-popup[hidden],.icon-note-original{display:none!important}
+.icon-note-popup a{color:#FFD45D;text-decoration:underline}
+@media print{.icon-note,.icon-note-popup,.chart .axis-mode{display:none!important}.icon-note-original{display:block!important}}
+/* Overview facts and governance */
+.overview-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+.overview-facts .fact{padding:11px 13px;background:#F5F7FC;border:1px solid #E1E5EF;border-radius:9px;min-width:0}
+.overview-facts .l{font-size:11px;text-transform:uppercase;color:#687184;font-weight:700}
+.overview-facts .v{font-size:17px;font-weight:800;color:#1D2678;margin:4px 0;overflow-wrap:anywhere}
+.overview-facts .s{font-size:11px;color:#687184}
+.gov-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:15px}
+.gov-section{margin-top:15px;min-width:0}.gov-section h4{margin:0 0 8px;color:#1D2678}
+#governanceBox table{width:100%}#governanceBox td{vertical-align:top}
+@media(max-width:700px){.overview-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.gov-grid{grid-template-columns:1fr}}
+/* Nút trục "Từ 0 / Vừa dữ liệu" ở góc trên phải mỗi chart (chart-explore.js chừa 30px phía trên vùng vẽ). */
+.chart .axis-mode{position:absolute;top:0;right:0;z-index:2;display:flex;align-items:center;gap:2px;padding:1px 1px 1px 7px;border:1px solid var(--line,#DCE1E9);border-radius:7px;background:rgba(255,255,255,.94);font:11px/1.2 Arial,sans-serif;color:#596272}
+.chart .axis-mode button{border:0;background:transparent;color:#596272;font:600 11px/1.2 Arial,sans-serif;padding:3px 7px;border-radius:5px;cursor:pointer}
+.chart .axis-mode button[aria-pressed="true"]{background:#1D2678;color:#fff}
+.chart .axis-mode button:focus-visible{outline:2px solid #59C5C8;outline-offset:1px}
+/* Dòng nguồn cũ dưới chart/bảng vẫn ẩn: nguồn từng khối nằm trong icon ⓘ dạng "Nguồn: …"
+   (người dùng chốt 16/10/2026). span.src là nhãn/trạng thái lưu, không phải dòng nguồn. */
+div.src,p.src,a.src{display:none!important}
+.info::after{white-space:pre-line!important}
+.icon-note-popup [data-src-line]{margin-top:6px;font-style:italic}
+.icon-note-popup > div > [data-src-line]:first-child{margin-top:0}
+/* --- bội số định giá: một chart, chọn chuỗi bằng chip --- */
+.multiple-series{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0 8px}
+.multiple-series button{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--fin-navy,#1D2678);padding:8px 12px;font:inherit;font-size:13px;font-weight:750;cursor:pointer}
+.multiple-series button.on{border-color:var(--series,#1D2678);background:#F1F4FA}
+.multiple-series button:focus-visible{outline:3px solid #59C5C8;outline-offset:2px}
+.multiple-series .dot{width:10px;height:10px;border-radius:50%;background:var(--series,#1D2678)}
+.multiple-chart-card{margin-top:10px}
+.multiple-chart-card .chart{height:410px}
+.multiple-legend{display:flex;align-items:center;gap:8px 18px;flex-wrap:wrap;margin:8px 0 6px;color:#454b62;font-size:12px}
+.multiple-legend span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.multiple-legend i{display:inline-block;width:20px;border-top:2px solid var(--line-color);vertical-align:middle}
+.multiple-legend .series i{position:relative}
+.multiple-legend .series i::after{content:"";position:absolute;top:-4px;left:8px;width:6px;height:6px;border-radius:50%;background:var(--line-color)}
+.multiple-horizon{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:10px 0 2px}
+.multiple-horizon button{border:1px solid var(--line);border-radius:7px;background:#fff;color:#51556b;padding:5px 10px;font:inherit;font-size:11.5px;font-weight:750;cursor:pointer}
+.multiple-horizon button.on{background:var(--fin-navy,#1D2678);border-color:var(--fin-navy,#1D2678);color:#fff}
+.multiple-horizon button:focus-visible{outline:3px solid #59C5C8;outline-offset:2px}
+.multiple-horizon-note{margin:0 0 8px;color:var(--muted);font-size:11px}
+.multiple-empty{margin-top:10px;min-height:180px;display:grid;place-items:center;border:1px dashed var(--line);border-radius:10px;color:var(--muted);text-align:center;padding:24px}
+@media(max-width:700px){.multiple-chart-card .chart{height:340px}.multiple-series button{font-size:12px;padding:7px 9px}}
+
+/* Icon ⓘ gọn (người dùng chốt 16/10/2026): nút ghi chú 15px, ⓘ cạnh tiêu đề chart 14px. */
+.info{width:14px!important;height:14px!important;font-size:9px!important}
+.chart .axis-mode .axis-values{margin-left:4px;border-left:1px solid var(--line,#DCE1E9);border-radius:0 5px 5px 0}
+.chart .axis-mode .axis-width{min-width:20px;padding:3px 5px;font-size:13px}
+
+/* Lớp giao diện thị trường (market-ui.js): số đều cột, KPI, ticker, ⌘K, mục lục, giao diện tối. */
+.kpi .v,td.num,th.num,.num,table td,.multiple-stats td,.analyst-table input{font-family:Inter,Arial,system-ui,sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1}
+.kpi .v{letter-spacing:-.01em}
+.kpi.mkt-up .v{color:#1F8A5B}.kpi.mkt-dn .v{color:#C8394B}
+.kpi.mkt-up .v::before{content:'▲ ';font-size:.6em;vertical-align:.18em}.kpi.mkt-dn .v::before{content:'▼ ';font-size:.6em;vertical-align:.18em}
+.mkt-chg{display:inline-block;margin-left:8px;padding:2px 7px;border-radius:6px;font-size:12px;font-weight:700;vertical-align:.3em;letter-spacing:0}
+.mkt-chg.up{background:#E3F4EC;color:#1A7A50}.mkt-chg.dn{background:#FBE6E9;color:#B3303F}.mkt-chg.flat{background:#EEF0F6;color:var(--muted)}
+.mkt-sparkwrap{margin-top:6px;line-height:0}.mkt-spark polyline{fill:none;stroke-width:1.6;stroke-linejoin:round}
+.mkt-spark.up polyline{stroke:#1F8A5B}.mkt-spark.dn polyline{stroke:#C8394B}
+.mkt-pct{display:flex;align-items:center;gap:7px;margin-top:6px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.mkt-pct i{display:block;flex:0 0 64px;height:6px;border-radius:3px;background:linear-gradient(90deg,#59C5C8,#E5E7F0 50%,#861C52);position:relative;opacity:.85}
+.mkt-pct i b{position:absolute;top:-3px;width:3px;height:12px;border-radius:2px;background:var(--navy)}
+.mkt-fresh{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.mkt-fresh.ok{background:#2BB673;box-shadow:0 0 0 3px rgba(43,182,115,.18);animation:mktPulse 2.4s ease-in-out infinite}.mkt-fresh.mid{background:#E0A800}.mkt-fresh.old{background:#9AA0C4}
+@keyframes mktPulse{50%{box-shadow:0 0 0 5px rgba(43,182,115,.05)}}
+.mkt-tape{display:flex;max-width:100vw;overflow:hidden;align-items:stretch;background:#0F1550;color:#E4E7F5;font-family:Inter,Arial,sans-serif;font-size:12.5px;font-variant-numeric:tabular-nums;border-bottom:1px solid rgba(255,255,255,.08)}
+.mkt-wl{flex:none;display:flex;align-items:center;padding:0 14px;background:#59C5C8;color:#0F1550;font-weight:800;text-decoration:none;letter-spacing:.02em}
+.mkt-track{flex:1;min-width:0;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 30px,#000 calc(100% - 30px),transparent)}
+.mkt-run{display:inline-flex;white-space:nowrap;animation:mktTape 70s linear infinite}.mkt-tape:hover .mkt-run{animation-play-state:paused}
+@keyframes mktTape{to{transform:translateX(-50%)}}
+.mkt-ti{display:inline-flex;gap:7px;align-items:baseline;padding:7px 14px;color:inherit;text-decoration:none;border-right:1px solid rgba(255,255,255,.07)}
+.mkt-ti:hover{background:rgba(255,255,255,.06)}.mkt-ti.cur{background:rgba(89,197,200,.16)}
+.mkt-ti b{font-weight:800;color:#fff}.mkt-ti em{font-style:normal;font-weight:700}.mkt-ti em.up{color:#4FD69C}.mkt-ti em.dn{color:#FFA3AE}.mkt-ti em.flat{color:#9BA3C7}
+@media (prefers-reduced-motion:reduce){.mkt-run{animation:none}.mkt-tape .mkt-track{overflow-x:auto}.mkt-fresh.ok{animation:none}}
+.mkt-btn{flex:none;background:#fff;border:1px solid var(--line);color:var(--navy);border-radius:9px;height:34px;min-width:34px;padding:0 9px;font:600 13px Inter,Arial,sans-serif;cursor:pointer;margin-left:8px}
+.mkt-btn:hover{background:#EEF1FF}
+:root[data-theme=dark] .mkt-btn{background:#172056;border-color:var(--line);color:#E4E7F5}.mkt-btn:focus-visible{outline:3px solid #59C5C8;outline-offset:2px}
+.mkt-pal{position:fixed;inset:0;z-index:1000;background:rgba(10,14,45,.45);backdrop-filter:blur(3px);display:flex;justify-content:center;align-items:flex-start;padding:12vh 16px 16px}
+.mkt-pal[hidden]{display:none}
+.mkt-pal .box{width:min(640px,100%);background:var(--card,#fff);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 60px rgba(10,14,45,.35);overflow:hidden;font-family:Inter,Arial,sans-serif}
+.mkt-pal .in{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.mkt-pal .in span{font-size:11px;font-weight:800;color:var(--navy);background:#E9EDFF;border-radius:6px;padding:3px 6px}
+.mkt-pal input{flex:1;border:0;outline:0;background:transparent;color:inherit;font:500 16px Inter,Arial,sans-serif}
+.mkt-pal ul{list-style:none;margin:0;padding:6px;max-height:min(52vh,420px);overflow-y:auto}
+.mkt-pal li{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:8px;cursor:pointer;font-size:14px}
+.mkt-pal li.sel,.mkt-pal li:hover{background:#EEF1FF}.mkt-pal li.none{color:var(--muted);cursor:default}
+.mkt-pal li .k{flex:0 0 112px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mkt-pal li .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mkt-pal kbd{font:600 11px Inter,Arial,sans-serif;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:1px 6px;color:var(--muted);background:var(--card,#fff)}
+.mkt-pal .ft{padding:9px 14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
+.mkt-toc{position:fixed;right:14px;top:var(--mkt-toc-top,150px);width:190px;max-height:calc(100vh - 190px);overflow-y:auto;font:12px/1.35 Inter,Arial,sans-serif;z-index:15;padding:8px 0 8px 10px;border-left:2px solid var(--line)}
+.mkt-toc[hidden]{display:none}
+.mkt-toc .h{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.mkt-toc a{display:block;color:var(--muted);text-decoration:none;padding:4px 6px;margin-left:-12px;border-left:2px solid transparent;border-radius:0 6px 6px 0}
+.mkt-toc a.grp{font-weight:700;color:var(--ink)}
+.mkt-toc a:hover{color:var(--navy);background:rgba(41,56,168,.06)}.mkt-toc a.on{color:var(--navy);border-left-color:#59C5C8;font-weight:700;background:rgba(89,197,200,.1)}
+@media (max-width:1779px){.mkt-toc{display:none}}
+section.tab.active{animation:mktFade .2s ease-out}
+@keyframes mktFade{from{opacity:.25;transform:translateY(4px)}to{opacity:1;transform:none}}
+.mkt-flash{animation:mktFlash 1.4s ease-out}
+@keyframes mktFlash{0%{box-shadow:0 0 0 3px rgba(89,197,200,.85)}100%{box-shadow:0 0 0 3px rgba(89,197,200,0)}}
+@media print{.mkt-tape,.mkt-btn,.mkt-toc,.mkt-pal{display:none!important}}
+
+/* Giao diện tối (nút ◐ hoặc phím T; lưu fs_theme_v1). Chỉ đổi màu nền/chữ, giữ màu chuỗi dữ liệu. */
+:root[data-theme=dark]{--bg:#0A0A0A;--card:#161616;--ink:#F5F5F5;--muted:#A3A3A3;--line:#2A2A2A;--grey:#8A8A8A;color-scheme:dark}
+:root[data-theme=dark] body{background:var(--bg);color:var(--ink)}
+:root[data-theme=dark] .brandbar,:root[data-theme=dark] .stock-search{background:#18204A!important}
+:root[data-theme=dark] .brandbar .logo{filter:brightness(0) invert(1);opacity:.92}
+:root[data-theme=dark] .titleband{background:#18204A;border-bottom:1px solid var(--line)}
+:root[data-theme=dark] nav.tabs{background:#18204A}
+:root[data-theme=dark] .card,:root[data-theme=dark] details.dd,:root[data-theme=dark] .fin-subnav button,:root[data-theme=dark] .subnav button{background:var(--card)!important;border-color:var(--line)!important;color:var(--ink)}
+:root[data-theme=dark] .fin-subnav button.on,:root[data-theme=dark] .subnav button.on,:root[data-theme=dark] .subnav button.active{background:#2938A8!important;border-color:#2938A8!important;color:#fff}
+:root[data-theme=dark] :is(h1,h2,h3,.kpi .v,.kpi .l,td a,b):not(.shotcard *){color:#F6F7FF}
+:root[data-theme=dark] .kpi.mkt-up .v{color:#4FD69C}:root[data-theme=dark] .kpi.mkt-dn .v{color:#FF7A8A}
+:root[data-theme=dark] .mkt-chg.up{background:#123B33;color:#4FD69C}:root[data-theme=dark] .mkt-chg.dn{background:#43172A;color:#FF7A8A}
+:root[data-theme=dark] .mkt-spark.up polyline{stroke:#4FD69C}:root[data-theme=dark] .mkt-spark.dn polyline{stroke:#FF7A8A}
+:root[data-theme=dark] .mkt-pct i b{background:#fff}
+:root[data-theme=dark] table td,:root[data-theme=dark] table th{border-color:var(--line)}
+:root[data-theme=dark] table:not(.fintbl) th{background:#1C2553;color:#C9CFEA}
+:root[data-theme=dark] table tr:hover td{background:rgba(89,197,200,.06)}
+:root[data-theme=dark] input,:root[data-theme=dark] select,:root[data-theme=dark] textarea{background:#18204A;color:var(--ink);border-color:var(--line)}
+:root[data-theme=dark] .analyst-table input{background:#3A3410!important;color:#FFE9A6!important}
+:root[data-theme=dark] .stock-search .search-box,:root[data-theme=dark] .stock-search .options,:root[data-theme=dark] .stock-search .option{background:#131A3D!important;border-color:var(--line)!important;color:#F3F5FF}
+:root[data-theme=dark] .stock-search .option:hover,:root[data-theme=dark] .stock-search .option.selected{background:#232D5E!important}
+:root[data-theme=dark] .stock-search input,:root[data-theme=dark] .stock-search label,:root[data-theme=dark] .stock-search .search-icon{color:#F3F5FF!important}
+:root[data-theme=dark] .callout{background:#1C2553!important;color:var(--ink)}
+:root[data-theme=dark] .pill.pos{background:#123B33;color:#4FD69C}:root[data-theme=dark] .pill.neg{background:#43172A;color:#FF7A8A}:root[data-theme=dark] .pill.warn{background:#3A3410;color:#FFD45D}:root[data-theme=dark] .pill.grey,:root[data-theme=dark] .pill.blue{background:#232D5E;color:#C9CFEA}
+:root[data-theme=dark] .mkt-pal li.sel,:root[data-theme=dark] .mkt-pal li:hover{background:#232D5E}
+:root[data-theme=dark] .mkt-pal .in span{background:#232D5E;color:#C9CFEA}
+:root[data-theme=dark] .mkt-toc a:hover,:root[data-theme=dark] .mkt-toc a.on{color:#fff}
+:root[data-theme=dark] .icon-note-pop,:root[data-theme=dark] [role=tooltip]{background:#232D5E;color:var(--ink);border-color:var(--line)}
+:root[data-theme=dark] :is(.brandbar .doc .t,.btn.ghost,.flowhead,.flowhead .n,.flowstep .v,.kpi .v,.score,.shotfoot b,.tabs button,.tick,.titleband .px .v,.titleband h1,.zone .z .v,details.dd>summary,h2.sec,h3.sub,h3,table:not(.fintbl) th,.card .l,.card .t):not(.shotcard *){color:#F3F5FF!important}
+:root[data-theme=dark] .titleband .px .l,:root[data-theme=dark] .kpi .l{color:#A2AACD!important}
+:root[data-theme=dark] .tabs button.active,:root[data-theme=dark] .tabs button:hover{color:#fff!important;border-bottom-color:#59C5C8}
+:root[data-theme=dark] .tick{background:#232D5E!important}
+:root[data-theme=dark] .ctl button,:root[data-theme=dark] .bandctl button,:root[data-theme=dark] .card button:not(.on):not(.active){background:#1C2553;color:#C9CFEA;border-color:var(--line)}
+:root[data-theme=dark] .ctl button.on,:root[data-theme=dark] .bandctl button.on{background:#2938A8!important;color:#fff!important}
+:root[data-theme=dark] .kpi.mkt-up .v{color:#4FD69C!important}:root[data-theme=dark] .kpi.mkt-dn .v{color:#FF7A8A!important}
+:root[data-theme=dark] a{color:#8FB6FF}
+:root[data-theme=dark] .icon-note{color:#A2AACD}
+:root[data-theme=dark] a.mkt-wl{color:#0F1550}:root[data-theme=dark] .mkt-ti{color:#F3F5FF}
+
+/* ===== Visual refresh dashboard (market-ui.js) ===== */
+:root{--fs-r:14px;--fs-shadow:0 1px 2px rgba(16,24,64,.04),0 4px 16px rgba(16,24,64,.05);--fs-shadow-h:0 2px 4px rgba(16,24,64,.06),0 10px 28px rgba(16,24,64,.09)}
+body{font-family:Inter,Arial,system-ui,sans-serif}
+/* Bố cục rộng hơn trên màn hình lớn */
+@media (min-width:1500px){.wrap,.brandbar .in,.titleband .in,.tabs-inner{max-width:1400px}}
+/* Phần đầu gọn: logo + tra cứu một hàng */
+.brandbar .in{padding:10px 20px}
+.brandbar .logo{height:40px;width:auto}
+.brandbar .stock-search{flex:1;max-width:560px;margin:0;padding:0;background:none!important}
+.brandbar .stock-search label{display:none}
+.brandbar .stock-search input{height:40px;font-size:14px}
+.brandbar .stock-search .search-box{border-radius:11px;box-shadow:none}
+.brandbar .stock-search button[type=submit]{width:32px;height:32px;margin:4px;border-radius:8px}
+.titleband .in{padding:10px 20px}
+/* Tab: gạch chân mảnh, chữ đậm */
+nav.tabs{box-shadow:0 1px 0 var(--line)}
+.tabs button{font-weight:600;letter-spacing:-.005em;position:relative}
+/* Card */
+.card{border-radius:var(--fs-r)!important;border:1px solid #E6E9F2;box-shadow:var(--fs-shadow);transition:box-shadow .2s,border-color .2s}
+.card:hover{box-shadow:var(--fs-shadow-h);border-color:#D9DEEC}
+.card .card{box-shadow:none}
+h2.sec{font-size:20px;letter-spacing:-.015em;font-weight:800}
+h3.sub{font-size:14.5px;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-bottom:10px;margin-bottom:10px!important;border-bottom:1px solid #EEF0F6}
+/* Bộ điều khiển: một kiểu segmented, nhỏ, nằm gọn */
+.ctl,.seg-share-ctl,.fin-subnav{background:#F1F3F9;border-radius:9px;padding:2px;gap:2px!important;display:inline-flex!important;width:auto}
+.ctl button,.seg-share-ctl button{background:transparent!important;border:0!important;color:#5B6478!important;font-size:11.5px!important;font-weight:600!important;padding:4px 10px!important;border-radius:7px!important;box-shadow:none!important}
+.ctl button.on,.seg-share-ctl button.on{background:#fff!important;color:var(--navy)!important;box-shadow:0 1px 3px rgba(16,24,64,.14)!important}
+.fin-subnav button{border:0!important;background:transparent!important;color:#5B6478!important;border-radius:7px!important}
+.fin-subnav button.on{background:#fff!important;color:var(--navy)!important;box-shadow:0 1px 3px rgba(16,24,64,.14)}
+.seg-share-ctl{margin:0 10px 8px 0!important;vertical-align:middle}
+.tsctl{display:inline-flex!important;flex-wrap:nowrap!important;align-items:center;gap:6px!important;margin:0 0 8px!important;vertical-align:middle;font-size:11.5px;max-width:100%}
+.tsctl select{width:auto!important;min-width:0;max-width:170px}
+.tsctl .sep{width:8px}
+.tsctl .lb{font-size:10.5px;letter-spacing:.06em;color:var(--muted);font-weight:700}
+.tsctl select{height:28px;border:1px solid #E1E5EF;border-radius:8px;background:#fff;font:600 12px Inter,Arial,sans-serif;color:var(--ink);padding:0 24px 0 8px}
+.chart .axis-mode{border-radius:8px!important}
+/* Bảng */
+table td,table th{font-size:13px}
+table:not(.fintbl) th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;background:#F7F8FC}
+table:not(.fintbl) tbody tr:nth-child(even) td{background:rgba(29,38,120,.018)}
+table tr:hover td{background:rgba(89,197,200,.08)!important}
+/* KPI */
+.kpi{position:relative;overflow:hidden}
+.kpi .l{font-size:10.5px!important;letter-spacing:.07em;font-weight:700}
+.kpi .v{font-size:26px!important;font-weight:800!important}
+.kpi::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(#2938A8,#59C5C8);opacity:0;transition:opacity .2s}
+.kpi:hover::after{opacity:1}
+/* Callout & pill */
+.callout{border-radius:12px!important}
+.pill{border-radius:999px!important;font-weight:700}
+@media (max-width:700px){.brandbar .stock-search{max-width:none;flex-basis:100%}.kpi .v{font-size:22px!important}}
+@media print{.card{box-shadow:none!important}}
+:root[data-theme=dark] .card{border-color:var(--line)}
+:root[data-theme=dark] h3.sub{border-bottom-color:var(--line)}
+:root[data-theme=dark] :is(.ctl,.seg-share-ctl,.fin-subnav){background:#18204A!important}
+:root[data-theme=dark] :is(.ctl,.seg-share-ctl,.fin-subnav) button.on{background:#2938A8!important;color:#fff!important}
+:root[data-theme=dark] :is(.ctl,.seg-share-ctl,.fin-subnav) button{color:#A2AACD!important}
+:root[data-theme=dark] .tsctl select{background:#18204A;color:var(--ink);border-color:var(--line)}
+:root[data-theme=dark] table:not(.fintbl) th{background:#1C2553}
+:root[data-theme=dark] table:not(.fintbl) tbody tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+:root[data-theme=dark] .brandbar .stock-search{background:none!important}
+
+.kpi .v{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px}
+.kpi .v .mkt-chg{margin-left:0;vertical-align:0;font-size:11.5px}
+.kpi.mkt-up .v::before,.kpi.mkt-dn .v::before{margin-right:-4px}
+
+/* ===== Bản tin dữ liệu (data-brief.js) ===== */
+.db{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;margin:4px 0 16px}
+.db .card{margin:0}
+.db-l{position:relative;overflow:hidden;background:linear-gradient(160deg,#fff 55%,#EEF6F7)!important;padding:22px 24px!important}
+.db-l::after{content:'';position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(89,197,200,.18),transparent 70%);pointer-events:none}
+.db-k{display:flex;align-items:center;gap:8px;font:700 10.5px/1 Inter,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#2B8E91}
+.db-dot{width:7px;height:7px;border-radius:50%;background:#2BB673;box-shadow:0 0 0 3px rgba(43,182,115,.18);animation:mktPulse 2.4s ease-in-out infinite}
+.db-tk{font:800 64px/1 'Barlow Condensed',Inter,sans-serif;color:var(--navy);letter-spacing:-.01em;margin:10px 0 8px}
+.db-tk small{font:700 13px Inter,sans-serif;color:var(--muted);letter-spacing:.1em;margin-left:10px;vertical-align:.9em}
+.db-lead{font:600 18.5px/1.5 Inter,Arial,sans-serif;color:#1B2150;letter-spacing:-.012em;margin:0 0 14px;max-width:62ch}
+.db-lead b{font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums}
+.db-lead em{font-style:normal;font-weight:800;font-variant-numeric:tabular-nums}
+.db-lead em.up,.db-s b.up{color:#1A7A50}.db-lead em.dn,.db-s b.dn{color:#B3303F}
+.db-qh{font:700 10.5px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+.db-qs{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:6px}
+.db-qs li{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;color:var(--ink);padding:8px 10px;border-radius:10px;background:rgba(41,56,168,.04);cursor:pointer;transition:background .15s}
+.db-qs li:hover{background:rgba(89,197,200,.14)}
+.db-qs li span{flex:none;width:20px;height:20px;border-radius:50%;background:var(--navy);color:#fff;font:800 11px/20px Inter,sans-serif;text-align:center}
+.db-ask{display:inline-flex;align-items:center;gap:8px;border:1px solid #CFD6EA;background:#fff;color:var(--navy);border-radius:999px;padding:8px 14px;font:700 13px Inter,sans-serif;cursor:pointer;transition:.15s}
+.db-ask:hover{border-color:#59C5C8;box-shadow:0 0 0 4px rgba(89,197,200,.15)}
+.db-ask kbd{font:600 10.5px Inter,sans-serif;background:#EEF1FF;border-radius:5px;padding:2px 5px;color:var(--muted)}
+.db-r{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.db-c{display:flex;flex-direction:column;text-align:left;font:inherit;color:inherit;cursor:pointer;padding:16px 16px 10px!important;border:1px solid #E6E9F2;background:#fff}
+.db-c:hover{transform:translateY(-1px)}
+.db-ch{display:flex;align-items:center;gap:8px;font:700 12.5px Inter,sans-serif;color:var(--ink)}
+.db-n{width:20px;height:20px;border-radius:50%;border:1.5px solid #59C5C8;color:#2B8E91;font:800 11px/17px Inter,sans-serif;text-align:center;flex:none}
+.db-q{margin-left:auto;font-weight:600;font-size:11px;color:var(--muted)}
+.db-v{font:800 40px/1.05 'Barlow Condensed',Inter,sans-serif;color:var(--navy);margin:10px 0 6px;font-variant-numeric:tabular-nums}
+.db-v small{font:600 12px Inter,sans-serif;color:var(--muted);margin-left:6px}
+.db-s{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
+.db-s div{display:flex;flex-direction:column;gap:2px}
+.db-s b{font:700 14px Inter,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)}
+.db-s span{font-size:10.5px;color:var(--muted)}
+.db-mini{width:100%;height:58px;margin-top:auto}
+.db-mini rect{fill:#C9D0EC}.db-mini rect.neg{fill:#F1B9C1}.db-mini rect.last{fill:#59C5C8}
+.db-mini line{stroke:#DCE1EE;stroke-width:1}.db-mini line.med{stroke:#C9D0EC;stroke-dasharray:4 4}
+.db-mini polyline{fill:none;stroke:#2938A8;stroke-width:2;stroke-linejoin:round}.db-mini circle{fill:#59C5C8;stroke:#fff;stroke-width:2}
+.db-l>.note,.db-l>.tip-print{display:none}
+@media (max-width:1100px){.db{grid-template-columns:1fr}}
+@media (max-width:560px){.db-r{grid-template-columns:1fr}.db-tk{font-size:48px}.db-lead{font-size:16px}}
+:root[data-theme=dark] .db-l{background:linear-gradient(160deg,#131A3D 55%,#10284A)!important}
+:root[data-theme=dark] .db-lead{color:#E3E7FA}:root[data-theme=dark] .db-lead b,:root[data-theme=dark] .db-tk,:root[data-theme=dark] .db-v{color:#fff!important}
+:root[data-theme=dark] .db-lead em.up,:root[data-theme=dark] .db-s b.up{color:#4FD69C}:root[data-theme=dark] .db-lead em.dn,:root[data-theme=dark] .db-s b.dn{color:#FF7A8A}
+:root[data-theme=dark] .db-c{background:var(--card)!important}:root[data-theme=dark] .db-qs li{background:rgba(255,255,255,.04)}
+:root[data-theme=dark] .db-ask{background:#1C2553;border-color:var(--line);color:#F3F5FF}
+:root[data-theme=dark] .db-mini rect{fill:#2E3A80}:root[data-theme=dark] .db-mini polyline{stroke:#8997D6}:root[data-theme=dark] .db-mini circle{stroke:#131A3D}
+@media print{.db-ask{display:none}}
+
+/* Dải thẻ đánh số đầu tab (data-brief.js) */
+.tb{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:4px 0 16px}
+.tb .db-c{padding:14px 14px 8px!important;margin:0}
+.tb .db-v{font-size:32px;margin:8px 0 4px}
+.tb-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.tb-s{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;font-size:11px;color:var(--muted);min-height:16px}
+.tb-s b{font:700 12.5px Inter,sans-serif;font-variant-numeric:tabular-nums}.tb-s b.up{color:#1A7A50}.tb-s b.dn{color:#B3303F}
+.tb-ser{flex-basis:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.db-mini.sm{height:38px;margin-top:6px}
+h3 .db-n{margin-right:2px}
+@media (max-width:1100px){.tb{grid-template-columns:repeat(2,minmax(0,1fr))}}
+:root[data-theme=dark] .tb-s b.up{color:#4FD69C}:root[data-theme=dark] .tb-s b.dn{color:#FF7A8A}
+@media print{.tb{display:none}}
+
+/* ===== Nhận diện & màu theo nghĩa (bước 1) ===== */
+:root{--fs-up:#1A7A50;--fs-down:#B3303F;--fs-latest:#59C5C8;--fs-mark:#FFD45D;--fs-grad:linear-gradient(90deg,#1D2678,#2938A8 45%,#59C5C8)}
+:root[data-theme=dark]{--fs-up:#4FD69C;--fs-down:#FF7A8A}
+/* Motif gradient: gạch dưới tab đang chọn, vạch đầu tiêu đề mục, viền trên bản tin */
+.tabs button.active{border-bottom-color:transparent!important}
+.tabs button.active::after{content:'';position:absolute;left:10px;right:10px;bottom:-1px;height:3px;border-radius:3px 3px 0 0;background:var(--fs-grad)}
+h2.sec::before{background:var(--fs-grad)!important;width:5px!important}
+.db-l{border-top:3px solid transparent!important;border-image:var(--fs-grad) 1!important;border-image-slice:1 0 0 0!important}
+/* Nhãn nhỏ thống nhất: chữ hoa, giãn chữ */
+.kpi .l,.db-k,.db-qh,.tsctl .lb,.mkt-toc .h{font-family:Inter,Arial,sans-serif;text-transform:uppercase;letter-spacing:.08em}
+/* Bút dạ cho số tăng/giảm trong bản tin */
+.db-lead em.up{background:linear-gradient(transparent 58%,rgba(43,182,115,.22) 58%);padding:0 2px}
+.db-lead em.dn{background:linear-gradient(transparent 58%,rgba(210,60,80,.2) 58%);padding:0 2px}
+.db-lead b{background:linear-gradient(transparent 62%,rgba(255,212,93,.45) 62%);padding:0 1px}
+:root[data-theme=dark] .db-lead b{background:linear-gradient(transparent 62%,rgba(255,212,93,.22) 62%)}
+/* Kỳ mới nhất trong mini chart: turquoise; số "mốc" vàng */
+.db-mini rect.last{fill:var(--fs-latest)}
+.db-q{color:#2B8E91!important;font-weight:700!important}
+.db-q::before{content:'● ';font-size:8px;vertical-align:1px}
+/* Ticker lớn có vệt gradient */
+.db-tk{background:var(--fs-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.db-tk small{-webkit-text-fill-color:var(--muted)}
+:root[data-theme=dark] .db-tk{background:linear-gradient(90deg,#fff,#59C5C8);-webkit-background-clip:text;background-clip:text}
+
+/* ===== Token hệ thống (bước 2) — xem trang /design/ ===== */
+:root{--sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;--sp-6:32px;--r-btn:8px;--r-card:14px;--r-chip:999px;
+  --ease-out:cubic-bezier(.2,.7,.2,1);--t-fast:150ms;--t-base:220ms}
+/* Trạng thái trống dùng chung */
+.fs-empty,.segment-no-data{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:180px;padding:var(--sp-5);
+  border:1.5px dashed var(--line);border-radius:12px;background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(29,38,120,.025) 10px 20px);color:var(--muted);text-align:center;font-size:12.5px}
+.fs-empty b,.segment-no-data{font-weight:700;color:var(--ink)}
+.segment-no-data::before{content:'∅';font:800 26px 'Barlow Condensed',sans-serif;color:#C9D0EC}
+.fs-empty span{max-width:44ch;line-height:1.45}
+:root[data-theme=dark] .fs-empty,:root[data-theme=dark] .segment-no-data{background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(255,255,255,.03) 10px 20px)}
+/* Chuyển động dùng token */
+.card,.db-c,.ctl button,.db-ask,.mkt-btn{transition-timing-function:var(--ease-out)}
+
+/* ===== Luồng sử dụng (ux-flow.js, bước 3) ===== */
+.fs-mode{display:inline-flex;background:#F1F3F9;border-radius:9px;padding:2px;gap:2px;margin-left:8px}
+.fs-mode button{border:0;background:transparent;color:#5B6478;font:700 12px Inter,sans-serif;padding:6px 11px;border-radius:7px;cursor:pointer}
+.fs-mode button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(16,24,64,.14)}
+:root[data-theme=dark] .fs-mode{background:#18204A}:root[data-theme=dark] .fs-mode button{color:#A2AACD}:root[data-theme=dark] .fs-mode button.on{background:#2938A8;color:#fff}
+/* Khách: chỉ ẩn ô nhập giả định và nút lưu mặc định; giữ nút đổi kiểu chart, trục, số liệu (rule CLAUDE.md) */
+.fs-guest button[id$=SetDefault],.fs-guest button[onclick*="Default"],.fs-guest .fs-analyst-only{display:none!important}
+.fs-guest .analyst-table input,.fs-guest .analyst-table select{pointer-events:none;background:transparent!important;border-color:transparent!important;box-shadow:none!important}
+/* Chấm mới trên tab */
+.fs-new{display:inline-block;width:7px;height:7px;border-radius:50%;background:#FFD45D;box-shadow:0 0 0 3px rgba(255,212,93,.3);margin-left:6px;vertical-align:2px;animation:mktPulse 2.4s ease-in-out infinite}
+/* Breadcrumb + tiến trình đọc (bám cùng thanh tab) */
+nav.tabs{position:sticky}
+.fs-crumb{max-width:1400px;margin:0 auto;padding:0 20px;height:0;overflow:hidden;opacity:0;display:flex;align-items:center;gap:6px;font:600 12px Inter,sans-serif;color:var(--muted);transition:height var(--t-base) var(--ease-out),opacity var(--t-base)}
+.fs-crumb.show{height:30px;opacity:1;border-top:1px solid #EEF0F6}
+.fs-crumb i{font-style:normal;color:#C0C6DA}.fs-crumb .cur{color:var(--navy);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fs-crumb span:first-child{font:800 13px 'Barlow Condensed',sans-serif;letter-spacing:.04em;color:var(--navy)}
+.fs-progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--fs-grad);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
+:root[data-theme=dark] .fs-crumb.show{border-top-color:var(--line)}:root[data-theme=dark] .fs-crumb .cur,:root[data-theme=dark] .fs-crumb span:first-child{color:#F3F5FF}
+/* Nút Tiếp theo cuối tab */
+.fs-next{display:flex;align-items:center;gap:12px;width:100%;margin:28px 0 8px;padding:18px 22px;border:1px solid #E6E9F2;border-radius:var(--r-card);background:linear-gradient(90deg,#fff 60%,#EEF6F7);cursor:pointer;font:inherit;text-align:left;transition:box-shadow var(--t-base) var(--ease-out),transform var(--t-base) var(--ease-out)}
+.fs-next:hover{box-shadow:var(--fs-shadow-h);transform:translateY(-1px)}
+.fs-next span{font:700 10.5px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fs-next b{font:800 24px 'Barlow Condensed',sans-serif;color:var(--navy)}
+.fs-next i{margin-left:auto;font-style:normal;font-size:22px;color:#2B8E91;transition:transform var(--t-base) var(--ease-out)}.fs-next:hover i{transform:translateX(4px)}
+:root[data-theme=dark] .fs-next{background:linear-gradient(90deg,#131A3D 60%,#10284A);border-color:var(--line)}:root[data-theme=dark] .fs-next b{color:#fff}
+@media print{.fs-mode,.fs-crumb,.fs-progress,.fs-next,.fs-fab,.fs-new{display:none!important}}
+
+/* ===== Chuyển động & mobile (bước 4) ===== */
+@view-transition{navigation:auto}
+.titleband .tick{view-transition-name:fs-ticker}.titleband h1{view-transition-name:fs-name}
+.mkt-tape{view-transition-name:fs-tape}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.22s}
+.db-c,.tb-c{transition:transform var(--t-base) var(--ease-out),box-shadow var(--t-base) var(--ease-out)}
+.db-c:active,.tb-c:active,.fs-next:active{transform:scale(.985)}
+.fs-fab{display:none}
+@media (max-width:700px){
+  body{padding-bottom:64px}
+  nav.tabs{position:fixed!important;top:auto!important;bottom:0;left:0;right:0;z-index:40;background:rgba(255,255,255,.96)!important;backdrop-filter:blur(10px);box-shadow:0 -1px 0 var(--line),0 -6px 20px rgba(16,24,64,.08)!important}
+  .tabs-inner{scroll-snap-type:x proximity;padding:0 8px}
+  .tabs button{scroll-snap-align:center;font-size:12.5px;padding:14px 12px!important}
+  .tabs button.active::after{top:-1px;bottom:auto;border-radius:0 0 3px 3px}
+  .fs-crumb,.mkt-toc{display:none!important}
+  .fs-progress{top:-1px;bottom:auto}
+  .fs-fab{display:inline-flex;align-items:center;gap:6px;position:fixed;right:14px;bottom:76px;z-index:41;border:0;border-radius:999px;padding:11px 16px;background:var(--navy);color:#fff;font:700 13px Inter,sans-serif;box-shadow:0 8px 24px rgba(16,24,64,.3)}
+  .titleband .in{gap:10px}.fs-mode{margin-left:0}
+  .db-tk{font-size:44px}.db-v{font-size:34px}
+  .tb{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding-bottom:4px;margin-left:-4px;margin-right:-4px}
+  .tb .db-c{flex:0 0 78%;scroll-snap-align:start}
+  .db-r{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory}.db-r .db-c{flex:0 0 82%;scroll-snap-align:start}
+  .chart{height:300px!important}
+}
+:root[data-theme=dark] nav.tabs{background:rgba(14,20,64,.96)!important}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}@view-transition{navigation:none}}
+
+/* Không cho trang cuộn ngang vì tooltip ẩn/thanh ticker; clip giữ được sticky */
+html,body{overflow-x:clip}
+/* Mobile: mọi khối co theo màn hình, không dựa vào cuộn ngang */
+@media (max-width:1100px){.db{grid-template-columns:minmax(0,1fr)!important}}
+@media (max-width:700px){
+  .wrap,.titleband .in,.brandbar .in{padding-left:14px!important;padding-right:14px!important}
+  .card,.grid>*,.db-l,.db-r,.kpi{min-width:0}
+  .grid{grid-template-columns:minmax(0,1fr)!important}
+  #kpiRow{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .titleband h1{font-size:15px;line-height:1.3;flex-basis:100%;order:2}
+  .titleband .tick{order:1}.titleband .px{order:3;flex-wrap:wrap;gap:10px 16px}
+  .titleband .badge{order:1;margin-left:auto}
+  .titleband .fs-mode,.titleband .mkt-btn{order:4}
+  h3.sub{flex-wrap:wrap}
+  h3.sub .ctl{max-width:100%;overflow-x:auto;scrollbar-width:none;margin-left:0}
+  .tsctl{flex-wrap:wrap!important}
+  .db-l{padding:16px!important}.db-lead{font-size:15.5px}
+  .fin-subnav{max-width:100%;overflow-x:auto;flex-wrap:nowrap!important;scrollbar-width:none}
+  .fin-subnav button{white-space:nowrap}
+  table{display:block;max-width:100%;overflow-x:auto}
+}
+
+/* ===== Công cụ chart (pro-charts.js) ===== */
+.fs-view{display:inline-flex;margin-left:6px;background:#F1F3F9;border:0;border-radius:8px;padding:2px;cursor:pointer;font:600 11.5px Inter,sans-serif}
+.fs-view span{padding:3px 9px;border-radius:6px;color:#5B6478}.fs-view span.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(16,24,64,.14)}
+.fs-tblmode .chart,.fs-tblmode canvas{display:none!important}
+.fs-tbl{max-width:100%;overflow-x:auto;margin-top:8px;border:1px solid #EEF0F6;border-radius:10px}
+.fs-tbl table{border-collapse:collapse;width:max-content;min-width:100%;font-size:12.5px;font-variant-numeric:tabular-nums}
+.fs-tbl th,.fs-tbl td{padding:7px 10px;border-bottom:1px solid #EEF0F6;white-space:nowrap}
+.fs-tbl th:first-child,.fs-tbl td:first-child{position:sticky;left:0;background:var(--card);text-align:left;z-index:1}
+.fs-tbl td:first-child i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px}
+.fs-tbl tr td:last-child,.fs-tbl tr th:last-child{background:rgba(89,197,200,.1);font-weight:700}
+.fs-play{margin-left:6px;width:28px;height:26px;border:0;border-radius:8px;background:#F1F3F9;color:var(--navy);font-size:11px;cursor:pointer}
+.fs-play:hover,.fs-play.on{background:var(--navy);color:#fff}
+.fs-toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:60;display:flex;align-items:center;gap:8px;background:rgba(15,21,80,.95);color:#F3F5FF;padding:10px 16px;border-radius:999px;font:600 13px Inter,sans-serif;box-shadow:0 10px 30px rgba(16,24,64,.3);transition:opacity var(--t-base),transform var(--t-base) var(--ease-out);max-width:90vw}
+.fs-toast.show{opacity:1;transform:translate(-50%,0)}
+.fs-toast b{font:800 18px 'Barlow Condensed',sans-serif;color:#59C5C8}.fs-toast span{color:#98A0C8}
+.fs-toast em{font-style:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:46ch}
+.fs-toast kbd{font:600 10.5px Inter;border:1px solid rgba(255,255,255,.25);border-radius:5px;padding:1px 5px;color:#C9CFEF}
+:root[data-theme=dark] .fs-view,:root[data-theme=dark] .fs-play{background:#18204A;color:#C9CFEA}:root[data-theme=dark] .fs-view span.on{background:#2938A8;color:#fff}
+:root[data-theme=dark] .fs-tbl,:root[data-theme=dark] .fs-tbl th,:root[data-theme=dark] .fs-tbl td{border-color:var(--line)}
+@media print{.fs-view,.fs-play,.fs-toast{display:none!important}}
+@media (max-width:700px){.fs-toast{bottom:84px}}
+
+/* ===== Thang chữ tiết chế (người dùng góp ý 23/10/2026: chữ quá cỡ) =====
+   Một họ chữ Inter; thang 12·13·14·16·20·24·30; tối đa 800 chỉ cho mã cổ phiếu. */
+:root{--fs-num:Inter,Arial,system-ui,sans-serif}
+.db-tk,.db-v,.tb .db-v,.fs-next b,.fs-toast b,.fs-crumb span:first-child,.segment-no-data::before{font-family:var(--fs-num)!important;letter-spacing:-.02em}
+.db-tk{font-size:30px!important;font-weight:800!important;margin:8px 0 6px!important;background:none!important;-webkit-text-fill-color:currentColor!important;color:var(--navy)!important}
+.db-tk small{font-size:11px!important;font-weight:600!important;vertical-align:.4em!important;letter-spacing:.06em}
+:root[data-theme=dark] .db-tk{color:#fff!important}
+.db-lead{font-size:16px!important;font-weight:400!important;line-height:1.65!important;color:var(--ink)!important;letter-spacing:0!important}
+.db-lead b{font-weight:600!important;background:none!important;padding:0!important;color:var(--navy)}
+.db-lead em{font-weight:600!important;background:none!important;padding:0!important}
+:root[data-theme=dark] .db-lead{color:#C9CFEA!important}
+.db-v{font-size:28px!important;font-weight:700!important;margin:8px 0 4px!important}
+.tb .db-v{font-size:22px!important}
+.db-v small{font-size:12px!important;font-weight:500!important}
+.db-ch{font-size:13px!important;font-weight:600!important}
+.db-s b{font-size:13px!important;font-weight:600!important}
+.db-k,.db-qh{font-size:10.5px!important;letter-spacing:.06em!important;font-weight:600!important}
+.db-qs li{font-size:13px!important}
+.kpi .v{font-size:22px!important;font-weight:700!important;letter-spacing:-.015em}
+.kpi .l{font-size:10.5px!important;letter-spacing:.05em!important;font-weight:600!important}
+h2.sec{font-size:18px!important;font-weight:700!important;letter-spacing:-.01em}
+h3.sub{font-size:14px!important;font-weight:600!important}
+.fs-next b{font-size:17px!important;font-weight:700!important}
+.fs-next span{letter-spacing:.06em}
+.fs-toast b{font-size:15px!important;font-weight:700!important}
+.fs-crumb span:first-child{font-size:12px!important;font-weight:700!important;letter-spacing:.02em!important}
+.mkt-ti b{font-weight:700}
+.titleband h1{font-weight:600}
+@media (max-width:700px){.db-tk{font-size:26px!important}.db-v{font-size:24px!important}.db-lead{font-size:15px!important}}
+
+/* ===== Bản tin gọn (góp ý 23/10/2026: rối mắt) — một khung, hai cột, ô chia bằng đường kẻ ===== */
+.db.card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0;padding:0!important;overflow:hidden}
+.db .db-l{background:none!important;border:0!important;box-shadow:none!important;padding:20px 22px!important;border-right:1px solid #EEF0F6!important;border-image:none!important}
+.db .db-l::after{display:none}
+.db .db-dot{animation:none;box-shadow:none}
+.db-lead{margin-bottom:12px!important}
+.db-lead b{color:var(--ink)!important}
+.db-qd{margin:4px 0 14px;font-size:13px}
+.db-qd summary{cursor:pointer;color:var(--muted);font-weight:600;list-style:none}
+.db-qd summary::before{content:'›';display:inline-block;margin-right:6px;transition:transform var(--t-fast)}
+.db-qd[open] summary::before{transform:rotate(90deg)}
+.db-qd .db-qs{list-style:decimal;padding-left:20px;margin:8px 0 0;gap:4px}
+.db-qd .db-qs li{display:list-item;background:none!important;padding:3px 0;color:var(--ink);cursor:pointer}
+.db-qd .db-qs li:hover{color:var(--blue);text-decoration:underline;text-decoration-color:#C9D0EC}
+.db-ask{padding:6px 12px;font-size:12.5px}
+.db .db-r{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.db .db-c{border:0!important;border-radius:0!important;box-shadow:none!important;background:none!important;padding:16px 18px 12px!important;margin:0}
+.db .db-c:nth-child(odd){border-right:1px solid #EEF0F6!important}
+.db .db-c:nth-child(-n+2){border-bottom:1px solid #EEF0F6!important}
+.db .db-c:hover{background:rgba(41,56,168,.025)!important;transform:none}
+.db .db-ch{font-size:12.5px!important;color:var(--muted);font-weight:600!important}
+.db .db-v{margin:6px 0 4px!important}
+.db .db-s{display:flex;flex-wrap:wrap;gap:2px 10px;font-size:12px;margin-bottom:4px}
+.db .db-s span.up{color:var(--fs-up);font-weight:600}.db .db-s span.dn{color:var(--fs-down);font-weight:600}.db .db-s span.mut{color:var(--muted)}
+.db .db-mini{height:40px}
+.db .db-mini rect{fill:#DDE2F2}
+.db .db-mini rect.last{fill:var(--fs-latest)}
+.db{position:relative}.db>.icon-note,.db>.icon-note-wrap{position:absolute;top:14px;right:14px}
+@media (max-width:1100px){.db.card{grid-template-columns:1fr}.db .db-l{border-right:0!important;border-bottom:1px solid #EEF0F6!important}}
+@media (max-width:700px){.db .db-r{display:grid!important;overflow:visible}.db .db-r .db-c{flex:none}}
+:root[data-theme=dark] .db .db-l,:root[data-theme=dark] .db .db-c{border-color:var(--line)!important}
+:root[data-theme=dark] .db .db-mini rect{fill:#26306A}
+.db .db-c{display:flex;flex-direction:column}.db .db-mini{flex:1;min-height:44px;max-height:90px;margin-top:10px}
+
+/* Dải thẻ đầu tab: một khung, ô chia bằng đường kẻ (cùng kiểu bản tin) */
+.tb.card{display:grid!important;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:0!important;padding:0!important;overflow:hidden;position:relative}
+.tb .tb-c{border:0!important;border-radius:0!important;box-shadow:none!important;background:none!important;padding:14px 16px 10px!important;display:flex;flex-direction:column;border-right:1px solid #EEF0F6!important}
+.tb .tb-c:last-of-type{border-right:0!important}
+.tb .tb-c:hover{background:rgba(41,56,168,.025)!important;transform:none}
+.tb .db-ch{display:flex;gap:8px;font-size:12.5px!important;color:var(--muted);font-weight:600!important}
+.tb .tb-p{margin-left:auto;font-weight:500;color:var(--muted)}
+.tb .db-mini.sm rect{fill:#DDE2F2}.tb .db-mini.sm rect.last{fill:var(--fs-latest)}
+.tb .db-mini.sm{flex:1;min-height:30px;max-height:44px}
+.tb-ser{color:var(--muted)}
+.tb>.icon-note{position:absolute;top:10px;right:10px}
+@media (max-width:1100px){.tb.card{grid-template-columns:repeat(2,minmax(0,1fr))}.tb .tb-c:nth-of-type(2){border-right:0!important}.tb .tb-c:nth-of-type(-n+2){border-bottom:1px solid #EEF0F6!important}}
+@media (max-width:700px){.tb.card{display:grid!important;overflow:hidden}.tb .db-c{flex:none}}
+:root[data-theme=dark] .tb .tb-c{border-color:var(--line)!important}:root[data-theme=dark] .tb .db-mini.sm rect{fill:#26306A}
+.db.card{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.db .db-mini{max-height:64px}
+.tb.card>:not(.tb-c),.db.card>:not(.db-l):not(.db-r){position:absolute!important;top:10px;right:12px;z-index:2}
+.tb .tb-c:last-of-type,.db .db-c:nth-child(2){padding-right:36px!important}
+
+/* Bảng trong card: cột tên chuỗi ghim bên trái phải có nền đặc, kể cả hàng xen kẽ và khi rê chuột */
+.fs-tbl td:first-child,.fs-tbl th:first-child{background:var(--card)!important;box-shadow:1px 0 0 #EEF0F6}
+.fs-tbl tbody tr:nth-child(even) td:first-child{background:linear-gradient(rgba(29,38,120,.018),rgba(29,38,120,.018)),var(--card)!important}
+.fs-tbl tbody tr:hover td:first-child{background:linear-gradient(rgba(89,197,200,.08),rgba(89,197,200,.08)),var(--card)!important}
+.fs-tbl th:first-child{z-index:2}
+:root[data-theme=dark] .fs-tbl td:first-child,:root[data-theme=dark] .fs-tbl th:first-child{box-shadow:1px 0 0 var(--line)}
+
+
+/* ===================== Giao diện "terminal" (theme-fx.js) ===================== */
+:root{--fx-ink:#0B1026;--fx-band:#0B1033;--fx-glow:rgba(89,197,200,.12);--fx-mono:'JetBrains Mono',ui-monospace,Menlo,monospace}
+
+/* (6) Nền trang có lưới chấm rất nhạt */
+body{background-color:var(--bg)!important;background-image:radial-gradient(rgba(29,38,120,.075) 1px,transparent 1.2px)!important;background-size:22px 22px!important;background-attachment:fixed}
+:root[data-theme=dark] body{background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1.2px)!important}
+
+/* (2) Giao diện tối tinh chỉnh: nền gần đen ánh xanh, card viền phát sáng nhẹ */
+:root[data-theme=dark]{--bg:#0B1029;--card:#131A3D;--line:rgba(137,151,214,.16);--ink:#F3F5FF;--muted:#98A0C6}
+:root[data-theme=dark] .card{border-color:rgba(137,151,214,.16)!important;box-shadow:0 0 0 1px rgba(255,255,255,.02) inset,0 10px 30px rgba(0,0,0,.35)!important}
+:root[data-theme=dark] .card:hover{border-color:rgba(89,197,200,.32)!important}
+:root[data-theme=dark] .brandbar,:root[data-theme=dark] .stock-search{background:#0B1029!important}
+:root[data-theme=dark] .kpi .v,:root[data-theme=dark] .db-v{color:#FFFFFF!important}
+
+/* (3) Vầng sáng theo chuột trên card */
+@media (hover:hover) and (pointer:fine){
+  .card{position:relative}
+  .card::before{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .25s;
+    background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(89,197,200,.16),transparent 42%);z-index:3}
+  .card:hover::before{opacity:1}
+  :root[data-theme=dark] .card::before{background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(89,197,200,.12),transparent 45%)}
+}
+
+/* (5) Chi tiết nhỏ: nhãn kỳ/ngày monospace, chấm live có sóng, viền khung bản tin chạy chậm */
+.db-k,.db-q,.tb-p,.fs-crumb,.db-s span.mut{font-family:var(--fx-mono)!important;font-size:11px;letter-spacing:0}
+.db-k{font-size:10.5px!important}
+.db .db-dot{position:relative}
+.db .db-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid #2BB673;animation:fxRipple 2.2s ease-out infinite}
+@property --fx-a{syntax:'<angle>';initial-value:0deg;inherits:false}
+.db.card{border:1px solid transparent!important;background:linear-gradient(var(--card),var(--card)) padding-box,conic-gradient(from var(--fx-a),rgba(41,56,168,.18),rgba(89,197,200,.65),rgba(41,56,168,.18) 30%,rgba(41,56,168,.18)) border-box!important;animation:fxSpin 12s linear infinite}
+@keyframes fxSpin{to{--fx-a:360deg}}
+@media (prefers-reduced-motion:reduce){.db.card{animation:none}.fx-st.open i::after,.db .db-dot::after{display:none}}
+
+
+
+:root[data-theme=dark] .chart .axis-mode{background:rgba(14,20,56,.94)!important;border-color:var(--line)!important;color:#A9B1D6}
+:root[data-theme=dark] .chart .axis-mode button{color:#C9CFEA;background:transparent}
+:root[data-theme=dark] .chart .axis-mode button[aria-pressed=true]{background:#2938A8!important;color:#fff!important}
+
+@media (hover:hover) and (pointer:fine){.card:hover{border-color:rgba(89,197,200,.45)!important}}
+
+/* (3) Giao diện tối: chữ sáng hơn; biến --navy dùng làm màu chữ chuyển sang tông sáng,
+   các chỗ dùng navy làm NỀN được ghim lại màu navy thật để chữ trắng trên đó vẫn đọc được. */
+:root[data-theme=dark]{--navy:#F3F5FF;--ink:#F3F5FF;--muted:#A9B1D6;--blue:#8FB0FF}
+:root[data-theme=dark] :is(.fin-subnav button.on,.brkctl button.on,.btn:not(.ghost),.filters button.on,.fs-fab,.fs-play.on,.fs-play:hover,.subnav button.on,.db-qs li span,[style*="background:var(--navy)"],[style*="background: var(--navy)"]){background:#2938A8!important;color:#fff!important}
+:root[data-theme=dark] .btn.ghost{background:transparent!important;color:#F3F5FF!important;border-color:#6171C5!important}
+:root[data-theme=dark] .card :is(p,li,td,span,div,small,label,summary,em,h4,dd,dt):not(.shotcard *){color:inherit}
+:root[data-theme=dark] .card{color:var(--ink)}
+:root[data-theme=dark] :is(.note,.kpi .s,.db-s span.mut,.tb-s span,.db-q,.tb-p){color:var(--muted)!important}
+:root[data-theme=dark] .kpi .s.pos,:root[data-theme=dark] .s.pos{color:#5FE0B0!important}:root[data-theme=dark] .s.neg{color:#FF8F9C!important}
+:root[data-theme=dark] table:not(.fintbl) td,:root[data-theme=dark] table:not(.fintbl) th{color:var(--ink)}
+:root[data-theme=dark] .mkt-pct i b{background:#fff}
+
+/* (5) Chi tiết nổi bật hơn: viền bản tin sáng hơn, vệt sáng quét qua ô KPI khi tải */
+.db.card{border-width:1.5px!important;background:linear-gradient(var(--card),var(--card)) padding-box,conic-gradient(from var(--fx-a),rgba(41,56,168,.25),#59C5C8,rgba(41,56,168,.25) 28%,rgba(41,56,168,.25)) border-box!important}
+.kpi{overflow:hidden}
+.kpi::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 35%,rgba(89,197,200,.22) 50%,transparent 65%);transform:translateX(-120%);animation:fxSweep 1.6s .4s ease-out 1 forwards}
+#kpiRow .kpi:nth-child(2)::before{animation-delay:.5s}#kpiRow .kpi:nth-child(3)::before{animation-delay:.6s}#kpiRow .kpi:nth-child(4)::before{animation-delay:.7s}#kpiRow .kpi:nth-child(5)::before{animation-delay:.8s}#kpiRow .kpi:nth-child(6)::before{animation-delay:.9s}
+@keyframes fxSweep{to{transform:translateX(120%)}}
+.db .db-dot::after{inset:-5px;border-width:2px}
+:root[data-theme=dark] .db-v,:root[data-theme=dark] .kpi .v{text-shadow:0 0 18px rgba(89,197,200,.25)}
+@media (prefers-reduced-motion:reduce){.kpi::before{display:none}}
+
+/* Bảng chụp ảnh (shotcard) luôn là ảnh sáng như bản gửi khách: trả bộ màu sáng trong phạm vi bảng */
+:root[data-theme=dark] .shotcard{--navy:#1D2678;--ink:#303540;--muted:#596272;--blue:#2938A8;--card:#fff;--line:#E5E7F0;color:#303540}
+:where(:root[data-theme=dark] .shotcard tbody) :where(td,span,b,i,em,small){color:#303540}
+:where(:root[data-theme=dark] .shotcard .shotfoot) :where(span,div,b){color:#596272}
+/* Hàng tiêu đề cột của bảng chụp ảnh luôn chữ trắng trên nền navy/blue (một số mã tô `#bs th` navy làm chìm chữ) */
+table.fintbl thead th{color:#fff!important}
+/* Giao diện tối: tiêu đề/khối số trong tab riêng của mã (vd #bs) không được giữ màu navy */
+:root[data-theme=dark] #bs :is(h2.sec,h3.sec,h3.sub,details.dd>summary,.kpi .v,.kpi .l,.note,.kpi .s):not(.shotcard *){color:#F6F7FF!important}
+:root[data-theme=dark] #bs :is(.note,.kpi .s,.kpi .l):not(.shotcard *){color:#A9B1D6!important}
+:root[data-theme=dark] #bs .callout{background:#1C2553!important}
+
+:root[data-theme=dark] .fx-lbg{background:rgba(255,255,255,.045)!important;border-color:var(--line)!important}
+:root[data-theme=dark] .fx-ink{color:var(--ink)!important}
+:root[data-theme=dark] button.fx-lbg.on,:root[data-theme=dark] button.fx-lbg.active,:root[data-theme=dark] button.fx-lbg[aria-pressed=true]{background:#2938A8!important;color:#fff!important}
+:root[data-theme=dark] .db-ask kbd,:root[data-theme=dark] .mkt-pal kbd{background:#232D5E;color:#C9CFEA;border-color:var(--line)}
+:root[data-theme=dark] .backlog td,:root[data-theme=dark] td.fx-lbg{color:var(--ink)}
+
+/* ===== Chuỗi giá trị KQKD (value-chain.js) ===== */
+.vc{margin:0 0 16px;overflow:hidden}
+.vc-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.vc-head h3.sub{flex:1;margin:0!important;border:0!important;padding:0!important}
+.vc-per{font:500 11.5px var(--fx-mono,monospace);color:var(--muted);margin-left:6px}
+.vc-mode{display:inline-flex;background:#F1F3F9;border-radius:9px;padding:2px;gap:2px}
+.vc-mode button{border:0;background:transparent;color:#5B6478;font:600 12px Inter,sans-serif;padding:5px 11px;border-radius:7px;cursor:pointer}
+.vc-mode button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(16,24,64,.14)}
+.vc-chart{margin:6px -8px 0}
+.vc-svg{display:block;width:100%;height:auto;overflow:visible}
+.vc-base{stroke:#E1E5EF;stroke-dasharray:3 5}
+.vc-f1{stop-color:#3D4AA8}.vc-f2{stop-color:#1D2678}
+.vc-r1{stop-color:rgba(41,56,168,.16)}.vc-r2{stop-color:rgba(89,197,200,.22)}
+.vc-front{rx:2}
+.vc-top{fill:#6F7CC9}.vc-side{fill:#141B5C}
+.vc-bar.last .vc-top{fill:#A6ECEE}.vc-bar.last .vc-side{fill:#1E8589}
+.vc-shadow{fill:rgba(16,24,64,.10)}
+.vc-ring{fill:none;stroke:#59C5C8;stroke-width:2;opacity:.85}
+.vc-rib{fill:url(#vcRib)}
+.vc-flow{fill:none;stroke:#59C5C8;stroke-width:1.6;stroke-dasharray:2 7;stroke-linecap:round;opacity:.75}
+.vc-fl{font:500 12px Inter,sans-serif;fill:#5B6478}
+.vc-val{font:700 22px Inter,sans-serif;fill:var(--navy);letter-spacing:-.02em}
+.vc-bar.last .vc-val{fill:#1E8589}
+.vc-val.neg{fill:#B3303F}
+.vc-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:6px;padding-top:12px;border-top:1px solid #EEF0F6}
+.vc-sh{display:flex;align-items:center;gap:8px;font:600 13px Inter,sans-serif;color:var(--ink)}
+.vc-sh span{width:20px;height:20px;border-radius:50%;border:1.5px solid #C9D0EC;color:var(--muted);font:700 11px/17px Inter,sans-serif;text-align:center;flex:none}
+.vc-step.last .vc-sh span{background:#59C5C8;border-color:#59C5C8;color:#fff}
+.vc-sv{font:700 20px Inter,sans-serif;color:var(--navy);margin:6px 0 2px;font-variant-numeric:tabular-nums}
+.vc-sv small{font:500 11.5px Inter,sans-serif;color:var(--muted);margin-left:5px}
+.vc-sm{font-size:12px;color:var(--muted);margin-top:2px}.vc-sm b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.vc-sm b.up{color:var(--fs-up)}.vc-sm b.dn{color:var(--fs-down)}
+/* Chuyển động */
+.vc-bar{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(.02);opacity:0}
+.vc-rib,.vc-fl{opacity:0}
+.vc-flow{opacity:0;stroke-dashoffset:0}
+.vc-in .vc-bar{animation:vcGrow .9s cubic-bezier(.2,.8,.2,1) var(--d) forwards}
+.vc-in .vc-rib{animation:vcFade .8s ease-out var(--d) forwards}
+.vc-in .vc-fl{animation:vcFade .6s ease-out calc(var(--d) + .5s) forwards}
+.vc-in .vc-flow{animation:vcFade .6s ease-out var(--d) forwards,vcFlow 1.6s linear infinite}
+.vc-in .vc-ring{animation:vcPulse 2.6s ease-in-out 1.2s infinite}
+@keyframes vcGrow{to{transform:scaleY(1);opacity:1}}
+@keyframes vcFade{to{opacity:1}}
+@keyframes vcFlow{to{stroke-dashoffset:-18}}
+@keyframes vcPulse{50%{opacity:.25;transform:scale(1.04)}}
+.vc-ring{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:reduce){.vc-bar,.vc-rib,.vc-fl,.vc-flow{animation:none!important;opacity:1!important;transform:none!important}}
+@media (max-width:800px){.vc-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.vc-fl{font-size:10px}}
+@media print{.vc-mode{display:none}.vc-bar,.vc-rib,.vc-fl,.vc-flow{opacity:1!important;transform:none!important}}
+/* Tối */
+:root[data-theme=dark] .vc-mode{background:#18204A}:root[data-theme=dark] .vc-mode button{color:#A9B1D6}:root[data-theme=dark] .vc-mode button.on{background:#2938A8;color:#fff}
+:root[data-theme=dark] .vc-base{stroke:rgba(137,151,214,.16)}
+:root[data-theme=dark] .vc-f1{stop-color:#4A57B8}:root[data-theme=dark] .vc-f2{stop-color:#232C7A}
+:root[data-theme=dark] .vc-top{fill:#7E8AD6}:root[data-theme=dark] .vc-side{fill:#222222}
+:root[data-theme=dark] .vc-shadow{fill:rgba(0,0,0,.45)}
+:root[data-theme=dark] .vc-fl{fill:#A9B1D6}:root[data-theme=dark] .vc-val{fill:#FFFFFF}:root[data-theme=dark] .vc-bar.last .vc-val{fill:#7FE0E2}
+:root[data-theme=dark] .vc-steps{border-top-color:var(--line)}:root[data-theme=dark] .vc-sv{color:#FFFFFF}
+.vc-fl .vc-fd{font-weight:700;font-size:13px;fill:var(--ink)}
+:root[data-theme=dark] .vc-fl .vc-fd{fill:#F3F5FF}
+
+/* Waterfall chuỗi giá trị */
+.vc-head .vc-zoom{margin-left:auto}
+.vc-link{stroke:#C9D0EC;stroke-width:1.2;opacity:0}
+.vc-flow{stroke-dasharray:2 9}
+.vc-bar.dn .vc-top{fill:#C2578E}.vc-bar.dn .vc-side{fill:#5E1239}
+.vc-bar.up .vc-top{fill:#C6F1F2}.vc-bar.up .vc-side{fill:#3AA6A9}
+.vc-val{font-size:18px}
+.vc-val.dn{fill:#861C52}.vc-val.up{fill:#2B8E91}
+.vc-xl{font:500 11.5px Inter,sans-serif;fill:#5B6478}
+.vc-in .vc-link{animation:vcFade .5s ease-out var(--d) forwards}
+:root[data-theme=dark] .vc-link{stroke:rgba(137,151,214,.16)}
+:root[data-theme=dark] .vc-val.dn{fill:#F08DBE}:root[data-theme=dark] .vc-val.up{fill:#7FE0E2}
+:root[data-theme=dark] .vc-xl{fill:#A9B1D6}
+
+.vc-yr{display:inline-flex;align-items:center;gap:6px;font:600 10.5px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.vc-yr select{height:28px;border:1px solid #E1E5EF;border-radius:8px;background:#fff;font:600 12px Inter,sans-serif;color:var(--ink);padding:0 22px 0 8px;text-transform:none}
+:root[data-theme=dark] .vc-yr select{background:#18204A;color:var(--ink);border-color:var(--line)}
+#backlogFlow .vc-steps,#cashFlowWf .vc-steps{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+
+/* ===================== Lớp chuyển động (motion.js) — chỉ hình thức ===================== */
+/* 4 · Thanh tiến trình tải trang */
+.mo-load{position:fixed;left:0;top:0;height:2px;width:100%;z-index:2000;background:var(--fs-grad);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
+.mo-load.run{transition:transform 1.6s cubic-bezier(.1,.7,.2,1);transform:scaleX(.82)}
+.mo-load.done{transition:transform .25s ease-out,opacity .4s .25s;transform:scaleX(1);opacity:0}
+/* 1 · Tương tác nhỏ: nhún khi bấm, gợn sóng, đổi trạng thái mượt */
+.mo :is(button,.btn,.mkt-ti,.db-c,.tb-c,.fs-next){transition:transform .12s var(--ease-out),background-color .2s,color .2s,box-shadow .2s,border-color .2s}
+.mo :is(button,.btn):active:not(:disabled){transform:scale(.96)}
+.mo-rel{position:relative}
+.mo-ripple{position:absolute;border-radius:50%;pointer-events:none;background:currentColor;opacity:.16;transform:scale(0);animation:moRipple .55s ease-out forwards}
+:is(button,.btn,.mkt-ti,.db-c,.tb-c,.fs-next){overflow:hidden}
+.ctl,.seg-share-ctl,.fin-subnav,.fs-mode,.vc-mode,.fs-view{overflow:visible}
+@keyframes moRipple{to{transform:scale(1);opacity:0}}
+/* 2 · Thanh gạch chân trượt giữa các tab */
+#tabbar{position:relative}
+.mo-ink{position:absolute;left:0;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--fs-grad);transition:transform .35s cubic-bezier(.3,.8,.2,1),width .35s cubic-bezier(.3,.8,.2,1);pointer-events:none}
+.mo-ink-on .tabs button.active::after{opacity:0}
+.mo .tabs button:hover{color:var(--navy)}
+@media (max-width:700px){.mo-ink{top:0;bottom:auto;border-radius:0 0 3px 3px}}
+/* 3 · Chuyển tab trượt theo hướng; sub-tab mờ dần */
+.mo section.tab.active{animation:none}
+.mo section.tab.mo-from-r{animation:moInR .32s var(--ease-out)}
+.mo section.tab.mo-from-l{animation:moInL .32s var(--ease-out)}
+.mo .fin-pane.mo-fade{animation:moFade .25s ease-out}
+@keyframes moInR{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@keyframes moInL{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+@keyframes moFade{from{opacity:0}to{opacity:1}}
+/* 5 · Card hiện khi cuộn tới */
+.mo .mo-pre{opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out)}
+.mo .mo-pre.mo-in{opacity:1;transform:none}
+/* 5 · Parallax nền lưới */
+.mo body{background-position:0 calc(var(--mo-par,0px) * -1)!important;background-attachment:fixed}
+/* 6 · Điểm nhấn: bản tin hiện theo lớp; %D nháy một lần; huy hiệu quan điểm có vệt sáng */
+.mo .db.mo-hero .db-l>*{animation:moUp .55s var(--ease-out) both}
+.mo .db.mo-hero .db-l>*:nth-child(2){animation-delay:.06s}.mo .db.mo-hero .db-l>*:nth-child(3){animation-delay:.12s}.mo .db.mo-hero .db-l>*:nth-child(4){animation-delay:.18s}.mo .db.mo-hero .db-l>*:nth-child(5){animation-delay:.24s}
+.mo .db.mo-hero .db-c{animation:moUp .55s var(--ease-out) both}
+.mo .db.mo-hero .db-c:nth-child(1){animation-delay:.15s}.mo .db.mo-hero .db-c:nth-child(2){animation-delay:.22s}.mo .db.mo-hero .db-c:nth-child(3){animation-delay:.29s}.mo .db.mo-hero .db-c:nth-child(4){animation-delay:.36s}
+@keyframes moUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.mo-flash1{animation:moFlash 1.2s ease-out .6s 1}
+@keyframes moFlash{0%{box-shadow:0 0 0 0 rgba(43,182,115,.55)}100%{box-shadow:0 0 0 10px rgba(43,182,115,0)}}
+.mo #viewBadge{position:relative;overflow:hidden}
+.mo #viewBadge::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:moShine 1.4s ease-out 1s 1 forwards}
+@keyframes moShine{to{transform:translateX(120%)}}
+/* 7 · Nghiêng 3D theo chuột */
+.mo-tilt{transition:transform .18s ease-out!important;transform-style:preserve-3d;will-change:transform}
+@media print{.mo-load,.mo-ink,.mo-ripple{display:none!important}.mo .mo-pre{opacity:1!important;transform:none!important}}
+
+/* Giao diện tối theo cấu trúc tương phản BlockPinned: nền than chì trung tính, 3 bậc chữ rõ */
+:root[data-theme=dark]{--bg:#0B1029;--card:#131A3D;--line:rgba(137,151,214,.16);--ink:#F3F5FF;--muted:#A2AACD;--navy:#F3F5FF;--blue:#8FB0FF}
+:root[data-theme=dark] .card{box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 8px 24px rgba(0,0,0,.35)!important}
+:root[data-theme=dark] :is(.kpi .s,.note,.db-s span.mut,.tb-s span,.vc-sm,.vc-per,.db-q,.tb-p,.fs-crumb){color:#A9B1D6!important}
+:root[data-theme=dark] :is(h2.sec,h3.sub,.kpi .v,.db-v,.vc-sv,.db-lead b):not(.shotcard *){color:#FFFFFF!important}
+:root[data-theme=dark] .db-lead{color:#DCE0F5!important}
+:root[data-theme=dark] .tabs button{color:#A9B1D6!important}:root[data-theme=dark] .tabs button.active,:root[data-theme=dark] .tabs button:hover{color:#FFFFFF!important}
+:root[data-theme=dark] .db-v,:root[data-theme=dark] .kpi .v{text-shadow:none}
+
+:root[data-theme=dark] nav.tabs{background:rgba(11,16,38,.88)!important;border-bottom:1px solid rgba(255,255,255,.06)}
+:root[data-theme=dark] :is(.db .db-mini rect,.tb .db-mini.sm rect,.db-mini rect){fill:rgba(255,255,255,.16)!important}
+:root[data-theme=dark] :is(.db .db-mini rect.last,.tb .db-mini.sm rect.last,.db-mini rect.last){fill:#59C5C8!important}
+:root[data-theme=dark] .db-mini polyline{stroke:#C9CFEA!important}:root[data-theme=dark] .db-mini line.med{stroke:rgba(255,255,255,.2)!important}
+:root[data-theme=dark] .mkt-tape{background:#080C22;border-bottom-color:rgba(255,255,255,.06)}
+.vc-xl.sm{font-size:10.5px}
+.brk3d{margin-top:10px}
+/* Giao diện tối kiểu terminal (thử 23/10/2026): nền đen trung tính, card tách lớp bằng viền mảnh, navy chỉ cho trạng thái chọn  — phần nền tối đã gỡ, thay bằng Navy đêm (người dùng chọn 23/10/2026) */
+/* Hình chìm thương hiệu theo con trỏ (theme-fx.js › brandReveal): chỉ hiện trên nền trang, không đè card/chart */
+.fs-reveal{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .35s ease}
+.fs-reveal.on{opacity:1}
+.fs-rv-g{position:absolute;left:var(--rx,-999px);top:var(--ry,-999px);transform:translate(-50%,-50%) rotate(-12deg)}
+.fs-rv-t{display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.3}
+.fs-rv-logo{display:block;height:32px;overflow:hidden}.fs-rv-t img{display:block;height:46px;width:auto;filter:grayscale(.2)}
+.fs-reveal:not(.alt) .fs-rv-t span,.fs-reveal.alt .fs-rv-logo{display:none}
+.fs-reveal.alt .fs-rv-t span{font-size:15px}
+.fs-rv-t span{font:700 12px/1 Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#1D2678;white-space:nowrap}
+.fs-rv-ring{position:fixed;left:var(--rx,-99px);top:var(--ry,-99px);width:36px;height:36px;margin:-18px 0 0 -18px;border:1.5px solid rgba(89,197,200,.75);border-radius:50%;pointer-events:none;z-index:50;opacity:0;transform:scale(.6);transition:opacity .25s,transform .25s}
+.fs-rv-ring.on{opacity:1;transform:scale(1)}
+:root[data-theme=dark] .fs-rv-t{opacity:.34}:root[data-theme=dark] .fs-rv-t img{filter:brightness(0) invert(1)}:root[data-theme=dark] .fs-rv-t span{color:#E8EAED}
+@media print{.fs-reveal,.fs-rv-ring{display:none!important}}
+@media (prefers-reduced-motion:reduce),(hover:none){.fs-reveal,.fs-rv-ring{display:none!important}}
+/* Nền sáng: gần trắng, chỉ vài ánh xanh/tím rất nhạt ở góc (người dùng chỉnh 24/10/2026: trước đó quá xanh tím) */
+:root:not([data-theme=dark]) body{background-color:#F9FAFD!important;background-image:
+  radial-gradient(28vw 22vw at 4% 0%,rgba(98,116,240,.07),transparent 70%),
+  radial-gradient(24vw 20vw at 98% 14%,rgba(150,115,240,.06),transparent 70%),
+  radial-gradient(26vw 22vw at 90% 96%,rgba(89,197,200,.05),transparent 70%)!important;
+  background-size:auto!important;background-attachment:fixed!important}
+:root:not([data-theme=dark]) :is(.brandbar,.stock-search,.titleband){background:transparent!important;border-color:rgba(41,56,168,.08)!important}
+:root:not([data-theme=dark]) nav.tabs{background:rgba(249,250,253,.82)!important;backdrop-filter:blur(12px);border-bottom:1px solid rgba(41,56,168,.08)}
+.titleband .co-logo{height:32px;width:auto;max-width:84px;object-fit:contain;margin-right:10px;padding:3px 5px;background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(29,38,120,.12);vertical-align:middle;flex:none}
+@media(max-width:600px){.titleband .co-logo{height:34px;max-width:90px}}
+.titleband .in>h1#coName{flex:1 1 0!important;min-width:0!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* ===== Học developer.x.com (23/10/2026) ===== */
+/* (c) Cả hai chế độ: nhãn mục kiểu terminal, watchlist mờ hai mép, viền mảnh không bóng */
+h2.sec{font:600 12px/1.4 Inter,Arial,sans-serif!important;letter-spacing:.12em!important;text-transform:uppercase;color:var(--muted)!important;padding-left:0!important}
+h2.sec::before{content:none!important;position:static!important;display:inline!important;width:auto!important;height:auto!important;background:none!important;border:0!important;margin:0!important}
+h2.sec::after{content:none}
+:root[data-theme=dark] h2.sec:not(.shotcard *){color:var(--muted)!important}
+.mkt-track{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+.card,.db-l,.db-c,.kpi{box-shadow:none!important}
+:root:not([data-theme=dark]) .card{border:1px solid rgba(29,38,120,.1)!important}
+/* (a) Nền tối kiểu X: đen sâu, gần đơn sắc, turquoise là màu nhấn duy nhất, nút chọn dạng viên trắng  — phần nền tối đã gỡ, thay bằng Navy đêm (người dùng chọn 23/10/2026) */
+/* Vệt đèn chiếu chéo phía sau khối tóm tắt Tổng quan (chỉ nền tối) */
+#overview{position:relative;isolation:isolate}
+:root[data-theme=dark] #overview::before{content:"";position:absolute;z-index:-1;pointer-events:none;top:-160px;left:40%;width:600px;height:1100px;transform:rotate(28deg);transform-origin:top center;
+  background:linear-gradient(180deg,rgba(255,255,255,.30),rgba(255,255,255,.10) 45%,transparent 80%);filter:blur(40px);border-radius:50%}
+@media print{#overview::before{display:none!important}}
+/* ===== Quy tắc app-screen rút từ taste-skill (23/10/2026) ===== */
+/* Số dùng chữ số đều cột (tabular) để cột số không nhảy */
+:is(td,th,.kpi,.db-v,.db-c,.tb-c,.px,.mkt-tape,.fs-tbl,.analyst-table){font-variant-numeric:tabular-nums}
+/* Header bảng: chữ thường cỡ 12, xám, không dải nền, một đường kẻ dưới; bỏ sọc zebra (bảng chụp ảnh .fintbl giữ nguyên) */
+table:not(.fintbl) th{background:transparent!important;color:var(--muted)!important;font:500 12px/1.4 Inter,system-ui,sans-serif!important;text-transform:none!important;letter-spacing:0!important;border-bottom:1px solid var(--line)!important}
+table:not(.fintbl) tbody tr:nth-child(even) td{background:transparent!important}
+table .fs-num{text-align:right!important}
+
+/* Rà thiết kế 23/10/2026: dòng phụ KPI cùng font sans, màu xám (ý 3); ticker chữ sans, tương phản đủ trên nền navy (ý 9) */
+.kpi .s,.kpi .s.pos,.kpi .s.neg{font-family:inherit!important;font-size:12px!important;color:var(--muted)!important;letter-spacing:0}
+.mkt-ti span{color:#D3D8EE;font-size:12.5px}.mkt-ti em{font-size:12px}
+.db-v small{margin-left:4px}
+
+/* ===== Navy đêm (người dùng chọn 23/10/2026) — bộ nền tối DUY NHẤT; các bản thử đen/than chì đã gỡ =====
+   Nền xanh đen cùng họ màu FinSuccess, card sáng hơn một bậc, viền xanh mờ; chữ 3 bậc; turquoise là màu nhấn. */
+:root[data-theme=dark]{--bg:#0A0A0A!important;--card:#161616!important;--line:#2A2A2A!important;--ink:#F3F5FF!important;--muted:#A3A3A3!important;--navy:#F3F5FF;--blue:#8FB0FF;color-scheme:dark}
+:root[data-theme=dark] body{background-color:#0A0A0A!important;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1.2px)!important;color:#F3F5FF}
+:root[data-theme=dark] :is(.brandbar,.stock-search,.titleband){background:#0A0A0A!important;border-color:#1F1F1F!important}
+:root[data-theme=dark] .mkt-tape{background:#080C1F!important;border-bottom:1px solid #1F1F1F!important}
+:root[data-theme=dark] nav.tabs{background:rgba(11,16,38,.9)!important;backdrop-filter:blur(12px);border-bottom:1px solid #1F1F1F!important}
+:root[data-theme=dark] .tabs button{color:#A9B1D6!important}:root[data-theme=dark] .tabs button.active,:root[data-theme=dark] .tabs button:hover{color:#FFFFFF!important}
+:root[data-theme=dark] :is(.card,details.dd,.db-l,.db-c,.fs-next,.callout){background:#161616!important;border-color:#2A2A2A!important}
+:root[data-theme=dark] .card{box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 10px 28px rgba(3,6,20,.45)!important}
+:root[data-theme=dark] .card:hover{border-color:rgba(89,197,200,.4)!important}
+:root[data-theme=dark] .db.card{background:linear-gradient(#161616,#161616) padding-box,conic-gradient(from var(--fx-a),rgba(41,56,168,.35),#59C5C8,rgba(41,56,168,.35) 28%,rgba(41,56,168,.35)) border-box!important}
+:root[data-theme=dark] :is(input,select,textarea,.tsctl select,.ctl,.seg-share-ctl,.fin-subnav,.fs-mode,.fs-view,.fs-play,.db-ask,.tick,.icon-note-pop,[role=tooltip],.chart .axis-mode,.vc-mode){background:#18204A!important;border-color:#2A3360!important;color:#F3F5FF!important}
+:root[data-theme=dark] :is(.ctl,.bandctl,.card) button:not(.on):not(.active):not([aria-pressed=true]){background:transparent!important;color:#B4BBDD!important;border-color:#2A3360!important}
+:root[data-theme=dark] :is(.ctl,.bandctl,.seg-share-ctl,.fin-subnav,.subnav,.fs-mode,.vc-mode,.chart .axis-mode) :is(button.on,button.active,button[aria-pressed=true]),:root[data-theme=dark] .fs-view span.on{background:#2938A8!important;border-color:#2938A8!important;color:#fff!important}
+:root[data-theme=dark] .tabs button.active{border-bottom-color:#59C5C8!important}
+:root[data-theme=dark] table:not(.fintbl) th{color:#A3A3A3!important;border-color:#2A2A2A!important}
+:root[data-theme=dark] table:not(.fintbl) td{border-color:#1F2750!important}
+:root[data-theme=dark] :is(h2.sec,h3.sub,.kpi .v,.db-v,.vc-sv,.db-lead b):not(.shotcard *){color:#FFFFFF!important}
+:root[data-theme=dark] :is(.kpi .s,.note,.db-s span.mut,.tb-s span,.vc-sm,.vc-per,.db-q,.tb-p,.fs-crumb){color:#A9B1D6!important}
+:root[data-theme=dark] .db-lead{color:#DCE0F5!important}
+:root[data-theme=dark] .db-mini rect{fill:#2A3366!important}:root[data-theme=dark] .db-mini rect.last{fill:#59C5C8!important}
+:root[data-theme=dark] .db-mini polyline{stroke:#C9CFEF!important}
+:root[data-theme=dark] .analyst-table input{background:#2B2A17!important;color:#FFE9A6!important}
+:root[data-theme=dark] .vc-bar.dn .vc-top{fill:#D77AAA}:root[data-theme=dark] .vc-bar.dn .vc-side{fill:#7A1E4E}
+:root[data-theme=dark] .vc-val.dn{fill:#F0A0C8}
+
+/* Áp design-rules FISC Market v3.2 (26/10/2026): chỉ phần hợp với palette/Inter/Đen đã chốt. */
+html,body{overflow-x:clip}
+a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #59C5C8;outline-offset:2px}
+td.num,th.num,.num{font-variant-numeric:tabular-nums}
+/* Nút Company news trên thanh ticker: vàng ấm FinSuccess, phân biệt với Watchlist (turquoise). */
+.mkt-wl.mkt-news{background:#FFD45D;color:#0F1550}
+
+/* ===== Hệ thống box đồng đều (người dùng chốt 28/10/2026, theo ảnh mẫu) =====
+   Một họ chữ Inter; nền trang nhạt để card trắng nổi; card bo 20px, bóng mềm, padding và khoảng cách đều 24px.
+   Chỉ đổi hình thức — không ẩn/khóa nút chart, bộ chọn kỳ hay ô nhập. */
+:root{--fx-mono:Inter,Arial,system-ui,sans-serif;--fs-gap:24px;--fs-pad:24px;--fs-radius:20px}
+html body,html body :is(button,select,input,textarea,table){font-family:Inter,Arial,system-ui,sans-serif}
+:root:not([data-theme=dark]){--bg:#F4F6FB}
+:root:not([data-theme=dark]) body{background:#F4F6FB}
+.grid{gap:var(--fs-gap)!important}
+section.tab>.card,section.tab>.grid,section.tab>details.dd,section.tab>div>.card{margin-bottom:var(--fs-gap)}
+.card{border-radius:var(--fs-radius)!important;padding:var(--fs-pad)!important}
+:root:not([data-theme=dark]) .card:not(.card .card){background:#fff;border:1px solid rgba(29,38,120,.06)!important;box-shadow:0 1px 2px rgba(16,24,64,.04),0 8px 24px rgba(16,24,64,.06)!important}
+:root:not([data-theme=dark]) .card:not(.card .card):hover{box-shadow:0 1px 2px rgba(16,24,64,.05),0 12px 32px rgba(16,24,64,.09)!important}
+.card .card{border-radius:14px!important;padding:16px!important;box-shadow:none!important}
+:root[data-theme=dark] .card:not(.card .card){border:1px solid #2A2A2A!important}
+/* Tiêu đề card: một hàng, chữ 17px đậm vừa; nút điều khiển canh phải */
+h3.sub{font:600 17px/1.35 Inter,Arial,sans-serif!important;letter-spacing:-.01em;margin:0 0 16px!important;min-height:28px}
+h2.sec{margin:8px 0 16px!important}
+/* Ô KPI thành box nhỏ đều nhau */
+.kpi{border-radius:16px}
+.kpi .v{letter-spacing:-.02em}
+/* Bộ chọn kỳ / select gọn, bo đều như mẫu */
+.card select,.tsctl select{height:36px;border-radius:10px;padding:0 32px 0 12px;border:1px solid var(--line)}
+@media(max-width:600px){:root{--fs-gap:16px;--fs-pad:16px;--fs-radius:16px}h3.sub{font-size:15px!important}}
+@media print{.card{box-shadow:none!important}}
+/* Box nổi rõ hơn (người dùng chốt 28/10/2026): bóng hai lớp sâu hơn, nền trang tối hơn một bậc, hover nâng bóng (không dùng transform để popup/tooltip fixed không lệch) */
+:root:not([data-theme=dark]){--bg:#EDF0F7}
+:root:not([data-theme=dark]) body{background:#EDF0F7}
+:root:not([data-theme=dark]) .card:not(.card .card),:root:not([data-theme=dark]) .kpi{background:#fff;border:1px solid rgba(255,255,255,.9)!important;box-shadow:0 1px 2px rgba(16,24,64,.06),0 6px 16px rgba(16,24,64,.07),0 22px 48px -12px rgba(16,24,64,.16)!important;transition:box-shadow .25s cubic-bezier(.2,.8,.2,1)}
+:root:not([data-theme=dark]) .card:not(.card .card):hover,:root:not([data-theme=dark]) .kpi:hover{box-shadow:0 2px 4px rgba(16,24,64,.07),0 10px 24px rgba(16,24,64,.09),0 32px 64px -16px rgba(29,38,120,.24)!important}
+:root:not([data-theme=dark]) .card .card{background:#F7F8FC;border:1px solid #E7EAF3!important}
+:root[data-theme=dark] .card:not(.card .card),:root[data-theme=dark] .kpi{box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 18px 40px -14px rgba(0,0,0,.6)!important}
+@media(prefers-reduced-motion:reduce){.card,.kpi{transition:none!important}}
+@media print{.card,.kpi{box-shadow:none!important}}
+/* Giao diện tối = nền đen (người dùng chốt 28/10/2026, thay Navy đêm); tiêu đề vàng ấm #FFD45D theo palette FinSuccess */
+:root[data-theme=dark] .mkt-tape{background:#000!important;border-bottom-color:#1F1F1F!important}
+:root[data-theme=dark] nav.tabs{background:#0A0A0A!important;border-color:#1F1F1F!important}
+html:root[data-theme=dark] body:not(#fs-x1):not(#fs-x2) :is(#coName,.titleband h1,h2.sec,h3.sub,.card>h3,.card h3.sub,.fsa-drawer h3,.fs-share-head span,.multiple-card h3):not(.shotcard *){color:#FFD45D!important}
+:root[data-theme=dark] .fs-mega h4{color:#FFD45D}
+:root[data-theme=dark] .stock-search :is(input,form,.box,div){background-color:#161616!important;border-color:#2A2A2A!important}
+/* ===== Tinh chỉnh theo mẫu Blockpinned (người dùng chốt 29/10/2026, thay khối "Box nổi rõ hơn" 28/10) =====
+   Nền xám rất nhạt + card trắng, bóng mềm, bo nhỏ hơn; ba cấp chữ: khu vực → tên chart → kỳ/đơn vị/nguồn;
+   navy tiêu đề, mực tối nội dung, xám metadata, teal tương tác; số thẳng cột. */
+:root:not([data-theme=dark]){--bg:#F6F7FA;--fs-radius:10px;--fs-r:10px;--muted:#5A6375}
+:root:not([data-theme=dark]) .card:not(.card .card),:root:not([data-theme=dark]) .kpi{border:1px solid #E4E7EE!important;box-shadow:0 1px 2px rgba(16,24,64,.04)!important;border-radius:10px!important}
+:root:not([data-theme=dark]) .card:not(.card .card):hover,:root:not([data-theme=dark]) .kpi:hover{box-shadow:0 1px 2px rgba(16,24,64,.05),0 4px 14px rgba(16,24,64,.06)!important;border-color:#D5DAE5!important}
+:root:not([data-theme=dark]) .card:is(:focus-within,.is-active,.on):not(.card .card){border-color:#59C5C8!important}
+:root:not([data-theme=dark]) .card .card{background:#FAFBFC;border:1px solid #ECEEF3!important;border-radius:8px!important}
+.kpi::after{display:none}
+/* Cấp 1 tên khu vực · cấp 2 tên chart · cấp 3 kỳ/đơn vị/nguồn */
+h3.sub{font:600 17px/1.35 Inter,Arial,sans-serif!important;color:var(--navy)}
+:root:not([data-theme=dark]) h3.sub{border-bottom:0!important;padding-bottom:0!important}
+.card p,.card li,.callout{font-size:14.5px}
+:is(.note,.src,.source,.unit,.muted,.sub-note,.chart-note,.multiple-horizon-note,.vc-per,.vc-sm,figcaption,.card small,.card .s,.overview-facts .s,.overview-facts .l,.mkt-pct,.tsctl .lb){font-size:12.5px!important;color:var(--muted)}
+.multiple-legend,.chart-legend,.legend{font-size:12.5px!important;color:#454B5C}
+table td{font-size:14px}table:not(.fintbl) th{font-size:12px}
+table td,table th,.kpi .v,.vc-val,.vc-sv{font-variant-numeric:tabular-nums}
+/* Card KPI: chỉ tiêu + kỳ → giá trị → biến động → chart nhỏ, cùng vị trí giữa các card */
+.kpi{display:flex;flex-direction:column;gap:4px}
+.kpi .l{font-size:12px!important;letter-spacing:.04em;color:var(--muted)!important;order:0}
+.kpi .v{font-size:28px!important;line-height:1.15;color:var(--navy);order:1}
+.kpi :is(.d,.chg,.mkt-chg,.mkt-pct){order:2}.kpi :is(.mkt-spark,svg,canvas){order:3;margin-top:auto}
+@media(max-width:700px){.kpi .v{font-size:24px!important}}
+/* Tương tác = teal */
+:root:not([data-theme=dark]) :is(.ctl,.seg-share-ctl,.fin-subnav,.vc-mode) button.on{color:#1D2678!important;box-shadow:inset 0 -2px 0 #59C5C8,0 1px 2px rgba(16,24,64,.10)!important}
+:root:not([data-theme=dark]) a:not(.btn):not(.mkt-wl){color:#1E7F83}
+:focus-visible{outline:2px solid #59C5C8;outline-offset:2px}
+/* Badge trạng thái dự án: màu cố định, tách khỏi màu tăng/giảm tài chính */
+.st-badge{display:inline-block;padding:2px 8px;border-radius:999px;font:600 12px/1.5 Inter,Arial,sans-serif;white-space:nowrap}
+.st-badge.signed{background:#E3E6F6;color:#1D2678}
+.st-badge.pipeline{background:#E1F4F4;color:#1E6F72}
+.st-badge.loa{background:#FFF3D1;color:#7A5A00}
+.st-badge.cancel{background:#EEF0F4;color:#5A6375;text-decoration:line-through}
+/* Waterfall 2D phẳng: navy tổng, teal kết quả cuối, màu nhạt khoản cộng/trừ */
+.vc-flat .vc-bar.total .vc-front{fill:#1D2678}
+.vc-flat .vc-bar.last .vc-front{fill:#59C5C8}
+.vc-flat .vc-bar.up .vc-front{fill:#B3BDE8}
+.vc-flat .vc-bar.dn .vc-front{fill:#E6C3D3}
+.vc-flat .vc-front{rx:2}
+.vc-flat .vc-link{stroke:#AEB5C4;stroke-width:1;stroke-dasharray:3 3}
+.vc-flat .vc-base{stroke:#C9CFDA;stroke-dasharray:none}
+.vc-flat .vc-val{font:700 16px Inter,Arial,sans-serif;fill:#303540}
+.vc-flat .vc-val.total{fill:#1D2678}.vc-flat .vc-bar.last .vc-val{fill:#1E7F83}.vc-flat .vc-val.dn{fill:#861C52}
+.vc-flat .vc-xl{font:500 13px Inter,Arial,sans-serif;fill:#454B5C}.vc-flat .vc-xl.sm{font-size:12px}
+:root[data-theme=dark] .vc-flat .vc-bar.total .vc-front{fill:#4354B7}
+:root[data-theme=dark] .vc-flat .vc-bar.up .vc-front{fill:#3A4A8C}
+:root[data-theme=dark] .vc-flat .vc-bar.dn .vc-front{fill:#6B2A4A}
+:root[data-theme=dark] .vc-flat :is(.vc-val,.vc-xl){fill:#E5E5E5}
+/* Mở tất cả / Thu gọn */
+.fs-xall{margin-left:auto;border:1px solid #DCE1E9;background:#fff;color:#1E6F72;font:600 12px Inter,Arial,sans-serif;padding:4px 10px;border-radius:7px;cursor:pointer}
+.fs-xall:hover{border-color:#59C5C8}
+:root[data-theme=dark] .fs-xall{background:#161616;border-color:#2A2A2A;color:#59C5C8}
+@media print{.fs-xall{display:none}}
+/* ===== Cân thị giác (người dùng chốt 29/10/2026 sau khi xem PVT) =====
+   1 Card KPI cùng thứ tự: tên chỉ tiêu (1 dòng) → số chính (cùng đường ngang) → biến động/mô tả (tối đa 2 dòng, đủ chữ ở tooltip) → chart nhỏ.
+   2 Thang chữ: khu vực 20 · card 15 · KPI 28 · nội dung 14 · kỳ/đơn vị/nguồn 12,5 đậm 500–600.
+   3 Màu: nền trung tính; vàng chỉ còn badge nền nhạt; ticker không còn nền navy đậm.
+   4 Khối tóm tắt: đoạn tóm tắt toàn chiều ngang, 4 KPI cùng một hàng bên dưới. */
+.kpi{display:grid!important;grid-template-rows:auto auto auto 1fr;align-content:start;gap:4px}
+.kpi>.l{order:0!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:18px;font-size:12.5px!important;font-weight:600;letter-spacing:.02em}
+.kpi>.v{order:1!important}
+.kpi>.s{order:2!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:12.5px!important;font-weight:500;color:var(--muted);line-height:1.4;min-height:2.8em}
+.kpi>:is(.mkt-pct,.mkt-sparkwrap,.mkt-spark,svg,canvas){order:3!important;align-self:end}
+h3.sub{font-size:15.5px!important}
+.card p,.card li,.callout,.db-qs li{font-size:14px}
+/* Ticker: nền trung tính, chữ tối; xanh/đỏ chỉ cho biến động */
+/* Badge quan điểm: nền nhạt, viền màu — bớt tranh điểm nhấn với nội dung */
+/* ===== Quy chuẩn màu · chữ · khoảng cách (người dùng chốt 29/10/2026, bản đề xuất mục 3) =====
+   Nền #F5F7FB · box trắng viền #E3E8F0 bo 12 bóng nhẹ, padding 20–24 · tiêu đề navy #243878 18–20 semibold ·
+   nội dung #334155 14/1.5 · chữ phụ #64748B 12–13 · điểm nhấn vàng #D4A72C (kỳ chọn, sự kiện, điểm cần chú ý) · nhịp 8–16–24–32. */
+:root:not([data-theme=dark]){--bg:#F5F7FB;--ink:#334155;--muted:#64748B;--line:#E3E8F0;--fs-accent:#D4A72C;--fs-title:#243878}
+:root:not([data-theme=dark]) body{background:#F5F7FB;color:#334155;font-size:14px;line-height:1.5}
+:root:not([data-theme=dark]) .card:not(.card .card),:root:not([data-theme=dark]) .kpi{border:1px solid #E3E8F0!important;border-radius:12px!important;box-shadow:0 1px 2px rgba(15,23,42,.04),0 2px 8px rgba(15,23,42,.04)!important}
+.card:not(.card .card){padding:20px 24px!important}
+.kpi{padding:16px 20px!important}
+.wrap .grid{gap:16px!important}
+section.tab>.card,section.tab>.grid{margin-bottom:24px}
+:root:not([data-theme=dark]) h2.sec{font:600 20px/1.3 Inter,Arial,sans-serif!important;color:#243878!important;text-transform:none!important;letter-spacing:-.01em!important;margin:32px 0 16px!important;padding-left:12px;border-left:3px solid #D4A72C}
+:root:not([data-theme=dark]) h3.sub{font-size:16px!important;font-weight:600!important;color:#243878!important}
+:root:not([data-theme=dark]) :is(.card p,.card li){color:#334155;font-size:14px;line-height:1.5}
+/* Nhãn KPI không cắt chữ: tối đa 2 dòng, giữ chỗ 2 dòng để số chính vẫn cùng đường ngang */
+.kpi>.l{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;min-height:2.6em;line-height:1.3}
+/* Header: ô giá chỉ còn Giá; cuộn xuống thì header thu một hàng dính; ẩn/hiện ticker */
+#pxBox>.fs-dup{display:none!important}
+html.fs-scrolled .brandbar{display:none}
+html.fs-scrolled .titleband{position:sticky;top:0;z-index:60;box-shadow:0 1px 0 #E3E8F0,0 4px 12px rgba(15,23,42,.06)}
+html.fs-scrolled .titleband .in{padding-top:6px!important;padding-bottom:6px!important}
+html.fs-scrolled .titleband :is(.logo-co,img){max-height:26px}
+html.fs-scrolled nav.tabs{position:sticky;top:52px;z-index:59}
+html.fs-tape-off .mkt-tape{display:none!important}
+.fs-tape-tg{position:fixed;right:12px;bottom:12px;z-index:70;height:30px;padding:0 12px;border:1px solid #E3E8F0;border-radius:999px;background:#fff;color:#243878;font:600 12px Inter,Arial,sans-serif;box-shadow:0 2px 8px rgba(15,23,42,.08);cursor:pointer}
+/* KPI bấm được → mở chart liên quan */
+.fs-golink{cursor:pointer}
+.fs-golink:hover{border-color:#D4A72C!important}
+.card.fs-flash{animation:fsFlash 1.6s ease}
+@keyframes fsFlash{0%,60%{box-shadow:0 0 0 3px rgba(212,167,44,.55)}100%{box-shadow:0 0 0 0 rgba(212,167,44,0)}}
+@media(prefers-reduced-motion:reduce){.card.fs-flash{animation:none;outline:3px solid #D4A72C}}
+/* Timeline ghi nhận dự án */
+.fs-gantt .fs-gnote{font-size:12.5px!important;color:#64748B!important;margin:0 0 12px}
+.fs-gwrap{overflow-x:auto}
+.fs-gantt{overflow-x:auto}.fs-gwrap{min-width:560px}
+.fs-gantt .r{display:grid;align-items:center;gap:0 2px;padding:2px 0;border-bottom:1px solid #F1F5F9}
+.fs-gantt .r.h{font-size:12px;color:#64748B;font-weight:600;border-bottom:1px solid #E3E8F0}
+.fs-gantt .r.h .c{text-align:center}
+.fs-gantt .n{display:flex;align-items:center;gap:8px;min-width:0;padding-right:12px;font-size:13px}
+.fs-gantt .n .st-badge{font-size:11px;padding:1px 7px}
+.fs-gantt .c{position:relative;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-variant-numeric:tabular-nums}
+.fs-gantt .c.cur{background:rgba(212,167,44,.12)}
+.fs-gantt .c i{position:absolute;inset:4px 2px;border-radius:4px}
+.fs-gantt .c span{position:relative;font-weight:600;color:#fff;text-shadow:0 0 2px rgba(0,0,0,.35)}
+.fs-gantt i.signed{background:#243878}.fs-gantt i.pipeline{background:#59C5C8}.fs-gantt i.loa{background:#D4A72C}.fs-gantt i.cancel{background:#94A3B8}
+.fs-pj{border:0;background:none;padding:0;font:inherit;color:#243878;font-weight:600;cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}
+#projTable.fs-pj-link td:first-child{cursor:pointer}
+/* Panel dự án bên phải */
+.fs-panel{position:fixed;top:0;right:0;bottom:0;width:min(400px,100vw);z-index:90;background:#fff;border-left:1px solid #E3E8F0;box-shadow:-12px 0 32px rgba(15,23,42,.12);padding:24px;overflow:auto;transform:translateX(105%);transition:transform .25s;color:#334155}
+.fs-panel.on{transform:none}
+.fs-panel .x{position:absolute;top:12px;right:12px;width:32px;height:32px;border:0;border-radius:8px;background:#F1F5F9;font-size:20px;cursor:pointer}
+.fs-panel h3{font:600 18px/1.3 Inter,Arial,sans-serif;color:#243878;margin:4px 0 8px}
+.fs-panel .k{font:600 11.5px Inter,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#64748B;margin:16px 0 8px}
+.fs-panel dl{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:16px 0 0;font-size:14px}
+.fs-panel dt{color:#64748B}.fs-panel dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+.fs-panel .fs-pbar{display:grid;grid-template-columns:44px 1fr 56px;align-items:center;gap:8px;margin:6px 0;font-size:13px;font-variant-numeric:tabular-nums}
+.fs-panel .fs-pbar i{height:10px;border-radius:5px;background:#243878;min-width:2px}.fs-panel .fs-pbar b{text-align:right}
+.fs-panel .src{font-size:12px;color:#64748B}
+/* Nút A–B và CAGR */
+.fs-tb .fs-ab[aria-pressed=true]{background:#D4A72C!important;border-color:#D4A72C!important;color:#1F2937!important}
+.fs-cagr b{color:#243878}
+:root[data-theme=dark] :is(.fs-panel,.fs-tape-tg){background:#161616;color:#F5F5F5;border-color:#2A2A2A}
+:root[data-theme=dark] .fs-panel h3,:root[data-theme=dark] .fs-pj{color:#FFD45D}
+@media(max-width:700px){.card:not(.card .card){padding:16px!important}.fs-tape-tg{bottom:72px}}
+@media print{.fs-tape-tg,.fs-panel{display:none!important}}
+.fs-gantt .c:has(i.pipeline) span,.fs-gantt .c:has(i.loa) span,.fs-gantt .c:has(i.cancel) span{color:#1F2937;text-shadow:none}
+.fs-gantt .n{text-align:left}.fs-gantt .fs-pj{text-align:left}
+:root:not([data-theme=dark]) html.fs-scrolled .titleband,:root:not([data-theme=dark]).fs-scrolled .titleband{background:#fff!important}
+:root[data-theme=dark].fs-scrolled .titleband{background:#0A0A0A!important}
+/* Thanh tiến độ thực hiện / kế hoạch năm (Bản tin dữ liệu) */
+.db-plan{position:static!important;grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px 24px;padding-top:16px;border-top:1px solid #E3E8F0}
+.db-pk{grid-column:1/-1;font:600 12px Inter,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#64748B}
+.db-pg-h{display:flex;align-items:baseline;gap:8px;font-size:13px;color:#334155;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.db-pg-h b{font-size:18px;color:#243878}.db-pg-h small{margin-left:auto;color:#64748B;font-size:12.5px}
+.db-pg-t{position:relative;height:10px;border-radius:5px;background:#EEF2F7}
+.db-pg-t i{position:absolute;left:0;top:0;bottom:0;border-radius:5px;background:#243878}
+.db-pg-t em{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:#D4A72C}
+.db-pn{grid-column:1/-1;font-size:12px;color:#64748B}
+:root[data-theme=dark] .db-pg-t{background:#2A2A2A}:root[data-theme=dark] .db-pg-t i{background:#59C5C8}:root[data-theme=dark] .db-pg-h b{color:#FFD45D}
+.db-pg-h span{white-space:nowrap}
+.db.card.db>.db-plan.db-plan{position:static!important;top:auto;right:auto}
+/* Box rõ hơn (người dùng chốt 29/10/2026: "box nhìn không thấy rõ, bố cục chưa clear"): nền đậm hơn một bậc, viền rõ, bóng hai lớp nhẹ */
+:root:not([data-theme=dark]){--bg:#EEF2F7}
+:root:not([data-theme=dark]) body{background:#EEF2F7}
+:root:not([data-theme=dark]) :is(.card:not(.card .card),.kpi){background:#fff;border:1px solid #D6DDE8!important;box-shadow:0 1px 2px rgba(15,23,42,.06),0 4px 14px rgba(15,23,42,.06)!important}
+:root:not([data-theme=dark]) :is(.card:not(.card .card),.kpi):hover{border-color:#C3CCDB!important;box-shadow:0 1px 2px rgba(15,23,42,.07),0 8px 22px rgba(15,23,42,.09)!important}
+:root:not([data-theme=dark]) .card .card{background:#F8FAFC!important;border:1px solid #E1E6EE!important}
+/* ===== Tiêu đề highlight, box nổi, khung chi tiết (người dùng chốt 29/10/2026, theo mẫu tham khảo) ===== */
+/* Tiêu đề khu vực: nền highlight nhẹ thay gạch vàng; phần sau dấu — là key insight, màu khác */
+:root:not([data-theme=dark]) h2.sec{border-left:0!important;padding:2px 10px!important;display:flex;width:fit-content;background:linear-gradient(transparent 12%,rgba(89,197,200,.20) 12%,rgba(89,197,200,.20) 92%,transparent 92%);border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+h2.sec .fs-key{color:#861C52}
+:root[data-theme=dark] h2.sec{background:rgba(255,212,93,.10);padding:2px 10px!important;border-radius:4px;display:flex;width:fit-content}
+:root[data-theme=dark] h2.sec .fs-key{color:#59C5C8}
+/* Box nổi khi rê chuột: nhấc lên (dùng top, không transform để popup fixed không lệch), viền màu, bóng sâu */
+:root:not([data-theme=dark]) :is(.card:not(.card .card),.kpi){position:relative;top:0;transition:top .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s,border-color .2s!important}
+:root:not([data-theme=dark]) :is(.card:not(.card .card),.kpi):hover{top:-3px;border-color:rgba(41,56,168,.35)!important;box-shadow:0 2px 4px rgba(15,23,42,.06),0 14px 32px -8px rgba(29,38,120,.22)!important}
+:root:not([data-theme=dark]) .card .card{transition:box-shadow .2s,border-color .2s}
+:root:not([data-theme=dark]) .card .card:hover{border-color:rgba(41,56,168,.30)!important;box-shadow:0 6px 18px -6px rgba(29,38,120,.18)}
+/* Hiệu ứng màu: vạch sáng mảnh ở mép trên + quầng màu rất nhạt ở góc, hiện rõ hơn khi rê chuột */
+:is(.card:not(.card .card),.kpi){overflow:visible}
+:is(.card:not(.card .card),.kpi)::before{content:'';position:absolute;left:16px;right:16px;top:-1px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#59C5C8 30%,#2938A8 70%,transparent);opacity:.0;transition:opacity .25s;pointer-events:none}
+:is(.card:not(.card .card),.kpi):hover::before{opacity:.9}
+:root:not([data-theme=dark]) .kpi{background:radial-gradient(120% 80% at 100% 0%,rgba(89,197,200,.10),transparent 55%),#fff!important}
+:root[data-theme=dark] :is(.card:not(.card .card),.kpi){background:radial-gradient(120% 70% at 85% 0%,rgba(255,140,90,.08),transparent 60%),#161616!important}
+:root[data-theme=dark] :is(.card:not(.card .card),.kpi):hover{box-shadow:0 0 0 1px rgba(255,212,93,.25),0 18px 40px -12px rgba(0,0,0,.7),0 0 32px -8px rgba(255,140,90,.18)!important}
+.kpi.fs-golink{cursor:pointer}
+@media(prefers-reduced-motion:reduce){:is(.card,.kpi){transition:none!important}:is(.card,.kpi):hover{top:0!important}}
+@media print{:is(.card,.kpi)::before{display:none}}
+/* Khung chi tiết ô KPI */
+.fs-tile{position:fixed;inset:0;z-index:95;display:none;place-items:center;padding:24px;background:rgba(15,23,42,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.fs-tile.on{display:grid;animation:fsTileIn .18s ease}
+@keyframes fsTileIn{from{opacity:0}to{opacity:1}}
+.fs-tile-box{display:grid;grid-template-columns:minmax(260px,320px) minmax(0,1fr);width:min(920px,100%);max-height:calc(100vh - 48px);overflow:auto;border-radius:16px;background:#fff;box-shadow:0 30px 80px -20px rgba(15,23,42,.45);animation:fsTileUp .22s cubic-bezier(.2,.8,.2,1)}
+@keyframes fsTileUp{from{transform:translateY(12px) scale(.98)}to{transform:none}}
+.fs-tile .L{padding:24px;background:linear-gradient(160deg,#EEF7F8,#F3F4FB);border-right:1px solid #E1E6EE;display:flex;flex-direction:column;gap:10px}
+.fs-tile .L .k,.fs-tile .R .k{font:600 11.5px Inter,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#64748B}
+.fs-tile .V{font:800 44px/1.05 Inter,Arial,sans-serif;color:#1D2678;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.fs-tile .S{font-size:13px;color:#334155;display:flex;flex-direction:column;gap:4px}
+.fs-tile .Z svg{width:100%;height:auto;max-height:90px}
+.fs-tile .go{margin-top:auto;height:40px;border:0;border-radius:10px;background:#1D2678;color:#fff;font:600 14px Inter,Arial,sans-serif;cursor:pointer}
+.fs-tile .go:hover{background:#2938A8}
+.fs-tile .R{position:relative;padding:24px 28px}
+.fs-tile .R h3{font:700 22px/1.3 Inter,Arial,sans-serif;color:#182230;margin:0 40px 14px 0}
+.fs-tile .R .N{font-size:14px;line-height:1.6;color:#334155;margin-top:8px}
+.fs-tile .x{position:absolute;top:16px;right:16px;width:34px;height:34px;border:1px solid #E1E6EE;border-radius:10px;background:#fff;font-size:20px;cursor:pointer}
+:root[data-theme=dark] .fs-tile-box{background:#161616;color:#F5F5F5}
+:root[data-theme=dark] .fs-tile .L{background:linear-gradient(160deg,#1F1A16,#161616);border-color:#2A2A2A}
+:root[data-theme=dark] .fs-tile .V{color:#FFD45D}:root[data-theme=dark] .fs-tile .R h3,:root[data-theme=dark] .fs-tile :is(.S,.N){color:#E5E5E5}
+:root[data-theme=dark] .fs-tile .x{background:#1F1F1F;border-color:#2A2A2A;color:#F5F5F5}
+@media(max-width:700px){.fs-tile-box{grid-template-columns:1fr}.fs-tile .L{border-right:0;border-bottom:1px solid #E1E6EE}.fs-tile .V{font-size:36px}}
+/* Đoạn tóm tắt Bản tin dữ liệu căn đều hai bên (người dùng chốt 29/10/2026) */
+.db-lead{text-align:justify;text-justify:inter-word}
+/* Giao diện tối: tiêu đề khu vực màu turquoise #59C5C8 thay vàng (người dùng chốt 29/10/2026); nền highlight teal nhạt; phần key insight đổi sang vàng ấm */
+html:root[data-theme=dark] body:not(#fs-x1):not(#fs-x2):not(#fs-x3) h2.sec{color:#59C5C8!important;background:rgba(89,197,200,.12)!important}
+html:root[data-theme=dark] body:not(#fs-x1):not(#fs-x2):not(#fs-x3) h2.sec .fs-key{color:#FFD45D!important}
+/* Bản tin dữ liệu: chừa khoảng đệm trên đủ rộng ở mọi khổ màn hình (người dùng báo chữ sát mép trên, 29/10/2026). */
+.db.card .db-l{padding-top:28px!important}
+.db.card .db-c{padding-top:22px!important;padding-left:22px!important}
+/* Bản tin dữ liệu: tách dòng "Bản tin dữ liệu" khỏi tên mã (người dùng báo vẫn sát, 29/10/2026) */
+.db.card .db-tk{margin-top:16px!important;margin-bottom:12px!important}
+/* Nhấp nháy (người dùng chốt 29/10/2026): chấm "Bản tin dữ liệu" nhấp nháy như tín hiệu trực tiếp;
+   phần key insight của tiêu đề có nền vàng nhạt, ánh sáng lướt qua định kỳ. Tắt khi người dùng chọn giảm chuyển động. */
+.db .db-dot{animation:fsBlink 1.6s ease-in-out infinite}
+@keyframes fsBlink{0%,100%{opacity:1}50%{opacity:.35}}
+h2.sec .fs-key{position:relative;padding:0 4px;border-radius:3px;background:linear-gradient(100deg,rgba(255,212,93,.38) 0%,rgba(255,212,93,.38) 40%,rgba(255,240,190,.95) 50%,rgba(255,212,93,.38) 60%,rgba(255,212,93,.38) 100%);background-size:250% 100%;background-position:100% 0;animation:fsSheen 4.5s ease-in-out infinite;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+@keyframes fsSheen{0%,55%{background-position:100% 0}85%,100%{background-position:0 0}}
+html:root[data-theme=dark] body:not(#fs-x1):not(#fs-x2):not(#fs-x3) h2.sec .fs-key{background:linear-gradient(100deg,rgba(255,212,93,.16) 0%,rgba(255,212,93,.16) 40%,rgba(255,212,93,.42) 50%,rgba(255,212,93,.16) 60%,rgba(255,212,93,.16) 100%)!important;background-size:250% 100%!important}
+@media(prefers-reduced-motion:reduce){.db .db-dot,h2.sec .fs-key{animation:none}}
+@media print{h2.sec .fs-key{animation:none;background:rgba(255,212,93,.38)}}
+/* Lối tắt Watchlist / Company news trên thanh đầu trang, cạnh ô tìm kiếm (người dùng chốt 29/10/2026). */
+.fs-quick{display:flex;gap:8px;flex:none;margin-left:12px}
+.fs-q{display:inline-flex;align-items:center;height:40px;padding:0 14px;border-radius:11px;font:700 13px Inter,Arial,sans-serif;text-decoration:none;white-space:nowrap;color:#0F1550}
+.fs-q-wl{background:#59C5C8}.fs-q-news{background:#FFD45D}
+.fs-q:hover{filter:brightness(.95)}
+:root[data-theme=dark] .fs-q{color:#0F1550!important}
+@media (max-width:700px){.fs-quick{margin-left:0;flex-basis:100%}.fs-q{flex:1;justify-content:center;height:36px}}
+@media print{.fs-quick{display:none}}
+/* Chấm tỏa sóng "có mới / đang cập nhật" dùng chung (người dùng chốt 29/10/2026) */
+.fs-pulse{position:relative;display:inline-block;flex:none;width:8px;height:8px;margin-right:6px;border-radius:50%;background:#2BB673;vertical-align:1px}
+.fs-pulse::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid #2BB673;animation:fsRipple 2.2s ease-out infinite}
+.fs-pulse.off{background:#A3ABB9}.fs-pulse.off::after{display:none}
+@keyframes fsRipple{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+#tabbar .fs-new{position:relative;width:7px!important;height:7px!important;background:#2BB673!important;box-shadow:none!important;animation:none!important;margin-left:7px}
+#tabbar .fs-new::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid #2BB673;animation:fsRipple 2.2s ease-out infinite}
+#milestones li.fs-next-ms,#stMilestones li.fs-next-ms{background:rgba(43,182,115,.07);border-radius:6px;align-items:center}
+#milestones li.fs-next-ms .fs-pulse,#stMilestones li.fs-next-ms .fs-pulse{margin:0 8px 0 4px}
+@media(prefers-reduced-motion:reduce){.fs-pulse::after,#tabbar .fs-new::after{animation:none;display:none}}
+@media print{.fs-pulse::after{display:none}}
+/* Giao diện tối: mọi tiêu đề (tên mã, mục, card, khung) màu turquoise #59C5C8 thay vàng (người dùng chốt 29/10/2026); vàng chỉ còn cho key insight */
+html:root[data-theme=dark] body:not(#fs-x1):not(#fs-x2):not(#fs-x3) :is(#coName,.titleband h1,h2.sec,h3.sub,.card>h3,.card h3.sub,.fsa-drawer h3,.fs-share-head span,.multiple-card h3,.fs-panel h3,.fs-tile .R h3):not(.shotcard *){color:#59C5C8!important}
+html:root[data-theme=dark] body:not(#fs-x1):not(#fs-x2):not(#fs-x3) :is(.fs-mega h4,.fs-tile .V,.fs-pj,.db-pg-h b){color:#59C5C8!important}
+/* ===== Kiểu chữ theo design-rules FISC Market v3.2 (người dùng chốt 29/10/2026) =====
+   Inter cho nội dung và số liệu (tabular-nums); Newsreader (serif) chỉ cho tiêu đề trang (tên mã/công ty), như mẫu fisc-dashboard.vercel.app; tiêu đề mục h2.sec dùng Inter (02/11/2026).
+   Giữ cỡ chữ hiện tại cho dễ đọc; lấy theo rule: họ chữ, độ đậm, giãn chữ, nhãn số, eyebrow, tab active, focus ring. */
+body,button,input,select,textarea,table{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+#coName,.titleband h1{font-family:Newsreader,Georgia,serif!important;font-weight:500!important;letter-spacing:-.5px!important}
+h2.sec{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;font-weight:650!important;font-size:20px!important;letter-spacing:-.3px!important;line-height:1.25!important}
+h2.sec .fs-key{font-weight:600}
+h3.sub,.card>h3{font-family:Inter,sans-serif!important;font-weight:650!important;letter-spacing:-.01em}
+.db-tk{font-family:Inter,sans-serif!important;font-weight:700!important;letter-spacing:-.4px}
+/* Nhãn số (stat label) & eyebrow */
+.kpi>.l,.db-ch,.overview-facts .l{font-weight:600!important;letter-spacing:.5px!important;color:var(--muted)!important}
+.db-k{font:700 10.5px/1 Inter,sans-serif!important;letter-spacing:1.4px!important;text-transform:uppercase;color:#27AF95!important}
+.kpi .v,.db-v,.overview-facts .v,.vc-sv,table td{font-variant-numeric:tabular-nums}
+.kpi .v{font-weight:700!important}
+/* Bảng: tiêu đề cột nhỏ, đậm vừa, màu nhạt; cột số thẳng hàng */
+table:not(.fintbl) th{font-weight:600!important;letter-spacing:.3px!important}
+/* Tab lớn: khối bo tròn, mục đang chọn nền navy chữ trắng, có bóng (activeTab) */
+:root:not([data-theme=dark]) #tabbar button[data-tab]{border-radius:10px!important;border-bottom-color:transparent!important;font-weight:600!important;transition:background .15s,color .15s}
+:root:not([data-theme=dark]) #tabbar button[data-tab]:hover{background:rgba(43,81,182,.06)!important;color:#1D2678!important}
+:root:not([data-theme=dark]) #tabbar button[data-tab].active{background:#1D2678!important;color:#fff!important;box-shadow:0 6px 14px -4px rgba(29,38,120,.45)!important}
+:root[data-theme=dark] #tabbar button[data-tab]{border-radius:10px!important;border-bottom-color:transparent!important}
+:root[data-theme=dark] #tabbar button[data-tab].active{background:#59C5C8!important;color:#0F1624!important}
+#tabbar button[data-tab].active .fs-new{background:#fff!important}
+/* Focus ring rõ 3px trên mọi control */
+:is(button,input,select,textarea,a):focus-visible{outline:3px solid rgba(43,81,182,.35)!important;outline-offset:2px}
+html:root body h2.sec,html:root:not([data-theme=dark]) body h2.sec{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;font-weight:650!important;font-size:20px!important;letter-spacing:-.3px!important}
+.sg-t{font:600 13px Inter,sans-serif;color:var(--muted);text-align:center;margin-bottom:4px}
+/* Giao diện tối: ô nhập / ô chọn nền xám đậm trung tính thay navy (người dùng báo "nền đen box xanh nhìn kì", 29/10/2026) */
+html:root[data-theme=dark] body :is(input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea){background:#1F1F1F!important;color:#F5F5F5!important;border:1px solid #3A3A3A!important;box-shadow:none!important}
+html:root[data-theme=dark] body :is(input,select,textarea):hover{border-color:#525252!important}
+html:root[data-theme=dark] body :is(input,select,textarea):focus{border-color:#59C5C8!important;outline:none!important;box-shadow:0 0 0 2px rgba(89,197,200,.25)!important}
+html:root[data-theme=dark] body .analyst-table input{background:#2A2614!important;color:#FFE9A6!important;border-color:#4A4220!important}
+html:root[data-theme=dark] body select option{background:#1F1F1F;color:#F5F5F5}
+.sankeywrap text{font-family:Inter,system-ui,Arial,sans-serif!important}
