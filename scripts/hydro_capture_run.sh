@@ -24,4 +24,6 @@ fi
 python3 scripts/prepare_release.py --version "$(date -u +%Y%m%dT%H%M%SZ)-hydro"
 python3 -m unittest discover -s tests -q
 git add assets/brand.css assets/share-image.js data/raw/evn-reservoirs data/hydro-reservoirs.js data/raw/public data/*-public-data.js data/*-public-data.json data/site-release.json index.html 404.html */index.html
-git commit -q -m "Cập nhật nguồn chỉ truy cập từ VN: hồ EVN 00h (đ�
+git commit -q -m "Cập nhật nguồn chỉ truy cập từ VN: hồ EVN 00h (đến $(ls data/raw/evn-reservoirs | tail -1 | cut -c1-10)), Cục ĐTNN, Sở Xây dựng Hà Nội"
+git pull -q --rebase origin main && git push -q origin HEAD:main
+echo "Đã publish."
