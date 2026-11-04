@@ -1,4 +1,5 @@
-Routine 13:00 03/11: xử lý 4/10 mục đầu hàng chờ (bank.policy, realestate.policy, textile.policy, port.policy): không có văn bản mới trên vanban.chinhphu.vn (chỉ quét trang 1).
-Chưa xử lý: sugar.domestic (không tìm thấy giá RS/RE tháng 11 từ nguồn gốc), realestate.fdi-projects và power.evn-reservoirs (nguồn chặn IP cloud, chờ runner).
-Còn 39 mục trong hàng chờ.
+Routine Wi 04/11/2026: KHÔNG cập nhật được.
+Hook wi_capture.py không lưu kết quả WiMCP (data/raw/wi/.inbox không được tạo sau lời gọi thử).
+Đã --fail 30 mục Wi (10 ngành) với lý do 'hook không lưu kết quả Wi'; không sửa dữ liệu nào.
+Cần kiểm tra .claude/settings.json (matcher "WiMCP" có khớp tên tool mcp__WiMCP__* không) trong môi trường cloud.
 Chưa kiểm giao diện bằng trình duyệt.
