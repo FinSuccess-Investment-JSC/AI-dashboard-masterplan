@@ -1,0 +1,1232 @@
+[
+ {
+  "block": "th-60",
+  "claim": "HPG Q3/2026 doanh thu",
+  "value": "62.669 tỷ; +70%",
+  "url": "https://cafef.vn/hoa-phat-lai-8265-ty-dong-tang-106-trong-quy-32026-188261029100153096.chn",
+  "opened_at": "2026-11-04",
+  "quote": "Quý 3/2026, Tập đoàn Hòa Phát đạt doanh thu 62.669 tỷ đồng, tăng 70% so với quý 3/2025.",
+  "status": "match",
+  "note": "Sơ bộ 29/10/2026. Wi is10 Q3 = 62.214 tỷ (doanh thu thuần?), lệch 455 tỷ"
+ },
+ {
+  "block": "th-60",
+  "claim": "HPG Q3/2026 LNST",
+  "value": "8.265 tỷ; +106%",
+  "url": "https://cafef.vn/hoa-phat-lai-8265-ty-dong-tang-106-trong-quy-32026-188261029100153096.chn",
+  "opened_at": "2026-11-04",
+  "quote": "Lợi nhuận sau thuế ghi nhận 8.265 tỷ đồng, tăng 106% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "HPG 9T/2026 doanh thu, LNST",
+  "value": "171.539 tỷ; 23.746 tỷ",
+  "url": "https://cafef.vn/hoa-phat-lai-8265-ty-dong-tang-106-trong-quy-32026-188261029100153096.chn",
+  "opened_at": "2026-11-04",
+  "quote": "Lũy kế 9 tháng đầu năm 2026, doanh thu, lợi nhuận của Tập đoàn lần lượt là 171.539 tỷ đồng và 23.746 tỷ đồng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "HPG 9T YoY",
+  "value": "+54%; +104%",
+  "url": "https://mekongasean.vn/hoa-phat-cong-bo-loi-nhuan-quy-32026-61227.html",
+  "opened_at": "2026-11-04",
+  "quote": "tương ứng tăng 54% và 104% so với 9 tháng đầu năm 2025.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "HPG kế hoạch 2026",
+  "value": "210.000 tỷ; 22.000 tỷ",
+  "url": "https://cafef.vn/hoa-phat-lai-8265-ty-dong-tang-106-trong-quy-32026-188261029100153096.chn",
+  "opened_at": "2026-11-04",
+  "quote": "Năm 2026, Tập đoàn Hòa Phát đặt mục tiêu doanh thu 210.000 tỷ đồng và lợi nhuận sau thuế 22.000 tỷ đồng.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "HPG %KH",
+  "value": "82%; 108%",
+  "url": "https://cafef.vn/hoa-phat-lai-8265-ty-dong-tang-106-trong-quy-32026-188261029100153096.chn",
+  "opened_at": "2026-11-04",
+  "quote": "Với kết quả này, Hòa Phát đã hoàn thành 82% doanh thu và 108% lợi nhuận kế hoạch năm.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "HPG đóng góp thép",
+  "value": "97% doanh thu; 77% lợi nhuận",
+  "url": "https://cafef.vn/hoa-phat-lai-8265-ty-dong-tang-106-trong-quy-32026-188261029100153096.chn",
+  "opened_at": "2026-11-04",
+  "quote": "Trong đó, lĩnh vực thép đóng góp 97% doanh thu và 77% lợi nhuận.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-13",
+  "claim": "HPG công suất",
+  "value": "16 triệu tấn/năm",
+  "url": "https://cafef.vn/hoa-phat-lai-8265-ty-dong-tang-106-trong-quy-32026-188261029100153096.chn",
+  "opened_at": "2026-11-04",
+  "quote": "Tập đoàn Hòa Phát là nhà sản xuất thép lớn nhất Đông Nam Á với công suất 16 triệu tấn/năm,",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-13",
+  "claim": "HPG thép thô 9T",
+  "value": "10,7 triệu tấn; +35%",
+  "url": "https://tapchicongthuong.vn/hoa-phat-ban-hon-10-3-trieu-tan-thep-trong-9-thang--tang-39--so-voi-cung-ky-nam-truoc-557317.htm",
+  "opened_at": "2026-11-04",
+  "quote": "Lũy kế 9 tháng năm 2026, Hòa Phát sản xuất 10,7 triệu tấn thép thô, tăng 35% so với 9 tháng năm 2025.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-13",
+  "claim": "HPG HRC bán 9T",
+  "value": "5,47 triệu tấn; +59%",
+  "url": "https://tapchicongthuong.vn/hoa-phat-ban-hon-10-3-trieu-tan-thep-trong-9-thang--tang-39--so-voi-cung-ky-nam-truoc-557317.htm",
+  "opened_at": "2026-11-04",
+  "quote": "HRC đạt 5,47 triệu tấn, tăng 59% và chiếm hơn một nửa tổng sản lượng bán hàng các sản phẩm thép Hòa Phát.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-13",
+  "claim": "HPG thép XD + cuộn CLC 9T",
+  "value": "hơn 4 triệu tấn; +15%",
+  "url": "https://tapchicongthuong.vn/hoa-phat-ban-hon-10-3-trieu-tan-thep-trong-9-thang--tang-39--so-voi-cung-ky-nam-truoc-557317.htm",
+  "opened_at": "2026-11-04",
+  "quote": "Trong đó, thép xây dựng và thép cuộn chất lượng cao đạt hơn 4 triệu tấn, tăng 15%.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-13",
+  "claim": "HPG HRC xuất khẩu Q3",
+  "value": "24,6%",
+  "url": "https://tapchicongthuong.vn/hoa-phat-ban-hon-10-3-trieu-tan-thep-trong-9-thang--tang-39--so-voi-cung-ky-nam-truoc-557317.htm",
+  "opened_at": "2026-11-04",
+  "quote": "Trong đó thị trường xuất khẩu đóng góp 24,6% sản lượng.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-13",
+  "claim": "HPG nhà máy ray",
+  "value": "700.000 tấn/năm",
+  "url": "https://cafef.vn/hoa-phat-lai-8265-ty-dong-tang-106-trong-quy-32026-188261029100153096.chn",
+  "opened_at": "2026-11-04",
+  "quote": "dự án Nhà máy sản xuất Ray đường sắt và thép đặc biệt Hòa Phát Dung Quất, công suất 700.000 tấn/năm.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-13",
+  "claim": "Tiến độ nhà máy ray",
+  "value": "80%; quý II/2027",
+  "url": "https://cafef.vn/hoa-phat-lai-8265-ty-dong-tang-106-trong-quy-32026-188261029100153096.chn",
+  "opened_at": "2026-11-04",
+  "quote": "Hiện tại, dự án đã hoàn thành 80% tiến độ và dự kiến cung cấp sản phẩm ray cho thị trường từ quý II/2027,",
+  "status": "match",
+  "note": "Thay mốc cũ ở xd-13 (gần 70%, Q1/2027)"
+ },
+ {
+  "block": "th-60",
+  "claim": "HPG nợ vay 30/6/2026",
+  "value": "khoảng 98.530 tỷ",
+  "url": "https://tapchikinhtetaichinh.vn/hoa-phat-lai-gap-doi-chat-luong-tang-truong-den-tu-dau-164452.html",
+  "opened_at": "2026-11-04",
+  "quote": "tổng dư nợ vay và nợ thuê tài chính khoảng 98.530 tỷ đồng",
+  "status": "match",
+  "note": "Mốc 30/9 chưa có"
+ },
+ {
+  "block": "th-13",
+  "claim": "Thị phần thép XD HPG",
+  "value": "36%",
+  "url": "https://www.vietnamplus.vn/hoa-phat-san-xuat-7-trieu-tan-thep-trong-nua-dau-nam-2026-tang-36-post1123152.vnp",
+  "opened_at": "2026-11-04",
+  "quote": "Thép Hòa Phát duy trì thị phần số 1 Việt Nam với 36%",
+  "status": "match",
+  "note": "Bài 6T/2026"
+ },
+ {
+  "block": "th-13",
+  "claim": "Thị phần HRC nội địa HPG 6T; Q2",
+  "value": "35,2%; 40,5%",
+  "url": "https://tapchikinhtetaichinh.vn/hoa-phat-lai-gap-doi-chat-luong-tang-truong-den-tu-dau-164452.html",
+  "opened_at": "2026-11-04",
+  "quote": "Thị phần nội địa bình quân đạt 35,2%; riêng quý II tăng lên 40,5%",
+  "status": "match",
+  "note": "Bài đặt cạnh sản lượng HRC; tử số/mẫu số không nêu rõ"
+ },
+ {
+  "block": "th-60",
+  "claim": "HSG NĐTC 2025-26 doanh thu",
+  "value": "gần 37.736 tỷ; +3%; 102% KH PA cao",
+  "url": "https://tapchikinhtetaichinh.vn/hoa-sen-vuot-ke-hoach-loi-nhuan-doanh-thu-quy-cuoi-tang-24-171159.html",
+  "opened_at": "2026-11-04",
+  "quote": "Doanh thu thuần hợp nhất đạt gần 37.736 tỷ đồng, tăng 3% so với niên độ trước và hoàn thành 102% kế hoạch ở phương án cao.",
+  "status": "match",
+  "note": "Hai đoạn nguyên văn nối lại"
+ },
+ {
+  "block": "th-60",
+  "claim": "HSG NĐTC LNST",
+  "value": "gần 624 tỷ; -15%; 600 tỷ; 104%",
+  "url": "https://tapchikinhtetaichinh.vn/hoa-sen-vuot-ke-hoach-loi-nhuan-doanh-thu-quy-cuoi-tang-24-171159.html",
+  "opened_at": "2026-11-04",
+  "quote": "lợi nhuận sau thuế hợp nhất đạt gần 624 tỷ đồng, dù giảm 15% so với niên độ trước vẫn vượt mức mục tiêu 600 tỷ đồng, tương ứng hoàn thành khoảng 104% kế hoạch lợi nhuận",
+  "status": "match",
+  "note": "Hai đoạn nối; niên độ kết thúc 30/9/2026"
+ },
+ {
+  "block": "th-60",
+  "claim": "HSG sản lượng NĐTC",
+  "value": "hơn 1,794 triệu tấn; 97%",
+  "url": "https://tapchikinhtetaichinh.vn/hoa-sen-vuot-ke-hoach-loi-nhuan-doanh-thu-quy-cuoi-tang-24-171159.html",
+  "opened_at": "2026-11-04",
+  "quote": "sản lượng hợp nhất của Hoa Sen đạt hơn 1,794 triệu tấn, hoàn thành 97% kế hoạch.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "HSG Q4 NĐTC doanh thu",
+  "value": "hơn 10.384 tỷ; +24%",
+  "url": "https://tapchikinhtetaichinh.vn/hoa-sen-vuot-ke-hoach-loi-nhuan-doanh-thu-quy-cuoi-tang-24-171159.html",
+  "opened_at": "2026-11-04",
+  "quote": "doanh thu thuần đạt hơn 10.384 tỷ đồng, tăng 24% so với cùng kỳ niên độ trước",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "HSG 9T NĐTC LNST",
+  "value": "568 tỷ",
+  "url": "https://hoasengroup.vn/vi/bai-viet/hsg-uoc-hoan-thanh-114-ke-hoach-loi-nhuan-ndtc-2025-2026-sau-09-thang/",
+  "opened_at": "2026-11-04",
+  "quote": "lợi nhuận sau thuế hợp nhất HSG ước đạt 568 tỷ đồng, hoàn thành 114% kế hoạch lợi nhuận",
+  "status": "match",
+  "note": "Số ước. Q4 suy ra 624-568 = khoảng 56 tỷ (tự tính); Wi is60 = 55,6 tỷ"
+ },
+ {
+  "block": "th-60",
+  "claim": "HSG PA1",
+  "value": "35.000 tỷ; 500 tỷ; 1.750.000 tấn",
+  "url": "https://hoasengroup.vn/vi/bai-viet/hsg-uoc-hoan-thanh-114-ke-hoach-loi-nhuan-ndtc-2025-2026-sau-09-thang/",
+  "opened_at": "2026-11-04",
+  "quote": "kế hoạch PA 1 là 1.750.000 tấn sản lượng, 35.000 tỷ đồng doanh thu thuần và 500 tỷ đồng lợi nhuận sau thuế",
+  "status": "match",
+  "note": "Số nằm trong bảng; câu do công cụ đọc diễn lại"
+ },
+ {
+  "block": "th-60",
+  "claim": "HSG biên gộp cả năm",
+  "value": "12,37% lên 12,63%",
+  "url": "https://tapchikinhtetaichinh.vn/hoa-sen-vuot-ke-hoach-loi-nhuan-doanh-thu-quy-cuoi-tang-24-171159.html",
+  "opened_at": "2026-11-04",
+  "quote": "biên lợi nhuận gộp cả năm có sự cải thiện, từ khoảng 12,37% lên 12,63%.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "HSG tồn kho 30/6",
+  "value": "8.268 tỷ",
+  "url": "https://www.nguoiduatin.vn/hoa-sen-bao-lai-hon-568-ty-dong-sau-9-thang-tong-tai-san-vuot-22200-ty-dong-204260730113855747.htm",
+  "opened_at": "2026-11-04",
+  "quote": "Hàng tồn kho gần như đi ngang ở mức 8.268 tỷ đồng",
+  "status": "match",
+  "note": "Mốc 30/9 chưa có"
+ },
+ {
+  "block": "th-60",
+  "claim": "HSG nợ phải trả 30/6",
+  "value": "10.343 tỷ; +36,1%",
+  "url": "https://www.nguoiduatin.vn/hoa-sen-bao-lai-hon-568-ty-dong-sau-9-thang-tong-tai-san-vuot-22200-ty-dong-204260730113855747.htm",
+  "opened_at": "2026-11-04",
+  "quote": "Tổng nợ phải trả tại thời điểm cuối kỳ ở mức 10.343 tỷ đồng, tăng 36,1% so với đầu niên độ.",
+  "status": "match",
+  "note": "Nợ phải trả, không phải nợ vay"
+ },
+ {
+  "block": "th-13",
+  "claim": "HSG số nhà máy",
+  "value": "9 nhà máy",
+  "url": "https://thitruongtaichinhtiente.vn/hsg-uoc-hoan-thanh-114-ke-hoach-loi-nhuan-nien-do-tai-chinh-2025-2026-sau-9-thang-84205.html",
+  "opened_at": "2026-11-04",
+  "quote": "hệ thống sản xuất gồm 9 nhà máy",
+  "status": "match",
+  "note": "Công cụ đọc diễn lại; công suất tấn/năm chưa có"
+ },
+ {
+  "block": "th-60",
+  "claim": "HSG nâng cấp Phú Mỹ",
+  "value": "515,50 tỷ",
+  "url": "https://tapchikinhtetaichinh.vn/hoa-sen-vuot-ke-hoach-loi-nhuan-doanh-thu-quy-cuoi-tang-24-171159.html",
+  "opened_at": "2026-11-04",
+  "quote": "nâng cấp, cải tạo dây chuyền Nhà máy Phú Mỹ với 515,50 tỷ đồng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "NKG Q3 doanh thu",
+  "value": "5.472,01 tỷ; +45%",
+  "url": "https://doanhnhan.baophapluat.vn/thep-nam-kim-nkg-lai-quy-3-tang-vot-157-du-no-vay-vuot-muc-von-chu-so-huu.html",
+  "opened_at": "2026-11-04",
+  "quote": "doanh thu thuần trong kỳ đạt 5.472,01 tỷ đồng, tăng 45% so với cùng kỳ năm trước",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "NKG Q3 LNST",
+  "value": "127,66 tỷ; +157,7%",
+  "url": "https://doanhnhan.baophapluat.vn/thep-nam-kim-nkg-lai-quy-3-tang-vot-157-du-no-vay-vuot-muc-von-chu-so-huu.html",
+  "opened_at": "2026-11-04",
+  "quote": "báo lãi sau thuế quý III đạt 127,66 tỷ đồng, tăng 157,7% so với cùng kỳ",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "NKG 9T doanh thu",
+  "value": "12.883,6 tỷ; +10,4%",
+  "url": "https://doanhnhan.baophapluat.vn/thep-nam-kim-nkg-lai-quy-3-tang-vot-157-du-no-vay-vuot-muc-von-chu-so-huu.html",
+  "opened_at": "2026-11-04",
+  "quote": "tổng doanh thu đạt 12.883,6 tỷ đồng, tăng 10,4% so với cùng kỳ",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "NKG 9T LNST",
+  "value": "251,8 tỷ; +124,4%",
+  "url": "https://doanhnhan.baophapluat.vn/thep-nam-kim-nkg-lai-quy-3-tang-vot-157-du-no-vay-vuot-muc-von-chu-so-huu.html",
+  "opened_at": "2026-11-04",
+  "quote": "Lợi nhuận sau thuế đạt 251,8 tỷ đồng, cao hơn 124,4% so với kết quả 9 tháng năm ngoái",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "NKG KH 2026 và tỷ lệ báo nêu",
+  "value": "22.000 tỷ; LNTT 400 tỷ; 63%",
+  "url": "https://doanhnhan.baophapluat.vn/thep-nam-kim-nkg-lai-quy-3-tang-vot-157-du-no-vay-vuot-muc-von-chu-so-huu.html",
+  "opened_at": "2026-11-04",
+  "quote": "tổng doanh thu 22.000 tỷ đồng và lợi nhuận trước thuế 400 tỷ đồng",
+  "status": "match",
+  "note": "63% do báo lấy LNST/LNTT, khác loại; không dùng làm %KH chuẩn"
+ },
+ {
+  "block": "th-60",
+  "claim": "NKG tồn kho 30/9",
+  "value": "6.354,3 tỷ; 31,7%",
+  "url": "https://doanhnhan.baophapluat.vn/thep-nam-kim-nkg-lai-quy-3-tang-vot-157-du-no-vay-vuot-muc-von-chu-so-huu.html",
+  "opened_at": "2026-11-04",
+  "quote": "Cơ cấu tài sản phân bổ chủ yếu vào hàng tồn kho với giá trị 6.354,3 tỷ đồng, chiếm 31,7% tổng tài sản",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "NKG nợ vay 30/9",
+  "value": "8.635 tỷ; +25,7%; 111% VCSH",
+  "url": "https://doanhnhan.baophapluat.vn/thep-nam-kim-nkg-lai-quy-3-tang-vot-157-du-no-vay-vuot-muc-von-chu-so-huu.html",
+  "opened_at": "2026-11-04",
+  "quote": "tổng nợ vay ngắn hạn và dài hạn của Thép Nam Kim đạt 8.635 tỷ đồng, tăng 25,7% so với đầu năm | Khối lượng nợ vay này hiện tương đương 111% tổng vốn chủ sở hữu của doanh nghiệp",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-13",
+  "claim": "NKG Phú Mỹ",
+  "value": "6.200 tỷ; 1,3 triệu tấn/năm; 2 giai đoạn",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-thep-nam-kim-nkg-2026-nha-may-phu-my-sap-van-hanh-chot-ke-hoach-loi-nhuan-400-ty-dong.html",
+  "opened_at": "2026-11-04",
+  "quote": "Dự án này có tổng vốn đầu tư 6.200 tỷ đồng, công suất thiết kế lên đến 1,3 triệu tấn/năm, được chia làm 2 giai đoạn",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-13",
+  "claim": "NKG Phú Mỹ thời điểm SX thương mại dự kiến",
+  "value": "quý 3/2026",
+  "url": "https://tapchicongthuong.vn/chuan-bi-van-hanh--sieu--du-an-phu-my--thep-nam-kim--nkg--ky-vong-but-toc-tu-quy-3-2026-518977.htm",
+  "opened_at": "2026-11-04",
+  "quote": "Nhà máy Nam Kim Phú Mỹ dự kiến sản xuất thương mại từ quý 3/2026",
+  "status": "match",
+  "note": "Dự kiến 5/2026; chưa có nguồn xác nhận đã chạy"
+ },
+ {
+  "block": "th-13",
+  "claim": "NKG xuất khẩu 6T",
+  "value": "-33%",
+  "url": "https://24hmoney.vn/news/ctcp-thep-nam-kim-ghi-nhan-loi-nhuan-quy-2-2026-tang-manh-nho-san-luong-phuc-hoi-va-bien-loi-nhuan-cai-thien-song-ket-qua-luy-ke-6-thang-van-thap-hon-ky-vong-ca-nam-c30a2816072.html",
+  "opened_at": "2026-11-04",
+  "quote": "sản lượng xuất khẩu giảm mạnh 33% do xu hướng bảo hộ thương mại tại nhiều thị trường tiếp diễn",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "TLH KH 2026 doanh thu",
+  "value": "4.000 tỷ; -24,8%",
+  "url": "https://doanhnhan.baophapluat.vn/thep-tien-len-tlh-dat-muc-tieu-loi-nhuan-64-ty-dong-tam-dung-chao-ban-co-phieu.html",
+  "opened_at": "2026-11-04",
+  "quote": "Thép Tiến Lên đặt chỉ tiêu tổng doanh thu đạt 4.000 tỷ đồng, giảm 24,8% so với mức thực hiện của năm ngoái.",
+  "status": "match",
+  "note": "Wi co_plans 2026 ghi 7.900/120: lệch, xem wi_crosscheck"
+ },
+ {
+  "block": "th-60",
+  "claim": "TLH KH 2026 LNST",
+  "value": "64 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/thep-tien-len-tlh-dat-muc-tieu-loi-nhuan-64-ty-dong-tam-dung-chao-ban-co-phieu.html",
+  "opened_at": "2026-11-04",
+  "quote": "lợi nhuận sau thuế dự kiến đạt 64 tỷ đồng, tăng 1.022,8% so với kết quả đạt được trong năm 2025.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "TLH Q1/2026",
+  "value": "1.032,47 tỷ; 6,42 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/thep-tien-len-tlh-dat-muc-tieu-loi-nhuan-64-ty-dong-tam-dung-chao-ban-co-phieu.html",
+  "opened_at": "2026-11-04",
+  "quote": "doanh thu đạt 1.032,47 tỷ đồng, giảm 20,1% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "LNST 6,42 tỷ ở câu kế tiếp cùng bài"
+ },
+ {
+  "block": "th-60",
+  "claim": "TLH lỗ lũy kế 31/3/2026",
+  "value": "11,45 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/thep-tien-len-tlh-dat-muc-tieu-loi-nhuan-64-ty-dong-tam-dung-chao-ban-co-phieu.html",
+  "opened_at": "2026-11-04",
+  "quote": "tính đến ngày 31/3/2026, Thép Tiến Lên vẫn đang chịu khoản lỗ lũy kế 11,45 tỷ đồng trên bảng cân đối kế toán.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "TLH năm 2025",
+  "value": "5.320 tỷ; 5,7 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/thep-tien-len-tlh-dat-muc-tieu-loi-nhuan-64-ty-dong-tam-dung-chao-ban-co-phieu.html",
+  "opened_at": "2026-11-04",
+  "quote": "Công ty ghi nhận doanh thu đạt 5.320 tỷ đồng, hoàn thành 84,4% kế hoạch năm. | Lợi nhuận sau thuế chỉ đạt vỏn vẹn 5,7 tỷ đồng, tương ứng hoàn thành 5,7% chỉ tiêu đề ra.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "SMC KH 2026",
+  "value": "7.000 tỷ; khoảng 30 tỷ; 420.000 tấn",
+  "url": "https://doanhnhan.baophapluat.vn/dau-tu-thuong-mai-smc-smc-dat-ke-hoach-lai-nam-2026-giam-manh-muon-huy-dong-550-ty-dong-tu-phat-hanh-co-phieu.html",
+  "opened_at": "2026-11-04",
+  "quote": "doanh nghiệp đặt mục tiêu doanh thu hợp nhất năm 2026 đạt 7.000 tỷ đồng | lợi nhuận sau thuế dự kiến chỉ đạt khoảng 30 tỷ đồng, tương ứng mức giảm 85% so với năm 2025. | sản lượng tiêu thụ của SMC được kỳ vọng đạt 420.000 tấn thép các loại, thấp hơn gần 9% so với cùng kỳ.",
+  "status": "match",
+  "note": "LNST và sản lượng ở hai câu kế tiếp cùng bài"
+ },
+ {
+  "block": "th-60",
+  "claim": "SMC 6T/2026",
+  "value": "2.386,23 tỷ; -37,2%; 45,06 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/dau-tu-thuong-mai-smc-smc-thoai-toan-bo-von-tai-tan-tao.html",
+  "opened_at": "2026-11-04",
+  "quote": "doanh thu của công ty đạt 2.386,23 tỷ đồng, tương ứng mức giảm 37,2% so với cùng kỳ năm trước | lợi nhuận sau thuế lại đảo chiều tích cực khi ghi nhận khoản lãi 45,06 tỷ đồng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "SMC lợi nhuận khác 6T",
+  "value": "67,53 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/dau-tu-thuong-mai-smc-smc-thoai-toan-bo-von-tai-tan-tao.html",
+  "opened_at": "2026-11-04",
+  "quote": "ghi nhận khoản lợi nhuận khác trị giá 67,53 tỷ đồng",
+  "status": "match",
+  "note": "Lớn hơn cả LNST 45,06 tỷ, lãi không đến từ cốt lõi"
+ },
+ {
+  "block": "th-60",
+  "claim": "SMC nợ vay 30/6",
+  "value": "1.301,7 tỷ; 123,7% VCSH",
+  "url": "https://doanhnhan.baophapluat.vn/dau-tu-thuong-mai-smc-smc-thoai-toan-bo-von-tai-tan-tao.html",
+  "opened_at": "2026-11-04",
+  "quote": "tổng quy mô nợ vay ngắn hạn và dài hạn của Đầu tư Thương mại SMC đang ở mức 1.301,7 tỷ đồng | tương đương 123,7% tổng vốn chủ sở hữu",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-04",
+  "claim": "SMC cơ cấu",
+  "value": "khoảng một nửa doanh thu; 0,1-0,2%; 7,5%",
+  "url": "https://cafef.vn/smc-bat-ngo-thay-nguoi-dieu-hanh-cua-6-cong-ty-con-dong-thoi-thoai-von-khoi-doanh-nghiep-200-ty-dong-188261012134537355.chn",
+  "opened_at": "2026-11-04",
+  "quote": "biên lợi nhuận gộp của thương mại thép chỉ đạt 0,1-0,2%",
+  "status": "match",
+  "note": "Cùng bài: thương mại thép khoảng một nửa doanh thu; coil center khoảng 7,5%"
+ },
+ {
+  "block": "th-60",
+  "claim": "SMC mục tiêu LN coil center + cơ khí",
+  "value": "50-60 tỷ",
+  "url": "https://cafef.vn/smc-bat-ngo-thay-nguoi-dieu-hanh-cua-6-cong-ty-con-dong-thoi-thoai-von-khoi-doanh-nghiep-200-ty-dong-188261012134537355.chn",
+  "opened_at": "2026-11-04",
+  "quote": "nâng lợi nhuận hằng năm từ mảng coil center và cơ khí chính xác lên 50-60 tỷ đồng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "SMC huy động tối đa",
+  "value": "550 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/dau-tu-thuong-mai-smc-smc-dat-ke-hoach-lai-nam-2026-giam-manh-muon-huy-dong-550-ty-dong-tu-phat-hanh-co-phieu.html",
+  "opened_at": "2026-11-04",
+  "quote": "3 phương án tăng vốn với tổng quy mô huy động lên tới 550 tỷ đồng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "POM 6T doanh thu",
+  "value": "2.177 tỷ; gần 46%",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-tang-bang-lan-thep-pomina-pom-van-am-von-chu-so-huu-no-nhom-vingroup-vuot-1-400-ty-dong.html",
+  "opened_at": "2026-11-04",
+  "quote": "Lũy kế sáu tháng đầu năm, chỉ tiêu này đạt 2.177 tỷ đồng, tương ứng mức tăng gần 46%.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "POM Q2 doanh thu",
+  "value": "1.711 tỷ; gấp 3,7 lần",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-tang-bang-lan-thep-pomina-pom-van-am-von-chu-so-huu-no-nhom-vingroup-vuot-1-400-ty-dong.html",
+  "opened_at": "2026-11-04",
+  "quote": "doanh thu thuần đạt 1.711 tỷ đồng, cao gấp 3,7 lần so với cùng kỳ năm trước",
+  "status": "match",
+  "note": "Wi is10 Q2 = 1.480 tỷ, LNST -150 tỷ: lệch"
+ },
+ {
+  "block": "th-60",
+  "claim": "POM lỗ",
+  "value": "146 tỷ; 325 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-tang-bang-lan-thep-pomina-pom-van-am-von-chu-so-huu-no-nhom-vingroup-vuot-1-400-ty-dong.html",
+  "opened_at": "2026-11-04",
+  "quote": "báo lỗ sau thuế 146 tỷ đồng trong quý II/2026 và lỗ lũy kế sáu tháng ở mức 325 tỷ đồng.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "POM VCSH 30/6",
+  "value": "âm gần 948 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-tang-bang-lan-thep-pomina-pom-van-am-von-chu-so-huu-no-nhom-vingroup-vuot-1-400-ty-dong.html",
+  "opened_at": "2026-11-04",
+  "quote": "vốn chủ sở hữu tại ngày 30/06/2026 âm gần 948 tỷ đồng",
+  "status": "match",
+  "note": "Wi bs400 = -960 tỷ: lệch"
+ },
+ {
+  "block": "th-60",
+  "claim": "POM lỗ chưa phân phối",
+  "value": "3.809 tỷ; 2.797 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-tang-bang-lan-thep-pomina-pom-van-am-von-chu-so-huu-no-nhom-vingroup-vuot-1-400-ty-dong.html",
+  "opened_at": "2026-11-04",
+  "quote": "Lỗ sau thuế chưa phân phối phình to lên mức 3.809 tỷ đồng, vượt xa mức vốn điều lệ thực góp là 2.797 tỷ đồng.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "POM phải trả nhóm Vingroup",
+  "value": "1.424 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-tang-bang-lan-thep-pomina-pom-van-am-von-chu-so-huu-no-nhom-vingroup-vuot-1-400-ty-dong.html",
+  "opened_at": "2026-11-04",
+  "quote": "tăng mạnh từ mức 773 tỷ đồng vào cuối quý I lên 1.424 tỷ đồng tại ngày 30/06/2026",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "POM lãi vay 6T",
+  "value": "hơn 322 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/doanh-thu-tang-bang-lan-thep-pomina-pom-van-am-von-chu-so-huu-no-nhom-vingroup-vuot-1-400-ty-dong.html",
+  "opened_at": "2026-11-04",
+  "quote": "chi phí lãi vay đạt hơn 322 tỷ đồng, lớn gần gấp đôi tổng lợi nhuận gộp tạo ra",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "POM KH 2026",
+  "value": "8.511 tỷ; hơn 666.000 tấn phôi",
+  "url": "https://doanhnhan.baophapluat.vn/cu-bat-tay-voi-vingroup-va-bai-toan-am-von-chu-so-huu-cua-thep-pomina-pom-truoc-them-dai-hoi-2026.html",
+  "opened_at": "2026-11-04",
+  "quote": "công ty đặt chỉ tiêu doanh thu 8.511 tỷ đồng trong năm 2026",
+  "status": "match",
+  "note": "Sản lượng: \"doanh nghiệp lên kế hoạch sản xuất hơn 666.000 tấn phôi thép\". KH LN chưa có"
+ },
+ {
+  "block": "th-60",
+  "claim": "POM nợ phải trả",
+  "value": "hơn 11.000 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/cu-bat-tay-voi-vingroup-va-bai-toan-am-von-chu-so-huu-cua-thep-pomina-pom-truoc-them-dai-hoi-2026.html",
+  "opened_at": "2026-11-04",
+  "quote": "tổng nợ phải trả phình to lên mức hơn 11.000 tỷ đồng, tăng 16%.",
+  "status": "match",
+  "note": "Mốc 31/3/2026"
+ },
+ {
+  "block": "th-13",
+  "claim": "POM công suất cán",
+  "value": "1,5 triệu tấn/năm",
+  "url": "https://nhadautu.vn/hsc-vinmetal-co-the-mua-lai-pomina-d100971.html",
+  "opened_at": "2026-11-04",
+  "quote": "một nhà máy cán thép xây dựng (công suất thiết kế 1,5 triệu tấn/năm)",
+  "status": "match",
+  "note": "Nguồn HSC, chỉ dữ kiện công suất; Simplize và Vietstock theo snippet ghi đảo số, chưa mở được bảng"
+ },
+ {
+  "block": "th-60",
+  "claim": "TVN KH 2026 ĐHĐCĐ",
+  "value": "49.240 tỷ; LNTT 725 tỷ",
+  "url": "https://tapchicongthuong.vn/tong-cong-ty-thep-viet-nam--dai-hoi-dong-co-dong-thuong-nien-2026--dat-muc-tieu-tang-truong-than-trong-513910.htm",
+  "opened_at": "2026-11-04",
+  "quote": "Đối với năm 2026, Tổng công ty Thép Việt Nam - CTCP đặt kế hoạch doanh thu hợp nhất 49.240 tỷ đồng,",
+  "status": "match",
+  "note": "LNTT 725 tỷ ở vế sau. Tờ trình dự thảo 4/2026 ghi 40.000/300, đã bị thay"
+ },
+ {
+  "block": "th-60",
+  "claim": "TVN tờ trình dự thảo",
+  "value": "40.000 tỷ; 300 tỷ",
+  "url": "https://static2.vietstock.vn/vietstock/2026/4/7/37_tvn_2026_4_7_95037ab_10_vi_totrinhkhsxkd2026_signed.pdf",
+  "opened_at": "2026-11-04",
+  "quote": "Tổng doanh thu trên BCTC hợp nhất : 40.000 tỷ đồng. Lợi nhuận trước thuế trên BCTC hợp nhất : 300 tỷ đồng.",
+  "status": "match",
+  "note": "Đọc bằng pdftotext từ PDF đã tải qua WebFetch"
+ },
+ {
+  "block": "th-60",
+  "claim": "TVN 2025",
+  "value": "45.130 tỷ; 660 tỷ; trên 4,05 triệu tấn",
+  "url": "https://tapchicongthuong.vn/tong-cong-ty-thep-viet-nam--dai-hoi-dong-co-dong-thuong-nien-2026--dat-muc-tieu-tang-truong-than-trong-513910.htm",
+  "opened_at": "2026-11-04",
+  "quote": "Doanh thu hợp nhất đạt 45.130 tỷ đồng, vượt 32,7% kế hoạch; lợi nhuận trước thuế đạt 660 tỷ đồng, vượt 135,7%.",
+  "status": "match",
+  "note": "Sản lượng: \"đạt trên 4,05 triệu tấn\""
+ },
+ {
+  "block": "th-60",
+  "claim": "TVN 6T (nguồn 1)",
+  "value": "26.170 tỷ; 652 tỷ; LNTT 718 tỷ; 99%",
+  "url": "https://doanhnhan.baophapluat.vn/vnsteel-tvn-du-chi-hon-203-ty-dong-de-tra-co-tuc-lai-quy-ii-tang-truong-manh.html",
+  "opened_at": "2026-11-04",
+  "quote": "Lũy kế 6 tháng đầu năm 2026, VNSteel đạt 26.170 tỷ đồng doanh thu thuần, tăng 20% so với cùng kỳ. | Lợi nhuận sau thuế đạt 652 tỷ đồng, tăng 75%. | lợi nhuận trước thuế hợp nhất 6 tháng đạt 718 tỷ đồng, tương đương 99% mục tiêu cả năm.",
+  "status": "match",
+  "note": "Nguồn 2 mekongasean: 24.749 tỷ, 650 tỷ. Hai nguồn lệch"
+ },
+ {
+  "block": "th-60",
+  "claim": "TVN 6T (nguồn 2)",
+  "value": "24.749 tỷ; 650 tỷ",
+  "url": "https://mekongasean.vn/vnsteel-lai-dot-bien-tu-cong-ty-lien-doanh-lien-ket-58074.html",
+  "opened_at": "2026-11-04",
+  "quote": "đạt 24.749 tỷ đồng doanh thu thuần, tăng 13% YoY",
+  "status": "match",
+  "note": "Vế sau: \"lợi nhuận sau thuế đạt 650 tỷ đồng, tăng 74% YoY.\""
+ },
+ {
+  "block": "th-60",
+  "claim": "TVN tồn kho 30/6",
+  "value": "7.108 tỷ (nguồn 1); 7.163 tỷ (nguồn 2)",
+  "url": "https://doanhnhan.baophapluat.vn/vnsteel-tvn-du-chi-hon-203-ty-dong-de-tra-co-tuc-lai-quy-ii-tang-truong-manh.html",
+  "opened_at": "2026-11-04",
+  "quote": "hàng tồn kho đạt 7.108 tỷ đồng, tăng 11% so với đầu năm. | từ 6.418 tỷ đồng hồi đầu năm lên 7.163 tỷ đồng",
+  "status": "match",
+  "note": "mekongasean: \"từ 6.418 tỷ đồng hồi đầu năm lên 7.163 tỷ đồng\""
+ },
+ {
+  "block": "th-60",
+  "claim": "TVN vay tài chính 30/6",
+  "value": "9.645 tỷ",
+  "url": "https://mekongasean.vn/vnsteel-lai-dot-bien-tu-cong-ty-lien-doanh-lien-ket-58074.html",
+  "opened_at": "2026-11-04",
+  "quote": "Trong đó chủ yếu là vay nợ tài chính với 9.645 tỷ đồng, giảm 480 tỷ đồng so với đầu năm.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "TVN bán VTM",
+  "value": "46,85%; 1.048,68 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/tong-cong-ty-thep-viet-nam-tvn-chot-gia-ban-lien-doanh-vtm-gan-1-050-ty-dong-du-kien-ghi-nhan-loi-nhuan-ky-luc.html",
+  "opened_at": "2026-11-04",
+  "quote": "chốt mức giá chuyển nhượng toàn bộ 46,85% vốn điều lệ đang nắm giữ tại liên doanh này là 1.048,68 tỷ đồng",
+  "status": "match",
+  "note": "Đã dự phòng 100%. Bài 6/2026 dự kiến ghi Q2; KQ Q2 không thấy, thời điểm ghi nhận chưa xác nhận từ trang mở được"
+ },
+ {
+  "block": "th-60",
+  "claim": "TVN Tisco XDCB dở dang",
+  "value": "hơn 6.723 tỷ",
+  "url": "https://mekongasean.vn/vnsteel-lai-dot-bien-tu-cong-ty-lien-doanh-lien-ket-58074.html",
+  "opened_at": "2026-11-04",
+  "quote": "Chi phí xây dựng cơ bản dở dang tiếp tục neo ở mức cao với hơn 6.723 tỷ đồng.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-13",
+  "claim": "VGS công suất, sản phẩm",
+  "value": "khoảng 1,3 triệu tấn/năm",
+  "url": "https://doanhnhan.baophapluat.vn/phac-hoa-dai-gia-nganh-thep-lan-san-sang-bat-dong-san-van-co-hang-trieu-do-cua-doanh-nhan-dung-sau-de-che-thep-viet-duc-80964.html",
+  "opened_at": "2026-11-04",
+  "quote": "với công suất khoảng 1,3 triệu tấn/năm",
+  "status": "match",
+  "note": "Bài 24/02/2025; 3 dòng: ống thép; tôn cán nguội, tôn mạ; thép xây dựng"
+ },
+ {
+  "block": "th-60",
+  "claim": "VGS Legend City",
+  "value": "62,08ha; 6.269 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/phac-hoa-dai-gia-nganh-thep-lan-san-sang-bat-dong-san-van-co-hang-trieu-do-cua-doanh-nhan-dung-sau-de-che-thep-viet-duc-80964.html",
+  "opened_at": "2026-11-04",
+  "quote": "Dự án có quy mô 62,08ha, với tổng vốn đầu tư lên đến 6.269 tỷ đồng.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-13",
+  "claim": "VGS thị phần 2025",
+  "value": "7,39% ống",
+  "url": "https://bbw.vn/doanh-nghiep/co-phieu-VGS",
+  "opened_at": "2026-11-04",
+  "quote": "Năm 2025 Ống thép Việt Đức nằm trong top 4 nhà máy sản xuất và tiêu thụ ống thép, với thị phần 7,39%",
+  "status": "match",
+  "note": "Công cụ đọc diễn lại; snippet thêm 5% thép XD chưa thấy trên trang"
+ },
+ {
+  "block": "th-14",
+  "claim": "VSA thép thô 7T",
+  "value": "17,92 triệu tấn; +28%",
+  "url": "https://vcci.com.vn/news/thep-tho-tang-truong-28-them-dong-luc-cho-cong-nghiep-che-tao",
+  "opened_at": "2026-11-04",
+  "quote": "sản xuất thép thô của cả nước đạt 17,92 triệu tấn, tăng 28% so với cùng kỳ năm ngoái.",
+  "status": "match",
+  "note": "Mốc VSA mới nhất mở được; 9T chưa có"
+ },
+ {
+  "block": "th-14",
+  "claim": "VSA thành phẩm SX 7T",
+  "value": "21,4 triệu tấn; +15,4%",
+  "url": "https://vcci.com.vn/news/thep-tho-tang-truong-28-them-dong-luc-cho-cong-nghiep-che-tao",
+  "opened_at": "2026-11-04",
+  "quote": "tổng sản lượng sản xuất đạt 21,4 triệu tấn, tăng 15,4% so với cùng kỳ năm 2025.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-14",
+  "claim": "VSA tiêu thụ 7T",
+  "value": "21,186 triệu tấn; +15,6%",
+  "url": "https://vcci.com.vn/news/thep-tho-tang-truong-28-them-dong-luc-cho-cong-nghiep-che-tao",
+  "opened_at": "2026-11-04",
+  "quote": "Tình hình tiêu thụ thép thành phẩm cũng đạt kết quả khả quan với 21,186 triệu tấn, tăng 15,6% so với cùng kỳ.",
+  "status": "match",
+  "note": "SteelOrbis ghi 21,18"
+ },
+ {
+  "block": "th-14",
+  "claim": "Tôn mạ, CRC SX 7T",
+  "value": "-13,5%; -10,2%",
+  "url": "https://vcci.com.vn/news/thep-tho-tang-truong-28-them-dong-luc-cho-cong-nghiep-che-tao",
+  "opened_at": "2026-11-04",
+  "quote": "trong đó sản xuất tôn mạ giảm 13,5% và thép cán nguội giảm 10,2%.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-14",
+  "claim": "Tôn mạ bán 6T",
+  "value": "-9,5%; SX -14,4%",
+  "url": "https://baodautu.vn/san-xuat-va-tieu-thu-thep-nua-dau-nam-2026-tang-truong-but-pha-d650499.html",
+  "opened_at": "2026-11-04",
+  "quote": "ghi nhận mức tăng ở tất cả các mặt hàng trừ thép cán nguội giảm 3,6% và tôn mạ giảm 9,5% | ghi nhận mức tăng ở tất cả các mặt hàng trừ tôn mạ giảm 14,4% và thép cán nguội giảm 6,2%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-14",
+  "claim": "Bán thép XD, HRC 5T",
+  "value": "+15%; +33%",
+  "url": "https://tapchicongthuong.vn/magazine/emagazine--nganh-thep-nua-cuoi-nam-2026--tang-truong-phan-hoa--thi-truong-noi-dia-la-be-do-534350.htm",
+  "opened_at": "2026-11-04",
+  "quote": "với mức tăng trưởng lần lượt là 15% và 33% so với cùng kỳ.",
+  "status": "match",
+  "note": "PSI tổng hợp từ VSA; thứ tự theo tiêu đề mục"
+ },
+ {
+  "block": "th-14",
+  "claim": "Tỷ trọng nội địa",
+  "value": "gần 85%",
+  "url": "https://tapchicongthuong.vn/magazine/emagazine--nganh-thep-nua-cuoi-nam-2026--tang-truong-phan-hoa--thi-truong-noi-dia-la-be-do-534350.htm",
+  "opened_at": "2026-11-04",
+  "quote": "khi kênh này chiếm gần 85% tổng sản lượng tiêu thụ toàn ngành.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-50",
+  "claim": "Xuất khẩu thành phẩm 7T",
+  "value": "6,69 triệu tấn; +4,2%; 4,54 tỷ USD; +7,4%",
+  "url": "https://www.steelorbis.com/steel-news/latest-news/vietnam-maintains-strong-steel-sales-growth-in-jan-july-2026-despite-trade-challenges-1471670.htm",
+  "opened_at": "2026-11-04",
+  "quote": "in January-July period Vietnam's exports of finished steel increased by 4.2 percent to 6.69 million mt, with a value estimated at $4.54 billion, up by 7.4 percent",
+  "status": "match",
+  "note": "VSA Value đổi dấu thập phân sang kiểu Việt, four=4, nine=9."
+ },
+ {
+  "block": "th-50",
+  "claim": "Nhập khẩu thành phẩm 7T",
+  "value": "9 triệu tấn; +4%; 6,68 tỷ USD; +7,5%",
+  "url": "https://www.steelorbis.com/steel-news/latest-news/vietnam-maintains-strong-steel-sales-growth-in-jan-july-2026-despite-trade-challenges-1471670.htm",
+  "opened_at": "2026-11-04",
+  "quote": "the country's imports of finished steel rose by four percent to nine million mt, with a value of $6.68 billion, up 7.5 percent",
+  "status": "match",
+  "note": "Value đổi dấu thập phân sang kiểu Việt, four=4, nine=9."
+ },
+ {
+  "block": "th-50",
+  "claim": "Nhập khẩu thép 9T",
+  "value": "11,58 triệu tấn; +3,5%",
+  "url": "https://www.steelorbis.com/steel-news/latest-news/vietnamssteelimportsdown-110-percent-in-september-2026-from-august-1482643.htm",
+  "opened_at": "2026-11-04",
+  "quote": "In the first nine months of the year, Vietnam's steel imports went up by 3.5 percent year on year to 11.58 million mt",
+  "status": "match",
+  "note": "Hải quan, 9/10/2026 Value đổi dấu thập phân sang kiểu Việt, four=4, nine=9."
+ },
+ {
+  "block": "th-50",
+  "claim": "Nhập khẩu tháng 9",
+  "value": "1,21 triệu tấn; -11,0%",
+  "url": "https://www.steelorbis.com/steel-news/latest-news/vietnamssteelimportsdown-110-percent-in-september-2026-from-august-1482643.htm",
+  "opened_at": "2026-11-04",
+  "quote": "In September this year, Vietnam's steel imports amounted to 1.21 million mt, down 11.0 percent compared to August",
+  "status": "match",
+  "note": "Value đổi dấu thập phân sang kiểu Việt, four=4, nine=9."
+ },
+ {
+  "block": "th-50",
+  "claim": "Nhập phế 9T",
+  "value": "4,66 triệu tấn; +1,8%",
+  "url": "https://www.steelorbis.com/steel-news/latest-news/vietnamssteelimportsdown-110-percent-in-september-2026-from-august-1482643.htm",
+  "opened_at": "2026-11-04",
+  "quote": "its scrap import shipments amounted to 4.66 million mt in the given period, up by 1.8 percent year on year.",
+  "status": "match",
+  "note": "Value đổi dấu thập phân sang kiểu Việt, four=4, nine=9."
+ },
+ {
+  "block": "th-50",
+  "claim": "Thị trường XK 7T",
+  "value": "ASEAN 31,33%; EU 17,5%; Hoa Kỳ 13,64%; Brazil 8,14%; Ấn Độ 6,18%",
+  "url": "https://vcci.com.vn/news/thep-tho-tang-truong-28-them-dong-luc-cho-cong-nghiep-che-tao",
+  "opened_at": "2026-11-04",
+  "quote": "Các thị trường chủ lực tiếp theo gồm Liên minh châu Âu - EU (17,5%), Hoa Kỳ (13,64%), Brazil (8,14%) và Ấn Độ (6,18%).",
+  "status": "match",
+  "note": "ASEAN 31,33% ở câu trước"
+ },
+ {
+  "block": "th-50",
+  "claim": "XK sang EU 6T",
+  "value": "982,78 nghìn tấn; -14,2%; -19,9%",
+  "url": "https://thuehaiquan.tapchikinhtetaichinh.vn/xuat-khau-thep-tang-manh-tai-cac-thi-truong-moi-noi-162223.html",
+  "opened_at": "2026-11-04",
+  "quote": "Lượng xuất khẩu sang thị trường này đạt 982,78 nghìn tấn, kim ngạch đạt 618,13 triệu USD, giảm lần lượt 14,2% về lượng và 19,9% về giá trị so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-50",
+  "claim": "XK sang Mỹ 6T",
+  "value": "+35,1%; +33,7%",
+  "url": "https://thuehaiquan.tapchikinhtetaichinh.vn/xuat-khau-thep-tang-manh-tai-cac-thi-truong-moi-noi-162223.html",
+  "opened_at": "2026-11-04",
+  "quote": "xuất khẩu sang Hoa Kỳ tăng 35,1% về lượng và tăng 33,7% về trị giá so với cùng kỳ",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-50",
+  "claim": "Nhập từ Trung Quốc 5T",
+  "value": "khoảng 2,9 triệu tấn; -19%",
+  "url": "https://tapchicongthuong.vn/magazine/emagazine--nganh-thep-nua-cuoi-nam-2026--tang-truong-phan-hoa--thi-truong-noi-dia-la-be-do-534350.htm",
+  "opened_at": "2026-11-04",
+  "quote": "chỉ còn ở khoảng 2,9 triệu tấn, giảm 19% so với cùng kỳ năm 2025",
+  "status": "match",
+  "note": "Thép chung, không phải riêng HRC"
+ },
+ {
+  "block": "th-51",
+  "claim": "Thép Hòa Phát giá Bắc",
+  "value": "14.920; 14.210 đ/kg",
+  "url": "https://doanhnghiephoinhap.vn/gia-thep-hom-nay-26102026-thi-truong-cuon-can-nong-toan-cau-phan-hoa-ro-ret-152466.html",
+  "opened_at": "2026-11-04",
+  "quote": "Thép Hòa Phát: Thép cuộn CB240 có giá 14.920 đồng/kg; thép thanh vằn D10 CB300 có giá 14.210 đồng/kg.",
+  "status": "match",
+  "note": "26/10/2026, SteelOnline"
+ },
+ {
+  "block": "th-51",
+  "claim": "Thép Hòa Phát giá Nam",
+  "value": "14.920; 14.720 đ/kg",
+  "url": "https://doanhnghiephoinhap.vn/gia-thep-hom-nay-26102026-thi-truong-cuon-can-nong-toan-cau-phan-hoa-ro-ret-152466.html",
+  "opened_at": "2026-11-04",
+  "quote": "Thép Hòa Phát: Thép cuộn CB240 có giá 14.920 đồng/kg; thép thanh vằn D10 CB300 có giá 14.720 đồng/kg.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-51",
+  "claim": "HRC Trung Quốc xuất khẩu",
+  "value": "495 đến 505 USD/tấn FOB",
+  "url": "https://doanhnghiephoinhap.vn/gia-thep-hom-nay-26102026-thi-truong-cuon-can-nong-toan-cau-phan-hoa-ro-ret-152466.html",
+  "opened_at": "2026-11-04",
+  "quote": "giá xuất khẩu HRC nước này tiếp tục trượt giảm tuần thứ tư liên tiếp, dao động trong khoảng 495 đến 505 USD mỗi tấn theo chuẩn FOB.",
+  "status": "match",
+  "note": "Giữa-cuối 10/2026"
+ },
+ {
+  "block": "th-51",
+  "claim": "HRC Mỹ",
+  "value": "1.389 USD/tấn",
+  "url": "https://doanhnghiephoinhap.vn/gia-thep-hom-nay-26102026-thi-truong-cuon-can-nong-toan-cau-phan-hoa-ro-ret-152466.html",
+  "opened_at": "2026-11-04",
+  "quote": "kéo giá HRC nội địa tăng khoảng 4,5% lên ngưỡng 1.389 USD mỗi tấn xuất xưởng.",
+  "status": "match",
+  "note": "Đây là giá MỸ. Tóm tắt của WebSearch gán nhầm thành trong nước; không dùng cho VN"
+ },
+ {
+  "block": "th-51",
+  "claim": "HRC trong nước đầu 9/2026",
+  "value": "13,700-14,150 đồng/kg",
+  "url": "https://elibook.vn/2026/09/11/nganh-xay-dung-vlxd-gia-thep-ton-xi-mang-dong-loat-noi-song-buc-tranh-quy-2-2026-phan-hoa-manh-giua-cac-doanh-nghiep/",
+  "opened_at": "2026-11-04",
+  "quote": "còn giá HRC dao động khoảng 13,700-14,150 đồng/kg",
+  "status": "match",
+  "note": "Mốc mới nhất mở được; viết theo định dạng nguồn, tức 13.700-14.150"
+ },
+ {
+  "block": "th-51",
+  "claim": "HPG tăng giá HRC giao T9",
+  "value": "150 đồng/kg",
+  "url": "https://elibook.vn/2026/09/11/nganh-xay-dung-vlxd-gia-thep-ton-xi-mang-dong-loat-noi-song-buc-tranh-quy-2-2026-phan-hoa-manh-giua-cac-doanh-nghiep/",
+  "opened_at": "2026-11-04",
+  "quote": "Hòa Phát đã tăng giá HRC giao tháng 9 thêm 150 đồng/kg",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-14",
+  "claim": "Chiến lược ngành",
+  "value": "261/QĐ-TTg; 25 - 26 triệu tấn; 32 - 33 triệu tấn; 80 - 85%",
+  "url": "https://vcci.com.vn/news/thep-tho-tang-truong-28-them-dong-luc-cho-cong-nghiep-che-tao",
+  "opened_at": "2026-11-04",
+  "quote": "Quyết định số 261/QĐ-TTg của Thủ tướng Chính phủ ngày 9/2/2026 phê duyệt Chiến lược phát triển ngành thép | sản lượng khoảng 25 - 26 triệu tấn/năm. | đạt sản lượng khoảng 32 - 33 triệu tấn. | cơ bản đáp ứng khoảng 80 - 85% nhu cầu sử dụng trong nước",
+  "status": "match",
+  "note": "Mục tiêu 2030 ở các câu sau cùng bài"
+ },
+ {
+  "block": "th-t1",
+  "claim": "Vốn NSNN 9T",
+  "value": "661,8 nghìn tỷ; 59,9%",
+  "url": "https://thoibaotaichinhvietnam.vn/suc-bat-doanh-nghiep-thep-nhin-tu-ket-qua-quy-iii-205936-205936.html",
+  "opened_at": "2026-11-04",
+  "quote": "vốn đầu tư thực hiện từ nguồn ngân sách nhà nước chín tháng đạt 661,8 nghìn tỷ đồng, bằng 59,9% kế hoạch năm",
+  "status": "match",
+  "note": "Yuanta tổng hợp số thống kê, chỉ lấy dữ kiện. Khác 62,9% của Bộ Tài chính ở xd-42 (khác mẫu số)"
+ },
+ {
+  "block": "th-t1",
+  "claim": "Thép thanh và hình",
+  "value": "+17,1%",
+  "url": "https://thoibaotaichinhvietnam.vn/suc-bat-doanh-nghiep-thep-nhin-tu-ket-qua-quy-iii-205936-205936.html",
+  "opened_at": "2026-11-04",
+  "quote": "sản lượng thép thanh và thép hình tăng 17,1%",
+  "status": "match",
+  "note": "Chín tháng, theo mạch bài"
+ },
+ {
+  "block": "th-t1",
+  "claim": "Nhóm tôn mạ Q2",
+  "value": "17.794 tỷ; -2,1%",
+  "url": "https://stockbiz.vn/tin-tuc/nganh-thep-duoc-mua-khoi-sac-nhat-thoi-hay-bat-dau-chu-ky-moi/41628494",
+  "opened_at": "2026-11-04",
+  "quote": "đạt tổng doanh thu 17.794 tỷ đồng, giảm 2,1% so với cùng kỳ",
+  "status": "match",
+  "note": "Vietnam Finance, 28/8/2026"
+ },
+ {
+  "block": "th-t1",
+  "claim": "Nhóm thương mại Q2",
+  "value": "-28,2%; khoảng 3.974 tỷ",
+  "url": "https://stockbiz.vn/tin-tuc/nganh-thep-duoc-mua-khoi-sac-nhat-thoi-hay-bat-dau-chu-ky-moi/41628494",
+  "opened_at": "2026-11-04",
+  "quote": "Bảy doanh nghiệp thuộc nhóm này ghi nhận tổng doanh thu giảm 28,2%, xuống khoảng 3.974 tỷ đồng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-52",
+  "claim": "CBPG HRC TQ",
+  "value": "1959/QĐ-BCT; 4/7/2025; 23,10% đến 27,83%",
+  "url": "https://moit.gov.vn/tin-tuc/ap-dung-thue-chong-ban-pha-gia-chinh-thuc-doi-voi-mot-so-san-pham-thep-can-nong-co-xuat-xu-tu-cong-hoa-nhan-dan-trung-ho.html",
+  "opened_at": "2026-11-04",
+  "quote": "Quyết định số 1959/QĐ-BCT ... từ 23,10% đến 27,83%",
+  "status": "match",
+  "note": "Ngày 4/7/2025 là ngày ban hành; trang không nêu hiệu lực riêng"
+ },
+ {
+  "block": "th-52",
+  "claim": "Chống lẩn tránh HRC rộng",
+  "value": "612/QĐ-BCT; 17-4-2026; 27,83%; 1.880 mm đến 2.300 mm; tạm thời",
+  "url": "https://tuoitre.vn/saigontimes/viet-nam-ap-thue-gan-28-voi-thep-hrc-kho-rong-trung-quoc/",
+  "opened_at": "2026-11-04",
+  "quote": "Quyết định 612/QĐ-BCT ... biện pháp thuế tạm thời | Công cụ trích: Ngày ban hành 2-4-2026, hiệu lực từ 17-4-2026; mức 27,83%; chiều rộng trên 1.880 mm đến 2.300 mm",
+  "status": "match",
+  "note": "Ban hành 2-4-2026, hiệu lực sau 15 ngày; xd-51 chưa ghi \"tạm thời\""
+ },
+ {
+  "block": "th-52",
+  "claim": "CBPG thép mạ",
+  "value": "2310/QĐ-BCT; 14/8/2025; 37,13%; 12%; 5 năm",
+  "url": "https://caselaw.vn/bai-viet/ap-thue-chong-ban-pha-gia-voi-thep-ma-tu-trung-quoc-han-quoc-chinh-thuc-tu-14-8-2025",
+  "opened_at": "2026-11-04",
+  "quote": "Quyết định 2310/QĐ-BCT ngày 14/8/2025",
+  "status": "match",
+  "note": "Công cụ diễn lại; TQ tối đa 37,13%, Hyundai Steel 12%, POSCO/Dongkuk/Boxing Hengrui miễn"
+ },
+ {
+  "block": "th-52",
+  "claim": "Rà soát HRC",
+  "value": "1902/QĐ-BCT; AR01.AD20; 27/7/2026; 21/10/2026",
+  "url": "https://trungtamwto.vn/chuyen-de/33118-bct-ban-hanh-quyet-dinh-ra-soat-lan-thu-nhat-viec-ap-dung-bien-phap-cbpg-doi-voi-can-nong-co-xuat-xu-tu-trung-quoc-ar01ad20",
+  "opened_at": "2026-11-04",
+  "quote": "Quyết định số 1902/QĐ-BCT; AR01.AD20; ngày 27 tháng 7 năm 2026; ngày 21 tháng 10 năm 2026",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-52",
+  "claim": "Điều tra thanh dự ứng lực",
+  "value": "1903/QĐ-BCT; AD24",
+  "url": "https://trungtamwto.vn/chuyen-de/33117-bct-quyet-dinh-dieu-tra-ap-dung-bien-phap-cbpg-doi-voi-thanh-thep-du-ung-luc-nhap-khau-tu-trung-quoc",
+  "opened_at": "2026-11-04",
+  "quote": "Quyết định số 1903/QĐ-BCT; AD24; Công ty TNHH MTV Thép dự ứng lực Hòa Phát",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-52",
+  "claim": "Mỹ Mục 232",
+  "value": "25% lên 50%; 04/6/2025",
+  "url": "https://trungtamwto.vn/chuyen-de/28961-bien-phap-thue-quan-hoa-ky-ap-dung-doi-voi-nhom-va-thep",
+  "opened_at": "2026-11-04",
+  "quote": "nâng mức thuế đối với các sản phẩm nhôm, thép từ 25% lên 50%. | 04/6/2025: Mức thuế thép được nâng từ 25% lên 50%",
+  "status": "match",
+  "note": "Trang không có cập nhật 2026; không xác nhận còn nguyên đến 11/2026"
+ },
+ {
+  "block": "th-52",
+  "claim": "Mỹ CORE AD HSG",
+  "value": "110.19",
+  "url": "https://www.trade.gov/final-determinations-antidumping-and-countervailing-duty-investigations-corrosion-resistant-steel",
+  "opened_at": "2026-11-04",
+  "quote": "Hoa Sen Group ... 110.19 / 110.19",
+  "status": "match",
+  "note": "Trang Trade.gov, 26/8/2025"
+ },
+ {
+  "block": "th-52",
+  "claim": "Mỹ CORE AD NKG, Hoa Phat Sheet",
+  "value": "94.89",
+  "url": "https://www.trade.gov/final-determinations-antidumping-and-countervailing-duty-investigations-corrosion-resistant-steel",
+  "opened_at": "2026-11-04",
+  "quote": "Nam Kim Steel Joint Stock Company 94.89; Hoa Phat Steel Sheet Limited Liability Company 94.89",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-52",
+  "claim": "Mỹ CORE AD toàn VN",
+  "value": "162.96",
+  "url": "https://www.trade.gov/final-determinations-antidumping-and-countervailing-duty-investigations-corrosion-resistant-steel",
+  "opened_at": "2026-11-04",
+  "quote": "Vietnam-Wide Entity 162.96",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-52",
+  "claim": "Mỹ CORE CVD",
+  "value": "0.30; 1.29; 257.83",
+  "url": "https://www.trade.gov/final-determinations-antidumping-and-countervailing-duty-investigations-corrosion-resistant-steel",
+  "opened_at": "2026-11-04",
+  "quote": "Hao San Group 0.30 (de minimis); All Others 1.29; Vietnam Germany Steel JSC 257.83; VNSTEEL – Vietnam Steel Corp 257.83",
+  "status": "match",
+  "note": "Trang viết \"Hao San\"; \"Vietnam Germany Steel\" được coi là Việt Đức, cần xác nhận"
+ },
+ {
+  "block": "th-52",
+  "claim": "Mỹ lệnh CVD CORE",
+  "value": "December 19, 2025",
+  "url": "https://www.govinfo.gov/content/pkg/FR-2025-12-19/pdf/2025-23430.pdf",
+  "opened_at": "2026-11-04",
+  "quote": "Countervailing Duty Orders ... DATES: Applicable December 19, 2025.",
+  "status": "match",
+  "note": "Đọc bằng pdftotext. Lệnh AD chưa mở được"
+ },
+ {
+  "block": "th-52",
+  "claim": "Mỹ lẩn tránh CORE Indonesia",
+  "value": "27/3/2026; 87.07-162.96",
+  "url": "https://www.steelorbis.com/steel-news/latest-news/us-initiates-circumvention-inquiry-on-core-from-vietnam-1444231.htm",
+  "opened_at": "2026-11-04",
+  "quote": "The current dumping rates are at 87.07-162.96 percent | Date: Friday, 27 March 2026",
+  "status": "match",
+  "note": "Điều tra sản phẩm hoàn thiện ở Indonesia từ cán nguội VN"
+ },
+ {
+  "block": "th-52",
+  "claim": "Mỹ thép thanh VN",
+  "value": "123,49%; 131,53%; 6,8%",
+  "url": "https://news.metal.com/vn/newscontent/104034042-mỹ-ban-hành-phán-quyết-cuối-cùng-về-thuế-chống-bán-phá-giá-và-chống-trợ-cấp-đối-với-thép-thanh-bê-tông-của-việt-nam",
+  "opened_at": "2026-11-04",
+  "quote": "ấn định thuế chống bán phá giá cuối cùng là 123,49% cho bị đơn bắt buộc và 131,53% cho tất cả các nhà xuất khẩu khác | cùng với thuế chống trợ cấp 6,8%",
+  "status": "match",
+  "note": "30/7/2026; chờ ITC, chưa có hiệu lực tại ngày đăng"
+ },
+ {
+  "block": "th-52",
+  "claim": "EU hạn ngạch",
+  "value": "18.35 million; 50%; 25%; July 1, 2026",
+  "url": "https://news.metal.com/newscontent/103885117-SMM-Iron-Steel-EU-Implements-Landmark-Steel-Import-Regulation-with-50-Punitive-Tariff",
+  "opened_at": "2026-11-04",
+  "quote": "a total annual tariff-rate quota of approximately 18.35 million metric tonnes | imports exceeding these quotas will now face a 50% punitive tariff (up from the previous 25% safeguard duty) | scheduled to take effect on July 1, 2026",
+  "status": "match",
+  "note": "Các nguồn khác ghi 18,3 triệu"
+ },
+ {
+  "block": "th-52",
+  "claim": "EU giảm so 2024; mở rộng",
+  "value": "18.3 million; 47%; four; September 30, 2026",
+  "url": "https://news.metal.com/en/newscontent/104044326-eu-consults-on-steel-regulation-scope-posing-new-compliance-risks-for-vietnam",
+  "opened_at": "2026-11-04",
+  "quote": "which cuts duty-free steel import quotas to 18.3 million mt/year, nearly 47% below 2024 levels | The consultation considers adding four product groups, including stainless steel wire ... will remain open until September 30, 2026.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-52",
+  "claim": "EU XK VN 5T",
+  "value": "18.3%; 23.3%",
+  "url": "https://news.metal.com/en/newscontent/104044326-eu-consults-on-steel-regulation-scope-posing-new-compliance-risks-for-vietnam",
+  "opened_at": "2026-11-04",
+  "quote": "Vietnam’s steel exports to the EU already fell 18.3% in volume and 23.3% in value",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-52",
+  "claim": "EU CBAM",
+  "value": "1/7/2026 bối cảnh; 18,3 triệu tấn",
+  "url": "https://24hmoney.vn/news/thep-viet-truoc-luat-choi-moi-cua-eu-c25a2809829.html",
+  "opened_at": "2026-11-04",
+  "quote": "Kể từ 1/7/2026, EU giảm hạn ngạch nhập khẩu thép được miễn thuế xuống còn khoảng 18,3 triệu tấn mỗi năm",
+  "status": "match",
+  "note": "Bài chỉ nói CBAM \"bước sang giai đoạn thực thi đầy đủ\", không có mức giá"
+ },
+ {
+  "block": "th-52",
+  "claim": "EU CBPG cán nguội",
+  "value": "5,6% đến 28%",
+  "url": "https://doanhnghiephoinhap.vn/gia-thep-hom-nay-1082026-thep-quoc-te-nhich-nhe-eu-muon-ap-thue-len-den-28-145854.html",
+  "opened_at": "2026-11-04",
+  "quote": "đề xuất áp thuế chống bán phá giá chính thức từ 5,6% đến 28% đối với thép dẹt cán nguội nhập khẩu",
+  "status": "match",
+  "note": "Có Việt Nam; mức riêng VN chưa có"
+ },
+ {
+  "block": "th-52",
+  "claim": "Australia",
+  "value": "2026/071; May 22, 2026; 2026/088; June 19, 2026",
+  "url": "https://news.metal.com/en/newscontent/103967730-australia-terminates-anti-dumping-probe-on-south-korean-vietnamese-galvanised-steel-sheets",
+  "opened_at": "2026-11-04",
+  "quote": "On June 19, 2026, the Australian Anti-Dumping Commission issued Notice No. 2026/088 | Previously, on May 22, 2026, the Commission issued Notice No. 2026/071, initiating an anti-dumping investigation",
+  "status": "match",
+  "note": "Kết thúc sau khi BlueScope rút đơn"
+ },
+ {
+  "block": "th-52",
+  "claim": "Canada TRQ",
+  "value": "20%; 75%; 50%; 28 June 2026; 27 June 2027",
+  "url": "https://taxnews.ey.com/news/2026-1505-canada-extends-steel-tariff-measures-for-an-additional-year",
+  "opened_at": "2026-11-04",
+  "quote": "A 50% surtax continues to apply to imports exceeding quota limits. | TRQs continue to be based on 20% of 2024 volumes for partners without a free trade agreement (FTA) with Canada | The TRQs apply from 28 June 2026 to 27 June 2027",
+  "status": "match",
+  "note": "20% non-FTA, 75% FTA ngoài CUSMA"
+ },
+ {
+  "block": "th-52",
+  "claim": "Canada OCTG",
+  "value": "RR-2025-006; 22/10/2026",
+  "url": "https://thuehaiquan.tapchikinhtetaichinh.vn/canada-tiep-tuc-ap-thue-chong-ban-pha-gia-voi-ong-thep-dan-dau-viet-nam-170609.html",
+  "opened_at": "2026-11-04",
+  "quote": "ngày 22/10/2026, Tòa án Thương mại quốc tế Canada (CITT) ban hành Quyết định và Bản giải trình kết luận rà soát | Văn bản mang số hiệu RR-2025-006 (công cụ đọc diễn lại)",
+  "status": "match",
+  "note": "Mức thuế không có trong bài"
+ },
+ {
+  "block": "th-t1",
+  "claim": "HPG thép XD Q3",
+  "value": "hơn 1,3 triệu tấn; +26%",
+  "url": "https://tapchicongthuong.vn/hoa-phat-ban-hon-10-3-trieu-tan-thep-trong-9-thang--tang-39--so-voi-cung-ky-nam-truoc-557317.htm",
+  "opened_at": "2026-11-04",
+  "quote": "sản lượng bán hàng thép xây dựng và thép cuộn chất lượng cao đạt hơn 1,3 triệu tấn, tăng 2% so với quý 2 và tăng 26% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-60",
+  "claim": "HSG Q3 NĐTC LNST",
+  "value": "382 tỷ",
+  "url": "https://hoasengroup.vn/vi/bai-viet/hsg-uoc-hoan-thanh-114-ke-hoach-loi-nhuan-ndtc-2025-2026-sau-09-thang/",
+  "opened_at": "2026-11-04",
+  "quote": "sản lượng ước đạt 461.739 tấn, doanh thu thuần ước đạt 10.000 tỷ đồng và lợi nhuận sau thuế ước đạt 382 tỷ đồng.",
+  "status": "match",
+  "note": "Số ước"
+ },
+ {
+  "block": "th-52",
+  "claim": "CBPG HRC hiệu lực, thời hạn",
+  "value": "6/7; 5 năm; 23,1% đến 27,83%",
+  "url": "https://theleader.vn/chinh-thuc-ap-thue-chong-ban-pha-gia-thep-hrc-tu-trung-quoc-d41055.html",
+  "opened_at": "2026-11-04",
+  "quote": "Biện pháp này có hiệu lực kể từ ngày 6/7 và kéo dài trong thời gian 5 năm. | trong khoảng từ 23,1% đến 27,83%",
+  "status": "match",
+  "note": "Năm 2025 theo sapo. xd-51 ghi hiệu lực 04/07/2025 là ngày ban hành: lệch 2 ngày"
+ }
+]

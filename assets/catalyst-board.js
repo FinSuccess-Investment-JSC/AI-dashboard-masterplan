@@ -3,8 +3,8 @@
 (() => {
   'use strict';
   const pane=document.querySelector('.majorpane[data-tab="mt5"]');if(!pane)return;
-  const bank=document.body.dataset.sector==='bank',power=document.body.dataset.sector==='power',re=document.body.dataset.sector==='realestate',tx=document.body.dataset.sector==='textile',pt=document.body.dataset.sector==='port',ag=document.body.dataset.sector==='agri',sf=document.body.dataset.sector==='seafood',sh=document.body.dataset.sector==='shipping',xd=document.body.dataset.sector==='construction',bh=document.body.dataset.sector==='insurance',bl=document.body.dataset.sector==='retail',ph=document.body.dataset.sector==='pharma',oil=!power&&!re&&!tx&&!pt&&!ag&&!sf&&!sh&&!xd&&!bh&&!bl&&!ph&&!!document.getElementById('chCurve');
-  const sector=bank?'bank':power?'power':re?'realestate':tx?'textile':pt?'port':ag?'agri':sf?'seafood':sh?'shipping':xd?'construction':bh?'insurance':bl?'retail':ph?'pharma':oil?'oil':'sugar';
+  const bank=document.body.dataset.sector==='bank',power=document.body.dataset.sector==='power',re=document.body.dataset.sector==='realestate',tx=document.body.dataset.sector==='textile',pt=document.body.dataset.sector==='port',ag=document.body.dataset.sector==='agri',sf=document.body.dataset.sector==='seafood',sh=document.body.dataset.sector==='shipping',st=document.body.dataset.sector==='steel',xd=st||document.body.dataset.sector==='construction',bh=document.body.dataset.sector==='insurance',bl=document.body.dataset.sector==='retail',ph=document.body.dataset.sector==='pharma',oil=!power&&!re&&!tx&&!pt&&!ag&&!sf&&!sh&&!xd&&!bh&&!bl&&!ph&&!!document.getElementById('chCurve');
+  const sector=bank?'bank':power?'power':re?'realestate':tx?'textile':pt?'port':ag?'agri':sf?'seafood':sh?'shipping':st?'steel':xd?'construction':bh?'insurance':bl?'retail':ph?'pharma':oil?'oil':'sugar';
   const make=(tag,cls,text)=>{const n=document.createElement(tag);n.className=cls;if(text)n.textContent=text;return n};
   const num=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
   const date=v=>/^\d{4}-\d{2}-\d{2}/.test(v||'')?v.slice(8,10)+'/'+v.slice(5,7)+'/'+v.slice(0,4):v||'Chưa có kỳ';
@@ -16,7 +16,7 @@
   const heading=make('div','sectionhead'),headingText=make('div','');headingText.append(make('h2','','Catalyst / Risk'),make('p','','Kết luận hiện tại, tín hiệu đo được và các mốc sắp tới.'));heading.append(headingText);board.append(heading);
   function keys(buttons,select){buttons.forEach((b,i)=>b.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const j=e.key==='Home'?0:e.key==='End'?buttons.length-1:(i+(e.key==='ArrowRight'?1:buttons.length-1))%buttons.length;select(j);buttons[j].focus()}))}
   const signals=make('div','thesis-view');signals.id='thesis-signals';board.append(signals);
-  const stamp=bank?'11/09/2026':power?'06/10/2026':pt||ag||sf?'09/10/2026':sh?'10/10/2026':ph?'12/10/2026':xd||bh||bl||ph?'11/10/2026':re||tx?'08/10/2026':oil?'03/09/2026':'17/08/2026';
+  const stamp=st?'04/11/2026':bank?'11/09/2026':power?'06/10/2026':pt||ag||sf?'09/10/2026':sh?'10/10/2026':ph?'12/10/2026':xd||bh||bl||ph?'11/10/2026':re||tx?'08/10/2026':oil?'03/09/2026':'17/08/2026';
   // One page: signals first, then original KPI table and the dated AI analysis under clear folds.
   const fold=(id,title,note)=>{const d=make('details','thesis-fold');d.id=id;const s=make('summary','',title);d.append(s);const body=make('div','thesis-fold-body');if(note)body.append(make('p','thesis-notice',note));d.append(body);return {d,body}};
   const kpi=fold('thesis-evidence','Bảng KPI & ngưỡng theo dõi');
@@ -307,7 +307,7 @@
       events:[['20/10','Khai mạc kỳ họp QH: Luật Đất đai sửa đổi'],['20–30/10','BCTC quý III'],['Đầu tháng','NSO: CPI, FDI, GDP quý'],['Hằng tháng','HNX/VBMA: TPDN đáo hạn'],['Cuối T11','Bộ Xây dựng: thị trường Q3']]
     });
   }else if(tx||pt||ag||sf||sh||xd||bh||bl||ph){
-    let score;if(pt||ag||sf||sh||xd||bh||bl||ph){const BR=pt?window.PORT_BRIEF:ag?window.AGRI_BRIEF:sh?window.SHIPPING_BRIEF:xd?window.CONSTRUCTION_BRIEF:bh?window.INSURANCE_BRIEF:bl?window.RETAIL_BRIEF:ph?window.PHARMA_BRIEF:window.SEAFOOD_BRIEF;score=BR?.score||[];renderBrief(BR||{headline:'Thiếu dữ liệu',segs:[],headers:[],score:[],events:[]})}else{
+    let score;if(pt||ag||sf||sh||xd||bh||bl||ph){const BR=pt?window.PORT_BRIEF:ag?window.AGRI_BRIEF:sh?window.SHIPPING_BRIEF:st?window.STEEL_BRIEF:xd?window.CONSTRUCTION_BRIEF:bh?window.INSURANCE_BRIEF:bl?window.RETAIL_BRIEF:ph?window.PHARMA_BRIEF:window.SEAFOOD_BRIEF;score=BR?.score||[];renderBrief(BR||{headline:'Thiếu dữ liệu',segs:[],headers:[],score:[],events:[]})}else{
     // Thesis delta: one row per variable that is moving — evidence (latest number), direction, who gains/loses, what would reverse it.
     const T=window.TEXTILE_DASHBOARD||{},M=window.TEXTILE_PUBLIC?.blocks?.macro?.series||{},Cm=window.TEXTILE_PUBLIC?.blocks?.commodity?.series||{},Sec=window.TEXTILE_PUBLIC?.blocks?.sector_ratio?.by_sector||{};
     const R=k=>M[k]?.records||Cm[k]?.records||[];

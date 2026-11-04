@@ -34,7 +34,8 @@ SECTORS = {
     'seafood': ['soymeal', 'corn'],
     'textile': ['cotton_ice'],
     'shipping': ['brent'],
-    'construction': ['iron_ore', 'coal_newcastle'],
+    'construction': ['coal_newcastle'],
+    'steel': ['iron_ore'],
     'port': [], 'pharma': [], 'insurance': [], 'realestate': [],
 }
 GLOBAL = {s: s.upper() + '_PUBLIC' for s in SECTORS}
@@ -86,7 +87,8 @@ QUARTERLY = {k for k in NSO if k.startswith(('gdp_', 'ppi_'))}
 GDP_SINCE = '2024-01'  # earlier quarters were revised a lot after release; the workbooks only hold the release vintage
 MACRO = {
     'agri': ['retail_goods', 'cpi_food', 'cpi_bev', 'beer', 'fresh_milk', 'milk_powder', 'feed', 'iip_food', 'iip_bev'],
-    'construction': ['pub_inv', 'pub_inv_central', 'pub_inv_local', 'pub_inv_moc', 'cement_output', 'steel_rolled', 'steel_bar', 'iip_nonmetal', 'iip_metal', 'gdp_construction_nominal', 'gdp_construction_real'],
+    'construction': ['pub_inv', 'pub_inv_central', 'pub_inv_local', 'pub_inv_moc', 'cement_output', 'iip_nonmetal', 'gdp_construction_nominal', 'gdp_construction_real'],
+    'steel': ['steel_rolled', 'steel_bar', 'iip_metal'],
     'insurance': ['car_output', 'moto_output'],
     'port': ['sea_freight', 'overseas_freight', 'air_freight', 'inland_freight', 'ppi_handling', 'ppi_warehouse', 'ppi_sea'],
     'realestate': ['cpi_housing_index', 'cpi_housing_yoy', 'iip_mfg_yoy', 'gdp_re_q', 'gdp_re_ytd', 'gdp_construction_q'],
@@ -134,11 +136,11 @@ CUS_NAMES = {
     'imp_materials': 'Nhập khẩu nguyên phụ liệu dệt, may, da, giày', 'exp_textile_us': 'Xuất khẩu hàng dệt, may sang Hoa Kỳ',
     'exp_textile_jp': 'Xuất khẩu hàng dệt, may sang Nhật Bản', 'exp_textile_kr': 'Xuất khẩu hàng dệt, may sang Hàn Quốc',
     'exp_textile_cn': 'Xuất khẩu hàng dệt, may sang Trung Quốc', 'exp_yarn_us': 'Xuất khẩu xơ, sợi sang Hoa Kỳ',
-    'import_drugs': 'Nhập khẩu dược phẩm', 'import_api': 'Nhập khẩu nguyên phụ liệu dược phẩm',
+    'steel_import': 'Nhập khẩu sắt thép các loại', 'import_drugs': 'Nhập khẩu dược phẩm', 'import_api': 'Nhập khẩu nguyên phụ liệu dược phẩm',
 }
 CUSTOMS = {
     'agri': ['exp_rice', 'exp_coffee', 'exp_rubber', 'imp_corn', 'imp_soy', 'imp_feed', 'imp_milk'],
-    'construction': ['cement_export', 'steel_export'], 'port': ['exports', 'imports'], 'shipping': ['exports', 'imports'],
+    'construction': ['cement_export'], 'steel': ['steel_export', 'steel_import'], 'port': ['exports', 'imports'], 'shipping': ['exports', 'imports'],
     'retail': ['car_import'], 'seafood': ['exp_seafood', 'exp_us', 'exp_cn', 'exp_jp', 'exp_kr'],
     'textile': ['exp_textile', 'exp_footwear', 'exp_yarn', 'imp_fabric', 'imp_cotton', 'imp_yarn', 'imp_materials',
                 'exp_textile_us', 'exp_textile_jp', 'exp_textile_kr', 'exp_textile_cn', 'exp_yarn_us'],
@@ -146,7 +148,7 @@ CUSTOMS = {
 }
 TEXTILE_YEARLY = {'y_us': 'exp_textile_us', 'y_jp': 'exp_textile_jp', 'y_kr': 'exp_textile_kr', 'y_cn': 'exp_textile_cn',
                   'y_de': 'exp_textile_de', 'y_nl': 'exp_textile_nl', 'y_uk': 'exp_textile_uk', 'y_ca': 'exp_textile_ca'}
-SHFE = {'construction': {'hrc': 'hc', 'hrc_fut': 'hc', 'rebar_cn': 'rb', 'asphalt': 'bu'}, 'shipping': {'fuel_oil_cn': 'fu'}}
+SHFE = {'construction': {'asphalt': 'bu'}, 'steel': {'hrc': 'hc', 'rebar_cn': 'rb'}, 'shipping': {'fuel_oil_cn': 'fu'}}
 
 
 def customs_series(sector):
@@ -356,6 +358,8 @@ def build_series(key, cache, F):
     return {'name': name, 'unit': unit, 'time_type': 'monthly', 'source': src, 'url': url, 'records': recs}
 
 
+STEEL_WI_MACRO = ('steel_rolled', 'steel_bar', 'steel_export', 'iip_metal')
+STEEL_WI_COMMODITY = ('rebar_hpg', 'hrc', 'hrc_fut', 'iron_ore', 'coke', 'scrap')
 WI_SRC = {'source': 'WiData (WiMCP)', 'url': 'https://widata.vn/'}
 
 
@@ -367,6 +371,11 @@ def merge_wi(sector, blocks):
     if not f.exists():
         return []
     wi, filled = json.loads(f.read_text()).get('blocks', {}), []
+    if sector == 'construction':  # thép đã tách sang dashboard Thép (04/11/2026)
+        for name, keys in (('macro', STEEL_WI_MACRO), ('commodity', STEEL_WI_COMMODITY)):
+            for k in keys:
+                ((wi.get(name) or {}).get('series') or {}).pop(k, None)
+        ((wi.get('sector_ratio') or {}).get('by_sector') or {}).pop('281', None)
     for name in ('macro', 'commodity'):
         for k, v in ((wi.get(name) or {}).get('series') or {}).items():
             have = ((blocks.get(name) or {}).get('series') or {}).get(k)

@@ -20,7 +20,8 @@ SINCE = '2024-01-01'
 BASKETS = {
     'agri': {'282': ('Cao su', 'GVR DPR PHR'), '239': ('Sữa', 'VNM'), '240': ('Chăn nuôi, chế biến thịt', 'DBC HAG BAF'),
              '120': ('Bia', 'SAB'), '235': ('Thức ăn chăn nuôi', 'DBC'), '241': ('Thực phẩm đóng gói', 'MSN KDC')},
-    'construction': {'281': ('Thép', 'HPG HSG NKG'), '264': ('Xi măng', 'HT1 BCC'), '260': ('Đá, VLXD', 'KSB DHA VLB PLC'),
+    'steel': {'281': ('Thép xây dựng & HRC', 'HPG POM TVN'), '282': ('Tôn mạ & ống', 'HSG NKG VGS'), '283': ('Thương mại thép', 'TLH SMC')},
+    'construction': {'264': ('Xi măng', 'HT1 BCC'), '260': ('Đá, VLXD', 'KSB DHA VLB PLC'),
                      '170': ('Hạ tầng, cầu đường', 'C4G LCG HHV CII HUT'), '171': ('Xây dựng công trình', 'CTD HBC VCG FCN DPG')},
     'insurance': {'151': ('Nhân thọ (BVH)', 'BVH'), '285': ('Phi nhân thọ', 'PVI BMI MIG PTI BIC'), '154': ('Tái bảo hiểm', 'VNR')},
     'port': {'309': ('Cảng', 'GMD PHP SGP VSC CDN DVP PDN'), '185': ('Vận tải biển', 'HAH'),

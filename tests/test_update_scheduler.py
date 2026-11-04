@@ -224,7 +224,7 @@ class RegistryTests(unittest.TestCase):
 
     def test_every_dashboard_block_is_scheduled(self):
         covered = {b for i in self.reg['items'] for b in i['where'].get('blocks', [])}
-        for page in ('Dau-khi', 'Sugar', 'Dien', 'Bat-dong-san', 'Det-may', 'Cang-bien', 'Nong-nghiep', 'Thuy-san', 'Van-tai-bien', 'Xay-dung', 'Bao-hiem', 'Ban-le', 'Duoc'):
+        for page in ('Dau-khi', 'Sugar', 'Dien', 'Bat-dong-san', 'Det-may', 'Cang-bien', 'Nong-nghiep', 'Thuy-san', 'Van-tai-bien', 'Thep', 'Xay-dung', 'Bao-hiem', 'Ban-le', 'Duoc'):
             text = (ROOT / page / 'index.html').read_text(encoding='utf-8')
             for block, kind in re.findall(r'data-block-id="([^"]+)" data-update-kind="([^"]+)"', text):
                 with self.subTest(block):

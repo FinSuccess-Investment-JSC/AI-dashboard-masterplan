@@ -31,7 +31,7 @@ SPEC = {
     'exp_seafood': ('2X', None, r'^hàng thủy sản|^hàng thuỷ sản', 'v'),
     'exp_textile': ('2X', None, r'^hàng dệt,? may', 'v'), 'exp_footwear': ('2X', None, r'^giày dép', 'v'),
     'exp_yarn': ('2X', None, r'^xơ,? sợi dệt', 'v'), 'cement_export': ('2X', None, r'^clanhke và xi măng|^clinker và xi măng', 'v'),
-    'steel_export': ('2X', None, r'^sắt thép các loại', 'v'),
+    'steel_export': ('2X', None, r'^sắt thép các loại', 'v'), 'steel_import': ('2N', None, r'^sắt thép các loại', 'v'),
     'imp_corn': ('2N', None, r'^ngô', 'v'), 'imp_soy': ('2N', None, r'^đậu tương', 'v'),
     'imp_feed': ('2N', None, r'^thức ăn gia súc', 'v'), 'imp_milk': ('2N', None, r'^sữa và sản phẩm sữa', 'v'),
     'imp_fabric': ('2N', None, r'^vải các loại', 'v'), 'imp_cotton': ('2N', None, r'^bông các loại', 'v'),

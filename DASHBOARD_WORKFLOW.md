@@ -369,3 +369,12 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 
 - Mọi card chart có nút **Chia sẻ ảnh** (module chung `assets/share-image.js`, nạp sau `chart-cards.js` ở mọi trang ngành; Stock dashboard dùng bản giống hệt ở `_template/share-image.js`, người dùng chốt 22/10/2026): bấm vào tạo ảnh PNG. Ảnh: logo ngay trên góc trái của chart, tên mã/ngành canh phải theo mép chart; cắt sát nội dung, ít khoảng trắng; ảnh nét (Chart.js vẽ lại mật độ cao khi chụp); khung dọc 4:5 vẽ lại chart hẹp và cao hơn để lấp đầy; không viền, không thanh chân (link nằm trong caption); giữ thanh Chu kỳ/Số kỳ, bỏ cụm nút Trục. (chốt 22/10/2026); chọn khung **Ngang 16:9** (X · Telegram · Zalo) hoặc **Dọc 4:5** (Facebook · Instagram); caption soạn sẵn, sửa được; các nút **Chia sẻ…** (điện thoại mở thẳng Zalo/Telegram/Facebook/X, caption chép sẵn), **Tải ảnh**, **Chép ảnh**, **Chép caption**. Không gắn nút cho card chủ yếu là bảng dài (>12 dòng hiển thị). Chart mới tự có nút khi nằm trong `.card`/`.viz-block`; không viết bản sao logic theo trang.
 - Sửa module ở một repo thì chép y nguyên sang repo kia.
+
+## 30. Dashboard Thép, tách khỏi Xây dựng (04/11/2026)
+
+- **Phạm vi:** 8 mã: Thép xây dựng & HRC (HPG, POM, TVN) · Tôn mạ & ống (HSG, NKG, VGS) · Thương mại thép (TLH, SMC). 6 tab chuẩn, không tab riêng; sub-tab Bức tranh ngành **Nguyên liệu / Thép xây dựng / HRC & tôn mạ / Xuất nhập khẩu**.
+- **Trang:** `Thep/index.html` (`data-sector="steel"`), renderer `assets/steel-dashboard.js` (`window.STEEL_BRIEF`). Mã card `th-*`, lịch `steel.*`, evidence `data/steel/evidence.json`.
+- **Wi:** `data/steel-wi-contract.json` → `scripts/build_steel_wi.py`, raw ở `data/raw/wi/steel/`. Số Q3 của TVN, VGS, SMC, TLH trong `th-60` lấy từ BCTC Wi, ghi "(Wi)" trên trang.
+- **Xây dựng:** bỏ thép, bỏ tab Giải ngân đầu tư công; sub-tab Bức tranh ngành **Đầu tư công / Xi măng / Đá & cát / Nhựa đường / Kính & gạch / Xây dựng & hạ tầng**. `merge_wi` chặn chuỗi thép khỏi `construction`.
+- **Khoảng trống:** VSA 9T, XK 9T theo lượng, chuỗi HRC trong nước, thị phần tôn mạ, HRC nhập từ Trung Quốc, POM Q3, Stock Analysis không có POM, TVN.
+

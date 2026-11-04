@@ -1,0 +1,94 @@
+{
+ "schema": 1,
+ "about": "Các lời gọi WiMCP cho dashboard Thép. Routine Claude gọi lại đúng các lời gọi này, rồi chạy scripts/build_steel_wi.py. Không chép tay số.",
+ "calls": [
+  {
+   "block": "commodity_steel",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "74362,74143,74403,203129,73987,203142",
+    "from_time": "2024-01-01",
+    "to_time": "2026-11-04",
+    "limit": 800
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "Wi nén chuỗi ngày về cuối tháng. to_time = hôm nay khi gọi lại."
+  },
+  {
+   "block": "macro_steel",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "82122,196303",
+    "from_time": "2024-01-01",
+    "to_time": "2026-11-04",
+    "limit": 60
+   },
+   "cadence": "monthly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "to_time = hôm nay khi gọi lại."
+  }
+ ],
+ "indicators": {
+  "74362": [
+   "rebar_hpg",
+   "Thép CB300 D10 Hòa Phát",
+   "nghìn VND/kg",
+   "monthly"
+  ],
+  "74143": [
+   "ton_lanh",
+   "Tôn lạnh Hoa Sen 45mm",
+   "nghìn VND/m2",
+   "monthly"
+  ],
+  "74403": [
+   "scrap",
+   "Thép phế",
+   "USD/tấn",
+   "monthly"
+  ],
+  "203129": [
+   "coke",
+   "Than cốc",
+   "CNY/tấn",
+   "monthly"
+  ],
+  "73987": [
+   "iron_ore_cny",
+   "Quặng sắt giao ngay",
+   "CNY/tấn",
+   "monthly"
+  ],
+  "203142": [
+   "galv_cn",
+   "Tấm thép mạ kẽm nhúng nóng Trung Quốc",
+   "CNY/tấn",
+   "monthly"
+  ],
+  "82122": [
+   "crude_vn",
+   "Sản lượng sắt, thép thô Việt Nam",
+   "nghìn tấn",
+   "monthly"
+  ],
+  "196303": [
+   "crude_cn",
+   "Sản lượng thép thô Trung Quốc",
+   "10 nghìn tấn",
+   "monthly"
+  ]
+ }
+}

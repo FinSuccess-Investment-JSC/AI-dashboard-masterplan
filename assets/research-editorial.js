@@ -38,6 +38,7 @@ const strategies={
  seafood:[],
  shipping:[],
  construction:[],
+ steel:[],
  insurance:[],
  retail:[],
  pharma:[],
@@ -56,7 +57,7 @@ function filter(){list.querySelectorAll(':scope > .research-topic').forEach(n=>n
 const empty=make('p','research-caption','Chưa có chủ đề trong nhóm này.');hot.append(empty);active.onclick=()=>{view='active';filter()};archive.onclick=()=>{view='archived';filter()};list.addEventListener('lifecyclechange',filter);
 function topic(key,title,content,initial={}){const c=make('article','research-topic');c.append(...content);list.append(c);const f=fold(c,title,{all:true,open:true});editor(c,key,'topic',{title,...initial});return c;}
 if(sector==='oil')topic('hormuz','Hormuz · dòng chảy & tác động',old);
-else if(sector==='power'||sector==='realestate'||sector==='textile'||sector==='port'||sector==='agri'||sector==='seafood'||sector==='shipping'||sector==='construction'||sector==='insurance'||sector==='retail'||sector==='pharma')old.filter(n=>n.dataset?.topicKey).forEach(n=>{const t=topic(n.dataset.topicKey,n.dataset.topicTitle,[...n.children]);if(n.dataset.topicSegment)t.dataset.segment=n.dataset.topicSegment});
+else if(sector==='power'||sector==='realestate'||sector==='textile'||sector==='port'||sector==='agri'||sector==='seafood'||sector==='shipping'||sector==='construction'||sector==='steel'||sector==='insurance'||sector==='retail'||sector==='pharma')old.filter(n=>n.dataset?.topicKey).forEach(n=>{const t=topic(n.dataset.topicKey,n.dataset.topicTitle,[...n.children]);if(n.dataset.topicSegment)t.dataset.segment=n.dataset.topicSegment});
 else if(sector==='bank'){
  const news=document.getElementById('bank-news');if(news)topic('bank-news','Tin & công bố doanh nghiệp',[news]);
 }

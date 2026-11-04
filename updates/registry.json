@@ -3256,9 +3256,278 @@
    ]
   },
   {
+   "id": "steel.public.monthly",
+   "tier": "A",
+   "title": "sản lượng thép cán, thép thanh, IIP kim loại, XK NK sắt thép",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     3,
+     15
+    ]
+   },
+   "publication": "NSO ngày 3 hằng tháng (vốn NSNN, sản lượng); XK theo Hải quan; tín dụng NHNN chậm 1–2 tháng; GDP theo quý",
+   "source": {
+    "name": "Cục Thống kê (NSO), Cục Hải quan, NHNN",
+    "url": "https://www.nso.gov.vn/bao-cao-tinh-hinh-kinh-te-xa-hoi-hang-thang/"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "file": "data/steel-public-data.js",
+    "blocks": [
+     "th-13",
+     "th-30"
+    ]
+   },
+   "how": "python3 scripts/fetch_nso.py && python3 scripts/fetch_customs.py && python3 scripts/fetch_sbv.py → build_sector_public.py (chạy trong refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "steel.public.weekly",
+   "tier": "A",
+   "title": "HRC, thép thanh SHFE, quặng IMF",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Giá ngày, hiển thị cuối tháng; xi măng, đá giá tháng",
+   "source": {
+    "name": "SHFE, IMF (FRED), Sina, Sở Xây dựng Hà Nội",
+    "url": "https://www.shfe.com.cn/"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "file": "data/steel-public-data.js",
+    "blocks": [
+     "th-20",
+     "th-21"
+    ]
+   },
+   "how": "python3 scripts/fetch_shfe.py && python3 scripts/fetch_markets.py && python3 scripts/fetch_sxd_hanoi.py → build_sector_public.py (chạy trong refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "refresh-data.yml (mỗi lượt refresh)",
+   "note": "Còn trống: thép CB300 Hòa Phát, thép phế. Xi măng, đá, cát: Hà Nội theo quý, lịch sử từ Q3/2026"
+  },
+  {
+   "id": "steel.public.valuation",
+   "tier": "A",
+   "title": "P/E, P/B rổ mã thép theo phiên",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Theo phiên giao dịch",
+   "source": {
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "file": "data/steel-public-data.js",
+    "blocks": [
+     "th-03"
+    ]
+   },
+   "how": "python3 scripts/build_sector_public.py (gọi sector_valuation_public; chạy trong refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "steel.policy",
+   "tier": "C",
+   "title": "phòng vệ thương mại thép, thuế Mỹ, EU",
+   "schedule": {
+    "type": "watch",
+    "note": "Mốc: 12/2026 khởi công ĐSTĐC; hết 2026 thuế XK clinker 5%"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Bộ Công Thương – phòng vệ thương mại",
+    "url": "https://trav.gov.vn/"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "blocks": [
+     "th-50",
+     "th-51"
+    ],
+    "file": null
+   },
+   "how": "Mở văn bản/thông cáo gốc; cập nhật bảng và evidence.",
+   "gates": [
+    "Mở văn bản gốc",
+    "Ghi ngày hiệu lực"
+   ],
+   "watch": [
+    "news.public-investment"
+   ]
+  },
+  {
+   "id": "steel.companies",
+   "tier": "C",
+   "status": "manual",
+   "title": "kế hoạch, kết quả, công suất 8 mã thép",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "BCTC quý; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "BCTC công bố",
+    "url": "https://www.hsx.vn/"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "blocks": [
+     "th-60",
+     "th-14",
+     "th-23",
+     "th-31",
+     "th-01",
+     "th-04",
+     "th-90"
+    ],
+    "file": null
+   },
+   "how": "Khi người dùng nhắn: cập nhật bảng th-60, th-61 và evidence.",
+   "gates": [
+    "Link BCTC hoặc bài dẫn"
+   ]
+  },
+  {
+   "id": "steel.hot-topics",
+   "tier": "C",
+   "title": "chủ đề nóng ngành thép",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Báo Đầu tư",
+    "url": "https://baodautu.vn/"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "blocks": [
+     "th-t1",
+     "th-t2",
+     "th-t3",
+     "th-t4"
+    ],
+    "file": null
+   },
+   "how": "Thêm mốc mới có ngày và link.",
+   "gates": [
+    "Mỗi dòng có ngày + link"
+   ]
+  },
+  {
+   "id": "steel.ai.cycle",
+   "tier": "D",
+   "title": "vị trí chu kỳ ngành thép",
+   "schedule": {
+    "type": "data",
+    "sources": [],
+    "minDays": 7,
+    "material": [],
+    "note": "Viết lại khi có số giải ngân tháng mới, giá thép/HRC đổi ≥5%, hoặc BCTC quý"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "blocks": [
+     "th-02"
+    ],
+    "file": null
+   },
+   "how": "Cập nhật th-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/steel-dashboard.js.",
+   "gates": [
+    "Số khớp chart",
+    "Không đụng ô analyst"
+   ]
+  },
+  {
+   "id": "steel.wi.weekly",
+   "tier": "B",
+   "title": "Wi: CB300, tôn Hoa Sen, thép phế, than cốc, quặng, mạ kẽm TQ",
+   "wiBlocks": [
+    "commodity_steel"
+   ],
+   "wiContract": "data/steel-wi-contract.json",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Giá ngày, hiển thị cuối tháng; xi măng, đá giá tháng",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "file": "data/steel-public-data.js",
+    "blocks": [
+     "th-10",
+     "th-20",
+     "th-21"
+    ]
+   },
+   "how": "Gọi lại đúng lời gọi trong data/steel-wi-contract.json, đặt to_time = hôm nay, lưu vào data/raw/wi/steel/, rồi python3 scripts/build_steel_wi.py và python3 scripts/build_sector_public.py.",
+   "gates": [
+    "Không chép tay số"
+   ]
+  },
+  {
+   "id": "steel.wi.monthly",
+   "tier": "B",
+   "title": "Wi: thép thô Việt Nam, thép thô Trung Quốc",
+   "wiBlocks": [
+    "macro_steel"
+   ],
+   "wiContract": "data/steel-wi-contract.json",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     3,
+     15
+    ]
+   },
+   "publication": "NSO ngày 3 hằng tháng (vốn NSNN, sản lượng); XK theo Hải quan; tín dụng NHNN chậm 1–2 tháng; GDP theo quý",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "file": "data/steel-public-data.js",
+    "blocks": [
+     "th-11"
+    ]
+   },
+   "how": "Gọi lại đúng lời gọi trong data/steel-wi-contract.json, đặt to_time = hôm nay, lưu vào data/raw/wi/steel/, rồi python3 scripts/build_steel_wi.py và python3 scripts/build_sector_public.py.",
+   "gates": [
+    "Không chép tay số"
+   ]
+  },
+  {
    "id": "construction.public.monthly",
    "tier": "A",
-   "title": "vốn NSNN thực hiện, sản lượng thép, xi măng, IIP, XK thép, clinker, tín dụng, GDP xây dựng",
+   "title": "vốn NSNN thực hiện, sản lượng xi măng, IIP, XK clinker, tín dụng, GDP xây dựng",
    "schedule": {
     "type": "monthly",
     "at": "07:00",
@@ -3276,14 +3545,13 @@
     "page": "Xay-dung/index.html",
     "file": "data/construction-public-data.js",
     "blocks": [
-     "xd-11",
-     "xd-12",
      "xd-20",
      "xd-21",
      "xd-30",
      "xd-31",
      "xd-40",
-     "xd-41"
+     "xd-41",
+     "xd-25"
     ]
    },
    "how": "python3 scripts/fetch_nso.py && python3 scripts/fetch_customs.py && python3 scripts/fetch_sbv.py → build_sector_public.py (chạy trong refresh-data.yml)",
@@ -3296,7 +3564,7 @@
   {
    "id": "construction.public.weekly",
    "tier": "A",
-   "title": "thép CB300 Hòa Phát, HRC, quặng, than cốc, than Newcastle, thép phế, nhựa đường; xi măng, đá (Sở XD)",
+   "title": "nhựa đường, than Newcastle; xi măng, đá (Sở XD)",
    "schedule": {
     "type": "weekly",
     "day": "mon",
@@ -3311,7 +3579,6 @@
     "page": "Xay-dung/index.html",
     "file": "data/construction-public-data.js",
     "blocks": [
-     "xd-10",
      "xd-22",
      "xd-24"
     ]
@@ -3402,10 +3669,8 @@
    "where": {
     "page": "Xay-dung/index.html",
     "blocks": [
-     "xd-13",
      "xd-23",
-     "xd-50",
-     "xd-51"
+     "xd-50"
     ]
    },
    "how": "Mở văn bản/thông cáo gốc; cập nhật bảng và evidence.",
@@ -3460,7 +3725,10 @@
     "page": "Xay-dung/index.html",
     "blocks": [
      "xd-60",
-     "xd-61"
+     "xd-61",
+     "xd-63",
+     "xd-64",
+     "xd-65"
     ]
    },
    "how": "Khi người dùng nhắn: cập nhật bảng xd-60, xd-61 và evidence.",
@@ -3486,7 +3754,6 @@
     "page": "Xay-dung/index.html",
     "blocks": [
      "xd-t1",
-     "xd-t2",
      "xd-t3",
      "xd-t4"
     ]
@@ -4977,8 +5244,6 @@
     "page": "Xay-dung/index.html",
     "file": "data/construction-public-data.js",
     "blocks": [
-     "xd-11",
-     "xd-12",
      "xd-20",
      "xd-21",
      "xd-30",
@@ -5014,7 +5279,6 @@
     "page": "Xay-dung/index.html",
     "file": "data/construction-public-data.js",
     "blocks": [
-     "xd-10",
      "xd-22"
     ]
    },

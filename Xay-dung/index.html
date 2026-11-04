@@ -293,34 +293,34 @@ body{font-size:14px;line-height:1.45}
 </style>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=e1d9226005a8">
 <script src="../assets/chart-types.js?v=50918dba25a4"></script>
-<script src="../data/daily-data.js?v=51557c721f18" defer></script>
+<script src="../data/daily-data.js?v=288a05bc7995" defer></script>
 <script src="../assets/value-chain.js?v=339f4d32329d" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
-<script src="../assets/sector-runtime.js?v=82b412aede70" defer></script>
-<script src="../assets/sector-content.js?v=be87392226ce" defer></script>
-<script src="../assets/sector-layout.js?v=d4f03a9e83c6" defer></script>
-<script src="../data/construction-public-data.js?v=1441a062e1c4" defer></script>
+<script src="../assets/sector-runtime.js?v=05b8df0a22cc" defer></script>
+<script src="../assets/sector-content.js?v=649051e35a0c" defer></script>
+<script src="../assets/sector-layout.js?v=6017726b6ba1" defer></script>
+<script src="../data/construction-public-data.js?v=2c97c115e64c" defer></script>
 <script src="../assets/sector-visuals.js?v=9bed10f3c811" defer></script>
-<script src="../assets/construction-dashboard.js?v=fa9771464f40" defer></script>
+<script src="../assets/construction-dashboard.js?v=7932561ae698" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/share-image.js?v=2c2d147a8ede" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="../assets/catalyst-board.js?v=094eb9fdd23f" defer></script>
+<script src="../assets/catalyst-board.js?v=e7beeca8313c" defer></script>
 <script src="../assets/sector-smart.js?v=14dcf541db5c" defer></script>
-<script src="../data/company-valuation.js?v=5d7a1a4849f3" defer></script>
-<script src="../data/company-comparison.js?v=da55ec1899aa" defer></script>
-<script src="../data/company-quarterly.js?v=b63f5a57e104" defer></script>
+<script src="../data/company-valuation.js?v=4ca32f468104" defer></script>
+<script src="../data/company-comparison.js?v=c9d828705ad2" defer></script>
+<script src="../data/company-quarterly.js?v=e5f7b013d9e5" defer></script>
 <script src="../assets/company-trend.js?v=0886441afdd7" defer></script>
 <script src="../assets/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="../assets/research-layout.js?v=91a0f661e4c2" defer></script>
+<script src="../assets/research-layout.js?v=3ff58b320779" defer></script>
 <script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
-<script src="../assets/research-editorial.js?v=dac2ec8ce2ed" defer></script>
-<script src="../assets/pane-subtabs.js?v=3cb7c73fbf7e" defer></script>
+<script src="../assets/research-editorial.js?v=a6a143b2a9de" defer></script>
+<script src="../assets/pane-subtabs.js?v=8665923e5b27" defer></script>
 <script src="../assets/table-fold.js?v=9c78488b28f6" defer></script>
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
 <script src="../assets/source-gap.js?v=02afdd3cfa3d" defer></script>
-<script src="../assets/site-navigation.js?v=403a1b3402d0" data-release="20261103T115804Z-hydro"></script>
+<script src="../assets/site-navigation.js?v=204d79b7124d" data-release="20261104-steel"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=610eedc1dae9">
@@ -371,131 +371,148 @@ body[data-sector="construction"] .tx-group{margin:18px 0 8px;font-size:12px;lett
 <div class="container">
   <section class="hero">
     <h1>Bức tranh ngành xây dựng, vật liệu xây dựng và <em>đầu tư công</em></h1>
-    <p>Đầu tư công là cầu đi trước: vốn ngân sách đến nhà thầu hạ tầng, rồi kéo đá, nhựa đường, xi măng, thép 1–3 quý sau. Vật liệu ăn chênh lệch giá bán với nguyên liệu; nhà thầu ăn biên mỏng và chịu rủi ro phải thu.</p>
+    <p>Đầu tư công là cầu đi trước: vốn ngân sách đến nhà thầu hạ tầng, rồi kéo đá, nhựa đường, xi măng 1–3 quý sau. Vật liệu ăn chênh lệch giá bán với nguyên liệu; nhà thầu ăn biên mỏng và chịu rủi ro phải thu.</p>
     <div class="tagrow">
       <span class="tag">Bản nghiên cứu: 11/10/2026</span>
       <span class="tag">Vốn NSNN, sản lượng: <a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a></span>
-      <span class="tag">Giá thép, quặng, than: IMF/FRED, ICE (một phần); còn lại tạm trống</span>
+      <span class="tag">Than: ICE · nhựa đường: SHFE · xi măng, đá: Sở Xây dựng Hà Nội</span>
     </div>
     <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm trống (chưa có nguồn công khai thay thế).</div>
   </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
-    <div class="sectionhead"><div><h2>1. Tổng quan ngành xây dựng · VLXD · đầu tư công</h2><p>Ba nhóm: thép (HPG, HSG, NKG), xi măng và vật liệu (HT1, BCC, VLB, KSB, DHA, PLC, VGC), xây dựng và hạ tầng (CTD, HBC, VCG, FCN, DPG, C4G, LCG, HHV, CII, HUT).</p></div></div>
+    <div class="sectionhead"><div><h2>1. Tổng quan ngành xây dựng · VLXD · đầu tư công</h2><p>Hai nhóm: xi măng và vật liệu (HT1, BCC, VLB, KSB, DHA, PLC, VGC), xây dựng và hạ tầng (CTD, HBC, VCG, FCN, DPG, C4G, LCG, HHV, CII, HUT). Thép ở <a href="../Thep/">dashboard Thép</a>.</p></div></div>
     <section class="grid kpis">
       <div class="kpi"><div class="label">Vốn NSNN thực hiện lũy kế</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-pub"></div></div>
-      <div class="kpi"><div class="label">Thép CB300 Hòa Phát</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-rebar"></div></div>
-      <div class="kpi"><div class="label">HRC Trung Quốc</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-hrc"></div></div>
+      <div class="kpi"><div class="label">Xi măng PCB40 Hà Nội</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-cprice"></div></div>
+      <div class="kpi"><div class="label">Than Newcastle</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-coal"></div></div>
       <div class="kpi"><div class="label">Sản lượng xi măng</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-cement"></div></div>
       <div class="kpi"><div class="label">Nhựa đường</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-asphalt"></div></div>
-      <div class="kpi"><div class="label">P/E thép</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pe"></div></div>
+      <div class="kpi"><div class="label">P/E xi măng</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pe"></div></div>
     </section>
     <div class="grid two">
       <div class="card" data-block-id="xd-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
         <h3 style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3>
-        <p style="font-size:12.5px;line-height:1.6;margin:0">20 doanh nghiệp theo ba nhóm: thép, xi măng và vật liệu, xây dựng và hạ tầng.</p>
+        <p style="font-size:12.5px;line-height:1.6;margin:0">17 doanh nghiệp theo hai nhóm: xi măng và vật liệu, xây dựng và hạ tầng.</p>
       </div>
       <div class="card" data-block-id="xd-02" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3 style="margin-top:0;font-size:13.5px">Vị trí trong chu kỳ</h3>
         <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Đầu tư công ở pha tăng tốc.</mark> Giải ngân 9T/2026 <b>643 nghìn tỷ, 62,9% kế hoạch</b>, cao hơn cùng kỳ 12,9 điểm % (+202,6 nghìn tỷ). Kế hoạch 2026 <b>1,02 triệu tỷ</b>, lần đầu vượt 1 triệu tỷ. GTTT ngành xây dựng 9T <b>+12,22%</b>.</p>
-        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Khối lượng đi trước, biên đi sau.</mark> Thép thanh, xi măng tăng sản lượng; nhưng nhựa đường, than đắt hơn 40–50% so cùng kỳ, nhà thầu đường (C4G, LCG) có biên gộp giảm. Nhà thầu dân dụng có backlog kỷ lục (CTD ~65 nghìn tỷ) nhưng nợ vay, phải thu tăng cùng.</p>
+        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Khối lượng đi trước, biên đi sau.</mark> Xi măng tăng sản lượng; nhưng nhựa đường, than đắt hơn 40–50% so cùng kỳ, nhà thầu đường (C4G, LCG) có biên gộp giảm. Nhà thầu dân dụng có backlog kỷ lục (CTD ~65 nghìn tỷ) nhưng nợ vay, phải thu tăng cùng.</p>
         <p style="font-size:12.5px;line-height:1.65;margin-bottom:0"><mark class="key-phrase">Đợt dự án tiếp theo đã có tên.</mark> Đường sắt tốc độ cao Bắc–Nam (1,71 triệu tỷ): Bộ Xây dựng nhắm khởi công <b>12/2027</b> (trước đây 12/2026); Long Thành khai thác <b>1/12/2026</b>; cao tốc 3.345 km, dự kiến ~5.962 km năm 2030.</p>
         <div class="source-note">Nguồn: <a href="https://baolaocai.vn/giai-ngan-von-dau-tu-cong-9-thang-nam-2026-mot-so-bo-nganh-dia-phuong-con-cham-post910995.html" target="_blank" rel="noopener">Bộ Tài chính qua Báo Lào Cai</a> · <a href="https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/10/thong-cao-bao-chi-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/" target="_blank" rel="noopener">NSO quý III</a> · <a href="https://baodautu.vn/coteccons-uoc-tinh-doanh-thu-hon-30000-ty-dong-trong-nam-tai-chinh-2025---2026-d620896.html" target="_blank" rel="noopener">Báo Đầu tư – CTD</a> · <a href="https://www.sggp.org.vn/nghi-quyet-chu-truong-dau-tu-du-an-duong-sat-toc-do-cao-bac-nam-post773752.html" target="_blank" rel="noopener">SGGP</a> · <a href="https://nguoiquansat.vn/chinh-thuc-chot-thoi-gian-khoi-cong-sieu-du-an-duong-sat-toc-do-cao-bac-nam-228320.html" target="_blank" rel="noopener">Người Quan sát</a> · <a href="https://vietnamfinance.vn/san-bay-long-thanh-van-hanh-thu-nghiem-tu-thang-9-khai-thac-tu-thang-12-d148249.html" target="_blank" rel="noopener">VietnamFinance</a> · <a href="https://baodautu.vn/se-uu-tien-mo-rong-cac-tuyen-cao-toc-2-lan-xe-len-4-lan-xe-hoan-chinh-d663911.html" target="_blank" rel="noopener">Báo Đầu tư – cao tốc</a></div>
       </div>
     </div>
     <div class="card sector-valuation" style="margin-top:14px" data-block-id="xd-03" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
-        <div class="chart-title">P/B thép, xi măng, đá, xây dựng — theo phiên</div>
+        <div class="chart-title">P/B xi măng, đá, xây dựng — theo phiên</div>
         <div class="chart-sub">lần · rổ mã theo dõi (VNDirect) · mỗi 5 phiên · P/E ở bảng</div>
         <div id="chSectorVal"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-sector-val"></table></div></details>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="xd-04" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
       <h3 style="margin-top:0;font-size:13.5px">Doanh nghiệp theo dõi và biến quyết định của từng nhóm</h3>
-      <div class="tablewrap"><table><thead><tr><th>Nhóm</th><th>Mã</th><th>Doanh thu đến từ</th><th>Biến quyết định</th></tr></thead><tbody><tr><td><b>Thép</b></td><td>HPG · HSG · NKG</td><td>HPG: thép xây dựng, HRC, phôi (lò cao Dung Quất); HSG, NKG: tôn mạ từ HRC mua ngoài, xuất khẩu lớn</td><td>Giá thép trong nước so quặng, than cốc · HRC Trung Quốc · thuế CBPG · thuế Mỹ, EU</td></tr><tr><td><b>Xi măng & VLXD</b></td><td>HT1 · BCC · VLB · KSB · DHA · PLC · VGC</td><td>Xi măng; đá xây dựng từ mỏ; nhựa đường; kính, gạch, sứ</td><td>Khối lượng đầu tư công · giá than, nhựa đường · giấy phép mỏ · dư cung xi măng</td></tr><tr><td><b>Xây dựng & hạ tầng</b></td><td>CTD · HBC · FCN · DPG · VCG · C4G · LCG · HHV · CII · HUT</td><td>Thi công dân dụng, nhà xưởng; cầu đường đầu tư công; thu phí BOT</td><td>Backlog, ký mới · giải ngân · nợ vay, phải thu · lưu lượng BOT</td></tr></tbody></table></div>
+      <div class="tablewrap"><table><thead><tr><th>Nhóm</th><th>Mã</th><th>Doanh thu đến từ</th><th>Biến quyết định</th></tr></thead><tbody><tr><td><b>Xi măng & VLXD</b></td><td>HT1 · BCC · VLB · KSB · DHA · PLC · VGC</td><td>Xi măng; đá xây dựng từ mỏ; nhựa đường; kính, gạch, sứ</td><td>Khối lượng đầu tư công · giá than, nhựa đường · giấy phép mỏ · dư cung xi măng</td></tr><tr><td><b>Xây dựng & hạ tầng</b></td><td>CTD · HBC · FCN · DPG · VCG · C4G · LCG · HHV · CII · HUT</td><td>Thi công dân dụng, nhà xưởng; cầu đường đầu tư công; thu phí BOT</td><td>Backlog, ký mới · giải ngân · nợ vay, phải thu · lưu lượng BOT</td></tr></tbody></table></div>
       <div class="source-note">P/E, P/B, vốn hóa cập nhật mỗi phiên (VNDirect); số BCTC chỉ cập nhật khi người dùng yêu cầu.</div>
     </div>
   </div>
   <div class="majorpane" data-tab="mt2" id="pane-mt2">
   <section class="section">
-    <div class="sectionhead"><div><h2>2. Cung – Cầu</h2><p>Ba nhóm: thép, xi măng và vật liệu, xây dựng và hạ tầng.</p></div></div>
-    <h3 class="subhead">Thép</h3>
-    <div class="grid two">
-      <div class="card" data-block-id="xd-10" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="snapshot">
-        <div class="chart-title">Giá thép và nguyên liệu</div>
-        <div class="chart-sub">chỉ số T1/2024 = 100 · cuối tháng</div>
-        <div id="chSteelPrice"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-steel-price"></table></div></details>
+    <div class="sectionhead"><div><h2>2. Cung – Cầu</h2><p>Đầu tư công là cầu chung; mỗi nhóm vật liệu có tab riêng.</p></div></div>
+    <h3 class="subhead">Đầu tư công</h3>
+    <div class="grid two" style="margin-top:14px"><div class="card" data-block-id="xd-40" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Vốn NSNN thực hiện theo tháng</div>
+        <div class="chart-sub">nghìn tỷ đồng · Trung ương và địa phương</div>
+        <div id="chPubInv"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-pub-inv"></table></div></details>
       </div>
-      <div class="card" data-block-id="xd-11" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">Sản lượng thép cán và thép xây dựng</div>
-        <div class="chart-sub">nghìn tấn · theo tháng</div>
-        <div id="chSteelOut"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-steel-out"></table></div></details>
-      </div>
+<div class="card" data-block-id="xd-41" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Lũy kế từ đầu năm, so các năm</div>
+        <div class="chart-sub">nghìn tỷ đồng · cộng dồn theo tháng</div>
+        <div id="chPubYtd"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-pub-ytd"></table></div></details>
+      </div></div>
+    <div class="card" style="margin-top:14px" data-block-id="xd-42" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+      <div class="chart-title">Kế hoạch so giải ngân</div>
+      <div class="chart-sub">nghìn tỷ đồng · Bộ Tài chính</div>
+      <div id="chPubPlan" style="max-width:680px"></div>
+      <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>2025</th><th>2026</th><th>Nguồn</th></tr></thead><tbody><tr><td>Kế hoạch Thủ tướng giao</td><td>905.481,7 tỷ</td><td><b>1.022.607 tỷ</b></td><td><a href="https://thoibaotaichinhvietnam.vn/dau-an-dieu-hanh-quyet-liet-va-nen-tang-cho-but-pha-nam-2026-191834.html" target="_blank" rel="noopener">TBTCVN</a> · <a href="https://baolaocai.vn/giai-ngan-von-dau-tu-cong-9-thang-nam-2026-mot-so-bo-nganh-dia-phuong-con-cham-post910995.html" target="_blank" rel="noopener">Báo Lào Cai</a></td></tr><tr><td>Giải ngân đến 30/9</td><td>~440,4 nghìn tỷ (suy ra)</td><td><b>642.961,6 tỷ (62,9%)</b></td><td>Báo Lào Cai, dẫn báo cáo 818/BC-BTC 02/10/2026</td></tr><tr><td>Giải ngân đến 15/10</td><td>—</td><td><b>660.739,5 tỷ (64,6%)</b></td><td><a href="https://thoibaotaichinhvietnam.vn/giai-ngan-von-dau-tu-cong-dat-64-6-ke-hoach-205662-205662.html" target="_blank" rel="noopener">TBTCVN 20/10/2026</a> (văn bản 16767/BTC-ĐTPT)</td></tr><tr><td>Giải ngân cả năm (đến 31/1 năm sau)</td><td>858.621,8 tỷ (94,8%)</td><td>—</td><td>TBTCVN</td></tr><tr><td>Tỷ lệ 9T nếu loại 5% NSĐP tiết kiệm cho ĐS Lào Cai – HN – HP</td><td>—</td><td>64,8% của 991.931,6 tỷ</td><td>Báo Lào Cai</td></tr></tbody></table></div></details>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Giải ngân 9T/2025 suy ra từ chênh lệch Bộ Tài chính công bố (+202.559,3 tỷ). Số NSO (vốn thực hiện, chart trên) và số Bộ Tài chính (giải ngân theo kế hoạch) khác phạm vi nên không bằng nhau.</div></details>
     </div>
-    <div class="grid two" style="margin-top:14px">
-      <div class="card" data-block-id="xd-12" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">Xuất khẩu sắt thép</div>
-        <div class="chart-sub">triệu USD · theo tháng</div>
-        <div id="chSteelExp"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-steel-exp"></table></div></details>
-      </div>
-      <div class="card" data-block-id="xd-13" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-        <div class="chart-title">Cung thép: công suất mới</div>
-        <div class="chart-sub">kỳ công bố gần nhất</div>
-        <div class="tablewrap"><table class="compare-table"><thead><tr><th>Doanh nghiệp</th><th>Công suất / sản lượng</th><th>Ý nghĩa</th></tr></thead><tbody><tr><td>Hòa Phát (sau Dung Quất 2)</td><td><b>16 triệu tấn/năm</b>; 9T/2026 thép thô 10,7 triệu tấn (+35%), HRC bán 5,47 triệu tấn (+59%) (<a href="https://thoibaotaichinhvietnam.vn/hoa-phat-ban-hon-10-3-trieu-tan-thep-trong-9-thang-205266.html" target="_blank" rel="noopener">TBTC, 13/10/2026</a>)</td><td>Cung HRC trong nước tăng mạnh, thay hàng nhập Trung Quốc</td></tr><tr><td>Hòa Phát – nhà máy ray & thép đặc biệt</td><td>700.000 tấn/năm, hoàn thành gần 70% (9/2026), ray đầu tiên dự kiến Q1/2027</td><td>Đón đường sắt tốc độ cao</td></tr><tr><td>Nam Kim – Tôn Nam Kim Phú Mỹ</td><td>1,3 triệu tấn/năm (vốn 6.200 tỷ), GĐ1 vận hành 2026; hiện hữu 1,0 triệu tấn</td><td>Công suất tôn mạ NKG tăng hơn gấp đôi</td></tr><tr><td>Thị phần thép xây dựng</td><td>Hòa Phát số 1 với <b>36%</b> (6T/2026)</td><td>—</td></tr></tbody></table></div>
-        <div class="source-note">Nguồn: <a href="https://www.vietnamplus.vn/hoa-phat-san-xuat-7-trieu-tan-thep-trong-nua-dau-nam-2026-tang-36-post1123152.vnp" target="_blank" rel="noopener">VietnamPlus 09/07</a> · <a href="https://www.vietnamplus.vn/nha-may-san-xuat-ray-va-thep-cua-hoa-phat-da-hoan-thanh-gan-70-tien-do-post1137607.vnp" target="_blank" rel="noopener">VietnamPlus 22/09</a> · <a href="https://tapchicongthuong.vn/chuan-bi-van-hanh--sieu--du-an-phu-my--thep-nam-kim--nkg--ky-vong-but-toc-tu-quy-3-2026-518977.htm" target="_blank" rel="noopener">Tạp chí Công Thương</a></div>
-      </div>
-    </div>
-    <h3 class="subhead">Xi măng & VLXD</h3>
-    <div class="grid two">
-      <div class="card" data-block-id="xd-20" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+    <h3 class="subhead">Xi măng</h3>
+    <div class="grid two" style="margin-top:14px"><div class="card" data-block-id="xd-20" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
         <div class="chart-title">Sản lượng xi măng</div>
         <div class="chart-sub">triệu tấn · theo tháng</div>
         <div id="chCement"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-cement"></table></div></details>
       </div>
-      <div class="card" data-block-id="xd-23" data-update-kind="document" data-cadence="yearly" data-refresh-status="snapshot">
+<div class="card" data-block-id="xd-23" data-update-kind="document" data-cadence="yearly" data-refresh-status="snapshot">
         <div class="chart-title">Cung – cầu xi măng 2025</div>
         <div class="chart-sub">triệu tấn/năm · công suất so tiêu thụ</div>
         <div id="chCementSD"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>Số</th><th>Nguồn</th></tr></thead><tbody><tr><td>Công suất</td><td>trên 130 triệu tấn/năm</td><td><a href="https://thuonghieucongluan.com.vn/xi-mang-viet-nam-tim-them-du-dia-xuat-khau-khi-thi-truong-my-tang-toc-a332321.html" target="_blank" rel="noopener">TH&amp;CL</a></td></tr><tr><td>Tiêu thụ nội địa 2025</td><td>~75 triệu tấn (+14–15%)</td><td><a href="https://baodauthau.vn/doanh-nghiep-xi-mang-rong-cua-tang-truong-nam-2026-post191331.html" target="_blank" rel="noopener">Báo Đấu thầu</a></td></tr><tr><td>Xuất khẩu xi măng + clinker 2025</td><td>37,5 triệu tấn, 1,37 tỷ USD; 7T/2026 22,5 triệu tấn (+13%)</td><td>TH&amp;CL</td></tr><tr><td>Thuế xuất khẩu clinker</td><td>giảm 10% → 5% đến hết 2026</td><td><a href="https://thesaigontimes.vn/saigontimes/thue-xuat-khau-clinker-xi-mang-duoc-giam-con-5/" target="_blank" rel="noopener">Saigon Times</a></td></tr></tbody></table></div></details>
-      </div>
-    </div>
-    <div class="grid two" style="margin-top:14px">
-      <div class="card" data-block-id="xd-21" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+      </div></div>
+    <div class="grid two" style="margin-top:14px"><div class="card" data-block-id="xd-21" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
         <div class="chart-title">Xuất khẩu clinker và xi măng</div>
         <div class="chart-sub">triệu USD · theo tháng</div>
         <div id="chCementExp"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-cement-exp"></table></div></details>
-      </div>
-      <div class="card" data-block-id="xd-22" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="snapshot">
-        <div class="chart-title">Giá vật liệu và nhiên liệu</div>
-        <div class="chart-sub">chỉ số T1/2024 = 100 · cuối tháng</div>
-        <div id="chVlxdPrice"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-vlxd-price"></table></div></details>
-      </div>
-      <div class="card" data-block-id="xd-24" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+      </div></div>
+    <div class="card" style="margin-top:14px" data-block-id="xd-61" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Xi măng: công suất, kế hoạch, kết quả 6T/2026</h3>
+      <div class="tablewrap"><table><thead><tr><th>Mã</th><th>Công suất / mỏ</th><th>Kế hoạch 2026 (DT / LN, tỷ)</th><th>KQ 6T/2026 (LNST, tỷ · YoY · %KH)</th><th>Động lực, rủi ro</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>HT1</b></td><td>KH SX clinker 4,24 triệu tấn, xi măng 6,57 triệu tấn; thị phần ~33% Trung – Nam</td><td>7.979 / 400,9 (+46%)</td><td><b>216 · gấp 2,1 · 54%</b>; Q2 138 (+23%)</td><td>Phát điện nhiệt khí thải giảm ~30% chi phí điện; giá than +20–30%</td><td><a href="https://doanhnhan.baophapluat.vn/xi-mang-vicem-ha-tien-ht1-bao-lai-quy-ii-tang-23-hoan-thanh-hon-mot-nua-ke-hoach-nam-sau-6-thang.html" target="_blank" rel="noopener">DN&amp;PL</a> · <a href="https://doanhnhan.baophapluat.vn/xi-mang-vicem-ha-tien-ht1-dat-muc-tieu-lai-nam-2026-hon-400-ty-dong.html" target="_blank" rel="noopener">DN&amp;PL KH</a></td></tr><tr><td><b>BCC</b></td><td>Clinker 3,1 triệu tấn, nghiền 4 triệu tấn</td><td>3.584 / LNTT 47</td><td>Lỗ ~2 (Q1 lỗ 10, Q2 lãi 11, −83%)</td><td>Ngành chạy ~77% công suất; đợt tăng giá tháng 10</td><td><a href="https://fireant.vn/tin-tuc/ong-lon-xi-mang-bao-lai-tang-manh-nhom-dn-van-thua-lo-keo-dai/41472106" target="_blank" rel="noopener">FireAnt</a> · <a href="https://vietbao.vn/don-hang-tro-lai-vi-sao-loi-nhuan-cua-doanh-nghiep-xi-mang-van-mong-604887.html" target="_blank" rel="noopener">Việt Báo</a></td></tr></tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>HT1 có hai số doanh thu 6T lệch nhau giữa các báo (4.121 và 4.435 tỷ) — bảng không ghi doanh thu.</div></details>
+    </div>
+    <h3 class="subhead">Đá &amp; cát</h3>
+    <div class="grid two" style="margin-top:14px"><div class="card" data-block-id="xd-24" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
         <div class="chart-title">Giá xi măng, đá, cát công bố tại Hà Nội</div>
         <div class="chart-sub">VND, chưa VAT · trung vị các điểm công bố · theo quý</div>
         <div id="chSxd"></div>
         <div class="tablewrap"><table id="tbl-sxd"></table></div>
-      </div>
+      </div></div>
+    <div class="card" style="margin-top:14px" data-block-id="xd-62" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+      <div class="chart-title">Giá vật liệu tại công trình phía Nam</div>
+      <div class="chart-sub">kỳ công bố gần nhất</div>
+      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Vật liệu</th><th>Giá</th><th>Khu vực, thời điểm</th><th>Nguồn</th></tr></thead><tbody><tr><td>Xi măng</td><td><b>+50.000–70.000 đ/tấn</b> (Vicem Hà Tiên +50.000 từ 10/10/2026)</td><td>Miền Trung, phía Nam; đợt trước +50.000 từ 10/5/2026</td><td><a href="https://nguoiquansat.vn/gia-xi-mang-trong-nuoc-tang-manh-den-100-000-dong-319068.html" target="_blank" rel="noopener">Người Quan sát</a> · <a href="https://www.tinnhanhchungkhoan.vn/suc-ep-chi-phi-de-nang-doanh-nghiep-tiep-tuc-tang-gia-ban-xi-mang-post389772.html" target="_blank" rel="noopener">TNCK</a></td></tr><tr><td>Đá 1x2 giao dịch</td><td><b>750.000 – dưới 1 triệu đ/m³</b> (đầu năm 350–500 nghìn)</td><td>Phía Nam, 8/2026</td><td><a href="https://nhadautu.vn/gia-cat-da-tang-manh-doanh-nghiep-so-huu-mo-lon-but-toc-loi-nhuan-d107091.html" target="_blank" rel="noopener">Nhà đầu tư</a></td></tr><tr><td>Đá 1x2 giá tại mỏ</td><td>145.400–221.000 đ/tấn</td><td>Đồng Nai, phụ lục giá từ 6/2026</td><td><a href="https://baodauthau.vn/gia-vat-lieu-xay-dung-tiep-tuc-bien-dong-nha-thau-tim-giai-phap-giu-tien-do-thi-cong-post203052.html" target="_blank" rel="noopener">Báo Đấu thầu</a></td></tr><tr><td>Cát xây dựng</td><td>500–550 nghìn đ/m³</td><td>Phía Nam, 8/2026</td><td>Nhà đầu tư</td></tr></tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Giá đá giao dịch tại công trình cao gấp 3–5 lần giá tại mỏ do phí vận chuyển và khan hiếm; chênh lệch này là phần doanh nghiệp có mỏ (VLB, KSB, DHA) hưởng một phần khi tăng giá bán. Chưa có giá nhựa đường theo đ/tấn trong nguồn mở được.</div></details>
     </div>
-    <h3 class="subhead">Xây dựng & hạ tầng</h3>
-    <div class="grid two">
-      <div class="card" data-block-id="xd-30" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+    <div class="card" style="margin-top:14px" data-block-id="xd-63" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Đá: mỏ, kế hoạch, kết quả 6T/2026</h3>
+      <div class="tablewrap"><table><thead><tr><th>Mã</th><th>Công suất / mỏ</th><th>Kế hoạch 2026 (DT / LN, tỷ)</th><th>KQ 6T/2026 (LNST, tỷ · YoY · %KH)</th><th>Động lực, rủi ro</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>VLB</b></td><td>5 mỏ, trữ lượng >86 triệu m³, 5,7 triệu m³/năm; cấp đá Long Thành 1,6 triệu m³</td><td>1.411 / LNTT 280</td><td><b>449 · LNTT 561 = 2 lần KH</b> (gồm 344 tỷ hoàn tiền cấp quyền, một lần)</td><td>Giá tính thuế tài nguyên 90.000 → 123.000 đ/m³; cổ tức 2025 49%</td><td><a href="https://doanhnhan.baophapluat.vn/xay-dung-va-san-xuat-vat-lieu-xay-dung-bien-hoa-vlb-bao-lai-rong-quy-ii-2026-dat-374-ty-dong-hoan-nhap-344-ty-dong-tien-cap-quyen-khai-thac.html" target="_blank" rel="noopener">DN&amp;PL</a> · <a href="https://24hmoney.vn/news/dhdcd-vlb-loi-nhuan-tang-vot-nho-xac-dinh-lai-tien-cap-quyen-khai-thac-khoang-san-c1a2795420.html" target="_blank" rel="noopener">24hMoney</a></td></tr><tr><td><b>KSB</b></td><td>Đá 2026 ~4 triệu m³; Tân Mỹ 2,2 triệu m³/năm</td><td>1.018 / LNTT 208</td><td>128,6 · +63% (BCTC)</td><td>Giá bán +5.000–8.000 đ/tấn; <b>giấy phép mỏ Phước Vĩnh hết 6/2027</b>; chào bán 114,4 triệu cp</td><td><a href="https://nhadautu.vn/gia-cat-da-tang-manh-doanh-nghiep-so-huu-mo-lon-but-toc-loi-nhuan-d107091.html" target="_blank" rel="noopener">Nhà đầu tư</a> · <a href="https://doanhnhan.baophapluat.vn/khoang-san-binh-duong-ksb-don-luc-hon-1-000-ty-dong-mo-rong-cum-mo-da-va-khu-cong-nghiep.html" target="_blank" rel="noopener">DN&amp;PL</a></td></tr><tr><td><b>DHA</b></td><td>3 mỏ 1,606 triệu m³/năm; Tân Cang 3 trữ lượng 35,6 triệu m³ (2025)</td><td>Chưa có trong nguồn mở được</td><td>53,1 · −6% (Q2 26,9, −17%)</td><td>Long Thành cần ~18 triệu m³ đá (số 2025)</td><td><a href="https://www.dnse.com.vn/senses/tin-tuc/bctc-quy-22026-dha-loi-nhuan-sau-thue-cong-ty-me-q22026-dat-2693-ty-dong-giam-1658-so-voi-cung-ky-35253135" target="_blank" rel="noopener">DNSE</a> · <a href="https://www.bsc.com.vn/Report/ReportFile/14278" target="_blank" rel="noopener">BSC 8/2025</a></td></tr></tbody></table></div><details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>KSB có số ước tại ĐHĐCĐ (~65% KH) và số BCTC; bảng dùng BCTC. DHA: kế hoạch 2026, thời hạn giấy phép mỏ chưa có; trữ lượng và nhu cầu Long Thành là số 2025. Lợi nhuận VLB 6T gồm khoản ghi nhận một lần.</div></details>
+    </div>
+    <h3 class="subhead">Nhựa đường</h3>
+    <div class="grid two" style="margin-top:14px"><div class="card" data-block-id="xd-22" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="chart-title">Giá nhựa đường và than</div>
+        <div class="chart-sub">chỉ số T1/2024 = 100 · cuối tháng</div>
+        <div id="chVlxdPrice"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-vlxd-price"></table></div></details>
+      </div></div>
+    <div class="card" style="margin-top:14px" data-block-id="xd-64" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">PLC: nhựa đường, kế hoạch, kết quả 6T/2026</h3>
+      <div class="tablewrap"><table><thead><tr><th>Mã</th><th>Công suất / mỏ</th><th>Kế hoạch 2026 (DT / LN, tỷ)</th><th>KQ 6T/2026 (LNST, tỷ · YoY · %KH)</th><th>Động lực, rủi ro</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>PLC</b></td><td>Nhựa đường, dầu nhờn, hóa chất</td><td>LNTT 107; cổ tức 8%</td><td><b>194 · vượt KH LNTT</b>; Q2 184 (+419%), nhựa đường 1.078 tỷ DT</td><td>Q4/2025 lỗ 85 tỷ (hóa chất); PLX giảm sở hữu 79% → 51–60%</td><td><a href="https://24hmoney.vn/posts/-c55a2816245.html" target="_blank" rel="noopener">24hMoney</a> · <a href="https://baodautu.vn/petrolimex-co-ke-hoach-giam-so-huu-tai-hoa-dau-petrolimex-khi-phat-hanh-co-phieu-rieng-le-d573868.html" target="_blank" rel="noopener">Báo Đầu tư</a></td></tr></tbody></table></div>
+    </div>
+    <h3 class="subhead">Kính &amp; gạch</h3>
+    <div class="grid two" style="margin-top:14px"><div class="card" data-block-id="xd-25" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">IIP sản phẩm khoáng phi kim</div>
+        <div class="chart-sub">% so cùng kỳ · gộp xi măng, gạch, kính</div>
+        <div id="chIipNon"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-iip-non"></table></div></details>
+      </div></div>
+    <div class="card" style="margin-top:14px" data-block-id="xd-65" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">VGC: kính, gạch, sứ, kế hoạch, kết quả 6T/2026</h3>
+      <div class="tablewrap"><table><thead><tr><th>Mã</th><th>Công suất / mỏ</th><th>Kế hoạch 2026 (DT / LN, tỷ)</th><th>KQ 6T/2026 (LNST, tỷ · YoY · %KH)</th><th>Động lực, rủi ro</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>VGC</b></td><td>Kính, gạch, sứ + KCN (bán 111 ha trong 4 tháng)</td><td>15.300 / LNTT 1.820 (−17%)</td><td><b>778</b>; Q2 563 (+28%), DT kỷ lục 4.462</td><td>Q1 kính 792 tỷ (+214%); Nhà nước còn 38%, thoái vốn 2026–2030; nợ vay 5.500 tỷ</td><td><a href="https://doanhnhan.baophapluat.vn/viglacera-vgc-ghi-nhan-doanh-thu-ky-luc-hoan-thanh-80-chi-tieu-loi-nhuan-nam.html" target="_blank" rel="noopener">DN&amp;PL</a> · <a href="https://thoibaotaichinhvietnam.vn/viglacera-dat-ke-hoach-loi-nhuan-than-trong-bo-xay-dung-lui-thoai-von-sang-giai-doan-2026-2030-196385.html" target="_blank" rel="noopener">TBTCVN</a></td></tr></tbody></table></div>
+    </div>
+    <h3 class="subhead">Xây dựng &amp; hạ tầng</h3>
+    <div class="grid two" style="margin-top:14px"><div class="card" data-block-id="xd-30" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
         <div class="chart-title">Tín dụng ngành xây dựng</div>
         <div class="chart-sub">nghìn tỷ đồng · cuối tháng</div>
         <div id="chCredit"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-credit"></table></div></details>
       </div>
-      <div class="card" data-block-id="xd-31" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+<div class="card" data-block-id="xd-31" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
         <div class="chart-title">GDP ngành xây dựng</div>
         <div class="chart-sub">% so cùng kỳ · lũy kế, giá hiện hành</div>
         <div id="chGdpCons"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-gdp-cons"></table></div></details>
-      </div>
-    </div>
+      </div></div>
     <div class="card" style="margin-top:14px" data-block-id="xd-32" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
       <div class="chart-title">Dự án trọng điểm — cầu của nhà thầu và vật liệu</div>
       <div class="chart-sub">mốc công bố gần nhất</div>
@@ -506,26 +523,23 @@ body[data-sector="construction"] .tx-group{margin:18px 0 8px;font-size:12px;lett
   </div>
   <div class="majorpane" data-tab="mt3" id="pane-mt3">
   <section id="price" class="section">
-    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Giá thép, nguyên liệu, xi măng, đá, nhựa đường nằm trong từng nhóm ở Bức tranh ngành.</p></div></div>
+    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Giá xi măng, đá, nhựa đường nằm trong từng nhóm ở Bức tranh ngành.</p></div></div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt4" id="pane-mt4">
   <section id="policy" class="section">
-    <div class="sectionhead"><div><h2>4. Policy / Trade / Tax</h2><p>Hai nhóm: luật đầu tư công, đấu thầu và cơ chế đặc thù; phòng vệ thương mại thép và thuế xuất khẩu clinker.</p></div></div>
+    <div class="sectionhead"><div><h2>4. Policy / Trade / Tax</h2><p>Luật đầu tư công, đấu thầu, cơ chế đặc thù. Phòng vệ thương mại thép ở <a href="../Thep/">dashboard Thép</a>.</p></div></div>
     <div class="card" data-block-id="xd-50" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
       <h3 style="margin-top:0;font-size:13.5px">Đầu tư công, đấu thầu, vật liệu</h3>
       <div class="tablewrap"><table><thead><tr><th>Văn bản</th><th>Hiệu lực</th><th>Nội dung</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Luật Đầu tư công 58/2024/QH15</b></td><td>01/01/2025</td><td>Khung giao, điều chuyển và giải ngân vốn đầu tư công</td><td>Nhà thầu hạ tầng</td><td><a href="https://caselaw.vn/van-ban-phap-luat/411499-luat-dau-tu-cong-so-58-2024-qh15-ngay-29-11-2024-cua-quoc-hoi" target="_blank" rel="noopener">Caselaw</a></td></tr><tr><td><b>Luật 90/2025/QH15</b> sửa Luật Đấu thầu, PPP, Đầu tư công…</td><td>01/07/2025</td><td>Sửa nhiều luật cùng lúc để rút thủ tục đấu thầu, đầu tư</td><td>Cả ngành</td><td><a href="https://baodauthau.vn/thuc-hien-thong-suot-cong-tac-dau-thau-trong-boi-canh-moi-post181281.html" target="_blank" rel="noopener">Báo Đấu thầu</a></td></tr><tr><td><b>Cơ chế đặc thù đường sắt tốc độ cao</b></td><td>NQ 206/2025/QH15 (24/6/2025); dự thảo nghị quyết mới</td><td>Cơ chế riêng cho dự án đường sắt tốc độ cao Bắc–Nam</td><td>DPG · HPG · nhà thầu lớn</td><td><a href="https://vneconomy.vn/hoan-thien-co-che-dac-thu-cho-du-an-duong-sat-toc-do-cao-bac-nam.htm" target="_blank" rel="noopener">VnEconomy</a></td></tr><tr><td><b>Giá vật liệu</b></td><td>T6/2025 so T5</td><td>Cát +29,95–58,45%, đá +7,3–11,11%</td><td>▼ nhà thầu · ▲ VLB · KSB · DHA</td><td><a href="https://baodauthau.vn/nha-thau-sot-ruot-vi-gia-da-tang-nhanh-post184572.html" target="_blank" rel="noopener">Báo Đấu thầu</a></td></tr><tr><td><b>Thuế xuất khẩu clinker</b></td><td>Đến hết 2026</td><td>Giảm 10% → 5%</td><td>▲ HT1 · BCC</td><td><a href="https://thesaigontimes.vn/saigontimes/thue-xuat-khau-clinker-xi-mang-duoc-giam-con-5/" target="_blank" rel="noopener">Saigon Times</a></td></tr></tbody></table></div>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Văn bản về cấp mỏ cát, đá cho cao tốc chưa mở được. Kế hoạch vốn 2027 và trung hạn 2026–2030 chưa có tổng số trong các trang đã mở.</div></details>
     </div>
-    <div class="card" style="margin-top:14px" data-block-id="xd-51" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
-      <h3 style="margin-top:0;font-size:13.5px">Phòng vệ thương mại thép</h3>
-      <div class="tablewrap"><table><thead><tr><th>Biện pháp</th><th>Hiệu lực</th><th>Mức</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>CBPG HRC Trung Quốc</b> (QĐ 1959/QĐ-BCT)</td><td>04/07/2025</td><td><b>23,10–27,83%</b>; chấm dứt điều tra với Ấn Độ</td><td>▲ HPG · ▼ HSG, NKG (nguyên liệu đắt)</td><td><a href="https://moit.gov.vn/tin-tuc/ap-dung-thue-chong-ban-pha-gia-chinh-thuc-doi-voi-mot-so-san-pham-thep-can-nong-co-xuat-xu-tu-cong-hoa-nhan-dan-trung-ho.html" target="_blank" rel="noopener">Bộ Công Thương</a></td></tr><tr><td><b>Chống lẩn tránh – HRC khổ rộng Trung Quốc</b></td><td>17/04/2026</td><td>27,83% cho HRC rộng 1.880–2.300 mm</td><td>▲ HPG</td><td><a href="https://tuoitre.vn/saigontimes/viet-nam-ap-thue-gan-28-voi-thep-hrc-kho-rong-trung-quoc/" target="_blank" rel="noopener">Saigon Times</a></td></tr><tr><td><b>CBPG thép mạ Trung Quốc, Hàn Quốc</b></td><td>14/08/2025</td><td>Tối đa 37,13% (Trung Quốc)</td><td>▲ HSG · NKG</td><td><a href="https://caselaw.vn/bai-viet/ap-thue-chong-ban-pha-gia-voi-thep-ma-tu-trung-quoc-han-quoc-chinh-thuc-tu-14-8-2025" target="_blank" rel="noopener">Caselaw</a></td></tr><tr><td><b>Mỹ – Mục 232</b></td><td>04/06/2025</td><td>Thép 25% → <b>50%</b>; HSG đã ngừng xuất tôn mạ sang Mỹ</td><td>▼ HSG · NKG</td><td><a href="https://trungtamwto.vn/chuyen-de/28961-bien-phap-thue-quan-hoa-ky-ap-dung-doi-voi-nhom-va-thep" target="_blank" rel="noopener">Trung tâm WTO</a></td></tr><tr><td><b>EU – thay biện pháp tự vệ, CBAM</b></td><td>01/07/2026</td><td>Thuế vượt hạn ngạch 50%; hạn ngạch giảm 47%; CBAM đầy đủ</td><td>▼ HSG · NKG · HPG (XK sang EU)</td><td><a href="https://baodautu.vn/eu-tang-gap-doi-thue-voi-thep-nhap-khau-vuot-han-ngach-d570216.html" target="_blank" rel="noopener">Báo Đầu tư</a> · <a href="https://24hmoney.vn/news/thep-viet-truoc-luat-choi-moi-cua-eu-c25a2809829.html" target="_blank" rel="noopener">24hMoney</a></td></tr><tr><td><b>Rà soát lần 1 CBPG HRC Trung Quốc (QĐ 1902/QĐ-BCT, AR01.AD20)</b></td><td>Ban hành 27/07/2026; đăng ký bên liên quan đến 21/10/2026</td><td>Đang rà soát mức 23,10–27,83%</td><td>HPG · HSG · NKG</td><td><a href="https://trungtamwto.vn/chuyen-de/33118-bct-ban-hanh-quyet-dinh-ra-soat-lan-thu-nhat-viec-ap-dung-bien-phap-cbpg-doi-voi-can-nong-co-xuat-xu-tu-trung-quoc-ar01ad20" target="_blank" rel="noopener">Trung tâm WTO, 29/07/2026</a></td></tr><tr><td><b>Điều tra CBPG thanh thép dự ứng lực Trung Quốc (QĐ 1903/QĐ-BCT, AD24)</b></td><td>Khởi xướng 27/07/2026</td><td>Chưa có mức thuế; HS 7227.20.00, 7228.20.11/19, 7229.20.00</td><td>Thép cho bê tông dự ứng lực</td><td><a href="https://trungtamwto.vn/chuyen-de/33117-bct-quyet-dinh-dieu-tra-ap-dung-bien-phap-cbpg-doi-voi-thanh-thep-du-ung-luc-nhap-khau-tu-trung-quoc" target="_blank" rel="noopener">Trung tâm WTO, 29/07/2026</a></td></tr></tbody></table></div>
-    </div>
+    
   </section>
   </div>
   <div class="majorpane" data-tab="mt5" id="pane-mt5">
   <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai (vốn NSNN, sản lượng, giá thép, nguyên liệu, định giá).</p></div></div>
+    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai (vốn NSNN, sản lượng, giá vật liệu, định giá).</p></div></div>
     <div class="catriskgrid">
       <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3>Catalyst — yếu tố hỗ trợ</h3>
@@ -533,7 +547,7 @@ body[data-sector="construction"] .tx-group{margin:18px 0 8px;font-size:12px;lett
       </div>
       <div class="riskbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3>Risk — rủi ro</h3>
-        <ul><li><b>Nhựa đường, than đắt 40–50%</b>: biên gộp LCG Q2 11,4% → 9,3% <span class="muted">(1–2 quý · C4G · LCG · HT1 · BCC)</span></li><li><b>Dòng tiền âm, nợ vay tăng</b>: VCG CFO 6T âm 1.315 tỷ, HUT âm 951 tỷ; CII lãi vay gấp 6 lần LNTT <span class="muted">(liên tục)</span></li><li><b>Thép xuất khẩu bị chặn</b>: Mỹ 50%, EU hạn ngạch −47% từ 1/7/2026 <span class="muted">(HSG · NKG)</span></li></ul>
+        <ul><li><b>Nhựa đường, than đắt 40–50%</b>: biên gộp LCG Q2 11,4% → 9,3% <span class="muted">(1–2 quý · C4G · LCG · HT1 · BCC)</span></li><li><b>Dòng tiền âm, nợ vay tăng</b>: VCG CFO 6T âm 1.315 tỷ, HUT âm 951 tỷ; CII lãi vay gấp 6 lần LNTT <span class="muted">(liên tục)</span></li></ul>
       </div>
     </div>
     <div class="srcrow"><a href="https://baolaocai.vn/giai-ngan-von-dau-tu-cong-9-thang-nam-2026-mot-so-bo-nganh-dia-phuong-con-cham-post910995.html" target="_blank" rel="noopener">Giải ngân 9T</a><a href="https://www.tinnhanhchungkhoan.vn/6-thang-lizen-lcg-moi-hoan-thanh-206-ke-hoach-loi-nhuan-post395302.html" target="_blank" rel="noopener">LCG Q2</a><a href="https://cafeland.vn/tin-tuc/vinaconex-lai-6-thang-tang-gan-25-dong-tien-kinh-doanh-am-hon-1300-ty-dong-153920.html" target="_blank" rel="noopener">VCG 6T</a></div>
@@ -541,13 +555,10 @@ body[data-sector="construction"] .tx-group{margin:18px 0 8px;font-size:12px;lett
   </div>
   <div class="majorpane" data-tab="mt6" id="pane-mt6">
   <section class="section">
-    <div class="sectionhead"><div><h2>6. Key players</h2><p>20 doanh nghiệp theo ba nhóm. Bảng so sánh tài chính và định giá hằng ngày ở Tổng quan.</p></div></div>
+    <div class="sectionhead"><div><h2>6. Key players</h2><p>17 doanh nghiệp theo hai nhóm. Bảng so sánh tài chính và định giá hằng ngày ở Tổng quan.</p></div></div>
     <div class="card" data-block-id="xd-60" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-      <h3 style="margin-top:0;font-size:13.5px">Thép và xây dựng, hạ tầng: kế hoạch, kết quả 6T/2026, backlog, rủi ro</h3>
+      <h3 style="margin-top:0;font-size:13.5px">Xây dựng, hạ tầng: kế hoạch, kết quả 6T/2026, backlog, rủi ro</h3>
       <div class="tablewrap"><table><thead><tr><th>Mã</th><th>Kế hoạch 2026 (DT / LNST, tỷ)</th><th>KQ gần nhất (LNST, tỷ · YoY · %KH)</th><th>Backlog / công suất / dự án</th><th>Rủi ro, vốn</th><th>Nguồn</th></tr></thead><tbody>
-      <tr><td><b>HPG</b></td><td>210.000 / 22.000</td><td>6T: <b>15.480 · +103% · 70%</b>; DT 108.870 (+47%)</td><td>16 triệu tấn/năm; HRC 6T 3,4 triệu tấn (+57%); thị phần thép XD 36%</td><td>Nợ vay 98.530 tỷ (73% ngắn hạn); cổ tức 2025 15%</td><td><a href="https://cafef.vn/hoa-phat-lai-15480-ty-dong-sau-6-thang-tang-103-so-voi-cung-ky-188260729112659325.chn" target="_blank" rel="noopener">CafeF</a> · <a href="https://vnexpress.net/hoa-phat-vay-no-ky-luc-5103785.html" target="_blank" rel="noopener">VnExpress</a></td></tr>
-      <tr><td><b>HSG</b></td><td>NĐTC 2025–26: 35.000 / 500 (PA1)</td><td>9T NĐTC: <b>568 · −12% · 114%</b>; Q3 NĐTC 382 (+40%)</td><td>Sản lượng 9T 1,32 triệu tấn (75% KH)</td><td>Tồn kho 8.268 tỷ; vay ngắn hạn 7.252 tỷ; ngừng XK tôn mạ sang Mỹ</td><td><a href="https://hoasengroup.vn/vi/bai-viet/hsg-uoc-hoan-thanh-114-ke-hoach-loi-nhuan-ndtc-2025-2026-sau-09-thang/" target="_blank" rel="noopener">Hoa Sen</a> · <a href="https://www.nguoiduatin.vn/hoa-sen-bao-lai-hon-568-ty-dong-sau-9-thang-tong-tai-san-vuot-22200-ty-dong-204260730113855747.htm" target="_blank" rel="noopener">Người Đưa Tin</a></td></tr>
-      <tr><td><b>NKG</b></td><td>22.000 / LNTT 400</td><td>6T: 124 · +98% · 47%; Q2 102,7 (cùng kỳ lỗ)</td><td>1,0 triệu tấn hiện hữu + Phú Mỹ 1,3 triệu tấn (GĐ1 2026)</td><td>Tồn kho 5.704 tỷ (31% tài sản); chào bán 1.495 tỷ</td><td><a href="https://www.tinnhanhchungkhoan.vn/thep-nam-kim-nkg-bao-lai-10268-ty-dong-trong-quy-ii2026-post395024.html" target="_blank" rel="noopener">TNCK</a> · <a href="https://baodautu.vn/thep-nam-kim-dat-muc-tieu-lai-400-ty-dong-tinh-huy-dong-them-gan-1500-ty-d562979.html" target="_blank" rel="noopener">Báo Đầu tư</a></td></tr>
       <tr><td><b>CTD</b></td><td>NĐTC 2026–27: 42.000 / 1.050</td><td>NĐTC 2025–26: <b>788 · vượt 12,6% KH</b>; DT 34.340</td><td>Backlog <b>~65.000 tỷ</b> (kỷ lục); Lego, Nhà hát Opera, sân bay Gia Bình</td><td>Nợ vay ~5.900 tỷ (gấp đôi); phải thu 15.400 tỷ, dự phòng >1.300 tỷ</td><td><a href="https://doanhnhan.baophapluat.vn/coteccons-ctd-dat-muc-tieu-lai-1-050-ty-dong-trong-nien-do-2026-2027.html" target="_blank" rel="noopener">DN&amp;PL</a> · <a href="https://baodautu.vn/coteccons-uoc-tinh-doanh-thu-hon-30000-ty-dong-trong-nam-tai-chinh-2025---2026-d620896.html" target="_blank" rel="noopener">Báo Đầu tư</a></td></tr>
       <tr><td><b>HBC</b></td><td>10.000 / 250</td><td>6T: 40 · −29% (DT gấp đôi, 3.269)</td><td>Backlog >15.000 tỷ; nước ngoài 72 triệu USD 2026</td><td>Lỗ lũy kế 2.022 tỷ (58% vốn); hoán đổi 514 tỷ nợ 9/2026</td><td><a href="https://vietstock.vn/2026/08/lai-rong-quy-2-hbc-giam-hon-nua-trien-khai-phat-hanh-hon-514-trieu-cp-de-hoan-doi-no-737-1476241.htm" target="_blank" rel="noopener">Vietstock</a> · <a href="https://doanhnhan.baophapluat.vn/xay-dung-hoa-binh-hbc-hoan-tat-hoan-doi-hon-514-ty-dong-no-he-lo-loat-chu-no-lon.html" target="_blank" rel="noopener">DN&amp;PL</a></td></tr>
       <tr><td><b>VCG</b></td><td>15.430 / 1.037 (−73%)</td><td>6T: <b>597 · +25% · 58%</b>; Q2 228 (−30%)</td><td>Long Thành gói 5.10 (liên danh) >35.000 tỷ</td><td>CFO 6T âm 1.315 tỷ; nợ vay giảm 7.420 → 5.700 tỷ</td><td><a href="https://cafeland.vn/tin-tuc/vinaconex-lai-6-thang-tang-gan-25-dong-tien-kinh-doanh-am-hon-1300-ty-dong-153920.html" target="_blank" rel="noopener">Cafeland</a> · <a href="https://etime.danviet.vn/ly-do-loi-nhuan-cua-vinaconex-quy-ii-2026-giam-manh-d1448424.html" target="_blank" rel="noopener">Etime</a></td></tr>
@@ -559,43 +570,19 @@ body[data-sector="construction"] .tx-group{margin:18px 0 8px;font-size:12px;lett
       <tr><td><b>CII</b></td><td>3.720 / 225 (−34%)</td><td>6T: LNST 96, cổ đông mẹ ~33; thu phí 1.409 tỷ (+8%)</td><td>BOT mở rộng TP.HCM – Trung Lương – Mỹ Thuận 36.172 tỷ</td><td>Vay + TPCĐ 27.792 tỷ; lãi vay 999 tỷ, gấp 6 lần LNTT</td><td><a href="https://vietnamfinance.vn/doanh-thu-tang-hai-chu-so-vi-sao-loi-nhuan-cii-giam-gan-mot-nua-d146779.html" target="_blank" rel="noopener">VietnamFinance</a> · <a href="https://fireant.vn/tin-tuc/cii-loi-nhuan-2026-du-kien-giam-34-cii-don-luc-cho-danh-muc-ha-tang" target="_blank" rel="noopener">FireAnt</a></td></tr>
       <tr><td><b>HUT</b></td><td>55.000 / LNTT 1.083</td><td>6T: 324 · +184% · ~40%</td><td>VETC ~75% thị phần ETC; ~500 tỷ vào BOT TP.HCM – Trung Lương</td><td>Vay 23.624 tỷ; CFO 6T âm 951 tỷ; TPCĐ 3.560 tỷ</td><td><a href="https://doanhnghiephoinhap.vn/tasco-tang-truong-loi-nhuan-nhung-dong-tien-kinh-doanh-tiep-tuc-am.html" target="_blank" rel="noopener">DN Hội nhập</a> · <a href="https://mekongasean.vn/dhdcd-tasco-doanh-thu-55000-ty-do-ng-phat-ha-nh-3560-ty-do-ng-trai-phieu-chuyen-doi-55102.html" target="_blank" rel="noopener">Mekong ASEAN</a></td></tr>
       </tbody></table></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Chưa có KQ 9T/2026 (BCTC Q3 chưa công bố tới 11/10/2026), trừ HSG và CTD có niên độ riêng (HSG 10/2025–9/2026, CTD 7/2025–6/2026). %KH của C4G, HHV do mình chia từ số công bố. CII: số 6T là hợp nhất, không dùng số công ty mẹ riêng. Số BCTC cập nhật khi người dùng yêu cầu.</div></details>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Chưa có KQ 9T/2026 (BCTC Q3 chưa công bố tới 11/10/2026), trừ CTD có niên độ riêng (7/2025–6/2026). %KH của C4G, HHV do mình chia từ số công bố. CII: số 6T là hợp nhất, không dùng số công ty mẹ riêng. Số BCTC cập nhật khi người dùng yêu cầu.</div></details>
     </div>
-    <div class="card" style="margin-top:14px" data-block-id="xd-61" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-      <h3 style="margin-top:0;font-size:13.5px">Xi măng, đá, nhựa đường, kính: công suất, kế hoạch, kết quả 6T/2026</h3>
-      <div class="tablewrap"><table><thead><tr><th>Mã</th><th>Công suất / mỏ</th><th>Kế hoạch 2026 (DT / LN, tỷ)</th><th>KQ 6T/2026 (LNST, tỷ · YoY · %KH)</th><th>Động lực, rủi ro</th><th>Nguồn</th></tr></thead><tbody>
-      <tr><td><b>HT1</b></td><td>KH SX clinker 4,24 triệu tấn, xi măng 6,57 triệu tấn; thị phần ~33% Trung – Nam</td><td>7.979 / 400,9 (+46%)</td><td><b>216 · gấp 2,1 · 54%</b>; Q2 138 (+23%)</td><td>Phát điện nhiệt khí thải giảm ~30% chi phí điện; giá than +20–30%</td><td><a href="https://doanhnhan.baophapluat.vn/xi-mang-vicem-ha-tien-ht1-bao-lai-quy-ii-tang-23-hoan-thanh-hon-mot-nua-ke-hoach-nam-sau-6-thang.html" target="_blank" rel="noopener">DN&amp;PL</a> · <a href="https://doanhnhan.baophapluat.vn/xi-mang-vicem-ha-tien-ht1-dat-muc-tieu-lai-nam-2026-hon-400-ty-dong.html" target="_blank" rel="noopener">DN&amp;PL KH</a></td></tr>
-      <tr><td><b>BCC</b></td><td>Clinker 3,1 triệu tấn, nghiền 4 triệu tấn</td><td>3.584 / LNTT 47</td><td>Lỗ ~2 (Q1 lỗ 10, Q2 lãi 11, −83%)</td><td>Ngành chạy ~77% công suất; đợt tăng giá tháng 10</td><td><a href="https://fireant.vn/tin-tuc/ong-lon-xi-mang-bao-lai-tang-manh-nhom-dn-van-thua-lo-keo-dai/41472106" target="_blank" rel="noopener">FireAnt</a> · <a href="https://vietbao.vn/don-hang-tro-lai-vi-sao-loi-nhuan-cua-doanh-nghiep-xi-mang-van-mong-604887.html" target="_blank" rel="noopener">Việt Báo</a></td></tr>
-      <tr><td><b>VLB</b></td><td>5 mỏ, trữ lượng >86 triệu m³, 5,7 triệu m³/năm; cấp đá Long Thành 1,6 triệu m³</td><td>1.411 / LNTT 280</td><td><b>449 · LNTT 561 = 2 lần KH</b> (gồm 344 tỷ hoàn tiền cấp quyền, một lần)</td><td>Giá tính thuế tài nguyên 90.000 → 123.000 đ/m³; cổ tức 2025 49%</td><td><a href="https://doanhnhan.baophapluat.vn/xay-dung-va-san-xuat-vat-lieu-xay-dung-bien-hoa-vlb-bao-lai-rong-quy-ii-2026-dat-374-ty-dong-hoan-nhap-344-ty-dong-tien-cap-quyen-khai-thac.html" target="_blank" rel="noopener">DN&amp;PL</a> · <a href="https://24hmoney.vn/news/dhdcd-vlb-loi-nhuan-tang-vot-nho-xac-dinh-lai-tien-cap-quyen-khai-thac-khoang-san-c1a2795420.html" target="_blank" rel="noopener">24hMoney</a></td></tr>
-      <tr><td><b>KSB</b></td><td>Đá 2026 ~4 triệu m³; Tân Mỹ 2,2 triệu m³/năm</td><td>1.018 / LNTT 208</td><td>128,6 · +63% (BCTC)</td><td>Giá bán +5.000–8.000 đ/tấn; <b>giấy phép mỏ Phước Vĩnh hết 6/2027</b>; chào bán 114,4 triệu cp</td><td><a href="https://nhadautu.vn/gia-cat-da-tang-manh-doanh-nghiep-so-huu-mo-lon-but-toc-loi-nhuan-d107091.html" target="_blank" rel="noopener">Nhà đầu tư</a> · <a href="https://doanhnhan.baophapluat.vn/khoang-san-binh-duong-ksb-don-luc-hon-1-000-ty-dong-mo-rong-cum-mo-da-va-khu-cong-nghiep.html" target="_blank" rel="noopener">DN&amp;PL</a></td></tr>
-      <tr><td><b>DHA</b></td><td>3 mỏ 1,606 triệu m³/năm; Tân Cang 3 trữ lượng 35,6 triệu m³ (2025)</td><td>Chưa có trong nguồn mở được</td><td>53,1 · −6% (Q2 26,9, −17%)</td><td>Long Thành cần ~18 triệu m³ đá (số 2025)</td><td><a href="https://www.dnse.com.vn/senses/tin-tuc/bctc-quy-22026-dha-loi-nhuan-sau-thue-cong-ty-me-q22026-dat-2693-ty-dong-giam-1658-so-voi-cung-ky-35253135" target="_blank" rel="noopener">DNSE</a> · <a href="https://www.bsc.com.vn/Report/ReportFile/14278" target="_blank" rel="noopener">BSC 8/2025</a></td></tr>
-      <tr><td><b>PLC</b></td><td>Nhựa đường, dầu nhờn, hóa chất</td><td>LNTT 107; cổ tức 8%</td><td><b>194 · vượt KH LNTT</b>; Q2 184 (+419%), nhựa đường 1.078 tỷ DT</td><td>Q4/2025 lỗ 85 tỷ (hóa chất); PLX giảm sở hữu 79% → 51–60%</td><td><a href="https://24hmoney.vn/posts/-c55a2816245.html" target="_blank" rel="noopener">24hMoney</a> · <a href="https://baodautu.vn/petrolimex-co-ke-hoach-giam-so-huu-tai-hoa-dau-petrolimex-khi-phat-hanh-co-phieu-rieng-le-d573868.html" target="_blank" rel="noopener">Báo Đầu tư</a></td></tr>
-      <tr><td><b>VGC</b></td><td>Kính, gạch, sứ + KCN (bán 111 ha trong 4 tháng)</td><td>15.300 / LNTT 1.820 (−17%)</td><td><b>778</b>; Q2 563 (+28%), DT kỷ lục 4.462</td><td>Q1 kính 792 tỷ (+214%); Nhà nước còn 38%, thoái vốn 2026–2030; nợ vay 5.500 tỷ</td><td><a href="https://doanhnhan.baophapluat.vn/viglacera-vgc-ghi-nhan-doanh-thu-ky-luc-hoan-thanh-80-chi-tieu-loi-nhuan-nam.html" target="_blank" rel="noopener">DN&amp;PL</a> · <a href="https://thoibaotaichinhvietnam.vn/viglacera-dat-ke-hoach-loi-nhuan-than-trong-bo-xay-dung-lui-thoai-von-sang-giai-doan-2026-2030-196385.html" target="_blank" rel="noopener">TBTCVN</a></td></tr>
-      </tbody></table></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>HT1 có hai số doanh thu 6T lệch nhau giữa các báo (4.121 và 4.435 tỷ) — bảng không ghi doanh thu. KSB có số ước tại ĐHĐCĐ (~65% KH) và số BCTC; bảng dùng BCTC. DHA: kế hoạch 2026, thời hạn giấy phép mỏ chưa có; trữ lượng và nhu cầu Long Thành là số 2025. Lợi nhuận VLB 6T gồm khoản ghi nhận một lần.</div></details>
-    </div>
-    <div class="card" style="margin-top:14px" data-block-id="xd-62" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-      <div class="chart-title">Giá vật liệu tại công trình phía Nam</div>
-      <div class="chart-sub">kỳ công bố gần nhất</div>
-      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Vật liệu</th><th>Giá</th><th>Khu vực, thời điểm</th><th>Nguồn</th></tr></thead><tbody><tr><td>Thép Hòa Phát CB240 / D10 CB300</td><td>14.920 / 14.720 đ/kg</td><td>Miền Nam, 26/10/2026, không đổi từ 04/10 (miền Bắc D10 14.210)</td><td><a href="https://doanhnghiephoinhap.vn/gia-thep-hom-nay-26102026-thi-truong-cuon-can-nong-toan-cau-phan-hoa-ro-ret-152466.html" target="_blank" rel="noopener">DN Hội nhập, 26/10/2026</a></td></tr><tr><td>Xi măng</td><td><b>+50.000–70.000 đ/tấn</b> (Vicem Hà Tiên +50.000 từ 10/10/2026)</td><td>Miền Trung, phía Nam; đợt trước +50.000 từ 10/5/2026</td><td><a href="https://nguoiquansat.vn/gia-xi-mang-trong-nuoc-tang-manh-den-100-000-dong-319068.html" target="_blank" rel="noopener">Người Quan sát</a> · <a href="https://www.tinnhanhchungkhoan.vn/suc-ep-chi-phi-de-nang-doanh-nghiep-tiep-tuc-tang-gia-ban-xi-mang-post389772.html" target="_blank" rel="noopener">TNCK</a></td></tr><tr><td>Đá 1x2 giao dịch</td><td><b>750.000 – dưới 1 triệu đ/m³</b> (đầu năm 350–500 nghìn)</td><td>Phía Nam, 8/2026</td><td><a href="https://nhadautu.vn/gia-cat-da-tang-manh-doanh-nghiep-so-huu-mo-lon-but-toc-loi-nhuan-d107091.html" target="_blank" rel="noopener">Nhà đầu tư</a></td></tr><tr><td>Đá 1x2 giá tại mỏ</td><td>145.400–221.000 đ/tấn</td><td>Đồng Nai, phụ lục giá từ 6/2026</td><td><a href="https://baodauthau.vn/gia-vat-lieu-xay-dung-tiep-tuc-bien-dong-nha-thau-tim-giai-phap-giu-tien-do-thi-cong-post203052.html" target="_blank" rel="noopener">Báo Đấu thầu</a></td></tr><tr><td>Cát xây dựng</td><td>500–550 nghìn đ/m³</td><td>Phía Nam, 8/2026</td><td>Nhà đầu tư</td></tr></tbody></table></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Giá đá giao dịch tại công trình cao gấp 3–5 lần giá tại mỏ do phí vận chuyển và khan hiếm; chênh lệch này là phần doanh nghiệp có mỏ (VLB, KSB, DHA) hưởng một phần khi tăng giá bán. Chưa có giá nhựa đường theo đ/tấn trong nguồn mở được.</div></details>
-    </div>
+    
+    
   </section>
   </div>
   <div class="majorpane" data-tab="mt7" id="pane-mt7">
-    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Bốn câu chuyện đang dẫn dắt ngành.</p></div></div>
+    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Ba câu chuyện đang dẫn dắt ngành.</p></div></div>
     <div data-topic-key="rail" data-topic-segment="Xây dựng &amp; hạ tầng" data-topic-title="Đường sắt tốc độ cao và Long Thành">
       <div class="card" data-block-id="xd-t1" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
         <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Đường sắt tốc độ cao Bắc–Nam 1.541 km, sơ bộ 1.713.548 tỷ; Bộ Xây dựng nhắm khởi công <b>12/2027</b> (mốc cũ 12/2026; <a href="https://tapchikinhtetaichinh.vn/dat-muc-tieu-khoi-cong-du-an-duong-sat-toc-do-cao-bac-nam-vao-thang-12-2027-166477.html" target="_blank" rel="noopener">TC KT-TC, 09/09/2026</a>)</li><li>Hòa Phát làm nhà máy ray 700.000 tấn/năm, xong gần 70%; ray đầu tiên Q1/2027</li><li>Long Thành khai thác 1/12/2026; Vinaconex trong liên danh gói 5.10 >35.000 tỷ</li></ul>
         <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▲ DPG · HPG · VCG · CTD · FCN</p>
         <div class="source-note">Nguồn: <a href="https://www.sggp.org.vn/nghi-quyet-chu-truong-dau-tu-du-an-duong-sat-toc-do-cao-bac-nam-post773752.html" target="_blank" rel="noopener">SGGP</a> · <a href="https://www.vietnamplus.vn/nha-may-san-xuat-ray-va-thep-cua-hoa-phat-da-hoan-thanh-gan-70-tien-do-post1137607.vnp" target="_blank" rel="noopener">VietnamPlus</a> · <a href="https://vietnamfinance.vn/san-bay-long-thanh-van-hanh-thu-nghiem-tu-thang-9-khai-thac-tu-thang-12-d148249.html" target="_blank" rel="noopener">VietnamFinance</a></div>
-      </div>
-    </div>
-    <div data-topic-key="hrc" data-topic-segment="Thép" data-topic-title="HRC: Dung Quất 2 và thuế chống bán phá giá">
-      <div class="card" data-block-id="xd-t2" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Hòa Phát 16 triệu tấn/năm sau Dung Quất 2; HRC bán 9T <b>5,47 triệu tấn (+59%)</b>, thép thô 9T 10,7 triệu tấn (+35%) · <a href="https://thoibaotaichinhvietnam.vn/hoa-phat-ban-hon-10-3-trieu-tan-thep-trong-9-thang-205266.html" target="_blank" rel="noopener">TBTC, 13/10/2026</a></li><li>CBPG HRC Trung Quốc 23,10–27,83% (7/2025), chống lẩn tránh HRC khổ rộng 27,83% (4/2026); rà soát lần 1 mở 27/07/2026 (QĐ 1902/QĐ-BCT)</li><li>HRC Trung Quốc vẫn yếu — trần giá cho HRC trong nước</li></ul>
-        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▲ HPG · ▼ HSG · NKG (mua HRC đắt hơn)</p>
-        <div class="source-note">Nguồn: <a href="https://moit.gov.vn/tin-tuc/ap-dung-thue-chong-ban-pha-gia-chinh-thuc-doi-voi-mot-so-san-pham-thep-can-nong-co-xuat-xu-tu-cong-hoa-nhan-dan-trung-ho.html" target="_blank" rel="noopener">Bộ Công Thương</a> · <a href="https://tuoitre.vn/saigontimes/viet-nam-ap-thue-gan-28-voi-thep-hrc-kho-rong-trung-quoc/" target="_blank" rel="noopener">Saigon Times</a></div>
       </div>
     </div>
     <div data-topic-key="contractor-cash" data-topic-segment="Xây dựng &amp; hạ tầng" data-topic-title="Nhà thầu: backlog kỷ lục, dòng tiền âm">
@@ -613,33 +600,9 @@ body[data-sector="construction"] .tx-group{margin:18px 0 8px;font-size:12px;lett
       </div>
     </div>
   </div>
-  <div class="majorpane" data-tab="mt10" id="pane-mt10">
-    <div class="sectionhead"><div><h2>Giải ngân đầu tư công</h2><p>Hai thước đo: vốn NSNN thực hiện theo tháng (NSO,, cập nhật tự động) và giải ngân so kế hoạch (Bộ Tài chính, theo tài liệu).</p></div></div>
-    <div class="grid two">
-      <div class="card" data-block-id="xd-40" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">Vốn NSNN thực hiện theo tháng</div>
-        <div class="chart-sub">nghìn tỷ đồng · Trung ương và địa phương</div>
-        <div id="chPubInv"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-pub-inv"></table></div></details>
-      </div>
-      <div class="card" data-block-id="xd-41" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">Lũy kế từ đầu năm, so các năm</div>
-        <div class="chart-sub">nghìn tỷ đồng · cộng dồn theo tháng</div>
-        <div id="chPubYtd"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-pub-ytd"></table></div></details>
-      </div>
-    </div>
-    <div class="card" style="margin-top:14px" data-block-id="xd-42" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
-      <div class="chart-title">Kế hoạch so giải ngân</div>
-      <div class="chart-sub">nghìn tỷ đồng · Bộ Tài chính</div>
-      <div id="chPubPlan" style="max-width:680px"></div>
-      <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>2025</th><th>2026</th><th>Nguồn</th></tr></thead><tbody><tr><td>Kế hoạch Thủ tướng giao</td><td>905.481,7 tỷ</td><td><b>1.022.607 tỷ</b></td><td><a href="https://thoibaotaichinhvietnam.vn/dau-an-dieu-hanh-quyet-liet-va-nen-tang-cho-but-pha-nam-2026-191834.html" target="_blank" rel="noopener">TBTCVN</a> · <a href="https://baolaocai.vn/giai-ngan-von-dau-tu-cong-9-thang-nam-2026-mot-so-bo-nganh-dia-phuong-con-cham-post910995.html" target="_blank" rel="noopener">Báo Lào Cai</a></td></tr><tr><td>Giải ngân đến 30/9</td><td>~440,4 nghìn tỷ (suy ra)</td><td><b>642.961,6 tỷ (62,9%)</b></td><td>Báo Lào Cai, dẫn báo cáo 818/BC-BTC 02/10/2026</td></tr><tr><td>Giải ngân đến 15/10</td><td>—</td><td><b>660.739,5 tỷ (64,6%)</b></td><td><a href="https://thoibaotaichinhvietnam.vn/giai-ngan-von-dau-tu-cong-dat-64-6-ke-hoach-205662-205662.html" target="_blank" rel="noopener">TBTCVN 20/10/2026</a> (văn bản 16767/BTC-ĐTPT)</td></tr><tr><td>Giải ngân cả năm (đến 31/1 năm sau)</td><td>858.621,8 tỷ (94,8%)</td><td>—</td><td>TBTCVN</td></tr><tr><td>Tỷ lệ 9T nếu loại 5% NSĐP tiết kiệm cho ĐS Lào Cai – HN – HP</td><td>—</td><td>64,8% của 991.931,6 tỷ</td><td>Báo Lào Cai</td></tr></tbody></table></div></details>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Giải ngân 9T/2025 suy ra từ chênh lệch Bộ Tài chính công bố (+202.559,3 tỷ). Số NSO (vốn thực hiện, chart trên) và số Bộ Tài chính (giải ngân theo kế hoạch) khác phạm vi nên không bằng nhau.</div></details>
-    </div>
-  </div>
   <div class="card" style="margin-top:14px" data-block-id="xd-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Vốn NSNN, sản lượng thép, xi măng, IIP, XK</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a>, <a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Giá thép, HRC, quặng, than, nhựa đường</b></td><td><a href="https://www.shfe.com.cn/eng/Market/Futures/" target="_blank" rel="noopener">SHFE</a> (HRC, thép thanh, nhựa đường), IMF (quặng sắt), ICE (than)</td><td>Ngày · hiển thị cuối tháng</td><td>Script mỗi lượt job; giá CB300 Hòa Phát, than cốc: <a href="https://widata.vn/" target="_blank" rel="noopener">WiData (WiMCP)</a></td></tr><tr><td><b>Giá xi măng, đá, cát (Sở Xây dựng)</b></td><td><a href="https://soxaydung.hanoi.gov.vn/kinh-te-vat-lieu-xay-dung" target="_blank" rel="noopener">Sở Xây dựng Hà Nội · công bố giá VLXD</a></td><td>Quý</td><td>Script mỗi lượt job; lịch sử từ Q3/2026</td></tr><tr><td><b>Tín dụng, GDP xây dựng</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng / quý</td><td>Script mỗi lượt job · GDP từ 2024; tín dụng ngành từ NHNN (từ 01/2025)</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Giải ngân so kế hoạch, dự án, chính sách</b></td><td>Bộ Tài chính, Bộ Công Thương qua báo (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Vốn NSNN, sản lượng xi măng, IIP, XK</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a>, <a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Giá than, nhựa đường</b></td><td><a href="https://www.shfe.com.cn/eng/Market/Futures/" target="_blank" rel="noopener">SHFE</a> (nhựa đường), ICE (than)</td><td>Ngày · hiển thị cuối tháng</td><td>Script mỗi lượt job; giá CB300 Hòa Phát, than cốc: <a href="https://widata.vn/" target="_blank" rel="noopener">WiData (WiMCP)</a></td></tr><tr><td><b>Giá xi măng, đá, cát (Sở Xây dựng)</b></td><td><a href="https://soxaydung.hanoi.gov.vn/kinh-te-vat-lieu-xay-dung" target="_blank" rel="noopener">Sở Xây dựng Hà Nội · công bố giá VLXD</a></td><td>Quý</td><td>Script mỗi lượt job; lịch sử từ Q3/2026</td></tr><tr><td><b>Tín dụng, GDP xây dựng</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng / quý</td><td>Script mỗi lượt job · GDP từ 2024; tín dụng ngành từ NHNN (từ 01/2025)</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Giải ngân so kế hoạch, dự án, chính sách</b></td><td>Bộ Tài chính, Bộ Công Thương qua báo (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
     <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
   </div>
   <div class="footer">Vietnam Construction &amp; Materials Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 11/10/2026.</div>
