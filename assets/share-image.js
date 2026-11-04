@@ -5,34 +5,59 @@
   if(window.FinShareImage)return;
   const H2C='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
   const NAVY='#1D2678',INK='#303540',MUTED='#596272',LINE='#dce1e9',TEAL='#59C5C8';
-  const RATIOS={wide:{w:1920,h:1080,label:'Ngang 16:9',hint:'X · Telegram · Zalo'},tall:{w:1080,h:1350,label:'Dọc 4:5',hint:'Facebook · Instagram'}};
+  const RATIOS={fit:{w:0,h:0,label:'Vừa chart',hint:'Ảnh sát chart, không viền trắng'},wide:{w:1920,h:1080,label:'Ngang 16:9',hint:'X · Telegram · Zalo'},tall:{w:1080,h:1350,label:'Dọc 4:5',hint:'Facebook · Instagram'}};
   const scriptSrc=(document.currentScript&&document.currentScript.src)||'';
   let lib=null,logo=null,state=null;
 
-  const css=`.fs-share-btn{position:absolute;top:10px;right:10px;z-index:3;display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border:1px solid ${LINE};border-radius:999px;background:#fff;color:${NAVY};font:600 12px/1.3 Inter,Arial,system-ui,sans-serif;cursor:pointer;opacity:.78}
-.fs-share-btn:hover,.fs-share-btn:focus-visible{opacity:1;border-color:${NAVY}}
+  const css=`.fs-share-btn{position:absolute;top:18px;right:18px;z-index:3;display:inline-grid;place-items:center;width:32px;height:32px;padding:0;border:1px solid transparent;border-radius:10px;background:transparent;color:#7A819A;font:500 17px/1 Inter,Arial,system-ui,sans-serif;cursor:pointer};border-radius:999px;background:#fff;color:${NAVY};font:600 12px/1.3 Arial,system-ui,sans-serif;cursor:pointer;opacity:.78}
+.fs-share-btn:hover,.fs-share-btn:focus-visible{color:${NAVY};background:#F0F2FA;border-color:${LINE}}
 .fs-share-host{position:relative}
-.fs-share-host>h3:first-of-type,.fs-share-host>.chart-title:first-of-type{padding-right:118px}
-.fs-share-modal{position:fixed;inset:0;z-index:9999;background:rgba(16,22,48,.55);display:flex;align-items:center;justify-content:center;padding:16px;font-family:Inter,Arial,system-ui,sans-serif}
-.fs-share-box{background:#fff;color:${INK};border-radius:14px;width:min(1120px,100%);max-height:calc(100vh - 32px);overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.fs-share-host>h3:first-of-type,.fs-share-host>.chart-title:first-of-type{padding-right:44px}
+.fs-share-modal{position:fixed;inset:0;z-index:9999;background:rgba(16,22,48,.55);display:flex;align-items:center;justify-content:center;padding:16px;font-family:Arial,system-ui,sans-serif}
+.fs-share-box{background:#fff;color:${INK};border-radius:18px;width:min(1480px,100%);max-height:calc(100vh - 32px);overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
 .fs-share-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid ${LINE};font-weight:700;color:${NAVY}}
 .fs-share-head button{border:0;background:none;font-size:22px;line-height:1;cursor:pointer;color:${MUTED}}
-.fs-share-body{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:20px;padding:20px}
-.fs-share-prev{background:#f3f5fa;border-radius:10px;display:flex;align-items:center;justify-content:center;min-height:260px;padding:12px}
-.fs-share-prev img{max-width:100%;max-height:62vh;border-radius:6px;box-shadow:0 4px 18px rgba(0,0,0,.12)}
-.fs-share-ratio{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.fs-share-ratio button{text-align:left;padding:10px 12px;border:1px solid ${LINE};border-radius:10px;background:#fff;cursor:pointer;font:600 14px Inter,Arial,system-ui,sans-serif;color:${INK}}
-.fs-share-ratio button small{display:block;font-weight:400;color:${MUTED};margin-top:3px}
-.fs-share-ratio button[aria-pressed="true"]{border-color:${NAVY};background:#f0f4ff}
+.fs-share-body{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;padding:16px 20px 18px;align-items:start}
+.fs-share-prev{background:#f3f5fa;border-radius:12px;display:flex;align-items:center;justify-content:center;min-height:260px;padding:12px}
+.fs-sh-stage{position:relative;display:inline-block;line-height:0}
+.fs-sh-stage img{max-width:100%;max-height:calc(100vh - 230px);border-radius:6px;box-shadow:0 4px 18px rgba(0,0,0,.12)}
+.fs-sh-ov{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
+.fs-sh-stage.drawing .fs-sh-ov{pointer-events:auto;cursor:crosshair}
+.fs-sh-txt{position:absolute;z-index:3;line-height:normal;height:30px;padding:0 8px;border:2px solid ${NAVY};border-radius:6px;font:600 14px Inter,Arial,sans-serif;min-width:180px}
+.fs-sh-tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px}
+.fs-sh-tools>button{height:34px;padding:0 11px;border:1px solid ${LINE};border-radius:9px;background:#fff;color:${NAVY};font:600 13px Inter,Arial,sans-serif;cursor:pointer}
+.fs-sh-tools>button[aria-pressed=true]{background:${NAVY};border-color:${NAVY};color:#fff}
+.fs-sh-sw{display:inline-flex;gap:5px;margin:0 6px;padding-left:8px;border-left:1px solid ${LINE}}
+.fs-sh-sw button{width:24px;height:24px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px ${LINE};cursor:pointer}
+.fs-sh-sw button[aria-pressed=true]{box-shadow:0 0 0 2px ${NAVY}}
+.fs-sh-hint{margin:8px 0 0;font-size:12.5px;color:${MUTED}}
+.fs-share-side{display:flex;flex-direction:column;gap:8px}
+.fs-share-ratio{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.fs-share-ratio button{padding:8px 10px;border:1px solid ${LINE};border-radius:10px;background:#fff;cursor:pointer;font:600 13px Inter,Arial,sans-serif;color:${INK};text-align:left}
+.fs-share-ratio button small{display:block;font-weight:400;font-size:11px;color:${MUTED};margin-top:2px}
+.fs-share-ratio button[aria-pressed="true"]{border-color:${NAVY};background:#f0f4ff;box-shadow:inset 0 0 0 1px ${NAVY}}
+.fs-sh-h{margin-top:10px;font:700 12px Inter,Arial,sans-serif;letter-spacing:.08em;color:${MUTED}}
+.fs-sh-sub{font-size:11.5px;color:${MUTED};margin-top:-4px}
+.fs-sh-list{display:flex;flex-direction:column;gap:8px}
+.fs-sh-item{border:1px solid ${LINE};border-radius:12px;padding:8px 10px;display:flex;flex-direction:column;gap:6px}
+.fs-sh-top{display:flex;align-items:center;gap:6px}
+.fs-sh-n{flex:none;width:22px;height:22px;border-radius:50%;background:${NAVY};color:#fff;display:grid;place-items:center;font:700 12px Inter,Arial,sans-serif}
+.fs-sh-t{flex:1;min-width:0;font:600 13px Inter,Arial,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:${INK}}
+.fs-sh-ic{flex:none;width:26px;height:26px;border:1px solid ${LINE};border-radius:8px;background:#fff;cursor:pointer;color:${NAVY}}
+.fs-sh-ic:disabled{opacity:.35;cursor:default}
+.fs-sh-item input{height:32px;padding:0 10px;border:1px solid ${LINE};border-radius:8px;font:13px Inter,Arial,sans-serif}
+.fs-sh-row2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.fs-sh-row2 select{width:100%;height:34px;border:1px solid ${LINE};border-radius:10px;padding:0 8px;font:600 13px Inter,Arial,sans-serif;color:${NAVY};background:#fff}
+.fs-sh-msg{width:100%;box-sizing:border-box;padding:8px 10px;border:1px solid ${LINE};border-radius:10px;font:13px/1.45 Inter,Arial,sans-serif;resize:vertical}
 .fs-share-side label{display:block;margin:16px 0 6px;font-size:12px;letter-spacing:.06em;color:${MUTED};font-weight:700}
-.fs-share-side textarea{width:100%;box-sizing:border-box;min-height:150px;padding:10px;border:1px solid ${LINE};border-radius:10px;font:14px/1.5 Inter,Arial,system-ui,sans-serif;color:${INK};resize:vertical}
-.fs-share-acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
-.fs-share-acts button{padding:11px;border:1px solid ${LINE};border-radius:10px;background:#fff;font:600 14px Inter,Arial,system-ui,sans-serif;color:${INK};cursor:pointer}
+.fs-share-side textarea#fs-share-caption{width:100%;box-sizing:border-box;min-height:150px}
+.fs-share-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.fs-share-acts button{padding:10px;border:1px solid ${LINE};border-radius:10px;background:#fff;font:600 13.5px Inter,Arial,sans-serif;color:${INK};cursor:pointer}
 .fs-share-acts .primary{grid-column:1/-1;background:${NAVY};border-color:${NAVY};color:#fff}
 .fs-share-acts button:disabled{opacity:.5;cursor:wait}
-.fs-share-tip{margin-top:12px;font-size:12px;color:${MUTED};line-height:1.5}
-.fs-share-msg{min-height:18px;margin-top:8px;font-size:13px;color:#256f72;font-weight:600}
-@media(max-width:760px){.fs-share-body{grid-template-columns:1fr;padding:14px}.fs-share-btn span{display:none}.fs-share-host>h3:first-of-type,.fs-share-host>.chart-title:first-of-type{padding-right:44px}}
+.fs-share-tip{display:none}
+.fs-share-msg{min-height:16px;font-size:13px;color:#256f72;font-weight:600}
+@media(max-width:980px){.fs-share-body{grid-template-columns:1fr;padding:14px}.fs-share-btn span{display:none}.fs-share-host>h3:first-of-type,.fs-share-host>.chart-title:first-of-type{padding-right:44px}}
 @media print{.fs-share-btn{display:none}}`;
 
   function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!=null)n.textContent=text;return n}
@@ -139,36 +164,113 @@
     if(out.length>maxLines){out.length=maxLines;out[maxLines-1]=out[maxLines-1].replace(/\s*\S*$/,'')+'…'}
     return out;
   }
-  async function compose(shot,ratio,p,c,url){
-    const R=RATIOS[ratio],W=R.w,Hh=R.h,cv=document.createElement('canvas');cv.width=W;cv.height=Hh;
-    const ctx=cv.getContext('2d'),pad=Math.round(W*0.04),font='Inter,Arial, "Helvetica Neue", sans-serif';
-    ctx.fillStyle='#ffffff';ctx.fillRect(0,0,W,Hh);
-    // Logo ngay trên góc trái của chart, tên mã/ngành canh phải theo mép chart; chart lớn nhất có thể, cả khối căn giữa.
-    const m=Math.round(Math.min(W,Hh)*0.025),logoH=Math.round(Math.min(W,Hh)*0.06),gap=Math.round(logoH*0.3),lg=await loadLogo();
-    const bw=W-m*2,bh=Hh-m*2-logoH-gap;
-    const s=Math.min(bw/shot.width,bh/shot.height),dw=shot.width*s,dh=shot.height*s;
-    const dx=(W-dw)/2,top=(Hh-(logoH+gap+dh))/2,dy=top+logoH+gap;
-    if(lg)ctx.drawImage(lg,dx,top,lg.width*logoH/lg.height,logoH);
-    else{ctx.fillStyle=NAVY;ctx.font=`700 ${logoH*0.7}px ${font}`;ctx.textBaseline='middle';ctx.fillText('FinSuccess',dx,top+logoH/2)}
-    ctx.textAlign='right';ctx.textBaseline='middle';ctx.fillStyle=MUTED;ctx.font=`600 ${Math.round(logoH*0.36)}px ${font}`;
-    ctx.fillText(wrapText(ctx,(p.ticker?p.ticker+' · ':'')+p.name,dw*0.6,1)[0]||'',dx+dw,top+logoH/2);ctx.textAlign='left';
-    ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
-    ctx.drawImage(shot,dx,dy,dw,dh);
+  // Ghép nhiều chart (tối đa 6) thành một ảnh: thông điệp chính ở đầu, nhận định ngắn trên từng chart,
+  // watermark FinSuccess mờ giữa từng chart, rồi đặt vào khung Vừa chart / 16:9 / 4:5 (28/10/2026).
+  const FONT='Inter, Arial, "Helvetica Neue", sans-serif';
+  function wrapLines(ctx,text,maxW,maxLines){return wrapText(ctx,text,maxW,maxLines)}
+  async function compose(shots,ratio,p,opts){
+    const n=shots.length,cols=n===1?1:(opts.cols||2),rows=Math.ceil(n/cols);
+    const cw=Math.max(...shots.map(s=>s.width)),gap=Math.round(cw*0.04),pad=Math.round(cw*0.03);
+    const tmp=document.createElement('canvas').getContext('2d');
+    const noteF=Math.round(cw*0.026),headF=Math.round(cw*(cols>1?0.05:0.04));
+    tmp.font=`700 ${headF}px ${FONT}`;const totalW=cols*cw+(cols-1)*gap;
+    const head=opts.message?wrapLines(tmp,opts.message,totalW,2):[];const headH=head.length?head.length*headF*1.3+gap*0.6:0;
+    const cells=shots.map((s,i)=>{const sc=cw/s.width;tmp.font=`500 ${noteF}px ${FONT}`;const note=opts.notes[i]?wrapLines(tmp,opts.notes[i],cw,2):[];return {s,sc,h:s.height*sc,note,nh:note.length?note.length*noteF*1.35+noteF*0.5:0}});
+    const rowH=[...Array(rows)].map((_,r)=>Math.max(...cells.slice(r*cols,r*cols+cols).map(c=>c.h+c.nh)));
+    const CW=totalW+pad*2,CH=pad*2+Math.round(cw*0.014)+headH+rowH.reduce((a,b)=>a+b,0)+(rows-1)*gap;
+    const content=document.createElement('canvas');content.width=CW;content.height=CH;const ctx=content.getContext('2d');
+    ctx.fillStyle='#fff';ctx.fillRect(0,0,CW,CH);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+    let y=pad;if(head.length){ctx.fillStyle=NAVY;ctx.font=`700 ${headF}px ${FONT}`;ctx.textBaseline='top';head.forEach(l=>{ctx.fillText(l,pad,y);y+=headF*1.3});y+=gap*0.6}
+    const lg=await loadLogo();
+    cells.forEach((c,i)=>{const r=Math.floor(i/cols),k=i%cols,x=pad+k*(cw+gap),yy=y+rowH.slice(0,r).reduce((a,b)=>a+b,0)+r*gap;
+      let cy=yy;if(c.note.length){ctx.fillStyle=MUTED;ctx.font=`italic 500 ${noteF}px ${FONT}`;ctx.textBaseline='top';c.note.forEach(l=>{ctx.fillText(l,x,cy);cy+=noteF*1.35});cy+=noteF*0.5}
+      ctx.drawImage(c.s,x,cy,cw,c.h);
+      // Watermark đặt vào khoảng trống nhất của chart (người dùng chốt 29/10/2026): quét bản chụp, tìm ô ít nét vẽ nhất
+      // trong vùng vẽ (bỏ dải tiêu đề/thanh chọn kỳ phía trên và nhãn trục/chú giải phía dưới), đặt chữ "FinSuccess" ở đó.
+      // Chart kín (vd. cột 100%) thì đặt giữa vùng vẽ, hai lớp mờ: trắng hiện trên cột đậm, navy hiện trên nền sáng.
+      let wm=watermark(null,cw*0.26,NAVY), sp=emptiest(c.s,wm.width/c.sc,wm.height/c.sc);
+      ctx.save();
+      if(sp.dense){wm=watermark(null,cw*0.22,NAVY);const wv=watermark(null,cw*0.22,'#fff'),px=x+(cw-wm.width)/2,py=cy+c.h*0.48-wm.height/2;ctx.globalAlpha=.10;ctx.drawImage(wm,px,py);ctx.globalAlpha=.24;ctx.drawImage(wv,px,py)}
+      else{ctx.globalAlpha=.13;ctx.drawImage(wm,x+sp.x*c.sc,cy+sp.y*c.sc)}
+      ctx.restore();
+    });
+    // Nhận diện ở chân ảnh, chỗ trống (người dùng chốt 29/10/2026): chữ "FinSuccess" đậm, rõ + "MÃ · fisc.vn" (watermark trong chart đặt ở khoảng trống, xem emptiest).
+    {const fs=Math.max(14,Math.round(cw*0.022)),tail='  ·  '+(p.ticker?p.ticker+'  ·  ':'')+'fisc.vn';ctx.save();ctx.textBaseline='bottom';ctx.textAlign='left';
+     ctx.font=`500 ${fs}px ${FONT}`;const tw=ctx.measureText(tail).width;ctx.font=`800 ${fs}px ${FONT}`;const bw=ctx.measureText('FinSuccess').width,x0=CW-pad-tw-bw,yb=CH-pad*0.3;
+     ctx.fillStyle=NAVY;ctx.fillText('FinSuccess',x0,yb);ctx.font=`500 ${fs}px ${FONT}`;ctx.fillStyle=MUTED;ctx.fillText(tail,x0+bw,yb);ctx.restore();}
+    if(ratio==='fit')return content;
+    const R=RATIOS[ratio],cv=document.createElement('canvas');cv.width=R.w;cv.height=R.h;const c2=cv.getContext('2d');c2.fillStyle='#fff';c2.fillRect(0,0,R.w,R.h);
+    const s=Math.min(R.w/CW,R.h/CH);c2.imageSmoothingEnabled=true;c2.imageSmoothingQuality='high';c2.drawImage(content,(R.w-CW*s)/2,(R.h-CH*s)/2,CW*s,CH*s);return cv;
+  }
+  // Tìm vị trí (góc trên trái) của khung w×h có ít điểm ảnh đậm nhất trong vùng vẽ; ưu tiên gần giữa khi ngang nhau.
+  function emptiest(cv,w,h){
+    const N=96,sx=cv.width/N,M=Math.max(8,Math.round(cv.height/sx)),t=document.createElement('canvas');t.width=N;t.height=M;
+    const g=t.getContext('2d');g.drawImage(cv,0,0,N,M);const d=g.getImageData(0,0,N,M).data,I=new Float64Array((N+1)*(M+1));
+    for(let y=0;y<M;y++){let row=0;for(let x=0;x<N;x++){const k=(y*N+x)*4,ink=255*3-(d[k]+d[k+1]+d[k+2]);row+=ink>45?ink:0;I[(y+1)*(N+1)+x+1]=I[y*(N+1)+x+1]+row}}
+    const bw=Math.max(1,Math.round(w/sx)),bh=Math.max(1,Math.round(h/sx)),y0=Math.round(M*0.30),y1=Math.round(M*0.72)-bh,x0=Math.round(N*0.10),x1=Math.round(N*0.95)-bw;
+    let best=null;
+    for(let y=y0;y<=Math.max(y0,y1);y++)for(let x=x0;x<=Math.max(x0,x1);x++){
+      const sum=I[(y+bh)*(N+1)+x+bw]-I[y*(N+1)+x+bw]-I[(y+bh)*(N+1)+x]+I[y*(N+1)+x];
+      const off=Math.abs(x+bw/2-N/2)/N+Math.abs(y+bh/2-M*0.55)/M, sc=sum+off*bw*bh*6;
+      if(!best||sc<best.s)best={s:sc,x,y};
+    }
+    const dense=!best||(best.s/(bw*bh))>90; // trung bình độ đậm mỗi điểm > 90/765: không có khoảng trống thật
+    return !dense?{x:best.x*sx,y:best.y*sx,dense:false}:{x:(cv.width-w)/2,y:cv.height*0.48-h/2,dense:true};
+  }
+  // Logo một màu (navy hoặc trắng) cùng kích thước, để đặt chồng hai lớp watermark.
+  function watermark(lg,ww,color){
+    const cv=document.createElement('canvas'),c=cv.getContext('2d');
+    if(lg){cv.width=Math.round(ww);cv.height=Math.round(ww*lg.height/lg.width);c.drawImage(lg,0,0,cv.width,cv.height);c.globalCompositeOperation='source-in';c.fillStyle=color;c.fillRect(0,0,cv.width,cv.height);}
+    else{const f=Math.round(ww/5.2);c.font=`800 ${f}px ${FONT}`;cv.width=Math.ceil(c.measureText('FinSuccess').width+f*0.4);cv.height=Math.round(f*1.4);c.fillStyle=color;c.font=`800 ${f}px ${FONT}`;c.textAlign='center';c.textBaseline='middle';c.fillText('FinSuccess',cv.width/2,cv.height/2);}
     return cv;
   }
   const toBlob=cv=>new Promise(ok=>cv.toBlob(ok,'image/png'));
   function fileName(p,c){const base=((p.ticker||p.name)+'-'+c.title).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').replace(/[^\w]+/g,'-').replace(/^-|-$/g,'').slice(0,80);return 'FinSuccess-'+base+'.png'}
 
-  async function render(){
-    const {ratio,p,c,url,ui}=state;ui.msg.textContent='';
-    if(!state.shots[ratio])state.shots[ratio]=trim(await snapshot(state.card,ratio));
-    const shot=state.shots[ratio];
-    state.canvas=await compose(shot,ratio,p,c,url);
-    state.blob=await toBlob(state.canvas);
-    if(state.objUrl)URL.revokeObjectURL(state.objUrl);
-    state.objUrl=URL.createObjectURL(state.blob);ui.img.src=state.objUrl;
-    ui.ratio.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.ratio===ratio)));
+  /* ---------- Vẽ chú thích lên ảnh (tọa độ tương đối 0–1 để giữ đúng khi đổi khung) ---------- */
+  const COLORS=[NAVY,'#861C52','#FFD45D','#C0392B',TEAL];
+  const TOOLS=[['none','↖ Không vẽ'],['arrow','→ Mũi tên'],['dash','⇢ Mũi tên đứt'],['hl','▬ Tô sáng'],['rect','▢ Khung'],['ellipse','◯ Khoanh tròn'],['text','T Chữ']];
+  function drawShape(ctx,sh,W,H){
+    const x1=sh.x1*W,y1=sh.y1*H,x2=sh.x2*W,y2=sh.y2*H,lw=Math.max(3,Math.round(Math.min(W,H)*0.005));
+    ctx.save();ctx.strokeStyle=sh.c;ctx.fillStyle=sh.c;ctx.lineWidth=lw;ctx.lineCap='round';ctx.lineJoin='round';
+    if(sh.t==='arrow'||sh.t==='dash'){if(sh.t==='dash')ctx.setLineDash([lw*3,lw*2.2]);ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();ctx.setLineDash([]);
+      const a=Math.atan2(y2-y1,x2-x1),L=lw*5;ctx.beginPath();ctx.moveTo(x2,y2);ctx.lineTo(x2-L*Math.cos(a-0.45),y2-L*Math.sin(a-0.45));ctx.lineTo(x2-L*Math.cos(a+0.45),y2-L*Math.sin(a+0.45));ctx.closePath();ctx.fill()}
+    else if(sh.t==='hl'){ctx.globalAlpha=.28;ctx.fillRect(Math.min(x1,x2),Math.min(y1,y2),Math.abs(x2-x1),Math.abs(y2-y1))}
+    else if(sh.t==='rect'){ctx.strokeRect(Math.min(x1,x2),Math.min(y1,y2),Math.abs(x2-x1),Math.abs(y2-y1))}
+    else if(sh.t==='ellipse'){ctx.beginPath();ctx.ellipse((x1+x2)/2,(y1+y2)/2,Math.abs(x2-x1)/2||1,Math.abs(y2-y1)/2||1,0,0,Math.PI*2);ctx.stroke()}
+    else if(sh.t==='text'){const f=Math.round(Math.min(W,H)*0.03);ctx.font=`700 ${f}px ${FONT}`;ctx.textBaseline='top';const w=ctx.measureText(sh.s).width;
+      ctx.globalAlpha=.92;ctx.fillStyle='#fff';ctx.fillRect(x1-f*0.25,y1-f*0.15,w+f*0.5,f*1.35);ctx.globalAlpha=1;ctx.fillStyle=sh.c;ctx.fillText(sh.s,x1,y1)}
+    ctx.restore();
   }
+  async function exportImage(){
+    const b=state.base,cv=document.createElement('canvas');cv.width=b.width;cv.height=b.height;const ctx=cv.getContext('2d');ctx.drawImage(b,0,0);
+    state.shapes.forEach(sh=>drawShape(ctx,sh,cv.width,cv.height));state.canvas=cv;state.blob=await toBlob(cv);
+    if(state.objUrl)URL.revokeObjectURL(state.objUrl);state.objUrl=URL.createObjectURL(state.blob);state.ui.img.src=state.objUrl;
+  }
+  async function render(){
+    const {ratio,p,ui}=state;ui.msg.textContent='';
+    const single=state.items.length===1,mode=single&&ratio==='tall'?'tall':'fit',shots=[];
+    for(const it of state.items){const k=mode;it.shots=it.shots||{};if(!it.shots[k])it.shots[k]=trim(await snapshot(it.card,k));shots.push(it.shots[k])}
+    state.base=await compose(shots,ratio,p,{cols:state.cols,notes:state.items.map(i=>i.note),message:state.message});
+    await exportImage();
+    ui.ratio.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.ratio===ratio)));
+    renderList();
+  }
+  let rT=0;const rerender=()=>{clearTimeout(rT);rT=setTimeout(async()=>{if(!state)return;state.ui.busy(true);try{await render()}catch(e){flash('Không tạo được ảnh: '+e.message)}state.ui.busy(false)},350)};
+  function chartCards(){return [...document.querySelectorAll('.fs-share-host')].filter(c=>c.offsetParent&&!c.closest('.fs-share-modal'))}
+  function renderList(){
+    const ui=state.ui;ui.list.replaceChildren();
+    state.items.forEach((it,i)=>{const row=el('div','fs-sh-item'),top=el('div','fs-sh-top'),num=el('b','fs-sh-n',String(i+1)),t=el('span','fs-sh-t',cardInfo(it.card).title);t.title=t.textContent;
+      const mk=(txt,lab,fn,dis)=>{const b=el('button','fs-sh-ic',txt);b.type='button';b.setAttribute('aria-label',lab);b.title=lab;b.disabled=!!dis;b.onclick=fn;return b};
+      top.append(num,t,mk('↑','Đưa lên',()=>{state.items.splice(i-1,0,state.items.splice(i,1)[0]);rerender();renderList()},i===0),mk('↓','Đưa xuống',()=>{state.items.splice(i+1,0,state.items.splice(i,1)[0]);rerender();renderList()},i===state.items.length-1),mk('×','Bỏ chart',()=>{state.items.splice(i,1);rerender();renderList()},state.items.length===1));
+      const inp=el('input');inp.placeholder='Nhận định ngắn cho chart';inp.value=it.note||'';inp.oninput=()=>{it.note=inp.value;rerender()};
+      row.append(top,inp);ui.list.append(row)});
+    const used=new Set(state.items.map(i=>i.card)),avail=chartCards().filter(c=>!used.has(c));
+    ui.add.replaceChildren(el('option','', state.items.length>=6?'Tối đa 6 chart':'+ Thêm chart…'));ui.add.disabled=state.items.length>=6||!avail.length;
+    avail.forEach((c,k)=>{const o=el('option','',cardInfo(c).title);o.value=String(k);ui.add.append(o)});ui.add._avail=avail;
+    ui.layout.parentElement.style.display=state.items.length>1?'':'none';
+  }
+
   function flash(t){if(state)state.ui.msg.textContent=t}
   function download(){const a=document.createElement('a');a.href=state.objUrl;a.download=state.file;document.body.append(a);a.click();a.remove();flash('Đã tải ảnh.')}
   async function copyImage(){
@@ -189,34 +291,67 @@
     }else{download();flash('Máy này chưa hỗ trợ chia sẻ trực tiếp: đã tải ảnh và chép caption.')}
   }
   function close(){if(!state)return;state.ui.modal.remove();if(state.objUrl)URL.revokeObjectURL(state.objUrl);document.removeEventListener('keydown',onKey);const f=state.focus;state=null;if(f)f.focus()}
-  function onKey(e){if(e.key==='Escape')close()}
+  function onKey(e){if(e.key==='Escape')close();
+    // Ctrl/⌘+C trong khung phóng to: chép ảnh (trừ khi đang chọn chữ hoặc sửa caption)
+    else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='c'&&state&&state.blob&&document.activeElement.tagName!=='TEXTAREA'&&!String(getSelection()||'')){e.preventDefault();copyImage()}}
 
   function buildModal(){
     const modal=el('div','fs-share-modal'),box=el('div','fs-share-box');modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-label','Chia sẻ ảnh');
     const head=el('div','fs-share-head'),x=el('button','', '×');x.setAttribute('aria-label','Đóng');head.append(el('span','', '⇪ Chia sẻ ảnh'),x);
-    const body=el('div','fs-share-body'),prev=el('div','fs-share-prev'),img=el('img');img.alt='Ảnh xem trước';prev.append(el('span','', 'Đang tạo ảnh…'));
+    const body=el('div','fs-share-body'),left=el('div','fs-share-left');
+    // Thanh vẽ
+    const tools=el('div','fs-sh-tools');
+    const tb=TOOLS.map(([k,t])=>{const b=el('button','',t);b.type='button';b.dataset.tool=k;b.setAttribute('aria-pressed',String(k==='none'));tools.append(b);return b});
+    const sw=el('span','fs-sh-sw');const cb=COLORS.map((c,i)=>{const b=el('button');b.type='button';b.style.background=c;b.title='Màu';b.setAttribute('aria-label','Màu '+(i+1));b.setAttribute('aria-pressed',String(i===0));sw.append(b);return b});tools.append(sw);
+    const bUndo=el('button','', '↶ Hoàn tác'),bClr=el('button','', 'Xóa vẽ');bUndo.type=bClr.type='button';tools.append(bUndo,bClr);
+    const prev=el('div','fs-share-prev'),stage=el('div','fs-sh-stage'),img=el('img'),ov=el('canvas','fs-sh-ov');img.alt='Ảnh xem trước';stage.append(img,ov);prev.append(el('span','', 'Đang tạo ảnh…'));
+    const hint=el('p','fs-sh-hint','Kéo trên ảnh để vẽ. Chữ: chọn T rồi bấm vào vị trí cần ghi. Ctrl/⌘+C chép ảnh.');
+    left.append(tools,prev,hint);
+    // Cột phải
     const side=el('div','fs-share-side'),rr=el('div','fs-share-ratio');
     const ratio=Object.entries(RATIOS).map(([k,r])=>{const b=el('button');b.type='button';b.dataset.ratio=k;b.append(r.label,el('small','',r.hint));rr.append(b);return b});
+    const h1=el('div','fs-sh-h','CHART TRONG ẢNH'),sub1=el('div','fs-sh-sub','tối đa 6 · chart đang hiện trên trang · nhận định ngắn hiện ngay trên chart');
+    const list=el('div','fs-sh-list'),row2=el('div','fs-sh-row2'),add=el('select','fs-sh-add'),lw=el('label','fs-sh-lay'),layout=el('select');
+    add.setAttribute('aria-label','Thêm chart');[['1','Bố cục: 1 cột'],['2','Bố cục: 2 cột']].forEach(([v,t])=>{const o=el('option','',t);o.value=v;layout.append(o)});layout.value='2';lw.append(layout);row2.append(add,lw);
+    const h2=el('div','fs-sh-h','THÔNG ĐIỆP CHÍNH'),sub2=el('div','fs-sh-sub','tuỳ chọn · thành tiêu đề lớn trên ảnh');
+    const msgIn=el('textarea','fs-sh-msg');msgIn.rows=2;msgIn.placeholder='VD: Biên gộp cảng phục hồi 3 quý liên tiếp';
     const lab=el('label','', 'CAPTION'),text=el('textarea');lab.htmlFor=text.id='fs-share-caption';lab.style.display=text.style.display='none';
     const acts=el('div','fs-share-acts'),bShare=el('button','primary','⇪ Chia sẻ…'),bDl=el('button','', 'Tải ảnh'),bImg=el('button','', 'Chép ảnh'),bCap=el('button','', 'Chép caption');
     acts.append(bShare,bDl,bImg,bCap);
     const msg=el('div','fs-share-msg');msg.setAttribute('aria-live','polite');
-    side.append(rr,lab,text,acts,msg,el('p','fs-share-tip','Trên điện thoại, nút Chia sẻ mở thẳng Zalo, Telegram, Facebook, X… Caption được chép sẵn — dán vào bài đăng.'));
-    body.append(prev,side);box.append(head,body);modal.append(box);document.body.append(modal);
+    side.append(rr,h1,sub1,list,row2,h2,sub2,msgIn,lab,text,acts,msg);
+    body.append(left,side);box.append(head,body);modal.append(box);document.body.append(modal);
     const busy=v=>[bShare,bDl,bImg,...ratio].forEach(b=>b.disabled=v);busy(true);
-    x.onclick=close;modal.addEventListener('click',e=>{if(e.target===modal)close()});document.addEventListener('keydown',onKey);
+    x.onclick=close;modal.addEventListener('mousedown',e=>{if(e.target===modal)close()});document.addEventListener('keydown',onKey);
     ratio.forEach(b=>b.onclick=async()=>{if(!state)return;state.ratio=b.dataset.ratio;busy(true);await render();busy(false)});
     bShare.onclick=share;bDl.onclick=download;bImg.onclick=copyImage;bCap.onclick=()=>copyCaption(false);
+    add.onchange=()=>{const c=add._avail&&add._avail[+add.value];if(c&&state.items.length<6){state.items.push({card:c,note:''});rerender()}add.selectedIndex=0;renderList()};
+    layout.onchange=()=>{state.cols=+layout.value;rerender()};
+    msgIn.oninput=()=>{state.message=msgIn.value.trim();rerender()};
+    // Vẽ
+    let tool='none',color=COLORS[0],drag=null;
+    tb.forEach(b=>b.onclick=()=>{tool=b.dataset.tool;tb.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));stage.classList.toggle('drawing',tool!=='none');img.classList.remove('fs-zoom')});
+    cb.forEach((b,i)=>b.onclick=()=>{color=COLORS[i];cb.forEach(x=>x.setAttribute('aria-pressed',String(x===b)))});
+    bUndo.onclick=()=>{if(state&&state.shapes.length){state.shapes.pop();exportImage()}};bClr.onclick=()=>{if(state){state.shapes=[];exportImage()}};
+    const rel=e=>{const r=img.getBoundingClientRect();return {x:Math.min(1,Math.max(0,(e.clientX-r.left)/r.width)),y:Math.min(1,Math.max(0,(e.clientY-r.top)/r.height))}};
+    const sizeOv=()=>{const r=img.getBoundingClientRect();ov.width=Math.round(r.width);ov.height=Math.round(r.height);ov.style.width=r.width+'px';ov.style.height=r.height+'px'};
+    ov.addEventListener('pointerdown',e=>{if(tool==='none'||!state)return;e.preventDefault();const p=rel(e);
+      if(tool==='text'){const f=el('input','fs-sh-txt');f.placeholder='Nhập chữ rồi Enter';const sr=stage.getBoundingClientRect();f.style.left=(e.clientX-sr.left)+'px';f.style.top=(e.clientY-sr.top)+'px';stage.append(f);f.focus();
+        const done=ok=>{if(ok&&f.value.trim()){state.shapes.push({t:'text',x1:p.x,y1:p.y,x2:p.x,y2:p.y,c:color,s:f.value.trim()});exportImage()}f.remove()};
+        f.onkeydown=k=>{if(k.key==='Enter')done(true);if(k.key==='Escape'){k.stopPropagation();done(false)}};f.onblur=()=>done(true);return}
+      sizeOv();drag={t:tool,c:color,x1:p.x,y1:p.y,x2:p.x,y2:p.y};ov.setPointerCapture(e.pointerId)});
+    ov.addEventListener('pointermove',e=>{if(!drag)return;const p=rel(e);drag.x2=p.x;drag.y2=p.y;const g=ov.getContext('2d');g.clearRect(0,0,ov.width,ov.height);drawShape(g,drag,ov.width,ov.height)});
+    ov.addEventListener('pointerup',()=>{if(!drag)return;const d=drag;drag=null;ov.getContext('2d').clearRect(0,0,ov.width,ov.height);if(Math.hypot(d.x2-d.x1,d.y2-d.y1)>0.01){state.shapes.push(d);exportImage()}});
     x.focus();
-    return {modal,prev,img,ratio,text,msg,busy};
+    return {modal,prev,stage,img,ratio,text,msg,busy,list,add,layout};
   }
   async function open(card,btn){
     if(state)close();
     const p=pageInfo(),c=cardInfo(card),url=pageUrl(),ui=buildModal();
-    state={card,p,c,url,ui,ratio:'wide',shots:{},file:fileName(p,c),focus:btn};
+    state={card,p,c,url,ui,ratio:'fit',items:[{card,note:''}],cols:2,message:'',shapes:[],file:fileName(p,c),focus:btn};
     ui.text.value=caption(p,c,url);
     try{
-      await render();if(!state||state.ui!==ui)return;ui.prev.replaceChildren(ui.img);ui.busy(false);
+      await render();if(!state||state.ui!==ui)return;ui.prev.replaceChildren(ui.stage);ui.busy(false);
     }catch(e){ui.prev.replaceChildren(el('span','', 'Không tạo được ảnh: '+e.message))}
   }
   // Card chủ yếu là bảng dài (chart chỉ phụ) không gắn nút: ảnh sẽ quá nhỏ để đọc.
@@ -227,8 +362,8 @@
       // Card lồng nhau: gắn nút ở card trong cùng chứa chart.
       if([...card.querySelectorAll('.card,.viz-block')].some(hasChart))return;
       card.dataset.fsShare='1';card.classList.add('fs-share-host');
-      const b=el('button','fs-share-btn');b.type='button';b.title='Chia sẻ ảnh chart này';b.setAttribute('aria-label','Chia sẻ ảnh chart');
-      b.append('⇪ ',el('span','', 'Chia sẻ ảnh'));b.onclick=e=>{e.stopPropagation();open(card,b)};
+      const b=el('button','fs-share-btn');b.type='button';b.title='Chia sẻ ảnh chart — xem lớn, chép (Ctrl/⌘+C) hoặc tải PNG';b.setAttribute('aria-label','Chia sẻ ảnh chart');
+      b.innerHTML='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>';b.onclick=e=>{e.stopPropagation();open(card,b)};
       card.prepend(b);
     });
   }

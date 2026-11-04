@@ -80,6 +80,48 @@
     return v => Number(v).toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d});
   }
 
+
+  /* ---------- Chart.js renderer, same library and look as Stock dashboard ---------- */
+  const useChart = () => !!window.Chart;
+  const valueLabels = {id: 'ctValueLabels', afterDatasetsDraw(ch) {
+    const on = ch.options.plugins.ctValueLabels; if (!on?.show) return;
+    const c = ch.ctx; c.save(); c.font = '600 11px Inter,Arial,sans-serif'; c.fillStyle = '#334155'; c.textAlign = 'center'; c.textBaseline = 'bottom';
+    ch.data.datasets.forEach((d, k) => { if (!ch.isDatasetVisible(k)) return; ch.getDatasetMeta(k).data.forEach((p, i) => { const v = d.data[i]; if (num(v)) c.fillText(on.f(v), p.x, p.y - 4); }); });
+    c.restore();
+  }};
+  function chartConfig(vm, type) {
+    const f = fmtOf(vm), h = type === 'hbar', stack = type === 'stack', labels = vm.categories.map((c, i) => String(vm.tickLabels?.[i] ?? c).replace(/\n/g, ' '));
+    const mult = vm.yMult || 1, thick = 40 * (vm.barScale || 1);
+    const sets = vm.series.map(s => {
+      const line = s.overlay || type === 'line' || type === 'area';
+      const dim = i => (s.conf && s.conf[i] === false ? s.color + '8C' : s.color);
+      return line
+        ? {type: 'line', label: s.name || '', data: s.values, borderColor: s.color, backgroundColor: type === 'area' && !s.overlay ? s.color + '33' : s.color, fill: type === 'area' && !s.overlay, borderWidth: 2, pointRadius: vm.categories.length > 24 ? 0 : 2.5, pointHoverRadius: 4, tension: 0, spanGaps: true, order: 0}
+        : {type: 'bar', label: s.name || '', data: s.values, backgroundColor: s.conf ? s.values.map((_, i) => dim(i)) : s.color, borderRadius: 3, maxBarThickness: thick, order: 1, stack: stack ? 's' : undefined};
+    });
+    const nums = vm.series.flatMap(s => s.values).filter(num), axis = {grid: {color: '#EEF0F6'}, border: {display: false}, beginAtZero: vm.zeroBase !== false, ticks: {color: '#64748B', font: {size: 12}, callback: v => Number(v).toLocaleString('vi-VN', {maximumFractionDigits: 2})}, stacked: stack};
+    if (vm.yMax != null) axis.suggestedMax = vm.yMax / mult; else if (mult !== 1 && nums.length) axis.suggestedMax = Math.max(...nums) / mult;
+    const cat = {grid: {display: false}, border: {color: '#D6DDE8'}, stacked: stack, ticks: {color: '#64748B', font: {size: 12}, autoSkip: !vm.allTicks, maxRotation: 45, autoSkipPadding: 8}};
+    return {type: 'bar', data: {labels, datasets: sets}, plugins: [valueLabels], options: {responsive: true, maintainAspectRatio: false, animation: {duration: 250}, indexAxis: h ? 'y' : 'x', interaction: {mode: 'index', intersect: false, axis: h ? 'y' : 'x'},
+      scales: h ? {x: axis, y: cat} : {x: cat, y: axis},
+      plugins: {legend: {display: false}, ctValueLabels: {show: !!vm.labels, f}, tooltip: {backgroundColor: '#1D2678', titleFont: {weight: '700'}, padding: 10, cornerRadius: 8, usePointStyle: true, filter: x => num(x.raw), callbacks: {title: x => String(vm.categories[x[0]?.dataIndex] ?? ''), label: x => (x.dataset.label ? x.dataset.label + ': ' : '') + f(x.raw) + (vm.unit ? ' ' + vm.unit : '')}}}}};
+  }
+  function drawChart(body, vm, type) {
+    body.querySelectorAll('canvas').forEach(c => Chart.getChart(c)?.destroy());
+    const h = Math.max(260, type === 'hbar' ? vm.categories.length * 24 + 60 : 260);
+    body.innerHTML = `<div class="ct-canvas" style="position:relative;height:${h}px"><canvas role="img" aria-label="${esc(vm.aria || '')}"></canvas></div>`;
+    return new Chart(body.querySelector('canvas'), chartConfig(vm, type));
+  }
+  // Thanh so sánh mỗi thanh một màu (hbarCompare của trang), không có thanh công cụ.
+  function hbar(host, o) {
+    if (!host) return false;
+    const f = v => Number(v).toLocaleString('vi-VN', {minimumFractionDigits: o.digits ?? 0, maximumFractionDigits: o.digits ?? 0});
+    host.querySelectorAll('canvas').forEach(c => Chart.getChart(c)?.destroy());
+    host.innerHTML = `<div class="ct-canvas" style="position:relative;height:${Math.max(180, o.items.length * 34 + 40)}px"><canvas></canvas></div>`;
+    new Chart(host.querySelector('canvas'), {type: 'bar', data: {labels: o.items.map(i => i.label), datasets: [{data: o.items.map(i => i.value), backgroundColor: o.items.map(i => i.color || '#2938A8'), borderRadius: 3, maxBarThickness: 26}]}, plugins: [valueLabels],
+      options: {responsive: true, maintainAspectRatio: false, indexAxis: 'y', animation: {duration: 250}, scales: {x: {beginAtZero: true, grid: {color: '#EEF0F6'}, border: {display: false}, ticks: {color: '#64748B'}}, y: {grid: {display: false}, ticks: {color: '#334155', font: {size: 12}}}}, plugins: {legend: {display: false}, tooltip: {backgroundColor: '#1D2678', callbacks: {label: x => f(x.raw) + (o.unit ? ' ' + o.unit : '')}}}}});
+    return true;
+  }
   /* ---------- universal SVG renderer ---------- */
   const UNIFORM = true;
   function render(model, type) {
@@ -287,7 +329,8 @@
     const body = entry.body || document.querySelector(`[data-ct-body="${CSS.escape(id)}"]`); if (!body) return;
     const type = entry.type;
     // Native renderer only for the untouched view; any axis/series change uses the shared renderer.
-    if (isDefault(entry)) entry.base(body);
+    if (useChart()) drawChart(body, viewModel(entry, body.clientWidth || 640), type);
+    else if (isDefault(entry)) entry.base(body);
     else body.innerHTML = render(viewModel(entry, body.clientWidth || 640), type);
     body.dataset.ctType = type;
     body.insertAdjacentHTML('beforeend', legendHtml(entry));
@@ -315,7 +358,7 @@
     paint(id);
     if (window.ResizeObserver && !host._ctRO) {
       let w = host.clientWidth;
-      host._ctRO = new ResizeObserver(() => { const nw = host.clientWidth; if (nw && Math.abs(nw - w) > 8) { w = nw; if (registry.get(id)) paint(id); } });
+      host._ctRO = new ResizeObserver(() => { const nw = host.clientWidth; if (nw && Math.abs(nw - w) > 8) { w = nw; if (registry.get(id) && !useChart()) paint(id); } });
       host._ctRO.observe(host);
     }
   }
@@ -332,6 +375,7 @@
     const tpl = document.createElement('template'); tpl.innerHTML = toolbar(id, model, type); entry.bar = tpl.content.firstElementChild; syncBar(entry);
     // Toolbar stays outside the body here; paint() must not move it.
     const bar = entry.bar.outerHTML; entry.bar = null;
+    if (useChart()) setTimeout(() => paint(id), 0); // the page inserts this HTML first
     return bar + `<div class="ct-body" data-ct-body="${id}" data-ct-type="${type}">${content}${legendHtml(entry)}</div>`;
   }
 
@@ -406,5 +450,5 @@
     const [id, entry] = entryOf(hit); if (entry) { entry.ymult = 1; paint(id); }
   });
 
-  window.ChartTypes = {mount, html, render, TYPES};
+  window.ChartTypes = {mount, html, render, hbar, useChart, TYPES};
 })();

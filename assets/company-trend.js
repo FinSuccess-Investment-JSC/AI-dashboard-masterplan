@@ -123,51 +123,15 @@ function mount(host,{sector}){
     });
     const vals=syms.flatMap(c=>idx.map(i=>c[key][i]).filter(finite));
     if(!syms.length||!vals.length){chart.append(make('div','gap-empty',!picked.length?'Chưa chọn doanh nghiệp nào. Bấm tên trong chú giải bên dưới hoặc "Chọn nhanh".':'Không có dữ liệu trong khoảng đã chọn.'));return}
-    const W=Math.max(300,Math.round(chart.clientWidth||640)),H=W<520?240:300,L=48,R=14,T=12,B=state.mode==='Q'?44:26,pw=W-L-R,ph=H-T-B,n=idx.length;
-    const fit=state.fit&&state.type!=='bar';
-    const sc=scale(vals,pct,fit),Y=val=>T+ph*(sc.hi-Math.min(Math.max(val,sc.lo),sc.hi))/(sc.hi-sc.lo),X=j=>L+pw*(j+0.5)/n;
-    const zeroY=Y(Math.max(sc.lo,Math.min(0,sc.hi)));
-    const d=pct?1:0;
-    const svg=svgEl('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H,class:'ct-svg',role:'img','aria-label':`${label} theo kỳ, ${syms.map(c=>c.symbol).join(', ')}`});
-    for(let g=sc.lo;g<=sc.hi+sc.step/2;g+=sc.step){
-      svg.append(svgEl('line',{x1:L,x2:W-R,y1:Y(g),y2:Y(g),class:g===0?'axisline':'gridline'}));
-      svg.append(svgEl('text',{x:L-8,y:Y(g)+4,'text-anchor':'end',class:'axislabel'},fmt(g,sc.step<1?1:0)+(pct?'%':'')));
+    const fit=state.fit&&state.type!=='bar',sc=scale(vals,pct,fit),clipped=[];
+    syms.forEach(c=>idx.forEach(qi=>{const val=c[key][qi];if(pct&&finite(val)&&(val<sc.lo||val>sc.hi))clipped.push(`${c.symbol} ${Q[qi]}: ${fmt(val,1)}%`)}));
+    if(window.Chart){
+     const box=make('div','ct-canvas');box.style.cssText='position:relative;height:300px';const cv=document.createElement('canvas');cv.setAttribute('role','img');cv.setAttribute('aria-label',`${label} theo kỳ, ${syms.map(c=>c.symbol).join(', ')}`);box.append(cv);chart.append(box);
+     Chart.getChart(cv)?.destroy();
+     new Chart(cv,{type:state.type==='bar'?'bar':'line',data:{labels:idx.map(i=>Q[i]),datasets:syms.map(c=>({label:c.symbol,data:idx.map(i=>finite(c[key][i])?Math.min(Math.max(c[key][i],sc.lo),sc.hi):null),raw:idx.map(i=>c[key][i]),borderColor:color[c.symbol],backgroundColor:state.type==='area'?color[c.symbol]+'33':color[c.symbol],fill:state.type==='area',borderWidth:2,pointRadius:idx.length>14?0:2.5,tension:0,spanGaps:false,borderRadius:3,maxBarThickness:22}))},
+      options:{responsive:true,maintainAspectRatio:false,animation:{duration:250},interaction:{mode:'index',intersect:false},scales:{x:{grid:{display:false},ticks:{color:'#64748B',autoSkipPadding:8,maxRotation:45}},y:{min:sc.lo,max:sc.hi,grid:{color:'#EEF0F6'},border:{display:false},ticks:{color:'#64748B',callback:v=>fmt(v,sc.step<1?1:0)+(pct?'%':'')}}},
+      plugins:{legend:{display:false},tooltip:{backgroundColor:'#1D2678',padding:10,cornerRadius:8,itemSort:(p,q)=>q.raw-p.raw,filter:x=>x.raw!=null,callbacks:{label:x=>`${x.dataset.label}: ${fmt(x.dataset.raw[x.dataIndex],pct?1:0)}${pct?'%':''}`}}}}});
     }
-    const every=Math.max(1,Math.ceil(n/Math.max(3,Math.floor(pw/(state.mode==='Q'?62:48)))));
-    idx.forEach((qi,j)=>{if(j%every===0||j===n-1){if(j!==n-1&&n-1-j<every/2&&j!==0)return;
-      svg.append(svgEl('text',state.mode==='Q'?{x:X(j)+4,y:T+ph+14,'text-anchor':'end',class:'catlabel',transform:`rotate(-35 ${X(j)+4} ${T+ph+14})`}:{x:X(j),y:T+ph+18,'text-anchor':'middle',class:'catlabel'},Q[qi]))}});
-    const clipped=[],endY=[],bw=Math.min(22,pw/n*0.8/Math.max(syms.length,1));
-    syms.forEach((c,si)=>{
-      const col=color[c.symbol];let path='',pen=false,seg=[];
-      const flush=()=>{if(seg.length>1&&state.type==='area')svg.append(svgEl('path',{d:`M${seg.map(p=>p.join(' ')).join('L')}L${seg[seg.length-1][0]} ${zeroY}L${seg[0][0]} ${zeroY}Z`,fill:col,'fill-opacity':.14}));seg=[]};
-      idx.forEach((qi,j)=>{const val=c[key][qi];if(!finite(val)){pen=false;flush();return}path+=(pen?'L':'M')+X(j).toFixed(1)+' '+Y(val).toFixed(1);pen=true;seg.push([X(j).toFixed(1),Y(val).toFixed(1)])});flush();
-      if(path&&state.type!=='bar')svg.append(svgEl('path',{d:path,fill:'none',stroke:col,'stroke-width':2.2,'stroke-linecap':'round','stroke-linejoin':'round'}));
-      let last=-1;
-      idx.forEach((qi,j)=>{
-        const val=c[key][qi];if(!finite(val))return;last=j;
-        const out=pct&&(val<sc.lo||val>sc.hi);
-        if(state.type==='bar'){
-          const x=X(j)-bw*syms.length/2+si*bw,y=Y(val),r=svgEl('rect',{x:x+.5,y:Math.min(y,zeroY),width:Math.max(1,bw-1),height:Math.max(1,Math.abs(zeroY-y)),rx:2,fill:col,'fill-opacity':out?.45:1});
-          svg.append(r);
-        }else svg.append(svgEl('circle',{cx:X(j),cy:Y(val),r:out?4:n>14?2.2:3,fill:out?'#fff':col,stroke:out?col:'#fff','stroke-width':out?1.8:1}));
-        if(out)clipped.push(`${c.symbol} ${Q[qi]}: ${fmt(val,1)}%`);
-      });
-    });
-    // Hover: a vertical guide plus a tooltip listing every visible line for that period.
-    const guide=svgEl('line',{y1:T,y2:T+ph,stroke:'#b8c7d9','stroke-width':1,visibility:'hidden'});svg.append(guide);
-    idx.forEach((qi,j)=>{
-      const hit=svgEl('rect',{x:L+pw*j/n,y:T,width:pw/n,height:ph,fill:'transparent',class:'hitband'});
-      hit.addEventListener('mouseenter',()=>{
-        guide.setAttribute('x1',X(j));guide.setAttribute('x2',X(j));guide.setAttribute('visibility','visible');
-        const rows=syms.map(c=>[c.symbol,c[key][qi]]).filter(r=>finite(r[1])).sort((p,q)=>q[1]-p[1]);
-        tip.replaceChildren(make('b','',Q[qi]+' · '+label),...rows.map(([s,val])=>{const r=make('div','ct-tip-row');const dot=make('span','dot');dot.style.background=color[s];r.append(dot,`${s}: ${fmt(val,d)}${pct?'%':' tỷ đ'}`);return r}));
-        tip.style.display='block';
-      });
-      hit.addEventListener('mousemove',e=>{const box=card.getBoundingClientRect();tip.style.left=Math.min(e.clientX-box.left+14,box.width-190)+'px';tip.style.top=(e.clientY-box.top+14)+'px'});
-      hit.addEventListener('mouseleave',()=>{guide.setAttribute('visibility','hidden');tip.style.display='none'});
-      svg.append(hit);
-    });
-    chart.append(svg);
     const parts=[];
     if(clipped.length)parts.push('Ngoài thang (vẽ tại mép): '+clipped.slice(0,6).join('; ')+(clipped.length>6?` và ${clipped.length-6} điểm khác`:'')+'.');
     syms.filter(c=>c.note).forEach(c=>parts.push(c.symbol+': '+c.note));

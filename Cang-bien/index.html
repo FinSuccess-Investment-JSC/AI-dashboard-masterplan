@@ -4,8 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ngành Cảng &amp; kho bãi Việt Nam · FinSuccess Research</title>
-<link rel="stylesheet" href="../assets/dashboard-ui.css?v=a87294319c39">
-<script src="../assets/chart-types.js?v=50918dba25a4"></script>
+<link rel="stylesheet" href="../assets/dashboard-ui.css?v=c34f983662ce">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/chart-types.js?v=86ce94db6d92"></script>
 <script src="../data/daily-data.js?v=288a05bc7995" defer></script>
 <script src="../assets/value-chain.js?v=339f4d32329d" defer></script>
 <script src="../assets/data-math.js?v=ed6356aac3af" defer></script>
@@ -16,14 +17,14 @@
 <script src="../assets/sector-visuals.js?v=9bed10f3c811" defer></script>
 <script src="../assets/port-dashboard.js?v=714acc69523d" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
-<script src="../assets/share-image.js?v=2c2d147a8ede" defer></script>
+<script src="../assets/share-image.js?v=99ca8bbc0829" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="../assets/catalyst-board.js?v=e7beeca8313c" defer></script>
 <script src="../assets/sector-smart.js?v=14dcf541db5c" defer></script>
 <script src="../data/company-valuation.js?v=4ca32f468104" defer></script>
 <script src="../data/company-comparison.js?v=c9d828705ad2" defer></script>
 <script src="../data/company-quarterly.js?v=e5f7b013d9e5" defer></script>
-<script src="../assets/company-trend.js?v=0886441afdd7" defer></script>
+<script src="../assets/company-trend.js?v=42408b69f36a" defer></script>
 <script src="../assets/financial-comparison.js?v=915100cada6a" defer></script>
 <script src="../assets/research-layout.js?v=3ff58b320779" defer></script>
 <script src="../assets/research-sources.js?v=2e0a8424c403" defer></script>
@@ -34,11 +35,11 @@
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=54a3825f55f4">
 <script src="../assets/source-gap.js?v=02afdd3cfa3d" defer></script>
-<script src="../assets/site-navigation.js?v=204d79b7124d" data-release="20261104-ui"></script>
+<script src="../assets/site-navigation.js?v=204d79b7124d" data-release="20261104-chart"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=f9c03c28e38f">
 <link rel="stylesheet" href="../assets/research-layout.css?v=d45bab8741c4">
-<link rel="stylesheet" href="../assets/sector-base.css?v=83a489b7a7a7">
-<link rel="stylesheet" href="../assets/fin-success-theme.css?v=610eedc1dae9">
+<link rel="stylesheet" href="../assets/sector-base.css?v=4f47bbedc7ed">
+<link rel="stylesheet" href="../assets/fin-success-theme.css?v=2c30410d9b18">
 <link rel="stylesheet" href="../assets/brand.css?v=5c7e68e54b6c">
 </head>
 <body data-sector="port">
@@ -594,6 +595,7 @@ function rangeDotChart(containerId, opts){
 
 /* horizontal compare bars — single snapshot, N entities */
 function hbarCompare(containerId, opts){
+  if(window.ChartTypes&&ChartTypes.useChart()&&ChartTypes.hbar(document.getElementById(containerId),opts))return;
   const items=opts.items, n=items.length;
   const W=640, padT=8, padB=8, rowH=Math.max(38,(260-padT-padB)/n); /* same total height as the other charts */
   const H=padT+padB+rowH*n;
