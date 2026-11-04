@@ -84,11 +84,14 @@
   /* ---------- Chart.js renderer, same library and look as Stock dashboard ---------- */
   const useChart = () => !!window.Chart;
   const valueLabels = {id: 'ctValueLabels', afterDatasetsDraw(ch) {
-    const on = ch.options.plugins.ctValueLabels; if (!on?.show) return;
+    const on = ch.options.plugins.ctValueLabels; if (!on?.show || !ch.$ctFmt) return;
     const c = ch.ctx; c.save(); c.font = '600 11px Inter,Arial,sans-serif'; c.fillStyle = '#334155'; c.textAlign = 'center'; c.textBaseline = 'bottom';
-    ch.data.datasets.forEach((d, k) => { if (!ch.isDatasetVisible(k)) return; ch.getDatasetMeta(k).data.forEach((p, i) => { const v = d.data[i]; if (num(v)) c.fillText(on.f(v), p.x, p.y - 4); }); });
+    ch.data.datasets.forEach((d, k) => { if (!ch.isDatasetVisible(k)) return; ch.getDatasetMeta(k).data.forEach((p, i) => { const v = d.data[i]; if (num(v)) c.fillText(ch.$ctFmt(v), p.x, p.y - 4); }); });
     c.restore();
   }};
+  const crosshair = {id: 'ctCrosshair', afterDatasetsDraw(ch) { const a = ch.tooltip?.getActiveElements?.()[0]; if (!a || ch.options.indexAxis === 'y') return; const c = ch.ctx, t = ch.chartArea; c.save(); c.strokeStyle = '#94A3B8'; c.setLineDash([3, 3]); c.beginPath(); c.moveTo(a.element.x, t.top); c.lineTo(a.element.x, t.bottom); c.stroke(); c.restore(); }};
+  const endLabels = {id: 'ctEndLabels', afterDatasetsDraw(ch) { const on = ch.options.plugins.ctEndLabels; if (!on?.show || !ch.$ctFmt) return; const c = ch.ctx; c.save(); c.font = '700 11px Inter,Arial,sans-serif'; c.textBaseline = 'middle';
+    ch.data.datasets.forEach((d, k) => { if (d.type !== 'line' || !ch.isDatasetVisible(k)) return; let i = d.data.length - 1; while (i >= 0 && !num(d.data[i])) i--; const p = ch.getDatasetMeta(k).data[i]; if (!p) return; c.fillStyle = d.borderColor; c.fillText(ch.$ctFmt(d.data[i]), p.x + 6, p.y); }); c.restore(); }};
   function chartConfig(vm, type) {
     const f = fmtOf(vm), h = type === 'hbar', stack = type === 'stack', labels = vm.categories.map((c, i) => String(vm.tickLabels?.[i] ?? c).replace(/\n/g, ' '));
     const mult = vm.yMult || 1, thick = 40 * (vm.barScale || 1);
@@ -102,15 +105,51 @@
     const nums = vm.series.flatMap(s => s.values).filter(num), axis = {grid: {color: '#EEF0F6'}, border: {display: false}, beginAtZero: vm.zeroBase !== false, ticks: {color: '#64748B', font: {size: 12}, callback: v => Number(v).toLocaleString('vi-VN', {maximumFractionDigits: 2})}, stacked: stack};
     if (vm.yMax != null) axis.suggestedMax = vm.yMax / mult; else if (mult !== 1 && nums.length) axis.suggestedMax = Math.max(...nums) / mult;
     const cat = {grid: {display: false}, border: {color: '#D6DDE8'}, stacked: stack, ticks: {color: '#64748B', font: {size: 12}, autoSkip: !vm.allTicks, maxRotation: 45, autoSkipPadding: 8}};
-    return {type: 'bar', data: {labels, datasets: sets}, plugins: [valueLabels], options: {responsive: true, maintainAspectRatio: false, animation: {duration: 250}, indexAxis: h ? 'y' : 'x', interaction: {mode: 'index', intersect: false, axis: h ? 'y' : 'x'},
+    return {type: 'bar', data: {labels, datasets: sets}, plugins: [valueLabels, crosshair, endLabels], options: {responsive: true, maintainAspectRatio: false, animation: {duration: 250}, layout: {padding: {right: !h && !vm.labels && sets.some(d => d.type === 'line') ? 44 : 0}}, indexAxis: h ? 'y' : 'x', interaction: {mode: 'index', intersect: false, axis: h ? 'y' : 'x'},
       scales: h ? {x: axis, y: cat} : {x: cat, y: axis},
-      plugins: {legend: {display: false}, ctValueLabels: {show: !!vm.labels, f}, tooltip: {backgroundColor: '#1D2678', titleFont: {weight: '700'}, padding: 10, cornerRadius: 8, usePointStyle: true, filter: x => num(x.raw), callbacks: {title: x => String(vm.categories[x[0]?.dataIndex] ?? ''), label: x => (x.dataset.label ? x.dataset.label + ': ' : '') + f(x.raw) + (vm.unit ? ' ' + vm.unit : '')}}}}};
+      plugins: {legend: {display: false}, ctValueLabels: {show: !!vm.labels}, ctEndLabels: {show: !vm.labels && !h}, tooltip: {backgroundColor: '#1D2678', titleFont: {weight: '700'}, padding: 10, cornerRadius: 8, usePointStyle: true, filter: x => num(x.raw), callbacks: {title: x => String(vm.categories[x[0]?.dataIndex] ?? ''), label: x => (x.dataset.label ? x.dataset.label + ': ' : '') + f(x.raw) + (vm.unit ? ' ' + vm.unit : '')}}}}};
   }
   function drawChart(body, vm, type) {
     body.querySelectorAll('canvas').forEach(c => Chart.getChart(c)?.destroy());
     const h = Math.max(260, type === 'hbar' ? vm.categories.length * 24 + 60 : 260);
     body.innerHTML = `<div class="ct-canvas" style="position:relative;height:${h}px"><canvas role="img" aria-label="${esc(vm.aria || '')}"></canvas></div>`;
-    return new Chart(body.querySelector('canvas'), chartConfig(vm, type));
+    const ch = new Chart(body.querySelector('canvas'), chartConfig(vm, type));
+    ch.$ctFmt = fmtOf(vm);
+    return ch;
+  }
+  function tableHtml(vm) {
+    const f = fmtOf(vm), named = vm.series;
+    return `<div class="tbl-wrap ct-table"><table class="compare-table"><thead><tr><th>Kỳ</th>${named.map(s => `<th>${esc(s.name || (vm.unit || 'Giá trị'))}</th>`).join('')}</tr></thead><tbody>${vm.categories.map((c, i) => `<tr><td>${esc(String(c))}</td>${named.map(s => `<td>${num(s.values[i]) ? esc(f(s.values[i])) : '—'}</td>`).join('')}</tr>`).reverse().join('')}</tbody></table></div>`;
+  }
+  // Biểu đồ nhỏ trong ô KPI, cùng kiểu đường có nền nhạt của Stock.
+  function spark(host, values, color) {
+    if (!host) return false;
+    host.ctValues = {values, color};
+    host.querySelectorAll('canvas').forEach(c => Chart.getChart(c)?.destroy());
+    host.innerHTML = '<div class="ct-spark" style="position:relative;height:38px"><canvas aria-hidden="true"></canvas></div>';
+    new Chart(host.querySelector('canvas'), {type: 'line', data: {labels: values.map((_, i) => i), datasets: [{data: values, borderColor: color, backgroundColor: color + '22', fill: true, borderWidth: 1.6, pointRadius: values.map((_, i) => (i === values.length - 1 ? 2.5 : 0)), pointBackgroundColor: color, tension: 0}]},
+      options: {responsive: true, maintainAspectRatio: false, animation: false, events: [], layout: {padding: 3}, plugins: {legend: {display: false}, tooltip: {enabled: false}}, scales: {x: {display: false}, y: {display: false}}}});
+    return true;
+  }
+  // Cột dương / âm quanh 0 (balanceBarChart của trang).
+  function balance(host, o) {
+    if (!host) return false;
+    const d = o.digits ?? 1, f = v => Number(v).toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d}), max = Math.max(o.minScale || 1, ...o.values.filter(num).map(Math.abs)) * 1.2;
+    host.querySelectorAll('canvas').forEach(c => Chart.getChart(c)?.destroy());
+    host.innerHTML = '<div class="ct-canvas" style="position:relative;height:260px"><canvas></canvas></div>';
+    new Chart(host.querySelector('canvas'), {type: 'bar', data: {labels: o.labels, datasets: [{data: o.values, backgroundColor: o.values.map(v => (v >= 0 ? (o.posColor || '#59C5C8') : (o.negColor || '#861C52'))), borderRadius: 3, maxBarThickness: 40}]}, plugins: [crosshair],
+      options: {responsive: true, maintainAspectRatio: false, animation: {duration: 250}, interaction: {mode: 'index', intersect: false}, scales: {x: {grid: {display: false}, ticks: {color: '#64748B', autoSkipPadding: 8, maxRotation: 45}}, y: {min: -max, max, grid: {color: '#EEF0F6'}, border: {display: false}, ticks: {color: '#64748B', callback: f}}}, plugins: {legend: {display: false}, tooltip: {backgroundColor: '#1D2678', callbacks: {label: x => f(x.raw) + (o.unit ? ' ' + o.unit : '')}}}}});
+    return true;
+  }
+  // Giá theo ngày thật (rangeDotChart của trang): điểm giữa khoảng giá.
+  function dots(host, o) {
+    if (!host) return false;
+    const day = v => new Date(v).toLocaleDateString('vi-VN');
+    host.querySelectorAll('canvas').forEach(c => Chart.getChart(c)?.destroy());
+    host.innerHTML = '<div class="ct-canvas" style="position:relative;height:260px"><canvas></canvas></div>';
+    new Chart(host.querySelector('canvas'), {type: 'scatter', data: {datasets: o.series.map(s => ({label: s.name || '', data: s.points.map(p => ({x: +new Date(p.date + 'T00:00:00'), y: p.mid, l: p.label, lo: p.low, hi: p.high})), backgroundColor: s.color, pointRadius: 4.5, pointHoverRadius: 6}))},
+      options: {responsive: true, maintainAspectRatio: false, animation: {duration: 250}, scales: {x: {type: 'linear', min: +o.domain[0], max: +o.domain[1], grid: {display: false}, ticks: {color: '#64748B', maxTicksLimit: 6, callback: day}}, y: {grid: {color: '#EEF0F6'}, border: {display: false}, ticks: {color: '#64748B'}}}, plugins: {legend: {display: false}, tooltip: {backgroundColor: '#1D2678', callbacks: {title: x => day(x[0].raw.x), label: x => `${x.raw.l || x.dataset.label}: ${x.raw.lo === x.raw.hi ? x.raw.y : x.raw.lo + '–' + x.raw.hi}`}}}}});
+    return true;
   }
   // Thanh so sánh mỗi thanh một màu (hbarCompare của trang), không có thanh công cụ.
   function hbar(host, o) {
@@ -269,13 +308,14 @@
       `<label>Số kỳ <select data-ct-count>${opts}</select></label></span>`;
   }
   function toolbar(id, model, current) {
-    return `<div class="ct-switch" role="group" aria-label="Kiểu biểu đồ" data-ct-for="${esc(id)}">` + periodHtml(model) + TYPES.map(([t, name]) => {
+    return `<div class="ct-switch" role="group" aria-label="Điều khiển chart" data-ct-for="${esc(id)}">` + periodHtml(model) +
+      `<span class="ct-main"><button type="button" data-ct-table aria-pressed="false">Bảng</button><button type="button" data-ct-custom aria-expanded="false">Tùy chỉnh</button></span><span class="ct-more" hidden>` + TYPES.map(([t, name]) => {
       const why = reason(model, t);
       return `<button type="button" data-ct-type="${t}" aria-pressed="${t === current}"${why ? ` disabled title="${esc(why)}"` : ''}>${name}</button>`;
     }).join('') + `<span class="ct-axis" role="group" aria-label="Trục"><span>Trục</span>` +
       [['zero', 'Từ 0'], ['fit', 'Vừa dữ liệu']].map(([k, t]) => `<button type="button" data-ct-axis="${k}">${t}</button>`).join('') +
-      `<button type="button" class="ct-values" data-ct-values aria-pressed="false">Số liệu</button>` +
-      `<button type="button" class="ct-bw" data-ct-bw="-1" aria-label="Thu hẹp cột">−</button><button type="button" class="ct-bw" data-ct-bw="1" aria-label="Kéo rộng cột">+</button></span></div>`;
+      `<button type="button" class="ct-values" data-ct-values aria-pressed="false" hidden>Số liệu</button>` +
+      `<button type="button" class="ct-bw" data-ct-bw="-1" aria-label="Thu hẹp cột">−</button><button type="button" class="ct-bw" data-ct-bw="1" aria-label="Kéo rộng cột">+</button></span></span></div>`;
   }
   // Bars always start at 0 (bar length = value); "Vừa dữ liệu" only for line/area views.
   const fitAllowed = (entry) => entry.type === 'line' || (entry.type === 'area' && !entry.model.stackable);
@@ -301,15 +341,21 @@
       return `<button type="button" data-ct-series="${esc(s.name)}" aria-pressed="${!off}" class="${off ? 'off' : ''}"><i style="background:${esc(s.color)}"></i>${esc(s.name)}</button>`;
     }).join('') + '</div>';
   }
+  const yoyLag = cats => /^Q/.test(String(cats[0])) ? 4 : 12;
   function viewModel(entry, width) {
     const m = entry.model, fit = fitAllowed(entry) && entry.fit, n = m.categories.length;
-    const k = m.time && entry.count && entry.count < n ? entry.count : n, o = n - k;
-    const cut = a => (a && a.length === n ? a.slice(o) : a);
+    const k = m.time && entry.count && entry.count < n ? entry.count : n, o0 = n - k;
+    const o = entry.zoom ? entry.zoom[0] : o0, e = entry.zoom ? entry.zoom[1] + 1 : n;
+    const cut = a => (a && a.length === n ? a.slice(o, e) : a);
+    const calc = (vals, i) => { const c = entry.calc, v = vals[i]; if (!c || !num(v)) return v;
+      if (c === 'rebase') { const b = vals.slice(o, e).find(num); return b ? v / b * 100 : null; }
+      const lag = c === 'yoy' ? yoyLag(m.categories) : 1, p = vals[i - lag]; return num(p) && p ? (v / p - 1) * 100 : null; };
     return {...m, width, zeroBase: !fit, offset: o, categories: cut(m.categories), tickLabels: cut(m.tickLabels),
       labels: !!entry.labels, barScale: entry.bw || 1, yMult: entry.ymult || 1,
-      series: m.series.filter(s => !entry.hidden.has(s.name)).map(s => ({...s, values: cut(s.values), conf: cut(s.conf)}))};
+      unit: entry.calc ? (entry.calc === 'rebase' ? 'chỉ số' : '%') : m.unit, digits: entry.calc ? 1 : m.digits, fmt: entry.calc ? null : m.fmt,
+      series: m.series.filter(s => !entry.hidden.has(s.name)).map(s => ({...s, values: cut(s.values.map((_, i) => calc(s.values, i))), conf: cut(s.conf)}))};
   }
-  const isDefault = entry => entry.type === native(entry.model) && !entry.hidden.size && entry.fit === entry.fit0 && !entry.count && !entry.labels && (entry.bw || 1) === 1 && (entry.ymult || 1) === 1;
+  const isDefault = entry => !entry.zoom && !entry.calc && entry.type === native(entry.model) && !entry.hidden.size && entry.fit === entry.fit0 && !entry.count && !entry.labels && (entry.bw || 1) === 1 && (entry.ymult || 1) === 1;
   const viewState = entry => ({fit: entry.fit, hidden: [...entry.hidden], count: entry.count || 0, labels: !!entry.labels, bw: entry.bw || 1});
   const restore = (v, model) => ({count: model.time ? (v.count || 0) : 0, labels: !!v.labels, bw: v.bw || 1, ymult: 1});
   function choose(model) {
@@ -329,7 +375,8 @@
     const body = entry.body || document.querySelector(`[data-ct-body="${CSS.escape(id)}"]`); if (!body) return;
     const type = entry.type;
     // Native renderer only for the untouched view; any axis/series change uses the shared renderer.
-    if (useChart()) drawChart(body, viewModel(entry, body.clientWidth || 640), type);
+    if (entry.table) { body.querySelectorAll('canvas').forEach(c => window.Chart?.getChart(c)?.destroy()); body.innerHTML = tableHtml(viewModel(entry, 640)); }
+    else if (useChart()) { const ch = drawChart(body, viewModel(entry, body.clientWidth || 640), type); ch.$ctId = id; if (entry.zoom || entry.calc) body.insertAdjacentHTML('afterbegin', `<div class="ct-state">${entry.calc ? `<span>Đang xem: ${{pct: '%Δ kỳ trước', yoy: '%Δ cùng kỳ', rebase: 'Rebase 100'}[entry.calc]}</span>` : ''}<button type="button" data-ct-reset>↺ Toàn bộ</button></div>`); }
     else if (isDefault(entry)) entry.base(body);
     else body.innerHTML = render(viewModel(entry, body.clientWidth || 640), type);
     body.dataset.ctType = type;
@@ -450,5 +497,30 @@
     const [id, entry] = entryOf(hit); if (entry) { entry.ymult = 1; paint(id); }
   });
 
-  window.ChartTypes = {mount, html, render, hbar, useChart, TYPES};
+  const barOf = e => { const b = e.closest('.ct-switch'); return [b, b && registry.get(b.dataset.ctFor), b?.dataset.ctFor]; };
+  document.addEventListener('click', e => {
+    const c = e.target.closest?.('[data-ct-custom]');
+    if (c) { const more = c.closest('.ct-switch').querySelector('.ct-more'); more.hidden = !more.hidden; c.setAttribute('aria-expanded', String(!more.hidden)); return; }
+    const t = e.target.closest?.('[data-ct-table]');
+    if (t) { const [, entry, id] = barOf(t); if (!entry) return; entry.table = !entry.table; t.setAttribute('aria-pressed', String(entry.table)); t.textContent = entry.table ? 'Chart' : 'Bảng'; paint(id); return; }
+    const r = e.target.closest?.('[data-ct-reset]');
+    if (r) { const [id, entry] = entryOf(r); if (entry) { entry.zoom = null; entry.calc = null; paint(id); } }
+    const m = e.target.closest?.('.ct-menu button');
+    if (m) { const [id, entry] = [menu.dataset.id, registry.get(menu.dataset.id)]; if (entry) { entry.calc = m.dataset.calc || null; paint(id); } }
+    if (menu) menu.hidden = true;
+  });
+  // Nhấp đúp: bật/tắt số trên chart. Chuột phải: cách tính. Kéo: phóng to một đoạn.
+  document.addEventListener('dblclick', e => { if (e.target.tagName !== 'CANVAS') return; const [id, entry] = entryOf(e.target); if (entry) { entry.labels = !entry.labels; paint(id); } });
+  let menu;
+  document.addEventListener('contextmenu', e => {
+    if (e.target.tagName !== 'CANVAS') return; const [id, entry] = entryOf(e.target); if (!entry?.model.time) return; e.preventDefault();
+    if (!menu) { menu = document.createElement('div'); menu.className = 'ct-menu'; menu.innerHTML = [['', 'Giá trị'], ['pct', '%Δ kỳ trước'], ['yoy', '%Δ cùng kỳ'], ['rebase', 'Rebase 100']].map(([k, t]) => `<button type="button" data-calc="${k}">${t}</button>`).join(''); document.body.append(menu); }
+    menu.dataset.id = id; menu.hidden = false; menu.style.left = e.clientX + 'px'; menu.style.top = e.clientY + 'px';
+  });
+  let zoomDrag = null;
+  document.addEventListener('pointerdown', e => { if (e.target.tagName !== 'CANVAS' || e.button) return; const ch = Chart?.getChart?.(e.target), [id, entry] = entryOf(e.target); if (!ch || !entry?.model.time || ch.options.indexAxis === 'y') return; zoomDrag = {ch, id, entry, x: e.offsetX}; });
+  document.addEventListener('pointerup', e => { if (!zoomDrag) return; const d = zoomDrag; zoomDrag = null; if (e.target !== d.ch.canvas || Math.abs(e.offsetX - d.x) < 24) return; const sc = d.ch.scales.x, a = sc.getValueForPixel(Math.min(d.x, e.offsetX)), b = sc.getValueForPixel(Math.max(d.x, e.offsetX)), m = d.entry.model.categories.length, base = d.entry.zoom ? d.entry.zoom[0] : (d.entry.count && d.entry.count < m ? m - d.entry.count : 0); if (b > a) { d.entry.zoom = [base + Math.max(a, 0), base + b]; paint(d.id); } });
+  // J / K: chart kế tiếp, chart trước trong tab đang mở.
+  document.addEventListener('keydown', e => { if (e.metaKey || e.ctrlKey || e.altKey || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || !/^[jk]$/i.test(e.key)) return; const cards = [...document.querySelectorAll('.card')].filter(c => c.offsetParent && c.querySelector('canvas')); if (!cards.length) return; const y = scrollY + 90, next = /j/i.test(e.key) ? cards.find(c => c.getBoundingClientRect().top + scrollY > y + 8) : cards.filter(c => c.getBoundingClientRect().top + scrollY < y - 8).pop(); if (next) scrollTo({top: next.getBoundingClientRect().top + scrollY - 80, behavior: 'smooth'}); });
+  window.ChartTypes = {mount, html, render, hbar, spark, balance, dots, useChart, TYPES};
 })();

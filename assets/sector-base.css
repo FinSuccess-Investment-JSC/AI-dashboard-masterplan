@@ -248,3 +248,16 @@ body .cr-score-table{table-layout:auto;min-width:640px}
 .tx-tablefold{margin-top:14px}
 .tx-tablefold>summary{cursor:pointer;font-size:12px;font-weight:650;color:#355978}
 .card:has(.cts-legend) .legend{display:none}
+.ct-main{display:inline-flex;gap:6px;margin-left:auto}
+.ct-main button{height:30px;padding:0 11px;border:1px solid var(--line,#E3E8F0);border-radius:9px;background:#fff;color:#1D2678;font:600 12.5px Inter,Arial,sans-serif;cursor:pointer}
+.ct-main button:hover{border-color:#2938A8}
+.ct-more{display:flex;flex-basis:100%;flex-wrap:wrap;justify-content:flex-end;gap:4px;margin-top:6px}
+.ct-more[hidden]{display:none}
+.ct-state{display:flex;justify-content:flex-end;align-items:center;gap:8px;font-size:12px;color:#64748B;margin-bottom:4px}
+.ct-state button{border:1px solid #E3E8F0;border-radius:8px;background:#fff;color:#1D2678;font:600 12px Inter,Arial,sans-serif;padding:3px 8px;cursor:pointer}
+.ct-menu{position:fixed;z-index:200;display:grid;min-width:150px;padding:4px;background:#fff;border:1px solid #E3E8F0;border-radius:10px;box-shadow:0 8px 24px rgba(15,23,42,.14)}
+.ct-menu[hidden]{display:none}
+.ct-menu button{border:0;background:none;text-align:left;padding:7px 10px;border-radius:7px;font:500 13px Inter,Arial,sans-serif;color:#334155;cursor:pointer}
+.ct-menu button:hover{background:#F0F3FF}
+.ct-table{max-height:300px;overflow:auto}
+canvas{user-select:none}

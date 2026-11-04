@@ -18,12 +18,12 @@ python3 scripts/fetch_sxd_hanoi.py || echo "Sở Xây dựng Hà Nội lỗi; gi
 if [ -n "$(git status --porcelain data/raw/public/fia-fdi.json data/raw/public/sxd-hanoi-quarterly.json)" ]; then
   python3 scripts/build_sector_public.py
 fi
-if git diff --quiet -- data/hydro-reservoirs.js data/raw/public assets/brand.css assets/share-image.js && [ -z "$(git status --porcelain data/raw/evn-reservoirs data/raw/public)" ]; then
+if git diff --quiet -- data/hydro-reservoirs.js data/raw/public assets/brand.css assets/share-image.js assets/motion.js && [ -z "$(git status --porcelain data/raw/evn-reservoirs data/raw/public)" ]; then
   echo 'Không có quan sát mới (EVN, Cục ĐTNN, Sở Xây dựng).'; exit 0
 fi
 python3 scripts/prepare_release.py --version "$(date -u +%Y%m%dT%H%M%SZ)-hydro"
 python3 -m unittest discover -s tests -q
-git add assets/brand.css assets/share-image.js data/raw/evn-reservoirs data/hydro-reservoirs.js data/raw/public data/*-public-data.js data/*-public-data.json data/site-release.json index.html 404.html */index.html
+git add assets/brand.css assets/share-image.js assets/motion.js data/raw/evn-reservoirs data/hydro-reservoirs.js data/raw/public data/*-public-data.js data/*-public-data.json data/site-release.json index.html 404.html */index.html
 git commit -q -m "Cập nhật nguồn chỉ truy cập từ VN: hồ EVN 00h (đến $(ls data/raw/evn-reservoirs | tail -1 | cut -c1-10)), Cục ĐTNN, Sở Xây dựng Hà Nội"
 git pull -q --rebase origin main && git push -q origin HEAD:main
 echo "Đã publish."

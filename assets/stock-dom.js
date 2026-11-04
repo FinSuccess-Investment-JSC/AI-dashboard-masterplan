@@ -11,7 +11,7 @@ if(pane&&kpis.length&&lead){
  const make=(tag,cls,text)=>{const n=document.createElement(tag);n.className=cls;if(text)n.textContent=text;return n};
  const db=make('section','db card'),left=make('div','db-l'),right=make('div','db-r'),k=make('div','db-k');db.id='dataBrief';
  k.append(make('span','db-dot'),'Bản tin dữ liệu');left.append(k,make('div','db-tk',document.querySelector('.research-header h1')?.textContent||''),make('p','db-lead',lead));
- kpis.forEach(c=>{const b=make('div','db-c card');b.append(make('div','db-ch',c.querySelector('.label').textContent),make('div','db-v',c.querySelector('.value').textContent),make('div','db-s',[c.querySelector('.delta')?.textContent,c.querySelector('.sub')?.textContent].filter(Boolean).join(' · ')));const sv=c.querySelector('svg');if(sv)b.append(sv.cloneNode(true));right.append(b)});
+ kpis.forEach(c=>{const b=make('div','db-c card');b.append(make('div','db-ch',c.querySelector('.label').textContent),make('div','db-v',c.querySelector('.value').textContent),make('div','db-s',[c.querySelector('.delta')?.textContent,c.querySelector('.sub')?.textContent].filter(Boolean).join(' · ')));const sp=c.querySelector('[id^="spk-"]');right.append(b);if(sp?.ctValues){const h=make('div','db-spark');b.append(h);ChartTypes.spark(h,sp.ctValues.values,sp.ctValues.color)}});
  db.append(left,right);pane.prepend(db);
 }
 new MutationObserver(apply).observe(document.querySelector('.container')||document.body,{childList:true,subtree:true});
