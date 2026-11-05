@@ -30,7 +30,7 @@ body.fs-arr-on .fs-arr-size{display:block;position:absolute;right:2px;bottom:2px
   function cardKey(card){
     if(card.dataset.fsArrKey)return card.dataset.fsArrKey;
     const h=card.querySelector('.chart-title,h3,h2,h4');const c=card.querySelector('canvas[id],[id^="ch"]');
-    let t=clean(h&&h.textContent);
+    const hc=h&&h.cloneNode(true);if(hc)hc.querySelectorAll('button,select,[role="group"],[class*="info"],[class*="toggle"]').forEach(n=>n.remove());let t=clean(hc&&hc.textContent);
     if(!t){const n=[...card.querySelectorAll('div,span,p,strong')].find(x=>!x.children.length&&!x.closest('button')&&x.textContent.trim());t=clean(n&&n.textContent)}
     return card.dataset.fsArrKey=t+'#'+(c?c.id:'');
   }
@@ -89,7 +89,10 @@ body.fs-arr-on .fs-arr-size{display:block;position:absolute;right:2px;bottom:2px
       else tip(t&&t!==card?'Chỉ kéo trong cùng khu vực':'Kéo tới chart khác',ev.clientX,ev.clientY)};
     const up=()=>{document.removeEventListener('pointermove',move);document.removeEventListener('pointerup',up);clear();untip();card.classList.remove('fs-arr-drag');
       if(target){const tb=target.parentElement;toGrid(tb);tb.insertBefore(card,after?target.nextSibling:target);
-        const s=saved.cards[cardKey(card)];card.style.gridColumn='span '+(s&&s.span||12);record(pane)}};
+        const W=tb.clientWidth||1,ts=saved.cards[cardKey(target)],tsp=(ts&&ts.span)||spanOf(target,W),free=12-tsp;
+        let sp=snap(Math.round(card.offsetWidth/W*12));if(free>=3&&sp>free)sp=free;
+        const s=saved.cards[cardKey(card)]||(saved.cards[cardKey(card)]={});s.span=sp;card.style.gridColumn='span '+sp;
+        charts(card).forEach(ch=>{try{ch.resize()}catch(e){}});record(pane)}};
     document.addEventListener('pointermove',move);document.addEventListener('pointerup',up);
   }
   function onSize(card,e){
