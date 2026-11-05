@@ -1,7 +1,7 @@
 window.COMPANY_COMPARISON = {
   "schema": 1,
-  "built_at": "2026-11-04T16:35:35.995920+00:00",
-  "checked_at": "2026-11-04T16:35:34.135079+00:00",
+  "built_at": "2026-11-05T16:50:00.801071+00:00",
+  "checked_at": "2026-11-05T16:49:58.876749+00:00",
   "provider": "Stock Analysis · S&P Global Market Intelligence",
   "amount_unit": "tỷ VND",
   "ratio_unit": "% / lần",
@@ -32,7 +32,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GAS/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/GAS/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:07.954887+00:00",
+        "checked_at": "2026-11-05T16:48:02.634961+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -56,16 +56,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GAS/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/GAS/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:08.386053+00:00",
+        "checked_at": "2026-11-05T16:48:02.908495+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 12.5,
+        "date": "2026-11-04",
+        "pe": 12.34,
         "pb": 2.44,
-        "market_cap": 182419.002,
+        "market_cap": 180006.052,
         "source_url": "https://stockanalysis.com/quote/hose/GAS/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:08.704815+00:00"
+        "checked_at": "2026-11-05T16:48:03.329951+00:00"
       },
       "errors": [],
       "history": {
@@ -158,7 +158,7 @@ window.COMPANY_COMPARISON = {
           4576.462
         ],
         "source_url": "https://stockanalysis.com/quote/hose/GAS/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:08.386053+00:00",
+        "checked_at": "2026-11-05T16:48:02.908495+00:00",
         "duplicates": []
       }
     },
@@ -188,7 +188,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/BSR/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/BSR/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:08.829454+00:00",
+        "checked_at": "2026-11-05T16:48:03.530110+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -212,16 +212,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/BSR/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/BSR/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:09.121254+00:00",
+        "checked_at": "2026-11-05T16:48:03.687677+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 4.72,
-        "pb": 1.58,
+        "date": "2026-11-04",
+        "pe": 4.7,
+        "pb": 1.59,
         "market_cap": 132693.442,
         "source_url": "https://stockanalysis.com/quote/hose/BSR/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:09.666282+00:00"
+        "checked_at": "2026-11-05T16:48:04.098603+00:00"
       },
       "errors": [],
       "history": {
@@ -314,7 +314,7 @@ window.COMPANY_COMPARISON = {
           8968.02
         ],
         "source_url": "https://stockanalysis.com/quote/hose/BSR/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:09.121254+00:00",
+        "checked_at": "2026-11-05T16:48:03.687677+00:00",
         "duplicates": []
       }
     },
@@ -344,7 +344,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PLX/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/PLX/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:09.945730+00:00",
+        "checked_at": "2026-11-05T16:48:04.281666+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -368,16 +368,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PLX/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/PLX/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:10.355207+00:00",
+        "checked_at": "2026-11-05T16:48:04.477635+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 13.01,
-        "pb": 1.36,
-        "market_cap": 42564.84,
+        "date": "2026-11-04",
+        "pe": 13.09,
+        "pb": 1.37,
+        "market_cap": 42818.958,
         "source_url": "https://stockanalysis.com/quote/hose/PLX/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:10.786016+00:00"
+        "checked_at": "2026-11-05T16:48:04.956912+00:00"
       },
       "errors": [],
       "history": {
@@ -470,7 +470,7 @@ window.COMPANY_COMPARISON = {
           1240.939
         ],
         "source_url": "https://stockanalysis.com/quote/hose/PLX/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:10.355207+00:00",
+        "checked_at": "2026-11-05T16:48:04.477635+00:00",
         "duplicates": []
       }
     },
@@ -500,7 +500,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PVD/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/PVD/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:11.048941+00:00",
+        "checked_at": "2026-11-05T16:48:04.969857+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -524,16 +524,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PVD/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/PVD/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:11.532870+00:00",
+        "checked_at": "2026-11-05T16:48:05.264847+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 24.11,
+        "date": "2026-11-04",
+        "pe": 23.7,
         "pb": 0.93,
-        "market_cap": 16328.642,
+        "market_cap": 16050.313,
         "source_url": "https://stockanalysis.com/quote/hose/PVD/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:12.008356+00:00"
+        "checked_at": "2026-11-05T16:48:05.693894+00:00"
       },
       "errors": [],
       "history": {
@@ -626,7 +626,7 @@ window.COMPANY_COMPARISON = {
           70.938
         ],
         "source_url": "https://stockanalysis.com/quote/hose/PVD/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:12.092841+00:00",
+        "checked_at": "2026-11-05T16:48:05.264847+00:00",
         "duplicates": []
       }
     },
@@ -656,7 +656,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/PVS/financials/income-statement/",
           "https://stockanalysis.com/quote/hnx/PVS/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:12.092894+00:00",
+        "checked_at": "2026-11-05T16:48:05.644644+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -680,16 +680,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/PVS/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hnx/PVS/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:12.905267+00:00",
+        "checked_at": "2026-11-05T16:48:06.360177+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 8.98,
-        "pb": 1.1,
-        "market_cap": 18595.089,
+        "date": "2026-11-04",
+        "pe": 8.8,
+        "pb": 1.08,
+        "market_cap": 18226.87,
         "source_url": "https://stockanalysis.com/quote/hnx/PVS/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:12.681504+00:00"
+        "checked_at": "2026-11-05T16:48:06.186098+00:00"
       },
       "errors": [],
       "history": {
@@ -782,7 +782,7 @@ window.COMPANY_COMPARISON = {
           315.217
         ],
         "source_url": "https://stockanalysis.com/quote/hnx/PVS/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:12.905267+00:00",
+        "checked_at": "2026-11-05T16:48:06.553736+00:00",
         "duplicates": []
       }
     },
@@ -812,7 +812,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PVT/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/PVT/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:39.749321+00:00",
+        "checked_at": "2026-11-05T16:49:14.384298+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -836,16 +836,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PVT/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/PVT/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:40.058489+00:00",
+        "checked_at": "2026-11-05T16:49:15.172079+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 7.36,
-        "pb": 0.84,
-        "market_cap": 10855.298,
+        "date": "2026-11-04",
+        "pe": 7.22,
+        "pb": 0.83,
+        "market_cap": 10648.53,
         "source_url": "https://stockanalysis.com/quote/hose/PVT/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:40.397048+00:00"
+        "checked_at": "2026-11-05T16:49:15.336734+00:00"
       },
       "errors": [],
       "history": {
@@ -938,7 +938,7 @@ window.COMPANY_COMPARISON = {
           375.131
         ],
         "source_url": "https://stockanalysis.com/quote/hose/PVT/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:40.058489+00:00",
+        "checked_at": "2026-11-05T16:49:15.172079+00:00",
         "duplicates": []
       }
     },
@@ -968,45 +968,44 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SBT/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/SBT/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:14.395805+00:00",
+        "checked_at": "2026-11-05T16:48:07.405818+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
-        "end": "2026-06-30",
-        "label": "Q4 2026",
+        "end": "2026-09-30",
+        "label": "Q1 2027",
         "values": {
-          "gross_margin": 13.78,
-          "net_margin": 3.1887481513211995,
-          "roe": 1.775199685704006,
-          "short_debt": 11854.523,
-          "long_debt": 5760.245,
-          "cash": 2003.14,
-          "revenue": 6396.46,
+          "gross_margin": 6.24,
+          "net_margin": 2.0439064299014027,
+          "roe": 1.3071500816407244,
+          "short_debt": null,
+          "long_debt": 5585.655,
+          "cash": 3081.451,
+          "revenue": 7616.151,
           "revenue_growth": null,
-          "net_income": 203.967,
-          "equity": 11589.618,
-          "roa": 0.5334491070310617,
+          "net_income": 155.667,
+          "equity": 12228.152,
+          "roa": 0.3960970797767157,
           "cir": null
         },
         "source_urls": [
           "https://stockanalysis.com/quote/hose/SBT/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/SBT/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:14.825663+00:00",
+        "checked_at": "2026-11-05T16:48:07.792023+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 27.82,
+        "date": "2026-11-04",
+        "pe": 27.95,
         "pb": 1.51,
-        "market_cap": 19034.716,
+        "market_cap": 19125.357,
         "source_url": "https://stockanalysis.com/quote/hose/SBT/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:15.322383+00:00"
+        "checked_at": "2026-11-05T16:48:08.024954+00:00"
       },
       "errors": [],
       "history": {
         "quarters": [
-          "Q3/2021",
           "Q4/2021",
           "Q1/2022",
           "Q2/2022",
@@ -1025,10 +1024,10 @@ window.COMPANY_COMPARISON = {
           "Q3/2025",
           "Q4/2025",
           "Q1/2026",
-          "Q2/2026"
+          "Q2/2026",
+          "Q3/2026"
         ],
         "revenue": [
-          4311.939,
           4989.564,
           3515.931,
           5501.508,
@@ -1047,10 +1046,10 @@ window.COMPANY_COMPARISON = {
           5371.734,
           6733.649,
           8231.005,
-          6396.46
+          6396.46,
+          7616.151
         ],
         "gross_profit": [
-          497.445,
           667.18,
           611.502,
           532.075,
@@ -1069,10 +1068,10 @@ window.COMPANY_COMPARISON = {
           499.485,
           522.236,
           770.61,
-          881.603
+          881.603,
+          475.431
         ],
         "net_income": [
-          165.752,
           230.959,
           205.188,
           101.69,
@@ -1091,10 +1090,11 @@ window.COMPANY_COMPARISON = {
           152.263,
           141.262,
           227.238,
-          203.967
+          203.967,
+          155.667
         ],
         "source_url": "https://stockanalysis.com/quote/hose/SBT/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:14.825663+00:00",
+        "checked_at": "2026-11-05T16:48:07.792023+00:00",
         "duplicates": []
       }
     },
@@ -1108,15 +1108,15 @@ window.COMPANY_COMPARISON = {
       "quote": null,
       "errors": [
         "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/income-statement/",
-        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/income-statement/?p=quarterly",
         "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/balance-sheet/",
-        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/ratios/?p=quarterly",
         "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/balance-sheet/?p=quarterly",
-        "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/income-statement/",
-        "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/balance-sheet/",
         "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/income-statement/?p=quarterly",
         "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/ratios/?p=quarterly",
-        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/balance-sheet/?p=quarterly"
+        "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/income-statement/",
+        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/income-statement/?p=quarterly",
+        "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/balance-sheet/",
+        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/balance-sheet/?p=quarterly",
+        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/ratios/?p=quarterly"
       ],
       "history": null
     },
@@ -1146,7 +1146,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/SLS/financials/income-statement/",
           "https://stockanalysis.com/quote/hnx/SLS/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:15.768820+00:00",
+        "checked_at": "2026-11-05T16:48:08.501968+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -1170,16 +1170,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/SLS/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hnx/SLS/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:16.140109+00:00",
+        "checked_at": "2026-11-05T16:48:08.961133+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 9.89,
+        "date": "2026-11-04",
+        "pe": 10.01,
         "pb": 0.7,
-        "market_cap": 1243.577,
+        "market_cap": 1258.265,
         "source_url": "https://stockanalysis.com/quote/hnx/SLS/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:16.870836+00:00"
+        "checked_at": "2026-11-05T16:48:09.299249+00:00"
       },
       "errors": [],
       "history": {
@@ -1272,7 +1272,7 @@ window.COMPANY_COMPARISON = {
           22.562
         ],
         "source_url": "https://stockanalysis.com/quote/hnx/SLS/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:16.140109+00:00",
+        "checked_at": "2026-11-05T16:48:08.961133+00:00",
         "duplicates": [
           "Q2/2026"
         ]
@@ -1304,7 +1304,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/LSS/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/LSS/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:16.875778+00:00",
+        "checked_at": "2026-11-05T16:48:09.410307+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -1328,16 +1328,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/LSS/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/LSS/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:17.521875+00:00",
+        "checked_at": "2026-11-05T16:48:09.838626+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 15.64,
         "pb": 0.38,
         "market_cap": 693.205,
         "source_url": "https://stockanalysis.com/quote/hose/LSS/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:18.001359+00:00"
+        "checked_at": "2026-11-05T16:48:10.170994+00:00"
       },
       "errors": [],
       "history": {
@@ -1430,7 +1430,7 @@ window.COMPANY_COMPARISON = {
           12.206
         ],
         "source_url": "https://stockanalysis.com/quote/hose/LSS/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:17.521875+00:00",
+        "checked_at": "2026-11-05T16:48:09.838626+00:00",
         "duplicates": []
       }
     },
@@ -1460,7 +1460,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/KTS/financials/income-statement/",
           "https://stockanalysis.com/quote/hnx/KTS/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:17.913021+00:00",
+        "checked_at": "2026-11-05T16:48:10.320871+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -1484,16 +1484,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/KTS/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hnx/KTS/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:18.505364+00:00",
+        "checked_at": "2026-11-05T16:48:10.761961+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 29.75,
+        "date": "2026-11-04",
+        "pe": 27.95,
         "pb": 0.39,
-        "market_cap": 100.893,
+        "market_cap": 94.809,
         "source_url": "https://stockanalysis.com/quote/hnx/KTS/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:18.989148+00:00"
+        "checked_at": "2026-11-05T16:48:10.911378+00:00"
       },
       "errors": [],
       "history": {
@@ -1586,7 +1586,7 @@ window.COMPANY_COMPARISON = {
           0.314
         ],
         "source_url": "https://stockanalysis.com/quote/hnx/KTS/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:18.505364+00:00",
+        "checked_at": "2026-11-05T16:48:11.039842+00:00",
         "duplicates": [
           "Q2/2026"
         ]
@@ -1618,7 +1618,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/POW/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/POW/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:19.242057+00:00",
+        "checked_at": "2026-11-05T16:48:11.141015+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -1642,16 +1642,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/POW/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/POW/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:19.630263+00:00",
+        "checked_at": "2026-11-05T16:48:11.542404+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 5.23,
-        "pb": 0.79,
-        "market_cap": 38194.679,
+        "date": "2026-11-04",
+        "pe": 5.25,
+        "pb": 0.82,
+        "market_cap": 38348.071,
         "source_url": "https://stockanalysis.com/quote/hose/POW/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:20.252625+00:00"
+        "checked_at": "2026-11-05T16:48:12.010559+00:00"
       },
       "errors": [],
       "history": {
@@ -1744,7 +1744,7 @@ window.COMPANY_COMPARISON = {
           1859.572
         ],
         "source_url": "https://stockanalysis.com/quote/hose/POW/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:19.630263+00:00",
+        "checked_at": "2026-11-05T16:48:11.542404+00:00",
         "duplicates": []
       }
     },
@@ -1774,7 +1774,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/NT2/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/NT2/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:20.264964+00:00",
+        "checked_at": "2026-11-05T16:48:12.010517+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -1798,16 +1798,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/NT2/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/NT2/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:20.811381+00:00",
+        "checked_at": "2026-11-05T16:48:12.499813+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 4.47,
+        "date": "2026-11-04",
+        "pe": 4.46,
         "pb": 1.2,
-        "market_cap": 6520.392,
+        "market_cap": 6505.998,
         "source_url": "https://stockanalysis.com/quote/hose/NT2/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:21.421728+00:00"
+        "checked_at": "2026-11-05T16:48:12.871225+00:00"
       },
       "errors": [],
       "history": {
@@ -1900,7 +1900,7 @@ window.COMPANY_COMPARISON = {
           418.613
         ],
         "source_url": "https://stockanalysis.com/quote/hose/NT2/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:20.811381+00:00",
+        "checked_at": "2026-11-05T16:48:12.871988+00:00",
         "duplicates": []
       }
     },
@@ -1930,7 +1930,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PPC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/PPC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:20.999809+00:00",
+        "checked_at": "2026-11-05T16:48:12.871272+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -1954,16 +1954,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PPC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/PPC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:22.191234+00:00",
+        "checked_at": "2026-11-05T16:48:13.688961+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 9.59,
         "pb": 0.63,
         "market_cap": 2792.54,
         "source_url": "https://stockanalysis.com/quote/hose/PPC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:22.478682+00:00"
+        "checked_at": "2026-11-05T16:48:13.602880+00:00"
       },
       "errors": [],
       "history": {
@@ -2056,7 +2056,7 @@ window.COMPANY_COMPARISON = {
           4.117
         ],
         "source_url": "https://stockanalysis.com/quote/hose/PPC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:22.191234+00:00",
+        "checked_at": "2026-11-05T16:48:13.688961+00:00",
         "duplicates": []
       }
     },
@@ -2070,10 +2070,10 @@ window.COMPANY_COMPARISON = {
       "quote": null,
       "errors": [
         "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QTP/financials/income-statement/",
-        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QTP/financials/income-statement/?p=quarterly",
         "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QTP/financials/balance-sheet/",
         "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QTP/financials/balance-sheet/?p=quarterly",
-        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QTP/financials/ratios/?p=quarterly"
+        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QTP/financials/ratios/?p=quarterly",
+        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QTP/financials/income-statement/?p=quarterly"
       ],
       "history": null
     },
@@ -2086,10 +2086,10 @@ window.COMPANY_COMPARISON = {
       "quarter": null,
       "quote": null,
       "errors": [
-        "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HND/financials/income-statement/",
         "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HND/financials/balance-sheet/",
-        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HND/financials/income-statement/?p=quarterly",
+        "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HND/financials/income-statement/",
         "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HND/financials/balance-sheet/?p=quarterly",
+        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HND/financials/income-statement/?p=quarterly",
         "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HND/financials/ratios/?p=quarterly"
       ],
       "history": null
@@ -2120,7 +2120,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/BTP/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/BTP/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:23.248603+00:00",
+        "checked_at": "2026-11-05T16:48:14.615126+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -2144,16 +2144,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/BTP/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/BTP/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:23.909386+00:00",
+        "checked_at": "2026-11-05T16:48:14.892581+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 7.89,
+        "date": "2026-11-04",
+        "pe": 7.97,
         "pb": 0.38,
-        "market_cap": 396.181,
+        "market_cap": 400.415,
         "source_url": "https://stockanalysis.com/quote/hose/BTP/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:24.109178+00:00"
+        "checked_at": "2026-11-05T16:48:15.187820+00:00"
       },
       "errors": [],
       "history": {
@@ -2246,7 +2246,7 @@ window.COMPANY_COMPARISON = {
           -6.5
         ],
         "source_url": "https://stockanalysis.com/quote/hose/BTP/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:23.909386+00:00",
+        "checked_at": "2026-11-05T16:48:14.892581+00:00",
         "duplicates": []
       }
     },
@@ -2276,7 +2276,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/REE/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/REE/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:24.782879+00:00",
+        "checked_at": "2026-11-05T16:48:15.279258+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -2300,16 +2300,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/REE/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/REE/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:24.613824+00:00",
+        "checked_at": "2026-11-05T16:48:15.682805+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 10.31,
-        "pb": 1.06,
-        "market_cap": 28426.996,
+        "date": "2026-11-04",
+        "pe": 10.41,
+        "pb": 1.09,
+        "market_cap": 28707.526,
         "source_url": "https://stockanalysis.com/quote/hose/REE/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:25.649267+00:00"
+        "checked_at": "2026-11-05T16:48:15.992624+00:00"
       },
       "errors": [],
       "history": {
@@ -2402,7 +2402,7 @@ window.COMPANY_COMPARISON = {
           787.999
         ],
         "source_url": "https://stockanalysis.com/quote/hose/REE/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:24.613824+00:00",
+        "checked_at": "2026-11-05T16:48:15.992591+00:00",
         "duplicates": []
       }
     },
@@ -2432,7 +2432,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VSH/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/VSH/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:25.504876+00:00",
+        "checked_at": "2026-11-05T16:48:16.132432+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -2456,16 +2456,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VSH/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/VSH/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:25.944741+00:00",
+        "checked_at": "2026-11-05T16:48:16.578851+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 11.28,
+        "date": "2026-11-04",
+        "pe": 11.36,
         "pb": 1.97,
-        "market_cap": 9567.77,
+        "market_cap": 9638.643,
         "source_url": "https://stockanalysis.com/quote/hose/VSH/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:26.206261+00:00"
+        "checked_at": "2026-11-05T16:48:16.842139+00:00"
       },
       "errors": [],
       "history": {
@@ -2558,7 +2558,7 @@ window.COMPANY_COMPARISON = {
           120.828
         ],
         "source_url": "https://stockanalysis.com/quote/hose/VSH/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:25.944741+00:00",
+        "checked_at": "2026-11-05T16:48:16.869756+00:00",
         "duplicates": []
       }
     },
@@ -2588,7 +2588,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/CHP/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/CHP/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:26.474673+00:00",
+        "checked_at": "2026-11-05T16:48:16.960482+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -2612,16 +2612,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/CHP/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/CHP/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:27.109771+00:00",
+        "checked_at": "2026-11-05T16:48:17.683462+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 13.4,
+        "date": "2026-11-04",
+        "pe": 12.75,
         "pb": 2.23,
         "market_cap": 4083.344,
         "source_url": "https://stockanalysis.com/quote/hose/CHP/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:27.609523+00:00"
+        "checked_at": "2026-11-05T16:48:17.667462+00:00"
       },
       "errors": [],
       "history": {
@@ -2714,7 +2714,7 @@ window.COMPANY_COMPARISON = {
           65.907
         ],
         "source_url": "https://stockanalysis.com/quote/hose/CHP/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:27.109771+00:00",
+        "checked_at": "2026-11-05T16:48:17.683462+00:00",
         "duplicates": []
       }
     },
@@ -2744,7 +2744,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SBA/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/SBA/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:27.609473+00:00",
+        "checked_at": "2026-11-05T16:48:17.905375+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -2768,16 +2768,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SBA/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/SBA/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:28.136836+00:00",
+        "checked_at": "2026-11-05T16:48:18.196021+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 10.61,
-        "pb": 1.48,
-        "market_cap": 1486.197,
+        "date": "2026-11-04",
+        "pe": 10.51,
+        "pb": 1.47,
+        "market_cap": 1473.494,
         "source_url": "https://stockanalysis.com/quote/hose/SBA/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:28.729386+00:00"
+        "checked_at": "2026-11-05T16:48:18.370078+00:00"
       },
       "errors": [],
       "history": {
@@ -2870,7 +2870,7 @@ window.COMPANY_COMPARISON = {
           21.176
         ],
         "source_url": "https://stockanalysis.com/quote/hose/SBA/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:28.136836+00:00",
+        "checked_at": "2026-11-05T16:48:18.196021+00:00",
         "duplicates": []
       }
     },
@@ -2900,7 +2900,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TMP/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/TMP/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:28.729333+00:00",
+        "checked_at": "2026-11-05T16:48:18.690084+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -2924,16 +2924,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TMP/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/TMP/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:29.611946+00:00",
+        "checked_at": "2026-11-05T16:48:18.967428+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 9.26,
         "pb": 1.87,
         "market_cap": 3419.5,
         "source_url": "https://stockanalysis.com/quote/hose/TMP/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:29.789720+00:00"
+        "checked_at": "2026-11-05T16:48:19.097390+00:00"
       },
       "errors": [],
       "history": {
@@ -3026,7 +3026,7 @@ window.COMPANY_COMPARISON = {
           124.01
         ],
         "source_url": "https://stockanalysis.com/quote/hose/TMP/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:29.794910+00:00",
+        "checked_at": "2026-11-05T16:48:18.967428+00:00",
         "duplicates": []
       }
     },
@@ -3056,7 +3056,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SHP/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/SHP/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:29.848909+00:00",
+        "checked_at": "2026-11-05T16:48:19.373586+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -3080,16 +3080,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SHP/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/SHP/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:30.314437+00:00",
+        "checked_at": "2026-11-05T16:48:19.629214+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 10.63,
-        "pb": 2.53,
-        "market_cap": 3137.397,
+        "date": "2026-11-04",
+        "pe": 10.74,
+        "pb": 2.51,
+        "market_cap": 3167.759,
         "source_url": "https://stockanalysis.com/quote/hose/SHP/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:30.865206+00:00"
+        "checked_at": "2026-11-05T16:48:20.023724+00:00"
       },
       "errors": [],
       "history": {
@@ -3182,7 +3182,7 @@ window.COMPANY_COMPARISON = {
           141.494
         ],
         "source_url": "https://stockanalysis.com/quote/hose/SHP/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:30.314437+00:00",
+        "checked_at": "2026-11-05T16:48:19.629214+00:00",
         "duplicates": []
       }
     },
@@ -3212,7 +3212,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GEG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/GEG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:31.047018+00:00",
+        "checked_at": "2026-11-05T16:48:20.191192+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -3236,16 +3236,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GEG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/GEG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:31.734540+00:00",
+        "checked_at": "2026-11-05T16:48:20.498740+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 11.88,
-        "pb": 0.63,
-        "market_cap": 4345.347,
+        "date": "2026-11-04",
+        "pe": 12.04,
+        "pb": 0.64,
+        "market_cap": 4401.78,
         "source_url": "https://stockanalysis.com/quote/hose/GEG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:32.113689+00:00"
+        "checked_at": "2026-11-05T16:48:20.913559+00:00"
       },
       "errors": [],
       "history": {
@@ -3338,7 +3338,7 @@ window.COMPANY_COMPARISON = {
           89.713
         ],
         "source_url": "https://stockanalysis.com/quote/hose/GEG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:31.734540+00:00",
+        "checked_at": "2026-11-05T16:48:20.498740+00:00",
         "duplicates": []
       }
     },
@@ -3368,7 +3368,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HDG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/HDG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:32.150566+00:00",
+        "checked_at": "2026-11-05T16:48:20.913507+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -3392,16 +3392,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HDG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/HDG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:32.563714+00:00",
+        "checked_at": "2026-11-05T16:48:21.374003+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 7.65,
         "pb": 0.71,
-        "market_cap": 6226.447,
+        "market_cap": 6267.143,
         "source_url": "https://stockanalysis.com/quote/hose/HDG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:32.973792+00:00"
+        "checked_at": "2026-11-05T16:48:21.868177+00:00"
       },
       "errors": [],
       "history": {
@@ -3494,7 +3494,7 @@ window.COMPANY_COMPARISON = {
           163.424
         ],
         "source_url": "https://stockanalysis.com/quote/hose/HDG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:32.563714+00:00",
+        "checked_at": "2026-11-05T16:48:21.374003+00:00",
         "duplicates": []
       }
     },
@@ -3524,7 +3524,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TTA/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/TTA/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:33.273114+00:00",
+        "checked_at": "2026-11-05T16:48:21.534598+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -3548,16 +3548,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TTA/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/TTA/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:33.633686+00:00",
+        "checked_at": "2026-11-05T16:48:22.156662+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 9.17,
+        "date": "2026-11-04",
+        "pe": 9.08,
         "pb": 0.73,
-        "market_cap": 1874.87,
+        "market_cap": 1857.015,
         "source_url": "https://stockanalysis.com/quote/hose/TTA/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:34.189421+00:00"
+        "checked_at": "2026-11-05T16:48:22.464036+00:00"
       },
       "errors": [],
       "history": {
@@ -3650,7 +3650,7 @@ window.COMPANY_COMPARISON = {
           74.346
         ],
         "source_url": "https://stockanalysis.com/quote/hose/TTA/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:33.633686+00:00",
+        "checked_at": "2026-11-05T16:48:22.156662+00:00",
         "duplicates": []
       }
     },
@@ -3680,7 +3680,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PC1/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/PC1/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:34.175775+00:00",
+        "checked_at": "2026-11-05T16:48:22.553466+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -3704,16 +3704,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PC1/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/PC1/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:35.110707+00:00",
+        "checked_at": "2026-11-05T16:48:22.860644+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 7.41,
-        "pb": 0.69,
-        "market_cap": 6683.387,
+        "date": "2026-11-04",
+        "pe": 8.04,
+        "pb": 0.82,
+        "market_cap": 7851.437,
         "source_url": "https://stockanalysis.com/quote/hose/PC1/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:34.684324+00:00"
+        "checked_at": "2026-11-05T16:48:23.593266+00:00"
       },
       "errors": [],
       "history": {
@@ -3806,7 +3806,7 @@ window.COMPANY_COMPARISON = {
           257.774
         ],
         "source_url": "https://stockanalysis.com/quote/hose/PC1/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:35.511599+00:00",
+        "checked_at": "2026-11-05T16:48:22.860644+00:00",
         "duplicates": []
       }
     },
@@ -3836,7 +3836,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TV2/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/TV2/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:35.151402+00:00",
+        "checked_at": "2026-11-05T16:48:23.485959+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -3860,16 +3860,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TV2/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/TV2/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:35.856090+00:00",
+        "checked_at": "2026-11-05T16:48:24.397022+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 8.16,
-        "pb": 1.33,
-        "market_cap": 1850.217,
+        "date": "2026-11-04",
+        "pe": 8.18,
+        "pb": 1.39,
+        "market_cap": 1853.593,
         "source_url": "https://stockanalysis.com/quote/hose/TV2/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:36.555151+00:00"
+        "checked_at": "2026-11-05T16:48:24.019485+00:00"
       },
       "errors": [],
       "history": {
@@ -3962,7 +3962,7 @@ window.COMPANY_COMPARISON = {
           60.765
         ],
         "source_url": "https://stockanalysis.com/quote/hose/TV2/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:35.856090+00:00",
+        "checked_at": "2026-11-05T16:48:24.397022+00:00",
         "duplicates": []
       }
     },
@@ -3992,7 +3992,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GEX/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/GEX/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:36.255014+00:00",
+        "checked_at": "2026-11-05T16:48:24.311293+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -4016,16 +4016,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GEX/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/GEX/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:37.050144+00:00",
+        "checked_at": "2026-11-05T16:48:24.961377+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 28.38,
         "pb": 0.85,
         "market_cap": 29702.3,
         "source_url": "https://stockanalysis.com/quote/hose/GEX/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:37.627955+00:00"
+        "checked_at": "2026-11-05T16:48:25.238089+00:00"
       },
       "errors": [],
       "history": {
@@ -4118,7 +4118,7 @@ window.COMPANY_COMPARISON = {
           245.927
         ],
         "source_url": "https://stockanalysis.com/quote/hose/GEX/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:37.050144+00:00",
+        "checked_at": "2026-11-05T16:48:24.961377+00:00",
         "duplicates": []
       }
     },
@@ -4148,7 +4148,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VHM/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/VHM/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:37.617224+00:00",
+        "checked_at": "2026-11-05T16:48:25.340176+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -4172,16 +4172,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VHM/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/VHM/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:38.081848+00:00",
+        "checked_at": "2026-11-05T16:48:25.911532+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 5.39,
+        "date": "2026-11-04",
+        "pe": 5.4,
         "pb": 1.69,
-        "market_cap": 519176.877,
+        "market_cap": 519998.36,
         "source_url": "https://stockanalysis.com/quote/hose/VHM/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:38.371540+00:00"
+        "checked_at": "2026-11-05T16:48:26.263792+00:00"
       },
       "errors": [],
       "history": {
@@ -4274,7 +4274,7 @@ window.COMPANY_COMPARISON = {
           23146.135
         ],
         "source_url": "https://stockanalysis.com/quote/hose/VHM/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:38.081848+00:00",
+        "checked_at": "2026-11-05T16:48:25.911532+00:00",
         "duplicates": []
       }
     },
@@ -4304,7 +4304,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/NVL/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/NVL/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:38.670605+00:00",
+        "checked_at": "2026-11-05T16:48:26.360956+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -4328,16 +4328,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/NVL/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/NVL/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:39.242641+00:00",
+        "checked_at": "2026-11-05T16:48:27.006311+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 3.97,
         "pb": 0.38,
         "market_cap": 25101.61,
         "source_url": "https://stockanalysis.com/quote/hose/NVL/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:39.646434+00:00"
+        "checked_at": "2026-11-05T16:48:26.898778+00:00"
       },
       "errors": [],
       "history": {
@@ -4430,7 +4430,7 @@ window.COMPANY_COMPARISON = {
           1118.731
         ],
         "source_url": "https://stockanalysis.com/quote/hose/NVL/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:39.242641+00:00",
+        "checked_at": "2026-11-05T16:48:27.006311+00:00",
         "duplicates": []
       }
     },
@@ -4460,7 +4460,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/KDH/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/KDH/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:39.919228+00:00",
+        "checked_at": "2026-11-05T16:48:27.294972+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -4484,16 +4484,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/KDH/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/KDH/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:40.318265+00:00",
+        "checked_at": "2026-11-05T16:48:27.680945+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 10.79,
-        "pb": 0.8,
-        "market_cap": 17035.222,
+        "date": "2026-11-04",
+        "pe": 11.22,
+        "pb": 0.85,
+        "market_cap": 17714.162,
         "source_url": "https://stockanalysis.com/quote/hose/KDH/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:40.686334+00:00"
+        "checked_at": "2026-11-05T16:48:27.967888+00:00"
       },
       "errors": [],
       "history": {
@@ -4586,7 +4586,7 @@ window.COMPANY_COMPARISON = {
           175.646
         ],
         "source_url": "https://stockanalysis.com/quote/hose/KDH/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:40.318265+00:00",
+        "checked_at": "2026-11-05T16:48:27.680945+00:00",
         "duplicates": []
       }
     },
@@ -4616,7 +4616,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/NLG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/NLG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:40.950490+00:00",
+        "checked_at": "2026-11-05T16:48:28.264133+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -4640,16 +4640,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/NLG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/NLG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:41.797486+00:00",
+        "checked_at": "2026-11-05T16:48:28.564197+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 28.32,
-        "pb": 0.69,
-        "market_cap": 10672.142,
+        "date": "2026-11-04",
+        "pe": 27.78,
+        "pb": 0.7,
+        "market_cap": 10817.672,
         "source_url": "https://stockanalysis.com/quote/hose/NLG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:41.886426+00:00"
+        "checked_at": "2026-11-05T16:48:28.889236+00:00"
       },
       "errors": [],
       "history": {
@@ -4742,7 +4742,7 @@ window.COMPANY_COMPARISON = {
           4.799
         ],
         "source_url": "https://stockanalysis.com/quote/hose/NLG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:41.797486+00:00",
+        "checked_at": "2026-11-05T16:48:28.564197+00:00",
         "duplicates": []
       }
     },
@@ -4772,7 +4772,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DXG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/DXG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:42.176662+00:00",
+        "checked_at": "2026-11-05T16:48:29.016835+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -4796,16 +4796,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DXG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/DXG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:42.512695+00:00",
+        "checked_at": "2026-11-05T16:48:29.511377+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 133.45,
-        "pb": 0.59,
-        "market_cap": 13378.507,
+        "date": "2026-11-04",
+        "pe": 135.98,
+        "pb": 0.65,
+        "market_cap": 13632.128,
         "source_url": "https://stockanalysis.com/quote/hose/DXG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:43.154624+00:00"
+        "checked_at": "2026-11-05T16:48:29.840951+00:00"
       },
       "errors": [],
       "history": {
@@ -4898,7 +4898,7 @@ window.COMPANY_COMPARISON = {
           15.245
         ],
         "source_url": "https://stockanalysis.com/quote/hose/DXG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:42.512695+00:00",
+        "checked_at": "2026-11-05T16:48:29.511377+00:00",
         "duplicates": []
       }
     },
@@ -4928,7 +4928,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PDR/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/PDR/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:43.385323+00:00",
+        "checked_at": "2026-11-05T16:48:29.930512+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -4952,16 +4952,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PDR/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/PDR/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:43.764319+00:00",
+        "checked_at": "2026-11-05T16:48:30.376927+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 21.6,
+        "date": "2026-11-04",
+        "pe": 22.34,
         "pb": 0.91,
-        "market_cap": 11474.808,
+        "market_cap": 11524.698,
         "source_url": "https://stockanalysis.com/quote/hose/PDR/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:44.289311+00:00"
+        "checked_at": "2026-11-05T16:48:30.645458+00:00"
       },
       "errors": [],
       "history": {
@@ -5054,7 +5054,7 @@ window.COMPANY_COMPARISON = {
           10.187
         ],
         "source_url": "https://stockanalysis.com/quote/hose/PDR/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:43.764319+00:00",
+        "checked_at": "2026-11-05T16:48:30.376927+00:00",
         "duplicates": []
       }
     },
@@ -5084,7 +5084,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DIG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/DIG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:44.405380+00:00",
+        "checked_at": "2026-11-05T16:48:30.610879+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -5108,16 +5108,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DIG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/DIG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:44.832912+00:00",
+        "checked_at": "2026-11-05T16:48:31.218534+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 12.75,
-        "pb": 0.79,
-        "market_cap": 8054.431,
+        "date": "2026-11-04",
+        "pe": 13.36,
+        "pb": 0.82,
+        "market_cap": 8652.976,
         "source_url": "https://stockanalysis.com/quote/hose/DIG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:45.574340+00:00"
+        "checked_at": "2026-11-05T16:48:31.555003+00:00"
       },
       "errors": [],
       "history": {
@@ -5210,7 +5210,7 @@ window.COMPANY_COMPARISON = {
           76.997
         ],
         "source_url": "https://stockanalysis.com/quote/hose/DIG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:44.832912+00:00",
+        "checked_at": "2026-11-05T16:48:31.218534+00:00",
         "duplicates": []
       }
     },
@@ -5240,7 +5240,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/CEO/financials/income-statement/",
           "https://stockanalysis.com/quote/hnx/CEO/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:45.477823+00:00",
+        "checked_at": "2026-11-05T16:48:31.642466+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -5264,16 +5264,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/CEO/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hnx/CEO/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:46.074071+00:00",
+        "checked_at": "2026-11-05T16:48:31.992084+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 38.3,
         "pb": 1.07,
-        "market_cap": 7089.864,
+        "market_cap": 7209.021,
         "source_url": "https://stockanalysis.com/quote/hnx/CEO/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:46.750662+00:00"
+        "checked_at": "2026-11-05T16:48:32.265818+00:00"
       },
       "errors": [],
       "history": {
@@ -5366,7 +5366,7 @@ window.COMPANY_COMPARISON = {
           42.251
         ],
         "source_url": "https://stockanalysis.com/quote/hnx/CEO/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:46.074071+00:00",
+        "checked_at": "2026-11-05T16:48:31.992084+00:00",
         "duplicates": []
       }
     },
@@ -5396,7 +5396,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/AGG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/AGG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:46.753638+00:00",
+        "checked_at": "2026-11-05T16:48:32.491958+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -5420,16 +5420,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/AGG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/AGG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:47.854290+00:00",
+        "checked_at": "2026-11-05T16:48:32.996728+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 3.34,
+        "date": "2026-11-04",
+        "pe": 3.33,
         "pb": 0.41,
-        "market_cap": 1576.847,
+        "market_cap": 1575.06,
         "source_url": "https://stockanalysis.com/quote/hose/AGG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:47.386573+00:00"
+        "checked_at": "2026-11-05T16:48:33.401201+00:00"
       },
       "errors": [],
       "history": {
@@ -5522,7 +5522,7 @@ window.COMPANY_COMPARISON = {
           15.348
         ],
         "source_url": "https://stockanalysis.com/quote/hose/AGG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:47.854290+00:00",
+        "checked_at": "2026-11-05T16:48:32.996728+00:00",
         "duplicates": [
           "Q2/2022",
           "Q4/2022",
@@ -5557,7 +5557,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TCH/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/TCH/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:47.706480+00:00",
+        "checked_at": "2026-11-05T16:48:33.256284+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -5581,16 +5581,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TCH/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/TCH/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:48.535889+00:00",
+        "checked_at": "2026-11-05T16:48:34.127926+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 13.25,
-        "pb": 0.78,
-        "market_cap": 12792.345,
+        "date": "2026-11-04",
+        "pe": 13.51,
+        "pb": 0.84,
+        "market_cap": 13043.175,
         "source_url": "https://stockanalysis.com/quote/hose/TCH/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:49.185510+00:00"
+        "checked_at": "2026-11-05T16:48:34.096921+00:00"
       },
       "errors": [],
       "history": {
@@ -5683,7 +5683,7 @@ window.COMPANY_COMPARISON = {
           537.727
         ],
         "source_url": "https://stockanalysis.com/quote/hose/TCH/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:48.535889+00:00",
+        "checked_at": "2026-11-05T16:48:34.127926+00:00",
         "duplicates": [
           "Q1/2023"
         ]
@@ -5715,7 +5715,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/NTL/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/NTL/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:49.184914+00:00",
+        "checked_at": "2026-11-05T16:48:34.432644+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -5739,16 +5739,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/NTL/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/NTL/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:49.895736+00:00",
+        "checked_at": "2026-11-05T16:48:34.980216+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 51.27,
-        "pb": 0.86,
-        "market_cap": 1482.056,
+        "date": "2026-11-04",
+        "pe": 51.06,
+        "pb": 0.9,
+        "market_cap": 1475.957,
         "source_url": "https://stockanalysis.com/quote/hose/NTL/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:50.294895+00:00"
+        "checked_at": "2026-11-05T16:48:35.032220+00:00"
       },
       "errors": [],
       "history": {
@@ -5841,7 +5841,7 @@ window.COMPANY_COMPARISON = {
           4.764
         ],
         "source_url": "https://stockanalysis.com/quote/hose/NTL/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:50.227255+00:00",
+        "checked_at": "2026-11-05T16:48:34.980216+00:00",
         "duplicates": []
       }
     },
@@ -5871,7 +5871,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/KBC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/KBC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:50.284980+00:00",
+        "checked_at": "2026-11-05T16:48:35.422413+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -5895,16 +5895,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/KBC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/KBC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:51.145245+00:00",
+        "checked_at": "2026-11-05T16:48:35.707935+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 14.55,
-        "pb": 0.91,
-        "market_cap": 25474.466,
+        "date": "2026-11-04",
+        "pe": 14.61,
+        "pb": 0.92,
+        "market_cap": 25568.642,
         "source_url": "https://stockanalysis.com/quote/hose/KBC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:50.743986+00:00"
+        "checked_at": "2026-11-05T16:48:36.030887+00:00"
       },
       "errors": [],
       "history": {
@@ -5997,7 +5997,7 @@ window.COMPANY_COMPARISON = {
           911.255
         ],
         "source_url": "https://stockanalysis.com/quote/hose/KBC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:51.185632+00:00",
+        "checked_at": "2026-11-05T16:48:35.707935+00:00",
         "duplicates": []
       }
     },
@@ -6027,7 +6027,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/IDC/financials/income-statement/",
           "https://stockanalysis.com/quote/hnx/IDC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:51.404866+00:00",
+        "checked_at": "2026-11-05T16:48:36.160115+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -6051,16 +6051,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/IDC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hnx/IDC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:51.763596+00:00",
+        "checked_at": "2026-11-05T16:48:36.652402+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 8.07,
         "pb": 1.57,
         "market_cap": 14735.939,
         "source_url": "https://stockanalysis.com/quote/hnx/IDC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:52.219771+00:00"
+        "checked_at": "2026-11-05T16:48:36.795261+00:00"
       },
       "errors": [],
       "history": {
@@ -6153,7 +6153,7 @@ window.COMPANY_COMPARISON = {
           492.84
         ],
         "source_url": "https://stockanalysis.com/quote/hnx/IDC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:51.763596+00:00",
+        "checked_at": "2026-11-05T16:48:36.672797+00:00",
         "duplicates": []
       }
     },
@@ -6183,7 +6183,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/BCM/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/BCM/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:52.354203+00:00",
+        "checked_at": "2026-11-05T16:48:36.963406+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -6207,16 +6207,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/BCM/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/BCM/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:52.930134+00:00",
+        "checked_at": "2026-11-05T16:48:37.103518+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 21.25,
+        "date": "2026-11-04",
+        "pe": 21.06,
         "pb": 1.73,
-        "market_cap": 39795.75,
+        "market_cap": 39433.5,
         "source_url": "https://stockanalysis.com/quote/hose/BCM/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:53.315624+00:00"
+        "checked_at": "2026-11-05T16:48:37.407133+00:00"
       },
       "errors": [],
       "history": {
@@ -6309,7 +6309,7 @@ window.COMPANY_COMPARISON = {
           563.317
         ],
         "source_url": "https://stockanalysis.com/quote/hose/BCM/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:52.930134+00:00",
+        "checked_at": "2026-11-05T16:48:37.103518+00:00",
         "duplicates": []
       }
     },
@@ -6339,7 +6339,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SZC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/SZC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:53.426761+00:00",
+        "checked_at": "2026-11-05T16:48:37.870600+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -6363,16 +6363,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SZC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/SZC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:53.774178+00:00",
+        "checked_at": "2026-11-05T16:48:37.991374+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 29.29,
-        "pb": 1.21,
-        "market_cap": 3698.709,
+        "date": "2026-11-04",
+        "pe": 29.57,
+        "pb": 1.22,
+        "market_cap": 3734.707,
         "source_url": "https://stockanalysis.com/quote/hose/SZC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:54.262060+00:00"
+        "checked_at": "2026-11-05T16:48:38.710788+00:00"
       },
       "errors": [],
       "history": {
@@ -6465,7 +6465,7 @@ window.COMPANY_COMPARISON = {
           21.614
         ],
         "source_url": "https://stockanalysis.com/quote/hose/SZC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:53.774178+00:00",
+        "checked_at": "2026-11-05T16:48:37.991374+00:00",
         "duplicates": []
       }
     },
@@ -6495,7 +6495,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SIP/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/SIP/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:54.312145+00:00",
+        "checked_at": "2026-11-05T16:48:38.373645+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -6519,16 +6519,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SIP/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/SIP/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:54.726480+00:00",
+        "checked_at": "2026-11-05T16:48:39.088967+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 9.33,
-        "pb": 2.02,
-        "market_cap": 11863.534,
+        "date": "2026-11-04",
+        "pe": 9.62,
+        "pb": 2.13,
+        "market_cap": 12226.704,
         "source_url": "https://stockanalysis.com/quote/hose/SIP/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:55.304846+00:00"
+        "checked_at": "2026-11-05T16:48:39.505305+00:00"
       },
       "errors": [],
       "history": {
@@ -6621,7 +6621,7 @@ window.COMPANY_COMPARISON = {
           344.379
         ],
         "source_url": "https://stockanalysis.com/quote/hose/SIP/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:54.726480+00:00",
+        "checked_at": "2026-11-05T16:48:39.416488+00:00",
         "duplicates": []
       }
     },
@@ -6651,7 +6651,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VGC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/VGC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:00.886544+00:00",
+        "checked_at": "2026-11-05T16:49:32.272565+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -6675,16 +6675,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VGC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/VGC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:01.974005+00:00",
+        "checked_at": "2026-11-05T16:49:33.323017+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 10.34,
+        "date": "2026-11-04",
+        "pe": 10.18,
         "pb": 1.53,
-        "market_cap": 18561.69,
+        "market_cap": 18270.263,
         "source_url": "https://stockanalysis.com/quote/hose/VGC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:02.482338+00:00"
+        "checked_at": "2026-11-05T16:49:33.648508+00:00"
       },
       "errors": [],
       "history": {
@@ -6777,7 +6777,7 @@ window.COMPANY_COMPARISON = {
           463.718
         ],
         "source_url": "https://stockanalysis.com/quote/hose/VGC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:01.974005+00:00",
+        "checked_at": "2026-11-05T16:49:33.323017+00:00",
         "duplicates": []
       }
     },
@@ -6807,7 +6807,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/LHG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/LHG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:56.417796+00:00",
+        "checked_at": "2026-11-05T16:48:40.568216+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -6831,16 +6831,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/LHG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/LHG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:57.139855+00:00",
+        "checked_at": "2026-11-05T16:48:41.300829+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 5.26,
-        "pb": 0.68,
+        "date": "2026-11-04",
+        "pe": 5.3,
+        "pb": 0.69,
         "market_cap": 1330.319,
         "source_url": "https://stockanalysis.com/quote/hose/LHG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:57.400790+00:00"
+        "checked_at": "2026-11-05T16:48:41.306891+00:00"
       },
       "errors": [],
       "history": {
@@ -6933,7 +6933,7 @@ window.COMPANY_COMPARISON = {
           53.813
         ],
         "source_url": "https://stockanalysis.com/quote/hose/LHG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:57.139855+00:00",
+        "checked_at": "2026-11-05T16:48:41.300829+00:00",
         "duplicates": []
       }
     },
@@ -6963,7 +6963,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VRE/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/VRE/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:57.849999+00:00",
+        "checked_at": "2026-11-05T16:48:41.570591+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -6987,16 +6987,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VRE/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/VRE/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:58.188521+00:00",
+        "checked_at": "2026-11-05T16:48:41.792024+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 7.43,
         "pb": 1.08,
         "market_cap": 54990.106,
         "source_url": "https://stockanalysis.com/quote/hose/VRE/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:59.765114+00:00"
+        "checked_at": "2026-11-05T16:48:42.095090+00:00"
       },
       "errors": [],
       "history": {
@@ -7089,7 +7089,7 @@ window.COMPANY_COMPARISON = {
           1522.067
         ],
         "source_url": "https://stockanalysis.com/quote/hose/VRE/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:58.188521+00:00",
+        "checked_at": "2026-11-05T16:48:41.792024+00:00",
         "duplicates": []
       }
     },
@@ -7119,7 +7119,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DXS/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/DXS/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:33:58.725726+00:00",
+        "checked_at": "2026-11-05T16:48:42.375061+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -7143,16 +7143,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DXS/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/DXS/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:33:59.421226+00:00",
+        "checked_at": "2026-11-05T16:48:42.661007+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 11.89,
+        "date": "2026-11-04",
+        "pe": 12.13,
         "pb": 0.31,
-        "market_cap": 2820.232,
+        "market_cap": 2878.143,
         "source_url": "https://stockanalysis.com/quote/hose/DXS/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:00.267805+00:00"
+        "checked_at": "2026-11-05T16:48:43.019091+00:00"
       },
       "errors": [],
       "history": {
@@ -7245,7 +7245,7 @@ window.COMPANY_COMPARISON = {
           -36.696
         ],
         "source_url": "https://stockanalysis.com/quote/hose/DXS/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:33:59.421226+00:00",
+        "checked_at": "2026-11-05T16:48:42.661007+00:00",
         "duplicates": []
       }
     },
@@ -7275,7 +7275,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TCM/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/TCM/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:00.396925+00:00",
+        "checked_at": "2026-11-05T16:48:43.169311+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -7299,16 +7299,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TCM/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/TCM/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:01.050703+00:00",
+        "checked_at": "2026-11-05T16:48:43.471014+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 9.83,
+        "date": "2026-11-04",
+        "pe": 9.96,
         "pb": 0.71,
-        "market_cap": 1758.697,
+        "market_cap": 1782.225,
         "source_url": "https://stockanalysis.com/quote/hose/TCM/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:01.460308+00:00"
+        "checked_at": "2026-11-05T16:48:43.630575+00:00"
       },
       "errors": [],
       "history": {
@@ -7401,7 +7401,7 @@ window.COMPANY_COMPARISON = {
           47.927
         ],
         "source_url": "https://stockanalysis.com/quote/hose/TCM/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:01.050703+00:00",
+        "checked_at": "2026-11-05T16:48:43.471014+00:00",
         "duplicates": []
       }
     },
@@ -7431,7 +7431,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/TNG/financials/income-statement/",
           "https://stockanalysis.com/quote/hnx/TNG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:01.447393+00:00",
+        "checked_at": "2026-11-05T16:48:43.787310+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -7455,16 +7455,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/TNG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hnx/TNG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:02.338154+00:00",
+        "checked_at": "2026-11-05T16:48:44.261864+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 4.95,
         "pb": 1.16,
         "market_cap": 2355.782,
         "source_url": "https://stockanalysis.com/quote/hnx/TNG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:02.403355+00:00"
+        "checked_at": "2026-11-05T16:48:44.743717+00:00"
       },
       "errors": [],
       "history": {
@@ -7557,7 +7557,7 @@ window.COMPANY_COMPARISON = {
           151.531
         ],
         "source_url": "https://stockanalysis.com/quote/hnx/TNG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:02.338154+00:00",
+        "checked_at": "2026-11-05T16:48:44.261864+00:00",
         "duplicates": []
       }
     },
@@ -7587,45 +7587,44 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/MSH/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/MSH/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:02.668492+00:00",
+        "checked_at": "2026-11-05T16:48:44.758429+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
-        "end": "2026-06-30",
-        "label": "Q2 2026",
+        "end": "2026-09-30",
+        "label": "Q3 2026",
         "values": {
-          "gross_margin": 21.77,
-          "net_margin": 12.276503625309452,
-          "roe": 10.119438194254093,
-          "short_debt": 1162.973,
-          "long_debt": 580.913,
-          "cash": 220.35,
-          "revenue": 1656.962,
+          "gross_margin": 22.35,
+          "net_margin": 12.037616862697716,
+          "roe": 9.317214244752403,
+          "short_debt": null,
+          "long_debt": 564.913,
+          "cash": 620.414,
+          "revenue": 1630.439,
           "revenue_growth": null,
-          "net_income": 203.417,
-          "equity": 2021.443,
-          "roa": 4.336170047221721,
+          "net_income": 196.266,
+          "equity": 2191.533,
+          "roa": 3.928015011099115,
           "cir": null
         },
         "source_urls": [
           "https://stockanalysis.com/quote/hose/MSH/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/MSH/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:03.199496+00:00",
+        "checked_at": "2026-11-05T16:48:45.089129+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 6.48,
-        "pb": 1.51,
-        "market_cap": 3881.975,
+        "date": "2026-11-04",
+        "pe": 6.67,
+        "pb": 1.55,
+        "market_cap": 3994.496,
         "source_url": "https://stockanalysis.com/quote/hose/MSH/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:03.401712+00:00"
+        "checked_at": "2026-11-05T16:48:45.634444+00:00"
       },
       "errors": [],
       "history": {
         "quarters": [
-          "Q3/2021",
           "Q4/2021",
           "Q1/2022",
           "Q2/2022",
@@ -7644,10 +7643,10 @@ window.COMPANY_COMPARISON = {
           "Q3/2025",
           "Q4/2025",
           "Q1/2026",
-          "Q2/2026"
+          "Q2/2026",
+          "Q3/2026"
         ],
         "revenue": [
-          1296.412,
           1299.418,
           1250.148,
           1486.149,
@@ -7666,10 +7665,10 @@ window.COMPANY_COMPARISON = {
           1646.712,
           1388.373,
           1041.226,
-          1656.962
+          1656.962,
+          1630.439
         ],
         "gross_profit": [
-          228.335,
           247.474,
           190.167,
           219.51,
@@ -7688,10 +7687,10 @@ window.COMPANY_COMPARISON = {
           349.735,
           325.165,
           211.895,
-          360.719
+          360.719,
+          364.378
         ],
         "net_income": [
-          118.827,
           107.361,
           102.314,
           66.532,
@@ -7710,10 +7709,11 @@ window.COMPANY_COMPARISON = {
           200.705,
           187.364,
           42.121,
-          203.417
+          177.241,
+          196.266
         ],
         "source_url": "https://stockanalysis.com/quote/hose/MSH/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:03.199496+00:00",
+        "checked_at": "2026-11-05T16:48:45.089129+00:00",
         "duplicates": []
       }
     },
@@ -7743,7 +7743,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GIL/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/GIL/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:03.779761+00:00",
+        "checked_at": "2026-11-05T16:48:45.634876+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -7767,16 +7767,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GIL/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/GIL/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:04.189634+00:00",
+        "checked_at": "2026-11-05T16:48:45.955802+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 5.24,
+        "date": "2026-11-04",
+        "pe": 5.09,
         "pb": 0.34,
-        "market_cap": 924.288,
+        "market_cap": 898.613,
         "source_url": "https://stockanalysis.com/quote/hose/GIL/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:04.483569+00:00"
+        "checked_at": "2026-11-05T16:48:46.589824+00:00"
       },
       "errors": [],
       "history": {
@@ -7869,7 +7869,7 @@ window.COMPANY_COMPARISON = {
           23.705
         ],
         "source_url": "https://stockanalysis.com/quote/hose/GIL/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:04.189634+00:00",
+        "checked_at": "2026-11-05T16:48:45.955802+00:00",
         "duplicates": []
       }
     },
@@ -7899,7 +7899,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/STK/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/STK/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:04.832381+00:00",
+        "checked_at": "2026-11-05T16:48:46.302702+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -7923,16 +7923,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/STK/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/STK/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:05.318352+00:00",
+        "checked_at": "2026-11-05T16:48:46.738824+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": null,
         "pb": 0.7,
         "market_cap": 1157.554,
         "source_url": "https://stockanalysis.com/quote/hose/STK/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:05.811519+00:00"
+        "checked_at": "2026-11-05T16:48:47.544527+00:00"
       },
       "errors": [],
       "history": {
@@ -8025,7 +8025,7 @@ window.COMPANY_COMPARISON = {
           -34.438
         ],
         "source_url": "https://stockanalysis.com/quote/hose/STK/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:05.318352+00:00",
+        "checked_at": "2026-11-05T16:48:46.738824+00:00",
         "duplicates": []
       }
     },
@@ -8055,7 +8055,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/ADS/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/ADS/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:05.942080+00:00",
+        "checked_at": "2026-11-05T16:48:47.236558+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -8079,16 +8079,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/ADS/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/ADS/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:06.305223+00:00",
+        "checked_at": "2026-11-05T16:48:47.779535+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 6.05,
-        "pb": 0.57,
-        "market_cap": 595.115,
+        "date": "2026-11-04",
+        "pe": 5.9,
+        "pb": 0.55,
+        "market_cap": 580.6,
         "source_url": "https://stockanalysis.com/quote/hose/ADS/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:06.712188+00:00"
+        "checked_at": "2026-11-05T16:48:48.081652+00:00"
       },
       "errors": [],
       "history": {
@@ -8145,7 +8145,7 @@ window.COMPANY_COMPARISON = {
           26.824
         ],
         "source_url": "https://stockanalysis.com/quote/hose/ADS/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:06.305223+00:00",
+        "checked_at": "2026-11-05T16:48:47.779535+00:00",
         "duplicates": []
       }
     },
@@ -8160,9 +8160,9 @@ window.COMPANY_COMPARISON = {
       "errors": [
         "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VGT/financials/income-statement/",
         "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VGT/financials/balance-sheet/",
+        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VGT/financials/balance-sheet/?p=quarterly",
         "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VGT/financials/income-statement/?p=quarterly",
-        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VGT/financials/ratios/?p=quarterly",
-        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VGT/financials/balance-sheet/?p=quarterly"
+        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VGT/financials/ratios/?p=quarterly"
       ],
       "history": null
     },
@@ -8192,7 +8192,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GMD/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/GMD/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:07.305871+00:00",
+        "checked_at": "2026-11-05T16:48:48.485478+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -8216,16 +8216,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GMD/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/GMD/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:07.549688+00:00",
+        "checked_at": "2026-11-05T16:48:48.857439+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 9.6,
-        "pb": 1.95,
-        "market_cap": 33074.696,
+        "date": "2026-11-04",
+        "pe": 9.76,
+        "pb": 2.06,
+        "market_cap": 33650.464,
         "source_url": "https://stockanalysis.com/quote/hose/GMD/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:08.248652+00:00"
+        "checked_at": "2026-11-05T16:48:49.292761+00:00"
       },
       "errors": [],
       "history": {
@@ -8318,7 +8318,7 @@ window.COMPANY_COMPARISON = {
           443.906
         ],
         "source_url": "https://stockanalysis.com/quote/hose/GMD/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:07.549688+00:00",
+        "checked_at": "2026-11-05T16:48:48.857439+00:00",
         "duplicates": []
       }
     },
@@ -8332,10 +8332,10 @@ window.COMPANY_COMPARISON = {
       "quote": null,
       "errors": [
         "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/hnx/PHP/financials/income-statement/",
-        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/hnx/PHP/financials/balance-sheet/?p=quarterly",
-        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/hnx/PHP/financials/ratios/?p=quarterly",
         "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/hnx/PHP/financials/balance-sheet/",
-        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/hnx/PHP/financials/income-statement/?p=quarterly"
+        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/hnx/PHP/financials/income-statement/?p=quarterly",
+        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/hnx/PHP/financials/balance-sheet/?p=quarterly",
+        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/hnx/PHP/financials/ratios/?p=quarterly"
       ],
       "history": null
     },
@@ -8348,11 +8348,11 @@ window.COMPANY_COMPARISON = {
       "quarter": null,
       "quote": null,
       "errors": [
-        "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/SGP/financials/income-statement/",
         "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/SGP/financials/balance-sheet/",
+        "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/SGP/financials/income-statement/",
         "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/SGP/financials/income-statement/?p=quarterly",
-        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/SGP/financials/balance-sheet/?p=quarterly",
-        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/SGP/financials/ratios/?p=quarterly"
+        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/SGP/financials/ratios/?p=quarterly",
+        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/SGP/financials/balance-sheet/?p=quarterly"
       ],
       "history": null
     },
@@ -8382,7 +8382,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VSC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/VSC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:09.870005+00:00",
+        "checked_at": "2026-11-05T16:48:50.152868+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -8406,16 +8406,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VSC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/VSC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:10.133631+00:00",
+        "checked_at": "2026-11-05T16:48:50.492164+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 14.83,
-        "pb": 0.67,
-        "market_cap": 5091.437,
+        "date": "2026-11-04",
+        "pe": 14.78,
+        "pb": 0.7,
+        "market_cap": 5072.718,
         "source_url": "https://stockanalysis.com/quote/hose/VSC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:10.993396+00:00"
+        "checked_at": "2026-11-05T16:48:51.018304+00:00"
       },
       "errors": [],
       "history": {
@@ -8508,7 +8508,7 @@ window.COMPANY_COMPARISON = {
           185.789
         ],
         "source_url": "https://stockanalysis.com/quote/hose/VSC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:10.133631+00:00",
+        "checked_at": "2026-11-05T16:48:50.492164+00:00",
         "duplicates": []
       }
     },
@@ -8538,7 +8538,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/CDN/financials/income-statement/",
           "https://stockanalysis.com/quote/hnx/CDN/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:10.977323+00:00",
+        "checked_at": "2026-11-05T16:48:51.018248+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -8562,16 +8562,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/CDN/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hnx/CDN/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:11.386959+00:00",
+        "checked_at": "2026-11-05T16:48:51.881730+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 5.7,
-        "pb": 1.09,
+        "pb": 1.11,
         "market_cap": 2574.0,
         "source_url": "https://stockanalysis.com/quote/hnx/CDN/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:11.963850+00:00"
+        "checked_at": "2026-11-05T16:48:51.494316+00:00"
       },
       "errors": [],
       "history": {
@@ -8664,7 +8664,7 @@ window.COMPANY_COMPARISON = {
           138.857
         ],
         "source_url": "https://stockanalysis.com/quote/hnx/CDN/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:11.386959+00:00",
+        "checked_at": "2026-11-05T16:48:51.881730+00:00",
         "duplicates": []
       }
     },
@@ -8694,7 +8694,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DVP/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/DVP/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:12.081695+00:00",
+        "checked_at": "2026-11-05T16:48:51.589550+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -8718,16 +8718,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DVP/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/DVP/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:12.453144+00:00",
+        "checked_at": "2026-11-05T16:48:52.283637+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 7.85,
-        "pb": 2.18,
-        "market_cap": 2956.0,
+        "date": "2026-11-04",
+        "pe": 7.83,
+        "pb": 2.17,
+        "market_cap": 2948.0,
         "source_url": "https://stockanalysis.com/quote/hose/DVP/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:13.012524+00:00"
+        "checked_at": "2026-11-05T16:48:52.789016+00:00"
       },
       "errors": [],
       "history": {
@@ -8820,7 +8820,7 @@ window.COMPANY_COMPARISON = {
           93.713
         ],
         "source_url": "https://stockanalysis.com/quote/hose/DVP/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:12.453144+00:00",
+        "checked_at": "2026-11-05T16:48:52.283637+00:00",
         "duplicates": []
       }
     },
@@ -8850,7 +8850,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PDN/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/PDN/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:13.011967+00:00",
+        "checked_at": "2026-11-05T16:48:52.592966+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -8874,16 +8874,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PDN/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/PDN/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:13.464243+00:00",
+        "checked_at": "2026-11-05T16:48:53.093940+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 10.26,
-        "pb": 2.86,
-        "market_cap": 4561.954,
+        "date": "2026-11-04",
+        "pe": 10.25,
+        "pb": 2.84,
+        "market_cap": 4556.397,
         "source_url": "https://stockanalysis.com/quote/hose/PDN/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:13.839717+00:00"
+        "checked_at": "2026-11-05T16:48:53.707120+00:00"
       },
       "errors": [],
       "history": {
@@ -8976,7 +8976,7 @@ window.COMPANY_COMPARISON = {
           118.591
         ],
         "source_url": "https://stockanalysis.com/quote/hose/PDN/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:13.464243+00:00",
+        "checked_at": "2026-11-05T16:48:53.093940+00:00",
         "duplicates": []
       }
     },
@@ -9006,7 +9006,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HAH/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/HAH/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:46.469482+00:00",
+        "checked_at": "2026-11-05T16:49:20.393224+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -9030,16 +9030,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HAH/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/HAH/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:47.251341+00:00",
+        "checked_at": "2026-11-05T16:49:20.736660+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 7.54,
+        "date": "2026-11-04",
+        "pe": 7.53,
         "pb": 1.44,
-        "market_cap": 9361.812,
+        "market_cap": 9352.22,
         "source_url": "https://stockanalysis.com/quote/hose/HAH/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:47.226565+00:00"
+        "checked_at": "2026-11-05T16:49:21.042785+00:00"
       },
       "errors": [],
       "history": {
@@ -9132,7 +9132,7 @@ window.COMPANY_COMPARISON = {
           328.519
         ],
         "source_url": "https://stockanalysis.com/quote/hose/HAH/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:47.251341+00:00",
+        "checked_at": "2026-11-05T16:49:20.736660+00:00",
         "duplicates": []
       }
     },
@@ -9162,7 +9162,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SCS/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/SCS/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:15.151464+00:00",
+        "checked_at": "2026-11-05T16:48:54.536576+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -9186,16 +9186,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SCS/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/SCS/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:15.568309+00:00",
+        "checked_at": "2026-11-05T16:48:55.017545+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 5.77,
-        "pb": 2.12,
-        "market_cap": 3850.693,
+        "date": "2026-11-04",
+        "pe": 5.75,
+        "pb": 2.11,
+        "market_cap": 3836.307,
         "source_url": "https://stockanalysis.com/quote/hose/SCS/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:16.035290+00:00"
+        "checked_at": "2026-11-05T16:48:55.338228+00:00"
       },
       "errors": [],
       "history": {
@@ -9288,7 +9288,7 @@ window.COMPANY_COMPARISON = {
           194.082
         ],
         "source_url": "https://stockanalysis.com/quote/hose/SCS/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:15.568309+00:00",
+        "checked_at": "2026-11-05T16:48:55.017545+00:00",
         "duplicates": []
       }
     },
@@ -9318,7 +9318,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SGN/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/SGN/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:16.213773+00:00",
+        "checked_at": "2026-11-05T16:48:55.265669+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -9342,16 +9342,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SGN/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/SGN/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:16.597958+00:00",
+        "checked_at": "2026-11-05T16:48:56.177137+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 8.53,
         "pb": 1.26,
         "market_cap": 2013.265,
         "source_url": "https://stockanalysis.com/quote/hose/SGN/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:17.058844+00:00"
+        "checked_at": "2026-11-05T16:48:56.109789+00:00"
       },
       "errors": [],
       "history": {
@@ -9444,7 +9444,7 @@ window.COMPANY_COMPARISON = {
           78.498
         ],
         "source_url": "https://stockanalysis.com/quote/hose/SGN/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:16.597958+00:00",
+        "checked_at": "2026-11-05T16:48:56.238488+00:00",
         "duplicates": []
       }
     },
@@ -9474,7 +9474,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TCL/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/TCL/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:17.248675+00:00",
+        "checked_at": "2026-11-05T16:48:56.491899+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -9498,16 +9498,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TCL/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/TCL/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:17.616765+00:00",
+        "checked_at": "2026-11-05T16:48:56.802417+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 6.25,
+        "date": "2026-11-04",
+        "pe": 6.0,
         "pb": 1.17,
-        "market_cap": 871.579,
+        "market_cap": 870.071,
         "source_url": "https://stockanalysis.com/quote/hose/TCL/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:18.112583+00:00"
+        "checked_at": "2026-11-05T16:48:57.148413+00:00"
       },
       "errors": [],
       "history": {
@@ -9600,7 +9600,7 @@ window.COMPANY_COMPARISON = {
           45.798
         ],
         "source_url": "https://stockanalysis.com/quote/hose/TCL/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:17.616765+00:00",
+        "checked_at": "2026-11-05T16:48:56.802417+00:00",
         "duplicates": []
       }
     },
@@ -9630,7 +9630,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/STG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/STG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:18.373263+00:00",
+        "checked_at": "2026-11-05T16:48:57.444869+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -9654,16 +9654,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/STG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/STG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:18.696934+00:00",
+        "checked_at": "2026-11-05T16:48:57.762375+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 8.59,
-        "pb": 1.13,
-        "market_cap": 3149.02,
+        "date": "2026-11-04",
+        "pe": 8.83,
+        "pb": 1.08,
+        "market_cap": 3237.448,
         "source_url": "https://stockanalysis.com/quote/hose/STG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:19.196472+00:00"
+        "checked_at": "2026-11-05T16:48:57.967079+00:00"
       },
       "errors": [],
       "history": {
@@ -9756,7 +9756,7 @@ window.COMPANY_COMPARISON = {
           111.877
         ],
         "source_url": "https://stockanalysis.com/quote/hose/STG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:18.696934+00:00",
+        "checked_at": "2026-11-05T16:48:57.762375+00:00",
         "duplicates": []
       }
     },
@@ -9770,10 +9770,10 @@ window.COMPANY_COMPARISON = {
       "quote": null,
       "errors": [
         "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/LTG/financials/income-statement/",
+        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/LTG/financials/income-statement/?p=quarterly",
         "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/LTG/financials/balance-sheet/",
-        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/LTG/financials/balance-sheet/?p=quarterly",
         "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/LTG/financials/ratios/?p=quarterly",
-        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/LTG/financials/income-statement/?p=quarterly"
+        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/LTG/financials/balance-sheet/?p=quarterly"
       ],
       "history": null
     },
@@ -9803,7 +9803,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PAN/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/PAN/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:19.558945+00:00",
+        "checked_at": "2026-11-05T16:48:58.614910+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -9827,16 +9827,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PAN/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/PAN/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:19.989118+00:00",
+        "checked_at": "2026-11-05T16:48:59.115084+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 3.59,
-        "pb": 0.44,
-        "market_cap": 4286.511,
+        "date": "2026-11-04",
+        "pe": 3.57,
+        "pb": 0.46,
+        "market_cap": 4261.444,
         "source_url": "https://stockanalysis.com/quote/hose/PAN/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:20.901637+00:00"
+        "checked_at": "2026-11-05T16:48:59.424332+00:00"
       },
       "errors": [],
       "history": {
@@ -9929,7 +9929,7 @@ window.COMPANY_COMPARISON = {
           195.756
         ],
         "source_url": "https://stockanalysis.com/quote/hose/PAN/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:19.989118+00:00",
+        "checked_at": "2026-11-05T16:48:59.115084+00:00",
         "duplicates": []
       }
     },
@@ -9959,7 +9959,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GVR/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/GVR/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:20.469100+00:00",
+        "checked_at": "2026-11-05T16:48:59.517802+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -9983,16 +9983,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GVR/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/GVR/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:21.288652+00:00",
+        "checked_at": "2026-11-05T16:48:59.848586+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 14.7,
+        "date": "2026-11-04",
+        "pe": 14.67,
         "pb": 1.73,
-        "market_cap": 120800.0,
+        "market_cap": 120600.0,
         "source_url": "https://stockanalysis.com/quote/hose/GVR/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:21.810708+00:00"
+        "checked_at": "2026-11-05T16:49:00.048264+00:00"
       },
       "errors": [],
       "history": {
@@ -10085,7 +10085,7 @@ window.COMPANY_COMPARISON = {
           3335.909
         ],
         "source_url": "https://stockanalysis.com/quote/hose/GVR/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:21.288652+00:00",
+        "checked_at": "2026-11-05T16:48:59.848586+00:00",
         "duplicates": []
       }
     },
@@ -10115,7 +10115,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DPR/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/DPR/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:21.787838+00:00",
+        "checked_at": "2026-11-05T16:49:00.219364+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -10139,16 +10139,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DPR/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/DPR/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:22.353356+00:00",
+        "checked_at": "2026-11-05T16:49:00.981009+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 6.91,
-        "pb": 0.86,
-        "market_cap": 3288.633,
+        "date": "2026-11-04",
+        "pe": 7.33,
+        "pb": 0.88,
+        "market_cap": 3314.698,
         "source_url": "https://stockanalysis.com/quote/hose/DPR/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:22.935370+00:00"
+        "checked_at": "2026-11-05T16:49:01.290140+00:00"
       },
       "errors": [],
       "history": {
@@ -10241,7 +10241,7 @@ window.COMPANY_COMPARISON = {
           198.667
         ],
         "source_url": "https://stockanalysis.com/quote/hose/DPR/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:22.353356+00:00",
+        "checked_at": "2026-11-05T16:49:00.999755+00:00",
         "duplicates": []
       }
     },
@@ -10271,7 +10271,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PHR/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/PHR/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:22.823656+00:00",
+        "checked_at": "2026-11-05T16:49:01.272410+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -10295,16 +10295,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PHR/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/PHR/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:23.486111+00:00",
+        "checked_at": "2026-11-05T16:49:01.618594+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 4.57,
-        "pb": 1.4,
-        "market_cap": 7292.567,
+        "date": "2026-11-04",
+        "pe": 4.62,
+        "pb": 1.45,
+        "market_cap": 7365.736,
         "source_url": "https://stockanalysis.com/quote/hose/PHR/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:24.032160+00:00"
+        "checked_at": "2026-11-05T16:49:01.934371+00:00"
       },
       "errors": [],
       "history": {
@@ -10397,7 +10397,7 @@ window.COMPANY_COMPARISON = {
           426.507
         ],
         "source_url": "https://stockanalysis.com/quote/hose/PHR/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:23.486111+00:00",
+        "checked_at": "2026-11-05T16:49:01.618594+00:00",
         "duplicates": []
       }
     },
@@ -10427,7 +10427,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DBC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/DBC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:24.149754+00:00",
+        "checked_at": "2026-11-05T16:49:02.270550+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -10451,16 +10451,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DBC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/DBC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:24.765446+00:00",
+        "checked_at": "2026-11-05T16:49:02.569931+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 6.71,
+        "date": "2026-11-04",
+        "pe": 6.64,
         "pb": 0.78,
-        "market_cap": 6788.982,
+        "market_cap": 6724.325,
         "source_url": "https://stockanalysis.com/quote/hose/DBC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:25.255043+00:00"
+        "checked_at": "2026-11-05T16:49:02.939618+00:00"
       },
       "errors": [],
       "history": {
@@ -10553,7 +10553,7 @@ window.COMPANY_COMPARISON = {
           200.169
         ],
         "source_url": "https://stockanalysis.com/quote/hose/DBC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:24.849749+00:00",
+        "checked_at": "2026-11-05T16:49:02.569931+00:00",
         "duplicates": []
       }
     },
@@ -10583,7 +10583,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HAG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/HAG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:25.254463+00:00",
+        "checked_at": "2026-11-05T16:49:03.094410+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -10607,16 +10607,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HAG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/HAG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:25.698942+00:00",
+        "checked_at": "2026-11-05T16:49:03.400986+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 4.84,
-        "pb": 0.99,
-        "market_cap": 17426.74,
+        "date": "2026-11-04",
+        "pe": 4.89,
+        "pb": 1.0,
+        "market_cap": 17616.85,
         "source_url": "https://stockanalysis.com/quote/hose/HAG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:26.005846+00:00"
+        "checked_at": "2026-11-05T16:49:03.818324+00:00"
       },
       "errors": [],
       "history": {
@@ -10709,7 +10709,7 @@ window.COMPANY_COMPARISON = {
           405.796
         ],
         "source_url": "https://stockanalysis.com/quote/hose/HAG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:25.698942+00:00",
+        "checked_at": "2026-11-05T16:49:03.400986+00:00",
         "duplicates": []
       }
     },
@@ -10739,45 +10739,44 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/BAF/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/BAF/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:26.276702+00:00",
+        "checked_at": "2026-11-05T16:49:03.854585+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
-        "end": "2026-06-30",
-        "label": "Q2 2026",
+        "end": "2026-09-30",
+        "label": "Q3 2026",
         "values": {
-          "gross_margin": 16.2,
-          "net_margin": 4.889111205111984,
-          "roe": 2.425155795109209,
-          "short_debt": 2965.572,
-          "long_debt": 3554.581,
-          "cash": 1223.706,
-          "revenue": 2137.096,
+          "gross_margin": 16.54,
+          "net_margin": 0.9447204776664615,
+          "roe": 0.4469460649764061,
+          "short_debt": null,
+          "long_debt": 3900.215,
+          "cash": 378.09,
+          "revenue": 2067.384,
           "revenue_growth": null,
-          "net_income": 104.485,
-          "equity": 4351.101,
-          "roa": 0.8134562329444052,
+          "net_income": 19.531,
+          "equity": 4388.656,
+          "roa": 0.140560543732026,
           "cir": null
         },
         "source_urls": [
           "https://stockanalysis.com/quote/hose/BAF/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/BAF/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:26.794286+00:00",
+        "checked_at": "2026-11-05T16:49:04.183360+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 110.93,
-        "pb": 2.56,
-        "market_cap": 11291.331,
+        "date": "2026-11-04",
+        "pe": 110.03,
+        "pb": 2.54,
+        "market_cap": 11200.125,
         "source_url": "https://stockanalysis.com/quote/hose/BAF/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:27.282274+00:00"
+        "checked_at": "2026-11-05T16:49:04.623895+00:00"
       },
       "errors": [],
       "history": {
         "quarters": [
-          "Q3/2021",
           "Q4/2021",
           "Q1/2022",
           "Q2/2022",
@@ -10796,10 +10795,10 @@ window.COMPANY_COMPARISON = {
           "Q3/2025",
           "Q4/2025",
           "Q1/2026",
-          "Q2/2026"
+          "Q2/2026",
+          "Q3/2026"
         ],
         "revenue": [
-          3814.784,
           1368.367,
           1538.992,
           1430.512,
@@ -10818,10 +10817,10 @@ window.COMPANY_COMPARISON = {
           1136.263,
           1391.146,
           1762.208,
-          2137.096
+          2126.498,
+          2067.384
         ],
         "gross_profit": [
-          72.055,
           139.453,
           141.111,
           65.966,
@@ -10840,10 +10839,10 @@ window.COMPANY_COMPARISON = {
           263.909,
           -188.903,
           451.224,
-          346.233
+          351.233,
+          341.899
         ],
         "net_income": [
-          44.097,
           76.506,
           87.711,
           40.135,
@@ -10862,10 +10861,11 @@ window.COMPANY_COMPARISON = {
           20.641,
           -236.536,
           206.001,
-          104.485
+          103.46,
+          19.531
         ],
         "source_url": "https://stockanalysis.com/quote/hose/BAF/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:26.794286+00:00",
+        "checked_at": "2026-11-05T16:49:04.183360+00:00",
         "duplicates": []
       }
     },
@@ -10895,7 +10895,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VNM/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/VNM/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:21.015475+00:00",
+        "checked_at": "2026-11-05T16:49:48.983087+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -10919,16 +10919,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VNM/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/VNM/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:21.957157+00:00",
+        "checked_at": "2026-11-05T16:49:50.110696+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 11.69,
+        "date": "2026-11-04",
+        "pe": 11.71,
         "pb": 3.14,
-        "market_cap": 119963.443,
+        "market_cap": 120172.438,
         "source_url": "https://stockanalysis.com/quote/hose/VNM/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:22.681919+00:00"
+        "checked_at": "2026-11-05T16:49:50.585177+00:00"
       },
       "errors": [],
       "history": {
@@ -11021,7 +11021,7 @@ window.COMPANY_COMPARISON = {
           2964.175
         ],
         "source_url": "https://stockanalysis.com/quote/hose/VNM/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:21.957157+00:00",
+        "checked_at": "2026-11-05T16:49:50.579269+00:00",
         "duplicates": []
       }
     },
@@ -11051,7 +11051,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/MSN/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/MSN/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:24.091042+00:00",
+        "checked_at": "2026-11-05T16:49:51.780195+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -11075,16 +11075,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/MSN/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/MSN/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:24.688676+00:00",
+        "checked_at": "2026-11-05T16:49:52.129760+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 11.58,
-        "pb": 1.97,
-        "market_cap": 105585.084,
+        "date": "2026-11-04",
+        "pe": 11.46,
+        "pb": 1.95,
+        "market_cap": 104562.822,
         "source_url": "https://stockanalysis.com/quote/hose/MSN/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:25.131485+00:00"
+        "checked_at": "2026-11-05T16:49:52.550166+00:00"
       },
       "errors": [],
       "history": {
@@ -11177,7 +11177,7 @@ window.COMPANY_COMPARISON = {
           3670.901
         ],
         "source_url": "https://stockanalysis.com/quote/hose/MSN/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:24.688676+00:00",
+        "checked_at": "2026-11-05T16:49:52.129760+00:00",
         "duplicates": []
       }
     },
@@ -11207,7 +11207,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SAB/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/SAB/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:22.839791+00:00",
+        "checked_at": "2026-11-05T16:49:50.543203+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -11231,16 +11231,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SAB/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/SAB/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:23.317744+00:00",
+        "checked_at": "2026-11-05T16:49:51.244182+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 12.06,
-        "pb": 2.37,
-        "market_cap": 54316.516,
+        "date": "2026-11-04",
+        "pe": 12.01,
+        "pb": 2.38,
+        "market_cap": 54060.004,
         "source_url": "https://stockanalysis.com/quote/hose/SAB/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:23.783120+00:00"
+        "checked_at": "2026-11-05T16:49:51.512305+00:00"
       },
       "errors": [],
       "history": {
@@ -11333,7 +11333,7 @@ window.COMPANY_COMPARISON = {
           1232.263
         ],
         "source_url": "https://stockanalysis.com/quote/hose/SAB/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:23.317744+00:00",
+        "checked_at": "2026-11-05T16:49:51.244182+00:00",
         "duplicates": []
       }
     },
@@ -11363,7 +11363,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/KDC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/KDC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:25.473920+00:00",
+        "checked_at": "2026-11-05T16:49:52.838286+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -11387,16 +11387,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/KDC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/KDC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:26.014240+00:00",
+        "checked_at": "2026-11-05T16:49:53.228839+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 19.02,
-        "pb": 2.39,
-        "market_cap": 13927.803,
+        "date": "2026-11-04",
+        "pe": 19.06,
+        "pb": 2.4,
+        "market_cap": 13900.169,
         "source_url": "https://stockanalysis.com/quote/hose/KDC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:26.538063+00:00"
+        "checked_at": "2026-11-05T16:49:53.646326+00:00"
       },
       "errors": [],
       "history": {
@@ -11489,7 +11489,7 @@ window.COMPANY_COMPARISON = {
           217.755
         ],
         "source_url": "https://stockanalysis.com/quote/hose/KDC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:26.014240+00:00",
+        "checked_at": "2026-11-05T16:49:53.228839+00:00",
         "duplicates": []
       }
     },
@@ -11519,7 +11519,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VHC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/VHC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:32.113416+00:00",
+        "checked_at": "2026-11-05T16:49:08.834184+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -11543,16 +11543,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VHC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/VHC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:32.696393+00:00",
+        "checked_at": "2026-11-05T16:49:09.135249+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 8.59,
-        "pb": 1.0,
-        "market_cap": 10315.568,
+        "date": "2026-11-04",
+        "pe": 8.84,
+        "pb": 1.03,
+        "market_cap": 10346.986,
         "source_url": "https://stockanalysis.com/quote/hose/VHC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:33.323957+00:00"
+        "checked_at": "2026-11-05T16:49:09.459875+00:00"
       },
       "errors": [],
       "history": {
@@ -11645,7 +11645,7 @@ window.COMPANY_COMPARISON = {
           213.124
         ],
         "source_url": "https://stockanalysis.com/quote/hose/VHC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:32.696393+00:00",
+        "checked_at": "2026-11-05T16:49:09.135249+00:00",
         "duplicates": []
       }
     },
@@ -11675,7 +11675,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/ANV/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/ANV/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:33.554870+00:00",
+        "checked_at": "2026-11-05T16:49:09.798532+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -11699,16 +11699,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/ANV/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/ANV/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:34.004103+00:00",
+        "checked_at": "2026-11-05T16:49:10.040374+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 5.83,
-        "pb": 1.11,
-        "market_cap": 4592.912,
+        "date": "2026-11-04",
+        "pe": 5.93,
+        "pb": 1.15,
+        "market_cap": 4672.788,
         "source_url": "https://stockanalysis.com/quote/hose/ANV/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:34.706259+00:00"
+        "checked_at": "2026-11-05T16:49:10.391818+00:00"
       },
       "errors": [],
       "history": {
@@ -11801,7 +11801,7 @@ window.COMPANY_COMPARISON = {
           206.656
         ],
         "source_url": "https://stockanalysis.com/quote/hose/ANV/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:34.004103+00:00",
+        "checked_at": "2026-11-05T16:49:10.040374+00:00",
         "duplicates": []
       }
     },
@@ -11831,7 +11831,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/IDI/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/IDI/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:34.459257+00:00",
+        "checked_at": "2026-11-05T16:49:10.683745+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -11855,16 +11855,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/IDI/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/IDI/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:35.195490+00:00",
+        "checked_at": "2026-11-05T16:49:11.026671+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 8.9,
         "pb": 0.36,
         "market_cap": 1360.4,
         "source_url": "https://stockanalysis.com/quote/hose/IDI/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:35.527651+00:00"
+        "checked_at": "2026-11-05T16:49:11.421008+00:00"
       },
       "errors": [],
       "history": {
@@ -11957,7 +11957,7 @@ window.COMPANY_COMPARISON = {
           18.597
         ],
         "source_url": "https://stockanalysis.com/quote/hose/IDI/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:35.195490+00:00",
+        "checked_at": "2026-11-05T16:49:11.026671+00:00",
         "duplicates": []
       }
     },
@@ -11987,7 +11987,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/FMC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/FMC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:35.507089+00:00",
+        "checked_at": "2026-11-05T16:49:11.620079+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -12011,16 +12011,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/FMC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/FMC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:36.512988+00:00",
+        "checked_at": "2026-11-05T16:49:12.072708+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 4.03,
-        "pb": 0.79,
-        "market_cap": 2291.881,
+        "date": "2026-11-04",
+        "pe": 3.99,
+        "pb": 0.8,
+        "market_cap": 2272.264,
         "source_url": "https://stockanalysis.com/quote/hose/FMC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:36.765940+00:00"
+        "checked_at": "2026-11-05T16:49:12.438881+00:00"
       },
       "errors": [],
       "history": {
@@ -12113,7 +12113,7 @@ window.COMPANY_COMPARISON = {
           188.482
         ],
         "source_url": "https://stockanalysis.com/quote/hose/FMC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:36.512988+00:00",
+        "checked_at": "2026-11-05T16:49:12.072708+00:00",
         "duplicates": []
       }
     },
@@ -12160,45 +12160,44 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/CMX/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/CMX/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:37.427416+00:00",
+        "checked_at": "2026-11-05T16:49:12.996124+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
-        "end": "2026-06-30",
-        "label": "Q2 2026",
+        "end": "2026-09-30",
+        "label": "Q3 2026",
         "values": {
-          "gross_margin": 11.55,
-          "net_margin": 0.509239871575986,
-          "roe": 0.44691272126734427,
-          "short_debt": 2009.476,
-          "long_debt": 555.282,
-          "cash": 81.707,
-          "revenue": 1117.548,
+          "gross_margin": 15.21,
+          "net_margin": 3.715999194854,
+          "roe": 2.9976676865035032,
+          "short_debt": null,
+          "long_debt": 619.999,
+          "cash": 86.107,
+          "revenue": 1038.321,
           "revenue_growth": null,
-          "net_income": 5.691,
-          "equity": 1267.842,
-          "roa": 0.11446636869072277,
+          "net_income": 38.584,
+          "equity": 1306.426,
+          "roa": 0.7717381890594551,
           "cir": null
         },
         "source_urls": [
           "https://stockanalysis.com/quote/hose/CMX/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/CMX/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:37.923506+00:00",
+        "checked_at": "2026-11-05T16:49:13.380820+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 6.76,
+        "date": "2026-11-04",
+        "pe": 6.71,
         "pb": 0.27,
-        "market_cap": 473.83,
+        "market_cap": 470.773,
         "source_url": "https://stockanalysis.com/quote/hose/CMX/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:38.325604+00:00"
+        "checked_at": "2026-11-05T16:49:13.796336+00:00"
       },
       "errors": [],
       "history": {
         "quarters": [
-          "Q3/2018",
           "Q4/2018",
           "Q1/2019",
           "Q2/2019",
@@ -12217,10 +12216,10 @@ window.COMPANY_COMPARISON = {
           "Q3/2025",
           "Q4/2025",
           "Q1/2026",
-          "Q2/2026"
+          "Q2/2026",
+          "Q3/2026"
         ],
         "revenue": [
-          337.666,
           259.255,
           184.952,
           326.06,
@@ -12239,10 +12238,10 @@ window.COMPANY_COMPARISON = {
           715.93,
           707.351,
           884.888,
-          1117.548
+          1117.548,
+          1038.321
         ],
         "gross_profit": [
-          78.106,
           45.354,
           44.329,
           63.96,
@@ -12261,10 +12260,10 @@ window.COMPANY_COMPARISON = {
           150.94,
           112.788,
           146.463,
-          129.042
+          129.042,
+          157.936
         ],
         "net_income": [
-          41.409,
           21.841,
           24.335,
           32.964,
@@ -12283,10 +12282,11 @@ window.COMPANY_COMPARISON = {
           24.392,
           11.662,
           28.396,
-          5.691
+          5.691,
+          38.584
         ],
         "source_url": "https://stockanalysis.com/quote/hose/CMX/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:37.923506+00:00",
+        "checked_at": "2026-11-05T16:49:13.380820+00:00",
         "duplicates": []
       }
     },
@@ -12316,45 +12316,44 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/ASM/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/ASM/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:38.457989+00:00",
+        "checked_at": "2026-11-05T16:49:14.078571+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
-        "end": "2026-06-30",
-        "label": "Q2 2026",
+        "end": "2026-09-30",
+        "label": "Q3 2026",
         "values": {
-          "gross_margin": 14.19,
-          "net_margin": 1.6309797594304856,
-          "roe": 0.952396001373289,
-          "short_debt": 7493.237,
-          "long_debt": 6555.554,
-          "cash": 541.933,
-          "revenue": 3252.033,
+          "gross_margin": 13.64,
+          "net_margin": 0.5433375619252936,
+          "roe": 0.27006006212880573,
+          "short_debt": null,
+          "long_debt": 6461.468,
+          "cash": 709.308,
+          "revenue": 2785.009,
           "revenue_growth": null,
-          "net_income": 53.04,
-          "equity": 5595.632,
-          "roa": 0.2219691496779951,
+          "net_income": 15.132,
+          "equity": 5610.764,
+          "roa": 0.06450235793586913,
           "cir": null
         },
         "source_urls": [
           "https://stockanalysis.com/quote/hose/ASM/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/ASM/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:38.885073+00:00",
+        "checked_at": "2026-11-05T16:49:14.078516+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 11.47,
+        "date": "2026-11-04",
+        "pe": 11.6,
         "pb": 0.21,
-        "market_cap": 1807.942,
+        "market_cap": 1828.302,
         "source_url": "https://stockanalysis.com/quote/hose/ASM/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:39.702309+00:00"
+        "checked_at": "2026-11-05T16:49:14.761784+00:00"
       },
       "errors": [],
       "history": {
         "quarters": [
-          "Q3/2021",
           "Q4/2021",
           "Q1/2022",
           "Q2/2022",
@@ -12373,10 +12372,10 @@ window.COMPANY_COMPARISON = {
           "Q3/2025",
           "Q4/2025",
           "Q1/2026",
-          "Q2/2026"
+          "Q2/2026",
+          "Q3/2026"
         ],
         "revenue": [
-          2415.393,
           2725.6,
           3209.514,
           4011.44,
@@ -12395,10 +12394,10 @@ window.COMPANY_COMPARISON = {
           2632.779,
           2615.332,
           2469.598,
-          3252.033
+          3252.033,
+          2785.009
         ],
         "gross_profit": [
-          286.886,
           339.796,
           518.369,
           635.714,
@@ -12417,10 +12416,10 @@ window.COMPANY_COMPARISON = {
           316.779,
           355.179,
           374.726,
-          461.535
+          461.535,
+          380.0
         ],
         "net_income": [
-          260.86,
           134.092,
           208.816,
           225.987,
@@ -12439,10 +12438,11 @@ window.COMPANY_COMPARISON = {
           11.411,
           -7.304,
           84.642,
-          53.04
+          53.04,
+          15.132
         ],
         "source_url": "https://stockanalysis.com/quote/hose/ASM/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:38.885073+00:00",
+        "checked_at": "2026-11-05T16:49:14.078516+00:00",
         "duplicates": []
       }
     },
@@ -12472,7 +12472,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PVT/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/PVT/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:39.749321+00:00",
+        "checked_at": "2026-11-05T16:49:14.384298+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -12496,16 +12496,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PVT/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/PVT/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:40.058489+00:00",
+        "checked_at": "2026-11-05T16:49:15.172079+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 7.36,
-        "pb": 0.84,
-        "market_cap": 10855.298,
+        "date": "2026-11-04",
+        "pe": 7.22,
+        "pb": 0.83,
+        "market_cap": 10648.53,
         "source_url": "https://stockanalysis.com/quote/hose/PVT/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:40.397048+00:00"
+        "checked_at": "2026-11-05T16:49:15.336734+00:00"
       },
       "errors": [],
       "history": {
@@ -12598,7 +12598,7 @@ window.COMPANY_COMPARISON = {
           375.131
         ],
         "source_url": "https://stockanalysis.com/quote/hose/PVT/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:40.058489+00:00",
+        "checked_at": "2026-11-05T16:49:15.172079+00:00",
         "duplicates": []
       }
     },
@@ -12628,7 +12628,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VTO/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/VTO/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:40.754508+00:00",
+        "checked_at": "2026-11-05T16:49:15.645927+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -12652,16 +12652,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VTO/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/VTO/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:41.171329+00:00",
+        "checked_at": "2026-11-05T16:49:15.963679+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 5.9,
         "pb": 0.69,
         "market_cap": 822.627,
         "source_url": "https://stockanalysis.com/quote/hose/VTO/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:41.846675+00:00"
+        "checked_at": "2026-11-05T16:49:16.321858+00:00"
       },
       "errors": [],
       "history": {
@@ -12754,7 +12754,7 @@ window.COMPANY_COMPARISON = {
           15.551
         ],
         "source_url": "https://stockanalysis.com/quote/hose/VTO/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:41.171329+00:00",
+        "checked_at": "2026-11-05T16:49:15.963679+00:00",
         "duplicates": []
       }
     },
@@ -12784,7 +12784,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VIP/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/VIP/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:41.798338+00:00",
+        "checked_at": "2026-11-05T16:49:16.426835+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -12808,16 +12808,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VIP/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/VIP/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:42.304840+00:00",
+        "checked_at": "2026-11-05T16:49:16.973557+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 13.79,
+        "date": "2026-11-04",
+        "pe": 13.76,
         "pb": 0.53,
-        "market_cap": 666.907,
+        "market_cap": 665.538,
         "source_url": "https://stockanalysis.com/quote/hose/VIP/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:43.010737+00:00"
+        "checked_at": "2026-11-05T16:49:17.471611+00:00"
       },
       "errors": [],
       "history": {
@@ -12910,7 +12910,7 @@ window.COMPANY_COMPARISON = {
           31.615
         ],
         "source_url": "https://stockanalysis.com/quote/hose/VIP/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:42.304840+00:00",
+        "checked_at": "2026-11-05T16:49:17.024322+00:00",
         "duplicates": []
       }
     },
@@ -12940,7 +12940,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PVP/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/PVP/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:42.963527+00:00",
+        "checked_at": "2026-11-05T16:49:17.137126+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -12964,16 +12964,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PVP/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/PVP/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:43.504914+00:00",
+        "checked_at": "2026-11-05T16:49:17.872024+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 6.22,
-        "pb": 0.91,
-        "market_cap": 1908.125,
+        "date": "2026-11-04",
+        "pe": 6.03,
+        "pb": 0.88,
+        "market_cap": 1851.089,
         "source_url": "https://stockanalysis.com/quote/hose/PVP/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:43.911463+00:00"
+        "checked_at": "2026-11-05T16:49:18.256529+00:00"
       },
       "errors": [],
       "history": {
@@ -13066,7 +13066,7 @@ window.COMPANY_COMPARISON = {
           67.514
         ],
         "source_url": "https://stockanalysis.com/quote/hose/PVP/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:43.504914+00:00",
+        "checked_at": "2026-11-05T16:49:17.872024+00:00",
         "duplicates": []
       }
     },
@@ -13096,7 +13096,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GSP/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/GSP/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:43.911414+00:00",
+        "checked_at": "2026-11-05T16:49:18.325332+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -13120,16 +13120,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/GSP/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/GSP/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:44.723589+00:00",
+        "checked_at": "2026-11-05T16:49:18.575212+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 9.43,
+        "date": "2026-11-04",
+        "pe": 9.48,
         "pb": 0.79,
-        "market_cap": 746.398,
+        "market_cap": 750.111,
         "source_url": "https://stockanalysis.com/quote/hose/GSP/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:45.173033+00:00"
+        "checked_at": "2026-11-05T16:49:18.905761+00:00"
       },
       "errors": [],
       "history": {
@@ -13222,7 +13222,7 @@ window.COMPANY_COMPARISON = {
           8.373
         ],
         "source_url": "https://stockanalysis.com/quote/hose/GSP/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:44.723589+00:00",
+        "checked_at": "2026-11-05T16:49:18.575212+00:00",
         "duplicates": []
       }
     },
@@ -13252,7 +13252,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VOS/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/VOS/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:45.159908+00:00",
+        "checked_at": "2026-11-05T16:49:19.198976+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -13276,16 +13276,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VOS/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/VOS/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:45.610040+00:00",
+        "checked_at": "2026-11-05T16:49:19.723435+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 4.59,
-        "pb": 0.71,
-        "market_cap": 1554.0,
+        "date": "2026-11-04",
+        "pe": 4.52,
+        "pb": 0.74,
+        "market_cap": 1533.0,
         "source_url": "https://stockanalysis.com/quote/hose/VOS/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:46.102901+00:00"
+        "checked_at": "2026-11-05T16:49:20.001550+00:00"
       },
       "errors": [],
       "history": {
@@ -13378,7 +13378,7 @@ window.COMPANY_COMPARISON = {
           76.903
         ],
         "source_url": "https://stockanalysis.com/quote/hose/VOS/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:45.610040+00:00",
+        "checked_at": "2026-11-05T16:49:19.723435+00:00",
         "duplicates": []
       }
     },
@@ -13394,8 +13394,8 @@ window.COMPANY_COMPARISON = {
         "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VNA/financials/income-statement/",
         "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VNA/financials/balance-sheet/",
         "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VNA/financials/income-statement/?p=quarterly",
-        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VNA/financials/ratios/?p=quarterly",
-        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VNA/financials/balance-sheet/?p=quarterly"
+        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VNA/financials/balance-sheet/?p=quarterly",
+        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VNA/financials/ratios/?p=quarterly"
       ],
       "history": null
     },
@@ -13425,7 +13425,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HAH/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/HAH/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:46.469482+00:00",
+        "checked_at": "2026-11-05T16:49:20.393224+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -13449,16 +13449,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HAH/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/HAH/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:47.251341+00:00",
+        "checked_at": "2026-11-05T16:49:20.736660+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 7.54,
+        "date": "2026-11-04",
+        "pe": 7.53,
         "pb": 1.44,
-        "market_cap": 9361.812,
+        "market_cap": 9352.22,
         "source_url": "https://stockanalysis.com/quote/hose/HAH/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:47.226565+00:00"
+        "checked_at": "2026-11-05T16:49:21.042785+00:00"
       },
       "errors": [],
       "history": {
@@ -13551,7 +13551,7 @@ window.COMPANY_COMPARISON = {
           328.519
         ],
         "source_url": "https://stockanalysis.com/quote/hose/HAH/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:47.251341+00:00",
+        "checked_at": "2026-11-05T16:49:20.736660+00:00",
         "duplicates": []
       }
     },
@@ -13581,7 +13581,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HPG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/HPG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:47.666662+00:00",
+        "checked_at": "2026-11-05T16:49:21.215571+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -13605,16 +13605,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HPG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/HPG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:48.122096+00:00",
+        "checked_at": "2026-11-05T16:49:21.560079+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 6.75,
-        "pb": 1.2,
-        "market_cap": 183212.33,
+        "date": "2026-11-04",
+        "pe": 6.69,
+        "pb": 1.22,
+        "market_cap": 181523.737,
         "source_url": "https://stockanalysis.com/quote/hose/HPG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:48.531803+00:00"
+        "checked_at": "2026-11-05T16:49:22.028660+00:00"
       },
       "errors": [],
       "history": {
@@ -13707,7 +13707,7 @@ window.COMPANY_COMPARISON = {
           8217.34
         ],
         "source_url": "https://stockanalysis.com/quote/hose/HPG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:48.122096+00:00",
+        "checked_at": "2026-11-05T16:49:21.560079+00:00",
         "duplicates": []
       }
     },
@@ -13737,11 +13737,11 @@ window.COMPANY_COMPARISON = {
       "quarter": null,
       "quote": null,
       "errors": [
-        "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/TVN/financials/income-statement/",
         "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/TVN/financials/balance-sheet/",
-        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/TVN/financials/balance-sheet/?p=quarterly",
+        "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/TVN/financials/income-statement/",
+        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/TVN/financials/income-statement/?p=quarterly",
         "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/TVN/financials/ratios/?p=quarterly",
-        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/TVN/financials/income-statement/?p=quarterly"
+        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/TVN/financials/balance-sheet/?p=quarterly"
       ],
       "history": null
     },
@@ -13771,7 +13771,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HSG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/HSG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:49.517746+00:00",
+        "checked_at": "2026-11-05T16:49:22.730827+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -13795,16 +13795,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HSG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/HSG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:50.036412+00:00",
+        "checked_at": "2026-11-05T16:49:23.165446+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 14.38,
-        "pb": 0.75,
-        "market_cap": 8960.616,
+        "date": "2026-11-04",
+        "pe": 14.31,
+        "pb": 0.74,
+        "market_cap": 8920.253,
         "source_url": "https://stockanalysis.com/quote/hose/HSG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:50.598423+00:00"
+        "checked_at": "2026-11-05T16:49:23.498597+00:00"
       },
       "errors": [],
       "history": {
@@ -13897,7 +13897,7 @@ window.COMPANY_COMPARISON = {
           55.186
         ],
         "source_url": "https://stockanalysis.com/quote/hose/HSG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:50.036412+00:00",
+        "checked_at": "2026-11-05T16:49:23.473284+00:00",
         "duplicates": []
       }
     },
@@ -13927,7 +13927,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/NKG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/NKG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:50.412025+00:00",
+        "checked_at": "2026-11-05T16:49:23.667830+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -13951,16 +13951,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/NKG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/NKG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:51.026702+00:00",
+        "checked_at": "2026-11-05T16:49:23.868065+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 18.46,
-        "pb": 0.77,
+        "pb": 0.79,
         "market_cap": 6154.05,
         "source_url": "https://stockanalysis.com/quote/hose/NKG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:51.443467+00:00"
+        "checked_at": "2026-11-05T16:49:24.248431+00:00"
       },
       "errors": [],
       "history": {
@@ -14053,7 +14053,7 @@ window.COMPANY_COMPARISON = {
           126.204
         ],
         "source_url": "https://stockanalysis.com/quote/hose/NKG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:51.026702+00:00",
+        "checked_at": "2026-11-05T16:49:23.868065+00:00",
         "duplicates": []
       }
     },
@@ -14083,7 +14083,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/VGS/financials/income-statement/",
           "https://stockanalysis.com/quote/hnx/VGS/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:51.772672+00:00",
+        "checked_at": "2026-11-05T16:49:24.584837+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -14107,16 +14107,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/VGS/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hnx/VGS/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:52.168691+00:00",
+        "checked_at": "2026-11-05T16:49:24.888251+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 4.41,
-        "pb": 0.82,
-        "market_cap": 1193.569,
+        "date": "2026-11-04",
+        "pe": 4.34,
+        "pb": 0.83,
+        "market_cap": 1175.111,
         "source_url": "https://stockanalysis.com/quote/hnx/VGS/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:52.893457+00:00"
+        "checked_at": "2026-11-05T16:49:25.451958+00:00"
       },
       "errors": [],
       "history": {
@@ -14209,7 +14209,7 @@ window.COMPANY_COMPARISON = {
           96.24
         ],
         "source_url": "https://stockanalysis.com/quote/hnx/VGS/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:52.168691+00:00",
+        "checked_at": "2026-11-05T16:49:24.888251+00:00",
         "duplicates": []
       }
     },
@@ -14239,7 +14239,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TLH/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/TLH/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:52.841130+00:00",
+        "checked_at": "2026-11-05T16:49:25.451456+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -14263,16 +14263,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TLH/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/TLH/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:53.733303+00:00",
+        "checked_at": "2026-11-05T16:49:25.898247+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 30.32,
         "pb": 0.29,
         "market_cap": 376.272,
         "source_url": "https://stockanalysis.com/quote/hose/TLH/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:54.062399+00:00"
+        "checked_at": "2026-11-05T16:49:26.422513+00:00"
       },
       "errors": [],
       "history": {
@@ -14365,7 +14365,7 @@ window.COMPANY_COMPARISON = {
           6.919
         ],
         "source_url": "https://stockanalysis.com/quote/hose/TLH/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:54.157735+00:00",
+        "checked_at": "2026-11-05T16:49:25.898247+00:00",
         "duplicates": []
       }
     },
@@ -14395,7 +14395,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SMC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/SMC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:53.733237+00:00",
+        "checked_at": "2026-11-05T16:49:26.249993+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -14419,16 +14419,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SMC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/SMC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:54.599386+00:00",
+        "checked_at": "2026-11-05T16:49:26.946558+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 2.36,
+        "date": "2026-11-04",
+        "pe": 2.32,
         "pb": 0.69,
-        "market_cap": 733.124,
+        "market_cap": 721.347,
         "source_url": "https://stockanalysis.com/quote/hose/SMC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:55.163455+00:00"
+        "checked_at": "2026-11-05T16:49:27.251439+00:00"
       },
       "errors": [],
       "history": {
@@ -14521,7 +14521,7 @@ window.COMPANY_COMPARISON = {
           22.788
         ],
         "source_url": "https://stockanalysis.com/quote/hose/SMC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:54.599386+00:00",
+        "checked_at": "2026-11-05T16:49:26.946558+00:00",
         "duplicates": []
       }
     },
@@ -14551,7 +14551,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HT1/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/HT1/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:55.300077+00:00",
+        "checked_at": "2026-11-05T16:49:27.247397+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -14575,16 +14575,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HT1/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/HT1/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:55.774420+00:00",
+        "checked_at": "2026-11-05T16:49:27.709506+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 12.83,
-        "pb": 0.95,
+        "pb": 0.96,
         "market_cap": 4960.669,
         "source_url": "https://stockanalysis.com/quote/hose/HT1/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:56.474560+00:00"
+        "checked_at": "2026-11-05T16:49:28.297924+00:00"
       },
       "errors": [],
       "history": {
@@ -14677,7 +14677,7 @@ window.COMPANY_COMPARISON = {
           138.226
         ],
         "source_url": "https://stockanalysis.com/quote/hose/HT1/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:55.774420+00:00",
+        "checked_at": "2026-11-05T16:49:27.709506+00:00",
         "duplicates": []
       }
     },
@@ -14707,7 +14707,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/BCC/financials/income-statement/",
           "https://stockanalysis.com/quote/hnx/BCC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:56.066452+00:00",
+        "checked_at": "2026-11-05T16:49:28.419218+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -14731,16 +14731,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/BCC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hnx/BCC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:56.915912+00:00",
+        "checked_at": "2026-11-05T16:49:28.956945+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 8.62,
+        "date": "2026-11-04",
+        "pe": 8.78,
         "pb": 0.37,
-        "market_cap": 677.654,
+        "market_cap": 689.975,
         "source_url": "https://stockanalysis.com/quote/hnx/BCC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:57.418556+00:00"
+        "checked_at": "2026-11-05T16:49:29.391012+00:00"
       },
       "errors": [],
       "history": {
@@ -14833,7 +14833,7 @@ window.COMPANY_COMPARISON = {
           42.634
         ],
         "source_url": "https://stockanalysis.com/quote/hnx/BCC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:56.915912+00:00",
+        "checked_at": "2026-11-05T16:49:28.956945+00:00",
         "duplicates": []
       }
     },
@@ -14847,8 +14847,8 @@ window.COMPANY_COMPARISON = {
       "quote": null,
       "errors": [
         "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VLB/financials/income-statement/",
-        "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VLB/financials/balance-sheet/",
         "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VLB/financials/balance-sheet/?p=quarterly",
+        "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VLB/financials/balance-sheet/",
         "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VLB/financials/income-statement/?p=quarterly",
         "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/VLB/financials/ratios/?p=quarterly"
       ],
@@ -14880,7 +14880,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/KSB/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/KSB/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:57.889932+00:00",
+        "checked_at": "2026-11-05T16:49:30.069424+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -14904,16 +14904,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/KSB/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/KSB/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:58.598830+00:00",
+        "checked_at": "2026-11-05T16:49:30.538856+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 8.03,
-        "pb": 0.5,
-        "market_cap": 1430.546,
+        "date": "2026-11-04",
+        "pe": 8.07,
+        "pb": 0.51,
+        "market_cap": 1436.268,
         "source_url": "https://stockanalysis.com/quote/hose/KSB/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:59.053867+00:00"
+        "checked_at": "2026-11-05T16:49:30.871141+00:00"
       },
       "errors": [],
       "history": {
@@ -15006,7 +15006,7 @@ window.COMPANY_COMPARISON = {
           34.702
         ],
         "source_url": "https://stockanalysis.com/quote/hose/KSB/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:58.598830+00:00",
+        "checked_at": "2026-11-05T16:49:30.538856+00:00",
         "duplicates": []
       }
     },
@@ -15036,7 +15036,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DHA/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/DHA/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:34:59.039501+00:00",
+        "checked_at": "2026-11-05T16:49:30.997664+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -15060,16 +15060,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DHA/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/DHA/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:34:59.492890+00:00",
+        "checked_at": "2026-11-05T16:49:31.307065+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 5.51,
+        "date": "2026-11-04",
+        "pe": 5.53,
         "pb": 1.48,
-        "market_cap": 836.157,
+        "market_cap": 839.101,
         "source_url": "https://stockanalysis.com/quote/hose/DHA/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:59.857708+00:00"
+        "checked_at": "2026-11-05T16:49:31.878385+00:00"
       },
       "errors": [],
       "history": {
@@ -15162,7 +15162,7 @@ window.COMPANY_COMPARISON = {
           79.578
         ],
         "source_url": "https://stockanalysis.com/quote/hose/DHA/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:34:59.492890+00:00",
+        "checked_at": "2026-11-05T16:49:31.307065+00:00",
         "duplicates": []
       }
     },
@@ -15192,7 +15192,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/PLC/financials/income-statement/",
           "https://stockanalysis.com/quote/hnx/PLC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:00.215235+00:00",
+        "checked_at": "2026-11-05T16:49:31.878457+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -15216,16 +15216,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/PLC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hnx/PLC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:00.619885+00:00",
+        "checked_at": "2026-11-05T16:49:32.655074+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 7.84,
-        "pb": 1.03,
-        "market_cap": 1583.632,
+        "date": "2026-11-04",
+        "pe": 8.0,
+        "pb": 1.08,
+        "market_cap": 1615.951,
         "source_url": "https://stockanalysis.com/quote/hnx/PLC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:01.525990+00:00"
+        "checked_at": "2026-11-05T16:49:32.639577+00:00"
       },
       "errors": [],
       "history": {
@@ -15318,7 +15318,7 @@ window.COMPANY_COMPARISON = {
           70.939
         ],
         "source_url": "https://stockanalysis.com/quote/hnx/PLC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:00.619885+00:00",
+        "checked_at": "2026-11-05T16:49:32.655074+00:00",
         "duplicates": []
       }
     },
@@ -15348,7 +15348,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VGC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/VGC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:00.886544+00:00",
+        "checked_at": "2026-11-05T16:49:32.272565+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -15372,16 +15372,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VGC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/VGC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:01.974005+00:00",
+        "checked_at": "2026-11-05T16:49:33.323017+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 10.34,
+        "date": "2026-11-04",
+        "pe": 10.18,
         "pb": 1.53,
-        "market_cap": 18561.69,
+        "market_cap": 18270.263,
         "source_url": "https://stockanalysis.com/quote/hose/VGC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:02.482338+00:00"
+        "checked_at": "2026-11-05T16:49:33.648508+00:00"
       },
       "errors": [],
       "history": {
@@ -15474,7 +15474,7 @@ window.COMPANY_COMPARISON = {
           463.718
         ],
         "source_url": "https://stockanalysis.com/quote/hose/VGC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:01.974005+00:00",
+        "checked_at": "2026-11-05T16:49:33.323017+00:00",
         "duplicates": []
       }
     },
@@ -15504,7 +15504,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/CTD/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/CTD/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:02.522664+00:00",
+        "checked_at": "2026-11-05T16:49:33.733281+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -15528,16 +15528,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/CTD/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/CTD/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:03.345221+00:00",
+        "checked_at": "2026-11-05T16:49:34.066184+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 9.52,
-        "pb": 0.73,
-        "market_cap": 7603.979,
+        "date": "2026-11-04",
+        "pe": 9.56,
+        "pb": 0.77,
+        "market_cap": 7637.526,
         "source_url": "https://stockanalysis.com/quote/hose/CTD/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:03.175052+00:00"
+        "checked_at": "2026-11-05T16:49:34.288333+00:00"
       },
       "errors": [],
       "history": {
@@ -15630,7 +15630,7 @@ window.COMPANY_COMPARISON = {
           305.451
         ],
         "source_url": "https://stockanalysis.com/quote/hose/CTD/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:03.345221+00:00",
+        "checked_at": "2026-11-05T16:49:34.066184+00:00",
         "duplicates": [
           "Q4/2022"
         ]
@@ -15648,8 +15648,8 @@ window.COMPANY_COMPARISON = {
         "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HBC/financials/income-statement/",
         "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HBC/financials/balance-sheet/",
         "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HBC/financials/income-statement/?p=quarterly",
-        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HBC/financials/ratios/?p=quarterly",
-        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HBC/financials/balance-sheet/?p=quarterly"
+        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HBC/financials/balance-sheet/?p=quarterly",
+        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/HBC/financials/ratios/?p=quarterly"
       ],
       "history": null
     },
@@ -15679,7 +15679,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VCG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/VCG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:04.321243+00:00",
+        "checked_at": "2026-11-05T16:49:34.922442+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -15703,16 +15703,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VCG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/VCG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:04.602937+00:00",
+        "checked_at": "2026-11-05T16:49:35.057046+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 2.87,
+        "date": "2026-11-04",
+        "pe": 2.85,
         "pb": 0.88,
-        "market_cap": 10891.699,
+        "market_cap": 10821.88,
         "source_url": "https://stockanalysis.com/quote/hose/VCG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:05.386063+00:00"
+        "checked_at": "2026-11-05T16:49:35.552936+00:00"
       },
       "errors": [],
       "history": {
@@ -15805,7 +15805,7 @@ window.COMPANY_COMPARISON = {
           184.918
         ],
         "source_url": "https://stockanalysis.com/quote/hose/VCG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:04.602937+00:00",
+        "checked_at": "2026-11-05T16:49:35.057046+00:00",
         "duplicates": []
       }
     },
@@ -15835,7 +15835,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/FCN/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/FCN/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:05.375041+00:00",
+        "checked_at": "2026-11-05T16:49:35.855650+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -15859,16 +15859,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/FCN/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/FCN/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:05.765656+00:00",
+        "checked_at": "2026-11-05T16:49:36.184290+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 11.5,
+        "date": "2026-11-04",
+        "pe": 11.55,
         "pb": 0.5,
-        "market_cap": 1747.573,
+        "market_cap": 1755.445,
         "source_url": "https://stockanalysis.com/quote/hose/FCN/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:06.274364+00:00"
+        "checked_at": "2026-11-05T16:49:36.673012+00:00"
       },
       "errors": [],
       "history": {
@@ -15961,7 +15961,7 @@ window.COMPANY_COMPARISON = {
           90.266
         ],
         "source_url": "https://stockanalysis.com/quote/hose/FCN/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:05.765656+00:00",
+        "checked_at": "2026-11-05T16:49:36.184290+00:00",
         "duplicates": []
       }
     },
@@ -15991,7 +15991,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DPG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/DPG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:06.003886+00:00",
+        "checked_at": "2026-11-05T16:49:36.673071+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -16015,16 +16015,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DPG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/DPG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:07.072415+00:00",
+        "checked_at": "2026-11-05T16:49:37.168013+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 9.41,
-        "pb": 1.03,
-        "market_cap": 3794.787,
+        "date": "2026-11-04",
+        "pe": 9.67,
+        "pb": 1.06,
+        "market_cap": 3901.515,
         "source_url": "https://stockanalysis.com/quote/hose/DPG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:07.496238+00:00"
+        "checked_at": "2026-11-05T16:49:37.631308+00:00"
       },
       "errors": [],
       "history": {
@@ -16117,7 +16117,7 @@ window.COMPANY_COMPARISON = {
           103.528
         ],
         "source_url": "https://stockanalysis.com/quote/hose/DPG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:07.072415+00:00",
+        "checked_at": "2026-11-05T16:49:37.168013+00:00",
         "duplicates": []
       }
     },
@@ -16131,8 +16131,8 @@ window.COMPANY_COMPARISON = {
       "quote": null,
       "errors": [
         "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/C4G/financials/income-statement/",
-        "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/C4G/financials/balance-sheet/",
         "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/C4G/financials/income-statement/?p=quarterly",
+        "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/C4G/financials/balance-sheet/",
         "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/C4G/financials/balance-sheet/?p=quarterly",
         "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/C4G/financials/ratios/?p=quarterly"
       ],
@@ -16164,7 +16164,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/LCG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/LCG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:08.291584+00:00",
+        "checked_at": "2026-11-05T16:49:37.997379+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -16175,7 +16175,7 @@ window.COMPANY_COMPARISON = {
           "net_margin": 4.622752150117279,
           "roe": 1.5341765930556996,
           "short_debt": null,
-          "long_debt": 197.405,
+          "long_debt": null,
           "cash": 928.019,
           "revenue": 869.72,
           "revenue_growth": null,
@@ -16188,16 +16188,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/LCG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/LCG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:07.981898+00:00",
+        "checked_at": "2026-11-05T16:49:38.345707+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 9.51,
+        "date": "2026-11-04",
+        "pe": 9.52,
         "pb": 0.5,
-        "market_cap": 1351.178,
+        "market_cap": 1353.244,
         "source_url": "https://stockanalysis.com/quote/hose/LCG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:09.128837+00:00"
+        "checked_at": "2026-11-05T16:49:38.920563+00:00"
       },
       "errors": [],
       "history": {
@@ -16290,7 +16290,7 @@ window.COMPANY_COMPARISON = {
           40.205
         ],
         "source_url": "https://stockanalysis.com/quote/hose/LCG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:07.981898+00:00",
+        "checked_at": "2026-11-05T16:49:38.345707+00:00",
         "duplicates": []
       }
     },
@@ -16320,7 +16320,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HHV/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/HHV/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:09.148767+00:00",
+        "checked_at": "2026-11-05T16:49:38.705689+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -16344,16 +16344,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HHV/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/HHV/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:09.547257+00:00",
+        "checked_at": "2026-11-05T16:49:39.254582+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 7.42,
+        "date": "2026-11-04",
+        "pe": 7.41,
         "pb": 0.42,
-        "market_cap": 5521.182,
+        "market_cap": 5515.436,
         "source_url": "https://stockanalysis.com/quote/hose/HHV/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:10.024684+00:00"
+        "checked_at": "2026-11-05T16:49:39.626988+00:00"
       },
       "errors": [],
       "history": {
@@ -16446,7 +16446,7 @@ window.COMPANY_COMPARISON = {
           186.327
         ],
         "source_url": "https://stockanalysis.com/quote/hose/HHV/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:09.547257+00:00",
+        "checked_at": "2026-11-05T16:49:39.254582+00:00",
         "duplicates": []
       }
     },
@@ -16476,7 +16476,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/CII/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/CII/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:10.200235+00:00",
+        "checked_at": "2026-11-05T16:49:39.763396+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -16500,16 +16500,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/CII/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/CII/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:10.768460+00:00",
+        "checked_at": "2026-11-05T16:49:40.530074+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "pe": 100.63,
         "pb": 0.7,
-        "market_cap": 9306.304,
+        "market_cap": 9306.996,
         "source_url": "https://stockanalysis.com/quote/hose/CII/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:11.415430+00:00"
+        "checked_at": "2026-11-05T16:49:40.731959+00:00"
       },
       "errors": [],
       "history": {
@@ -16602,7 +16602,7 @@ window.COMPANY_COMPARISON = {
           6.614
         ],
         "source_url": "https://stockanalysis.com/quote/hose/CII/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:10.768460+00:00",
+        "checked_at": "2026-11-05T16:49:40.530074+00:00",
         "duplicates": []
       }
     },
@@ -16632,7 +16632,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/HUT/financials/income-statement/",
           "https://stockanalysis.com/quote/hnx/HUT/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:11.341075+00:00",
+        "checked_at": "2026-11-05T16:49:40.907854+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -16656,16 +16656,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hnx/HUT/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hnx/HUT/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:12.531049+00:00",
+        "checked_at": "2026-11-05T16:49:41.420809+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 24.1,
+        "date": "2026-11-04",
+        "pe": 23.91,
         "pb": 0.75,
-        "market_cap": 13567.227,
+        "market_cap": 13460.398,
         "source_url": "https://stockanalysis.com/quote/hnx/HUT/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:12.050707+00:00"
+        "checked_at": "2026-11-05T16:49:41.885035+00:00"
       },
       "errors": [],
       "history": {
@@ -16758,7 +16758,7 @@ window.COMPANY_COMPARISON = {
           63.901
         ],
         "source_url": "https://stockanalysis.com/quote/hnx/HUT/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:12.952604+00:00",
+        "checked_at": "2026-11-05T16:49:41.420809+00:00",
         "duplicates": []
       }
     },
@@ -16788,7 +16788,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/MWG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/MWG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:12.531129+00:00",
+        "checked_at": "2026-11-05T16:49:41.986795+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -16812,16 +16812,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/MWG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/MWG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:13.323424+00:00",
+        "checked_at": "2026-11-05T16:49:42.495296+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 9.81,
-        "pb": 2.1,
-        "market_cap": 109939.209,
+        "date": "2026-11-04",
+        "pe": 9.88,
+        "pb": 2.11,
+        "market_cap": 110677.056,
         "source_url": "https://stockanalysis.com/quote/hose/MWG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:13.923642+00:00"
+        "checked_at": "2026-11-05T16:49:43.058439+00:00"
       },
       "errors": [],
       "history": {
@@ -16914,7 +16914,7 @@ window.COMPANY_COMPARISON = {
           3094.266
         ],
         "source_url": "https://stockanalysis.com/quote/hose/MWG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:13.323424+00:00",
+        "checked_at": "2026-11-05T16:49:42.495296+00:00",
         "duplicates": []
       }
     },
@@ -16944,7 +16944,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/FRT/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/FRT/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:13.991950+00:00",
+        "checked_at": "2026-11-05T16:49:43.058271+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -16968,22 +16968,23 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/FRT/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/FRT/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:14.861674+00:00",
+        "checked_at": "2026-11-05T16:49:43.773331+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 18.99,
-        "pb": 3.79,
-        "market_cap": 25749.368,
+        "date": "2026-11-04",
+        "pe": 18.85,
+        "pb": 3.95,
+        "market_cap": 25570.553,
         "source_url": "https://stockanalysis.com/quote/hose/FRT/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:33.370277+00:00"
+        "checked_at": "2026-11-05T16:49:43.733288+00:00"
       },
       "errors": [
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/FRT/financials/income-statement/",
         "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/FRT/financials/balance-sheet/",
         "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/FRT/financials/income-statement/?p=quarterly",
-        "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/FRT/financials/balance-sheet/?p=quarterly"
+        "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/FRT/financials/balance-sheet/?p=quarterly",
+        "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/FRT/financials/ratios/?p=quarterly"
       ],
       "history": {
         "quarters": [
@@ -17075,7 +17076,7 @@ window.COMPANY_COMPARISON = {
           440.325
         ],
         "source_url": "https://stockanalysis.com/quote/hose/FRT/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:14.911530+00:00",
+        "checked_at": "2026-11-05T16:49:44.003252+00:00",
         "duplicates": []
       }
     },
@@ -17105,7 +17106,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DGW/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/DGW/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:15.218862+00:00",
+        "checked_at": "2026-11-05T16:49:44.096814+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -17129,16 +17130,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DGW/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/DGW/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:15.839418+00:00",
+        "checked_at": "2026-11-05T16:49:44.818622+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 9.33,
-        "pb": 2.63,
-        "market_cap": 8900.936,
+        "date": "2026-11-04",
+        "pe": 9.24,
+        "pb": 2.6,
+        "market_cap": 8811.591,
         "source_url": "https://stockanalysis.com/quote/hose/DGW/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:16.399608+00:00"
+        "checked_at": "2026-11-05T16:49:44.896481+00:00"
       },
       "errors": [],
       "history": {
@@ -17231,7 +17232,7 @@ window.COMPANY_COMPARISON = {
           276.197
         ],
         "source_url": "https://stockanalysis.com/quote/hose/DGW/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:15.839418+00:00",
+        "checked_at": "2026-11-05T16:49:44.818622+00:00",
         "duplicates": []
       }
     },
@@ -17261,7 +17262,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PET/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/PET/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:16.610624+00:00",
+        "checked_at": "2026-11-05T16:49:45.188323+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -17285,16 +17286,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PET/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/PET/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:17.012248+00:00",
+        "checked_at": "2026-11-05T16:49:45.606692+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 30.45,
-        "pb": 2.66,
-        "market_cap": 7969.475,
+        "date": "2026-11-04",
+        "pe": 30.15,
+        "pb": 2.69,
+        "market_cap": 7892.102,
         "source_url": "https://stockanalysis.com/quote/hose/PET/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:17.457930+00:00"
+        "checked_at": "2026-11-05T16:49:46.022509+00:00"
       },
       "errors": [],
       "history": {
@@ -17387,7 +17388,7 @@ window.COMPANY_COMPARISON = {
           69.213
         ],
         "source_url": "https://stockanalysis.com/quote/hose/PET/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:17.012248+00:00",
+        "checked_at": "2026-11-05T16:49:45.606692+00:00",
         "duplicates": []
       }
     },
@@ -17417,7 +17418,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PNJ/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/PNJ/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:17.702866+00:00",
+        "checked_at": "2026-11-05T16:49:46.224492+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -17441,16 +17442,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/PNJ/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/PNJ/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:18.260534+00:00",
+        "checked_at": "2026-11-05T16:49:46.797888+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 4.58,
-        "pb": 0.57,
-        "market_cap": 7547.899,
+        "date": "2026-11-04",
+        "pe": 4.7,
+        "pb": 0.59,
+        "market_cap": 7752.588,
         "source_url": "https://stockanalysis.com/quote/hose/PNJ/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:18.859618+00:00"
+        "checked_at": "2026-11-05T16:49:47.149178+00:00"
       },
       "errors": [],
       "history": {
@@ -17543,7 +17544,7 @@ window.COMPANY_COMPARISON = {
           -256.865
         ],
         "source_url": "https://stockanalysis.com/quote/hose/PNJ/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:18.260534+00:00",
+        "checked_at": "2026-11-05T16:49:46.797888+00:00",
         "duplicates": []
       }
     },
@@ -17573,7 +17574,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HAX/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/HAX/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:18.902157+00:00",
+        "checked_at": "2026-11-05T16:49:47.238089+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -17597,16 +17598,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/HAX/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/HAX/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:20.100890+00:00",
+        "checked_at": "2026-11-05T16:49:48.256096+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 17.19,
-        "pb": 0.61,
-        "market_cap": 889.601,
+        "date": "2026-11-04",
+        "pe": 17.29,
+        "pb": 0.62,
+        "market_cap": 894.973,
         "source_url": "https://stockanalysis.com/quote/hose/HAX/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:19.565356+00:00"
+        "checked_at": "2026-11-05T16:49:48.115972+00:00"
       },
       "errors": [],
       "history": {
@@ -17699,7 +17700,7 @@ window.COMPANY_COMPARISON = {
           3.214
         ],
         "source_url": "https://stockanalysis.com/quote/hose/HAX/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:20.100890+00:00",
+        "checked_at": "2026-11-05T16:49:48.256134+00:00",
         "duplicates": []
       }
     },
@@ -17729,7 +17730,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SVC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/SVC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:20.297202+00:00",
+        "checked_at": "2026-11-05T16:49:48.512593+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -17753,16 +17754,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SVC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/SVC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:21.293053+00:00",
+        "checked_at": "2026-11-05T16:49:49.438815+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 12.96,
+        "date": "2026-11-04",
+        "pe": 13.15,
         "pb": 0.53,
-        "market_cap": 1604.206,
+        "market_cap": 1627.523,
         "source_url": "https://stockanalysis.com/quote/hose/SVC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:20.899696+00:00"
+        "checked_at": "2026-11-05T16:49:49.643927+00:00"
       },
       "errors": [],
       "history": {
@@ -17855,7 +17856,7 @@ window.COMPANY_COMPARISON = {
           14.121
         ],
         "source_url": "https://stockanalysis.com/quote/hose/SVC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:21.293053+00:00",
+        "checked_at": "2026-11-05T16:49:49.438815+00:00",
         "duplicates": []
       }
     },
@@ -17885,7 +17886,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VNM/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/VNM/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:21.015475+00:00",
+        "checked_at": "2026-11-05T16:49:48.983087+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -17909,16 +17910,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/VNM/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/VNM/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:21.957157+00:00",
+        "checked_at": "2026-11-05T16:49:50.110696+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 11.69,
+        "date": "2026-11-04",
+        "pe": 11.71,
         "pb": 3.14,
-        "market_cap": 119963.443,
+        "market_cap": 120172.438,
         "source_url": "https://stockanalysis.com/quote/hose/VNM/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:22.681919+00:00"
+        "checked_at": "2026-11-05T16:49:50.585177+00:00"
       },
       "errors": [],
       "history": {
@@ -18011,7 +18012,7 @@ window.COMPANY_COMPARISON = {
           2964.175
         ],
         "source_url": "https://stockanalysis.com/quote/hose/VNM/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:21.957157+00:00",
+        "checked_at": "2026-11-05T16:49:50.579269+00:00",
         "duplicates": []
       }
     },
@@ -18041,7 +18042,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SAB/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/SAB/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:22.839791+00:00",
+        "checked_at": "2026-11-05T16:49:50.543203+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -18065,16 +18066,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/SAB/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/SAB/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:23.317744+00:00",
+        "checked_at": "2026-11-05T16:49:51.244182+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 12.06,
-        "pb": 2.37,
-        "market_cap": 54316.516,
+        "date": "2026-11-04",
+        "pe": 12.01,
+        "pb": 2.38,
+        "market_cap": 54060.004,
         "source_url": "https://stockanalysis.com/quote/hose/SAB/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:23.783120+00:00"
+        "checked_at": "2026-11-05T16:49:51.512305+00:00"
       },
       "errors": [],
       "history": {
@@ -18167,7 +18168,7 @@ window.COMPANY_COMPARISON = {
           1232.263
         ],
         "source_url": "https://stockanalysis.com/quote/hose/SAB/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:23.317744+00:00",
+        "checked_at": "2026-11-05T16:49:51.244182+00:00",
         "duplicates": []
       }
     },
@@ -18181,15 +18182,15 @@ window.COMPANY_COMPARISON = {
       "quote": null,
       "errors": [
         "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/income-statement/",
-        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/income-statement/?p=quarterly",
         "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/balance-sheet/",
-        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/ratios/?p=quarterly",
         "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/balance-sheet/?p=quarterly",
-        "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/income-statement/",
-        "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/balance-sheet/",
         "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/income-statement/?p=quarterly",
         "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/ratios/?p=quarterly",
-        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/balance-sheet/?p=quarterly"
+        "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/income-statement/",
+        "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/income-statement/?p=quarterly",
+        "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/balance-sheet/",
+        "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/balance-sheet/?p=quarterly",
+        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/QNS/financials/ratios/?p=quarterly"
       ],
       "history": null
     },
@@ -18219,7 +18220,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/MSN/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/MSN/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:24.091042+00:00",
+        "checked_at": "2026-11-05T16:49:51.780195+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -18243,16 +18244,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/MSN/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/MSN/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:24.688676+00:00",
+        "checked_at": "2026-11-05T16:49:52.129760+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 11.58,
-        "pb": 1.97,
-        "market_cap": 105585.084,
+        "date": "2026-11-04",
+        "pe": 11.46,
+        "pb": 1.95,
+        "market_cap": 104562.822,
         "source_url": "https://stockanalysis.com/quote/hose/MSN/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:25.131485+00:00"
+        "checked_at": "2026-11-05T16:49:52.550166+00:00"
       },
       "errors": [],
       "history": {
@@ -18345,7 +18346,7 @@ window.COMPANY_COMPARISON = {
           3670.901
         ],
         "source_url": "https://stockanalysis.com/quote/hose/MSN/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:24.688676+00:00",
+        "checked_at": "2026-11-05T16:49:52.129760+00:00",
         "duplicates": []
       }
     },
@@ -18375,7 +18376,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/KDC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/KDC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:25.473920+00:00",
+        "checked_at": "2026-11-05T16:49:52.838286+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -18399,16 +18400,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/KDC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/KDC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:26.014240+00:00",
+        "checked_at": "2026-11-05T16:49:53.228839+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 19.02,
-        "pb": 2.39,
-        "market_cap": 13927.803,
+        "date": "2026-11-04",
+        "pe": 19.06,
+        "pb": 2.4,
+        "market_cap": 13900.169,
         "source_url": "https://stockanalysis.com/quote/hose/KDC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:26.538063+00:00"
+        "checked_at": "2026-11-05T16:49:53.646326+00:00"
       },
       "errors": [],
       "history": {
@@ -18501,7 +18502,7 @@ window.COMPANY_COMPARISON = {
           217.755
         ],
         "source_url": "https://stockanalysis.com/quote/hose/KDC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:26.014240+00:00",
+        "checked_at": "2026-11-05T16:49:53.228839+00:00",
         "duplicates": []
       }
     },
@@ -18531,7 +18532,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DHG/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/DHG/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:26.537167+00:00",
+        "checked_at": "2026-11-05T16:49:53.852501+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -18555,16 +18556,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DHG/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/DHG/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:27.021379+00:00",
+        "checked_at": "2026-11-05T16:49:54.474169+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 13.16,
-        "pb": 3.09,
-        "market_cap": 10851.924,
+        "date": "2026-11-04",
+        "pe": 13.08,
+        "pb": 3.07,
+        "market_cap": 10786.551,
         "source_url": "https://stockanalysis.com/quote/hose/DHG/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:27.441626+00:00"
+        "checked_at": "2026-11-05T16:49:54.799996+00:00"
       },
       "errors": [],
       "history": {
@@ -18657,7 +18658,7 @@ window.COMPANY_COMPARISON = {
           98.496
         ],
         "source_url": "https://stockanalysis.com/quote/hose/DHG/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:27.021379+00:00",
+        "checked_at": "2026-11-05T16:49:54.591474+00:00",
         "duplicates": []
       }
     },
@@ -18687,7 +18688,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/IMP/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/IMP/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:27.732914+00:00",
+        "checked_at": "2026-11-05T16:49:54.889046+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -18711,16 +18712,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/IMP/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/IMP/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:28.159612+00:00",
+        "checked_at": "2026-11-05T16:49:55.669826+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 16.83,
-        "pb": 2.23,
-        "market_cap": 5398.014,
+        "date": "2026-11-04",
+        "pe": 17.15,
+        "pb": 2.27,
+        "market_cap": 5498.12,
         "source_url": "https://stockanalysis.com/quote/hose/IMP/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:29.025285+00:00"
+        "checked_at": "2026-11-05T16:49:55.737373+00:00"
       },
       "errors": [],
       "history": {
@@ -18813,7 +18814,7 @@ window.COMPANY_COMPARISON = {
           83.965
         ],
         "source_url": "https://stockanalysis.com/quote/hose/IMP/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:28.159612+00:00",
+        "checked_at": "2026-11-05T16:49:55.669826+00:00",
         "duplicates": []
       }
     },
@@ -18843,7 +18844,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DBD/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/DBD/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:28.708050+00:00",
+        "checked_at": "2026-11-05T16:49:56.113682+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -18867,16 +18868,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DBD/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/DBD/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:29.264655+00:00",
+        "checked_at": "2026-11-05T16:49:56.566833+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 15.66,
+        "date": "2026-11-04",
+        "pe": 15.64,
         "pb": 2.35,
-        "market_cap": 4285.088,
+        "market_cap": 4280.364,
         "source_url": "https://stockanalysis.com/quote/hose/DBD/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:30.010680+00:00"
+        "checked_at": "2026-11-05T16:49:56.930430+00:00"
       },
       "errors": [],
       "history": {
@@ -18969,7 +18970,7 @@ window.COMPANY_COMPARISON = {
           84.44
         ],
         "source_url": "https://stockanalysis.com/quote/hose/DBD/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:29.264655+00:00",
+        "checked_at": "2026-11-05T16:49:56.566833+00:00",
         "duplicates": []
       }
     },
@@ -18999,7 +19000,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TRA/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/TRA/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:29.917902+00:00",
+        "checked_at": "2026-11-05T16:49:57.030048+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -19023,16 +19024,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/TRA/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/TRA/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:30.861176+00:00",
+        "checked_at": "2026-11-05T16:49:57.423347+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 9.68,
+        "date": "2026-11-04",
+        "pe": 9.7,
         "pb": 1.72,
-        "market_cap": 2884.958,
+        "market_cap": 2889.103,
         "source_url": "https://stockanalysis.com/quote/hose/TRA/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:31.230488+00:00"
+        "checked_at": "2026-11-05T16:49:58.041932+00:00"
       },
       "errors": [],
       "history": {
@@ -19125,7 +19126,7 @@ window.COMPANY_COMPARISON = {
           57.746
         ],
         "source_url": "https://stockanalysis.com/quote/hose/TRA/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:31.270312+00:00",
+        "checked_at": "2026-11-05T16:49:57.423347+00:00",
         "duplicates": []
       }
     },
@@ -19155,7 +19156,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DMC/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/DMC/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:31.219987+00:00",
+        "checked_at": "2026-11-05T16:49:57.994865+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -19179,16 +19180,16 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/DMC/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/DMC/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:31.851653+00:00",
+        "checked_at": "2026-11-05T16:49:58.509757+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 9.09,
+        "date": "2026-11-04",
+        "pe": 9.11,
         "pb": 1.08,
-        "market_cap": 1854.447,
+        "market_cap": 1857.919,
         "source_url": "https://stockanalysis.com/quote/hose/DMC/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:34.135079+00:00"
+        "checked_at": "2026-11-05T16:49:58.876749+00:00"
       },
       "errors": [],
       "history": {
@@ -19281,7 +19282,7 @@ window.COMPANY_COMPARISON = {
           38.854
         ],
         "source_url": "https://stockanalysis.com/quote/hose/DMC/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:31.851653+00:00",
+        "checked_at": "2026-11-05T16:49:58.509757+00:00",
         "duplicates": []
       }
     },
@@ -19295,10 +19296,10 @@ window.COMPANY_COMPARISON = {
       "quote": null,
       "errors": [
         "income_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/DVN/financials/income-statement/",
+        "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/DVN/financials/balance-sheet/",
         "income_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/DVN/financials/income-statement/?p=quarterly",
         "balance_quarter: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/DVN/financials/balance-sheet/?p=quarterly",
-        "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/upcom/DVN/financials/ratios/?p=quarterly",
-        "balance_year: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/DVN/financials/balance-sheet/"
+        "valuation: 404 Client Error: Not Found for url: https://stockanalysis.com/quote/upcom/DVN/financials/ratios/?p=quarterly"
       ],
       "history": null
     },
@@ -19328,7 +19329,7 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/FRT/financials/income-statement/",
           "https://stockanalysis.com/quote/hose/FRT/financials/balance-sheet/"
         ],
-        "checked_at": "2026-11-04T16:35:13.991950+00:00",
+        "checked_at": "2026-11-05T16:49:43.058271+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quarter": {
@@ -19352,22 +19353,23 @@ window.COMPANY_COMPARISON = {
           "https://stockanalysis.com/quote/hose/FRT/financials/income-statement/?p=quarterly",
           "https://stockanalysis.com/quote/hose/FRT/financials/balance-sheet/?p=quarterly"
         ],
-        "checked_at": "2026-11-04T16:35:14.861674+00:00",
+        "checked_at": "2026-11-05T16:49:43.773331+00:00",
         "method": "Bank net margin and CIR use revenue before loan losses; bank revenue growth compares the same fiscal period a year earlier. ROA uses net income to common / average total assets. ROE = net income to common / average total common equity at opening and closing of period. Quarterly ROE is not annualized. Net margin uses net income to common. Short debt includes current portion of long-term debt only if both source components exist."
       },
       "quote": {
-        "date": "2026-11-03",
-        "pe": 18.99,
-        "pb": 3.79,
-        "market_cap": 25749.368,
+        "date": "2026-11-04",
+        "pe": 18.85,
+        "pb": 3.95,
+        "market_cap": 25570.553,
         "source_url": "https://stockanalysis.com/quote/hose/FRT/financials/ratios/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:33.370277+00:00"
+        "checked_at": "2026-11-05T16:49:43.733288+00:00"
       },
       "errors": [
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/FRT/financials/income-statement/",
         "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/FRT/financials/balance-sheet/",
         "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/FRT/financials/income-statement/?p=quarterly",
-        "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/FRT/financials/balance-sheet/?p=quarterly"
+        "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/FRT/financials/balance-sheet/?p=quarterly",
+        "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/FRT/financials/ratios/?p=quarterly"
       ],
       "history": {
         "quarters": [
@@ -19459,7 +19461,7 @@ window.COMPANY_COMPARISON = {
           440.325
         ],
         "source_url": "https://stockanalysis.com/quote/hose/FRT/financials/income-statement/?p=quarterly",
-        "checked_at": "2026-11-04T16:35:14.911530+00:00",
+        "checked_at": "2026-11-05T16:49:44.003252+00:00",
         "duplicates": []
       }
     },
@@ -19531,8 +19533,8 @@ window.COMPANY_COMPARISON = {
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/TNH/financials/income-statement/",
         "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/TNH/financials/balance-sheet/",
         "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/TNH/financials/income-statement/?p=quarterly",
-        "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/TNH/financials/balance-sheet/?p=quarterly",
-        "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/TNH/financials/ratios/?p=quarterly"
+        "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/TNH/financials/ratios/?p=quarterly",
+        "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/TNH/financials/balance-sheet/?p=quarterly"
       ],
       "history": {
         "quarters": [
@@ -19695,9 +19697,9 @@ window.COMPANY_COMPARISON = {
       "errors": [
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BVH/financials/income-statement/",
         "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BVH/financials/balance-sheet/",
+        "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BVH/financials/balance-sheet/?p=quarterly",
         "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BVH/financials/income-statement/?p=quarterly",
-        "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BVH/financials/ratios/?p=quarterly",
-        "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BVH/financials/balance-sheet/?p=quarterly"
+        "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BVH/financials/ratios/?p=quarterly"
       ],
       "history": {
         "quarters": [
@@ -20025,8 +20027,8 @@ window.COMPANY_COMPARISON = {
       "errors": [
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BMI/financials/income-statement/",
         "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BMI/financials/balance-sheet/",
-        "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BMI/financials/income-statement/?p=quarterly",
         "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BMI/financials/balance-sheet/?p=quarterly",
+        "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BMI/financials/income-statement/?p=quarterly",
         "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BMI/financials/ratios/?p=quarterly"
       ],
       "history": {
@@ -20189,8 +20191,8 @@ window.COMPANY_COMPARISON = {
       },
       "errors": [
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/MIG/financials/income-statement/",
-        "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/MIG/financials/balance-sheet/",
         "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/MIG/financials/income-statement/?p=quarterly",
+        "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/MIG/financials/balance-sheet/",
         "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/MIG/financials/balance-sheet/?p=quarterly",
         "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/MIG/financials/ratios/?p=quarterly"
       ],
@@ -20353,8 +20355,8 @@ window.COMPANY_COMPARISON = {
         "last_good": true
       },
       "errors": [
-        "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hnx/PTI/financials/balance-sheet/",
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hnx/PTI/financials/income-statement/",
+        "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hnx/PTI/financials/balance-sheet/",
         "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hnx/PTI/financials/income-statement/?p=quarterly",
         "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hnx/PTI/financials/balance-sheet/?p=quarterly",
         "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hnx/PTI/financials/ratios/?p=quarterly"
@@ -20519,8 +20521,8 @@ window.COMPANY_COMPARISON = {
       },
       "errors": [
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BIC/financials/income-statement/",
-        "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BIC/financials/balance-sheet/",
         "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BIC/financials/income-statement/?p=quarterly",
+        "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BIC/financials/balance-sheet/",
         "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BIC/financials/balance-sheet/?p=quarterly",
         "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BIC/financials/ratios/?p=quarterly"
       ],
@@ -20849,8 +20851,8 @@ window.COMPANY_COMPARISON = {
       },
       "errors": [
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VCB/financials/income-statement/",
-        "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VCB/financials/income-statement/?p=quarterly",
         "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VCB/financials/balance-sheet/",
+        "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VCB/financials/income-statement/?p=quarterly",
         "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VCB/financials/balance-sheet/?p=quarterly",
         "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VCB/financials/ratios/?p=quarterly"
       ],
@@ -21016,8 +21018,8 @@ window.COMPANY_COMPARISON = {
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/CTG/financials/income-statement/",
         "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/CTG/financials/balance-sheet/",
         "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/CTG/financials/income-statement/?p=quarterly",
-        "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/CTG/financials/balance-sheet/?p=quarterly",
-        "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/CTG/financials/ratios/?p=quarterly"
+        "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/CTG/financials/ratios/?p=quarterly",
+        "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/CTG/financials/balance-sheet/?p=quarterly"
       ],
       "history": {
         "quarters": [
@@ -21179,10 +21181,10 @@ window.COMPANY_COMPARISON = {
       },
       "errors": [
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BID/financials/income-statement/",
-        "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BID/financials/income-statement/?p=quarterly",
         "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BID/financials/balance-sheet/",
         "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BID/financials/balance-sheet/?p=quarterly",
-        "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BID/financials/ratios/?p=quarterly"
+        "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BID/financials/ratios/?p=quarterly",
+        "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/BID/financials/income-statement/?p=quarterly"
       ],
       "history": {
         "quarters": [
@@ -21344,9 +21346,9 @@ window.COMPANY_COMPARISON = {
       },
       "errors": [
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/TCB/financials/income-statement/",
-        "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/TCB/financials/income-statement/?p=quarterly",
         "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/TCB/financials/balance-sheet/",
         "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/TCB/financials/balance-sheet/?p=quarterly",
+        "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/TCB/financials/income-statement/?p=quarterly",
         "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/TCB/financials/ratios/?p=quarterly"
       ],
       "history": {
@@ -21508,8 +21510,8 @@ window.COMPANY_COMPARISON = {
         "last_good": true
       },
       "errors": [
-        "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VPB/financials/balance-sheet/",
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VPB/financials/income-statement/",
+        "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VPB/financials/balance-sheet/",
         "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VPB/financials/income-statement/?p=quarterly",
         "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VPB/financials/balance-sheet/?p=quarterly",
         "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VPB/financials/ratios/?p=quarterly"
@@ -22333,10 +22335,10 @@ window.COMPANY_COMPARISON = {
         "last_good": true
       },
       "errors": [
-        "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VIB/financials/balance-sheet/",
         "income_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VIB/financials/income-statement/",
-        "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VIB/financials/income-statement/?p=quarterly",
+        "balance_year: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VIB/financials/balance-sheet/",
         "balance_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VIB/financials/balance-sheet/?p=quarterly",
+        "income_quarter: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VIB/financials/income-statement/?p=quarterly",
         "valuation: 429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/hose/VIB/financials/ratios/?p=quarterly"
       ],
       "history": {
