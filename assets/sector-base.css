@@ -265,3 +265,15 @@ canvas{user-select:none}
 
 /* 05/11/2026: bỏ ô diễn giải AI dưới chart */
 .chart-insight{display:none!important}
+/* KPI kiểu Stock dashboard (05/11/2026): nhãn → số → thay đổi → nguồn; thay đổi là chữ màu, không pill; vạch nhấn khi hover */
+.kpis .kpi{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:14px 16px;min-height:0;box-shadow:0 1px 2px rgba(17,23,63,.05)}
+.kpis .kpi .label{order:1;font-size:10.5px;letter-spacing:.07em;line-height:1.35}
+.kpis .kpi .value{order:2;font-size:26px;color:var(--navy,#1D2678);letter-spacing:-.01em;margin:6px 0 2px}
+.kpis .kpi .delta{order:3;align-self:flex-start;padding:0;background:none!important;border-radius:0;font-size:12px;margin:0 0 4px}
+.kpis .kpi .delta.d-good{color:#1F8A5B}.kpis .kpi .delta.d-bad{color:#C8394B}.kpis .kpi .delta.d-warn{color:var(--muted)}
+.kpis .kpi .sub{order:4;font-size:11.5px}.kpis .kpi .spark{order:5}
+.kpis .kpi::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(#2938A8,#59C5C8);opacity:0;transition:opacity .2s}
+.kpis .kpi:hover::after{opacity:1}
+:root[data-theme="dark"] .kpis .kpi .value{color:#F3F5FF}
+:root[data-theme="dark"] .kpis .kpi .delta.d-good{color:#4FD69C}:root[data-theme="dark"] .kpis .kpi .delta.d-bad{color:#FF7A8A}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .kpis .kpi .value{color:#F3F5FF}}

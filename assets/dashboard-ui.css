@@ -359,3 +359,7 @@ html[data-theme="dark"] .pv-toc a.on,html[data-theme="dark"] .pv-pal-list [role=
 .pv-sig span{color:#9aa6d2;-webkit-line-clamp:1}
 .pv-sig.pos{border-left-color:#4fd1a5}.pv-sig.pos em{color:#7ff0c6}.pv-sig.neg{border-left-color:#ff8a80}.pv-sig.neg em{color:#ff9d94}.pv-sig.warn{border-left-color:#ffd45d}.pv-sig.warn em{color:#ffd45d}
 .pv-dr-mx .na em{color:#8f9bc4}
+/* Mục lục gọn (05/11/2026): một dòng mỗi mục, cùng lề trái, bỏ đơn vị trong ngoặc */
+.pv-toc{width:200px;padding:12px 8px}
+.pv-toc a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:4px 8px}
+.pv-toc a.l3{padding-left:8px}.pv-toc a.l2{margin-top:6px}

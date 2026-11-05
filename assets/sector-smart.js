@@ -123,7 +123,9 @@ function toc() {
   const build = () => {
     const pane = document.querySelector('.majorpane.active'); if (!pane) return;
     list = blocksOf(pane);
-    box.innerHTML = `<div class="pv-toc-h">${esc(document.querySelector('.majortabbtn[aria-selected="true"]')?.textContent || 'Mục lục')}</div>` + list.map((x, i) => `<a href="#" data-i="${i}" class="l${x.lvl}">${esc(x.label)}</a>`).join('');
+    const head = document.querySelector('.majortabbtn[aria-selected="true"]')?.textContent.trim() || 'Mục lục';
+    const short = t => t.replace(/\s*\([^)]*\)?\s*/g, ' ').replace(/\s*(?:\s—|:)\s.*$/, '').replace(/\s+/g, ' ').trim();
+    box.innerHTML = `<div class="pv-toc-h">${esc(head)}</div>` + list.map((x, i) => x.lvl === 1 && fold(x.label) === fold(head) ? '' : `<a href="#" data-i="${i}" class="l${x.lvl}" title="${esc(x.label)}">${esc(short(x.label) || x.label)}</a>`).join('');
     box.querySelectorAll('a').forEach(a => a.onclick = e => { e.preventDefault(); goTo(list[+a.dataset.i].box); document.body.classList.remove('pv-toc-open'); });
   };
   const spy = () => { let cur = -1; list.forEach((x, i) => { const r = x.box.getBoundingClientRect(); if (r.height && r.top < 160) cur = i; }); box.querySelectorAll('a').forEach((a, i) => a.classList.toggle('on', i === cur)); };
