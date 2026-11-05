@@ -294,7 +294,7 @@ table tr:hover td{background:rgba(89,197,200,.08)!important}
 .db-n{width:20px;height:20px;border-radius:50%;border:1.5px solid #59C5C8;color:#2B8E91;font:800 11px/17px Inter,sans-serif;text-align:center;flex:none}
 .db-q{margin-left:auto;font-weight:600;font-size:11px;color:var(--muted)}
 .db-v{font:800 40px/1.05 'Barlow Condensed',Inter,sans-serif;color:var(--navy);margin:10px 0 6px;font-variant-numeric:tabular-nums}
-.db-v small{font:600 12px Inter,sans-serif;color:var(--muted);margin-left:6px}
+.db-v .db-u,.db-v small{font:600 12px Inter,sans-serif;color:var(--muted);margin-left:6px;letter-spacing:0}
 .db-s{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
 .db-s div{display:flex;flex-direction:column;gap:2px}
 .db-s b{font:700 14px Inter,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)}
@@ -476,7 +476,7 @@ html,body{overflow-x:clip}
 :root[data-theme=dark] .db-lead{color:#C9CFEA!important}
 .db-v{font-size:28px!important;font-weight:700!important;margin:8px 0 4px!important}
 .tb .db-v{font-size:22px!important}
-.db-v small{font-size:12px!important;font-weight:500!important}
+.db-v .db-u,.db-v small{font-size:12px!important;font-weight:500!important}
 .db-ch{font-size:13px!important;font-weight:600!important}
 .db-s b{font-size:13px!important;font-weight:600!important}
 .db-k,.db-qh{font-size:10.5px!important;letter-spacing:.06em!important;font-weight:600!important}
@@ -828,7 +828,7 @@ table .fs-num{text-align:right!important}
 /* Rà thiết kế 23/10/2026: dòng phụ KPI cùng font sans, màu xám (ý 3); ticker chữ sans, tương phản đủ trên nền navy (ý 9) */
 .kpi .s,.kpi .s.pos,.kpi .s.neg{font-family:inherit!important;font-size:12px!important;color:var(--muted)!important;letter-spacing:0}
 .mkt-ti span{color:#D3D8EE;font-size:12.5px}.mkt-ti em{font-size:12px}
-.db-v small{margin-left:4px}
+.db-v .db-u,.db-v small{margin-left:4px}
 
 /* ===== Navy đêm (người dùng chọn 23/10/2026) — bộ nền tối DUY NHẤT; các bản thử đen/than chì đã gỡ =====
    Nền xanh đen cùng họ màu FinSuccess, card sáng hơn một bậc, viền xanh mờ; chữ 3 bậc; turquoise là màu nhấn. */
