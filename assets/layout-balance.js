@@ -30,7 +30,7 @@
       g.querySelectorAll(':scope > .card.is-lone, :scope > .card.is-lone-plain').forEach(c => { c.classList.remove('is-lone', 'is-lone-plain'); c.querySelector(':scope > .lone-aside')?.remove(); });
       segments(g).forEach(seg => {
         if (seg.length % 2 === 0) return;
-        const last = seg.at(-1), notes = chartHost(last) ? insightOf(last) : [];
+        const last = seg.at(-1), notes = [] // 05/11/2026: ô diễn giải AI đã bỏ, chart lẻ luôn chiếm trọn hàng;
         if (!notes.length) { last.classList.add('is-lone-plain'); return; } // no reading text to show: still take the full row
         const aside = document.createElement('aside');
         aside.className = 'lone-aside';
