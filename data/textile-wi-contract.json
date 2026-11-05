@@ -98,6 +98,23 @@
    ],
    "pick": "max_to_time",
    "note": "252 (sợi tổng hợp) hiện không có số trên Wi."
+  },
+  {
+   "block": "us_hs_apparel",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "352014,352025,352023,352579,352570,1280043,352557,352568,352711,312081,310879",
+    "from_time": "2019-01-01",
+    "limit": 120
+   },
+   "cadence": "monthly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "note": "Bảng 312 (Mỹ nhập khẩu theo HS4 × đối tác, USD, tháng), thay OTEXA cho phần giá trị. Lời gọi chung với Thủy sản/Thép; builder Dệt may chỉ đọc 5 id may mặc."
   }
  ],
  "indicators": {
@@ -298,6 +315,36 @@
    "XK dệt may sang Canada, năm",
    "triệu USD",
    "yearly"
+  ],
+  "352579": [
+   "us_6204_vn",
+   "Mỹ nhập khẩu HS 6204 (quần áo nữ dệt thoi) từ Việt Nam",
+   "USD",
+   "monthly"
+  ],
+  "352570": [
+   "us_6204_cn",
+   "Mỹ nhập khẩu HS 6204 từ Trung Quốc",
+   "USD",
+   "monthly"
+  ],
+  "1280043": [
+   "us_6204_total",
+   "Mỹ nhập khẩu HS 6204 từ mọi đối tác",
+   "USD",
+   "monthly"
+  ],
+  "352557": [
+   "us_6110_vn",
+   "Mỹ nhập khẩu HS 6110 (áo len, áo nỉ dệt kim) từ Việt Nam",
+   "USD",
+   "monthly"
+  ],
+  "352568": [
+   "us_6203_vn",
+   "Mỹ nhập khẩu HS 6203 (quần áo nam dệt thoi) từ Việt Nam",
+   "USD",
+   "monthly"
   ]
  },
  "sectors": {

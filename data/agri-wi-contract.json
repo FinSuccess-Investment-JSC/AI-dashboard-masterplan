@@ -55,6 +55,25 @@
    ],
    "pick": "max_to_time",
    "note": "Trần 1000 dòng (6 ngành × ~167 phiên): cửa sổ thực tế từ đầu 02/2026."
+  },
+  {
+   "block": "hog_regions",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "74368,74369,74370",
+    "from_time": "2024-01-01",
+    "to_time": "2026-11-05",
+    "limit": 1000
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "Ba chuỗi heo hơi theo vùng (Wi chưa trả tên vùng trong response; tên đang ghi theo id). Nén theo tháng. to_time = hôm nay khi gọi lại."
   }
  ],
  "indicators": {
@@ -206,6 +225,24 @@
    "tsr20",
    "Cao su TSR20 SGX",
    "US cent/kg",
+   "daily"
+  ],
+  "74368": [
+   "hog_r1",
+   "Heo hơi vùng (Wi 74368)",
+   "nghìn VND/kg",
+   "daily"
+  ],
+  "74369": [
+   "hog_r2",
+   "Heo hơi vùng (Wi 74369)",
+   "nghìn VND/kg",
+   "daily"
+  ],
+  "74370": [
+   "hog_r3",
+   "Heo hơi vùng (Wi 74370)",
+   "nghìn VND/kg",
    "daily"
   ]
  },

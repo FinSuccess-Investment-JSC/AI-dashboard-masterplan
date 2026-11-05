@@ -746,5 +746,104 @@
   "status": "match",
   "correct_value": "",
   "note": "Báo Đấu thầu 13/10/2026 dẫn Bộ Nông nghiệp và Môi trường."
+ },
+ {
+  "block": "ts-12",
+  "claim": "XK thủy sản 10T/2026",
+  "value": "10,459 tỷ USD, +12,1%",
+  "url": "https://vasep.com.vn/san-pham-xuat-khau/tin-tong-hop/xuat-nhap-khau/xuat-khau-thuy-san-10-thang-vuot-10-4-ty-usd-tang-truong-kha-nhung-tom-va-thi-truong-my-chung-lai-38645.html",
+  "opened_at": "2026-11-05",
+  "quote": "đưa kim ngạch 10 tháng lên 10,459 tỷ USD, tăng 12,1%",
+  "status": "match",
+  "correct_value": "",
+  "note": "VASEP 04/11/2026; thay số 9T (Báo Thanh tra) và 2T (Trung tâm WTO). Dòng bảng: quote ghi lại hàng của bảng trong bài."
+ },
+ {
+  "block": "ts-12",
+  "claim": "XK tháng 10/2026 (ước)",
+  "value": "1,315 tỷ USD, +13,5%",
+  "url": "https://vasep.com.vn/san-pham-xuat-khau/tin-tong-hop/xuat-nhap-khau/xuat-khau-thuy-san-10-thang-vuot-10-4-ty-usd-tang-truong-kha-nhung-tom-va-thi-truong-my-chung-lai-38645.html",
+  "opened_at": "2026-11-05",
+  "quote": "Xuất khẩu thủy sản tháng 10/2026 ước đạt 1,315 tỷ USD, tăng 13,5% so với cùng kỳ",
+  "status": "match",
+  "correct_value": "",
+  "note": "VASEP 04/11/2026; thay số 9T (Báo Thanh tra) và 2T (Trung tâm WTO). Dòng bảng: quote ghi lại hàng của bảng trong bài."
+ },
+ {
+  "block": "ts-12",
+  "claim": "Tôm các loại 10T/2026",
+  "value": "4.219,9 triệu USD, +9,0%",
+  "url": "https://vasep.com.vn/san-pham-xuat-khau/tin-tong-hop/xuat-nhap-khau/xuat-khau-thuy-san-10-thang-vuot-10-4-ty-usd-tang-truong-kha-nhung-tom-va-thi-truong-my-chung-lai-38645.html",
+  "opened_at": "2026-11-05",
+  "quote": "Tôm các loại 4.219,9 9,0 (dòng bảng, triệu USD, %)",
+  "status": "match",
+  "correct_value": "",
+  "note": "VASEP 04/11/2026; thay số 9T (Báo Thanh tra) và 2T (Trung tâm WTO). Dòng bảng: quote ghi lại hàng của bảng trong bài."
+ },
+ {
+  "block": "ts-12",
+  "claim": "Cá tra 10T/2026",
+  "value": "tiến sát 2 tỷ USD, +11%",
+  "url": "https://vasep.com.vn/san-pham-xuat-khau/tin-tong-hop/xuat-nhap-khau/xuat-khau-thuy-san-10-thang-vuot-10-4-ty-usd-tang-truong-kha-nhung-tom-va-thi-truong-my-chung-lai-38645.html",
+  "opened_at": "2026-11-05",
+  "quote": "Kim ngạch 10 tháng tiến sát 2 tỷ USD, tăng 11%.",
+  "status": "match",
+  "correct_value": "",
+  "note": "VASEP 04/11/2026; thay số 9T (Báo Thanh tra) và 2T (Trung tâm WTO). Dòng bảng: quote ghi lại hàng của bảng trong bài."
+ },
+ {
+  "block": "ts-12",
+  "claim": "Cá ngừ 10T/2026",
+  "value": "817,2 triệu USD, +5,1%",
+  "url": "https://vasep.com.vn/san-pham-xuat-khau/tin-tong-hop/xuat-nhap-khau/xuat-khau-thuy-san-10-thang-vuot-10-4-ty-usd-tang-truong-kha-nhung-tom-va-thi-truong-my-chung-lai-38645.html",
+  "opened_at": "2026-11-05",
+  "quote": "Cá ngừ 817,2 5,1 (dòng bảng, triệu USD, %)",
+  "status": "match",
+  "correct_value": "",
+  "note": "VASEP 04/11/2026; thay số 9T (Báo Thanh tra) và 2T (Trung tâm WTO). Dòng bảng: quote ghi lại hàng của bảng trong bài."
+ },
+ {
+  "block": "ts-21",
+  "claim": "Trung Quốc – Hồng Kông 10T/2026",
+  "value": "2,62 tỷ USD, +30,3%",
+  "url": "https://vasep.com.vn/san-pham-xuat-khau/tin-tong-hop/xuat-nhap-khau/xuat-khau-thuy-san-10-thang-vuot-10-4-ty-usd-tang-truong-kha-nhung-tom-va-thi-truong-my-chung-lai-38645.html",
+  "opened_at": "2026-11-05",
+  "quote": "Trung Quốc–Hồng Kông đạt 2,62 tỷ USD trong 10 tháng, tăng 30,3%",
+  "status": "match",
+  "correct_value": "",
+  "note": "VASEP 04/11/2026; thay số 9T (Báo Thanh tra) và 2T (Trung tâm WTO). Dòng bảng: quote ghi lại hàng của bảng trong bài."
+ },
+ {
+  "block": "ts-21",
+  "claim": "Mỹ 10T/2026",
+  "value": "1,63 tỷ USD, −1,2%; tháng 10 −11,8%",
+  "url": "https://vasep.com.vn/san-pham-xuat-khau/tin-tong-hop/xuat-nhap-khau/xuat-khau-thuy-san-10-thang-vuot-10-4-ty-usd-tang-truong-kha-nhung-tom-va-thi-truong-my-chung-lai-38645.html",
+  "opened_at": "2026-11-05",
+  "quote": "Đáng lo hơn là Mỹ: tháng 10 giảm 11,8%, còn gần 200 triệu USD, kéo kết quả 10 tháng xuống 1,63 tỷ USD, giảm 1,2%.",
+  "status": "match",
+  "correct_value": "",
+  "note": "VASEP 04/11/2026; thay số 9T (Báo Thanh tra) và 2T (Trung tâm WTO). Dòng bảng: quote ghi lại hàng của bảng trong bài."
+ },
+ {
+  "block": "ts-21",
+  "claim": "ASEAN 10T/2026",
+  "value": "722 triệu USD, +22,9%",
+  "url": "https://vasep.com.vn/san-pham-xuat-khau/tin-tong-hop/xuat-nhap-khau/xuat-khau-thuy-san-10-thang-vuot-10-4-ty-usd-tang-truong-kha-nhung-tom-va-thi-truong-my-chung-lai-38645.html",
+  "opened_at": "2026-11-05",
+  "quote": "ASEAN đạt 722 triệu USD, tăng 22,9%.",
+  "status": "match",
+  "correct_value": "",
+  "note": "VASEP 04/11/2026; thay số 9T (Báo Thanh tra) và 2T (Trung tâm WTO). Dòng bảng: quote ghi lại hàng của bảng trong bài."
+ },
+ {
+  "block": "ts-21",
+  "claim": "EU, Nhật 10T/2026 lũy kế",
+  "value": "+1,1% / +2,8%",
+  "url": "https://vasep.com.vn/san-pham-xuat-khau/tin-tong-hop/xuat-nhap-khau/xuat-khau-thuy-san-10-thang-vuot-10-4-ty-usd-tang-truong-kha-nhung-tom-va-thi-truong-my-chung-lai-38645.html",
+  "opened_at": "2026-11-05",
+  "quote": "EU và Nhật Bản cải thiện trong tháng 10, lần lượt tăng 22,1% và 6,7%, giúp tăng trưởng lũy kế đạt 1,1% và 2,8%.",
+  "status": "match",
+  "correct_value": "",
+  "note": "VASEP 04/11/2026; thay số 9T (Báo Thanh tra) và 2T (Trung tâm WTO). Dòng bảng: quote ghi lại hàng của bảng trong bài."
  }
 ]

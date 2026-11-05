@@ -17,6 +17,7 @@
 <script src="../assets/sector-layout.js?v=6017726b6ba1" defer></script>
 <script src="../data/realestate-market-history.js?v=ad8024a4d701" defer></script>
 <script src="../assets/realestate-market-history.js?v=735e18211ab0" defer></script>
+<script src="../data/realestate-backlog.js" defer></script>
 <script src="../assets/realestate-dashboard.js?v=1ffec0b30fe1" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/share-image.js?v=99ca8bbc0829" defer></script>
@@ -72,13 +73,13 @@
       <span class="tag">Thị trường: <a href="https://moc.gov.vn/" target="_blank" rel="noopener">Bộ Xây dựng · báo cáo quý</a></span>
       <span class="tag">Mọi khoảng trống dữ liệu được hiển thị là khoảng trống</span>
     </div>
-    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm trống (chưa có nguồn công khai thay thế).</div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> —</div>
   </section>
 
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
     <div class="sectionhead"><div><h2>1. Tổng quan ngành bất động sản</h2><p>Hai mảng chạy bằng hai động cơ khác nhau. Nhà ở: pháp lý và vốn quyết định khi nào được bán, lãi suất quyết định ai mua. Khu công nghiệp: FDI chế biến chế tạo và quỹ đất đã đền bù.</p></div></div>
     <section class="grid kpis">
-      <div class="kpi"><div class="label">P/B BĐS dân cư</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pb"></div></div>
+      <div class="kpi"><div class="label">P/B BĐS dân cư</div><div class="value">—</div><div class="delta"></div><div class="sub">—</div><div id="spk-pb"></div></div>
       <div class="kpi"><div class="label">Gốc TPDN BĐS đến hạn 12T</div><div class="value">—</div><div class="delta"></div><div class="sub">HNX</div><div id="spk-maturity"></div></div>
       <div class="kpi"><div class="label">TPDN BĐS chậm trả</div><div class="value">—</div><div class="delta"></div><div class="sub">HNX</div><div id="spk-late"></div></div>
       <div class="kpi"><div class="label">FDI đăng ký vào BĐS</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-fdi"></div></div>
@@ -592,7 +593,7 @@
     <div class="bds-credit">
       <div class="grid two" style="margin-top:14px">
         <div class="card" data-block-id="bds-33" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-          <div class="chart-title">Tín dụng ngành xây dựng so tổng tín dụng — so cùng kỳ</div>
+          <div class="chart-title">Tín dụng ngành xây dựng so tổng tín dụng — so cuối năm trước (YTD)</div>
           <div class="chart-sub">% · NHNN theo ngành kinh tế</div>
           <div id="chCreditRe"></div>
           <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>Xây dựng</span><span class="li"><span class="dot" style="background:#6b7686"></span>Tổng tín dụng</span></div>
@@ -727,10 +728,12 @@
     <div class="tablewrap"><table>
       <thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead>
       <tbody>
-        <tr><td><b>Trái phiếu BĐS: phát hành, dư nợ, chậm trả, đáo hạn</b></td><td><a href="https://cbonds.hnx.vn/" target="_blank" rel="noopener">HNX · Chuyên trang TPDN</a></td><td>Tháng · lịch đáo hạn tính lại mỗi lần cập nhật</td><td>Script mỗi lượt job (phát hành, lịch đáo hạn); dư nợ theo tháng và chậm trả chưa có nguồn dạng dữ liệu</td></tr>
+        <tr><td><b>Trái phiếu BĐS: phát hành, dư nợ, chậm trả, đáo hạn</b></td><td><a href="https://cbonds.hnx.vn/" target="_blank" rel="noopener">HNX · Chuyên trang TPDN</a></td><td>Tháng · lịch đáo hạn tính lại mỗi lần cập nhật</td><td>Script mỗi lượt job (phát hành, lịch đáo hạn); dư nợ, chậm trả theo tháng: WiData (Wi routine)</td></tr>
         <tr><td><b>GDP BĐS, CPI nhà ở, FDI, IIP</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng / quý · NSO công bố ngày 6</td><td>Script mỗi lượt job · CPI nhà ở, IIP, GDP (từ 2024); FDI theo ngành từ báo cáo tháng của Cục Đầu tư nước ngoài (fetch_fia.py)</td></tr>
-        <tr><td><b>Tín dụng, tiền gửi, lãi suất điều hành</b></td><td><a href="https://sbv.gov.vn/vi/du-no-tin-dung-doi-voi-nen-kt-dttktt" target="_blank" rel="noopener">NHNN · số liệu thống kê</a></td><td>Tháng · trễ 1–3 tháng</td><td>Script mỗi lượt job (fetch_sbv.py), số liệu từ 01/2025; lãi suất tái cấp vốn chưa có nguồn dạng dữ liệu</td></tr>
-        <tr><td><b>Giá thép, xi măng</b></td><td>Hòa Phát, công bố giá VLXD</td><td>Ngày / tháng</td><td>Tạm dừng: chưa có nguồn công khai thay thế</td></tr>
+        <tr><td><b>Tín dụng, tiền gửi, lãi suất điều hành</b></td><td><a href="https://sbv.gov.vn/vi/du-no-tin-dung-doi-voi-nen-kt-dttktt" target="_blank" rel="noopener">NHNN · số liệu thống kê</a></td><td>Tháng · trễ 1–3 tháng</td><td>Script mỗi lượt job (fetch_sbv.py), tín dụng từ 01/2025; lãi suất tái cấp vốn: mức hiện hành trên trang NHNN, đối chiếu chuỗi Wi 81497</td></tr>
+        <tr><td><b>Giá thép, xi măng</b></td><td>Hòa Phát (<a href="https://widata.vn/" target="_blank" rel="noopener">WiData</a> 74362), <a href="https://soxaydung.hanoi.gov.vn/kinh-te-vat-lieu-xay-dung" target="_blank" rel="noopener">Sở Xây dựng Hà Nội</a></td><td>Tháng / quý</td><td>Wi routine (thép); script mỗi lượt job (xi măng, từ Q3/2026)</td></tr>
+        <tr><td><b>Backlog cover, phải thu, nợ vay ngắn hạn ÷ tiền theo mã</b></td><td><a href="https://api-finfo.vndirect.com.vn/v4/financial_statements" target="_blank" rel="noopener">VNDirect finfo · BCTC quý</a></td><td>Quý</td><td>Script (fetch_realestate_backlog.py), chỉ số dẫn xuất tự động</td></tr>
+        <tr><td><b>Giá sơ cấp so CPI nhà ở; bộ tính mua nhà</b></td><td>CBRE, NSO (tự tính)</td><td>Quý</td><td>Tự tính trên trang khi số nền đổi</td></tr>
         <tr><td><b>P/B, P/E bốn phân ngành</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect finfo</a> · rổ mã theo dõi</td><td>Phiên</td><td>Script mỗi lượt job</td></tr>
         <tr><td><b>P/E, P/B, vốn hóa từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script GitHub mỗi lượt job</td></tr>
         <tr><td><b>Cung, giao dịch, giá nhà; lấp đầy, giá thuê KCN; pháp lý</b></td><td>Bộ Xây dựng, CBRE, Savills, Cushman &amp; Wakefield, JLL, VARS, văn bản Chính phủ (link tại từng thẻ)</td><td>Quý / theo sự kiện</td><td>Routine tài liệu thứ Hai</td></tr>
@@ -738,7 +741,7 @@
         <tr class="gap-row"><td><b>Tín dụng kinh doanh BĐS theo tháng, lãi suất vay mua nhà theo chuỗi, số căn mở bán theo tháng</b></td><td>NHNN, ngân hàng, CBRE</td><td>—</td><td>Chưa có nguồn máy đọc được; giữ các mốc rời theo báo cáo</td></tr>
       </tbody>
     </table></div>
-    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
+    <div class="source-note" id="wi-built">—</div>
   </div>
   <div class="footer">Vietnam Real Estate Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 08/10/2026.</div>
 </div>

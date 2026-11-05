@@ -506,7 +506,7 @@ ICE = 'https://www.ice.com/marketdata/api/productguide/charting/'
 ICE_HEADERS = ('Accept: application/json',)
 ICE_PRODUCTS = {
     'coal_newcastle': {'product': 1459, 'hub': 1296, 'name': 'ICE Newcastle Coal Futures', 'unit': 'USD/tonne',
-                       'page': 'https://www.ice.com/products/243/Newcastle-Coal-Futures', 'range': (20, 1000)},
+                       'page': 'https://www.ice.com/products/1137/globalCOAL-Newcastle-Coal-Futures', 'range': (20, 1000)},  # productId 1459 / hubId 1296 = hub Newcastle (checked 2026-11-05; product page 243 is now API2 Rotterdam)
     'lng_jkm': {'product': 4172, 'hub': 7903, 'name': 'ICE JKM LNG (Platts) Futures', 'unit': 'USD/MMBtu',
                 'page': 'https://www.ice.com/products/6753280/LNG-Japan-Korea-Marker-PLATTS-Future', 'range': (1, 100)}}
 

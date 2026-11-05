@@ -55,6 +55,18 @@
    ],
    "pick": "max_to_time",
    "note": "Trần 1000 dòng: 5 ngành × ~200 phiên, nên cửa sổ thực tế bắt đầu khoảng giữa 12/2025."
+  },
+  {
+   "block": "portwatch_vn",
+   "tool": "wi_data_industry",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "1269603,1269687,1269771,1269855,1269939,1270023,1270107,1270191,1270275,1270359",
+    "from_time": "2019-01-01",
+    "limit": 120
+   },
+   "cadence": "monthly",
+   "note": "IMF PortWatch cấp quốc gia (Wi bảng 363): khối lượng hàng xuất/nhập qua cảng Việt Nam theo loại tàu, triệu tấn ước tính từ AIS, tháng. Thêm 05/11/2026."
   }
  ],
  "indicators": {
@@ -117,6 +129,66 @@
    "Baltic Dry Index",
    "điểm",
    "daily"
+  ],
+  "1269603": [
+   "pw_container_exp",
+   "PortWatch: hàng container xuất qua cảng VN",
+   "triệu tấn",
+   "monthly"
+  ],
+  "1269687": [
+   "pw_container_imp",
+   "PortWatch: hàng container nhập qua cảng VN",
+   "triệu tấn",
+   "monthly"
+  ],
+  "1269771": [
+   "pw_drybulk_exp",
+   "PortWatch: hàng rời khô xuất qua cảng VN",
+   "triệu tấn",
+   "monthly"
+  ],
+  "1269855": [
+   "pw_drybulk_imp",
+   "PortWatch: hàng rời khô nhập qua cảng VN",
+   "triệu tấn",
+   "monthly"
+  ],
+  "1269939": [
+   "pw_general_exp",
+   "PortWatch: hàng bách hóa xuất qua cảng VN",
+   "triệu tấn",
+   "monthly"
+  ],
+  "1270023": [
+   "pw_general_imp",
+   "PortWatch: hàng bách hóa nhập qua cảng VN",
+   "triệu tấn",
+   "monthly"
+  ],
+  "1270107": [
+   "pw_roro_exp",
+   "PortWatch: hàng ro-ro xuất qua cảng VN",
+   "triệu tấn",
+   "monthly"
+  ],
+  "1270191": [
+   "pw_roro_imp",
+   "PortWatch: hàng ro-ro nhập qua cảng VN",
+   "triệu tấn",
+   "monthly"
+  ],
+  "1270275": [
+   "pw_tanker_exp",
+   "PortWatch: hàng tanker xuất qua cảng VN",
+   "triệu tấn",
+   "monthly"
+  ],
+  "1270359": [
+   "pw_tanker_imp",
+   "PortWatch: hàng tanker nhập qua cảng VN",
+   "triệu tấn",
+   "monthly"
   ]
  },
  "sectors": {

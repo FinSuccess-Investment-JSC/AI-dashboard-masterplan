@@ -53,6 +53,25 @@
     "from_time"
    ],
    "pick": "max_to_time"
+  },
+  {
+   "block": "commodity_fearnleys",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "1269507,1269495,1269483,1269399,1269447,1269459,1269411,1269387,1269375,1269363,1269351,1269315,1269303,1269339,1269327,1269291,1269255,1269519,1269531",
+    "from_time": "2024-01-01",
+    "to_time": "2026-11-05",
+    "limit": 200
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "Fearnleys (Wi bảng 362): TC 1 năm tanker VLCC/Suezmax/Aframax và hàng rời Capesize/Panamax/Supramax/Handysize; giá tàu cũ 5/10 tuổi VLCC/Suezmax/Aframax/MR; giá đóng mới VLCC, product tanker; VLCC sẵn sàng MEG 30 ngày; VLCC fixtures tuần trước. Chuỗi tuần, Wi nén về tháng khi gọi từ 2024 (limit 200). to_time = hôm nay khi gọi lại. Thêm 05/11/2026."
   }
  ],
  "indicators": {
@@ -127,6 +146,120 @@
    "Nhập khẩu hàng hóa",
    "triệu USD",
    "monthly"
+  ],
+  "1269507": [
+   "tc1y_vlcc",
+   "TC 1 năm tàu dầu VLCC (Fearnleys)",
+   "nghìn USD/ngày",
+   "weekly"
+  ],
+  "1269495": [
+   "tc1y_suezmax",
+   "TC 1 năm tàu dầu Suezmax (Fearnleys)",
+   "nghìn USD/ngày",
+   "weekly"
+  ],
+  "1269483": [
+   "tc1y_aframax",
+   "TC 1 năm tàu dầu Aframax (Fearnleys)",
+   "nghìn USD/ngày",
+   "weekly"
+  ],
+  "1269399": [
+   "tc1y_capesize",
+   "TC 1 năm Capesize 180k dwt (Fearnleys)",
+   "nghìn USD/ngày",
+   "weekly"
+  ],
+  "1269447": [
+   "tc1y_panamax",
+   "TC 1 năm Panamax 75k dwt (Fearnleys)",
+   "nghìn USD/ngày",
+   "weekly"
+  ],
+  "1269459": [
+   "tc1y_supramax",
+   "TC 1 năm Supramax 58k dwt (Fearnleys)",
+   "nghìn USD/ngày",
+   "weekly"
+  ],
+  "1269411": [
+   "tc1y_handysize",
+   "TC 1 năm Handysize 38k dwt (Fearnleys)",
+   "nghìn USD/ngày",
+   "weekly"
+  ],
+  "1269387": [
+   "sh5_vlcc",
+   "Giá tàu cũ VLCC 5 tuổi (Fearnleys)",
+   "triệu USD",
+   "weekly"
+  ],
+  "1269375": [
+   "sh10_vlcc",
+   "Giá tàu cũ VLCC 10 tuổi (Fearnleys)",
+   "triệu USD",
+   "weekly"
+  ],
+  "1269363": [
+   "sh5_suezmax",
+   "Giá tàu cũ Suezmax 5 tuổi (Fearnleys)",
+   "triệu USD",
+   "weekly"
+  ],
+  "1269351": [
+   "sh10_suezmax",
+   "Giá tàu cũ Suezmax 10 tuổi (Fearnleys)",
+   "triệu USD",
+   "weekly"
+  ],
+  "1269315": [
+   "sh5_aframax",
+   "Giá tàu cũ Aframax/LR2 5 tuổi (Fearnleys)",
+   "triệu USD",
+   "weekly"
+  ],
+  "1269303": [
+   "sh10_aframax",
+   "Giá tàu cũ Aframax/LR2 10 tuổi (Fearnleys)",
+   "triệu USD",
+   "weekly"
+  ],
+  "1269339": [
+   "sh5_mr",
+   "Giá tàu cũ MR 5 tuổi (Fearnleys)",
+   "triệu USD",
+   "weekly"
+  ],
+  "1269327": [
+   "sh10_mr",
+   "Giá tàu cũ MR 10 tuổi (Fearnleys)",
+   "triệu USD",
+   "weekly"
+  ],
+  "1269291": [
+   "nb_vlcc",
+   "Giá đóng mới VLCC (Fearnleys)",
+   "triệu USD",
+   "weekly"
+  ],
+  "1269255": [
+   "nb_product_tanker",
+   "Giá đóng mới product tanker (Fearnleys)",
+   "triệu USD",
+   "weekly"
+  ],
+  "1269519": [
+   "vlcc_avail_meg",
+   "VLCC sẵn sàng tại Vịnh Ba Tư 30 ngày tới (Fearnleys)",
+   "tàu",
+   "weekly"
+  ],
+  "1269531": [
+   "vlcc_fixtures",
+   "VLCC chốt hợp đồng tuần trước, toàn cầu (Fearnleys)",
+   "tàu",
+   "weekly"
   ]
  },
  "sectors": {

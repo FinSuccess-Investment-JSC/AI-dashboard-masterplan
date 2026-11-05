@@ -69,6 +69,24 @@
     "from_time"
    ],
    "pick": "max_to_time"
+  },
+  {
+   "block": "ratio_ins",
+   "tool": "wi_data_companies",
+   "input": {
+    "action": "get_data",
+    "endpoint_name": "ratio_ins",
+    "filters": "{\"symbol\":\"BVH,BMI,PVI,MIG,PTI,BIC,VNR\",\"year\":\"2022,2023,2024,2025,2026\",\"quarter\":\"1,2,3,4\"}",
+    "columns": "symbol,year,quarter,claim_ratio_nonlife_insurance,claim_ratio_motor_insurance,claim_ratio_health_insurance,claim_ratio_property_casualty_insurance,claim_ratio_fire_explosion_insurance,claim_ratio_life_insurance,pct_profit_insurance_operations,pct_profit_financial_activities,pct_investment_short_term_deposits,pct_investment_long_term_deposits,pct_investment_short_term_govt_bonds,pct_investment_long_term_govt_bonds,pct_investment_listed_shares,pct_revenue_motor_insurance,pct_revenue_health_insurance,pct_revenue_property_casualty_insurance,pct_revenue_fire_explosion_insurance,pct_revenue_marine_insurance,direct_premium_growth_yoy,net_premium_revenue_growth_yoy",
+    "limit": 200
+   },
+   "cadence": "quarterly",
+   "match_keys": [
+    "action",
+    "endpoint_name",
+    "filters"
+   ],
+   "note": "Chỉ số bảo hiểm từng mã (ratio_ins): tỷ lệ bồi thường thuần (toàn PNT, xe, sức khỏe, tài sản, cháy nổ, nhân thọ), % LNTT từ nghiệp vụ BH / tài chính, cơ cấu danh mục đầu tư (tiền gửi, TPCP, cổ phiếu niêm yết), cơ cấu phí theo nghiệp vụ, tăng trưởng phí. Giá trị phân số 0–1, builder nhân 100. Công thức lấy từ meta._cong_thuc của capture, ghi vào bundle (formulas)."
   }
  ],
  "indicators": {

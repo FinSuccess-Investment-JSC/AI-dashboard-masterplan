@@ -102,11 +102,14 @@ if(mat.length&&document.getElementById('chBondMaturity')){
 }
 // Credit & rates
 if(S('credit_construction').length&&document.getElementById('chCreditRe')){
- const cc=S('credit_construction'),tot=S('credit_total'),yc=yoy(cc,12).slice(-36),yt=yoy(tot,12).slice(-36);
- barLineChart('chCreditRe',{categories:yc.map(r=>mon(r.date)),series:[{name:'Tín dụng xây dựng · YoY',color:C.navy,kind:'line',values:yc.map(r=>r.value)},{name:'Tổng tín dụng · YoY',color:C.grey,kind:'line',values:yt.filter(r=>yc.some(x=>x.date===r.date)).map(r=>r.value)}],unit:'%',digits:1,height:260,zeroBase:false,rotateLabels:true});
- fillTable('tbl-credit-re',['Tháng','Dư nợ xây dựng (tỷ VND)','YoY xây dựng','Tổng dư nợ (tỷ VND)','YoY tổng'],cc.slice(-24).reverse().map(r=>{const t=tot.find(x=>x.date===r.date),a=yc.find(x=>x.date===r.date),b=yt.find(x=>x.date===r.date);return [mon(r.date),nf(r.value,0),a?.value==null?'—':nf(a.value,1)+'%',t?nf(t.value,0):'—',b?.value==null?'—':nf(b.value,1)+'%']}));
- sourceLine('chCreditRe',[SRC.sbv],mon(cc.at(-1).date),'Dư nợ tín dụng theo ngành kinh tế của NHNN (xây dựng; tổng), số liệu từ 01/2025. YoY tự tính so cùng tháng năm trước. Chưa có chuỗi tín dụng kinh doanh bất động sản riêng; proxy từ thuyết minh BCTC ngân hàng nằm ở thẻ bên cạnh.');
- insight('chCreditRe','Tín dụng xây dựng tăng nhanh hơn tổng tín dụng nghĩa là dòng vốn ngân hàng đang nghiêng về đầu tư và dự án; đây là đầu vào cho nguồn cung 1–2 năm tới chứ không phải cầu mua nhà. Cầu mua nhà cần chuỗi cho vay tiêu dùng mua nhà, hiện chưa có.');
+ // NHNN công bố dư nợ theo ngành từ 01/2025: tăng trưởng đọc so cuối năm trước (YTD), không phải so cùng kỳ.
+ const cc=S('credit_construction'),tot=S('credit_total');
+ const ytd=rs=>rs.map(r=>{const p=rs.find(x=>x.date===String(Number(r.date.slice(0,4))-1)+'-12-01');return {date:r.date,value:p&&p.value?(r.value/p.value-1)*100:null}});
+ const yc=ytd(cc).filter(r=>r.value!=null).slice(-24),yt=ytd(tot);
+ barLineChart('chCreditRe',{categories:yc.map(r=>mon(r.date)),series:[{name:'Tín dụng xây dựng · YTD',color:C.navy,kind:'line',values:yc.map(r=>r.value)},{name:'Tổng tín dụng · YTD',color:C.grey,kind:'line',values:yc.map(r=>yt.find(x=>x.date===r.date)?.value??null)}],unit:'% so cuối năm trước',digits:1,height:260,zeroBase:false,rotateLabels:true});
+ fillTable('tbl-credit-re',['Tháng','Dư nợ xây dựng (tỷ VND)','YTD xây dựng','Tổng dư nợ (tỷ VND)','YTD tổng'],cc.slice(-24).reverse().map(r=>{const t=tot.find(x=>x.date===r.date),a=ytd(cc).find(x=>x.date===r.date),b=yt.find(x=>x.date===r.date);return [mon(r.date),nf(r.value,0),a?.value==null?'—':nf(a.value,2)+'%',t?nf(t.value,0):'—',b?.value==null?'—':nf(b.value,2)+'%']}));
+ sourceLine('chCreditRe',[SRC.sbv],mon(cc.at(-1).date),'Dư nợ tín dụng theo ngành kinh tế của NHNN (xây dựng; tổng), số liệu từ 01/2025. Tăng trưởng = so tháng 12 năm trước (YTD), cách NHNN công bố; chuỗi chưa đủ 13 tháng liền để so cùng kỳ ổn định. Chưa có chuỗi tín dụng kinh doanh bất động sản riêng.');
+ const L=yc.at(-1);insight('chCreditRe','Tín dụng xây dựng '+signed(L?.value,1)+'% so cuối năm trước ('+mon(L.date)+'), tổng tín dụng '+signed(yt.find(x=>x.date===L.date)?.value,1)+'%. Xây dựng tăng nhanh hơn chung nghĩa là vốn ngân hàng nghiêng về dự án — đầu vào cho nguồn cung 1–2 năm tới, không phải cầu mua nhà.');
 }
 if(S('credit_total').length&&S('deposits_total').length&&document.getElementById('chCreditGap')){
  const ct=S('credit_total'),dp=S('deposits_total'),y1=yoy(ct,12),y2=yoy(dp,12),dates=y2.map(r=>r.date).filter(d=>y1.some(x=>x.date===d)).slice(-36);
@@ -262,7 +265,7 @@ kpi('spk-maturity',next12.length?nf(due12/1000,1):'—',next12.length?'nghìn t�
 kpi('spk-late',lastClosed?nf(lastClosed.late_payment_debt/1000,1):'—',lastClosed?'nghìn tỷ VND TPDN BĐS chậm trả · '+mon(lastClosed.date):'—',lastClosed&&prevClosed?signed((lastClosed.late_payment_debt-prevClosed.late_payment_debt)/1000,2)+' nghìn tỷ so tháng trước · '+lastClosed.late_issuer_count+' doanh nghiệp':'',closed.slice(-12).map(r=>r.late_payment_debt),C.red);
 kpi('spk-fdi',fdi?nf(fdi.value/1000,2):'—',fdi?'tỷ USD FDI đăng ký vào BĐS · '+fdi.date.slice(0,4)+' đến T'+Number(fdi.date.slice(5,7)):'—',fdi&&fdiPrev?signed((fdi.value/fdiPrev.value-1)*100,1)+'% so cùng kỳ':'',S('fdi_re_ytd').filter(r=>r.date.slice(0,4)===fdi?.date.slice(0,4)).map(r=>r.value),C.teal);
 kpi('spk-cpi',cpi?nf(cpi.value,2)+'%':'—',cpi?'CPI nhà ở & VLXD so cùng kỳ · '+mon(cpi.date):'—',cpi?'Chỉ số '+nf(S('cpi_housing_index').at(-1)?.value,1)+' (2024 = 100)':'',S('cpi_housing_yoy').slice(-12).map(r=>r.value),C.gold);
-kpi('spk-refi',refi?nf(refi.value,2)+'%':'—',refi?'lãi suất tái cấp vốn · '+short(refi.date):'—','Giữ nguyên từ 06/2023 · chi phí vay thực theo lãi suất huy động 12T',S('refi_rate').slice(-30).map(r=>r.value),C.grey);
+kpi('spk-refi',refi?nf(refi.value,2)+'%':'—',refi?'lãi suất tái cấp vốn · '+short(refi.date):'—','Giữ nguyên từ 06/2023 (NHNN; Wi 81497 cùng mức)',S('refi_rate').slice(-30).map(r=>r.value),C.grey);
 const quick=document.querySelector('.hero .insight');
 if(quick&&lastClosed){
  quick.innerHTML='';const b=make('b','','Đọc nhanh từ dữ liệu công khai: ');quick.append(b,`TPDN bất động sản còn ${nf(lastClosed.outstanding_value/1000,0)} nghìn tỷ dư nợ (${mon(lastClosed.date)}), chậm trả ${nf(lastClosed.late_payment_debt/1000,1)} nghìn tỷ tại ${lastClosed.late_issuer_count} doanh nghiệp; 12 tháng tới có ${nf(due12/1000,1)} nghìn tỷ gốc đến hạn. `+(fdi?`FDI đăng ký vào BĐS ${fdi.date.slice(0,4)} đến T${Number(fdi.date.slice(5,7))}: ${nf(fdi.value/1000,2)} tỷ USD${fdiPrev?' ('+signed((fdi.value/fdiPrev.value-1)*100,1)+'% so cùng kỳ)':''}. `:'')+(resLast?`P/B phân ngành dân cư ${nf(resLast[2],2)}x.`:''));
@@ -279,5 +282,80 @@ const metaRow=document.getElementById('wi-built');if(metaRow)metaRow.textContent
 // Analyst input slot (parity with other sectors)
 const catalyst=document.querySelector('.majorpane[data-tab="mt5"] .section');
 if(catalyst){const personal=make('details','analyst-input');personal.dataset.updateKind='analyst';personal.dataset.cadence='on-demand';personal.innerHTML='<summary>Góc nhìn riêng của analyst</summary><p>Chưa có ý kiến riêng được nhập.</p>';catalyst.append(personal)}
+
+// ---------- 5. Bộ tính "mua nhà 3 tỷ" (Tổng quan) ----------
+const kpiGrid=document.getElementById('spk-pb')?.closest('.kpi')?.parentElement;
+if(kpiGrid){
+ const card=make('div','card mortgage-calc');card.style.marginTop='14px';card.dataset.blockId='bds-51';card.dataset.updateKind='static';
+ card.innerHTML='<div class="chart-title">Mua nhà 3 tỷ: trả góp mỗi tháng</div><div class="chart-sub">giả định chỉnh được · trả đều gốc + lãi</div>'+
+  '<div class="mc-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0;font-size:12.5px">'+
+  '<label>Giá nhà (tỷ)<input type="number" id="mc-price" value="3" min="0.5" step="0.1" style="width:100%"></label>'+
+  '<label>Vay (% giá)<input type="number" id="mc-ltv" value="70" min="10" max="90" step="5" style="width:100%"></label>'+
+  '<label>Thời hạn (năm)<input type="number" id="mc-term" value="20" min="5" max="35" step="1" style="width:100%"></label>'+
+  '<label>Thu nhập hộ (triệu/tháng)<input type="number" id="mc-inc" value="40" min="5" step="1" style="width:100%"></label></div>'+
+  '<label style="font-size:12.5px;display:block">Lãi suất <b id="mc-rate-v">12,0%</b>/năm<input type="range" id="mc-rate" min="8" max="16" step="0.5" value="12" style="width:100%"></label>'+
+  '<div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:10px"><div><div class="muted" style="font-size:12px">Trả mỗi tháng</div><div style="font-size:24px;font-weight:700" id="mc-pay">—</div></div><div><div class="muted" style="font-size:12px">% thu nhập</div><div style="font-size:24px;font-weight:700" id="mc-share">—</div></div></div>'+
+  '<div class="tablewrap"><table class="compare-table" id="mc-table"></table></div>'+
+  '<details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Giả định mặc định: vay 70% giá, 20 năm, thu nhập hộ 40 triệu đồng/tháng (giả định, không phải số thống kê). Trả đều (niên kim), lãi cố định cả kỳ — thực tế lãi thả nổi sau ưu đãi. Mốc lãi tham chiếu: ưu đãi 8,2–10,5%, sau ưu đãi 13–16% (khảo sát 9/2026, tab Vốn &amp; Trái phiếu). Ngưỡng 50% thu nhập là mức ngân hàng thường dùng khi xét hồ sơ.</div></details>';
+ kpiGrid.after(card);
+ const $=id=>card.querySelector('#'+id),pay=(P,r,n)=>{const i=r/1200;return P*i/(1-Math.pow(1+i,-n))};
+ const draw=()=>{const P=(+$('mc-price').value||0)*1e9*(+$('mc-ltv').value||0)/100,n=(+$('mc-term').value||20)*12,inc=(+$('mc-inc').value||1)*1e6,r=+$('mc-rate').value;
+  $('mc-rate-v').textContent=nf(r,1)+'%';const m=pay(P,r,n),sh=m/inc*100;
+  $('mc-pay').textContent=nf(m/1e6,1)+' triệu';$('mc-share').textContent=nf(sh,0)+'%';$('mc-share').style.color=sh>50?C.red:sh>40?C.gold:C.green;
+  $('mc-table').innerHTML='<thead><tr><th>Lãi suất</th>'+[8,10,12,14,16].map(x=>'<th>'+x+'%</th>').join('')+'</tr></thead><tbody><tr><td>Triệu/tháng</td>'+[8,10,12,14,16].map(x=>'<td>'+nf(pay(P,x,n)/1e6,1)+'</td>').join('')+'</tr><tr><td>% thu nhập</td>'+[8,10,12,14,16].map(x=>'<td>'+nf(pay(P,x,n)/inc*100,0)+'%</td>').join('')+'</tr></tbody>'};
+ card.querySelectorAll('input').forEach(i=>i.addEventListener('input',draw));draw();
+}
+
+// ---------- 6. Giá sơ cấp CBRE so CPI nhà ở (Giá – Chi phí – Margin) ----------
+const MH=window.RE_MARKET_HISTORY||{},hnS=MH.hn_series||[],hcmS=MH.hcm_series||[],cpiIdx=S('cpi_housing_index');
+const priceCard=document.querySelector('[data-block-id="bds-13"]')?.closest('.grid');
+if(priceCard&&hnS.length&&cpiIdx.length){
+ const qk=q=>+q.split('/')[1]*10+ +q.slice(1,2),qs=[...new Set([...hnS,...hcmS].map(r=>r.quarter))].filter(q=>qk(q)>=20231).sort((a,b)=>qk(a)-qk(b));
+ const vnd=(rows,q,maxQ)=>{const r=rows.find(x=>x.quarter===q);return r&&r.price!=null&&/VND/.test(r.price_unit||'')&&(!maxQ||qk(q)<=maxQ)?r.price:null};
+ const cpiQ=q=>{const y=q.split('/')[1],n=+q.slice(1,2),ms=cpiIdx.filter(r=>r.date.slice(0,4)===y&&Math.ceil(+r.date.slice(5,7)/3)===n);return ms.length===3?ms.reduce((a,r)=>a+r.value,0)/3:null};
+ const base=q0=>(f)=>{const b=f(qs[0]);return qs.map(q=>{const v=f(q);return v!=null&&b?v/b*100:null})};
+ const B0=base(),hn=B0(q=>vnd(hnS,q)),hcm=B0(q=>vnd(hcmS,q,20254)),cp=B0(cpiQ);
+ const card=make('div','card');card.style.marginTop='14px';card.dataset.blockId='bds-52';card.dataset.updateKind='derived';
+ card.append(make('div','chart-title','Giá sơ cấp so CPI nhà ở — chỉ số '+qs[0]+' = 100'),make('div','chart-sub','CBRE giá căn hộ sơ cấp (VND) · CPI nhóm nhà ở & VLXD bình quân quý'));
+ const host=make('div');host.id='chPriceVsCpi';card.append(host);
+ const det=make('details','dtable');det.innerHTML='<summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-price-vs-cpi"></table></div>';card.append(det);
+ card.append((()=>{const d=make('details','note-icon');d.innerHTML='<summary>ⓘ Lưu ý dữ liệu</summary><div>Tự tính từ số đã có trên trang: giá CBRE (Hà Nội; TP.HCM chỉ đến Q4/2025 vì từ Q1/2026 CBRE đổi sang thành phố sau sáp nhập) và CPI nhóm "Nhà ở và VLXD" của NSO, đưa về cùng gốc '+qs[0]+' (CBRE báo giá VND từ 2023; trước đó USD nên không nối). Giá sơ cấp đổi theo cơ cấu dự án mở bán (vd Hà Nội Q4/2025 do Văn Giang) nên chênh lệch là xu hướng, không phải lạm phát giá cùng căn.</div>';return d})());
+ priceCard.after(card);
+ barLineChart('chPriceVsCpi',{categories:qs,series:[{name:'Giá sơ cấp Hà Nội',color:C.navy,kind:'line',values:hn},{name:'Giá sơ cấp TP.HCM (cũ)',color:C.teal,kind:'line',values:hcm},{name:'CPI nhà ở & VLXD',color:C.plum,kind:'line',values:cp}],unit:'chỉ số',digits:0,height:260,zeroBase:false,rotateLabels:true});
+ fillTable('tbl-price-vs-cpi',['Quý','Hà Nội','TP.HCM (cũ)','CPI nhà ở'],qs.map((q,i)=>[q,nf(hn[i],0),nf(hcm[i],0),nf(cp[i],1)]).reverse());
+ const li=hn.map((v,i)=>v!=null&&cp[i]!=null?i:-1).filter(i=>i>=0).at(-1);
+ if(li!=null)insight('chPriceVsCpi','Đến '+qs[li]+', giá sơ cấp Hà Nội ở mức '+nf(hn[li],0)+' so với CPI nhà ở '+nf(cp[li],0)+' (cùng gốc '+qs[0]+'): giá bán chạy nhanh hơn chi phí ở và vật liệu khoảng '+nf(hn[li]/cp[li]*100-100,0)+'%. Khoảng cách này là biên mà chủ đầu tư giữ được khi mở bán, đồng thời là lý do khả năng chi trả của người mua giảm.');
+}
+
+// ---------- 7. Backlog cover, phải thu, nợ vay ngắn hạn ÷ tiền theo mã (Key players + Catalyst) ----------
+const BL=window.REALESTATE_BACKLOG;
+if(BL&&BL.rows){
+ const codes=BL.codes.filter(c=>BL.rows[c]),qAll=[...new Set(codes.flatMap(c=>Object.keys(BL.rows[c])))].sort(),q8=qAll.slice(-8);
+ const ql=q=>q.slice(4)+'/'+q.slice(0,4),last=c=>{const r=BL.rows[c];return r[q8.at(-1)]||r[Object.keys(r).at(-1)]};
+ const cashOf=r=>(r.cash||0)+(r.st_investments||0),stDebt=r=>r.borrow_st;
+ const rows=codes.map(c=>{const r=last(c),p=BL.rows[c][q8.at(-5)]||{};return {c,bc:r.backlog_cover,bcP:p.backlog_cover,rr:r.receivables_ratio,ds:stDebt(r)!=null&&cashOf(r)?stDebt(r)/cashOf(r):null,pre:r.customer_prepay,ttm:r.revenue_ttm}}).sort((a,b)=>(b.bc??-1)-(a.bc??-1));
+ const srcNote=()=>{const d=make('details','note-icon');d.innerHTML='<summary>ⓘ Nguồn &amp; ghi chú</summary><div>Nguồn: <a href="https://api-finfo.vndirect.com.vn/v4/financial_statements?q=code:VHM~reportType:QUARTER~modelType:1~fiscalDate:gte:2025-01-01&size=400" target="_blank" rel="noopener">VNDirect finfo · BCTC hợp nhất quý</a> (scripts/fetch_realestate_backlog.py), kỳ '+ql(q8[0])+'–'+ql(q8.at(-1))+', kiểm '+short(BL.checked)+'. Backlog cover = người mua trả tiền trước ngắn hạn (mã 13130) + dài hạn (13311) ÷ doanh thu thuần 4 quý gần nhất (21001). Phải thu = phải thu khách hàng ngắn hạn (11310) + dài hạn (12110) ÷ cùng doanh thu. Nợ vay ngắn hạn ÷ tiền = vay và nợ ngắn hạn (13110, gồm trái phiếu đến hạn 12 tháng) ÷ (tiền 11100 + đầu tư tài chính ngắn hạn 11200). Người mua trả trước chỉ là phần khách đã trả, không phải toàn bộ doanh số ký; mã doanh thu TTM nhỏ (PDR, AGG, NTL) cho tỷ lệ rất cao. Chỉ số dẫn xuất tự động được người dùng cho phép 05/11/2026; số BCTC khác cập nhật khi được yêu cầu.</div>';return d};
+ const kp=document.querySelector('[data-block-id="bds-03"]'); // Key players (mt6) được research-layout gộp vào Tổng quan; đặt cạnh bảng doanh nghiệp theo dõi
+ if(kp){
+  const card=make('div','re-backlog');card.dataset.blockId='bds-53';card.dataset.updateKind='periodic';card.dataset.refreshStatus='loaded';
+  card.append(make('div','chart-title','Backlog cover — tiền khách đã trả trước ÷ doanh thu 4 quý'),make('div','chart-sub','lần · 11 mã nhà ở · 8 quý'));
+  const h=make('div');h.id='chBacklogCover';card.append(h);
+  const t=make('div','tablewrap');t.innerHTML='<table id="tbl-backlog"></table>';card.append(t,srcNote());card.style.marginTop='14px';kp.append(card);
+  barLineChart('chBacklogCover',{categories:q8.map(ql),series:codes.filter(c=>!['PDR','AGG'].includes(c)).map((c,i)=>({name:c,color:[C.navy,C.teal,C.plum,C.gold,C.grey,C.green,C.red,'#7b61c9','#3b8fd9','#a0522d','#555'][i%11],kind:'line',values:q8.map(q=>BL.rows[c][q]?.backlog_cover??null)})),unit:'lần',digits:2,height:260,zeroBase:true,rotateLabels:true});
+  fillTable('tbl-backlog',['Mã','Backlog cover '+ql(q8.at(-1)),'4 quý trước','Người mua trả trước (tỷ)','Doanh thu 4Q (tỷ)','Phải thu ÷ DT','Nợ vay NH ÷ tiền'],rows.map(r=>[r.c,nf(r.bc,2)+'x',nf(r.bcP,2)+'x',nf(r.pre,0),nf(r.ttm,0),nf(r.rr,2)+'x',r.ds==null?'—':nf(r.ds,2)+'x']));
+  const top=rows.filter(r=>r.bc>=1.5).map(r=>r.c),low=rows.filter(r=>r.bc!=null&&r.bc<0.5).map(r=>r.c);
+  insight('chBacklogCover','Tiền khách trả trước đủ phủ ≥1,5 năm doanh thu: '+(top.join(', ')||'không mã nào')+'; dưới 0,5 năm: '+(low.join(', ')||'không mã nào')+'. Cover cao nghĩa là doanh thu bàn giao 4–8 quý tới đã có tiền đặt cọc đứng sau; cover thấp ở mã lớn như VHM do doanh thu bàn giao đã rất lớn, không hẳn là thiếu hàng. PDR, AGG không vẽ vì doanh thu 4 quý quá nhỏ làm tỷ lệ vượt 8 lần (xem bảng).');
+ }
+ const cr=document.querySelector('.majorpane[data-tab="mt5"] .section');
+ if(cr){
+  const st=(v,good,risk,rev)=>v==null?'Thiếu số':rev?(v>risk?'Risk':v<good?'Catalyst':'Theo dõi'):(v>=good?'Catalyst':v<risk?'Risk':'Theo dõi');
+  const nCat=rows.filter(r=>r.bc>=1.5).length,nRisk=rows.filter(r=>r.ds!=null&&r.ds>1).length;
+  const card=make('div','card');card.style.marginTop='14px';card.dataset.blockId='bds-54';card.dataset.updateKind='derived';card.dataset.refreshStatus='loaded';
+  card.append(make('h3','','Tín hiệu theo mã: tiền đặt trước và nợ đến hạn'));
+  const v=make('p','');v.style.cssText='font-size:13px;margin:4px 0 8px';v.innerHTML='<b>'+nCat+'/'+rows.length+' mã có tiền khách trả trước ≥1,5 năm doanh thu; '+nRisk+' mã có nợ vay ngắn hạn lớn hơn tiền</b> ('+ql(q8.at(-1))+').';card.append(v);
+  const t=make('div','tablewrap');t.innerHTML='<table id="tbl-re-signals" data-no-fold></table>';card.append(t,srcNote());cr.append(card);
+  fillTable('tbl-re-signals',['Mã','Backlog cover','Ngưỡng','Trạng thái','Nợ vay NH ÷ tiền','Ngưỡng','Trạng thái'],rows.map(r=>[r.c,nf(r.bc,2)+'x','≥1,5 Catalyst · <0,5 Risk',st(r.bc,1.5,0.5),r.ds==null?'—':nf(r.ds,2)+'x','>1 Risk · <0,5 Catalyst',st(r.ds,0.5,1,true)]));
+ }
+}
 window.REALESTATE_DASHBOARD={due12,lastClosed,resLast,fdi,fdiPrev,cpi,refi,topIssuers,next12};
 })();

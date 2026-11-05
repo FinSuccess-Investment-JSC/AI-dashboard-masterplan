@@ -90,12 +90,13 @@ if(bdti.length&&document.getElementById('chTanker')){
  sourceLine('chTanker',[SRC.baltic],short(bdti.at(-1).date),'Baltic Dirty Tanker Index và Clean Tanker Index, nén chuỗi ngày về cuối tháng. Chỉ số cước thế giới, không phải cước PVT, VTO ký được.');
  insight('chTanker','BDTI '+nf(bdti.at(-1).value,0)+' điểm là mức cao nhất của chuỗi, gấp hơn 5 lần một năm trước; BCTI cũng gấp gần 4 lần. Nguyên nhân là Hormuz gần như đóng từ tháng 3/2026 (xem tab Địa chính trị): dầu Trung Đông phải đi vòng, tấn-dặm tăng trong khi cung tàu không đổi. Doanh nghiệp Việt Nam hưởng lợi ở phần tàu chạy spot và khi hợp đồng TC đáo hạn được ký lại; phần đang khóa giá chưa thấy ngay.');
 }
+const fx=byMonth(S('cny_usd')),foUsd=r=>{const f=byMonth(fo)[ym(r.date)],x=fx[ym(r.date)];return f&&x?f.value/x.value:null};
 if(brent.length&&document.getElementById('chFuel')){
  const fm=byMonth(fo);
- lines('chFuel',brent,[['Brent (USD/thùng)',C.gold,r=>r.value],['Dầu nhiên liệu TQ (CNY/tấn ÷100)',C.plum,r=>fm[ym(r.date)]?fm[ym(r.date)].value/100:null]],'',1,true);
- legend('chFuel',[['Brent USD/thùng',C.gold],['Dầu nhiên liệu CNY/tấn ÷100',C.plum]]);
- fillTable('tbl-fuel',['Kỳ','Brent (USD/thùng)','Brent YoY','Dầu nhiên liệu (CNY/tấn)','YoY'],brent.slice().reverse().map(r=>{const f=fm[ym(r.date)];return [short(r.date),nf(r.value,2),signed(yoyAt(brent,r),0)+'%',nf(f?.value,0),signed(yoyAt(fo,f),0)+'%']}));
- sourceLine('chFuel',[['EIA · Brent spot','https://www.eia.gov/dnav/pet/hist/RBRTEd.htm']],short(brent.at(-1).date),'Brent spot (EIA), giá phiên cuối mỗi tháng. Chưa có nguồn công khai cho dầu nhiên liệu Trung Quốc, VLSFO Singapore nên để trống.');
+ lines('chFuel',brent,[['Brent (USD/thùng)',C.gold,r=>r.value],['Dầu nhiên liệu SHFE (USD/tấn ÷10)',C.plum,r=>{const v=foUsd(r);return v==null?null:v/10}]],'',1,true);
+ legend('chFuel',[['Brent USD/thùng',C.gold],['Dầu nhiên liệu SHFE USD/tấn ÷10',C.plum]]);
+ fillTable('tbl-fuel',['Kỳ','Brent (USD/thùng)','Brent YoY','Dầu nhiên liệu SHFE (CNY/tấn)','Tỷ giá CNY/USD','Dầu nhiên liệu (USD/tấn)'],brent.slice().reverse().map(r=>{const f=fm[ym(r.date)];return [short(r.date),nf(r.value,2),signed(yoyAt(brent,r),0)+'%',nf(f?.value,0),nf(fx[ym(r.date)]?.value,4),nf(foUsd(r),0)]}));
+ sourceLine('chFuel',[['EIA · Brent spot','https://www.eia.gov/dnav/pet/hist/RBRTEd.htm'],['SHFE fuel oil','https://www.shfe.com.cn/eng/Market/Futures/'],['Tỷ giá Fed H.10 (DEXCHUS)','https://fred.stlouisfed.org/series/DEXCHUS']],short(brent.at(-1).date),'Brent spot (EIA), phiên cuối tháng. Dầu nhiên liệu: hợp đồng chính SHFE (CNY/tấn) chia tỷ giá CNY/USD phiên cuối tháng (Fed H.10) = USD/tấn, vẽ ÷10 để cùng trục. Đây là dầu nhiên liệu Thượng Hải, không phải VLSFO Singapore.');
  insight('chFuel','Nhiên liệu là chi phí biến đổi lớn nhất của chuyến đi. Brent +'+nf(yoyAt(brent,brent.at(-1)),0)+'% YoY đẩy chi phí lên, nhưng với tàu cho thuê định hạn thì người thuê trả nhiên liệu, nên PVT, GSP ít bị ảnh hưởng hơn VOS, VNA chạy chuyến.');
 }
 // Hàng rời
@@ -205,6 +206,55 @@ if(hz.length&&document.getElementById('chHormuzDaily')){
  sourceLine('chHormuzDaily',[SRC.portwatch],short(hz.at(-1).date),'120 ngày gần nhất, số lượt theo ngày. AIS có thể thiếu tàu tắt tín hiệu.',false);
 }
 
+
+// ---------- Fearnleys (Wi bảng 362): TC 1 năm, giá tàu cũ, VLCC MEG ----------
+const FE=B.fearnleys?.series||{},F=k=>FE[k]?.records||[];
+const feBase=F('tc1y_vlcc');
+function feLines(id,keys,unit,digits,hl){if(!feBase.length||!document.getElementById(id))return false;const maps=keys.map(([k])=>byMonth(F(k)));
+ const series=keys.map(([k,n,c],i)=>({name:n,color:c,kind:'line',values:feBase.map(r=>maps[i][ym(r.date)]?.value??null)}));
+ (hl||[]).forEach(([n,c,v])=>series.push({name:n,color:c,kind:'line',markers:false,strokeWidth:1.5,values:feBase.map(()=>v)}));
+ barLineChart(id,{categories:feBase.map(r=>mon(r.date)),series,unit,digits,height:260,zeroBase:true,rotateLabels:true});legend(id,series.map(s=>[s.name,s.color]));return true}
+const feL=k=>F(k).at(-1),feSrc=[['Fearnleys qua WiData (bảng 362)','https://widata.vn/']];
+if(feLines('chTc1yTanker',[['tc1y_vlcc','VLCC',C.navy],['tc1y_suezmax','Suezmax',C.teal],['tc1y_aframax','Aframax',C.plum]],'nghìn USD/ngày',1,[['TC Aframax PVT ký (~55, ACBS 8/2026)',C.grey,55],['TC MR (~27, ACBS)',C.gold,27]])){
+ fillTable('tbl-tc1y-tanker',['Tháng','VLCC','Suezmax','Aframax'],feBase.slice().reverse().map(r=>{const a=byMonth(F('tc1y_suezmax'))[ym(r.date)],b=byMonth(F('tc1y_aframax'))[ym(r.date)];return [mon(r.date),nf(r.value,1),nf(a?.value,1),nf(b?.value,1)]}));
+ sourceLine('chTc1yTanker',[...feSrc,['ACBS PVT 8/2026','https://acbs.com.vn/acbsmedia/2026/08/PVT_Update-Q2-2026.pdf']],mon(feL('tc1y_vlcc').date),'Giá thuê định hạn 1 năm (Fearnleys, tuần; Wi nén về tháng). Đường ngang: mức TC quốc tế doanh nghiệp VN đang ký theo ACBS 8/2026 (Aframax ~55.000, MR ~27.000 USD/ngày).');
+ insight('chTc1yTanker','TC 1 năm Aframax '+nf(feL('tc1y_aframax').value,0)+' nghìn USD/ngày, gấp '+nf(feL('tc1y_aframax').value/55,1)+' lần mức ~55 nghìn PVT đang nhận (ACBS): phần chênh chỉ về lợi nhuận khi hợp đồng đáo hạn và ký lại. Spot TD3C >1 triệu USD/ngày là mức cực đoan của tàu chịu vào Vịnh; TC 1 năm mới là giá thị trường trả cho rủi ro kéo dài 12 tháng.');
+}
+if(feLines('chTc1yBulk',[['tc1y_capesize','Capesize',C.navy],['tc1y_panamax','Panamax',C.teal],['tc1y_supramax','Supramax',C.plum],['tc1y_handysize','Handysize',C.gold]],'nghìn USD/ngày',1)){
+ sourceLine('chTc1yBulk',feSrc,mon(feL('tc1y_supramax').date),'Giá thuê định hạn 1 năm tàu hàng rời (Fearnleys, tuần; Wi nén về tháng). VOS, VNA chạy Supramax/Handysize.');
+ insight('chTc1yBulk','Supramax '+nf(feL('tc1y_supramax').value,1)+', Handysize '+nf(feL('tc1y_handysize').value,1)+' nghìn USD/ngày (1 năm trước '+nf(F('tc1y_supramax').at(-13)?.value,1)+' / '+nf(F('tc1y_handysize').at(-13)?.value,1)+'): cỡ tàu của VOS, VNA tăng ít hơn Capesize — BDI phóng đại mức lợi của hai mã.');
+}
+if(feLines('chShipPrice',[['sh5_vlcc','VLCC 5 tuổi',C.navy],['sh10_vlcc','VLCC 10 tuổi',C.teal],['sh5_aframax','Aframax 5 tuổi',C.plum],['sh10_mr','MR 10 tuổi',C.gold],['nb_vlcc','VLCC đóng mới',C.grey]],'triệu USD',0)){
+ fillTable('tbl-ship-price',['Loại','Mới nhất','1 năm trước','Đầu 2024'],[['sh5_vlcc','VLCC 5 tuổi'],['sh10_vlcc','VLCC 10 tuổi'],['sh5_suezmax','Suezmax 5 tuổi'],['sh10_suezmax','Suezmax 10 tuổi'],['sh5_aframax','Aframax/LR2 5 tuổi'],['sh10_aframax','Aframax/LR2 10 tuổi'],['sh5_mr','MR 5 tuổi'],['sh10_mr','MR 10 tuổi'],['nb_vlcc','VLCC đóng mới'],['nb_product_tanker','Product tanker đóng mới']].map(([k,n])=>{const r=F(k);return [n,nf(r.at(-1)?.value,1),nf(r.at(-13)?.value,1),nf(r[0]?.value,1)]}));
+ sourceLine('chShipPrice',feSrc,mon(feL('sh5_vlcc').date),'Giá tàu cũ 5/10 tuổi và đóng mới (Fearnleys, tuần; Wi nén về tháng).');
+ insight('chShipPrice','VLCC 5 tuổi '+nf(feL('sh5_vlcc').value,0)+' triệu USD, cao hơn giá đóng mới '+nf(feL('nb_vlcc').value,0)+': tàu có sẵn đắt hơn tàu chờ 3 năm — thị trường trả tiền cho cước hiện tại. MR 10 tuổi '+nf(feL('sh10_mr').value,0)+' triệu: cửa sổ bán tàu cũ có lãi cho VOS, VNA; ngược lại PVT, VTO, VIP mua tàu lúc này sẽ khấu hao cao.');
+}
+if(feLines('chVlccMeg',[['vlcc_avail_meg','VLCC sẵn sàng Vịnh Ba Tư 30 ngày tới',C.navy],['vlcc_fixtures','VLCC chốt hợp đồng tuần trước',C.plum]],'tàu',0)){
+ sourceLine('chVlccMeg',feSrc,mon(feL('vlcc_avail_meg').date),'Số tàu (Fearnleys, tuần; Wi nén về tháng). Tàu sẵn sàng thấp + chốt nhiều = cung chặt.');
+}
+// Đồng hồ lợi nhuận theo mã — bước 1: chỉ mã có TC đang ký trên trang gốc
+if(document.getElementById('tbl-profit-gauge')){
+ const af=feL('tc1y_aframax')?.value;
+ const rows=[['PVP','Aframax Apollo (1 tàu)','TC tái ký 70.000 USD/ngày (5/2026)',70,af,'—'],['PVT','Aframax (đội tàu quốc tế)','TC Aframax ~55.000 (ACBS 8/2026)',55,af,'—'],['PVT · VTO · VIP','MR','TC MR ~27.000 (ACBS 8/2026)',27,null,'—'],['HAH','12/20 tàu cho thuê 1.700–2.500 TEU','HARPEX 23/10: 2.500 TEU 46.000; 1.700 TEU 35.000 (thị trường)',null,null,'—']];
+ fillTable('tbl-profit-gauge',['Mã','Tàu','TC đang ký / thị trường (nguồn)','TC ký (nghìn USD/ngày)','TCE 1 năm cùng cỡ (Fearnleys, nghìn)','Chênh thị trường − đang ký','Tháng đáo hạn'],rows.map(([m,t,n,tc,mk,exp])=>[m,t,n,tc==null?'—':nf(tc,0),mk==null?'— (Fearnleys không có TC 1 năm MR)':nf(mk,0),tc!=null&&mk!=null?signed(mk-tc,0)+' ('+signed((mk/tc-1)*100,0)+'%)':'—',exp]));
+}
+// Cung tàu theo phân khúc (số đã có trong evidence: Clarksons H1/2026, BIMCO)
+if(document.getElementById('chOrderbook')){
+ ctBarS('chOrderbook',{categories:['Tanker','Hàng rời','Container'],series:[{name:'Orderbook % đội tàu (Clarksons giữa 2026)',color:C.navy,values:[25,14,40]},{name:'Cung đội tàu 2027 % (BIMCO)',color:C.red,values:[5.5,4,9]}],unit:'%',digits:1,aria:'Cung tàu theo phân khúc'});
+ legend('chOrderbook',[['Orderbook % đội tàu',C.navy],['Tăng cung đội tàu 2027',C.red]]);
+ sourceLine('chOrderbook',[['Clarksons H1/2026','https://hellenicshippingnews.com/first-half-2026-shipping-market-review-clarksea-index-up-61'],['BIMCO tanker 6/2026','https://www.hellenicshippingnews.com/?p=1136526'],['BIMCO dry bulk 7/2026','https://cyprusshippingnews.com/2026/07/31/bimco-dry-bulk-shipping-market-overview-outlook-2/'],['BIMCO container 9/2026','https://cyprusshippingnews.com/2026/09/28/bimcos-container-shipping-market-overview-outlook-september-2026-is-out/']],'9/2026','Orderbook theo CGT/đội tàu (Clarksons); cung 2027 = điểm giữa khoảng BIMCO (tanker dầu thô +5–6%, hàng rời +3,5–4,5%). Phá dỡ, lịch giao theo năm chưa có nguồn mở được.',false);
+ insight('chOrderbook','Container có orderbook 40% và cung 2027 +9% — sóng cước ngắn nhất (▼ HAH 2027). Hàng rời 14% là phân khúc cung chặt nhất, giữ cước VOS, VNA lâu hơn.');
+}
+// FBX (data/raw/public/fbx.json do phần Cảng tạo) + HARPEX cho HAH
+const FB=B.fbx||{},fbD=Object.keys(FB.days||{}).sort(),fbv=fbD.length?FB.days[fbD.at(-1)]:{};
+if(fbD.length&&document.getElementById('chFbx')){
+ const L=[['FBX01','→ Bờ Tây Bắc Mỹ'],['FBX03','→ Bờ Đông Bắc Mỹ'],['FBX11','→ Bắc Âu'],['FBX13','→ Địa Trung Hải'],['FBX','FBX tổng hợp']].filter(([k])=>fbv[k]);
+ hbarCompare('chFbx',{items:L.map(([k,l])=>({label:l,value:fbv[k],color:k==='FBX'?C.navy:C.teal})),unit:'USD/FEU',digits:0,labelW:150,ariaLabel:'FBX theo tuyến'});
+ sourceLine('chFbx',[['Freightos Baltic Index',FB.url],['HARPEX','https://www.harperpetersen.com/harpex']],short(fbD.at(-1)),'Cước giao ngay container 40 feet (Freightos FBX, ngày đọc). HARPEX (giá thuê tàu) 23/10/2026 2.525 điểm — ở bảng Key players. HAH chạy nội Á, không có trong FBX: đọc gián tiếp.',false);
+ insight('chFbx','FBX tổng hợp '+nf(fbv.FBX,0)+' USD/FEU; HAH ăn chủ yếu giá thuê tàu (HARPEX, 12/20 tàu cho thuê) hơn là cước tuyến dài. Cước tuyến dài giảm thường dẫn giá thuê tàu giảm 1–2 quý sau.');
+}
+function ctBarS(id,model){const host=document.getElementById(id);if(!host)return;if(window.ChartTypes)return ChartTypes.mount(host,{...model,native:'bar'},()=>{host.innerHTML=ChartTypes.render(model,'bar')});barLineChart(id,{...model,height:260})}
+
 // ---------- 4. KPIs, quick read, catalyst brief ----------
 const tL=bdti.at(-1),cL=bcti.at(-1),dL=bdi.at(-1),bL=brent.at(-1),sL=sea.at(-1),pe=sec['185']?.records||[],peL=pe.at(-1),pe0=pe[0];
 kpi('spk-bdti',tL?nf(tL.value,0):'—',tL?'điểm · '+short(tL.date):'—',tL?signed(yoyAt(bdti,tL),0)+'% so cùng kỳ':'',bdti.slice(-12).map(r=>r.value));
@@ -215,7 +265,7 @@ kpi('spk-brent',bL?nf(bL.value,1):'—',bL?'USD/thùng · '+short(bL.date):'—'
 kpi('spk-pe',peL?nf(peL[1],1)+'x':'—',peL?'P/E vận tải đường thủy · '+short(peL[0]):'—',peL?'P/B '+nf(peL[2],2)+'x':'',pe.slice(-30).map(r=>r[1]),C.grey);
 const quick=document.querySelector('.hero .insight');
 if(quick&&tL){
- quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai, PortWatch: '),`BDTI ${nf(tL.value,0)} điểm (${signed(yoyAt(bdti,tL),0)}% YoY), BCTI ${nf(cL?.value,0)}, BDI ${nf(dL?.value,0)} (${signed(yoyAt(bdi,dL),0)}%). Hormuz ${hzM.length?nf(hzM.at(-1).value,0):'—'} lượt/ngày. Brent ${nf(bL?.value,0)} USD/thùng. Vận chuyển đường biển của đội tàu VN lũy kế ${signed(ytdYo(sea),0)}%. P/E vận tải đường thủy ${peL?nf(peL[1],1):'—'}x.`);
+ quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai, PortWatch: '),`BDTI ${nf(tL.value,0)} điểm (${signed(yoyAt(bdti,tL),0)}% YoY), BCTI ${nf(cL?.value,0)}, BDI ${nf(dL?.value,0)} (${signed(yoyAt(bdi,dL),0)}%). Hormuz ${hzM.length?nf(hzM.at(-1).value,0):'—'} lượt/ngày. TC 1 năm Aframax ${nf(feL('tc1y_aframax')?.value,0)} nghìn USD/ngày (Fearnleys). Brent ${nf(bL?.value,0)} USD/thùng. Vận chuyển đường biển của đội tàu VN lũy kế ${signed(ytdYo(sea),0)}%. P/E vận tải đường thủy ${peL?nf(peL[1],1):'—'}x.`);
  Object.assign(quick.dataset,{updateKind:'ai',cadence:'on-data-change',refreshStatus:'derived'});
 }
 const tY=yoyAt(bdti,tL),cY=yoyAt(bcti,cL),dY=yoyAt(bdi,dL),bY=yoyAt(brent,bL),hzNow=hzM.length?hzM.at(-1).value:null,hzBase=mean(hz.filter(r=>r.date.startsWith('2023')).map(r=>r.total)),seaY=ytdYo(sea),ppL=ps.at(-1);
@@ -226,8 +276,9 @@ const score=[
  row('Cước','Cước hàng rời cao',[dL?nf(dL.value,0):'—','BDI ('+signed(dY,0)+'% YoY)'],'Vùng 2.900–3.200 từ T5/2026; đáy đầu 2025 735','BDI về dưới 1.500',dY==null?'na':dY>20?'good':dY<-20?'risk':'watch','▲ VOS · VNA','chBdi'),
  row('Tuyến','Hormuz gần như đóng',[hzNow!=null?nf(hzNow,0):'—','lượt/ngày (2023: ~'+nf(hzBase,0)+')'],'Từ T3/2026; dầu Trung Đông đi vòng → tấn-dặm tanker tăng','Hormuz > 50 lượt/ngày 2 tuần liền',hzNow==null?'na':hzNow<20?'good':hzNow<60?'watch':'info','▲ tanker · ▼ nếu mở lại đột ngột','chChoke'),
  row('Tuyến','Biển Đỏ chưa hồi',[bmM.length?nf(bmM.at(-1).value,0):'—','lượt/ngày Bab el-Mandeb'],'Bằng ~'+(bmM.length?nf(bmM.at(-1).value/mean(bm.filter(r=>r.date.startsWith('2023')).map(r=>r.total))*100,0):'—')+'% mức 2023; tàu đi vòng Mũi Hảo Vọng','Lượt qua Biển Đỏ > 50/ngày (hãng tàu quay lại Suez)',bmM.length?(bmM.at(-1).value<45?'good':'watch'):'na','▲ HAH (cung tàu bị hút) · tanker','chChoke'),
- row('Chi phí','Nhiên liệu đắt',[signed(bY,0)+'%','Brent YoY'],'Brent '+nf(bL?.value,0)+' USD/thùng; dầu nhiên liệu TQ '+signed(yoyAt(fo,fo.at(-1)),0)+'%','Brent về dưới 80 USD/thùng',bY==null?'na':bY>30?'risk':bY<-10?'good':'watch','▼ VOS · VNA (chạy chuyến) · ít ảnh hưởng TC','chFuel'),
+ row('Chi phí','Nhiên liệu đắt',[signed(bY,0)+'%','Brent YoY'],'Brent '+nf(bL?.value,0)+' USD/thùng; dầu nhiên liệu SHFE '+(fo.length?nf(foUsd(fo.at(-1)),0):'—')+' USD/tấn','Brent về dưới 80 USD/thùng',bY==null?'na':bY>30?'risk':bY<-10?'good':'watch','▼ VOS · VNA (chạy chuyến) · ít ảnh hưởng TC','chFuel'),
  row('Việt Nam','Đội tàu VN chạy nhiều hơn',[signed(seaY,0)+'%','vận chuyển đường biển lũy kế'],'Giá dịch vụ vận tải biển trong nước '+(ppL?qtr(ppL.date)+' '+signed(ppL.value,0)+'% YoY':'—'),'Lũy kế về dưới +3%',seaY==null?'na':seaY>5?'good':seaY<0?'risk':'watch','▲ cả ngành','chSea'),
+ row('Cước','TC 1 năm Aframax vượt mức PVT ký',[nf(feL('tc1y_aframax')?.value,0),'nghìn USD/ngày (ký ~55)'],'Fearnleys '+(feL('tc1y_aframax')?mon(feL('tc1y_aframax').date):'—')+'; phần chênh về khi TC đáo hạn','TC 1 năm Aframax về dưới 55',feL('tc1y_aframax')?(feL('tc1y_aframax').value>55?'good':'risk'):'na','▲ PVT · PVP (khi tái ký)','chTc1yTanker'),
  row('Định giá','Thị trường chưa trả cho cước đột biến',[peL?nf(peL[1],1)+'x':'—','P/E vận tải đường thủy'],'P/E '+(peL?nf(peL[1],1)+'x':'—')+(pe0?' (đầu kỳ '+nf(pe0[1],1)+'x, '+short(pe0[0])+')':''),'Hợp đồng TC ký lại ở mức cước mới (BCTC quý IV)',peL?'info':'na','PVT · VOS · HAH','chSectorVal')];
 const nGood=score.filter(r=>r.st==='good').length,nRisk=score.filter(r=>r.st==='risk').length;
 window.SHIPPING_BRIEF={
@@ -235,7 +286,7 @@ window.SHIPPING_BRIEF={
  segs:[['Tàu dầu & khí','PVT · VTO · VIP · PVP · GSP',tY!=null&&tY>50?'up':'flat','BDTI '+signed(tY,0)+'%'],['Hàng rời','VOS · VNA',dY!=null&&dY>20?'up':'flat','BDI '+signed(dY,0)+'%'],['Container','HAH','flat','Biển Đỏ '+(bmM.length?nf(bmM.at(-1).value,0):'—')+' lượt/ngày']],
  headers:['Biến số đang thay đổi','Đang thấy (số mới nhất)','Đổi đánh giá khi','','Hưởng lợi ▲ / chịu thiệt ▼'],
  score,
- events:[['Hằng ngày','Baltic: BDTI, BCTI, BDI · PortWatch: Hormuz, Biển Đỏ'],['Đầu tháng','NSO: vận chuyển tháng trước'],['20–30/10','BCTC quý III'],['Theo sự kiện','Đàm phán Trung Đông; hãng tàu công bố quay lại Suez']]
+ events:[['Hằng ngày','Baltic: BDTI, BCTI, BDI · PortWatch: Hormuz, Biển Đỏ'],['Đầu tháng','NSO: vận chuyển tháng trước'],['20–30/10','BCTC quý III'],['09/01/2027','USTR đề xuất hoãn tiếp phí cảng Mỹ với tàu TQ tới mốc này (Federal Register 26/10/2026, chưa chốt)'],['Theo sự kiện','Đàm phán Trung Đông; hãng tàu công bố quay lại Suez']]
 };
 const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; giá hàng hóa: IMF/FRED, EIA, ICE.';
 })();

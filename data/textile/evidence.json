@@ -97,5 +97,49 @@
   "status": "match",
   "correct_value": "",
   "note": "Q4 cần ~12,28 tỷ USD theo cùng bài."
+ },
+ {
+  "block": "dm-20",
+  "claim": "Thị phần may mặc tại Mỹ 8T/2026 (OTEXA qua Vinatex)",
+  "value": "Việt Nam 10,98 tỷ USD, 22,4%; Trung Quốc 5,63 tỷ, 11,5%; Bangladesh 5,39 tỷ, 11,0%",
+  "url": "https://vinatex.com.vn/cap-nhat-thi-truong-det-may-quy-iv-2026-va-mot-so-chi-dau-cho-nam-2027/",
+  "opened_at": "2026-11-05",
+  "quote": "Sau 8 tháng, Việt Nam tiếp tục dẫn đầu với 10,98 tỷ USD hàng may mặc xuất khẩu vào Mỹ, thị phần tăng 1,5 điểm phần trăm, lên 22,4%. Trung Quốc xếp thứ 2 với kim ngạch đạt 5,63 tỷ USD, thị phần chiếm 11,5% trong khi Bangladesh đạt 5,39 tỷ USD, thị phần chiếm 11,0%.",
+  "status": "match",
+  "correct_value": "",
+  "note": "Vinatex 'Cập nhật thị trường dệt may quý IV/2026'"
+ },
+ {
+  "block": "dm-24",
+  "claim": "Mục 301 từ 24/7/2026: VN và TQ 12,5%; Bangladesh, Ấn Độ, Indonesia, Campuchia 10%",
+  "value": "12,5% / 10%",
+  "url": "https://vinatex.com.vn/cap-nhat-thi-truong-det-may-quy-iv-2026-va-mot-so-chi-dau-cho-nam-2027/",
+  "opened_at": "2026-11-05",
+  "quote": "Sau 150 ngày tạm thời áp dụng thuế bổ sung 10% theo Section 122, từ ngày 24/7/2026, lớp thuế bổ sung theo Section 301 về lao động cưỡng bức chính thức áp dụng. Việt Nam cùng với Trung Quốc nằm trong nhóm các quốc gia chịu mức 12,5%. Bangladesh, Ấn Độ, Indonesia và Campuchia chịu mức 10%.",
+  "status": "match",
+  "correct_value": "",
+  "note": "Xác nhận lại bảng thuế dm-24 từ nguồn Việt Nam đã mở"
+ },
+ {
+  "block": "dm-18",
+  "claim": "Dự thảo lương tối thiểu vùng 2027",
+  "value": "+7,8% bình quân từ 1/1/2027",
+  "url": "https://vinatex.com.vn/cap-nhat-thi-truong-det-may-quy-iv-2026-va-mot-so-chi-dau-cho-nam-2027/",
+  "opened_at": "2026-11-05",
+  "quote": "Dự thảo đang được thẩm định đề xuất tăng lương tối thiểu vùng bình quân 7,8% từ ngày 1/1/2027, tạo áp lực điều chỉnh tiền lương và các khoản đóng góp liên quan.",
+  "status": "match",
+  "correct_value": "",
+  "note": "Dự thảo, chưa ban hành"
+ },
+ {
+  "block": "dm-18",
+  "claim": "Cước container Drewry WCI tuần 8/10/2026",
+  "value": "4.351 USD/FEU, −2% tuần, +164% YoY",
+  "url": "https://vinatex.com.vn/cap-nhat-thi-truong-det-may-quy-iv-2026-va-mot-so-chi-dau-cho-nam-2027/",
+  "opened_at": "2026-11-05",
+  "quote": "Chỉ số container thế giới của Drewry giảm 2% trong tuần kết thúc ngày 8/10 còn 4.351 USD/container 40 feet nhưng vẫn tăng 164% so với cùng kỳ.",
+  "status": "match",
+  "correct_value": "",
+  "note": ""
  }
 ]

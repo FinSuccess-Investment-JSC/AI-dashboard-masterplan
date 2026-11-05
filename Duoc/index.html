@@ -14,6 +14,7 @@
 <script src="../assets/sector-content.js?v=649051e35a0c" defer></script>
 <script src="../assets/sector-layout.js?v=6017726b6ba1" defer></script>
 <script src="../data/pharma-public-data.js?v=39edfffb4b9c" defer></script>
+<script src="../data/pharma-extra-data.js?v=20261105" defer></script>
 <script src="../assets/sector-visuals.js?v=9bed10f3c811" defer></script>
 <script src="../assets/pharma-dashboard.js?v=f7ccaf01f22a" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
@@ -65,7 +66,7 @@
       <span class="tag">Bản nghiên cứu: 12/10/2026</span>
       <span class="tag">Nhập khẩu, IIP, CPI, tỷ giá: NSO, Hải quan</span>
     </div>
-    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm trống (chưa có nguồn công khai thay thế).</div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> nhập khẩu thuốc và nguyên liệu (Hải quan), IIP thuốc, CPI y tế, tỷ giá, GDP y tế và P/E ngành dược đang tự cập nhật — câu tóm tắt số mới nhất được viết lại từ dữ liệu khi trang nạp. BHYT 9T/2026: <b>148 triệu lượt</b>, chi đề nghị thanh toán <b>&gt;133.300 tỷ</b>.</div>
   </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
     <div class="sectionhead"><div><h2>1. Tổng quan ngành dược &amp; y tế</h2><p>8 doanh nghiệp: dược phẩm (DHG, IMP, DBD, TRA, DMC, DVN), dịch vụ y tế (FRT – Long Châu, TNH).</p></div></div>
@@ -86,6 +87,7 @@
         <h3 style="margin-top:0;font-size:13.5px">Vị trí trong chu kỳ</h3>
         <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Cầu phòng thủ, tăng đều.</mark> Tiền thuốc bình quân <b>78,3 USD/người</b> (2025, Cục Quản lý Dược); chi KCB BHYT 2025 ước <b>161.628 tỷ đồng, +14,3%</b>; bao phủ BHYT <b>95,1%</b> dân số.</p>
         <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Lợi nhuận sản xuất phục hồi, Long Châu dẫn đầu.</mark> DHG 6T/2026 lãi <b>614 tỷ (+22%)</b>, DVN <b>263 tỷ (+22%)</b>; Long Châu doanh thu 6T <b>21.448 tỷ (+33%)</b>. TNH vẫn lỗ quý thứ 7 liên tiếp.</p>
+        <div class="chart-title" style="margin-top:6px">Dân số từ 65 tuổi trở lên</div><div class="chart-sub">% tổng dân số · năm</div><div id="chPop65"></div>
         <p style="font-size:12.5px;line-height:1.65;margin-bottom:0"><mark class="key-phrase">Khung pháp lý mới đã vào guồng.</mark> Luật Dược sửa đổi hiệu lực <b>1/7/2025</b>; Thông tư 40/2025 về đấu thầu thuốc hiệu lực <b>25/10/2025</b>.</p>
         <div class="source-note">Nguồn: <a href="https://stockbiz.vn/tin-tuc/cuoc-chien-moi-cua-nganh-duoc/40361759" target="_blank" rel="noopener">Stockbiz – Cục QLD</a> · <a href="https://daibieunhandan.vn/bao-hiem-xa-hoi-viet-nam-no-luc-but-pha-vung-tru-cot-an-sinh-10401248.html" target="_blank" rel="noopener">Đại biểu Nhân dân – BHXH</a> · <a href="https://vcci.com.vn/tin-tuc/nhieu-diem-sang-trong-buc-tranh-ban-nien-2026-cua-nganh-duoc" target="_blank" rel="noopener">VCCI</a></div>
       </div>
@@ -106,13 +108,13 @@
         <div class="chart-title">Đấu thầu thuốc &amp; BHYT</div>
         <div class="chart-sub">kỳ công bố gần nhất</div>
         <div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>Số</th><th>Ý nghĩa</th><th>Nguồn</th></tr></thead><tbody>
-        <tr><td>Chi phí KCB BHYT đề nghị thanh toán 2025 (ước)</td><td><b>161.628 tỷ đồng</b>, +14,3% so 2024</td><td>Quỹ BHYT là người trả chính của kênh ETC</td><td><a href="https://daibieunhandan.vn/bao-hiem-xa-hoi-viet-nam-no-luc-but-pha-vung-tru-cot-an-sinh-10401248.html" target="_blank" rel="noopener">Đại biểu Nhân dân</a></td></tr>
-        <tr><td>Lượt KCB BHYT 2025 (ước)</td><td><b>195,5 triệu lượt</b></td><td>Cầu thuốc kê đơn tại bệnh viện</td><td>Đại biểu Nhân dân</td></tr>
+        <tr><td>Chi phí KCB BHYT đề nghị thanh toán 9T/2026</td><td><b>&gt;133.300 tỷ đồng</b> (≈ 82% mức cả năm 2025 ước 161.628 tỷ)</td><td>Quỹ BHYT là người trả chính của kênh ETC</td><td><a href="https://thoibaotaichinhvietnam.vn/bao-hiem-xa-hoi-viet-nam-don-luc-ve-dich-nam-2026-205083.html" target="_blank" rel="noopener">Thời báo Tài chính 08/10/2026</a></td></tr>
+        <tr><td>Lượt KCB BHYT 9T/2026</td><td><b>≈148 triệu lượt</b> (cả năm 2025 ước 195,5 triệu)</td><td>Cầu thuốc kê đơn tại bệnh viện</td><td>Thời báo Tài chính · <a href="https://daibieunhandan.vn/bao-hiem-xa-hoi-viet-nam-no-luc-but-pha-vung-tru-cot-an-sinh-10401248.html" target="_blank" rel="noopener">Đại biểu Nhân dân (2025)</a></td></tr>
         <tr><td>Bao phủ BHYT 2025</td><td><b>95,1%</b> dân số</td><td>Gần toàn dân: tăng trưởng tiếp theo đến từ chi/lượt</td><td>Đại biểu Nhân dân</td></tr>
         <tr><td>Thông tư 40/2025/TT-BYT (thay TT 07/2024)</td><td>Hiệu lực <b>25/10/2025</b></td><td>Khung đấu thầu thuốc tại cơ sở y tế công lập</td><td><a href="https://hethongphapluat.com/phap-luat/node/2259" target="_blank" rel="noopener">Hệ thống pháp luật</a></td></tr>
         <tr><td>Kênh ETC (bệnh viện) / OTC (nhà thuốc) 2023</td><td><b>40%</b> (3,4 tỷ USD, +4 điểm %) / <b>60%</b> (5,1 tỷ USD)</td><td>ETC tăng tỷ trọng: lợi cho doanh nghiệp có thuốc trúng thầu nhóm cao</td><td><a href="https://www.imexpharm.com/Data/Sites/1/media/ir/analyst%20report/vdsc_nganh-duoc_01jan2024_vie.pdf" target="_blank" rel="noopener">VDSC (IQVIA)</a></td></tr><tr><td>Nhóm 1</td><td>Toàn bộ dây chuyền <b>EU-GMP</b> hoặc tương đương tại nước SRA/EMA; biệt dược gốc; hoặc sản xuất tại VN trên dây chuyền EU-GMP và được nước SRA/EMA cấp phép</td><td rowspan="5">Nhóm càng cao càng ít đối thủ, giá trúng thầu cao hơn; IMP, DHG, DBD đầu tư nhà máy EU-GMP để vào nhóm 1–2</td><td><a href="https://vnras.com/thong-tu-so-40-2025-tt-byt-quy-dinh-ve-dau-thau-thuoc-tai-co-so-y-te-cong-lap/" target="_blank" rel="noopener">TT 40/2025, Điều 4</a></td></tr><tr><td>Nhóm 2</td><td>Toàn bộ dây chuyền <b>EU-GMP</b> (hoặc tương đương) được Việt Nam công bố; hoặc <b>PIC/s-GMP</b> tại nước thành viên PIC/s và ICH</td><td>TT 40/2025</td></tr><tr><td>Nhóm 3</td><td>Có chứng minh <b>tương đương sinh học</b></td><td>TT 40/2025</td></tr><tr><td>Nhóm 4</td><td>Sản xuất toàn bộ tại Việt Nam trên dây chuyền <b>GMP</b></td><td>TT 40/2025</td></tr><tr><td>Nhóm 5</td><td>Thuốc có giấy đăng ký lưu hành/giấy phép nhập khẩu, không thuộc nhóm trên</td><td>TT 40/2025</td></tr>
         </tbody></table></div>
-        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Số BHYT 2025 là số ước tính; một nguồn khác nêu chi KCB BHYT 166.447 tỷ (chưa mở được trang gốc, không dùng). Tỷ trọng ETC/OTC mới nhất có nguồn là năm 2023 (IQVIA qua VDSC); slide IMP ghi 41/59 cho MAT Q3/2024 nhưng chỉ đọc được từ biểu đồ nên chưa dùng.</div></details>
+        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Số 9T/2026 là số BHXH Việt Nam công bố qua báo (lượt "khoảng", chi "hơn"); tỷ lệ 82% tự tính so số 2025 ước. Số BHYT 2025 là số ước tính; một nguồn khác nêu chi KCB BHYT 166.447 tỷ (chưa mở được trang gốc, không dùng). Tỷ trọng ETC/OTC mới nhất có nguồn là năm 2023 (IQVIA qua VDSC); slide IMP ghi 41/59 cho MAT Q3/2024 nhưng chỉ đọc được từ biểu đồ nên chưa dùng.</div></details>
       </div>
     </div>
     <div class="pharma-legal">
@@ -161,6 +163,24 @@
         <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Các mốc từ nguồn khác nhau (Bộ Y tế qua PLO, IMARC), không phải một chuỗi thống nhất; 2026 là dự báo. Chưa có số chính thức 2025 của Cục Quản lý Dược.</div></details>
       </div>
     </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="duoc-14" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="chart-title">Giá trị trúng thầu thuốc theo quý, theo mã</div>
+        <div class="chart-sub">tỷ đồng · tổng thành tiền các dòng thuốc mà nhà thầu là doanh nghiệp niêm yết · theo ngày quyết định trúng thầu</div>
+        <div id="chTenderTicker"></div>
+        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu · phương pháp</summary><div>Từ API công khai của Cục Quản lý Dược (công bố kết quả trúng thầu cơ sở y tế gửi về). Lần tải 05/11/2026 dừng ở <b>100.000/199.879 bản ghi mới nhất</b> (QĐ từ 30/10/2025 đến 02/10/2026; trang sau trả lỗi) nên mới có <b>4 quý</b>, Q4/2025 chỉ gồm 30–31/10 trở đi và Q3/2026 có thể chưa đủ do bệnh viện gửi trễ. Gán mã theo tên pháp lý nhà thầu: DHG "Dược Hậu Giang"; IMP "Imexpharm"; DBD "Bidiphar"/"Dược – TTBYT Bình Định"; TRA "Traphaco"; DMC "Domesco"; DVN "Tổng công ty Dược Việt Nam", "CPC1", "Codupha" (con hợp nhất; công ty liên kết không tính). Giá trị là trúng thầu (trần mua của bệnh viện), không phải doanh thu đã giao. TRA gần như không đứng tên nhà thầu (bán qua nhà phân phối).</div></details>
+        <div class="source-note">Nguồn: <a href="https://dichvucong.dav.gov.vn/congbotrungthau" target="_blank" rel="noopener">Cục Quản lý Dược · công bố kết quả trúng thầu thuốc</a> (scripts/fetch_dav_tenders.py).</div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-tender-ticker"></table></div></details>
+      </div>
+      <div class="card" data-block-id="duoc-15" data-update-kind="public" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu trúng thầu theo nhóm 1–5: thuốc nội vs ngoại</div>
+        <div class="chart-sub">tỷ đồng · quý đủ gần nhất · nội = nước sản xuất Việt Nam</div>
+        <div id="chTenderGroup"></div>
+        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Nhóm theo tiêu chí kỹ thuật TT 07/2024 → TT 40/2025 (nhóm 1 EU-GMP/SRA, nhóm 4 tương đương sinh học, nhóm 5 còn lại). Dòng không ghi nhóm (biệt dược gốc, dược liệu…) gộp "Khác". Cùng giới hạn tải như chart bên trái.</div></details>
+        <div class="source-note">Nguồn: <a href="https://dichvucong.dav.gov.vn/congbotrungthau" target="_blank" rel="noopener">Cục Quản lý Dược</a>.</div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-tender-group"></table></div></details>
+      </div>
+    </div>
     <h3 class="subhead">Dịch vụ y tế</h3>
     <div class="grid two">
       <div class="card" data-block-id="duoc-20" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
@@ -187,7 +207,25 @@
   </div>
   <div class="majorpane" data-tab="mt3" id="pane-mt3">
   <section id="price" class="section">
-    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Tỷ giá, CPI y tế nằm ở Bức tranh ngành; biên gộp từng mã ở Tổng quan › So sánh tài chính.</p></div></div>
+    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Chi phí đầu vào là API nhập trả bằng USD; biên gộp cho thấy doanh nghiệp chuyển được chi phí vào giá hay không.</p></div></div>
+    <div class="grid two">
+      <div class="card" data-block-id="duoc-30" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Chỉ số chi phí API: tỷ giá × nguyên phụ liệu dược nhập</div>
+        <div class="chart-sub">nguyên phụ liệu nhập quy VND (tỷ đồng, cột) · tỷ giá trung tâm chỉ số T1/2025 = 100 (đường)</div>
+        <div id="chApiCost"></div>
+        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Proxy: kim ngạch nguyên phụ liệu dược nhập (Hải quan, triệu USD) × tỷ giá trung tâm bình quân tháng. Đây là tiền đầu vào, không phải đơn giá API (Hải quan không công bố lượng); tăng có thể do lượng nhập tăng chứ không chỉ do giá.</div></details>
+        <div class="source-note">Nguồn: <a href="https://www.customs.gov.vn/index.jsp?pageId=4&amp;cid=1294" target="_blank" rel="noopener">Hải quan</a> · <a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN tỷ giá trung tâm</a>.</div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-api-cost"></table></div></details>
+      </div>
+      <div class="card" data-block-id="duoc-31" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Biên gộp theo quý: nhà sản xuất dược</div>
+        <div class="chart-sub">% · lãi gộp ÷ doanh thu thuần · 8 quý gần nhất</div>
+        <div id="chPharmaGm"></div>
+        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Đọc từ data/company-quarterly.json đã có (không cập nhật BCTC mới trong đợt này). DVN không có trên nguồn quý nên không có đường.</div></details>
+        <div class="source-note">Nguồn: BCTC quý doanh nghiệp (data/company-quarterly.json, cùng nguồn chart xu hướng ở Tổng quan › So sánh tài chính).</div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-pharma-gm"></table></div></details>
+      </div>
+    </div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt4" id="pane-mt4">
@@ -202,6 +240,20 @@
       <tr><td><b>TT 32/2026/TT-BYT</b>: đăng ký lưu hành thuốc (thay TT 12/2025)</td><td>01/10/2026</td><td>Thủ tục cấp, gia hạn số đăng ký</td><td>Cả ngành</td></tr>
       </tbody></table></div>
       <div class="source-note">Nguồn: xem bảng Pháp lý &amp; đăng ký thuốc, Đấu thầu &amp; BHYT ở Tổng quan ngành.</div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="duoc-51" data-update-kind="event" data-cadence="monthly" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Lịch 12 tháng</h3>
+      <div class="tablewrap compare-table"><table><thead><tr><th>Mốc</th><th>Sự kiện</th><th>Ai chịu / cần xem gì</th></tr></thead><tbody>
+      <tr><td>01/07/2026</td><td class="after">Lương cơ sở 2,53 triệu đ → mức đóng, mức hưởng BHYT tăng theo — đã áp dụng</td><td>Quỹ BHYT · kênh ETC</td></tr>
+      <tr><td>01/10/2026</td><td class="after">TT 32/2026/TT-BYT đăng ký lưu hành thuốc (thay TT 12/2025) — đã áp dụng</td><td>Cả ngành: cấp, gia hạn số đăng ký</td></tr>
+      <tr><td>T10/2026</td><td class="after">Mời thầu tập trung quốc gia 2026–2028: 4 gói (<a href="https://baodauthau.vn/dau-thau-mua-sam-thuoc-tap-trung-can-co-che-linh-hoat-de-bao-dam-nguon-thuoc-post209755.html" target="_blank" rel="noopener">Báo Đấu thầu 13/10/2026</a>)</td><td>Thuốc nhóm 1–2 · IMP, DHG, DBD</td></tr>
+      <tr><td>T12/2026 <small style="color:#7a8794">(chưa xác nhận)</small></td><td>Công bố kết quả thầu tập trung 2026–2028</td><td>Ai trúng → doanh thu ETC 2027–28</td></tr>
+      <tr><td>Hằng tuần</td><td>Cục QLD công bố kết quả trúng thầu bệnh viện</td><td>Chart trúng thầu theo mã (Bức tranh ngành)</td></tr>
+      <tr><td>Từ 20/01/2027 · 20/04 · 20/07</td><td>BCTC quý IV/2026, I/2027, II/2027</td><td>Biên gộp vs chỉ số chi phí API</td></tr>
+      <tr><td>Quý I/2027 <small style="color:#7a8794">(chưa xác nhận)</small></td><td>BHXH công bố chi KCB BHYT cả năm 2026</td><td>So 9T/2026: &gt;133.300 tỷ</td></tr>
+      </tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Ngày đóng thầu và giá trị 4 gói (khoảng 7.105 tỷ theo kết quả tìm kiếm) chưa thấy trong trang gốc đã mở nên để trống; mốc kết quả là ước tính theo thời gian chấm thầu thông lệ. Lương cơ sở theo NĐ 161/2026/NĐ-CP qua trang tổng hợp, chưa mở văn bản gốc.</div></details>
+      <div class="source-note">Nguồn: <a href="https://baodauthau.vn/tu-khoa/dau-thau-thuoc-quoc-gia-tag61518.html" target="_blank" rel="noopener">Báo Đấu thầu · thầu thuốc quốc gia</a> · <a href="https://baohiemxahoidientu.vn/bhxh/chinh-sach-bhyt-tu-01-07-2026.html" target="_blank" rel="noopener">Chính sách BHYT từ 01/07/2026</a> · TT 32/2026 và BHYT 9T: bảng Pháp lý, Đấu thầu &amp; BHYT ở Tổng quan.</div>
     </div>
   </section>
   </div>
@@ -266,8 +318,8 @@
   </div>
   <div class="card" style="margin-top:14px" data-block-id="duoc-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Nhập khẩu dược, nguyên liệu; IIP; CPI y tế; GDP y tế</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a>, <a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng / quý</td><td>Script mỗi lượt job · GDP từ 2024; tỷ giá trung tâm chưa có nguồn thay thế</td></tr><tr><td><b>Tỷ giá trung tâm</b></td><td><a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN</a></td><td>Tháng</td><td>Cùng lời gọi hằng tháng</td></tr><tr><td><b>P/E, P/B ngành dược; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>BHYT, đấu thầu, pháp lý, Long Châu, TNH</b></td><td>Báo, cơ quan nhà nước (link tại từng thẻ)</td><td>Quý / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC từng doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
-    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Nhập khẩu dược, nguyên liệu; IIP; CPI y tế; GDP y tế</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a>, <a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng / quý</td><td>Script mỗi lượt job · GDP từ 2024; tỷ giá trung tâm chưa có nguồn thay thế</td></tr><tr><td><b>Tỷ giá trung tâm</b></td><td><a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN</a></td><td>Tháng</td><td>Cùng lời gọi hằng tháng</td></tr><tr><td><b>P/E, P/B ngành dược; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>BHYT, đấu thầu, pháp lý, Long Châu, TNH</b></td><td>Báo, cơ quan nhà nước (link tại từng thẻ)</td><td>Quý / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC từng doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý</td><td>Khi người dùng yêu cầu</td></tr><tr><td><b>Kết quả trúng thầu thuốc (theo mã, nhóm 1–5, nội/ngoại)</b></td><td><a href="https://dichvucong.dav.gov.vn/congbotrungthau" target="_blank" rel="noopener">Cục Quản lý Dược · API công khai</a></td><td>Theo đợt (QĐ bệnh viện)</td><td>Script scripts/fetch_dav_tenders.py, tuần; lần đầu 100.000/199.879 bản ghi (10/2025–10/2026)</td></tr><tr><td><b>Dân số 65+</b></td><td><a href="https://fred.stlouisfed.org/series/SPPOP65UPTOZSVNM" target="_blank" rel="noopener">World Bank qua FRED</a></td><td>Năm</td><td>Script scripts/fetch_fred_pop65.py (giữ bản cũ nếu FRED lỗi)</td></tr><tr><td><b>BHYT lượt khám, chi KCB</b></td><td>BHXH Việt Nam qua báo (trang BHXH 502)</td><td>Quý</td><td>Routine tài liệu; mới nhất 9T/2026</td></tr></tbody></table></div>
+    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá ngành dựng từ scripts/build_sector_public.py (NSO, Hải quan, NHNN, VNDirect; Wi lấp chỗ thiếu).</div>
   </div>
   <div class="footer">Vietnam Pharma &amp; Healthcare Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 12/10/2026.</div>
 </div>

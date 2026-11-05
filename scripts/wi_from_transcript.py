@@ -39,7 +39,7 @@ def pairs(path):
         if not isinstance(content, list):
             continue
         for b in content:
-            if b.get('type') == 'tool_use' and 'WiMCP' in b.get('name', ''):
+            if b.get('type') == 'tool_use' and ('WiMCP' in b.get('name', '') or 'Widata' in b.get('name', '')):
                 uses[b['id']] = b
             elif b.get('type') == 'tool_result' and b.get('tool_use_id') in uses and not b.get('is_error'):
                 u = uses.pop(b['tool_use_id'])

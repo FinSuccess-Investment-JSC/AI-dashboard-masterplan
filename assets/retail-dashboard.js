@@ -13,7 +13,7 @@ const mon=d=>'T'+Number(d.slice(5,7))+'/'+d.slice(2,4);
 const qtr=d=>'Q'+Math.ceil(Number(d.slice(5,7))/3)+'/'+d.slice(2,4);
 const signed=(v,d=1)=>v==null||!Number.isFinite(v)?'—':(v>0?'+':'')+nf(v,d);
 const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b7686',green:'#27af95',red:'#d1583f'};
-const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{};
+const macro=B.macro?.series||{},com=B.commodity?.series||{},sec=B.sector_ratio?.by_sector||{},gold=B.gold?.series||{};
 const checked=B.macro?.captured_at||W.built_at||'';
 const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],sbv:['Ngân hàng Nhà nước','https://www.sbv.gov.vn/'],customs:['Hải quan Việt Nam','https://www.customs.gov.vn/'],ice:['ICE, CBOT, Bursa Malaysia',null],wi:['Nguồn công khai',null]};
 for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
@@ -163,13 +163,13 @@ if(sugar.length&&document.getElementById('chInputs')){
 }
 // Định giá
 if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
- const ids=[['220','Chuỗi bán lẻ (MWG, FRT)',C.navy],['215','Phân phối điện tử',C.grey],['224','Bán lẻ xe',C.teal],['239','Sữa',C.plum],['120','Bia',C.gold]].filter(([id])=>sec[id]?.records?.length);
+ const ids=[['220','Chuỗi bán lẻ (MWG, FRT)',C.navy],['215','Phân phối điện tử',C.grey],['224','Bán lẻ xe',C.teal],['239','Sữa',C.plum],['120','Bia',C.gold],['227','Trang sức (PNJ)',C.red]].filter(([id])=>sec[id]?.records?.length);
  const dates=[...new Set(ids.flatMap(([id])=>sec[id].records.map(r=>r[0])))].sort(),weekly=dates.filter((d,i)=>i%5===0||i===dates.length-1);
  const at=(id,d,k)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[k]:null};
  barLineChart('chSectorVal',{categories:weekly.map(d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4)),series:ids.map(([id,name,color])=>({name:'P/E '+name,color,kind:'line',values:weekly.map(d=>{const v=at(id,d,1);return v>0&&v<60?v:null})})),unit:'x',digits:1,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',ids.map(([,n,c])=>[n,c]));
  fillTable('tbl-sector-val',['Rổ mã','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
- sourceLine('chSectorVal',[['VNDirect finfo','https://dstock.vndirect.com.vn/']],short(dates.at(-1)),'Rổ mã theo dõi: Chuỗi bán lẻ (MWG, FRT) (MWG, FRT); Phân phối điện tử (DGW, PET); Bán lẻ xe (HAX, SVC); Sữa (VNM); Bia (SAB). P/E = tổng vốn hóa / tổng lợi nhuận (vốn hóa ÷ P/E từng mã, VNDirect); mã lỗ không có P/E chỉ vào P/B và vốn hóa. Không phải toàn ngành. Vẽ mỗi 5 phiên.');
+ sourceLine('chSectorVal',[['VNDirect finfo','https://dstock.vndirect.com.vn/']],short(dates.at(-1)),'Rổ mã theo dõi: Chuỗi bán lẻ (MWG, FRT); Phân phối điện tử (DGW, PET); Bán lẻ xe (HAX, SVC); Sữa (VNM); Bia (SAB); Trang sức (PNJ, rổ riêng từ 05/11/2026 vì Wi không phân ngành PNJ). P/E = tổng vốn hóa / tổng lợi nhuận (vốn hóa ÷ P/E từng mã, VNDirect); mã lỗ không có P/E (PNJ lỗ Q2–Q3/2026) chỉ vào P/B và vốn hóa. Không phải toàn ngành. Vẽ mỗi 5 phiên.');
  insight('chSectorVal',(()=>{const L=ids.filter(([id])=>sec[id]?.records?.length);const l0=sec[L[0][0]].records.at(-1);return 'P/E rổ mã theo dõi, phiên '+short(l0[0])+': '+L.map(([id,name])=>{const r=sec[id].records,l=r.at(-1),y=r.find(x=>x[0]>=String(+l[0].slice(0,4)-1)+l[0].slice(4));return name+' '+nf(l[1],(1==2?2:1))+'x'+(y&&y[1]!=null?' (1 năm trước '+nf(y[1],(1==2?2:1))+'x)':'')}).join('; ')+'.'})());
 }
 
@@ -184,6 +184,47 @@ if(document.getElementById('chStores')){
  sourceLine('chStores',[['Masan qua DN&PL','https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html'],['Bách Hóa Xanh qua DN&PL 15/10/2026','https://doanhnhan.baophapluat.vn/dau-tu-the-gioi-di-dong-mwg-thu-gan-148-000-ty-dong-sau-9-thang-bach-hoa-xanh-tang-truong-34.html'],['Long Châu qua CafeF','https://cafef.vn/doanh-thu-fpt-retail-dat-30743-ty-dong-trong-nua-dau-nam-2026-188260729175454766.chn']],'T6–T9/2026','Thời điểm công bố khác nhau giữa các chuỗi (bảng dưới). Long Châu chưa gồm 236 trung tâm tiêm chủng.',false);
  insight('chStores','Cung điểm bán đang dồn vào bách hóa và nhà thuốc (mở mới hàng trăm điểm/quý) trong khi điện máy, điện thoại, trang sức thu hẹp. Đây là cách ngành tăng trưởng 2026: lấy thị phần từ kênh truyền thống thay vì mở thêm cửa hàng điện máy.');
 }
+
+// ---------- 3b. Vàng SJC/nhẫn (Wi), biên gộp FMCG vs nguyên liệu trễ 2 quý (05/11/2026) ----------
+const gS=gold.gold_sjc?.records||[],gR=gold.gold_ring?.records||[];
+if(gS.length&&document.getElementById('chGold')){
+ const rm=byMonth(gR),rs=gS.slice(-36);
+ barLineChart('chGold',{categories:rs.map(r=>mon(r.date)),series:[{name:'Vàng miếng SJC',color:C.gold,kind:'line',values:rs.map(r=>r.value/1000)},{name:'Vàng nhẫn',color:C.plum,kind:'line',values:rs.map(r=>(rm[ym(r.date)]?.value??NaN)/1000)}],unit:'triệu/lượng',digits:1,height:260,rotateLabels:true,zeroBase:false});
+ legend('chGold',[['Vàng miếng SJC',C.gold],['Vàng nhẫn',C.plum]]);
+ fillTable('tbl-gold',['Ngày','SJC (triệu/lượng)','Nhẫn (triệu/lượng)','SJC YoY'],gS.slice().reverse().map(r=>[short(r.date),nf(r.value/1000,1),nf((rm[ym(r.date)]?.value??NaN)/1000,1),signed(yoyAt(gS,r),0)+'%']));
+ sourceLine('chGold',[['WiData · Vàng SJC 1224193, Vàng nhẫn SJC 1224229','https://widata.vn/']],short(gS.at(-1).date),'Giá niêm yết nghìn VND/lượng, chuỗi ngày; gọi khoảng dài bị Wi nén theo tháng (ngày cuối kỳ), điểm cuối là ngày gọi. Chênh lệch với thế giới chưa tính được vì chưa có XAU/USD và tỷ giá theo ngày (bảng ở tab Giá – Chi phí – Margin).');
+ const L=gS.at(-1),y=yoyAt(gS,L),pk=gS.reduce((a,r)=>r.value>a.value?r:a,gS[0]);
+ insight('chGold','SJC '+nf(L.value/1000,1)+' triệu/lượng ('+signed(y,0)+'% YoY), đỉnh '+nf(pk.value/1000,1)+' vào '+mon(pk.date)+'. Giá vàng tăng làm doanh thu vàng 24K của PNJ phình (Q1/2026 +325%) nhưng biên mỏng; giá giảm từ đỉnh T2/2026 làm tồn kho vàng (18.855 tỷ) mất giá — rủi ro định giá lại cùng lúc với dự phòng kim cương.');
+ const gd=document.getElementById('gold-latest-date');if(gd){gd.textContent=short(L.date);document.getElementById('gold-latest-sjc').textContent=nf(L.value/1000,1);document.getElementById('gold-latest-ring').textContent=nf((gR.at(-1)?.value??NaN)/1000,1)}
+}
+const CQ=window.COMPANY_QUARTERLY;
+if(CQ?.companies?.length&&document.getElementById('chMarginQ')){
+ const want=['VNM','SAB','KDC','MSN'],col={VNM:C.navy,SAB:C.gold,KDC:C.plum,MSN:C.teal};
+ const cos=want.map(sym=>CQ.companies.find(c=>c.symbol===sym&&c.sector==='retail')||CQ.companies.find(c=>c.symbol===sym)).filter(Boolean);
+ const n=CQ.quarters.length,from=Math.max(0,n-12),qs=CQ.quarters.slice(from);
+ const ser=cos.map(c=>({name:c.symbol,color:col[c.symbol],kind:'line',values:c.gross_margin.slice(from).map(v=>v==null?null:v)}));
+ barLineChart('chMarginQ',{categories:qs,series:ser,unit:'%',digits:1,height:260,rotateLabels:true,zeroBase:true});
+ legend('chMarginQ',ser.map(x=>[x.name,x.color]));
+ fillTable('tbl-margin-q',['Quý',...cos.map(c=>c.symbol+' (%)')],qs.map((qq,i)=>[qq,...cos.map(c=>nf(c.gross_margin[from+i],1))]).reverse());
+ const miss=(CQ.missing||[]).filter(m=>['QNS'].includes(m.symbol)).map(m=>m.symbol);
+ sourceLine('chMarginQ',[['VNDirect · BCTC hợp nhất quý (data/company-quarterly.json)','https://dstock.vndirect.com.vn/']],qs.at(-1),'Biên gộp = lợi nhuận gộp ÷ doanh thu thuần theo quý, chỉ đọc từ bộ dữ liệu so sánh tài chính (không cập nhật riêng).'+(miss.length?' Không có '+miss.join(', ')+' trong bộ dữ liệu quý.':'')+' VNM quý gần nhất có thể trống khi BCTC chưa vào nguồn.');
+ const last=sym=>{const c=cos.find(x=>x.symbol===sym);if(!c)return null;const v=c.gross_margin.filter(x=>x!=null);return v.at(-1)};
+ insight('chMarginQ','SAB biên gộp ~'+nf(last('SAB'),0)+'% — cao nhất 5 năm nhờ lúa mạch, nhôm rẻ của 2024–2025; VNM ~'+nf(last('VNM'),0)+'% nhờ sữa bột nguyên liệu rẻ; KDC ~'+nf(last('KDC'),0)+'% khi dầu cọ hạ. Đọc cùng chart bên: nguyên liệu của 2 quý trước đang đi lên (đường, dầu cọ) → biên 2027 khó giữ đỉnh, cộng thêm thuế TTĐB 1/1/2027.');
+}
+if(CQ?.quarters?.length&&document.getElementById('chInputLag')){
+ const qk=d=>'Q'+Math.ceil(Number(d.slice(5,7))/3)+'/'+d.slice(0,4);
+ const prevQ=(k,nq)=>{let qn=Number(k[1]),y=Number(k.slice(3));qn-=nq;while(qn<1){qn+=4;y-=1}return 'Q'+qn+'/'+y};
+ const qavg=rs=>{const a={};rs.forEach(r=>{const k=qk(r.date);(a[k]=a[k]||[]).push(r.value)});return Object.fromEntries(Object.entries(a).map(([k,v])=>[k,v.reduce((x,y)=>x+y,0)/v.length]))};
+ const items=[['Đường thô',C.gold,qavg(idx(S('sugar'),BASE))],['Dầu cọ',C.plum,qavg(idx(S('palm_oil'),BASE))],['Khô đậu nành',C.navy,qavg(idx(S('soymeal'),BASE))],['Ngô',C.teal,qavg(idx(S('corn'),BASE))],...(S('smp').length?[['Sữa bột gầy SMP',C.red,qavg(idx(S('smp'),BASE))]]:[])];
+ const n=CQ.quarters.length,qs=CQ.quarters.slice(Math.max(0,n-12));
+ const ser=items.map(([name,color,a])=>({name,color,kind:'line',values:qs.map(qq=>{const v=a[prevQ(qq,2)];return v==null?null:Math.round(v)})}));
+ barLineChart('chInputLag',{categories:qs,series:ser,unit:'',digits:0,height:260,rotateLabels:true,zeroBase:false});
+ legend('chInputLag',ser.map(x=>[x.name,x.color]));
+ fillTable('tbl-input-lag',['Quý (biên gộp)','Quý nguyên liệu',...items.map(x=>x[0])],qs.map(qq=>[qq,prevQ(qq,2),...items.map(([,,a])=>nf(a[prevQ(qq,2)],0))]).reverse());
+ sourceLine('chInputLag',[SRC.ice,['IMF qua FRED','https://fred.stlouisfed.org/']],qs.at(-1),'Mỗi quý trên trục là quý của biên gộp; giá trị vẽ là bình quân chỉ số nguyên liệu của quý trước đó 2 quý (độ trễ tồn kho và hợp đồng mua). Chỉ số T1/2024 = 100 nên quý trước 2024 trống. Sữa bột gầy SMP: FAO FPMA (bình quân châu Âu & châu Đại Dương). Chưa có lúa mạch, nhôm lon.');
+ insight('chInputLag','Đường thô rẻ nhất từ T4/2025 đến giữa 2026 rồi bật lại từ T8 — QNS bán đường chịu giá, VNM, MSN nước giải khát mua đường thấy chi phí tăng từ Q1/2027. Dầu cọ đi ngang cao, khô đậu và ngô thấp: thức ăn chăn nuôi (MSN Meat) được lợi.');
+}
+
 // ---------- 4. KPIs, quick read, catalyst brief ----------
 const rL=rt.at(-1),cL=cpi.at(-1),tL=tour.at(-1),caL=car.at(-1),bL=beer.at(-1),sL=sugar.at(-1),rs220=sec['220']?.records||[],v220=rs220.at(-1),v239=(sec['239']?.records||[]).at(-1);
 const rtY=ytdYo(rt),rtM=yoyAt(rt,rL),tY=ytdYo(tour),caY=ytdYo(car),beY=ytdYo(beer),suY=yoyAt(sugar,sL),dpY=yoyAt(dep,dep.at(-1)),ipB=iipB.at(-1)?.value;
@@ -210,11 +251,11 @@ const score=[
  row('Định giá','Bán lẻ hạ nhiệt, F&B rẻ',[v220?nf(v220[1],1)+'x':'—','P/E chuỗi bán lẻ'],'Sữa '+(v239?nf(v239[1],1):'—')+'x, bia '+nf((sec['120']?.records||[]).at(-1)?.[1],1)+'x','BCTC quý III (20–30/10); KQ tháng của MWG, FRT',v220?'info':'na','MWG · VNM · SAB','chSectorVal')];
 const nGood=score.filter(r=>r.st==='good').length,nRisk=score.filter(r=>r.st==='risk').length;
 window.RETAIL_BRIEF={
- headline:'Bán lẻ '+signed(rtY,0)+'% và khách quốc tế '+signed(tY,0)+'% kéo cầu; sản lượng bia, thực phẩm tăng mạnh; CPI '+nf(cL?.value,1)+'% và đường tăng giá là chi phí · '+nGood+' thuận, '+nRisk+' rủi ro',
+ headline:'Sức mua '+(rtY==null?'thiếu số':rtY>10?'mạnh nhất từ 2022':rtY>6?'tăng vừa':'yếu đi')+' (bán lẻ lũy kế '+signed(rtY,0)+'%, ngưỡng +8%) · chọn chuỗi có SSSG dương (MWG, FRT) cho mùa cao điểm Q4 · tránh FMCG có đường và bia trước thuế TTĐB 1/1/2027 (CPI '+nf(cL?.value,1)+'%, ngưỡng 5,5%; đường '+signed(suY,0)+'% YoY) · '+nGood+' thuận, '+nRisk+' rủi ro',
  segs:[['Bán lẻ hiện đại & điện máy','MWG · FRT · DGW · PET',rtY!=null&&rtY>10?'up':'flat','Bán lẻ '+signed(rtY,0)+'%'],['Hàng lâu bền','PNJ · HAX · SVC',caY!=null&&caY>10?'up':'flat','Ô tô '+signed(caY,0)+'%'],['Hàng tiêu dùng nhanh','VNM · SAB · QNS · MSN · KDC',beY!=null&&beY>8?'up':'flat','Bia '+signed(beY,0)+'%']],
  headers:['Biến số đang thay đổi','Đang thấy (số mới nhất)','Đổi đánh giá khi','','Hưởng lợi ▲ / chịu thiệt ▼'],
  score,
- events:[['Đầu tháng','NSO: bán lẻ, CPI, khách quốc tế, sản lượng'],['Giữa tháng','VAMA, VAMM doanh số xe; MWG, FRT, PNJ báo tháng'],['20–30/10','BCTC quý III'],['01/01/2027','Thuế TTĐB nước giải khát có đường 8%; bia bậc tiếp theo']]
+ events:[['11/11 · 27/11 · 12/12','Mùa khuyến mãi online: MWG, FRT, DGW'],['31/12/2026','Hết giảm VAT 2% — giá bán +2 điểm từ 1/1/2027'],['01/01/2027','Thuế TTĐB: bia 70%, nước giải khát có đường 8% (SAB, QNS, MSN, VNM)'],['17/02/2027','Tết Đinh Mùi — doanh thu Tết rơi trọn Q1/2027; Thần Tài ~26/02'],['Đầu tháng','NSO: bán lẻ, CPI, khách quốc tế, sản lượng'],['Giữa tháng','VAMA, VAMM doanh số xe; MWG, FRT, PNJ báo tháng']]
 };
-const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; giá hàng hóa: IMF/FRED, EIA, ICE.';
+const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+' (NSO, NHNN, FRED, ICE, VNDirect)'+(W.wi_filled?.length?'; WiData lấp: '+W.wi_filled.join(', '):'')+'.';
 })();

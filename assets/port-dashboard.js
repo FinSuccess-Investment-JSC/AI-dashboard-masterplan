@@ -161,14 +161,73 @@ if(bdi.length&&document.getElementById('chBdi')){
  sourceLine('chBdi',[['Baltic Exchange qua CNBC (.BADI)','https://www.cnbc.com/quotes/.BADI']],short(bdi.at(-1).date),'Baltic Dry Index, phiên cuối mỗi tháng (chuỗi ngày CNBC). Chỉ số tàu hàng rời, không dùng cho tàu container.');
  insight('chBdi','BDI đo cước hàng rời (than, quặng, ngũ cốc): liên quan tới cảng tổng hợp (CDN, SGP thép, PDN) hơn là cảng container. BDI '+signed(yoyAt(bdi,bdi.at(-1)),0)+'% so cùng kỳ ('+short(bdi.at(-1).date)+') phản ánh cầu nguyên liệu và tàu chạy vòng xa.');
 }
+// ---------- PortWatch: lượt tàu container cập cảng theo ngày (scripts/fetch_portwatch_ports.py) ----------
+const PWP=B.portwatch_ports?.ports||{};
+const PORTS=[['port434','Hải Phòng',C.navy],['port903','Cái Mép',C.plum],['port1291','Sài Gòn',C.teal],['port269','Đà Nẵng',C.gold]].filter(([id])=>PWP[id]?.records?.length>400);
+const WIN=28;
+function trailing(recs,key){const out=[];let s=0;for(let i=0;i<recs.length;i++){s+=recs[i][key]||0;if(i>=WIN)s-=recs[i-WIN][key]||0;if(i>=WIN-1)out.push({date:recs[i].date,value:s/WIN,sum:s})}return out}
+const shiftYear=d=>{const x=new Date(d+'T00:00:00Z');x.setUTCDate(x.getUTCDate()-364);return x.toISOString().slice(0,10)};
+const dmy=d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4);
+const pwT={};PORTS.forEach(([id])=>{pwT[id]=trailing(PWP[id].records,'portcalls_container')});
+const pwLast=PORTS.length?pwT[PORTS[0][0]].at(-1)?.date:null;
+const pwAt=(id,d)=>pwT[id]?.find(r=>r.date===d);
+const hpcm=(()=>{const a=pwAt('port434',pwLast),b=pwAt('port903',pwLast),ay=pwAt('port434',shiftYear(pwLast||'2026-01-01')),by=pwAt('port903',shiftYear(pwLast||'2026-01-01'));if(!a||!b)return null;const cur=a.value+b.value,prev=ay&&by?ay.value+by.value:null;return {cur,prev,yoy:prev?(cur/prev-1)*100:null}})();
+if(PORTS.length&&document.getElementById('chPortCalls')){
+ const base=pwT[PORTS[0][0]],pts=base.filter((r,i)=>(base.length-1-i)%7===0).slice(-104);
+ barLineChart('chPortCalls',{categories:pts.map(r=>dmy(r.date)),series:PORTS.map(([id,name,color])=>({name,color,kind:'line',markers:false,values:pts.map(r=>pwAt(id,r.date)?.value??null)})),unit:'lượt/ngày',digits:1,height:260,zeroBase:true,rotateLabels:true,maxLabels:12});
+ legend('chPortCalls',PORTS.map(([,n,c])=>[n,c]));
+ fillTable('tbl-portcalls',['Cảng','28 ngày đến '+dmy(pwLast)+' (lượt)','Cùng kỳ năm trước','So cùng kỳ','Hàng container nhập / xuất 28 ngày (nghìn tấn, ước tính)'],PORTS.map(([id,name])=>{const r=pwAt(id,pwLast),p=pwAt(id,shiftYear(pwLast)),rec=PWP[id].records.slice(-WIN);const imp=rec.reduce((a,x)=>a+(x.import_container||0),0)/1000,exp=rec.reduce((a,x)=>a+(x.export_container||0),0)/1000;return [name,nf(r?.sum,0),nf(p?.sum,0),p?.sum?signed((r.sum/p.sum-1)*100,1)+'%':'—',nf(imp,0)+' / '+nf(exp,0)]}));
+ sourceLine('chPortCalls',[['IMF PortWatch · Daily_Ports_Data','https://portwatch.imf.org/']],dmy(pwLast),'Số lượt tàu container cập cảng theo ngày từ AIS (PortWatch ước tính), bình quân trượt 28 ngày, vẽ mỗi 7 ngày; cảng theo định nghĩa PortWatch (Hải Phòng port434, Cái Mép port903, Sài Gòn port1291, Đà Nẵng port269). Đếm lượt tàu, không phải TEU; tàu lớn hơn làm TEU tăng nhanh hơn lượt. Dung Quất gần như không có tàu container nên không vẽ.');
+ insight('chPortCalls',hpcm?'Hải Phòng + Cái Mép '+nf(hpcm.cur,1)+' lượt tàu container/ngày (28 ngày đến '+dmy(pwLast)+'), '+signed(hpcm.yoy,0)+'% so cùng kỳ. Lượt tàu dẫn trước sản lượng TEU công bố theo quý khoảng 1–3 tháng: nhịp tàu tăng mà giá bốc xếp chưa đổi là lúc theo dõi PHP, GMD; nhịp tàu Sài Gòn giảm trong khi Cái Mép tăng là hàng dịch từ cảng sông ra cảng nước sâu.':'Chưa đủ dữ liệu.');
+}
+// PortWatch cấp quốc gia (Wi bảng 363): khối lượng hàng container xuất/nhập qua cảng VN theo tháng
+const pwS=B.portwatch?.series||{},pwE=pwS.pw_container_exp?.records||[],pwI=pwS.pw_container_imp?.records||[];
+if(pwE.length&&document.getElementById('chPwMonthly')){
+ const im=byMonth(pwI),rs=pwE.slice(-36),tot=r=>r.value+(im[ym(r.date)]?.value||0);
+ const totS=pwE.map(r=>({date:r.date,value:tot(r)}));
+ barLineChart('chPwMonthly',{categories:rs.map(r=>mon(r.date)),series:[{name:'Xuất qua cảng',color:C.navy,values:rs.map(r=>r.value)},{name:'Nhập qua cảng',color:C.teal,values:rs.map(r=>im[ym(r.date)]?.value??null)}],unit:'triệu tấn',digits:2,height:260,rotateLabels:true});
+ legend('chPwMonthly',[['Xuất qua cảng',C.navy],['Nhập qua cảng',C.teal]]);
+ fillTable('tbl-pw-monthly',['Tháng','Xuất (triệu tấn)','Nhập (triệu tấn)','Tổng','Tổng so cùng kỳ'],pwE.slice().reverse().map(r=>[mon(r.date),nf(r.value,2),nf(im[ym(r.date)]?.value,2),nf(tot(r),2),signed(yoyAt(totS,totS.find(x=>x.date===r.date)),1)+'%']));
+ sourceLine('chPwMonthly',[['IMF PortWatch qua WiData','https://widata.vn/']],mon(pwE.at(-1).date),'Khối lượng hàng container xuất, nhập qua mọi cảng Việt Nam, ước tính từ AIS (triệu tấn, không phải TEU); PortWatch công bố trễ khoảng 1–2 tháng. Dùng để đọc xu hướng, không thay số Cục Hàng hải.');
+ const l=totS.at(-1);insight('chPwMonthly','Tổng hàng container qua cảng '+mon(l.date)+' '+nf(l.value,2)+' triệu tấn, '+signed(yoyAt(totS,l),0)+'% so cùng kỳ; lũy kế năm '+signed(ytdYo(totS),0)+'%. Chuỗi này là sản lượng cảng theo tháng mà thống kê chính thức không có: so với XNK bằng USD, nó không bị giá hàng (điện tử) làm méo.');
+}
+// FBX theo tuyến (scripts/fetch_fbx.py) — cho HAH; cước container không phải doanh thu cảng
+const FBX=B.fbx||{},fbDays=Object.keys(FBX.days||{}).sort(),fbLast=fbDays.at(-1),fbV=fbLast?FBX.days[fbLast]:{};
+const FBL=[['FBX01','→ Bờ Tây Bắc Mỹ'],['FBX03','→ Bờ Đông Bắc Mỹ'],['FBX11','→ Bắc Âu'],['FBX13','→ Địa Trung Hải'],['FBX','FBX tổng hợp']].filter(([k])=>fbV[k]);
+if(FBL.length&&document.getElementById('chFbx')){
+ hbarCompare('chFbx',{items:FBL.map(([k,l])=>({label:l,value:fbV[k],color:k==='FBX'?C.navy:C.teal})),unit:'USD/FEU',digits:0,labelW:150,ariaLabel:'FBX theo tuyến'});
+ fillTable('tbl-fbx',['Ngày đọc',...FBL.map(([k])=>k)],fbDays.slice().reverse().map(d=>[dmy(d),...FBL.map(([k])=>nf(FBX.days[d][k],0))]));
+ sourceLine('chFbx',[['Freightos Baltic Index',FBX.url]],dmy(fbLast),'Cước giao ngay container 40 feet từ Trung Quốc/Đông Á (Freightos FBX, theo ngày); script lưu giá trị mới nhất mỗi lượt job nên bảng dài thêm từ 05/11/2026. Cước là doanh thu của hãng tàu, không phải doanh thu cảng; HAH chạy nội Á nên chỉ đọc gián tiếp.');
+ insight('chFbx','Tuyến đi Mỹ ('+nf(fbV.FBX01,0)+' USD/FEU bờ Tây) đắt gấp '+nf(fbV.FBX01/fbV.FBX11,1)+' lần tuyến đi Bắc Âu: hãng tàu ưu tiên tải cho Mỹ, nên tàu mẹ vào Cái Mép giữ được tuyến. Cước thế giới lên không làm cảng tăng giá (giá sàn do Nhà nước), chỉ đổi thị phần giữa các bến; cước giảm mạnh là rủi ro cho mảng cho thuê tàu của HAH trước.');
+}
+// Tab Giá – Chi phí – Margin: giá sàn tàu mẹ theo đợt (TT 54/2018 → TT 39/2023 → QĐ 810 sửa) so chỉ số giá bốc xếp NSO, cùng trục 2023 = 100
+if(ph.length&&document.getElementById('chTariffIdx')){
+ const q=d=>d.slice(0,4)+'Q'+Math.ceil(Number(d.slice(5,7))/3),yoy={};ph.forEach(r=>{yoy[q(r.date)]=r.value});
+ const quarters=[];for(let y=2023;y<=Number(ph.at(-1).date.slice(0,4));y++)for(let k=1;k<=4;k++){const key=y+'Q'+k;if(y===2023||yoy[key]!=null)quarters.push(key);}
+ const lvl={};quarters.forEach(k=>{const y=Number(k.slice(0,4));lvl[k]=y===2023?100:(lvl[(y-1)+k.slice(4)]??null)==null?null:lvl[(y-1)+k.slice(4)]*(1+yoy[k]/100)});
+ const floorIdx=k=>{const y=Number(k.slice(0,4));return y>=2026?63/(57/1.1)*100:y>=2024?110:100}; // TT 39/2023 = TT 54/2018 +10% (mức TT 54 suy ngược 57/1,1); QĐ 810 sửa: 63 USD/20'
+ const cats=quarters.map(k=>'Q'+k.slice(5)+'/'+k.slice(2,4));
+ barLineChart('chTariffIdx',{categories:cats,series:[{name:'Giá sàn bốc xếp tàu mẹ (khung)',color:C.navy,kind:'line',values:quarters.map(floorIdx)},{name:'Giá bốc xếp thực tế toàn quốc (NSO, chuỗi từ YoY)',color:C.plum,kind:'line',values:quarters.map(k=>lvl[k]==null?null:Math.round(lvl[k]*10)/10)}],unit:'2023 = 100',digits:1,height:260,zeroBase:false,rotateLabels:false});
+ legend('chTariffIdx',[['Giá sàn tàu mẹ (khung)',C.navy],['Giá bốc xếp thực tế toàn quốc (NSO)',C.plum]]);
+ fillTable('tbl-tariff-idx',['Quý','Giá sàn tàu mẹ (2023=100)','Mức sàn 20\' (USD)','NSO bốc xếp YoY (%)','NSO quy chỉ số (2023=100)'],quarters.slice().reverse().map(k=>[ 'Q'+k.slice(5)+'/'+k.slice(2,4),nf(floorIdx(k),1),nf(floorIdx(k)*(57/1.1)/100,1),nf(yoy[k],1),nf(lvl[k],1)]));
+ sourceLine('chTariffIdx',[['SGGP – QĐ 810 sửa từ 01/02/2026','https://www.sggp.org.vn/tang-gia-dich-vu-boc-do-container-tai-cang-nuoc-sau-tu-ngay-1-2-post832247.html'],['Trung tâm WTO – TT 39/2023','https://trungtamwto.vn/chuyen-de/25294-chinh-thuc-dieu-chinh-tang-10-gia-boc-do-container-cang-bien'],SRC.nso],qtr(ph.at(-1).date),'Phép tính: giá sàn 20\' Cái Mép, Lạch Huyện 57 USD (TT 39/2023, từ 15/02/2024) → 63 USD (QĐ 810 sửa, từ 01/02/2026); mức TT 54/2018 suy ngược = 57 ÷ 1,1 vì TT 39 tăng ~10% (văn bản gốc chưa mở). Đường NSO: chỉ số giá sản xuất dịch vụ bốc xếp (YoY, quý) nối thành mức với 4 quý 2023 = 100 — gồm cả cảng hạ lưu và hàng rời.');
+ const lk=quarters.at(-1);insight('chTariffIdx','Khung sàn tàu mẹ đã lên '+nf(floorIdx(lk),0)+' (2023 = 100) nhưng giá bốc xếp thực tế toàn quốc mới '+nf(lvl[lk],0)+': phần tăng giá chỉ chạy ở cảng nước sâu (GMD, PHP, SGP); cảng hạ lưu và hàng rời (VSC, DVP, CDN, PDN) gần như không tăng giá. Khoảng cách hai đường càng rộng, chênh lệch biên giữa hai nhóm càng lớn.');
+}
+// Dự án cảng mới: công suất sử dụng theo bến — bước 1, chỉ bến có cả công suất thiết kế và sản lượng trên trang gốc
+if(document.getElementById('tbl-util')){
+ const rows=[['Gemalink GĐ1 (GMD)','Cái Mép',1.5,'Q1/2026: 523 nghìn TEU → quy năm '+nf(0.523*4,2),0.523*4/1.5*100,'match'],['Lạch Huyện 3–4 · HTIT (PHP)','Hải Phòng',1.1,'KH 2026: 0,7–0,8 (chưa có số thực hiện)',[0.7/1.1*100,0.8/1.1*100],'plan'],['Nam Đình Vũ (GMD)','Hải Phòng',null,'2025 ~1,5 · KH 2026 1,85',null,'nocap'],['Cụm Cái Mép – Thị Vải (tàu mẹ)','Cái Mép',null,'Q1/2026: 1,94 → quy năm '+nf(1.94*4,2),null,'nocap'],['Cụm Hải Phòng','Hải Phòng',null,'2025: 8,35 (+13%) · KH 2026: 9,1',null,'nocap']];
+ fillTable('tbl-util',['Bến / cụm','Khu vực','Công suất thiết kế (triệu TEU/năm)','Sản lượng (triệu TEU)','% sử dụng (phép tính)'],rows.map(([n,a,cap,out,pct,k])=>[n,a,cap==null?'— chưa có số đã xác minh':nf(cap,2),out,k==='nocap'?'—':Array.isArray(pct)?nf(pct[0],0)+'–'+nf(pct[1],0)+'% (theo kế hoạch)':nf(pct,0)+'%']));
+ const host=document.getElementById('tbl-util'),card=host.closest('.card');
+ if(card){const n=make('div','chart-insight');n.dataset.inputOwner='ai';n.innerHTML='<b>Cách hiểu trong bối cảnh ngành · AI:</b> ';n.append('Gemalink chạy trên công suất thiết kế (~'+nf(0.523*4/1.5*100,0)+'% nếu giữ nhịp Q1) nên Gemalink 2 là điều kiện để GMD tăng sản lượng, và cảng đầy là lý do giữ được giá sát trần khung. Lạch Huyện 3–4 mới ở 64–73% kế hoạch năm đầu: PHP còn dư chỗ để hút hàng từ cảng hạ lưu. Quy tắc đọc: >85% = chật, cảng được tăng giá; <60% = cạnh tranh giá.');card.append(n)}
+}
 // Hàng không, thủy nội địa
 const air=S('air_freight');
 if(air.length&&document.getElementById('chAir')){
  const rs=air.slice(-36);
  barLineChart('chAir',{categories:rs.map(r=>mon(r.date)),series:[{name:'Hàng không',color:C.teal,values:rs.map(r=>r.value)}],unit:'nghìn tấn',digits:1,height:260,rotateLabels:true});
  fillTable('tbl-air',['Tháng','Nghìn tấn','So cùng kỳ'],air.slice().reverse().map(r=>[mon(r.date),nf(r.value,1),signed(yoyAt(air,r),1)+'%']));
- sourceLine('chAir',[SRC.nso],mon(air.at(-1).date),'Hàng hóa do hãng hàng không Việt Nam vận chuyển. Không gồm hãng nước ngoài, nên không bằng sản lượng nhà ga SCS.');
- insight('chAir','Hãng Việt Nam chỉ chở một phần hàng quốc tế, nên chuỗi này là chỉ báo xu hướng chứ không phải sản lượng SCS. Lũy kế 9T chỉ +2% trong khi sản lượng SCS Q2/2026 giảm 8%: hàng quốc tế qua hãng nước ngoài (tuyến Trung Đông) là phần yếu.');
+ sourceLine('chAir',[SRC.nso],mon(air.at(-1).date),'Hàng hóa do hãng hàng không Việt Nam vận chuyển (NSO). Khác với "hàng hóa thông qua cảng hàng không" (mọi hãng, biến doanh thu của SCS, SGN) — chuỗi qua cảng chưa có nguồn máy đọc được.');
+ insight('chAir','Hãng Việt Nam chỉ chở một phần hàng quốc tế, nên chuỗi này là chỉ báo xu hướng chứ không phải sản lượng SCS. Lũy kế '+signed(ytdYo(air),0)+'% trong khi sản lượng SCS Q2/2026 giảm 8%: hàng quốc tế qua hãng nước ngoài (tuyến Trung Đông) là phần yếu.');
 }
 const inl=S('inland_freight');
 if(inl.length&&document.getElementById('chInland')){
@@ -215,12 +274,12 @@ kpi('spk-sea',sL?nf(sL.value/1000,1):'—',sL?'triệu tấn · '+mon(sL.date):'
 kpi('spk-trade',trade?nf(trade/1000,1):'—',eL?'tỷ USD XNK · '+mon(eL.date):'—',tradeY!=null?signed(tradeY,1)+'% so cùng kỳ':'',ex.slice(-12).map(r=>r.value+(byMonth(im)[ym(r.date)]?.value||0)),C.plum);
 kpi('spk-air',aL?nf(aL.value,1):'—',aL?'nghìn tấn · '+mon(aL.date):'—',aL?signed(yoyAt(air,aL),1)+'% so cùng kỳ':'',air.slice(-12).map(r=>r.value),C.teal);
 const wsp=document.getElementById('spk-wci');if(wsp)sparkline('spk-wci',wk.map(r=>r[1]),C.gold);
-kpi('spk-bdi',bL?nf(bL.value,0):'—',bL?'điểm · '+short(bL.date):'—',bL?signed(yoyAt(bdi,bL),0)+'% so cùng kỳ':'',bdi.slice(-12).map(r=>r.value),C.gold);
+kpi('spk-portcalls',hpcm?nf(hpcm.cur,1):'—',hpcm?'lượt tàu container/ngày · 28 ngày đến '+dmy(pwLast):'IMF PortWatch',hpcm&&hpcm.yoy!=null?signed(hpcm.yoy,0)+'% so cùng kỳ':'',PORTS.length?pwT[PORTS[0][0]].filter((r,i)=>(pwT[PORTS[0][0]].length-1-i)%7===0).slice(-26).map(r=>r.value+(pwAt('port903',r.date)?.value||0)):[],C.gold);
 kpi('spk-pe',peL?nf(peL[1],1)+'x':'—',peL?'P/E cảng & dịch vụ hàng hải · '+short(peL[0]):'—',peL?'P/B '+nf(peL[2],2)+'x · vốn hóa '+nf(peL[3]/1000,1)+' nghìn tỷ':'',pe.slice(-30).map(r=>r[1]),C.grey);
 const seaYtd=ytdYo(sea),tradeYtd=(()=>{const l=ex.at(-1);if(!l)return null;const y=l.date.slice(0,4),m=l.date.slice(5,7),sum=yy=>[...ex,...im].filter(r=>r.date.slice(0,4)===yy&&r.date.slice(5,7)<=m).reduce((a,r)=>a+r.value,0),p=sum(String(y-1));return p?(sum(y)/p-1)*100:null})();
 const quick=document.querySelector('.hero .insight');
 if(quick&&eL){
- quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai: '),`XNK ${mon(eL.date)} ${nf(trade/1000,1)} tỷ USD (${signed(tradeY,1)}% YoY), lũy kế năm ${signed(tradeYtd,1)}%. `+(sL?`Vận chuyển đường biển ${mon(sL.date)} ${nf(sL.value/1000,1)} triệu tấn (${signed(yoyAt(sea,sL),1)}%), lũy kế ${signed(seaYtd,1)}%. `:'')+(bL?`BDI ${nf(bL.value,0)} điểm. `:'')+(peL?`P/E cảng ${nf(peL[1],1)}x.`:''));
+ quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai: '),`XNK ${mon(eL.date)} ${nf(trade/1000,1)} tỷ USD (${signed(tradeY,1)}% YoY), lũy kế năm ${signed(tradeYtd,1)}%. `+(sL?`Vận chuyển đường biển ${mon(sL.date)} ${nf(sL.value/1000,1)} triệu tấn (${signed(yoyAt(sea,sL),1)}%), lũy kế ${signed(seaYtd,1)}%. `:'')+(hpcm?`Tàu container cập Hải Phòng + Cái Mép ${nf(hpcm.cur,1)} lượt/ngày (${signed(hpcm.yoy,0)}% YoY, PortWatch). `:'')+(peL?`P/E cảng ${nf(peL[1],1)}x.`:''));
  Object.assign(quick.dataset,{updateKind:'ai',cadence:'on-data-change',refreshStatus:'derived'});
 }
 // Catalyst brief: one tile per moving variable (rendered by catalyst-board.js).
@@ -228,6 +287,7 @@ const ppL=ph.at(-1),psL=ps.at(-1),pe0=pe[0];
 const row=(group,name,big,evidence,cond,st,who,chart)=>({group,name,big,chart,st,mid:[evidence,cond],end:[who]});
 const score=[
  row('Cầu & sản lượng','XNK tăng mạnh',[signed(tradeY,1)+'%','XNK '+(eL?mon(eL.date):'')+' YoY'],'XNK lũy kế '+signed(tradeYtd,1)+'% · container cả nước 5T/2026 +14%','XNK tháng < +5% YoY hai tháng liền',tradeY==null?'na':tradeY>10?'good':tradeY<0?'risk':'watch','▲ cả nhóm cảng · TCL · STG','chTrade'),
+ row('Cầu & sản lượng','Nhịp tàu container cập Hải Phòng + Cái Mép',[hpcm?signed(hpcm.yoy,0)+'%':'—','lượt tàu 28 ngày YoY (PortWatch)'],hpcm?nf(hpcm.cur,1)+' lượt/ngày đến '+dmy(pwLast)+'; dẫn trước TEU quý 1–3 tháng':'Chưa có feed','Bình quân 28 ngày âm so cùng kỳ 4 tuần liền',!hpcm||hpcm.yoy==null?'na':hpcm.yoy>5?'good':hpcm.yoy<0?'risk':'watch','▲ PHP · GMD · SGP (tàu mẹ)','chPortCalls'),
  row('Cầu & sản lượng','Đội tàu Việt Nam chạy đầy',[signed(seaYtd,1)+'%','đường biển lũy kế YoY'],'Vận chuyển đường biển '+(sL?mon(sL.date)+' '+signed(yoyAt(sea,sL),1)+'% YoY':'—'),'Lũy kế năm về dưới +5%',seaYtd==null?'na':seaYtd>8?'good':seaYtd<0?'risk':'watch','▲ HAH','chSea'),
  row('Cầu & sản lượng','Hàng không quốc tế yếu',['−8%','sản lượng SCS Q2/26'],'SCS quốc tế 50.163 tấn (−8%); hãng Việt Nam '+(aL?mon(aL.date)+' '+signed(yoyAt(air,aL),1)+'%':'—'),'Sản lượng SCS quý trở lại tăng YoY','risk','▼ SCS · SGN','chAir'),
  row('Giá & cạnh tranh','Giá bốc xếp tàu mẹ tăng',['+10%','khung giá sàn từ 01/02/2026'],'Cái Mép, Lạch Huyện 63–73 USD/20\'; chỉ số giá bốc xếp '+(ppL?qtr(ppL.date)+' '+signed(ppL.value,1)+'% YoY':'—'),'Cảng giảm giá dưới sàn hoặc khung giá bị hoãn','good','▲ GMD · PHP · SGP','chTariff'),
@@ -238,10 +298,10 @@ const score=[
 const nGood=score.filter(r=>r.st==='good').length,nRisk=score.filter(r=>r.st==='risk').length;
 window.PORT_BRIEF={
  headline:'Cầu XNK và giá bốc xếp đỡ cảng nước sâu; dư cung Hải Phòng và Long Thành là hai rủi ro · '+nGood+' thuận, '+nRisk+' rủi ro',
- segs:[['Cảng nước sâu','GMD · PHP · SGP',tradeY!=null&&tradeY>10?'up':'flat','Giá +10% · XNK '+signed(tradeY,0)+'%'],['Cảng hạ lưu','VSC · DVP · CDN · PDN','down','Cung mới Lạch Huyện'],['Vận tải biển','HAH',seaYtd!=null&&seaYtd>8?'up':'flat','Đường biển lũy kế '+signed(seaYtd,0)+'%'],['Hàng không','SCS · SGN','down','SCS −8% · Long Thành']],
+ segs:[['Cảng nước sâu','GMD · PHP · SGP',tradeY!=null&&tradeY>10?'up':'flat','Giá +10% · XNK '+signed(tradeY,0)+'%'],['Cảng hạ lưu','VSC · DVP · CDN · PDN','down','Cung mới Lạch Huyện'],['Vận tải biển','HAH',seaYtd!=null&&seaYtd>8?'up':'flat','Đường biển lũy kế '+signed(seaYtd,0)+'%'],['Hàng không','SCS · SGN','down','SCS −8% · Long Thành 24/12/2026']],
  headers:['Biến số đang thay đổi','Đang thấy (số mới nhất)','Đổi đánh giá khi','','Hưởng lợi ▲ / chịu thiệt ▼'],
  score,
- events:[['Đầu tháng','Hải quan, NSO: XNK, vận chuyển tháng trước'],['Thứ Năm','Drewry WCI'],['20–30/10','BCTC quý III'],['10/2026','Khởi công cảng Cần Giờ (dự kiến)'],['Q4/2027','Gemalink 2 khai thác']]
+ events:[['Mỗi lượt job','PortWatch: lượt tàu container cập cảng (trễ ~5 ngày) · FBX'],['Đầu tháng','Hải quan, NSO: XNK, vận chuyển tháng trước'],['Thứ Năm','Drewry WCI'],['24/12/2026','Long Thành khai thác (ACV dự kiến); CTB1 hàng nội địa, quốc tế từ 1/2027'],['Q4/2027','Gemalink 2 khai thác']]
 };
 const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; giá hàng hóa: IMF/FRED, EIA, ICE.';
 })();

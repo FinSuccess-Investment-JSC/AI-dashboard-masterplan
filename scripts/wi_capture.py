@@ -35,7 +35,7 @@ def main() -> int:
     try:
         event = json.load(sys.stdin)
         tool = event.get('tool_name', '')
-        if 'WiMCP' not in tool:
+        if 'WiMCP' not in tool and 'Widata' not in tool:
             return 0
         root = Path(os.environ.get('CLAUDE_PROJECT_DIR') or Path(__file__).resolve().parents[1])
         inbox = root / 'data/raw/wi/.inbox'

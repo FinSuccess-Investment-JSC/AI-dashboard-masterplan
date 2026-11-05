@@ -48,6 +48,7 @@ def main():
     ind = contract['indicators']
     put('macro', ['macro_transport'], lambda r: build_macro(r, ind))
     put('commodity', ['commodity_freight'], lambda r: build_macro(r, ind))
+    put('portwatch', ['portwatch_vn'], lambda r: build_macro(r, ind))
     put('sector_ratio', ['sector_ratio_recent'], lambda r: build_sector(r, contract['sectors']))
     bundle = {'schema': 1, 'built_at': dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'provider': 'WiMCP (Widata)',
               'contract': str(CONTRACT.relative_to(ROOT)), 'calls': status, 'blocks': blocks}

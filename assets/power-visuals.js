@@ -220,6 +220,74 @@ function companyCards() {
   });
 }
 
-function run() { topRow(); hydroMap(); heatmap(); table(); businessCards(); setTimeout(companyCards, 200); }
+
+/* ---- 7. Spread FMP − chi phí nhiên liệu biến đổi (tab Giá – Chi phí – Margin, card dien-30) ----
+   FMP tháng: fmpRows của trang (PGV IR). Than: World Bank coal_au × tỷ giá trung tâm tháng (Wi 242638 qua PHARMA_WI).
+   Suất tiêu hao & mốc nội địa theo QĐ 1692/QĐ-BCT (than) và QĐ 1882/QĐ-BCT (khí) năm 2026 — xem ⓘ của card. */
+const P = {HR_COAL: 2411.6, HHV_NC: 6000, HHV_DOM: 5012.61, COAL_DOM: 1962004, HR_GAS: 6542.96, GAS_USD: 11.98, FEE_USD: 1.87, FX_QD: 26378};
+function spread() {
+  const host = document.getElementById('chSpread'); if (!host) return;
+  const fmp = typeof fmpRows !== 'undefined' ? fmpRows : null; if (!fmp?.length) return;
+  const wb = src.wb_energy_monthly?.records || [], fx = window.PHARMA_WI?.blocks?.macro?.series?.usdvnd?.records || [];
+  const wbM = new Map(wb.map(r => [r.date.slice(0, 7), r])), fxM = new Map(fx.map(r => [r.date.slice(0, 7), r.value]));
+  const domCoal = P.COAL_DOM / 1000 * P.HR_COAL / P.HHV_DOM, domGas = (P.GAS_USD + P.FEE_USD) * P.HR_GAS / 1e6 * P.FX_QD;
+  const rows = fmp.map(r => {
+    const w = wbM.get(r.period), f = fxM.get(r.period);
+    const coalImp = w && f && isFinite(w.coal_au) ? w.coal_au * f / 1000 * P.HR_COAL / P.HHV_NC : null;
+    const lng = w && f && isFinite(w.lng_japan) ? (w.lng_japan + P.FEE_USD) * P.HR_GAS / 1e6 * f : null;
+    const y26 = r.year >= 2026;
+    return {...r, fx: f ?? null, coalImp, lng, sCoal: coalImp == null ? null : r.fmp - coalImp, sLng: lng == null ? null : r.fmp - lng,
+            sDomCoal: y26 ? r.fmp - domCoal : null, sDomGas: y26 ? r.fmp - domGas : null};
+  });
+  if (!rows.some(r => r.sCoal != null)) { host.innerHTML = '<div class="data-gap">Thiếu tỷ giá tháng hoặc giá than World Bank cùng kỳ; chưa tính được spread.</div>'; return; }
+  const model = {categories: rows.map(r => r.period), tickLabels: rows.map(r => r.period.slice(5) + '/' + r.period.slice(2, 4)), unit: 'đ/kWh', digits: 0, zeroBase: true, height: 280,
+    series: [{name: 'FMP − than nhập (ước)', color: '#3d4653', kind: 'line', values: rows.map(r => r.sCoal)},
+             {name: 'FMP − LNG nhập (ước)', color: '#c98a00', kind: 'line', values: rows.map(r => r.sLng)},
+             {name: 'FMP − than nội, mốc QĐ 1692 (2026)', color: '#2938A8', kind: 'line', values: rows.map(r => r.sDomCoal)},
+             {name: 'FMP − khí nội, mốc QĐ 1882 (2026)', color: '#861C52', kind: 'line', values: rows.map(r => r.sDomGas)}],
+    aria: 'Spread FMP trừ chi phí nhiên liệu biến đổi ước tính theo tháng từ 2023'};
+  if (window.ChartTypes) ChartTypes.mount(host, model, () => { host.innerHTML = ChartTypes.render(model, 'line'); });
+  const last = [...rows].reverse().find(r => r.sCoal != null), prev = last && rows.find(r => r.period === (last.year - 1) + last.period.slice(4));
+  const card = host.closest('.card');
+  if (last && card && !card.querySelector('.pv-key')) card.querySelector('.chart-sub')?.after(el('div', 'pv-key',
+    `<b class="${last.sCoal >= 0 ? 'up' : 'dn'}">${nf(last.sCoal, 0)} đ/kWh</b> FMP − than nhập tháng ${+last.period.slice(5)}/${last.period.slice(0, 4)}${prev?.sCoal != null ? ` <span>cùng kỳ ${nf(prev.sCoal, 0)}</span>` : ''}${last.sDomCoal != null ? ` <span>· so than nội ${nf(last.sDomCoal, 0)} · so khí nội ${nf(last.sDomGas, 0)}</span>` : ''}`));
+  const tb = document.getElementById('tbl-spread');
+  if (tb) tb.innerHTML = '<thead><tr><th>Tháng</th><th>FMP</th><th>Tỷ giá</th><th>Than nhập (đ/kWh)</th><th>LNG nhập</th><th>FMP − than nhập</th><th>FMP − LNG</th><th>FMP − than nội</th><th>FMP − khí nội</th></tr></thead><tbody>' +
+    rows.map(r => `<tr><td>${r.period}</td><td>${nf(r.fmp, 0)}</td><td>${nf(r.fx, 0)}</td><td>${nf(r.coalImp, 0)}</td><td>${nf(r.lng, 0)}</td><td>${nf(r.sCoal, 0)}</td><td>${nf(r.sLng, 0)}</td><td>${nf(r.sDomCoal, 0)}</td><td>${nf(r.sDomGas, 0)}</td></tr>`).join('') + '</tbody>';
+  if (card && !card.querySelector('.chart-insight')) {
+    const n = el('div', 'chart-insight'); n.dataset.inputOwner = 'ai';
+    n.innerHTML = `<b>Cách hiểu trong bối cảnh ngành:</b> spread dương nghĩa là một kWh bán trên thị trường điện (phần ngoài Qc) vẫn bù được nhiên liệu; than nội (TKV, mốc ≈ ${nf(domCoal, 0)} đ/kWh) rẻ hơn hẳn than nhập nên nhà máy dùng than nội (QTP, HND, PPC) có đệm rộng hơn; khí nội mốc ≈ ${nf(domGas, 0)} đ/kWh và LNG cao hơn FMP phần lớn thời gian → nhiệt điện khí sống bằng Qc và giá hợp đồng, không bằng thị trường. Kiểm chứng bằng biên gộp quý của từng mã ở Tổng quan › So sánh tài chính.`;
+    card.querySelector('.source-note')?.before(n);
+  }
+}
+
+/* ---- 8. Key players: bảng so sánh gọn theo nhóm (card dien-33) ---- */
+const GROUPS = [['Nhiệt điện than & khí', ['POW', 'NT2', 'PPC', 'QTP', 'HND', 'BTP'], '#3d4653'], ['Thủy điện', ['REE', 'VSH', 'CHP', 'SBA', 'TMP', 'SHP'], '#2938A8'],
+  ['Năng lượng tái tạo', ['GEG', 'HDG', 'TTA'], '#2a9fa3'], ['Xây lắp & thiết bị lưới', ['PC1', 'TV2', 'GEX'], '#b8801f']];
+function keyPlayers() {
+  const host = document.getElementById('kp-groups'); if (!host) return;
+  const val = window.COMPANY_VALUATION?.companies || {}, comp = window.COMPANY_COMPARISON?.companies || [], CQ = window.COMPANY_QUARTERLY || {}, qs = CQ.quarters || [];
+  const cq = Object.fromEntries((CQ.companies || []).filter(c => c.sector === 'power').map(c => [c.symbol, c]));
+  const cmp = Object.fromEntries(comp.filter(c => c.sector === 'power').map(c => [c.symbol, c]));
+  const lastIdx = a => { for (let i = (a || []).length - 1; i >= 0; i--) if (a[i] != null && isFinite(a[i])) return i; return -1; };
+  const med = a => { const v = a.filter(x => x != null && isFinite(x)).sort((x, y) => x - y); return v.length ? (v.length % 2 ? v[(v.length - 1) / 2] : (v[v.length / 2 - 1] + v[v.length / 2]) / 2) : null; };
+  const row = t => {
+    const v = val[t] || {}, q = cq[t], i = q ? lastIdx(q.revenue) : -1, rev = i >= 0 ? q.revenue[i] : null, gp = i >= 0 ? q.gross_profit?.[i] : null;
+    const prevRev = i >= 4 ? q.revenue[i - 4] : null;
+    return {t, mcap: v.market_cap ?? null, pe: v.pe > 0 ? v.pe : null, pb: v.pb ?? null, gm: rev && gp != null ? gp / rev * 100 : null, yoy: rev && prevRev ? (rev / prevRev - 1) * 100 : null,
+            roe: cmp[t]?.quarter?.values?.roe ?? null, q: i >= 0 ? qs[i] : null, date: v.date};
+  };
+  const pct = (v, d = 1) => v == null ? '—' : (v > 0 ? '+' : '') + nf(v, d) + '%';
+  const groups = GROUPS.map(([name, codes, c]) => { const rs = codes.map(row); return {name, c, rs, mcap: rs.reduce((a, r) => a + (r.mcap || 0), 0), pe: med(rs.map(r => r.pe)), pb: med(rs.map(r => r.pb)), gm: med(rs.map(r => r.gm)), yoy: med(rs.map(r => r.yoy)), roe: med(rs.map(r => r.roe)), q: rs.map(r => r.q).filter(Boolean).sort().at(-1)}; });
+  if (!groups.some(g => g.mcap)) { host.innerHTML = '<div class="data-gap">Chưa nạp được định giá hằng ngày.</div>'; return; }
+  const d = groups.flatMap(g => g.rs.map(r => r.date)).filter(Boolean).sort().at(-1);
+  host.innerHTML = '<div class="tablewrap"><table><thead><tr><th>Nhóm</th><th>Mã</th><th>Vốn hóa (tỷ)</th><th>P/E</th><th>P/B</th><th>Biên gộp</th><th>Doanh thu YoY</th><th>ROE quý</th></tr></thead><tbody>' +
+    groups.map(g => `<tr><td><b class="pv-chip" style="--c:${g.c}">${g.name}</b></td><td>${g.rs.length}</td><td><b>${nf(g.mcap, 0)}</b></td><td>${nf(g.pe, 1)}</td><td>${nf(g.pb, 2)}</td><td>${nf(g.gm, 1)}%</td><td>${pct(g.yoy)}</td><td>${nf(g.roe, 1)}%</td></tr>`).join('') +
+    '</tbody></table></div>' + groups.map(g => `<details class="dtable"><summary>${g.name} · từng mã (quý gần nhất ${g.q || '—'})</summary><div class="tablewrap"><table><thead><tr><th>Mã</th><th>Vốn hóa (tỷ)</th><th>P/E</th><th>P/B</th><th>Biên gộp</th><th>Doanh thu YoY</th><th>ROE quý</th><th>Quý</th></tr></thead><tbody>` +
+      g.rs.sort((a, b) => (b.mcap || 0) - (a.mcap || 0)).map(r => `<tr><td><b>${r.t}</b></td><td>${nf(r.mcap, 0)}</td><td>${nf(r.pe, 1)}</td><td>${nf(r.pb, 2)}</td><td>${r.gm == null ? '—' : nf(r.gm, 1) + '%'}</td><td>${pct(r.yoy)}</td><td>${r.roe == null ? '—' : nf(r.roe, 1) + '%'}</td><td>${r.q || '—'}</td></tr>`).join('') + '</tbody></table></div></details>').join('') +
+    `<div class="source-note">Định giá phiên ${d ? dm(d) : '—'}; vốn hóa nhóm là tổng các mã, chỉ số khác là trung vị.</div>`;
+}
+
+function run() { topRow(); hydroMap(); heatmap(); table(); businessCards(); spread(); keyPlayers(); setTimeout(companyCards, 200); }
 if (document.readyState === 'complete') setTimeout(run, 300); else addEventListener('load', () => setTimeout(run, 300));
 })();

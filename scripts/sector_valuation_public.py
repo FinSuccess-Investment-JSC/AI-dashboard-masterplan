@@ -29,7 +29,8 @@ BASKETS = {
     'realestate': {'160': ('BĐS dân cư', 'VHM NVL KDH NLG DXG PDR DIG CEO AGG TCH NTL'), '159': ('Cho thuê', 'VRE'),
                    '161': ('Môi giới', 'DXS'), '157': ('BĐS khu công nghiệp', 'KBC IDC BCM SZC SIP VGC LHG')},
     'retail': {'220': ('Chuỗi bán lẻ (MWG, FRT)', 'MWG FRT'), '215': ('Phân phối điện tử', 'DGW PET'),
-               '224': ('Bán lẻ xe', 'HAX SVC'), '239': ('Sữa', 'VNM'), '120': ('Bia', 'SAB')},
+               '224': ('Bán lẻ xe', 'HAX SVC'), '239': ('Sữa', 'VNM'), '120': ('Bia', 'SAB'),
+               '227': ('Trang sức (PNJ)', 'PNJ')},  # 05/11/2026: rổ riêng vì Wi không phân ngành PNJ
     'seafood': {'238': ('Thủy sản', 'VHC ANV IDI FMC MPC CMX ASM'), '235': ('Thức ăn chăn nuôi', 'DBC')},
     'shipping': {'185': ('Vận tải biển', 'PVT VTO VIP PVP GSP VOS VNA HAH'), '309': ('Cảng', 'GMD PHP SGP VSC CDN DVP PDN')},
     'textile': {'204': ('May', 'TCM TNG MSH GIL'), '207': ('Sợi', 'STK ADS')},
@@ -105,13 +106,19 @@ FS_BASKETS = {'151': ('Nhân thọ (BVH)', 'BVH'), '285': ('Phi nhân thọ (PVI
 def insurance_fs(errors, since='2015-01-01'):
     per = {}
     for t in sorted({x for _, tk in FS_BASKETS.values() for x in tk.split()}):
-        try:
-            out = subprocess.run(['curl', '-sfL', '-m', '90', '-A', 'Mozilla/5.0', FS_URL.format(t=t, since=since)],
-                                 check=True, capture_output=True, text=True).stdout
-            rows = json.loads(out)['data']
-        except Exception as e:
-            errors[t] = str(e)[:120]
+        rows = None
+        for attempt in range(3):  # 05/11/2026: finfo hay timeout ngẫu nhiên từng mã → thử lại 3 lần như fetch()
+            try:
+                out = subprocess.run(['curl', '-sfL', '-m', '90', '-A', 'Mozilla/5.0', FS_URL.format(t=t, since=since)],
+                                     check=True, capture_output=True, text=True).stdout
+                rows = json.loads(out)['data']
+                break
+            except Exception as e:
+                errors[t] = str(e)[:120]
+                time.sleep(3)
+        if rows is None:
             continue
+        errors.pop(t, None)
         q = defaultdict(dict)
         for r in rows:
             y, m = int(r['fiscalDate'][:4]), int(r['fiscalDate'][5:7])
@@ -121,16 +128,23 @@ def insurance_fs(errors, since='2015-01-01'):
     by = {}
     for bid, (name, tk) in FS_BASKETS.items():
         members = tk.split()
-        quarters = sorted(set.intersection(*[set(per.get(t, {})) for t in members])) if all(t in per for t in members) else []
+        got = [t for t in members if t in per]
+        missing = [t for t in members if t not in per]
+        # 05/11/2026: một mã lỗi tải không làm mất cả rổ — giữ rổ khi còn ≥3 mã (hoặc đủ mọi mã của rổ nhỏ), ghi rõ mã thiếu
+        if not got or (len(members) >= 3 and len(got) < 3):
+            continue
+        quarters = sorted(set.intersection(*[set(per[t]) for t in got]))
         recs = []
         for qq in quarters:
             row = [qq]
             for f, (code, sign) in FS_ITEMS.items():
-                vals = [per[t][qq].get(code) for t in members]
+                vals = [per[t][qq].get(code) for t in got]
                 row.append(round(sum(v for v in vals if v is not None) * sign / 1e9, 3) if any(v is not None for v in vals) else None)
             recs.append(row)
         if recs:
-            by[bid] = {'name': name, 'members': members, 'records': recs}
+            by[bid] = {'name': name, 'members': got, 'records': recs}
+            if missing:
+                by[bid]['missing'] = missing
     return {'columns': cols, 'by_sector': by, 'unit': 'tỷ VND',
             'source': 'VNDirect finfo · BCTC hợp nhất quý (mẫu bảo hiểm)', 'url': 'https://dstock.vndirect.com.vn/',
             'method': 'Cộng BCTC quý của các mã trong rổ: phí gốc (21410), phí thuần (21440), tổng chi bồi thường (22195, đổi dấu), doanh thu tài chính (21500), lợi nhuận tài chính (22175).'}

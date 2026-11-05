@@ -52,12 +52,19 @@ def main():
             blocks.setdefault(name, {})['stale'] = True
             return
         value = build(got)
+        missing_deps = [d for d in deps if not resp(d)]
+        prev_series = ((previous.get('blocks') or {}).get(name) or {}).get('series') or {}
+        if missing_deps and prev_series and isinstance(value.get('series'), dict):
+            # A call not captured this run keeps its last-good series; only captured calls are rebuilt.
+            for k, v in prev_series.items():
+                value['series'].setdefault(k, v)
+            value['stale_sources'] = missing_deps
         value['sources'] = [d for d in deps if resp(d)]
         value['captured_at'] = max((status[d].get('captured_at') or '') for d in value['sources'])
         blocks[name] = value
 
     ind = contract['indicators']
-    put('macro', ['macro_steel'], lambda r: build_macro(r, ind))
+    put('macro', ['macro_steel', 'us_hs_steel'], lambda r: build_macro(r, ind))
     put('commodity', ['commodity_steel'], lambda r: build_macro(r, ind))
     bundle = {'schema': 1, 'built_at': dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'provider': 'WiMCP (Widata)',
               'contract': str(CONTRACT.relative_to(ROOT)), 'calls': status, 'blocks': blocks}

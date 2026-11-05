@@ -15,6 +15,7 @@
 <script src="../assets/sector-layout.js?v=6017726b6ba1" defer></script>
 <script src="../data/retail-public-data.js?v=cf1ca12f24d4" defer></script>
 <script src="../assets/sector-visuals.js?v=9bed10f3c811" defer></script>
+<script src="../data/company-quarterly.js?v=cf0cf545df14" defer></script>
 <script src="../assets/retail-dashboard.js?v=b9812420e3f8" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/share-image.js?v=99ca8bbc0829" defer></script>
@@ -66,7 +67,7 @@
       <span class="tag">Bán lẻ, CPI, khách, sản lượng: <a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a></span>
       <span class="tag">Giá nguyên liệu: ICE, CBOT</span>
     </div>
-    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm trống (chưa có nguồn công khai thay thế).</div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> bán lẻ, CPI, khách quốc tế, sản lượng (NSO), giá nguyên liệu (FRED, ICE), vàng SJC (WiData) và định giá theo phiên — đang nạp.</div>
   </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
     <div class="sectionhead"><div><h2>1. Tổng quan ngành bán lẻ &amp; tiêu dùng</h2><p>12 doanh nghiệp: bán lẻ hiện đại & điện máy (MWG, FRT, DGW, PET), hàng lâu bền (PNJ, HAX, SVC), tiêu dùng nhanh (VNM, SAB, QNS, MSN, KDC).</p></div></div>
@@ -76,7 +77,7 @@
       <div class="kpi"><div class="label">Khách quốc tế</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-tourist"></div></div>
       <div class="kpi"><div class="label">Ô tô sản xuất</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-car"></div></div>
       <div class="kpi"><div class="label">Sản lượng bia</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-beer"></div></div>
-      <div class="kpi"><div class="label">P/E chuỗi bán lẻ</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pe"></div></div>
+      <div class="kpi"><div class="label">P/E chuỗi bán lẻ</div><div class="value">—</div><div class="delta"></div><div class="sub">—</div><div id="spk-pe"></div></div>
     </section>
     <div class="grid two">
       <div class="card" data-block-id="bl-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -141,6 +142,21 @@
       <div id="chStores"></div>
       <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table class="compare-table"><thead><tr><th>Chuỗi</th><th>Số điểm bán</th><th>Thời điểm</th><th>Ghi chú</th></tr></thead><tbody><tr><td>WinCommerce (MSN)</td><td>5.141</td><td>cuối Q2/2026</td><td>+324 thuần; mục tiêu 6.000</td></tr><tr><td>Bách Hóa Xanh (MWG)</td><td>3.904</td><td>cuối T9/2026</td><td>3.612 cuối T8; 9T doanh thu 45.900 tỷ (+34%) · <a href="https://doanhnhan.baophapluat.vn/dau-tu-the-gioi-di-dong-mwg-thu-gan-148-000-ty-dong-sau-9-thang-bach-hoa-xanh-tang-truong-34.html" target="_blank" rel="noopener">DN&amp;PL 15/10/2026</a></td></tr><tr><td>Long Châu (FRT)</td><td>2.639 nhà thuốc + 236 trung tâm tiêm chủng</td><td>cuối T6/2026</td><td>1,3 tỷ/nhà thuốc/tháng; +450 điểm 2026</td></tr><tr><td>Điện Máy Xanh / TGDĐ (MWG)</td><td>1.998 / 919</td><td>2026</td><td>thu hẹp mạng lưới, tăng doanh thu/cửa hàng</td></tr><tr><td>PNJ</td><td>432</td><td>2026</td><td>đóng 25–30 cửa hàng</td></tr><tr><td>EraBlue (MWG, Indonesia)</td><td>337</td><td>2026</td><td>+86%</td></tr></tbody></table></div></details>
     </div>
+    <div class="card" style="margin-top:14px" data-block-id="bl-15" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+      <div class="chart-title">Mỗi cửa hàng bán được bao nhiêu một tháng</div>
+      <div class="chart-sub">tỷ đồng / cửa hàng / tháng · kỳ gần nhất đã công bố · chuỗi tự tính ghi rõ</div>
+      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Chuỗi</th><th>Tỷ/cửa hàng/tháng</th><th>Kỳ</th><th>Cách có số</th><th>Nguồn</th></tr></thead><tbody>
+      <tr><td>FPT Shop (FRT)</td><td><b>~3,0</b></td><td>Q3/2026</td><td>Doanh nghiệp công bố; 622 cửa hàng; 9T 15.014 tỷ (+30%)</td><td><a href="https://doanhnhan.baophapluat.vn/fpt-retail-ghi-nhan-doanh-thu-48-273-ty-dong-sau-9-thang-tang-33-so-voi-cung-ky.html" target="_blank" rel="noopener">DN&amp;PL 29/10/2026</a></td></tr>
+      <tr><td>Điện Máy Xanh + TGDĐ + EraBlue (MWG)</td><td>~3,3</td><td>9T/2026</td><td>Tự tính: 99.200 tỷ ÷ 3.340 cửa hàng cuối T9 ÷ 9 (chia số cuối kỳ, gồm EraBlue); SSSG +30%</td><td><a href="https://thoibaotaichinhvietnam.vn/doanh-thu-9-thang-cua-the-gioi-di-dong-tang-30-dat-gan-148-000-ty-dong-205356.html" target="_blank" rel="noopener">TBTC 14/10/2026</a></td></tr>
+      <tr><td>Long Châu (FRT)</td><td><b>1,3</b></td><td>9T/2026</td><td>Doanh nghiệp công bố; 2.741 nhà thuốc + 244 trung tâm tiêm chủng; 9T 33.408 tỷ (+35%)</td><td><a href="https://doanhnhan.baophapluat.vn/fpt-retail-ghi-nhan-doanh-thu-48-273-ty-dong-sau-9-thang-tang-33-so-voi-cung-ky.html" target="_blank" rel="noopener">DN&amp;PL 29/10/2026</a></td></tr>
+      <tr><td>Bách Hóa Xanh (MWG)</td><td>~1,3</td><td>9T/2026</td><td>Tự tính: 45.900 tỷ ÷ 3.904 cửa hàng cuối T9 ÷ 9 (chia số cuối kỳ nên thấp hơn thực, chuỗi mở mới nhanh)</td><td><a href="https://thoibaotaichinhvietnam.vn/doanh-thu-9-thang-cua-the-gioi-di-dong-tang-30-dat-gan-148-000-ty-dong-205356.html" target="_blank" rel="noopener">TBTC 14/10/2026</a></td></tr>
+      <tr><td>PNJ (bán lẻ)</td><td>~4,5</td><td>9T/2026</td><td>Tự tính: doanh thu bán lẻ 17.271 tỷ (+3%) ÷ 424 cửa hàng cuối Q3 ÷ 9; riêng Q3 bán lẻ −20%</td><td><a href="https://thitruongtaichinhtiente.vn/pnj-lo-gan-258-ty-dong-trong-quy-iii-ton-kho-vuot-18-800-ty-dong-86712.html" target="_blank" rel="noopener">TTTC-TT 22/10/2026</a></td></tr>
+      <tr><td>WinCommerce (MSN)</td><td>~0,75</td><td>Q2/2026</td><td>Tự tính: 11.629 tỷ ÷ 5.141 cửa hàng ÷ 3</td><td><a href="https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html" target="_blank" rel="noopener">DN&amp;PL</a></td></tr>
+      <tr><td>An Khang (MWG)</td><td>>0,55</td><td>T11/2025</td><td>Doanh nghiệp công bố (số cũ nhất trong bảng)</td><td><a href="https://doanhnhan.baophapluat.vn/the-gioi-di-dong-mwg-dragon-capital-tro-lai-ghe-co-dong-lon-doanh-thu-11-thang-vuot-142000-ty-dong-90042.html" target="_blank" rel="noopener">DN&amp;PL 12/2025</a></td></tr>
+      </tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Doanh nghiệp chỉ công bố doanh thu/cửa hàng cho Long Châu và FPT Shop; các dòng "tự tính" chia doanh thu kỳ cho số cửa hàng cuối kỳ (không có số bình quân) nên chuỗi đang mở nhanh (Bách Hóa Xanh) bị tính thấp. Chuỗi theo thời gian (chuẩn hóa T1/2024 = 100) để đợt sau khi gom đủ số tháng.</div></details>
+      <div class="chart-insight" data-input-owner="ai"><b>Cách hiểu trong bối cảnh ngành · AI:</b> Điện máy – điện thoại bán 3–3,3 tỷ/cửa hàng/tháng với SSSG +30%: MWG, FRT tăng nhờ mỗi cửa hàng bán tốt hơn chứ không nhờ mở thêm. Long Châu 1,3 tỷ ổn định dù mở mới nhanh — mô hình nhân bản được. PNJ cao nhất (~4,5 tỷ) nhưng Q3 bán lẻ −20% và biên gộp còn 8,7%: doanh thu/cửa hàng cao không cứu được lợi nhuận khi giá vốn (vàng) và dự phòng tăng.</div>
+    </div>
     <h3 class="subhead">Hàng lâu bền: trang sức, ô tô</h3>
     <div class="grid two">
       <div class="card" data-block-id="bl-20" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
@@ -168,6 +184,12 @@
         <div class="chart-sub">kỳ công bố gần nhất</div>
         <div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>Số</th><th>Nguồn</th></tr></thead><tbody><tr><td>Vàng miếng SJC (11/10/2026)</td><td><b>141,8–144,8 triệu/lượng</b>; nhẫn 141,3–144,3; cao hơn thế giới ~13,1 triệu</td><td><a href="https://vov.vn/thi-truong/gia-vang-hom-nay-1110-vang-trong-nuoc-di-ngang-post1340142.vov" target="_blank" rel="noopener">VOV</a></td></tr><tr><td>Nghị định 232/2025 sửa NĐ 24</td><td>Hiệu lực 10/10/2025: bỏ độc quyền vàng miếng; DN vốn ≥1.000 tỷ, NH ≥50.000 tỷ được sản xuất</td><td><a href="https://vov.vn/thi-truong/gia-vang/chinh-thuc-xoa-bo-co-che-nha-nuoc-doc-quyen-san-xuat-vang-mieng-post1236837.vov" target="_blank" rel="noopener">VOV</a></td></tr><tr><td>Hồ sơ xin sản xuất, nhập khẩu vàng</td><td>11 hồ sơ (14/4/2026); PNJ đã nộp</td><td><a href="https://vnbusiness.vn/da-co-11-ho-so-xin-cap-phep-san-xuat-vang-mieng-than-trong-xem-xet-nhap-khau-vang-nguyen-lieu.html" target="_blank" rel="noopener">VnBusiness</a> · <a href="https://doanhnhan.baophapluat.vn/pnj-xin-co-che-nhap-khau-vang-muon-hop-tac-gia-cong-voi-cac-ngan-hang-thuong-mai-giua-luc-lai-rong-lap-dinh-lich-su.html" target="_blank" rel="noopener">DN&amp;PL</a></td></tr><tr><td>Dự thảo sửa NĐ 24 vòng 2</td><td>Bỏ giấy phép con vàng trang sức, dự kiến 1/7/2026 (chưa xác nhận ban hành)</td><td><a href="https://vietnamfinance.vn/sua-doi-nghi-dinh-24-nhieu-thay-doi-ve-san-xuat-kinh-doanh-vang-trang-suc-d145528.html" target="_blank" rel="noopener">VietnamFinance</a></td></tr></tbody></table></div>
       </div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bl-24" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="snapshot">
+      <div class="chart-title">Giá vàng miếng SJC và vàng nhẫn</div>
+      <div class="chart-sub">triệu đồng/lượng · cuối tháng (WiData nén từ chuỗi ngày) · điểm cuối là ngày gọi</div>
+      <div id="chGold"></div>
+      <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-gold"></table></div></details>
     </div>
     <h3 class="subhead">Hàng tiêu dùng nhanh</h3>
     <div class="grid two">
@@ -202,7 +224,31 @@
   </div>
   <div class="majorpane" data-tab="mt3" id="pane-mt3">
   <section id="price" class="section">
-    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>CPI, giá nguyên liệu, giá vàng nằm trong từng nhóm ở Bức tranh ngành.</p></div></div>
+    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Biên gộp hàng tiêu dùng nhanh đi theo giá nguyên liệu nhập của 2 quý trước; trang sức đi theo chênh lệch vàng trong nước – thế giới. CPI và giá nguyên liệu hằng tháng ở Bức tranh ngành.</p></div></div>
+    <div class="grid two">
+      <div class="card" data-block-id="bl-40" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Biên gộp hàng tiêu dùng nhanh theo quý</div>
+        <div class="chart-sub">% doanh thu · VNM, SAB, KDC, MSN · BCTC hợp nhất quý</div>
+        <div id="chMarginQ"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-margin-q"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bl-41" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Nguyên liệu 2 quý trước (cùng trục quý với biên gộp)</div>
+        <div class="chart-sub">chỉ số T1/2024 = 100 · bình quân quý, dịch sau 2 quý · đường, dầu cọ, khô đậu, ngô</div>
+        <div id="chInputLag"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-input-lag"></table></div></details>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bl-42" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+      <div class="chart-title">Vàng trong nước đắt hơn thế giới bao nhiêu</div>
+      <div class="chart-sub">triệu đồng/lượng · chênh lệch = SJC bán ra − (XAU/USD × tỷ giá ÷ 0,8294 oz/lượng)</div>
+      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Ngày</th><th>SJC bán ra</th><th>Nhẫn bán ra</th><th>Thế giới quy đổi</th><th>Chênh lệch SJC</th><th>Nguồn</th></tr></thead><tbody>
+      <tr><td>11/10/2026</td><td>144,8</td><td>144,3</td><td>131,7 (4.152 USD/oz × 26.070)</td><td><b>+13,1</b></td><td><a href="https://vov.vn/thi-truong/gia-vang-hom-nay-1110-vang-trong-nuoc-di-ngang-post1340142.vov" target="_blank" rel="noopener">VOV 11/10/2026</a></td></tr>
+      <tr><td id="gold-latest-date">—</td><td id="gold-latest-sjc">—</td><td id="gold-latest-ring">—</td><td>chưa có chuỗi thế giới</td><td>—</td><td><a href="https://widata.vn/" target="_blank" rel="noopener">WiData</a></td></tr>
+      </tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Chuỗi chênh lệch theo ngày chưa vẽ được: repo chưa có giá vàng thế giới (XAU/USD) và tỷ giá theo ngày — đã ghi yêu cầu lời gọi Wi (AI_WORKSPACE/inbox/wi-requests-retail.md). Dòng 11/10/2026 là một điểm từ bài đã mở; quy đổi 1 lượng = 0,8294 troy oz (37,5 g). Giá SJC, nhẫn Wi là giá niêm yết (không rõ mua/bán) nên không trộn với dòng VOV.</div></details>
+      <div class="chart-insight" data-input-owner="ai"><b>Cách hiểu trong bối cảnh ngành · AI:</b> Chênh lệch ~13 triệu/lượng (~10%) là phần PNJ phải trả thêm khi mua nguyên liệu trong nước so với doanh nghiệp được nhập vàng; Nghị định 232/2025 bỏ độc quyền vàng miếng và PNJ đã nộp hồ sơ xin nhập khẩu — chênh lệch hẹp lại là tin tốt cho biên trang sức, nhưng cũng làm giảm lãi mảng vàng 24K mua rẻ bán đắt.</div>
+    </div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt4" id="pane-mt4">
@@ -227,6 +273,18 @@
         <h3>Risk — rủi ro</h3>
         <ul><li><b>Thuế TTĐB 2027</b>: bia lên 70%, nước giải khát có đường 8%; hết giảm VAT 2% <span class="muted">(1/1/2027 · SAB · QNS · MSN · VNM)</span></li><li><b>PNJ lỗ 6.271 tỷ</b> theo kế hoạch điều chỉnh (dự phòng thu đổi kim cương 7.071 tỷ) <span class="muted">(2026 · PNJ)</span></li><li><b>CPI 5,08%</b> và lãi suất huy động tăng gần 1 điểm % bào mòn sức mua hàng lâu bền <span class="muted">(1–2 quý · HAX · SVC · điện máy trả góp)</span></li></ul>
       </div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bl-51" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Lịch mùa vụ Q4/2026 – Q1/2027</h3>
+      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Mốc</th><th>Ngày</th><th>Mã hưởng ▲ / chịu ▼</th><th>Năm trước đã thấy gì (bài đã mở)</th></tr></thead><tbody>
+      <tr><td>iPhone mới bán ra</td><td>Cuối T9 – T10</td><td>▲ MWG · FRT · DGW · PET</td><td>Khối Điện Máy Xanh tháng 9/2026 hơn 12.400 tỷ, cao nhất lịch sử (<a href="https://thitruongtaichinhtiente.vn/dien-may-xanh-tien-sat-moc-doanh-thu-100-000-ty-dong-sau-9-thang-86085.html" target="_blank" rel="noopener">TTTC-TT</a>)</td></tr>
+      <tr><td>11/11 · 12/12 · Black Friday</td><td>11/11, 27/11, 12/12/2026</td><td>▲ MWG · FRT · DGW (online) · ▼ chuỗi thuần offline</td><td>Bách Hóa Xanh T11/2025 4.200 tỷ (+6% MoM, ~+20% YoY) (<a href="https://doanhnhan.baophapluat.vn/the-gioi-di-dong-mwg-dragon-capital-tro-lai-ghe-co-dong-lon-doanh-thu-11-thang-vuot-142000-ty-dong-90042.html" target="_blank" rel="noopener">DN&amp;PL</a>)</td></tr>
+      <tr><td>Hết giảm VAT 2%</td><td>31/12/2026</td><td>▼ cả ngành (giá bán +2 điểm từ 1/1/2027); kéo mua sắm về T12</td><td>—</td></tr>
+      <tr><td>Thuế TTĐB bậc mới</td><td>01/01/2027</td><td>▼ SAB (bia 65% → 70%) · QNS, MSN, VNM (nước giải khát có đường 8%)</td><td>SAB tăng giá 3 đợt 2026, doanh thu Q2 chỉ +1% (<a href="https://vietnamfinance.vn/mot-quy-tang-gia-2-lan-bia-sai-gon-van-khong-cai-thien-doanh-thu-va-loi-nhuan-d148046.html" target="_blank" rel="noopener">VietnamFinance</a>)</td></tr>
+      <tr><td>Tết Đinh Mùi</td><td>17/02/2027 (sớm hơn Tết 2026: 17/02 vs 29/01 — doanh thu Tết rơi trọn Q1/2027)</td><td>▲ SAB · VNM · KDC · MSN · PNJ · MWG</td><td>—</td></tr>
+      <tr><td>Vía Thần Tài</td><td>Mùng 10 tháng Giêng ≈ 26/02/2027</td><td>▲ PNJ (vàng 24K, nhẫn)</td><td>PNJ Q1/2026: doanh thu 17.245 tỷ (+79%), vàng 24K +324,7% (<a href="https://doanhnhan.baophapluat.vn/bung-no-mang-vang-24k-loi-nhuan-cua-vang-bac-da-quy-phu-nhuan-pnj-quy-i-2026-cao-gap-doi-cung-ky.html" target="_blank" rel="noopener">DN&amp;PL</a>)</td></tr>
+      </tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Chỉ ghi doanh thu tháng năm trước khi bài gốc đã mở; MWG tháng 10–12/2025 theo chuỗi chưa mở được bài gốc nên để trống. VAMA theo tháng chưa đủ điểm trong evidence để vẽ chuỗi (chỉ có T8/2025, T9/2026).</div></details>
     </div>
     <div class="srcrow"><a href="https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/" target="_blank" rel="noopener">NSO quý III</a><a href="https://mekongasean.vn/pnj-du-kien-lo-hon-6000-ty-dong-ha-ty-le-co-tuc-60015.html" target="_blank" rel="noopener">PNJ điều chỉnh KH</a><a href="https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm" target="_blank" rel="noopener">Thuế TTĐB</a></div>
   </section>
@@ -292,8 +350,8 @@
   </div>
   <div class="card" style="margin-top:14px" data-block-id="bl-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Bán lẻ, CPI, khách quốc tế, sản lượng xe, bia, sữa, IIP</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng (ngày 3–6)</td><td>Script mỗi lượt job (fetch_nso.py)</td></tr><tr><td><b>Tiền gửi dân cư, tín dụng</b></td><td><a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN</a></td><td>Tháng, chậm 1–2 tháng</td><td>Cùng lời gọi hằng tháng</td></tr><tr><td><b>Đường, dầu cọ, khô đậu, ngô</b></td><td><a href="https://www.ice.com/products/23/Sugar-No-11-Futures" target="_blank" rel="noopener">ICE No.11</a>, <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">IMF qua FRED</a></td><td>Ngày · hiển thị cuối tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>VAMA, VinFast, giá vàng, TMĐT, chính sách, số tháng MWG/FRT/PNJ</b></td><td>Báo, hiệp hội (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC từng doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
-    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Bán lẻ, CPI, khách quốc tế, sản lượng xe, bia, sữa, IIP</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng (ngày 3–6)</td><td>Script mỗi lượt job (fetch_nso.py)</td></tr><tr><td><b>Tiền gửi dân cư, tín dụng</b></td><td><a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN</a></td><td>Tháng, chậm 1–2 tháng</td><td>Cùng lời gọi hằng tháng</td></tr><tr><td><b>Đường, dầu cọ, khô đậu, ngô</b></td><td><a href="https://www.ice.com/products/23/Sugar-No-11-Futures" target="_blank" rel="noopener">ICE No.11</a>, <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">IMF qua FRED</a></td><td>Ngày · hiển thị cuối tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>P/E, P/B ngành; từng mã (rổ Trang sức = PNJ thêm 05/11/2026)</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Vàng miếng SJC, vàng nhẫn</b></td><td><a href="https://widata.vn/" target="_blank" rel="noopener">WiData</a> · 1224193, 1224229 (ngày; nén tháng khi gọi khoảng dài)</td><td>Ngày</td><td>Routine Wi (data/retail-wi-contract.json); giá thế giới, tỷ giá ngày: chưa có</td></tr><tr><td><b>Biên gộp VNM, SAB, KDC, MSN theo quý</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a> · data/company-quarterly.json (QNS không có)</td><td>Quý</td><td>scripts/build_company_quarterly.py (cùng lượt so sánh tài chính)</td></tr><tr><td><b>VAMA, VinFast, TMĐT, chính sách, số tháng MWG/FRT/PNJ, doanh thu/cửa hàng</b></td><td>Báo, hiệp hội (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC từng doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="source-note" id="wi-built">scripts/build_sector_public.py (NSO, NHNN, FRED, ICE, VNDirect) + scripts/build_retail_wi.py (WiData lấp chỗ thiếu).</div>
   </div>
   <div class="footer">Vietnam Retail &amp; Consumer Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 11/10/2026.</div>
 </div>

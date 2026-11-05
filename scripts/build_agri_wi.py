@@ -41,13 +41,17 @@ def main():
             blocks.setdefault(name, {})['stale'] = True
             return
         value = build(got)
+        # Some deps missing (not re-captured yet): keep their previous series (last-good) instead of dropping them.
+        if len(got) < len(deps) and 'series' in value:
+            prev = (blocks.get(name) or {}).get('series') or {}
+            value['series'] = {**{k: {**v, 'stale': True} for k, v in prev.items()}, **value['series']}
         value['sources'] = [d for d in deps if resp(d)]
         value['captured_at'] = max((status[d].get('captured_at') or '') for d in value['sources'])
         blocks[name] = value
 
     ind = contract['indicators']
     put('macro', ['macro_agri'], lambda r: build_macro(r, ind))
-    put('commodity', ['commodity_agri'], lambda r: build_macro(r, ind))
+    put('commodity', ['commodity_agri', 'hog_regions'], lambda r: build_macro(r, ind))
     put('sector_ratio', ['sector_ratio_recent'], lambda r: build_sector(r, contract['sectors']))
     bundle = {'schema': 1, 'built_at': dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'provider': 'WiMCP (Widata)',
               'contract': str(CONTRACT.relative_to(ROOT)), 'calls': status, 'blocks': blocks}

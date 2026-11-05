@@ -2378,5 +2378,315 @@
     "quote": "Lũy kế 9 tháng năm 2026, Hòa Phát sản xuất 10,7 triệu tấn thép thô, tăng 35% ... HRC đạt 5,47 triệu tấn, tăng 59%",
     "status": "match",
     "note": "TBTC 13/10/2026; dùng cho xd-13 và xd-t2 (số vận hành, không phải BCTC)."
+  },
+  {
+    "block": "xd-43",
+    "claim": "Giải ngân ĐTC lũy kế đến 3/9/2026",
+    "value": "513.304,7 tỷ đồng; 50,2%",
+    "url": "https://thoibaotaichinhvietnam.vn/giai-ngan-von-dau-tu-cong-dat-51-2-ke-hoach-thu-tuong-giao-203900.html",
+    "opened_at": "2026-11-05",
+    "quote": "Về giải ngân, lũy kế đến hết ngày 3/9 đạt 513.304,7 tỷ đồng, tương đương 50,2% kế hoạch Thủ tướng giao.",
+    "status": "match",
+    "note": "TBTCVN 16/09/2026, Bộ Tài chính"
+  },
+  {
+    "block": "xd-43",
+    "claim": "Giải ngân ĐTC lũy kế đến 10/9/2026",
+    "value": "523.813,6 tỷ đồng; 51,2%",
+    "url": "https://thoibaotaichinhvietnam.vn/giai-ngan-von-dau-tu-cong-dat-51-2-ke-hoach-thu-tuong-giao-203900.html",
+    "opened_at": "2026-11-05",
+    "quote": "Đến hết ngày 10/9/2026, cả nước đã giải ngân 523.813,6 tỷ đồng vốn đầu tư công, đạt 51,2% kế hoạch Thủ tướng Chính phủ giao.",
+    "status": "match",
+    "note": "TBTCVN 16/09/2026"
+  },
+  {
+    "block": "xd-43",
+    "claim": "Giải ngân ĐTC lũy kế đến 24/9/2026",
+    "value": "567.776,1 tỷ đồng",
+    "url": "https://thoibaotaichinhvietnam.vn/giai-ngan-dau-tu-cong-tang-hon-76-000-ty-dong-trong-mot-tuan-205054.html",
+    "opened_at": "2026-11-05",
+    "quote": "So với số liệu đến hết ngày 24/9 là 567.776,1 tỷ đồng",
+    "status": "match",
+    "note": "TBTCVN 08/10/2026"
+  },
+  {
+    "block": "xd-43",
+    "claim": "Giải ngân ĐTC lũy kế đến 1/10/2026",
+    "value": "644.013,5 tỷ đồng; 63%",
+    "url": "https://thoibaotaichinhvietnam.vn/giai-ngan-dau-tu-cong-tang-hon-76-000-ty-dong-trong-mot-tuan-205054.html",
+    "opened_at": "2026-11-05",
+    "quote": "lũy kế giải ngân vốn đầu tư công nguồn ngân sách nhà nước đến hết ngày 1/10/2026 đạt 644.013,5 tỷ đồng, bằng 63% kế hoạch Thủ tướng Chính phủ giao",
+    "status": "match",
+    "note": "TBTCVN 08/10/2026"
+  },
+  {
+    "block": "xd-43",
+    "claim": "Giải ngân ĐTC lũy kế đến 8/10/2026",
+    "value": "652.125,4 tỷ đồng; 63,8%",
+    "url": "https://thoibaotaichinhvietnam.vn/giai-ngan-dau-tu-cong-dat-63-8-ke-hoach-sau-hon-9-thang-205408.html",
+    "opened_at": "2026-11-05",
+    "quote": "lũy kế đến hết ngày 8/10/2026, giải ngân vốn đầu tư công nguồn ngân sách nhà nước đạt 652.125,4 tỷ đồng, bằng 63,8% kế hoạch Thủ tướng Chính phủ giao.",
+    "status": "match",
+    "note": "TBTCVN 15/10/2026"
+  },
+  {
+    "block": "xd-43",
+    "claim": "Giải ngân ĐTC 10T/2026",
+    "value": "708.567,4 tỷ đồng; 74,1%",
+    "url": "https://thoibaotaichinhvietnam.vn/giai-ngan-dau-tu-cong-dat-63-8-ke-hoach-sau-hon-9-thang-205408.html",
+    "opened_at": "2026-11-05",
+    "quote": "Sau 10 tháng năm 2026, giải ngân vốn đầu tư công cả nước đã đạt 708.567,4 tỷ đồng, bằng 74,1% kế hoạch Thủ tướng Chính phủ giao.",
+    "status": "match",
+    "note": "Câu trích từ khối tin liên quan trên trang TBTCVN đã mở (tóm tắt bài 10T); bài đầy đủ chưa mở được (hết hạn mức tìm kiếm 05/11)."
+  },
+  {
+    "block": "xd-43",
+    "claim": "Giải ngân ĐTC lũy kế đến 22/10/2026",
+    "value": "673.970,1 tỷ đồng; 65,9%",
+    "url": "https://thanhtra.com.vn/dau-tu-72A9E3223/giai-ngan-von-dau-tu-cong-vuot-673000-ty-dong-dat-gan-66-ke-hoach-cce9750d0.html",
+    "opened_at": "2026-11-05",
+    "quote": "Tính lũy kế đến hết ngày 22/10/2026, cả nước đã giải ngân 673.970,1 tỷ đồng, đạt 65,9% kế hoạch Thủ tướng Chính phủ giao.",
+    "status": "match",
+    "note": "Thanh Tra 28/10/2026, dẫn Bộ Tài chính"
+  },
+  {
+    "block": "xd-70",
+    "claim": "HHV doanh thu thu phí BOT Q1/2026",
+    "value": "656,5 tỷ; +24,8%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2026/05/HHV-Ban-tin-IR-Q1.2026-viet.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Doanh thu hoạt động thu phí BOT đạt 656.5 tỷ VNĐ, tăng trưởng 24.8% so với cùng kỳ",
+    "status": "match",
+    "note": "Bản tin IR Q1/2026 trang 4 (PDF dùng dấu chấm thập phân)"
+  },
+  {
+    "block": "xd-70",
+    "claim": "HHV doanh thu thu phí BOT 6T/2026",
+    "value": "1.247 tỷ; +16,8%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2026/08/HHV-Ban-tin-IR-Q2.2026-viet.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Thu phí BOT 1,247 66.4% 180 16.8%",
+    "status": "match",
+    "note": "Bản tin IR Q2/2026, bảng cơ cấu 6T2026 (giá trị, tỷ trọng, thay đổi, % svck)"
+  },
+  {
+    "block": "xd-70",
+    "claim": "HHV doanh thu thu phí BOT 9T/2026",
+    "value": "1.835 tỷ; +13%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2026/10/HHV-2026-Q3-Ban-tin-IR-final.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Thu phí BOT (1.835; +13% YoY)",
+    "status": "match",
+    "note": "Bản tin IR Q3/2026, cơ cấu doanh thu 9T2026"
+  },
+  {
+    "block": "xd-70",
+    "claim": "HHV doanh thu thu phí BOT Q3/2025",
+    "value": "556 tỷ; +17%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2025/10/HHV-Ban-tin-IR-Q3.2025.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "556 (+17%)",
+    "status": "match",
+    "note": "Bản tin IR Q3/2025, chart Kết quả hoạt động thu phí BOT (Q3/2024 475)"
+  },
+  {
+    "block": "xd-70",
+    "claim": "HHV doanh thu thu phí BOT năm 2025",
+    "value": "2.106 tỷ; +10%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2026/03/HHV-Ban-tin-IR-Q4.2025-viet.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Thu phí BOT (2,106; +10% YoY)",
+    "status": "match",
+    "note": "Bản tin IR Q4/2025, cơ cấu doanh thu 2025"
+  },
+  {
+    "block": "xd-70",
+    "claim": "HHV doanh thu thu phí năm 2024",
+    "value": "1.913 tỷ; +21%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2025/02/Ban-tin-NDT-Q4.24-1.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Năm 2024 doanh thu thu phí của HHV đạt 1.913 tỷ đồng, tăng 21% so với năm 2023",
+    "status": "match",
+    "note": "Bản tin IR Q4/2024"
+  },
+  {
+    "block": "xd-70",
+    "claim": "HHV doanh thu thu phí Q3/2024",
+    "value": "475 tỷ; +21%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2024/11/Ban-tin-nha-dau-tu-Q3.24.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "doanh thu thu phí trên BCTC hợp nhất của HHV đạt 475 tỷ đồng, tăng 21% so với cùng kỳ năm 2023",
+    "status": "match",
+    "note": "Bản tin IR Q3/2024"
+  },
+  {
+    "block": "xd-70",
+    "claim": "HHV doanh thu thu phí Q2/2024",
+    "value": "486 tỷ; +20%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2024/08/Ban-tin-nha-dau-tu-Q2.2024.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Doanh thu thu phí quý II năm 2024 trên BCTC hợp nhất của HHV đạt 486 tỷ đồng, tăng 20% so với cùng kỳ năm 2023",
+    "status": "match",
+    "note": "Bản tin IR Q2/2024"
+  },
+  {
+    "block": "xd-70",
+    "claim": "Lưu lượng Q3/2026 trạm Cù Mông",
+    "value": "642.704 lượt; +82,6%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2026/10/HHV-2026-Q3-Ban-tin-IR-final.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Cù Mông 642.704 +82,6%",
+    "status": "match",
+    "note": "Bản tin IR Q3/2026 trang 8, bảng lưu lượng (tên trạm và số cùng dòng; chữ \"Trạm thu phí\" ở dòng trên)"
+  },
+  {
+    "block": "xd-70",
+    "claim": "Lưu lượng Q3/2026 trạm Đèo Cả",
+    "value": "933.310 lượt; +14,7%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2026/10/HHV-2026-Q3-Ban-tin-IR-final.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Đèo Cả 933.310 +14,7%",
+    "status": "match",
+    "note": "Bản tin IR Q3/2026 trang 8, bảng lưu lượng (tên trạm và số cùng dòng; chữ \"Trạm thu phí\" ở dòng trên)"
+  },
+  {
+    "block": "xd-70",
+    "claim": "Lưu lượng Q3/2026 trạm An Dân",
+    "value": "351.500 lượt; -64,8%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2026/10/HHV-2026-Q3-Ban-tin-IR-final.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "An Dân 351.500 -64,8%",
+    "status": "match",
+    "note": "Bản tin IR Q3/2026 trang 8, bảng lưu lượng (tên trạm và số cùng dòng; chữ \"Trạm thu phí\" ở dòng trên)"
+  },
+  {
+    "block": "xd-70",
+    "claim": "Lưu lượng Q3/2026 trạm Bắc Hải Vân",
+    "value": "1.236.029 lượt; +20,4%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2026/10/HHV-2026-Q3-Ban-tin-IR-final.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Bắc Hải Vân 1.236.029 +20,4%",
+    "status": "match",
+    "note": "Bản tin IR Q3/2026 trang 8, bảng lưu lượng (tên trạm và số cùng dòng; chữ \"Trạm thu phí\" ở dòng trên)"
+  },
+  {
+    "block": "xd-70",
+    "claim": "Lưu lượng Q3/2026 trạm Ninh Lộc",
+    "value": "1.071.687 lượt; +7,2%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2026/10/HHV-2026-Q3-Ban-tin-IR-final.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Ninh Lộc 1.071.687 +7,2%",
+    "status": "match",
+    "note": "Bản tin IR Q3/2026 trang 8, bảng lưu lượng (tên trạm và số cùng dòng; chữ \"Trạm thu phí\" ở dòng trên)"
+  },
+  {
+    "block": "xd-70",
+    "claim": "Lưu lượng Q3/2026 trạm Cao tốc Bắc Giang - Lạng Sơn (BGLS)",
+    "value": "858.819 lượt; +21,1%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2026/10/HHV-2026-Q3-Ban-tin-IR-final.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Cao tốc Bắc Giang - Lạng Sơn (BGLS) 858.819 +21,1%",
+    "status": "match",
+    "note": "Bản tin IR Q3/2026 trang 8, bảng lưu lượng (tên trạm và số cùng dòng; chữ \"Trạm thu phí\" ở dòng trên)"
+  },
+  {
+    "block": "xd-70",
+    "claim": "Lưu lượng Q3/2026 trạm Km93+160 QL1 BGLS",
+    "value": "579.321 lượt; -2,9%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2026/10/HHV-2026-Q3-Ban-tin-IR-final.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Km93+160 QL1 BGLS 579.321 -2,9%",
+    "status": "match",
+    "note": "Bản tin IR Q3/2026 trang 8, bảng lưu lượng (tên trạm và số cùng dòng; chữ \"Trạm thu phí\" ở dòng trên)"
+  },
+  {
+    "block": "xd-70",
+    "claim": "Lưu lượng Q3/2026 trạm Cao tốc Cam Lâm - Vĩnh Hảo",
+    "value": "873.272 lượt; +1,6%",
+    "url": "https://hhv.cdn.vccloud.vn/wp-content/uploads/2026/10/HHV-2026-Q3-Ban-tin-IR-final.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Cao tốc Cam Lâm - Vĩnh Hảo 873.272 +1,6%",
+    "status": "match",
+    "note": "Bản tin IR Q3/2026 trang 8, bảng lưu lượng (tên trạm và số cùng dòng; chữ \"Trạm thu phí\" ở dòng trên)"
+  },
+  {
+    "block": "xd-71",
+    "claim": "Chỉ số giá XD công trình đường bê tông nhựa làm mới Q3/2026 (khu vực Bắc Giang cũ, 2025=100)",
+    "value": "115,53",
+    "url": "https://cdn.thuviennhadat.vn//upload/hinh-anh-bai-viet/2026/nhom3/NTDM/Thang10/28/quyet-dinh-913-qd-sxd-chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Công trình đường bê tông nhựa làm mới 111,64 113,38 121,55 115,53",
+    "status": "match",
+    "note": "QĐ 913/QĐ-SXD Sở XD Bắc Ninh, PDF qua thuviennhadat.vn (bài https://thuviennhadat.vn/phap-luat/chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung-748836.html); cột tháng 7, 8, 9 và Quý III"
+  },
+  {
+    "block": "xd-71",
+    "claim": "Chỉ số giá vật liệu đá xây dựng Q3/2026 (Bắc Giang cũ, 2025=100)",
+    "value": "157,90",
+    "url": "https://cdn.thuviennhadat.vn//upload/hinh-anh-bai-viet/2026/nhom3/NTDM/Thang10/28/quyet-dinh-913-qd-sxd-chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Đá xây dựng 161,59 154,69 157,42 157,90",
+    "status": "match",
+    "note": "QĐ 913/QĐ-SXD Sở XD Bắc Ninh, PDF qua thuviennhadat.vn (bài https://thuviennhadat.vn/phap-luat/chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung-748836.html); cột tháng 7, 8, 9 và Quý III"
+  },
+  {
+    "block": "xd-71",
+    "claim": "Chỉ số giá bê tông nhựa, nhựa đường Q3/2026 (2025=100)",
+    "value": "120,45",
+    "url": "https://cdn.thuviennhadat.vn//upload/hinh-anh-bai-viet/2026/nhom3/NTDM/Thang10/28/quyet-dinh-913-qd-sxd-chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Bê tông nhựa, nhựa đường 114,61 116,56 130,19 120,45",
+    "status": "match",
+    "note": "QĐ 913/QĐ-SXD Sở XD Bắc Ninh, PDF qua thuviennhadat.vn (bài https://thuviennhadat.vn/phap-luat/chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung-748836.html); cột tháng 7, 8, 9 và Quý III"
+  },
+  {
+    "block": "xd-71",
+    "claim": "Chỉ số giá cát xây dựng Q3/2026 (Bắc Giang cũ, 2025=100)",
+    "value": "102,19",
+    "url": "https://cdn.thuviennhadat.vn//upload/hinh-anh-bai-viet/2026/nhom3/NTDM/Thang10/28/quyet-dinh-913-qd-sxd-chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Cát xây dựng 92,93 99,22 114,42 102,19",
+    "status": "match",
+    "note": "QĐ 913/QĐ-SXD Sở XD Bắc Ninh, PDF qua thuviennhadat.vn (bài https://thuviennhadat.vn/phap-luat/chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung-748836.html); cột tháng 7, 8, 9 và Quý III"
+  },
+  {
+    "block": "xd-71",
+    "claim": "Chỉ số giá xi măng Q3/2026 (Bắc Giang cũ, 2025=100)",
+    "value": "97,60",
+    "url": "https://cdn.thuviennhadat.vn//upload/hinh-anh-bai-viet/2026/nhom3/NTDM/Thang10/28/quyet-dinh-913-qd-sxd-chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Xi măng 96,23 96,23 100,36 97,60",
+    "status": "match",
+    "note": "QĐ 913/QĐ-SXD Sở XD Bắc Ninh, PDF qua thuviennhadat.vn (bài https://thuviennhadat.vn/phap-luat/chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung-748836.html); cột tháng 7, 8, 9 và Quý III"
+  },
+  {
+    "block": "xd-71",
+    "claim": "Chỉ số giá thép xây dựng Q3/2026 (2025=100)",
+    "value": "105,62",
+    "url": "https://cdn.thuviennhadat.vn//upload/hinh-anh-bai-viet/2026/nhom3/NTDM/Thang10/28/quyet-dinh-913-qd-sxd-chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Thép xây dựng 105,67 105,60 105,61 105,62",
+    "status": "match",
+    "note": "QĐ 913/QĐ-SXD Sở XD Bắc Ninh, PDF qua thuviennhadat.vn (bài https://thuviennhadat.vn/phap-luat/chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung-748836.html); cột tháng 7, 8, 9 và Quý III"
+  },
+  {
+    "block": "xd-71",
+    "claim": "Chỉ số giá XD đường bê tông nhựa làm mới Q3/2026 (khu vực Bắc Ninh cũ)",
+    "value": "111,09",
+    "url": "https://cdn.thuviennhadat.vn//upload/hinh-anh-bai-viet/2026/nhom3/NTDM/Thang10/28/quyet-dinh-913-qd-sxd-chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Công trình đường bê tông nhựa làm mới 107,05 109,93 116,29 111,09",
+    "status": "match",
+    "note": "QĐ 913/QĐ-SXD Sở XD Bắc Ninh, PDF qua thuviennhadat.vn (bài https://thuviennhadat.vn/phap-luat/chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung-748836.html); cột tháng 7, 8, 9 và Quý III"
+  },
+  {
+    "block": "xd-71",
+    "claim": "Chỉ số giá đá xây dựng Q3/2026 (khu vực Bắc Ninh cũ)",
+    "value": "131,33",
+    "url": "https://cdn.thuviennhadat.vn//upload/hinh-anh-bai-viet/2026/nhom3/NTDM/Thang10/28/quyet-dinh-913-qd-sxd-chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung.pdf",
+    "opened_at": "2026-11-05",
+    "quote": "Đá xây dựng 126,00 128,37 139,61 131,33",
+    "status": "match",
+    "note": "QĐ 913/QĐ-SXD Sở XD Bắc Ninh, PDF qua thuviennhadat.vn (bài https://thuviennhadat.vn/phap-luat/chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung-748836.html); cột tháng 7, 8, 9 và Quý III"
   }
 ]

@@ -2,7 +2,7 @@
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": "WiMCP",
+        "matcher": "WiMCP|Widata",
         "hooks": [
           {
             "type": "command",

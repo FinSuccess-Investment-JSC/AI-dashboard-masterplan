@@ -200,24 +200,24 @@
  {
   "block": "nn-51",
   "claim": "Nước giải khát có đường chịu TTĐB",
-  "value": "Chịu thuế >5 g/100 mL từ 01/01/2026",
-  "url": "https://hoatieu.vn/phap-luat/luat-thue-tieu-thu-dac-biet-so-66-2025-qh15-235343",
-  "opened_at": "2026-10-09",
-  "quote": "có hàm lượng đường trên 5g/100mL: Từ 01/01/2027: 8; Từ 01/01/2028: 10",
-  "status": "mismatch",
-  "correct_value": "Ngưỡng >5 g/100 mL đúng, nhưng thuế suất bắt đầu 01/01/2027 (8%), 01/01/2028 (10%)",
-  "note": "Luật hiệu lực 01/01/2026 nhưng thuế suất nước có đường chỉ áp từ 2027. Trang ghi 'Lộ trình thuế suất nước có đường chưa có' — đã có: 8% rồi 10%. · Đã sửa/bỏ trên trang 09/10/2026."
+  "value": "8% từ 2027, 10% từ 2028 (>5 g/100 mL)",
+  "url": "https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm",
+  "opened_at": "2026-11-05",
+  "quote": "Nước giải khát có hàm lượng đường trên 5g/100ml sẽ áp dụng mức thuế suất 8% (từ năm 2027) ... 10% (từ năm 2028).",
+  "status": "match",
+  "correct_value": "",
+  "note": "05/11/2026: hoatieu.vn trả 403; mở VnEconomy 11/07/2025 thay. Trang đã ghi 2027/2028 (sửa từ 09/10/2026)."
  },
  {
   "block": "nn-t4",
-  "claim": "Nước có đường chịu thuế từ 01/01/2026",
-  "value": "01/01/2026",
-  "url": "https://hoatieu.vn/phap-luat/luat-thue-tieu-thu-dac-biet-so-66-2025-qh15-235343",
-  "opened_at": "2026-10-09",
-  "quote": "có hàm lượng đường trên 5g/100mL: Từ 01/01/2027: 8; Từ 01/01/2028: 10",
-  "status": "mismatch",
-  "correct_value": "từ 01/01/2027 (8%), 2028 10%",
-  "note": "Cũng áp dụng cho score 'nước có đường chịu thuế từ 2026' trong agri-dashboard.js. · Đã sửa/bỏ trên trang 09/10/2026."
+  "claim": "Nước có đường chịu thuế từ 01/01/2027",
+  "value": "8% từ 2027, 10% từ 2028",
+  "url": "https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm",
+  "opened_at": "2026-11-05",
+  "quote": "Nước giải khát có hàm lượng đường trên 5g/100ml sẽ áp dụng mức thuế suất 8% (từ năm 2027) ... 10% (từ năm 2028).",
+  "status": "match",
+  "correct_value": "",
+  "note": "05/11/2026: mở lại bằng VnEconomy (hoatieu 403). Trang ghi 8% từ 01/01/2027, 10% từ 2028."
  },
  {
   "block": "nn-t4",
@@ -232,14 +232,14 @@
  },
  {
   "block": "agri-dashboard.js score",
-  "claim": "Rượu, bia 65% → 90% năm 2031; nước có đường chịu thuế từ 2026",
-  "value": "65%→90%; 2026",
-  "url": "https://hoatieu.vn/phap-luat/luat-thue-tieu-thu-dac-biet-so-66-2025-qh15-235343",
-  "opened_at": "2026-10-09",
-  "quote": "Bia: Từ 01/01/2026: 65 ... Từ 01/01/2031: 90; đường >5g/100mL: Từ 01/01/2027: 8",
-  "status": "mismatch",
-  "correct_value": "65%→90% đúng; nước có đường chịu thuế từ 2027",
-  "note": "Phần rượu bia khớp; phần nước có đường sai năm. · Đã sửa/bỏ trên trang 09/10/2026."
+  "claim": "Bia 65% (2026) → 90% (2031); nước có đường 8% từ 2027",
+  "value": "65%→90%; 8% 2027",
+  "url": "https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm",
+  "opened_at": "2026-11-05",
+  "quote": "Bia áp dụng mức 65% vào năm 2026 và tăng lên 90% vào năm 2031. ... Nước giải khát có hàm lượng đường trên 5g/100ml sẽ áp dụng mức thuế suất 8% (từ năm 2027)",
+  "status": "match",
+  "correct_value": "",
+  "note": "05/11/2026: tín hiệu Catalyst ghi 2027 cho nước có đường."
  },
  {
   "block": "nn-51",
@@ -255,35 +255,35 @@
  {
   "block": "nn-51",
   "claim": "ASF 2T/2026",
-  "value": "225 ổ dịch, 23 tỉnh, ~12.900 con",
+  "value": "225 ổ dịch, 23 tỉnh, 12.676 con",
   "url": "https://www.sggp.org.vn/2-thang-dau-nam-2026-ca-nuoc-co-gan-12700-con-heo-chet-buoc-tieu-huy-vi-dich-post840883.html",
-  "opened_at": "2026-10-09",
+  "opened_at": "2026-11-05",
   "quote": "cả nước xảy ra 225 ổ dịch tại 23 tỉnh, thành phố, làm 12.676 con heo chết, buộc tiêu hủy",
-  "status": "mismatch",
-  "correct_value": "~12.700 con (12.676)",
-  "note": "225 ổ và 23 tỉnh đúng; số heo là 12.676 (~12.700), không phải ~12.900. · Đã sửa/bỏ trên trang 09/10/2026."
+  "status": "match",
+  "correct_value": "",
+  "note": "Mở lại 05/11/2026 (bài 03/03/2026). Trang ghi ~12.700 = 12.676 làm tròn."
  },
  {
   "block": "nn-51",
   "claim": "ASF lan 20 tỉnh",
   "value": "07/2026",
   "url": "https://tuoitre.vn/saigontimes/dich-ta-lon-chau-phi-lan-ra-20-tinh-chinh-phu-vao-cuoc/",
-  "opened_at": "2026-10-09",
+  "opened_at": "2026-11-05",
   "quote": "Article dated 18/07/2025: 28/34 tỉnh, 514 ổ dịch từ đầu 2025; dịch còn tại 20 địa phương với 248 ổ chưa qua 21 ngày",
   "status": "mismatch",
   "correct_value": "07/2025",
-  "note": "Bài Saigon Times là tháng 7/2025, không phải 07/2026. Cũng ảnh hưởng nn-t2 'ASF lan 20 tỉnh 07/2026'. · Đã sửa/bỏ trên trang 09/10/2026."
+  "note": "Bài là 18/07/2025. Trang không còn dòng này (bỏ 09/10/2026); số ASF lũy kế 2026 chưa có nguồn mở được — để trống."
  },
  {
   "block": "nn-t2",
   "claim": "ASF lan 20 tỉnh",
   "value": "07/2026",
   "url": "https://tuoitre.vn/saigontimes/dich-ta-lon-chau-phi-lan-ra-20-tinh-chinh-phu-vao-cuoc/",
-  "opened_at": "2026-10-09",
+  "opened_at": "2026-11-05",
   "quote": "dịch còn tại 20 địa phương (bài ngày 18/07/2025)",
   "status": "mismatch",
   "correct_value": "07/2025",
-  "note": "Đã sửa/bỏ trên trang 09/10/2026."
+  "note": "Bài là 18/07/2025. Trang không còn dòng này (bỏ 09/10/2026); số ASF lũy kế 2026 chưa có nguồn mở được — để trống."
  },
  {
   "block": "nn-t2",
@@ -334,11 +334,11 @@
   "claim": "PHR còn ~2.100 tỷ VSIP III",
   "value": "~2.100 tỷ",
   "url": "https://elibook.vn/2026/08/17/phr-cu-nhay-vot-ngoan-muc-quy-2-cua-vua-cao-su-binh-duong/",
-  "opened_at": "2026-10-09",
+  "opened_at": "2026-11-05",
   "quote": "VDSC kỳ vọng phần còn lại của VSIP III (khoảng 900 tỷ đồng)",
   "status": "mismatch",
   "correct_value": "~900 tỷ (theo VDSC, 08/2026)",
-  "note": "Link đi kèm nn-60 ghi ~900 tỷ, không phải 2.100. · Đã sửa/bỏ trên trang 09/10/2026."
+  "note": "05/11/2026: bài ghi \"khoảng 900 tỷ\" (VDSC) nhưng ở đoạn khác ghi còn 2.150 tỷ, 1.150 tỷ hạch toán 2026 — bài không thống nhất; trang giữ ~900 tỷ kèm ⓘ."
  },
  {
   "block": "nn-t3",
@@ -376,13 +376,13 @@
  {
   "block": "nn-60",
   "claim": "LTG hạn chế giao dịch do chậm nộp BCTC",
-  "value": "2024–2025",
+  "value": "BCTC bán niên và năm 2024",
   "url": "https://vneconomy.vn/tap-doan-loc-troi-giai-trinh-co-phieu-vao-dien-han-che-giao-dich.htm",
-  "opened_at": "2026-10-09",
-  "quote": "chậm nộp báo cáo tài chính bán niên đã được soát xét và báo cáo tài chính năm 2024 đã được kiểm toán",
-  "status": "mismatch",
-  "correct_value": "BCTC bán niên 2024 và năm 2024",
-  "note": "Link chỉ nói các kỳ 2024, không có 2025. · Đã sửa/bỏ trên trang 09/10/2026."
+  "opened_at": "2026-11-05",
+  "quote": "do chậm nộp báo cáo tài chính bán niên đã được soát xét và báo cáo tài chính năm 2024 đă được kiểm toán.",
+  "status": "match",
+  "correct_value": "",
+  "note": "Bài 12/06/2025. Trang ghi \"bán niên và năm 2024\"."
  },
  {
   "block": "nn-60",
@@ -398,13 +398,13 @@
  {
   "block": "nn-60",
   "claim": "PAN 6T/2026",
-  "value": "DT 7.387 (−9%) · LNST 458 (+126%)",
+  "value": "DT 7.387 (−9%) · LNST 1.036 (+126%)",
   "url": "https://mekongasean.vn/doanh-thu-di-lu-i-pan-group-van-bao-lai-tang-ga-n-40-57833.html",
-  "opened_at": "2026-10-09",
-  "quote": "Lũy kế 6 tháng đầu năm 2026, PAN đạt tổng doanh thu 7.387 tỷ đồng, giảm hơn 9% YoY; lợi nhuận sau thuế đạt 1.036 tỷ đồng, tăng 126% YoY.",
-  "status": "mismatch",
-  "correct_value": "LNST 1.036 (+126%)",
-  "note": "458 không xuất hiện trong bài. · Đã sửa/bỏ trên trang 09/10/2026."
+  "opened_at": "2026-11-05",
+  "quote": "Lũy kế 6 tháng đầu năm 2026, PAN đạt tổng doanh thu 7.387 tỷ đồng, giảm hơn 9% YoY ... lợi nhuận sau thuế đạt 1.036 tỷ đồng, tăng 126% YoY",
+  "status": "match",
+  "correct_value": "",
+  "note": "Mở lại 05/11/2026; trang đã ghi 1.036."
  },
  {
   "block": "nn-60",
@@ -497,24 +497,24 @@
  {
   "block": "nn-60",
   "claim": "HAG 6T/2026",
-  "value": "DT 3.707 · LNST ~2.300; miễn 784 tỷ lãi TP",
+  "value": "DT 3.707 · LNST 2.299; miễn >1.500 tỷ lãi TP",
   "url": "https://mekongasean.vn/hagl-bam-sat-ke-hoach-loi-nhuan-ky-luc-nho-duoc-mien-lai-trai-phieu-57803.html",
-  "opened_at": "2026-10-09",
-  "quote": "HAGL achieved nearly 2.3 trillion VND in after-tax profit ... exempted from over 1.5 trillion VND in bond interest ... approximately 780 billion VND from a single waiver in Q2",
-  "status": "mismatch",
-  "correct_value": "miễn >1.500 tỷ lãi TP 6T (khoản Q2 ~780 tỷ)",
-  "note": "LNST ~2.300 khớp; 784 chỉ là một khoản Q2, tổng miễn 6T >1.500 tỷ. DT 3.707 chưa thấy trong bài. · Đã sửa/bỏ trên trang 09/10/2026."
+  "opened_at": "2026-11-05",
+  "quote": "công ty đạt tổng doanh thu 3.707 tỷ đồng ... đạt 2.299 tỷ đồng ... Trong 6 tháng đầu năm, HAGL được miễn giảm hơn 1.500 tỷ đồng lãi vay trái phiếu.",
+  "status": "match",
+  "correct_value": "",
+  "note": "Mở lại 05/11/2026."
  },
  {
   "block": "nn-60",
   "claim": "HAG diện tích",
   "value": "chuối 2.365 ha, sầu riêng 1.713 ha, cà phê 2.464 ha",
   "url": "https://mekongasean.vn/hagl-bam-sat-ke-hoach-loi-nhuan-ky-luc-nho-duoc-mien-lai-trai-phieu-57803.html",
-  "opened_at": "2026-10-19",
+  "opened_at": "2026-11-05",
   "quote": "banana plantations (2,365 hectares), durian farms (1,713 hectares), and coffee operations (2,464 hectares)",
   "status": "unreachable",
   "correct_value": "",
-  "note": "Trang mekongasean (bài 28/07/2026) không có số diện tích chuối/sầu riêng/cà phê; quote tiếng Anh cũ không thuộc trang này. Tìm web 19/10/2026 không thấy nguồn gốc có 2.365/1.713/2.464 ha."
+  "note": "05/11/2026: bài không có số diện tích; đã bỏ số diện tích khỏi nn-60 và nn-04 (để trống) cho tới khi có nguồn."
  },
  {
   "block": "nn-60",
@@ -585,13 +585,13 @@
  {
   "block": "nn-60",
   "claim": "SAB KH 2026",
-  "value": "DT 28.316 · LNST 4.609",
+  "value": "KH LNST 4.937; 6T LNST 2.489 (+21%)",
   "url": "https://doanhnhan.baophapluat.vn/sabeco-sab-thu-hon-2-480-ty-dong-lai-sau-thue-nua-dau-nam-2026-hoan-thanh-50-ke-hoach.html",
-  "opened_at": "2026-10-09",
-  "quote": "Với mục tiêu lợi nhuận sau thuế 4.937 tỷ đồng đề ra cho năm 2026",
-  "status": "mismatch",
-  "correct_value": "LNST KH 4.937",
-  "note": "DT KH 28.316 không thấy trong bài. · Đã sửa/bỏ trên trang 09/10/2026."
+  "opened_at": "2026-11-05",
+  "quote": "lợi nhuận sau thuế đạt 2.489 tỷ đồng, tăng 21% so với cùng kỳ năm trước ... lợi nhuận sau thuế 4.937 tỷ đồng đề ra cho năm 2026",
+  "status": "match",
+  "correct_value": "",
+  "note": "05/11/2026: bài không nêu KH doanh thu → bỏ \"DT 28.316\" khỏi trang."
  },
  {
   "block": "nn-60",
@@ -607,13 +607,13 @@
  {
   "block": "nn-60",
   "claim": "KDC",
-  "value": "KH DT 12.000 · LNTT 700; 6T DT 4.345 (+4,5%) · LNTT 149 (+64%)",
+  "value": "KH DT 12.000 · LNTT 700; 6T LNTT 149 (+64% so tự lập)",
   "url": "https://mekongasean.vn/loi-nhuan-kido-tang-manh-sau-soat-xet-6-thang-dau-nam-2026-59181.html",
-  "opened_at": "2026-10-09",
-  "quote": "pre-tax profit reached approximately 149 billion VND, a 64% increase from the self-reported figure of 90.6 billion ... Net revenue goal: 12,000; Pre-tax profit 700",
-  "status": "mismatch",
-  "correct_value": "+64% là so với số tự lập trước soát xét, không phải YoY",
-  "note": "DT 4.345 (+4,5%) không thấy trong bài; KH khớp. · Đã sửa/bỏ trên trang 09/10/2026."
+  "opened_at": "2026-11-05",
+  "quote": "ghi nhận lợi nhuận trước thuế gần 149 tỷ đồng, tăng 64% so với mức 90,6 tỷ đồng trong báo cáo tự lập ... Kido đặt mục tiêu doanh thu thuần 12.000 tỷ đồng",
+  "status": "match",
+  "correct_value": "",
+  "note": "05/11/2026: bài không nêu DT 6T → bỏ \"DT 4.345 (+4,5%)\" khỏi trang."
  },
  {
   "block": "nn-t4",
@@ -691,5 +691,27 @@
   "status": "match",
   "correct_value": "",
   "note": "Báo Văn hóa 24/10/2026, số tham chiếu ngày 23/10."
+ },
+ {
+  "block": "nn-51",
+  "claim": "Bia TTĐB 70% từ 01/01/2027 (Điều 8 Luật 66/2025/QH15)",
+  "value": "70% 2027",
+  "url": "https://luatvietnam.vn/tin-van-ban-moi/tang-thue-tieu-thu-dac-biet-voi-ruou-bia-thuoc-la-tu-01-01-2026-186-103035-article.html",
+  "opened_at": "2026-11-05",
+  "quote": "Bia: Thuế suất 65% từ 01/01/2026, tăng dần 5 điểm mỗi năm, đạt 90% từ 01/01/2031.",
+  "status": "mismatch",
+  "correct_value": "Bài nêu 65% (2026), +5 điểm/năm, 90% (2031) → 70% 2027 suy ra, chưa thấy nguyên văn số 70",
+  "note": "Đồng hồ TTĐB ghi 2028–2030 theo lộ trình +5 điểm; toàn văn Điều 8 (hoatieu 403, thuvienphapluat chặn) chưa mở được. Quote là bản tóm của công cụ đọc trang, không phải nguyên văn bảng."
+ },
+ {
+  "block": "nn-51",
+  "claim": "Nước giải khát có đường 8% từ 2027, 10% từ 2028",
+  "value": "8% / 10%",
+  "url": "https://thoibaotaichinhvietnam.vn/ap-thue-tieu-thu-dac-biet-voi-nuoc-giai-khat-co-duong-tu-nam-2027-178303.html",
+  "opened_at": "2026-11-05",
+  "quote": "với hàm lượng đường trên 5g/100ml ... sẽ phải chịu thuế suất 8% từ năm 2027 và 10% từ năm 2028",
+  "status": "match",
+  "correct_value": "",
+  "note": "Bài 14/06/2025; phần sapo ghi 5mg/100ml là lỗi đánh máy, thân bài 5g/100ml."
  }
 ]

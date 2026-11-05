@@ -1098,5 +1098,38 @@
   "status": "mismatch",
   "correct_value": "Container 6.000–8.000 TEU (không có 200.000 tấn)",
   "note": "Đã sửa/bỏ trên trang 09/10/2026."
+ },
+ {
+  "block": "cg-t4",
+  "claim": "Long Thành khai thác dự kiến (ACV)",
+  "value": "24/12/2026",
+  "url": "https://mekongasean.vn/acv-cong-bo-thoi-diem-du-kien-khai-thac-san-bay-long-thanh-61304.html",
+  "opened_at": "2026-11-05",
+  "quote": "Tổng công ty Cảng hàng không Việt Nam (ACV) dự kiến đưa sân bay Long Thành vào khai thác từ ngày 24/12/2026.",
+  "status": "match",
+  "correct_value": "",
+  "note": "Tin 1/12/2026 (Tiền Phong 14/07/2026) đã cũ; bài 31/10/2026 ghi 24/12/2026."
+ },
+ {
+  "block": "cg-t4",
+  "claim": "Nhà ga hàng hóa CTB1 Long Thành",
+  "value": "24/12/2026",
+  "url": "https://mekongasean.vn/acv-cong-bo-thoi-diem-du-kien-khai-thac-san-bay-long-thanh-61304.html",
+  "opened_at": "2026-11-05",
+  "quote": "Đối với vận chuyển hàng hóa, một phần nhà ga hàng hóa số 1 (CTB1) dự kiến phục vụ hàng hóa nội địa từ ngày 24/12/2026.",
+  "status": "match",
+  "correct_value": "",
+  "note": "Quốc tế từ 1/2027, trừ châu Âu và Hoa Kỳ."
+ },
+ {
+  "block": "cg-25",
+  "claim": "Khung giá khu vực I TT 39/2023",
+  "value": "36-53 USD/20'; 55-81 USD/40'",
+  "url": "https://baophapluat.vn/tu-1522024-dieu-chinh-gia-dich-vu-boc-do-container-cang-bien-post502859.html",
+  "opened_at": "2026-11-05",
+  "quote": "có giá từ 36 - 53 USD/container 20 feet và 55 - 81 USD/container 40 feet",
+  "status": "match",
+  "correct_value": "",
+  "note": "Khu vực I: các cảng biển từ vĩ tuyến 20 độ trở lên phía Bắc; không áp cho Lạch Huyện."
  }
 ]

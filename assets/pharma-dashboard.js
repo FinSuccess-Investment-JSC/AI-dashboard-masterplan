@@ -166,3 +166,59 @@ window.PHARMA_BRIEF={
 };
 const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; giá hàng hóa: IMF/FRED, EIA, ICE.';
 })();
+
+/* ---------- Đợt 1 (05/11/2026): trúng thầu Cục QLD, chi phí API, biên gộp, dân số 65+ ---------- */
+(()=>{
+const insight=(id,text)=>{const block=document.getElementById(id)?.closest('.card');if(!block)return;const n=document.createElement('div');n.className='chart-insight';n.dataset.inputOwner='ai';n.innerHTML='<b>Cách hiểu trong bối cảnh ngành · AI:</b> ';n.append(text);block.append(n)};
+const signed=(v,d=0)=>v==null||!isFinite(v)?'—':(v>0?'+':'')+v.toLocaleString('vi-VN',{maximumFractionDigits:d,minimumFractionDigits:d});
+const make=(tag,cls,text)=>{const e=document.createElement(tag);e.className=cls||'';if(text)e.textContent=text;return e};
+const nf=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
+const mon=d=>'T'+Number(d.slice(5,7))+'/'+d.slice(2,4);
+const ym=d=>d.slice(0,7);
+const byMonth=rs=>{const m={};rs.forEach(r=>{m[r.date.slice(0,7)]=r});return m};
+const C={navy:'#2938A8',teal:'#59C5C8',plum:'#861C52',gold:'#c29100',grey:'#6b7686',green:'#27af95',red:'#d1583f'};
+const X=window.PHARMA_EXTRA||{},T=X.dav_tenders,nf2=(v,d=0)=>v==null||!isFinite(v)?'—':v.toLocaleString('vi-VN',{maximumFractionDigits:d,minimumFractionDigits:d});
+const TK=['DVN','DBD','DHG','IMP','DMC','TRA'],TC={DVN:'#861C52',DBD:'#2938A8',DHG:'#59C5C8',IMP:'#c29100',DMC:'#27af95',TRA:'#6b7686'};
+const ql=q=>'Q'+q.slice(6)+'/'+q.slice(0,4);
+if(T&&document.getElementById('chTenderTicker')){
+ const qs=Object.keys(T.quarters).filter(q=>T.quarters[q].n>=1000).slice(-8);
+ const sum=(t,q)=>{const g=T.by_ticker[t]?.[q];return g?Object.values(g).reduce((a,c)=>a+c.value,0)/1e9:0};
+ barLineChart('chTenderTicker',{categories:qs.map(ql),series:TK.map(t=>({name:t,color:TC[t],values:qs.map(q=>+sum(t,q).toFixed(1))})),unit:'tỷ đồng',digits:1,height:260,stackable:true,rotateLabels:false});
+ fillTable('tbl-tender-ticker',['Mã',...qs.map(ql),'Số dòng thuốc'],TK.map(t=>[t,...qs.map(q=>nf2(sum(t,q),1)),nf2(qs.reduce((a,q)=>a+Object.values(T.by_ticker[t]?.[q]||{}).reduce((x,c)=>x+c.n,0),0))]));
+ const last=qs.at(-1),prev=qs.at(-2),top=TK.map(t=>[t,sum(t,last)]).sort((a,b)=>b[1]-a[1])[0];
+ insight('chTenderTicker',`${ql(last)}: ${top[0]} trúng nhiều nhất trong nhóm niêm yết (${nf2(top[1],0)} tỷ). Tổng toàn quốc cùng quý ${nf2(T.quarters[last].value/1e9,0)} tỷ — 6 mã chỉ chiếm phần nhỏ, phần lớn thuộc nhà phân phối và hãng ngoại. Giá trị trúng thầu dẫn doanh thu ETC 1–4 quý; số quý gần nhất có thể còn tăng khi bệnh viện gửi bổ sung.`);
+ const g=T.by_group_origin[prev&&T.quarters[last].n<T.quarters[prev].n*0.6?prev:last],G=['Nhóm 1','Nhóm 2','Nhóm 3','Nhóm 4','Nhóm 5','Khác'].filter(k=>g[k]);
+ const gq=prev&&T.quarters[last].n<T.quarters[prev].n*0.6?prev:last;
+ barLineChart('chTenderGroup',{categories:G,series:[{name:'Sản xuất trong nước',color:'#2938A8',values:G.map(k=>+(g[k].vn.value/1e9).toFixed(0))},{name:'Nhập khẩu',color:'#c29100',values:G.map(k=>+(g[k].foreign.value/1e9).toFixed(0))}],unit:'tỷ đồng',digits:0,height:260,stackable:true,rotateLabels:false});
+ fillTable('tbl-tender-group',['Nhóm ('+ql(gq)+')','Nội (tỷ)','Ngoại (tỷ)','% ngoại'],G.map(k=>{const v=g[k].vn.value,f=g[k].foreign.value;return [k,nf2(v/1e9),nf2(f/1e9),nf2(f/(v+f)*100,0)+'%']}));
+ const f12=['Nhóm 1','Nhóm 2'].reduce((a,k)=>a+(g[k]?.foreign.value||0),0),t12=['Nhóm 1','Nhóm 2'].reduce((a,k)=>a+(g[k]?g[k].vn.value+g[k].foreign.value:0),0);
+ insight('chTenderGroup',`Thuốc ngoại chiếm ${nf2(f12/t12*100,0)}% giá trị nhóm 1–2 (${ql(gq)}): đây là phần EU-GMP nội (IMP, DHG, DBD) có thể giành thêm; nhóm 4 là sân của thuốc nội.`);
+}
+// Chi phí API: NPL nhập × tỷ giá
+const _m=(window.PHARMA_PUBLIC?.blocks?.macro?.series)||{},_S=k=>_m[k]?.records||[];
+const fx=_S('usdvnd'),api=_S('import_api');
+const _fl=fx.at(-1),_fp=_fl&&fx.find(r=>r.date.slice(0,7)===String(+_fl.date.slice(0,4)-1)+_fl.date.slice(4,7)),fxY=_fp?.value?(_fl.value/_fp.value-1)*100:null;
+const fxM=byMonth(fx),apiL=api.slice(-24).filter(r=>fxM[ym(r.date)]);
+if(apiL.length&&document.getElementById('chApiCost')){
+ const f0=fx.find(r=>r.date.startsWith('2025-01'))?.value||fx[0].value;
+ barLineChart('chApiCost',{categories:apiL.map(r=>mon(r.date)),series:[{name:'NPL dược nhập (tỷ đồng)',color:C.gold,values:apiL.map(r=>+(r.value*fxM[ym(r.date)].value/1000).toFixed(0))},{name:'Tỷ giá (T1/2025=100)',color:C.navy,kind:'line',values:apiL.map(r=>+(fxM[ym(r.date)].value/f0*100).toFixed(1))}],unit:'',digits:0,height:260,rotateLabels:true});
+ fillTable('tbl-api-cost',['Tháng','NPL (triệu USD)','Tỷ giá','NPL quy VND (tỷ)'],apiL.slice().reverse().map(r=>[mon(r.date),nf(r.value,1),nf(fxM[ym(r.date)].value,0),nf(r.value*fxM[ym(r.date)].value/1000,0)]));
+ insight('chApiCost',`Tỷ giá ${signed(fxY,1)}% YoY: cùng một lượng API, chi phí VND tăng tương ứng trong khi giá trúng thầu cố định theo kỳ thầu — đối chiếu biên gộp bên cạnh 1–2 quý sau.`);
+}
+const CQ=window.COMPANY_QUARTERLY;
+if(CQ&&document.getElementById('chPharmaGm')){
+ const qs=CQ.quarters,cs=['DHG','IMP','DBD','TRA','DMC'].map(s=>CQ.companies.find(c=>c.symbol===s&&c.sector==='pharma')||CQ.companies.find(c=>c.symbol===s)).filter(Boolean);
+ let end=qs.length;while(end>0&&!cs.some(c=>c.revenue[end-1]!=null))end--;
+ const idx=[...Array(8)].map((_,i)=>end-8+i).filter(i=>i>=0),gm=(c,i)=>c.revenue[i]&&c.gross_profit?.[i]!=null?+(c.gross_profit[i]/c.revenue[i]*100).toFixed(1):null;
+ const col={DHG:'#59C5C8',IMP:'#c29100',DBD:'#2938A8',TRA:'#27af95',DMC:'#861C52'};
+ barLineChart('chPharmaGm',{categories:idx.map(i=>qs[i]),series:cs.map(c=>({name:c.symbol,color:col[c.symbol],kind:'line',values:idx.map(i=>gm(c,i))})),unit:'%',digits:1,height:260,zeroBase:false,rotateLabels:false});
+ fillTable('tbl-pharma-gm',['Quý',...cs.map(c=>c.symbol)],idx.slice().reverse().map(i=>[qs[i],...cs.map(c=>{const v=gm(c,i);return v==null?'—':nf(v,1)+'%'})]));
+}
+const P=X.pop65?.records||[];
+if(P.length&&document.getElementById('chPop65')){
+ const rs=P.filter(r=>r.date>='2000');
+ barLineChart('chPop65',{categories:rs.map(r=>r.date.slice(0,4)),series:[{name:'Dân số 65+ (% tổng)',color:C.plum,kind:'line',values:rs.map(r=>r.value)}],unit:'%',digits:1,height:200,zeroBase:false,rotateLabels:false,maxLabels:6});
+ const l=P.at(-1),p10=P.find(r=>r.date.slice(0,4)==String(+l.date.slice(0,4)-10));
+ const h=document.getElementById('chPop65');const n=make('div','source-note');n.innerHTML=`<b>${nf(l.value,1)}%</b> năm ${l.date.slice(0,4)}${p10?` (10 năm trước ${nf(p10.value,1)}%)`:''} · Nguồn: <a href="${X.pop65.url}" target="_blank" rel="noopener">World Bank qua FRED (SPPOP65UPTOZSVNM)</a>`;h.after(n);
+}
+})();

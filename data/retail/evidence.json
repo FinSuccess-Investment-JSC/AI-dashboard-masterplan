@@ -1538,5 +1538,105 @@
   "quote": "ghi nhận lỗ ròng 258 tỷ đồng",
   "status": "match",
   "note": "VnEconomy, bài 22/10/2026; tỷ lệ biểu quyết chưa xác minh"
+ },
+ {
+  "block": "bl-15",
+  "claim": "MWG 9T/2026 doanh thu thuần",
+  "value": "147.953 tỷ đồng, +30%",
+  "url": "https://thoibaotaichinhvietnam.vn/doanh-thu-9-thang-cua-the-gioi-di-dong-tang-30-dat-gan-148-000-ty-dong-205356.html",
+  "opened_at": "2026-11-05",
+  "quote": "ghi nhận doanh thu thuần đạt 147.953 tỷ đồng, tăng 30% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "Q3/2026 ước 52.648 tỷ (+32%)."
+ },
+ {
+  "block": "bl-15",
+  "claim": "Khối Điện Máy Xanh 9T/2026 doanh thu và SSSG",
+  "value": "gần 99.200 tỷ đồng, +29%; SSSG 30%",
+  "url": "https://thoibaotaichinhvietnam.vn/doanh-thu-9-thang-cua-the-gioi-di-dong-tang-30-dat-gan-148-000-ty-dong-205356.html",
+  "opened_at": "2026-11-05",
+  "quote": "ghi nhận doanh thu gần 99.200 tỷ đồng trong 9 tháng đầu năm, tăng 29% so với cùng kỳ. … mức tăng trưởng doanh thu trên mỗi cửa hàng hiện hữu (SSSG) đạt 30% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "bl-15",
+  "claim": "MWG số cửa hàng 30/9/2026",
+  "value": "7.777; nhóm ĐMX gồm EraBlue 3.340; BHX 3.904; An Khang 438; AVAKids 95",
+  "url": "https://thoibaotaichinhvietnam.vn/doanh-thu-9-thang-cua-the-gioi-di-dong-tang-30-dat-gan-148-000-ty-dong-205356.html",
+  "opened_at": "2026-11-05",
+  "quote": "Tính đến ngày 30/9/2026, MWG vận hành tổng cộng 7.777 cửa hàng thuộc các chuỗi bán lẻ. Trong đó, nhóm Điện Máy Xanh, bao gồm EraBlue, có 3.340 cửa hàng; Bách Hóa Xanh có 3.904 cửa hàng; An Khang vận hành 438 nhà thuốc và AVAKids có 95 cửa hàng.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "bl-15",
+  "claim": "FRT 9T/2026 doanh thu, LNTT",
+  "value": "48.273 tỷ (+33%); LNTT 1.724 tỷ (+114%)",
+  "url": "https://doanhnhan.baophapluat.vn/fpt-retail-ghi-nhan-doanh-thu-48-273-ty-dong-sau-9-thang-tang-33-so-voi-cung-ky.html",
+  "opened_at": "2026-11-05",
+  "quote": "ghi nhận doanh thu hợp nhất đạt 48.273 tỷ đồng, tăng 33% so với cùng kỳ năm 2025. … lợi nhuận trước thuế hợp nhất của doanh nghiệp đạt 1.724 tỷ đồng, ghi nhận mức tăng trưởng lên tới 114%.",
+  "status": "match",
+  "note": "Số 9T chưa đưa vào Key players (đợt riêng)."
+ },
+ {
+  "block": "bl-15",
+  "claim": "Long Châu 9T/2026",
+  "value": "33.408 tỷ (+35%); 2.741 nhà thuốc, 244 trung tâm tiêm chủng; 1,3 tỷ/cửa hàng/tháng",
+  "url": "https://doanhnhan.baophapluat.vn/fpt-retail-ghi-nhan-doanh-thu-48-273-ty-dong-sau-9-thang-tang-33-so-voi-cung-ky.html",
+  "opened_at": "2026-11-05",
+  "quote": "mang về doanh thu 33.408 tỷ đồng, tăng 35% so với cùng kỳ … mạng lưới gồm 2.741 nhà thuốc và 244 trung tâm tiêm chủng trên toàn quốc … doanh thu bình quân đạt 1,3 tỷ đồng mỗi cửa hàng một tháng.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "bl-15",
+  "claim": "FPT Shop 9T/2026",
+  "value": "15.014 tỷ (+30%); 622 cửa hàng; Q3 ~3 tỷ/cửa hàng/tháng",
+  "url": "https://doanhnhan.baophapluat.vn/fpt-retail-ghi-nhan-doanh-thu-48-273-ty-dong-sau-9-thang-tang-33-so-voi-cung-ky.html",
+  "opened_at": "2026-11-05",
+  "quote": "chuỗi FPT Shop ghi nhận doanh thu 15.014 tỷ đồng trong 9 tháng đầu năm 2026, tăng 30% … duy trì quy mô 622 cửa hàng … doanh thu bình quân trong quý III đạt khoảng 3 tỷ đồng mỗi cửa hàng một tháng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "bl-15",
+  "claim": "PNJ Q3/2026 và 9T",
+  "value": "DT Q3 6.995 tỷ (−14%); biên gộp 8,7%; lỗ sau thuế gần 258 tỷ; 9T DT 32.704 tỷ, LNST 471 tỷ",
+  "url": "https://thitruongtaichinhtiente.vn/pnj-lo-gan-258-ty-dong-trong-quy-iii-ton-kho-vuot-18-800-ty-dong-86712.html",
+  "opened_at": "2026-11-05",
+  "quote": "doanh thu thuần đạt 6.995 tỷ đồng, giảm 14% … Biên lợi nhuận gộp theo đó thu hẹp từ 19,8% trong quý III/2025 xuống 8,7% … lỗ trước thuế 328 tỷ đồng và lỗ sau thuế gần 258 tỷ đồng. Lũy kế 9 tháng năm 2026, PNJ ghi nhận doanh thu thuần đạt 32.704 tỷ đồng … lãi sau thuế 471 tỷ đồng trong 9 tháng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "bl-15",
+  "claim": "PNJ doanh thu bán lẻ 9T/2026 và số cửa hàng",
+  "value": "bán lẻ ~17.271 tỷ (+3%), Q3 −20%; 424 cửa hàng",
+  "url": "https://thitruongtaichinhtiente.vn/pnj-lo-gan-258-ty-dong-trong-quy-iii-ton-kho-vuot-18-800-ty-dong-86712.html",
+  "opened_at": "2026-11-05",
+  "quote": "doanh thu bán lẻ trong 9 tháng đạt khoảng 17.271 tỷ đồng, tăng nhẹ 3% so với cùng kỳ. Tuy nhiên, riêng quý III, doanh thu bán lẻ giảm 20%. … Hệ thống kinh doanh còn 424 cửa hàng trên cả nước, giảm 30 cửa hàng so với quý trước.",
+  "status": "match",
+  "note": "Số Vietcap tổng hợp, báo dẫn."
+ },
+ {
+  "block": "bl-42",
+  "claim": "PNJ tồn kho 30/9/2026",
+  "value": "giá gốc 18.855 tỷ; dự phòng 2.229 tỷ",
+  "url": "https://thitruongtaichinhtiente.vn/pnj-lo-gan-258-ty-dong-trong-quy-iii-ton-kho-vuot-18-800-ty-dong-86712.html",
+  "opened_at": "2026-11-05",
+  "quote": "Giá trị hàng tồn kho theo giá gốc đạt 18.855 tỷ đồng, tăng khoảng 19% so với đầu năm. Sau khi trừ dự phòng giảm giá 2.229 tỷ đồng",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "bl-51",
+  "claim": "Bách Hóa Xanh tháng 11/2025; An Khang/cửa hàng",
+  "value": "4.200 tỷ (+6% MoM, gần +20% YoY); An Khang >550 triệu/cửa hàng",
+  "url": "https://doanhnhan.baophapluat.vn/the-gioi-di-dong-mwg-dragon-capital-tro-lai-ghe-co-dong-lon-doanh-thu-11-thang-vuot-142000-ty-dong-90042.html",
+  "opened_at": "2026-11-05",
+  "quote": "Riêng tháng 11, doanh thu chuỗi này đạt 4.200 tỷ đồng, tăng 6% so với tháng trước và gần 20% so với cùng kỳ năm ngoái … chuỗi nhà thuốc An Khang duy trì doanh thu bình quân hơn 550 triệu đồng/cửa hàng trong tháng 11",
+  "status": "match",
+  "note": ""
  }
 ]

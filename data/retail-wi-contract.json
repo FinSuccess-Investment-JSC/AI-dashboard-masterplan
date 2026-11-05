@@ -66,6 +66,25 @@
    ],
    "pick": "max_to_time",
    "note": "5 phân ngành × 1000 dòng ≈ 10 tháng. PNJ không rõ thuộc phân ngành nào trên Wi (113 trống, 206 lệch) nên không vẽ."
+  },
+  {
+   "block": "gold_sjc",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "1224193,1224229",
+    "from_time": "2024-01-01",
+    "to_time": "2026-11-05",
+    "limit": 1000
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "Vàng miếng SJC (1224193) và vàng nhẫn (1224229), nghìn VND/lượng, chuỗi daily; gọi khoảng dài bị Wi nén về tháng (ngày cuối kỳ). Giá thế giới (XAU/USD) và tỷ giá chưa có → chênh lệch quy đổi chưa tính được (xem wi-requests-retail.md)."
   }
  ],
  "indicators": {
@@ -187,6 +206,18 @@
    "corn",
    "Ngô CBOT",
    "US cent/bushel",
+   "daily"
+  ],
+  "1224193": [
+   "gold_sjc",
+   "Vàng miếng SJC",
+   "nghìn VND/lượng",
+   "daily"
+  ],
+  "1224229": [
+   "gold_ring",
+   "Vàng nhẫn",
+   "nghìn VND/lượng",
    "daily"
   ]
  },

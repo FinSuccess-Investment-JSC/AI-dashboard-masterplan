@@ -938,5 +938,85 @@
   "quote": "có hiệu lực thi hành kể từ ngày 2/7/2026",
   "status": "match",
   "note": "TBTC 08/07/2026: không vượt quá mức 30% phí bảo hiểm khai thác năm đầu thực tế thu được; bổ sung mức 7% phí bảo hiểm thực tế thu được đối với phương thức nộp phí 1 lần."
+ },
+ {
+  "block": "bh-33",
+  "claim": "BVH: LNTT / LNST hợp nhất năm 2025",
+  "value": "3.554 tỷ / 2.922 tỷ đồng",
+  "url": "https://nhadautu.vn/tap-doan-bao-viet-bvh-tong-tai-san-hop-nhat-tai-31-12-2025-dat-gan-292000-ty-dong-tang-truong-161-d103984.html",
+  "opened_at": "2026-11-05",
+  "quote": "Lợi nhuận trước thuế và sau thuế hợp nhất lần lượt là 3.554 tỷ đồng và 2.922 tỷ đồng, đều đạt mức tăng trưởng 2 con số.",
+  "status": "match",
+  "note": "Dùng làm mẫu số bảng độ nhạy lãi suất. Tổng tài sản 31/12/2025 291.806 tỷ."
+ },
+ {
+  "block": "bh-33",
+  "claim": "BMI: LNTT năm 2025",
+  "value": "hơn 302 tỷ đồng, 100,75% kế hoạch, +10,83%",
+  "url": "https://nhandan.vn/dai-hoi-dong-co-dong-bao-minh-bmi-nam-2026-hoan-thanh-vuot-ke-hoach-loi-nhuan-tiep-tuc-cung-co-nen-tang-phat-trien-ben-vung-post966325.html",
+  "opened_at": "2026-11-05",
+  "quote": "lợi nhuận trước thuế đạt hơn 302 tỷ đồng, hoàn thành 100,75% kế hoạch do Đại hội đồng cổ đông giao phó và tăng trưởng 10,83% so cùng kỳ năm 2024.",
+  "status": "match",
+  "note": "Tổng doanh thu 2025 gần 7.112 tỷ (+1,86%); tỷ lệ bồi thường đã trả/doanh thu ~28%."
+ },
+ {
+  "block": "bh-33",
+  "claim": "BIC: LNTT hợp nhất năm 2025",
+  "value": "679 tỷ đồng, 95,6% kế hoạch",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/dhdcd-bic-muc-tieu-lai-780-ty-dong-trong-nam-2026-tang-chia-co-tuc-tien-mat-len-12-35224725",
+  "opened_at": "2026-11-05",
+  "quote": "Lợi nhuận trước thuế hợp nhất đạt 679 tỷ, tăng nhẹ so với năm trước và hoàn thành 95,6% kế hoạch.",
+  "status": "match",
+  "note": "Tổng doanh thu phí 2025 5.324 tỷ (báo cáo riêng lẻ)."
+ },
+ {
+  "block": "bh-33",
+  "claim": "VNR: LNTT thực hiện năm 2025",
+  "value": "507,8 tỷ đồng",
+  "url": "https://thoibaotaichinhvietnam.vn/tai-bao-hiem-vinare-phan-dau-nhieu-chi-tieu-tang-hai-chu-so-lai-560-ty-dong-194784.html",
+  "opened_at": "2026-11-05",
+  "quote": "Lợi nhuận trước thuế dự kiến đạt 560 tỷ đồng, tăng 10,3% so với năm 2025 (507,8 tỷ đồng).",
+  "status": "match",
+  "note": "Doanh thu 2025 thực hiện 3.870,28 tỷ."
+ },
+ {
+  "block": "bh-33",
+  "claim": "PTI: danh mục đầu tư và tiền gửi cuối Q3/2026",
+  "value": "danh mục ~4.980 tỷ (+18,8%); tiền gửi 3.777,1 tỷ (+26,4%); trái phiếu gần 1.119 tỷ",
+  "url": "https://thoibaotaichinhvietnam.vn/bao-hiem-pti-lai-245-ty-dong-sau-9-thang-loi-nhuan-gop-hoat-dong-tai-chinh-tang-gan-65-206126.html",
+  "opened_at": "2026-11-05",
+  "quote": "Tính đến cuối quý III/2026, danh mục đầu tư của PTI đạt khoảng 4.980 tỷ đồng, tăng 18,8% so với đầu năm, tương ứng tăng gần 790 tỷ đồng; trong đó, các khoản đầu tư ngắn hạn chiếm tỷ trọng 68,8%. Theo đó, tiền gửi đạt 3.777,1 tỷ đồng, tăng 26,4%. Tổng đầu tư trái phiếu đạt gần 1.119 tỷ đồng, tăng 5,3%",
+  "status": "match",
+  "note": "LNTT 9T/2026 245 tỷ; Q3 79,4 tỷ; phí gốc 9T 3.238,7 tỷ (+16,7%) — số 9T chưa đưa vào Key players (đợt riêng)."
+ },
+ {
+  "block": "bh-51",
+  "claim": "Thiệt hại bảo hiểm do bão số 10 và số 11 năm 2025 (đến 10/10/2025)",
+  "value": "gần 1.674 tỷ đồng; tài sản kỹ thuật gần 1.593 tỷ; xe cơ giới hơn 76 tỷ",
+  "url": "https://thoibaotaichinhvietnam.vn/doanh-nghiep-bao-hiem-ghi-nhan-thiet-hai-khoang-1674-ty-dong-sau-hai-con-bao-184852.html",
+  "opened_at": "2026-11-05",
+  "quote": "Số liệu từ Cục Quản lý, giám sát bảo hiểm cho thấy, tính đến ngày 10/10, thiệt hại do bão số 10 và số 11 gây ra ước tính khoảng 1.674 tỷ đồng, tập trung chủ yếu ở bảo hiểm tài sản kỹ thuật và bảo hiểm xe cơ giới. Nghiệp vụ bảo hiểm tài sản kỹ thuật 1.081 vụ, thiệt hại lớn nhất, ước tính gần 1.593 tỷ đồng. Còn nghiệp vụ bảo hiểm xe cơ giới ghi nhận 2.653 vụ, thiệt hại ước tính hơn 76 tỷ đồng.",
+  "status": "match",
+  "note": "Bão số 10 Bualoi, số 11 Matmo (9–10/2025). Thiệt hại kinh tế do thiên tai 2025 ~35.000 tỷ (Bộ NN&MT)."
+ },
+ {
+  "block": "bh-51",
+  "claim": "Guy Carpenter APAC Property Catastrophe ROL Index, tái tục 1/1/2026",
+  "value": "−12%",
+  "url": "https://www.guycarp.com/content/dam/guycarp-rebrand/insights-images/renewal-hub/2026Renewals/APAC_Property_Catastrophe_Rateon_LineIndex.pdf",
+  "opened_at": "2026-11-05",
+  "quote": "The Guy Carpenter APAC Property Catastrophe Rate on Line Index decreased by an estimated 12% for January 2026 renewals.",
+  "status": "match",
+  "note": "PDF của trang https://www.guycarp.com/insights/2025/12/APAC-property-catastrophe-ROL-index-2026.html (số nằm trong ảnh, mở PDF bằng pdftotext). Preliminary January analysis."
+ },
+ {
+  "block": "bh-51",
+  "claim": "Guy Carpenter ROL index sau tái tục 1/7/2026: toàn cầu, Mỹ, APAC",
+  "value": "toàn cầu −16%; Mỹ −16%; APAC −19% (1/1/2026: −12%)",
+  "url": "https://www.artemis.bm/news/global-and-us-property-cat-rates-down-16-apac-19-after-july-renewals-in-2026-guy-carpenter/",
+  "opened_at": "2026-11-05",
+  "quote": "property catastrophe reinsurance rate on-line (ROL) now down globally by around 16% in 2026 … the Guy Carpenter U.S. Property Catastrophe Rate On-Line Index is down further, at a 16% decline for 2026 so far … the Guy Carpenter APAC property catastrophe reinsurance rate-on-line index is down even further at 19%. In Asia Pacific (APAC), property catastrophe reinsurance rates fell by 12% on average at 1.1 2026.",
+  "status": "match",
+  "note": "Artemis 30/06/2026 dẫn Guy Carpenter; trang Guy Carpenter tháng 7 chưa mở được."
  }
 ]

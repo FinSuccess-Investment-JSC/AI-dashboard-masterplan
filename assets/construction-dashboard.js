@@ -189,6 +189,87 @@ if(document.getElementById('chPubPlan')){
  sourceLine('chPubPlan',[['Bộ Tài chính qua Báo Lào Cai','https://baolaocai.vn/giai-ngan-von-dau-tu-cong-9-thang-nam-2026-mot-so-bo-nganh-dia-phuong-con-cham-post910995.html'],['Thời báo Tài chính','https://thoibaotaichinhvietnam.vn/dau-an-dieu-hanh-quyet-liet-va-nen-tang-cho-but-pha-nam-2026-191834.html']],'30/09/2026','9T/2025 suy ra: 642.961,6 − 202.559,3 tỷ. Cả năm 2025 tính đến 31/1/2026.',false);
  insight('chPubPlan','Sau 9 tháng 2026 đã giải ngân 643 nghìn tỷ — bằng 75% cả năm 2025 và cao hơn cùng kỳ ~46%. Để đạt 95% kế hoạch như 2025, quý IV và tháng 1/2027 cần thêm ~330 nghìn tỷ, lớn hơn mọi quý trước: khối lượng thi công, đá, nhựa đường sẽ dồn vào cuối năm.');
 }
+// ---------- 3b. Đợt 1 (05/11/2026): đường đua giải ngân, rổ giá vật liệu, BOT HHV, timeline, backlog ----------
+const WI=window.CONSTRUCTION_WI?.blocks||{},wcom=WI.commodity?.series||{},WS=k=>wcom[k]?.records||[];
+const note=html=>{const d=make('details','note-icon');d.innerHTML='<summary>ⓘ Lưu ý dữ liệu</summary><div>'+html+'</div>';return d};
+const newCard=(after,id,title,sub,chartId,tableId)=>{if(!after)return null;const c=make('div','card');c.style.marginTop='14px';c.dataset.blockId=id;c.dataset.refreshStatus='loaded';c.append(make('div','chart-title',title),make('div','chart-sub',sub));if(chartId){const h=make('div');h.id=chartId;c.append(h)}if(tableId){const d=make('details','dtable');d.innerHTML='<summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="'+tableId+'"></table></div>';c.append(d)}after.after(c);return c};
+const link=(name,url)=>'<a href="'+url+'" target="_blank" rel="noopener">'+name+'</a>';
+// Đường đua giải ngân: % kế hoạch năm, vốn NSNN thực hiện (NSO) cộng dồn theo tháng; mốc Bộ Tài chính.
+const PLAN={'2025':905481.7,'2026':1022607};
+const MOF=[['2026',9,62.9,'30/9'],['2026',10,74.1,'31/10'],['2025',9,48.6,'30/9 (suy ra)'],['2025',12,94.8,'31/1/2026']];
+const WEEK=[['03/09',513304.7,50.2],['10/09',523813.6,51.2],['24/09',567776.1,55.5],['01/10',644013.5,63.0],['08/10',652125.4,63.8],['15/10',660739.5,64.6],['22/10',673970.1,65.9],['31/10',708567.4,74.1]];
+const race=newCard(document.querySelector('[data-block-id="xd-42"]'),'xd-43','Đường đua giải ngân — % kế hoạch năm','% kế hoạch Thủ tướng giao · cộng dồn theo tháng','chPubRace','tbl-pub-race');
+if(race&&pi.length){
+ const cum=y=>{let a=0;return Array.from({length:12},(_,i)=>{const r=pi.find(x=>ym(x.date)===y+'-'+String(i+1).padStart(2,'0'));if(!r)return null;a+=r.value;return a/PLAN[y]*100})};
+ const mof=y=>Array.from({length:12},(_,i)=>MOF.find(m=>m[0]===y&&m[1]===i+1)?.[2]??null);
+ barLineChart('chPubRace',{categories:Array.from({length:12},(_,i)=>'T'+(i+1)),series:[{name:'2025 · NSO',color:C.gold,kind:'line',values:cum('2025')},{name:'2026 · NSO',color:C.navy,kind:'line',values:cum('2026')},{name:'2025 · Bộ Tài chính',color:C.grey,kind:'line',values:mof('2025')},{name:'2026 · Bộ Tài chính',color:C.plum,kind:'line',values:mof('2026')}],unit:'% KH',digits:1,height:260,zeroBase:true,rotateLabels:false});
+ const c25=cum('2025'),c26=cum('2026'),m=c26.findLastIndex(v=>v!=null);
+ fillTable('tbl-pub-race',['Mốc 2026 (Bộ Tài chính)','Lũy kế (tỷ)','% KH'],WEEK.map(w=>[w[0],nf(w[1],1),nf(w[2],1)+'%']).reverse().concat([['NSO · tháng','2025 % KH','2026 % KH']],Array.from({length:12},(_,i)=>['T'+(i+1),nf(c25[i],1),nf(c26[i],1)])));
+ race.append(make('div','source-note','Nguồn: '),note('Kế hoạch: 2026 1.022.607 tỷ, 2025 905.481,7 tỷ (Bộ Tài chính, đã có bằng chứng ở thẻ "Kế hoạch so giải ngân"). Đường NSO = vốn NSNN thực hiện cộng dồn ÷ kế hoạch — khác phạm vi số giải ngân Bộ Tài chính nên cao hơn. 9T/2025 Bộ Tài chính suy ra từ chênh lệch +202.559,3 tỷ. Mốc 31/10 (74,1%) lấy từ tóm tắt bài TBTCVN 10T trên trang đã mở; bài đầy đủ chưa mở. Chưa có 2024: chưa mở được văn bản kế hoạch vốn 2024.'));
+ race.querySelector('.source-note').innerHTML='Nguồn: '+link('NSO',SRC.nso[1])+' · Bộ Tài chính qua '+link('TBTCVN 16/09','https://thoibaotaichinhvietnam.vn/giai-ngan-von-dau-tu-cong-dat-51-2-ke-hoach-thu-tuong-giao-203900.html')+', '+link('08/10','https://thoibaotaichinhvietnam.vn/giai-ngan-dau-tu-cong-tang-hon-76-000-ty-dong-trong-mot-tuan-205054.html')+', '+link('15/10','https://thoibaotaichinhvietnam.vn/giai-ngan-dau-tu-cong-dat-63-8-ke-hoach-sau-hon-9-thang-205408.html')+', '+link('Thanh Tra 28/10','https://thanhtra.com.vn/dau-tu-72A9E3223/giai-ngan-von-dau-tu-cong-vuot-673000-ty-dong-dat-gan-66-ke-hoach-cce9750d0.html');
+ insight('chPubRace','Theo Bộ Tài chính, 2026 đạt 62,9% kế hoạch sau 9 tháng so với ~48,6% cùng kỳ 2025, và 74,1% sau 10 tháng. Để về đích như 2025 (94,8%), hai tháng cuối năm và tháng 1/2027 cần thêm ~21 điểm % (~210 nghìn tỷ). Đường 2026 nằm trên 2025 ở mọi tháng: giữ nhóm nhà thầu hạ tầng và đá.');
+}
+// Rổ giá vật liệu nhà thầu đường (chỉ số 2024 = 100) và chỉ số giá XD Bắc Ninh.
+const W8={stone:37.5,asphalt:31.25,cement:18.75,steel:12.5};
+const mats={stone:WS('stone_1x2'),cement:WS('cement_price'),steel:WS('rebar_hpg'),asphalt:asph};
+const priceSec=document.querySelector('.majorpane[data-tab="mt3"] .section .sectionhead');
+let basketYoY=null;
+if(priceSec&&Object.values(mats).every(r=>r.length)){
+ const bm=Object.fromEntries(Object.entries(mats).map(([k,rs])=>[k,byMonth(rs)]));
+ const base=Object.fromEntries(Object.entries(mats).map(([k,rs])=>{const v=rs.filter(r=>r.date.slice(0,4)==='2024').map(r=>r.value);return [k,v.reduce((a,b)=>a+b,0)/v.length]}));
+ const months=[...new Set(Object.values(mats).flatMap(rs=>rs.map(r=>ym(r.date))))].filter(m=>m>='2024-01').sort();
+ const comp=k=>months.map(m=>bm[k][m]?bm[k][m].value/base[k]*100:null);
+ const cs=Object.fromEntries(Object.keys(W8).map(k=>[k,comp(k)]));
+ const basket=months.map((m,i)=>Object.keys(W8).every(k=>cs[k][i]!=null)?Object.keys(W8).reduce((a,k)=>a+cs[k][i]*W8[k]/100,0):null);
+ const card=make('div','card');card.dataset.blockId='xd-72';card.dataset.refreshStatus='loaded';
+ card.append(make('div','chart-title','Rổ giá vật liệu nhà thầu đường — chỉ số 2024 = 100'),make('div','chart-sub','bình quân 2024 = 100 · tháng · đá, nhựa đường, xi măng, thép'));
+ const h=make('div');h.id='chBasket';card.append(h);const d=make('details','dtable');d.innerHTML='<summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-basket"></table></div>';card.append(d);
+ card.append(note('Trọng số (ghi rõ): đá 1x2 37,5% · nhựa đường 31,25% · xi măng 18,75% · thép 12,5% — khung đá 30/cát 20/nhựa 25/xi măng 15/thép 10 chia lại sau khi bỏ cát (chưa có chuỗi tháng; Sở XD Hà Nội mới có Q3/2026). Nguồn: đá 1x2 (80968), xi măng (80961) theo Sở Xây dựng qua '+link('WiData','https://widata.vn/')+'; thép CB300 Hòa Phát (Wi 74362, từ 6/2024 nên gốc thép là bình quân 6–12/2024); nhựa đường '+link('SHFE','https://www.shfe.com.cn/eng/Market/Futures/')+' (CNY/tấn, phiên cuối tháng). Tháng thiếu một thành phần thì không tính rổ. Đây là bước 1 của "biên bị bào": chưa so với đơn giá hợp đồng.'));
+ priceSec.after(card);
+ barLineChart('chBasket',{categories:months.map(m=>mon(m+'-01')),series:[{name:'Rổ vật liệu',color:C.navy,kind:'line',values:basket},{name:'Đá 1x2',color:C.gold,kind:'line',values:cs.stone},{name:'Nhựa đường',color:C.plum,kind:'line',values:cs.asphalt},{name:'Xi măng',color:C.teal,kind:'line',values:cs.cement},{name:'Thép',color:C.grey,kind:'line',values:cs.steel}],unit:'chỉ số',digits:0,height:260,zeroBase:false,rotateLabels:true});
+ fillTable('tbl-basket',['Tháng','Rổ','Đá','Nhựa đường','Xi măng','Thép'],months.map((m,i)=>[mon(m+'-01'),nf(basket[i],1),nf(cs.stone[i],1),nf(cs.asphalt[i],1),nf(cs.cement[i],1),nf(cs.steel[i],1)]).reverse());
+ const li=basket.findLastIndex(v=>v!=null),pi12=months.indexOf(String(+months[li].slice(0,4)-1)+months[li].slice(4));basketYoY=pi12>=0&&basket[pi12]?(basket[li]/basket[pi12]-1)*100:null;
+ insight('chBasket','Rổ '+mon(months[li]+'-01')+': '+nf(basket[li],0)+' (2024 = 100), '+signed(basketYoY,1)+'% so cùng kỳ; đá '+nf(cs.stone[li],0)+', nhựa đường '+nf(cs.asphalt[li],0)+'. Đá và nhựa đường kéo rổ lên, xi măng và thép gần đi ngang: nhà thầu đường (C4G, LCG, HHV) chịu phần tăng nếu đơn giá hợp đồng chưa điều chỉnh; bên bán đá (VLB, KSB, DHA) hưởng.');
+ const bn=make('div','card');bn.style.marginTop='14px';bn.dataset.blockId='xd-71';bn.dataset.updateKind='document';
+ bn.innerHTML='<div class="chart-title">Chỉ số giá xây dựng Bắc Ninh Q3/2026 — năm 2025 = 100</div><div class="chart-sub">mốc rời · QĐ 913/QĐ-SXD</div><div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ số</th><th>T7</th><th>T8</th><th>T9</th><th>Quý III</th></tr></thead><tbody>'+
+  [['Đường bê tông nhựa làm mới · Bắc Giang cũ','111,64','113,38','121,55','<b>115,53</b>'],['Đường bê tông nhựa làm mới · Bắc Ninh cũ','107,05','109,93','116,29','<b>111,09</b>'],['Vật liệu: đá xây dựng · Bắc Giang cũ','161,59','154,69','157,42','<b>157,90</b>'],['Vật liệu: đá xây dựng · Bắc Ninh cũ','126,00','128,37','139,61','<b>131,33</b>'],['Vật liệu: bê tông nhựa, nhựa đường','114,61','116,56','130,19','<b>120,45</b>'],['Vật liệu: cát · Bắc Giang cũ','92,93','99,22','114,42','102,19'],['Vật liệu: xi măng · Bắc Giang cũ','96,23','96,23','100,36','97,60'],['Vật liệu: thép xây dựng','105,67','105,60','105,61','105,62']].map(r=>'<tr>'+r.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>'+
+  '<div class="source-note">Nguồn: '+link('Sở Xây dựng Bắc Ninh · QĐ 913/QĐ-SXD (PDF)','https://cdn.thuviennhadat.vn//upload/hinh-anh-bai-viet/2026/nhom3/NTDM/Thang10/28/quyet-dinh-913-qd-sxd-chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung.pdf')+' qua '+link('thuviennhadat.vn','https://thuviennhadat.vn/phap-luat/chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung-748836.html')+'</div>';
+ bn.append(note('Một tỉnh, một quý, gốc 2025 (khác gốc 2024 của rổ bên trên) nên chỉ đọc chiều: đá tăng 31–58% so bình quân 2025 trong khi chỉ số công trình đường chỉ +11–16% — phần chênh là chi phí nhà thầu phải tự hấp thụ nếu hợp đồng trọn gói. Bản quốc gia chưa tìm được.'));
+ card.after(bn);
+}
+// BOT HHV: doanh thu thu phí theo quý, lưu lượng trạm Q3/2026 (bản tin IR).
+const build=document.getElementById('supply-build');
+if(build){
+ const qs=['Q2/24','Q3/24','Q4/24','Q1/25','Q2/25','Q3/25','Q4/25','Q1/26','Q2/26','Q3/26'],rev=[486,475,null,null,null,556,null,656.5,590.5,588];
+ const card=make('div','card');card.style.marginTop='14px';card.dataset.blockId='xd-70';card.dataset.updateKind='document';card.dataset.refreshStatus='loaded';
+ card.append(make('div','chart-title','HHV: doanh thu thu phí BOT theo quý'),make('div','chart-sub','tỷ đồng · bản tin nhà đầu tư'));
+ const h=make('div');h.id='chHhvBot';card.append(h);
+ const t=make('div','tablewrap');t.innerHTML='<table class="compare-table"><thead><tr><th>Trạm (Q3/2026)</th><th>Lượt xe</th><th>So cùng kỳ</th></tr></thead><tbody>'+[['Bắc Hải Vân','1.236.029','+20,4%'],['Ninh Lộc','1.071.687','+7,2%'],['Đèo Cả','933.310','+14,7%'],['Cam Lâm – Vĩnh Hảo','873.272','+1,6%'],['Cao tốc Bắc Giang – Lạng Sơn','858.819','+21,1%'],['Cù Mông','642.704','<b>+82,6%</b>'],['QL1 Km93 Bắc Giang – Lạng Sơn','579.321','−2,9%'],['An Dân','351.500','<b>−64,8%</b>']].map(r=>'<tr><td>'+r.join('</td><td>')+'</td></tr>').join('')+'</tbody></table>';card.append(t);
+ card.append(make('div','source-note',''));card.querySelector('.source-note').innerHTML='Nguồn: '+['2024/08/Ban-tin-nha-dau-tu-Q2.2024.pdf|Q2/24','2024/11/Ban-tin-nha-dau-tu-Q3.24.pdf|Q3/24','2025/10/HHV-Ban-tin-IR-Q3.2025.pdf|Q3/25','2026/05/HHV-Ban-tin-IR-Q1.2026-viet.pdf|Q1/26','2026/08/HHV-Ban-tin-IR-Q2.2026-viet.pdf|Q2/26','2026/10/HHV-2026-Q3-Ban-tin-IR-final.pdf|Q3/26'].map(x=>{const [u,l]=x.split('|');return link('HHV IR '+l,'https://hhv.cdn.vccloud.vn/wp-content/uploads/'+u)}).join(' · ');
+ card.append(note('Q2/26 = 6T 1.247 − Q1 656,5; Q3/26 = 9T 1.835 − 6T 1.247 (tự tính). Q4/24, Q1–Q2/25, Q4/25 để trống: bản tin chỉ có số năm (2024 1.913, 2025 2.106 tỷ) hoặc bản Q1/2025 không tải được. Lưu lượng: An Dân giảm do xe chuyển sang cao tốc Quy Nhơn – Vân Phong, Ninh Lộc giảm lũy kế đã nằm trong phương án tài chính (theo HHV). HHV vay 18.179 tỷ (31/3/2026) — chưa có lãi vay theo quý để tính "lãi vay ÷ thu phí".'));
+ build.append(card);
+ barLineChart('chHhvBot',{categories:qs,series:[{name:'Thu phí BOT',color:C.navy,values:rev}],unit:'tỷ đồng',digits:0,height:240,rotateLabels:false});
+ insight('chHhvBot','Thu phí 9T/2026 1.835 tỷ (+13%), chiếm 61% doanh thu và 87% lãi gộp HHV. Quý gần nhất ~590 tỷ/quý, thấp hơn đỉnh Q1 vì lưu lượng An Dân giảm mạnh; Cù Mông, Bắc Hải Vân, BGLS bù lại. Đồng Đăng – Trà Lĩnh khai thác cuối 2026 là động lực tiếp theo cho trạm BGLS.');
+ // Timeline dự án lớn + gói đã ký theo mã (gom từ thẻ dự án trọng điểm và Key players, đã có nguồn tại các thẻ đó).
+ const tl=[['Đã khởi công','Đường sắt Lào Cai – Hà Nội – Hải Phòng','203.231 tỷ; vốn 2026 44.891 tỷ','—'],['9/2026','Vành đai 4 Hà Nội','sản lượng >34%; gói 1.221 tỷ','DPG'],['12/2026','Sân bay Long Thành khai thác','gói 5.10 liên danh >35.000 tỷ','VCG'],['Cuối 2026','Cao tốc Đồng Đăng – Trà Lĩnh khai thác','HHV sở hữu 40%','HHV'],['2026–2027','Cầu Trần Hưng Đạo','2.896 tỷ','DPG'],['2026–2027','Sân bay Gia Bình','~1.600 tỷ (FCN); CTD tham gia','FCN · CTD'],['2026–2027','Đường Di sản Hưng Yên; cao tốc Nội Bài – Lào Cai','1.140 tỷ; ~1.400 tỷ','LCG'],['2026–2027','Cầu Ninh Cường','~453 tỷ','C4G'],['Chưa có mốc','BOT mở rộng TP.HCM – Trung Lương – Mỹ Thuận','36.172 tỷ; HUT ~500 tỷ','CII · HUT'],['12/2027','Khởi công đường sắt tốc độ cao Bắc–Nam','1.713.548 tỷ; 20 km Gia Bình – Quảng Ninh (nguyên tắc)','DPG · HPG']];
+ const tc=make('div','card');tc.style.marginTop='14px';tc.dataset.blockId='xd-73';tc.dataset.updateKind='document';
+ tc.innerHTML='<div class="chart-title">Timeline dự án lớn và gói đã ký theo mã</div><div class="chart-sub">mốc công bố gần nhất · gom từ thẻ Dự án trọng điểm và bảng Key players</div><div class="tablewrap"><table class="compare-table"><thead><tr><th>Mốc</th><th>Dự án</th><th>Quy mô / gói</th><th>Mã</th></tr></thead><tbody>'+tl.map(r=>'<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td></tr>').join('')+'</tbody></table></div>';
+ tc.append(note('Số và link nguồn ở thẻ "Dự án trọng điểm" (Bức tranh ngành) và bảng Key players; bảng này chỉ sắp lại theo mốc. Vành đai 3 TP.HCM thông xe chưa xác nhận nên không đưa vào.'));
+ const anchorCard=document.querySelector('[data-block-id="xd-32"]');(anchorCard||card).after(tc);
+}
+// Backlog cover (ứng trước của chủ đầu tư) & phải thu ÷ doanh thu, 10 mã nhà thầu (VNDirect finfo).
+const XB=window.CONSTRUCTION_BACKLOG;let recvMed=null;
+if(XB&&XB.rows){
+ const codes=XB.codes.filter(c=>XB.rows[c]),qs=[...new Set(codes.flatMap(c=>Object.keys(XB.rows[c])))].sort(),q=qs.at(-1),q4=qs.at(-5),ql=x=>x.slice(4)+'/'+x.slice(0,4);
+ const rows=codes.map(c=>{const r=XB.rows[c][q]||{},p=XB.rows[c][q4]||{};return [c,r.backlog_cover,p.backlog_cover,r.receivables_ratio,p.receivables_ratio,r.revenue_ttm]});
+ const rr=rows.map(r=>r[3]).filter(v=>v!=null).sort((a,b)=>a-b);recvMed=rr.length?rr[Math.floor(rr.length/2)]:null;
+ const host=document.querySelector('[data-block-id="xd-04"]'); // Key players (mt6) bị research-layout gỡ; đặt ở Tổng quan · Doanh nghiệp theo dõi
+ const c=host?make('div','xd-backlog'):null;if(c){c.style.marginTop='14px';c.dataset.blockId='xd-74';c.append(make('div','chart-title','Nhà thầu: tiền ứng trước và phải thu so doanh thu 4 quý'),make('div','chart-sub','lần · BCTC hợp nhất '+ql(q)+' · 10 mã'));host.append(c)}
+ if(c){const t=make('div','tablewrap');t.innerHTML='<table id="tbl-xd-backlog"></table>';c.append(t);
+  c.append((()=>{const d=make('details','note-icon');d.innerHTML='<summary>ⓘ Nguồn &amp; ghi chú</summary><div>Nguồn: '+link('VNDirect finfo · BCTC quý','https://api-finfo.vndirect.com.vn/v4/financial_statements?q=code:CTD~reportType:QUARTER~modelType:1~fiscalDate:gte:2025-01-01&size=400')+' (scripts/fetch_realestate_backlog.py --sector construction), kiểm '+short(XB.checked)+'. Ứng trước ÷ DT = người mua trả tiền trước (13130 + 13311) ÷ doanh thu thuần 4 quý (21001) — với nhà thầu là tiền tạm ứng của chủ đầu tư, chỉ là phần nhỏ của backlog hợp đồng (backlog công bố ở bảng trên). Phải thu ÷ DT = phải thu khách hàng (11310 + 12110) ÷ cùng doanh thu; chưa gồm "phải thu theo tiến độ hợp đồng xây dựng". Ngưỡng: phải thu &gt;0,5 lần doanh thu là chậm thu tiền.</div>';return d})());
+  fillTable('tbl-xd-backlog',['Mã','Ứng trước ÷ DT','4 quý trước','Phải thu ÷ DT','4 quý trước','Doanh thu 4Q (tỷ)'],rows.sort((a,b)=>(b[3]??0)-(a[3]??0)).map(r=>[r[0],nf(r[1],2)+'x',nf(r[2],2)+'x',(r[3]>0.5?'▲ ':'')+nf(r[3],2)+'x',nf(r[4],2)+'x',nf(r[5],0)]));
+ }
+}
 // ---------- 4. KPIs, quick read, catalyst brief ----------
 const piLast=pi.at(-1),cemL=cem.at(-1),aL=asph.at(-1),coalL=coal.at(-1),cpL=cp.at(-1),pe=sec['264']?.records||[],peL=pe.at(-1),pe0=pe[0],road=sec['170']?.records?.at(-1);
 const piY=piLast?piLast.date.slice(0,4):'',piMo=piLast?piLast.date.slice(5,7):'';
@@ -210,10 +291,13 @@ const score=[
  row('Chi phí','Nhựa đường, than đắt',[signed(aY,0)+'%','nhựa đường YoY'],'Than Newcastle '+signed(coY,0)+'%','Nhựa đường về dưới mức cùng kỳ',aY==null?'na':aY>20?'risk':aY<0?'good':'watch','▼ C4G · HHV · LCG · HT1 · BCC','chVlxdPrice'),
  row('Cung','Xi măng dư cung',[signed(cY,0)+'%','sản lượng lũy kế'],'Công suất >130 triệu tấn; nội địa 2025 ~75 triệu, XK 37,5 triệu','Đóng cửa lò hoặc giá xi măng tăng >10%',cY==null?'na':'watch','HT1 · BCC','chCement'),
  row('Vốn','Tín dụng xây dựng tăng',[signed(crY,0)+'%','dư nợ YoY'],'Nhà thầu vay theo khối lượng; nợ vay, phải thu tăng cùng','Tăng trưởng về dưới 10%',crY==null?'na':crY>15?'good':crY<8?'risk':'watch','CTD · HBC · VCG · FCN','chCredit'),
- row('Định giá','Xi măng so cầu đường',[peL?nf(peL[1],1)+'x':'—','P/E xi măng'],'P/B xi măng '+(peL?nf(peL[2],2):'—')+'x'+(pe0?' (đầu kỳ '+nf(pe0[2],2)+'x)':'')+(road?'; cầu đường P/B '+nf(road[2],2)+'x':''),'BCTC quý mới',peL?'info':'na','HT1 · BCC · C4G · VCG','chSectorVal')];
+ row('Định giá','Xi măng so cầu đường',[peL?nf(peL[1],1)+'x':'—','P/E xi măng'],'P/B xi măng '+(peL?nf(peL[2],2):'—')+'x'+(pe0?' (đầu kỳ '+nf(pe0[2],2)+'x)':'')+(road?'; cầu đường P/B '+nf(road[2],2)+'x':''),'BCTC quý mới',peL?'info':'na','HT1 · BCC · C4G · VCG','chSectorVal'),
+ row('Cầu','Giải ngân % KH (Bộ Tài chính)',['62,9%','9T/2026'],'Cùng kỳ 2025 ~48,6%; 10T/2026 74,1%','Thấp hơn cùng kỳ năm trước','good','▲ C4G · LCG · HHV · VCG · VLB · KSB · DHA','chPubRace'),
+ row('Chi phí','Rổ vật liệu nhà thầu đường',[signed(basketYoY,1)+'%','so cùng kỳ'],'Đá, nhựa đường, xi măng, thép; 2024 = 100','Rổ tăng >10% YoY là Risk',basketYoY==null?'na':basketYoY>10?'risk':basketYoY<0?'good':'watch','▼ C4G · LCG · HHV · ▲ VLB · KSB · DHA','chBasket'),
+ row('Vốn','Phải thu ÷ doanh thu nhà thầu (trung vị)',[nf(recvMed,2)+'x','10 mã'],'BCTC quý mới nhất (VNDirect)','>0,5 lần là Risk',recvMed==null?'na':recvMed>0.5?'risk':recvMed<0.3?'good':'watch','CTD · HBC · FCN · LCG','tbl-xd-backlog')];
 const nGood=score.filter(r=>r.st==='good').length,nRisk=score.filter(r=>r.st==='risk').length;
 window.CONSTRUCTION_BRIEF={
- headline:'Đầu tư công '+signed(piYo,0)+'% kéo khối lượng thi công; nhựa đường, than đắt ăn vào biên nhà thầu đường, xi măng · '+nGood+' thuận, '+nRisk+' rủi ro',
+ headline:'Giải ngân nhanh hơn cùng kỳ (74,1% KH sau 10T) kéo khối lượng thi công; rổ vật liệu '+signed(basketYoY,0)+'% YoY bào biên nhà thầu đường · '+nGood+' thuận, '+nRisk+' rủi ro',
  segs:[['Xi măng & VLXD','HT1 · BCC · VLB · KSB · DHA · PLC · VGC',cY!=null&&cY>5?'up':'flat','Xi măng '+signed(cY,0)+'%'],['Xây dựng & hạ tầng','CTD · HBC · VCG · FCN · DPG · C4G · LCG · HHV · CII · HUT',piYo!=null&&piYo>15?'up':'flat','NSNN '+signed(piYo,0)+'%']],
  headers:['Biến số đang thay đổi','Đang thấy (số mới nhất)','Đổi đánh giá khi','','Hưởng lợi ▲ / chịu thiệt ▼'],
  score,

@@ -328,5 +328,55 @@
   "quote": "GIÁ TOÀN PHẦN THỊ TRƯỜNG ĐIỆN BÌNH QUÂN (FMP) ... 2026 1.142 1.191 1.538 1.754 1.650 1.734 1.280 1.203 1.555",
   "status": "match",
   "note": "Bản tin Nhà đầu tư tháng 9/2026, trang 2, công bố 16/10/2026; T1–T8/2026 khớp số cũ"
+ },
+ {
+  "block": "dien-14",
+  "claim": "Giá bán lẻ điện bình quân từ 01/11/2026 (QĐ 1305/QĐ-EVN), giảm 2%",
+  "value": "2.159,9037 đ/kWh",
+  "url": "https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-gia-ban-le-dien-binh-quan-tu-ngay-01-thang-11-nam-2026-60-134-510169",
+  "opened_at": "2026-11-05",
+  "quote": "Tập đoàn Điện lực Việt Nam đã có Quyết định số 1305/QĐ-EVN ngày 30/10/2026 về việc điều chỉnh mức giá bán lẻ điện bình quân. Theo đó, giá bán lẻ điện bình quân là 2.159,9037 đồng/kWh (chưa bao gồm thuế giá trị gia tăng) áp dụng từ ngày 01 tháng 11 năm 2026. Mức điều chỉnh này tương đương mức giảm 2% so với giá điện bán lẻ bình quân hiện hành.",
+  "status": "match",
+  "note": "Dùng ở KPI, Đọc nhanh, card dien-14, Risk, chủ đề nóng EVN, lịch 12 tháng (dien-32). QĐ 2892/QĐ-BCT 31/10/2026 ban hành biểu giá theo nhóm khách hàng."
+ },
+ {
+  "block": "dien-12",
+  "claim": "Chuỗi than ICE đang vẽ (productId 1459, hubId 1296) là Newcastle Coal Futures, không phải API2",
+  "value": "1459",
+  "url": "https://www.ice.com/products/1137/globalCOAL-Newcastle-Coal-Futures",
+  "opened_at": "2026-11-05",
+  "quote": "\"hubId\":\"1296\",\"hubAlias\":\"Newcastle\" ... \"productId\":\"1459\",\"productName\":\"Newcastle Coal Futures\"",
+  "status": "match",
+  "note": "Trang ice.com/products/243 nay có tiêu đề API2 Rotterdam Coal Futures (productId 517, hubId 681 ARA); link nguồn đổi sang trang 1137. Giá 145–150 USD/t đầu 11/2026 khớp than Australia World Bank 152,3 (T10/2026)."
+ },
+ {
+  "block": "dien-30",
+  "claim": "QĐ 1692/QĐ-BCT (07/07/2026): suất tiêu hao nhiệt tinh nhà máy than chuẩn ở mức tải 85%",
+  "value": "2.411,6 kcal/kWh",
+  "url": "https://moit.gov.vn/upload/2005517/20260708/1_QD-BCT_2026_1692_8e19f.pdf",
+  "opened_at": "2026-11-05",
+  "quote": "- Suất tiêu hao nhiệt tinh ở mức tải 85%: 2.411,6 kcal/KWh. - Nhiệt trị than (HHV): 5.012,61 kcal/kg. - Giá than: 1.962.004 đồng/tấn. - Tỷ giá đồng/USD: 26.378.",
+  "status": "match",
+  "note": "PDF scan, đọc bằng OCR tesseract (vie); trang văn bản: moit.gov.vn/van-ban-phap-luat/quyet-dinh-phe-duyet-khung-gia-phat-dien-nam-2026-doi-voi-loai-hinh-nha-may-nhiet-dien-than-do-doanh-nghiep-nha-nuoc-nam.html. Trần khung 2.218,95 đ/kWh."
+ },
+ {
+  "block": "dien-30",
+  "claim": "QĐ 1692/QĐ-BCT: nhiệt trị than (HHV) và giá than tính khung 2026",
+  "value": "5.012,61",
+  "url": "https://moit.gov.vn/upload/2005517/20260708/1_QD-BCT_2026_1692_8e19f.pdf",
+  "opened_at": "2026-11-05",
+  "quote": "- Nhiệt trị than (HHV): 5.012,61 kcal/kg. - Giá than: 1.962.004 đồng/tấn.",
+  "status": "match",
+  "note": "OCR từ PDF scan; giá than 1.962.004 đ/tấn."
+ },
+ {
+  "block": "dien-30",
+  "claim": "QĐ 1882/QĐ-BCT (23/07/2026): suất tiêu hao nhiệt tinh tua bin khí chu trình hỗn hợp ở 85% tải, giá khí và cước vận chuyển",
+  "value": "6.542,96 BTU/kWh",
+  "url": "https://mekongasean.vn/bo-cong-thuong-duyet-khung-gia-phat-dien-cua-nhiet-dien-khi-nam-2026-57778.html",
+  "opened_at": "2026-11-05",
+  "quote": "công suất tinh của nhà máy điện chuẩn làm căn cứ tính toán được định mức là 1.008.104 kW, đi kèm với suất tiêu hao nhiệt tinh ở mức tải 85% là 6.542,96 BTU/kWh. Đối với các yếu tố đầu vào cấu thành giá, mức giá nhiên liệu chính là khí thiên nhiên được áp dụng ở ngưỡng 11,98 USD/triệu BTU, cộng thêm cước phí vận chuyển nhiên liệu đến nhà máy là 1,87 USD/triệu BTU. Toàn bộ phương án được tính toán dựa trên tỷ giá quy đổi ngoại tệ là 26.378 đồng/USD.",
+  "status": "match",
+  "note": "Báo dẫn Cổng TTĐT Bộ Công Thương; trần 3.410,64 đ/kWh."
  }
 ]

@@ -1228,5 +1228,126 @@
   "quote": "Biện pháp này có hiệu lực kể từ ngày 6/7 và kéo dài trong thời gian 5 năm. | trong khoảng từ 23,1% đến 27,83%",
   "status": "match",
   "note": "Năm 2025 theo sapo. xd-51 ghi hiệu lực 04/07/2025 là ngày ban hành: lệch 2 ngày"
+ },
+ {
+  "block": "th-15",
+  "claim": "HPG Q3/2026 bán hàng thép XD + cuộn CLC; phôi",
+  "value": "hơn 1,3 triệu tấn; 383.000 tấn",
+  "url": "https://www.hoaphat.com.vn/tin-tuc/hoa-phat-ban-hon-10-3-trieu-tan-thep-trong-9-thang-tang-39-so-voi-cung-ky-nam-truoc.html",
+  "opened_at": "2026-11-05",
+  "quote": "Trong quý 3, sản lượng bán hàng thép xây dựng và thép cuộn chất lượng cao đạt hơn 1,3 triệu tấn, tăng 2% so với quý 2 và tăng 26% so với cùng kỳ năm trước. Phôi thép đạt 383.000 tấn, tăng 42% so với quý trước.",
+  "status": "match",
+  "correct_value": "",
+  "note": "Tin 12/10/2026"
+ },
+ {
+  "block": "th-15",
+  "claim": "HPG Q3/2026 HRC; tỷ trọng xuất khẩu",
+  "value": "trên 2 triệu tấn; +64% YoY; XK 24,6%",
+  "url": "https://www.hoaphat.com.vn/tin-tuc/hoa-phat-ban-hon-10-3-trieu-tan-thep-trong-9-thang-tang-39-so-voi-cung-ky-nam-truoc.html",
+  "opened_at": "2026-11-05",
+  "quote": "Thép cuộn cán nóng (HRC) đóng góp sản lượng lớn nhất, đạt trên 2 triệu tấn trong quý 3, tăng 8% so với quý 2 và 64% so với cùng kỳ năm trước. Trong đó thị trường xuất khẩu đóng góp 24,6% sản lượng.",
+  "status": "match",
+  "correct_value": "",
+  "note": ""
+ },
+ {
+  "block": "th-15",
+  "claim": "HPG Q3/2026 ống thép, tôn mạ, dự ứng lực",
+  "value": "228.000; 118.000; gần 64.500 tấn",
+  "url": "https://www.hoaphat.com.vn/tin-tuc/hoa-phat-ban-hon-10-3-trieu-tan-thep-trong-9-thang-tang-39-so-voi-cung-ky-nam-truoc.html",
+  "opened_at": "2026-11-05",
+  "quote": "Tập đoàn còn cung cấp ra thị trường 228.000 tấn ống thép, 118.000 tấn tôn mạ và gần 64.500 tấn thép dự ứng lực.",
+  "status": "match",
+  "correct_value": "",
+  "note": ""
+ },
+ {
+  "block": "th-15",
+  "claim": "HPG 9T/2026 thép XD, phôi, HRC",
+  "value": "hơn 4 triệu tấn (+15%); 811.000 tấn (+69%); 5,47 triệu tấn (+59%)",
+  "url": "https://www.hoaphat.com.vn/tin-tuc/hoa-phat-ban-hon-10-3-trieu-tan-thep-trong-9-thang-tang-39-so-voi-cung-ky-nam-truoc.html",
+  "opened_at": "2026-11-05",
+  "quote": "Trong đó, thép xây dựng và thép cuộn chất lượng cao đạt hơn 4 triệu tấn, tăng 15%. Sản lượng phôi thép đạt 811.000 tấn, tăng 69%. HRC đạt 5,47 triệu tấn, tăng 59% và chiếm hơn một nửa tổng sản lượng bán hàng các sản phẩm thép Hòa Phát.",
+  "status": "match",
+  "correct_value": "",
+  "note": "9T/2025 trên dashboard suy từ % tăng, ghi (suy)"
+ },
+ {
+  "block": "th-15",
+  "claim": "HPG 9T/2026 ống thép, tôn mạ, dự ứng lực",
+  "value": "681.000 (+9%); hơn 307.000 (−4%); hơn 192.000 tấn (+66%)",
+  "url": "https://www.hoaphat.com.vn/tin-tuc/hoa-phat-ban-hon-10-3-trieu-tan-thep-trong-9-thang-tang-39-so-voi-cung-ky-nam-truoc.html",
+  "opened_at": "2026-11-05",
+  "quote": "Với các sản phẩm thép hạ nguồn, Tập đoàn ghi nhận sản lượng ống thép đạt 681.000 tấn, tăng 9%; tôn mạ đạt hơn 307.000 tấn, giảm 4%; thép dự ứng lực đạt hơn 192.000 tấn, tăng 66% so với cùng kỳ năm 2025.",
+  "status": "match",
+  "correct_value": "",
+  "note": ""
+ },
+ {
+  "block": "th-15",
+  "claim": "HPG Q2/2026 tổng bán hàng; thép XD; HRC",
+  "value": "3,5 triệu tấn; 1,3 triệu tấn; 1,9 triệu tấn",
+  "url": "https://www.hoaphat.com.vn/tin-tuc/hoa-phat-san-xuat-7-trieu-tan-thep-trong-nua-dau-nam-2026-tang-36-so-voi-cung-ky-2025.html",
+  "opened_at": "2026-11-05",
+  "quote": "Sản lượng bán hàng các sản phẩm thép xây dựng, thép cuộn chất lượng cao, thép cuộn cán nóng và phôi thép đạt 3,5 triệu tấn, tăng 35% so với cùng kỳ năm trước. Trong đó, thép xây dựng, thép cuộn chất lượng cao ghi nhận 1,3 triệu tấn, tăng 2% so với cùng kỳ 2025 và giảm 9% so với quý 1/2026.",
+  "status": "match",
+  "correct_value": "",
+  "note": "Tin 08/07/2026. HRC quý 2: 'sản lượng bán hàng trong quý 2 đạt 1,9 triệu tấn, tăng 31% so với quý 1/2026'. Phôi Q2 = 3,5 − 1,3 − 1,9 ≈ 0,3 (suy)"
+ },
+ {
+  "block": "th-15",
+  "claim": "HPG Q2/2026 ống thép, tôn mạ, dự ứng lực",
+  "value": "212.000; 83.000; hơn 65.000 tấn",
+  "url": "https://www.hoaphat.com.vn/tin-tuc/hoa-phat-san-xuat-7-trieu-tan-thep-trong-nua-dau-nam-2026-tang-36-so-voi-cung-ky-2025.html",
+  "opened_at": "2026-11-05",
+  "quote": "Trong quý 2/2026, Tập đoàn cung cấp 212.000 tấn ống thép, 83.000 tấn tôn mạ. Thép dự ứng lực, thép rút dây các loại đạt hơn 65.000 tấn, tăng 59% so với cùng kỳ năm trước.",
+  "status": "match",
+  "correct_value": "",
+  "note": ""
+ },
+ {
+  "block": "th-15",
+  "claim": "HPG Q1/2026 tổng bán hàng; thép XD; HRC",
+  "value": "3 triệu tấn; 1,4 triệu tấn; hơn 1,4 triệu tấn",
+  "url": "https://www.hoaphat.com.vn/tin-tuc/hoa-phat-dat-9-056-ty-dong-loi-nhuan-sau-thue-quy-1-tang-170-so-voi-cung-ky.html",
+  "opened_at": "2026-11-05",
+  "quote": "Sản lượng bán hàng các sản phẩm thép xây dựng, thép cuộn chất lượng cao, thép cuộn cán nóng và phôi thép đạt 3 triệu tấn, tăng 26% so với cùng kỳ năm trước. Trong đó, thép xây dựng, thép cuộn chất lượng cao ghi nhận 1,4 triệu tấn, tăng 20% so với cùng kỳ 2025",
+  "status": "match",
+  "correct_value": "",
+  "note": "Tin 21/04/2026. HRC: 'sản lượng bán hàng đạt hơn 1,4 triệu tấn, tăng 48% so với quý đầu năm 2025'. Phôi Q1 = 3,0 − 1,4 − 1,4 ≈ 0,2 (suy)"
+ },
+ {
+  "block": "th-15",
+  "claim": "HPG Q1/2026 ống thép, tôn mạ, dự ứng lực",
+  "value": "241.000; 106.000; hơn 62.000 tấn",
+  "url": "https://www.hoaphat.com.vn/tin-tuc/hoa-phat-dat-9-056-ty-dong-loi-nhuan-sau-thue-quy-1-tang-170-so-voi-cung-ky.html",
+  "opened_at": "2026-11-05",
+  "quote": "Trong quý đầu năm, Tập đoàn cung cấp 241.000 tấn ống thép, 106.000 tấn tôn mạ, tăng tương ứng 30% và 19% so với quý I/2025. Thép dự ứng lực, thép rút dây các loại đạt hơn 62.000 tấn, tăng 63% so với cùng kỳ năm trước.",
+  "status": "match",
+  "correct_value": "",
+  "note": ""
+ },
+ {
+  "block": "th-52",
+  "claim": "Hạn nộp hồ sơ yêu cầu rà soát CBPG thép cán nguội Trung Quốc",
+  "value": "25/11/2026",
+  "url": "https://trav.gov.vn/default.aspx?page=news-detail&do=detail&id=27845546-6d36-4c53-a8dc-8ec1d27b2201",
+  "opened_at": "2026-11-05",
+  "quote": "Thời hạn tiếp nhận hồ sơ chậm nhất là ngày 25 tháng 11 năm 2026 .",
+  "status": "match",
+  "correct_value": "",
+  "note": "TRAV 26/10/2026; QĐ 3765/QĐ-BCT ngày 26/12/2025 về kết quả rà soát cuối kỳ"
+ },
+ {
+  "block": "th-52",
+  "claim": "Canada kết luận rà soát cuối kỳ OCTG RR-2025-006",
+  "value": "23/10/2026",
+  "url": "https://trav.gov.vn/",
+  "opened_at": "2026-11-05",
+  "quote": "Ca-na-đa ban hành Quyết định và Bản giải trình kết luận rà soát cuối kỳ biện pháp chống bán phá giá đối với sản phẩm ống thép dẫn dầu nhập khẩu từ Việt Nam và một số quốc gia, vùng lãnh thổ (OCTG RR-2025-006) 23/10/2026",
+  "status": "match",
+  "correct_value": "",
+  "note": "Tiêu đề tin trên trang chủ TRAV; bài chi tiết chưa mở"
  }
 ]

@@ -67,7 +67,7 @@
       <span class="tag">Cước, nhiên liệu: <a href="https://www.balticexchange.com/" target="_blank" rel="noopener">Baltic, ICE</a></span>
       <span class="tag">Eo biển: <a href="https://portwatch.imf.org/" target="_blank" rel="noopener">IMF PortWatch</a></span>
     </div>
-    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm trống (chưa có nguồn công khai thay thế).</div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"></div>
   </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
     <div class="sectionhead"><div><h2>1. Tổng quan ngành vận tải biển</h2><p>Doanh thu = ngày tàu hoạt động × cước (TCE). Cước theo chỉ số thế giới từng phân khúc; chi phí lớn là nhiên liệu (nếu chạy chuyến), khấu hao và lãi vay USD.</p></div></div>
@@ -77,7 +77,7 @@
       <div class="kpi"><div class="label">BDI · cước hàng rời</div><div class="value">—</div><div class="delta"></div><div class="sub">Baltic</div><div id="spk-bdi"></div></div>
       <div class="kpi"><div class="label">Hormuz</div><div class="value">—</div><div class="delta"></div><div class="sub">PortWatch</div><div id="spk-hormuz"></div></div>
       <div class="kpi"><div class="label">Brent</div><div class="value">—</div><div class="delta"></div><div class="sub">ICE</div><div id="spk-brent"></div></div>
-      <div class="kpi"><div class="label">P/E vận tải đường thủy</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pe"></div></div>
+      <div class="kpi"><div class="label">P/E vận tải đường thủy</div><div class="value">—</div><div class="delta"></div><div class="sub">—</div><div id="spk-pe"></div></div>
     </section>
     <div class="grid two">
       <div class="card" data-block-id="vt-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -117,7 +117,7 @@
       </div>
       <div class="card" data-block-id="vt-11" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">Nhiên liệu: Brent và dầu nhiên liệu</div>
-        <div class="chart-sub">cuối tháng · dầu nhiên liệu Trung Quốc ÷100 để cùng trục</div>
+        <div class="chart-sub">cuối tháng · dầu nhiên liệu SHFE quy USD/tấn (tỷ giá CNY/USD Fed H.10), ÷10 để cùng trục</div>
         <div id="chFuel"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-fuel"></table></div></details>
       </div>
@@ -129,6 +129,20 @@
       <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table class="compare-table"><thead><tr><th>Chỉ tiêu</th><th>Trước xung đột (11/2025)</th><th>Kịch bản mở lại (6/2026)</th><th>Kịch bản đóng kéo dài (6/2026)</th></tr></thead><tbody><tr><td>Cầu tanker dầu thô 2026</td><td>+1–2%</td><td>−4 đến −6%</td><td><b>−11 đến −13%</b></td></tr><tr><td>Cầu tanker dầu thô 2027</td><td>0–1%</td><td>+6,5 đến +8,5%</td><td>−8,5 đến −10,5%</td></tr><tr><td>Cung tanker dầu thô 2026 / 2027</td><td>+1,5%</td><td colspan="2">0 đến −1% / +5–6%</td></tr><tr><td>Xuất khẩu dầu lũy kế 8T/2026</td><td>—</td><td colspan="2">Dầu thô −5,7%, sản phẩm sạch −11,2%; tồn kho giảm &gt;500 triệu thùng</td></tr><tr><td>Orderbook tanker (Clarksons H1/2026)</td><td>—</td><td colspan="2">25% đội tàu; &gt;150 VLCC đặt mới 2026, cao nhất từ 1973</td></tr></tbody></table></div></details>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Cầu tanker giảm theo tấn (ít dầu xuất) nhưng cước vẫn tăng vì tấn-dặm tăng và tàu bị kẹt: BIMCO đo cầu theo tấn-dặm có điều chỉnh. Bản BIMCO 8/2026 không nêu % mới, % kịch bản lấy từ bản 6/2026; bimco.org không mở trực tiếp, số lấy qua trang đăng lại thông cáo.</div></details>
       <div class="source-note">Nguồn: <a href="https://gcaptain.com/bimco-sees-tanker-markets-splitting-as-geopolitics-reshape-global-oil-trade/" target="_blank" rel="noopener">gCaptain – BIMCO 11/2025</a> · <a href="https://www.hellenicshippingnews.com/?p=1136526" target="_blank" rel="noopener">Hellenic – BIMCO 6/2026</a> · <a href="https://cyprusshippingnews.com/2026/08/31/export-disruptions-increasingly-hurting-tanker-demand-bimcos-tanker-shipping-market-overview-outlook-august-2026-is-out/" target="_blank" rel="noopener">BIMCO 8/2026</a> · <a href="https://hellenicshippingnews.com/first-half-2026-shipping-market-review-clarksea-index-up-61" target="_blank" rel="noopener">Clarksons H1/2026</a></div>
+    </div>
+<div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="vt-13" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="chart-title">TC 1 năm tàu dầu theo cỡ so mức doanh nghiệp VN đang ký</div>
+        <div class="chart-sub">nghìn USD/ngày · Fearnleys · đường ngang = TC PVT ký (ACBS 8/2026)</div>
+        <div id="chTc1yTanker"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-tc1y-tanker"></table></div></details><details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Fearnleys công bố theo tuần; Wi trả chuỗi nén về tháng khi gọi từ 2024 (mỗi điểm là một tuần đại diện trong tháng). Mức ~55/~27 nghìn là TC quốc tế hiện hành ACBS nêu, không phải từng hợp đồng của PVT.</div></details>
+      </div>
+      <div class="card" data-block-id="vt-14" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="chart-title">VLCC sẵn sàng tại Vịnh Ba Tư và số tàu chốt hợp đồng</div>
+        <div class="chart-sub">tàu · Fearnleys</div>
+        <div id="chVlccMeg"></div>
+        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Fearnleys công bố theo tuần; Wi trả chuỗi nén về tháng khi gọi từ 2024 (mỗi điểm là một tuần đại diện trong tháng).</div></details>
+      </div>
     </div>
     <h3 class="subhead">Hàng rời</h3>
     <div class="grid two">
@@ -160,6 +174,20 @@
         <div class="source-note">Nguồn: <a href="https://cyprusshippingnews.com/2026/07/31/bimco-dry-bulk-shipping-market-overview-outlook-2/" target="_blank" rel="noopener">BIMCO dry bulk 7/2026</a> · <a href="https://hellenicshippingnews.com/first-half-2026-shipping-market-review-clarksea-index-up-61" target="_blank" rel="noopener">Clarksons</a></div>
       </div>
     </div>
+<div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="vt-24" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="chart-title">TC 1 năm tàu hàng rời theo cỡ</div>
+        <div class="chart-sub">nghìn USD/ngày · Fearnleys</div>
+        <div id="chTc1yBulk"></div>
+        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Fearnleys công bố theo tuần; Wi trả chuỗi nén về tháng khi gọi từ 2024 (mỗi điểm là một tuần đại diện trong tháng).</div></details>
+      </div>
+      <div class="card" data-block-id="vt-25" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Cung tàu theo phân khúc: orderbook và tăng cung 2027</div>
+        <div class="chart-sub">% · Clarksons, BIMCO</div>
+        <div id="chOrderbook"></div>
+        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Gom số đã có ở các bảng BIMCO/Clarksons (evidence); chưa có lịch giao theo năm và phá dỡ theo phân khúc từ nguồn mở được.</div></details>
+      </div>
+    </div>
     <h3 class="subhead">Container</h3>
     <div class="grid two">
       <div class="card" data-block-id="vt-30" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
@@ -177,11 +205,33 @@
         <div class="source-note">Nguồn: <a href="https://cyprusshippingnews.com/2026/09/28/bimcos-container-shipping-market-overview-outlook-september-2026-is-out/" target="_blank" rel="noopener">BIMCO container 9/2026</a></div>
       </div>
     </div>
+
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="vt-32" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">Cước container FBX theo tuyến (Freightos)</div>
+        <div class="chart-sub">USD/FEU · ngày đọc gần nhất</div>
+        <div id="chFbx"></div>
+        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Cước ≠ doanh thu cảng; HAH chạy nội Á nên chỉ đọc gián tiếp. Trang Freightos chỉ hiện số mới nhất, chuỗi dài thêm từ 05/11/2026.</div></details>
+      </div>
+    </div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt3" id="pane-mt3">
   <section id="price" class="section">
-    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Cước, nhiên liệu nằm trong từng phân khúc ở Bức tranh ngành.</p></div></div>
+    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Lợi nhuận = (TCE − chi phí ngày tàu) × ngày tàu; phần TC đã khóa chỉ đổi khi đáo hạn. So giá thị trường với mức doanh nghiệp đang ký để biết dư địa.</p></div></div>
+    <div class="card" data-block-id="vt-63" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+      <div class="chart-title">Đồng hồ lợi nhuận theo mã — bước 1</div>
+      <div class="chart-sub">TC đang ký so TC 1 năm thị trường cùng cỡ · chỉ mã có số trên trang gốc</div>
+      <div class="tablewrap" data-no-fold><table id="tbl-profit-gauge"></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>TC đang ký: PVP Apollo 70.000 (elibook 25/05/2026), Aframax ~55.000 và MR ~27.000 (ACBS 8/2026, mức TC quốc tế, không phải từng hợp đồng). Tháng đáo hạn TC từng mã chưa công bố trên nguồn mở được — để trống. VOS, VNA, GSP chưa có TC đang ký. Mở rộng (số tàu theo cỡ, % spot, ΔLNTT) khi được nhắn BCTC.</div></details>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="vt-64" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="snapshot">
+      <div class="chart-title">Giá tàu cũ 5/10 tuổi và giá đóng mới</div>
+      <div class="chart-sub">triệu USD · Fearnleys</div>
+      <div id="chShipPrice"></div>
+      <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-ship-price"></table></div></details>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Fearnleys công bố theo tuần; Wi nén về tháng. Không có giá Supramax/Handysize cũ trong bảng Wi.</div></details>
+    </div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt4" id="pane-mt4">
@@ -189,14 +239,14 @@
     <div class="sectionhead"><div><h2>4. Policy / Trade / Tax</h2><p>Hai nhóm: quốc tế (phí cảng Mỹ, cấm vận, khí thải) và Việt Nam (thuế, phí, Bộ luật Hàng hải, đề án đội tàu).</p></div></div>
     <div class="card" data-block-id="vt-50" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
       <h3 style="margin-top:0;font-size:13.5px">Quốc tế: phí cảng Mỹ, cấm vận, khí thải</h3>
-      <div class="tablewrap"><table><thead><tr><th>Biện pháp</th><th>Mốc</th><th>Nội dung</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>USTR Mục 301 – phí cảng Mỹ với tàu Trung Quốc</b></td><td>Áp 14/10/2025; <b>hoãn 1 năm từ 10/11/2025</b></td><td>Tàu TQ sở hữu/vận hành: 50 → 80 (4/2026) → 110 → 140 USD/NT (2028). Tàu đóng tại TQ: 18 USD/NT hoặc 120 USD/container → 33/250 (2028). Mốc hết hoãn ~10/11/2026 chưa có văn bản</td><td>Đội tàu đóng tại TQ ghé Mỹ (ít tàu VN)</td><td><a href="https://www.clydeco.com/en/insights/2025/10/impact-of-tariffs-to-charterparties-1" target="_blank" rel="noopener">Clyde &amp; Co</a> · <a href="https://www.hklaw.com/en/insights/publications/2025/11/ustr-port-fee-suspension-what-you-need-to-know" target="_blank" rel="noopener">Holland &amp; Knight</a></td></tr><tr><td><b>OFAC – tàu liên quan Iran</b></td><td>08/10/2026</td><td>Thêm 22 tàu dầu/khí vào SDN; 25/02/2026 thêm 12 tàu shadow fleet</td><td>Giảm cung tàu hợp pháp → ▲ cước tanker</td><td><a href="https://ofac.treasury.gov/recent-actions/20261008" target="_blank" rel="noopener">OFAC</a> · <a href="https://www.shipuniverse.com/news/ofac-expands-iran-shadow-fleet-crackdown-as-12-more-tankers-and-gas-carriers-sanctioned/" target="_blank" rel="noopener">Ship Universe</a></td></tr><tr><td><b>EU gói trừng phạt 21 với Nga</b></td><td>23/07/2026</td><td>Thêm 41 tàu, tổng &gt;670 tàu bị cấm; price cap 44,10 USD/thùng, tạm dừng điều chỉnh tới 15/07/2027</td><td>Tanker</td><td><a href="https://www.skuld.com/topics/legal/sanctions/russia/eu-sanctions-21st-sanctions-package-against-russia/" target="_blank" rel="noopener">Skuld</a></td></tr><tr><td><b>EU ETS hàng hải</b></td><td>01/01/2026</td><td>Nộp 100% hạn ngạch (40% 2024, 70% 2025); thêm CH₄, N₂O; 100% chuyến nội EU, 50% chuyến EU–ngoài EU</td><td>Tàu ghé cảng EU</td><td><a href="https://www.ukpandi.com/news-and-resources/news/article/eu-ets-and-shipping-from-1-january-2026/" target="_blank" rel="noopener">UK P&amp;I</a></td></tr><tr><td><b>IMO Net-Zero Framework (giá carbon toàn cầu)</b></td><td>Hoãn 10/2025; phiên bất thường nối lại <b>04/12/2026</b></td><td>MEPC 85 (30/11–3/12/2026); chưa thông qua</td><td>Cả ngành từ 2028 nếu thông qua</td><td><a href="https://www.velaw.com/insights/imo-postpones-adoption-of-net-zero-framework/" target="_blank" rel="noopener">Vinson &amp; Elkins</a> · <a href="https://www.marinelink.com/news/imo-progresses-net-zero-framework-538729" target="_blank" rel="noopener">MarineLink</a></td></tr></tbody></table></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>ustr.gov, imo.org, bimco.org không mở trực tiếp được (lỗi/chặn); số lấy từ hãng luật, P&amp;I và trang đăng lại thông cáo. Chưa có văn bản USTR 2026 về gia hạn hay kết thúc hoãn phí cảng. Mức giá carbon IMO không ghi vì chưa có nguồn mở được.</div></details>
+      <div class="tablewrap"><table><thead><tr><th>Biện pháp</th><th>Mốc</th><th>Nội dung</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>USTR Mục 301 – phí cảng Mỹ với tàu Trung Quốc</b></td><td>Áp 14/10/2025; <b>hoãn 1 năm từ 10/11/2025</b></td><td>Tàu TQ sở hữu/vận hành: 50 → 80 (4/2026) → 110 → 140 USD/NT (2028). Tàu đóng tại TQ: 18 USD/NT hoặc 120 USD/container → 33/250 (2028). USTR đề xuất hoãn tiếp 2 tháng tới <b>09/01/2027</b> (Federal Register 26/10/2026, lấy ý kiến, chưa chốt)</td><td>Đội tàu đóng tại TQ ghé Mỹ (ít tàu VN)</td><td><a href="https://www.clydeco.com/en/insights/2025/10/impact-of-tariffs-to-charterparties-1" target="_blank" rel="noopener">Clyde &amp; Co</a> · <a href="https://www.hklaw.com/en/insights/publications/2025/11/ustr-port-fee-suspension-what-you-need-to-know" target="_blank" rel="noopener">Holland &amp; Knight</a></td></tr><tr><td><b>OFAC – tàu liên quan Iran</b></td><td>08/10/2026</td><td>Thêm 22 tàu dầu/khí vào SDN; 25/02/2026 thêm 12 tàu shadow fleet</td><td>Giảm cung tàu hợp pháp → ▲ cước tanker</td><td><a href="https://ofac.treasury.gov/recent-actions/20261008" target="_blank" rel="noopener">OFAC</a> · <a href="https://www.shipuniverse.com/news/ofac-expands-iran-shadow-fleet-crackdown-as-12-more-tankers-and-gas-carriers-sanctioned/" target="_blank" rel="noopener">Ship Universe</a></td></tr><tr><td><b>EU gói trừng phạt 21 với Nga</b></td><td>23/07/2026</td><td>Thêm 41 tàu, tổng &gt;670 tàu bị cấm; price cap 44,10 USD/thùng, tạm dừng điều chỉnh tới 15/07/2027</td><td>Tanker</td><td><a href="https://www.skuld.com/topics/legal/sanctions/russia/eu-sanctions-21st-sanctions-package-against-russia/" target="_blank" rel="noopener">Skuld</a></td></tr><tr><td><b>EU ETS hàng hải</b></td><td>01/01/2026</td><td>Nộp 100% hạn ngạch (40% 2024, 70% 2025); thêm CH₄, N₂O; 100% chuyến nội EU, 50% chuyến EU–ngoài EU</td><td>Tàu ghé cảng EU</td><td><a href="https://www.ukpandi.com/news-and-resources/news/article/eu-ets-and-shipping-from-1-january-2026/" target="_blank" rel="noopener">UK P&amp;I</a></td></tr><tr><td><b>IMO Net-Zero Framework (giá carbon toàn cầu)</b></td><td>Hoãn 10/2025; phiên bất thường nối lại <b>04/12/2026</b></td><td>MEPC 85 (30/11–3/12/2026); chưa thông qua</td><td>Cả ngành từ 2028 nếu thông qua</td><td><a href="https://www.velaw.com/insights/imo-postpones-adoption-of-net-zero-framework/" target="_blank" rel="noopener">Vinson &amp; Elkins</a> · <a href="https://www.marinelink.com/news/imo-progresses-net-zero-framework-538729" target="_blank" rel="noopener">MarineLink</a></td></tr></tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>ustr.gov, imo.org, bimco.org không mở trực tiếp được (lỗi/chặn); số lấy từ hãng luật, P&amp;I và trang đăng lại thông cáo. Văn bản USTR 2026: đề xuất gia hạn trên Federal Register 2026-21755 (mở trực tiếp 05/11/2026). Mức giá carbon IMO không ghi vì chưa có nguồn mở được.</div></details>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="vt-51" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
       <h3 style="margin-top:0;font-size:13.5px">Việt Nam: thuế, phí, Bộ luật Hàng hải, đội tàu</h3>
       <div class="tablewrap"><table><thead><tr><th>Văn bản</th><th>Mốc</th><th>Nội dung</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Luật Thuế GTGT 48/2024/QH15 – vận tải quốc tế 0%</b></td><td>01/07/2025</td><td>0% với vận tải quốc tế; điều kiện hợp đồng chặng quốc tế và thanh toán không tiền mặt (NĐ 181/2025)</td><td>Cả 8 mã</td><td><a href="https://thuehaiquan.tapchikinhtetaichinh.vn/chinh-sach-thue-nha-thau-doi-voi-dich-vu-van-tai-va-giao-nhan-hang-hoa-xuat-khau-164660.html" target="_blank" rel="noopener">Tạp chí KTTC</a></td></tr><tr><td><b>TT 40/2026/TT-BTC – miễn phí hàng hải</b></td><td>07/04–30/06/2026 (đã hết)</td><td>Miễn phí hàng hải tàu ra/vào vùng nước, phí cảng thủy nội địa; chưa thấy gia hạn</td><td>Cả ngành</td><td><a href="https://lsvn.vn/mien-mot-so-phi-le-phi-giao-thong-van-tai-den-30-6-de-ho-tro-doanh-nghiep-a171304.html" target="_blank" rel="noopener">LSVN</a></td></tr><tr><td><b>Bộ luật Hàng hải và Đường thủy (sửa đổi)</b></td><td>NQ 77/NQ-CP 01/04/2026; QH cho ý kiến kỳ 2 (10/2026), dự kiến thông qua 5/2027</td><td>19 chương, 156 điều (giảm ~65% số điều), cắt 54 thủ tục; lần đầu có ưu đãi cảng xanh, tàu nhiên liệu thay thế (miễn giảm tiền đất, tín dụng Nhà nước)</td><td>Cả ngành</td><td><a href="https://nhandan.vn/bo-luat-hang-hai-va-duong-thuy-viet-nam-kien-tao-the-che-thong-nhat-phat-huy-loi-the-song-bien-post971011.html" target="_blank" rel="noopener">Nhân Dân</a> · <a href="https://thanhtra.com.vn/doi-noi-52FA82FBF/hop-nhat-2-luat-kho-thuong-vu-quoc-hoi-yeu-cau-khong-de-tao-khoang-trong-phap-ly-90d442baf.html" target="_blank" rel="noopener">Thanh tra</a> · <a href="https://doanhnghiephoinhap.vn/uu-dai-manh-cho-cang-xanh-mo-loi-chuyen-doi-ben-vung-nganh-hang-hai-viet-nam-141556.html" target="_blank" rel="noopener">DN Hội nhập</a></td></tr><tr><td><b>Đề án phát triển đội tàu (QĐ 1254/QĐ-BGTVT)</b></td><td>28/09/2022</td><td>Mục tiêu thị phần XNK 10% năm 2026, 20% năm 2030; miễn GTGT nhập khẩu tàu đến hết 2026. Thực tế 2023–24 ~7%</td><td>Cả ngành</td><td><a href="https://daidoanket.vn/nang-tam-nang-chat-cho-doi-tau-bien-10233243.html" target="_blank" rel="noopener">Đại Đoàn Kết</a></td></tr></tbody></table></div>
       <div class="tablewrap" style="margin-top:10px"><table class="compare-table"><thead><tr><th>Đội tàu Việt Nam</th><th>12/2024</th><th>12/2025</th><th>Nguồn</th></tr></thead><tbody><tr><td>Số tàu / tổng trọng tải</td><td>1.430 tàu / 11,37 triệu DWT (956 tàu vận tải, 10,5 triệu DWT)</td><td><b>1.434 tàu / ~9,4 triệu DWT</b>; 73 tàu đăng ký mới</td><td><a href="https://vneconomy.vn/techconnect//nganh-hang-hai-tang-truong-manh-me-huong-toi-muc-tieu-moi.htm" target="_blank" rel="noopener">VnEconomy</a> · <a href="https://moc.gov.vn/vn/tin-tuc/1173/90629/cuc-hang-hai-va-duong-thuy-viet-nam-hoan-thien-the-che-tao-moi-truong-kinh-doanh-thong-thoang-minh-bach-on-dinh-an-toan.aspx" target="_blank" rel="noopener">Bộ Xây dựng</a></td></tr><tr><td>Tuổi bình quân tàu vận tải</td><td>17,4 (container 18,5)</td><td>—</td><td>VnEconomy</td></tr></tbody></table></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Tổng DWT 12/2025 (~9,4 triệu) thấp hơn 12/2024 (11,37 triệu) dù số tàu tăng — hai nguồn nhiều khả năng khác phạm vi thống kê; chưa đối chiếu được. Tuổi tàu 2025 chưa có. PDF gốc QĐ 1254 tải về rỗng nên dẫn báo.</div></details>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>9,4 vs 11,37 triệu DWT: hai số khác nguồn và phạm vi (Bộ Xây dựng 12/2025 vs VnEconomy 12/2024, nhiều khả năng một số gồm tàu nước ngoài/tàu không vận tải), không phải đội tàu giảm — không so hai số với nhau. Tuổi tàu 2025 chưa có. PDF gốc QĐ 1254 tải về rỗng nên dẫn báo.</div></details>
     </div>
   </section>
   </div>
@@ -278,7 +328,7 @@
     </div>
     <div data-topic-key="orderbook" data-topic-segment="Container" data-topic-title="Cung tàu mới 2027">
       <div class="card" data-block-id="vt-t4" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Orderbook 21% đội tàu: container/LNG/LPG 40%, tanker 25%, hàng rời 14%</li><li>Đội tàu container +9% năm 2027; &gt;150 VLCC đặt mới 2026</li><li>Phí cảng Mỹ với tàu Trung Quốc hết hoãn ~10/11/2026 — chưa có văn bản</li></ul>
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Orderbook 21% đội tàu: container/LNG/LPG 40%, tanker 25%, hàng rời 14%</li><li>Đội tàu container +9% năm 2027; &gt;150 VLCC đặt mới 2026</li><li>Phí cảng Mỹ với tàu Trung Quốc: USTR đề xuất hoãn tiếp tới 09/01/2027 (Federal Register 26/10/2026)</li></ul>
         <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▼ HAH (giá thuê tàu 2027) · ▲ VOS · VNA (cung hàng rời chặt)</p>
         <div class="source-note">Nguồn: <a href="https://hellenicshippingnews.com/first-half-2026-shipping-market-review-clarksea-index-up-61" target="_blank" rel="noopener">Clarksons H1/2026</a> · <a href="https://www.hklaw.com/en/insights/publications/2025/11/ustr-port-fee-suspension-what-you-need-to-know" target="_blank" rel="noopener">Holland &amp; Knight</a></div>
       </div>
@@ -309,8 +359,8 @@
   </div>
   <div class="card" style="margin-top:14px" data-block-id="vt-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>BDTI, BCTI, BDI, Brent, dầu nhiên liệu</b></td><td><a href="https://www.eia.gov/dnav/pet/hist/RBRTEd.htm" target="_blank" rel="noopener">EIA</a> (Brent), <a href="https://www.shfe.com.cn/eng/Market/Futures/" target="_blank" rel="noopener">SHFE</a> (dầu nhiên liệu)</td><td>Ngày · hiển thị cuối tháng</td><td>Brent, dầu nhiên liệu: Script mỗi lượt job; BDI: CNBC (.BADI); BDTI/BCTI: <a href="https://widata.vn/" target="_blank" rel="noopener">WiData (WiMCP)</a></td></tr><tr><td><b>Hormuz, Bab el-Mandeb</b></td><td><a href="https://portwatch.imf.org/" target="_blank" rel="noopener">IMF PortWatch</a></td><td>Ngày</td><td>Script GitHub mỗi lượt job (dùng chung với Dầu khí)</td></tr><tr><td><b>Vận chuyển đường biển, chỉ số giá vận tải, XNK</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a>, <a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng / quý</td><td>Script mỗi lượt job</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>BIMCO, Clarksons, Suez, cấm vận, USTR, IMO</b></td><td>Thông cáo qua báo ngành, hãng luật (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
-    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>BDTI, BCTI, BDI, Brent, dầu nhiên liệu</b></td><td><a href="https://www.eia.gov/dnav/pet/hist/RBRTEd.htm" target="_blank" rel="noopener">EIA</a> (Brent), <a href="https://www.shfe.com.cn/eng/Market/Futures/" target="_blank" rel="noopener">SHFE</a> (dầu nhiên liệu)</td><td>Ngày · hiển thị cuối tháng</td><td>Brent, dầu nhiên liệu: Script mỗi lượt job; BDI: CNBC (.BADI); BDTI/BCTI: <a href="https://widata.vn/" target="_blank" rel="noopener">WiData (WiMCP)</a></td></tr><tr><td><b>Hormuz, Bab el-Mandeb</b></td><td><a href="https://portwatch.imf.org/" target="_blank" rel="noopener">IMF PortWatch</a></td><td>Ngày</td><td>Script GitHub mỗi lượt job (dùng chung với Dầu khí)</td></tr><tr><td><b>Vận chuyển đường biển, chỉ số giá vận tải, XNK</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a>, <a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng / quý</td><td>Script mỗi lượt job</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>BIMCO, Clarksons, Suez, cấm vận, USTR, IMO</b></td><td>Thông cáo qua báo ngành, hãng luật (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr><tr><td><b>TC 1 năm, giá tàu cũ/đóng mới, VLCC MEG</b></td><td><a href="https://widata.vn/" target="_blank" rel="noopener">Fearnleys qua WiData (bảng 362)</a></td><td>Tuần (Wi nén tháng)</td><td>Routine Wi</td></tr><tr><td><b>Cước container FBX theo tuyến</b></td><td><a href="https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/" target="_blank" rel="noopener">Freightos FBX</a></td><td>Ngày</td><td>Script mỗi lượt job (fetch_fbx.py)</td></tr></tbody></table></div>
+    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Fearnleys (TC 1 năm, giá tàu): WiData; FBX: script mỗi lượt job; tỷ giá CNY: FRED.</div>
   </div>
   <div class="footer">Vietnam Shipping Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 10/10/2026.</div>
 </div>

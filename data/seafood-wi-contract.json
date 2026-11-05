@@ -54,6 +54,30 @@
     "from_time"
    ],
    "pick": "max_to_time"
+  },
+  {
+   "block": "us_eu_imports_vn",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "352014,352025,352023,352579,352570,1280043,352557,352568,352711,312081,310879",
+    "from_time": "2019-01-01",
+    "limit": 120
+   },
+   "cadence": "monthly",
+   "note": "Mỹ NK HS4 theo đối tác (bảng 312) và EU NK HS 0304 từ VN giá trị EUR/khối lượng kg (bảng 315/316). Lời gọi chung với Dệt may/Thép; thủy sản chỉ dùng 352014, 352025, 352023, 312081, 310879."
+  },
+  {
+   "block": "us_imports_total",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "1279407,1279419",
+    "from_time": "2019-01-01",
+    "limit": 120
+   },
+   "cadence": "monthly",
+   "note": "Mỹ NK HS 0304, 0306 từ mọi đối tác (mẫu số thị phần)."
   }
  ],
  "indicators": {
@@ -94,20 +118,20 @@
    "monthly"
   ],
   "74384": [
-   "pangasius",
+   "pangasius_wi",
    "Cá tra thịt trắng nguyên liệu",
    "nghìn VND/kg",
    "daily"
   ],
   "264825": [
-   "pangasius_fry",
+   "pangasius_fry_wi",
    "Cá tra giống",
    "nghìn VND/kg",
    "daily"
   ],
   "74379": [
-   "shrimp50",
-   "Tôm thẻ 50 con/kg Cà Mau",
+   "shrimp50_camau",
+   "Tôm thẻ 50 con/kg Cà Mau (Wi)",
    "nghìn VND/kg",
    "daily"
   ],
@@ -122,6 +146,48 @@
    "Ngô CBOT",
    "US cent/bushel",
    "daily"
+  ],
+  "352014": [
+   "us_imp_0304_vn",
+   "Mỹ NK HS 0304 (cá phi lê) từ Việt Nam",
+   "USD",
+   "monthly"
+  ],
+  "352025": [
+   "us_imp_0306_vn",
+   "Mỹ NK HS 0306 (giáp xác, gồm tôm) từ Việt Nam",
+   "USD",
+   "monthly"
+  ],
+  "352023": [
+   "us_imp_0306_in",
+   "Mỹ NK HS 0306 từ Ấn Độ",
+   "USD",
+   "monthly"
+  ],
+  "1279407": [
+   "us_imp_0304_all",
+   "Mỹ NK HS 0304 từ mọi đối tác",
+   "USD",
+   "monthly"
+  ],
+  "1279419": [
+   "us_imp_0306_all",
+   "Mỹ NK HS 0306 từ mọi đối tác",
+   "USD",
+   "monthly"
+  ],
+  "312081": [
+   "eu_imp_0304_vn_eur",
+   "EU NK HS 0304 từ Việt Nam, giá trị",
+   "EUR",
+   "monthly"
+  ],
+  "310879": [
+   "eu_imp_0304_vn_kg",
+   "EU NK HS 0304 từ Việt Nam, khối lượng",
+   "kg",
+   "monthly"
   ]
  },
  "sectors": {

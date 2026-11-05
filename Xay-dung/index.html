@@ -15,6 +15,8 @@
 <script src="../assets/sector-layout.js?v=6017726b6ba1" defer></script>
 <script src="../data/construction-public-data.js?v=55fae15e7639" defer></script>
 <script src="../assets/sector-visuals.js?v=9bed10f3c811" defer></script>
+<script src="../data/construction-wi-data.js" defer></script>
+<script src="../data/construction-backlog.js" defer></script>
 <script src="../assets/construction-dashboard.js?v=7932561ae698" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/share-image.js?v=99ca8bbc0829" defer></script>
@@ -67,17 +69,17 @@
       <span class="tag">Vốn NSNN, sản lượng: <a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO</a></span>
       <span class="tag">Than: ICE · nhựa đường: SHFE · xi măng, đá: Sở Xây dựng Hà Nội</span>
     </div>
-    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm trống (chưa có nguồn công khai thay thế).</div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> —</div>
   </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
     <div class="sectionhead"><div><h2>1. Tổng quan ngành xây dựng · VLXD · đầu tư công</h2><p>Hai nhóm: xi măng và vật liệu (HT1, BCC, VLB, KSB, DHA, PLC, VGC), xây dựng và hạ tầng (CTD, HBC, VCG, FCN, DPG, C4G, LCG, HHV, CII, HUT). Thép ở <a href="../Thep/">dashboard Thép</a>.</p></div></div>
     <section class="grid kpis">
       <div class="kpi"><div class="label">Vốn NSNN thực hiện lũy kế</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-pub"></div></div>
-      <div class="kpi"><div class="label">Xi măng PCB40 Hà Nội</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-cprice"></div></div>
-      <div class="kpi"><div class="label">Than Newcastle</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-coal"></div></div>
+      <div class="kpi"><div class="label">Xi măng PCB40 Hà Nội</div><div class="value">—</div><div class="delta"></div><div class="sub">—</div><div id="spk-cprice"></div></div>
+      <div class="kpi"><div class="label">Than Newcastle</div><div class="value">—</div><div class="delta"></div><div class="sub">—</div><div id="spk-coal"></div></div>
       <div class="kpi"><div class="label">Sản lượng xi măng</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-cement"></div></div>
-      <div class="kpi"><div class="label">Nhựa đường</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-asphalt"></div></div>
-      <div class="kpi"><div class="label">P/E xi măng</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pe"></div></div>
+      <div class="kpi"><div class="label">Nhựa đường</div><div class="value">—</div><div class="delta"></div><div class="sub">—</div><div id="spk-asphalt"></div></div>
+      <div class="kpi"><div class="label">P/E xi măng</div><div class="value">—</div><div class="delta"></div><div class="sub">—</div><div id="spk-pe"></div></div>
     </section>
     <div class="grid two">
       <div class="card" data-block-id="xd-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -213,7 +215,7 @@
   </div>
   <div class="majorpane" data-tab="mt3" id="pane-mt3">
   <section id="price" class="section">
-    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Giá xi măng, đá, nhựa đường nằm trong từng nhóm ở Bức tranh ngành.</p></div></div>
+    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Rổ giá vật liệu của nhà thầu đường so chỉ số giá xây dựng tỉnh. Giá từng vật liệu ở Bức tranh ngành.</p></div></div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt4" id="pane-mt4">
@@ -292,8 +294,8 @@
   </div>
   <div class="card" style="margin-top:14px" data-block-id="xd-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Vốn NSNN, sản lượng xi măng, IIP, XK</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a>, <a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Giá than, nhựa đường</b></td><td><a href="https://www.shfe.com.cn/eng/Market/Futures/" target="_blank" rel="noopener">SHFE</a> (nhựa đường), ICE (than)</td><td>Ngày · hiển thị cuối tháng</td><td>Script mỗi lượt job; giá CB300 Hòa Phát, than cốc: <a href="https://widata.vn/" target="_blank" rel="noopener">WiData (WiMCP)</a></td></tr><tr><td><b>Giá xi măng, đá, cát (Sở Xây dựng)</b></td><td><a href="https://soxaydung.hanoi.gov.vn/kinh-te-vat-lieu-xay-dung" target="_blank" rel="noopener">Sở Xây dựng Hà Nội · công bố giá VLXD</a></td><td>Quý</td><td>Script mỗi lượt job; lịch sử từ Q3/2026</td></tr><tr><td><b>Tín dụng, GDP xây dựng</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng / quý</td><td>Script mỗi lượt job · GDP từ 2024; tín dụng ngành từ NHNN (từ 01/2025)</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Giải ngân so kế hoạch, dự án, chính sách</b></td><td>Bộ Tài chính, Bộ Công Thương qua báo (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
-    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Vốn NSNN, sản lượng xi măng, IIP, XK</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a>, <a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Giá than, nhựa đường</b></td><td><a href="https://www.shfe.com.cn/eng/Market/Futures/" target="_blank" rel="noopener">SHFE</a> (nhựa đường), ICE (than)</td><td>Ngày · hiển thị cuối tháng</td><td>Script mỗi lượt job; giá CB300 Hòa Phát, than cốc: <a href="https://widata.vn/" target="_blank" rel="noopener">WiData (WiMCP)</a></td></tr><tr><td><b>Giá xi măng, đá, cát (Sở Xây dựng)</b></td><td><a href="https://soxaydung.hanoi.gov.vn/kinh-te-vat-lieu-xay-dung" target="_blank" rel="noopener">Sở Xây dựng Hà Nội · công bố giá VLXD</a></td><td>Quý</td><td>Script mỗi lượt job; lịch sử từ Q3/2026</td></tr><tr><td><b>Tín dụng, GDP xây dựng</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng / quý</td><td>Script mỗi lượt job · GDP từ 2024; tín dụng ngành từ NHNN (từ 01/2025)</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Rổ giá vật liệu (đá, xi măng, thép, nhựa đường)</b></td><td><a href="https://widata.vn/" target="_blank" rel="noopener">WiData</a> (Sở Xây dựng 80961, 80968; Hòa Phát 74362), <a href="https://www.shfe.com.cn/eng/Market/Futures/" target="_blank" rel="noopener">SHFE</a></td><td>Tháng</td><td>Tự tính trên trang; Wi routine + script mỗi lượt job</td></tr><tr><td><b>Chỉ số giá xây dựng tỉnh, BOT HHV</b></td><td><a href="https://thuviennhadat.vn/phap-luat/chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung-748836.html" target="_blank" rel="noopener">Sở XD Bắc Ninh</a>, <a href="https://hhv.com.vn/quan-he-co-dong/ban-tin-nha-dau-tu/" target="_blank" rel="noopener">HHV bản tin nhà đầu tư</a></td><td>Quý</td><td>Routine tài liệu (PDF, có bằng chứng)</td></tr><tr><td><b>Ứng trước, phải thu ÷ doanh thu nhà thầu</b></td><td><a href="https://api-finfo.vndirect.com.vn/v4/financial_statements" target="_blank" rel="noopener">VNDirect finfo · BCTC quý</a></td><td>Quý</td><td>Script (fetch_realestate_backlog.py --sector construction), chỉ số dẫn xuất tự động</td></tr><tr><td><b>Giải ngân so kế hoạch, dự án, chính sách</b></td><td>Bộ Tài chính, Bộ Công Thương qua báo (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="source-note" id="wi-built">—</div>
   </div>
   <div class="footer">Vietnam Construction &amp; Materials Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 11/10/2026.</div>
 </div>

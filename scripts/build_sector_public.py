@@ -23,6 +23,9 @@ SERIES = {
     'robusta': ('fred', 'PCOFFROBUSDM', 'Cà phê Robusta (IMF, bình quân tháng)', 'USD/tấn', 22.0462),  # cents/lb -> USD/t
     'tsr20': ('fred', 'PRUBBUSDM', 'Cao su (IMF, Singapore/Malaysia, bình quân tháng)', 'US cent/kg', 2.20462),  # cents/lb -> cents/kg
     'iron_ore': ('fred', 'PIORECRUSDM', 'Quặng sắt (IMF, CFR Trung Quốc, bình quân tháng)', 'USD/tấn', 1),
+    'barley': ('fred', 'PBARLUSDM', 'Lúa mạch (IMF, Canada, bình quân tháng)', 'USD/tấn', 1),
+    'fishmeal': ('fred', 'PFISHUSDM', 'Bột cá (IMF, Peru, bình quân tháng)', 'USD/tấn', 1),
+    'eurusd': ('fred', 'EXUSEU', 'Tỷ giá USD/EUR (Fed H.10, bình quân tháng)', 'USD/EUR', 1),
     'cotton_ice': ('fred', 'PCOTTINDUSDM', 'Bông Cotlook A (IMF, bình quân tháng)', 'US cent/pound', 1),
     'sugar': ('feed', 'sugar_futures', 'Đường thô ICE No.11 (hợp đồng gần, cuối tháng)', 'US cent/pound', 1),
     'brent': ('feed', 'brent', 'Dầu Brent (EIA, cuối tháng)', 'USD/thùng', 1),
@@ -30,8 +33,8 @@ SERIES = {
 }
 SECTORS = {
     'retail': ['sugar', 'palm_oil', 'soymeal', 'corn'],
-    'agri': ['corn', 'soymeal', 'robusta', 'tsr20'],
-    'seafood': ['soymeal', 'corn'],
+    'agri': ['corn', 'soymeal', 'robusta', 'tsr20', 'barley'],
+    'seafood': ['soymeal', 'corn', 'fishmeal', 'eurusd'],
     'textile': ['cotton_ice'],
     'shipping': ['brent'],
     'construction': ['coal_newcastle'],
@@ -196,7 +199,7 @@ SBV_NAMES = {'refi_rate': ('Lãi suất tái cấp vốn', '%/năm'), 'credit_to
              'household_deposits': ('Tiền gửi của dân cư', 'tỷ VND'), 'deposits_total': ('Tiền gửi của TCKT và dân cư', 'tỷ VND'),
              'usdvnd': ('Tỷ giá trung tâm USD/VND (bình quân tháng)', 'VND')}
 SBV = {'retail': ['household_deposits', 'credit_total'], 'realestate': ['credit_construction', 'credit_total', 'deposits_total', 'refi_rate'],
-       'construction': ['credit_construction'], 'insurance': ['household_deposits'], 'pharma': ['usdvnd']}
+       'construction': ['credit_construction'], 'insurance': ['household_deposits'], 'pharma': ['usdvnd'], 'steel': ['usdvnd']}
 
 
 def sbv_series(sector):
@@ -314,6 +317,49 @@ def us_apparel():
             'us_apparel_retail_yoy': {'name': 'Bán lẻ quần áo, phụ kiện của Mỹ, so cùng kỳ', 'unit': '%', 'time_type': 'monthly', 'source': src, 'url': u, 'records': yoy}}
 
 
+def us_apparel_is():
+    """Textile (05/11/2026): US clothing-store inventories/sales ratio (Census via FRED MRTSIR448USS, SA, monthly) for the
+    lead-lag overlay against VN textile exports to the US. Network failure leaves the series out (page shows the old static table)."""
+    try:
+        rows = list(csv.reader(io.StringIO(http(FRED.format('MRTSIR448USS')))))[1:]
+    except Exception:
+        return {}
+    recs = [{'date': d, 'value': float(v)} for d, v in rows if v not in ('', '.') and d >= '2015-01-01']
+    return {'us_apparel_is': {'name': 'Tồn kho / doanh số cửa hàng quần áo và phụ kiện Mỹ (điều chỉnh mùa vụ)', 'unit': 'lần', 'time_type': 'monthly',
+                              'source': 'US Census qua FRED (MRTSIR448USS)', 'url': 'https://fred.stlouisfed.org/series/MRTSIR448USS', 'records': recs}}
+
+
+def cny_usd():
+    """Steel (05/11/2026): CNY per USD (Fed H.10 via FRED DEXCHUS, daily → last value of each month) so SHFE prices can be
+    stated in USD/VND next to Vietnamese prices. Network failure leaves the series out."""
+    try:
+        rows = list(csv.reader(io.StringIO(http(FRED.format('DEXCHUS')))))[1:]
+    except Exception:
+        return {}
+    last = {}
+    for d, v in rows:
+        if v not in ('', '.') and d >= SINCE:
+            last[d[:7]] = {'date': d, 'value': float(v)}
+    return {'cny_usd': {'name': 'Tỷ giá CNY/USD (Fed H.10 qua FRED, phiên cuối tháng)', 'unit': 'CNY/USD', 'time_type': 'monthly',
+                        'source': 'Federal Reserve H.10 qua FRED (DEXCHUS)', 'url': 'https://fred.stlouisfed.org/series/DEXCHUS', 'records': list(last.values())}}
+
+
+def port_shipping_feeds(sector):
+    """Port & shipping (05/11/2026): IMF PortWatch daily port calls per Vietnamese port (scripts/fetch_portwatch_ports.py)
+    for the port page, and the Freightos FBX daily lane snapshot (scripts/fetch_fbx.py) for both pages. Missing raw
+    file → block absent (page keeps its ⓘ note)."""
+    out = {}
+    pw = ROOT / 'data/raw/public/portwatch-ports.json'
+    if sector == 'port' and pw.exists():
+        p = json.loads(pw.read_text())
+        out['portwatch_ports'] = {k: p[k] for k in ('source', 'url', 'checked', 'unit', 'method', 'ports', 'errors') if k in p}
+    fb = ROOT / 'data/raw/public/fbx.json'
+    if fb.exists():
+        f = json.loads(fb.read_text())
+        out['fbx'] = {k: f[k] for k in ('source', 'url', 'unit', 'lanes', 'checked', 'note', 'days', 'changes') if k in f}
+    return out
+
+
 def http(url):
     try:
         import certifi
@@ -363,6 +409,58 @@ STEEL_WI_COMMODITY = ('rebar_hpg', 'hrc', 'hrc_fut', 'iron_ore', 'coke', 'scrap'
 WI_SRC = {'source': 'WiData (WiMCP)', 'url': 'https://widata.vn/'}
 
 
+def agri_seafood_extra(sector, blocks):
+    """Đợt 1 (05/11/2026): tỷ giá USD/VND tháng, FAO FPMA (gạo, sữa bột, bột cá), USDA PSD cà phê, lịch Federal Register.
+    Chỉ đọc file raw đã có (scripts/fetch_fao_fpma.py, fetch_usda_psd_coffee.py, fetch_federal_register.py, fetch_sbv.py)."""
+    if sector not in ('agri', 'seafood'):
+        return
+    raw = ROOT / 'data/raw/public'
+    fx, src = {}, []
+    ph = ROOT / 'data/pharma-wi-data.json'  # Wi 242638 tỷ giá trung tâm bình quân tháng (đã có trong repo), cho kỳ trước 2025
+    if ph.exists():
+        s = ((json.loads(ph.read_text()).get('blocks', {}).get('macro') or {}).get('series') or {}).get('usdvnd') or {}
+        fx.update({r['date'][:7]: r['value'] for r in s.get('records', [])})
+        if fx:
+            src.append('WiData 242638 (bình quân tháng)')
+    sb = raw / 'sbv-monthly.json'
+    if sb.exists():
+        by = {}
+        for d, v in (json.loads(sb.read_text()).get('central_rate_daily') or {}).items():
+            if isinstance(v, (int, float)):
+                by.setdefault(d[:7], []).append(v)
+        fx.update({m: sum(v) / len(v) for m, v in by.items()})
+        src.append('NHNN tỷ giá trung tâm (bình quân các ngày có số)')
+    if fx:
+        blocks.setdefault('macro', {'series': {}})['series']['usdvnd'] = {
+            'name': 'Tỷ giá trung tâm USD/VND, bình quân tháng', 'unit': 'VND/USD', 'time_type': 'monthly', 'source': ' + '.join(src),
+            'url': 'https://sbv.gov.vn/vi/t%E1%BB%B7-gi%C3%A1-trung-t%C3%A2m', 'records': [{'date': m + '-01', 'value': round(fx[m], 1)} for m in sorted(fx)]}
+    fp = raw / 'fao-fpma.json'
+    if fp.exists():
+        f = json.loads(fp.read_text())
+        keep = ('rice_thai5', 'rice_vn5', 'rice_vn25', 'rice_india25', 'rice_pak25', 'smp', 'wmp', 'rice5_angiang', 'rice5_dongthap', 'rice5_baclieu') if sector == 'agri' else ('fishmeal', 'soymeal_hamburg')
+        ser = {}
+        for k in keep:
+            v = f['series'].get(k) or {}
+            recs = v.get('records') or []
+            if v.get('time_type') == 'weekly':  # bình quân tháng của các tuần
+                by = {}
+                for r in recs:
+                    by.setdefault(r['date'][:7], []).append(r['value'])
+                recs = [{'date': m + '-01', 'value': round(sum(x) / len(x), 2), 'weeks': len(x)} for m, x in sorted(by.items())]
+            if recs:
+                ser[k] = {'name': v['name'], 'unit': v['unit'], 'time_type': 'monthly', 'records': [r for r in recs if r['date'] >= '2019-01-01'], 'api': v.get('url')}
+        blocks['fao_fpma'] = {'source': f['source'], 'url': f['url'], 'checked': f['checked'], 'series': ser}
+    pc = raw / 'usda-psd-coffee.json'
+    if sector == 'agri' and pc.exists():
+        c = json.loads(pc.read_text())
+        blocks['psd_coffee'] = {k: c[k] for k in ('source', 'url', 'file', 'unit', 'marketing_year', 'checked')} | {'vietnam': c['countries'].get('vietnam', [])}
+    fr = raw / 'federal-register-por.json'
+    if sector == 'seafood' and fr.exists():
+        f = json.loads(fr.read_text())
+        blocks['federal_register'] = {'source': f['source'], 'url': f['url'], 'checked': f['checked'],
+                                      'cases': {k: {kk: v[kk] for kk in ('case', 'name', 'phrase')} | {'documents': v['documents'][:30]} for k, v in f['cases'].items()}}
+
+
 def merge_wi(sector, blocks):
     """Lấp chỗ trống bằng data/<sector>-wi-data.json (scripts/build_<sector>_wi.py từ WiMCP, AGENTS.md 26/10/2026).
     Nguồn gốc luôn ưu tiên: chỉ thêm chuỗi, mã ngành hoặc khối mà bản công khai không có hoặc rỗng; không trộn
@@ -398,7 +496,10 @@ def merge_wi(sector, blocks):
 def main():
     F, cache, vcache = feeds(), {}, {}
     now = dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+    only = [a for a in sys.argv[1:] if a in SECTORS]  # optional: build only these sectors
     for sector, keys in SECTORS.items():
+        if only and sector not in only:
+            continue
         series = {k: build_series(k, cache, F) for k in keys}
         blocks = {'commodity': {'series': series, 'captured_at': now[:10]}} if series else {}
         ms = macro_series(sector)
@@ -407,7 +508,18 @@ def main():
         ms.update(fia_series(sector))
         if sector == 'textile':
             ms.update(us_apparel())
+            ms.update(us_apparel_is())
         sh = {**shfe_series(sector), **market_series(sector), **sxd_series(sector), **farm_series(sector)}
+        if sector == 'steel':
+            sh.update(cny_usd())
+        fp = ROOT / 'data/raw/public/fao-fpma.json'
+        if sector == 'retail' and fp.exists():  # 05/11/2026: sữa bột SMP/WMP (FAO FPMA, file do agent Nông nghiệp tạo) cho biên gộp VNM
+            fj = json.loads(fp.read_text())
+            for k in ('smp', 'wmp'):
+                v = (fj.get('series') or {}).get(k)
+                if v and v.get('records'):
+                    sh[k] = {'name': v['name'], 'unit': v['unit'], 'time_type': v.get('time_type', 'monthly'), 'source': fj.get('source', 'FAO FPMA'),
+                             'url': v.get('url') or fj.get('url'), 'records': [r for r in v['records'] if r['date'] >= SINCE]}
         if sh:
             blocks.setdefault('commodity', {'series': {}, 'captured_at': now[:10]})['series'].update(sh)
         if ms:
@@ -418,6 +530,10 @@ def main():
         if sector == 'port' and wf.exists():
             w = json.loads(wf.read_text())
             blocks['wci'] = {'source': w['source'], 'url': w['url'], 'unit': w['unit'], 'checked': w['checked'], 'weeks': w['weeks']}
+        if sector in ('port', 'shipping'):
+            blocks.update(port_shipping_feeds(sector))
+            if sector == 'shipping':  # SHFE fuel oil CNY/tấn → USD/tấn on the page
+                blocks.setdefault('commodity', {'series': {}, 'captured_at': now[:10]})['series'].update(cny_usd())
         cb = ROOT / 'data/raw/public/cbonds-realestate.json'
         if sector == 'realestate' and cb.exists():
             c = json.loads(cb.read_text())
@@ -427,6 +543,14 @@ def main():
                                         'outstanding_value': c['outstanding_value'], 'outstanding_bonds': c['outstanding_bonds']}
         if sector == 'insurance':
             blocks['fs'] = SV.insurance_fs(verr)
+            # 05/11/2026: rổ nào tải hỏng cả (finfo timeout) thì giữ bản dựng trước, đánh dấu stale thay vì mất chart
+            prev_f = ROOT / 'data/insurance-public-data.json'
+            if prev_f.exists():
+                prev_fs = (json.loads(prev_f.read_text()).get('blocks') or {}).get('fs') or {}
+                for bid, old in (prev_fs.get('by_sector') or {}).items():
+                    if bid not in blocks['fs']['by_sector'] and old.get('records'):
+                        blocks['fs']['by_sector'][bid] = {**old, 'stale': True, 'stale_note': 'giữ bản dựng ' + str(prev_fs.get('captured_at') or '')[:10]}
+                blocks['fs']['captured_at'] = now[:10]
             hy = ROOT / 'data/raw/public/hnx-yield-10y.json'
             if hy.exists():
                 h = json.loads(hy.read_text())
@@ -434,12 +558,14 @@ def main():
                                    'source': h['source'], 'url': h['url']}
                 dp = h.get('deposit_12m', {})
                 if dp.get('records'):
-                    blocks.setdefault('macro', {'series': {}, 'captured_at': now[:10]})['series']['deposit_12m'] = {
+                    # 05/11/2026: đặt tên riêng để Wi deposit_12m (242557, lịch sử từ 2019) lấp qua merge_wi; Vietcombank giữ làm điểm mới nhất
+                    blocks.setdefault('macro', {'series': {}, 'captured_at': now[:10]})['series']['deposit_12m_vcb'] = {
                         'name': 'Lãi suất tiết kiệm 12 tháng Vietcombank', 'unit': '%', 'time_type': 'monthly', 'source': dp['source'],
                         'url': dp['url'], 'records': [{'date': m + '-01', 'value': r['value']} for m, r in dp['records'].items()]}
         if sr and sr['by_sector']:
             sr['captured_at'], sr['errors'] = now[:10], verr
             blocks['sector_ratio'] = sr
+        agri_seafood_extra(sector, blocks)
         wi_filled = merge_wi(sector, blocks)
         bundle = {'schema': 1, 'built_at': now, 'provider': 'Nguồn công khai (IMF/FRED, EIA, ICE, VNDirect)' + (' + WiData lấp chỗ thiếu' if wi_filled else ''),
                   'blocks': blocks, 'wi_filled': wi_filled,

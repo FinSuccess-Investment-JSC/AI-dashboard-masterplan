@@ -518,5 +518,25 @@
   "quote": "Thông tư này có hiệu lực thi hành kể từ ngày 01 tháng 10 năm 2026.",
   "status": "match",
   "note": "Tải PDF toàn văn, pdftotext; Điều 12 khoản 1-2 về hiệu lực giấy ĐKLH 5 năm / 3 năm"
+ },
+ {
+  "block": "duoc-05",
+  "claim": "Lượt khám chữa bệnh BHYT 9 tháng 2026",
+  "value": "148 triệu",
+  "url": "https://thoibaotaichinhvietnam.vn/bao-hiem-xa-hoi-viet-nam-don-luc-ve-dich-nam-2026-205083.html",
+  "opened_at": "2026-11-05",
+  "quote": "Trong 9 tháng năm 2026, các cơ sở khám, chữa bệnh BHYT trên toàn quốc tiếp nhận khoảng 148 triệu lượt khám, chữa bệnh BHYT; đề nghị thanh toán chi phí khám, chữa bệnh BHYT hơn 133.300 tỷ đồng.",
+  "status": "match",
+  "note": "BHXH Việt Nam qua Thời báo Tài chính 08/10/2026"
+ },
+ {
+  "block": "duoc-05",
+  "claim": "Chi phí KCB BHYT đề nghị thanh toán 9 tháng 2026",
+  "value": "133.300",
+  "url": "https://thoibaotaichinhvietnam.vn/bao-hiem-xa-hoi-viet-nam-don-luc-ve-dich-nam-2026-205083.html",
+  "opened_at": "2026-11-05",
+  "quote": "Trong 9 tháng năm 2026, các cơ sở khám, chữa bệnh BHYT trên toàn quốc tiếp nhận khoảng 148 triệu lượt khám, chữa bệnh BHYT; đề nghị thanh toán chi phí khám, chữa bệnh BHYT hơn 133.300 tỷ đồng.",
+  "status": "match",
+  "note": ""
  }
 ]

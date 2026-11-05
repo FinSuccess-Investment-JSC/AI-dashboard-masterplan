@@ -71,6 +71,16 @@ jobs:
           python scripts/fetch_vfa_rice.py || true
           python scripts/fetch_vasep_prices.py || true
           python scripts/fetch_drewry_wci.py || true
+          python scripts/fetch_portwatch_ports.py || true
+          python scripts/fetch_fbx.py || true
+          python scripts/fetch_fao_fpma.py || true
+          python scripts/fetch_usda_psd_coffee.py || true
+          python scripts/fetch_federal_register.py || true
+          python scripts/fetch_fred_pop65.py || true
+          python scripts/fetch_realestate_backlog.py --sector realestate || true
+          python scripts/fetch_realestate_backlog.py --sector construction || true
+          if [ "$(date -u +%u)" = "1" ] && [ "${{ github.event.schedule }}" = '30 0 * * *' ]; then python scripts/fetch_dav_tenders.py --page-size 5000 || true; fi
+          python scripts/build_pharma_extra.py || true
           python scripts/build_sector_public.py
           python scripts/fetch_public_fs.py && python scripts/build_company_quarterly.py
       - name: Validate generated data

@@ -39,6 +39,23 @@
    ],
    "pick": "max_to_time",
    "note": "to_time = hôm nay khi gọi lại."
+  },
+  {
+   "block": "us_hs_steel",
+   "tool": "wi_data_macro",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "352014,352025,352023,352579,352570,1280043,352557,352568,352711,312081,310879",
+    "from_time": "2019-01-01",
+    "limit": 120
+   },
+   "cadence": "monthly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "note": "Bảng 312 (Mỹ nhập khẩu theo HS4 × đối tác, USD, tháng). Lời gọi chung với Thủy sản/Dệt may; builder Thép chỉ đọc 352711. limit=120 đủ từ 2019; khi quá 120 tháng thì tăng limit."
   }
  ],
  "indicators": {
@@ -88,6 +105,12 @@
    "crude_cn",
    "Sản lượng thép thô Trung Quốc",
    "10 nghìn tấn",
+   "monthly"
+  ],
+  "352711": [
+   "us_imp_7210",
+   "Mỹ nhập khẩu tôn mạ HS 7210 từ Việt Nam",
+   "USD",
    "monthly"
   ]
  }

@@ -190,20 +190,21 @@ if(ur.length&&document.getElementById('chUsRetail')){
 // ---------- Document figures (data/textile/*.json, mirrored in the HTML tables) ----------
 // US apparel import shares 2025 (OTEXA via Apparel Resources)
 if(document.getElementById('chUsShare')){
- const yrs=['2019','2020','2021','2024','2025','5T/2026'];
- const rows=[['Việt Nam',C.navy,[null,16.37,14.84,18.88,21.5,22.2]],['Trung Quốc',C.red,[39.83,36.6,37.76,20.83,13.66,9.7]],['Bangladesh',C.teal,[null,8.17,8.84,9.26,10.53,11.3]],['Campuchia',C.gold,[null,4.87,4.22,4.75,6.2,6.5]],['Ấn Độ',C.plum,[null,3.91,4.35,5.89,6.35,null]],['Indonesia',C.grey,[null,3.99,3.76,5.33,5.98,null]]];
+ const yrs=['2019','2020','2021','2024','2025','5T/2026','8T/2026'];
+ const rows=[['Việt Nam',C.navy,[null,16.37,14.84,18.88,21.5,22.2,22.4]],['Trung Quốc',C.red,[39.83,36.6,37.76,20.83,13.66,9.7,11.5]],['Bangladesh',C.teal,[null,8.17,8.84,9.26,10.53,11.3,11.0]],['Campuchia',C.gold,[null,4.87,4.22,4.75,6.2,6.5,null]],['Ấn Độ',C.plum,[null,3.91,4.35,5.89,6.35,null,null]],['Indonesia',C.grey,[null,3.99,3.76,5.33,5.98,null,null]]];
  barLineChart('chUsShare',{categories:yrs,series:rows.map(([n,c,v])=>({name:n,color:c,kind:'line',values:v})),unit:'%',digits:1,height:260,zeroBase:false,rotateLabels:false});
  legend('chUsShare',rows.map(([n,c])=>[n,c]));
- fillTable('tbl-us-share',['Nước',...yrs],rows.map(([n,,v])=>[n,...v.map(x=>x==null?'—':nf(x,2)+'%')]).concat([['Tổng NK may mặc Mỹ (tỷ USD)','—','—','—','79,26','77,88','35,09 (6T)']]));
+ fillTable('tbl-us-share',['Nước',...yrs],rows.map(([n,,v])=>[n,...v.map(x=>x==null?'—':nf(x,2)+'%')]).concat([['Tổng NK may mặc Mỹ (tỷ USD)','—','—','—','79,26','77,88','35,09 (6T)','—']]));
  fillTable('tbl-us-h1',['Nước','Giá trị YoY','Lượng (m² quy đổi) YoY','Đơn giá YoY'],[['Campuchia','+6,91%','+7,18%','—'],['Indonesia','+2,58%','+8,53%','—'],['Việt Nam','−0,76%','−0,18%','—'],['Pakistan','−3,83%','−0,27%','—'],['Bangladesh','−4,43%','−2,75%','−1,73%'],['Ấn Độ','−26,44%','−24,91%','−2,04%'],['Trung Quốc','−29,39%','−21,61%','−9,93%'],['Tổng (49,08 tỷ USD)','−7,42%','—','+1,71%']]);
- sourceLine('chUsShare',[['OTEXA','https://www.trade.gov/otexa-import-data'],['Just-Style 2019–21','https://www.just-style.com/features/analysis-china-market-share-of-us-apparel-imports-rises-after-four-year-lull/'],['Apparel Resources 2025','https://apparelresources.com/business-news/trade-business-news/bangladesh-raises-us-apparel-market-share-10-53-chinas-exports-decline/'],['TBS 07/10/2026 (OTEXA 8T/2026)','https://www.tbsnews.net/economy/bangladesh-outperforms-rivals-us-apparel-imports-fall-scope-gains-remains-1565601']],'5T/2026','2019–2021 theo Just-Style (có thể tính theo lượng); 2024 là 10 tháng đầu năm (Bangladesh: cả năm); 2025 cả năm theo giá trị; 5T/2026 theo OTEXA. Thiếu 2022–2023. Các năm khác cơ sở tính nên chỉ đọc xu hướng.');
+ sourceLine('chUsShare',[['OTEXA','https://www.trade.gov/otexa-import-data'],['Just-Style 2019–21','https://www.just-style.com/features/analysis-china-market-share-of-us-apparel-imports-rises-after-four-year-lull/'],['Apparel Resources 2025','https://apparelresources.com/business-news/trade-business-news/bangladesh-raises-us-apparel-market-share-10-53-chinas-exports-decline/'],['TBS 07/10/2026 (OTEXA 8T/2026)','https://www.tbsnews.net/economy/bangladesh-outperforms-rivals-us-apparel-imports-fall-scope-gains-remains-1565601'],['Vinatex Q4/2026 (OTEXA 8T/2026)','https://vinatex.com.vn/cap-nhat-thi-truong-det-may-quy-iv-2026-va-mot-so-chi-dau-cho-nam-2027/']],'8T/2026','2019–2021 theo Just-Style (có thể tính theo lượng); 2024 là 10 tháng đầu năm (Bangladesh: cả năm); 2025 cả năm theo giá trị; 5T/2026 theo OTEXA. Thiếu 2022–2023. Các năm khác cơ sở tính nên chỉ đọc xu hướng.');
  insight('chUsShare','Trung Quốc mất khoảng 30 điểm % thị phần từ 2019, phần lớn sang Việt Nam (từ ~15% lên 22%) và một phần sang Bangladesh, Campuchia. Từ 24/07/2026 Việt Nam chịu thuế cao hơn các nước này 2,5 điểm %, nên tốc độ lấy thị phần là biến số cần theo dõi theo tháng.');
 }
 const isr=[['2019',2.30],['2020',2.25],['2021',2.09],['2022',2.37],['2023',2.27],['2024',2.22],['2025',2.15],['T1/26',2.16],['T2/26',2.10],['T3/26',2.11],['T4/26',2.13],['T5/26',2.11],['T6/26',2.14],['T7/26',2.11]];
 if(document.getElementById('chUsIS')){
+ const fr=S('us_apparel_is').filter(r=>r.date>='2019-01');if(fr.length){isr.length=0;fr.forEach(r=>isr.push([mon(r.date),r.value]))}
  barLineChart('chUsIS',{categories:isr.map(r=>r[0]),series:[{name:'Tồn kho / doanh số',color:C.plum,kind:'line',values:isr.map(r=>r[1])}],unit:'lần',digits:2,height:260,zeroBase:false,rotateLabels:false});
  fillTable('tbl-us-is',['Kỳ','Lần'],isr.slice().reverse().map(r=>[r[0],nf(r[1],2)]));
- sourceLine('chUsIS',[['FRED MRTSIR448USS','https://fred.stlouisfed.org/series/MRTSIR448USS'],SRC.census],'T7/2026','Tỷ lệ tồn kho / doanh số của cửa hàng quần áo và phụ kiện Mỹ, điều chỉnh mùa vụ; các năm lấy tháng 12.');
+ sourceLine('chUsIS',[['FRED MRTSIR448USS','https://fred.stlouisfed.org/series/MRTSIR448USS'],SRC.census],isr.at(-1)[0],'Tỷ lệ tồn kho / doanh số của cửa hàng quần áo và phụ kiện Mỹ, điều chỉnh mùa vụ; các năm lấy tháng 12.');
  insight('chUsIS','Tỷ lệ 2,1 lần là thấp nhất trong chuỗi từ 2019 trừ 2021: kênh bán lẻ Mỹ không thừa hàng, nên nhãn hàng có lý do đặt bổ sung khi doanh số giữ được. Đây là điều kiện cần cho đơn hàng quý tới, chưa đủ nếu thuế làm giảm biên nhãn hàng.');
 }
 const th=[['Việt Nam',C.navy,[20,10,12.5]],['Trung Quốc',C.red,[20,10,12.5]],['Bangladesh',C.teal,[20,10,10]],['Campuchia',C.gold,[19,10,10]],['Indonesia',C.grey,[19,10,10]],['Ấn Độ',C.plum,[50,10,10]]];
@@ -253,6 +254,57 @@ if(document.getElementById('chBrands')){
  insight('chBrands','Tồn kho tăng nhanh hơn doanh thu (Inditex, H&M, Fast Retailing +20,8% so với +16,6%) báo hiệu nhãn hàng sẽ chậm đặt đơn mới 1–2 quý; tồn kho giảm cùng doanh thu (Nike) là đang dọn kho, chưa phải tín hiệu tăng đơn. Adidas tăng tồn kho chủ động cho World Cup 2026.');
 }
 
+// ---------- 05/11/2026: PSF spread, lead–lag, Mỹ NK theo HS ----------
+const avgT=a=>{const w=a.filter(Number.isFinite);return w.length?w.reduce((s,x)=>s+x,0)/w.length:null};
+if(psf.length&&pta.length&&meg.length&&document.getElementById('chPsfSpread')){
+ const tm=byMonth(pta),mm=byMonth(meg),ym2=byMonth(yc),cm2=byMonth(cc);
+ const rs=psf.filter(r=>tm[ym(r.date)]&&mm[ym(r.date)]).slice(-24);
+ const sp=r=>r.value-0.86*tm[ym(r.date)].value-0.34*mm[ym(r.date)].value;
+ const ysp=r=>{const a=ym2[ym(r.date)],b=cm2[ym(r.date)];return a&&b?a.value-b.value:null};
+ barLineChart('chPsfSpread',{categories:rs.map(r=>mon(r.date)),series:[{name:'PSF − (0,86 PTA + 0,34 MEG)',color:C.navy,values:rs.map(r=>Math.round(sp(r)))},{name:'Sợi cotton − bông',color:C.gold,kind:'line',values:rs.map(ysp)}],unit:'CNY/tấn',digits:0,height:260,rotateLabels:true});
+ legend('chPsfSpread',[['PSF − (0,86 PTA + 0,34 MEG)',C.navy],['Sợi cotton − bông',C.gold]]);
+ fillTable('tbl-psf-spread',['Kỳ','PSF','PTA','MEG','Chênh polyester','Chênh sợi − bông'],rs.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),nf(tm[ym(r.date)].value,0),nf(mm[ym(r.date)].value,0),nf(sp(r),0),nf(ysp(r),0)]));
+ sourceLine('chPsfSpread',[['Sina Finance · ZCE, DCE','https://finance.sina.com.cn/futures/quotes/PF0.shtml']],short(rs.at(-1).date),'Ước tính theo định mức 0,86 PTA + 0,34 MEG.');
+ const L=rs.at(-1),P3=rs.at(-4);
+ insight('chPsfSpread','Chênh polyester '+nf(sp(L),0)+' CNY/t'+(P3?' (3 tháng trước '+nf(sp(P3),0)+')':'')+'. Chênh nới là nhóm sợi tổng hợp (STK) có dư địa biên; chênh sợi − bông cho ADS.');
+}
+const isS=S('us_apparel_is'),usx=S('exp_textile_us');
+if(isS.length&&usx.length&&document.getElementById('chLeadLag')){
+ const addM=(d,k)=>{const x=new Date(d.slice(0,7)+'-01T00:00:00Z');x.setUTCMonth(x.getUTCMonth()+k);return x.toISOString().slice(0,7)};
+ const isM={};isS.forEach(r=>{isM[ym(r.date)]=r.value});
+ const yo=usx.map(r=>({k:ym(r.date),v:yoyAt(usx,r)})).filter(x=>x.v!=null);
+ const keys=[...new Set([...yo.map(x=>x.k),...isS.map(r=>addM(r.date,6))])].filter(k=>k>='2022-01').sort();
+ const yoM=Object.fromEntries(yo.map(x=>[x.k,x.v]));
+ const inv=k=>{const v=isM[addM(k+'-01',-6)];return v==null?null:+((2.3-v)*100).toFixed(1)};
+ barLineChart('chLeadLag',{categories:keys.map(k=>mon(k+'-01')),series:[{name:'XK dệt may sang Mỹ YoY (%)',color:C.navy,values:keys.map(k=>yoM[k]??null)},{name:'Tồn kho/doanh số Mỹ đảo chiều, +6 tháng',color:C.plum,kind:'line',values:keys.map(inv)}],unit:'',digits:1,height:260,rotateLabels:true});
+ legend('chLeadLag',[['XK sang Mỹ YoY (%)',C.navy],['(2,3 − tồn kho/doanh số) × 100, dịch +6 tháng',C.plum]]);
+ const corr=lag=>{const pr=yo.filter(x=>x.k>='2021-01').map(x=>[x.v,isM[addM(x.k+'-01',-lag)]]).filter(p=>p[1]!=null);if(pr.length<12)return null;const ma=avgT(pr.map(p=>p[0])),mb=avgT(pr.map(p=>p[1]));let sab=0,saa=0,sbb=0;pr.forEach(([a,b])=>{sab+=(a-ma)*(b-mb);saa+=(a-ma)**2;sbb+=(b-mb)**2});return {r:sab/Math.sqrt(saa*sbb),n:pr.length}};
+ const cs=[3,6,9].map(l=>[l,corr(l)]);
+ fillTable('tbl-lead-lag',['Tháng','XK sang Mỹ YoY (%)','Tồn kho/doanh số 6 tháng trước','Đảo chiều'],keys.slice().reverse().map(k=>[mon(k+'-01'),nf(yoM[k],1),nf(isM[addM(k+'-01',-6)],2),nf(inv(k),1)]));
+ sourceLine('chLeadLag',[['FRED MRTSIR448USS','https://fred.stlouisfed.org/series/MRTSIR448USS'],SRC.customs],mon(isS.at(-1).date),'Tương quan tính trong trình duyệt, từ 01/2021.');
+ insight('chLeadLag','Hệ số tương quan XK YoY với tồn kho/doanh số trễ k tháng: '+cs.map(([l,c])=>l+' tháng '+(c?nf(c.r,2)+' (n='+c.n+')':'—')).join(' · ')+'. Âm là đúng chiều (kho Mỹ giảm → đơn Việt Nam tăng). Tỷ lệ mới nhất '+nf(isS.at(-1).value,2)+' lần ('+mon(isS.at(-1).date)+').');
+}
+// Tồn kho/doanh số: dùng chuỗi FRED khi có thay bảng tĩnh
+const hs=k=>S(k),v4=hs('us_6204_vn'),c4=hs('us_6204_cn'),t4=hs('us_6204_total');
+if(v4.length&&t4.length&&document.getElementById('chUsHsShare')){
+ const tm=byMonth(t4),cm=byMonth(c4),rs=v4.filter(r=>tm[ym(r.date)]).slice(-36);
+ const sh=(m,r)=>{const t=tm[ym(r.date)];const x=m[ym(r.date)];return t&&x?x.value/t.value*100:null};
+ const vm=byMonth(v4);
+ barLineChart('chUsHsShare',{categories:rs.map(r=>mon(r.date)),series:[{name:'Việt Nam',color:C.navy,kind:'line',values:rs.map(r=>sh(vm,r))},{name:'Trung Quốc',color:C.red,kind:'line',values:rs.map(r=>sh(cm,r))}],unit:'%',digits:1,height:260,zeroBase:true,rotateLabels:true});
+ legend('chUsHsShare',[['Việt Nam',C.navy],['Trung Quốc',C.red]]);
+ fillTable('tbl-us-hs-share',['Tháng','VN (%)','TQ (%)','Tổng 6204 (triệu USD)'],rs.slice().reverse().map(r=>[mon(r.date),nf(sh(vm,r),1),nf(sh(cm,r),1),nf(tm[ym(r.date)].value/1e6,0)]));
+ sourceLine('chUsHsShare',[['US Census qua WiData','https://widata.vn/']],mon(rs.at(-1).date),'Thị phần = giá trị từ nước ÷ tổng HS 6204.');
+ const L=rs.at(-1),Y=rs.find(r=>ym(r.date)===String(+L.date.slice(0,4)-1)+L.date.slice(4,7));
+ insight('chUsHsShare','HS 6204 '+mon(L.date)+': Việt Nam '+nf(sh(vm,L),1)+'%, Trung Quốc '+nf(sh(cm,L),1)+'%'+(Y?' (cùng kỳ: '+nf(sh(vm,Y),1)+'% / '+nf(sh(cm,Y),1)+'%)':'')+'. Đây là số tháng nhanh nhất để thấy đơn có chuyển khỏi Trung Quốc sau Mục 301.');
+}
+if(v4.length&&document.getElementById('chUsHsVn')){
+ const a=byMonth(hs('us_6110_vn')),b=byMonth(hs('us_6203_vn')),rs=v4.slice(-36);
+ stack('chUsHsVn',{categories:rs.map(r=>mon(r.date)),series:[{name:'6204 nữ dệt thoi',color:C.navy,values:rs.map(r=>r.value/1e6)},{name:'6110 áo len, nỉ',color:C.teal,values:rs.map(r=>a[ym(r.date)]?a[ym(r.date)].value/1e6:null)},{name:'6203 nam dệt thoi',color:C.gold,values:rs.map(r=>b[ym(r.date)]?b[ym(r.date)].value/1e6:null)}],unit:'triệu USD',digits:0,aria:'Mỹ nhập khẩu từ Việt Nam theo HS'});
+ legend('chUsHsVn',[['6204',C.navy],['6110',C.teal],['6203',C.gold]]);
+ fillTable('tbl-us-hs-vn',['Tháng','6204','6110','6203','6204 YoY'],v4.slice().reverse().map(r=>[mon(r.date),nf(r.value/1e6,1),nf(a[ym(r.date)]?.value/1e6,1),nf(b[ym(r.date)]?.value/1e6,1),signed(yoyAt(v4,r),0)+'%']));
+ sourceLine('chUsHsVn',[['US Census qua WiData','https://widata.vn/']],mon(v4.at(-1).date),'Giá trị USD, theo tháng.');
+ insight('chUsHsVn','6204 từ Việt Nam '+signed(yoyAt(v4,v4.at(-1)),0)+'% YoY ('+mon(v4.at(-1).date)+'); 6110 tăng theo mùa thu đông. Chuỗi này là kim ngạch phía Mỹ, khớp kỳ doanh thu nhà may hơn số Hải quan Việt Nam.');
+}
 // ---------- 4. KPIs & quick read ----------
 const eL=exp.at(-1),uL=us.at(-1),cL=cot.at(-1),pL=psf.at(-1),rL=ur.at(-1),may=sec['204']?.records||[],mL=may.at(-1);
 kpi('spk-exp',eL?nf(eL.value/1000,2):'—',eL?'tỷ USD hàng dệt, may · '+mon(eL.date):'—',eL?signed(yoyAt(exp,eL),1)+'% so cùng kỳ':'',exp.slice(-12).map(r=>r.value));

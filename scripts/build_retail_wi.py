@@ -48,6 +48,7 @@ def main():
     ind = contract['indicators']
     put('macro', ['macro_retail_a', 'macro_retail_b'], lambda r: build_macro(r, ind))
     put('commodity', ['commodity_retail'], lambda r: build_macro(r, ind))
+    put('gold', ['gold_sjc'], lambda r: build_macro(r, ind))  # 05/11/2026: vàng SJC/nhẫn, nén tháng khi gọi khoảng dài
     put('sector_ratio', ['sector_ratio_recent'], lambda r: build_sector(r, contract['sectors']))
     bundle = {'schema': 1, 'built_at': dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'provider': 'WiMCP (Widata)',
               'contract': str(CONTRACT.relative_to(ROOT)), 'calls': status, 'blocks': blocks}

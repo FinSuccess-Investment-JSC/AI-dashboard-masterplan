@@ -2018,7 +2018,8 @@
      "dm-09",
      "dm-13",
      "dm-23",
-     "dm-27"
+     "dm-27",
+     "dm-17"
     ]
    },
    "how": "python3 scripts/fetch_customs.py && python3 scripts/fetch_nso.py → build_sector_public.py (chạy trong refresh-data.yml)",
@@ -2047,7 +2048,8 @@
     "blocks": [
      "dm-10",
      "dm-11",
-     "dm-12"
+     "dm-12",
+     "dm-35"
     ]
    },
    "how": "python3 scripts/build_sector_public.py (chạy trong refresh-data.yml)",
@@ -2167,7 +2169,8 @@
     "blocks": [
      "dm-14",
      "dm-15",
-     "dm-16"
+     "dm-16",
+     "dm-18"
     ]
    },
    "how": "Kiểm văn bản mới, vụ phòng vệ thương mại mới; cập nhật data/textile/policy.json và bảng tương ứng; đổi 'chưa xác minh' khi có nguồn.",
@@ -2268,7 +2271,7 @@
   {
    "id": "port.public.weekly",
    "tier": "A",
-   "title": "Baltic Dry Index",
+   "title": "Freightos FBX theo tuyến (ngày)",
    "schedule": {
     "type": "weekly",
     "day": "mon",
@@ -2335,8 +2338,8 @@
    },
    "publication": "Cục Hàng hải và Đường thủy, Cảng vụ, VIMC theo tháng, thường giữa tháng; quý cho từng cụm cảng",
    "source": {
-    "name": "Cục Hàng hải và Đường thủy",
-    "url": "https://vmrcc.gov.vn/"
+    "name": "Báo Chính phủ / Bộ Xây dựng (tin Cục Hàng hải và Đường thủy)",
+    "url": "https://moc.gov.vn/vn/tin-tuc/1184/91079/cang-bien-hai-phong-phan-dau-dat-122-trieu-tan-hang-hoa-thong-qua-trong-nam-2026.aspx"
    },
    "where": {
     "page": "Cang-bien/index.html",
@@ -2449,8 +2452,8 @@
    },
    "publication": "Theo sự kiện",
    "source": {
-    "name": "Báo ngành",
-    "url": "https://vmrcc.gov.vn/"
+    "name": "Báo ngành (Tạp chí Công Thương, MekongAsean)",
+    "url": "https://tapchicongthuong.vn/"
    },
    "where": {
     "page": "Cang-bien/index.html",
@@ -3306,7 +3309,10 @@
     "file": "data/steel-public-data.js",
     "blocks": [
      "th-20",
-     "th-21"
+     "th-21",
+     "th-40",
+     "th-42",
+     "th-43"
     ]
    },
    "how": "python3 scripts/fetch_shfe.py && python3 scripts/fetch_markets.py && python3 scripts/fetch_sxd_hanoi.py → build_sector_public.py (chạy trong refresh-data.yml)",
@@ -3362,7 +3368,8 @@
     "page": "Thep/index.html",
     "blocks": [
      "th-50",
-     "th-51"
+     "th-51",
+     "th-52"
     ],
     "file": null
    },
@@ -3397,7 +3404,8 @@
      "th-31",
      "th-01",
      "th-04",
-     "th-90"
+     "th-90",
+     "th-41"
     ],
     "file": null
    },
@@ -3483,7 +3491,9 @@
     "blocks": [
      "th-10",
      "th-20",
-     "th-21"
+     "th-21",
+     "th-40",
+     "th-42"
     ]
    },
    "how": "Gọi lại đúng lời gọi trong data/steel-wi-contract.json, đặt to_time = hôm nay, lưu vào data/raw/wi/steel/, rồi python3 scripts/build_steel_wi.py và python3 scripts/build_sector_public.py.",
@@ -3496,7 +3506,8 @@
    "tier": "B",
    "title": "Wi: thép thô Việt Nam, thép thô Trung Quốc",
    "wiBlocks": [
-    "macro_steel"
+    "macro_steel",
+    "us_hs_steel"
    ],
    "wiContract": "data/steel-wi-contract.json",
    "schedule": {
@@ -3516,7 +3527,8 @@
     "page": "Thep/index.html",
     "file": "data/steel-public-data.js",
     "blocks": [
-     "th-11"
+     "th-11",
+     "th-32"
     ]
    },
    "how": "Gọi lại đúng lời gọi trong data/steel-wi-contract.json, đặt to_time = hôm nay, lưu vào data/raw/wi/steel/, rồi python3 scripts/build_steel_wi.py và python3 scripts/build_sector_public.py.",
@@ -4762,7 +4774,8 @@
     "macro_trade",
     "sector_ratio_recent",
     "mkt_monthly",
-    "mkt_yearly"
+    "mkt_yearly",
+    "us_hs_apparel"
    ],
    "wiContract": "data/textile-wi-contract.json",
    "schedule": {
@@ -4787,7 +4800,9 @@
      "dm-09",
      "dm-13",
      "dm-23",
-     "dm-27"
+     "dm-27",
+     "dm-36",
+     "dm-37"
     ]
    },
    "how": "Gọi lại đúng các lời gọi WiMCP trong data/textile-wi-contract.json, đặt to_time = hôm nay (hook wi_capture.py lưu kết quả), rồi python3 scripts/build_textile_wi.py và python3 scripts/build_sector_public.py (gộp chuỗi Wi vào data/textile-public-data.js khi nguồn gốc không có). Kiểm số mới nhất đổi hợp lý trước khi commit.",
@@ -4941,7 +4956,8 @@
    "tier": "B",
    "title": "Wi: heo hơi, gạo nội địa, Robusta, TSR20, ngô, khô đậu CBOT",
    "wiBlocks": [
-    "commodity_agri"
+    "commodity_agri",
+    "hog_regions"
    ],
    "wiContract": "data/agri-wi-contract.json",
    "schedule": {
@@ -5614,6 +5630,907 @@
    "how": "Gọi lại đúng các lời gọi WiMCP trong data/pharma-wi-contract.json, đặt to_time = hôm nay (hook wi_capture.py lưu kết quả), rồi python3 scripts/build_pharma_wi.py và python3 scripts/build_sector_public.py (gộp chuỗi Wi vào data/pharma-public-data.js khi nguồn gốc không có). Kiểm số mới nhất đổi hợp lý trước khi commit.",
    "gates": [
     "Không chép tay số"
+   ]
+  },
+  {
+   "id": "agri.public.margin",
+   "tier": "A",
+   "title": "Biên chăn nuôi ước, spread gạo Thái − VN 5%, chỉ số nguyên liệu F&B (FAO FPMA, FRED PBARLUSDM, tỷ giá)",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh"
+   },
+   "source": {
+    "name": "FAO GIEWS FPMA",
+    "url": "https://fpma.fao.org/giews/pricetool/"
+   },
+   "where": {
+    "page": "Nong-nghiep/index.html",
+    "blocks": [
+     "nn-15",
+     "nn-16",
+     "nn-17"
+    ]
+   },
+   "how": "python scripts/fetch_fao_fpma.py && python scripts/build_sector_public.py",
+   "file": "data/agri-public-data.js",
+   "job": "python scripts/fetch_fao_fpma.py && python scripts/build_sector_public.py"
+  },
+  {
+   "id": "agri.public.coffee-psd",
+   "tier": "A",
+   "title": "USDA PSD cà phê Việt Nam × ONI dịch 12 tháng",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     13,
+     14
+    ]
+   },
+   "source": {
+    "name": "USDA FAS PSD",
+    "url": "https://apps.fas.usda.gov/psdonline/app/index.html#/app/downloads"
+   },
+   "where": {
+    "page": "Nong-nghiep/index.html",
+    "blocks": [
+     "nn-43"
+    ]
+   },
+   "how": "python scripts/fetch_usda_psd_coffee.py && python scripts/build_sector_public.py",
+   "publication": "USDA cập nhật cà phê tháng 6 và 12",
+   "job": "python scripts/fetch_usda_psd_coffee.py && python scripts/build_sector_public.py"
+  },
+  {
+   "id": "construction.backlog",
+   "tier": "A",
+   "title": "Ứng trước, phải thu ÷ doanh thu 10 mã nhà thầu",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "source": {
+    "name": "VNDirect finfo · financial_statements",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Xay-dung/index.html",
+    "file": "data/construction-backlog.js",
+    "blocks": [
+     "xd-74"
+    ]
+   },
+   "how": "python3 scripts/fetch_realestate_backlog.py --sector construction",
+   "gates": [
+    "Chỉ số dẫn xuất tự động (người dùng cho phép 05/11/2026)"
+   ],
+   "job": "refresh-data.yml"
+  },
+  {
+   "id": "construction.disbursement-race",
+   "tier": "C",
+   "title": "Đường đua giải ngân % KH: mốc tuần Bộ Tài chính (TBTCVN)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "source": {
+    "name": "Bộ Tài chính qua Thời báo Tài chính",
+    "url": "https://thoibaotaichinhvietnam.vn/"
+   },
+   "where": {
+    "page": "Xay-dung/index.html",
+    "file": "assets/construction-dashboard.js (WEEK, MOF)",
+    "blocks": [
+     "xd-43"
+    ]
+   },
+   "how": "Routine tài liệu: mở bài mới, thêm mốc vào WEEK/MOF + data/construction/evidence.json",
+   "gates": [
+    "Số phải mở trang gốc, lưu evidence; lỗi giữ last-good"
+   ]
+  },
+  {
+   "id": "construction.basket",
+   "tier": "A",
+   "title": "Rổ giá vật liệu nhà thầu đường (2024=100)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "source": {
+    "name": "WiData (80961, 80968, 74362), SHFE",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Xay-dung/index.html",
+    "file": "data/construction-wi-data.js",
+    "blocks": [
+     "xd-72"
+    ]
+   },
+   "how": "Wi routine gọi commodity_construction (contract) → python3 scripts/build_construction_wi.py; trang đọc thẳng window.CONSTRUCTION_WI",
+   "gates": [
+    "Số phải mở trang gốc, lưu evidence; lỗi giữ last-good"
+   ],
+   "job": "Wi routine gọi commodity_construction (contract) → python3 scripts/build_construction_wi.py; trang đọc thẳng window.CONSTRUCTION_WI"
+  },
+  {
+   "id": "construction.province-index-bot",
+   "tier": "C",
+   "title": "Chỉ số giá XD Bắc Ninh; BOT HHV theo quý",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     8,
+     20
+    ],
+    "at": "13:00",
+    "note": "theo quý"
+   },
+   "source": {
+    "name": "Sở XD Bắc Ninh; HHV bản tin nhà đầu tư",
+    "url": "https://hhv.com.vn/quan-he-co-dong/ban-tin-nha-dau-tu/"
+   },
+   "where": {
+    "page": "Xay-dung/index.html",
+    "blocks": [
+     "xd-70",
+     "xd-71",
+     "xd-73"
+    ]
+   },
+   "how": "Routine tài liệu: PDF mới (curl -k), cập nhật số trong construction-dashboard.js + evidence",
+   "gates": [
+    "Số phải mở trang gốc, lưu evidence; lỗi giữ last-good"
+   ]
+  },
+  {
+   "id": "insurance.wi.ratio",
+   "tier": "B",
+   "title": "Wi: tỷ lệ bồi thường thuần, cơ cấu lợi nhuận, danh mục đầu tư, cơ cấu phí từng mã (ratio_ins)",
+   "wiBlocks": [
+    "ratio_ins"
+   ],
+   "wiContract": "data/insurance-wi-contract.json",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     1,
+     10
+    ]
+   },
+   "publication": "Sau mùa BCTC quý",
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Bao-hiem/index.html",
+    "file": "data/insurance-public-data.js",
+    "blocks": [
+     "bh-40",
+     "bh-41",
+     "bh-42",
+     "bh-43",
+     "bh-35",
+     "bh-33"
+    ]
+   },
+   "how": "Gọi lại lời gọi ratio_ins trong contract (đổi year nếu sang năm mới), chạy scripts/build_insurance_wi.py rồi build_sector_public.py.",
+   "gates": [
+    "7 mã có quý mới"
+   ]
+  },
+  {
+   "id": "insurance.public.lag",
+   "tier": "A",
+   "title": "TPCP 10N trễ 2 quý vs lợi nhuận tài chính",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     1,
+     10
+    ]
+   },
+   "source": {
+    "name": "HNX + VNDirect finfo",
+    "url": "https://hnx.vn/"
+   },
+   "where": {
+    "page": "Bao-hiem/index.html",
+    "file": "data/insurance-public-data.js",
+    "blocks": [
+     "bh-34"
+    ]
+   },
+   "how": "Tự tính trong assets/insurance-dashboard.js từ fs + gbond.",
+   "job": "Tự tính trong assets/insurance-dashboard.js từ fs + gbond."
+  },
+  {
+   "id": "insurance.reinsurance",
+   "tier": "C",
+   "title": "Lịch bão, Guy Carpenter APAC ROL (1/1, 1/7)",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     5
+    ]
+   },
+   "source": {
+    "name": "Guy Carpenter",
+    "url": "https://www.guycarp.com/"
+   },
+   "where": {
+    "page": "Bao-hiem/index.html",
+    "blocks": [
+     "bh-51"
+    ]
+   },
+   "how": "Mở PDF ROL đầu T1/T7, bài Cục QLGSBH sau bão; cập nhật bảng + evidence.",
+   "gates": [
+    "Mở trang gốc"
+   ]
+  },
+  {
+   "id": "retail.wi.gold",
+   "tier": "B",
+   "title": "Wi: vàng SJC, vàng nhẫn",
+   "wiBlocks": [
+    "gold_sjc"
+   ],
+   "wiContract": "data/retail-wi-contract.json",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Ban-le/index.html",
+    "file": "data/retail-public-data.js",
+    "blocks": [
+     "bl-24",
+     "bl-42"
+    ]
+   },
+   "how": "Gọi lại gold_sjc (cập nhật to_time), chạy build_retail_wi.py rồi build_sector_public.py.",
+   "gates": [
+    "Số phải mở trang gốc, lưu evidence; lỗi giữ last-good"
+   ]
+  },
+  {
+   "id": "retail.public.margin",
+   "tier": "A",
+   "title": "Biên gộp FMCG theo quý + nguyên liệu trễ 2 quý (đường, dầu cọ, khô đậu, ngô, SMP)",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     1,
+     10
+    ]
+   },
+   "source": {
+    "name": "VNDirect, FRED, ICE, FAO FPMA",
+    "url": "https://fpma.fao.org/"
+   },
+   "where": {
+    "page": "Ban-le/index.html",
+    "file": "data/retail-public-data.js",
+    "blocks": [
+     "bl-40",
+     "bl-41"
+    ]
+   },
+   "how": "company-quarterly.json + build_sector_public.py (đọc data/raw/public/fao-fpma.json).",
+   "job": "company-quarterly.json + build_sector_public.py (đọc data/raw/public/fao-fpma.json)."
+  },
+  {
+   "id": "retail.public.valuation.pnj",
+   "tier": "A",
+   "title": "P/E rổ Trang sức (PNJ)",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "source": {
+    "name": "VNDirect finfo",
+    "url": "https://dstock.vndirect.com.vn/"
+   },
+   "where": {
+    "page": "Ban-le/index.html",
+    "file": "data/retail-public-data.js",
+    "blocks": [
+     "bl-03"
+    ]
+   },
+   "how": "sector_valuation_public BASKETS retail '227'.",
+   "job": "sector_valuation_public BASKETS retail '227'."
+  },
+  {
+   "id": "retail.calendar",
+   "tier": "C",
+   "title": "Lịch mùa vụ, doanh thu/cửa hàng các chuỗi",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "source": {
+    "name": "Báo dẫn công bố DN",
+    "url": "https://doanhnhan.baophapluat.vn/"
+   },
+   "where": {
+    "page": "Ban-le/index.html",
+    "blocks": [
+     "bl-15",
+     "bl-51",
+     "bl-42"
+    ]
+   },
+   "how": "Mở bài KQ tháng/quý MWG, FRT, PNJ; cập nhật bảng + evidence.",
+   "gates": [
+    "Mở trang gốc"
+   ]
+  },
+  {
+   "id": "pharma.dav-tenders",
+   "tier": "A",
+   "title": "Trúng thầu thuốc Cục QLD theo mã, nhóm, nội/ngoại",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:30"
+   },
+   "job": "python3 scripts/fetch_dav_tenders.py --page-size 5000 && python3 scripts/build_pharma_extra.py",
+   "source": {
+    "name": "Cục Quản lý Dược · công bố kết quả trúng thầu",
+    "url": "https://dichvucong.dav.gov.vn/congbotrungthau"
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "blocks": [
+     "duoc-14",
+     "duoc-15"
+    ]
+   },
+   "gates": [
+    "Chỉ ghi khi tải ≥1 trang hợp lệ; lỗi giữ last-good",
+    "Trang skip≥100000 trả lỗi 05/11/2026: ghi coverage.complete=false"
+   ],
+   "runner": "vn"
+  },
+  {
+   "id": "pharma.pop65",
+   "tier": "A",
+   "title": "Dân số 65+ (% tổng) FRED",
+   "schedule": {
+    "type": "monthly",
+    "day": 1
+   },
+   "job": "python3 scripts/fetch_fred_pop65.py && python3 scripts/build_pharma_extra.py",
+   "source": {
+    "name": "World Bank qua FRED",
+    "url": "https://fred.stlouisfed.org/series/SPPOP65UPTOZSVNM"
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "blocks": [
+     "duoc-02"
+    ]
+   }
+  },
+  {
+   "id": "pharma.price-margin",
+   "tier": "A",
+   "title": "Chỉ số chi phí API (NPL nhập × tỷ giá), biên gộp quý",
+   "schedule": {
+    "type": "after",
+    "items": [
+     "pharma.dav-tenders"
+    ]
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "blocks": [
+     "duoc-30",
+     "duoc-31"
+    ]
+   },
+   "how": "Tự tính trong assets/pharma-dashboard.js từ PHARMA_PUBLIC và COMPANY_QUARTERLY",
+   "gates": [
+    "Không cập nhật BCTC trong đợt này"
+   ],
+   "job": "Tự tính trong assets/pharma-dashboard.js từ PHARMA_PUBLIC và COMPANY_QUARTERLY"
+  },
+  {
+   "id": "pharma.calendar",
+   "tier": "C",
+   "title": "Lịch 12 tháng Dược",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "blocks": [
+     "duoc-51"
+    ]
+   },
+   "how": "Routine tài liệu: mở nguồn gốc, đổi mốc chưa xác nhận khi có văn bản",
+   "gates": [
+    "Số phải có evidence"
+   ]
+  },
+  {
+   "id": "port.public.portwatch",
+   "tier": "A",
+   "title": "IMF PortWatch: lượt tàu container cập Hải Phòng, Cái Mép, Sài Gòn, Đà Nẵng (ngày)",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh; PortWatch trễ ~5 ngày"
+   },
+   "source": {
+    "name": "IMF PortWatch Daily_Ports_Data",
+    "url": "https://portwatch.imf.org/"
+   },
+   "job": "python3 scripts/fetch_portwatch_ports.py",
+   "where": {
+    "page": "Cang-bien/index.html",
+    "file": "data/port-public-data.js",
+    "blocks": [
+     "cg-22"
+    ]
+   }
+  },
+  {
+   "id": "port.public.fbx",
+   "tier": "A",
+   "title": "Freightos FBX theo tuyến",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh"
+   },
+   "source": {
+    "name": "Freightos FBX",
+    "url": "https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/"
+   },
+   "job": "python3 scripts/fetch_fbx.py",
+   "where": {
+    "page": "Cang-bien/index.html",
+    "file": "data/port-public-data.js",
+    "blocks": [
+     "cg-15"
+    ]
+   }
+  },
+  {
+   "id": "port.wi.portwatch",
+   "tier": "B",
+   "title": "Wi: PortWatch cấp quốc gia, hàng container xuất/nhập qua cảng VN (tháng)",
+   "wiBlocks": [
+    "portwatch_vn"
+   ],
+   "wiContract": "data/port-wi-contract.json",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     5,
+     20
+    ]
+   },
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "file": "data/port-public-data.js",
+    "blocks": [
+     "cg-23"
+    ]
+   },
+   "how": "Gọi lại call portwatch_vn, chạy build_port_wi.py rồi build_sector_public.py",
+   "gates": [
+    "chuỗi có tháng mới hơn"
+   ]
+  },
+  {
+   "id": "port.price-margin",
+   "tier": "C",
+   "title": "Giá sàn theo đợt vs chỉ số giá bốc xếp; giá khu vực I vs nước sâu; công suất sử dụng theo bến",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     1,
+     1
+    ],
+    "at": "07:00"
+   },
+   "source": {
+    "name": "Văn bản khung giá, NSO",
+    "url": "https://vanban.chinhphu.vn/"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "blocks": [
+     "cg-24",
+     "cg-25",
+     "cg-43"
+    ]
+   },
+   "how": "Cập nhật khi có khung giá mới hoặc sản lượng/công suất bến mới đã mở gốc",
+   "gates": [
+    "evidence.json có quote"
+   ]
+  },
+  {
+   "id": "shipping.wi.fearnleys",
+   "tier": "B",
+   "title": "Wi: Fearnleys TC 1 năm, giá tàu cũ/đóng mới, VLCC MEG",
+   "wiBlocks": [
+    "commodity_fearnleys"
+   ],
+   "wiContract": "data/shipping-wi-contract.json",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Van-tai-bien/index.html",
+    "file": "data/shipping-public-data.js",
+    "blocks": [
+     "vt-13",
+     "vt-14",
+     "vt-24",
+     "vt-64"
+    ]
+   },
+   "how": "Gọi lại call commodity_fearnleys (to_time = hôm nay), build_shipping_wi.py rồi build_sector_public.py",
+   "gates": [
+    "tuần mới hơn"
+   ]
+  },
+  {
+   "id": "shipping.public.fbx",
+   "tier": "A",
+   "title": "Freightos FBX theo tuyến (cho HAH)",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh"
+   },
+   "source": {
+    "name": "Freightos FBX",
+    "url": "https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/"
+   },
+   "job": "python3 scripts/fetch_fbx.py",
+   "where": {
+    "page": "Van-tai-bien/index.html",
+    "file": "data/shipping-public-data.js",
+    "blocks": [
+     "vt-32"
+    ]
+   }
+  },
+  {
+   "id": "shipping.derived",
+   "tier": "C",
+   "title": "Đồng hồ lợi nhuận theo mã, cung tàu theo phân khúc",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "source": {
+    "name": "ACBS, BIMCO, Clarksons (evidence)",
+    "url": "https://cyprusshippingnews.com/?s=BIMCO"
+   },
+   "where": {
+    "page": "Van-tai-bien/index.html",
+    "blocks": [
+     "vt-63",
+     "vt-25"
+    ]
+   },
+   "how": "Cập nhật TC đang ký/orderbook khi có tài liệu mới đã mở gốc",
+   "gates": [
+    "evidence.json có quote"
+   ]
+  },
+  {
+   "id": "power.fuel-spread",
+   "tier": "A",
+   "title": "Spread FMP − chi phí nhiên liệu biến đổi (ước)",
+   "schedule": {
+    "type": "data",
+    "sources": [
+     "wb_energy_monthly"
+    ]
+   },
+   "sources": [
+    "wb_energy_monthly"
+   ],
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-30"
+    ]
+   },
+   "how": "Tính trong assets/power-visuals.js: FMP tháng (fmpRows, PGV IR, cập nhật tay theo routine C) − than WB/LNG WB × tỷ giá Wi 242638 (data/pharma-wi-data.js) theo tham số QĐ 1692, 1882",
+   "gates": [
+    "Tham số khung giá đổi khi có QĐ năm 2027"
+   ]
+  },
+  {
+   "id": "power.hydro-heatmap",
+   "tier": "A",
+   "title": "Heatmap hồ chứa 3 cụm × 12 tháng",
+   "schedule": {
+    "type": "after",
+    "items": [
+     "power.evn-reservoirs"
+    ]
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-31"
+    ]
+   },
+   "how": "assets/hydro-reservoirs.js từ HYDRO_RESERVOIRS",
+   "gates": [
+    "≥80% ngày, nền ≥3 năm"
+   ],
+   "job": "assets/hydro-reservoirs.js từ HYDRO_RESERVOIRS"
+  },
+  {
+   "id": "power.calendar",
+   "tier": "C",
+   "title": "Lịch 12 tháng Điện",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "08:30"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-32"
+    ]
+   },
+   "how": "Routine tài liệu",
+   "gates": [
+    "Mốc chưa xác nhận ghi rõ"
+   ]
+  },
+  {
+   "id": "power.keyplayers-groups",
+   "tier": "A",
+   "title": "Key players so sánh theo nhóm",
+   "schedule": {
+    "type": "data",
+    "sources": []
+   },
+   "job": "update_valuation.py (đã có)",
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-33"
+    ]
+   },
+   "how": "assets/power-visuals.js từ COMPANY_VALUATION/COMPARISON/QUARTERLY",
+   "gates": [
+    "BCTC chỉ khi được nhắn"
+   ]
+  },
+  {
+   "id": "realestate.backlog",
+   "tier": "A",
+   "title": "Backlog cover, phải thu ÷ doanh thu, nợ vay ngắn hạn ÷ tiền theo mã (11 mã nhà ở)",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "BCTC quý ≤20–45 ngày sau quý",
+   "source": {
+    "name": "VNDirect finfo · financial_statements",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "file": "data/realestate-backlog.js",
+    "blocks": [
+     "bds-53",
+     "bds-54"
+    ]
+   },
+   "how": "python3 scripts/fetch_realestate_backlog.py --sector realestate",
+   "gates": [
+    "Chỉ số dẫn xuất tự động (người dùng cho phép 05/11/2026)",
+    "Mã lỗi giữ số cũ"
+   ],
+   "job": "refresh-data.yml"
+  },
+  {
+   "id": "realestate.derived",
+   "tier": "static",
+   "title": "Bộ tính mua nhà 3 tỷ; giá sơ cấp CBRE so CPI nhà ở",
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "blocks": [
+     "bds-51",
+     "bds-52"
+    ]
+   },
+   "how": "Tự tính trên trang từ realestate-market-history.js và realestate-public-data.js",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh"
+   }
+  },
+  {
+   "id": "seafood.public.margin",
+   "tier": "A",
+   "title": "Spread cá tra sau thuế, chỉ số thức ăn (khô đậu + bột cá), cá giống dịch 7 tháng",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh"
+   },
+   "source": {
+    "name": "FRED (PFISHUSDM, EXUSEU), VASEP, WiData",
+    "url": "https://fred.stlouisfed.org/series/PFISHUSDM"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "blocks": [
+     "ts-15",
+     "ts-16",
+     "ts-17"
+    ]
+   },
+   "how": "python scripts/build_sector_public.py",
+   "job": "python scripts/build_sector_public.py"
+  },
+  {
+   "id": "seafood.wi.us-imports",
+   "tier": "B",
+   "title": "Wi: Mỹ NK HS 0304/0306 theo nước, EU NK HS 0304 từ VN",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     20
+    ]
+   },
+   "source": {
+    "name": "WiData qua WiMCP",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "blocks": [
+     "ts-22",
+     "ts-15"
+    ]
+   },
+   "how": "Gọi lại us_eu_imports_vn, us_imports_total theo contract rồi python scripts/build_seafood_wi.py",
+   "wiBlocks": [
+    "us_eu_imports_vn",
+    "us_imports_total"
+   ],
+   "wiContract": "data/seafood-wi-contract.json",
+   "gates": [
+    "Số phải mở trang gốc, lưu evidence; lỗi giữ last-good"
+   ]
+  },
+  {
+   "id": "seafood.public.por",
+   "tier": "A",
+   "title": "Lịch POR CBPG cá tra, tôm (Federal Register API)",
+   "schedule": {
+    "type": "daily",
+    "at": "07:30"
+   },
+   "source": {
+    "name": "Federal Register",
+    "url": "https://www.federalregister.gov/"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "blocks": [
+     "ts-43"
+    ]
+   },
+   "how": "python scripts/fetch_federal_register.py && python scripts/build_sector_public.py",
+   "job": "python scripts/fetch_federal_register.py && python scripts/build_sector_public.py"
+  },
+  {
+   "id": "seafood.duties.landed",
+   "tier": "C",
+   "title": "Landed cost thuế tôm VN/Ecuador/Ấn Độ",
+   "schedule": {
+    "type": "watch"
+   },
+   "source": {
+    "name": "Federal Register",
+    "url": "https://www.federalregister.gov/"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "blocks": [
+     "ts-44"
+    ]
+   },
+   "how": "Cập nhật khi có kết luận CBPG/CVD mới; số phải có trong evidence ts-42.",
+   "gates": [
+    "Số phải mở trang gốc, lưu evidence; lỗi giữ last-good"
+   ]
+  },
+  {
+   "id": "seafood.trade.ecuador",
+   "tier": "C",
+   "title": "CNA Ecuador XK tôm theo nước (pending đợt 2)",
+   "schedule": {
+    "type": "none"
+   },
+   "source": {
+    "name": "CNA Ecuador",
+    "url": "https://www.cna-ecuador.com/estadisticas/"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "blocks": []
+   },
+   "how": "Đợt 2: script đọc xlsx tháng.",
+   "status": "todo"
+  },
+  {
+   "id": "steel.docs.hpg-volume",
+   "tier": "C",
+   "title": "Sản lượng bán hàng Hòa Phát theo sản phẩm (quý)",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     8,
+     15
+    ],
+    "at": "13:00"
+   },
+   "publication": "Tin hoaphat.com.vn ~ngày 8–12 tháng đầu quý sau",
+   "source": {
+    "name": "Hòa Phát · tin tức tập đoàn",
+    "url": "https://www.hoaphat.com.vn/tin-tuc/tin-tuc-tap-doan"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "blocks": [
+     "th-15"
+    ]
+   },
+   "how": "Mở tin sản lượng quý mới; thêm cột quý vào vol trong assets/steel-dashboard.js (chHpgVol) và bảng; ghi evidence th-15.",
+   "gates": [
+    "Mở trang gốc",
+    "Quote chứa số"
    ]
   }
  ]

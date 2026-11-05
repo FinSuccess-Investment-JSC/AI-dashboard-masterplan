@@ -14,6 +14,7 @@
 <script src="../assets/sector-runtime.js?v=05b8df0a22cc" defer></script>
 <script src="../assets/sector-content.js?v=649051e35a0c" defer></script>
 <script src="../assets/sector-layout.js?v=6017726b6ba1" defer></script>
+<script src="../data/pharma-wi-data.js?v=20261105" defer></script>
 <script src="../assets/power-visuals.js?v=870bbd72b1c3" defer></script>
 <script src="../assets/power-hub.js?v=93451e694049" defer></script>
 <script src="../assets/sector-ticker.js?v=24097f7668e0" defer></script>
@@ -76,7 +77,7 @@
       <span class="tag">ENSO: <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC</a></span>
       <span class="tag">Mọi khoảng trống dữ liệu được hiển thị là khoảng trống</span>
     </div>
-    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> sản lượng toàn hệ thống 9 tháng 2026 đạt <b>265,79 tỷ kWh (+9,3%)</b>; than vẫn gánh <b>49,9%</b>, thủy điện <b>25,8%</b>. El Niño đang mạnh lên (ONI JAS 2026 <b>+2,16 °C</b>), rủi ro chính là nước về hồ mùa khô 2026–27. Giá bán lẻ giữ <b>2.204,07 đ/kWh</b> từ 10/05/2025 và Chính phủ yêu cầu không tăng giá điện.</div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> sản lượng toàn hệ thống 9 tháng 2026 đạt <b>265,79 tỷ kWh (+9,3%)</b>; than vẫn gánh <b>49,9%</b>, thủy điện <b>25,8%</b>. El Niño đang mạnh lên (ONI JAS 2026 <b>+2,16 °C</b>), rủi ro chính là nước về hồ mùa khô 2026–27. Giá bán lẻ <b>giảm 2% còn 2.159,90 đ/kWh</b> từ 01/11/2026 (QĐ 1305/QĐ-EVN) — lần giảm đầu tiên, thu hẹp dư địa EVN thanh toán cho nhà máy khi nhiên liệu đắt lên.</div>
   </section>
 
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
@@ -99,9 +100,9 @@
       <svg class="spark" id="spk-pmax" viewBox="0 0 100 26" width="100" height="26"></svg>
     </div>
     <div class="kpi">
-      <div class="label">Giá bán lẻ bình quân</div><div class="value">2.204</div>
-      <div class="delta d-warn">giữ từ 10/05/2025</div>
-      <div class="sub">đ/kWh · <a class="src-link" href="https://vneconomy.vn/tang-gia-ban-le-dien-binh-quan-them-4-8.htm" target="_blank" rel="noopener">QĐ 599/QĐ-EVN</a></div>
+      <div class="label">Giá bán lẻ bình quân</div><div class="value">2.160</div>
+      <div class="delta d-bad">▼ 2% từ 01/11/2026</div>
+      <div class="sub">đ/kWh · <a class="src-link" href="https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-gia-ban-le-dien-binh-quan-tu-ngay-01-thang-11-nam-2026-60-134-510169" target="_blank" rel="noopener">QĐ 1305/QĐ-EVN</a></div>
     </div>
     <div class="kpi">
       <div class="label">ONI · El Niño</div><div class="value" id="kpi-oni">+2,16</div>
@@ -112,7 +113,7 @@
     <div class="kpi">
       <div class="label">Than Newcastle</div><div class="value" id="kpi-coal">—</div>
       <div class="delta d-warn" id="kpi-coal-delta">Chờ phiên mới</div>
-      <div class="sub">USD/tấn · <a class="src-link" href="https://www.ice.com/products/243/Newcastle-Coal-Futures" target="_blank" rel="noopener">ICE futures</a></div>
+      <div class="sub">USD/tấn · <a class="src-link" href="https://www.ice.com/products/1137/globalCOAL-Newcastle-Coal-Futures" target="_blank" rel="noopener">ICE futures</a></div>
       <svg class="spark" id="spk-coal" viewBox="0 0 100 26" width="100" height="26"></svg>
     </div>
   </section>
@@ -127,7 +128,7 @@
       <div class="card" data-block-id="dien-02" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3 style="margin-top:0;font-size:13.5px">Vị trí trong chu kỳ</h3>
                 <p style="font-size:12.5px;line-height:1.6;color:var(--ink2);margin:0 0 8px">Cầu tăng nhanh hơn nguồn mới: sản lượng 9T/2026 <b>+9,3%</b>, Pmax kỷ lục <b>57.537 MW</b> (25/06/2026), trong khi theo Báo cáo 760/BC-BCT mới khoảng <b>5%</b> dự án nguồn trong quy hoạch đã vận hành.</p>
-        <p style="font-size:12.5px;line-height:1.6;color:var(--ink2);margin:0">El Niño mạnh lên làm mùa khô 2026–27 nghiêng về thiếu nước; than đang gánh <b>49,9%</b> sản lượng 9 tháng. EVN đã xóa hết lỗ lũy kế (30/06/2026) nhưng giá bán lẻ đứng yên từ 05/2025 và Chính phủ yêu cầu không tăng giá: nhiên liệu đắt lên sẽ dồn vào tài chính EVN và tiến độ thanh toán cho nhà máy.</p>
+        <p style="font-size:12.5px;line-height:1.6;color:var(--ink2);margin:0">El Niño mạnh lên làm mùa khô 2026–27 nghiêng về thiếu nước; than đang gánh <b>49,9%</b> sản lượng 9 tháng. EVN đã xóa hết lỗ lũy kế (30/06/2026) nhưng giá bán lẻ <b>giảm 2% từ 01/11/2026</b> (lần giảm đầu tiên): nhiên liệu đắt lên sẽ dồn vào tài chính EVN và tiến độ thanh toán cho nhà máy.</p>
       </div>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="dien-03" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -197,6 +198,14 @@
       <div class="data-gap">ⓘ Lưu ý dữ liệu: quan sát mới nhất <span id="hydro-last-date">27/08/2026</span>; <span id="hydro-collector-status">EVN không có số liệu 04–19/01/2026 và 26–27/09/2026, các ngày này để trống</span>. Thời điểm EVN thực tế có thể lệch 00h. Chỉ vẽ tháng có ít nhất 80% ngày; nền 5 năm cần ít nhất 3 năm hợp lệ. Lưu lượng là giá trị tức thời bình quân các mẫu, không phải tổng lượng nước tháng; xả qua tràn không đồng nghĩa toàn bộ xả điều tiết lũ.</div>
       <div class="source-note">Nguồn: <a href="https://www.evn.com.vn/vi-VN/thong-tin-ho-thuy-dien/Muc-nuoc-cac-ho-thuy-dien-60-123" target="_blank" rel="noopener">EVN · mực nước các hồ thủy điện</a>; lưu trữ và tổng hợp lại từ workbook được cung cấp. VSH/TBC/SBH/CHP/TMP trên bản đồ là vị trí so sánh địa lý, không phải quyền sở hữu các hồ EVN.</div>
       <details class="dtable"><summary>Chi tiết dữ liệu tháng</summary><div class="tablewrap"><table id="hydro-reservoir-table"></table></div></details>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="dien-31" data-update-kind="public" data-cadence="daily" data-refresh-status="snapshot">
+      <div class="chart-title">Hồ chứa theo cụm: 12 tháng gần nhất so trung bình 5 năm</div>
+      <div class="chart-sub">trung vị lệch của các hồ trong cụm · nước về hồ (%) hoặc mực nước thượng lưu (m) · xanh = nhiều nước hơn nền 5 năm, cam = ít hơn</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin:10px 0"><label>Chỉ tiêu <select id="hydro-heat-metric"><option value="inflow">Nước về hồ (% so TB 5 năm)</option><option value="level">Mực nước thượng lưu (m so TB 5 năm)</option></select></label></div>
+      <div id="hydro-heatmap"></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Ba cụm gộp từ vùng EVN: Bắc (Tây Bắc Bộ, Đông Bắc Bộ, Bắc Trung Bộ), Trung &amp; Tây Nguyên (Nam Trung Bộ, Tây Nguyên), Nam (Đông Nam Bộ, 2 hồ). Mỗi ô là trung vị lệch của từng hồ so trung bình 5 năm cùng tháng (chỉ tháng đủ ≥80% ngày, nền ≥3 năm); số hồ hợp lệ ghi trong ô. Trung vị không trọng số theo dung tích; cụm Nam chỉ có 2 hồ nên biến động mạnh.</div></details>
+      <div class="source-note">Nguồn: <a href="https://www.evn.com.vn/vi-VN/thong-tin-ho-thuy-dien/Muc-nuoc-cac-ho-thuy-dien-60-123" target="_blank" rel="noopener">EVN · mực nước các hồ thủy điện</a>, cùng dữ liệu với chart từng hồ phía trên.</div>
     </div>
     <h3 class="subhead">Cung – cầu điện Việt Nam</h3>
     <div class="grid two">
@@ -309,9 +318,9 @@
     <div class="grid" style="margin-top:14px">
       <div class="card" data-block-id="dien-14" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
         <div class="chart-title">Giá bán lẻ điện bình quân — các lần điều chỉnh</div>
-        <div class="chart-sub">đ/kWh, chưa VAT · giữ nguyên từ 10/05/2025 đến nay</div>
+        <div class="chart-sub">đ/kWh, chưa VAT · lần giảm đầu tiên: −2% từ 01/11/2026</div>
         <div id="chTariff"></div>
-        <div class="source-note">Nguồn: <a href="https://moit.gov.vn/van-ban-phap-luat/van-ban-dieu-hanh/-ve-viec-dieu-chinh-muc-gia-ban-le-dien-binh-quan-va-quy-din.html" target="_blank" rel="noopener">QĐ 648/QĐ-BCT, áp dụng 20/03/2019</a> · <a href="https://moit.gov.vn/tin-tuc/bao-chi-voi-nguoi-dan/dieu-chinh-gia-ban-le-dien-binh-quan-tu-ngay-04-5-2023.html" target="_blank" rel="noopener">QĐ 377/QĐ-EVN, áp dụng 04/05/2023</a> · <a href="https://baophapluat.vn/gia-ban-le-dien-binh-quan-tang-len-muc-200679-dongkwh-post494794.html" target="_blank" rel="noopener">QĐ 1416/QĐ-EVN, áp dụng 09/11/2023</a> · <a href="https://tapchicongthuong.vn/gia-ban-le-dien-binh-quan-tang-4-8--tu-hom-nay--11-10-128048.htm" target="_blank" rel="noopener">QĐ 1046/QĐ-EVN, áp dụng 11/10/2024</a> · <a href="https://vneconomy.vn/tang-gia-ban-le-dien-binh-quan-them-4-8.htm" target="_blank" rel="noopener">QĐ 599/QĐ-EVN, áp dụng 10/05/2025</a> · <a href="https://tuoitre.vn/evn-mua-dien-binh-quan-thang-3-la-1-907-65-dong-kwh-thap-hon-gia-ban-le-binh-quan-20260520102220005.htm" target="_blank" rel="noopener">Tuổi Trẻ 20/05/2026</a> (chưa điều chỉnh trong 2026). Khung giá bình quân 1.826,22 – 2.444,09 đ/kWh theo QĐ 07/2025/QĐ-TTg.</div>
+        <div class="source-note">Nguồn: <a href="https://moit.gov.vn/van-ban-phap-luat/van-ban-dieu-hanh/-ve-viec-dieu-chinh-muc-gia-ban-le-dien-binh-quan-va-quy-din.html" target="_blank" rel="noopener">QĐ 648/QĐ-BCT, áp dụng 20/03/2019</a> · <a href="https://moit.gov.vn/tin-tuc/bao-chi-voi-nguoi-dan/dieu-chinh-gia-ban-le-dien-binh-quan-tu-ngay-04-5-2023.html" target="_blank" rel="noopener">QĐ 377/QĐ-EVN, áp dụng 04/05/2023</a> · <a href="https://baophapluat.vn/gia-ban-le-dien-binh-quan-tang-len-muc-200679-dongkwh-post494794.html" target="_blank" rel="noopener">QĐ 1416/QĐ-EVN, áp dụng 09/11/2023</a> · <a href="https://tapchicongthuong.vn/gia-ban-le-dien-binh-quan-tang-4-8--tu-hom-nay--11-10-128048.htm" target="_blank" rel="noopener">QĐ 1046/QĐ-EVN, áp dụng 11/10/2024</a> · <a href="https://vneconomy.vn/tang-gia-ban-le-dien-binh-quan-them-4-8.htm" target="_blank" rel="noopener">QĐ 599/QĐ-EVN, áp dụng 10/05/2025</a> · <a href="https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-gia-ban-le-dien-binh-quan-tu-ngay-01-thang-11-nam-2026-60-134-510169" target="_blank" rel="noopener">QĐ 1305/QĐ-EVN, áp dụng 01/11/2026 (EVN, 31/10/2026)</a> · <a href="https://tuoitre.vn/evn-mua-dien-binh-quan-thang-3-la-1-907-65-dong-kwh-thap-hon-gia-ban-le-binh-quan-20260520102220005.htm" target="_blank" rel="noopener">Tuổi Trẻ 20/05/2026</a>. Khung giá bình quân 1.826,22 – 2.444,09 đ/kWh theo QĐ 07/2025/QĐ-TTg.</div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-tariff"></table></div></details>
       </div>
       <div class="card" data-block-id="dien-15" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
@@ -322,9 +331,17 @@
         <div class="can-year-strip"><span>CAN 2024 <b>330,47</b></span><span>CAN 2025 <b>47,74</b></span><span>CAN 2026 <b>129</b> đ/kWh</span></div>
         <div class="conf-note">FMP bình quân 9T/2026: <b>1.450 đ/kWh</b>, tăng <b>44,4%</b> so bình quân 9T/2025 (tự tính từ 9 mức tháng PGV, chưa trọng số theo ngày).</div>
         <div class="data-gap">CAN 2023 để trống vì tài liệu doanh nghiệp ghi hai mức bình quân khác nhau. CAN 2024–2026 là bình quân cả năm theo kế hoạch, không phải CAN từng tháng; không lấy FMP tháng trừ mức này để suy SMP tháng.</div>
-        <div class="source-note">FMP chỉ dùng <a href="https://www.genco3.com/data/files/20250210/638747777356047107_0.pdf" target="_blank" rel="noopener">PGV IR tháng 12/2024, tr. 4 (2023–2024)</a> và <a href="https://www.genco3.com/data/files/20261017/639277939479590804_0.pdf" target="_blank" rel="noopener">PGV IR tháng 9/2026 (công bố 16/10/2026), tr. 2 (2025–9/2026)</a>; kiểm tra 28/10/2026. CAN bình quân năm 2024: 330,47 đ/kWh; 2025: 47,74 đ/kWh theo <a href="https://pvpower.vn/pow-media/to-ir/POW_BCTN-2025-TV---6-4-26.pdf" target="_blank" rel="noopener">PV Power BCTN 2025, tr. 58</a> và <a href="https://thuvienphapluat.vn/van-ban/Tai-nguyen-Moi-truong/Quyet-dinh-3621-QD-BCT-2024-Ke-hoach-van-hanh-thi-truong-ban-buon-dien-canh-tranh-2025-639438.aspx" target="_blank" rel="noopener">QĐ 3621/QĐ-BCT (2025)</a>. CAN 2026: 129 đ/kWh theo <a href="https://www.reecorp.com/wp-content/uploads/2026/03/20260330-ree-bao-cao-thuong-nien-nam-2025.pdf" target="_blank" rel="noopener">REE BCTN 2025</a>. CAN 2023: PV Power ghi 300,76, còn <a href="https://file.fpts.com.vn/FileStore2/File/EzIR/UploadFile/News/2025/04/25/File_1_9899_20250425_-_SHP_-_Bien_ban_Nghi_quyet_va_TL_DHDCD_thuong_nien_2025_Signed-da_nen.pdf" target="_blank" rel="noopener">SHP ghi 297,7</a> đ/kWh. Công thức FMP theo <a href="https://vbpl.vn/bocongthuong/Pages/vbpq-toanvan.aspx?ItemID=175369" target="_blank" rel="noopener">Thông tư 16/2025/TT-BCT, Điều 82</a>. SMP phản ánh giá điện năng biên theo huy động; dữ liệu giờ NSMO chưa tự động.</div>
+        <div class="source-note">FMP chỉ dùng <a href="https://www.genco3.com/data/files/20250210/638747777356047107_0.pdf" target="_blank" rel="noopener">PGV IR tháng 12/2024, tr. 4 (2023–2024)</a> và <a href="https://www.genco3.com/data/files/20261017/639277939479590804_0.pdf" target="_blank" rel="noopener">PGV IR tháng 9/2026 (công bố 16/10/2026), tr. 2 (2025–9/2026)</a>; kiểm tra 28/10/2026. CAN bình quân năm 2024: 330,47 đ/kWh; 2025: 47,74 đ/kWh theo <a href="https://pvpower.vn/pow-media/to-ir/POW_BCTN-2025-TV---6-4-26.pdf" target="_blank" rel="noopener">PV Power BCTN 2025, tr. 58</a> và <a href="https://thuvienphapluat.vn/van-ban/Tai-nguyen-Moi-truong/Quyet-dinh-3621-QD-BCT-2024-Ke-hoach-van-hanh-thi-truong-ban-buon-dien-canh-tranh-2025-639438.aspx" target="_blank" rel="noopener">QĐ 3621/QĐ-BCT (2025)</a>. CAN 2026: 129 đ/kWh theo <a href="https://www.reecorp.com/wp-content/uploads/2026/03/20260330-ree-bao-cao-thuong-nien-nam-2025.pdf" target="_blank" rel="noopener">REE BCTN 2025</a>. CAN 2023: PV Power ghi 300,76, còn <a href="https://file.fpts.com.vn/FileStore2/File/EzIR/UploadFile/News/2025/04/25/File_1_9899_20250425_-_SHP_-_Bien_ban_Nghi_quyet_va_TL_DHDCD_thuong_nien_2025_Signed-da_nen.pdf" target="_blank" rel="noopener">SHP ghi 297,7</a> đ/kWh. Công thức FMP theo <a href="https://vbpl.vn/bocongthuong/Pages/vbpq-toanvan.aspx?ItemID=175369" target="_blank" rel="noopener">Thông tư 16/2025/TT-BCT, Điều 82</a>. SMP phản ánh giá điện năng biên theo huy động; NSMO không công bố dữ liệu giờ.</div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-fmp-trend"></table></div></details>
       </div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="dien-30" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+      <div class="chart-title">Spread FMP − chi phí nhiên liệu biến đổi (ước tính) theo tháng</div>
+      <div class="chart-sub">đ/kWh · FMP bình quân tháng (PGV IR) trừ chi phí nhiên liệu quy ra 1 kWh theo suất tiêu hao chuẩn của khung giá phát điện 2026 · dương = bán điện thị trường có lãi biến đổi</div>
+      <div id="chSpread"></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu · phương pháp</summary><div>Ước tính, không phải biên thực của nhà máy nào. <b>Than nhập</b>: giá than Australia (World Bank, 6.000 kcal/kg) × tỷ giá trung tâm tháng × suất tiêu hao <b>2.411,6 kcal/kWh</b> (QĐ 1692/QĐ-BCT, than nội HHV 5.012,61 kcal/kg; áp cùng suất tiêu hao cho than nhập nên chi phí than nhập có thể hơi cao). <b>Than nội (mốc 2026)</b>: 1.962.004 đ/tấn ÷ 5.012,61 kcal/kg × 2.411,6 kcal/kWh ≈ 944 đ/kWh (QĐ 1692). <b>Khí nội (mốc 2026)</b>: (11,98 + 1,87) USD/MMBtu × 6.542,96 BTU/kWh × 26.378 đ/USD ≈ 2.390 đ/kWh (QĐ 1882/QĐ-BCT). <b>LNG nhập</b>: giá LNG Nhật Bản (World Bank) + cước 1,87 USD/MMBtu × 6.542,96 BTU/kWh × tỷ giá tháng. Chưa gồm chi phí vận hành biến đổi khác, thuế, cước vận chuyển than, nhiệt trị thực của từng lô; FMP là bình quân tháng của PGV, không phải giá từng nhà máy. Tỷ giá trung tâm tháng từ Wi (chỉ tiêu 242638, dùng chung với dashboard Dược).</div></details>
+      <div class="source-note">Nguồn: <a href="https://www.genco3.com/data/files/20261017/639277939479590804_0.pdf" target="_blank" rel="noopener">PGV IR tháng 9/2026</a> · <a href="https://moit.gov.vn/van-ban-phap-luat/quyet-dinh-phe-duyet-khung-gia-phat-dien-nam-2026-doi-voi-loai-hinh-nha-may-nhiet-dien-than-do-doanh-nghiep-nha-nuoc-nam.html" target="_blank" rel="noopener">QĐ 1692/QĐ-BCT (than, 07/07/2026)</a> · <a href="https://mekongasean.vn/bo-cong-thuong-duyet-khung-gia-phat-dien-cua-nhiet-dien-khi-nam-2026-57778.html" target="_blank" rel="noopener">QĐ 1882/QĐ-BCT (khí, 23/07/2026) qua Mekong ASEAN</a> · <a href="https://www.worldbank.org/en/research/commodity-markets" target="_blank" rel="noopener">World Bank Pink Sheet</a> · <a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN tỷ giá trung tâm</a> (qua Wi); tham số kiểm 05/11/2026.</div>
+      <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-spread"></table></div></details>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="dien-16" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
       <div class="chart-title">Lỗ lũy kế công ty mẹ EVN đã xóa hết giữa năm 2026</div>
@@ -413,6 +430,27 @@
       </details>
       <div class="source-note">Ngày hiệu lực TT 29/2026 theo Điều 142 của thông tư (20/07/2026); phần tóm tắt của LuatVietnam ghi 01/01/2027.</div>
     </div>
+    <div class="card" style="margin-top:14px" data-block-id="dien-32" data-update-kind="event" data-cadence="monthly" data-refresh-status="snapshot">
+      <h3 style="margin-top:0;font-size:13.5px">Lịch 12 tháng: mốc giá, chính sách và thủy văn</h3>
+      <div class="tablewrap compare-table"><table>
+        <thead><tr><th>Mốc</th><th>Sự kiện</th><th>Ai chịu / cần xem gì</th></tr></thead>
+        <tbody>
+          <tr><td>01/11/2026</td><td class="after"><b>Giá bán lẻ −2%</b> còn 2.159,90 đ/kWh (QĐ 1305/QĐ-EVN) — đã áp dụng</td><td>EVN hụt thu → tốc độ thanh toán IPP (POW, NT2, PPC, QTP, HND)</td></tr>
+          <tr><td>Thứ Năm tuần 2 hằng tháng</td><td>NOAA cập nhật ENSO (ONI, xác suất El Niño kéo dài)</td><td>Thủy điện (REE, VSH, CHP, SBA, TMP, SHP) · nhiệt điện được huy động</td></tr>
+          <tr><td>T11/2026 – T4/2027</td><td>Mùa khô Nam Bộ, Tây Nguyên; hồ Trung &amp; Nam tích nước xong</td><td>Heatmap hồ chứa cụm Trung &amp; Nam · nhiệt điện khí miền Nam (NT2, POW)</td></tr>
+          <tr><td>Tháng 12/2026 <small style="color:#7a8794;font-weight:400">(chưa xác nhận)</small></td><td>Bộ Công Thương duyệt kế hoạch vận hành thị trường điện 2027 (Qc, CAN 2027)</td><td>Nhiệt điện: tỷ lệ sản lượng hợp đồng</td></tr>
+          <tr><td>Từ 20/01/2027</td><td>BCTC quý IV/2026</td><td>18 mã · thủy điện mùa mưa, nhiệt điện Q4</td></tr>
+          <tr><td>H1/2027 <small style="color:#7a8794;font-weight:400">(chưa xác nhận)</small></td><td>Khung giá phát điện 2027 (than, khí, thủy điện; năm 2026 ban hành T1–T7)</td><td>Giá PPA đàm phán mới · nhà máy hết hợp đồng cũ</td></tr>
+          <tr><td>Chưa xác nhận</td><td>QHĐ VIII điều chỉnh lần 2 (Bộ Công Thương đề xuất 17/09/2026, chưa phê duyệt)</td><td>Pipeline LNG, BESS, lưới → PC1, TV2, GEX, POW</td></tr>
+          <tr><td>Từ 20/04/2027</td><td>BCTC quý I/2027</td><td>Thủy điện mùa khô · nhiệt điện huy động cao</td></tr>
+          <tr><td>T5 – T6/2027</td><td>Đỉnh mùa khô miền Bắc, Pmax mới; rủi ro thiếu điện nếu El Niño kéo dài</td><td>Hồ cụm Bắc (Sơn La, Hòa Bình, Lai Châu) · than miền Bắc (QTP, HND, PPC)</td></tr>
+          <tr><td>Trước 30/06/2027</td><td>EVN báo cáo chi phí sản xuất kinh doanh điện thực tế (NĐ 278/2026); chi phí lệch ≥1% → điều chỉnh giá bán lẻ</td><td>Chiều tiếp theo của giá bán lẻ · tài chính EVN</td></tr>
+          <tr><td>Từ 20/07/2027</td><td>BCTC quý II/2027 · bán niên soát xét</td><td>18 mã</td></tr>
+        </tbody>
+      </table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Mốc "chưa xác nhận" là lịch thông lệ (năm trước ban hành vào kỳ đó), chưa có văn bản công bố ngày. Lịch BCTC theo Thông tư 96/2020/TT-BTC (quý ≤20 ngày). Mốc mùa khô là mùa vụ thủy văn, không phải văn bản.</div></details>
+      <div class="source-note">Nguồn: <a href="https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-gia-ban-le-dien-binh-quan-tu-ngay-01-thang-11-nam-2026-60-134-510169" target="_blank" rel="noopener">EVN · QĐ 1305/QĐ-EVN</a> · <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC</a> · <a href="https://danviet.vn/nguy-co-thieu-dien-tu-nam-2027-den-2030-bo-cong-thuong-de-xuat-dieu-chinh-quy-hoach-dien-8-va-xin-lai-evn-ve-bo-d1460184.html" target="_blank" rel="noopener">Dân Việt 17/09/2026 (QHĐ VIII)</a> · khung giá 2026: các QĐ ở card "Trần khung giá phát điện".</div>
+    </div>
   </section>
   </div>
 
@@ -433,7 +471,7 @@
         <h3>Risk — rủi ro</h3>
         <ul>
           <li><b>El Niño mạnh đến rất mạnh</b> (<a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA 08/10/2026</a>: trên <b>83%</b> khả năng kéo dài tới T1–T3/2027): thủy điện giảm sản lượng mùa khô, rủi ro thiếu điện miền Bắc như 05–06/2023.</li>
-          <li><b>Giá bán lẻ đứng yên</b> từ 10/05/2025 và chỉ đạo không tăng giá điện (03/10/2026): chi phí nhiên liệu tăng sẽ dồn vào EVN.</li>
+          <li><b>Giá bán lẻ giảm 2%</b> còn 2.159,90 đ/kWh từ 01/11/2026 (<a href="https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-gia-ban-le-dien-binh-quan-tu-ngay-01-thang-11-nam-2026-60-134-510169" target="_blank" rel="noopener">QĐ 1305/QĐ-EVN</a>) — lần giảm đầu tiên: doanh thu EVN hụt khi than, LNG đang đắt lên, dư địa thanh toán cho IPP hẹp lại.</li>
           <li><b>Nguồn mới chậm</b>: Bộ Công Thương tính thiếu hụt 4.256 MW năm 2027, 13.964 MW năm 2030 nếu dự án tiếp tục chậm.</li>
           <li><b>Năng lượng tái tạo</b>: 173 nhà máy có thể phải đàm phán lại giá FIT (EPTC, 05/10/2026); 7 dự án chuyển tiếp đang nhận giá tạm 50% trần.</li>
         </ul>
@@ -446,7 +484,7 @@
     <h3 class="subhead">Kịch bản 6–12 tháng</h3>
     <p class="subsub">Khung quản trị rủi ro dựa trên dữ liệu đã kiểm, không phải dự báo có xác suất.</p>
     <div class="grid three">
-      <div class="scenario active" onclick="selectScenario('base',this)" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><span class="badge base">CƠ SỞ</span><div class="note">El Niño mạnh qua mùa khô 2027; giá bán lẻ giữ nguyên</div></div>
+      <div class="scenario active" onclick="selectScenario('base',this)" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><span class="badge base">CƠ SỞ</span><div class="note">El Niño mạnh qua mùa khô 2027; giá bán lẻ giữ mức đã giảm 2%</div></div>
       <div class="scenario" onclick="selectScenario('bull',this)" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><span class="badge bull">THUẬN LỢI</span><div class="note">Phụ tải tăng nhanh, nhiên liệu hạ, giá điện được điều chỉnh</div></div>
       <div class="scenario" onclick="selectScenario('bear',this)" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><span class="badge bear">BẤT LỢI</span><div class="note">El Niño sâu, nhiên liệu đắt, giá điện không đổi</div></div>
     </div>
@@ -458,6 +496,13 @@
   <section class="section">
     <div class="sectionhead"><div><h2>6. Key players</h2><p>18 doanh nghiệp niêm yết theo bốn nhóm: nhiệt điện, thủy điện, năng lượng tái tạo, lưới – xây lắp – thiết bị. Bảng so sánh tài chính và định giá hằng ngày nằm ở Tổng quan.</p></div></div>
     <div class="data-gap">Tổng hợp KQKD ngành điện theo nhóm từ Nguồn chưa có dữ liệu công khai trong phiên này. Khi dựng chuỗi cần loại giao dịch và công ty con trùng hợp nhất (ví dụ POW–NT2, GEX–GEE) trước khi cộng doanh thu/LNST; bảng 18 mã hiện tại chỉ dùng để so sánh từng doanh nghiệp.</div>
+    <div class="card" style="margin-top:14px" data-block-id="dien-33" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+      <div class="chart-title">So sánh gọn theo nhóm: định giá hằng ngày và số quý gần nhất</div>
+      <div class="chart-sub">vốn hóa tổng (tỷ đồng) · P/E, P/B, biên gộp, doanh thu YoY, ROE: trung vị các mã trong nhóm · mở từng nhóm để xem từng mã</div>
+      <div id="kp-groups"></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Trung vị không trọng số, P/E chỉ tính mã có P/E dương. Biên gộp và doanh thu YoY từ BCTC quý Wi (quý gần nhất có số, ghi trong bảng); ROE theo Stock Analysis (quý, không annualize). Không cộng doanh thu/LNST thành nhóm vì POW–NT2, GEX–GEE hợp nhất trùng. Số BCTC chỉ cập nhật khi người dùng yêu cầu.</div></details>
+      <div class="source-note">Nguồn: <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a> (P/E, P/B, vốn hóa mỗi phiên) · <a href="https://stockanalysis.com/" target="_blank" rel="noopener">Stock Analysis</a> (ROE) · BCTC quý qua Wi (biên gộp, doanh thu).</div>
+    </div>
   </section>
   </div>
 
@@ -508,16 +553,16 @@
       </div>
     </div>
     <div data-topic-key="tariff-evn" data-topic-title="Giá điện &amp; tài chính EVN">
-      <p class="research-caption">Phân tích AI ngày 06/10/2026 · EVN hết lỗ lũy kế nhưng giá bán lẻ bị giữ: biên an toàn mỏng nếu nhiên liệu đắt lên mùa khô 2027.</p>
+      <p class="research-caption">Phân tích AI ngày 06/10/2026, cập nhật giá bán lẻ 05/11/2026 · EVN hết lỗ lũy kế nhưng giá bán lẻ vừa giảm 2%: biên an toàn mỏng nếu nhiên liệu đắt lên mùa khô 2027.</p>
       <div class="card" data-block-id="dien-20" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
-        <h3 style="margin-top:0;font-size:13.5px">EVN: từ lỗ lũy kế sang có lãi, giá bán lẻ đứng yên</h3>
+        <h3 style="margin-top:0;font-size:13.5px">EVN: hết lỗ lũy kế, giá bán lẻ giảm 2% từ 01/11/2026</h3>
         <div class="tablewrap compare-table"><table>
           <thead><tr><th>Chỉ tiêu</th><th>Trước</th><th>Hiện tại</th></tr></thead>
           <tbody>
             <tr><td>Lỗ lũy kế công ty mẹ</td><td class="before">44.792 tỷ đồng (cuối 2024)</td><td class="after"><b>Đã xử lý hết</b> (30/06/2026); cuối 2025 còn 5.611 tỷ đồng</td></tr>
             <tr><td>LNST công ty mẹ</td><td class="before">2025: 39.762 tỷ đồng (kiểm toán)</td><td class="after">6T/2026: 8.631 tỷ đồng (+26,2%)</td></tr>
-            <tr><td>Giá bán lẻ bình quân</td><td class="before">2.103,12 đ/kWh (từ 11/10/2024)</td><td class="after">2.204,07 đ/kWh (từ 10/05/2025), <b>không tăng trong 2026</b> theo chỉ đạo 03/10/2026</td></tr>
-            <tr><td>Giá mua điện bình quân của EVN</td><td class="before">—</td><td class="after">1.907,65 đ/kWh (tháng 3/2026), thấp hơn giá bán lẻ bình quân khoảng 296 đ/kWh (tự tính)</td></tr>
+            <tr><td>Giá bán lẻ bình quân</td><td class="before">2.204,07 đ/kWh (từ 10/05/2025)</td><td class="after"><b>2.159,90 đ/kWh (từ 01/11/2026), giảm 2%</b> — lần giảm đầu tiên kể từ 2019 (<a href="https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-gia-ban-le-dien-binh-quan-tu-ngay-01-thang-11-nam-2026-60-134-510169" target="_blank" rel="noopener">QĐ 1305/QĐ-EVN</a>)</td></tr>
+            <tr><td>Giá mua điện bình quân của EVN</td><td class="before">—</td><td class="after">1.907,65 đ/kWh (tháng 3/2026), thấp hơn giá bán lẻ mới khoảng 252 đ/kWh (tự tính, chưa trừ chi phí truyền tải – phân phối)</td></tr>
           </tbody>
         </table></div>
         <p style="font-size:12.5px;line-height:1.6;margin:10px 0 0">Cần theo dõi: NĐ 278/2026 bắt EVN báo cáo chi phí thực tế trước 30/06 hằng năm; chi phí giảm từ 1% thì EVN phải giảm giá sau khi Bộ Công Thương có ý kiến. Với IPP, tài chính EVN tốt hơn là điều kiện để thu tiền điện đúng hạn.</p>
@@ -617,11 +662,12 @@
         <tr><td><b>Sản lượng, Pmax, cơ cấu nguồn</b></td><td><a href="https://www.evn.com.vn/vi-VN/news-l/Thong-tin-tom-tat-van-hanh-HTD-Quoc-gia-60-2015" target="_blank" rel="noopener">EVN · bản tin vận hành ngày</a></td><td>Ngày</td><td>Tự động, 2 lần/ngày</td></tr>
         <tr><td><b>ENSO (ONI, Niño 3.4)</b></td><td><a href="https://www.cpc.ncep.noaa.gov/data/indices/" target="_blank" rel="noopener">NOAA CPC</a></td><td>Tháng / tuần</td><td>Tự động</td></tr>
         <tr><td><b>Giá than, khí, LNG tháng</b></td><td><a href="https://www.worldbank.org/en/research/commodity-markets" target="_blank" rel="noopener">World Bank Pink Sheet</a></td><td>Tháng</td><td>Tự động</td></tr>
-        <tr><td><b>Futures than Newcastle, LNG JKM</b></td><td><a href="https://www.ice.com/products/243/Newcastle-Coal-Futures" target="_blank" rel="noopener">ICE</a></td><td>Phiên</td><td>Tự động; nguồn không chính thức, không phải giá settlement</td></tr>
+        <tr><td><b>Futures than Newcastle, LNG JKM</b></td><td><a href="https://www.ice.com/products/1137/globalCOAL-Newcastle-Coal-Futures" target="_blank" rel="noopener">ICE · globalCOAL Newcastle (hub Newcastle)</a></td><td>Phiên</td><td>Tự động; nguồn không chính thức, không phải giá settlement. Kiểm 05/11/2026: chuỗi lấy từ productId 1459 / hubId 1296 = Newcastle (trang ICE số 243 nay là API2 Rotterdam, đã đổi link)</td></tr>
         <tr><td><b>P/E, P/B, vốn hóa</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Tự động</td></tr>
         <tr><td><b>Giá điện, tài chính EVN, chính sách, dự án</b></td><td>Văn bản Chính phủ, Bộ Công Thương, EVN, báo ngành (link tại từng card)</td><td>Theo sự kiện</td><td>Routine AI đọc tài liệu hằng tuần</td></tr>
         <tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr>
-        <tr class="gap-row"><td><b>SMP theo giờ, cập nhật hồ mới</b></td><td>NSMO, EVN hồ chứa</td><td>Giờ / ngày</td><td>SMP chưa tự động. Hồ chứa đã cấu hình job lấy 00h, chờ xác nhận lần chạy đầu tiên sau dữ liệu lịch sử 27/08/2026; FMP tháng lấy từ PGV IR.</td></tr>
+        <tr><td><b>Hồ chứa thủy điện (mực nước, Q về, Q qua máy, Q tràn)</b></td><td><a href="https://www.evn.com.vn/vi-VN/thong-tin-ho-thuy-dien/Muc-nuoc-cac-ho-thuy-dien-60-123" target="_blank" rel="noopener">EVN hồ chứa</a></td><td>Ngày</td><td>Tự động từ máy tại Việt Nam (EVN chặn IP nước ngoài), job 06:40 / 18:40, bù ngày thiếu; dữ liệu tới <span id="src-hydro-last">03/11/2026</span></td></tr>
+        <tr class="gap-row"><td><b>Giá thị trường điện theo giờ (SMP)</b></td><td>NSMO</td><td>Giờ</td><td>NSMO không công bố công khai; thay bằng FMP bình quân tháng từ bản tin IR PGV (tab Giá – Chi phí – Margin)</td></tr>
       </tbody>
     </table></div>
     <div class="source-note">Ngày dữ liệu và ngày kiểm tra ghi riêng tại từng biểu đồ. Khoảng trống dữ liệu được giữ là khoảng trống, không nội suy.</div>
@@ -1066,9 +1112,9 @@ const generationCeilingYears=[
 })();
 
 /* Giá bán lẻ điện bình quân (đ/kWh, chưa VAT) theo ngày áp dụng */
-const tariffDates=['20/03/2019','04/05/2023','09/11/2023','11/10/2024','10/05/2025'],tariffVals=[1864.44,1920.3732,2006.79,2103.1159,2204.0655],tariffChange=['+8,36%','+3%','+4,5%','+4,8%','+4,8%'];
+const tariffDates=['20/03/2019','04/05/2023','09/11/2023','11/10/2024','10/05/2025','01/11/2026'],tariffVals=[1864.44,1920.3732,2006.79,2103.1159,2204.0655,2159.9037],tariffChange=['+8,36%','+3%','+4,5%','+4,8%','+4,8%','−2%'];
 barLineChart('chTariff',{categories:tariffDates,series:[{name:'Giá bán lẻ bình quân',kind:'line',color:S1,values:tariffVals}],unit:'đ/kWh',digits:0,height:250,rotateLabels:false,zeroBase:false});
-fillTable('tbl-tariff',['Áp dụng từ','đ/kWh','Mức tăng','Văn bản'],tariffDates.map((d,i)=>[d,fmt(tariffVals[i],2),tariffChange[i],['QĐ 648/QĐ-BCT','QĐ 377/QĐ-EVN','QĐ 1416/QĐ-EVN','QĐ 1046/QĐ-EVN','QĐ 599/QĐ-EVN'][i]]));
+fillTable('tbl-tariff',['Áp dụng từ','đ/kWh','Mức tăng','Văn bản'],tariffDates.map((d,i)=>[d,fmt(tariffVals[i],2),tariffChange[i],['QĐ 648/QĐ-BCT','QĐ 377/QĐ-EVN','QĐ 1416/QĐ-EVN','QĐ 1046/QĐ-EVN','QĐ 599/QĐ-EVN','QĐ 1305/QĐ-EVN'][i]]));
 
 /* FMP tháng: chỉ bảng IR PGV T12/2024 (2023–24) và T9/2026 (2025–26).
    CAN là bình quân năm theo tài liệu, không nội suy thành CAN tháng thực tế. */
@@ -1101,7 +1147,7 @@ function showMajorTab(key, btn){
   if(location.hash !== "#"+key) history.replaceState(null, "", "#"+key);
 }
 const scenarioText = {
-  base:"<b>Kịch bản cơ sở — El Niño mạnh kéo dài qua mùa khô 2027.</b> Nước về hồ thấp hơn trung bình; than và khí được huy động nhiều hơn; giá bán lẻ giữ 2.204,07 đ/kWh tới hết 2026. Nhiệt điện có lợi về sản lượng, thủy điện giảm sản lượng mùa khô; chi phí mua điện của EVN tăng.",
+  base:"<b>Kịch bản cơ sở — El Niño mạnh kéo dài qua mùa khô 2027.</b> Nước về hồ thấp hơn trung bình; than và khí được huy động nhiều hơn; giá bán lẻ giữ mức 2.159,90 đ/kWh (đã giảm 2% từ 01/11/2026). Nhiệt điện có lợi về sản lượng, thủy điện giảm sản lượng mùa khô; chi phí mua điện của EVN tăng.",
   bull:"<b>Kịch bản thuận lợi — phụ tải tăng nhanh, nhiên liệu hạ, giá điện được điều chỉnh.</b> Dòng tiền EVN cải thiện, nhà máy được thanh toán đúng hạn; nhu cầu đầu tư nguồn và lưới tăng, hỗ trợ nhóm xây lắp.",
   bear:"<b>Kịch bản bất lợi — El Niño sâu, nhiên liệu đắt, giá điện không đổi.</b> EVN lỗ trở lại và chậm thanh toán; rủi ro thiếu điện miền Bắc mùa khô như 05–06/2023."
 };
