@@ -9,11 +9,11 @@
   const scriptSrc=(document.currentScript&&document.currentScript.src)||'';
   let lib=null,logo=null,state=null;
 
-  const css=`.fs-share-btn{position:absolute;top:18px;right:18px;z-index:3;display:inline-grid;place-items:center;width:32px;height:32px;padding:0;border:1px solid transparent;border-radius:10px;background:transparent;color:#7A819A;font:500 17px/1 Inter,Arial,system-ui,sans-serif;cursor:pointer};border-radius:999px;background:#fff;color:${NAVY};font:600 12px/1.3 Arial,system-ui,sans-serif;cursor:pointer;opacity:.78}
+  const css=`.fs-share-btn{position:absolute;top:18px;right:18px;z-index:3;display:inline-grid;place-items:center;width:32px;height:32px;padding:0;border:1px solid transparent;border-radius:10px;background:transparent;color:#7A819A;font:500 17px/1 Inter,Arial,system-ui,sans-serif;cursor:pointer};border-radius:999px;background:#fff;color:${NAVY};font:600 12px/1.3 Inter,Arial,system-ui,sans-serif;cursor:pointer;opacity:.78}
 .fs-share-btn:hover,.fs-share-btn:focus-visible{color:${NAVY};background:#F0F2FA;border-color:${LINE}}
 .fs-share-host{position:relative}
 .fs-share-host>h3:first-of-type,.fs-share-host>.chart-title:first-of-type{padding-right:44px}
-.fs-share-modal{position:fixed;inset:0;z-index:9999;background:rgba(16,22,48,.55);display:flex;align-items:center;justify-content:center;padding:16px;font-family:Arial,system-ui,sans-serif}
+.fs-share-modal{position:fixed;inset:0;z-index:9999;background:rgba(16,22,48,.55);display:flex;align-items:center;justify-content:center;padding:16px;font-family:Inter,Arial,system-ui,sans-serif}
 .fs-share-box{background:#fff;color:${INK};border-radius:18px;width:min(1480px,100%);max-height:calc(100vh - 32px);overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
 .fs-share-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid ${LINE};font-weight:700;color:${NAVY}}
 .fs-share-head button{border:0;background:none;font-size:22px;line-height:1;cursor:pointer;color:${MUTED}}
@@ -135,6 +135,7 @@
     const charts=window.Chart&&Chart.getChart?[...card.querySelectorAll('canvas')].map(c=>Chart.getChart(c)).filter(Boolean):[];
     const dpr=charts.map(ch=>ch.options.devicePixelRatio);
     charts.forEach(ch=>{ch.options.devicePixelRatio=scale;ch.resize();ch.update('none')});
+    card.classList.add('fs-per-shot'); // thanh Chu kỳ/Số kỳ đang thu vào icon lịch: hiện tạm để ảnh vẫn có
     const selects=[...card.querySelectorAll('select')].map(el=>({text:el.selectedOptions[0]?el.selectedOptions[0].textContent:'',cs:getComputedStyle(el),w:el.offsetWidth,h:el.offsetHeight}));
     try{
       return await h2c(card,{backgroundColor:'#ffffff',scale,useCORS:true,logging:false,onclone:(doc,node)=>{node.style.border='0';node.style.boxShadow='none';node.style.padding='4px';node.style.background='#fff';node.classList.add('fs-shot-clean');const st=doc.createElement('style');st.textContent='.fs-shot-clean,.fs-shot-clean *{background-image:none!important}.fs-shot-clean::before,.fs-shot-clean::after{display:none!important}';doc.head.append(st);
@@ -145,7 +146,7 @@
           Object.assign(d.style,{display:'inline-flex',alignItems:'center',justifyContent:'space-between',gap:'8px',boxSizing:'border-box',width:o.w+'px',height:o.h+'px',padding:'0 10px',border:o.cs.border,borderRadius:o.cs.borderRadius,background:o.cs.backgroundColor,color:o.cs.color,font:o.cs.font,whiteSpace:'nowrap',overflow:'hidden',verticalAlign:'middle'});
           el.replaceWith(d)})},
         ignoreElements:n=>n.tagName==='BUTTON'||n.classList&&(n.classList.contains('fs-share-btn')||n.classList.contains('chart-card-actions')||n.classList.contains('chart-source-details')||n.tagName==='DETAILS'&&!n.open)});
-    }finally{charts.forEach((ch,i)=>{ch.options.devicePixelRatio=dpr[i];ch.resize();ch.update('none')})}
+    }finally{card.classList.remove('fs-per-shot');charts.forEach((ch,i)=>{ch.options.devicePixelRatio=dpr[i];ch.resize();ch.update('none')})}
   }
   // Cắt bỏ viền trắng quanh nội dung của bản chụp (giữ lề nhỏ) để chart to nhất trong khung.
   function trim(cv){

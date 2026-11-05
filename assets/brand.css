@@ -294,7 +294,7 @@ table tr:hover td{background:rgba(89,197,200,.08)!important}
 .db-n{width:20px;height:20px;border-radius:50%;border:1.5px solid #59C5C8;color:#2B8E91;font:800 11px/17px Inter,sans-serif;text-align:center;flex:none}
 .db-q{margin-left:auto;font-weight:600;font-size:11px;color:var(--muted)}
 .db-v{font:800 40px/1.05 'Barlow Condensed',Inter,sans-serif;color:var(--navy);margin:10px 0 6px;font-variant-numeric:tabular-nums}
-.db-v .db-u,.db-v small{font:600 12px Inter,sans-serif;color:var(--muted);margin-left:6px;letter-spacing:0}
+.db-v small{font:600 12px Inter,sans-serif;color:var(--muted);margin-left:6px}
 .db-s{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
 .db-s div{display:flex;flex-direction:column;gap:2px}
 .db-s b{font:700 14px Inter,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)}
@@ -476,7 +476,7 @@ html,body{overflow-x:clip}
 :root[data-theme=dark] .db-lead{color:#C9CFEA!important}
 .db-v{font-size:28px!important;font-weight:700!important;margin:8px 0 4px!important}
 .tb .db-v{font-size:22px!important}
-.db-v .db-u,.db-v small{font-size:12px!important;font-weight:500!important}
+.db-v small{font-size:12px!important;font-weight:500!important}
 .db-ch{font-size:13px!important;font-weight:600!important}
 .db-s b{font-size:13px!important;font-weight:600!important}
 .db-k,.db-qh{font-size:10.5px!important;letter-spacing:.06em!important;font-weight:600!important}
@@ -828,7 +828,7 @@ table .fs-num{text-align:right!important}
 /* Rà thiết kế 23/10/2026: dòng phụ KPI cùng font sans, màu xám (ý 3); ticker chữ sans, tương phản đủ trên nền navy (ý 9) */
 .kpi .s,.kpi .s.pos,.kpi .s.neg{font-family:inherit!important;font-size:12px!important;color:var(--muted)!important;letter-spacing:0}
 .mkt-ti span{color:#D3D8EE;font-size:12.5px}.mkt-ti em{font-size:12px}
-.db-v .db-u,.db-v small{margin-left:4px}
+.db-v small{margin-left:4px}
 
 /* ===== Navy đêm (người dùng chọn 23/10/2026) — bộ nền tối DUY NHẤT; các bản thử đen/than chì đã gỡ =====
    Nền xanh đen cùng họ màu FinSuccess, card sáng hơn một bậc, viền xanh mờ; chữ 3 bậc; turquoise là màu nhấn. */
@@ -1216,3 +1216,22 @@ main.wrap>.major-tabs{margin:8px 0!important}
 :root[data-theme=dark] :is(.tabs-inner,.majortabs,.major-tabs){background:#161616!important;box-shadow:0 4px 16px rgba(0,0,0,.5)!important}
 :root[data-theme=dark] :is(.tabs-inner>button[data-tab],.majortabbtn):not(.active):hover{background:#2A2A2A!important;color:#fff!important}
 }
+
+/* Mục lục "Trong tab" (05/11/2026): chỉ tiêu đề khu vực, dải mốc dọc có chấm nối, màu theo dashboard */
+html .mkt-toc{width:196px;padding:14px 14px 12px;border:1px solid #D6DDE8;border-radius:12px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);box-shadow:0 1px 2px rgba(15,23,42,.06),0 4px 14px rgba(15,23,42,.06);font:13px/1.35 Inter,Arial,sans-serif}
+html .mkt-toc .h{font-size:11px;font-weight:600;letter-spacing:.5px;color:#64748B;margin:0 0 8px;text-transform:uppercase}
+html .mkt-toc a,:root:not([data-theme=dark]) .mkt-toc a{position:relative;margin:0;padding:7px 6px 7px 22px;border:0;border-radius:8px;color:#64748B!important;font-weight:500;transition:color .15s,background .15s}
+html .mkt-toc a::before{content:"";position:absolute;left:5px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:#fff;border:2px solid #C5CEDC;box-sizing:border-box;z-index:1;transition:all .15s}
+html .mkt-toc a::after{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:#E3E8F0}
+html .mkt-toc a:first-of-type::after{top:50%}
+html .mkt-toc a:last-of-type::after{bottom:50%}
+html .mkt-toc a:hover,:root:not([data-theme=dark]) .mkt-toc a:hover{color:#243878!important;background:#F1F4FA}
+html .mkt-toc a.on,:root:not([data-theme=dark]) .mkt-toc a.on{color:#243878!important;font-weight:650;background:rgba(89,197,200,.14)}
+html .mkt-toc a.on::before{background:#59C5C8;border-color:#1D2678;width:10px;height:10px;margin-top:-5px;left:4px}
+:root[data-theme=dark] .mkt-toc{background:rgba(22,22,22,.92);border-color:#2A2A2A;box-shadow:none}
+:root[data-theme=dark] .mkt-toc a{color:#A3A3A3}
+:root[data-theme=dark] .mkt-toc a::before{background:#161616;border-color:#3A3A3A}
+:root[data-theme=dark] .mkt-toc a::after{background:#2A2A2A}
+:root[data-theme=dark] .mkt-toc a:hover{background:#222;color:#F5F5F5}
+:root[data-theme=dark] .mkt-toc a.on{color:#59C5C8;background:rgba(89,197,200,.12)}
+:root[data-theme=dark] .mkt-toc a.on::before{background:#59C5C8;border-color:#59C5C8}
