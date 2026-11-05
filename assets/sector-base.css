@@ -33,6 +33,7 @@ header{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--bg) 
 .kpi .delta.d-good{color:var(--good);background:color-mix(in srgb, var(--good) 14%, transparent)}
 .kpi .delta.d-warn{color:#8a6a10;background:var(--warn-bg)}
 :root[data-theme="dark"] .kpi .delta.d-warn, @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .kpi .delta.d-warn{color:var(--warning)}}
+.kpi .value .unit{font-size:12px;font-weight:600;color:var(--muted);margin-left:5px;letter-spacing:0;white-space:normal}
 .kpi .delta.d-bad{color:var(--critical);background:color-mix(in srgb, var(--critical) 12%, transparent)}
 .kpi .sub{color:var(--muted);line-height:1.4}
 .kpi .spark{margin-top:6px;display:block}
