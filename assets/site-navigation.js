@@ -136,7 +136,7 @@
   }
   document.addEventListener('DOMContentLoaded', () => setTimeout(watchChains, 0));
   // Ngân hàng (05/11/2026): nhúng bank-dashboard bản ?embed=1 thay nội dung cũ; nội dung cũ vẫn trong file, mở bằng ?cu=1.
-  const BANK_EMBED = 'https://mdnguyen-cyber.github.io/bank-dashboard/';
+  const BANK_EMBED = 'https://bank-dashboard-kappa-seven.vercel.app/';
   const BANK_PAGES = {VCB:'vcb.html', BID:'bid.html', CTG:'index.html', TCB:'tcb.html', MBB:'mbb.html', ACB:'acb.html', STB:'stb.html', VPB:'vpb.html', HDB:'hdb.html'};
   function embedBank() {
     const qs = new URLSearchParams(location.search);
