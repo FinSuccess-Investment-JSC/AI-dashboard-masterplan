@@ -363,3 +363,23 @@ html[data-theme="dark"] .pv-toc a.on,html[data-theme="dark"] .pv-pal-list [role=
 .pv-toc{width:200px;padding:12px 8px}
 .pv-toc a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:4px 8px}
 .pv-toc a.l3{padding-left:8px}.pv-toc a.l2{margin-top:6px}
+
+/* Mục lục "Trong tab" (05/11/2026, đồng bộ Stock): chỉ tiêu đề chính, dải mốc dọc có chấm nối, màu theo dashboard */
+.pv-toc{width:196px;padding:14px 14px 12px;border:1px solid #D6DDE8;border-radius:12px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);box-shadow:0 1px 2px rgba(15,23,42,.06),0 4px 14px rgba(15,23,42,.06);font-family:Inter,Arial,sans-serif}
+.pv-toc[hidden]{display:none!important}
+.pv-toc-h{font-size:11px;font-weight:600;letter-spacing:.5px;color:#64748B;padding:0 0 8px;text-transform:uppercase}
+.pv-toc a,.pv-toc a.l1,.pv-toc a.l2,.pv-toc a.l3{position:relative;margin:0;padding:7px 6px 7px 22px;border:0;border-radius:8px;font-size:13px;font-weight:500;color:#64748B!important;white-space:normal;transition:color .15s,background .15s}
+.pv-toc a::before{content:"";position:absolute;left:5px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:#fff;border:2px solid #C5CEDC;box-sizing:border-box;z-index:1}
+.pv-toc a::after{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:#E3E8F0}
+.pv-toc a:first-of-type::after{top:50%}.pv-toc a:last-of-type::after{bottom:50%}
+.pv-toc a:hover{color:#243878!important;background:#F1F4FA}
+.pv-toc a.on{color:#243878!important;font-weight:650;background:rgba(89,197,200,.14)}
+.pv-toc a.on::before{background:#59C5C8;border-color:#1D2678;width:10px;height:10px;margin-top:-5px;left:4px}
+html[data-theme="dark"] .pv-toc{background:rgba(22,22,22,.94);border-color:#2A2A2A;box-shadow:none}
+html[data-theme="dark"] .pv-toc-h{color:#A3A3A3}
+html[data-theme="dark"] .pv-toc a{color:#A3A3A3!important}
+html[data-theme="dark"] .pv-toc a::before{background:#161616;border-color:#3A3A3A}
+html[data-theme="dark"] .pv-toc a::after{background:#2A2A2A}
+html[data-theme="dark"] .pv-toc a:hover{background:#222;color:#F5F5F5!important}
+html[data-theme="dark"] .pv-toc a.on{color:#59C5C8!important;background:rgba(89,197,200,.12)}
+html[data-theme="dark"] .pv-toc a.on::before{background:#59C5C8;border-color:#59C5C8}
