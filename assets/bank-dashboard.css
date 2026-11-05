@@ -13,3 +13,6 @@
 .monitor-item .status[data-state=on]{background:#fbe7e3;color:#8b2f24}.monitor-item .status[data-state=watch]{background:#eaf3f2;color:#185d5b}.monitor-item .status[data-state=na]{background:#f1f1f1;color:#666}
 #source-rows tr.wi-row td:last-child{color:var(--ink);background:transparent}
 @media(max-width:700px){.wi-kpis b{font-size:15px}.wi-two{grid-template-columns:1fr}}
+
+/* 05/11/2026: bỏ ô diễn giải AI dưới chart */
+.chart-insight{display:none!important}

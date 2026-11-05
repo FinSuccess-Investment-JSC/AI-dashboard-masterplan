@@ -674,3 +674,6 @@ body.fs-embed-mode>[hidden]{display:none!important}
 /* Sub-tab đang chọn phải nhìn ra ngay */
 :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs) .tabbtn[aria-selected="true"]{background:#1D2678!important;color:#fff!important;box-shadow:0 2px 6px rgba(29,38,120,.28)!important}
 html[data-theme="dark"] :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs) .tabbtn[aria-selected="true"]{background:#59C5C8!important;color:#0F1720!important}
+
+/* 05/11/2026: bỏ ô diễn giải AI dưới chart */
+.chart-insight{display:none!important}

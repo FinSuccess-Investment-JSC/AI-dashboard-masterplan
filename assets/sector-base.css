@@ -262,3 +262,6 @@ body .cr-score-table{table-layout:auto;min-width:640px}
 .ct-menu button:hover{background:#F0F3FF}
 .ct-table{max-height:300px;overflow:auto}
 canvas{user-select:none}
+
+/* 05/11/2026: bỏ ô diễn giải AI dưới chart */
+.chart-insight{display:none!important}
