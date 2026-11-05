@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = 'FinSuccess-Investment-JSC/FinSuccess-dashboard-source'
-FILES = {'brand.css': 'assets/brand.css', 'share-image.js': 'assets/share-image.js', 'motion.js': 'assets/motion.js'}
+FILES = {'brand.css': 'assets/brand.css', 'share-image.js': 'assets/share-image.js', 'motion.js': 'assets/motion.js', 'chart-arrange.js': 'assets/chart-arrange.js'}
 
 
 def read(name):
