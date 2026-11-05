@@ -309,9 +309,9 @@
    "stuck": true
   },
   "port.freight": {
-   "lastAttempt": "2026-10-26T08:59:04+07:00",
-   "lastSuccess": "2026-10-26T08:59:04+07:00",
-   "lastNote": "WCI tổng hợp 4.585 USD/FEU (+2%) tuần 22/10/2026; NY 10.166, LA 8.007, Genoa 4.152, Rotterdam 3.632; Drewry, script fetch_drewry_wci.py"
+   "lastAttempt": "2026-11-05T13:14:00+07:00",
+   "lastSuccess": "2026-11-05T13:14:00+07:00",
+   "lastNote": "Drewry WCI 29/10/2026: 4.429 USD/FEU (-3%); NY 9.631, LA 7.514, Rotterdam 3.686, Genoa 4.151; mở trang Drewry"
   },
   "port.throughput": {
    "lastAttempt": "2026-10-26T08:59:04+07:00",
@@ -5420,16 +5420,6 @@
    "signals": []
   },
   {
-   "id": "port.freight",
-   "tier": "C",
-   "title": "Cước container Drewry WCI theo tuyến, SCFI; giá thuê tàu nếu có nguồn",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "port.projects",
    "tier": "C",
    "title": "Dự án cảng mới: Lạch Huyện, Nam Đình Vũ, Gemalink, Cái Mép Hạ, Cần Giờ, Liên Chiểu, Long Thành",
@@ -6098,5 +6088,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-05T09:01:48+07:00"
+ "updatedAt": "2026-11-05T13:14:00+07:00"
 }

@@ -13,7 +13,7 @@
 <script src="../assets/sector-runtime.js?v=05b8df0a22cc" defer></script>
 <script src="../assets/sector-content.js?v=649051e35a0c" defer></script>
 <script src="../assets/sector-layout.js?v=6017726b6ba1" defer></script>
-<script src="../data/port-public-data.js?v=f098bbd78e74" defer></script>
+<script src="../data/port-public-data.js?v=ed31470886cb" defer></script>
 <script src="../assets/sector-visuals.js?v=9bed10f3c811" defer></script>
 <script src="../assets/port-dashboard.js?v=1b77a5ea6c50" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
@@ -36,7 +36,7 @@
 <script src="../assets/layout-balance.js?v=85ce75a939ea" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=0aa68a6982f7">
 <script src="../assets/source-gap.js?v=02afdd3cfa3d" defer></script>
-<script src="../assets/site-navigation.js?v=af81641f2ea8" data-release="20261105-design1"></script>
+<script src="../assets/site-navigation.js?v=af81641f2ea8" data-release="20261105T061359Z"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="../assets/research-layout.css?v=c7cc69ad24d4">
 <link rel="stylesheet" href="../assets/sector-base.css?v=276d03c1640b">
@@ -75,7 +75,7 @@
       <div class="kpi"><div class="label">Vận chuyển hàng hóa đường biển</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-sea"></div></div>
       <div class="kpi"><div class="label">Xuất nhập khẩu hàng hóa</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan</div><div id="spk-trade"></div></div>
       <div class="kpi"><div class="label">Vận chuyển hàng không của hãng VN</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-air"></div></div>
-      <div class="kpi"><div class="label">Cước container Drewry WCI</div><div class="value">4.585</div><div class="delta">+2% so tuần trước</div><div class="sub">USD/FEU · 22/10/2026</div><div id="spk-wci"></div></div>
+      <div class="kpi"><div class="label">Cước container Drewry WCI</div><div class="value">4.429</div><div class="delta">−3% so tuần trước</div><div class="sub">USD/FEU · 29/10/2026</div><div id="spk-wci"></div></div>
       <div class="kpi"><div class="label">Tàu container cập Hải Phòng + Cái Mép</div><div class="value">—</div><div class="delta"></div><div class="sub">IMF PortWatch</div><div id="spk-portcalls"></div></div>
       <div class="kpi"><div class="label">P/E cảng &amp; dịch vụ hàng hải</div><div class="value">—</div><div class="delta"></div><div class="sub">—</div><div id="spk-pe"></div></div>
     </section>
@@ -102,7 +102,7 @@
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="cg-04" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
         <div class="chart-title">Cước container Drewry WCI — tổng hợp và theo tuyến</div>
-        <div class="chart-sub">USD/FEU · 22/10/2026 · cột cuối là chỉ số tổng hợp</div>
+        <div class="chart-sub">USD/FEU · 29/10/2026 · cột cuối là chỉ số tổng hợp</div>
         <div id="chWci"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-wci"></table></div></details>
       </div>
@@ -111,7 +111,7 @@
         <div class="chart-sub">USD/FEU</div>
         <div id="chWciWeeks"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-wci-weeks"></table></div></details>
-        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Trang Drewry chỉ hiện tuần mới nhất; script <code>fetch_drewry_wci.py</code> lưu số mỗi lượt job nên chuỗi tuần tự dài thêm từ 15/10/2026 (20/08 và 08/10 mở tay); tuần 22/10 do script lưu, Drewry công bố 22/10/2026. Chưa có chuỗi giá thuê tàu container (Harpex, New ConTex); Nguồn công khai chưa có chỉ số cước container.</div></details>
+        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Trang Drewry chỉ hiện tuần mới nhất; script <code>fetch_drewry_wci.py</code> lưu số mỗi lượt job nên chuỗi tuần tự dài thêm từ 15/10/2026 (20/08 và 08/10 mở tay); tuần 22/10 và 29/10 do script lưu, Drewry công bố 29/10/2026. Chưa có chuỗi giá thuê tàu container (Harpex, New ConTex); Nguồn công khai chưa có chỉ số cước container.</div></details>
       </div>
     </div>
     <div class="grid two" style="margin-top:14px">
