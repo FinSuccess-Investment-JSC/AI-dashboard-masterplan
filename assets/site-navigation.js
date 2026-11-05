@@ -135,6 +135,22 @@
     }
   }
   document.addEventListener('DOMContentLoaded', () => setTimeout(watchChains, 0));
+  // Ngân hàng (05/11/2026): nhúng bank-dashboard bản ?embed=1 thay nội dung cũ; nội dung cũ vẫn trong file, mở bằng ?cu=1.
+  const BANK_EMBED = 'https://mdnguyen-cyber.github.io/bank-dashboard/';
+  const BANK_PAGES = {VCB:'vcb.html', BID:'bid.html', CTG:'index.html', TCB:'tcb.html', MBB:'mbb.html', ACB:'acb.html', STB:'stb.html', VPB:'vpb.html', HDB:'hdb.html'};
+  function embedBank() {
+    const qs = new URLSearchParams(location.search);
+    if (!document.querySelector('body[data-sector="bank"] main.wrap') || qs.get('cu') === '1') return;
+    const code = (qs.get('ma') || '').toUpperCase(), page = BANK_PAGES[code] || 'nganh.html';
+    const band = document.createElement('div'); band.className = 'research-header fs-titleband';
+    const h1 = document.createElement('h1'); h1.textContent = BANK_PAGES[code] ? 'Ngân hàng · ' + code : 'Ngân hàng'; band.append(h1);
+    const box = document.createElement('section'); box.className = 'fs-embed';
+    const f = document.createElement('iframe'); f.src = BANK_EMBED + page + '?embed=1'; f.title = 'Dashboard ngân hàng'; box.append(f);
+    document.querySelector('.fs-search, .fs-brandbar').after(band, box); document.body.classList.add('fs-embed-mode');
+    const keep = el => el.matches('.fs-brandbar,.fs-search,.fs-titleband,.fs-embed,script,style,link');
+    const hideRest = () => [...document.body.children].forEach(el => { if (!keep(el)) el.hidden = true; });
+    hideRest(); new MutationObserver(hideRest).observe(document.body, {childList: true});
+  }
   window.DashboardSite = Object.freeze({root: root.href, version, routes, aliases, href, redirectHubAlias});
   // Resolve historical /?v=...#ngan-hang links before rendering hub previews.
   redirectHubAlias();
@@ -149,6 +165,7 @@
       home.append(logo); inner.append(home); bar.append(inner); document.body.prepend(bar);
     }
     if (document.querySelector('.fs-brandbar') && !document.querySelector('.fs-search')) mountSearch();
+    embedBank();
     // Hub: sector tiles visible at once, one click opens the dashboard.
     const hubMain = document.querySelector('.fs-home-main');
     if (hubMain && !hubMain.querySelector('.fs-sector-grid')) {
