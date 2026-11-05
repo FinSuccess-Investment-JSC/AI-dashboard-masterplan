@@ -1,12 +1,12 @@
 /* Sắp xếp bố cục chart: bấm nút "Bố cục" (góc dưới phải) để bật chế độ sắp xếp.
-   Mỗi card chart có tay kéo ⠿ (góc trên trái) để đổi chỗ với card khác trong cùng khu vực,
+   Mỗi card chart có tay kéo ⠿ (góc trên trái) để đổi chỗ / đưa lên cùng hàng với chart khác trong cùng tab (kể cả khác hàng),
    và góc kéo ◢ (dưới phải) để đổi rộng theo lưới 12 cột (3/4/6/8/9/12) và cao theo bước 20px.
    Lưu theo trình duyệt (localStorage, theo trang); "Mặc định" trả bố cục gốc.
    Dùng chung cho Stock dashboard và dashboard ngành (sao nguyên văn, như share-image.js). */
 (function(){
   if(window.FinChartArrange)return;
   const NAVY='#1D2678',LINE='#dce1e9',SPANS=[3,4,6,8,9,12],STEP=20,MINH=60,MAXH=960;
-  const KEY='fs-arrange:'+location.pathname;
+  const KEY='fs-arrange2:'+location.pathname;
   const css=`.fs-arr-toggle{position:fixed;right:16px;bottom:88px;z-index:900;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:1px solid ${LINE};border-radius:999px;background:#fff;color:${NAVY};font:600 13px Inter,Arial,system-ui,sans-serif;box-shadow:0 4px 14px rgba(16,22,48,.12);cursor:pointer}
 .fs-arr-toggle[aria-pressed=true]{background:${NAVY};border-color:${NAVY};color:#fff}
 .fs-arr-reset{position:fixed;right:16px;bottom:132px;z-index:900;height:32px;padding:0 12px;border:1px solid ${LINE};border-radius:999px;background:#fff;color:#596272;font:600 12.5px Inter,Arial,system-ui,sans-serif;cursor:pointer;display:none}
@@ -34,10 +34,16 @@ body.fs-arr-on .fs-arr-size{display:block;position:absolute;right:2px;bottom:2px
     if(!t){const n=[...card.querySelectorAll('div,span,p,strong')].find(x=>!x.children.length&&!x.closest('button')&&x.textContent.trim());t=clean(n&&n.textContent)}
     return card.dataset.fsArrKey=t+'#'+(c?c.id:'');
   }
-  function childKey(n,i){return isCard(n)?cardKey(n):'x'+i+':'+n.tagName}
-  function boxKey(box){
-    if(box.dataset.fsArrBox)return box.dataset.fsArrBox;
-    return box.dataset.fsArrBox=[...box.children].filter(isCard).map(cardKey).sort().join('|');
+  // Lưu: saved.cards[key]={span,h}; saved.panes[paneKey]=[[key...] theo từng hàng/khối]. Khu vực = các khối lưới anh em.
+  saved.cards=saved.cards||{};saved.panes=saved.panes||{};
+  function paneOf(box){return box.parentElement}
+  function paneBoxes(pane){
+    if(!pane._fsArrBoxes)pane._fsArrBoxes=[...pane.children].filter(x=>[...x.children].some(isCard));
+    return pane._fsArrBoxes;
+  }
+  function paneKey(pane){
+    if(pane.dataset.fsArrPane)return pane.dataset.fsArrPane;
+    return pane.dataset.fsArrPane=paneBoxes(pane).flatMap(b=>[...b.children].filter(isCard).map(cardKey)).sort().join('|');
   }
   function chartBox(card){
     const c=card.querySelector('canvas')||card.querySelector('svg.chart,[id^="ch"] svg');return c&&c.parentElement;
@@ -46,58 +52,56 @@ body.fs-arr-on .fs-arr-size{display:block;position:absolute;right:2px;bottom:2px
   function setHeight(card,h){
     const b=chartBox(card);if(!b)return;
     if(h){if(!b.dataset.fsArrH0)b.dataset.fsArrH0=b.style.height||'-';b.style.height=h+'px';b.style.maxHeight='none'}
-    else if(b.dataset.fsArrH0){b.style.height=b.dataset.fsArrH0==='-'?'':b.dataset.fsArrH0;b.style.maxHeight='';delete b.dataset.fsArrH0}
     charts(card).forEach(ch=>{try{ch.resize()}catch(e){}});
   }
-  // Chuyển khu vực sang lưới 12 cột, giữ bề rộng hiện tại của từng card (làm tròn về nấc gần nhất).
+  function snap(n){return SPANS.reduce((a,b)=>Math.abs(b-n)<Math.abs(a-n)?b:a)}
+  function spanOf(n,W){
+    if(isCard(n)){const k=cardKey(n),c=saved.cards[k];if(c&&c.span)return c.span}
+    const w=n.offsetWidth;return w?snap(Math.round(w/W*12)):12;
+  }
+  // Chuyển khối sang lưới 12 cột, giữ bề rộng hiện tại của từng card (làm tròn về nấc gần nhất).
   function toGrid(box){
     if(box.classList.contains('fs-arr-grid'))return;
-    const W=box.clientWidth||1,st=saved[boxKey(box)]||{};
-    const spans=st.spans||{};
-    [...box.children].forEach((n,i)=>{const k=childKey(n,i);if(spans[k]==null){const w=n.offsetWidth;spans[k]=w?snap(Math.round(w/W*12)):12}});
+    const W=box.clientWidth||1,sp=[...box.children].map(n=>spanOf(n,W));
     box.classList.add('fs-arr-grid');
-    [...box.children].forEach((n,i)=>{n.style.gridColumn='span '+spans[childKey(n,i)]});
-    saved[boxKey(box)]=Object.assign(st,{spans});
+    [...box.children].forEach((n,i)=>{n.style.gridColumn='span '+sp[i];if(isCard(n)){const c=saved.cards[cardKey(n)]||(saved.cards[cardKey(n)]={});c.span=sp[i]}});
   }
-  function snap(n){return SPANS.reduce((a,b)=>Math.abs(b-n)<Math.abs(a-n)?b:a)}
-  function record(box){
-    const st=saved[boxKey(box)]||(saved[boxKey(box)]={spans:{}});
-    st.order=[...box.children].filter(isCard).map(cardKey);persist();
+  function record(pane){
+    paneBoxes(pane).forEach(toGrid);
+    saved.panes[paneKey(pane)]=paneBoxes(pane).map(b=>[...b.children].filter(isCard).map(cardKey));persist();
   }
-  function apply(box){
-    const st=saved[boxKey(box)];if(!st)return;
-    if(st.spans)toGrid(box);
-    if(st.order){const cards=[...box.children].filter(isCard),slots=cards.map(c=>({c,next:c.nextSibling}));
-      const byKey=new Map(cards.map(c=>[cardKey(c),c]));const ordered=st.order.map(k=>byKey.get(k)).filter(Boolean);
-      cards.forEach(c=>{if(!ordered.includes(c))ordered.push(c)});
-      // Đặt lại card vào đúng các vị trí card cũ (giữ chỗ các phần tử không phải card).
-      const marks=cards.map(c=>{const m=document.createComment('fs');box.insertBefore(m,c);return m});
-      ordered.forEach((c,i)=>box.insertBefore(c,marks[i]));marks.forEach(m=>m.remove());void slots}
-    if(st.heights)[...box.children].filter(isCard).forEach(c=>{const h=st.heights[cardKey(c)];if(h)setHeight(c,h)});
+  function applyPane(pane){
+    const lay=saved.panes[paneKey(pane)],boxes=paneBoxes(pane);
+    if(lay){const all=new Map(boxes.flatMap(b=>[...b.children].filter(isCard)).map(c=>[cardKey(c),c]));
+      boxes.forEach(toGrid);
+      lay.forEach((keys,i)=>{const b=boxes[i];if(!b)return;keys.forEach(k=>{const c=all.get(k);if(c){b.append(c);all.delete(k)}})})}
+    boxes.forEach(b=>[...b.children].filter(isCard).forEach(c=>{const s=saved.cards[cardKey(c)];if(!s)return;
+      if(s.span){toGrid(b);c.style.gridColumn='span '+s.span}if(s.h)setHeight(c,s.h)}));
   }
   function tip(text,x,y){let t=document.querySelector('.fs-arr-tip');if(!t){t=el('div','fs-arr-tip');document.body.append(t)}t.textContent=text;t.style.left=(x+14)+'px';t.style.top=(y+14)+'px'}
   const untip=()=>{const t=document.querySelector('.fs-arr-tip');if(t)t.remove()};
   function onDrag(card,e){
-    e.preventDefault();e.stopPropagation();const box=card.parentElement;toGrid(box);card.classList.add('fs-arr-drag');
+    e.preventDefault();e.stopPropagation();const box=card.parentElement,pane=paneOf(box);paneBoxes(pane);paneKey(pane);toGrid(box);card.classList.add('fs-arr-drag');
     let target=null,after=false;
-    const clear=()=>box.querySelectorAll('.fs-arr-over-before,.fs-arr-over-after').forEach(n=>n.classList.remove('fs-arr-over-before','fs-arr-over-after'));
+    const clear=()=>pane.querySelectorAll('.fs-arr-over-before,.fs-arr-over-after').forEach(n=>n.classList.remove('fs-arr-over-before','fs-arr-over-after'));
     const move=ev=>{const hit=document.elementFromPoint(ev.clientX,ev.clientY);const t=hit&&hit.closest('.fs-share-host');clear();target=null;
-      if(t&&t!==card&&t.parentElement===box){const r=t.getBoundingClientRect();after=ev.clientX>r.left+r.width/2;target=t;t.classList.add(after?'fs-arr-over-after':'fs-arr-over-before');tip('Thả để đổi chỗ',ev.clientX,ev.clientY)}
-      else tip(t&&t.parentElement!==box?'Chỉ đổi chỗ trong cùng khu vực':'Kéo tới card khác',ev.clientX,ev.clientY)};
+      if(t&&t!==card&&paneOf(t.parentElement)===pane){const r=t.getBoundingClientRect();after=ev.clientX>r.left+r.width/2;target=t;t.classList.add(after?'fs-arr-over-after':'fs-arr-over-before');tip(after?'Thả: đặt bên phải':'Thả: đặt bên trái',ev.clientX,ev.clientY)}
+      else tip(t&&t!==card?'Chỉ kéo trong cùng khu vực':'Kéo tới chart khác',ev.clientX,ev.clientY)};
     const up=()=>{document.removeEventListener('pointermove',move);document.removeEventListener('pointerup',up);clear();untip();card.classList.remove('fs-arr-drag');
-      if(target){box.insertBefore(card,after?target.nextSibling:target);record(box)}};
+      if(target){const tb=target.parentElement;toGrid(tb);tb.insertBefore(card,after?target.nextSibling:target);
+        const s=saved.cards[cardKey(card)];card.style.gridColumn='span '+(s&&s.span||12);record(pane)}};
     document.addEventListener('pointermove',move);document.addEventListener('pointerup',up);
   }
   function onSize(card,e){
     e.preventDefault();e.stopPropagation();const box=card.parentElement;toGrid(box);
     const W=box.clientWidth||1,x0=e.clientX,y0=e.clientY,w0=card.offsetWidth,b=chartBox(card),h0=b?b.offsetHeight:0;
-    const st=saved[boxKey(box)];st.heights=st.heights||{};const k=cardKey(card);
-    let span=st.spans[k]||12,h=st.heights[k]||0;
+    const k=cardKey(card),st=saved.cards[k]||(saved.cards[k]={});
+    let span=st.span||12,h=st.h||0;
     const move=ev=>{span=snap(Math.max(1,Math.round((w0+ev.clientX-x0)/W*12)));card.style.gridColumn='span '+span;
       if(b&&Math.abs(ev.clientY-y0)>12){h=Math.min(MAXH,Math.max(MINH,Math.round((h0+ev.clientY-y0)/STEP)*STEP));setHeight(card,h)}
-      tip('Rộng '+span+'/12'+(b?' · cao '+h+'px':''),ev.clientX,ev.clientY)};
+      tip('Rộng '+span+'/12'+(b&&h?' · cao '+h+'px':''),ev.clientX,ev.clientY)};
     const up=()=>{document.removeEventListener('pointermove',move);document.removeEventListener('pointerup',up);untip();
-      st.spans[k]=span;if(h)st.heights[k]=h;persist()};
+      st.span=span;if(h)st.h=h;persist()};
     document.addEventListener('pointermove',move);document.addEventListener('pointerup',up);
   }
   function scan(){
@@ -112,7 +116,7 @@ body.fs-arr-on .fs-arr-size{display:block;position:absolute;right:2px;bottom:2px
       hd.addEventListener('pointerdown',e=>onDrag(card,e));sz.addEventListener('pointerdown',e=>onSize(card,e));
       card.append(hd,sz);
     });
-    boxes.forEach(box=>{if(!box.dataset.fsArrDone){box.dataset.fsArrDone='1';apply(box)}});
+    const panes=new Set([...boxes].map(paneOf).filter(Boolean));panes.forEach(p=>{if(!p.dataset.fsArrDone){p.dataset.fsArrDone='1';paneBoxes(p);paneKey(p);applyPane(p)}});
   }
   function reset(){
     try{localStorage.removeItem(KEY)}catch(e){}saved={};location.reload();
