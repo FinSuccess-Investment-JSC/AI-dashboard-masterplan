@@ -34,7 +34,18 @@ if(bank){
   if(usgc&&singapore)pricesWorld.prepend(usgc,singapore);
  }
  $$('[data-tab="mt3"] .section').forEach(s=>[...s.children].filter(n=>!n.matches('.sectionhead,.grid')).forEach(n=>pricesVN.append(n)));
- const cycle=block(oil?'dau-khi-02':power?'dien-02':re?'bds-02':tx?'dm-02':pt?'cg-02':ag?'nn-02':sf?'ts-02':sh?'vt-02':st?'th-02':xd?'xd-02':bh?'bh-02':bl?'bl-02':ph?'duoc-02':'sugar-02');if(cycle){(re||tx||pt||ag||sf||sh||xd||bh||bl||ph?world:vn).append(cycle);cycle.prepend(make('p','research-caption',oil?'Phân tích AI ngày 03/09/2026 · chưa cập nhật theo số mới':power?'Phân tích AI ngày 06/10/2026':pt||ag||sf?'Phân tích AI ngày 09/10/2026':sh?'Phân tích AI ngày 10/10/2026':ph?'Phân tích AI ngày 12/10/2026':xd||bh||bl?'Phân tích AI ngày 11/10/2026':re||tx?'Phân tích AI ngày 08/10/2026':'Phân tích AI ngày 19/10/2026'));}
+const cycleCards=box=>{const ps=[...box.querySelectorAll(':scope p')].filter(p=>p.querySelector('mark.key-phrase'));if(ps.length<2)return;
+ const wrap=document.createElement('div');wrap.className='cycle-cards';
+ ps.forEach(p=>{const mark=p.querySelector('mark.key-phrase'),card=document.createElement('article');card.className='cycle-card';
+  const h=document.createElement('h4');h.textContent=mark.textContent.replace(/[.:]\s*$/,'');card.append(h);
+  const clean=node=>{const c=node.cloneNode(true);c.querySelector('mark.key-phrase')?.remove();return c};
+  [...p.querySelectorAll('b')].slice(0,2).forEach(b=>{const before=(()=>{let t='',n=b.previousSibling;while(n&&t.length<60){t=n.textContent+t;n=n.previousSibling}return t})();
+   const label=before.split(/[.;:]\s/).at(-1).replace(/^[\s,]*(nhưng|và)?\s*/,'').replace(/[\s,]*$/,'').replace(/\s+(thành|là|đạt|ở mức)$/,'').split(/\s+/).slice(-8).join(' ');
+   const m=document.createElement('div');m.className='cycle-metric';const big=document.createElement('strong');big.textContent=b.textContent;m.append(big);if(label){const s=document.createElement('span');s.textContent=label;m.append(s)}card.append(m)});
+  const d=document.createElement('details');d.className='cycle-more';const sum=document.createElement('summary');sum.textContent='Diễn giải';const t=clean(p);t.removeAttribute('style');d.append(sum,t);card.append(d);
+  wrap.append(card)});
+ ps[0].before(wrap);ps.forEach(p=>p.remove());box.querySelector(':scope h3')?.classList.add('cycle-title')};
+ const cycle=block(oil?'dau-khi-02':power?'dien-02':re?'bds-02':tx?'dm-02':pt?'cg-02':ag?'nn-02':sf?'ts-02':sh?'vt-02':st?'th-02':xd?'xd-02':bh?'bh-02':bl?'bl-02':ph?'duoc-02':'sugar-02');if(cycle){cycleCards(cycle);(re||tx||pt||ag||sf||sh||xd||bh||bl||ph?world:vn).append(cycle);cycle.prepend(make('p','research-caption',oil?'Phân tích AI ngày 03/09/2026 · chưa cập nhật theo số mới':power?'Phân tích AI ngày 06/10/2026':pt||ag||sf?'Phân tích AI ngày 09/10/2026':sh?'Phân tích AI ngày 10/10/2026':ph?'Phân tích AI ngày 12/10/2026':xd||bh||bl?'Phân tích AI ngày 11/10/2026':re||tx?'Phân tích AI ngày 08/10/2026':'Phân tích AI ngày 19/10/2026'));}
  const kpis=overview.querySelector('.kpis');if(kpis)market.prepend(kpis);
  // All source/player detail stays available in Overview.
  [...pane(6).children].forEach(n=>overview.append(n));

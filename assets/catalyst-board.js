@@ -181,7 +181,12 @@
   function renderBrief({headline,segs=[],headers,score=[],events,priority}){
     window.SECTOR_BRIEF={headline,segs,score}; // assets/sector-smart.js dựng bảng điều khiển đầu trang từ đây
     const brief=make('section','cr-brief');
-    const head=make('div','cr-verdict card');head.append(make('span','cr-verdict-label','Kết luận hiện tại'),make('h3','',headline));
+    const parts=String(headline).replace(/\s*\([^)]*\)/g,'').split(/\s+·\s+/).map(x=>x.trim()).filter(Boolean);
+    const tally=parts.length>1&&/^\d+\s+thuận/.test(parts.at(-1))?parts.pop():'';
+    const head=make('div','cr-verdict card');const top=make('div','cr-verdict-top');top.append(make('span','cr-verdict-label','Kết luận hiện tại'));
+    if(tally)tally.split(',').forEach(t=>{const n=make('span','cr-tally',t.trim());n.dataset.kind=/rủi ro/.test(t)?'risk':'good';top.append(n)});
+    head.append(top,make('h3','',parts[0]||headline));
+    if(parts.length>1){const acts=make('ul','cr-actions');parts.slice(1).forEach(t=>{const li=make('li','',t);li.dataset.kind=/^(tránh|giảm|thận trọng|bán)/i.test(t)?'avoid':/^(chọn|ưu tiên|mua|giữ)/i.test(t)?'pick':'note';acts.append(li)});head.append(acts)}
     brief.append(head);
     const tb=make('section','cr-score card');tb.append(make('h3','','Tín hiệu'));
     const wrap=make('div','cr-score-wrap'),table=make('table','cr-score-table');table.dataset.noFold=''; /* main content: never fold */wrap.append(table);
@@ -208,7 +213,7 @@
       const summary=make('summary','tx-priority-summary');
       const topic=make('span','tx-priority-topic');topic.append(make('i','tx-priority-dot'),make('span','tx-priority-name',r.name),make('small','tx-priority-status',status[r.st]||'Theo dõi'));
       const number=make('span','tx-priority-number');number.append(make('strong','',r.big?.[0]||r.mid?.[0]||'—'),make('small','',change));
-      const affected=make('span','tx-priority-affected',String(r.end?.[0]||'').replaceAll('▲','↑').replaceAll('▼','↓'));
+      const affected=make('span','tx-priority-affected');String(r.end?.[0]||'').replaceAll('▲','↑').replaceAll('▼','↓').split(/\s+·\s+(?=[↑↓])/).forEach(t=>{const x=make('span','tx-aff',t);x.dataset.dir=t.startsWith('↑')?'up':t.startsWith('↓')?'down':'';affected.append(x)});
       summary.append(topic,number,affected);item.append(summary);
       const detail=make('div','tx-priority-detail');
       if(r.big)detail.append(make('p','',r.mid?.[0]||''));

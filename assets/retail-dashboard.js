@@ -251,7 +251,7 @@ const score=[
  row('Định giá','Bán lẻ hạ nhiệt, F&B rẻ',[v220?nf(v220[1],1)+'x':'—','P/E chuỗi bán lẻ'],'Sữa '+(v239?nf(v239[1],1):'—')+'x, bia '+nf((sec['120']?.records||[]).at(-1)?.[1],1)+'x','BCTC quý III (20–30/10); KQ tháng của MWG, FRT',v220?'info':'na','MWG · VNM · SAB','chSectorVal')];
 const nGood=score.filter(r=>r.st==='good').length,nRisk=score.filter(r=>r.st==='risk').length;
 window.RETAIL_BRIEF={
- headline:'Sức mua '+(rtY==null?'thiếu số':rtY>10?'mạnh nhất từ 2022':rtY>6?'tăng vừa':'yếu đi')+' (bán lẻ lũy kế '+signed(rtY,0)+'%, ngưỡng +8%) · chọn chuỗi có SSSG dương (MWG, FRT) cho mùa cao điểm Q4 · tránh FMCG có đường và bia trước thuế TTĐB 1/1/2027 (CPI '+nf(cL?.value,1)+'%, ngưỡng 5,5%; đường '+signed(suY,0)+'% YoY) · '+nGood+' thuận, '+nRisk+' rủi ro',
+ headline:'Sức mua '+(rtY==null?'thiếu số':rtY>10?'mạnh nhất từ 2022':rtY>6?'tăng vừa':'yếu đi')+' · Chọn chuỗi đang tăng trưởng: MWG, FRT · Tránh bia, đồ uống có đường trước thuế 1/1/2027 · '+nGood+' thuận, '+nRisk+' rủi ro',
  segs:[['Bán lẻ hiện đại & điện máy','MWG · FRT · DGW · PET',rtY!=null&&rtY>10?'up':'flat','Bán lẻ '+signed(rtY,0)+'%'],['Hàng lâu bền','PNJ · HAX · SVC',caY!=null&&caY>10?'up':'flat','Ô tô '+signed(caY,0)+'%'],['Hàng tiêu dùng nhanh','VNM · SAB · QNS · MSN · KDC',beY!=null&&beY>8?'up':'flat','Bia '+signed(beY,0)+'%']],
  headers:['Biến số đang thay đổi','Đang thấy (số mới nhất)','Đổi đánh giá khi','','Hưởng lợi ▲ / chịu thiệt ▼'],
  score,

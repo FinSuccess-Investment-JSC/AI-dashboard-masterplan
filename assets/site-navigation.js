@@ -457,7 +457,7 @@
     }
   }
   // Timeline phía trên bảng có cột ngày hiệu lực.
-  const dmy = t => { const m = String(t).match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); return m ? Date.UTC(+m[3], m[2] - 1, +m[1]) : null; };
+  const dmy = t => { const m = [...String(t).matchAll(/(\d{1,2})\/(\d{1,2})\/(\d{4})/g)].at(-1); return m ? Date.UTC(+m[3], m[2] - 1, +m[1]) : null; };
   function tableTimeline(table) {
     if (table.dataset.fsTl || table.closest('.fsv-heat')) return; table.dataset.fsTl = '1';
     const heads = [...(table.tHead?.rows[0]?.cells || [])].map(c => c.textContent.trim());
@@ -465,14 +465,14 @@
     const items = [...table.tBodies[0].rows].map(r => ({t: dmy(r.cells[di]?.textContent), label: (r.cells[0]?.textContent || '').trim(), d: (r.cells[di]?.textContent || '').trim()})).filter(x => x.t);
     if (items.length < 3) return;
     items.sort((a, b) => a.t - b.t);
-    const now = Date.now(), lo = Math.min(items[0].t, now), hi = Math.max(items.at(-1).t, now), W = 1000, X = t => 30 + (t - lo) / ((hi - lo) || 1) * (W - 60);
-    const lanes = []; // tránh chồng nhãn: xếp hàng so le
-    const marks = items.map((it, i) => { const x = X(it.t); let lane = 0; while (lanes[lane] != null && x - lanes[lane] < 170) lane++; lanes[lane] = x; const up = lane % 2 === 0, dy = 18 + Math.floor(lane / 2) * 30;
-      const lbl = it.label.length > 34 ? it.label.slice(0, 33) + '…' : it.label, y = up ? 60 - dy : 60 + dy + 10, anc = x < 160 ? 'start' : x > W - 160 ? 'end' : 'middle', tx = anc === 'start' ? x - 6 : anc === 'end' ? x + 6 : x;
-      return `<g class="fs-tl-m"><line x1="${x}" x2="${x}" y1="60" y2="${up ? y + 4 : y - 12}"/><circle cx="${x}" cy="60" r="5"/><text x="${tx}" y="${y}" text-anchor="${anc}"><tspan class="d" x="${tx}">${esc(it.d)}</tspan><tspan x="${tx}" dy="13">${esc(lbl)}</tspan></text><title>${esc(it.d + ' · ' + it.label)}</title></g>`; }).join('');
-    const H = 140 + Math.max(0, Math.ceil(lanes.length / 2) - 1) * 30;
+    const now = Date.now(), nextI = items.findIndex(x => x.t >= now);
+    const short = l => { const c = l.replace(/\s*\(.*$/, '').trim(); return c.length > 40 ? c.slice(0, 39) + '…' : c; };
+    const sinceRe = /^(đến|từ)\s/i, day = d => (d.match(/\d{1,2}\/\d{1,2}\/\d{4}/g) || [d]).at(-1);
+    const rows = items.map((it, i) => `<li class="fs-tl-s ${i === nextI ? 'next' : it.t < now ? 'past' : 'future'}" title="${esc(it.d + ' · ' + it.label)}"><time>${esc(sinceRe.test(it.d) ? it.d : day(it.d))}</time><b>${esc(short(it.label))}</b>${i === nextI ? '<em>Sắp tới</em>' : ''}</li>`);
+    if (nextI > 0) rows.splice(nextI, 0, '<li class="fs-tl-now" aria-label="Hôm nay"><span>Hôm nay</span></li>');
+    else if (nextI < 0) rows.push('<li class="fs-tl-now" aria-label="Hôm nay"><span>Hôm nay</span></li>');
     const box = document.createElement('div'); box.className = 'fs-tl'; box.setAttribute('aria-hidden', 'true');
-    box.innerHTML = `<svg viewBox="0 ${-Math.max(0, Math.ceil(lanes.length / 2) - 1) * 30} ${W} ${H}"><line x1="20" x2="${W - 20}" y1="60" y2="60" class="axis"/><line x1="${X(now)}" x2="${X(now)}" y1="44" y2="76" class="now"/><text x="${X(now)}" y="38" text-anchor="middle" class="nowt">Hôm nay</text>${marks}</svg>`;
+    box.innerHTML = `<ol>${rows.join('')}</ol>`;
     (table.closest('.tablewrap') || table).before(box);
   }
   // Danh sách mốc ngày thành timeline dọc.
