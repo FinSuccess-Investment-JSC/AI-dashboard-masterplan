@@ -1,5 +1,4 @@
-Routine Wi 04/11/2026: KHÔNG cập nhật được.
-Hook wi_capture.py không lưu kết quả WiMCP (data/raw/wi/.inbox không được tạo sau lời gọi thử).
-Đã --fail 30 mục Wi (10 ngành) với lý do 'hook không lưu kết quả Wi'; không sửa dữ liệu nào.
-Cần kiểm tra .claude/settings.json (matcher "WiMCP" có khớp tên tool mcp__WiMCP__* không) trong môi trường cloud.
-Chưa kiểm giao diện bằng trình duyệt.
+Routine Wi 05/11/2026 KHÔNG cập nhật được số liệu.
+Hook wi_capture.py không lưu kết quả WiMCP vào data/raw/wi/.inbox/ (gọi thử CB300/thép, XNK thép: Wi trả số nhưng không có file).
+Đã --fail toàn bộ 31 mục nhóm B với lý do "hook không lưu kết quả Wi"; không sửa dữ liệu nào.
+Cần kiểm tra hook PostToolUse trong .claude/settings.json (matcher mcp__Widata-MCP__*) trên môi trường cloud.
