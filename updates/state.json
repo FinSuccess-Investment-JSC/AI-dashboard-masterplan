@@ -64,9 +64,9 @@
   "oil.bsr-annual": {},
   "oil.company-quarterly": {},
   "sugar.domestic": {
-   "lastAttempt": "2026-10-19T14:22:07+07:00",
-   "lastSuccess": "2026-10-19T14:22:07+07:00",
-   "lastNote": "RS TP.HCM 18.400–19.700, RE 19.700–20.800 đ/kg ngày 15/9/2026 (VSSA qua Vietstock 08/10); so sánh khu vực T7 giữ nguyên, đã xác nhận"
+   "lastAttempt": "2026-11-06T13:02:42+07:00",
+   "lastSuccess": "2026-11-06T13:02:42+07:00",
+   "lastNote": "Đã mở tintucnongnghiep 22/10 (giá T9 không nêu nguồn VSSA) và tìm tin T10: chưa có mốc VSSA mới sau 15/09/2026; giá chào 26/10 là giá thương mại địa phương, không cùng loại mốc. Không sửa trang."
   },
   "sugar.vn-balance": {
    "lastAttempt": "2026-10-06T16:22:10+07:00",
@@ -189,9 +189,9 @@
    }
   },
   "power.output-sources": {
-   "lastAttempt": "2026-10-28T18:13:36+07:00",
-   "lastSuccess": "2026-10-28T18:13:36+07:00",
-   "lastNote": "EVN T10 chưa ra; giữ 9T 265,79 tỷ kWh"
+   "lastAttempt": "2026-11-06T13:02:42+07:00",
+   "lastSuccess": "2026-11-06T13:02:42+07:00",
+   "lastNote": "Trang đã có 9T/2026 vs 9T/2025 từ EVN (tổng 265,79 tỷ kWh, +9,3%; than 132,63, thủy điện 68,48); chưa có kỳ mới. Không sửa."
   },
   "realestate.wi.daily": {
    "lastAttempt": "2026-11-06T09:11:59+07:00",
@@ -210,14 +210,14 @@
    "stuck": true
   },
   "realestate.market-quarterly": {
-   "lastAttempt": "2026-10-28T21:31:36+07:00",
-   "lastSuccess": "2026-10-28T21:31:36+07:00",
-   "lastNote": "CBRE HN Q3: 86 tr/m², ~6.200 mở bán, hấp thụ 63%; DKRA TP.HCM nguồn cung 13.200 (−31%); CBRE HCM, Savills Q3 chưa công bố"
+   "lastAttempt": "2026-11-06T13:02:42+07:00",
+   "lastSuccess": "2026-11-06T13:02:42+07:00",
+   "lastNote": "Dữ liệu đã có Q3/2026 (MOC VOV 20/10/2026, DKRA, Savills); CBRE Q3 chưa công bố. Không sửa."
   },
   "realestate.kcn-quarterly": {
-   "lastAttempt": "2026-10-28T21:31:36+07:00",
-   "lastSuccess": "2026-10-28T21:31:36+07:00",
-   "lastNote": "Cushman marketbeat mở được, mới nhất Q2/2026; chưa có Q3"
+   "lastAttempt": "2026-11-06T13:02:42+07:00",
+   "lastSuccess": "2026-11-06T13:02:42+07:00",
+   "lastNote": "C&W Q3/2026 chưa công bố; mới nhất Q2/2026 đã trên trang. Không sửa."
   },
   "realestate.policy": {
    "lastAttempt": "2026-11-03T13:12:04+07:00",
@@ -276,9 +276,9 @@
    "lastNote": "OTEXA 8T/2026: tổng 49,08 tỷ USD −7,42%, VN −0,76%"
   },
   "textile.orders-brands": {
-   "lastAttempt": "2026-10-28T18:13:37+07:00",
-   "lastSuccess": "2026-10-28T18:13:37+07:00",
-   "lastNote": "Fast Retailing FY2026 tồn kho +20,8%, DT +16,6%"
+   "lastAttempt": "2026-11-06T13:02:42+07:00",
+   "lastSuccess": "2026-11-06T13:02:42+07:00",
+   "lastNote": "Nike Q1 FY27 (kết thúc 31/08/2026: DT -4%, tồn kho 7,8 tỷ USD -3%), Adidas, H&M, Inditex, Gap, FR đã có trong orders.json/dm-29. Không có kỳ mới. Không sửa."
   },
   "textile.policy": {
    "lastAttempt": "2026-11-03T13:12:04+07:00",
@@ -756,9 +756,9 @@
    "lastNote": "không mới: MAS 29/01/2026, DSC KBC 07/08/2026; kbsec 400"
   },
   "realestate.infrastructure": {
-   "lastAttempt": "2026-10-28T21:31:36+07:00",
-   "lastSuccess": "2026-10-28T21:31:36+07:00",
-   "lastNote": "VĐ4 TP.HCM khởi công dự án 2-2 Đồng Nai; ĐSTĐC lùi 12/2027"
+   "lastAttempt": "2026-11-06T13:02:42+07:00",
+   "lastSuccess": "2026-11-06T13:02:42+07:00",
+   "lastNote": "Chưa mở được nguồn hạ tầng mới hơn các mốc trên trang (bài tìm được là 2024-09/2025). Giữ nguyên bds-48/49/50."
   },
   "agri.public.rice": {},
   "seafood.public.farmgate": {},
@@ -5447,16 +5447,6 @@
    ]
   },
   {
-   "id": "sugar.domestic",
-   "tier": "C",
-   "title": "Giá đường trong nước, so sánh khu vực",
-   "since": "2026-11-01T13:43:51+07:00",
-   "reasons": [
-    "lịch 01/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "realestate.fdi-projects",
    "tier": "C",
    "title": "Dự án FDI lớn liên quan BĐS (KCN, nhà ở, văn phòng, nghỉ dưỡng, logistics–data center)",
@@ -5467,16 +5457,6 @@
     "lịch 03/11 07:00",
     "lịch 04/11 07:00",
     "lịch 05/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "realestate.infrastructure",
-   "tier": "C",
-   "title": "Hạ tầng: dự án trọng điểm và thay đổi bản đồ quy hoạch",
-   "since": "2026-11-01T13:43:51+07:00",
-   "reasons": [
-    "lịch 01/11 07:00"
    ],
    "signals": []
   },
@@ -5515,36 +5495,6 @@
    "signals": []
   },
   {
-   "id": "power.output-sources",
-   "tier": "C",
-   "title": "Sản lượng điện theo nguồn, lũy kế 9 tháng",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "realestate.market-quarterly",
-   "tier": "C",
-   "title": "Bộ Xây dựng, CBRE, Savills, DKRA: giao dịch, tồn kho, cung mới theo phân khúc/khu vực, giá căn hộ HN/HCM, tỉnh lớn",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "realestate.kcn-quarterly",
-   "tier": "C",
-   "title": "Cushman & Wakefield, JLL: lấp đầy, cung mới, giá thuê đất KCN",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "realestate.hot-topics",
    "tier": "C",
    "title": "Chủ đề nóng: dự án tồn đọng, giá nhà, bảng giá đất, NOXH, KCN & thuế quan, tái cấu trúc nợ; dự án theo dõi",
@@ -5558,16 +5508,6 @@
    "id": "textile.trade-tariff",
    "tier": "C",
    "title": "Thuế Mỹ (Mục 301, danh sách miễn trừ, hạn ngạch đối thủ), FTA, xuất xứ; nhập khẩu may mặc Mỹ (OTEXA); VITAS theo thị trường",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "textile.orders-brands",
-   "tier": "C",
-   "title": "Tồn kho, doanh thu nhãn hàng (Nike, Adidas, H&M, Inditex, Gap, Fast Retailing…); tín hiệu đơn hàng VITAS, Vinatex",
    "since": "2026-11-02T13:43:48+07:00",
    "reasons": [
     "lịch 02/11 07:00"
@@ -6437,5 +6377,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-06T09:12:00+07:00"
+ "updatedAt": "2026-11-06T13:02:42+07:00"
 }

@@ -1,5 +1,5 @@
-Routine Wi 06/11/2026: KHÔNG cập nhật được dữ liệu.
-Hook wi_capture.py không lưu kết quả WiMCP (không có data/raw/wi/.inbox) nên routine dừng, không sửa số nào.
-Toàn bộ mục nhóm B (Bank + 9 ngành) được đánh dấu lỗi: "hook không lưu kết quả Wi".
-Cần kiểm tra cấu hình hook .claude/settings.json (matcher WiMCP|Widata so với tên tool mcp__Widata-MCP__*) trong phiên cloud.
-Chưa kiểm giao diện bằng trình duyệt.
+Routine tài liệu 13:00: xử lý 6 mục nhóm C, không có số mới cần sửa trang.
+Đường trong nước: chưa có mốc VSSA mới sau 15/09/2026.
+BĐS (thị trường quý, KCN, hạ tầng), Điện (sản lượng theo nguồn), Dệt may (nhãn hàng): dữ liệu trên trang đã là kỳ mới nhất.
+Còn trong hàng chờ: hồ EVN và Cục ĐTNN (chờ runner máy VN), BĐS hot-topics, Dệt may thuế quan.
+Chưa kiểm giao diện bằng trình duyệt (không sửa trang).
