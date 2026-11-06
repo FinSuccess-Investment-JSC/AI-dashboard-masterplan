@@ -594,6 +594,16 @@
 "value": 10514.0,
 "provinces": 7,
 "url": "https://vietfood.org.vn/gia-lua-gao-noi-dia-ngay-15-10-2026-22-10-2026/"
+},
+"2026-10-29": {
+"value": 10886.0,
+"provinces": 7,
+"url": "https://vietfood.org.vn/gia-lua-gao-noi-dia-ngay-22-10-2026-29-10-2026/"
+},
+"2026-11-05": {
+"value": 10964.0,
+"provinces": 7,
+"url": "https://vietfood.org.vn/gia-lua-gao-noi-dia-ngay-29-10-2026-05-11-2026/"
 }
 },
 "errors": {

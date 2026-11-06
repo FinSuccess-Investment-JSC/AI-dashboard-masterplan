@@ -3508,6 +3508,12 @@
 "size": "0,7 - 1,0 kg/con",
 "range": "35.000 - 38.000",
 "url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-24-10-30-10-2026-27184.html"
+},
+"2026-11-06": {
+"value": 36.5,
+"size": "0,7 - 1,0 kg/con",
+"range": "35.000 - 38.000",
+"url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-31-10-06-11-2026-27193.html"
 }
 },
 "pangasius_fry": {
@@ -3750,6 +3756,12 @@
 "size": "30 – 35 con/kg",
 "range": "48.000 - 55.000",
 "url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-24-10-30-10-2026-27184.html"
+},
+"2026-11-06": {
+"value": 56.0,
+"size": "30 – 35 con/kg",
+"range": "52.000 - 60.000",
+"url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-31-10-06-11-2026-27193.html"
 }
 },
 "shrimp": {
@@ -5156,6 +5168,12 @@
 "size": "50 - 100 con/kg",
 "range": "85.000 - 130.000",
 "url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-24-10-30-10-2026-27184.html"
+},
+"2026-11-06": {
+"value": 107.5,
+"size": "50 - 100 con/kg",
+"range": "85.000 - 130.000",
+"url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-31-10-06-11-2026-27193.html"
 }
 }
 },
@@ -5653,6 +5671,7 @@
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-31-01-06-02-2026-26588.html",
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-31-1-6-2-2020-16937.html",
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-31-10-06-11-2025-26415.html",
+"https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-31-10-06-11-2026-27193.html",
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-31-10-5-11-2015-14084.html",
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-31-12-2016-5-1-2017-14937.html",
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-31-3-06-4-2023-23232.html",
@@ -5745,5 +5764,7 @@
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-9-8-15-8-2024-24375.html",
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-9-9-15-9-2016-14719.html"
 ],
-"errors": {}
+"errors": {
+"2026-09-11": "price unreadable: ''"
+}
 }
