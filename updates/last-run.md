@@ -1,16 +1,14 @@
-# Lịch cập nhật — 07/11/2026 13:33
+# Lịch cập nhật — 07/11/2026 22:11
 
-- 🆕 pvn.news: 2 mục mới — Bộ Công Thương lấy ý kiến dự thảo Thông tư về dịch vụ vận chuyển khí và LNG cho sản xuất điện — https://petrotimes.vn/bo-cong-thuong-lay-y-kien-du-thao-thong-tu-ve-dich-vu-van-chuyen-khi-va-lng-cho-san-xuat-dien-747657.html; Từ Nghi Sơn đến Vân Phong Việt Nam đang định hình các LNG Hub cấp vùng — https://petrovietnam.petrotimes.vn/tu-nghi-son-den-van-phong-viet-nam-dang-dinh-hinh-cac-lng-hub-cap-vung-747567.html
+- 🆕 moit.notices: 1 mục mới — Rà soát Nghị định 163, mở đường cho logistics phát triển hiện đại — /tin-tuc/ra-soat-nghi-dinh-163-mo-duong-cho-logistics-phat-trien-hien-dai.html
 - ⚠️ watcher fr.vn-seafood: không thấy mục nào trên trang
-- 🆕 news.public-investment: 11 mục mới — Giải ngân vốn đầu tư công: Không để chậm trễ - Báo Quảng Ngãi — https://news.google.com/rss/articles/CBMihwFBVV95cUxQOUlaeVl0c2NPVlI3Wlk3TWhzcmI2RjkyYXhBNzZMU0ZOakJhelVXYWV2RXlxdEFDSTZnSkRZN05mZ1ltTEZjZXRzZTZ0QWZWNExObDZkaVVZcmlFa01qVVVWcDFRUnVybzZZdmNGbXNCREtXM0xLNTB2NWI3cmFJdUM5R1R3bWs?oc=5; Lạng Sơn: Tập trung tháo gỡ vướng mắc, đẩy nhanh giải ngân vốn đầu tư công - Thuonghieucongluan.com.vn — https://news.google.com/rss/articles/CBMiuwFBVV95cUxOQUFSNnQ0YXFBUURoa0xIYUhpbUtZTWRZemVSN2I3SDRZY1VlYVpucjFRVFpMeU9iTmJXOWJMcng5SzJYVG5udE5PczF1SXRlZEx4THZwYW5GZnVjSDdMZV9tbWFZN3A1Q09sOGRYQXdZU1NWelB3V3h6bDZxT0NTSjJoeVQtZy1mZXZKdVBSb0c4TkZ4SUlXc2lWVDBJczRGYnBfVWIzT0RDNUJDMG45aEVkd0Z6OWQyeG9R?oc=5; Công an tỉnh tổ chức hội nghị đánh giá tiến độ giải ngân vốn đầu tư công, vốn ngân sách Nhà nước năm 2026 - Công An Tỉnh Ninh Bình — https://news.google.com/rss/articles/CBMi0AFBVV95cUxNZTJLaEtzUW9yNHZKTU9kWVdkMGRmM1BaWjY3cmw1bUZuMS16RDE1cjVvcHlYdFF0Znc5blJJcW5McGVzaHVqUVBKZVNNRHFHeGVzX1VVdDFQR3V6endkRTZiZm85N1BTZ2h4LXg0MFB3Nzk5MW1vWHdTSVptVk93VGpnS0U1VmtVRDhmenFOdjFaMXVXZVFMREFZMzBGTDBOS1dfNjFHbGxQazg4UHNrWHhDT1ZLUHZJZXRQOE8xeFpNVDEySGgyaDIyMmVOZXFT?oc=5
-- 🆕 news.retail: 1 mục mới — Những tác động từ việc Thái Lan tăng thuế tiêu thụ đặc biệt đối với xe điện nhập khẩu - SOHA — https://news.google.com/rss/articles/CBMiwgFBVV95cUxOa3ByVlNpWjVFWUw4RDNFaUhJdjExeGItMXh2TWRPUlFjTXBjOTYzZnNmMWE2YlZJakVUcUpPZXFORGs5dHUyUEFBbmRQOUdxZE1QOWFfOEdqZXFSNUFMeUlBSTFZeVV4NEE4NU9MVzZYOXZIV1pxMmFOdHB2c3ZDX1AwXzNyUFFqMmhLNUs0cFc0cmdxQnV2X1dHUGtYWG9mWUF2M3FGTEczVHpmd1NnYW9zUUVCeDJOZjFoNmwzZUcwdw?oc=5
-- 🆕 news.power-prices: 5 mục mới — Áp dụng biểu giá bán lẻ điện riêng cho sạc xe điện - Tập đoàn Điện lực Việt Nam (EVN) — https://news.google.com/rss/articles/CBMiogFBVV95cUxPSVBreTFEbUE5Yl8xM3dNcTRuakczTXlnaVRWaTFXZzA4Wjg1NTA4ZHJVR09ROW43YkVKRlZjck9JWjJxdEUtUnR6ckdfV3oxd3U2eHo2eUI3ZndhRWhTREdSVW5lYlcwcFhObmZhc29kN2dkWTJFUjJXOW9qSHRDNlhheGxjcmNhZTZGSUFfMmhzNlhrU1hlNzBOMW8yWmthQlE?oc=5; Khung giá phát điện sẽ do đơn vị độc lập xây dựng - Báo Công Luận — https://news.google.com/rss/articles/CBMijgFBVV95cUxOT3BVcW1nczJIdlR5SU9PMXRQS1NFZjdWOUtBUXM5SVBKa1NZS0p5UWJKSGoxUjJDTTBJamZrM2N0U19EY0hJcXhIYWV6MUFNMXhuWjFjS19VLXVEMEM4d0EtNXpScUNBbUYzQlhuem01UkZOWXYtLVN2cVVnYnFIdXR0N3FfVHpyWDhaYlp3?oc=5; Chi tiết giá bán lẻ điện cho sinh hoạt, sản xuất, kinh doanh từ 1/11 - Trang TTĐT Xã Gia Lâm — https://news.google.com/rss/articles/CBMi0gFBVV95cUxPQ0pqSkptZ0E4cGczVXZSMDlCWWliUHk0N3RLZElKbXlqZDRzNGdLUUhkYlJ0VXN0MXNGS3R1eGxxMFpSRmRvN0d0VTVXRXQ1cTJkc3RnS3g0YmVvVFZqbG9fNmdoRktUcFA1RWFsQWIyandYekRmNnhneUVzTjJYMVV3T3Jsa1BwNGFuUVlQQ3p3UGFrZWYxLUEzam42a2VXcDY5TWJ6VGpRZl9OZllWMW4xYS0zeC11V0NmR2FtTnlMNV92QXBtV3haXy1xbmNjTWc?oc=5
-- 🆕 news.pharma: 5 mục mới — Tháo gỡ khó khăn trong đấu thầu thuốc ở bệnh viện công - Báo và Phát thanh, Truyền hình Nghệ An — https://news.google.com/rss/articles/CBMivgFBVV95cUxPQlZ3WkVVRHYxWWVCaHdlTmc1QkcyODFoSHd4UzFac0s5Q3NsOFVWd3VnaXVsQ1FiQnFURUhqcTZIbEdrTG80TXdTanRxYk05WnNBUE5GaHhyNHRKNElFdkFabDFXZVg4NElOZUR4WUJaZEx6S3BzSmFPZ2JZVmdoYm5UTGN1a29rNi10bndtNXJHbm1rekpHblN3WTJhMkpxMTByazlwNWpHRWJmaGFpT2R5cjJTVkFKQk4zbXJB?oc=5; Long Châu ra mắt ứng dụng công nghệ trong truy xuất, minh bạch hành trình vaccine - VTV.vn — https://news.google.com/rss/articles/CBMixAFBVV95cUxNMkRnY25qZnVaZ29yaGg1Q0hFOXBpZlFJWmdVLTNKSW5nb2dQaTRxYy01TFcxVFVONHM2V0JsR1BIY2l1WkdsM1BieVNIQmgxWmM1SXdPOVNTYnczcFpWTkstUm96X3hTUS16YjVYNXROamtCLS1MYjlFcEttSURlbjVNWVNhR19uQVpuVUg5cXZzeHQ5ZU0yNThxZFV4dW9UNVpFM21HMC1FUVRuS3lzOEE4SDRUM2JNR0J6S0VaYkJCRm1C?oc=5; Tháo gỡ khó khăn trong đấu thầu thuốc ở bệnh viện công - Báo Nghệ An — https://news.google.com/rss/articles/CBMikwFBVV95cUxON0sxZEpsR3hyTHJpRzJPdWJDRnZVeFJlZExSRERXT1VLZmJCczlQNGY5QlR0b2lEX25FMmczUTkzQXpGRnllWnJUelBHN3VtNnY3VWcwZmJLZHVNWHl6OE5obkdOWHZQakpSU0tWU0J1UFhwWmROYXNKNHBub3dXQnJFZ1UtWGpMLXFyeUgtTVJCQ28?oc=5
-- ❌ oil.portwatch lỗi 4 ngày: hormuz, bab_el_mandeb
+- 🆕 news.public-investment: 12 mục mới — Ban Quản lý dự án số 2 giải ngân vốn đầu tư công đạt hơn 65% - Báo Lâm Đồng — https://news.google.com/rss/articles/CBMimAFBVV95cUxNWFlxTG5ZX0RkX0VzWUpFdW1fVlMxZ2dNZDdORUlpUVlrXzhjblh0QVdFNV9hYTR5dWVLZVUxbHRQZzN1WXR3MjBqN0sxaGlwbTJMNzBlTkhhZVcwTTNkaFFZVFF0ZUdoUDQ2NjBDbm80RGFxSW5uRnJBU1VvVzZuNmF0M1FXWjE4R25XWFU2RnQ5S0hSQmM1Ng?oc=5; Infographics: 15 bộ, cơ quan trung ương đạt mức giải ngân vốn đầu tư công tốt trong 10 tháng - Tạp chí điện tử Thương Trường — https://news.google.com/rss/articles/CBMi0AFBVV95cUxOS2NPODBwd0s1WW9LaXlfYjNMclc2Zjh2eDlhV0xVUzdSUmExYW1JMFlmNjNyQlJHUDQ4RGptMjBpcjBOekpzcnhpQkhLNjUyaUdQUXAyWlk1aWVGUVFTTDY1Q0xpa2lCY19Ma0N4Vk1NYlVJbzlMNlhZS2RnSHFEd1ViZFR6Q1pUQXlqXzFIQWlJR25OT1dtWjdKcU9zbjdtOGhZcFFvSUFqVzBXaVNoZTF0bndoLThUQkpDT3A1N3NDODJRX0hHdDFzcDVMVVNZ?oc=5; Tháo nút thắt, tăng tốc giải ngân vốn đầu tư công - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMiigFBVV95cUxNZklsNWxHNkhGZjZSMVh6M3c1N1cxSEUxMlIyYy1kSXB1WlFFNlpNUUUtdnZEVzFudi1Lb2pEdW4yS0tPWXhEd2hHLXRXQUxDc2xzYmxQa1FpNGZRNUVJXzBXZVlTcUV1UjhHdkh4X1pydC1qM3VsRUJpd2M4MGtTVUJOOHZfak9DN2c?oc=5
+- 🆕 news.insurance: 1 mục mới — INFOGRAPHIC: Doanh thu phí bảo hiểm 10 tháng đạt gần 196.000 tỷ đồng - Tạp chí Kinh tế - Tài chính Online — https://news.google.com/rss/articles/CBMisAFBVV95cUxOZGVjYV8xQXBYUkVhSkg4RFA3STBXdkZ3VUl0LS1BT000OXBjVGwzUjhzaUloRE1heUZtdnkxUkFiYVp1UFRxMjNQd1YxQ0VfcG9Jcm9EZTdpSEhkLXdmYllpSXpBOHo0cExiNnFRQnVwY3U1TVUtb3oyQzBKWWFrdHRGTllQeVB6X2xTSHUtWVVKLXhTdXJyd2k5YUJkYThxRkJ3c3I5cU9mcE9MTUNCYQ?oc=5
+- 🆕 news.power-prices: 2 mục mới — Chi tiết giá bán lẻ điện cho sinh hoạt, sản xuất, kinh doanh từ 1/11 - Chuyển động Thị trường — https://news.google.com/rss/articles/CBMirAFBVV95cUxPU1lVSmhnMHNIRm83cnZaNmRFMHl2RzhWc3dMWXI3T3JKNVdrenNLRWlxTlh1ZUtoYXJzN3paSnc4bDlVdnExTXhnVi1tdXpZMWM1RTA1SVNEZ0lsRFdTUkF6MzJpaEl6SHpkbGVXX1hnOFVlek0xMnpUWWNFci1FMXljWjNPMlY2LVozMmpjb0FpQzNxR1VEak8zd19TOVRWS0NqUVVDU04tR0NO?oc=5; EVN giảm giá bán lẻ điện từ ngày 1-11 - Báo Phú Thọ — https://news.google.com/rss/articles/CBMieEFVX3lxTE01SnFNbm1COGlVNmZXTDJXY3lYYXdGOFd1Y1piU084MVVlWVRFb2p1bkhJRlN2UTFiWjJMbU95VFJqT095SUVWX2NabkZmYTZUQlFfQW5XT1NySXBVQnl1SUVXODVmVTJzSW14bWFicHhRd1Ateklxcg?oc=5
 - ❌ oil.jodi lỗi 5 ngày: middle_east_crude_exports
 - → hàng chờ [B] bank.wi.daily: lịch 06/11 07:00
 - → hàng chờ [B] bank.wi.monthly: lịch 02/11 07:00
-- → hàng chờ [C] oil.supply-news: watcher báo có công bố mới
+- → hàng chờ [C] oil.price-policy: watcher báo có công bố mới
 - → hàng chờ [C] bank.policy: lịch 07/11 07:00
 - → hàng chờ [D] oil.ai.cycle: đổi đáng kể: brent.value: 115.22 → 107.03
 - → hàng chờ [D] oil.ai.regime: đổi đáng kể: brent.value: 115.22 → 107.03
@@ -18,6 +16,7 @@
 - → hàng chờ [C] power.evn-reservoirs: lịch 02/11 07:00
 - → hàng chờ [C] power.tariff-evn: lịch 01/11 07:00
 - → hàng chờ [C] power.policy: lịch 02/11 07:00
+- → hàng chờ [C] power.hot-topics: watcher báo có công bố mới
 - → hàng chờ [D] power.ai.cycle: đổi đáng kể: wb_energy_monthly.lng_japan: 14.25 → 16.59
 - → hàng chờ [C] realestate.fdi-projects: lịch 07/11 07:00
 - → hàng chờ [C] realestate.credit-rates: lịch 07/11 07:00
@@ -44,13 +43,10 @@
 - → hàng chờ [C] construction.prices: lịch 02/11 07:00
 - → hàng chờ [C] construction.hot-topics: lịch 02/11 07:00
 - → hàng chờ [C] insurance.market: lịch 07/11 07:00
+- → hàng chờ [C] insurance.policy: watcher báo có công bố mới
 - → hàng chờ [C] insurance.hot-topics: lịch 02/11 07:00
-- → hàng chờ [C] retail.market: watcher báo có công bố mới
-- → hàng chờ [C] retail.policy: watcher báo có công bố mới
 - → hàng chờ [C] retail.hot-topics: lịch 02/11 07:00
 - → hàng chờ [C] power.company-quarterly: lịch 02/11 07:00
-- → hàng chờ [C] pharma.market: watcher báo có công bố mới
-- → hàng chờ [C] pharma.policy: watcher báo có công bố mới
 - → hàng chờ [C] pharma.hot-topics: lịch 02/11 07:00
 - → hàng chờ [B] realestate.wi.daily: lịch 06/11 07:00
 - → hàng chờ [B] realestate.wi.weekly: lịch 02/11 07:00
@@ -96,7 +92,3 @@
 - → hàng chờ [C] seafood.duties.landed: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [C] steel.docs.hpg-volume: lần đầu: rà soát số đang hiển thị
 - Hàng chờ Claude: 94 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
-
-## Cảnh báo
-
-- ⚠️ Watcher fr.vn-seafood: trang không còn mục nào khớp, kiểm lại cấu hình
