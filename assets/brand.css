@@ -1235,3 +1235,45 @@ html .mkt-toc a.on::before{background:#59C5C8;border-color:#1D2678;width:10px;he
 :root[data-theme=dark] .mkt-toc a:hover{background:#222;color:#F5F5F5}
 :root[data-theme=dark] .mkt-toc a.on{color:#59C5C8;background:rgba(89,197,200,.12)}
 :root[data-theme=dark] .mkt-toc a.on::before{background:#59C5C8;border-color:#59C5C8}
+
+/* Bảng tóm tắt tài chính: cố định cột chỉ tiêu khi cuộn ngang (06/11/2026) */
+table.fintbl :is(td,th):first-child{position:sticky;left:0;z-index:2;background-color:#fff;box-shadow:1px 0 0 #E3E8F0,4px 0 6px -4px rgba(15,23,42,.18)}
+table.fintbl thead th:first-child{z-index:4;background-color:var(--navy)}
+table.fintbl tr.h td:first-child{background-color:#F0F1F8}
+
+/* Breadcrumb dưới thanh tab: nổi đè, không chiếm chỗ — trước đây giãn chiều cao khi cuộn làm cả trang giật (06/11/2026) */
+nav.tabs>.fs-crumb{position:absolute;left:0;right:0;top:100%;height:30px!important;transition:opacity var(--t-base,.2s);pointer-events:none;background:rgba(249,250,253,.92);backdrop-filter:blur(6px)}
+nav.tabs>.fs-crumb:not(.show){opacity:0}
+:root[data-theme=dark] nav.tabs>.fs-crumb{background:rgba(10,10,10,.9)}
+
+/* Bảng Income Statement kiểu bảng tóm tắt tài chính (người dùng chốt 06/11/2026): header navy, cột thực tế navy, cột dự phóng ILO Blue,
+   dải nhóm, dòng tổng nền xanh nhạt chữ navy đậm, dòng tỷ lệ thụt vào, tăng trưởng xanh/đỏ. Dùng class is-sheet. */
+table.is-sheet{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+table.is-sheet thead th{background:#1D2678;color:#fff;font-size:12px;font-weight:700;letter-spacing:0;text-transform:none;padding:9px 10px;white-space:nowrap}
+table.is-sheet thead th.f{background:#2938A8}
+table.is-sheet td{padding:7px 10px;border-bottom:1px solid #E3E8F0;background:#fff;color:#334155;white-space:nowrap}
+table.is-sheet tr.band td{background:#1D2678!important;color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px}
+table.is-sheet tr.total td{background:#EEF1FB!important;color:#1D2678;font-weight:700}
+table.is-sheet tr.ratio td{color:#64748B;font-style:italic}
+table.is-sheet tr.ratio td:first-child,table.is-sheet tr:not(.total):not(.band):not(.ratio) td:first-child{padding-left:18px}
+table.is-sheet .up{color:#1E8E5A;font-weight:600}table.is-sheet .dn{color:#C0392B;font-weight:600}
+table.is-sheet tbody tr:nth-child(even) td{background:#fff}
+:root[data-theme=dark] table.is-sheet td{background:#161616;color:#F5F5F5;border-color:#2A2A2A}
+:root[data-theme=dark] table.is-sheet tr.total td{background:#1C2553;color:#59C5C8}
+
+/* Tiến độ so với forecast dạng thanh (forecast-progress.js, 06/11/2026) */
+.fp-chart{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px 32px;margin:6px 0 10px}
+.fp-name{font-weight:650;color:#243878;margin-bottom:8px}.fp-name span{font-weight:400;color:#64748B;font-size:12.5px;margin-left:6px}
+.fp-row{display:grid;grid-template-columns:110px 1fr 120px;align-items:center;gap:10px;margin:7px 0}
+.fp-case{font-size:12.5px;color:#64748B;font-weight:600}
+.fp-track{position:relative;height:18px;background:#EEF1F6;border-radius:5px}
+.fp-fill{position:absolute;inset:0 auto 0 0;background:#8997D6;border-radius:5px}.fp-fill.ok{background:#1D2678}
+.fp-mark{position:absolute;top:-4px;bottom:-4px;width:2px;background:#D4A72C}
+.fp-full{position:absolute;top:-4px;bottom:-4px;width:0;border-left:2px dashed #94A3B8}
+.fp-val{font-variant-numeric:tabular-nums;font-size:13.5px}.fp-val b{color:#1D2678}.fp-val span{color:#64748B;font-size:12px;margin-left:4px}
+:root[data-theme=dark] .fp-track{background:#2A2A2A}:root[data-theme=dark] .fp-name,:root[data-theme=dark] .fp-val b{color:#59C5C8}
+
+/* fisc.vn góc phải dưới mọi card chart (người dùng chốt 06/11/2026, đi cùng watermark trong chart-explore.js) */
+.card:has(canvas):not(:has(details:not([open]) canvas))::after,.viz-block:has(canvas):not(:has(details:not([open]) canvas))::after{content:"fisc.vn";display:block;text-align:right;font:700 12.5px/1 Inter,Arial,sans-serif;color:#2938A8;margin-top:6px;letter-spacing:.2px}
+html[data-theme="dark"] .card:has(canvas)::after,html.dark .card:has(canvas)::after{color:#59C5C8}
+@media print{.card:has(canvas)::after,.viz-block:has(canvas)::after{display:none}}

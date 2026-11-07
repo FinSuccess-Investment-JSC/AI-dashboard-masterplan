@@ -186,14 +186,7 @@
     cells.forEach((c,i)=>{const r=Math.floor(i/cols),k=i%cols,x=pad+k*(cw+gap),yy=y+rowH.slice(0,r).reduce((a,b)=>a+b,0)+r*gap;
       let cy=yy;if(c.note.length){ctx.fillStyle=MUTED;ctx.font=`italic 500 ${noteF}px ${FONT}`;ctx.textBaseline='top';c.note.forEach(l=>{ctx.fillText(l,x,cy);cy+=noteF*1.35});cy+=noteF*0.5}
       ctx.drawImage(c.s,x,cy,cw,c.h);
-      // Watermark đặt vào khoảng trống nhất của chart (người dùng chốt 29/10/2026): quét bản chụp, tìm ô ít nét vẽ nhất
-      // trong vùng vẽ (bỏ dải tiêu đề/thanh chọn kỳ phía trên và nhãn trục/chú giải phía dưới), đặt chữ "FinSuccess" ở đó.
-      // Chart kín (vd. cột 100%) thì đặt giữa vùng vẽ, hai lớp mờ: trắng hiện trên cột đậm, navy hiện trên nền sáng.
-      let wm=watermark(null,cw*0.26,NAVY), sp=emptiest(c.s,wm.width/c.sc,wm.height/c.sc);
-      ctx.save();
-      if(sp.dense){wm=watermark(null,cw*0.22,NAVY);const wv=watermark(null,cw*0.22,'#fff'),px=x+(cw-wm.width)/2,py=cy+c.h*0.48-wm.height/2;ctx.globalAlpha=.10;ctx.drawImage(wm,px,py);ctx.globalAlpha=.24;ctx.drawImage(wv,px,py)}
-      else{ctx.globalAlpha=.13;ctx.drawImage(wm,x+sp.x*c.sc,cy+sp.y*c.sc)}
-      ctx.restore();
+      // Watermark: dùng watermark trong chart (fsWatermark, chart-explore.js), không vẽ thêm (06/11/2026).
     });
     // Nhận diện ở chân ảnh, chỗ trống (người dùng chốt 29/10/2026): chữ "FinSuccess" đậm, rõ + "MÃ · fisc.vn" (watermark trong chart đặt ở khoảng trống, xem emptiest).
     {const fs=Math.max(14,Math.round(cw*0.022)),tail='  ·  '+(p.ticker?p.ticker+'  ·  ':'')+'fisc.vn';ctx.save();ctx.textBaseline='bottom';ctx.textAlign='left';
