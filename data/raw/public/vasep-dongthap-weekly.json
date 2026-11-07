@@ -2,7 +2,7 @@
 "source": "VASEP · giá nguyên liệu thủy sản tại Đồng Tháp (tuần)",
 "url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc",
 "unit": "nghìn VND/kg (điểm giữa khoảng giá)",
-"checked": "2026-11-06",
+"checked": "2026-11-07",
 "series": {
 "pangasius": {
 "2014-06-11": {
@@ -5764,7 +5764,5 @@
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-9-8-15-8-2024-24375.html",
 "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc/gia-nguyen-lieu-thuy-san-tai-dong-thap-tu-9-9-15-9-2016-14719.html"
 ],
-"errors": {
-"2026-09-11": "price unreadable: ''"
-}
+"errors": {}
 }
