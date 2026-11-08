@@ -1,14 +1,16 @@
-# Lịch cập nhật — 07/11/2026 22:11
+# Lịch cập nhật — 08/11/2026 13:38
 
-- 🆕 moit.notices: 1 mục mới — Rà soát Nghị định 163, mở đường cho logistics phát triển hiện đại — /tin-tuc/ra-soat-nghi-dinh-163-mo-duong-cho-logistics-phat-trien-hien-dai.html
+- 🆕 pvn.news: 1 mục mới — Giá LNG tăng sốc Cú hích nhất thời hay mặt bằng giá mới — https://petrotimes.vn/gia-lng-tang-soc-cu-hich-nhat-thoi-hay-mat-bang-gia-moi-747643.html
 - ⚠️ watcher fr.vn-seafood: không thấy mục nào trên trang
-- 🆕 news.public-investment: 12 mục mới — Ban Quản lý dự án số 2 giải ngân vốn đầu tư công đạt hơn 65% - Báo Lâm Đồng — https://news.google.com/rss/articles/CBMimAFBVV95cUxNWFlxTG5ZX0RkX0VzWUpFdW1fVlMxZ2dNZDdORUlpUVlrXzhjblh0QVdFNV9hYTR5dWVLZVUxbHRQZzN1WXR3MjBqN0sxaGlwbTJMNzBlTkhhZVcwTTNkaFFZVFF0ZUdoUDQ2NjBDbm80RGFxSW5uRnJBU1VvVzZuNmF0M1FXWjE4R25XWFU2RnQ5S0hSQmM1Ng?oc=5; Infographics: 15 bộ, cơ quan trung ương đạt mức giải ngân vốn đầu tư công tốt trong 10 tháng - Tạp chí điện tử Thương Trường — https://news.google.com/rss/articles/CBMi0AFBVV95cUxOS2NPODBwd0s1WW9LaXlfYjNMclc2Zjh2eDlhV0xVUzdSUmExYW1JMFlmNjNyQlJHUDQ4RGptMjBpcjBOekpzcnhpQkhLNjUyaUdQUXAyWlk1aWVGUVFTTDY1Q0xpa2lCY19Ma0N4Vk1NYlVJbzlMNlhZS2RnSHFEd1ViZFR6Q1pUQXlqXzFIQWlJR25OT1dtWjdKcU9zbjdtOGhZcFFvSUFqVzBXaVNoZTF0bndoLThUQkpDT3A1N3NDODJRX0hHdDFzcDVMVVNZ?oc=5; Tháo nút thắt, tăng tốc giải ngân vốn đầu tư công - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMiigFBVV95cUxNZklsNWxHNkhGZjZSMVh6M3c1N1cxSEUxMlIyYy1kSXB1WlFFNlpNUUUtdnZEVzFudi1Lb2pEdW4yS0tPWXhEd2hHLXRXQUxDc2xzYmxQa1FpNGZRNUVJXzBXZVlTcUV1UjhHdkh4X1pydC1qM3VsRUJpd2M4MGtTVUJOOHZfak9DN2c?oc=5
-- 🆕 news.insurance: 1 mục mới — INFOGRAPHIC: Doanh thu phí bảo hiểm 10 tháng đạt gần 196.000 tỷ đồng - Tạp chí Kinh tế - Tài chính Online — https://news.google.com/rss/articles/CBMisAFBVV95cUxOZGVjYV8xQXBYUkVhSkg4RFA3STBXdkZ3VUl0LS1BT000OXBjVGwzUjhzaUloRE1heUZtdnkxUkFiYVp1UFRxMjNQd1YxQ0VfcG9Jcm9EZTdpSEhkLXdmYllpSXpBOHo0cExiNnFRQnVwY3U1TVUtb3oyQzBKWWFrdHRGTllQeVB6X2xTSHUtWVVKLXhTdXJyd2k5YUJkYThxRkJ3c3I5cU9mcE9MTUNCYQ?oc=5
-- 🆕 news.power-prices: 2 mục mới — Chi tiết giá bán lẻ điện cho sinh hoạt, sản xuất, kinh doanh từ 1/11 - Chuyển động Thị trường — https://news.google.com/rss/articles/CBMirAFBVV95cUxPU1lVSmhnMHNIRm83cnZaNmRFMHl2RzhWc3dMWXI3T3JKNVdrenNLRWlxTlh1ZUtoYXJzN3paSnc4bDlVdnExTXhnVi1tdXpZMWM1RTA1SVNEZ0lsRFdTUkF6MzJpaEl6SHpkbGVXX1hnOFVlek0xMnpUWWNFci1FMXljWjNPMlY2LVozMmpjb0FpQzNxR1VEak8zd19TOVRWS0NqUVVDU04tR0NO?oc=5; EVN giảm giá bán lẻ điện từ ngày 1-11 - Báo Phú Thọ — https://news.google.com/rss/articles/CBMieEFVX3lxTE01SnFNbm1COGlVNmZXTDJXY3lYYXdGOFd1Y1piU084MVVlWVRFb2p1bkhJRlN2UTFiWjJMbU95VFJqT095SUVWX2NabkZmYTZUQlFfQW5XT1NySXBVQnl1SUVXODVmVTJzSW14bWFicHhRd1Ateklxcg?oc=5
-- ❌ oil.jodi lỗi 5 ngày: middle_east_crude_exports
+- 🆕 news.public-investment: 14 mục mới — Tăng tốc giải ngân vốn đầu tư công - Báo Nhân Dân điện tử — https://news.google.com/rss/articles/CBMiekFVX3lxTE1ydTN4YWNVSVZ1ZldQVEVpa3BNT3BsbDhRXzFvYjZuRHBBeW9QQTRvMFgtUTJNeE5zMDdwWmx2SHZ6VVVud05JS1JTZkJ3cmE0ZVlhLVFMazAwQXVQMkl5M21ERUdoaHczdWM5TkVKc1dCLVhGbTNqbDNR?oc=5; Phường Trung Thành (Thái Nguyên) quyết liệt giải ngân vốn đầu tư công, tạo động lực phát triển - Tạp chí Công Thương — https://news.google.com/rss/articles/CBMizgFBVV95cUxOS1psaHhsR1puMzEzWVRpeVE2dHc3UEJlWXMxSFVqUXBKeU5lRFoyWkM4aW1wb2hjX0pBaVVPV3FObm9ENExTb01uUDREMk1tYTg4WVpzcjFseW5FNnVSWnJ4NGNVTFp5ZGZVay1LVEZqdzRwT1dNODI0eHJYdThRaFhVeTYxOWUzRjIwZXFxUTBaY0ZiRmxnMklLcGE3b0dCRmFfdGFsR3VITHBWaVRCT3FqejZhV1VscFBEQ0E4eFY1cHdSVVhSbEJ5MXM3QQ?oc=5; Chấm điểm giải ngân đầu tư công: Điểm số không chỉ để xếp loại - Báo Tiền Phong — https://news.google.com/rss/articles/CBMinwFBVV95cUxPYTVtVHYtT2N1eXNIUXFlVHJ0cVA5OVVoZFR5MkViWkIzNGNMV3Yxb2VUcjEtakJJa2FUMjZMYmhDZ2YzNmVkd0dQUmYxaWxNZ05qUnVzQzZwdWQ0Sm1NZU9kMko1aUtfcmNJMmdoa01wVTFfMUNyVWFfS2ppc0dJR0FRM0hTWkNqckhDSll4VUxyNE16TlhXS3BybGFjamM?oc=5
+- 🆕 news.insurance: 1 mục mới — Tổng chi bồi thường giảm hơn 50%, BHI thoát lỗ quý 3 và 9 tháng - 24HMoney — https://news.google.com/rss/articles/CBMipAFBVV95cUxNSExOVUpORDNFRGZwX3kwUXFITGt4M20xR2JpVGpuTnZObjVZWnJSUm1waUxQdl9SZHBzWXQxWHRhTksxaXdvS2Q3MTFxOVBORGV5QkQ1WmpYWlBZTjJHUkp1anZyZXpUaUo1TV9uYnlIbENBZ0FXWGZ5ek4wQ0RNdDltQnRoWV9DclhRRXBHYlZQaFpKcHFfQWY0OVpMSFFLcWNnRg?oc=5
+- 🆕 news.retail: 2 mục mới — Từ ngày 1/11, áp dụng thuế suất thuế tiêu thụ đặc biệt với xăng là 0% - nguoiquansat.vn — https://news.google.com/rss/articles/CBMipgFBVV95cUxPMVBLeUd5aHRMQm1ERHV0dVBmMy11dFUxaGhUeW1LVmo0NW91ekNMaHpmSmxjS0lrYkZsSkRUYzVsQmc3eWJMTVZOWDVLWjFFN25YUUZPY1ZPcDByTzh4RDcwZlBpcXNQOGk2OG5MUlB1ZnZ5Q0dxcnlYUi1ZWDV1bW16TkJkT2lxV25uU2JRcFhCWUFoSlZrUWpVYVZYMFhPMGY3ejl3?oc=5; Thuế tiêu thụ đặc biệt về 0%, giá xăng đồng loạt giảm tới 1.804 đồng mỗi lít - Vietstock — https://news.google.com/rss/articles/CBMiuAFBVV95cUxOdXZSTExHQm5SUUVsSHFrb1VmQm95M1l5TzkzVDh6RFRqaERHZGVGLVRzQ1dIQW83WEwtLVBsb0F2ZXF0a2ZCSzg0ZkZHNlllR2JiUHZ3UHFJM1c1VjNTSm9vR0FDeGtiUHRBYVFyX2lzSGNIRFBZX3BJU0pnS3pkUUt4MHJLYkY5ZUkyeGxmZ09vOHc0SFBCU0Vqem9Ta09CaXZrYU1Zb3dvaFc5Wk5YMVNINFl5X3NV?oc=5
+- 🆕 news.power-prices: 2 mục mới — Chi tiết giá bán lẻ điện cho sinh hoạt, sản xuất, kinh doanh từ 1/11 - CafeF — https://news.google.com/rss/articles/CBMiqgFBVV95cUxNeTdETk5NMk1HaFRySUNLdVBEV0hkTHJIRE1venNvcnlvdElUclh2ak13aWdXV3BSS0h3b1NjY1gwRGZjcEt2cnRTYVM2SFdYeDNkUUZsejh1RkV5ZjVhd0paMHVKZUt3bWw2RUM4WjFWRF9HU3lVMF81ZV85V0lqbW1fWWVkRkpmY3dIMTVnVl82ZDNkUmFTWDMwNnpfcnZSZDZBenFIYnQ3UQ?oc=5; Điều chỉnh giá bán lẻ điện bình quân từ ngày 10/5/2025 - Tổng công ty Điện lực miền Bắc — https://news.google.com/rss/articles/CBMimAFBVV95cUxQekJ2My03RFEzMzR6QTVyeENCcXo2SFdzQV9lZDhfM1FPLUozcmc5VUE5QWZUT2ttU2d6MTVackl3dXI4NG9aVER4d0NGR0h5aDFqaXNmVFJya0ZhQ2pkTVllUERzTVpjdG1RSWUteE1XT2huMGphYjFta3ZCa0VZbmRDTF9FT29XTjAyV3VzaGN1WGNUay14aQ?oc=5
+- 🆕 news.pharma: 2 mục mới — Long Châu ra mắt ứng dụng công nghệ trong truy xuất, minh bạch hành trình vắc xin - Tuổi Trẻ — https://news.google.com/rss/articles/CBMiswFBVV95cUxNNlBFcENPN2JOejM5eEIxY0ViNEFadXAzdGRwQWlpVGFRM0dwWUVnZ2xvb3RDYWJTRklPX2IwWGF0c3VKUmFtZWRTbDROYV9xOW92cENjaHV5ZWRXUjhaLThVZE00S3Mxb0dyYk1YZWJDVE90cjRIZ2ZKQlZHMTdvamw4U213NlN3U1I0bi1KeFlkLUI2dDlhNmhSU3J5ODBYSTBGY24zTV92NW5XUmVkOFp0cw?oc=5; Long Châu 'bắt tay' Bệnh viện FV giúp người dân hiểu đúng bệnh, chủ động phòng ngừa - Báo Thanh Niên — https://news.google.com/rss/articles/CBMiwgFBVV95cUxPUm1yUEZnMFQ5aXk2em00RzBKNVhOMkVaRjN4Zm1HN3lyakJnYlZnSjBFdkFSa0xoOXBNZFBPTjNlU2NDVUcxejN3MjB5UVM5anRfM0VkbldmNnZwUGNqbDlUVzExT0N6dmxIRXJnN255dWZoRS1GOVFlNXZ3NUVlcXk3WTV5VGJGNjFZZXZXZ05qLU1nVUlvdElsMjd0V3pUblhpY1ZTeTZrY29hU3pqOF85MmN6b1JudHdHdXYyMGJYQQ?oc=5
+- ❌ oil.jodi lỗi 6 ngày: middle_east_crude_exports
 - → hàng chờ [B] bank.wi.daily: lịch 06/11 07:00
 - → hàng chờ [B] bank.wi.monthly: lịch 02/11 07:00
-- → hàng chờ [C] oil.price-policy: watcher báo có công bố mới
+- → hàng chờ [C] oil.supply-news: watcher báo có công bố mới
 - → hàng chờ [C] bank.policy: lịch 07/11 07:00
 - → hàng chờ [D] oil.ai.cycle: đổi đáng kể: brent.value: 115.22 → 107.03
 - → hàng chờ [D] oil.ai.regime: đổi đáng kể: brent.value: 115.22 → 107.03
@@ -16,13 +18,13 @@
 - → hàng chờ [C] power.evn-reservoirs: lịch 02/11 07:00
 - → hàng chờ [C] power.tariff-evn: lịch 01/11 07:00
 - → hàng chờ [C] power.policy: lịch 02/11 07:00
-- → hàng chờ [C] power.hot-topics: watcher báo có công bố mới
 - → hàng chờ [D] power.ai.cycle: đổi đáng kể: wb_energy_monthly.lng_japan: 14.25 → 16.59
-- → hàng chờ [C] realestate.fdi-projects: lịch 07/11 07:00
-- → hàng chờ [C] realestate.credit-rates: lịch 07/11 07:00
+- → hàng chờ [C] realestate.fdi-projects: lịch 08/11 07:00
+- → hàng chờ [C] realestate.credit-rates: lịch 08/11 07:00
 - → hàng chờ [C] realestate.hot-topics: lịch 02/11 07:00
 - → hàng chờ [C] textile.trade-tariff: lịch 02/11 07:00
 - → hàng chờ [C] textile.hot-topics: lịch 02/11 07:00
+- → hàng chờ [C] port.throughput: lịch 08/11 07:00
 - → hàng chờ [C] port.projects: lịch 02/11 07:00
 - → hàng chờ [C] port.hot-topics: lịch 02/11 07:00
 - → hàng chờ [C] agri.policy: lịch 02/11 07:00
@@ -37,26 +39,30 @@
 - → hàng chờ [C] steel.hot-topics: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [D] steel.ai.cycle: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [B] steel.wi.weekly: lịch 02/11 07:00
-- → hàng chờ [B] steel.wi.monthly: lịch 07/11 07:00
-- → hàng chờ [C] construction.disbursement: lịch 07/11 07:00
+- → hàng chờ [B] steel.wi.monthly: lịch 08/11 07:00
+- → hàng chờ [C] construction.disbursement: lịch 08/11 07:00
 - → hàng chờ [C] construction.policy: watcher báo có công bố mới
 - → hàng chờ [C] construction.prices: lịch 02/11 07:00
 - → hàng chờ [C] construction.hot-topics: lịch 02/11 07:00
-- → hàng chờ [C] insurance.market: lịch 07/11 07:00
+- → hàng chờ [C] insurance.market: lịch 08/11 07:00
 - → hàng chờ [C] insurance.policy: watcher báo có công bố mới
 - → hàng chờ [C] insurance.hot-topics: lịch 02/11 07:00
+- → hàng chờ [C] retail.market: lịch 08/11 07:00
+- → hàng chờ [C] retail.policy: watcher báo có công bố mới
 - → hàng chờ [C] retail.hot-topics: lịch 02/11 07:00
 - → hàng chờ [C] power.company-quarterly: lịch 02/11 07:00
+- → hàng chờ [C] pharma.market: watcher báo có công bố mới
+- → hàng chờ [C] pharma.policy: watcher báo có công bố mới
 - → hàng chờ [C] pharma.hot-topics: lịch 02/11 07:00
 - → hàng chờ [B] realestate.wi.daily: lịch 06/11 07:00
 - → hàng chờ [B] realestate.wi.weekly: lịch 02/11 07:00
 - → hàng chờ [B] textile.wi.daily: lịch 06/11 07:00
 - → hàng chờ [B] textile.wi.weekly: lịch 02/11 07:00
-- → hàng chờ [B] port.wi.monthly: lịch 07/11 07:00
+- → hàng chờ [B] port.wi.monthly: lịch 08/11 07:00
 - → hàng chờ [B] port.wi.weekly: lịch 02/11 07:00
-- → hàng chờ [B] agri.wi.monthly: lịch 07/11 07:00
+- → hàng chờ [B] agri.wi.monthly: lịch 08/11 07:00
 - → hàng chờ [B] agri.wi.weekly: lịch 02/11 07:00
-- → hàng chờ [B] seafood.wi.monthly: lịch 07/11 07:00
+- → hàng chờ [B] seafood.wi.monthly: lịch 08/11 07:00
 - → hàng chờ [B] seafood.wi.weekly: lịch 02/11 07:00
 - → hàng chờ [B] port.wi.valuation: lịch 06/11 07:00
 - → hàng chờ [B] agri.wi.valuation: lịch 06/11 07:00
@@ -64,26 +70,26 @@
 - → hàng chờ [B] shipping.wi.daily: lịch 06/11 07:00
 - → hàng chờ [B] shipping.wi.weekly: lịch 02/11 07:00
 - → hàng chờ [B] shipping.wi.valuation: lịch 06/11 07:00
-- → hàng chờ [B] construction.wi.monthly: lịch 07/11 07:00
+- → hàng chờ [B] construction.wi.monthly: lịch 08/11 07:00
 - → hàng chờ [B] construction.wi.weekly: lịch 02/11 07:00
 - → hàng chờ [B] construction.wi.valuation: lịch 06/11 07:00
-- → hàng chờ [B] insurance.wi.quarterly: lịch 07/11 07:00
-- → hàng chờ [B] insurance.wi.monthly: lịch 07/11 07:00
+- → hàng chờ [B] insurance.wi.quarterly: lịch 08/11 07:00
+- → hàng chờ [B] insurance.wi.monthly: lịch 08/11 07:00
 - → hàng chờ [B] insurance.wi.weekly: lịch 02/11 07:00
 - → hàng chờ [B] insurance.wi.valuation: lịch 06/11 07:00
-- → hàng chờ [B] retail.wi.monthly: lịch 07/11 07:00
+- → hàng chờ [B] retail.wi.monthly: lịch 08/11 07:00
 - → hàng chờ [B] retail.wi.weekly: lịch 02/11 07:00
 - → hàng chờ [B] retail.wi.valuation: lịch 06/11 07:00
-- → hàng chờ [B] pharma.wi.monthly: lịch 07/11 07:00
+- → hàng chờ [B] pharma.wi.monthly: lịch 08/11 07:00
 - → hàng chờ [B] pharma.wi.valuation: lịch 06/11 07:00
 - → hàng chờ [C] construction.disbursement-race: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [C] construction.province-index-bot: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [B] insurance.wi.ratio: lịch 07/11 07:00
+- → hàng chờ [B] insurance.wi.ratio: lịch 08/11 07:00
 - → hàng chờ [C] insurance.reinsurance: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [B] retail.wi.gold: lịch 02/11 07:00
 - → hàng chờ [C] retail.calendar: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [C] pharma.calendar: lần đầu: rà soát số đang hiển thị
-- → hàng chờ [B] port.wi.portwatch: lịch 07/11 07:00
+- → hàng chờ [B] port.wi.portwatch: lịch 08/11 07:00
 - → hàng chờ [C] port.price-margin: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [B] shipping.wi.fearnleys: lịch 02/11 07:00
 - → hàng chờ [C] shipping.derived: lần đầu: rà soát số đang hiển thị
@@ -91,4 +97,8 @@
 - → hàng chờ [B] seafood.wi.us-imports: lịch 20/10 07:00
 - → hàng chờ [C] seafood.duties.landed: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [C] steel.docs.hpg-volume: lần đầu: rà soát số đang hiển thị
-- Hàng chờ Claude: 94 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
+- Hàng chờ Claude: 95 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
+
+## Cảnh báo
+
+- ⚠️ Watcher fr.vn-seafood: trang không còn mục nào khớp, kiểm lại cấu hình
