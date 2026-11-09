@@ -1,8 +1,4 @@
-# Lịch cập nhật — 09/11/2026 09:10
+# Lịch cập nhật — 09/11/2026 13:03
 
-- ❌ pharma.wi.valuation (lần 8): Widata-MCP không kết nối được (502) trong phiên routine
-- Hàng chờ Claude: 95 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
-
-## Cảnh báo
-
-- ❌ Routine thất bại 8 lần với pharma.wi.valuation: Widata-MCP không kết nối được (502) trong phiên routine
+- ✅ shipping.outlook: BIMCO dry bulk 02/11/2026 đã mở: cầu 2027–2028 +0,5–2,5%, cung +3–4% (Hormuz đóng); cập nhật vt-23. Tanker (8/2026) và container (9/2026) chưa có bản mới
+- Hàng chờ Claude: 93 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly

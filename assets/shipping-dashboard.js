@@ -158,9 +158,9 @@ if(document.getElementById('chSdTanker')){
   insight('chSdTanker','Cầu tanker theo tấn giảm vì dầu Vịnh không xuất được, nhưng cung tàu 2026 gần như không tăng (0 đến −1%) và tàu bị kẹt, nên cước vẫn ở đỉnh. Đến 2027 cung +5–6% — nếu Hormuz vẫn đóng thì cả cầu và cước cùng giảm; nếu mở lại, cầu bật +7,5% nhưng tàu mới cũng về.');
 }
 if(document.getElementById('chSdBulk')){
-  groupBars('chSdBulk',{groups:['2026','2027'],series:[{name:'Cầu (tấn-dặm)',color:C.navy,values:[3,1]},{name:'Cung đội tàu',color:C.red,values:[2,4]}],ariaLabel:'Cung cầu hàng rời theo BIMCO'});
-  sourceLine('chSdBulk',[['BIMCO dry bulk 7/2026','https://cyprusshippingnews.com/2026/07/31/bimco-dry-bulk-shipping-market-overview-outlook-2/']],'7/2026','Điểm giữa khoảng BIMCO (cầu 2026 +2,5…3,5%, thêm 1 điểm nếu Hormuz mở; cung 2027 +3,5…4,5%).',false);
-  insight('chSdBulk','2026 cầu còn vượt cung (+3% so +2%) nên BDI giữ cao, thuận cho VOS, VNA. 2027 đảo chiều: cung +4% trong khi cầu chỉ +1% — cước hàng rời khó giữ sang năm sau.');
+  groupBars('chSdBulk',{groups:['2026','2027','2028'],series:[{name:'Cầu (tấn-dặm)',color:C.navy,values:[3,1.5,1.5]},{name:'Cung đội tàu',color:C.red,values:[2,3.5,3.5]}],ariaLabel:'Cung cầu hàng rời theo BIMCO'});
+  sourceLine('chSdBulk',[['BIMCO dry bulk 11/2026','https://cyprusshippingnews.com/2026/11/02/bimco-dry-bulk-shipping-market-overview-outlook-3'],['BIMCO dry bulk 7/2026 (số 2026)','https://cyprusshippingnews.com/2026/07/31/bimco-dry-bulk-shipping-market-overview-outlook-2/']],'11/2026 (2027–2028); 7/2026 (2026)','Điểm giữa khoảng BIMCO, kịch bản Hormuz đóng: cầu 2027–2028 +0,5…2,5%, cung +3…4%. Số 2026 (cầu +2,5…3,5%, cung +1,5…2,5%) vẫn từ bản 7/2026 vì bản 11/2026 không nêu lại.',false);
+  insight('chSdBulk','2026 cầu còn vượt cung (+3% so +2%) nên BDI giữ cao, thuận cho VOS, VNA. 2027–2028 cung +3,5% vượt cầu +1,5% (BIMCO 11/2026, kịch bản Hormuz đóng) — cung/cầu yếu dần từ mặt bằng cao, cước khó giữ.');
 }
 if(document.getElementById('chSdCont')){
   groupBars('chSdCont',{groups:['2026','2027'],series:[{name:'Cầu (khối lượng, 7T/2026 thực tế)',color:C.navy,values:[5.1,NaN]},{name:'Cung đội tàu',color:C.red,values:[4.6,9]}],ariaLabel:'Cung cầu container theo BIMCO'});

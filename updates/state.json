@@ -466,9 +466,9 @@
    "stuck": true
   },
   "shipping.outlook": {
-   "lastAttempt": "2026-10-28T21:31:35+07:00",
-   "lastSuccess": "2026-10-28T21:31:35+07:00",
-   "lastNote": "BIMCO mới nhất vẫn tanker 8/2026, bulk 7/2026, container 9/2026; thêm Suez 753k TEU"
+   "lastAttempt": "2026-11-09T13:03:34+07:00",
+   "lastSuccess": "2026-11-09T13:03:34+07:00",
+   "lastNote": "BIMCO dry bulk 02/11/2026 đã mở: cầu 2027–2028 +0,5–2,5%, cung +3–4% (Hormuz đóng); cập nhật vt-23. Tanker (8/2026) và container (9/2026) chưa có bản mới"
   },
   "shipping.policy": {
    "lastAttempt": "2026-10-29T13:12:41+07:00",
@@ -478,9 +478,9 @@
    "attempts": 1
   },
   "shipping.rates": {
-   "lastAttempt": "2026-10-28T21:31:35+07:00",
-   "lastSuccess": "2026-10-28T21:31:35+07:00",
-   "lastNote": "Affinity 23/10: VLCC TD3C 1.294.761…; BDI 2.603, Supramax 23.806 (27/10); HARPEX 2.525 (23/10)"
+   "lastAttempt": "2026-11-09T13:03:34+07:00",
+   "lastSuccess": "2026-11-09T13:03:34+07:00",
+   "lastNote": "HARPEX 2.585 (06/11/2026); 2.500 TEU 47.000, 1.700 TEU 35.000 USD/ngày; mở harperpetersen.com/harpex. Cột BDI/Supramax (Handybulk 27/10) và bảng TCE Affinity chưa làm mới, nguồn không trích được số"
   },
   "shipping.companies": {
    "lastAttempt": "2026-10-10T10:47:46+07:00",
@@ -5779,26 +5779,6 @@
    "signals": []
   },
   {
-   "id": "shipping.outlook",
-   "tier": "C",
-   "title": "BIMCO tanker/dry bulk/container, Clarksons, SCA Suez, bảo hiểm chiến tranh",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "shipping.rates",
-   "tier": "C",
-   "title": "TCE tàu dầu (Affinity), BDI/Supramax (Handybulk), HARPEX, SCFI, giá tàu cũ",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "shipping.hot-topics",
    "tier": "C",
    "title": "Chủ đề nóng: Hormuz, Suez, cấm vận, orderbook",
@@ -6663,5 +6643,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-09T09:10:57+07:00"
+ "updatedAt": "2026-11-09T13:03:34+07:00"
 }

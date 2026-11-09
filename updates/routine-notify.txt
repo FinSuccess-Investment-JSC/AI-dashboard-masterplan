@@ -1,3 +1,7 @@
-Routine Wi 09:00 09/11: KHÔNG chạy được. Connector Widata-MCP lỗi kết nối (502), không có công cụ WiMCP trong phiên.
-Không gọi Wi, không sửa số liệu nào. 37 mục hàng chờ nhóm B vẫn tồn đọng (đã ghi --fail).
-Cần: kiểm tra/kết nối lại connector Widata trong claude.ai rồi chạy lại routine.
+Routine tài liệu 09/11/2026: xử lý 2/58 mục C/D, còn 56 mục trong hàng chờ.
+- Vận tải biển · cước: HARPEX 2.585 (06/11); 2.500 TEU 47.000 USD/ngày, 1.700 TEU 35.000.
+- Vận tải biển · BIMCO hàng rời 02/11/2026: cầu 2027–2028 +0,5–2,5%, cung +3–4%; thêm cột 2028.
+- Chưa làm mới BDI/Supramax và bảng TCE tanker (Handybulk, Affinity không trích được số).
+- Mục chỉ chạy từ IP Việt Nam (FIA, hồ EVN) để runner trên máy xử lý.
+- 10 test Python lỗi import từ trước (không do thay đổi này).
+Chưa kiểm giao diện bằng trình duyệt.

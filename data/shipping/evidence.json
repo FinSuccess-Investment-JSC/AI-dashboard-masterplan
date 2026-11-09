@@ -1559,5 +1559,35 @@
   "status": "match",
   "correct_value": "",
   "note": "Federal Register 26/10/2026, doc 2026-21755; đề xuất lấy ý kiến, chưa phải quyết định cuối."
+ },
+ {
+  "block": "vt-62",
+  "claim": "HARPEX 06/11/2026 và giá thuê 2.500/1.700 TEU",
+  "value": "2585; 47000; 35000",
+  "url": "https://www.harperpetersen.com/harpex",
+  "opened_at": "2026-11-09",
+  "quote": "HARPEX 2,585 06-Nov-2026; 1700 TEU 35,000; 2500 TEU 47,000 (US$)",
+  "status": "match",
+  "note": "Trang HARPEX là bảng cuộn theo tuần; đoạn trích ghép từ ô bảng (cột: Index, 700, 1100, 1700, 1800, 2500 TEU...). 30/10 cũng 2,585."
+ },
+ {
+  "block": "vt-23",
+  "claim": "BIMCO 11/2026: cầu tấn-dặm hàng rời 2027 (Hormuz đóng) và cung đội tàu 2027",
+  "value": "cầu +0,5–2,5%; cung +3–4%",
+  "url": "https://cyprusshippingnews.com/2026/11/02/bimco-dry-bulk-shipping-market-overview-outlook-3",
+  "opened_at": "2026-11-09",
+  "quote": "In 2027, ship demand is forecast to grow 0.5-2.5% if the Strait of Hormuz remains effectively closed, compared with supply growth of 3-4%.",
+  "status": "match",
+  "note": "BIMCO dry bulk 02/11/2026 qua Cyprus Shipping News; nếu mở lại, cả cầu và cung cao hơn 1 điểm %."
+ },
+ {
+  "block": "vt-23",
+  "claim": "BIMCO 11/2026: cầu và cung hàng rời 2028",
+  "value": "cầu +0,5–2,5%; cung +3–4%",
+  "url": "https://cyprusshippingnews.com/2026/11/02/bimco-dry-bulk-shipping-market-overview-outlook-3",
+  "opened_at": "2026-11-09",
+  "quote": "In 2028, ship demand is forecast to grow 0.5-2.5% in both scenarios, while supply is expected to grow 3-4%.",
+  "status": "match",
+  "note": "Bản 11/2026 không nêu lại số 2026 nên cột 2026 giữ từ BIMCO 7/2026."
  }
 ]
