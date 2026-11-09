@@ -1,5 +1,3 @@
-Routine tài liệu 13:00: xử lý 6 mục nhóm C, không có số mới cần sửa trang.
-Đường trong nước: chưa có mốc VSSA mới sau 15/09/2026.
-BĐS (thị trường quý, KCN, hạ tầng), Điện (sản lượng theo nguồn), Dệt may (nhãn hàng): dữ liệu trên trang đã là kỳ mới nhất.
-Còn trong hàng chờ: hồ EVN và Cục ĐTNN (chờ runner máy VN), BĐS hot-topics, Dệt may thuế quan.
-Chưa kiểm giao diện bằng trình duyệt (không sửa trang).
+Routine Wi 09:00 09/11: KHÔNG chạy được. Connector Widata-MCP lỗi kết nối (502), không có công cụ WiMCP trong phiên.
+Không gọi Wi, không sửa số liệu nào. 37 mục hàng chờ nhóm B vẫn tồn đọng (đã ghi --fail).
+Cần: kiểm tra/kết nối lại connector Widata trong claude.ai rồi chạy lại routine.
