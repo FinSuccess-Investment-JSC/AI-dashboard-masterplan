@@ -46,7 +46,7 @@
 </head>
 <body data-sector="seafood">
 <nav data-site-navigation="seafood"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="../Bat-dong-san/">Bất động sản</a><a data-site-route="textile" href="../Det-may/">Dệt may</a><a data-site-route="port" href="../Cang-bien/">Cảng &amp; kho bãi</a><a data-site-route="agri" href="../Nong-nghiep/">Nông nghiệp &amp; thực phẩm</a><a data-site-route="seafood" href="./" aria-current="page">Thủy sản</a></nav>
-<div class="fiscbar"><span>Dashboard ngành · Thủy sản Việt Nam · khung nghiên cứu gốc 09/10/2026</span></div>
+<div class="fiscbar"><span>Dashboard ngành · Thủy sản Việt Nam · khung nghiên cứu gốc 09/10/2026 · rà soát 09/11/2026</span></div>
 
 <nav class="majortabs">
   <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
@@ -64,7 +64,7 @@
     <h1>Bức tranh ngành thủy sản <em>Việt Nam</em></h1>
     <p>Cá tra và tôm là hai chuỗi riêng: cá tra nuôi khép kín trong nước, bán sang Mỹ, Trung Quốc; tôm cạnh tranh với Ecuador, Ấn Độ. Thuế Mỹ quyết định biên của cả hai.</p>
     <div class="tagrow">
-      <span class="tag">Bản nghiên cứu: 09/10/2026</span>
+      <span class="tag">Bản nghiên cứu: 09/10/2026 · rà 09/11/2026</span>
       <span class="tag">XK, giá nguyên liệu: <a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan</a></span>
       <span class="tag">Thuế CBPG: <a href="https://www.federalregister.gov/" target="_blank" rel="noopener">Federal Register</a></span>
     </div>
@@ -324,7 +324,7 @@
     <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>XK thủy sản tổng và theo thị trường</b></td><td><a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Giá cá tra, cá giống, tôm thẻ; khô đậu, ngô CBOT</b></td><td><a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">IMF qua FRED</a> (khô đậu, ngô)</td><td>Ngày · hiển thị cuối tháng</td><td>Khô đậu, ngô, bột cá: Script mỗi lượt job; cá tra, cá giống, tôm Đồng Tháp: <a href="https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc" target="_blank" rel="noopener">VASEP</a>, script mỗi lượt job; tôm thẻ 50 con Cà Mau, cá giống chuỗi dài: <a href="https://widata.vn/" target="_blank" rel="noopener">WiData</a>, routine Wi</td></tr><tr><td><b>Mỹ NK HS 0304, 0306 theo nước; EU NK HS 0304 từ VN (EUR, kg)</b></td><td><a href="https://widata.vn/" target="_blank" rel="noopener">WiData bảng 312, 315/316</a></td><td>Tháng</td><td>Routine Wi</td></tr><tr><td><b>Lịch POR (CBPG cá tra, tôm)</b></td><td><a href="https://www.federalregister.gov/" target="_blank" rel="noopener">Federal Register API</a></td><td>Theo văn bản</td><td>Script mỗi lượt job (scripts/fetch_federal_register.py)</td></tr><tr><td><b>Tỷ giá USD/VND, USD/EUR; bột cá</b></td><td><a href="https://sbv.gov.vn/vi/t%E1%BB%B7-gi%C3%A1-trung-t%C3%A2m" target="_blank" rel="noopener">NHNN</a> · <a href="https://fred.stlouisfed.org/series/EXUSEU" target="_blank" rel="noopener">FRED EXUSEU, PFISHUSDM</a></td><td>Ngày / tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>XK tôm Ecuador theo nước (CNA)</b></td><td><a href="https://www.cna-ecuador.com/estadisticas/" target="_blank" rel="noopener">CNA Ecuador xlsx</a></td><td>Tháng, trễ ~2</td><td>Chưa làm — đợt 2</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>CBPG, CVD, thuế Mỹ</b></td><td><a href="https://www.federalregister.gov/" target="_blank" rel="noopener">Federal Register</a></td><td>Theo kết luận</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>XK cá tra, tôm (VASEP), IUU, MMPA, chủ đề nóng</b></td><td>VASEP, báo chí (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
     <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. </div>
   </div>
-  <div class="footer">Vietnam Seafood Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 09/10/2026.</div>
+  <div class="footer">Vietnam Seafood Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 09/10/2026 · rà soát 09/11/2026.</div>
 </div>
 <script>
 /* ---------- tiny SVG chart engine ---------- */

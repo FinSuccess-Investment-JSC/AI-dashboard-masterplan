@@ -47,7 +47,7 @@
 </head>
 <body data-sector="textile">
 <nav data-site-navigation="textile"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="../Bat-dong-san/">Bất động sản</a><a data-site-route="textile" href="./" aria-current="page">Dệt may</a><a data-site-route="port" href="../Cang-bien/">Cảng &amp; kho bãi</a><a data-site-route="agri" href="../Nong-nghiep/">Nông nghiệp &amp; thực phẩm</a><a data-site-route="seafood" href="../Thuy-san/">Thủy sản</a></nav>
-<div class="fiscbar"><span>Dashboard ngành · Dệt may Việt Nam · khung nghiên cứu gốc 08/10/2026</span></div>
+<div class="fiscbar"><span>Dashboard ngành · Dệt may Việt Nam · khung nghiên cứu gốc 08/10/2026 · rà soát 09/11/2026</span></div>
 
 <nav class="majortabs">
   <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
@@ -64,11 +64,11 @@
     <h1>Bức tranh ngành dệt may <em>Việt Nam</em></h1>
     <p>Sợi đi theo giá bông – xơ và cầu Trung Quốc; may đi theo đơn hàng nhãn hàng Mỹ, EU và thuế quan. Đọc theo từng khâu, không gom thành một con số chung.</p>
     <div class="tagrow">
-      <span class="tag">Bản nghiên cứu: 08/10/2026</span>
+      <span class="tag">Bản nghiên cứu: 08/10/2026 · rà 09/11/2026</span>
       <span class="tag">Xuất nhập khẩu: <a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan</a></span>
       <span class="tag">Thuế quan: <a href="https://www.morganlewis.com/pubs/2026/07/us-administration-rebuilds-global-tariff-program-under-section-301" target="_blank" rel="noopener">Mục 301 · Morgan Lewis</a></span>
     </div>
-    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm trống (chưa có nguồn công khai thay thế).</div>
+    <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> câu tóm tắt được viết lại từ số mới nhất khi trang nạp.</div>
   </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
     <div class="sectionhead"><div><h2>1. Tổng quan ngành dệt may</h2><p>Gia công xuất khẩu là chính: đơn hàng do nhãn hàng Mỹ, EU, Nhật quyết định; biên lợi nhuận do thuế quan, giá bông – xơ và lương quyết định. Sợi và may chạy theo hai lực khác nhau.</p></div></div>
@@ -78,7 +78,7 @@
       <div class="kpi"><div class="label">Bông ICE</div><div class="value">—</div><div class="delta"></div><div class="sub">ICE</div><div id="spk-cotton"></div></div>
       <div class="kpi"><div class="label">Xơ polyester (PSF)</div><div class="value">—</div><div class="delta"></div><div class="sub">Trung Quốc</div><div id="spk-psf"></div></div>
       <div class="kpi"><div class="label">Bán lẻ quần áo Mỹ</div><div class="value">—</div><div class="delta"></div><div class="sub">US Census</div><div id="spk-usretail"></div></div>
-      <div class="kpi"><div class="label">P/E ngành may</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pe"></div></div>
+      <div class="kpi"><div class="label">P/E ngành may</div><div class="value">—</div><div class="delta"></div><div class="sub">—</div><div id="spk-pe"></div></div>
     </section>
     <div class="grid two">
       <div class="card" data-block-id="dm-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -428,9 +428,9 @@
   <div class="card" style="margin-top:14px" data-block-id="dm-40" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
     <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Xuất nhập khẩu dệt may, xơ sợi, bông, vải; theo thị trường</b></td><td><a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Sản lượng vải, quần áo; IIP dệt, trang phục</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng · ngày 6</td><td>Script mỗi lượt job</td></tr><tr><td><b>Bán lẻ quần áo Mỹ</b></td><td><a href="https://fred.stlouisfed.org/series/RSCCAS" target="_blank" rel="noopener">US Census qua FRED (RSCCAS)</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Bông ICE, sợi, xơ PSF, PTA, MEG</b></td><td><a href="https://fred.stlouisfed.org/series/PCOTTINDUSDM" target="_blank" rel="noopener">IMF qua FRED (Cotlook A)</a></td><td>Ngày · hiển thị cuối tháng</td><td>Bông: Script mỗi lượt job; sợi, bông, PSF, PTA, MEG Trung Quốc: hợp đồng tương lai liên tục qua Sina Finance</td></tr><tr><td><b>P/E, P/B hai phân ngành</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect finfo</a> · rổ mã theo dõi</td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>P/E, P/B, vốn hóa từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script GitHub mỗi lượt job</td></tr><tr><td><b>Thuế Mỹ, FTA, xuất xứ; nhập khẩu may mặc Mỹ; VITAS; nhãn hàng; tín hiệu đơn hàng; chính sách</b></td><td>OTEXA, Morgan Lewis, VITAS, báo cáo nhãn hàng, báo chí (link tại từng thẻ)</td><td>Quý / theo sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Tồn kho/doanh số cửa hàng quần áo Mỹ; lead–lag</b></td><td><a href="https://fred.stlouisfed.org/series/MRTSIR448USS" target="_blank" rel="noopener">US Census qua FRED (MRTSIR448USS)</a></td><td>Tháng (giữa tháng)</td><td>Script mỗi lượt job (build_sector_public.py); tương quan tính trong trình duyệt</td></tr><tr><td><b>Mỹ nhập khẩu theo HS 6204, 6110, 6203 từ Việt Nam; 6204 Trung Quốc, tổng</b></td><td><a href="https://widata.vn/" target="_blank" rel="noopener">US Census qua WiData (bảng 312)</a></td><td>Tháng</td><td>Routine Wi (contract <code>data/textile-wi-contract.json</code>, call us_hs_apparel)</td></tr><tr><td><b>Chênh PSF − (PTA + MEG)</b></td><td>Tính từ chuỗi Sina Finance đã có</td><td>Tháng</td><td>Tự động khi chuỗi gốc đổi</td></tr><tr><td><b>Thị phần OTEXA 8T/2026; lịch thuế quan, lương</b></td><td><a href="https://vinatex.com.vn/" target="_blank" rel="noopener">Vinatex · cập nhật thị trường quý</a></td><td>Quý</td><td>Routine tài liệu; evidence</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
-    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá tổng hợp ngành tạm để trống vì chưa có nguồn công khai thay thế.</div>
+    <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu (NSO, Hải quan) và định giá ngành (VNDirect) lấy từ data/textile-public-data.js, cập nhật mỗi lượt job.</div>
   </div>
-  <div class="footer">Vietnam Textile &amp; Garment Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 08/10/2026.</div>
+  <div class="footer">Vietnam Textile &amp; Garment Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 08/10/2026 · rà soát 09/11/2026.</div>
 </div>
 
 <script>

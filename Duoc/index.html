@@ -47,7 +47,7 @@
 </head>
 <body data-sector="pharma">
 <nav data-site-navigation="pharma" aria-label="Điều hướng dashboard ngành"></nav>
-<div class="fiscbar"><span>Dashboard ngành · Dược &amp; y tế · khung nghiên cứu gốc 12/10/2026</span></div>
+<div class="fiscbar"><span>Dashboard ngành · Dược &amp; y tế · khung nghiên cứu gốc 12/10/2026 · rà soát 09/11/2026</span></div>
 
 <nav class="majortabs">
   <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
@@ -64,7 +64,7 @@
     <h1>Bức tranh ngành <em>dược &amp; y tế</em> Việt Nam</h1>
     <p>Cầu tăng đều theo dân số già và BHYT; biên nhà sản xuất do giá API nhập, tỷ giá và giá trúng thầu quyết định.</p>
     <div class="tagrow">
-      <span class="tag">Bản nghiên cứu: 12/10/2026</span>
+      <span class="tag">Bản nghiên cứu: 12/10/2026 · rà 09/11/2026</span>
       <span class="tag">Nhập khẩu, IIP, CPI, tỷ giá: NSO, Hải quan</span>
     </div>
     <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> nhập khẩu thuốc và nguyên liệu (Hải quan), IIP thuốc, CPI y tế, tỷ giá, GDP y tế và P/E ngành dược đang tự cập nhật — câu tóm tắt số mới nhất được viết lại từ dữ liệu khi trang nạp. BHYT 9T/2026: <b>148 triệu lượt</b>, chi đề nghị thanh toán <b>&gt;133.300 tỷ</b>.</div>
@@ -77,7 +77,7 @@
       <div class="kpi"><div class="label">IIP sản xuất thuốc</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-iip"></div></div>
       <div class="kpi"><div class="label">CPI thuốc &amp; y tế</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-cpi"></div></div>
       <div class="kpi"><div class="label">Tỷ giá trung tâm</div><div class="value">—</div><div class="delta"></div><div class="sub">NHNN</div><div id="spk-fx"></div></div>
-      <div class="kpi"><div class="label">P/E ngành dược</div><div class="value">—</div><div class="delta"></div><div class="sub">Tạm trống</div><div id="spk-pe"></div></div>
+      <div class="kpi"><div class="label">P/E ngành dược</div><div class="value">—</div><div class="delta"></div><div class="sub">—</div><div id="spk-pe"></div></div>
     </section>
     <div class="grid two">
       <div class="card" data-block-id="duoc-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -322,7 +322,7 @@
     <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Nhập khẩu dược, nguyên liệu; IIP; CPI y tế; GDP y tế</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a>, <a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng / quý</td><td>Script mỗi lượt job · GDP từ 2024; tỷ giá trung tâm chưa có nguồn thay thế</td></tr><tr><td><b>Tỷ giá trung tâm</b></td><td><a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN</a></td><td>Tháng</td><td>Cùng lời gọi hằng tháng</td></tr><tr><td><b>P/E, P/B ngành dược; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>BHYT, đấu thầu, pháp lý, Long Châu, TNH</b></td><td>Báo, cơ quan nhà nước (link tại từng thẻ)</td><td>Quý / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC từng doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý</td><td>Khi người dùng yêu cầu</td></tr><tr><td><b>Kết quả trúng thầu thuốc (theo mã, nhóm 1–5, nội/ngoại)</b></td><td><a href="https://dichvucong.dav.gov.vn/congbotrungthau" target="_blank" rel="noopener">Cục Quản lý Dược · API công khai</a></td><td>Theo đợt (QĐ bệnh viện)</td><td>Script scripts/fetch_dav_tenders.py, tuần; lần đầu 100.000/199.879 bản ghi (10/2025–10/2026)</td></tr><tr><td><b>Dân số 65+</b></td><td><a href="https://fred.stlouisfed.org/series/SPPOP65UPTOZSVNM" target="_blank" rel="noopener">World Bank qua FRED</a></td><td>Năm</td><td>Script scripts/fetch_fred_pop65.py (giữ bản cũ nếu FRED lỗi)</td></tr><tr><td><b>BHYT lượt khám, chi KCB</b></td><td>BHXH Việt Nam qua báo (trang BHXH 502)</td><td>Quý</td><td>Routine tài liệu; mới nhất 9T/2026</td></tr></tbody></table></div>
     <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. Số vĩ mô, xuất nhập khẩu và định giá ngành dựng từ scripts/build_sector_public.py (NSO, Hải quan, NHNN, VNDirect; Wi lấp chỗ thiếu).</div>
   </div>
-  <div class="footer">Vietnam Pharma &amp; Healthcare Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 12/10/2026.</div>
+  <div class="footer">Vietnam Pharma &amp; Healthcare Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 12/10/2026 · rà soát 09/11/2026.</div>
 </div>
 <script>
 window.PHARMA_DOCS={charts:[

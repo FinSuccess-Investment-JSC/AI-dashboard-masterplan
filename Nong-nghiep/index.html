@@ -46,7 +46,7 @@
 </head>
 <body data-sector="agri">
 <nav data-site-navigation="agri"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="../Bat-dong-san/">Bất động sản</a><a data-site-route="textile" href="../Det-may/">Dệt may</a><a data-site-route="port" href="../Cang-bien/">Cảng &amp; kho bãi</a><a data-site-route="agri" href="./" aria-current="page">Nông nghiệp &amp; thực phẩm</a><a data-site-route="seafood" href="../Thuy-san/">Thủy sản</a></nav>
-<div class="fiscbar"><span>Dashboard ngành · Nông nghiệp &amp; thực phẩm Việt Nam · khung nghiên cứu gốc 09/10/2026</span></div>
+<div class="fiscbar"><span>Dashboard ngành · Nông nghiệp &amp; thực phẩm Việt Nam · khung nghiên cứu gốc 09/10/2026 · rà soát 09/11/2026</span></div>
 
 <nav class="majortabs">
   <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
@@ -64,7 +64,7 @@
     <h1>Bức tranh ngành nông nghiệp &amp; thực phẩm <em>Việt Nam</em></h1>
     <p>Ba chuỗi chạy theo ba lực khác nhau: cây trồng xuất khẩu theo giá thế giới và thời tiết; chăn nuôi theo giá heo hơi so với giá ngô, khô đậu; thực phẩm – đồ uống theo sức mua và thuế. Đọc tách, không gộp.</p>
     <div class="tagrow">
-      <span class="tag">Bản nghiên cứu: 09/10/2026</span>
+      <span class="tag">Bản nghiên cứu: 09/10/2026 · rà 09/11/2026</span>
       <span class="tag">XNK, sản lượng, giá: <a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan, NSO</a></span>
       <span class="tag">ENSO: <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC</a></span>
     </div>
@@ -126,7 +126,7 @@
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="nn-12" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">Cà phê Robusta ICE và cao su TSR20</div>
-        <div class="chart-sub">cuối tháng · Robusta USD/tấn · TSR20 US cent/kg ×10 để cùng trục</div>
+        <div class="chart-sub">chỉ số, tháng đầu chuỗi = 100 · Robusta USD/tấn, TSR20 US cent/kg trong bảng</div>
         <div id="chWorld"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-world"></table></div></details>
       </div>
@@ -349,7 +349,7 @@
     <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa; giá XK bình quân</b></td><td><a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Bán lẻ, CPI, IIP, sản lượng bia, sữa, thức ăn</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Heo hơi, gạo nội địa, Robusta, TSR20, ngô, khô đậu</b></td><td><a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">IMF qua FRED</a> (Robusta, cao su, ngô, khô đậu)</td><td>Ngày · hiển thị cuối tháng</td><td>Robusta, cao su, ngô, khô đậu: Script mỗi lượt job; heo hơi toàn quốc và 3 vùng: <a href="https://widata.vn/" target="_blank" rel="noopener">WiData (WiMCP)</a>, routine Wi; gạo 5% nội địa: <a href="https://vietfood.org.vn/gia-lua-gao-noi-dia/" target="_blank" rel="noopener">VFA</a>, script mỗi lượt job</td></tr><tr><td><b>Gạo XK Thái/Việt/Ấn, gạo 5% An Giang; sữa bột SMP, WMP</b></td><td><a href="https://fpma.fao.org/giews/pricetool/" target="_blank" rel="noopener">FAO GIEWS FPMA (API JSON)</a></td><td>Tuần / tháng</td><td>Script mỗi lượt job (scripts/fetch_fao_fpma.py)</td></tr><tr><td><b>Lúa mạch; tỷ giá USD/VND</b></td><td><a href="https://fred.stlouisfed.org/series/PBARLUSDM" target="_blank" rel="noopener">IMF qua FRED</a> · <a href="https://sbv.gov.vn/vi/t%E1%BB%B7-gi%C3%A1-trung-t%C3%A2m" target="_blank" rel="noopener">NHNN tỷ giá trung tâm</a></td><td>Tháng / ngày</td><td>Script mỗi lượt job</td></tr><tr><td><b>Sản lượng, XK, tồn kho cà phê Việt Nam</b></td><td><a href="https://apps.fas.usda.gov/psdonline/app/index.html#/app/downloads" target="_blank" rel="noopener">USDA FAS PSD (CSV)</a></td><td>Niên vụ, cập nhật 6 và 12</td><td>Script mỗi lượt job (scripts/fetch_usda_psd_coffee.py)</td></tr><tr><td><b>Biên chăn nuôi heo ước tính</b></td><td>Tính từ heo hơi (Wi), ngô, khô đậu (IMF), tỷ giá</td><td>Tháng</td><td>Tự tính khi số nền đổi; tham số ở ⓘ</td></tr><tr><td><b>ONI, Niño-3.4</b></td><td><a href="https://www.cpc.ncep.noaa.gov/" target="_blank" rel="noopener">NOAA CPC</a></td><td>Tháng / tuần</td><td>Script GitHub mỗi lượt job (dùng chung với Điện)</td></tr><tr><td><b>P/E, P/B nhóm ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Chính sách, mùa vụ, chủ đề nóng</b></td><td>Báo chí, văn bản (link tại từng thẻ)</td><td>Theo sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
     <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. </div>
   </div>
-  <div class="footer">Vietnam Agriculture &amp; Food Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 09/10/2026.</div>
+  <div class="footer">Vietnam Agriculture &amp; Food Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 09/10/2026 · rà soát 09/11/2026.</div>
 </div>
 <script>
 /* ---------- tiny SVG chart engine ---------- */

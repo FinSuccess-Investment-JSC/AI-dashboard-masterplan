@@ -46,7 +46,7 @@
 </head>
 <body data-sector="port">
 <nav data-site-navigation="port"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="../Bat-dong-san/">Bất động sản</a><a data-site-route="textile" href="../Det-may/">Dệt may</a><a data-site-route="port" href="./" aria-current="page">Cảng &amp; kho bãi</a><a data-site-route="agri" href="../Nong-nghiep/">Nông nghiệp &amp; thực phẩm</a><a data-site-route="seafood" href="../Thuy-san/">Thủy sản</a></nav>
-<div class="fiscbar"><span>Dashboard ngành · Cảng &amp; kho bãi Việt Nam · khung nghiên cứu gốc 09/10/2026</span></div>
+<div class="fiscbar"><span>Dashboard ngành · Cảng &amp; kho bãi Việt Nam · khung nghiên cứu gốc 09/10/2026 · rà soát 09/11/2026</span></div>
 
 <nav class="majortabs">
   <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
@@ -64,7 +64,7 @@
     <h1>Bức tranh ngành cảng &amp; kho bãi <em>Việt Nam</em></h1>
     <p>Cảng ăn theo sản lượng hàng xuất nhập khẩu và giá bốc xếp; vận tải biển ăn theo cước và giá thuê tàu; kho hàng không ăn theo sân bay. Ba lực khác nhau, đọc tách.</p>
     <div class="tagrow">
-      <span class="tag">Bản nghiên cứu: 09/10/2026</span>
+      <span class="tag">Bản nghiên cứu: 09/10/2026 · rà 09/11/2026</span>
       <span class="tag">Vận tải, XNK: <a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">NSO, Hải quan</a></span>
       <span class="tag">Cước container: <a href="https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry" target="_blank" rel="noopener">Drewry WCI</a></span>
     </div>
@@ -380,7 +380,7 @@
     <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Vận chuyển hàng hóa đường biển, hàng không, thủy nội địa</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Xuất nhập khẩu hàng hóa</b></td><td><a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng</td><td>Script mỗi lượt job (fetch_customs.py)</td></tr><tr><td><b>Chỉ số giá bốc xếp, kho bãi, vận tải biển</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Quý</td><td>Script mỗi lượt job</td></tr><tr><td><b>BDI</b></td><td><a href="https://www.cnbc.com/quotes/.BADI" target="_blank" rel="noopener">Baltic Exchange qua CNBC</a></td><td>Ngày · hiển thị cuối tháng</td><td>Script mỗi lượt job (fetch_markets.py)</td></tr><tr><td><b>P/E, P/B nhóm ngành</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect finfo</a> · rổ mã theo dõi</td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>P/E, P/B, vốn hóa từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script GitHub mỗi lượt job</td></tr><tr><td><b>Cước container WCI, SCFI</b></td><td><a href="https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry" target="_blank" rel="noopener">Drewry</a></td><td>Tuần (thứ Năm)</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Sản lượng cảng, giá bốc xếp, dự án, chính sách</b></td><td>Cục Hàng hải và Đường thủy, báo chí, IR doanh nghiệp (link tại từng thẻ)</td><td>Quý / theo sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr><tr><td><b>Lượt tàu container cập cảng theo ngày (HP, CM, SG, ĐN)</b></td><td><a href="https://portwatch.imf.org/" target="_blank" rel="noopener">IMF PortWatch · Daily_Ports_Data</a></td><td>Ngày (trễ ~5 ngày)</td><td>Script mỗi lượt job (fetch_portwatch_ports.py)</td></tr><tr><td><b>Hàng container xuất/nhập qua cảng VN</b></td><td><a href="https://widata.vn/" target="_blank" rel="noopener">IMF PortWatch qua WiData (bảng 363)</a></td><td>Tháng</td><td>Routine Wi</td></tr><tr><td><b>Cước container FBX theo tuyến</b></td><td><a href="https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/" target="_blank" rel="noopener">Freightos FBX</a></td><td>Ngày</td><td>Script mỗi lượt job (fetch_fbx.py)</td></tr></tbody></table></div>
     <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. PortWatch theo cảng, FBX: script mỗi lượt job; PortWatch quốc gia, định giá: WiData.</div>
   </div>
-  <div class="footer">Vietnam Ports &amp; Warehousing Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 09/10/2026.</div>
+  <div class="footer">Vietnam Ports &amp; Warehousing Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 09/10/2026 · rà soát 09/11/2026.</div>
 </div>
 <script>
 /* ---------- tiny SVG chart engine ---------- */
