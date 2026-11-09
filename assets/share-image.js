@@ -134,6 +134,7 @@
     const scale=Math.min(4,Math.max(2,1920*1.25/Math.max(1,card.offsetWidth)));
     const charts=window.Chart&&Chart.getChart?[...card.querySelectorAll('canvas')].map(c=>Chart.getChart(c)).filter(Boolean):[];
     const dpr=charts.map(ch=>ch.options.devicePixelRatio);
+    window.__fsShot=true; // watermark dưới cột (chart-explore) tạm tắt; compose() vẽ watermark lên trên vùng trống
     charts.forEach(ch=>{ch.options.devicePixelRatio=scale;ch.resize();ch.update('none')});
     card.classList.add('fs-per-shot'); // thanh Chu kỳ/Số kỳ đang thu vào icon lịch: hiện tạm để ảnh vẫn có
     const selects=[...card.querySelectorAll('select')].map(el=>({text:el.selectedOptions[0]?el.selectedOptions[0].textContent:'',cs:getComputedStyle(el),w:el.offsetWidth,h:el.offsetHeight}));
@@ -145,8 +146,8 @@
         node.querySelectorAll('select').forEach((el,i)=>{const o=selects[i];if(!o)return;const d=doc.createElement('div'),t=doc.createElement('span'),a=doc.createElement('span');t.textContent=o.text;a.textContent='▾';d.append(t,a);
           Object.assign(d.style,{display:'inline-flex',alignItems:'center',justifyContent:'space-between',gap:'8px',boxSizing:'border-box',width:o.w+'px',height:o.h+'px',padding:'0 10px',border:o.cs.border,borderRadius:o.cs.borderRadius,background:o.cs.backgroundColor,color:o.cs.color,font:o.cs.font,whiteSpace:'nowrap',overflow:'hidden',verticalAlign:'middle'});
           el.replaceWith(d)})},
-        ignoreElements:n=>n.tagName==='BUTTON'||n.classList&&(n.classList.contains('fs-share-btn')||n.classList.contains('chart-card-actions')||n.classList.contains('chart-source-details')||n.tagName==='DETAILS'&&!n.open)});
-    }finally{card.classList.remove('fs-per-shot');charts.forEach((ch,i)=>{ch.options.devicePixelRatio=dpr[i];ch.resize();ch.update('none')})}
+        ignoreElements:n=>n.tagName==='BUTTON'&&!(n.closest&&n.closest('.cts-legend,.chart-legend,.multiple-legend,[class*="legend"]'))||n.classList&&(n.classList.contains('fs-share-btn')||n.classList.contains('chart-card-actions')||n.classList.contains('chart-source-details')||n.tagName==='DETAILS'&&!n.open)});
+    }finally{window.__fsShot=false;card.classList.remove('fs-per-shot');charts.forEach((ch,i)=>{ch.options.devicePixelRatio=dpr[i];ch.resize();ch.update('none')})}
   }
   // Cắt bỏ viền trắng quanh nội dung của bản chụp (giữ lề nhỏ) để chart to nhất trong khung.
   function trim(cv){
@@ -186,7 +187,10 @@
     cells.forEach((c,i)=>{const r=Math.floor(i/cols),k=i%cols,x=pad+k*(cw+gap),yy=y+rowH.slice(0,r).reduce((a,b)=>a+b,0)+r*gap;
       let cy=yy;if(c.note.length){ctx.fillStyle=MUTED;ctx.font=`italic 500 ${noteF}px ${FONT}`;ctx.textBaseline='top';c.note.forEach(l=>{ctx.fillText(l,x,cy);cy+=noteF*1.35});cy+=noteF*0.5}
       ctx.drawImage(c.s,x,cy,cw,c.h);
-      // Watermark: dùng watermark trong chart (fsWatermark, chart-explore.js), không vẽ thêm (06/11/2026).
+      // Watermark (09/11/2026, thay quy định 06/11): watermark dưới cột bị che ở chart dày cột và trang ngành không có,
+      // nên ảnh chia sẻ vẽ logo FinSuccess mờ lên trên, ở vùng trống nhất của chart (emptiest).
+      {const wS=Math.round(c.s.width*0.26),wm=watermark(lg,wS,NAVY),pos=emptiest(c.s,wm.width,wm.height);
+       ctx.save();ctx.globalAlpha=pos.dense?0.10:0.08;ctx.drawImage(wm,x+pos.x*c.sc,cy+pos.y*c.sc,wm.width*c.sc,wm.height*c.sc);ctx.restore();}
     });
     // Nhận diện ở chân ảnh, chỗ trống (người dùng chốt 29/10/2026): chữ "FinSuccess" đậm, rõ + "MÃ · fisc.vn" (watermark trong chart đặt ở khoảng trống, xem emptiest).
     {const fs=Math.max(14,Math.round(cw*0.022)),tail='  ·  '+(p.ticker?p.ticker+'  ·  ':'')+'fisc.vn';ctx.save();ctx.textBaseline='bottom';ctx.textAlign='left';
