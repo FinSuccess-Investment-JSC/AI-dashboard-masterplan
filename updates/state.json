@@ -830,7 +830,11 @@
    "lastError": "Widata-MCP không kết nối được (502) trong phiên routine",
    "attempts": 2
   },
-  "seafood.duties.landed": {},
+  "seafood.duties.landed": {
+   "lastAttempt": "2026-11-09T14:42:15+07:00",
+   "lastSuccess": "2026-11-09T14:42:15+07:00",
+   "lastNote": "Kết luận cuối CBPG tôm POR19 (FR 2026-22660, đăng 06/11/2026): Fimex 10,71%, STAPIMEX 6,36%, mức riêng 7,59%, toàn quốc 25,76%; đã mở PDF public-inspection, ghi evidence; sửa Thuy-san tab thuế + Catalyst"
+  },
   "steel.docs.hpg-volume": {}
  },
  "watchers": {
@@ -6613,16 +6617,6 @@
    "signals": []
   },
   {
-   "id": "seafood.duties.landed",
-   "tier": "C",
-   "title": "Landed cost thuế tôm VN/Ecuador/Ấn Độ",
-   "since": "2026-11-05T14:20:04+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
    "id": "steel.docs.hpg-volume",
    "tier": "C",
    "title": "Sản lượng bán hàng Hòa Phát theo sản phẩm (quý)",
@@ -6643,5 +6637,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-09T13:03:34+07:00"
+ "updatedAt": "2026-11-09T14:42:15+07:00"
 }
