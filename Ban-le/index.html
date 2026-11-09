@@ -21,11 +21,10 @@
 <script src="../assets/share-image.js?v=6f3bcd24db14" defer></script>
 <script src="../assets/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="../assets/catalyst-board.js?v=32f8d976e2ab" defer></script>
+<script src="../assets/catalyst-board.js?v=8556039c3e58" defer></script>
 <script src="../assets/sector-smart.js?v=41c4306b6742" defer></script>
 <script src="../data/company-valuation.js?v=d0ba03104448" defer></script>
 <script src="../data/company-comparison.js?v=3d8c91e785f8" defer></script>
-<script src="../data/company-quarterly.js?v=a8f5b7f28445" defer></script>
 <script src="../assets/company-trend.js?v=42408b69f36a" defer></script>
 <script src="../assets/financial-comparison.js?v=915100cada6a" defer></script>
 <script src="../assets/research-layout.js?v=dc1aaa5b0bc6" defer></script>
@@ -38,7 +37,7 @@
 <script src="../assets/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=0aa68a6982f7">
 <script src="../assets/source-gap.js?v=02afdd3cfa3d" defer></script>
-<script src="../assets/site-navigation.js?v=fd23a387e725" data-release="20261109T064807Z-hydro"></script>
+<script src="../assets/site-navigation.js?v=fd23a387e725" data-release="20261109T073423Z-r1"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="../assets/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="../assets/sector-base.css?v=ba33835e530c">
@@ -351,7 +350,6 @@
   </div>
   <div class="card" style="margin-top:14px" data-block-id="bl-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Bán lẻ, CPI, khách quốc tế, sản lượng xe, bia, sữa, IIP</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng (ngày 3–6)</td><td>Script mỗi lượt job (fetch_nso.py)</td></tr><tr><td><b>Tiền gửi dân cư, tín dụng</b></td><td><a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN</a></td><td>Tháng, chậm 1–2 tháng</td><td>Cùng lời gọi hằng tháng</td></tr><tr><td><b>Đường, dầu cọ, khô đậu, ngô</b></td><td><a href="https://www.ice.com/products/23/Sugar-No-11-Futures" target="_blank" rel="noopener">ICE No.11</a>, <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">IMF qua FRED</a></td><td>Ngày · hiển thị cuối tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>P/E, P/B ngành; từng mã (rổ Trang sức = PNJ thêm 05/11/2026)</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Vàng miếng SJC, vàng nhẫn</b></td><td><a href="https://widata.vn/" target="_blank" rel="noopener">WiData</a> · 1224193, 1224229 (ngày; nén tháng khi gọi khoảng dài)</td><td>Ngày</td><td>Routine Wi (data/retail-wi-contract.json); giá thế giới, tỷ giá ngày: chưa có</td></tr><tr><td><b>Biên gộp VNM, SAB, KDC, MSN theo quý</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a> · data/company-quarterly.json (QNS không có)</td><td>Quý</td><td>scripts/build_company_quarterly.py (cùng lượt so sánh tài chính)</td></tr><tr><td><b>VAMA, VinFast, TMĐT, chính sách, số tháng MWG/FRT/PNJ, doanh thu/cửa hàng</b></td><td>Báo, hiệp hội (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC từng doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
     <div class="source-note" id="wi-built">scripts/build_sector_public.py (NSO, NHNN, FRED, ICE, VNDirect) + scripts/build_retail_wi.py (WiData lấp chỗ thiếu).</div>
   </div>
   <div class="footer">Vietnam Retail &amp; Consumer Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 11/10/2026.</div>

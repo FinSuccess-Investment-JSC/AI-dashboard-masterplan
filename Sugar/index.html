@@ -17,7 +17,7 @@
 <script src="../assets/share-image.js?v=6f3bcd24db14" defer></script>
 <script src="../assets/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="../assets/catalyst-board.js?v=32f8d976e2ab" defer></script>
+<script src="../assets/catalyst-board.js?v=8556039c3e58" defer></script>
 <script src="../assets/sector-smart.js?v=41c4306b6742" defer></script>
 <script src="../assets/sector-ticker.js?v=24097f7668e0" defer></script>
 <script src="../data/company-valuation.js?v=d0ba03104448" defer></script>
@@ -35,7 +35,7 @@
 <script src="../assets/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=0aa68a6982f7">
 <script src="../assets/source-gap.js?v=02afdd3cfa3d" defer></script>
-<script src="../assets/site-navigation.js?v=fd23a387e725" data-release="20261109T064807Z-hydro"></script>
+<script src="../assets/site-navigation.js?v=fd23a387e725" data-release="20261109T073423Z-r1"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="../assets/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="../assets/sector-base.css?v=ba33835e530c">
@@ -186,6 +186,32 @@
       </div>
     </div>
   </section>
+  <section id="cane" class="section">
+    <h3 class="subhead">Giá mía nguyên liệu &amp; giá thành ngành đường</h3>
+    <p class="subsub">Giá mía là chuỗi còn nhiều khoảng trống nhất trong dashboard này — được giữ nguyên trạng thái đó thay vì lấp đầy bằng suy diễn.</p>
+    <div class="grid two">
+      <div class="card" data-block-id="sugar-12" data-update-kind="document" data-cadence="irregular" data-refresh-status="snapshot">
+        <div class="chart-title">Giá mía nguyên liệu bình quân theo niên vụ</div>
+        <div class="chart-sub">Nghìn đồng/tấn tại nhà máy · niên vụ 2018/19–2025/26</div>
+        <div id="chCanePrice"></div>
+        <div class="legend">
+          <span class="li"><span class="sw" style="background:var(--s3);height:10px;border-radius:3px"></span>Bình quân toàn quốc (nguồn VSSA/báo chí)</span>
+          <span class="li"><span class="sw" style="background:var(--s3);height:10px;border-radius:3px;opacity:.5"></span>1 nhà máy hoặc suy ra từ mức tăng công bố (cột mờ hơn = *)</span>
+        </div>
+        <div class="source-note">Không tìm thấy số liệu giá mía đáng tin cậy trước niên vụ 2018/19. 21/22*: suy ra từ phát biểu "+100–150 nghìn đ/tấn so với vụ trước", không phải số liệu công bố trực tiếp. 22/23*: chỉ có số liệu Lam Sơn. 25/26*: chỉ có số liệu KCP Đắk Lắk. Cả ba đều không đại diện bình quân toàn ngành.</div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-caneprice"></table></div></details>
+      </div>
+      <div class="card" data-block-id="sugar-13" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Biên lợi nhuận gộp SBT (TTC AgriS) theo niên độ</div>
+        <div class="chart-sub">% · niên độ T7–T6</div>
+        <div id="chMargin"></div>
+        <div class="source-note">Số liệu kiểm toán đầy đủ chỉ có đến FY2022/23. FY2023/24: biên gộp quý 4 giảm còn 9,5% (từ 12,7% cùng kỳ). FY2024/25: biên gộp quý 1 là 12,3% (so với 10,9% quý 1 FY2023/24) — chưa có số liệu cả niên độ đã kiểm toán nên không vẽ thành cột.</div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-margin"></table></div></details>
+      </div>
+      <div data-company-trend="sugar" data-after="chMargin" data-title="Doanh thu &amp; biên lợi nhuận gộp doanh nghiệp đường niêm yết" style="grid-column:1 / -1"></div>
+    </div>
+  </section>
+
   </div>
 
   <div class="majorpane" data-tab="mt2">
@@ -227,34 +253,6 @@
         <div class="source-note">2025/26 không có số liệu toàn quốc công bố (chỉ có số liệu vùng, ví dụ Đắk Lắk), nên để trống thay vì suy diễn. * = giá trị sàn ("trên X nghìn ha").</div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-canearea"></table></div></details>
       </div>
-    </div>
-  </section>
-  </div>
-
-  <div class="majorpane" data-tab="mt3">
-  <section id="cane" class="section">
-    <h3 class="subhead">Giá mía nguyên liệu &amp; giá thành ngành đường</h3>
-    <p class="subsub">Giá mía là chuỗi còn nhiều khoảng trống nhất trong dashboard này — được giữ nguyên trạng thái đó thay vì lấp đầy bằng suy diễn.</p>
-    <div class="grid two">
-      <div class="card" data-block-id="sugar-12" data-update-kind="document" data-cadence="irregular" data-refresh-status="snapshot">
-        <div class="chart-title">Giá mía nguyên liệu bình quân theo niên vụ</div>
-        <div class="chart-sub">Nghìn đồng/tấn tại nhà máy · niên vụ 2018/19–2025/26</div>
-        <div id="chCanePrice"></div>
-        <div class="legend">
-          <span class="li"><span class="sw" style="background:var(--s3);height:10px;border-radius:3px"></span>Bình quân toàn quốc (nguồn VSSA/báo chí)</span>
-          <span class="li"><span class="sw" style="background:var(--s3);height:10px;border-radius:3px;opacity:.5"></span>1 nhà máy hoặc suy ra từ mức tăng công bố (cột mờ hơn = *)</span>
-        </div>
-        <div class="source-note">Không tìm thấy số liệu giá mía đáng tin cậy trước niên vụ 2018/19. 21/22*: suy ra từ phát biểu "+100–150 nghìn đ/tấn so với vụ trước", không phải số liệu công bố trực tiếp. 22/23*: chỉ có số liệu Lam Sơn. 25/26*: chỉ có số liệu KCP Đắk Lắk. Cả ba đều không đại diện bình quân toàn ngành.</div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-caneprice"></table></div></details>
-      </div>
-      <div class="card" data-block-id="sugar-13" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
-        <div class="chart-title">Biên lợi nhuận gộp SBT (TTC AgriS) theo niên độ</div>
-        <div class="chart-sub">% · niên độ T7–T6</div>
-        <div id="chMargin"></div>
-        <div class="source-note">Số liệu kiểm toán đầy đủ chỉ có đến FY2022/23. FY2023/24: biên gộp quý 4 giảm còn 9,5% (từ 12,7% cùng kỳ). FY2024/25: biên gộp quý 1 là 12,3% (so với 10,9% quý 1 FY2023/24) — chưa có số liệu cả niên độ đã kiểm toán nên không vẽ thành cột.</div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-margin"></table></div></details>
-      </div>
-      <div data-company-trend="sugar" data-after="chMargin" data-title="Doanh thu &amp; biên lợi nhuận gộp doanh nghiệp đường niêm yết" style="grid-column:1 / -1"></div>
     </div>
   </section>
   </div>

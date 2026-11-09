@@ -178,7 +178,35 @@
   const stateText={good:'Catalyst',risk:'Risk',watch:'Sát ngưỡng',info:'Bối cảnh',na:'Thiếu dữ liệu'},order=['risk','watch','good','info','na'];
   const next=(dow,from=new Date())=>{const d=new Date(from);d.setHours(0,0,0,0);d.setDate(d.getDate()+(dow-d.getDay()+7)%7);return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')};
   // score row: {name,chart,st,mid:[cells],end:[cells]}; segs: [name,tickers,tilt(up|down|flat|na),why]
+  // Chọn/Tránh (quy tắc 05/11/2026): nếu headline chưa có vế "Chọn …"/"Tránh …", suy từ segs (tilt up → Chọn, down → Tránh) để mọi ngành cùng có thẻ hành động.
+  const isPick=t=>/^(chọn|ưu tiên|mua|giữ)/i.test(t),isAvoid=t=>/^(tránh|giảm|thận trọng|bán)/i.test(t);
+  function withActions(headline,segs){
+    const parts=String(headline).split(/\s+·\s+/).map(x=>x.trim()).filter(Boolean);
+    const tally=parts.length>1&&/^\d+\s+thuận/.test(parts.at(-1))?parts.pop():'';
+    if(!parts.some(t=>isPick(t)||isAvoid(t))){
+      const names=rows=>[...new Set(rows.flatMap(r=>String(r[1]||'').split(/\s*·\s*/)).map(t=>t.trim()).filter(t=>/^[A-Z][A-Z0-9]{2,3}$/.test(t)))].join(', ');
+      const pick=names(segs.filter(r=>r[2]==='up')),avoid=names(segs.filter(r=>r[2]==='down'));
+      if(pick)parts.push('Chọn '+pick);
+      if(avoid)parts.push('Thận trọng '+avoid);
+    }
+    if(tally)parts.push(tally);
+    return parts.join(' · ');
+  }
+  // Mốc "Sắp tới" viết chung chung hoặc đã qua → đổi thành ngày cụ thể kế tiếp.
+  const dd=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0');
+  function normEvent([d,e]){
+    const now=new Date(),m=now.getMonth(),yy=now.getFullYear();
+    const nextMonth=new Date(yy,m+1,1);
+    if(/BCTC quý III/.test(e)&&now>new Date(yy,10,5))return ['20–30/01/'+(yy+1),'BCTC quý IV và cả năm'];
+    if(/^đầu tháng$/i.test(d))return ['01–06/'+String(nextMonth.getMonth()+1).padStart(2,'0'),e];
+    if(/^giữa tháng/i.test(d)){const t=now.getDate()<15?new Date(yy,m,15):new Date(yy,m+1,15);return ['~'+dd(t),e]}
+    if(/thứ năm thứ 2/i.test(d)){const f=now.getDate()<=14?new Date(yy,m,1):nextMonth;const t=new Date(f);t.setDate(1+((4-t.getDay()+7)%7)+7);if(t<now){const g=new Date(f.getFullYear(),f.getMonth()+1,1);g.setDate(1+((4-g.getDay()+7)%7)+7);return [dd(g),e]}return [dd(t),e]}
+    if(/^(từ|sau) \d{1,2}\/\d{1,2}$/i.test(d)||/^\d{1,2}–\d{1,2}\/\d{1,2}$/.test(d)){const mm=+d.match(/\/(\d{1,2})$/)[1];if(mm<m+1&&m+1-mm<6)return null}
+    return [d,e];
+  }
   function renderBrief({headline,segs=[],headers,score=[],events,priority}){
+    headline=withActions(headline,segs);
+    events=(events||[]).map(normEvent).filter(Boolean);
     window.SECTOR_BRIEF={headline,segs,score}; // assets/sector-smart.js dựng bảng điều khiển đầu trang từ đây
     const brief=make('section','cr-brief');
     const parts=String(headline).replace(/\s*\([^)]*\)/g,'').split(/\s+·\s+/).map(x=>x.trim()).filter(Boolean);
@@ -186,7 +214,7 @@
     const head=make('div','cr-verdict card');const top=make('div','cr-verdict-top');top.append(make('span','cr-verdict-label','Kết luận hiện tại'));
     if(tally)tally.split(',').forEach(t=>{const n=make('span','cr-tally',t.trim());n.dataset.kind=/rủi ro/.test(t)?'risk':'good';top.append(n)});
     head.append(top,make('h3','',parts[0]||headline));
-    if(parts.length>1){const acts=make('ul','cr-actions');parts.slice(1).forEach(t=>{const li=make('li','',t);li.dataset.kind=/^(tránh|giảm|thận trọng|bán)/i.test(t)?'avoid':/^(chọn|ưu tiên|mua|giữ)/i.test(t)?'pick':'note';acts.append(li)});head.append(acts)}
+    if(parts.length>1){const acts=make('ul','cr-actions');parts.slice(1).forEach(t=>{const li=make('li','',t);li.dataset.kind=isAvoid(t)?'avoid':isPick(t)?'pick':'note';acts.append(li)});head.append(acts)}
     brief.append(head);
     const tb=make('section','cr-score card');tb.append(make('h3','','Tín hiệu'));
     const wrap=make('div','cr-score-wrap'),table=make('table','cr-score-table');table.dataset.noFold=''; /* main content: never fold */wrap.append(table);

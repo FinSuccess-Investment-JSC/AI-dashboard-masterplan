@@ -23,7 +23,7 @@
 <script src="../assets/share-image.js?v=6f3bcd24db14" defer></script>
 <script src="../assets/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="../assets/catalyst-board.js?v=32f8d976e2ab" defer></script>
+<script src="../assets/catalyst-board.js?v=8556039c3e58" defer></script>
 <script src="../assets/sector-smart.js?v=41c4306b6742" defer></script>
 <script src="../data/company-valuation.js?v=d0ba03104448" defer></script>
 <script src="../data/company-comparison.js?v=3d8c91e785f8" defer></script>
@@ -40,7 +40,7 @@
 <script src="../assets/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=0aa68a6982f7">
 <script src="../assets/source-gap.js?v=02afdd3cfa3d" defer></script>
-<script src="../assets/site-navigation.js?v=fd23a387e725" data-release="20261109T064807Z-hydro"></script>
+<script src="../assets/site-navigation.js?v=fd23a387e725" data-release="20261109T073423Z-r1"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="../assets/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="../assets/sector-base.css?v=ba33835e530c">
@@ -361,8 +361,8 @@
       <div class="card" data-block-id="bds-18" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
         <div class="chart-title">Giá thuê đất khu công nghiệp — Q2/2026</div>
         <div class="chart-sub">USD/m²/kỳ thuê còn lại · Cushman &amp; Wakefield</div>
-        <div id="chKcnRent"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-kcn-rent"></table></div></details>
+        <div id="chKcnRentCw"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-kcn-rent-cw"></table></div></details>
         <div class="source-note">Nguồn: <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/northern-vietnam-industrial-property-market-maintains-growth-momentum" target="_blank" rel="noopener">Cushman &amp; Wakefield · miền Bắc 137,7 (+2,7% YoY)</a> · <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/southern-vietnam-industrial-real-estate-maintains-stable-fundamentals" target="_blank" rel="noopener">miền Nam 186,4 (+1,7% YoY)</a> · JLL: miền Bắc ~135 · <a href="https://doanhnghiephoinhap.vn/gia-thue-dat-cong-nghiep-tiep-tuc-tang-khi-nguon-cung-moi-dan-mo-rong-144150.html" target="_blank" rel="noopener">Bộ Xây dựng: giá thuê Q2 tăng 5–12% (Bắc), 8–13% (Nam) YoY</a>.</div>
       </div>
     </div>
@@ -1107,8 +1107,8 @@ const hpLabels=['CBRE · sơ cấp','CBRE · thứ cấp','Savills · sơ cấp'
 fillTable('tbl-house-price',['Nguồn · phạm vi','Hà Nội','TP.HCM','Ghi chú'],[['CBRE · sơ cấp','95 (+12% QoQ, +21% YoY)','76 (+8% QoQ, +16% YoY)','rổ dự án đang mở bán'],['CBRE · thứ cấp','60 (−3% QoQ, +13% YoY)','62 (+26% YoY)','lần đầu giảm từ cuối 2022 (HN)'],['Savills · sơ cấp','116 (+16% QoQ, +27% YoY)','mở bán mới >90; 80% cung >120','không còn cung <70 (HN)'],['Bộ Xây dựng','~123','~108','Hưng Yên ~69; thứ cấp cả nước giảm so Q1']]);
 /* Giá thuê đất KCN Q2/2026, USD/m²/kỳ thuê còn lại */
 const rent=[['Miền Nam · Cushman',186.4,S1],['Miền Bắc · Cushman',137.7,S3],['Miền Bắc · JLL',135,S4]];
-hbarCompare('chKcnRent',{items:rent.map(([label,value,color])=>({label,value,color})),unit:'USD/m²',digits:1,height:200,labelW:200});
-fillTable('tbl-kcn-rent',['Khu vực · nguồn','USD/m²/kỳ','So cùng kỳ'],[['Miền Nam · Cushman & Wakefield','186,4','+1,7%'],['Miền Bắc · Cushman & Wakefield','137,7','+2,7%'],['Miền Bắc · JLL','~135','—'],['Bộ Xây dựng (xu hướng)','—','Bắc +5–12%, Nam +8–13%']]);
+hbarCompare('chKcnRentCw',{items:rent.map(([label,value,color])=>({label,value,color})),unit:'USD/m²',digits:1,height:200,labelW:200});
+fillTable('tbl-kcn-rent-cw',['Khu vực · nguồn','USD/m²/kỳ','So cùng kỳ'],[['Miền Nam · Cushman & Wakefield','186,4','+1,7%'],['Miền Bắc · Cushman & Wakefield','137,7','+2,7%'],['Miền Bắc · JLL','~135','—'],['Bộ Xây dựng (xu hướng)','—','Bắc +5–12%, Nam +8–13%']]);
 /* Lãi suất vay mua nhà 9/2026, %/năm: cận dưới và cận trên của khảo sát */
 const mg=[['Ưu đãi · thấp',8.2,S3],['Ưu đãi · cao',10.5,S4],['Thả nổi · thấp',13,S2],['Thả nổi · cao',16,S2],['VIB cố định 5 năm',11.5,S5]];
 hbarCompare('chMortgage',{items:mg.map(([label,value,color])=>({label,value,color})),unit:'%',digits:1,height:230,labelW:200});
