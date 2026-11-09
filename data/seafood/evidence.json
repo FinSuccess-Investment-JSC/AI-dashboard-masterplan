@@ -845,5 +845,15 @@
   "status": "match",
   "correct_value": "",
   "note": "VASEP 04/11/2026; thay số 9T (Báo Thanh tra) và 2T (Trung tâm WTO). Dòng bảng: quote ghi lại hàng của bảng trong bài."
+ },
+ {
+  "block": "ts-42",
+  "claim": "Tôm POR19 (2/2024–1/2025) cuối cùng (FR 06/11/2026): Sao Ta/Fimex 10,71%, STAPIMEX 6,36%, mức riêng 7,59%, toàn quốc 25,76%",
+  "value": "10.71% / 6.36% / 7.59% / 25.76%",
+  "url": "https://www.federalregister.gov/d/2026-22660",
+  "opened_at": "2026-11-09",
+  "quote": "Commerce has determined the weighted-average dumping margin for the Fimex Group to be 10.71 percent, and for STAPIMEX to be 6.36 percent ... Separate Rate Companies 7.59 ... the Vietnam-wide entity (i.e., 25.76 percent), is not subject to change",
+  "status": "match",
+  "note": "Mở bản public-inspection PDF 2026-22660 (Filed 11/5/2026, Publication Date 11/6/2026; Dated November 2, 2026)"
  }
 ]
