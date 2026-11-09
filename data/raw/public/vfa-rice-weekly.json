@@ -3,7 +3,7 @@
 "url": "https://vietfood.org.vn/gia-lua-gao-noi-dia/",
 "definition": "Gạo thành phẩm xuất khẩu 5% tấm, không bao, tại mạn; bình quân các tỉnh ĐBSCL",
 "unit": "VND/kg",
-"checked": "2026-11-08",
+"checked": "2026-11-09",
 "records": {
 "2022-04-07": {
 "value": 9014.0,
@@ -606,5 +606,7 @@
 "url": "https://vietfood.org.vn/gia-lua-gao-noi-dia-ngay-29-10-2026-05-11-2026/"
 }
 },
-"errors": {}
+"errors": {
+"2026-05-21": "5% row missing"
+}
 }

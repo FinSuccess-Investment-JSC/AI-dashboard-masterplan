@@ -232,8 +232,8 @@
 "final": true
 },
 "2026-11": {
-"date": "2026-11-06",
-"value": 3206,
+"date": "2026-11-09",
+"value": 3196,
 "contract": "hc2701",
 "final": false
 }
@@ -462,8 +462,8 @@
 "final": true
 },
 "2026-11": {
-"date": "2026-11-06",
-"value": 3041,
+"date": "2026-11-09",
+"value": 3039,
 "contract": "rb2701",
 "final": false
 }
@@ -692,8 +692,8 @@
 "final": true
 },
 "2026-11": {
-"date": "2026-11-06",
-"value": 4555,
+"date": "2026-11-09",
+"value": 4459,
 "contract": "bu2701",
 "final": false
 }
@@ -922,8 +922,8 @@
 "final": true
 },
 "2026-11": {
-"date": "2026-11-06",
-"value": 4283,
+"date": "2026-11-09",
+"value": 4271,
 "contract": "fu2701",
 "final": false
 }
