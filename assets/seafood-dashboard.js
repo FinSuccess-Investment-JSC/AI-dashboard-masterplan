@@ -158,11 +158,11 @@ if(document.getElementById('chPangDuty')){
  insight('chPangDuty','Từ 0 lên 0,84 USD/kg là khoản tiền ký quỹ đáng kể trên mỗi kg phi lê bán sang Mỹ, đẩy ANV sang Trung Quốc, Brazil. VHC không còn trong lệnh nên lợi thế cạnh tranh tại Mỹ lớn lên.');
 }
 if(document.getElementById('chShrimpDuty')){
- const items=[['VN · POR19 sơ bộ Sao Ta',10.76],['VN · POR18 mức riêng',4.58],['VN · CVD (DN khác)',2.84],['Ấn Độ · CBPG all-others',10.17],['Ấn Độ · CBPG DN không kiểm',5.53],['Ecuador · CVD all-others',3.78]];
+ const items=[['VN · POR19 cuối cùng Sao Ta',10.71],['VN · POR19 mức riêng',7.59],['VN · POR19 STAPIMEX',6.36],['VN · CVD (DN khác)',2.84],['Ấn Độ · CBPG all-others',10.17],['Ấn Độ · CBPG DN không kiểm',5.53],['Ecuador · CVD all-others',3.78]];
  hbarCompare('chShrimpDuty',{items:items.map(([l,v])=>({label:l,value:v,color:l.startsWith('VN')?C.navy:C.grey})),unit:'%',digits:2,labelW:190,ariaLabel:'Thuế tôm vào Mỹ'});
  fillTable('tbl-shrimpduty',['Nước · vụ','%','Nguồn'],items.map(([l,v])=>[l,nf(v,2),'']).concat([['Ecuador · CBPG','phủ định (không có lệnh)','']]));
  sourceLine('chShrimpDuty',[FR('2026-09465'),FR('2026-03511'),FR('2026-18184'),['govinfo – Ecuador CVD','https://govinfo.gov/content/pkg/FR-2024-10-28/pdf/2024-24957.pdf'],['Viet Nam News – CVD VN','https://vietnamnews.vn/economy/1665711/us-issues-final-affirmative-countervailing-duty-determination-on-frozen-warmwater-shrimp-from-viet-nam.html']],'13/05/2026','Mỗi cột là một mức riêng, khác kỳ và khác loại thuế (CBPG, CVD); không cộng để ra tổng thuế. Chưa gồm Mục 301 (12,5%, Việt Nam) và thuế đối ứng của các nước.',false);
- insight('chShrimpDuty','Mức CBPG sơ bộ POR19 của Sao Ta (10,76%) cao hơn hẳn Ecuador (không có CBPG, CVD 3,78%) và ngang mức all-others của Ấn Độ. Cộng thêm Mục 301 12,5%, tôm Việt Nam vào Mỹ đắt hơn Ecuador đáng kể — lý do XK tôm sang Mỹ giảm và chuyển sang Trung Quốc.');
+ insight('chShrimpDuty','Mức CBPG cuối cùng POR19 của Sao Ta (10,71%, FR 06/11/2026) cao hơn hẳn Ecuador (không có CBPG, CVD 3,78%) và ngang mức all-others của Ấn Độ. Cộng thêm Mục 301 12,5%, tôm Việt Nam vào Mỹ đắt hơn Ecuador đáng kể — lý do XK tôm sang Mỹ giảm và chuyển sang Trung Quốc.');
 }
 // Định giá
 if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
@@ -268,7 +268,7 @@ const score=[
  row('Thị trường','Trung Quốc tăng mạnh',[signed(cnY,0)+'%','XK sang TQ lũy kế'],'XK sang TQ '+(cL?mon(cL.date)+' '+nf(cL.value,0)+' triệu USD':'—')+'; VHC TQ tháng 8 +56%','XK sang TQ lũy kế về dưới +10%',cnY==null?'na':cnY>15?'good':cnY<0?'risk':'watch','▲ VHC · ANV · MPC','chMkt'),
  row('Thị trường','Mỹ không tăng',[signed(usY,0)+'%','XK sang Mỹ lũy kế'],'Mục 301 +12,5% từ 24/07/2026; VHC Mỹ tháng 8 −15%','XK sang Mỹ trở lại tăng > 5% YoY',usY==null?'na':usY<3?'risk':'watch','▼ cả ngành','chMkt'),
  row('Thuế Mỹ','CBPG cá tra tăng ở POR21',['0,84','USD/kg ANV (từ 0)'],'Biên Đông 1,00; NTSF 0,38; VHC đã rút khỏi lệnh','Kỳ POR22 về 0','risk','▼ ANV · ▲ VHC (tương đối)','chPangDuty'),
- row('Thuế Mỹ','CBPG tôm POR19 cao hơn',['10,76%','Sao Ta sơ bộ (POR18: 4,58%)'],'Ecuador không có CBPG, CVD 3,78%','Kết luận cuối POR19 thấp hơn sơ bộ','risk','▼ FMC','chShrimpDuty'),
+ row('Thuế Mỹ','CBPG tôm POR19 cao hơn',['10,71%','Sao Ta cuối cùng 06/11/2026 (POR18: 4,58%)'],'Ecuador không có CBPG, CVD 3,78%','POR20 sơ bộ (dự kiến ~5/2027) thấp hơn 10,71%','risk','▼ FMC','chShrimpDuty'),
  row('Chi phí','Thức ăn cá tra tăng',[signed(smY,0)+'%','khô đậu YoY'],'Ngô '+signed(yoyAt(co,co.at(-1)),0)+'% YoY; ANV biên gộp Q2 16,1%','Khô đậu, ngô về âm YoY',smY==null?'na':smY>10?'risk':smY<0?'good':'watch','▼ ANV · VHC · IDI','chFeed'),
  row('Chi phí','Tôm nguyên liệu rẻ',[signed(shY,0)+'%','tôm chân trắng Đồng Tháp YoY'],'Từ đỉnh 146 nghìn đ/kg (12/2025) về '+(sL?nf(sL.value,1):'—'),'Giá tôm nguyên liệu tăng lại > 120 nghìn',shY==null?'na':shY<-5?'good':shY>10?'risk':'watch','▲ FMC · MPC','chShrimp'),
  row('Margin','Spread cá tra sau thuế',[spr.length?nf(spr.at(-1).anv,2):'—','USD/kg ANV (EU − cá NL − 0,84)'],spr.length?'VHC '+nf(spr.at(-1).vhc,2)+' USD/kg ('+mon(spr.at(-1).m+'-01')+')':'—','Spread ANV dưới 1,0 USD/kg',spr.length?(spr.at(-1).anv<1?'risk':spr.at(-1).anv<1.5?'watch':'good'):'na','▼ ANV · ▲ VHC (tương đối)','chPangSpread'),
@@ -279,7 +279,7 @@ window.SEAFOOD_BRIEF={
  segs:[['Cá tra','VHC · ANV · IDI',smY!=null&&smY>10?'down':'flat','Thức ăn '+signed(smY,0)+'% · CBPG POR21'],['Tôm','FMC · MPC · CMX',shY!=null&&shY<-5?'up':'flat','Tôm nguyên liệu '+signed(shY,0)+'%'],['Đa ngành','ASM','flat','Lãi vay cao']],
  headers:['Biến số đang thay đổi','Đang thấy (số mới nhất)','Đổi đánh giá khi','','Hưởng lợi ▲ / chịu thiệt ▼'],
  score,
- events:[['Đầu tháng','Hải quan, VASEP: XK tháng trước'],['Hằng tháng','VHC, FMC công bố doanh số tháng'],['20–30/10','BCTC quý III'],['Theo lịch DOC','Kết luận cuối POR19 tôm (đếm ngược ở tab Thuế); sơ bộ POR22 cá tra'],['Pending đợt 2','CNA Ecuador: XK tôm theo nước (xlsx tháng)']]
+ events:[['Đầu tháng','Hải quan, VASEP: XK tháng trước'],['Hằng tháng','VHC, FMC công bố doanh số tháng'],['20–30/10','BCTC quý III'],['~05/2027','Sơ bộ POR20 tôm; đã có cuối POR19 (06/11/2026) (đếm ngược ở tab Thuế); sơ bộ POR22 cá tra'],['Pending đợt 2','CNA Ecuador: XK tôm theo nước (xlsx tháng)']]
 };
 const built=document.getElementById('wi-built');if(built&&W.built_at)built.textContent='Dựng từ nguồn công khai lúc '+new Date(W.built_at).toLocaleString('vi-VN')+'; giá hàng hóa: IMF/FRED, EIA, ICE.';
 })();
