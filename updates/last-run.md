@@ -1,4 +1,4 @@
-# Lịch cập nhật — 09/11/2026 13:03
+# Lịch cập nhật — 09/11/2026 14:42
 
-- ✅ shipping.outlook: BIMCO dry bulk 02/11/2026 đã mở: cầu 2027–2028 +0,5–2,5%, cung +3–4% (Hormuz đóng); cập nhật vt-23. Tanker (8/2026) và container (9/2026) chưa có bản mới
-- Hàng chờ Claude: 93 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
+- ✅ seafood.duties.landed: Kết luận cuối CBPG tôm POR19 (FR 2026-22660, đăng 06/11/2026): Fimex 10,71%, STAPIMEX 6,36%, mức riêng 7,59%, toàn quốc 25,76%; đã mở PDF public-inspection, ghi evidence; sửa Thuy-san tab thuế + Catalyst
+- Hàng chờ Claude: 92 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
