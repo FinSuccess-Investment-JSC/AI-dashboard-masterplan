@@ -405,7 +405,7 @@
     renderBrief({
       // Kết luận hai vế: thế giới (giá futures so TB 3 tháng) và Việt Nam (tồn kho/tiêu thụ so kỳ trước).
       headline:fd==null?'Chưa đủ giá đường thế giới để kết luận':(up?'Thế giới chuyển sang thiếu cung, giá bật lên (No.11 '+(fd>0?'+':'')+num(fd,0)+'% vs TB 3 tháng)':dn?'Giá đường thế giới giảm ('+num(fd,0)+'% vs TB 3 tháng)':'Giá đường thế giới đi ngang')+(b0&&b1?(ratio(b1)-ratio(b0)>=1?' · Việt Nam: tồn kho/tiêu thụ giảm còn '+num(ratio(b0),0)+'%, giá trong nước có dư địa theo giá thế giới':' · Việt Nam chưa hưởng ngay: tồn kho vẫn cao ('+num(ratio(b0),0)+'% tiêu thụ, '+(ratio(b0)>ratio(b1)?'tăng':'gần như không giảm')+'), giá trong nước chờ tồn kho được tiêu bớt'):''),
-      segs:[['Tự chủ mía','',fd==null?'na':up?'up':dn?'down':'flat',fd==null?'Thiếu giá':'Giá TG '+(fd>0?'+':'')+num(fd,1)+'% vs TB 3T'],['Nhập nguyên liệu','',fd==null?'na':up?'down':dn?'up':'flat',fd==null?'Thiếu giá':up?'Đường thô đắt lên':dn?'Đường thô rẻ đi':'Trung tính']],
+      segs:[['Tự chủ mía','SBT · QNS · LSS · SLS',fd==null?'na':up?'up':dn?'down':'flat',fd==null?'Thiếu giá':'Giá TG '+(fd>0?'+':'')+num(fd,1)+'% vs TB 3T'],['Nhập nguyên liệu','SBT',fd==null?'na':up?'down':dn?'up':'flat',fd==null?'Thiếu giá':up?'Đường thô đắt lên':dn?'Đường thô rẻ đi':'Trung tính']],
       headers:['Tín hiệu','Mới nhất','Kỳ trước','Ngưỡng','','Ai chịu'],
       score:[
         row('Sugar No.11 (kỳ hạn gần)',[S(v(fut),2,' cent/lb'),D(v(fut),p(fut),2)],'±10% vs TB 3T',fd==null?'na':fd<=-10?'risk':fd>=10?'good':Math.abs(fd)>=5?'watch':'info','Tự chủ mía · Nhập nguyên liệu','chFastPrice'),
