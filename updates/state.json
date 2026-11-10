@@ -405,9 +405,9 @@
    "attempts": 1
   },
   "seafood.hot-topics": {
-   "lastAttempt": "2026-10-28T18:13:37+07:00",
-   "lastSuccess": "2026-10-28T18:13:37+07:00",
-   "lastNote": "TQ+HK 9T 2,3 tỷ USD; IDI POR19 0,20 USD/kg; IUU 31/38"
+   "lastAttempt": "2026-11-10T13:04:30+07:00",
+   "lastSuccess": "2026-11-10T13:04:30+07:00",
+   "lastNote": "Mở VASEP 05/11/2026: XK thủy sản 10T/2026 10,459 tỷ USD (+12,1%), Mỹ −1,2%; thêm vào ts-t1 kèm evidence"
   },
   "seafood.ai.cycle": {
    "lastAttempt": "2026-10-09T23:21:15+07:00",
@@ -5874,17 +5874,6 @@
    "signals": []
   },
   {
-   "id": "seafood.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: Trung Quốc thay Mỹ, thuế Mỹ, thức ăn, MMPA/IUU",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00",
-    "lịch 09/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "shipping.hot-topics",
    "tier": "C",
    "title": "Chủ đề nóng: Hormuz, Suez, cấm vận, orderbook",
@@ -6844,5 +6833,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-10T09:11:08+07:00"
+ "updatedAt": "2026-11-10T13:04:30+07:00"
 }

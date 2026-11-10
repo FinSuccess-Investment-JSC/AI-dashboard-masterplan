@@ -1,6 +1,5 @@
-Routine Wi 10/11/2026 09:10: KHÔNG cập nhật được số nào.
-Widata đã kết nối (wi_data_time_now trả đúng), nhưng hook wi_capture.py không lưu kết quả vào data/raw/wi/.inbox/.
-Đã dừng sau 2 lệnh gọi đầu của bank.wi.daily, không chép tay số Wi.
-38 mục Wi trong hàng chờ đều được --fail, lý do: hook không lưu kết quả Wi.
-Cần kiểm tra: matcher hook "WiMCP|Widata" với tên tool mcp__Widata-MCP__*, và scripts/wi_capture.py.
+Routine tài liệu 10/11/2026: xử lý 1/10 mục đã đọc nguồn.
+Thủy sản – chủ đề nóng: thêm XK 10T/2026 10,459 tỷ USD (+12,1%), Mỹ −1,2% (VASEP 05/11).
+Hồ EVN, FDI Cục ĐTNN: chờ runner trên máy người dùng, không xử lý.
+Các mục còn lại chưa mở nguồn đầy đủ, giữ trong hàng chờ.
 Chưa kiểm giao diện bằng trình duyệt.

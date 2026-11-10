@@ -1,8 +1,4 @@
-# Lịch cập nhật — 10/11/2026 09:11
+# Lịch cập nhật — 10/11/2026 13:04
 
-- ❌ pharma.wi.valuation (lần 9): hook không lưu kết quả Wi
-- Hàng chờ Claude: 98 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
-
-## Cảnh báo
-
-- ❌ Routine thất bại 9 lần với pharma.wi.valuation: hook không lưu kết quả Wi
+- ✅ seafood.hot-topics: Mở VASEP 05/11/2026: XK thủy sản 10T/2026 10,459 tỷ USD (+12,1%), Mỹ −1,2%; thêm vào ts-t1 kèm evidence
+- Hàng chờ Claude: 97 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
