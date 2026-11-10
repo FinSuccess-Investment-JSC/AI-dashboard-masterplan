@@ -1,7 +1,6 @@
-Routine tài liệu 09/11/2026: xử lý 2/58 mục C/D, còn 56 mục trong hàng chờ.
-- Vận tải biển · cước: HARPEX 2.585 (06/11); 2.500 TEU 47.000 USD/ngày, 1.700 TEU 35.000.
-- Vận tải biển · BIMCO hàng rời 02/11/2026: cầu 2027–2028 +0,5–2,5%, cung +3–4%; thêm cột 2028.
-- Chưa làm mới BDI/Supramax và bảng TCE tanker (Handybulk, Affinity không trích được số).
-- Mục chỉ chạy từ IP Việt Nam (FIA, hồ EVN) để runner trên máy xử lý.
-- 10 test Python lỗi import từ trước (không do thay đổi này).
+Routine Wi 10/11/2026 09:10: KHÔNG cập nhật được số nào.
+Widata đã kết nối (wi_data_time_now trả đúng), nhưng hook wi_capture.py không lưu kết quả vào data/raw/wi/.inbox/.
+Đã dừng sau 2 lệnh gọi đầu của bank.wi.daily, không chép tay số Wi.
+38 mục Wi trong hàng chờ đều được --fail, lý do: hook không lưu kết quả Wi.
+Cần kiểm tra: matcher hook "WiMCP|Widata" với tên tool mcp__Widata-MCP__*, và scripts/wi_capture.py.
 Chưa kiểm giao diện bằng trình duyệt.
