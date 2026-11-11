@@ -7,6 +7,8 @@ if (document.body.dataset.sector !== 'power') return;
 const src = window.SECTOR_DAILY?.sources || {}, daily = src.vn_power_daily?.records || [];
 const nf = (v, d = 1) => v == null || !isFinite(v) ? '—' : Number(v).toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d});
 const dm = d => d.slice(8, 10) + '/' + d.slice(5, 7) + '/' + d.slice(0, 4);
+// "1–9/11/2026" khi tháng chưa hết, "tháng 11/2026" khi đủ từ ngày 1 đến cuối tháng (cùng hàm ở power-hub.js).
+const hydroSpan = rs => { const a = rs.map(r => r.from).sort()[0], b = rs.map(r => r.to).sort().at(-1); if (!a) return ''; const y = +b.slice(0, 4), m = +b.slice(5, 7); return +a.slice(8) === 1 && +b.slice(8) === new Date(y, m, 0).getDate() ? `tháng ${m}/${y}` : `${+a.slice(8)}–${+b.slice(8)}/${m}/${y}`; };
 const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
 const link = (url, text) => `<a href="${url}" target="_blank" rel="noopener">${text}</a>`;
 // Một màu cho mỗi nguồn, trùng với sơ đồ chuỗi giá trị.
@@ -54,22 +56,14 @@ function topRow() {
 /* ---- 4. Bản đồ hồ thủy điện theo vùng ---- */
 function hydroMap() {
   const card = document.querySelector('[data-block-id="dien-hydro-reservoirs"]'), H = window.HYDRO_RESERVOIRS;
-  if (!card || !H?.monthly?.length) return;
-  const by = {};
-  H.monthly.forEach(r => (by[r.reservoir] ||= []).push(r));
-  const rows = Object.entries(by).map(([name, rs]) => {
-    rs.sort((a, b) => a.month < b.month ? -1 : 1);
-    const cur = rs.filter(r => r.inflow_n >= 7 && isFinite(r.inflow)).at(-1); if (!cur) return null;
-    const ly = rs.find(r => r.month === (+cur.month.slice(0, 4) - 1) + cur.month.slice(4));
-    const yoy = ly && ly.inflow > 0 ? (cur.inflow / ly.inflow - 1) * 100 : null;
-    const dl = ly && isFinite(ly.level) && isFinite(cur.level) ? cur.level - ly.level : null;
-    return {name, region: cur.region, month: cur.month, yoy, dl, n: cur.inflow_n};
-  }).filter(Boolean);
-  const month = rows.map(r => r.month).sort().at(-1);
+  if (!card || !H?.yoy?.rows?.length) return;
+  // So cùng kỳ tính sẵn trong scripts/update_hydro_reservoirs.py: đúng các ngày đó năm trước, năm trước đủ ≥80% số ngày.
+  const rows = H.yoy.rows.map(r => ({name: r.reservoir, region: r.region, month: r.month, from: r.from, to: r.to, yoy: r.yoy, dl: r.dl}));
+  const month = H.yoy.month, span = hydroSpan(rows.filter(r => r.month === month));
   // Ô vùng xếp theo hình chữ S từ Bắc vào Nam.
   const REG = [['Tây Bắc Bộ', 0, 0], ['Đông Bắc Bộ', 1, 0], ['Bắc Trung Bộ', 0.5, 1], ['Tây Nguyên', 0, 2], ['Nam Trung Bộ', 1, 2], ['Đông Nam Bộ', 0.5, 3]];
   const color = v => v == null ? '#C9CFDD' : v <= -40 ? '#b8443a' : v <= -15 ? '#dd7f4e' : v < 15 ? '#B9C1D0' : v < 40 ? '#59C5C8' : '#2938A8';
-  const med = a => { const s = a.filter(x => x != null).sort((x, y) => x - y); return s.length ? s[Math.floor(s.length / 2)] : null; };
+  const med = a => { const s = a.filter(x => x != null).sort((x, y) => x - y), k = s.length >> 1; return s.length ? (s.length % 2 ? s[k] : (s[k - 1] + s[k]) / 2) : null; };
   const W = 175, Hh = 112, svg = REG.map(([reg, cx, cy]) => {
     const rs = rows.filter(r => r.region === reg && r.month === month); if (!rs.length) return '';
     const x = 10 + cx * (W + 14), y = 10 + cy * (Hh + 12), m = med(rs.map(r => r.yoy));
@@ -77,9 +71,9 @@ function hydroMap() {
     return `<g><rect x="${x}" y="${y}" width="${W}" height="${Hh}" rx="14" class="pv-reg" stroke="${color(m)}"/><text x="${x + 14}" y="${y + 24}" class="pv-reg-name">${reg}</text><text x="${x + W - 14}" y="${y + 24}" text-anchor="end" class="pv-reg-val" fill="${color(m)}">${m == null ? '—' : (m > 0 ? '+' : '') + nf(m, 0) + '%'}</text><text x="${x + 14}" y="${y + 42}" class="pv-reg-sub">${rs.length} hồ · trung vị</text>${dots}</g>`;
   }).join('');
   const box = el('div', 'pv-hydro');
-  box.innerHTML = `<svg viewBox="0 0 ${2 * W + 34} ${4 * (Hh + 12) + 8}" role="img" aria-label="Nước về các hồ thủy điện tháng ${month.slice(5)}/${month.slice(0, 4)} so cùng kỳ, theo vùng" data-fs-flow="1">${svg}</svg>
-    <div class="pv-hydro-side"><div class="chart-title">Nước về hồ tháng ${+month.slice(5)}/${month.slice(0, 4)} so cùng kỳ</div>
-    <div class="chart-sub">Lưu lượng nước về bình quân của các ngày có số liệu, so cùng tháng năm trước · mỗi chấm là một hồ, bấm để mở chart của hồ đó</div>
+  box.innerHTML = `<svg viewBox="0 0 ${2 * W + 34} ${4 * (Hh + 12) + 8}" role="img" aria-label="Nước về các hồ thủy điện ${span} so cùng kỳ, theo vùng" data-fs-flow="1">${svg}</svg>
+    <div class="pv-hydro-side"><div class="chart-title">Nước về hồ ${span} so cùng kỳ</div>
+    <div class="chart-sub">Lưu lượng nước về bình quân, so đúng các ngày đó năm trước (năm trước cần đủ ≥80% số ngày, thiếu thì chấm xám) · mỗi chấm là một hồ, bấm để mở chart của hồ đó</div>
     <div class="pv-scale-legend">${[['≤ −40%', -50], ['−40 → −15%', -20], ['±15%', 0], ['+15 → +40%', 20], ['≥ +40%', 50]].map(([t, v]) => `<span><i style="background:${color(v)}"></i>${t}</span>`).join('')}</div>
     <div class="pv-rank"></div></div>`;
   const rank = rows.filter(r => r.month === month && r.yoy != null).sort((a, b) => a.yoy - b.yoy);

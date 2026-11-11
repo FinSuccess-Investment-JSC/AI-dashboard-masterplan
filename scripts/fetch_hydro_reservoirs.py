@@ -39,7 +39,9 @@ def parse(html, requested):
     for tr in table.select('tr'):
         cells = tr.find_all(['td', 'th'], recursive=False)
         if len(cells) == 1:
-            region = cells[0].get_text(' ', strip=True)
+            # EVN chèn dòng tiêu đề vùng rỗng trước nhóm Kanak…Đa Mi: giữ vùng của dòng trước,
+            # như workbook gốc gán các hồ này vào Tây Nguyên (bỏ qua thì mất 11 hồ từ 28/08/2026).
+            region = cells[0].get_text(' ', strip=True) or region
             continue
         if len(cells) != 11 or cells[0].name != 'td':
             continue
