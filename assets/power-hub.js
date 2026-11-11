@@ -10,6 +10,8 @@ const V = new Proxy({}, {get: (_, k) => window.COMPANY_VALUATION?.companies?.[k]
 const nf = (v, d = 1) => v == null || !isFinite(v) ? '—' : Number(v).toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d});
 const sg = (v, d = 1) => (v > 0 ? '+' : v < 0 ? '−' : '') + nf(Math.abs(v), d);
 const dm = d => d.slice(8, 10) + '/' + d.slice(5, 7) + '/' + d.slice(0, 4);
+// "1–9/11/2026" khi tháng chưa hết, "tháng 11/2026" khi đủ từ ngày 1 đến cuối tháng.
+const hydroSpan = rs => { const a = rs.map(r => r.from).sort()[0], b = rs.map(r => r.to).sort().at(-1); if (!a) return ''; const y = +b.slice(0, 4), m = +b.slice(5, 7); return +a.slice(8) === 1 && +b.slice(8) === new Date(y, m, 0).getDate() ? `tháng ${m}/${y}` : `${+a.slice(8)}–${+b.slice(8)}/${m}/${y}`; };
 const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
 const fold = s => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase();
 const rec = k => (src[k]?.records || []);
@@ -33,12 +35,11 @@ const byTitle = re => [...document.querySelectorAll('.chart-title')].find(t => r
 
 /* ---------- Yếu tố ngành: trạng thái hiện tại tính từ dữ liệu ---------- */
 const chg = (k, n) => { const r = rec(k).filter(x => isFinite(x.value)); if (r.length <= n) return null; return {now: r.at(-1).value, pct: (r.at(-1).value / r.at(-1 - n).value - 1) * 100, date: r.at(-1).date}; };
+// So cùng kỳ tính sẵn trong scripts/update_hydro_reservoirs.py: đúng các ngày đó năm trước, năm trước đủ ≥80% số ngày.
 function inflowYoY() {
-  const H = window.HYDRO_RESERVOIRS?.monthly || [], by = {};
-  H.forEach(r => (by[r.reservoir] ||= []).push(r));
-  const v = Object.values(by).map(rs => { rs.sort((a, b) => a.month < b.month ? -1 : 1); const c = rs.filter(r => r.inflow_n >= 7).at(-1); if (!c) return null; const l = rs.find(r => r.month === (+c.month.slice(0, 4) - 1) + c.month.slice(4)); return l?.inflow > 0 ? {m: c.month, y: (c.inflow / l.inflow - 1) * 100} : null; }).filter(Boolean);
-  const m = v.map(x => x.m).sort().at(-1), ys = v.filter(x => x.m === m).map(x => x.y).sort((a, b) => a - b);
-  return ys.length ? {med: ys[Math.floor(ys.length / 2)], low: ys.filter(y => y < 0).length, n: ys.length, month: m} : null;
+  const Y = window.HYDRO_RESERVOIRS?.yoy, rs = (Y?.rows || []).filter(r => r.month === Y.month && r.yoy != null);
+  const ys = rs.map(r => r.yoy).sort((a, b) => a - b), k = ys.length >> 1;
+  return ys.length ? {med: ys.length % 2 ? ys[k] : (ys[k - 1] + ys[k]) / 2, low: ys.filter(y => y < 0).length, n: ys.length, span: hydroSpan(rs)} : null;
 }
 function load30() {
   const r = rec('vn_power_daily').filter(x => x.output_mkwh > 0), map = new Map(r.map(x => [x.date, x.output_mkwh]));
@@ -145,7 +146,7 @@ function keys() {
   const put = (card, html) => { if (!card || card.querySelector('.pv-key')) return; const t = card.querySelector('.chart-sub') || card.querySelector('.chart-title'); t?.after(el('div', 'pv-key', html)); };
   const ld = F.find(f => f.id === 'load').d, w = F.find(f => f.id === 'water').d, coal = F.find(f => f.id === 'coal').d, lng = F.find(f => f.id === 'lng').d;
   if (ld) put(block('dien-06'), `<b class="${ld.pct >= 0 ? 'up' : 'dn'}">${sg(ld.pct)}%</b> sản lượng 30 ngày gần nhất so cùng kỳ <span>${nf(ld.sum, 1)} tỷ kWh</span>`);
-  if (w) put(block('dien-hydro-reservoirs'), `<b class="${w.med >= 0 ? 'up' : 'dn'}">${sg(w.med, 0)}%</b> nước về hồ tháng ${+w.month.slice(5)}/${w.month.slice(0, 4)} so cùng kỳ (trung vị) <span>${w.low}/${w.n} hồ thấp hơn năm trước</span>`);
+  if (w) put(block('dien-hydro-reservoirs'), `<b class="${w.med >= 0 ? 'up' : 'dn'}">${sg(w.med, 0)}%</b> nước về hồ ${w.span} so cùng kỳ (trung vị) <span>${w.low}/${w.n} hồ thấp hơn năm trước</span>`);
   if (oniLast) {
     const o = rec('enso_oni').filter(x => isFinite(x.oni)), prev = [...o].slice(0, -1).reverse().find(x => x.oni >= oniLast.oni);
     put(block('dien-04'), `<b class="${oniLast.oni >= .5 ? 'dn' : ''}">${sg(oniLast.oni, 2)}</b> ONI ${oniLast.season} ${oniLast.year}${prev ? ` <span>cao nhất kể từ ${prev.season} ${prev.year}</span>` : ''}`);

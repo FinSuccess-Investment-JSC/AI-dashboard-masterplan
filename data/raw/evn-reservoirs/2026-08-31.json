@@ -1,7 +1,7 @@
 {
   "source_url": "https://hochuathuydien.evn.com.vn/PageHoChuaThuyDienEmbedEVN.aspx",
   "requested_date": "2026-08-31",
-  "captured_at": "2026-10-12T09:38:05.919157+07:00",
+  "captured_at": "2026-11-11T17:12:57.435344+07:00",
   "rows": [
     {
       "reservoir": "A Vương",
@@ -12,6 +12,36 @@
       "inflow": 0.07,
       "spill": 0.0,
       "generation": 38.5
+    },
+    {
+      "reservoir": "An Khê",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-08-31T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 428.34,
+      "inflow": 37.61,
+      "spill": 4.0,
+      "generation": 24.0
+    },
+    {
+      "reservoir": "Buôn Kuốp",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-08-31T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 409.5,
+      "inflow": 38.0,
+      "spill": 14.95,
+      "generation": 276.0
+    },
+    {
+      "reservoir": "Buôn Tua Srah",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-08-31T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 468.26,
+      "inflow": 88.0,
+      "spill": 0.0,
+      "generation": 84.0
     },
     {
       "reservoir": "Bản Chát",
@@ -44,6 +74,16 @@
       "generation": 0.0
     },
     {
+      "reservoir": "Hàm Thuận",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-08-31T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 593.34,
+      "inflow": 129.98,
+      "spill": 0.0,
+      "generation": 20.84
+    },
+    {
       "reservoir": "Hòa Bình",
       "region": "Tây Bắc Bộ",
       "evn_time": "2026-08-31T00:00:00+07:00",
@@ -62,6 +102,16 @@
       "inflow": 531.0,
       "spill": 0.0,
       "generation": 436.0
+    },
+    {
+      "reservoir": "Kanak",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-08-31T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 491.02,
+      "inflow": 11.7,
+      "spill": 0.0,
+      "generation": 0.0
     },
     {
       "reservoir": "Khe Bố",
@@ -102,6 +152,16 @@
       "inflow": 36.0,
       "spill": 0.0,
       "generation": 18.0
+    },
+    {
+      "reservoir": "Srêpốk 3",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-08-31T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 268.93,
+      "inflow": 393.0,
+      "spill": 0.0,
+      "generation": 0.0
     },
     {
       "reservoir": "Sê San 3",
@@ -262,6 +322,56 @@
       "inflow": 1.24,
       "spill": 0.0,
       "generation": null
+    },
+    {
+      "reservoir": "Đa Mi",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-08-31T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 324.23,
+      "inflow": 30.79,
+      "spill": 0.0,
+      "generation": 30.79
+    },
+    {
+      "reservoir": "Đơn Dương",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-08-31T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 1024.34,
+      "inflow": 8.7,
+      "spill": 0.0,
+      "generation": 14.2
+    },
+    {
+      "reservoir": "Đại Ninh",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-08-31T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 864.91,
+      "inflow": 46.0,
+      "spill": 0.0,
+      "generation": 0.0
+    },
+    {
+      "reservoir": "Đồng Nai 3",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-08-31T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 573.89,
+      "inflow": 51.13,
+      "spill": 0.0,
+      "generation": 0.0
+    },
+    {
+      "reservoir": "Đồng Nai 4",
+      "region": "Tây Nguyên",
+      "evn_time": "2026-08-31T00:00:00+07:00",
+      "offset_hours": 0.0,
+      "level": 475.55,
+      "inflow": 2.53,
+      "spill": 0.0,
+      "generation": 0.0
     }
   ]
 }
