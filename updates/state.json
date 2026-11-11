@@ -323,9 +323,9 @@
    "lastNote": "không mới: gemadept.com.vn tin 20/08; Cần Giờ chưa khởi công (cafef 26/10)"
   },
   "port.hot-topics": {
-   "lastAttempt": "2026-10-28T21:31:35+07:00",
-   "lastSuccess": "2026-10-28T21:31:35+07:00",
-   "lastNote": "không mới: vmrcc.gov.vn; Cần Giờ chưa khởi công"
+   "lastAttempt": "2026-11-11T13:02:29+07:00",
+   "lastSuccess": "2026-11-11T13:02:29+07:00",
+   "lastNote": "Mở tapchicongthuong.vn: trang chủ không có bài mới về cảng (dư cung Hải Phòng, bốc xếp, Cần Giờ, Long Thành); không sửa trang"
   },
   "port.ai.cycle": {
    "lastAttempt": "2026-10-09T23:21:13+07:00",
@@ -351,9 +351,11 @@
    "lastNote": "NOAA CPC ENSO 08/10/2026 đã có trên trang (El Niño mạnh, >83%); bản kế tiếp 12/11/2026. USDA cà phê chưa có bản mới. Không sửa trang"
   },
   "agri.hot-topics": {
-   "lastAttempt": "2026-10-28T18:13:38+07:00",
+   "lastAttempt": "2026-11-11T13:02:29+07:00",
    "lastSuccess": "2026-10-28T18:13:38+07:00",
-   "lastNote": "heo hơi 23/10: 46–51 nghìn đ/kg"
+   "lastNote": "heo hơi 23/10: 46–51 nghìn đ/kg",
+   "lastError": "nongnghiepmoitruong.vn trả HTTP 403 từ IP cloud; chưa tìm được bản đăng lại",
+   "attempts": 1
   },
   "agri.ai.cycle": {
    "lastAttempt": "2026-10-09T23:21:14+07:00",
@@ -485,9 +487,9 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 10/10/2026 (evidence.json, Wi build 10:00)"
   },
   "shipping.hot-topics": {
-   "lastAttempt": "2026-10-28T21:31:35+07:00",
-   "lastSuccess": "2026-10-28T21:31:35+07:00",
-   "lastNote": "Hormuz T10 28 vụ tấn công, 18/10 4 lượt (gCaptain 26/10); Suez 753k TEU/tuần (BIMCO 16/10)"
+   "lastAttempt": "2026-11-11T13:01:58+07:00",
+   "lastSuccess": "2026-11-11T13:01:58+07:00",
+   "lastNote": "gCaptain 10/11/2026: vụ tấn công tàu dầu 10/11 (UKMTO 201-26), USTR hoãn phí cảng Mỹ-TQ tới 09/01/2027; vt-t2/t3 không có mốc mới trong trang chủ gCaptain"
   },
   "shipping.ai.cycle": {
    "lastAttempt": "2026-10-28T18:13:37+07:00",
@@ -533,9 +535,9 @@
    "attempts": 1
   },
   "construction.prices": {
-   "lastAttempt": "2026-10-28T21:31:35+07:00",
-   "lastSuccess": "2026-10-28T21:31:35+07:00",
-   "lastNote": "thép HPG miền Nam 26/10: CB240 14.920, CB300 14.720 đ/kg; xi măng/đá/cát không mới (SXD TP.HCM T6/2026)"
+   "lastAttempt": "2026-11-11T13:02:29+07:00",
+   "lastSuccess": "2026-11-11T13:02:29+07:00",
+   "lastNote": "Tìm kiếm không thấy bảng giá công trình phía Nam tháng 11/2026 mở được từ baodauthau.vn; không sửa xd-62, giữ số cũ"
   },
   "construction.companies": {
    "lastAttempt": "2026-10-11T13:59:18+07:00",
@@ -5940,17 +5942,6 @@
    "signals": []
   },
   {
-   "id": "port.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng cảng: dư cung Hải Phòng, giá bốc xếp, Cần Giờ, Long Thành",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00",
-    "lịch 09/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "agri.policy",
    "tier": "C",
    "title": "Gạo (Philippines, Indonesia, Ấn Độ), EUDR, thuế Mỹ cà phê, thuế MFN thức ăn, TTĐB, GTGT, ASF",
@@ -5965,28 +5956,6 @@
    "id": "agri.hot-topics",
    "tier": "C",
    "title": "Chủ đề nóng: El Niño, chu kỳ heo, cao su & đất KCN, thuế TTĐB",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00",
-    "lịch 09/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "shipping.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: Hormuz, Suez, cấm vận, orderbook",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00",
-    "lịch 09/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "construction.prices",
-   "tier": "C",
-   "title": "Giá vật liệu tại công trình: thép, xi măng, đá, cát (phía Nam)",
    "since": "2026-11-02T13:43:48+07:00",
    "reasons": [
     "lịch 02/11 07:00",
@@ -6958,5 +6927,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-11T09:11:04+07:00"
+ "updatedAt": "2026-11-11T13:02:29+07:00"
 }

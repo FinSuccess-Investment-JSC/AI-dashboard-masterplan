@@ -1589,5 +1589,25 @@
   "quote": "In 2028, ship demand is forecast to grow 0.5-2.5% in both scenarios, while supply is expected to grow 3-4%.",
   "status": "match",
   "note": "Bản 11/2026 không nêu lại số 2026 nên cột 2026 giữ từ BIMCO 7/2026."
+ },
+ {
+  "block": "vt-t1",
+  "claim": "UKMTO 201-26 và vụ ADNOC L&S ngày 10/11/2026",
+  "value": "thủy thủ an toàn, tàu dầu trúng đạn gần Lima (Oman)",
+  "url": "https://gcaptain.com/adnoc-vessel-damaged-in-gulf-attack-as-ukmto-reports-fresh-tanker-strike-near-hormuz/",
+  "opened_at": "2026-11-11",
+  "quote": "all crew members were safe",
+  "status": "match",
+  "note": "gCaptain 10/11/2026; UKMTO không nêu tên tàu hay nguồn đạn; chưa rõ liên hệ với vụ ADNOC. Số 19 hải lý và mã 201-26 lấy từ bản tóm lược bài, không nằm trong quote."
+ },
+ {
+  "block": "vt-t4",
+  "claim": "USTR gia hạn hoãn phí cảng Mỹ với tàu Trung Quốc",
+  "value": "đến 23:59 ET 09/01/2027",
+  "url": "https://gcaptain.com/u-s-formalizes-two-month-extension-of-china-ship-port-fee-suspension/",
+  "opened_at": "2026-11-11",
+  "quote": "extends the suspension through 11:59 p.m. Eastern Time on January 9, 2027",
+  "status": "match",
+  "note": "gCaptain 10/11/2026; hiệu lực từ 09/11/2026."
  }
 ]
