@@ -190,7 +190,7 @@
       // Watermark (09/11/2026, thay quy định 06/11): watermark dưới cột bị che ở chart dày cột và trang ngành không có,
       // nên ảnh chia sẻ vẽ logo FinSuccess mờ lên trên, ở vùng trống nhất của chart (emptiest).
       {const wS=Math.round(c.s.width*0.26),wm=watermark(lg,wS,NAVY),pos=emptiest(c.s,wm.width,wm.height);
-       ctx.save();ctx.globalAlpha=pos.dense?0.10:0.08;ctx.drawImage(wm,x+pos.x*c.sc,cy+pos.y*c.sc,wm.width*c.sc,wm.height*c.sc);ctx.restore();}
+       ctx.save();ctx.globalAlpha=pos.dense?0.18:0.16;ctx.drawImage(wm,x+pos.x*c.sc,cy+pos.y*c.sc,wm.width*c.sc,wm.height*c.sc);ctx.restore();}
     });
     // Nhận diện ở chân ảnh, chỗ trống (người dùng chốt 29/10/2026): chữ "FinSuccess" đậm, rõ + "MÃ · fisc.vn" (watermark trong chart đặt ở khoảng trống, xem emptiest).
     {const fs=Math.max(14,Math.round(cw*0.022)),tail='  ·  '+(p.ticker?p.ticker+'  ·  ':'')+'fisc.vn';ctx.save();ctx.textBaseline='bottom';ctx.textAlign='left';

@@ -1005,6 +1005,7 @@ html.fs-embed .titleband{position:sticky;top:0;z-index:60;box-shadow:0 1px 0 #E3
 html.fs-embed:not([data-theme=dark]) .titleband{background:#fff!important}
 html.fs-embed[data-theme=dark] .titleband{background:#0A0A0A!important}
 html.fs-embed nav.tabs{position:sticky;top:var(--fs-title-h,40px);z-index:59}
+html.fs-embed .stock-search .options{z-index:70}
 @media(min-width:701px){
 html.fs-embed .titleband .in{padding-top:7px!important;padding-bottom:7px!important;gap:10px;min-height:0;flex-wrap:nowrap}
 html.fs-embed .titleband :is(.co-logo,.logo-co,img){height:24px;max-height:24px;margin-right:0;padding:2px 3px}
