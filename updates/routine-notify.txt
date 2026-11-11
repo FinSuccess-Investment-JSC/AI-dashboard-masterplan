@@ -1,5 +1,4 @@
-Routine tài liệu 10/11/2026: xử lý 1/10 mục đã đọc nguồn.
-Thủy sản – chủ đề nóng: thêm XK 10T/2026 10,459 tỷ USD (+12,1%), Mỹ −1,2% (VASEP 05/11).
-Hồ EVN, FDI Cục ĐTNN: chờ runner trên máy người dùng, không xử lý.
-Các mục còn lại chưa mở nguồn đầy đủ, giữ trong hàng chờ.
-Chưa kiểm giao diện bằng trình duyệt.
+Routine Wi 11/11/2026: KHÔNG cập nhật được.
+Hook wi_capture không lưu kết quả WiMCP (không có data/raw/wi/.inbox sau cuộc gọi thử, dù WiMCP trả dữ liệu bình thường).
+39 mục tier B đã --fail, không sửa dữ liệu nào.
+Cần kiểm tra .claude/settings.json hook (matcher "WiMCP|Widata") trong phiên cloud.
