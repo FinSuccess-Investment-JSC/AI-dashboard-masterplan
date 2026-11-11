@@ -1,11 +1,11 @@
 {
 "source": "HNX · Chuyên trang thông tin trái phiếu doanh nghiệp",
 "url": "https://cbonds.hnx.vn/",
-"captured": "2026-11-10",
+"captured": "2026-11-11",
 "definition": "Tổ chức phát hành có lĩnh vực hoạt động \"Bất động sản\" trên HNX; VND",
 "issuer_count": 421,
 "outstanding_bonds": 905,
-"outstanding_value": 447457.5,
+"outstanding_value": 447366.5,
 "issuance": [
 {
 "date": "2020-12-01",
@@ -726,14 +726,14 @@
 {
 "date": "2026-11-01",
 "due": 4340.4,
-"interest": 3991.9,
+"interest": 3991.1,
 "bond_count": 39,
 "issuers": 4
 },
 {
 "date": "2026-12-01",
-"due": 18379.6,
-"interest": 3953.8,
+"due": 18288.6,
+"interest": 3953.0,
 "bond_count": 47,
 "issuers": 8
 },

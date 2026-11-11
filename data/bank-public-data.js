@@ -1,7 +1,7 @@
 window.BANK_PUBLIC_DATA = {
   "schema_version": 1,
   "source_url": "https://eximbank.com.vn/tin-tuc/lai-suat-binh-quan-thang-trong-nam-2026",
-  "last_attempt_at": "2026-11-10T16:34:48.819711+00:00",
+  "last_attempt_at": "2026-11-11T06:58:44.257585+00:00",
   "observation_frequency": "monthly",
   "publication_frequency": "irregular",
   "polling_schedule": "daily 06:15 Asia/Ho_Chi_Minh via run_daily.sh",
@@ -11,7 +11,7 @@ window.BANK_PUBLIC_DATA = {
   "limitation": "Chỉ Eximbank; lãi suất công bố, không phải Yield on Loans hoặc NIM. Trang năm 2026; cần nối năm mới riêng.",
   "status": "loaded",
   "error": null,
-  "last_checked_at": "2026-11-10T16:34:48.819711+00:00",
+  "last_checked_at": "2026-11-11T06:58:44.257585+00:00",
   "points": [
     {
       "date": "2026-01-31",
@@ -140,9 +140,9 @@ window.BANK_PUBLIC_DATA = {
       "spread": 0.9
     }
   ],
-  "last_success_at": "2026-11-10T16:34:48.819711+00:00",
+  "last_success_at": "2026-11-11T06:58:44.257585+00:00",
   "latest_observation": "2026-09-30",
-  "raw_archive": "raw/bank-eib-e4fc68853c42ab9e.html",
-  "raw_hash": "e4fc68853c42ab9edbcb7f928005bd4a136928ea47e2672651a15c985a6312fc",
+  "raw_archive": "raw/bank-eib-69e76f62aba093b4.html",
+  "raw_hash": "69e76f62aba093b46727952038cadcc7870c7138987ee450e732bef542736568",
   "data_hash": "ba3a63a6e296e5656add742852702842ad1bae353be310cbe072bbea7bac54ba"
 };
