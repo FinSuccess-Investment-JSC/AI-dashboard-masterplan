@@ -1,6 +1,6 @@
 {
  "checked_at": "2026-11-12",
- "method": "Tra cứu thủ công từ nguồn đã mở (báo, hồ sơ doanh nghiệp); không dùng Wikipedia làm nguồn sở hữu. Hồ không có dòng ở đây hiển thị \"Chưa xác minh\".",
+ "method": "Tra cứu thủ công từ nguồn đã mở (báo, hồ sơ doanh nghiệp); không dùng Wikipedia làm nguồn sở hữu. Hồ không có dòng ở đây hiển thị \"Chưa xác minh\". Hồ Vĩnh Sơn A, B, C cùng cấp nước cho một nhà máy Vĩnh Sơn 66 MW: tính công suất theo nhà máy, không cộng theo hồ.",
  "rows": [
   {
    "reservoir": "Thác Bà",
@@ -27,6 +27,19 @@
      "url": "https://thoibaotaichinhvietnam.vn/quy-mo-hoat-dong-evngenco3-trai-dai-khap-viet-nam-2067.html",
      "quote": "liên kết 30% vốn góp ... Thủy điện Thác Bà 120 MW, Yên Bái"
     }
+   ],
+   "plant": "Thác Bà",
+   "holders": [
+    {
+     "ticker": "TBC",
+     "share": 1,
+     "basis": "chủ sở hữu nhà máy"
+    },
+    {
+     "ticker": "PGV",
+     "share": null,
+     "basis": "công ty liên kết của EVNGENCO3, tỷ lệ chưa xác minh"
+    }
    ]
   },
   {
@@ -46,7 +59,9 @@
      "url": "https://tapchicongthuong.vn/evngenco1--6-thang--san-luong-dien-dat-15-578-trieu-kwh-90394.htm?print=print",
      "quote": "Công ty Thuỷ điện Bản Vẽ là 4 đơn vị được khen thưởng"
     }
-   ]
+   ],
+   "plant": "Bản Vẽ",
+   "holders": []
   },
   {
    "reservoir": "A Vương",
@@ -77,6 +92,19 @@
      "url": "https://simplize.vn/co-phieu/GE2/ho-so-doanh-nghiep",
      "quote": "GE2 được giao dịch trên thị trường UPCOM từ tháng 05/2021"
     }
+   ],
+   "plant": "A Vương",
+   "holders": [
+    {
+     "ticker": "AVC",
+     "share": 1,
+     "basis": "chủ sở hữu nhà máy"
+    },
+    {
+     "ticker": "GE2",
+     "share": 0.8745,
+     "basis": "EVNGENCO2 sở hữu 87,45% AVC"
+    }
    ]
   },
   {
@@ -103,6 +131,24 @@
     {
      "url": "https://www.dsc.com.vn/kien-thuc/co-phieu-vsh-tong-quan-danh-gia-va-cap-nhat-ket-qua-kinh-doanh-moi-nhat",
      "quote": "Nhà máy thủy điện Vĩnh Sơn: 66 MW"
+    }
+   ],
+   "plant": "Vĩnh Sơn",
+   "holders": [
+    {
+     "ticker": "VSH",
+     "share": 1,
+     "basis": "chủ sở hữu nhà máy"
+    },
+    {
+     "ticker": "REE",
+     "share": 0.5258,
+     "basis": "REE Energy sở hữu 52,58% VSH"
+    },
+    {
+     "ticker": "PGV",
+     "share": 0.3055,
+     "basis": "EVNGENCO3 sở hữu 30,55% VSH"
     }
    ]
   },
@@ -131,6 +177,24 @@
      "url": "https://www.dsc.com.vn/kien-thuc/co-phieu-vsh-tong-quan-danh-gia-va-cap-nhat-ket-qua-kinh-doanh-moi-nhat",
      "quote": "Nhà máy thủy điện Vĩnh Sơn: 66 MW"
     }
+   ],
+   "plant": "Vĩnh Sơn",
+   "holders": [
+    {
+     "ticker": "VSH",
+     "share": 1,
+     "basis": "chủ sở hữu nhà máy"
+    },
+    {
+     "ticker": "REE",
+     "share": 0.5258,
+     "basis": "REE Energy sở hữu 52,58% VSH"
+    },
+    {
+     "ticker": "PGV",
+     "share": 0.3055,
+     "basis": "EVNGENCO3 sở hữu 30,55% VSH"
+    }
    ]
   },
   {
@@ -158,6 +222,24 @@
      "url": "https://www.dsc.com.vn/kien-thuc/co-phieu-vsh-tong-quan-danh-gia-va-cap-nhat-ket-qua-kinh-doanh-moi-nhat",
      "quote": "Nhà máy thủy điện Vĩnh Sơn: 66 MW"
     }
+   ],
+   "plant": "Vĩnh Sơn",
+   "holders": [
+    {
+     "ticker": "VSH",
+     "share": 1,
+     "basis": "chủ sở hữu nhà máy"
+    },
+    {
+     "ticker": "REE",
+     "share": 0.5258,
+     "basis": "REE Energy sở hữu 52,58% VSH"
+    },
+    {
+     "ticker": "PGV",
+     "share": 0.3055,
+     "basis": "EVNGENCO3 sở hữu 30,55% VSH"
+    }
    ]
   },
   {
@@ -177,7 +259,9 @@
      "url": "https://tapchicongthuong.vn/evngenco1--6-thang--san-luong-dien-dat-15-578-trieu-kwh-90394.htm?print=print",
      "quote": "Công ty Thuỷ điện Sông Tranh, Công ty Thuỷ điện Đại Ninh, Công ty Thuỷ điện Đồng Nai"
     }
-   ]
+   ],
+   "plant": "Sông Tranh 2",
+   "holders": []
   },
   {
    "reservoir": "Sông Ba Hạ",
@@ -203,6 +287,24 @@
     {
      "url": "https://simplize.vn/co-phieu/GE2/ho-so-doanh-nghiep",
      "quote": "GE2 được giao dịch trên thị trường UPCOM từ tháng 05/2021"
+    }
+   ],
+   "plant": "Sông Ba Hạ",
+   "holders": [
+    {
+     "ticker": "SBH",
+     "share": 1,
+     "basis": "chủ sở hữu nhà máy"
+    },
+    {
+     "ticker": "GE2",
+     "share": 0.6178,
+     "basis": "EVNGENCO2 sở hữu 61,78% SBH"
+    },
+    {
+     "ticker": "REE",
+     "share": 0.2576,
+     "basis": "REE Energy sở hữu 25,76% SBH"
     }
    ]
   },
@@ -231,6 +333,24 @@
      "url": "https://www.dsc.com.vn/kien-thuc/co-phieu-vsh-tong-quan-danh-gia-va-cap-nhat-ket-qua-kinh-doanh-moi-nhat",
      "quote": "Nhà máy thủy điện Sông Hinh: 70 MW"
     }
+   ],
+   "plant": "Sông Hinh",
+   "holders": [
+    {
+     "ticker": "VSH",
+     "share": 1,
+     "basis": "chủ sở hữu nhà máy"
+    },
+    {
+     "ticker": "REE",
+     "share": 0.5258,
+     "basis": "REE Energy sở hữu 52,58% VSH"
+    },
+    {
+     "ticker": "PGV",
+     "share": 0.3055,
+     "basis": "EVNGENCO3 sở hữu 30,55% VSH"
+    }
    ]
   },
   {
@@ -258,6 +378,24 @@
      "url": "https://doanhnhan.baophapluat.vn/thuy-dien-vinh-son-song-hinh-vsh-chi-150-ty-dong-thau-tom-ge-tay-nguyen-chot-tong-von-du-an-thuong-kon-tum-hon-9-700-ty-dong.html",
      "quote": "Dự án có quy mô công suất 220MW với 2 tổ máy (mỗi tổ 110MW)"
     }
+   ],
+   "plant": "Thượng Kon Tum",
+   "holders": [
+    {
+     "ticker": "VSH",
+     "share": 1,
+     "basis": "chủ sở hữu nhà máy"
+    },
+    {
+     "ticker": "REE",
+     "share": 0.5258,
+     "basis": "REE Energy sở hữu 52,58% VSH"
+    },
+    {
+     "ticker": "PGV",
+     "share": 0.3055,
+     "basis": "EVNGENCO3 sở hữu 30,55% VSH"
+    }
    ]
   },
   {
@@ -280,6 +418,14 @@
     {
      "url": "https://simplize.vn/co-phieu/PGV/ho-so-doanh-nghiep",
      "quote": "Ngày 10/02/2022, PGV chính thức giao dịch trên Sở giao dịch Chứng khoán Thành phố Hồ Chí Minh (HOSE)."
+    }
+   ],
+   "plant": "Sê San 3A",
+   "holders": [
+    {
+     "ticker": "PGV",
+     "share": null,
+     "basis": "công ty liên kết của EVNGENCO3, tỷ lệ chưa xác minh"
     }
    ]
   },
@@ -304,6 +450,14 @@
      "url": "https://simplize.vn/co-phieu/PGV/ho-so-doanh-nghiep",
      "quote": "Ngày 10/02/2022, PGV chính thức giao dịch trên Sở giao dịch Chứng khoán Thành phố Hồ Chí Minh (HOSE)."
     }
+   ],
+   "plant": "Srêpốk 3",
+   "holders": [
+    {
+     "ticker": "PGV",
+     "share": 1,
+     "basis": "đơn vị hạch toán phụ thuộc EVNGENCO3"
+    }
    ]
   },
   {
@@ -326,6 +480,14 @@
     {
      "url": "https://simplize.vn/co-phieu/PGV/ho-so-doanh-nghiep",
      "quote": "Ngày 10/02/2022, PGV chính thức giao dịch trên Sở giao dịch Chứng khoán Thành phố Hồ Chí Minh (HOSE)."
+    }
+   ],
+   "plant": "Buôn Kuốp",
+   "holders": [
+    {
+     "ticker": "PGV",
+     "share": 1,
+     "basis": "đơn vị hạch toán phụ thuộc EVNGENCO3"
     }
    ]
   },
@@ -350,6 +512,14 @@
      "url": "https://simplize.vn/co-phieu/PGV/ho-so-doanh-nghiep",
      "quote": "Ngày 10/02/2022, PGV chính thức giao dịch trên Sở giao dịch Chứng khoán Thành phố Hồ Chí Minh (HOSE)."
     }
+   ],
+   "plant": "Buôn Tua Srah",
+   "holders": [
+    {
+     "ticker": "PGV",
+     "share": 1,
+     "basis": "đơn vị hạch toán phụ thuộc EVNGENCO3"
+    }
    ]
   },
   {
@@ -369,7 +539,9 @@
      "url": "https://tapchicongthuong.vn/evngenco1--6-thang--san-luong-dien-dat-15-578-trieu-kwh-90394.htm?print=print",
      "quote": "Công ty Thuỷ điện Sông Tranh, Công ty Thuỷ điện Đại Ninh, Công ty Thuỷ điện Đồng Nai"
     }
-   ]
+   ],
+   "plant": "Đồng Nai 3",
+   "holders": []
   },
   {
    "reservoir": "Đồng Nai 4",
@@ -388,7 +560,9 @@
      "url": "https://tapchicongthuong.vn/evngenco1--6-thang--san-luong-dien-dat-15-578-trieu-kwh-90394.htm?print=print",
      "quote": "Công ty Thuỷ điện Sông Tranh, Công ty Thuỷ điện Đại Ninh, Công ty Thuỷ điện Đồng Nai"
     }
-   ]
+   ],
+   "plant": "Đồng Nai 4",
+   "holders": []
   },
   {
    "reservoir": "Đơn Dương",
@@ -419,6 +593,14 @@
      "url": "https://simplize.vn/co-phieu/DNH/ho-so-doanh-nghiep",
      "quote": "tổng công suất lắp đặt là 642,5 MW"
     }
+   ],
+   "plant": "Đa Nhim (hồ Đơn Dương cấp nước)",
+   "holders": [
+    {
+     "ticker": "DNH",
+     "share": 1,
+     "basis": "hồ cấp nước cho nhà máy Đa Nhim của DNH"
+    }
    ]
   },
   {
@@ -438,7 +620,9 @@
      "url": "https://tapchicongthuong.vn/evngenco1--6-thang--san-luong-dien-dat-15-578-trieu-kwh-90394.htm?print=print",
      "quote": "Công ty Thuỷ điện Sông Tranh, Công ty Thuỷ điện Đại Ninh, Công ty Thuỷ điện Đồng Nai"
     }
-   ]
+   ],
+   "plant": "Đại Ninh",
+   "holders": []
   },
   {
    "reservoir": "Hàm Thuận",
@@ -460,6 +644,14 @@
     {
      "url": "https://simplize.vn/co-phieu/DNH/ho-so-doanh-nghiep",
      "quote": "được giao dịch trên thị trường UPCOM từ tháng 06/2017"
+    }
+   ],
+   "plant": "Hàm Thuận",
+   "holders": [
+    {
+     "ticker": "DNH",
+     "share": 1,
+     "basis": "chủ sở hữu nhà máy"
     }
    ]
   },
@@ -483,6 +675,14 @@
     {
      "url": "https://simplize.vn/co-phieu/DNH/ho-so-doanh-nghiep",
      "quote": "được giao dịch trên thị trường UPCOM từ tháng 06/2017"
+    }
+   ],
+   "plant": "Đa Mi",
+   "holders": [
+    {
+     "ticker": "DNH",
+     "share": 1,
+     "basis": "chủ sở hữu nhà máy"
     }
    ]
   },
@@ -512,7 +712,68 @@
      "url": "https://simplize.vn/co-phieu/GE2/ho-so-doanh-nghiep",
      "quote": "GE2 được giao dịch trên thị trường UPCOM từ tháng 05/2021"
     }
+   ],
+   "plant": "Thác Mơ",
+   "holders": [
+    {
+     "ticker": "TMP",
+     "share": 1,
+     "basis": "chủ sở hữu nhà máy"
+    },
+    {
+     "ticker": "GE2",
+     "share": 0.519,
+     "basis": "EVNGENCO2 sở hữu 51,9% TMP"
+    },
+    {
+     "ticker": "REE",
+     "share": 0.426,
+     "basis": "REE Energy sở hữu 42,6% TMP"
+    }
    ]
   }
- ]
+ ],
+ "basins": {
+  "Lai Châu": "Sông Đà",
+  "Sơn La": "Sông Đà",
+  "Hòa Bình": "Sông Đà",
+  "Bản Chát": "Sông Đà",
+  "Huội Quảng": "Sông Đà",
+  "Thác Bà": "Sông Chảy",
+  "Tuyên Quang": "Sông Gâm",
+  "Trung Sơn": "Sông Mã",
+  "Bản Vẽ": "Sông Cả",
+  "Khe Bố": "Sông Cả",
+  "Quảng Trị": "Thạch Hãn (Rào Quán)",
+  "A Vương": "Vu Gia – Thu Bồn",
+  "Sông Bung 2": "Vu Gia – Thu Bồn",
+  "Sông Bung 4": "Vu Gia – Thu Bồn",
+  "Sông Tranh 2": "Vu Gia – Thu Bồn",
+  "Vĩnh Sơn A": "Sông Kôn",
+  "Vĩnh Sơn B": "Sông Kôn",
+  "Vĩnh Sơn C": "Sông Kôn",
+  "Sông Ba Hạ": "Sông Ba",
+  "Sông Hinh": "Sông Ba",
+  "Kanak": "Sông Ba",
+  "An Khê": "Sông Ba",
+  "Thượng Kon Tum": "Sê San",
+  "Pleikrông": "Sê San",
+  "Ialy": "Sê San",
+  "Sê San 3": "Sê San",
+  "Sê San 3A": "Sê San",
+  "Sê San 4": "Sê San",
+  "Srêpốk 3": "Srêpốk",
+  "Buôn Kuốp": "Srêpốk",
+  "Buôn Tua Srah": "Srêpốk",
+  "Đồng Nai 3": "Đồng Nai",
+  "Đồng Nai 4": "Đồng Nai",
+  "Đại Ninh": "Đồng Nai",
+  "Đơn Dương": "Đồng Nai",
+  "Hàm Thuận": "Đồng Nai",
+  "Đa Mi": "Đồng Nai",
+  "Trị An": "Đồng Nai",
+  "Thác Mơ": "Đồng Nai"
+ },
+ "basin_note": "Lưu vực xác định theo vị trí địa lý của hồ (FinSuccess tổng hợp, chưa đối chiếu quy trình vận hành liên hồ); không phải nguồn sở hữu.",
+ "holders_note": "Tỷ lệ sở hữu lấy từ nguồn đã mở của từng dòng; công suất sở hữu kinh tế = công suất nhà máy × tỷ lệ. Tỷ lệ chưa xác minh để trống, không ước tính."
 }
