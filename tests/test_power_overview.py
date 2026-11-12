@@ -35,6 +35,13 @@ class PowerOverviewTest(unittest.TestCase):
         r['date'] = '2027-01-01'
         self.assertTrue(any('undated' in e for e in bo.validate(data, self.policy)))
 
+    def test_six_technologies_with_settlement(self):
+        techs = {t['id']: t for t in self.data['technologies']}
+        self.assertEqual(list(techs), ['coal', 'gas', 'lng', 'hydro', 'wind', 'solar'])
+        for k in ('coal', 'gas', 'lng', 'hydro'):
+            self.assertEqual(techs[k]['stages'][-1]['chart'], 'settlement')  # bán điện có sơ đồ PPA/Qc/FMP
+        self.assertIn('curtail', [s['chart'] for s in techs['solar']['stages']])
+
     def test_thresholds_defined(self):
         data = json.loads(json.dumps(self.data))
         del data['thresholds']['fuel_move_pct']
@@ -46,6 +53,8 @@ class PowerOverviewTest(unittest.TestCase):
         self.assertTrue(picture > 0 and overview > 0 and data > 0)
         self.assertLess(picture, overview)  # power-picture.js xuất window.POWER_CORE
         self.assertLess(data, overview)
+        visual = html.find('assets/power-overview-visual.js')
+        self.assertTrue(0 < visual < overview)  # lớp hình ảnh nạp trước module Tổng quan
 
 
 if __name__ == '__main__':

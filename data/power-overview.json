@@ -799,7 +799,14 @@
         "Nhu cầu huy động các nguồn thay thế có thể tăng",
         "Nhiệt điện có khả năng tăng sản lượng nếu đáp ứng điều kiện điều độ, nhiên liệu và tính kinh tế",
         "Lợi nhuận thực tế phụ thuộc giá bán, Qc, biến phí, chi phí cố định và hiệu suất vận hành"
-      ]
+      ],
+      "heat": {
+        "hydro": 3,
+        "coal": 2,
+        "gas": 1,
+        "re": 0,
+        "grid": 0
+      }
     },
     {
       "id": "demand",
@@ -838,7 +845,14 @@
           "label": "Đóng góp tăng trưởng theo nguồn",
           "live": "contrib"
         }
-      ]
+      ],
+      "heat": {
+        "hydro": 1,
+        "coal": 2,
+        "gas": 2,
+        "re": 1,
+        "grid": 2
+      }
     },
     {
       "id": "coal_price",
@@ -877,18 +891,71 @@
           "label": "Biên gộp quý của PPC, QTP, HND",
           "live": null
         }
-      ]
+      ],
+      "heat": {
+        "hydro": 0,
+        "coal": 3,
+        "gas": 1,
+        "re": 0,
+        "grid": 0
+      }
     },
     {
       "id": "gas_price",
-      "label": "Giá khí / LNG",
+      "label": "Giá khí trong nước",
+      "live": null,
+      "pp_section": "economics",
+      "first": "Giá khí mỏ trong nước đổi → chi phí biến đổi của Phú Mỹ, Nhơn Trạch 1–2, Cà Mau 1&2 đổi → giá chào và huy động ngoài Qc đổi.",
+      "groups": {
+        "hydro": "Không trực tiếp",
+        "coal": "Có thể được huy động thay khi khí đắt",
+        "gas": "Chi phí nhiên liệu và huy động ngoài Qc đổi",
+        "re": "Không trực tiếp",
+        "grid": "Không trực tiếp"
+      },
+      "pnl": {
+        "revenue": "Phần Qc theo PPA; phần ngoài Qc theo huy động",
+        "ebitda": "Theo cơ chế chuyển chi phí trong PPA",
+        "profit": "Khác nhau giữa nhà máy khí cũ và LNG mới",
+        "cash": "Dự án LNG mới nhạy với sản lượng ngoài Qc"
+      },
+      "fails": [
+        "Chi phí khí được chuyển ngang qua PPA",
+        "Qc cao bảo vệ phần lớn sản lượng",
+        "Nguồn khí thiếu nên nhà máy không phát thêm được dù giá rẻ"
+      ],
+      "verify": [
+        {
+          "label": "Giá khí bình quân tháng NT2, POW công bố",
+          "live": null
+        },
+        {
+          "label": "Sản lượng khí & dầu so cùng kỳ",
+          "live": "gas_m"
+        },
+        {
+          "label": "Qc 2027 của nhà máy khí",
+          "live": null
+        }
+      ],
+      "heat": {
+        "hydro": 0,
+        "coal": 1,
+        "gas": 3,
+        "re": 0,
+        "grid": 0
+      }
+    },
+    {
+      "id": "lng_price",
+      "label": "Giá LNG",
       "live": "lng",
       "pp_section": "economics",
-      "first": "Chi phí phát điện khí, LNG đổi → thứ tự huy động có thể đổi → sản lượng ngoài Qc của nhà máy khí đổi.",
+      "first": "Giá LNG nhập đổi → chi phí phát điện của Nhơn Trạch 3&4 và dự án LNG mới đổi → giá chào, huy động ngoài Qc đổi.",
       "groups": {
         "hydro": "Không trực tiếp",
         "coal": "Có thể được huy động thay khi LNG đắt",
-        "gas": "Chi phí và huy động ngoài Qc đổi; Qc LNG mới tối thiểu 65%",
+        "gas": "LNG mới: chi phí và huy động ngoài Qc đổi; Qc tối thiểu 65%",
         "re": "Không trực tiếp",
         "grid": "Không trực tiếp"
       },
@@ -909,11 +976,11 @@
           "live": "lng"
         },
         {
-          "label": "Sản lượng khí & dầu so cùng kỳ",
-          "live": "gas_m"
+          "label": "Sản lượng Nhơn Trạch 3&4 (POW công bố)",
+          "live": null
         },
         {
-          "label": "Qc 2027 của nhà máy khí, LNG",
+          "label": "Nghị định nâng Qc LNG (dự thảo)",
           "live": null
         }
       ],
@@ -922,7 +989,14 @@
         "Thứ tự huy động có thể thay đổi",
         "Khả năng chuyển chi phí phụ thuộc cơ chế hợp đồng",
         "Biên lợi nhuận và dòng tiền chịu ảnh hưởng khác nhau giữa từng nhà máy"
-      ]
+      ],
+      "heat": {
+        "hydro": 0,
+        "coal": 1,
+        "gas": 3,
+        "re": 0,
+        "grid": 0
+      }
     },
     {
       "id": "fmp",
@@ -961,7 +1035,14 @@
           "label": "Kế hoạch vận hành thị trường 2027",
           "live": null
         }
-      ]
+      ],
+      "heat": {
+        "hydro": 1,
+        "coal": 2,
+        "gas": 2,
+        "re": 1,
+        "grid": 0
+      }
     },
     {
       "id": "qc",
@@ -1000,80 +1081,60 @@
           "label": "Nghị định nâng Qc LNG (dự thảo)",
           "live": null
         }
-      ]
-    },
-    {
-      "id": "rates",
-      "label": "Lãi suất",
-      "live": null,
-      "pp_section": null,
-      "first": "Chi phí vốn đổi → chi phí lãi vay của dự án mới, nhà máy còn nợ lớn và giá trị chiết khấu dòng tiền đổi.",
-      "groups": {
-        "hydro": "Dự án mới còn nợ (vd Thượng Kon Tum của VSH)",
-        "coal": "Ít, phần lớn nhà máy đã giảm nợ",
-        "gas": "LNG mới vay nhiều",
-        "re": "Nhạy nhất: vay nợ cao",
-        "grid": "Vốn lưu động EPC"
-      },
-      "pnl": {
-        "revenue": "Không trực tiếp",
-        "ebitda": "Không trực tiếp",
-        "profit": "Chi phí tài chính",
-        "cash": "Dòng tiền trả nợ"
-      },
-      "fails": [
-        "Khoản vay lãi suất cố định",
-        "Doanh nghiệp đã trả phần lớn nợ"
       ],
-      "verify": [
-        {
-          "label": "Lãi suất cho vay trung dài hạn",
-          "live": null
-        },
-        {
-          "label": "Chi phí lãi vay quý của doanh nghiệp",
-          "live": null
-        }
-      ]
+      "heat": {
+        "hydro": 1,
+        "coal": 2,
+        "gas": 3,
+        "re": 0,
+        "grid": 0
+      }
     },
     {
-      "id": "policy",
-      "label": "Chính sách PPA / FIT / DPPA",
-      "live": "policy",
-      "pp_section": null,
+      "id": "retail_evn",
+      "label": "Giá bán lẻ & tài chính EVN",
+      "live": "retail",
+      "pp_section": "evn",
       "policy_group": "price",
-      "first": "Giá hợp đồng, điều kiện hưởng FIT hoặc kênh bán DPPA thay đổi → giá bán và rủi ro thanh toán của dự án NLTT đổi.",
+      "first": "Giá bán lẻ đổi → doanh thu EVN đổi trong khi chi phí mua điện theo nhiên liệu và cơ cấu huy động → dư địa thanh toán cho nhà máy đổi.",
       "groups": {
-        "hydro": "Ít",
-        "coal": "Khung giá áp dụng cho dự án mới",
-        "gas": "Khung giá LNG, Qc tối thiểu",
-        "re": "Giá FIT, giá chuyển tiếp, giá tạm, DPPA",
-        "grid": "Tiến độ dự án mới phụ thuộc khung giá"
+        "hydro": "Kỳ thu tiền từ EPTC",
+        "coal": "Kỳ thu tiền; phần chi phí nhiên liệu chờ thanh toán",
+        "gas": "Kỳ thu tiền; chi phí khí/LNG lớn",
+        "re": "Thanh toán tạm, giá tạm với dự án chuyển tiếp",
+        "grid": "Vốn đầu tư lưới của EVN"
       },
       "pnl": {
-        "revenue": "Giá bán hợp đồng",
-        "ebitda": "Theo giá bán",
-        "profit": "Có thể phải trích dự phòng khi giá bị rà soát",
-        "cash": "Thanh toán tạm, kỳ thu tiền"
+        "revenue": "Không đổi trực tiếp: giá IPP do PPA và thị trường quyết định",
+        "ebitda": "Không đổi trực tiếp",
+        "profit": "Có thể tăng chi phí tài chính nếu thu tiền chậm",
+        "cash": "Phải thu, vốn lưu động"
       },
       "fails": [
-        "Dự án không thuộc danh sách rà soát",
-        "Kết quả đàm phán giữ giá cũ"
+        "EVN có lãi, thanh toán đúng hạn",
+        "Giá bán lẻ được điều chỉnh theo chi phí"
       ],
       "verify": [
         {
-          "label": "Kết quả đàm phán 173 nhà máy FIT",
-          "live": "policy"
+          "label": "Giá bán lẻ bình quân",
+          "live": "retail"
         },
         {
-          "label": "Dự án chuyển tiếp ký PPA chính thức",
-          "live": "transitional"
+          "label": "Kết quả tài chính EVN năm 2026",
+          "live": null
         },
         {
-          "label": "Ý kiến kiểm toán, dự phòng trong BCTC",
+          "label": "Phải thu tiền điện trong BCTC doanh nghiệp",
           "live": null
         }
-      ]
+      ],
+      "heat": {
+        "hydro": 1,
+        "coal": 2,
+        "gas": 2,
+        "re": 2,
+        "grid": 2
+      }
     },
     {
       "id": "grid",
@@ -1112,7 +1173,101 @@
           "label": "Backlog EPC theo quý (PC1, TV2)",
           "live": null
         }
-      ]
+      ],
+      "heat": {
+        "hydro": 0,
+        "coal": 1,
+        "gas": 1,
+        "re": 2,
+        "grid": 3
+      }
+    },
+    {
+      "id": "policy",
+      "label": "Chính sách PPA / FIT / DPPA",
+      "live": "policy",
+      "pp_section": null,
+      "policy_group": "price",
+      "first": "Giá hợp đồng, điều kiện hưởng FIT hoặc kênh bán DPPA thay đổi → giá bán và rủi ro thanh toán của dự án NLTT đổi.",
+      "groups": {
+        "hydro": "Ít",
+        "coal": "Khung giá áp dụng cho dự án mới",
+        "gas": "Khung giá LNG, Qc tối thiểu",
+        "re": "Giá FIT, giá chuyển tiếp, giá tạm, DPPA",
+        "grid": "Tiến độ dự án mới phụ thuộc khung giá"
+      },
+      "pnl": {
+        "revenue": "Giá bán hợp đồng",
+        "ebitda": "Theo giá bán",
+        "profit": "Có thể phải trích dự phòng khi giá bị rà soát",
+        "cash": "Thanh toán tạm, kỳ thu tiền"
+      },
+      "fails": [
+        "Dự án không thuộc danh sách rà soát",
+        "Kết quả đàm phán giữ giá cũ"
+      ],
+      "verify": [
+        {
+          "label": "Kết quả đàm phán 173 nhà máy FIT",
+          "live": "policy"
+        },
+        {
+          "label": "Dự án chuyển tiếp ký PPA chính thức",
+          "live": "transitional"
+        },
+        {
+          "label": "Ý kiến kiểm toán, dự phòng trong BCTC",
+          "live": null
+        }
+      ],
+      "heat": {
+        "hydro": 0,
+        "coal": 1,
+        "gas": 2,
+        "re": 3,
+        "grid": 1
+      }
+    },
+    {
+      "id": "rates",
+      "label": "Lãi suất",
+      "live": null,
+      "pp_section": null,
+      "first": "Chi phí vốn đổi → chi phí lãi vay của dự án mới, nhà máy còn nợ lớn và giá trị chiết khấu dòng tiền đổi.",
+      "groups": {
+        "hydro": "Dự án mới còn nợ (vd Thượng Kon Tum của VSH)",
+        "coal": "Ít, phần lớn nhà máy đã giảm nợ",
+        "gas": "LNG mới vay nhiều",
+        "re": "Nhạy nhất: vay nợ cao",
+        "grid": "Vốn lưu động EPC"
+      },
+      "pnl": {
+        "revenue": "Không trực tiếp",
+        "ebitda": "Không trực tiếp",
+        "profit": "Chi phí tài chính",
+        "cash": "Dòng tiền trả nợ"
+      },
+      "fails": [
+        "Khoản vay lãi suất cố định",
+        "Doanh nghiệp đã trả phần lớn nợ"
+      ],
+      "verify": [
+        {
+          "label": "Lãi suất cho vay trung dài hạn",
+          "live": null
+        },
+        {
+          "label": "Chi phí lãi vay quý của doanh nghiệp",
+          "live": null
+        }
+      ],
+      "heat": {
+        "hydro": 1,
+        "coal": 1,
+        "gas": 2,
+        "re": 3,
+        "grid": 2
+      }
     }
   ],
   "sensitivity": {
@@ -1350,5 +1505,694 @@
       "url": null,
       "policy_id": "fit-review"
     }
-  ]
+  ],
+  "map_nodes": {
+    "moit": {
+      "t": "Bộ Công Thương",
+      "d": "Quy hoạch, khung giá phát điện theo năm và loại hình, kế hoạch vận hành thị trường điện năm (tỷ lệ Qc, CAN, trần SMP), quy định thị trường (TT 29/2026/TT-BCT).",
+      "go": {
+        "policy": "plan"
+      }
+    },
+    "nsmo": {
+      "t": "NSMO · điều độ & thị trường",
+      "d": "Lập lịch huy động theo bản chào giá chu kỳ 30 phút và ràng buộc kỹ thuật; vận hành thị trường bán buôn, tính SMP, FMP và số liệu thanh toán thị trường.",
+      "go": {
+        "policy": "market"
+      }
+    },
+    "eptc": {
+      "t": "EVN / EPTC · bên mua buôn",
+      "d": "Công ty Mua bán điện (EPTC) thuộc EVN là bên mua trong phần lớn PPA và thanh toán tiền điện cho nhà máy. Tài chính EVN phụ thuộc chênh lệch giá bán lẻ với chi phí mua điện.",
+      "go": {
+        "pp": "evn"
+      }
+    },
+    "trans": {
+      "t": "Truyền tải 500/220 kV · EVNNPT",
+      "d": "Tổng công ty Truyền tải điện Quốc gia vận hành lưới truyền tải. Giới hạn truyền tải Bắc – Trung – Nam làm huy động lệch thứ tự giá và là một nguyên nhân cắt giảm NLTT.",
+      "go": {
+        "pp": "supply"
+      }
+    },
+    "dist": {
+      "t": "Phân phối · 5 tổng công ty điện lực",
+      "d": "Lưới 110 kV trở xuống; bán lẻ cho khách hàng theo biểu giá bán lẻ do Nhà nước quy định.",
+      "go": {
+        "pp": "evn"
+      }
+    },
+    "pc": {
+      "t": "Thu tiền điện",
+      "d": "Các tổng công ty điện lực thu tiền điện theo biểu giá bán lẻ; dòng tiền về hệ thống EVN để mua điện từ nhà máy.",
+      "go": {
+        "pp": "evn"
+      }
+    },
+    "user": {
+      "t": "Khách hàng",
+      "d": "Phụ tải quyết định sản lượng (điện năng) và công suất đỉnh (Pmax).",
+      "go": {
+        "pp": "demand"
+      }
+    },
+    "dppa": {
+      "t": "DPPA · mua bán trực tiếp",
+      "d": "Khách hàng lớn mua điện NLTT trực tiếp: qua đường dây riêng, hoặc qua lưới quốc gia (nhà máy bán vào thị trường giao ngay, hai bên thanh toán chênh lệch theo hợp đồng kỳ hạn).",
+      "go": {
+        "policy": "price"
+      }
+    },
+    "epc": {
+      "t": "EPC, thiết bị & lưới",
+      "d": "Tư vấn, tổng thầu xây lắp nhà máy và đường dây, trạm; thiết bị điện, dây cáp. Doanh thu theo vốn đầu tư nguồn, lưới và tiến độ dự án.",
+      "go": {
+        "ov": "transmission"
+      },
+      "tickers": [
+        "PC1",
+        "TV2",
+        "GEX"
+      ]
+    },
+    "import": {
+      "t": "Nhập khẩu điện",
+      "d": "EVN mua điện từ Lào, Trung Quốc theo hợp đồng; khung giá nhập khẩu từ Lào theo QĐ 1007/QĐ-BCT.",
+      "go": {
+        "pp": "dispatch"
+      }
+    }
+  },
+  "technologies": [
+    {
+      "id": "coal",
+      "label": "Than",
+      "long": "Nhiệt điện than",
+      "color": "#3d4653",
+      "mix": "coal",
+      "groups": [
+        "coal"
+      ],
+      "source": "Than nội (TKV) & nhập khẩu",
+      "qc": 80,
+      "stages": [
+        {
+          "id": "buy",
+          "t": "Mua than",
+          "s": "TKV, Đông Bắc · than nhập",
+          "flow": "commercial",
+          "icon": "mine",
+          "fn": "Nhà máy mua than theo hợp đồng với TKV, Tổng công ty Đông Bắc hoặc nhập khẩu; một số nhà máy pha trộn than nhập với than nội.",
+          "cost": "Than là chi phí lớn nhất (PPC: khoảng 85% chi phí sản xuất điện năm 2024).",
+          "kpi": "Giá than đầu vào (đ/tấn), nhiệt trị (kcal/kg).",
+          "impact": "Phần giá biến đổi trong PPA điều chỉnh theo giá than; phần bán ngoài Qc chịu chênh lệch giá than so với FMP.",
+          "chart": "coal_price"
+        },
+        {
+          "id": "logi",
+          "t": "Vận chuyển & tồn trữ",
+          "s": "cảng, sà lan, băng tải, bãi than",
+          "flow": "physical",
+          "icon": "ship",
+          "fn": "Than đến nhà máy qua cảng, sà lan hoặc băng tải; nhà máy giữ tồn kho để chạy liên tục.",
+          "cost": "Cước vận chuyển, phí cảng, hao hụt; vốn lưu động nằm trong tồn kho than.",
+          "kpi": "Số ngày tồn kho; hao hụt (trang chưa có dữ liệu).",
+          "impact": "Thiếu than làm giảm công suất khả dụng và sản lượng bán được.",
+          "chart": null
+        },
+        {
+          "id": "boiler",
+          "t": "Lò hơi",
+          "s": "đốt than → hơi áp suất cao",
+          "flow": "physical",
+          "icon": "flame",
+          "fn": "Chuyển năng lượng của than thành nhiệt; hiệu suất lò hơi quyết định lượng than cho mỗi kWh.",
+          "cost": "Than, đá vôi và hóa chất xử lý khí thải, dầu khởi động; bảo dưỡng lò.",
+          "kpi": "Suất tiêu hao 2.411,6 kcal/kWh (tham số khung giá QĐ 1692/QĐ-BCT); độ khả dụng.",
+          "impact": "Chi phí nhiên liệu/kWh = giá than × suất tiêu hao ÷ nhiệt trị.",
+          "chart": "coal_cost"
+        },
+        {
+          "id": "turbine",
+          "t": "Tua-bin hơi",
+          "s": "hơi → cơ năng",
+          "flow": "physical",
+          "icon": "turbine",
+          "fn": "Hơi làm quay tua-bin; nhà máy cũ có hiệu suất thấp hơn và dễ sự cố hơn.",
+          "cost": "Sửa chữa lớn theo chu kỳ, phụ tùng.",
+          "kpi": "Số giờ vận hành, số lần sự cố (trang chưa có dữ liệu).",
+          "impact": "Sự cố, bảo dưỡng làm mất sản lượng trong khi chi phí cố định vẫn phát sinh.",
+          "chart": null
+        },
+        {
+          "id": "gen",
+          "t": "Máy phát & nâng áp",
+          "s": "cơ năng → điện, hòa vào lưới",
+          "flow": "physical",
+          "icon": "bolt",
+          "fn": "Máy phát tạo điện; máy biến áp nâng điện áp để đưa lên lưới truyền tải.",
+          "cost": "Khấu hao, lãi vay (nhà máy mới), bảo dưỡng.",
+          "kpi": "Công suất khả dụng (MW).",
+          "impact": "Nhà máy đã hết khấu hao có chi phí cố định thấp hơn.",
+          "chart": null
+        },
+        {
+          "id": "dispatch",
+          "t": "Điều độ",
+          "s": "NSMO huy động theo bản chào",
+          "flow": "dispatch",
+          "icon": "signal",
+          "fn": "NSMO lập lịch theo bản chào giá chu kỳ 30 phút và ràng buộc hệ thống; than thường được huy động thêm khi thủy điện thiếu nước.",
+          "cost": "—",
+          "kpi": "Sản lượng than, tỷ trọng than trong hệ thống.",
+          "impact": "Huy động cao trải chi phí cố định trên nhiều kWh; mức huy động phụ thuộc thủy văn và phụ tải.",
+          "chart": "coal_share"
+        },
+        {
+          "id": "sell",
+          "t": "Bán điện & thanh toán",
+          "s": "PPA với EPTC: Qc + thị trường",
+          "flow": "commercial",
+          "icon": "coin",
+          "fn": "NSMO tính sản lượng và giá thị trường từng chu kỳ; EPTC thanh toán tiền điện cho nhà máy theo PPA (phần Qc) và theo kết quả thị trường (phần còn lại).",
+          "cost": "Không phát sinh chi phí sản xuất; rủi ro là kỳ thu tiền từ EPTC.",
+          "kpi": "Tỷ lệ Qc (80% nhiệt điện năm 2026 theo nguồn thứ cấp); giá PPA; FMP bình quân; số ngày phải thu.",
+          "impact": "Doanh thu ≈ Qc × giá PPA + (sản lượng − Qc) × FMP (xấp xỉ, bỏ qua điều chỉnh CAN, phí và sai lệch).",
+          "chart": "settlement"
+        }
+      ]
+    },
+    {
+      "id": "gas",
+      "label": "Khí nội",
+      "long": "Điện khí (khí trong nước)",
+      "color": "#c98a00",
+      "mix": "gas",
+      "groups": [
+        "gas"
+      ],
+      "source": "Khí mỏ trong nước",
+      "qc": 80,
+      "stages": [
+        {
+          "id": "field",
+          "t": "Mỏ khí",
+          "s": "Nam Côn Sơn, Cửu Long, Malay–Thổ Chu",
+          "flow": "physical",
+          "icon": "rig",
+          "fn": "Khí khai thác ngoài khơi; sản lượng các mỏ cũ suy giảm dần, cần mỏ mới hoặc LNG bù.",
+          "cost": "Giá khí theo hợp đồng mua bán khí, khác nhau theo mỏ.",
+          "kpi": "Giá khí đến nhà máy (NT2: bình quân 9,908 USD/triệu BTU tháng 8/2026); khả năng cung ứng.",
+          "impact": "Thiếu khí làm giảm sản lượng; giá khí là phần lớn chi phí biến đổi.",
+          "chart": null
+        },
+        {
+          "id": "process",
+          "t": "Xử lý & thu gom",
+          "s": "nhà máy xử lý khí · PV GAS",
+          "flow": "physical",
+          "icon": "factory",
+          "fn": "Khí được tách lỏng, xử lý trước khi vào đường ống.",
+          "cost": "Phí xử lý nằm trong giá khí đến nhà máy.",
+          "kpi": "—",
+          "impact": "—",
+          "chart": null
+        },
+        {
+          "id": "pipe",
+          "t": "Đường ống",
+          "s": "Nam Côn Sơn, Bạch Hổ, PM3–Cà Mau",
+          "flow": "physical",
+          "icon": "pipe",
+          "fn": "Khí đến các trung tâm điện khí Phú Mỹ, Nhơn Trạch, Cà Mau.",
+          "cost": "Cước vận chuyển (tham số khung giá QĐ 1882: 1,87 USD/MMBtu).",
+          "kpi": "—",
+          "impact": "Cước cộng vào giá khí đến nhà máy.",
+          "chart": null
+        },
+        {
+          "id": "ccgt",
+          "t": "Tua-bin khí chu trình hỗn hợp",
+          "s": "Phú Mỹ, Nhơn Trạch 1–2, Cà Mau 1&2",
+          "flow": "physical",
+          "icon": "turbine",
+          "fn": "Đốt khí chạy tua-bin khí, nhiệt thải tạo hơi chạy tua-bin hơi.",
+          "cost": "Khí là chi phí lớn nhất; bảo dưỡng tua-bin khí theo giờ vận hành.",
+          "kpi": "Suất hao nhiệt 6.542,96 BTU/kWh (tham số QĐ 1882/QĐ-BCT).",
+          "impact": "Chi phí nhiên liệu/kWh = (giá khí + cước) × suất hao nhiệt × tỷ giá.",
+          "chart": "gas_cost"
+        },
+        {
+          "id": "dispatch",
+          "t": "Điều độ",
+          "s": "NSMO · sau thủy điện, than khi chi phí cao",
+          "flow": "dispatch",
+          "icon": "signal",
+          "fn": "Nhà máy khí chào giá cao hơn than nên thường được huy động thêm ở giờ cao điểm hoặc khi thủy điện, than không đủ.",
+          "cost": "—",
+          "kpi": "Sản lượng khí & dầu, tỷ trọng.",
+          "impact": "Giá khí cao làm huy động ngoài Qc giảm.",
+          "chart": "gas_out"
+        },
+        {
+          "id": "sell",
+          "t": "Bán điện & thanh toán",
+          "s": "PPA với EPTC: Qc + thị trường",
+          "flow": "commercial",
+          "icon": "coin",
+          "fn": "NSMO tính sản lượng và giá thị trường từng chu kỳ; EPTC thanh toán tiền điện cho nhà máy theo PPA (phần Qc) và theo kết quả thị trường (phần còn lại).",
+          "cost": "Không phát sinh chi phí sản xuất; rủi ro là kỳ thu tiền từ EPTC.",
+          "kpi": "Tỷ lệ Qc (80% nhiệt điện năm 2026 theo nguồn thứ cấp); giá PPA; FMP bình quân; số ngày phải thu.",
+          "impact": "Doanh thu ≈ Qc × giá PPA + (sản lượng − Qc) × FMP (xấp xỉ, bỏ qua điều chỉnh CAN, phí và sai lệch).",
+          "chart": "settlement"
+        }
+      ]
+    },
+    {
+      "id": "lng",
+      "label": "LNG",
+      "long": "Điện khí LNG",
+      "color": "#a35f00",
+      "mix": "gas",
+      "groups": [
+        "gas"
+      ],
+      "source": "LNG nhập khẩu",
+      "qc": 65,
+      "stages": [
+        {
+          "id": "buy",
+          "t": "Mua LNG",
+          "s": "hợp đồng dài hạn hoặc giao ngay",
+          "flow": "commercial",
+          "icon": "ship",
+          "fn": "Giá LNG gắn dầu Brent, JKM hoặc Henry Hub tùy hợp đồng; hợp đồng cung ứng khí thường có điều khoản bao tiêu (take-or-pay). Điều khoản của Nhơn Trạch 3&4 chưa công bố.",
+          "cost": "Giá LNG là phần lớn chi phí biến đổi.",
+          "kpi": "Giá JKM, LNG Nhật (World Bank).",
+          "impact": "Giá LNG tăng làm chi phí/kWh tăng; khả năng chuyển vào giá điện tùy PPA.",
+          "chart": "lng_price"
+        },
+        {
+          "id": "port",
+          "t": "Tàu & kho cảng",
+          "s": "kho cảng LNG Thị Vải (PV GAS)",
+          "flow": "physical",
+          "icon": "port",
+          "fn": "Tàu chở LNG về kho cảng, lưu trữ ở dạng lỏng.",
+          "cost": "Phí kho cảng.",
+          "kpi": "—",
+          "impact": "—",
+          "chart": null
+        },
+        {
+          "id": "regas",
+          "t": "Tái hóa khí",
+          "s": "LNG lỏng → khí",
+          "flow": "physical",
+          "icon": "factory",
+          "fn": "LNG được tái hóa khí trước khi đưa vào đường ống.",
+          "cost": "Phí tái hóa khí.",
+          "kpi": "—",
+          "impact": "—",
+          "chart": null
+        },
+        {
+          "id": "pipe",
+          "t": "Đường ống tới nhà máy",
+          "s": "Thị Vải → Nhơn Trạch",
+          "flow": "physical",
+          "icon": "pipe",
+          "fn": "Khí từ kho cảng đến nhà máy điện.",
+          "cost": "Cước vận chuyển (ước theo tham số QĐ 1882: 1,87 USD/MMBtu).",
+          "kpi": "—",
+          "impact": "Cộng vào giá khí đến nhà máy.",
+          "chart": null
+        },
+        {
+          "id": "ccgt",
+          "t": "CCGT",
+          "s": "Nhơn Trạch 3&4, 1.624 MW (COD 05/01/2026)",
+          "flow": "physical",
+          "icon": "turbine",
+          "fn": "Tua-bin khí chu trình hỗn hợp, cùng công nghệ với điện khí nội.",
+          "cost": "Nhiên liệu; khấu hao và lãi vay lớn (dự án mới).",
+          "kpi": "Suất hao nhiệt (ước 6.542,96 BTU/kWh như khí nội).",
+          "impact": "Giá LNG cao → giá chào cao → ít được huy động ngoài Qc.",
+          "chart": "lng_buildup"
+        },
+        {
+          "id": "dispatch",
+          "t": "Điều độ & Qc",
+          "s": "Qc tối thiểu 65% trong 10 năm",
+          "flow": "dispatch",
+          "icon": "signal",
+          "fn": "Dự án LNG phát điện trước 2031 có Qc tối thiểu 65%, tối đa 10 năm (NĐ 100/2025); dự thảo đề xuất nâng lên 75%, 15 năm.",
+          "cost": "—",
+          "kpi": "Sản lượng NT3&4 (POW công bố theo tháng).",
+          "impact": "Qc tối thiểu giảm rủi ro không được huy động cho phần cam kết; phần còn lại vẫn phải cạnh tranh trên thị trường.",
+          "chart": null
+        },
+        {
+          "id": "sell",
+          "t": "Bán điện & thanh toán",
+          "s": "PPA với EPTC: Qc + thị trường",
+          "flow": "commercial",
+          "icon": "coin",
+          "fn": "NSMO tính sản lượng và giá thị trường từng chu kỳ; EPTC thanh toán tiền điện cho nhà máy theo PPA (phần Qc) và theo kết quả thị trường (phần còn lại).",
+          "cost": "Không phát sinh chi phí sản xuất; rủi ro là kỳ thu tiền từ EPTC.",
+          "kpi": "Tỷ lệ Qc (tối thiểu 65% trong 10 năm, NĐ 100/2025); giá PPA; FMP bình quân; số ngày phải thu.",
+          "impact": "Doanh thu ≈ Qc × giá PPA + (sản lượng − Qc) × FMP (xấp xỉ, bỏ qua điều chỉnh CAN, phí và sai lệch).",
+          "chart": "settlement"
+        }
+      ]
+    },
+    {
+      "id": "hydro",
+      "label": "Thủy điện",
+      "long": "Thủy điện",
+      "color": "#2938A8",
+      "mix": "hydro",
+      "groups": [
+        "hydro"
+      ],
+      "source": "Nước về hồ",
+      "qc": 98,
+      "stages": [
+        {
+          "id": "rain",
+          "t": "Mưa & ENSO",
+          "s": "El Niño khô, La Niña ẩm",
+          "flow": "physical",
+          "icon": "rain",
+          "fn": "Lượng mưa lưu vực quyết định nước về; ENSO là tín hiệu sớm nhưng không dự báo định lượng được lưu lượng.",
+          "cost": "—",
+          "kpi": "ONI (NOAA).",
+          "impact": "El Niño kéo dài làm mùa khô thiếu nước.",
+          "chart": "oni"
+        },
+        {
+          "id": "inflow",
+          "t": "Dòng chảy về hồ",
+          "s": "lưu lượng nước về (m³/s)",
+          "flow": "physical",
+          "icon": "wave",
+          "fn": "Nước về theo mùa: mùa lũ tích nước, mùa khô xả để phát điện.",
+          "cost": "—",
+          "kpi": "Nước về so trung bình 5 năm, trung vị các hồ.",
+          "impact": "Nước về thấp → sản lượng các tháng sau thấp.",
+          "chart": "inflow"
+        },
+        {
+          "id": "reservoir",
+          "t": "Hồ chứa",
+          "s": "mực nước, dung tích",
+          "flow": "physical",
+          "icon": "dam",
+          "fn": "Hồ lớn tích nước cuối mùa mưa để phát mùa khô; hồ nhỏ phát theo dòng chảy.",
+          "cost": "—",
+          "kpi": "Mực nước so mực nước dâng bình thường (bản đồ hồ ở tab Bức tranh ngành).",
+          "impact": "Hồ đầy đầu mùa khô giúp giữ sản lượng.",
+          "chart": "ownership"
+        },
+        {
+          "id": "regulate",
+          "t": "Điều tiết",
+          "s": "quy trình liên hồ, cấp nước hạ du",
+          "flow": "dispatch",
+          "icon": "gate",
+          "fn": "Phát điện xếp sau an toàn công trình và cấp nước hạ du theo quy trình liên hồ (vd QĐ 1928/QĐ-TTg sông Hồng).",
+          "cost": "—",
+          "kpi": "—",
+          "impact": "Có thể phải xả hoặc giữ nước khác với phương án tối ưu doanh thu.",
+          "chart": null
+        },
+        {
+          "id": "gen",
+          "t": "Tua-bin & máy phát",
+          "s": "nước → điện",
+          "flow": "physical",
+          "icon": "turbine",
+          "fn": "Không tốn nhiên liệu; chi phí chủ yếu cố định.",
+          "cost": "Khấu hao, vận hành, thuế tài nguyên nước, tiền dịch vụ môi trường rừng theo sản lượng.",
+          "kpi": "Sản lượng thủy điện theo tháng.",
+          "impact": "Sản lượng tăng chảy gần hết vào lợi nhuận.",
+          "chart": "hydro_out"
+        },
+        {
+          "id": "dispatch",
+          "t": "Điều độ",
+          "s": "NSMO · nguồn rẻ nhất",
+          "flow": "dispatch",
+          "icon": "signal",
+          "fn": "Thủy điện có chi phí biến đổi thấp nên được ưu tiên khi có nước; hồ lớn dùng phủ đỉnh.",
+          "cost": "—",
+          "kpi": "Tỷ trọng thủy điện trong hệ thống.",
+          "impact": "Mùa khô tỷ trọng giảm, nhiệt điện bù.",
+          "chart": "hydro_share"
+        },
+        {
+          "id": "sell",
+          "t": "Bán điện & thanh toán",
+          "s": "PPA với EPTC: Qc + thị trường",
+          "flow": "commercial",
+          "icon": "coin",
+          "fn": "NSMO tính sản lượng và giá thị trường từng chu kỳ; EPTC thanh toán tiền điện cho nhà máy theo PPA (phần Qc) và theo kết quả thị trường (phần còn lại).",
+          "cost": "Không phát sinh chi phí sản xuất; rủi ro là kỳ thu tiền từ EPTC.",
+          "kpi": "Tỷ lệ Qc (98% thủy điện năm 2026 theo nguồn thứ cấp); giá PPA; FMP bình quân; số ngày phải thu.",
+          "impact": "Doanh thu ≈ Qc × giá PPA + (sản lượng − Qc) × FMP (xấp xỉ, bỏ qua điều chỉnh CAN, phí và sai lệch).",
+          "chart": "settlement"
+        }
+      ]
+    },
+    {
+      "id": "wind",
+      "label": "Gió",
+      "long": "Điện gió",
+      "color": "#2a9fa3",
+      "mix": "wind",
+      "groups": [
+        "re"
+      ],
+      "source": "Tài nguyên gió",
+      "stages": [
+        {
+          "id": "res",
+          "t": "Tài nguyên gió",
+          "s": "mạnh theo gió mùa",
+          "flow": "physical",
+          "icon": "wind",
+          "fn": "Sản lượng theo tốc độ gió, mạnh vào mùa gió Đông Bắc.",
+          "cost": "—",
+          "kpi": "Sản lượng tiềm năng (trang chưa có).",
+          "impact": "Năm gió yếu giảm sản lượng, không bù được bằng giá.",
+          "chart": "wind_out"
+        },
+        {
+          "id": "turbine",
+          "t": "Tua-bin gió",
+          "s": "cánh quạt, máy phát",
+          "flow": "physical",
+          "icon": "turbine",
+          "fn": "Gió quay cánh quạt; chi phí chủ yếu là đầu tư ban đầu.",
+          "cost": "Khấu hao, lãi vay, bảo dưỡng theo hợp đồng O&M.",
+          "kpi": "Hệ số công suất (trang chưa có).",
+          "impact": "Chi phí gần như cố định: sản lượng và giá quyết định lợi nhuận.",
+          "chart": null
+        },
+        {
+          "id": "sub",
+          "t": "Trạm nâng áp",
+          "s": "biến đổi điện áp",
+          "flow": "physical",
+          "icon": "bolt",
+          "fn": "Nâng điện áp để đấu nối lưới.",
+          "cost": "Đầu tư trạm, đường dây đấu nối.",
+          "kpi": "—",
+          "impact": "—",
+          "chart": null
+        },
+        {
+          "id": "grid",
+          "t": "Hòa lưới",
+          "s": "lưới 110–220 kV",
+          "flow": "physical",
+          "icon": "tower",
+          "fn": "Khả năng giải tỏa công suất phụ thuộc lưới khu vực.",
+          "cost": "—",
+          "kpi": "—",
+          "impact": "Nghẽn lưới dẫn tới cắt giảm.",
+          "chart": null
+        },
+        {
+          "id": "curtail",
+          "t": "Điều độ & cắt giảm",
+          "s": "tiềm năng → thực phát",
+          "flow": "dispatch",
+          "icon": "signal",
+          "fn": "NSMO có thể yêu cầu giảm phát khi lưới quá tải hoặc dư nguồn; phần cắt giảm không được trả tiền.",
+          "cost": "—",
+          "kpi": "Thực phát (EVN); cắt giảm (chưa có dữ liệu công khai).",
+          "impact": "Cắt giảm làm mất doanh thu trực tiếp.",
+          "chart": "curtail"
+        },
+        {
+          "id": "contract",
+          "t": "Hợp đồng điện",
+          "s": "FIT · chuyển tiếp · khung giá · DPPA",
+          "flow": "commercial",
+          "icon": "doc",
+          "fn": "Giá theo FIT (dự án cũ), giá chuyển tiếp (dự án lỡ FIT), khung giá năm (dự án mới) hoặc DPPA.",
+          "cost": "—",
+          "kpi": "Giá hợp đồng (đ/kWh).",
+          "impact": "Thay đổi giá hợp đồng (rà soát FIT, giá tạm 50%) tác động thẳng vào lợi nhuận.",
+          "chart": "contract_wind"
+        },
+        {
+          "id": "cash",
+          "t": "Dòng tiền",
+          "s": "trả nợ trước, cổ tức sau",
+          "flow": "commercial",
+          "icon": "coin",
+          "fn": "Doanh thu ổn định nhưng phần lớn dùng trả nợ trong những năm đầu.",
+          "cost": "Lãi vay.",
+          "kpi": "Dư nợ, lãi suất.",
+          "impact": "Lãi suất và giá hợp đồng quyết định khả năng trả nợ.",
+          "chart": null
+        }
+      ]
+    },
+    {
+      "id": "solar",
+      "label": "Mặt trời",
+      "long": "Điện mặt trời",
+      "color": "#e0a100",
+      "mix": "solar",
+      "groups": [
+        "re"
+      ],
+      "source": "Bức xạ",
+      "stages": [
+        {
+          "id": "res",
+          "t": "Bức xạ",
+          "s": "mạnh mùa khô, giữa trưa",
+          "flow": "physical",
+          "icon": "sun",
+          "fn": "Sản lượng theo bức xạ; cao mùa khô, chỉ phát ban ngày.",
+          "cost": "—",
+          "kpi": "Sản lượng tiềm năng (trang chưa có).",
+          "impact": "Phát dồn giữa trưa khi phụ tải chưa cao nhất → dễ bị cắt giảm.",
+          "chart": "solar_out"
+        },
+        {
+          "id": "panel",
+          "t": "Tấm pin & biến tần",
+          "s": "DC → AC",
+          "flow": "physical",
+          "icon": "panel",
+          "fn": "Tấm pin tạo điện một chiều, biến tần chuyển sang xoay chiều.",
+          "cost": "Khấu hao, lãi vay; hiệu suất tấm pin suy giảm theo năm.",
+          "kpi": "Hệ số công suất (trang chưa có).",
+          "impact": "Chi phí gần như cố định.",
+          "chart": null
+        },
+        {
+          "id": "sub",
+          "t": "Trạm nâng áp",
+          "s": "biến đổi điện áp",
+          "flow": "physical",
+          "icon": "bolt",
+          "fn": "Nâng áp để đấu nối lưới; điện mặt trời mái nhà đấu nối lưới phân phối.",
+          "cost": "Đầu tư trạm, đường dây.",
+          "kpi": "—",
+          "impact": "—",
+          "chart": null
+        },
+        {
+          "id": "grid",
+          "t": "Hòa lưới",
+          "s": "lưới 110–220 kV",
+          "flow": "physical",
+          "icon": "tower",
+          "fn": "Nhiều dự án tập trung ở Ninh Thuận, Bình Thuận vượt khả năng lưới khu vực.",
+          "cost": "—",
+          "kpi": "—",
+          "impact": "Nghẽn lưới dẫn tới cắt giảm.",
+          "chart": null
+        },
+        {
+          "id": "curtail",
+          "t": "Điều độ & cắt giảm",
+          "s": "tiềm năng → thực phát",
+          "flow": "dispatch",
+          "icon": "signal",
+          "fn": "Giảm phát khi lưới quá tải hoặc dư nguồn giữa trưa; phần cắt giảm không được trả tiền.",
+          "cost": "—",
+          "kpi": "Thực phát (EVN); cắt giảm (chưa có dữ liệu công khai).",
+          "impact": "Mất doanh thu trực tiếp.",
+          "chart": "curtail"
+        },
+        {
+          "id": "contract",
+          "t": "Hợp đồng điện",
+          "s": "FIT · chuyển tiếp · khung giá · DPPA · mái nhà",
+          "flow": "commercial",
+          "icon": "doc",
+          "fn": "Giá FIT (dự án cũ), chuyển tiếp, khung giá năm, DPPA, hoặc mái nhà bán dư tối đa 50% (NĐ 243/2026).",
+          "cost": "—",
+          "kpi": "Giá hợp đồng (đ/kWh).",
+          "impact": "Rà soát FIT với 173 nhà máy là rủi ro giá lớn nhất.",
+          "chart": "contract_solar"
+        },
+        {
+          "id": "cash",
+          "t": "Dòng tiền",
+          "s": "trả nợ trước, cổ tức sau",
+          "flow": "commercial",
+          "icon": "coin",
+          "fn": "Doanh thu ổn định nếu giá ổn định; phần lớn dùng trả nợ.",
+          "cost": "Lãi vay.",
+          "kpi": "Dư nợ, lãi suất.",
+          "impact": "Lãi suất và giá hợp đồng quyết định khả năng trả nợ.",
+          "chart": null
+        }
+      ]
+    }
+  ],
+  "heat_note": "Mức phơi nhiễm là đánh giá định tính theo cơ chế doanh thu/chi phí của nhóm nguồn (0 không, 1 thấp, 2 trung bình, 3 cao), không phải chiều tác động lên lợi nhuận. Mức của từng mã = mức của nhóm × vai trò tài sản (chính 1; chính trong mảng điện 0,8; một phần 0,5; gián tiếp 0,3; nhỏ 0,2), lấy nhóm cao nhất.",
+  "scenario": {
+    "note": "Giả định minh họa cho một nhà máy giả định; không phải số của nhà máy hay doanh nghiệp nào. Giá trị mặc định lấy từ tham số khung giá (suất hao, nhiệt trị), FMP và giá nhiên liệu mới nhất trên trang; chi phí cố định, khấu hao, lãi vay là số tròn để minh họa.",
+    "techs": {
+      "coal": {
+        "label": "Nhiệt điện than",
+        "mw": 1200,
+        "cf": 65,
+        "qc": 80,
+        "ppa_from": "Than",
+        "fixed": 900,
+        "dep": 1500,
+        "interest": 600
+      },
+      "lng": {
+        "label": "Điện khí LNG",
+        "mw": 1600,
+        "cf": 55,
+        "qc": 65,
+        "ppa_from": "LNG (CCGT)",
+        "fixed": 800,
+        "dep": 2400,
+        "interest": 1500
+      },
+      "hydro": {
+        "label": "Thủy điện",
+        "mw": 300,
+        "cf": 45,
+        "qc": 98,
+        "ppa_from": "Thủy điện",
+        "fixed": 120,
+        "dep": 150,
+        "interest": 50
+      }
+    }
+  }
 }
