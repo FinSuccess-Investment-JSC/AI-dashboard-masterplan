@@ -18,6 +18,8 @@ data/raw/
 data/raw/*
 !data/raw/evn-reservoirs/
 !data/raw/wi/
+# KCN research workbook: the only rebuild source for data/kcn-market.(json|js)
+!data/raw/kcn/
 # public-source history: CI fetchers run with --recent and merge into these files
 !data/raw/public/
 data/.update.lock
