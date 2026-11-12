@@ -1788,5 +1788,75 @@
   "quote": "Đối với điện mặt trời mặt đất, mức giá tại miền Bắc là 1.813,48 đồng/kWh, miền Trung là 1.469,90 đồng/kWh và miền Nam là 1.254,97 đồng/kWh.",
   "status": "match",
   "note": "Mục \"sử dụng kết hợp hệ thống pin lưu trữ năng lượng\"."
+ },
+ {
+  "block": "dien-28",
+  "claim": "Tổng dự án NLTT chuyển tiếp (23/09/2026)",
+  "value": "85 dự án; hơn 4.734 MW",
+  "url": "https://vnexpress.net/hon-2-200-mw-dien-tai-tao-chuyen-tiep-chua-dam-phan-gia-5125904.html",
+  "opened_at": "2026-11-12",
+  "quote": "Hiện có 85 dự án năng lượng tái tạo chuyển tiếp (công suất hơn 4.734 MW)",
+  "status": "match",
+  "note": "VnExpress 28/09/2026, số đến 23/09/2026."
+ },
+ {
+  "block": "dien-28",
+  "claim": "Dự án chuyển tiếp đã vận hành thương mại",
+  "value": "46 dự án; 2.386 MW",
+  "url": "https://vnexpress.net/hon-2-200-mw-dien-tai-tao-chuyen-tiep-chua-dam-phan-gia-5125904.html",
+  "opened_at": "2026-11-12",
+  "quote": "46 dự án còn lại đã vận hành thương mại với tổng công suất 2.386 MW.",
+  "status": "match",
+  "note": "VnExpress 28/09/2026, số đến 23/09/2026."
+ },
+ {
+  "block": "dien-28",
+  "claim": "Dự án chuyển tiếp đã ký PPA chính thức",
+  "value": "39 dự án; 2.283 MW",
+  "url": "https://vnexpress.net/hon-2-200-mw-dien-tai-tao-chuyen-tiep-chua-dam-phan-gia-5125904.html",
+  "opened_at": "2026-11-12",
+  "quote": "Trong đó, 39 dự án (2.283 MW) thỏa thuận được giá điện và ký chính thức hợp đồng mua bán điện với EVN.",
+  "status": "match",
+  "note": "VnExpress 28/09/2026, số đến 23/09/2026."
+ },
+ {
+  "block": "dien-28",
+  "claim": "Dự án chuyển tiếp thanh toán theo giá tạm",
+  "value": "7 dự án; 102 MW",
+  "url": "https://vnexpress.net/hon-2-200-mw-dien-tai-tao-chuyen-tiep-chua-dam-phan-gia-5125904.html",
+  "opened_at": "2026-11-12",
+  "quote": "Còn 7 dự án (102 MW) chưa thỏa thuận được hợp đồng, nhưng vẫn đang thanh toán theo giá tạm tính.",
+  "status": "match",
+  "note": "VnExpress 28/09/2026, số đến 23/09/2026."
+ },
+ {
+  "block": "dien-28",
+  "claim": "Dự án chuyển tiếp chưa đàm phán hoặc dừng đàm phán",
+  "value": "39 dự án; gần 2.200 MW",
+  "url": "https://vnexpress.net/hon-2-200-mw-dien-tai-tao-chuyen-tiep-chua-dam-phan-gia-5125904.html",
+  "opened_at": "2026-11-12",
+  "quote": "39 dự án điện mặt trời, điện gió chuyển tiếp với tổng công suất gần 2.200 MW",
+  "status": "match",
+  "note": "VnExpress 28/09/2026, số đến 23/09/2026."
+ },
+ {
+  "block": "dien-28",
+  "claim": "Dự án chuyển tiếp dừng đàm phán",
+  "value": "7 dự án; 494 MW",
+  "url": "https://vnexpress.net/hon-2-200-mw-dien-tai-tao-chuyen-tiep-chua-dam-phan-gia-5125904.html",
+  "opened_at": "2026-11-12",
+  "quote": "có 7 dự án với tổng công suất 494 MW dừng đàm phán giá,",
+  "status": "match",
+  "note": "VnExpress 28/09/2026, số đến 23/09/2026."
+ },
+ {
+  "block": "dien-28",
+  "claim": "Dự án chuyển tiếp chưa gửi hồ sơ đàm phán",
+  "value": "32 dự án; hơn 1.700 MW",
+  "url": "https://vnexpress.net/hon-2-200-mw-dien-tai-tao-chuyen-tiep-chua-dam-phan-gia-5125904.html",
+  "opened_at": "2026-11-12",
+  "quote": "còn 32 dự án, tổng công suất hơn 1.700 MW chưa gửi hồ sơ đàm phán.",
+  "status": "match",
+  "note": "VnExpress 28/09/2026, số đến 23/09/2026."
  }
 ]
