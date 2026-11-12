@@ -128,7 +128,7 @@ def main():
     if errors:
         print('\n'.join(errors))
         sys.exit(f'{len(errors)} lỗi trong {SRC.relative_to(ROOT)}; không ghi {OUT.name}')
-    OUT.write_text('window.POWER_POLICY=' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n', encoding='utf-8')
+    OUT.write_text('window.POWER_POLICY=' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n', encoding='utf-8', newline='\n')  # LF cả trên Windows để ?v= khớp bản trên web
     print(f'{len(data["policies"])} chính sách, {len(data["price_frameworks"])} mức khung giá → {OUT.relative_to(ROOT)}')
 
 

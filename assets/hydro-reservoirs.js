@@ -59,29 +59,39 @@
   const ORDER=['Bắc','Trung & Tây Nguyên','Nam','Tất cả hồ'];
   const ok=(r,f)=>r&&r[f]!=null&&r.days/r.expected>=.8&&r[f+'_n']/r.expected>=.8;
   const median=a=>{const v=a.filter(x=>x!=null&&isFinite(x)).sort((x,y)=>x-y);return v.length?(v.length%2?v[(v.length-1)/2]:(v[v.length/2-1]+v[v.length/2])/2):null};
+  // Nhóm hàng: 3 cụm (mặc định) · 6 vùng EVN · từng hồ; nền so sánh: TB 5 năm cùng tháng hoặc cùng tháng năm trước.
+  const REGIONS=['Tây Bắc Bộ','Đông Bắc Bộ','Bắc Trung Bộ','Nam Trung Bộ','Tây Nguyên','Đông Nam Bộ'];
+  const groupSel=document.getElementById('hydro-heat-group'), baseSel=document.getElementById('hydro-heat-base');
   function heat(){
     if(!heatHost) return;
-    const field=heatSel?.value||'inflow', pctMode=field!=='level';
+    const field=heatSel?.value||'inflow', pctMode=field!=='level', mode=groupSel?.value||'cluster', base5=(baseSel?.value||'5y')==='5y';
     const months=[...new Set(dataset.monthly.map(r=>r.month))].sort().slice(-12);
     const byRes=new Map(); dataset.monthly.forEach(r=>{if(!byRes.has(r.reservoir))byRes.set(r.reservoir,{region:r.region,m:new Map()});byRes.get(r.reservoir).m.set(r.month,r)});
     const dev=(res,month)=>{const cur=res.m.get(month); if(!ok(cur,field)) return null; const y=+month.slice(0,4), mm=month.slice(5);
-      const base=[]; for(let k=y-5;k<y;k++){const b=res.m.get(k+'-'+mm); if(ok(b,field)) base.push(b[field]);}
-      if(base.length<3) return null; const avg=base.reduce((a,b)=>a+b,0)/base.length;
+      const base=[]; for(let k=base5?y-5:y-1;k<y;k++){const b=res.m.get(k+'-'+mm); if(ok(b,field)) base.push(b[field]);}
+      if(base.length<(base5?3:1)) return null; const avg=base.reduce((a,b)=>a+b,0)/base.length;
       return pctMode?(avg>0?(cur[field]/avg-1)*100:null):cur[field]-avg};
-    const cells={}; ORDER.forEach(c=>cells[c]=months.map(()=>[]));
-    byRes.forEach((res,name)=>{const c=CLUSTER[res.region]; months.forEach((mo,i)=>{const d=dev(res,mo); if(d==null) return; if(c) cells[c][i].push(d); cells['Tất cả hồ'][i].push(d);})});
+    const groupOf=(name,res)=>mode==='region'?res.region:mode==='res'?name:CLUSTER[res.region];
+    const order=mode==='region'?REGIONS:mode==='res'?[...byRes].sort((a,b)=>REGIONS.indexOf(a[1].region)-REGIONS.indexOf(b[1].region)||a[0].localeCompare(b[0],'vi')).map(x=>x[0]):ORDER.slice(0,3);
+    const rows=[...order,'Tất cả hồ'], cells={}; rows.forEach(c=>cells[c]=months.map(()=>[]));
+    byRes.forEach((res,name)=>{const c=groupOf(name,res); months.forEach((mo,i)=>{const d=dev(res,mo); if(d==null) return; if(cells[c]) cells[c][i].push(d); cells['Tất cả hồ'][i].push(d);})});
     const lim=pctMode?50:10;
     const color=v=>{if(v==null) return 'transparent'; const t=Math.max(-1,Math.min(1,v/lim)); return t>=0?`rgba(41,56,168,${0.12+0.7*t})`:`rgba(217,119,6,${0.12+0.7*(-t)})`};
     const ink=v=>v!=null&&Math.abs(v)/lim>0.55?'#fff':'#1f2937';
     const f=v=>v==null?'—':(v>0?'+':'')+v.toLocaleString('vi-VN',{maximumFractionDigits:pctMode?0:1})+(pctMode?'%':' m');
-    heatHost.innerHTML='<div class="tablewrap"><table class="hydro-heat" style="border-collapse:separate;border-spacing:2px;font-size:12px;width:100%"><thead><tr><th style="text-align:left">Cụm</th>'+months.map(m=>`<th>${'T'+Number(m.slice(5))+'/'+m.slice(2,4)}</th>`).join('')+'</tr></thead><tbody>'+
-      ORDER.map(c=>'<tr><td style="font-weight:650;white-space:nowrap">'+esc(c)+'</td>'+cells[c].map((arr,i)=>{const v=median(arr);return `<td title="${esc(c)} · ${months[i]} · ${arr.length} hồ hợp lệ" style="text-align:center;border-radius:6px;padding:7px 4px;background:${color(v)} !important;color:${ink(v)};font-variant-numeric:tabular-nums">${f(v)}<br><small style="opacity:.75">${arr.length} hồ</small></td>`}).join('')+'</tr>').join('')+'</tbody></table></div>';
-    const latest=cells['Bắc'].length?ORDER.slice(0,3).map(c=>[c,median(cells[c].at(-1))]).filter(x=>x[1]!=null):[];
+    const label=mode==='res'?'Hồ':mode==='region'?'Vùng':'Cụm', baseText=base5?'TB 5 năm':'năm trước';
+    heatHost.innerHTML='<div class="tablewrap"><table class="hydro-heat" style="border-collapse:separate;border-spacing:2px;font-size:12px;width:100%"><thead><tr><th style="text-align:left">'+label+'</th>'+months.map(m=>`<th>${'T'+Number(m.slice(5))+'/'+m.slice(2,4)}</th>`).join('')+'</tr></thead><tbody>'+
+      rows.map(c=>'<tr><td style="font-weight:650;white-space:nowrap">'+esc(c)+(mode==='res'&&byRes.get(c)?`<br><small style="opacity:.6;font-weight:400">${esc(byRes.get(c).region)}</small>`:'')+'</td>'+cells[c].map((arr,i)=>{const v=median(arr);return `<td title="${esc(c)} · ${months[i]} · ${arr.length} hồ hợp lệ · so ${baseText}" style="text-align:center;border-radius:6px;padding:7px 4px;background:${color(v)} !important;color:${ink(v)};font-variant-numeric:tabular-nums">${f(v)}${mode==='res'&&c!=='Tất cả hồ'?'':`<br><small style="opacity:.75">${arr.length} hồ</small>`}</td>`}).join('')+'</tr>').join('')+'</tbody></table></div>';
+    // Dòng kết luận: tháng gần nhất có đủ số (cột cuối có thể là tháng chưa đủ ngày).
+    const col=[...months.keys()].reverse().find(i=>cells['Tất cả hồ'][i].length>=5);
+    const latest=col==null||mode==='res'?[]:order.map(c=>[c,median(cells[c][col])]).filter(x=>x[1]!=null);
     const card=heatHost.closest('.card'); let key=card?.querySelector('.pv-key');
     if(card&&latest.length){ if(!key){key=document.createElement('div');key.className='pv-key';card.querySelector('.chart-sub')?.after(key)}
       const worst=[...latest].sort((a,b)=>a[1]-b[1])[0];
-      key.innerHTML=`<b class="${worst[1]<0?'dn':'up'}">${f(worst[1])}</b> cụm ${esc(worst[0])} tháng ${Number(months.at(-1).slice(5))}/${months.at(-1).slice(0,4)} so TB 5 năm (${pctMode?'nước về':'mực nước'}) <span>${latest.map(([c,v])=>esc(c)+' '+f(v)).join(' · ')}</span>`; }
+      key.innerHTML=`<b class="${worst[1]<0?'dn':'up'}">${f(worst[1])}</b> ${mode==='region'?'vùng':'cụm'} ${esc(worst[0])} tháng ${Number(months[col].slice(5))}/${months[col].slice(0,4)} so ${baseText} (${pctMode?'nước về':'mực nước'}) <span>${latest.map(([c,v])=>esc(c)+' '+f(v)).join(' · ')}</span>`; }
+    else if(key) key.remove();
   }
+  [groupSel,baseSel].forEach(s=>s?.addEventListener('change',heat));
   heatSel?.addEventListener('change',heat); heat();
 
 })();
