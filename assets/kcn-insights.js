@@ -49,14 +49,17 @@
     const out = [];
     const cw = (D.absorption || []).filter(a => /Cushman/.test(a.reporter || '') && a.ptype === 'Quarter' && qk(a.period) != null);
     ['North', 'South'].forEach(r => ['C&W_PRE_2025Q3', 'C&W_POST_2025_MERGER'].forEach(cov => {
-      const pts = cw.filter(a => a.region === r && a.coverage === cov).map(a => ({period: a.period, value: a.value, cls: a.obs === 'ACTUAL' ? 'ACTUAL' : a.obs, precision: a.precision, src: a.src, note: a.note}));
+      const pts = cw.filter(a => a.region === r && a.coverage === cov).map(a => ({period: a.period, value: a.value, cls: a.obs === 'ACTUAL' ? 'ACTUAL' : a.obs, precision: a.precision, src: a.src, note: a.note, web: a.added === 'web'}));
       if (pts.length) out.push({id: `cw-${cov.includes('POST') ? 'post' : 'pre'}-${r}`, reporter: 'C&W', coverage: cov, cohort: cov.includes('POST') ? 'POST' : 'PRE', region: r, points: pts.sort((a, b) => qk(a.period) - qk(b.period))});
     }));
     ['North', 'South'].forEach(r => {
       const pts = (D.cbre || []).filter(c => c.region === r).map(c => {
         const lower = (D.absorption || []).find(a => a.period === c.period && a.region === r && /CBRE/.test(a.reporter || '') && a.obs === 'LOWER_BOUND');
-        const est = /DERIVED|ESTIMATE/.test(c.status || '');
-        return {period: c.period, value: c.value, cls: est ? 'ESTIMATE' : c.status === 'ACTUAL_PRIMARY' ? 'ACTUAL' : 'ACTUAL_SECONDARY', src: c.src, note: c.note, lower: lower ? lower.value : null};
+        const est = /DERIVED_ROUNDED|ESTIMATE/.test(c.status || ''), lb = c.status === 'LOWER_BOUND';
+        // LOWER_BOUND: nguồn ghi "hơn X ha"; DERIVED_EXACT: hiệu hai số lũy kế cùng nguồn, cùng phạm vi (không làm tròn).
+        return {period: c.period, value: c.value, cls: est ? 'ESTIMATE' : lb ? 'LOWER_BOUND' : c.status === 'DERIVED_EXACT' ? 'DERIVED' : c.status === 'ACTUAL_PRIMARY' ? 'ACTUAL' : 'ACTUAL_SECONDARY', src: c.src, note: c.note,
+          lower: lb ? c.value : lower ? lower.value : null,
+          web: c.added === 'web', replaced: c.replaced ? c.replaced.value : null};
       });
       if (pts.length) out.push({id: `cbre-${r}`, reporter: 'CBRE', coverage: 'CBRE_TIER1', cohort: 'CBRE', region: r, points: pts.sort((a, b) => qk(a.period) - qk(b.period))});
     });
@@ -65,8 +68,8 @@
   // Số lũy kế (năm, nửa năm, 9 tháng) giữ riêng: không phải quan sát quý.
   function cumulativeFacts(D) {
     return (D.absorption || []).filter(a => a.ptype !== 'Quarter').map(a => {
-      const m = /([+-]?\d+(?:\.\d+)?)%\s*YoY/i.exec(a.note || '');
-      return {...a, reported_yoy: m ? +m[1] / 100 : null};
+      const m = /([+\-−]?)\s*(\d+(?:[.,]\d+)?)%\s*YoY/i.exec(a.note || '');
+      return {...a, reported_yoy: m ? (m[1] === '-' || m[1] === '−' ? -1 : 1) * +m[2].replace(',', '.') / 100 : null};
     });
   }
   function longestRun(points) {
@@ -92,6 +95,37 @@
     by.forEach((p, k) => { const b = by.get(k - 4); if (b && b.value) out.push({period: p.period, value: p.value / b.value - 1, base: b.period, est: p.cls === 'ESTIMATE' || b.cls === 'ESTIMATE'}); });
     return out.sort((a, b) => qk(a.period) - qk(b.period));
   }
+
+  // So cùng kỳ trên số lũy kế CBRE (Q1, H1, 9T, cả năm) cùng phạm vi cấp 1: số công bố trước, thiếu thì cộng từ quý (ghi là phái sinh).
+  const isCbre = r => /CBRE/.test(r || '');
+  function cbreCum(D, region, year) {
+    const q = p => (D.cbre || []).find(c => c.region === region && c.period === `${year}Q${p}`);
+    const pub = t => (D.absorption || []).find(a => isCbre(a.reporter) && a.region === region && a.period === `${year}${t}`);
+    const out = {};
+    const add = (k, rows, row) => { if (row) out[k] = {value: row.value, approx: row.precision === 'APPROX', derived: false, src: row.src, note: row.note}; else if (rows.every(x => x && num(x.value) && !/ESTIMATE|DERIVED_ROUNDED/.test(x.status || ''))) out[k] = {value: rows.reduce((a, x) => a + x.value, 0), derived: true, approx: rows.some(x => x.status === 'LOWER_BOUND'), src: rows[rows.length - 1].src}; };
+    add('Q1', [q(1)], null);
+    add('H1', [q(1), q(2)], pub('H1'));
+    add('9T', [q(1), q(2), q(3)], pub('M9'));
+    add('Năm', [q(1), q(2), q(3), q(4)], pub('FY'));
+    return out;
+  }
+  function cumYoY(D) {
+    const out = [];
+    ['North', 'South'].forEach(r => {
+      const years = [...new Set((D.cbre || []).filter(c => c.region === r).map(c => +c.period.slice(0, 4)).concat((D.absorption || []).filter(a => isCbre(a.reporter) && a.region === r).map(a => +String(a.period).slice(0, 4))))].sort();
+      years.forEach(y => {
+        const cur = cbreCum(D, r, y), base = cbreCum(D, r, y - 1);
+        Object.keys(cur).forEach(k => {
+          if (!base[k]) return;
+          const rep = /([+\-−]?)\s*(\d+(?:[.,]\d+)?)%\s*YoY/i.exec(cur[k].note || '');
+          const yoyv = cur[k].value / base[k].value - 1, reported = rep ? (rep[1] === '-' || rep[1] === '−' ? -1 : 1) * +rep[2].replace(',', '.') / 100 : null;
+          out.push({region: r, label: k, year: y, cur: cur[k], base: base[k], yoy: yoyv, reported, conflict: reported != null && Math.abs(reported - yoyv) > 0.1});
+        });
+      });
+    });
+    return out;
+  }
+  const reportedOf = (D, region, metric, reporter) => (D.reported || []).filter(x => x.region === region && x.metric === metric && (!reporter || x.reporter === reporter)).sort((a, b) => qk(a.period) - qk(b.period));
 
   /* ---------- Thị trường C&W theo vùng ---------- */
   const marketRows = (D, region) => (D.market || []).filter(m => m.region === region).sort((a, b) => qk(a.period) - qk(b.period));
@@ -203,7 +237,12 @@
     const r1ev = [], r1src = new Set();
     comp.filter(y => y.value >= th.r1_yoy).forEach(y => { r1ev.push(`${y.s.reporter} ${REG[y.s.region]} ${qlabel(y.period)}: ${pct(y.value)} so ${qlabel(y.base)}`); });
     rising.forEach(x => r1ev.push(`Rolling 4 quý ${x.s.reporter} ${REG[x.s.region]} tăng 2 kỳ liền`));
-    reported.filter(c => c.reported_yoy >= th.r1_yoy).forEach(c => { r1ev.push(`${repName(c.reporter)} ${REG[c.region] || c.region} ${c.period.replace('2026M9', '9T/2026').replace('2026H1', 'H1/2026')}: ${ha(c.value)}, ${pct(c.reported_yoy, 0)} so cùng kỳ (nguồn công bố)`); r1src.add(c.src); });
+    const cy = cumYoY(D).filter(x => x.year === Math.max(...cumYoY(D).map(z => z.year)));
+    cy.filter(x => x.label !== 'Q1' && !x.conflict && x.yoy >= th.r1_yoy).forEach(x => { r1ev.push(`CBRE ${REG[x.region]} ${x.label}/${x.year}: ${x.cur.approx ? 'khoảng ' : ''}${ha(x.cur.value)} so ${x.base.approx ? 'khoảng ' : ''}${ha(x.base.value)} cùng kỳ ${x.year - 1}: ${pct(x.yoy, 0)} (tính trên số lũy kế cùng nguồn${x.cur.derived ? ', 2026 cộng từ các quý' : ''})`); r1src.add(x.cur.src); r1src.add(x.base.src); });
+    // Số nguồn công bố: chỉ kỳ của năm mới nhất, bỏ kỳ đã có so cùng kỳ tự tính khớp (không lặp).
+    const lastY = Math.max(...reported.map(c => +String(c.period).slice(0, 4)));
+    const covered = c => cy.some(x => !x.conflict && x.region === c.region && `${x.year}${{H1: 'H1', '9T': 'M9', 'Năm': 'FY'}[x.label] || ''}` === c.period);
+    reported.filter(c => +String(c.period).slice(0, 4) === lastY && !covered(c) && c.reported_yoy >= th.r1_yoy).forEach(c => { r1ev.push(`${repName(c.reporter)} ${REG[c.region] || c.region} ${c.period.replace('2026M9', '9T/2026').replace('2026H1', 'H1/2026')}: ${ha(c.value)}, ${pct(c.reported_yoy, 0)} so cùng kỳ (nguồn công bố)`); r1src.add(c.src); });
     const fdiNew = (D.fdi_snap || []).find(f => f.sector === 'FDI_MFG' && f.ctype === 'registered_new');
     if (r1ev.length) {
       const m = fdiNew && /([+-]?\d+)% YoY/.exec(fdiNew.note || '');
@@ -245,7 +284,14 @@
           evidence: [`Lấp đầy ${qlabel(p.period)}: ${occT(p.occ)}`, `Giá chào thuê so cùng kỳ: ${pct(p.rent_yoy)}`], interp: 'Lấp đầy cao và giá chào thuê tăng. Đây là giá chào sơ cấp, chưa phải giá giao dịch.',
           implication: 'Thuận cho doanh nghiệp còn đất thương phẩm trong tỉnh; kiểm tra tính đại diện của giá chào thuê trước khi dùng cho dự phóng.', sources: [p.src], threshold: `Lấp đầy ≥ ${occT(th.r4_occ)} và giá ≥ ${pct(th.r4_rent, 0)}`});
     });
-    insufficient.push({id: 'R3/R4', text: 'Cấp vùng: chưa tính được giá thuê so cùng kỳ (Q3/2026 báo giá VND, các kỳ trước USD; trước Q3/2025 khác phạm vi).'});
+    // Cấp vùng: dùng mức so cùng kỳ C&W tự công bố (cùng phạm vi, cùng đơn vị) cho kỳ lấp đầy mới nhất.
+    ['North', 'South'].forEach(r => {
+      const l = latest(D, r, 'occ'), ry = l && reportedOf(D, r, 'rent_yoy', 'C&W').find(x => x.period === l.period);
+      if (!ry) { insufficient.push({id: 'R3/R4', text: `Miền ${REG[r]}: chưa có giá thuê so cùng kỳ cùng phạm vi cho ${l ? qlabel(l.period) : 'kỳ mới nhất'}.`}); return; }
+      const ev = [`Lấp đầy ${qlabel(l.period)}: ${occT(l.occ)}`, `Giá chào thuê so cùng kỳ (C&W công bố, ${ry.unit}): ${pct(ry.value)}`];
+      if (l.occ < th.r3_occ && ry.value <= th.r3_rent) out.push({id: 'R3', key: 'pressure', tab: 'rent', status: 'fired', scope: 'Miền ' + REG[r], headline: `Miền ${REG[r]}: dấu hiệu cạnh tranh giá hoặc dư cung`, evidence: ev, interp: 'Lấp đầy thấp đi cùng giá chào thuê giảm.', implication: 'Theo dõi giá và tốc độ lấp đầy của KCN mới trong vùng.', sources: [ry.src], threshold: `Lấp đầy < ${occT(th.r3_occ)} và giá ≤ ${pct(th.r3_rent, 0)}`});
+      else if (l.occ >= th.r4_occ && ry.value >= th.r4_rent) out.push({id: 'R4', key: 'power', tab: 'rent', status: 'fired', scope: 'Miền ' + REG[r], headline: `Miền ${REG[r]}: có thể có sức mạnh tăng giá`, evidence: ev, interp: 'Lấp đầy cao và giá chào thuê tăng (giá chào, chưa phải giá giao dịch).', implication: 'Thuận cho doanh nghiệp còn đất thương phẩm trong vùng.', sources: [ry.src], threshold: `Lấp đầy ≥ ${occT(th.r4_occ)} và giá ≥ ${pct(th.r4_rent, 0)}`});
+    });
 
     // R5 · Rủi ro nguồn cung tương lai
     pipelineRatios(D).forEach(p => {
@@ -287,7 +333,7 @@
     return {fired: out, insufficient};
   }
 
-  const api = {TH, repName, qk, qlabel, kOf, REG, qaFor, absorptionSeries, cumulativeFacts, rolling4, yoy, longestRun, marketRows, latest, change, stockDelta,
+  const api = {TH, repName, cbreCum, cumYoY, reportedOf, qk, qlabel, kOf, REG, qaFor, absorptionSeries, cumulativeFacts, rolling4, yoy, longestRun, marketRows, latest, change, stockDelta,
     regimes, REGIME_TEXT, yearsOfSupply, provincePoints, quadrant, QUAD_TEXT, pipelineRatios, leaseMomentum, rules};
   if (typeof module === 'object' && module.exports) module.exports = api;
   root.KcnInsights = api;

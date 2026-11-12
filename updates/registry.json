@@ -2070,10 +2070,12 @@
      "kcn-da-explorer",
      "kcn-da-qa",
      "kcn-da-checks",
-     "kcn-da-rules"
+     "kcn-da-rules",
+     "kcn-su-reported",
+     "kcn-da-web"
     ]
    },
-   "how": "Cập nhật workbook data/raw/kcn/Vietnam_Industrial_Park_Research_Data_2026_Expanded_Landbank.xlsx khi C&W/CBRE ra số quý mới (giữ tên sheet, cột, Source_ID, Coverage, Geography_version) → python scripts/build_kcn_workbook.py → node tests/kcn-insights.test.cjs và pytest tests/test_kcn_workbook.py → prepare_release",
+   "how": "Cập nhật workbook data/raw/kcn/Vietnam_Industrial_Park_Research_Data_2026_Expanded_Landbank.xlsx khi C&W/CBRE ra số quý mới (giữ tên sheet, cột, Source_ID, Coverage, Geography_version) (hoặc thêm số tìm trên web vào data/kcn/supplement.json, mỗi số một dòng bằng chứng có trích dẫn trong data/kcn/evidence.json) → python scripts/build_kcn_workbook.py → node tests/kcn-insights.test.cjs và pytest tests/test_kcn_workbook.py → prepare_release",
    "gates": [
     "Link báo cáo/thông cáo gốc trong 11_SOURCES",
     "Không nối chuỗi qua đổi phạm vi khảo sát hay đổi đơn vị USD/VND",

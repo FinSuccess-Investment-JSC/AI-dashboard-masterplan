@@ -85,6 +85,77 @@ def qkey(p):
     return int(m.group(1)) * 4 + int(m.group(2)) - 1 if m else None
 
 
+SUPPLEMENT = ROOT / 'data/kcn/supplement.json'
+EVIDENCE = ROOT / 'data/kcn/evidence.json'
+KEYS = {'market': ('period', 'region'), 'province': ('period', 'province'), 'absorption': ('period', 'region', 'reporter', 'coverage', 'ptype'),
+        'cbre': ('period', 'region'), 'rbf': ('period', 'region', 'segment'), 'reported': ('period', 'region', 'reporter', 'metric')}
+
+
+def apply_supplement(tables, sources, qa, errors, checks):
+    """Ghép số tìm thêm trên web vào bảng workbook. Mỗi dòng phải có bằng chứng (đoạn trích chứa đúng số) trong
+    data/kcn/evidence.json; 'add' thêm dòng mới, 'fill' chỉ điền ô đang trống, 'replace' thay số ước tính và giữ số cũ."""
+    if not SUPPLEMENT.exists():
+        return {'rows': [], 'qa_updates': []}
+    sup = json.loads(SUPPLEMENT.read_text(encoding='utf-8'))
+    ev = {e['claim']: e for e in json.loads(EVIDENCE.read_text(encoding='utf-8'))} if EVIDENCE.exists() else {}
+    for sid, s in (sup.get('sources') or {}).items():
+        if sid in sources:
+            errors.append(f'supplement: Source_ID {sid} trùng workbook')
+        sources[sid] = {**s, 'added': 'web'}
+    applied = []
+    for r in sup.get('rows', []):
+        rid, tbl, mode = r['id'], r['table'], r['mode']
+        e = ev.get(rid)
+        if not e or e.get('status') != 'match':
+            errors.append(f'supplement {rid}: thiếu bằng chứng status=match trong {EVIDENCE.name}'); continue
+        if r.get('src') not in sources:
+            errors.append(f'supplement {rid}: Source_ID {r.get("src")} chưa khai báo'); continue
+        if e['url'] != sources[r['src']].get('url'):
+            errors.append(f'supplement {rid}: URL bằng chứng khác URL nguồn {r["src"]}')
+        rows = tables[tbl]
+        key = {k: r['key'][k] for k in KEYS[tbl] if k in r['key']}
+        hit = [x for x in rows if all(x.get(k) == v for k, v in key.items())]
+        if mode == 'add':
+            if hit:
+                errors.append(f'supplement {rid}: dòng {key} đã có trong workbook, dùng fill/replace'); continue
+            rows.append({**{k: None for k in (rows[0] if rows else {})}, **r['key'], **r['set'], 'src': r['src'], 'note': r.get('note'), 'added': 'web'})
+        else:
+            if len(hit) != 1:
+                errors.append(f'supplement {rid}: cần đúng 1 dòng khớp {key}, thấy {len(hit)}'); continue
+            row, old = hit[0], {}
+            for k, v in r['set'].items():
+                if mode == 'fill' and row.get(k) is not None:
+                    if row[k] != v:
+                        errors.append(f'supplement {rid}: {k} đã có {row[k]} ≠ {v}; không ghi đè')
+                    continue
+                old[k] = row.get(k); row[k] = v
+            if mode == 'replace':
+                row['replaced'] = {**old, 'src': row.get('src'), 'note': row.get('note')}
+            row['src_web'] = r['src']; row['added'] = 'web'
+            if mode == 'replace' or row.get('src') is None:
+                row['src'] = r['src']
+            if r.get('note'):
+                row['note'] = r['note']
+        applied.append({'id': rid, 'table': tbl, 'mode': mode, 'key': r['key'], 'set': r['set'], 'src': r['src'], 'quote': e['quote'], 'url': e['url']})
+    for t in ('market', 'cbre', 'absorption', 'province', 'rbf', 'reported'):
+        tables[t].sort(key=lambda x: (qkey(x['period']) or 0, x.get('region') or '', x.get('province') or ''))
+    # Hấp thụ C&W theo quý phải giống nhau ở bảng thị trường (01) và bảng hấp thụ (03).
+    for a in tables['absorption']:
+        if 'Cushman' in (a.get('reporter') or '') and a.get('ptype') == 'Quarter':
+            m = next((x for x in tables['market'] if x['period'] == a['period'] and x['region'] == a['region']), None)
+            if m and m.get('abs_ha') is not None and m['abs_ha'] != a['value']:
+                errors.append(f"hấp thụ C&W {a['period']} {a['region']}: 01 = {m['abs_ha']} ≠ 03 = {a['value']}")
+            elif m and m.get('abs_ha') is None:
+                m['abs_ha'] = a['value']
+    for u in sup.get('qa_updates', []):
+        q = next((q for q in qa if q['issue'] == u['issue']), None)
+        if not q:
+            errors.append(f"qa_updates: không có cảnh báo {u['issue']}"); continue
+        q['status'], q['resolution'] = u['status'], u['note']
+    checks.append({'name': 'Số bổ sung từ web có bằng chứng trích dẫn', 'ok': True, 'detail': f'{len(applied)} số · {len(sup.get("qa_updates", []))} cảnh báo cập nhật'})
+    return {'rows': applied, 'qa_updates': sup.get('qa_updates', []), 'checked': sup.get('checked')}
+
+
 def main(argv):
     src = Path(argv[1]) if len(argv) > 1 else DEFAULT_SRC
     if not src.exists():
@@ -504,6 +575,11 @@ def main(argv):
                           'b': {'table': '07_DEVELOPER_FACTS', 'value': vgc_dev[0]['value'], 'obs': '>6.000 ha · 19 KCN · ĐHCĐ 2026', 'src': vgc_dev[0]['src']},
                           'rule': 'Khác kỳ và khác số KCN trong danh mục; cả hai là cận dưới, không phải đất thương phẩm. Bảng doanh nghiệp dùng BCTN 2025, ghi kèm số ĐHCĐ 2026.'})
 
+    # ---- Số bổ sung từ nguồn web (data/kcn/supplement.json), sau bước đối chiếu fact dài (fact dài chỉ phản ánh workbook).
+    reported = []  # so cùng kỳ / thay đổi do nguồn tự công bố trên cùng phạm vi (chỉ có từ supplement)
+    supplement = apply_supplement({'market': market, 'province': province, 'absorption': absorption, 'cbre': cbre, 'rbf': rbf, 'reported': reported},
+                                  sources, qa, errors, checks)
+
     check(not errors, 'Không có lỗi chuẩn hóa', '; '.join(errors[:5]))
     if errors:
         print('\n'.join(errors), file=sys.stderr)
@@ -524,6 +600,7 @@ def main(argv):
         'chart_data': chart_data, 'qa': qa, 'playbook': playbook, 'dictionary': dictionary,
         'landbank': landbank, 'company': company, 'lease': lease, 'coverage': coverage, 'guide': guide,
         'facts': facts, 'dup': {'by_table': dup, 'unmatched': len(unmatched)}, 'conflicts': conflicts, 'checks': checks,
+        'supplement': supplement, 'reported': reported,
     }
     body = json.dumps(data, ensure_ascii=False, separators=(',', ':'), default=str)
     OUT_JSON.write_text(json.dumps(data, ensure_ascii=False, indent=1, default=str) + '\n', encoding='utf-8', newline='\n')

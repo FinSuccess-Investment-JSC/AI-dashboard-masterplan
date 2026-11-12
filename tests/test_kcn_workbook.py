@@ -49,6 +49,18 @@ class KcnWorkbookData(unittest.TestCase):
         self.assertEqual({c['period'] for c in est}, {'2026Q3'})
         self.assertEqual(self.d['dup']['unmatched'], 0)
 
+    def test_web_supplement_has_evidence(self):
+        ev = {e['claim']: e for e in json.loads((ROOT / 'data/kcn/evidence.json').read_text(encoding='utf-8'))}
+        rows = self.d['supplement']['rows']
+        self.assertGreater(len(rows), 10)
+        for r in rows:
+            self.assertEqual(ev[r['id']]['status'], 'match', r['id'])
+            self.assertIn(r['src'], self.d['sources'])
+        n = next(c for c in self.d['cbre'] if c['period'] == '2026Q3' and c['region'] == 'North')
+        self.assertEqual((n['value'], n['status'], n['replaced']['value']), (101, 'LOWER_BOUND', 99))
+        # Hấp thụ C&W các quý không công bố vẫn để trống (không lấp bằng nguồn khác).
+        self.assertIsNone(next(m for m in self.d['market'] if m['period'] == '2026Q3' and m['region'] == 'North')['abs_ha'])
+
     def test_workspace_has_no_hardcoded_market_numbers(self):
         js = (ROOT / 'assets/kcn-workspace.js').read_text(encoding='utf-8')
         for n in ('25455', '35800', '9230', '4474', '613', '13,4'):
