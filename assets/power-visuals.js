@@ -160,7 +160,7 @@ const MODEL = {
     f: [['Bức xạ, gió', '×'], ['Giá FIT / chuyển tiếp', '−'], ['Cắt giảm công suất', '']],
     d: [['Cắt giảm công suất', -1], ['Đàm phán lại giá FIT', -1], ['Thanh toán chậm', -1], ['DPPA, QHĐ VIII mở dự án', 1]]},
   'Xây lắp, tư vấn & thiết bị lưới': {g: 'build', ic: 'build',
-    f: [['Vốn EVN/NPT', '→'], ['Backlog hợp đồng', '→'], ['Doanh thu theo tiến độ', '']],
+    f: [['Vốn EVN/NPT', '→'], ['Hợp đồng chưa thực hiện', '→'], ['Doanh thu theo tiến độ', '']],
     d: [['Đầu tư lưới theo QHĐ VIII', 1], ['Giải ngân EVN/NPT nhanh', 1], ['Giải ngân chậm', -1]]}
 };
 function businessCards() {

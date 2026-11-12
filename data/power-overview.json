@@ -63,7 +63,7 @@
       "basis": "Luận điểm 2: sản lượng khí & dầu 3 tháng đổi quá ±5% so cùng kỳ."
     }
   },
-  "threshold_note": "Các ngưỡng là quy ước nội bộ của dashboard để bật/tắt nhận định, không phải tiêu chuẩn ngành. Khi chuỗi dữ liệu thiếu (dưới 80% số ngày đối chiếu) quy tắc không kích hoạt.",
+  "threshold_note": "Các ngưỡng là quy ước nội bộ của trang để bật/tắt nhận định, không phải tiêu chuẩn ngành. Khi chuỗi dữ liệu thiếu (dưới 80% số ngày đối chiếu) quy tắc không kích hoạt.",
   "stock_dashboards": {
     "base": "https://finsuccess-investment-jsc.github.io/stock-dashboard/",
     "checked_at": "2026-11-12",
@@ -337,7 +337,7 @@
         {
           "group": "grid",
           "role": "chính",
-          "note": "EPC lưới và NLTT, cột thép; backlog EPC 8.250 tỷ đồng cuối 2025"
+          "note": "EPC lưới và NLTT, cột thép; giá trị hợp đồng EPC chưa thực hiện 8.250 tỷ đồng cuối 2025"
         },
         {
           "group": "hydro",
@@ -711,7 +711,7 @@
       "risks": [
         "Giá than nhập tăng, phần chuyển ngang trong PPA không đủ",
         "Sự cố, bảo dưỡng lớn ở nhà máy cũ",
-        "Chuẩn khí thải QCVN 19:2024 từ 2032, capex xử lý khí thải",
+        "Chuẩn khí thải QCVN 19:2024 từ 2032, vốn đầu tư xử lý khí thải",
         "Giấy phép hoạt động điện lực của tổ máy cũ"
       ],
       "pp_section": "dispatch"
@@ -785,7 +785,7 @@
           "live": "oni"
         },
         {
-          "label": "Sản lượng thủy điện vs than tháng tới",
+          "label": "Sản lượng thủy điện so với than tháng tới",
           "live": "hydro_m"
         },
         {
@@ -822,7 +822,7 @@
         "grid": "Nhu cầu đầu tư lưới, nguồn tăng theo trung hạn"
       },
       "pnl": {
-        "revenue": "Nguồn biên: sản lượng ngoài Qc tăng; xây lắp: backlog",
+        "revenue": "Nguồn biên: sản lượng ngoài Qc tăng; xây lắp: giá trị hợp đồng chưa thực hiện",
         "ebitda": "Nhiệt điện: theo biên trên phần huy động thêm",
         "profit": "Chi phí cố định trải trên sản lượng lớn hơn",
         "cash": "EPC: vốn lưu động tăng khi nhận thêm công trình"
@@ -1105,7 +1105,7 @@
         "grid": "Vốn đầu tư lưới của EVN"
       },
       "pnl": {
-        "revenue": "Không đổi trực tiếp: giá IPP do PPA và thị trường quyết định",
+        "revenue": "Không đổi trực tiếp: giá bán của nhà máy do PPA và thị trường quyết định",
         "ebitda": "Không đổi trực tiếp",
         "profit": "Có thể tăng chi phí tài chính nếu thu tiền chậm",
         "cash": "Phải thu, vốn lưu động"
@@ -1147,7 +1147,7 @@
         "coal": "Nhà máy hiện hữu được huy động cao hơn nếu nguồn mới chậm",
         "gas": "COD các dự án LNG",
         "re": "Giảm cắt giảm công suất khi lưới mở rộng",
-        "grid": "Backlog, doanh thu EPC, thiết bị"
+        "grid": "Hợp đồng chưa thực hiện, doanh thu EPC, thiết bị"
       },
       "pnl": {
         "revenue": "EPC: doanh thu theo tiến độ nghiệm thu",
@@ -1170,7 +1170,7 @@
           "live": null
         },
         {
-          "label": "Backlog EPC theo quý (PC1, TV2)",
+          "label": "Giá trị hợp đồng EPC chưa thực hiện theo quý (PC1, TV2)",
           "live": null
         }
       ],
@@ -1367,8 +1367,8 @@
         "fs_q4",
         "pdp8"
       ],
-      "support": "Giải ngân lưới, backlog EPC tăng theo quý",
-      "contra": "Dự án tiếp tục chậm, backlog giảm"
+      "support": "Giải ngân lưới, giá trị hợp đồng EPC chưa thực hiện tăng theo quý",
+      "contra": "Dự án tiếp tục chậm, giá trị hợp đồng chưa thực hiện giảm"
     },
     {
       "id": "t4",
@@ -1397,7 +1397,7 @@
       "label": "NOAA cập nhật ENSO, ONI",
       "rule": "second_thursday",
       "kind": "scheduled",
-      "basis": "NOAA CPC công bố ENSO Diagnostic Discussion vào thứ Năm thứ hai mỗi tháng",
+      "basis": "NOAA CPC công bố bản tin thảo luận ENSO vào thứ Năm thứ hai mỗi tháng",
       "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml"
     },
     {
@@ -1435,11 +1435,11 @@
     },
     {
       "id": "hot_season",
-      "label": "Mùa nóng 2027 (Pmax)",
+      "label": "Mùa nóng 2027 (công suất đỉnh)",
       "date": "2027-04-01",
       "end": "2027-07-31",
       "kind": "expected",
-      "basis": "Khoảng mùa vụ: Pmax các năm gần đây rơi vào tháng 4–7",
+      "basis": "Khoảng mùa vụ: Công suất đỉnh các năm gần đây rơi vào tháng 4–7",
       "url": null
     },
     {
@@ -1786,7 +1786,7 @@
           "s": "hợp đồng dài hạn hoặc giao ngay",
           "flow": "commercial",
           "icon": "ship",
-          "fn": "Giá LNG gắn dầu Brent, JKM hoặc Henry Hub tùy hợp đồng; hợp đồng cung ứng khí thường có điều khoản bao tiêu (take-or-pay). Điều khoản của Nhơn Trạch 3&4 chưa công bố.",
+          "fn": "Giá LNG gắn dầu Brent, JKM hoặc Henry Hub tùy hợp đồng; hợp đồng cung ứng khí thường có điều khoản bao tiêu. Điều khoản của Nhơn Trạch 3&4 chưa công bố.",
           "cost": "Giá LNG là phần lớn chi phí biến đổi.",
           "kpi": "Giá JKM, LNG Nhật (World Bank).",
           "impact": "Giá LNG tăng làm chi phí/kWh tăng; khả năng chuyển vào giá điện tùy PPA.",
@@ -1830,7 +1830,7 @@
         },
         {
           "id": "ccgt",
-          "t": "CCGT",
+          "t": "Tua-bin khí chu trình hỗn hợp",
           "s": "Nhơn Trạch 3&4, 1.624 MW (COD 05/01/2026)",
           "flow": "physical",
           "icon": "turbine",
@@ -1994,7 +1994,7 @@
           "flow": "physical",
           "icon": "turbine",
           "fn": "Gió quay cánh quạt; chi phí chủ yếu là đầu tư ban đầu.",
-          "cost": "Khấu hao, lãi vay, bảo dưỡng theo hợp đồng O&M.",
+          "cost": "Khấu hao, lãi vay, bảo dưỡng theo hợp đồng vận hành, bảo dưỡng.",
           "kpi": "Hệ số công suất (trang chưa có).",
           "impact": "Chi phí gần như cố định: sản lượng và giá quyết định lợi nhuận.",
           "chart": null

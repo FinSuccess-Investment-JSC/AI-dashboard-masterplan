@@ -20,7 +20,7 @@ const GROUP = Object.fromEntries(O.groups.map(g => [g.id, g]));
 const SOURCES = ['hydro', 'coal', 'gas', 're'];
 const plain = s => String(s ?? '').replace(/\[\[([^\]]+)\]\]/g, '$1');
 const stockUrl = t => O.stock_dashboards.paths[t] ? O.stock_dashboards.base + O.stock_dashboards.paths[t] : null;
-const chip = (t, title) => { const u = stockUrl(t); return u ? `<a class="ov-tk" href="${u}" target="_blank" rel="noopener" title="${esc(title || 'Mở dashboard cổ phiếu ' + t)}">${t}<span aria-hidden="true">↗</span></a>` : `<span class="ov-tk" title="${esc(title || 'Chưa có dashboard cổ phiếu')}">${t}</span>`; };
+const chip = (t, title) => { const u = stockUrl(t); return u ? `<a class="ov-tk" href="${u}" target="_blank" rel="noopener" title="${esc(title || 'Mở trang phân tích cổ phiếu ' + t)}">${t}<span aria-hidden="true">↗</span></a>` : `<span class="ov-tk" title="${esc(title || 'Chưa có trang phân tích cổ phiếu')}">${t}</span>`; };
 const expo = g => O.companies.flatMap(c => c.exposure.filter(e => e.group === g).map(e => ({t: c.ticker, ...e})));
 const NOAA_URL = 'https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml';
 const PGV_NOTE = 'FMP: danh mục PGV, tự tính bình quân tháng';
@@ -64,12 +64,12 @@ if (ytd) {
     cmp: accel ? `3 tháng gần nhất ${pc(accel.now)} so với ${pc(accel.before)} của 3 tháng liền trước → <b>${acTxt}</b>${y12 ? `; 12 tháng trượt ${pc(y12.yoy)}` : ''}.` : '',
     interp: structural ? 'Tăng trưởng 3 tháng và 12 tháng cùng dương rõ: xu hướng kéo dài, không chỉ do mùa vụ (so cùng kỳ đã loại phần mùa vụ).' : 'Tăng trưởng 3 tháng và 12 tháng chưa cùng vượt ngưỡng: chưa đủ để gọi là xu hướng cấu trúc.',
     impl: 'Nguồn biên (than, khí) có thêm sản lượng ngoài Qc nếu thủy điện và NLTT không đáp ứng phần tăng thêm; nhu cầu đầu tư nguồn, lưới tăng theo trung hạn.',
-    valid: 'Tăng trưởng 3 tháng tới; Pmax mùa nóng 2027; nguồn nào đóng góp phần tăng thêm.', src: link(EVN_URL, 'EVN · bản tin ngày'), asOf: lastDay, conf: 'Cao'});
+    valid: 'Tăng trưởng 3 tháng tới; công suất đỉnh mùa nóng 2027; nguồn nào đóng góp phần tăng thêm.', src: link(EVN_URL, 'EVN · bản tin ngày'), asOf: lastDay, conf: 'Cao'});
 }
 if (pmaxYtd?.yoy != null && ytd && pmaxYtd.yoy - ytd.yoy > T.peak_gap_pp) add({id: 'peak', kind: 'risk', seg: ['gas', 'hydro', 'grid'], lv: 'B', title: 'Công suất đỉnh',
   obs: `Pmax từ đầu năm ${nf(pmaxYtd.cur.pmax, 0)} MW (${dm(pmaxYtd.cur.date)}), <b>${pc(pmaxYtd.yoy)}</b> so đỉnh cùng khoảng năm trước; điện năng ${pc(ytd.yoy)}.`,
   cmp: `Pmax tăng nhanh hơn điện năng ${pp(pmaxYtd.yoy - ytd.yoy)}.`, interp: 'Áp lực dồn vào công suất giờ cao điểm hơn là tổng điện năng.',
-  impl: 'Nguồn điều tiết được giờ cao điểm (thủy điện hồ lớn, khí) và lưới truyền tải chịu áp lực; dự phòng mùa nóng 2027 mỏng hơn.', valid: 'Pmax T4–T7/2027; công suất khả dụng (trang chưa có).', src: link(EVN_URL, 'EVN'), asOf: lastDay, conf: 'Trung bình'});
+  impl: 'Nguồn điều tiết được giờ cao điểm (thủy điện hồ lớn, khí) và lưới truyền tải chịu áp lực; dự phòng mùa nóng 2027 mỏng hơn.', valid: 'Công suất đỉnh T4–T7/2027; công suất khả dụng (trang chưa có).', src: link(EVN_URL, 'EVN'), asOf: lastDay, conf: 'Trung bình'});
 if (resYoY && reservoir5y) {
   const dry = resYoY.med < T.hydro_dry_inflow_pct && reservoir5y.med < 0, wet = resYoY.med > 0 && reservoir5y.med > 0;
   add({id: 'hydro', kind: dry ? 'risk' : wet ? 'support' : 'note', seg: ['hydro'], lv: 'A', title: 'Thủy văn',
@@ -110,16 +110,16 @@ if (fmpYoY != null && Math.abs(fmpYoY) >= T.fmp_move_pct) add({id: 'fmp', kind: 
     obs: `${name} ${nf(x.now, d)} ${unit} (${dm(x.date)}), <b>${pc(x.pct)}</b> trong ≈3 tháng.`, cmp: '',
     interp: x.pct > 0 ? 'Chi phí biến đổi tham chiếu tăng mạnh.' : 'Chi phí biến đổi tham chiếu giảm mạnh.',
     impl: `Tác động lên biên ${esc(GROUP[k].label.toLowerCase())} tùy mức chuyển ngang chi phí nhiên liệu trong PPA và phần bán ngoài Qc; không mặc định biên giảm tương ứng.`,
-    valid: 'Biên gộp quý của nhà máy; FMP; giá nhiên liệu theo hợp đồng.', src: 'ICE futures', asOf: x.date, conf: 'Trung bình'});
+    valid: 'Biên gộp quý của nhà máy; FMP; giá nhiên liệu theo hợp đồng.', src: 'ICE (hợp đồng tương lai)', asOf: x.date, conf: 'Trung bình'});
 });
 // Giá điện và chi phí đầu vào phân kỳ (cùng tháng FMP, so cùng kỳ): FMP và than Úc/LNG Nhật (World Bank) đổi ngược chiều, mỗi bên ≥ ngưỡng FMP.
 if (fmpYoY != null) {
   const cy = wbYoY('coal_au', fmpLast.period), ly = wbYoY('lng_japan', fmpLast.period);
   const opp = v => v != null && Math.abs(v) >= T.fmp_move_pct && Math.abs(fmpYoY) >= T.fmp_move_pct && Math.sign(v) !== Math.sign(fmpYoY);
-  if (opp(cy) || opp(ly)) add({id: 'spread', kind: fmpYoY > 0 ? 'support' : 'risk', seg: ['coal', 'gas'], lv: 'B', title: 'Giá điện vs chi phí',
+  if (opp(cy) || opp(ly)) add({id: 'spread', kind: fmpYoY > 0 ? 'support' : 'risk', seg: ['coal', 'gas'], lv: 'B', title: 'Giá điện so với chi phí',
     obs: `${ml(fmpLast.period)}: FMP ${pc(fmpYoY)}, than Úc ${pc(cy)}, LNG Nhật ${pc(ly)} so cùng kỳ (World Bank).`, cmp: '',
     interp: fmpYoY > 0 ? 'Giá điện thị trường tăng trong khi chi phí nhiên liệu tham chiếu giảm: chênh lệch giá − chi phí mở rộng.' : 'Giá điện thị trường giảm trong khi chi phí nhiên liệu tham chiếu tăng: chênh lệch thu hẹp.',
-    impl: 'Có ý nghĩa với phần bán ngoài Qc của nhà máy nhiệt điện; xem spread ước tính ở tab Bức tranh ngành › Giá & biên.', valid: 'Spread FMP − chi phí nhiên liệu biến đổi.', src: 'PGV · World Bank', asOf: fmpLast.period});
+    impl: 'Có ý nghĩa với phần bán ngoài Qc của nhà máy nhiệt điện; xem chênh lệch giá điện – chi phí nhiên liệu ước tính ở tab Bức tranh ngành › Giá & biên.', valid: 'Chênh lệch FMP − chi phí nhiên liệu biến đổi.', src: 'PGV · World Bank', asOf: fmpLast.period});
 }
 if (tChg != null && tChg < 0) add({id: 'retail', kind: 'risk', seg: ['hydro', 'coal', 'gas', 're'], lv: 'C', title: 'Giá bán lẻ & EVN',
   obs: `Giá bán lẻ bình quân ${nf(tLast, 2)} đ/kWh từ ${esc(tariffDates.at(-1))}, <b>${pc(tChg)}</b> so mức trước.`, cmp: '',
@@ -198,14 +198,14 @@ function mapPane(p) {
   renders.map.push(() => draw('ytd'));
   p.append(sec('map', '0.1', 'Điện đi từ đâu, tiền đi qua ai, ai quyết định huy động?', [host, vcFold], {sub: 'Ba lớp luồng tách riêng, bật/tắt từng lớp. Bấm một loại hình để mở chuỗi giá trị chi tiết.',
       method: 'Tỷ trọng sản lượng từ đầu năm theo bản tin vận hành ngày EVN (cùng ngày đối chiếu với tab Bức tranh ngành; gió và mặt trời tách từ số EVN, mái nhà là số EVN ước tính). Khí, dầu và LNG gộp trong bản tin EVN. Vai trò các đơn vị theo Luật Điện lực 61/2024, TT 29/2026/TT-BCT và bảng 18 doanh nghiệp.'}),
-    sec('mix', '0.2', 'Công suất đặt khác sản lượng thực phát thế nào?', gm, {method: 'Công suất đặt cuối 2025 theo card "Công suất nguồn cuối 2025" (Bức tranh ngành › Cung dài hạn); "Khí, dầu & khác" là phần còn lại của tổng 87.600 MW; nhóm NLTT của công suất đặt có thể gồm sinh khối, điện rác. Sản lượng: các ngày có bản tin đủ nguồn ở cả hai năm.'}));
+    sec('mix', '0.2', 'Công suất đặt khác sản lượng thực phát thế nào?', gm, {method: 'Công suất đặt cuối 2025 theo biểu đồ "Công suất nguồn cuối 2025" (Bức tranh ngành › Cung dài hạn); "Khí, dầu & khác" là phần còn lại của tổng 87.600 MW; nhóm NLTT của công suất đặt có thể gồm sinh khối, điện rác. Sản lượng: các ngày có bản tin đủ nguồn ở cả hai năm.'}));
 }
 
 /* ===================== 6. 01 · Chuỗi giá trị theo công nghệ ===================== */
 let techApi = null;
 function techPane(p) {
   const host = card('dien-ov-tech', 'ov-tech', '');
-  p.append(sec('tech', '1.1', 'Mỗi loại nhà máy tạo doanh thu và tốn chi phí ở khâu nào?', host, {sub: 'Chọn công nghệ → bấm từng khâu: chức năng kinh tế, chi phí, KPI, chart dữ liệu, tác động lên doanh thu/lợi nhuận, doanh nghiệp. ● = khâu có chart dữ liệu.'}));
+  p.append(sec('tech', '1.1', 'Mỗi loại nhà máy tạo doanh thu và tốn chi phí ở khâu nào?', host, {sub: 'Chọn công nghệ → bấm từng khâu: chức năng kinh tế, chi phí, chỉ số vận hành, biểu đồ dữ liệu, tác động lên doanh thu/lợi nhuận, doanh nghiệp. ● = khâu có biểu đồ dữ liệu.'}));
   renders.tech.push(() => { if (!VIS) { host.append(gap('không tải được module hình ảnh.')); return; } const u = new URL(location.href); techApi = VIS.tech(host, ctx, u.searchParams.get('t'), u.searchParams.get('s')); });
 }
 
@@ -226,10 +226,10 @@ function unitPane(p) {
   const peer = card('dien-ov-peer', 'ov-peer', `<div class="tablewrap"><table><thead><tr><th></th>${SOURCES.map(k => `<th style="--c:${GROUP[k].color}">${esc(GROUP[k].label)}</th>`).join('')}</tr></thead><tbody>${pm.dims.map(([d, label]) => `<tr><th scope="row">${esc(label)}</th>${SOURCES.map(k => `<td>${esc(pm.rows[k][d])}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="ov-cap">${esc(pm.note)}</p>`);
   const ue = card('dien-ov-unit', 'ov-unit', '');
   renders.unit.push(() => { if (VIS) VIS.unit(ue, ctx); else ue.append(gap('không tải được module hình ảnh.')); });
-  p.append(sec('unit-econ', '2.1', 'Một kWh mang lại bao nhiêu, tốn bao nhiêu, còn lại bao nhiêu?', ue, {sub: 'Chi phí nhiên liệu/kWh theo công nghệ · waterfall và cầu nối lợi nhuận từ BCTC quý · thử kịch bản với giả định ghi rõ.'}),
-    sec('unit-bm', '2.2', 'Nhà máy điện kiếm tiền như thế nào?', [bmg, bmFold], {sub: 'Công thức nguyên lý; ↗ mở dashboard cổ phiếu.'}),
+  p.append(sec('unit-econ', '2.1', 'Một kWh mang lại bao nhiêu, tốn bao nhiêu, còn lại bao nhiêu?', ue, {sub: 'Chi phí nhiên liệu/kWh theo công nghệ · từ doanh thu tới lãi ròng và cầu nối lợi nhuận từ BCTC quý · thử kịch bản với giả định ghi rõ.'}),
+    sec('unit-bm', '2.2', 'Nhà máy điện kiếm tiền như thế nào?', [bmg, bmFold], {sub: 'Công thức nguyên lý; ↗ mở trang phân tích cổ phiếu.'}),
     sec('unit-peer', '2.3', 'Bốn nhóm nguồn khác nhau ở đâu?', peer),
-    sec('unit-mech', '2.4', 'PPA, Qc, SMP, CAN, FMP, DPPA nghĩa là gì?', mech, {sub: 'Định nghĩa → ví dụ → căn cứ (lớp Analyst).'}));
+    sec('unit-mech', '2.4', 'PPA, Qc, SMP, CAN, FMP, DPPA nghĩa là gì?', mech, {sub: 'Định nghĩa → ví dụ → căn cứ (mục chi tiết).'}));
 }
 
 /* ===================== 8. 03 · Industry Pulse (rút gọn) ===================== */
@@ -259,9 +259,9 @@ function pulse(p) {
     <details class="ov-fold"><summary>Diễn giải · hàm ý · nguồn</summary><dl class="ov-dl">${rows.filter(r => r[1]).map(([h, t]) => `<dt>${h}</dt><dd>${t}</dd>`).join('')}</dl><div class="ov-cap">${method}</div></details>${more}`);
   const yl = yoyMonths.slice(-18), top = topContrib('ytd');
   const sA = sig('dien-ov-sig-demand', 'A', 'Cung – cầu', ytd ? `Phụ tải ${pc(ytd.yoy)} từ đầu năm${accel ? `, ${Math.abs(accel.now - accel.before) < T.demand_accel_pp ? 'giữ nhịp' : accel.now > accel.before ? 'tăng tốc' : 'giảm tốc'}` : ''}; ${top[0] ? esc(top[0].name.toLowerCase()) + ' đáp ứng phần tăng lớn nhất' : ''}.` : 'Chưa đủ ngày đối chiếu.',
-    [kv('Sản lượng hệ thống', pc(ytd?.yoy), '', `${esc(PERIODS.ytd?.name || '—')} so cùng kỳ`, cls(ytd?.yoy)), kv('Pmax từ đầu năm', nf(pmaxYtd?.cur.pmax, 0), 'MW', `${dm(pmaxYtd?.cur.date)} · ${pc(pmaxYtd?.yoy)}`)],
+    [kv('Sản lượng hệ thống', pc(ytd?.yoy), '', `${esc(PERIODS.ytd?.name || '—')} so cùng kỳ`, cls(ytd?.yoy)), kv('Công suất đỉnh (Pmax) từ đầu năm', nf(pmaxYtd?.cur.pmax, 0), 'MW', `${dm(pmaxYtd?.cur.date)} · ${pc(pmaxYtd?.yoy)}`)],
     spark([{v: yl.map(x => x.yoy), c: '#2938A8'}], {zero: true, aria: 'Tăng trưởng sản lượng so cùng kỳ theo tháng'}), `% so cùng kỳ theo tháng · ${yl.length ? ms(yl[0].m) + '–' + ms(yl.at(-1).m) : '—'}`,
-    [['So sánh', accel ? `3 tháng ${pc(accel.now)} vs 3 tháng trước ${pc(accel.before)}${y12 ? ` · 12 tháng ${pc(y12.yoy)}` : ''}` : ''], ['Nguồn đáp ứng', top.slice(0, 3).map(x => `${esc(x.name)} ${sg(x.delta, 0)} triệu kWh`).join(' · ')],
+    [['So sánh', accel ? `3 tháng ${pc(accel.now)} so với 3 tháng trước ${pc(accel.before)}${y12 ? ` · 12 tháng ${pc(y12.yoy)}` : ''}` : ''], ['Nguồn đáp ứng', top.slice(0, 3).map(x => `${esc(x.name)} ${sg(x.delta, 0)} triệu kWh`).join(' · ')],
      ['Mùa vụ hay cấu trúc', dI?.interp], ['Hàm ý', `${tag('C')} ${dI?.impl || ''}`]],
     goDetail('demand'), `EVN bản tin ngày; so cùng kỳ trên ngày có bản tin ở cả hai năm. Pmax: bản tin ngày ghi 24/06/2026, thông cáo EVN 07/07/2026 ghi 25/06/2026.`);
   const shareL = months.filter(m => m.m <= M && m.mixDays / m.n >= 0.8).slice(-18), hyQ = q3?.get('hydro');
@@ -278,7 +278,7 @@ function pulse(p) {
     [kv('FMP · ' + (fmpLast ? ml(fmpLast.period) : '—'), nf(fmpLast?.fmp, 0), 'đ/kWh', `${pc(fmpYoY)} so cùng kỳ`, cls(fmpYoY)), kv('Giá bán lẻ', nf(tLast, 0), 'đ/kWh', `${pc(tChg)} từ ${esc(tariffDates?.at(-1) || '—')}`, cls(tChg))],
     spark([{v: fl.map(r => r.fmp), c: '#861C52'}, {v: flLy, c: '#9AA3BD'}], {aria: 'FMP theo tháng và cùng kỳ năm trước'}), `FMP đ/kWh: <b style="color:#861C52">năm nay</b> · <b style="color:#9AA3BD">cùng kỳ</b>`,
     [['Bốn loại giá không tương đương', `<div class="ov-layers">${layers}</div>`], ['Diễn giải', [INS.find(i => i.id === 'fmp')?.interp, INS.find(i => i.id === 'spread')?.interp].filter(Boolean).join(' ')], ['Hàm ý', `${tag('C')} FMP chỉ tác động phần ngoài Qc; giá bán lẻ tác động qua tài chính EVN và kỳ thanh toán.`]],
-    goDetail('economics', 'Xem giá & biên'), `${PGV_NOTE}; ICE futures (63 phiên ≈ 3 tháng); giá bán lẻ theo quyết định EVN/Bộ Công Thương.`);
+    goDetail('economics', 'Xem giá & biên'), `${PGV_NOTE}; ICE, hợp đồng tương lai (63 phiên ≈ 3 tháng); giá bán lẻ theo quyết định EVN/Bộ Công Thương.`);
   const sigs = el('div', 'ov-sigs'); sigs.append(sA, sB, sC);
   // Lối vào phân tích chi tiết (tab Bức tranh ngành): mỗi ô một chart nhỏ + một dòng.
   const D = VIS ? VIS.data(ctx) : {inflow: []}, inf = D.inflow.filter(x => x.med != null);
@@ -307,7 +307,7 @@ function live(key) {
     case 'hydro_m': return q3 ? `thủy điện 3 tháng ${pc(q3.get('hydro').yoy)}, than ${pc(q3.get('coal').yoy)}` : null;
     case 'gas_m': return q3 ? `khí & dầu 3 tháng ${pc(q3.get('gas').yoy)}` : null;
     case 'demand': return ytd ? `sản lượng ${esc(PERIODS.ytd.name)} ${pc(ytd.yoy)}` : null;
-    case 'pmax': return pmaxYtd ? `Pmax ${nf(pmaxYtd.cur.pmax, 0)} MW (${dm(pmaxYtd.cur.date)})` : null;
+    case 'pmax': return pmaxYtd ? `công suất đỉnh ${nf(pmaxYtd.cur.pmax, 0)} MW (${dm(pmaxYtd.cur.date)})` : null;
     case 'contrib': { const t = topContrib('ytd')[0]; return t ? `đóng góp lớn nhất: ${esc(t.name)} ${pp(t.contrib)}` : null; }
     case 'coal': return coal3 ? `Newcastle ${nf(coal3.now, 1)} USD/tấn, ${pc(coal3.pct)} ≈3 tháng` : null;
     case 'lng': return jkm3 ? `JKM ${nf(jkm3.now, 2)} USD/MMBtu, ${pc(jkm3.pct)} ≈3 tháng` : null;
@@ -330,13 +330,13 @@ function transmission(p) {
     dv.querySelector('.ov-drv-body').innerHTML = `<div class="ov-map">
         <div class="ov-mapbox"><span>Biến số ngành</span><b>${esc(d.label)}</b><small>${d.live ? liveTxt(d.live) : '<span class="muted">trang chưa có dữ liệu</span>'}</small></div><span class="ov-arrow" aria-hidden="true">↓</span>
         <div class="ov-mapbox"><span>Sản lượng / giá / chi phí</span><small>${esc(d.first)}</small></div><span class="ov-arrow" aria-hidden="true">↓</span>
-        <div class="ov-mapbox"><span>Doanh thu · EBITDA · lợi nhuận · dòng tiền</span><small>${esc(d.pnl.revenue)} · ${esc(d.pnl.ebitda)}</small></div><span class="ov-arrow" aria-hidden="true">↓</span>
-        <div class="ov-mapbox"><span>Doanh nghiệp có exposure</span><small>${cos.map(t => chip(t)).join(' ') || '—'}</small></div></div>
+        <div class="ov-mapbox"><span>Doanh thu · lợi nhuận · dòng tiền</span><small>${esc(d.pnl.revenue)} · ${esc(d.pnl.ebitda)}</small></div><span class="ov-arrow" aria-hidden="true">↓</span>
+        <div class="ov-mapbox"><span>Doanh nghiệp liên quan</span><small>${cos.map(t => chip(t)).join(' ') || '—'}</small></div></div>
       <ol class="ov-steps">
         <li><h4>Tác động bước một</h4><p>${esc(d.first)}</p></li>
         <li><h4>Tác động lên hoạt động từng nhóm</h4><div class="tablewrap"><table class="ov-mini"><tbody>${O.groups.map(g => `<tr><th scope="row" style="--c:${g.color}">${esc(g.label)}</th><td>${esc(d.groups[g.id])}</td></tr>`).join('')}</tbody></table></div><p class="ov-cap">Tác động lên sản lượng, giá, chi phí — chưa phải chiều lợi nhuận.</p></li>
-        <li><h4>Thành phần lợi nhuận</h4><dl class="ov-dl"><dt>Doanh thu</dt><dd>${esc(d.pnl.revenue)}</dd><dt>EBITDA</dt><dd>${esc(d.pnl.ebitda)}</dd><dt>Lợi nhuận</dt><dd>${esc(d.pnl.profit)}</dd><dt>Dòng tiền</dt><dd>${esc(d.pnl.cash)}</dd></dl></li>
-        <li><h4>Doanh nghiệp có exposure</h4><ul class="ov-list ov-co">${gs.flatMap(g => expo(g.id).map(e => `<li>${chip(e.t)} <span class="ov-role">${esc(g.label)} · ${esc(e.role)}</span> ${esc(e.note)}</li>`)).join('') || '<li class="muted">—</li>'}</ul><p class="ov-cap">Exposure theo tài sản đã ghi nguồn; chiều tác động lên lợi nhuận từng mã chưa xác nhận khi chưa có Qc, điều khoản PPA.</p></li>
+        <li><h4>Thành phần lợi nhuận</h4><dl class="ov-dl"><dt>Doanh thu</dt><dd>${esc(d.pnl.revenue)}</dd><dt>LN trước khấu hao (EBITDA)</dt><dd>${esc(d.pnl.ebitda)}</dd><dt>Lợi nhuận</dt><dd>${esc(d.pnl.profit)}</dd><dt>Dòng tiền</dt><dd>${esc(d.pnl.cash)}</dd></dl></li>
+        <li><h4>Doanh nghiệp có tài sản liên quan</h4><ul class="ov-list ov-co">${gs.flatMap(g => expo(g.id).map(e => `<li>${chip(e.t)} <span class="ov-role">${esc(g.label)} · ${esc(e.role)}</span> ${esc(e.note)}</li>`)).join('') || '<li class="muted">—</li>'}</ul><p class="ov-cap">Mức liên quan theo tài sản đã ghi nguồn; chiều tác động lên lợi nhuận từng mã chưa xác nhận khi chưa có Qc, điều khoản PPA.</p></li>
         <li><h4>Điều kiện khiến tác động không xảy ra</h4><ul class="ov-list">${d.fails.map(f => `<li>${esc(f)}</li>`).join('')}</ul></li>
         <li><h4>Chỉ báo để kiểm chứng</h4><ul class="ov-list">${d.verify.map(v => `<li><b>${esc(v.label)}</b>: ${v.live ? liveTxt(v.live) : '<span class="muted">trang chưa có dữ liệu</span>'}</li>`).join('')}</ul></li>
       </ol>${d.example ? `<div class="ov-example"><h4>Ví dụ chuỗi truyền dẫn</h4><ol>${d.example.map(x => `<li>${esc(x)}</li>`).join('')}</ol></div>` : ''}
@@ -349,11 +349,11 @@ function transmission(p) {
   const hy = G('hydro'), re = G('re'), co = G('coal'), ga = G('gas');
   const op = (v, up, dn, th2 = 3) => v == null ? '<span class="muted">chưa đủ dữ liệu</span>' : v > th2 ? `<span class="up">${up}</span>` : v < -th2 ? `<span class="dn">${dn}</span>` : 'Đi ngang';
   const M2 = [
-    ['hydro', `Nước về ${resYoY ? pc(resYoY.med, 0) + ' (' + esc(resYoY.span) + ')' : '—'} · sản lượng ${pc(hy?.yoy)} · FMP ${pc(fmpYoY)} YoY`, op(hy?.yoy, 'Thuận về sản lượng', 'Bất lợi về sản lượng'), 'Doanh thu = sản lượng × giá (Qc theo hợp đồng, phần còn lại theo thị trường); chi phí chủ yếu cố định nên sản lượng quyết định lợi nhuận.'],
+    ['hydro', `Nước về ${resYoY ? pc(resYoY.med, 0) + ' (' + esc(resYoY.span) + ')' : '—'} · sản lượng ${pc(hy?.yoy)} · FMP ${pc(fmpYoY)} so cùng kỳ`, op(hy?.yoy, 'Thuận về sản lượng', 'Bất lợi về sản lượng'), 'Doanh thu = sản lượng × giá (Qc theo hợp đồng, phần còn lại theo thị trường); chi phí chủ yếu cố định nên sản lượng quyết định lợi nhuận.'],
     ['coal', `Sản lượng than ${pc(co?.yoy)} · Newcastle ${pc(coal3?.pct)} (3 tháng) · FMP ${nf(fmpLast?.fmp, 0)} đ/kWh`, op(co?.yoy, 'Thuận về huy động', 'Huy động giảm'), 'Lợi nhuận tăng khi huy động thêm có biên dương (FMP hoặc giá hợp đồng > chi phí biến đổi) và chi phí nhiên liệu được chuyển ngang.'],
     ['gas', `Sản lượng khí & dầu ${pc(ga?.yoy)} · JKM ${pc(jkm3?.pct)} (3 tháng)`, op(ga?.yoy, 'Thuận về huy động', 'Huy động giảm'), 'Biên năng lượng phụ thuộc giá khí/LNG so FMP và tỷ lệ Qc; LNG đắt có thể làm giảm huy động ngoài Qc.'],
     ['re', `Sản lượng ${pc(re?.yoy)} · <span class="muted">chưa có dữ liệu cắt giảm công suất</span>`, op(re?.yoy, 'Thuận về sản lượng', 'Sản lượng giảm'), 'Giá chủ yếu theo FIT/hợp đồng; lợi nhuận theo sản lượng thực phát (thời tiết, cắt giảm) và chi phí vốn.'],
-    ['grid', '<span class="muted">Chưa có chỉ báo định lượng COD, giải ngân lưới</span>', '—', 'Backlog và tiến độ ghi nhận doanh thu theo tiến độ dự án nguồn, lưới; tín hiệu sớm là khởi công, ký EPC.']];
+    ['grid', '<span class="muted">Chưa có chỉ báo định lượng COD, giải ngân lưới</span>', '—', 'Giá trị hợp đồng chưa thực hiện và tiến độ ghi nhận doanh thu theo tiến độ dự án nguồn, lưới; tín hiệu sớm là khởi công, ký EPC.']];
   const opm = card('dien-ov-opmatrix', 'ov-opm', `<div class="tablewrap"><table><thead><tr><th>Nhóm</th><th>Tín hiệu vận hành ${M ? ml(M) : ''}</th><th>Tác động lên hoạt động</th><th>Điều kiện để thành lợi nhuận</th><th>Mã</th></tr></thead><tbody>${M2.map(r => `<tr><td><b>${esc(GROUP[r[0]].label)}</b></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${expo(r[0]).map(e => chip(e.t)).join(' ')}</td></tr>`).join('')}</tbody></table></div><p class="ov-cap">${tag('B')} Cột 3 là tác động lên hoạt động (sản lượng, huy động); cột 4 là điều kiện để thành lợi nhuận. Ngưỡng ±3% sản lượng tháng so cùng kỳ. Không phải khuyến nghị mua/bán.</p>`);
   // Ma trận exposure: biến số × nhóm × doanh nghiệp × cơ chế × điều kiện.
   const rows = O.drivers.flatMap(d => O.groups.filter(g => !/^(Không|Ít)/.test(d.groups[g.id])).map(g => ({d, g, cos: expo(g.id)}))).filter(r => r.cos.length);
@@ -365,7 +365,7 @@ function transmission(p) {
     ex.querySelector('[data-count]').textContent = `${n}/${rows.length} dòng`; };
   ex.querySelectorAll('select').forEach(s => s.addEventListener('change', filt)); filt();
   // Độ nhạy lợi nhuận: chỉ định tính khi thiếu dữ liệu.
-  const sv = card('dien-ov-sens', 'ov-sens', `${gap('Chưa đủ dữ liệu để ước tính độ nhạy EBITDA/EPS theo từng doanh nghiệp: thiếu Qc, giá PPA, suất hao nhiệt, giá nhiên liệu theo hợp đồng và dư nợ từng nhà máy. Trang không tự tạo phần trăm tác động.').outerHTML}
+  const sv = card('dien-ov-sens', 'ov-sens', `${gap('Chưa đủ dữ liệu để ước tính độ nhạy lợi nhuận (EBITDA, EPS) theo từng doanh nghiệp: thiếu Qc, giá PPA, suất hao nhiệt, giá nhiên liệu theo hợp đồng và dư nợ từng nhà máy. Trang không tự tạo phần trăm tác động.').outerHTML}
     <div class="tablewrap"><table><thead><tr><th>Nhóm</th><th>Đầu vào cần có để tính độ nhạy</th></tr></thead><tbody>${SOURCES.map(k => `<tr><td><b>${esc(GROUP[k].label)}</b></td><td>${O.sensitivity.inputs[k].map(esc).join(' · ')}</td></tr>`).join('')}</tbody></table></div>
     <details class="ov-an"><summary>Công thức nguyên lý</summary><p class="ov-formula">${esc(O.sensitivity.formula)}</p></details>`);
   // Dữ liệu doanh nghiệp: so sánh tài chính (giữ nguyên module chung) và bảng 18 doanh nghiệp.
@@ -377,9 +377,9 @@ function transmission(p) {
     sec('tr-heat', '4.1', 'Biến số nào chạm tới nhóm nguồn, doanh nghiệp nào mạnh nhất?', hm),
     sec('tr-map', '4.2', 'Một biến số ngành đi tới lợi nhuận doanh nghiệp qua những bước nào?', dv, {sub: 'Chọn biến số: tác động bước một → nhóm nguồn → thành phần lợi nhuận → doanh nghiệp → điều kiện không xảy ra → chỉ báo kiểm chứng (kèm giá trị hiện tại nếu trang có).'}),
     sec('tr-op', '4.3', 'Tín hiệu vận hành hiện tại chạm tới nhóm doanh nghiệp nào?', opm),
-    sec('tr-exp', '4.4', 'Doanh nghiệp nào có exposure với từng biến số?', ex),
+    sec('tr-exp', '4.4', 'Doanh nghiệp nào chịu tác động của từng biến số?', ex),
     sec('tr-sens', '4.5', 'Có ước tính được độ nhạy lợi nhuận không?', sv),
-    sec('tr-data', '4.6', 'Số liệu doanh nghiệp', [fc, dnFold].filter(Boolean), {sub: 'So sánh tài chính & định giá (Financial Snapshot) và bảng 18 doanh nghiệp. ↗ ở các bảng trên mở dashboard cổ phiếu khi đã có.'}));
+    sec('tr-data', '4.6', 'Số liệu doanh nghiệp', [fc, dnFold].filter(Boolean), {sub: 'So sánh tài chính & định giá và bảng 18 doanh nghiệp. ↗ ở các bảng trên mở trang phân tích cổ phiếu khi đã có.'}));
 }
 
 /* ===================== 8. 05 · Forward Monitor ===================== */
@@ -419,8 +419,8 @@ function thesisStatus(t) {
   if (t.rule === 'grid_capex') {
     if (pipelineShare) ev.push(`Báo cáo 760/BC-BCT: ${pipelineShare[0]}% số dự án quy hoạch đã vận hành.`);
     if (shortfallMw) ev.push(`Kịch bản chậm tiến độ: thiếu ${nf(shortfallMw.at(-1), 0)} MW năm ${shortfallYears.at(-1)}.`);
-    ev.push('PC1: backlog EPC 8.250 tỷ đồng cuối 2025 (bảng 18 doanh nghiệp).');
-    return {s: 'insufficient', ev, gaps: ['Trang chưa có chuỗi giải ngân lưới EVN/NPT và backlog EPC theo quý để kiểm chứng.']};
+    ev.push('PC1: hợp đồng EPC chưa thực hiện 8.250 tỷ đồng cuối 2025 (bảng 18 doanh nghiệp).');
+    return {s: 'insufficient', ev, gaps: ['Trang chưa có chuỗi giải ngân lưới EVN/NPT và giá trị hợp đồng EPC chưa thực hiện theo quý để kiểm chứng.']};
   }
   if (t.rule === 'fit_cash') {
     const tr = POL.transitional?.rows || [], pend = tr.find(r => /chưa thỏa thuận/.test(r.label)), notSent = tr.find(r => /Chưa gửi/.test(r.label));
@@ -442,9 +442,9 @@ function forward(p) {
     <dt>Chỉ báo ủng hộ</dt><dd>${esc(t.support)}</dd><dt>Chỉ báo phản bác</dt><dd>${esc(t.contra)}</dd>
     <dt>Nhóm nguồn</dt><dd>${t.segments.map(g => esc(GROUP[g].label)).join(', ')}</dd><dt>Doanh nghiệp</dt><dd>${t.tickers.map(x => chip(x)).join(' ')}</dd>
     <dt>Mốc dữ liệu tiếp theo</dt><dd>${t.next.map(relTxt).join('<br>')}</dd><dt>Cập nhật</dt><dd>dữ liệu EVN đến ${dm(lastDay)}; trạng thái tính lại mỗi lần mở trang</dd></dl></article>`).join('') +
-    `<p class="ov-cap">Trạng thái tính theo quy tắc với ngưỡng ở data/power-overview.json; không phải tín hiệu mua/bán. ${esc(O.threshold_note)}</p>`);
+    `<p class="ov-cap">Trạng thái tính theo quy tắc với ngưỡng cố định của trang (xem mục chi tiết ở Bức tranh hiện tại); không phải tín hiệu mua/bán. ${esc(O.threshold_note)}</p>`);
   // Lịch catalyst: văn bản tab Policy + hạn theo quy định + lịch công bố dữ liệu; phân biệt đã xảy ra / có lịch / sớm nhất theo quy định / dự kiến / chưa có ngày.
-  const KINDS = {done: ['Đã xảy ra', '#7a8399'], scheduled: ['Có lịch xác nhận', '#2938A8'], earliest: ['Sớm nhất theo quy định', '#861C52'], expected: ['Dự kiến (analyst / theo mùa)', '#c98a00'], undated: ['Chưa có ngày', '#9AA3BD']};
+  const KINDS = {done: ['Đã xảy ra', '#7a8399'], scheduled: ['Có lịch xác nhận', '#2938A8'], earliest: ['Sớm nhất theo quy định', '#861C52'], expected: ['Dự kiến (nhận định / theo mùa)', '#c98a00'], undated: ['Chưa có ngày', '#9AA3BD']};
   const lo = ymd(new Date(Date.parse(TODAY) - 120 * 864e5)), hi = ymd(new Date(Date.parse(TODAY) + 420 * 864e5));
   const pol = (POL.policies || []).flatMap(p => [
       p.effective_date && {date: p.effective_date, text: `${p.policy_name} có hiệu lực`, kind: p.effective_date <= TODAY ? 'done' : 'scheduled', note: 'ngày hiệu lực theo văn bản', cat: 'Chính sách', url: p.primary_source_url},
@@ -455,28 +455,27 @@ function forward(p) {
     .filter(e => !e.date || (e.date >= lo && e.date <= hi)).sort((a, b) => (a.date || '9999').localeCompare(b.date || '9999'));
   const tl = card('dien-ov-timeline', 'ov-tl', `<div class="ov-ctl" role="group" aria-label="Loại mốc">${Object.entries(KINDS).map(([k, v]) => `<button type="button" data-k="${k}" aria-pressed="true"><i style="background:${v[1]}"></i>${v[0]} (${ev.filter(e => e.kind === k).length})</button>`).join('')}</div>
     <ol class="ov-tl-list">${ev.map(e => `<li data-k="${e.kind}" class="${e.date && e.date < TODAY ? 'past' : ''}"><span class="ov-tl-d" style="--c:${KINDS[e.kind][1]}">${e.label || (e.date ? dm(e.date) + (e.end ? '–' + dm(e.end) : '') : '—')}</span><div><b>${esc(e.text)}</b><small>${esc(KINDS[e.kind][0])}${e.note ? ' · ' + esc(e.note) : ''} · ${esc(e.cat)}${e.url ? ' · ' + link(e.url, 'nguồn') : ''}</small></div></li>`).join('')}</ol>
-    <p class="ov-cap">Mốc chính sách: ngày hiệu lực, hết hiệu lực của văn bản trong tab Policy · Tax · Trade và các hạn theo quy định (data/power-overview.json); không tự điền ngày khi chưa có nguồn. Khoảng hiển thị: 4 tháng trước → 14 tháng sau.</p>`);
+    <p class="ov-cap">Mốc chính sách: ngày hiệu lực, hết hiệu lực của văn bản trong tab Policy · Tax · Trade và các hạn theo quy định; không tự điền ngày khi chưa có nguồn. Khoảng hiển thị: 4 tháng trước → 14 tháng sau.</p>`);
   tl.querySelectorAll('[data-k]').forEach(b => b.tagName === 'BUTTON' && b.addEventListener('click', () => { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); const on = new Set([...tl.querySelectorAll('button[data-k][aria-pressed=true]')].map(x => x.dataset.k)); tl.querySelectorAll('li[data-k]').forEach(li => { li.hidden = !on.has(li.dataset.k); }); }));
   const cnt = s => THESES.filter(t => t.s === s).length;
   p.append(wwh(`${cnt('supported')} luận điểm có bằng chứng, ${cnt('insufficient')} chưa đủ bằng chứng, ${cnt('contradicted')} bị phản bác.`, 'Luận điểm chỉ có giá trị khi được kiểm lại bằng số mới; trạng thái đổi theo dữ liệu, không giữ cố định.', [...new Set(THESES.flatMap(t => t.next))].slice(0, 3).map(relTxt).join('; ') + '.'),
     sec('fw-supply', '5.1', 'Nguồn cung mới đến từ đâu, bao nhiêu MW, chắc chắn đến đâu?', ol),
     sec('fw-thesis', '5.2', 'Những luận điểm nào đang được dữ liệu ủng hộ hoặc phản bác?', th, {sub: 'Mỗi luận điểm: bằng chứng hiện tại, chỉ báo ủng hộ/phản bác, nhóm nguồn, doanh nghiệp, mốc dữ liệu tiếp theo.'}),
-    sec('fw-cal', '5.3', 'Sự kiện nào có thể làm thay đổi luận điểm trong 6–12 tháng tới?', tl, {sub: `Đầy đủ tín hiệu, kịch bản và góc nhìn analyst: <a href="#mt5" data-ov-main="mt5">tab Catalyst · Risk →</a>`}));
+    sec('fw-cal', '5.3', 'Sự kiện nào có thể làm thay đổi luận điểm trong 6–12 tháng tới?', tl, {sub: `Đầy đủ tín hiệu, kịch bản và góc nhìn của chuyên viên phân tích: <a href="#mt5" data-ov-main="mt5">tab Catalyst · Risk →</a>`}));
 }
 
 /* ===================== 9. Dựng tab, điều hướng ===================== */
 const SECTIONS = [
-  ['map', '00', 'Bản đồ ngành', 'Industry Map', 'Điện, tiền và quyết định huy động đi qua những ai?', mapPane],
-  ['tech', '01', 'Chuỗi giá trị theo công nghệ', 'Value Chain by Technology', 'Mỗi loại nhà máy tạo doanh thu, tốn chi phí ở khâu nào?', techPane],
-  ['unit', '02', 'Kinh tế đơn vị', 'Unit Economics', 'Một kWh mang lại bao nhiêu và tốn bao nhiêu?', unitPane],
-  ['pulse', '03', 'Bức tranh hiện tại', 'Industry Pulse', 'Ngành đang ở trạng thái nào?', pulse],
-  ['transmission', '04', 'Tác động đầu tư', 'Investment Transmission', 'Biến động ngành ảnh hưởng đến doanh nghiệp ra sao?', transmission],
-  ['forward', '05', 'Triển vọng', 'Forward Outlook', 'Điều gì có thể làm thay đổi luận điểm?', forward]
+  ['map', '00', 'Bản đồ ngành', 'Toàn cảnh ngành', 'Điện, tiền và quyết định huy động đi qua những ai?', mapPane],
+  ['tech', '01', 'Chuỗi giá trị theo công nghệ', 'Than · khí · LNG · thủy điện · gió · mặt trời', 'Mỗi loại nhà máy tạo doanh thu, tốn chi phí ở khâu nào?', techPane],
+  ['unit', '02', 'Kinh tế đơn vị', 'Doanh thu, chi phí mỗi kWh', 'Một kWh mang lại bao nhiêu và tốn bao nhiêu?', unitPane],
+  ['pulse', '03', 'Bức tranh hiện tại', 'Số liệu mới nhất', 'Ngành đang ở trạng thái nào?', pulse],
+  ['transmission', '04', 'Tác động đầu tư', 'Doanh nghiệp · So sánh tài chính', 'Biến động ngành ảnh hưởng đến doanh nghiệp ra sao?', transmission],
+  ['forward', '05', 'Triển vọng', 'Nguồn mới, sự kiện sắp tới', 'Điều gì có thể làm thay đổi luận điểm?', forward]
 ];
 // Khóa cũ (bản 5 sub-tab) vẫn mở đúng chỗ.
 const ALIAS = {economics: 'unit', mix: 'tech'};
 SECTIONS.forEach(s => { renders[s[0]] = []; });
-const LAYER_KEY = 'dien-ov-layer';
 function build() {
   const pane = document.getElementById('pane-mt1'); if (!pane || pane.querySelector('.ov-nav')) return;
   const head = pane.querySelector(':scope>.sectionhead');
@@ -484,13 +483,8 @@ function build() {
   const oldBar = pane.querySelector(':scope>.pane-subtabs'), oldPanes = [...pane.querySelectorAll(':scope>.pane-subpane')];
   document.getElementById('dataBrief')?.remove();
   if (head) head.innerHTML = `<div><h2 class="sec">Tổng quan ngành điện</h2><p>Nhìn để hiểu ngành, bấm để phân tích: bản đồ ngành → chuỗi giá trị từng công nghệ → kinh tế một kWh → trạng thái hiện tại → tác động tới doanh nghiệp → triển vọng.</p></div>`;
-  const ctl = el('div', 'ov-bar');
-  const st = stateParts();
-  ctl.innerHTML = `${st.length ? `<div class="ov-now"><b>Hiện tại</b> ${st.join(' · ')} <a href="?ov=pulse#mt1" data-ov-go="pulse">Industry Pulse →</a></div>` : ''}<div class="ov-asof"><b>Dữ liệu mới nhất</b> EVN ${dm(lastDay)} · ONI ${oniLast ? oniLast.season + ' ' + oniLast.year : '—'} · hồ chứa ${H?.last_observation ? dm(H.last_observation) : '—'} · FMP ${fmpLast ? ml(fmpLast.period) : '—'} · than/LNG ${dm(coal3?.date)}</div>
-    <div class="ov-layer-t" role="group" aria-label="Mức chi tiết"><button type="button" data-layer="investor">Nhà đầu tư</button><button type="button" data-layer="analyst">Analyst</button></div>
-    <div class="ov-jump"><span>Đi tới</span><button type="button" data-pp-go="demand">Cung – Cầu</button><button type="button" data-pp-go="economics">Giá – Chi phí</button><button type="button" data-ov-main="mt4">Policy</button><button type="button" data-ov-jump="companies">Doanh nghiệp theo dõi</button><button type="button" data-ov-jump="comparison">So sánh tài chính</button><button type="button" data-ov-main="mt5">Catalyst</button></div>`;
   const nav = el('div', 'ov-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Tổng quan ngành: sáu bước');
-  (head || pane.firstChild) ? (head ? head.after(ctl, nav) : pane.prepend(ctl, nav)) : pane.prepend(ctl, nav);
+  head ? head.after(nav) : pane.prepend(nav);
   const panes = {}; let anchor = nav;
   SECTIONS.forEach(([key, num, label, tech, q]) => {
     const b = el('button', 'tabbtn ov-tab', `<span>${num}</span>${esc(label)}<small>${esc(tech)}</small>`); b.type = 'button'; b.id = 'mt1-ov-' + key + '-tab'; b.setAttribute('role', 'tab'); b.dataset.ov = key; nav.append(b);
@@ -506,11 +500,8 @@ function build() {
   if (left.length) { const d = el('details', 'research-fold ov-an', '<summary>Nội dung khác của bản trước</summary>'); left.forEach(n => d.append(n)); panes.transmission.append(d); document.documentElement.dataset.ovLeftover = left.map(n => n.dataset.blockId || n.className).join(','); }
   oldPanes.forEach(w => w.remove()); oldBar?.remove();
 
-  // Lớp thông tin: Nhà đầu tư (gọn) / Analyst (công thức, phương pháp, nhận định đầy đủ). Lưu theo trình duyệt.
-  const setLayer = l => { pane.dataset.ovLayer = l; ctl.querySelectorAll('[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === l))); try { localStorage.setItem(LAYER_KEY, l); } catch (e) { /* bỏ qua */ } };
-  let saved = 'investor'; try { saved = localStorage.getItem(LAYER_KEY) || 'investor'; } catch (e) { /* bỏ qua */ }
-  setLayer(new URL(location.href).searchParams.get('layer') || saved);
-  ctl.querySelectorAll('[data-layer]').forEach(b => b.addEventListener('click', () => { setLayer(b.dataset.layer); refit(pane); }));
+  // Thanh trên cùng (trạng thái, ngày dữ liệu, nút Nhà đầu tư/Analyst, Đi tới) đã bỏ 12/11/2026 theo yêu cầu người dùng: trùng thanh giá và tab chính.
+  // Không còn ẩn lớp Analyst: các phần chi tiết vẫn nằm trong mục thu gọn (details), mở khi cần.
 
   const keys = SECTIONS.map(s => s[0]), done = new Set(), btns = [...nav.children];
   const select = (key, push) => {

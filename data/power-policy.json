@@ -526,7 +526,7 @@
    "impact_horizon": "short",
    "direction": "Negative",
    "impact_level": "nq",
-   "impact_basis": "Impact not quantified: chưa có danh sách 173 nhà máy theo doanh nghiệp, chưa có mức giá thay thế và phạm vi thời gian áp dụng.",
+   "impact_basis": "Chưa định lượng được tác động: chưa có danh sách 173 nhà máy theo doanh nghiệp, chưa có mức giá thay thế và phạm vi thời gian áp dụng.",
    "exposed_companies": [
     {
      "ticker": "HDG",
@@ -614,7 +614,7 @@
    "impact_horizon": "short",
    "direction": "Negative",
    "impact_level": "nq",
-   "impact_basis": "Impact not quantified: chưa xác định doanh nghiệp niêm yết nào có dự án trong nhóm chuyển tiếp.",
+   "impact_basis": "Chưa định lượng được tác động: chưa xác định doanh nghiệp niêm yết nào có dự án trong nhóm chuyển tiếp.",
    "exposed_companies": [],
    "implementation": "Đến 23/09/2026: 39/85 dự án (2.283 MW) đã ký PPA chính thức; 7 dự án (102 MW) vận hành chưa thỏa thuận giá; 7 dự án (494 MW) dừng đàm phán; 32 dự án (hơn 1.700 MW) chưa gửi hồ sơ.",
    "monitoring_indicators": [
@@ -685,7 +685,7 @@
    "impact_horizon": "medium",
    "direction": "Mixed",
    "impact_level": "nq",
-   "impact_basis": "Impact not quantified: phụ thuộc chi phí mua điện thực tế từng năm.",
+   "impact_basis": "Chưa định lượng được tác động: phụ thuộc chi phí mua điện thực tế từng năm.",
    "exposed_companies": [
     {
      "ticker": "PPC",
@@ -841,7 +841,7 @@
    "impact_horizon": "medium",
    "direction": "Mixed",
    "impact_level": "nq",
-   "impact_basis": "Impact not quantified: NSMO không công bố giá thị trường theo giờ để đo tác động.",
+   "impact_basis": "Chưa định lượng được tác động: NSMO không công bố giá thị trường theo giờ để đo tác động.",
    "exposed_companies": [
     {
      "ticker": "NT2",
@@ -1099,7 +1099,7 @@
    "impact_horizon": "short",
    "direction": "Mixed",
    "impact_level": "nq",
-   "impact_basis": "Impact not quantified: 7 hồ đều thuộc EVN hoặc ngoài danh sách theo dõi; tác động tới doanh nghiệp niêm yết là gián tiếp qua huy động.",
+   "impact_basis": "Chưa định lượng được tác động: 7 hồ đều thuộc EVN hoặc ngoài danh sách theo dõi; tác động tới doanh nghiệp niêm yết là gián tiếp qua huy động.",
    "exposed_companies": [
     {
      "ticker": "PPC",
@@ -1158,8 +1158,8 @@
    "applicable_assets": "Danh mục nguồn, lưới đến 2030, tầm nhìn 2050",
    "previous_regulation": "QĐ 500/QĐ-TTg (2023).",
    "regulatory_change": "Tổng công suất 2030: 183.291–236.363 MW; vốn nguồn và lưới truyền tải 2026–2030: 136,3 tỷ USD (nguồn 118,2; lưới 18,1).",
-   "impact_mechanism": "Xác định danh mục dự án được phép đầu tư — điều kiện cần cho backlog EPC, tư vấn và cho dự án nguồn mới; không đảm bảo tiến độ.",
-   "channel": "Quy hoạch → phê duyệt dự án → CAPEX → backlog EPC",
+   "impact_mechanism": "Xác định danh mục dự án được phép đầu tư — điều kiện cần cho hợp đồng EPC, tư vấn và cho dự án nguồn mới; không đảm bảo tiến độ.",
+   "channel": "Quy hoạch → phê duyệt dự án → vốn đầu tư → hợp đồng EPC chưa thực hiện",
    "financial_drivers": [
     "capex",
     "revenue"
@@ -1237,7 +1237,7 @@
    "regulatory_change": "Báo cáo hỏa tốc 760/BC-BCT (10/09/2026) đề xuất điều chỉnh theo hai bước, bổ sung khoảng 5.300 MW nhiệt điện than cho 2029–2030; cảnh báo có thể thiếu 13.964 MW công suất cực đại và 61,18 tỷ kWh năm 2030. Thông báo 531/TB-VPCP (17/10/2026) kết luận định hướng; chưa có quyết định phê duyệt.",
    "radar_change": "Đề xuất thêm khoảng 5.300 MW than cho 2029–2030; Bộ cảnh báo thiếu 13.964 MW năm 2030; chưa phê duyệt.",
    "impact_mechanism": "Nếu được duyệt, mở lại danh mục nhiệt điện than mới và bổ sung nguồn tái tạo ngắn hạn — tăng nhu cầu EPC, tư vấn; với nhà máy hiện hữu, nguồn mới làm tăng cạnh tranh huy động sau 2029.",
-   "channel": "Danh mục dự án → CAPEX → backlog; nguồn mới → cạnh tranh huy động",
+   "channel": "Danh mục dự án → vốn đầu tư → hợp đồng xây lắp; nguồn mới → cạnh tranh huy động",
    "financial_drivers": [
     "capex",
     "volume"
@@ -1245,7 +1245,7 @@
    "impact_horizon": "long",
    "direction": "Uncertain",
    "impact_level": "nq",
-   "impact_basis": "Impact not quantified: chưa được phê duyệt.",
+   "impact_basis": "Chưa định lượng được tác động: chưa được phê duyệt.",
    "exposed_companies": [
     {
      "ticker": "PC1",
@@ -1320,8 +1320,8 @@
    "applicable_assets": "Dự án lưới, điều chỉnh quy hoạch, DPPA",
    "previous_regulation": "Thủ tục điều chỉnh quy hoạch và chấp thuận chủ trương đầu tư theo luật chung.",
    "regulatory_change": "Điều chỉnh quy hoạch theo thủ tục rút gọn; dự án đầu tư kinh doanh lưới điện trong quy hoạch không phải chấp thuận chủ trương đầu tư (Điều 5 khoản 1); mở rộng DPPA.",
-   "impact_mechanism": "Rút ngắn thủ tục làm dự án lưới khởi công sớm hơn — kênh trực tiếp tới backlog xây lắp lưới; không thay đổi nguồn vốn của EVN.",
-   "channel": "Thủ tục rút gọn → khởi công lưới sớm → backlog EPC",
+   "impact_mechanism": "Rút ngắn thủ tục làm dự án lưới khởi công sớm hơn — kênh trực tiếp tới khối lượng hợp đồng xây lắp lưới; không thay đổi nguồn vốn của EVN.",
+   "channel": "Thủ tục rút gọn → khởi công lưới sớm → hợp đồng EPC chưa thực hiện",
    "financial_drivers": [
     "capex",
     "revenue"
@@ -1329,7 +1329,7 @@
    "impact_horizon": "medium",
    "direction": "Positive",
    "impact_level": "nq",
-   "impact_basis": "Impact not quantified: chưa có số liệu khối lượng dự án lưới được rút ngắn thủ tục.",
+   "impact_basis": "Chưa định lượng được tác động: chưa có số liệu khối lượng dự án lưới được rút ngắn thủ tục.",
    "exposed_companies": [
     {
      "ticker": "PC1",
@@ -1398,7 +1398,7 @@
    "impact_horizon": "long",
    "direction": "Uncertain",
    "impact_level": "nq",
-   "impact_basis": "Impact not quantified: chưa có dự án gió ngoài khơi của doanh nghiệp niêm yết.",
+   "impact_basis": "Chưa định lượng được tác động: chưa có dự án gió ngoài khơi của doanh nghiệp niêm yết.",
    "exposed_companies": [
     {
      "ticker": "PC1",
@@ -1459,7 +1459,7 @@
    "impact_horizon": "long",
    "direction": "Uncertain",
    "impact_level": "nq",
-   "impact_basis": "Impact not quantified: tác động qua văn bản hướng dẫn.",
+   "impact_basis": "Chưa định lượng được tác động: tác động qua văn bản hướng dẫn.",
    "exposed_companies": [],
    "monitoring_indicators": [
     "Văn bản hướng dẫn mới"
@@ -1610,7 +1610,7 @@
    "impact_horizon": "long",
    "direction": "Positive",
    "impact_level": "nq",
-   "impact_basis": "Impact not quantified: còn là dự thảo; phạm vi áp cho dự án hiện hữu chưa rõ.",
+   "impact_basis": "Chưa định lượng được tác động: còn là dự thảo; phạm vi áp cho dự án hiện hữu chưa rõ.",
    "exposed_companies": [
     {
      "ticker": "POW",
@@ -1660,7 +1660,7 @@
    "impact_horizon": "medium",
    "direction": "Uncertain",
    "impact_level": "nq",
-   "impact_basis": "Impact not quantified: chưa có số phát thải thực tế từng nhà máy để so với hạn ngạch; giá hạn ngạch mới có giá chào sàn 135.000 đ.",
+   "impact_basis": "Chưa định lượng được tác động: chưa có số phát thải thực tế từng nhà máy để so với hạn ngạch; giá hạn ngạch mới có giá chào sàn 135.000 đ.",
    "exposed_companies": [
     {
      "ticker": "QTP",
@@ -1747,7 +1747,7 @@
    "impact_horizon": "long",
    "direction": "Negative",
    "impact_level": "nq",
-   "impact_basis": "Impact not quantified: chưa có giá giao dịch và phát thải thực.",
+   "impact_basis": "Chưa định lượng được tác động: chưa có giá giao dịch và phát thải thực.",
    "exposed_companies": [
     {
      "ticker": "QTP",
@@ -1811,8 +1811,8 @@
    "previous_regulation": "QCVN 22:2009/BTNMT (khí thải nhiệt điện).",
    "regulatory_change": "Thay QCVN 22:2009; dự án mới nộp hồ sơ từ 01/07/2025 áp ngay; cơ sở đang vận hành áp quy chuẩn cũ đến hết 31/12/2031, từ 01/01/2032 phải đạt QCVN 19:2024 (tỉnh có thể yêu cầu sớm hơn).",
    "radar_change": "Nhà máy than hiện hữu phải đạt chuẩn khí thải mới từ 01/01/2032; EVN có 30 tổ máy, 14.324 MW phải cải tạo.",
-   "impact_mechanism": "CAPEX xử lý khí thải bắt buộc cho nhà máy than cũ: QTP 3.799,2 tỷ đồng (EPC 3.271 tỷ, ký 16/10/2026), HND hơn 3.607,5 tỷ đồng. Khoản đầu tư làm tăng khấu hao; việc thu hồi qua giá điện tùy PPA và chưa xác nhận.",
-   "channel": "Chuẩn khí thải → CAPEX môi trường → khấu hao, dòng tiền",
+   "impact_mechanism": "Vốn đầu tư xử lý khí thải bắt buộc cho nhà máy than cũ: QTP 3.799,2 tỷ đồng (EPC 3.271 tỷ, ký 16/10/2026), HND hơn 3.607,5 tỷ đồng. Khoản đầu tư làm tăng khấu hao; việc thu hồi qua giá điện tùy PPA và chưa xác nhận.",
+   "channel": "Chuẩn khí thải → vốn đầu tư môi trường → khấu hao, dòng tiền",
    "financial_drivers": [
     "capex",
     "cashflow"
@@ -1839,7 +1839,7 @@
     }
    ],
    "monitoring_indicators": [
-    "Tiến độ giải ngân CAPEX môi trường QTP, HND",
+    "Tiến độ giải ngân vốn đầu tư môi trường QTP, HND",
     "Cơ chế đưa chi phí cải tạo vào giá PPA",
     "Lộ trình riêng của tỉnh"
    ],
@@ -1960,7 +1960,7 @@
    "impact_horizon": "medium",
    "direction": "Uncertain",
    "impact_level": "nq",
-   "impact_basis": "Impact not quantified: nhập khẩu 7 tháng 2026 là 7,21 tỷ kWh, chưa tách Lào và Trung Quốc.",
+   "impact_basis": "Chưa định lượng được tác động: nhập khẩu 7 tháng 2026 là 7,21 tỷ kWh, chưa tách Lào và Trung Quốc.",
    "exposed_companies": [
     {
      "ticker": "PC1",
@@ -3318,7 +3318,7 @@
     "cls": "hl"
    },
    {
-    "t": "Backlog",
+    "t": "Hợp đồng chưa thực hiện",
     "d": "Hợp đồng đã ký"
    },
    {
@@ -3357,7 +3357,7 @@
    {
     "item": "Dự án lưới 110–500 kV",
     "value": "Mục tiêu 2026: hoàn thành 300, khởi công 285; 10T/2026: khởi công 150, đóng điện 137",
-    "channel": "Số dự án khởi công là chỉ báo sớm cho backlog xây lắp"
+    "channel": "Số dự án khởi công là chỉ báo sớm cho hợp đồng chưa thực hiện xây lắp"
    },
    {
     "item": "NQ 253, NĐ 272",
@@ -3394,8 +3394,8 @@
     ]
    },
    {
-    "item": "Backlog doanh nghiệp",
-    "value": "PC1: backlog EPC 8.250 tỷ đồng cuối 2025; TV2: liên danh EPC Ô Môn IV 1.155 MW",
+    "item": "Hợp đồng chưa thực hiện của doanh nghiệp",
+    "value": "PC1: hợp đồng EPC chưa thực hiện 8.250 tỷ đồng cuối 2025; TV2: liên danh EPC Ô Môn IV 1.155 MW",
     "channel": "Hợp đồng đã ký",
     "companies": [
      {
@@ -3587,7 +3587,7 @@
    {
     "item": "Chuẩn khí thải (QCVN 19:2024)",
     "value": "Nhà máy hiện hữu đạt chuẩn từ 01/01/2032; EVN có 30 tổ máy, 14.324 MW phải cải tạo; QTP 3.799,2 tỷ đồng, HND hơn 3.607,5 tỷ đồng",
-    "channel": "CAPEX môi trường",
+    "channel": "Vốn đầu tư môi trường",
     "companies": [
      {
       "ticker": "QTP",
@@ -3665,7 +3665,7 @@
    "tab": "plan",
    "title": "Quy hoạch & Đầu tư",
    "q": "Được xây gì, khi nào?",
-   "drives": "CAPEX · thời điểm có doanh thu"
+   "drives": "Vốn đầu tư · thời điểm có doanh thu"
   },
   {
    "tab": "price",
@@ -3683,7 +3683,7 @@
    "tab": "tax",
    "title": "Thuế & Môi trường",
    "q": "Phải nộp gì, đầu tư bắt buộc gì?",
-   "drives": "Chi phí · CAPEX bắt buộc"
+   "drives": "Chi phí · vốn đầu tư bắt buộc"
   },
   {
    "tab": null,
@@ -3767,10 +3767,10 @@
    ],
    "implication": {
     "channels": [
-     "CAPEX",
+     "Vốn đầu tư",
      "Sản lượng"
     ],
-    "text": "Quy hoạch quyết định danh mục được phép đầu tư, từ đó tạo nhu cầu EPC, thiết bị và nguồn mới. Với nhà máy hiện hữu, nguồn mới vào sau 2028 làm tăng cạnh tranh huy động; với EPC và thiết bị, đây là quy mô thị trường tiềm năng, chưa phải backlog."
+    "text": "Quy hoạch quyết định danh mục được phép đầu tư, từ đó tạo nhu cầu EPC, thiết bị và nguồn mới. Với nhà máy hiện hữu, nguồn mới vào sau 2028 làm tăng cạnh tranh huy động; với EPC và thiết bị, đây là quy mô thị trường tiềm năng, chưa phải hợp đồng chưa thực hiện."
    },
    "affected": {
     "direct": [],
@@ -3880,11 +3880,11 @@
    ],
    "implication": {
     "channels": [
-     "CAPEX",
+     "Vốn đầu tư",
      "IRR",
      "Chi phí vốn"
     ],
-    "text": "Chậm một bước làm lãi vay trong thời gian xây dựng cộng vào CAPEX và lùi dòng tiền về, nên IRR giảm. Rủi ro PPA và nghiệm thu còn kéo sang sau COD: giá bán có thể bị đàm phán lại."
+    "text": "Chậm một bước làm lãi vay trong thời gian xây dựng cộng vào vốn đầu tư và lùi dòng tiền về, nên IRR giảm. Rủi ro PPA và nghiệm thu còn kéo sang sau COD: giá bán có thể bị đàm phán lại."
    },
    "affected": {
     "direct": [
@@ -3960,7 +3960,7 @@
   "1.3": {
    "block": "dien-42",
    "title": "Vì sao lưới truyền tải và lưu trữ quyết định giá trị của nguồn điện mới?",
-   "conclusion": "Lưới chỉ chiếm 18,1/136,3 tỷ USD vốn quy hoạch 2026–2030 nhưng là điều kiện để nguồn mới bán được điện. Với doanh nghiệp xây lắp, chỉ dự án đã khởi công mới thành backlog.",
+   "conclusion": "Lưới chỉ chiếm 18,1/136,3 tỷ USD vốn quy hoạch 2026–2030 nhưng là điều kiện để nguồn mới bán được điện. Với doanh nghiệp xây lắp, chỉ dự án đã khởi công mới thành hợp đồng chưa thực hiện.",
    "quick": "EVN qua EVNNPT vận hành và đầu tư lưới truyền tải; các tổng công ty điện lực lo phân phối. NQ 253 cho dự án lưới trong quy hoạch bỏ bước chấp thuận chủ trương; NĐ 272 giao UBND tỉnh chấp thuận nhà đầu tư lưới. Lưu trữ (BESS, thủy điện tích năng) giúp hấp thụ điện mặt trời, gió vào giờ thấp điểm.",
    "pitfall": "Nguồn mới không có lưới giải tỏa vẫn phải giảm phát dù đã COD.",
    "how": {
@@ -3984,7 +3984,7 @@
       "cls": "hl"
      },
      {
-      "t": "Backlog",
+      "t": "Hợp đồng chưa thực hiện",
       "d": "giá trị đã ký"
      },
      {
@@ -4022,7 +4022,7 @@
     "direct": [
      {
       "t": "PC1",
-      "n": "backlog EPC 8.250 tỷ đồng cuối 2025"
+      "n": "hợp đồng EPC chưa thực hiện 8.250 tỷ đồng cuối 2025"
      }
     ],
     "indirect": [
@@ -4114,7 +4114,7 @@
    "implication": {
     "channels": [
      "Sản lượng",
-     "CAPEX"
+     "Vốn đầu tư"
     ],
     "text": "Nguồn lớn mới tập trung 2028–2030, nên giai đoạn 2026–2027 hệ thống vẫn dựa vào nhà máy hiện hữu: Bộ Công Thương tính thiếu 4.256 MW năm 2027 nếu dự án tiếp tục chậm, hỗ trợ mức huy động của nhiệt điện, thủy điện đang chạy."
    },
@@ -4416,7 +4416,7 @@
       "qty": "Theo tỷ lệ Qc kế hoạch năm (2026: 80%, nguồn thứ cấp)",
       "pass": "Chi phí than trong phần giá biến đổi theo công thức PPA; mức chuyển ngang tùy hợp đồng",
       "market": "Khoảng 20% sản lượng năm 2026 nhận giá FMP",
-      "risk": "Giá than nhập, mức huy động, CAPEX môi trường (QCVN 19:2024)",
+      "risk": "Giá than nhập, mức huy động, vốn đầu tư môi trường (QCVN 19:2024)",
       "check": "Tỷ lệ than nhập, công thức giá nhiên liệu, thời hạn PPA còn lại"
      },
      {
@@ -5910,7 +5910,7 @@
       "d": "thi công theo đợt dừng tổ máy"
      },
      {
-      "t": "CAPEX",
+      "t": "Vốn đầu tư",
       "d": "QTP 3.799,2 tỷ; HND >3.607,5 tỷ",
       "cls": "hl"
      },
@@ -5963,7 +5963,7 @@
    ],
    "implication": {
     "channels": [
-     "CAPEX",
+     "Vốn đầu tư",
      "Dòng tiền",
      "ROIC"
     ],
@@ -6038,7 +6038,7 @@
     }
    ],
    "id": "4.4",
-   "short": "Khí thải & CAPEX môi trường"
+   "short": "Khí thải & vốn đầu tư môi trường"
   }
  },
  "matrix": {
