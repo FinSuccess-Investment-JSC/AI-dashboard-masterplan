@@ -191,7 +191,8 @@ function mixCard() {
   host.addEventListener('ct:render', () => {
     const ch = window.Chart?.getChart?.(host.querySelector('canvas')); if (!ch) return;
     // Thư viện chung chỉ cộng dồn dạng cột; dạng "Miền" ở chart này cộng dồn (các nguồn cộng được với nhau).
-    if (host.dataset.ctType === 'area') { ch.options.scales.y.stacked = true; ch.data.datasets.forEach((d, i) => { if (d.type === 'line') d.fill = i ? '-1' : 'origin'; }); }
+    // Gán nhóm cộng dồn tường minh: chỉ bật y.stacked sau khi chart đã dựng thì Chart.js giữ giá trị cũ, các lớp bị đảo thứ tự.
+    if (host.dataset.ctType === 'area') { ch.options.scales.y.stacked = true; ch.data.datasets.forEach(d => { if (d.type === 'line') { d.stack = 'mix'; d.fill = 'stack'; } }); }
     const cb = ch.options.plugins.tooltip.callbacks;
     cb.afterLabel = x => { const m = ms2[cats.indexOf(String(x.label))]; if (!m) return ''; const s = SRC.find(z => z[1] === x.dataset.label); if (!s) return '';
       const y = monthCmp.get(m.m)?.get(s[0]); return `  tỷ trọng ${nf(m.share[s[0]], 1)}% · YoY ${y && monthCmp.get(m.m).ok ? pc(y.yoy) : '—'}`; };
