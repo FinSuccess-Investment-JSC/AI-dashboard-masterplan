@@ -1,0 +1,232 @@
+[
+ {
+  "block": "kcn-supplement",
+  "claim": "cbre-n-2026q3",
+  "value": "101 ha",
+  "url": "https://doanhnhan.baophapluat.vn/nha-xuong-xay-san-lap-ky-luc-hap-thu-ai-va-ban-dan-thuc-day-bat-dong-san-cong-nghiep.html",
+  "opened_at": "2026-11-12",
+  "quote": "Ở phân khúc đất công nghiệp, tổng diện tích hấp thụ tại các thị trường cấp 1 đạt hơn 101 ha trong quý III, chủ yếu tại các khu công nghiệp ở miền Bắc, tăng 30,1% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "CBRE công bố \"hơn 101 ha\" trong Q3/2026 ở thị trường cấp 1, \"chủ yếu tại các KCN ở miền Bắc\", +30,1% so cùng kỳ. Nguồn không tách rõ Bắc hay cả nước; đối chiếu 9T/2026 (Bắc khoảng 450, Nam 163, cả nước khoảng 613 ha) chỉ khớp khi đọc là miền Bắc. Thay số dư 99 ha suy từ 9T làm tròn."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cbre-s-2026q3",
+  "value": "163 ha",
+  "url": "https://thoibaotaichinhvietnam.vn/bat-dong-san-cong-nghiep-phia-nam-hap-thu-163-ha-dat-trong-9-thang-205377.html",
+  "opened_at": "2026-11-12",
+  "quote": "Trong 9 tháng đầu năm 2026, thị trường đất công nghiệp phía Nam ghi nhận diện tích hấp thụ 163 ha",
+  "status": "match",
+  "note": "= 9T/2026 163 ha − H1/2026 124 ha: hai số CBRE công bố cho cùng phạm vi miền Nam cấp 1, không còn là phần dư từ số cả nước làm tròn."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cbre-n-2025q1",
+  "value": "200 ha",
+  "url": "https://mktgdocs.cbre.com/2299/200b6b1b-1213-47cb-8b75-240c9e966c9e-1391604255/CBRE_Vietnam_Hanoi_Figures_Q1_.pdf",
+  "opened_at": "2026-11-12",
+  "quote": "the absorption rate of industrial parks in Tier 1 markets in the North reached 200 hectares in the first three months of 2025, with the occupancy rate maintained at 79.7%",
+  "status": "match",
+  "note": "CBRE Hanoi Figures Q1/2025, trang 6 (PDF không có lớp chữ, đọc từ ảnh trang)."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cbre-n-2025h1",
+  "value": "260ha",
+  "url": "https://mktgdocs.cbre.com/2299/085df066-54d0-4fca-81c9-cd56b23f628c-1198311695/CBRE_Vietnam_Hanoi_Figures_Q2_.pdf",
+  "opened_at": "2026-11-12",
+  "quote": "Mức hấp thụ của các KCN tại các TT cấp 1 miền Bắc trong sáu tháng đầu năm 2025 đạt gần 260ha",
+  "status": "match",
+  "note": "CBRE ghi \"gần 260 ha\"; 75% trong Q1."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cbre-n-2025m9",
+  "value": "350 ha",
+  "url": "https://mktgdocs.cbre.com/2299/9c3fa410-42d1-4157-b045-b1102a3f379f-1491714702/CBRE_Vietnam_Hanoi_Figures_Q3_.pdf",
+  "opened_at": "2026-11-12",
+  "quote": "tổng diện tích đất công nghiệp được hấp thụ tại các tỉnh thành cấp 1 đạt gần 350 ha, trong đó hơn 50% được ghi nhận trong Quý 1",
+  "status": "match",
+  "note": "CBRE ghi \"gần 350 ha\"."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cbre-n-2025fy",
+  "value": "480 ha",
+  "url": "https://mktgdocs.cbre.com/2299/f2dfc91b-e6a5-4242-8612-4702511e1f62-1785117709/CBRE_Vietnam_Hanoi_Figures_Q4_.pdf",
+  "opened_at": "2026-11-12",
+  "quote": "tổng diện tích đất công nghiệp được hấp thụ tại các tỉnh/thành cấp 1 đạt gần 480 ha trong năm 2025, giảm 24% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "CBRE ghi \"gần 480 ha\", −24% YoY."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cbre-s-2025h1",
+  "value": "55 ha",
+  "url": "https://mktgdocs.cbre.com/2299/4dc37d69-04bf-4dc1-a2fa-2ea2b14d3068-646554789/CBRE_Vietnam_HCMC_Figures_Q2_2.pdf",
+  "opened_at": "2026-11-12",
+  "quote": "Tổng diện tích đất công nghiệp hấp thụ trong cả nửa đầu năm 2025 đạt 55 ha.",
+  "status": "match",
+  "note": "Khớp mức +125% của H1/2026 (124 ha)."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cbre-s-2025m9",
+  "value": "80 ha",
+  "url": "https://mktgdocs.cbre.com/2299/88f31369-b095-4788-9629-4d25b3506206-353151782/CBRE_Vietnam_HCMC_Figures_Q3_2.pdf",
+  "opened_at": "2026-11-12",
+  "quote": "tổng diện tích đất công nghiệp hấp thụ tại khu vực phía Nam trong chín tháng đầu năm 2025 đạt khoảng 80 ha, thấp hơn 70% so với diện tích hấp thụ được ghi nhận trong cùng kỳ năm 2024.",
+  "status": "match",
+  "note": "CBRE ghi \"khoảng 80 ha\". Mức +56% CBRE công bố cho 9T/2026 hàm ý nền 9T/2025 khoảng 104 ha: CBRE có thể đã điều chỉnh số 2025."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cbre-s-2026m9",
+  "value": "163 ha",
+  "url": "https://thoibaotaichinhvietnam.vn/bat-dong-san-cong-nghiep-phia-nam-hap-thu-163-ha-dat-trong-9-thang-205377.html",
+  "opened_at": "2026-11-12",
+  "quote": "Tổng diện tích hấp thụ tại các thị trường cấp 1 đạt 163 ha, tăng 56% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "CBRE, +56% YoY."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-n-2025q3-rent",
+  "value": "4%",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2025/q3/apac-and-gc/q3-2025-hanoi-marketbeat-en_industrial.pdf",
+  "opened_at": "2026-11-12",
+  "quote": "However, on a like-for-like basis, rent still grew 4% year-on-year",
+  "status": "match",
+  "note": "C&W tự tính trên cùng phạm vi; giá Q3/2025 133 USD giảm 2% QoQ do nhập tỉnh có giá thấp."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-s-2026q1-stock",
+  "value": "8.6%",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q1/apac-and-gc/q1-2026-southern-key-economic-zone-industrial-markets-en-260428---final.pdf?rev=e46c8d71df664368acb309406be4cff9",
+  "opened_at": "2026-11-12",
+  "quote": "On a yearly basis, supply increased by 8.6% YoY",
+  "status": "match",
+  "note": "Ghi chú chart của C&W: số cung theo địa giới sau sáp nhập."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-s-2026q1-occ",
+  "value": "1.3 ppts",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q1/apac-and-gc/q1-2026-southern-key-economic-zone-industrial-markets-en-260428---final.pdf?rev=e46c8d71df664368acb309406be4cff9",
+  "opened_at": "2026-11-12",
+  "quote": "The overall occupancy rate in Q1 2026 reached 74.8%, up 0.3 ppts QoQ but down 1.3 ppts YoY.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-s-2026q1-rent",
+  "value": "1.7%",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q1/apac-and-gc/q1-2026-southern-key-economic-zone-industrial-markets-en-260428---final.pdf?rev=e46c8d71df664368acb309406be4cff9",
+  "opened_at": "2026-11-12",
+  "quote": "The average asking rent for IP land (countrywide) reached approx. USD 186.6/sqm/lease term in Q1 2026, increasing by 0.9% QoQ and 1.7% YoY",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-s-2026q1-leased",
+  "value": "1,710 ha",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q1/apac-and-gc/q1-2026-southern-key-economic-zone-industrial-markets-en-260428---final.pdf?rev=e46c8d71df664368acb309406be4cff9",
+  "opened_at": "2026-11-12",
+  "quote": "Compared to Q1 2025, total stock expanded by around 2,871 ha, while leased area increased by only 1,710 ha.",
+  "status": "match",
+  "note": "Thay đổi diện tích đã thuê so cùng kỳ (C&W tự tính), khác định nghĩa hấp thụ thuần theo quý: không cộng với hấp thụ."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-s-2026q2-stock",
+  "value": "4.6%",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q2/apac-and-gc/hcmc-marketbeat-industrial-q2-2026---en.pdf?rev=130f404dbceb4f36840bbf5838bdedb2",
+  "opened_at": "2026-11-12",
+  "quote": "Total supply remained at 36,063 ha, unchanged QoQ and increasing by 4.6% YoY, supported by previously operational projects.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-s-2026q2-rent",
+  "value": "1.7%",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q2/apac-and-gc/hcmc-marketbeat-industrial-q2-2026---en.pdf?rev=130f404dbceb4f36840bbf5838bdedb2",
+  "opened_at": "2026-11-12",
+  "quote": "The average asking rent reached approx. 186.4 USD/sqm/lease term (-0.5% QoQ, +1.7% YoY).",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-s-2026q3-occ",
+  "value": "1.5 ppt",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hcmc-industrial-q3-2026-en.pdf?rev=885a3b2109c843e0ac05c565cde3483c",
+  "opened_at": "2026-11-12",
+  "quote": "Regional occupancy reached 75.8%, remaining largely unchanged QoQ, with an increase of 0.03 ppt, and rising 1.5 ppt YoY.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-s-2026q3-rent",
+  "value": "1.2%",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hcmc-industrial-q3-2026-en.pdf?rev=885a3b2109c843e0ac05c565cde3483c",
+  "opened_at": "2026-11-12",
+  "quote": "Average industrial land rent reached VND 4.89 million/m²/lease term, down 0.4% QoQ but up 1.2% YoY.",
+  "status": "match",
+  "note": "So cùng kỳ tính trên giá VND do C&W công bố."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-n-2026q3-stock",
+  "value": "7.4%",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hn-industrial-q3-2026-en.pdf?rev=c905e530b50045ff9c059416318e32cd",
+  "opened_at": "2026-11-12",
+  "quote": "As of Q3 2026, cumulative industrial park land supply in Northern Vietnam reached 25,455 ha, up 0.9% QoQ and 7.4% YoY.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-n-2026q3-occ",
+  "value": "2.1 ppts",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hn-industrial-q3-2026-en.pdf?rev=c905e530b50045ff9c059416318e32cd",
+  "opened_at": "2026-11-12",
+  "quote": "In Q3 2026, the average industrial land occupancy rate reached 65%, up 0.6 ppts QoQ but down 2.1 ppts YoY.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-n-2026q3-rent",
+  "value": "1.8%",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hn-industrial-q3-2026-en.pdf?rev=c905e530b50045ff9c059416318e32cd",
+  "opened_at": "2026-11-12",
+  "quote": "The average asking rent reached 3.6 million VND/sqm/lease term, increasing by 0.1% QoQ and 1.8% YoY.",
+  "status": "match",
+  "note": "So cùng kỳ tính trên giá VND do C&W công bố."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cbre-n-2026q3-rent",
+  "value": "144 USD",
+  "url": "https://doanhnhan.baophapluat.vn/nha-xuong-xay-san-lap-ky-luc-hap-thu-ai-va-ban-dan-thuc-day-bat-dong-san-cong-nghiep.html",
+  "opened_at": "2026-11-12",
+  "quote": "Tại các thị trường công nghiệp cấp 1 khu vực phía Bắc, giá thuê đất công nghiệp trung bình đạt khoảng 144 USD/m² cho toàn bộ thời hạn thuê còn lại, tăng 0,8% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "Giá CBRE, phạm vi Tier-1, khác C&W."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cbre-s-2026q3-rent",
+  "value": "185 USD",
+  "url": "https://thoibaotaichinhvietnam.vn/bat-dong-san-cong-nghiep-phia-nam-hap-thu-163-ha-dat-trong-9-thang-205377.html",
+  "opened_at": "2026-11-12",
+  "quote": "Giá thuê đất công nghiệp trung bình đạt 185 USD/m² cho toàn bộ thời hạn thuê còn lại, ổn định so với quý trước",
+  "status": "match",
+  "note": "Cùng đoạn: \"tăng 1,5% so với cùng kỳ năm 2025\". Giá CBRE, phạm vi Tier-1."
+ }
+]

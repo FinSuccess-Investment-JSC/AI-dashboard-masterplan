@@ -434,6 +434,123 @@
    "url": "https://nmquan.vn/data/bat-dong-san/bao-cao/6e2b060bd6",
    "checked": "2026-11-12",
    "note": "Public sources may contain revision/rounding; retain original source scope"
+  },
+  "WEB_CBRE_Q3_26N": {
+   "what": "CBRE Q3/2026 qua Doanh nhân (Báo Pháp luật) 21/10/2026: hấp thụ đất KCN cấp 1, giá thuê miền Bắc",
+   "cls": "SECONDARY/INDEX",
+   "use": "PUBLISHED",
+   "url": "https://doanhnhan.baophapluat.vn/nha-xuong-xay-san-lap-ky-luc-hap-thu-ai-va-ban-dan-thuc-day-bat-dong-san-cong-nghiep.html",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json",
+   "added": "web"
+  },
+  "WEB_CBRE_9M_26S": {
+   "what": "CBRE 9T/2026 miền Nam qua Thời báo Tài chính Việt Nam 15/10/2026",
+   "cls": "SECONDARY/INDEX",
+   "use": "PUBLISHED",
+   "url": "https://thoibaotaichinhvietnam.vn/bat-dong-san-cong-nghiep-phia-nam-hap-thu-163-ha-dat-trong-9-thang-205377.html",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json",
+   "added": "web"
+  },
+  "WEB_CBRE_HN25Q1": {
+   "what": "CBRE Hanoi Figures Q1/2025 (PDF, trang 6)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://mktgdocs.cbre.com/2299/200b6b1b-1213-47cb-8b75-240c9e966c9e-1391604255/CBRE_Vietnam_Hanoi_Figures_Q1_.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json",
+   "added": "web"
+  },
+  "WEB_CBRE_HN25Q2": {
+   "what": "CBRE Hanoi Figures Q2/2025 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://mktgdocs.cbre.com/2299/085df066-54d0-4fca-81c9-cd56b23f628c-1198311695/CBRE_Vietnam_Hanoi_Figures_Q2_.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json",
+   "added": "web"
+  },
+  "WEB_CBRE_HN25Q3": {
+   "what": "CBRE Hanoi Figures Q3/2025 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://mktgdocs.cbre.com/2299/9c3fa410-42d1-4157-b045-b1102a3f379f-1491714702/CBRE_Vietnam_Hanoi_Figures_Q3_.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json",
+   "added": "web"
+  },
+  "WEB_CBRE_HN25Q4": {
+   "what": "CBRE Hanoi Figures Q4/2025 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://mktgdocs.cbre.com/2299/f2dfc91b-e6a5-4242-8612-4702511e1f62-1785117709/CBRE_Vietnam_Hanoi_Figures_Q4_.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json",
+   "added": "web"
+  },
+  "WEB_CBRE_HCM25Q2": {
+   "what": "CBRE HCMC Figures Q2/2025 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://mktgdocs.cbre.com/2299/4dc37d69-04bf-4dc1-a2fa-2ea2b14d3068-646554789/CBRE_Vietnam_HCMC_Figures_Q2_2.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json",
+   "added": "web"
+  },
+  "WEB_CBRE_HCM25Q3": {
+   "what": "CBRE HCMC Figures Q3/2025 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://mktgdocs.cbre.com/2299/88f31369-b095-4788-9629-4d25b3506206-353151782/CBRE_Vietnam_HCMC_Figures_Q3_2.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json",
+   "added": "web"
+  },
+  "WEB_CW_N25Q3": {
+   "what": "C&W MarketBeat Hà Nội công nghiệp Q3/2025 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2025/q3/apac-and-gc/q3-2025-hanoi-marketbeat-en_industrial.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json",
+   "added": "web"
+  },
+  "WEB_CW_S26Q1": {
+   "what": "C&W MarketBeat miền Nam công nghiệp Q1/2026 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q1/apac-and-gc/q1-2026-southern-key-economic-zone-industrial-markets-en-260428---final.pdf?rev=e46c8d71df664368acb309406be4cff9",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json",
+   "added": "web"
+  },
+  "WEB_CW_S26Q2": {
+   "what": "C&W MarketBeat TP.HCM công nghiệp Q2/2026 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q2/apac-and-gc/hcmc-marketbeat-industrial-q2-2026---en.pdf?rev=130f404dbceb4f36840bbf5838bdedb2",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json",
+   "added": "web"
+  },
+  "WEB_CW_S26Q3": {
+   "what": "C&W MarketBeat TP.HCM công nghiệp Q3/2026 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hcmc-industrial-q3-2026-en.pdf?rev=885a3b2109c843e0ac05c565cde3483c",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json",
+   "added": "web"
+  },
+  "WEB_CW_N26Q3": {
+   "what": "C&W MarketBeat Hà Nội công nghiệp Q3/2026 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hn-industrial-q3-2026-en.pdf?rev=c905e530b50045ff9c059416318e32cd",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json",
+   "added": "web"
   }
  },
  "market": [
@@ -712,12 +829,131 @@
  ],
  "province": [
   {
+   "period": "2025Q1",
+   "region": "North",
+   "province": "Bac Ninh",
+   "province_vi": "Bắc Ninh",
+   "geo": "PRE_2025_MERGER",
+   "occ": null,
+   "ask_usd": 170.0,
+   "ask_vnd": null,
+   "rent_yoy": null,
+   "pricing": "SOURCE_PROVINCE_DETAIL",
+   "note": "Province net absorption 50ha, stock approx 3900ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
+   "abs_ref_ha": 50.0,
+   "stock_ref_ha": 3900.0,
+   "src": "CW_N25Q1",
+   "url": null
+  },
+  {
+   "period": "2025Q1",
+   "region": "North",
+   "province": "Hai Duong",
+   "province_vi": "Hải Dương (cũ)",
+   "geo": "PRE_2025_MERGER",
+   "occ": null,
+   "ask_usd": 110.0,
+   "ask_vnd": null,
+   "rent_yoy": null,
+   "pricing": "SOURCE_PROVINCE_DETAIL",
+   "note": "Province net absorption 17ha, stock approx 1700ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
+   "abs_ref_ha": 17.0,
+   "stock_ref_ha": 1700.0,
+   "src": "CW_N25Q1",
+   "url": null
+  },
+  {
+   "period": "2025Q1",
+   "region": "North",
+   "province": "Hai Phong",
+   "province_vi": "Hải Phòng",
+   "geo": "PRE_2025_MERGER",
+   "occ": null,
+   "ask_usd": 150.0,
+   "ask_vnd": null,
+   "rent_yoy": null,
+   "pricing": "SOURCE_PROVINCE_DETAIL",
+   "note": "Province net absorption 27ha, stock approx 3600ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
+   "abs_ref_ha": 27.0,
+   "stock_ref_ha": 3600.0,
+   "src": "CW_N25Q1",
+   "url": null
+  },
+  {
+   "period": "2025Q1",
+   "region": "North",
+   "province": "Hanoi",
+   "province_vi": "Hà Nội",
+   "geo": "PRE_2025_MERGER",
+   "occ": null,
+   "ask_usd": 180.0,
+   "ask_vnd": null,
+   "rent_yoy": null,
+   "pricing": "SOURCE_PROVINCE_DETAIL",
+   "note": "Province net absorption 10ha, stock approx 1100ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
+   "abs_ref_ha": 10.0,
+   "stock_ref_ha": 1100.0,
+   "src": "CW_N25Q1",
+   "url": null
+  },
+  {
+   "period": "2025Q1",
+   "region": "North",
+   "province": "Hung Yen",
+   "province_vi": "Hưng Yên",
+   "geo": "PRE_2025_MERGER",
+   "occ": null,
+   "ask_usd": 140.0,
+   "ask_vnd": null,
+   "rent_yoy": null,
+   "pricing": "SOURCE_PROVINCE_DETAIL",
+   "note": "Province net absorption 33ha, stock approx 2000ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
+   "abs_ref_ha": 33.0,
+   "stock_ref_ha": 2000.0,
+   "src": "CW_N25Q1",
+   "url": null
+  },
+  {
+   "period": "2025Q1",
+   "region": "North",
+   "province": "Quang Ninh",
+   "province_vi": "Quảng Ninh",
+   "geo": "PRE_2025_MERGER",
+   "occ": null,
+   "ask_usd": 110.0,
+   "ask_vnd": null,
+   "rent_yoy": null,
+   "pricing": "SOURCE_PROVINCE_DETAIL",
+   "note": "Province net absorption 22ha, stock approx 2800ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
+   "abs_ref_ha": 22.0,
+   "stock_ref_ha": 2800.0,
+   "src": "CW_N25Q1",
+   "url": null
+  },
+  {
+   "period": "2025Q1",
+   "region": "North",
+   "province": "Vinh Phuc",
+   "province_vi": "Vĩnh Phúc (cũ)",
+   "geo": "PRE_2025_MERGER",
+   "occ": null,
+   "ask_usd": 125.0,
+   "ask_vnd": null,
+   "rent_yoy": null,
+   "pricing": "SOURCE_PROVINCE_DETAIL",
+   "note": "Province net absorption 16ha, stock approx 1600ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
+   "abs_ref_ha": 16.0,
+   "stock_ref_ha": 1600.0,
+   "src": "CW_N25Q1",
+   "url": null
+  },
+  {
    "period": "2025Q4",
    "region": "South",
-   "province": "HCMC",
-   "province_vi": "TP.HCM",
+   "province": "Dong Nai",
+   "province_vi": "Đồng Nai",
    "geo": "POST_2025_MERGER",
-   "occ": 0.8437,
+   "occ": 0.7162,
    "ask_usd": null,
    "ask_vnd": null,
    "rent_yoy": null,
@@ -731,10 +967,10 @@
   {
    "period": "2025Q4",
    "region": "South",
-   "province": "Dong Nai",
-   "province_vi": "Đồng Nai",
+   "province": "HCMC",
+   "province_vi": "TP.HCM",
    "geo": "POST_2025_MERGER",
-   "occ": 0.7162,
+   "occ": 0.8437,
    "ask_usd": null,
    "ask_vnd": null,
    "rent_yoy": null,
@@ -765,11 +1001,11 @@
   {
    "period": "2026Q1",
    "region": "South",
-   "province": "HCMC",
-   "province_vi": "TP.HCM",
+   "province": "Dong Nai",
+   "province_vi": "Đồng Nai",
    "geo": "POST_2025_MERGER",
-   "occ": 0.848,
-   "ask_usd": 184.2,
+   "occ": 0.716,
+   "ask_usd": 188.0,
    "ask_vnd": null,
    "rent_yoy": null,
    "pricing": "PRIMARY_ASKING_RENT",
@@ -782,11 +1018,11 @@
   {
    "period": "2026Q1",
    "region": "South",
-   "province": "Dong Nai",
-   "province_vi": "Đồng Nai",
+   "province": "HCMC",
+   "province_vi": "TP.HCM",
    "geo": "POST_2025_MERGER",
-   "occ": 0.716,
-   "ask_usd": 188.0,
+   "occ": 0.848,
+   "ask_usd": 184.2,
    "ask_vnd": null,
    "rent_yoy": null,
    "pricing": "PRIMARY_ASKING_RENT",
@@ -816,11 +1052,11 @@
   {
    "period": "2026Q2",
    "region": "South",
-   "province": "HCMC",
-   "province_vi": "TP.HCM",
+   "province": "Dong Nai",
+   "province_vi": "Đồng Nai",
    "geo": "POST_2025_MERGER",
-   "occ": 0.861,
-   "ask_usd": 187.5,
+   "occ": 0.731,
+   "ask_usd": 189.6,
    "ask_vnd": null,
    "rent_yoy": null,
    "pricing": "PRIMARY_ASKING_RENT",
@@ -833,11 +1069,11 @@
   {
    "period": "2026Q2",
    "region": "South",
-   "province": "Dong Nai",
-   "province_vi": "Đồng Nai",
+   "province": "HCMC",
+   "province_vi": "TP.HCM",
    "geo": "POST_2025_MERGER",
-   "occ": 0.731,
-   "ask_usd": 189.6,
+   "occ": 0.861,
+   "ask_usd": 187.5,
    "ask_vnd": null,
    "rent_yoy": null,
    "pricing": "PRIMARY_ASKING_RENT",
@@ -867,13 +1103,13 @@
   {
    "period": "2026Q3",
    "region": "South",
-   "province": "HCMC",
-   "province_vi": "TP.HCM",
+   "province": "Dong Nai",
+   "province_vi": "Đồng Nai",
    "geo": "POST_2025_MERGER",
-   "occ": 0.851,
+   "occ": 0.729,
    "ask_usd": null,
-   "ask_vnd": 4990000.0,
-   "rent_yoy": 0.075,
+   "ask_vnd": 4930000.0,
+   "rent_yoy": -0.001,
    "pricing": "PRIMARY_ASKING_RENT",
    "note": "Published province occupancy/Q3 rent YoY; check C&W inconsistent QoQ change text",
    "abs_ref_ha": null,
@@ -884,13 +1120,13 @@
   {
    "period": "2026Q3",
    "region": "South",
-   "province": "Dong Nai",
-   "province_vi": "Đồng Nai",
+   "province": "HCMC",
+   "province_vi": "TP.HCM",
    "geo": "POST_2025_MERGER",
-   "occ": 0.729,
+   "occ": 0.851,
    "ask_usd": null,
-   "ask_vnd": 4930000.0,
-   "rent_yoy": -0.001,
+   "ask_vnd": 4990000.0,
+   "rent_yoy": 0.075,
    "pricing": "PRIMARY_ASKING_RENT",
    "note": "Published province occupancy/Q3 rent YoY; check C&W inconsistent QoQ change text",
    "abs_ref_ha": null,
@@ -914,128 +1150,169 @@
    "stock_ref_ha": null,
    "src": "CW_S26Q3",
    "url": null
-  },
-  {
-   "period": "2025Q1",
-   "region": "North",
-   "province": "Hanoi",
-   "province_vi": "Hà Nội",
-   "geo": "PRE_2025_MERGER",
-   "occ": null,
-   "ask_usd": 180.0,
-   "ask_vnd": null,
-   "rent_yoy": null,
-   "pricing": "SOURCE_PROVINCE_DETAIL",
-   "note": "Province net absorption 10ha, stock approx 1100ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
-   "abs_ref_ha": 10.0,
-   "stock_ref_ha": 1100.0,
-   "src": "CW_N25Q1",
-   "url": null
-  },
-  {
-   "period": "2025Q1",
-   "region": "North",
-   "province": "Bac Ninh",
-   "province_vi": "Bắc Ninh",
-   "geo": "PRE_2025_MERGER",
-   "occ": null,
-   "ask_usd": 170.0,
-   "ask_vnd": null,
-   "rent_yoy": null,
-   "pricing": "SOURCE_PROVINCE_DETAIL",
-   "note": "Province net absorption 50ha, stock approx 3900ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
-   "abs_ref_ha": 50.0,
-   "stock_ref_ha": 3900.0,
-   "src": "CW_N25Q1",
-   "url": null
-  },
-  {
-   "period": "2025Q1",
-   "region": "North",
-   "province": "Hai Phong",
-   "province_vi": "Hải Phòng",
-   "geo": "PRE_2025_MERGER",
-   "occ": null,
-   "ask_usd": 150.0,
-   "ask_vnd": null,
-   "rent_yoy": null,
-   "pricing": "SOURCE_PROVINCE_DETAIL",
-   "note": "Province net absorption 27ha, stock approx 3600ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
-   "abs_ref_ha": 27.0,
-   "stock_ref_ha": 3600.0,
-   "src": "CW_N25Q1",
-   "url": null
-  },
-  {
-   "period": "2025Q1",
-   "region": "North",
-   "province": "Hung Yen",
-   "province_vi": "Hưng Yên",
-   "geo": "PRE_2025_MERGER",
-   "occ": null,
-   "ask_usd": 140.0,
-   "ask_vnd": null,
-   "rent_yoy": null,
-   "pricing": "SOURCE_PROVINCE_DETAIL",
-   "note": "Province net absorption 33ha, stock approx 2000ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
-   "abs_ref_ha": 33.0,
-   "stock_ref_ha": 2000.0,
-   "src": "CW_N25Q1",
-   "url": null
-  },
-  {
-   "period": "2025Q1",
-   "region": "North",
-   "province": "Hai Duong",
-   "province_vi": "Hải Dương (cũ)",
-   "geo": "PRE_2025_MERGER",
-   "occ": null,
-   "ask_usd": 110.0,
-   "ask_vnd": null,
-   "rent_yoy": null,
-   "pricing": "SOURCE_PROVINCE_DETAIL",
-   "note": "Province net absorption 17ha, stock approx 1700ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
-   "abs_ref_ha": 17.0,
-   "stock_ref_ha": 1700.0,
-   "src": "CW_N25Q1",
-   "url": null
-  },
-  {
-   "period": "2025Q1",
-   "region": "North",
-   "province": "Vinh Phuc",
-   "province_vi": "Vĩnh Phúc (cũ)",
-   "geo": "PRE_2025_MERGER",
-   "occ": null,
-   "ask_usd": 125.0,
-   "ask_vnd": null,
-   "rent_yoy": null,
-   "pricing": "SOURCE_PROVINCE_DETAIL",
-   "note": "Province net absorption 16ha, stock approx 1600ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
-   "abs_ref_ha": 16.0,
-   "stock_ref_ha": 1600.0,
-   "src": "CW_N25Q1",
-   "url": null
-  },
-  {
-   "period": "2025Q1",
-   "region": "North",
-   "province": "Quang Ninh",
-   "province_vi": "Quảng Ninh",
-   "geo": "PRE_2025_MERGER",
-   "occ": null,
-   "ask_usd": 110.0,
-   "ask_vnd": null,
-   "rent_yoy": null,
-   "pricing": "SOURCE_PROVINCE_DETAIL",
-   "note": "Province net absorption 22ha, stock approx 2800ha; province abs sums 175ha vs headline 148ha: NON-RECONCILIATION; use for directional reference only.",
-   "abs_ref_ha": 22.0,
-   "stock_ref_ha": 2800.0,
-   "src": "CW_N25Q1",
-   "url": null
   }
  ],
  "absorption": [
+  {
+   "period": "2025FY",
+   "region": "North",
+   "reporter": "Shinhan / JLL+C&W",
+   "coverage": "REPORT_SPECIFIC",
+   "ptype": "Year",
+   "value": 524.0,
+   "unit": "ha",
+   "obs": "SECONDARY_ACTUAL",
+   "precision": "APPROX",
+   "src": "SHINHAN",
+   "url": null,
+   "note": "Annual published historical estimate; do NOT aggregate with C&W quarterly"
+  },
+  {
+   "period": "2026M9",
+   "region": "North",
+   "reporter": "CBRE via Vietcap",
+   "coverage": "CBRE_TIER1",
+   "ptype": "9 months",
+   "value": 450.0,
+   "unit": "ha",
+   "obs": "ACTUAL",
+   "precision": "APPROX",
+   "src": "VIETCAP26",
+   "url": null,
+   "note": "9M North reported approx 450ha"
+  },
+  {
+   "period": "2025H1",
+   "region": "North",
+   "reporter": "CBRE",
+   "coverage": "CBRE_TIER1",
+   "ptype": "6 months",
+   "value": 260,
+   "unit": "ha",
+   "obs": "ACTUAL",
+   "precision": "APPROX",
+   "src": "WEB_CBRE_HN25Q2",
+   "url": null,
+   "note": "CBRE ghi \"gần 260 ha\"; 75% trong Q1.",
+   "added": "web"
+  },
+  {
+   "period": "2025M9",
+   "region": "North",
+   "reporter": "CBRE",
+   "coverage": "CBRE_TIER1",
+   "ptype": "9 months",
+   "value": 350,
+   "unit": "ha",
+   "obs": "ACTUAL",
+   "precision": "APPROX",
+   "src": "WEB_CBRE_HN25Q3",
+   "url": null,
+   "note": "CBRE ghi \"gần 350 ha\".",
+   "added": "web"
+  },
+  {
+   "period": "2025FY",
+   "region": "North",
+   "reporter": "CBRE",
+   "coverage": "CBRE_TIER1",
+   "ptype": "Year",
+   "value": 480,
+   "unit": "ha",
+   "obs": "ACTUAL",
+   "precision": "APPROX",
+   "src": "WEB_CBRE_HN25Q4",
+   "url": null,
+   "note": "CBRE ghi \"gần 480 ha\", −24% YoY.",
+   "added": "web"
+  },
+  {
+   "period": "2025FY",
+   "region": "South",
+   "reporter": "Shinhan / JLL+C&W",
+   "coverage": "REPORT_SPECIFIC",
+   "ptype": "Year",
+   "value": 261.0,
+   "unit": "ha",
+   "obs": "SECONDARY_ACTUAL",
+   "precision": "APPROX",
+   "src": "SHINHAN",
+   "url": null,
+   "note": "Annual published historical estimate; source methodology may differ"
+  },
+  {
+   "period": "2026H1",
+   "region": "South",
+   "reporter": "CBRE",
+   "coverage": "CBRE_TIER1",
+   "ptype": "6 months",
+   "value": 124.0,
+   "unit": "ha",
+   "obs": "ACTUAL",
+   "precision": "EXACT",
+   "src": "CBRES26Q2",
+   "url": null,
+   "note": "CBRE H1 2026 figure; not quarterly; up 125% YoY"
+  },
+  {
+   "period": "2025H1",
+   "region": "South",
+   "reporter": "CBRE",
+   "coverage": "CBRE_TIER1",
+   "ptype": "6 months",
+   "value": 55,
+   "unit": "ha",
+   "obs": "ACTUAL",
+   "precision": "EXACT",
+   "src": "WEB_CBRE_HCM25Q2",
+   "url": null,
+   "note": "Khớp mức +125% của H1/2026 (124 ha).",
+   "added": "web"
+  },
+  {
+   "period": "2025M9",
+   "region": "South",
+   "reporter": "CBRE",
+   "coverage": "CBRE_TIER1",
+   "ptype": "9 months",
+   "value": 80,
+   "unit": "ha",
+   "obs": "ACTUAL",
+   "precision": "APPROX",
+   "src": "WEB_CBRE_HCM25Q3",
+   "url": null,
+   "note": "CBRE ghi \"khoảng 80 ha\". Mức +56% CBRE công bố cho 9T/2026 hàm ý nền 9T/2025 khoảng 104 ha: CBRE có thể đã điều chỉnh số 2025.",
+   "added": "web"
+  },
+  {
+   "period": "2026M9",
+   "region": "South",
+   "reporter": "CBRE",
+   "coverage": "CBRE_TIER1",
+   "ptype": "9 months",
+   "value": 163,
+   "unit": "ha",
+   "obs": "ACTUAL",
+   "precision": "EXACT",
+   "src": "WEB_CBRE_9M_26S",
+   "url": null,
+   "note": "CBRE, +56% YoY.",
+   "added": "web"
+  },
+  {
+   "period": "2026M9",
+   "region": "Vietnam",
+   "reporter": "CBRE via Vietcap",
+   "coverage": "CBRE_TIER1",
+   "ptype": "9 months",
+   "value": 613.0,
+   "unit": "ha",
+   "obs": "ACTUAL",
+   "precision": "APPROX",
+   "src": "VIETCAP26",
+   "url": null,
+   "note": "9M aggregate, +32% YoY; excludes some zones outside tier-1"
+  },
   {
    "period": "2024Q4",
    "region": "North",
@@ -1150,48 +1427,6 @@
   },
   {
    "period": "2026Q1",
-   "region": "South",
-   "reporter": "Cushman & Wakefield",
-   "coverage": "C&W_POST_2025_MERGER",
-   "ptype": "Quarter",
-   "value": 127.0,
-   "unit": "ha",
-   "obs": "ACTUAL",
-   "precision": "APPROX",
-   "src": "CW_S26Q1",
-   "url": null,
-   "note": "Same-survey quarterly net absorption; new geographic cohort from Q3/2025"
-  },
-  {
-   "period": "2025FY",
-   "region": "North",
-   "reporter": "Shinhan / JLL+C&W",
-   "coverage": "REPORT_SPECIFIC",
-   "ptype": "Year",
-   "value": 524.0,
-   "unit": "ha",
-   "obs": "SECONDARY_ACTUAL",
-   "precision": "APPROX",
-   "src": "SHINHAN",
-   "url": null,
-   "note": "Annual published historical estimate; do NOT aggregate with C&W quarterly"
-  },
-  {
-   "period": "2025FY",
-   "region": "South",
-   "reporter": "Shinhan / JLL+C&W",
-   "coverage": "REPORT_SPECIFIC",
-   "ptype": "Year",
-   "value": 261.0,
-   "unit": "ha",
-   "obs": "SECONDARY_ACTUAL",
-   "precision": "APPROX",
-   "src": "SHINHAN",
-   "url": null,
-   "note": "Annual published historical estimate; source methodology may differ"
-  },
-  {
-   "period": "2026Q1",
    "region": "North",
    "reporter": "CBRE",
    "coverage": "CBRE_TIER1",
@@ -1203,6 +1438,20 @@
    "src": "CBREN26Q1",
    "url": null,
    "note": "CBRE reported >130ha; stored 130 as MINIMUM only, not actual exact"
+  },
+  {
+   "period": "2026Q1",
+   "region": "South",
+   "reporter": "Cushman & Wakefield",
+   "coverage": "C&W_POST_2025_MERGER",
+   "ptype": "Quarter",
+   "value": 127.0,
+   "unit": "ha",
+   "obs": "ACTUAL",
+   "precision": "APPROX",
+   "src": "CW_S26Q1",
+   "url": null,
+   "note": "Same-survey quarterly net absorption; new geographic cohort from Q3/2025"
   },
   {
    "period": "2026Q2",
@@ -1217,51 +1466,21 @@
    "src": "CBREN26Q2",
    "url": null,
    "note": "CBRE reported Q2 2026 industrial land absorption"
-  },
-  {
-   "period": "2026H1",
-   "region": "South",
-   "reporter": "CBRE",
-   "coverage": "CBRE_TIER1",
-   "ptype": "6 months",
-   "value": 124.0,
-   "unit": "ha",
-   "obs": "ACTUAL",
-   "precision": "EXACT",
-   "src": "CBRES26Q2",
-   "url": null,
-   "note": "CBRE H1 2026 figure; not quarterly; up 125% YoY"
-  },
-  {
-   "period": "2026M9",
-   "region": "Vietnam",
-   "reporter": "CBRE via Vietcap",
-   "coverage": "CBRE_TIER1",
-   "ptype": "9 months",
-   "value": 613.0,
-   "unit": "ha",
-   "obs": "ACTUAL",
-   "precision": "APPROX",
-   "src": "VIETCAP26",
-   "url": null,
-   "note": "9M aggregate, +32% YoY; excludes some zones outside tier-1"
-  },
-  {
-   "period": "2026M9",
-   "region": "North",
-   "reporter": "CBRE via Vietcap",
-   "coverage": "CBRE_TIER1",
-   "ptype": "9 months",
-   "value": 450.0,
-   "unit": "ha",
-   "obs": "ACTUAL",
-   "precision": "APPROX",
-   "src": "VIETCAP26",
-   "url": null,
-   "note": "9M North reported approx 450ha"
   }
  ],
  "cbre": [
+  {
+   "period": "2025Q1",
+   "region": "North",
+   "value": 200,
+   "unit": "ha",
+   "status": "ACTUAL_PRIMARY",
+   "coverage": "CBRE Tier-1 market",
+   "src": "WEB_CBRE_HN25Q1",
+   "url": null,
+   "note": "CBRE Hanoi Figures Q1/2025, trang 6 (PDF không có lớp chữ, đọc từ ảnh trang).",
+   "added": "web"
+  },
   {
    "period": "2026Q1",
    "region": "North",
@@ -1272,28 +1491,6 @@
    "src": "SSI26",
    "url": null,
    "note": "SSI Research numbers as reported by VnEconomy; CBRE primary confirms >130ha"
-  },
-  {
-   "period": "2026Q2",
-   "region": "North",
-   "value": 217.0,
-   "unit": "ha",
-   "status": "ACTUAL_PRIMARY",
-   "coverage": "CBRE Tier-1 market",
-   "src": "CBREN26Q2",
-   "url": null,
-   "note": "CBRE Q2 report exact 217ha"
-  },
-  {
-   "period": "2026Q3",
-   "region": "North",
-   "value": 99.0,
-   "unit": "ha",
-   "status": "DERIVED_ROUNDED_ESTIMATE",
-   "coverage": "CBRE Tier-1 market",
-   "src": "VIETCAP26",
-   "url": null,
-   "note": "~450ha 9M North minus Q1 134 minus Q2 217; not directly released Q3"
   },
   {
    "period": "2026Q1",
@@ -1308,6 +1505,17 @@
   },
   {
    "period": "2026Q2",
+   "region": "North",
+   "value": 217.0,
+   "unit": "ha",
+   "status": "ACTUAL_PRIMARY",
+   "coverage": "CBRE Tier-1 market",
+   "src": "CBREN26Q2",
+   "url": null,
+   "note": "CBRE Q2 report exact 217ha"
+  },
+  {
+   "period": "2026Q2",
    "region": "South",
    "value": 67.0,
    "unit": "ha",
@@ -1319,14 +1527,41 @@
   },
   {
    "period": "2026Q3",
-   "region": "South",
-   "value": 39.0,
+   "region": "North",
+   "value": 101,
    "unit": "ha",
-   "status": "DERIVED_ROUNDED_ESTIMATE",
+   "status": "LOWER_BOUND",
    "coverage": "CBRE Tier-1 market",
-   "src": "VIETCAP26",
+   "src": "WEB_CBRE_Q3_26N",
    "url": null,
-   "note": "~613ha 9M whole Vietnam minus ~450ha 9M North minus H1 South 124ha"
+   "note": "CBRE công bố \"hơn 101 ha\" trong Q3/2026 ở thị trường cấp 1, \"chủ yếu tại các KCN ở miền Bắc\", +30,1% so cùng kỳ. Nguồn không tách rõ Bắc hay cả nước; đối chiếu 9T/2026 (Bắc khoảng 450, Nam 163, cả nước khoảng 613 ha) chỉ khớp khi đọc là miền Bắc. Thay số dư 99 ha suy từ 9T làm tròn.",
+   "replaced": {
+    "value": 99.0,
+    "status": "DERIVED_ROUNDED_ESTIMATE",
+    "src": "VIETCAP26",
+    "note": "~450ha 9M North minus Q1 134 minus Q2 217; not directly released Q3"
+   },
+   "src_web": "WEB_CBRE_Q3_26N",
+   "added": "web"
+  },
+  {
+   "period": "2026Q3",
+   "region": "South",
+   "value": 39,
+   "unit": "ha",
+   "status": "DERIVED_EXACT",
+   "coverage": "CBRE Tier-1 market",
+   "src": "WEB_CBRE_9M_26S",
+   "url": null,
+   "note": "= 9T/2026 163 ha − H1/2026 124 ha: hai số CBRE công bố cho cùng phạm vi miền Nam cấp 1, không còn là phần dư từ số cả nước làm tròn.",
+   "replaced": {
+    "value": 39.0,
+    "status": "DERIVED_ROUNDED_ESTIMATE",
+    "src": "VIETCAP26",
+    "note": "~613ha 9M whole Vietnam minus ~450ha 9M North minus H1 South 124ha"
+   },
+   "src_web": "WEB_CBRE_9M_26S",
+   "added": "web"
   }
  ],
  "cbre_qa": "Q3 values are indicative residuals from rounded 9M CBRE summary; DO NOT publish as directly observed quarterly absorption.",
@@ -1592,6 +1827,38 @@
    "note": "Older scope; round area"
   },
   {
+   "period": "2025Q1",
+   "region": "South",
+   "segment": "RBF",
+   "stock_sqm": 6434000.0,
+   "occ": 0.79,
+   "abs_sqm": 223000.0,
+   "ask_usd": 4.8,
+   "ask_vnd": null,
+   "precision": "EXACT",
+   "geo": "PRE_2025Q3",
+   "cohort": "PRE",
+   "src": "CW_S25Q1",
+   "url": null,
+   "note": "Older scope"
+  },
+  {
+   "period": "2025Q1",
+   "region": "South",
+   "segment": "RBW",
+   "stock_sqm": 6300700.0,
+   "occ": 0.78,
+   "abs_sqm": 160000.0,
+   "ask_usd": 4.5,
+   "ask_vnd": null,
+   "precision": "EXACT",
+   "geo": "PRE_2025Q3",
+   "cohort": "PRE",
+   "src": "CW_S25Q1",
+   "url": null,
+   "note": "Older scope"
+  },
+  {
    "period": "2025Q2",
    "region": "North",
    "segment": "RBF",
@@ -1620,6 +1887,38 @@
    "geo": "PRE_2025Q3",
    "cohort": "PRE",
    "src": "CW_N25Q2",
+   "url": null,
+   "note": "Older scope"
+  },
+  {
+   "period": "2025Q2",
+   "region": "South",
+   "segment": "RBF",
+   "stock_sqm": 6434000.0,
+   "occ": 0.88,
+   "abs_sqm": 172000.0,
+   "ask_usd": 4.8,
+   "ask_vnd": null,
+   "precision": "EXACT",
+   "geo": "PRE_2025Q3",
+   "cohort": "PRE",
+   "src": "CW_S25Q2",
+   "url": null,
+   "note": "Older scope"
+  },
+  {
+   "period": "2025Q2",
+   "region": "South",
+   "segment": "RBW",
+   "stock_sqm": 6353700.0,
+   "occ": 0.81,
+   "abs_sqm": 85000.0,
+   "ask_usd": 4.4,
+   "ask_vnd": null,
+   "precision": "EXACT",
+   "geo": "PRE_2025Q3",
+   "cohort": "PRE",
+   "src": "CW_S25Q2",
    "url": null,
    "note": "Older scope"
   },
@@ -1656,6 +1955,38 @@
    "note": "Rebased geography"
   },
   {
+   "period": "2025Q3",
+   "region": "South",
+   "segment": "RBF",
+   "stock_sqm": 6565785.0,
+   "occ": 0.92,
+   "abs_sqm": null,
+   "ask_usd": 4.8,
+   "ask_vnd": null,
+   "precision": "EXACT",
+   "geo": "POST_2025Q3",
+   "cohort": "POST",
+   "src": "CW_S25Q3",
+   "url": null,
+   "note": "Rebased geography"
+  },
+  {
+   "period": "2025Q3",
+   "region": "South",
+   "segment": "RBW",
+   "stock_sqm": 6589825.0,
+   "occ": 0.89,
+   "abs_sqm": null,
+   "ask_usd": 4.6,
+   "ask_vnd": null,
+   "precision": "EXACT",
+   "geo": "POST_2025Q3",
+   "cohort": "POST",
+   "src": "CW_S25Q3",
+   "url": null,
+   "note": "Rebased geography"
+  },
+  {
    "period": "2025Q4",
    "region": "North",
    "segment": "RBF",
@@ -1686,6 +2017,22 @@
    "src": "CW_N25Q4",
    "url": null,
    "note": "Quarterly source"
+  },
+  {
+   "period": "2025Q4",
+   "region": "South",
+   "segment": "RBF",
+   "stock_sqm": 6600000.0,
+   "occ": null,
+   "abs_sqm": null,
+   "ask_usd": 4.86,
+   "ask_vnd": null,
+   "precision": "APPROX",
+   "geo": "POST_2025Q3",
+   "cohort": "POST",
+   "src": "CW_S25Q4",
+   "url": null,
+   "note": "Occupancy reported >90%; kept blank rather than false exact"
   },
   {
    "period": "2026Q1",
@@ -1736,150 +2083,6 @@
    "note": "Rounded supply"
   },
   {
-   "period": "2026Q3",
-   "region": "North",
-   "segment": "RBF",
-   "stock_sqm": 6100000.0,
-   "occ": 0.85,
-   "abs_sqm": null,
-   "ask_usd": null,
-   "ask_vnd": 131800.0,
-   "precision": "APPROX",
-   "geo": "POST_2025Q3",
-   "cohort": "POST",
-   "src": "CW_N26Q3",
-   "url": null,
-   "note": "Price in VND monthly"
-  },
-  {
-   "period": "2026Q3",
-   "region": "North",
-   "segment": "RBW",
-   "stock_sqm": 3700000.0,
-   "occ": 0.85,
-   "abs_sqm": null,
-   "ask_usd": null,
-   "ask_vnd": 129900.0,
-   "precision": "APPROX",
-   "geo": "POST_2025Q3",
-   "cohort": "POST",
-   "src": "CW_N26Q3",
-   "url": null,
-   "note": "Price in VND monthly"
-  },
-  {
-   "period": "2025Q1",
-   "region": "South",
-   "segment": "RBF",
-   "stock_sqm": 6434000.0,
-   "occ": 0.79,
-   "abs_sqm": 223000.0,
-   "ask_usd": 4.8,
-   "ask_vnd": null,
-   "precision": "EXACT",
-   "geo": "PRE_2025Q3",
-   "cohort": "PRE",
-   "src": "CW_S25Q1",
-   "url": null,
-   "note": "Older scope"
-  },
-  {
-   "period": "2025Q1",
-   "region": "South",
-   "segment": "RBW",
-   "stock_sqm": 6300700.0,
-   "occ": 0.78,
-   "abs_sqm": 160000.0,
-   "ask_usd": 4.5,
-   "ask_vnd": null,
-   "precision": "EXACT",
-   "geo": "PRE_2025Q3",
-   "cohort": "PRE",
-   "src": "CW_S25Q1",
-   "url": null,
-   "note": "Older scope"
-  },
-  {
-   "period": "2025Q2",
-   "region": "South",
-   "segment": "RBF",
-   "stock_sqm": 6434000.0,
-   "occ": 0.88,
-   "abs_sqm": 172000.0,
-   "ask_usd": 4.8,
-   "ask_vnd": null,
-   "precision": "EXACT",
-   "geo": "PRE_2025Q3",
-   "cohort": "PRE",
-   "src": "CW_S25Q2",
-   "url": null,
-   "note": "Older scope"
-  },
-  {
-   "period": "2025Q2",
-   "region": "South",
-   "segment": "RBW",
-   "stock_sqm": 6353700.0,
-   "occ": 0.81,
-   "abs_sqm": 85000.0,
-   "ask_usd": 4.4,
-   "ask_vnd": null,
-   "precision": "EXACT",
-   "geo": "PRE_2025Q3",
-   "cohort": "PRE",
-   "src": "CW_S25Q2",
-   "url": null,
-   "note": "Older scope"
-  },
-  {
-   "period": "2025Q3",
-   "region": "South",
-   "segment": "RBF",
-   "stock_sqm": 6565785.0,
-   "occ": 0.92,
-   "abs_sqm": null,
-   "ask_usd": 4.8,
-   "ask_vnd": null,
-   "precision": "EXACT",
-   "geo": "POST_2025Q3",
-   "cohort": "POST",
-   "src": "CW_S25Q3",
-   "url": null,
-   "note": "Rebased geography"
-  },
-  {
-   "period": "2025Q3",
-   "region": "South",
-   "segment": "RBW",
-   "stock_sqm": 6589825.0,
-   "occ": 0.89,
-   "abs_sqm": null,
-   "ask_usd": 4.6,
-   "ask_vnd": null,
-   "precision": "EXACT",
-   "geo": "POST_2025Q3",
-   "cohort": "POST",
-   "src": "CW_S25Q3",
-   "url": null,
-   "note": "Rebased geography"
-  },
-  {
-   "period": "2025Q4",
-   "region": "South",
-   "segment": "RBF",
-   "stock_sqm": 6600000.0,
-   "occ": null,
-   "abs_sqm": null,
-   "ask_usd": 4.86,
-   "ask_vnd": null,
-   "precision": "APPROX",
-   "geo": "POST_2025Q3",
-   "cohort": "POST",
-   "src": "CW_S25Q4",
-   "url": null,
-   "note": "Occupancy reported >90%; kept blank rather than false exact"
-  },
-  {
    "period": "2026Q2",
    "region": "South",
    "segment": "RBF",
@@ -1910,6 +2113,38 @@
    "src": "CW_S26Q2",
    "url": null,
    "note": "Rounded supply"
+  },
+  {
+   "period": "2026Q3",
+   "region": "North",
+   "segment": "RBF",
+   "stock_sqm": 6100000.0,
+   "occ": 0.85,
+   "abs_sqm": null,
+   "ask_usd": null,
+   "ask_vnd": 131800.0,
+   "precision": "APPROX",
+   "geo": "POST_2025Q3",
+   "cohort": "POST",
+   "src": "CW_N26Q3",
+   "url": null,
+   "note": "Price in VND monthly"
+  },
+  {
+   "period": "2026Q3",
+   "region": "North",
+   "segment": "RBW",
+   "stock_sqm": 3700000.0,
+   "occ": 0.85,
+   "abs_sqm": null,
+   "ask_usd": null,
+   "ask_vnd": 129900.0,
+   "precision": "APPROX",
+   "geo": "POST_2025Q3",
+   "cohort": "POST",
+   "src": "CW_N26Q3",
+   "url": null,
+   "note": "Price in VND monthly"
   },
   {
    "period": "2026Q3",
@@ -2373,7 +2608,9 @@
    "issue": "GEOGRAPHY_REBASE",
    "evidence": "After administrative mergers, survey regions changed; levels before and after cannot be directly compared.",
    "rule": "Block cross-Q2/Q3 2025 QoQ growth; cohort filter required.",
-   "src": "CW_N25Q3;CW_S25Q3"
+   "src": "CW_N25Q3;CW_S25Q3",
+   "status": "mitigated",
+   "resolution": "Dùng các mức so cùng kỳ C&W tự công bố trên cùng địa giới mới (miền Nam từ Q1/2026, miền Bắc Q3/2026; giá thuê miền Bắc Q3/2025 +4% cùng phạm vi). Mức trước/sau mốc vẫn không so trực tiếp."
   },
   {
    "severity": "HIGH",
@@ -2427,7 +2664,9 @@
    "issue": "MIXED_CBRE_CW",
    "evidence": "CBRE tier-1 vs C&W market zone definitions differ; cannot stack quarterly absorption.",
    "rule": "Separate reporter/coverage key; compare direction only unless mapping is proven.",
-   "src": "VIETCAP26;CW_N26Q3"
+   "src": "VIETCAP26;CW_N26Q3",
+   "status": "mitigated",
+   "resolution": "Hai nguồn vẽ thành chuỗi riêng; so cùng kỳ chỉ trong từng nguồn (CBRE lũy kế 2026 so 2025 cùng phạm vi cấp 1)."
   },
   {
    "severity": "MEDIUM",
@@ -2454,7 +2693,9 @@
    "issue": "Q3_CBRE_RESIDUAL_ONLY",
    "evidence": "~450ha North and ~613ha national 9M data are approximate; Q3 estimated 99ha North and 39ha South as residual from Q1+Q2.",
    "rule": "Display estimates with dashed outline and APPROX, never market actual.",
-   "src": "VIETCAP26;SSI26"
+   "src": "VIETCAP26;SSI26",
+   "status": "resolved",
+   "resolution": "Miền Nam Q3/2026 = 163 − 124 ha, hai số CBRE công bố cho cùng phạm vi; miền Bắc Q3/2026 thay bằng số CBRE công bố \"hơn 101 ha\" (cận dưới). Không còn số dư từ số cả nước làm tròn."
   },
   {
    "severity": "MEDIUM",
@@ -2463,7 +2704,9 @@
    "issue": "ABSORPTION_GAPS",
    "evidence": "Not all public quarterly releases disclose an exact single quarterly net absorption.",
    "rule": "Leave missing data NULL, do not interpolate, do not reverse engineer from rounded occupancy.",
-   "src": "CUSHMAN"
+   "src": "CUSHMAN",
+   "status": "mitigated",
+   "resolution": "Đã kiểm MarketBeat C&W Q3/2025–Q3/2026 (PDF và thông cáo): C&W không công bố hấp thụ theo ha ở các quý còn trống. Nhịp cầu theo quý đọc ở chuỗi CBRE; lũy kế CBRE 2025 đã bổ sung để so cùng kỳ."
   },
   {
    "severity": "MEDIUM",
@@ -8166,9 +8409,650 @@
    "detail": "271/271 dòng khớp ô số của bảng chuyên đề; 0 dòng chỉ có ở bảng dài"
   },
   {
+   "name": "Số bổ sung từ web có bằng chứng trích dẫn",
+   "ok": true,
+   "detail": "23 số · 4 cảnh báo cập nhật"
+  },
+  {
    "name": "Không có lỗi chuẩn hóa",
    "ok": true,
    "detail": ""
+  }
+ ],
+ "supplement": {
+  "rows": [
+   {
+    "id": "cbre-n-2026q3",
+    "table": "cbre",
+    "mode": "replace",
+    "key": {
+     "period": "2026Q3",
+     "region": "North"
+    },
+    "set": {
+     "value": 101,
+     "status": "LOWER_BOUND"
+    },
+    "src": "WEB_CBRE_Q3_26N",
+    "quote": "Ở phân khúc đất công nghiệp, tổng diện tích hấp thụ tại các thị trường cấp 1 đạt hơn 101 ha trong quý III, chủ yếu tại các khu công nghiệp ở miền Bắc, tăng 30,1% so với cùng kỳ năm trước.",
+    "url": "https://doanhnhan.baophapluat.vn/nha-xuong-xay-san-lap-ky-luc-hap-thu-ai-va-ban-dan-thuc-day-bat-dong-san-cong-nghiep.html"
+   },
+   {
+    "id": "cbre-s-2026q3",
+    "table": "cbre",
+    "mode": "replace",
+    "key": {
+     "period": "2026Q3",
+     "region": "South"
+    },
+    "set": {
+     "value": 39,
+     "status": "DERIVED_EXACT"
+    },
+    "src": "WEB_CBRE_9M_26S",
+    "quote": "Trong 9 tháng đầu năm 2026, thị trường đất công nghiệp phía Nam ghi nhận diện tích hấp thụ 163 ha",
+    "url": "https://thoibaotaichinhvietnam.vn/bat-dong-san-cong-nghiep-phia-nam-hap-thu-163-ha-dat-trong-9-thang-205377.html"
+   },
+   {
+    "id": "cbre-n-2025q1",
+    "table": "cbre",
+    "mode": "add",
+    "key": {
+     "period": "2025Q1",
+     "region": "North"
+    },
+    "set": {
+     "value": 200,
+     "status": "ACTUAL_PRIMARY",
+     "unit": "ha",
+     "coverage": "CBRE Tier-1 market"
+    },
+    "src": "WEB_CBRE_HN25Q1",
+    "quote": "the absorption rate of industrial parks in Tier 1 markets in the North reached 200 hectares in the first three months of 2025, with the occupancy rate maintained at 79.7%",
+    "url": "https://mktgdocs.cbre.com/2299/200b6b1b-1213-47cb-8b75-240c9e966c9e-1391604255/CBRE_Vietnam_Hanoi_Figures_Q1_.pdf"
+   },
+   {
+    "id": "cbre-n-2025h1",
+    "table": "absorption",
+    "mode": "add",
+    "key": {
+     "period": "2025H1",
+     "region": "North",
+     "reporter": "CBRE",
+     "coverage": "CBRE_TIER1",
+     "ptype": "6 months"
+    },
+    "set": {
+     "value": 260,
+     "unit": "ha",
+     "obs": "ACTUAL",
+     "precision": "APPROX"
+    },
+    "src": "WEB_CBRE_HN25Q2",
+    "quote": "Mức hấp thụ của các KCN tại các TT cấp 1 miền Bắc trong sáu tháng đầu năm 2025 đạt gần 260ha",
+    "url": "https://mktgdocs.cbre.com/2299/085df066-54d0-4fca-81c9-cd56b23f628c-1198311695/CBRE_Vietnam_Hanoi_Figures_Q2_.pdf"
+   },
+   {
+    "id": "cbre-n-2025m9",
+    "table": "absorption",
+    "mode": "add",
+    "key": {
+     "period": "2025M9",
+     "region": "North",
+     "reporter": "CBRE",
+     "coverage": "CBRE_TIER1",
+     "ptype": "9 months"
+    },
+    "set": {
+     "value": 350,
+     "unit": "ha",
+     "obs": "ACTUAL",
+     "precision": "APPROX"
+    },
+    "src": "WEB_CBRE_HN25Q3",
+    "quote": "tổng diện tích đất công nghiệp được hấp thụ tại các tỉnh thành cấp 1 đạt gần 350 ha, trong đó hơn 50% được ghi nhận trong Quý 1",
+    "url": "https://mktgdocs.cbre.com/2299/9c3fa410-42d1-4157-b045-b1102a3f379f-1491714702/CBRE_Vietnam_Hanoi_Figures_Q3_.pdf"
+   },
+   {
+    "id": "cbre-n-2025fy",
+    "table": "absorption",
+    "mode": "add",
+    "key": {
+     "period": "2025FY",
+     "region": "North",
+     "reporter": "CBRE",
+     "coverage": "CBRE_TIER1",
+     "ptype": "Year"
+    },
+    "set": {
+     "value": 480,
+     "unit": "ha",
+     "obs": "ACTUAL",
+     "precision": "APPROX"
+    },
+    "src": "WEB_CBRE_HN25Q4",
+    "quote": "tổng diện tích đất công nghiệp được hấp thụ tại các tỉnh/thành cấp 1 đạt gần 480 ha trong năm 2025, giảm 24% so với cùng kỳ năm trước.",
+    "url": "https://mktgdocs.cbre.com/2299/f2dfc91b-e6a5-4242-8612-4702511e1f62-1785117709/CBRE_Vietnam_Hanoi_Figures_Q4_.pdf"
+   },
+   {
+    "id": "cbre-s-2025h1",
+    "table": "absorption",
+    "mode": "add",
+    "key": {
+     "period": "2025H1",
+     "region": "South",
+     "reporter": "CBRE",
+     "coverage": "CBRE_TIER1",
+     "ptype": "6 months"
+    },
+    "set": {
+     "value": 55,
+     "unit": "ha",
+     "obs": "ACTUAL",
+     "precision": "EXACT"
+    },
+    "src": "WEB_CBRE_HCM25Q2",
+    "quote": "Tổng diện tích đất công nghiệp hấp thụ trong cả nửa đầu năm 2025 đạt 55 ha.",
+    "url": "https://mktgdocs.cbre.com/2299/4dc37d69-04bf-4dc1-a2fa-2ea2b14d3068-646554789/CBRE_Vietnam_HCMC_Figures_Q2_2.pdf"
+   },
+   {
+    "id": "cbre-s-2025m9",
+    "table": "absorption",
+    "mode": "add",
+    "key": {
+     "period": "2025M9",
+     "region": "South",
+     "reporter": "CBRE",
+     "coverage": "CBRE_TIER1",
+     "ptype": "9 months"
+    },
+    "set": {
+     "value": 80,
+     "unit": "ha",
+     "obs": "ACTUAL",
+     "precision": "APPROX"
+    },
+    "src": "WEB_CBRE_HCM25Q3",
+    "quote": "tổng diện tích đất công nghiệp hấp thụ tại khu vực phía Nam trong chín tháng đầu năm 2025 đạt khoảng 80 ha, thấp hơn 70% so với diện tích hấp thụ được ghi nhận trong cùng kỳ năm 2024.",
+    "url": "https://mktgdocs.cbre.com/2299/88f31369-b095-4788-9629-4d25b3506206-353151782/CBRE_Vietnam_HCMC_Figures_Q3_2.pdf"
+   },
+   {
+    "id": "cbre-s-2026m9",
+    "table": "absorption",
+    "mode": "add",
+    "key": {
+     "period": "2026M9",
+     "region": "South",
+     "reporter": "CBRE",
+     "coverage": "CBRE_TIER1",
+     "ptype": "9 months"
+    },
+    "set": {
+     "value": 163,
+     "unit": "ha",
+     "obs": "ACTUAL",
+     "precision": "EXACT"
+    },
+    "src": "WEB_CBRE_9M_26S",
+    "quote": "Tổng diện tích hấp thụ tại các thị trường cấp 1 đạt 163 ha, tăng 56% so với cùng kỳ năm trước.",
+    "url": "https://thoibaotaichinhvietnam.vn/bat-dong-san-cong-nghiep-phia-nam-hap-thu-163-ha-dat-trong-9-thang-205377.html"
+   },
+   {
+    "id": "cw-n-2025q3-rent",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2025Q3",
+     "region": "North",
+     "reporter": "C&W",
+     "metric": "rent_yoy"
+    },
+    "set": {
+     "value": 0.04,
+     "unit": "USD",
+     "basis": "like-for-like"
+    },
+    "src": "WEB_CW_N25Q3",
+    "quote": "However, on a like-for-like basis, rent still grew 4% year-on-year",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2025/q3/apac-and-gc/q3-2025-hanoi-marketbeat-en_industrial.pdf"
+   },
+   {
+    "id": "cw-s-2026q1-stock",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2026Q1",
+     "region": "South",
+     "reporter": "C&W",
+     "metric": "stock_yoy"
+    },
+    "set": {
+     "value": 0.086,
+     "basis": "post-merger"
+    },
+    "src": "WEB_CW_S26Q1",
+    "quote": "On a yearly basis, supply increased by 8.6% YoY",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q1/apac-and-gc/q1-2026-southern-key-economic-zone-industrial-markets-en-260428---final.pdf?rev=e46c8d71df664368acb309406be4cff9"
+   },
+   {
+    "id": "cw-s-2026q1-occ",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2026Q1",
+     "region": "South",
+     "reporter": "C&W",
+     "metric": "occ_yoy_pp"
+    },
+    "set": {
+     "value": -0.013,
+     "basis": "post-merger"
+    },
+    "src": "WEB_CW_S26Q1",
+    "quote": "The overall occupancy rate in Q1 2026 reached 74.8%, up 0.3 ppts QoQ but down 1.3 ppts YoY.",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q1/apac-and-gc/q1-2026-southern-key-economic-zone-industrial-markets-en-260428---final.pdf?rev=e46c8d71df664368acb309406be4cff9"
+   },
+   {
+    "id": "cw-s-2026q1-rent",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2026Q1",
+     "region": "South",
+     "reporter": "C&W",
+     "metric": "rent_yoy"
+    },
+    "set": {
+     "value": 0.017,
+     "unit": "USD",
+     "basis": "post-merger"
+    },
+    "src": "WEB_CW_S26Q1",
+    "quote": "The average asking rent for IP land (countrywide) reached approx. USD 186.6/sqm/lease term in Q1 2026, increasing by 0.9% QoQ and 1.7% YoY",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q1/apac-and-gc/q1-2026-southern-key-economic-zone-industrial-markets-en-260428---final.pdf?rev=e46c8d71df664368acb309406be4cff9"
+   },
+   {
+    "id": "cw-s-2026q1-leased",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2026Q1",
+     "region": "South",
+     "reporter": "C&W",
+     "metric": "leased_area_change_ha"
+    },
+    "set": {
+     "value": 1710,
+     "basis": "post-merger"
+    },
+    "src": "WEB_CW_S26Q1",
+    "quote": "Compared to Q1 2025, total stock expanded by around 2,871 ha, while leased area increased by only 1,710 ha.",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q1/apac-and-gc/q1-2026-southern-key-economic-zone-industrial-markets-en-260428---final.pdf?rev=e46c8d71df664368acb309406be4cff9"
+   },
+   {
+    "id": "cw-s-2026q2-stock",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2026Q2",
+     "region": "South",
+     "reporter": "C&W",
+     "metric": "stock_yoy"
+    },
+    "set": {
+     "value": 0.046,
+     "basis": "post-merger"
+    },
+    "src": "WEB_CW_S26Q2",
+    "quote": "Total supply remained at 36,063 ha, unchanged QoQ and increasing by 4.6% YoY, supported by previously operational projects.",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q2/apac-and-gc/hcmc-marketbeat-industrial-q2-2026---en.pdf?rev=130f404dbceb4f36840bbf5838bdedb2"
+   },
+   {
+    "id": "cw-s-2026q2-rent",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2026Q2",
+     "region": "South",
+     "reporter": "C&W",
+     "metric": "rent_yoy"
+    },
+    "set": {
+     "value": 0.017,
+     "unit": "USD",
+     "basis": "post-merger"
+    },
+    "src": "WEB_CW_S26Q2",
+    "quote": "The average asking rent reached approx. 186.4 USD/sqm/lease term (-0.5% QoQ, +1.7% YoY).",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q2/apac-and-gc/hcmc-marketbeat-industrial-q2-2026---en.pdf?rev=130f404dbceb4f36840bbf5838bdedb2"
+   },
+   {
+    "id": "cw-s-2026q3-occ",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2026Q3",
+     "region": "South",
+     "reporter": "C&W",
+     "metric": "occ_yoy_pp"
+    },
+    "set": {
+     "value": 0.015,
+     "basis": "post-merger"
+    },
+    "src": "WEB_CW_S26Q3",
+    "quote": "Regional occupancy reached 75.8%, remaining largely unchanged QoQ, with an increase of 0.03 ppt, and rising 1.5 ppt YoY.",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hcmc-industrial-q3-2026-en.pdf?rev=885a3b2109c843e0ac05c565cde3483c"
+   },
+   {
+    "id": "cw-s-2026q3-rent",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2026Q3",
+     "region": "South",
+     "reporter": "C&W",
+     "metric": "rent_yoy"
+    },
+    "set": {
+     "value": 0.012,
+     "unit": "VND",
+     "basis": "post-merger"
+    },
+    "src": "WEB_CW_S26Q3",
+    "quote": "Average industrial land rent reached VND 4.89 million/m²/lease term, down 0.4% QoQ but up 1.2% YoY.",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hcmc-industrial-q3-2026-en.pdf?rev=885a3b2109c843e0ac05c565cde3483c"
+   },
+   {
+    "id": "cw-n-2026q3-stock",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2026Q3",
+     "region": "North",
+     "reporter": "C&W",
+     "metric": "stock_yoy"
+    },
+    "set": {
+     "value": 0.074,
+     "basis": "post-merger"
+    },
+    "src": "WEB_CW_N26Q3",
+    "quote": "As of Q3 2026, cumulative industrial park land supply in Northern Vietnam reached 25,455 ha, up 0.9% QoQ and 7.4% YoY.",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hn-industrial-q3-2026-en.pdf?rev=c905e530b50045ff9c059416318e32cd"
+   },
+   {
+    "id": "cw-n-2026q3-occ",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2026Q3",
+     "region": "North",
+     "reporter": "C&W",
+     "metric": "occ_yoy_pp"
+    },
+    "set": {
+     "value": -0.021,
+     "basis": "post-merger"
+    },
+    "src": "WEB_CW_N26Q3",
+    "quote": "In Q3 2026, the average industrial land occupancy rate reached 65%, up 0.6 ppts QoQ but down 2.1 ppts YoY.",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hn-industrial-q3-2026-en.pdf?rev=c905e530b50045ff9c059416318e32cd"
+   },
+   {
+    "id": "cw-n-2026q3-rent",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2026Q3",
+     "region": "North",
+     "reporter": "C&W",
+     "metric": "rent_yoy"
+    },
+    "set": {
+     "value": 0.018,
+     "unit": "VND",
+     "basis": "post-merger"
+    },
+    "src": "WEB_CW_N26Q3",
+    "quote": "The average asking rent reached 3.6 million VND/sqm/lease term, increasing by 0.1% QoQ and 1.8% YoY.",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hn-industrial-q3-2026-en.pdf?rev=c905e530b50045ff9c059416318e32cd"
+   },
+   {
+    "id": "cbre-n-2026q3-rent",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2026Q3",
+     "region": "North",
+     "reporter": "CBRE",
+     "metric": "rent_yoy"
+    },
+    "set": {
+     "value": 0.008,
+     "unit": "USD",
+     "level": 144,
+     "basis": "CBRE Tier-1"
+    },
+    "src": "WEB_CBRE_Q3_26N",
+    "quote": "Tại các thị trường công nghiệp cấp 1 khu vực phía Bắc, giá thuê đất công nghiệp trung bình đạt khoảng 144 USD/m² cho toàn bộ thời hạn thuê còn lại, tăng 0,8% so với cùng kỳ năm trước.",
+    "url": "https://doanhnhan.baophapluat.vn/nha-xuong-xay-san-lap-ky-luc-hap-thu-ai-va-ban-dan-thuc-day-bat-dong-san-cong-nghiep.html"
+   },
+   {
+    "id": "cbre-s-2026q3-rent",
+    "table": "reported",
+    "mode": "add",
+    "key": {
+     "period": "2026Q3",
+     "region": "South",
+     "reporter": "CBRE",
+     "metric": "rent_yoy"
+    },
+    "set": {
+     "value": 0.015,
+     "unit": "USD",
+     "level": 185,
+     "basis": "CBRE Tier-1"
+    },
+    "src": "WEB_CBRE_9M_26S",
+    "quote": "Giá thuê đất công nghiệp trung bình đạt 185 USD/m² cho toàn bộ thời hạn thuê còn lại, ổn định so với quý trước",
+    "url": "https://thoibaotaichinhvietnam.vn/bat-dong-san-cong-nghiep-phia-nam-hap-thu-163-ha-dat-trong-9-thang-205377.html"
+   }
+  ],
+  "qa_updates": [
+   {
+    "issue": "Q3_CBRE_RESIDUAL_ONLY",
+    "status": "resolved",
+    "note": "Miền Nam Q3/2026 = 163 − 124 ha, hai số CBRE công bố cho cùng phạm vi; miền Bắc Q3/2026 thay bằng số CBRE công bố \"hơn 101 ha\" (cận dưới). Không còn số dư từ số cả nước làm tròn."
+   },
+   {
+    "issue": "ABSORPTION_GAPS",
+    "status": "mitigated",
+    "note": "Đã kiểm MarketBeat C&W Q3/2025–Q3/2026 (PDF và thông cáo): C&W không công bố hấp thụ theo ha ở các quý còn trống. Nhịp cầu theo quý đọc ở chuỗi CBRE; lũy kế CBRE 2025 đã bổ sung để so cùng kỳ."
+   },
+   {
+    "issue": "GEOGRAPHY_REBASE",
+    "status": "mitigated",
+    "note": "Dùng các mức so cùng kỳ C&W tự công bố trên cùng địa giới mới (miền Nam từ Q1/2026, miền Bắc Q3/2026; giá thuê miền Bắc Q3/2025 +4% cùng phạm vi). Mức trước/sau mốc vẫn không so trực tiếp."
+   },
+   {
+    "issue": "MIXED_CBRE_CW",
+    "status": "mitigated",
+    "note": "Hai nguồn vẽ thành chuỗi riêng; so cùng kỳ chỉ trong từng nguồn (CBRE lũy kế 2026 so 2025 cùng phạm vi cấp 1)."
+   }
+  ],
+  "checked": "2026-11-12"
+ },
+ "reported": [
+  {
+   "period": "2025Q3",
+   "region": "North",
+   "reporter": "C&W",
+   "metric": "rent_yoy",
+   "value": 0.04,
+   "unit": "USD",
+   "basis": "like-for-like",
+   "src": "WEB_CW_N25Q3",
+   "note": "C&W tự tính trên cùng phạm vi; giá Q3/2025 133 USD giảm 2% QoQ do nhập tỉnh có giá thấp.",
+   "added": "web"
+  },
+  {
+   "period": "2026Q1",
+   "region": "South",
+   "reporter": "C&W",
+   "metric": "stock_yoy",
+   "value": 0.086,
+   "unit": null,
+   "basis": "post-merger",
+   "src": "WEB_CW_S26Q1",
+   "note": "Ghi chú chart của C&W: số cung theo địa giới sau sáp nhập.",
+   "added": "web"
+  },
+  {
+   "period": "2026Q1",
+   "region": "South",
+   "reporter": "C&W",
+   "metric": "occ_yoy_pp",
+   "value": -0.013,
+   "unit": null,
+   "basis": "post-merger",
+   "src": "WEB_CW_S26Q1",
+   "note": null,
+   "added": "web"
+  },
+  {
+   "period": "2026Q1",
+   "region": "South",
+   "reporter": "C&W",
+   "metric": "rent_yoy",
+   "value": 0.017,
+   "unit": "USD",
+   "basis": "post-merger",
+   "src": "WEB_CW_S26Q1",
+   "note": null,
+   "added": "web"
+  },
+  {
+   "period": "2026Q1",
+   "region": "South",
+   "reporter": "C&W",
+   "metric": "leased_area_change_ha",
+   "value": 1710,
+   "unit": null,
+   "basis": "post-merger",
+   "src": "WEB_CW_S26Q1",
+   "note": "Thay đổi diện tích đã thuê so cùng kỳ (C&W tự tính), khác định nghĩa hấp thụ thuần theo quý: không cộng với hấp thụ.",
+   "added": "web"
+  },
+  {
+   "period": "2026Q2",
+   "region": "South",
+   "reporter": "C&W",
+   "metric": "stock_yoy",
+   "value": 0.046,
+   "unit": null,
+   "basis": "post-merger",
+   "src": "WEB_CW_S26Q2",
+   "note": null,
+   "added": "web"
+  },
+  {
+   "period": "2026Q2",
+   "region": "South",
+   "reporter": "C&W",
+   "metric": "rent_yoy",
+   "value": 0.017,
+   "unit": "USD",
+   "basis": "post-merger",
+   "src": "WEB_CW_S26Q2",
+   "note": null,
+   "added": "web"
+  },
+  {
+   "period": "2026Q3",
+   "region": "North",
+   "reporter": "C&W",
+   "metric": "stock_yoy",
+   "value": 0.074,
+   "unit": null,
+   "basis": "post-merger",
+   "src": "WEB_CW_N26Q3",
+   "note": null,
+   "added": "web"
+  },
+  {
+   "period": "2026Q3",
+   "region": "North",
+   "reporter": "C&W",
+   "metric": "occ_yoy_pp",
+   "value": -0.021,
+   "unit": null,
+   "basis": "post-merger",
+   "src": "WEB_CW_N26Q3",
+   "note": null,
+   "added": "web"
+  },
+  {
+   "period": "2026Q3",
+   "region": "North",
+   "reporter": "C&W",
+   "metric": "rent_yoy",
+   "value": 0.018,
+   "unit": "VND",
+   "basis": "post-merger",
+   "src": "WEB_CW_N26Q3",
+   "note": "So cùng kỳ tính trên giá VND do C&W công bố.",
+   "added": "web"
+  },
+  {
+   "period": "2026Q3",
+   "region": "North",
+   "reporter": "CBRE",
+   "metric": "rent_yoy",
+   "value": 0.008,
+   "unit": "USD",
+   "basis": "CBRE Tier-1",
+   "src": "WEB_CBRE_Q3_26N",
+   "note": "Giá CBRE, phạm vi Tier-1, khác C&W.",
+   "added": "web",
+   "level": 144
+  },
+  {
+   "period": "2026Q3",
+   "region": "South",
+   "reporter": "C&W",
+   "metric": "occ_yoy_pp",
+   "value": 0.015,
+   "unit": null,
+   "basis": "post-merger",
+   "src": "WEB_CW_S26Q3",
+   "note": null,
+   "added": "web"
+  },
+  {
+   "period": "2026Q3",
+   "region": "South",
+   "reporter": "C&W",
+   "metric": "rent_yoy",
+   "value": 0.012,
+   "unit": "VND",
+   "basis": "post-merger",
+   "src": "WEB_CW_S26Q3",
+   "note": "So cùng kỳ tính trên giá VND do C&W công bố.",
+   "added": "web"
+  },
+  {
+   "period": "2026Q3",
+   "region": "South",
+   "reporter": "CBRE",
+   "metric": "rent_yoy",
+   "value": 0.015,
+   "unit": "USD",
+   "basis": "CBRE Tier-1",
+   "src": "WEB_CBRE_9M_26S",
+   "note": "Cùng đoạn: \"tăng 1,5% so với cùng kỳ năm 2025\". Giá CBRE, phạm vi Tier-1.",
+   "added": "web",
+   "level": 185
   }
  ]
 }
