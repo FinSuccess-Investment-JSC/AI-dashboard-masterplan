@@ -131,6 +131,48 @@ const capItems = glob('capItems'), pipelineStages = glob('pipelineStages'), pipe
 const shortfallYears = glob('shortfallYears'), shortfallMw = glob('shortfallMw'), outVals = glob('outVals'), outLabels = glob('outLabels');
 const tariffDates = glob('tariffDates'), tariffVals = glob('tariffVals'), lossLabels = glob('lossLabels'), lossVals = glob('lossVals');
 
+/* ===================== 1b. Số bổ sung (12/11/2026): mức kéo dài, nước về từng hồ, kinh tế đơn vị, facts cho bộ quy tắc ===================== */
+const PI = window.PowerInsights || null;
+const FUEL = window.POWER_FUEL_PARAMS || {};
+const fxM = typeof window.POWER_FX_MONTHLY === 'function' ? window.POWER_FX_MONTHLY() : new Map();
+// Số tháng liên tiếp gần nhất (tối đa 3, tính từ tháng base) có tăng trưởng cùng dấu; dừng ở tháng thiếu số.
+const sameSign3 = (fn, base = M) => { if (!base) return null; let n = 0, sign = 0; for (let k = 0; k < 3; k++) { const v = fn(addMonths(base, -k)); if (!fin(v) || v === 0) break; const s = Math.sign(v); if (k === 0) sign = s; if (s !== sign) break; n++; } return n; };
+const yoyOf = (m, key) => { const c = monthCmp.get(m); return c?.ok ? (key ? c.get(key)?.yoy : c.yoy) : null; };
+const fmpYoYOf = m => { const a = fmp.find(r => r.period === m), b = fmp.find(r => r.period === back(m + '-01').slice(0, 7)); return a && b ? (a.fmp / b.fmp - 1) * 100 : null; };
+// So cùng kỳ theo quý (cùng ngày đối chiếu) để đặt cạnh BCTC quý của doanh nghiệp.
+const quarterCmp = q => { const m = /^Q(\d)\/(\d{4})$/.exec(q || ''); if (!m) return null; const a = `${m[2]}-${String(m[1] * 3 - 2).padStart(2, '0')}`, b = `${m[2]}-${String(m[1] * 3).padStart(2, '0')}`; return compare(datesOf(a + '-01', b + '-' + dim(b))); };
+// Nước về từng hồ: lệch so TB 5 năm của tháng hợp lệ gần nhất và so cùng kỳ đúng ngày (HYDRO_RESERVOIRS.yoy).
+const resWater = (() => {
+  const out = new Map(); if (!H?.monthly?.length) return out;
+  const by = new Map(); H.monthly.forEach(r => { if (!by.has(r.reservoir)) by.set(r.reservoir, new Map()); by.get(r.reservoir).set(r.month, r); });
+  const ok = r => r && r.inflow != null && r.days / r.expected >= .8 && r.inflow_n / r.expected >= .8;
+  by.forEach((m, name) => {
+    const months2 = [...m.keys()].sort().reverse();
+    for (const mo of months2) { const c = m.get(mo); if (!ok(c)) continue; const y = +mo.slice(0, 4), mm = mo.slice(5), b = [];
+      for (let k = y - 5; k < y; k++) { const x = m.get(k + '-' + mm); if (ok(x)) b.push(x.inflow); }
+      const a = mean(b); if (b.length >= 3 && a > 0) { out.set(name, {dev5: (c.inflow / a - 1) * 100, month: mo}); break; } }
+  });
+  (H.yoy?.rows || []).filter(r => r.month === H.yoy.month).forEach(r => { const o = out.get(r.reservoir) || {}; out.set(r.reservoir, {...o, yoy: r.yoy, from: r.from, to: r.to}); });
+  return out;
+})();
+// Kinh tế đơn vị: tháng gần nhất có đủ FMP, giá than/LNG World Bank và tỷ giá cùng tháng (đồng kỳ).
+const unitM = (() => { const wb = new Map(rec('wb_energy_monthly').map(r => [r.date.slice(0, 7), r]));
+  for (const r of [...fmp].reverse()) { const w = wb.get(r.period), x = fxM.get(r.period); if (w && x && fin(w.coal_au) && fin(w.lng_japan)) return {period: r.period, fmp: r.fmp, coalUsd: w.coal_au, lngUsd: w.lng_japan, fx: x.v, fxSrc: x.src}; }
+  return null; })();
+// Gọi lúc build (sau khi G, thermal ở mục 4 đã khai báo).
+const makeFacts = () => ({
+  today: new Date().toISOString().slice(0, 10), mLabel: M ? ml(M) : '—', fmpLabel: fmpLast ? ml(fmpLast.period) : '—', fuelParams: FUEL,
+  dates: {daily: lastDay, month: M, fmp: fmpLast?.period, fuel: coal3?.date, oni: oniLast?.date, reservoir: H?.last_observation},
+  demand: {yoy: CMP.m?.ok ? CMP.m.yoy : null, ytd: CMP.ytd?.ok ? CMP.ytd.yoy : null, energyYtd: CMP.ytd?.ok ? CMP.ytd.yoy : null, accelNow: accel?.now, accelBefore: accel?.before,
+    sameSign3: sameSign3(m => yoyOf(m)), pmax: pmaxYtd?.cur.pmax, pmaxDate: pmaxYtd ? dm(pmaxYtd.cur.date) : null, pmaxYoY: pmaxYtd?.yoy},
+  hydro: {yoy: G('hydro')?.yoy, ytd: G('hydro', 'ytd')?.yoy, sameSign3: sameSign3(m => yoyOf(m, 'hydro')), waterYoY: resYoY?.med, waterSpan: resYoY?.span, water5y: reservoir5y?.med,
+    water5yMonth: reservoir5y?.month, oni: oniLast?.oni, oniSeason: oniLast ? oniLast.season + ' ' + oniLast.year : ''},
+  dispatch: (() => { const t = thermal('ytd'), h = G('hydro', 'ytd'); return {thermalDpp: t ? t.coal.dpp + t.gas.dpp : null, hydroDpp: h?.dpp, thermalSameSign3: sameSign3(m => { const c = monthCmp.get(m); if (!c?.ok) return null; const a = c.get('coal'), b = c.get('gas'); return (a.cur + b.cur) / (a.prev + b.prev) * 100 - 100; }),
+    coalYoY: G('coal')?.yoy, gasYoY: G('gas')?.yoy, reYoY: G('re')?.yoy}; })(),
+  price: {fmp: fmpLast?.fmp, fmpYoY: fmpLast && fmpLy ? (fmpLast.fmp / fmpLy.fmp - 1) * 100 : null, fmpMoM: fmpLast && fmpPrev ? (fmpLast.fmp / fmpPrev.fmp - 1) * 100 : null,
+    fmpSameSign3: fmpLast ? sameSign3(fmpYoYOf, fmpLast.period) : null, coal3: coal3?.pct, jkm3: jkm3?.pct, hh3: hh3?.pct}
+});
+
 /* ===================== 2. Khung giao diện ===================== */
 const LV = {A: ['Quan sát', 'Tính trực tiếp từ dữ liệu'], B: ['Diễn giải', 'Diễn giải có bằng chứng hỗ trợ, chưa phải sự thật đã xác minh'], C: ['Hàm ý có điều kiện', 'Chỉ đúng khi các điều kiện nêu kèm thỏa']};
 const tag = l => `<span class="pp-lv pp-lv-${l}" title="${esc(LV[l][1])}">${l} · ${LV[l][0]}</span>`;
@@ -290,6 +332,238 @@ function hydroEconCard() {
   return c;
 }
 
+/* ===================== 3b. Khung 3 lớp và card phân tích (12/11/2026) ===================== */
+// Trạng thái dữ liệu, tách khỏi mức kết luận A/B/C.
+const STN = {Verified: 'Đã xác minh', Estimated: 'Ước tính', Scenario: 'Kịch bản', Insufficient: 'Thiếu dữ liệu', Stale: 'Dữ liệu cũ'};
+const STT = {Verified: 'Số từ nguồn công bố hoặc tính trực tiếp từ nguồn đó', Estimated: 'Ước tính từ giả định nêu kèm (suất hao nhiệt, tỷ giá…)', Scenario: 'Kịch bản, không phải số thực tế', Insufficient: 'Chưa đủ dữ liệu để kết luận', Stale: 'Dữ liệu đã cũ so với tần suất công bố'};
+const chip = s => `<span class="pp-st pp-st-${s}" title="${esc(STT[s])}">${STN[s]}</span>`;
+const legend = () => el('details', 'pp-legend', `<summary>ⓘ Cách đọc nhãn</summary><div>${['A', 'B', 'C'].map(l => `${tag(l)} ${esc(LV[l][1])}`).join('<br>')}<br>${Object.keys(STN).map(k => `${chip(k)} ${esc(STT[k])}`).join('<br>')}<br><span class="muted">Màu trên KPI chỉ hướng tăng/giảm của chỉ tiêu, không phải tốt hay xấu cho cổ phiếu: cùng một biến (sản lượng, giá nhiên liệu, FMP) có tác động ngược nhau giữa các nhóm nguồn.</span></div>`);
+// Kết luận chính của sub-tab: trả lời câu hỏi trung tâm, sinh theo quy tắc.
+const take = (text, lvl = 'B', st = 'Verified') => el('div', 'pp-take', `<span class="pp-take-k">Kết luận chính</span><p>${tag(lvl)} ${chip(st)} ${text}</p>`);
+const metric = (label, value, sub) => `<span class="pp-m"><b>${value}</b><small>${esc(label)}${sub ? ' · ' + esc(sub) : ''}</small></span>`;
+// Panel 3 lớp: (1) câu hỏi · kết luận ≤2 câu · 2–3 chỉ tiêu · ý nghĩa  (2) chart chính + tối đa 1 chart phụ  (3) Khám phá dữ liệu · Nghiên cứu sâu (thu gọn).
+function qpanel(o) {
+  const p = el('section', 'pp-panel pp-q'); p.id = 'pp-' + o.id;
+  p.innerHTML = `<header class="pp-ph"><span class="pp-num">${esc(o.num)}</span><div><h3>${esc(o.q)}</h3>` +
+    `<p class="pp-concl">${tag(o.lv || 'B')} ${chip(o.st || 'Verified')} ${o.concl || '<span class="muted">Chưa đủ dữ liệu để kết luận.</span>'}</p>` +
+    (o.metrics?.length ? `<div class="pp-metrics">${o.metrics.filter(Boolean).map(m => metric(...m)).join('')}</div>` : '') +
+    (o.impl ? `<p class="pp-impl"><b>Ý nghĩa:</b> ${o.impl}</p>` : '') + `</div></header>`;
+  [].concat(o.main || []).filter(Boolean).forEach(n => { const w = el('div', 'pp-main'); w.append(n); p.append(w); });
+  if (o.support) { const w = el('div', 'pp-sup1'); w.append(o.support); p.append(w); }
+  [].concat(o.body || []).filter(Boolean).forEach(n => p.append(n));
+  const ex = [].concat(o.explore || []).filter(Boolean);
+  if (ex.length) { const d = el('details', 'research-fold pp-drill pp-explore'); d.append(el('summary', '', `Khám phá dữ liệu · ${ex.length} mục`)); const g = el('div', 'pp-drill-body'); ex.forEach(n => g.append(n)); d.append(g); d.addEventListener('toggle', () => d.open && refit(d)); p.append(d); }
+  if (o.deep) {
+    const d = el('details', 'pp-deep');
+    d.innerHTML = `<summary>Nghiên cứu sâu · cơ chế, điều làm đổi nhận định, phương pháp, giới hạn</summary><dl>${[['Kênh truyền dẫn', o.deep.mech], ['Hàm ý đầu tư (có điều kiện)', o.deep.impl], ['Điều làm thay đổi nhận định', o.deep.change], ['Phương pháp & nguồn', o.deep.method], ['Giới hạn', o.deep.limits]].filter(x => x[1]).map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>`;
+    [].concat(o.deep.nodes || []).filter(Boolean).forEach(n => d.append(n));
+    d.addEventListener('toggle', () => d.open && refit(d));
+    p.append(d);
+  }
+  return p;
+}
+const tableCard = (id, head, rows, opts = {}) => { const c = el('div', 'card pp-tcard'); if (id) c.dataset.blockId = id; c.innerHTML = `${opts.title ? `<div class="chart-title">${esc(opts.title)}</div>` : ''}${opts.sub ? `<div class="chart-sub">${opts.sub}</div>` : ''}<div class="tablewrap"><table><thead><tr>${head.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map(x => `<td>${x ?? '—'}</td>`).join('')}</tr>`).join('')}</tbody></table></div>${opts.note ? `<p class="source-note">${opts.note}</p>` : ''}`; return c; };
+const ul = items => `<ul class="pp-ul">${items.filter(Boolean).map(x => `<li>${x}</li>`).join('')}</ul>`;
+const dirTxt = (v, d = 1) => !fin(v) ? '—' : `${v > 0 ? '▲' : v < 0 ? '▼' : '■'} ${pc(v, d)}`;
+
+// 1.3 Bảng áp lực nhu cầu: 5 chỉ báo, không gộp thành điểm.
+function demandPressureCard() {
+  const lfLast = [...months].reverse().find(m => m.m <= M && m.lf != null), lfLy = lfLast && monthBy.get(back(lfLast.m + '-01').slice(0, 7));
+  const gap = fin(pmaxYtd?.yoy) && CMP.ytd?.ok ? pmaxYtd.yoy - CMP.ytd.yoy : null;
+  return tableCard('dien-pp-demand-pressure', ['Chỉ báo', 'Giá trị', 'Kỳ', 'So với', 'Cách đọc'], [
+    ['Tăng trưởng điện năng', dirTxt(CMP.m?.ok ? CMP.m.yoy : null), M ? ml(M) : '—', 'cùng tháng năm trước, cùng ngày đối chiếu', 'Áp lực đáp ứng tổng điện năng (nhiên liệu, nước)'],
+    ['Động lượng 3 tháng', accel ? `${pc(accel.now)} so ${pc(accel.before)}` : '—', M ? `${ms(addMonths(M, -2))}–${ms(M)}` : '—', '3 tháng liền trước', 'Tăng tốc khi chênh > +1 đ.p., giảm tốc khi < −1 đ.p.'],
+    ['Tăng trưởng phụ tải đỉnh (Pmax)', dirTxt(pmaxYtd?.yoy), pmaxYtd ? 'đỉnh từ đầu năm ' + dm(pmaxYtd.cur.date) : '—', 'đỉnh cùng khoảng năm trước', 'Áp lực công suất giờ cao điểm'],
+    ['Hệ số phụ tải', lfLast ? nf(lfLast.lf, 1) + '%' : '—', lfLast ? ml(lfLast.m) : '—', lfLy?.lf != null ? `cùng kỳ ${nf(lfLy.lf, 1)}% (${pp(lfLast.lf - lfLy.lf)})` : '—', 'Giảm khi đỉnh tăng nhanh hơn điện năng bình quân'],
+    ['Chênh tăng trưởng đỉnh − điện năng', fin(gap) ? pp(gap) : '—', 'từ đầu năm', '—', 'Dương: đỉnh tăng nhanh hơn; âm: điện năng tăng nhanh hơn']
+  ], {title: 'Bảng áp lực nhu cầu', sub: 'năm chỉ báo đọc riêng, không gộp thành một thang điểm vì chưa có ngưỡng được kiểm định', note: `Nguồn: ${link(EVN_URL, 'EVN · bản tin vận hành ngày')}; tự tính.`});
+}
+// Đối chiếu lũy kế công bố (thẻ KPI tĩnh) với tổng bản tin ngày.
+function reconcileCard(tile) {
+  const lab = tile?.querySelector('.label')?.textContent || '', m = /(\d+)T\/(\d{4})/.exec(lab), val = parseFloat((tile?.querySelector('.value')?.textContent || '').replace(/\./g, '').replace(',', '.')), dl = /([\d,]+)%/.exec(tile?.querySelector('.delta')?.textContent || '');
+  if (!m) return null;
+  const y = m[2], end = `${y}-${String(m[1]).padStart(2, '0')}`, ds = datesOf(y + '-01-01', end + '-' + dim(end));
+  const cur = ds.map(d => byDay.get(d)).filter(Boolean), sumOut = sum(cur.map(d => d.out)) / 1000, prevDs = datesOf((y - 1) + '-01-01', (y - 1) + end.slice(4) + '-' + dim((y - 1) + end.slice(4)));
+  const prev = prevDs.map(d => byDay.get(d)).filter(Boolean), naive = prev.length ? (sum(cur.map(d => d.out)) / sum(prev.map(d => d.out)) - 1) * 100 : null, same = compare(ds);
+  const offYoY = dl ? parseFloat(dl[1].replace(',', '.')) : null;
+  return tableCard('dien-pp-demand-reconcile', ['Cách đo', 'Sản lượng (tỷ kWh)', 'Tăng trưởng', 'Số ngày', 'Ghi chú'], [
+    [`EVN công bố lũy kế ${m[1]}T/${y}`, nf(val, 1), fin(offYoY) ? '+' + nf(offYoY, 1) + '%' : '—', '—', 'Số chính thức (thẻ KPI, nguồn ghi ở thẻ)'],
+    ['Cộng bản tin vận hành ngày', nf(sumOut, 1), pc(naive), `${cur.length}/${ds.length}`, 'So tổng các ngày có bản tin hai năm (số ngày có thể khác nhau)'],
+    ['Cộng bản tin, cùng ngày đối chiếu', nf(same.curT / 1000, 1), pc(same.yoy), `${same.n}/${same.total}`, 'Chỉ các ngày có bản tin đủ nguồn ở cả hai năm (cách tính dùng trên tab này)']
+  ], {title: 'Đối chiếu số lũy kế công bố với tổng bản tin ngày', note: 'Chênh lệch đến từ ngày thiếu bản tin, số ngày ước tính trong bản tin và việc EVN hiệu chỉnh số năm trước khi công bố lũy kế; hai cách đo không thay thế nhau. KPI và nhận định tự động trên tab dùng cách thứ ba.'});
+}
+// 2.3 Phơi nhiễm thủy văn theo doanh nghiệp (thay bảng ánh xạ hồ cũ, giữ block-id).
+function hydroExposure(card) {
+  const A = window.POWER_HYDRO_ASSETS, rows = A?.rows || [], basins = A?.basins || {};
+  const region = Object.fromEntries((H?.monthly || []).map(r => [r.reservoir, r.region]));
+  const wcell = name => { const w = resWater.get(name); if (!w) return '<span class="muted">—</span>'; return `${w.yoy != null ? `<span class="${w.yoy < 0 ? 'dn' : 'up'}">${pc(w.yoy, 0)}</span> cùng kỳ` : 'cùng kỳ: —'}<br><small>${w.dev5 != null ? `${pc(w.dev5, 0)} so TB 5 năm (${ms(w.month)})` : ''}</small>`; };
+  // Gom hồ theo nhà máy (Vĩnh Sơn A/B/C → một nhà máy 66 MW).
+  const plants = new Map(); rows.forEach(r => { const k = r.plant || r.reservoir; const p = plants.get(k) || {plant: k, mw: r.plant_mw, res: [], holders: r.holders || [], status: r.status, owner: r.owner, sources: r.sources || []}; p.res.push(r.reservoir); plants.set(k, p); });
+  const conf = s => s === 'Đã xác minh' ? chip('Verified') : `<span class="pp-st pp-st-Estimated" title="Nguồn nêu đơn vị quản lý nhưng liên kết hồ ↔ nhà máy hoặc niêm yết của đơn vị mẹ chưa đủ chắc">Xác minh một phần</span>`;
+  const tickers = [...new Set([...plants.values()].flatMap(p => p.holders.map(h => h.ticker)))];
+  const order = ['VSH', 'REE', 'TMP', 'SBH', 'TBC', 'AVC', 'DNH', 'PGV', 'GE2', ...tickers];
+  const comp = [...new Set(order)].filter(t => tickers.includes(t)).map(t => {
+    const ps = [...plants.values()].filter(p => p.holders.some(h => h.ticker === t)).map(p => ({...p, h: p.holders.find(h => h.ticker === t)}));
+    const known = ps.filter(p => fin(p.mw)), econ = known.filter(p => fin(p.h.share)), missing = ps.length - econ.length;
+    const nominal = sum(known.filter(p => p.h.share === 1).map(p => p.mw)), economic = sum(econ.map(p => p.mw * p.h.share));
+    const bs = {}; econ.forEach(p => p.res.forEach(r => { const b = basins[r]; if (b) bs[b] = (bs[b] || 0) + p.mw * p.h.share / p.res.length; }));
+    const top = Object.entries(bs).sort((a, b) => b[1] - a[1]), totB = sum(top.map(x => x[1]));
+    const yoys = ps.flatMap(p => p.res.map(r => resWater.get(r)?.yoy)).filter(fin);
+    return [`<b>${t}</b>`, ps.map(p => `${esc(p.plant)}${p.h.share === 1 ? '' : ` <small class="muted">(${fin(p.h.share) ? nf(p.h.share * 100, 1) + '%' : 'tỷ lệ chưa xác minh'})</small>`}`).join('<br>'),
+      top.length ? top.map(([b, v]) => `${esc(b)} ${nf(v / totB * 100, 0)}%`).join('<br>') : '—',
+      nominal ? nf(nominal, 0) : '—', `${economic ? nf(economic, 1) : '—'}${missing ? `<br><small class="muted">chưa gồm ${missing} nhà máy thiếu MW hoặc tỷ lệ</small>` : ''}`,
+      yoys.length ? `trung vị ${pc(median(yoys), 0)} cùng kỳ (${yoys.length} hồ)` : (d5 => d5.length ? `trung vị ${pc(median(d5), 0)} so TB 5 năm <small class="muted">(chưa có số cùng kỳ)</small>` : '<span class="muted">chưa có số</span>')(ps.flatMap(p => p.res.map(r => resWater.get(r)?.dev5)).filter(fin)), ps.every(p => p.status === 'Đã xác minh') ? chip('Verified') : conf('partial')];
+  });
+  ['CHP', 'SHP', 'SBA', 'HDG'].filter(t => !tickers.includes(t)).forEach(t => comp.push([`<b>${t}</b>`, '<span class="muted">Không có hồ trong danh sách hồ EVN; chưa xác minh vị trí, công suất từng nhà máy</span>', '—', '—', '—', '<span class="muted">không quan sát được</span>', chip('Insufficient')]));
+  const plantRows = [...plants.values()].sort((a, b) => (region[a.res[0]] || '').localeCompare(region[b.res[0]] || '', 'vi')).map(p => [esc(p.plant) + (p.res.length > 1 || p.res[0] !== p.plant ? `<br><small class="muted">hồ: ${p.res.map(esc).join(', ')}</small>` : ''), esc(basins[p.res[0]] || '—'), fin(p.mw) ? nf(p.mw, 0) : '—',
+    esc(p.owner || '') + (p.holders.length ? `<br><small>${p.holders.map(h => `${esc(h.ticker)} ${fin(h.share) ? nf(h.share * 100, 2) + '%' : 'tỷ lệ chưa xác minh'}`).join(' · ')}</small>` : ''), p.res.map(wcell).join('<hr class="pp-hr">'), conf(p.status),
+    p.sources.slice(0, 3).map((s, i) => `<a href="${esc(s.url)}" target="_blank" rel="noopener" title="${esc(s.quote || '')}">[${i + 1}]</a>`).join(' ')]);
+  const unver = (H?.monthly ? [...new Set(H.monthly.map(r => r.reservoir))] : []).filter(n => !rows.some(r => r.reservoir === n));
+  card.innerHTML = `<div class="chart-title">Phơi nhiễm thủy văn theo doanh nghiệp niêm yết</div><div class="chart-sub">công suất danh nghĩa (doanh nghiệp sở hữu nhà máy) tách khỏi công suất sở hữu kinh tế (MW × tỷ lệ sở hữu) · nước về tại hồ cấp nước cho nhà máy</div>
+    <div class="tablewrap"><table><thead><tr><th>Doanh nghiệp</th><th>Nhà máy (tỷ lệ nếu gián tiếp)</th><th>Lưu vực (tỷ trọng MW kinh tế)</th><th>MW danh nghĩa</th><th>MW sở hữu kinh tế</th><th>Điều kiện nước</th><th>Độ tin cậy</th></tr></thead><tbody>${comp.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+    <details class="dtable"><summary>Chi tiết từng nhà máy (${plants.size}) · nguồn từng dòng</summary><div class="tablewrap"><table><thead><tr><th>Nhà máy</th><th>Lưu vực</th><th>MW</th><th>Sở hữu</th><th>Nước về</th><th>Độ tin cậy</th><th>Nguồn</th></tr></thead><tbody>${plantRows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div></details>
+    <p class="source-note">${esc(A?.basin_note || '')} ${esc(A?.holders_note || '')} ${unver.length} hồ EVN chưa xác minh chủ sở hữu (chủ yếu nhà máy lớn của EVN và các tổng công ty phát điện): ${unver.map(esc).join(', ')}. Không quy đổi % nước về thành % EBITDA; nước về một hồ không đại diện cho mọi nhà máy cùng khu vực.</p>`;
+}
+// 3.2 Vì sao nguồn được huy động: các động lực quan sát được và chưa quan sát được.
+function driversCard() {
+  const y = CMP.ytd, h = y?.ok ? y.get('hydro') : null, c = y?.ok ? y.get('coal') : null, g = y?.ok ? y.get('gas') : null;
+  return tableCard('dien-pp-dispatch-drivers', ['Động lực', 'Quan sát trên trang', 'Kỳ', 'Trạng thái'], [
+    ['Nhu cầu', y?.ok ? `điện năng ${sg(y.delta, 0)} triệu kWh (${pc(y.yoy)})` : '—', PERIODS.ytd?.name || '—', chip(y?.ok ? 'Verified' : 'Insufficient')],
+    ['Thủy văn', h ? `thủy điện ${sg(h.delta, 0)} triệu kWh (${pc(h.yoy)}); nước về ${pc(resYoY?.med, 0)} cùng kỳ (${resYoY?.span || '—'})` : '—', PERIODS.ytd?.name || '—', chip(h ? 'Verified' : 'Insufficient')],
+    ['Nguồn bù', c && g ? `than ${sg(c.delta, 0)}, khí & dầu ${sg(g.delta, 0)} triệu kWh` : '—', PERIODS.ytd?.name || '—', chip(c ? 'Verified' : 'Insufficient')],
+    ['Giá nhiên liệu', `Newcastle ${pc(coal3?.pct)}, JKM ${pc(jkm3?.pct)} (3 tháng)`, coal3 ? 'đến ' + dm(coal3.date) : '—', chip('Verified')],
+    ['Giá chào, thứ tự huy động', 'Chưa có dữ liệu chào giá theo nhà máy', '—', chip('Insufficient')],
+    ['Ràng buộc kỹ thuật, truyền tải', 'Chưa có dữ liệu bảo dưỡng, sự cố, nghẽn lưới', '—', chip('Insufficient')],
+    ['Hợp đồng, cơ chế điều độ', 'Chưa có Qc và lịch huy động theo hợp đồng của từng nhà máy', '—', chip('Insufficient')]
+  ], {title: 'Động lực huy động', sub: 'chỉ ghi động lực có số trên trang; phần còn lại để trạng thái thiếu dữ liệu'});
+}
+// 3.3 Từ huy động tới lợi nhuận: hệ thống (EVN) đặt cạnh BCTC quý cùng kỳ của doanh nghiệp.
+const SEG = [['Thủy điện', 'hydro', ['REE', 'VSH', 'CHP', 'SBA', 'TMP', 'SHP']], ['Nhiệt điện than & khí', 'thermal', ['POW', 'NT2', 'PPC', 'QTP', 'HND', 'BTP']], ['Gió & mặt trời', 're', ['GEG', 'HDG', 'TTA']]];
+function listedCard() {
+  const Q = window.COMPANY_QUARTERLY; if (!Q?.companies) return gap('chưa nạp được BCTC quý doanh nghiệp.');
+  const by = Object.fromEntries(Q.companies.filter(c => c.sector === 'power').map(c => [c.symbol, c])), qs = Q.quarters || [];
+  const lastIdx = a => { for (let i = (a || []).length - 1; i >= 0; i--) if (a[i] != null) return i; return -1; };
+  const rows = [], qset = new Set();
+  SEG.forEach(([seg, k, codes]) => codes.forEach((t, j) => {
+    const c = by[t]; if (!c) return; const i = lastIdx(c.revenue); if (i < 4) return; const q = qs[i]; qset.add(q);
+    const qc = quarterCmp(q), sys = qc?.ok ? (k === 'thermal' ? (() => { const a = qc.get('coal'), b = qc.get('gas'); return (a.cur + b.cur) / (a.prev + b.prev) * 100 - 100; })() : qc.get(k)?.yoy) : null;
+    const rv = c.revenue[i] && c.revenue[i - 4] ? (c.revenue[i] / c.revenue[i - 4] - 1) * 100 : null, gm = fin(c.gross_margin?.[i]) && fin(c.gross_margin?.[i - 4]) ? c.gross_margin[i] - c.gross_margin[i - 4] : null;
+    const ni0 = c.net_income?.[i - 4], ni = c.net_income?.[i], niY = fin(ni) && fin(ni0) && ni0 > 0 ? (ni / ni0 - 1) * 100 : null;
+    const read = [fin(sys) ? (sys > 0 ? 'huy động nhóm tăng' : 'huy động nhóm giảm') : null, fin(rv) ? (rv > 0 ? 'doanh thu tăng' : 'doanh thu giảm') : null, fin(gm) ? (gm > 0 ? 'biên gộp tăng' : 'biên gộp giảm') : null, fin(niY) ? (niY > 0 ? 'LNST tăng' : 'LNST giảm') : fin(ni) && fin(ni0) ? 'LNST đổi dấu' : null].filter(Boolean).join(', ');
+    rows.push([j ? '' : `<b>${seg}</b>`, j ? '' : `${dirTxt(sys)} <small class="muted">${q}</small>`, `<b>${t}</b>`, dirTxt(rv), fin(gm) ? `${nf(c.gross_margin[i], 1)}% (${pp(gm)})` : '—', fin(niY) ? dirTxt(niY) : fin(ni) && fin(ni0) ? `${nf(ni0, 0)} → ${nf(ni, 0)} tỷ` : '—', read]);
+  }));
+  return tableCard('dien-pp-listed', ['Nhóm', 'Huy động hệ thống (EVN)', 'Mã', 'Doanh thu YoY', 'Biên gộp (Δ YoY)', 'LNST YoY', 'Đọc'], rows,
+    {title: 'Huy động ≠ doanh thu ≠ biên ≠ lợi nhuận', sub: `bốn kết luận khác nhau, đặt cạnh nhau cùng quý (${[...qset].join(', ')}) · huy động hệ thống so cùng kỳ trên cùng ngày đối chiếu`, note: `BCTC: ${esc(Q.source || 'VNDirect')} · đơn vị ${esc(Q.unit || 'tỷ đồng')}. Doanh nghiệp có nhiều mảng (REE, HDG…) nên doanh thu không chỉ từ phát điện; số hợp nhất, không tách theo nhà máy.`});
+}
+const checklistCard = () => tableCard('dien-pp-fin-checklist', ['Cần kiểm', 'Vì sao', 'Có trên trang?'], [
+  ['Giá thực nhận', 'FMP chỉ áp cho phần ngoài Qc; phần Qc theo giá hợp đồng', chip('Insufficient')],
+  ['Chi phí nhiên liệu', 'Quyết định spread của nhiệt điện; than nội và nhập khác nhau', chip('Estimated') + ' benchmark (04)'],
+  ['Qc', 'Qc cao thì lợi ích từ FMP nhỏ, rủi ro giá thị trường nhỏ', chip('Insufficient')],
+  ['Biên năng lượng', 'Giá thực nhận − chi phí biến đổi', chip('Estimated') + ' minh họa (04)'],
+  ['Khấu hao, chi phí cố định', 'Sản lượng cao hơn trải chi phí cố định trên nhiều kWh hơn', chip('Insufficient')],
+  ['Khả năng cung ứng nhiên liệu', 'Thiếu khí, than làm giới hạn huy động dù được gọi', chip('Insufficient')],
+  ['Nhà máy mới hay cũ', 'Nhà máy mới khấu hao lớn, lãi vay cao; nhà máy cũ biên khác', chip('Insufficient')]
+], {title: 'Checklist truyền dẫn tài chính', sub: 'khi một nhóm nguồn tăng huy động; chưa đủ đầu vào thì không định lượng tác động lợi nhuận'});
+// 4.1 Hệ thống giá: định nghĩa và trạng thái dữ liệu.
+const priceDefsCard = () => tableCard('dien-pp-price-defs', ['Loại giá', 'Là gì', 'Không phải', 'Trên trang'], [
+  ['FMP', 'Giá thị trường toàn phần theo chu kỳ giao dịch (SMP + CAN), bình quân tháng', 'Giá bán thực nhận của nhà máy', fmpLast ? `${chip('Verified')} đến ${ml(fmpLast.period)}` : chip('Insufficient')],
+  ['SMP', 'Giá điện năng thị trường', 'FMP − CAN tháng (không suy ngược từ CAN năm)', chip('Insufficient')],
+  ['CAN', 'Giá công suất thị trường, bình quân năm', 'Giá từng tháng', chip('Verified') + ' theo năm'],
+  ['Giá PPA', 'Giá trong hợp đồng mua bán điện từng nhà máy (cố định + biến đổi)', 'Giá trần khung giá phát điện', chip('Insufficient')],
+  ['Giá thực nhận', 'Doanh thu điện ÷ sản lượng bán của nhà máy', 'FMP', chip('Insufficient')],
+  ['Giá nhiên liệu', 'Benchmark quốc tế (World Bank, ICE) và mốc khung giá trong nước', 'Giá nhiên liệu theo hợp đồng của nhà máy', chip('Verified') + ' benchmark']
+], {title: 'Hệ thống giá điện: đọc đúng từng loại'});
+// 4.2 Kinh tế đơn vị theo công nghệ (minh họa).
+function unitEconCard() {
+  const P = FUEL, u = unitM;
+  if (!u || !fin(P.HR_COAL)) return gap('thiếu FMP, giá nhiên liệu hoặc tỷ giá cùng tháng để tính chi phí nhiên liệu/kWh.');
+  const PI2 = window.PowerInsights || {}, ci = PI2.coalCost?.(u.coalUsd, u.fx, P.HR_COAL, P.HHV_NC), cd = PI2.coalCostVnd?.(P.COAL_DOM, P.HR_COAL, P.HHV_DOM), gd = PI2.gasCost?.(P.GAS_USD, P.FEE_USD, P.HR_GAS, P.FX_QD), lg = PI2.gasCost?.(u.lngUsd, P.FEE_USD, P.HR_GAS, u.fx);
+  const ref = `FMP ${ml(u.period)}: ${nf(u.fmp, 0)}`, row = (tech, fuel, basis, st, note) => [tech, ref, fin(fuel) ? nf(fuel, 0) : fuel, fin(fuel) ? `≥ ${nf(fuel, 0)}` : '—', fin(fuel) ? `<b class="${u.fmp - fuel >= 0 ? 'up' : 'dn'}">${sg(u.fmp - fuel, 0)}</b>` : '—', basis + (note ? `<br><small class="muted">${note}</small>` : ''), chip(st)];
+  return tableCard('dien-pp-unit-econ', ['Công nghệ', 'Giá điện tham chiếu (đ/kWh)', 'Nhiên liệu (đ/kWh)', 'Chi phí biến đổi (đ/kWh)', 'Spread minh họa', 'Cơ sở số liệu', 'Trạng thái'], [
+    row('Than nhập khẩu', ci, `đồng kỳ ${ml(u.period)}: than Úc WB ${nf(u.coalUsd, 1)} USD/t × tỷ giá ${nf(u.fx, 0)} (${u.fxSrc}) × ${nf(P.HR_COAL, 1)} kcal/kWh ÷ ${nf(P.HHV_NC, 0)} kcal/kg`, 'Estimated', 'nhiệt trị cơ sở chỉ số Newcastle (NAR); giá về nhà máy còn cước, phí'),
+    row('Than nội địa', cd, `mốc giá than khung giá 2026 ${nf(P.COAL_DOM, 0)} đ/t, ${nf(P.HHV_DOM, 2)} kcal/kg`, 'Estimated', `phi đồng kỳ: mốc năm 2026 đặt cạnh FMP ${ml(u.period)}`),
+    row('Điện khí nội địa', gd, `mốc khí khung giá 2026 ${nf(P.GAS_USD, 2)} + ${nf(P.FEE_USD, 2)} USD/MMBtu × ${nf(P.HR_GAS, 2)} BTU/kWh × ${nf(P.FX_QD, 0)}`, 'Estimated', `phi đồng kỳ: mốc năm 2026 và tỷ giá trong quyết định; khí mỏ theo hợp đồng bao tiêu`),
+    row('LNG', lg, `đồng kỳ ${ml(u.period)}: LNG Nhật WB ${nf(u.lngUsd, 2)} + ${nf(P.FEE_USD, 2)} USD/MMBtu × ${nf(P.HR_GAS, 2)} BTU/kWh × tỷ giá ${nf(u.fx, 0)}`, 'Estimated', 'giá LNG nhập Nhật là proxy, không phải giá hợp đồng của Nhơn Trạch 3 & 4'),
+    ['Thủy điện', ref, '0', '<span class="muted">thuế tài nguyên nước, phí dịch vụ môi trường rừng: chưa có số</span>', '—', 'Không tốn nhiên liệu; lợi nhuận theo sản lượng × giá thực nhận', chip('Insufficient')],
+    ['Gió, mặt trời', '<span class="muted">không bán theo FMP (FIT/hợp đồng)</span>', '0', '—', '—', 'Giá cố định theo hợp đồng; lợi nhuận theo sản lượng thực phát, cắt giảm', chip('Insufficient')]
+  ], {title: 'Kinh tế đơn vị theo công nghệ (minh họa)', sub: 'Spread năng lượng = giá điện tham chiếu − chi phí biến đổi ước tính · đ/kWh · không phải biên gộp, EBITDA hay lợi nhuận doanh nghiệp',
+    note: 'Chi phí biến đổi mới tính phần nhiên liệu (chưa gồm vận hành biến đổi, vận chuyển), nên là cận dưới. Tham số suất hao nhiệt, nhiệt trị, mốc giá than/khí theo khung giá phát điện 2026 (QĐ 1692, 1882; nguồn ở card spread). Chuyển đổi: 1 MMBtu = 10⁶ BTU; than: USD/t × tỷ giá ÷ 1.000 = đ/kg; × kcal/kWh ÷ kcal/kg = kg/kWh.'});
+}
+// 4.3 Máy tính kịch bản.
+function calcCard() {
+  const P = FUEL, u = unitM, c = el('div', 'card pp-calc'); c.dataset.blockId = 'dien-pp-calc';
+  const presets = {coal: {label: 'Than nhập khẩu', fuel: u?.coalUsd, unit: 'USD/tấn', hr: P.HR_COAL, hru: 'kcal/kWh', hhv: P.HHV_NC, fee: 0}, lng: {label: 'LNG', fuel: u?.lngUsd, unit: 'USD/MMBtu', hr: P.HR_GAS, hru: 'BTU/kWh', fee: P.FEE_USD}, gas: {label: 'Khí nội địa', fuel: P.GAS_USD, unit: 'USD/MMBtu', hr: P.HR_GAS, hru: 'BTU/kWh', fee: P.FEE_USD}};
+  const base = k => ({...presets[k], fmp: u?.fmp, fx: k === 'gas' ? P.FX_QD : u?.fx, market: 35});
+  let tech = 'coal';
+  const field = (k, label, v, step) => `<label>${label}<input type="number" step="${step}" data-k="${k}" value="${fin(v) ? Math.round(v * 100) / 100 : ''}"></label>`;
+  const draw = () => {
+    const b = base(tech);
+    c.innerHTML = `<div class="chart-title">Máy tính kịch bản: chi phí nhiên liệu và spread năng lượng</div><div class="chart-sub">${chip('Scenario')} giá trị mặc định lấy từ dữ liệu ${u ? ml(u.period) : '—'} và tham số khung giá 2026 · chỉnh ô để xem độ nhạy · không phải lợi nhuận của POW, NT2, PPC, QTP</div>
+      <div class="pp-ctl" role="group">${Object.entries(presets).map(([k, p]) => `<button type="button" data-t="${k}" aria-pressed="${k === tech}">${p.label}</button>`).join('')}</div>
+      <div class="pp-form">${field('fuel', `Giá nhiên liệu (${b.unit})`, b.fuel, 0.1)}${tech !== 'coal' ? field('fee', 'Phí tái hóa khí, vận chuyển (USD/MMBtu)', b.fee, 0.01) : field('hhv', 'Nhiệt trị than (kcal/kg)', b.hhv, 10)}${field('hr', `Suất hao nhiệt (${b.hru})`, b.hr, 1)}${field('fx', 'Tỷ giá (VND/USD)', b.fx, 10)}${field('fmp', 'Giá điện tham chiếu FMP (đ/kWh)', b.fmp, 1)}${field('market', 'Phần sản lượng ngoài hợp đồng (%)', b.market, 1)}</div>
+      <div class="pp-out"></div><p class="source-note">Công thức: than = giá × tỷ giá ÷ 1.000 × suất hao ÷ nhiệt trị; khí/LNG = (giá + phí) × suất hao ÷ 10⁶ × tỷ giá. Spread = FMP − chi phí nhiên liệu (chưa gồm chi phí biến đổi khác). "Phần ngoài hợp đồng" là giả định của người dùng (35% chỉ là giá trị gợi ý), không phải tỷ lệ Qc thực tế của nhà máy nào.</p>`;
+    const out = c.querySelector('.pp-out'), I = window.PowerInsights;
+    const calc = () => { const v = Object.fromEntries([...c.querySelectorAll('input')].map(x => [x.dataset.k, parseFloat(x.value)])); const r = I?.scenario({tech: tech === 'coal' ? 'coal' : 'gas', fuel: v.fuel, fee: v.fee, fx: v.fx, hr: v.hr, hhv: v.hhv, fmp: v.fmp, market: v.market});
+      const r0 = I?.scenario({tech: tech === 'coal' ? 'coal' : 'gas', fuel: b.fuel, fee: b.fee, fx: b.fx, hr: b.hr, hhv: b.hhv, fmp: b.fmp, market: b.market});
+      out.innerHTML = r ? `<div class="pp-metrics">${metric('Chi phí nhiên liệu', nf(r.cost, 0) + ' đ/kWh', fin(r0?.cost) ? 'mặc định ' + nf(r0.cost, 0) : '')}${metric('Spread năng lượng minh họa', `<span class="${r.spread >= 0 ? 'up' : 'dn'}">${sg(r.spread, 0)}</span> đ/kWh`, fin(r0?.spread) ? 'thay đổi ' + sg(r.spread - r0.spread, 0) : '')}${metric('Spread × phần ngoài hợp đồng', sg(r.marketSpread, 0) + ' đ/kWh phát', 'bình quân trên mỗi kWh')}</div>` : gap('nhập đủ các ô').outerHTML; };
+    c.querySelectorAll('input').forEach(x => x.addEventListener('input', calc));
+    c.querySelectorAll('[data-t]').forEach(x => x.addEventListener('click', () => { tech = x.dataset.t; draw(); }));
+    calc();
+  };
+  draw();
+  return c;
+}
+const qcFlowCard = () => { const c = el('div', 'card pp-flow'); c.dataset.blockId = 'dien-pp-qc-flow';
+  c.innerHTML = `<div class="chart-title">FMP tăng thì ai hưởng lợi, đến mức nào?</div><div class="pp-flow-row">${['FMP ↑', 'Sản lượng thực phát của nhà máy', 'Trừ phần Qc (thanh toán theo giá hợp đồng)', 'Phần ngoài Qc × (FMP − chi phí biến đổi)', 'Điều khoản PPA, chuyển ngang nhiên liệu', 'Biên năng lượng của nhà máy'].map((t, i) => `${i ? '<span class="pp-arrow" aria-hidden="true">→</span>' : ''}<div class="pp-flow-box">${t}</div>`).join('')}</div>
+    <p class="research-caption"><b>Không mặc định:</b> Qc là tỷ lệ cố định của sản lượng thực phát; giá PPA bất biến; giá nhiên liệu luôn được chuyển ngang toàn bộ; FMP cao nghĩa là biên lợi nhuận cao. Nhà máy có PPA đặc thù (BOT, LNG Qc dài hạn) theo cơ chế riêng.</p>
+    <p class="research-caption"><b>Khi nào FMP cao nhưng lợi nhuận vẫn thấp:</b> Qc chiếm phần lớn sản lượng; chi phí nhiên liệu tăng nhanh hơn FMP; nhà máy ít được huy động; chi phí cố định, lãi vay lớn. <b>Khi nào tăng sản lượng cải thiện hiệu quả:</b> chi phí cố định (khấu hao, lãi vay) trải trên nhiều kWh hơn khi biên năng lượng dương.</p>`; return c; };
+// 5.3 Luồng truyền dẫn tài chính EVN (có điều kiện).
+const evnFlowCard = () => { const c = el('div', 'card pp-flow'); c.dataset.blockId = 'dien-pp-evn-flow';
+  const steps = [['Giá bán lẻ và sản lượng tiêu thụ', tariffVals ? 'Verified' : 'Insufficient'], ['Doanh thu EVN', 'Insufficient'], ['Chi phí mua điện và vận hành hệ thống', 'Insufficient'], ['Khả năng tạo tiền', 'Insufficient'], ['Nghĩa vụ thanh toán tiền điện', 'Insufficient'], ['Phải thu và dòng tiền nhà máy', 'Insufficient']];
+  c.innerHTML = `<div class="pp-flow-row">${steps.map(([t, s], i) => `${i ? '<span class="pp-arrow" aria-hidden="true">→</span>' : ''}<div class="pp-flow-box">${t}<br>${chip(s)}</div>`).join('')}</div><p class="research-caption">Kênh truyền dẫn có điều kiện: EVN ghi nhận lỗ không đồng nghĩa chậm thanh toán; chỉ kết luận khi có số phải thu, tuổi nợ trực tiếp.</p>`; return c; };
+const paymentCard = () => tableCard('dien-pp-payment', ['Chỉ báo', 'Vì sao cần', 'Trạng thái'], [
+  ['Phải thu tiền bán điện (thuyết minh BCTC)', 'Tách khỏi phải thu khác', chip('Insufficient')], ['Số ngày phải thu', 'Đo tốc độ thu tiền', chip('Insufficient')], ['Tăng phải thu so tăng doanh thu', 'Phát hiện thu tiền chậm lại', chip('Insufficient')],
+  ['Công nợ quá hạn', 'Bằng chứng trực tiếp về chậm thanh toán', chip('Insufficient')], ['Dòng tiền hoạt động của doanh nghiệp phát điện', 'Tiền thực thu so lợi nhuận', chip('Insufficient')]
+], {title: 'Theo dõi rủi ro thanh toán', sub: '<b>Chưa có bằng chứng trực tiếp</b> (Insufficient Direct Evidence): BCTC quý trên trang chỉ có doanh thu, lãi gộp, LNST; không suy công nợ EVN từ tổng phải thu khi thiếu thuyết minh'});
+// 6.1 Bốn khái niệm công suất.
+function conceptsCard() {
+  const cap = capItems ? sum(capItems.map(x => x[1])) : null;
+  return tableCard('dien-pp-capacity-concepts', ['Khái niệm', 'Định nghĩa', 'Số trên trang', 'Trạng thái'], [
+    ['Công suất đặt (installed)', 'Tổng công suất danh định của nhà máy', fin(cap) ? `${nf(cap, 0)} MW (cuối 2025, EVN ước)` : '—', chip(fin(cap) ? 'Estimated' : 'Insufficient')],
+    ['Công suất khả dụng (available)', 'Phần phát được tại thời điểm (trừ bảo dưỡng, sự cố, thiếu nước/nhiên liệu)', '—', chip('Insufficient')],
+    ['Công suất tin cậy (reliable)', 'Phần có thể dựa vào lúc phụ tải đỉnh (NLTT tính theo hệ số đóng góp)', '—', chip('Insufficient')],
+    ['Phụ tải đỉnh (Pmax)', 'Công suất cực đại hệ thống', pmaxYtd ? `${nf(pmaxYtd.cur.pmax, 0)} MW (${dm(pmaxYtd.cur.date)})` : '—', chip(pmaxYtd ? 'Verified' : 'Insufficient')]
+  ], {title: 'Bốn khái niệm công suất', sub: 'không lấy công suất đặt − Pmax làm dự phòng thực tế', note: 'Dự phòng thực tế cần công suất khả dụng/tin cậy theo miền và ràng buộc truyền tải Bắc – Trung – Nam.'});
+}
+// 6.2 Pipeline LNG theo trạng thái và năm COD (đọc từ bảng dien-26, tab Chủ đề nóng).
+const STAGE = [['op', 'Vận hành / COD xác nhận', '#1D2678'], ['build', 'Đang xây dựng', '#2938A8'], ['appr', 'Đã ký hợp đồng, chưa khởi công', '#6171C5'], ['plan', 'Quy hoạch', '#B3BDE8'], ['delay', 'Chậm / chưa chắc chắn', '#b8443a']];
+const lngProjects = () => { const t = block('dien-26')?.querySelector('table'); if (!t) return [];
+  return [...t.querySelectorAll('tbody tr')].map(tr => { const c = [...tr.cells].map(x => x.textContent.trim()); if (c.length < 5) return null;
+    const st = c[3], s = /Đã vận hành/i.test(st) ? 'op' : /Kẹt|vướng|chưa thống nhất|không có hồ sơ|Chưa khởi công/i.test(st) ? 'delay' : /Khởi công|xây dựng/i.test(st) ? 'build' : /Ký EPC|Ký hợp đồng/i.test(st) ? 'appr' : 'plan';
+    const y = (/(20\d\d)/.exec(c[4]) || [])[1] || null; return {name: c[0], mw: parseFloat(c[1].replace(/\./g, '').replace(',', '.')), owner: c[2], status: st, cod: c[4], stage: s, year: y}; }).filter(Boolean); };
+function pipelineCard() {
+  const ps = lngProjects(), c = newCard('dien-pp-pipeline-cod', 'Dự án điện khí LNG theo trạng thái và năm vận hành dự kiến (MW)', 'MW · phân loại theo mô tả trạng thái trong bảng nguồn, không phải xác suất hoàn thành · năm = năm đầu tiên nêu ở mốc vận hành dự kiến', `Nguồn: bảng "Điện khí LNG" ở tab ${'<a href="#mt7" data-pp-main="mt7">Chủ đề nóng</a>'} (Dân trí, VnEconomy, Báo Chính phủ…).`, {kind: 'document', cadence: 'monthly', table: true});
+  if (!ps.length) { c.querySelector('.pp-host').replaceChildren(gap('không đọc được bảng dự án LNG.')); return c; }
+  const years = [...new Set(ps.map(p => p.year || 'Chưa có mốc'))].sort();
+  renders.supply.push(() => mount(c.querySelector('.pp-host'), {key: 'dien-pp-pipeline-cod', categories: years, unit: 'MW', digits: 0, stackable: true, native: 'stack', time: false,
+    series: STAGE.map(([k, name, color]) => ({name, color, kind: 'bar', values: years.map(y => { const v = sum(ps.filter(p => (p.year || 'Chưa có mốc') === y && p.stage === k).map(p => p.mw)); return v || null; })})).filter(s => s.values.some(fin)), aria: 'Dự án LNG theo năm COD và trạng thái'}));
+  fillTable(c.querySelector('table'), ['Dự án', 'MW', 'Chủ đầu tư', 'Trạng thái (nguồn)', 'Phân loại', 'Vận hành dự kiến'], ps.map(p => [esc(p.name), nf(p.mw, 0), esc(p.owner), esc(p.status), STAGE.find(s => s[0] === p.stage)[1], esc(p.cod)]));
+  return c;
+}
+function epcCard() {
+  const ps = lngProjects(), q = ps.find(p => /Ký EPC/.test(p.status)), m = q && /Ký EPC ([\d/]+) \(([\d.,]+) tỷ đồng\)/.exec(q.status);
+  const Q = window.COMPANY_QUARTERLY, by = Object.fromEntries((Q?.companies || []).filter(c => c.sector === 'power').map(c => [c.symbol, c])), qs = Q?.quarters || [];
+  const rev = t => { const c = by[t]; if (!c) return '—'; let i = c.revenue.length - 1; while (i >= 0 && c.revenue[i] == null) i--; return i >= 4 && c.revenue[i - 4] ? `${nf(c.revenue[i], 0)} tỷ ${qs[i]} (${pc((c.revenue[i] / c.revenue[i - 4] - 1) * 100)})` : '—'; };
+  return tableCard('dien-pp-epc', ['Đại lượng', 'Định nghĩa', 'Dữ liệu trên trang', 'Trạng thái'], [
+    ['Tổng vốn đầu tư dự án', 'Toàn bộ CAPEX dự án (thiết bị, xây lắp, lãi vay thời gian xây dựng…)', '—', chip('Insufficient')],
+    ['Giá trị hợp đồng EPC', 'Phần nhà thầu EPC nhận, nhỏ hơn tổng vốn', m ? `Quảng Trạch II: ${m[2]} tỷ đồng (EVN ký EPC ${m[1]})` : '—', chip(m ? 'Verified' : 'Insufficient')],
+    ['Backlog đã ký của doanh nghiệp', 'Giá trị hợp đồng chưa ghi nhận doanh thu', 'PC1, TV2, GEX, GEE: chưa có số trên trang', chip('Insufficient')],
+    ['Doanh thu dự kiến ghi nhận', 'Theo tiến độ thi công', '—', chip('Insufficient')],
+    ['Lợi nhuận tiềm năng', 'Biên gộp EPC × doanh thu ghi nhận', '—', chip('Insufficient')],
+    ['Doanh thu quý gần nhất (tham khảo)', 'BCTC hợp nhất', `PC1 ${rev('PC1')} · TV2 ${rev('TV2')} · GEX ${rev('GEX')}`, chip('Verified')]
+  ], {title: 'Cơ hội EPC, tư vấn, thiết bị: đừng lấy tổng CAPEX ngành làm doanh thu doanh nghiệp', note: 'Doanh thu quý là số hợp nhất (gồm mảng ngoài điện); không phải backlog.'});
+}
+
 /* ===================== 4. Nhận định theo quy tắc ===================== */
 const G = (k, p = 'm') => CMP[p]?.ok ? CMP[p].get(k) : null;
 const thermal = p => { const r = CMP[p]; if (!r?.ok) return null; const a = r.get('coal'), b = r.get('gas'); return {yoy: (a.cur + b.cur) / (a.prev + b.prev) * 100 - 100, delta: a.delta + b.delta, coal: a, gas: b}; };
@@ -377,106 +651,144 @@ function build() {
 
   const pick = (arr, l) => arr.filter(x => x[0] === l);
 
+  /* ---------- 01–06: khung 3 lớp (12/11/2026) — kết luận theo quy tắc, chart phụ và dữ liệu sâu thu gọn ---------- */
+  const F = makeFacts(); window.POWER_FACTS = F;
+  const PIr = window.PowerInsights, nk = s => (s || []).filter(Boolean);
+  const neutral = t => { t?.querySelectorAll('.delta').forEach(d => d.classList.add('pp-neutral')); return t; };
+
   /* ---------- 01 Nhu cầu ---------- */
   const lfLast = [...months].reverse().find(m => m.m <= M && m.lf != null), lfLy = lfLast && monthBy.get(back(lfLast.m + '-01').slice(0, 7));
-  strip('demand', [keep.daily, keep.ytd, keep.pmax, kpi({label: 'Hệ số phụ tải · ' + (lfLast ? ml(lfLast.m) : '—'), value: nf(lfLast?.lf, 1), unit: '%', delta: lfLy?.lf != null ? `${pp(lfLast.lf - lfLy.lf)} so cùng kỳ` : '', cls: '', sub: 'điện năng ÷ (Pmax × 24h) · tự tính từ EVN'})]);
+  const dmd = PIr ? PIr.demand(F) : {headline: '', lines: [], cannot: [], watch: []};
+  panes.demand.append(take(dmd.headline, 'B', dmd.status || 'Insufficient'), legend());
+  strip('demand', [keep.daily, keep.ytd, keep.pmax, kpi({label: 'Hệ số phụ tải · ' + (lfLast ? ml(lfLast.m) : '—'), value: nf(lfLast?.lf, 1), unit: '%', delta: lfLy?.lf != null ? `${pp(lfLast.lf - lfLy.lf)} so cùng kỳ` : '', cls: 'pp-neutral', sub: 'điện năng ÷ (Pmax × 24h) · tự tính từ EVN'})].map(neutral));
   const seasonal = pane.querySelector('.power-seasonal-status');
-  panes.demand.append(panel({id: 'demand-trend', num: '1.1', q: 'Tiêu thụ điện đang tăng tốc hay giảm tốc?', finding: lines(pick(DEMAND, 'A').slice(0, 2)), main: C('dien-06') || H2('chDaily'), support: [C('dien-08') || H2('chMonthly'), block('dien-output-heatmap')], body: seasonal,
-    interp: {what: 'Sản lượng hệ thống (sản xuất + nhập khẩu) theo ngày, tháng và so cùng kỳ.', mech: 'Điện năng tăng kéo theo nhu cầu nhiên liệu và nước; nguồn biên (than, khí) được huy động thêm khi cầu vượt khả năng thủy điện và NLTT.', who: 'Nhiệt điện than, khí (sản lượng biên); EVN (chi phí mua điện).', falsify: 'Tăng trưởng do yếu tố một lần (thời tiết cực đoan, ngày lễ) — đọc cùng chuỗi nhiều tháng.', watch: 'Tăng trưởng 3 tháng tới so cùng kỳ; bản tin tháng của EVN để đối chiếu tổng.'},
-    method: 'Bản tin "Thông tin vận hành HTĐ Quốc gia" của EVN, đọc từng ngày. Tăng trưởng cùng kỳ chỉ cộng các ngày có bản tin ở cả hai năm; ngày thiếu không nội suy. Không suy luận nguyên nhân (công nghiệp, thời tiết) khi trang chưa có dữ liệu hỗ trợ.'}));
-  panes.demand.append(panel({id: 'demand-peak', num: '1.2', q: 'Phụ tải đỉnh có tăng nhanh hơn điện năng không?', finding: lines(pick(DEMAND, 'A').slice(2)), main: C('dien-09') || H2('chPmax'), support: [peakCard(), lfCard()],
-    interp: {what: 'Pmax (công suất đỉnh, MW) so với điện năng (triệu kWh) và hệ số phụ tải.', mech: 'Hệ số phụ tải giảm nghĩa là đỉnh tăng nhanh hơn bình quân: hệ thống cần thêm công suất đáp ứng giờ cao điểm dù tổng điện năng tăng chậm hơn.', who: 'Nguồn điều tiết được giờ cao điểm: thủy điện hồ lớn, khí, than; lưới truyền tải.', falsify: 'Đỉnh một ngày nắng nóng bất thường; tháng thiếu bản tin bỏ sót đỉnh thật.', watch: 'Đỉnh mùa nóng 2027; công suất khả dụng (chưa có dữ liệu — công suất đặt ở sub-tab 06 không thay được).'},
-    method: 'Pmax tháng = cao nhất trong các bản tin của tháng (chỉ so khi cả hai tháng có ≥90% ngày). Hệ số phụ tải = điện năng bình quân ngày ÷ (Pmax × 24 giờ). Chưa có công suất khả dụng tin cậy để tính "đỉnh so công suất khả dụng".'}));
-  panes.demand.append(panel({id: 'demand-read', num: '1.3', q: 'Áp lực nhu cầu nói gì với hệ thống?', finding: lines(DEMAND), body: el('p', 'research-caption', 'Không suy ra nguyên nhân tăng trưởng (sản xuất công nghiệp, thời tiết, kinh tế) khi trang chưa có dữ liệu hỗ trợ. Mùa vụ: so cùng tháng các năm ở chart 1.1.')}));
+  panes.demand.append(qpanel({id: 'demand-momentum', num: '1.1', q: 'Nhu cầu điện đang tăng tốc hay giảm tốc?', lv: 'A',
+    concl: accel ? `Điện năng ${F.mLabel} ${pc(F.demand.yoy)} so cùng kỳ; 3 tháng gần nhất ${pc(accel.now)} so ${pc(accel.before)} của 3 tháng trước: ${dmd.momentum || '—'}.` : '',
+    metrics: [[F.mLabel + ' so cùng kỳ', pc(F.demand.yoy)], ['3 tháng gần nhất', pc(accel?.now), 'trước đó ' + pc(accel?.before)], ['Từ đầu năm', pc(F.demand.ytd), PERIODS.ytd?.name]],
+    impl: 'Cầu tăng nhanh kéo nguồn biên (than, khí) huy động nhiều hơn; tác động lợi nhuận phụ thuộc Qc và giá (xem 03, 04).',
+    main: C('dien-08') || H2('chMonthly'), support: block('dien-output-heatmap'), explore: [seasonal, C('dien-06') || H2('chDaily')],
+    deep: {mech: 'Điện năng tăng → nhu cầu nhiên liệu, nước tăng → nguồn biên được huy động thêm khi vượt khả năng thủy điện và NLTT.', change: 'Tăng trưởng 3 tháng quay về dưới 5% so cùng kỳ; tăng trưởng do yếu tố một lần (nắng nóng, ngày lễ).',
+      method: 'Bản tin vận hành ngày của EVN; so cùng kỳ chỉ cộng các ngày có bản tin đủ nguồn ở cả hai năm; ngày thiếu không nội suy.', limits: 'Không suy ra nguyên nhân (công nghiệp, thời tiết) khi trang chưa có dữ liệu hỗ trợ.', nodes: [reconcileCard(keep.ytd)]}}));
+  panes.demand.append(qpanel({id: 'demand-peak', num: '1.2', q: 'Mức tăng thể hiện qua điện năng hay qua công suất đỉnh?', lv: 'B',
+    concl: nk(dmd.lines).filter(x => x[0] === 'B').map(x => x[1]).join(' ') || '',
+    metrics: [['Pmax từ đầu năm', pc(pmaxYtd?.yoy), pmaxYtd ? nf(pmaxYtd.cur.pmax, 0) + ' MW, ' + dm(pmaxYtd.cur.date) : ''], ['Điện năng từ đầu năm', pc(F.demand.ytd)], ['Hệ số phụ tải', lfLast ? nf(lfLast.lf, 1) + '%' : '—', lfLast ? ml(lfLast.m) : '']],
+    impl: 'Đỉnh tăng nhanh cần thêm công suất giờ cao điểm (thủy điện hồ lớn, khí, lưu trữ); điện năng tăng nhanh cần thêm nhiên liệu, nước. Không suy ra dư thừa hay thiếu hụt công suất từ hai số này.',
+    main: peakCard(), support: lfCard(), explore: [C('dien-09') || H2('chPmax')],
+    deep: {mech: 'Hệ số phụ tải = điện năng bình quân ÷ (Pmax × 24h); giảm khi đỉnh tăng nhanh hơn bình quân.', change: 'Pmax mùa nóng 2027 vượt mạnh đỉnh 2026 trong khi điện năng chậm lại.',
+      method: 'Pmax tháng là cao nhất trong các bản tin của tháng; chỉ so khi cả hai tháng có ≥90% ngày. Ngày đạt Pmax theo ngày vận hành của bản tin (bản tin ngày D đăng ngày D+1).', limits: dmd.cannot?.join(' ')}}));
+  panes.demand.append(qpanel({id: 'demand-pressure', num: '1.3', q: 'Áp lực nhu cầu đang ở mức nào?', lv: 'A', concl: 'Năm chỉ báo dưới đây đọc riêng từng cái; chưa gộp thành điểm rủi ro vì chưa có ngưỡng được kiểm định.',
+    main: demandPressureCard(), body: el('div', 'pp-twocol', `<div><b>Chưa thể kết luận</b>${ul(nk(dmd.cannot))}</div><div><b>Theo dõi tiếp</b>${ul(nk(dmd.watch))}</div>`)}));
 
-  /* ---------- 02 Thủy văn & nguồn cung ---------- */
-  const r5 = reservoir5y;
-  strip('hydro', [keep.oni, kpi({label: 'Hồ dưới TB 5 năm · ' + (r5 ? ml(r5.month) : '—'), value: r5 ? `${r5.below}/${r5.n}` : '—', unit: 'hồ', delta: r5 ? `trung vị ${pc(r5.med, 0)} so TB 5 năm` : '', cls: r5?.med < 0 ? 'd-bad' : 'd-good', sub: `${r5?.n ?? 0}/${r5?.total ?? 0} hồ đủ ≥80% ngày, nền ≥3 năm`}),
-    kpi({label: 'Nước về so cùng kỳ', value: pc(resYoY?.med, 0), delta: resYoY ? `${resYoY.low}/${resYoY.n} hồ thấp hơn năm trước` : '', cls: kpiCls(resYoY?.med, 10), sub: `${resYoY?.span || '—'} · đúng các ngày năm trước`}),
-    kpi({label: 'Vùng bất lợi / thuận lợi nhất', value: r5?.worst ? esc(r5.worst.reg) : '—', delta: r5?.worst ? `${pc(r5.worst.med, 0)} · thuận nhất ${esc(r5.best.reg)} ${pc(r5.best.med, 0)}` : '', cls: 'd-warn', sub: `${r5 ? ml(r5.month) : '—'} · trung vị lệch so TB 5 năm (vùng ≥2 hồ)`})]);
-  panes.hydro.append(panel({id: 'hydro-enso', num: '2.1', q: 'ENSO đang nghiêng về khô hay ẩm?', finding: lines([HYDRO.find(x => /ONI/.test(x[1])), ninoLast && ['A', `Niño 3.4 tuần ${dm(ninoLast.date)} lệch ${sg(ninoLast.ssta, 2)} °C${nino4 ? `, 4 tuần trước ${sg(nino4.ssta, 2)}` : ''}.`]]), main: C('dien-04') || H2('chEnso'), support: [C('dien-05') || H2('chNino34'), block('dien-oni-gauge')],
-    interp: {what: 'Nhiệt độ mặt biển vùng Niño 3.4 (tuần) và ONI (trung bình 3 tháng).', mech: 'El Niño thường đi kèm mùa khô ít mưa hơn ở Việt Nam, làm nước về hồ thấp; La Niña ngược lại (quan hệ lịch sử).', who: 'Thủy điện (sản lượng); nhiệt điện (huy động bù).', falsify: 'Lượng mưa lưu vực cụ thể lệch khỏi xu hướng ENSO; trang chưa có mô hình độ trễ ONI → lưu lượng.', watch: 'ONI các mùa tới; dự báo ENSO của NOAA.'},
-    method: 'NOAA CPC: ONI (ERSSTv5) và Niño 3.4 tuần (OISST). Ngưỡng El Niño ≥ +0,5 °C, La Niña ≤ −0,5 °C. Không dùng ONI để dự báo định lượng lưu lượng hồ.'}));
-  panes.hydro.append(panel({id: 'hydro-res', num: '2.2', q: 'Nước về các hồ đang thuận hay bất lợi so lịch sử?', finding: lines(pick(HYDRO, 'A').filter(x => /hồ/.test(x[1]))), main: C('dien-31'), support: [], body: C('dien-hydro-reservoirs'),
-    interp: {what: 'Lưu lượng nước về và mực nước các hồ EVN so trung bình 5 năm và so năm trước.', mech: 'Nước về quyết định sản lượng thủy điện các tháng sau; mùa tích nước (cuối mưa) quyết định khả năng phát mùa khô.', who: 'Thủy điện theo vùng (xem 2.3); nhiệt điện huy động bù khi thủy điện thiếu.', falsify: 'Hồ đã tích đầy từ trước; mưa lớn cuối mùa.', watch: 'Mực nước hồ lớn so mực nước dâng bình thường; nước về T12–T2.'},
-    method: 'EVN, ảnh chụp 00h mỗi ngày (±2 giờ). Tháng hợp lệ cần ≥80% ngày; nền 5 năm cần ≥3 năm hợp lệ. Trung vị không trọng số theo dung tích. So cùng kỳ ở bản đồ vùng dùng đúng các ngày đó năm trước, năm trước cần ≥80% số ngày.'}));
+  /* ---------- 02 Thủy văn ---------- */
+  const r5 = reservoir5y, dry = fin(resYoY?.med) && fin(r5?.med) && resYoY.med < -10 && r5.med < 0;
+  panes.hydro.append(take(resYoY && r5 ? `${dry ? 'Thủy văn bất lợi' : 'Thủy văn chưa bất lợi trên diện rộng'}: nước về ${resYoY.span} ${pc(resYoY.med, 0)} so cùng kỳ, ${ml(r5.month)} ${pc(r5.med, 0)} so TB 5 năm; thủy điện ${F.mLabel} ${pc(F.hydro.yoy)}. Mức tác động lợi nhuận tùy mực nước, điều tiết, giá và danh mục từng doanh nghiệp.` : 'Chưa đủ số nước về để kết luận.', 'B', resYoY && r5 ? 'Verified' : 'Insufficient'), legend());
+  strip('hydro', [keep.oni, kpi({label: 'Hồ dưới TB 5 năm · ' + (r5 ? ml(r5.month) : '—'), value: r5 ? `${r5.below}/${r5.n}` : '—', unit: 'hồ', delta: r5 ? `trung vị ${pc(r5.med, 0)} so TB 5 năm` : '', cls: 'pp-neutral', sub: `${r5?.n ?? 0}/${r5?.total ?? 0} hồ đủ ≥80% ngày, nền ≥3 năm`}),
+    kpi({label: 'Nước về so cùng kỳ', value: pc(resYoY?.med, 0), delta: resYoY ? `${resYoY.low}/${resYoY.n} hồ thấp hơn năm trước` : '', cls: 'pp-neutral', sub: `${resYoY?.span || '—'} · đúng các ngày năm trước`}),
+    kpi({label: 'Vùng bất lợi / thuận lợi nhất', value: r5?.worst ? esc(r5.worst.reg) : '—', delta: r5?.worst ? `${pc(r5.worst.med, 0)} · thuận nhất ${esc(r5.best.reg)} ${pc(r5.best.med, 0)}` : '', cls: 'pp-neutral', sub: `${r5 ? ml(r5.month) : '—'} · trung vị lệch so TB 5 năm (vùng ≥2 hồ)`})].map(neutral));
+  panes.hydro.append(qpanel({id: 'hydro-climate', num: '2.1', q: 'Tín hiệu khí hậu toàn cầu nghiêng về khô hay ẩm?', lv: 'A',
+    concl: oniLast ? `ONI ${oniLast.season} ${oniLast.year} ${sg(oniLast.oni, 2)} °C (${ensoState(oniLast.oni)}), 3 mùa trước ${sg(oni3?.oni, 2)}${ninoLast ? `; Niño 3.4 tuần ${dm(ninoLast.date)} ${sg(ninoLast.ssta, 2)} °C` : ''}.` : '',
+    metrics: [['ONI', sg(oniLast?.oni, 2) + ' °C', oniLast ? oniLast.season + ' ' + oniLast.year : ''], ['Niño 3.4 tuần', sg(ninoLast?.ssta, 2) + ' °C', ninoLast ? dm(ninoLast.date) : ''], ['ONI 6 mùa trước', sg(oni6?.oni, 2) + ' °C']],
+    impl: 'El Niño thường đi kèm mùa khô ít mưa hơn ở Việt Nam (quan hệ lịch sử): rủi ro sản lượng thủy điện mùa khô; không dùng để dự báo định lượng lưu lượng hồ.',
+    main: C('dien-04') || H2('chEnso'), support: block('dien-oni-gauge'), explore: [C('dien-05') || H2('chNino34')],
+    deep: {mech: 'ENSO → lượng mưa lưu vực → nước về hồ → mực nước → sản lượng thủy điện; độ trễ và cường độ khác nhau theo vùng.', change: 'ONI quay về vùng trung tính (±0,5) trước mùa khô; mưa trái mùa lớn ở các lưu vực chính.',
+      method: 'NOAA CPC: ONI (ERSSTv5, trung bình trượt 3 tháng) và Niño 3.4 tuần (OISST). Số quan sát; không trộn với dự báo.', limits: 'Chưa có chuỗi dự báo ENSO có ngày phát hành và chưa có RONI chính thức trên trang (thiếu dữ liệu); chưa có mô hình độ trễ ONI → lưu lượng.'}}));
+  panes.hydro.append(qpanel({id: 'hydro-vn', num: '2.2', q: 'Nước về các hồ đang thuận hay bất lợi so lịch sử?', lv: 'A',
+    concl: resYoY && r5 ? `Nước về ${resYoY.span} trung vị ${pc(resYoY.med, 0)} so cùng kỳ (${resYoY.low}/${resYoY.n} hồ thấp hơn); ${ml(r5.month)} trung vị ${pc(r5.med, 0)} so TB 5 năm, bất lợi nhất ${esc(r5.worst?.reg || '—')} ${pc(r5.worst?.med, 0)}.` : '',
+    metrics: [['Nước về so cùng kỳ', pc(resYoY?.med, 0), resYoY?.span], ['So TB 5 năm', pc(r5?.med, 0), r5 ? ml(r5.month) : ''], ['Hồ dưới TB 5 năm', r5 ? `${r5.below}/${r5.n}` : '—']],
+    impl: 'Nước về thấp ở mùa tích nước làm giảm khả năng phát mùa khô của hồ lớn; nhiệt điện được huy động bù.',
+    main: C('dien-31'), explore: [C('dien-hydro-reservoirs')],
+    deep: {mech: 'Nước về quyết định mực nước cuối mùa mưa; mực nước quyết định sản lượng mùa khô.', change: 'Mưa lớn cuối mùa đưa hồ lớn về mực nước dâng bình thường; nước về T12–T2 trở lại mức TB 5 năm.',
+      method: 'EVN, ảnh chụp 00h mỗi ngày (±2 giờ). Tháng hợp lệ cần ≥80% ngày; nền 5 năm cần ≥3 năm hợp lệ; trung vị không trọng số theo dung tích. So cùng kỳ dùng đúng các ngày đó năm trước, năm trước cần ≥80% số ngày.', limits: 'Một số hồ thiếu ngày; Thượng Kon Tum thiếu từ 28/08/2026 (EVN ghi giờ 19:00).'}}));
   const expo = el('div', 'card pp-expo'); expo.dataset.blockId = 'dien-pp-hydro-expo';
-  panes.hydro.append(panel({id: 'hydro-expo', num: '2.3', q: 'Biến động thủy văn chạm tới tài sản của doanh nghiệp nào?', finding: lines([['B', 'Hồ trong dữ liệu EVN không mặc nhiên là tài sản của doanh nghiệp niêm yết; chỉ ghi chủ sở hữu khi đã xác minh nguồn.']]), main: expo,
-    method: 'Bảng ánh xạ hồ → nhà máy → đơn vị sở hữu → công suất, mỗi dòng có nguồn đã mở. Dòng chưa tìm được nguồn ghi "Chưa xác minh". Tỷ trọng đóng góp vào doanh thu doanh nghiệp chưa tính.'}));
+  const exposed = (window.POWER_HYDRO_ASSETS?.rows || []).filter(r => r.status === 'Đã xác minh' && fin(resWater.get(r.reservoir)?.yoy) && resWater.get(r.reservoir).yoy < -30);
+  const exBasins = [...new Set(exposed.map(r => window.POWER_HYDRO_ASSETS.basins?.[r.reservoir]).filter(Boolean))], exT = [...new Set(exposed.flatMap(r => (r.holders || []).map(h => h.ticker)))];
+  panes.hydro.append(qpanel({id: 'hydro-company', num: '2.3', q: 'Thủy văn bất lợi chạm tới tài sản của doanh nghiệp nào?', lv: 'B', st: exposed.length ? 'Verified' : 'Insufficient',
+    concl: exposed.length ? `Tài sản đã xác minh tại lưu vực ${exBasins.join(', ')} có nước về thấp hơn cùng kỳ trên 30%; doanh nghiệp liên quan: ${exT.join(', ')}. Mức tác động lợi nhuận phụ thuộc mực nước, kế hoạch điều tiết, giá điện và cơ cấu danh mục.` : 'Chưa có tài sản đã xác minh với nước về giảm trên 30% so cùng kỳ.',
+    impl: 'Phân biệt công suất danh nghĩa với công suất sở hữu kinh tế (ví dụ REE hưởng gián tiếp qua VSH, SBH, TMP); không quy đổi % nước về thành % EBITDA.',
+    main: expo, deep: {method: 'Ánh xạ hồ → nhà máy → đơn vị sở hữu từ nguồn đã mở (không dùng Wikipedia); lưu vực theo vị trí địa lý; tỷ lệ sở hữu theo nguồn của từng dòng.', limits: 'Chưa có sản lượng từng nhà máy, tỷ trọng thủy điện trong lợi nhuận doanh nghiệp; nhà máy của CHP, SHP, SBA, HDG không nằm trong danh sách hồ EVN; 18 hồ lớn chưa xác minh chủ sở hữu.'}}));
   renders.hydro.push(() => hydroExposure(expo));
-  panes.hydro.append(panel({id: 'hydro-other', num: '2.4', q: 'Nguồn thay thế (than, khí, LNG) có bị hạn chế không?', finding: lines([['A', 'Trang chưa có chuỗi dữ liệu tin cậy về cung ứng nhiên liệu, dừng máy/bảo dưỡng, công suất khả dụng hay ràng buộc truyền tải.']]),
-    body: gap('Khả năng cung ứng than/khí/LNG cho nhà máy, lịch bảo dưỡng – sự cố, công suất khả dụng, nghẽn truyền tải Bắc–Trung–Nam. Cần nguồn: báo cáo vận hành NSMO/EVN, công bố của TKV, PV GAS. Giá nhiên liệu xem sub-tab 04.')}));
+  panes.hydro.append(qpanel({id: 'hydro-other', num: '2.4', q: 'Nguồn thay thế (than, khí, LNG) có bị hạn chế không?', lv: 'A', st: 'Insufficient', concl: 'Trang chưa có chuỗi dữ liệu tin cậy về cung ứng nhiên liệu, dừng máy, công suất khả dụng hay ràng buộc truyền tải.',
+    body: gap('Khả năng cung ứng than/khí/LNG, lịch bảo dưỡng – sự cố, công suất khả dụng, nghẽn truyền tải Bắc–Trung–Nam. Nguồn cần: báo cáo vận hành NSMO/EVN, TKV, PV GAS. Giá nhiên liệu xem sub-tab 04.')}));
 
-  /* ---------- 03 Cơ cấu huy động ---------- */
-  strip('dispatch', ['hydro', 'coal', 'gas', 're'].map(k => { const x = G(k); return kpi({label: SRC.find(s => s[0] === k)[1] + ' · ' + (M ? ml(M) : '—'), value: pc(x?.yoy), delta: x ? `tỷ trọng ${nf(x.shareCur, 1)}% (${pp(x.dpp)})` : '', cls: kpiCls(x?.yoy, 2), sub: `${sg(x?.delta, 0)} triệu kWh so cùng kỳ`}); }));
-  panes.dispatch.append(panel({id: 'dispatch-mix', num: '3.1', q: 'Cơ cấu nguồn đang thay đổi thế nào?', finding: lines(pick(DISPATCH, 'A').slice(1)), main: mixCard(), support: [block('dien-mix-today')],
-    method: 'Bình quân ngày theo nguồn = tổng các bản tin đủ thành phần trong tháng ÷ số ngày đó (không bị lệch khi tháng thiếu bản tin). Khí & dầu = khí + dầu; gió & mặt trời = gió + điện mặt trời trang trại + mái nhà (EVN ước tính theo cơ sở thương phẩm).'}));
-  panes.dispatch.append(panel({id: 'dispatch-contrib', num: '3.2', q: 'Nguồn nào đóng góp vào tăng trưởng sản lượng?', finding: lines(pick(DISPATCH, 'A').slice(0, 1)), main: contribCard(), support: [C('dien-11-sources')],
-    method: 'Δ từng nguồn = sản lượng kỳ này − cùng kỳ trên đúng các ngày có bản tin đủ nguồn ở cả hai năm. Đóng góp (đ.p.) = Δ nguồn ÷ tổng cùng kỳ; cộng các nguồn = tăng trưởng tổng. Card "Sản lượng tăng chủ yếu từ nguồn nào?" dùng số lũy kế công bố của EVN (kỳ khác), giữ để đối chiếu.'}));
-  panes.dispatch.append(panel({id: 'dispatch-subst', num: '3.3', q: 'Thủy điện giảm thì nguồn nào bù?', finding: lines(pick(DISPATCH, 'B')), main: substCard(),
-    drill: {label: 'Xem từng nguồn so cùng tháng các năm (5 chart)', nodes: [C('dien-07') || H2('chMixShare'), C('dien-07-coal'), C('dien-07-gas'), C('dien-07-renewables'), C('dien-07-imports')]},
-    interp: {what: 'Thay đổi sản lượng từng nguồn so cùng tháng năm trước.', mech: 'Thủy điện có chi phí biến đổi thấp nhất; khi nước về ít, hệ thống huy động thêm than (rẻ hơn) rồi khí/LNG để đáp ứng cầu.', who: 'Thủy điện (giảm sản lượng); than, khí (tăng huy động).', falsify: 'Cầu tăng mạnh khiến mọi nguồn cùng tăng; thay đổi do bảo dưỡng lớn hoặc ràng buộc truyền tải.', watch: 'Δ thủy điện và than các tháng mùa khô 2027.'},
-    method: 'Tương quan giữa các nguồn trên chart chỉ là quan sát cùng thời điểm, không chứng minh quan hệ nhân quả.'}));
-  const dt = el('div', 'card pp-dtable'); dt.dataset.blockId = 'dien-pp-dispatch-table';
-  const r12 = CMP.ytd;
-  dt.innerHTML = r12?.n ? `<div class="chart-sub">${esc(PERIODS.ytd.name)} so cùng kỳ · ${r12.n}/${r12.total} ngày đối chiếu</div><div class="tablewrap"><table><thead><tr><th>Nguồn</th><th>Sản lượng YoY</th><th>Thay đổi tỷ trọng</th><th>Đóng góp</th><th>Điều cần kiểm chứng</th></tr></thead><tbody>${r12.rows.filter(x => x.k !== 'other').map(x => `<tr><td><b>${x.name}</b></td><td>${pc(x.yoy)}</td><td>${pp(x.dpp)}</td><td>${pp(x.contrib)}</td><td>${{hydro: 'Nước về, mực nước hồ; tỷ lệ Qc của từng nhà máy', coal: 'Giá than nhập/nội, FMP; chi phí có được chuyển ngang', gas: 'Giá khí/LNG so FMP; Qc NT3&4 và các nhà máy khí', re: 'Cắt giảm công suất (chưa có dữ liệu); hợp đồng FIT/chuyển tiếp', imports: 'Hợp đồng nhập khẩu Lào, Trung Quốc; giá mua'}[x.k] || ''}</td></tr>`).join('')}</tbody></table></div>` : '';
-  if (!r12?.n) dt.append(gap('chưa đủ ngày đối chiếu.'));
-  panes.dispatch.append(panel({id: 'dispatch-read', num: '3.4', q: 'Đọc thay đổi huy động thế nào cho đúng?', finding: lines([['C', 'Bảng chưa đủ để suy ra lợi nhuận: cần FMP theo nhà máy, tỷ lệ Qc và chi phí nhiên liệu chuyển ngang (xem sub-tab 04).']]), main: dt}));
+  /* ---------- 03 Huy động ---------- */
+  const yt = CMP.ytd, tth = thermal('ytd'), hY = G('hydro', 'ytd'), up = topContrib('ytd');
+  panes.dispatch.append(take(yt?.ok && tth && hY ? `Từ đầu năm sản lượng ${sg(yt.delta, 0)} triệu kWh (${pc(yt.yoy)}); ${up[0].name.toLowerCase()} đóng góp nhiều nhất (${pp(up[0].contrib)}), thủy điện ${pp(hY.contrib)}; tỷ trọng than + khí ${pp(tth.coal.dpp + tth.gas.dpp)}: huy động ${tth.coal.dpp + tth.gas.dpp > 1 && hY.dpp < -1 ? 'dịch chuyển sang nhiệt điện' : 'chưa đổi cơ cấu rõ'}; doanh thu, biên, lợi nhuận từng doanh nghiệp xem 3.3.` : 'Chưa đủ ngày đối chiếu.', 'B', yt?.ok ? 'Verified' : 'Insufficient'), legend());
+  strip('dispatch', ['hydro', 'coal', 'gas', 're'].map(k => { const x = G(k); return kpi({label: SRC.find(s => s[0] === k)[1] + ' · ' + (M ? ml(M) : '—'), value: pc(x?.yoy), delta: x ? `tỷ trọng ${nf(x.shareCur, 1)}% (${pp(x.dpp)})` : '', cls: 'pp-neutral', sub: `${sg(x?.delta, 0)} triệu kWh so cùng kỳ`}); }));
+  panes.dispatch.append(qpanel({id: 'dispatch-system', num: '3.1', q: 'Nguồn nào đang tăng, nguồn nào giảm sản lượng?', lv: 'A',
+    concl: yt?.ok ? `Từ đầu năm: ${up.slice(0, 2).map(x => `${x.name} ${sg(x.delta, 0)} triệu kWh (${pp(x.contrib)})`).join(', ')}; ${up.at(-1).name} ${sg(up.at(-1).delta, 0)} (${pp(up.at(-1).contrib)}).` : '',
+    metrics: ['hydro', 'coal', 'gas'].map(k => { const x = yt?.ok ? yt.get(k) : null; return [`Tỷ trọng ${SRC.find(s => s[0] === k)[1].toLowerCase()}`, pp(x?.dpp), x ? nf(x.shareCur, 1) + '% từ đầu năm' : '']; }),
+    impl: 'Huy động là tín hiệu vận hành; chưa phải doanh thu hay lợi nhuận của doanh nghiệp (xem 3.3).', main: mixCard(), support: contribCard(), explore: [block('dien-mix-today'), C('dien-11-sources')],
+    deep: {method: 'Cơ cấu: bình quân ngày theo nguồn (không lệch khi thiếu bản tin). Đóng góp: Δ từng nguồn trên đúng các ngày có bản tin đủ nguồn ở cả hai năm ÷ tổng cùng kỳ; chênh lệch phân loại tách riêng. Card "Sản lượng tăng chủ yếu từ nguồn nào?" dùng lũy kế công bố của EVN (kỳ khác).'}}));
+  panes.dispatch.append(qpanel({id: 'dispatch-why', num: '3.2', q: 'Vì sao các nguồn đó được huy động?', lv: 'B',
+    concl: hY && tth ? `Thủy điện giảm ${sg(hY.delta, 0)} triệu kWh trong khi cầu tăng ${sg(yt.delta, 0)}: than (${sg(tth.coal.delta, 0)}) và khí & dầu (${sg(tth.gas.delta, 0)}) bù phần lớn. Giá chào, ràng buộc kỹ thuật và Qc chưa quan sát được nên chưa tách được vai trò từng yếu tố.` : '',
+    impl: 'Khi nước về ít, hệ thống huy động thêm nguồn có chi phí biến đổi kế tiếp (than, rồi khí/LNG); thứ tự thực tế còn tùy giá chào và ràng buộc lưới.', main: substCard(), support: driversCard(),
+    explore: [C('dien-07') || H2('chMixShare'), C('dien-07-coal'), C('dien-07-gas'), C('dien-07-renewables'), C('dien-07-imports')],
+    deep: {change: 'Thủy điện phục hồi mà nhiệt điện vẫn tăng (cầu là động lực chính); hoặc nhiệt điện giảm dù thủy điện yếu (ràng buộc nhiên liệu, lưới).', limits: 'Tương quan giữa các cột không chứng minh nhân quả; chưa có dữ liệu chào giá và điều độ theo nhà máy.'}}));
+  panes.dispatch.append(qpanel({id: 'dispatch-listed', num: '3.3', q: 'Huy động tăng đã thành doanh thu, biên và lợi nhuận của doanh nghiệp nào?', lv: 'B',
+    concl: 'Bảng đặt huy động hệ thống cạnh BCTC quý cùng kỳ; bốn cột là bốn kết luận khác nhau. Tác động lợi nhuận chỉ đọc từ BCTC, không suy từ sản lượng toàn hệ thống.',
+    impl: 'Đọc cột cuối: doanh thu tăng nhưng biên giảm thường là nhiên liệu đắt lên hoặc giá thực nhận thấp hơn; cần Qc và giá thực nhận để kết luận nguyên nhân.', main: listedCard(),
+    deep: {nodes: [checklistCard()], method: 'Huy động hệ thống: so cùng kỳ quý trên đúng ngày đối chiếu (thủy điện; than + khí & dầu; gió & mặt trời). BCTC quý hợp nhất (VNDirect).', limits: 'Doanh nghiệp đa ngành; số hợp nhất không tách theo nhà máy; quý gần nhất có thể chưa đủ mọi mã.'}}));
 
-  /* ---------- 04 Giá & kinh tế phát điện ---------- */
-  strip('economics', [kpi({label: 'FMP · ' + (fmpLast ? ml(fmpLast.period) : '—'), value: nf(fmpLast?.fmp, 0), unit: 'đ/kWh', delta: `${pc(fmpPrev ? (fmpLast.fmp / fmpPrev.fmp - 1) * 100 : null)} so tháng trước`, cls: '', sub: `${fmpLy ? 'cùng kỳ ' + nf(fmpLy.fmp, 0) : ''}${fmpYtd ? ' · BQ ' + fmpYtd.n + ' tháng ' + pc((fmpYtd.cur / fmpYtd.prev - 1) * 100) + ' YoY' : ''}`}),
-    keep.coal, kpi({label: 'LNG JKM', value: nf(jkm3?.now, 2), unit: 'USD/MMBtu', delta: `${pc(jkm3?.pct)} so 3 tháng`, cls: '', sub: `${dm(jkm3?.date)} · ICE futures`}),
-    kpi({label: 'Henry Hub', value: nf(hh3?.now, 2), unit: 'USD/MMBtu', delta: `${pc(hh3?.pct)} so 3 tháng`, cls: '', sub: `${dm(hh3?.date)} · tham chiếu giá LNG Mỹ`})]);
-  panes.economics.append(panel({id: 'econ-fmp', num: '4.1', q: 'Giá thị trường điện đang lên hay xuống?', finding: lines([pick(ECON, 'A')[0]]), main: C('dien-15') || H2('chFmpTrend'),
-    interp: {what: 'FMP (giá thị trường toàn phần) theo tháng; CAN bình quân năm ở lớp tham chiếu.', mech: 'FMP cao hơn có lợi cho phần điện năng bán ngoài hợp đồng (ngoài Qc) của các nhà máy chào giá.', who: 'Nhà máy trực tiếp tham gia thị trường; thủy điện, nhiệt điện có tỷ lệ Qc thấp.', falsify: 'Nhà máy có Qc cao hoặc gián tiếp tham gia thị trường gần như không hưởng FMP.', watch: 'FMP mùa khô; CAN năm 2027 khi công bố.'},
-    method: 'FMP không phải giá bán thực nhận của mọi nhà máy. CAN là giá năm, không phải giá từng tháng; không lấy FMP tháng trừ CAN năm để suy SMP tháng.'}));
-  panes.economics.append(panel({id: 'econ-fuel', num: '4.2', q: 'Nhiên liệu đang đắt lên hay rẻ đi?', finding: lines([pick(ECON, 'A')[1]]), main: fuelCard(), support: [C('fast-price') || H2('chFastPrice')],
-    drill: {label: 'Bảng & chart gốc theo benchmark (World Bank tháng)', nodes: [C('dien-12') || H2('chCoalM'), C('dien-13') || H2('chGasM')]},
-    method: 'Base 100 = giá trị đầu tiên trong khung xem của từng benchmark. Chế độ giá gốc chỉ đặt chung trục các benchmark cùng đơn vị (USD/tấn với than, USD/MMBtu với khí). Benchmark quốc tế không phải giá đầu vào thực tế của nhà máy (hợp đồng than TKV, khí trong nước).'}));
-  panes.economics.append(panel({id: 'econ-margin', num: '4.3', q: 'FMP có bù được chi phí nhiên liệu không?', finding: lines([['B', 'Spread dưới đây là <b>biên năng lượng minh họa</b> (FMP − chi phí nhiên liệu biến đổi ước tính theo suất hao nhiệt giả định), không phải biên gộp, EBITDA hay lợi nhuận của doanh nghiệp.']]), main: C('dien-30') || H2('chSpread'), support: [hydroEconCard()],
-    interp: {what: 'Chênh lệch FMP với chi phí nhiên liệu than nhập, LNG và mốc khung giá than/khí nội.', mech: 'Spread dương: một kWh bán thêm trên thị trường bù được nhiên liệu; spread âm: nhà máy chào giá cao, ít được huy động ngoài Qc.', who: 'Than nhập (dark spread), khí/LNG (spark spread); thủy điện không tốn nhiên liệu nên chỉ phụ thuộc sản lượng × giá.', falsify: 'Suất hao nhiệt thực tế khác giả định; giá nhiên liệu theo hợp đồng dài hạn khác benchmark.', watch: 'Heat rate thực tế của từng nhà máy (chưa có); giá than TKV, khí trong nước 2027.'},
-    method: 'Theo card "Spread FMP − chi phí nhiên liệu biến đổi": than WB/LNG WB × tỷ giá × suất hao nhiệt giả định theo tham số khung giá (QĐ 1692, 1882). Chưa trừ chi phí carbon nên dùng "spark/dark spread", không dùng "clean spread".'}));
-  const fw = el('div', 'card pp-frame'); fw.dataset.blockId = 'dien-pp-contract';
-  fw.innerHTML = `<div class="tablewrap"><table><thead><tr><th>Yếu tố</th><th>Cơ chế</th><th>Khi FMP tăng</th><th>Cần để định lượng</th></tr></thead><tbody>
-    <tr><td><b>Giá PPA</b></td><td>Giá hợp đồng mua bán điện với EVN/EPTC (giá cố định + biến đổi)</td><td>Không đổi trong kỳ hợp đồng</td><td>Điều khoản PPA từng nhà máy</td></tr>
-    <tr><td><b>Sản lượng hợp đồng Qc</b></td><td>Phần sản lượng thanh toán theo giá hợp đồng (CfD)</td><td>Qc càng cao, lợi ích từ FMP càng nhỏ</td><td>Tỷ lệ Qc năm của từng nhà máy</td></tr>
-    <tr><td><b>Điện năng ngoài Qc</b></td><td>Bán theo giá thị trường (FMP)</td><td>Hưởng trực tiếp nếu FMP > chi phí biến đổi</td><td>Sản lượng thực phát − Qc</td></tr>
-    <tr><td><b>Nhiên liệu chuyển ngang</b></td><td>Giá biến đổi điều chỉnh theo giá than/khí</td><td>Biên theo hợp đồng giữ ổn định; phần thị trường chịu rủi ro giá nhiên liệu</td><td>Công thức điều chỉnh trong PPA</td></tr>
-    <tr><td><b>Khấu hao, lãi vay</b></td><td>Chi phí cố định, thu hồi qua giá cố định</td><td>Sản lượng cao hơn trải chi phí cố định</td><td>Lịch khấu hao, nợ vay từng nhà máy</td></tr></tbody></table></div>`;
-  panes.economics.append(panel({id: 'econ-contract', num: '4.4', q: 'Khi nào giá thị trường tăng thành lợi nhuận tăng?', finding: lines([['C', 'Giá thị trường tăng chỉ thành lợi nhuận khi nhà máy có điện năng ngoài Qc đáng kể, được huy động, và FMP vượt chi phí biến đổi. Trang chưa có Qc, điều khoản PPA từng nhà máy nên không tạo số độ nhạy.']]), main: fw}));
+  /* ---------- 04 Giá & biên ---------- */
+  const U = unitM, ciT = U ? PIr?.coalCost(U.coalUsd, U.fx, FUEL.HR_COAL, FUEL.HHV_NC) : null, lgT = U ? PIr?.gasCost(U.lngUsd, FUEL.FEE_USD, FUEL.HR_GAS, U.fx) : null;
+  panes.economics.append(take(U && fin(ciT) ? `FMP ${ml(U.period)} ${nf(U.fmp, 0)} đ/kWh; chi phí nhiên liệu ước than nhập ${nf(ciT, 0)}, LNG ${nf(lgT, 0)} đ/kWh → spread minh họa than nhập ${sg(U.fmp - ciT, 0)}, LNG ${sg(U.fmp - lgT, 0)} đ/kWh. Chỉ phần điện năng ngoài Qc hưởng trực tiếp; không phải lợi nhuận nhà máy.` : 'Chưa đủ dữ liệu đồng kỳ để tính kinh tế đơn vị.', 'C', U ? 'Estimated' : 'Insufficient'), legend());
+  strip('economics', [kpi({label: 'FMP · ' + (fmpLast ? ml(fmpLast.period) : '—'), value: nf(fmpLast?.fmp, 0), unit: 'đ/kWh', delta: `${pc(F.price.fmpMoM)} so tháng trước`, cls: 'pp-neutral', sub: `${fmpLy ? 'cùng kỳ ' + nf(fmpLy.fmp, 0) : ''}${fmpYtd ? ' · BQ ' + fmpYtd.n + ' tháng ' + pc((fmpYtd.cur / fmpYtd.prev - 1) * 100) + ' YoY' : ''}`}),
+    neutral(keep.coal), kpi({label: 'LNG JKM', value: nf(jkm3?.now, 2), unit: 'USD/MMBtu', delta: `${pc(jkm3?.pct)} so 3 tháng`, cls: 'pp-neutral', sub: `${dm(jkm3?.date)} · ICE futures`}),
+    kpi({label: 'Tỷ giá dùng tính chi phí', value: nf(U?.fx, 0), unit: 'VND/USD', delta: U ? ml(U.period) : '', cls: 'pp-neutral', sub: U ? (U.fxSrc === 'NHNN' ? 'tỷ giá trung tâm NHNN, bình quân tháng' : 'WiData 242638, bình quân tháng') : ''})]);
+  panes.economics.append(qpanel({id: 'econ-prices', num: '4.1', q: 'Giá thị trường điện đang lên hay xuống, và đó là giá gì?', lv: 'A',
+    concl: fmpLast ? `FMP ${ml(fmpLast.period)} ${nf(fmpLast.fmp, 0)} đ/kWh, ${pc(F.price.fmpMoM)} so tháng trước, ${pc(F.price.fmpYoY)} so cùng kỳ. FMP là giá thị trường, không phải giá bán thực nhận của mọi nhà máy.` : '',
+    metrics: [['FMP', nf(fmpLast?.fmp, 0) + ' đ/kWh', fmpLast ? ml(fmpLast.period) : ''], ['So cùng kỳ', pc(F.price.fmpYoY)], ['Bình quân từ đầu năm', fmpYtd ? pc((fmpYtd.cur / fmpYtd.prev - 1) * 100) : '—', fmpYtd ? fmpYtd.n + ' tháng' : '']],
+    impl: 'FMP cao có lợi cho phần điện năng ngoài Qc của nhà máy chào giá trực tiếp; nhà máy Qc cao hoặc gián tiếp tham gia gần như không hưởng.', main: C('dien-15') || H2('chFmpTrend'), support: priceDefsCard(),
+    deep: {method: 'FMP bình quân tháng từ bản tin IR PGV; CAN là giá năm, không trừ FMP tháng với CAN năm để suy SMP tháng.'}}));
+  panes.economics.append(qpanel({id: 'econ-unit', num: '4.2', q: 'Mỗi công nghệ còn bao nhiêu biên năng lượng ở giá hiện tại?', lv: 'C', st: U ? 'Estimated' : 'Insufficient',
+    concl: U ? `Ở FMP ${ml(U.period)}, than nhập và LNG có spread minh họa ${sg(U.fmp - ciT, 0)} và ${sg(U.fmp - lgT, 0)} đ/kWh trên phần ngoài hợp đồng; than nội và khí nội tính theo mốc khung giá 2026 (phi đồng kỳ).` : '',
+    impl: 'Giá nhiên liệu tăng bất lợi trước hết cho nhà máy nhiên liệu nhập ít được chuyển ngang; thủy điện và NLTT không chịu chi phí nhiên liệu.', main: unitEconCard(), support: C('dien-30') || H2('chSpread'),
+    explore: [fuelCard(), C('fast-price') || H2('chFastPrice'), C('dien-12') || H2('chCoalM'), C('dien-13') || H2('chGasM'), hydroEconCard()],
+    deep: {mech: 'Spread = giá điện tham chiếu − chi phí biến đổi; dương thì kWh bán thêm trên thị trường bù được chi phí biến đổi.', change: 'Giá than, LNG tăng nhanh hơn FMP; tỷ giá tăng mạnh; FMP mùa mưa giảm sâu.',
+      method: 'Chuỗi spread (card phụ) tính đồng kỳ từng tháng: FMP, giá World Bank và tỷ giá cùng tháng (NHNN, thiếu thì WiData). Bảng dùng tháng gần nhất có đủ ba số.', limits: 'Chưa có heat rate thực tế, giá nhiên liệu hợp đồng, chi phí biến đổi ngoài nhiên liệu của từng nhà máy; spread không phải biên gộp hay EBITDA.'}}));
+  panes.economics.append(qpanel({id: 'econ-calc', num: '4.3', q: 'Nếu giá nhiên liệu, FMP, tỷ giá thay đổi thì spread đổi bao nhiêu?', lv: 'C', st: 'Scenario', concl: 'Chỉnh các ô để xem độ nhạy của chi phí nhiên liệu/kWh và spread; kết quả là kịch bản minh họa, không phải lợi nhuận thực tế.', main: calcCard()}));
+  panes.economics.append(qpanel({id: 'econ-qc', num: '4.4', q: 'Khi nào giá thị trường tăng thành lợi nhuận tăng?', lv: 'C', concl: 'Chỉ khi nhà máy có điện năng ngoài Qc đáng kể, được huy động và FMP vượt chi phí biến đổi; trang chưa có Qc, điều khoản PPA từng nhà máy nên không định lượng độ nhạy lợi nhuận.',
+    main: qcFlowCard(), explore: [(() => { const fw = el('div', 'card pp-frame'); fw.dataset.blockId = 'dien-pp-contract'; fw.innerHTML = `<div class="tablewrap"><table><thead><tr><th>Yếu tố</th><th>Cơ chế</th><th>Khi FMP tăng</th><th>Cần để định lượng</th></tr></thead><tbody>
+      <tr><td><b>Giá PPA</b></td><td>Giá hợp đồng mua bán điện với EVN/EPTC (giá cố định + biến đổi)</td><td>Không đổi trong kỳ hợp đồng</td><td>Điều khoản PPA từng nhà máy</td></tr>
+      <tr><td><b>Sản lượng hợp đồng Qc</b></td><td>Phần sản lượng thanh toán theo giá hợp đồng (CfD)</td><td>Qc càng cao, lợi ích từ FMP càng nhỏ</td><td>Tỷ lệ Qc năm của từng nhà máy</td></tr>
+      <tr><td><b>Điện năng ngoài Qc</b></td><td>Bán theo giá thị trường (FMP)</td><td>Hưởng trực tiếp nếu FMP > chi phí biến đổi</td><td>Sản lượng thực phát − Qc</td></tr>
+      <tr><td><b>Nhiên liệu chuyển ngang</b></td><td>Giá biến đổi điều chỉnh theo giá than/khí</td><td>Biên theo hợp đồng ổn định; phần thị trường chịu rủi ro giá nhiên liệu</td><td>Công thức điều chỉnh trong PPA</td></tr>
+      <tr><td><b>Khấu hao, lãi vay</b></td><td>Chi phí cố định, thu hồi qua giá cố định</td><td>Sản lượng cao hơn trải chi phí cố định</td><td>Lịch khấu hao, nợ vay từng nhà máy</td></tr></tbody></table></div>`; return fw; })()],
+    deep: {change: 'Có công bố Qc năm 2027 hoặc điều khoản PPA cụ thể của nhà máy.', limits: 'Cần thêm để dự phóng lợi nhuận: Qc, giá hợp đồng, giá nhiên liệu theo hợp đồng, heat rate thực tế, sản lượng từng nhà máy.'}}));
 
   /* ---------- 05 EVN ---------- */
   const tFirst = tariffVals?.[0], tLast = tariffVals?.at(-1);
-  strip('evn', [keep.tariff, kpi({label: 'Thay đổi từ ' + (tariffDates?.[0]?.slice(-4) || '—'), value: pc(tFirst && tLast ? (tLast / tFirst - 1) * 100 : null), delta: `${tariffVals ? tariffVals.length - 1 : '—'} lần điều chỉnh`, cls: '', sub: `giá bán lẻ bình quân, ${tariffDates?.[0] || '—'} → ${tariffDates?.at(-1) || '—'}`}),
-    kpi({label: 'Lỗ lũy kế công ty mẹ EVN', value: lossVals ? (lossVals.at(-1) === 0 ? 'Đã xử lý hết' : nf(lossVals.at(-1), 0)) : '—', delta: lossVals ? `cuối 2024: ${nf(lossVals[0], 0)} tỷ đồng` : '', cls: 'd-good', sub: `${lossLabels?.at(-1) || '—'} · công ty mẹ, không phải hợp nhất`})]);
-  panes.evn.append(panel({id: 'evn-tariff', num: '5.1', q: 'Giá bán lẻ đã điều chỉnh thế nào?', finding: lines([tLast && ['A', `Giá bán lẻ bình quân ${nf(tLast, 2)} đ/kWh (chưa VAT) từ ${tariffDates.at(-1)}, ${pc((tLast / tariffVals.at(-2) - 1) * 100, 1)} so mức trước.`]]), main: C('dien-14') || H2('chTariff'),
-    method: 'Giá bán lẻ bình quân theo quyết định của EVN/Bộ Công Thương. Không ghép với khung giá phát điện (loại giá khác, xem tab Policy · Tax · Trade).'}));
-  panes.evn.append(panel({id: 'evn-fin', num: '5.2', q: 'Tài chính EVN đang cải thiện hay xấu đi?', finding: lines([lossVals && ['A', `Lỗ lũy kế công ty mẹ: ${nf(lossVals[0], 0)} tỷ đồng (${lossLabels[0]}) → ${nf(lossVals[1], 0)} (${lossLabels[1]}) → ${lossVals.at(-1) === 0 ? 'đã xử lý hết' : nf(lossVals.at(-1), 0)} (${lossLabels.at(-1)}).`]]), main: C('dien-16') || H2('chEvnLoss'),
-    body: gap('Báo cáo hợp nhất EVN, dòng tiền, khoản phải trả các đơn vị phát điện theo kỳ. Không ghép số công ty mẹ với số hợp nhất thành một chuỗi.'),
-    method: 'Số công ty mẹ EVN theo công bố (card gốc ghi nguồn). Phạm vi hợp nhất chưa có chuỗi trên trang.'}));
-  const flow = el('div', 'card pp-flow'); flow.dataset.blockId = 'dien-pp-evn-flow';
-  flow.innerHTML = `<div class="pp-flow-row">${['Giá bán lẻ điện<br><small>doanh thu của EVN</small>', 'Chi phí mua điện + truyền tải, phân phối, hệ thống', 'Tình hình tài chính EVN / EPTC', 'Khả năng thanh toán cho nhà máy', 'Dòng tiền, vốn lưu động doanh nghiệp phát điện'].map((t, i) => `${i ? '<span class="pp-arrow" aria-hidden="true">→</span>' : ''}<div class="pp-flow-box">${t}</div>`).join('')}</div><p class="research-caption">Sơ đồ truyền dẫn phân tích, không khẳng định biến động lợi nhuận EVN luôn dẫn tới chậm thanh toán.</p>`;
-  panes.evn.append(panel({id: 'evn-flow', num: '5.3', q: 'Tài chính EVN truyền sang dòng tiền nhà máy qua kênh nào?', finding: lines([['B', 'Khi giá bán lẻ không theo kịp chi phí mua điện, áp lực dồn về EVN/EPTC; rủi ro với nhà máy là kỳ thu tiền kéo dài, không phải doanh thu mất đi.']]), main: flow}));
-  panes.evn.append(panel({id: 'evn-risk', num: '5.4', q: 'Có dấu hiệu rủi ro thanh toán từ bên mua điện không?', finding: lines([['A', 'Trang chưa có chuỗi phải thu tiền điện, tuổi nợ hay công nợ EVN theo kỳ nên chưa đánh giá được; không suy diễn rủi ro khi chưa có bằng chứng trực tiếp.']]),
-    body: gap('Phải thu tiền điện và tuổi nợ của các doanh nghiệp phát điện (thuyết minh BCTC), công nợ EVN/EPTC với đơn vị phát điện. Dữ liệu quý của doanh nghiệp trên trang hiện chỉ có doanh thu, lãi gộp, lãi ròng.')}));
+  panes.evn.append(take(tLast && lossVals ? `Giá bán lẻ bình quân ${nf(tLast, 2)} đ/kWh từ ${tariffDates.at(-1)} (${pc((tLast / tariffVals.at(-2) - 1) * 100)}); lỗ lũy kế công ty mẹ EVN ${lossVals.at(-1) === 0 ? 'đã xử lý hết' : nf(lossVals.at(-1), 0) + ' tỷ đồng'} (${lossLabels.at(-1)}). Chưa có bằng chứng trực tiếp về rủi ro thanh toán cho nhà máy.` : 'Chưa đủ dữ liệu.', 'B', 'Verified'), legend());
+  strip('evn', [neutral(keep.tariff), kpi({label: 'Thay đổi từ ' + (tariffDates?.[0]?.slice(-4) || '—'), value: pc(tFirst && tLast ? (tLast / tFirst - 1) * 100 : null), delta: `${tariffVals ? tariffVals.length - 1 : '—'} lần điều chỉnh`, cls: 'pp-neutral', sub: `giá bán lẻ bình quân, ${tariffDates?.[0] || '—'} → ${tariffDates?.at(-1) || '—'}`}),
+    kpi({label: 'Lỗ lũy kế công ty mẹ EVN', value: lossVals ? (lossVals.at(-1) === 0 ? 'Đã xử lý hết' : nf(lossVals.at(-1), 0)) : '—', delta: lossVals ? `cuối 2024: lỗ ${nf(Math.abs(lossVals[0]), 0)} tỷ đồng` : '', cls: 'pp-neutral', sub: `${lossLabels?.at(-1) || '—'} · công ty mẹ, không phải hợp nhất`})]);
+  panes.evn.append(qpanel({id: 'evn-tariff', num: '5.1', q: 'Giá bán lẻ đã điều chỉnh thế nào?', lv: 'A', concl: tLast ? `Giá bán lẻ bình quân ${nf(tLast, 2)} đ/kWh (chưa VAT) từ ${tariffDates.at(-1)}, ${pc((tLast / tariffVals.at(-2) - 1) * 100)} so mức trước; ${pc((tLast / tFirst - 1) * 100)} so ${tariffDates[0]}.` : '',
+    impl: 'Giá bán lẻ là nguồn tiền chính của bên mua điện; giảm giá thu hẹp đệm tài chính của EVN nếu chi phí mua điện không giảm tương ứng.', main: C('dien-14') || H2('chTariff'),
+    deep: {method: 'Quyết định giá bán lẻ bình quân của EVN/Bộ Công Thương. Không ghép với khung giá phát điện (loại giá khác, xem tab Policy · Tax · Trade).'}}));
+  panes.evn.append(qpanel({id: 'evn-fin', num: '5.2', q: 'Tài chính EVN đang cải thiện hay xấu đi?', lv: 'A', concl: lossVals ? `Phạm vi: công ty mẹ EVN. Lỗ lũy kế ${nf(Math.abs(lossVals[0]), 0)} tỷ đồng (${lossLabels[0]}) → ${nf(Math.abs(lossVals[1]), 0)} (${lossLabels[1]}) → ${lossVals.at(-1) === 0 ? 'đã xử lý hết' : nf(lossVals.at(-1), 0)} (${lossLabels.at(-1)}).` : '',
+    impl: 'Lỗ lũy kế giảm làm giảm áp lực tài chính lên bên mua; chưa đủ để kết luận về tốc độ thanh toán cho từng nhà máy.', main: C('dien-16') || H2('chEvnLoss'),
+    body: gap('Báo cáo hợp nhất EVN, dòng tiền, khoản phải trả các đơn vị phát điện theo kỳ. Không nối số công ty mẹ với số hợp nhất thành một chuỗi.')}));
+  panes.evn.append(qpanel({id: 'evn-flow', num: '5.3', q: 'Tài chính EVN truyền sang dòng tiền nhà máy qua kênh nào?', lv: 'B', concl: 'Giá bán lẻ và sản lượng → doanh thu EVN → chi phí mua điện → khả năng tạo tiền → thanh toán → phải thu của nhà máy. Mới quan sát được bước đầu; các bước sau thiếu dữ liệu.', main: evnFlowCard()}));
+  panes.evn.append(qpanel({id: 'evn-risk', num: '5.4', q: 'Có dấu hiệu rủi ro thanh toán từ bên mua điện không?', lv: 'A', st: 'Insufficient', concl: 'Chưa có bằng chứng trực tiếp: trang chưa có phải thu tiền điện, số ngày phải thu hay công nợ quá hạn. Không suy diễn rủi ro khi thiếu thuyết minh.', main: paymentCard()}));
 
   /* ---------- 06 Cung dài hạn ---------- */
-  const capTotal = capItems ? sum(capItems.map(x => x[1])) : null;
-  strip('supply', [kpi({label: 'Công suất đặt cuối 2025', value: nf(capTotal, 0), unit: 'MW', delta: capItems ? `than ${nf(capItems[0][1] / capTotal * 100, 0)}% · thủy điện ${nf(capItems[1][1] / capTotal * 100, 0)}% · NLTT ${nf(capItems[2][1] / capTotal * 100, 0)}%` : '', cls: '', sub: 'công suất đặt, không phải khả dụng'}),
-    kpi({label: 'Pmax từ đầu năm', value: nf(pmaxYtd?.cur.pmax, 0), unit: 'MW', delta: dm(pmaxYtd?.cur.date), cls: 'd-warn', sub: 'EVN · không so trực tiếp với công suất đặt'}),
-    kpi({label: 'Sản lượng 2030 cần đạt', value: outVals ? `${nf(outVals[1], 0)}–${nf(outVals[2], 0)}` : '—', unit: 'tỷ kWh', delta: outVals ? `từ ${nf(outVals[0], 1)} năm 2025 (ước)` : '', cls: '', sub: 'mục tiêu Quy hoạch điện VIII điều chỉnh'}),
-    kpi({label: 'Thiếu hụt 2030 nếu dự án chậm', value: nf(shortfallMw?.at(-1), 0), unit: 'MW', delta: 'kịch bản, không phải dự báo', cls: 'd-warn', sub: 'Báo cáo 760/BC-BCT'})]);
-  panes.supply.append(panel({id: 'supply-cap', num: '6.1', q: 'Công suất hiện có so với phụ tải và mục tiêu 2030?', finding: lines([SUPPLY[0]]), main: C('dien-10') || H2('chCapacity'), support: [C('dien-11') || H2('chOutputTarget')],
-    body: gap('Chuỗi công suất đặt theo năm, công suất khả dụng và dự phòng thực tế. Hiện chỉ có công suất đặt cuối 2025.'),
-    method: 'Không lấy công suất đặt trừ Pmax để kết luận mức dự phòng: công suất khả dụng phụ thuộc thủy văn, bảo dưỡng, NLTT theo thời tiết và ràng buộc lưới.'}));
-  panes.supply.append(panel({id: 'supply-pipe', num: '6.2', q: 'Nguồn mới trong quy hoạch đang ở giai đoạn nào?', finding: lines([SUPPLY[1]]), main: moved[0],
-    body: gap('Pipeline theo MW và theo nhóm nguồn (báo cáo gốc công bố tỷ trọng theo số dự án). Danh sách dự án LNG theo MW xem tab Chủ đề nóng › Chuyển dịch năng lượng.'),
-    method: 'Báo cáo 760/BC-BCT ngày 10/09/2026, theo Tạp chí Năng lượng Việt Nam. Tỷ lệ là % số dự án; không diễn giải thành % MW.'}));
-  panes.supply.append(panel({id: 'supply-gap', num: '6.3', q: 'Nếu dự án tiếp tục chậm, thiếu hụt lớn đến đâu?', finding: lines([SUPPLY[2]]), main: moved[1],
-    interp: {what: 'Công suất thiếu hụt theo kịch bản chậm tiến độ của Bộ Công Thương.', mech: 'Phụ tải tăng nhanh hơn nguồn mới vào vận hành làm giảm dự phòng, tăng huy động nguồn đắt và rủi ro cắt điện mùa khô.', who: 'Nhiệt điện hiện hữu (huy động cao), xây lắp – thiết bị (đẩy nhanh dự án).', falsify: 'Dự án lớn về đích đúng hạn; phụ tải tăng chậm hơn kịch bản.', watch: 'Báo cáo tiến độ kế tiếp; COD các dự án LNG, than, tích năng.'},
-    method: 'Đây là kịch bản "tiến độ chậm", không phải kịch bản cơ sở. Chưa có kịch bản cơ sở/stress của cùng nguồn để đặt cạnh.'}));
-  panes.supply.append(panel({id: 'supply-invest', num: '6.4', q: 'Chu kỳ đầu tư tạo việc cho EPC, tư vấn, thiết bị ở đâu?', finding: lines([['C', 'Nhóm xây lắp – thiết bị (PC1, TV2, GEX) hưởng lợi nếu các dự án nguồn, lưới khởi công và giải ngân đúng kế hoạch; tín hiệu sớm là ký EPC, khởi công.']]),
-    body: [el('p', 'research-caption', 'Văn bản Quy hoạch điện VIII, khung giá, cơ chế phê duyệt: xem <a href="#mt4" data-pp-main="mt4">Policy · Tax · Trade</a>. Danh sách dự án LNG và tiến độ: <a href="#mt7" data-pp-main="mt7">Chủ đề nóng</a>. Sự kiện sắp tới: <a href="#mt5" data-pp-main="mt5">Catalyst · Risk</a>.'), gap('COD dự kiến theo năm (MW theo nhóm nguồn), nhu cầu vốn đầu tư lưới truyền tải.')]}));
+  const capTotal = capItems ? sum(capItems.map(x => x[1])) : null, lngP = lngProjects(), lngMw = sum(lngP.map(p => p.mw)), lngOp = sum(lngP.filter(p => p.stage === 'op').map(p => p.mw)), lngBuild = sum(lngP.filter(p => p.stage === 'build').map(p => p.mw)), lngDelay = sum(lngP.filter(p => p.stage === 'delay').map(p => p.mw));
+  panes.supply.append(take(shortfallMw && lngP.length ? `Kịch bản chậm tiến độ của Bộ Công Thương thiếu ${nf(shortfallMw[0], 0)} MW năm ${shortfallYears[0]} và ${nf(shortfallMw.at(-1), 0)} MW năm ${shortfallYears.at(-1)} (kịch bản, không phải dự báo). Trong ${nf(lngMw, 0)} MW điện khí LNG theo dõi: ${nf(lngOp, 0)} MW đã vận hành, ${nf(lngBuild, 0)} MW đang xây dựng, ${nf(lngDelay, 0)} MW chậm hoặc chưa chắc chắn.` : 'Chưa đủ dữ liệu.', 'B', 'Scenario'), legend());
+  strip('supply', [kpi({label: 'Công suất đặt cuối 2025', value: nf(capTotal, 0), unit: 'MW', delta: capItems ? `than ${nf(capItems[0][1] / capTotal * 100, 0)}% · thủy điện ${nf(capItems[1][1] / capTotal * 100, 0)}% · NLTT ${nf(capItems[2][1] / capTotal * 100, 0)}%` : '', cls: 'pp-neutral', sub: 'công suất đặt, không phải khả dụng'}),
+    kpi({label: 'Pmax từ đầu năm', value: nf(pmaxYtd?.cur.pmax, 0), unit: 'MW', delta: dm(pmaxYtd?.cur.date), cls: 'pp-neutral', sub: 'EVN · không so trực tiếp với công suất đặt'}),
+    kpi({label: 'LNG đang xây dựng', value: nf(lngBuild, 0), unit: 'MW', delta: `${nf(lngDelay, 0)} MW chậm/chưa chắc`, cls: 'pp-neutral', sub: `trên ${nf(lngMw, 0)} MW dự án LNG theo dõi`}),
+    kpi({label: 'Thiếu hụt 2030 nếu dự án chậm', value: nf(shortfallMw?.at(-1), 0), unit: 'MW', delta: 'kịch bản, không phải dự báo', cls: 'pp-neutral', sub: 'Báo cáo 760/BC-BCT'})]);
+  panes.supply.append(qpanel({id: 'supply-cap', num: '6.1', q: 'Công suất hiện có so với phụ tải: biết được gì, chưa biết gì?', lv: 'A',
+    concl: capTotal && pmaxYtd ? `Công suất đặt cuối 2025 khoảng ${nf(capTotal, 0)} MW, Pmax 2026 ${nf(pmaxYtd.cur.pmax, 0)} MW; chưa có công suất khả dụng và tin cậy nên chưa đo được dự phòng thực tế.` : '',
+    main: conceptsCard(), support: C('dien-10') || H2('chCapacity'), explore: [C('dien-11') || H2('chOutputTarget')],
+    deep: {method: 'Công suất đặt theo EVN (ước cuối 2025); Pmax theo bản tin vận hành.', limits: 'Thiếu chuỗi công suất đặt theo năm, công suất khả dụng, dự phòng theo miền.'}}));
+  panes.supply.append(qpanel({id: 'supply-pipe', num: '6.2', q: 'Nguồn mới đang ở giai đoạn nào và vào vận hành năm nào?', lv: 'A', st: lngP.length ? 'Verified' : 'Insufficient',
+    concl: lngP.length ? `Danh sách có MW mới có cho điện khí LNG (${lngP.length} dự án, ${nf(lngMw, 0)} MW). Các nguồn khác chỉ có tỷ trọng theo số dự án (Báo cáo 760), không suy ra MW.` : '',
+    impl: 'Dự án đang xây dựng và đã ký EPC là nguồn việc gần nhất cho nhà thầu, thiết bị; dự án vướng PPA, vốn có rủi ro trượt COD.', main: pipelineCard(), support: moved[0],
+    deep: {method: 'Phân loại theo mô tả trạng thái trong bảng nguồn: vận hành; đang xây dựng (khởi công); đã ký hợp đồng EPC/dự án; chậm/chưa chắc (vướng PPA, vốn, chưa khởi công, không có hồ sơ); còn lại là quy hoạch. Đây là phân loại trạng thái, không phải xác suất hoàn thành.', limits: 'Chưa có danh sách MW theo COD cho than, thủy điện, gió, mặt trời, lưu trữ; tỷ lệ 5% của Báo cáo 760 là theo số dự án.'}}));
+  panes.supply.append(qpanel({id: 'supply-gap', num: '6.3', q: 'Nếu dự án tiếp tục chậm, thiếu hụt lớn đến đâu?', lv: 'A', st: 'Scenario', concl: shortfallMw ? `Kịch bản chậm tiến độ: thiếu ${nf(shortfallMw[0], 0)} MW (${shortfallYears[0]}) đến ${nf(shortfallMw.at(-1), 0)} MW (${shortfallYears.at(-1)}). Không phải dự báo thiếu điện chắc chắn.` : '',
+    main: moved[1], deep: {method: 'Báo cáo 760/BC-BCT ngày 10/09/2026; chưa có kịch bản cơ sở và stress của cùng nguồn để đặt cạnh.'}}));
+  panes.supply.append(qpanel({id: 'supply-epc', num: '6.4', q: 'Chu kỳ đầu tư tạo việc cho EPC, tư vấn, thiết bị ở đâu?', lv: 'C', concl: 'Nhà thầu, thiết bị hưởng lợi khi dự án ký EPC, khởi công và giải ngân đúng kế hoạch; tổng vốn đầu tư ngành không phải doanh thu khả dụng của doanh nghiệp EPC.',
+    main: epcCard(), body: el('p', 'research-caption', 'Văn bản Quy hoạch điện VIII, khung giá, cơ chế phê duyệt: <a href="#mt4" data-pp-main="mt4">Policy · Tax · Trade</a>. Sự kiện sắp tới: <a href="#mt5" data-pp-main="mt5">Catalyst · Risk</a>.')}));
 
   // Chuyển phần còn lại của bố cục cũ (Thế giới / Việt Nam) — nếu sót card thì đưa vào Pulse, không mất.
   // dien-02 (nhận định AI đã lưu) do Tổng quan ngành lấy sang Industry Pulse.
@@ -519,33 +831,6 @@ function build() {
   document.documentElement.dataset.ppReady = '1';
 }
 
-// Bảng 2.3: dữ liệu ánh xạ sở hữu (data/power-hydro-assets.js) nếu đã nạp; hồ không có dòng → "Chưa xác minh".
-function hydroExposure(card) {
-  const A = window.POWER_HYDRO_ASSETS, names = H?.monthly ? [...new Set(H.monthly.map(r => r.reservoir))] : [];
-  if (!names.length) { card.replaceChildren(gap('chưa nạp dữ liệu hồ EVN.')); return; }
-  const region = Object.fromEntries((H.monthly || []).map(r => [r.reservoir, r.region]));
-  const by = Object.fromEntries((A?.rows || []).map(r => [r.reservoir, r]));
-  const yoy = Object.fromEntries((H.yoy?.rows || []).filter(r => r.month === H.yoy.month).map(r => [r.reservoir, r.yoy]));
-  const rows = names.map(n => ({n, reg: region[n], a: by[n], y: yoy[n]})).sort((x, y) => (x.reg || '').localeCompare(y.reg || '', 'vi') || x.n.localeCompare(y.n, 'vi'));
-  const tickers = [...new Set(rows.map(r => r.a?.ticker).filter(Boolean))].sort();
-  card.innerHTML = `<div class="pp-ctl" role="group"><label>Doanh nghiệp <select data-tk><option value="">Tất cả</option>${tickers.map(t => `<option>${esc(t)}</option>`).join('')}</select></label><span class="muted">${A ? `Kiểm tra nguồn ${esc(A.checked_at || '')}` : 'Chưa nạp bảng sở hữu: mọi dòng ghi "Chưa xác minh".'}</span></div>
-    <div class="tablewrap"><table><thead><tr><th>Vùng</th><th>Hồ / nhà máy</th><th>Công suất (MW)</th><th>Đơn vị sở hữu</th><th>Mã</th><th>Nước về so cùng kỳ</th><th>Nguồn</th></tr></thead><tbody>${rows.map(r => {
-      const a = r.a, ok = !!a && (a.status === 'Đã xác minh' || a.status === 'Xác minh một phần'), part = a?.status === 'Xác minh một phần';
-      const note = [a?.stake_note, a?.mw_basis].filter(Boolean).join(' · ');
-      return `<tr data-tk="${esc(a?.ticker || a?.parent_ticker || '')}"><td>${esc(r.reg || '')}</td><td><a href="#" data-res="${esc(r.n)}">${esc(r.n)}</a></td><td${a?.mw_basis ? ` title="${esc(a.mw_basis)}"` : ''}>${ok && a.plant_mw ? nf(a.plant_mw, 0) + (a.mw_basis ? '*' : '') : '—'}</td>` +
-        `<td>${ok ? esc(a.owner || '') + (a.parent ? ` <small class="muted">(thuộc ${esc(a.parent)})</small>` : '') + (part ? ' <small class="pp-part">xác minh một phần</small>' : '') : '<span class="muted">Chưa xác minh</span>'}${note ? `<br><small class="muted">${esc(note)}</small>` : ''}</td>` +
-        `<td>${ok && a.ticker ? `<b>${esc(a.ticker)}</b>${a.exchange ? ' · ' + esc(a.exchange) : ''}` : ok && a.parent_ticker ? `<span title="mã của đơn vị mẹ / liên kết">${esc(a.parent_ticker)}</span>` : '—'}</td><td class="${r.y < 0 ? 'dn' : 'up'}">${pc(r.y, 0)}</td>` +
-        `<td>${ok ? (a.sources || []).slice(0, 3).map((s, i) => `<a href="${esc(s.url)}" target="_blank" rel="noopener" title="${esc(s.quote || '')}">[${i + 1}]</a>`).join(' ') : ''}</td></tr>`; }).join('')}</tbody></table></div>
-    <p class="source-note">Hồ trong dữ liệu EVN không mặc nhiên là tài sản doanh nghiệp niêm yết. "Xác minh một phần": nguồn nêu đơn vị quản lý nhưng liên kết hồ ↔ nhà máy hoặc trạng thái niêm yết của đơn vị mẹ chưa đủ chắc. * = công suất có ghi chú cách xác định (rê chuột). Tỷ trọng đóng góp vào doanh thu doanh nghiệp chưa tính.</p>`;
-  const sel = card.querySelector('[data-tk]');
-  sel.addEventListener('change', () => {
-    const t = sel.value; card.querySelectorAll('tbody tr').forEach(tr => tr.classList.toggle('pp-hl', !!t && tr.dataset.tk === t));
-    const set = new Set(rows.filter(r => t && (r.a?.ticker === t || r.a?.parent_ticker === t)).map(r => r.n));
-    document.querySelectorAll('.pv-res').forEach(c => c.classList.toggle('pp-hl', set.has(c.dataset.name)));
-  });
-  card.addEventListener('click', e => { const a = e.target.closest('[data-res]'); if (!a) return; e.preventDefault(); const s = document.getElementById('hydro-reservoir'); if (s) { s.value = a.dataset.res; s.dispatchEvent(new Event('change', {bubbles: true})); s.closest('.card')?.scrollIntoView({behavior: 'smooth', block: 'start'}); } });
-}
-
 const CSS = `
 .pp-nav{position:sticky;z-index:6;display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin;margin:6px 0 14px;padding:6px;border:1px solid var(--line,#e3e7f0);border-radius:12px;background:var(--card,#fff);box-shadow:0 2px 10px rgba(29,38,120,.06)}
 .pp-nav .pp-tab{flex:0 0 auto;white-space:nowrap;border:0;border-radius:8px;padding:7px 12px;background:transparent;color:var(--ink2,#3b4256);font:600 13px/1.2 Inter,system-ui,sans-serif;cursor:pointer}
@@ -585,8 +870,30 @@ const CSS = `
 :root[data-theme=dark] .pp-lv-A{background:#26306b;color:#dfe4ff}:root[data-theme=dark] .pp-lv-B{background:#4a3b12;color:#ffe3a6}:root[data-theme=dark] .pp-lv-C{background:#4b1d34;color:#ffd0e6}
 @media (max-width:760px){.pp-pane .pp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.pp-div-row{grid-template-columns:96px 1fr 60px}.pp-div-row em{grid-column:2/4}.pp-interp dl{grid-template-columns:1fr}.pp-as-row{grid-template-columns:1fr}.pp-panel{padding:12px 10px}}
 `;
+// CSS cho khung 3 lớp (12/11/2026): kết luận chính, nhãn trạng thái, chỉ tiêu, máy tính kịch bản; màu KPI trung tính.
+const CSS2 = `
+.pp-take{margin:0 0 10px;padding:12px 14px;border-left:4px solid #1D2678;border-radius:10px;background:color-mix(in srgb,var(--card,#fff) 88%,#2938A8 6%)}
+.pp-take-k{display:block;font:700 11px Inter,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--muted,#7a8399);margin-bottom:4px}.pp-take p{margin:0;font-size:14px;line-height:1.55}
+.pp-legend{margin:0 0 12px;font-size:12px}.pp-legend summary{cursor:pointer;color:var(--muted,#7a8399)}.pp-legend>div{margin-top:6px;line-height:1.9}
+.pp-st{display:inline-block;font:600 10.5px/1.6 Inter,sans-serif;border-radius:4px;padding:0 6px;margin-right:4px;vertical-align:1px;border:1px solid transparent}
+.pp-st-Verified{background:#e6f4ea;color:#1e6b3a}.pp-st-Estimated{background:#fff1d6;color:#7a5200}.pp-st-Scenario{background:#ede7fb;color:#4b2a8f}.pp-st-Insufficient{background:#eef0f4;color:#5b6478;border-color:#d6dbe8}.pp-st-Stale{background:#fde8e6;color:#9a2c22}
+.pp-concl{margin:2px 0 6px;font-size:13.5px;line-height:1.55}.pp-impl{margin:6px 0 0;font-size:13px;color:var(--ink2,#3b4256)}
+.pp-metrics{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}.pp-m{display:flex;flex-direction:column;min-width:130px;padding:6px 10px;border:1px solid var(--line,#e3e7f0);border-radius:8px;background:var(--card,#fff)}
+.pp-m b{font-size:15px;font-variant-numeric:tabular-nums}.pp-m small{font-size:11.5px;color:var(--muted,#7a8399)}
+.pp-sup1{margin-bottom:12px}.pp-deep{margin-top:8px;border-top:1px dashed var(--line,#e3e7f0);padding-top:6px;font-size:13px}.pp-deep summary{cursor:pointer;color:var(--ink2,#3b4256);font-weight:600}
+.pp-deep dl{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:4px 12px;margin:8px 0}.pp-deep dt{color:var(--muted,#7a8399)}.pp-deep dd{margin:0}.pp-deep>.card{margin-top:10px}
+.pp-twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px;margin-top:10px}.pp-ul{margin:4px 0 0;padding-left:18px}.pp-ul li{margin:2px 0}
+.pp-tcard td,.pp-tcard th{font-size:12.8px;vertical-align:top}.pp-hr{border:0;border-top:1px dashed var(--line,#e3e7f0);margin:4px 0}
+.pp-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px 12px;margin:8px 0}.pp-form label{display:flex;flex-direction:column;font-size:12px;color:var(--muted,#7a8399)}
+.pp-form input{margin-top:3px;padding:6px 8px;border:1px solid var(--line,#d6dbe8);border-radius:7px;font:600 13px Inter,sans-serif;font-variant-numeric:tabular-nums;background:var(--card,#fff);color:var(--ink,#1d2333)}
+.pp-kpi .delta.pp-neutral,.kpi .delta.pp-neutral{color:var(--ink2,#3b4256)!important}
+.pp-pane .ct-period label:first-child{display:none}
+@media (max-width:760px){.pp-tcard table,.pp-expo table{min-width:720px}.pp-twocol{grid-template-columns:1fr}.pp-deep dl{grid-template-columns:1fr}.pp-m{min-width:46%}}
+:root[data-theme=dark] .pp-take{background:color-mix(in srgb,var(--card,#141a33) 90%,#6171C5 10%)}
+:root[data-theme=dark] .pp-st-Verified{background:#173d27;color:#bfe8cc}:root[data-theme=dark] .pp-st-Estimated{background:#4a3b12;color:#ffe3a6}:root[data-theme=dark] .pp-st-Scenario{background:#33245c;color:#ddd0ff}:root[data-theme=dark] .pp-st-Insufficient{background:#262c3d;color:#b4bbdd;border-color:#3a4260}:root[data-theme=dark] .pp-st-Stale{background:#4a1f1b;color:#ffc9c2}
+`;
 function start() {
-  if (!document.getElementById('pp-style')) { const s = el('style'); s.id = 'pp-style'; s.textContent = CSS; document.head.append(s); }
+  if (!document.getElementById('pp-style')) { const s = el('style'); s.id = 'pp-style'; s.textContent = CSS + CSS2; document.head.append(s); }
   // Chờ các module khác (power-visuals 300ms, power-hub 600ms sau load) dựng xong card để dời đúng chỗ.
   let n = 0; const t = setInterval(() => {
     const ready = block('dien-mix-today') && block('dien-oni-gauge') && block('dien-output-heatmap') && document.querySelector('.pv-hydro');

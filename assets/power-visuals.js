@@ -219,11 +219,20 @@ function companyCards() {
    FMP tháng: fmpRows của trang (PGV IR). Than: World Bank coal_au × tỷ giá trung tâm tháng (Wi 242638 qua PHARMA_WI).
    Suất tiêu hao & mốc nội địa theo QĐ 1692/QĐ-BCT (than) và QĐ 1882/QĐ-BCT (khí) năm 2026 — xem ⓘ của card. */
 const P = {HR_COAL: 2411.6, HHV_NC: 6000, HHV_DOM: 5012.61, COAL_DOM: 1962004, HR_GAS: 6542.96, GAS_USD: 11.98, FEE_USD: 1.87, FX_QD: 26378};
+window.POWER_FUEL_PARAMS = P;  // dùng chung với Bức tranh ngành › Giá & biên (assets/power-picture.js)
+// Tỷ giá tháng: ưu tiên tỷ giá trung tâm NHNN (pharma-public-data.js), thiếu thì WiData 242638 (pharma-wi-data.js); trang Điện nạp cả hai.
+function fxMonthly() {
+  const m = new Map(), put = (recs, src) => recs.forEach(r => { if (isFinite(r.value)) m.set(r.date.slice(0, 7), {v: r.value, src}); });
+  put(window.PHARMA_WI?.blocks?.macro?.series?.usdvnd?.records || [], 'WiData');
+  put(window.PHARMA_PUBLIC?.blocks?.macro?.series?.usdvnd?.records || [], 'NHNN');
+  return m;
+}
+window.POWER_FX_MONTHLY = fxMonthly;
 function spread() {
   const host = document.getElementById('chSpread'); if (!host) return;
   const fmp = typeof fmpRows !== 'undefined' ? fmpRows : null; if (!fmp?.length) return;
-  const wb = src.wb_energy_monthly?.records || [], fx = window.PHARMA_WI?.blocks?.macro?.series?.usdvnd?.records || [];
-  const wbM = new Map(wb.map(r => [r.date.slice(0, 7), r])), fxM = new Map(fx.map(r => [r.date.slice(0, 7), r.value]));
+  const wb = src.wb_energy_monthly?.records || [], fxS = fxMonthly();
+  const wbM = new Map(wb.map(r => [r.date.slice(0, 7), r])), fxM = new Map([...fxS].map(([k, x]) => [k, x.v]));
   const domCoal = P.COAL_DOM / 1000 * P.HR_COAL / P.HHV_DOM, domGas = (P.GAS_USD + P.FEE_USD) * P.HR_GAS / 1e6 * P.FX_QD;
   const rows = fmp.map(r => {
     const w = wbM.get(r.period), f = fxM.get(r.period);

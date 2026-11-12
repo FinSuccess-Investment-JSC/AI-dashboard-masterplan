@@ -1292,15 +1292,15 @@
   {
    "id": "power.picture-derived",
    "tier": "A",
-   "title": "Bức tranh ngành Điện: cơ cấu nguồn, đóng góp tăng trưởng, Pmax/hệ số phụ tải, benchmark nhiên liệu, KPI và nhận định theo quy tắc",
+   "title": "Bức tranh ngành Điện 01–06: cơ cấu nguồn, đóng góp tăng trưởng, áp lực nhu cầu, kinh tế đơn vị, máy tính kịch bản, pipeline LNG theo COD, nhận định theo quy tắc",
    "sources": [
-    "vn_power_daily",
-    "enso_oni",
-    "nino34_weekly",
-    "wb_energy_monthly",
     "coal_newcastle",
+    "enso_oni",
+    "henry_hub",
     "lng_jkm",
-    "henry_hub"
+    "nino34_weekly",
+    "vn_power_daily",
+    "wb_energy_monthly"
    ],
    "schedule": {
     "type": "data",
@@ -1319,15 +1319,23 @@
      "dien-pp-subst",
      "dien-pp-peak",
      "dien-pp-lf",
-     "dien-pp-dispatch-table",
+     "dien-pp-demand-pressure",
+     "dien-pp-demand-reconcile",
+     "dien-pp-dispatch-drivers",
+     "dien-pp-listed",
      "dien-pp-fuel",
-     "dien-pp-hydro-econ"
+     "dien-pp-hydro-econ",
+     "dien-pp-unit-econ",
+     "dien-pp-calc",
+     "dien-pp-pipeline-cod",
+     "dien-pp-epc"
     ]
    },
-   "how": "Tính trong assets/power-picture.js khi mở trang, từ dữ liệu đã nạp (SECTOR_DAILY, HYDRO_RESERVOIRS, fmpRows và hằng số trong script cuối Dien/index.html); so cùng kỳ chỉ trên các ngày có bản tin EVN đủ nguồn ở cả hai năm; nhận định đổi theo số mới, không lưu cố định",
+   "how": "Tính trong assets/power-picture.js khi mở trang từ dữ liệu đã nạp (SECTOR_DAILY, HYDRO_RESERVOIRS, COMPANY_QUARTERLY, tỷ giá NHNN/WiData, hằng số trong script cuối Dien/index.html, bảng dien-26); quy tắc nhận định thuần trong assets/power-insights.js (test: node tests/power-insights.test.cjs). So cùng kỳ chỉ trên các ngày có bản tin EVN đủ nguồn ở cả hai năm; nhận định đổi theo số mới, số cũ thì ẩn.",
    "gates": [
     "Không ước tính ngày thiếu bản tin",
-    "Kỳ đối chiếu < 80% ngày thì ghi rõ"
+    "Kỳ đối chiếu < 80% ngày thì ghi rõ",
+    "Spread chỉ ghép FMP, giá nhiên liệu và tỷ giá cùng tháng; mốc khung giá ghi rõ phi đồng kỳ"
    ]
   },
   {
@@ -1424,7 +1432,7 @@
   {
    "id": "power.picture-static",
    "tier": "static",
-   "title": "Khung phân tích Điện: hợp đồng PPA/Qc, sơ đồ truyền dẫn tài chính EVN",
+   "title": "Khung phân tích Điện: hệ thống giá, Qc/PPA, checklist truyền dẫn, luồng tài chính EVN, rủi ro thanh toán, bốn khái niệm công suất",
    "schedule": {
     "type": "none"
    },
@@ -1432,7 +1440,12 @@
     "page": "Dien/index.html",
     "blocks": [
      "dien-pp-contract",
-     "dien-pp-evn-flow"
+     "dien-pp-evn-flow",
+     "dien-pp-qc-flow",
+     "dien-pp-fin-checklist",
+     "dien-pp-price-defs",
+     "dien-pp-payment",
+     "dien-pp-capacity-concepts"
     ]
    }
   },
