@@ -302,9 +302,17 @@ function m1D() {
 /* ---------- GROUP 2 · Thị trường & điều độ ---------- */
 function m2A() {
   shell('2A', (body, m) => {
-    const M = P.market || {};
-    body.innerHTML = `<div class="pp-two"><div>${flow((M.chain || []).map(s => ({t: s.t, d: s.d, cls: s.cls})), 'vertical')}</div><div>${table(['Thành phần', 'Cơ chế', 'Mức đã xác minh'], (M.components || []).map(c => ({cells: [{html: `<b>${rich(c.item)}</b>`}, c.rule, {html: rich(c.value || '—')}]})), {min: 420})}</div></div>`;
-    return (M.notes || []).length ? `<ul style="margin:0;padding-left:18px">${M.notes.map(x => `<li>${rich(x)}</li>`).join('')}</ul>` : '';
+    const M = P.market || {}, mix = M.mix || [];
+    // Thanh 100%: phần sản lượng trả theo giá PPA (Qc) và phần chịu giá thị trường, vạch sàn Qc 60% theo TT 29/2026.
+    const W = 900, lw = 190, rh = 40, top = 22, H = top + mix.length * rh + 8, x = v => lw + (W - lw - 20) * v / 100;
+    const seg = (x0, w, fill, ink, text) => `<rect x="${x0.toFixed(1)}" width="${Math.max(0, w).toFixed(1)}" height="22" rx="4" fill="${fill}"/>` + (w > 70 ? `<text x="${(x0 + 8).toFixed(1)}" y="15" class="vl" fill="${ink}">${esc(text)}</text>` : `<text x="${(x0 + w + 6).toFixed(1)}" y="15" class="vl" fill="#b8443a">${esc(text)}</text>`);
+    const rows = mix.map((r, i) => { const mt = `${r.market_text || (100 - r.contract) + '%'} giá thị trường`, small = x(100) - x(r.contract) < 90;
+      return `<g transform="translate(0 ${top + i * rh})"><text x="${lw - 10}" y="15" text-anchor="end" class="lb" style="font-weight:600">${esc(r.label)}</text>${seg(x(0), x(r.contract) - x(0) - 1, '#1D2678', '#fff', `${r.contract_text || r.contract + '%'} giá PPA${small ? ' · ' + mt : ''}`)}${small ? `<rect x="${(x(r.contract) + 1).toFixed(1)}" width="${(x(100) - x(r.contract) - 1).toFixed(1)}" height="22" rx="4" fill="${r.market_fill || '#F2B8A2'}"/>` : seg(x(r.contract) + 1, x(100) - x(r.contract) - 1, r.market_fill || '#F2B8A2', '#7a2e1c', mt)}<title>${esc(r.label)}: ${esc(r.note || '')}</title></g>`; }).join('');
+    const floor = `<line x1="${x(60)}" x2="${x(60)}" y1="${top - 8}" y2="${H - 4}" stroke="#861C52" stroke-dasharray="4 3"/><text x="${x(60) + 4}" y="${top - 10}" class="ax" style="font-size:11px;fill:#861C52">sàn Qc 60% (TT 29/2026)</text>`;
+    body.innerHTML = `<div class="pp-2a"><div class="viz-block"><div class="chart-title">Mỗi kWh được trả theo giá nào?</div><div class="chart-sub">${rich('% sản lượng · tỷ lệ [[Qc]] 2026 theo kế hoạch vận hành thị trường (nguồn thứ cấp) · LNG mới theo NĐ 100/2025')}</div><svg class="pp-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Tỷ lệ sản lượng theo giá hợp đồng và giá thị trường">${floor}${rows}</svg></div>
+      <div class="pp-kpis">${(M.kpis || []).map(k => `<div class="pp-kpi${k.hl ? ' hl' : ''}"><span>${rich(k.label)}</span><b>${esc(k.value)}<small> ${esc(k.unit || '')}</small></b><em>${rich(k.sub || '')}</em></div>`).join('')}</div></div>
+      ${M.formula ? `<p class="pp-formula">${rich(M.formula)}</p>` : ''}`;
+    return table(['Thành phần', 'Cơ chế', 'Mức đã xác minh'], (M.components || []).map(c => ({cells: [{html: `<b>${rich(c.item)}</b>`}, c.rule, {html: rich(c.value || '—')}]})), {min: 520}) + ((M.notes || []).length ? `<ul style="margin:8px 0 0;padding-left:18px">${M.notes.map(x => `<li>${rich(x)}</li>`).join('')}</ul>` : '');
   });
 }
 function m2B() {
@@ -318,10 +326,11 @@ function m2B() {
 function m2C() {
   shell('2C', (body, m) => {
     const D = P.dppa || {};
-    body.innerHTML = `<div class="pp-two">${(D.models || []).map(x => `<div class="pp-mini"><h4>${rich(x.title)}</h4>${flow(x.flow.map(s => ({t: s.t, d: s.d})), 'vertical')}<ul style="margin-top:8px">${x.points.map(p => `<li>${rich(p)}</li>`).join('')}</ul></div>`).join('')}</div>`
-      + `<p style="margin:14px 0 6px;font-size:12.5px;font-weight:700;color:#1D2678">PPA truyền thống so với DPPA</p>` + table(['Khía cạnh', 'PPA với EVN/EPTC', 'DPPA qua lưới quốc gia'], (D.compare || []).map(r => ({cells: [{html: `<b>${rich(r.aspect)}</b>`}, r.ppa, r.dppa]})), {min: 620})
-      + `<p style="margin:14px 0 6px;font-size:12.5px;font-weight:700;color:#1D2678">Thay đổi theo văn bản</p>` + table(['Nội dung', 'Trước', 'Sau', 'Văn bản'], (D.changes || []).map(r => ({cells: [r.item, r.before, {html: `<b>${rich(r.after)}</b>`}, r.doc]})), {min: 620});
-    return (D.facts || []).length ? `<ul style="margin:0;padding-left:18px">${D.facts.map(x => `<li>${rich(x)}</li>`).join('')}</ul>` : '';
+    body.innerHTML = `<div class="pp-kpis pp-kpis-row">${(D.kpis || []).map(k => `<div class="pp-kpi${k.hl ? ' hl' : ''}"><span>${rich(k.label)}</span><b>${esc(k.value)}<small> ${esc(k.unit || '')}</small></b><em>${rich(k.sub || '')}</em></div>`).join('')}</div>`
+      + `<div class="pp-two" style="margin-top:12px">${(D.models || []).map(x => `<div class="pp-mini"><h4>${rich(x.title)}</h4>${flow(x.flow.map(s => ({t: s.t, d: s.d})), 'compact')}<dl class="pp-kv">${(x.facts || []).map(f => `<dt>${rich(f.k)}</dt><dd>${rich(f.v)}</dd>`).join('')}</dl></div>`).join('')}</div>`;
+    return `<p style="margin:0 0 6px;font-weight:700;color:#1D2678">PPA truyền thống so với DPPA</p>` + table(['Khía cạnh', 'PPA với EVN/EPTC', 'DPPA qua lưới quốc gia'], (D.compare || []).map(r => ({cells: [{html: `<b>${rich(r.aspect)}</b>`}, r.ppa, r.dppa]})), {min: 620})
+      + `<p style="margin:12px 0 6px;font-weight:700;color:#1D2678">Thay đổi theo văn bản</p>` + table(['Nội dung', 'Trước', 'Sau', 'Văn bản'], (D.changes || []).map(r => ({cells: [r.item, r.before, {html: `<b>${rich(r.after)}</b>`}, r.doc]})), {min: 620})
+      + ((D.facts || []).length ? `<ul style="margin:10px 0 0;padding-left:18px">${D.facts.map(x => `<li>${rich(x)}</li>`).join('')}</ul>` : '');
   });
 }
 
@@ -373,7 +382,7 @@ function m4A() {
 function m4B() {
   shell('4B', (body, m) => {
     const T = P.trade || {};
-    body.innerHTML = `<div class="pp-two">${(T.channels || []).map(c => `<div class="pp-mini"><h4>${rich(c.title)}</h4>${flow(c.flow.map(s => ({t: s.t, d: s.d, cls: s.cls})), 'vertical')}</div>`).join('')}</div>` + ((T.facts || []).length ? `<div style="margin-top:12px">${table(['Chỉ tiêu / văn bản', 'Nội dung đã xác minh', 'Lưu ý khi suy luận'], T.facts.map(f => ({cells: [{html: `<b>${rich(f.item)}</b>`}, {html: rich(f.value)}, f.caveat || '—']})), {min: 680})}</div>` : '');
+    body.innerHTML = `<div class="pp-two">${(T.channels || []).map(c => `<div class="pp-mini"><h4>${rich(c.title)}</h4>${flow(c.flow.map(s => ({t: s.t, d: s.d, cls: s.cls})), 'compact')}</div>`).join('')}</div>` + ((T.facts || []).length ? `<div style="margin-top:12px">${table(['Chỉ tiêu / văn bản', 'Nội dung đã xác minh', 'Lưu ý khi suy luận'], T.facts.map(f => ({cells: [{html: `<b>${rich(f.item)}</b>`}, {html: rich(f.value)}, f.caveat || '—']})), {min: 680})}</div>` : '');
     return '';
   });
 }

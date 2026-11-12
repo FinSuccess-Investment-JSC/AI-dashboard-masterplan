@@ -3589,7 +3589,55 @@
   "notes": [
    "Phần sản lượng ngoài Qc chịu giá thị trường; tỷ lệ Qc càng thấp, doanh thu càng nhạy với FMP.",
    "CAN và FMP bình quân là mốc tham chiếu; không lấy FMP tháng trừ CAN năm để suy SMP tháng."
-  ]
+  ],
+  "mix": [
+   {
+    "label": "Nhiệt điện than, khí",
+    "contract": 80,
+    "note": "Qc 80% năm 2026 (Vietcap dẫn QĐ 3746)"
+   },
+   {
+    "label": "Thủy điện",
+    "contract": 98,
+    "note": "Qc 98% năm 2026 (Vietcap dẫn QĐ 3746)"
+   },
+   {
+    "label": "LNG mới (NĐ 100/2025)",
+    "contract": 65,
+    "contract_text": "≥65%",
+    "market_text": "≤35%",
+    "market_fill": "#F7D9CD",
+    "note": "Qc tối thiểu 65%, tối đa 10 năm, dự án phát điện trước 01/01/2031"
+   }
+  ],
+  "kpis": [
+   {
+    "label": "FMP bình quân 9T/2026",
+    "value": "1.450",
+    "unit": "đ/kWh",
+    "sub": "+44,4% so cùng kỳ · danh mục PGV"
+   },
+   {
+    "label": "[[CAN]] 2026",
+    "value": "129",
+    "unit": "đ/kWh",
+    "sub": "2025: 47,74 · 2024: 330,47"
+   },
+   {
+    "label": "Trần [[SMP]] 2026",
+    "value": "1.725",
+    "unit": "đ/kWh",
+    "sub": "+3% · Vietcap"
+   },
+   {
+    "label": "Độ nhạy khi FMP +100 đ/kWh",
+    "value": "+20",
+    "unit": "đ/kWh",
+    "sub": "giá bình quân nhiệt điện (thủy điện +2) · tự tính",
+    "hl": true
+   }
+  ],
+  "formula": "Doanh thu ≈ [[Qc]] × giá PPA + (sản lượng phát − Qc) × [[FMP]]  ·  Qc càng thấp, doanh thu càng nhạy với giá thị trường."
  },
  "dispatch": {
   "factors": [
@@ -3654,21 +3702,30 @@
     "flow": [
      {
       "t": "Nhà máy NLTT",
-      "d": "Không qua lưới quốc gia"
-     },
-     {
-      "t": "Đường dây riêng",
       "d": ""
      },
      {
+      "t": "Đường dây riêng",
+      "d": "không qua lưới quốc gia"
+     },
+     {
       "t": "Khách hàng",
-      "d": "Từ 20.000 kWh/tháng (TT 29/2026)"
+      "d": "≥20.000 kWh/tháng"
      }
     ],
-    "points": [
-     "Giá, sản lượng do hai bên thỏa thuận",
-     "Không trả phí truyền tải quốc gia",
-     "Phạm vi giới hạn bởi vị trí hai bên"
+    "facts": [
+     {
+      "k": "Giá",
+      "v": "Hai bên tự thỏa thuận giá và sản lượng"
+     },
+     {
+      "k": "Phí lưới",
+      "v": "Không trả phí truyền tải quốc gia"
+     },
+     {
+      "k": "Giới hạn",
+      "v": "Hai bên phải gần nhau về vị trí"
+     }
     ]
    },
    {
@@ -3676,21 +3733,30 @@
     "flow": [
      {
       "t": "Nhà máy gió, mặt trời, sinh khối ≥10 MW",
-      "d": "Bán toàn bộ điện năng vào thị trường giao ngay"
+      "d": "bán toàn bộ vào thị trường"
      },
      {
-      "t": "Thị trường điện giao ngay",
-      "d": "Giá FMP theo chu kỳ"
+      "t": "Thị trường giao ngay",
+      "d": "giá FMP"
      },
      {
-      "t": "Khách hàng lớn (≥200.000 kWh/tháng)",
-      "d": "Mua qua tổng công ty điện lực; hợp đồng kỳ hạn với nhà máy"
+      "t": "Khách hàng lớn",
+      "d": "≥200.000 kWh/tháng"
      }
     ],
-    "points": [
-     "Khách hàng trả: điện năng theo giá giao ngay, chi phí dịch vụ hệ thống (truyền tải, phân phối – bán lẻ, điều độ, điều hành giao dịch, phụ trợ), thanh toán bù trừ chênh lệch",
-     "Hợp đồng kỳ hạn ([[CfD]]) chốt giá giữa hai bên",
-     "Rủi ro chênh lệch sản lượng giữa phát và tiêu thụ"
+    "facts": [
+     {
+      "k": "Giá",
+      "v": "Hợp đồng kỳ hạn ([[CfD]]) chốt giá; bù trừ chênh lệch với giá giao ngay"
+     },
+     {
+      "k": "Khách trả",
+      "v": "Điện năng giá giao ngay + phí dịch vụ hệ thống (truyền tải, phân phối – bán lẻ, điều độ, giao dịch, phụ trợ) + bù trừ chênh lệch"
+     },
+     {
+      "k": "Rủi ro",
+      "v": "Lệch sản lượng phát và tiêu thụ; tín dụng của khách hàng"
+     }
     ]
    }
   ],
@@ -3744,6 +3810,33 @@
   "facts": [
    "Hợp đồng DPPA qua lưới quốc gia đầu tiên: Samsung Electronics Việt Nam Thái Nguyên mua của Đức Huệ 2 (49 MWp/41,4 MWac, khoảng 70 GWh/năm) từ 01/06/2026.",
    "Mái nhà lắp mới theo NĐ 58 và 243 đến hết 07/2026: 1.614 MWp, chỉ 287 hệ thống có bán điện dư."
+  ],
+  "kpis": [
+   {
+    "label": "Hợp đồng DPPA qua lưới đang chạy",
+    "value": "1",
+    "unit": "hợp đồng",
+    "sub": "Samsung TN – Đức Huệ 2 (GEG) từ 01/06/2026, khoảng 70 GWh/năm",
+    "hl": true
+   },
+   {
+    "label": "Ngưỡng khách hàng lớn",
+    "value": "200.000",
+    "unit": "kWh/tháng",
+    "sub": "qua lưới quốc gia; 20.000 qua lưới riêng (TT 29/2026)"
+   },
+   {
+    "label": "Mái nhà được bán dư",
+    "value": "20% → 50%",
+    "unit": "",
+    "sub": "NĐ 243/2026; giá = giá điện năng thị trường bình quân năm trước"
+   },
+   {
+    "label": "Mái nhà lắp mới đến 07/2026",
+    "value": "1.614",
+    "unit": "MWp",
+    "sub": "chỉ 287 hệ thống có bán điện dư"
+   }
   ]
  },
  "plan": {
