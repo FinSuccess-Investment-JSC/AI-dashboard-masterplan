@@ -1,5 +1,5 @@
 /* Điện · Bức tranh ngành theo câu hỏi phân tích (12/11/2026): 7 sub-tab thay cách chia "Thế giới / Việt Nam".
-   00 Pulse · 01 Nhu cầu · 02 Thủy văn & nguồn cung · 03 Cơ cấu huy động · 04 Giá & kinh tế phát điện · 05 EVN · 06 Cung dài hạn.
+   (Industry Pulse chuyển sang Tổng quan ngành, assets/power-overview.js, 12/11/2026) 01 Nhu cầu · 02 Thủy văn & nguồn cung · 03 Cơ cấu huy động · 04 Giá & kinh tế phát điện · 05 EVN · 06 Cung dài hạn.
    Card có sẵn được DỜI (không nhân bản) vào panel; chart mới (cơ cấu nguồn, đóng góp tăng trưởng, thay thế nguồn, Pmax/hệ số phụ tải,
    benchmark nhiên liệu base 100) và nhận định theo quy tắc tính từ dữ liệu đã nạp trên trang: SECTOR_DAILY (bản tin EVN, NOAA, World Bank,
    ICE), HYDRO_RESERVOIRS, hằng số dữ liệu trong script cuối Dien/index.html (fmpRows, capItems, tariffVals…). Thiếu dữ liệu thì ghi rõ,
@@ -338,9 +338,11 @@ const SUPPLY = (() => {
   return out;
 })();
 
+// Số liệu và quy tắc dùng chung cho Tổng quan ngành (assets/power-overview.js đọc, không tính lại).
+window.POWER_CORE = {S, rec, fin, sum, mean, median, nf, sg, pc, pp, esc, el, dm, ml, ms, dim, back, addMonths, datesOf, glob, link, block, cardOf, refit, EVN_URL, SRC, days, byDay, lastDay, M, compare, monthDates, PERIODS, CMP, months, monthBy, monthCmp, pmaxYoY, pmaxYtd, ytdOut, accel, oni, oniLast, oni3, oni6, ensoState, nino, ninoLast, nino4, H, reservoir5y, resYoY, fmp, fmpLast, fmpPrev, fmpLy, fmpYtd, chg, coal3, jkm3, hh3, capItems, pipelineStages, pipelineShare, shortfallYears, shortfallMw, outVals, outLabels, tariffDates, tariffVals, lossLabels, lossVals, LV, tag, lines, gap, kpi, kpiCls, newCard, mount, fillTable, panel, G, thermal, topContrib, DEMAND, HYDRO, DISPATCH, ECON, SUPPLY};
+
 /* ===================== 5. Sub-tab ===================== */
 const SECTIONS = [
-  ['pulse', '00', 'Industry Pulse', 'Trạng thái ngành điện', 'Nắm nhanh cầu, thủy văn, huy động, giá và cung dài hạn đang ở đâu; chi tiết ở các sub-tab.'],
   ['demand', '01', 'Nhu cầu', 'Nhu cầu điện', 'Nhu cầu đang tăng thế nào và mức tăng có tạo áp lực lên hệ thống không?'],
   ['hydro', '02', 'Thủy văn', 'Thủy văn & nguồn cung', 'Điều kiện thủy văn và khả năng vận hành nguồn đang thuận lợi hay bất lợi?'],
   ['dispatch', '03', 'Huy động', 'Cơ cấu huy động', 'Nguồn nào đang được huy động nhiều hơn, nguồn nào đóng góp vào tăng trưởng sản lượng?'],
@@ -349,7 +351,7 @@ const SECTIONS = [
   ['supply', '06', 'Cung dài hạn', 'Cung điện dài hạn', 'Có đủ công suất cho phụ tải 2027–2030 không, nguồn mới đang ở giai đoạn nào?']
 ];
 SECTIONS.forEach(s => { renders[s[0]] = []; });
-const asOf = {pulse: lastDay, demand: lastDay, hydro: H?.last_observation, dispatch: lastDay, economics: fmpLast ? 'FMP ' + ml(fmpLast.period) + ' · nhiên liệu ' + dm(coal3?.date) : null, evn: tariffDates ? 'giá bán lẻ từ ' + tariffDates.at(-1) : null, supply: 'Báo cáo 760/BC-BCT (10/09/2026)'};
+const asOf = {demand: lastDay, hydro: H?.last_observation, dispatch: lastDay, economics: fmpLast ? 'FMP ' + ml(fmpLast.period) + ' · nhiên liệu ' + dm(coal3?.date) : null, evn: tariffDates ? 'giá bán lẻ từ ' + tariffDates.at(-1) : null, supply: 'Báo cáo 760/BC-BCT (10/09/2026)'};
 
 function build() {
   const pane = document.querySelector('.majorpane[data-tab="mt2"]'), section = pane?.querySelector(':scope>.section'); if (!section || pane.querySelector('.pp-nav')) return;
@@ -361,7 +363,7 @@ function build() {
   // Card dời từ Chủ đề nóng (pipeline, thiếu hụt): để lại liên kết ở chỗ cũ.
   const moved = ['dien-24', 'dien-25'].map(id => { const c = C(id); if (!c) return null; const note = el('div', 'card pp-moved', `<div class="chart-title">${esc(c.querySelector('.chart-title')?.textContent || '')}</div><p class="research-caption">Chart đã chuyển sang <a href="?section=supply#mt2" data-pp-go="supply">Bức tranh ngành › Cung điện dài hạn</a>.</p>`); c.before(note); return c; });
 
-  if (head) head.innerHTML = `<div><h2 class="sec">Bức tranh ngành</h2><p>Cầu → thủy văn & nguồn cung → huy động → giá & biên → dòng tiền EVN → cung dài hạn. Mỗi sub-tab trả lời một câu hỏi; chi tiết số liệu và phương pháp thu gọn ở cuối panel.</p></div>`;
+  if (head) head.innerHTML = `<div><h2 class="sec">Bức tranh ngành</h2><p>Cầu → thủy văn & nguồn cung → huy động → giá & biên → dòng tiền EVN → cung dài hạn. Mỗi sub-tab trả lời một câu hỏi; chi tiết số liệu và phương pháp thu gọn ở cuối panel. Trạng thái chung của ngành: <a href="?ov=pulse#mt1" data-ov-go="pulse">← Tổng quan · Industry Pulse</a>.</p></div>`;
   const nav = el('div', 'pp-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Nhóm câu hỏi phân tích');
   head ? head.after(nav) : section.prepend(nav);
   const panes = {}; let anchor = nav;
@@ -371,46 +373,9 @@ function build() {
     p.innerHTML = `<header class="pp-head"><div><span class="pp-k">${num}</span><h2>${esc(title)}</h2><p>${esc(goal)}</p></div><span class="pp-asof">${asOf[key] ? 'Dữ liệu mới nhất: ' + esc(/^\d{4}-\d\d-\d\d$/.test(asOf[key]) ? dm(asOf[key]) : asOf[key]) : ''}</span></header>`;
     anchor.after(p); anchor = p; panes[key] = p;
   });
-  const strip = (key, tiles) => { const g = el('section', 'grid kpis pp-kpis'); tiles.filter(Boolean).slice(0, key === 'pulse' ? 6 : 4).forEach(t => g.append(t)); panes[key].append(g); };
+  const strip = (key, tiles) => { const g = el('section', 'grid kpis pp-kpis'); tiles.filter(Boolean).slice(0, 4).forEach(t => g.append(t)); panes[key].append(g); };
 
-  /* ---------- 00 Pulse ---------- */
-  const th = thermal('m'), hy = G('hydro');
-  strip('pulse', [
-    kpi({label: 'Sản lượng hệ thống · ' + (M ? ml(M) : '—'), value: pc(CMP.m?.ok ? CMP.m.yoy : null), delta: `từ đầu năm ${pc(ytdOut?.yoy)}`, cls: kpiCls(CMP.m?.yoy), sub: `so cùng kỳ, ${CMP.m?.n ?? 0}/${CMP.m?.total ?? 0} ngày đối chiếu · ${link(EVN_URL, 'EVN')}`}),
-    kpi({label: 'Pmax từ đầu năm', value: nf(pmaxYtd?.cur.pmax, 0), unit: 'MW', delta: `${pc(pmaxYtd?.yoy)} so cùng khoảng năm trước`, cls: 'd-warn', sub: `${dm(pmaxYtd?.cur.date)} · đỉnh ${pmaxYtd?.prevFull ? pmaxYtd.prevFull.date.slice(0, 4) + ': ' + nf(pmaxYtd.prevFull.pmax, 0) + ' MW' : '—'}`}),
-    kpi({label: 'ONI · ENSO', value: sg(oniLast?.oni, 2), unit: '°C', delta: ensoState(oniLast?.oni), cls: oniLast?.oni >= 0.5 ? 'd-warn' : '', sub: `${oniLast ? oniLast.season + ' ' + oniLast.year : '—'} · 3 mùa trước ${sg(oni3?.oni, 2)} · NOAA CPC`}),
-    kpi({label: 'Thủy điện · ' + (M ? ml(M) : '—'), value: pc(hy?.yoy), delta: `từ đầu năm ${pc(G('hydro', 'ytd')?.yoy)}`, cls: kpiCls(hy?.yoy, 2), sub: `sản lượng so cùng kỳ · nước về ${resYoY ? pc(resYoY.med, 0) + ' (' + resYoY.span + ')' : '—'}`}),
-    kpi({label: 'Than + khí · ' + (M ? ml(M) : '—'), value: pc(th?.yoy), delta: `than ${pc(th?.coal.yoy)} · khí & dầu ${pc(th?.gas.yoy)}`, cls: kpiCls(th?.yoy, 2), sub: 'sản lượng so cùng kỳ · EVN'}),
-    kpi({label: 'Giá thị trường FMP · ' + (fmpLast ? ml(fmpLast.period) : '—'), value: nf(fmpLast?.fmp, 0), unit: 'đ/kWh', delta: `${pc(fmpPrev ? (fmpLast.fmp / fmpPrev.fmp - 1) * 100 : null)} so tháng trước · ${pc(fmpLy ? (fmpLast.fmp / fmpLy.fmp - 1) * 100 : null)} YoY`, cls: '', sub: 'PGV · FMP không phải giá thực nhận của mọi nhà máy'})
-  ]);
-  const assess = (id, title, sub, finding, ev, interp, watch, go) => el('div', 'card pp-assess', `<div class="pp-as-h"><b>${esc(title)}</b><a href="?section=${go}#mt2" data-pp-go="${go}">Mở ${esc(SECTIONS.find(s => s[0] === go)[2])} →</a></div><p class="pp-as-sub">${esc(sub)}</p>
-    <div class="pp-as-row"><span>Nhận định chính</span><div>${finding || '<span class="muted">Chưa đủ dữ liệu để kết luận.</span>'}</div></div>
-    <div class="pp-as-row"><span>Bằng chứng</span><div>${ev}</div></div><div class="pp-as-row"><span>Diễn giải</span><div>${interp}</div></div><div class="pp-as-row"><span>Theo dõi</span><div>${watch}</div></div>`);
   const pick = (arr, l) => arr.filter(x => x[0] === l);
-  const assessGrid = el('div', 'grid two g2 pp-assess-grid');
-  assessGrid.dataset.blockId = 'dien-pp-assess';
-  assessGrid.append(
-    assess('d', 'Áp lực nhu cầu', 'Phụ tải tăng nhanh hay chậm? Đỉnh có tăng nhanh hơn điện năng?', DEMAND[0]?.[1], lines(pick(DEMAND, 'A').slice(1)), lines(pick(DEMAND, 'B')), 'Pmax mùa nóng 2027 (T4–T7) so đỉnh 2026; hệ số phụ tải tháng.', 'demand'),
-    assess('h', 'Thủy văn', 'ENSO ở đâu? Nước về tăng hay giảm? Thủy điện có nguy cơ giảm sản lượng?', HYDRO[0]?.[1], lines(pick(HYDRO, 'A').slice(1)), lines(pick(HYDRO, 'B')), 'Nước về và mực nước các hồ lớn miền Bắc, Tây Nguyên trong mùa tích nước T11–T12; ONI các mùa tới.', 'hydro'),
-    assess('x', 'Huy động & kinh tế phát điện', 'Huy động dịch chuyển sang nhóm nào? Giá thị trường, nhiên liệu tạo áp lực gì?', DISPATCH[0]?.[1], lines([...pick(DISPATCH, 'A').slice(1), ...pick(ECON, 'A')]), lines([...pick(DISPATCH, 'B'), ...pick(ECON, 'C')]), 'FMP các tháng mùa khô; giá than nhập, LNG; tỷ trọng thủy điện khi mùa khô bắt đầu.', 'dispatch'),
-    assess('s', 'Triển vọng nguồn cung', 'Công suất hiện hữu, tiến độ dự án, rủi ro thiếu hụt trung hạn.', SUPPLY[0]?.[1], lines(SUPPLY.slice(1)), `${tag('B')} Phụ tải tăng nhanh trong khi tỷ trọng dự án đã vận hành thấp làm rủi ro thiếu hụt trung hạn phụ thuộc chủ yếu vào tiến độ các dự án lớn (LNG, than, thủy điện tích năng, lưới).`, 'COD các dự án LNG và than lớn; báo cáo tiến độ Quy hoạch điện VIII tiếp theo của Bộ Công Thương.', 'supply'));
-  panes.pulse.append(panel({id: 'pulse-assess', num: '00.1', q: 'Ngành điện đang ở trạng thái nào?', finding: lines([['A', 'Bốn thẻ dưới tóm tắt số liệu mới nhất theo từng câu hỏi; mỗi nhận định ghi rõ mức độ (A quan sát · B diễn giải · C hàm ý có điều kiện).']]), body: assessGrid,
-    method: 'Nhận định sinh tự động theo quy tắc từ dữ liệu trên trang mỗi lần mở; khi số mới không còn ủng hộ, câu chữ đổi theo hoặc ẩn. So cùng kỳ của sản lượng dùng đúng các ngày có bản tin EVN đủ cơ cấu nguồn ở cả hai năm. Ngưỡng "tăng tốc/giảm tốc" ±1 đ.p.; "dịch chuyển cơ cấu" ±1 đ.p. tỷ trọng.'}));
-  // Ma trận tác động theo nhóm doanh nghiệp: tín hiệu vận hành (số) tách khỏi điều kiện để thành lợi nhuận.
-  const re = G('re'), co = G('coal'), ga = G('gas');
-  const op = (v, up, dn, th2 = 3) => v == null ? '<span class="muted">chưa đủ dữ liệu</span>' : v > th2 ? `<span class="up">${up}</span>` : v < -th2 ? `<span class="dn">${dn}</span>` : 'Đi ngang';
-  const M2 = [
-    ['Thủy điện', `Nước về ${resYoY ? pc(resYoY.med, 0) + ' (' + resYoY.span + ')' : '—'} · sản lượng ${pc(hy?.yoy)} · FMP ${pc(fmpLy ? (fmpLast.fmp / fmpLy.fmp - 1) * 100 : null)} YoY`, op(hy?.yoy, 'Thuận về sản lượng', 'Bất lợi về sản lượng'), 'Doanh thu = sản lượng × giá (Qc theo hợp đồng, phần còn lại theo thị trường); chi phí chủ yếu cố định nên sản lượng quyết định lợi nhuận.', 'REE, VSH, CHP, SBA, TMP, SHP', 'hydro'],
-    ['Nhiệt điện than', `Sản lượng than ${pc(co?.yoy)} · Newcastle ${pc(coal3?.pct)} (3 tháng) · FMP ${nf(fmpLast?.fmp, 0)} đ/kWh`, op(co?.yoy, 'Thuận về huy động', 'Huy động giảm'), 'Lợi nhuận tăng khi huy động thêm có biên dương (FMP hoặc giá hợp đồng > chi phí biến đổi) và chi phí nhiên liệu được chuyển ngang; chi phí cố định trải trên sản lượng lớn hơn.', 'QTP, HND, PPC, BTP', 'dispatch'],
-    ['Điện khí', `Sản lượng khí & dầu ${pc(ga?.yoy)} · JKM ${pc(jkm3?.pct)} (3 tháng)`, op(ga?.yoy, 'Thuận về huy động', 'Huy động giảm'), 'Biên năng lượng phụ thuộc giá khí/LNG so FMP và tỷ lệ Qc; LNG đắt có thể làm giảm huy động ngoài Qc.', 'POW, NT2', 'economics'],
-    ['NLTT (gió, mặt trời)', `Sản lượng ${pc(re?.yoy)} · <span class="muted">chưa có dữ liệu cắt giảm công suất</span>`, op(re?.yoy, 'Thuận về sản lượng', 'Sản lượng giảm'), 'Giá chủ yếu theo FIT/hợp đồng; lợi nhuận theo sản lượng thực phát (thời tiết, cắt giảm) và chi phí vốn.', 'GEG, HDG, TTA', 'dispatch'],
-    ['Xây lắp & thiết bị điện', '<span class="muted">Chưa có chỉ báo định lượng COD, giải ngân lưới</span>', '—', 'Backlog và tiến độ ghi nhận doanh thu theo tiến độ dự án nguồn, lưới; tín hiệu sớm là khởi công, ký EPC.', 'PC1, TV2, GEX', 'supply']
-  ];
-  const mx = el('div', 'card pp-matrix'); mx.dataset.blockId = 'dien-pp-matrix';
-  mx.innerHTML = `<div class="tablewrap"><table><thead><tr><th>Nhóm</th><th>Tín hiệu vận hành hiện tại</th><th>Tác động lên hoạt động</th><th>Điều kiện để thành lợi nhuận</th><th>Mã theo dõi</th></tr></thead><tbody>${M2.map(r => `<tr><td><b>${r[0]}</b><br><a href="?section=${r[5]}#mt2" data-pp-go="${r[5]}" class="pp-mini-go">xem panel →</a></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td></tr>`).join('')}</tbody></table></div>`;
-  panes.pulse.append(panel({id: 'pulse-matrix', num: '00.2', q: 'Biến động chỉ tiêu ngành truyền sang nhóm doanh nghiệp nào?', finding: lines([['B', 'Cột 3 là tác động lên <b>hoạt động</b> (sản lượng, huy động); cột 4 là điều kiện để tác động đó thành <b>lợi nhuận</b>. Không phải khuyến nghị mua/bán.']]), main: mx,
-    method: `Tín hiệu tính cho ${M ? ml(M) : '—'} (sản lượng, cùng ngày đối chiếu), nước về theo HYDRO_RESERVOIRS.yoy, nhiên liệu 3 tháng ≈ 63 phiên. Ngưỡng "thuận/bất lợi" ±3% sản lượng. Danh sách mã lấy theo nhóm của trang (Tổng quan ngành › Doanh nghiệp theo dõi).`}));
-  const cyc = C('dien-02'); if (cyc) panes.pulse.append(panel({id: 'pulse-ai', num: '00.3', q: 'Vị trí trong chu kỳ (nhận định AI đã lưu)', finding: lines([['B', 'Nhận định AI có ngày lưu riêng; số mới nhất xem ở các thẻ phía trên.']]), main: cyc}));
 
   /* ---------- 01 Nhu cầu ---------- */
   const lfLast = [...months].reverse().find(m => m.m <= M && m.lf != null), lfLy = lfLast && monthBy.get(back(lfLast.m + '-01').slice(0, 7));
@@ -514,17 +479,18 @@ function build() {
     body: [el('p', 'research-caption', 'Văn bản Quy hoạch điện VIII, khung giá, cơ chế phê duyệt: xem <a href="#mt4" data-pp-main="mt4">Policy · Tax · Trade</a>. Danh sách dự án LNG và tiến độ: <a href="#mt7" data-pp-main="mt7">Chủ đề nóng</a>. Sự kiện sắp tới: <a href="#mt5" data-pp-main="mt5">Catalyst · Risk</a>.'), gap('COD dự kiến theo năm (MW theo nhóm nguồn), nhu cầu vốn đầu tư lưới truyền tải.')]}));
 
   // Chuyển phần còn lại của bố cục cũ (Thế giới / Việt Nam) — nếu sót card thì đưa vào Pulse, không mất.
-  const left = [...section.querySelectorAll('#supply-world .card, #supply-vietnam .card')].filter(c => !c.closest('.pp-pane') && !c.parentElement.closest('.card'));
-  if (left.length) { const d = el('details', 'research-fold'); d.append(el('summary', '', 'Card chưa phân loại')); left.forEach(c => d.append(c)); panes.pulse.append(d); document.documentElement.dataset.ppLeftover = left.map(c => c.dataset.blockId || '?').join(','); }
+  // dien-02 (nhận định AI đã lưu) do Tổng quan ngành lấy sang Industry Pulse.
+  const left = [...section.querySelectorAll('#supply-world .card, #supply-vietnam .card')].filter(c => !c.closest('.pp-pane') && !c.parentElement.closest('.card') && c.dataset.blockId !== 'dien-02');
+  if (left.length) { const d = el('details', 'research-fold'); d.append(el('summary', '', 'Card chưa phân loại')); left.forEach(c => d.append(c)); panes.demand.append(d); document.documentElement.dataset.ppLeftover = left.map(c => c.dataset.blockId || '?').join(','); }
   section.querySelectorAll(':scope>.supply-tabs, :scope>.supply-pane, :scope>#supply-world, :scope>#supply-vietnam').forEach(n => { n.hidden = true; n.classList.add('pp-old'); });
   [kpiGrid, top].forEach(n => { if (n && !n.querySelector('.kpi,.card')) n.remove(); });
-  if (kpiGrid?.isConnected && kpiGrid.querySelector('.kpi')) panes.pulse.append(kpiGrid);
+  if (kpiGrid?.isConnected && kpiGrid.querySelector('.kpi')) panes.demand.append(kpiGrid);
 
   // Điều hướng: chọn sub-tab, URL ?section=…#mt2, Back/Forward.
   const keys = SECTIONS.map(s => s[0]), done = new Set();
   const btns = [...nav.children];
   const select = (key, push) => {
-    if (!keys.includes(key)) key = 'pulse';
+    if (!keys.includes(key)) key = 'demand';
     keys.forEach((k, i) => { const on = k === key; panes[k].hidden = !on; btns[i].setAttribute('aria-selected', String(on)); btns[i].tabIndex = on ? 0 : -1; btns[i].classList.toggle('active', on); });
     if (!done.has(key)) { done.add(key); renders[key].forEach(f => { try { f(); } catch (e) { document.documentElement.dataset.ppError = (document.documentElement.dataset.ppError || '') + key + ':' + e.message + ';'; } }); }
     const u = new URL(location.href);
@@ -537,14 +503,16 @@ function build() {
     b.addEventListener('keydown', e => { const d = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!d) return; e.preventDefault(); const n = (i + d + btns.length) % btns.length; btns[n].click(); btns[n].focus(); });
   });
   const fromUrl = () => new URL(location.href).searchParams.get('section');
-  addEventListener('popstate', () => { const s = fromUrl(); if (s && (location.hash === '#mt2' || !location.hash)) window.showMajorTab?.('mt2'); select(s || 'pulse', false); });
+  addEventListener('popstate', () => { const s = fromUrl(); if (s && (location.hash === '#mt2' || !location.hash)) window.showMajorTab?.('mt2'); select(s || 'demand', false); });
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-pp-go]'); if (a) { e.preventDefault(); window.showMajorTab?.('mt2'); select(a.dataset.ppGo, true); pane.scrollIntoView({block: 'start'}); return; }
     const m = e.target.closest('[data-pp-main]'); if (m) { e.preventDefault(); window.showMajorTab?.(m.dataset.ppMain); window.scrollTo({top: 0}); }
   });
   const s0 = fromUrl();
   if (s0 && (!location.hash || location.hash === '#')) { history.replaceState(null, '', location.pathname + location.search + '#mt2'); window.showMajorTab?.('mt2'); }
-  select(s0 || 'pulse', false);
+  // Link cũ ?section=pulse#mt2: Industry Pulse nay ở Tổng quan ngành.
+  if (s0 === 'pulse') { history.replaceState(null, '', location.pathname + '?ov=pulse#mt1'); window.showMajorTab?.('mt1'); }
+  select(s0 && s0 !== 'pulse' ? s0 : 'demand', false);
   // Thanh sub-tab dính ngay dưới thanh tab chính (thanh tab chính chỉ dính ở desktop).
   const setTop = () => { const t = document.querySelector('.majortabs'); const cs = t && getComputedStyle(t); nav.style.top = cs && cs.position === 'sticky' && innerWidth > 700 ? (t.getBoundingClientRect().height + 8) + 'px' : '0px'; };
   setTop(); addEventListener('resize', setTop);
@@ -586,7 +554,7 @@ const CSS = `
 .pp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:2px 0 12px;flex-wrap:wrap}
 .pp-head h2{margin:0;font-size:19px}.pp-head p{margin:4px 0 0;color:var(--ink2,#3b4256);font-size:13.5px}.pp-k{font:600 12px Inter,sans-serif;color:var(--muted,#7a8399);letter-spacing:.04em}
 .pp-asof{font-size:12px;color:var(--muted,#7a8399)}
-.pp-kpis{margin-bottom:16px}.pp-pane:not(#mt2-pp-pulse) .pp-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}.pp-kpi .value small{font-size:12px;font-weight:500;color:var(--muted,#7a8399)}
+.pp-kpis{margin-bottom:16px}.pp-pane .pp-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}.pp-kpi .value small{font-size:12px;font-weight:500;color:var(--muted,#7a8399)}
 .pp-panel{margin:0 0 22px;padding:14px 14px 10px;border:1px solid var(--line,#e3e7f0);border-radius:14px;background:color-mix(in srgb,var(--card,#fff) 92%,#2938A8 3%)}
 .pp-ph{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}.pp-num{flex:0 0 auto;font:700 12px Inter,sans-serif;color:#fff;background:#1D2678;border-radius:6px;padding:3px 7px;margin-top:2px}
 .pp-ph h3{margin:0 0 4px;font-size:15.5px;line-height:1.35}.pp-find{font-size:13px;line-height:1.55}
@@ -615,7 +583,7 @@ const CSS = `
 .pp-part{background:#fff1d6;color:#7a5200;border-radius:4px;padding:0 5px}.pp-moved{opacity:.85}.pp-old{display:none!important}
 :root[data-theme=dark] .pp-panel{background:color-mix(in srgb,var(--card,#141a33) 94%,#6171C5 6%)}:root[data-theme=dark] .pp-expo tr.pp-hl td{background:#3a3214!important}
 :root[data-theme=dark] .pp-lv-A{background:#26306b;color:#dfe4ff}:root[data-theme=dark] .pp-lv-B{background:#4a3b12;color:#ffe3a6}:root[data-theme=dark] .pp-lv-C{background:#4b1d34;color:#ffd0e6}
-@media (max-width:760px){.pp-pane:not(#mt2-pp-pulse) .pp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.pp-div-row{grid-template-columns:96px 1fr 60px}.pp-div-row em{grid-column:2/4}.pp-interp dl{grid-template-columns:1fr}.pp-as-row{grid-template-columns:1fr}.pp-panel{padding:12px 10px}}
+@media (max-width:760px){.pp-pane .pp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.pp-div-row{grid-template-columns:96px 1fr 60px}.pp-div-row em{grid-column:2/4}.pp-interp dl{grid-template-columns:1fr}.pp-as-row{grid-template-columns:1fr}.pp-panel{padding:12px 10px}}
 `;
 function start() {
   if (!document.getElementById('pp-style')) { const s = el('style'); s.id = 'pp-style'; s.textContent = CSS; document.head.append(s); }

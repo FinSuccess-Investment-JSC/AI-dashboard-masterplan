@@ -1,0 +1,1354 @@
+{
+  "as_of": "2026-11-12",
+  "about": "Nội dung định tính của tab Tổng quan ngành Điện (assets/power-overview.js): chuỗi giá trị 3 luồng, mô hình kinh doanh, cơ chế thị trường, đặc điểm nhóm nguồn, bản đồ truyền dẫn biến số → lợi nhuận, luận điểm theo dõi và ngưỡng của bộ quy tắc nhận định. Số liệu không nằm ở đây: trang tính từ SECTOR_DAILY, HYDRO_RESERVOIRS, POWER_POLICY và hằng số có nguồn trong Dien/index.html. Sửa file này rồi chạy python scripts/build_power_overview.py.",
+  "thresholds": {
+    "demand_accel_pp": {
+      "value": 1.0,
+      "unit": "đ.p.",
+      "basis": "Tăng trưởng cùng kỳ 3 tháng gần nhất lệch quá ±1 đ.p. so với 3 tháng liền trước thì gọi là tăng tốc / giảm tốc (cùng ngưỡng tab Bức tranh ngành)."
+    },
+    "demand_strong_pct": {
+      "value": 5.0,
+      "unit": "%",
+      "basis": "Sản lượng hệ thống từ đầu năm tăng trên 5% so cùng kỳ thì xếp vào tín hiệu hỗ trợ sản lượng cho nhà máy phát."
+    },
+    "structural_pct": {
+      "value": 3.0,
+      "unit": "%",
+      "basis": "Tăng trưởng 12 tháng trượt và 3 tháng gần nhất cùng trên 3% thì đọc là xu hướng kéo dài, không chỉ do mùa vụ (so cùng kỳ đã loại phần mùa vụ)."
+    },
+    "mix_shift_pp": {
+      "value": 1.0,
+      "unit": "đ.p.",
+      "basis": "Tỷ trọng một nhóm nguồn đổi quá ±1 đ.p. so cùng kỳ thì gọi là dịch chuyển cơ cấu (cùng ngưỡng tab Bức tranh ngành)."
+    },
+    "divergence_pp": {
+      "value": 5.0,
+      "unit": "đ.p.",
+      "basis": "Tăng trưởng sản lượng một nhóm nguồn lệch quá ±5 đ.p. so với tăng trưởng hệ thống thì gọi là phân kỳ với phụ tải."
+    },
+    "peak_gap_pp": {
+      "value": 1.0,
+      "unit": "đ.p.",
+      "basis": "Pmax tăng nhanh hơn điện năng quá 1 đ.p. thì gọi là áp lực công suất giờ cao điểm."
+    },
+    "hydro_dry_inflow_pct": {
+      "value": -10.0,
+      "unit": "%",
+      "basis": "Trung vị nước về các hồ thấp hơn cùng kỳ quá 10% và đồng thời dưới trung bình 5 năm thì gọi là thủy văn bất lợi (cùng quy tắc tab Bức tranh ngành)."
+    },
+    "fuel_move_pct": {
+      "value": 15.0,
+      "unit": "%",
+      "basis": "Giá than Newcastle hoặc LNG JKM đổi quá ±15% trong khoảng 63 phiên (≈3 tháng) thì gọi là biến động mạnh (cùng ngưỡng tab Catalyst · Risk)."
+    },
+    "fmp_move_pct": {
+      "value": 10.0,
+      "unit": "%",
+      "basis": "FMP bình quân tháng lệch quá ±10% so cùng tháng năm trước thì gọi là thay đổi đáng kể của giá thị trường."
+    },
+    "t1_hydro_pct": {
+      "value": -5.0,
+      "unit": "%",
+      "basis": "Luận điểm 1: thủy điện 3 tháng gần nhất giảm ít nhất 5% so cùng kỳ."
+    },
+    "t1_thermal_pct": {
+      "value": 5.0,
+      "unit": "%",
+      "basis": "Luận điểm 1: than + khí 3 tháng gần nhất tăng ít nhất 5% so cùng kỳ."
+    },
+    "t2_gas_pct": {
+      "value": 5.0,
+      "unit": "%",
+      "basis": "Luận điểm 2: sản lượng khí & dầu 3 tháng đổi quá ±5% so cùng kỳ."
+    }
+  },
+  "threshold_note": "Các ngưỡng là quy ước nội bộ của dashboard để bật/tắt nhận định, không phải tiêu chuẩn ngành. Khi chuỗi dữ liệu thiếu (dưới 80% số ngày đối chiếu) quy tắc không kích hoạt.",
+  "stock_dashboards": {
+    "base": "https://finsuccess-investment-jsc.github.io/stock-dashboard/",
+    "checked_at": "2026-11-12",
+    "paths": {
+      "POW": "pow/",
+      "NT2": "nt2/",
+      "QTP": "qtp/",
+      "HND": "hnd/",
+      "REE": "ree/",
+      "VSH": "vsh/",
+      "HDG": "hdg/",
+      "GEG": "geg/",
+      "PC1": "pc1/",
+      "GEX": "gex/"
+    }
+  },
+  "groups": [
+    {
+      "id": "hydro",
+      "label": "Thủy điện",
+      "color": "#2938A8",
+      "mix_key": "hydro"
+    },
+    {
+      "id": "coal",
+      "label": "Nhiệt điện than",
+      "color": "#3d4653",
+      "mix_key": "coal"
+    },
+    {
+      "id": "gas",
+      "label": "Điện khí / LNG",
+      "color": "#c98a00",
+      "mix_key": "gas"
+    },
+    {
+      "id": "re",
+      "label": "Năng lượng tái tạo",
+      "color": "#2a9fa3",
+      "mix_key": "re"
+    },
+    {
+      "id": "grid",
+      "label": "Lưới, xây lắp & thiết bị",
+      "color": "#861C52",
+      "mix_key": null
+    }
+  ],
+  "companies": [
+    {
+      "ticker": "POW",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "gas",
+          "role": "chính",
+          "note": "Khí Cà Mau 1&2 1.500 MW, Nhơn Trạch 1–2 1.200 MW; LNG Nhơn Trạch 3&4 1.624 MW (COD 05/01/2026)"
+        },
+        {
+          "group": "coal",
+          "role": "một phần",
+          "note": "Vũng Áng 1 1.200 MW"
+        },
+        {
+          "group": "hydro",
+          "role": "nhỏ",
+          "note": "Thủy điện 325 MW"
+        }
+      ]
+    },
+    {
+      "ticker": "NT2",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "gas",
+          "role": "chính",
+          "note": "Tua-bin khí chu trình hỗn hợp Nhơn Trạch 2, 750 MW"
+        }
+      ]
+    },
+    {
+      "ticker": "PPC",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "coal",
+          "role": "chính",
+          "note": "Phả Lại 1 (440 MW, vận hành 1983–86) và Phả Lại 2 (600 MW); giấy phép Phả Lại 1 hết hạn 30/11/2026"
+        }
+      ]
+    },
+    {
+      "ticker": "QTP",
+      "exchange": "UPCoM",
+      "exposure": [
+        {
+          "group": "coal",
+          "role": "chính",
+          "note": "Quảng Ninh 1&2, 1.200 MW"
+        }
+      ]
+    },
+    {
+      "ticker": "HND",
+      "exchange": "UPCoM",
+      "exposure": [
+        {
+          "group": "coal",
+          "role": "chính",
+          "note": "Hải Phòng, 1.200 MW"
+        }
+      ]
+    },
+    {
+      "ticker": "BTP",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "gas",
+          "role": "chính",
+          "note": "Tua-bin khí/dầu Bà Rịa 389 MW, chạy dự phòng, phủ đỉnh"
+        },
+        {
+          "group": "coal",
+          "role": "gián tiếp",
+          "note": "Góp vốn HND, QTP (cổ tức)"
+        }
+      ]
+    },
+    {
+      "ticker": "REE",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "hydro",
+          "role": "chính trong mảng điện",
+          "note": "Thủy điện 1.371 MW trong danh mục 2.752 MW (sở hữu thực toàn danh mục 996 MW)"
+        },
+        {
+          "group": "coal",
+          "role": "gián tiếp",
+          "note": "1.040 MW qua cổ phần PPC"
+        },
+        {
+          "group": "re",
+          "role": "một phần",
+          "note": "Gió 127 MW, mặt trời 215 MW"
+        }
+      ],
+      "other": "Cơ điện lạnh, văn phòng cho thuê, nước sạch: không tính vào mảng điện"
+    },
+    {
+      "ticker": "VSH",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "hydro",
+          "role": "chính",
+          "note": "356 MW: Vĩnh Sơn 66, Sông Hinh 70, Thượng Kon Tum 220 MW"
+        }
+      ]
+    },
+    {
+      "ticker": "CHP",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "hydro",
+          "role": "chính",
+          "note": "A Lưới 170 MW"
+        },
+        {
+          "group": "re",
+          "role": "một phần",
+          "note": "Mặt trời Cư Jút 50 MWp"
+        }
+      ]
+    },
+    {
+      "ticker": "SBA",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "hydro",
+          "role": "chính",
+          "note": "79 MW: Krông H'năng 64, Khe Diên 15 MW"
+        }
+      ]
+    },
+    {
+      "ticker": "TMP",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "hydro",
+          "role": "chính",
+          "note": "170 MW (Thác Mơ 150 MW)"
+        },
+        {
+          "group": "re",
+          "role": "một phần",
+          "note": "Mặt trời 50 MWp"
+        }
+      ]
+    },
+    {
+      "ticker": "SHP",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "hydro",
+          "role": "chính",
+          "note": "122,5 MW ở Lâm Đồng (Đambri 75 MW)"
+        }
+      ]
+    },
+    {
+      "ticker": "GEG",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "re",
+          "role": "chính",
+          "note": "Gần 800 MWp: 24 nhà máy gió, mặt trời, thủy điện và mái nhà; Đức Huệ 2 (49 MWp) bán DPPA từ 2026"
+        },
+        {
+          "group": "hydro",
+          "role": "một phần",
+          "note": "Có nhà máy thủy điện trong danh mục; bảng nguồn chưa tách MW"
+        }
+      ]
+    },
+    {
+      "ticker": "HDG",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "hydro",
+          "role": "chính trong mảng điện",
+          "note": "Thủy điện 314 MW trong 462 MW vận hành"
+        },
+        {
+          "group": "re",
+          "role": "một phần",
+          "note": "Mặt trời 98 MW, gió 50 MW; BCTC bán niên 2026 có ý kiến lưu ý về rà soát FIT"
+        }
+      ],
+      "other": "Bất động sản: không tính vào mảng điện"
+    },
+    {
+      "ticker": "TTA",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "hydro",
+          "role": "một phần",
+          "note": "Thủy điện 82,4 MW"
+        },
+        {
+          "group": "re",
+          "role": "một phần",
+          "note": "Mặt trời 111,8 MWp"
+        }
+      ]
+    },
+    {
+      "ticker": "PC1",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "grid",
+          "role": "chính",
+          "note": "EPC lưới và NLTT, cột thép; backlog EPC 8.250 tỷ đồng cuối 2025"
+        },
+        {
+          "group": "hydro",
+          "role": "một phần",
+          "note": "Thủy điện 169 MW"
+        },
+        {
+          "group": "re",
+          "role": "một phần",
+          "note": "Gió 144 MW"
+        }
+      ],
+      "other": "Mỏ niken; 16/05/2026 khởi tố, tạm giam Chủ tịch HĐQT"
+    },
+    {
+      "ticker": "TV2",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "grid",
+          "role": "chính",
+          "note": "Tư vấn thiết kế, tổng thầu EPC (liên danh EPC Ô Môn IV 1.155 MW), vận hành bảo dưỡng"
+        }
+      ]
+    },
+    {
+      "ticker": "GEX",
+      "exchange": "HOSE",
+      "exposure": [
+        {
+          "group": "grid",
+          "role": "một phần",
+          "note": "Thiết bị điện (CADIVI, THIBIDI, EMIC)"
+        }
+      ],
+      "other": "Vật liệu xây dựng (Viglacera), nước sạch; không còn nhà máy NLTT sau khi thoái vốn Sông Bung 4A"
+    }
+  ],
+  "company_source": "Bảng \"18 doanh nghiệp theo dõi\" (dien-03, Tổng quan ngành) — nguồn ghi theo từng mã ở cuối bảng. Vai trò \"chính / một phần / gián tiếp\" theo tài sản phát điện, không phải tỷ trọng lợi nhuận.",
+  "flows": [
+    {
+      "id": "physical",
+      "label": "Luồng điện",
+      "q": "Điện được phát, truyền tải và tiêu thụ như thế nào?",
+      "nodes": [
+        {
+          "id": "input",
+          "t": "Nhiên liệu & tài nguyên",
+          "s": "than, khí, LNG, nước, gió, nắng",
+          "d": "Than (TKV và nhập khẩu), khí trong nước, LNG nhập khẩu, nước về hồ, gió và bức xạ. Quyết định nhà máy nào có thể phát và chi phí biến đổi của từng kWh."
+        },
+        {
+          "id": "gen",
+          "t": "Nhà máy phát điện",
+          "s": "EVN, PV Power, IPP, BOT, NLTT",
+          "d": "Nhà máy của các tổng công ty phát điện, PV Power, nhà đầu tư tư nhân (IPP), nhà máy BOT và dự án gió, mặt trời. Nhập khẩu điện từ Lào, Trung Quốc vào cùng lưới."
+        },
+        {
+          "id": "trans",
+          "t": "Lưới truyền tải",
+          "s": "500 kV, 220 kV · EVNNPT",
+          "d": "Tổng công ty Truyền tải điện Quốc gia (EVNNPT) vận hành lưới 500 kV, 220 kV. Giới hạn truyền tải Bắc – Trung – Nam là một nguyên nhân khiến huy động lệch thứ tự giá và NLTT bị giảm phát."
+        },
+        {
+          "id": "dist",
+          "t": "Lưới phân phối",
+          "s": "110 kV trở xuống · 5 tổng công ty điện lực",
+          "d": "Các tổng công ty điện lực (miền Bắc, miền Trung, miền Nam, Hà Nội, TP.HCM) vận hành lưới phân phối và bán lẻ."
+        },
+        {
+          "id": "user",
+          "t": "Khách hàng",
+          "s": "sản xuất, kinh doanh, sinh hoạt",
+          "d": "Phụ tải quyết định sản lượng toàn hệ thống (điện năng) và công suất đỉnh (Pmax). DPPA qua đường dây riêng cho phép nhà máy NLTT cấp điện thẳng cho khách hàng gần đó."
+        }
+      ]
+    },
+    {
+      "id": "commercial",
+      "label": "Luồng tiền",
+      "q": "Ai mua, ai bán và thanh toán qua cơ chế nào?",
+      "nodes": [
+        {
+          "id": "user",
+          "t": "Khách hàng trả tiền điện",
+          "s": "biểu giá bán lẻ",
+          "d": "Khách hàng trả theo biểu giá bán lẻ do Nhà nước quy định; giá bán lẻ bình quân do EVN điều chỉnh theo NĐ 72/2025 (sửa đổi bởi NĐ 278/2026)."
+        },
+        {
+          "id": "pc",
+          "t": "Tổng công ty điện lực",
+          "s": "thu tiền, bán lẻ",
+          "d": "Thu tiền điện của khách hàng, chuyển về hệ thống EVN; phí phân phối nằm trong giá bán lẻ."
+        },
+        {
+          "id": "evn",
+          "t": "EVN / EPTC",
+          "s": "bên mua buôn chính",
+          "d": "Công ty Mua bán điện (EPTC) thuộc EVN là bên mua trong phần lớn PPA. Giá bán lẻ không theo kịp chi phí mua điện thì áp lực dồn vào tài chính EVN và kỳ thanh toán cho nhà máy."
+        },
+        {
+          "id": "gen",
+          "t": "Nhà máy nhận tiền",
+          "s": "PPA + thị trường",
+          "d": "Nhà máy tham gia thị trường: phần Qc theo giá PPA (hợp đồng sai khác), phần còn lại theo giá thị trường FMP. Nhà máy FIT nhận giá cố định; BOT theo hợp đồng riêng; DPPA qua lưới: bán vào thị trường giao ngay và thanh toán chênh lệch với khách hàng theo hợp đồng kỳ hạn."
+        }
+      ]
+    },
+    {
+      "id": "decision",
+      "label": "Luồng quyết định",
+      "q": "Ai điều độ và yếu tố nào quyết định huy động?",
+      "nodes": [
+        {
+          "id": "moit",
+          "t": "Bộ Công Thương",
+          "s": "quy hoạch, khung giá, kế hoạch thị trường năm",
+          "d": "Ban hành khung giá phát điện, kế hoạch vận hành thị trường điện năm (tỷ lệ Qc, CAN, trần giá), quy hoạch và quy định thị trường (TT 29/2026/TT-BCT)."
+        },
+        {
+          "id": "nsmo",
+          "t": "NSMO",
+          "s": "lập lịch, điều độ, vận hành thị trường",
+          "d": "Đơn vị vận hành hệ thống điện và thị trường điện quốc gia: lập lịch huy động theo bản chào giá chu kỳ 30 phút và ràng buộc kỹ thuật (truyền tải, dự phòng, an ninh hệ thống)."
+        },
+        {
+          "id": "gen",
+          "t": "Nhà máy chào giá",
+          "s": "giá chào, công suất sẵn sàng",
+          "d": "Nhà máy trên 30 MW tham gia trực tiếp chào giá; nhà máy không tham gia trực tiếp (BOT, NLTT, thủy điện đa mục tiêu) được lập lịch theo quy định riêng."
+        },
+        {
+          "id": "hydro",
+          "t": "Quy trình hồ chứa",
+          "s": "an toàn, cấp nước hạ du",
+          "d": "Phát điện của hồ lớn xếp sau an toàn công trình và cấp nước hạ du (vd quy trình liên hồ sông Hồng, QĐ 1928/QĐ-TTg). Mùa lũ, mùa cạn có chế độ khác nhau."
+        }
+      ]
+    }
+  ],
+  "business_models": [
+    {
+      "group": "hydro",
+      "formula": "Doanh thu ≈ sản lượng (theo nước về) × giá (PPA cho Qc, FMP cho phần còn lại)",
+      "drivers": [
+        "Nước về hồ, mực nước đầu mùa khô",
+        "Tỷ lệ Qc và giá PPA",
+        "Giá thị trường FMP mùa mưa",
+        "Khấu hao, lãi vay (dự án mới)"
+      ],
+      "cost": "Gần như không có chi phí nhiên liệu; chi phí chủ yếu cố định (khấu hao, vận hành, thuế tài nguyên nước, phí dịch vụ môi trường rừng tính theo sản lượng).",
+      "cash": "Biên EBITDA cao, dòng tiền mạnh khi nước về tốt; biến động theo năm thủy văn. Nhà máy đã hết khấu hao và trả hết nợ có dòng tiền tự do lớn.",
+      "lever": "Đòn bẩy hoạt động cao: sản lượng tăng phần lớn chảy thẳng vào lợi nhuận."
+    },
+    {
+      "group": "coal",
+      "formula": "Doanh thu ≈ Qc × giá PPA + (sản lượng − Qc) × FMP; giá PPA có phần biến đổi gắn chi phí nhiên liệu",
+      "drivers": [
+        "Mức huy động (thủy văn, phụ tải)",
+        "Giá than nhập / than TKV",
+        "Hiệu suất nhiệt (suất hao than), độ khả dụng",
+        "Khấu hao, bảo trì, đầu tư xử lý khí thải"
+      ],
+      "cost": "Nhiên liệu là chi phí lớn nhất (PPC: khoảng 85% chi phí sản xuất điện 2024); phần cố định là khấu hao, lãi vay, sửa chữa lớn.",
+      "cash": "Dòng tiền ổn định khi được huy động đều; nhà máy cũ hết khấu hao nhưng tốn chi phí sửa chữa và chịu chuẩn khí thải mới.",
+      "lever": "Lợi nhuận phụ thuộc chênh lệch giá bán − chi phí biến đổi và mức chuyển ngang nhiên liệu trong PPA, không chỉ sản lượng."
+    },
+    {
+      "group": "gas",
+      "formula": "Doanh thu ≈ Qc × giá PPA + (sản lượng − Qc) × FMP; LNG mới có Qc tối thiểu 65% trong tối đa 10 năm",
+      "drivers": [
+        "Nguồn cung và giá khí trong nước, giá LNG nhập",
+        "Thứ tự huy động so với than, thủy điện",
+        "Hiệu suất chu trình hỗn hợp",
+        "Cơ chế chuyển chi phí khí/LNG vào giá điện"
+      ],
+      "cost": "Khí/LNG chiếm phần lớn chi phí biến đổi; dự án LNG mới mang khấu hao và nghĩa vụ nợ lớn.",
+      "cash": "Nhà máy khí cũ dòng tiền ổn định theo Qc; dự án LNG mới cần sản lượng cam kết để trả nợ, nhạy với giá LNG khi bán ngoài Qc.",
+      "lever": "Giá nhiên liệu cao làm giá chào cao, dễ bị huy động ít ngoài Qc; tác động tới biên tùy điều khoản PPA."
+    },
+    {
+      "group": "re",
+      "formula": "Doanh thu ≈ sản lượng thực phát (gió, bức xạ, sau cắt giảm) × giá hợp đồng (FIT, chuyển tiếp, khung giá hoặc DPPA)",
+      "drivers": [
+        "Tài nguyên gió, bức xạ",
+        "Giá bán theo hợp đồng và rủi ro rà soát FIT",
+        "Khả năng giải tỏa công suất (cắt giảm)",
+        "Lãi vay, cấu trúc vốn"
+      ],
+      "cost": "Không có nhiên liệu; khấu hao và lãi vay chiếm phần lớn chi phí.",
+      "cash": "Dòng tiền ổn định nếu giá và sản lượng ổn định; phần lớn dòng tiền đầu dự án dùng trả nợ, cổ đông nhận sau khi giảm nợ.",
+      "lever": "Thay đổi giá hợp đồng (rà soát FIT, giá tạm 50%) tác động thẳng vào lợi nhuận và khả năng trả nợ."
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "PPA",
+      "label": "PPA · hợp đồng mua bán điện",
+      "policy_group": "price",
+      "l1": "Hợp đồng giữa nhà máy và bên mua (chủ yếu EPTC thuộc EVN) quy định giá, sản lượng hợp đồng và thời hạn. Giá PPA không phải giá bán lẻ, cũng không phải giá thị trường.",
+      "l2": "Ví dụ có điều kiện: nhà máy than có PPA với giá gồm phần cố định (thu hồi vốn) và phần biến đổi gắn giá than. Khi giá than tăng, phần biến đổi tăng theo công thức trong PPA, nên biên của phần Qc ít đổi; phần bán ngoài Qc mới chịu rủi ro giá.",
+      "scope": "Điều khoản PPA từng nhà máy phần lớn không công bố. Giá PPA mới đàm phán trong khung giá phát điện do Bộ Công Thương ban hành theo năm và loại hình."
+    },
+    {
+      "id": "Qc",
+      "label": "Qc · sản lượng hợp đồng",
+      "policy_group": "market",
+      "component": "Qc",
+      "l1": "Phần sản lượng được thanh toán theo giá PPA; phần còn lại thanh toán theo giá thị trường. Qc càng cao, doanh thu càng ổn định nhưng hưởng ít hơn khi giá thị trường lên.",
+      "l2": "Minh họa (giả định, bỏ qua các khoản điều chỉnh): Qc = 80%, nhà máy phát 100 kWh → khoảng 80 kWh theo giá PPA, 20 kWh theo FMP. FMP cao hơn giá PPA thì phần 20 kWh mang lại thêm doanh thu; FMP thấp hơn thì ngược lại.",
+      "scope": "Tỷ lệ Qc ấn định trong kế hoạch vận hành thị trường điện năm, khác nhau theo loại nguồn; LNG mới có mức tối thiểu riêng theo NĐ 100/2025."
+    },
+    {
+      "id": "SMP",
+      "label": "SMP · giá biên hệ thống",
+      "policy_group": "market",
+      "component": "SMP",
+      "l1": "Giá điện năng thị trường của từng chu kỳ giao dịch 30 phút, xác định từ bản chào của tổ máy biên được huy động, có trần do Bộ Công Thương quy định.",
+      "l2": "Minh họa: giờ cao điểm mùa khô cần thêm tổ máy chào giá cao, SMP của chu kỳ đó lên gần trần; giờ thấp điểm mùa mưa thủy điện chào giá thấp, SMP xuống thấp.",
+      "scope": "NSMO không công bố chuỗi SMP theo giờ ra công chúng; trang chỉ có FMP bình quân tháng từ danh mục PGV."
+    },
+    {
+      "id": "CAN",
+      "label": "CAN · giá công suất thị trường",
+      "policy_group": "market",
+      "component": "CAN",
+      "l1": "Giá công suất thị trường, xác định trong kế hoạch vận hành thị trường điện năm; là một phần của FMP.",
+      "l2": "Minh họa: CAN năm thấp thì FMP gần với SMP; CAN năm cao làm FMP cao hơn SMP ở các chu kỳ có tính giá công suất.",
+      "scope": "CAN là giá theo năm, không phải giá từng tháng; không lấy FMP tháng trừ CAN năm để suy SMP tháng."
+    },
+    {
+      "id": "FMP",
+      "label": "FMP · giá thị trường toàn phần",
+      "policy_group": "market",
+      "component": "FMP",
+      "l1": "FMP = SMP + CAN tại từng chu kỳ giao dịch. Đây là giá cho phần sản lượng ngoài Qc của nhà máy tham gia trực tiếp thị trường.",
+      "l2": "Minh họa: FMP bình quân tháng tăng 30% so cùng kỳ chỉ làm tăng doanh thu của phần bán ngoài Qc; nhà máy có Qc 98% (thủy điện năm 2026 theo nguồn thứ cấp) gần như không hưởng.",
+      "scope": "Công thức theo TT 16/2025/TT-BCT, Điều 82; TT 29/2026/TT-BCT thay thế từ 20/07/2026, trang chưa đối chiếu điều khoản tương ứng. FMP không phải giá thực nhận của mọi nhà máy."
+    },
+    {
+      "id": "DPPA",
+      "label": "DPPA · mua bán điện trực tiếp",
+      "policy_group": "market",
+      "l1": "Nhà máy năng lượng tái tạo bán điện trực tiếp cho khách hàng lớn, qua đường dây riêng hoặc qua lưới quốc gia, thay vì bán cho EPTC.",
+      "l2": "Minh họa (qua lưới): nhà máy mặt trời bán toàn bộ điện vào thị trường giao ngay theo FMP và ký hợp đồng kỳ hạn với khách hàng ở một giá thỏa thuận; khi FMP thấp hơn giá thỏa thuận, khách hàng trả phần chênh, khi cao hơn thì nhà máy hoàn lại.",
+      "scope": "NĐ 57/2025, sửa đổi bởi NĐ 243/2026; ngưỡng tham gia và bên mua mới xem tab Policy · Tax · Trade. Rủi ro thanh toán chuyển từ EPTC sang khách hàng."
+    }
+  ],
+  "price_layers": [
+    {
+      "id": "retail",
+      "label": "Giá bán lẻ điện",
+      "who": "Khách hàng trả EVN",
+      "note": "Giá bình quân do EVN điều chỉnh theo cơ chế của Chính phủ; là doanh thu của EVN, không phải giá nhà máy nhận."
+    },
+    {
+      "id": "market",
+      "label": "Giá thị trường điện (FMP)",
+      "who": "Thị trường bán buôn trả nhà máy",
+      "note": "Chỉ áp dụng cho phần sản lượng ngoài Qc của nhà máy tham gia trực tiếp."
+    },
+    {
+      "id": "ppa",
+      "label": "Giá hợp đồng (PPA)",
+      "who": "EPTC trả nhà máy",
+      "note": "Đàm phán trong khung giá; áp dụng cho phần Qc, phần lớn không công bố theo nhà máy."
+    },
+    {
+      "id": "realized",
+      "label": "Giá thực nhận của nhà máy",
+      "who": "Bình quân gia quyền PPA, FMP (hoặc FIT)",
+      "note": "Khác nhau từng nhà máy; ước được từ doanh thu điện ÷ sản lượng trong BCTC, trang chưa tính chuỗi này."
+    }
+  ],
+  "peer_matrix": {
+    "dims": [
+      [
+        "revenue",
+        "Biến doanh thu"
+      ],
+      [
+        "cost",
+        "Biến chi phí"
+      ],
+      [
+        "leverage",
+        "Đòn bẩy hoạt động"
+      ],
+      [
+        "capex",
+        "Cường độ vốn"
+      ],
+      [
+        "cash",
+        "Đặc điểm dòng tiền"
+      ],
+      [
+        "risk",
+        "Rủi ro chính"
+      ],
+      [
+        "watch",
+        "Chỉ báo đầu tư chính"
+      ]
+    ],
+    "rows": {
+      "hydro": {
+        "revenue": "Nước về × giá (Qc cao, phần thị trường theo FMP)",
+        "cost": "Gần như cố định; không nhiên liệu",
+        "leverage": "Cao: sản lượng quyết định lợi nhuận",
+        "capex": "Cao lúc xây, thấp khi vận hành",
+        "cash": "Mạnh, biến động theo năm thủy văn",
+        "risk": "Hạn hán, El Niño; quy trình liên hồ; FMP mùa mưa thấp",
+        "watch": "Nước về, mực nước hồ, ONI, FMP, Qc"
+      },
+      "coal": {
+        "revenue": "Huy động × giá PPA/FMP",
+        "cost": "Than là chi phí lớn nhất; hiệu suất nhiệt",
+        "leverage": "Trung bình: phụ thuộc chênh lệch giá − chi phí biến đổi",
+        "capex": "Cao; thêm đầu tư xử lý khí thải",
+        "cash": "Ổn định khi huy động đều; nhà máy cũ tốn sửa chữa",
+        "risk": "Giá than không được chuyển ngang; chuẩn khí thải; giấy phép, tuổi nhà máy",
+        "watch": "Sản lượng than, giá than nhập, FMP, sự cố, bảo dưỡng"
+      },
+      "gas": {
+        "revenue": "Qc × giá PPA + phần thị trường; LNG có Qc tối thiểu",
+        "cost": "Giá khí trong nước / LNG nhập",
+        "leverage": "Trung bình: giá chào cao thì huy động ít ngoài Qc",
+        "capex": "Rất cao với LNG mới",
+        "cash": "Khí cũ ổn định; LNG mới cần sản lượng cam kết để trả nợ",
+        "risk": "Giá LNG, nguồn khí suy giảm, điều khoản chuyển chi phí",
+        "watch": "Giá JKM, Henry Hub, sản lượng khí, Qc LNG, FMP"
+      },
+      "re": {
+        "revenue": "Sản lượng thực phát × giá hợp đồng (FIT, chuyển tiếp, DPPA)",
+        "cost": "Khấu hao, lãi vay",
+        "leverage": "Cao với giá: thay đổi giá hợp đồng vào thẳng lợi nhuận",
+        "capex": "Cao, vay nợ nhiều",
+        "cash": "Ổn định nếu giá ổn định; phần lớn dùng trả nợ",
+        "risk": "Rà soát FIT, giá tạm, cắt giảm công suất, lãi suất",
+        "watch": "Kết quả đàm phán giá, cắt giảm, lãi suất, DPPA"
+      }
+    },
+    "note": "Bảng mô tả đặc điểm kinh tế, không xếp hạng nhóm nguồn tốt nhất. Doanh nghiệp đa ngành (REE, HDG, PC1, POW…) cần tách theo mảng trước khi áp đặc điểm của một nhóm."
+  },
+  "source_profiles": {
+    "hydro": {
+      "conditions": [
+        "Nước về các hồ so cùng kỳ và so trung bình 5 năm",
+        "ENSO (ONI) nghiêng khô hay ẩm",
+        "Sản lượng thủy điện so cùng kỳ",
+        "Giá thị trường FMP cho phần ngoài Qc"
+      ],
+      "transmission": "Sản lượng × giá → doanh thu; chi phí gần như cố định nên biến động sản lượng chảy gần hết vào EBITDA và lợi nhuận; dòng tiền theo năm thủy văn.",
+      "risks": [
+        "El Niño kéo dài làm mùa khô 2026–27 thiếu nước",
+        "Quy trình liên hồ ưu tiên cấp nước hạ du",
+        "FMP mùa mưa thấp làm giá phần thị trường giảm",
+        "Qc cao làm hưởng ít khi FMP lên"
+      ],
+      "pp_section": "hydro"
+    },
+    "coal": {
+      "conditions": [
+        "Sản lượng than so cùng kỳ và tỷ trọng huy động",
+        "Giá than Newcastle (tham chiếu nhập khẩu)",
+        "FMP so chi phí biến đổi",
+        "Thủy văn (huy động bù khi thủy điện thiếu)"
+      ],
+      "transmission": "Huy động tăng có biên dương (FMP hoặc giá PPA cao hơn chi phí biến đổi) thì EBITDA tăng; chi phí cố định trải trên sản lượng lớn hơn. Giá than tăng không được chuyển ngang thì biên giảm.",
+      "risks": [
+        "Giá than nhập tăng, phần chuyển ngang trong PPA không đủ",
+        "Sự cố, bảo dưỡng lớn ở nhà máy cũ",
+        "Chuẩn khí thải QCVN 19:2024 từ 2032, capex xử lý khí thải",
+        "Giấy phép hoạt động điện lực của tổ máy cũ"
+      ],
+      "pp_section": "dispatch"
+    },
+    "gas": {
+      "conditions": [
+        "Sản lượng khí & dầu so cùng kỳ (có NT3&4 từ 01/2026)",
+        "Giá LNG JKM, Henry Hub",
+        "Qc của LNG mới (tối thiểu 65%)",
+        "FMP so chi phí khí/LNG"
+      ],
+      "transmission": "Doanh thu phần Qc theo PPA ổn định; phần ngoài Qc phụ thuộc thứ tự huy động, mà giá LNG cao làm giá chào cao. Lợi nhuận phụ thuộc cơ chế chuyển chi phí khí/LNG trong PPA.",
+      "risks": [
+        "Giá LNG tăng làm giảm huy động ngoài Qc",
+        "Nguồn khí trong nước suy giảm",
+        "Nghĩa vụ nợ của dự án LNG mới",
+        "Điều khoản chuyển chi phí chưa công bố"
+      ],
+      "pp_section": "economics"
+    },
+    "re": {
+      "conditions": [
+        "Sản lượng gió + mặt trời so cùng kỳ",
+        "Công suất đặt NLTT cuối 2025",
+        "Trạng thái giá chuyển tiếp, rà soát FIT",
+        "Cắt giảm công suất (chưa có dữ liệu)"
+      ],
+      "transmission": "Doanh thu = sản lượng thực phát × giá hợp đồng; chi phí chủ yếu khấu hao, lãi vay nên giá và sản lượng thay đổi vào thẳng lợi nhuận và khả năng trả nợ.",
+      "risks": [
+        "Rà soát điều kiện nghiệm thu FIT (173 nhà máy)",
+        "Giá tạm 50% kéo dài với dự án chuyển tiếp",
+        "Cắt giảm công suất do nghẽn lưới",
+        "Lãi suất tăng"
+      ],
+      "pp_section": "dispatch"
+    }
+  },
+  "drivers": [
+    {
+      "id": "enso",
+      "label": "ENSO / thủy văn",
+      "live": "enso",
+      "pp_section": "hydro",
+      "first": "Nước về hồ thay đổi → khả năng phát của thủy điện thay đổi → hệ thống huy động các nguồn khác để bù.",
+      "groups": {
+        "hydro": "Sản lượng theo nước về (khô → giảm, ẩm → tăng)",
+        "coal": "Có thể được huy động bù khi thủy điện thiếu",
+        "gas": "Có thể được huy động bù, sau than nếu giá chào cao hơn",
+        "re": "Ít liên quan trực tiếp",
+        "grid": "Ít liên quan trực tiếp"
+      },
+      "pnl": {
+        "revenue": "Thủy điện: sản lượng × giá; nhiệt điện: sản lượng ngoài Qc × FMP",
+        "ebitda": "Thủy điện chịu tác động gần như toàn bộ; nhiệt điện theo biên giá − chi phí biến đổi",
+        "profit": "Theo EBITDA; khấu hao, lãi vay ít đổi",
+        "cash": "Thủy điện biến động theo năm thủy văn"
+      },
+      "fails": [
+        "Hồ đã tích đầy từ cuối mùa mưa",
+        "Phụ tải tăng chậm, không cần huy động thêm nhiệt điện",
+        "Ràng buộc truyền tải hoặc nhiên liệu khiến nhiệt điện không phát thêm được",
+        "FMP thấp hơn chi phí biến đổi của nhà máy nhiệt điện"
+      ],
+      "verify": [
+        {
+          "label": "Nước về hồ so cùng kỳ",
+          "live": "inflow"
+        },
+        {
+          "label": "ONI các mùa tới (NOAA)",
+          "live": "oni"
+        },
+        {
+          "label": "Sản lượng thủy điện vs than tháng tới",
+          "live": "hydro_m"
+        },
+        {
+          "label": "FMP mùa khô",
+          "live": "fmp"
+        }
+      ],
+      "example": [
+        "Nước về hồ giảm",
+        "Sản lượng thủy điện có thể bị hạn chế",
+        "Nhu cầu huy động các nguồn thay thế có thể tăng",
+        "Nhiệt điện có khả năng tăng sản lượng nếu đáp ứng điều kiện điều độ, nhiên liệu và tính kinh tế",
+        "Lợi nhuận thực tế phụ thuộc giá bán, Qc, biến phí, chi phí cố định và hiệu suất vận hành"
+      ]
+    },
+    {
+      "id": "demand",
+      "label": "Tăng trưởng phụ tải",
+      "live": "demand",
+      "pp_section": "demand",
+      "first": "Điện năng và công suất đỉnh tăng → hệ thống cần huy động thêm nguồn biên và đầu tư thêm nguồn, lưới.",
+      "groups": {
+        "hydro": "Ít đổi: sản lượng bị giới hạn bởi nước về",
+        "coal": "Huy động tăng nếu là nguồn biên rẻ",
+        "gas": "Huy động tăng ở giờ cao điểm, khi than không đủ",
+        "re": "Ít đổi: phát theo thời tiết",
+        "grid": "Nhu cầu đầu tư lưới, nguồn tăng theo trung hạn"
+      },
+      "pnl": {
+        "revenue": "Nguồn biên: sản lượng ngoài Qc tăng; xây lắp: backlog",
+        "ebitda": "Nhiệt điện: theo biên trên phần huy động thêm",
+        "profit": "Chi phí cố định trải trên sản lượng lớn hơn",
+        "cash": "EPC: vốn lưu động tăng khi nhận thêm công trình"
+      },
+      "fails": [
+        "Tăng trưởng do yếu tố một lần (nắng nóng bất thường, ngày lễ)",
+        "Nguồn mới (NLTT, nhập khẩu) đáp ứng phần tăng thêm",
+        "Dự án lưới, nguồn chậm giải ngân"
+      ],
+      "verify": [
+        {
+          "label": "Sản lượng hệ thống từ đầu năm",
+          "live": "demand"
+        },
+        {
+          "label": "Pmax mùa nóng 2027",
+          "live": "pmax"
+        },
+        {
+          "label": "Đóng góp tăng trưởng theo nguồn",
+          "live": "contrib"
+        }
+      ]
+    },
+    {
+      "id": "coal_price",
+      "label": "Giá than",
+      "live": "coal",
+      "pp_section": "economics",
+      "first": "Chi phí biến đổi của nhiệt điện than đổi → giá chào và chi phí mua điện bình quân của EVN đổi.",
+      "groups": {
+        "hydro": "Không trực tiếp; FMP có thể đổi theo",
+        "coal": "Chi phí nhiên liệu đổi; phần Qc chuyển ngang tùy PPA",
+        "gas": "Vị trí trong thứ tự huy động so với than đổi",
+        "re": "Không trực tiếp",
+        "grid": "Không trực tiếp"
+      },
+      "pnl": {
+        "revenue": "Phần biến đổi của giá PPA theo công thức; FMP có thể đổi",
+        "ebitda": "Phụ thuộc mức chuyển ngang và phần bán ngoài Qc",
+        "profit": "Không mặc định giảm tương ứng khi giá than tăng",
+        "cash": "Vốn lưu động nhiên liệu tăng khi giá cao"
+      },
+      "fails": [
+        "PPA chuyển ngang đủ chi phí nhiên liệu",
+        "Nhà máy dùng than TKV giá hợp đồng, không theo giá nhập",
+        "FMP tăng cùng chiều bù chi phí"
+      ],
+      "verify": [
+        {
+          "label": "Than Newcastle 3 tháng",
+          "live": "coal"
+        },
+        {
+          "label": "FMP so cùng kỳ",
+          "live": "fmp"
+        },
+        {
+          "label": "Biên gộp quý của PPC, QTP, HND",
+          "live": null
+        }
+      ]
+    },
+    {
+      "id": "gas_price",
+      "label": "Giá khí / LNG",
+      "live": "lng",
+      "pp_section": "economics",
+      "first": "Chi phí phát điện khí, LNG đổi → thứ tự huy động có thể đổi → sản lượng ngoài Qc của nhà máy khí đổi.",
+      "groups": {
+        "hydro": "Không trực tiếp",
+        "coal": "Có thể được huy động thay khi LNG đắt",
+        "gas": "Chi phí và huy động ngoài Qc đổi; Qc LNG mới tối thiểu 65%",
+        "re": "Không trực tiếp",
+        "grid": "Không trực tiếp"
+      },
+      "pnl": {
+        "revenue": "Phần Qc theo PPA; phần ngoài Qc theo huy động",
+        "ebitda": "Theo cơ chế chuyển chi phí trong PPA",
+        "profit": "Khác nhau giữa nhà máy khí cũ và LNG mới",
+        "cash": "Dự án LNG mới nhạy với sản lượng ngoài Qc"
+      },
+      "fails": [
+        "Chi phí khí/LNG được chuyển ngang qua PPA",
+        "Qc cao bảo vệ phần lớn sản lượng",
+        "Nhà máy dùng khí trong nước giá khác LNG"
+      ],
+      "verify": [
+        {
+          "label": "LNG JKM 3 tháng",
+          "live": "lng"
+        },
+        {
+          "label": "Sản lượng khí & dầu so cùng kỳ",
+          "live": "gas_m"
+        },
+        {
+          "label": "Qc 2027 của nhà máy khí, LNG",
+          "live": null
+        }
+      ],
+      "example": [
+        "Chi phí phát điện khí tăng",
+        "Thứ tự huy động có thể thay đổi",
+        "Khả năng chuyển chi phí phụ thuộc cơ chế hợp đồng",
+        "Biên lợi nhuận và dòng tiền chịu ảnh hưởng khác nhau giữa từng nhà máy"
+      ]
+    },
+    {
+      "id": "fmp",
+      "label": "Giá thị trường điện",
+      "live": "fmp",
+      "pp_section": "economics",
+      "first": "FMP đổi → doanh thu phần sản lượng ngoài Qc của nhà máy tham gia trực tiếp đổi.",
+      "groups": {
+        "hydro": "Phần ngoài Qc (nhỏ khi Qc cao) theo FMP",
+        "coal": "Phần ngoài Qc; có lợi khi FMP > chi phí biến đổi",
+        "gas": "Phần ngoài Qc; LNG đắt thì ít được huy động ngoài Qc",
+        "re": "FIT không đổi; DPPA qua lưới tham chiếu FMP",
+        "grid": "Không trực tiếp"
+      },
+      "pnl": {
+        "revenue": "Chỉ phần ngoài Qc",
+        "ebitda": "Phần ngoài Qc − chi phí biến đổi",
+        "profit": "Tỷ lệ Qc quyết định độ nhạy",
+        "cash": "Thanh toán theo chu kỳ thị trường"
+      },
+      "fails": [
+        "Qc cao (thủy điện 98% năm 2026 theo nguồn thứ cấp)",
+        "Nhà máy gián tiếp tham gia thị trường (BOT, thủy điện đa mục tiêu)",
+        "FMP thấp hơn chi phí biến đổi"
+      ],
+      "verify": [
+        {
+          "label": "FMP tháng so cùng kỳ",
+          "live": "fmp"
+        },
+        {
+          "label": "CAN 2027, trần SMP 2027",
+          "live": null
+        },
+        {
+          "label": "Kế hoạch vận hành thị trường 2027",
+          "live": null
+        }
+      ]
+    },
+    {
+      "id": "qc",
+      "label": "Qc / cơ chế huy động",
+      "live": "qc",
+      "pp_section": "economics",
+      "policy_group": "market",
+      "first": "Tỷ lệ Qc đổi → phần doanh thu cố định theo PPA và phần chịu giá thị trường đổi.",
+      "groups": {
+        "hydro": "Qc cao: doanh thu ổn định, hưởng ít khi FMP lên",
+        "coal": "Qc thấp hơn: nhạy hơn với FMP và huy động",
+        "gas": "LNG mới có Qc tối thiểu; dự thảo nâng lên 75%",
+        "re": "Không áp dụng với FIT",
+        "grid": "Không trực tiếp"
+      },
+      "pnl": {
+        "revenue": "Cơ cấu doanh thu PPA / thị trường",
+        "ebitda": "Độ biến động của biên",
+        "profit": "Độ ổn định lợi nhuận",
+        "cash": "Khả năng trả nợ của dự án LNG mới"
+      },
+      "fails": [
+        "Qc giữ nguyên qua các năm",
+        "FMP gần giá PPA nên phần nào cũng tương đương"
+      ],
+      "verify": [
+        {
+          "label": "Qc 2026 theo nguồn",
+          "live": "qc"
+        },
+        {
+          "label": "Kế hoạch vận hành thị trường 2027",
+          "live": null
+        },
+        {
+          "label": "Nghị định nâng Qc LNG (dự thảo)",
+          "live": null
+        }
+      ]
+    },
+    {
+      "id": "rates",
+      "label": "Lãi suất",
+      "live": null,
+      "pp_section": null,
+      "first": "Chi phí vốn đổi → chi phí lãi vay của dự án mới, nhà máy còn nợ lớn và giá trị chiết khấu dòng tiền đổi.",
+      "groups": {
+        "hydro": "Dự án mới còn nợ (vd Thượng Kon Tum của VSH)",
+        "coal": "Ít, phần lớn nhà máy đã giảm nợ",
+        "gas": "LNG mới vay nhiều",
+        "re": "Nhạy nhất: vay nợ cao",
+        "grid": "Vốn lưu động EPC"
+      },
+      "pnl": {
+        "revenue": "Không trực tiếp",
+        "ebitda": "Không trực tiếp",
+        "profit": "Chi phí tài chính",
+        "cash": "Dòng tiền trả nợ"
+      },
+      "fails": [
+        "Khoản vay lãi suất cố định",
+        "Doanh nghiệp đã trả phần lớn nợ"
+      ],
+      "verify": [
+        {
+          "label": "Lãi suất cho vay trung dài hạn",
+          "live": null
+        },
+        {
+          "label": "Chi phí lãi vay quý của doanh nghiệp",
+          "live": null
+        }
+      ]
+    },
+    {
+      "id": "policy",
+      "label": "Chính sách PPA / FIT / DPPA",
+      "live": "policy",
+      "pp_section": null,
+      "policy_group": "price",
+      "first": "Giá hợp đồng, điều kiện hưởng FIT hoặc kênh bán DPPA thay đổi → giá bán và rủi ro thanh toán của dự án NLTT đổi.",
+      "groups": {
+        "hydro": "Ít",
+        "coal": "Khung giá áp dụng cho dự án mới",
+        "gas": "Khung giá LNG, Qc tối thiểu",
+        "re": "Giá FIT, giá chuyển tiếp, giá tạm, DPPA",
+        "grid": "Tiến độ dự án mới phụ thuộc khung giá"
+      },
+      "pnl": {
+        "revenue": "Giá bán hợp đồng",
+        "ebitda": "Theo giá bán",
+        "profit": "Có thể phải trích dự phòng khi giá bị rà soát",
+        "cash": "Thanh toán tạm, kỳ thu tiền"
+      },
+      "fails": [
+        "Dự án không thuộc danh sách rà soát",
+        "Kết quả đàm phán giữ giá cũ"
+      ],
+      "verify": [
+        {
+          "label": "Kết quả đàm phán 173 nhà máy FIT",
+          "live": "policy"
+        },
+        {
+          "label": "Dự án chuyển tiếp ký PPA chính thức",
+          "live": "transitional"
+        },
+        {
+          "label": "Ý kiến kiểm toán, dự phòng trong BCTC",
+          "live": null
+        }
+      ]
+    },
+    {
+      "id": "grid",
+      "label": "Đầu tư lưới & tiến độ COD",
+      "live": "pipeline",
+      "pp_section": "supply",
+      "first": "Vốn đầu tư lưới, nguồn và tiến độ COD → khối lượng công việc của EPC, thiết bị; khả năng giải tỏa công suất NLTT.",
+      "groups": {
+        "hydro": "Ít",
+        "coal": "Nhà máy hiện hữu được huy động cao hơn nếu nguồn mới chậm",
+        "gas": "COD các dự án LNG",
+        "re": "Giảm cắt giảm công suất khi lưới mở rộng",
+        "grid": "Backlog, doanh thu EPC, thiết bị"
+      },
+      "pnl": {
+        "revenue": "EPC: doanh thu theo tiến độ nghiệm thu",
+        "ebitda": "Biên EPC mỏng, theo giá vật tư",
+        "profit": "Theo khối lượng ghi nhận",
+        "cash": "Vốn lưu động, phải thu chủ đầu tư"
+      },
+      "fails": [
+        "Dự án chậm giải ngân, giải phóng mặt bằng",
+        "Doanh nghiệp không trúng thầu",
+        "Giá vật tư (thép, đồng) tăng"
+      ],
+      "verify": [
+        {
+          "label": "Tỷ lệ dự án quy hoạch đã vận hành",
+          "live": "pipeline"
+        },
+        {
+          "label": "Giải ngân lưới EVN/NPT theo quý",
+          "live": null
+        },
+        {
+          "label": "Backlog EPC theo quý (PC1, TV2)",
+          "live": null
+        }
+      ]
+    }
+  ],
+  "sensitivity": {
+    "status": "qualitative",
+    "inputs": {
+      "hydro": [
+        "Sản lượng thiết kế và thực tế từng nhà máy",
+        "Giá PPA và tỷ lệ Qc",
+        "FMP bình quân phần ngoài Qc",
+        "Chi phí cố định, thuế, phí theo sản lượng"
+      ],
+      "coal": [
+        "Suất hao than thực tế",
+        "Giá than đầu vào theo hợp đồng",
+        "Công thức chuyển ngang trong PPA",
+        "Tỷ lệ Qc, sản lượng ngoài Qc"
+      ],
+      "gas": [
+        "Giá khí/LNG theo hợp đồng",
+        "Hiệu suất tổ máy",
+        "Qc và điều khoản bao tiêu",
+        "Lịch trả nợ"
+      ],
+      "re": [
+        "Giá hợp đồng sau rà soát",
+        "Sản lượng sau cắt giảm",
+        "Dư nợ, lãi suất"
+      ]
+    },
+    "formula": "Δ lợi nhuận trước thuế ≈ Δ sản lượng × (giá thực nhận − chi phí biến đổi) + sản lượng × Δ giá thực nhận − sản lượng × Δ chi phí biến đổi − Δ chi phí lãi vay. Chỉ tính được khi có đủ các đầu vào trên cho từng nhà máy."
+  },
+  "theses": [
+    {
+      "id": "t1",
+      "title": "Nhiệt điện được huy động nhiều hơn khi thủy văn bất lợi",
+      "rule": "thermal_dry",
+      "segments": [
+        "coal",
+        "gas",
+        "hydro"
+      ],
+      "tickers": [
+        "PPC",
+        "QTP",
+        "HND",
+        "POW",
+        "NT2",
+        "REE",
+        "VSH",
+        "CHP"
+      ],
+      "next": [
+        "noaa",
+        "evn_month",
+        "dry_season"
+      ],
+      "support": "Thủy điện 3 tháng giảm, than + khí tăng, nước về thấp hơn cùng kỳ",
+      "contra": "Thủy điện tăng trở lại hoặc than + khí không tăng dù nước về thấp"
+    },
+    {
+      "id": "t2",
+      "title": "Biến động giá nhiên liệu ảnh hưởng khả năng cạnh tranh của nguồn khí",
+      "rule": "gas_fuel",
+      "segments": [
+        "gas"
+      ],
+      "tickers": [
+        "POW",
+        "NT2",
+        "BTP"
+      ],
+      "next": [
+        "evn_month",
+        "fmp_month",
+        "market_plan_2027"
+      ],
+      "confound": {
+        "from": "2026-01-05",
+        "note": "Nhơn Trạch 3&4 (1.624 MW) vận hành thương mại từ 05/01/2026: đến hết 12 tháng sau mốc này, sản lượng khí so cùng kỳ tăng một phần do công suất mới, chưa phản ánh khả năng cạnh tranh; cần tách theo nhà máy."
+      },
+      "support": "Giá LNG biến động mạnh và sản lượng khí đổi ngược chiều",
+      "contra": "Giá LNG tăng mạnh nhưng sản lượng khí vẫn tăng (lưu ý NT3&4 vận hành từ 01/2026 làm sản lượng khí tăng do công suất mới)"
+    },
+    {
+      "id": "t3",
+      "title": "Đầu tư nguồn và lưới tạo cơ hội cho EPC và thiết bị",
+      "rule": "grid_capex",
+      "segments": [
+        "grid"
+      ],
+      "tickers": [
+        "PC1",
+        "TV2",
+        "GEX"
+      ],
+      "next": [
+        "fs_q4",
+        "pdp8"
+      ],
+      "support": "Giải ngân lưới, backlog EPC tăng theo quý",
+      "contra": "Dự án tiếp tục chậm, backlog giảm"
+    },
+    {
+      "id": "t4",
+      "title": "Thay đổi PPA/FIT ảnh hưởng khả năng thu hồi dòng tiền dự án NLTT",
+      "rule": "fit_cash",
+      "segments": [
+        "re"
+      ],
+      "tickers": [
+        "HDG",
+        "GEG",
+        "TTA",
+        "REE"
+      ],
+      "next": [
+        "fit_review",
+        "fs_q4"
+      ],
+      "support": "Giá tạm, rà soát FIT, ý kiến kiểm toán, dự phòng",
+      "contra": "Kết quả đàm phán giữ giá, thanh toán đủ"
+    }
+  ],
+  "releases": [
+    {
+      "id": "noaa",
+      "label": "NOAA cập nhật ENSO, ONI",
+      "rule": "second_thursday",
+      "kind": "scheduled",
+      "basis": "NOAA CPC công bố ENSO Diagnostic Discussion vào thứ Năm thứ hai mỗi tháng",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml"
+    },
+    {
+      "id": "evn_month",
+      "label": "EVN báo cáo vận hành tháng",
+      "rule": "first_week",
+      "kind": "expected",
+      "basis": "Theo nhịp công bố các tháng trước (đầu tháng sau), không phải lịch công bố chính thức",
+      "url": "https://www.evn.com.vn/"
+    },
+    {
+      "id": "fmp_month",
+      "label": "Giá thị trường FMP tháng",
+      "rule": "none",
+      "kind": "expected",
+      "basis": "Cập nhật thủ công từ danh mục PGV khi có số mới; chưa có lịch",
+      "url": null
+    },
+    {
+      "id": "fs_q4",
+      "label": "BCTC quý IV/2026 của doanh nghiệp",
+      "date": "2027-01-30",
+      "kind": "scheduled",
+      "basis": "Hạn chậm nhất với BCTC hợp nhất theo TT 96/2020/TT-BTC (công ty không có công ty con: 20/01)",
+      "url": null
+    },
+    {
+      "id": "dry_season",
+      "label": "Mùa khô 2027 (thủy văn)",
+      "date": "2027-01-01",
+      "end": "2027-06-30",
+      "kind": "expected",
+      "basis": "Khoảng mùa vụ, không phải sự kiện; thời điểm cụ thể khác nhau theo vùng",
+      "url": null
+    },
+    {
+      "id": "hot_season",
+      "label": "Mùa nóng 2027 (Pmax)",
+      "date": "2027-04-01",
+      "end": "2027-07-31",
+      "kind": "expected",
+      "basis": "Khoảng mùa vụ: Pmax các năm gần đây rơi vào tháng 4–7",
+      "url": null
+    },
+    {
+      "id": "ppc_license",
+      "label": "Giấy phép hoạt động điện lực Phả Lại 1 (PPC) hết hạn",
+      "date": "2026-11-30",
+      "kind": "scheduled",
+      "basis": "Mốc trong giấy phép, theo tin của PPC",
+      "url": "http://ppc.evn.vn/tin-tuc/thu-truong-bo-cong-thuong-lam-viec-voi-ppc-thao-go-kho-khan-vuong-mac-trong-sxkd-cua-nmnd-pha-lai-1.html"
+    },
+    {
+      "id": "retail_next",
+      "label": "Lần điều chỉnh giá bán lẻ kế tiếp",
+      "date": "2027-02-01",
+      "kind": "earliest",
+      "basis": "Sớm nhất 3 tháng sau lần điều chỉnh 01/11/2026 (NĐ 72/2025, sửa đổi bởi NĐ 278/2026); chưa có lịch điều chỉnh",
+      "url": null
+    },
+    {
+      "id": "evn_cost",
+      "label": "Hạn EVN báo cáo chi phí sản xuất kinh doanh điện thực tế năm 2026",
+      "date": "2027-06-30",
+      "kind": "scheduled",
+      "basis": "Hạn theo NĐ 278/2026",
+      "url": null
+    },
+    {
+      "id": "lng_qc",
+      "label": "Mốc LNG: chỉ dự án phát điện trước ngày này hưởng Qc tối thiểu 65%",
+      "date": "2031-01-01",
+      "kind": "scheduled",
+      "basis": "NĐ 100/2025",
+      "url": null
+    },
+    {
+      "id": "qcvn19",
+      "label": "Nhà máy nhiệt điện hiện hữu phải đạt QCVN 19:2024/BTNMT",
+      "date": "2032-01-01",
+      "kind": "scheduled",
+      "basis": "TT 45/2024/TT-BTNMT",
+      "url": null
+    },
+    {
+      "id": "market_plan_2027",
+      "label": "Kế hoạch vận hành thị trường điện 2027 (Qc, CAN, trần SMP)",
+      "kind": "undated",
+      "basis": "Phương thức vận hành 2027 đang hoàn thiện (VietnamPlus 07/11/2026); chưa có ngày ban hành",
+      "url": "https://www.vietnamplus.vn/bo-cong-thuong-dua-ra-8-nhom-giai-phap-bao-dam-cung-ung-dien-nam-2027-2028-post1146854.vnp"
+    },
+    {
+      "id": "pdp8",
+      "label": "Quyết định điều chỉnh Quy hoạch điện VIII lần 2",
+      "kind": "undated",
+      "basis": "Đang ở dạng đề xuất (tab Policy); chưa có ngày",
+      "url": null,
+      "policy_id": "pdp8-adjust-2"
+    },
+    {
+      "id": "fit_review",
+      "label": "Kết quả đàm phán giá với 173 nhà máy thiếu văn bản nghiệm thu FIT",
+      "kind": "undated",
+      "basis": "Đang rà soát (tab Policy); chưa có ngày",
+      "url": null,
+      "policy_id": "fit-review"
+    }
+  ]
+}
