@@ -606,9 +606,9 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
   "insurance.hot-topics": {
-   "lastAttempt": "2026-10-28T21:31:35+07:00",
-   "lastSuccess": "2026-10-28T21:31:35+07:00",
-   "lastNote": "khai thác mới NT 9T 15.894 tỷ, ~45% qua ngân hàng"
+   "lastAttempt": "2026-11-12T13:01:32+07:00",
+   "lastSuccess": "2026-11-12T13:01:32+07:00",
+   "lastNote": "Mở baodautu.vn 28/10/2026 (số 9T/2026: khai thác mới 15.894 tỷ, 101.621 tỷ -4%, bancassurance ~45%, HĐ hiệu lực 11.252.913 -2,4%): đã có đúng trên bh-t1; chưa có bài mới hơn"
   },
   "insurance.ai.cycle": {
    "lastAttempt": "2026-10-11T15:38:38+07:00",
@@ -659,9 +659,9 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
   "retail.hot-topics": {
-   "lastAttempt": "2026-10-28T18:13:38+07:00",
-   "lastSuccess": "2026-10-28T18:13:38+07:00",
-   "lastNote": "PNJ ĐHĐCĐ 21/10; Q3 sơ bộ lỗ 258 tỷ"
+   "lastAttempt": "2026-11-12T13:01:32+07:00",
+   "lastSuccess": "2026-11-12T13:01:32+07:00",
+   "lastNote": "Mở doanhnhan.baophapluat.vn 28/09/2026 (MBS dự phóng Q3 PNJ/MWG): chỉ là dự phóng, trang đã có số thực Q3 PNJ lỗ 258 tỷ (22/10) và BHX 9T; không sửa"
   },
   "retail.ai.cycle": {
    "lastAttempt": "2026-10-11T17:03:33+07:00",
@@ -6043,28 +6043,6 @@
    "signals": []
   },
   {
-   "id": "insurance.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: bancassurance, sức khỏe, lãi suất",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00",
-    "lịch 09/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "retail.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: PNJ kim cương, Bách Hóa Xanh/Long Châu, thuế TTĐB, TMĐT",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00",
-    "lịch 09/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "power.company-quarterly",
    "tier": "C",
    "title": "BCTC quý các doanh nghiệp điện: doanh thu, lãi gộp, lãi ròng, biên",
@@ -7016,5 +6994,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-12T09:11:31+07:00"
+ "updatedAt": "2026-11-12T13:01:32+07:00"
 }

@@ -1,5 +1,6 @@
-Routine Wi 12/11: KHÔNG cập nhật được.
-Widata-MCP không cung cấp công cụ nào trong phiên chạy, nên chưa gọi Wi và không có số mới.
-37 mục Wi (10 ngành) giữ nguyên số cũ, đã đánh dấu lỗi.
-Cần kiểm tra lại kết nối/đăng nhập Widata của routine.
+Routine tài liệu 12/11: xử lý 2/10 mục, không đổi số trên trang.
+Bảo hiểm (chủ đề nóng): số 9T/2026 trên trang khớp bài Báo Đầu tư 28/10; chưa có số 10T.
+Bán lẻ (chủ đề nóng): trang đã có số thực Q3 PNJ; bài dự phóng MBS không thay số.
+Hàng chờ còn 56 mục (chưa đủ thời gian đọc nguồn gốc cho các mục còn lại).
+Hồ EVN, Cục ĐTNN để runner máy người dùng xử lý.
 Chưa kiểm giao diện bằng trình duyệt.
