@@ -470,13 +470,12 @@ const SECTIONS = [
   ['tech', '01', 'Chuỗi giá trị theo công nghệ', 'Value Chain by Technology', 'Mỗi loại nhà máy tạo doanh thu, tốn chi phí ở khâu nào?', techPane],
   ['unit', '02', 'Kinh tế đơn vị', 'Unit Economics', 'Một kWh mang lại bao nhiêu và tốn bao nhiêu?', unitPane],
   ['pulse', '03', 'Bức tranh hiện tại', 'Industry Pulse', 'Ngành đang ở trạng thái nào?', pulse],
-  ['transmission', '04', 'Tác động đầu tư', 'Investment Transmission', 'Biến động ngành ảnh hưởng đến doanh nghiệp ra sao?', transmission],
+  ['transmission', '04', 'Tác động đầu tư', 'Doanh nghiệp · So sánh tài chính', 'Biến động ngành ảnh hưởng đến doanh nghiệp ra sao?', transmission],
   ['forward', '05', 'Triển vọng', 'Forward Outlook', 'Điều gì có thể làm thay đổi luận điểm?', forward]
 ];
 // Khóa cũ (bản 5 sub-tab) vẫn mở đúng chỗ.
 const ALIAS = {economics: 'unit', mix: 'tech'};
 SECTIONS.forEach(s => { renders[s[0]] = []; });
-const LAYER_KEY = 'dien-ov-layer';
 function build() {
   const pane = document.getElementById('pane-mt1'); if (!pane || pane.querySelector('.ov-nav')) return;
   const head = pane.querySelector(':scope>.sectionhead');
@@ -484,13 +483,8 @@ function build() {
   const oldBar = pane.querySelector(':scope>.pane-subtabs'), oldPanes = [...pane.querySelectorAll(':scope>.pane-subpane')];
   document.getElementById('dataBrief')?.remove();
   if (head) head.innerHTML = `<div><h2 class="sec">Tổng quan ngành điện</h2><p>Nhìn để hiểu ngành, bấm để phân tích: bản đồ ngành → chuỗi giá trị từng công nghệ → kinh tế một kWh → trạng thái hiện tại → tác động tới doanh nghiệp → triển vọng.</p></div>`;
-  const ctl = el('div', 'ov-bar');
-  const st = stateParts();
-  ctl.innerHTML = `${st.length ? `<div class="ov-now"><b>Hiện tại</b> ${st.join(' · ')} <a href="?ov=pulse#mt1" data-ov-go="pulse">Industry Pulse →</a></div>` : ''}<div class="ov-asof"><b>Dữ liệu mới nhất</b> EVN ${dm(lastDay)} · ONI ${oniLast ? oniLast.season + ' ' + oniLast.year : '—'} · hồ chứa ${H?.last_observation ? dm(H.last_observation) : '—'} · FMP ${fmpLast ? ml(fmpLast.period) : '—'} · than/LNG ${dm(coal3?.date)}</div>
-    <div class="ov-layer-t" role="group" aria-label="Mức chi tiết"><button type="button" data-layer="investor">Nhà đầu tư</button><button type="button" data-layer="analyst">Analyst</button></div>
-    <div class="ov-jump"><span>Đi tới</span><button type="button" data-pp-go="demand">Cung – Cầu</button><button type="button" data-pp-go="economics">Giá – Chi phí</button><button type="button" data-ov-main="mt4">Policy</button><button type="button" data-ov-jump="companies">Doanh nghiệp theo dõi</button><button type="button" data-ov-jump="comparison">So sánh tài chính</button><button type="button" data-ov-main="mt5">Catalyst</button></div>`;
   const nav = el('div', 'ov-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Tổng quan ngành: sáu bước');
-  (head || pane.firstChild) ? (head ? head.after(ctl, nav) : pane.prepend(ctl, nav)) : pane.prepend(ctl, nav);
+  head ? head.after(nav) : pane.prepend(nav);
   const panes = {}; let anchor = nav;
   SECTIONS.forEach(([key, num, label, tech, q]) => {
     const b = el('button', 'tabbtn ov-tab', `<span>${num}</span>${esc(label)}<small>${esc(tech)}</small>`); b.type = 'button'; b.id = 'mt1-ov-' + key + '-tab'; b.setAttribute('role', 'tab'); b.dataset.ov = key; nav.append(b);
@@ -506,11 +500,8 @@ function build() {
   if (left.length) { const d = el('details', 'research-fold ov-an', '<summary>Nội dung khác của bản trước</summary>'); left.forEach(n => d.append(n)); panes.transmission.append(d); document.documentElement.dataset.ovLeftover = left.map(n => n.dataset.blockId || n.className).join(','); }
   oldPanes.forEach(w => w.remove()); oldBar?.remove();
 
-  // Lớp thông tin: Nhà đầu tư (gọn) / Analyst (công thức, phương pháp, nhận định đầy đủ). Lưu theo trình duyệt.
-  const setLayer = l => { pane.dataset.ovLayer = l; ctl.querySelectorAll('[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === l))); try { localStorage.setItem(LAYER_KEY, l); } catch (e) { /* bỏ qua */ } };
-  let saved = 'investor'; try { saved = localStorage.getItem(LAYER_KEY) || 'investor'; } catch (e) { /* bỏ qua */ }
-  setLayer(new URL(location.href).searchParams.get('layer') || saved);
-  ctl.querySelectorAll('[data-layer]').forEach(b => b.addEventListener('click', () => { setLayer(b.dataset.layer); refit(pane); }));
+  // Thanh trên cùng (trạng thái, ngày dữ liệu, nút Nhà đầu tư/Analyst, Đi tới) đã bỏ 12/11/2026 theo yêu cầu người dùng: trùng thanh giá và tab chính.
+  // Không còn ẩn lớp Analyst: các phần chi tiết vẫn nằm trong mục thu gọn (details), mở khi cần.
 
   const keys = SECTIONS.map(s => s[0]), done = new Set(), btns = [...nav.children];
   const select = (key, push) => {
