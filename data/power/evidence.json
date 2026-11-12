@@ -1858,5 +1858,65 @@
   "quote": "còn 32 dự án, tổng công suất hơn 1.700 MW chưa gửi hồ sơ đàm phán.",
   "status": "match",
   "note": "VnExpress 28/09/2026, số đến 23/09/2026."
+ },
+ {
+  "block": "dien-39",
+  "claim": "TT 29/2026 Điều 3 khoản 77: định nghĩa sản lượng điện hợp đồng",
+  "value": "định nghĩa",
+  "url": "https://luatvietnam.vn/dien-luc/thong-tu-29-2026-tt-bct-quy-dinh-van-hanh-thi-truong-ban-buon-dien-canh-tranh-436583-d1.html",
+  "opened_at": "2026-11-12",
+  "quote": "Sản lượng điện hợp đồng là sản lượng điện năng được các bên đàm phán, thỏa thuận trong hợp đồng mua bán điện",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-39",
+  "claim": "TT 29/2026 Điều 38 khoản 1: Qc tháng",
+  "value": "QcM = Max {QcttM ; α x QdkM}",
+  "url": "https://luatvietnam.vn/dien-luc/thong-tu-29-2026-tt-bct-quy-dinh-van-hanh-thi-truong-ban-buon-dien-canh-tranh-436583-d1.html",
+  "opened_at": "2026-11-12",
+  "quote": "QcM = Max {QcttM ; α x QdkM}",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-48",
+  "claim": "TT 29/2026 Điều 16 khoản 3: giá thị trường toàn phần gồm 2 thành phần",
+  "value": "02 thành phần",
+  "url": "https://luatvietnam.vn/dien-luc/thong-tu-29-2026-tt-bct-quy-dinh-van-hanh-thi-truong-ban-buon-dien-canh-tranh-436583-d1.html",
+  "opened_at": "2026-11-12",
+  "quote": "Giá thị trường điện toàn phần áp dụng cho đơn vị phát điện được tính bằng tổng của 02 thành phần sau:",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-43",
+  "claim": "Luật Thuế TNDN 67/2025 Điều 13 khoản 1: thuế suất ưu đãi",
+  "value": "10% trong 15 năm",
+  "url": "https://luatvietnam.vn/thue/luat-thue-thu-nhap-doanh-nghiep-2025-so-67-2025-qh15-404386-d1.html",
+  "opened_at": "2026-11-12",
+  "quote": "Áp dụng thuế suất 10% trong 15 năm đối với:",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-43",
+  "claim": "Luật Thuế TNDN 67/2025 Điều 14 khoản 1: miễn, giảm thuế",
+  "value": "miễn tối đa 04 năm, giảm 50% tối đa 09 năm",
+  "url": "https://luatvietnam.vn/thue/luat-thue-thu-nhap-doanh-nghiep-2025-so-67-2025-qh15-404386-d1.html",
+  "opened_at": "2026-11-12",
+  "quote": "Miễn thuế tối đa 04 năm và giảm 50% số thuế phải nộp tối đa không quá 09 năm tiếp theo đối với:",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-43",
+  "claim": "Luật Thuế TNDN 67/2025 Điều 12 khoản 2 điểm d: lĩnh vực ưu đãi",
+  "value": "năng lượng tái tạo",
+  "url": "https://luatvietnam.vn/thue/luat-thue-thu-nhap-doanh-nghiep-2025-so-67-2025-qh15-404386-d1.html",
+  "opened_at": "2026-11-12",
+  "quote": "Sản xuất năng lượng tái tạo, năng lượng sạch, năng lượng từ việc tiêu hủy chất thải;",
+  "status": "match",
+  "note": ""
  }
 ]

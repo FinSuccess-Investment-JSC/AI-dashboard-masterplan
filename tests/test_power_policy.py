@@ -36,13 +36,20 @@ class PowerPolicyTest(unittest.TestCase):
         data['price_frameworks'][0]['ceiling'] = 1234.56
         self.assertTrue(any('chưa có trong evidence' in e for e in bp.validate(data, self.evidence)))
 
-    def test_radar_and_modules(self):
-        radar = [p for p in self.data['policies'] if p.get('radar')]
-        self.assertTrue(3 <= len(radar) <= 5)
+    def test_module_needs_template_parts(self):
+        data = json.loads(json.dumps(self.data))
+        data['handbook']['2.1']['quick'] = ''
+        self.assertTrue(any('2.1: thiếu quick' in e for e in bp.validate(data, self.evidence)))
+
+    def test_handbook_on_page(self):
+        tabs = self.data['tabs']
+        self.assertEqual([t['id'] for t in tabs], ['plan', 'price', 'market', 'tax'])
         page = (ROOT / 'Dien' / 'index.html').read_text(encoding='utf-8')
-        for key in self.data['modules']:
-            if key != 'radar':
-                self.assertIn(f'id="pp-{key}"', page)
+        for t in tabs:
+            self.assertIn(f'data-pane="{t["id"]}"', page)
+            for key in t['modules']:
+                m = self.data['handbook'][key]
+                self.assertIn(f'id="pp-m-{key.replace(".", "-")}" data-mod="{key}" data-block-id="{m["block"]}"', page)
         for name in ('assets/power-policy.js', 'assets/power-policy.css', 'data/power-policy.js'):
             self.assertRegex(page, re.escape('../' + name) + r'\?v=[0-9a-f]{12}"')
 
