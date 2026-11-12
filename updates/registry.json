@@ -1508,7 +1508,7 @@
   {
    "id": "power.policy",
    "tier": "C",
-   "title": "Tab Policy / Tax / Trade Điện: khung giá, FIT, thị trường điện, DPPA, quy hoạch, pipeline, thuế, thương mại, carbon",
+   "title": "Tab Policy Điện: cẩm nang cơ chế (quy hoạch, giá điện, thị trường, thuế, môi trường) và tra cứu văn bản",
    "schedule": {
     "type": "weekly",
     "day": "mon",
@@ -1523,24 +1523,28 @@
     "page": "Dien/index.html",
     "blocks": [
      "dien-34",
-     "dien-17",
-     "dien-35",
-     "dien-36",
-     "dien-37",
-     "dien-38",
-     "dien-39",
-     "dien-40",
-     "dien-19",
      "dien-18",
-     "dien-41",
+     "dien-47",
      "dien-42",
+     "dien-41",
+     "dien-35",
+     "dien-17",
+     "dien-36",
+     "dien-19",
+     "dien-38",
+     "dien-40",
+     "dien-39",
+     "dien-48",
+     "dien-49",
+     "dien-37",
      "dien-43",
      "dien-44",
      "dien-45",
+     "dien-50",
      "dien-46"
     ]
    },
-   "how": "Mọi số và câu chữ của tab nằm ở data/power-policy.json (một bản ghi cho mỗi chính sách, theo schema trong scripts/build_power_policy.py); giao diện assets/power-policy.js không cần sửa. Khi watcher báo văn bản mới hoặc đến lượt thứ Hai: (1) mở văn bản gốc hoặc bài cơ quan nhà nước, ghi đoạn trích chứa số vào data/power/evidence.json; (2) thêm/sửa bản ghi trong policies (trạng thái Draft/Issued/Effective/Expired/Superseded, ngày ban hành, ngày hiệu lực, thay đổi so với quy định trước, kênh tác động, doanh nghiệp: direct chỉ khi xác định được tài sản thuộc phạm vi); khung giá năm mới thêm vào price_frameworks (giữ năm cũ); dự án vào pipeline; mốc pháp lý vào calendar (không gán ngày dự kiến khi chưa có văn bản); (3) cập nhật as_of và câu takeaway/implication của module liên quan; (4) chạy python3 scripts/build_power_policy.py (dừng nếu chính sách hết hiệu lực vẫn ghi Effective hoặc trần khung giá không có trong evidence). Đến 12/11/2026 chưa có khung 2026 cho LNG, gió ngoài khơi, BESS độc lập, sinh khối, điện rác, tích năng; kế hoạch thị trường điện 2026 (Qc 80%/98%) mới có nguồn thứ cấp Vietcap.",
+   "how": "Mọi số và câu chữ của tab nằm ở data/power-policy.json: policies (một bản ghi mỗi văn bản, schema trong scripts/build_power_policy.py) và handbook (18 module theo khuôn A–G, gắn vào 4 tab). Văn bản mới: cập nhật tham số trong framework/how/data của module liên quan, không đổi cấu trúc module; giao diện assets/power-policy.js không cần sửa. Khi watcher báo văn bản mới hoặc đến lượt thứ Hai: (1) mở văn bản gốc hoặc bài cơ quan nhà nước, ghi đoạn trích chứa số vào data/power/evidence.json; (2) thêm/sửa bản ghi trong policies (trạng thái Draft/Issued/Effective/Expired/Superseded, ngày ban hành, ngày hiệu lực, thay đổi so với quy định trước, kênh tác động, doanh nghiệp: direct chỉ khi xác định được tài sản thuộc phạm vi); khung giá năm mới thêm vào price_frameworks (giữ năm cũ); dự án vào pipeline; mốc nghĩa vụ dài hạn vào milestones của module (không gán ngày dự kiến khi chưa có văn bản); dự thảo đặt ở drafts; (3) cập nhật as_of và câu takeaway/implication của module liên quan; (4) chạy python3 scripts/build_power_policy.py (dừng nếu chính sách hết hiệu lực vẫn ghi Effective hoặc trần khung giá không có trong evidence). Đến 12/11/2026 chưa có khung 2026 cho LNG, gió ngoài khơi, BESS độc lập, sinh khối, điện rác, tích năng; kế hoạch thị trường điện 2026 (Qc 80%/98%) mới có nguồn thứ cấp Vietcap.",
    "gates": [
     "Số hiệu văn bản, ngày ban hành, ngày hiệu lực; trạng thái hiệu lực đúng tại ngày cập nhật",
     "Link trang gốc đã mở, lưu đoạn văn chứa số vào data/power/evidence.json",
@@ -6394,27 +6398,6 @@
     "≥80% ngày, nền ≥3 năm"
    ],
    "job": "assets/hydro-reservoirs.js từ HYDRO_RESERVOIRS"
-  },
-  {
-   "id": "power.calendar",
-   "tier": "C",
-   "title": "Lịch pháp lý Điện (tab Policy)",
-   "schedule": {
-    "type": "weekly",
-    "day": "mon",
-    "at": "08:30"
-   },
-   "where": {
-    "page": "Dien/index.html",
-    "blocks": [
-     "dien-32"
-    ]
-   },
-   "how": "Mốc nằm ở calendar trong data/power-policy.json: chỉ ngày hiệu lực, hạn nghĩa vụ, mốc áp dụng có văn bản. Mốc chưa có ngày chính thức để date rỗng. ENSO, mùa khô, lịch BCTC thuộc tab Catalyst · Risk. Chạy python3 scripts/build_power_policy.py.",
-   "gates": [
-    "Mốc chưa xác nhận để không ngày, không gán ngày dự kiến",
-    "Trạng thái Upcoming/Effective/Completed/Delayed/Superseded đúng tại ngày cập nhật"
-   ]
   },
   {
    "id": "power.keyplayers-groups",

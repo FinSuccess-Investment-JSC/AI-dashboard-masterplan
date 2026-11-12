@@ -32,6 +32,8 @@ DRIVERS = {'revenue', 'cost', 'capex', 'cashflow', 'receivables', 'volume'}
 CAL_STATUS = {'Upcoming', 'Effective', 'Completed', 'Delayed', 'Superseded'}
 # 18 mã theo dõi ở tab Tổng quan của trang Điện.
 TICKERS = {'POW', 'NT2', 'PPC', 'QTP', 'HND', 'BTP', 'REE', 'VSH', 'CHP', 'SBA', 'TMP', 'SHP', 'GEG', 'HDG', 'TTA', 'PC1', 'TV2', 'GEX'}
+# Khuôn module: A câu hỏi, B hiểu nhanh, C cơ chế, D quy định hiện hành, E hàm ý kinh tế, F ai chịu tác động.
+MODULE_REQUIRED = ['block', 'title', 'conclusion', 'quick', 'how', 'framework', 'implication', 'affected']
 DATE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
 
 
@@ -96,10 +98,24 @@ def validate(data, evidence):
                 errors.append(f'{pid}: link nguồn hỏng {s}')
         if not str(p.get('primary_source_url', '')).startswith(('http://', 'https://')):
             errors.append(f'{pid}: primary_source_url hỏng')
-    for key, m in data.get('modules', {}).items():
-        for ref in m.get('policies', []):
+    # Cẩm nang: mỗi module đủ khuôn A–F; mỗi module thuộc đúng một tab.
+    handbook = data.get('handbook', {})
+    placed = [m for t in data.get('tabs', []) for m in t.get('modules', [])]
+    if sorted(placed) != sorted(handbook):
+        errors.append(f'tab và module lệch nhau: {sorted(set(placed) ^ set(handbook))}')
+    for key, m in handbook.items():
+        for k in MODULE_REQUIRED:
+            if not m.get(k):
+                errors.append(f'module {key}: thiếu {k}')
+        for ref in m.get('policies', []) + m.get('drafts', []):
             if ref not in ids:
                 errors.append(f'module {key}: không có chính sách {ref}')
+        for tier, rows in (m.get('affected') or {}).items():
+            if tier == 'note':
+                continue
+            for c in rows:
+                if c.get('t') not in TICKERS:
+                    errors.append(f'module {key}: mã ngoài danh sách theo dõi {c.get("t")}')
         for s in m.get('sources', []):
             if not str(s.get('url', '')).startswith(('http://', 'https://')):
                 errors.append(f'module {key}: link nguồn hỏng')

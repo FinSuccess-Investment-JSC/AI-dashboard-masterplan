@@ -19,8 +19,8 @@
 <script src="../assets/sector-ticker.js?v=24097f7668e0" defer></script>
 <script src="../assets/hydro-reservoirs.js?v=cfd90cab068f" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
-<script src="../data/power-policy.js?v=df87ab4dccdc" defer></script>
-<script src="../assets/power-policy.js?v=fe84463b07c3" defer></script>
+<script src="../data/power-policy.js?v=524c5a2cf9da" defer></script>
+<script src="../assets/power-policy.js?v=eba3b56804a6" defer></script>
 <script src="../assets/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="../assets/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
@@ -43,13 +43,13 @@
 <script src="../assets/source-gap.js?v=02afdd3cfa3d" defer></script>
 <script src="../data/power-hydro-assets.js?v=09b5e89058ec" defer></script>
 <script src="../assets/power-picture.js?v=57f8c3f0dd73" defer></script>
-<script src="../assets/site-navigation.js?v=fd23a387e725" data-release="20261112-power-policy-2a"></script>
+<script src="../assets/site-navigation.js?v=fd23a387e725" data-release="20261113-power-handbook"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="../assets/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="../assets/sector-base.css?v=ba33835e530c">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=c1023818f2dd">
 <link rel="stylesheet" href="../assets/brand.css?v=048c9b941573">
-<link rel="stylesheet" href="../assets/power-policy.css?v=3a01b94ffa51">
+<link rel="stylesheet" href="../assets/power-policy.css?v=f632bb594c62">
 </head>
 <body data-sector="power">
 <div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="power"><a href="../">Trang tổng</a><a href="../Dau-khi/">Dầu khí</a><a href="../Sugar/">Đường</a><a href="../Bank/">Ngân hàng</a><a href="../Dien/">Điện</a></nav><p class="site-release-note" data-release-label></p></div></div>
@@ -360,40 +360,50 @@
 
   <div class="majorpane" data-tab="mt4" id="pane-mt4">
   <section id="policy" class="section">
-    <div class="sectionhead"><div><h2>4. Policy / Trade / Tax</h2><p>Thay đổi chính sách → kênh truyền dẫn → biến tài chính → doanh nghiệp chịu tác động → chỉ báo cần theo dõi.</p></div></div>
-    <div id="power-policy" data-policy-layout>
-    <section class="pp-card" id="pp-radar" data-block-id="dien-34" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
-    <nav class="pp-subnav" id="pp-subnav"></nav>
-    <div class="pp-group" data-group="pricing" id="pp-group-pricing">
-      <p class="pp-group-head">Giá phát điện, cơ chế FIT/chuyển tiếp, cấu trúc PPA và giá bán lẻ quyết định doanh thu trên mỗi kWh.</p>
-      <section class="pp-module" id="pp-1A" data-block-id="dien-17" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
-      <section class="pp-module" id="pp-1A2" data-block-id="dien-35" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
-      <section class="pp-module" id="pp-1B" data-block-id="dien-36" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
-      <section class="pp-module" id="pp-1C" data-block-id="dien-37" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
-      <section class="pp-module" id="pp-1D" data-block-id="dien-38" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+    <div class="sectionhead"><div><h2>4. Policy / Trade / Tax</h2><p>Cẩm nang cơ chế: quy hoạch, giá điện, thị trường, thuế và nghĩa vụ môi trường chi phối doanh thu, CAPEX và dòng tiền của doanh nghiệp điện như thế nào.</p></div></div>
+    <div id="power-policy" data-policy-layout data-no-fold>
+    <section class="pp-card" id="pp-map" data-block-id="dien-34" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+    <nav class="pp-subnav" id="pp-tabs"></nav>
+    <div class="pp-tabpane" data-pane="plan" id="pp-pane-plan">
+      <aside class="pp-toc"></aside>
+      <div class="pp-mods">
+        <section class="pp-module" id="pp-m-1-1" data-mod="1.1" data-block-id="dien-18" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-1-2" data-mod="1.2" data-block-id="dien-47" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-1-3" data-mod="1.3" data-block-id="dien-42" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-1-4" data-mod="1.4" data-block-id="dien-41" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      </div>
     </div>
-    <div class="pp-group" data-group="market" id="pp-group-market">
-      <p class="pp-group-head">Quy định thị trường điện và điều độ quyết định sản lượng được trả theo giá hợp đồng và phần bán theo giá thị trường.</p>
-      <section class="pp-module" id="pp-2A" data-block-id="dien-39" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
-      <section class="pp-module" id="pp-2B" data-block-id="dien-40" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
-      <section class="pp-module" id="pp-2C" data-block-id="dien-19" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+    <div class="pp-tabpane" data-pane="price" id="pp-pane-price">
+      <aside class="pp-toc"></aside>
+      <div class="pp-mods">
+        <section class="pp-module" id="pp-m-2-1" data-mod="2.1" data-block-id="dien-35" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-2-2" data-mod="2.2" data-block-id="dien-17" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-2-3" data-mod="2.3" data-block-id="dien-36" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-2-4" data-mod="2.4" data-block-id="dien-19" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-2-5" data-mod="2.5" data-block-id="dien-38" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      </div>
     </div>
-    <div class="pp-group" data-group="development" id="pp-group-development">
-      <p class="pp-group-head">Quy hoạch chỉ là mục tiêu; tiến độ dự án và vốn lưới mới quyết định backlog và sản lượng tương lai.</p>
-      <section class="pp-module" id="pp-3A" data-block-id="dien-18" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
-      <section class="pp-module" id="pp-3B" data-block-id="dien-41" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
-      <section class="pp-module" id="pp-3C" data-block-id="dien-42" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+    <div class="pp-tabpane" data-pane="market" id="pp-pane-market">
+      <aside class="pp-toc"></aside>
+      <div class="pp-mods">
+        <section class="pp-module" id="pp-m-3-1" data-mod="3.1" data-block-id="dien-40" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-3-2" data-mod="3.2" data-block-id="dien-39" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-3-3" data-mod="3.3" data-block-id="dien-48" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-3-4" data-mod="3.4" data-block-id="dien-49" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-3-5" data-mod="3.5" data-block-id="dien-37" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      </div>
     </div>
-    <div class="pp-group" data-group="tax" id="pp-group-tax">
-      <p class="pp-group-head">Chỉ giữ chính sách thuế, thương mại, carbon có kênh tác động xác định được tới chi phí, sản lượng hoặc CAPEX.</p>
-      <section class="pp-module" id="pp-4A" data-block-id="dien-43" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
-      <section class="pp-module" id="pp-4B" data-block-id="dien-44" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
-      <section class="pp-module" id="pp-4C" data-block-id="dien-45" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+    <div class="pp-tabpane" data-pane="tax" id="pp-pane-tax">
+      <aside class="pp-toc"></aside>
+      <div class="pp-mods">
+        <section class="pp-module" id="pp-m-4-1" data-mod="4.1" data-block-id="dien-43" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-4-2" data-mod="4.2" data-block-id="dien-44" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-4-3" data-mod="4.3" data-block-id="dien-45" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+        <section class="pp-module" id="pp-m-4-4" data-mod="4.4" data-block-id="dien-50" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      </div>
     </div>
-    <div class="pp-group" data-group="matrix" id="pp-group-matrix">
-      <p class="pp-group-head">Ma trận liên kết cả bốn nhóm: mỗi dòng là một thay đổi chính sách đã xác minh; lịch chỉ gồm mốc pháp lý.</p>
-      <section class="pp-module" id="pp-MX" data-block-id="dien-46" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
-      <section class="pp-module" id="pp-CAL" data-block-id="dien-32" data-update-kind="event" data-cadence="monthly" data-refresh-status="snapshot"></section>
+    <div class="pp-tabpane pp-lookup" data-pane="lookup" id="pp-pane-lookup">
+      <section class="pp-card" id="pp-matrix" data-block-id="dien-46" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
     </div>
     </div>
   </section>
