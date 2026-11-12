@@ -555,13 +555,13 @@ function epcCard() {
   const Q = window.COMPANY_QUARTERLY, by = Object.fromEntries((Q?.companies || []).filter(c => c.sector === 'power').map(c => [c.symbol, c])), qs = Q?.quarters || [];
   const rev = t => { const c = by[t]; if (!c) return '—'; let i = c.revenue.length - 1; while (i >= 0 && c.revenue[i] == null) i--; return i >= 4 && c.revenue[i - 4] ? `${nf(c.revenue[i], 0)} tỷ ${qs[i]} (${pc((c.revenue[i] / c.revenue[i - 4] - 1) * 100)})` : '—'; };
   return tableCard('dien-pp-epc', ['Đại lượng', 'Định nghĩa', 'Dữ liệu trên trang', 'Trạng thái'], [
-    ['Tổng vốn đầu tư dự án', 'Toàn bộ CAPEX dự án (thiết bị, xây lắp, lãi vay thời gian xây dựng…)', '—', chip('Insufficient')],
+    ['Tổng vốn đầu tư dự án', 'Toàn bộ vốn đầu tư dự án (thiết bị, xây lắp, lãi vay thời gian xây dựng…)', '—', chip('Insufficient')],
     ['Giá trị hợp đồng EPC', 'Phần nhà thầu EPC nhận, nhỏ hơn tổng vốn', m ? `Quảng Trạch II: ${m[2]} tỷ đồng (EVN ký EPC ${m[1]})` : '—', chip(m ? 'Verified' : 'Insufficient')],
-    ['Backlog đã ký của doanh nghiệp', 'Giá trị hợp đồng chưa ghi nhận doanh thu', 'PC1, TV2, GEX, GEE: chưa có số trên trang', chip('Insufficient')],
+    ['Hợp đồng đã ký, chưa thực hiện của doanh nghiệp', 'Giá trị hợp đồng chưa ghi nhận doanh thu', 'PC1, TV2, GEX, GEE: chưa có số trên trang', chip('Insufficient')],
     ['Doanh thu dự kiến ghi nhận', 'Theo tiến độ thi công', '—', chip('Insufficient')],
     ['Lợi nhuận tiềm năng', 'Biên gộp EPC × doanh thu ghi nhận', '—', chip('Insufficient')],
     ['Doanh thu quý gần nhất (tham khảo)', 'BCTC hợp nhất', `PC1 ${rev('PC1')} · TV2 ${rev('TV2')} · GEX ${rev('GEX')}`, chip('Verified')]
-  ], {title: 'Cơ hội EPC, tư vấn, thiết bị: đừng lấy tổng CAPEX ngành làm doanh thu doanh nghiệp', note: 'Doanh thu quý là số hợp nhất (gồm mảng ngoài điện); không phải backlog.'});
+  ], {title: 'Cơ hội EPC, tư vấn, thiết bị: đừng lấy tổng vốn đầu tư ngành làm doanh thu doanh nghiệp', note: 'Doanh thu quý là số hợp nhất (gồm mảng ngoài điện); không phải hợp đồng chưa thực hiện.'});
 }
 
 /* ===================== 4. Nhận định theo quy tắc ===================== */
@@ -635,9 +635,9 @@ function build() {
   const keep = {daily: tile('#kpi-daily'), ytd: tileByLabel(/Lũy kế/), pmax: tile('#kpi-pmax'), tariff: tileByLabel(/bán lẻ/i), oni: tileByLabel(/ONI/), coal: tileByLabel(/Newcastle/)};
   const C = id => block(id), H2 = hostId => cardOf(hostId);
   // Card dời từ Chủ đề nóng (pipeline, thiếu hụt): để lại liên kết ở chỗ cũ.
-  const moved = ['dien-24', 'dien-25'].map(id => { const c = C(id); if (!c) return null; const note = el('div', 'card pp-moved', `<div class="chart-title">${esc(c.querySelector('.chart-title')?.textContent || '')}</div><p class="research-caption">Chart đã chuyển sang <a href="?section=supply#mt2" data-pp-go="supply">Bức tranh ngành › Cung điện dài hạn</a>.</p>`); c.before(note); return c; });
+  const moved = ['dien-24', 'dien-25'].map(id => { const c = C(id); if (!c) return null; const note = el('div', 'card pp-moved', `<div class="chart-title">${esc(c.querySelector('.chart-title')?.textContent || '')}</div><p class="research-caption">Biểu đồ đã chuyển sang <a href="?section=supply#mt2" data-pp-go="supply">Bức tranh ngành › Cung điện dài hạn</a>.</p>`); c.before(note); return c; });
 
-  if (head) head.innerHTML = `<div><h2 class="sec">Bức tranh ngành</h2><p>Cầu → thủy văn & nguồn cung → huy động → giá & biên → dòng tiền EVN → cung dài hạn. Mỗi sub-tab trả lời một câu hỏi; chi tiết số liệu và phương pháp thu gọn ở cuối panel. Trạng thái chung của ngành: <a href="?ov=pulse#mt1" data-ov-go="pulse">← Tổng quan · Industry Pulse</a>.</p></div>`;
+  if (head) head.innerHTML = `<div><h2 class="sec">Bức tranh ngành</h2><p>Cầu → thủy văn & nguồn cung → huy động → giá & biên → dòng tiền EVN → cung dài hạn. Mỗi sub-tab trả lời một câu hỏi; chi tiết số liệu và phương pháp thu gọn ở cuối panel. Trạng thái chung của ngành: <a href="?ov=pulse#mt1" data-ov-go="pulse">← Tổng quan · Bức tranh hiện tại</a>.</p></div>`;
   const nav = el('div', 'pp-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Nhóm câu hỏi phân tích');
   head ? head.after(nav) : section.prepend(nav);
   const panes = {}; let anchor = nav;

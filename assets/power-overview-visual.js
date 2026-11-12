@@ -108,7 +108,7 @@ function charts(ctx, D) {
       ((POL.dppa?.models || []).length ? `<div class="vz-dppa">${POL.dppa.models.map(m => `<div><b>DPPA ${esc(m.title.toLowerCase())}</b><div class="vz-mini">${m.flow.map((f, i) => `${i ? '<span aria-hidden="true">→</span>' : ''}<em>${esc(f.t)}${f.d ? `<small>${esc(f.d)}</small>` : ''}</em>`).join('')}</div></div>`).join('')}</div>` : '');
   };
   return {
-    coal_price: host => { const L = wb.slice(-36); host.innerHTML = card('Giá than Úc (World Bank)', 'USD/tấn · bình quân tháng', 'Nguồn: World Bank Pink Sheet; Newcastle: ICE futures.', coal3 ? `Newcastle ${nf(coal3.now, 1)} USD/tấn (${dm(coal3.date)}), <b>${pc(coal3.pct)}</b> trong ≈3 tháng.` : '');
+    coal_price: host => { const L = wb.slice(-36); host.innerHTML = card('Giá than Úc (World Bank)', 'USD/tấn · bình quân tháng', 'Nguồn: World Bank Pink Sheet; Newcastle: ICE (hợp đồng tương lai).', coal3 ? `Newcastle ${nf(coal3.now, 1)} USD/tấn (${dm(coal3.date)}), <b>${pc(coal3.pct)}</b> trong ≈3 tháng.` : '');
       mount(host.querySelector('.vz-host'), {key: 'vz-coalpx', categories: L.map(r => r.date.slice(0, 7)), tickLabels: L.map(r => ms(r.date.slice(0, 7))), unit: 'USD/tấn', digits: 1, zeroBase: false, time: true, height: 230, aria: 'Giá than', series: [{name: 'Than Úc', color: '#3d4653', kind: 'line', values: L.map(r => r.coal_au)}]}); },
     coal_cost: fuelVsFmp('coal'),
     coal_share: shareChart([['coal', 'Than', '#3d4653'], ['hydro', 'Thủy điện', '#2938A8']], 'Than gánh phần thủy điện thiếu như thế nào?'),
@@ -120,7 +120,7 @@ function charts(ctx, D) {
         <p class="vz-take">Chi phí khí/kWh theo tham số khung giá ≈ ${nf(dom, 0)} đ, ${fmpLast && dom > fmpLast.fmp ? 'cao hơn' : 'thấp hơn'} FMP ${fmpLast ? ml(fmpLast.period) : ''}: phần bán ngoài Qc ${fmpLast && dom > fmpLast.fmp ? 'khó có lãi' : 'có biên dương'} khi giá khí ở mức này.</p>
         ${bars([{l: 'Chi phí khí/kWh (11,98 + 1,87 USD/MMBtu, QĐ 1882)', v: dom, c: '#c98a00'}, ...(fmpLast ? [{l: `FMP ${ml(fmpLast.period)}`, v: fmpLast.fmp, c: '#861C52'}] : []), ...(fmpYtd ? [{l: `FMP bình quân ${fmpYtd.n} tháng`, v: fmpYtd.cur, c: '#C98FB0'}] : []), ...(ceil ? [{l: `Trần khung giá khí ${ceil.year} (${ceil.decision})`, v: ceil.ceiling, c: '#1D2678'}] : [])], 'đ/kWh')}
         <div class="source-note">Tham số QĐ 1882/QĐ-BCT (giá khí 11,98 USD/MMBtu, cước 1,87, suất hao 6.542,96 BTU/kWh, tỷ giá 26.378); NT2 công bố giá khí bình quân 9,908 USD/triệu BTU tháng 8/2026 — giá khí từng nhà máy khác tham số.</div></figure>`; },
-    lng_price: host => { const L = rec('lng_jkm').slice(-260); host.innerHTML = card('Giá LNG JKM', 'USD/MMBtu · giá đóng cửa phiên, 1 năm', 'Nguồn: ICE futures qua job dữ liệu của trang; LNG Nhật bình quân tháng: World Bank.', jkm3 ? `JKM ${nf(jkm3.now, 2)} USD/MMBtu (${dm(jkm3.date)}), <b>${pc(jkm3.pct)}</b> trong ≈3 tháng.` : '');
+    lng_price: host => { const L = rec('lng_jkm').slice(-260); host.innerHTML = card('Giá LNG JKM', 'USD/MMBtu · giá đóng cửa phiên, 1 năm', 'Nguồn: ICE (hợp đồng tương lai), cập nhật tự động; LNG Nhật bình quân tháng: World Bank.', jkm3 ? `JKM ${nf(jkm3.now, 2)} USD/MMBtu (${dm(jkm3.date)}), <b>${pc(jkm3.pct)}</b> trong ≈3 tháng.` : '');
       mount(host.querySelector('.vz-host'), {key: 'vz-jkm', categories: L.map(r => r.date), tickLabels: L.map(r => r.date.slice(8, 10) + '/' + r.date.slice(5, 7)), unit: 'USD/MMBtu', digits: 2, zeroBase: false, time: true, height: 230, aria: 'Giá JKM', series: [{name: 'JKM', color: '#a35f00', kind: 'line', values: L.map(r => r.value)}]}); },
     lng_buildup: host => {
       if (!FP) { host.innerHTML = gap('chưa nạp tham số nhiên liệu.').outerHTML; return; }
@@ -141,7 +141,7 @@ function charts(ctx, D) {
     ownership: host => { const A = window.POWER_HYDRO_ASSETS, rows = (A?.rows || []).filter(r => r.ticker && /xác minh/i.test(r.status));
       host.innerHTML = `<figure class="vz-fig"><figcaption><b>Hồ nào thuộc doanh nghiệp niêm yết?</b><span>${rows.length} hồ đã xác minh chủ sở hữu có mã · kiểm ${esc(A?.checked_at || '—')}</span></figcaption>
         <div class="vz-own">${rows.map(r => `<span><b>${esc(r.reservoir)}</b>${r.plant_mw ? ` ${nf(r.plant_mw, 0)} MW` : ''} → ${ctx.chip(r.ticker, r.owner)}${/một phần/.test(r.status) ? '<small>một phần</small>' : ''}</span>`).join('') || '<span class="muted">Chưa có dữ liệu sở hữu.</span>'}</div>
-        <div class="source-note">Nguồn: data/power-hydro-assets (mỗi dòng có nguồn đã mở). Hồ trong dữ liệu EVN không mặc nhiên là tài sản doanh nghiệp niêm yết. Bản đồ mực nước từng hồ: <a href="?section=hydro#mt2" data-pp-go="hydro">Bức tranh ngành › Thủy văn</a>.</div></figure>`; },
+        <div class="source-note">Nguồn: bảng sở hữu hồ thủy điện (mỗi dòng có nguồn đã mở). Hồ trong dữ liệu EVN không mặc nhiên là tài sản doanh nghiệp niêm yết. Bản đồ mực nước từng hồ: <a href="?section=hydro#mt2" data-pp-go="hydro">Bức tranh ngành › Thủy văn</a>.</div></figure>`; },
     hydro_out: seasonChart('hydro', 'Thủy điện', '#2938A8'),
     wind_out: seasonChart('wind', 'Điện gió', '#2a9fa3'),
     solar_out: seasonChart('solar', 'Điện mặt trời (trang trại + mái nhà)', '#e0a100', '; mái nhà là số EVN ước tính'),
@@ -244,7 +244,7 @@ function tech(host, ctx, id0, stage0) {
     body.innerHTML = `<div class="vt-head" style="--c:${t.color}"><div><b>${esc(t.long)}</b><span>${esc(t.source)}</span></div>
         <div class="vt-kpi"><span>Tỷ trọng sản lượng từ đầu năm<b>${nf(sh, 1)}%</b>${t.id === 'gas' || t.id === 'lng' ? '<small>khí, dầu & LNG gộp</small>' : ''}</span><span>3 tháng so cùng kỳ<b class="${x3?.yoy > 0 ? 'up' : x3?.yoy < 0 ? 'dn' : ''}">${pc(x3?.yoy)}</b><small>${t.mix === 'wind' || t.mix === 'solar' ? 'gió & mặt trời gộp' : t.id === 'gas' || t.id === 'lng' ? 'khí & dầu' : ''}</small></span>${t.qc != null ? `<span>Qc<b>${t.qc}%</b><small>${t.id === 'lng' ? 'tối thiểu' : 'nguồn thứ cấp'}</small></span>` : ''}</div></div>
       <div class="vt-legend">${Object.entries(FLOW).map(([k, v]) => `<span><i class="vz-k-${k}"></i>${v[0]}</span>`).join('')}</div>
-      <ol class="vt-chain" aria-label="Quy trình ${esc(t.long)}">${t.stages.map((st, i) => `<li><button type="button" class="vt-st vz-f-${st.flow}" data-s="${st.id}" style="--c:${t.color}">${icon(st.icon)}<b>${esc(st.t)}</b><small>${esc(st.s)}</small>${st.chart ? '<i class="vt-dot" title="có chart dữ liệu">●</i>' : ''}</button></li>`).join('')}</ol>
+      <ol class="vt-chain" aria-label="Quy trình ${esc(t.long)}">${t.stages.map((st, i) => `<li><button type="button" class="vt-st vz-f-${st.flow}" data-s="${st.id}" style="--c:${t.color}">${icon(st.icon)}<b>${esc(st.t)}</b><small>${esc(st.s)}</small>${st.chart ? '<i class="vt-dot" title="có biểu đồ dữ liệu">●</i>' : ''}</button></li>`).join('')}</ol>
       <div class="vt-detail"></div>
       <div class="vt-foot"><div><h4>Rủi ro chính</h4><ul class="ov-list">${(O.source_profiles[t.groups[0]]?.risks || []).map(r => `<li>${esc(r)}</li>`).join('')}</ul></div><div><h4>Doanh nghiệp có tài sản</h4><p>${ctx.chips(t.groups[0])}</p></div></div>`;
     const det = body.querySelector('.vt-detail');
@@ -253,10 +253,10 @@ function tech(host, ctx, id0, stage0) {
       body.querySelectorAll('.vt-st').forEach(b => { const on = b.dataset.s === st.id; b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); });
       const tk = ctx.expo(t.groups[0]);
       det.innerHTML = `<div class="vt-dgrid"><div class="vt-txt"><h4>${icon(st.icon)}${esc(st.t)} <span class="vz-tag vz-f-${st.flow}">${FLOW[st.flow][0]}</span></h4>
-        <dl><dt>Chức năng kinh tế</dt><dd>${esc(st.fn)}</dd><dt>Chi phí chủ đạo</dt><dd>${esc(st.cost)}</dd><dt>KPI vận hành</dt><dd>${esc(st.kpi)}</dd><dt>Tác động DT / LN</dt><dd>${esc(st.impact)}</dd><dt>Doanh nghiệp</dt><dd>${tk.map(e => ctx.chip(e.t, `${e.t} · ${e.role}: ${e.note}`)).join(' ')}</dd></dl></div>
+        <dl><dt>Chức năng kinh tế</dt><dd>${esc(st.fn)}</dd><dt>Chi phí chủ đạo</dt><dd>${esc(st.cost)}</dd><dt>Chỉ số vận hành</dt><dd>${esc(st.kpi)}</dd><dt>Tác động DT / LN</dt><dd>${esc(st.impact)}</dd><dt>Doanh nghiệp</dt><dd>${tk.map(e => ctx.chip(e.t, `${e.t} · ${e.role}: ${e.note}`)).join(' ')}</dd></dl></div>
         <div class="vt-chart"></div></div>`;
       const ch = det.querySelector('.vt-chart');
-      if (st.chart && C[st.chart]) { try { C[st.chart](ch, t); } catch (e) { ch.replaceChildren(P.gap('lỗi dựng chart: ' + esc(e.message))); } } else ch.innerHTML = '<div class="vz-none">Khâu này chưa có chuỗi dữ liệu công khai trên trang. Các khâu có ● có chart dữ liệu.</div>';
+      if (st.chart && C[st.chart]) { try { C[st.chart](ch, t); } catch (e) { ch.replaceChildren(P.gap('lỗi dựng biểu đồ: ' + esc(e.message))); } } else ch.innerHTML = '<div class="vz-none">Khâu này chưa có chuỗi dữ liệu công khai trên trang. Các khâu có ● có biểu đồ dữ liệu.</div>';
       ctx.onState?.({t: t.id, s: st.id});
       P.refit(det);
     };
@@ -275,7 +275,7 @@ function waterfall(steps, unit, digits = 0) {
   const fin = Number.isFinite, nf = (v, d) => !fin(v) ? '—' : Number(v).toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d});
   let run = 0; const rows = steps.map(s => { if (s.total) { const r = {...s, a: 0, b: s.v}; run = s.v; return r; } const a = run, b = run + s.v; run = b; return {...s, a, b}; });
   const lo = Math.min(0, ...rows.map(r => Math.min(r.a, r.b))), hi = Math.max(0, ...rows.map(r => Math.max(r.a, r.b))) || 1, span = hi - lo || 1, pos = v => (v - lo) / span * 100;
-  return `<div class="vw" role="img" aria-label="Waterfall ${unit}">${rows.map(r => { const x = Math.min(pos(r.a), pos(r.b)), w = Math.max(Math.abs(pos(r.b) - pos(r.a)), .4);
+  return `<div class="vw" role="img" aria-label="Biểu đồ từng bước, ${unit}">${rows.map(r => { const x = Math.min(pos(r.a), pos(r.b)), w = Math.max(Math.abs(pos(r.b) - pos(r.a)), .4);
     return `<div class="vw-r ${r.total ? 'tot' : r.v < 0 ? 'neg' : 'pos'}"><span>${r.l}</span><div class="vw-t"><i style="left:${x}%;width:${w}%"></i>${lo < 0 ? `<b class="vw-0" style="left:${pos(0)}%"></b>` : ''}</div><em>${r.total ? '' : r.v > 0 ? '+' : ''}${nf(r.v, digits)}</em></div>`; }).join('')}</div><p class="vz-unit">${unit}</p>`;
 }
 function unit(host, ctx) {
@@ -336,7 +336,7 @@ function unit(host, ctx) {
   const setup = k => {
     tk = k; const t = S.techs[k], f = fuelUnit(k), c = ceil(new RegExp('^' + t.ppa_from.replace(/[()]/g, '\\$&') + '$'));
     v = {mw: t.mw, cf: t.cf, qc: t.qc, ppa: c?.ceiling ?? 1500, fmp: fmpLast?.fmp ?? 1400, fuel: f?.def ?? 0, fx: fx ?? 26000, fixed: t.fixed, dep: t.dep, interest: t.interest};
-    const F = [['mw', 'Công suất (MW)', 50], ['cf', 'Hệ số huy động (%)', 1], ['qc', 'Qc (%)', 1], ['ppa', `Giá PPA (đ/kWh)${c ? ' · mặc định = trần ' + c.year : ''}`, 10], ['fmp', 'FMP (đ/kWh)', 10], ...(f ? [['fuel', f.lab, f.step], ['fx', 'Tỷ giá (đ/USD)', 10]] : []), ['fixed', 'Chi phí cố định O&M (tỷ/năm)', 10], ['dep', 'Khấu hao (tỷ/năm)', 10], ['interest', 'Lãi vay (tỷ/năm)', 10]];
+    const F = [['mw', 'Công suất (MW)', 50], ['cf', 'Hệ số huy động (%)', 1], ['qc', 'Qc (%)', 1], ['ppa', `Giá PPA (đ/kWh)${c ? ' · mặc định = trần ' + c.year : ''}`, 10], ['fmp', 'FMP (đ/kWh)', 10], ...(f ? [['fuel', f.lab, f.step], ['fx', 'Tỷ giá (đ/USD)', 10]] : []), ['fixed', 'Chi phí vận hành, bảo dưỡng (tỷ/năm)', 10], ['dep', 'Khấu hao (tỷ/năm)', 10], ['interest', 'Lãi vay (tỷ/năm)', 10]];
     inBox.innerHTML = F.map(([id, l, st]) => `<label><span>${esc(l)}</span><input type="number" step="${st}" data-v="${id}" value="${Math.round(v[id] * 100) / 100}"></label>`).join('') + '<button type="button" class="vu-reset">Về mặc định</button>';
     inBox.querySelectorAll('input').forEach(x => x.addEventListener('input', () => { v[x.dataset.v] = +x.value; calc(); }));
     inBox.querySelector('.vu-reset').addEventListener('click', () => setup(tk));
@@ -347,7 +347,7 @@ function unit(host, ctx) {
     const kwhY = v.mw * 1000 * 8760 * v.cf / 100, rev = kwhY * (v.qc / 100 * v.ppa + (1 - v.qc / 100) * v.fmp) / 1e9;
     const fuelKwh = !FP ? 0 : tk === 'coal' ? v.fuel * v.fx / 1000 * FP.HR_COAL / FP.HHV_NC : tk === 'lng' ? (v.fuel + FP.FEE_USD) * FP.HR_GAS / 1e6 * v.fx : 0;
     const fuel = kwhY * fuelKwh / 1e9, ebitda = rev - fuel - v.fixed, ebit = ebitda - v.dep, pbt = ebit - v.interest;
-    swf.innerHTML = waterfall([{l: 'Doanh thu', v: rev, total: true}, {l: 'Nhiên liệu', v: -fuel}, {l: 'O&M cố định', v: -v.fixed}, {l: 'EBITDA', v: ebitda, total: true}, {l: 'Khấu hao', v: -v.dep}, {l: 'EBIT', v: ebit, total: true}, {l: 'Lãi vay', v: -v.interest}, {l: 'Lợi nhuận trước thuế', v: pbt, total: true}], 'tỷ đồng/năm · minh họa');
+    swf.innerHTML = waterfall([{l: 'Doanh thu', v: rev, total: true}, {l: 'Nhiên liệu', v: -fuel}, {l: 'Vận hành, bảo dưỡng', v: -v.fixed}, {l: 'EBITDA (LN trước khấu hao)', v: ebitda, total: true}, {l: 'Khấu hao', v: -v.dep}, {l: 'EBIT (LN trước lãi vay)', v: ebit, total: true}, {l: 'Lãi vay', v: -v.interest}, {l: 'Lợi nhuận trước thuế', v: pbt, total: true}], 'tỷ đồng/năm · minh họa');
     sumP.innerHTML = `Sản lượng ≈ <b>${nf(kwhY / 1e6, 0)}</b> triệu kWh/năm · nhiên liệu ≈ ${nf(fuelKwh, 0)} đ/kWh · biên EBITDA ${nf(rev ? ebitda / rev * 100 : null, 1)}%. Doanh thu = sản lượng × (Qc × PPA + (1 − Qc) × FMP).`;
   };
   host.querySelectorAll('[data-tk]').forEach(b => b.addEventListener('click', () => setup(b.dataset.tk)));
@@ -394,8 +394,8 @@ function outlook(host, ctx) {
   host.innerHTML = `<section class="vu-sec"><h4>Nguồn mới dự kiến vào khi nào, chắc chắn đến đâu?</h4>
       <div class="vo-bars">${byY.map(x => `<div class="vo-col"><div class="vo-stack" style="height:${x.rows.reduce((a, r) => a + r.mw, 0) / maxY * 100}%">${x.rows.filter(r => r.mw).map(r => `<i style="flex:${r.mw};background:${scol[r.s]}" title="${certainty[r.s]}: ${nf(r.mw, 0)} MW"></i>`).join('')}</div><b>${nf(x.rows.reduce((a, r) => a + r.mw, 0), 0)}</b><span>${x.y}</span></div>`).join('')}</div>
       <div class="vu-leg">${ord.map(s => `<span><i style="background:${scol[s]}"></i>${certainty[s]}</span>`).join('')}</div>
-      <p class="vz-take">MW theo năm vận hành thực tế hoặc kế hoạch của ${L.length} dự án lớn đang theo dõi${undated.length ? `; ${undated.length} dự án chưa có năm COD` : ''}. Không phải toàn bộ pipeline quy hoạch.</p></section>
-    <section class="vu-sec"><h4>Timeline COD và doanh nghiệp liên quan</h4><ol class="vo-tl">${[...L].sort((a, b) => (yearOf(a) || '9999').localeCompare(yearOf(b) || '9999') || (a.cod_actual || a.cod_plan || '').localeCompare(b.cod_actual || b.cod_plan || '')).map(p => { const t = ticker(p);
+      <p class="vz-take">MW theo năm vận hành thực tế hoặc kế hoạch của ${L.length} dự án lớn đang theo dõi${undated.length ? `; ${undated.length} dự án chưa có năm COD` : ''}. Không phải toàn bộ danh sách dự án trong quy hoạch.</p></section>
+    <section class="vu-sec"><h4>Lịch vận hành thương mại (COD) và doanh nghiệp liên quan</h4><ol class="vo-tl">${[...L].sort((a, b) => (yearOf(a) || '9999').localeCompare(yearOf(b) || '9999') || (a.cod_actual || a.cod_plan || '').localeCompare(b.cod_actual || b.cod_plan || '')).map(p => { const t = ticker(p);
       return `<li class="vo-${p.status}"><span class="vo-d">${esc(p.cod_actual || p.cod_plan || 'chưa có')}</span><i style="background:${color(p.tech)}"></i><div><b>${esc(p.name)}</b> <small>${nf(+p.mw, 0)} MW · ${esc(p.tech_label || p.tech)} · ${esc(certainty[p.status] || p.status)}</small><small>${esc(p.owner || '')}${t ? ' ' + ctx.chip(t) : ''}${p.source_url ? ` · <a href="${esc(p.source_url)}" target="_blank" rel="noopener">${esc(p.source_label || 'nguồn')}</a>` : ''}</small></div></li>`; }).join('')}</ol></section>
     ${tgt.length ? `<section class="vu-sec"><h4>Mục tiêu 2030 so với công suất cuối 2025</h4><div class="vz-bars">${tgt.map(t => `<div class="vz-bar"><span>${esc(t.source)}</span><i style="width:${t.actual / t.high * 100}%;background:#2938A8"></i><b>${nf(t.actual / t.high * 100, 0)}%</b><small>${nf(t.actual, 0)} MW / mục tiêu ${nf(t.low, 0)}${t.high !== t.low ? '–' + nf(t.high, 0) : ''} MW (${esc(t.year)})</small></div>`).join('')}</div><div class="source-note">Quy hoạch điện VIII điều chỉnh (QĐ 768/QĐ-TTg) qua tab Policy · Quy hoạch.</div></section>` : ''}`;
 }

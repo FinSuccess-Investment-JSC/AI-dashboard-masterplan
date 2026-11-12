@@ -25,11 +25,13 @@ const techs = Object.fromEntries((P.technologies || []).map(t => [t.id, t]));
 const policies = P.policies || [];
 const byId = Object.fromEntries(policies.map(p => [p.policy_id, p]));
 const STATUS = ['Draft', 'Issued', 'Effective', 'Expired', 'Superseded'];
-const DIR = {Positive: 'Positive', Negative: 'Negative', Mixed: 'Mixed', Uncertain: 'Uncertain'};
-const LEVEL = {High: 'High', Medium: 'Medium', Low: 'Low', nq: 'Impact not quantified'};
+const DIR = {Positive: 'Tích cực', Negative: 'Tiêu cực', Mixed: 'Trái chiều', Uncertain: 'Chưa rõ'};
+// Nhãn tiếng Việt cho trạng thái pháp lý (giá trị trong JSON giữ nguyên tiếng Anh để build kiểm).
+const ST_VI = {Draft: 'Dự thảo', Issued: 'Đã ban hành', Effective: 'Có hiệu lực', Expired: 'Hết hiệu lực', Superseded: 'Đã bị thay thế'};
+const LEVEL = {High: 'Cao', Medium: 'Trung bình', Low: 'Thấp', nq: 'Chưa định lượng'};
 const HORIZON = {short: 'Ngắn hạn (≤12 tháng)', medium: 'Trung hạn (1–3 năm)', long: 'Dài hạn (>3 năm)'};
 const ETYPE = {direct: 'Trực tiếp', indirect: 'Gián tiếp', potential: 'Tiềm năng', none: 'Chưa xác nhận'};
-const DRIVER = {revenue: 'Doanh thu', cost: 'Chi phí', capex: 'CAPEX', cashflow: 'Dòng tiền', receivables: 'Phải thu', volume: 'Sản lượng'};
+const DRIVER = {revenue: 'Doanh thu', cost: 'Chi phí', capex: 'Vốn đầu tư', cashflow: 'Dòng tiền', receivables: 'Phải thu', volume: 'Sản lượng'};
 const badge = (cls, text, title) => `<span class="pp-badge ${cls}"${title ? ` title="${esc(title)}"` : ''}>${esc(text)}</span>`;
 const levelOf = p => p.impact_level && LEVEL[p.impact_level] ? p.impact_level : 'nq';
 const yearOf = p => (p.effective_date || p.issue_date || '').slice(0, 4);
@@ -42,7 +44,7 @@ const srcLine = (sources, checked) => {
 /* ---------- bộ lọc của phần tra cứu ---------- */
 const FKEYS = {
   cat: {label: 'Nhóm cơ chế', options: () => (P.groups || []).map(g => [g.id, g.label]), test: (p, v) => p.policy_category === v},
-  status: {label: 'Tình trạng pháp lý', options: () => STATUS.filter(s => policies.some(p => p.policy_status === s)).map(s => [s, s]), test: (p, v) => p.policy_status === v},
+  status: {label: 'Tình trạng pháp lý', options: () => STATUS.filter(s => policies.some(p => p.policy_status === s)).map(s => [s, ST_VI[s] || s]), test: (p, v) => p.policy_status === v},
   year: {label: 'Năm hiệu lực', options: () => [...new Set(policies.map(yearOf).filter(Boolean))].sort().reverse().map(y => [y, y]), test: (p, v) => yearOf(p) === v},
   tech: {label: 'Loại nguồn', options: () => (P.technologies || []).map(t => [t.id, t.label]), test: (p, v) => (p.applicable_technologies || []).includes(v)},
   ticker: {label: 'Mã niêm yết', options: () => [...new Set(policies.flatMap(p => (p.exposed_companies || []).map(c => c.ticker)))].sort().map(t => [t, t]), test: (p, v) => (p.exposed_companies || []).some(c => c.ticker === v)},
@@ -84,7 +86,7 @@ function openPolicy(id) {
   }
   const lv = levelOf(p);
   const exp = (p.exposed_companies || []).length ? `<div class="tablewrap"><table class="pp-table" style="min-width:420px"><thead><tr><th>Mã</th><th>Loại tác động</th><th>Tài sản / điều kiện áp dụng</th></tr></thead><tbody>${p.exposed_companies.map(c => `<tr><td><b>${esc(c.ticker)}</b></td><td>${esc(ETYPE[c.type] || '—')}</td><td>${rich(c.note || '')}</td></tr>`).join('')}</tbody></table></div>` : '<p>Chưa xác định được doanh nghiệp niêm yết thuộc phạm vi điều chỉnh.</p>';
-  dlg.innerHTML = `<div class="pp-dlg-head"><div><div class="pp-badges">${badge('st-' + p.policy_status, p.policy_status)}${badge('dir-' + (p.direction || 'Uncertain'), DIR[p.direction] || 'Uncertain')}${badge('lv-' + lv, LEVEL[lv])}${p.data_confidence === 'Unverified' ? badge('cf-Unverified', 'Unverified') : ''}</div>
+  dlg.innerHTML = `<div class="pp-dlg-head"><div><div class="pp-badges">${badge('st-' + p.policy_status, ST_VI[p.policy_status] || p.policy_status)}${badge('dir-' + (p.direction || 'Uncertain'), DIR[p.direction] || 'Chưa rõ')}${badge('lv-' + lv, LEVEL[lv])}${p.data_confidence === 'Unverified' ? badge('cf-Unverified', 'Chưa xác minh') : ''}</div>
     <h3 id="pp-dlg-title">${esc(p.policy_name)}</h3><div class="pp-doc" style="font-size:12px;color:#64748B">${esc(p.document_number || 'Chưa có số hiệu')} · ${esc(p.issuing_authority || '')}</div>
     <div class="pp-dates" style="margin-top:4px"><span>Ban hành <b>${dmy(p.issue_date) || 'chưa xác minh'}</b></span><span>Hiệu lực <b>${dmy(p.effective_date) || 'chưa xác minh'}</b></span>${p.expiration_date ? `<span>Hết hiệu lực <b>${dmy(p.expiration_date)}</b></span>` : ''}${p.impact_from ? `<span>Doanh nghiệp chịu tác động từ <b>${rich(p.impact_from)}</b></span>` : ''}</div></div>
     <button type="button" class="pp-close" aria-label="Đóng">×</button></div>
@@ -161,7 +163,7 @@ const HB = P.handbook || {}, TABS = P.tabs || [];
 const LV = {H: ['Cao', 'lv-h'], M: ['Trung bình', 'lv-m'], L: ['Thấp', 'lv-l'], '': ['', '']};
 const tickers = list => (list || []).map(c => `<span class="pp-tk"><span class="pp-chip">${esc(c.t)}</span>${c.n ? `<small>${rich(c.n)}</small>` : ''}</span>`).join('');
 const kpis = items => `<div class="pp-kpis pp-kpis-row">${(items || []).map(k => `<div class="pp-kpi${k.hl ? ' hl' : ''}"><span>${rich(k.label)}</span><b>${esc(k.value)}<small> ${esc(k.unit || '')}</small></b><em>${rich(k.sub || '')}</em></div>`).join('')}</div>`;
-const policyRow = p => `<li><button type="button" class="pp-more pp-open" data-id="${esc(p.policy_id)}">${esc(p.document_number || p.policy_name)}</button> ${badge('st-' + p.policy_status, p.policy_status)} ${esc(p.short_name || p.policy_name)}${p.effective_date ? ` · hiệu lực ${dmy(p.effective_date)}` : p.issue_date ? ` · ban hành ${dmy(p.issue_date)}` : ''}${p.data_confidence === 'Low' ? ' · <em>độ tin cậy thấp</em>' : ''} · ${link(p.primary_source_url, 'nguồn ↗')}</li>`;
+const policyRow = p => `<li><button type="button" class="pp-more pp-open" data-id="${esc(p.policy_id)}">${esc(p.document_number || p.policy_name)}</button> ${badge('st-' + p.policy_status, ST_VI[p.policy_status] || p.policy_status)} ${esc(p.short_name || p.policy_name)}${p.effective_date ? ` · hiệu lực ${dmy(p.effective_date)}` : p.issue_date ? ` · ban hành ${dmy(p.issue_date)}` : ''}${p.data_confidence === 'Low' ? ' · <em>độ tin cậy thấp</em>' : ''} · ${link(p.primary_source_url, 'nguồn ↗')}</li>`;
 
 /* ---------- C · Cơ chế vận hành ---------- */
 const HOW = {
@@ -360,7 +362,7 @@ function lookup() {
   const draw = () => {
     const rows = policies.filter(p => matches(p, keys));
     count.textContent = `${rows.length}/${policies.length} văn bản, cơ chế · bấm một dòng để mở phân tích`;
-    out.innerHTML = rows.length ? table(['Chính sách', 'Nhóm', 'Tình trạng', 'Thay đổi', 'Kênh tác động', 'Tác động tài chính', 'Doanh nghiệp'], rows.map(p => ({id: p.policy_id, cells: [{html: `<b>${esc(p.short_name || p.policy_name)}</b><br><small>${esc(p.document_number || '')}</small>`}, (groups[p.policy_category] || {}).short || '', {html: badge('st-' + p.policy_status, p.policy_status)}, {html: rich(p.radar_change || p.regulatory_change)}, {html: rich(p.channel || p.impact_mechanism)}, (p.financial_drivers || []).map(d => DRIVER[d] || d).join(', '), {html: `<div class="pp-chips">${chips(p.exposed_companies)}</div>`}]})), {min: 1080}) : '<div class="pp-empty">Không có văn bản khớp bộ lọc.</div>';
+    out.innerHTML = rows.length ? table(['Chính sách', 'Nhóm', 'Tình trạng', 'Thay đổi', 'Kênh tác động', 'Tác động tài chính', 'Doanh nghiệp'], rows.map(p => ({id: p.policy_id, cells: [{html: `<b>${esc(p.short_name || p.policy_name)}</b><br><small>${esc(p.document_number || '')}</small>`}, (groups[p.policy_category] || {}).short || '', {html: badge('st-' + p.policy_status, ST_VI[p.policy_status] || p.policy_status)}, {html: rich(p.radar_change || p.regulatory_change)}, {html: rich(p.channel || p.impact_mechanism)}, (p.financial_drivers || []).map(d => DRIVER[d] || d).join(', '), {html: `<div class="pp-chips">${chips(p.exposed_companies)}</div>`}]})), {min: 1080}) : '<div class="pp-empty">Không có văn bản khớp bộ lọc.</div>';
   };
   listeners.push(draw); draw();
 }
