@@ -25,7 +25,7 @@ from build_power_policy import TICKERS  # noqa: E402  (18 mã theo dõi của tr
 GROUPS = {'hydro', 'coal', 'gas', 're', 'grid'}
 SOURCES = GROUPS - {'grid'}
 PP_SECTIONS = {'demand', 'hydro', 'dispatch', 'economics', 'evn', 'supply', None}
-LIVE = {'enso', 'oni', 'inflow', 'hydro_m', 'gas_m', 'demand', 'pmax', 'contrib', 'coal', 'lng', 'fmp', 'qc', 'policy', 'transitional', 'pipeline', None}
+LIVE = {'enso', 'oni', 'inflow', 'hydro_m', 'gas_m', 'demand', 'pmax', 'contrib', 'coal', 'lng', 'fmp', 'qc', 'policy', 'transitional', 'pipeline', 'retail', None}
 RULES = {'thermal_dry', 'gas_fuel', 'grid_capex', 'fit_cash'}
 KINDS = {'scheduled', 'expected', 'undated', 'earliest'}
 RELEASE_RULES = {'second_thursday', 'first_week', 'none'}
@@ -108,8 +108,15 @@ def validate(data, policy):
         for v in d.get('verify', []):
             if v.get('live') not in LIVE:
                 errors.append(f'biến số {did}: chỉ báo {v.get("label")} live sai')
-    if len(data.get('drivers', [])) != 9:
-        errors.append('cần đúng 9 biến số ngành (mục 6.1)')
+    if len(data.get('drivers', [])) != 11:
+        errors.append('cần đúng 11 biến số ngành (prompt visual-first mục 7)')
+    for d in data.get('drivers', []):
+        h = d.get('heat', {})
+        if set(h) != GROUPS or any(v not in (0, 1, 2, 3) for v in h.values()):
+            errors.append(f'biến số {d.get("id")}: heat cần đủ 5 nhóm, giá trị 0–3')
+    sc = data.get('scenario', {})
+    if set(sc.get('techs', {})) != {'coal', 'lng', 'hydro'} or not sc.get('note'):
+        errors.append('scenario cần coal, lng, hydro và note giả định')
     rel = {r['id'] for r in data.get('releases', [])}
     for r in data.get('releases', []):
         if r.get('kind') not in KINDS or not r.get('basis'):
@@ -131,6 +138,27 @@ def validate(data, policy):
             errors.append(f'luận điểm {t.get("id")}: confound cần from (YYYY-MM-DD) và note')
         if not set(t.get('next', [])) <= rel:
             errors.append(f'luận điểm {t.get("id")}: mốc tiếp theo không có trong releases')
+    # Bản đồ ngành và chuỗi giá trị theo công nghệ (visual-first).
+    TECHS = ['coal', 'gas', 'lng', 'hydro', 'wind', 'solar']
+    FLOWS = {'physical', 'commercial', 'dispatch'}
+    CHARTS = {'coal_price', 'coal_cost', 'coal_share', 'gas_out', 'gas_cost', 'lng_price', 'lng_buildup', 'oni', 'inflow', 'ownership',
+              'hydro_out', 'hydro_share', 'wind_out', 'solar_out', 'curtail', 'contract_wind', 'contract_solar', 'settlement', None}
+    if [t.get('id') for t in data.get('technologies', [])] != TECHS:
+        errors.append(f'technologies phải đúng thứ tự {TECHS}')
+    for t in data.get('technologies', []):
+        if not set(t.get('groups', [])) <= GROUPS or not t.get('stages'):
+            errors.append(f'công nghệ {t.get("id")}: groups/stages sai')
+        sids = [s.get('id') for s in t.get('stages', [])]
+        if len(sids) != len(set(sids)):
+            errors.append(f'công nghệ {t.get("id")}: trùng id khâu')
+        for s in t.get('stages', []):
+            if s.get('flow') not in FLOWS or s.get('chart') not in CHARTS or not all(s.get(k) for k in ('t', 'fn', 'cost', 'kpi', 'impact')):
+                errors.append(f'công nghệ {t.get("id")} · khâu {s.get("id")}: thiếu nội dung hoặc flow/chart sai')
+    for k, n in data.get('map_nodes', {}).items():
+        if not (n.get('t') and n.get('d')):
+            errors.append(f'map_nodes {k}: thiếu t/d')
+        if not set(n.get('tickers', [])) <= TICKERS:
+            errors.append(f'map_nodes {k}: mã ngoài danh sách')
     pids = {p.get('policy_id') for p in policy.get('policies', [])}
     for r in data.get('releases', []):
         if r.get('policy_id') and r['policy_id'] not in pids:

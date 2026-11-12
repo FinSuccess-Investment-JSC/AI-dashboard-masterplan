@@ -1341,14 +1341,15 @@
   {
    "id": "power.overview-derived",
    "tier": "A",
-   "title": "Tổng quan ngành Điện: đánh giá hiện tại, 3 tín hiệu, cơ cấu công suất/sản lượng, điều kiện theo nguồn, tín hiệu vận hành theo nhóm, luận điểm theo dõi, lịch catalyst",
+   "title": "Tổng quan ngành Điện: bản đồ ngành, chuỗi giá trị 6 công nghệ (chart theo khâu), kinh tế một kWh, waterfall/cầu nối lợi nhuận BCTC quý, kịch bản giả định, Pulse, luận điểm, timeline COD",
    "sources": [
-    "vn_power_daily",
-    "enso_oni",
-    "wb_energy_monthly",
     "coal_newcastle",
+    "enso_oni",
+    "henry_hub",
     "lng_jkm",
-    "henry_hub"
+    "nino34_weekly",
+    "vn_power_daily",
+    "wb_energy_monthly"
    ],
    "schedule": {
     "type": "data",
@@ -1367,13 +1368,16 @@
      "dien-ov-sig-resource",
      "dien-ov-sig-price",
      "dien-ov-genmix",
-     "dien-ov-source",
      "dien-ov-opmatrix",
      "dien-ov-thesis",
-     "dien-ov-timeline"
+     "dien-ov-timeline",
+     "dien-ov-map",
+     "dien-ov-tech",
+     "dien-ov-unit",
+     "dien-ov-outlook"
     ]
    },
-   "how": "Tính trong assets/power-overview.js khi mở trang từ window.POWER_CORE (cùng phép tính tab Bức tranh ngành), HYDRO_RESERVOIRS, fmpRows, POWER_POLICY (lịch pháp lý, Qc, dự án chuyển tiếp); ngưỡng quy tắc và luận điểm ở data/power-overview.json. Nhận định và trạng thái luận điểm đổi theo số mới, không lưu cố định",
+   "how": "Tính trong assets/power-overview.js khi mở trang từ window.POWER_CORE (cùng phép tính tab Bức tranh ngành), HYDRO_RESERVOIRS, fmpRows, POWER_POLICY (lịch pháp lý, Qc, dự án chuyển tiếp); ngưỡng quy tắc và luận điểm ở data/power-overview.json. Nhận định và trạng thái luận điểm đổi theo số mới, không lưu cố định; chi phí nhiên liệu/kWh theo tham số QĐ 1692/1882 (POWER_FUEL_PARAMS) và tỷ giá tháng; waterfall từ COMPANY_QUARTERLY; kịch bản chỉ là giả định minh họa ghi rõ trên trang; timeline COD từ POWER_POLICY.pipeline",
    "gates": [
     "Quy tắc không kích hoạt khi kỳ đối chiếu dưới 80% ngày",
     "Không tạo số độ nhạy EBITDA/EPS khi thiếu Qc, PPA, suất hao",
@@ -1383,7 +1387,7 @@
   {
    "id": "power.overview-content",
    "tier": "C",
-   "title": "Tổng quan ngành Điện: chuỗi giá trị 3 luồng, mô hình kinh doanh, cơ chế thị trường, bảng so sánh nhóm nguồn, bản đồ truyền dẫn 9 biến số, ma trận exposure",
+   "title": "Tổng quan ngành Điện: nội dung bản đồ ngành và 6 chuỗi giá trị công nghệ, mô hình kinh doanh, cơ chế thị trường, bảng nhóm nguồn, 11 biến số truyền dẫn và heatmap phơi nhiễm, ma trận exposure",
    "schedule": {
     "type": "weekly",
     "day": "mon",
@@ -1393,13 +1397,13 @@
    "where": {
     "page": "Dien/index.html",
     "blocks": [
-     "dien-ov-flows",
      "dien-ov-bm",
      "dien-ov-mech",
      "dien-ov-peer",
      "dien-ov-driver",
      "dien-ov-exposure",
-     "dien-ov-sens"
+     "dien-ov-sens",
+     "dien-ov-heat"
     ]
    },
    "how": "Sửa data/power-overview.json rồi chạy python3 scripts/build_power_overview.py (kiểm mã thuộc 18 mã theo dõi, nhóm, ngưỡng, mốc lịch). Exposure doanh nghiệp theo bảng 18 doanh nghiệp (dien-03) có nguồn; link dashboard cổ phiếu chỉ cho mã đã có trang",
