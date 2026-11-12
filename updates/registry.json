@@ -2009,7 +2009,7 @@
   {
    "id": "realestate.kcn-quarterly",
    "tier": "C",
-   "title": "Cushman & Wakefield, JLL: lấp đầy, cung mới, giá thuê đất KCN",
+   "title": "Workbook nghiên cứu KCN (Cushman & Wakefield, CBRE, FDI, pipeline): hấp thụ, nguồn cung, lấp đầy, giá thuê theo vùng/tỉnh",
    "schedule": {
     "type": "window",
     "every": "weekly",
@@ -2041,15 +2041,79 @@
    },
    "where": {
     "page": "Bat-dong-san/index.html",
+    "file": "data/kcn-market.js",
     "blocks": [
-     "bds-12",
-     "bds-18"
+     "kcn-ov-abs",
+     "kcn-ov-stock",
+     "kcn-ov-regime",
+     "kcn-de-abs",
+     "kcn-de-cum",
+     "kcn-de-mix",
+     "kcn-de-fdi",
+     "kcn-de-fdi2",
+     "kcn-de-fdi-types",
+     "kcn-de-flow",
+     "kcn-su-stock",
+     "kcn-su-occ",
+     "kcn-su-dvs",
+     "kcn-su-rbf",
+     "kcn-su-yos",
+     "kcn-su-pipe",
+     "kcn-su-proj",
+     "kcn-re-usd",
+     "kcn-re-vnd",
+     "kcn-re-rbf",
+     "kcn-re-provocc",
+     "kcn-re-heat",
+     "kcn-re-matrix",
+     "kcn-re-compare",
+     "kcn-da-explorer",
+     "kcn-da-qa",
+     "kcn-da-checks",
+     "kcn-da-rules"
     ]
    },
-   "how": "Cập nhật bảng lấp đầy/cung mới và chKcnRent (inline JS) theo thông cáo quý mới; giữ đơn vị USD/m²/kỳ thuê còn lại",
+   "how": "Cập nhật workbook data/raw/kcn/Vietnam_Industrial_Park_Research_Data_2026_Expanded_Landbank.xlsx khi C&W/CBRE ra số quý mới (giữ tên sheet, cột, Source_ID, Coverage, Geography_version) → python scripts/build_kcn_workbook.py → node tests/kcn-insights.test.cjs và pytest tests/test_kcn_workbook.py → prepare_release",
    "gates": [
-    "Link thông cáo gốc",
-    "Phân biệt đất, nhà xưởng, kho"
+    "Link báo cáo/thông cáo gốc trong 11_SOURCES",
+    "Không nối chuỗi qua đổi phạm vi khảo sát hay đổi đơn vị USD/VND",
+    "Không cộng CBRE với C&W; số ước tính gắn nhãn",
+    "Build dừng nếu một kiểm tra hỏng"
+   ]
+  },
+  {
+   "id": "realestate.kcn-landbank",
+   "tier": "C",
+   "status": "manual",
+   "title": "Quỹ đất KCN và ký mới của doanh nghiệp niêm yết (BCTN): KBC, IDC, BCM, SZC, VGC, LHG, NTC, D2D",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "BCTN năm (thường tháng 3–4 năm sau); số BCTC/doanh nghiệp chỉ cập nhật khi người dùng nhắn",
+   "source": {
+    "name": "Báo cáo thường niên của chủ đầu tư KCN",
+    "url": "https://www.idico.com.vn/"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "file": "data/kcn-market.js",
+    "blocks": [
+     "kcn-lb-company",
+     "kcn-lb-unleased",
+     "kcn-lb-comp",
+     "kcn-lb-explorer",
+     "kcn-lb-idc",
+     "kcn-lb-coverage",
+     "kcn-lb-flow",
+     "kcn-lb-idcrev",
+     "kcn-su-copipe"
+    ]
+   },
+   "how": "Sửa sheet 17–20 của workbook theo BCTN mới (mỗi dòng có URL và trang), chạy python scripts/build_kcn_workbook.py; chỉ thêm lịch sử ký mới khi đủ 3 năm thực hiện cùng định nghĩa",
+   "gates": [
+    "Tách gross / thương phẩm / đã thuê / chưa lấp đầy ước tính / sẵn sàng",
+    "Không dùng kế hoạch hay dự phóng CTCK làm số thực hiện",
+    "Không cộng đất thuê lại D2D tại Châu Đức vào cung toàn ngành"
    ]
   },
   {

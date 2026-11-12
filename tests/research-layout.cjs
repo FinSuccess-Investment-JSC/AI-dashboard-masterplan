@@ -8,7 +8,7 @@ const b=await chromium.launch({headless:true,executablePath:'/Applications/Googl
 const SECTORS=process.env.SECTORS?process.env.SECTORS.split(','):['Dau-khi','Sugar','Bank','Dien','Bat-dong-san','Det-may','Cang-bien','Nong-nghiep','Thuy-san','Van-tai-bien','Thep','Xay-dung','Bao-hiem','Ban-le','Duoc'];
 try { for(const sector of SECTORS){
  await p.goto(base+sector+'/');await p.waitForSelector('body[data-editorial-ready="true"]');
- const tabCount=sector==='Bank'||sector==='Cang-bien'||sector==='Nong-nghiep'||sector==='Thuy-san'||sector==='Van-tai-bien'?7:sector==='Bat-dong-san'?8:6;assert.equal(await p.locator('.majortabbtn').count(),tabCount);
+ const tabCount=sector==='Bank'||sector==='Cang-bien'||sector==='Nong-nghiep'||sector==='Thuy-san'||sector==='Van-tai-bien'?7:sector==='Bat-dong-san'?10:6;assert.equal(await p.locator('.majortabbtn').count(),tabCount);
  assert.deepEqual(await p.evaluate(()=>{const ids=[...document.querySelectorAll('[id]')].map(n=>n.id);return ids.filter((id,i)=>ids.indexOf(id)!==i)}),[],sector+' duplicate ids');
  if(sector==='Bank'){
   assert.equal(await p.locator('#pane-mt9').count(),1);
