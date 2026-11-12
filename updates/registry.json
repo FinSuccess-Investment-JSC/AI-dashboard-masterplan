@@ -1290,6 +1290,84 @@
    }
   },
   {
+   "id": "power.picture-derived",
+   "tier": "A",
+   "title": "Bức tranh ngành Điện: cơ cấu nguồn, đóng góp tăng trưởng, Pmax/hệ số phụ tải, benchmark nhiên liệu, KPI và nhận định theo quy tắc",
+   "sources": [
+    "vn_power_daily",
+    "enso_oni",
+    "nino34_weekly",
+    "wb_energy_monthly",
+    "coal_newcastle",
+    "lng_jkm",
+    "henry_hub"
+   ],
+   "schedule": {
+    "type": "data",
+    "sources": [
+     "vn_power_daily",
+     "wb_energy_monthly",
+     "coal_newcastle",
+     "lng_jkm"
+    ]
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-pp-mix",
+     "dien-pp-contrib",
+     "dien-pp-subst",
+     "dien-pp-peak",
+     "dien-pp-lf",
+     "dien-pp-dispatch-table",
+     "dien-pp-fuel",
+     "dien-pp-hydro-econ",
+     "dien-pp-assess",
+     "dien-pp-matrix"
+    ]
+   },
+   "how": "Tính trong assets/power-picture.js khi mở trang, từ dữ liệu đã nạp (SECTOR_DAILY, HYDRO_RESERVOIRS, fmpRows và hằng số trong script cuối Dien/index.html); so cùng kỳ chỉ trên các ngày có bản tin EVN đủ nguồn ở cả hai năm; nhận định đổi theo số mới, không lưu cố định",
+   "gates": [
+    "Không ước tính ngày thiếu bản tin",
+    "Kỳ đối chiếu < 80% ngày thì ghi rõ"
+   ]
+  },
+  {
+   "id": "power.hydro-assets",
+   "tier": "C",
+   "title": "Ánh xạ hồ thủy điện EVN → nhà máy → đơn vị sở hữu → mã niêm yết",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Cập nhật khi đổi sở hữu, niêm yết hoặc khi xác minh thêm dòng",
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-pp-hydro-expo"
+    ]
+   },
+   "how": "Sửa data/power-hydro-assets.json/.js: mỗi dòng có nguồn đã mở (url + trích dẫn ngắn); không dùng Wikipedia làm nguồn sở hữu; hồ chưa có nguồn hiển thị \"Chưa xác minh\"",
+   "gates": [
+    "Nguồn đã mở có tên đơn vị sở hữu",
+    "Trạng thái niêm yết từ hồ sơ doanh nghiệp/sở giao dịch"
+   ]
+  },
+  {
+   "id": "power.picture-static",
+   "tier": "static",
+   "title": "Khung phân tích Điện: hợp đồng PPA/Qc, sơ đồ truyền dẫn tài chính EVN",
+   "schedule": {
+    "type": "none"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "blocks": [
+     "dien-pp-contract",
+     "dien-pp-evn-flow"
+    ]
+   }
+  },
+  {
    "id": "power.enso",
    "tier": "A",
    "title": "ONI và Niño 3.4 tuần (NOAA CPC, script)",
