@@ -1,7 +1,5 @@
-Routine tài liệu 11/11/2026: xử lý 4 mục.
-Vận tải biển (vt-t1, vt-t4): thêm vụ tấn công tàu dầu gần Hormuz 10/11 (gCaptain) và USTR hoãn phí cảng Mỹ–TQ tới 09/01/2027.
-Cảng (port.hot-topics) và Xây dựng (construction.prices): không có số mới mở được, giữ nguyên.
-Nông nghiệp (agri.hot-topics): nongnghiepmoitruong.vn trả 403 từ IP cloud → fail.
-Hai mục chỉ mở từ IP Việt Nam (hồ EVN, Cục ĐTNN) để runner trên máy xử lý.
-Hàng chờ vẫn còn nhiều mục C/D chưa xử lý.
+Routine Wi 12/11: KHÔNG cập nhật được.
+Widata-MCP không cung cấp công cụ nào trong phiên chạy, nên chưa gọi Wi và không có số mới.
+37 mục Wi (10 ngành) giữ nguyên số cũ, đã đánh dấu lỗi.
+Cần kiểm tra lại kết nối/đăng nhập Widata của routine.
 Chưa kiểm giao diện bằng trình duyệt.

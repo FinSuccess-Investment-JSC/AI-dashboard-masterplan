@@ -15,19 +15,19 @@
   "bank.eximbank": {},
   "comparison.financials": {},
   "bank.wi.daily": {
-   "lastAttempt": "2026-11-11T09:11:03+07:00",
+   "lastAttempt": "2026-11-12T09:11:30+07:00",
    "lastSuccess": "2026-10-28T17:38:14+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 9,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 10,
    "stuck": true
   },
   "bank.wi.monthly": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
+   "lastAttempt": "2026-11-12T09:11:29+07:00",
    "lastSuccess": "2026-10-28T17:38:14+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 7,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 8,
    "stuck": true
   },
   "bank.wi.quarterly": {
@@ -188,19 +188,19 @@
    "lastNote": "Trang đã có 9T/2026 vs 9T/2025 từ EVN (tổng 265,79 tỷ kWh, +9,3%; than 132,63, thủy điện 68,48); chưa có kỳ mới. Không sửa."
   },
   "realestate.wi.daily": {
-   "lastAttempt": "2026-11-11T09:11:03+07:00",
+   "lastAttempt": "2026-11-12T09:11:30+07:00",
    "lastSuccess": "2026-10-28T17:38:11+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 9,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 10,
    "stuck": true
   },
   "realestate.wi.weekly": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
+   "lastAttempt": "2026-11-12T09:11:29+07:00",
    "lastSuccess": "2026-10-28T17:38:11+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 7,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 8,
    "stuck": true
   },
   "realestate.market-quarterly": {
@@ -249,19 +249,19 @@
    "lastNote": "FDI 9T BĐS 6,94 tỷ USD (16,0%); không có dự án ≥100 triệu USD mới mở được"
   },
   "textile.wi.daily": {
-   "lastAttempt": "2026-11-11T09:11:03+07:00",
+   "lastAttempt": "2026-11-12T09:11:30+07:00",
    "lastSuccess": "2026-10-28T17:38:12+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 9,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 10,
    "stuck": true
   },
   "textile.wi.weekly": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
+   "lastAttempt": "2026-11-12T09:11:29+07:00",
    "lastSuccess": "2026-10-28T17:38:12+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 7,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 8,
    "stuck": true
   },
   "textile.trade-tariff": {
@@ -295,11 +295,11 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "port.wi.weekly": {
-   "lastAttempt": "2026-11-11T09:11:03+07:00",
+   "lastAttempt": "2026-11-12T09:11:29+07:00",
    "lastSuccess": "2026-10-28T17:38:15+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 7,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 8,
    "stuck": true
   },
   "port.freight": {
@@ -333,11 +333,11 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "agri.wi.weekly": {
-   "lastAttempt": "2026-11-11T09:11:03+07:00",
+   "lastAttempt": "2026-11-12T09:11:30+07:00",
    "lastSuccess": "2026-10-28T17:38:15+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 7,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 8,
    "stuck": true
   },
   "agri.policy": {
@@ -363,35 +363,35 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "port.wi.monthly": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
+   "lastAttempt": "2026-11-12T09:11:29+07:00",
    "lastSuccess": "2026-10-28T17:38:13+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 6,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 7,
    "stuck": true
   },
   "agri.wi.monthly": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
+   "lastAttempt": "2026-11-12T09:11:29+07:00",
    "lastSuccess": "2026-10-28T17:38:13+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 6,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 7,
    "stuck": true
   },
   "seafood.wi.monthly": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
+   "lastAttempt": "2026-11-12T09:11:29+07:00",
    "lastSuccess": "2026-10-28T17:38:14+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 6,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 7,
    "stuck": true
   },
   "seafood.wi.weekly": {
-   "lastAttempt": "2026-11-11T09:11:03+07:00",
+   "lastAttempt": "2026-11-12T09:11:30+07:00",
    "lastSuccess": "2026-10-28T17:38:15+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 7,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 8,
    "stuck": true
   },
   "seafood.duties": {
@@ -417,51 +417,51 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "port.wi.valuation": {
-   "lastAttempt": "2026-11-11T09:11:03+07:00",
+   "lastAttempt": "2026-11-12T09:11:30+07:00",
    "lastSuccess": "2026-10-28T17:38:16+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 9,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 10,
    "stuck": true
   },
   "agri.wi.valuation": {
-   "lastAttempt": "2026-11-11T09:11:03+07:00",
+   "lastAttempt": "2026-11-12T09:11:30+07:00",
    "lastSuccess": "2026-10-28T17:38:16+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 9,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 10,
    "stuck": true
   },
   "seafood.wi.valuation": {
-   "lastAttempt": "2026-11-11T09:11:04+07:00",
+   "lastAttempt": "2026-11-12T09:11:31+07:00",
    "lastSuccess": "2026-10-28T17:38:16+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 9,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 10,
    "stuck": true
   },
   "shipping.wi.daily": {
-   "lastAttempt": "2026-11-11T09:11:04+07:00",
+   "lastAttempt": "2026-11-12T09:11:31+07:00",
    "lastSuccess": "2026-10-28T17:38:16+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 9,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 10,
    "stuck": true
   },
   "shipping.wi.weekly": {
-   "lastAttempt": "2026-11-11T09:11:03+07:00",
+   "lastAttempt": "2026-11-12T09:11:30+07:00",
    "lastSuccess": "2026-10-28T17:38:17+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 7,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 8,
    "stuck": true
   },
   "shipping.wi.valuation": {
-   "lastAttempt": "2026-11-11T09:11:04+07:00",
+   "lastAttempt": "2026-11-12T09:11:31+07:00",
    "lastSuccess": "2026-10-28T17:38:17+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 9,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 10,
    "stuck": true
   },
   "shipping.outlook": {
@@ -497,27 +497,27 @@
    "lastNote": "Hormuz 3,6/ngày, Bab el-Mandeb 27,8/ngày (1–18/10); kết luận không đổi"
   },
   "construction.wi.monthly": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
+   "lastAttempt": "2026-11-12T09:11:29+07:00",
    "lastSuccess": "2026-10-28T17:38:17+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 6,
-   "stuck": true
-  },
-  "construction.wi.weekly": {
-   "lastAttempt": "2026-11-11T09:11:03+07:00",
-   "lastSuccess": "2026-10-28T17:38:17+07:00",
-   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
    "attempts": 7,
    "stuck": true
   },
-  "construction.wi.valuation": {
-   "lastAttempt": "2026-11-11T09:11:04+07:00",
+  "construction.wi.weekly": {
+   "lastAttempt": "2026-11-12T09:11:30+07:00",
    "lastSuccess": "2026-10-28T17:38:17+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 9,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 8,
+   "stuck": true
+  },
+  "construction.wi.valuation": {
+   "lastAttempt": "2026-11-12T09:11:31+07:00",
+   "lastSuccess": "2026-10-28T17:38:17+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 10,
    "stuck": true
   },
   "construction.disbursement": {
@@ -555,35 +555,35 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
   "insurance.wi.quarterly": {
-   "lastAttempt": "2026-11-11T09:11:03+07:00",
+   "lastAttempt": "2026-11-12T09:11:30+07:00",
    "lastSuccess": "2026-10-11T15:38:36+07:00",
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 8,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 9,
    "stuck": true
   },
   "insurance.wi.monthly": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
+   "lastAttempt": "2026-11-12T09:11:29+07:00",
    "lastSuccess": "2026-10-28T17:38:18+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 6,
-   "stuck": true
-  },
-  "insurance.wi.weekly": {
-   "lastAttempt": "2026-11-11T09:11:03+07:00",
-   "lastSuccess": "2026-10-28T17:38:18+07:00",
-   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
    "attempts": 7,
    "stuck": true
   },
-  "insurance.wi.valuation": {
-   "lastAttempt": "2026-11-11T09:11:04+07:00",
+  "insurance.wi.weekly": {
+   "lastAttempt": "2026-11-12T09:11:30+07:00",
    "lastSuccess": "2026-10-28T17:38:18+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 9,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 8,
+   "stuck": true
+  },
+  "insurance.wi.valuation": {
+   "lastAttempt": "2026-11-12T09:11:31+07:00",
+   "lastSuccess": "2026-10-28T17:38:18+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 10,
    "stuck": true
   },
   "insurance.market": {
@@ -616,27 +616,27 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
   "retail.wi.monthly": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
+   "lastAttempt": "2026-11-12T09:11:29+07:00",
    "lastSuccess": "2026-10-28T17:38:18+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 6,
-   "stuck": true
-  },
-  "retail.wi.weekly": {
-   "lastAttempt": "2026-11-11T09:11:03+07:00",
-   "lastSuccess": "2026-10-28T17:38:18+07:00",
-   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
    "attempts": 7,
    "stuck": true
   },
-  "retail.wi.valuation": {
-   "lastAttempt": "2026-11-11T09:11:04+07:00",
+  "retail.wi.weekly": {
+   "lastAttempt": "2026-11-12T09:11:30+07:00",
    "lastSuccess": "2026-10-28T17:38:18+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 9,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 8,
+   "stuck": true
+  },
+  "retail.wi.valuation": {
+   "lastAttempt": "2026-11-12T09:11:31+07:00",
+   "lastSuccess": "2026-10-28T17:38:18+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 10,
    "stuck": true
   },
   "retail.market": {
@@ -674,19 +674,19 @@
    "lastNote": "Q3/2026 từ VNDirect finfo: 11/18 mã điện (NT2, PPC, QTP, HND, BTP, VSH, CHP, SBA, SHP, TV2, GEX); POW, REE, TMP, GEG, HDG, TTA, PC1 chưa công bố"
   },
   "pharma.wi.monthly": {
-   "lastAttempt": "2026-11-11T09:11:04+07:00",
+   "lastAttempt": "2026-11-12T09:11:31+07:00",
    "lastSuccess": "2026-10-12T14:05:24+07:00",
    "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 10,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 11,
    "stuck": true
   },
   "pharma.wi.valuation": {
-   "lastAttempt": "2026-11-11T09:11:04+07:00",
+   "lastAttempt": "2026-11-12T09:11:31+07:00",
    "lastSuccess": "2026-10-12T14:05:24+07:00",
    "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 10,
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 11,
    "stuck": true
   },
   "pharma.market": {
@@ -766,15 +766,15 @@
   "steel.hot-topics": {},
   "steel.ai.cycle": {},
   "steel.wi.weekly": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 5,
+   "lastAttempt": "2026-11-12T09:11:29+07:00",
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 6,
    "stuck": true
   },
   "steel.wi.monthly": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 5,
+   "lastAttempt": "2026-11-12T09:11:29+07:00",
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 6,
    "stuck": true
   },
   "agri.public.margin": {},
@@ -799,39 +799,39 @@
   "construction.disbursement-race": {},
   "construction.province-index-bot": {},
   "insurance.wi.ratio": {
-   "lastAttempt": "2026-11-11T09:11:01+07:00",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 4,
+   "lastAttempt": "2026-11-12T09:11:28+07:00",
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 5,
    "stuck": true
   },
   "insurance.reinsurance": {},
   "retail.wi.gold": {
-   "lastAttempt": "2026-11-11T09:11:01+07:00",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 4,
+   "lastAttempt": "2026-11-12T09:11:28+07:00",
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 5,
    "stuck": true
   },
   "retail.calendar": {},
   "pharma.calendar": {},
   "port.wi.portwatch": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 4,
+   "lastAttempt": "2026-11-12T09:11:28+07:00",
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 5,
    "stuck": true
   },
   "port.price-margin": {},
   "shipping.wi.fearnleys": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 4,
+   "lastAttempt": "2026-11-12T09:11:28+07:00",
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 5,
    "stuck": true
   },
   "shipping.derived": {},
   "power.calendar": {},
   "seafood.wi.us-imports": {
-   "lastAttempt": "2026-11-11T09:11:02+07:00",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 4,
+   "lastAttempt": "2026-11-12T09:11:28+07:00",
+   "lastError": "Widata-MCP không cung cấp công cụ WiMCP trong phiên routine, chưa gọi Wi",
+   "attempts": 5,
    "stuck": true
   },
   "seafood.duties.landed": {
@@ -7016,5 +7016,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-11T14:03:09+07:00"
+ "updatedAt": "2026-11-12T09:11:31+07:00"
 }
