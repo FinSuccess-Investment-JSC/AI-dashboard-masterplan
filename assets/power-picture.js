@@ -888,7 +888,7 @@ const CSS2 = `
 .pp-form input{margin-top:3px;padding:6px 8px;border:1px solid var(--line,#d6dbe8);border-radius:7px;font:600 13px Inter,sans-serif;font-variant-numeric:tabular-nums;background:var(--card,#fff);color:var(--ink,#1d2333)}
 .pp-kpi .delta.pp-neutral,.kpi .delta.pp-neutral{color:var(--ink2,#3b4256)!important}
 .pp-pane .ct-period label:first-child{display:none}
-@media (max-width:760px){.pp-twocol{grid-template-columns:1fr}.pp-deep dl{grid-template-columns:1fr}.pp-m{min-width:46%}}
+@media (max-width:760px){.pp-tcard table,.pp-expo table{min-width:720px}.pp-twocol{grid-template-columns:1fr}.pp-deep dl{grid-template-columns:1fr}.pp-m{min-width:46%}}
 :root[data-theme=dark] .pp-take{background:color-mix(in srgb,var(--card,#141a33) 90%,#6171C5 10%)}
 :root[data-theme=dark] .pp-st-Verified{background:#173d27;color:#bfe8cc}:root[data-theme=dark] .pp-st-Estimated{background:#4a3b12;color:#ffe3a6}:root[data-theme=dark] .pp-st-Scenario{background:#33245c;color:#ddd0ff}:root[data-theme=dark] .pp-st-Insufficient{background:#262c3d;color:#b4bbdd;border-color:#3a4260}:root[data-theme=dark] .pp-st-Stale{background:#4a1f1b;color:#ffc9c2}
 `;
