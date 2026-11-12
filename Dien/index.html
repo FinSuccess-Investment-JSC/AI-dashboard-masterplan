@@ -39,6 +39,8 @@
 <script src="../assets/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=0aa68a6982f7">
 <script src="../assets/source-gap.js?v=02afdd3cfa3d" defer></script>
+<script src="../data/power-hydro-assets.js" defer></script>
+<script src="../assets/power-picture.js" defer></script>
 <script src="../assets/site-navigation.js?v=fd23a387e725" data-release="20261111T114849Z-hydro"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="../assets/research-layout.css?v=8cfc041b90be">
@@ -200,9 +202,9 @@
       <details class="dtable"><summary>Chi tiết dữ liệu tháng</summary><div class="tablewrap"><table id="hydro-reservoir-table"></table></div></details>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="dien-31" data-update-kind="public" data-cadence="daily" data-refresh-status="snapshot">
-      <div class="chart-title">Hồ chứa theo cụm: 12 tháng gần nhất so trung bình 5 năm</div>
-      <div class="chart-sub">trung vị lệch của các hồ trong cụm · nước về hồ (%) hoặc mực nước thượng lưu (m) · xanh = nhiều nước hơn nền 5 năm, cam = ít hơn</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin:10px 0"><label>Chỉ tiêu <select id="hydro-heat-metric"><option value="inflow">Nước về hồ (% so TB 5 năm)</option><option value="level">Mực nước thượng lưu (m so TB 5 năm)</option></select></label></div>
+      <div class="chart-title">Hồ chứa theo cụm, vùng hoặc từng hồ: 12 tháng gần nhất</div>
+      <div class="chart-sub">trung vị lệch của các hồ trong nhóm so TB 5 năm hoặc năm trước cùng tháng · nước về (%) hoặc mực nước thượng lưu (m) · xanh = nhiều nước hơn, cam = ít hơn · số hồ hợp lệ ghi trong ô</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin:10px 0"><label>Chỉ tiêu <select id="hydro-heat-metric"><option value="inflow">Nước về hồ (%)</option><option value="level">Mực nước thượng lưu (m)</option></select></label><label>Nhóm <select id="hydro-heat-group"><option value="cluster">3 cụm</option><option value="region">6 vùng EVN</option><option value="res">Từng hồ</option></select></label><label>So với <select id="hydro-heat-base"><option value="5y">TB 5 năm cùng tháng</option><option value="ly">Cùng tháng năm trước</option></select></label></div>
       <div id="hydro-heatmap"></div>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Ba cụm gộp từ vùng EVN: Bắc (Tây Bắc Bộ, Đông Bắc Bộ, Bắc Trung Bộ), Trung &amp; Tây Nguyên (Nam Trung Bộ, Tây Nguyên), Nam (Đông Nam Bộ, 2 hồ). Mỗi ô là trung vị lệch của từng hồ so trung bình 5 năm cùng tháng (chỉ tháng đủ ≥80% ngày, nền ≥3 năm); số hồ hợp lệ ghi trong ô. Trung vị không trọng số theo dung tích; cụm Nam chỉ có 2 hồ nên biến động mạnh.</div></details>
       <div class="source-note">Nguồn: <a href="https://www.evn.com.vn/vi-VN/thong-tin-ho-thuy-dien/Muc-nuoc-cac-ho-thuy-dien-60-123" target="_blank" rel="noopener">EVN · mực nước các hồ thủy điện</a>, cùng dữ liệu với chart từng hồ phía trên.</div>
