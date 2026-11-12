@@ -134,10 +134,10 @@
   "claim": "Trần gió ngoài khơi 2025, Bắc Bộ/Nam Trung Bộ/Nam Bộ (QĐ 1824/QĐ-BCT)",
   "value": "3.975,1 / 3.078,9 / 3.868,5 đ/kWh",
   "url": "https://tapchicongthuong.vn/phe-duyet-khung-gia-phat-dien-loai-hinh-nha-may-dien-gio-ngoai-khoi-nam-2025-142179.htm",
-  "opened_at": "2026-10-12",
-  "quote": "975,1 đồng/kWh; khu vực biển Nam Trung Bộ là 3.078,9 đồng/kWh; khu vực biển Nam Bộ là 3.868,5 đồng/kWh.",
+  "opened_at": "2026-11-12",
+  "quote": "năm 2025 cho khu vực biển Bắc Bộ là 3.975,1 đồng/kWh; khu vực biển Nam Trung Bộ là 3.078,9 đồng/kWh; khu vực biển Nam Bộ là 3.868,5 đồng/kWh.",
   "status": "match",
-  "note": ""
+  "note": " Mở lại 12/11/2026, đoạn trích đủ ba vùng."
  },
  {
   "block": "dien-17",
@@ -378,5 +378,1415 @@
   "quote": "công suất tinh của nhà máy điện chuẩn làm căn cứ tính toán được định mức là 1.008.104 kW, đi kèm với suất tiêu hao nhiệt tinh ở mức tải 85% là 6.542,96 BTU/kWh. Đối với các yếu tố đầu vào cấu thành giá, mức giá nhiên liệu chính là khí thiên nhiên được áp dụng ở ngưỡng 11,98 USD/triệu BTU, cộng thêm cước phí vận chuyển nhiên liệu đến nhà máy là 1,87 USD/triệu BTU. Toàn bộ phương án được tính toán dựa trên tỷ giá quy đổi ngoại tệ là 26.378 đồng/USD.",
   "status": "match",
   "note": "Báo dẫn Cổng TTĐT Bộ Công Thương; trần 3.410,64 đ/kWh."
+ },
+ {
+  "block": "dien-17",
+  "claim": "QĐ 2945/QĐ-BCT ngày 5/11/2026 phê duyệt khung giá phát điện điện gió năm 2026, Thứ trưởng Trương Thanh Hoài ký",
+  "value": "2945/QĐ-BCT, 05/11/2026",
+  "url": "https://tapchicongthuong.vn/khung-gia-phat-dien-gio-nam-2026-cao-nhat-2-187-83-dong-kwh-565053.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Thứ trưởng Trương Thanh Hoài vừa ký Quyết định số 2945/QĐ-BCT ngày 5/11/2026 của Bộ Công Thương phê duyệt khung giá phát điện loại hình nhà máy điện gió năm 2026.",
+  "status": "match",
+  "note": "Bài TCCT đăng 10/11/2026. Căn cứ: điểm a khoản 2 Điều 1 Thông tư 09/2025/TT-BCT. Danh mục văn bản pháp quy trên moit.gov.vn (mở 11/11/2026) mới chỉ đăng 2946/QĐ-BCT (điện mặt trời), chưa đăng toàn văn 2945."
+ },
+ {
+  "block": "dien-17",
+  "claim": "Giá trần điện gió trên đất liền 2026 theo 3 miền",
+  "value": "Bắc 2.187,83; Trung 1.893,61; Nam 2.035,37 đồng/kWh (chưa VAT)",
+  "url": "https://vtv.vn/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-gio-nam-2026-100261110204141472.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Cụ thể, đối với điện gió trên đất liền, mức giá phát điện tối đa tại khu vực miền Bắc là 2.187,83 đồng/kWh; miền Trung là 1.893,61 đồng/kWh và miền Nam là 2.035,37 đồng/kWh.",
+  "status": "match",
+  "note": "Cùng số liệu trên TCCT và bnews.vn (đã mở). So với QĐ 1508/2025 (1.959,4/1.807,4/1.840,3): +11,7% / +4,8% / +10,6%. Phân vùng 2026 dùng danh sách 34 tỉnh sau sáp nhập (miền Bắc đến Hà Tĩnh; miền Trung Quảng Trị–Lâm Đồng; miền Nam Đồng Nai–Cà Mau), 2025 dùng danh sách tỉnh cũ, nên ranh giới miền có thể không trùng hoàn toàn."
+ },
+ {
+  "block": "dien-17",
+  "claim": "Giá trần điện gió gần bờ 2026 áp dụng chung 3 miền",
+  "value": "2.126,92 đồng/kWh (chưa VAT)",
+  "url": "https://vtv.vn/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-gio-nam-2026-100261110204141472.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Đối với điện gió gần bờ, mức giá phát điện tối đa áp dụng thống nhất tại cả ba khu vực miền Bắc, miền Trung và miền Nam là 2.126,92 đồng/kWh.",
+  "status": "match",
+  "note": "So với 1.987,4 (QĐ 1508/2025): +7,0%. QĐ 2945 chỉ có 2 loại: trên đất liền và gần bờ; không có điện gió ngoài khơi."
+ },
+ {
+  "block": "dien-17",
+  "claim": "Mức tăng so với 2025 theo báo chí",
+  "value": "trên đất liền +4,8–11,7%; gần bờ ~+7%",
+  "url": "https://dientuungdung.vn/bo-cong-thuong-tang-gia-tran-dien-mat-troi-va-dien-gio-nam-2026-19558.html",
+  "opened_at": "2026-11-11",
+  "quote": "So với năm 2025, giá trần điện gió trên đất liền tăng khoảng 4,8–11,7% tùy khu vực, trong khi điện gió gần bờ tăng khoảng 7%.",
+  "status": "match",
+  "note": "Khớp với tính toán từ số liệu 2025 đã xác minh."
+ },
+ {
+  "block": "dien-17",
+  "claim": "Phân vùng địa lý 2026 theo tỉnh mới",
+  "value": "Bắc: Điện Biên…Hà Tĩnh; Trung: Quảng Trị, Huế, Quảng Ngãi, Đà Nẵng, Gia Lai, Đắk Lắk, Khánh Hòa, Lâm Đồng; Nam: Đồng Nai…Cà Mau",
+  "url": "https://vtv.vn/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-gio-nam-2026-100261110204141472.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Khu vực miền Trung gồm Quảng Trị, Huế, Quảng Ngãi, Đà Nẵng, Gia Lai, Đắk Lắk, Khánh Hòa và Lâm Đồng.",
+  "status": "match",
+  "note": "Thông số tham chiếu (nhà máy chuẩn, suất đầu tư, giờ vận hành) của khung giá gió 2026 không được nêu trong các bài đã mở."
+ },
+ {
+  "block": "dien-17",
+  "claim": "QĐ 2946/QĐ-BCT ngày 5/11/2026 khung giá điện mặt trời 2026, hiệu lực 05/11/2026",
+  "value": "2946/QĐ-BCT; ban hành 05/11/2026; hiệu lực 05/11/2026",
+  "url": "https://moit.gov.vn/van-ban-phap-luat/van-ban-phap-quy/phe-duyet-khung-gia-phat-dien-loai-hinh-nha-may-dien-mat-troi-nam-2026.html",
+  "opened_at": "2026-11-11",
+  "quote": "Quyết định phê duyệt khung giá phát điện loại hình nhà máy điện mặt trời năm 2026 | Số hiệu | 2946/QĐ-BCT | ... Ngày ban hành | 05/11/2026 | Ngày hiệu lực | 05/11/2026",
+  "status": "match",
+  "note": "Trang văn bản MOIT; người ký Thứ trưởng Trương Thanh Hoài."
+ },
+ {
+  "block": "dien-17",
+  "claim": "Giá trần điện mặt trời 2026 không BESS",
+  "value": "Mặt đất: Bắc 1.591,02 / Trung 1.293,17 / Nam 1.104,32; Nổi: Bắc 1.939,74 / Trung 1.560,63 / Nam 1.340,21 đồng/kWh",
+  "url": "https://moit.gov.vn/tin-tuc/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-loai-hinh-nha-may-dien-mat-troi-nam-2026.html",
+  "opened_at": "2026-11-11",
+  "quote": "Đối với điện mặt trời mặt đất, mức giá tại miền Bắc là 1.591,02 đồng/kWh, miền Trung là 1.293,17 đồng/kWh và miền Nam là 1.104,32 đồng/kWh.",
+  "status": "match",
+  "note": "Câu kế tiếp: 'Đối với điện mặt trời nổi, mức giá tại miền Bắc là 1.939,74 đồng/kWh, miền Trung là 1.560,63 đồng/kWh và miền Nam là 1.340,21 đồng/kWh.' Chưa VAT."
+ },
+ {
+  "block": "dien-17",
+  "claim": "Giá trần điện mặt trời 2026 có BESS",
+  "value": "Mặt đất: 1.813,48 / 1.469,90 / 1.254,97; Nổi: 2.120,31 / 1.703,21 / 1.461,39 đồng/kWh",
+  "url": "https://moit.gov.vn/tin-tuc/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-loai-hinh-nha-may-dien-mat-troi-nam-2026.html",
+  "opened_at": "2026-11-11",
+  "quote": "Đối với điện mặt trời nổi, mức giá tại miền Bắc là 2.120,31 đồng/kWh, miền Trung là 1.703,21 đồng/kWh và miền Nam là 1.461,39 đồng/kWh.",
+  "status": "match",
+  "note": "Mục có BESS; mặt đất có BESS: 'miền Bắc là 1.813,48 đồng/kWh, miền Trung là 1.469,90 đồng/kWh và miền Nam là 1.254,97 đồng/kWh'."
+ },
+ {
+  "block": "dien-17",
+  "claim": "Thông số BESS dùng tính giá trần điện mặt trời có lưu trữ",
+  "value": "≥10% công suất nhà máy; 2 giờ",
+  "url": "https://moit.gov.vn/tin-tuc/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-loai-hinh-nha-may-dien-mat-troi-nam-2026.html",
+  "opened_at": "2026-11-11",
+  "quote": "Công suất: Tối thiểu 10% công suất của nhà máy điện mặt trời. Thời gian lưu trữ/xả: 02 giờ.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-17",
+  "claim": "So sánh điện mặt trời mặt đất miền Bắc 2025→2026",
+  "value": "1.382,7 → 1.591,02 đồng/kWh (~+15,1%)",
+  "url": "https://dientuungdung.vn/bo-cong-thuong-tang-gia-tran-dien-mat-troi-va-dien-gio-nam-2026-19558.html",
+  "opened_at": "2026-11-11",
+  "quote": "So với năm 2025, giá trần điện mặt trời mặt đất không có BESS tại miền Bắc tăng từ 1.382,7 đồng/kWh lên 1.591,02 đồng/kWh, tương đương khoảng 15,1%.",
+  "status": "match",
+  "note": "Bài cũng nêu QĐ 988/QĐ-BCT năm 2025 đã có mức giá riêng cho điện mặt trời có pin."
+ },
+ {
+  "block": "dien-17",
+  "claim": "Khung giá nhiệt điện khí 2026 (QĐ 1882) dùng khí thiên nhiên giá 11,98 USD/triệu BTU — không có quyết định LNG riêng 2026",
+  "value": "3.410,64 đồng/kWh; khí 11,98 + cước 1,87 USD/triệu BTU; 26.378 đ/USD",
+  "url": "https://moit.gov.vn/tin-tuc/phat-trien-nang-luong/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-nhiet-dien-khi-nam-2026.html",
+  "opened_at": "2026-11-11",
+  "quote": "Về thông số nhiên liệu, giá nhiên liệu chính (khí thiên nhiên) được tính ở mức 11,98 USD/triệu BTU; cước phí vận chuyển nhiên liệu chính đến nhà máy là 1,87 USD/triệu BTU.",
+  "status": "match",
+  "note": "QĐ 1882/QĐ-BCT ngày 23/7/2026 (đã xác minh trước). Báo chí (Dân trí, 24hmoney) gọi là 'giá trần điện khí LNG' nhưng văn bản ghi 'khí thiên nhiên'. Năm 2025 có quyết định LNG riêng (QĐ 1313/QĐ-BCT, 3.327,42 đ/kWh); chưa tìm thấy quyết định LNG riêng năm 2026."
+ },
+ {
+  "block": "dien-36",
+  "claim": "Giá trần khung giá chuyển tiếp QĐ 21/QĐ-BCT (ký 7/1/2023)",
+  "value": "MT mặt đất 1.184,90; MT nổi 1.508,27; gió đất liền 1.587,12; gió trên biển 1.815,95 đồng/kWh (chưa VAT)",
+  "url": "https://tuoitre.vn/da-co-khung-gia-dien-gio-dien-mat-troi-chuyen-tiep-20230107132647611.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Cụ thể, mức giá trần của khung giá với nhà máy điện mặt trời mặt đất là 1.184,90 đồng/kWh; nhà máy điện mặt trời nổi là 1.508,27 đồng/kWh; nhà máy điện gió trong đất liền là 1.587,12 đồng/kWh; nhà máy điện gió trên biển là 1.815,95 đồng/kWh.",
+  "status": "match",
+  "note": "Do Thứ trưởng Đặng Hoàng An ký ngày 7/1/2023; xây dựng theo Thông tư 15/2022/TT-BCT."
+ },
+ {
+  "block": "dien-36",
+  "claim": "Giá tạm = 50% giá trần QĐ 21; mức tương đương",
+  "value": "592,45 / 754,13 / 793,56 / 907,97 đồng/kWh",
+  "url": "https://vietnamnet.vn/dien-tai-tao-co-gia-tam-bo-yeu-cau-khan-truong-cho-phat-len-luoi-2147221.html",
+  "opened_at": "2026-11-11",
+  "quote": "Mức giá tạm thời để doanh nghiệp nối lưới là tối đa 50% giá trần khung giá phát điện tại Quyết định số 21 (tương đương, mỗi kWh điện mặt trời mặt đất là 592,45 đồng; điện mặt trời nổi là 754,13 đồng; điện gió trong đất liền là 793,56 đồng; điện gió trên biển là 907,97 đồng).",
+  "status": "match",
+  "note": "Bài 5/2023."
+ },
+ {
+  "block": "dien-36",
+  "claim": "Căn cứ chỉ đạo giá tạm: Thông báo 182/TB-VPCP 17/5/2023 và Công văn 3184/BCT-ĐTĐL 24/5/2023",
+  "value": "CV 3184/BCT-ĐTĐL ngày 24/5/2023",
+  "url": "https://tapchicongthuong.vn/khan-truong-hoan-thien-thu-tuc--som-dua-cac-nha-may-dien-mat-troi--dien-gio-chuyen-tiep-vao-van-hanh-105448.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Trước đó, ngày 24/5/2023, Bộ Công Thương đã có Công văn số 3184/BCT-ĐTĐL gửi Tập đoàn Điện lực Việt Nam, yêu cầu EVN khẩn trương đàm phán với chủ đầu tư các nhà máy điện mặt trời, điện gió chuyển tiếp với mức giá tạm thời và cho vận hành phát điện lên lưới điện sau khi hoàn thành công tác đầu tư xây dựng, hoàn tất hồ sơ pháp lý theo quy định.",
+  "status": "match",
+  "note": "Bài cũng nêu: thực hiện Kết luận của PTTg Trần Hồng Hà tại Thông báo số 182/TC-VPCP [sic] ngày 17/5/2023. Mức 50% là đề nghị/thỏa thuận giá tạm được Bộ phê duyệt từng dự án; chưa tìm thấy một văn bản quy phạm (thông tư) ghi rõ tỷ lệ 50%."
+ },
+ {
+  "block": "dien-36",
+  "claim": "Số dự án đề nghị giá tạm 50% (9/2023)",
+  "value": "68 dự án đề nghị; 62/68 ký tắt PPA",
+  "url": "https://moit.gov.vn/tin-tuc/phat-trien-nang-luong/62-du-an-nang-luong-tai-tao-chuyen-tiep-duoc-bo-cong-thuong-phe-duyet-gia-tam.html",
+  "opened_at": "2026-11-11",
+  "quote": "Có 68 dự án đề nghị giá tạm bằng 50% giá trần của khung giá theo Quyết định số 21/QĐ-BCT ngày 07/01/2023 của Bộ Công Thương.",
+  "status": "match",
+  "note": "Số liệu đến 21/9/2023, nguồn Cục Điều tiết điện lực."
+ },
+ {
+  "block": "dien-36",
+  "claim": "Tình trạng dự án chuyển tiếp đến 23/9/2026",
+  "value": "85 dự án (>4.734 MW); 39 dự án (2.283 MW) đã ký PPA chính thức; 7 dự án (102 MW) vận hành chưa thỏa thuận; 7 dự án (494 MW) dừng đàm phán; 32 dự án (>1.700 MW) chưa gửi hồ sơ",
+  "url": "https://vnexpress.net/hon-2-200-mw-dien-tai-tao-chuyen-tiep-chua-dam-phan-gia-5125904.html",
+  "opened_at": "2026-11-11",
+  "quote": "Ngoài 39 dự án chưa đàm phán trên, 46 dự án còn lại đã vận hành thương mại với tổng công suất 2.386 MW. Trong đó, 39 dự án (2.283 MW) thỏa thuận được giá điện và ký chính thức hợp đồng mua bán điện với EVN.",
+  "status": "match",
+  "note": "VnExpress 28/9/2026: 'đến 23/9, có 7 dự án với tổng công suất 494 MW dừng đàm phán' và 'còn 32 dự án, tổng công suất hơn 1.700 MW chưa gửi hồ sơ đàm phán'. Soha 29/9/2026 nêu cùng cơ cấu (tổng 4.735,4 MW)."
+ },
+ {
+  "block": "dien-36",
+  "claim": "FIT1 điện mặt trời QĐ 11/2017/QĐ-TTg (11/4/2017)",
+  "value": "2.086 đồng/kWh = 9,35 US cents/kWh",
+  "url": "https://theleader.vn/tu-1-6-gia-ban-dien-mat-troi-la-935-cents-kwh-d36251.html",
+  "opened_at": "2026-11-11",
+  "quote": "Giá bán điện mặt trời được áp dụng tại Việt Nam từ ngày 1/6/2017 tới là 9,35 cents/KWh, theo Quyết định số 11/2017/QĐ-TTg của Thủ tướng Chính phủ được ban hành ngày 11/4/2017 về cơ chế khuyến khích phát triển các dự án điện mặt trời tại Việt Nam.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-36",
+  "claim": "FIT2 QĐ 13/2020/QĐ-TTg: mặt đất 7,09; nổi 7,69 UScent/kWh",
+  "value": "7,09 / 7,69 UScent/kWh",
+  "url": "https://tapchicongthuong.vn/chinh-thuc-ban-hanh-co-che-moi--dien-mat-troi-tiep-tuc-duoc-ho-tro-gia-ban-70477.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Giá bán điện nối lưới mặt đất là 7,09 UScent/kWh và giá bán điện nối lưới nổi là 7,69 UScent/kWh, riêng các dự án của Ninh Thuận được áp dụng giá 2.086 đồng (9,35 UScent/kWh)",
+  "status": "match",
+  "note": "Áp dụng cho dự án có chủ trương trước 23/11/2019 và COD 1/7/2019–31/12/2020; 20 năm."
+ },
+ {
+  "block": "dien-36",
+  "claim": "FIT2 mái nhà QĐ 13/2020",
+  "value": "8,38 UScent/kWh",
+  "url": "https://tapchicongthuong.vn/chinh-thuc-ban-hanh-co-che-moi--dien-mat-troi-tiep-tuc-duoc-ho-tro-gia-ban-70477.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Giá bán điện mặt trời mái nhà cho EVN tương đương 8,38 UScent/kWh, áp dụng cho hệ thống điện mặt trời mái nhà có thời điểm vào vận hành phát điện và xác nhận chỉ số công tơ trong giai đoạn từ ngày 1/7/2019 đến ngày 31/12/2020 và được áp dụng 20 năm kể từ ngày vào vận hành phát điện.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-36",
+  "claim": "FIT điện gió QĐ 39/2018/QĐ-TTg (10/9/2018)",
+  "value": "Đất liền 1.928 đ/kWh = 8,5 UScents; trên biển 2.223 đ/kWh = 9,8 UScents",
+  "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/quy-dinh-moi-ve-gia-dien-gio.html",
+  "opened_at": "2026-11-11",
+  "quote": "Đối với các dự án điện gió trên biển, giá mua điện tại điểm giao nhận điện là 2.223 đồng/kWh (chưa bao gồm thuế giá trị gia tăng, tương đương 9,8 Uscents/kWh, tỷ giá quy đổi giữa đồng Việt Nam và đồng Đô la Mỹ được tính theo tỷ giá trung tâm do Ngân hàng Nhà nước Việt Nam công bố ngày 30/8/2018 là 22.683 đồng/USD).",
+  "status": "match",
+  "note": "Cùng trang: 'Đối với các dự án điện gió trong đất liền, giá mua điện tại điểm giao nhận điện là 1.928 đồng/kWh (... tương đương 8,5 Uscents/kWh ...)'. Áp dụng cho COD trước 1/11/2021, 20 năm."
+ },
+ {
+  "block": "dien-36",
+  "claim": "NQ 233/NQ-CP ban hành ngày 10/12/2024 (không phải 2025); căn cứ EPTC: Thông báo 3116 ngày 25/12/2023 của TTCP",
+  "value": "NQ 233 ngày 10/12/2024",
+  "url": "https://vietstock.vn/2026/10/evn-de-nghi-dam-phan-giam-gia-mua-dien-trong-thoi-gian-du-an-dien-tai-tao-vi-pham-nghiem-thu-768-1499098.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Đề nghị trên của Công ty Mua bán điện dựa trên Thông báo 3116 ngày 25/12/2023 của Thanh tra Chính phủ, các quyết định về cơ chế phát triển điện mặt trời, điện gió và Nghị quyết 233 ngày 10/12/2024 của Chính phủ.",
+  "status": "match",
+  "note": "Mâu thuẫn với giả định đề bài '(2025)': NQ 233/NQ-CP là ngày 10/12/2024 (baoxaydung.vn cũng ghi như vậy)."
+ },
+ {
+  "block": "dien-36",
+  "claim": "173 nhà máy/phần nhà máy chưa có văn bản chấp thuận nghiệm thu khi COD/hưởng FIT",
+  "value": "173 nhà máy hoặc phần nhà máy",
+  "url": "https://vnexpress.net/evn-de-nghi-dam-phan-lai-gia-mua-dien-loat-du-an-tai-tao-vuong-nghiem-thu-5128495.html",
+  "opened_at": "2026-11-11",
+  "quote": "Theo Bộ Công Thương, 173 nhà máy hoặc phần nhà máy điện gió, mặt trời nối lưới đã vận hành thương mại, nhưng chưa có văn bản chấp thuận nghiệm thu tại thời điểm COD hoặc trong thời gian hưởng giá FIT.",
+  "status": "match",
+  "note": "Báo Tuổi Trẻ/Báo Xây dựng dùng con số 172 dự án (danh mục), tổng gần 9.800 MW."
+ },
+ {
+  "block": "dien-36",
+  "claim": "172 dự án ~9.800 MW; ~13 tỷ USD vốn",
+  "value": "172 dự án, gần 9.800 MW",
+  "url": "https://baoxaydung.vn/172-du-an-dien-tai-tao-evn-de-nghi-dam-phan-lai-gia-mua-dien-192261004115339816.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Theo đó, các cơ chế đặc thù đối với điện gió, điện mặt trời từng bước được triển khai, đưa 172 dự án với tổng công suất gần 9.800 MW vào khai thác. Dự kiến việc này khơi thông khoảng 13 tỷ USD vốn đã đầu tư, đồng thời có khả năng đem lại 50.000 tỷ đồng cho ngân sách.",
+  "status": "match",
+  "note": "Bài Báo Xây dựng ngày 04/10/2026."
+ },
+ {
+  "block": "dien-36",
+  "claim": "Mức giá theo trần chuyển tiếp thấp hơn FIT 24–47%; EVN tạm thanh toán từ đầu 2025",
+  "value": "thấp hơn 24–47%",
+  "url": "https://kevesko.vn/20261005/viet-nam-tim-loi-giai-cho-vuong-mac-13-ty-usd-44409521.html",
+  "opened_at": "2026-11-11",
+  "quote": "Theo tính toán được nêu, nếu áp dụng mức trần của cơ chế chuyển tiếp, giá mua điện có thể thấp hơn khoảng 24-47% so với giá ưu đãi.",
+  "status": "match",
+  "note": "Nguồn Sputnik VN 05/10/2026 (dẫn Tuổi Trẻ). Trích DN: 'từ đầu năm 2025 EVN thực hiện thanh toán tạm'. Một nhà đầu tư điện mặt trời dự kiến ký giá mới trong tuần; đề nghị bù trừ khoản tiền điện EVN đang giữ lại. Không nêu số tiền."
+ },
+ {
+  "block": "dien-38",
+  "claim": "NĐ 72/2025/NĐ-CP ngày 28/3/2025: điều chỉnh tối thiểu 3 tháng",
+  "value": "tối thiểu 3 tháng",
+  "url": "https://tapchicongthuong.vn/dieu-chinh-gia-ban-le-dien-binh-quan-toi-thieu-3-thang-lan-138930.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Nghị định số 72/2025/NĐ-CP của Chính phủ quy định, thời gian điều chỉnh giá bán lẻ điện bình quân tối thiểu là 3 tháng kể từ lần điều chỉnh giá điện gần nhất.",
+  "status": "match",
+  "note": "NĐ 72 ban hành 28/3/2025."
+ },
+ {
+  "block": "dien-38",
+  "claim": "NĐ 72: ngưỡng thẩm quyền (giảm ≥1% EVN tự giảm; tăng 2–<5% EVN quyết sau ý kiến BCT; 5–<10% cần BCT chấp thuận; ≥10% báo cáo Chính phủ)",
+  "value": "1% / 2% / 5% / 10%",
+  "url": "https://tapchicongthuong.vn/dieu-chinh-gia-ban-le-dien-binh-quan-toi-thieu-3-thang-lan-138930.htm",
+  "opened_at": "2026-11-11",
+  "quote": "c) Trường hợp giá bán lẻ điện bình quân cần điều chỉnh tăng từ 5% đến dưới 10% so với giá bán lẻ điện bình quân hiện hành, Tập đoàn Điện lực Việt Nam được phép điều chỉnh tăng giá bán lẻ điện bình quân ở mức tương ứng sau khi báo cáo và được Bộ Công Thương chấp thuận.",
+  "status": "match",
+  "note": "Điểm d: tăng ≥10% → BCT kiểm tra, lấy ý kiến bộ ngành, 'báo cáo Chính phủ xem xét, cho ý kiến' (không phải Thủ tướng). Điểm a (bản gốc NĐ 72): giảm ≥1% EVN 'có trách nhiệm giảm' rồi báo cáo trong 5 ngày làm việc."
+ },
+ {
+  "block": "dien-38",
+  "claim": "NĐ 278/2026/NĐ-CP ngày 9/7/2026 sửa đổi NĐ 72",
+  "value": "278/2026/NĐ-CP, 09/7/2026",
+  "url": "https://congthuong.vn/quy-dinh-moi-ve-dieu-chinh-gia-ban-le-dien-binh-quan-464947.html",
+  "opened_at": "2026-11-11",
+  "quote": "Ngày 9/7/2026, Chính phủ ban hành Nghị định số 278/2026/NĐ-CP sửa đổi, bổ sung một số điều của Nghị định số 72/2025/NĐ-CP ngày 28 tháng 3 năm 2025 của Chính phủ quy định về cơ chế, thời gian điều chỉnh giá bán lẻ điện bình quân.",
+  "status": "match",
+  "note": "Sửa đổi, không thay thế; BCT có VBHN 68/2026/VBHN-BCT (theo kết quả tìm kiếm, chưa mở)."
+ },
+ {
+  "block": "dien-38",
+  "claim": "NĐ 278: BCT có quyền yêu cầu EVN giảm giá trong 5 ngày làm việc",
+  "value": "5 ngày làm việc",
+  "url": "https://congthuong.vn/quy-dinh-moi-ve-dieu-chinh-gia-ban-le-dien-binh-quan-464947.html",
+  "opened_at": "2026-11-11",
+  "quote": "a) Trường hợp giá bán lẻ điện bình quân cần điều chỉnh giảm mà Tập đoàn Điện lực Việt Nam không điều chỉnh giảm, Bộ Công Thương có trách nhiệm yêu cầu Tập đoàn Điện lực Việt Nam điều chỉnh giảm giá bán lẻ điện bình quân.",
+  "status": "match",
+  "note": "Sửa Điều 7."
+ },
+ {
+  "block": "dien-38",
+  "claim": "NĐ 278: EVN báo cáo chi phí thực tế năm N-1 trước 30/6 năm N; BCT chủ trì kiểm tra cùng Bộ Tài chính, được thuê tư vấn độc lập",
+  "value": "trước ngày 30/6 năm N",
+  "url": "https://congthuong.vn/quy-dinh-moi-ve-dieu-chinh-gia-ban-le-dien-binh-quan-464947.html",
+  "opened_at": "2026-11-11",
+  "quote": "a) Trước ngày 30 tháng 6 năm N, Tập đoàn Điện lực Việt Nam có trách nhiệm báo cáo Bộ Công Thương chi phí thực tế thực hiện các khâu của năm N-1 tại khoản 2 Điều 4 Nghị định này, Bộ Công Thương chủ trì, phối hợp với Bộ Tài chính và các cơ quan liên quan kiểm tra chi phí thực tế thực hiện các khâu năm N-1 của Tập đoàn Điện lực Việt Nam.",
+  "status": "match",
+  "note": "Luatvietnam: BCT công khai kết quả kiểm tra chi phí hằng năm. Hạn tương ứng trong NĐ 72 gốc chưa xác minh."
+ },
+ {
+  "block": "dien-38",
+  "claim": "Giảm 2% giá bán lẻ bình quân từ 1/11/2026 theo QĐ 1305/QĐ-EVN ngày 30/10/2026",
+  "value": "2.159,9037 đồng/kWh (chưa VAT), -2%",
+  "url": "https://tapchicongthuong.vn/gia-ban-le-dien-binh-quan-giam-2--tu-ngay-1-11-2026-562569.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Tập đoàn Điện lực Việt Nam (EVN) đã ban hành Quyết định số 1305/QĐ-EVN ngày 30/10/2026 về việc điều chỉnh mức giá bán lẻ điện bình quân. Theo đó, mức giá áp dụng từ ngày 1/11/2026 là 2.159,9037 đồng/kWh, chưa bao gồm thuế giá trị gia tăng, giảm 2% so với mức hiện hành.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-39",
+  "claim": "TT 29/2026/TT-BCT ký ngày 02/06/2026",
+  "value": "02/06/2026",
+  "url": "https://pbgdpl.cantho.gov.vn/quy-dinh-moi-ve-van-hanh-thi-truong-ban-buon-dien-canh-tranh",
+  "opened_at": "2026-11-11",
+  "quote": "Ngày 02/6/2026, Bộ Công thương ban hành Thông tư số 29/2026/TT-BCT",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-39",
+  "claim": "TT 29/2026 có hiệu lực từ 20/07/2026",
+  "value": "20/07/2026",
+  "url": "https://pbgdpl.cantho.gov.vn/quy-dinh-moi-ve-van-hanh-thi-truong-ban-buon-dien-canh-tranh",
+  "opened_at": "2026-11-11",
+  "quote": "Thông tư này có hiệu lực thi hành từ ngày 20 tháng 7 năm 2026.",
+  "status": "match",
+  "note": "EVN (EN) cũng ghi 'The Circular shall take effect on 20 July 2026' và một số khoản (khoản 2 Điều 1, khoản 51 Điều 3) có hiệu lực từ ngày ký. Mốc 01/01/2027 chỉ thấy trong phần tóm tắt luatvietnam (cùng trang đó cũng ghi 20/07/2026) — không tìm thấy căn cứ trong văn bản; Tạp chí Công Thương ghi 'có hiệu lực thi hành kể từ ngày ký ban hành' (nhiều khả năng chỉ đúng cho các khoản riêng)."
+ },
+ {
+  "block": "dien-39",
+  "claim": "Hiệu lực 20/7/2026; một số khoản hiệu lực từ ngày ký",
+  "value": "20/07/2026",
+  "url": "https://en.evn.com.vn/d/en-US/news/Ministry-of-Industry-and-Trade-Issues-Circular-on-Operation-of-Competitive-Wholesale-Electricity-Market-60-163-501497",
+  "opened_at": "2026-11-11",
+  "quote": "The Circular shall take effect on 20 July 2026.",
+  "status": "match",
+  "note": "Nguồn EVN tiếng Anh; cùng trang: 'Clause 2, Article 1 and Clause 51, Article 3 of this Circular shall take effect from the date of signing'."
+ },
+ {
+  "block": "dien-39",
+  "claim": "TT 29/2026 bãi bỏ TT 16/2025/TT-BCT (và TT 36/2025 sửa đổi TT 16)",
+  "value": "TT 16/2025/TT-BCT",
+  "url": "https://en.evn.com.vn/d/en-US/news/Ministry-of-Industry-and-Trade-Issues-Circular-on-Operation-of-Competitive-Wholesale-Electricity-Market-60-163-501497",
+  "opened_at": "2026-11-11",
+  "quote": "Circular No. 16/2025/TT-BCT dated 01 February 2025 of the Minister of Industry and Trade regulating the operation",
+  "status": "match",
+  "note": "Trang EVN (EN) liệt kê TT 16/2025 và TT 36/2025/TT-BCT là văn bản bị bãi bỏ. Không có câu tiếng Việt mở được nêu điều này."
+ },
+ {
+  "block": "dien-39",
+  "claim": "Tạp chí Công Thương ghi hiệu lực kể từ ngày ký (mâu thuẫn)",
+  "value": "từ ngày ký (02/06/2026)",
+  "url": "https://tapchicongthuong.vn/bo-cong-thuong-ban-hanh-thong-tu-quy-dinh-van-hanh-thi-truong-ban-buon-dien-canh-tranh-523796.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Thông tư số 29/2026/TT-BCT có hiệu lực thi hành kể từ ngày ký ban hành.",
+  "status": "match",
+  "note": "Mâu thuẫn với điều khoản hiệu lực được Cổng PBGDPL Cần Thơ và EVN trích (20/07/2026). Ưu tiên 20/07/2026."
+ },
+ {
+  "block": "dien-39",
+  "claim": "Chu kỳ giao dịch 30 phút",
+  "value": "30 phút",
+  "url": "https://pbgdpl.cantho.gov.vn/quy-dinh-moi-ve-van-hanh-thi-truong-ban-buon-dien-canh-tranh",
+  "opened_at": "2026-11-11",
+  "quote": "Chu kỳ giao dịch là 30 phút, tính từ thời điểm bắt đầu của mỗi 30 phút trong ngày giao dịch.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-39",
+  "claim": "Ngưỡng KH lớn DPPA qua lưới quốc gia",
+  "value": "200.000 kWh/tháng",
+  "url": "https://luatvietnam.vn/dien-luc/thong-tu-29-2026-tt-bct-quy-dinh-van-hanh-thi-truong-ban-buon-dien-canh-tranh-436583-d1.html",
+  "opened_at": "2026-11-11",
+  "quote": "b) Từ 200.000 kWh/tháng trở lên đối với cơ chế mua bán điện trực tiếp qua lưới điện quốc gia.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-39",
+  "claim": "Ngưỡng KH lớn DPPA qua lưới kết nối riêng",
+  "value": "20.000 kWh/tháng",
+  "url": "https://luatvietnam.vn/dien-luc/thong-tu-29-2026-tt-bct-quy-dinh-van-hanh-thi-truong-ban-buon-dien-canh-tranh-436583-d1.html",
+  "opened_at": "2026-11-11",
+  "quote": "a) Từ 20.000 kWh/tháng trở lên đối với cơ chế mua bán điện trực tiếp qua lưới điện kết nối riêng;",
+  "status": "match",
+  "note": "Tạp chí Công Thương lại viết '2.000 kWh/tháng' cho đường dây riêng ('khách hàng phải có sản lượng điện tiêu thụ bình quân từ 2.000 kWh/tháng trở lên') — nhiều khả năng lỗi đánh máy; toàn văn trên luatvietnam ghi 20.000."
+ },
+ {
+  "block": "dien-39",
+  "claim": "Ngưỡng qua lưới quốc gia (báo Công Thương)",
+  "value": "200.000 kWh/tháng",
+  "url": "https://tapchicongthuong.vn/bo-cong-thuong-ban-hanh-thong-tu-quy-dinh-van-hanh-thi-truong-ban-buon-dien-canh-tranh-523796.htm",
+  "opened_at": "2026-11-11",
+  "quote": "khách hàng sử dụng điện lớn phải có sản lượng điện tiêu thụ bình quân từ 200.000 kWh/tháng trở lên",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-39",
+  "claim": "Biên độ tỷ lệ sản lượng thanh toán theo giá hợp đồng (α) trong TT 29",
+  "value": "60%–100%",
+  "url": "https://luatvietnam.vn/dien-luc/thong-tu-29-2026-tt-bct-quy-dinh-van-hanh-thi-truong-ban-buon-dien-canh-tranh-436583-d1.html",
+  "opened_at": "2026-11-11",
+  "quote": "Tỷ lệ sản lượng điện năng thanh toán theo giá hợp đồng không cao hơn 100% và không thấp hơn 60%;",
+  "status": "match",
+  "note": "Không mở được Điều 141–142 (luatvietnam cắt ở Điều 54) nên chưa so được với TT 16/2025 để biết đây có phải thay đổi không."
+ },
+ {
+  "block": "dien-39",
+  "claim": "Giá trần thị trường năm N ≤115% giá trần bản chào cao nhất",
+  "value": "115%",
+  "url": "https://luatvietnam.vn/dien-luc/thong-tu-29-2026-tt-bct-quy-dinh-van-hanh-thi-truong-ban-buon-dien-canh-tranh-436583-d1.html",
+  "opened_at": "2026-11-11",
+  "quote": "Giá trần thị trường điện cho năm N không cao hơn 115% giá trần bản chào cao nhất",
+  "status": "match",
+  "note": "Câu bị cắt sau cụm này trong bản trích."
+ },
+ {
+  "block": "dien-39",
+  "claim": "Nhà máy >30 MW đấu nối lưới quốc gia phải tham gia trực tiếp thị trường",
+  "value": ">30 MW",
+  "url": "https://moit.gov.vn/tin-tuc/bo-cong-thuong-ban-hanh-thong-tu-moi-quy-dinh-chi-tiet-van-hanh-thi-truong-dien.html",
+  "opened_at": "2026-11-11",
+  "quote": "các nhà máy điện có công suất đặt trên 30 MW đấu nối vào hệ thống điện quốc gia phải đăng ký",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-39",
+  "claim": "Phương thức vận hành HTĐ quốc gia 2026: QĐ 3477/QĐ-BCT ngày 28/11/2025",
+  "value": "3477/QĐ-BCT; 28/11/2025",
+  "url": "https://moit.gov.vn/tin-tuc/phat-trien-nang-luong/bo-cong-thuong-phe-duyet-phuong-thuc-van-hanh-he-thong-dien-nam-2026.html",
+  "opened_at": "2026-11-11",
+  "quote": "ngày 28/11/2025, Bộ Công Thương đã ban hành Quyết định số 3477/QĐ-BCT phê duyệt Phương thức vận hành hệ thống điện quốc gia",
+  "status": "match",
+  "note": "Đây là kế hoạch vận hành HỆ THỐNG, không phải văn bản tỷ lệ Qc/giá trần."
+ },
+ {
+  "block": "dien-39",
+  "claim": "Kế hoạch vận hành thị trường điện 2026: Quyết định 3746 ngày 26/12/2025 (theo Vietcap)",
+  "value": "QĐ 3746; 26/12/2025",
+  "url": "https://pub-ab53b1eb21cf4bde977a49303cac98b3.r2.dev/sector/Utilities/Utilities-20260112-VCI-BCNganhNhietdien-Bao-cao-Nganh-Nhiet-dien-Gia-cong-suat-thi-truong-CAN-nam-20.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "thực hiện theo Quyết định 3746 quy định về thị trường phát điện cạnh tranh, ngày 26/12/2025",
+  "status": "match",
+  "note": "Nguồn thứ cấp (báo cáo Vietcap 12/01/2026, dẫn 'theo các chuyên gia trong ngành'); không tìm được văn bản gốc/nguồn chính thức. Text trích từ PDF có lỗi tách dấu, đã chuẩn hóa khoảng trắng."
+ },
+ {
+  "block": "dien-39",
+  "claim": "Tỷ lệ Qc 2026: 80% nhiệt điện, 98% thủy điện (theo Vietcap)",
+  "value": "80% nhiệt điện; 98% thủy điện",
+  "url": "https://pub-ab53b1eb21cf4bde977a49303cac98b3.r2.dev/sector/Utilities/Utilities-20260112-VCI-BCNganhNhietdien-Bao-cao-Nganh-Nhiet-dien-Gia-cong-suat-thi-truong-CAN-nam-20.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Trong Quyết định 3746, Bộ Công Thương cũng phê duyệt tỷ lệ sản lượng hợp đồng (Qc): 80% đối với các nhà máy nhiệt điện và 98% đối với các nhà máy thủy điện",
+  "status": "match",
+  "note": "Nguồn thứ cấp; cần đối chiếu NSMO/Cục Điện lực."
+ },
+ {
+  "block": "dien-39",
+  "claim": "CAN 2026 ~130 đồng/kWh (theo Vietcap)",
+  "value": "~130 đồng/kWh",
+  "url": "https://pub-ab53b1eb21cf4bde977a49303cac98b3.r2.dev/sector/Utilities/Utilities-20260112-VCI-BCNganhNhietdien-Bao-cao-Nganh-Nhiet-dien-Gia-cong-suat-thi-truong-CAN-nam-20.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Giá CAN năm 2026 được quy định khoảng 130 đồng/kWh (gấp 2,7 lần cùng kỳ)",
+  "status": "match",
+  "note": "Nguồn thứ cấp."
+ },
+ {
+  "block": "dien-39",
+  "claim": "Giá trần SMP 2026 1.725 đồng/kWh (theo Vietcap)",
+  "value": "1.725 đồng/kWh",
+  "url": "https://pub-ab53b1eb21cf4bde977a49303cac98b3.r2.dev/sector/Utilities/Utilities-20260112-VCI-BCNganhNhietdien-Bao-cao-Nganh-Nhiet-dien-Gia-cong-suat-thi-truong-CAN-nam-20.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "giá trần SMP chính thức năm 2026 lên 1.725 đồng/kWh (+3% YoY)",
+  "status": "match",
+  "note": "Nguồn thứ cấp."
+ },
+ {
+  "block": "dien-39",
+  "claim": "Phương thức vận hành 2027 chưa ban hành (đang hoàn thiện) tại 07/11/2026",
+  "value": "chưa ban hành",
+  "url": "https://www.vietnamplus.vn/bo-cong-thuong-dua-ra-8-nhom-giai-phap-bao-dam-cung-ung-dien-nam-2027-2028-post1146854.vnp",
+  "opened_at": "2026-11-11",
+  "quote": "Hoàn thiện phương thức vận hành hệ thống điện quốc gia năm 2027, có tính đến năm 2028 và tầm nhìn dài hạn",
+  "status": "match",
+  "note": "Bài 07/11/2026. Không tìm thấy kế hoạch vận hành thị trường điện 2027 (Qc/giá trần) đã ban hành."
+ },
+ {
+  "block": "dien-39",
+  "claim": "Nhu cầu điện 2027 dự báo tăng ~10%",
+  "value": "~10%",
+  "url": "https://www.vietnamplus.vn/bo-cong-thuong-dua-ra-8-nhom-giai-phap-bao-dam-cung-ung-dien-nam-2027-2028-post1146854.vnp",
+  "opened_at": "2026-11-11",
+  "quote": "Nhu cầu điện tiếp tục tăng khoảng 10% trên nền phụ tải cao của năm 2026",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-40",
+  "claim": "NĐ 100/2025/NĐ-CP ngày 8/5/2025, hiệu lực ngay",
+  "value": "08/05/2025",
+  "url": "https://tapchicongthuong.vn/chinh-phu-ban-hanh-quy-dinh-moi-ve-co-che-phat-trien-cac-du-an-dien-khi-140268.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Nghị định số 100/2025/NĐ-CP có hiệu lực thi hành từ ngày 8/5/2025.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-40",
+  "claim": "LNG nhập khẩu: Qc tối thiểu dài hạn ≥65% sản lượng bình quân nhiều năm",
+  "value": "65%",
+  "url": "https://tapchicongthuong.vn/chinh-phu-ban-hanh-quy-dinh-moi-ve-co-che-phat-trien-cac-du-an-dien-khi-140268.htm",
+  "opened_at": "2026-11-11",
+  "quote": "không thấp hơn mức 65% sản lượng điện phát bình quân nhiều năm",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-40",
+  "claim": "Thời hạn áp dụng tối đa 10 năm",
+  "value": "≤10 năm",
+  "url": "https://tapchicongthuong.vn/chinh-phu-ban-hanh-quy-dinh-moi-ve-co-che-phat-trien-cac-du-an-dien-khi-140268.htm",
+  "opened_at": "2026-11-11",
+  "quote": "không quá 10 năm kể từ ngày đưa dự án vào vận hành phát điện",
+  "status": "match",
+  "note": "Theo hethongphapluat: áp dụng trong thời hạn trả nợ gốc và lãi vay nhưng không quá 10 năm."
+ },
+ {
+  "block": "dien-40",
+  "claim": "Áp dụng cho dự án LNG phát điện trước 01/01/2031",
+  "value": "trước 01/01/2031",
+  "url": "https://tapchicongthuong.vn/chinh-phu-ban-hanh-quy-dinh-moi-ve-co-che-phat-trien-cac-du-an-dien-khi-140268.htm",
+  "opened_at": "2026-11-11",
+  "quote": "bắt đầu vận hành phát điện bằng LNG nhập khẩu trước ngày 1/1/2031",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-40",
+  "claim": "Khí trong nước: huy động tối đa theo khả năng cấp khí",
+  "value": "huy động tối đa",
+  "url": "https://tapchicongthuong.vn/chinh-phu-ban-hanh-quy-dinh-moi-ve-co-che-phat-trien-cac-du-an-dien-khi-140268.htm",
+  "opened_at": "2026-11-11",
+  "quote": "được vận hành, huy động ở mức tối đa theo khả năng cấp khí",
+  "status": "match",
+  "note": "Theo hethongphapluat, áp dụng cho dự án phát điện bằng khí trong nước 'trước ngày 01 tháng 01 năm 2036'."
+ },
+ {
+  "block": "dien-40",
+  "claim": "Khí trong nước: mốc trước 01/01/2036",
+  "value": "trước 01/01/2036",
+  "url": "https://hethongphapluat.com/nghi-dinh-100-2025-nd-cp-f0be7f643b82657e77917eed94f8dace.html",
+  "opened_at": "2026-11-11",
+  "quote": "trước ngày 01 tháng 01 năm 2036",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-40",
+  "claim": "Dự thảo NĐ sửa đổi nâng Qc LNG lên 75%, tối đa 15 năm (chưa ban hành)",
+  "value": "75%; ≤15 năm",
+  "url": "https://tapchicongthuong.vn/tong-hop--tiep-thu--giai-trinh-y-kien-gop-y-voi-du-thao-nghi-dinh-sua-doi--bo-sung-quy-dinh-ve-cac-du-an-dien-khi-514327.htm",
+  "opened_at": "2026-11-11",
+  "quote": "không thấp hơn mức 75% sản lượng điện phát bình quân nhiều năm",
+  "status": "match",
+  "note": "Bài 01/05/2026: dự thảo, Cục Điện lực đã tiếp thu ý kiến 19 cơ quan; không tìm thấy nghị định ban hành tính đến 11/2026. Thời hạn: 'không quá 15 năm kể từ ngày đưa dự án vào vận hành phát điện và tham gia thị trường điện.'"
+ },
+ {
+  "block": "dien-19",
+  "claim": "NĐ 57/2025 ban hành và hiệu lực 3/3/2025",
+  "value": "03/03/2025",
+  "url": "https://vneconomy.vn/quy-dinh-moi-ve-co-che-mua-ban-dien-truc-tiep.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Chính phủ vừa ban hành Nghị định số 57/2025/NĐ-CP ngày 3/3/2025",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-19",
+  "claim": "Bên bán qua lưới quốc gia: NLTT gió/mặt trời/sinh khối ≥10 MW tham gia trực tiếp thị trường",
+  "value": "≥10 MW",
+  "url": "https://luatvietnam.vn/cong-nghiep/nghi-dinh-57-2025-nd-cp-co-che-mua-ban-dien-giua-don-vi-phat-dien-va-khach-hang-392209-d1.html",
+  "opened_at": "2026-11-11",
+  "quote": "a) Đơn vị phát điện năng lượng tái tạo từ gió hoặc mặt trời hoặc sinh khối có công suất từ 10 MW trở lên",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-19",
+  "claim": "KH sử dụng điện lớn do Bộ trưởng BCT quy định (NĐ 57 không ghi số kWh)",
+  "value": "theo Bộ trưởng BCT",
+  "url": "https://luatvietnam.vn/cong-nghiep/nghi-dinh-57-2025-nd-cp-co-che-mua-ban-dien-giua-don-vi-phat-dien-va-khach-hang-392209-d1.html",
+  "opened_at": "2026-11-11",
+  "quote": "là khách hàng sử dụng điện có công suất và sản lượng tiêu thụ lớn theo quy định của Bộ trưởng Bộ Công Thương",
+  "status": "match",
+  "note": "Ngưỡng cụ thể nằm ở TT 29/2026 (200.000 / 20.000 kWh/tháng)."
+ },
+ {
+  "block": "dien-19",
+  "claim": "Chi phí KH trả: điện năng theo giá thị trường giao ngay (có tổn thất)",
+  "value": "thành phần a",
+  "url": "https://luatvietnam.vn/cong-nghiep/nghi-dinh-57-2025-nd-cp-co-che-mua-ban-dien-giua-don-vi-phat-dien-va-khach-hang-392209-d1.html",
+  "opened_at": "2026-11-11",
+  "quote": "a) Chi phí điện năng theo giá thị trường điện giao ngay áp dụng cho Đơn vị mua buôn điện theo",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-19",
+  "claim": "Chi phí sử dụng dịch vụ hệ thống điện: truyền tải, phân phối-bán lẻ, điều độ & điều hành GD thị trường, điều hành-quản lý ngành",
+  "value": "thành phần b",
+  "url": "https://luatvietnam.vn/cong-nghiep/nghi-dinh-57-2025-nd-cp-co-che-mua-ban-dien-giua-don-vi-phat-dien-va-khach-hang-392209-d1.html",
+  "opened_at": "2026-11-11",
+  "quote": "b) Chi phí sử dụng dịch vụ hệ thống điện, bao gồm các dịch vụ sau: truyền tải điện, phân phối - bán lẻ điện,",
+  "status": "match",
+  "note": "Tiếp: 'điều độ vận hành hệ thống điện và điều hành giao dịch thị trường điện, điều hành - quản lý ngành;'. Dịch vụ phụ trợ không có trong danh sách này."
+ },
+ {
+  "block": "dien-19",
+  "claim": "Chi phí thanh toán bù trừ chênh lệch (Phụ lục IV)",
+  "value": "thành phần c",
+  "url": "https://luatvietnam.vn/cong-nghiep/nghi-dinh-57-2025-nd-cp-co-che-mua-ban-dien-giua-don-vi-phat-dien-va-khach-hang-392209-d1.html",
+  "opened_at": "2026-11-11",
+  "quote": "c) Chi phí thanh toán bù trừ chênh lệch theo quy định tại Phụ lục IV ban hành kèm theo Nghị định này.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-19",
+  "claim": "Hợp đồng kỳ hạn điện giữa KH lớn và đơn vị phát NLTT",
+  "value": "hợp đồng kỳ hạn",
+  "url": "https://lsvn.vn/cac-co-che-mua-ban-dien-truc-tiep-theo-quy-dinh-moi-a175225.html",
+  "opened_at": "2026-11-11",
+  "quote": "ký hợp đồng kỳ hạn điện với đơn vị phát điện năng lượng tái tạo",
+  "status": "match",
+  "note": "Đơn vị phát bán toàn bộ điện năng trên thị trường giao ngay; KH mua điện từ TCT/Công ty Điện lực."
+ },
+ {
+  "block": "dien-19",
+  "claim": "NĐ 243/2026/NĐ-CP ngày 26/6/2026, hiệu lực cùng ngày",
+  "value": "26/06/2026",
+  "url": "https://tapchicongthuong.vn/mo-rong-co-che-mua-ban-dien-truc-tiep--nang-ty-le-dien-mat-troi-mai-nha-du-duoc-phep-ban-len-50-529733.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Nghị định số 243/2026/NĐ-CP có hiệu lực thi hành từ ngày 26/6/2026.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-19",
+  "claim": "NĐ 243 bổ sung KH là trung tâm dữ liệu",
+  "value": "data center",
+  "url": "https://tapchicongthuong.vn/mo-rong-co-che-mua-ban-dien-truc-tiep--nang-ty-le-dien-mat-troi-mai-nha-du-duoc-phep-ban-len-50-529733.htm",
+  "opened_at": "2026-11-11",
+  "quote": "khách hàng sử dụng điện cho hoạt động của trung tâm dữ liệu",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-19",
+  "claim": "NĐ 243 bổ sung trạm/trụ sạc, tủ đổi pin xe điện",
+  "value": "EV charging",
+  "url": "https://tapchicongthuong.vn/mo-rong-co-che-mua-ban-dien-truc-tiep--nang-ty-le-dien-mat-troi-mai-nha-du-duoc-phep-ban-len-50-529733.htm",
+  "opened_at": "2026-11-11",
+  "quote": "khách hàng sử dụng điện cho trạm, trụ sạc điện, tủ đổi pin xe điện",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-19",
+  "claim": "Điện mặt trời mái nhà: tỷ lệ điện dư được bán tăng 20% → 50%",
+  "value": "50%",
+  "url": "https://tapchicongthuong.vn/mo-rong-co-che-mua-ban-dien-truc-tiep--nang-ty-le-dien-mat-troi-mai-nha-du-duoc-phep-ban-len-50-529733.htm",
+  "opened_at": "2026-11-11",
+  "quote": "tỷ lệ sản lượng điện dư được phép bán đã tăng từ 20% lên 50%.",
+  "status": "match",
+  "note": "Giá điện dư = giá điện năng thị trường bình quân năm trước liền kề."
+ },
+ {
+  "block": "dien-19",
+  "claim": "Giá mua điện dư mái nhà = giá điện năng thị trường bình quân năm trước",
+  "value": "Giá mua điện dư mái nhà = giá điện năng thị trường bình quân năm trước",
+  "url": "https://tapchicongthuong.vn/mo-rong-co-che-mua-ban-dien-truc-tiep--nang-ty-le-dien-mat-troi-mai-nha-du-duoc-phep-ban-len-50-529733.htm",
+  "opened_at": "2026-11-11",
+  "quote": "giá mua bán sản lượng điện dư là giá điện năng thị trường điện bình quân của năm trước liền kề",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-19",
+  "claim": "DPPA qua lưới quốc gia đầu tiên: SEVT – TTC Đức Huệ 2 từ 01/6/2026",
+  "value": "01/06/2026",
+  "url": "https://tapchicongthuong.vn/dau-moc-moi-cua-thi-truong-dien--giao-dich-mua-ban-dien-truc-tiep--dppa--dau-tien-duoc-xac-lap-522663.htm",
+  "opened_at": "2026-11-11",
+  "quote": "tham gia cơ chế DPPA qua lưới điện quốc gia từ ngày 01/6/2026",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-19",
+  "claim": "Bên mua: Samsung Electronics Việt Nam Thái Nguyên (SEVT)",
+  "value": "SEVT",
+  "url": "https://tapchicongthuong.vn/dau-moc-moi-cua-thi-truong-dien--giao-dich-mua-ban-dien-truc-tiep--dppa--dau-tien-duoc-xac-lap-522663.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Công ty TNHH Samsung Electronics Việt Nam Thái Nguyên (SEVT) trở thành khách hàng doanh nghiệp đầu tiên",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-19",
+  "claim": "Nhà máy ĐMT Đức Huệ 2: 49 MWp/41,4 MWac; ~70 GWh/năm",
+  "value": "49 MWp/41,4 MWac; ~70 GWh/năm",
+  "url": "https://tapchicongthuong.vn/dau-moc-moi-cua-thi-truong-dien--giao-dich-mua-ban-dien-truc-tiep--dppa--dau-tien-duoc-xac-lap-522663.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Nhà máy điện mặt trời Đức Huệ 2 có công suất thiết kế 49 MWp/41,4 MWac",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-18",
+  "claim": "BCT gửi Báo cáo hỏa tốc 760/BC-BCT ngày 10/9/2026",
+  "value": "760/BC-BCT; 10/09/2026",
+  "url": "https://doanhnghiephoinhap.vn/thieu-dien-tang-dan-den-nam-2030-bo-cong-thuong-muon-sua-quy-hoach-dien-viii-148852.html",
+  "opened_at": "2026-11-11",
+  "quote": "Ngày 10/9/2026, Bộ Công Thương có Báo cáo Hỏa tốc số 760/BC-BCT gửi Thủ tướng Chính phủ",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-18",
+  "claim": "Đề xuất điều chỉnh QHĐ VIII theo hai bước",
+  "value": "hai bước",
+  "url": "https://doanhnghiephoinhap.vn/thieu-dien-tang-dan-den-nam-2030-bo-cong-thuong-muon-sua-quy-hoach-dien-viii-148852.html",
+  "opened_at": "2026-11-11",
+  "quote": "cho phép điều chỉnh Quy hoạch điện VIII theo hai bước.",
+  "status": "match",
+  "note": "Bước một: 'Bước một là điều chỉnh, cập nhật quy hoạch theo Nghị quyết số 253/2025/QH15 của Quốc hội,'; Bước hai: 'Bước hai là điều chỉnh tổng thể Quy hoạch điện VIII theo Luật Quy hoạch, định hướng đến năm 2050.'"
+ },
+ {
+  "block": "dien-18",
+  "claim": "Nguy cơ thiếu 13.964 MW và 61,18 tỷ kWh năm 2030",
+  "value": "13.964 MW; 61,18 tỷ kWh",
+  "url": "https://doanhnghiephoinhap.vn/thieu-dien-tang-dan-den-nam-2030-bo-cong-thuong-muon-sua-quy-hoach-dien-viii-148852.html",
+  "opened_at": "2026-11-11",
+  "quote": "có thể thiếu 13.964 MW công suất cực đại và 61,18 tỷ kWh sản lượng vào năm 2030",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-18",
+  "claim": "Đề xuất bổ sung nhiệt điện than ~5.300 MW cho 2029–2030",
+  "value": "~5.300 MW",
+  "url": "https://doanhnghiephoinhap.vn/thieu-dien-tang-dan-den-nam-2030-bo-cong-thuong-muon-sua-quy-hoach-dien-viii-148852.html",
+  "opened_at": "2026-11-11",
+  "quote": "với tổng công suất khoảng 5.300 MW, nhằm bảo đảm nguồn điện nền trong giai đoạn 2029-2030",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-18",
+  "claim": "Văn bản 4583/BCT-ĐL (19/6/2026) yêu cầu địa phương rà soát, cập nhật QHĐ VIII",
+  "value": "4583/BCT-ĐL",
+  "url": "https://moit.gov.vn/tin-tuc/bo-cong-thuong-yeu-cau-dia-phuong-ra-soat-nguon-dien-cho-quy-hoach-dien-viii.html",
+  "opened_at": "2026-11-11",
+  "quote": "Văn bản số 4583/BCT-ĐL",
+  "status": "match",
+  "note": "Mục đích: 'rà soát, cập nhật, bổ sung Quy hoạch phát triển điện lực quốc gia thời kỳ 2021-2030, tầm nhìn đến năm 2050'; hạn gửi số liệu trước 17h 30/6/2026."
+ },
+ {
+  "block": "dien-18",
+  "claim": "Thông báo kết luận 531/TB-VPCP ngày 17/10/2026",
+  "value": "531/TB-VPCP; 17/10/2026",
+  "url": "https://congthuong.vn/ket-luan-cua-thu-tuong-ve-cac-giai-phap-bao-dam-cung-ung-dien-giai-doan-2026-2030-va-dieu-chinh-quy-hoach-dien-viii-dieu-chinh-477488.html",
+  "opened_at": "2026-11-11",
+  "quote": "531/TB-VPCP ngày 17/10/2026",
+  "status": "match",
+  "note": "Yêu cầu BCT 'Khẩn trương xây dựng Đề án trình cấp có thẩm quyền' theo trình tự rút gọn; không có quyết định phê duyệt QHĐ VIII điều chỉnh lần 2."
+ },
+ {
+  "block": "dien-42",
+  "claim": "NQ 253/2025/QH15: dự án lưới điện trong quy hoạch không phải chấp thuận chủ trương đầu tư",
+  "value": "miễn CTĐT",
+  "url": "https://vcci.com.vn/tin-tuc/co-che-chinh-sach-phat-trien-nang-luong-quoc-gia-giai-doan-2026-2030",
+  "opened_at": "2026-11-11",
+  "quote": "không phải thực hiện thủ tục chấp thuận chủ trương đầu tư",
+  "status": "match",
+  "note": "MOF Q&A trích Điều 5 khoản 1: 'dự án đầu tư kinh doanh lưới điện trong quy hoạch phát triển điện lực'."
+ },
+ {
+  "block": "dien-42",
+  "claim": "NQ 253 Điều 5 khoản 1 áp dụng cho dự án đầu tư kinh doanh lưới điện trong quy hoạch",
+  "value": "Điều 5 khoản 1",
+  "url": "https://portal.mof.gov.vn/hoidapcstc/home/cthoidap/166837",
+  "opened_at": "2026-11-11",
+  "quote": "dự án đầu tư kinh doanh lưới điện trong quy hoạch phát triển điện lực",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-42",
+  "claim": "NĐ 272/2026/NĐ-CP ngày 4/7/2026, hiệu lực đến 31/12/2030; chi tiết Điều 4, 10, 11, 12 NQ 253",
+  "value": "04/07/2026–31/12/2030",
+  "url": "https://tapchicongthuong.vn/chinh-phu-quy-dinh-chi-tiet-mot-so-co-che--chinh-sach-phat-trien-nang-luong-giai-doan-2026-2030-531949.htm",
+  "opened_at": "2026-11-11",
+  "quote": "có hiệu lực thi hành từ ngày 4/7/2026 đến hết ngày 31/12/2030",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-42",
+  "claim": "Kế hoạch vốn đầu tư toàn EVN 2026: 123.560 tỷ đồng",
+  "value": "123.560 tỷ đồng",
+  "url": "https://diendandoanhnghiep.vn/evn-tang-toc-buoc-vao-chang-duong-phat-trien-moi-10170133.html",
+  "opened_at": "2026-11-11",
+  "quote": "kế hoạch vốn đầu tư toàn Tập đoàn là 123.560 tỷ đồng",
+  "status": "match",
+  "note": "Không tìm được con số riêng EVNNPT 2026 từ nguồn chính thức."
+ },
+ {
+  "block": "dien-42",
+  "claim": "Mục tiêu 2026: hoàn thành 300, khởi công 285 dự án lưới 110–500 kV",
+  "value": "300 / 285 dự án",
+  "url": "https://baodauthau.vn/nam-2026-evn-tang-toc-dau-tu-loat-du-an-nguon-va-luoi-dien-post191545.html",
+  "opened_at": "2026-11-11",
+  "quote": "phấn đấu hoàn thành thành 300 dự án lưới điện từ 110 - 500Kv; khởi công 285 dự án lưới điện từ 110 - 500kV.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-42",
+  "claim": "EVN giải ngân 2025: 125.778 tỷ đồng",
+  "value": "125.778 tỷ đồng",
+  "url": "https://baodauthau.vn/nam-2026-evn-tang-toc-dau-tu-loat-du-an-nguon-va-luoi-dien-post191545.html",
+  "opened_at": "2026-11-11",
+  "quote": "giải ngân đạt 125.778 tỷ đồng, tăng 14,7% so với năm 2024",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-42",
+  "claim": "EVNNPT đang triển khai 79 dự án (30/07/2026)",
+  "value": "79 dự án",
+  "url": "https://tapchicongthuong.vn/evnnpt-chu-dong-cac-giai-phap-bao-dam-van-hanh-an-toan-he-thong-truyen-tai-dien--day-nhanh-tien-do-cac-du-an-trong-diem-537868.htm",
+  "opened_at": "2026-11-11",
+  "quote": "EVNNPT đang triển khai 79 dự án đầu tư xây dựng, gồm 46 dự án tại miền Bắc",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-42",
+  "claim": "10T/2026: EVN khởi công 150, đóng điện 137 công trình 110–500 kV",
+  "value": "150 / 137",
+  "url": "https://www.vietnamplus.vn/san-luong-dien-10-thang-tang-98-evn-tap-trung-bao-dam-nguon-cung-cuoi-nam-post1145791.amp",
+  "opened_at": "2026-11-11",
+  "quote": "hoàn thành đóng điện 137 công trình từ 110-500 kV",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-41",
+  "claim": "Quảng Trạch I đạt 99,62%; tổ máy 1 hòa lưới 12/4, tổ máy 2 hòa lưới 28/9",
+  "value": "99,62%",
+  "url": "https://thanhtra.com.vn/dau-tu-72A9E3223/nhiet-dien-quang-trach-i-dat-9962-chot-moc-van-hanh-toan-bo-cuoi-nam-980159eab.html",
+  "opened_at": "2026-11-11",
+  "quote": "Nhà máy Nhiệt điện Quảng Trạch I đã đạt 99,62% tiến độ",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-41",
+  "claim": "Quảng Trạch I: COD dự kiến tổ máy 1 ngày 23/11, tổ máy 2 ngày 31/12/2026",
+  "value": "23/11/2026; 31/12/2026",
+  "url": "https://thanhtra.com.vn/dau-tu-72A9E3223/nhiet-dien-quang-trach-i-dat-9962-chot-moc-van-hanh-toan-bo-cuoi-nam-980159eab.html",
+  "opened_at": "2026-11-11",
+  "quote": "tổ máy 1 sẽ phát điện thương mại (COD) ngày 23/11, tổ máy 2 vào ngày 31/12",
+  "status": "match",
+  "note": "Bài 05/10/2026; chưa có xác nhận COD."
+ },
+ {
+  "block": "dien-41",
+  "claim": "Quảng Trạch I 1.403 MW, đã cơ bản hoàn thành (03/11/2026)",
+  "value": "1.403 MW",
+  "url": "https://www.vietnamplus.vn/san-luong-dien-10-thang-tang-98-evn-tap-trung-bao-dam-nguon-cung-cuoi-nam-post1145791.amp",
+  "opened_at": "2026-11-11",
+  "quote": "Dự án Nhiệt điện Quảng Trạch I gồm hai tổ máy sử dụng nhiên liệu than, tổng công suất 1.403 MW, đã cơ bản hoàn thành.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-41",
+  "claim": "Mục tiêu COD toàn bộ Quảng Trạch I trong 2026",
+  "value": "2026",
+  "url": "https://tapchicongthuong.vn/bo-truong-bo-cong-thuong-le-manh-hung-kiem-tra-cac-du-an-tai-trung-tam-dien-luc-quang-trach-555357.htm",
+  "opened_at": "2026-11-11",
+  "quote": "đưa Nhà máy Nhiệt điện Quảng Trạch I vào vận hành thương mại toàn bộ trong năm 2026",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-41",
+  "claim": "Long Phú 1: 1.200 MW, PVN, mục tiêu phát điện 2027",
+  "value": "1.200 MW; 2027",
+  "url": "https://baodauthau.vn/lien-danh-petrocons-trung-goi-thau-thu-nghiem-va-chay-thu-nha-may-nhiet-dien-long-phu-1-post209624.html",
+  "opened_at": "2026-11-11",
+  "quote": "Dự án được tập trung \"hồi sinh\" và đẩy nhanh tiến độ để hoàn thành, phát điện trong năm 2027.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-41",
+  "claim": "Ô Môn IV: đã khởi công, >28% khối lượng (đến 7/2026)",
+  "value": ">28%",
+  "url": "https://baodauthau.vn/day-nhanh-du-an-o-mon-iii-iv-de-phat-huy-hieu-qua-chuoi-khi-dien-lo-b-post204656.html",
+  "opened_at": "2026-11-11",
+  "quote": "khởi công và đưa Dự án NMNĐ Ô Môn IV đạt trên 28% khối lượng",
+  "status": "match",
+  "note": "Bài 10/08/2026; Petrovietnam tiếp nhận Ô Môn III và IV."
+ },
+ {
+  "block": "dien-41",
+  "claim": "Ô Môn III: đang chuẩn bị ký EPC",
+  "value": "EPC",
+  "url": "https://baodauthau.vn/day-nhanh-du-an-o-mon-iii-iv-de-phat-huy-hieu-qua-chuoi-khi-dien-lo-b-post204656.html",
+  "opened_at": "2026-11-11",
+  "quote": "phấn đấu ký kết hợp đồng EPC Dự án NMNĐ Ô Môn III đúng tiến độ đã đề ra",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-41",
+  "claim": "Bác Ái: 1.200 MW (4x300 MW), EVN, >21 nghìn tỷ, tổ máy 1 cuối 2029",
+  "value": "1.200 MW; cuối 2029",
+  "url": "https://nhandan.vn/thi-dua-lao-dong-bam-sat-tien-do-thuy-dien-tich-nang-bac-ai-post937002.html",
+  "opened_at": "2026-11-11",
+  "quote": "hướng tới mục tiêu phát điện tổ máy số 1 vào cuối năm 2029 và hoàn thành toàn bộ dự án trong năm 2030.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "QĐ 263/QĐ-TTg ký 9/2/2026, phê duyệt tổng hạn ngạch thí điểm 2025-2026",
+  "value": "09/02/2026",
+  "url": "https://vneconomy.vn/phan-bo-han-ngach-phat-thai-khi-nha-kinh-thi-diem-nam-2026-cho-110-nha-may-nhiet-dien-sat-thep-xi-mang.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Ngày 9/2/2026, Phó Thủ tướng Trần Hồng Hà ký Quyết định số 263/QĐ-TTg",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "Phạm vi: 34 nhà máy nhiệt điện, 25 cơ sở sắt thép, 51 cơ sở xi măng (110 cơ sở)",
+  "value": "34 nhiệt điện / 110 cơ sở",
+  "url": "https://www.atld.vn/law/4279/content",
+  "opened_at": "2026-11-11",
+  "quote": "34 các nhà máy nhiệt điện, 25 cơ sở sản xuất sắt thép, 51 cơ sở sản xuất xi măng",
+  "status": "match",
+  "note": "atld.vn đăng lại văn bản QĐ 263 (Điều 1). Chưa mở được bản trên vanban.chinhphu.vn."
+ },
+ {
+  "block": "dien-45",
+  "claim": "Tổng hạn ngạch thí điểm năm 2025",
+  "value": "243.082.392 tấn CO2tđ",
+  "url": "https://www.atld.vn/law/4279/content",
+  "opened_at": "2026-11-11",
+  "quote": "Tổng hạn ngạch phát thải khí nhà kính thí điểm cho năm 2025 là 243.082.392 tấn CO2tđ.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "Tổng hạn ngạch thí điểm năm 2026",
+  "value": "268.391.454 tấn CO2tđ",
+  "url": "https://www.atld.vn/law/4279/content",
+  "opened_at": "2026-11-11",
+  "quote": "Tổng hạn ngạch phát thải khí nhà kính thí điểm cho năm 2026 là 268.391.454 tấn CO2tđ.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "Hạn ngạch Nhiệt điện Quảng Ninh (QTP) 2025/2026",
+  "value": "11.097.421 / 12.157.533 tCO2tđ",
+  "url": "https://vneconomy.vn/cu-the-muc-phan-bo-han-ngach-phat-thai-cho-110-co-so-nhiet-dien-san-xuat-sat-thep-xi-mang.htm",
+  "opened_at": "2026-11-11",
+  "quote": "năm 2025 là 11.097.421 tấn CO2 tương đương và năm 2026 là 12.157.533 tấn",
+  "status": "match",
+  "note": "Theo QĐ 699/QĐ-BNNMT; bài đăng 09/03/2026."
+ },
+ {
+  "block": "dien-45",
+  "claim": "Hạn ngạch NĐ Mông Dương 2025/2026",
+  "value": "12.190.431 / 13.354.978 tCO2tđ",
+  "url": "https://vneconomy.vn/cu-the-muc-phan-bo-han-ngach-phat-thai-cho-110-co-so-nhiet-dien-san-xuat-sat-thep-xi-mang.htm",
+  "opened_at": "2026-11-11",
+  "quote": "năm 2025 là 12.190.431 tấn và năm 2026 là 13.354.978 tấn",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "Hạn ngạch NĐ BOT Vĩnh Tân 1 2025/2026",
+  "value": "11.856.608 / 12.989.265 tCO2tđ",
+  "url": "https://vneconomy.vn/cu-the-muc-phan-bo-han-ngach-phat-thai-cho-110-co-so-nhiet-dien-san-xuat-sat-thep-xi-mang.htm",
+  "opened_at": "2026-11-11",
+  "quote": "năm 2025 là 11.856.608 tấn và năm 2026 là 12.989.265 tấn CO2",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "Hạn ngạch NĐ Vĩnh Tân 2 2025/2026",
+  "value": "10.530.658 / 11.536.648 tCO2tđ",
+  "url": "https://vneconomy.vn/cu-the-muc-phan-bo-han-ngach-phat-thai-cho-110-co-so-nhiet-dien-san-xuat-sat-thep-xi-mang.htm",
+  "opened_at": "2026-11-11",
+  "quote": "có hạn ngạch phân bổ năm 2025 là 10.530.658 tấn và năm 2026 là 11.536.648 tấn",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "NĐ 119/2025 ký 09/6/2025, hiệu lực 01/8/2025",
+  "value": "01/08/2025",
+  "url": "https://sonnmt.hatinh.gov.vn/sotnmt/plugin_upload/download/news/3682/8098/625021.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Nghị định này có hiệu lực thi hành từ ngày 01 tháng 8 năm 2025.",
+  "status": "match",
+  "note": "PDF mở bằng WebFetch, trích text bằng pdftotext; câu trích nguyên văn từ text đó."
+ },
+ {
+  "block": "dien-45",
+  "claim": "Phương pháp: dựa trên mức phát thải trên đơn vị sản phẩm (cường độ) + mục tiêu tăng trưởng/giảm phát thải",
+  "value": "intensity-based",
+  "url": "https://sonnmt.hatinh.gov.vn/sotnmt/plugin_upload/download/news/3682/8098/625021.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Hạn ngạch phát thải khí nhà kính được xác định trên cơ sở mức phát thải khí nhà kính trên đơn vị sản phẩm; mục tiêu tăng trưởng của lĩnh vực; mục tiêu giảm phát thải khí nhà kính của lĩnh vực, cơ sở theo kế hoạch sản xuất, kinh doanh; tiềm năng giảm phát thải của cơ sở; năng lực kỹ thuật, công nghệ và tài chính của cơ sở trong thực hiện giảm phát thải khí nhà kính.",
+  "status": "match",
+  "note": "PDF mở bằng WebFetch, trích text bằng pdftotext; câu trích nguyên văn từ text đó."
+ },
+ {
+  "block": "dien-45",
+  "claim": "Thời hạn nộp trả hạn ngạch: trước 31/12 năm kế tiếp giai đoạn phân bổ",
+  "value": "giai đoạn 2025-2026 -> trước 31/12/2027 (suy luận)",
+  "url": "https://sonnmt.hatinh.gov.vn/sotnmt/plugin_upload/download/news/3682/8098/625021.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Cơ sở tự thực hiện nộp trả hạn ngạch phát thải khí nhà kính tại Hệ thống đăng ký quốc gia trước ngày 31 tháng 12 của năm kế tiếp giai đoạn được phân bổ quy định tại Điều 12 Nghị định này;",
+  "status": "match",
+  "note": "Mốc 31/12/2027 là suy luận từ câu này; khớp với hạn giao dịch mã VN2025 đến 24/12/2027."
+ },
+ {
+  "block": "dien-45",
+  "claim": "Lượng nộp trả tối thiểu = phát thải trực tiếp kiểm kê trừ tín chỉ đã bù trừ",
+  "value": "Scope 1",
+  "url": "https://sonnmt.hatinh.gov.vn/sotnmt/plugin_upload/download/news/3682/8098/625021.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Lượng hạn ngạch phát thải khí nhà kính nộp trả phải tối thiểu bằng với kết quả kiểm kê khí nhà kính từ các nguồn phát thải trực tiếp trong giai đoạn được phân bổ của cơ sở trừ đi lượng tín chỉ cácbon đã bù trừ;",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "Chế tài: xử phạt hành chính + trừ phần thiếu vào hạn ngạch kỳ sau",
+  "value": "phạt + khấu trừ kỳ sau",
+  "url": "https://sonnmt.hatinh.gov.vn/sotnmt/plugin_upload/download/news/3682/8098/625021.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Cơ sở không thực hiện đầy đủ trách nhiệm nộp trả hạn ngạch phát thải khí nhà kính bị xử phạt theo quy định của pháp luật về xử phạt vi phạm hành chính trong lĩnh vực bảo vệ môi trường. Đồng thời, lượng hạn ngạch phát thải khí nhà kính nộp trả còn thiếu sẽ bị trừ vào hạn ngạch phân bổ của cơ sở cho giai đoạn kế tiếp.",
+  "status": "match",
+  "note": "Mức phạt tiền cụ thể chưa xác minh."
+ },
+ {
+  "block": "dien-45",
+  "claim": "Giới hạn bù trừ bằng tín chỉ carbon",
+  "value": "≤30% hạn ngạch được phân bổ",
+  "url": "https://sonnmt.hatinh.gov.vn/sotnmt/plugin_upload/download/news/3682/8098/625021.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Cơ sở có thể sử dụng tín chỉ các-bon từ dự án thuộc các cơ chế trao đổi, bù trừ tín chỉ các-bon quy định tại Điều 20 Nghị định này, điểm a, điểm b khoản 1 Điều 20a Nghị định này để bù trừ không quá 30% lượng hạn ngạch phát thải khí nhà kính được phân bổ của cơ sở;",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "Vay mượn hạn ngạch kỳ sau (đến hết 2030)",
+  "value": "≤15%, không được giao dịch",
+  "url": "https://sonnmt.hatinh.gov.vn/sotnmt/plugin_upload/download/news/3682/8098/625021.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Số lượng hạn ngạch vay mượn không vượt quá 15% lượng hạn ngạch đã được phân bổ cho giai đoạn được phân bổ và không được sử dụng để trao đổi;",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "Chuyển giao (banking) hạn ngạch dư sang kỳ sau, được giao dịch",
+  "value": "banking cho phép đến 2030",
+  "url": "https://sonnmt.hatinh.gov.vn/sotnmt/plugin_upload/download/news/3682/8098/625021.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Trong giai đoạn đến hết năm 2030, cơ sở có thể chuyển giao lượng hạn ngạch phát thải khí nhà kính chưa sử dụng hết sau khi hoàn thành nộp trả của giai đoạn hiện tại sang giai đoạn kế tiếp.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "Được phép trao đổi hạn ngạch/tín chỉ trên sàn theo lộ trình Điều 17",
+  "value": "trading allowed",
+  "url": "https://sonnmt.hatinh.gov.vn/sotnmt/plugin_upload/download/news/3682/8098/625021.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Cơ sở được phân bổ hạn ngạch được phép trao đổi hạn ngạch phát thải khí nhà kính và tín chỉ các-bon trên Sàn giao dịch các-bon theo lộ trình quy định tại Điều 17 Nghị định này.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "Kỳ phân bổ 2027-2028: BNNMT phân bổ trước 31/10/2027",
+  "value": "31/10/2027",
+  "url": "https://sonnmt.hatinh.gov.vn/sotnmt/plugin_upload/download/news/3682/8098/625021.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Bộ Nông nghiệp và Môi trường phân bổ hạn ngạch cho các cơ sở theo Mẫu số 01 của Phụ lục I ban hành kèm theo Nghị định này trước ngày 31 tháng 10 năm 2027 cho giai đoạn 2027 - 2028 và trước ngày 31 tháng 10 năm 2029 cho giai đoạn 2029 - 2030.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "QĐ 232/QĐ-TTg (24/1/2025): thí điểm 2025-2028, chính thức từ 2029",
+  "value": "2025-2028 / 2029",
+  "url": "https://daibieunhandan.vn/chinh-phu-phe-duyet-de-an-thanh-lap-va-phat-trien-thi-truong-carbon-10358056.html",
+  "opened_at": "2026-11-11",
+  "quote": "giai đoạn thí điểm từ năm 2025 đến hết năm 2028",
+  "status": "match",
+  "note": "Cụm trích. Cùng trang: 'giai đoạn vận hành chính thức từ năm 2029.' và 'Quyết định số 232/QĐ-TTg ngày 24.1.2025'."
+ },
+ {
+  "block": "dien-45",
+  "claim": "Sàn carbon vận hành tại HNX từ 29/6/2026; mã VN2025; giao dịch đến 24/12/2027",
+  "value": "29/06/2026 - 24/12/2027",
+  "url": "https://vneconomy.vn/chinh-thuc-van-hanh-san-giao-dich-carbon-trong-nuoc.htm",
+  "opened_at": "2026-11-11",
+  "quote": "được tính từ ngày đầu tiên 29/06/2026 đến ngày cuối cùng 24/12/2027",
+  "status": "match",
+  "note": "Cụm trích."
+ },
+ {
+  "block": "dien-45",
+  "claim": "Tổng hạn ngạch đưa lên sàn và giá chào thấp nhất",
+  "value": "511.473.846 hạn ngạch; 135.000 đ/hạn ngạch",
+  "url": "https://vneconomy.vn/chinh-thuc-van-hanh-san-giao-dich-carbon-trong-nuoc.htm",
+  "opened_at": "2026-11-11",
+  "quote": "tổng số 511.473.846 hạn ngạch phân bổ với giá chào bán thấp nhất 135.000 đồng",
+  "status": "match",
+  "note": "511.473.846 = tổng 2025 + 2026 theo QĐ 263. Bài cũng nêu NĐ 29/2026/NĐ-CP không thu phí doanh nghiệp tham gia sàn trong thí điểm; phiên đầu giá trị giao dịch 'hơn 100 triệu đồng'."
+ },
+ {
+  "block": "dien-45",
+  "claim": "Hệ số phát thải lưới điện 2024 (nghiên cứu ĐHBK HN phối hợp BNNMT, không phải công bố chính thức)",
+  "value": "0,681 tCO2e/MWh (+3,2% so 2023)",
+  "url": "https://vietnamnews.vn/environment/1716087/study-shows-coal-power-dominant-as-viet-nam-s-grid-emissions-climbed-in-2024.html",
+  "opened_at": "2026-11-11",
+  "quote": "A study by Hà Nội University of Science and Technology, in collaboration with the Ministry of Agriculture and Environment, has found that the greenhouse gas (GHG) emission factor of Việt Nam's national power grid in 2024 reached 0.681",
+  "status": "match",
+  "note": "Bài cũng ghi 'a 3.2 per cent increase from 2023'. Kết quả nghiên cứu, không phải văn bản công bố của Cục BĐKH."
+ },
+ {
+  "block": "dien-45",
+  "claim": "TT 45/2024/TT-BTNMT (ban hành QCVN 19:2024) hiệu lực 01/7/2025",
+  "value": "01/07/2025",
+  "url": "https://cdn.haiphong.gov.vn/gov-hpg/5892/tintuc/2025/8/2025_151-152_45-2024-tt-btnmt.638920602791283085.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Thông tư này có hiệu lực thi hành kể từ ngày 01 tháng 7 năm 2025.",
+  "status": "match",
+  "note": "PDF mở bằng WebFetch, trích text bằng pdftotext; câu trích nguyên văn từ text đó."
+ },
+ {
+  "block": "dien-45",
+  "claim": "QCVN 22:2009/BTNMT (khí thải nhiệt điện) hết hiệu lực theo lộ trình chuyển tiếp",
+  "value": "QCVN 22:2009 bị thay thế",
+  "url": "https://cdn.haiphong.gov.vn/gov-hpg/5892/tintuc/2025/8/2025_151-152_45-2024-tt-btnmt.638920602791283085.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "QCVN 22:2009/BTNMT - Quy chuẩn kỹ thuật quốc gia về khí thải công nghiệp nhiệt điện",
+  "status": "match",
+  "note": "Nằm trong danh sách khoản 2 Điều 2: 'Các quy chuẩn kỹ thuật quốc gia sau đây hết hiệu lực thi hành, theo quy định về điều khoản chuyển tiếp tại Điều 3 và lộ trình áp dụng tại Điều 4 Thông tư này'."
+ },
+ {
+  "block": "dien-45",
+  "claim": "Cơ sở đang vận hành được áp quy chuẩn cũ đến hết 31/12/2031",
+  "value": "31/12/2031",
+  "url": "https://cdn.haiphong.gov.vn/gov-hpg/5892/tintuc/2025/8/2025_151-152_45-2024-tt-btnmt.638920602791283085.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "... được tiếp tục áp dụng quy chuẩn kỹ thuật môi trường quốc gia về khí thải theo loại hình sản xuất, kinh doanh, dịch vụ tương ứng và quy định của chính quyền địa phương (bao gồm cả quy chuẩn kỹ thuật môi trường địa phương về khí thải) cho đến hết ngày 31 tháng 12 năm 2031.",
+  "status": "match",
+  "note": "Khoản 1 Điều 3; rút gọn phần chủ thể (cơ sở đã vận hành/dự án đã có ĐTM hoặc hồ sơ hợp lệ trước ngày hiệu lực)."
+ },
+ {
+  "block": "dien-45",
+  "claim": "Từ 01/01/2032 cơ sở hiện hữu phải đạt QCVN 19:2024 (tỉnh có thể yêu cầu sớm hơn)",
+  "value": "01/01/2032",
+  "url": "https://cdn.haiphong.gov.vn/gov-hpg/5892/tintuc/2025/8/2025_151-152_45-2024-tt-btnmt.638920602791283085.pdf",
+  "opened_at": "2026-11-11",
+  "quote": "Kể từ ngày 01 tháng 01 năm 2032, các trường hợp quy định tại khoản 1 Điều 3 Thông tư này phải đáp ứng yêu cầu quy định tại QCVN 19:2024/BTNMT, trừ trường hợp Ủy ban nhân dân cấp tỉnh ban hành lộ trình thực hiện sớm hơn.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-45",
+  "claim": "BNNMT (28/4/2026) gửi văn bản tới chủ 32 nhà máy nhiệt điện tăng cường BVMT mùa khô; nhắc mốc 2032",
+  "value": "32 nhà máy",
+  "url": "https://www.sggp.org.vn/bo-nong-nghiep-va-moi-truong-siet-khi-thai-tai-cac-nha-may-nhiet-dien-post850242.html",
+  "opened_at": "2026-11-11",
+  "quote": "Từ năm 2032, các cơ sở này phải đáp ứng quy chuẩn khí thải công nghiệp mới theo QCVN 19:2024/BTNMT.",
+  "status": "match",
+  "note": "Văn bản mang tính yêu cầu/đề nghị, không có chế tài mới."
+ },
+ {
+  "block": "dien-45",
+  "claim": "EVN: 30 tổ máy/14.324 MW thuộc diện phải cải tạo xử lý khí thải",
+  "value": "30 tổ máy, 14.324 MW",
+  "url": "https://nongnghiepmoitruong.vn/30-to-may-nhiet-dien-cua-evn-cai-tao-he-thong-xu-ly-khi-thai-d801029.html",
+  "opened_at": "2026-11-11",
+  "quote": "có 30 tổ máy với tổng công suất 14.324MW thuộc diện phải cải tạo hệ thống xử lý khí thải",
+  "status": "match",
+  "note": "Bài 16/03/2026; nhà máy trọng điểm: Hải Phòng, Phả Lại 2, Quảng Ninh, Uông Bí."
+ },
+ {
+  "block": "dien-45",
+  "claim": "QTP: dự án nâng cấp xử lý khí thải tổng mức đầu tư 3.799,2 tỷ; thi công theo đợt dừng tổ máy năm 2027",
+  "value": "3.799,2 tỷ đồng; 2027",
+  "url": "https://vov.vn/doanh-nghiep/doanh-nghiep-24h/nhiet-dien-quang-ninh-dau-tu-gan-3800-ty-dong-nang-cap-he-thong-xu-ly-khi-thai-post1342227.vov",
+  "opened_at": "2026-11-11",
+  "quote": "Dự án có tổng mức đầu tư 3.799,2 tỷ đồng.",
+  "status": "match",
+  "note": "Bài 17/10/2026: 'Công ty dự kiến bố trí thi công theo các đợt dừng tổ máy trong năm 2027.'; 'Hợp đồng EPC có thời gian thực hiện 14 tháng kể từ ngày có hiệu lực.' Không có câu nói 'lùi sang 2027'."
+ },
+ {
+  "block": "dien-45",
+  "claim": "QTP ký EPC 16/10/2026 với liên danh Shanghai Electric - Thái Bình Dương",
+  "value": "3.271 tỷ đồng",
+  "url": "https://tienphong.vn/ky-hop-dong-epc-nang-cap-he-thong-xu-ly-khi-thai-nhiet-dien-quang-ninh-post1891177.tpo",
+  "opened_at": "2026-11-11",
+  "quote": "Giá trị hợp đồng EPC là 3.271 tỷ đồng",
+  "status": "match",
+  "note": "Mục tiêu 'đáp ứng quy chuẩn kỹ thuật quốc gia về khí thải công nghiệp QCVN 19:2024/BTNMT'."
+ },
+ {
+  "block": "dien-45",
+  "claim": "HND: mời thầu EPC nâng cấp xử lý khí thải >3.124 tỷ; tổng vốn >3.607,5 tỷ; 780 ngày",
+  "value": "3.124 tỷ / 3.607,5 tỷ",
+  "url": "https://baodauthau.vn/moi-thau-goi-epc-3124-ty-dong-nang-cap-he-thong-xu-ly-khi-thai-tai-nhiet-dien-hai-phong-post196355.html",
+  "opened_at": "2026-11-11",
+  "quote": "có tổng vốn đầu tư hơn 3.607,5 tỷ đồng",
+  "status": "match",
+  "note": "Cụm trích; bài 02/04/2026; 'Thời gian thực hiện Gói thầu dự kiến là 780 ngày'; dự kiến đóng thầu 5/5/2026."
+ },
+ {
+  "block": "dien-45",
+  "claim": "TP Hải Phòng yêu cầu HND đẩy nhanh dự án (bài 20/08/2026); HND vẫn đang chọn nhà thầu EPC",
+  "value": "yêu cầu đẩy nhanh",
+  "url": "https://tapchicongthuong.vn/nhiet-dien-hai-phong-chu-dong-bao-dam-nguon-dien--tap-trung-nang-cap-he-thong-xu-ly-khi-thai-543352.htm",
+  "opened_at": "2026-11-11",
+  "quote": "đẩy nhanh tiến độ Dự án nâng cấp hệ thống xử lý khí thải",
+  "status": "match",
+  "note": "Cụm trích; trang cũng nói công ty 'đang khẩn trương thực hiện các bước lựa chọn nhà thầu EPC'."
+ },
+ {
+  "block": "dien-43",
+  "claim": "Thuế BVMT than antraxit (NQ 579/2018/UBTVQH14, hiệu lực 1/1/2019)",
+  "value": "30.000 đ/tấn",
+  "url": "https://nhadautu.vn/tang-thue-moi-truong-voi-hang-loat-mat-hang-tu-1-1-2019-d14736.html",
+  "opened_at": "2026-11-11",
+  "quote": "Thuế bảo vệ môi trường với than antraxit tăng từ 20.000 đồng/tấn lên 30.000 đồng/tấn.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-43",
+  "claim": "Thuế BVMT than nâu, than mỡ, than đá khác",
+  "value": "15.000 đ/tấn",
+  "url": "https://nhadautu.vn/tang-thue-moi-truong-voi-hang-loat-mat-hang-tu-1-1-2019-d14736.html",
+  "opened_at": "2026-11-11",
+  "quote": "Với than nâu, than mỡ, than đá khác, mức thuế tăng từ 10.000 đồng/tấn lên 15.000 đồng/tấn.",
+  "status": "match",
+  "note": "Chưa thấy văn bản sửa mức thuế than sau 2019."
+ },
+ {
+  "block": "dien-43",
+  "claim": "Thuế NK ưu đãi (MFN) LNG giảm 5% -> 2% từ 31/3/2025 (NĐ 73/2025/NĐ-CP)",
+  "value": "2%",
+  "url": "https://www.sggp.org.vn/giam-thue-nhap-khau-mot-so-mat-hang-tu-31-3-post788560.html",
+  "opened_at": "2026-11-11",
+  "quote": "Thuế nhập khẩu ưu đãi mặt hàng khí tự nhiên dạng hóa lỏng (LNG) giảm từ 5% xuống 2%.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-43",
+  "claim": "Giảm thuế GTGT 2% (còn 8%) 01/7/2025-31/12/2026 (NĐ 174/2025); khai khoáng bị loại trừ, trừ khai thác than",
+  "value": "8%",
+  "url": "https://amis.misa.vn/184663/nghi-dinh-giam-thue-gtgt-2025/",
+  "opened_at": "2026-11-11",
+  "quote": "sản phẩm khai khoáng (không kể khai thác than), than cốc, dầu mỏ tinh chế, sản phẩm hoá chất",
+  "status": "match",
+  "note": "Cụm danh mục loại trừ; trang không nhắc tới điện."
+ },
+ {
+  "block": "dien-43",
+  "claim": "Luật Thuế TNDN 2025 hiệu lực 01/10/2025, áp dụng từ kỳ tính thuế 2025",
+  "value": "01/10/2025",
+  "url": "https://luatvietnam.vn/thue/luat-thue-thu-nhap-doanh-nghiep-2025-so-67-2025-qh15-404386-d1.html",
+  "opened_at": "2026-11-11",
+  "quote": "Luật này có hiệu lực thi hành từ ngày 01 tháng 10 năm 2025 và áp dụng từ kỳ tính thuế thu nhập doanh nghiệp năm 2025.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-44",
+  "claim": "Khung giá nhập khẩu điện Lào (QĐ 1007/QĐ-BCT 14/4/2025), nhà máy COD 31/12/2025-31/12/2030: than",
+  "value": "7,02 USCent/kWh",
+  "url": "https://tapchicongthuong.vn/tu-31-12-2025--gia-dien-nhap-khau-tu-lao-toi-da-la-6-95-7-02-uscent-kwh-139455.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Đối với loại hình nhà máy nhiệt điện than là 7,02 USCent/kWh.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-44",
+  "claim": "Khung giá nhập khẩu điện Lào: thủy điện và điện gió",
+  "value": "6,95 USCent/kWh",
+  "url": "https://tapchicongthuong.vn/tu-31-12-2025--gia-dien-nhap-khau-tu-lao-toi-da-la-6-95-7-02-uscent-kwh-139455.htm",
+  "opened_at": "2026-11-11",
+  "quote": "Đối với loại hình nhà máy thủy điện là 6,95 USCent/kWh.",
+  "status": "match",
+  "note": "Gió: 'Đối với loại hình nhà máy điện gió là 6,95 USCent/kWh.' Không tìm thấy QĐ khung giá Lào riêng cho 2026."
+ },
+ {
+  "block": "dien-44",
+  "claim": "Điện nhập khẩu 7 tháng 2026 (EVN)",
+  "value": "7,21 tỷ kWh (+~69-70% yoy)",
+  "url": "https://tienphong.vn/viet-nam-tang-manh-mua-dien-tu-lao-trung-quoc-post1872714.tpo",
+  "opened_at": "2026-11-11",
+  "quote": "lượng điện nhập khẩu của Việt Nam đạt 7,21 tỷ kWh",
+  "status": "match",
+  "note": "Cụm trích; bài 31/08/2026; 47 dự án Lào 8.260 MW được chấp thuận, 2.379 MW đã vận hành thương mại; không tách Lào/Trung Quốc."
+ },
+ {
+  "block": "dien-44",
+  "claim": "Nhập khẩu than 2025 (Cục Hải quan)",
+  "value": "65,43 triệu tấn (+2,6%); 6,55 tỷ USD (-14%)",
+  "url": "https://baodautu.vn/chi-hon-232-ty-usd-nhap-khau-dau-tho-khi-dot-hoa-long-than-da-trong-nam-2025-d530389.html",
+  "opened_at": "2026-11-11",
+  "quote": "lượng nhập khẩu than các loại là 65,43 triệu tấn, tăng 2,6%, trị giá 6,55 tỷ USD, giảm 14%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dien-44",
+  "claim": "Nhập khẩu khí đốt hóa lỏng 2025 (Cục Hải quan; nhóm gộp LPG+LNG)",
+  "value": "3,63 triệu tấn; 2,15 tỷ USD",
+  "url": "https://baodautu.vn/chi-hon-232-ty-usd-nhap-khau-dau-tho-khi-dot-hoa-long-than-da-trong-nam-2025-d530389.html",
+  "opened_at": "2026-11-11",
+  "quote": "nhập khẩu khí đốt hóa lỏng là 3,63 triệu tấn, tăng 16,6% và trị giá 2,15 tỷ USD, tăng 5,4% so với năm trước.",
+  "status": "match",
+  "note": "Chỉ tiêu hải quan 'khí đốt hóa lỏng' gộp LPG và LNG; không dùng như sản lượng LNG cho điện."
+ },
+ {
+  "block": "dien-44",
+  "claim": "Nhập khẩu than 1/1-15/10/2026 (Cục Hải quan)",
+  "value": ">60 triệu tấn; 7,3 tỷ USD; ~122,3 USD/tấn",
+  "url": "https://cafef.vn/chi-hon-73-ty-usd-nhap-khau-than-ap-luc-nhien-lieu-cho-nganh-dien-188261027071236886.chn",
+  "opened_at": "2026-11-11",
+  "quote": "Việt Nam nhập khẩu hơn 60 triệu tấn than các loại, trị giá 7,3 tỷ USD",
+  "status": "match",
+  "note": "Cùng bài: 'lượng nhập khẩu tăng hơn 6 triệu tấn, tương đương 11,2%'; 'giá nhập khẩu than bình quân đạt khoảng 122,3 USD/tấn, tăng 22,5%'. Chưa có số đủ 10T/2026."
+ },
+ {
+  "block": "dien-44",
+  "claim": "NĐ 100/2025/NĐ-CP: Qc dài hạn điện khí LNG ≥65% trong ≤10 năm, dự án phát điện trước 1/1/2031",
+  "value": "65% / 10 năm",
+  "url": "https://tapchicongthuong.vn/chinh-phu-ban-hanh-quy-dinh-moi-ve-co-che-phat-trien-cac-du-an-dien-khi-140268.htm",
+  "opened_at": "2026-11-11",
+  "quote": "không thấp hơn mức 65% sản lượng điện phát bình quân nhiều năm",
+  "status": "match",
+  "note": "Cụm trích; hiệu lực 8/5/2025; 'không quá 10 năm kể từ ngày đưa dự án vào vận hành phát điện'; tiêu đề nêu 'nguyên tắc chuyển ngang giá nhiên liệu sang giá điện'."
+ },
+ {
+  "block": "dien-44",
+  "claim": "Dự thảo sửa NĐ 56/100: nâng Qc LNG lên 75%, 15 năm, vẫn là dự thảo (5/2026)",
+  "value": "75% / 15 năm (Draft)",
+  "url": "https://moit.gov.vn/tin-tuc/bo-cong-thuong-sua-nghi-dinh-56-hoan-thien-co-che-du-an-dien-khi-lng.html",
+  "opened_at": "2026-11-11",
+  "quote": "nâng mức sản lượng điện hợp đồng tối thiểu dài hạn từ 65% lên 75%",
+  "status": "match",
+  "note": "Cụm trích; bài 05/05/2026; đề xuất chuyển ngang toàn bộ chi phí nhiên liệu 'không thuộc phạm vi điều chỉnh của Nghị định lần này'. Chưa thấy nghị định ban hành."
+ },
+ {
+  "block": "dien-44",
+  "claim": "Khung giá phát điện CCGT khí thiên nhiên 2026 (QĐ 1882/QĐ-BCT 23/7/2026)",
+  "value": "0-3.410,64 đ/kWh; giả định khí 11,98 USD/MMBtu",
+  "url": "https://moit.gov.vn/tin-tuc/phat-trien-nang-luong/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-nhiet-dien-khi-nam-2026.html",
+  "opened_at": "2026-11-11",
+  "quote": "dao động từ 0 đến 3.410,64 đồng/kWh (chưa bao gồm thuế giá trị gia tăng)",
+  "status": "match",
+  "note": "Tỷ giá 26.378 đ/USD; cước vận chuyển khí 1,87 USD/MMBtu."
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần điện mặt trời nổi 2026, không pin lưu trữ (QĐ 2946/QĐ-BCT)",
+  "value": "1.939,74 / 1.560,63 / 1.340,21 đ/kWh",
+  "url": "https://moit.gov.vn/tin-tuc/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-loai-hinh-nha-may-dien-mat-troi-nam-2026.html",
+  "opened_at": "2026-11-12",
+  "quote": "Đối với điện mặt trời nổi, mức giá tại miền Bắc là 1.939,74 đồng/kWh, miền Trung là 1.560,63 đồng/kWh và miền Nam là 1.340,21 đồng/kWh.",
+  "status": "match",
+  "note": "Mục \"không sử dụng hệ thống pin lưu trữ năng lượng\"."
+ },
+ {
+  "block": "dien-17",
+  "claim": "Trần điện mặt trời mặt đất 2026, kèm pin lưu trữ (QĐ 2946/QĐ-BCT)",
+  "value": "1.813,48 / 1.469,90 / 1.254,97 đ/kWh",
+  "url": "https://moit.gov.vn/tin-tuc/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-loai-hinh-nha-may-dien-mat-troi-nam-2026.html",
+  "opened_at": "2026-11-12",
+  "quote": "Đối với điện mặt trời mặt đất, mức giá tại miền Bắc là 1.813,48 đồng/kWh, miền Trung là 1.469,90 đồng/kWh và miền Nam là 1.254,97 đồng/kWh.",
+  "status": "match",
+  "note": "Mục \"sử dụng kết hợp hệ thống pin lưu trữ năng lượng\"."
  }
 ]

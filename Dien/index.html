@@ -19,6 +19,8 @@
 <script src="../assets/sector-ticker.js?v=24097f7668e0" defer></script>
 <script src="../assets/hydro-reservoirs.js?v=db30f7440476" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
+<script src="../data/power-policy.js?v=0" defer></script>
+<script src="../assets/power-policy.js?v=0" defer></script>
 <script src="../assets/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="../assets/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="../assets/dashboard-ui.js?v=08a5cb16b308" defer></script>
@@ -45,6 +47,7 @@
 <link rel="stylesheet" href="../assets/sector-base.css?v=ba33835e530c">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=c1023818f2dd">
 <link rel="stylesheet" href="../assets/brand.css?v=048c9b941573">
+<link rel="stylesheet" href="../assets/power-policy.css?v=0">
 </head>
 <body data-sector="power">
 <div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="power"><a href="../">Trang tổng</a><a href="../Dau-khi/">Dầu khí</a><a href="../Sugar/">Đường</a><a href="../Bank/">Ngân hàng</a><a href="../Dien/">Điện</a></nav><p class="site-release-note" data-release-label></p></div></div>
@@ -355,101 +358,41 @@
 
   <div class="majorpane" data-tab="mt4" id="pane-mt4">
   <section id="policy" class="section">
-    <div class="sectionhead"><div><h2>4. Policy / Trade / Tax</h2><p>Khung giá phát điện theo công nghệ, điều khoản hợp đồng dự án và tiến độ nguồn điện trong Quy hoạch điện VIII.</p></div></div>
-    <div class="card" data-block-id="dien-17" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
-      <div class="chart-title">Trần khung giá phát điện theo loại hình</div>
-      <div class="chart-sub">đ/kWh · chưa VAT · khung mới nhất đã duyệt của từng loại hình · loại có giá theo miền lấy miền cao nhất (Bắc)</div>
-      <div id="chGenerationCeilings"></div>
-      <div class="legend"><span class="li"><span class="dot" style="background:#27af95"></span>Tái tạo</span><span class="li"><span class="dot" style="background:#7f8fd6"></span>Tích năng</span><span class="li"><span class="dot" style="background:#1D2678"></span>Nhiệt điện</span></div>
-      <div class="source-note">Khí <b>3.069 → 3.411</b> (+11,1%, 2025 → 2026). LNG chưa có khung 2026 nên cột LNG là năm 2025, không so trực tiếp với khí 2026. Mặt trời và gió chưa có khung 2026 (EVN mới trình phương án 07/2026). Khung giá là trần đàm phán PPA, không phải giá đã ký.</div>
-      <details class="dtable"><summary>Xem giá trị theo miền và quyết định</summary><div class="tablewrap"><table><thead><tr><th>Loại hình</th><th>Năm</th><th>Trần đ/kWh (Bắc / Trung / Nam)</th><th>Văn bản</th></tr></thead><tbody>
-        <tr><td>Mặt trời mặt đất</td><td>2025</td><td>1.382,7 / 1.107,1 / 1.012,0</td><td>QĐ 988/QĐ-BCT</td></tr><tr><td>Mặt trời mặt đất + pin lưu trữ</td><td>2025</td><td>1.571,98 / 1.257,05 / 1.149,86</td><td>QĐ 988/QĐ-BCT</td></tr><tr><td>Mặt trời nổi + pin lưu trữ</td><td>2025</td><td>1.876,57 / 1.487,18 / 1.367,13</td><td>QĐ 988/QĐ-BCT</td></tr><tr><td>Gió trên bờ</td><td>2025</td><td>1.959,4 / 1.807,4 / 1.840,3</td><td>QĐ 1508/QĐ-BCT</td></tr><tr><td>Gió gần bờ</td><td>2025</td><td>1.987,4 (cả 3 miền)</td><td>QĐ 1508/QĐ-BCT</td></tr><tr><td>Gió ngoài khơi</td><td>2025</td><td>3.975,1 / 3.078,9 / 3.868,5</td><td>QĐ 1824/QĐ-BCT</td></tr><tr><td>Thủy điện</td><td>2026</td><td>1.110</td><td>QĐ 1127/QĐ-BCT</td></tr><tr><td>Thủy điện tích năng</td><td>2025</td><td>3.457,02</td><td>QĐ 1198/QĐ-BCT</td></tr><tr><td>Sinh khối</td><td>2025</td><td>2.091,74</td><td>QĐ 1008/QĐ-BCT</td></tr><tr><td>Điện rác</td><td>2025</td><td>2.575,18</td><td>QĐ 1251/QĐ-BCT</td></tr><tr><td>Nhiệt điện than</td><td>2026</td><td>2.218,95</td><td>QĐ 1692/QĐ-BCT</td></tr><tr><td>Khí thiên nhiên (CCGT)</td><td>2025 → 2026</td><td>3.069,38 → <b>3.410,64</b></td><td>QĐ 1882 (2026)/QĐ-BCT</td></tr><tr><td>Khí LNG (CCGT)</td><td>2025</td><td>3.327,42</td><td>QĐ 1313/QĐ-BCT</td></tr>
-      </tbody></table></div></details>
-      <div class="source-note">Nguồn: <a href="https://moit.gov.vn/tin-tuc/phat-trien-nang-luong/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-nhiet-dien-khi-nam-2026.html" target="_blank" rel="noopener">Bộ Công Thương · khí 2026</a> · <a href="https://vietnamfinance.vn/gia-tran-phat-dien-nhiet-dien-khi-tang-len-hon-3410-dong-kwh-d148211.html" target="_blank" rel="noopener">VietnamFinance · khí 2025</a> · <a href="https://sct.dongnai.gov.vn/vi/news/An-toan-thuc-pham/gia-dien-khi-lng-nam-2025-cao-nhat-la-3-327-42-dong-kwh-ht-13204.html" target="_blank" rel="noopener">Sở Công Thương Đồng Nai · LNG 2025</a> · <a href="https://tapchicongthuong.vn/gia-phat-dien-toi-da-cho-nha-may-dien-mat-troi-la-1-876-57-dong-kwh-139270.htm" target="_blank" rel="noopener">Tạp chí Công Thương · mặt trời</a> · <a href="https://caselaw.vn/bai-viet/quyet-dinh-1508-qd-bct-phe-duyet-khung-gia-phat-dien-nha-may-dien-gio-nam-2025" target="_blank" rel="noopener">Caselaw · gió QĐ 1508</a> · <a href="https://tapchicongthuong.vn/phe-duyet-khung-gia-phat-dien-loai-hinh-nha-may-dien-gio-ngoai-khoi-nam-2025-142179.htm" target="_blank" rel="noopener">Tạp chí Công Thương · gió ngoài khơi</a> · <a href="https://mekongasean.vn/bo-cong-thuong-phe-duyet-khung-gia-cho-thuy-dien-nam-2026-55273.html" target="_blank" rel="noopener">Mekong ASEAN · thủy điện 2026</a> · <a href="https://tapchicongthuong.vn/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-cho-thuy-dien-tich-nang-nam-2025-140187.htm" target="_blank" rel="noopener">Tạp chí Công Thương · tích năng</a> · <a href="https://tapchicongthuong.vn/gia-phat-dien-toi-da-cho-nhiet-dien-than-nam-2026-la-2-218-95-dong-kwh-532494.htm" target="_blank" rel="noopener">Tạp chí Công Thương · than 2026</a> · <a href="https://nangluongvietnam.vn/khung-gia-phat-dien-tu-nguon-dien-than-sinh-khoi-2025-va-nhap-khau-tu-lao-2026-34089.html" target="_blank" rel="noopener">Năng lượng VN · sinh khối</a> · <a href="https://tapchicongthuong.vn/gia-phat-dien-toi-da-cho-dien-chat-thai-nam-2025-la-2-575-18-dong-kwh-140189.htm" target="_blank" rel="noopener">Tạp chí Công Thương · điện rác</a> · <a href="https://vietnamfinance.vn/lan-dau-xay-dung-khung-gia-dien-mat-troi-tich-hop-pin-luu-tru-bess-d147726.html" target="_blank" rel="noopener">VietnamFinance · phương án 2026 chưa duyệt</a>.</div>
+    <div class="sectionhead"><div><h2>4. Policy / Trade / Tax</h2><p>Thay đổi chính sách → kênh truyền dẫn → biến tài chính → doanh nghiệp chịu tác động → chỉ báo cần theo dõi.</p></div></div>
+    <div id="power-policy" data-policy-layout>
+    <section class="pp-card" id="pp-radar" data-block-id="dien-34" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+    <nav class="pp-subnav" id="pp-subnav"></nav>
+    <div class="pp-group" data-group="pricing" id="pp-group-pricing">
+      <p class="pp-group-head">Giá phát điện, cơ chế FIT/chuyển tiếp, cấu trúc PPA và giá bán lẻ quyết định doanh thu trên mỗi kWh.</p>
+      <section class="pp-module" id="pp-1A" data-block-id="dien-17" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      <section class="pp-module" id="pp-1A2" data-block-id="dien-35" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      <section class="pp-module" id="pp-1B" data-block-id="dien-36" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      <section class="pp-module" id="pp-1C" data-block-id="dien-37" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      <section class="pp-module" id="pp-1D" data-block-id="dien-38" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
     </div>
-    <div class="card" style="margin-top:14px" data-block-id="dien-18" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
-      <h3 style="margin-top:0;font-size:13.5px">Quy hoạch điện VIII điều chỉnh (QĐ 768/QĐ-TTg, 15/04/2025) và đợt điều chỉnh 2026</h3>
-      <div class="chart-sub">Công suất mục tiêu 2030 theo nguồn (MW) và giai đoạn đưa vào vận hành theo QĐ 768</div>
-      <div class="power-source-gantt" aria-label="Kế hoạch phát triển từng nguồn điện theo QĐ 768">
-        <div class="sg-head"><span>Nguồn</span><span>MW 2030</span><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span><span>2031–35</span></div>
-        <div class="sg-row"><span class="sg-name">Mặt trời (gồm mái nhà)</span><span class="sg-mw">46.459–73.416</span><span class="sg-bar sg-re" style="grid-column:3/8">tập trung kèm pin ≥10% công suất, 2 giờ</span></div>
-        <div class="sg-row"><span class="sg-name">Gió trên bờ & gần bờ</span><span class="sg-mw">26.066–38.029</span><span class="sg-bar sg-re" style="grid-column:3/8"></span></div>
-        <div class="sg-row"><span class="sg-name">Gió ngoài khơi</span><span class="sg-mw">6.000–17.032</span><span class="sg-bar sg-re" style="grid-column:7/9">vận hành 2030–2035</span></div>
-        <div class="sg-row"><span class="sg-name">Pin lưu trữ (BESS)</span><span class="sg-mw">10.000–16.300</span><span class="sg-bar sg-st" style="grid-column:3/8"></span></div>
-        <div class="sg-row"><span class="sg-name">Thủy điện tích năng</span><span class="sg-mw">2.400–6.000</span><span class="sg-bar sg-st" style="grid-column:3/8">Bác Ái 1.200 MW</span></div>
-        <div class="sg-row"><span class="sg-name">Thủy điện</span><span class="sg-mw">33.294–34.667</span><span class="sg-bar sg-re" style="grid-column:3/8"></span></div>
-        <div class="sg-row"><span class="sg-name">Sinh khối · điện rác</span><span class="sg-mw">1.523–2.699 · 1.441–2.137</span><span class="sg-bar sg-re" style="grid-column:3/8"></span></div>
-        <div class="sg-row"><span class="sg-name">Nhiệt điện than</span><span class="sg-mw">31.055</span><span class="sg-bar sg-th" style="grid-column:3/8">chỉ dự án đang xây: Quảng Trạch I, Long Phú 1, Vũng Áng 2…</span></div>
-        <div class="sg-row"><span class="sg-name">Khí trong nước</span><span class="sg-mw">10.861–14.930</span><span class="sg-bar sg-th" style="grid-column:3/8">Lô B → Ô Môn II/III/IV; Cá Voi Xanh</span></div>
-        <div class="sg-row"><span class="sg-name">Khí LNG</span><span class="sg-mw">22.524</span><span class="sg-bar sg-th" style="grid-column:3/9">22.524 MW đến 2030; Long Sơn, Long An II 2031–35</span></div>
-        <div class="sg-row"><span class="sg-name">Nguồn linh hoạt</span><span class="sg-mw">2.000–3.000</span><span class="sg-bar sg-th" style="grid-column:3/8"></span></div>
-        <div class="sg-row"><span class="sg-name">Điện hạt nhân</span><span class="sg-mw">4.000–6.400</span><span class="sg-bar sg-ot" style="grid-column:7/9">Ninh Thuận 1 & 2 · 2030–2035</span></div>
-        <div class="sg-row"><span class="sg-name">Nhập khẩu (Lào, TQ)</span><span class="sg-mw">9.360–12.100</span><span class="sg-bar sg-ot" style="grid-column:3/8"></span></div>
-      </div>
-      <div class="legend"><span class="li"><span class="dot" style="background:#27af95"></span>Tái tạo</span><span class="li"><span class="dot" style="background:#7f8fd6"></span>Lưu trữ</span><span class="li"><span class="dot" style="background:#1D2678"></span>Nhiệt điện</span><span class="li"><span class="dot" style="background:#c29100"></span>Hạt nhân, nhập khẩu</span></div>
-      <div class="source-note">Tổng 2030: <b>183.291–236.363 MW</b>. Than: không thêm dự án mới ngoài danh mục đang xây; nhà máy 20 năm chuyển sang sinh khối/amoniac, trên 40 năm dừng nếu không chuyển được. QĐ 768 không ghi MW từng năm, thanh chỉ là giai đoạn.</div>
-      <details><summary>Chỉ tiêu quy hoạch và diễn biến điều chỉnh</summary>
-      <div class="tablewrap"><table>
-        <thead><tr><th>Chỉ tiêu năm 2030</th><th>Mục tiêu</th></tr></thead>
-        <tbody>
-          <tr><td>Điện sản xuất và nhập khẩu</td><td><b>560,4 – 624,6 tỷ kWh</b></td></tr>
-          <tr><td>Công suất cực đại (Pmax)</td><td>89.655 – 99.934 MW</td></tr>
-          <tr><td>Tổng công suất nguồn phục vụ trong nước</td><td><b>183.291 – 236.363 MW</b></td></tr>
-          <tr><td>Năng lượng tái tạo (không gồm thủy điện) trong điện sản xuất</td><td>28 – 36%</td></tr>
-          <tr><td>Vốn đầu tư nguồn và lưới truyền tải 2026–2030</td><td><b>136,3 tỷ USD</b> (nguồn 118,2; lưới 18,1)</td></tr>
-          <tr><td>Lưới 500 kV xây mới 2025–2030</td><td>102.900 MVA trạm biến áp; 12.944 km đường dây</td></tr>
-          <tr><td>Giả định tăng trưởng GDP</td><td>khoảng 10%/năm (2026–2030)</td></tr>
-        </tbody>
-      </table></div>
-      <div class="tablewrap" style="margin-top:10px"><table>
-        <thead><tr><th>Ngày</th><th>Đợt điều chỉnh lần 2 (chưa được phê duyệt đến 06/10/2026)</th></tr></thead>
-        <tbody>
-          <tr><td>07/07/2026</td><td>Phó Thủ tướng Thường trực thống nhất điều chỉnh theo thủ tục rút gọn (căn cứ NQ 253/2025/QH15)</td></tr>
-          <tr><td>17/09/2026 (ngày báo đăng)</td><td>Bộ Công Thương đề xuất điều chỉnh theo 2 bước; phấn đấu <b>5.300 MW nhiệt điện than mới</b> vận hành 2030 (Quảng Ninh, Ninh Bình, Quảng Trị, Cần Thơ, kèm lộ trình CCS); mặt trời tập trung <b>5.500 MW (2029) + 3.000 MW (2030)</b>; gió trên bờ và gần bờ <b>4.000 MW (2029) + 3.000 MW (2030)</b>. Là đề xuất, chưa được Chính phủ phê duyệt</td></tr>
-          <tr><td>03/10/2026</td><td>Thủ tướng giao Bộ Công Thương sớm trình Quy hoạch điện VIII điều chỉnh và cơ cấu lại EVN</td></tr>
-        </tbody>
-      </table></div>
-      </details>
-      <div class="source-note">Nguồn: <a href="https://moit.gov.vn/upload/2005517/fck/files/768_QD-TTg_15042025-signed_1__9548d.pdf" target="_blank" rel="noopener">QĐ 768/QĐ-TTg, bản ký (tr. 3–14)</a> · <a href="https://www.evn.com.vn/d/vi-VN/news/Tinh-hinh-hoat-dong-thang-9-nam-2026-nhiem-vu-trong-tam-3-thang-cuoi-nam-2026-60-142-509877" target="_blank" rel="noopener">EVN · Quảng Trạch I</a> · <a href="https://www.evn.com.vn/d/vi-VN/news/Le-ky-ket-hop-dong-EPC-Du-an-thanh-phan-1-nha-may-dien-thuoc-Du-an-Nha-may-Nhiet-dien-LNG-Quang-Trach-II-60-142-506817" target="_blank" rel="noopener">EVN · Quảng Trạch II</a> · <a href="https://www.petrovietnam.vn/ptsc-dat-moc-2-trieu-gio-lam-viec-an-toan-tai-du-an-long-phu-1-35158" target="_blank" rel="noopener">Petrovietnam · Long Phú I</a> · <a href="https://www.petrovietnam.vn/petrovietnam-de-xuat-giai-phap-thuc-day-cac-du-an-nang-luong-trong-diem-tai-can-tho-35348" target="_blank" rel="noopener">Petrovietnam · Ô Môn IV</a> · <a href="https://www.evn.com.vn/d/vi-VN/news/Thuy-dien-tich-nang-Bac-Ai-tang-toc-thi-cong-truoc-mua-mua-60-13-508252" target="_blank" rel="noopener">EVN · Bắc Ái</a> · <a href="https://vanban.chinhphu.vn/?pageid=27160&amp;docid=213388" target="_blank" rel="noopener">vanban.chinhphu.vn</a> · <a href="https://baochinhphu.vn/pho-thu-tuong-thuong-truc-pham-gia-tuc-dieu-chinh-quy-hoach-dien-viii-phai-dap-ung-yeu-cau-phat-trien-moi-102260707190511532.htm" target="_blank" rel="noopener">Báo Chính phủ 07/07/2026</a> · <a href="https://danviet.vn/nguy-co-thieu-dien-tu-nam-2027-den-2030-bo-cong-thuong-de-xuat-dieu-chinh-quy-hoach-dien-8-va-xin-lai-evn-ve-bo-d1460184.html" target="_blank" rel="noopener">Dân Việt 17/09/2026</a> · <a href="https://vnexpress.net/thu-tuong-yeu-cau-khong-tang-gia-dien-5127997.html" target="_blank" rel="noopener">VnExpress 03/10/2026</a>.</div>
+    <div class="pp-group" data-group="market" id="pp-group-market">
+      <p class="pp-group-head">Quy định thị trường điện và điều độ quyết định sản lượng được trả theo giá hợp đồng và phần bán theo giá thị trường.</p>
+      <section class="pp-module" id="pp-2A" data-block-id="dien-39" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      <section class="pp-module" id="pp-2B" data-block-id="dien-40" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      <section class="pp-module" id="pp-2C" data-block-id="dien-19" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
     </div>
-    <div class="card" style="margin-top:14px" data-block-id="dien-19" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
-      <h3 style="margin-top:0;font-size:13.5px">Văn bản DPPA, điện mái nhà và thị trường bán buôn</h3>
-      <details open><summary>Văn bản liên quan: DPPA, mái nhà và thị trường bán buôn</summary>
-      <div class="tablewrap"><table>
-        <thead><tr><th>Hiệu lực</th><th>Văn bản</th><th>Điểm chính cho doanh nghiệp</th></tr></thead>
-        <tbody>
-          <tr><td>01/02/2025</td><td><a href="https://luatvietnam.vn/cong-nghiep/luat-dien-luc-2024-so-61-2024-qh15-380161-d1.html" target="_blank" rel="noopener">Luật Điện lực 61/2024/QH15</a></td><td>Thay Luật 2004; nền cho các nghị định 56, 57, 58/2025</td></tr>
-          <tr><td>03/03/2025</td><td><a href="https://luatvietnam.vn/cong-nghiep/nghi-dinh-57-2025-nd-cp-co-che-mua-ban-dien-giua-don-vi-phat-dien-va-khach-hang-392209-d1.html" target="_blank" rel="noopener">NĐ 57/2025</a> · <a href="https://luatvietnam.vn/cong-nghiep/nghi-dinh-58-2025-nd-cp-quy-dinh-luat-dien-luc-ve-phat-trien-dien-nang-luong-tai-tao-392208-d1.html" target="_blank" rel="noopener">NĐ 58/2025</a></td><td>Mua bán điện trực tiếp (DPPA) giữa nhà máy NLTT và khách hàng lớn; mái nhà tự dùng bán dư tối đa 20%</td></tr>
-          <tr><td>08/05/2025</td><td><a href="https://luatvietnam.vn/dau-tu/nghi-dinh-100-2025-nd-cp-chinh-phu-399847-d1.html" target="_blank" rel="noopener">NĐ 100/2025</a></td><td>Điện LNG vận hành trước 01/01/2031: sản lượng hợp đồng tối thiểu <b>65%</b>, tối đa 10 năm; khí trong nước được huy động tối đa theo khả năng cấp khí</td></tr>
-          <tr><td>01/03/2026</td><td><a href="https://luatvietnam.vn/dau-khi/nghi-quyet-253-2025-qh15-co-che-chinh-sach-phat-trien-nang-luong-quoc-gia-2026-2030-422450-d1.html" target="_blank" rel="noopener">NQ 253/2025/QH15</a></td><td>Cơ chế đặc thù 2026–2030: điều chỉnh quy hoạch rút gọn, dự án lưới không cần chấp thuận chủ trương, mở rộng DPPA</td></tr>
-          <tr><td>26/06/2026</td><td><a href="https://vanban.chinhphu.vn/?pageid=27160&amp;docid=218605" target="_blank" rel="noopener">NĐ 243/2026</a></td><td>DPPA mở cho trung tâm dữ liệu, trạm sạc xe điện; mái nhà bán dư tối đa 50%</td></tr>
-          <tr><td>04/07/2026</td><td><a href="https://tapchicongthuong.vn/chinh-phu-quy-dinh-chi-tiet-mot-so-co-che--chinh-sach-phat-trien-nang-luong-giai-doan-2026-2030-531949.htm" target="_blank" rel="noopener">NĐ 272/2026</a></td><td>Hướng dẫn NQ 253, gồm điều kiện nhà đầu tư điện gió ngoài khơi</td></tr>
-          <tr><td>20/07/2026</td><td><a href="https://luatvietnam.vn/dien-luc/thong-tu-29-2026-tt-bct-quy-dinh-van-hanh-thi-truong-ban-buon-dien-canh-tranh-436583-d1.html" target="_blank" rel="noopener">TT 29/2026/TT-BCT</a></td><td>Quy chế thị trường bán buôn điện: chu kỳ giao dịch 30 phút; khách hàng DPPA từ 200.000 kWh/tháng qua lưới quốc gia, 20.000 kWh/tháng qua lưới riêng</td></tr>
-        </tbody>
-      </table></div>
-      </details>
-      <div class="source-note">Ngày hiệu lực TT 29/2026 theo Điều 142 của thông tư (20/07/2026); phần tóm tắt của LuatVietnam ghi 01/01/2027.</div>
+    <div class="pp-group" data-group="development" id="pp-group-development">
+      <p class="pp-group-head">Quy hoạch chỉ là mục tiêu; tiến độ dự án và vốn lưới mới quyết định backlog và sản lượng tương lai.</p>
+      <section class="pp-module" id="pp-3A" data-block-id="dien-18" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      <section class="pp-module" id="pp-3B" data-block-id="dien-41" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      <section class="pp-module" id="pp-3C" data-block-id="dien-42" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
     </div>
-    <div class="card" style="margin-top:14px" data-block-id="dien-32" data-update-kind="event" data-cadence="monthly" data-refresh-status="snapshot">
-      <h3 style="margin-top:0;font-size:13.5px">Lịch 12 tháng: mốc giá, chính sách và thủy văn</h3>
-      <div class="tablewrap compare-table"><table>
-        <thead><tr><th>Mốc</th><th>Sự kiện</th><th>Ai chịu / cần xem gì</th></tr></thead>
-        <tbody>
-          <tr><td>01/11/2026</td><td class="after"><b>Giá bán lẻ −2%</b> còn 2.159,90 đ/kWh (QĐ 1305/QĐ-EVN) — đã áp dụng</td><td>EVN hụt thu → tốc độ thanh toán IPP (POW, NT2, PPC, QTP, HND)</td></tr>
-          <tr><td>Thứ Năm tuần 2 hằng tháng</td><td>NOAA cập nhật ENSO (ONI, xác suất El Niño kéo dài)</td><td>Thủy điện (REE, VSH, CHP, SBA, TMP, SHP) · nhiệt điện được huy động</td></tr>
-          <tr><td>T11/2026 – T4/2027</td><td>Mùa khô Nam Bộ, Tây Nguyên; hồ Trung &amp; Nam tích nước xong</td><td>Heatmap hồ chứa cụm Trung &amp; Nam · nhiệt điện khí miền Nam (NT2, POW)</td></tr>
-          <tr><td>Tháng 12/2026 <small style="color:#7a8794;font-weight:400">(chưa xác nhận)</small></td><td>Bộ Công Thương duyệt kế hoạch vận hành thị trường điện 2027 (Qc, CAN 2027)</td><td>Nhiệt điện: tỷ lệ sản lượng hợp đồng</td></tr>
-          <tr><td>Từ 20/01/2027</td><td>BCTC quý IV/2026</td><td>18 mã · thủy điện mùa mưa, nhiệt điện Q4</td></tr>
-          <tr><td>H1/2027 <small style="color:#7a8794;font-weight:400">(chưa xác nhận)</small></td><td>Khung giá phát điện 2027 (than, khí, thủy điện; năm 2026 ban hành T1–T7)</td><td>Giá PPA đàm phán mới · nhà máy hết hợp đồng cũ</td></tr>
-          <tr><td>Chưa xác nhận</td><td>QHĐ VIII điều chỉnh lần 2 (Bộ Công Thương đề xuất 17/09/2026, chưa phê duyệt)</td><td>Pipeline LNG, BESS, lưới → PC1, TV2, GEX, POW</td></tr>
-          <tr><td>Từ 20/04/2027</td><td>BCTC quý I/2027</td><td>Thủy điện mùa khô · nhiệt điện huy động cao</td></tr>
-          <tr><td>T5 – T6/2027</td><td>Đỉnh mùa khô miền Bắc, Pmax mới; rủi ro thiếu điện nếu El Niño kéo dài</td><td>Hồ cụm Bắc (Sơn La, Hòa Bình, Lai Châu) · than miền Bắc (QTP, HND, PPC)</td></tr>
-          <tr><td>Trước 30/06/2027</td><td>EVN báo cáo chi phí sản xuất kinh doanh điện thực tế (NĐ 278/2026); chi phí lệch ≥1% → điều chỉnh giá bán lẻ</td><td>Chiều tiếp theo của giá bán lẻ · tài chính EVN</td></tr>
-          <tr><td>Từ 20/07/2027</td><td>BCTC quý II/2027 · bán niên soát xét</td><td>18 mã</td></tr>
-        </tbody>
-      </table></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Mốc "chưa xác nhận" là lịch thông lệ (năm trước ban hành vào kỳ đó), chưa có văn bản công bố ngày. Lịch BCTC theo Thông tư 96/2020/TT-BTC (quý ≤20 ngày). Mốc mùa khô là mùa vụ thủy văn, không phải văn bản.</div></details>
-      <div class="source-note">Nguồn: <a href="https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-gia-ban-le-dien-binh-quan-tu-ngay-01-thang-11-nam-2026-60-134-510169" target="_blank" rel="noopener">EVN · QĐ 1305/QĐ-EVN</a> · <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC</a> · <a href="https://danviet.vn/nguy-co-thieu-dien-tu-nam-2027-den-2030-bo-cong-thuong-de-xuat-dieu-chinh-quy-hoach-dien-8-va-xin-lai-evn-ve-bo-d1460184.html" target="_blank" rel="noopener">Dân Việt 17/09/2026 (QHĐ VIII)</a> · khung giá 2026: các QĐ ở card "Trần khung giá phát điện".</div>
+    <div class="pp-group" data-group="tax" id="pp-group-tax">
+      <p class="pp-group-head">Chỉ giữ chính sách thuế, thương mại, carbon có kênh tác động xác định được tới chi phí, sản lượng hoặc CAPEX.</p>
+      <section class="pp-module" id="pp-4A" data-block-id="dien-43" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      <section class="pp-module" id="pp-4B" data-block-id="dien-44" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      <section class="pp-module" id="pp-4C" data-block-id="dien-45" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+    </div>
+    <div class="pp-group" data-group="matrix" id="pp-group-matrix">
+      <p class="pp-group-head">Ma trận liên kết cả bốn nhóm: mỗi dòng là một thay đổi chính sách đã xác minh; lịch chỉ gồm mốc pháp lý.</p>
+      <section class="pp-module" id="pp-MX" data-block-id="dien-46" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot"></section>
+      <section class="pp-module" id="pp-CAL" data-block-id="dien-32" data-update-kind="event" data-cadence="monthly" data-refresh-status="snapshot"></section>
+    </div>
     </div>
   </section>
   </div>
@@ -1077,40 +1020,6 @@ fillTable('tbl-output-sources',['Nguồn','9T/2025 (tỷ kWh)','9T/2026 (tỷ kW
 
 /* Trần phát điện: từng cột giữ năm và vùng của quyết định gốc. */
 const RE='#27af95',ST='#7f8fd6',TH='#1D2678';
-/* Trần khung giá mới nhất, nhóm theo năm quyết định; loại có giá theo miền lấy miền Bắc. */
-const generationCeilingYears=[
-  {year:'2025',bars:[['Mặt trời mặt đất',1382.7,RE],['Mặt trời + BESS',1571.98,RE],['Mặt trời nổi + BESS',1876.57,RE],['Gió trên bờ',1959.4,RE],['Gió gần bờ',1987.4,RE],['Gió ngoài khơi',3975.1,RE],['Thủy điện tích năng',3457.02,ST],['Sinh khối',2091.74,RE],['Điện rác',2575.18,RE],['Khí',3069.38,TH],['LNG',3327.42,TH]]},
-  {year:'2026',bars:[['Thủy điện',1110,RE],['Than',2218.95,TH],['Khí',3410.64,TH]]}
-];
-(function(){
-  const host=document.getElementById('chGenerationCeilings');if(!host)return;
-  const W=640,H=260,padL=50,padR=14,padT=22,padB=76,plotW=W-padL-padR,plotH=H-padT-padB;
-  const all=generationCeilingYears.flatMap(g=>g.bars),n=all.length,gap=14;
-  const slot=(plotW-gap*(generationCeilingYears.length-1))/n,bw=Math.min(slot*0.7,26);
-  const yMax=niceMax(Math.max(...all.map(b=>b[1]))*1.1);
-  const svg=baseSvg(W,H,'Trần khung giá phát điện mới nhất theo loại hình, nhóm theo năm quyết định');
-  const y=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,0,0,4);
-  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
-  let x=padL;
-  generationCeilingYears.forEach((g,gi)=>{
-    const x0=x;
-    g.bars.forEach(([name,v,color])=>{
-      const cx=x+slot/2,top=y(v);
-      const r=el('rect',{x:cx-bw/2,y:top,width:bw,height:padT+plotH-top,rx:3,ry:3,fill:color});
-      r.appendChild(txt('title',{},g.year+' · '+name+': '+fmt(v,0)+' đ/kWh'));
-      svg.appendChild(r);
-      svg.appendChild(txt('text',{x:cx,y:top-5,'text-anchor':'middle',class:'endlabel',fill:color,'font-size':9},fmt(v,0)));
-      svg.appendChild(txt('text',{x:cx,y:padT+plotH+10,'text-anchor':'end',class:'catlabel','font-size':9,transform:'rotate(-40 '+cx+' '+(padT+plotH+10)+')'},name));
-      x+=slot;
-    });
-    const yy=H-8;
-    svg.appendChild(el('line',{x1:x0+3,x2:x-3,y1:yy-13,y2:yy-13,stroke:'#b8c7d9','stroke-width':1.2}));
-    svg.appendChild(txt('text',{x:(x0+x)/2,y:yy,'text-anchor':'middle',class:'catlabel','font-weight':700,'font-size':11},g.year));
-    x+=gap;
-  });
-  host.innerHTML='';host.appendChild(svg);
-})();
-
 /* Giá bán lẻ điện bình quân (đ/kWh, chưa VAT) theo ngày áp dụng */
 const tariffDates=['20/03/2019','04/05/2023','09/11/2023','11/10/2024','10/05/2025','01/11/2026'],tariffVals=[1864.44,1920.3732,2006.79,2103.1159,2204.0655,2159.9037],tariffChange=['+8,36%','+3%','+4,5%','+4,8%','+4,8%','−2%'];
 barLineChart('chTariff',{categories:tariffDates,series:[{name:'Giá bán lẻ bình quân',kind:'line',color:S1,values:tariffVals}],unit:'đ/kWh',digits:0,height:250,rotateLabels:false,zeroBase:false});
