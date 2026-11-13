@@ -1,5 +1,5 @@
-Routine Wi 13/11/2026: KHÔNG cập nhật được dữ liệu nào.
-WiMCP gọi được nhưng hook wi_capture không lưu kết quả vào data/raw/wi/.inbox/ (thư mục không tạo ra).
-Đã --fail 38 mục hàng chờ B với lý do "hook không lưu kết quả Wi"; không sửa dữ liệu/trang.
-Cần kiểm tra .claude/settings.json hook (matcher WiMCP|Widata) trong môi trường routine.
+Routine tài liệu 13/11: xử lý 6/10 mục đầu hàng chờ, không có số mới để sửa trang.
+FDI (Cục ĐTNN) và hồ EVN: runner VN đã cập nhật đến 11/11.
+Dệt may (thuế quan, chủ đề nóng), cảng (dự án), nông nghiệp (chính sách): nguồn mở được nhưng chưa có mốc mới; vietnamtextile.org.vn trả 503.
+Chưa xử lý: xây dựng-chủ đề nóng, dược-chủ đề nóng, BCTC điện (người dùng làm thủ công), mục 11 trở đi.
 Chưa kiểm giao diện bằng trình duyệt.

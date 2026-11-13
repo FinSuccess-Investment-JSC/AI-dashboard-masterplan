@@ -234,9 +234,9 @@
    "lastNote": "Q3/2026 BXD: 92.004 giao dịch (=92% Q2), tồn kho 51.950"
   },
   "power.evn-reservoirs": {
-   "lastAttempt": "2026-10-28T18:13:36+07:00",
-   "lastSuccess": "2026-10-28T18:13:36+07:00",
-   "lastNote": "bù 20–28/10/2026, 27 hồ/ngày"
+   "lastAttempt": "2026-11-13T13:02:36+07:00",
+   "lastSuccess": "2026-11-13T13:02:36+07:00",
+   "lastNote": "Runner VN đã chụp hồ EVN 00h đến 11/11/2026 (data/raw/evn-reservoirs/2026-11-11.json). Không sửa trang."
   },
   "power.market-fmp": {
    "lastAttempt": "2026-10-28T18:13:36+07:00",
@@ -244,9 +244,9 @@
    "lastNote": "FMP T9/2026 1.555 đ/kWh (PGV bản tin 16/10); 9T bình quân 1.450"
   },
   "realestate.fdi-projects": {
-   "lastAttempt": "2026-10-28T21:31:36+07:00",
-   "lastSuccess": "2026-10-28T21:31:36+07:00",
-   "lastNote": "FDI 9T BĐS 6,94 tỷ USD (16,0%); không có dự án ≥100 triệu USD mới mở được"
+   "lastAttempt": "2026-11-13T13:02:36+07:00",
+   "lastSuccess": "2026-11-13T13:02:36+07:00",
+   "lastNote": "Nguồn FIA chặn IP cloud; runner máy người dùng đã cập nhật Cục ĐTNN ngày 11/11/2026 (commit b941e3e). Không sửa trang."
   },
   "textile.wi.daily": {
    "lastAttempt": "2026-11-13T09:11:20+07:00",
@@ -265,9 +265,9 @@
    "stuck": true
   },
   "textile.trade-tariff": {
-   "lastAttempt": "2026-10-28T18:13:37+07:00",
-   "lastSuccess": "2026-10-28T18:13:37+07:00",
-   "lastNote": "OTEXA 8T/2026: tổng 49,08 tỷ USD −7,42%, VN −0,76%"
+   "lastAttempt": "2026-11-13T13:02:36+07:00",
+   "lastSuccess": "2026-11-13T13:02:36+07:00",
+   "lastNote": "Mở trungtamwto.vn 30/09/2026 (VITAS: 8T ~32 tỷ USD +3%, không có mức thuế mới); trang đã có 9T VITAS và Mục 301 12,5% từ 24/7. Chưa thấy văn bản thuế mới; không sửa."
   },
   "textile.orders-brands": {
    "lastAttempt": "2026-11-06T13:02:42+07:00",
@@ -280,9 +280,9 @@
    "lastNote": "Đã mở vanban.chinhphu.vn (trang 1 danh sách, mới nhất 118/2026/VBHN-TT-NHNN ngày 30/10/2026): không có văn bản mới về chủ đề này; chỉ quét trang 1. Không sửa trang."
   },
   "textile.hot-topics": {
-   "lastAttempt": "2026-10-26T08:59:04+07:00",
-   "lastSuccess": "2026-10-26T08:59:04+07:00",
-   "lastNote": "Chỉ cập nhật dm-t2: VITAS 9T/2026 XK 35,72 tỷ USD +3,3% (VCCI 16/10/2026) và thêm dòng mốc. Các thẻ dm-t1,t3-t7 chưa rà lại. Thẻ khác còn mục tiêu 49-49,5 tỷ, VCCI ghi ~48 tỷ"
+   "lastAttempt": "2026-11-13T13:02:36+07:00",
+   "lastSuccess": "2026-11-13T13:02:36+07:00",
+   "lastNote": "Mở trungtamwto.vn 30/09/2026; vietnamtextile.org.vn trả 503. Chưa thấy mốc mới hơn số 9T/2026 (VCCI 16/10) đã có trên trang; không sửa."
   },
   "textile.ai.cycle": {
    "lastAttempt": "2026-10-28T18:13:37+07:00",
@@ -318,9 +318,9 @@
    "lastNote": "Đã mở vanban.chinhphu.vn (trang 1 danh sách, mới nhất 118/2026/VBHN-TT-NHNN ngày 30/10/2026): không có văn bản mới về chủ đề này; chỉ quét trang 1. Không sửa trang."
   },
   "port.projects": {
-   "lastAttempt": "2026-10-28T21:31:35+07:00",
-   "lastSuccess": "2026-10-28T21:31:35+07:00",
-   "lastNote": "không mới: gemadept.com.vn tin 20/08; Cần Giờ chưa khởi công (cafef 26/10)"
+   "lastAttempt": "2026-11-13T13:02:36+07:00",
+   "lastSuccess": "2026-11-13T13:02:36+07:00",
+   "lastNote": "Mở gemadept.com.vn: tin mới nhất 20/08/2026, không có tiến độ/công suất mới cho Gemalink/Nam Đình Vũ; không sửa."
   },
   "port.hot-topics": {
    "lastAttempt": "2026-11-11T13:02:29+07:00",
@@ -341,9 +341,9 @@
    "stuck": true
   },
   "agri.policy": {
-   "lastAttempt": "2026-10-28T18:13:37+07:00",
-   "lastSuccess": "2026-10-28T18:13:37+07:00",
-   "lastNote": "Philippines không dừng nhập gạo cuối 2026; EUDR 30/12/2026 không đổi"
+   "lastAttempt": "2026-11-13T13:02:36+07:00",
+   "lastSuccess": "2026-11-13T13:02:36+07:00",
+   "lastNote": "Mở vanban.chinhphu.vn (trang 1, 04-12/11/2026): TT 51/2026/TT-BNNMT, NĐ 402/2026/NĐ-CP về an toàn đập hồ không phải chính sách nông sản; không sửa."
   },
   "agri.weather": {
    "lastAttempt": "2026-10-26T08:59:04+07:00",
@@ -6072,23 +6072,6 @@
    ]
   },
   {
-   "id": "realestate.fdi-projects",
-   "tier": "C",
-   "title": "Dự án FDI lớn liên quan BĐS (KCN, nhà ở, văn phòng, nghỉ dưỡng, logistics–data center)",
-   "since": "2026-11-01T13:43:51+07:00",
-   "reasons": [
-    "lịch 01/11 07:00",
-    "lịch 02/11 07:00",
-    "lịch 03/11 07:00",
-    "lịch 04/11 07:00",
-    "lịch 05/11 07:00",
-    "lịch 06/11 07:00",
-    "lịch 07/11 07:00",
-    "lịch 08/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "insurance.wi.quarterly",
    "tier": "B",
    "title": "Wi: phí, bồi thường, lãi tài chính tổng hợp ngành bảo hiểm niêm yết",
@@ -6119,64 +6102,9 @@
    "signals": []
   },
   {
-   "id": "power.evn-reservoirs",
-   "tier": "C",
-   "title": "Hồ thủy điện EVN · ảnh chụp 00h, trung bình tháng",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00",
-    "lịch 09/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "realestate.hot-topics",
    "tier": "C",
    "title": "Chủ đề nóng: dự án tồn đọng, giá nhà, bảng giá đất, NOXH, KCN & thuế quan, tái cấu trúc nợ; dự án theo dõi",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00",
-    "lịch 09/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "textile.trade-tariff",
-   "tier": "C",
-   "title": "Thuế Mỹ (Mục 301, danh sách miễn trừ, hạn ngạch đối thủ), FTA, xuất xứ; nhập khẩu may mặc Mỹ (OTEXA); VITAS theo thị trường",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00",
-    "lịch 09/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "textile.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng dệt may: thuế Mỹ, dịch chuyển đơn, phòng vệ sợi, bông, lao động, EU xanh, Bangladesh",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00",
-    "lịch 09/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.projects",
-   "tier": "C",
-   "title": "Dự án cảng mới: Lạch Huyện, Nam Đình Vũ, Gemalink, Cái Mép Hạ, Cần Giờ, Liên Chiểu, Long Thành",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00",
-    "lịch 09/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "agri.policy",
-   "tier": "C",
-   "title": "Gạo (Philippines, Indonesia, Ấn Độ), EUDR, thuế Mỹ cà phê, thuế MFN thức ăn, TTĐB, GTGT, ASF",
    "since": "2026-11-02T13:43:48+07:00",
    "reasons": [
     "lịch 02/11 07:00",
@@ -7200,5 +7128,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-13T09:11:21+07:00"
+ "updatedAt": "2026-11-13T13:02:36+07:00"
 }
