@@ -1,6 +1,5 @@
-Routine tài liệu 12/11: xử lý 2/10 mục, không đổi số trên trang.
-Bảo hiểm (chủ đề nóng): số 9T/2026 trên trang khớp bài Báo Đầu tư 28/10; chưa có số 10T.
-Bán lẻ (chủ đề nóng): trang đã có số thực Q3 PNJ; bài dự phóng MBS không thay số.
-Hàng chờ còn 56 mục (chưa đủ thời gian đọc nguồn gốc cho các mục còn lại).
-Hồ EVN, Cục ĐTNN để runner máy người dùng xử lý.
+Routine Wi 13/11/2026: KHÔNG cập nhật được dữ liệu nào.
+WiMCP gọi được nhưng hook wi_capture không lưu kết quả vào data/raw/wi/.inbox/ (thư mục không tạo ra).
+Đã --fail 38 mục hàng chờ B với lý do "hook không lưu kết quả Wi"; không sửa dữ liệu/trang.
+Cần kiểm tra .claude/settings.json hook (matcher WiMCP|Widata) trong môi trường routine.
 Chưa kiểm giao diện bằng trình duyệt.
