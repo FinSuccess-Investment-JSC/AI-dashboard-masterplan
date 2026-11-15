@@ -1,12 +1,13 @@
-# Lịch cập nhật — 15/11/2026 14:06
+# Lịch cập nhật — 15/11/2026 22:58
 
+- 🆕 pvn.news: 1 mục mới — Thái Lan lần đầu bán LNG ra thị trường quốc tế — https://nangluongquocte.petrotimes.vn/thai-lan-lan-dau-ban-lng-ra-thi-truong-quoc-te-748009.html
 - ⚠️ watcher fr.vn-seafood: không thấy mục nào trên trang
-- 🆕 news.public-investment: 6 mục mới — Chặng nước rút giải ngân vốn đầu tư công - theleader.vn — https://news.google.com/rss/articles/CBMifkFVX3lxTFAwTGpaZnlZN3kyNnFWd0htTWhtNGNud3dvdXVVSWc3STl1UW5HcnN0RFVmNFRKV0d3NC1uUGV1djQ2enNpaDA0b0s3TVhaamN0Vzc5S2NzdGpfQ3NBRGwwaGZ6OURoclJTY0pHdDdjRXJzdWxGVW5TNHdnRnRJQQ?oc=5; Cà Mau gỡ khó đẩy nhanh giải ngân vốn khoa học, công nghệ - Báo Nhân Dân điện tử — https://news.google.com/rss/articles/CBMilwFBVV95cUxQbXhnZkE0Z2xIbUNjam52ZXFvcEpzR1VFVTRtRGhkcDJrbzd4UmFfRXJZdTc5NlF2WE9TeXloX3o3VXZxT283VzNfSUJDSzlhT3ppS2dRc3lQUUlvMEdOWDRTdnU4c1Y5MFRvZWZZM3ZhRHNCc3g0OXNudHo5dXBpZWlQOXdKSmZybUd4Q2piekVzeHc0Yndn?oc=5; Hà Nội tăng tốc giải ngân vốn đầu tư công - Báo Hànộimới — https://news.google.com/rss/articles/CBMif0FVX3lxTE9DUlRrcEwweXBWX1VMN0NmdHpSR043SGpyMzZOSVRpem1JTkhYNDZtajZtaDdINDZBOURHeHhJYWdwc093ZjNBblZPaFVjMG5yWTZkaUcwZ1MtLWF3SHNxVnNMQ2kycm5LcXpXMGNFQ0hJbUJjV1dBQzFaN3AxUzQ?oc=5
-- 🆕 news.insurance: 1 mục mới — Bất chấp đại dịch, doanh thu phí bảo hiểm khai thác mới dự báo tăng 30% - VnEconomy — https://news.google.com/rss/articles/CBMimgFBVV95cUxOWDI0Q3FpSFdYUHFQUmNncF85c3N3OEJRTU9iSFpkVm9qZDF6UG9ibDVhaHVjQUpFYmZyNVB4TDZDNWM5SHlURmlkcnVvci01Y0lJUGh5aG9jVXJNLURQSUJKYnphR3Q1Y1ZWcWx4N09PaG0yUG1Wdjg1YW9OQUotUTVwcmFNRktuZUpPcFowNW1YeWR6UFlPc1pB?oc=5
-- 🆕 news.pharma: 3 mục mới — Cục Quản lý Dược thu hồi 463 số tiếp nhận Phiếu công bố mỹ phẩm của Công ty Logitem Việt Nam - Hangthat.vn — https://news.google.com/rss/articles/CBMi4gFBVV95cUxPTUpudmJCa1h1VDV5VUNIS2c2X2pJWHR5akZveklCS3FYQjNnTFJ5cE8zVk83UnhFcjBXSVF4bEtrd1ZkeE9pTGgyWldYWTFTSGRFamptS1dNdnBYNk9hU1dqTXFIcGxkb1RuZ3gtSHNkX0dCMjFoT2s5RlpoMGtib3JyRnFETk45cUhkcFZUUHQzWnVHQlp1UHhNUnFHbHNTcy1NREs5WlJVTFkzcHB2djJ3LTVJMkt5RTBEOUQ5N2lEUWotSThFRGNsbTZVNDI5YjFMLXdheEU0ekNDQkFhcTJR?oc=5; Khóm 2 phường Long Châu tổ chức Ngày hội Đại đoàn kết toàn dân tộc và các hoạt động hưởng ứng Ngày Văn hóa Việt Nam - Vietnam.vn — https://news.google.com/rss/articles/CBMi1AFBVV95cUxNemNSTzJjY3I4NmRvT3VlNk9tZmtVLUVZb3BJYnpOYVlNNW8zUWFNU05XTnBPRTVwQlVRaWhvQ3RyS3B1WlFLWmFneWdfaGxuQ2NuRW5mbjRkLTloaTZjdURkQ0dyblBCNjMzYzhZbC0tVzNTR2RoUkNzM1Q3d0cxUmk2akdZNC1xSjhkSlBoUUE0QVQ4eXd6cHFOeWw5NXNrQ1gzVGZ4cEJUVGZaY01OTThYUlh2cDBSZ2ItWV9nSEtnVmR3OXV4U09OUXp2LVB5ejR3Wg?oc=5; Khóm 2 phường Long Châu tổ chức Ngày hội Đại đoàn kết toàn dân tộc và các hoạt động hưởng ứng Ngày Văn hóa Việt Nam - شبكة تواصل الإخبارية — https://news.google.com/rss/articles/CBMiU0FVX3lxTE1WMXdRMjRHSGpIQ0d6RUtFUEh2bnZvTkFSVWdDaU1ENkdheklBWC1zLUdVYndic2RPVm9FX1ppdzQ1ejFDYzVudjlzY2JHNVdBX2p3?oc=5
+- 🆕 news.public-investment: 5 mục mới — Cà Mau phê bình nghiêm khắc nhiều chủ đầu tư giải ngân đầu tư công đạt thấp - Báo Nhân Dân điện tử — https://news.google.com/rss/articles/CBMisAFBVV95cUxQTEVWWGEtVjlQSkVpazlBTy04aUw4QnBhOTJ4dV9sb1NjNWV5VGV2ZUJfajBpYnJrem5ZZ1R3SVVLM3JfRl9PLWkybXNkYjNfSlBOSTJ3cWk1dnNleGl2VmMyTE44djBtaWI4NG9BcWQ2am52REg0UFZnOFBfZGxSdjhhbFZMYlU4Rld0S215V3dvQkE5cWZlQmNDZG9qQ3JUM0RtN2lESDJ4RHdndUJQUQ?oc=5; Hà Nội tăng tốc giải ngân vốn đầu tư công - CafeF — https://news.google.com/rss/articles/CBMiiAFBVV95cUxOaW0zOUlXTUJnWlZzbVFKMGNNeDlTclJRUHZpZUlISnltSERHSmNTMmpGZXZOSXY3Y2RnSklocUZidVY3VlRSRlN6bWZfY0U0X1JwTWZnXzBsaFUtNnFXd1FfR1c3UHVPV1kxNm55bVNleGdBenhCWVdSbFBKcG5RakNFRGlBcXAz?oc=5; Cử tri quan tâm hiệu quả đầu tư khoa học, công nghệ và giải ngân vốn đầu tư công - Báo Tin tức và Dân tộc - TTXVN — https://news.google.com/rss/articles/CBMiuAFBVV95cUxNaWc0SlpkbHF3bnlNblpLajJNYm0xQzBEQ3d5RjhtejR0SW5WaEdUaE55WTJJTk5Kd0c3MXpSRDJjMUx5UGFpZFFxMXpwREdDc2lKalVtRUlXcUU0MGRNdjB4aXA4N1RpREdKS3ZybXBKbV9OWU1CTzFlMzR4MElxMG8tUXU5QjR1ZzBVUGdYcFNGRENXMWJLbkpVRm5uR2hZaDZqbzl6WUdfRGdMbkhLcGFBOV9Lak0z?oc=5
+- 🆕 news.pharma: 1 mục mới — Cục Quản lý Dược thu hồi 463 số tiếp nhận Phiếu công bố mỹ phẩm của Công ty Logitem Việt Nam - Thuonghieucongluan.com.vn — https://news.google.com/rss/articles/CBMi1gFBVV95cUxPd2t2V1kxSjVYNTlwM3lVMkZUbGxaUWVKY2tmTlh2dWRGM3Q3bGtMYjBEZkhxcXZPeU1DNUp6WG9WWHh2bTU0X3RtYnlrWWtOOXBYeW9yRnBlRTJDd3VZOWU3M1daemhTdTYyMUJHdS12MmJrb05NU0lVMzRjZk83REt6R2MzZ2ZwMWdWcVBSaTN2cHNza2FscGhSYkI2S0UzS01IYUhXaXFaOWxoTGlnMjJCT1ctZDNNVW9VZGVZLVgwRm9KOTBrSjFreGlPbXQ0YW1OZTF3?oc=5
 - ❌ oil.portwatch lỗi 1 ngày: hormuz, bab_el_mandeb
 - → hàng chờ [B] bank.wi.daily: lịch 13/11 07:00
 - → hàng chờ [B] bank.wi.monthly: lịch 09/11 07:00
+- → hàng chờ [C] oil.supply-news: watcher báo có công bố mới
 - → hàng chờ [C] bank.policy: lịch 07/11 07:00
 - → hàng chờ [D] oil.ai.cycle: đổi đáng kể: brent.value: 115.22 → 92.14
 - → hàng chờ [D] oil.ai.balance: đổi đáng kể: world_balance.balance@2026-12-31: -1.3 → -0.66; world_balance.balance@2027-12-31: 4.89 → 4.03
@@ -40,7 +41,6 @@
 - → hàng chờ [C] construction.policy: watcher báo có công bố mới
 - → hàng chờ [C] construction.hot-topics: lịch 09/11 07:00
 - → hàng chờ [C] insurance.market: lịch 15/11 07:00
-- → hàng chờ [C] insurance.policy: watcher báo có công bố mới
 - → hàng chờ [C] retail.market: lịch 15/11 07:00
 - → hàng chờ [C] power.company-quarterly: lịch 09/11 07:00
 - → hàng chờ [C] realestate.kcn-broker: lịch 15/11 07:00
@@ -89,8 +89,3 @@
 - → hàng chờ [B] seafood.wi.us-imports: lịch 20/10 07:00
 - → hàng chờ [C] steel.docs.hpg-volume: lần đầu: rà soát số đang hiển thị
 - Hàng chờ Claude: 90 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
-
-## Cảnh báo
-
-- ⚠️ Watcher fr.vn-seafood: trang không còn mục nào khớp, kiểm lại cấu hình
-- ❌ Nguồn tự động vẫn lỗi 1 ngày, web giữ số cũ — Lượt tàu qua Hormuz, Bab el-Mandeb (IMF PortWatch) (hormuz: PortWatch: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API ; bab_el_mandeb: PortWatch: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API )

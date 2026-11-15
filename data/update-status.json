@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-15T07:02:01.902305+00:00",
+  "run_at": "2026-11-15T15:50:01.434730+00:00",
   "errors": 0,
   "sources": {
     "wti": {
@@ -110,8 +110,8 @@
     "sugar_producers": {
       "status": "ok",
       "latest_observation": "2026-01-01",
-      "last_success_at": "2026-11-15T07:02:01.902305+00:00",
-      "last_checked_at": "2026-11-15T07:02:01.902305+00:00",
+      "last_success_at": "2026-11-15T15:50:01.434730+00:00",
+      "last_checked_at": "2026-11-15T15:50:01.434730+00:00",
       "error": null
     },
     "us_production": {
@@ -131,8 +131,8 @@
     "opec_capacity": {
       "status": "ok",
       "latest_observation": "2026-10-31",
-      "last_success_at": "2026-11-15T07:02:01.902305+00:00",
-      "last_checked_at": "2026-11-15T07:02:01.902305+00:00",
+      "last_success_at": "2026-11-15T15:50:01.434730+00:00",
+      "last_checked_at": "2026-11-15T15:50:01.434730+00:00",
       "error": null
     },
     "retail_fuel": {
@@ -152,15 +152,15 @@
     "world_balance": {
       "status": "ok",
       "latest_observation": "2027-12-31",
-      "last_success_at": "2026-11-15T07:02:01.902305+00:00",
-      "last_checked_at": "2026-11-15T07:02:01.902305+00:00",
+      "last_success_at": "2026-11-15T15:50:01.434730+00:00",
+      "last_checked_at": "2026-11-15T15:50:01.434730+00:00",
       "error": null
     },
     "sugar_vn_balance": {
       "status": "ok",
       "latest_observation": "2026-01-01",
-      "last_success_at": "2026-11-15T07:02:01.902305+00:00",
-      "last_checked_at": "2026-11-15T07:02:01.902305+00:00",
+      "last_success_at": "2026-11-15T15:50:01.434730+00:00",
+      "last_checked_at": "2026-11-15T15:50:01.434730+00:00",
       "error": null
     },
     "wb_energy_monthly": {
@@ -207,16 +207,16 @@
     },
     "vn_power_daily": {
       "status": "ok",
-      "latest_observation": "2026-11-12",
-      "last_success_at": "2026-11-15T07:02:01.902305+00:00",
-      "last_checked_at": "2026-11-15T07:02:01.902305+00:00",
+      "latest_observation": "2026-11-14",
+      "last_success_at": "2026-11-15T15:50:01.434730+00:00",
+      "last_checked_at": "2026-11-15T15:50:01.434730+00:00",
       "error": null
     },
     "sugar_world_shares": {
       "status": "ok",
       "latest_observation": "2026-01-01",
-      "last_success_at": "2026-11-15T07:02:01.902305+00:00",
-      "last_checked_at": "2026-11-15T07:02:01.902305+00:00",
+      "last_success_at": "2026-11-15T15:50:01.434730+00:00",
+      "last_checked_at": "2026-11-15T15:50:01.434730+00:00",
       "error": null
     }
   }
