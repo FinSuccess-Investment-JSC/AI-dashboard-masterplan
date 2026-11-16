@@ -2889,5 +2889,65 @@
   "quote": "Daily time charter equivalent (TCE) earnings fell to $27,892 from $29,486",
   "status": "match",
   "note": "Baird Maritime 05/11/2026."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD34 2026-10-30 (Baltic Exchange qua The Edge Malaysia)",
+  "value": "699257",
+  "url": "https://theedgemalaysia.com/node/824026",
+  "opened_at": "2026-11-16",
+  "quote": "TD34 (Gulf of Oman/China) rose more sharply, gaining 89 points to WS659.29, giving a round-trip TCE of US$699,257",
+  "status": "match",
+  "note": "The Edge Malaysia 'Baltic Exchange shipping updates', tuần kết thúc ngày ghi."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD34 2026-11-06 (Baltic Exchange qua The Edge Malaysia)",
+  "value": "619969",
+  "url": "https://theedgemalaysia.com/node/824924",
+  "opened_at": "2026-11-16",
+  "quote": "TD34 (Gulf of Oman/China) fell more sharply, losing almost 86 points to WS586.43, giving a round-trip TCE of US$619,969",
+  "status": "match",
+  "note": "The Edge Malaysia 'Baltic Exchange shipping updates', tuần kết thúc ngày ghi."
+ },
+ {
+  "block": "vt-71",
+  "claim": "TCE TC15 2026-10-30 (Baltic Exchange qua The Edge Malaysia)",
+  "value": "101800",
+  "url": "https://theedgemalaysia.com/node/824026",
+  "opened_at": "2026-11-16",
+  "quote": "The TC15 80kt Mediterranean/East index dropped by US$830,000 to US$11.12 million, with the Baltic round-trip TCE declining by US$12,600 to US$101,800/day",
+  "status": "match",
+  "note": "The Edge Malaysia 'Baltic Exchange shipping updates', tuần kết thúc ngày ghi."
+ },
+ {
+  "block": "vt-71",
+  "claim": "TCE TC15 2026-11-06 (Baltic Exchange qua The Edge Malaysia)",
+  "value": "79200",
+  "url": "https://theedgemalaysia.com/node/824924",
+  "opened_at": "2026-11-16",
+  "quote": "The TC15 80kt Mediterranean/East index shed US$1.7 million to finish at US$9.25 million, with the Baltic round-trip TCE falling by US$20,400 to US$79,200/day",
+  "status": "match",
+  "note": "The Edge Malaysia 'Baltic Exchange shipping updates', tuần kết thúc ngày ghi."
+ },
+ {
+  "block": "vt-72",
+  "claim": "MR 51k DWT newbuild/resale/5y/10y 2026-11-06 (Compass)",
+  "value": "53; 64; 53; 44",
+  "url": "https://compassmar.com/wp-content/uploads/2026/11/Compass-Weekly-Report-Nov-9-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "MR 51,000 53 64 53 44",
+  "status": "match",
+  "note": "Compass Maritime Weekly Report, bảng TANKER VALUES (US$ triệu), cột NEWBUILD RESALE 5 YEARS 10 YEARS."
+ },
+ {
+  "block": "vt-75",
+  "claim": "TC 12 tháng MR 47k / LR1 80k 2026-11-06 (Compass)",
+  "value": "39.500; 68.500",
+  "url": "https://compassmar.com/wp-content/uploads/2026/11/Compass-Weekly-Report-Nov-9-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "MR 47,000 39,500 38,750 | LR1 80,000 68,500 68,250",
+  "status": "match",
+  "note": "Compass Maritime Weekly Report, 12 MONTHS T/C RATES (USD/ngày), cột tuần này."
  }
 ]

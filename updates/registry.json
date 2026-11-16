@@ -3289,7 +3289,7 @@
   {
    "id": "shipping.public.daily_series",
    "tier": "A",
-   "title": "BDI theo phiên; giá cổ phiếu PVT, VTO, VOS, VIP; BCI/BPI/BSI/BHSI theo ngày (Handybulk); BDTI/BCTI tuần (Compass Maritime PDF); BDTI/BCTI/BDI/BCI/BPI/BSI theo ngày (East Money, nguồn chính BDTI/BCTI); Fearnleys tuần (PDF qua Hellenic Shipping News)",
+   "title": "BDI theo phiên; giá cổ phiếu PVT, VTO, VOS, VIP; BCI/BPI/BSI/BHSI theo ngày (Handybulk); BDTI/BCTI tuần (Compass Maritime PDF); BDTI/BCTI/BDI/BCI/BPI/BSI theo ngày (East Money, nguồn chính BDTI/BCTI); Fearnleys tuần (PDF qua Hellenic Shipping News); Compass MR (giá tàu, TC 12 tháng MR/LR1); Affinity TCE tự đọc",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -3318,7 +3318,8 @@
      "vt-70",
      "vt-71",
      "vt-72",
-     "vt-73"
+     "vt-73",
+     "vt-75"
     ]
    },
    "how": "python3 scripts/fetch_shipping_daily.py (chạy trong refresh-data.yml)",

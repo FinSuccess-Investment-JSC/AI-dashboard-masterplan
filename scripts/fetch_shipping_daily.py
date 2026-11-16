@@ -36,7 +36,7 @@ def compass_reports(store):
     A value is 'suspect' when it moves >50% in a week or the next report's 'last week' column disagrees."""
     import tempfile
     reps = store.setdefault('reports', {})
-    d, today = date(2026, 10, 5), date.today()
+    d, today = date(2026, 1, 5), date.today()  # 16/11/2026: lùi về 1/2026 cho chuỗi MR
     while d <= today:
         key = d.isoformat()
         if key not in reps:
@@ -52,15 +52,29 @@ def compass_reports(store):
                         if m:
                             row[k] = [int(x) for x in m.groups()]
                             row[k + '_line'] = re.sub(r'\s+', ' ', m.group(0).strip())
-                    if 'BDTI' in row:
+                    m = re.search(r'^\s*MR\s+51,000\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)', txt, re.M)
+                    if m and 'NEWBUILD RESALE 5 YEARS 10 YEARS' in re.sub(r'\s+', ' ', txt):
+                        row['MR_VAL'] = [int(x) for x in m.groups()]  # newbuild, resale, 5y, 10y (triệu USD)
+                        row['MR_VAL_line'] = re.sub(r'\s+', ' ', m.group(0).strip())
+                    for k, lab in (('MR_TC', r'MR\s+47,000'), ('LR1_TC', r'LR1\s+80,000')):
+                        m = re.search(r'^\s*' + lab + r'\s+([\d,]+)\s+([\d,]+)', txt, re.M)
+                        if m:  # 12 tháng T/C, USD/ngày: tuần này, tuần trước
+                            row[k] = [int(x.replace(',', '')) for x in m.groups()]
+                            row[k + '_line'] = re.sub(r'\s+', ' ', m.group(0).strip())
+                    if 'BDTI' in row or 'MR_VAL' in row:
                         reps[key] = row
         d += timedelta(days=7)
     keys = sorted(reps)
+    store['mr'] = [{'date': reps[k]['obs'], 'url': reps[k]['url'], 'newbuild': reps[k]['MR_VAL'][0], 'resale': reps[k]['MR_VAL'][1],
+                    'y5': reps[k]['MR_VAL'][2], 'y10': reps[k]['MR_VAL'][3], 'line': reps[k]['MR_VAL_line'],
+                    **({'tc_mr': reps[k]['MR_TC'][0], 'tc_mr_line': reps[k]['MR_TC_line']} if 'MR_TC' in reps[k] else {}),
+                    **({'tc_lr1': reps[k]['LR1_TC'][0], 'tc_lr1_line': reps[k]['LR1_TC_line']} if 'LR1_TC' in reps[k] else {})}
+                   for k in keys if 'MR_VAL' in reps[k]]
     for k in ('BDTI', 'BCTI'):
         recs = []
         for i, rk in enumerate(keys):
             r = reps[rk]
-            if k not in r:
+            if k not in r or r['obs'] < '2026-10-01':
                 continue
             cur, prev, _ = r[k]
             nxt = reps[keys[i + 1]].get(k) if i + 1 < len(keys) else None
@@ -186,6 +200,40 @@ def fearnleys_reports(store):
     return store
 
 
+AFFINITY = 'https://www.hellenicshippingnews.com/wp-content/uploads/{d:%Y/%m}/Affinity-Tanker-Weekly-{d:%d.%m.%Y}-HSN.pdf'
+
+
+def affinity_tce(tce):
+    """Baltic TCE theo tuyến từ Affinity Tanker Weekly (PDF thứ Sáu trên Hellenic Shipping News), USD/ngày.
+    Đọc các thứ Sáu chưa có trong tce.routes; dòng gốc lưu ở tce.quotes để làm evidence."""
+    import tempfile
+    routes = {r['code']: r for r in tce.get('routes', [])}
+    have = {d for r in routes.values() for d, _ in r['records']}
+    quotes = tce.setdefault('quotes', {})
+    d = date(2026, 10, 30)
+    while d <= date.today():
+        iso = d.isoformat()
+        if iso not in have:
+            url = AFFINITY.format(d=d)
+            with tempfile.TemporaryDirectory() as tmp:
+                pdf = Path(tmp) / 'a.pdf'
+                if subprocess.run(['curl', '-sfL', '-m', '60', '-A', 'Mozilla/5.0', '-o', str(pdf), url]).returncode == 0:
+                    txt = subprocess.run(['pdftotext', '-layout', str(pdf), '-'], capture_output=True, text=True).stdout
+                    got = 0
+                    for code, r in routes.items():
+                        m = re.search(r'\b' + code + r'\b +[A-Za-z /.]+? +[0-9]{2,3},000 +([0-9]{1,3}(?:,[0-9]{3})+)', txt)
+                        if m:
+                            r['records'] = sorted(dict(r['records'] + [[iso, int(m.group(1).replace(',', ''))]]).items())
+                            r['records'] = [list(x) for x in r['records']]
+                            quotes[f'{code} {iso}'] = {'url': url, 'line': re.sub(r' +', ' ', m.group(0))}
+                            got += 1
+                    if got:
+                        tce['url'] = url
+                        print('affinity', iso, got, 'tuyến')
+        d += timedelta(days=7)
+    return tce
+
+
 def get_text(url):
     return subprocess.run(['curl', '-sfL', '-m', '60', '-A', 'Mozilla/5.0 (Macintosh) AppleWebKit/537.36 Chrome/130 Safari/537.36',
                            url], check=True, capture_output=True, text=True).stdout
@@ -272,6 +320,11 @@ def main():
     except Exception as e:
         print('eastmoney', e)
     try:
+        if out.get('tce'):
+            out['tce'] = affinity_tce(out['tce'])
+    except Exception as e:
+        print('affinity', e)
+    try:
         out['fearnleys'] = fearnleys_reports(out.get('fearnleys', {'source': 'Fearnleys Weekly Report qua Hellenic Shipping News'}))
     except Exception as e:
         print('fearnleys', e)
@@ -299,6 +352,7 @@ def main():
     page = json.loads(json.dumps(out))  # the page does not need the quoted paragraphs (kept in the .json)
     for r in page.get('bdi_sub', {}).get('records', {}).values():
         r.pop('quote', None)
+    page.get('tce', {}).pop('quotes', None)
     fr = page.pop('fearnleys', {}).get('reports', {})  # TC/giá tàu ghép vào shipping-public-data.js; LPG giữ ở đây
     page['lpg'] = {'reports': [{'date': r['date'], 'url': r['url'], 'values': {k: v for k, v in r['values'].items() if k.startswith('lpg_')}}
                                for _, r in sorted(fr.items()) if any(k.startswith('lpg_') for k in r['values'])]}

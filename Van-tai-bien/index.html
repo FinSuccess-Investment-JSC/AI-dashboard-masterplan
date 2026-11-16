@@ -13,11 +13,11 @@
 <script src="../assets/sector-runtime.js?v=05b8df0a22cc" defer></script>
 <script src="../assets/sector-content.js?v=649051e35a0c" defer></script>
 <script src="../assets/sector-layout.js?v=6017726b6ba1" defer></script>
-<script src="../data/shipping-public-data.js?v=281ccff28233" defer></script>
+<script src="../data/shipping-public-data.js?v=4aa925f126d3" defer></script>
 <script src="../assets/sector-visuals.js?v=9bed10f3c811" defer></script>
-<script src="../data/shipping-daily-public-data.js?v=519f402273a4" defer></script>
+<script src="../data/shipping-daily-public-data.js?v=202ca60fda33" defer></script>
 <script src="../assets/shipping-dashboard.js?v=a264cb990459" defer></script>
-<script src="../assets/shipping-daily.js?v=b0491218a432" defer></script>
+<script src="../assets/shipping-daily.js?v=fee7a8baeb9f" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="../assets/chart-arrange.js?v=3ca9033119b7" defer></script>
@@ -39,7 +39,7 @@
 <script src="../assets/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=0aa68a6982f7">
 <script src="../assets/source-gap.js?v=02afdd3cfa3d" defer></script>
-<script src="../assets/site-navigation.js?v=fd23a387e725" data-release="20261116T035633Z-shipping"></script>
+<script src="../assets/site-navigation.js?v=fd23a387e725" data-release="20261116T041946Z-shipping"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="../assets/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="../assets/sector-base.css?v=ba33835e530c">
@@ -194,12 +194,19 @@
         <div id="chLpg"></div>
       </div>
     </div>
-    <div class="card" style="margin-top:14px" data-block-id="vt-74" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-      <div class="chart-title">Tàu hóa chất</div>
-      <div class="chart-sub">TCE bình quân quý của Odfjell (hãng tàu hóa chất lớn) · USD/ngày</div>
-      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Quý</th><th>TCE Odfjell</th></tr></thead><tbody><tr><td>Q2/2026</td><td>29.486</td></tr><tr><td>Q3/2026</td><td><b>27.892</b></td></tr></tbody></table></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Chưa có chỉ số tuần công khai cho tàu hóa chất (Drewry, McQuilling thu phí); Fearnleys, Affinity, Baltic không có mục hóa chất trong bản mở. Số Odfjell là kết quả một doanh nghiệp, không phải chỉ số thị trường. GSP chạy 2 tàu hóa chất nhỏ, chưa công bố TCE.</div></details>
-      <div class="source-note">Nguồn: <a href="https://www.bairdmaritime.com/shipping/tankers/odfjell-third-quarter-profit-falls" target="_blank" rel="noopener">Baird Maritime 05/11/2026 (KQKD Odfjell Q3/2026)</a></div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="vt-75" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="loaded">
+        <div class="chart-title">Thuê định hạn 12 tháng tàu MR và LR1</div>
+        <div class="chart-sub">nghìn USD/ngày · Compass Maritime, tuần</div>
+        <div id="chMrTc"></div>
+      </div>
+      <div class="card" data-block-id="vt-74" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Tàu hóa chất</div>
+        <div class="chart-sub">TCE bình quân quý của Odfjell (hãng tàu hóa chất lớn) · USD/ngày</div>
+        <div class="tablewrap"><table class="compare-table"><thead><tr><th>Quý</th><th>TCE Odfjell</th></tr></thead><tbody><tr><td>Q2/2026</td><td>29.486</td></tr><tr><td>Q3/2026</td><td><b>27.892</b></td></tr></tbody></table></div>
+        <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Chưa có chỉ số tuần công khai cho tàu hóa chất (Drewry, McQuilling thu phí); Fearnleys, Affinity, Baltic không có mục hóa chất trong bản mở. Số Odfjell là kết quả một doanh nghiệp, không phải chỉ số thị trường. GSP chạy 2 tàu hóa chất nhỏ, chưa công bố TCE.</div></details>
+        <div class="source-note">Nguồn: <a href="https://www.bairdmaritime.com/shipping/tankers/odfjell-third-quarter-profit-falls" target="_blank" rel="noopener">Baird Maritime 05/11/2026 (KQKD Odfjell Q3/2026)</a></div>
+      </div>
     </div>
     <h3 class="subhead">Hàng rời</h3>
     <div class="card" data-block-id="vt-65" data-update-kind="periodic" data-cadence="daily" data-refresh-status="loaded" style="margin-bottom:14px">

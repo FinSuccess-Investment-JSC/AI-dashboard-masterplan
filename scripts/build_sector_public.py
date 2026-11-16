@@ -516,6 +516,7 @@ def fearnleys_pdf(blocks):
                 recs.pop()
             recs.append({'date': r['date'], 'value': v, 'via': 'fearnleys_pdf'})
             s['pdf_url'] = r['url']
+            s['latest_observation'] = r['date']
             last_url = r['url']
     if last_url:
         blocks['fearnleys']['pdf_url'] = last_url

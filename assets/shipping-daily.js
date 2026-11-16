@@ -62,11 +62,16 @@ const bc=(D.eastmoney?.series?.bcti?.records||[]).filter(r=>r[0]>='2026-05-01');
 if(bc.length&&$('chBctiDaily')){dayChart('chBctiDaily',bc.map(r=>r[0]),[{name:'BCTI',color:C.teal,kind:'line',values:bc.map(r=>r[1])}],'điểm',0,260);
  src($('chBctiDaily'),[['East Money · BCTI',D.eastmoney.series.bcti.url]],dmy(bc.at(-1)[0]))}
 const FE=window.SHIPPING_PUBLIC?.blocks?.fearnleys;
-if(FE&&$('chMrPrice')&&window.barLineChart){const ks=[['sh5_mr','MR 5 tuổi',C.navy],['sh10_mr','MR 10 tuổi',C.teal],['nb_product_tanker','Đóng mới product tanker',C.gold]].filter(([k])=>FE.series[k]);
- const months=[...new Set(ks.flatMap(([k])=>FE.series[k].records.map(r=>r.date.slice(0,7))))].sort();
+const CM=D.compass?.mr||[];
+if(FE&&$('chMrPrice')&&window.barLineChart){const ks=[['sh5_mr','MR 5 tuổi (Fearnleys)',C.navy],['sh10_mr','MR 10 tuổi (Fearnleys)',C.teal],['nb_product_tanker','Đóng mới product tanker (Fearnleys)',C.gold]].filter(([k])=>FE.series[k]);
+ const cmM={};CM.forEach(r=>{cmM[r.date.slice(0,7)]=r});
+ const months=[...new Set([...ks.flatMap(([k])=>FE.series[k].records.map(r=>r.date.slice(0,7))),...Object.keys(cmM)])].sort().filter(m=>m>='2024-01');
  const val=(k,m)=>{const r=FE.series[k].records.filter(x=>x.date.slice(0,7)===m).at(-1);return r?r.value:null};
- barLineChart('chMrPrice',{categories:months.map(m=>'T'+(+m.slice(5))+'/'+m.slice(2,4)),series:ks.map(([k,n,c])=>({name:n,color:c,kind:'line',values:months.map(m=>val(k,m))})),unit:'triệu USD',digits:1,height:260,zeroBase:false,rotateLabels:true});
- src($('chMrPrice'),[['Fearnleys qua WiData (bảng 362)','https://widata.vn/'],...(FE.pdf_url?[['Fearnleys Weekly Report (PDF)',FE.pdf_url]]:[])],dmy(FE.series.nb_product_tanker.records.at(-1).date),'Bản PDF Fearnleys không có giá tàu cũ MR nên hai đường MR dừng 23/10/2026 (số Wi); giá đóng mới product tanker nối bằng PDF.')}
+ barLineChart('chMrPrice',{categories:months.map(m=>'T'+(+m.slice(5))+'/'+m.slice(2,4)),series:[...ks.map(([k,n,c])=>({name:n,color:c,kind:'line',values:months.map(m=>val(k,m))})),{name:'MR 5 tuổi (Compass)',color:C.plum,kind:'line',values:months.map(m=>cmM[m]?.y5??null)},{name:'MR 10 tuổi (Compass)',color:'#d1783f',kind:'line',values:months.map(m=>cmM[m]?.y10??null)}],unit:'triệu USD',digits:1,height:260,zeroBase:false,rotateLabels:true});
+ src($('chMrPrice'),[['Fearnleys qua WiData (bảng 362)','https://widata.vn/'],...(FE.pdf_url?[['Fearnleys Weekly Report (PDF)',FE.pdf_url]]:[])],dmy(FE.series.nb_product_tanker.records.at(-1).date),'Bản PDF Fearnleys không có giá tàu cũ MR nên hai đường MR Fearnleys dừng 23/10/2026 (số Wi). Compass Maritime (MR 51.000 DWT, từ 1/2026) định giá cao hơn Fearnleys 1–3 triệu USD nên vẽ đường riêng, không nối.')
+ if(CM.length){const n=$('chMrPrice').parentElement.querySelector('.source-note');if(n){n.append(' · ');const a=el('a','','Compass Maritime Weekly (PDF)');a.href=CM.at(-1).url;a.target='_blank';a.rel='noopener';n.append(a)}}}
+if(CM.length&&$('chMrTc')){const rs=CM.filter(r=>r.tc_mr);dayChart('chMrTc',rs.map(r=>r.date),[{name:'MR 47k DWT',color:C.navy,kind:'line',values:rs.map(r=>r.tc_mr/1000)},{name:'LR1 80k DWT',color:C.teal,kind:'line',values:rs.map(r=>r.tc_lr1?r.tc_lr1/1000:null)}],'nghìn USD/ngày',1,260);
+ src($('chMrTc'),[['Compass Maritime Weekly (PDF)',rs.at(-1).url]],dmy(rs.at(-1).date),'Giá thuê định hạn 12 tháng Compass ước tính mỗi thứ Hai, ngày ghi = thứ Sáu trước đó. Mức VTO, VIP ký thực tế (~27 nghìn MR theo ACBS 8/2026) thấp hơn vì ký từ trước. Một số tuần (chủ yếu 4–7/2026) không tải được bản PDF nên trục ngày không liên tục.')}
 const LP=D.lpg;
 if(LP&&LP.reports?.length&&$('chLpg')&&window.barLineChart){const rs=LP.reports,ks=[['lpg_vlgc','VLGC 84k cbm',C.navy],['lpg_mgc','MGC 38k cbm',C.teal],['lpg_sr65','Định áp 6,5k cbm',C.gold],['lpg_coaster','Coaster 3,5–5k cbm (châu Âu)',C.plum]];
  if(window.ChartTypes)ChartTypes.mount($('chLpg'),{categories:rs.map(r=>dmy(r.date)),tickLabels:rs.map(r=>dm(r.date)),series:ks.map(([k,n,c])=>({name:n,color:c,kind:'bar',values:rs.map(r=>r.values[k]??null)})),unit:'nghìn USD/tháng',digits:0,zeroBase:true,height:260,flatTicks:true,native:'bar'});
