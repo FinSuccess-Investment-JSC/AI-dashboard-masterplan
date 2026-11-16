@@ -72,6 +72,12 @@ to these sector dashboards unless a matching feature is added deliberately.
 - Thẻ không chứa chart trong lưới 2 cột (vd. thẻ chỉ có `details`) chiếm cả hàng, không đứng cạnh chart làm khung rỗng bị kéo dãn.
 - Khối `[data-update-kind]` không còn nền/viền trên theo màu loại dữ liệu; loại dữ liệu chỉ hiển thị bằng badge nhỏ trên khối và chú giải ở Sources. Quy tắc ở cuối `assets/fin-success-theme.css`.
 
+## Tối đa 2 chart mỗi hàng (người dùng chốt 16/11/2026)
+
+- Mỗi hàng tối đa **2 chart**; không nhồi 3–4 chart nhỏ vào một hàng (nhìn "nhỏ xíu"). Nhóm chỉ số con (vd BCI/BPI/BSI/BHSI) xếp lưới 2 cột, chart đủ cao (~280px).
+- Chart theo phiên (ngày): nhãn kỳ đủ ngày `dd/mm/yyyy` để bộ chọn hiện chu kỳ **Phiên** (không phải "Tháng"); trục x ngang, thưa (`flatTicks: true` trong `ChartTypes.mount`, nhãn `tickLabels` dạng `dd/mm`).
+- Chart nằm trong sub-tab ẩn lúc dựng phải vẽ lại theo chiều rộng thật khi hiện (ResizeObserver); không để vùng vẽ chỉ chiếm nửa thẻ.
+
 ## Đồng bộ với Stock dashboard (10/10/2026)
 
 Người dùng yêu cầu font, cỡ chữ và cách trình bày giống Stock dashboard, áp cho mọi dashboard ngành và trang tổng. CSS ở cuối `assets/fin-success-theme.css`, logo bar chèn bởi `assets/site-navigation.js` (`assets/fin-success-logo.png`, lấy từ `_template` của Stock dashboard).

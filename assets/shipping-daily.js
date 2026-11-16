@@ -25,7 +25,7 @@ const sub=D.bdi_sub;
 if(sub&&window.barLineChart){
  const rs=Object.entries(sub.records).filter(([d])=>d>='2026-09-01');
  [['a','BCI','#d1783f'],['b','BPI',C.teal],['c','BSI',C.gold],['d','BHSI',C.plum]].forEach(([k,f,c])=>{const id='chBdiSub'+k;if(!$(id)||!rs.length)return;
-  dayChart(id,rs.map(([d])=>d),[{name:f,color:c,kind:'line',values:rs.map(([,r])=>r[f])}],'điểm',0,200);
+  dayChart(id,rs.map(([d])=>d),[{name:f,color:c,kind:'line',values:rs.map(([,r])=>r[f])}],'điểm',0,280);
   src($(id),[[sub.source,sub.url]],dmy(rs.at(-1)[0]),f==='BCI'&&sub.bdi_mismatch?.length?'Handybulk chép lại bản tin Baltic Exchange theo ngày. '+sub.bdi_mismatch.length+' phiên có BDI lệch với CNBC (phần lớn cuối 2025), giữ nguyên số Handybulk.':null)});
 }
 
