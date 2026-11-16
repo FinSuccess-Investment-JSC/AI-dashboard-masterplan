@@ -74,7 +74,7 @@ to these sector dashboards unless a matching feature is added deliberately.
 
 ## Tối đa 2 chart mỗi hàng (người dùng chốt 16/11/2026)
 
-- Mỗi hàng tối đa **2 chart**; không nhồi 3–4 chart nhỏ vào một hàng (nhìn "nhỏ xíu"). Nhóm chỉ số con (vd BCI/BPI/BSI/BHSI) xếp lưới 2 cột, chart đủ cao (~280px).
+- Mỗi hàng tối đa **2 chart**; không nhồi 3–4 chart nhỏ vào một hàng (nhìn "nhỏ xíu"). Nhóm chỉ số con (vd BCI/BPI/BSI/BHSI) xếp lưới 2 cột, chart cao chuẩn 260 như mọi chart.
 - Chart theo phiên (ngày): nhãn kỳ đủ ngày `dd/mm/yyyy` để bộ chọn hiện chu kỳ **Phiên** (không phải "Tháng"); trục x ngang, thưa (`flatTicks: true` trong `ChartTypes.mount`, nhãn `tickLabels` dạng `dd/mm`).
 - Chart nằm trong sub-tab ẩn lúc dựng phải vẽ lại theo chiều rộng thật khi hiện (ResizeObserver); không để vùng vẽ chỉ chiếm nửa thẻ.
 

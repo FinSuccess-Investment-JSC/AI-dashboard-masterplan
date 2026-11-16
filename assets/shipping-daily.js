@@ -17,7 +17,7 @@ function table(id,head,rows){const t=$(id);if(!t)return;t.innerHTML='<thead><tr>
 // 1. BDI theo phiên
 const bdi=(D.bdi?.records||[]).filter(r=>r[0]>='2026-05-01');
 if(bdi.length&&$('chBdiDaily')&&window.barLineChart){
- dayChart('chBdiDaily',bdi.map(r=>r[0]),[{name:'BDI',color:C.navy,kind:'line',values:bdi.map(r=>r[1])}],'điểm',0,280);
+ dayChart('chBdiDaily',bdi.map(r=>r[0]),[{name:'BDI',color:C.navy,kind:'line',values:bdi.map(r=>r[1])}],'điểm',0,260);
  table('tbl-bdi-daily',['Phiên','Điểm','So phiên trước'],bdi.slice().reverse().map((r,i,a)=>[dmy(r[0]),nf(r[1]),a[i+1]?sg((r[1]/a[i+1][1]-1)*100):'—']));
  src($('chBdiDaily'),[[D.bdi.source,D.bdi.url]],dmy(bdi.at(-1)[0]));
 }
@@ -25,7 +25,7 @@ const sub=D.bdi_sub;
 if(sub&&window.barLineChart){
  const rs=Object.entries(sub.records).filter(([d])=>d>='2026-09-01');
  [['a','BCI','#d1783f'],['b','BPI',C.teal],['c','BSI',C.gold],['d','BHSI',C.plum]].forEach(([k,f,c])=>{const id='chBdiSub'+k;if(!$(id)||!rs.length)return;
-  dayChart(id,rs.map(([d])=>d),[{name:f,color:c,kind:'line',values:rs.map(([,r])=>r[f])}],'điểm',0,280);
+  dayChart(id,rs.map(([d])=>d),[{name:f,color:c,kind:'line',values:rs.map(([,r])=>r[f])}],'điểm',0,260);
   src($(id),[[sub.source,sub.url]],dmy(rs.at(-1)[0]),f==='BCI'&&sub.bdi_mismatch?.length?'Handybulk chép lại bản tin Baltic Exchange theo ngày. '+sub.bdi_mismatch.length+' phiên có BDI lệch với CNBC (phần lớn cuối 2025), giữ nguyên số Handybulk.':null)});
 }
 
@@ -61,7 +61,7 @@ const st=D.stocks||{},tk=['PVT','VTO','VOS','VIP'].filter(t=>st[t]),col={PVT:C.n
 if(tk.length&&$('chShipStocks')&&window.barLineChart){
  const base={},m={};tk.forEach(t=>{const r=st[t].records;base[t]=r.find(x=>x[0]==='2025-12-31')[1];m[t]=Object.fromEntries(r)});
  const days=[...new Set(tk.flatMap(t=>st[t].records.map(x=>x[0])))].filter(d=>d>='2026-08-01').sort();
- dayChart('chShipStocks',days,tk.map(t=>({name:t,color:col[t],kind:'line',values:days.map(d=>m[t][d]!=null?(m[t][d]/base[t]-1)*100:null)})),'%',1,300);
+ dayChart('chShipStocks',days,tk.map(t=>({name:t,color:col[t],kind:'line',values:days.map(d=>m[t][d]!=null?(m[t][d]/base[t]-1)*100:null)})),'%',1,260);
  table('tbl-ship-stocks',['Mã','Giá (đồng)','1 tuần','Từ đầu năm'],tk.map(t=>{const r=st[t].records,l=r.at(-1),w=r.at(-6);const c=v=>`<span style="color:${v>=0?C.green:C.red}">${sg(v)}</span>`;return [`<a href="${st[t].url}" target="_blank" rel="noopener"><b>${t}</b></a>`,nf(l[1]*1000),w?c((l[1]/w[1]-1)*100):'—',c((l[1]/base[t]-1)*100)]}));
  const last=tk.map(t=>st[t].records.at(-1)[0]).sort().at(-1);
  src($('chShipStocks'),[[D.stocks_source.name,D.stocks_source.url]],dmy(last),'Giá đóng cửa điều chỉnh, so với phiên 31/12/2025. Một tuần = 5 phiên giao dịch.');
