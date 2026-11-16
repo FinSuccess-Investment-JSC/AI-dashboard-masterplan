@@ -534,6 +534,24 @@ def main():
             blocks.update(port_shipping_feeds(sector))
             if sector == 'shipping':  # SHFE fuel oil CNY/tấn → USD/tấn on the page
                 blocks.setdefault('commodity', {'series': {}, 'captured_at': now[:10]})['series'].update(cny_usd())
+                # 16/11/2026: BDTI/BCTI theo ngày từ East Money (scripts/fetch_shipping_daily.py) → phiên cuối mỗi tháng;
+                # là nguồn công khai nên đứng trước Wi (Wi chỉ lấp khi thiếu)
+                sd = ROOT / 'data/shipping-daily-public-data.json'
+                em = (json.loads(sd.read_text()).get('eastmoney') or {}).get('series') or {} if sd.exists() else {}
+                for k, name in (('bdti', 'Baltic Dirty Tanker Index'), ('bcti', 'Baltic Clean Tanker Index')):
+                    if em.get(k, {}).get('records'):
+                        last = {}
+                        for d, v in em[k]['records']:
+                            last[d[:7]] = {'date': d, 'value': v}
+                        blocks.setdefault('commodity', {'series': {}, 'captured_at': now[:10]})['series'][k] = {
+                            'name': name, 'unit': 'điểm', 'time_type': 'monthly', 'source': 'East Money (Baltic Exchange)',
+                            'url': em[k]['url'], 'latest_observation': em[k]['records'][-1][0],
+                            'records': list(last.values())}
+                ser = blocks['commodity']['series']  # thứ tự như cũ (sau BDI) để heatmap/ticker 12 dòng vẫn có BDTI, BCTI
+                order = [k for k in ser if k not in ('bdti', 'bcti')]
+                at = order.index('bdi') + 1 if 'bdi' in order else len(order)
+                order[at:at] = [k for k in ('bdti', 'bcti') if k in ser]
+                blocks['commodity']['series'] = {k: ser[k] for k in order}
         cb = ROOT / 'data/raw/public/cbonds-realestate.json'
         if sector == 'realestate' and cb.exists():
             c = json.loads(cb.read_text())

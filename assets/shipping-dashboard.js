@@ -63,14 +63,16 @@ if(chain){
 const section=document.querySelector('.majorpane[data-tab="mt2"] .section');
 if(section){
  const head=section.querySelector('.sectionhead');
- const children=[...section.children].filter(e=>e!==head),tank=make('div','supply-pane'),bulk=make('div','supply-pane'),box=make('div','supply-pane');
- tank.id='supply-world';bulk.id='supply-vietnam';box.id='supply-trade';
- let cur=tank;children.forEach(e=>{if(e.matches('h3.subhead')){const t=e.textContent.trim();cur=t.startsWith('Hàng rời')?bulk:t.startsWith('Container')?box:tank;e.remove();return}cur.append(e)});
+ const children=[...section.children].filter(e=>e!==head),ov=make('div','supply-pane'),tank=make('div','supply-pane'),bulk=make('div','supply-pane'),box=make('div','supply-pane');
+ ov.id='supply-overview';tank.id='supply-world';bulk.id='supply-vietnam';box.id='supply-trade';
+ let cur=tank;children.forEach(e=>{if(e.matches('h3.subhead')){const t=e.textContent.trim();cur=t.startsWith('Tổng quan')?ov:t.startsWith('Hàng rời')?bulk:t.startsWith('Container')?box:tank;e.remove();return}cur.append(e)});
  const tabs=make('div','supply-tabs');tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','Phân khúc');
- const panes=[tank,bulk,box],labels=['Tàu dầu & khí','Hàng rời','Container'];
+ const panes=[ov,tank,bulk,box],labels=['Tổng quan','Tàu dầu & khí','Hàng rời','Container'];
  function select(i){panes.forEach((p,j)=>{p.hidden=i!==j;const b=tabs.children[j];b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1})}
  labels.forEach((label,i)=>{const b=make('button','tabbtn',label);b.type='button';b.id='supply-tab-'+i;b.setAttribute('role','tab');b.setAttribute('aria-controls',panes[i].id);panes[i].setAttribute('role','tabpanel');panes[i].setAttribute('aria-labelledby',b.id);b.addEventListener('click',()=>select(i));b.addEventListener('keydown',e=>{const n=panes.length;let next;if(e.key==='ArrowRight')next=(i+1)%n;else if(e.key==='ArrowLeft')next=(i+n-1)%n;else if(e.key==='Home')next=0;else if(e.key==='End')next=n-1;if(next!==undefined){e.preventDefault();select(next);tabs.children[next].focus()}});tabs.append(b)});
  head.after(tabs,...panes);select(0);
+ // KPI và heatmap YoY do layout chung đặt ở đầu tab; chuyển vào sub-tab Tổng quan sau khi layout chạy xong
+ document.addEventListener('DOMContentLoaded',()=>{const m=section.closest('.majorpane');const k=m?.querySelector(':scope>.kpis'),h=m?.querySelector(':scope>.fsv-heat');if(h)ov.prepend(h);if(k)ov.prepend(k)});
 }
 
 // ---------- 3. Charts ----------
@@ -266,7 +268,8 @@ function ctBarS(id,model){const host=document.getElementById(id);if(!host)return
 const tL=bdti.at(-1),cL=bcti.at(-1),dL=bdi.at(-1),bL=brent.at(-1),sL=sea.at(-1),pe=sec['185']?.records||[],peL=pe.at(-1),pe0=pe[0];
 kpi('spk-bdti',tL?nf(tL.value,0):'—',tL?'điểm · '+short(tL.date):'—',tL?signed(yoyAt(bdti,tL),0)+'% so cùng kỳ':'',bdti.slice(-12).map(r=>r.value));
 kpi('spk-bcti',cL?nf(cL.value,0):'—',cL?'điểm · '+short(cL.date):'—',cL?signed(yoyAt(bcti,cL),0)+'% so cùng kỳ':'',bcti.slice(-12).map(r=>r.value),C.teal);
-[['spk-bdti',tL],['spk-bcti',cL]].forEach(([id,r])=>{const sub=document.getElementById(id)?.closest('.kpi')?.querySelector('.sub');if(sub&&r?.url){sub.textContent='';const a=document.createElement('a');a.href=r.url;a.target='_blank';a.rel='noopener';a.textContent=r.src==='em'?'East Money':'Compass Maritime (PDF)';sub.append(a)}});
+[['cat-bdti-x',tL,bdti],['cat-bcti-x',cL,bcti]].forEach(([id,r,rs])=>{const e=document.getElementById(id),y=yoyAt(rs,r);if(e&&y!=null)e.textContent='gấp '+nf(1+y/100,1)+' lần ('+short(r.date)+')'});
+[['spk-bdti',tL],['spk-bcti',cL]].forEach(([id,r])=>{const sub=document.getElementById(id)?.closest('.kpi')?.querySelector('.sub');if(sub&&r?.url){sub.textContent=short(r.date)+' · ';const a=document.createElement('a');a.href=r.url;a.target='_blank';a.rel='noopener';a.textContent=r.src==='em'?'East Money':'Compass Maritime (PDF)';sub.append(a)}});
 kpi('spk-bdi',dL?nf(dL.value,0):'—',dL?'điểm · '+short(dL.date):'—',dL?signed(yoyAt(bdi,dL),0)+'% so cùng kỳ':'',bdi.slice(-12).map(r=>r.value),C.gold);
 kpi('spk-hormuz',hzM.length?nf(hzM.at(-1).value,0):'—',hz.length?'lượt/ngày · '+short(hz.at(-1).date):'—',hzM.length?'2023: ~'+nf(mean(hz.filter(r=>r.date.startsWith('2023')).map(r=>r.total)),0)+' lượt/ngày':'',hzM.slice(-12).map(r=>r.value),C.red);
 kpi('spk-brent',bL?nf(bL.value,1):'—',bL?'USD/thùng · '+short(bL.date):'—',bL?signed(yoyAt(brent,bL),0)+'% so cùng kỳ':'',brent.slice(-12).map(r=>r.value),C.gold);
