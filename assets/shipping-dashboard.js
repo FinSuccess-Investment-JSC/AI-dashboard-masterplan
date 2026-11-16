@@ -138,6 +138,8 @@ const ex=S('exports'),im=S('imports');
 /* Grouped bars for supply vs demand growth (document figures, can be negative). */
 function groupBars(id,o){
   const host=document.getElementById(id);if(!host)return;
+  // 16/11/2026: vẽ bằng ChartTypes dùng chung (cùng font, legend, nhãn số, co theo thẻ); SVG cũ chỉ là dự phòng
+  if(window.ChartTypes){ctBarS(id,{categories:o.groups,series:o.series.map(s=>({name:s.name,color:s.color,kind:'bar',values:s.values.map(v=>Number.isFinite(v)?v:null)})),unit:'%',digits:1,zeroBase:true,labels:true,aria:o.ariaLabel});return}
   const W=640,H=260,padL=46,padR=12,padT=20,padB=34,plotW=W-padL-padR,plotH=H-padT-padB;
   const vals=o.series.flatMap(s=>s.values).filter(v=>Number.isFinite(v));
   const maxV=Math.max(0,...vals),minV=Math.min(0,...vals),span=(maxV-minV)||1;

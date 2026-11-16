@@ -677,3 +677,10 @@ html[data-theme="dark"] :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs) 
 
 /* 05/11/2026: bỏ ô diễn giải AI dưới chart */
 .chart-insight{display:none!important}
+
+/* 16/11/2026 — chart lấp đầy thẻ: thẻ cùng hàng cao bằng nhau (grid stretch), khung canvas Chart.js giãn hết phần còn trống
+   thay vì để khoảng trống chết dưới chart. Chiều cao tối thiểu giữ chuẩn 260px. Áp dụng mọi dashboard dùng chart-types.js. */
+.grid.two > .card.compact-chart-card { display: flex; flex-direction: column; }
+.grid.two > .card.compact-chart-card > [id]:has(> .ct-body) { flex: 1 1 auto; display: flex; flex-direction: column; }
+.grid.two > .card.compact-chart-card > [id] > .ct-body { flex: 1 1 auto; display: flex; flex-direction: column; }
+.grid.two > .card.compact-chart-card > [id] > .ct-body > .ct-canvas { flex: 1 1 260px; min-height: 260px; height: auto !important; }

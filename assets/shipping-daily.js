@@ -8,7 +8,7 @@ const sg=(v,d=1)=>v==null||isNaN(v)?'—':(v>0?'+':'')+nf(v,d)+'%';
 const dm=s=>s.slice(8,10)+'/'+s.slice(5,7);
 const dmy=s=>dm(s)+'/'+s.slice(0,4);
 function el(t,c,x){const n=document.createElement(t);if(c)n.className=c;if(x!=null)n.textContent=x;return n}
-function src(host,parts,period,note){const n=el('div','source-note');n.append('Nguồn: ');parts.forEach(([t,u],i)=>{if(i)n.append(' · ');const a=el('a','',t);a.href=u;a.target='_blank';a.rel='noopener';n.append(a)});n.append(' · Kỳ cuối: '+period);host.after(n);if(note){const d=el('details','note-icon');d.innerHTML='<summary>ⓘ Lưu ý dữ liệu</summary>';d.append(el('div','',note));n.after(d)}}
+function src(host,parts,period,note){const n=el('div','source-note');n.append('Nguồn: ');parts.forEach(([t,u],i)=>{if(i)n.append(' · ');const a=el('a','',t);a.href=u;a.target='_blank';a.rel='noopener';n.append(a)});n.append(' · Kỳ cuối: '+period);host.after(n);if(note){const ex=host.closest('.card')?.querySelector('details.note-icon>div');if(ex){ex.prepend(note+' ');return}const d=el('details','note-icon');d.innerHTML='<summary>ⓘ Lưu ý dữ liệu</summary>';d.append(el('div','',note));n.after(d)}}
 // Chart theo phiên: nhãn đủ ngày để bộ chọn nhận chu kỳ "Phiên", trục x hiện dd/mm ngang và thưa
 function dayChart(id,days,series,unit,digits,height){const host=$(id);if(!host)return;const m={categories:days.map(dmy),tickLabels:days.map(dm),series,unit,digits,zeroBase:false,height,flatTicks:true};
  if(window.ChartTypes)ChartTypes.mount(host,m,()=>barLineChart(id,{categories:days.map(dm),series,unit,digits,height,zeroBase:false}));else barLineChart(id,{categories:days.map(dm),series,unit,digits,height,zeroBase:false})}
@@ -34,14 +34,14 @@ const tce=D.tce;
 if(tce&&$('chTceRoutes')){
  const dates=[...new Set(tce.routes.flatMap(r=>r.records.map(x=>x[0])))].sort().slice(-3);
  const rows=tce.routes.map(r=>({...r,v:dates.map(d=>(r.records.find(x=>x[0]===d)||[])[1]??null)}));
- const all=rows.flatMap(r=>r.v).filter(Boolean),lo=Math.pow(10,Math.floor(Math.log10(Math.min(...all)))),hi=Math.max(...all)*1.6;
+ const all=rows.flatMap(r=>r.v).filter(Boolean),lo=Math.min(...all)/1.35,hi=Math.max(...all)*1.6;
  const host=$('chTceRoutes');
  const draw=()=>{
- const W=Math.max(560,host.clientWidth||760),L=250,R=70,rowH=30,top=34;let groups=[],y=top;rows.forEach((r,i)=>{if(!i||rows[i-1].group!==r.group){groups.push([r.group,y]);y+=22}r.y=y;y+=rowH});
+ const W=Math.max(560,host.clientWidth||760),L=270,R=70,rowH=32,top=34;let groups=[],y=top;rows.forEach((r,i)=>{if(!i||rows[i-1].group!==r.group){groups.push([r.group,y]);y+=22}r.y=y;y+=rowH});
  const H=y+30,X=v=>L+(Math.log10(v)-Math.log10(lo))/(Math.log10(hi)-Math.log10(lo))*(W-L-R);
- const ticks=[];for(let p=lo;p<=hi*10;p*=10)[1,2,5].forEach(m=>{const v=p*m;if(v>=lo&&v<=hi)ticks.push(v)});
+ const ticks=[];for(let p=Math.pow(10,Math.floor(Math.log10(lo)));p<=hi*10;p*=10)[1,2,5].forEach(m=>{const v=p*m;if(v>=lo&&v<=hi)ticks.push(v)});
  const lab=v=>v>=1e6?nf(v/1e6,2)+' tr':nf(v/1e3)+'k';
- let s=`<svg viewBox="0 0 ${W} ${H}" width="${W}" style="max-width:100%;height:auto;font:12px var(--font-body,inherit)" role="img" aria-label="TCE theo tuyến Baltic">`;
+ let s=`<svg viewBox="0 0 ${W} ${H}" width="${W}" style="max-width:100%;height:auto;font:13px var(--font-body,inherit)" role="img" aria-label="TCE theo tuyến Baltic">`;
  ticks.forEach(v=>{s+=`<line x1="${X(v)}" x2="${X(v)}" y1="${top}" y2="${H-26}" stroke="currentColor" stroke-opacity=".12"/><text x="${X(v)}" y="${H-10}" text-anchor="middle" fill="currentColor" fill-opacity=".6">${lab(v)}</text>`});
  [['○',0],['●',1],['●',2]].forEach(([g,i],k)=>{const x=k*90;s+=`<circle cx="${x+6}" cy="14" r="5" fill="${i===0?'none':i===1?C.grey:C.navy}" stroke="${i===0?C.grey:'none'}"/><text x="${x+16}" y="18" fill="currentColor">${dm(dates[i])}</text>`});
  groups.forEach(([g,gy])=>{s+=`<text x="0" y="${gy+14}" font-weight="700" fill="currentColor">${g}</text>`});
