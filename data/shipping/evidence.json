@@ -2209,5 +2209,515 @@
   "quote": "{\"REPORT_DATE\": \"2026-11-13 00:00:00\", \"INDICATOR_VALUE\": 2592}",
   "status": "match",
   "note": "East Money datacenter API RPT_INDUSTRY_INDEX, INDICATOR_ID EMI00107669."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_vlcc 2026-10-28",
+  "value": "220",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLCC Modern $220,000 $0 Suezmax Modern $165,000 $0 ",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_suezmax 2026-10-28",
+  "value": "165",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Suezmax Modern $165,000 $0 Aframax Modern $100,000 $0 ",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_aframax 2026-10-28",
+  "value": "100",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Aframax Modern $100,000 $0 VLCCs Click rate to view gr",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_capesize 2026-10-28",
+  "value": "32.494",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Capesize 180' $32,494 -$529 Panamax 75' $18,500 $500",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_panamax 2026-10-28",
+  "value": "18.5",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Panamax 75' $18,500 $500 Supramax 58' $17,250 -$25",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_supramax 2026-10-28",
+  "value": "17.25",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Supramax 58' $17,250 -$250 Handysize 38' $15,000 $5",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_handysize 2026-10-28",
+  "value": "15",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Handysize 38' $15,000 $500 Baltic Dry Index (BDI) $2",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys nb_vlcc 2026-10-28",
+  "value": "130",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLCC 300' $130 $0 Suezmax 150' $87 $0 Aframax 11",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys nb_product_tanker 2026-10-28",
+  "value": "49.5",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Product 50' $49.5 $0 Newcastlemax 210' $82 $0 Kams",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh5_vlcc 2026-10-28",
+  "value": "205",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLCC $205.0 $180.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh10_vlcc 2026-10-28",
+  "value": "180",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLCC $205.0 $180.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh5_suezmax 2026-10-28",
+  "value": "125",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Suezmax $125.0 $105.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh10_suezmax 2026-10-28",
+  "value": "105",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Suezmax $125.0 $105.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh5_aframax 2026-10-28",
+  "value": "86",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Aframax / LR2 $86.0 $75.5",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh10_aframax 2026-10-28",
+  "value": "75.5",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Aframax / LR2 $86.0 $75.5",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys vlcc_fixtures 2026-10-28",
+  "value": "72",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Fixed in all areas last week 72 41 Available in MEG next 30 days 86 ",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys vlcc_avail_meg 2026-10-28",
+  "value": "86",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Available in MEG next 30 days 86 -19 1 Year T/C Crude VLCC Suezmax 25",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 44 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-44-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_vlcc 2026-11-04",
+  "value": "220",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLCC Modern $220,000 $0 Suezmax Modern $165,000 $0 ",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_suezmax 2026-11-04",
+  "value": "165",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Suezmax Modern $165,000 $0 Aframax Modern $100,000 $0 ",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_aframax 2026-11-04",
+  "value": "100",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Aframax Modern $100,000 $0 VLCCs Click rate to view gr",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_capesize 2026-11-04",
+  "value": "31.598",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Capesize 180' $31,598 -$896 Panamax 75' $18,500 $0 S",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_panamax 2026-11-04",
+  "value": "18.5",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Panamax 75' $18,500 $0 Supramax 58' $17,000 -$250 ",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_supramax 2026-11-04",
+  "value": "17",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Supramax 58' $17,000 -$250 Handysize 38' $14,750 -$",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_handysize 2026-11-04",
+  "value": "14.75",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Handysize 38' $14,750 -$250 Baltic Dry Index (BDI) $",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys nb_vlcc 2026-11-04",
+  "value": "130",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLCC 300' $130 $0 Suezmax 150' $87 $0 Aframax 11",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys nb_product_tanker 2026-11-04",
+  "value": "49.5",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Product 50' $49.5 $0 Newcastlemax 210' $82 $0 Kams",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh5_vlcc 2026-11-04",
+  "value": "205",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLCC $205.0 $180.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh10_vlcc 2026-11-04",
+  "value": "180",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLCC $205.0 $180.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh5_suezmax 2026-11-04",
+  "value": "125",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Suezmax $125.0 $105.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh10_suezmax 2026-11-04",
+  "value": "105",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Suezmax $125.0 $105.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh5_aframax 2026-11-04",
+  "value": "86",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Aframax / LR2 $86.0 $75.5",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh10_aframax 2026-11-04",
+  "value": "75.5",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Aframax / LR2 $86.0 $75.5",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys vlcc_fixtures 2026-11-04",
+  "value": "50",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Fixed in all areas last week 50 -22 Available in MEG next 30 days 98",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys vlcc_avail_meg 2026-11-04",
+  "value": "98",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Available in MEG next 30 days 98 12 1 Year T/C Crude VLCC Suezmax 250",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 45 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-45-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_vlcc 2026-11-11",
+  "value": "210",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLCC Modern $210,000 -$10,000 Suezmax Modern $155,0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_suezmax 2026-11-11",
+  "value": "155",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Suezmax Modern $155,000 -$10,000 Aframax Modern $95,00",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_aframax 2026-11-11",
+  "value": "95",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Aframax Modern $95,000 -$5,000 VLCCs Click rate to vie",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_capesize 2026-11-11",
+  "value": "33.399",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Capesize 180' $33,399 $1,801 Panamax 75' $17,500 -$1",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_panamax 2026-11-11",
+  "value": "17.5",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Panamax 75' $17,500 -$1,000 Supramax 58' $17,150 $",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_supramax 2026-11-11",
+  "value": "17.15",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Supramax 58' $17,150 $150 Handysize 38' $14,900 $15",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys tc1y_handysize 2026-11-11",
+  "value": "14.9",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Handysize 38' $14,900 $150 Baltic Dry Index (BDI) $2",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys nb_vlcc 2026-11-11",
+  "value": "130",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLCC 300' $130 $0 Suezmax 150' $87 $0 Aframax 11",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys nb_product_tanker 2026-11-11",
+  "value": "49.5",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Product 50' $49.5 $0 Newcastlemax 210' $82 $0 Kams",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh5_vlcc 2026-11-11",
+  "value": "215",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLCC $215.0 $190.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh10_vlcc 2026-11-11",
+  "value": "190",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLCC $215.0 $190.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh5_suezmax 2026-11-11",
+  "value": "135",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Suezmax $135.0 $110.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh10_suezmax 2026-11-11",
+  "value": "110",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Suezmax $135.0 $110.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh5_aframax 2026-11-11",
+  "value": "94.5",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Aframax / LR2 $94.5 $77.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys sh10_aframax 2026-11-11",
+  "value": "77",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Aframax / LR2 $94.5 $77.0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys vlcc_fixtures 2026-11-11",
+  "value": "45",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Fixed in all areas last week 45 -5 Available in MEG next 30 days 99 ",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-13",
+  "claim": "Fearnleys vlcc_avail_meg 2026-11-11",
+  "value": "99",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "Available in MEG next 30 days 99 1 1 Year T/C Crude VLCC Suezmax 250k",
+  "status": "match",
+  "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
  }
 ]

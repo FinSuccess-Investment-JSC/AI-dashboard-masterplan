@@ -493,6 +493,35 @@ def merge_wi(sector, blocks):
     return filled
 
 
+def fearnleys_pdf(blocks):
+    """16/11/2026: chuỗi Fearnleys (Wi bảng 362) dừng 23/10 khi Wi lỗi. Nối các tuần Fearnleys Weekly Report PDF
+    (scripts/fetch_shipping_daily.py) vào sau chuỗi Wi: cùng định nghĩa (tuần 43 khớp Wi ở cả 17 chuỗi); chỉ thêm kỳ
+    mới hơn điểm Wi cuối, mỗi tháng giữ quan sát mới nhất như cách Wi nén chuỗi tuần về tháng."""
+    sd = ROOT / 'data/shipping-daily-public-data.json'
+    reps = ((json.loads(sd.read_text()).get('fearnleys') or {}).get('reports') or {}) if sd.exists() else {}
+    fe = (blocks.get('fearnleys') or {}).get('series') or {}
+    if not reps or not fe:
+        return
+    last_url = None
+    for key in sorted(reps):
+        r = reps[key]
+        for k, v in r['values'].items():
+            s = fe.get(k)
+            if not s:
+                continue
+            recs = s['records']
+            if recs and r['date'] <= recs[-1]['date']:
+                continue
+            if recs and recs[-1]['date'][:7] == r['date'][:7]:
+                recs.pop()
+            recs.append({'date': r['date'], 'value': v, 'via': 'fearnleys_pdf'})
+            s['pdf_url'] = r['url']
+            last_url = r['url']
+    if last_url:
+        blocks['fearnleys']['pdf_url'] = last_url
+        blocks['fearnleys']['pdf_source'] = 'Fearnleys Weekly Report qua Hellenic Shipping News'
+
+
 def main():
     F, cache, vcache = feeds(), {}, {}
     now = dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -585,6 +614,8 @@ def main():
             blocks['sector_ratio'] = sr
         agri_seafood_extra(sector, blocks)
         wi_filled = merge_wi(sector, blocks)
+        if sector == 'shipping':
+            fearnleys_pdf(blocks)
         bundle = {'schema': 1, 'built_at': now, 'provider': 'Nguồn công khai (IMF/FRED, EIA, ICE, VNDirect)' + (' + WiData lấp chỗ thiếu' if wi_filled else ''),
                   'blocks': blocks, 'wi_filled': wi_filled,
                   'absent': [k for k in ('macro', 'sector_ratio', 'commodity') if k not in blocks]}

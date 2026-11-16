@@ -119,6 +119,68 @@ def eastmoney(sessions):
     return out
 
 
+FEARN_POST = 'https://www.hellenicshippingnews.com/fearnleys-week-{w}-{y}/'
+
+
+def parse_fearnleys(t):
+    L=[re.sub(r'\s+',' ',x).strip() for x in t.splitlines() if x.strip()]
+    J='\n'.join(L);out={}
+    m=re.search(r'Week (\d+) - ([A-Z][a-z]+ \d{1,2}, \d{4})',J);out['week']=int(m.group(1));out['date']=datetime.strptime(m.group(2),'%B %d, %Y').strftime('%Y-%m-%d')
+    def after(label,pat=r'\$([\d,.]+)',sect=None,start=0):
+        i=J.find(label,start)
+        if i<0:return None,None
+        m=re.search(pat,J[i+len(label):i+len(label)+60])
+        return (float(m.group(1).replace(',','')) if m else None),(J[i:i+len(label)+40].replace('\n',' ') if m else None)
+    eco=J.find('1 Year T/C - ECO');dry=J.find('1 Year T/C\n(USD/Day');nb=J.find('Newbuilding\nActivity');sp=J.find('Sale & Purchase')
+    spec={'tc1y_vlcc':('VLCC Modern',eco,1e-3),'tc1y_suezmax':('Suezmax Modern',eco,1e-3),'tc1y_aframax':('Aframax Modern',eco,1e-3),
+      'tc1y_capesize':('Capesize 180',dry,1e-3),'tc1y_panamax':('Panamax 75',dry,1e-3),'tc1y_supramax':('Supramax 58',dry,1e-3),'tc1y_handysize':('Handysize 38',dry,1e-3),
+      'nb_vlcc':('VLCC 300',nb,1),'nb_product_tanker':('Product 50',nb,1)}
+    for k,(lab,st,f) in spec.items():
+        v,q=after(lab,start=max(st,0))
+        if v is not None:out[k]=(round(v*f,3),q)
+    for k,lab in (('vlcc','VLCC $'),('suezmax','Suezmax $'),('aframax','Aframax / LR2 $'),('mr','MR $')):
+        i=J.find(lab,max(sp,0))
+        if i>=0:
+            m=re.match(re.escape(lab[:-1])+r'\$([\d.]+) \$([\d.]+)',J[i:i+40])
+            if m:out['sh5_'+k]=(float(m.group(1)),m.group(0));out['sh10_'+k]=(float(m.group(2)),m.group(0))
+    for k,lab in (('vlcc_fixtures','Fixed in all areas last week'),('vlcc_avail_meg','Available in MEG next 30 days')):
+        v,q=after(lab,pat=r'(\d+)')
+        if v is not None:out[k]=(v,q)
+    return out
+
+
+def fearnleys_reports(store):
+    """Fearnleys Weekly Report PDF (re-posted on Hellenic Shipping News; the PDF file name is not fixed, so read the post
+    'fearnleys-week-NN-YYYY' for the link). Same definitions as Wi table 362 (week 43 = Wi 23/10 on all 17 series);
+    observation date = report date. Weeks since 43/2026 (Wi stopped); only missing weeks are fetched."""
+    import tempfile
+    reps = store.setdefault('reports', {})
+    today = date.today()
+    y, w = 2026, 43
+    while date.fromisocalendar(y, w, 3) <= today:
+        key = f'{y}-W{w:02d}'
+        if key not in reps:
+            try:
+                post = get_text(FEARN_POST.format(w=w, y=y))
+                m = re.search(r'https://www\.hellenicshippingnews\.com/wp-content/uploads/[^"\']+?Fearn[^"\']*?\.pdf', post)
+                if m:
+                    with tempfile.TemporaryDirectory() as tmp:
+                        pdf = Path(tmp) / 'f.pdf'
+                        if subprocess.run(['curl', '-sfL', '-m', '60', '-A', 'Mozilla/5.0', '-o', str(pdf), m.group(0)]).returncode == 0:
+                            txt = subprocess.run(['pdftotext', '-layout', str(pdf), '-'], capture_output=True, text=True).stdout
+                            r = parse_fearnleys(txt)
+                            if r.get('week') == w and len(r) > 10:
+                                reps[key] = {'date': r['date'], 'url': m.group(0), 'post': FEARN_POST.format(w=w, y=y),
+                                             'values': {k: v[0] for k, v in r.items() if isinstance(v, tuple)},
+                                             'quotes': {k: v[1] for k, v in r.items() if isinstance(v, tuple)}}
+            except Exception as e:
+                print('fearnleys', key, e)
+        w += 1
+        if w > date(y, 12, 28).isocalendar()[1]:
+            y, w = y + 1, 1
+    return store
+
+
 def get_text(url):
     return subprocess.run(['curl', '-sfL', '-m', '60', '-A', 'Mozilla/5.0 (Macintosh) AppleWebKit/537.36 Chrome/130 Safari/537.36',
                            url], check=True, capture_output=True, text=True).stdout
@@ -205,6 +267,10 @@ def main():
     except Exception as e:
         print('eastmoney', e)
     try:
+        out['fearnleys'] = fearnleys_reports(out.get('fearnleys', {'source': 'Fearnleys Weekly Report qua Hellenic Shipping News'}))
+    except Exception as e:
+        print('fearnleys', e)
+    try:
         out['compass'] = compass_reports(out.get('compass', {'source': 'Compass Maritime Weekly Report'}))
     except Exception as e:
         print('compass', e)
@@ -228,6 +294,7 @@ def main():
     page = json.loads(json.dumps(out))  # the page does not need the quoted paragraphs (kept in the .json)
     for r in page.get('bdi_sub', {}).get('records', {}).values():
         r.pop('quote', None)
+    page.pop('fearnleys', None)  # merged into data/shipping-public-data.js by build_sector_public.py
     em = page.get('eastmoney', {}).get('series', {})
     for k in list(em):  # the page uses East Money only for BDTI/BCTI; the rest stay in the .json for cross-checks
         if k not in ('bdti', 'bcti'):

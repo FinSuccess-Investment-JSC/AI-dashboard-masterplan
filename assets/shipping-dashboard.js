@@ -223,7 +223,7 @@ function feLines(id,keys,unit,digits,hl){if(!feBase.length||!document.getElement
  const series=keys.map(([k,n,c],i)=>({name:n,color:c,kind:'line',values:feBase.map(r=>maps[i][ym(r.date)]?.value??null)}));
  (hl||[]).forEach(([n,c,v])=>series.push({name:n,color:c,kind:'line',markers:false,strokeWidth:1.5,values:feBase.map(()=>v)}));
  barLineChart(id,{categories:feBase.map(r=>mon(r.date)),series,unit,digits,height:260,zeroBase:true,rotateLabels:true});legend(id,series.map(s=>[s.name,s.color]));return true}
-const feL=k=>F(k).at(-1),feSrc=[['Fearnleys qua WiData (bảng 362)','https://widata.vn/']];
+const feL=k=>F(k).at(-1),feSrc=[['Fearnleys qua WiData (bảng 362)','https://widata.vn/'],...(B.fearnleys?.pdf_url?[['Fearnleys Weekly Report (PDF, tuần mới nhất)',B.fearnleys.pdf_url]]:[])];
 if(feLines('chTc1yTanker',[['tc1y_vlcc','VLCC',C.navy],['tc1y_suezmax','Suezmax',C.teal],['tc1y_aframax','Aframax',C.plum]],'nghìn USD/ngày',1,[['TC Aframax PVT ký (~55, ACBS 8/2026)',C.grey,55],['TC MR (~27, ACBS)',C.gold,27]])){
  fillTable('tbl-tc1y-tanker',['Tháng','VLCC','Suezmax','Aframax'],feBase.slice().reverse().map(r=>{const a=byMonth(F('tc1y_suezmax'))[ym(r.date)],b=byMonth(F('tc1y_aframax'))[ym(r.date)];return [mon(r.date),nf(r.value,1),nf(a?.value,1),nf(b?.value,1)]}));
  sourceLine('chTc1yTanker',[...feSrc,['ACBS PVT 8/2026','https://acbs.com.vn/acbsmedia/2026/08/PVT_Update-Q2-2026.pdf']],mon(feL('tc1y_vlcc').date),'Giá thuê định hạn 1 năm (Fearnleys, tuần; Wi nén về tháng). Đường ngang: mức TC quốc tế doanh nghiệp VN đang ký theo ACBS 8/2026 (Aframax ~55.000, MR ~27.000 USD/ngày).');
@@ -235,7 +235,7 @@ if(feLines('chTc1yBulk',[['tc1y_capesize','Capesize',C.navy],['tc1y_panamax','Pa
 }
 if(feLines('chShipPrice',[['sh5_vlcc','VLCC 5 tuổi',C.navy],['sh10_vlcc','VLCC 10 tuổi',C.teal],['sh5_aframax','Aframax 5 tuổi',C.plum],['sh10_mr','MR 10 tuổi',C.gold],['nb_vlcc','VLCC đóng mới',C.grey]],'triệu USD',0)){
  fillTable('tbl-ship-price',['Loại','Mới nhất','1 năm trước','Đầu 2024'],[['sh5_vlcc','VLCC 5 tuổi'],['sh10_vlcc','VLCC 10 tuổi'],['sh5_suezmax','Suezmax 5 tuổi'],['sh10_suezmax','Suezmax 10 tuổi'],['sh5_aframax','Aframax/LR2 5 tuổi'],['sh10_aframax','Aframax/LR2 10 tuổi'],['sh5_mr','MR 5 tuổi'],['sh10_mr','MR 10 tuổi'],['nb_vlcc','VLCC đóng mới'],['nb_product_tanker','Product tanker đóng mới']].map(([k,n])=>{const r=F(k);return [n,nf(r.at(-1)?.value,1),nf(r.at(-13)?.value,1),nf(r[0]?.value,1)]}));
- sourceLine('chShipPrice',feSrc,mon(feL('sh5_vlcc').date),'Giá tàu cũ 5/10 tuổi và đóng mới (Fearnleys, tuần; Wi nén về tháng).');
+ sourceLine('chShipPrice',feSrc,mon(feL('sh5_vlcc').date),'Giá tàu cũ 5/10 tuổi và đóng mới (Fearnleys, tuần; Wi nén về tháng). Từ 28/10/2026 nối bằng Fearnleys Weekly Report PDF; bản PDF không có giá tàu cũ MR nên chuỗi MR dừng 23/10.');
  insight('chShipPrice','VLCC 5 tuổi '+nf(feL('sh5_vlcc').value,0)+' triệu USD, cao hơn giá đóng mới '+nf(feL('nb_vlcc').value,0)+': tàu có sẵn đắt hơn tàu chờ 3 năm — thị trường trả tiền cho cước hiện tại. MR 10 tuổi '+nf(feL('sh10_mr').value,0)+' triệu: cửa sổ bán tàu cũ có lãi cho VOS, VNA; ngược lại PVT, VTO, VIP mua tàu lúc này sẽ khấu hao cao.');
 }
 if(feLines('chVlccMeg',[['vlcc_avail_meg','VLCC sẵn sàng Vịnh Ba Tư 30 ngày tới',C.navy],['vlcc_fixtures','VLCC chốt hợp đồng tuần trước',C.plum]],'tàu',0)){
