@@ -11,7 +11,7 @@
     python3 scripts/fetch_shipping_daily.py   # writes data/shipping-daily-public-data.json/.js
 """
 import html, json, re, subprocess
-from datetime import datetime, timezone, timedelta
+from datetime import date, datetime, timezone, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,6 +25,54 @@ MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'augus
           'november', 'december']
 SUB = {'BCI': ('bci', 'Baltic Capesize Index'), 'BPI': ('bpi', 'Baltic Panamax Index'),
        'BSI': ('bsi', 'Baltic Supramax Index'), 'BHSI': ('bhsi', 'Baltic Handysize Index')}
+
+
+COMPASS = 'https://compassmar.com/wp-content/uploads/{d:%Y/%m}/Compass-Weekly-Report-{d:%b}-{day}-{d:%y}.pdf'
+
+
+def compass_reports(store):
+    """BDTI/BCTI weekly from Compass Maritime Weekly Report PDFs (Mondays since 05/10/2026, when Wi stopped).
+    Row 'BDTI  <this week> <last week> <last year>'; observation = the Friday before the report date.
+    A value is 'suspect' when it moves >50% in a week or the next report's 'last week' column disagrees."""
+    import tempfile
+    reps = store.setdefault('reports', {})
+    d, today = date(2026, 10, 5), date.today()
+    while d <= today:
+        key = d.isoformat()
+        if key not in reps:
+            url = COMPASS.format(d=d, day=d.day)
+            with tempfile.TemporaryDirectory() as tmp:
+                pdf = Path(tmp) / 'r.pdf'
+                ok = subprocess.run(['curl', '-sfL', '-m', '60', '-A', 'Mozilla/5.0', '-o', str(pdf), url]).returncode == 0
+                if ok:
+                    txt = subprocess.run(['pdftotext', '-layout', str(pdf), '-'], capture_output=True, text=True).stdout
+                    row = {'url': url, 'obs': (d - timedelta(days=3)).isoformat()}
+                    for k in ('BDTI', 'BCTI'):
+                        m = re.search(r'^\s*' + k + r'\s+(\d+)\s+(\d+)\s+(\d+)', txt, re.M)
+                        if m:
+                            row[k] = [int(x) for x in m.groups()]
+                            row[k + '_line'] = re.sub(r'\s+', ' ', m.group(0).strip())
+                    if 'BDTI' in row:
+                        reps[key] = row
+        d += timedelta(days=7)
+    keys = sorted(reps)
+    for k in ('BDTI', 'BCTI'):
+        recs = []
+        for i, rk in enumerate(keys):
+            r = reps[rk]
+            if k not in r:
+                continue
+            cur, prev, _ = r[k]
+            nxt = reps[keys[i + 1]].get(k) if i + 1 < len(keys) else None
+            why = []
+            if prev and abs(cur / prev - 1) > .5:
+                why.append(f'đổi {cur / prev - 1:+.0%} so tuần trước')
+            if nxt and nxt[1] != cur:
+                why.append(f'bản kế tiếp ghi tuần trước {nxt[1]}')
+            recs.append({'date': r['obs'], 'value': cur, 'url': r['url'], 'line': r[k + '_line'],
+                         **({'suspect': '; '.join(why)} if why else {})})
+        store[k.lower()] = recs
+    return store
 
 
 def get_text(url):
@@ -98,6 +146,10 @@ def main():
     if subs['bdi_mismatch']:
         print('BDI Handybulk ≠ CNBC:', subs['bdi_mismatch'][-5:])
     out['bdi_sub'] = subs
+    try:
+        out['compass'] = compass_reports(out.get('compass', {'source': 'Compass Maritime Weekly Report'}))
+    except Exception as e:
+        print('compass', e)
     now = datetime.now(timezone(timedelta(hours=7)))
     today = now.strftime('%Y-%m-%d') if now.strftime('%H:%M') < '15:05' else ''  # skip the open session
     stocks = out.get('stocks', {})

@@ -3289,7 +3289,7 @@
   {
    "id": "shipping.public.daily_series",
    "tier": "A",
-   "title": "BDI theo phiên; giá cổ phiếu PVT, VTO, VOS, VIP; BCI/BPI/BSI/BHSI theo ngày (Handybulk)",
+   "title": "BDI theo phiên; giá cổ phiếu PVT, VTO, VOS, VIP; BCI/BPI/BSI/BHSI theo ngày (Handybulk); BDTI/BCTI tuần (Compass Maritime PDF)",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -3319,7 +3319,7 @@
     "Thiếu nguồn thì giữ chuỗi cũ, không điền tay"
    ],
    "job": "refresh-data.yml (mỗi lượt refresh)",
-   "note": "BDI Handybulk đối chiếu CNBC, lệch ghi ở bdi_sub.bdi_mismatch"
+   "note": "BDI Handybulk đối chiếu CNBC, lệch ghi ở bdi_sub.bdi_mismatch; Compass: số đổi >50%/tuần hoặc lệch cột tuần trước của bản kế tiếp bị đánh dấu nghi vấn, không lên thẻ"
   },
   {
    "id": "shipping.public.weekly",

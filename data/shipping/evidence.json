@@ -2069,5 +2069,125 @@
   "quote": "The Baltic Dry Index (BDI) increased by 61 points to reach 3,020 points. The Baltic Capesize Index (BCI) increased by 136 points to 4,836 points, with average daily earnings for capesize bulk carriers increased by $1,232 to $43,860. The Baltic Panamax Index (BPI) increased by 14 points to 2,117 points, while average daily income for panamax bulk carriers increased by $131 to $19,054. The Baltic Supramax Index (BSI) increased by 21 points to 1,831 points, with average daily earnings for supramax bulk carriers increased by $261 to $23,138. The Baltic Handysize Index (BHSI) increased by 6 points to 1,042 points, as average daily earnings for handysize bulk carriers increased by $107 to $18,752 per day.",
   "status": "match",
   "note": "Handybulk; đoạn văn từng ngày lưu đủ trong data/shipping-daily-public-data.json (bdi_sub.records[].quote)."
+ },
+ {
+  "block": "vt-01",
+  "claim": "BDTI 2026-10-02 (Compass Maritime Weekly Report)",
+  "value": "6586 điểm",
+  "url": "https://compassmar.com/wp-content/uploads/2026/10/Compass-Weekly-Report-Oct-5-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "BDTI 6586 5366 1087",
+  "status": "match",
+  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk)."
+ },
+ {
+  "block": "vt-01",
+  "claim": "BDTI 2026-10-09 (Compass Maritime Weekly Report)",
+  "value": "7964 điểm",
+  "url": "https://compassmar.com/wp-content/uploads/2026/10/Compass-Weekly-Report-Oct-12-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "BDTI 7964 6586 1119",
+  "status": "match",
+  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk)."
+ },
+ {
+  "block": "vt-01",
+  "claim": "BDTI 2026-10-16 (Compass Maritime Weekly Report)",
+  "value": "7556 điểm",
+  "url": "https://compassmar.com/wp-content/uploads/2026/10/Compass-Weekly-Report-Oct-19-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "BDTI 7556 7964 1207",
+  "status": "match",
+  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk)."
+ },
+ {
+  "block": "vt-01",
+  "claim": "BDTI 2026-10-23 (Compass Maritime Weekly Report)",
+  "value": "7171 điểm",
+  "url": "https://compassmar.com/wp-content/uploads/2026/10/Compass-Weekly-Report-Oct-26-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "BDTI 7171 7556 1234",
+  "status": "match",
+  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk)."
+ },
+ {
+  "block": "vt-01",
+  "claim": "BDTI 2026-10-30 (Compass Maritime Weekly Report)",
+  "value": "7019 điểm",
+  "url": "https://compassmar.com/wp-content/uploads/2026/11/Compass-Weekly-Report-Nov-2-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "BDTI 7019 7171 1436",
+  "status": "match",
+  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk)."
+ },
+ {
+  "block": "vt-01",
+  "claim": "BDTI 2026-11-06 (Compass Maritime Weekly Report)",
+  "value": "2636 điểm",
+  "url": "https://compassmar.com/wp-content/uploads/2026/11/Compass-Weekly-Report-Nov-9-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "BDTI 2636 7019 1401",
+  "status": "match",
+  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk). Nghi vấn: đổi -62% so tuần trước"
+ },
+ {
+  "block": "vt-01",
+  "claim": "BCTI 2026-10-02 (Compass Maritime Weekly Report)",
+  "value": "2414 điểm",
+  "url": "https://compassmar.com/wp-content/uploads/2026/10/Compass-Weekly-Report-Oct-5-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "BCTI 2414 2160 579",
+  "status": "match",
+  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk)."
+ },
+ {
+  "block": "vt-01",
+  "claim": "BCTI 2026-10-09 (Compass Maritime Weekly Report)",
+  "value": "2403 điểm",
+  "url": "https://compassmar.com/wp-content/uploads/2026/10/Compass-Weekly-Report-Oct-12-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "BCTI 2403 2414 560",
+  "status": "match",
+  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk)."
+ },
+ {
+  "block": "vt-01",
+  "claim": "BCTI 2026-10-16 (Compass Maritime Weekly Report)",
+  "value": "2538 điểm",
+  "url": "https://compassmar.com/wp-content/uploads/2026/10/Compass-Weekly-Report-Oct-19-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "BCTI 2538 2403 551",
+  "status": "match",
+  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk)."
+ },
+ {
+  "block": "vt-01",
+  "claim": "BCTI 2026-10-23 (Compass Maritime Weekly Report)",
+  "value": "3014 điểm",
+  "url": "https://compassmar.com/wp-content/uploads/2026/10/Compass-Weekly-Report-Oct-26-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "BCTI 3014 2538 642",
+  "status": "match",
+  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk)."
+ },
+ {
+  "block": "vt-01",
+  "claim": "BCTI 2026-10-30 (Compass Maritime Weekly Report)",
+  "value": "2850 điểm",
+  "url": "https://compassmar.com/wp-content/uploads/2026/11/Compass-Weekly-Report-Nov-2-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "BCTI 2850 3014 627",
+  "status": "match",
+  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk)."
+ },
+ {
+  "block": "vt-01",
+  "claim": "BCTI 2026-11-06 (Compass Maritime Weekly Report)",
+  "value": "5480 điểm",
+  "url": "https://compassmar.com/wp-content/uploads/2026/11/Compass-Weekly-Report-Nov-9-26.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "BCTI 5480 2850 650",
+  "status": "match",
+  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk). Nghi vấn: đổi +92% so tuần trước"
  }
 ]
