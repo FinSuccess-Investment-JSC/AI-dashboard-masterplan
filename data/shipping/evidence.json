@@ -2059,5 +2059,15 @@
   "quote": "TC7 Sing. / ECA 30,000 62,233",
   "status": "match",
   "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-65",
+  "claim": "BCI/BPI/BSI/BHSI 2026-11-12",
+  "value": "BDI 3020; BCI 4836; BPI 2117; BSI 1831; BHSI 1042",
+  "url": "https://www.handybulk.com/baltic-dry-index/",
+  "opened_at": "2026-11-16",
+  "quote": "The Baltic Dry Index (BDI) increased by 61 points to reach 3,020 points. The Baltic Capesize Index (BCI) increased by 136 points to 4,836 points, with average daily earnings for capesize bulk carriers increased by $1,232 to $43,860. The Baltic Panamax Index (BPI) increased by 14 points to 2,117 points, while average daily income for panamax bulk carriers increased by $131 to $19,054. The Baltic Supramax Index (BSI) increased by 21 points to 1,831 points, with average daily earnings for supramax bulk carriers increased by $261 to $23,138. The Baltic Handysize Index (BHSI) increased by 6 points to 1,042 points, as average daily earnings for handysize bulk carriers increased by $107 to $18,752 per day.",
+  "status": "match",
+  "note": "Handybulk; đoạn văn từng ngày lưu đủ trong data/shipping-daily-public-data.json (bdi_sub.records[].quote)."
  }
 ]

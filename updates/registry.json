@@ -3289,7 +3289,7 @@
   {
    "id": "shipping.public.daily_series",
    "tier": "A",
-   "title": "BDI theo phiên; giá cổ phiếu PVT, VTO, VOS, VIP",
+   "title": "BDI theo phiên; giá cổ phiếu PVT, VTO, VOS, VIP; BCI/BPI/BSI/BHSI theo ngày (Handybulk)",
    "schedule": {
     "type": "daily",
     "at": "07:00",
@@ -3306,7 +3306,11 @@
     "blocks": [
      "vt-65",
      "vt-66",
-     "vt-67"
+     "vt-67",
+     "vt-65a",
+     "vt-65b",
+     "vt-65c",
+     "vt-65d"
     ]
    },
    "how": "python3 scripts/fetch_shipping_daily.py (chạy trong refresh-data.yml)",
@@ -3315,7 +3319,7 @@
     "Thiếu nguồn thì giữ chuỗi cũ, không điền tay"
    ],
    "job": "refresh-data.yml (mỗi lượt refresh)",
-   "note": "BCI/BPI/BSI/BHSI chưa có nguồn mở số ngày"
+   "note": "BDI Handybulk đối chiếu CNBC, lệch ghi ở bdi_sub.bdi_mismatch"
   },
   {
    "id": "shipping.public.weekly",

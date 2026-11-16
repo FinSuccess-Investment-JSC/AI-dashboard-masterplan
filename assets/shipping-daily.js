@@ -16,7 +16,14 @@ const bdi=(D.bdi?.records||[]).filter(r=>r[0]>='2026-05-01');
 if(bdi.length&&$('chBdiDaily')&&window.barLineChart){
  barLineChart('chBdiDaily',{categories:bdi.map(r=>dm(r[0])),series:[{name:'BDI',color:C.navy,kind:'line',values:bdi.map(r=>r[1])}],unit:'điểm',digits:0,height:280,zeroBase:false,rotateLabels:true});
  table('tbl-bdi-daily',['Phiên','Điểm','So phiên trước'],bdi.slice().reverse().map((r,i,a)=>[dmy(r[0]),nf(r[1]),a[i+1]?sg((r[1]/a[i+1][1]-1)*100):'—']));
- src($('chBdiDaily'),[[D.bdi.source,D.bdi.url]],dmy(bdi.at(-1)[0]),'Chỉ số con Capesize (BCI), Panamax (BPI), Supramax (BSI), Handysize (BHSI) chưa có nguồn mở cho số theo ngày nên chưa vẽ.');
+ src($('chBdiDaily'),[[D.bdi.source,D.bdi.url]],dmy(bdi.at(-1)[0]));
+}
+const sub=D.bdi_sub;
+if(sub&&window.barLineChart){
+ const rs=Object.entries(sub.records).filter(([d])=>d>='2026-09-01');
+ [['a','BCI','#d1783f'],['b','BPI',C.teal],['c','BSI',C.gold],['d','BHSI',C.plum]].forEach(([k,f,c])=>{const id='chBdiSub'+k;if(!$(id)||!rs.length)return;
+  barLineChart(id,{categories:rs.map(([d])=>dm(d)),series:[{name:f,color:c,kind:'line',values:rs.map(([,r])=>r[f])}],unit:'điểm',digits:0,height:180,zeroBase:false,rotateLabels:true});
+  src($(id),[[sub.source,sub.url]],dmy(rs.at(-1)[0]),f==='BCI'&&sub.bdi_mismatch?.length?'Handybulk chép lại bản tin Baltic Exchange theo ngày. '+sub.bdi_mismatch.length+' phiên có BDI lệch với CNBC (phần lớn cuối 2025), giữ nguyên số Handybulk.':null)});
 }
 
 // 2. TCE theo tuyến — dumbbell, thang log
