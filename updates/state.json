@@ -39,9 +39,11 @@
    "attempts": 1
   },
   "oil.vn-production": {
-   "lastAttempt": "2026-10-06T16:22:10+07:00",
+   "lastAttempt": "2026-11-16T13:05:03+07:00",
    "lastSuccess": "2026-10-06T16:22:10+07:00",
-   "lastNote": "NSO 9T/2026 (ước tính, công bố 10/2026): dầu thô 6,66 triệu tấn (+10,5%), khí 4,86 tỷ m³ (+10,8%); thay mốc 6T Petrovietnam bằng 9T NSO"
+   "lastNote": "NSO 9T/2026 (ước tính, công bố 10/2026): dầu thô 6,66 triệu tấn (+10,5%), khí 4,86 tỷ m³ (+10,8%); thay mốc 6T Petrovietnam bằng 9T NSO",
+   "lastError": "nso.gov.vn: connection reset từ IP cloud (cả trang và PDF Thang-10.2026_VN-final.pdf); chưa có bản đăng lại 10T/2026 của dầu thô, khí",
+   "attempts": 1
   },
   "oil.pvgas-annual": {
    "lastAttempt": "2026-10-06T14:22:41+07:00",
@@ -49,14 +51,14 @@
    "attempts": 1
   },
   "oil.supply-news": {
-   "lastAttempt": "2026-11-02T13:18:09+07:00",
-   "lastSuccess": "2026-11-02T13:18:09+07:00",
-   "lastNote": "Đã mở 2 bài petrotimes 30/10/2026 (Houthi–Aramco; Nhật vượt TQ nhập LNG): không nêu Dung Quất/Nghi Sơn hay mốc dự án khí VN, không sửa trang"
+   "lastAttempt": "2026-11-16T13:05:03+07:00",
+   "lastSuccess": "2026-11-16T13:05:03+07:00",
+   "lastNote": "dau-khi-18: QH bổ sung TT lọc hóa dầu Dung Quất vào kỳ họp 2 ngày 05/11/2026 (444/444), nghị quyết còn dự thảo; đã mở petrotimes. Các bài LNG khác không đổi mốc dự án"
   },
   "oil.price-policy": {
-   "lastAttempt": "2026-11-02T13:18:09+07:00",
-   "lastSuccess": "2026-11-02T13:18:09+07:00",
-   "lastNote": "Đã mở moit.gov.vn Chỉ thị 12/CT-BCT 30/10/2026: chỉ về cung ứng/dự trữ dịp Tết, không có văn bản mới về cơ chế giá hay Luật Dầu khí, không sửa trang"
+   "lastAttempt": "2026-11-16T13:05:03+07:00",
+   "lastSuccess": "2026-11-16T13:05:03+07:00",
+   "lastNote": "Thêm TT 68/2026/TT-BCT (30/10/2026, hiệu lực 1/1/2027, thay TT 43/2015) vào dau-khi-27; đã mở moit.gov.vn"
   },
   "oil.bsr-annual": {},
   "oil.company-quarterly": {},
@@ -171,9 +173,9 @@
    "lastNote": "Chưa có số công suất đặt chính thức mới; giữ nguyên."
   },
   "power.hot-topics": {
-   "lastAttempt": "2026-11-02T13:18:09+07:00",
-   "lastSuccess": "2026-11-02T13:18:09+07:00",
-   "lastNote": "Tín hiệu watcher (Chỉ thị 12/CT-BCT, cảnh báo sớm RCEP) không liên quan ENSO/LNG/BESS/FIT; không sửa trang"
+   "lastAttempt": "2026-11-16T13:05:03+07:00",
+   "lastSuccess": "2026-11-16T13:05:03+07:00",
+   "lastNote": "dien-26: thêm khung giá LNG 2026 0–3.453,72 đ/kWh (QĐ 2972/QĐ-BCT 9/11/2026). NOAA CPC mở: ENSO không nằm trong card của mục, không sửa"
   },
   "power.ai.cycle": {
    "lastAttempt": "2026-10-28T18:13:36+07:00",
@@ -6385,117 +6387,6 @@
    "signals": []
   },
   {
-   "id": "oil.supply-news",
-   "tier": "C",
-   "title": "Cân đối xăng dầu, chuỗi dự án khí",
-   "since": "2026-11-03T01:51:48+07:00",
-   "reasons": [
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-03T14:13:04+07:00",
-     "what": "Bản tin Năng lượng Quốc tế 3 11 Liên danh Mỹ xây dựng trung tâm LNG tại Pakistan — https://nangluongquocte.petrotimes.vn/ban-tin-nang-luong-quoc-te-3-11-lien-danh-my-xay-dung-trung-tam-lng-tai-pakistan-747438.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-03T23:33:37+07:00",
-     "what": "Ngành lọc dầu Ấn Độ trước sức ép tái cơ cấu nguồn cung — https://petrotimes.vn/nganh-loc-dau-an-do-truoc-suc-ep-tai-co-cau-nguon-cung-747431.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-03T23:33:37+07:00",
-     "what": "Giếng khoan 61 Nơi khơi nguồn dòng khí công nghiệp đầu tiên của Việt Nam — https://petrovietnam.petrotimes.vn/gieng-khoan-61-noi-khoi-nguon-dong-khi-cong-nghiep-dau-tien-cua-viet-nam-747416.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-05T14:20:04+07:00",
-     "what": "Quốc hội sẽ xem xét cơ chế chính sách phát triển Trung tâm lọc hóa dầu và năng lượng quốc gia tại KKT Dung Quất — https://petrotimes.vn/quoc-hoi-se-xem-xet-co-che-chinh-sach-phat-trien-trung-tam-loc-hoa-dau-va-nang-luong-quoc-gia-tai-kkt-dung-quat-747564.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-05T14:20:04+07:00",
-     "what": "Nguồn lực LNG cho an ninh năng lượng Thách thức lớn từ hạ tầng và cơ chế — https://petrotimes.vn/nguon-luc-lng-cho-an-ninh-nang-luong-thach-thuc-lon-tu-ha-tang-va-co-che-747554.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-05T23:50:01+07:00",
-     "what": "Phát triển hạ tầng LNG cần tận dụng nguồn lực hiện hữu và từng bước mở rộng — https://petrovietnam.petrotimes.vn/phat-trien-ha-tang-lng-can-tan-dung-nguon-luc-hien-huu-va-tung-buoc-mo-rong-747568.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-05T23:50:01+07:00",
-     "what": "PV GAS đề xuất xây dựng các kho LNG trung tâm từ Bắc vào Nam kết nối hạ tầng dùng chung — https://petrovietnam.petrotimes.vn/pv-gas-de-xuat-xay-dung-cac-kho-lng-trung-tam-tu-bac-vao-nam-ket-noi-ha-tang-dung-chung-747565.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-07T13:33:25+07:00",
-     "what": "Bộ Công Thương lấy ý kiến dự thảo Thông tư về dịch vụ vận chuyển khí và LNG cho sản xuất điện — https://petrotimes.vn/bo-cong-thuong-lay-y-kien-du-thao-thong-tu-ve-dich-vu-van-chuyen-khi-va-lng-cho-san-xuat-dien-747657.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-07T13:33:25+07:00",
-     "what": "Từ Nghi Sơn đến Vân Phong Việt Nam đang định hình các LNG Hub cấp vùng — https://petrovietnam.petrotimes.vn/tu-nghi-son-den-van-phong-viet-nam-dang-dinh-hinh-cac-lng-hub-cap-vung-747567.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-08T13:38:55+07:00",
-     "what": "Giá LNG tăng sốc Cú hích nhất thời hay mặt bằng giá mới — https://petrotimes.vn/gia-lng-tang-soc-cu-hich-nhat-thoi-hay-mat-bang-gia-moi-747643.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-09T15:23:55+07:00",
-     "what": "PODCAST Kỳ 4 Khi dòng khí trở thành chuỗi giá trị — https://petrotimes.vn/podcast-ky-4-khi-dong-khi-tro-thanh-chuoi-gia-tri-747676.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-09T15:23:55+07:00",
-     "what": "Tháo gỡ điểm nghẽn để khơi thông dòng vốn cho điện khí LNG — https://petrovietnam.petrotimes.vn/thao-go-diem-nghen-de-khoi-thong-dong-von-cho-dien-khi-lng-747629.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-10T02:12:28+07:00",
-     "what": "Trung Quốc giảm nhập khẩu LNG do nguồn cung trong nước dồi dào — https://nangluongquocte.petrotimes.vn/trung-quoc-giam-nhap-khau-lng-do-nguon-cung-trong-nuoc-doi-dao-747731.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-10T23:41:34+07:00",
-     "what": "Xuất khẩu LNG qua Hormuz phục hồi mạnh trong tháng 10 — https://nangluongquocte.petrotimes.vn/xuat-khau-lng-qua-hormuz-phuc-hoi-manh-trong-thang-10-747791.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-12T14:40:54+07:00",
-     "what": "Chuyên gia quốc tế Việt Nam cần linh hoạt chiến lược nhập khẩu LNG — https://petrotimes.vn/chuyen-gia-quoc-te-viet-nam-can-linh-hoat-chien-luoc-nhap-khau-lng-747887.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-12T14:40:54+07:00",
-     "what": "Khung giá phát điện LNG năm 2026 cao nhất 3 453 72 đồng kWh — https://petrotimes.vn/khung-gia-phat-dien-lng-nam-2026-cao-nhat-3-453-72-dong-kwh-747882.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-12T14:40:54+07:00",
-     "what": "VIDEO Phê duyệt khung giá phát điện nhà máy nhiệt điện khí LNG năm 2026 — https://petrotimes.vn/video-phe-duyet-khung-gia-phat-dien-nha-may-nhiet-dien-khi-lng-nam-2026-747883.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-13T00:09:17+07:00",
-     "what": "Thủ tướng Bảo đảm nguồn cung xăng dầu điện phục vụ mục tiêu tăng trưởng — https://petrotimes.vn/thu-tuong-bao-dam-nguon-cung-xang-dau-dien-phuc-vu-muc-tieu-tang-truong-747924.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-13T14:11:40+07:00",
-     "what": "EU chi nhiều hơn cho LNG Nga trước thời điểm lệnh cấm có hiệu lực — https://nangluongquocte.petrotimes.vn/eu-chi-nhieu-hon-cho-lng-nga-truoc-thoi-diem-lenh-cam-co-hieu-luc-747937.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-15T22:58:22+07:00",
-     "what": "Thái Lan lần đầu bán LNG ra thị trường quốc tế — https://nangluongquocte.petrotimes.vn/thai-lan-lan-dau-ban-lng-ra-thi-truong-quoc-te-748009.html"
-    }
-   ]
-  },
-  {
    "id": "oil.vn-production",
    "tier": "C",
    "title": "Sản lượng khai thác dầu thô, khí Việt Nam",
@@ -6518,89 +6409,6 @@
      "watcher": "nso.rss",
      "seenAt": "2026-11-04T23:35:36+07:00",
      "what": "Một số nét chính tình hình kinh tế – xã hội tháng 10 và 10 tháng năm 2026 — https://www.nso.gov.vn/bai-top/2026/11/mot-so-net-chinh-tinh-hinh-kinh-te-xa-hoi-thang-10-va-10-thang-nam-2026/"
-    }
-   ]
-  },
-  {
-   "id": "oil.price-policy",
-   "tier": "C",
-   "title": "Cơ chế điều hành giá xăng dầu, Luật Dầu khí",
-   "since": "2026-11-03T14:13:04+07:00",
-   "reasons": [
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-11-03T14:13:04+07:00",
-     "what": "Bộ Công Thương lấy ý kiến dự thảo thông tư thay thế Thông tư số 40/2018/TT-BCT quy định về xây dựng và nội dung các tài liệu quản lý an toàn — /tin-tuc/bo-cong-thuong-lay-y-kien-du-thao-thong-tu-thay-the-thong-tu-so-40-2018-tt-bct-quy-dinh-ve-xay-dung-va-noi-dung-cac-tai-.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-11-03T14:13:04+07:00",
-     "what": "Bộ Công Thương ban hành Thông tư quy định định mức kinh tế - kỹ thuật thực hiện kiểm toán năng lượng — /tin-tuc/bo-cong-thuong-ban-hanh-thong-tu-quy-dinh-dinh-muc-kinh-te-ky-thuat-thuc-hien-kiem-toan-nang-luong.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-11-03T23:33:37+07:00",
-     "what": "Bộ Công Thương ban hành thông tư quy định tỷ lệ hao hụt xăng dầu trong hoạt động kinh doanh xăng dầu — /tin-tuc/bo-cong-thuong-ban-hanh-thong-tu-quy-dinh-ty-le-hao-hut-xang-dau-trong-hoat-dong-kinh-doanh-xang-dau.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-11-06T23:24:31+07:00",
-     "what": "Bộ Công Thương lấy ý kiến dự thảo Thông tư quy định đặc điểm kinh tế - kỹ thuật của dịch vụ vận chuyển khí thiên nhiên bằng đường ống và dịc — /tin-tuc/bo-cong-thuong-lay-y-kien-du-thao-thong-tu-quy-dinh-dac-diem-kinh-te-ky-thuat-cua-dich-vu-van-chuyen-khi-thien-nhien-ban.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-11-07T22:11:19+07:00",
-     "what": "Rà soát Nghị định 163, mở đường cho logistics phát triển hiện đại — /tin-tuc/ra-soat-nghi-dinh-163-mo-duong-cho-logistics-phat-trien-hien-dai.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-11-10T23:41:34+07:00",
-     "what": "Nhận diện và bảo vệ hàng hoá có xuất xứ Việt Nam: Bước đột phá từ Nghị định số 384/2026/NĐ-CP — /tin-tuc/nhan-dien-va-bao-ve-hang-hoa-co-xuat-xu-viet-nam-buoc-dot-pha-tu-nghi-dinh-so-384-2026-nd-cp.html"
-    }
-   ]
-  },
-  {
-   "id": "power.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: El Niño & thủy văn, giá điện & EVN, chuyển dịch năng lượng",
-   "since": "2026-11-03T14:13:04+07:00",
-   "reasons": [
-    "lịch 09/11 07:00",
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-11-03T14:13:04+07:00",
-     "what": "Bộ Công Thương lấy ý kiến dự thảo thông tư thay thế Thông tư số 40/2018/TT-BCT quy định về xây dựng và nội dung các tài liệu quản lý an toàn — /tin-tuc/bo-cong-thuong-lay-y-kien-du-thao-thong-tu-thay-the-thong-tu-so-40-2018-tt-bct-quy-dinh-ve-xay-dung-va-noi-dung-cac-tai-.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-11-03T14:13:04+07:00",
-     "what": "Bộ Công Thương ban hành Thông tư quy định định mức kinh tế - kỹ thuật thực hiện kiểm toán năng lượng — /tin-tuc/bo-cong-thuong-ban-hanh-thong-tu-quy-dinh-dinh-muc-kinh-te-ky-thuat-thuc-hien-kiem-toan-nang-luong.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-11-03T23:33:37+07:00",
-     "what": "Bộ Công Thương ban hành thông tư quy định tỷ lệ hao hụt xăng dầu trong hoạt động kinh doanh xăng dầu — /tin-tuc/bo-cong-thuong-ban-hanh-thong-tu-quy-dinh-ty-le-hao-hut-xang-dau-trong-hoat-dong-kinh-doanh-xang-dau.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-11-06T23:24:31+07:00",
-     "what": "Bộ Công Thương lấy ý kiến dự thảo Thông tư quy định đặc điểm kinh tế - kỹ thuật của dịch vụ vận chuyển khí thiên nhiên bằng đường ống và dịc — /tin-tuc/bo-cong-thuong-lay-y-kien-du-thao-thong-tu-quy-dinh-dac-diem-kinh-te-ky-thuat-cua-dich-vu-van-chuyen-khi-thien-nhien-ban.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-11-07T22:11:19+07:00",
-     "what": "Rà soát Nghị định 163, mở đường cho logistics phát triển hiện đại — /tin-tuc/ra-soat-nghi-dinh-163-mo-duong-cho-logistics-phat-trien-hien-dai.html"
-    },
-    {
-     "watcher": "moit.notices",
-     "seenAt": "2026-11-10T23:41:34+07:00",
-     "what": "Nhận diện và bảo vệ hàng hoá có xuất xứ Việt Nam: Bước đột phá từ Nghị định số 384/2026/NĐ-CP — /tin-tuc/nhan-dien-va-bao-ve-hang-hoa-co-xuat-xu-viet-nam-buoc-dot-pha-tu-nghi-dinh-so-384-2026-nd-cp.html"
     }
    ]
   },
@@ -7311,5 +7119,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-16T09:11:16+07:00"
+ "updatedAt": "2026-11-16T13:05:03+07:00"
 }

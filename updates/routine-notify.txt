@@ -1,5 +1,7 @@
-Routine Wi 16/11: KHÔNG cập nhật được dữ liệu nào.
-Gọi WiMCP thành công nhưng hook wi_capture.py không lưu kết quả vào data/raw/wi/.inbox/ (thư mục không tồn tại).
-38 mục nhóm B đã --fail với lý do "hook không lưu kết quả Wi" (lỗi lặp lại nhiều lượt liên tiếp).
-Cần kiểm tra hook PostToolUse (matcher "WiMCP|Widata") trong .claude/settings.json: tên tool thực tế là mcp__Widata-MCP__*.
+Routine tài liệu 16/11: xử lý 4/10 mục (hàng chờ 53).
+Dầu khí: thêm TT 68/2026/TT-BCT hao hụt xăng dầu (hiệu lực 1/1/2027).
+Dầu khí: QH bổ sung TT lọc hóa dầu Dung Quất vào kỳ họp 2 (05/11), nghị quyết còn dự thảo.
+Điện: khung giá điện LNG 2026 tối đa 3.453,72 đ/kWh (QĐ 2972/QĐ-BCT 9/11).
+Lỗi: oil.vn-production, nso.gov.vn chặn IP cloud, chưa có số 10T/2026.
+Chưa xử lý: BĐS, Xây dựng, Dược, BCTC điện (theo quy tắc không tự tìm BCTC).
 Chưa kiểm giao diện bằng trình duyệt.

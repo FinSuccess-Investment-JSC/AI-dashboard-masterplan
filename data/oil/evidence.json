@@ -8,5 +8,25 @@
     "quote": "Dự thảo đặt mục tiêu đến năm 2030, Trung tâm tại KKT Dung Quất sẽ đáp ứng toàn bộ nhu cầu xăng dầu cho khu vực miền Trung và Tây Nguyên, tối thiểu 30% nhu cầu xăng dầu cả nước.",
     "status": "match",
     "note": "Petrotimes 16/10/2026; dự thảo Nghị quyết Quốc hội, chưa thông qua"
+  },
+  {
+    "block": "dau-khi-27",
+    "claim": "Thông tư 68/2026/TT-BCT về tỷ lệ hao hụt xăng dầu, hiệu lực 01/01/2027, thay TT 43/2015/TT-BCT",
+    "value": "68/2026",
+    "url": "https://moit.gov.vn/tin-tuc/bo-cong-thuong-ban-hanh-thong-tu-quy-dinh-ty-le-hao-hut-xang-dau-trong-hoat-dong-kinh-doanh-xang-dau.html",
+    "opened_at": "2026-11-16",
+    "quote": "Bộ Công Thương ban hành Thông tư số 68/2026/TT-BCT ngày 30/10/2026 quy định tỷ lệ hao hụt xăng dầu trong hoạt động kinh doanh xăng dầu.",
+    "status": "match",
+    "note": "Cổng Bộ Công Thương; hiệu lực 1/1/2027 theo cùng bài"
+  },
+  {
+    "block": "dau-khi-18",
+    "claim": "05/11/2026 Quốc hội bổ sung Trung tâm lọc hóa dầu Dung Quất vào chương trình kỳ họp 2; 444/444 tán thành; nghị quyết còn là dự thảo",
+    "value": "444/444",
+    "url": "https://petrotimes.vn/quoc-hoi-se-xem-xet-co-che-chinh-sach-phat-trien-trung-tam-loc-hoa-dau-va-nang-luong-quoc-gia-tai-kkt-dung-quat-747564.html",
+    "opened_at": "2026-11-16",
+    "quote": "Kết quả, có 444/444 đại biểu Quốc hội tham gia biểu quyết tán thành, đạt tỷ lệ 100%.",
+    "status": "match",
+    "note": "Petrotimes 05/11/2026; ngày bế mạc 21/11 theo cùng bài; chưa thông qua nghị quyết"
   }
 ]
