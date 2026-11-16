@@ -65,6 +65,7 @@ jobs:
           python scripts/fetch_hnx_yield.py || true
           python scripts/fetch_cbonds.py || true
           python scripts/fetch_markets.py || true
+          python scripts/fetch_shipping_daily.py || true
           python scripts/fetch_sbv.py || true
           python scripts/fetch_fia.py || true
           python scripts/fetch_sxd_hanoi.py || true

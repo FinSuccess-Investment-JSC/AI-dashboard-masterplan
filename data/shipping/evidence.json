@@ -1609,5 +1609,155 @@
   "quote": "extends the suspension through 11:59 p.m. Eastern Time on January 9, 2027",
   "status": "match",
   "note": "gCaptain 10/11/2026; hiệu lực từ 09/11/2026."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE VLCC TD3C 30/10/2026",
+  "value": "1351405 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD3C ME Gulf / China 270,000 1,351,405",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE Aframax TD7 30/10/2026",
+  "value": "457742 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD7 UKC / UKC 80,000 457,742",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE LR1 TC5 30/10/2026",
+  "value": "211870 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC5 ME Gulf / Japan 55,000 211,870",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE MR TC17 30/10/2026",
+  "value": "112859 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC17 ME Gulf / EAFR 35,000 112,859",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE MR TC2 30/10/2026",
+  "value": "16961 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC2 Cont / USAC 37,000 16,961",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE VLCC TD3C 06/11/2026",
+  "value": "1285922 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD3C ME Gulf / China 270,000 1,285,922",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE Aframax TD7 06/11/2026",
+  "value": "219773 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD7 UKC / UKC 80,000 219,773",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE LR1 TC5 06/11/2026",
+  "value": "212207 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC5 ME Gulf / Japan 55,000 212,207",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE MR TC17 06/11/2026",
+  "value": "114811 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC17 ME Gulf / EAFR 35,000 114,811",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE MR TC2 06/11/2026",
+  "value": "12340 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC2 Cont / USAC 37,000 12,340",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE VLCC TD3C 13/11/2026",
+  "value": "1056208 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD3C ME Gulf / China 270,000 1,056,208",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE Aframax TD7 13/11/2026",
+  "value": "141063 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD7 UKC / UKC 80,000 141,063",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE LR1 TC5 13/11/2026",
+  "value": "207023 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC5 ME Gulf / Japan 55,000 207,023",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE MR TC17 13/11/2026",
+  "value": "119503 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC17 ME Gulf / EAFR 35,000 119,503",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE MR TC2 13/11/2026",
+  "value": "14687 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC2 Cont / USAC 37,000 14,687",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
  }
 ]

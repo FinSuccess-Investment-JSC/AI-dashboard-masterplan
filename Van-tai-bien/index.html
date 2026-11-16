@@ -16,6 +16,8 @@
 <script src="../data/shipping-public-data.js?v=dc45579ac594" defer></script>
 <script src="../assets/sector-visuals.js?v=9bed10f3c811" defer></script>
 <script src="../assets/shipping-dashboard.js?v=74638c6ca802" defer></script>
+<script src="../data/shipping-daily-public-data.js?v=20261116" defer></script>
+<script src="../assets/shipping-daily.js?v=20261116" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="../assets/chart-arrange.js?v=3ca9033119b7" defer></script>
@@ -146,6 +148,12 @@
       </div>
     </div>
     <h3 class="subhead">Hàng rời</h3>
+    <div class="card" data-block-id="vt-65" data-update-kind="periodic" data-cadence="daily" data-refresh-status="loaded" style="margin-bottom:14px">
+      <div class="chart-title">Baltic Dry Index — theo phiên</div>
+      <div class="chart-sub">điểm · đóng cửa từng phiên từ 5/2026</div>
+      <div id="chBdiDaily"></div>
+      <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-bdi-daily"></table></div></details>
+    </div>
     <div class="grid two">
       <div class="card" data-block-id="vt-20" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">Baltic Dry Index</div>
@@ -285,10 +293,23 @@
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Bảng giữ số 6T/2026 có nguồn đã mở; doanh thu, biên gộp và LNST Q3/2026 từng mã xem chart xu hướng doanh nghiệp (VNDirect, cập nhật hằng ngày). VTO, VIP không có bài Q2 — số lấy từ bảng BCTC trên CafeF, YoY tự tính. GSP hai nguồn lệch số tàu LPG (7 và 9). HAH: elibook ghi KH 5.500/1.000, ưu tiên Mekong ASEAN 5.140/1.250. Tỷ trọng TC/spot chỉ rõ với HAH. Số BCTC cập nhật khi người dùng yêu cầu.</div></details>
     </div>
     <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="vt-66" data-update-kind="periodic" data-cadence="daily" data-refresh-status="loaded">
+        <div class="chart-title">Cổ phiếu vận tải Việt Nam — thay đổi so với 31/12/2025</div>
+        <div class="chart-sub">% · giá đóng cửa điều chỉnh, từ 8/2026</div>
+        <div id="chShipStocks"></div>
+      </div>
+      <div class="card" data-block-id="vt-67" data-update-kind="periodic" data-cadence="daily" data-refresh-status="loaded">
+        <div class="chart-title">Giá gần nhất</div>
+        <div class="chart-sub">một tuần = 5 phiên giao dịch</div>
+        <div class="tablewrap"><table id="tbl-ship-stocks"></table></div>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="vt-61" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <div class="chart-title">Cước thuê tàu dầu — TCE Baltic</div>
-        <div class="chart-sub">USD/ngày · thứ Sáu cuối kỳ · Affinity Tanker Weekly</div>
-        <div class="tablewrap"><table class="compare-table"><thead><tr><th>Tuyến</th><th>19/12/2025</th><th>20/03/2026</th><th>19/06/2026</th><th>25/09/2026</th><th>02/10/2026</th><th>23/10/2026</th></tr></thead><tbody><tr><td>VLCC TD3C</td><td>110.068</td><td>384.449</td><td>490.423</td><td>1.234.685</td><td>1.286.655</td><td><b>1.294.761</b></td></tr><tr><td>Aframax TD7</td><td>71.230</td><td>191.767</td><td>41.315</td><td>314.796</td><td>305.166</td><td><b>485.769</b></td></tr><tr><td>LR1 TC5</td><td>28.705</td><td>62.439</td><td>99.269</td><td>187.550</td><td>196.155</td><td><b>232.035</b></td></tr><tr><td>MR TC17</td><td>28.184</td><td>65.612</td><td>65.481</td><td>112.326</td><td>116.097</td><td><b>113.387</b></td></tr><tr><td>MR TC2 (Đại Tây Dương)</td><td>9.765</td><td>18.983</td><td>6.304</td><td>6.380</td><td>14.577</td><td><b>17.647</b></td></tr></tbody></table></div>
+        <div class="chart-title">Thu nhập tàu theo tuyến Baltic</div>
+        <div class="chart-sub">TCE USD/ngày · thang logarit · ba tuần gần nhất</div>
+        <div id="chTceRoutes"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu (theo quý, Affinity)</summary><div class="tablewrap"><table class="compare-table"><thead><tr><th>Tuyến</th><th>19/12/2025</th><th>20/03/2026</th><th>19/06/2026</th><th>25/09/2026</th><th>02/10/2026</th><th>23/10/2026</th><th>30/10/2026</th><th>06/11/2026</th><th>13/11/2026</th></tr></thead><tbody><tr><td>VLCC TD3C</td><td>110.068</td><td>384.449</td><td>490.423</td><td>1.234.685</td><td>1.286.655</td><td>1.294.761</td><td>1.351.405</td><td>1.285.922</td><td><b>1.056.208</b></td></tr><tr><td>Aframax TD7</td><td>71.230</td><td>191.767</td><td>41.315</td><td>314.796</td><td>305.166</td><td>485.769</td><td>457.742</td><td>219.773</td><td><b>141.063</b></td></tr><tr><td>LR1 TC5</td><td>28.705</td><td>62.439</td><td>99.269</td><td>187.550</td><td>196.155</td><td>232.035</td><td>211.870</td><td>212.207</td><td><b>207.023</b></td></tr><tr><td>MR TC17</td><td>28.184</td><td>65.612</td><td>65.481</td><td>112.326</td><td>116.097</td><td>113.387</td><td>112.859</td><td>114.811</td><td><b>119.503</b></td></tr><tr><td>MR TC2 (Đại Tây Dương)</td><td>9.765</td><td>18.983</td><td>6.304</td><td>6.380</td><td>14.577</td><td>17.647</td><td>16.961</td><td>12.340</td><td><b>14.687</b></td></tr></tbody></table></div></details>
         <p style="font-size:12.5px;line-height:1.6;margin:8px 0 0"><mark class="key-phrase">TC dài hạn thấp hơn spot nhiều:</mark> Aframax ~55.000, MR ~27.000, Handy ~25.000 USD/ngày (ACBS 8/2026). Clarksons Q3/2026 bình quân VLCC 277.995, Aframax 119.189, MR 31.157; ClarkSea 46.384 USD/ngày — kỷ lục.</p>
         <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Bản Affinity 27/03 và 26/06 lỗi 404 → dùng 20/03 và 19/06. Spot Vịnh (TD3C, TC5, TC17) cực cao vì rất ít tàu chịu vào; tàu VN chủ yếu nhận TC nên hưởng một phần.</div></details>
         <div class="source-note">Nguồn: <a href="https://www.hellenicshippingnews.com/" target="_blank" rel="noopener">Affinity qua Hellenic Shipping News</a> (PDF từng tuần trong evidence) · <a href="https://acbs.com.vn/acbsmedia/2026/08/PVT_Update-Q2-2026.pdf" target="_blank" rel="noopener">ACBS</a></div>
