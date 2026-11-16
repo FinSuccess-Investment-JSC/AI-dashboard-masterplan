@@ -18,10 +18,13 @@ const checked=B.macro?.captured_at||W.built_at||'';
 const SRC={nso:['Cục Thống kê (NSO)','https://www.nso.gov.vn/'],baltic:['Baltic Exchange','https://www.balticexchange.com/'],portwatch:['IMF PortWatch','https://portwatch.imf.org/'],wi:['Nguồn công khai',null]};
 for(const v of Object.values(macro)){if(/nso\.gov\.vn\/wp-content/.test(v.url||'')&&SRC.nso)SRC.nso=[SRC.nso[0],v.url];if(/customs/.test(v.url||'')&&SRC.customs)SRC.customs=[SRC.customs[0],v.url]}
 const S0=k=>macro[k]?.records||com[k]?.records||[];
-// BDTI/BCTI: thêm số tuần Compass Maritime (PDF) khi mới hơn chuỗi Wi; bỏ số bị đánh dấu nghi vấn
-const CMP=window.SHIPPING_DAILY?.compass||{};
-const S=k=>{const rs=S0(k);const cp=(CMP[k]||[]).filter(r=>!r.suspect);if(!cp.length)return rs;const last=rs.at(-1)?.date||'';const m={};rs.forEach(r=>{m[r.date.slice(0,7)]=r});cp.filter(r=>r.date>last).forEach(r=>{m[r.date.slice(0,7)]={date:r.date,value:r.value,url:r.url,src:'compass'}});return Object.values(m).sort((a,b)=>a.date<b.date?-1:1)};
-const CMP_NOTE=()=>{const s=['bdti','bcti'].flatMap(k=>(CMP[k]||[]).filter(r=>r.suspect).map(r=>k.toUpperCase()+' '+short(r.date)+' = '+r.value+' ('+r.suspect+')'));return s.length?' Số Compass nghi vấn, chưa đưa lên: '+s.join('; ')+'.':''};
+// BDTI/BCTI: East Money (theo ngày, phiên cuối tháng) là nguồn chính; Wi rồi Compass Maritime (PDF tuần) dự phòng
+const CMP=window.SHIPPING_DAILY?.compass||{},EMS=window.SHIPPING_DAILY?.eastmoney?.series||{};
+const S=k=>{const m={};S0(k).forEach(r=>{m[r.date.slice(0,7)]=r});
+ if(k==='bdti'||k==='bcti'){const em=EMS[k]?.records||[];em.forEach(([d,v])=>{const o=m[d.slice(0,7)];if(!o||o.src==='em'||d>=o.date||o.date.slice(0,7)===d.slice(0,7)&&o.src!=='em')m[d.slice(0,7)]={date:d,value:v,url:EMS[k].url,src:'em'}});
+  const last=Object.values(m).map(r=>r.date).sort().at(-1)||'';(CMP[k]||[]).filter(r=>!r.suspect&&r.date>last).forEach(r=>{m[r.date.slice(0,7)]={date:r.date,value:r.value,url:r.url,src:'compass'}})}
+ return Object.values(m).sort((a,b)=>a.date<b.date?-1:1)};
+const CMP_NOTE=()=>{const s=['bdti','bcti'].flatMap(k=>(CMP[k]||[]).filter(r=>r.suspect).map(r=>k.toUpperCase()+' '+short(r.date)+' = '+r.value+' ('+r.suspect+')'));const w=(CMP.bdti||[]).filter(r=>r.swapped).map(r=>short(r.date));return (s.length?' Số Compass nghi vấn, không dùng: '+s.join('; ')+'.':'')+(w.length?' Compass bản '+w.join(', ')+' đảo dòng BDTI/BCTI (đã đối chiếu East Money).':'')};
 const ym=d=>d.slice(0,7);
 const byMonth=rs=>{const m={};rs.forEach(r=>{m[ym(r.date)]=r});return m};
 const yoyAt=(rs,r)=>{if(!r)return null;const p=rs.find(x=>x.date.slice(0,7)===String(Number(r.date.slice(0,4))-1)+r.date.slice(4,7));return p&&p.value?(r.value/p.value-1)*100:null};
@@ -91,7 +94,7 @@ if(bdti.length&&document.getElementById('chTanker')){
  lines('chTanker',bdti,[['BDTI (dầu thô)',C.navy,r=>r.value],['BCTI (dầu sản phẩm)',C.teal,r=>cm[ym(r.date)]?.value??null]],'điểm',0,true);
  legend('chTanker',[['BDTI · dầu thô',C.navy],['BCTI · dầu sản phẩm',C.teal]]);
  fillTable('tbl-tanker',['Kỳ','BDTI','BDTI YoY','BCTI','BCTI YoY'],bdti.slice().reverse().map(r=>{const c=cm[ym(r.date)];return [short(r.date),nf(r.value,0),signed(yoyAt(bdti,r),0)+'%',nf(c?.value,0),signed(yoyAt(bcti,c),0)+'%']}));
- sourceLine('chTanker',[SRC.baltic],short(bdti.at(-1).date),'Baltic Dirty Tanker Index và Clean Tanker Index, nén chuỗi ngày về cuối tháng (Wi); tháng gần nhất có thể là số thứ Sáu từ Compass Maritime Weekly Report khi mới hơn Wi. Chỉ số cước thế giới, không phải cước PVT, VTO ký được.'+CMP_NOTE());
+ sourceLine('chTanker',[SRC.baltic,['East Money · BDTI','https://data.eastmoney.com/cjsj/hyzs_list_EMI00107668.html'],['East Money · BCTI','https://data.eastmoney.com/cjsj/hyzs_list_EMI00107669.html']],short(bdti.at(-1).date),'Baltic Dirty Tanker Index và Clean Tanker Index, phiên cuối mỗi tháng (tháng này: phiên mới nhất) từ East Money; Wi và Compass Maritime Weekly Report dự phòng, đối chiếu. Chỉ số cước thế giới, không phải cước PVT, VTO ký được.'+CMP_NOTE());
  insight('chTanker','BDTI '+nf(bdti.at(-1).value,0)+' điểm là mức cao nhất của chuỗi, gấp hơn 5 lần một năm trước; BCTI cũng gấp gần 4 lần. Nguyên nhân là Hormuz gần như đóng từ tháng 3/2026 (xem tab Địa chính trị): dầu Trung Đông phải đi vòng, tấn-dặm tăng trong khi cung tàu không đổi. Doanh nghiệp Việt Nam hưởng lợi ở phần tàu chạy spot và khi hợp đồng TC đáo hạn được ký lại; phần đang khóa giá chưa thấy ngay.');
 }
 const fx=byMonth(S('cny_usd')),foUsd=r=>{const f=byMonth(fo)[ym(r.date)],x=fx[ym(r.date)];return f&&x?f.value/x.value:null};
@@ -263,7 +266,7 @@ function ctBarS(id,model){const host=document.getElementById(id);if(!host)return
 const tL=bdti.at(-1),cL=bcti.at(-1),dL=bdi.at(-1),bL=brent.at(-1),sL=sea.at(-1),pe=sec['185']?.records||[],peL=pe.at(-1),pe0=pe[0];
 kpi('spk-bdti',tL?nf(tL.value,0):'—',tL?'điểm · '+short(tL.date):'—',tL?signed(yoyAt(bdti,tL),0)+'% so cùng kỳ':'',bdti.slice(-12).map(r=>r.value));
 kpi('spk-bcti',cL?nf(cL.value,0):'—',cL?'điểm · '+short(cL.date):'—',cL?signed(yoyAt(bcti,cL),0)+'% so cùng kỳ':'',bcti.slice(-12).map(r=>r.value),C.teal);
-[['spk-bdti',tL],['spk-bcti',cL]].forEach(([id,r])=>{const sub=document.getElementById(id)?.closest('.kpi')?.querySelector('.sub');if(sub&&r?.src==='compass'){sub.textContent='';const a=document.createElement('a');a.href=r.url;a.target='_blank';a.rel='noopener';a.textContent='Compass Maritime (PDF)';sub.append(a)}});
+[['spk-bdti',tL],['spk-bcti',cL]].forEach(([id,r])=>{const sub=document.getElementById(id)?.closest('.kpi')?.querySelector('.sub');if(sub&&r?.url){sub.textContent='';const a=document.createElement('a');a.href=r.url;a.target='_blank';a.rel='noopener';a.textContent=r.src==='em'?'East Money':'Compass Maritime (PDF)';sub.append(a)}});
 kpi('spk-bdi',dL?nf(dL.value,0):'—',dL?'điểm · '+short(dL.date):'—',dL?signed(yoyAt(bdi,dL),0)+'% so cùng kỳ':'',bdi.slice(-12).map(r=>r.value),C.gold);
 kpi('spk-hormuz',hzM.length?nf(hzM.at(-1).value,0):'—',hz.length?'lượt/ngày · '+short(hz.at(-1).date):'—',hzM.length?'2023: ~'+nf(mean(hz.filter(r=>r.date.startsWith('2023')).map(r=>r.total)),0)+' lượt/ngày':'',hzM.slice(-12).map(r=>r.value),C.red);
 kpi('spk-brent',bL?nf(bL.value,1):'—',bL?'USD/thùng · '+short(bL.date):'—',bL?signed(yoyAt(brent,bL),0)+'% so cùng kỳ':'',brent.slice(-12).map(r=>r.value),C.gold);

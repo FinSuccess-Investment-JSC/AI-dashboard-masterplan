@@ -2128,7 +2128,7 @@
   "opened_at": "2026-11-16",
   "quote": "BDTI 2636 7019 1401",
   "status": "match",
-  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk). Nghi vấn: đổi -62% so tuần trước"
+  "note": "pdftotext -layout; bản 09/11 đảo dòng BDTI/BCTI (East Money 06/11: BDTI 5480, BCTI 2636); ngày quan sát = thứ Sáu trước ngày báo cáo."
  },
  {
   "block": "vt-01",
@@ -2188,6 +2188,26 @@
   "opened_at": "2026-11-16",
   "quote": "BCTI 5480 2850 650",
   "status": "match",
-  "note": "pdftotext -layout; ngày quan sát = thứ Sáu trước ngày báo cáo (cột BDI khớp CNBC/Handybulk). Nghi vấn: đổi +92% so tuần trước"
+  "note": "pdftotext -layout; bản 09/11 đảo dòng BDTI/BCTI (East Money 06/11: BDTI 5480, BCTI 2636); ngày quan sát = thứ Sáu trước ngày báo cáo."
+ },
+ {
+  "block": "vt-01",
+  "claim": "BDTI 2026-11-13 (East Money)",
+  "value": "4483 điểm",
+  "url": "https://data.eastmoney.com/cjsj/hyzs_list_EMI00107668.html",
+  "opened_at": "2026-11-16",
+  "quote": "{\"REPORT_DATE\": \"2026-11-13 00:00:00\", \"INDICATOR_VALUE\": 4483}",
+  "status": "match",
+  "note": "East Money datacenter API RPT_INDUSTRY_INDEX, INDICATOR_ID EMI00107668."
+ },
+ {
+  "block": "vt-01",
+  "claim": "BCTI 2026-11-13 (East Money)",
+  "value": "2592 điểm",
+  "url": "https://data.eastmoney.com/cjsj/hyzs_list_EMI00107669.html",
+  "opened_at": "2026-11-16",
+  "quote": "{\"REPORT_DATE\": \"2026-11-13 00:00:00\", \"INDICATOR_VALUE\": 2592}",
+  "status": "match",
+  "note": "East Money datacenter API RPT_INDUSTRY_INDEX, INDICATOR_ID EMI00107669."
  }
 ]
