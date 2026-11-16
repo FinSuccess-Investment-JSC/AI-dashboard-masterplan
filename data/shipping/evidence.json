@@ -1759,5 +1759,305 @@
   "quote": "TC2 Cont / USAC 37,000 14,687",
   "status": "match",
   "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD15 30/10/2026",
+  "value": "641064 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD15 WAF / China 260,000 641,064",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD22 30/10/2026",
+  "value": "495725 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD22 USG / China 270,000 495,725",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD20 30/10/2026",
+  "value": "387888 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD20 WAF / Cont 130,000 387,888",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD19 30/10/2026",
+  "value": "306471 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD19 Med / Med 80,000 306,471",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD25 30/10/2026",
+  "value": "212107 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD25 USG / Cont 70,000 212,107",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC20 30/10/2026",
+  "value": "336121 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC20 ME Gulf / UKC 90,000 336,121",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC1 30/10/2026",
+  "value": "291884 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC1 ME Gulf / Japan 75,000 291,884",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC8 30/10/2026",
+  "value": "251289 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC8 ME Gulf / UKC 65,000 251,289",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC14 30/10/2026",
+  "value": "69329 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC14 USG / UKC 38,000 69,329",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC7 30/10/2026",
+  "value": "68196 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Affinity-Tanker-Weekly-30.10.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC7 Sing. / ECA 30,000 68,196",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 30/10/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD15 06/11/2026",
+  "value": "493106 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD15 WAF / China 260,000 493,106",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD22 06/11/2026",
+  "value": "415390 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD22 USG / China 270,000 415,390",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD20 06/11/2026",
+  "value": "207106 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD20 WAF / Cont 130,000 207,106",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD19 06/11/2026",
+  "value": "92619 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD19 Med / Med 80,000 92,619",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD25 06/11/2026",
+  "value": "83176 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD25 USG / Cont 70,000 83,176",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC20 06/11/2026",
+  "value": "292594 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC20 ME Gulf / UKC 90,000 292,594",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC1 06/11/2026",
+  "value": "294560 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC1 ME Gulf / Japan 75,000 294,560",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC8 06/11/2026",
+  "value": "223790 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC8 ME Gulf / UKC 65,000 223,790",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC14 06/11/2026",
+  "value": "62921 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC14 USG / UKC 38,000 62,921",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC7 06/11/2026",
+  "value": "66831 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-06.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC7 Sing. / ECA 30,000 66,831",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 06/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD15 13/11/2026",
+  "value": "277472 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD15 WAF / China 260,000 277,472",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD22 13/11/2026",
+  "value": "232090 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD22 USG / China 270,000 232,090",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD20 13/11/2026",
+  "value": "151618 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD20 WAF / Cont 130,000 151,618",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD19 13/11/2026",
+  "value": "85775 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD19 Med / Med 80,000 85,775",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TD25 13/11/2026",
+  "value": "78274 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TD25 USG / Cont 70,000 78,274",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC20 13/11/2026",
+  "value": "294036 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC20 ME Gulf / UKC 90,000 294,036",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC1 13/11/2026",
+  "value": "296831 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC1 ME Gulf / Japan 75,000 296,831",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC8 13/11/2026",
+  "value": "223211 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC8 ME Gulf / UKC 65,000 223,211",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC14 13/11/2026",
+  "value": "47726 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC14 USG / UKC 38,000 47,726",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
+ },
+ {
+  "block": "vt-61",
+  "claim": "TCE TC7 13/11/2026",
+  "value": "62233 USD/ngày",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Affinity-Tanker-Weekly-13.11.2026-HSN.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "TC7 Sing. / ECA 30,000 62,233",
+  "status": "match",
+  "note": "Affinity Tanker Weekly 13/11/2026 (PDF, pdftotext -layout)."
  }
 ]

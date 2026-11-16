@@ -39,7 +39,7 @@ if(tce&&$('chTceRoutes')){
   if(b)s+=`<circle cx="${X(b)}" cy="${cy}" r="5" fill="${C.grey}"/>`;
   if(c)s+=`<circle cx="${X(c)}" cy="${cy}" r="6" fill="${C.navy}"/><text x="${Math.max(X(c),X(b||c),X(a||c))+10}" y="${cy+4}" fill="currentColor" fill-opacity=".75">${lab(c)}</text>`});
  $('chTceRoutes').innerHTML=s+'</svg>';
- src($('chTceRoutes'),[[tce.source,tce.url]],dmy(dates[2]),'Mỗi mốc là thứ Sáu của bản Affinity Tanker Weekly; vạch nối hai tuần gần nhất (xanh tăng, đỏ giảm). Spot Vịnh (TD3C, TC5, TC17) rất cao vì ít tàu chịu vào; tàu VN chủ yếu nhận TC nên hưởng một phần.');
+ src($('chTceRoutes'),[[tce.source,tce.url]],dmy(dates[2]),'Mỗi mốc là thứ Sáu của bản Affinity Tanker Weekly; vạch nối hai tuần gần nhất (xanh tăng, đỏ giảm). Spot Vịnh (TD3C, TC5, TC17) rất cao vì ít tàu chịu vào; tàu VN chủ yếu nhận TC nên hưởng một phần.'+(tce.missing?' '+tce.missing:''));
 }
 
 // 3. Cổ phiếu vận tải VN
