@@ -1,5 +1,5 @@
-Routine tài liệu 13/11: xử lý 6/10 mục đầu hàng chờ, không có số mới để sửa trang.
-FDI (Cục ĐTNN) và hồ EVN: runner VN đã cập nhật đến 11/11.
-Dệt may (thuế quan, chủ đề nóng), cảng (dự án), nông nghiệp (chính sách): nguồn mở được nhưng chưa có mốc mới; vietnamtextile.org.vn trả 503.
-Chưa xử lý: xây dựng-chủ đề nóng, dược-chủ đề nóng, BCTC điện (người dùng làm thủ công), mục 11 trở đi.
+Routine Wi 16/11: KHÔNG cập nhật được dữ liệu nào.
+Gọi WiMCP thành công nhưng hook wi_capture.py không lưu kết quả vào data/raw/wi/.inbox/ (thư mục không tồn tại).
+38 mục nhóm B đã --fail với lý do "hook không lưu kết quả Wi" (lỗi lặp lại nhiều lượt liên tiếp).
+Cần kiểm tra hook PostToolUse (matcher "WiMCP|Widata") trong .claude/settings.json: tên tool thực tế là mcp__Widata-MCP__*.
 Chưa kiểm giao diện bằng trình duyệt.
