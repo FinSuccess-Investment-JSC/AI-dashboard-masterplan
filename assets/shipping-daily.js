@@ -84,7 +84,7 @@ if(BL?.records?.length&&$('chLpg')){const card=$('chLpg').closest('.card'),rs=BL
  const w=el('div','tablewrap');w.style.marginTop='12px';
  w.innerHTML='<table class="compare-table"><thead><tr><th>Baltic LPG (VLGC)</th><th>USD/tấn '+dm(b.date)+'</th><th>TCE USD/ngày '+(a?dm(a.date)+' → ':'')+dm(b.date)+'</th></tr></thead><tbody>'+Object.keys(names).map(k=>'<tr><td>'+names[k]+'</td><td>'+nf(b[k].usd_t,2)+'</td><td>'+(a?nf(a[k].tce)+' → ':'')+'<b>'+nf(b[k].tce)+'</b></td></tr>').join('')+'</tbody></table>';
  const sn=card.querySelector('.source-note');(sn||card).before(w);
- if(sn){sn.append(' · ');const l=el('a','','Baltic Exchange qua The Edge Malaysia');l.href=b.url;l.target='_blank';l.rel='noopener';sn.append(l)}}
+ if(sn){sn.append(' · ');const l=el('a','',/thedcn/.test(b.url)?'Baltic Exchange qua Daily Cargo News':'Baltic Exchange qua The Edge Malaysia');l.href=b.url;l.target='_blank';l.rel='noopener';sn.append(l)}}
 
 // 3. Cổ phiếu vận tải VN
 const st=D.stocks||{},tk=['PVT','VTO','VOS','VIP'].filter(t=>st[t]),col={PVT:C.navy,VTO:C.teal,VOS:'#d1783f',VIP:C.gold};

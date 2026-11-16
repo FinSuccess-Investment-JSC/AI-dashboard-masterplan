@@ -3009,5 +3009,65 @@
   "quote": "BLPG3 Houston–Chiba route gained US$8.29 to close at US$322.29 per tonne, while TCE returns increased by US$10,491 to US$196,055/day",
   "status": "match",
   "note": "USD/tấn và TCE USD/ngày; tuần kết thúc ngày ghi. Chưa có nguồn thứ hai để đối chiếu."
+ },
+ {
+  "block": "vt-73",
+  "claim": "BLPG1 2026-10-30 (Baltic Exchange qua Daily Cargo News — đối chiếu)",
+  "value": "257.2; 245402",
+  "url": "https://www.thedcn.com.au/news/baltic-exchange-weekly-report-30-october-2026",
+  "opened_at": "2026-11-16",
+  "quote": "BLPG1 Ras Tanura–Chiba route, rates settled at $257.20/tonne, with TCE earnings closing at $245,402/day",
+  "status": "match",
+  "note": "Trùng số bản The Edge Malaysia cùng tuần."
+ },
+ {
+  "block": "vt-73",
+  "claim": "BLPG2 2026-10-30 (Baltic Exchange qua Daily Cargo News — đối chiếu)",
+  "value": "174.33; 200947",
+  "url": "https://www.thedcn.com.au/news/baltic-exchange-weekly-report-30-october-2026",
+  "opened_at": "2026-11-16",
+  "quote": "BLPG2 Houston–Flushing route increased by $1.17 week-on-week to settle at $174.33/tonne, with TCE earnings rising by $1,588 to $200,947/day",
+  "status": "match",
+  "note": "Trùng số bản The Edge Malaysia cùng tuần."
+ },
+ {
+  "block": "vt-73",
+  "claim": "BLPG3 2026-10-30 (Baltic Exchange qua Daily Cargo News — đối chiếu)",
+  "value": "313.14; 184820",
+  "url": "https://www.thedcn.com.au/news/baltic-exchange-weekly-report-30-october-2026",
+  "opened_at": "2026-11-16",
+  "quote": "BLPG3 Houston–Chiba route gained $3.86 to close at $313.14/tonne, while TCE returns increased by $767 to $184,820/day",
+  "status": "match",
+  "note": "Trùng số bản The Edge Malaysia cùng tuần."
+ },
+ {
+  "block": "vt-73",
+  "claim": "BLPG1 2026-11-06 (Baltic Exchange qua Daily Cargo News — đối chiếu)",
+  "value": "261.4; 254022",
+  "url": "https://www.thedcn.com.au/news/baltic-exchange-weekly-report-6-november-2026",
+  "opened_at": "2026-11-16",
+  "quote": "BLPG1 Ras Tanura–Chiba route, rates settled at $261.40 per tonne, with TCE earnings closing at $254,022/day",
+  "status": "match",
+  "note": "Trùng số bản The Edge Malaysia cùng tuần."
+ },
+ {
+  "block": "vt-73",
+  "claim": "BLPG2 2026-11-06 (Baltic Exchange qua Daily Cargo News — đối chiếu)",
+  "value": "180.0; 210924",
+  "url": "https://www.thedcn.com.au/news/baltic-exchange-weekly-report-6-november-2026",
+  "opened_at": "2026-11-16",
+  "quote": "BLPG2 Houston–Flushing route increased by $5.33 week-on-week to settle at $180.00 per tonne, with TCE earnings rising by $9,610 to $210,924/day",
+  "status": "match",
+  "note": "Trùng số bản The Edge Malaysia cùng tuần."
+ },
+ {
+  "block": "vt-73",
+  "claim": "BLPG3 2026-11-06 (Baltic Exchange qua Daily Cargo News — đối chiếu)",
+  "value": "322.29; 196055",
+  "url": "https://www.thedcn.com.au/news/baltic-exchange-weekly-report-6-november-2026",
+  "opened_at": "2026-11-16",
+  "quote": "BLPG3 Houston–Chiba route gained $8.29 to close at $322.29 per tonne, while TCE returns increased by $10,491 to $196,055/day",
+  "status": "match",
+  "note": "Trùng số bản The Edge Malaysia cùng tuần."
  }
 ]

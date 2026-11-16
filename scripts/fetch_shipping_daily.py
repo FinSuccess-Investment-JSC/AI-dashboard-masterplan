@@ -234,6 +234,50 @@ def affinity_tce(tce):
     return tce
 
 
+DCN = 'https://www.thedcn.com.au/news/baltic-exchange-weekly-report-{day}-{month}-{y}'
+
+
+def dcn_weekly(out):
+    """Bản tin tuần Baltic Exchange đăng lại trên Daily Cargo News (URL theo ngày thứ Sáu, vd ...-6-november-2026):
+    BLPG1–3 (USD/tấn, TCE USD/ngày) và round-trip TCE TD34, TC15. Số trùng bản đăng trên The Edge Malaysia (đối chiếu
+    30/10 và 06/11/2026). Chỉ đọc các thứ Sáu chưa có."""
+    blpg = out.setdefault('blpg', {'records': []})
+    have = {r['date'] for r in blpg['records']}
+    routes = {r['code']: r for r in out.get('tce', {}).get('routes', [])}
+    quotes = out.setdefault('tce', {}).setdefault('quotes', {})
+    d = date(2026, 10, 30)
+    while d <= date.today():
+        iso = d.isoformat()
+        if iso not in have:
+            url = DCN.format(day=d.day, month=d.strftime('%B').lower(), y=d.year)
+            try:
+                t = html.unescape(re.sub(r'\s+', ' ', re.sub('<[^>]+>', ' ', get_text(url)))).replace('\xa0', ' ')
+            except Exception:
+                t = ''
+            rec = {'date': iso, 'url': url}
+            for k in ('BLPG1', 'BLPG2', 'BLPG3'):
+                i = t.find(k)
+                seg = t[i:i + 330] if i >= 0 else ''
+                m1 = re.search(r'\$([\d.]+)\s*(?:/tonne|per tonne)', seg)
+                m2 = re.search(r'\$([\d,]+)/day', seg)
+                if m1 and m2:
+                    rec[k.lower()] = {'usd_t': float(m1.group(1)), 'tce': int(m2.group(1).replace(',', '')),
+                                      'quote': seg[:seg.find('/day') + 4]}
+            if all(k in rec for k in ('blpg1', 'blpg2', 'blpg3')):
+                blpg['records'] = sorted(blpg['records'] + [rec], key=lambda r: r['date'])
+                print('dcn', iso, 'BLPG')
+            for code, pat in (('TD34', r'TD34 \(Gulf of Oman/China\).{0,200}?TCE of (?:US)?\$([\d,]+)'),
+                              ('TC15', r'The TC15 80kt Mediterranean/East index.{0,220}?(?:US)?\$([\d,]+)/day')):
+                m = re.search(pat, t)
+                if m and code in routes and iso not in dict(routes[code]['records']):
+                    routes[code]['records'] = sorted(routes[code]['records'] + [[iso, int(m.group(1).replace(',', ''))]])
+                    quotes[f'{code} {iso}'] = {'url': url, 'line': m.group(0)}
+        d += timedelta(days=7)
+    blpg['source'] = 'Baltic Exchange qua Daily Cargo News (đối chiếu The Edge Malaysia)'
+    blpg['note'] = 'Tự đọc hằng tuần từ Daily Cargo News; số trùng bản The Edge Malaysia ở hai tuần đã đối chiếu (30/10, 06/11/2026).'
+    return out
+
+
 def get_text(url):
     return subprocess.run(['curl', '-sfL', '-m', '60', '-A', 'Mozilla/5.0 (Macintosh) AppleWebKit/537.36 Chrome/130 Safari/537.36',
                            url], check=True, capture_output=True, text=True).stdout
@@ -324,6 +368,10 @@ def main():
             out['tce'] = affinity_tce(out['tce'])
     except Exception as e:
         print('affinity', e)
+    try:
+        dcn_weekly(out)
+    except Exception as e:
+        print('dcn', e)
     try:
         out['fearnleys'] = fearnleys_reports(out.get('fearnleys', {'source': 'Fearnleys Weekly Report qua Hellenic Shipping News'}))
     except Exception as e:
