@@ -77,6 +77,15 @@ if(LP&&LP.reports?.length&&$('chLpg')&&window.barLineChart){const rs=LP.reports,
  if(window.ChartTypes)ChartTypes.mount($('chLpg'),{categories:rs.map(r=>dmy(r.date)),tickLabels:rs.map(r=>dm(r.date)),series:ks.map(([k,n,c])=>({name:n,color:c,kind:'bar',values:rs.map(r=>r.values[k]??null)})),unit:'nghìn USD/tháng',digits:0,zeroBase:true,height:260,flatTicks:true,native:'bar'});
  src($('chLpg'),[['Fearnleys Weekly Report (PDF)',rs.at(-1).url]],dmy(rs.at(-1).date),'Giá thuê spot theo tháng của Fearnleys. GSP chạy tàu LPG định áp cỡ nhỏ (~5.000 cbm) tuyến Đông Nam Á, gần với hai cỡ nhỏ nhất ở đây; Baltic LPG (BLPG) chưa có nguồn mở.')}
 
+// 2c. Baltic LPG (BLPG1–3) — bảng trong thẻ LPG
+const BL=D.blpg;
+if(BL?.records?.length&&$('chLpg')){const card=$('chLpg').closest('.card'),rs=BL.records,a=rs.at(-2),b=rs.at(-1);
+ const names={blpg1:'BLPG1 Ras Tanura – Chiba',blpg2:'BLPG2 Houston – Flushing',blpg3:'BLPG3 Houston – Chiba'};
+ const w=el('div','tablewrap');w.style.marginTop='12px';
+ w.innerHTML='<table class="compare-table"><thead><tr><th>Baltic LPG (VLGC)</th><th>USD/tấn '+dm(b.date)+'</th><th>TCE USD/ngày '+(a?dm(a.date)+' → ':'')+dm(b.date)+'</th></tr></thead><tbody>'+Object.keys(names).map(k=>'<tr><td>'+names[k]+'</td><td>'+nf(b[k].usd_t,2)+'</td><td>'+(a?nf(a[k].tce)+' → ':'')+'<b>'+nf(b[k].tce)+'</b></td></tr>').join('')+'</tbody></table>';
+ const sn=card.querySelector('.source-note');(sn||card).before(w);
+ if(sn){sn.append(' · ');const l=el('a','','Baltic Exchange qua The Edge Malaysia');l.href=b.url;l.target='_blank';l.rel='noopener';sn.append(l)}}
+
 // 3. Cổ phiếu vận tải VN
 const st=D.stocks||{},tk=['PVT','VTO','VOS','VIP'].filter(t=>st[t]),col={PVT:C.navy,VTO:C.teal,VOS:'#d1783f',VIP:C.gold};
 if(tk.length&&$('chShipStocks')&&window.barLineChart){

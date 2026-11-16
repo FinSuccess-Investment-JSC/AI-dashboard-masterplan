@@ -3357,6 +3357,32 @@
    "job": "Claude (tài liệu)"
   },
   {
+   "id": "shipping.document.blpg",
+   "tier": "C",
+   "title": "Baltic LPG BLPG1–3 (USD/tấn, TCE) và TD34/TC15",
+   "schedule": {
+    "type": "policy",
+    "note": "hằng tuần sau khi The Edge Malaysia đăng 'Baltic Exchange shipping updates' (thứ Bảy/thứ Hai)"
+   },
+   "publication": "Bản tin tuần Baltic Exchange đăng lại trên The Edge Malaysia",
+   "source": {
+    "name": "Baltic Exchange qua The Edge Malaysia",
+    "url": "https://theedgemalaysia.com/node/824924"
+   },
+   "where": {
+    "page": "Van-tai-bien/index.html",
+    "file": "data/shipping-daily-public-data.json",
+    "blocks": [
+     "vt-73"
+    ]
+   },
+   "how": "Tìm bài 'Baltic Exchange shipping updates: <ngày>' trên theedgemalaysia.com, mở bài, thêm bản ghi vào blpg.records và tce.routes (TD34, TC15) trong data/shipping-daily-public-data.json, lưu trích dẫn vào data/shipping/evidence.json, chạy scripts/fetch_shipping_daily.py",
+   "gates": [
+    "Mở trang gốc, không dùng snippet"
+   ],
+   "job": "Claude (tài liệu)"
+  },
+  {
    "id": "shipping.public.weekly",
    "tier": "A",
    "title": "Brent, dầu nhiên liệu Trung Quốc",
