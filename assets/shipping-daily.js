@@ -31,11 +31,11 @@ if(sub&&window.barLineChart){
 
 // 2. TCE theo tuyến — dumbbell, thang log
 const tce=D.tce;
-if(tce&&$('chTceRoutes')){
+function tceChart(hostId,group){if(!tce||!$(hostId))return;
  const dates=[...new Set(tce.routes.flatMap(r=>r.records.map(x=>x[0])))].sort().slice(-3);
- const rows=tce.routes.map(r=>({...r,v:dates.map(d=>(r.records.find(x=>x[0]===d)||[])[1]??null)}));
+ const rows=tce.routes.filter(r=>r.group===group).map(r=>({...r,v:dates.map(d=>(r.records.find(x=>x[0]===d)||[])[1]??null)}));
  const all=rows.flatMap(r=>r.v).filter(Boolean),lo=Math.min(...all)/1.35,hi=Math.max(...all)*1.6;
- const host=$('chTceRoutes');
+ const host=$(hostId);
  const draw=()=>{
  const W=Math.max(560,host.clientWidth||760),L=270,R=70,rowH=32,top=34;let groups=[],y=top;rows.forEach((r,i)=>{if(!i||rows[i-1].group!==r.group){groups.push([r.group,y]);y+=22}r.y=y;y+=rowH});
  const H=y+30,X=v=>L+(Math.log10(v)-Math.log10(lo))/(Math.log10(hi)-Math.log10(lo))*(W-L-R);
@@ -53,8 +53,24 @@ if(tce&&$('chTceRoutes')){
  host.innerHTML=s+'</svg>';
  };
  draw();let lastW=host.clientWidth;if(window.ResizeObserver)new ResizeObserver(()=>{const w=host.clientWidth;if(w&&Math.abs(w-lastW)>8){lastW=w;draw()}}).observe(host);
- src($('chTceRoutes'),[[tce.source,tce.url]],dmy(dates[2]),'Mỗi mốc là thứ Sáu của bản Affinity Tanker Weekly; vạch nối hai tuần gần nhất (xanh tăng, đỏ giảm). Spot Vịnh (TD3C, TC5, TC17) rất cao vì ít tàu chịu vào; tàu VN chủ yếu nhận TC nên hưởng một phần.'+(tce.missing?' '+tce.missing:''));
+ src(host,[[tce.source,tce.url]],dmy(dates[2]),'Mỗi mốc là thứ Sáu của bản Affinity Tanker Weekly; vạch nối hai tuần gần nhất (xanh tăng, đỏ giảm). Spot Vịnh (TD3C, TC5, TC17) rất cao vì ít tàu chịu vào; tàu VN chủ yếu nhận TC nên hưởng một phần.'+(tce.missing?' '+tce.missing:''));
 }
+tceChart('chTceRoutes','Dầu thô');tceChart('chTceProduct','Thành phẩm');
+
+// 2b. Tàu sản phẩm: BCTI theo phiên (East Money), giá tàu MR/product (Fearnleys), thuê tàu LPG (Fearnleys)
+const bc=(D.eastmoney?.series?.bcti?.records||[]).filter(r=>r[0]>='2026-05-01');
+if(bc.length&&$('chBctiDaily')){dayChart('chBctiDaily',bc.map(r=>r[0]),[{name:'BCTI',color:C.teal,kind:'line',values:bc.map(r=>r[1])}],'điểm',0,260);
+ src($('chBctiDaily'),[['East Money · BCTI',D.eastmoney.series.bcti.url]],dmy(bc.at(-1)[0]))}
+const FE=window.SHIPPING_PUBLIC?.blocks?.fearnleys;
+if(FE&&$('chMrPrice')&&window.barLineChart){const ks=[['sh5_mr','MR 5 tuổi',C.navy],['sh10_mr','MR 10 tuổi',C.teal],['nb_product_tanker','Đóng mới product tanker',C.gold]].filter(([k])=>FE.series[k]);
+ const months=[...new Set(ks.flatMap(([k])=>FE.series[k].records.map(r=>r.date.slice(0,7))))].sort();
+ const val=(k,m)=>{const r=FE.series[k].records.filter(x=>x.date.slice(0,7)===m).at(-1);return r?r.value:null};
+ barLineChart('chMrPrice',{categories:months.map(m=>'T'+(+m.slice(5))+'/'+m.slice(2,4)),series:ks.map(([k,n,c])=>({name:n,color:c,kind:'line',values:months.map(m=>val(k,m))})),unit:'triệu USD',digits:1,height:260,zeroBase:false,rotateLabels:true});
+ src($('chMrPrice'),[['Fearnleys qua WiData (bảng 362)','https://widata.vn/'],...(FE.pdf_url?[['Fearnleys Weekly Report (PDF)',FE.pdf_url]]:[])],dmy(FE.series.nb_product_tanker.records.at(-1).date),'Bản PDF Fearnleys không có giá tàu cũ MR nên hai đường MR dừng 23/10/2026 (số Wi); giá đóng mới product tanker nối bằng PDF.')}
+const LP=D.lpg;
+if(LP&&LP.reports?.length&&$('chLpg')&&window.barLineChart){const rs=LP.reports,ks=[['lpg_vlgc','VLGC 84k cbm',C.navy],['lpg_mgc','MGC 38k cbm',C.teal],['lpg_sr65','Định áp 6,5k cbm',C.gold],['lpg_coaster','Coaster 3,5–5k cbm (châu Âu)',C.plum]];
+ if(window.ChartTypes)ChartTypes.mount($('chLpg'),{categories:rs.map(r=>dmy(r.date)),tickLabels:rs.map(r=>dm(r.date)),series:ks.map(([k,n,c])=>({name:n,color:c,kind:'bar',values:rs.map(r=>r.values[k]??null)})),unit:'nghìn USD/tháng',digits:0,zeroBase:true,height:260,flatTicks:true,native:'bar'});
+ src($('chLpg'),[['Fearnleys Weekly Report (PDF)',rs.at(-1).url]],dmy(rs.at(-1).date),'Giá thuê spot theo tháng của Fearnleys. GSP chạy tàu LPG định áp cỡ nhỏ (~5.000 cbm) tuyến Đông Nam Á, gần với hai cỡ nhỏ nhất ở đây; Baltic LPG (BLPG) chưa có nguồn mở.')}
 
 // 3. Cổ phiếu vận tải VN
 const st=D.stocks||{},tk=['PVT','VTO','VOS','VIP'].filter(t=>st[t]),col={PVT:C.navy,VTO:C.teal,VOS:'#d1783f',VIP:C.gold};

@@ -63,11 +63,11 @@ if(chain){
 const section=document.querySelector('.majorpane[data-tab="mt2"] .section');
 if(section){
  const head=section.querySelector('.sectionhead');
- const children=[...section.children].filter(e=>e!==head),ov=make('div','supply-pane'),tank=make('div','supply-pane'),bulk=make('div','supply-pane'),box=make('div','supply-pane');
- ov.id='supply-overview';tank.id='supply-world';bulk.id='supply-vietnam';box.id='supply-trade';
- let cur=tank;children.forEach(e=>{if(e.matches('h3.subhead')){const t=e.textContent.trim();cur=t.startsWith('Tổng quan')?ov:t.startsWith('Hàng rời')?bulk:t.startsWith('Container')?box:tank;e.remove();return}cur.append(e)});
+ const children=[...section.children].filter(e=>e!==head),ov=make('div','supply-pane'),prod=make('div','supply-pane'),tank=make('div','supply-pane'),bulk=make('div','supply-pane'),box=make('div','supply-pane');
+ ov.id='supply-overview';prod.id='supply-product';tank.id='supply-world';bulk.id='supply-vietnam';box.id='supply-trade';
+ let cur=tank;children.forEach(e=>{if(e.matches('h3.subhead')){const t=e.textContent.trim();cur=t.startsWith('Tổng quan')?ov:t.startsWith('Tàu sản phẩm')?prod:t.startsWith('Hàng rời')?bulk:t.startsWith('Container')?box:tank;e.remove();return}cur.append(e)});
  const tabs=make('div','supply-tabs');tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','Phân khúc');
- const panes=[ov,tank,bulk,box],labels=['Tổng quan','Tàu dầu & khí','Hàng rời','Container'];
+ const panes=[ov,tank,prod,bulk,box],labels=['Tổng quan','Tàu dầu thô','Tàu sản phẩm & hóa chất','Hàng rời','Container'];
  function select(i){panes.forEach((p,j)=>{p.hidden=i!==j;const b=tabs.children[j];b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1})}
  labels.forEach((label,i)=>{const b=make('button','tabbtn',label);b.type='button';b.id='supply-tab-'+i;b.setAttribute('role','tab');b.setAttribute('aria-controls',panes[i].id);panes[i].setAttribute('role','tabpanel');panes[i].setAttribute('aria-labelledby',b.id);b.addEventListener('click',()=>select(i));b.addEventListener('keydown',e=>{const n=panes.length;let next;if(e.key==='ArrowRight')next=(i+1)%n;else if(e.key==='ArrowLeft')next=(i+n-1)%n;else if(e.key==='Home')next=0;else if(e.key==='End')next=n-1;if(next!==undefined){e.preventDefault();select(next);tabs.children[next].focus()}});tabs.append(b)});
  head.after(tabs,...panes);select(0);

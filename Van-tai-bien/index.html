@@ -13,11 +13,11 @@
 <script src="../assets/sector-runtime.js?v=05b8df0a22cc" defer></script>
 <script src="../assets/sector-content.js?v=649051e35a0c" defer></script>
 <script src="../assets/sector-layout.js?v=6017726b6ba1" defer></script>
-<script src="../data/shipping-public-data.js?v=7920e6cf619a" defer></script>
+<script src="../data/shipping-public-data.js?v=281ccff28233" defer></script>
 <script src="../assets/sector-visuals.js?v=9bed10f3c811" defer></script>
-<script src="../data/shipping-daily-public-data.js?v=8c2f88322d36" defer></script>
-<script src="../assets/shipping-dashboard.js?v=1f28fa207071" defer></script>
-<script src="../assets/shipping-daily.js?v=b14cc2edbfdf" defer></script>
+<script src="../data/shipping-daily-public-data.js?v=519f402273a4" defer></script>
+<script src="../assets/shipping-dashboard.js?v=a264cb990459" defer></script>
+<script src="../assets/shipping-daily.js?v=b0491218a432" defer></script>
 <script src="../assets/chart-cards.js?v=7c15aee944f0" defer></script>
 <script src="../assets/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="../assets/chart-arrange.js?v=3ca9033119b7" defer></script>
@@ -39,7 +39,7 @@
 <script src="../assets/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="../assets/site-navigation.css?v=0aa68a6982f7">
 <script src="../assets/source-gap.js?v=02afdd3cfa3d" defer></script>
-<script src="../assets/site-navigation.js?v=fd23a387e725" data-release="20261116T035044Z-shipping"></script>
+<script src="../assets/site-navigation.js?v=fd23a387e725" data-release="20261116T035633Z-shipping"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="../assets/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="../assets/sector-base.css?v=ba33835e530c">
@@ -123,7 +123,7 @@
         <div class="tablewrap"><table id="tbl-ship-stocks"></table></div>
       </div>
     </div>
-    <h3 class="subhead">Tàu dầu &amp; khí</h3>
+    <h3 class="subhead">Tàu dầu thô</h3>
     <div class="grid two">
       <div class="card" data-block-id="vt-10" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">Cước tàu dầu: BDTI và BCTI</div>
@@ -161,12 +161,45 @@
       </div>
     </div>
       <div class="card" style="margin-top:14px" data-block-id="vt-61" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-      <div class="chart-title">Thu nhập tàu theo tuyến Baltic</div>
+      <div class="chart-title">Thu nhập tàu dầu thô theo tuyến Baltic</div>
       <div class="chart-sub">TCE USD/ngày · thang logarit · ba tuần gần nhất</div>
       <div id="chTceRoutes"></div>
       <details class="dtable"><summary>Xem bảng dữ liệu (theo quý, Affinity)</summary><div class="tablewrap"><table class="compare-table"><thead><tr><th>Tuyến</th><th>19/12/2025</th><th>20/03/2026</th><th>19/06/2026</th><th>25/09/2026</th><th>02/10/2026</th><th>23/10/2026</th><th>30/10/2026</th><th>06/11/2026</th><th>13/11/2026</th></tr></thead><tbody><tr><td>VLCC TD3C</td><td>110.068</td><td>384.449</td><td>490.423</td><td>1.234.685</td><td>1.286.655</td><td>1.294.761</td><td>1.351.405</td><td>1.285.922</td><td><b>1.056.208</b></td></tr><tr><td>Aframax TD7</td><td>71.230</td><td>191.767</td><td>41.315</td><td>314.796</td><td>305.166</td><td>485.769</td><td>457.742</td><td>219.773</td><td><b>141.063</b></td></tr><tr><td>LR1 TC5</td><td>28.705</td><td>62.439</td><td>99.269</td><td>187.550</td><td>196.155</td><td>232.035</td><td>211.870</td><td>212.207</td><td><b>207.023</b></td></tr><tr><td>MR TC17</td><td>28.184</td><td>65.612</td><td>65.481</td><td>112.326</td><td>116.097</td><td>113.387</td><td>112.859</td><td>114.811</td><td><b>119.503</b></td></tr><tr><td>MR TC2 (Đại Tây Dương)</td><td>9.765</td><td>18.983</td><td>6.304</td><td>6.380</td><td>14.577</td><td>17.647</td><td>16.961</td><td>12.340</td><td><b>14.687</b></td></tr><tr><td>TD15 · Suezmax/VLCC · Tây Phi – Trung Quốc</td><td></td><td></td><td></td><td></td><td></td><td></td><td>641.064</td><td>493.106</td><td><b>277.472</b></td></tr><tr><td>TD22 · VLCC · Vịnh Mỹ – Trung Quốc</td><td></td><td></td><td></td><td></td><td></td><td></td><td>495.725</td><td>415.390</td><td><b>232.090</b></td></tr><tr><td>TD20 · Suezmax · Tây Phi – châu Âu</td><td></td><td></td><td></td><td></td><td></td><td></td><td>387.888</td><td>207.106</td><td><b>151.618</b></td></tr><tr><td>TD19 · Aframax · Địa Trung Hải</td><td></td><td></td><td></td><td></td><td></td><td></td><td>306.471</td><td>92.619</td><td><b>85.775</b></td></tr><tr><td>TD25 · Aframax · Vịnh Mỹ – châu Âu</td><td></td><td></td><td></td><td></td><td></td><td></td><td>212.107</td><td>83.176</td><td><b>78.274</b></td></tr><tr><td>TC20 · LR2 · Vịnh Ả Rập – châu Âu</td><td></td><td></td><td></td><td></td><td></td><td></td><td>336.121</td><td>292.594</td><td><b>294.036</b></td></tr><tr><td>TC1 · LR2 · Vịnh Ả Rập – Nhật</td><td></td><td></td><td></td><td></td><td></td><td></td><td>291.884</td><td>294.560</td><td><b>296.831</b></td></tr><tr><td>TC8 · LR1 · Vịnh Ả Rập – châu Âu</td><td></td><td></td><td></td><td></td><td></td><td></td><td>251.289</td><td>223.790</td><td><b>223.211</b></td></tr><tr><td>TC14 · MR · Vịnh Mỹ – châu Âu</td><td></td><td></td><td></td><td></td><td></td><td></td><td>69.329</td><td>62.921</td><td><b>47.726</b></td></tr><tr><td>TC7 · MR · Singapore – Úc</td><td></td><td></td><td></td><td></td><td></td><td></td><td>68.196</td><td>66.831</td><td><b>62.233</b></td></tr></tbody></table></div></details>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>TC dài hạn thấp hơn spot nhiều: Aframax ~55.000, MR ~27.000, Handy ~25.000 USD/ngày (ACBS 8/2026). Clarksons Q3/2026 bình quân VLCC 277.995, Aframax 119.189, MR 31.157; ClarkSea 46.384 USD/ngày — kỷ lục. Bản Affinity 27/03 và 26/06 lỗi 404 → dùng 20/03 và 19/06. Spot Vịnh (TD3C, TC5, TC17) cực cao vì rất ít tàu chịu vào; tàu VN chủ yếu nhận TC nên hưởng một phần.</div></details>
       <div class="source-note">Nguồn: <a href="https://www.hellenicshippingnews.com/" target="_blank" rel="noopener">Affinity qua Hellenic Shipping News</a> (PDF từng tuần trong evidence) · <a href="https://acbs.com.vn/acbsmedia/2026/08/PVT_Update-Q2-2026.pdf" target="_blank" rel="noopener">ACBS</a></div>
+    </div>
+    <h3 class="subhead">Tàu sản phẩm &amp; hóa chất</h3>
+    <p class="research-caption" style="margin:0 0 10px">VTO, VIP (MR, Petrolimex), PVT (mảng sản phẩm), GSP (LPG, hóa chất).</p>
+    <div class="grid two">
+      <div class="card" data-block-id="vt-70" data-update-kind="periodic" data-cadence="daily" data-refresh-status="loaded">
+        <div class="chart-title">BCTI — cước tàu sản phẩm theo phiên</div>
+        <div class="chart-sub">điểm · đóng cửa từng phiên từ 5/2026</div>
+        <div id="chBctiDaily"></div>
+      </div>
+      <div class="card" data-block-id="vt-71" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="loaded">
+        <div class="chart-title">Thu nhập tàu sản phẩm theo tuyến Baltic</div>
+        <div class="chart-sub">TCE USD/ngày · thang logarit · ba tuần gần nhất</div>
+        <div id="chTceProduct"></div>
+      </div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="card" data-block-id="vt-72" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="loaded">
+        <div class="chart-title">Giá tàu MR cũ và đóng mới product tanker</div>
+        <div class="chart-sub">triệu USD · Fearnleys</div>
+        <div id="chMrPrice"></div>
+      </div>
+      <div class="card" data-block-id="vt-73" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="loaded">
+        <div class="chart-title">Thuê tàu khí LPG theo cỡ</div>
+        <div class="chart-sub">nghìn USD/tháng · Fearnleys, giá spot</div>
+        <div id="chLpg"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="vt-74" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+      <div class="chart-title">Tàu hóa chất</div>
+      <div class="chart-sub">TCE bình quân quý của Odfjell (hãng tàu hóa chất lớn) · USD/ngày</div>
+      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Quý</th><th>TCE Odfjell</th></tr></thead><tbody><tr><td>Q2/2026</td><td>29.486</td></tr><tr><td>Q3/2026</td><td><b>27.892</b></td></tr></tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Chưa có chỉ số tuần công khai cho tàu hóa chất (Drewry, McQuilling thu phí); Fearnleys, Affinity, Baltic không có mục hóa chất trong bản mở. Số Odfjell là kết quả một doanh nghiệp, không phải chỉ số thị trường. GSP chạy 2 tàu hóa chất nhỏ, chưa công bố TCE.</div></details>
+      <div class="source-note">Nguồn: <a href="https://www.bairdmaritime.com/shipping/tankers/odfjell-third-quarter-profit-falls" target="_blank" rel="noopener">Baird Maritime 05/11/2026 (KQKD Odfjell Q3/2026)</a></div>
     </div>
     <h3 class="subhead">Hàng rời</h3>
     <div class="card" data-block-id="vt-65" data-update-kind="periodic" data-cadence="daily" data-refresh-status="loaded" style="margin-bottom:14px">

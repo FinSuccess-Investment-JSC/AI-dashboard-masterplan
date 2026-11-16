@@ -2719,5 +2719,175 @@
   "quote": "Available in MEG next 30 days 99 1 1 Year T/C Crude VLCC Suezmax 250k",
   "status": "match",
   "note": "Fearnleys Weekly Report tuần 46 (PDF qua https://www.hellenicshippingnews.com/fearnleys-week-46-2026/), pdftotext -layout; TC: nghìn USD/ngày = USD/ngày ÷ 1000; giá tàu: triệu USD."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_vlgc 2026-10-21",
+  "value": "6.15e+06",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-2.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLGC 84' $6,150,000 -$450,000 LGC 60' $3,700,000",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_mgc 2026-10-21",
+  "value": "2.3e+06",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-2.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "MGC 38' $2,300,000 $0 HDY SR 20-22' $980,000 $0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_sr65 2026-10-21",
+  "value": "570000",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-2.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "SR 6.5' $570,000 $0 COASTER Europe (3 500-5 000",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_coaster 2026-10-21",
+  "value": "440000",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-2.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "COASTER Europe (3 500-5 000 cbm) $440,000 $0 LPG/FOB P",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_vlgc 2026-10-28",
+  "value": "6.05e+06",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLGC 84' $6,050,000 -$100,000 LGC 60' $3,800,000",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_mgc 2026-10-28",
+  "value": "2.2e+06",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "MGC 38' $2,200,000 -$100,000 HDY SR 20-22' $980",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_sr65 2026-10-28",
+  "value": "570000",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "SR 6.5' $570,000 $0 COASTER Europe (3 500-5 000",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_coaster 2026-10-28",
+  "value": "450000",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/10/Fearnleys-Weekly-Report-_-Fearnpulse-3.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "COASTER Europe (3 500-5 000 cbm) $450,000 $10,000 LPG/",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_vlgc 2026-11-04",
+  "value": "6.12e+06",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLGC 84' $6,120,000 $70,000 LGC 60' $3,800,000 $",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_mgc 2026-11-04",
+  "value": "2.2e+06",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "MGC 38' $2,200,000 $0 HDY SR 20-22' $980,000 $0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_sr65 2026-11-04",
+  "value": "580000",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "SR 6.5' $580,000 $10,000 COASTER Europe (3 500-",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_coaster 2026-11-04",
+  "value": "460000",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "COASTER Europe (3 500-5 000 cbm) $460,000 $10,000 LPG/",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_vlgc 2026-11-11",
+  "value": "6.3e+06",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "VLGC 84' $6,300,000 $180,000 LGC 60' $3,800,000 ",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_mgc 2026-11-11",
+  "value": "2.2e+06",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "MGC 38' $2,200,000 $0 HDY SR 20-22' $980,000 $0",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_sr65 2026-11-11",
+  "value": "590000",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "SR 6.5' $590,000 $10,000 COASTER Europe (3 500-",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-73",
+  "claim": "Fearnleys lpg_coaster 2026-11-11",
+  "value": "470000",
+  "url": "https://www.hellenicshippingnews.com/wp-content/uploads/2026/11/Fearnleys-Weekly-Report-_-Fearnpulse-1.pdf",
+  "opened_at": "2026-11-16",
+  "quote": "COASTER Europe (3 500-5 000 cbm) $470,000 $10,000 LPG/",
+  "status": "match",
+  "note": "Fearnleys Weekly Report, LPG Rates spot USD/tháng (trang hiển thị nghìn USD/tháng)."
+ },
+ {
+  "block": "vt-74",
+  "claim": "Odfjell TCE Q3/2026 và Q2/2026",
+  "value": "27892; 29486",
+  "url": "https://www.bairdmaritime.com/shipping/tankers/odfjell-third-quarter-profit-falls",
+  "opened_at": "2026-11-16",
+  "quote": "Daily time charter equivalent (TCE) earnings fell to $27,892 from $29,486",
+  "status": "match",
+  "note": "Baird Maritime 05/11/2026."
  }
 ]

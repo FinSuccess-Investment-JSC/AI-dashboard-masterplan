@@ -3314,7 +3314,11 @@
      "vt-65c",
      "vt-65d",
      "vt-66",
-     "vt-67"
+     "vt-67",
+     "vt-70",
+     "vt-71",
+     "vt-72",
+     "vt-73"
     ]
    },
    "how": "python3 scripts/fetch_shipping_daily.py (chạy trong refresh-data.yml)",
@@ -3324,6 +3328,32 @@
    ],
    "job": "refresh-data.yml (mỗi lượt refresh)",
    "note": "BDI Handybulk đối chiếu CNBC, lệch ghi ở bdi_sub.bdi_mismatch; Compass: số đổi >50%/tuần hoặc lệch cột tuần trước của bản kế tiếp bị đánh dấu nghi vấn, không lên thẻ; East Money đối chiếu Handybulk ở eastmoney.check_handybulk; Compass tự phát hiện đảo dòng"
+  },
+  {
+   "id": "shipping.document.chemical",
+   "tier": "C",
+   "title": "Tàu hóa chất: TCE Odfjell theo quý",
+   "schedule": {
+    "type": "policy",
+    "note": "khi Odfjell công bố KQKD quý (tháng 2, 5, 8, 11)"
+   },
+   "publication": "KQKD Odfjell theo quý",
+   "source": {
+    "name": "Baird Maritime (KQKD Odfjell)",
+    "url": "https://www.bairdmaritime.com/shipping/tankers/odfjell-third-quarter-profit-falls"
+   },
+   "where": {
+    "page": "Van-tai-bien/index.html",
+    "file": "Van-tai-bien/index.html",
+    "blocks": [
+     "vt-74"
+    ]
+   },
+   "how": "Mở báo cáo quý Odfjell / bài Baird, lưu trích dẫn vào data/shipping/evidence.json, sửa bảng vt-74",
+   "gates": [
+    "Mở trang gốc, không dùng snippet"
+   ],
+   "job": "Claude (tài liệu)"
   },
   {
    "id": "shipping.public.weekly",

@@ -143,6 +143,11 @@ def parse_fearnleys(t):
         if i>=0:
             m=re.match(re.escape(lab[:-1])+r'\$([\d.]+) \$([\d.]+)',J[i:i+40])
             if m:out['sh5_'+k]=(float(m.group(1)),m.group(0));out['sh10_'+k]=(float(m.group(2)),m.group(0))
+    lpg=J.find('LPG Rates')  # giá thuê tàu khí, USD/tháng → nghìn USD/tháng
+    for k,lab in (('lpg_vlgc',"VLGC 84'"),('lpg_mgc',"MGC 38'"),('lpg_sr65',"SR 6.5'"),('lpg_coaster','COASTER Europe')):
+        if lpg>=0:
+            v,q=after(lab,pat=r'\$([\d,]+)',start=lpg)
+            if v is not None:out[k]=(round(v/1000,1),q)
     for k,lab in (('vlcc_fixtures','Fixed in all areas last week'),('vlcc_avail_meg','Available in MEG next 30 days')):
         v,q=after(lab,pat=r'(\d+)')
         if v is not None:out[k]=(v,q)
@@ -294,7 +299,9 @@ def main():
     page = json.loads(json.dumps(out))  # the page does not need the quoted paragraphs (kept in the .json)
     for r in page.get('bdi_sub', {}).get('records', {}).values():
         r.pop('quote', None)
-    page.pop('fearnleys', None)  # merged into data/shipping-public-data.js by build_sector_public.py
+    fr = page.pop('fearnleys', {}).get('reports', {})  # TC/giá tàu ghép vào shipping-public-data.js; LPG giữ ở đây
+    page['lpg'] = {'reports': [{'date': r['date'], 'url': r['url'], 'values': {k: v for k, v in r['values'].items() if k.startswith('lpg_')}}
+                               for _, r in sorted(fr.items()) if any(k.startswith('lpg_') for k in r['values'])]}
     em = page.get('eastmoney', {}).get('series', {})
     for k in list(em):  # the page uses East Money only for BDTI/BCTI; the rest stay in the .json for cross-checks
         if k not in ('bdti', 'bcti'):
