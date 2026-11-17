@@ -568,5 +568,35 @@
     "quote": "Bộ Xây dựng đặt mục tiêu khởi công Dự án đường sắt tốc độ cao Bắc-Nam vào tháng 12/2027.",
     "status": "match",
     "note": "CafeF 09/09/2026 (theo Tiền Phong)"
+  },
+  {
+    "block": "bds-22",
+    "claim": "Hệ thống 751: dự án tồn đọng đã xử lý đến 15/9/2026",
+    "value": "3.407/4.685 (73%); 1.123 có phương án; 155 thuộc thẩm quyền cấp cao",
+    "url": "https://tienphong.vn/go-nut-that-gan-3500-du-an-post1878365.tpo",
+    "opened_at": "2026-11-17",
+    "quote": "Tính đến ngày 15/9, cả nước có 3.407 dự án - chiếm 73% tổng số dự án tồn đọng, kéo dài",
+    "status": "match",
+    "note": "Tiền Phong 22/09/2026; tổng 4.685 và 1.123/155 từ cùng bài (bài không nêu tổng diện tích)"
+  },
+  {
+    "block": "bds-22",
+    "claim": "TP.HCM dự án tồn đọng hoàn thành tháo gỡ (2 giai đoạn)",
+    "value": "723 dự án (54%); 619 còn lại có phương án",
+    "url": "https://vov.vn/kinh-te/tphcm-hoan-thanh-thao-go-vuong-mac-723-du-an-ton-dong-keo-dai-post1342430.vov",
+    "opened_at": "2026-11-17",
+    "quote": "Tổng hợp cả 2 giai đoạn thì đã có 723 dự án đã hoàn thành tháo gỡ vướng mắc, khó khăn (đạt 54% tổng số dự án).",
+    "status": "match",
+    "note": "VOV 18/10/2026. Tiền Phong 22/09 ghi 233 dự án (25%) đến 5/9 — khác kỳ và cách tính, không trộn"
+  },
+  {
+    "block": "bds-26",
+    "claim": "FDI 10T/2026 đăng ký, thực hiện, BĐS",
+    "value": "54,85 tỷ USD (+74%); thực hiện ước ~24 tỷ (+13%); BĐS >7 tỷ đăng ký, 1,76 tỷ thực hiện",
+    "url": "https://cafef.vn/von-fdi-dang-ky-vao-viet-nam-cao-nhat-tu-nam-2009-188261103135738172.chn",
+    "opened_at": "2026-11-17",
+    "quote": "tổng vốn FDI đăng ký vào Việt Nam trong 10 tháng năm 2026 đạt 54,85 tỷ USD",
+    "status": "match",
+    "note": "CafeF 03/11/2026 dẫn Cục Thống kê; thực hiện là số ước; bài không nêu tỷ trọng % nên bỏ tỷ trọng 9T"
   }
 ]

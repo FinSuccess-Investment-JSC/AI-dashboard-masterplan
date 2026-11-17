@@ -2688,5 +2688,15 @@
     "quote": "Đá xây dựng 126,00 128,37 139,61 131,33",
     "status": "match",
     "note": "QĐ 913/QĐ-SXD Sở XD Bắc Ninh, PDF qua thuviennhadat.vn (bài https://thuviennhadat.vn/phap-luat/chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung-748836.html); cột tháng 7, 8, 9 và Quý III"
+  },
+  {
+    "block": "xd-43",
+    "claim": "Giải ngân ĐTC lũy kế đến 5/11/2026",
+    "value": "717.161,3 tỷ đồng; 74,37%",
+    "url": "https://thoibaotaichinhvietnam.vn/giai-ngan-dau-tu-cong-tang-toc-trong-tuan-dau-thang-11-206777.html",
+    "opened_at": "2026-11-17",
+    "quote": "cả nước giải ngân 717.161,3 tỷ đồng vốn đầu tư công nguồn ngân sách nhà nước",
+    "status": "match",
+    "note": "TBTCVN 11/11/2026, dẫn Bộ Tài chính; % trích từ cùng bài (74,37%), làm tròn 74,4 trong bảng"
   }
 ]

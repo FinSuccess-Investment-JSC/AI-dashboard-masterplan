@@ -228,9 +228,9 @@
    "lastNote": "28/10: không có số tín dụng BĐS 9/2026 mới; tổng dư nợ 20,75 triệu tỷ đã có; Kiểm tra bds-35/36"
   },
   "realestate.hot-topics": {
-   "lastAttempt": "2026-10-28T21:31:36+07:00",
-   "lastSuccess": "2026-10-28T21:31:36+07:00",
-   "lastNote": "NOXH 947 dự án 910.933 căn (BXD 15/10); giao dịch Q3 92.004"
+   "lastAttempt": "2026-11-17T13:03:32+07:00",
+   "lastSuccess": "2026-11-17T13:03:32+07:00",
+   "lastNote": "Cập nhật bds-22 (751: 3.407/4.685 đến 15/9; TP.HCM 723 dự án 18/10) và bds-26 (FDI 10T: 54,85 tỷ USD). Các card bds-23/24/25/27/39/43 chưa rà lượt này."
   },
   "realestate.ai.cycle": {
    "lastAttempt": "2026-10-28T18:13:36+07:00",
@@ -798,7 +798,11 @@
   "realestate.backlog": {},
   "seafood.public.margin": {},
   "seafood.public.por": {},
-  "construction.disbursement-race": {},
+  "construction.disbursement-race": {
+   "lastAttempt": "2026-11-17T13:03:32+07:00",
+   "lastSuccess": "2026-11-17T13:03:32+07:00",
+   "lastNote": "Mở TBTCVN 11/11/2026: thêm mốc 05/11 = 717.161,3 tỷ, 74,37% KH (bảng WEEK + evidence); mốc 31/10 đã có (TBTCVN 03/11)."
+  },
   "construction.province-index-bot": {},
   "insurance.wi.ratio": {
    "lastAttempt": "2026-11-17T09:23:00+07:00",
@@ -6303,18 +6307,6 @@
    "signals": []
   },
   {
-   "id": "realestate.hot-topics",
-   "tier": "C",
-   "title": "Chủ đề nóng: dự án tồn đọng, giá nhà, bảng giá đất, NOXH, KCN & thuế quan, tái cấu trúc nợ; dự án theo dõi",
-   "since": "2026-11-02T13:43:48+07:00",
-   "reasons": [
-    "lịch 02/11 07:00",
-    "lịch 09/11 07:00",
-    "lịch 16/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "agri.hot-topics",
    "tier": "C",
    "title": "Chủ đề nóng: El Niño, chu kỳ heo, cao su & đất KCN, thuế TTĐB",
@@ -6888,16 +6880,6 @@
    "signals": []
   },
   {
-   "id": "construction.disbursement-race",
-   "tier": "C",
-   "title": "Đường đua giải ngân % KH: mốc tuần Bộ Tài chính (TBTCVN)",
-   "since": "2026-11-05T14:20:04+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
    "id": "construction.province-index-bot",
    "tier": "C",
    "title": "Chỉ số giá XD Bắc Ninh; BOT HHV theo quý",
@@ -7327,5 +7309,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-17T09:23:03+07:00"
+ "updatedAt": "2026-11-17T13:03:32+07:00"
 }

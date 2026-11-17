@@ -1,6 +1,7 @@
-Routine Wi 17/11: Widata hết credit tuần (làm mới 00:00 thứ Sáu 20/11) nên chỉ cập nhật một phần.
-Bank: nạp 9/10 file Wi (lãi suất huy động, liên NH, tỷ giá, đường cong TPCP, định giá NH, VNINDEX, vĩ mô) tới 16-17/11; đấu thầu TPCP lỗi thiếu cột winning_yield, tin tức chưa làm.
-Thép: đủ lời gọi Wi (hàng hóa + vĩ mô).
-8 ngành còn lại chỉ có một phần lời gọi, giữ số cũ cho phần thiếu; ngành điện/dược/bán lẻ chưa có số Wi mới.
-Tài khoản từng bị khóa tạm ~5 phút do gọi song song; 35 mục vẫn trong hàng chờ.
+Routine tài liệu 17/11: xử lý 2/10 mục đầu hàng chờ (còn 62 mục).
+- Xây dựng · đường đua giải ngân: thêm mốc 05/11 = 717.161,3 tỷ (74,37% KH), TBTCVN 11/11.
+- BĐS · chủ đề nóng: dự án tồn đọng (751: 3.407/4.685 đến 15/9; TP.HCM 723 dự án) và FDI 10T/2026 (54,85 tỷ USD).
+- BĐS hot-topics: chỉ rà bds-22, bds-26; các card còn lại chưa rà.
+- Bỏ qua power.company-quarterly (BCTC, người dùng tự yêu cầu). Các mục còn lại để lượt sau.
+- Test cũ có 10 lỗi import (có sẵn, không do lượt này).
 Chưa kiểm giao diện bằng trình duyệt.
