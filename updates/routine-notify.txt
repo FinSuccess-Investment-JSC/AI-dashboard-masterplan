@@ -1,7 +1,4 @@
-Routine tài liệu 17/11: xử lý 2/10 mục đầu hàng chờ (còn 62 mục).
-- Xây dựng · đường đua giải ngân: thêm mốc 05/11 = 717.161,3 tỷ (74,37% KH), TBTCVN 11/11.
-- BĐS · chủ đề nóng: dự án tồn đọng (751: 3.407/4.685 đến 15/9; TP.HCM 723 dự án) và FDI 10T/2026 (54,85 tỷ USD).
-- BĐS hot-topics: chỉ rà bds-22, bds-26; các card còn lại chưa rà.
-- Bỏ qua power.company-quarterly (BCTC, người dùng tự yêu cầu). Các mục còn lại để lượt sau.
-- Test cũ có 10 lỗi import (có sẵn, không do lượt này).
-Chưa kiểm giao diện bằng trình duyệt.
+Routine Wi 18/11: không cập nhật được.
+Widata hết credit tuần của gói FREE, làm mới 00:00 thứ Sáu 20/11.
+Không gọi WiMCP, giữ nguyên số cũ; 37 mục hàng chờ Wi vẫn còn (bank.wi.daily mới tới 16/11).
+Cần nâng gói/credit hoặc chờ reset; routine sẽ tự chạy lại sau 20/11.
