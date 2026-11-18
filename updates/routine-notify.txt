@@ -1,4 +1,8 @@
-Routine Wi 18/11: không cập nhật được.
-Widata hết credit tuần của gói FREE, làm mới 00:00 thứ Sáu 20/11.
-Không gọi WiMCP, giữ nguyên số cũ; 37 mục hàng chờ Wi vẫn còn (bank.wi.daily mới tới 16/11).
-Cần nâng gói/credit hoặc chờ reset; routine sẽ tự chạy lại sau 20/11.
+Routine tài liệu 18/11/2026:
+- Thép: thêm EU CBPG thép cán nguội 16,0% VN (hiệu lực 17/11) và vụ AD25 thép không gỉ (TRAV).
+- BĐS: ghi Thông báo 586/TB-VPCP (15/11) về luật KD BĐS/Nhà ở sửa đổi; thêm khảo sát lãi vay mua nhà đầu 11/2026 (CafeF).
+- Không có số mới: Bank, Xây dựng (2 mục), Thép tin nóng, Bảo hiểm tái tục.
+- Lỗi: Dược tin nóng, nhadautu.vn chặn 403.
+- Bỏ qua: power.company-quarterly (BCTC, người dùng tự yêu cầu).
+- 10 test unittest lỗi import sẵn từ trước, không do thay đổi này.
+Chưa kiểm giao diện bằng trình duyệt.

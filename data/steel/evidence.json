@@ -1349,5 +1349,45 @@
   "status": "match",
   "correct_value": "",
   "note": "Tiêu đề tin trên trang chủ TRAV; bài chi tiết chưa mở"
+ },
+ {
+  "block": "th-51",
+  "claim": "EU CBPG thép cán nguội: biên độ Việt Nam",
+  "value": "16,0%",
+  "url": "https://trav.gov.vn/default.aspx?page=news-detail&do=detail&id=7de920b5-ba44-46d4-bd4b-6747de529d71",
+  "opened_at": "2026-11-18",
+  "quote": "EC kết luận biên độ bán phá giá đối với sản phẩm thép cán nguội nhập khẩu từ Việt Nam là 16,0%.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-51",
+  "claim": "EU Quy định thực thi số hiệu",
+  "value": "2026/2547",
+  "url": "https://trav.gov.vn/default.aspx?page=news-detail&do=detail&id=7de920b5-ba44-46d4-bd4b-6747de529d71",
+  "opened_at": "2026-11-18",
+  "quote": "Quy định thực thi (EU) 2026/2547",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-50",
+  "claim": "AD25 hạn trả lời bản câu hỏi",
+  "value": "30/11/2026",
+  "url": "https://trav.gov.vn/default.aspx?page=news-detail&do=detail&id=4e22b95e-09ff-43ee-9842-c957fb86744b",
+  "opened_at": "2026-11-18",
+  "quote": "đến hết ngày 30 tháng 11 năm 2026 (theo giờ Hà Nội)",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "th-50",
+  "claim": "AD25 thông báo số",
+  "value": "234/TB-PVTM ngày 13/11/2026",
+  "url": "https://trav.gov.vn/default.aspx?page=news-detail&do=detail&id=4e22b95e-09ff-43ee-9842-c957fb86744b",
+  "opened_at": "2026-11-18",
+  "quote": "Thông báo số 234/TB-PVTM ngày 13 tháng 11 năm 2026",
+  "status": "match",
+  "note": ""
  }
 ]
