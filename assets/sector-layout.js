@@ -209,7 +209,24 @@ else{
   if(window.ChartTypes)ChartTypes.mount(h,{...model,native:'bar'},()=>{h.innerHTML=ChartTypes.render({...model,width:h.clientWidth||640},'bar')});
   if(gap)c.append(make('div','source-note data-gap',gap));
   const row=make('div','source-note');row.append('Nguồn: ');refs.forEach(([t,u],i)=>{if(i)row.append(' · ');const a=make('a','',t);a.href=u;a.target='_blank';a.rel='noopener';row.append(a)});c.append(row)};
- fcBar('sugar-11','Dự báo cán cân đường thế giới niên vụ 2026/27','Triệu tấn · âm = thiếu hụt · số mới nhất của từng tổ chức',[['Czarnikow (11/06)',-0.1],['ISO (01/09)',-0.2],['Covrig (03/08)',-0.3],['StoneX (28/07)',-1.7],['Green Pool (27/08)',-3.2]],'triệu tấn',1,[['Barchart 02/09/2026','https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit'],['Barchart 31/08/2026','https://www.barchart.com/story/news/4359559/global-supply-fears-underpin-sugar-prices']]);
+ // Cung–cầu thế giới (USDA PSD) các niên vụ trước + dự báo cán cân 2026/27 của các tổ chức, chung một card.
+ const FC=[['Czarnikow (11/06)',-0.1],['ISO (01/09)',-0.2],['Covrig (03/08)',-0.3],['StoneX (28/07)',-1.7],['Green Pool (27/08)',-3.2]];
+ const FCREF=[['Barchart 02/09/2026','https://www.barchart.com/story/news/4405309/sugar-prices-supported-by-expectations-of-a-global-deficit'],['Barchart 31/08/2026','https://www.barchart.com/story/news/4359559/global-supply-fears-underpin-sugar-prices']];
+ if(sh?.records?.[0]?.use_total!=null){
+  const c=card('sugar-11','Cung – cầu đường thế giới và dự báo niên vụ 2026/27','Triệu tấn, giá trị thô · USDA PSD từ 2010/11; dự báo của các tổ chức đặt ở cuối','periodic','semiannual');world.append(c);c.style.gridColumn='1 / -1';
+  const rs=sh.records.filter(r=>r.market_year>=2010),my=r=>r.market_year+'/'+String(r.market_year+1).slice(2)+(r.market_year>=2025?'*':'');
+  const sub=(id,t)=>{c.append(make('div','chart-sub',t));const h=make('div');h.id=id;c.append(h);return h};
+  const h1=sub('ch-sugar-11-sd','Sản xuất và tiêu thụ toàn cầu (USDA)');
+  const m1={categories:rs.map(my),series:[{name:'Sản xuất',color:'#2938A8',kind:'bar',values:rs.map(r=>r.prod_total)},{name:'Tiêu thụ',color:'#59C5C8',kind:'line',values:rs.map(r=>r.use_total)}],unit:'triệu tấn',digits:1,zeroBase:false,time:false,aria:'Sản xuất và tiêu thụ đường thế giới'};
+  ChartTypes.mount(h1,m1,()=>{h1.innerHTML=ChartTypes.render({...m1,width:h1.clientWidth||640},'bar')});
+  const h2=sub('ch-sugar-11-bal','Cán cân = sản xuất − tiêu thụ; dương = dư thừa, âm = thiếu hụt');
+  const cats=rs.map(r=>'USDA '+my(r)).concat(FC.map(f=>f[0]+' 26/27'));
+  const m2={categories:cats,series:[{name:'USDA (thực tế/ước tính)',color:'#2938A8',kind:'bar',values:rs.map(r=>+(r.prod_total-r.use_total).toFixed(1)).concat(FC.map(()=>null))},{name:'Dự báo tổ chức 2026/27',color:'#c29100',kind:'bar',values:rs.map(()=>null).concat(FC.map(f=>f[1]))}],unit:'triệu tấn',digits:1,stackable:true,time:false,aria:'Cán cân đường thế giới'};
+  ChartTypes.mount(h2,{...m2,native:'stack'},()=>{h2.innerHTML=ChartTypes.render({...m2,width:h2.clientWidth||640},'stack')});
+  const last=rs.at(-1);
+  c.append(make('div','source-note data-gap','USDA cho 2026/27* dư '+fmt(last.prod_total-last.use_total,1)+' triệu tấn, trong khi các tổ chức thương mại dự báo thiếu 0,1–3,2 triệu tấn. Hai bên không cùng định nghĩa: USDA cộng niên vụ của từng nước (lệch kỳ), tiêu thụ = Total Disappearance; các tổ chức dùng niên vụ chung 10–9 và có điều chỉnh tồn kho, nên chỉ so hướng, không so mức.'));
+  const row=make('div','source-note');row.append('Nguồn: ');[['USDA FAS PSD','https://apps.fas.usda.gov/psdonline/app/index.html#/app/advQuery']].concat(FCREF).forEach(([t,u],i)=>{if(i)row.append(' · ');const a=make('a','',t);a.href=u;a.target='_blank';a.rel='noopener';row.append(a)});c.append(row);
+ } else fcBar('sugar-11','Dự báo cán cân đường thế giới niên vụ 2026/27','Triệu tấn · âm = thiếu hụt · số mới nhất của từng tổ chức',FC,'triệu tấn',1,FCREF);
 }
 const tabs=make('div','supply-tabs');tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','Phạm vi cung cầu');
 const panes=[world,vn];function select(i){panes.forEach((p,j)=>{p.hidden=i!==j;const b=tabs.children[j];b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1})}
