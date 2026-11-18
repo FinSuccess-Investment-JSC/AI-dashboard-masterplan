@@ -141,5 +141,27 @@
     "status": "match",
     "correct_value": "",
     "note": ""
+  },
+  {
+    "block": "sugar-06",
+    "claim": "RS Hà Nội 6/10 và 27/10/2026",
+    "value": "18.000-19.400 → 18.000-19.000",
+    "url": "https://vneconomy.vn/gia-duong-viet-nam-thap-nhat-khu-vuc-ap-luc-canh-tranh-tu-hfcs-va-duong-lau.htm",
+    "opened_at": "2026-11-18",
+    "quote": "Tại Hà Nội, giá đường kính trắng giảm từ 18.000-19.400 đồng/kg ngày 6/10 xuống còn 18.000-19.000 đồng/kg ngày 27/10.",
+    "status": "match",
+    "correct_value": "",
+    "note": "bài đăng 15/11/2026"
+  },
+  {
+    "block": "sugar-06",
+    "claim": "RE Hà Nội đầu–cuối T10/2026",
+    "value": "19.400-20.200 → 19.200-20.000",
+    "url": "https://vneconomy.vn/gia-duong-viet-nam-thap-nhat-khu-vuc-ap-luc-canh-tranh-tu-hfcs-va-duong-lau.htm",
+    "opened_at": "2026-11-18",
+    "quote": "Giá đường tinh luyện cũng giảm từ 19.400-20.200 đồng/kg xuống 19.200-20.000 đồng/kg.",
+    "status": "match",
+    "correct_value": "",
+    "note": "ngày gán 6/10 và 27/10 theo câu liền trước"
   }
 ]
