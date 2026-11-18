@@ -163,5 +163,27 @@
     "status": "match",
     "correct_value": "",
     "note": "ngày gán 6/10 và 27/10 theo câu liền trước"
+  },
+  {
+    "block": "sugar-16",
+    "claim": "HFCS nhập khẩu 7T/2026",
+    "value": "131.416 tấn",
+    "url": "https://mekongasean.vn/suc-ep-cu-a-nga-nh-mia-duo-ng-58556.html",
+    "opened_at": "2026-11-18",
+    "quote": "Trong tháng 7/2026, Việt Nam nhập khẩu 22.215 tấn HFCS, nâng tổng lượng nhập khẩu từ đầu năm lên 131.416 tấn",
+    "status": "match",
+    "correct_value": "",
+    "note": "bài 17/8/2026; một số nguồn ghi 22.215 tấn là T6 — chờ số Hải quan đối chiếu"
+  },
+  {
+    "block": "sugar-15",
+    "claim": "Đường nhập lậu ~2025",
+    "value": "500-600 nghìn tấn/năm (vẽ 550)",
+    "url": "https://tienphong.vn/lo-duong-nhap-lau-lan-san-vi-sao-doanh-nghiep-khong-tu-cuu-minh-post1775884.tpo",
+    "opened_at": "2026-11-18",
+    "quote": "với lượng nhập lậu ước tính khoảng 500.000-600.000 tấn/năm",
+    "status": "match",
+    "correct_value": "",
+    "note": "Chủ tịch VSSA, tổng kết vụ 2024/25, bài 06/9/2025"
   }
 ]

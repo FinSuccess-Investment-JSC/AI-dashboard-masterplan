@@ -272,7 +272,7 @@
         <div class="chart-title">Ước tính đường nhập lậu</div>
         <div class="chart-sub">Nghìn tấn · năm dương lịch</div>
         <div id="chSmuggled"></div>
-        <div class="source-note">Nguồn: <a href="https://vcbs.com.vn" target="_blank" rel="noopener">VCBS</a> "Báo cáo ngành mía đường" 2024, VSSA. Ước tính giảm mạnh sau ATIGA (2020) và sau thuế CBPG/CTC (2021) rồi tăng trở lại; thị phần đường lậu được VSSA ước khoảng 30% thị trường nội địa giữa 2026.</div>
+        <div class="source-note">Nguồn: <a href="https://vcbs.com.vn" target="_blank" rel="noopener">VCBS</a> "Báo cáo ngành mía đường" 2024, VSSA. Ước tính giảm mạnh sau ATIGA (2020) và sau thuế CBPG/CTC (2021) rồi tăng trở lại; thị phần đường lậu được VSSA ước khoảng 30% thị trường nội địa giữa 2026. 2025*: điểm giữa khoảng 500–600 nghìn tấn/năm Chủ tịch VSSA nêu tại tổng kết vụ 2024/25 (<a href="https://tienphong.vn/lo-duong-nhap-lau-lan-san-vi-sao-doanh-nghiep-khong-tu-cuu-minh-post1775884.tpo" target="_blank" rel="noopener">Tiền Phong 06/9/2025</a>); 2024 chưa có ước tính riêng.</div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-smuggled"></table></div></details>
       </div>
     </div>
@@ -281,7 +281,7 @@
         <div class="chart-title">Nhập khẩu HFCS (siro ngô fructose cao)</div>
         <div class="chart-sub">Nghìn tấn · năm dương lịch</div>
         <div id="chHfcs"></div>
-        <div class="source-note">Nhập khẩu HFCS tăng hơn gấp đôi 2021→2024 (102,4 → 241,5 nghìn tấn). 2023* là số suy ra từ lũy kế 9 tháng, không phải số cả năm công bố trực tiếp; 2025 (7T)* là lũy kế 7 tháng, chưa phải cả năm — cả hai cột được hiển thị mờ hơn. Không xác nhận được mức chênh lệch giá "20–25%" từng công bố trước đây — các nguồn giá landed cho thấy khoảng chênh rộng hơn (35–55%), nhưng phương pháp so sánh không đồng nhất (HFCS ngọt hơn đường mía 25–60% theo trọng lượng) nên không đưa một con số duy nhất vào dashboard.</div>
+        <div class="source-note">Nhập khẩu HFCS tăng hơn gấp đôi 2021→2024 (102,4 → 241,5 nghìn tấn). 2023* là số suy ra từ lũy kế 9 tháng, không phải số cả năm công bố trực tiếp; 2025 (7T)* là lũy kế 7 tháng, chưa phải cả năm — cả hai cột được hiển thị mờ hơn. Không xác nhận được mức chênh lệch giá "20–25%" từng công bố trước đây — các nguồn giá landed cho thấy khoảng chênh rộng hơn (35–55%), nhưng phương pháp so sánh không đồng nhất (HFCS ngọt hơn đường mía 25–60% theo trọng lượng) nên không đưa một con số duy nhất vào dashboard. 2026 (7T)*: 131,4 nghìn tấn, +4% so cùng kỳ (<a href="https://mekongasean.vn/suc-ep-cu-a-nga-nh-mia-duo-ng-58556.html" target="_blank" rel="noopener">Mekong ASEAN 17/8/2026</a>, số Hải quan).</div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-hfcs"></table></div></details>
       </div>
       <div class="card" data-block-id="sugar-17" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
@@ -897,15 +897,15 @@ barLineChart('chImports',{categories:MY, series:[{name:'Nhập khẩu',color:S1,
 fillTable('tbl-imports',['Niên vụ','Nhập khẩu (nghìn tấn)'], MY_FULL.map((l,i)=>[l, fmt(PSD.imports[i])]));
 
 /* 4b. smuggled */
-const smuggledLabels=['2018','2019','2020','2021','2022','2023'];
-const smuggledVals=[890,830,205,380,812,600];
-barLineChart('chSmuggled',{categories:smuggledLabels, series:[{name:'Ước tính đường lậu',color:S2,confArr:[false,false,false,false,false,false],values:smuggledVals}], unit:'nghìn tấn', digits:0, height:230});
+const smuggledLabels=['2018','2019','2020','2021','2022','2023','2025*'];
+const smuggledVals=[890,830,205,380,812,600,550];
+barLineChart('chSmuggled',{categories:smuggledLabels, series:[{name:'Ước tính đường lậu',color:S2,confArr:[false,false,false,false,false,false,false],values:smuggledVals}], unit:'nghìn tấn', digits:0, height:230});
 fillTable('tbl-smuggled',['Năm','Ước tính (nghìn tấn)'], smuggledLabels.map((l,i)=>[l, fmt(smuggledVals[i])]));
 
 /* 4c. HFCS */
-const hfcsLabels=['2020','2021','2022','2023*','2024','2025 (7T)*'];
-const hfcsVals=[164.179,102.372,184.975,247.2,241.504,126.024];
-barLineChart('chHfcs',{categories:hfcsLabels, series:[{name:'Nhập khẩu HFCS',color:S4,confArr:[true,true,true,false,true,false],values:hfcsVals}], unit:'nghìn tấn', digits:1, height:230});
+const hfcsLabels=['2020','2021','2022','2023*','2024','2025 (7T)*','2026 (7T)*'];
+const hfcsVals=[164.179,102.372,184.975,247.2,241.504,126.024,131.416];
+barLineChart('chHfcs',{categories:hfcsLabels, series:[{name:'Nhập khẩu HFCS',color:S4,confArr:[true,true,true,false,true,false,false],values:hfcsVals}], unit:'nghìn tấn', digits:1, height:230});
 fillTable('tbl-hfcs',['Năm','Nhập khẩu HFCS (nghìn tấn)'], hfcsLabels.map((l,i)=>[l, fmt(hfcsVals[i],1)]));
 
 /* sparklines for KPI strip */
