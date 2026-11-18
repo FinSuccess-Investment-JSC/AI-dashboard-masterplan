@@ -1,14 +1,17 @@
-# Lịch cập nhật — 18/11/2026 14:58
+# Lịch cập nhật — 19/11/2026 00:37
 
+- 🆕 pvn.news: 1 mục mới — PETROVIETNAM kiểm tra tiến độ chuỗi dự án khí điện Lô B Ô Môn tại Cần Thơ — https://petrovietnam.petrotimes.vn/petrovietnam-kiem-tra-tien-do-chuoi-du-an-khi-dien-lo-b-o-mon-tai-can-tho-748138.html
+- 🆕 moit.sugar-trq: 1 mục mới — Thông báo kết quả Phiên phân giao hạn ngạch thuế quan nhập khẩu đường năm 2026 theo phương thức đấu giá — /tin-tuc/thong-bao-ket-qua-phien-phan-giao-han-ngach-thue-quan-nhap-khau-duong-nam-2026-theo-phuong-thuc-dau-gia.html
 - ⚠️ watcher fr.vn-seafood: không thấy mục nào trên trang
-- 🆕 news.shipping-policy: 1 mục mới — Quốc hội xem xét dự án Bộ luật Hàng hải và Đường thủy Việt Nam (sửa đổi) - HTV — https://news.google.com/rss/articles/CBMiqwFBVV95cUxNWmtnN1U5ekxkaVhTSHpRNTl4S0d4XzRHTHppT3lOb2hiR3U4T0ZMaEs1SDEtSlQ1Q0xtVmk2NWdJUXRSRXFTejM0NzFJYXhKdk1lQVBRQmg1UjFGSGNJSmdyM2EtLXRlRDdxVWJkWTFMUDEzWHpIN0V4NlBQb0l1Wi1lVFowMndvTXByTGFVU2htZjNncDJjb0k5Rm9rYnB3RjNsdkFIdjVvakk?oc=5
-- 🆕 news.public-investment: 12 mục mới — Lâm Đồng phấn đấu giải ngân vốn đầu tư công đạt 95% vào cuối tháng 12/2026 - VOV.VN — https://news.google.com/rss/articles/CBMisAFBVV95cUxNSHJsXzA1eFp5bURDQ0xJR09paFJEZ0EzUXF1ejRFcGdXQWI3VzhCVW9KOTRDT0c3TUU5UnZidV9FZF9ZMktEdXdUU0puNXpKbU9hWENvbzRxRTdTSGNNV2xiSzF1OFBLQWFJRGNSdzBKOGJsSHlzYWRUNjlxT01aQkE2UnMwYnltaHRTQU5KYzdXc19YS09iaU91NDhIZUFkQlZpZmRoQnR5TWlwdlF0Rg?oc=5; Phấn đấu giải ngân 100% kế hoạch vốn đầu tư công giao đầu năm trước ngày 30/11 - Báo Hải Phòng — https://news.google.com/rss/articles/CBMisgFBVV95cUxOQmpVZm9pRmhRdXFrV1BWVmpyZVhodWpnVTZIejllUnV3dng2MUJidXNjMDlvZXFBNjNBYVFkTVY2dnIyMTNMNHNiRzJQY3lZSG8wYWNBdG10SlplVHphMDBLUEVkZVl2a1ljcEhWWXdUVS1IRVcteUdldUxFbjJwQlAxMjhuREowajk3bnU0VEFBV0ZNcU9hVTluQ19pdGl2TXhEcGI4alNVVGhvRmd5V2JB?oc=5; Thêm 12.845 tỷ đồng vốn đầu tư công được "hấp thụ" vào các dự án - Thời báo Tài chính Việt Nam — https://news.google.com/rss/articles/CBMirAFBVV95cUxQR3BDTXNYdnhRRm40aWs5cGxPcDlmQTItTXJKU0F2TThHX1JrQ1ZJaXItVHBqUUpVQThqR0RkMUhjYWp4dWR2LW5UUW4tSTRyNWlzeG44SFRPcTUzTzVKU2FfZ3Atb05xQ1JUbjRZYjN2NlRQXzRwMkQzY0trd1ZaTHRzcU5OX1Y5R3NjeVEwQkxxUU5LeXI1M3JXTzFqNnJ0dHU1N0llcDJCUVJy?oc=5
-- 🆕 news.insurance: 1 mục mới — 11 tháng, tổng doanh thu phí bảo hiểm ước đạt 210.167 tỷ đồng - Tin nhanh chứng khoán — https://news.google.com/rss/articles/CBMirgFBVV95cUxOSmFzSUVYRUx4b0NCbUdFX0VtUjNmWE1qWkJaNmt1V25tQVdNYXF1SHdSZm1odjRLT0RaVmxwSWtHMGp5c0VGZHVzZ0E2UmhaTkRlTFlLc2hWT0cycTRNWERlTXRRTjlDTWtYc19ybG9kbFJXZU1zSGttaW03bE9PVEVRcW91UE1MS3Vock5tb1YzRS1Yb0lZbmF6bWc3TGFFUmI4cTRKWjRiMUVJZmfSAaoBQVVfeXFMT1FCajItcWJJUFU5ei1mTWJtUGNTQ0pRMkZtR3B6WDBpT0t0MkJmYWFLU1NtTnk5V01uSV9wUTQ1NzVhY3BtNHpRVVdjRmo4NGhGZXVLRktvRlZCdmxCRDFJVjhmTlhkRTRkNmlJXzhRbm85VW9Ec21qaEtVMm0xSEJhT001d3NJUHB1QTFqOUhnd0JHNVg4Mjl5T19hUU1yZWJLbGJ5bUhWeEE?oc=5
-- 🆕 news.retail: 1 mục mới — Thuế suất thuế tiêu thụ đặc biệt đối với xăng các loại giảm về 0% - Báo Hải Phòng — https://news.google.com/rss/articles/CBMioAFBVV95cUxPR0h5ajBleGEySTdRWVRtSW1uZTdaUGFCSm16SjMyakNGR3NYOE0xaGp5UzFKaWhCal9YZldLU1RlTzNVWEtrN19KeDU0QU01VmxWbFdMMlZzZG5VOEswNGtxeHV6bW1qQmFHS0dhUmFST0F0S2drVU1Dc3hGcEI1amJSZU5SQTFPeV9sSmZNamhyRTVMSmdKUl9yaWNfWnJW?oc=5
-- 🆕 news.power-prices: 2 mục mới — Hoàn thiện điều chỉnh Quy hoạch điện VIII bảo đảm tính đồng bộ và ổn định đến năm 2030 - Tạp chí Công Thương — https://news.google.com/rss/articles/CBMiwwFBVV95cUxNeGxJVXhIODdGVk9ORTBQLUNKS3JCdU5lNHpuVDhrbzM2N0JuU3JhYnlXMHR4N0VkYkhHbk5wYTU4N00tNFFPa3ZLSjVDSFNKdUN2UDd0Vk5uS1hQM0R4LW1xUm9ia29nM2xMSDZwblR1Y3dYU1I0MnUteHhpb3A3b1RvektrVWVXV1BsSlliRFBGNUNnZ1o2cWtuamluZkF0QlFqbU9XMDdKMUt4U3RCcDdMV25Qc1JUSGZkRDRzWWExcFU?oc=5; Bộ Công Thương tổ chức hội thảo cập nhật điều chỉnh Quy hoạch điện VIII - moit.gov.vn — https://news.google.com/rss/articles/CBMirAFBVV95cUxNTnpzR0tnUlB3QnVUZTZJU0VnWVhhZm9Qc2pSQlBRZXR3RUstMS1HUXo3YTY5ZEd1NnBZV2FzY2c2MkVMTjJtYm9hcm1NbTM5UlBOOUtfOTVWNTRjRDhVaFJDVkVSNzc5VmxxQTBGd1lUOXNMeVZqeXIyc28yaUNBcGdUNGh2QzZ5NTNSb21hbE93YWpSbzA2eFY2NnlZV2wwcmc0YzJTYWlGOTZJ?oc=5
-- 🆕 news.pharma: 2 mục mới — Long Châu dự định đưa thuốc hiếm điều trị bệnh thần kinh về Việt Nam - Znews — https://news.google.com/rss/articles/CBMipAFBVV95cUxNQ095LVY5TTRqX2MyT0RTclFVV2IwUGRjakxvOVFVZERGclJWV1NxSGRJRWhkdnhwazFHNElSamxCdXdZaVl5YmNRVDZNcDFVQUhGcGc0TjN2V19wbkRIZGQ4M1FFSWlkenJBZGxQdXpid2xpUE5tV1pHRGM0aEk2MWV2b016WmlhcG55aW9KWS1NajV3Q2R3Vm5kYkZ6SWxWeU5URg?oc=5; Bí quyết ‘mở cõi’ thần tốc của FPT Long Châu - Báo Tuổi Trẻ — https://news.google.com/rss/articles/CBMiiwFBVV95cUxNNERDMno0RTNUd1A2Zk5taWJmVXdNaHRtakJzMDZIY2hicVpFb0ZncWVNNDluYURqQ3M5dDh5UkhRZ1gwVk9QajJfcVdSbDlIa1RVWGwtWFlhbkRVWnpfVjc1d1hfXzZyN0lGeUdWSUxPM1k4YWJmRU1IaXJheUNmLUd6OGxlM09OaVNr?oc=5
+- 🆕 news.public-investment: 11 mục mới — Giải ngân vốn đầu tư công vượt 75% kế hoạch - baochinhphu.vn — https://news.google.com/rss/articles/CBMikgFBVV95cUxQMXJDRWM3cUJWU2ZQMnV5YzBKRDBwZlFGWUVwck5kR1J1TmNwNkctbzBfSVJobS1VVzVaWUoxVHJRdFFUdm5CeFNCaHEyajlLeTBSLXRNX3NveUJsTGVfRFVIRUp4c3hONTdMQXhfOTNTLUk4Nl9sZy05RVhHb0pyWndEYzktQUhZTVlVdHYyZkl6QQ?oc=5; Lai Châu ước tăng trưởng 10%, đã giải ngân hơn 3.000 tỉ vốn đầu tư công - Laodong.vn — https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMGtCUFpsZmR2eVppNGo0clVzTGZqel9oV09XTDF5OWZUZTdSSDByckZIaWNkenJ0cnZiLVVMNGFiUEQ0TURkamlxNU9fV2x1TFhGUjhiRFlyMFFGYlp6YUgyMzhUMVExcG5hVWhoWWFteWxqUm9RdERvX3h6VVhFaU84UFh3cjl1SjNNdkFJY1hyenJ2NWZyMDAtSEg1bzlyMEY2emdsdkNlQQ?oc=5; Hải Phòng quyết tâm giải ngân 100% vốn đầu tư công trong năm 2026 - dangcongsan.vn — https://news.google.com/rss/articles/CBMiwgFBVV95cUxNU2pCd0xCNDJqUC11YzBkcHU0STc2OFlnM29KLTM3azM5aFItZk9udWJKTXhoZ3VxTVNnUUtjQWdSdFJUSGlJR2RiNW1Md0ZTQnptN3VXT0NQZnR3M25ZN2E3UEFtMFVmbVh2Ukk0QW1TWGx4MkVha1FhZGN2Z2Z3MVhrYjZSSXhQQ3JaeHpwNVpsdTJBX0xzZXV1S1pRYjY1WkkzWi1lZ2FOZE5mTklRejgxNDNoR3UzTXNvZ3dCakNZZw?oc=5
+- ⚠️ watcher moit.power-prices: URLError: <urlopen error [Errno 101] Network is unreachable>
+- 🆕 news.power-prices: 2 mục mới — Phê duyệt khung giá phát điện LNG năm 2026, tối đa 3.453,72 đồng/kWh - VTV.vn — https://news.google.com/rss/articles/CBMipgFBVV95cUxQaEV6aDg1aWpaSk1tNmdTSWxNamFPSndJMFhZVThYZ2JTQ2N0Q2wxeWpCYkItOEw5S1UtejFCVERUNU4wci1rakEyM2J2VGR1ZnJLenRHMFhicW05ZWJ2M1dUWS10N1NPTzdDa1RmNEdYQXY5MUdpM3djUWN6dW5HRk9HbDBHaVY1b3VMOGd5MHJMN0RGbVdZUW8xa1VhVF9KTElmNk5R?oc=5; Bộ Công Thương phê duyệt khung giá phát điện mặt trời năm 2026 - Báo Thanh Hóa — https://news.google.com/rss/articles/CBMinAFBVV95cUxOd3I2dUt3bmFVSmxIaFlqR3J2SzZTQWtjWFoyUDVnTlZkSlR5M051VGE3T0xBQ2hLejFXYkpPQ1BCMzQzMWJWRzZsalNNQ0RTTVp3YXdPWGlKZi1nSF8zOFQwNDJBcGU4blBBeVVuWmF4ODJmOFJQZDA3QV84WkJrdFBfNzdWWnFkWjJDUm4tZ3lDUWlsU0loU1RSbUk?oc=5
+- 🆕 news.pharma: 3 mục mới — Hội nghị Thần kinh Quốc tế 2026: Long Châu tiên phong đưa thuốc hiếm trị bệnh thần kinh vận động - Báo Tuổi Trẻ — https://news.google.com/rss/articles/CBMi0wFBVV95cUxQMUsxU3doNnJsNXdGUWNNZ0VPNWxBNG51VklnakFxRktobnpTa053Snd1dnRuTE41Uk11REpQemplbzMwTUowZEZMSHU5N0x2Y2VaU2dtRnZwa0M4RTZ6bnFoM3NRdzJtR0dhbU9NN0oxOXBGOHlzTFBUMzFYT3ZWTkxvVDI1NXlUY0JhaWdwWHBkS0VMamVrNzdfeFYyTzl3a01ZbTc3Z0lzTHJHNDlvd2REUXFmRjZvN1pySHhpRXNkeTlwcGtXMzVfeWg4cGE0Y0dj?oc=5; Vietcap định giá Long Châu hơn 44.000 tỷ đồng, gấp 18 lần FPT Shop: Hé lộ nhóm cổ đông đặc biệt nắm hơn 11% vốn - CafeF — https://news.google.com/rss/articles/CBMi3wFBVV95cUxPZmtsQzJlSmZmSmk1cXVjUDlTWHpRUlY5Zm83OFR0ODR5RUdiNzVPdEExbThuWDJQdEVZYVJreXVlMmJrYXVCQzJUbU1VQWZrOHZUTkVER2RqVGJTOFB6RDh5MlgtSGtnODducHdIeXNFMklLam1zQTJ5enZFQkZBV0hYa0wxX0JpQzJ5Q29fUHlXODJ4ZjFXX0t4cVJ2XzdkY2h0ZFVCX09CZGJIZjg5ekV6cWZ2clZhSVROLUIyVG1IUEtZRmtHV1dod2hja2p5VTZNSzhEb1Ytay1TTFdz?oc=5; Long Châu cùng ngành y tế đồng hành, chăm sóc người bệnh Parkinson, sa sút trí tuệ, đột quỵ - Báo Dân trí — https://news.google.com/rss/articles/CBMi2AFBVV95cUxNdjRkeEpsd2xGNTRWbkI1R3QyOGc4NExNc0Rna2J3NnZ3aVREa3BnNG9rRmJWZjI5TkZNUGNpcm1PY0pHZVhmaUMwVkhUb3dfOFgwbVF3dEdpREJFNXhraGpCbE9WQXhWMzJsLU1ZdWhmNWlSSWw3Y0xfWFlzUGYwNGIxckwwa0xZWG1ZNS1zRnVUZ1ZacER0ZU9LWGgtRlJDQXZXR2tualEyQWhkMkRSLXNuTlIwWkhXOGZQNWxramt0YnpUQ3h6ZjNfbE1kTWpHeHE1MFhodFE?oc=5
+- ❌ oil.portwatch lỗi 0 ngày: hormuz, bab_el_mandeb
 - → hàng chờ [B] bank.wi.daily: lịch 18/11 07:00
 - → hàng chờ [B] bank.wi.monthly: lịch 16/11 07:00
+- → hàng chờ [C] oil.supply-news: watcher báo có công bố mới
+- → hàng chờ [C] sugar.trade: watcher báo có công bố mới
 - → hàng chờ [D] oil.ai.cycle: đổi đáng kể: brent.value: 115.22 → 92.14
 - → hàng chờ [D] oil.ai.balance: đổi đáng kể: world_balance.balance@2026-12-31: -1.3 → -0.66; world_balance.balance@2027-12-31: 4.89 → 4.03
 - → hàng chờ [D] oil.ai.regime: đổi đáng kể: brent.value: 115.22 → 92.14; singapore_cracks.gasoil_crack: 64.69 → 55.18
@@ -35,7 +38,6 @@
 - → hàng chờ [C] seafood.trade: lịch 18/11 07:00
 - → hàng chờ [C] seafood.hot-topics: lịch 16/11 07:00
 - → hàng chờ [C] shipping.outlook: lịch 16/11 07:00
-- → hàng chờ [C] shipping.policy: watcher báo có công bố mới
 - → hàng chờ [C] shipping.rates: lịch 16/11 07:00
 - → hàng chờ [C] shipping.hot-topics: lịch 16/11 07:00
 - → hàng chờ [D] shipping.ai.cycle: số liệu nền đổi: hormuz, bab_el_mandeb
@@ -45,10 +47,8 @@
 - → hàng chờ [C] construction.policy: watcher báo có công bố mới
 - → hàng chờ [C] construction.prices: lịch 16/11 07:00
 - → hàng chờ [C] insurance.market: lịch 18/11 07:00
-- → hàng chờ [C] insurance.policy: watcher báo có công bố mới
 - → hàng chờ [C] insurance.hot-topics: lịch 16/11 07:00
 - → hàng chờ [C] retail.market: lịch 18/11 07:00
-- → hàng chờ [C] retail.policy: watcher báo có công bố mới
 - → hàng chờ [C] retail.hot-topics: lịch 16/11 07:00
 - → hàng chờ [C] power.company-quarterly: lịch 16/11 07:00
 - → hàng chờ [C] realestate.kcn-broker: lịch 15/11 07:00
@@ -93,4 +93,9 @@
 - → hàng chờ [C] shipping.derived: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [B] seafood.wi.us-imports: lịch 20/10 07:00
 - → hàng chờ [C] steel.docs.hpg-volume: lần đầu: rà soát số đang hiển thị
-- Hàng chờ Claude: 90 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
+- Hàng chờ Claude: 91 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
+
+## Cảnh báo
+
+- ⚠️ Watcher fr.vn-seafood: trang không còn mục nào khớp, kiểm lại cấu hình
+- ⚠️ Watcher moit.power-prices không đọc được trang (URLError: <urlopen error [Errno 101] Network is unreachable>)
