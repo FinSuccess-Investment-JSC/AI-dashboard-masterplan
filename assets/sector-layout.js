@@ -220,7 +220,7 @@ else{
   const m1={categories:rs.map(my),series:[{name:'Sản xuất',color:'#2938A8',kind:'bar',values:rs.map(r=>r.prod_total)},{name:'Tiêu thụ',color:'#59C5C8',kind:'line',values:rs.map(r=>r.use_total)}],unit:'triệu tấn',digits:1,zeroBase:false,time:false,aria:'Sản xuất và tiêu thụ đường thế giới'};
   ChartTypes.mount(h1,m1,()=>{h1.innerHTML=ChartTypes.render({...m1,width:h1.clientWidth||640},'bar')});
   const h2=sub('ch-sugar-11-bal','Cán cân = sản xuất − tiêu thụ; dương = dư thừa, âm = thiếu hụt');
-  const cats=rs.map(r=>'USDA '+my(r)).concat(FC.map(f=>f[0]+' 26/27'));
+  const cats=rs.map(my).concat(FC.map(f=>f[0].split(' (')[0]));
   const m2={categories:cats,series:[{name:'USDA (thực tế/ước tính)',color:'#2938A8',kind:'bar',values:rs.map(r=>+(r.prod_total-r.use_total).toFixed(1)).concat(FC.map(()=>null))},{name:'Dự báo tổ chức 2026/27',color:'#c29100',kind:'bar',values:rs.map(()=>null).concat(FC.map(f=>f[1]))}],unit:'triệu tấn',digits:1,stackable:true,time:false,aria:'Cán cân đường thế giới'};
   ChartTypes.mount(h2,{...m2,native:'stack'},()=>{h2.innerHTML=ChartTypes.render({...m2,width:h2.clientWidth||640},'stack')});
   const last=rs.at(-1);
