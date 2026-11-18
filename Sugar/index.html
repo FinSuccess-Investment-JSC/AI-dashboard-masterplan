@@ -177,9 +177,9 @@
         <details class="dtable"><summary>Xem bảng dữ liệu đầy đủ</summary><div class="tablewrap"><table id="tbl-vn-price"></table></div></details>
       </div>
       <div class="card" data-block-id="sugar-07" data-update-kind="document" data-cadence="irregular" data-refresh-status="snapshot">
-        <div class="chart-title">So sánh khu vực — giá đường trắng, T7/2026</div>
-        <div class="chart-sub">VND/kg quy đổi</div>
-        <div class="source-links">Nguồn: <a href="https://dantri.com.vn/kinh-doanh/gia-nong-san-ngay-168-gia-duong-viet-nam-thap-nhat-khu-vuc-20260816073400918.htm" target="_blank" rel="noopener">Dân trí trích VSSA, 16/08/2026</a></div>
+        <div class="chart-title">So sánh khu vực — giá đường bình quân theo tháng</div>
+        <div class="chart-sub">VND/kg quy đổi · tháng trống = chưa có số VSSA công bố mở được trang gốc</div>
+        <div class="source-links">Nguồn VSSA qua: <a href="https://dantri.com.vn/kinh-doanh/gia-nong-san-ngay-168-gia-duong-viet-nam-thap-nhat-khu-vuc-20260816073400918.htm" target="_blank" rel="noopener">Dân trí 16/08/2026 (T7)</a> · <a href="https://vneconomy.vn/gia-duong-viet-nam-thap-nhat-khu-vuc-ap-luc-canh-tranh-tu-hfcs-va-duong-lau.htm" target="_blank" rel="noopener">VnEconomy 15/11/2026 (T10)</a></div>
         <div id="chRegional"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-regional"></table></div></details>
       </div>
@@ -847,9 +847,14 @@ rangeDotChart('chVnPrice',{domain:[new Date('2020-01-01'), new Date('2026-11-15'
 fillTable('tbl-vn-price', ['Ngày','Loại','Thấp (đ/kg)','Cao (đ/kg)','Độ tin cậy'], rsPoints.concat(rePoints).sort((a,b)=>a.date<b.date?-1:1).map(p=>[p.date.split('-').reverse().join('/'), p.label, fmt(p.low), fmt(p.high), p.conf===false?'Thấp':'Trung bình–cao']));
 
 /* 1d. regional comparison */
-const regional=[{label:'Việt Nam',value:16800,color:S1},{label:'Trung Quốc',value:19504,color:S2},{label:'Indonesia',value:26706,color:S3},{label:'Philippines',value:27527,color:S4}];
-hbarCompare('chRegional',{items:regional, unit:'đ/kg', digits:0, height:170});
-fillTable('tbl-regional',['Thị trường','VND/kg'], regional.map(r=>[r.label, fmt(r.value)]));
+const regMonths=['T7/2026','T8/2026','T9/2026','T10/2026'];
+const regional=[
+  {name:'Việt Nam',color:S1,kind:'line',values:[16800,null,null,19067]},
+  {name:'Trung Quốc',color:S2,kind:'line',values:[19504,null,null,19958]},
+  {name:'Indonesia',color:S3,kind:'line',values:[26706,null,null,26392]},
+  {name:'Philippines',color:S4,kind:'line',values:[27527,null,null,27387]}];
+barLineChart('chRegional',{categories:regMonths, series:regional, unit:'đ/kg', digits:0, height:230});
+fillTable('tbl-regional',['Tháng'].concat(regional.map(r=>r.name)), regMonths.map((m,i)=>[m].concat(regional.map(r=>r.values[i]==null?'—':fmt(r.values[i])))));
 
 /* 2. supply-demand combo */
 barLineChart('chSupplyDemand',{categories:MY, series:[

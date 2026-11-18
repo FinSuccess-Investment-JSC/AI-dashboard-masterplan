@@ -185,5 +185,16 @@
     "status": "match",
     "correct_value": "",
     "note": "Chủ tịch VSSA, tổng kết vụ 2024/25, bài 06/9/2025"
+  },
+  {
+    "block": "sugar-07",
+    "claim": "Giá đường BQ T10/2026 quy đổi",
+    "value": "PH 27.387, ID 26.392, CN 19.958, VN 19.067",
+    "url": "https://vneconomy.vn/gia-duong-viet-nam-thap-nhat-khu-vuc-ap-luc-canh-tranh-tu-hfcs-va-duong-lau.htm",
+    "opened_at": "2026-11-18",
+    "quote": "Khi quy đổi, giá đường bình quân tháng 10 tại Manila đạt 27.387 đồng, Indonesia 26.392 đồng và Trung Quốc 19.958 đồng; trong khi Việt Nam chỉ đạt 19.067 đồng.",
+    "status": "match",
+    "correct_value": "",
+    "note": ""
   }
 ]
