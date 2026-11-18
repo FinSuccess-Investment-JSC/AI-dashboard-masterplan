@@ -181,8 +181,8 @@ def parse_daily_futures(result, symbol, today=None):
     if (today-dt.date.fromisoformat(rows[-1]['date'])).days>10:raise ValueError('Futures feed is stale')
     return rows
 
-def load_daily_futures(symbol,unit):
-    url='https://query1.finance.yahoo.com/v8/finance/chart/'+urllib.parse.quote(symbol)+'?interval=1d&range=2y'
+def load_daily_futures(symbol,unit,history='2y'):
+    url='https://query1.finance.yahoo.com/v8/finance/chart/'+urllib.parse.quote(symbol)+'?interval=1d&range='+history
     raw=fetch(url);result=json.loads(raw)['chart']['result'][0]
     rows=parse_daily_futures(result,symbol)
     return {'source_url':'https://finance.yahoo.com/quote/'+urllib.parse.quote(symbol)+'/',
@@ -207,7 +207,7 @@ def load_sugar_futures():
     """SB=F first; when Yahoo serves only a stub for the continuous symbol (after a roll), use the
     nearest listed contract with a full history. One contract only: series are never spliced."""
     try:
-        return load_daily_futures('SB=F','US cents/lb')
+        return load_daily_futures('SB=F','US cents/lb','10y')
     except ValueError as exc:  # stub history, empty series or ALTSYMBOL identity all mean "use a contract"
         reason=str(exc)
     for symbol in sugar_contracts()[:3]:

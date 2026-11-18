@@ -51,7 +51,7 @@ class SugarFeedTests(unittest.TestCase):
 
     def test_sugar_falls_back_to_one_listed_contract(self):
         calls = []
-        def fake(symbol, unit):
+        def fake(symbol, unit, history="2y"):
             calls.append(symbol)
             if symbol == 'SB=F':
                 raise ValueError('Empty series')

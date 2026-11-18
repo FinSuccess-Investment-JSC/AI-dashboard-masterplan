@@ -246,7 +246,7 @@ if(chart&&feed?.records?.length){
  const card=chart.closest('.card'),control=make('div','chart-explore'),freq=make('select'),range=make('select'),start=make('input'),end=make('input');
  freq.id='price-frequency';range.id='price-range';start.id='price-from';end.id='price-to';start.type=end.type='date';
  [['day','Ngày'],['week','Tuần'],['month','Tháng'],['year','Năm']].forEach(([v,t])=>{const o=make('option','',t);o.value=v;freq.append(o)});
- [['90','3 tháng'],['365','1 năm'],['all','Toàn bộ'],['custom','Tùy chọn']].forEach(([v,t])=>{const o=make('option','',t);o.value=v;range.append(o)});
+ [['90','3 tháng'],['365','1 năm'],['1095','3 năm'],['1826','5 năm'],['all','Toàn bộ'],['custom','Tùy chọn']].forEach(([v,t])=>{const o=make('option','',t);o.value=v;range.append(o)});
  [[freq,'Kỳ'],[range,'Khoảng'],[start,'Từ'],[end,'Đến']].forEach(([n,t])=>{const l=make('label','',t);l.htmlFor=n.id;control.append(l,n)});
  let raw,startDate,endDate;const setFeed=f=>{feed=f;raw=f.records;startDate=raw[0].date;endDate=raw.at(-1).date;start.min=end.min=startDate;start.max=end.max=endDate;start.value=startDate;end.value=endDate};setFeed(futFeed);
  const sub=card.querySelector('.chart-sub'),subFut=sub?.textContent||'',fmtN=v=>v.toLocaleString('vi-VN',{maximumFractionDigits:2});
