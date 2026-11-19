@@ -312,9 +312,9 @@
    "lastNote": "Drewry WCI 29/10/2026: 4.429 USD/FEU (-3%); NY 9.631, LA 7.514, Rotterdam 3.686, Genoa 4.151; mở trang Drewry"
   },
   "port.throughput": {
-   "lastAttempt": "2026-10-26T08:59:04+07:00",
-   "lastSuccess": "2026-10-26T08:59:04+07:00",
-   "lastNote": "PHP 9T/2026: 38,1 triệu tấn (gần +28%), container +30,7% (Vietstock 23/10/2026). Chưa thấy số toàn quốc 9T của Cục Hàng hải; vmrcc.gov.vn không có tin sản lượng mới"
+   "lastAttempt": "2026-11-19T13:02:07+07:00",
+   "lastSuccess": "2026-11-19T13:02:07+07:00",
+   "lastNote": "moc.gov.vn 503; mở bản đăng lại thoibaotaichinhvietnam.vn (14/01/2026): chỉ là mục tiêu 2026 (122 triệu tấn, 9,1 triệu TEU), không có kỳ thực hiện mới; không sửa trang"
   },
   "port.policy": {
    "lastAttempt": "2026-11-03T13:12:04+07:00",
@@ -673,9 +673,11 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
   "power.company-quarterly": {
-   "lastAttempt": "2026-10-28T21:00:21+07:00",
+   "lastAttempt": "2026-11-19T13:02:07+07:00",
    "lastSuccess": "2026-10-28T21:00:21+07:00",
-   "lastNote": "Q3/2026 từ VNDirect finfo: 11/18 mã điện (NT2, PPC, QTP, HND, BTP, VSH, CHP, SBA, SHP, TV2, GEX); POW, REE, TMP, GEG, HDG, TTA, PC1 chưa công bố"
+   "lastNote": "Q3/2026 từ VNDirect finfo: 11/18 mã điện (NT2, PPC, QTP, HND, BTP, VSH, CHP, SBA, SHP, TV2, GEX); POW, REE, TMP, GEG, HDG, TTA, PC1 chưa công bố",
+   "lastError": "Số BCTC (VNDirect finfo): người dùng cập nhật thủ công, routine không tự lấy",
+   "attempts": 1
   },
   "pharma.wi.monthly": {
    "lastAttempt": "2026-11-19T09:10:52+07:00",
@@ -863,7 +865,11 @@
    "lastSuccess": "2026-11-09T14:42:15+07:00",
    "lastNote": "Kết luận cuối CBPG tôm POR19 (FR 2026-22660, đăng 06/11/2026): Fimex 10,71%, STAPIMEX 6,36%, mức riêng 7,59%, toàn quốc 25,76%; đã mở PDF public-inspection, ghi evidence; sửa Thuy-san tab thuế + Catalyst"
   },
-  "steel.docs.hpg-volume": {},
+  "steel.docs.hpg-volume": {
+   "lastAttempt": "2026-11-19T13:02:07+07:00",
+   "lastSuccess": "2026-11-19T13:02:07+07:00",
+   "lastNote": "Mở hoaphat.com.vn/tin-tuc/tin-tuc-tap-doan: kỳ mới nhất có số sản lượng vẫn là 9T/2026 (đã hiển thị), chưa có tin sản lượng mới; không sửa trang"
+  },
   "power.picture-derived": {},
   "power.overview-derived": {},
   "power.overview-content": {},
@@ -6961,36 +6967,6 @@
    "signals": []
   },
   {
-   "id": "steel.docs.hpg-volume",
-   "tier": "C",
-   "title": "Sản lượng bán hàng Hòa Phát theo sản phẩm (quý)",
-   "since": "2026-11-05T14:20:04+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
-   "id": "port.throughput",
-   "tier": "C",
-   "title": "Hàng hóa, container qua cảng toàn quốc, Hải Phòng, Cái Mép; sản lượng doanh nghiệp; cung – cầu cụm cảng",
-   "since": "2026-11-08T13:38:55+07:00",
-   "reasons": [
-    "lịch 08/11 07:00",
-    "lịch 09/11 07:00",
-    "lịch 10/11 07:00",
-    "lịch 11/11 07:00",
-    "lịch 12/11 07:00",
-    "lịch 13/11 07:00",
-    "lịch 14/11 07:00",
-    "lịch 15/11 07:00",
-    "lịch 16/11 07:00",
-    "lịch 17/11 07:00",
-    "lịch 18/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "power.output-sources",
    "tier": "C",
    "title": "Sản lượng điện theo nguồn, lũy kế 9 tháng",
@@ -7388,5 +7364,5 @@
    ]
   }
  ],
- "updatedAt": "2026-11-19T09:10:52+07:00"
+ "updatedAt": "2026-11-19T13:02:07+07:00"
 }

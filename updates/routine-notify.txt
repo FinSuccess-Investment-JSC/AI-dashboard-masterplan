@@ -1,5 +1,6 @@
-Routine Wi 19/11: không cập nhật được ngày hôm nay.
-Widata báo hết credit tuần, làm mới lúc 00:00 thứ Sáu 20/11.
-Cả 37 mục nhóm B (Bank và 9 ngành) giữ số cũ, chưa lấy được số mới nào.
-Các mục đã --fail, sẽ tự xếp lại hàng chờ; lượt 09:00 ngày 20/11 sẽ gọi lại.
+Routine tài liệu 13:00: xử lý 3 mục, không sửa trang/số liệu.
+- steel.docs.hpg-volume: chưa có tin sản lượng mới sau 9T/2026.
+- port.throughput: nguồn MOC 503, bản đăng lại chỉ là mục tiêu năm; không có kỳ mới.
+- power.company-quarterly: không tự lấy BCTC (người dùng cập nhật thủ công), đánh dấu lỗi.
+Còn lại trong hàng chờ chưa xử lý (hết lượt).
 Chưa kiểm giao diện bằng trình duyệt.
