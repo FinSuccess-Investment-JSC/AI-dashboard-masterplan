@@ -272,9 +272,11 @@
    "lastNote": "Mở trungtamwto.vn 30/09/2026 (VITAS: 8T ~32 tỷ USD +3%, không có mức thuế mới); trang đã có 9T VITAS và Mục 301 12,5% từ 24/7. Chưa thấy văn bản thuế mới; không sửa."
   },
   "textile.orders-brands": {
-   "lastAttempt": "2026-11-06T13:02:42+07:00",
+   "lastAttempt": "2026-11-20T13:02:17+07:00",
    "lastSuccess": "2026-11-06T13:02:42+07:00",
-   "lastNote": "Nike Q1 FY27 (kết thúc 31/08/2026: DT -4%, tồn kho 7,8 tỷ USD -3%), Adidas, H&M, Inditex, Gap, FR đã có trong orders.json/dm-29. Không có kỳ mới. Không sửa."
+   "lastNote": "Nike Q1 FY27 (kết thúc 31/08/2026: DT -4%, tồn kho 7,8 tỷ USD -3%), Adidas, H&M, Inditex, Gap, FR đã có trong orders.json/dm-29. Không có kỳ mới. Không sửa.",
+   "lastError": "Fast Retailing đã công bố FY2026 (08/10/2026, doanh thu +16,6%) nhưng trang summary chỉ có ảnh, không mở được số tồn kho 31/08/2026; chưa kiểm Gap Q3 (404 trang PR). Cần người dùng xem, orders.json vẫn ở Q3 FY2026.",
+   "attempts": 1
   },
   "textile.policy": {
    "lastAttempt": "2026-11-03T13:12:04+07:00",
@@ -305,9 +307,9 @@
    "stuck": true
   },
   "port.freight": {
-   "lastAttempt": "2026-11-05T13:14:00+07:00",
-   "lastSuccess": "2026-11-05T13:14:00+07:00",
-   "lastNote": "Drewry WCI 29/10/2026: 4.429 USD/FEU (-3%); NY 9.631, LA 7.514, Rotterdam 3.686, Genoa 4.151; mở trang Drewry"
+   "lastAttempt": "2026-11-20T13:02:17+07:00",
+   "lastSuccess": "2026-11-20T13:02:17+07:00",
+   "lastNote": "Mở bài Drewry WCI 19/11/2026: tổng hợp 4.176 USD/FEU (-3%), NY 8.194, LA 7.026, Genoa 4.436, Rotterdam 3.496; khớp data/port-public-data.json (tuần 2026-11-19), không sửa trang."
   },
   "port.throughput": {
    "lastAttempt": "2026-11-19T13:02:07+07:00",
@@ -7095,17 +7097,6 @@
    "signals": []
   },
   {
-   "id": "port.freight",
-   "tier": "C",
-   "title": "Cước container Drewry WCI theo tuyến, SCFI; giá thuê tàu nếu có nguồn",
-   "since": "2026-11-09T15:23:55+07:00",
-   "reasons": [
-    "lịch 09/11 07:00",
-    "lịch 16/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "agri.weather",
    "tier": "C",
    "title": "Bản tin ENSO NOAA, dự báo mặn, USDA cà phê/gạo, lịch mùa vụ",
@@ -7465,5 +7456,5 @@
    "signals": []
   }
  ],
- "updatedAt": "2026-11-20T09:11:50+07:00"
+ "updatedAt": "2026-11-20T13:02:17+07:00"
 }
