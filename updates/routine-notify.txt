@@ -1,6 +1,5 @@
-Routine tài liệu 13:00: xử lý 3 mục, không sửa trang/số liệu.
-- steel.docs.hpg-volume: chưa có tin sản lượng mới sau 9T/2026.
-- port.throughput: nguồn MOC 503, bản đăng lại chỉ là mục tiêu năm; không có kỳ mới.
-- power.company-quarterly: không tự lấy BCTC (người dùng cập nhật thủ công), đánh dấu lỗi.
-Còn lại trong hàng chờ chưa xử lý (hết lượt).
+Routine Wi 20/11: KHÔNG cập nhật được số liệu nào.
+WiMCP đã có credit trở lại và trả kết quả, nhưng hook wi_capture không lưu file vào data/raw/wi/.inbox/.
+Đã dừng, không sửa dữ liệu; 36 mục nhóm B đánh dấu lỗi "hook không lưu kết quả Wi".
+Cần kiểm tra .claude/settings.json hook / scripts/wi_capture.py trên môi trường cloud.
 Chưa kiểm giao diện bằng trình duyệt.
