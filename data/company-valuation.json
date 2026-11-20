@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "checked_at": "2026-11-20T00:35:33+07:00",
+ "checked_at": "2026-11-20T14:40:20+07:00",
  "provider": "VNDirect finfo",
  "method": "P/E, P/B, vốn hóa của VNDirect tại ngày tham chiếu, điều chỉnh theo giá đóng cửa phiên mới nhất; EPS, BVPS, số cổ phiếu giữ nguyên đến kỳ BCTC sau.",
  "units": {
@@ -18,16 +18,22 @@
   "PVS": "<urlopen error [Errno 104] Connection reset by peer>",
   "PVT": "<urlopen error [Errno 104] Connection reset by peer>",
   "SBT": "<urlopen error [Errno 104] Connection reset by peer>",
-  "SBA": "<urlopen error timed out>",
+  "QNS": "<urlopen error [Errno 104] Connection reset by peer>",
+  "TTA": "<urlopen error timed out>",
+  "PC1": "<urlopen error timed out>",
+  "TV2": "<urlopen error timed out>",
+  "GEX": "<urlopen error timed out>",
+  "VHM": "<urlopen error timed out>",
+  "NVL": "<urlopen error timed out>",
+  "KDH": "<urlopen error timed out>",
+  "DXG": "<urlopen error [Errno 104] Connection reset by peer>",
+  "DXS": "<urlopen error [Errno 104] Connection reset by peer>",
   "STK": "không có giá đóng cửa ngày 2026-04-28",
   "LTG": "không có giá đóng cửa ngày 2024-09-27",
-  "MSN": "<urlopen error [Errno 104] Connection reset by peer>",
-  "VHC": "<urlopen error [Errno 104] Connection reset by peer>",
   "POM": "không có giá đóng cửa ngày 2022-09-06",
-  "NKG": "<urlopen error timed out>",
   "TNH": "không có giá đóng cửa ngày 2025-05-05"
  },
- "data_hash": "8b926ac4c313bea0e06f9d7d559cea276d0ca96958978172dcd1b50ff6951265",
+ "data_hash": "03eeba5bd320062379a4e3be8a28d65c8be786fd81c718d227f0e5994d26c5d5",
  "latest_observation": "2026-11-19",
  "companies": {
   "GAS": {
@@ -316,14 +322,13 @@
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/CHP"
   },
   "SBA": {
-   "date": "2026-11-18",
-   "close": 22.5,
-   "pe": 10.2,
-   "pb": 1.42,
-   "market_cap": 1429.0,
-   "basis_date": "2026-11-18",
-   "source_url": "https://dstock.vndirect.com.vn/tong-quan/SBA",
-   "last_good": true
+   "date": "2026-11-19",
+   "close": 22.9,
+   "pe": 10.38,
+   "pb": 1.45,
+   "market_cap": 1454.4,
+   "basis_date": "2026-11-19",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/SBA"
   },
   "TMP": {
    "date": "2026-11-19",
@@ -368,7 +373,8 @@
    "pb": 0.72,
    "market_cap": 1830.2,
    "basis_date": "2026-11-19",
-   "source_url": "https://dstock.vndirect.com.vn/tong-quan/TTA"
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/TTA",
+   "last_good": true
   },
   "PC1": {
    "date": "2026-11-19",
@@ -377,7 +383,8 @@
    "pb": 1.12,
    "market_cap": 7804.1,
    "basis_date": "2026-11-19",
-   "source_url": "https://dstock.vndirect.com.vn/tong-quan/PC1"
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/PC1",
+   "last_good": true
   },
   "TV2": {
    "date": "2026-11-19",
@@ -386,7 +393,8 @@
    "pb": 1.44,
    "market_cap": 1921.1,
    "basis_date": "2026-11-19",
-   "source_url": "https://dstock.vndirect.com.vn/tong-quan/TV2"
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/TV2",
+   "last_good": true
   },
   "GEX": {
    "date": "2026-11-19",
@@ -395,7 +403,8 @@
    "pb": 1.32,
    "market_cap": 26496.5,
    "basis_date": "2026-11-19",
-   "source_url": "https://dstock.vndirect.com.vn/tong-quan/GEX"
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/GEX",
+   "last_good": true
   },
   "VHM": {
    "date": "2026-11-19",
@@ -404,7 +413,8 @@
    "pb": 1.73,
    "market_cap": 496175.4,
    "basis_date": "2026-11-19",
-   "source_url": "https://dstock.vndirect.com.vn/tong-quan/VHM"
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/VHM",
+   "last_good": true
   },
   "NVL": {
    "date": "2026-11-19",
@@ -413,7 +423,8 @@
    "pb": 0.51,
    "market_cap": 33014.2,
    "basis_date": "2026-11-19",
-   "source_url": "https://dstock.vndirect.com.vn/tong-quan/NVL"
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/NVL",
+   "last_good": true
   },
   "KDH": {
    "date": "2026-11-19",
@@ -422,7 +433,8 @@
    "pb": 1.05,
    "market_cap": 19675.7,
    "basis_date": "2026-11-19",
-   "source_url": "https://dstock.vndirect.com.vn/tong-quan/KDH"
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/KDH",
+   "last_good": true
   },
   "NLG": {
    "date": "2026-11-19",
@@ -440,7 +452,8 @@
    "pb": 0.98,
    "market_cap": 14076.0,
    "basis_date": "2026-11-19",
-   "source_url": "https://dstock.vndirect.com.vn/tong-quan/DXG"
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/DXG",
+   "last_good": true
   },
   "PDR": {
    "date": "2026-11-19",
@@ -575,7 +588,8 @@
    "pb": 0.42,
    "market_cap": 2710.2,
    "basis_date": "2026-11-19",
-   "source_url": "https://dstock.vndirect.com.vn/tong-quan/DXS"
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/DXS",
+   "last_good": true
   },
   "TCM": {
    "date": "2026-11-19",
@@ -839,14 +853,13 @@
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/KDC"
   },
   "VHC": {
-   "date": "2026-11-18",
-   "close": 51.0,
-   "pe": 8.67,
-   "pb": 1.11,
-   "market_cap": 10682.1,
-   "basis_date": "2026-11-18",
-   "source_url": "https://dstock.vndirect.com.vn/tong-quan/VHC",
-   "last_good": true
+   "date": "2026-11-19",
+   "close": 51.2,
+   "pe": 8.71,
+   "pb": 1.12,
+   "market_cap": 10724.0,
+   "basis_date": "2026-11-19",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/VHC"
   },
   "ANV": {
    "date": "2026-11-19",
@@ -975,14 +988,13 @@
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/HSG"
   },
   "NKG": {
-   "date": "2026-11-18",
-   "close": 12.05,
-   "pe": 24.39,
-   "pb": 0.76,
-   "market_cap": 5932.5,
-   "basis_date": "2026-11-18",
-   "source_url": "https://dstock.vndirect.com.vn/tong-quan/NKG",
-   "last_good": true
+   "date": "2026-11-19",
+   "close": 12.3,
+   "pe": 24.89,
+   "pb": 0.78,
+   "market_cap": 6055.6,
+   "basis_date": "2026-11-19",
+   "source_url": "https://dstock.vndirect.com.vn/tong-quan/NKG"
   },
   "HT1": {
    "date": "2026-11-19",
@@ -8744,6 +8756,13 @@
     10.2,
     1.42,
     1429.0
+   ],
+   [
+    "2026-11-19",
+    22.9,
+    10.38,
+    1.45,
+    1454.4
    ]
   ],
   "TMP": [
@@ -21565,6 +21584,13 @@
     8.67,
     1.11,
     10682.1
+   ],
+   [
+    "2026-11-19",
+    51.2,
+    8.71,
+    1.12,
+    10724.0
    ]
   ],
   "ANV": [
@@ -24738,6 +24764,13 @@
     24.39,
     0.76,
     5932.5
+   ],
+   [
+    "2026-11-19",
+    12.3,
+    24.89,
+    0.78,
+    6055.6
    ]
   ],
   "HT1": [
@@ -32745,5 +32778,5 @@
    ]
   ]
  },
- "changed_at": "2026-11-20T00:35:33+07:00"
+ "changed_at": "2026-11-20T14:40:20+07:00"
 }
