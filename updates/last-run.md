@@ -1,16 +1,15 @@
-# Lịch cập nhật — 21/11/2026 14:42
+# Lịch cập nhật — 21/11/2026 23:27
 
-- 🆕 pvn.news: 2 mục mới — Trungnam chọn đối tác Italy cung cấp thiết bị cho dự án LNG Cà Ná — https://kinhtexaydung.petrotimes.vn/trungnam-chon-doi-tac-italy-cung-cap-thiet-bi-cho-du-an-lng-ca-na-748257.html; Bổ sung LNG cho nhà máy điện khí hiện hữu Từ yêu cầu kỹ thuật đến bài toán chi phí — https://petrovietnam.petrotimes.vn/bo-sung-lng-cho-nha-may-dien-khi-hien-huu-tu-yeu-cau-ky-thuat-den-bai-toan-chi-phi-748183.html
+- 🆕 pvn.news: 1 mục mới — Quốc hội thông qua Nghị quyết về cơ chế chính đặc thù cho Khu kinh tế Dung Quất — https://petrotimes.vn/quoc-hoi-thong-qua-nghi-quyet-ve-co-che-chinh-dac-thu-cho-khu-kinh-te-dung-quat-748278.html
+- 🆕 news.vssa: 1 mục mới — Ngành mía đường đón chờ một niên vụ “ngọt ngào” - Thuonghieucongluan.com.vn — https://news.google.com/rss/articles/CBMilwFBVV95cUxQOEZ6R25PNm13aUp4ckM4QkRXTTloOEtBVnpNS1gxb3FrOEViQWFGRXUwUG1qaUQyZzl0SFBpRzNIUGthd1RNaTJXVXlweFhLQU9GeEJPckY0c0Yzb293ekN1U2xRcmpXNHNnSE9xdVkyVlJudVE4bV9TWEdQLU45TGJkNEpHWDNEME1PdWJJWGFFaDV4Rzh3?oc=5
 - ⚠️ watcher fr.vn-seafood: không thấy mục nào trên trang
-- ⚠️ watcher news.vasep: HTTP 429
-- 🆕 news.public-investment: 10 mục mới — Giải ngân vốn đầu tư công vượt 75% kế hoạch - Pháp Luật Plus — https://news.google.com/rss/articles/CBMiiwFBVV95cUxQd3lEdllZcWNHNUI3T1h6RFZMLW5qcS1QZ3p1S084Q1NBcnFSZXdleVhRbzIxcU42S1llU3VMZGFTQmJHdklnek5iTDhsclRwaTFXbFc3dHB5QkktOFkyTDlhOUM0Nzc3TUxKTndyWklvaS0tUEYxX2dxTnZYWG4xWFRHLW1feWNWY19R?oc=5; Đẩy nhanh giải ngân đầu tư công, thúc đẩy phát triển công nghệ chiến lược - dangcongsan.vn — https://news.google.com/rss/articles/CBMixAFBVV95cUxPWVQxNmxlMVNjbUZOc0REYmNfY3VST2k3QTRxMXVlaktSSGpDXzdMQjVtejBKREJUNjlHRWtPdTh4ZUE1Ukx5V2hGc3Z4a2ZydkxUMEFWTmNUOEp4Z0h6c0NEVlk4bUZLbDNZbW5FTjZwdXVIYXdzQzk3SkdMdzFDQ2hhcUlzQUpvUG9LRnpJOW1qa0NSeXQ0VGlXUXdFX2VBUTRaMVFXeTF5NDVqSHVneExkWFAxeUdfSFc3MEl3aDZsbXpp?oc=5; Lai Châu đẩy nhanh tiến độ, phấn đấu giải ngân 100% vốn đầu tư công - baove.congly.vn — https://news.google.com/rss/articles/CBMiowFBVV95cUxOcHJiU1lmczRLd0ZIYzd0MDF3dlBfWTV4dzVCNVZ0UUx5WDFlb3ZIbTFrOHN4endTUFY2a2g4VzAwdk9Kd1ZfVURtS0o2MDJyczZyTVpqWHd2R3czTTJzdks1cDVBbktVRmxKb0hLRk1tVWNGVHBVMmVtRmdZejMzaUptU2l2Rkg5aXI3ZmJDamd6ekt0STRjalFpMXN3NGdwNWRZ?oc=5
-- 🆕 news.insurance: 2 mục mới — Doanh thu phí bảo hiểm 6 tháng đầu năm ước tăng 14% - baodautu — https://news.google.com/rss/articles/CBMiiwFBVV95cUxPNXBFVGg0N0xQSVExWF9uaHRMdnF6VDRUTE1vY1h6cjNDUWs5NGtKSVhFbTZjR0VIRjBYSFk2OFYtdW1CZ3JxNEEwLWVMWkY4SkVzWE5BdXpOT21iSWdIanF4YktJeTFiR0wtOGhNSTl2RTcydjVRMldEMzR1RHBkQVBYV1F3Zkw3d3hF?oc=5; Doanh thu phí bảo hiểm của Bảo Việt dẫn đầu thị trường bảo hiểm nhân thọ - Laodong.vn — https://news.google.com/rss/articles/CBMiswFBVV95cUxOVF9weW1CQ1c5VXVmREZadnVVZ1VHcmt6U0tRS3hrU2lVaU1UbU10WkNVOUdqOEp0VDljeUZvTkpUVGdvTjJKcFV4blRiejNrMnlCTHBMWDczbXhyb01kOW54RjR1YXp6OE14RlJiQ05kZHVzQ1JBX21hS2p3NUVYNjVoQ1RWZktyRFRBQWxoWlFvanc0bnZLLWdaMVFENUpXMWFJRmk4emFVS1VEOEx0aWhVdw?oc=5
-- 🆕 moit.power-prices: 1 mục mới — Luật Điện lực sửa đổi: Bảy nhóm thay đổi lớn từ quy hoạch tới giá điện — /tin-tuc/luat-dien-luc-sua-doi-bay-nhom-thay-doi-lon-tu-quy-hoach-toi-gia-dien.html
-- 🆕 news.power-prices: 2 mục mới — Quốc hội đồng ý có lộ trình áp dụng giá bán lẻ điện giờ cao điểm, thấp điểm - Nghệ An 24h — https://news.google.com/rss/articles/CBMirAFBVV95cUxPTEw1cWVDUDAxY1ZZc0lwMWhUS05Od2FRdFhyT2xxODdVZHFhVkVxQlk2QlcyN3cxYjZHbW9MWHBrMnJFUjJoVWc4SDlhSkM4THJrTkltb2NOZ1JoZ01RMEdwa0RKcXZfaU1na2g5VUk5S0lMYWpLUTlva3dUYTZFZTZkSmFhSkRlMlBwYXgxX0NIUUZ0TXUxa3NjT2xVbHE3dG5ZRXJEMUVwUy16?oc=5; Quốc hội thông qua Luật Điện lực sửa đổi với quy định mới về giá bán lẻ điện - VOH — https://news.google.com/rss/articles/CBMitwFBVV95cUxQQkE4Sk1BSWdLZ1hrNmZlSXJ3dG5venk4bjV5NFprVzk4R1JXQlRQRU5BcXZJcXdjV3g1bnhxX0xVQTdPZUZpRl9XSlIzelV0YjZPd2YybmRZRzRiVThsbmpHYVpEalNBNnhlSDlPMmNqQk1vMEdfcThpZVlkLUdOa2JhUmxsU1V1bkN0eGtfeENrcG1iN2NPS0twOU8tOXFOM1ZQNzNPazdTcFFseWxNeWZOWDQ3NHc?oc=5
-- 🆕 news.pharma: 2 mục mới — Long Châu khởi động Ngày hội gia đình mùa 4 tại Thanh Hóa - VnExpress — https://news.google.com/rss/articles/CBMilwFBVV95cUxOcDZHeUl4YjhGS25HenhDUUF5SWtpZUhoV21rZWRCbldfTTVMMmxmR3RjMnZGdXd0OG0tWklZTmNKWFY2Ul9OQ05sY0tORkJuNmZ1X0JRbFBQMGJJNW9MVlUycE1oN1Y2a1J5MXd6MDBrbGZZMmNCMER5MVNybi1NU1IwQ29yUk5TZ2NOaFhGUU5fTm5mZmtj?oc=5; 3.000 nhà thuốc Long Châu chung tay Hội Hen - Dị ứng - Miễn dịch lâm sàng TP.HCM phòng và quản lý COPD - Vietnam.vn — https://news.google.com/rss/articles/CBMivgFBVV95cUxPS1VweV9iX1dsMmJYbjVyVmJrdHd6VldxWFZiM2l4YU1aWHo3ZnlnS0dZeV90Rm1hYjdkdl9yRUpvY0VKWGd4TExWb0VPN2NGY2RENnNDRDFNTDlSdElseWZtTG9obE9MNFBlRXlkdjBzY0JRdXFReWotREw0cExYM0otcFRRd2tPa2NpZmhqblVaNWRsd3VsYlNVdG9vOUlKYXppekpIbm8zZUJhaVBMNDlpSmRodEZiOVhFa2VR?oc=5
+- 🆕 news.shipping-policy: 1 mục mới — Góp ý hoàn thiện dự án Luật Giao dịch hàng hóa phái sinh, Bộ luật Hàng hải và Đường thủy Việt Nam - Báo và phát thanh, truyền hình Đồng Tháp — https://news.google.com/rss/articles/CBMivAFBVV95cUxQc1E5VjZYWmVjNFZYOU93LW5oRkNRampxWXB3SUdfeWM0Z1FmRzliMXJNdzJfeExDNDlqbDZUQVRTT2c4N0R4b0gxQ1JLcEJ5QW9DREFWNWotOVFLY0dMaDU4OEJaSUltbkFkUFhuMmxKTHpkWWFOSlp5bWV6RVJ1dVg0ZmdTcU1sakE1elFZUmVVNjNlVFNGWlgta0xRNlpqR0lSSUFvRy1yZG9ncmF5eUJ5bWFhM2stT0ZqRw?oc=5
+- 🆕 news.public-investment: 7 mục mới — Đồng Tháp tăng tốc giải ngân vốn đầu tư công những tháng cuối năm - VOV.VN — https://news.google.com/rss/articles/CBMipwFBVV95cUxPOURnaWNKTkhMSXJkdlRvZllWTUI1ekJPeE1ZSmxVdFdDdlhBVlFXQ0pCMkxpX3g0XzJNeHpSWmVNWFF6ZnhqdGF1eERoZkhhcnB0SWdDa1VEVXc1YkdfMHF3OWl0a2lCRURlaGF4V0hYOWMtV3VpdERmTTlLN2FLeUtyTTFoOHp1X01BNUJJSF9Bc2FYZTlOVHpXNjRxb0JadEtjQVg5bw?oc=5; Giải ngân vốn đầu tư công vượt 75% kế hoạch - Vietstock — https://news.google.com/rss/articles/CBMikAFBVV95cUxNeXp4dDdrZ0xacndvMW96c1ZwZ2pBX1B5VTdRRVV2V3FaSGhyYkZDUXc1VXk2ck5UdVZrSmQ4X3c5UGJjcEdxMG8yRDRFdEdvLXZRa3QzZ1RTaGowVWRZUTdpUGtGVlh1OHptSEdkR1FiRzdUa1dzNWNzVmJPYU1zeTF5S0tUeGEzSjAzWkVOekQ?oc=5; Đẩy nhanh giải ngân đầu tư công, thúc đẩy phát triển công nghệ chiến lược - Báo Nhân Dân điện tử — https://news.google.com/rss/articles/CBMirAFBVV95cUxOMlhlMGJHdmVFRGs3Nll3NXdDYkNoaEJ5WjA2VE1KUmdVS3VEZHROYml6amhUaHZMbU5Tbi03alZDbEhLTVhRdW9VdTgwb1lIOEMxcFNCZHN3ZUZNQ0o2TnplaTBNN0t1TXY1NlVTZHppdWFBZXU4UHFlWS00RG5sLUUzNkI4VHp0NkNac3N3bWZWNWJZNHZGblZ4dkFCZk9VVnV0NjNOa3dQblE3?oc=5
+- 🆕 news.pharma: 1 mục mới — FPT Long Châu đồng hành cùng Sở Y tế hướng dẫn F0 điều trị bệnh tại nhà - Laodong.vn — https://news.google.com/rss/articles/CBMitwFBVV95cUxNclV3ZGcxNGxySEtLTHlZaVpKMDFvY29EamVkZV9HZVlWb01RSFNYV09LSHRhSGFRaHlPOUtveExHbU5NU1lQWFZzRFJMaktzblRhNHpHWWZyWjZFMTFGQU9CMWMxbEpMaTRqX1BBcTZlX2dYdUpYMUk5Y0R1ZktrMU5lWFEyYkNJREpoV192R0gwSUptSlBYYU50UVJxNVE1WDBnWk9SZ0NVM2JyZ3VDVWhLV2cxVUU?oc=5
 - → hàng chờ [B] bank.wi.daily: lịch 20/11 07:00
 - → hàng chờ [B] bank.wi.monthly: lịch 16/11 07:00
 - → hàng chờ [C] oil.supply-news: watcher báo có công bố mới
+- → hàng chờ [C] sugar.crop: watcher báo có công bố mới
 - → hàng chờ [D] oil.ai.cycle: đổi đáng kể: brent.value: 115.22 → 92.94
 - → hàng chờ [D] oil.ai.balance: đổi đáng kể: world_balance.balance@2026-12-31: -1.3 → -0.66; world_balance.balance@2027-12-31: 4.89 → 4.03
 - → hàng chờ [D] oil.ai.regime: đổi đáng kể: brent.value: 115.22 → 92.94; singapore_cracks.gasoil_crack: 64.69 → 53.87
@@ -37,6 +36,7 @@
 - → hàng chờ [C] seafood.trade: lịch 20/11 07:00
 - → hàng chờ [C] seafood.hot-topics: lịch 16/11 07:00
 - → hàng chờ [C] shipping.outlook: lịch 16/11 07:00
+- → hàng chờ [C] shipping.policy: watcher báo có công bố mới
 - → hàng chờ [C] shipping.rates: lịch 16/11 07:00
 - → hàng chờ [C] shipping.hot-topics: lịch 16/11 07:00
 - → hàng chờ [D] shipping.ai.cycle: số liệu nền đổi: hormuz, bab_el_mandeb
@@ -46,7 +46,6 @@
 - → hàng chờ [C] construction.policy: watcher báo có công bố mới
 - → hàng chờ [C] construction.prices: lịch 16/11 07:00
 - → hàng chờ [C] insurance.market: lịch 20/11 07:00
-- → hàng chờ [C] insurance.policy: watcher báo có công bố mới
 - → hàng chờ [C] insurance.hot-topics: lịch 16/11 07:00
 - → hàng chờ [C] retail.market: lịch 20/11 07:00
 - → hàng chờ [C] retail.hot-topics: lịch 16/11 07:00
@@ -93,8 +92,4 @@
 - → hàng chờ [B] shipping.wi.fearnleys: lịch 16/11 07:00
 - → hàng chờ [C] shipping.derived: lần đầu: rà soát số đang hiển thị
 - → hàng chờ [B] seafood.wi.us-imports: lịch 20/11 07:00
-- Hàng chờ Claude: 91 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
-
-## Cảnh báo
-
-- ⚠️ Watcher news.vasep không đọc được trang (HTTP 429)
+- Hàng chờ Claude: 92 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
