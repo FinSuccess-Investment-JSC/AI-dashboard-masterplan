@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "checked_at": "2026-11-21T00:10:57+07:00",
+ "checked_at": "2026-11-21T14:37:36+07:00",
  "provider": "VNDirect finfo",
  "method": "P/E, P/B, vốn hóa của VNDirect tại ngày tham chiếu, điều chỉnh theo giá đóng cửa phiên mới nhất; EPS, BVPS, số cổ phiếu giữ nguyên đến kỳ BCTC sau.",
  "units": {
@@ -16,7 +16,7 @@
   "POM": "không có giá đóng cửa ngày 2022-09-06",
   "TNH": "không có giá đóng cửa ngày 2025-05-05"
  },
- "data_hash": "b79459245d73a3758a8c458d34f185d65e2960b873134229cb607b4e355dfb27",
+ "data_hash": "754037a419722eef726da8d28c1144fa44b0bc8f8413ad314329cf12217e4f70",
  "latest_observation": "2026-11-20",
  "companies": {
   "GAS": {
@@ -25,7 +25,7 @@
    "pe": 11.54,
    "pb": 2.32,
    "market_cap": 170113.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/GAS"
   },
   "BSR": {
@@ -34,7 +34,7 @@
    "pe": 4.23,
    "pb": 1.42,
    "market_cap": 118172.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/BSR"
   },
   "PLX": {
@@ -43,7 +43,7 @@
    "pe": 10.23,
    "pb": 1.41,
    "market_cap": 39324.8,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PLX"
   },
   "PVD": {
@@ -52,7 +52,7 @@
    "pe": 16.6,
    "pb": 0.87,
    "market_cap": 15029.4,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PVD"
   },
   "PVS": {
@@ -61,7 +61,7 @@
    "pe": 7.81,
    "pb": 1.05,
    "market_cap": 16385.9,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PVS"
   },
   "PVT": {
@@ -70,7 +70,7 @@
    "pe": 6.27,
    "pb": 0.98,
    "market_cap": 9640.5,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PVT"
   },
   "SBT": {
@@ -79,7 +79,7 @@
    "pe": 24.75,
    "pb": 1.58,
    "market_cap": 19720.8,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SBT"
   },
   "QNS": {
@@ -87,8 +87,8 @@
    "close": 48.0,
    "pe": 8.81,
    "pb": 1.64,
-   "market_cap": 17665.1,
-   "basis_date": "2026-11-19",
+   "market_cap": 17657.8,
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/QNS"
   },
   "SLS": {
@@ -97,7 +97,7 @@
    "pe": 9.03,
    "pb": 0.71,
    "market_cap": 1194.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SLS"
   },
   "LSS": {
@@ -106,7 +106,7 @@
    "pe": 15.03,
    "pb": 0.37,
    "market_cap": 666.2,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/LSS"
   },
   "KTS": {
@@ -115,7 +115,7 @@
    "pe": 28.1,
    "pb": 0.37,
    "market_cap": 95.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/KTS"
   },
   "VCB": {
@@ -124,7 +124,7 @@
    "pe": 10.07,
    "pb": 1.65,
    "market_cap": 419454.9,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VCB"
   },
   "CTG": {
@@ -133,7 +133,7 @@
    "pe": 5.49,
    "pb": 1.13,
    "market_cap": 233785.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/CTG"
   },
   "BID": {
@@ -142,7 +142,7 @@
    "pe": 6.75,
    "pb": 1.19,
    "market_cap": 233735.8,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/BID"
   },
   "TCB": {
@@ -151,7 +151,7 @@
    "pe": 7.87,
    "pb": 1.2,
    "market_cap": 225342.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/TCB"
   },
   "VPB": {
@@ -160,7 +160,7 @@
    "pe": 6.57,
    "pb": 1.1,
    "market_cap": 205000.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VPB"
   },
   "MBB": {
@@ -169,7 +169,7 @@
    "pe": 5.65,
    "pb": 1.17,
    "market_cap": 183754.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/MBB"
   },
   "ACB": {
@@ -178,7 +178,7 @@
    "pe": 7.07,
    "pb": 1.09,
    "market_cap": 113766.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/ACB"
   },
   "HDB": {
@@ -187,7 +187,7 @@
    "pe": 7.35,
    "pb": 1.58,
    "market_cap": 141849.5,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/HDB"
   },
   "TPB": {
@@ -196,7 +196,7 @@
    "pe": 4.66,
    "pb": 0.84,
    "market_cap": 39398.2,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/TPB"
   },
   "VIB": {
@@ -205,7 +205,7 @@
    "pe": 6.45,
    "pb": 1.0,
    "market_cap": 49760.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VIB"
   },
   "SHB": {
@@ -214,7 +214,7 @@
    "pe": 3.74,
    "pb": 0.64,
    "market_cap": 51041.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SHB"
   },
   "POW": {
@@ -223,7 +223,7 @@
    "pe": 6.85,
    "pb": 0.95,
    "market_cap": 40802.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/POW"
   },
   "NT2": {
@@ -232,7 +232,7 @@
    "pe": 4.71,
    "pb": 1.34,
    "market_cap": 6865.8,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/NT2"
   },
   "PPC": {
@@ -241,25 +241,25 @@
    "pe": 8.81,
    "pb": 0.57,
    "market_cap": 2564.9,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PPC"
   },
   "QTP": {
    "date": "2026-11-20",
    "close": 10.2,
-   "pe": 3.72,
-   "pb": 0.77,
-   "market_cap": 4604.2,
-   "basis_date": "2026-11-19",
+   "pe": 3.68,
+   "pb": 0.76,
+   "market_cap": 4563.3,
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/QTP"
   },
   "HND": {
    "date": "2026-11-20",
    "close": 8.4,
-   "pe": 8.56,
-   "pb": 0.69,
-   "market_cap": 4222.0,
-   "basis_date": "2026-11-19",
+   "pe": 8.52,
+   "pb": 0.68,
+   "market_cap": 4202.5,
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/HND"
   },
   "BTP": {
@@ -268,7 +268,7 @@
    "pe": 7.49,
    "pb": 0.38,
    "market_cap": 391.9,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/BTP"
   },
   "REE": {
@@ -277,7 +277,7 @@
    "pe": 10.54,
    "pb": 1.29,
    "market_cap": 29019.2,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/REE"
   },
   "VSH": {
@@ -286,7 +286,7 @@
    "pe": 11.01,
    "pb": 1.91,
    "market_cap": 9296.1,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VSH"
   },
   "CHP": {
@@ -295,7 +295,7 @@
    "pe": 11.68,
    "pb": 2.25,
    "market_cap": 4114.9,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/CHP"
   },
   "SBA": {
@@ -304,7 +304,7 @@
    "pe": 10.24,
    "pb": 1.43,
    "market_cap": 1435.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SBA"
   },
   "TMP": {
@@ -313,7 +313,7 @@
    "pe": 8.85,
    "pb": 1.82,
    "market_cap": 3269.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/TMP"
   },
   "SHP": {
@@ -322,7 +322,7 @@
    "pe": 10.58,
    "pb": 2.52,
    "market_cap": 3177.9,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SHP"
   },
   "GEG": {
@@ -331,7 +331,7 @@
    "pe": 11.96,
    "pb": 0.94,
    "market_cap": 4954.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/GEG"
   },
   "HDG": {
@@ -340,7 +340,7 @@
    "pe": 8.05,
    "pb": 0.92,
    "market_cap": 6552.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/HDG"
   },
   "TTA": {
@@ -349,7 +349,7 @@
    "pe": 7.36,
    "pb": 0.73,
    "market_cap": 1839.2,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/TTA"
   },
   "PC1": {
@@ -358,7 +358,7 @@
    "pe": 6.89,
    "pb": 1.1,
    "market_cap": 7662.2,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PC1"
   },
   "TV2": {
@@ -367,7 +367,7 @@
    "pe": 9.09,
    "pb": 1.44,
    "market_cap": 1917.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/TV2"
   },
   "GEX": {
@@ -376,7 +376,7 @@
    "pe": 26.25,
    "pb": 1.31,
    "market_cap": 26169.4,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/GEX"
   },
   "VHM": {
@@ -385,16 +385,16 @@
    "pe": 5.02,
    "pb": 1.73,
    "market_cap": 496175.4,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VHM"
   },
   "NVL": {
    "date": "2026-11-20",
    "close": 9.98,
-   "pe": 7.58,
+   "pe": 5.15,
    "pb": 0.5,
    "market_cap": 31988.5,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/NVL"
   },
   "KDH": {
@@ -403,7 +403,7 @@
    "pe": 11.3,
    "pb": 1.02,
    "market_cap": 19177.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/KDH"
   },
   "NLG": {
@@ -412,7 +412,7 @@
    "pe": 23.65,
    "pb": 0.89,
    "market_cap": 11254.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/NLG"
   },
   "DXG": {
@@ -421,7 +421,7 @@
    "pe": 121.2,
    "pb": 0.97,
    "market_cap": 13885.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DXG"
   },
   "PDR": {
@@ -430,7 +430,7 @@
    "pe": 20.72,
    "pb": 0.88,
    "market_cap": 11125.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PDR"
   },
   "DIG": {
@@ -439,7 +439,7 @@
    "pe": 13.36,
    "pb": 0.83,
    "market_cap": 8442.2,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DIG"
   },
   "CEO": {
@@ -448,7 +448,7 @@
    "pe": 37.02,
    "pb": 1.08,
    "market_cap": 6851.4,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/CEO"
   },
   "AGG": {
@@ -457,7 +457,7 @@
    "pe": 3.23,
    "pb": 0.4,
    "market_cap": 1528.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/AGG"
   },
   "TCH": {
@@ -466,15 +466,15 @@
    "pe": 17.52,
    "pb": 1.15,
    "market_cap": 13946.2,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/TCH"
   },
   "NTL": {
    "date": "2026-11-20",
    "close": 12.35,
    "pe": 49.09,
-   "pb": 0.96,
-   "market_cap": 1512.5,
+   "pb": 0.95,
+   "market_cap": 1500.4,
    "basis_date": "2026-10-27",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/NTL"
   },
@@ -484,7 +484,7 @@
    "pe": 14.2,
    "pb": 0.96,
    "market_cap": 24862.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/KBC"
   },
   "IDC": {
@@ -493,7 +493,7 @@
    "pe": 7.83,
    "pb": 1.97,
    "market_cap": 14276.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/IDC"
   },
   "BCM": {
@@ -502,7 +502,7 @@
    "pe": 17.79,
    "pb": 1.66,
    "market_cap": 37260.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/BCM"
   },
   "SZC": {
@@ -511,7 +511,7 @@
    "pe": 21.38,
    "pb": 1.12,
    "market_cap": 3428.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SZC"
   },
   "SIP": {
@@ -520,7 +520,7 @@
    "pe": 7.44,
    "pb": 2.55,
    "market_cap": 10410.9,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SIP"
   },
   "VGC": {
@@ -529,7 +529,7 @@
    "pe": 9.53,
    "pb": 1.93,
    "market_cap": 17104.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VGC"
   },
   "LHG": {
@@ -538,7 +538,7 @@
    "pe": 4.55,
    "pb": 0.68,
    "market_cap": 1310.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/LHG"
   },
   "VRE": {
@@ -547,7 +547,7 @@
    "pe": 7.22,
    "pb": 1.05,
    "market_cap": 53399.5,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VRE"
   },
   "DXS": {
@@ -556,7 +556,7 @@
    "pe": 21.07,
    "pb": 0.43,
    "market_cap": 2779.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DXS"
   },
   "TCM": {
@@ -565,7 +565,7 @@
    "pe": 8.5,
    "pb": 0.71,
    "market_cap": 1741.1,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/TCM"
   },
   "TNG": {
@@ -574,7 +574,7 @@
    "pe": 4.5,
    "pb": 1.05,
    "market_cap": 2136.9,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/TNG"
   },
   "MSH": {
@@ -583,7 +583,7 @@
    "pe": 6.26,
    "pb": 1.8,
    "market_cap": 3938.2,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/MSH"
   },
   "GIL": {
@@ -592,7 +592,7 @@
    "pe": 4.93,
    "pb": 0.34,
    "market_cap": 869.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/GIL"
   },
   "ADS": {
@@ -601,16 +601,16 @@
    "pe": 5.83,
    "pb": 0.59,
    "market_cap": 563.8,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/ADS"
   },
   "VGT": {
    "date": "2026-11-20",
    "close": 10.8,
-   "pe": 4.62,
-   "pb": 0.66,
-   "market_cap": 5355.8,
-   "basis_date": "2026-11-19",
+   "pe": 4.65,
+   "pb": 0.67,
+   "market_cap": 5394.0,
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VGT"
   },
   "GMD": {
@@ -619,25 +619,25 @@
    "pe": 12.05,
    "pb": 2.29,
    "market_cap": 32466.9,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/GMD"
   },
   "PHP": {
    "date": "2026-11-20",
    "close": 45.4,
-   "pe": 10.78,
-   "pb": 2.19,
-   "market_cap": 14749.3,
-   "basis_date": "2026-11-19",
+   "pe": 10.81,
+   "pb": 2.2,
+   "market_cap": 14790.4,
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PHP"
   },
   "SGP": {
    "date": "2026-11-20",
    "close": 17.8,
-   "pe": 9.98,
-   "pb": 1.24,
-   "market_cap": 3867.9,
-   "basis_date": "2026-11-19",
+   "pe": 9.89,
+   "pb": 1.23,
+   "market_cap": 3834.6,
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SGP"
   },
   "VSC": {
@@ -646,7 +646,7 @@
    "pe": 19.03,
    "pb": 0.87,
    "market_cap": 4848.1,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VSC"
   },
   "CDN": {
@@ -655,7 +655,7 @@
    "pe": 5.59,
    "pb": 1.09,
    "market_cap": 2524.5,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/CDN"
   },
   "DVP": {
@@ -664,7 +664,7 @@
    "pe": 7.91,
    "pb": 2.19,
    "market_cap": 2980.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DVP"
   },
   "PDN": {
@@ -673,7 +673,7 @@
    "pe": 9.01,
    "pb": 2.6,
    "market_cap": 4167.4,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PDN"
   },
   "HAH": {
@@ -682,7 +682,7 @@
    "pe": 6.7,
    "pb": 1.6,
    "market_cap": 8767.1,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/HAH"
   },
   "SCS": {
@@ -691,7 +691,7 @@
    "pe": 5.44,
    "pb": 2.22,
    "market_cap": 4046.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SCS"
   },
   "SGN": {
@@ -700,7 +700,7 @@
    "pe": 7.42,
    "pb": 1.56,
    "market_cap": 1872.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SGN"
   },
   "TCL": {
@@ -709,7 +709,7 @@
    "pe": 4.88,
    "pb": 1.19,
    "market_cap": 855.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/TCL"
   },
   "STG": {
@@ -718,7 +718,7 @@
    "pe": 8.17,
    "pb": 1.06,
    "market_cap": 2996.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/STG"
   },
   "PAN": {
@@ -727,7 +727,7 @@
    "pe": 3.26,
    "pb": 0.72,
    "market_cap": 4023.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PAN"
   },
   "GVR": {
@@ -736,7 +736,7 @@
    "pe": 15.59,
    "pb": 1.72,
    "market_cap": 109200.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/GVR"
   },
   "DPR": {
@@ -745,7 +745,7 @@
    "pe": 6.82,
    "pb": 0.99,
    "market_cap": 2858.5,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DPR"
   },
   "PHR": {
@@ -754,7 +754,7 @@
    "pe": 6.09,
    "pb": 1.38,
    "market_cap": 6707.2,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PHR"
   },
   "DBC": {
@@ -763,7 +763,7 @@
    "pe": 6.94,
    "pb": 0.81,
    "market_cap": 7026.1,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DBC"
   },
   "HAG": {
@@ -772,7 +772,7 @@
    "pe": 5.18,
    "pb": 1.07,
    "market_cap": 17109.9,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/HAG"
   },
   "BAF": {
@@ -781,7 +781,7 @@
    "pe": 135.04,
    "pb": 2.5,
    "market_cap": 12485.1,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/BAF"
   },
   "VNM": {
@@ -790,7 +790,7 @@
    "pe": 9.42,
    "pb": 3.67,
    "market_cap": 107423.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VNM"
   },
   "MSN": {
@@ -799,7 +799,7 @@
    "pe": 11.28,
    "pb": 2.45,
    "market_cap": 107293.1,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/MSN"
   },
   "SAB": {
@@ -808,7 +808,7 @@
    "pe": 11.72,
    "pb": 2.62,
    "market_cap": 54444.8,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SAB"
   },
   "KDC": {
@@ -817,7 +817,7 @@
    "pe": 19.07,
    "pb": 2.48,
    "market_cap": 13817.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/KDC"
   },
   "VHC": {
@@ -826,7 +826,7 @@
    "pe": 8.59,
    "pb": 1.1,
    "market_cap": 10577.4,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VHC"
   },
   "ANV": {
@@ -835,7 +835,7 @@
    "pe": 5.32,
    "pb": 1.03,
    "market_cap": 4193.5,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/ANV"
   },
   "IDI": {
@@ -844,7 +844,7 @@
    "pe": 8.12,
    "pb": 0.35,
    "market_cap": 1240.2,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/IDI"
   },
   "FMC": {
@@ -853,16 +853,16 @@
    "pe": 4.13,
    "pb": 0.87,
    "market_cap": 2229.8,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/FMC"
   },
   "MPC": {
    "date": "2026-11-20",
    "close": 12.8,
-   "pe": 7.91,
-   "pb": 0.91,
-   "market_cap": 5158.7,
-   "basis_date": "2026-11-19",
+   "pe": 7.77,
+   "pb": 0.9,
+   "market_cap": 5071.5,
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/MPC"
   },
   "CMX": {
@@ -871,7 +871,7 @@
    "pe": 5.38,
    "pb": 0.35,
    "market_cap": 453.5,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/CMX"
   },
   "ASM": {
@@ -880,7 +880,7 @@
    "pe": 11.5,
    "pb": 0.3,
    "market_cap": 1673.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/ASM"
   },
   "VTO": {
@@ -889,7 +889,7 @@
    "pe": 4.92,
    "pb": 0.69,
    "market_cap": 826.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VTO"
   },
   "VIP": {
@@ -898,7 +898,7 @@
    "pe": 9.63,
    "pb": 0.52,
    "market_cap": 658.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VIP"
   },
   "PVP": {
@@ -907,7 +907,7 @@
    "pe": 5.4,
    "pb": 0.83,
    "market_cap": 1737.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PVP"
   },
   "GSP": {
@@ -916,7 +916,7 @@
    "pe": 8.37,
    "pb": 0.76,
    "market_cap": 727.8,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/GSP"
   },
   "VOS": {
@@ -925,7 +925,7 @@
    "pe": 4.29,
    "pb": 0.74,
    "market_cap": 1456.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VOS"
   },
   "VNA": {
@@ -934,7 +934,7 @@
    "pe": 3.33,
    "pb": 0.74,
    "market_cap": 489.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VNA"
   },
   "HPG": {
@@ -943,7 +943,7 @@
    "pe": 6.29,
    "pb": 1.16,
    "market_cap": 172658.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/HPG"
   },
   "HSG": {
@@ -952,7 +952,7 @@
    "pe": 13.15,
    "pb": 0.69,
    "market_cap": 8193.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/HSG"
   },
   "NKG": {
@@ -961,7 +961,7 @@
    "pe": 24.59,
    "pb": 0.77,
    "market_cap": 5981.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/NKG"
   },
   "HT1": {
@@ -970,7 +970,7 @@
    "pe": 11.58,
    "pb": 0.91,
    "market_cap": 4636.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/HT1"
   },
   "BCC": {
@@ -979,16 +979,16 @@
    "pe": 8.68,
    "pb": 0.36,
    "market_cap": 677.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/BCC"
   },
   "VLB": {
    "date": "2026-11-20",
    "close": 48.1,
-   "pe": 3.39,
-   "pb": 2.12,
-   "market_cap": 2259.8,
-   "basis_date": "2026-11-19",
+   "pe": 3.37,
+   "pb": 2.11,
+   "market_cap": 2246.1,
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VLB"
   },
   "KSB": {
@@ -997,7 +997,7 @@
    "pe": 6.82,
    "pb": 0.48,
    "market_cap": 1367.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/KSB"
   },
   "DHA": {
@@ -1006,7 +1006,7 @@
    "pe": 5.86,
    "pb": 1.57,
    "market_cap": 889.5,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DHA"
   },
   "PLC": {
@@ -1015,7 +1015,7 @@
    "pe": 7.97,
    "pb": 1.0,
    "market_cap": 1502.8,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PLC"
   },
   "CTD": {
@@ -1024,16 +1024,16 @@
    "pe": 10.19,
    "pb": 0.82,
    "market_cap": 8140.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/CTD"
   },
   "HBC": {
    "date": "2026-11-20",
    "close": 2.8,
-   "pe": 12.79,
-   "pb": 0.47,
-   "market_cap": 945.0,
-   "basis_date": "2026-11-19",
+   "pe": 13.15,
+   "pb": 0.48,
+   "market_cap": 972.2,
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/HBC"
   },
   "VCG": {
@@ -1042,7 +1042,7 @@
    "pe": 9.03,
    "pb": 0.87,
    "market_cap": 10123.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VCG"
   },
   "FCN": {
@@ -1051,7 +1051,7 @@
    "pe": 10.87,
    "pb": 0.62,
    "market_cap": 1661.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/FCN"
   },
   "DPG": {
@@ -1060,16 +1060,16 @@
    "pe": 9.12,
    "pb": 1.25,
    "market_cap": 3818.5,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DPG"
   },
   "C4G": {
    "date": "2026-11-20",
    "close": 4.4,
-   "pe": 37.43,
-   "pb": 0.38,
-   "market_cap": 1538.3,
-   "basis_date": "2026-11-19",
+   "pe": 37.96,
+   "pb": 0.39,
+   "market_cap": 1560.3,
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/C4G"
   },
   "LCG": {
@@ -1078,7 +1078,7 @@
    "pe": 8.48,
    "pb": 0.49,
    "market_cap": 1280.9,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/LCG"
   },
   "HHV": {
@@ -1087,7 +1087,7 @@
    "pe": 7.69,
    "pb": 0.45,
    "market_cap": 5279.8,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/HHV"
   },
   "CII": {
@@ -1096,7 +1096,7 @@
    "pe": 84.29,
    "pb": 0.92,
    "market_cap": 8890.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/CII"
   },
   "HUT": {
@@ -1105,7 +1105,7 @@
    "pe": 47.55,
    "pb": 1.2,
    "market_cap": 13246.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/HUT"
   },
   "BVH": {
@@ -1114,7 +1114,7 @@
    "pe": 12.72,
    "pb": 1.64,
    "market_cap": 43054.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/BVH"
   },
   "PVI": {
@@ -1123,7 +1123,7 @@
    "pe": 12.44,
    "pb": 1.82,
    "market_cap": 16264.4,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PVI"
   },
   "BMI": {
@@ -1132,7 +1132,7 @@
    "pe": 7.79,
    "pb": 0.66,
    "market_cap": 2028.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/BMI"
   },
   "MIG": {
@@ -1141,7 +1141,7 @@
    "pe": 10.22,
    "pb": 1.13,
    "market_cap": 3024.5,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/MIG"
   },
   "PTI": {
@@ -1150,7 +1150,7 @@
    "pe": 8.09,
    "pb": 0.72,
    "market_cap": 2050.1,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PTI"
   },
   "BIC": {
@@ -1159,7 +1159,7 @@
    "pe": 8.49,
    "pb": 1.12,
    "market_cap": 3647.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/BIC"
   },
   "VNR": {
@@ -1168,7 +1168,7 @@
    "pe": 7.73,
    "pb": 0.84,
    "market_cap": 3623.4,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VNR"
   },
   "MWG": {
@@ -1177,7 +1177,7 @@
    "pe": 9.46,
    "pb": 2.31,
    "market_cap": 105807.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/MWG"
   },
   "FRT": {
@@ -1186,7 +1186,7 @@
    "pe": 19.48,
    "pb": 5.05,
    "market_cap": 26464.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/FRT"
   },
   "DGW": {
@@ -1195,7 +1195,7 @@
    "pe": 9.11,
    "pb": 2.75,
    "market_cap": 8614.2,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DGW"
   },
   "PET": {
@@ -1204,7 +1204,7 @@
    "pe": 26.9,
    "pb": 2.94,
    "market_cap": 7551.5,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PET"
   },
   "PNJ": {
@@ -1213,7 +1213,7 @@
    "pe": 4.09,
    "pb": 0.52,
    "market_cap": 6908.2,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/PNJ"
   },
   "HAX": {
@@ -1222,7 +1222,7 @@
    "pe": 15.45,
    "pb": 0.76,
    "market_cap": 853.1,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/HAX"
   },
   "SVC": {
@@ -1231,7 +1231,7 @@
    "pe": 11.89,
    "pb": 0.73,
    "market_cap": 1483.0,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SVC"
   },
   "DHG": {
@@ -1240,7 +1240,7 @@
    "pe": 12.73,
    "pb": 3.09,
    "market_cap": 10851.9,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DHG"
   },
   "IMP": {
@@ -1249,7 +1249,7 @@
    "pe": 14.04,
    "pb": 2.13,
    "market_cap": 5159.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/IMP"
   },
   "DBD": {
@@ -1258,7 +1258,7 @@
    "pe": 13.16,
    "pb": 2.28,
    "market_cap": 4138.6,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DBD"
   },
   "TRA": {
@@ -1267,7 +1267,7 @@
    "pe": 10.88,
    "pb": 1.76,
    "market_cap": 2706.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/TRA"
   },
   "DMC": {
@@ -1276,25 +1276,25 @@
    "pe": 7.89,
    "pb": 1.05,
    "market_cap": 1805.8,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DMC"
   },
   "DVN": {
    "date": "2026-11-20",
    "close": 17.8,
-   "pe": 5.87,
-   "pb": 1.1,
-   "market_cap": 4250.5,
-   "basis_date": "2026-11-19",
+   "pe": 5.83,
+   "pb": 1.09,
+   "market_cap": 4217.9,
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/DVN"
   },
   "TVN": {
    "date": "2026-11-20",
    "close": 8.8,
-   "pe": 3.37,
+   "pe": 3.33,
    "pb": 0.58,
-   "market_cap": 6015.2,
-   "basis_date": "2026-11-19",
+   "market_cap": 5950.8,
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/TVN"
   },
   "VGS": {
@@ -1303,7 +1303,7 @@
    "pe": 4.27,
    "pb": 0.82,
    "market_cap": 1181.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/VGS"
   },
   "TLH": {
@@ -1312,7 +1312,7 @@
    "pe": 27.46,
    "pb": 0.27,
    "market_cap": 340.3,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/TLH"
   },
   "SMC": {
@@ -1321,7 +1321,7 @@
    "pe": 1.49,
    "pb": 0.44,
    "market_cap": 647.7,
-   "basis_date": "2026-11-19",
+   "basis_date": "2026-11-20",
    "source_url": "https://dstock.vndirect.com.vn/tong-quan/SMC"
   }
  },
@@ -3201,7 +3201,7 @@
     48.0,
     8.81,
     1.64,
-    17665.1
+    17657.8
    ]
   ],
   "SLS": [
@@ -7512,9 +7512,9 @@
    [
     "2026-11-20",
     10.2,
-    3.72,
-    0.77,
-    4604.2
+    3.68,
+    0.76,
+    4563.3
    ]
   ],
   "HND": [
@@ -7752,9 +7752,9 @@
    [
     "2026-11-20",
     8.4,
-    8.56,
-    0.69,
-    4222.0
+    8.52,
+    0.68,
+    4202.5
    ]
   ],
   "BTP": [
@@ -11338,7 +11338,7 @@
    [
     "2026-11-20",
     9.98,
-    7.58,
+    5.15,
     0.5,
     31988.5
    ]
@@ -13436,8 +13436,8 @@
     "2026-11-20",
     12.35,
     49.09,
-    0.96,
-    1512.5
+    0.95,
+    1500.4
    ]
   ],
   "KBC": [
@@ -16930,9 +16930,9 @@
    [
     "2026-11-20",
     10.8,
-    4.62,
-    0.66,
-    5355.8
+    4.65,
+    0.67,
+    5394.0
    ]
   ],
   "GMD": [
@@ -17368,9 +17368,9 @@
    [
     "2026-11-20",
     45.4,
-    10.78,
-    2.19,
-    14749.3
+    10.81,
+    2.2,
+    14790.4
    ]
   ],
   "SGP": [
@@ -17587,9 +17587,9 @@
    [
     "2026-11-20",
     17.8,
-    9.98,
-    1.24,
-    3867.9
+    9.89,
+    1.23,
+    3834.6
    ]
   ],
   "VSC": [
@@ -23062,9 +23062,9 @@
    [
     "2026-11-20",
     12.8,
-    7.91,
-    0.91,
-    5158.7
+    7.77,
+    0.9,
+    5071.5
    ]
   ],
   "CMX": [
@@ -26128,9 +26128,9 @@
    [
     "2026-11-20",
     48.1,
-    3.39,
-    2.12,
-    2259.8
+    3.37,
+    2.11,
+    2246.1
    ]
   ],
   "KSB": [
@@ -27223,9 +27223,9 @@
    [
     "2026-11-20",
     2.8,
-    12.79,
-    0.47,
-    945.0
+    13.15,
+    0.48,
+    972.2
    ]
   ],
   "VCG": [
@@ -28099,9 +28099,9 @@
    [
     "2026-11-20",
     4.4,
-    37.43,
-    0.38,
-    1538.3
+    37.96,
+    0.39,
+    1560.3
    ]
   ],
   "LCG": [
@@ -33355,9 +33355,9 @@
    [
     "2026-11-20",
     17.8,
-    5.87,
-    1.1,
-    4250.5
+    5.83,
+    1.09,
+    4217.9
    ]
   ],
   "TVN": [
@@ -33455,9 +33455,9 @@
    [
     "2026-11-20",
     8.8,
-    3.37,
+    3.33,
     0.58,
-    6015.2
+    5950.8
    ]
   ],
   "VGS": [
@@ -33761,5 +33761,5 @@
    ]
   ]
  },
- "changed_at": "2026-11-21T00:10:57+07:00"
+ "changed_at": "2026-11-21T14:37:36+07:00"
 }

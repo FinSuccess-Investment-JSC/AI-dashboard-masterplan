@@ -9,7 +9,7 @@
 "FBX11": "Trung Quốc/Đông Á → Bắc Âu",
 "FBX13": "Trung Quốc/Đông Á → Địa Trung Hải"
 },
-"checked": "2026-11-20",
+"checked": "2026-11-21",
 "note": "Trang chỉ hiện giá trị mới nhất; ngày = ngày script đọc trang (FBX công bố theo ngày làm việc). Cước container của hãng tàu/forwarder, không phải doanh thu cảng.",
 "days": {
 "2026-11-05": {
@@ -123,6 +123,13 @@
 "FBX03": 9848,
 "FBX11": 3407,
 "FBX13": 4295
+},
+"2026-11-21": {
+"FBX": 3487,
+"FBX01": 7985,
+"FBX03": 9854,
+"FBX11": 3374,
+"FBX13": 5162
 }
 },
 "changes": {
@@ -237,6 +244,13 @@
 "FBX03": 1.44,
 "FBX11": -0.46,
 "FBX13": -0.68
+},
+"2026-11-21": {
+"FBX": 0.06,
+"FBX01": -5.6,
+"FBX03": 0.06,
+"FBX11": -0.96,
+"FBX13": 20.2
 }
 },
 "quotes": {
@@ -351,6 +365,13 @@
 "FBX03": "{\"label\":\"FBX03\",\"value\":\"$9,848\",\"change\":\"+1.44%\"",
 "FBX11": "{\"label\":\"FBX11\",\"value\":\"$3,407\",\"change\":\"-0.46%\"",
 "FBX13": "{\"label\":\"FBX13\",\"value\":\"$4,295\",\"change\":\"-0.68%\""
+},
+"2026-11-21": {
+"FBX": "{\"label\":\"FBX\",\"value\":\"$3,487\",\"change\":\"+0.06%\"",
+"FBX01": "{\"label\":\"FBX01\",\"value\":\"$7,985\",\"change\":\"-5.6%\"",
+"FBX03": "{\"label\":\"FBX03\",\"value\":\"$9,854\",\"change\":\"+0.06%\"",
+"FBX11": "{\"label\":\"FBX11\",\"value\":\"$3,374\",\"change\":\"-0.96%\"",
+"FBX13": "{\"label\":\"FBX13\",\"value\":\"$5,162\",\"change\":\"+20.2%\""
 }
 }
 }
