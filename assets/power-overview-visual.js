@@ -279,7 +279,7 @@ function waterfall(steps, unit, digits = 0) {
     return `<div class="vw-r ${r.total ? 'tot' : r.v < 0 ? 'neg' : 'pos'}"><span>${r.l}</span><div class="vw-t"><i style="left:${x}%;width:${w}%"></i>${lo < 0 ? `<b class="vw-0" style="left:${pos(0)}%"></b>` : ''}</div><em>${r.total ? '' : r.v > 0 ? '+' : ''}${nf(r.v, digits)}</em></div>`; }).join('')}</div><p class="vz-unit">${unit}</p>`;
 }
 function unit(host, ctx) {
-  const {P, O, POL} = ctx, {rec, fin, nf, sg, pc, esc, ml, ms, fmpLast, gap} = P;
+  const {P, POL} = ctx, {rec, fin, nf, esc, ml, ms, fmpLast, gap} = P;
   const FP = window.POWER_FUEL_PARAMS, fxm = window.POWER_FX_MONTHLY ? window.POWER_FX_MONTHLY() : new Map();
   const fxLast = [...fxm.entries()].sort((a, b) => a[0].localeCompare(b[0])).at(-1), fx = fxLast?.[1]?.v;
   const wb = rec('wb_energy_monthly'), w = [...wb].reverse().find(r => fin(r.coal_au) && fin(r.lng_japan));
@@ -293,65 +293,8 @@ function unit(host, ctx) {
   const maxK = Math.max(...kwh.map(k => Math.max(k[1], k[2]?.ceiling || 0)), fmpLast?.fmp || 0, 1);
   const kwhHtml = kwh.length ? `<div class="vu-kwh">${kwh.map(([l, c, cl, col]) => `<div class="vu-k"><span>${esc(l)}</span><div class="vu-kt"><i style="width:${c / maxK * 100}%;background:${col}"></i>${fmpLast ? `<b class="vu-fmp" style="left:${fmpLast.fmp / maxK * 100}%" title="FMP ${ml(fmpLast.period)}"></b>` : ''}${cl ? `<b class="vu-ceil" style="left:${cl.ceiling / maxK * 100}%" title="Trần khung giá ${cl.year}: ${nf(cl.ceiling, 0)} đ/kWh"></b>` : ''}</div><em>${nf(c, 0)}${cl ? `<small>trần ${nf(cl.ceiling, 0)}</small>` : ''}</em></div>`).join('')}</div>
     <div class="vu-leg"><span><i class="vu-fmp-k"></i>FMP ${fmpLast ? ml(fmpLast.period) + ' ' + nf(fmpLast.fmp, 0) + ' đ/kWh' : ''}</span><span><i class="vu-ceil-k"></i>trần khung giá phát điện gần nhất (mức tối đa đàm phán PPA)</span></div>` : gap('thiếu tham số nhiên liệu hoặc tỷ giá.').outerHTML;
-  // 2) Waterfall và cầu nối lợi nhuận từ BCTC quý (doanh thu, lãi gộp, lãi ròng: số thật).
-  const Q = window.COMPANY_QUARTERLY, cos = (Q?.companies || []).filter(c => c.sector === 'power' && c.revenue?.some(fin));
-  const qs = Q?.quarters || [];
-  // 3) Bộ thử kịch bản.
-  const S = O.scenario;
-  host.innerHTML = `<section class="vu-sec"><h4>Một kWh tốn bao nhiêu nhiên liệu so với giá bán?</h4><p class="vz-take">Thanh = chi phí nhiên liệu biến đổi ước tính (đ/kWh). Vạch đỏ = FMP; vạch xanh đậm = trần khung giá. Nhiên liệu càng gần FMP, phần bán ngoài Qc càng mỏng.</p>${kwhHtml}
-      <div class="source-note">Tham số QĐ 1692/QĐ-BCT (than: 2.411,6 kcal/kWh; nhiệt trị than nhập 6.000, than nội 5.012,61 kcal/kg; than nội 1.962.004 đ/tấn), QĐ 1882/QĐ-BCT (khí: 6.542,96 BTU/kWh; 11,98 + 1,87 USD/MMBtu); than Úc, LNG Nhật: World Bank ${w ? ms(w.date.slice(0, 7)) : ''}; tỷ giá ${fxLast ? ms(fxLast[0]) : ''}. Chưa gồm chi phí vận hành, khấu hao, lãi vay.</div></section>
-    <section class="vu-sec"><h4>Doanh thu đi tới lãi ròng thế nào? (BCTC quý, số thật)</h4>
-      <div class="ov-ctl"><label>Mã <select data-co>${cos.map(c => `<option>${esc(c.symbol)}</option>`).join('')}</select></label><label>Quý <select data-q>${qs.map((q, i) => `<option value="${i}">${esc(q)}</option>`).reverse().join('')}</select></label><span class="muted" data-grp></span></div>
-      <div class="vu-two"><div data-wf></div><div data-br></div></div>
-      <div class="source-note">COMPANY_QUARTERLY (BCTC hợp nhất quý, nguồn ghi ở tab Tổng quan › So sánh tài chính). "Chi phí khác ròng" = lãi gộp − lãi ròng (bán hàng, quản lý, tài chính ròng, thuế, lợi ích CĐ không kiểm soát…): BCTC trên trang chưa tách các khoản này.</div></section>
-    <section class="vu-sec vu-scn"><h4>Thử kịch bản: đổi giá, sản lượng, Qc → lợi nhuận một nhà máy giả định</h4>
-      <p class="vz-take vu-warn">${esc(S.note)}</p>
-      <div class="ov-ctl" role="group" aria-label="Loại nhà máy">${Object.entries(S.techs).map(([k, t], i) => `<button type="button" data-tk="${k}" aria-pressed="${!i}">${esc(t.label)}</button>`).join('')}</div>
-      <div class="vu-scn-g"><div class="vu-in"></div><div><div data-swf></div><p class="vz-take" data-sum></p></div></div></section>`;
-  // --- waterfall công ty
-  const coSel = host.querySelector('[data-co]'), qSel = host.querySelector('[data-q]');
-  const drawCo = () => {
-    const c = cos.find(x => x.symbol === coSel.value), i = +qSel.value; if (!c) return;
-    host.querySelector('[data-grp]').textContent = c.group || '';
-    const R = c.revenue[i], G = c.gross_profit[i], N = c.net_income[i];
-    const wf = host.querySelector('[data-wf]'), br = host.querySelector('[data-br]');
-    if (![R, G, N].every(fin)) { wf.replaceChildren(gap(`${c.symbol} chưa có đủ số quý ${qs[i]}.`)); br.innerHTML = ''; return; }
-    wf.innerHTML = `<b class="vu-h">${esc(c.symbol)} · ${esc(qs[i])}</b>` + waterfall([{l: 'Doanh thu', v: R, total: true}, {l: 'Giá vốn', v: G - R}, {l: 'Lãi gộp', v: G, total: true}, {l: 'Chi phí khác ròng', v: N - G}, {l: 'Lãi ròng', v: N, total: true}], `tỷ đồng · biên gộp ${nf(G / R * 100, 1)}% · biên ròng ${nf(N / R * 100, 1)}%`);
-    // Cầu nối lãi ròng so cùng kỳ: hiệu ứng doanh thu (theo biên gộp kỳ trước) + hiệu ứng biên gộp + chi phí khác.
-    const j = i - 4, R0 = c.revenue[j], G0 = c.gross_profit[j], N0 = c.net_income[j];
-    if (j < 0 || ![R0, G0, N0].every(fin) || !R0) { br.innerHTML = `<div class="vz-none">Chưa có số cùng kỳ năm trước để dựng cầu nối.</div>`; return; }
-    const vol = (R - R0) * G0 / R0, mar = R * (G / R - G0 / R0), oth = (N - G) - (N0 - G0);
-    br.innerHTML = `<b class="vu-h">Lãi ròng ${esc(qs[j])} → ${esc(qs[i])}</b>` + waterfall([{l: `Lãi ròng ${qs[j]}`, v: N0, total: true}, {l: 'Do doanh thu', v: vol}, {l: 'Do biên gộp', v: mar}, {l: 'Do chi phí khác', v: oth}, {l: `Lãi ròng ${qs[i]}`, v: N, total: true}], `tỷ đồng · doanh thu ${pc((R / R0 - 1) * 100)}, biên gộp ${sg((G / R - G0 / R0) * 100, 1)} đ.p.`) +
-      `<p class="vz-take">${Math.abs(mar) > Math.abs(vol) ? 'Biên gộp' : 'Quy mô doanh thu'} giải thích phần lớn thay đổi lãi gộp so cùng kỳ.</p>`;
-  };
-  coSel.addEventListener('change', drawCo); qSel.addEventListener('change', drawCo);
-  const pref = cos.find(c => c.symbol === 'POW'); if (pref) coSel.value = 'POW';
-  // Quý mới nhất có đủ số của mã đang chọn.
-  const lastOk = () => { const c = cos.find(x => x.symbol === coSel.value); for (let i = qs.length - 1; i >= 0; i--) if ([c?.revenue[i], c?.gross_profit[i], c?.net_income[i]].every(fin)) return i; return qs.length - 1; };
-  qSel.value = String(lastOk()); coSel.addEventListener('change', () => { qSel.value = String(lastOk()); drawCo(); }); drawCo();
-  // --- kịch bản
-  const inBox = host.querySelector('.vu-in'), swf = host.querySelector('[data-swf]'), sumP = host.querySelector('[data-sum]');
-  let tk = Object.keys(S.techs)[0], v = {};
-  const fuelUnit = k => k === 'coal' ? {lab: 'Giá than nhập (USD/tấn)', def: w?.coal_au ?? 100, step: 1} : k === 'lng' ? {lab: 'Giá LNG (USD/MMBtu)', def: w?.lng_japan ?? 12, step: 0.1} : null;
-  const setup = k => {
-    tk = k; const t = S.techs[k], f = fuelUnit(k), c = ceil(new RegExp('^' + t.ppa_from.replace(/[()]/g, '\\$&') + '$'));
-    v = {mw: t.mw, cf: t.cf, qc: t.qc, ppa: c?.ceiling ?? 1500, fmp: fmpLast?.fmp ?? 1400, fuel: f?.def ?? 0, fx: fx ?? 26000, fixed: t.fixed, dep: t.dep, interest: t.interest};
-    const F = [['mw', 'Công suất (MW)', 50], ['cf', 'Hệ số huy động (%)', 1], ['qc', 'Qc (%)', 1], ['ppa', `Giá PPA (đ/kWh)${c ? ' · mặc định = trần ' + c.year : ''}`, 10], ['fmp', 'FMP (đ/kWh)', 10], ...(f ? [['fuel', f.lab, f.step], ['fx', 'Tỷ giá (đ/USD)', 10]] : []), ['fixed', 'Chi phí vận hành, bảo dưỡng (tỷ/năm)', 10], ['dep', 'Khấu hao (tỷ/năm)', 10], ['interest', 'Lãi vay (tỷ/năm)', 10]];
-    inBox.innerHTML = F.map(([id, l, st]) => `<label><span>${esc(l)}</span><input type="number" step="${st}" data-v="${id}" value="${Math.round(v[id] * 100) / 100}"></label>`).join('') + '<button type="button" class="vu-reset">Về mặc định</button>';
-    inBox.querySelectorAll('input').forEach(x => x.addEventListener('input', () => { v[x.dataset.v] = +x.value; calc(); }));
-    inBox.querySelector('.vu-reset').addEventListener('click', () => setup(tk));
-    host.querySelectorAll('[data-tk]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tk === k)));
-    calc();
-  };
-  const calc = () => {
-    const kwhY = v.mw * 1000 * 8760 * v.cf / 100, rev = kwhY * (v.qc / 100 * v.ppa + (1 - v.qc / 100) * v.fmp) / 1e9;
-    const fuelKwh = !FP ? 0 : tk === 'coal' ? v.fuel * v.fx / 1000 * FP.HR_COAL / FP.HHV_NC : tk === 'lng' ? (v.fuel + FP.FEE_USD) * FP.HR_GAS / 1e6 * v.fx : 0;
-    const fuel = kwhY * fuelKwh / 1e9, ebitda = rev - fuel - v.fixed, ebit = ebitda - v.dep, pbt = ebit - v.interest;
-    swf.innerHTML = waterfall([{l: 'Doanh thu', v: rev, total: true}, {l: 'Nhiên liệu', v: -fuel}, {l: 'Vận hành, bảo dưỡng', v: -v.fixed}, {l: 'EBITDA (LN trước khấu hao)', v: ebitda, total: true}, {l: 'Khấu hao', v: -v.dep}, {l: 'EBIT (LN trước lãi vay)', v: ebit, total: true}, {l: 'Lãi vay', v: -v.interest}, {l: 'Lợi nhuận trước thuế', v: pbt, total: true}], 'tỷ đồng/năm · minh họa');
-    sumP.innerHTML = `Sản lượng ≈ <b>${nf(kwhY / 1e6, 0)}</b> triệu kWh/năm · nhiên liệu ≈ ${nf(fuelKwh, 0)} đ/kWh · biên EBITDA ${nf(rev ? ebitda / rev * 100 : null, 1)}%. Doanh thu = sản lượng × (Qc × PPA + (1 − Qc) × FMP).`;
-  };
-  host.querySelectorAll('[data-tk]').forEach(b => b.addEventListener('click', () => setup(b.dataset.tk)));
-  setup(tk);
+  host.innerHTML = `<section class="vu-sec"><p class="vz-take">Thanh = chi phí nhiên liệu biến đổi ước tính (đ/kWh). Vạch đỏ = FMP; vạch xanh đậm = trần khung giá. Nhiên liệu càng gần FMP, phần bán ngoài Qc càng mỏng.</p>${kwhHtml}
+      <div class="source-note">Tham số QĐ 1692/QĐ-BCT (than: 2.411,6 kcal/kWh; nhiệt trị than nhập 6.000, than nội 5.012,61 kcal/kg; than nội 1.962.004 đ/tấn), QĐ 1882/QĐ-BCT (khí: 6.542,96 BTU/kWh; 11,98 + 1,87 USD/MMBtu); than Úc, LNG Nhật: World Bank ${w ? ms(w.date.slice(0, 7)) : ''}; tỷ giá ${fxLast ? ms(fxLast[0]) : ''}. Chưa gồm chi phí vận hành, khấu hao, lãi vay.</div></section>`;
 }
 
 /* ===================== Module 04 · heatmap phơi nhiễm ===================== */
