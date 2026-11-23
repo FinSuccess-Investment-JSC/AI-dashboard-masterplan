@@ -43,7 +43,7 @@ class PowerPolicyTest(unittest.TestCase):
 
     def test_handbook_on_page(self):
         tabs = self.data['tabs']
-        self.assertEqual([t['id'] for t in tabs], ['plan', 'price', 'market', 'tax'])
+        self.assertEqual([t['id'] for t in tabs], ['plan', 'price'])
         page = (ROOT / 'Dien' / 'index.html').read_text(encoding='utf-8')
         for t in tabs:
             self.assertIn(f'data-pane="{t["id"]}"', page)
