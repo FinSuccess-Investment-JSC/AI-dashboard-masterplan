@@ -244,8 +244,20 @@ function releaseDate(r) {
 const REL = Object.fromEntries(O.releases.map(r => [r.id, {...r, ...releaseDate(r)}]));
 // Bảng luận điểm (thesisStatus, THESES, nhận định "Luận điểm bị phản bác") bỏ 23/11/2026 cùng mục 4.2; data/power-overview.json vẫn giữ theses.
 function forward(p) {
-  const ol = card('dien-ov-outlook', 'ov-outlook', '');
-  if (VIS) VIS.outlook(ol, ctx); else ol.append(gap('không tải được module hình ảnh.'));
+  // 4.1 Quy hoạch điện VIII điều chỉnh (QĐ 768/QĐ-TTg): mục tiêu công suất 2030 theo nguồn. Thay biểu đồ và danh sách dự án (23/11/2026, theo yêu cầu người dùng).
+  const Q8 = POL.plan || {}, T8 = (Q8.targets || []).filter(t => fin(t.high)).sort((a, b) => b.high - a.high);
+  const max8 = Math.max(...T8.map(t => t.high), 1), pct8 = v => (v / max8 * 100).toFixed(2) + '%';
+  const leg8 = (Q8.legend || []).filter(l => !/^\|/.test(l.label));
+  const proc8 = (Q8.revisions || []).find(r => /thủ tục/i.test(r.item));
+  const ol = card('dien-ov-plan8', 'ov-q8', T8.length ? `
+    <div class="ov-q8-k">${(Q8.headline || []).map(([k, v]) => `<div><small>${esc(k)}</small><b>${esc(v)}</b></div>`).join('')}</div>
+    <h4>Công suất nguồn mục tiêu năm 2030 theo loại hình (MW)</h4>
+    <div class="ov-q8-leg">${leg8.map(l => `<span><i style="background:${l.color}"></i>${esc(l.label)}</span>`).join('')}<span><i class="ov-q8-lo"></i>cận dưới</span><span><i class="ov-q8-hi"></i>đến cận trên</span><span><i class="ov-q8-act"></i>công suất thực tế cuối 2025 (EVN ước)</span></div>
+    <div class="ov-q8-bars">${T8.map(t => `<div class="ov-q8-r"><span class="ov-q8-l">${esc(t.source)}${t.year && t.year !== '2030' ? `<small>${esc(t.year)}</small>` : ''}</span>
+      <div class="ov-q8-t" title="${esc(t.source)}: ${nf(t.low, 0)}${t.high !== t.low ? ' – ' + nf(t.high, 0) : ''} MW${fin(t.actual) ? ` · cuối 2025: ${nf(t.actual, 0)} MW` : ''}"><i style="width:${pct8(t.low)};background:${t.color}"></i>${t.high > t.low ? `<i class="ov-q8-up" style="left:${pct8(t.low)};width:${pct8(t.high - t.low)};background:${t.color}"></i>` : ''}${fin(t.actual) ? `<em style="left:${pct8(t.actual)}"></em>` : ''}</div>
+      <span class="ov-q8-v">${nf(t.low, 0)}${t.high !== t.low ? '–' + nf(t.high, 0) : ''}</span></div>`).join('')}</div>
+    ${proc8 ? `<p class="ov-cap">Đang điều chỉnh: ${esc(proc8.proposal)} (${esc(proc8.status)}).</p>` : ''}` : '');
+  if (!T8.length) ol.append(gap('chưa nạp được số liệu Quy hoạch điện VIII.'));
   // Lịch văn bản tác động giá điện (23/11/2026, thay bảng luận điểm và lịch catalyst chung): trần khung giá phát điện, giá bán lẻ,
   // quy tắc thị trường (Qc, CAN, trần SMP), DPPA. Đã ban hành: văn bản tab Policy 12 tháng gần nhất; sắp tới: mốc theo quy định, dự thảo.
   const PRICE_REL = ['retail_next', 'market_plan_2027', 'evn_cost', 'fit_review'];
@@ -271,7 +283,8 @@ function forward(p) {
   const nextLi = e => `<li><span class="ov-tl-d" style="--c:${KIND[e.kind]?.[1] || '#7a8399'}">${e.label}</span><div><b>${esc(e.text)}</b><small>${esc(KIND[e.kind]?.[0] || '')}${e.note ? ' · ' + esc(e.note) : ''}${e.url ? ` · <a href="${esc(e.url)}" target="_blank" rel="noopener">nguồn</a>` : ''}</small></div></li>`;
   const tl = card('dien-ov-timeline', 'ov-tl ov-pcal', `<div class="ov-pc-col"><h4>Đã ban hành <small>12 tháng gần nhất · ${docs.length} văn bản</small></h4><ol class="ov-tl-list">${docs.map(doneLi).join('') || '<li><span></span><div class="muted">Chưa có văn bản trong 12 tháng.</div></li>'}</ol></div>
     <div class="ov-pc-col"><h4>Sắp tới <small>mốc theo quy định, dự thảo, khung giá còn thiếu</small></h4><ol class="ov-tl-list">${next.map(nextLi).join('')}</ol></div>`);
-  p.append(sec('fw-supply', '4.1', 'Nguồn cung mới đến từ đâu, bao nhiêu MW, chắc chắn đến đâu?', ol),
+  p.append(sec('fw-supply', '4.1', 'Quy hoạch điện VIII đặt mục tiêu công suất bao nhiêu đến 2030?', ol, {sub: 'Quy hoạch điện VIII điều chỉnh (Quyết định 768/QĐ-TTg ngày 15/04/2025): khoảng công suất mục tiêu năm 2030 theo loại hình nguồn.',
+      method: 'Mục tiêu theo Quyết định 768/QĐ-TTg (15/04/2025) phê duyệt điều chỉnh Quy hoạch điện VIII; gió ngoài khơi và điện hạt nhân là mốc 2030–2035. Công suất thực tế cuối 2025 theo EVN ước (chỉ có cho thủy điện và nhiệt điện than).'}),
     sec('fw-cal', '4.2', 'Văn bản nào vừa duyệt hoặc sắp có, tác động tới giá điện?', tl, {sub: `Trần khung giá phát điện, giá bán lẻ, quy tắc thị trường (Qc, CAN, trần SMP), mua bán điện trực tiếp. Tín hiệu và kịch bản: <a href="#mt5" data-ov-main="mt5">tab Catalyst · Risk →</a>`}));
 }
 
