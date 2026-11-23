@@ -201,12 +201,6 @@ a.ov-tk{color:#2938A8;border-color:#b9c3ee}a.ov-tk:hover{background:#2938A8;colo
 .vu-reset{justify-self:start;border:1px solid var(--line,#d6dbe8);background:var(--card,#fff);color:var(--ink2,#3b4256);border-radius:7px;padding:4px 10px;font:600 12px Inter,sans-serif;cursor:pointer}
 table.vh{border-collapse:separate;border-spacing:3px;font-size:12px}.vh th{font-size:11.5px;font-weight:600;white-space:nowrap;text-align:left}.vh thead th{border-bottom:3px solid var(--c,transparent);text-align:center}
 .vh td{padding:0}.vh td button{width:100%;min-width:64px;height:30px;border:0;border-radius:5px;font:600 11px Inter,sans-serif;cursor:pointer}.vh-c td button{min-width:34px}.vh td button:hover{outline:2px solid #c98a00}
-.vo-bars{display:flex;align-items:flex-end;gap:14px;height:200px;padding:10px 4px 0;border-bottom:1px solid var(--line,#d6dbe8)}
-.vo-col{flex:1 1 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:11.5px;min-width:44px}
-.vo-stack{width:70%;max-width:70px;display:flex;flex-direction:column-reverse;border-radius:5px 5px 0 0;overflow:hidden;min-height:2px}.vo-stack i{display:block;min-height:2px}
-.vo-col b{font-variant-numeric:tabular-nums;margin-top:3px}.vo-col span{color:var(--muted,#7a8399)}
-.vo-tl{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:4px}.vo-tl li{display:grid;grid-template-columns:78px 10px 1fr;gap:8px;align-items:start;font-size:12.5px;padding:4px 0;border-top:1px solid var(--line,#eef0f6)}
-.vo-tl li>i{width:10px;height:10px;border-radius:50%;margin-top:4px}.vo-tl small{display:block;color:var(--muted,#6b7390);font-size:11.5px}.vo-d{font-variant-numeric:tabular-nums;font-weight:600}.vo-cod .vo-d{color:#1D2678}.vo-planned,.vo-approved{opacity:.8}
 @media (max-width:760px){.vu-two,.vu-scn-g{grid-template-columns:1fr}.vu-k,.vw-r{grid-template-columns:96px 1fr 70px}.vo-bars{gap:6px}}
 @media (max-width:760px){.vt-foot,.vz-dppa,.ov-tiles{grid-template-columns:1fr}.vt-txt dl{grid-template-columns:1fr}.vt-chain{gap:18px}.vt-chain li{flex-basis:132px}.vz-bar{grid-template-columns:1fr 54px}.vz-bar i{grid-column:1/-1;order:3}}
 /* Doanh nghiệp niêm yết (vc-, 23/11/2026) */
@@ -234,12 +228,6 @@ table.vc-ht{border-collapse:separate;border-spacing:2px;font-size:11.5px;width:1
 @media (max-width:900px){.vc-groups{grid-template-columns:repeat(2,minmax(0,1fr))}.vc-two{grid-template-columns:1fr}}
 @media (max-width:520px){.vc-groups{grid-template-columns:1fr}.vc-yr{grid-template-columns:72px 1fr 54px}.vc-yr em{display:none}}
 /* 4.1 nguồn mới theo loại hình, 4.2 lịch văn bản giá điện (23/11/2026) */
-.vo-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px}.vo-head h4{margin:0}
-.vo-f{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}.vo-f i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:0}
-.vo-by{display:flex;gap:4px}
-.vo-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px;margin-top:6px}
-.vo-g{border:1px solid var(--line,#e3e7f0);border-top:3px solid var(--c);border-radius:10px;padding:8px 12px;min-width:0}
-.vo-gh{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;align-items:baseline}.vo-gh b{color:var(--c);font-size:13.5px}.vo-gh span{font-size:11.5px;color:var(--muted,#6b7390)}
 .ov-pcal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .ov-pc-col h4{margin:0 0 8px;font-size:13.5px}.ov-pc-col h4 small{font-weight:500;color:var(--muted,#7a8399);margin-left:6px}
 .ov-pcal .ov-tl-list li{grid-template-columns:86px 1fr}.ov-pcal .ov-tl-list b{display:block;margin-top:2px}.ov-pcal .ov-tl-list p{margin:2px 0;font-size:12.5px;color:var(--ink2,#3b4256)}
@@ -249,3 +237,24 @@ table.vc-ht{border-collapse:separate;border-spacing:2px;font-size:11.5px;width:1
 @media (max-width:900px){.ov-pcal{grid-template-columns:1fr}.vo-groups{grid-template-columns:1fr}}
 .company-trend .ct-legend-g{font-weight:700;font-size:11.5px;margin:0 2px 0 10px}.company-trend .ct-legend-g:first-child{margin-left:0}
 /* 0.2 ma trận doanh nghiệp × chuỗi giá trị (23/11/2026) */
+
+/* 4.1 Quy hoạch điện VIII (23/11/2026) */
+#pane-mt1 .ov-q8{padding:14px}
+#pane-mt1 .ov-q8 h4{margin:14px 0 6px;font-size:13px;color:#1D2678}
+#pane-mt1 .ov-q8-k{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+#pane-mt1 .ov-q8-k>div{border:1px solid var(--line,#e3e7f0);border-radius:10px;padding:8px 10px;background:#f7f8fc}
+#pane-mt1 .ov-q8-k small{display:block;font-size:11.5px;color:#5b6479}
+#pane-mt1 .ov-q8-k b{display:block;font-size:14.5px;color:#1D2678;font-variant-numeric:tabular-nums;margin-top:2px}
+#pane-mt1 .ov-q8-leg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11.5px;color:#5b6479;margin-bottom:6px}
+#pane-mt1 .ov-q8-leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+#pane-mt1 .ov-q8-leg .ov-q8-lo{background:#8997D6}
+#pane-mt1 .ov-q8-leg .ov-q8-hi{background:#8997D6;opacity:.35}
+#pane-mt1 .ov-q8-leg .ov-q8-act{width:3px;background:#303540;border-radius:0}
+#pane-mt1 .ov-q8-r{display:grid;grid-template-columns:190px 1fr 110px;align-items:center;gap:10px;padding:4px 0;font-size:12.5px}
+#pane-mt1 .ov-q8-l small{display:block;font-size:11px;color:#7a8399}
+#pane-mt1 .ov-q8-t{position:relative;height:16px;background:#f1f3f8;border-radius:4px}
+#pane-mt1 .ov-q8-t i{position:absolute;top:0;bottom:0;left:0;border-radius:4px 0 0 4px}
+#pane-mt1 .ov-q8-t i.ov-q8-up{opacity:.35;border-radius:0 4px 4px 0}
+#pane-mt1 .ov-q8-t em{position:absolute;top:-3px;bottom:-3px;width:3px;margin-left:-1px;background:#303540}
+#pane-mt1 .ov-q8-v{text-align:right;font-variant-numeric:tabular-nums;color:#303540}
+@media (max-width:640px){#pane-mt1 .ov-q8-k{grid-template-columns:1fr 1fr}#pane-mt1 .ov-q8-r{grid-template-columns:110px 1fr 84px;font-size:11.5px}}
