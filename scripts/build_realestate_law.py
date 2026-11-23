@@ -110,9 +110,9 @@ CSS = '''<style>
 .law-2026{--lw-up:#1d8a73;--lw-up-bg:#e3f5f0;--lw-down:#b8432c;--lw-down-bg:#fdecea;--lw-watch:#8a6a00;--lw-watch-bg:#fff5d4;--lw-flat:#596272;--lw-flat-bg:#eef0f4}
 .law-2026 .lw-card{margin-top:14px;padding:22px 24px}
 .law-2026 .lw-eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fs-muted,#596272);margin:0 0 6px}
-.law-2026 .lw-title{font-family:var(--fs-serif,Georgia,serif);font-size:24px;line-height:1.25;font-weight:600;color:var(--fs-navy,#1D2678);margin:0 0 8px}
+.law-2026 h3.lw-title{font-family:var(--fs-serif,Georgia,serif)!important;font-size:28px!important;line-height:1.2;font-weight:600!important;color:var(--fs-navy,#1D2678);margin:0 0 8px;letter-spacing:-.01em}
 .law-2026 .lw-lead{font-size:14px;line-height:1.6;margin:0;max-width:880px}
-.law-2026 .lw-h{font-size:15px;font-weight:700;color:var(--fs-navy,#1D2678);margin:0 0 4px}
+.law-2026 h3.lw-h{font-size:16px!important;font-weight:700;color:var(--fs-navy,#1D2678);margin:0 0 4px}
 .law-2026 .lw-sub{font-size:12.5px;color:var(--fs-muted,#596272);margin:0 0 14px}
 .law-2026 .lw-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
 .law-2026 .lw-tile{border-radius:12px;padding:14px 16px;background:var(--fs-soft-blue,#f0f4ff)}
@@ -144,7 +144,7 @@ CSS = '''<style>
 .law-2026 .lw-row{display:grid;grid-template-columns:92px 84px 1fr;gap:8px;align-items:start;font-size:12.5px;line-height:1.5;padding:7px 0;border-top:1px solid var(--fs-line,#dce1e9)}
 .law-2026 .lw-row .s{font-weight:600;color:var(--fs-ink,#303540)}
 .law-2026 .lw-key{font-size:12.5px;font-weight:600;color:var(--fs-navy,#1D2678);margin-top:10px;padding:8px 10px;border-radius:8px;background:var(--fs-soft-blue,#f0f4ff)}
-.law-2026 .lw-co details{margin-top:10px}.law-2026 .lw-co summary{font-size:12px;cursor:pointer;color:var(--fs-blue,#2938A8)}
+.law-2026 .lw-facts{border:1px solid var(--fs-line,#dce1e9);border-radius:10px;margin-top:8px;padding:0 14px}.law-2026 .lw-facts summary{font-size:13px;cursor:pointer;padding:10px 0;color:var(--fs-ink,#303540)}.law-2026 .lw-facts summary b{color:var(--fs-navy,#1D2678)}.law-2026 .lw-facts .tablewrap{margin-bottom:12px}
 .law-2026 .lw-tl{display:grid;grid-template-columns:repeat(5,1fr);position:relative;margin-top:6px}
 .law-2026 .lw-tl:before{content:"";position:absolute;left:8px;right:8px;top:7px;height:2px;background:var(--fs-line,#dce1e9)}
 .law-2026 .lw-node{position:relative;padding:22px 10px 0 0}
@@ -156,7 +156,7 @@ CSS = '''<style>
 .law-2026 .lw-unk div{border-radius:10px;padding:10px 12px;background:var(--lw-watch-bg);font-size:12.5px;line-height:1.45}
 .law-2026 .lw-unk small{display:block;color:var(--fs-muted,#596272);margin-top:3px;font-size:12px}
 .law-2026 .lw-foot{font-size:12.5px;line-height:1.6;margin:12px 0 0}
-@media(max-width:900px){.law-2026 .lw-grid{grid-template-columns:1fr}.law-2026 .lw-tiles{grid-template-columns:1fr 1fr}.law-2026 .lw-unk{grid-template-columns:1fr 1fr}.law-2026 .lw-tl{grid-template-columns:1fr;gap:10px}.law-2026 .lw-tl:before{left:7px;right:auto;top:8px;bottom:8px;width:2px;height:auto}.law-2026 .lw-node{padding:0 0 0 26px}.law-2026 .lw-row{grid-template-columns:84px 80px 1fr}.law-2026 .lw-ba{grid-template-columns:1fr}.law-2026 .lw-ba .ar{display:none}.law-2026 .lw-title{font-size:20px}}
+@media(max-width:900px){.law-2026 .lw-grid{grid-template-columns:1fr}.law-2026 .lw-tiles{grid-template-columns:1fr 1fr}.law-2026 .lw-unk{grid-template-columns:1fr 1fr}.law-2026 .lw-tl{grid-template-columns:1fr;gap:10px}.law-2026 .lw-tl:before{left:7px;right:auto;top:8px;bottom:8px;width:2px;height:auto}.law-2026 .lw-node{padding:0 0 0 26px}.law-2026 .lw-row{grid-template-columns:84px 80px 1fr}.law-2026 .lw-ba{grid-template-columns:1fr}.law-2026 .lw-ba .ar{display:none}.law-2026 h3.lw-title{font-size:22px!important}}
 [data-theme="dark"] .law-2026{--lw-up:#5fd3b8;--lw-up-bg:#12332c;--lw-down:#f08b76;--lw-down-bg:#3a1c16;--lw-watch:#e6c35c;--lw-watch-bg:#33290c;--lw-flat:#b6bcc8;--lw-flat-bg:#24262b}
 [data-theme="dark"] .law-2026 :is(.lw-step,.lw-co){background:#161616;border-color:#2A2A2A}
 [data-theme="dark"] .law-2026 :is(.lw-tile:not(.t-up):not(.t-down):not(.t-watch),.lw-key){background:#1c2030}
@@ -185,15 +185,16 @@ def co_html(code):
                  f'<td>{A(esc(f["url"]), dom(f["url"]))} · {esc(re.sub(r" *[(].*[)]", "", f["date"]))}</td></tr>' for f in facts)
     rr = ''.join(f'<div class="lw-row"><span class="s">{s}</span><span>{pill(k)}</span><span>{t}</span></div>' for s, k, t in rows)
     return (f'<div class="lw-co"><div class="lw-co-head"><span class="lw-code">{code}</span><span class="lw-name">{NAME[code]}</span>{pill(vk, vt)}</div>'
-            f'<div class="lw-land">Quỹ đất: {land}</div>{rr}<div class="lw-key">{key}</div>'
-            f'<details class="dtable"><summary>Xem {len(facts)} dữ kiện theo dự án và nguồn</summary><div class="tablewrap"><table data-no-fold>'
-            f'<thead><tr><th>Bước</th><th>Dự án</th><th>Dữ kiện</th><th>Nguồn</th></tr></thead><tbody>{tr}</tbody></table></div></details></div>')
+            f'<div class="lw-land">Quỹ đất: {land}</div>{rr}<div class="lw-key">{key}</div></div>',
+            f'<details class="lw-facts"><summary><b>{code}</b> · {NAME[code]} — {len(facts)} dữ kiện theo dự án</summary><div class="tablewrap"><table data-no-fold>'
+            f'<thead><tr><th>Bước</th><th>Dự án</th><th>Dữ kiện</th><th>Nguồn</th></tr></thead><tbody>{tr}</tbody></table></div></details>')
 
 
 def build():
     src = ' · '.join([A(T, 'TTTCTT · 3 luật'), A(M, 'Mekong ASEAN'), A(V, 'VnExpress'), A(O, 'VOV'), A(K, 'Tin nhanh chứng khoán'), A(C, 'Công lý · KDBĐS'), A(X, 'CafeF · thuế 0,2%')])
     meta = 'data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot"'
     tl = ''.join(f'<div class="lw-node{" key" if k else ""}"><b>{d}</b><span>{t}</span></div>' for d, t, k in TIMELINE)
+    cos = [co_html(c) for c in ['KDH', 'VHM', 'NLG', 'NVL']]
     unk = ''.join(f'<div>{a}<small>{b}</small></div>' for a, b in UNKNOWN)
     return f'''<!--law-2026--><div class="law-2026">
     {CSS}
@@ -217,7 +218,9 @@ def build():
     <div class="card lw-card" data-block-id="bds-57" {meta}>
       <h3 class="lw-h">Tác động theo doanh nghiệp</h3>
       <p class="lw-sub">Đợt 1: 4/11 mã nhà ở · đánh giá theo dự án thật của từng mã</p>
-      <div class="lw-grid">{''.join(co_html(c) for c in ['KDH', 'VHM', 'NLG', 'NVL'])}</div>
+      <div class="lw-grid">{''.join(c[0] for c in cos)}</div>
+      <p class="lw-sub" style="margin:16px 0 6px">Dữ kiện theo dự án và nguồn</p>
+      {''.join(c[1] for c in cos)}
       <details class="note-icon"><summary>ⓘ Nguồn &amp; giới hạn</summary><div>Dữ kiện lấy từ báo chí, tường thuật ĐHĐCĐ và báo cáo công ty chứng khoán (chỉ lấy dữ kiện); mỗi dòng có đoạn trích gốc đã kiểm trong <code>data/realestate/evidence.json</code>. Chưa mở trực tiếp báo cáo thường niên 2025 của 4 doanh nghiệp. Nhãn Lợi / Thiệt / Theo dõi là nhận định của FinSuccess từ dữ kiện đó, trong khi mức tiền đất tăng thêm, hệ số K và nghị định hướng dẫn chưa có. Khoảng trống: không có tỷ lệ đền bù theo số hộ (điều kiện thứ hai của cơ chế 75%); không có thời hạn hoàn thành của phần lớn dự án; chưa có phát biểu nào của lãnh đạo 4 doanh nghiệp sau ngày luật thông qua. Còn 7 mã nhà ở làm ở đợt sau. · Kiểm tra: 23/11/2026</div></details>
     </div>
     <div class="card lw-card" data-block-id="bds-58" {meta}>
