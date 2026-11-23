@@ -17,6 +17,7 @@
     oil: {path: 'Dau-khi/', label: 'Dầu khí'},
     sugar: {path: 'Sugar/', label: 'Đường'},
     bank: {path: 'Bank/', label: 'Ngân hàng'},
+    securities: {path: 'Chung-khoan/', label: 'Chứng khoán'},
     power: {path: 'Dien/', label: 'Điện'},
     realestate: {path: 'Bat-dong-san/', label: 'Bất động sản'},
     textile: {path: 'Det-may/', label: 'Dệt may'},
@@ -31,7 +32,7 @@
     pharma: {path: 'Duoc/', label: 'Dược & y tế'},
     plan: {path: 'Masterplan/', label: 'Master plan'}
   };
-  const aliases = {'thep':'steel', 'steel':'steel', 'dau-khi':'oil', 'duong':'sugar', 'sugar':'sugar', 'ngan-hang':'bank', 'bank':'bank', 'dien':'power', 'power':'power', 'bat-dong-san':'realestate', 'bds':'realestate', 'realestate':'realestate', 'det-may':'textile', 'textile':'textile', 'cang-bien':'port', 'cang':'port', 'port':'port', 'nong-nghiep':'agri', 'agri':'agri', 'thuy-san':'seafood', 'seafood':'seafood', 'van-tai-bien':'shipping', 'van-tai':'shipping', 'shipping':'shipping', 'xay-dung':'construction', 'vlxd':'construction', 'dau-tu-cong':'construction', 'construction':'construction', 'bao-hiem':'insurance', 'insurance':'insurance', 'ban-le':'retail', 'tieu-dung':'retail', 'retail':'retail', 'duoc':'pharma', 'y-te':'pharma', 'pharma':'pharma'};
+  const aliases = {'thep':'steel', 'steel':'steel', 'dau-khi':'oil', 'duong':'sugar', 'sugar':'sugar', 'ngan-hang':'bank', 'bank':'bank', 'chung-khoan':'securities', 'ck':'securities', 'securities':'securities', 'dien':'power', 'power':'power', 'bat-dong-san':'realestate', 'bds':'realestate', 'realestate':'realestate', 'det-may':'textile', 'textile':'textile', 'cang-bien':'port', 'cang':'port', 'port':'port', 'nong-nghiep':'agri', 'agri':'agri', 'thuy-san':'seafood', 'seafood':'seafood', 'van-tai-bien':'shipping', 'van-tai':'shipping', 'shipping':'shipping', 'xay-dung':'construction', 'vlxd':'construction', 'dau-tu-cong':'construction', 'construction':'construction', 'bao-hiem':'insurance', 'insurance':'insurance', 'ban-le':'retail', 'tieu-dung':'retail', 'retail':'retail', 'duoc':'pharma', 'y-te':'pharma', 'pharma':'pharma'};
   function href(key) {
     if (!routes[key]) throw new Error('Unknown dashboard route: '+key);
     const url = new URL(routes[key].path, root);
@@ -49,7 +50,7 @@
   }
 
   // Search box as in the Stock dashboard ("Tra cứu cổ phiếu"): sectors by name, listed companies by ticker.
-  const SECTOR_WORDS = {steel:'thép steel hrc tôn mạ ống thép', home:'trang tổng hub', oil:'dầu khí oil gas xăng', sugar:'đường mía sugar', bank:'ngân hàng bank tín dụng', power:'điện power năng lượng', realestate:'bất động sản bds kcn khu công nghiệp nhà ở', textile:'dệt may sợi garment', port:'cảng biển kho bãi logistics vận tải', agri:'nông nghiệp thực phẩm gạo cà phê cao su chăn nuôi heo sữa bia', seafood:'thủy sản cá tra tôm seafood', shipping:'vận tải biển tàu dầu tanker hàng rời container shipping cước hormuz', construction:'xây dựng vật liệu vlxd đầu tư công thép xi măng đá nhựa đường hạ tầng cao tốc nhà thầu giải ngân', insurance:'bảo hiểm insurance nhân thọ phi nhân thọ tái bảo hiểm bancassurance', retail:'bán lẻ tiêu dùng retail siêu thị điện máy sữa bia đường ô tô trang sức vàng tmđt', pharma:'dược phẩm y tế thuốc pharma bệnh viện nhà thuốc long châu bhyt đấu thầu'};
+  const SECTOR_WORDS = {steel:'thép steel hrc tôn mạ ống thép', home:'trang tổng hub', oil:'dầu khí oil gas xăng', sugar:'đường mía sugar', bank:'ngân hàng bank tín dụng', securities:'chứng khoán ctck môi giới ký quỹ margin tự doanh ib ssi tcx vck vpx hcm vci mbs vnd shs vix', power:'điện power năng lượng', realestate:'bất động sản bds kcn khu công nghiệp nhà ở', textile:'dệt may sợi garment', port:'cảng biển kho bãi logistics vận tải', agri:'nông nghiệp thực phẩm gạo cà phê cao su chăn nuôi heo sữa bia', seafood:'thủy sản cá tra tôm seafood', shipping:'vận tải biển tàu dầu tanker hàng rời container shipping cước hormuz', construction:'xây dựng vật liệu vlxd đầu tư công thép xi măng đá nhựa đường hạ tầng cao tốc nhà thầu giải ngân', insurance:'bảo hiểm insurance nhân thọ phi nhân thọ tái bảo hiểm bancassurance', retail:'bán lẻ tiêu dùng retail siêu thị điện máy sữa bia đường ô tô trang sức vàng tmđt', pharma:'dược phẩm y tế thuốc pharma bệnh viện nhà thuốc long châu bhyt đấu thầu'};
   function mountSearch() {
     const sec = document.createElement('section'); sec.className = 'fs-search'; sec.setAttribute('aria-label', 'Tìm dashboard ngành');
     sec.innerHTML = '<form id="fsSearch" role="search" autocomplete="off"><label for="fsQuery">Tra cứu ngành</label>'
@@ -65,7 +66,7 @@
     const norm = t => String(t || '').toLocaleLowerCase('vi').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
     let entries = [], loaded = false, matches = [], selected = 0;
     function build() {
-      entries = ['oil','sugar','bank','power','realestate','textile','port','agri','seafood','shipping','steel','construction','insurance','retail','pharma'].map(k => ({kind:'sector', code:routes[k].label, sub:'', key:k, words:norm(routes[k].label + ' ' + SECTOR_WORDS[k])}));
+      entries = ['oil','sugar','bank','securities','power','realestate','textile','port','agri','seafood','shipping','steel','construction','insurance','retail','pharma'].map(k => ({kind:'sector', code:routes[k].label, sub:'', key:k, words:norm(routes[k].label + ' ' + SECTOR_WORDS[k])}));
       const companies = (window.COMPANY_COMPARISON && window.COMPANY_COMPARISON.companies) || [];
       companies.forEach(c => { if (!routes[c.sector]) return; entries.push({kind:'stock', code:c.symbol, sub:routes[c.sector].label + (c.group ? ' · ' + c.group : ''), key:c.sector, words:norm(c.symbol + ' ' + c.group)}); });
       loaded = companies.length > 0;
@@ -138,14 +139,24 @@
   // Ngân hàng (05/11/2026): nhúng bank-dashboard bản ?embed=1 thay nội dung cũ; nội dung cũ vẫn trong file, mở bằng ?cu=1.
   const BANK_EMBED = 'https://bank-dashboard-kappa-seven.vercel.app/';
   const BANK_PAGES = {VCB:'vcb.html', BID:'bid.html', CTG:'index.html', TCB:'tcb.html', MBB:'mbb.html', ACB:'acb.html', STB:'stb.html', VPB:'vpb.html', HDB:'hdb.html'};
+  // Chứng khoán (23/11/2026): cùng bank-dashboard, ck.html (ngành) hoặc dn.html?s=<MÃ> (10 CTCK), ?ma=SSI#fin chọn mã/tab.
+  const CK_CODES = ['SSI','TCX','VCK','VPX','HCM','VCI','MBS','VND','SHS','VIX'];
   function embedBank() {
-    const qs = new URLSearchParams(location.search);
-    if (!document.querySelector('body[data-sector="bank"] main.wrap') || qs.get('cu') === '1') return;
-    const code = (qs.get('ma') || '').toUpperCase(), page = BANK_PAGES[code] || 'nganh.html';
+    const qs = new URLSearchParams(location.search), sector = document.body.dataset.sector;
+    if (!document.querySelector('body[data-sector="bank"] main.wrap, body[data-sector="securities"] main.wrap') || qs.get('cu') === '1') return;
+    const code = (qs.get('ma') || '').toUpperCase();
+    let label, src;
+    if (sector === 'securities') {
+      const ok = CK_CODES.includes(code); label = ok ? 'Chứng khoán · ' + code : 'Chứng khoán';
+      src = BANK_EMBED + (ok ? 'dn.html?s=' + code + '&embed=1' : 'ck.html?embed=1') + location.hash;
+    } else {
+      label = BANK_PAGES[code] ? 'Ngân hàng · ' + code : 'Ngân hàng';
+      src = BANK_EMBED + (BANK_PAGES[code] || 'nganh.html') + '?embed=1';
+    }
     const band = document.createElement('div'); band.className = 'research-header fs-titleband';
-    const h1 = document.createElement('h1'); h1.textContent = BANK_PAGES[code] ? 'Ngân hàng · ' + code : 'Ngân hàng'; band.append(h1);
+    const h1 = document.createElement('h1'); h1.textContent = label; band.append(h1);
     const box = document.createElement('section'); box.className = 'fs-embed';
-    const f = document.createElement('iframe'); f.src = BANK_EMBED + page + '?embed=1'; f.title = 'Dashboard ngân hàng'; box.append(f);
+    const f = document.createElement('iframe'); f.src = src; f.title = 'Dashboard ' + label.toLowerCase(); box.append(f);
     document.querySelector('.fs-search, .fs-brandbar').after(band, box); document.body.classList.add('fs-embed-mode');
     const keep = el => el.matches('.fs-brandbar,.fs-search,.fs-titleband,.fs-embed,script,style,link');
     const hideRest = () => [...document.body.children].forEach(el => { if (!keep(el)) el.hidden = true; });
@@ -170,7 +181,7 @@
     const hubMain = document.querySelector('.fs-home-main');
     if (hubMain && !hubMain.querySelector('.fs-sector-grid')) {
       const grid = document.createElement('div'); grid.className = 'fs-sector-grid'; grid.setAttribute('aria-label', 'Dashboard ngành');
-      for (const key of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood','shipping','steel','construction','insurance','retail','pharma']) {
+      for (const key of ['oil','sugar','bank','securities','power','realestate','textile','port','agri','seafood','shipping','steel','construction','insurance','retail','pharma']) {
         const a = document.createElement('a'); a.className = 'fs-sector-tile'; a.href = href(key); a.textContent = routes[key].label; grid.append(a);
       }
       hubMain.append(grid);
@@ -185,7 +196,7 @@
       nav.classList.add('site-navigation');
       nav.setAttribute('aria-label','Điều hướng dashboard ngành');
       nav.replaceChildren();
-      for (const key of ['oil','sugar','bank','power','realestate','textile','port','agri','seafood','shipping','steel','construction','insurance','retail','pharma']) {
+      for (const key of ['oil','sugar','bank','securities','power','realestate','textile','port','agri','seafood','shipping','steel','construction','insurance','retail','pharma']) {
         const link = document.createElement('a');
         link.href = href(key);
         link.dataset.siteRoute = key;
