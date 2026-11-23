@@ -366,7 +366,6 @@ if(BL&&BL.rows&&document.getElementById('chLawTurn')){
    grp:turn==null?'Thiếu số':turn<=3?'Quay vòng nhanh':turn>8?'Đất nằm lâu':'Trung gian'}});
  const ql=q=>q.slice(4)+'/'+q.slice(0,4),per=ql(rows[0].q);
  const byTurn=rows.filter(r=>r.turn!=null).sort((a,b)=>b.turn-a.turn),byPre=rows.filter(r=>r.pre!=null).sort((a,b)=>b.pre-a.pre);
- const col=r=>r.grp==='Quay vòng nhanh'?C.green:r.grp==='Đất nằm lâu'?C.red:C.navy;
  document.getElementById('lawTurnSub').textContent='năm doanh thu · 11 mã nhà ở · '+per+' · càng cao đất càng nằm lâu';
  document.getElementById('lawPreSub').textContent='% · 11 mã nhà ở · '+per+' · càng cao càng nhiều hàng đã bán';
  barLineChart('chLawTurn',{categories:byTurn.map(r=>r.c),series:[{name:'Tồn kho ÷ doanh thu 4 quý',color:C.navy,kind:'bar',values:byTurn.map(r=>r.turn)}],unit:'năm',digits:1,height:260,zeroBase:true,time:false,allTicks:true});
@@ -374,7 +373,8 @@ if(BL&&BL.rows&&document.getElementById('chLawTurn')){
  const read={'Quay vòng nhanh':'Hưởng lợi: thủ tục nhanh hơn, ít đất chịu phí','Trung gian':'Trung tính: tùy tiến độ từng dự án','Đất nằm lâu':'Chịu phí giữ đất nếu dự án quá hạn; được lợi nếu gỡ xong pháp lý','Thiếu số':'—'};
  const ord={'Quay vòng nhanh':0,'Trung gian':1,'Đất nằm lâu':2,'Thiếu số':3};
  const tb=rows.slice().sort((a,b)=>ord[a.grp]-ord[b.grp]||(a.turn??99)-(b.turn??99));
- fillTable('tbl-law-codes',['Nhóm','Mã','Tồn kho (tỷ)','Tồn kho ÷ DT 4Q (năm)','Trả trước ÷ tồn kho','Vốn chủ ÷ tổng tài sản','Nợ vay ròng ÷ vốn chủ','Đọc theo luật mới'],tb.map(r=>['<span style="color:'+col(r)+';font-weight:700">'+r.grp+'</span>','<b>'+r.c+'</b>',nf(r.inv,0),nf(r.turn,1),nf(r.pre,0)+'%',nf(r.eq,0)+'%',nf(r.nd,0)+'%',read[r.grp]]));
+ fillTable('tbl-law-codes',['Nhóm','Mã','Tồn kho (tỷ)','Tồn kho ÷ DT 4Q (năm)','Trả trước ÷ tồn kho','Vốn chủ ÷ tổng tài sản','Nợ vay ròng ÷ vốn chủ','Đọc theo luật mới'],tb.map(r=>[r.grp,r.c,nf(r.inv,0),nf(r.turn,1),nf(r.pre,0)+'%',nf(r.eq,0)+'%',nf(r.nd,0)+'%',read[r.grp]]));
+ document.querySelectorAll('#tbl-law-codes tbody tr').forEach((tr,i)=>{const g=tb[i].grp,td=tr.children;td[0].style.cssText='font-weight:700;color:'+(g==='Quay vòng nhanh'?C.green:g==='Đất nằm lâu'?C.red:C.navy);td[1].style.fontWeight='700'});
  const names=g=>rows.filter(r=>r.grp===g).map(r=>r.c).join(', ')||'không mã nào';
  document.getElementById('law-verdict').innerHTML='<b>Quay vòng nhanh:</b> '+names('Quay vòng nhanh')+' · <b>Đất nằm lâu:</b> '+names('Đất nằm lâu')+' ('+per+').';
  const big=rows.slice().sort((a,b)=>b.inv-a.inv).find(r=>r.grp==='Đất nằm lâu');
