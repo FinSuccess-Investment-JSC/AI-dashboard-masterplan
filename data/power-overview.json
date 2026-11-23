@@ -1606,7 +1606,10 @@
           "cost": "Than là chi phí lớn nhất (PPC: khoảng 85% chi phí sản xuất điện năm 2024).",
           "kpi": "Giá than đầu vào (đ/tấn), nhiệt trị (kcal/kg); suất tiêu hao 2.411,6 kcal/kWh (tham số khung giá QĐ 1692/QĐ-BCT).",
           "impact": "Chi phí nhiên liệu/kWh = giá than × suất tiêu hao ÷ nhiệt trị. Phần giá biến đổi trong PPA điều chỉnh theo giá than; phần bán ngoài Qc chịu chênh lệch giá than so với FMP.",
-          "chart": "coal_cost"
+          "chart": [
+            "coal_price",
+            "coal_cost"
+          ]
         },
         {
           "id": "dispatch",
@@ -1706,7 +1709,10 @@
           "cost": "Giá LNG là phần lớn chi phí biến đổi; cộng phí kho cảng, tái hóa khí và cước đường ống (ước theo tham số QĐ 1882: 1,87 USD/MMBtu).",
           "kpi": "Giá JKM, LNG Nhật (World Bank); suất hao nhiệt (ước 6.542,96 BTU/kWh như khí nội).",
           "impact": "Giá LNG tăng làm chi phí/kWh tăng, giá chào cao hơn nên ít được huy động ngoài Qc; khả năng chuyển vào giá điện tùy PPA.",
-          "chart": "lng_buildup"
+          "chart": [
+            "lng_price",
+            "lng_buildup"
+          ]
         },
         {
           "id": "dispatch",

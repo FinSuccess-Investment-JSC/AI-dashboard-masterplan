@@ -256,7 +256,9 @@ function tech(host, ctx, id0, stage0) {
         <dl><dt>Chức năng kinh tế</dt><dd>${esc(st.fn)}</dd><dt>Chi phí chủ đạo</dt><dd>${esc(st.cost)}</dd><dt>Chỉ số vận hành</dt><dd>${esc(st.kpi)}</dd><dt>Tác động DT / LN</dt><dd>${esc(st.impact)}</dd><dt>Doanh nghiệp</dt><dd>${tk.map(e => ctx.chip(e.t, `${e.t} · ${e.role}: ${e.note}`)).join(' ')}</dd></dl></div>
         <div class="vt-chart"></div></div>`;
       const ch = det.querySelector('.vt-chart');
-      if (st.chart && C[st.chart]) { try { C[st.chart](ch, t); } catch (e) { ch.replaceChildren(P.gap('lỗi dựng biểu đồ: ' + esc(e.message))); } } else ch.innerHTML = '<div class="vz-none">Khâu này chưa có chuỗi dữ liệu công khai trên trang. Các khâu có ● có biểu đồ dữ liệu.</div>';
+      // Một khâu có thể có nhiều chart (vd giá spot nhiên liệu + chi phí/kWh): dựng lần lượt, mỗi chart một khung.
+      const keys = [].concat(st.chart || []).filter(k => C[k]);
+      if (keys.length) keys.forEach(k => { const h = document.createElement('div'); h.className = 'vt-chart-i'; ch.append(h); try { C[k](h, t); } catch (e) { h.replaceChildren(P.gap('lỗi dựng biểu đồ: ' + esc(e.message))); } }); else ch.innerHTML = '<div class="vz-none">Khâu này chưa có chuỗi dữ liệu công khai trên trang. Các khâu có ● có biểu đồ dữ liệu.</div>';
       ctx.onState?.({t: t.id, s: st.id});
       P.refit(det);
     };
