@@ -169,10 +169,15 @@ const ctx = {P, O, POL, chip, expo, chips, insLine, insFor: g => INS.filter(i =>
 function mapPane(p) {
   const host = card('dien-ov-map', 'ov-imap', '');
   if (VIS) VIS.map(host, ctx); else host.append(gap('không tải được module hình ảnh.'));
-  const vc = document.querySelector('#pane-mt1 .value-chain-card');
-  // Sơ đồ doanh nghiệp theo khâu hiện thẳng (không thu gọn).
-  const vcFold = vc ? el('div', 'ov-vcwrap') : null;
-  if (vcFold) vcFold.append(vc);
+  // Sơ đồ cũ "doanh nghiệp theo từng khâu" (thẻ value-chain-card dùng chung) thay bằng ma trận chuỗi × khâu ở mục 0.2 (23/11/2026).
+  document.querySelector('#pane-mt1 .value-chain-card')?.remove();
+  const CM = O.chain_map, TECH = Object.fromEntries(O.technologies.map(t => [t.id, t]));
+  const ent = e => `<span class="ov-cm-e">${e.listed ? chip(e.t, `${e.t}${e.ex ? ' · ' + e.ex : ''}: ${e.n}`) : `<span class="ov-cm-x" title="${esc(e.n)}">${esc(e.t)}</span>`}${e.s ? `<small>${esc(e.s)}</small>` : ''}</span>`;
+  const cell = (arr = []) => arr.length ? arr.map(ent).join('') : '<span class="ov-cm-0">chưa có doanh nghiệp niêm yết</span>';
+  const cm = CM ? card('dien-ov-chain', 'ov-cm', `<div class="ov-cm-grid" style="--n:${CM.stages.length}"><div class="ov-cm-h ov-cm-corner"></div>${CM.stages.map(st => `<div class="ov-cm-h"><b>${esc(st.t)}</b><small>${esc(st.s || '')}</small></div>`).join('')}
+    ${CM.rows.map(r => { const t = TECH[r.tech] || {}; return `<div class="ov-cm-r" style="--c:${r.color || t.color || '#2938A8'}"><b>${esc(r.label)}</b>${r.sub ? `<small>${esc(r.sub)}</small>` : ''}</div>${CM.stages.map(st => `<div class="ov-cm-c" style="--c:${r.color || t.color || '#2938A8'}" data-stage="${esc(st.t)}">${st.id === 'fuel' && ['hydro', 'wind', 'solar'].includes(r.tech) ? '<span class="ov-cm-0">không dùng nhiên liệu</span>' : cell(r.cells[st.id])}</div>`).join('')}`; }).join('')}</div>
+    ${CM.grid ? `<div class="ov-cm-grid2"><div class="ov-cm-r" style="--c:#861C52"><b>${esc(CM.grid.label)}</b><small>${esc(CM.grid.sub || '')}</small></div><div class="ov-cm-c" style="--c:#861C52">${cell(CM.grid.items)}</div></div>` : ''}
+    <p class="ov-cap">${esc(CM.note)}</p>`) : null;
   // Công suất đặt khác sản lượng thực phát
   const MIX = [['coal', 'Than', '#3d4653'], ['hydro', 'Thủy điện', '#2938A8'], ['re', 'Gió & mặt trời', '#2a9fa3'], ['gas', 'Khí, dầu & khác', '#c98a00'], ['imports', 'Nhập khẩu', '#9AA3BD']];
   const gm = card('dien-ov-genmix', 'ov-genmix', `<div class="ov-ctl" role="group" aria-label="Kỳ so sánh">${Object.entries(PERIODS).map(([k, x]) => `<button type="button" data-p="${k}" aria-pressed="${k === 'ytd'}">${esc(x.label)}</button>`).join('')}</div><div class="ov-bars"></div><div class="ov-legend">${MIX.map(m => `<span><i style="background:${m[2]}"></i>${m[1]}</span>`).join('')}</div><p class="ov-note"></p>`);
@@ -187,9 +192,10 @@ function mapPane(p) {
     gm.querySelector('.ov-note').innerHTML = capShare != null ? `NLTT chiếm <b>${nf(capShare, 0)}%</b> công suất đặt nhưng gió & mặt trời chỉ <b>${nf(re.shareCur, 1)}%</b> sản lượng: MW không phải kWh.` : ''; };
   gm.querySelectorAll('[data-p]').forEach(b => b.addEventListener('click', () => draw(b.dataset.p)));
   renders.map.push(() => draw('ytd'));
-  p.append(sec('map', '0.1', 'Điện đi từ đâu, tiền đi qua ai, ai quyết định huy động?', [host, vcFold], {sub: 'Ba lớp luồng tách riêng, bật/tắt từng lớp. Bấm một loại hình để mở chuỗi giá trị chi tiết.',
+  p.append(sec('map', '0.1', 'Điện đi từ đâu, tiền đi qua ai, ai quyết định huy động?', host, {sub: 'Ba lớp luồng tách riêng, bật/tắt từng lớp. Bấm một loại hình để mở chuỗi giá trị chi tiết.',
       method: 'Tỷ trọng sản lượng từ đầu năm theo bản tin vận hành ngày EVN (cùng ngày đối chiếu với tab Bức tranh ngành; gió và mặt trời tách từ số EVN, mái nhà là số EVN ước tính). Khí, dầu và LNG gộp trong bản tin EVN. Vai trò các đơn vị theo Luật Điện lực 61/2024, TT 29/2026/TT-BCT và bảng 18 doanh nghiệp.'}),
-    sec('mix', '0.2', 'Công suất đặt khác sản lượng thực phát thế nào?', gm, {method: 'Công suất đặt cuối 2025 theo biểu đồ "Công suất nguồn cuối 2025" (Bức tranh ngành › Cung dài hạn); "Khí, dầu & khác" là phần còn lại của tổng 87.600 MW; nhóm NLTT của công suất đặt có thể gồm sinh khối, điện rác. Sản lượng: các ngày có bản tin đủ nguồn ở cả hai năm.'}));
+    ...(cm ? [sec('chain', '0.2', 'Doanh nghiệp niêm yết nằm ở khâu nào của từng chuỗi giá trị?', cm, {sub: 'Hàng: loại hình; cột: khâu. Rê chuột vào mã để xem vai trò, ↗ mở trang phân tích cổ phiếu; tên chữ xám là đơn vị chưa niêm yết.'})] : []),
+    sec('mix', '0.3', 'Công suất đặt khác sản lượng thực phát thế nào?', gm, {method: 'Công suất đặt cuối 2025 theo biểu đồ "Công suất nguồn cuối 2025" (Bức tranh ngành › Cung dài hạn); "Khí, dầu & khác" là phần còn lại của tổng 87.600 MW; nhóm NLTT của công suất đặt có thể gồm sinh khối, điện rác. Sản lượng: các ngày có bản tin đủ nguồn ở cả hai năm.'}));
 }
 
 /* ===================== 6. 01 · Chuỗi giá trị theo công nghệ ===================== */
