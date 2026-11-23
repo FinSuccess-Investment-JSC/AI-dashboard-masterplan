@@ -357,5 +357,28 @@ if(BL&&BL.rows){
   fillTable('tbl-re-signals',['Mã','Backlog cover','Ngưỡng','Trạng thái','Nợ vay NH ÷ tiền','Ngưỡng','Trạng thái'],rows.map(r=>[r.c,nf(r.bc,2)+'x','≥1,5 Catalyst · <0,5 Risk',st(r.bc,1.5,0.5),r.ds==null?'—':nf(r.ds,2)+'x','>1 Risk · <0,5 Catalyst',st(r.ds,0.5,1,true)]));
  }
 }
+// ---------- 8. Chuyên đề Luật mới 2026 (Policy): tốc độ quay vòng đất theo mã ----------
+if(BL&&BL.rows&&document.getElementById('chLawTurn')){
+ const codes=BL.codes.filter(c=>BL.rows[c]);
+ const rows=codes.map(c=>{const r=BL.rows[c],q=Object.keys(r).sort().at(-1),x=r[q],g=k=>x[k]||0,debt=g('borrow_st')+g('borrow_lt'),cash=g('cash')+g('st_investments');
+  const turn=x.revenue_ttm?g('inventory')/x.revenue_ttm:null;
+  return {c,q,inv:g('inventory'),turn,pre:g('inventory')?g('customer_prepay')/g('inventory')*100:null,eq:g('total_assets')?g('equity')/g('total_assets')*100:null,nd:g('equity')?(debt-cash)/g('equity')*100:null,
+   grp:turn==null?'Thiếu số':turn<=3?'Quay vòng nhanh':turn>8?'Đất nằm lâu':'Trung gian'}});
+ const ql=q=>q.slice(4)+'/'+q.slice(0,4),per=ql(rows[0].q);
+ const byTurn=rows.filter(r=>r.turn!=null).sort((a,b)=>b.turn-a.turn),byPre=rows.filter(r=>r.pre!=null).sort((a,b)=>b.pre-a.pre);
+ const col=r=>r.grp==='Quay vòng nhanh'?C.green:r.grp==='Đất nằm lâu'?C.red:C.navy;
+ document.getElementById('lawTurnSub').textContent='năm doanh thu · 11 mã nhà ở · '+per+' · càng cao đất càng nằm lâu';
+ document.getElementById('lawPreSub').textContent='% · 11 mã nhà ở · '+per+' · càng cao càng nhiều hàng đã bán';
+ barLineChart('chLawTurn',{categories:byTurn.map(r=>r.c),series:[{name:'Tồn kho ÷ doanh thu 4 quý',color:C.navy,kind:'bar',values:byTurn.map(r=>r.turn)}],unit:'năm',digits:1,height:260,zeroBase:true,time:false,allTicks:true});
+ barLineChart('chLawPrepay',{categories:byPre.map(r=>r.c),series:[{name:'Người mua trả trước ÷ tồn kho',color:C.teal,kind:'bar',values:byPre.map(r=>r.pre)}],unit:'%',digits:0,height:260,zeroBase:true,time:false,allTicks:true});
+ const read={'Quay vòng nhanh':'Hưởng lợi: thủ tục nhanh hơn, ít đất chịu phí','Trung gian':'Trung tính: tùy tiến độ từng dự án','Đất nằm lâu':'Chịu phí giữ đất nếu dự án quá hạn; được lợi nếu gỡ xong pháp lý','Thiếu số':'—'};
+ const ord={'Quay vòng nhanh':0,'Trung gian':1,'Đất nằm lâu':2,'Thiếu số':3};
+ const tb=rows.slice().sort((a,b)=>ord[a.grp]-ord[b.grp]||(a.turn??99)-(b.turn??99));
+ fillTable('tbl-law-codes',['Nhóm','Mã','Tồn kho (tỷ)','Tồn kho ÷ DT 4Q (năm)','Trả trước ÷ tồn kho','Vốn chủ ÷ tổng tài sản','Nợ vay ròng ÷ vốn chủ','Đọc theo luật mới'],tb.map(r=>['<span style="color:'+col(r)+';font-weight:700">'+r.grp+'</span>','<b>'+r.c+'</b>',nf(r.inv,0),nf(r.turn,1),nf(r.pre,0)+'%',nf(r.eq,0)+'%',nf(r.nd,0)+'%',read[r.grp]]));
+ const names=g=>rows.filter(r=>r.grp===g).map(r=>r.c).join(', ')||'không mã nào';
+ document.getElementById('law-verdict').innerHTML='<b>Quay vòng nhanh:</b> '+names('Quay vòng nhanh')+' · <b>Đất nằm lâu:</b> '+names('Đất nằm lâu')+' ('+per+').';
+ const big=rows.slice().sort((a,b)=>b.inv-a.inv).find(r=>r.grp==='Đất nằm lâu');
+ if(big)document.getElementById('law-tax-scale').innerHTML='<mark class="key-phrase">Thuế 0,2% tự nó nhỏ:</mark> kể cả tính trên toàn bộ tồn kho sổ sách của '+big.c+' ('+nf(big.inv,0)+' tỷ) cũng chỉ khoảng <b>'+nf(big.inv*0.002,0)+' tỷ/năm</b>. Chi phí giữ đất thật nằm ở mức tiền sử dụng đất tăng thêm, chưa công bố.';
+}
 window.REALESTATE_DASHBOARD={due12,lastClosed,resLast,fdi,fdiPrev,cpi,refi,topIssuers,next12};
 })();
