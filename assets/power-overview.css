@@ -233,3 +233,18 @@ table.vc-ht{border-collapse:separate;border-spacing:2px;font-size:11.5px;width:1
 #pane-mt1 .vc-g .up,#pane-mt1 .vc-yr .up{color:#1b6b3a}#pane-mt1 .vc-g .dn,#pane-mt1 .vc-yr .dn{color:#a1352b}
 @media (max-width:900px){.vc-groups{grid-template-columns:repeat(2,minmax(0,1fr))}.vc-two{grid-template-columns:1fr}}
 @media (max-width:520px){.vc-groups{grid-template-columns:1fr}.vc-yr{grid-template-columns:72px 1fr 54px}.vc-yr em{display:none}}
+/* 4.1 nguồn mới theo loại hình, 4.2 lịch văn bản giá điện (23/11/2026) */
+.vo-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px}.vo-head h4{margin:0}
+.vo-f{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}.vo-f i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:0}
+.vo-by{display:flex;gap:4px}
+.vo-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px;margin-top:6px}
+.vo-g{border:1px solid var(--line,#e3e7f0);border-top:3px solid var(--c);border-radius:10px;padding:8px 12px;min-width:0}
+.vo-gh{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;align-items:baseline}.vo-gh b{color:var(--c);font-size:13.5px}.vo-gh span{font-size:11.5px;color:var(--muted,#6b7390)}
+.ov-pcal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.ov-pc-col h4{margin:0 0 8px;font-size:13.5px}.ov-pc-col h4 small{font-weight:500;color:var(--muted,#7a8399);margin-left:6px}
+.ov-pcal .ov-tl-list li{grid-template-columns:86px 1fr}.ov-pcal .ov-tl-list b{display:block;margin-top:2px}.ov-pcal .ov-tl-list p{margin:2px 0;font-size:12.5px;color:var(--ink2,#3b4256)}
+.ov-pc-k{display:inline-block;font:600 10.5px/1.6 Inter,sans-serif;border-radius:4px;padding:0 6px;background:#e8ebf8;color:#1D2678}
+.ov-pc-t{margin-top:3px;display:flex;flex-wrap:wrap;gap:4px}
+:root[data-theme=dark] .ov-pc-k{background:#262c45;color:#c9cfdd}
+@media (max-width:900px){.ov-pcal{grid-template-columns:1fr}.vo-groups{grid-template-columns:1fr}}
+.company-trend .ct-legend-g{font-weight:700;font-size:11.5px;margin:0 2px 0 10px}.company-trend .ct-legend-g:first-child{margin-left:0}

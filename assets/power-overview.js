@@ -206,9 +206,8 @@ function unitPane(p) {
       <p class="ov-formula">${esc(b.formula)}</p><ul class="ov-drv">${b.drivers.map(d => `<li>${esc(d)}</li>`).join('')}</ul>
       <details class="ov-an"><summary>Chi phí · dòng tiền · đòn bẩy</summary><dl><dt>Chi phí</dt><dd>${esc(b.cost)}</dd><dt>Dòng tiền</dt><dd>${esc(b.cash)}</dd><dt>Đòn bẩy</dt><dd>${esc(b.lever)}</dd></dl></details>
       <div class="ov-tks">${chips(b.group)}</div></article>`; }).join(''));
-  const old = document.querySelector('#pane-mt1 .business-models');
-  const bmFold = old ? el('details', 'ov-an research-fold', '<summary>Bản trước: mô hình theo nhóm doanh nghiệp (gộp than & khí, có xây lắp lưới)</summary>') : null;
-  if (bmFold) bmFold.append(old);
+  // Khối mô hình kinh doanh cũ (gộp than & khí, có xây lắp lưới) bỏ hẳn 23/11/2026 theo yêu cầu người dùng.
+  document.querySelector('#pane-mt1 .business-models')?.remove();
   const mech = card('dien-ov-mech', 'ov-mech', O.mechanisms.map(m => { const c = m.component && comp(m.component);
     return `<article class="ov-mc"><h4>${esc(m.label)}</h4><p>${esc(m.l1)}</p><details><summary>Ví dụ có điều kiện</summary><p>${esc(m.l2)}</p></details>
       <details class="ov-an"><summary>Công thức, căn cứ & phạm vi</summary>${c ? `<p><b>Quy định:</b> ${esc(plain(c.rule))}</p><p><b>Số hiện có:</b> ${esc(plain(c.value))}</p>` : ''}<p><b>Phạm vi:</b> ${esc(m.scope)}</p>${POL.glossary?.[m.id] ? `<p class="muted">${esc(POL.glossary[m.id])}</p>` : ''}</details>${goPolicy(m.policy_group)}</article>`; }).join(''));
@@ -217,7 +216,7 @@ function unitPane(p) {
   const ue = card('dien-ov-unit', 'ov-unit', '');
   renders.unit.push(() => { if (VIS) VIS.unit(ue, ctx); else ue.append(gap('không tải được module hình ảnh.')); });
   p.append(sec('unit-econ', '2.1', 'Giá thị trường đang ở đâu so với trần giá của từng loại hình?', ue, {sub: 'FMP bình quân tháng gần nhất so với trần khung giá phát điện năm gần nhất của từng loại hình.'}),
-    sec('unit-bm', '2.2', 'Nhà máy điện kiếm tiền như thế nào?', [bmg, bmFold], {sub: 'Công thức nguyên lý; ↗ mở trang phân tích cổ phiếu.'}),
+    sec('unit-bm', '2.2', 'Nhà máy điện kiếm tiền như thế nào?', bmg, {sub: 'Công thức nguyên lý; ↗ mở trang phân tích cổ phiếu.'}),
     sec('unit-peer', '2.3', 'Bốn nhóm nguồn khác nhau ở đâu?', peer),
     sec('unit-mech', '2.4', 'PPA, Qc, SMP, CAN, FMP, DPPA nghĩa là gì?', mech, {sub: 'Định nghĩa → ví dụ → căn cứ (mục chi tiết).'}));
 }
@@ -244,77 +243,37 @@ function releaseDate(r) {
   return r.date ? {date: r.date, end: r.end} : {date: null};
 }
 const REL = Object.fromEntries(O.releases.map(r => [r.id, {...r, ...releaseDate(r)}]));
-const relTxt = id => { const r = REL[id]; if (!r) return ''; return `${esc(r.label)} — ${r.date ? (r.label2 || (r.end ? dm(r.date) + '–' + dm(r.end) : r.rule === 'first_week' ? releaseDate(r).label : (r.kind === 'earliest' ? 'sớm nhất ' : '') + dm(r.date))) : 'chưa có ngày'}`; };
-const STATUS = {supported: ['Có bằng chứng', 'ov-st-up'], insufficient: ['Chưa đủ bằng chứng', 'ov-st-nt'], contradicted: ['Bị phản bác', 'ov-st-dn']};
-function thesisStatus(t) {
-  const ev = [], gaps = [];
-  if (t.rule === 'thermal_dry') {
-    if (!q3 || !thQ) return {s: 'insufficient', ev, gaps: ['Chưa đủ 80% ngày đối chiếu 3 tháng.']};
-    const h = q3.get('hydro').yoy, th = thQ.yoy, dry = resYoY && resYoY.med < T.hydro_dry_inflow_pct;
-    ev.push(`Thủy điện 3 tháng ${pc(h)}; than + khí ${pc(th)} so cùng kỳ (${q3.n}/${q3.total} ngày).`);
-    if (resYoY) ev.push(`Nước về ${pc(resYoY.med, 0)} so cùng kỳ (${esc(resYoY.span)}).`);
-    const premise = h <= T.t1_hydro_pct || dry;
-    if (!premise) return {s: 'insufficient', ev, gaps: ['Thủy văn chưa bất lợi theo ngưỡng (thủy điện chưa giảm ≥5% và nước về chưa thấp hơn 10%), luận điểm chưa được thử thách.']};
-    return th >= T.t1_thermal_pct ? {s: 'supported', ev, gaps} : th <= 0 ? {s: 'contradicted', ev, gaps: ['Thủy văn bất lợi nhưng than + khí không tăng: kiểm tra phụ tải, nhập khẩu, NLTT, ràng buộc nhiên liệu.']} : {s: 'insufficient', ev, gaps: ['Than + khí tăng dưới ngưỡng 5%.']};
-  }
-  if (t.rule === 'gas_fuel') {
-    if (!jkm3 || !q3) return {s: 'insufficient', ev, gaps: ['Thiếu giá LNG hoặc sản lượng 3 tháng.']};
-    const j = jkm3.pct, g = q3.get('gas').yoy;
-    ev.push(`LNG JKM ${pc(j)} ≈3 tháng; sản lượng khí & dầu 3 tháng ${pc(g)} so cùng kỳ.`);
-    // Công suất mới trong 12 tháng (vd NT3&4) làm so cùng kỳ của sản lượng khí lệch: không chấm ủng hộ/phản bác.
-    const cf = t.confound, cfEnd = cf && ymd(new Date(Date.parse(cf.from) + 365 * 864e5));
-    if (cf && q3.from && q3.from.slice(0, 10) <= cfEnd) return {s: 'insufficient', ev, gaps: [esc(cf.note)]};
-    if (Math.abs(j) < T.fuel_move_pct) return {s: 'insufficient', ev, gaps: ['Giá LNG chưa biến động quá ±15% trong 3 tháng.']};
-    if ((j > 0 && g <= -T.t2_gas_pct) || (j < 0 && g >= T.t2_gas_pct)) return {s: 'supported', ev, gaps};
-    if (j > 0 && g >= T.t2_gas_pct) return {s: 'contradicted', ev, gaps: ['Giá LNG tăng mạnh nhưng sản lượng khí vẫn tăng; có thể do Qc và công suất mới, cần tách theo nhà máy.']};
-    return {s: 'insufficient', ev, gaps: ['Sản lượng khí đổi dưới ngưỡng ±5%.']};
-  }
-  if (t.rule === 'grid_capex') {
-    if (pipelineShare) ev.push(`Báo cáo 760/BC-BCT: ${pipelineShare[0]}% số dự án quy hoạch đã vận hành.`);
-    if (shortfallMw) ev.push(`Kịch bản chậm tiến độ: thiếu ${nf(shortfallMw.at(-1), 0)} MW năm ${shortfallYears.at(-1)}.`);
-    ev.push('PC1: hợp đồng EPC chưa thực hiện 8.250 tỷ đồng cuối 2025 (bảng 18 doanh nghiệp).');
-    return {s: 'insufficient', ev, gaps: ['Trang chưa có chuỗi giải ngân lưới EVN/NPT và giá trị hợp đồng EPC chưa thực hiện theo quý để kiểm chứng.']};
-  }
-  if (t.rule === 'fit_cash') {
-    const tr = POL.transitional?.rows || [], pend = tr.find(r => /chưa thỏa thuận/.test(r.label)), notSent = tr.find(r => /Chưa gửi/.test(r.label));
-    if (pend) ev.push(`${pend.projects} dự án đã vận hành nhưng chưa thỏa thuận giá (${esc(POL.transitional.as_of_label)}).`);
-    if (notSent) ev.push(`${notSent.projects} dự án chuyển tiếp chưa gửi hồ sơ đàm phán.`);
-    const fr = (POL.policies || []).find(x => x.policy_id === 'fit-review'), hdg = fr?.exposed_companies?.find(c => c.ticker === 'HDG' && c.note);
-    if (hdg) ev.push(`HDG: ${esc(hdg.note)} (tab Policy · rà soát FIT).`);
-    return ev.length ? {s: 'supported', ev, gaps: ['Bằng chứng văn bản, chưa định lượng tác động lên dòng tiền từng doanh nghiệp; chưa có danh sách 173 nhà máy theo chủ đầu tư.']} : {s: 'insufficient', ev, gaps: ['Chưa có dữ liệu chính sách.']};
-  }
-  return {s: 'insufficient', ev, gaps};
-}
-const THESES = O.theses.map(t => ({...t, ...thesisStatus(t)}));
-THESES.filter(t => t.s === 'contradicted').forEach(t => add({id: 'thesis-' + t.id, kind: 'note', seg: t.segments, lv: 'B', title: 'Luận điểm bị phản bác', obs: esc(t.title) + '.', cmp: t.ev.join(' '), interp: t.gaps.join(' '), impl: 'Dữ liệu thực tế khác giả thuyết theo dõi: rà lại luận điểm.', valid: '', src: 'Theo dõi triển vọng', asOf: lastDay}));
+// Bảng luận điểm (thesisStatus, THESES, nhận định "Luận điểm bị phản bác") bỏ 23/11/2026 cùng mục 4.2; data/power-overview.json vẫn giữ theses.
 function forward(p) {
   const ol = card('dien-ov-outlook', 'ov-outlook', '');
   if (VIS) VIS.outlook(ol, ctx); else ol.append(gap('không tải được module hình ảnh.'));
-  const th = card('dien-ov-thesis', 'ov-thesis', THESES.map(t => `<article class="ov-th"><header><h4>${esc(t.title)}</h4><span class="ov-st ${STATUS[t.s][1]}">${STATUS[t.s][0]}</span></header>
-    <dl class="ov-dl"><dt>Bằng chứng hiện tại</dt><dd>${t.ev.map(x => `<p>${tag('A')} ${x}</p>`).join('') || '—'}${t.gaps.map(x => `<p class="muted">${x}</p>`).join('')}</dd>
-    <dt>Chỉ báo ủng hộ</dt><dd>${esc(t.support)}</dd><dt>Chỉ báo phản bác</dt><dd>${esc(t.contra)}</dd>
-    <dt>Nhóm nguồn</dt><dd>${t.segments.map(g => esc(GROUP[g].label)).join(', ')}</dd><dt>Doanh nghiệp</dt><dd>${t.tickers.map(x => chip(x)).join(' ')}</dd>
-    <dt>Mốc dữ liệu tiếp theo</dt><dd>${t.next.map(relTxt).join('<br>')}</dd><dt>Cập nhật</dt><dd>dữ liệu EVN đến ${dm(lastDay)}; trạng thái tính lại mỗi lần mở trang</dd></dl></article>`).join('') +
-    `<p class="ov-cap">Trạng thái tính theo quy tắc với ngưỡng cố định của trang ; không phải tín hiệu mua/bán. ${esc(O.threshold_note)}</p><details class="ov-fold"><summary>Các ngưỡng dùng để tính trạng thái</summary><ul class="ov-foot">${Object.values(O.thresholds).map(v => `<li>${esc(v.basis)}</li>`).join('')}</ul></details>`);
-  // Lịch catalyst: văn bản tab Policy + hạn theo quy định + lịch công bố dữ liệu; phân biệt đã xảy ra / có lịch / sớm nhất theo quy định / dự kiến / chưa có ngày.
-  const KINDS = {done: ['Đã xảy ra', '#7a8399'], scheduled: ['Có lịch xác nhận', '#2938A8'], earliest: ['Sớm nhất theo quy định', '#861C52'], expected: ['Dự kiến (nhận định / theo mùa)', '#c98a00'], undated: ['Chưa có ngày', '#9AA3BD']};
-  const lo = ymd(new Date(Date.parse(TODAY) - 120 * 864e5)), hi = ymd(new Date(Date.parse(TODAY) + 420 * 864e5));
-  const pol = (POL.policies || []).flatMap(p => [
-      p.effective_date && {date: p.effective_date, text: `${p.policy_name} có hiệu lực`, kind: p.effective_date <= TODAY ? 'done' : 'scheduled', note: 'ngày hiệu lực theo văn bản', cat: 'Chính sách', url: p.primary_source_url},
-      p.expiration_date && {date: p.expiration_date, text: `${p.policy_name} hết hiệu lực`, kind: p.expiration_date <= TODAY ? 'done' : 'scheduled', note: 'theo văn bản', cat: 'Chính sách', url: p.primary_source_url},
-      p.policy_status === 'Draft' && !O.releases.some(r => r.policy_id === p.policy_id) && {date: null, text: p.policy_name, kind: 'undated', note: 'dự thảo / đang xử lý', cat: 'Chính sách', url: p.primary_source_url}].filter(Boolean));
-  const ev = [...pol,
-    ...O.releases.map(r => { const x = REL[r.id]; return {date: x.date, end: x.end, label: r.rule === 'first_week' ? releaseDate(r).label : r.kind === 'earliest' ? 'từ ' + dm(x.date) : null, text: r.label, kind: r.kind, note: r.basis, cat: r.policy_id || /Giấy phép|EVN báo cáo|QCVN|LNG/.test(r.label) ? 'Chính sách & hạn' : 'Dữ liệu & mùa vụ', url: r.url}; })]
-    .filter(e => !e.date || (e.date >= lo && e.date <= hi)).sort((a, b) => (a.date || '9999').localeCompare(b.date || '9999'));
-  const tl = card('dien-ov-timeline', 'ov-tl', `<div class="ov-ctl" role="group" aria-label="Loại mốc">${Object.entries(KINDS).map(([k, v]) => `<button type="button" data-k="${k}" aria-pressed="true"><i style="background:${v[1]}"></i>${v[0]} (${ev.filter(e => e.kind === k).length})</button>`).join('')}</div>
-    <ol class="ov-tl-list">${ev.map(e => `<li data-k="${e.kind}" class="${e.date && e.date < TODAY ? 'past' : ''}"><span class="ov-tl-d" style="--c:${KINDS[e.kind][1]}">${e.label || (e.date ? dm(e.date) + (e.end ? '–' + dm(e.end) : '') : '—')}</span><div><b>${esc(e.text)}</b><small>${esc(KINDS[e.kind][0])}${e.note ? ' · ' + esc(e.note) : ''} · ${esc(e.cat)}${e.url ? ' · ' + link(e.url, 'nguồn') : ''}</small></div></li>`).join('')}</ol>
-    <p class="ov-cap">Mốc chính sách: ngày hiệu lực, hết hiệu lực của văn bản trong tab Policy · Tax · Trade và các hạn theo quy định; không tự điền ngày khi chưa có nguồn. Khoảng hiển thị: 4 tháng trước → 14 tháng sau.</p>`);
-  tl.querySelectorAll('[data-k]').forEach(b => b.tagName === 'BUTTON' && b.addEventListener('click', () => { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); const on = new Set([...tl.querySelectorAll('button[data-k][aria-pressed=true]')].map(x => x.dataset.k)); tl.querySelectorAll('li[data-k]').forEach(li => { li.hidden = !on.has(li.dataset.k); }); }));
-  const cnt = s => THESES.filter(t => t.s === s).length;
-  p.append(wwh(`${cnt('supported')} luận điểm có bằng chứng, ${cnt('insufficient')} chưa đủ bằng chứng, ${cnt('contradicted')} bị phản bác.`, 'Luận điểm chỉ có giá trị khi được kiểm lại bằng số mới; trạng thái đổi theo dữ liệu, không giữ cố định.', [...new Set(THESES.flatMap(t => t.next))].slice(0, 3).map(relTxt).join('; ') + '.'),
-    sec('fw-supply', '4.1', 'Nguồn cung mới đến từ đâu, bao nhiêu MW, chắc chắn đến đâu?', ol),
-    sec('fw-thesis', '4.2', 'Những luận điểm nào đang được dữ liệu ủng hộ hoặc phản bác?', th, {sub: 'Mỗi luận điểm: bằng chứng hiện tại, chỉ báo ủng hộ/phản bác, nhóm nguồn, doanh nghiệp, mốc dữ liệu tiếp theo.'}),
-    sec('fw-cal', '4.3', 'Sự kiện nào có thể làm thay đổi luận điểm trong 6–12 tháng tới?', tl, {sub: `Đầy đủ tín hiệu, kịch bản và góc nhìn của chuyên viên phân tích: <a href="#mt5" data-ov-main="mt5">tab Catalyst · Risk →</a>`}));
+  // Lịch văn bản tác động giá điện (23/11/2026, thay bảng luận điểm và lịch catalyst chung): trần khung giá phát điện, giá bán lẻ,
+  // quy tắc thị trường (Qc, CAN, trần SMP), DPPA. Đã ban hành: văn bản tab Policy 12 tháng gần nhất; sắp tới: mốc theo quy định, dự thảo.
+  const PRICE_REL = ['retail_next', 'market_plan_2027', 'evn_cost', 'fit_review'];
+  const isPrice = x => x.policy_category === 'price' || (x.policy_category === 'market' && (x.financial_drivers || []).includes('revenue'));
+  const kindOf = x => /ceiling|transitional/.test(x.policy_id) ? 'Trần giá phát điện' : /retail|tariff/.test(x.policy_id) ? 'Giá bán lẻ' : /dppa/.test(x.policy_id) ? 'Mua bán điện trực tiếp' : /fit/.test(x.policy_id) ? 'Giá FIT' : 'Thị trường điện';
+  const DIR = {Positive: ['Tích cực', 'up'], Negative: ['Tiêu cực', 'dn'], Mixed: ['Hai chiều', 'nt'], Uncertain: ['Chưa rõ', 'nt']};
+  const first = s => String(s || '').split(/(?<=[.;])\s/)[0].replace(/[.;]$/, '');
+  const yr = TODAY.slice(0, 4), since = ymd(new Date(Date.parse(TODAY) - 365 * 864e5));
+  const docs = (POL.policies || []).filter(x => isPrice(x) && x.policy_status !== 'Draft').map(x => ({...x, d: x.issue_date || x.effective_date || null}))
+    .filter(x => x.d ? x.d >= since && x.d <= TODAY : x.policy_name.includes(yr)).sort((a, b) => (b.d || '').localeCompare(a.d || ''));
+  const src = x => x.sources?.[0]?.url || x.primary_source_url;
+  const tks = x => [...new Set((x.exposed_companies || []).map(e => e.ticker))].slice(0, 6).map(t => chip(t)).join(' ');
+  const doneLi = x => { const dr = DIR[x.direction]; return `<li><span class="ov-tl-d" style="--c:#2938A8">${x.d ? dm(x.d) : 'năm ' + yr}</span><div>
+      <span class="ov-pc-k">${esc(kindOf(x))}</span>${dr ? ` <span class="ov-k ov-k-${dr[1]}">${dr[0]}</span>` : ''}<b>${esc(x.short_name || x.policy_name)}</b>
+      <p>${esc(first(x.radar_change || x.regulatory_change))}.</p><small>${esc(x.document_number || '')}${x.d ? '' : ' · ngày ban hành chưa ghi'}${src(x) ? ` · <a href="${esc(src(x))}" target="_blank" rel="noopener">nguồn</a>` : ''}</small>${tks(x) ? `<div class="ov-pc-t">${tks(x)}</div>` : ''}</div></li>`; };
+  const KIND = {scheduled: ['Có hạn theo quy định', '#2938A8'], earliest: ['Sớm nhất theo quy định', '#861C52'], undated: ['Chưa có ngày', '#7a8399'], draft: ['Dự thảo', '#c98a00'], expected: ['Dự kiến', '#c98a00']};
+  const linked = new Set(O.releases.map(r => r.policy_id).filter(Boolean));
+  const next = [
+    ...PRICE_REL.map(id => REL[id]).filter(Boolean).filter(r => !r.date || r.date >= TODAY).map(r => ({date: r.date, label: r.date ? (r.kind === 'earliest' ? 'từ ' : '') + dm(r.date) : '—', text: r.label, kind: r.kind, note: r.basis, url: r.url})),
+    ...(POL.policies || []).filter(x => isPrice(x) && x.policy_status === 'Draft' && !linked.has(x.policy_id)).map(x => ({date: null, label: '—', text: x.policy_name, kind: 'draft', note: first(x.impact_mechanism || x.channel), url: src(x)})),
+    ...(POL.pending_frameworks || []).map(t => ({date: null, label: '—', text: 'Khung giá chưa ban hành: ' + first(t.split(':')[0]), kind: 'undated', note: first(t.split(':').slice(1).join(':')) || t, url: null}))
+  ].sort((a, b) => (a.date || '9999').localeCompare(b.date || '9999'));
+  const nextLi = e => `<li><span class="ov-tl-d" style="--c:${KIND[e.kind]?.[1] || '#7a8399'}">${e.label}</span><div><b>${esc(e.text)}</b><small>${esc(KIND[e.kind]?.[0] || '')}${e.note ? ' · ' + esc(e.note) : ''}${e.url ? ` · <a href="${esc(e.url)}" target="_blank" rel="noopener">nguồn</a>` : ''}</small></div></li>`;
+  const tl = card('dien-ov-timeline', 'ov-tl ov-pcal', `<div class="ov-pc-col"><h4>Đã ban hành <small>12 tháng gần nhất · ${docs.length} văn bản</small></h4><ol class="ov-tl-list">${docs.map(doneLi).join('') || '<li><span></span><div class="muted">Chưa có văn bản trong 12 tháng.</div></li>'}</ol></div>
+    <div class="ov-pc-col"><h4>Sắp tới <small>mốc theo quy định, dự thảo, khung giá còn thiếu</small></h4><ol class="ov-tl-list">${next.map(nextLi).join('')}</ol></div>`);
+  p.append(sec('fw-supply', '4.1', 'Nguồn cung mới đến từ đâu, bao nhiêu MW, chắc chắn đến đâu?', ol),
+    sec('fw-cal', '4.2', 'Văn bản nào vừa duyệt hoặc sắp có, tác động tới giá điện?', tl, {sub: `Trần khung giá phát điện, giá bán lẻ, quy tắc thị trường (Qc, CAN, trần SMP), mua bán điện trực tiếp. Tín hiệu và kịch bản: <a href="#mt5" data-ov-main="mt5">tab Catalyst · Risk →</a>`}));
 }
 
 /* ===================== 9. Dựng tab, điều hướng ===================== */
@@ -344,7 +303,7 @@ function build() {
     p.innerHTML = `<header class="ov-head"><div><span class="ov-k">${num} · ${esc(tech)}</span><h2>${esc(label)}</h2><p>${esc(q)}</p></div>${key !== 'map' ? '<a href="?ov=map#mt1" data-ov-go="map" class="ov-back">← Bản đồ ngành</a>' : ''}</header>`;
     anchor.after(p); anchor = p; panes[key] = p;
   });
-  // Nội dung: thứ tự dựng giữ .business-models (02) trước .financial-comparison (04) trong DOM.
+  // Nội dung: dựng lần lượt từng phần (khối .business-models cũ đã bỏ 23/11/2026, unitPane xóa khỏi DOM).
   SECTIONS.forEach(([key, , , , , fn]) => { try { fn(panes[key]); } catch (e) { panes[key].append(gap('lỗi dựng phần này: ' + esc(e.message))); document.documentElement.dataset.ovError = (document.documentElement.dataset.ovError || '') + key + ':' + e.message + ';'; console.error(e); } });
   // Bản đồ ngành 3 bước (đã có trong luồng chuỗi giá trị) và khung sub-tab cũ.
   pane.querySelector('.research-roadmap')?.remove();
