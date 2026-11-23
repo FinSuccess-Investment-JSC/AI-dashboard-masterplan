@@ -340,7 +340,7 @@ const legend = () => el('details', 'pp-legend', `<summary>ⓘ Cách đọc nhãn
 // Kết luận chính của sub-tab: trả lời câu hỏi trung tâm, sinh theo quy tắc.
 const take = (text, lvl = 'B', st = 'Verified') => el('div', 'pp-take', `<span class="pp-take-k">Kết luận chính</span><p>${tag(lvl)} ${chip(st)} ${text}</p>`);
 const metric = (label, value, sub) => `<span class="pp-m"><b>${value}</b><small>${esc(label)}${sub ? ' · ' + esc(sub) : ''}</small></span>`;
-// Panel 3 lớp: (1) câu hỏi · kết luận ≤2 câu · 2–3 chỉ tiêu · ý nghĩa  (2) chart chính + tối đa 1 chart phụ  (3) Khám phá dữ liệu · Nghiên cứu sâu (thu gọn).
+// Panel 3 lớp: (1) câu hỏi · kết luận ≤2 câu · 2–3 chỉ tiêu · ý nghĩa  (2) chart chính + tối đa 1 chart phụ  (3) chart bổ sung hiện thẳng (không thu gọn) · Nghiên cứu sâu (chữ, thu gọn).
 function qpanel(o) {
   const p = el('section', 'pp-panel pp-q'); p.id = 'pp-' + o.id;
   p.innerHTML = `<header class="pp-ph"><span class="pp-num">${esc(o.num)}</span><div><h3>${esc(o.q)}</h3>` +
@@ -351,7 +351,7 @@ function qpanel(o) {
   if (o.support) { const w = el('div', 'pp-sup1'); w.append(o.support); p.append(w); }
   [].concat(o.body || []).filter(Boolean).forEach(n => p.append(n));
   const ex = [].concat(o.explore || []).filter(Boolean);
-  if (ex.length) { const d = el('details', 'research-fold pp-drill pp-explore'); d.append(el('summary', '', `Khám phá dữ liệu · ${ex.length} mục`)); const g = el('div', 'pp-drill-body'); ex.forEach(n => g.append(n)); d.append(g); d.addEventListener('toggle', () => d.open && refit(d)); p.append(d); }
+  if (ex.length) { const g = el('div', ex.length > 1 ? 'grid two g2 pp-sup pp-more' : 'pp-sup1 pp-more'); ex.forEach(n => g.append(n)); p.append(g); }
   if (o.deep) {
     const d = el('details', 'pp-deep');
     d.innerHTML = `<summary>Nghiên cứu sâu · cơ chế, điều làm đổi nhận định, phương pháp, giới hạn</summary><dl>${[['Kênh truyền dẫn', o.deep.mech], ['Hàm ý đầu tư (có điều kiện)', o.deep.impl], ['Điều làm thay đổi nhận định', o.deep.change], ['Phương pháp & nguồn', o.deep.method], ['Giới hạn', o.deep.limits]].filter(x => x[1]).map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>`;
@@ -552,8 +552,13 @@ function build() {
   panes.economics.append(qpanel({id: 'econ-prices', num: '4.1', q: 'Giá thị trường điện đang lên hay xuống, và đó là giá gì?', lv: 'A',
     concl: fmpLast ? `FMP ${ml(fmpLast.period)} ${nf(fmpLast.fmp, 0)} đ/kWh, ${pc(F.price.fmpMoM)} so tháng trước, ${pc(F.price.fmpYoY)} so cùng kỳ. FMP là giá thị trường, không phải giá bán thực nhận của mọi nhà máy.` : '',
     metrics: [['FMP', nf(fmpLast?.fmp, 0) + ' đ/kWh', fmpLast ? ml(fmpLast.period) : ''], ['So cùng kỳ', pc(F.price.fmpYoY)], ['Bình quân từ đầu năm', fmpYtd ? pc((fmpYtd.cur / fmpYtd.prev - 1) * 100) : '—', fmpYtd ? fmpYtd.n + ' tháng' : '']],
-    impl: 'FMP cao có lợi cho phần điện năng ngoài Qc của nhà máy chào giá trực tiếp; nhà máy Qc cao hoặc gián tiếp tham gia gần như không hưởng.', main: C('dien-15') || H2('chFmpTrend'),
+    impl: 'FMP cao có lợi cho phần điện năng ngoài Qc của nhà máy chào giá trực tiếp; nhà máy Qc cao hoặc gián tiếp tham gia gần như không hưởng.', main: C('dien-15') || H2('chFmpTrend'), explore: [hydroEconCard()],
     deep: {method: 'FMP bình quân tháng từ bản tin IR PGV; CAN là giá năm, không trừ FMP tháng với CAN năm để suy SMP tháng.'}}));
+  panes.economics.append(qpanel({id: 'econ-fuel', num: '4.2', q: 'Giá nhiên liệu đầu vào đang đi hướng nào?', lv: 'A',
+    concl: coal3 || jkm3 ? `So 3 tháng trước: than Newcastle ${pc(coal3?.pct)}, LNG JKM ${pc(jkm3?.pct)}${hh3 ? `, khí Henry Hub ${pc(hh3.pct)}` : ''}. Đây là giá tham chiếu quốc tế, không phải giá nhiên liệu theo hợp đồng của từng nhà máy.` : '',
+    impl: 'Than nhập và LNG đắt lên làm chi phí biến đổi của nhiệt điện tăng; phần không được chuyển ngang vào giá bán sẽ bào mòn biên.',
+    main: fuelCard(), explore: [C('fast-price') || H2('chFastPrice'), C('dien-12') || H2('chCoalM'), C('dien-13') || H2('chGasM')],
+    deep: {method: 'Giá tháng World Bank (than Úc, LNG Nhật, Henry Hub); giá ngày ICE (Newcastle, JKM); so 3 tháng theo 63 phiên.'}}));
 
   /* ---------- 05 EVN ---------- */
   const tFirst = tariffVals?.[0], tLast = tariffVals?.at(-1);
@@ -589,10 +594,10 @@ function build() {
   panes.supply.append(qpanel({id: 'supply-gap', num: '6.4', q: 'Nếu dự án tiếp tục chậm, thiếu hụt lớn đến đâu?', lv: 'A', st: 'Scenario', concl: shortfallMw ? `Kịch bản chậm tiến độ: thiếu ${nf(shortfallMw[0], 0)} MW (${shortfallYears[0]}) đến ${nf(shortfallMw.at(-1), 0)} MW (${shortfallYears.at(-1)}). Không phải dự báo thiếu điện chắc chắn.` : '',
     main: moved[1], deep: {method: 'Báo cáo 760/BC-BCT ngày 10/09/2026; chưa có kịch bản cơ sở và stress của cùng nguồn để đặt cạnh.'}}));
 
-  // Chuyển phần còn lại của bố cục cũ (Thế giới / Việt Nam) — nếu sót card thì đưa vào Pulse, không mất.
+  // Card cũ không được đặt vào câu hỏi nào thì ẩn (không gom vào mục thu gọn); mã khối ghi ở html[data-pp-leftover].
   // dien-02 (nhận định AI đã lưu) do Tổng quan ngành lấy sang Industry Pulse.
   const left = [...section.querySelectorAll('#supply-world .card, #supply-vietnam .card')].filter(c => !c.closest('.pp-pane') && !c.parentElement.closest('.card') && c.dataset.blockId !== 'dien-02');
-  if (left.length) { const d = el('details', 'research-fold'); d.append(el('summary', '', 'Card chưa phân loại')); left.forEach(c => d.append(c)); panes.demand.append(d); document.documentElement.dataset.ppLeftover = left.map(c => c.dataset.blockId || '?').join(','); }
+  if (left.length) { left.forEach(c => { c.hidden = true; c.classList.add('pp-old'); }); document.documentElement.dataset.ppLeftover = left.map(c => c.dataset.blockId).join(' '); }
   section.querySelectorAll(':scope>.supply-tabs, :scope>.supply-pane, :scope>#supply-world, :scope>#supply-vietnam').forEach(n => { n.hidden = true; n.classList.add('pp-old'); });
   [kpiGrid, top].forEach(n => { if (n && !n.querySelector('.kpi,.card')) n.remove(); });
   if (kpiGrid?.isConnected && kpiGrid.querySelector('.kpi')) panes.demand.append(kpiGrid);
