@@ -1972,5 +1972,636 @@
         "interest": 50
       }
     }
+  },
+  "chain_map": {
+    "checked_at": "2026-11-23",
+    "stages": [
+      {
+        "id": "fuel",
+        "t": "Nhiên liệu đầu vào",
+        "s": "khai thác, nhập khẩu, vận chuyển"
+      },
+      {
+        "id": "build",
+        "t": "Xây lắp, EPC & tư vấn",
+        "s": "xây nhà máy, kho cảng"
+      },
+      {
+        "id": "gen",
+        "t": "Phát điện",
+        "s": "chủ nhà máy · công suất sở hữu"
+      }
+    ],
+    "rows": [
+      {
+        "tech": "coal",
+        "label": "Nhiệt điện than",
+        "sub": "than trong nước + nhập khẩu",
+        "cells": {
+          "fuel": [
+            {
+              "t": "TKV",
+              "n": "Tập đoàn Than – Khoáng sản Việt Nam: nguồn than chính cho nhiệt điện",
+              "listed": false,
+              "s": "chưa niêm yết"
+            },
+            {
+              "t": "TD6",
+              "s": "Đèo Nai – Cọc Sáu",
+              "n": "Than Đèo Nai – Cọc Sáu – TKV (hợp nhất TDN + TC6), lộ thiên Cẩm Phả",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://tapchicongthuong.vn/gan-62-trieu-co-phieu-than-deo-nai-coc-sau--td6--niem-yet-tren-san-hnx-141350.htm"
+            },
+            {
+              "t": "CST",
+              "s": "Cao Sơn",
+              "n": "Than Cao Sơn – TKV, lộ thiên; lên HNX 10/02/2025",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://finance.vietstock.vn/CST-ctcp-than-cao-son-tkv.htm"
+            },
+            {
+              "t": "HLC",
+              "s": "Hà Lầm",
+              "n": "Than Hà Lầm – Vinacomin, hầm lò",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://stockbiz.vn/ma-chung-khoan/HLC"
+            },
+            {
+              "t": "NBC",
+              "s": "Núi Béo",
+              "n": "Than Núi Béo – Vinacomin",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://stockbiz.vn/ma-chung-khoan/NBC"
+            },
+            {
+              "t": "TVD",
+              "s": "Vàng Danh",
+              "n": "Than Vàng Danh – Vinacomin, hầm lò Uông Bí",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://stockbiz.vn/ma-chung-khoan/TVD"
+            },
+            {
+              "t": "THT",
+              "s": "Hà Tu",
+              "n": "Than Hà Tu – Vinacomin, lộ thiên",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://stockbiz.vn/ma-chung-khoan/THT"
+            },
+            {
+              "t": "MDC",
+              "s": "Mông Dương",
+              "n": "Than Mông Dương – Vinacomin, hầm lò; thanh khoản rất thấp",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://stockbiz.vn/ma-chung-khoan/MDC"
+            },
+            {
+              "t": "CLM",
+              "s": "nhập khẩu than",
+              "n": "Coalimex: nhập khẩu than chủ lực của TKV, phối trộn cấp nhiệt điện; nhà cung cấp than nhập cho Vĩnh Tân 4",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://thanhtra.com.vn/kinh-doanh-90943E907/coalimex-la-doi-tac-chien-luoc-va-la-don-vi-duy-nhat-cung-cap-than-cho-nhiet-dien-vinh-tan-4-4cc60e783.html"
+            },
+            {
+              "t": "TMB",
+              "s": "thương mại, vận chuyển than",
+              "n": "Kinh doanh Than Miền Bắc – Vinacomin: thương mại và logistics than, gồm than nhập cho Duyên Hải 3",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://nhandan.vn/thu-ngo-cua-cong-ty-co-phan-kinh-doanh-than-mien-bac-vinacomin-post965510.html"
+            }
+          ],
+          "build": [
+            {
+              "t": "TV2",
+              "s": "tư vấn, EPC",
+              "n": "PECC2: tư vấn thiết kế, EPC nhiệt điện (Vĩnh Tân 4 giai đoạn 2016–2021 theo báo chí; mái che kho than Duyên Hải 3 MR)",
+              "listed": true
+            },
+            {
+              "t": "TV3",
+              "s": "tư vấn",
+              "n": "PECC3: tư vấn chính Duyên Hải 3, Long Phú 1, Sông Hậu 1",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://www.pecc3.com.vn/en/our-solution/thermal-power/"
+            }
+          ],
+          "gen": [
+            {
+              "t": "PGV",
+              "s": "Vĩnh Tân 2, Mông Dương 1 · 2.324 MW",
+              "n": "EVNGENCO3: than Vĩnh Tân 2 (1.244 MW), Mông Dương 1 (1.080 MW)",
+              "listed": true,
+              "ex": "HOSE",
+              "src": "https://tapchicongthuong.vn/evngenco3--quy-mo-hoat-dong-rong-khap-toan-quoc-52064.htm"
+            },
+            {
+              "t": "DTK",
+              "s": "6 nhà máy · ~1.580 MW",
+              "n": "Điện lực TKV: Cẩm Phả 670, Đông Triều 440, Sơn Động 220, Na Dương 110, Cao Ngạn 110, Nông Sơn 30 MW",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://tapchicongthuong.vn/tong-cong-ty-dien-luc-tkv--hanh-trinh-15-nam-vung-buoc-phat-trien-129054.htm"
+            },
+            {
+              "t": "POW",
+              "s": "Vũng Áng 1 · 1.200 MW",
+              "n": "Vũng Áng 1 1.200 MW",
+              "listed": true
+            },
+            {
+              "t": "QTP",
+              "s": "Quảng Ninh 1&2 · 1.200 MW",
+              "n": "Quảng Ninh 1&2, 1.200 MW",
+              "listed": true
+            },
+            {
+              "t": "HND",
+              "s": "Hải Phòng · 1.200 MW",
+              "n": "Hải Phòng, 1.200 MW",
+              "listed": true
+            },
+            {
+              "t": "PPC",
+              "s": "Phả Lại 1&2 · 1.040 MW",
+              "n": "Phả Lại 1 (440 MW, vận hành 1983–86) và Phả Lại 2 (600 MW); giấy phép Phả Lại 1 hết hạn 30/11/2026",
+              "listed": true
+            },
+            {
+              "t": "REE",
+              "s": "gián tiếp qua PPC",
+              "n": "REE nắm cổ phần PPC (1.040 MW)",
+              "listed": true
+            },
+            {
+              "t": "BTP",
+              "s": "gián tiếp qua HND, QTP",
+              "n": "Góp vốn HND, QTP (cổ tức)",
+              "listed": true
+            }
+          ]
+        }
+      },
+      {
+        "tech": "gas",
+        "label": "Điện khí trong nước",
+        "sub": "khí mỏ qua đường ống",
+        "cells": {
+          "fuel": [
+            {
+              "t": "GAS",
+              "s": "gom, vận chuyển khí",
+              "n": "PV GAS: gom và vận chuyển khí từ Nam Côn Sơn, Cửu Long, PM3–Cà Mau cấp điện khí; 51% đường ống Lô B–Ô Môn (dự kiến 2027)",
+              "listed": true,
+              "ex": "HOSE",
+              "src": "https://nguoiquansat.vn/du-an-duoc-dau-tu-1-2-ty-usd-se-dem-ve-cho-pv-gas-khoang-10-000-ty-moi-nam-124820.html"
+            },
+            {
+              "t": "PVS",
+              "s": "giàn, đường ống Lô B",
+              "n": "PTSC: EPCI#1 giàn công nghệ trung tâm Lô B (~550 triệu USD), liên danh EPC đường ống Lô B–Ô Môn",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://vietnamnews.vn/economy/1663014/ptsc-granted-550-million-contract-for-block-b.html"
+            },
+            {
+              "t": "PVB",
+              "s": "bọc ống Lô B",
+              "n": "PV Coating: bọc ống đường ống Lô B–Ô Môn (~426 tỷ đồng)",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://baodauthau.vn/pv-coating-tim-co-hoi-tang-truong-tu-du-an-lo-b-o-mon-post172694.html"
+            },
+            {
+              "t": "LM8",
+              "s": "ống trên bờ Lô B",
+              "n": "Lilama 18: liên danh PTSC – Lilama 18 thi công EPCI#3 tuyến ống trên bờ Lô B–Ô Môn",
+              "listed": true,
+              "ex": "HOSE",
+              "src": "https://theinvestor.vn/epc-contracts-signed-for-vietnams-offshore-block-b--o-mon-gas-pipeline-d16191.html"
+            }
+          ],
+          "build": [
+            {
+              "t": "TV2",
+              "s": "EPC Ô Môn IV",
+              "n": "Liên danh tổng thầu EPC cùng Doosan nhà máy Ô Môn IV 1.155 MW (~22.000 tỷ đồng)",
+              "listed": true,
+              "src": "https://cafef.vn/tv2-trung-goi-thau-hon-22000-ty-dong-tai-du-an-nha-may-nhiet-dien-o-mon-iv-188250608072515951.chn"
+            },
+            {
+              "t": "LLM",
+              "s": "lắp máy",
+              "n": "Lilama: lắp đặt cụm điện khí Phú Mỹ 1–4",
+              "listed": true,
+              "ex": "UPCoM",
+              "src": "https://thuonghieucongluan.com.vn/tong-cong-ty-lilama-phat-trien-ben-vung-la-yeu-cau-tat-yeu-trong-hoi-nhap-a321264.html"
+            }
+          ],
+          "gen": [
+            {
+              "t": "POW",
+              "s": "Cà Mau 1&2, Nhơn Trạch 1–2 · 2.700 MW",
+              "n": "Khí Cà Mau 1&2 1.500 MW, Nhơn Trạch 1–2 1.200 MW",
+              "listed": true
+            },
+            {
+              "t": "PGV",
+              "s": "Phú Mỹ 1, 2.1, 4 · 2.540 MW",
+              "n": "EVNGENCO3: Phú Mỹ 1 (1.118), 2.1 (477), 2.1 mở rộng (468), 4 (477 MW)",
+              "listed": true,
+              "ex": "HOSE",
+              "src": "https://tapchicongthuong.vn/evngenco3--quy-mo-hoat-dong-rong-khap-toan-quoc-52064.htm"
+            },
+            {
+              "t": "NT2",
+              "s": "Nhơn Trạch 2 · 750 MW",
+              "n": "Tua-bin khí chu trình hỗn hợp Nhơn Trạch 2, 750 MW",
+              "listed": true
+            },
+            {
+              "t": "BTP",
+              "s": "Bà Rịa · 389 MW",
+              "n": "Tua-bin khí/dầu Bà Rịa 389 MW, chạy dự phòng, phủ đỉnh",
+              "listed": true
+            }
+          ]
+        }
+      },
+      {
+        "tech": "lng",
+        "label": "Điện khí LNG",
+        "sub": "LNG nhập, tái hóa khí",
+        "cells": {
+          "fuel": [
+            {
+              "t": "GAS",
+              "s": "kho LNG Thị Vải",
+              "n": "PV GAS: chủ kho LNG Thị Vải (1 triệu tấn/năm), hợp đồng cấp LNG tái hóa khí 25 năm cho Nhơn Trạch 3&4",
+              "listed": true,
+              "ex": "HOSE",
+              "src": "https://vneconomy.vn/pv-gas-cung-cap-khi-lng-trong-25-nam-cho-cac-nha-may-dien-nhon-trach.htm"
+            }
+          ],
+          "build": [
+            {
+              "t": "LLM",
+              "s": "EPC Nhơn Trạch 3&4",
+              "n": "Liên danh Samsung C&T (61%) – Lilama (39%) tổng thầu EPC Nhơn Trạch 3&4 (21.424 tỷ đồng)",
+              "listed": true,
+              "ex": "UPCoM",
+              "src": "https://baodautu.vn/ky-hop-dong-epc-du-an-nha-may-dien-nhon-trach-34-d162165.html"
+            },
+            {
+              "t": "PVS",
+              "s": "EPC kho Thị Vải",
+              "n": "Liên danh Samsung C&T – PTSC tổng thầu EPC kho LNG Thị Vải (bàn giao 2023)",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://www.ajudaily.com/view/20190625112133976"
+            },
+            {
+              "t": "LM8",
+              "s": "thi công NT3&4",
+              "n": "Lilama 18 thi công Nhơn Trạch 3&4",
+              "listed": true,
+              "ex": "HOSE",
+              "src": "https://baodautu.vn/du-an-dien-khi-lng-nhon-trach-34-dau-an-moi-cua-nguoi-tho-lap-may-viet-nam-d412419.html"
+            },
+            {
+              "t": "L10",
+              "s": "thi công NT3&4",
+              "n": "Lilama 10 thi công Nhơn Trạch 3&4",
+              "listed": true,
+              "ex": "HOSE",
+              "src": "https://baodautu.vn/du-an-dien-khi-lng-nhon-trach-34-dau-an-moi-cua-nguoi-tho-lap-may-viet-nam-d412419.html"
+            },
+            {
+              "t": "TV1",
+              "s": "tư vấn Quảng Trạch II",
+              "n": "Liên danh PECC1–PECC3 tư vấn đấu thầu, quản lý hợp đồng LNG Quảng Trạch II",
+              "listed": true,
+              "ex": "UPCoM",
+              "src": "https://vietnamfinance.vn/lien-tuc-trung-thau-nganh-dien-pecc1-co-tiem-luc-ra-sao-d135676.html"
+            }
+          ],
+          "gen": [
+            {
+              "t": "POW",
+              "s": "Nhơn Trạch 3&4 · 1.624 MW",
+              "n": "LNG Nhơn Trạch 3&4 1.624 MW (COD 05/01/2026)",
+              "listed": true
+            }
+          ]
+        }
+      },
+      {
+        "tech": "hydro",
+        "label": "Thủy điện",
+        "sub": "không tốn nhiên liệu",
+        "cells": {
+          "fuel": [],
+          "build": [
+            {
+              "t": "L10",
+              "s": "Hòa Bình mở rộng",
+              "n": "Liên danh thi công cụm cửa xả thủy điện Hòa Bình mở rộng (480 MW, khánh thành 19/12/2025)",
+              "listed": true,
+              "ex": "HOSE",
+              "src": "https://baodauthau.vn/du-an-thuy-dien-hoa-binh-mo-rong-phat-dien-dung-tien-do-cam-ket-post182892.html"
+            },
+            {
+              "t": "TV1",
+              "s": "tư vấn Tuyên Quang MR",
+              "n": "PECC1: gói tư vấn thủy điện Tuyên Quang mở rộng",
+              "listed": true,
+              "ex": "UPCoM",
+              "src": "https://vietnamfinance.vn/lien-tuc-trung-thau-nganh-dien-pecc1-co-tiem-luc-ra-sao-d135676.html"
+            }
+          ],
+          "gen": [
+            {
+              "t": "REE",
+              "s": "1.371 MW trong danh mục",
+              "n": "Thủy điện 1.371 MW trong danh mục 2.752 MW (sở hữu thực toàn danh mục 996 MW)",
+              "listed": true
+            },
+            {
+              "t": "PGV",
+              "s": "Buôn Kuốp · 586 MW",
+              "n": "EVNGENCO3: thủy điện Buôn Kuốp 586 MW",
+              "listed": true,
+              "ex": "HOSE",
+              "src": "https://tapchicongthuong.vn/evngenco3--quy-mo-hoat-dong-rong-khap-toan-quoc-52064.htm"
+            },
+            {
+              "t": "VSH",
+              "s": "356 MW",
+              "n": "356 MW: Vĩnh Sơn 66, Sông Hinh 70, Thượng Kon Tum 220 MW",
+              "listed": true
+            },
+            {
+              "t": "POW",
+              "s": "325 MW",
+              "n": "Thủy điện 325 MW",
+              "listed": true
+            },
+            {
+              "t": "HDG",
+              "s": "314 MW",
+              "n": "Thủy điện 314 MW trong 462 MW vận hành",
+              "listed": true
+            },
+            {
+              "t": "CHP",
+              "s": "A Lưới · 170 MW",
+              "n": "A Lưới 170 MW",
+              "listed": true
+            },
+            {
+              "t": "TMP",
+              "s": "Thác Mơ · 170 MW",
+              "n": "170 MW (Thác Mơ 150 MW)",
+              "listed": true
+            },
+            {
+              "t": "PC1",
+              "s": "169 MW",
+              "n": "Thủy điện 169 MW",
+              "listed": true
+            },
+            {
+              "t": "SHP",
+              "s": "122,5 MW",
+              "n": "122,5 MW ở Lâm Đồng (Đambri 75 MW)",
+              "listed": true
+            },
+            {
+              "t": "TTA",
+              "s": "82,4 MW",
+              "n": "Thủy điện 82,4 MW",
+              "listed": true
+            },
+            {
+              "t": "SBA",
+              "s": "79 MW",
+              "n": "79 MW: Krông H'năng 64, Khe Diên 15 MW",
+              "listed": true
+            },
+            {
+              "t": "GEG",
+              "s": "chưa tách MW",
+              "n": "Có nhà máy thủy điện trong danh mục; bảng nguồn chưa tách MW",
+              "listed": true
+            }
+          ]
+        }
+      },
+      {
+        "tech": "wind",
+        "label": "Điện gió",
+        "sub": "trên bờ, gần bờ",
+        "cells": {
+          "fuel": [],
+          "build": [
+            {
+              "t": "PC1",
+              "s": "EPC, tự xây",
+              "n": "EPC lưới và năng lượng tái tạo; tổng thầu EPC điện gió Khai Long (BGE) và Camarines Sur 58,5 MW (Philippines)",
+              "listed": true
+            },
+            {
+              "t": "TV3",
+              "s": "tư vấn",
+              "n": "PECC3: tư vấn nhiều dự án gió và mặt trời",
+              "listed": true,
+              "ex": "HNX",
+              "src": "https://www.pecc3.com.vn/en/?p=4971"
+            }
+          ],
+          "gen": [
+            {
+              "t": "PC1",
+              "s": "144 MW",
+              "n": "Gió 144 MW",
+              "listed": true
+            },
+            {
+              "t": "REE",
+              "s": "127 MW",
+              "n": "Gió 127 MW",
+              "listed": true
+            },
+            {
+              "t": "HDG",
+              "s": "50 MW",
+              "n": "Gió 50 MW",
+              "listed": true
+            },
+            {
+              "t": "GEG",
+              "s": "trong ~800 MWp",
+              "n": "Gần 800 MWp: 24 nhà máy gió, mặt trời, thủy điện và mái nhà; Đức Huệ 2 (49 MWp) bán DPPA từ 2026",
+              "listed": true
+            },
+            {
+              "t": "KBC",
+              "s": "Vân Canh 2 · 180 MW, đang xây",
+              "n": "Kinh Bắc qua công ty con gián tiếp: điện gió Vân Canh 2 (Gia Lai) 180 MW, đang xây, kế hoạch vận hành cuối 2027",
+              "listed": true,
+              "ex": "HOSE",
+              "src": "https://vcci.com.vn/tin-tuc/doanh-nghiep-ha-tang-khu-cong-nghiep-mo-rong-dau-tu-dien-gio-vao-gia-lai"
+            },
+            {
+              "t": "BGE",
+              "s": "Khai Long · 100 MW, đang xây",
+              "n": "BCG Energy (công ty con Bamboo Capital): điện gió Khai Long – Cà Mau giai đoạn 1 100 MW, khởi công 07/2026, kế hoạch 05/2028",
+              "listed": true,
+              "ex": "UPCoM",
+              "src": "https://www.vietnamplus.vn/ca-mau-khoi-cong-du-an-nha-may-dien-gio-hon-6300-ty-dong-post1121607.vnp"
+            }
+          ]
+        }
+      },
+      {
+        "tech": "solar",
+        "label": "Điện mặt trời",
+        "sub": "mặt đất, mái nhà",
+        "cells": {
+          "fuel": [],
+          "build": [
+            {
+              "t": "PC1",
+              "s": "EPC",
+              "n": "EPC lưới và năng lượng tái tạo",
+              "listed": true
+            }
+          ],
+          "gen": [
+            {
+              "t": "REE",
+              "s": "215 MW",
+              "n": "Mặt trời 215 MW",
+              "listed": true
+            },
+            {
+              "t": "TTA",
+              "s": "111,8 MWp",
+              "n": "Mặt trời 111,8 MWp",
+              "listed": true
+            },
+            {
+              "t": "HDG",
+              "s": "98 MW",
+              "n": "Mặt trời 98 MW",
+              "listed": true
+            },
+            {
+              "t": "CHP",
+              "s": "Cư Jút · 50 MWp",
+              "n": "Mặt trời Cư Jút 50 MWp",
+              "listed": true
+            },
+            {
+              "t": "TMP",
+              "s": "50 MWp",
+              "n": "Mặt trời 50 MWp",
+              "listed": true
+            },
+            {
+              "t": "GEG",
+              "s": "trong ~800 MWp",
+              "n": "Gần 800 MWp: 24 nhà máy gió, mặt trời, thủy điện và mái nhà; Đức Huệ 2 (49 MWp) bán DPPA từ 2026",
+              "listed": true
+            }
+          ]
+        }
+      }
+    ],
+    "grid": {
+      "label": "Lưới & bên mua điện",
+      "sub": "chung cho mọi loại hình",
+      "items": [
+        {
+          "t": "EVN · EPTC",
+          "n": "EVN qua Công ty Mua bán điện (EPTC) là bên mua chính",
+          "listed": false,
+          "s": "mua điện"
+        },
+        {
+          "t": "NSMO",
+          "n": "Công ty Vận hành hệ thống điện và thị trường điện quốc gia: điều độ, vận hành thị trường",
+          "listed": false,
+          "s": "điều độ"
+        },
+        {
+          "t": "EVNNPT",
+          "n": "Tổng công ty Truyền tải điện quốc gia, 100% vốn EVN",
+          "listed": false,
+          "s": "truyền tải"
+        },
+        {
+          "t": "PC1",
+          "s": "xây lắp, cột thép",
+          "n": "Nhà thầu lớn nhất 500kV mạch 3 (~2.083 tỷ đồng xây lắp, cột thép, thiết bị)",
+          "listed": true,
+          "src": "https://stockbiz.vn/tin-tuc/nhung-doanh-nghiep-tham-gia-sieu-du-an-22300-ty-duong-day-500kv-mach-3/40112543"
+        },
+        {
+          "t": "TV2",
+          "s": "khảo sát, thiết kế",
+          "n": "Khảo sát, thiết kế 317 km (~62%) đường dây 500kV mạch 3",
+          "listed": true,
+          "src": "https://stockbiz.vn/tin-tuc/nhung-doanh-nghiep-tham-gia-sieu-du-an-22300-ty-duong-day-500kv-mach-3/40112543"
+        },
+        {
+          "t": "TV1",
+          "s": "khảo sát, thiết kế",
+          "n": "Khảo sát, thiết kế kỹ thuật đoạn Quảng Trạch–Quỳnh Lưu, Quỳnh Lưu–Thanh Hóa (500kV mạch 3)",
+          "listed": true,
+          "ex": "UPCoM",
+          "src": "https://viettimes.vn/dai-du-an-duong-day-500kv-mach-3-quy-tu-nhung-nha-thau-ten-tuoi-nao-post200810.html"
+        },
+        {
+          "t": "SJE",
+          "s": "móng, cột",
+          "n": "Sông Đà 11: móng cọc và ~9,8% cột đoạn Nam Định 1–Thanh Hóa (500kV mạch 3)",
+          "listed": true,
+          "ex": "HNX",
+          "src": "https://stockbiz.vn/tin-tuc/nhung-doanh-nghiep-tham-gia-sieu-du-an-22300-ty-duong-day-500kv-mach-3/40112543"
+        },
+        {
+          "t": "GEE",
+          "s": "máy biến áp, dây dẫn",
+          "n": "GELEX Electric: máy biến áp 220kV (EEMC) cho EVNNPT; Cadivi cấp dây dẫn 500kV mạch 3; công ty mẹ GEX",
+          "listed": true,
+          "ex": "HOSE",
+          "src": "https://viettimes.vn/gelex-trung-hang-loat-goi-thau-cua-tong-cong-ty-truyen-tai-dien-quoc-gia-post205807.html"
+        },
+        {
+          "t": "GEX",
+          "s": "thiết bị điện (mẹ GEE)",
+          "n": "Thiết bị điện (CADIVI, THIBIDI, EMIC)",
+          "listed": true
+        },
+        {
+          "t": "KHP",
+          "s": "phân phối, bán lẻ",
+          "n": "Điện lực Khánh Hòa: phân phối và bán lẻ điện trong tỉnh; mã phân phối niêm yết duy nhất tìm thấy",
+          "listed": true,
+          "ex": "HOSE",
+          "src": "https://daibieunhandan.vn/evn-phoi-hop-tinh-khanh-hoa-go-vuong-cac-du-an-dien-10432505.html"
+        }
+      ]
+    },
+    "note": "Mã kiểm còn niêm yết ngày 23/11/2026 (stockbiz, vietstock). Vai trò theo hợp đồng, dự án công bố trên báo chí và website doanh nghiệp; xây lắp gồm cả dự án đã hoàn thành. Công suất phát điện là công suất nhà máy trong danh mục, không phải phần sở hữu thực. PPC, HND thuộc hệ EVNGENCO2 (chưa niêm yết)."
   }
 }

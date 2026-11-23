@@ -1387,6 +1387,7 @@
     "page": "Dien/index.html",
     "blocks": [
      "dien-ov-bm",
+     "dien-ov-chain",
      "dien-ov-mech",
      "dien-ov-peer"
     ]
