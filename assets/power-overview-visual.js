@@ -370,14 +370,13 @@ function companies(host, ctx) {
       gm: (c.gross_margin || []).slice(-8), niSeries: ni.slice(-12), qLabels: qs.slice(-12), note: co?.exposure?.[0]?.note || '', role: co?.exposure?.[0]?.role || '', other: co?.other || ''};
   });
   const asOf = rows.find(r => r.date)?.date;
-  let grp = 'all', sortBy = 'cap';
+  let grp = 'all';
   host.innerHTML = `<div class="vc-ctl"><div class="ov-ctl" role="group" aria-label="Nhóm doanh nghiệp"><button type="button" data-g="all" aria-pressed="true">Tất cả (${rows.length})</button>${CO_GROUPS.map(([g, l, c]) => `<button type="button" data-g="${esc(g)}" aria-pressed="false"><i style="background:${c}"></i>${esc(l)} (${rows.filter(r => r.g === g).length})</button>`).join('')}</div>
       <span class="muted">Định giá phiên ${esc(asOf ? asOf.slice(8, 10) + '/' + asOf.slice(5, 7) + '/' + asOf.slice(0, 4) : '—')} · BCTC đến ${esc(qs.at(-1))}</span></div>
     <div class="vc-groups"></div>
     <div class="vc-two"><section class="vc-box"><h4>Định giá so với hiệu quả sinh lời</h4><p class="vz-take">Góc trên bên trái: ROE cao, P/B thấp. Bong bóng càng to, vốn hóa càng lớn. Đường đứt là trung vị.</p><div class="vc-scatter"></div></section>
       <section class="vc-box"><h4>Lãi ròng quý gần nhất so cùng kỳ</h4><p class="vz-take">Cột phải là tăng, cột trái là giảm; số bên phải là lãi ròng quý (tỷ đồng).</p><div class="vc-yoy"></div></section></div>
     <section class="vc-box"><h4>Biên lợi nhuận gộp 8 quý gần nhất</h4><p class="vz-take">Ô càng đậm, biên gộp càng cao; ô trống là quý chưa có số.</p><div class="vc-heat"></div></section>
-    <section class="vc-box"><div class="vc-cards-h"><h4>Thẻ doanh nghiệp</h4><label>Sắp xếp <select data-sort><option value="cap">Vốn hóa</option><option value="pe">P/E thấp → cao</option><option value="pb">P/B thấp → cao</option><option value="roe">ROE cao → thấp</option><option value="yoy">Lãi ròng so cùng kỳ</option></select></label></div><div class="vc-cards"></div></section>
     <p class="source-note">Định giá: VNDirect finfo (P/E, P/B theo EPS 4 quý gần nhất và giá trị sổ sách mỗi cổ phiếu, điều chỉnh theo giá đóng cửa). Lợi nhuận, biên gộp: BCTC hợp nhất quý. ROE = P/B ÷ P/E. Doanh nghiệp đa ngành (REE, HDG, PC1, GEX, POW…) gồm cả mảng ngoài điện. ↗ mở trang phân tích cổ phiếu.</p>`;
   const sel = () => grp === 'all' ? rows : rows.filter(r => r.g === grp);
   // 1) Thẻ tổng hợp theo nhóm
@@ -415,19 +414,8 @@ function companies(host, ctx) {
     const shade = v => !fin(v) ? 'transparent' : `rgba(41,56,168,${Math.max(.06, Math.min(v, 70) / 70 * .9).toFixed(2)})`;
     host.querySelector('.vc-heat').innerHTML = `<div class="tablewrap"><table class="vc-ht"><thead><tr><th></th>${ql.map(q => `<th>${esc(q.replace('/20', '/'))}</th>`).join('')}</tr></thead><tbody>${R.map(r => `<tr><th scope="row" style="--c:${col(r.g)}">${r.t}</th>${r.gm.map(v => `<td style="background:${shade(v)};color:${fin(v) && v > 40 ? '#fff' : 'inherit'}">${fin(v) ? nf(v, 0) : ''}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="vz-unit">% · biên gộp = lãi gộp ÷ doanh thu</p>`;
   };
-  // 5) Thẻ doanh nghiệp
-  const miniBars = (vals, c) => { const v = vals.map(x => fin(x) ? x : null), mx = Math.max(...v.filter(fin).map(Math.abs), 1), W = 132, H = 34, bw = W / v.length;
-    return `<svg viewBox="0 0 ${W} ${H}" class="vc-mini" aria-hidden="true"><line x1="0" x2="${W}" y1="${H / 2}" y2="${H / 2}" class="vc-grid"/>${v.map((x, k) => x == null ? '' : `<rect x="${k * bw + 1}" width="${bw - 2}" y="${x >= 0 ? H / 2 - x / mx * (H / 2 - 1) : H / 2}" height="${Math.abs(x) / mx * (H / 2 - 1)}" style="fill:${x >= 0 ? c : '#b8443a'}"/>`).join('')}</svg>`; };
-  const drawCards = () => {
-    const key = {cap: r => -(r.cap || 0), pe: r => fin(r.pe) && r.pe > 0 ? r.pe : 1e9, pb: r => fin(r.pb) ? r.pb : 1e9, roe: r => -(r.roe ?? -1e9), yoy: r => -(r.yoy ?? -1e9)}[sortBy];
-    host.querySelector('.vc-cards').innerHTML = [...sel()].sort((a, b) => key(a) - key(b)).map(r => `<article class="vc-card" style="--c:${col(r.g)}"><header>${ctx.chip(r.t)}<span>${esc(r.g)}</span></header>
-      <p class="vc-note">${esc(r.note)}${r.other ? ' · ' + esc(r.other) : ''}</p>
-      <div class="vc-m"><span><em>Vốn hóa</em>${nf(r.cap, 0)} tỷ</span><span><em>Giá</em>${nf(r.close, 1)}</span><span><em>P/E</em>${fin(r.pe) && r.pe > 0 ? nf(r.pe, 1) : 'âm'}</span><span><em>P/B</em>${nf(r.pb, 2)}</span><span><em>ROE 4 quý</em>${nf(r.roe, 1)}%</span><span><em>Lãi ròng ${esc(r.q || '')}</em>${nf(r.ni, 0)} tỷ <i class="${r.yoy > 0 ? 'up' : r.yoy < 0 ? 'dn' : ''}">${pc(r.yoy, 0)}</i></span></div>
-      <figure>${miniBars(r.niSeries, col(r.g))}<figcaption>Lãi ròng 12 quý (${esc(r.qLabels[0] || '')}–${esc(r.qLabels.at(-1) || '')})</figcaption></figure></article>`).join('');
-  };
-  const all = () => { host.querySelectorAll('.vc-ctl [data-g]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.g === grp))); drawGroups(); drawScatter(); drawYoY(); drawHeat(); drawCards(); };
+  const all = () => { host.querySelectorAll('.vc-ctl [data-g]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.g === grp))); drawGroups(); drawScatter(); drawYoY(); drawHeat(); };
   host.addEventListener('click', e => { const b = e.target.closest('[data-g]'); if (!b) return; grp = grp === b.dataset.g && b.classList.contains('vc-g') ? 'all' : b.dataset.g; all(); });
-  host.querySelector('[data-sort]').addEventListener('change', e => { sortBy = e.target.value; drawCards(); });
   all();
 }
 

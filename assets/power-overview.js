@@ -231,7 +231,7 @@ function transmission(p) {
   const dn = block('dien-03')?.closest('.section') || block('dien-03');
   const dnFold = dn ? el('details', 'research-fold ov-dnfold', '<summary>Bảng 18 doanh nghiệp: tài sản phát điện, biến lợi nhuận, sự kiện 2025–26</summary>') : null;
   if (dnFold) { dnFold.id = 'ov-companies'; dnFold.append(dn); dn.querySelectorAll(':scope .grid.two').forEach(g => { if (!g.children.length) g.remove(); }); }
-  p.append(sec('co-dash', '3.1', '18 doanh nghiệp điện: định giá, hiệu quả, lợi nhuận', host, {sub: 'Bấm nhóm để lọc mọi biểu đồ; bấm mã ↗ để mở trang phân tích cổ phiếu.'}),
+  p.append(sec('co-dash', '3.1', '18 doanh nghiệp điện: định giá, hiệu quả, lợi nhuận', host, {sub: 'Bấm nhóm để lọc mọi biểu đồ.'}),
     sec('tr-data', '3.2', 'Bảng so sánh chi tiết và xu hướng theo quý', [fc, dnFold].filter(Boolean)));
 }
 
