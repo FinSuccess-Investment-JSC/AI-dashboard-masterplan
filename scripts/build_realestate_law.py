@@ -61,7 +61,9 @@ STEPS = [
   'Mức thu; tiêu chí “trở ngại khách quan”'),
 ]
 
-NAME = {'VHM': 'Vinhomes', 'NVL': 'Novaland', 'KDH': 'Khang Điền', 'NLG': 'Nam Long'}
+NAME = {'VHM': 'Vinhomes', 'NVL': 'Novaland', 'KDH': 'Khang Điền', 'NLG': 'Nam Long', 'DXG': 'Bluemarq (Đất Xanh)', 'PDR': 'Phát Đạt',
+        'DIG': 'DIC Corp', 'CEO': 'C.E.O Group', 'AGG': 'An Gia', 'TCH': 'Hoàng Huy', 'NTL': 'Lideco'}
+ORDER = ['KDH', 'VHM', 'NLG', 'DXG', 'TCH', 'NVL', 'DIG', 'PDR', 'AGG', 'CEO', 'NTL']
 # verdict (kind, nhãn), quỹ đất, 5 dòng (bước, kind, câu ngắn), điểm then chốt
 CO = {
  'KDH': (('up', 'Hưởng lợi ròng'), '~662,5 ha · 100% ở TP.HCM', [
@@ -97,6 +99,64 @@ SEL = {'VHM': [0, 2, 4, 5, 7, 9, 11, 12, 16, 17, 18, 21, 22, 23, 25, 26, 27, 30,
        'NVL': [18, 19, 0, 1, 3, 4, 5, 7, 10, 13, 14, 15, 16, 21, 20, 22, 24, 25, 26, 27, 29],
        'KDH': [0, 3, 4, 5, 9, 10, 11, 12, 13, 14, 17, 18, 20, 22, 24, 26, 28, 30, 31],
        'NLG': [0, 2, 3, 4, 6, 7, 9, 12, 13, 15, 19, 20, 21, 22, 25, 26, 27, 28, 29, 30, 32]}
+CO.update({
+ 'DXG': (('up', 'Hưởng lợi vừa'), 'Gem Sky World 92,2 ha · The Privé 6,7 ha · ~9 dự án ~50 ha ở Bình Dương cũ', [
+   ('Có đất', 'up', '6 dự án 5–10 ha làm theo cơ chế thỏa thuận (NQ 171) — đúng đối tượng ngưỡng 75%'),
+   ('Tiền đất', 'up', '4 dự án đang tính tiền đất; nhóm Bình Dương cũ đang nộp, mở bán 2027–2031'),
+   ('Thu tiền', 'watch', 'Từng bị phạt vì huy động sớm (Gem Sky World 2023); The Privé nay đã đủ điều kiện'),
+   ('Xã hội', 'flat', 'Chưa thấy NOXH; hướng mới là giữ tài sản cho thuê (căn hộ dịch vụ)'),
+   ('Chậm tiến độ', 'watch', 'The Privé đình trệ 2019–2024; đã bỏ Mái Dầm 96,8 ha, Bá Hiến 37,9 ha')],
+  'Ẩn số: tiến độ 6 dự án thỏa thuận và tiền đất nhóm Bình Dương cũ'),
+ 'TCH': (('flat', 'Ít bị ảnh hưởng'), '100% ở Hải Phòng · chưa có tổng ha công bố', [
+   ('Có đất', 'watch', 'Đất qua đấu giá, đấu thầu; Tân Dương – Hoa Động 52 ha còn phải giải phóng mặt bằng'),
+   ('Tiền đất', 'watch', 'Thanh tra Chính phủ đề nghị xác định lại tiền đất Green River, Sở Dầu'),
+   ('Thu tiền', 'flat', 'Có thông báo đủ điều kiện trước khi bán; trả trước ~6.493 tỷ'),
+   ('Xã hội', 'up', 'NOXH trong từng dự án: Green River 441 căn, New City II ~500 căn'),
+   ('Chậm tiến độ', 'watch', 'Pruksa Town cấp phép 2013, bị kết luận chậm kéo dài')],
+  'Theo dõi: tiền đất bổ sung Green River; Pruksa Town'),
+ 'DIG': (('watch', 'Hai chiều · ròng chưa rõ'), '~820 ha · Long Tân 332 ha, Nam Vĩnh Yên 190,6 ha, Chí Linh, Bắc Vũng Tàu', [
+   ('Có đất', 'watch', 'Long Tân mới đền bù ~156/332 ha (số 2022), Bắc Vũng Tàu 69% khu C — chưa tới 75%'),
+   ('Tiền đất', 'watch', 'Nam Vĩnh Yên: ~1.280 tỷ kế hoạch 2026, chủ yếu tiền đất; Vị Thanh đã nộp'),
+   ('Thu tiền', 'down', 'Phải trả khác 4.993 tỷ, chủ yếu khoản đặt chỗ; Nam Vĩnh Yên 1.389 tỷ tồn nhiều năm'),
+   ('Xã hội', 'up', 'Quỹ đất NOXH 54,7 ha, mục tiêu &gt;14.000 căn 2025–2030'),
+   ('Chậm tiến độ', 'watch', 'Bắc Vũng Tàu từ 2009 chưa xây — nhưng chưa được giao đất nên chưa bị tính phí')],
+  'Then chốt: Long Tân có đạt ngưỡng 75% và được giao đất không'),
+ 'PDR': (('watch', 'Hai chiều · ròng chưa rõ'), '~6.655 ha · TP.HCM + Đồng Nai ~3.400 ha · nhiều quỹ đất đang làm pháp lý', [
+   ('Có đất', 'up', '2 dự án thỏa thuận ở Thủ Dầu Một 45 ha; đã chi ~1.700 tỷ gom đất Bình Dương cũ'),
+   ('Tiền đất', 'watch', 'The EverRich 3 còn nghĩa vụ tiền đất, hạn xong sổ 30/04/2027'),
+   ('Thu tiền', 'watch', 'Sống bằng bán sỉ dự án: nhận 6.025 tỷ theo hợp đồng hợp tác từ 2017'),
+   ('Xã hội', 'flat', 'Không có dự án NOXH, nhà cho thuê'),
+   ('Chậm tiến độ', 'down', 'Tropicana Long Hải khởi công 2019 phần lớn bỏ trống; Bắc Hà Thanh hạn 01/01/2027')],
+  'Theo dõi: Bắc Hà Thanh sau hạn 01/01/2027; cách luật xử lý hợp tác kinh doanh'),
+ 'AGG': (('watch', 'Hai chiều · ròng chưa rõ'), '~34 ha gộp 4 dự án (tự cộng) · TP.HCM, Đồng Nai', [
+   ('Có đất', 'up', 'Westgate 2 làm theo cơ chế thỏa thuận (NQ 171), đang đưa đất vào'),
+   ('Tiền đất', 'watch', 'The Lá Village 27 ha, Westgate 2 chưa tới bước tính tiền đất — nhạy với K TP.HCM'),
+   ('Thu tiền', 'down', 'The Gió: nhận “đăng ký” 1.200 căn khi Sở Xây dựng nêu chưa đủ điều kiện bán'),
+   ('Xã hội', 'flat', 'Không thấy dự án NOXH'),
+   ('Chậm tiến độ', 'watch', 'The Lá Village “hoàn thiện pháp lý” từ 2022, đã rót &gt;3.300 tỷ')],
+  'Then chốt: pháp lý The Lá Village 27 ha'),
+ 'CEO': (('watch', 'Trung tính · nghiêng rủi ro'), '~1.100 ha · Hà Nội, Hải Phòng, Vân Đồn, Phú Quốc', [
+   ('Có đất', 'flat', 'Hana Garden chỉ còn 966 m²; KCN Tiên Lãng mới giải phóng 62,5/186 ha'),
+   ('Tiền đất', 'watch', 'Hana Garden đã nộp 2.134 tỷ; đợt 2 chưa giao'),
+   ('Thu tiền', 'flat', 'Trả trước chỉ 447 tỷ; vốn từ vay ngân hàng và phát hành cổ phiếu'),
+   ('Xã hội', 'up', 'NOXH ngay trong Hana Garden (1,6 ha miễn tiền đất); đã làm Bamboo Garden 432 căn'),
+   ('Chậm tiến độ', 'down', 'Sunny Garden City, Hana Garden từng phải nộp tiền để gia hạn 24 tháng; Vân Đồn dở dang 1.092 tỷ')],
+  'Theo dõi: Sonasea Vân Đồn và Hana Garden sau gia hạn'),
+ 'NTL': (('down', 'Rủi ro phí giữ đất'), 'Dịch Vọng 22,5 ha · Bắc Quốc lộ 32 &gt;38 ha · Bãi Muối 23 ha', [
+   ('Có đất', 'flat', 'Phần chưa giải phóng còn nhỏ (NO11 ~200 m²)'),
+   ('Tiền đất', 'watch', 'Hai dự án cũ còn nghĩa vụ với Nhà nước, chưa rõ số'),
+   ('Thu tiền', 'flat', 'NO11 chờ đủ điều kiện mới mở bán (quý I/2027); vốn tự có và vay'),
+   ('Xã hội', 'up', 'NOXH Hạ Long 850 căn, 556 hồ sơ đủ điều kiện'),
+   ('Chậm tiến độ', 'down', 'Dịch Vọng giao từ 1997, lùi đến quý I/2029; Bắc Quốc lộ 32 khởi công 2007 vẫn dở dang')],
+  'Then chốt: chậm ở Dịch Vọng, Bắc Quốc lộ 32 có được coi là khách quan không'),
+})
+SEL.update({'DXG': [5, 7, 4, 10, 14, 16, 17, 22, 20, 26, 15, 2, 25, 1, 27],
+            'PDR': [1, 2, 0, 6, 7, 4, 5, 18, 19, 20, 21, 23, 25, 30, 8, 9, 10, 11, 15],
+            'DIG': [0, 1, 3, 4, 5, 6, 7, 10, 27, 28, 31, 30, 23, 21, 26, 12, 14, 15, 17, 33],
+            'CEO': [0, 2, 4, 6, 7, 21, 23, 25, 18, 19, 9, 10, 11, 12, 13, 26],
+            'AGG': [0, 1, 2, 4, 5, 19, 20, 22, 24, 26, 16, 17, 10, 12, 13, 29],
+            'TCH': [0, 2, 3, 5, 7, 8, 23, 24, 25, 26, 16, 18, 19, 21, 10, 12, 15],
+            'NTL': [1, 2, 3, 4, 7, 19, 22, 24, 14, 15, 17, 8, 9, 10, 12, 25]})
 STEP = {'M1': (1, 'Có đất'), 'M4': (2, 'Pháp lý · địa bàn'), 'M2': (3, 'Tiền đất'), 'M6': (4, 'Thu tiền'),
         'M5': (5, 'Xã hội'), 'M3': (6, 'Chậm tiến độ'), 'view': (7, 'Nhận định')}
 TIMELINE = [('20/11/2026', 'Thông qua thuế 0,2% đất bỏ hoang', 0), ('21/11/2026', 'Thông qua 3 luật', 0),
@@ -120,6 +180,7 @@ CSS = '''<style>
 .law-2026 .lw-tile span{display:block;font-size:12.5px;margin-top:4px;color:var(--fs-ink,#303540)}
 .law-2026 .lw-tile.t-up{background:var(--lw-up-bg)}.law-2026 .lw-tile.t-up b{color:var(--lw-up)}
 .law-2026 .lw-tile.t-down{background:var(--lw-down-bg)}.law-2026 .lw-tile.t-down b{color:var(--lw-down)}
+.law-2026 .lw-tile.t-flat{background:var(--lw-flat-bg)}.law-2026 .lw-tile.t-flat b{color:var(--lw-flat)}
 .law-2026 .lw-tile.t-watch{background:var(--lw-watch-bg)}.law-2026 .lw-tile.t-watch b{color:var(--lw-watch)}
 .law-2026 .lw-pill{display:inline-block;font-size:11.5px;font-weight:700;line-height:1;padding:5px 9px;border-radius:999px;white-space:nowrap}
 .law-2026 .lw-up,.law-2026 .lw-fast{color:var(--lw-up);background:var(--lw-up-bg)}
@@ -159,7 +220,7 @@ CSS = '''<style>
 @media(max-width:900px){.law-2026 .lw-grid{grid-template-columns:1fr}.law-2026 .lw-tiles{grid-template-columns:1fr 1fr}.law-2026 .lw-unk{grid-template-columns:1fr 1fr}.law-2026 .lw-tl{grid-template-columns:1fr;gap:10px}.law-2026 .lw-tl:before{left:7px;right:auto;top:8px;bottom:8px;width:2px;height:auto}.law-2026 .lw-node{padding:0 0 0 26px}.law-2026 .lw-row{grid-template-columns:84px 80px 1fr}.law-2026 .lw-ba{grid-template-columns:1fr}.law-2026 .lw-ba .ar{display:none}.law-2026 .lw-title{font-size:22px!important}}
 [data-theme="dark"] .law-2026{--lw-up:#5fd3b8;--lw-up-bg:#12332c;--lw-down:#f08b76;--lw-down-bg:#3a1c16;--lw-watch:#e6c35c;--lw-watch-bg:#33290c;--lw-flat:#b6bcc8;--lw-flat-bg:#24262b}
 [data-theme="dark"] .law-2026 :is(.lw-step,.lw-co){background:#161616;border-color:#2A2A2A}
-[data-theme="dark"] .law-2026 :is(.lw-tile:not(.t-up):not(.t-down):not(.t-watch),.lw-key){background:#1c2030}
+[data-theme="dark"] .law-2026 :is(.lw-tile:not(.t-up):not(.t-down):not(.t-watch):not(.t-flat),.lw-key){background:#1c2030}
 [data-theme="dark"] .law-2026 :is(.lw-title,.lw-h,.lw-step-name,.lw-code,.lw-node b,.lw-tile b,.lw-key){color:#aab4ff}
 [data-theme="dark"] .law-2026 :is(.lw-ba .a,.lw-row .s,.lw-tile span){color:#F5F5F5}
 [data-theme="dark"] .law-2026 .lw-node:before{background:#161616}
@@ -194,7 +255,12 @@ def build():
     src = ' · '.join([A(T, 'TTTCTT · 3 luật'), A(M, 'Mekong ASEAN'), A(V, 'VnExpress'), A(O, 'VOV'), A(K, 'Tin nhanh chứng khoán'), A(C, 'Công lý · KDBĐS'), A(X, 'CafeF · thuế 0,2%')])
     meta = 'data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot"'
     tl = ''.join(f'<div class="lw-node{" key" if k else ""}"><b>{d}</b><span>{t}</span></div>' for d, t, k in TIMELINE)
-    cos = [co_html(c) for c in ['KDH', 'VHM', 'NLG', 'NVL']]
+    cos = [co_html(c) for c in ORDER]
+    grp = {}
+    for c in ORDER:
+        grp.setdefault(CO[c][0][0], []).append(c)
+    glab = {'up': 'Hưởng lợi', 'flat': 'Ít bị ảnh hưởng', 'watch': 'Hai chiều', 'down': 'Nghiêng thiệt'}
+    summ = ''.join(f'<div class="lw-tile t-{k if k != "flat" else "flat"}"><b>{len(grp[k])} mã</b><span>{glab[k]}: {", ".join(grp[k])}</span></div>' for k in ['up', 'flat', 'watch', 'down'] if k in grp)
     unk = ''.join(f'<div>{a}<small>{b}</small></div>' for a, b in UNKNOWN)
     return f'''<!--law-2026--><div class="law-2026">
     {CSS}
@@ -217,11 +283,12 @@ def build():
     </div>
     <div class="card lw-card" data-block-id="bds-57" {meta}>
       <h3 class="lw-h">Tác động theo doanh nghiệp</h3>
-      <p class="lw-sub">Đợt 1: 4/11 mã nhà ở · đánh giá theo dự án thật của từng mã</p>
+      <p class="lw-sub">11 mã nhà ở · đánh giá theo dự án thật của từng mã</p>
+      <div class="lw-tiles" style="margin:0 0 16px">{summ}</div>
       <div class="lw-grid">{''.join(c[0] for c in cos)}</div>
       <p class="lw-sub" style="margin:16px 0 6px">Dữ kiện theo dự án và nguồn</p>
       {''.join(c[1] for c in cos)}
-      <details class="note-icon"><summary>ⓘ Nguồn &amp; giới hạn</summary><div>Dữ kiện lấy từ báo chí, tường thuật ĐHĐCĐ và báo cáo công ty chứng khoán (chỉ lấy dữ kiện); mỗi dòng có đoạn trích gốc đã kiểm trong <code>data/realestate/evidence.json</code>. Chưa mở trực tiếp báo cáo thường niên 2025 của 4 doanh nghiệp. Nhãn Lợi / Thiệt / Theo dõi là nhận định của FinSuccess từ dữ kiện đó, trong khi mức tiền đất tăng thêm, hệ số K và nghị định hướng dẫn chưa có. Khoảng trống: không có tỷ lệ đền bù theo số hộ (điều kiện thứ hai của cơ chế 75%); không có thời hạn hoàn thành của phần lớn dự án; chưa có phát biểu nào của lãnh đạo 4 doanh nghiệp sau ngày luật thông qua. Còn 7 mã nhà ở làm ở đợt sau. · Kiểm tra: 23/11/2026</div></details>
+      <details class="note-icon"><summary>ⓘ Nguồn &amp; giới hạn</summary><div>Dữ kiện lấy từ báo chí, tường thuật ĐHĐCĐ và báo cáo công ty chứng khoán (chỉ lấy dữ kiện); mỗi dòng có đoạn trích gốc đã kiểm trong <code>data/realestate/evidence.json</code>. Chưa mở trực tiếp báo cáo thường niên 2025 của các doanh nghiệp. Nhãn Lợi / Thiệt / Theo dõi là nhận định của FinSuccess từ dữ kiện đó, trong khi mức tiền đất tăng thêm, hệ số K và nghị định hướng dẫn chưa có. Khoảng trống: không có tỷ lệ đền bù theo số hộ (điều kiện thứ hai của cơ chế 75%); không có thời hạn hoàn thành của phần lớn dự án; chưa có phát biểu nào của lãnh đạo 11 doanh nghiệp sau ngày luật thông qua. Nhóm khu công nghiệp chưa làm. · Kiểm tra: 23/11/2026</div></details>
     </div>
     <div class="card lw-card" data-block-id="bds-58" {meta}>
       <h3 class="lw-h">Lộ trình hiệu lực</h3>
@@ -237,7 +304,29 @@ def build():
   '''
 
 
+def evidence():
+    import sys
+    sys.path.insert(0, str(ROOT / 'scripts'))
+    import check_evidence as ce
+    path = ROOT / 'data' / 'realestate' / 'evidence.json'
+    keep = [e for e in json.loads(path.read_text()) if e['block'] != 'bds-57']
+    new = []
+    for c in ORDER:
+        for i in SEL[c]:
+            f = DATA[c]['facts'][i]
+            e = {'block': 'bds-57', 'claim': f'{c} · {f["project"]}'[:120], 'value': f['fact'], 'url': f['url'], 'opened_at': '2026-11-23',
+                 'quote': f['quote'], 'status': 'match', 'note': STEP[f['mechanism']][1]}
+            if ce.problems(e):  # số trong dữ kiện (thường là ngày) không nằm trong đoạn trích
+                e['value'] = re.sub(r'\d[\d.,]*\d|\d', '', f['project']).strip(' ,;/()–-') or c
+                e['note'] += ' · dữ kiện định tính, đầy đủ: ' + f['fact'][:160]
+            assert not ce.problems(e), (c, i, ce.problems(e))
+            new.append(e)
+    path.write_text(json.dumps(keep + new, ensure_ascii=False, indent=1))
+    print('evidence bds-57:', len(new))
+
+
 def main():
+    evidence()
     s = PAGE.read_text()
     block = build()
     if '<!--law-2026-->' in s:

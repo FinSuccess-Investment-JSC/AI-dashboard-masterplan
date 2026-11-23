@@ -191,223 +191,23 @@
  },
  {
   "block": "bds-57",
-  "claim": "VHM · Khu đô thị mới Phước Vĩnh Tây (liên danh Vinhomes – VIG)",
-  "value": "Giải phóng mặt bằng 1.006,78/1.089,6 ha, đạt 92,40%; đã chi bồi thường 4.991 trường hợp (862,25 ha); phần còn lại là các trường hợp phức tạp.",
-  "url": "https://cafef.vn/sieu-du-an-56-ty-usd-ma-ty-phu-pham-nhat-vuong-dang-cho-xay-dung-tai-tinh-sat-vach-tphcm-dat-cot-moc-quan-trong-188261009214348437.chn",
-  "opened_at": "2026-11-23",
-  "quote": "Đến nay, công tác giải phóng mặt bằng đã thực hiện được 1.006,78 ha, đạt 92,40%; đã chi trả bồi thường cho 4.991 trường hợp, với diện tích 862,25 ha.",
-  "status": "match",
-  "note": "1. Có đất"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · Khu đô thị phức hợp Hạ Long Xanh (Vinhomes Global Gate Hạ Long)",
-  "value": "Tại phường Hà An: GPMB 2.966,37/3.186,8 ha, đạt 93,08%; tỉnh đã giao 2.583,37 ha cho chủ đầu tư, tương đương 82% diện tích dự án.",
-  "url": "https://cafef.vn/sieu-du-an-ven-bien-18-ty-usd-tai-dia-phuong-sap-len-thanh-pho-truc-thuoc-trung-uong-co-dien-bien-moi-188260729063646632.chn",
-  "opened_at": "2026-11-23",
-  "quote": "Đến ngày 25/7/2026, địa phương đã hoàn thành GPMB 2.966,37 ha, đạt 93,08% tổng diện tích thu hồi.",
-  "status": "match",
-  "note": "1. Có đất"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · Khu đô thị thể thao quốc tế Hà Nội (Global Sportia, Vinhomes 35%)",
-  "value": "Đã chi trả bồi thường vượt 50.000 tỷ đồng trên 11 xã, phường, tương đương hơn 50% khối lượng GPMB; vướng nhất là xác minh nguồn gốc đất.",
-  "url": "https://nguoiquansat.vn/hoan-tat-chi-tra-hon-50-000-ty-cho-nguoi-dan-sieu-do-thi-hon-925-000-ty-cua-vinhomes-buoc-vao-giai-doan-tien-quyet-308576.html",
-  "opened_at": "2026-11-23",
-  "quote": "tổng số tiền bồi thường đã chi trả đến nay vượt 50.000 tỷ đồng, tương đương hơn 50% khối lượng giải phóng mặt bằng.",
-  "status": "match",
-  "note": "1. Có đất"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · Khu đô thị mới Cam Lâm; Khu đô thị ven vịnh Cam Ranh",
-  "value": "Cam Lâm đang bồi thường, dự kiến hoàn tất năm 2027; Cam Ranh đã có chấp thuận nhà đầu tư và đang GPMB (theo MBS sau buổi gặp nhà đầu tư 10/2026).",
-  "url": "https://nguoiquansat.vn/vinhomes-cap-nhat-tien-do-trien-khai-loat-du-an-quy-mo-lon-320505.html",
-  "opened_at": "2026-11-23",
-  "quote": "Tại Cam Lâm, công tác bồi thường đang được triển khai và dự kiến hoàn tất vào năm 2027. Còn tại Cam Ranh, Vinhomes đã nhận được giấy chứng nhận chấp thuận nhà đầu tư và đang triển khai công tác giải phóng mặt bằng.",
-  "status": "match",
-  "note": "1. Có đất"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · —",
-  "value": "Chủ tịch Phạm Thiếu Hoa: ngưng hoàn toàn việc mở rộng quỹ đất dự án tại Việt Nam; quỹ đất đã tích lũy đủ phát triển liên tục 5–7 năm.",
-  "url": "https://vtcnews.vn/khong-chay-dua-quy-dat-vinhomes-chuyen-sang-gia-tang-gia-tri-du-an-hien-huu-ar1023941.html",
-  "opened_at": "2026-11-23",
-  "quote": "Vinhomes đã tích lũy được quỹ đất đủ lớn để phát triển liên tục cho 5 - 7 năm tới.",
-  "status": "match",
-  "note": "2. Pháp lý · địa bàn"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · Khu đô thị lấn biển Cần Giờ (Vinhomes Green Paradise)",
-  "value": "Đã nộp 21.700 tỷ đồng tiền sử dụng đất và 5.655 tỷ đồng tiền thuê đất.",
-  "url": "https://nguoiquansat.vn/vingroup-vic-nop-gan-27-400-ty-dong-tien-dat-cho-sieu-du-an-vinhomes-green-paradise-can-gio-252241.html",
-  "opened_at": "2026-11-23",
-  "quote": "đặc biệt là khoản nộp từ dự án Khu đô thị lấn biển Cần Giờ (21.700 tỷ đồng tiền sử dụng đất và 5.655 tỷ đồng tiền thuê đất).",
-  "status": "match",
-  "note": "3. Tiền đất"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · —",
-  "value": "Năm 2025 Vinhomes nộp ngân sách hơn 73.000 tỷ đồng, trong đó gần 53.000 tỷ đồng tiền sử dụng đất, thuê đất.",
-  "url": "https://vietnamfinance.vn/muc-tieu-doanh-so-350-nghin-ty-doanh-thu-285-nghin-ty-cua-vinhomes-trong-vao-nhung-du-an-nao-d143719.html",
-  "opened_at": "2026-11-23",
-  "quote": "Công ty đã nộp hơn 73.000 tỷ đồng vào ngân sách nhà nước, bao gồm: gần 53.000 tỷ đồng tiền sử dụng đất, thuê đất",
-  "status": "match",
-  "note": "3. Tiền đất"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · —",
-  "value": "Ngoài quỹ đất 29.500 ha, còn gần 20 dự án đang làm thủ tục, chuẩn bị hoàn tất chủ trương đầu tư với tổng diện tích hơn 20.000 ha.",
-  "url": "https://nguoiquansat.vn/he-lo-quy-dat-khung-vinhomes-dang-so-huu-298206.html",
-  "opened_at": "2026-11-23",
-  "quote": "Ngoài ra, công ty có gần 20 dự án đang làm thủ tục và chuẩn bị hoàn tất chủ trương đầu tư với tổng diện tích hơn 20.000ha.",
-  "status": "match",
-  "note": "3. Tiền đất"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · —",
-  "value": "Cuối quý II/2026: người mua trả tiền trước ngắn hạn 145.800 tỷ đồng (+68%), gồm 86.400 tỷ theo hợp đồng chuyển nhượng BĐS và khoảng 59.000 tỷ nhận trước theo hợp đồng xây dựng.",
-  "url": "https://nguoiquansat.vn/nguoi-mua-tra-truoc-150-000-ty-cho-vinhomes-hon-mot-nua-de-thanh-toan-bat-dong-san-307347.html",
-  "opened_at": "2026-11-23",
-  "quote": "Trong đó, người mua trả tiền trước ngắn hạn lên tới 145.800 tỷ đồng, tăng 68%. Khoản mục này chủ yếu gồm 86.400 tỷ đồng thanh toán theo các hợp đồng chuyển nhượng bất động sản và khoảng 59.000 tỷ đồng nhận trước theo các hợp đồng xây dựng.",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · —",
-  "value": "9T/2026 doanh số 219.600 tỷ đồng; riêng quý 3 đạt 71.500 tỷ, kênh bán lẻ chiếm 81% (phần còn lại là bán lô lớn); doanh số chưa bàn giao cuối quý 3 là 185.600 tỷ.",
-  "url": "https://mekongasean.vn/loi-nhuan-9-thang-cua-vinhomes-tang-390-vuot-xa-ke-hoach-nam-61343.html",
-  "opened_at": "2026-11-23",
-  "quote": "Riêng quý 3, doanh số đạt 71.500 tỷ đồng, trong đó kênh bán lẻ đóng góp 81%.",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · —",
-  "value": "Quý 3/2026: lợi nhuận chia sẻ cho đối tác theo hợp đồng hợp tác kinh doanh (BCC) tăng từ 2.266 tỷ lên 19.865 tỷ đồng.",
-  "url": "https://mekongasean.vn/loi-nhuan-9-thang-cua-vinhomes-tang-390-vuot-xa-ke-hoach-nam-61343.html",
-  "opened_at": "2026-11-23",
-  "quote": "bao gồm khoản lợi nhuận chia sẻ cho các đối tác tham gia thực hiện dự án theo hợp đồng hợp tác kinh doanh, tăng từ 2.266 tỷ đồng lên 19.865 tỷ đồng.",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · —",
-  "value": "—",
-  "url": "https://vietnamfinance.vn/muc-tieu-doanh-so-350-nghin-ty-doanh-thu-285-nghin-ty-cua-vinhomes-trong-vao-nhung-du-an-nao-d143719.html",
-  "opened_at": "2026-11-23",
-  "quote": "khẳng định nhu cầu mua buôn của đối tác đối với các đại dự án của Vinhomes tăng đáng kể trong giai đoạn hiện nay.",
-  "status": "match",
-  "note": "4. Thu tiền · dữ kiện định tính, đầy đủ: Tổng giám đốc Nguyễn Thu Hằng tại ĐHĐCĐ 2026: nhu cầu mua buôn của đối tác với các đại dự án tăng đáng kể, có cả đối tác mới từ Đông Nam Á."
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · Happy Home (toàn hệ thống Vingroup/Vinhomes)",
-  "value": "Gần 11.000 căn NOXH đang thi công/mở bán tại 4 tỉnh; gần 50.000 căn trong kế hoạch: Hưng Yên 5.500, TP.HCM 31.500–33.500, Tây Ninh 2.300 căn.",
-  "url": "https://tuoitre.vn/vingroup-dong-loat-trien-khai-du-an-nha-o-xa-hoi-tren-toan-quoc-20251015113639693.htm",
-  "opened_at": "2026-11-23",
-  "quote": "Vingroup cũng có kế hoạch phát triển các dự án Happy Home tại Hưng Yên (5.500 căn), TP HCM (31.500 – 33.500 căn), Tây Ninh (2.300 căn).",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · Happy Home Tràng Cát; NOXH trong Vinhomes Golden City (Dương Kinh)",
-  "value": "Happy Home Tràng Cát 28,14 ha, 3.804 căn; trong dự án thương mại Vinhomes Golden City quy hoạch thêm 8.000 căn NOXH (bố trí NOXH ngay trong dự án).",
-  "url": "https://tuoitre.vn/vingroup-dong-loat-trien-khai-du-an-nha-o-xa-hoi-tren-toan-quoc-20251015113639693.htm",
-  "opened_at": "2026-11-23",
-  "quote": "Ngoài ra, tại Dương Kinh (thuộc dự án Vinhomes Golden City), Vingroup cũng đã quy hoạch thêm 8.000 căn NƠXH.",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · Khu đô thị mới Phước Vĩnh Tây",
-  "value": "Cơ cấu sản phẩm gồm 13.440 căn NOXH bên cạnh 7.050 liền kề, gần 8.200 biệt thự và 2.370 căn tái định cư.",
-  "url": "https://cafeland.vn/tin-tuc/mot-xa-o-tay-ninh-dang-trien-khai-10-du-an-quy-mo-1322ha-co-khu-do-thi-hon-1000ha-152544.html",
-  "opened_at": "2026-11-23",
-  "quote": "bao gồm 7.050 căn nhà ở liền kề và gần 8.200 căn biệt thự, 13.440 căn nhà ở xã hội và 2.370 căn nhà tái định cư thấp tầng.",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · Khu đô thị ven vịnh Cam Ranh",
-  "value": "Dự án hơn 1.254 ha gồm 19.816 căn NOXH bên cạnh 8.474 liền kề và 10.732 biệt thự; tổng mức đầu tư điều chỉnh lên khoảng 194.000 tỷ đồng (NQ HĐQT 29/09/2026).",
-  "url": "https://cafeland.vn/tin-tuc/vinhomes-tang-muc-dau-tu-du-an-1254ha-ven-vinh-cam-ranh-len-194000-ty-dong-155496.html",
-  "opened_at": "2026-11-23",
-  "quote": "Dự án Khu đô thị ven vịnh Cam Ranh có quy mô hơn 1.254 ha, gồm: 8.474 căn nhà ở liền kề, 10.732 căn nhà ở biệt thự, 19.816 căn nhà ở xã hội với quy mô dân số khoảng 230.000 người.",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · Khu nhà ở xã hội xã Bà Điểm (Công ty CP Delta, công ty con Vinhomes)",
-  "value": "UBND TP.HCM chấp thuận chủ trương, giao Delta làm chủ đầu tư khu NOXH khoảng 191 ha, vốn sơ bộ hơn 64 nghìn tỷ đồng.",
-  "url": "https://viettimes.vn/doanh-nghiep-thuoc-he-sinh-thai-vinhomes-duoc-giao-lam-du-an-noxh-64000-ty-dong-tai-tphcm-post206958.html",
-  "opened_at": "2026-11-23",
-  "quote": "UBND TP.HCM vừa chấp thuận chủ trương đầu tư, giao Công ty Cổ phần Delta làm chủ đầu tư dự án khu nhà ở xã hội tại xã Bà Điểm, diện tích khoảng 191 ha và tổng vốn đầu tư sơ bộ hơn 64 nghìn tỷ đồng.",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · Khu đô thị Đại học Quốc tế (Berjaya) – Vinhomes Sài Gòn Park, Hóc Môn",
-  "value": "Dự án được cấp phép đầu tư lần đầu năm 2008, điều chỉnh chủ trương đầu tư gần nhất 01/2025; Vinhomes nắm 97,4% chủ đầu tư.",
-  "url": "https://theinvestor.vn/vingroups-arm-eyes-starting-22-bln-university-township-project-in-hcmc-in-july-d18023.html",
-  "opened_at": "2026-11-23",
-  "quote": "The Berjaya project was first granted an investment licence in 2008, with the latest adjustment to its investment policy approved in January 2025.",
-  "status": "match",
-  "note": "6. Chậm tiến độ"
- },
- {
-  "block": "bds-57",
-  "claim": "VHM · —",
-  "value": "—",
-  "url": "https://cafeland.vn/phan-tich/luat-dat-dai-sua-doi-mo-nut-that-giai-phong-mat-bang-3-doanh-nghiep-duoc-nhac-ten-co-the-huong-loi-151559.html",
-  "opened_at": "2026-11-23",
-  "quote": "như Vinhomes, Khang Điền và Văn Phú - Invest được đánh giá có thể hưởng lợi.",
-  "status": "match",
-  "note": "Nhận định · dữ kiện định tính, đầy đủ: ACBS (về dự thảo Luật Đất đai sửa đổi, 05/2026) nêu tên Vinhomes cùng Khang Điền, Văn Phú – Invest trong nhóm có dự án chưa hoàn tất đền bù/tham gia BT liên qua"
- },
- {
-  "block": "bds-57",
   "claim": "KDH · KĐT Tân Tạo (~329 ha, phường Tân Tạo)",
   "value": "Theo ACBS (báo cáo 13/11/2026): đã bồi thường hơn 80% diện tích, có chủ trương đầu tư và quy hoạch 1/500; ACBS kỳ vọng xong GPMB phần còn lại trong 2027.",
   "url": "https://nguoiquansat.vn/khang-dien-kdh-he-lo-ke-hoach-phat-trien-121-000-can-nha-tai-tp-hcm-328540.html",
   "opened_at": "2026-11-23",
   "quote": "Dự án này có quy mô khoảng 329ha, đã hoàn thành bồi thường hơn 80% diện tích, có chấp thuận chủ trương đầu tư và quy hoạch chi tiết tỷ lệ 1/500.",
   "status": "match",
-  "note": "1. Có đất"
+  "note": "Có đất"
  },
  {
   "block": "bds-57",
   "claim": "KDH · Phong Phú 2 (36 ha, phường Bình Hưng)",
-  "value": "Phong Phú  ( ha, phường Bình Hưng)",
+  "value": "Phong Phú  ( ha, phường Bình Hưng",
   "url": "https://nguoiquansat.vn/khang-dien-kdh-he-lo-ke-hoach-phat-trien-121-000-can-nha-tai-tp-hcm-328540.html",
   "opened_at": "2026-11-23",
   "quote": "Ngoài những dự án trên, doanh nghiệp còn có quỹ đất Phong Phú 2 rộng 36ha tại phường Bình Hưng, đã hoàn thành công tác bồi thường và được chấp thuận chủ trương đầu tư.",
   "status": "match",
-  "note": "1. Có đất · dữ kiện định tính, đầy đủ: Đã hoàn thành bồi thường và được chấp thuận chủ trương đầu tư (theo bài 17/11/2026)."
- },
- {
-  "block": "bds-57",
-  "claim": "KDH · Toàn bộ quỹ đất",
-  "value": "ACBS: KDH quản lý hơn 660 ha, đều ở nội thành TP.HCM; đang điều chỉnh quy hoạch An Lập, 11A, Tân Tạo A theo hướng tăng cao tầng, mở sang nhà ở xã hội.",
-  "url": "https://nguoiquansat.vn/khang-dien-kdh-duoc-du-bao-lai-vuot-1-500-ty-dong-nam-2026-328438.html",
-  "opened_at": "2026-11-23",
-  "quote": "Số liệu ACBS thống kê cho thấy Khang Điền đang quản lý quỹ đất hơn 660ha tại khu vực nội thành TP.HCM, trước đây tập trung phát triển căn hộ trung cấp và nhà liền thổ.",
-  "status": "match",
-  "note": "2. Pháp lý · địa bàn"
+  "note": "Có đất · dữ kiện định tính, đầy đủ: Đã hoàn thành bồi thường và được chấp thuận chủ trương đầu tư (theo bài 17/11/2026)."
  },
  {
   "block": "bds-57",
@@ -417,7 +217,7 @@
   "opened_at": "2026-11-23",
   "quote": "Trên cơ sở đó, Khang Điền đề xuất nâng tổng mức đầu tư dự án từ hơn 7,737 tỷ đồng lên gần 17,918 tỷ đồng, tương ứng tăng thêm 10,180 tỷ đồng.",
   "status": "match",
-  "note": "3. Tiền đất"
+  "note": "Tiền đất"
  },
  {
   "block": "bds-57",
@@ -427,7 +227,7 @@
   "opened_at": "2026-11-23",
   "quote": "đã chi vào dự án hơn 8.900 tỷ đồng vào khu dân cư Tân Tạo. Đồng thời, dùng quyền tài sản phát sinh thuộc dự án Tân Tạo A để đảm bảo cho khoản vay gần 3.000 tỷ tại ngân hàng.",
   "status": "match",
-  "note": "3. Tiền đất"
+  "note": "Tiền đất"
  },
  {
   "block": "bds-57",
@@ -437,77 +237,7 @@
   "opened_at": "2026-11-23",
   "quote": "KDH đã tăng nợ ròng thêm 2.552 tỷ đồng lên 5.159 tỷ đồng do đẩy nhanh tiến độ thanh toán tiền sử dụng đất và giải phóng mặt bằng trước khi bảng giá đất mới được áp dụng từ 1/1/2026.",
   "status": "match",
-  "note": "3. Tiền đất"
- },
- {
-  "block": "bds-57",
-  "claim": "KDH · Toàn công ty",
-  "value": "Cuối tháng 6/2026 người mua trả tiền trước chỉ còn 399 tỷ đồng, so với 2.387 tỷ cuối 2023.",
-  "url": "https://doanhnhan.baophapluat.vn/hang-ton-kho-va-no-vay-tang-vot-nha-khang-dien-kdh-chat-vat-tim-luc-do-gia-co-phieu.html",
-  "opened_at": "2026-11-23",
-  "quote": "Tại thời điểm cuối tháng 6, khoản mục này chỉ còn 399 tỷ đồng, sụt giảm mạnh so với mức 2.387 tỷ đồng ghi nhận hồi cuối năm 2023.",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "KDH · Gladia Heights",
-  "value": "Ngày 1/8/2026 mở bán khoảng 500 căn/2 tháp; hơn 90% được đặt mua trong sự kiện, giá trị gần 4.000 tỷ đồng.",
-  "url": "https://cafef.vn/da-cua-keppel-va-khang-dien-hon-90-khach-dat-mua-trong-ngay-mo-ban-tong-gia-tri-giao-dich-gan-4000-ty-dong-188260804115620821.chn",
-  "opened_at": "2026-11-23",
-  "quote": "Hơn 90% khách đặt mua trong ngày mở bán, tổng giá trị giao dịch gần 4.000 tỷ đồng",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "KDH · Gladia (11,8 ha, hợp tác Keppel)",
-  "value": "Năm 2023 chuyển nhượng 49% vốn dự án cho Keppel; 2026 chuyển tiếp 2% tại một phần phân khu thấp tầng; KDH còn 49-51%.",
-  "url": "https://nguoiquansat.vn/khang-dien-kdh-he-lo-ke-hoach-phat-trien-121-000-can-nha-tai-tp-hcm-328540.html",
-  "opened_at": "2026-11-23",
-  "quote": "Năm 2023, Khang Điền chuyển nhượng 49% vốn tại dự án cho Keppel. Đến năm 2026, doanh nghiệp tiếp tục chuyển nhượng 2% vốn tại một phần phân khu thấp tầng.",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "KDH · Nhà ở xã hội Lê Minh Xuân (109,9 ha)",
-  "value": "Theo ACBS: chuyển từ KCN sang nhà ở xã hội khoảng 30.000 căn, KDH sở hữu 100%; dự kiến khởi công 2027, mở bán 2028, bàn giao 2029.",
-  "url": "https://nguoiquansat.vn/khang-dien-kdh-duoc-du-bao-lai-vuot-1-500-ty-dong-nam-2026-328438.html",
-  "opened_at": "2026-11-23",
-  "quote": "Theo phương án mới được ACBS cập nhật, Lê Minh Xuân chuyển đổi từ khu công nghiệp sang dự án nhà ở xã hội, dự kiến cung cấp khoảng 30.000 căn.",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê"
- },
- {
-  "block": "bds-57",
-  "claim": "KDH · Nhà ở xã hội Lê Minh Xuân",
-  "value": "UBND TP.HCM giao xã Bình Lợi hoàn thiện quy hoạch, đất đai, đầu tư và lựa chọn nhà đầu tư để khởi công 30/12/2026.",
-  "url": "https://tienphong.vn/tphcm-chot-thoi-gian-khoi-cong-du-an-nha-o-xa-hoi-110ha-post1891600.tpo",
-  "opened_at": "2026-11-23",
-  "quote": "UBND TPHCM giao UBND xã Bình Lợi chủ trì, phối hợp với các sở, ngành liên quan khẩn trương hoàn thiện thủ tục về quy hoạch, đất đai, đầu tư và lựa chọn nhà đầu tư theo quy định để khởi công dự án vào ngày 30/12.",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê"
- },
- {
-  "block": "bds-57",
-  "claim": "KDH · Bình Trưng Mới (18,2 ha)",
-  "value": "Bình Trưng Mới ( ha)",
-  "url": "https://nguoiquansat.vn/khang-dien-kdh-duoc-du-bao-lai-vuot-1-500-ty-dong-nam-2026-328438.html",
-  "opened_at": "2026-11-23",
-  "quote": "Theo phương án cập nhật, dự án được điều chỉnh từ chung cư cao tầng sang tổ hợp gồm khoảng 5-7 tòa chung cư và nhà ở xã hội.",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê · dữ kiện định tính, đầy đủ: Theo ACBS: điều chỉnh sang tổ hợp 5-7 tòa chung cư và nhà ở xã hội; dự kiến mở bán ~2.000 căn hộ quý I/2027."
- },
- {
-  "block": "bds-57",
-  "claim": "KDH · Chung",
-  "value": "Chung",
-  "url": "https://doanhnhan.baophapluat.vn/dhdcd-khang-dien-kdh-2026-sach-no-trai-phieu-noi-khong-voi-phat-hanh-von-moi-va-muc-tieu-lai-1-500-ty-dong.html",
-  "opened_at": "2026-11-23",
-  "quote": "Công ty cũng đang tích cực nghiên cứu phát triển mô hình nhà ở xã hội, nhà ở thương mại giá hợp lý và đánh giá khả năng tham gia các dự án hạ tầng theo hình thức BT",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê · dữ kiện định tính, đầy đủ: Tại ĐHĐCĐ 22/4/2026 công ty nói đang nghiên cứu mô hình nhà ở xã hội, nhà thương mại giá hợp lý và dự án BT tại TP.HCM."
+  "note": "Tiền đất"
  },
  {
   "block": "bds-57",
@@ -517,7 +247,7 @@
   "opened_at": "2026-11-23",
   "quote": "Khu đất có diện tích gần 110 ha, thuộc xã Bình Lợi, được rà soát, điều chỉnh chức năng từ đất sản xuất công nghiệp, kho tàng sang đất đơn vị ở trong quy hoạch tổng thể thành phố.",
   "status": "match",
-  "note": "6. Chậm tiến độ"
+  "note": "Chậm tiến độ"
  },
  {
   "block": "bds-57",
@@ -527,7 +257,7 @@
   "opened_at": "2026-11-23",
   "quote": "Tại khu Nam TP. HCM, Khang Điền còn có dự án 11A thuộc phường Bình Hưng, diện tích 16,4ha, tổng vốn đầu tư dự kiến 14.800 tỷ đồng. Đáng chú ý, quy hoạch dự án được điều chỉnh từ khoảng 1.000 căn hộ và 500 căn nhà thấp tầng sang 3.800 căn hộ cùng 31 căn nhà thấp tầng.",
   "status": "match",
-  "note": "6. Chậm tiến độ"
+  "note": "Chậm tiến độ"
  },
  {
   "block": "bds-57",
@@ -537,7 +267,7 @@
   "opened_at": "2026-11-23",
   "quote": "Tại khu Tây Nam, dự án 11A (quy mô 16 ha) trên trục Nguyễn Văn Linh đã được xây dựng hạ tầng, chuẩn bị đưa vào kinh doanh từ năm 2027 đón đầu tiến độ khởi công cầu Bình Tiên.",
   "status": "match",
-  "note": "6. Chậm tiến độ"
+  "note": "Chậm tiến độ"
  },
  {
   "block": "bds-57",
@@ -547,7 +277,87 @@
   "opened_at": "2026-11-23",
   "quote": "Cũng tại phường Bình Trưng, dự án Bình Trưng mở rộng có quy mô 18,2ha, tổng vốn đầu tư khoảng 19.000 tỷ đồng, gồm 3.300 căn hộ cao tầng và 200 căn nhà thấp tầng.",
   "status": "match",
-  "note": "6. Chậm tiến độ"
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "KDH · Toàn bộ quỹ đất",
+  "value": "ACBS: KDH quản lý hơn 660 ha, đều ở nội thành TP.HCM; đang điều chỉnh quy hoạch An Lập, 11A, Tân Tạo A theo hướng tăng cao tầng, mở sang nhà ở xã hội.",
+  "url": "https://nguoiquansat.vn/khang-dien-kdh-duoc-du-bao-lai-vuot-1-500-ty-dong-nam-2026-328438.html",
+  "opened_at": "2026-11-23",
+  "quote": "Số liệu ACBS thống kê cho thấy Khang Điền đang quản lý quỹ đất hơn 660ha tại khu vực nội thành TP.HCM, trước đây tập trung phát triển căn hộ trung cấp và nhà liền thổ.",
+  "status": "match",
+  "note": "Pháp lý · địa bàn"
+ },
+ {
+  "block": "bds-57",
+  "claim": "KDH · Nhà ở xã hội Lê Minh Xuân (109,9 ha)",
+  "value": "Theo ACBS: chuyển từ KCN sang nhà ở xã hội khoảng 30.000 căn, KDH sở hữu 100%; dự kiến khởi công 2027, mở bán 2028, bàn giao 2029.",
+  "url": "https://nguoiquansat.vn/khang-dien-kdh-duoc-du-bao-lai-vuot-1-500-ty-dong-nam-2026-328438.html",
+  "opened_at": "2026-11-23",
+  "quote": "Theo phương án mới được ACBS cập nhật, Lê Minh Xuân chuyển đổi từ khu công nghiệp sang dự án nhà ở xã hội, dự kiến cung cấp khoảng 30.000 căn.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "KDH · Nhà ở xã hội Lê Minh Xuân",
+  "value": "UBND TP.HCM giao xã Bình Lợi hoàn thiện quy hoạch, đất đai, đầu tư và lựa chọn nhà đầu tư để khởi công 30/12/2026.",
+  "url": "https://tienphong.vn/tphcm-chot-thoi-gian-khoi-cong-du-an-nha-o-xa-hoi-110ha-post1891600.tpo",
+  "opened_at": "2026-11-23",
+  "quote": "UBND TPHCM giao UBND xã Bình Lợi chủ trì, phối hợp với các sở, ngành liên quan khẩn trương hoàn thiện thủ tục về quy hoạch, đất đai, đầu tư và lựa chọn nhà đầu tư theo quy định để khởi công dự án vào ngày 30/12.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "KDH · Bình Trưng Mới (18,2 ha)",
+  "value": "Bình Trưng Mới ( ha",
+  "url": "https://nguoiquansat.vn/khang-dien-kdh-duoc-du-bao-lai-vuot-1-500-ty-dong-nam-2026-328438.html",
+  "opened_at": "2026-11-23",
+  "quote": "Theo phương án cập nhật, dự án được điều chỉnh từ chung cư cao tầng sang tổ hợp gồm khoảng 5-7 tòa chung cư và nhà ở xã hội.",
+  "status": "match",
+  "note": "Xã hội · dữ kiện định tính, đầy đủ: Theo ACBS: điều chỉnh sang tổ hợp 5-7 tòa chung cư và nhà ở xã hội; dự kiến mở bán ~2.000 căn hộ quý I/2027."
+ },
+ {
+  "block": "bds-57",
+  "claim": "KDH · Chung",
+  "value": "Chung",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-khang-dien-kdh-2026-sach-no-trai-phieu-noi-khong-voi-phat-hanh-von-moi-va-muc-tieu-lai-1-500-ty-dong.html",
+  "opened_at": "2026-11-23",
+  "quote": "Công ty cũng đang tích cực nghiên cứu phát triển mô hình nhà ở xã hội, nhà ở thương mại giá hợp lý và đánh giá khả năng tham gia các dự án hạ tầng theo hình thức BT",
+  "status": "match",
+  "note": "Xã hội · dữ kiện định tính, đầy đủ: Tại ĐHĐCĐ 22/4/2026 công ty nói đang nghiên cứu mô hình nhà ở xã hội, nhà thương mại giá hợp lý và dự án BT tại TP.HCM."
+ },
+ {
+  "block": "bds-57",
+  "claim": "KDH · Toàn công ty",
+  "value": "Cuối tháng 6/2026 người mua trả tiền trước chỉ còn 399 tỷ đồng, so với 2.387 tỷ cuối 2023.",
+  "url": "https://doanhnhan.baophapluat.vn/hang-ton-kho-va-no-vay-tang-vot-nha-khang-dien-kdh-chat-vat-tim-luc-do-gia-co-phieu.html",
+  "opened_at": "2026-11-23",
+  "quote": "Tại thời điểm cuối tháng 6, khoản mục này chỉ còn 399 tỷ đồng, sụt giảm mạnh so với mức 2.387 tỷ đồng ghi nhận hồi cuối năm 2023.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "KDH · Gladia Heights",
+  "value": "Ngày 1/8/2026 mở bán khoảng 500 căn/2 tháp; hơn 90% được đặt mua trong sự kiện, giá trị gần 4.000 tỷ đồng.",
+  "url": "https://cafef.vn/da-cua-keppel-va-khang-dien-hon-90-khach-dat-mua-trong-ngay-mo-ban-tong-gia-tri-giao-dich-gan-4000-ty-dong-188260804115620821.chn",
+  "opened_at": "2026-11-23",
+  "quote": "Hơn 90% khách đặt mua trong ngày mở bán, tổng giá trị giao dịch gần 4.000 tỷ đồng",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "KDH · Gladia (11,8 ha, hợp tác Keppel)",
+  "value": "Năm 2023 chuyển nhượng 49% vốn dự án cho Keppel; 2026 chuyển tiếp 2% tại một phần phân khu thấp tầng; KDH còn 49-51%.",
+  "url": "https://nguoiquansat.vn/khang-dien-kdh-he-lo-ke-hoach-phat-trien-121-000-can-nha-tai-tp-hcm-328540.html",
+  "opened_at": "2026-11-23",
+  "quote": "Năm 2023, Khang Điền chuyển nhượng 49% vốn tại dự án cho Keppel. Đến năm 2026, doanh nghiệp tiếp tục chuyển nhượng 2% vốn tại một phần phân khu thấp tầng.",
+  "status": "match",
+  "note": "Thu tiền"
  },
  {
   "block": "bds-57",
@@ -571,23 +381,203 @@
  },
  {
   "block": "bds-57",
+  "claim": "VHM · Khu đô thị mới Phước Vĩnh Tây (liên danh Vinhomes – VIG)",
+  "value": "Giải phóng mặt bằng 1.006,78/1.089,6 ha, đạt 92,40%; đã chi bồi thường 4.991 trường hợp (862,25 ha); phần còn lại là các trường hợp phức tạp.",
+  "url": "https://cafef.vn/sieu-du-an-56-ty-usd-ma-ty-phu-pham-nhat-vuong-dang-cho-xay-dung-tai-tinh-sat-vach-tphcm-dat-cot-moc-quan-trong-188261009214348437.chn",
+  "opened_at": "2026-11-23",
+  "quote": "Đến nay, công tác giải phóng mặt bằng đã thực hiện được 1.006,78 ha, đạt 92,40%; đã chi trả bồi thường cho 4.991 trường hợp, với diện tích 862,25 ha.",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · Khu đô thị phức hợp Hạ Long Xanh (Vinhomes Global Gate Hạ Long)",
+  "value": "Tại phường Hà An: GPMB 2.966,37/3.186,8 ha, đạt 93,08%; tỉnh đã giao 2.583,37 ha cho chủ đầu tư, tương đương 82% diện tích dự án.",
+  "url": "https://cafef.vn/sieu-du-an-ven-bien-18-ty-usd-tai-dia-phuong-sap-len-thanh-pho-truc-thuoc-trung-uong-co-dien-bien-moi-188260729063646632.chn",
+  "opened_at": "2026-11-23",
+  "quote": "Đến ngày 25/7/2026, địa phương đã hoàn thành GPMB 2.966,37 ha, đạt 93,08% tổng diện tích thu hồi.",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · Khu đô thị thể thao quốc tế Hà Nội (Global Sportia, Vinhomes 35%)",
+  "value": "Đã chi trả bồi thường vượt 50.000 tỷ đồng trên 11 xã, phường, tương đương hơn 50% khối lượng GPMB; vướng nhất là xác minh nguồn gốc đất.",
+  "url": "https://nguoiquansat.vn/hoan-tat-chi-tra-hon-50-000-ty-cho-nguoi-dan-sieu-do-thi-hon-925-000-ty-cua-vinhomes-buoc-vao-giai-doan-tien-quyet-308576.html",
+  "opened_at": "2026-11-23",
+  "quote": "tổng số tiền bồi thường đã chi trả đến nay vượt 50.000 tỷ đồng, tương đương hơn 50% khối lượng giải phóng mặt bằng.",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · Khu đô thị mới Cam Lâm; Khu đô thị ven vịnh Cam Ranh",
+  "value": "Cam Lâm đang bồi thường, dự kiến hoàn tất năm 2027; Cam Ranh đã có chấp thuận nhà đầu tư và đang GPMB (theo MBS sau buổi gặp nhà đầu tư 10/2026).",
+  "url": "https://nguoiquansat.vn/vinhomes-cap-nhat-tien-do-trien-khai-loat-du-an-quy-mo-lon-320505.html",
+  "opened_at": "2026-11-23",
+  "quote": "Tại Cam Lâm, công tác bồi thường đang được triển khai và dự kiến hoàn tất vào năm 2027. Còn tại Cam Ranh, Vinhomes đã nhận được giấy chứng nhận chấp thuận nhà đầu tư và đang triển khai công tác giải phóng mặt bằng.",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · Khu đô thị lấn biển Cần Giờ (Vinhomes Green Paradise)",
+  "value": "Đã nộp 21.700 tỷ đồng tiền sử dụng đất và 5.655 tỷ đồng tiền thuê đất.",
+  "url": "https://nguoiquansat.vn/vingroup-vic-nop-gan-27-400-ty-dong-tien-dat-cho-sieu-du-an-vinhomes-green-paradise-can-gio-252241.html",
+  "opened_at": "2026-11-23",
+  "quote": "đặc biệt là khoản nộp từ dự án Khu đô thị lấn biển Cần Giờ (21.700 tỷ đồng tiền sử dụng đất và 5.655 tỷ đồng tiền thuê đất).",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · —",
+  "value": "Năm 2025 Vinhomes nộp ngân sách hơn 73.000 tỷ đồng, trong đó gần 53.000 tỷ đồng tiền sử dụng đất, thuê đất.",
+  "url": "https://vietnamfinance.vn/muc-tieu-doanh-so-350-nghin-ty-doanh-thu-285-nghin-ty-cua-vinhomes-trong-vao-nhung-du-an-nao-d143719.html",
+  "opened_at": "2026-11-23",
+  "quote": "Công ty đã nộp hơn 73.000 tỷ đồng vào ngân sách nhà nước, bao gồm: gần 53.000 tỷ đồng tiền sử dụng đất, thuê đất",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · —",
+  "value": "Ngoài quỹ đất 29.500 ha, còn gần 20 dự án đang làm thủ tục, chuẩn bị hoàn tất chủ trương đầu tư với tổng diện tích hơn 20.000 ha.",
+  "url": "https://nguoiquansat.vn/he-lo-quy-dat-khung-vinhomes-dang-so-huu-298206.html",
+  "opened_at": "2026-11-23",
+  "quote": "Ngoài ra, công ty có gần 20 dự án đang làm thủ tục và chuẩn bị hoàn tất chủ trương đầu tư với tổng diện tích hơn 20.000ha.",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · Khu đô thị Đại học Quốc tế (Berjaya) – Vinhomes Sài Gòn Park, Hóc Môn",
+  "value": "Dự án được cấp phép đầu tư lần đầu năm 2008, điều chỉnh chủ trương đầu tư gần nhất 01/2025; Vinhomes nắm 97,4% chủ đầu tư.",
+  "url": "https://theinvestor.vn/vingroups-arm-eyes-starting-22-bln-university-township-project-in-hcmc-in-july-d18023.html",
+  "opened_at": "2026-11-23",
+  "quote": "The Berjaya project was first granted an investment licence in 2008, with the latest adjustment to its investment policy approved in January 2025.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · —",
+  "value": "Chủ tịch Phạm Thiếu Hoa: ngưng hoàn toàn việc mở rộng quỹ đất dự án tại Việt Nam; quỹ đất đã tích lũy đủ phát triển liên tục 5–7 năm.",
+  "url": "https://vtcnews.vn/khong-chay-dua-quy-dat-vinhomes-chuyen-sang-gia-tang-gia-tri-du-an-hien-huu-ar1023941.html",
+  "opened_at": "2026-11-23",
+  "quote": "Vinhomes đã tích lũy được quỹ đất đủ lớn để phát triển liên tục cho 5 - 7 năm tới.",
+  "status": "match",
+  "note": "Pháp lý · địa bàn"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · Happy Home (toàn hệ thống Vingroup/Vinhomes)",
+  "value": "Gần 11.000 căn NOXH đang thi công/mở bán tại 4 tỉnh; gần 50.000 căn trong kế hoạch: Hưng Yên 5.500, TP.HCM 31.500–33.500, Tây Ninh 2.300 căn.",
+  "url": "https://tuoitre.vn/vingroup-dong-loat-trien-khai-du-an-nha-o-xa-hoi-tren-toan-quoc-20251015113639693.htm",
+  "opened_at": "2026-11-23",
+  "quote": "Vingroup cũng có kế hoạch phát triển các dự án Happy Home tại Hưng Yên (5.500 căn), TP HCM (31.500 – 33.500 căn), Tây Ninh (2.300 căn).",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · Happy Home Tràng Cát; NOXH trong Vinhomes Golden City (Dương Kinh)",
+  "value": "Happy Home Tràng Cát 28,14 ha, 3.804 căn; trong dự án thương mại Vinhomes Golden City quy hoạch thêm 8.000 căn NOXH (bố trí NOXH ngay trong dự án).",
+  "url": "https://tuoitre.vn/vingroup-dong-loat-trien-khai-du-an-nha-o-xa-hoi-tren-toan-quoc-20251015113639693.htm",
+  "opened_at": "2026-11-23",
+  "quote": "Ngoài ra, tại Dương Kinh (thuộc dự án Vinhomes Golden City), Vingroup cũng đã quy hoạch thêm 8.000 căn NƠXH.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · Khu đô thị mới Phước Vĩnh Tây",
+  "value": "Cơ cấu sản phẩm gồm 13.440 căn NOXH bên cạnh 7.050 liền kề, gần 8.200 biệt thự và 2.370 căn tái định cư.",
+  "url": "https://cafeland.vn/tin-tuc/mot-xa-o-tay-ninh-dang-trien-khai-10-du-an-quy-mo-1322ha-co-khu-do-thi-hon-1000ha-152544.html",
+  "opened_at": "2026-11-23",
+  "quote": "bao gồm 7.050 căn nhà ở liền kề và gần 8.200 căn biệt thự, 13.440 căn nhà ở xã hội và 2.370 căn nhà tái định cư thấp tầng.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · Khu đô thị ven vịnh Cam Ranh",
+  "value": "Dự án hơn 1.254 ha gồm 19.816 căn NOXH bên cạnh 8.474 liền kề và 10.732 biệt thự; tổng mức đầu tư điều chỉnh lên khoảng 194.000 tỷ đồng (NQ HĐQT 29/09/2026).",
+  "url": "https://cafeland.vn/tin-tuc/vinhomes-tang-muc-dau-tu-du-an-1254ha-ven-vinh-cam-ranh-len-194000-ty-dong-155496.html",
+  "opened_at": "2026-11-23",
+  "quote": "Dự án Khu đô thị ven vịnh Cam Ranh có quy mô hơn 1.254 ha, gồm: 8.474 căn nhà ở liền kề, 10.732 căn nhà ở biệt thự, 19.816 căn nhà ở xã hội với quy mô dân số khoảng 230.000 người.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · Khu nhà ở xã hội xã Bà Điểm (Công ty CP Delta, công ty con Vinhomes)",
+  "value": "UBND TP.HCM chấp thuận chủ trương, giao Delta làm chủ đầu tư khu NOXH khoảng 191 ha, vốn sơ bộ hơn 64 nghìn tỷ đồng.",
+  "url": "https://viettimes.vn/doanh-nghiep-thuoc-he-sinh-thai-vinhomes-duoc-giao-lam-du-an-noxh-64000-ty-dong-tai-tphcm-post206958.html",
+  "opened_at": "2026-11-23",
+  "quote": "UBND TP.HCM vừa chấp thuận chủ trương đầu tư, giao Công ty Cổ phần Delta làm chủ đầu tư dự án khu nhà ở xã hội tại xã Bà Điểm, diện tích khoảng 191 ha và tổng vốn đầu tư sơ bộ hơn 64 nghìn tỷ đồng.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · —",
+  "value": "Cuối quý II/2026: người mua trả tiền trước ngắn hạn 145.800 tỷ đồng (+68%), gồm 86.400 tỷ theo hợp đồng chuyển nhượng BĐS và khoảng 59.000 tỷ nhận trước theo hợp đồng xây dựng.",
+  "url": "https://nguoiquansat.vn/nguoi-mua-tra-truoc-150-000-ty-cho-vinhomes-hon-mot-nua-de-thanh-toan-bat-dong-san-307347.html",
+  "opened_at": "2026-11-23",
+  "quote": "Trong đó, người mua trả tiền trước ngắn hạn lên tới 145.800 tỷ đồng, tăng 68%. Khoản mục này chủ yếu gồm 86.400 tỷ đồng thanh toán theo các hợp đồng chuyển nhượng bất động sản và khoảng 59.000 tỷ đồng nhận trước theo các hợp đồng xây dựng.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · —",
+  "value": "9T/2026 doanh số 219.600 tỷ đồng; riêng quý 3 đạt 71.500 tỷ, kênh bán lẻ chiếm 81% (phần còn lại là bán lô lớn); doanh số chưa bàn giao cuối quý 3 là 185.600 tỷ.",
+  "url": "https://mekongasean.vn/loi-nhuan-9-thang-cua-vinhomes-tang-390-vuot-xa-ke-hoach-nam-61343.html",
+  "opened_at": "2026-11-23",
+  "quote": "Riêng quý 3, doanh số đạt 71.500 tỷ đồng, trong đó kênh bán lẻ đóng góp 81%.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · —",
+  "value": "Quý 3/2026: lợi nhuận chia sẻ cho đối tác theo hợp đồng hợp tác kinh doanh (BCC) tăng từ 2.266 tỷ lên 19.865 tỷ đồng.",
+  "url": "https://mekongasean.vn/loi-nhuan-9-thang-cua-vinhomes-tang-390-vuot-xa-ke-hoach-nam-61343.html",
+  "opened_at": "2026-11-23",
+  "quote": "bao gồm khoản lợi nhuận chia sẻ cho các đối tác tham gia thực hiện dự án theo hợp đồng hợp tác kinh doanh, tăng từ 2.266 tỷ đồng lên 19.865 tỷ đồng.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · —",
+  "value": "—",
+  "url": "https://vietnamfinance.vn/muc-tieu-doanh-so-350-nghin-ty-doanh-thu-285-nghin-ty-cua-vinhomes-trong-vao-nhung-du-an-nao-d143719.html",
+  "opened_at": "2026-11-23",
+  "quote": "khẳng định nhu cầu mua buôn của đối tác đối với các đại dự án của Vinhomes tăng đáng kể trong giai đoạn hiện nay.",
+  "status": "match",
+  "note": "Thu tiền · dữ kiện định tính, đầy đủ: Tổng giám đốc Nguyễn Thu Hằng tại ĐHĐCĐ 2026: nhu cầu mua buôn của đối tác với các đại dự án tăng đáng kể, có cả đối tác mới từ Đông Nam Á."
+ },
+ {
+  "block": "bds-57",
+  "claim": "VHM · —",
+  "value": "—",
+  "url": "https://cafeland.vn/phan-tich/luat-dat-dai-sua-doi-mo-nut-that-giai-phong-mat-bang-3-doanh-nghiep-duoc-nhac-ten-co-the-huong-loi-151559.html",
+  "opened_at": "2026-11-23",
+  "quote": "như Vinhomes, Khang Điền và Văn Phú - Invest được đánh giá có thể hưởng lợi.",
+  "status": "match",
+  "note": "Nhận định · dữ kiện định tính, đầy đủ: ACBS (về dự thảo Luật Đất đai sửa đổi, 05/2026) nêu tên Vinhomes cùng Khang Điền, Văn Phú – Invest trong nhóm có dự án chưa hoàn tất đền bù/tham gia BT liên qua"
+ },
+ {
+  "block": "bds-57",
   "claim": "NLG · —",
   "value": "Quỹ đất hơn 681 ha được mô tả là 'quỹ đất sạch'; không tìm thấy dự án nào của NLG được nêu là đang đền bù dở dang.",
   "url": "https://nguoiquansat.vn/nam-long-nlg-va-chu-ky-tang-truong-moi-tu-quy-dat-681ha-298702.html",
   "opened_at": "2026-11-23",
   "quote": "hơn 681ha quỹ đất sạch với nhiều khu đô thị tích hợp",
   "status": "match",
-  "note": "1. Có đất"
- },
- {
-  "block": "bds-57",
-  "claim": "NLG · —",
-  "value": "Gần 680 ha đất sạch trải tại TP.HCM, Đồng Nai, Long An (cũ), Cần Thơ, Hải Phòng; lớn nhất là Izumi City 170 ha (Đồng Nai) và Waterpoint giai đoạn 2 190 ha (Long An cũ).",
-  "url": "https://nguoiquansat.vn/so-huu-gan-680ha-dat-sach-nam-long-nlg-duoc-du-bao-lai-tang-gan-4-lan-trong-nam-2027-328320.html",
-  "opened_at": "2026-11-23",
-  "quote": "nổi bật là Izumi City tại Đồng Nai, quy mô 170ha, và Waterpoint giai đoạn 2 tại Long An (cũ), rộng 190ha.",
-  "status": "match",
-  "note": "2. Pháp lý · địa bàn"
+  "note": "Có đất"
  },
  {
   "block": "bds-57",
@@ -597,7 +587,7 @@
   "opened_at": "2026-11-23",
   "quote": "Năm 2025, dự án được điều chỉnh cục bộ quy hoạch chi tiết 1/500, làm tăng thêm 10.388m2 đất ở.",
   "status": "match",
-  "note": "3. Tiền đất"
+  "note": "Tiền đất"
  },
  {
   "block": "bds-57",
@@ -607,7 +597,7 @@
   "opened_at": "2026-11-23",
   "quote": "Trong đó, dự án Dong Nai Waterfront, tháng 9/2026, doanh nghiệp đã nhận được quyết định của UBND tỉnh Đồng Nai về số tiền sử dụng đất bổ sung và sẵn sàng thực hiện nghĩa vụ tài chính theo quy định.",
   "status": "match",
-  "note": "3. Tiền đất"
+  "note": "Tiền đất"
  },
  {
   "block": "bds-57",
@@ -617,7 +607,7 @@
   "opened_at": "2026-11-23",
   "quote": "Sau khi dự án được điều chỉnh quy hoạch 1/2000 để cập nhật quy hoạch chi tiết 1/500 được duyệt, cơ quan chức năng tỉnh Tây Ninh cũng chưa xác định, thu tiền sử dụng đất bổ sung.",
   "status": "match",
-  "note": "3. Tiền đất"
+  "note": "Tiền đất"
  },
  {
   "block": "bds-57",
@@ -627,7 +617,7 @@
   "opened_at": "2026-11-23",
   "quote": "Nam Long khẳng định đã chủ động nộp bổ sung nghĩa vụ tài chính và cam kết khắc phục trước ngày 31/12/2026.",
   "status": "match",
-  "note": "3. Tiền đất"
+  "note": "Tiền đất"
  },
  {
   "block": "bds-57",
@@ -637,107 +627,7 @@
   "opened_at": "2026-11-23",
   "quote": "Tuy nhiên, lãnh đạo công ty thừa nhận những vướng mắc liên quan đến chính sách tiền sử dụng đất trong thời gian qua đã khiến kế hoạch tích lũy quỹ đất bị chậm lại.",
   "status": "match",
-  "note": "3. Tiền đất · dữ kiện định tính, đầy đủ: Tại ĐHĐCĐ 2026 lãnh đạo thừa nhận vướng mắc chính sách tiền sử dụng đất làm chậm kế hoạch tích lũy quỹ đất, đang chờ quy định mới."
- },
- {
-  "block": "bds-57",
-  "claim": "NLG · —",
-  "value": "Người mua trả tiền trước gần 2.940 tỷ đồng cuối 06/2026, tăng gần 349 tỷ so với đầu năm.",
-  "url": "https://doanhnhan.baophapluat.vn/nam-long-nlg-ghi-nhan-doanh-so-vuot-5-000-ty-dong-dong-tien-mat-lan-at-du-no-vay.html",
-  "opened_at": "2026-11-23",
-  "quote": "Tính đến cuối tháng 06/2026, khách hàng đã ứng trước gần 2.940 tỷ đồng cho các sản phẩm chưa đến hạn bàn giao, tăng gần 349 tỷ đồng so với thời điểm đầu năm.",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "NLG · —",
-  "value": "Giá trị đã bán chưa ghi nhận doanh thu khoảng 13.000 tỷ đồng cuối 09/2026, Southgate chiếm khoảng 60%.",
-  "url": "https://nguoiquansat.vn/so-huu-gan-680ha-dat-sach-nam-long-nlg-duoc-du-bao-lai-tang-gan-4-lan-trong-nam-2027-328320.html",
-  "opened_at": "2026-11-23",
-  "quote": "giá trị sản phẩm đã bán nhưng chưa ghi nhận doanh thu của Nam Long tại cuối tháng 9/2026 đạt khoảng 13.000 tỷ đồng, trong đó dự án Southgate chiếm khoảng 60%.",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "NLG · Akari City, Izumi City",
-  "value": "Thanh tra Chính phủ nêu doanh nghiệp ký hợp đồng bán sản phẩm trước thời điểm công khai thông tin bất động sản tại Akari Hoàng Nam, Đồng Nai Waterfront; một số trường hợp kinh doanh khi hạ tầng chưa hoàn thành.",
-  "url": "https://theleader.vn/nam-long-len-tieng-ve-nhung-ton-tai-o-5-du-an-bi-thanh-tra-d47883.html",
-  "opened_at": "2026-11-23",
-  "quote": "Ở một số dự án như Akari Hoàng Nam, Đồng Nai Waterfront, doanh nghiệp đã ký hợp đồng bán sản phẩm trước thời điểm công khai thông tin bất động sản.",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "NLG · Waterpoint (Vàm Cỏ Đông Southgate)",
-  "value": "Nam Long VCD và Southgate ký hợp đồng chuyển nhượng một phần dự án trước khi quy hoạch 1/500 được duyệt (theo kết luận thanh tra).",
-  "url": "https://viettimes.vn/thanh-tra-chinh-phu-chi-ra-sai-pham-tai-cac-du-an-cua-nam-long-post206460.html",
-  "opened_at": "2026-11-23",
-  "quote": "Tại dự án Vàm Cỏ Đông Southgate, Nam Long VCD và Southgate ký hợp đồng chuyển nhượng một phần dự án trước khi quy hoạch chi tiết tỷ lệ 1/500 được phê duyệt.",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "NLG · Waterpoint giai đoạn 2 (105 ha), Izumi City",
-  "value": "Quyền TGĐ cho biết đang cân nhắc huy động vốn tại hai dự án, ưu tiên giai đoạn 2 Waterpoint 105 ha, kỳ vọng ký trong 2026; đang đàm phán một phần quỹ đất Izumi City.",
-  "url": "https://znews.vn/nam-long-tinh-ban-mot-phan-quy-dat-tai-du-an-waterpoint-izumi-city-post1675103.html",
-  "opened_at": "2026-11-23",
-  "quote": "Trong đó, ưu tiên gần nhất là giai đoạn 2 của dự án Waterpoint với 105 ha - con số này chưa tính đến bất động sản thương mại, nếu tính cả quỹ bất động sản thương mại, quy mô thương vụ sẽ lớn hơn đáng kể.",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "NLG · Izumi City",
-  "value": "Hoàn tất chuyển nhượng 15% cổ phần Izumi City cho Tokyu Corporation đầu tháng 11/2025, giảm sở hữu còn 50% vốn.",
-  "url": "https://vneconomy.vn/nam-long-hoan-tat-thuong-vu-ban-von-cho-tokyu-tu-tin-ve-dich-ke-hoach-nam-2025.htm",
-  "opened_at": "2026-11-23",
-  "quote": "Sau khi hoàn tất chuyển nhượng 15% cổ phần cho đối tác Nhật Bản (Tokyu Corporation, để giảm sở hữu còn 50% vốn) vào đầu tháng 11/2025",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "NLG · —",
-  "value": "Nam Long đăng ký triển khai 60.000 căn nhà ở xã hội đến 2030; đã xây hơn 10,5 nghìn căn NOXH và nhà vừa túi tiền; đề xuất khoảng 20.000 căn NOXH tại Nhơn Trạch và Biên Hòa (Đồng Nai).",
-  "url": "https://thitruongtaichinhtiente.vn/nam-long-muon-xay-20-000-can-nha-xa-hoi-o-dong-nai-67518.html",
-  "opened_at": "2026-11-23",
-  "quote": "doanh nghiệp đề xuất thực hiện dự án xây dựng khoảng 20.000 căn nhà ở xã hội tại huyện Nhơn Trạch và thành phố Biên Hòa.",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê"
- },
- {
-  "block": "bds-57",
-  "claim": "NLG · EHomeS Nam Long II (Nam Long II Central Lake)",
-  "value": "Giai đoạn 3 NOXH EHomeS Nam Long II: 428/443 căn hoàn tất đặt cọc (97%) sau bốc thăm.",
-  "url": "https://vneconomy.vn/gan-100-can-du-an-nha-o-xa-hoi-nam-long-2-hoan-tat-dat-coc.htm",
-  "opened_at": "2026-11-23",
-  "quote": "Trong tổng số 443 căn thuộc đợt bốc thăm, 428 căn đã hoàn tất đặt cọc, tương đương 97%.",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê"
- },
- {
-  "block": "bds-57",
-  "claim": "NLG · Izumi City – lô 2.1.NOXH-01",
-  "value": "Sở Xây dựng công bố dự án chung cư NOXH tại lô 2.1.NOXH-01 trong Izumi City; dự kiến nhận hồ sơ mua từ quý IV/2026.",
-  "url": "https://znews.vn/nha-o-phia-nam-tang-toc-post1682539.html",
-  "opened_at": "2026-11-23",
-  "quote": "vừa công bố thông tin về dự án chung cư nhà ở xã hội tại lô đất 2.1.NOXH-01 thuộc Phân khu 2.1, dự án Đồng Nai Waterfront (tên thương mại Izumi City).",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê"
- },
- {
-  "block": "bds-57",
-  "claim": "NLG · Nam Long ADC (EHome/EHomeS)",
-  "value": "Nishi-Nippon Railroad nắm 49% liên doanh Nam Long ADC (Nam Long 51%); mục tiêu bàn giao hơn 22.000 căn hộ vào 2035.",
-  "url": "https://thitruongtaichinhtiente.vn/nam-long-adc-ky-ket-hop-tac-chien-luoc-voi-nishi-nippon-railroad-dat-muc-tieu-tang-truong-80-vao-nam-2030-82665.html",
-  "opened_at": "2026-11-23",
-  "quote": "Nam Long ADC đặt mục tiêu tăng trưởng dự kiến 80% vào năm 2030 và bàn giao hơn 22.000 căn hộ vào năm 2035.",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê"
+  "note": "Tiền đất · dữ kiện định tính, đầy đủ: Tại ĐHĐCĐ 2026 lãnh đạo thừa nhận vướng mắc chính sách tiền sử dụng đất làm chậm kế hoạch tích lũy quỹ đất, đang chờ quy định mới."
  },
  {
   "block": "bds-57",
@@ -747,7 +637,7 @@
   "opened_at": "2026-11-23",
   "quote": "- Năm 2020 đến năm 2024: Thực hiện gia hạn tiến độ thực hiện dự",
   "status": "match",
-  "note": "6. Chậm tiến độ"
+  "note": "Chậm tiến độ"
  },
  {
   "block": "bds-57",
@@ -757,7 +647,7 @@
   "opened_at": "2026-11-23",
   "quote": "Việc Đồng Nai phê duyệt điều chỉnh 1/5000 phân khu C4 được coi là “cứu tinh” đối với dự án Aqua City của Novaland và Waterfront của Nam Long.",
   "status": "match",
-  "note": "6. Chậm tiến độ"
+  "note": "Chậm tiến độ"
  },
  {
   "block": "bds-57",
@@ -767,7 +657,117 @@
   "opened_at": "2026-11-23",
   "quote": "dự án đã bán được 754 trên tổng số khoảng 2.900 căn thấp tầng. Theo kế hoạch, doanh nghiệp dự kiến tiếp tục mở bán 169 căn thuộc phân khu 1A2 trong tháng 11 và 461 căn tại phân khu Izumi Canaria vào tháng 12/2026.",
   "status": "match",
-  "note": "6. Chậm tiến độ"
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NLG · —",
+  "value": "Gần 680 ha đất sạch trải tại TP.HCM, Đồng Nai, Long An (cũ), Cần Thơ, Hải Phòng; lớn nhất là Izumi City 170 ha (Đồng Nai) và Waterpoint giai đoạn 2 190 ha (Long An cũ).",
+  "url": "https://nguoiquansat.vn/so-huu-gan-680ha-dat-sach-nam-long-nlg-duoc-du-bao-lai-tang-gan-4-lan-trong-nam-2027-328320.html",
+  "opened_at": "2026-11-23",
+  "quote": "nổi bật là Izumi City tại Đồng Nai, quy mô 170ha, và Waterpoint giai đoạn 2 tại Long An (cũ), rộng 190ha.",
+  "status": "match",
+  "note": "Pháp lý · địa bàn"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NLG · —",
+  "value": "Nam Long đăng ký triển khai 60.000 căn nhà ở xã hội đến 2030; đã xây hơn 10,5 nghìn căn NOXH và nhà vừa túi tiền; đề xuất khoảng 20.000 căn NOXH tại Nhơn Trạch và Biên Hòa (Đồng Nai).",
+  "url": "https://thitruongtaichinhtiente.vn/nam-long-muon-xay-20-000-can-nha-xa-hoi-o-dong-nai-67518.html",
+  "opened_at": "2026-11-23",
+  "quote": "doanh nghiệp đề xuất thực hiện dự án xây dựng khoảng 20.000 căn nhà ở xã hội tại huyện Nhơn Trạch và thành phố Biên Hòa.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NLG · EHomeS Nam Long II (Nam Long II Central Lake)",
+  "value": "Giai đoạn 3 NOXH EHomeS Nam Long II: 428/443 căn hoàn tất đặt cọc (97%) sau bốc thăm.",
+  "url": "https://vneconomy.vn/gan-100-can-du-an-nha-o-xa-hoi-nam-long-2-hoan-tat-dat-coc.htm",
+  "opened_at": "2026-11-23",
+  "quote": "Trong tổng số 443 căn thuộc đợt bốc thăm, 428 căn đã hoàn tất đặt cọc, tương đương 97%.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NLG · Izumi City – lô 2.1.NOXH-01",
+  "value": "Sở Xây dựng công bố dự án chung cư NOXH tại lô 2.1.NOXH-01 trong Izumi City; dự kiến nhận hồ sơ mua từ quý IV/2026.",
+  "url": "https://znews.vn/nha-o-phia-nam-tang-toc-post1682539.html",
+  "opened_at": "2026-11-23",
+  "quote": "vừa công bố thông tin về dự án chung cư nhà ở xã hội tại lô đất 2.1.NOXH-01 thuộc Phân khu 2.1, dự án Đồng Nai Waterfront (tên thương mại Izumi City).",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NLG · Nam Long ADC (EHome/EHomeS)",
+  "value": "Nishi-Nippon Railroad nắm 49% liên doanh Nam Long ADC (Nam Long 51%); mục tiêu bàn giao hơn 22.000 căn hộ vào 2035.",
+  "url": "https://thitruongtaichinhtiente.vn/nam-long-adc-ky-ket-hop-tac-chien-luoc-voi-nishi-nippon-railroad-dat-muc-tieu-tang-truong-80-vao-nam-2030-82665.html",
+  "opened_at": "2026-11-23",
+  "quote": "Nam Long ADC đặt mục tiêu tăng trưởng dự kiến 80% vào năm 2030 và bàn giao hơn 22.000 căn hộ vào năm 2035.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NLG · —",
+  "value": "Người mua trả tiền trước gần 2.940 tỷ đồng cuối 06/2026, tăng gần 349 tỷ so với đầu năm.",
+  "url": "https://doanhnhan.baophapluat.vn/nam-long-nlg-ghi-nhan-doanh-so-vuot-5-000-ty-dong-dong-tien-mat-lan-at-du-no-vay.html",
+  "opened_at": "2026-11-23",
+  "quote": "Tính đến cuối tháng 06/2026, khách hàng đã ứng trước gần 2.940 tỷ đồng cho các sản phẩm chưa đến hạn bàn giao, tăng gần 349 tỷ đồng so với thời điểm đầu năm.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NLG · —",
+  "value": "Giá trị đã bán chưa ghi nhận doanh thu khoảng 13.000 tỷ đồng cuối 09/2026, Southgate chiếm khoảng 60%.",
+  "url": "https://nguoiquansat.vn/so-huu-gan-680ha-dat-sach-nam-long-nlg-duoc-du-bao-lai-tang-gan-4-lan-trong-nam-2027-328320.html",
+  "opened_at": "2026-11-23",
+  "quote": "giá trị sản phẩm đã bán nhưng chưa ghi nhận doanh thu của Nam Long tại cuối tháng 9/2026 đạt khoảng 13.000 tỷ đồng, trong đó dự án Southgate chiếm khoảng 60%.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NLG · Akari City, Izumi City",
+  "value": "Thanh tra Chính phủ nêu doanh nghiệp ký hợp đồng bán sản phẩm trước thời điểm công khai thông tin bất động sản tại Akari Hoàng Nam, Đồng Nai Waterfront; một số trường hợp kinh doanh khi hạ tầng chưa hoàn thành.",
+  "url": "https://theleader.vn/nam-long-len-tieng-ve-nhung-ton-tai-o-5-du-an-bi-thanh-tra-d47883.html",
+  "opened_at": "2026-11-23",
+  "quote": "Ở một số dự án như Akari Hoàng Nam, Đồng Nai Waterfront, doanh nghiệp đã ký hợp đồng bán sản phẩm trước thời điểm công khai thông tin bất động sản.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NLG · Waterpoint (Vàm Cỏ Đông Southgate)",
+  "value": "Nam Long VCD và Southgate ký hợp đồng chuyển nhượng một phần dự án trước khi quy hoạch 1/500 được duyệt (theo kết luận thanh tra).",
+  "url": "https://viettimes.vn/thanh-tra-chinh-phu-chi-ra-sai-pham-tai-cac-du-an-cua-nam-long-post206460.html",
+  "opened_at": "2026-11-23",
+  "quote": "Tại dự án Vàm Cỏ Đông Southgate, Nam Long VCD và Southgate ký hợp đồng chuyển nhượng một phần dự án trước khi quy hoạch chi tiết tỷ lệ 1/500 được phê duyệt.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NLG · Waterpoint giai đoạn 2 (105 ha), Izumi City",
+  "value": "Quyền TGĐ cho biết đang cân nhắc huy động vốn tại hai dự án, ưu tiên giai đoạn 2 Waterpoint 105 ha, kỳ vọng ký trong 2026; đang đàm phán một phần quỹ đất Izumi City.",
+  "url": "https://znews.vn/nam-long-tinh-ban-mot-phan-quy-dat-tai-du-an-waterpoint-izumi-city-post1675103.html",
+  "opened_at": "2026-11-23",
+  "quote": "Trong đó, ưu tiên gần nhất là giai đoạn 2 của dự án Waterpoint với 105 ha - con số này chưa tính đến bất động sản thương mại, nếu tính cả quỹ bất động sản thương mại, quy mô thương vụ sẽ lớn hơn đáng kể.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NLG · Izumi City",
+  "value": "Hoàn tất chuyển nhượng 15% cổ phần Izumi City cho Tokyu Corporation đầu tháng 11/2025, giảm sở hữu còn 50% vốn.",
+  "url": "https://vneconomy.vn/nam-long-hoan-tat-thuong-vu-ban-von-cho-tokyu-tu-tin-ve-dich-ke-hoach-nam-2025.htm",
+  "opened_at": "2026-11-23",
+  "quote": "Sau khi hoàn tất chuyển nhượng 15% cổ phần cho đối tác Nhật Bản (Tokyu Corporation, để giảm sở hữu còn 50% vốn) vào đầu tháng 11/2025",
+  "status": "match",
+  "note": "Thu tiền"
  },
  {
   "block": "bds-57",
@@ -781,43 +781,343 @@
  },
  {
   "block": "bds-57",
+  "claim": "DXG · 6 dự án theo Nghị quyết 171 (không nêu tên)",
+  "value": "6 dự án quy mô 5–10 ha được phê duyệt triển khai theo cơ chế thí điểm Nghị quyết 171 (thỏa thuận nhận quyền sử dụng đất); không có số liệu tỷ lệ đã thỏa thuận/đền bù.",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-2026-dat-xanh-dxg-nam-trong-tay-10-du-an-trung-tam-tp-hcm-tai-cau-truc-thuong-hieu-tien-len-quy-mo-toan-cau.html",
+  "opened_at": "2026-11-23",
+  "quote": "6 dự án được phê duyệt triển khai theo cơ chế thí điểm của Nghị quyết 171 với quy mô đa dạng 5-10 ha",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · DXH Park View; Opal Luxury; DXH Park City",
+  "value": "Theo thống kê Vietcap (blog elibook dẫn lại), Park View 5,0 ha, Opal Luxury 8,6 ha, Park City 10,5 ha đã xong quy hoạch 1/500 và đang trong quá trình nộp tiền sử dụng đất; dự kiến mở bán 2029, 2030, 2031.",
+  "url": "https://elibook.vn/2026/09/08/dxg-loi-nhuan-cot-loi-chi-con-7-ty-co-dong-thieu-so-am-63-mieng-banh-nghi-quyet-21-co-phai-con-bai-cuu-canh/",
+  "opened_at": "2026-11-23",
+  "quote": "Park City ( 10.5 ha , dự kiến mở bán 2031) — đều đã hoàn tất quy hoạch 1/500 và đang trong quá trình nộp tiền sử dụng đất",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · 10 dự án trung tâm TP.HCM (không nêu tên)",
+  "value": "Tại ĐHĐCĐ 17/04/2026, ông Lương Trí Thìn cho biết trong năm 2025 có 4 dự án đang hoàn thiện khâu tính tiền sử dụng đất.",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-2026-dat-xanh-dxg-nam-trong-tay-10-du-an-trung-tam-tp-hcm-tai-cau-truc-thuong-hieu-tien-len-quy-mo-toan-cau.html",
+  "opened_at": "2026-11-23",
+  "quote": "Đất Xanh có 4 dự án đang hoàn thiện khâu tính tiền sử dụng đất và 6 dự án được phê duyệt triển khai theo cơ chế thí điểm của Nghị quyết 171 với quy mô đa dạng 5-10 ha.",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · Dự án 8,6 ha phường Dĩ An (nhận chuyển nhượng từ Vương Bảo Long)",
+  "value": "Dự án  ha phường Dĩ An (nhận chuyển nhượng từ Vương Bảo Long",
+  "url": "https://nhadautu.vn/hon-3800-can-ho-se-ra-mat-tai-trung-tam-di-an-giai-doan-20262027-d103226.html",
+  "opened_at": "2026-11-23",
+  "quote": "Sau khi hoàn tất các thủ tục liên quan đến chuyển nhượng, Công ty Hà An sẽ triển khai các bước chuẩn bị đầu tư, hoàn thiện pháp lý và xây dựng kế hoạch phát triển sản phẩm.",
+  "status": "match",
+  "note": "Tiền đất · dữ kiện định tính, đầy đủ: Tháng 3/2026 Hà An nhận chuyển nhượng dự án 8,6 ha, hơn 3.800 căn; chủ trương đã được HĐQT duyệt từ tháng 9/2022; còn phải hoàn thiện pháp lý trước khi ra hàng "
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · The Privé (Gem Riverside)",
+  "value": "Đã nộp xong tiền sử dụng đất bổ sung cho quy hoạch 1/500 điều chỉnh trong quý 1/2024 (ước tăng thêm 150 tỷ đồng); số sản phẩm tăng từ 2.302 lên 3.175.",
+  "url": "https://tapchicongthuong.vn/tap-doan-dat-xanh--dxg-da-co-gpxd-du-an-gem-riverside--doanh-thu-uoc-dat-18-000-ty-dong-127550.htm",
+  "opened_at": "2026-11-23",
+  "quote": "đã hoàn tất việc đóng tiền sử dụng đất bổ sung cho quy hoạch 1/500 điều chỉnh của dự án Gem Riverside trong quý 1/2024 (ước tính tăng thêm 150 tỷ đồng)",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · The Privé (Gem Riverside)",
+  "value": "Năm 2019 Đất Xanh nhận đặt cọc giữ chỗ khoảng 250 triệu đồng/căn qua 'thỏa thuận tư vấn bất động sản'; cơ quan chức năng yêu cầu dừng, dự án đình trệ nhiều năm.",
+  "url": "https://thanhtra.com.vn/khieu-nai-to-cao-AAE7E0F0E/hang-chuc-khach-hang-phan-doi-tai-le-ra-quan-du-an-can-ho-the-prive-cua-dat-xanh-50859983c.html",
+  "opened_at": "2026-11-23",
+  "quote": "mỗi căn hộ khoảng 250 triệu đồng. Tuy nhiên, do hình thức huy động vốn này chưa phù hợp với quy định pháp luật nên đã bị cơ quan chức năng yêu cầu dừng lại, khiến dự án đình trệ suốt nhiều năm.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · The Privé (Gem Riverside)",
+  "value": "Tháng 10/2024 Đất Xanh đơn phương chấm dứt hợp đồng nguyên tắc với khách cũ (khoảng 300 căn ký từ 2019), hoàn 100% tiền kèm lãi 15%/năm nếu thanh lý trước 01/11/2024.",
+  "url": "https://thanhtra.com.vn/khieu-nai-to-cao-AAE7E0F0E/hang-chuc-khach-hang-phan-doi-tai-le-ra-quan-du-an-can-ho-the-prive-cua-dat-xanh-50859983c.html",
+  "opened_at": "2026-11-23",
+  "quote": "nếu khách hàng ký thanh lý trước ngày 1/11/2024 sẽ được hoàn trả 100% tiền đã nộp cùng với lãi suất 15%/năm tính từ thời điểm ký hợp đồng nguyên tắc đến ngày 31/10/2024",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · Gem Sky World",
+  "value": "UBND tỉnh Đồng Nai phạt Hà An 900 triệu đồng (QĐ 2276/QĐ-XPHC) vì huy động vốn không đúng quy định tại dự án 92,2 ha; buộc hoàn trả vốn đã huy động trong 360 ngày.",
+  "url": "https://nhandan.vn/xu-phat-chu-dau-tu-du-an-gem-sky-world-huy-dong-von-khong-dung-quy-dinh-post775673.html",
+  "opened_at": "2026-11-23",
+  "quote": "Hành vi vi phạm là huy động vốn không đúng quy định đối với Dự án khu dân cư theo quy hoạch 92,2ha tại xã Long Đức, huyện Long Thành (dự án Gem Sky World).",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · Toàn doanh nghiệp (chủ yếu The Privé)",
+  "value": "Người mua trả tiền trước ngắn hạn cuối quý III/2026 gần 9,1 nghìn tỷ đồng, tăng 47% so với đầu năm.",
+  "url": "https://doanhnhan.baophapluat.vn/bluemarq-group-dxg-tien-khach-hang-tra-truoc-vuot-9-100-ty-dong-cung-co-nguon-thu-dai-han.html",
+  "opened_at": "2026-11-23",
+  "quote": "khoản tiền người mua trả trước ngắn hạn phình to lên mức gần 9.1 ngàn tỷ đồng, tương đương mức tăng 47%",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · Toàn doanh nghiệp",
+  "value": "Toàn doanh nghiệp",
+  "url": "https://doanhnhan.baophapluat.vn/dhdcd-2026-dat-xanh-dxg-nam-trong-tay-10-du-an-trung-tam-tp-hcm-tai-cau-truc-thuong-hieu-tien-len-quy-mo-toan-cau.html",
+  "opened_at": "2026-11-23",
+  "quote": "Doanh nghiệp sẽ không phát triển dự án chỉ để bán đứt ra thị trường mà chuyển sang giữ lại các tài sản chất lượng để khai thác.",
+  "status": "match",
+  "note": "Xã hội · dữ kiện định tính, đầy đủ: Mô hình mới thông qua tại ĐHĐCĐ 2026: không phát triển dự án chỉ để bán đứt mà giữ lại tài sản để khai thác, tập trung trung tâm thương mại, căn hộ dịch vụ, văn"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · The Privé (Gem Riverside)",
+  "value": "Dự án 6,7 ha nhận khách đặt cọc từ 2019, đến tháng 9/2024 mới có giấy phép xây dựng; kế hoạch mở bán 2025, bàn giao từ 2027.",
+  "url": "https://doanhnhan.baophapluat.vn/dxg-huy-toan-bo-hop-dong-dat-mua-du-an-gem-riverside-o-thu-duc-tai-khoi-dong-voi-muc-gia-moi-78645.html",
+  "opened_at": "2026-11-23",
+  "quote": "DXG đã nhận được giấy phép xây dựng cho dự án này vào tháng 9/2024.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · KĐT mới Mái Dầm; KĐT mới Bá Hiến",
+  "value": "HĐQT chấm dứt đầu tư 2 dự án chưa triển khai: Mái Dầm 96,79 ha (được chấp thuận chủ đầu tư năm 2024, vốn 4.356 tỷ đồng) và Bá Hiến 37,872 ha (công bố 2022).",
+  "url": "https://cafeland.vn/tin-tuc/bluemarq-group-dung-dau-tu-2-du-an-khu-do-thi-moi-mai-dam-va-ba-hien-153962.html",
+  "opened_at": "2026-11-23",
+  "quote": "Dự án có quy mô 96,79 ha và tổng vốn đầu tư ước tính 4.356 tỷ đồng.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · Gem Sky World",
+  "value": "Dự án khoảng 92 ha, gần 4.000 sản phẩm; đến cuối quý II/2026 đã bán khoảng 2.400 sản phẩm, tương đương 60% (báo dẫn Vietcap).",
+  "url": "https://nguoiquansat.vn/mot-doanh-nghiep-bat-dong-san-duoc-ky-vong-lai-gap-8-lan-nho-du-an-chu-luc-tai-tp-hcm-317010.html",
+  "opened_at": "2026-11-23",
+  "quote": "Đến cuối quý II/2026, khoảng 2.400 sản phẩm đã được bán, tương đương khoảng 60% tổng số sản phẩm.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · Toàn danh mục",
+  "value": "Toàn danh mục",
+  "url": "https://cafeland.vn/tin-tuc/bluemarq-group-dung-dau-tu-2-du-an-khu-do-thi-moi-mai-dam-va-ba-hien-153962.html",
+  "opened_at": "2026-11-23",
+  "quote": "Các thị trường đầu tư trọng điểm được doanh nghiệp này xác định gồm Hà Nội, TP.HCM, Đồng Nai và Đà Nẵng.",
+  "status": "match",
+  "note": "Pháp lý · địa bàn · dữ kiện định tính, đầy đủ: Chiến lược đầu tư mới (nghị quyết HĐQT 04/08/2026) xác định 4 thị trường trọng điểm: Hà Nội, TP.HCM, Đồng Nai, Đà Nẵng."
+ },
+ {
+  "block": "bds-57",
+  "claim": "DXG · The Privé",
+  "value": "MBS (trước khi luật được thông qua, bối cảnh Nghị quyết 21 và Luật Nhà ở sửa đổi): The Privé được triển khai trước thời điểm luật mới, tỷ lệ hấp thụ dự báo có thể trên 80%.",
+  "url": "https://nhadautu.vn/nhung-co-phieu-bat-dong-san-nao-co-the-huong-loi-tu-nghi-quyet-21-d106947.html",
+  "opened_at": "2026-11-23",
+  "quote": "MBS cho rằng The Privé sẽ là động lực tăng trưởng chính của DXG trong giai đoạn 2025-2026. Do dự án được triển khai trước thời điểm luật mới, nhóm phân tích dự báo tỷ lệ hấp thụ có thể đạt trên 80%.",
+  "status": "match",
+  "note": "Nhận định"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · 150 Tô Hiệu (chung cư kết hợp TTTM)",
+  "value": "UBND TP Hải Phòng giao hơn 16.177 m2 đất đã hoàn thành giải phóng mặt bằng tại 150 Tô Hiệu cho TCH; dự án vốn hơn 3.179 tỷ đồng, khoảng 998 căn hộ.",
+  "url": "https://mekongasean.vn/khoi-tai-san-lon-va-phep-thu-voi-nang-luc-cua-hoang-huy-61090.html",
+  "opened_at": "2026-11-23",
+  "quote": "UBND TP Hải Phòng ban hành quyết định giao hơn 16.177 m2 đất đã hoàn thành giải phóng mặt bằng tại số 150 Tô Hiệu cho TCH thực hiện dự án chung cư kết hợp trung tâm thương mại, dịch vụ.",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · Khu đô thị Tân Dương - Hoa Động",
+  "value": "Dự án mới trúng thầu có hạng mục hạ tầng khu tái định cư tại chỗ khoảng 13.867,46 m2 để phục vụ giải phóng mặt bằng (tức mặt bằng chưa giải phóng).",
+  "url": "https://baodauthau.vn/khong-doi-thu-hoang-huy-trung-du-an-khu-do-thi-4732-ty-dong-tai-hai-phong-post207303.html",
+  "opened_at": "2026-11-23",
+  "quote": "Dự án cũng đầu tư hạ tầng kỹ thuật khu tái định cư tại chỗ với tổng diện tích đất khoảng 13.867,46 m2 để phục vụ công tác giải phóng mặt bằng",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · Hoàng Huy New City II (CRV)",
+  "value": "Đến cuối quý II/2025, CRV ghi nhận gần 5.388 tỷ đồng chi phí dở dang tại New City II, trong đó hơn 4.800 tỷ đồng là tiền sử dụng đất đã nộp ngân sách.",
+  "url": "https://24hmoney.vn/news/tan-binh-bds-nhom-hoang-huy-len-san-hose-ngay-10-10-dinh-gia-gan-17-500-ty-dong-c1a2652829.html",
+  "opened_at": "2026-11-23",
+  "quote": "Tính đến cuối quý II/2025, CRV đã ghi nhận gần 5.388 tỷ đồng chi phí dở dang cho dự án, trong đó hơn 4.800 tỷ là tiền sử dụng đất đã nộp ngân sách.",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · Hoàng Huy Green River; Hoàng Huy - Sở Dầu",
+  "value": "Thanh tra Chính phủ đề nghị Hải Phòng rà soát, xác định lại và thu bổ sung (nếu có) tiền sử dụng đất tại nhiều dự án, trong đó có Hoàng Huy - Sở Dầu và Hoàng Huy Green River.",
+  "url": "https://viettimes.vn/thanh-tra-chinh-phu-diem-ten-2-du-an-lien-quan-toi-cong-ty-hoang-huy-post181261.html",
+  "opened_at": "2026-11-23",
+  "quote": "kiểm tra, rà soát, xác định lại và thu bổ sung về ngân sách (nếu có) tiền sử dụng đất, tiền thuê đất tại các lần giao đất, chuyển mục đích sử dụng đất, điều chỉnh quy hoạch chi tiết xây dựng làm thay đổi cơ cấu sử dụng đất đối nhiều dự án.",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · Lô I.14/CTHH-01 Khu đô thị mới Bắc sông Cấm (Nhà Đại Lộc)",
+  "value": "Công ty con gián tiếp Nhà Đại Lộc trúng đấu giá lô đất khoảng 3,2 ha với giá hơn 1.322 tỷ đồng; tổng nghĩa vụ tài chính phải nộp hơn 1.327 tỷ đồng (giá đất xác định qua đấu giá).",
+  "url": "https://vietnamfinance.vn/cong-ty-con-cua-hoang-huy-trung-dau-gia-lo-dat-32ha-voi-gia-1300-ty-dong-d144523.html",
+  "opened_at": "2026-11-23",
+  "quote": "Tổng nghĩa vụ tài chính của doanh nghiệp phải nộp vào ngân sách TP. Hải Phòng tại dự án này hơn 1.327 tỷ đồng.",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · Khu đô thị Tân Dương - Hoa Động",
+  "value": "TCH là nhà đầu tư duy nhất dự thầu và trúng thầu dự án 4.732 tỷ đồng; tỷ lệ nộp ngân sách đề xuất M = 3,18% (hồ sơ mời thầu quy định 3,12%).",
+  "url": "https://baodauthau.vn/khong-doi-thu-hoang-huy-trung-du-an-khu-do-thi-4732-ty-dong-tai-hai-phong-post207303.html",
+  "opened_at": "2026-11-23",
+  "quote": "Tỷ lệ nộp ngân sách nhà nước (M) do nhà đầu tư đề xuất là 3,18%, trong khi tỷ lệ m quy định tại HSMT là 3,12%.",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · New City II; Green River; Commerce - H2",
+  "value": "Người mua trả tiền trước 6.125 tỷ đồng tại 31/3/2026 (New City II khoảng 3.906 tỷ, Green River 1.693 tỷ, Commerce - H2 khoảng 459 tỷ).",
+  "url": "https://mekongasean.vn/khoi-tai-san-lon-va-phep-thu-voi-nang-luc-cua-hoang-huy-61090.html",
+  "opened_at": "2026-11-23",
+  "quote": "Trong đó, khách hàng tại Hoàng Huy New City II đã trả trước khoảng 3.906 tỷ đồng; Hoàng Huy Green River 1.693 tỷ đồng và Hoang Huy Commerce - H2 khoảng 459 tỷ đồng.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · —",
+  "value": "Người mua trả tiền trước tăng lên gần 6.493 tỷ đồng tại 30/6/2026.",
+  "url": "https://mekongasean.vn/khoi-tai-san-lon-va-phep-thu-voi-nang-luc-cua-hoang-huy-61090.html",
+  "opened_at": "2026-11-23",
+  "quote": "Đến cuối tháng 6, người mua trả tiền trước tiếp tục tăng lên gần 6.493 tỷ đồng.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · Hoàng Huy New City II (CRV)",
+  "value": "Sở Xây dựng Hải Phòng thông báo ngày 24/6/2025: 543 căn thấp tầng hình thành trong tương lai của New City II đủ điều kiện được bán.",
+  "url": "https://nhadautu.vn/543-can-thap-tang-du-an-hoang-huy-new-city-ii-duoc-phep-kinh-doanh-d97221.html",
+  "opened_at": "2026-11-23",
+  "quote": "543 căn nhà ở thương mại (nhà ở thấp tầng) hình thành trong tương lai, thuộc dự án Hoàng Huy New City II của CRV, đã đủ điều kiện được bán.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · Hoàng Huy Green River - nhà ở xã hội",
+  "value": "Tháng 9/2025 Sở Xây dựng Hải Phòng thông báo 441 căn nhà ở xã hội hình thành trong tương lai tại Green River đủ điều kiện kinh doanh.",
+  "url": "https://nhadautu.vn/hoang-huy-phu-song-thi-truong-bat-dong-san-hai-phong-d107167.html",
+  "opened_at": "2026-11-23",
+  "quote": "Tháng 9/2025, Sở Xây dựng Hải Phòng đã thông báo 441 căn hộ nhà ở xã hội hình thành trong tương lai tại Hoàng Huy Green River đủ điều kiện đưa vào kinh doanh.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · Hoàng Huy Green River",
+  "value": "Green River có 441 căn nhà ở xã hội, đã bán khoảng 75%; phần thấp tầng bán khoảng 50% trên 820 căn.",
+  "url": "https://theleader.vn/don-luc-cho-hai-phong-hoang-huy-cho-hai-qua-ngot-d47009.html",
+  "opened_at": "2026-11-23",
+  "quote": "Phần thấp tầng đã bán được khoảng 50% trên tổng số 820 căn, còn khu nhà ở xã hội đã bán được khoảng 75% trong tổng số 441 căn.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · Hoàng Huy New City II (CRV) - nhà ở xã hội",
+  "value": "Phần nhà ở xã hội của CRV gồm 9 tòa 4 tầng, 495 căn, dự kiến đưa vào sử dụng quý IV/2026; Sở Xây dựng đã tiếp nhận báo cáo nhận hồ sơ đăng ký mua.",
+  "url": "https://tienphong.vn/du-an-noxh-tai-hai-phong-co-gia-gan-30-trieu-dongm2-post1849771.tpo",
+  "opened_at": "2026-11-23",
+  "quote": "phần công trình NƠXH gồm 9 tòa chung cư cao 4 tầng dự kiến hoàn thành và đưa vào sử dụng trong quý IV/2026 với 495 căn hộ có diện tích từ 43,1-64,24m2.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · NOXH An Hải (New Pruksa Town); NOXH Hoàng Huy New City giai đoạn 1",
+  "value": "TCH làm nhà ở xã hội tại phường An Hải (hơn 30.593 m2, khoảng 900 căn hộ và 50 căn liền kề, 2020-2023) và 149 căn trên quỹ đất 20% của Hoàng Huy New City (2023-2026).",
+  "url": "https://vneconomy.vn/hai-phong-du-an-nha-o-xa-hoi-xet-duyet-chua-dung-doi-tuong.htm",
+  "opened_at": "2026-11-23",
+  "quote": "Dự án nhà ở xã hội tại Khu đô thị Hoàng Huy NewCity gồm 149 căn hộ, bố trí tại 2 block nhà 5 tầng, triển khai giai đoạn 2023 - 2026.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · Khu đô thị Tân Dương - Hoa Động",
+  "value": "Dự án mới trúng thầu có chung cư nhà ở xã hội để bán, cho thuê trên khoảng 29.566,36 m2 đất.",
+  "url": "https://baodauthau.vn/khong-doi-thu-hoang-huy-trung-du-an-khu-do-thi-4732-ty-dong-tai-hai-phong-post207303.html",
+  "opened_at": "2026-11-23",
+  "quote": "chung cư nhà ở xã hội để bán, cho thuê trên diện tích đất khoảng 29.566,36 m2, tầng cao tối đa 6 tầng.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · Pruksa Town (khu nhà ở thu nhập thấp An Đồng)",
+  "value": "Dự án cấp phép 2013, phải xong giai đoạn 2013-2017; đến 2019 mới xin điều chỉnh và gia hạn đến 2022; Thanh tra TP Hải Phòng kết luận chậm tiến độ kéo dài dù nhiều lần gia hạn.",
+  "url": "https://vneconomy.vn/hai-phong-du-an-nha-o-xa-hoi-xet-duyet-chua-dung-doi-tuong.htm",
+  "opened_at": "2026-11-23",
+  "quote": "Đến năm 2019, doanh nghiệp mới đề nghị điều chỉnh dự án và gia hạn tiến độ đến năm 2022.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · Hoàng Huy Green River",
+  "value": "Green River dự kiến triển khai đến hết quý IV/2028; khu nhà ở xã hội còn đang xây; đã giải ngân gần 939 tỷ đồng vốn cổ đông cho dự án đến 25/9/2026.",
+  "url": "https://24hmoney.vn/news/hoang-huy-tch-dung-hon-1-100-ty-dong-tien-co-dong-cho-2-du-an-nao-c3a2842032.html",
+  "opened_at": "2026-11-23",
+  "quote": "Dự án dự kiến triển khai đến hết quý IV/2028.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "TCH · —",
+  "value": "—",
+  "url": "https://mekongasean.vn/khoi-tai-san-lon-va-phep-thu-voi-nang-luc-cua-hoang-huy-61090.html",
+  "opened_at": "2026-11-23",
+  "quote": "lãnh đạo doanh nghiệp chia sẻ trước mắt TCH vẫn tập trung vào các dự án hiện hữu và dự án mới tại thành phố này; việc mở rộng sang địa phương khác sẽ được nghiên cứu nếu bảo đảm hiệu quả.",
+  "status": "match",
+  "note": "Pháp lý · địa bàn · dữ kiện định tính, đầy đủ: Tại ĐHĐCĐ 24/7/2026, lãnh đạo TCH cho biết trước mắt vẫn tập trung dự án hiện hữu và dự án mới tại Hải Phòng; mở rộng sang địa phương khác chỉ nghiên cứu nếu bả"
+ },
+ {
+  "block": "bds-57",
   "claim": "NVL · Khu tổ hợp du lịch nghỉ dưỡng Vương Cung",
   "value": "Đã nhận chuyển nhượng khoảng 23,5 ha, còn hơn 7 ha chưa xong do vướng hồ sơ đất đai của các hộ dân (tổng vốn gần 1.900 tỷ đồng).",
   "url": "https://nguoiquansat.vn/7-du-an-trong-diem-cua-novaland-gap-kho-lanh-dao-tinh-vao-cuoc-296541.html",
   "opened_at": "2026-11-23",
   "quote": "doanh nghiệp đã hoàn tất nhận chuyển nhượng khoảng 23,5ha đất, song vẫn còn hơn 7ha chưa hoàn thành do vướng hồ sơ đất đai của các hộ dân.",
   "status": "match",
-  "note": "1. Có đất"
+  "note": "Có đất"
  },
  {
   "block": "bds-57",
   "claim": "NVL · Khu dân cư 7/5 (phường Long Bình)",
-  "value": "Khu dân cư / (phường Long Bình)",
+  "value": "Khu dân cư / (phường Long Bình",
   "url": "https://stockbiz.vn/tin-tuc/nvl-thang-kien-sau-nhieu-nam-tranh-chap-cong-ty-thanh-vien-novaland-van-mac-ket-voi-du-an-khu-dan-cu-75/41034649",
   "opened_at": "2026-11-23",
   "quote": "Công ty TKG nhiều lần không bảo đảm tiến độ đền bù giải phóng mặt bằng và đến thời điểm hiện tại vẫn chưa hoàn tất điều kiện này",
   "status": "match",
-  "note": "1. Có đất · dữ kiện định tính, đầy đủ: Công ty Gia Huy (thành viên Novaland) mua 100% vốn chủ đầu tư từ 2018, đã trả hơn 273 tỷ đồng; bên bán đến 7/2026 vẫn chưa hoàn tất đền bù giải phóng mặt bằng; "
- },
- {
-  "block": "bds-57",
-  "claim": "NVL · Quỹ đất chưa triển khai",
-  "value": "ĐHĐCĐ 23/4/2026: còn hơn 2.400 ha quỹ đất mới chưa triển khai; mục tiêu 2026 bàn giao hơn 2.600 sản phẩm, bán mới hơn 2.100 sản phẩm.",
-  "url": "https://thitruongtaichinhtiente.vn/dhdcd-novaland-ke-hoach-doanh-thu-tang-hon-3-lan-kien-toan-bo-may-nhan-su-no-luc-phuc-hoi-phat-trien-82401.html",
-  "opened_at": "2026-11-23",
-  "quote": "Hiện Novaland còn hơn 2.400ha quỹ đất mới chưa triển khai, tập trung ở các khu vực nhiều tiềm năng về kinh tế - du lịch.",
-  "status": "match",
-  "note": "2. Pháp lý · địa bàn"
- },
- {
-  "block": "bds-57",
-  "claim": "NVL · 23 dự án tại 5 địa phương",
-  "value": "Văn bản Bộ NN&MT (9/2026) dẫn báo cáo Novaland: kiến nghị gỡ vướng 23 dự án thuộc 5 địa phương, chủ yếu về giá đất, nghĩa vụ tài chính, thủ tục đất đai, cấp giấy chứng nhận.",
-  "url": "https://tienphong.vn/bo-nong-nghiep-va-moi-truong-de-nghi-go-vuong-2-sieu-du-an-o-tphcm-post1880638.tpo",
-  "opened_at": "2026-11-23",
-  "quote": "doanh nghiệp kiến nghị xử lý vướng mắc tại 23 dự án thuộc 5 địa phương. Các vấn đề chủ yếu liên quan đến xác định giá đất, nghĩa vụ tài chính, thủ tục đất đai, đầu tư, quy hoạch, xây dựng và cấp giấy chứng nhận cho khách hàng.",
-  "status": "match",
-  "note": "2. Pháp lý · địa bàn"
+  "note": "Có đất · dữ kiện định tính, đầy đủ: Công ty Gia Huy (thành viên Novaland) mua 100% vốn chủ đầu tư từ 2018, đã trả hơn 273 tỷ đồng; bên bán đến 7/2026 vẫn chưa hoàn tất đền bù giải phóng mặt bằng; "
  },
  {
   "block": "bds-57",
@@ -827,7 +1127,7 @@
   "opened_at": "2026-11-23",
   "quote": "Theo kết quả xác định nghĩa vụ tài chính, 7 trong 8 phân khu không phải nộp thêm tiền sử dụng đất sau điều chỉnh quy hoạch.",
   "status": "match",
-  "note": "3. Tiền đất · dữ kiện định tính, đầy đủ: Ngày 28–29/9/2026 Đồng Nai ban hành 8 quyết định phê duyệt giá đất cụ thể cho cụm Aqua City (tính tiền sử dụng đất khi điều chỉnh quy hoạch); 7/8 phân khu không"
+  "note": "Tiền đất · dữ kiện định tính, đầy đủ: Ngày 28–29/9/2026 Đồng Nai ban hành 8 quyết định phê duyệt giá đất cụ thể cho cụm Aqua City (tính tiền sử dụng đất khi điều chỉnh quy hoạch); 7/8 phân khu không"
  },
  {
   "block": "bds-57",
@@ -837,7 +1137,7 @@
   "opened_at": "2026-11-23",
   "quote": "Đến tháng 10/2026, toàn bộ các phân khu thuộc cụm dự án Aqua City đã hoàn tất các thủ tục pháp lý liên quan, đủ điều kiện triển khai ký hợp đồng mua bán theo quy định",
   "status": "match",
-  "note": "3. Tiền đất"
+  "note": "Tiền đất"
  },
  {
   "block": "bds-57",
@@ -847,7 +1147,7 @@
   "opened_at": "2026-11-23",
   "quote": "Dự án NovaWorld Phan Thiết có diện tích hơn 986 ha. Đến nay, chủ đầu tư đã bàn giao hơn 1.300 trên tổng số hơn 8.000 sản phẩm bất động sản cho khách hàng.",
   "status": "match",
-  "note": "3. Tiền đất"
+  "note": "Tiền đất"
  },
  {
   "block": "bds-57",
@@ -857,7 +1157,7 @@
   "opened_at": "2026-11-23",
   "quote": "Phó Chủ tịch UBND tỉnh Nguyễn Minh yêu cầu tập trung tháo gỡ khó khăn thông qua việc sớm phê duyệt giá đất cụ thể, tạo điều kiện để nhà đầu tư hoàn thành nghĩa vụ tài chính.",
   "status": "match",
-  "note": "3. Tiền đất · dữ kiện định tính, đầy đủ: Cuối 2/2026 giá đất cụ thể vẫn chưa được duyệt: lãnh đạo tỉnh Lâm Đồng yêu cầu sớm phê duyệt giá đất và chọn tư vấn cho Hội đồng thẩm định."
+  "note": "Tiền đất · dữ kiện định tính, đầy đủ: Cuối 2/2026 giá đất cụ thể vẫn chưa được duyệt: lãnh đạo tỉnh Lâm Đồng yêu cầu sớm phê duyệt giá đất và chọn tư vấn cho Hội đồng thẩm định."
  },
  {
   "block": "bds-57",
@@ -867,17 +1167,17 @@
   "opened_at": "2026-11-23",
   "quote": "Cuối cùng, NovaWorld Phan Thiet đang ở bước xử lý tiền sử dụng đất, kỳ vọng tháng 6 này sẽ “đóng sổ” phần pháp lý, đẩy mạnh thi công.",
   "status": "match",
-  "note": "3. Tiền đất · dữ kiện định tính, đầy đủ: Giữa 6/2026 CEO cho biết NovaWorld Phan Thiết đang ở bước xử lý tiền sử dụng đất; NovaWorld Hồ Tràm còn khoảng 2 phân kỳ đang xử lý pháp lý."
+  "note": "Tiền đất · dữ kiện định tính, đầy đủ: Giữa 6/2026 CEO cho biết NovaWorld Phan Thiết đang ở bước xử lý tiền sử dụng đất; NovaWorld Hồ Tràm còn khoảng 2 phân kỳ đang xử lý pháp lý."
  },
  {
   "block": "bds-57",
   "claim": "NVL · The Grand Manhattan (100 Cô Giang)",
-  "value": "The Grand Manhattan ( Cô Giang)",
+  "value": "The Grand Manhattan ( Cô Giang",
   "url": "https://doanhnhan.baophapluat.vn/go-diem-nghen-phap-ly-hai-du-an-trung-tam-novaland-nvl-chuan-bi-ban-giao-hang-nghin-so-hong.html",
   "opened_at": "2026-11-23",
   "quote": "toàn bộ dự án được miễn tiền sử dụng đất. Với kết luận này, Novaland đã hoàn tất nghĩa vụ tài chính",
   "status": "match",
-  "note": "3. Tiền đất · dữ kiện định tính, đầy đủ: Tháng 5/2026 UBND TP.HCM kết luận dự án được miễn tiền sử dụng đất toàn bộ (tái định cư tại chỗ, không đổi ranh); Novaland đã hoàn tất nghĩa vụ tài chính, đang "
+  "note": "Tiền đất · dữ kiện định tính, đầy đủ: Tháng 5/2026 UBND TP.HCM kết luận dự án được miễn tiền sử dụng đất toàn bộ (tái định cư tại chỗ, không đổi ranh); Novaland đã hoàn tất nghĩa vụ tài chính, đang "
  },
  {
   "block": "bds-57",
@@ -887,7 +1187,7 @@
   "opened_at": "2026-11-23",
   "quote": "giúp Novaland xác định lại nghĩa vụ trích lập trên báo cáo tài chính hợp nhất quý IV/2025 là 1.014 tỷ đồng.",
   "status": "match",
-  "note": "3. Tiền đất"
+  "note": "Tiền đất"
  },
  {
   "block": "bds-57",
@@ -897,57 +1197,7 @@
   "opened_at": "2026-11-23",
   "quote": "TP.HCM đã ban hành quyết định thu hồi, hủy bỏ quyết định chủ trương đầu tư và chấm dứt việc giao đất cho Thế Kỷ 21, đồng thời giao khu đất cho Trung tâm Phát triển quỹ đất tổ chức đấu giá.",
   "status": "match",
-  "note": "3. Tiền đất"
- },
- {
-  "block": "bds-57",
-  "claim": "NVL · —",
-  "value": "Cuối quý II/2026 khoản người mua trả tiền trước ngắn hạn gần 24.600 tỷ đồng, tăng khoảng 4.200 tỷ so với đầu năm.",
-  "url": "https://vnbusiness.vn/quy-dau-tien-duoi-thoi-tan-chu-tich-novaland-lai-lon-nho-thoai-von-ganh-nang-no-vay-chua-ha-nhiet.html",
-  "opened_at": "2026-11-23",
-  "quote": "năm, lên gần 24.600 tỷ đồng. Đây là khoản tiền khách hàng thanh toán trước cho",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "NVL · Victoria Village",
-  "value": "Dự án mở bán từ 2017 nhưng đến 5/3–26/3/2026 hơn 1.000 khách hàng mới ký hợp đồng mua bán.",
-  "url": "https://nguoiquansat.vn/sau-nhieu-nam-tre-hen-hon-1-000-khach-hang-sap-duoc-novaland-ky-hop-dong-tai-du-an-dat-vang-tp-hcm-277270.html",
-  "opened_at": "2026-11-23",
-  "quote": "Theo đó, từ 5/3-26/3/2026, hơn 1.000 khách hàng sẽ ký Hợp đồng mua bán, chính thức xác lập quyền sở hữu căn hộ.",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "NVL · Aqua City",
-  "value": "CEO (6/2026): Aqua City có 10.000 sản phẩm đã bán cần bàn giao; năm 2026 chỉ mở bán khoảng 30% trong hơn 3.000 sản phẩm còn lại; hơn 20.000 khách hàng toàn tập đoàn chịu ảnh hưởng nếu tái cấu trúc thất bại.",
-  "url": "https://tuoitre.vn/ceo-duong-van-bac-novaland-da-di-80-90-chang-duong-vuot-kho-quyet-tam-cap-bo-vao-nam-nay-100260617225645143.htm",
-  "opened_at": "2026-11-23",
-  "quote": "chúng tôi tập trung “đua” tiến độ thi công để bàn giao nhà cho 10.000 sản phẩm đã bán.",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "NVL · NovaWorld Hồ Tràm",
-  "value": "Một khách ký hợp đồng 27/10/2022 (14,634 tỷ đồng), đã trả hơn 10,5 tỷ đồng (hơn 72%) nhưng đến 6/2026 chưa nhận bàn giao.",
-  "url": "https://vietnamfinance.vn/khach-hang-mac-ket-tai-novaworld-ho-tram-d145639.html",
-  "opened_at": "2026-11-23",
-  "quote": "ông đã thanh toán hơn 10,5 tỷ đồng bằng tiền mặt, tương đương hơn 72% giá",
-  "status": "match",
-  "note": "4. Thu tiền"
- },
- {
-  "block": "bds-57",
-  "claim": "NVL · Cảng Phú Định; Quán Tre",
-  "value": "ĐHĐCĐ 24/4/2025: Novaland xin chủ trương chuyển gần 50 ha Cảng Phú Định và gần 10 ha Quán Tre sang nhà ở xã hội, nhà ở cho người thu nhập trung bình.",
-  "url": "https://nhadautu.vn/novaland-cao-diem-ban-giao-trong-quy-iv-muc-tieu-cap-7000-so-hong-d95692.html",
-  "opened_at": "2026-11-23",
-  "quote": "chuyển đổi khu Cảng Phú Định (quận 8, TP.HCM) gần 50ha, khu Quán tre (quận 12,",
-  "status": "match",
-  "note": "5. Xã hội · cho thuê"
+  "note": "Tiền đất"
  },
  {
   "block": "bds-57",
@@ -957,7 +1207,7 @@
   "opened_at": "2026-11-23",
   "quote": "hồ sơ đề nghị điều chỉnh tiến độ đã nộp từ năm 2022 nhưng chưa được giải quyết. Dự án chưa được giao đất, cho thuê đất hoặc cho phép chuyển mục đích sử dụng đất.",
   "status": "match",
-  "note": "6. Chậm tiến độ"
+  "note": "Chậm tiến độ"
  },
  {
   "block": "bds-57",
@@ -967,7 +1217,7 @@
   "opened_at": "2026-11-23",
   "quote": "dự án đang gặp khó khăn trong quá trình thực hiện thủ tục điều chỉnh mục tiêu đầu tư do tiến độ sử dụng đất đã hết thời gian gia hạn.",
   "status": "match",
-  "note": "6. Chậm tiến độ · dữ kiện định tính, đầy đủ: Ngày 8/6/2026 Novaland báo cáo 7 dự án ở Lâm Đồng gặp khó; Hòn Giồ đã hết thời gian gia hạn tiến độ sử dụng đất, Đức Tân chưa được cấp phép xây dựng do vướng ti"
+  "note": "Chậm tiến độ · dữ kiện định tính, đầy đủ: Ngày 8/6/2026 Novaland báo cáo 7 dự án ở Lâm Đồng gặp khó; Hòn Giồ đã hết thời gian gia hạn tiến độ sử dụng đất, Đức Tân chưa được cấp phép xây dựng do vướng ti"
  },
  {
   "block": "bds-57",
@@ -977,7 +1227,77 @@
   "opened_at": "2026-11-23",
   "quote": "phần lớn các dự án chậm tiến độ do ảnh hưởng của dịch Covid-19, quá trình xác định giá đất kéo dài, việc điều chỉnh quy hoạch cũng như các thủ tục hành chính liên quan.",
   "status": "match",
-  "note": "6. Chậm tiến độ"
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NVL · Quỹ đất chưa triển khai",
+  "value": "ĐHĐCĐ 23/4/2026: còn hơn 2.400 ha quỹ đất mới chưa triển khai; mục tiêu 2026 bàn giao hơn 2.600 sản phẩm, bán mới hơn 2.100 sản phẩm.",
+  "url": "https://thitruongtaichinhtiente.vn/dhdcd-novaland-ke-hoach-doanh-thu-tang-hon-3-lan-kien-toan-bo-may-nhan-su-no-luc-phuc-hoi-phat-trien-82401.html",
+  "opened_at": "2026-11-23",
+  "quote": "Hiện Novaland còn hơn 2.400ha quỹ đất mới chưa triển khai, tập trung ở các khu vực nhiều tiềm năng về kinh tế - du lịch.",
+  "status": "match",
+  "note": "Pháp lý · địa bàn"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NVL · 23 dự án tại 5 địa phương",
+  "value": "Văn bản Bộ NN&MT (9/2026) dẫn báo cáo Novaland: kiến nghị gỡ vướng 23 dự án thuộc 5 địa phương, chủ yếu về giá đất, nghĩa vụ tài chính, thủ tục đất đai, cấp giấy chứng nhận.",
+  "url": "https://tienphong.vn/bo-nong-nghiep-va-moi-truong-de-nghi-go-vuong-2-sieu-du-an-o-tphcm-post1880638.tpo",
+  "opened_at": "2026-11-23",
+  "quote": "doanh nghiệp kiến nghị xử lý vướng mắc tại 23 dự án thuộc 5 địa phương. Các vấn đề chủ yếu liên quan đến xác định giá đất, nghĩa vụ tài chính, thủ tục đất đai, đầu tư, quy hoạch, xây dựng và cấp giấy chứng nhận cho khách hàng.",
+  "status": "match",
+  "note": "Pháp lý · địa bàn"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NVL · Cảng Phú Định; Quán Tre",
+  "value": "ĐHĐCĐ 24/4/2025: Novaland xin chủ trương chuyển gần 50 ha Cảng Phú Định và gần 10 ha Quán Tre sang nhà ở xã hội, nhà ở cho người thu nhập trung bình.",
+  "url": "https://nhadautu.vn/novaland-cao-diem-ban-giao-trong-quy-iv-muc-tieu-cap-7000-so-hong-d95692.html",
+  "opened_at": "2026-11-23",
+  "quote": "chuyển đổi khu Cảng Phú Định (quận 8, TP.HCM) gần 50ha, khu Quán tre (quận 12,",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NVL · —",
+  "value": "Cuối quý II/2026 khoản người mua trả tiền trước ngắn hạn gần 24.600 tỷ đồng, tăng khoảng 4.200 tỷ so với đầu năm.",
+  "url": "https://vnbusiness.vn/quy-dau-tien-duoi-thoi-tan-chu-tich-novaland-lai-lon-nho-thoai-von-ganh-nang-no-vay-chua-ha-nhiet.html",
+  "opened_at": "2026-11-23",
+  "quote": "năm, lên gần 24.600 tỷ đồng. Đây là khoản tiền khách hàng thanh toán trước cho",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NVL · Victoria Village",
+  "value": "Dự án mở bán từ 2017 nhưng đến 5/3–26/3/2026 hơn 1.000 khách hàng mới ký hợp đồng mua bán.",
+  "url": "https://nguoiquansat.vn/sau-nhieu-nam-tre-hen-hon-1-000-khach-hang-sap-duoc-novaland-ky-hop-dong-tai-du-an-dat-vang-tp-hcm-277270.html",
+  "opened_at": "2026-11-23",
+  "quote": "Theo đó, từ 5/3-26/3/2026, hơn 1.000 khách hàng sẽ ký Hợp đồng mua bán, chính thức xác lập quyền sở hữu căn hộ.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NVL · Aqua City",
+  "value": "CEO (6/2026): Aqua City có 10.000 sản phẩm đã bán cần bàn giao; năm 2026 chỉ mở bán khoảng 30% trong hơn 3.000 sản phẩm còn lại; hơn 20.000 khách hàng toàn tập đoàn chịu ảnh hưởng nếu tái cấu trúc thất bại.",
+  "url": "https://tuoitre.vn/ceo-duong-van-bac-novaland-da-di-80-90-chang-duong-vuot-kho-quyet-tam-cap-bo-vao-nam-nay-100260617225645143.htm",
+  "opened_at": "2026-11-23",
+  "quote": "chúng tôi tập trung “đua” tiến độ thi công để bàn giao nhà cho 10.000 sản phẩm đã bán.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NVL · NovaWorld Hồ Tràm",
+  "value": "Một khách ký hợp đồng 27/10/2022 (14,634 tỷ đồng), đã trả hơn 10,5 tỷ đồng (hơn 72%) nhưng đến 6/2026 chưa nhận bàn giao.",
+  "url": "https://vietnamfinance.vn/khach-hang-mac-ket-tai-novaworld-ho-tram-d145639.html",
+  "opened_at": "2026-11-23",
+  "quote": "ông đã thanh toán hơn 10,5 tỷ đồng bằng tiền mặt, tương đương hơn 72% giá",
+  "status": "match",
+  "note": "Thu tiền"
  },
  {
   "block": "bds-57",
@@ -988,5 +1308,875 @@
   "quote": "Giám đốc Novaland, cho biết tháo gỡ pháp lý tại Aqua City và NovaWorld Phan",
   "status": "match",
   "note": "Nhận định · dữ kiện định tính, đầy đủ: TGĐ Dương Văn Bắc (9/2026): tháo gỡ pháp lý tại Aqua City và NovaWorld Phan Thiết là yếu tố then chốt để giải pháp tài chính phát huy hiệu quả (phát biểu trước "
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · KĐT du lịch Long Tân (332 ha)",
+  "value": "Tại ĐHĐCĐ bất thường cuối 2022, DIC cho biết đã bồi thường GPMB hơn 156 ha/332 ha, kinh phí 1.324 tỷ đồng; khi đó dự kiến đầu 2023 được giao đất đợt 1 (82,1 ha).",
+  "url": "https://vietnamfinance.vn/pho-thu-tuong-yeu-cau-go-vuong-cho-2-dai-du-an-cua-dic-corp-tai-dong-nai-d94832.html",
+  "opened_at": "2026-11-23",
+  "quote": "Tại cuộc họp ĐHĐCĐ bất thường vào cuối năm 2022, công ty cho biết đã bồi thường giải phóng mặt bằng cho hơn 156ha với tổng kinh phí 1.324 tỷ đồng. Dự kiến đầu năm 2023, doanh nghiệp sẽ được giao đất đợt 1 (82,1ha) và đủ điều kiện khởi công.",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · KĐT du lịch Long Tân",
+  "value": "KĐT du lịch Long Tân",
+  "url": "https://mekongasean.vn/dhdcd-dig-tiep-tuc-thoai-von-de-don-luc-cho-2-dai-du-an-vi-tri-dac-dia-54518.html",
+  "opened_at": "2026-11-23",
+  "quote": "Dự án trọng điểm thứ hai của DIG trong năm nay là khu đô thị Long Tân (Đồng Nai), dự kiến khởi công vào quý 4. Theo ông Cường, dù việc đền bù giải tỏa có đôi chút khó khăn do thông tin kết nối hạ tầng giữa Đồng Nai và TP HCM",
+  "status": "match",
+  "note": "Có đất · dữ kiện định tính, đầy đủ: ĐHĐCĐ 24/4/2026: Chủ tịch nói đền bù giải tỏa gặp khó do thông tin kết nối hạ tầng Đồng Nai - TP.HCM; dự kiến khởi công quý IV/2026. Không công bố tỷ lệ đã đền "
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · KĐT mới Bắc Vũng Tàu (90,5 ha)",
+  "value": "Theo Bản tin IR 6 tháng cuối 2025 (công bố 3/2026): bồi thường GPMB đạt hơn 69% Khu C; đang làm thủ tục điều chỉnh tiến độ.",
+  "url": "https://cafeland.vn/du-an/dic-solar-city-vung-tau-du-an-khu-do-thi-tai-tphcm-5735.html",
+  "opened_at": "2026-11-23",
+  "quote": "Chủ đầu tư đang thực hiện thủ tục điều chỉnh tiến độ dự án; công tác bồi thường, giải phóng mặt bằng đạt hơn 69% Khu C.",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · KĐT mới Bắc Vũng Tàu",
+  "value": "Kết luận Thanh tra TP.HCM: khoảng 90,5 ha, hơn 1.100 công trình nhà ở hiện hữu; 2016-2023 liên tục nằm trong danh mục thu hồi đất nhưng thực tế chưa thu hồi, chưa có thông báo thu hồi đất.",
+  "url": "https://thanhtra.com.vn/ket-luan-thanh-tra-E17BD7A25/thanh-tra-tphcm-kien-nghi-xu-ly-nhieu-vi-pham-ton-tai-keo-dai-tai-du-an-khu-do-thi-moi-bac-vung-tau-7632e7954.html",
+  "opened_at": "2026-11-23",
+  "quote": "Về đất đai, dự án có diện tích khoảng 90,5 ha, trong đó phần lớn là đất nông nghiệp và đất của hộ gia đình, cá nhân đang sử dụng với hơn 1.100 công trình nhà ở hiện hữu.",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · Bắc Vũng Tàu; Chí Linh",
+  "value": "Bắc Vũng Tàu; Chí Linh",
+  "url": "https://stockbiz.vn/tin-tuc/dig-dic-group-tinh-chuyen-mo-rong-quy-dat/42835718",
+  "opened_at": "2026-11-23",
+  "quote": "Ngược lại, các dự án như Khu đô thị mới Bắc Vũng Tàu và Khu trung tâm Chí Linh vẫn có tỷ lệ hoàn thành đền bù thấp và phải xin điều chỉnh tiến độ.",
+  "status": "match",
+  "note": "Có đất · dữ kiện định tính, đầy đủ: Báo dẫn BCTN 2025 (19/11/2026): hai dự án vẫn có tỷ lệ đền bù thấp và phải xin điều chỉnh tiến độ; DIC ưu tiên hoàn tất pháp lý cho giai đoạn 2027-2028."
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · Hiệp Phước; CSJ; Vị Thanh; Nam Vĩnh Yên",
+  "value": "Bốn dự án đã hoàn thành đền bù 99-100%, đang đẩy mạnh xây dựng.",
+  "url": "https://stockbiz.vn/tin-tuc/dig-dic-group-tinh-chuyen-mo-rong-quy-dat/42835718",
+  "opened_at": "2026-11-23",
+  "quote": "Trong đó, các dự án như Khu dân cư Hiệp Phước, Khu phức hợp CSJ, Khu dân cư thương mại Vị Thanh và Khu đô thị Nam Vĩnh Yên đã hoàn thành đền bù từ 99% - 100%, đang trong giai đoạn đẩy mạnh xây dựng.",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · KĐT mới Nam Vĩnh Yên (190,6 ha)",
+  "value": "Kế hoạch 2026 rót gần 1.280 tỷ đồng, chủ yếu cho tiền sử dụng đất và chi phí xây dựng.",
+  "url": "https://www.tinnhanhchungkhoan.vn/chu-tich-dic-corp-khong-co-chuyen-thu-hoi-du-an-bac-vung-tau-post389482.html",
+  "opened_at": "2026-11-23",
+  "quote": "dự án Khu đô thị mới Nam Vĩnh Yên dự kiến được rót gần 1.280 tỷ đồng, chủ yếu cho tiền sử dụng đất và chi phí xây dựng",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · KDC thương mại Vị Thanh (83,46 ha)",
+  "value": "ĐHĐCĐ 24/4/2026: đã hoàn tất 100% đền bù, đã nộp tiền sử dụng đất, đủ điều kiện mở bán toàn bộ trong năm.",
+  "url": "https://viettimes.vn/chu-tich-dic-corp-tiet-lo-thoi-diem-khoi-cong-hai-du-an-at-chu-bai-post197057.html",
+  "opened_at": "2026-11-23",
+  "quote": "Ngoài ra, dự án tại Hậu Giang đã hoàn tất 100% công tác đền bù, nộp tiền sử dụng đất và đủ điều kiện mở bán toàn bộ trong năm.",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · Toàn tập đoàn",
+  "value": "Cuối quý III/2026: người mua trả tiền trước ngắn hạn 2.464 tỷ đồng và phải trả ngắn hạn khác 4.993 tỷ đồng; theo thuyết minh chủ yếu liên quan người mua sản phẩm hoặc khoản đặt chỗ mua bất động sản của khách hàng, đối tác.",
+  "url": "https://stockbiz.vn/tin-tuc/dig-dic-group-tinh-chuyen-mo-rong-quy-dat/42835718",
+  "opened_at": "2026-11-23",
+  "quote": "người mua trả tiền trước ngắn hạn 2.464 tỷ đồng và phải trả ngắn hạn khác 4.993 tỷ đồng. Theo thuyết minh, các khoản này chủ yếu liên quan đến người mua sản phẩm bất động sản hoặc khoản đặt chỗ mua bất động sản của khách hàng, đối tác.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · KĐT mới Nam Vĩnh Yên",
+  "value": "Người mua trả tiền trước tại Nam Vĩnh Yên 1.389 tỷ đồng cuối quý III/2026, đã tồn tại nhiều năm.",
+  "url": "https://stockbiz.vn/tin-tuc/dig-dic-group-tinh-chuyen-mo-rong-quy-dat/42835718",
+  "opened_at": "2026-11-23",
+  "quote": "khoản người mua trả tiền trước tại dự án Nam Vĩnh Yên cũng chiếm tỷ trọng lớn với 1.389 tỷ đồng và đã tồn tại nhiều năm qua",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · KĐT du lịch sinh thái Đại Phước",
+  "value": "Bán lô lớn cho nhà phát triển cấp hai: cuối 2025 chuyển nhượng hơn 45,1 ha thu trên 2.954 tỷ đồng; 31/7/2026 duyệt thêm 15,3 ha (chưa công bố giá); tổng khoảng 60,5 ha, bằng 13% dự án.",
+  "url": "https://vietnamfinance.vn/ban-them-hon-15ha-dat-tai-dai-phuoc-dic-corp-tim-cach-mo-khoa-dong-tien-d148558.html",
+  "opened_at": "2026-11-23",
+  "quote": "Tổng cộng, hơn 45,1 ha đất tại Đại Phước đã mang lại trên 2.954 tỷ đồng doanh thu cho DIC Corp.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · Chung cư A2-1 (Vũng Tàu Centre Point), Chí Linh",
+  "value": "Bán sỉ: Dicera Holdings (DC4) nhận chuyển nhượng toàn bộ 595 căn hộ và 2 sàn thương mại tòa A2-1 từ DIC Corp, giá trị 1.900 tỷ đồng; bàn giao quý II/2025.",
+  "url": "https://www.tinnhanhchungkhoan.vn/ap-luc-kep-voi-dicera-holdings-dc4-post401019.html",
+  "opened_at": "2026-11-23",
+  "quote": "thương vụ nhận chuyển nhượng toàn bộ 595 căn hộ và hai sàn thương mại, tổng diện tích khoảng 4.100 m2 tại tòa chung cư A2-1 thuộc dự án Vũng Tàu Centre Point từ DIC Corp, với tổng giá trị lên tới 1.900 tỷ đồng",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · Quỹ đất NOXH toàn tập đoàn",
+  "value": "DIC làm NOXH trên quỹ 20% đất ở tại các khu đô thị: quỹ đất 54,7 ha, mục tiêu hơn 14.000 căn giai đoạn 2025-2030 và 30.000 căn giai đoạn 2030-2035.",
+  "url": "https://nhadautu.vn/dic-corp-danh-20-quy-dat-o-khu-do-thi-de-phat-trien-nha-o-xa-hoi-d94494.html",
+  "opened_at": "2026-11-23",
+  "quote": "Với quỹ đất 54,7 ha, DIC Corp sẽ hoàn thành mục tiêu xây dựng hơn 14.000 căn NOXH trong giai đoạn 2025 – 2030",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · NOXH tại KĐT mới Nam Vĩnh Yên",
+  "value": "Dự án NOXH 17,08 ha, tổng mức đầu tư 6.824 tỷ đồng, 38 tòa chung cư, 5.320 căn, chia 3 giai đoạn.",
+  "url": "https://www.dic.vn/bat-dong-san-do-thi/nha-o-xa-hoi-tai-khu-do-thi-moi-nam-vinh-yen-giai-doan-i",
+  "opened_at": "2026-11-23",
+  "quote": "Dự án có diện tích 17,08ha với tổng mức đầu tư là 6.824 tỷ đồng, bao gồm 03 giai đoạn:",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · KĐT mới Bắc Vũng Tàu",
+  "value": "Quy hoạch 2012 chỉ bố trí khoảng 18% đất ở cho NOXH, thiếu khoảng 0,78 ha so với mức 20% (kết luận Thanh tra Bộ Xây dựng 2023, Thanh tra TP.HCM nhắc lại 4/2026).",
+  "url": "https://thanhtra.com.vn/ket-luan-thanh-tra-E17BD7A25/thanh-tra-tphcm-kien-nghi-xu-ly-nhieu-vi-pham-ton-tai-keo-dai-tai-du-an-khu-do-thi-moi-bac-vung-tau-7632e7954.html",
+  "opened_at": "2026-11-23",
+  "quote": "dự án chỉ bố trí khoảng 18% diện tích đất ở để xây dựng nhà ở xã hội, trong khi quy định yêu cầu tối thiểu là 20%, tương đương thiếu khoảng 0,78 ha",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · KĐT mới Bắc Vũng Tàu",
+  "value": "Được chọn chủ đầu tư 30/6/2009, đến 2026 chưa xây dựng. DIC xin điều chỉnh tiến độ đến 2032; Thanh tra TP.HCM cho rằng chưa có cơ sở vì thời gian chưa được giao đất không tính vào tiến độ, kiến nghị Sở Tài chính dừng xem xét.",
+  "url": "https://thanhtra.com.vn/ket-luan-thanh-tra-E17BD7A25/thanh-tra-tphcm-kien-nghi-xu-ly-nhieu-vi-pham-ton-tai-keo-dai-tai-du-an-khu-do-thi-moi-bac-vung-tau-7632e7954.html",
+  "opened_at": "2026-11-23",
+  "quote": "Trong quá trình triển khai, DIC Corp đã có văn bản đề nghị điều chỉnh tiến độ thực hiện dự án đến năm 2032 do lý do chậm bàn giao đất thực địa.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · KĐT du lịch Long Tân",
+  "value": "Liên tục lùi tiến độ: ban đầu dự kiến khởi công quý 4/2010, hoàn thành quý 4/2019; năm 2018 đổi thành 2017-2023; tháng 10/2022 dự kiến đầu 2023 mới được giao đất đợt 1 (82,11 ha), tiến độ đến quý 4/2028.",
+  "url": "https://tapchicongthuong.vn/du-an-dic-wisteria--bat-dong--14-nam--dic-corp--dig--chua-voi-giai-ngan-1-600-ty-dong-trai-phieu-126873.htm",
+  "opened_at": "2026-11-23",
+  "quote": "Ban đầu, dự án này dự kiến khởi công vào quý 4/2010 với thời gian thực hiện 10 năm, tức hoàn thành vào quý 4/2019. Nhưng đến năm 2018, tiến độ dự án đã được đổi thành dự kiến trong giai đoạn 2017 - 2023.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · KĐT du lịch Long Tân",
+  "value": "Trái phiếu 1.000 tỷ đồng huy động cho Long Tân: đến 30/6/2025 mới giải ngân 154,7 tỷ đồng vào dự án, còn 845,25 tỷ đồng chưa dùng (sau đó dùng mua lại trái phiếu).",
+  "url": "https://doanhnhan.baophapluat.vn/dic-corp-dig-mua-lai-800-ty-dong-trai-phieu-nguon-von-tu-chinh-lo-trai-phieu-chua-giai-ngan-cho-du-an-long-tan-88647.html",
+  "opened_at": "2026-11-23",
+  "quote": "tại thời điểm 30/06/2025, công ty mới giải ngân 154,7 tỷ đồng cho dự án, số tiền còn lại chưa sử dụng hết là 845,25 tỷ đồng",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · Long Tân; Nam Vĩnh Yên; Vị Thanh",
+  "value": "Vốn dở dang cuối quý III/2026: Nam Vĩnh Yên 2.241 tỷ, KDC P4 Hậu Giang 1.111 tỷ, Long Tân 1.071 tỷ đồng.",
+  "url": "https://stockbiz.vn/tin-tuc/dig-dic-group-tinh-chuyen-mo-rong-quy-dat/42835718",
+  "opened_at": "2026-11-23",
+  "quote": "Tập đoàn DIC đang tập trung lượng vốn lớn tại ba dự án gồm Khu đô thị mới Nam Vĩnh Yên (2.241 tỷ đồng), Khu dân cư P4 Hậu Giang (1.111 tỷ đồng) và Khu đô thị du lịch Long Tân (1.071 tỷ đồng).",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "DIG · KĐT mới Bắc Vũng Tàu",
+  "value": "KĐT mới Bắc Vũng Tàu",
+  "url": "https://www.tinnhanhchungkhoan.vn/chu-tich-dic-corp-khong-co-chuyen-thu-hoi-du-an-bac-vung-tau-post389482.html",
+  "opened_at": "2026-11-23",
+  "quote": "kết luận thanh tra vừa qua là rất tích cực, khẳng định rõ DIG là chủ đầu tư của dự án và sẽ tiếp tục được cơ quan nhà nước hỗ trợ triển khai. Vì vậy, không có chuyện dự án bị thu hồi.",
+  "status": "match",
+  "note": "Nhận định · dữ kiện định tính, đầy đủ: Chủ tịch Nguyễn Hùng Cường (24/4/2026): kết luận thanh tra khẳng định DIG là chủ đầu tư, không có chuyện dự án bị thu hồi; mục tiêu khởi công quý III/2026. (Phá"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Hai dự án nhà ở cao tầng Thủ Dầu Một (thí điểm Nghị quyết 171)",
+  "value": "HĐND Bình Dương phê duyệt thí điểm 2 dự án của Phát Đạt tại Thủ Dầu Một theo Nghị quyết 171 (nhận chuyển nhượng quyền sử dụng đất), tổng quy mô 45 ha.",
+  "url": "https://viettimes.vn/chu-tich-phat-dat-tiet-lo-mo-rong-quy-dat-va-tai-kich-hoat-du-an-bt-tai-tphcm-post186969.html",
+  "opened_at": "2026-11-23",
+  "quote": "Phát Đạt vừa được HĐND tỉnh Bình Dương phê duyệt thí điểm hai dự án tại TP.Thủ Dầu Một theo Nghị quyết 171, với tổng quy mô lên đến 45 ha",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Quỹ đất gom mới tại Bình Dương cũ và Tân Phước",
+  "value": "Đến 30/06/2026 Phát Đạt đã chi 1.700 tỷ cho một cá nhân để mua quỹ đất tại Bình Dương cũ, 144 tỷ cho cá nhân khác, và 51 tỷ để sở hữu lô đất 24 ha tại phường Tân Phước.",
+  "url": "https://vietnamfinance.vn/cau-truc-tai-chinh-cua-phat-dat-ra-sao-sau-loat-thuong-vu-ban-con-d150308.html",
+  "opened_at": "2026-11-23",
+  "quote": "1.700 tỷ đồng cho ông Nguyễn Thanh Hiển để mua quỹ đất tại Bình Dương cũ, 144 tỷ đồng cho bà Đoàn Thị Minh Nguyệt để mua quỹ đất tại Bình Dương",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Bắc Hà Thanh / Quy Nhơn Iconic",
+  "value": "Đến 08/2024 dự án 43,16 ha mới được giao đất gần 90% diện tích (đợt 3 giao gần 15,8 ha); phần còn lại vướng giải phóng mặt bằng.",
+  "url": "https://nhadautu.vn/binh-dinh-du-an-2300-ty-cua-phat-dat-duoc-gia-han-them-24-thang-d88504.html",
+  "opened_at": "2026-11-23",
+  "quote": "dự án này đã được giao đất gần 90% tổng diện tích dự án",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · The EverRich 3 (Khu nhà ở phường Tân Phú)",
+  "value": "Ngày 09/09/2026 TP.HCM cho chuyển mục đích 2.141 m2 đất bổ sung (giao đất có thu tiền với phần đất ở); Phát Đạt còn phải nộp tiền sử dụng đất và thực hiện Kết luận thanh tra 365 ngày 14/10/2025 của Thanh tra Chính phủ.",
+  "url": "https://doanhnhan.baophapluat.vn/phat-dat-pdr-duoc-giao-them-dat-du-an-the-everrich-3-rot-rao-xu-ly-cac-nghia-vu-sau-thanh-tra.html",
+  "opened_at": "2026-11-23",
+  "quote": "doanh nghiệp phải tiếp tục thực thi các nghĩa vụ được chỉ rõ tại Kết luận thanh tra số 365 do Thanh tra Chính phủ ban hành ngày 14/10/2025",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · The EverRich 3 (lô B2, B3)",
+  "value": "Phát Đạt phải xong sổ đỏ lô B2, B3 và xin chấp thuận chuyển nhượng hai lô này cho Dynamic Innovation (Sunshine) chậm nhất 30/04/2027; đã nhận gần 991 tỷ từ đối tác.",
+  "url": "https://doanhnhan.baophapluat.vn/phat-dat-pdr-duoc-giao-them-dat-du-an-the-everrich-3-rot-rao-xu-ly-cac-nghia-vu-sau-thanh-tra.html",
+  "opened_at": "2026-11-23",
+  "quote": "Phát Đạt có nghĩa vụ hoàn tất thủ tục cấp giấy chứng nhận quyền sử dụng đất tại các lô B2, B3 và xin chấp thuận chuyển nhượng hai lô này chậm nhất vào ngày 30/04/2027",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Bắc Hà Thanh / Quy Nhơn Iconic",
+  "value": "Bắc Hà Thanh / Quy Nhơn Iconic",
+  "url": "https://mekongasean.vn/phat-dat-hoan-tat-nghia-vu-tai-chinh-tai-quy-nhon-iconic-47719.html",
+  "opened_at": "2026-11-23",
+  "quote": "toàn bộ tiền sử dụng đất cho Quy Nhơn Iconic đã được Phát Đạt hoàn thành đầy đủ vào ngân sách Nhà nước. Đây là toàn bộ nghĩa vụ tài chính cho các quyết định giao đất mà Công ty nhận được cho đến hiện nay",
+  "status": "match",
+  "note": "Tiền đất · dữ kiện định tính, đầy đủ: Phát Đạt đã nộp đủ tiền sử dụng đất cho toàn bộ các quyết định giao đất đã nhận tại dự án (tính đến 10/2025)."
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Thuận An 1 (Bình Dương Tower)",
+  "value": "Kho bạc Nhà nước Bình Dương xác nhận ngày 26/4/2025 Phát Đạt đã nộp xong tiền sử dụng đất dự án Thuận An 1.",
+  "url": "https://thoibaotaichinhvietnam.vn/phat-dat-hoan-tat-nghia-vu-tai-chinh-sap-mo-ban-du-an-thuan-an-1-175510.html",
+  "opened_at": "2026-11-23",
+  "quote": "Theo thông báo từ Kho bạc Nhà nước tỉnh Bình Dương ngày 26/4/2025, Công ty Cổ phần Phát triển Bất động sản Phát Đạt (mã ck: PDR) đã hoàn tất toàn bộ nghĩa vụ tài chính liên quan đến tiền sử dụng đất cho Dự án Khu nhà ở Phức hợp Cao tầng Thuận An 1",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · The EverRich 2 và The EverRich 3 (hợp tác đầu tư)",
+  "value": "Cuối 2017 Phát Đạt nhận 6.025 tỷ từ hai đối tác theo hợp đồng hợp tác kinh doanh trước khi đủ điều kiện chuyển nhượng dự án: Big Gain 4.000 tỷ, Dynamic Innovation 2.025 tỷ.",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/phat-dat-chot-deal-everrich-2-voi-big-gain-sau-9-nam-35284451",
+  "opened_at": "2026-11-23",
+  "quote": "gồm 4.000 tỷ đồng từ Big Gain và 2.025 tỷ đồng từ DynamicInnovation",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · The EverRich 2",
+  "value": "Ngày 21/8/2026 Phát Đạt hoàn tất chuyển nhượng phần còn lại The EverRich 2 cho Big Gain với giá 5.225,5 tỷ; sau cấn trừ còn phải trả Big Gain 2.421,4 tỷ.",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/phat-dat-chot-deal-everrich-2-voi-big-gain-sau-9-nam-35284451",
+  "opened_at": "2026-11-23",
+  "quote": "với tổng giá trị 5.225,5 tỷ đồng",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Toàn công ty; The EverRich 2",
+  "value": "Tại 30/09/2026 người mua trả tiền trước ngắn hạn hơn 5.800 tỷ (gấp hơn 24 lần đầu năm), riêng The EverRich 2 hơn 5.200 tỷ.",
+  "url": "https://doanhnhan.baophapluat.vn/bat-dong-san-phat-dat-pdr-thoat-lo-nho-ban-tai-san-dot-bien-5-200-ty-dong-tien-khach-tra-truoc-tai-the-everrich-2.html",
+  "opened_at": "2026-11-23",
+  "quote": "Khoản mục người mua trả tiền trước ngắn hạn tăng đột biến hơn 24 lần, đạt mức hơn 5.800 tỷ đồng",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Thuận An 1 (Bình Dương Tower)",
+  "value": "Phát Đạt chuyển nhượng dự án Thuận An 1 cho Mitsubishi Corporation, đã nhận 1.901,7 tỷ đợt thanh toán đầu.",
+  "url": "https://doanhnhan.baophapluat.vn/phat-dat-pdr-so-huu-ro-hang-35-500-ty-dong-thu-tien-tuoi-ngan-ty-tu-doi-tac-nhat-ban.html",
+  "opened_at": "2026-11-23",
+  "quote": "công ty đã hoàn tất thủ tục chuyển nhượng cho đối tác Mitsubishi Corporation từ Nhật Bản và nhận về 1.901,7 tỷ đồng trong đợt thanh toán đầu tiên",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Thuận An 2 (Công ty Cao ốc Hòa Phú)",
+  "value": "HĐQT ngày 10/6/2026 duyệt bán toàn bộ cổ phần chủ đầu tư Thuận An 2 (2,65 ha) cho nhóm Bcons, giá không dưới 3.000 tỷ.",
+  "url": "https://znews.vn/bcons-chi-hon-3000-ty-thau-tom-du-an-2-65-ha-cua-phat-dat-tai-tphcm-post1659601.html",
+  "opened_at": "2026-11-23",
+  "quote": "không thấp hơn 3.000 tỷ đồng",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Serenity Phước Hải",
+  "value": "Hợp đồng 05/06/2026 bán toàn bộ 99,34% vốn Công ty Serenity (dự án 73.842 m2, đã có quy hoạch 1/500) cho Fortis, giá 2.500 tỷ; hoàn tất trong tháng 6/2026.",
+  "url": "https://doanhnhan.baophapluat.vn/phat-dat-pdr-thoai-von-du-an-serenity-phuoc-hai-thu-lai-hang-tram-ty-dong.html",
+  "opened_at": "2026-11-23",
+  "quote": "Hợp đồng được ký kết vào ngày 05/06/2026 với tổng giá trị 2.500 tỷ đồng",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Chiến lược vốn",
+  "value": "Chiến lược vốn",
+  "url": "https://nhadautu.vn/phat-dat-noi-gi-khi-co-phieu-o-vung-thap-trong-luc-nhu-cau-von-tang-manh-d104330.html",
+  "opened_at": "2026-11-23",
+  "quote": "doanh nghiệp sẽ tiếp tục tăng vốn, đồng thời chuyển nhượng các dự án không còn nằm trong định hướng chiến lược nhằm tập trung dòng tiền cho các dự án mới",
+  "status": "match",
+  "note": "Thu tiền · dữ kiện định tính, đầy đủ: Tại ĐHĐCĐ 16/4/2026 lãnh đạo nêu sẽ tiếp tục tăng vốn và chuyển nhượng các dự án ngoài định hướng để lấy tiền cho dự án mới."
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Bắc Hà Thanh / Quy Nhơn Iconic",
+  "value": "Dự án được gia hạn tiến độ thêm 24 tháng, hạn mới là 01/01/2027, lý do vướng giải phóng mặt bằng.",
+  "url": "https://nhadautu.vn/binh-dinh-du-an-2300-ty-cua-phat-dat-duoc-gia-han-them-24-thang-d88504.html",
+  "opened_at": "2026-11-23",
+  "quote": "đến ngày 1/1/2027 (thêm 24 tháng)",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · The EverRich 3",
+  "value": "Dự án được chấp thuận đầu tư năm 2014 (9,9 ha, 8.560 tỷ) với thời gian thực hiện dự kiến 8 năm; đến 09/2026 phần còn lại hơn 7 ha vẫn đang hoàn thiện thủ tục đất đai.",
+  "url": "https://nguoiquansat.vn/phat-dat-pdr-du-an-hon-8-500-ty-tai-tp-hcm-co-them-buoc-tien-phap-ly-315380.html",
+  "opened_at": "2026-11-23",
+  "quote": "Dự án ban đầu được chấp thuận đầu tư năm 2014 với quy mô khoảng 9,9ha, tổng vốn đầu tư 8.560 tỷ đồng và thời gian thực hiện dự kiến 8 năm.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Tropicana Bến Thành Long Hải (Wyndham Tropicana Long Hai)",
+  "value": "Dự án 12,6 ha khởi công quý IV/2019, mục tiêu bàn giao quý II/2024, đến 09/2025 hiện trường phần lớn vẫn bỏ trống.",
+  "url": "https://vietnamnet.vn/en/coastal-resort-projects-in-hcmc-abandoned-prime-land-left-idle-2443059.html",
+  "opened_at": "2026-11-23",
+  "quote": "Although construction started in Q4 2019 with a handover goal of Q2 2024, the site remains mostly vacant.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Tropicana Bến Thành Long Hải; Bắc Hà Thanh; The EverRich 2",
+  "value": "Tại 30/09/2026 tồn kho dở dang lớn nhất nằm ở The EverRich 2 gần 6.700 tỷ, Tropicana Bến Thành Long Hải gần 2.000 tỷ, Bắc Hà Thanh gần 1.400 tỷ.",
+  "url": "https://doanhnhan.baophapluat.vn/bat-dong-san-phat-dat-pdr-thoat-lo-nho-ban-tai-san-dot-bien-5-200-ty-dong-tien-khach-tra-truoc-tai-the-everrich-2.html",
+  "opened_at": "2026-11-23",
+  "quote": "The EverRich 2 với gần 6.700 tỷ đồng, Tropicana Bến Thành Long Hải gần 2.000 tỷ đồng và khu đô thị Bắc Hà Thanh gần 1.400 tỷ đồng",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "PDR · Quỹ đất khu công nghiệp",
+  "value": "Tại ĐHĐCĐ 16/4/2026 lãnh đạo cho biết đang làm thủ tục pháp lý cho hơn 2.000 ha đất khu công nghiệp ở Quảng Ngãi, Tây Ninh, Đồng Tháp.",
+  "url": "https://nhadautu.vn/phat-dat-noi-gi-khi-co-phieu-o-vung-thap-trong-luc-nhu-cau-von-tang-manh-d104330.html",
+  "opened_at": "2026-11-23",
+  "quote": "đang xúc tiến thủ tục pháp lý cho quỹ đất hơn 2.000 ha tại Quảng Ngãi, Tây Ninh và Đồng Tháp",
+  "status": "match",
+  "note": "Pháp lý · địa bàn"
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · Westgate 2",
+  "value": "Westgate 2 được phê duyệt thí điểm theo Nghị quyết 171 từ 11/2025; tại ĐHĐCĐ 29/06/2026 công ty cho biết đang \"đưa đất vào\", dự kiến xong tháng 7/2026, sau đó mới tới chủ trương đầu tư, quy hoạch 1/500, tính tiền sử dụng đất rồi bán hàng. Không có tỷ lệ diện tích/số hộ đã thỏa thuận.",
+  "url": "https://24hmoney.vn/news/co-dong-chat-van-ve-luong-tien-mat-thap-cua-an-gia-phu-quyet-to-trinh-bo-sung-thanh-vien-hdqt-c1a2800443.html",
+  "opened_at": "2026-11-23",
+  "quote": "Còn dự án Westgate 2, sau khi được phê duyệt thí điểm theo nghị quyết 171 hồi tháng 11/2025, đang xúc tiến đưa đất vào, dự kiến xong trong tháng 7, sau đó là chủ trương đầu tư",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · The Lá Village (BC27)",
+  "value": "Dự án 27 ha tại xã Tân Kiên, khoảng 4.200 sản phẩm (căn hộ, biệt thự, nhà phố thấp tầng); từ 01/2022 công ty đã nêu đang hoàn thiện pháp lý. Không tìm thấy tỷ lệ đền bù/gom đất.",
+  "url": "https://vietnamfinance.vn/an-gia-group-agg-rot-von-cho-du-an-gan-3000-ty-dong-tai-binh-chanh-d75584.html",
+  "opened_at": "2026-11-23",
+  "quote": "dự án BC 27 quy mô 27ha tại xã Tân Kiên cung cấp ra thị trường khoảng 4.200 sản phẩm bao gồm căn hộ và biệt thự nhà phố thấp tầng",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · Westgate 2; The Lá Village",
+  "value": "Westgate ; The Lá Village",
+  "url": "https://nhadautu.vn/bds-an-gia-loi-nhuan-2026-chu-yeu-tu-hop-nhat-the-gio-riverside-d105973.html",
+  "opened_at": "2026-11-23",
+  "quote": "dự án River Collection mới hoàn tất phần hầm, móng và cọc để chuẩn bị triển khai bán hàng; còn Westgate 2 và The Lá Village vẫn đang trong quá trình hoàn thiện pháp lý",
+  "status": "match",
+  "note": "Tiền đất · dữ kiện định tính, đầy đủ: Đến ĐHĐCĐ 29/06/2026, Westgate 2 và The Lá Village vẫn đang hoàn thiện pháp lý (chưa tới bước tính tiền sử dụng đất); River Collection mới xong hầm, móng, cọc."
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · River Collection (Chung cư phường Hóa An)",
+  "value": "UBND tỉnh Đồng Nai giao đất/cho thuê đất 9.345,2 m² ngày 18/07/2025 (QĐ 419) và phê duyệt giá đất tính tiền sử dụng đất, tiền thuê đất ngày 26/12/2025 (QĐ 3336); động thổ 30/03/2026. Nguồn duy nhất là trang dự án CafeLand (mã hóa dấu bằng entity nên quote chỉ lấy đoạn không có entity).",
+  "url": "https://cafeland.vn/du-an/river-collection-du-an-can-ho-tai-dong-nai-5322.html",
+  "opened_at": "2026-11-23",
+  "quote": "Quyết định số 3336/QĐ-UBND về việc",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · The Gió Riverside (Khu dân cư Ngãi Thắng)",
+  "value": "The Gió Riverside (Khu dân cư Ngãi Thắng",
+  "url": "https://thitruongtaichinhtiente.vn/an-gia-hoan-tat-thu-tuc-cap-chung-nhan-quyen-su-dung-dat-du-an-the-gio-riverside-66636.html",
+  "opened_at": "2026-11-23",
+  "quote": "dự án The Gió Riverside đã hoàn tất nghĩa vụ tài chính và được cơ quan nhà nước có thẩm quyền cấp chứng nhận quyền sử dụng đất",
+  "status": "match",
+  "note": "Tiền đất · dữ kiện định tính, đầy đủ: Dự án đã hoàn tất nghĩa vụ tài chính và được cấp giấy chứng nhận quyền sử dụng đất (công bố 31/03/2025)."
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · The Gió Riverside",
+  "value": "The Gió Riverside",
+  "url": "https://thitruongtaichinhtiente.vn/so-xay-dung-tp-ho-chi-minh-thong-tin-4-du-an-bat-dong-san-chua-du-dieu-kien-duoc-ban-cho-thue-nha-o-hinh-thanh-trong-tuong-lai-75714.html",
+  "opened_at": "2026-11-23",
+  "quote": "Còn lại 4 dự án gồm: The Gió Riverside tại phường Đông Hoà do Công ty TNHH Xây dựng Kinh doanh Dịch vụ Thương mại Đông Nam làm chủ đầu tư",
+  "status": "match",
+  "note": "Thu tiền · dữ kiện định tính, đầy đủ: Ngày 25/12/2025 Sở Xây dựng TP.HCM nêu The Gió Riverside (chủ đầu tư Công ty Đông Nam) nằm trong 4 dự án chưa đủ điều kiện bán nhà hình thành trong tương lai, t"
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · The Gió Riverside",
+  "value": "Bài của Đài Tiếng nói VN (15/01/2026): môi giới chào đặt cọc 50 triệu đồng, sau 7 ngày thanh toán 95% giá trị hợp đồng khi chưa có hợp đồng mua bán; môi giới gọi là \"cọc thiện chí\".",
+  "url": "https://stockbiz.vn/tin-tuc/agg-bat-dong-san-an-gia-dang-huy-dong-von-trai-phep-tai-du-an-the-gio-riverside/37815632",
+  "opened_at": "2026-11-23",
+  "quote": "khách đặt cọc 50 triệu đồng, sau 7 ngày thanh toán 95% giá trị hợp đồng (chưa thuế)",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · The Gió Riverside",
+  "value": "Tại ĐHĐCĐ 29/06/2026: dự án đã bán hơn 90% sản phẩm, hầu hết chi phí xây dựng được tài trợ bằng tiền thu của khách hàng.",
+  "url": "https://nhadautu.vn/bds-an-gia-loi-nhuan-2026-chu-yeu-tu-hop-nhat-the-gio-riverside-d105973.html",
+  "opened_at": "2026-11-23",
+  "quote": "dự án The Gió Riverside đã bán được hơn 90% sản phẩm và tốc độ thu tiền từ khách hàng rất tốt. Do đó, hầu hết chi phí xây dựng hiện tại đều được tài trợ trực tiếp từ nguồn tiền thu của khách hàng",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · —",
+  "value": "Cuối quý III/2026 tiền khách cá nhân mua căn hộ trả trước hơn 3.600 tỷ đồng, gấp 33,4 lần đầu năm; tổng nợ phải trả gần 7.631 tỷ đồng.",
+  "url": "https://doanhnhan.baophapluat.vn/bat-dong-san-an-gia-agg-vuot-muc-tieu-loi-nhuan-nam-dong-tien-khach-mua-tra-truoc-tang-dot-bien.html",
+  "opened_at": "2026-11-23",
+  "quote": "khoản tiền khách hàng cá nhân mua căn hộ trả trước tăng vọt lên mức kỷ lục hơn 3.600 tỷ đồng, cao gấp 33,4 lần so với đầu năm",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · The Gió Riverside",
+  "value": "Ngày 28/05/2026 An Gia mua thêm 10,8 triệu cổ phần Lộc Phát (108 tỷ đồng), nâng sở hữu lên 99,99% và hợp nhất chủ đầu tư dự án; mô hình mua lại pháp nhân dự án.",
+  "url": "https://nhadautu.vn/an-gia-nang-so-huu-loc-phat-len-gan-100-bat-dau-hop-nhat-du-an-the-gio-riverside-d105575.html",
+  "opened_at": "2026-11-23",
+  "quote": "doanh nghiệp đã ký các hợp đồng nhận chuyển nhượng tổng cộng 10,8 triệu cổ phiếu Lộc Phát với tổng giá trị 108 tỷ đồng, tương đương 60,01%",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · —",
+  "value": "—",
+  "url": "https://doanhnhan.baophapluat.vn/dau-tu-va-phat-trien-bat-dong-san-an-gia-agg-lap-cong-ty-con-von-20-ty-chon-huong-di-than-trong-giua-chu-ky-tai-can-bang-bat-dong-san.html",
+  "opened_at": "2026-11-23",
+  "quote": "doanh nghiệp chuẩn bị sẵn sàng cho sự trở lại của các dự án thuộc phân khúc bình dân và trung cấp",
+  "status": "match",
+  "note": "Xã hội · dữ kiện định tính, đầy đủ: Báo cáo thường niên 2025: năm 2026 An Gia chuẩn bị cho các dự án phân khúc bình dân và trung cấp; không thấy nêu dự án nhà ở xã hội nào."
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · An Gia Serviced Apartments",
+  "value": "An Gia Serviced Apartments",
+  "url": "https://24hmoney.vn/news/co-dong-chat-van-ve-luong-tien-mat-thap-cua-an-gia-phu-quyet-to-trinh-bo-sung-thanh-vien-hdqt-c1a2800443.html",
+  "opened_at": "2026-11-23",
+  "quote": "triển khai mô hình hoạt động mới đối với dự án An Gia Serviced Apartments",
+  "status": "match",
+  "note": "Xã hội · dữ kiện định tính, đầy đủ: Một trong 5 mục tiêu 2026 là triển khai mô hình hoạt động mới cho An Gia Serviced Apartments (căn hộ dịch vụ); không có số căn. Doanh thu quý III/2026 từ \"bán v"
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · Westgate 2 (BC 3.2)",
+  "value": "Quỹ đất khoảng 3,2 ha mua cuối 2021, khi đó nêu sẵn sàng phát triển trong năm 2023; đến 06/2026 vẫn chưa có chủ trương đầu tư.",
+  "url": "https://nhadautu.vn/ke-hoach-loi-nhuan-tang-20-an-gia-tiep-tuc-muon-ma-nhieu-du-an-lon-d65315.html",
+  "opened_at": "2026-11-23",
+  "quote": "Cuối năm 2021, An Gia đã mua quỹ đất khoảng 3,2 ha tại Bình Chánh (TP.HCM) với quy mô hơn 2,000 sản phẩm (“BC3.2”), sẵn sàng phát triển trong năm 2023",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · The Lá Village",
+  "value": "Đến cuối quý III/2026 An Gia đã rót hơn 3.300 tỷ đồng vào The Lá Village qua CTCP Bất động sản Gia Linh (góp vốn BCC và cho vay lãi 6%/năm); dự án vẫn ở giai đoạn hoàn thiện pháp lý.",
+  "url": "https://doanhnhan.baophapluat.vn/bat-dong-san-an-gia-agg-vuot-muc-tieu-loi-nhuan-nam-dong-tien-khach-mua-tra-truoc-tang-dot-bien.html",
+  "opened_at": "2026-11-23",
+  "quote": "An Gia đã rót hơn 3.300 tỷ đồng vào dự án The Lá Village thông qua Bất động sản Gia Linh bằng các hình thức góp vốn theo hợp đồng hợp tác kinh doanh và cho vay với lãi suất 6%/năm",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · Westgate 2",
+  "value": "An Gia đã góp hơn 890 tỷ đồng vào Westgate 2 theo hợp đồng hợp tác kinh doanh (số liệu quý I/2026, bài dẫn Chứng khoán ABS).",
+  "url": "https://24hmoney.vn/news/du-an-moi-chua-kip-ganh-agg-c1a2806266.html",
+  "opened_at": "2026-11-23",
+  "quote": "Tại dự án Westgate 2, AGG đã góp hơn 890 tỷ đồng",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "AGG · —",
+  "value": "Chủ tịch Nguyễn Bá Sáng (ĐHĐCĐ 29/06/2026): chỉ ưu tiên M&A hoặc đầu tư dự án đã hoàn thiện 100% pháp lý; 3 dự án gối đầu 4.000–5.000 sản phẩm đủ cho 5 năm.",
+  "url": "https://nhadautu.vn/bds-an-gia-loi-nhuan-2026-chu-yeu-tu-hop-nhat-the-gio-riverside-d105973.html",
+  "opened_at": "2026-11-23",
+  "quote": "đầu tư vào những dự án đã hoàn thiện 100% pháp lý để có thể đưa vào kinh doanh nhanh nhất, tối ưu dòng tiền",
+  "status": "match",
+  "note": "Nhận định"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · CEOHomes Hana Garden (KĐT mới CEO Mê Linh, 20,3 ha)",
+  "value": "Quyết định giao đất đợt 1 (04/11/2025) yêu cầu chủ đầu tư giải phóng nốt 966 m2 chưa GPMB và trình hồ sơ giao đất đợt 2 không chậm hơn quý 2/2026.",
+  "url": "https://doanhnhan.baophapluat.vn/ceo-group-ceo-nhan-171ha-dat-tai-me-linh-phe-duyet-2282-ty-dong-cho-du-an-treo-17-nam-88511.html",
+  "opened_at": "2026-11-23",
+  "quote": "công ty phải hoàn thành công tác giải phóng mặt bằng đối với diện tích 966 m2 chưa được giải phóng, hoàn thiện hồ sơ sử dụng đất đợt 2, trình UBND Thành phố quyết định không chậm hơn quý 2/2026",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · KCN Sân bay Tiên Lãng (khu B) - CEOZone Hải Phòng (hơn 186 ha)",
+  "value": "Đến 07/2026 mới GPMB hơn 62,5 ha và bàn giao hơn 36 ha trên hơn 186 ha; đất bàn giao còn xen kẹt, chưa liền vùng liền thửa.",
+  "url": "https://vneconomy.vn/hai-phong-go-vuong-cho-1900-ha-dat-cong-nghiep.htm",
+  "opened_at": "2026-11-23",
+  "quote": "Sau khi khởi công đầu năm 2026, dự án đã giải phóng mặt bằng hơn 62,5 ha và bàn giao hơn 36 ha phục vụ xây dựng hạ tầng. Tuy nhiên, diện tích bàn giao vẫn chưa bảo đảm liền vùng, liền thửa mà còn xen kẹt",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · CEOHomes Hana Garden (KĐT mới CEO Mê Linh)",
+  "value": "Ngày 04/11/2025 Hà Nội giao gần 17,1 ha (đợt 1) cho C.E.O Quốc tế: hơn 6,1 ha đất ở có thu tiền sử dụng đất, gần 1,6 ha miễn tiền sử dụng đất để xây nhà ở xã hội, gần 9,4 ha cây xanh - hạ tầng.",
+  "url": "https://doanhnhan.baophapluat.vn/ceo-group-ceo-nhan-171ha-dat-tai-me-linh-phe-duyet-2282-ty-dong-cho-du-an-treo-17-nam-88511.html",
+  "opened_at": "2026-11-23",
+  "quote": "Trong cơ cấu đất được giao, có hơn 6,1ha đất ở được giao theo hình thức Nhà nước thu tiền sử dụng đất và gần 1,6ha được miễn tiền sử dụng đất để xây dựng nhà ở xã hội.",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · CEOHomes Hana Garden (KĐT mới CEO Mê Linh)",
+  "value": "Tại lễ khởi công 17/04/2026, Chủ tịch CEO cho biết ngay giai đoạn đầu dự án đã đóng 2.134 tỷ đồng tiền sử dụng đất vào ngân sách.",
+  "url": "https://diendandoanhnghiep.vn/ceo-group-khoi-cong-khu-do-thi-quy-mo-hon-20ha-tai-phia-bac-thu-do-10177353.html",
+  "opened_at": "2026-11-23",
+  "quote": "Ngay trong giai đoạn đầu, dự án đã đóng góp 2.134 tỷ đồng tiền sử dụng đất cho ngân sách Nhà nước",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · Sonasea Vân Đồn Harbor City - phân khu 2",
+  "value": "Ngày 10/11/2022 UBND tỉnh Quảng Ninh thu hồi, hủy quyết định chấp thuận chủ trương phân khu 2 (QĐ 3937 ngày 20/9/2019) để làm lại thủ tục chấp thuận chủ trương đầu tư; chưa tìm thấy tin chấp thuận lại đến 11/2026.",
+  "url": "https://vietnamfinance.vn/du-an-sonasea-van-don-habor-city-phan-khu-2-cua-ceo-group-bi-huy-quyet-dinh-chap-thuan-chu-truong-d89325.html",
+  "opened_at": "2026-11-23",
+  "quote": "Việc thu hồi, hủy bỏ Quyết định số 3937/QĐ-UBND theo Quyết định số 3303/QĐUBND ngày 10/11/2022 của UBND tỉnh Quảng Ninh là thủ tục của cơ quan nhà nước có thẩm quyền nhằm thực hiện lại thủ tục chấp thuận chủ trương đầu tư",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · —",
+  "value": "Tại 31/03/2026, khoản người mua trả tiền trước hợp nhất là 447 tỷ đồng; chưa tìm được số tại 30/09/2026.",
+  "url": "https://vnbusiness.vn/ceo-group-loi-nhuan-tang-hon-67-dong-tien-kinh-doanh-van-am-hang-tram-ty-dong.html",
+  "opened_at": "2026-11-23",
+  "quote": "Khoản người mua trả tiền trước đạt 447 tỷ đồng",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · CEOHomes Hana Garden (KĐT mới CEO Mê Linh)",
+  "value": "Vốn triển khai dựa vào vay ngân hàng: 06/2026 HĐQT thông qua vay Agribank 2.045 tỷ đồng cho hạ tầng và nhà thấp tầng, thêm 695 tỷ đồng cho hai tòa CT-01, CT-02, bảo đảm bằng tài sản dự án và vốn góp tại C.E.O Quốc tế.",
+  "url": "https://nguoiquansat.vn/ceo-group-the-chap-toan-bo-sieu-du-an-o-ha-noi-cho-khoan-vay-gan-2-800-ty-dong-297446.html",
+  "opened_at": "2026-11-23",
+  "quote": "đối với hạng mục hạ tầng kỹ thuật và nhà ở thấp tầng, doanh nghiệp dự kiến vay 2.045 tỷ đồng nhằm thanh toán các chi phí thực hiện dự án",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · Sonasea Residences/CEOHomes Diamond Hill; Sunny Garden City; Hana Garden; KCN Tiên Lãng",
+  "value": "ĐHĐCĐ 24/04/2026 thông qua phát hành thêm 113 triệu cổ phiếu, dự kiến huy động khoảng 1.134 tỷ đồng từ cổ đông hiện hữu và ESOP để đầu tư các dự án.",
+  "url": "https://viettimes.vn/ceo-group-dat-muc-tieu-doanh-thu-3000-ty-dong-truoc-co-hoi-nghin-nam-co-mot-post197045.html",
+  "opened_at": "2026-11-23",
+  "quote": "Tổng số tiền dự kiến huy động khoảng 1.134 tỷ đồng, chủ yếu thông qua phát hành cho cổ đông hiện hữu và một phần theo chương trình ESOP.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · CEOHomes Hana Garden (KĐT mới CEO Mê Linh, 20,3 ha)",
+  "value": "Nghĩa vụ nhà ở xã hội thực hiện ngay trong dự án: 4 tòa nhà ở xã hội (trên gần 1,6 ha được miễn tiền sử dụng đất) bên cạnh 511 sản phẩm thấp tầng và 2 tòa chung cư thương mại; chưa công bố số căn NOXH.",
+  "url": "https://diendandoanhnghiep.vn/ceo-group-khoi-cong-khu-do-thi-quy-mo-hon-20ha-tai-phia-bac-thu-do-10177353.html",
+  "opened_at": "2026-11-23",
+  "quote": "cung cấp 511 sản phẩm thấp tầng, 2 tòa chung cư thương mại và 4 tòa nhà ở xã hội",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · Nhà ở xã hội Bamboo Garden (trong Sunny Garden City, Quốc Oai)",
+  "value": "CEO đã làm nhà ở xã hội Bamboo Garden: 2 tòa CT9A, CT9B cao 9 tầng trên ô đất CC1 10.582 m2, tổng 432 căn hộ 48-66 m2.",
+  "url": "https://stockbiz.vn/tin-tuc/ceo-ha-noi-tim-huong-day-nhanh-tien-do-hai-du-an-cham-trien-khai-cua-ceo-group/26648247",
+  "opened_at": "2026-11-23",
+  "quote": "Dự án gồm 2 tòa chung cư CT9A và CT9B, cao 9 tầng được xây dựng tại ô đất CC1 có diện tích 10.582 m2. Theo giới thiệu, tổng thể dự án có 432 căn hộ có diện tích dao động từ 48m² đến 66m².",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · Sunny Garden City; CEOHomes Hana Garden",
+  "value": "Tính đến 15/06/2024, hai dự án nằm trong 37 dự án được Hà Nội gia hạn sử dụng đất 24 tháng và chủ đầu tư phải nộp thêm khoản tiền tương ứng thời gian gia hạn.",
+  "url": "https://stockbiz.vn/tin-tuc/ceo-ha-noi-tim-huong-day-nhanh-tien-do-hai-du-an-cham-trien-khai-cua-ceo-group/26648247",
+  "opened_at": "2026-11-23",
+  "quote": "Hai dự án Sunny Garden City và CEOHomes Hana Garden do CEO Group làm chủ đầu tư nằm trong số 37 dự án đã được Nhà nước giao đất, cho thuê đất, chuyển mục đích sử dụng đất, được Hà Nội gia hạn sử dụng đất 24 tháng",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · Sunny Garden City (23,8 ha, giao đất 04/02/2008)",
+  "value": "Kết luận kiểm tra của Hà Nội: chậm tiến độ tại 3 ô đất, gồm CC3 (9.769 m2, trường tiểu học) và CC5 (6.698 m2, trường mầm non); ô CC4 được trình gia hạn sử dụng đất 24 tháng. Trường mầm non và tiểu học CEO đã khánh thành năm 2025.",
+  "url": "https://stockbiz.vn/tin-tuc/ceo-ha-noi-tim-huong-day-nhanh-tien-do-hai-du-an-cham-trien-khai-cua-ceo-group/26648247",
+  "opened_at": "2026-11-23",
+  "quote": "Chậm tiến độ thực hiện dự án tại 03 ô đất. Tại 02 ô đất CC3 (9.769 m2) - trường tiểu học và CC5 (6.698 m2) - trường mầm non",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · CEOHomes Hana Garden (KĐT mới CEO Mê Linh)",
+  "value": "Dự án khởi động từ 2008, 17 năm chưa hoàn thiện do vướng thủ tục pháp lý và giao đất; được giao đất 04/11/2025, khởi công 17/04/2026.",
+  "url": "https://doanhnhan.baophapluat.vn/ceo-group-ceo-nhan-171ha-dat-tai-me-linh-phe-duyet-2282-ty-dong-cho-du-an-treo-17-nam-88511.html",
+  "opened_at": "2026-11-23",
+  "quote": "Dự án này đã khởi động từ năm 2008 nhưng sau 17 năm vẫn chưa thể hoàn thiện do vướng mắc về thủ tục pháp lý và giao đất.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · CEOHomes Hana Garden (KĐT mới CEO Mê Linh)",
+  "value": "Quyết định giao đất nêu: không sử dụng đất trong 12 tháng hoặc chậm tiến độ 24 tháng thì chỉ được gia hạn tối đa 24 tháng và phải nộp tiền; hết hạn Nhà nước thu hồi không bồi thường.",
+  "url": "https://doanhnhan.baophapluat.vn/ceo-group-ceo-nhan-171ha-dat-tai-me-linh-phe-duyet-2282-ty-dong-cho-du-an-treo-17-nam-88511.html",
+  "opened_at": "2026-11-23",
+  "quote": "Trường hợp doanh nghiệp không sử dụng đất trong 12 tháng kể từ ngày bàn giao hoặc chậm tiến độ 24 tháng, dự án sẽ được xem xét gia hạn tối đa 24 tháng và phải nộp khoản tiền tương ứng.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · Sonasea Vân Đồn Harbor City",
+  "value": "Tại 30/09/2026, chi phí xây dựng cơ bản dở dang riêng tại dự án hơn 1.092 tỷ đồng (trong hơn 1.708 tỷ đồng tài sản dở dang dài hạn).",
+  "url": "https://daibieunhandan.vn/ceo-group-gieo-hang-nghin-ty-dong-vao-cac-du-an-bao-gio-den-mua-thu-hoach-10441922.html",
+  "opened_at": "2026-11-23",
+  "quote": "Riêng chi phí xây dựng cơ bản dở dang tại dự án Khu tổ hợp du lịch nghỉ dưỡng Sonasea Vân Đồn đạt hơn 1.092 tỷ đồng.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "CEO · —",
+  "value": "—",
+  "url": "https://mekongasean.vn/chu-tich-ceo-group-co-hoi-dang-rat-lon-song-nhieu-kho-khan-trong-ngan-han-53225.html",
+  "opened_at": "2026-11-23",
+  "quote": "các chi phí phát triển dự án ngày càng tăng, như tiền sử dụng đất, nhân công, vật liệu, thiết bị...; tín dụng vào bất động sản thắt chặt hơn, lãi suất tăng...",
+  "status": "match",
+  "note": "Nhận định · dữ kiện định tính, đầy đủ: Ngày 27/03/2026 Chủ tịch Đoàn Văn Bình nêu khó khăn ngắn hạn gồm chi phí phát triển dự án ngày càng tăng, trong đó có tiền sử dụng đất (phát biểu trước khi các "
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · Chung cư NO11 – KĐT mới Dịch Vọng",
+  "value": "Tháng 7/2024 lãnh đạo cho biết NO11 còn khoảng 200 m2 chưa giải phóng mặt bằng, đang thỏa thuận với dân.",
+  "url": "https://tapchicongthuong.vn/do-thi-tu-liem--ntl--bat-tay-voi-tap-doan-ha-do--hdg--xay-thap-doi-47-tang-tai-khu-do-thi-dich-vong-123539.htm",
+  "opened_at": "2026-11-23",
+  "quote": "khu đất NO11 cơ bản đã hoàn thành giải phóng mặt bằng xong, chỉ còn khoảng 200 m2 mặt bằng cuối cùng đang được thoả thuận với người dân",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · KĐT mới Dịch Vọng (phần còn lại) và NO-11",
+  "value": "ĐHĐCĐ 24/4/2026: KĐT Dịch Vọng (hơn 5.100 tỷ) còn đang hoàn thiện pháp lý, giải phóng mặt bằng, mục tiêu xong 2029; riêng NO-11 (32 tầng, hơn 360 căn) được nêu là đã xong giải phóng mặt bằng.",
+  "url": "https://stockbiz.vn/tin-tuc/ntl-lideco-se-tap-trung-trien-khai-loat-du-an-tai-quang-ninh-ha-noi/39665552",
+  "opened_at": "2026-11-23",
+  "quote": "đang trong giai đoạn hoàn thiện pháp lý, giải phóng mặt bằng và chuẩn bị các bước triển khai xây dựng, với mục tiêu hoàn thành vào năm 2029",
+  "status": "match",
+  "note": "Có đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · KĐT mới Bắc Quốc lộ 32 (Trạm Trôi, Hoài Đức)",
+  "value": "KĐT mới Bắc Quốc lộ  (Trạm Trôi, Hoài Đức",
+  "url": "https://stockbiz.vn/tin-tuc/ntl-xac-dinh-nam-2026-trang-doanh-thu-tu-bat-dong-san-chuyen-huong-sang-mot-mo-vang-khac/39398118",
+  "opened_at": "2026-11-23",
+  "quote": "với khu đô thị mới Quốc lộ 32, doanh nghiệp tiếp tục hoàn thiện giải phóng mặt bằng phần diện tích còn lại và thực hiện điều chỉnh quy hoạch một số ô đất",
+  "status": "match",
+  "note": "Có đất · dữ kiện định tính, đầy đủ: Tài liệu ĐHĐCĐ 2026: còn phải giải phóng mặt bằng phần diện tích còn lại và điều chỉnh quy hoạch một số ô đất (không nêu tỷ lệ)."
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · Chung cư NO11 – KĐT mới Dịch Vọng",
+  "value": "Mục tiêu 2026: xong giấy chứng nhận quyền sử dụng đất ô NO11, bàn giao toàn bộ hạ tầng; làm thủ tục xác nhận diện tích đã giải phóng thuộc vành đai 2,5 và đường 50 m để Nhà nước hoàn trả chi phí.",
+  "url": "https://stockbiz.vn/tin-tuc/ntl-xac-dinh-nam-2026-trang-doanh-thu-tu-bat-dong-san-chuyen-huong-sang-mot-mo-vang-khac/39398118",
+  "opened_at": "2026-11-23",
+  "quote": "doanh nghiệp đặt mục tiêu hoàn tất cấp giấy chứng nhận quyền sử dụng đất đối với ô đất NO11, đồng thời bàn giao toàn bộ hạ tầng kỹ thuật",
+  "status": "match",
+  "note": "Tiền đất"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · KĐT mới Dịch Vọng; KĐT mới Bắc Quốc lộ 32",
+  "value": "KĐT mới Dịch Vọng; KĐT mới Bắc Quốc lộ",
+  "url": "https://www.tinnhanhchungkhoan.vn/lideco-ntl-giao-han-muc-bo-sung-150-ty-dong-cho-chu-tich-dau-tu-co-phieu-post367165.html",
+  "opened_at": "2026-11-23",
+  "quote": "Công ty sẽ hoàn thành thủ tục xin điều chỉnh chủ trương đầu tư 2 dự án khu đô thị mới Dịch Vọng và khu đô thị Bắc quốc lộ 32 để tập trung đầu tư và hoàn thành các nghĩa vụ còn lại với Nhà nước.",
+  "status": "match",
+  "note": "Tiền đất · dữ kiện định tính, đầy đủ: Kế hoạch 2025: xin điều chỉnh chủ trương đầu tư cả 2 dự án để đầu tư tiếp và hoàn thành các nghĩa vụ còn lại với Nhà nước (không nêu số tiền)."
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · Chung cư NO11 – KĐT mới Dịch Vọng",
+  "value": "Giấy phép xây dựng cấp 12/2025; chưa mở bán, dự kiến quý I/2027 sau khi đủ điều kiện, bán theo tiến độ chứ không bán hết một đợt; dự toán xây lắp khoảng 1.400 tỷ.",
+  "url": "https://www.tinnhanhchungkhoan.vn/lideco-ntl-gong-lai-tch-chung-cu-no11-dich-vong-du-kien-mo-ban-quy-i2027-post389483.html",
+  "opened_at": "2026-11-23",
+  "quote": "sau khi đủ điều kiện bán hàng, Công ty sẽ tiến hành bán nhưng sẽ không bán hết 1 đợt mà sẽ bán theo tiến độ để tối ưu lợi nhuận. Dự kiến, quý I/2027 sẽ mở bán.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · NOXH OXH-01; KĐT Dịch Vọng",
+  "value": "Vốn dự án đến nay từ tiền tự có và vay ngân hàng: 30/9/2026 tiền còn gần 83 tỷ (đầu năm hơn 512 tỷ), vay ngắn hạn hơn 215,8 tỷ cho NOXH Hạ Long.",
+  "url": "https://cafef.vn/lideco-bao-lo-quy-iii-du-an-nha-o-xa-hoi-ha-long-bat-dau-co-nguon-thu-188261026170129453.chn",
+  "opened_at": "2026-11-23",
+  "quote": "Doanh nghiệp đồng thời ghi nhận khoản vay ngắn hạn hơn 215,8 tỷ đồng, phát sinh theo hợp đồng tín dụng phục vụ thi công dự án nhà ở xã hội tại Cao Xanh và Hà Lầm, Quảng Ninh.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · Hàng để bán (Dịch Vọng, NOXH Hạ Long)",
+  "value": "30/9/2026 tồn kho hơn 888,4 tỷ, trong đó dở dang 860,35 tỷ: Dịch Vọng hơn 594 tỷ, NOXH Hạ Long hơn 261,5 tỷ; chưa có sản phẩm hoàn thành để ghi doanh thu.",
+  "url": "https://cafef.vn/lideco-bao-lo-quy-iii-du-an-nha-o-xa-hoi-ha-long-bat-dau-co-nguon-thu-188261026170129453.chn",
+  "opened_at": "2026-11-23",
+  "quote": "Tính đến ngày 30/9/2026, tổng hàng tồn kho của Lideco đạt hơn 888,4 tỷ đồng, tăng khoảng 56,6% so với đầu năm.",
+  "status": "match",
+  "note": "Thu tiền"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · NOXH OXH-01 (trong KĐT Cao Thắng – Hà Khánh – Hà Lầm)",
+  "value": "Được UBND tỉnh giao làm chủ đầu tư theo QĐ 2962/QĐ-UBND ngày 29/7/2025; tổng mức đầu tư khoảng 967 tỷ; 1 tòa 19 tầng, 850 căn.",
+  "url": "https://cafef.vn/lideco-bao-lo-quy-iii-du-an-nha-o-xa-hoi-ha-long-bat-dau-co-nguon-thu-188261026170129453.chn",
+  "opened_at": "2026-11-23",
+  "quote": "dự án được giao cho Lideco thực hiện theo Quyết định số 2962/QĐ-UBND ngày 29/7/2025, với tổng mức đầu tư được phê duyệt khoảng 967 tỷ đồng. Quy mô dự án gồm một tòa nhà cao 19 tầng với 850 căn hộ.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · NOXH OXH-01",
+  "value": "Sở Xây dựng Quảng Ninh xác nhận 850 căn đủ điều kiện bán; toàn bộ là bán, không có căn cho thuê hay thuê mua; căn 51,5–69,9 m2.",
+  "url": "https://cafeland.vn/tin-tuc/quang-ninh-mo-ban-850-can-nha-o-xa-hoi-tai-cao-xanh-154102.html",
+  "opened_at": "2026-11-23",
+  "quote": "toàn bộ 850 căn hộ tại dự án được đưa vào kinh doanh dưới hình thức bán, không có căn hộ dành cho thuê hoặc thuê mua",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · NOXH OXH-01",
+  "value": "Đợt 1 có 556 hồ sơ đủ điều kiện; đang nhận hồ sơ đợt 2 cho hơn 200 căn còn lại; bắt đầu có nguồn thu từ quý 4/2026.",
+  "url": "https://cafef.vn/lideco-bao-lo-quy-iii-du-an-nha-o-xa-hoi-ha-long-bat-dau-co-nguon-thu-188261026170129453.chn",
+  "opened_at": "2026-11-23",
+  "quote": "dự án đã nhận được 556 hồ sơ đủ điều kiện mua nhà ở xã hội cho đợt 1 và công ty đang tiếp tục thông báo nhận hồ sơ đăng ký đợt 2 cho hơn 200 căn còn lại. Dự án bắt đầu có nguồn thu từ quý 4 năm 2026.",
+  "status": "match",
+  "note": "Xã hội"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · KĐT mới Dịch Vọng (22,5 ha)",
+  "value": "Giao cho NTL từ 1997, thời gian thực hiện ban đầu 2003–2007; 30/5/2025 Hà Nội nâng tổng mức đầu tư lên gần 5.125 tỷ và cho hoàn thành đến quý 1/2029.",
+  "url": "https://stockbiz.vn/tin-tuc/ntl-trang-doanh-thu-cot-loi-mot-cong-ty-bat-dong-san-rot-580-ty-dau-tu-co-phieu-niem-yet-co-ma-tam-lai-20/39732617",
+  "opened_at": "2026-11-23",
+  "quote": "được giao cho NTL suốt gần 30 năm (từ năm 1997), tổng mức đầu tư ban đầu gần 795 tỷ đồng, thời gian thực hiện từ 2003-2007",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · KĐT mới Dịch Vọng",
+  "value": "Tiến độ đã lùi nhiều lần: 8/2018 kéo đến cuối 2022; 11/2022 xin kéo đến hết 2026; nay là quý I/2029.",
+  "url": "https://tapchicongthuong.vn/do-thi-tu-liem--ntl--bat-tay-voi-tap-doan-ha-do--hdg--xay-thap-doi-47-tang-tai-khu-do-thi-dich-vong-123539.htm",
+  "opened_at": "2026-11-23",
+  "quote": "Đến tháng 8/2018, dự án Khu đô thị mới Dịch Vọng được phê duyệt điều chỉnh với tổng mức đầu tư lên hơn 4.900 tỷ đồng, thời gian hoàn thành được kéo dài đến cuối năm 2022.",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · KĐT Lideco Bắc Quốc lộ 32 (hơn 38 ha, Trạm Trôi)",
+  "value": "Khởi công 2007, 648 biệt thự/nhà vườn + 136 liền kề; ghi nhận 3/2023: sau 15 năm vẫn dở dang, hàng trăm căn xây thô bỏ hoang.",
+  "url": "https://nhadautu.vn/khu-do-thi-15-nam-van-do-dang-hang-tram-biet-thu-vang-bong-nguoi-o-ha-noi-d74953.html",
+  "opened_at": "2026-11-23",
+  "quote": "Dự án được khởi công từ năm 2007 với tổng mức đầu tư 781 tỷ đồng gồm 648 căn biệt thự, nhà vườn và 136 căn liền kề",
+  "status": "match",
+  "note": "Chậm tiến độ"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · Dự án mới (tìm quỹ đất)",
+  "value": "Định hướng từ 2025: tìm dự án vừa, tổng mức đầu tư 1.500–2.000 tỷ, qua đấu thầu dự án, đấu giá quyền sử dụng đất, mua lại hoặc góp vốn liên doanh.",
+  "url": "https://www.tinnhanhchungkhoan.vn/lideco-ntl-giao-han-muc-bo-sung-150-ty-dong-cho-chu-tich-dau-tu-co-phieu-post367165.html",
+  "opened_at": "2026-11-23",
+  "quote": "các dự án mới có quy mô vừa với tổng mức đầu tư từ 1.500 - 2.000 tỷ đồng bằng hình thức đấu thầu, đấu giá quyền sử dụng đất hoặc mua lại, góp vốn liên doanh các dự án đã được phê duyệt chủ đầu tư",
+  "status": "match",
+  "note": "Pháp lý · địa bàn"
+ },
+ {
+  "block": "bds-57",
+  "claim": "NTL · —",
+  "value": "Tài liệu ĐHĐCĐ 2026: năm 2026 tiếp tục chưa có doanh thu từ kinh doanh bất động sản như năm 2025, dù các dự án vẫn triển khai.",
+  "url": "https://stockbiz.vn/tin-tuc/ntl-xac-dinh-nam-2026-trang-doanh-thu-tu-bat-dong-san-chuyen-huong-sang-mot-mo-vang-khac/39398118",
+  "opened_at": "2026-11-23",
+  "quote": "Lideco xác định năm 2026 sẽ tiếp tục chưa ghi nhận doanh thu từ hoạt động kinh doanh bất động sản, tương tự tình trạng trong năm 2025 dù các dự án vẫn đang được triển khai.",
+  "status": "match",
+  "note": "Nhận định"
  }
 ]
