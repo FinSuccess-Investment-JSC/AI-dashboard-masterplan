@@ -323,28 +323,51 @@ function heat(host, ctx, onPick) {
 
 /* ===================== Module 05 · triển vọng nguồn cung ===================== */
 function outlook(host, ctx) {
-  const {P, POL} = ctx, {esc, nf, dm} = P;
-  const L = POL.pipeline || [], ST = POL.pipeline_status || [], TC = POL.tech_colors || {};
-  // Màu thống nhất theo loại hình (cùng bản đồ ngành, sơ đồ công nghệ); loại không có trong 6 công nghệ lấy màu tab Policy.
-  const color = t => ctx.O.technologies.find(x => x.id === t)?.color || TC[t] || '#9AA3BD';
+  const {P, POL} = ctx, {esc, nf} = P;
+  const L = POL.pipeline || [], TC = POL.tech_colors || {};
+  // Màu thống nhất theo loại hình (cùng bản đồ ngành, sơ đồ công nghệ); loại không có trong 6 công nghệ lấy màu riêng.
+  const XC = {nuclear: '#861C52', storage: '#8997D6'};
+  const color = t => ctx.O.technologies.find(x => x.id === t)?.color || XC[t] || TC[t] || '#9AA3BD';
   const yearOf = p => (p.cod_actual || p.cod_plan || '').slice(0, 4) || null;
+  const codOf = p => p.cod_actual || p.cod_plan || '';
   const ticker = p => (String(p.owner || '').match(/\(([A-Z0-9]{3})\)/) || [])[1];
   const certainty = {cod: 'Đã vận hành', construction: 'Đang xây dựng', financing: 'Ký EPC / thu xếp vốn', approved: 'Đã chọn nhà đầu tư', planned: 'Trong quy hoạch'};
   const ord = ['cod', 'construction', 'financing', 'approved', 'planned'];
-  // Công suất theo năm COD và mức chắc chắn.
-  const years = [...new Set(L.map(yearOf).filter(Boolean))].sort();
-  const byY = years.map(y => ({y, rows: ord.map(s => ({s, mw: L.filter(p => yearOf(p) === y && p.status === s).reduce((a, p) => a + (+p.mw || 0), 0)}))}));
-  const maxY = Math.max(...byY.map(x => x.rows.reduce((a, r) => a + r.mw, 0)), 1);
   const scol = {cod: '#1D2678', construction: '#2938A8', financing: '#8997D6', approved: '#C9CFDD', planned: '#e3e7f0'};
-  const undated = L.filter(p => !yearOf(p));
+  // Loại hình theo tổng MW giảm dần (23/11/2026: người dùng muốn xem kế hoạch COD theo từng loại: LNG, than, gió…).
+  const mwOf = rows => rows.reduce((a, p) => a + (+p.mw || 0), 0);
+  const techs = [...new Set(L.map(p => p.tech))].map(t => ({t, label: L.find(p => p.tech === t).tech_label || t, rows: L.filter(p => p.tech === t)})).sort((a, b) => mwOf(b.rows) - mwOf(a.rows));
+  const years = [...new Set(L.map(yearOf).filter(Boolean))].sort();
+  const st = {tech: 'all', by: 'tech'};
+  host.innerHTML = `<section class="vu-sec"><div class="vo-head"><h4>Nguồn mới dự kiến vào khi nào, loại hình nào?</h4>
+      <div class="ov-ctl vo-by" role="group" aria-label="Tô màu cột theo"><button type="button" data-by="tech">Theo loại hình</button><button type="button" data-by="status">Theo mức chắc chắn</button></div></div>
+      <div class="ov-ctl vo-f" role="group" aria-label="Lọc loại hình"><button type="button" data-t="all">Tất cả (${L.length})</button>${techs.map(x => `<button type="button" data-t="${esc(x.t)}"><i style="background:${color(x.t)}"></i>${esc(x.label)} (${x.rows.length})</button>`).join('')}</div>
+      <div class="vo-bars"></div><div class="vu-leg"></div><p class="vz-take"></p></section>
+    <section class="vu-sec"><h4>Lịch vận hành thương mại (COD) theo loại hình</h4><div class="vo-groups"></div></section>`;
+  const bars = host.querySelector('.vo-bars'), leg = host.querySelector('.vu-leg'), take = host.querySelector('.vz-take'), groups = host.querySelector('.vo-groups');
+  const li = p => { const t = ticker(p);
+    return `<li class="vo-${p.status}"><span class="vo-d">${esc(codOf(p) || 'chưa có')}</span><i style="background:${scol[p.status] || '#C9CFDD'}" title="${esc(certainty[p.status] || p.status)}"></i><div><b>${esc(p.name)}</b> <small>${p.mw ? nf(+p.mw, 0) + ' MW' : 'chưa rõ MW'} · ${esc(certainty[p.status] || p.status)}</small><small>${esc(p.owner || '')}${t ? ' ' + ctx.chip(t) : ''}${p.source_url ? ` · <a href="${esc(p.source_url)}" target="_blank" rel="noopener">${esc(p.source_label || 'nguồn')}</a>` : ''}</small></div></li>`; };
+  function draw() {
+    host.querySelectorAll('[data-t]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.t === st.tech)));
+    host.querySelectorAll('[data-by]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.by === st.by)));
+    const rows = st.tech === 'all' ? L : L.filter(p => p.tech === st.tech);
+    const keys = st.by === 'tech' ? techs.filter(x => st.tech === 'all' || x.t === st.tech).map(x => [x.t, x.label, color(x.t), p => p.tech === x.t]) : ord.map(s => [s, certainty[s], scol[s], p => p.status === s]);
+    const byY = years.map(y => ({y, parts: keys.map(([k, lab, c, f]) => ({lab, c, mw: mwOf(rows.filter(p => yearOf(p) === y && f(p)))}))}));
+    const maxY = Math.max(...byY.map(x => x.parts.reduce((a, r) => a + r.mw, 0)), 1);
+    bars.innerHTML = byY.map(x => { const tot = x.parts.reduce((a, r) => a + r.mw, 0);
+      return `<div class="vo-col"><div class="vo-stack" style="height:${tot / maxY * 100}%">${x.parts.filter(r => r.mw).map(r => `<i style="flex:${r.mw};background:${r.c}" title="${esc(r.lab)}: ${nf(r.mw, 0)} MW"></i>`).join('')}</div><b>${tot ? nf(tot, 0) : '–'}</b><span>${x.y}</span></div>`; }).join('');
+    leg.innerHTML = keys.map(([, lab, c]) => `<span><i style="background:${c}"></i>${esc(lab)}</span>`).join('');
+    const und = rows.filter(p => !yearOf(p)), noMw = rows.filter(p => !p.mw);
+    take.textContent = `${nf(mwOf(rows), 0)} MW của ${rows.length} dự án lớn đang theo dõi${st.tech === 'all' ? '' : ' (' + (techs.find(x => x.t === st.tech)?.label || '') + ')'}, theo năm vận hành thực tế hoặc kế hoạch${und.length ? `; ${und.length} dự án chưa có năm COD` : ''}${noMw.length ? `; ${noMw.length} dự án chưa rõ MW` : ''}. Danh sách chưa có dự án gió, mặt trời; không phải toàn bộ quy hoạch.`;
+    groups.innerHTML = techs.filter(x => st.tech === 'all' || x.t === st.tech).map(x => { const op = mwOf(x.rows.filter(p => p.status === 'cod'));
+      return `<div class="vo-g" style="--c:${color(x.t)}"><div class="vo-gh"><b>${esc(x.label)}</b><span>${x.rows.length} dự án · ${nf(mwOf(x.rows), 0)} MW${op ? ` · đã vận hành ${nf(op, 0)} MW` : ''}</span></div>
+        <ol class="vo-tl">${[...x.rows].sort((a, b) => (codOf(a) || '9999').localeCompare(codOf(b) || '9999')).map(li).join('')}</ol></div>`; }).join('');
+  }
+  host.querySelectorAll('[data-t]').forEach(b => b.addEventListener('click', () => { st.tech = b.dataset.t; draw(); }));
+  host.querySelectorAll('[data-by]').forEach(b => b.addEventListener('click', () => { st.by = b.dataset.by; draw(); }));
+  draw();
   const tgt = (POL.plan?.targets || []).filter(t => t.actual != null);
-  host.innerHTML = `<section class="vu-sec"><h4>Nguồn mới dự kiến vào khi nào, chắc chắn đến đâu?</h4>
-      <div class="vo-bars">${byY.map(x => `<div class="vo-col"><div class="vo-stack" style="height:${x.rows.reduce((a, r) => a + r.mw, 0) / maxY * 100}%">${x.rows.filter(r => r.mw).map(r => `<i style="flex:${r.mw};background:${scol[r.s]}" title="${certainty[r.s]}: ${nf(r.mw, 0)} MW"></i>`).join('')}</div><b>${nf(x.rows.reduce((a, r) => a + r.mw, 0), 0)}</b><span>${x.y}</span></div>`).join('')}</div>
-      <div class="vu-leg">${ord.map(s => `<span><i style="background:${scol[s]}"></i>${certainty[s]}</span>`).join('')}</div>
-      <p class="vz-take">MW theo năm vận hành thực tế hoặc kế hoạch của ${L.length} dự án lớn đang theo dõi${undated.length ? `; ${undated.length} dự án chưa có năm COD` : ''}. Không phải toàn bộ danh sách dự án trong quy hoạch.</p></section>
-    <section class="vu-sec"><h4>Lịch vận hành thương mại (COD) và doanh nghiệp liên quan</h4><ol class="vo-tl">${[...L].sort((a, b) => (yearOf(a) || '9999').localeCompare(yearOf(b) || '9999') || (a.cod_actual || a.cod_plan || '').localeCompare(b.cod_actual || b.cod_plan || '')).map(p => { const t = ticker(p);
-      return `<li class="vo-${p.status}"><span class="vo-d">${esc(p.cod_actual || p.cod_plan || 'chưa có')}</span><i style="background:${color(p.tech)}"></i><div><b>${esc(p.name)}</b> <small>${nf(+p.mw, 0)} MW · ${esc(p.tech_label || p.tech)} · ${esc(certainty[p.status] || p.status)}</small><small>${esc(p.owner || '')}${t ? ' ' + ctx.chip(t) : ''}${p.source_url ? ` · <a href="${esc(p.source_url)}" target="_blank" rel="noopener">${esc(p.source_label || 'nguồn')}</a>` : ''}</small></div></li>`; }).join('')}</ol></section>
-    ${tgt.length ? `<section class="vu-sec"><h4>Mục tiêu 2030 so với công suất cuối 2025</h4><div class="vz-bars">${tgt.map(t => `<div class="vz-bar"><span>${esc(t.source)}</span><i style="width:${t.actual / t.high * 100}%;background:#2938A8"></i><b>${nf(t.actual / t.high * 100, 0)}%</b><small>${nf(t.actual, 0)} MW / mục tiêu ${nf(t.low, 0)}${t.high !== t.low ? '–' + nf(t.high, 0) : ''} MW (${esc(t.year)})</small></div>`).join('')}</div><div class="source-note">Quy hoạch điện VIII điều chỉnh (QĐ 768/QĐ-TTg) qua tab Policy · Quy hoạch.</div></section>` : ''}`;
+  if (tgt.length) host.insertAdjacentHTML('beforeend', `<section class="vu-sec"><h4>Mục tiêu 2030 so với công suất cuối 2025</h4><div class="vz-bars">${tgt.map(t => `<div class="vz-bar"><span>${esc(t.source)}</span><i style="width:${t.actual / t.high * 100}%;background:#2938A8"></i><b>${nf(t.actual / t.high * 100, 0)}%</b><small>${nf(t.actual, 0)} MW / mục tiêu ${nf(t.low, 0)}${t.high !== t.low ? '–' + nf(t.high, 0) : ''} MW (${esc(t.year)})</small></div>`).join('')}</div><div class="source-note">Quy hoạch điện VIII điều chỉnh (QĐ 768/QĐ-TTg) qua tab Policy · Quy hoạch.</div></section>`);
 }
 
 

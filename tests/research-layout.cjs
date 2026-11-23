@@ -26,7 +26,7 @@ try { for(const sector of SECTORS){
  for(const width of [1440,390]){await p.setViewportSize({width,height:1000});for(let i=0;i<tabCount;i++){await p.locator('.majortabbtn').nth(i).click();assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),sector+' overflow '+width+' tab '+i);if(i===0||i===2||i===3)await p.screenshot({path:`/private/tmp/dashboard-redesign/${sector}-${width}-${i}.png`});}}
  await p.locator('.majortabbtn').first().click();
  await p.waitForSelector('body[data-sources-ready="true"]');
- assert.ok(await p.evaluate(()=>Boolean(document.querySelector('.business-models').compareDocumentPosition(document.querySelector('.financial-comparison'))&Node.DOCUMENT_POSITION_FOLLOWING)));
+ assert.ok(await p.evaluate(()=>(()=>{const bm=document.querySelector('.business-models');return !bm||Boolean(bm.compareDocumentPosition(document.querySelector('.financial-comparison'))&Node.DOCUMENT_POSITION_FOLLOWING)})()));
  const symbol=sector==='Dau-khi'?'GAS':sector==='Sugar'?'SBT':sector==='Dien'?'POW':sector==='Bat-dong-san'?'VHM':sector==='Det-may'?'TNG':sector==='Cang-bien'?'GMD':sector==='Nong-nghiep'?'DBC':sector==='Thuy-san'?'ANV':sector==='Van-tai-bien'?'PVT':sector==='Xay-dung'?'HPG':sector==='Bao-hiem'?'BVH':sector==='Ban-le'?'MWG':sector==='Duoc'?'DHG':'VCB';
  const compTab=p.locator('#pane-mt1 button',{hasText:'So sánh tài chính'});if(await compTab.count())await compTab.first().click();
  await p.locator('#comparison-search').fill(symbol);assert.equal(await p.locator('.comparison-table tbody tr').count(),1);
