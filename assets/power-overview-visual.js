@@ -343,5 +343,89 @@ function outlook(host, ctx) {
     ${tgt.length ? `<section class="vu-sec"><h4>Mục tiêu 2030 so với công suất cuối 2025</h4><div class="vz-bars">${tgt.map(t => `<div class="vz-bar"><span>${esc(t.source)}</span><i style="width:${t.actual / t.high * 100}%;background:#2938A8"></i><b>${nf(t.actual / t.high * 100, 0)}%</b><small>${nf(t.actual, 0)} MW / mục tiêu ${nf(t.low, 0)}${t.high !== t.low ? '–' + nf(t.high, 0) : ''} MW (${esc(t.year)})</small></div>`).join('')}</div><div class="source-note">Quy hoạch điện VIII điều chỉnh (QĐ 768/QĐ-TTg) qua tab Policy · Quy hoạch.</div></section>` : ''}`;
 }
 
-window.PowerOverviewVisual = {map, tech, data, unit, heat, outlook, waterfall};
+
+/* ===================== Doanh nghiệp niêm yết: định giá, hiệu quả, lợi nhuận (23/11/2026) ===================== */
+// Số thật: COMPANY_VALUATION (VNDirect, P/E, P/B, vốn hóa theo phiên), COMPANY_QUARTERLY (BCTC quý: doanh thu, lãi gộp, lãi ròng).
+// ROE 4 quý gần nhất = P/B ÷ P/E (cùng EPS 4 quý và BVPS của VNDirect), dùng đồng nhất cho 18 mã vì ROE năm thiếu ở nhiều mã.
+const CO_GROUPS = [['Nhiệt điện', 'Nhiệt điện than & khí', '#3d4653'], ['Thủy điện & đa ngành', 'Thủy điện & đa ngành', '#2938A8'], ['Năng lượng tái tạo', 'Năng lượng tái tạo', '#2a9fa3'], ['Lưới, xây lắp & thiết bị', 'Lưới, xây lắp & thiết bị', '#861C52']];
+function companies(host, ctx) {
+  const {P, O} = ctx, {fin, nf, sg, pc, esc, median, gap} = P;
+  const V = window.COMPANY_VALUATION, Q = window.COMPANY_QUARTERLY;
+  if (!V?.companies || !Q?.companies) { host.replaceChildren(gap('chưa nạp dữ liệu định giá hoặc BCTC quý.')); return; }
+  const qs = Q.quarters, col = g => (CO_GROUPS.find(x => x[0] === g) || [, , '#9AA3BD'])[2];
+  const sum4 = (arr, end) => { if (end < 3) return null; const s = arr.slice(end - 3, end + 1); return s.every(fin) ? s.reduce((a, b) => a + b, 0) : null; };
+  const rows = Q.companies.filter(c => c.sector === 'power').map(c => {
+    const v = V.companies[c.symbol] || {}, ni = c.net_income || [], rev = c.revenue || [], gp = c.gross_profit || [];
+    let i = ni.length - 1; while (i >= 0 && !fin(ni[i])) i--;
+    const yoy = i >= 4 && fin(ni[i - 4]) && ni[i - 4] !== 0 ? (ni[i] / Math.abs(ni[i - 4]) - (ni[i - 4] < 0 ? -1 : 1)) * 100 * (ni[i - 4] < 0 ? -1 : 1) : null;
+    const ttm = sum4(ni, i), ttmPrev = sum4(ni, i - 4);
+    const roe = fin(v.pb) && fin(v.pe) && v.pe > 0 ? v.pb / v.pe * 100 : null;
+    const co = O.companies.find(x => x.ticker === c.symbol);
+    return {t: c.symbol, g: c.group, cap: v.market_cap, pe: v.pe, pb: v.pb, close: v.close, date: v.date, roe, i, q: qs[i], ni: ni[i], niPrev: i >= 4 ? ni[i - 4] : null, yoy, ttm, ttmPrev,
+      rev: rev[i], revYoY: i >= 4 && fin(rev[i]) && fin(rev[i - 4]) && rev[i - 4] ? (rev[i] / rev[i - 4] - 1) * 100 : null,
+      gm: (c.gross_margin || []).slice(-8), niSeries: ni.slice(-12), qLabels: qs.slice(-12), note: co?.exposure?.[0]?.note || '', role: co?.exposure?.[0]?.role || '', other: co?.other || ''};
+  });
+  const asOf = rows.find(r => r.date)?.date;
+  let grp = 'all', sortBy = 'cap';
+  host.innerHTML = `<div class="vc-ctl"><div class="ov-ctl" role="group" aria-label="Nhóm doanh nghiệp"><button type="button" data-g="all" aria-pressed="true">Tất cả (${rows.length})</button>${CO_GROUPS.map(([g, l, c]) => `<button type="button" data-g="${esc(g)}" aria-pressed="false"><i style="background:${c}"></i>${esc(l)} (${rows.filter(r => r.g === g).length})</button>`).join('')}</div>
+      <span class="muted">Định giá phiên ${esc(asOf ? asOf.slice(8, 10) + '/' + asOf.slice(5, 7) + '/' + asOf.slice(0, 4) : '—')} · BCTC đến ${esc(qs.at(-1))}</span></div>
+    <div class="vc-groups"></div>
+    <div class="vc-two"><section class="vc-box"><h4>Định giá so với hiệu quả sinh lời</h4><p class="vz-take">Góc trên bên trái: ROE cao, P/B thấp. Bong bóng càng to, vốn hóa càng lớn. Đường đứt là trung vị.</p><div class="vc-scatter"></div></section>
+      <section class="vc-box"><h4>Lãi ròng quý gần nhất so cùng kỳ</h4><p class="vz-take">Cột phải là tăng, cột trái là giảm; số bên phải là lãi ròng quý (tỷ đồng).</p><div class="vc-yoy"></div></section></div>
+    <section class="vc-box"><h4>Biên lợi nhuận gộp 8 quý gần nhất</h4><p class="vz-take">Ô càng đậm, biên gộp càng cao; ô trống là quý chưa có số.</p><div class="vc-heat"></div></section>
+    <section class="vc-box"><div class="vc-cards-h"><h4>Thẻ doanh nghiệp</h4><label>Sắp xếp <select data-sort><option value="cap">Vốn hóa</option><option value="pe">P/E thấp → cao</option><option value="pb">P/B thấp → cao</option><option value="roe">ROE cao → thấp</option><option value="yoy">Lãi ròng so cùng kỳ</option></select></label></div><div class="vc-cards"></div></section>
+    <p class="source-note">Định giá: VNDirect finfo (P/E, P/B theo EPS 4 quý gần nhất và giá trị sổ sách mỗi cổ phiếu, điều chỉnh theo giá đóng cửa). Lợi nhuận, biên gộp: BCTC hợp nhất quý. ROE = P/B ÷ P/E. Doanh nghiệp đa ngành (REE, HDG, PC1, GEX, POW…) gồm cả mảng ngoài điện. ↗ mở trang phân tích cổ phiếu.</p>`;
+  const sel = () => grp === 'all' ? rows : rows.filter(r => r.g === grp);
+  // 1) Thẻ tổng hợp theo nhóm
+  const drawGroups = () => {
+    host.querySelector('.vc-groups').innerHTML = CO_GROUPS.map(([g, l, c]) => { const R = rows.filter(r => r.g === g), cap = R.reduce((a, r) => a + (fin(r.cap) ? r.cap : 0), 0);
+      const t = R.filter(r => fin(r.ttm) && fin(r.ttmPrev)), tt = t.reduce((a, r) => a + r.ttm, 0), tp = t.reduce((a, r) => a + r.ttmPrev, 0);
+      return `<button type="button" class="vc-g ${grp === g ? 'on' : ''} ${grp !== 'all' && grp !== g ? 'dim' : ''}" data-g="${esc(g)}" style="--c:${c}"><b>${esc(l)}</b><span class="vc-big">${nf(cap / 1000, 1)}<small> nghìn tỷ vốn hóa</small></span>
+        <span class="vc-kv"><em>P/E trung vị</em>${nf(median(R.map(r => r.pe).filter(v => fin(v) && v > 0)), 1)}</span><span class="vc-kv"><em>P/B trung vị</em>${nf(median(R.map(r => r.pb).filter(fin)), 2)}</span>
+        <span class="vc-kv"><em>Lãi ròng 4 quý</em>${nf(tt, 0)} tỷ <i class="${tp && tt > tp ? 'up' : 'dn'}">${tp ? pc((tt / Math.abs(tp) - 1) * 100 * (tp < 0 ? -1 : 1), 0) : '—'}</i></span></button>`; }).join('');
+  };
+  // 2) Bong bóng P/B – ROE
+  const drawScatter = () => {
+    const R = sel().filter(r => fin(r.pb) && fin(r.roe)), W = 520, H = 330, pad = {l: 44, r: 14, t: 26, b: 36};
+    if (!R.length) { host.querySelector('.vc-scatter').innerHTML = '<div class="vz-none">Chưa đủ số.</div>'; return; }
+    const xs = R.map(r => r.pb), ys = R.map(r => r.roe), x0 = 0, x1 = Math.max(...xs) * 1.12, y0 = Math.min(0, ...ys) - 2, y1 = Math.max(...ys) * 1.15;
+    const X = v => pad.l + (v - x0) / (x1 - x0) * (W - pad.l - pad.r), Y = v => H - pad.b - (v - y0) / (y1 - y0) * (H - pad.t - pad.b);
+    const maxCap = Math.max(...R.map(r => r.cap || 0), 1), rad = c => 5 + Math.sqrt((c || 0) / maxCap) * 22;
+    const mx = median(xs), my = median(ys), tick = (a, b, n) => Array.from({length: n + 1}, (_, k) => a + (b - a) * k / n);
+    host.querySelector('.vc-scatter').innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="vc-svg" role="img" aria-label="P/B so với ROE của ${R.length} doanh nghiệp">
+      ${tick(x0, x1, 5).map(v => `<line x1="${X(v)}" x2="${X(v)}" y1="${pad.t}" y2="${H - pad.b}" class="vc-grid"/><text x="${X(v)}" y="${H - pad.b + 14}" class="vc-ax">${nf(v, 1)}</text>`).join('')}
+      ${tick(y0, y1, 5).map(v => `<line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(v)}" y2="${Y(v)}" class="vc-grid"/><text x="${pad.l - 6}" y="${Y(v) + 3}" class="vc-ax" text-anchor="end">${nf(v, 0)}%</text>`).join('')}
+      <line x1="${X(mx)}" x2="${X(mx)}" y1="${pad.t}" y2="${H - pad.b}" class="vc-med"/><line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(my)}" y2="${Y(my)}" class="vc-med"/>
+      <text x="${W - pad.r}" y="${H - 4}" class="vc-ax" text-anchor="end">P/B (lần)</text><text x="${pad.l - 6}" y="12" class="vc-ax" text-anchor="start">ROE 4 quý (%)</text>
+      ${[...R].sort((a, b) => (b.cap || 0) - (a.cap || 0)).map(r => `<g class="vc-pt"><circle cx="${X(r.pb)}" cy="${Y(r.roe)}" r="${rad(r.cap)}" style="fill:${col(r.g)}"><title>${r.t} · P/B ${nf(r.pb, 2)} · ROE ${nf(r.roe, 1)}% · P/E ${nf(r.pe, 1)} · vốn hóa ${nf(r.cap, 0)} tỷ</title></circle><text x="${X(r.pb)}" y="${Y(r.roe) + 3}" class="vc-lb">${r.t}</text></g>`).join('')}</svg>`;
+  };
+  // 3) Lãi ròng quý gần nhất so cùng kỳ
+  const drawYoY = () => {
+    const R = sel().filter(r => fin(r.ni)).sort((a, b) => (b.yoy ?? -1e9) - (a.yoy ?? -1e9)), cap = 200;
+    host.querySelector('.vc-yoy').innerHTML = R.map(r => { const v = r.yoy, w = v == null ? 0 : Math.min(Math.abs(v), cap) / cap * 50;
+      return `<div class="vc-yr"><span>${ctx.chip(r.t)}<small>${esc(r.q || '')}</small></span><div class="vc-yt"><i style="${v >= 0 ? 'left:50%' : 'right:50%'};width:${w}%;background:${col(r.g)}"></i></div><b class="${v > 0 ? 'up' : v < 0 ? 'dn' : ''}">${v == null ? '—' : (Math.abs(v) > cap ? (v > 0 ? '>+' : '<−') + cap + '%' : pc(v, 0))}</b><em>${nf(r.ni, 0)}</em></div>`; }).join('') || '<div class="vz-none">Chưa có số.</div>';
+  };
+  // 4) Heatmap biên gộp
+  const drawHeat = () => {
+    const R = sel(), ql = qs.slice(-8);
+    const shade = v => !fin(v) ? 'transparent' : `rgba(41,56,168,${Math.max(.06, Math.min(v, 70) / 70 * .9).toFixed(2)})`;
+    host.querySelector('.vc-heat').innerHTML = `<div class="tablewrap"><table class="vc-ht"><thead><tr><th></th>${ql.map(q => `<th>${esc(q.replace('/20', '/'))}</th>`).join('')}</tr></thead><tbody>${R.map(r => `<tr><th scope="row" style="--c:${col(r.g)}">${r.t}</th>${r.gm.map(v => `<td style="background:${shade(v)};color:${fin(v) && v > 40 ? '#fff' : 'inherit'}">${fin(v) ? nf(v, 0) : ''}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="vz-unit">% · biên gộp = lãi gộp ÷ doanh thu</p>`;
+  };
+  // 5) Thẻ doanh nghiệp
+  const miniBars = (vals, c) => { const v = vals.map(x => fin(x) ? x : null), mx = Math.max(...v.filter(fin).map(Math.abs), 1), W = 132, H = 34, bw = W / v.length;
+    return `<svg viewBox="0 0 ${W} ${H}" class="vc-mini" aria-hidden="true"><line x1="0" x2="${W}" y1="${H / 2}" y2="${H / 2}" class="vc-grid"/>${v.map((x, k) => x == null ? '' : `<rect x="${k * bw + 1}" width="${bw - 2}" y="${x >= 0 ? H / 2 - x / mx * (H / 2 - 1) : H / 2}" height="${Math.abs(x) / mx * (H / 2 - 1)}" style="fill:${x >= 0 ? c : '#b8443a'}"/>`).join('')}</svg>`; };
+  const drawCards = () => {
+    const key = {cap: r => -(r.cap || 0), pe: r => fin(r.pe) && r.pe > 0 ? r.pe : 1e9, pb: r => fin(r.pb) ? r.pb : 1e9, roe: r => -(r.roe ?? -1e9), yoy: r => -(r.yoy ?? -1e9)}[sortBy];
+    host.querySelector('.vc-cards').innerHTML = [...sel()].sort((a, b) => key(a) - key(b)).map(r => `<article class="vc-card" style="--c:${col(r.g)}"><header>${ctx.chip(r.t)}<span>${esc(r.g)}</span></header>
+      <p class="vc-note">${esc(r.note)}${r.other ? ' · ' + esc(r.other) : ''}</p>
+      <div class="vc-m"><span><em>Vốn hóa</em>${nf(r.cap, 0)} tỷ</span><span><em>Giá</em>${nf(r.close, 1)}</span><span><em>P/E</em>${fin(r.pe) && r.pe > 0 ? nf(r.pe, 1) : 'âm'}</span><span><em>P/B</em>${nf(r.pb, 2)}</span><span><em>ROE 4 quý</em>${nf(r.roe, 1)}%</span><span><em>Lãi ròng ${esc(r.q || '')}</em>${nf(r.ni, 0)} tỷ <i class="${r.yoy > 0 ? 'up' : r.yoy < 0 ? 'dn' : ''}">${pc(r.yoy, 0)}</i></span></div>
+      <figure>${miniBars(r.niSeries, col(r.g))}<figcaption>Lãi ròng 12 quý (${esc(r.qLabels[0] || '')}–${esc(r.qLabels.at(-1) || '')})</figcaption></figure></article>`).join('');
+  };
+  const all = () => { host.querySelectorAll('.vc-ctl [data-g]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.g === grp))); drawGroups(); drawScatter(); drawYoY(); drawHeat(); drawCards(); };
+  host.addEventListener('click', e => { const b = e.target.closest('[data-g]'); if (!b) return; grp = grp === b.dataset.g && b.classList.contains('vc-g') ? 'all' : b.dataset.g; all(); });
+  host.querySelector('[data-sort]').addEventListener('change', e => { sortBy = e.target.value; drawCards(); });
+  all();
+}
+
+window.PowerOverviewVisual = {map, tech, data, unit, heat, outlook, waterfall, companies};
 })();
