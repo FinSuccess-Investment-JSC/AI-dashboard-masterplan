@@ -1,4 +1,5 @@
-Routine Wi 23/11: không cập nhật được dữ liệu nào.
-Widata báo hết credit tuần; làm mới lúc 00:00 thứ Sáu 27/11/2026.
-36 mục nhóm B (10 ngành) đã đánh dấu lỗi, số cũ được giữ nguyên.
-Cần thêm hạn mức Widata nếu muốn chạy lại trước đó.
+Routine tài liệu 23/11: xử lý 1/10 mục (agri.weather).
+Nông nghiệp: NOAA 12/11/2026 Niño-3.4 +2,5 °C; ~60% El Niño kỷ lục 10–12/2026; mạnh–rất mạnh tới Q1/2027 (>79%).
+Evidence cập nhật; 56 mục còn trong hàng chờ.
+Test có sẵn lỗi (bds-57..60 chưa lên lịch, 10 test import) – không do lượt này.
+Chưa kiểm giao diện bằng trình duyệt.

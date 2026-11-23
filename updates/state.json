@@ -350,9 +350,9 @@
    "lastNote": "Mở vanban.chinhphu.vn (trang 1, 04-12/11/2026): TT 51/2026/TT-BNNMT, NĐ 402/2026/NĐ-CP về an toàn đập hồ không phải chính sách nông sản; không sửa."
   },
   "agri.weather": {
-   "lastAttempt": "2026-10-26T08:59:04+07:00",
-   "lastSuccess": "2026-10-26T08:59:04+07:00",
-   "lastNote": "NOAA CPC ENSO 08/10/2026 đã có trên trang (El Niño mạnh, >83%); bản kế tiếp 12/11/2026. USDA cà phê chưa có bản mới. Không sửa trang"
+   "lastAttempt": "2026-11-23T13:02:14+07:00",
+   "lastSuccess": "2026-11-23T13:02:14+07:00",
+   "lastNote": "Mở bản tin NOAA CPC 12/11/2026: Niño-3.4 +2,5 °C; ~60% El Niño kỷ lục 10–12/2026; mạnh–rất mạnh tới Q1/2027 (>79%). Đã sửa nn-t1/nn-02/tóm tắt + evidence; nn-42 không chứa số NOAA."
   },
   "agri.hot-topics": {
    "lastAttempt": "2026-11-11T13:02:29+07:00",
@@ -7242,23 +7242,6 @@
    "signals": []
   },
   {
-   "id": "agri.weather",
-   "tier": "C",
-   "title": "Bản tin ENSO NOAA, dự báo mặn, USDA cà phê/gạo, lịch mùa vụ",
-   "since": "2026-11-09T15:23:55+07:00",
-   "reasons": [
-    "lịch 09/11 07:00",
-    "lịch 10/11 07:00",
-    "lịch 11/11 07:00",
-    "lịch 12/11 07:00",
-    "lịch 13/11 07:00",
-    "lịch 14/11 07:00",
-    "lịch 15/11 07:00",
-    "lịch 16/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "oil.ai.balance",
    "tier": "D",
    "title": "Dầu khí: cân bằng cung – cầu toàn cầu",
@@ -7662,5 +7645,5 @@
    ]
   }
  ],
- "updatedAt": "2026-11-23T09:10:32+07:00"
+ "updatedAt": "2026-11-23T13:02:14+07:00"
 }

@@ -2,10 +2,10 @@
  {
   "block": "nn-02",
   "claim": "Niño-3.4 tuần gần nhất",
-  "value": "+2,1 °C",
+  "value": "+2,5 °C",
   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
-  "opened_at": "2026-10-09",
-  "quote": "+2.1°C in Niño-3.4 (ENSO Diagnostic Discussion, 8 October 2026)",
+  "opened_at": "2026-11-23",
+  "quote": "reaching +2.5°C in Niño-3.4",
   "status": "match",
   "correct_value": "",
   "note": ""
@@ -13,10 +13,10 @@
  {
   "block": "nn-02",
   "claim": "El Niño mạnh kéo dài tới Q1/2027",
-  "value": "mạnh kỷ lục tới Q1/2027",
+  "value": "mạnh–rất mạnh tới Q1/2027 (>79%)",
   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
-  "opened_at": "2026-10-09",
-  "quote": "a strong-to-very strong El Niño likely through January-March 2027 (remaining greater than an 83% chance)",
+  "opened_at": "2026-11-23",
+  "quote": "a strong-to-very strong El Niño likely through January-March 2027 (remaining greater than a 79% chance)",
   "status": "match",
   "correct_value": "",
   "note": "NOAA: 'record-strong' (≥2,5) chỉ cho 10–12/2026; Q1/2027 là 'strong-to-very strong'. Câu trên trang hơi gộp."
@@ -24,10 +24,10 @@
  {
   "block": "nn-t1",
   "claim": "Xác suất El Niño mạnh kỷ lục ≥2,5 °C",
-  "value": "83% vào 10–12/2026",
+  "value": "~60% vào 10–12/2026",
   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
-  "opened_at": "2026-10-09",
-  "quote": "83% for October-December",
+  "opened_at": "2026-11-23",
+  "quote": "are now ~60% for the October-December and November-January periods",
   "status": "match",
   "correct_value": "",
   "note": ""
@@ -661,11 +661,11 @@
  },
  {
   "block": "agri-dashboard.js insight chNino",
-  "claim": "NOAA 83% El Niño mạnh kỷ lục 10–12/2026, kéo dài tới Q1/2027",
-  "value": "83%",
+  "claim": "NOAA ~60% El Niño kỷ lục 10–12/2026; mạnh–rất mạnh tới Q1/2027 (>79%)",
+  "value": "~60%",
   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
-  "opened_at": "2026-10-09",
-  "quote": "83% for October-December",
+  "opened_at": "2026-11-23",
+  "quote": "are now ~60% for the October-December and November-January periods",
   "status": "match",
   "correct_value": "",
   "note": ""

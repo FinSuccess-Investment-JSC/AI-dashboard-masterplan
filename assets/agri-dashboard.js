@@ -214,7 +214,7 @@ if(nino.length&&document.getElementById('chNino')){
  barLineChart('chNino',{categories:rs.map(r=>r.date.slice(8,10)+'/'+r.date.slice(5,7)),series:[{name:'Niño-3.4 SSTA',color:C.red,kind:'line',values:rs.map(r=>r.ssta)}],unit:'°C',digits:1,height:260,zeroBase:false,rotateLabels:true});
  fillTable('tbl-nino',['Tuần','SST (°C)','Chênh (°C)'],nino.slice(-52).reverse().map(r=>[short(r.date),nf(r.sst,1),nf(r.ssta,1)]));
  sourceLine('chNino',[SRC.noaa],short(nino.at(-1).date),'Niño-3.4 theo tuần (NOAA CPC); nhanh hơn ONI nhưng nhiễu hơn.',false);
- insight('chNino','Chênh nhiệt tuần gần nhất '+nf(nino.at(-1).ssta,1)+' °C, vẫn đang tăng. NOAA (08/10/2026) cho 83% khả năng El Niño mạnh kỷ lục vào 10–12/2026 và kéo dài tới Q1/2027.');
+ insight('chNino','Chênh nhiệt tuần gần nhất '+nf(nino.at(-1).ssta,1)+' °C, vẫn đang tăng. NOAA (12/11/2026) cho khoảng 60% khả năng El Niño kỷ lục vào 10–12/2026; mạnh đến rất mạnh tới Q1/2027 (trên 79%).');
 }
 
 // ---------- 3b. Giá – Chi phí – Margin (đợt 1, 05/11/2026) ----------
@@ -300,7 +300,7 @@ const score=[
  row('Chăn nuôi','Nguyên liệu thức ăn tăng',[signed(coY,0)+'%','ngô CBOT YoY'],'Khô đậu '+signed(smY,0)+'% YoY; nhập ngô 9T +29%','Ngô, khô đậu về âm YoY',coY==null?'na':coY>10?'risk':coY<-5?'good':'watch','▼ DBC · BAF','chFeedPx'),
  row('Thực phẩm & đồ uống','Tiêu dùng trong nước khỏe',[signed(rtY,0)+'%','bán lẻ hàng hóa lũy kế'],'Bia lũy kế '+signed(beY,0)+'%; CPI hàng ăn ~4%','Bán lẻ lũy kế về dưới +8%',rtY==null?'na':rtY>10?'good':rtY<6?'risk':'watch','▲ VNM · MSN · SAB · KDC','chRetail'),
  row('Thực phẩm & đồ uống','Thuế TTĐB bia từ 2027',['+5đ%','thuế TTĐB mỗi năm 2027–2031'],'Bia: 65% (2026) → 70% (2027) → 90% (2031); nước có đường >5 g/100 mL 8% từ 01/01/2027, 10% từ 2028','Lộ trình được giãn','risk','▼ SAB · MSN','tbl-excise'),
- row('Thời tiết','El Niño mạnh',[oL?nf(oL.oni,2)+'°C':'—','ONI '+(oL?oL.season+'/'+oL.year:'')],'NOAA: 83% khả năng El Niño mạnh kỷ lục 10–12/2026, kéo dài tới Q1/2027','ONI về dưới 1,0','risk','▼ LTG · PAN · HAG ▲ giá cà phê, cao su','chOni'),
+ row('Thời tiết','El Niño mạnh',[oL?nf(oL.oni,2)+'°C':'—','ONI '+(oL?oL.season+'/'+oL.year:'')],'NOAA 12/11: ~60% khả năng El Niño kỷ lục 10–12/2026, mạnh đến rất mạnh tới Q1/2027','ONI về dưới 1,0','risk','▼ LTG · PAN · HAG ▲ giá cà phê, cao su','chOni'),
  row('Định giá','Định giá cao su đã hạ',[peL?nf(peL[1],1)+'x':'—','P/E cao su'],'P/E cao su '+(peL?nf(peL[1],1)+'x':'—')+(pe0?' (đầu kỳ '+nf(pe0[1],1)+'x, '+short(pe0[0])+')':''),'Lợi nhuận cao su giảm khi giá mủ đảo chiều',peL?'info':'na','GVR · DPR · PHR','chSectorVal')];
 const nGood=score.filter(r=>r.st==='good').length,nRisk=score.filter(r=>r.st==='risk').length;
 window.AGRI_BRIEF={
