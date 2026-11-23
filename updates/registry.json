@@ -1319,16 +1319,10 @@
      "dien-pp-subst",
      "dien-pp-peak",
      "dien-pp-lf",
-     "dien-pp-demand-pressure",
      "dien-pp-demand-reconcile",
-     "dien-pp-dispatch-drivers",
-     "dien-pp-listed",
      "dien-pp-fuel",
      "dien-pp-hydro-econ",
-     "dien-pp-unit-econ",
-     "dien-pp-calc",
-     "dien-pp-pipeline-cod",
-     "dien-pp-epc"
+     "dien-pp-pipeline-cod"
     ]
    },
    "how": "Tính trong assets/power-picture.js khi mở trang từ dữ liệu đã nạp (SECTOR_DAILY, HYDRO_RESERVOIRS, COMPANY_QUARTERLY, tỷ giá NHNN/WiData, hằng số trong script cuối Dien/index.html, bảng dien-26); quy tắc nhận định thuần trong assets/power-insights.js (test: node tests/power-insights.test.cjs). So cùng kỳ chỉ trên các ngày có bản tin EVN đủ nguồn ở cả hai năm; nhận định đổi theo số mới, số cũ thì ẩn.",
@@ -1414,9 +1408,7 @@
    "publication": "Cập nhật khi đổi sở hữu, niêm yết hoặc khi xác minh thêm dòng",
    "where": {
     "page": "Dien/index.html",
-    "blocks": [
-     "dien-pp-hydro-expo"
-    ]
+    "blocks": []
    },
    "how": "Sửa data/power-hydro-assets.json/.js: mỗi dòng có nguồn đã mở (url + trích dẫn ngắn); không dùng Wikipedia làm nguồn sở hữu; hồ chưa có nguồn hiển thị \"Chưa xác minh\"",
    "gates": [
@@ -1433,15 +1425,7 @@
    },
    "where": {
     "page": "Dien/index.html",
-    "blocks": [
-     "dien-pp-contract",
-     "dien-pp-evn-flow",
-     "dien-pp-qc-flow",
-     "dien-pp-fin-checklist",
-     "dien-pp-price-defs",
-     "dien-pp-payment",
-     "dien-pp-capacity-concepts"
-    ]
+    "blocks": []
    }
   },
   {
