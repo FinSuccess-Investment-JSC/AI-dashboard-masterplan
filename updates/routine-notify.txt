@@ -1,5 +1,4 @@
-Routine tài liệu 20/11/2026: xử lý 2/10 mục đầu hàng chờ.
-- port.freight: Drewry WCI 19/11 = 4.176 USD/FEU (-3%), khớp trang, không sửa.
-- textile.orders-brands: LỖI/cần xem: Fast Retailing FY2026 (doanh thu +16,6%) đã ra nhưng chưa lấy được tồn kho 31/08/2026; Gap Q3 chưa kiểm.
-- Các mục "rà soát lần đầu" (Bán lẻ, Dược, Cảng, Vận tải biển) và BĐS/KCN chưa xử lý, còn trong hàng chờ.
-Chưa kiểm giao diện bằng trình duyệt.
+Routine Wi 23/11: không cập nhật được dữ liệu nào.
+Widata báo hết credit tuần; làm mới lúc 00:00 thứ Sáu 27/11/2026.
+36 mục nhóm B (10 ngành) đã đánh dấu lỗi, số cũ được giữ nguyên.
+Cần thêm hạn mức Widata nếu muốn chạy lại trước đó.

@@ -15,19 +15,19 @@
   "bank.eximbank": {},
   "comparison.financials": {},
   "bank.wi.daily": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+   "lastAttempt": "2026-11-23T09:10:31+07:00",
    "lastSuccess": "2026-10-28T17:38:14+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 16,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 17,
    "stuck": true
   },
   "bank.wi.monthly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
+   "lastAttempt": "2026-11-23T09:10:30+07:00",
    "lastSuccess": "2026-10-28T17:38:14+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 14,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 15,
    "stuck": true
   },
   "bank.wi.quarterly": {
@@ -190,19 +190,19 @@
    "lastNote": "Trang đã có 9T/2026 vs 9T/2025 từ EVN (tổng 265,79 tỷ kWh, +9,3%; than 132,63, thủy điện 68,48); chưa có kỳ mới. Không sửa."
   },
   "realestate.wi.daily": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+   "lastAttempt": "2026-11-23T09:10:31+07:00",
    "lastSuccess": "2026-10-28T17:38:11+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 16,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 17,
    "stuck": true
   },
   "realestate.wi.weekly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
+   "lastAttempt": "2026-11-23T09:10:30+07:00",
    "lastSuccess": "2026-10-28T17:38:11+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 14,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 15,
    "stuck": true
   },
   "realestate.market-quarterly": {
@@ -251,19 +251,19 @@
    "lastNote": "Nguồn FIA chặn IP cloud; runner máy người dùng đã cập nhật Cục ĐTNN ngày 11/11/2026 (commit b941e3e). Không sửa trang."
   },
   "textile.wi.daily": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+   "lastAttempt": "2026-11-23T09:10:31+07:00",
    "lastSuccess": "2026-10-28T17:38:12+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 16,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 17,
    "stuck": true
   },
   "textile.wi.weekly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
+   "lastAttempt": "2026-11-23T09:10:30+07:00",
    "lastSuccess": "2026-10-28T17:38:12+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 14,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 15,
    "stuck": true
   },
   "textile.trade-tariff": {
@@ -299,11 +299,11 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "port.wi.weekly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
+   "lastAttempt": "2026-11-23T09:10:30+07:00",
    "lastSuccess": "2026-10-28T17:38:15+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 14,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 15,
    "stuck": true
   },
   "port.freight": {
@@ -337,11 +337,11 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "agri.wi.weekly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
+   "lastAttempt": "2026-11-23T09:10:30+07:00",
    "lastSuccess": "2026-10-28T17:38:15+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 14,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 15,
    "stuck": true
   },
   "agri.policy": {
@@ -367,35 +367,35 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "port.wi.monthly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
+   "lastAttempt": "2026-11-23T09:10:29+07:00",
    "lastSuccess": "2026-10-28T17:38:13+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 13,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 14,
    "stuck": true
   },
   "agri.wi.monthly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
+   "lastAttempt": "2026-11-23T09:10:30+07:00",
    "lastSuccess": "2026-10-28T17:38:13+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 13,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 14,
    "stuck": true
   },
   "seafood.wi.monthly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
+   "lastAttempt": "2026-11-23T09:10:30+07:00",
    "lastSuccess": "2026-10-28T17:38:14+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 13,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 14,
    "stuck": true
   },
   "seafood.wi.weekly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
+   "lastAttempt": "2026-11-23T09:10:30+07:00",
    "lastSuccess": "2026-10-28T17:38:15+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 14,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 15,
    "stuck": true
   },
   "seafood.duties": {
@@ -421,51 +421,51 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 09/10/2026 (Wi mới + evidence.json); không cần rà lần đầu"
   },
   "port.wi.valuation": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+   "lastAttempt": "2026-11-23T09:10:31+07:00",
    "lastSuccess": "2026-10-28T17:38:16+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 16,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 17,
    "stuck": true
   },
   "agri.wi.valuation": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+   "lastAttempt": "2026-11-23T09:10:31+07:00",
    "lastSuccess": "2026-10-28T17:38:16+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 16,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 17,
    "stuck": true
   },
   "seafood.wi.valuation": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+   "lastAttempt": "2026-11-23T09:10:31+07:00",
    "lastSuccess": "2026-10-28T17:38:16+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 16,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 17,
    "stuck": true
   },
   "shipping.wi.daily": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+   "lastAttempt": "2026-11-23T09:10:31+07:00",
    "lastSuccess": "2026-10-28T17:38:16+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 16,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 17,
    "stuck": true
   },
   "shipping.wi.weekly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
+   "lastAttempt": "2026-11-23T09:10:30+07:00",
    "lastSuccess": "2026-10-28T17:38:17+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 14,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 15,
    "stuck": true
   },
   "shipping.wi.valuation": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+   "lastAttempt": "2026-11-23T09:10:31+07:00",
    "lastSuccess": "2026-10-28T17:38:17+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 16,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 17,
    "stuck": true
   },
   "shipping.outlook": {
@@ -501,27 +501,27 @@
    "lastNote": "Hormuz 3,6/ngày, Bab el-Mandeb 27,8/ngày (1–18/10); kết luận không đổi"
   },
   "construction.wi.monthly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
+   "lastAttempt": "2026-11-23T09:10:30+07:00",
    "lastSuccess": "2026-10-28T17:38:17+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 13,
-   "stuck": true
-  },
-  "construction.wi.weekly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
-   "lastSuccess": "2026-10-28T17:38:17+07:00",
-   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
    "attempts": 14,
    "stuck": true
   },
-  "construction.wi.valuation": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+  "construction.wi.weekly": {
+   "lastAttempt": "2026-11-23T09:10:31+07:00",
    "lastSuccess": "2026-10-28T17:38:17+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 16,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 15,
+   "stuck": true
+  },
+  "construction.wi.valuation": {
+   "lastAttempt": "2026-11-23T09:10:31+07:00",
+   "lastSuccess": "2026-10-28T17:38:17+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 17,
    "stuck": true
   },
   "construction.disbursement": {
@@ -559,35 +559,35 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
   "insurance.wi.quarterly": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+   "lastAttempt": "2026-11-23T09:10:31+07:00",
    "lastSuccess": "2026-10-11T15:38:36+07:00",
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 15,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 16,
    "stuck": true
   },
   "insurance.wi.monthly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
+   "lastAttempt": "2026-11-23T09:10:30+07:00",
    "lastSuccess": "2026-10-28T17:38:18+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 13,
-   "stuck": true
-  },
-  "insurance.wi.weekly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
-   "lastSuccess": "2026-10-28T17:38:18+07:00",
-   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
    "attempts": 14,
    "stuck": true
   },
-  "insurance.wi.valuation": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+  "insurance.wi.weekly": {
+   "lastAttempt": "2026-11-23T09:10:31+07:00",
    "lastSuccess": "2026-10-28T17:38:18+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 16,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 15,
+   "stuck": true
+  },
+  "insurance.wi.valuation": {
+   "lastAttempt": "2026-11-23T09:10:32+07:00",
+   "lastSuccess": "2026-10-28T17:38:18+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 17,
    "stuck": true
   },
   "insurance.market": {
@@ -620,27 +620,27 @@
    "lastNote": "Đã dựng và kiểm chứng ngày 11/10/2026"
   },
   "retail.wi.monthly": {
-   "lastAttempt": "2026-11-20T09:11:49+07:00",
+   "lastAttempt": "2026-11-23T09:10:30+07:00",
    "lastSuccess": "2026-10-28T17:38:18+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 13,
-   "stuck": true
-  },
-  "retail.wi.weekly": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
-   "lastSuccess": "2026-10-28T17:38:18+07:00",
-   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
    "attempts": 14,
    "stuck": true
   },
-  "retail.wi.valuation": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+  "retail.wi.weekly": {
+   "lastAttempt": "2026-11-23T09:10:31+07:00",
    "lastSuccess": "2026-10-28T17:38:18+07:00",
    "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 16,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 15,
+   "stuck": true
+  },
+  "retail.wi.valuation": {
+   "lastAttempt": "2026-11-23T09:10:32+07:00",
+   "lastSuccess": "2026-10-28T17:38:18+07:00",
+   "lastNote": "WiMCP 28/10/2026: gọi lại contract, build; Wi lấp chuỗi nguồn gốc thiếu (wi_filled). sector_ratio Wi trả rỗng do cây phân ngành v3, giữ số cũ",
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 17,
    "stuck": true
   },
   "retail.market": {
@@ -680,19 +680,19 @@
    "attempts": 1
   },
   "pharma.wi.monthly": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+   "lastAttempt": "2026-11-23T09:10:32+07:00",
    "lastSuccess": "2026-10-12T14:05:24+07:00",
    "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 17,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 18,
    "stuck": true
   },
   "pharma.wi.valuation": {
-   "lastAttempt": "2026-11-20T09:11:50+07:00",
+   "lastAttempt": "2026-11-23T09:10:32+07:00",
    "lastSuccess": "2026-10-12T14:05:24+07:00",
    "lastNote": "Số vừa kiểm khi dựng dashboard 12/10/2026",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 17,
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 18,
    "stuck": true
   },
   "pharma.market": {
@@ -821,9 +821,9 @@
    "lastNote": "Mở hhv.com.vn: bản tin mới nhất Q3/2026 (30/10/2026) và chỉ số Bắc Ninh Q3/2026 đã có trên trang; chưa có Q4"
   },
   "insurance.wi.ratio": {
-   "lastAttempt": "2026-11-20T09:11:48+07:00",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 11,
+   "lastAttempt": "2026-11-23T09:10:29+07:00",
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 12,
    "stuck": true
   },
   "insurance.reinsurance": {
@@ -832,32 +832,32 @@
    "lastNote": "Mở guycarp.com: chỉ có index 1/1/2026; chưa có index 1/1/2027, trang giữ 1/7/2026 -16% toàn cầu"
   },
   "retail.wi.gold": {
-   "lastAttempt": "2026-11-20T09:11:48+07:00",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 11,
+   "lastAttempt": "2026-11-23T09:10:29+07:00",
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 12,
    "stuck": true
   },
   "retail.calendar": {},
   "pharma.calendar": {},
   "port.wi.portwatch": {
-   "lastAttempt": "2026-11-20T09:11:48+07:00",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 11,
+   "lastAttempt": "2026-11-23T09:10:29+07:00",
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 12,
    "stuck": true
   },
   "port.price-margin": {},
   "shipping.wi.fearnleys": {
-   "lastAttempt": "2026-11-20T09:11:48+07:00",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 11,
+   "lastAttempt": "2026-11-23T09:10:29+07:00",
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 12,
    "stuck": true
   },
   "shipping.derived": {},
   "power.calendar": {},
   "seafood.wi.us-imports": {
-   "lastAttempt": "2026-11-20T09:11:48+07:00",
-   "lastError": "hook không lưu kết quả Wi",
-   "attempts": 11,
+   "lastAttempt": "2026-11-23T09:10:29+07:00",
+   "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
+   "attempts": 12,
    "stuck": true
   },
   "seafood.duties.landed": {
@@ -7662,5 +7662,5 @@
    ]
   }
  ],
- "updatedAt": "2026-11-22T23:42:48+07:00"
+ "updatedAt": "2026-11-23T09:10:32+07:00"
 }
