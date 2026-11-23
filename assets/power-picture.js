@@ -366,18 +366,6 @@ const tableCard = (id, head, rows, opts = {}) => { const c = el('div', 'card pp-
 const ul = items => `<ul class="pp-ul">${items.filter(Boolean).map(x => `<li>${x}</li>`).join('')}</ul>`;
 const dirTxt = (v, d = 1) => !fin(v) ? '—' : `${v > 0 ? '▲' : v < 0 ? '▼' : '■'} ${pc(v, d)}`;
 
-// 1.3 Bảng áp lực nhu cầu: 5 chỉ báo, không gộp thành điểm.
-function demandPressureCard() {
-  const lfLast = [...months].reverse().find(m => m.m <= M && m.lf != null), lfLy = lfLast && monthBy.get(back(lfLast.m + '-01').slice(0, 7));
-  const gap = fin(pmaxYtd?.yoy) && CMP.ytd?.ok ? pmaxYtd.yoy - CMP.ytd.yoy : null;
-  return tableCard('dien-pp-demand-pressure', ['Chỉ báo', 'Giá trị', 'Kỳ', 'So với', 'Cách đọc'], [
-    ['Tăng trưởng điện năng', dirTxt(CMP.m?.ok ? CMP.m.yoy : null), M ? ml(M) : '—', 'cùng tháng năm trước, cùng ngày đối chiếu', 'Áp lực đáp ứng tổng điện năng (nhiên liệu, nước)'],
-    ['Động lượng 3 tháng', accel ? `${pc(accel.now)} so ${pc(accel.before)}` : '—', M ? `${ms(addMonths(M, -2))}–${ms(M)}` : '—', '3 tháng liền trước', 'Tăng tốc khi chênh > +1 đ.p., giảm tốc khi < −1 đ.p.'],
-    ['Tăng trưởng phụ tải đỉnh (Pmax)', dirTxt(pmaxYtd?.yoy), pmaxYtd ? 'đỉnh từ đầu năm ' + dm(pmaxYtd.cur.date) : '—', 'đỉnh cùng khoảng năm trước', 'Áp lực công suất giờ cao điểm'],
-    ['Hệ số phụ tải', lfLast ? nf(lfLast.lf, 1) + '%' : '—', lfLast ? ml(lfLast.m) : '—', lfLy?.lf != null ? `cùng kỳ ${nf(lfLy.lf, 1)}% (${pp(lfLast.lf - lfLy.lf)})` : '—', 'Giảm khi đỉnh tăng nhanh hơn điện năng bình quân'],
-    ['Chênh tăng trưởng đỉnh − điện năng', fin(gap) ? pp(gap) : '—', 'từ đầu năm', '—', 'Dương: đỉnh tăng nhanh hơn; âm: điện năng tăng nhanh hơn']
-  ], {title: 'Bảng áp lực nhu cầu', sub: 'năm chỉ báo đọc riêng, không gộp thành một thang điểm vì chưa có ngưỡng được kiểm định', note: `Nguồn: ${link(EVN_URL, 'EVN · bản tin vận hành ngày')}; tự tính.`});
-}
 // Đối chiếu lũy kế công bố (thẻ KPI tĩnh) với tổng bản tin ngày.
 function reconcileCard(tile) {
   const lab = tile?.querySelector('.label')?.textContent || '', m = /(\d+)T\/(\d{4})/.exec(lab), val = parseFloat((tile?.querySelector('.value')?.textContent || '').replace(/\./g, '').replace(',', '.')), dl = /([\d,]+)%/.exec(tile?.querySelector('.delta')?.textContent || '');
@@ -391,38 +379,6 @@ function reconcileCard(tile) {
     ['Cộng bản tin vận hành ngày', nf(sumOut, 1), pc(naive), `${cur.length}/${ds.length}`, 'So tổng các ngày có bản tin hai năm (số ngày có thể khác nhau)'],
     ['Cộng bản tin, cùng ngày đối chiếu', nf(same.curT / 1000, 1), pc(same.yoy), `${same.n}/${same.total}`, 'Chỉ các ngày có bản tin đủ nguồn ở cả hai năm (cách tính dùng trên tab này)']
   ], {title: 'Đối chiếu số lũy kế công bố với tổng bản tin ngày', note: 'Chênh lệch đến từ ngày thiếu bản tin, số ngày ước tính trong bản tin và việc EVN hiệu chỉnh số năm trước khi công bố lũy kế; hai cách đo không thay thế nhau. KPI và nhận định tự động trên tab dùng cách thứ ba.'});
-}
-// 2.3 Phơi nhiễm thủy văn theo doanh nghiệp (thay bảng ánh xạ hồ cũ, giữ block-id).
-function hydroExposure(card) {
-  const A = window.POWER_HYDRO_ASSETS, rows = A?.rows || [], basins = A?.basins || {};
-  const region = Object.fromEntries((H?.monthly || []).map(r => [r.reservoir, r.region]));
-  const wcell = name => { const w = resWater.get(name); if (!w) return '<span class="muted">—</span>'; return `${w.yoy != null ? `<span class="${w.yoy < 0 ? 'dn' : 'up'}">${pc(w.yoy, 0)}</span> cùng kỳ` : 'cùng kỳ: —'}<br><small>${w.dev5 != null ? `${pc(w.dev5, 0)} so TB 5 năm (${ms(w.month)})` : ''}</small>`; };
-  // Gom hồ theo nhà máy (Vĩnh Sơn A/B/C → một nhà máy 66 MW).
-  const plants = new Map(); rows.forEach(r => { const k = r.plant || r.reservoir; const p = plants.get(k) || {plant: k, mw: r.plant_mw, res: [], holders: r.holders || [], status: r.status, owner: r.owner, sources: r.sources || []}; p.res.push(r.reservoir); plants.set(k, p); });
-  const conf = s => s === 'Đã xác minh' ? chip('Verified') : `<span class="pp-st pp-st-Estimated" title="Nguồn nêu đơn vị quản lý nhưng liên kết hồ ↔ nhà máy hoặc niêm yết của đơn vị mẹ chưa đủ chắc">Xác minh một phần</span>`;
-  const tickers = [...new Set([...plants.values()].flatMap(p => p.holders.map(h => h.ticker)))];
-  const order = ['VSH', 'REE', 'TMP', 'SBH', 'TBC', 'AVC', 'DNH', 'PGV', 'GE2', ...tickers];
-  const comp = [...new Set(order)].filter(t => tickers.includes(t)).map(t => {
-    const ps = [...plants.values()].filter(p => p.holders.some(h => h.ticker === t)).map(p => ({...p, h: p.holders.find(h => h.ticker === t)}));
-    const known = ps.filter(p => fin(p.mw)), econ = known.filter(p => fin(p.h.share)), missing = ps.length - econ.length;
-    const nominal = sum(known.filter(p => p.h.share === 1).map(p => p.mw)), economic = sum(econ.map(p => p.mw * p.h.share));
-    const bs = {}; econ.forEach(p => p.res.forEach(r => { const b = basins[r]; if (b) bs[b] = (bs[b] || 0) + p.mw * p.h.share / p.res.length; }));
-    const top = Object.entries(bs).sort((a, b) => b[1] - a[1]), totB = sum(top.map(x => x[1]));
-    const yoys = ps.flatMap(p => p.res.map(r => resWater.get(r)?.yoy)).filter(fin);
-    return [`<b>${t}</b>`, ps.map(p => `${esc(p.plant)}${p.h.share === 1 ? '' : ` <small class="muted">(${fin(p.h.share) ? nf(p.h.share * 100, 1) + '%' : 'tỷ lệ chưa xác minh'})</small>`}`).join('<br>'),
-      top.length ? top.map(([b, v]) => `${esc(b)} ${nf(v / totB * 100, 0)}%`).join('<br>') : '—',
-      nominal ? nf(nominal, 0) : '—', `${economic ? nf(economic, 1) : '—'}${missing ? `<br><small class="muted">chưa gồm ${missing} nhà máy thiếu MW hoặc tỷ lệ</small>` : ''}`,
-      yoys.length ? `trung vị ${pc(median(yoys), 0)} cùng kỳ (${yoys.length} hồ)` : (d5 => d5.length ? `trung vị ${pc(median(d5), 0)} so TB 5 năm <small class="muted">(chưa có số cùng kỳ)</small>` : '<span class="muted">chưa có số</span>')(ps.flatMap(p => p.res.map(r => resWater.get(r)?.dev5)).filter(fin)), ps.every(p => p.status === 'Đã xác minh') ? chip('Verified') : conf('partial')];
-  });
-  ['CHP', 'SHP', 'SBA', 'HDG'].filter(t => !tickers.includes(t)).forEach(t => comp.push([`<b>${t}</b>`, '<span class="muted">Không có hồ trong danh sách hồ EVN; chưa xác minh vị trí, công suất từng nhà máy</span>', '—', '—', '—', '<span class="muted">không quan sát được</span>', chip('Insufficient')]));
-  const plantRows = [...plants.values()].sort((a, b) => (region[a.res[0]] || '').localeCompare(region[b.res[0]] || '', 'vi')).map(p => [esc(p.plant) + (p.res.length > 1 || p.res[0] !== p.plant ? `<br><small class="muted">hồ: ${p.res.map(esc).join(', ')}</small>` : ''), esc(basins[p.res[0]] || '—'), fin(p.mw) ? nf(p.mw, 0) : '—',
-    esc(p.owner || '') + (p.holders.length ? `<br><small>${p.holders.map(h => `${esc(h.ticker)} ${fin(h.share) ? nf(h.share * 100, 2) + '%' : 'tỷ lệ chưa xác minh'}`).join(' · ')}</small>` : ''), p.res.map(wcell).join('<hr class="pp-hr">'), conf(p.status),
-    p.sources.slice(0, 3).map((s, i) => `<a href="${esc(s.url)}" target="_blank" rel="noopener" title="${esc(s.quote || '')}">[${i + 1}]</a>`).join(' ')]);
-  const unver = (H?.monthly ? [...new Set(H.monthly.map(r => r.reservoir))] : []).filter(n => !rows.some(r => r.reservoir === n));
-  card.innerHTML = `<div class="chart-title">Phơi nhiễm thủy văn theo doanh nghiệp niêm yết</div><div class="chart-sub">công suất danh nghĩa (doanh nghiệp sở hữu nhà máy) tách khỏi công suất sở hữu kinh tế (MW × tỷ lệ sở hữu) · nước về tại hồ cấp nước cho nhà máy</div>
-    <div class="tablewrap"><table><thead><tr><th>Doanh nghiệp</th><th>Nhà máy (tỷ lệ nếu gián tiếp)</th><th>Lưu vực (tỷ trọng MW kinh tế)</th><th>MW danh nghĩa</th><th>MW sở hữu kinh tế</th><th>Điều kiện nước</th><th>Độ tin cậy</th></tr></thead><tbody>${comp.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
-    <details class="dtable"><summary>Chi tiết từng nhà máy (${plants.size}) · nguồn từng dòng</summary><div class="tablewrap"><table><thead><tr><th>Nhà máy</th><th>Lưu vực</th><th>MW</th><th>Sở hữu</th><th>Nước về</th><th>Độ tin cậy</th><th>Nguồn</th></tr></thead><tbody>${plantRows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div></details>
-    <p class="source-note">${esc(A?.basin_note || '')} ${esc(A?.holders_note || '')} ${unver.length} hồ EVN chưa xác minh chủ sở hữu (chủ yếu nhà máy lớn của EVN và các tổng công ty phát điện): ${unver.map(esc).join(', ')}. Không quy đổi % nước về thành % EBITDA; nước về một hồ không đại diện cho mọi nhà máy cùng khu vực.</p>`;
 }
 // 3.2 Vì sao nguồn được huy động: các động lực quan sát được và chưa quan sát được.
 function driversCard() {
@@ -676,8 +632,6 @@ function build() {
     main: peakCard(), support: lfCard(), explore: [C('dien-09') || H2('chPmax')],
     deep: {mech: 'Hệ số phụ tải = điện năng bình quân ÷ (Pmax × 24h); giảm khi đỉnh tăng nhanh hơn bình quân.', change: 'Pmax mùa nóng 2027 vượt mạnh đỉnh 2026 trong khi điện năng chậm lại.',
       method: 'Pmax tháng là cao nhất trong các bản tin của tháng; chỉ so khi cả hai tháng có ≥90% ngày. Ngày đạt Pmax theo ngày vận hành của bản tin (bản tin ngày D đăng ngày D+1).', limits: dmd.cannot?.join(' ')}}));
-  panes.demand.append(qpanel({id: 'demand-pressure', num: '1.3', q: 'Áp lực nhu cầu đang ở mức nào?', lv: 'A', concl: 'Năm chỉ báo dưới đây đọc riêng từng cái; chưa gộp thành điểm rủi ro vì chưa có ngưỡng được kiểm định.',
-    main: demandPressureCard(), body: el('div', 'pp-twocol', `<div><b>Chưa thể kết luận</b>${ul(nk(dmd.cannot))}</div><div><b>Theo dõi tiếp</b>${ul(nk(dmd.watch))}</div>`)}));
 
   /* ---------- 02 Thủy văn ---------- */
   const r5 = reservoir5y, dry = fin(resYoY?.med) && fin(r5?.med) && resYoY.med < -10 && r5.med < 0;
@@ -699,16 +653,6 @@ function build() {
     main: C('dien-31'), explore: [C('dien-hydro-reservoirs')],
     deep: {mech: 'Nước về quyết định mực nước cuối mùa mưa; mực nước quyết định sản lượng mùa khô.', change: 'Mưa lớn cuối mùa đưa hồ lớn về mực nước dâng bình thường; nước về T12–T2 trở lại mức TB 5 năm.',
       method: 'EVN, ảnh chụp 00h mỗi ngày (±2 giờ). Tháng hợp lệ cần ≥80% ngày; nền 5 năm cần ≥3 năm hợp lệ; trung vị không trọng số theo dung tích. So cùng kỳ dùng đúng các ngày đó năm trước, năm trước cần ≥80% số ngày.', limits: 'Một số hồ thiếu ngày; Thượng Kon Tum thiếu từ 28/08/2026 (EVN ghi giờ 19:00).'}}));
-  const expo = el('div', 'card pp-expo'); expo.dataset.blockId = 'dien-pp-hydro-expo';
-  const exposed = (window.POWER_HYDRO_ASSETS?.rows || []).filter(r => r.status === 'Đã xác minh' && fin(resWater.get(r.reservoir)?.yoy) && resWater.get(r.reservoir).yoy < -30);
-  const exBasins = [...new Set(exposed.map(r => window.POWER_HYDRO_ASSETS.basins?.[r.reservoir]).filter(Boolean))], exT = [...new Set(exposed.flatMap(r => (r.holders || []).map(h => h.ticker)))];
-  panes.hydro.append(qpanel({id: 'hydro-company', num: '2.3', q: 'Thủy văn bất lợi chạm tới tài sản của doanh nghiệp nào?', lv: 'B', st: exposed.length ? 'Verified' : 'Insufficient',
-    concl: exposed.length ? `Tài sản đã xác minh tại lưu vực ${exBasins.join(', ')} có nước về thấp hơn cùng kỳ trên 30%; doanh nghiệp liên quan: ${exT.join(', ')}. Mức tác động lợi nhuận phụ thuộc mực nước, kế hoạch điều tiết, giá điện và cơ cấu danh mục.` : 'Chưa có tài sản đã xác minh với nước về giảm trên 30% so cùng kỳ.',
-    impl: 'Phân biệt công suất danh nghĩa với công suất sở hữu kinh tế (ví dụ REE hưởng gián tiếp qua VSH, SBH, TMP); không quy đổi % nước về thành % EBITDA.',
-    main: expo, deep: {method: 'Ánh xạ hồ → nhà máy → đơn vị sở hữu từ nguồn đã mở (không dùng Wikipedia); lưu vực theo vị trí địa lý; tỷ lệ sở hữu theo nguồn của từng dòng.', limits: 'Chưa có sản lượng từng nhà máy, tỷ trọng thủy điện trong lợi nhuận doanh nghiệp; nhà máy của CHP, SHP, SBA, HDG không nằm trong danh sách hồ EVN; 18 hồ lớn chưa xác minh chủ sở hữu.'}}));
-  renders.hydro.push(() => hydroExposure(expo));
-  panes.hydro.append(qpanel({id: 'hydro-other', num: '2.4', q: 'Nguồn thay thế (than, khí, LNG) có bị hạn chế không?', lv: 'A', st: 'Insufficient', concl: 'Trang chưa có chuỗi dữ liệu tin cậy về cung ứng nhiên liệu, dừng máy, công suất khả dụng hay ràng buộc truyền tải.',
-    body: gap('Khả năng cung ứng than/khí/LNG, lịch bảo dưỡng – sự cố, công suất khả dụng, nghẽn truyền tải Bắc–Trung–Nam. Nguồn cần: báo cáo vận hành NSMO/EVN, TKV, PV GAS. Giá nhiên liệu xem sub-tab 04.')}));
 
   /* ---------- 03 Huy động ---------- */
   const yt = CMP.ytd, tth = thermal('ytd'), hY = G('hydro', 'ytd'), up = topContrib('ytd');
