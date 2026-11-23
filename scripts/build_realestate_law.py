@@ -110,7 +110,7 @@ CSS = '''<style>
 .law-2026{--lw-up:#1d8a73;--lw-up-bg:#e3f5f0;--lw-down:#b8432c;--lw-down-bg:#fdecea;--lw-watch:#8a6a00;--lw-watch-bg:#fff5d4;--lw-flat:#596272;--lw-flat-bg:#eef0f4}
 .law-2026 .lw-card{margin-top:14px;padding:22px 24px}
 .law-2026 .lw-eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fs-muted,#596272);margin:0 0 6px}
-.law-2026 h3.lw-title{font-family:var(--fs-serif,Georgia,serif)!important;font-size:28px!important;line-height:1.2;font-weight:600!important;color:var(--fs-navy,#1D2678);margin:0 0 8px;letter-spacing:-.01em}
+.law-2026 .lw-title{font-family:var(--fs-serif,Georgia,serif)!important;font-size:28px!important;line-height:1.2;font-weight:600!important;color:var(--fs-navy,#1D2678);margin:0 0 8px;letter-spacing:-.01em}
 .law-2026 .lw-lead{font-size:14px;line-height:1.6;margin:0;max-width:880px}
 .law-2026 h3.lw-h{font-size:16px!important;font-weight:700;color:var(--fs-navy,#1D2678);margin:0 0 4px}
 .law-2026 .lw-sub{font-size:12.5px;color:var(--fs-muted,#596272);margin:0 0 14px}
@@ -156,7 +156,7 @@ CSS = '''<style>
 .law-2026 .lw-unk div{border-radius:10px;padding:10px 12px;background:var(--lw-watch-bg);font-size:12.5px;line-height:1.45}
 .law-2026 .lw-unk small{display:block;color:var(--fs-muted,#596272);margin-top:3px;font-size:12px}
 .law-2026 .lw-foot{font-size:12.5px;line-height:1.6;margin:12px 0 0}
-@media(max-width:900px){.law-2026 .lw-grid{grid-template-columns:1fr}.law-2026 .lw-tiles{grid-template-columns:1fr 1fr}.law-2026 .lw-unk{grid-template-columns:1fr 1fr}.law-2026 .lw-tl{grid-template-columns:1fr;gap:10px}.law-2026 .lw-tl:before{left:7px;right:auto;top:8px;bottom:8px;width:2px;height:auto}.law-2026 .lw-node{padding:0 0 0 26px}.law-2026 .lw-row{grid-template-columns:84px 80px 1fr}.law-2026 .lw-ba{grid-template-columns:1fr}.law-2026 .lw-ba .ar{display:none}.law-2026 h3.lw-title{font-size:22px!important}}
+@media(max-width:900px){.law-2026 .lw-grid{grid-template-columns:1fr}.law-2026 .lw-tiles{grid-template-columns:1fr 1fr}.law-2026 .lw-unk{grid-template-columns:1fr 1fr}.law-2026 .lw-tl{grid-template-columns:1fr;gap:10px}.law-2026 .lw-tl:before{left:7px;right:auto;top:8px;bottom:8px;width:2px;height:auto}.law-2026 .lw-node{padding:0 0 0 26px}.law-2026 .lw-row{grid-template-columns:84px 80px 1fr}.law-2026 .lw-ba{grid-template-columns:1fr}.law-2026 .lw-ba .ar{display:none}.law-2026 .lw-title{font-size:22px!important}}
 [data-theme="dark"] .law-2026{--lw-up:#5fd3b8;--lw-up-bg:#12332c;--lw-down:#f08b76;--lw-down-bg:#3a1c16;--lw-watch:#e6c35c;--lw-watch-bg:#33290c;--lw-flat:#b6bcc8;--lw-flat-bg:#24262b}
 [data-theme="dark"] .law-2026 :is(.lw-step,.lw-co){background:#161616;border-color:#2A2A2A}
 [data-theme="dark"] .law-2026 :is(.lw-tile:not(.t-up):not(.t-down):not(.t-watch),.lw-key){background:#1c2030}
@@ -186,7 +186,7 @@ def co_html(code):
     rr = ''.join(f'<div class="lw-row"><span class="s">{s}</span><span>{pill(k)}</span><span>{t}</span></div>' for s, k, t in rows)
     return (f'<div class="lw-co"><div class="lw-co-head"><span class="lw-code">{code}</span><span class="lw-name">{NAME[code]}</span>{pill(vk, vt)}</div>'
             f'<div class="lw-land">Quỹ đất: {land}</div>{rr}<div class="lw-key">{key}</div></div>',
-            f'<details class="lw-facts"><summary><b>{code}</b> · {NAME[code]} — {len(facts)} dữ kiện theo dự án</summary><div class="tablewrap"><table data-no-fold>'
+            f'<details class="lw-facts" data-sub-opened="1"><summary><b>{code}</b> · {NAME[code]} — {len(facts)} dữ kiện theo dự án</summary><div class="tablewrap"><table data-no-fold>'
             f'<thead><tr><th>Bước</th><th>Dự án</th><th>Dữ kiện</th><th>Nguồn</th></tr></thead><tbody>{tr}</tbody></table></div></details>')
 
 
@@ -200,7 +200,7 @@ def build():
     {CSS}
     <div class="card lw-card" data-block-id="bds-44" {meta}>
       <p class="lw-eyebrow">Chuyên đề · Quốc hội thông qua 21/11/2026</p>
-      <h3 class="lw-title">Luật mới đổi giá của việc giữ đất</h3>
+      <p class="lw-title">Luật mới đổi giá của việc giữ đất</p>
       <p class="lw-lead">Trước đây giữ đất gần như miễn phí. Từ <b>01/07/2027</b>, giữ đất tốn tiền mỗi năm, còn làm dự án thì nhanh hơn và tính trước được chi phí.</p>
       <div class="lw-tiles">
         <div class="lw-tile t-up"><b>3 bước</b><span>nhanh hơn: có đất, pháp lý, tiền đất</span></div>
