@@ -152,7 +152,8 @@ def validate(data, policy):
         if len(sids) != len(set(sids)):
             errors.append(f'công nghệ {t.get("id")}: trùng id khâu')
         for s in t.get('stages', []):
-            if s.get('flow') not in FLOWS or s.get('chart') not in CHARTS or not all(s.get(k) for k in ('t', 'fn', 'cost', 'kpi', 'impact')):
+            charts = s.get('chart') if isinstance(s.get('chart'), list) else [s.get('chart')]  # một khâu có thể có nhiều chart
+            if s.get('flow') not in FLOWS or not charts or any(c not in CHARTS for c in charts) or not all(s.get(k) for k in ('t', 'fn', 'cost', 'kpi', 'impact')):
                 errors.append(f'công nghệ {t.get("id")} · khâu {s.get("id")}: thiếu nội dung hoặc flow/chart sai')
     for k, n in data.get('map_nodes', {}).items():
         if not (n.get('t') and n.get('d')):
