@@ -2555,7 +2555,8 @@
    "unit": "US cent/kWh, quy đổi theo tỷ giá",
    "latest": "Mặt trời 7,09 (mặt đất), 7,69 (nổi), 8,38 (mái nhà); gió 8,5 (đất liền), 9,8 (trên biển). Đã hết hạn đăng ký",
    "applies": "Dự án COD trong thời hạn FIT",
-   "where": "Module 1B"
+   "where": "Module 1B",
+   "short": "7,09–9,8 US¢/kWh"
   },
   {
    "type": "Trần khung chuyển tiếp",
@@ -2563,7 +2564,8 @@
    "unit": "đ/kWh, cố định từ 2023",
    "latest": "Mặt đất 1.184,90; nổi 1.508,27; gió đất liền 1.587,12; gió trên biển 1.815,95",
    "applies": "85 dự án chuyển tiếp",
-   "where": "Module 1B"
+   "where": "Module 1B",
+   "short": "giá tạm ≤50% trần"
   },
   {
    "type": "Trần khung giá năm",
@@ -2571,7 +2573,8 @@
    "unit": "đ/kWh, chưa VAT",
    "latest": "Gió đất liền 2026: 2.187,83 (Bắc); khí 2026: 3.410,64; than 2026: 2.218,95",
    "applies": "Dự án mới đàm phán PPA",
-   "where": "Module 1A"
+   "where": "Module 1A",
+   "short": "trần, không phải giá giao dịch"
   },
   {
    "type": "Giá [[PPA]] thực tế",
@@ -2579,7 +2582,8 @@
    "unit": "đ/kWh theo hợp đồng",
    "latest": "Phần lớn không công bố; ví dụ LNG Cà Ná: giá trúng thầu đề nghị 3.294,22 đ/kWh",
    "applies": "Từng nhà máy",
-   "where": "Tab Chủ đề nóng · LNG"
+   "where": "Tab Chủ đề nóng · LNG",
+   "short": "≤ trần khung giá"
   },
   {
    "type": "Giá thị trường ([[FMP]])",
@@ -2587,7 +2591,8 @@
    "unit": "đ/kWh, bình quân tháng",
    "latest": "FMP bình quân 9T/2026: 1.450 đ/kWh (danh mục PGV, tự tính)",
    "applies": "Phần sản lượng ngoài [[Qc]]",
-   "where": "Tab Giá – Chi phí – Margin"
+   "where": "Tab Giá – Chi phí – Margin",
+   "short": "1.450 đ/kWh (9T/2026)"
   },
   {
    "type": "Giá mua điện bình quân EVN",
@@ -2595,7 +2600,8 @@
    "unit": "đ/kWh",
    "latest": "1.907,65 đ/kWh (tháng 3/2026)",
    "applies": "EVN",
-   "where": "Tab Chủ đề nóng · EVN"
+   "where": "Tab Chủ đề nóng · EVN",
+   "short": "1.907,65 đ/kWh"
   },
   {
    "type": "Giá bán lẻ bình quân",
@@ -2603,7 +2609,8 @@
    "unit": "đ/kWh, chưa VAT",
    "latest": "2.159,9037 từ 01/11/2026 (−2%)",
    "applies": "Khách hàng sử dụng điện",
-   "where": "Module 1D"
+   "where": "Module 1D",
+   "short": "2.159,90 đ/kWh"
   }
  ],
  "transitional": {
@@ -4492,7 +4499,11 @@
       "pass": "Chi phí than trong phần giá biến đổi theo công thức PPA; mức chuyển ngang tùy hợp đồng",
       "market": "Khoảng 20% sản lượng năm 2026 nhận giá FMP",
       "risk": "Giá than nhập, mức huy động, vốn đầu tư môi trường (QCVN 19:2024)",
-      "check": "Tỷ lệ than nhập, công thức giá nhiên liệu, thời hạn PPA còn lại"
+      "check": "Tỷ lệ than nhập, công thức giá nhiên liệu, thời hạn PPA còn lại",
+      "contract": 80,
+      "contract_s": "Qc 80%",
+      "pass_s": "một phần, theo PPA",
+      "risk_s": "Giá than nhập"
      },
      {
       "title": "Khí trong nước",
@@ -4503,7 +4514,11 @@
       "pass": "Giá khí theo công thức PPA",
       "market": "Phần ngoài Qc",
       "risk": "Sản lượng khí cấp suy giảm; giá khí",
-      "check": "Nguồn khí, giá khí bình quân (NT2 8/2026: 9,908 USD/triệu BTU)"
+      "check": "Nguồn khí, giá khí bình quân (NT2 8/2026: 9,908 USD/triệu BTU)",
+      "contract": 80,
+      "contract_s": "Qc năm",
+      "pass_s": "theo công thức PPA",
+      "risk_s": "Khí cấp suy giảm"
      },
      {
       "title": "LNG mới",
@@ -4514,7 +4529,11 @@
       "pass": "Tùy PPA; LNG là phần lớn chi phí biến đổi",
       "market": "Phần ngoài cam kết",
       "risk": "Giá LNG nhập; hết cam kết sau 10 năm",
-      "check": "Giá PPA, công thức chuyển giá LNG, mức huy động thực tế"
+      "check": "Giá PPA, công thức chuyển giá LNG, mức huy động thực tế",
+      "contract": 65,
+      "contract_s": "≥65% · 10 năm",
+      "pass_s": "một phần, theo PPA",
+      "risk_s": "Giá LNG nhập"
      },
      {
       "title": "Thủy điện",
@@ -4525,7 +4544,11 @@
       "pass": "Không có chi phí nhiên liệu",
       "market": "Khoảng 2% năm 2026",
       "risk": "Thủy văn quyết định sản lượng; quy trình liên hồ chứa",
-      "check": "Nước về hồ, mùa mưa – khô, nhà máy dưới 30 MW bán theo cơ chế riêng"
+      "check": "Nước về hồ, mùa mưa – khô, nhà máy dưới 30 MW bán theo cơ chế riêng",
+      "contract": 98,
+      "contract_s": "Qc 98%",
+      "pass_s": "không có nhiên liệu",
+      "risk_s": "Thủy văn"
      },
      {
       "title": "Gió, mặt trời hưởng FIT",
@@ -4536,7 +4559,11 @@
       "pass": "Không có nhiên liệu",
       "market": "Không",
       "risk": "20 năm từ COD; rà soát điều kiện nghiệm thu (173 nhà máy)",
-      "check": "Nhà máy có thuộc danh sách rà soát, dự phòng, phải thu EVN"
+      "check": "Nhà máy có thuộc danh sách rà soát, dự phòng, phải thu EVN",
+      "contract": 100,
+      "contract_s": "EPTC mua toàn bộ",
+      "pass_s": "không có nhiên liệu",
+      "risk_s": "Rà soát FIT, giảm phát"
      },
      {
       "title": "Gió, mặt trời chuyển tiếp",
@@ -4547,7 +4574,11 @@
       "pass": "Không có nhiên liệu",
       "market": "Không",
       "risk": "Giá tạm 50% trần khi chưa chốt; 32 dự án chưa gửi hồ sơ",
-      "check": "Đã chốt giá chưa, chênh lệch giá tạm – giá chốt"
+      "check": "Đã chốt giá chưa, chênh lệch giá tạm – giá chốt",
+      "contract": 100,
+      "contract_s": "theo PPA",
+      "pass_s": "không có nhiên liệu",
+      "risk_s": "Giá tạm 50% trần"
      }
     ]
    },
@@ -4669,8 +4700,8 @@
        {
         "k": "Điều kiện",
         "steps": [
-         "Khách hàng ≥20.000 kWh/tháng (TT 29/2026)",
-         "không trả phí truyền tải quốc gia"
+         "Khách hàng ≥20.000 kWh/tháng",
+         "không trả phí truyền tải"
         ]
        }
       ],
@@ -4691,14 +4722,14 @@
        {
         "k": "Dòng tiền",
         "steps": [
-         "Thị trường trả nhà máy theo [[FMP]]",
-         "Khách hàng trả tổng công ty: điện năng giá giao ngay + phí dịch vụ hệ thống"
+         "Thị trường → nhà máy: [[FMP]]",
+         "Khách hàng → tổng công ty điện lực: giá giao ngay + phí hệ thống"
         ]
        },
        {
         "k": "Hợp đồng kỳ hạn",
         "steps": [
-         "Nhà máy ⇄ khách hàng thanh toán phần chênh lệch giữa giá thỏa thuận và giá thị trường ([[CfD]])"
+         "Nhà máy ⇄ khách hàng: bù chênh giá thỏa thuận − giá thị trường ([[CfD]])"
         ]
        }
       ],
@@ -4851,6 +4882,43 @@
       "t": "Vốn đầu tư lưới, nguồn",
       "d": ""
      }
+    ],
+    "scale": [
+     {
+      "from": -4,
+      "to": -1,
+      "label": "giảm ≥1%",
+      "who": "EVN (BCT góp ý)",
+      "c": "#8997D6"
+     },
+     {
+      "from": -1,
+      "to": 2,
+      "label": "−1% đến +2%",
+      "who": "Không điều chỉnh",
+      "c": "#E3E7F0"
+     },
+     {
+      "from": 2,
+      "to": 5,
+      "label": "+2% đến +5%",
+      "who": "EVN (BCT góp ý)",
+      "c": "#8997D6"
+     },
+     {
+      "from": 5,
+      "to": 10,
+      "label": "+5% đến +10%",
+      "who": "BCT chấp thuận",
+      "c": "#2938A8"
+     },
+     {
+      "from": 10,
+      "to": 14,
+      "label": "≥10%",
+      "who": "Báo cáo Chính phủ",
+      "c": "#861C52"
+     }
     ]
    },
    "framework": [
@@ -4943,11 +5011,24 @@
      },
      {
       "t": "Công suất khả dụng",
-      "d": "trừ bảo dưỡng, sự cố, thiếu nước, thiếu nhiên liệu"
+      "d": "trừ bảo dưỡng, sự cố, thiếu nước, thiếu nhiên liệu",
+      "cut": [
+       "bảo dưỡng",
+       "sự cố",
+       "thiếu nước",
+       "thiếu nhiên liệu"
+      ]
      },
      {
       "t": "Sản lượng huy động",
-      "d": "theo lịch của NSMO: giá chào, ràng buộc lưới, an ninh hệ thống, quy trình hồ chứa, cam kết hợp đồng"
+      "d": "theo lịch của NSMO: giá chào, ràng buộc lưới, an ninh hệ thống, quy trình hồ chứa, cam kết hợp đồng",
+      "cut": [
+       "giá chào",
+       "ràng buộc lưới",
+       "an ninh hệ thống",
+       "quy trình hồ chứa",
+       "cam kết hợp đồng"
+      ]
      }
     ]
    },
@@ -5176,6 +5257,36 @@
       "159,0 triệu đồng",
       "giá bình quân 1.590 đ/kWh (+20)"
      ]
+    ],
+    "bars": [
+     {
+      "label": "FMP 1.450",
+      "avg": "1.570 đ/kWh",
+      "parts": [
+       [
+        "Qc 80 MWh × 1.600",
+        128
+       ],
+       [
+        "20 MWh × FMP 1.450",
+        29
+       ]
+      ]
+     },
+     {
+      "label": "FMP 1.550 (+100)",
+      "avg": "1.590 đ/kWh (+20)",
+      "parts": [
+       [
+        "Qc 80 MWh × 1.600",
+        128
+       ],
+       [
+        "20 MWh × FMP 1.550",
+        31
+       ]
+      ]
+     }
     ]
    },
    "framework": [
@@ -5620,28 +5731,36 @@
        "Thuế bảo vệ môi trường với than: 15.000–30.000 đ/tấn",
        "Thuế nhập khẩu LNG 2% (trước 5%)",
        "Thuế nhập khẩu than: 0% theo nhiều FTA (MFN 2%, chưa đối chiếu nghị định)"
-      ]
+      ],
+      "big": "2%",
+      "big_s": "thuế nhập khẩu LNG (trước 5%)"
      },
      {
       "t": "Được khấu trừ",
       "tag": "không vào chi phí doanh nghiệp",
       "items": [
        "Thuế GTGT đầu vào, đầu ra; giảm còn 8% đến 31/12/2026 với nhiều nhóm hàng"
-      ]
+      ],
+      "big": "8%",
+      "big_s": "GTGT nhiều nhóm hàng đến 31/12/2026"
      },
      {
       "t": "Trên lợi nhuận",
       "tag": "đổi lợi nhuận sau thuế",
       "items": [
        "Thuế TNDN theo Luật 67/2025/QH15, áp từ kỳ tính thuế 2025"
-      ]
+      ],
+      "big": "Luật 67/2025",
+      "big_s": "áp từ kỳ tính thuế 2025"
      },
      {
       "t": "Ưu đãi cấp dự án",
       "tag": "chỉ dự án đủ điều kiện",
       "items": [
        "Dự án mới sản xuất năng lượng tái tạo, năng lượng sạch: thuế suất 10% trong 15 năm; miễn tối đa 4 năm, giảm 50% tối đa 9 năm tiếp theo (Luật 67/2025, Điều 12–14)"
-      ]
+      ],
+      "big": "10% · 15 năm",
+      "big_s": "TNDN dự án tái tạo mới"
      }
     ]
    },

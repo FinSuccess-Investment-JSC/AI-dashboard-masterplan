@@ -161,66 +161,91 @@ function mountChart(host, model, kind) {
 /* ---------- cẩm nang: dữ liệu ---------- */
 const HB = P.handbook || {}, TABS = P.tabs || [];
 const LV = {H: ['Cao', 'lv-h'], M: ['Trung bình', 'lv-m'], L: ['Thấp', 'lv-l'], '': ['', '']};
+const plain = s => String(s ?? '').replace(/\[\[|\]\]/g, '');
+const tip = s => s ? ` title="${esc(plain(s))}"` : '';
 const tickers = list => (list || []).map(c => `<span class="pp-tk"><span class="pp-chip">${esc(c.t)}</span>${c.n ? `<small>${rich(c.n)}</small>` : ''}</span>`).join('');
-const kpis = items => `<div class="pp-kpis pp-kpis-row">${(items || []).map(k => `<div class="pp-kpi${k.hl ? ' hl' : ''}"><span>${rich(k.label)}</span><b>${esc(k.value)}<small> ${esc(k.unit || '')}</small></b><em>${rich(k.sub || '')}</em></div>`).join('')}</div>`;
+// Ô số: nhãn + số lớn; ghi chú nguồn rút một dòng, đủ chữ khi rê chuột.
+const kpis = items => `<div class="pp-kpis pp-kpis-row">${(items || []).map(k => `<div class="pp-kpi${k.hl ? ' hl' : ''}"><span>${rich(k.label)}</span><b>${esc(k.value)}<small> ${esc(k.unit || '')}</small></b>${k.sub ? `<em${tip(k.sub)}>${rich(k.sub)}</em>` : ''}</div>`).join('')}</div>`;
 const policyRow = p => `<li><button type="button" class="pp-more pp-open" data-id="${esc(p.policy_id)}">${esc(p.document_number || p.policy_name)}</button> ${badge('st-' + p.policy_status, ST_VI[p.policy_status] || p.policy_status)} ${esc(p.short_name || p.policy_name)}${p.effective_date ? ` · hiệu lực ${dmy(p.effective_date)}` : p.issue_date ? ` · ban hành ${dmy(p.issue_date)}` : ''}${p.data_confidence === 'Low' ? ' · <em>độ tin cậy thấp</em>' : ''} · ${link(p.primary_source_url, 'nguồn ↗')}</li>`;
+// Dải bước gọn: chỉ tên bước, mô tả hiện khi rê chuột.
+const strip = (steps, cls = '') => `<div class="pp-strip ${cls}">${steps.map((s, i) => `${i ? '<span class="pp-sarr" aria-hidden="true">›</span>' : ''}<span class="pp-sstep ${s.cls || ''}"${tip(s.d)}>${rich(s.t)}${s.d ? '<i class="pp-i" aria-hidden="true">ⓘ</i>' : ''}</span>`).join('')}</div>`;
+const timeline = ms => `<div class="pp-tl">${ms.map(([dte, t]) => `<div class="pp-tl-i"><b>${esc(dte)}</b><span>${rich(t)}</span></div>`).join('')}</div>`;
 
-/* ---------- C · Cơ chế vận hành ---------- */
-const HOW = {
-  directions: h => `<div class="pp-dirs">${h.items.map(i => `<div class="pp-dir d-${i.dir}"><span class="pp-dir-ic" aria-hidden="true">${i.dir === 'up' ? '▲' : i.dir === 'down' ? '▼' : '►'}</span><div><b>${esc(i.src)}</b> <em>${esc(i.label)}</em><small>${rich(i.text)}</small></div></div>`).join('')}</div>`,
-  process: h => `<ol class="pp-proc">${h.steps.map((s, i) => `<li><span class="pp-proc-n">${i + 1}</span><div><b>${rich(s.t)}</b><small>${rich(s.d)}</small>${s.stop ? `<em class="pp-stop">Điểm nghẽn: ${rich(s.stop)}</em>` : ''}</div></li>`).join('')}</ol>`,
-  flow: h => flow(h.steps.map(s => ({t: s.t, d: s.d, cls: s.cls})), 'wrap'),
-  stages: () => {
-    const ST = P.pipeline_status || [], PL = P.pipeline || [];
-    return `<div class="pp-stages">${ST.map((s, i) => { const rs = PL.filter(p => p.status === s.id), mw = rs.reduce((a, p) => a + (+p.mw || 0), 0);
-      return `<div class="pp-stage s${i}"><small>Giai đoạn ${i + 1}</small><b>${esc(s.label)}</b><span class="pp-stage-n">${rs.length} dự án · ${nf(mw)} MW</span>${rs[0] ? `<em>Ví dụ: ${esc(rs[0].name)}</em>` : ''}</div>`; }).join('<span class="pp-arrow" aria-hidden="true">→</span>')}</div>`;
-  },
+/* ---------- hình chính của từng mục ---------- */
+const VIS = {
+  directions: h => `<div class="pp-dchips">${h.items.map(i => `<span class="pp-dc d-${i.dir}"${tip(i.text)}><b aria-hidden="true">${i.dir === 'up' ? '▲' : i.dir === 'down' ? '▼' : '►'}</b>${esc(i.src)}<small>${esc(i.label)}</small></span>`).join('')}</div>`,
+  process: h => `<ol class="pp-steps">${h.steps.map((s, i) => `<li${tip(s.d + (s.stop ? ' · Điểm nghẽn: ' + s.stop : ''))}${s.stop ? ' class="stop"' : ''}><span class="pp-sn">${i + 1}</span><b>${rich(s.t)}</b></li>`).join('')}</ol><div class="pp-key"><span><i class="pp-dot"></i>bước đang có dự án bị nghẽn (rê chuột để xem)</span></div>`,
+  flow: h => strip(h.steps),
+  stages: () => '',
   pricemap: () => {
     const T = Object.fromEntries((P.price_types || []).map(t => [t.type.replace(/\[\[|\]\]/g, ''), t]));
-    const tag = (k, label) => `<span class="pp-ptag" title="${esc(T[k]?.nature || '')}"><span>${rich(label)}</span><small>${rich(T[k]?.latest || '')}</small></span>`;
+    const tag = (k, label) => `<span class="pp-ptag"${tip(T[k]?.nature)}><span>${rich(label)}</span><small>${esc(T[k]?.short || '')}</small></span>`;
     return `<div class="pp-pmap">
-      <div class="pp-pcol"><h5>Nhà máy bán theo</h5>${tag('FIT', '[[FIT]]')}${tag('Giá PPA thực tế', 'Giá [[PPA]] (≤ trần khung giá)')}${tag('Giá thị trường (FMP)', 'Giá thị trường [[FMP]]')}</div>
+      <div class="pp-pcol"><h5>Nhà máy bán</h5>${tag('FIT', '[[FIT]]')}${tag('Giá PPA thực tế', 'Giá [[PPA]]')}${tag('Giá thị trường (FMP)', 'Giá thị trường [[FMP]]')}</div>
       <span class="pp-arrow">→</span>
-      <div class="pp-pcol"><h5>Bên mua</h5><span class="pp-pnode"><span>${rich('[[EPTC]] (EVN) theo PPA')}</span></span><span class="pp-pnode"><span>${rich('Thị trường điện do [[NSMO]] vận hành')}</span></span><span class="pp-ptag"><span>Giá mua bình quân EVN</span><small>${rich(T['Giá mua điện bình quân EVN']?.latest || '')}</small></span></div>
+      <div class="pp-pcol"><h5>EVN mua</h5><span class="pp-pnode"><span>${rich('[[EPTC]] theo PPA')}</span></span><span class="pp-pnode"><span>${rich('Thị trường ([[NSMO]])')}</span></span>${tag('Giá mua điện bình quân EVN', 'Giá mua bình quân')}</div>
       <span class="pp-arrow">→</span>
-      <div class="pp-pcol"><h5>Lưới</h5><span class="pp-pnode">Truyền tải, phân phối</span><small class="pp-pnote">phí lưới nằm trong giá bán lẻ</small></div>
+      <div class="pp-pcol"><h5>Lưới</h5><span class="pp-pnode">Truyền tải, phân phối</span></div>
       <span class="pp-arrow">→</span>
-      <div class="pp-pcol"><h5>Khách hàng</h5>${tag('Giá bán lẻ bình quân', 'Giá bán lẻ bình quân')}</div></div>
-      <p class="pp-pnote">Trần khung giá năm và trần giá chuyển tiếp không phải giá giao dịch: chúng chỉ giới hạn giá PPA khi đàm phán.</p>`;
+      <div class="pp-pcol"><h5>Khách hàng</h5>${tag('Giá bán lẻ bình quân', 'Giá bán lẻ bình quân')}</div></div>`;
   },
-  ppa_cards: h => `<div class="pp-cards">${h.cards.map(c => `<div class="pp-mini"><h4>${esc(c.title)}</h4><div class="pp-cardtick">${esc(c.tickers)}</div><dl class="pp-kv">${h.fields.map(([k, l]) => `<dt>${esc(l)}</dt><dd>${rich(c[k] || '—')}</dd>`).join('')}</dl></div>`).join('')}</div>`,
-  dppa: h => `<div class="pp-two">${h.models.map(m => `<div class="pp-mini"><h4>${esc(m.title)}</h4>${m.lanes.map(l => `<div class="pp-lane"><span class="pp-lane-k">${esc(l.k)}</span>${l.steps.map(s => `<span class="pp-lane-s">${rich(s)}</span>`).join('<span class="pp-arrow">→</span>')}</div>`).join('')}<p class="pp-pit"><b>Rủi ro:</b> ${rich(m.risk)}</p></div>`).join('')}</div>`,
-  ladder: h => `<div class="tablewrap"><table class="pp-table pp-ladder" style="min-width:420px"><thead><tr><th>Mức giá tính ra so với hiện hành</th><th>Ai quyết</th></tr></thead><tbody>${h.rows.map(r => `<tr><td>${rich(r.cond)}</td><td>${rich(r.act)}</td></tr>`).join('')}</tbody></table></div>${h.after ? flow(h.after, 'wrap') : ''}`,
-  funnel: h => `<div class="pp-funnel">${h.levels.map((l, i) => `<div class="pp-fl" style="width:${100 - i * 18}%"><b>${rich(l.t)}</b><small>${rich(l.d)}</small></div>`).join('')}</div>`,
-  example: h => `<div class="tablewrap"><table class="pp-table pp-example" style="min-width:420px"><tbody>${h.rows.map((r, i) => `<tr${i >= h.rows.length - 2 ? ' class="pp-ex-sum"' : ''}><td>${rich(r[0])}</td><td class="num"><b>${rich(r[1])}</b></td><td>${rich(r[2])}</td></tr>`).join('')}</tbody></table></div><p class="pp-pnote">${rich(h.assume)}</p>`,
-  settle: h => `<div class="tablewrap"><table class="pp-table" style="min-width:520px"><thead><tr><th>Loại nhà máy</th><th>Quy tắc tính tiền</th><th>Thu tiền</th></tr></thead><tbody>${h.rows.map(r => `<tr><td><b>${rich(r.t)}</b></td><td>${rich(r.rule)}</td><td>${rich(r.cash)}</td></tr>`).join('')}</tbody></table></div>${flow([{t: 'Sản lượng đo đếm'}, {t: 'Quy tắc giá theo loại hợp đồng'}, {t: 'Doanh thu tính ra', cls: 'hl'}, {t: 'Thu tiền từ EPTC, thị trường, khách hàng'}], 'wrap')}`,
-  techmatrix: h => `<div class="tablewrap"><table class="pp-table pp-tech" style="min-width:760px"><thead><tr><th></th>${h.axes.map(a => `<th>${esc(a)}</th>`).join('')}</tr></thead><tbody>${h.rows.map(r => `<tr><td><b>${esc(r.t)}</b></td>${r.v.map(([l, t]) => `<td>${l ? `<span class="pp-lv ${LV[l][1]}">${LV[l][0]}</span>` : ''}${t ? `<small>${rich(t)}</small>` : ''}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="pp-pnote">Cao/Trung bình/Thấp là đánh giá định tính từ cơ chế, không phải điểm số đo lường.</p>`,
-  taxcards: h => `<div class="pp-cards">${h.cards.map(c => `<div class="pp-mini"><h4>${esc(c.t)}</h4><div class="pp-cardtick">${esc(c.tag)}</div><ul>${c.items.map(i => `<li>${rich(i)}</li>`).join('')}</ul></div>`).join('')}</div>`,
-  channels: h => `<div class="pp-two">${h.channels.map(c => `<div class="pp-mini"><h4>${esc(c.title)}</h4>${flow(c.steps, 'compact')}</div>`).join('')}</div>`,
-  carbon: () => `<div class="pp-carbon">${flow([{t: 'Phân bổ hạn ngạch', d: 'theo cường độ phát thải (QĐ 263, QĐ 699)'}, {t: 'Kiểm kê phát thải thực', d: 'phát thải trực tiếp trong kỳ'}, {t: 'So sánh', d: 'phát thải với hạn ngạch', cls: 'hl'}, {t: 'Nộp trả', d: 'trước 31/12 năm kế tiếp giai đoạn'}], 'wrap')}
-    <div class="pp-two" style="margin-top:8px"><div class="pp-mini pp-short"><h4>Nếu thiếu hạn ngạch</h4><ul><li>Mua hạn ngạch trên sàn</li><li>Dùng tín chỉ carbon, tối đa 30%</li><li>Vay hạn ngạch kỳ sau, tối đa 15%</li><li>Không nộp đủ: xử phạt và trừ vào hạn ngạch kỳ sau</li></ul></div><div class="pp-mini pp-surplus"><h4>Nếu dư hạn ngạch</h4><ul><li>Bán trên sàn</li><li>Chuyển sang kỳ sau (đến 2030)</li></ul></div></div>`
+  ppa_cards: h => {
+    const rows = h.cards.map(c => { const m = 100 - (c.contract ?? 100);
+      return `<div class="pp-pr"><div class="pp-pr-t"><b>${esc(c.title)}</b><small>${esc(c.tickers)}</small></div>
+        <div class="pp-pr-bar"${tip(`${c.qty} · Phần giá thị trường: ${c.market}`)}><i style="width:${100 - m}%"><span>${esc(c.contract_s || '')}</span></i>${m ? `<i class="mk" style="width:${m}%"><span>${m}%</span></i>` : ''}</div>
+        <span class="pp-pr-c"${tip(c.pass)}>${esc(c.pass_s || '')}</span><span class="pp-pr-r"${tip(c.risk)}>${esc(c.risk_s || '')}</span></div>`; }).join('');
+    return `<div class="pp-ppa"><div class="pp-pr pp-pr-h"><span>Loại nhà máy</span><span>Sản lượng: giá hợp đồng <i class="k1"></i> · giá thị trường <i class="k2"></i></span><span>Nhiên liệu chuyển vào giá</span><span>Rủi ro chính</span></div>${rows}</div>`;
+  },
+  dppa: h => `<div class="pp-two">${h.models.map(m => `<div class="pp-mini"><h4${tip('Rủi ro: ' + m.risk)}>${esc(m.title)} <i class="pp-i" aria-hidden="true">ⓘ</i></h4>${m.lanes.map(l => `<div class="pp-lane"><span class="pp-lane-k">${esc(l.k)}</span>${l.steps.map(s => `<span class="pp-lane-s">${rich(s)}</span>`).join('<span class="pp-arrow">→</span>')}</div>`).join('')}</div>`).join('')}</div>`,
+  ladder: h => {
+    const S = h.scale || [], lo = S[0]?.from ?? 0, hi = S.at(-1)?.to ?? 1, x = v => (v - lo) / (hi - lo) * 100;
+    return `<div class="pp-scale"><div class="pp-sc-cap">Giá bán lẻ bình quân tính ra so với hiện hành → ai quyết điều chỉnh</div><div class="pp-sc-bar">${S.map(s => `<div class="pp-sc-seg" style="left:${x(s.from)}%;width:${x(s.to) - x(s.from)}%;background:${s.c}"${tip(s.label + ': ' + s.who)}><b>${esc(s.who)}</b></div>`).join('')}</div>
+      <div class="pp-sc-ax">${[...new Set(S.flatMap(s => [s.from, s.to]))].slice(1, -1).map(v => `<span style="left:${x(v)}%">${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v)}%</span>`).join('')}</div></div>${h.after ? strip(h.after) : ''}`;
+  },
+  funnel: h => `<div class="pp-funnel">${h.levels.map((l, i) => `${l.cut ? `<div class="pp-cuts">${l.cut.map(c => `<span>− ${esc(c)}</span>`).join('')}</div>` : ''}<div class="pp-fl" style="width:${100 - i * 22}%"${tip(l.d)}><b>${rich(l.t)}</b></div>`).join('')}</div>`,
+  example: h => {
+    const B = h.bars || [], max = Math.max(...B.map(b => b.parts.reduce((a, p) => a + p[1], 0)));
+    return `<div class="pp-exb">${B.map(b => { const tot = b.parts.reduce((a, p) => a + p[1], 0);
+      return `<div class="pp-exr"><span class="pp-exl">${esc(b.label)}</span><div class="pp-exbar" style="width:${tot / max * 100}%">${b.parts.map((p, i) => `<i class="p${i}" style="flex:${p[1]}"${tip(p[0] + ' = ' + nf(p[1], 1) + ' triệu đồng')}>${nf(p[1], 0)}</i>`).join('')}</div><b>${nf(tot, 0)} tr · ${esc(b.avg)}</b></div>`; }).join('')}
+      <div class="pp-key"><span><i class="k1"></i>Qc × giá hợp đồng</span><span><i class="k2"></i>phần còn lại × FMP</span><span>triệu đồng · ${esc(h.assume || '')}</span></div></div>`;
+  },
+  settle: h => `<div class="pp-settle">${h.rows.map(r => `<div class="pp-se"><b>${rich(r.t)}</b><span class="pp-se-f">${rich(r.rule)}</span><span class="pp-arrow" aria-hidden="true">→</span><span class="pp-se-c">${rich(r.cash)}</span></div>`).join('')}</div>`,
+  techmatrix: h => `<div class="tablewrap"><table class="pp-heat" style="min-width:640px"><thead><tr><th></th>${h.axes.map(a => `<th>${esc(a)}</th>`).join('')}</tr></thead><tbody>${h.rows.map(r => `<tr><th>${esc(r.t)}</th>${r.v.map(([l, t]) => l ? `<td class="${LV[l][1]}"${tip(t)}>${LV[l][0]}</td>` : `<td class="lv-n">${rich(t)}</td>`).join('')}</tr>`).join('')}</tbody></table></div><div class="pp-key"><span><i class="lv-h"></i>Cao</span><span><i class="lv-m"></i>Trung bình</span><span><i class="lv-l"></i>Thấp</span><span>đánh giá định tính · rê chuột để xem lý do</span></div>`,
+  taxcards: h => `<div class="pp-taxs">${h.cards.map(c => `<div class="pp-tax"${tip(c.items.join(' · '))}><small>${esc(c.t)}</small><b>${esc(c.big || '')}</b><span>${esc(c.big_s || '')}</span><em>${esc(c.tag)}</em></div>`).join('')}</div>`,
+  channels: h => `<div class="pp-chs">${h.channels.map(c => `<div class="pp-ch"><span class="pp-ch-k">${esc(c.title)}</span>${strip(c.steps)}</div>`).join('')}</div>`,
+  carbon: () => `${strip([{t: 'Phân bổ hạn ngạch', d: 'theo cường độ phát thải (QĐ 263, QĐ 699)'}, {t: 'Kiểm kê phát thải thực'}, {t: 'So với hạn ngạch', cls: 'hl'}, {t: 'Nộp trả', d: 'trước 31/12 năm kế tiếp giai đoạn'}])}
+    <div class="pp-two pp-cb"><div class="pp-cbx short"><b>Thiếu hạn ngạch</b><span>mua trên sàn</span><span>tín chỉ ≤30%</span><span>vay kỳ sau ≤15%</span><span>không nộp đủ: phạt</span></div><div class="pp-cbx surplus"><b>Dư hạn ngạch</b><span>bán trên sàn</span><span>chuyển kỳ sau (đến 2030)</span></div></div>`
 };
-const WIDE = new Set(['pricemap', 'ppa_cards', 'dppa', 'techmatrix', 'taxcards', 'stages', 'channels', 'process', 'directions', 'carbon']);
+// Bản đầy đủ (chữ) của sơ đồ, chỉ nằm trong phần gập.
+const FULL = {
+  directions: h => `<div class="pp-dirs">${h.items.map(i => `<div class="pp-dir d-${i.dir}"><span class="pp-dir-ic" aria-hidden="true">${i.dir === 'up' ? '▲' : i.dir === 'down' ? '▼' : '►'}</span><div><b>${esc(i.src)}</b> <em>${esc(i.label)}</em><small>${rich(i.text)}</small></div></div>`).join('')}</div>`,
+  process: h => `<ol class="pp-proc">${h.steps.map((s, i) => `<li><span class="pp-proc-n">${i + 1}</span><div><b>${rich(s.t)}</b><small>${rich(s.d)}</small>${s.stop ? `<em class="pp-stop">Điểm nghẽn: ${rich(s.stop)}</em>` : ''}</div></li>`).join('')}</ol>`,
+  ppa_cards: h => table(['Loại nhà máy', ...h.fields.map(f => f[1])], h.cards.map(c => ({cells: [{html: `<b>${esc(c.title)}</b><br><small>${esc(c.tickers)}</small>`}, ...h.fields.map(([k]) => c[k] || '—')]})), {min: 980}),
+  ladder: h => table(['Mức giá tính ra so với hiện hành', 'Ai quyết'], h.rows.map(r => ({cells: [r.cond, r.act]})), {min: 420}),
+  example: h => `<div class="tablewrap"><table class="pp-table pp-example" style="min-width:420px"><tbody>${h.rows.map((r, i) => `<tr${i >= h.rows.length - 2 ? ' class="pp-ex-sum"' : ''}><td>${rich(r[0])}</td><td class="num"><b>${rich(r[1])}</b></td><td>${rich(r[2])}</td></tr>`).join('')}</tbody></table></div>`,
+  taxcards: h => `<div class="pp-cards">${h.cards.map(c => `<div class="pp-mini"><h4>${esc(c.t)}</h4><div class="pp-cardtick">${esc(c.tag)}</div><ul>${c.items.map(i => `<li>${rich(i)}</li>`).join('')}</ul></div>`).join('')}</div>`,
+  techmatrix: h => table(['', ...h.axes], h.rows.map(r => ({cells: [{html: `<b>${esc(r.t)}</b>`}, ...r.v.map(([l, t]) => ({html: `${l ? LV[l][0] + ': ' : ''}${rich(t || '')}`}))]})), {min: 760}),
+  dppa: h => `<ul>${h.models.map(m => `<li><b>${esc(m.title)}</b> · rủi ro: ${rich(m.risk)}</li>`).join('')}</ul>`
+};
 
 /* ---------- số liệu minh họa ---------- */
 const DATA = {
   kpis: (host, m) => { host.innerHTML = kpis(m.data.items); },
   plan: host => {
     const Q = P.plan || {};
-    host.innerHTML = `<div class="viz-block"><div class="chart-title">Công suất mục tiêu 2030 theo nguồn và công suất cuối 2025</div><div class="chart-sub">MW · dải thấp–cao theo QĐ 768 · vạch đen: thực tế cuối 2025 (EVN ước, chỉ có cho than, thủy điện) · năm mục tiêu ghi ở từng dòng</div>${ranges((Q.targets || []).map(t => ({label: t.source, low: t.low, high: t.high, year: t.year, color: t.color, actual: t.actual})), {aria: 'Công suất mục tiêu QĐ 768 theo nguồn'})}<div class="pp-legend">${(Q.legend || []).map(l => `<span><i style="background:${l.color}"></i>${esc(l.label)}</span>`).join('')}</div></div>`;
+    host.innerHTML = `<div class="viz-block"><div class="chart-title">Công suất mục tiêu 2030 so với cuối 2025</div><div class="chart-sub">MW · dải thấp–cao theo QĐ 768 · vạch đen: thực tế cuối 2025</div>${ranges((Q.targets || []).map(t => ({label: t.source, low: t.low, high: t.high, year: t.year, color: t.color, actual: t.actual})), {aria: 'Công suất mục tiêu QĐ 768 theo nguồn'})}<div class="pp-legend">${(Q.legend || []).map(l => `<span><i style="background:${l.color}"></i>${esc(l.label)}</span>`).join('')}</div></div>`;
   },
   pipeline: host => {
     const PL = P.pipeline || [], ST = P.pipeline_status || [], tl = [...new Set(PL.map(p => p.tech_label))], pal = ['#1D2678', '#2938A8', '#59C5C8', '#861C52', '#8997D6', '#c29100'];
-    host.innerHTML = `<div class="viz-block"><div class="chart-title">MW theo giai đoạn triển khai</div><div class="chart-sub">MW · ${PL.length} dự án lớn đã xác minh · không phải toàn bộ danh mục quy hoạch</div><div id="chPolicyPipeline"></div></div>`;
+    host.innerHTML = `<div class="viz-block"><div class="chart-title">MW theo giai đoạn triển khai</div><div class="chart-sub">MW · ${PL.length} dự án lớn đã xác minh</div><div id="chPolicyPipeline"></div></div>`;
     mountChart(document.getElementById('chPolicyPipeline'), {categories: ST.map(s => s.label), series: tl.map((t, i) => ({name: t, color: pal[i % pal.length], values: ST.map(s => PL.filter(p => p.status === s.id && p.tech_label === t).reduce((a, p) => a + (+p.mw || 0), 0) || null)})), unit: 'MW', digits: 0, stackable: true, key: 'pp-14-pipe', aria: 'MW dự án theo giai đoạn'}, 'stack');
   },
-  price_types: host => { host.innerHTML = table(['Loại giá', 'Bản chất', 'Đơn vị · kỳ', 'Mức gần nhất', 'Áp dụng cho'], (P.price_types || []).map(t => ({cells: [{html: `<b>${rich(t.type)}</b>`}, t.nature, t.unit, {html: rich(t.latest || '—')}, t.applies]})), {min: 720}); },
   ceilings: host => {
     const F = P.price_frameworks || [], fams = [...new Set(F.map(f => f.family))];
     const REG = {'Bắc Bộ': 'Bắc', 'Nam Trung Bộ': 'Trung', 'Nam Bộ': 'Nam'}, rg = f => REG[f.region] || f.region;
     host.innerHTML = `<div class="pp-controls"><label>Công nghệ <select data-k="fam">${fams.map(f => `<option>${esc(f)}</option>`).join('')}</select></label><label>Vùng <select data-k="reg"></select></label><label>Loại dự án <select data-k="kind"></select></label><label>Năm <select data-k="year"></select></label></div>
-      <div class="viz-block"><div class="chart-title">Trần khung giá phát điện theo năm</div><div class="chart-sub">đ/kWh, chưa VAT · chỉ so cùng loại hình, cùng vùng · trần đàm phán, không phải giá PPA</div><div id="chPolicyCeilingYoY"></div></div><div class="pp-delta"></div>`;
-    const [fam, reg, kind, year] = ['fam', 'reg', 'kind', 'year'].map(k => host.querySelector(`[data-k=${k}]`)), out = host.querySelector('.pp-delta');
+      <div class="viz-block"><div class="chart-title">Trần khung giá phát điện theo năm</div><div class="chart-sub">đ/kWh, chưa VAT · trần đàm phán, không phải giá PPA</div><div id="chPolicyCeilingYoY"></div><div class="pp-dchips pp-yoy"></div></div>`;
+    const [fam, reg, kind, year] = ['fam', 'reg', 'kind', 'year'].map(k => host.querySelector(`[data-k=${k}]`)), out = host.querySelector('.pp-yoy');
     fam.value = fams.includes(store.get('pp-22-fam')) ? store.get('pp-22-fam') : 'Điện gió';
     const opts = () => {
       const rows = F.filter(f => f.family === fam.value), regs = [...new Set(rows.map(rg))], main = ['Bắc', 'Trung', 'Nam'].filter(r => regs.includes(r));
@@ -236,10 +261,13 @@ const DATA = {
       const h = document.getElementById('chPolicyCeilingYoY'); h.innerHTML = '';
       if (!rows.length) { h.innerHTML = '<div class="pp-empty">Không có khung giá khớp lựa chọn.</div>'; out.innerHTML = ''; return; }
       mountChart(h, {categories: kinds, series: years.map((y, i) => ({name: String(y), color: years.length > 1 ? pal[i % 2] : '#2938A8', values: kinds.map(k => rows.find(r => r.label === k && r.year === y)?.ceiling ?? null)})), unit: 'đ/kWh', digits: 0, labels: true, key: 'pp-22-' + fam.value + reg.value + kind.value + year.value, aria: 'Trần khung giá phát điện'}, 'bar');
-      out.innerHTML = year.value ? '' : table(['Loại hình', 'Năm trước', 'Năm hiện tại', 'Thay đổi (đ/kWh)', '% YoY', 'Văn bản'], kinds.map(k => {
-        const a = rows.filter(r => r.label === k).sort((x, y) => x.year - y.year), prev = a.length > 1 ? a.at(-2) : null, cur = a.at(-1), dlt = prev ? cur.ceiling - prev.ceiling : null;
-        return {cells: [k, {html: prev ? `${nf(prev.ceiling, 2)} <small>(${prev.year})</small>` : `<small>chỉ có khung ${cur.year}</small>`, num: 1}, {html: `<b>${nf(cur.ceiling, 2)}</b> <small>(${cur.year})</small>`, num: 1}, {html: dlt == null ? '—' : `<span class="${dlt >= 0 ? 'pp-delta-up' : 'pp-delta-dn'}">${sg(dlt, 2)}</span>`, num: 1}, {html: dlt == null ? '—' : `<span class="${dlt >= 0 ? 'pp-delta-up' : 'pp-delta-dn'}">${sg(dlt / prev.ceiling * 100, 1)}%</span>`, num: 1}, [cur.decision, prev ? prev.decision : ''].filter(Boolean).join(' ← ')]};
-      }), {min: 640});
+      // Thay đổi so với khung năm trước: một chip mỗi loại hình, văn bản khi rê chuột.
+      out.innerHTML = year.value ? '' : kinds.map(k => {
+        const a = rows.filter(r => r.label === k).sort((x, y) => x.year - y.year), prev = a.length > 1 ? a.at(-2) : null, cur = a.at(-1);
+        if (!prev) return '';
+        const pc = (cur.ceiling - prev.ceiling) / prev.ceiling * 100;
+        return `<span class="pp-dc ${pc >= 0 ? 'd-up' : 'd-down'}"${tip(`${nf(prev.ceiling, 2)} (${prev.year}) → ${nf(cur.ceiling, 2)} (${cur.year}) đ/kWh · ${cur.decision}`)}><b aria-hidden="true">${pc >= 0 ? '▲' : '▼'}</b>${esc(k)}<small>${sg(pc, 1)}%</small></span>`;
+      }).join('');
       store.set('pp-22-fam', fam.value);
     };
     fam.addEventListener('change', () => { opts(); draw(); });
@@ -248,11 +276,11 @@ const DATA = {
   },
   transitional: host => {
     const T = P.transitional || {};
-    host.innerHTML = `<div class="viz-block"><div class="chart-title">Dự án điện tái tạo chuyển tiếp theo tình trạng giá</div><div class="chart-sub">MW · ${esc(T.as_of_label || '')} · các nhóm chồng lấn, không cộng thành tổng</div>${hbars((T.rows || []).map(r => ({label: `${r.label} (${r.projects} dự án)`, value: r.mw, text: r.mw_text || nf(r.mw) + ' MW', color: r.color})), {labelWidth: 300, unit: 'MW', aria: 'Dự án chuyển tiếp theo tình trạng giá'})}</div>`;
+    host.innerHTML = `<div class="viz-block"><div class="chart-title">Dự án tái tạo chuyển tiếp theo tình trạng giá</div><div class="chart-sub">MW · ${esc(T.as_of_label || '')} · các nhóm chồng lấn</div>${hbars((T.rows || []).map(r => ({label: `${r.label} (${r.projects} dự án)`, value: r.mw, text: r.mw_text || nf(r.mw) + ' MW', color: r.color})), {labelWidth: 300, unit: 'MW', aria: 'Dự án chuyển tiếp theo tình trạng giá'})}</div>`;
   },
   retail: host => {
     const R = P.retail_tariff || [];
-    host.innerHTML = `<div class="viz-block"><div class="chart-title">Giá bán lẻ bình quân qua các lần điều chỉnh chính thức</div><div class="chart-sub">đ/kWh, chưa VAT · mỗi điểm là một quyết định</div><div id="chPolicyRetail"></div></div>`;
+    host.innerHTML = `<div class="viz-block"><div class="chart-title">Giá bán lẻ bình quân qua các lần điều chỉnh</div><div class="chart-sub">đ/kWh, chưa VAT</div><div id="chPolicyRetail"></div></div>`;
     mountChart(document.getElementById('chPolicyRetail'), {categories: R.map(r => dmy(r.date)), series: [{name: 'Giá bán lẻ bình quân', color: '#2938A8', values: R.map(r => r.price)}], unit: 'đ/kWh', digits: 0, labels: true, zeroBase: false, key: 'pp-25-retail', aria: 'Giá bán lẻ điện bình quân'}, 'line');
   },
   qcmix: host => {
@@ -260,14 +288,14 @@ const DATA = {
     const seg = (x0, w, fill, ink, text) => `<rect x="${x0.toFixed(1)}" width="${Math.max(0, w).toFixed(1)}" height="22" rx="4" fill="${fill}"/>` + (text ? `<text x="${(x0 + 8).toFixed(1)}" y="15" class="vl" fill="${ink}">${esc(text)}</text>` : '');
     const rows = mix.map((r, i) => { const mt = `${r.market_text || (100 - r.contract) + '%'} giá thị trường`, small = x(100) - x(r.contract) < 90;
       return `<g transform="translate(0 ${top + i * rh})"><text x="${lw - 10}" y="15" text-anchor="end" class="lb" style="font-weight:600">${esc(r.label)}</text>${seg(x(0), x(r.contract) - x(0) - 1, '#1D2678', '#fff', `${r.contract_text || r.contract + '%'} giá hợp đồng${small ? ' · ' + mt : ''}`)}${seg(x(r.contract) + 1, x(100) - x(r.contract) - 1, r.market_fill || '#F2B8A2', '#7a2e1c', small ? '' : mt)}<title>${esc(r.label)}: ${esc(r.note || '')}</title></g>`; }).join('');
-    host.innerHTML = `<div class="viz-block"><div class="chart-title">Mỗi kWh được trả theo giá nào?</div><div class="chart-sub">${rich('% sản lượng · tỷ lệ [[Qc]] 2026 (nguồn thứ cấp) · LNG mới theo NĐ 100/2025 · vạch: sàn 60% theo TT 29/2026')}</div><svg class="pp-svg" viewBox="0 0 ${W} ${H2}" role="img" aria-label="Tỷ lệ sản lượng theo giá hợp đồng và giá thị trường"><line x1="${x(60)}" x2="${x(60)}" y1="${top - 8}" y2="${H2 - 4}" stroke="#861C52" stroke-dasharray="4 3"/>${rows}</svg></div>`;
+    host.innerHTML = `<div class="viz-block"><div class="chart-title">Mỗi kWh được trả theo giá nào?</div><div class="chart-sub">${rich('% sản lượng năm 2026 · vạch: sàn [[Qc]] 60%')}</div><svg class="pp-svg" viewBox="0 0 ${W} ${H2}" role="img" aria-label="Tỷ lệ sản lượng theo giá hợp đồng và giá thị trường"><line x1="${x(60)}" x2="${x(60)}" y1="${top - 8}" y2="${H2 - 4}" stroke="#861C52" stroke-dasharray="4 3"/>${rows}</svg></div>`;
   },
   quota: host => {
     const C2 = P.carbon || {};
     host.innerHTML = `<div class="viz-block"><div class="chart-title">${esc(C2.intensity_title || '')}</div><div class="chart-sub">${esc(C2.intensity_sub || '')}</div>${hbars((C2.intensity || []).map(r => ({label: r.label, value: r.value, text: r.text, color: r.color})), {labelWidth: 220, unit: C2.intensity_unit || '', aria: 'Hạn ngạch phát thải theo nhà máy'})}</div>`;
   }
 };
-/* ---------- G · nội dung tra cứu thêm theo module ---------- */
+/* ---------- nội dung tra cứu thêm theo mục (trong phần gập) ---------- */
 const REF = {
   pipeline: () => { const PL = [...(P.pipeline || [])].sort((a, b) => (a.cod_actual || a.cod_plan || '9').localeCompare(b.cod_actual || b.cod_plan || '9')), ST = P.pipeline_status || [];
     return `<div class="viz-block"><div class="chart-title">Tiến độ từng dự án: khởi công → COD</div><div class="chart-sub">◇ COD kế hoạch · ◆ COD thực tế · đường đỏ: ${dmy(P.as_of)}</div>${gantt(PL.map(p => ({name: p.name, mw: p.mw_label || nf(p.mw), start: p.start, end: p.cod_plan, actual: p.cod_actual, status: p.status, color: (P.tech_colors || {})[p.tech]})), {aria: 'Tiến độ dự án'})}</div>`
@@ -276,6 +304,7 @@ const REF = {
     const all = [...new Set(F.map(f => f.family + '|' + f.label))].map(key => { const [fa, lb] = key.split('|'), a = F.filter(f => f.family === fa && f.label === lb), y = Math.max(...a.map(r => r.year)), cur = a.filter(r => r.year === y);
       return {cells: [fa, lb, String(y), cur.map(r => (cur.length > 1 ? r.region + ' ' : '') + nf(r.ceiling, 2)).join(' · '), cur[0].decision + (cur[0].decision_date ? ' (' + dmy(cur[0].decision_date) + ')' : '')]}; });
     return `<p><b>Khung mới nhất từng loại hình</b> (đ/kWh, chưa VAT)</p>${table(['Nhóm', 'Loại hình', 'Năm', 'Trần theo vùng', 'Văn bản'], all, {min: 620})}<p><b>Chưa có khung năm hiện tại:</b></p><ul>${(P.pending_frameworks || []).map(x => `<li>${rich(x)}</li>`).join('')}</ul>`; },
+  price_types: () => table(['Loại giá', 'Bản chất', 'Đơn vị · kỳ', 'Mức gần nhất', 'Áp dụng cho'], (P.price_types || []).map(t => ({cells: [{html: `<b>${rich(t.type)}</b>`}, t.nature, t.unit, {html: rich(t.latest || '—')}, t.applies]})), {min: 720}),
   dppa: () => { const D = P.dppa || {};
     return `<p><b>PPA truyền thống so với DPPA</b></p>${table(['Khía cạnh', 'PPA với EVN/EPTC', 'DPPA qua lưới quốc gia'], (D.compare || []).map(r => ({cells: [{html: `<b>${rich(r.aspect)}</b>`}, r.ppa, r.dppa]})), {min: 620})}<p><b>Thay đổi theo văn bản</b></p>${table(['Nội dung', 'Trước', 'Sau', 'Văn bản'], (D.changes || []).map(r => ({cells: [r.item, r.before, {html: `<b>${rich(r.after)}</b>`}, r.doc]})), {min: 620})}`; },
   plan: () => { const Q = P.plan || {};
@@ -286,25 +315,30 @@ const REF = {
   carbon: () => table(['Nội dung', 'Quy định', 'Kênh tới doanh nghiệp'], ((P.carbon || {}).facts || []).map(f => ({cells: [{html: `<b>${rich(f.item)}</b>`}, {html: rich(f.value)}, f.channel || '—']})), {min: 620}),
   grid: () => table(['Chỉ tiêu / văn bản', 'Nội dung', 'Kênh tới doanh nghiệp'], ((P.grid || {}).facts || []).map(f => ({cells: [{html: `<b>${rich(f.item)}</b>`}, {html: rich(f.value)}, {html: rich(f.channel || '—')}]})), {min: 620})
 };
-const REF_BY_MODULE = {'1.1': 'plan', '1.3': 'grid', '1.4': 'pipeline', '2.2': 'ceilings', '2.4': 'dppa', '3.2': 'market', '3.3': 'market', '4.1': 'taxes', '4.2': 'trade', '4.3': 'carbon'};
+const REF_BY_MODULE = {'1.1': 'plan', '1.3': 'grid', '1.4': 'pipeline', '2.1': 'price_types', '2.2': 'ceilings', '2.4': 'dppa', '3.2': 'market', '3.3': 'market', '4.1': 'taxes', '4.2': 'trade', '4.3': 'carbon'};
+// Thứ tự trong khung hình: số liệu (chart) trước sơ đồ ở các mục mà chart là câu trả lời chính.
+const DATA_FIRST = new Set(['1.1', '2.2', '3.2', '4.3']);
 
-/* ---------- module A–G ---------- */
+/* ---------- mục: câu hỏi · kết luận · hình · doanh nghiệp · phần gập ---------- */
 function renderModule(m) {
   const host = document.getElementById('pp-m-' + m.id.replace('.', '-')); if (!host) return;
-  const af = m.affected || {}, tiers = [['direct', 'Trực tiếp'], ['indirect', 'Gián tiếp'], ['potential', 'Tiềm năng']].filter(([k]) => (af[k] || []).length);
-  const drafts = (m.drafts || []).map(id => byId[id]).filter(Boolean), pols = (m.policies || []).map(id => byId[id]).filter(Boolean), wide = WIDE.has(m.how?.type);
+  const af = m.affected || {}, cos = ['direct', 'indirect', 'potential'].flatMap(k => (af[k] || []).map(c => ({...c, k})));
+  const drafts = (m.drafts || []).map(id => byId[id]).filter(Boolean), pols = (m.policies || []).map(id => byId[id]).filter(Boolean), type = m.how?.type;
+  const how = VIS[type] ? VIS[type](m.how) : '', full = FULL[type] ? FULL[type](m.how) : '';
+  const vis = `${how ? `<div class="pp-howv">${how}</div>` : ''}`, data = m.data ? '<div class="pp-data"></div>' : '';
   host.innerHTML = `<header class="pp-mh"><span class="pp-code">${esc(m.id)}</span><h3 class="pp-title">${rich(m.title)}</h3></header>
     <p class="pp-concl">${rich(m.conclusion)}</p>
-    <div class="pp-ab${wide ? ' wide' : ''}"><div class="pp-quick"><h4>Hiểu nhanh</h4><p>${rich(m.quick)}</p>${m.pitfall ? `<p class="pp-pit"><b>Điều dễ nhầm:</b> ${rich(m.pitfall)}</p>` : ''}</div>
-      <div class="pp-how"><h4>Cơ chế vận hành</h4>${m.how && HOW[m.how.type] ? HOW[m.how.type](m.how) : ''}</div></div>
-    <div class="pp-ef"><div class="pp-econ"><h4>Hàm ý kinh tế</h4><div class="pp-chans">${(m.implication?.channels || []).map(c => `<span class="pp-chan">${esc(c)}</span>`).join('')}</div><p>${rich(m.implication?.text || '')}</p></div>
-      <div class="pp-who"><h4>Ai chịu tác động</h4>${tiers.length ? tiers.map(([k, l]) => `<div class="pp-tier t-${k}"><span class="pp-tier-l">${l}</span><div>${tickers(af[k])}</div></div>`).join('') : ''}${af.note ? `<p class="pp-pnote">${rich(af.note)}</p>` : ''}</div></div>
-    ${m.data ? '<div class="pp-data"></div>' : ''}
-    <div class="pp-fw"><h4>Quy định hiện hành</h4><dl class="pp-kv">${(m.framework || []).map(([k, v]) => `<dt>${rich(k)}</dt><dd>${rich(v)}</dd>`).join('')}</dl>
-      ${m.milestones ? `<div class="pp-miles">${m.milestones.map(([dte, t]) => `<span><b>${esc(dte)}</b>${rich(t)}</span>`).join('')}</div>` : ''}
-      ${drafts.length ? `<div class="pp-drafts"><b>Đang được xem xét — chưa áp dụng</b>${drafts.map(p => `<p><button type="button" class="pp-more pp-open" data-id="${esc(p.policy_id)}">${esc(p.short_name || p.policy_name)}</button>: ${rich(p.radar_change || p.regulatory_change)}</p>`).join('')}</div>` : ''}</div>
-    ${m.gap ? `<div class="pp-gap data-gap"><b>Thiếu dữ liệu:</b> ${rich(m.gap)}</div>` : ''}
-    <details class="research-fold pp-detail"><summary>Nguồn pháp lý, số liệu và phương pháp</summary><div class="research-detail">${REF_BY_MODULE[m.id] ? `<div class="pp-ref">${REF[REF_BY_MODULE[m.id]]()}</div>` : ''}${pols.length ? `<p><b>Văn bản</b> (bấm để mở phân tích chi tiết):</p><ul class="pp-pols">${pols.map(policyRow).join('')}</ul>` : ''}${srcLine(m.sources, P.as_of)}</div></details>`;
+    <div class="pp-vis">${DATA_FIRST.has(m.id) ? data + vis : vis + data}${m.milestones ? timeline(m.milestones) : ''}</div>
+    <div class="pp-foot">${(m.implication?.channels || []).map(c => `<span class="pp-chan">${esc(c)}</span>`).join('')}${cos.length ? `<span class="pp-sep"></span>${cos.map(c => `<span class="pp-chip t-${c.k}" title="${esc(ETYPE[c.k])}${c.n ? ': ' + esc(plain(c.n)) : ''}">${esc(c.t)}</span>`).join('')}` : ''}${drafts.map(p => `<button type="button" class="pp-draftb pp-open" data-id="${esc(p.policy_id)}"${tip(p.radar_change || p.regulatory_change)}>Dự thảo: ${esc(p.short_name || p.policy_name)}</button>`).join('')}</div>
+    <details class="research-fold pp-detail"><summary>Giải thích & căn cứ</summary><div class="research-detail">
+      <p class="pp-x">${rich(m.quick)}</p>${m.pitfall ? `<p class="pp-pit"><b>Điều dễ nhầm:</b> ${rich(m.pitfall)}</p>` : ''}
+      ${m.implication?.text ? `<p class="pp-x"><b>Hàm ý kinh tế:</b> ${rich(m.implication.text)}</p>` : ''}
+      ${full ? `<div class="pp-full">${full}</div>` : ''}
+      ${cos.some(c => c.n) ? `<div class="pp-who">${['direct', 'indirect', 'potential'].filter(k => (af[k] || []).length).map(k => `<div class="pp-tier t-${k}"><span class="pp-tier-l">${ETYPE[k]}</span><div>${tickers(af[k])}</div></div>`).join('')}${af.note ? `<p class="pp-pnote">${rich(af.note)}</p>` : ''}</div>` : ''}
+      <dl class="pp-kv">${(m.framework || []).map(([k, v]) => `<dt>${rich(k)}</dt><dd>${rich(v)}</dd>`).join('')}</dl>
+      ${drafts.length ? `<div class="pp-drafts"><b>Đang được xem xét, chưa áp dụng</b>${drafts.map(p => `<p><button type="button" class="pp-more pp-open" data-id="${esc(p.policy_id)}">${esc(p.short_name || p.policy_name)}</button>: ${rich(p.radar_change || p.regulatory_change)}</p>`).join('')}</div>` : ''}
+      ${m.gap ? `<div class="pp-gap data-gap"><b>Thiếu dữ liệu:</b> ${rich(m.gap)}</div>` : ''}
+      ${REF_BY_MODULE[m.id] ? `<div class="pp-ref">${REF[REF_BY_MODULE[m.id]]()}</div>` : ''}${pols.length ? `<p><b>Văn bản</b> (bấm để mở phân tích chi tiết):</p><ul class="pp-pols">${pols.map(policyRow).join('')}</ul>` : ''}${srcLine(m.sources, P.as_of)}</div></details>`;
   if (m.data && DATA[m.data.type]) { try { DATA[m.data.type](host.querySelector('.pp-data'), m); } catch (e) { console.error('power-policy data', m.id, e); } }
 }
 
@@ -312,9 +346,9 @@ function renderModule(m) {
 function frameworkMap() {
   const host = document.getElementById('pp-map'); if (!host) return;
   const F = P.framework_map || [];
-  host.innerHTML = `<h3 class="pp-title">Cẩm nang cơ chế ngành điện</h3><p class="pp-q">Đi theo vòng đời kinh tế của một nhà máy: được xây gì → bán điện giá nào → được phát bao nhiêu → chịu chi phí, nghĩa vụ gì → ra lợi nhuận và dòng tiền. Bấm một khối để mở nhóm cơ chế.</p>
-    <div class="pp-fmap">${F.map((b, i) => `${i ? '<span class="pp-arrow" aria-hidden="true">→</span>' : ''}<${b.tab ? 'button type="button"' : 'div'} class="pp-fblock${b.tab ? '' : ' fin'}"${b.tab ? ` data-go="${esc(b.tab)}"` : ''}><small>${b.tab ? (TABS.find(t => t.id === b.tab)?.n || '') : '='}</small><b>${esc(b.title)}</b><span>${esc(b.q)}</span><em>${esc(b.drives)}</em></${b.tab ? 'button' : 'div'}>`).join('')}</div>
-    <div class="pp-fmap-foot"><button type="button" class="pp-more" data-go="lookup">Tra cứu theo văn bản, doanh nghiệp →</button><span>Cập nhật ${dmy(P.as_of)} · ${policies.length} văn bản, cơ chế đã xác minh</span></div>`;
+  host.innerHTML = `<h3 class="pp-title">Cẩm nang cơ chế ngành điện</h3>
+    <div class="pp-fmap">${F.map((b, i) => `${i ? '<span class="pp-arrow" aria-hidden="true">→</span>' : ''}<${b.tab ? 'button type="button"' : 'div'} class="pp-fblock${b.tab ? '' : ' fin'}"${b.tab ? ` data-go="${esc(b.tab)}"` : ''}${tip(b.drives)}><small>${b.tab ? (TABS.find(t => t.id === b.tab)?.n || '') : '='}</small><b>${esc(b.title)}</b><span>${esc(b.q)}</span></${b.tab ? 'button' : 'div'}>`).join('')}</div>
+    <div class="pp-fmap-foot"><span class="pp-key"><span><i class="pp-chip t-direct"></i>tác động trực tiếp</span><span><i class="pp-chip t-indirect"></i>gián tiếp</span><span><i class="pp-chip t-potential"></i>tiềm năng</span><span>rê chuột vào ô có ⓘ để xem chi tiết</span></span><button type="button" class="pp-more" data-go="lookup">Tra cứu văn bản →</button></div>`;
 }
 
 /* ---------- tab, mục lục, trạng thái URL ---------- */
@@ -343,7 +377,7 @@ function buildNav() {
   tabbar.addEventListener('keydown', e => { const d = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!d) return; const bs = [...tabbar.children], i = bs.indexOf(document.activeElement); if (i < 0) return; e.preventDefault(); const n = bs[(i + d + bs.length) % bs.length]; n.click(); n.focus(); });
   TABS.forEach(t => {
     const pane = panes.find(p => p.dataset.pane === t.id), toc = pane?.querySelector('.pp-toc'); if (!toc) return;
-    toc.innerHTML = `<p class="pp-toc-q">${rich(t.question)}</p><ol>${t.modules.map(id => `<li><a href="#pp-m-${id.replace('.', '-')}" data-mod="${id}"><span>${id}</span>${esc(HB[id]?.short || '')}</a></li>`).join('')}</ol>`;
+    toc.innerHTML = `<ol>${t.modules.map(id => `<li><a href="#pp-m-${id.replace('.', '-')}" data-mod="${id}"><span>${id}</span>${esc(HB[id]?.short || '')}</a></li>`).join('')}</ol>`;
     toc.addEventListener('click', e => { const a = e.target.closest('a[data-mod]'); if (!a) return; e.preventDefault(); document.getElementById('pp-m-' + a.dataset.mod.replace('.', '-'))?.scrollIntoView({block: 'start', behavior: 'smooth'}); setParam(t.id, a.dataset.mod); });
   });
   if ('IntersectionObserver' in window) {
