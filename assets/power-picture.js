@@ -637,7 +637,7 @@ function build() {
   // Card dời từ Chủ đề nóng (pipeline, thiếu hụt): để lại liên kết ở chỗ cũ.
   const moved = ['dien-24', 'dien-25'].map(id => { const c = C(id); if (!c) return null; const note = el('div', 'card pp-moved', `<div class="chart-title">${esc(c.querySelector('.chart-title')?.textContent || '')}</div><p class="research-caption">Biểu đồ đã chuyển sang <a href="?section=supply#mt2" data-pp-go="supply">Bức tranh ngành › Cung điện dài hạn</a>.</p>`); c.before(note); return c; });
 
-  if (head) head.innerHTML = `<div><h2 class="sec">Bức tranh ngành</h2><p>Cầu → thủy văn & nguồn cung → huy động → giá & biên → dòng tiền EVN → cung dài hạn. Mỗi sub-tab trả lời một câu hỏi; chi tiết số liệu và phương pháp thu gọn ở cuối panel. Trạng thái chung của ngành: <a href="?ov=pulse#mt1" data-ov-go="pulse">← Tổng quan · Bức tranh hiện tại</a>.</p></div>`;
+  if (head) head.innerHTML = `<div><h2 class="sec">Bức tranh ngành</h2><p>Cầu → thủy văn & nguồn cung → huy động → giá & biên → dòng tiền EVN → cung dài hạn. Mỗi sub-tab trả lời một câu hỏi; chi tiết số liệu và phương pháp thu gọn ở cuối panel. Toàn cảnh ngành: <a href="?ov=map#mt1" data-ov-go="map">← Tổng quan ngành</a>.</p></div>`;
   const nav = el('div', 'pp-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Nhóm câu hỏi phân tích');
   head ? head.after(nav) : section.prepend(nav);
   const panes = {}; let anchor = nav;
@@ -823,7 +823,7 @@ function build() {
   const s0 = fromUrl();
   if (s0 && (!location.hash || location.hash === '#')) { history.replaceState(null, '', location.pathname + location.search + '#mt2'); window.showMajorTab?.('mt2'); }
   // Link cũ ?section=pulse#mt2: Industry Pulse nay ở Tổng quan ngành.
-  if (s0 === 'pulse') { history.replaceState(null, '', location.pathname + '?ov=pulse#mt1'); window.showMajorTab?.('mt1'); }
+  if (s0 === 'pulse') { history.replaceState(null, '', location.pathname + '?ov=map#mt1'); window.showMajorTab?.('mt1'); }
   select(s0 && s0 !== 'pulse' ? s0 : 'demand', false);
   // Thanh sub-tab dính ngay dưới thanh tab chính (thanh tab chính chỉ dính ở desktop).
   const setTop = () => { const t = document.querySelector('.majortabs'); const cs = t && getComputedStyle(t); nav.style.top = cs && cs.position === 'sticky' && innerWidth > 700 ? (t.getBoundingClientRect().height + 8) + 'px' : '0px'; };

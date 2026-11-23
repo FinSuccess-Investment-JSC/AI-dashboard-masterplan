@@ -1363,18 +1363,14 @@
    "where": {
     "page": "Dien/index.html",
     "blocks": [
-     "dien-ov-summary",
-     "dien-ov-sig-demand",
-     "dien-ov-sig-resource",
-     "dien-ov-sig-price",
      "dien-ov-genmix",
-     "dien-ov-opmatrix",
      "dien-ov-thesis",
      "dien-ov-timeline",
      "dien-ov-map",
      "dien-ov-tech",
      "dien-ov-unit",
-     "dien-ov-outlook"
+     "dien-ov-outlook",
+     "dien-ov-companies"
     ]
    },
    "how": "Tính trong assets/power-overview.js khi mở trang từ window.POWER_CORE (cùng phép tính tab Bức tranh ngành), HYDRO_RESERVOIRS, fmpRows, POWER_POLICY (lịch pháp lý, Qc, dự án chuyển tiếp); ngưỡng quy tắc và luận điểm ở data/power-overview.json. Nhận định và trạng thái luận điểm đổi theo số mới, không lưu cố định; chi phí nhiên liệu/kWh theo tham số QĐ 1692/1882 (POWER_FUEL_PARAMS) và tỷ giá tháng; waterfall từ COMPANY_QUARTERLY; kịch bản chỉ là giả định minh họa ghi rõ trên trang; timeline COD từ POWER_POLICY.pipeline",
@@ -1399,11 +1395,7 @@
     "blocks": [
      "dien-ov-bm",
      "dien-ov-mech",
-     "dien-ov-peer",
-     "dien-ov-driver",
-     "dien-ov-exposure",
-     "dien-ov-sens",
-     "dien-ov-heat"
+     "dien-ov-peer"
     ]
    },
    "how": "Sửa data/power-overview.json rồi chạy python3 scripts/build_power_overview.py (kiểm mã thuộc 18 mã theo dõi, nhóm, ngưỡng, mốc lịch). Exposure doanh nghiệp theo bảng 18 doanh nghiệp (dien-03) có nguồn; link dashboard cổ phiếu chỉ cho mã đã có trang",
