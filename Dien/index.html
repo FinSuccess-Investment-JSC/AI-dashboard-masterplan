@@ -48,16 +48,16 @@
 <script src="../assets/power-picture.js?v=987299c96b30" defer></script>
 <script src="../data/power-overview.js?v=b89f1a94fa3c" defer></script>
 <script src="../assets/power-overview-visual.js?v=32afe76312e8" defer></script>
-<script src="../assets/power-overview.js?v=a684ccd1898a" defer></script>
+<script src="../assets/power-overview.js?v=3d6608938fd0" defer></script>
 <script src="../assets/power-labels.js?v=aea436807b99" defer></script>
-<script src="../assets/site-navigation.js?v=f56245fce0a9" data-release="20261123-power-policy-gon"></script>
+<script src="../assets/site-navigation.js?v=f56245fce0a9" data-release="20261123-power-policy-gon-2"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="../assets/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="../assets/sector-base.css?v=ba33835e530c">
 <link rel="stylesheet" href="../assets/fin-success-theme.css?v=0761641d486e">
 <link rel="stylesheet" href="../assets/brand.css?v=048c9b941573">
 <link rel="stylesheet" href="../assets/power-policy.css?v=91ed2ecdf5e7">
-<link rel="stylesheet" href="../assets/power-overview.css?v=0ee242f00092">
+<link rel="stylesheet" href="../assets/power-overview.css?v=1e08491cf444">
 </head>
 <body data-sector="power">
 <div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="power"><a href="../">Trang tổng</a><a href="../Dau-khi/">Dầu khí</a><a href="../Sugar/">Đường</a><a href="../Bank/">Ngân hàng</a><a href="../Dien/">Điện</a></nav><p class="site-release-note" data-release-label></p></div></div>
@@ -599,24 +599,6 @@
     </div>
   </div>
 
-  <div class="card" style="margin-top:14px" data-block-id="dien-29" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
-    <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table>
-      <thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead>
-      <tbody>
-        <tr><td><b>Sản lượng, Pmax, cơ cấu nguồn</b></td><td><a href="https://www.evn.com.vn/vi-VN/news-l/Thong-tin-tom-tat-van-hanh-HTD-Quoc-gia-60-2015" target="_blank" rel="noopener">EVN · bản tin vận hành ngày</a></td><td>Ngày</td><td>Tự động, 2 lần/ngày</td></tr>
-        <tr><td><b>ENSO (ONI, Niño 3.4)</b></td><td><a href="https://www.cpc.ncep.noaa.gov/data/indices/" target="_blank" rel="noopener">NOAA CPC</a></td><td>Tháng / tuần</td><td>Tự động</td></tr>
-        <tr><td><b>Giá than, khí, LNG tháng</b></td><td><a href="https://www.worldbank.org/en/research/commodity-markets" target="_blank" rel="noopener">World Bank Pink Sheet</a></td><td>Tháng</td><td>Tự động</td></tr>
-        <tr><td><b>Futures than Newcastle, LNG JKM</b></td><td><a href="https://www.ice.com/products/1137/globalCOAL-Newcastle-Coal-Futures" target="_blank" rel="noopener">ICE · globalCOAL Newcastle (hub Newcastle)</a></td><td>Phiên</td><td>Tự động; nguồn không chính thức, không phải giá settlement. Kiểm 05/11/2026: chuỗi lấy từ productId 1459 / hubId 1296 = Newcastle (trang ICE số 243 nay là API2 Rotterdam, đã đổi link)</td></tr>
-        <tr><td><b>P/E, P/B, vốn hóa</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Tự động</td></tr>
-        <tr><td><b>Giá điện, tài chính EVN, chính sách, dự án</b></td><td>Văn bản Chính phủ, Bộ Công Thương, EVN, báo ngành (link tại từng card)</td><td>Theo sự kiện</td><td>Routine AI đọc tài liệu hằng tuần</td></tr>
-        <tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr>
-        <tr><td><b>Hồ chứa thủy điện (mực nước, Q về, Q qua máy, Q tràn)</b></td><td><a href="https://www.evn.com.vn/vi-VN/thong-tin-ho-thuy-dien/Muc-nuoc-cac-ho-thuy-dien-60-123" target="_blank" rel="noopener">EVN hồ chứa</a></td><td>Ngày</td><td>Tự động từ máy tại Việt Nam (EVN chặn IP nước ngoài), job 06:40 / 18:40, bù ngày thiếu; dữ liệu tới <span id="src-hydro-last">03/11/2026</span></td></tr>
-        <tr class="gap-row"><td><b>Giá thị trường điện theo giờ (SMP)</b></td><td>NSMO</td><td>Giờ</td><td>NSMO không công bố công khai; thay bằng FMP bình quân tháng từ bản tin IR PGV (tab Giá – Chi phí – Margin)</td></tr>
-      </tbody>
-    </table></div>
-    <div class="source-note">Ngày dữ liệu và ngày kiểm tra ghi riêng tại từng biểu đồ. Khoảng trống dữ liệu được giữ là khoảng trống, không nội suy.</div>
-  </div>
   <div class="footer">Vietnam Power Market Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 06/10/2026 · rà soát 09/11/2026.</div>
 </div>
 
