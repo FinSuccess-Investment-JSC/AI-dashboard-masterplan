@@ -216,7 +216,7 @@ function unitPane(p) {
   const peer = card('dien-ov-peer', 'ov-peer', `<div class="tablewrap"><table><thead><tr><th></th>${SOURCES.map(k => `<th style="--c:${GROUP[k].color}">${esc(GROUP[k].label)}</th>`).join('')}</tr></thead><tbody>${pm.dims.map(([d, label]) => `<tr><th scope="row">${esc(label)}</th>${SOURCES.map(k => `<td>${esc(pm.rows[k][d])}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="ov-cap">${esc(pm.note)}</p>`);
   const ue = card('dien-ov-unit', 'ov-unit', '');
   renders.unit.push(() => { if (VIS) VIS.unit(ue, ctx); else ue.append(gap('không tải được module hình ảnh.')); });
-  p.append(sec('unit-econ', '2.1', 'Một kWh tốn bao nhiêu nhiên liệu so với giá bán?', ue, {sub: 'Chi phí nhiên liệu biến đổi ước tính mỗi kWh theo công nghệ, so với giá thị trường FMP và trần khung giá phát điện.'}),
+  p.append(sec('unit-econ', '2.1', 'Giá thị trường đang ở đâu so với trần giá của từng loại hình?', ue, {sub: 'FMP bình quân tháng gần nhất so với trần khung giá phát điện năm gần nhất của từng loại hình.'}),
     sec('unit-bm', '2.2', 'Nhà máy điện kiếm tiền như thế nào?', [bmg, bmFold], {sub: 'Công thức nguyên lý; ↗ mở trang phân tích cổ phiếu.'}),
     sec('unit-peer', '2.3', 'Bốn nhóm nguồn khác nhau ở đâu?', peer),
     sec('unit-mech', '2.4', 'PPA, Qc, SMP, CAN, FMP, DPPA nghĩa là gì?', mech, {sub: 'Định nghĩa → ví dụ → căn cứ (mục chi tiết).'}));
@@ -321,7 +321,7 @@ function forward(p) {
 const SECTIONS = [
   ['map', '00', 'Bản đồ ngành', 'Toàn cảnh ngành', 'Điện, tiền và quyết định huy động đi qua những ai?', mapPane],
   ['tech', '01', 'Chuỗi giá trị theo công nghệ', 'Than · khí · LNG · thủy điện · gió · mặt trời', 'Mỗi loại nhà máy tạo doanh thu, tốn chi phí ở khâu nào?', techPane],
-  ['unit', '02', 'Kinh tế đơn vị', 'Chi phí nhiên liệu mỗi kWh', 'Một kWh tốn bao nhiêu và nhà máy kiếm tiền thế nào?', unitPane],
+  ['unit', '02', 'Kinh tế đơn vị', 'Giá thị trường so với trần giá', 'Giá bán mỗi kWh nằm ở đâu và nhà máy kiếm tiền thế nào?', unitPane],
   ['transmission', '03', 'Doanh nghiệp niêm yết', 'Định giá · lợi nhuận · So sánh tài chính', 'Doanh nghiệp điện đang được định giá và có lợi nhuận ra sao?', transmission],
   ['forward', '04', 'Triển vọng', 'Nguồn mới, sự kiện sắp tới', 'Điều gì có thể làm thay đổi luận điểm?', forward]
 ];

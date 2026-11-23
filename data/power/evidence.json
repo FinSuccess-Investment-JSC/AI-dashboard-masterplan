@@ -1928,5 +1928,75 @@
     "quote": "Cụ thể, khung giá phát điện năm 2026 được xác định từ 0 đến 3.453,72 đồng/kWh, chưa bao gồm thuế giá trị gia tăng.",
     "status": "match",
     "note": "Petrotimes; QĐ 2972/QĐ-BCT ngày 9/11/2026, hiệu lực từ ngày ký. Giá LNG 13,4099 USD/triệu BTU và tỷ giá 26.378 đ/USD cùng bài."
+  },
+  {
+    "block": "dien-17",
+    "claim": "Trần khung giá điện LNG 2026 (QĐ 2972/QĐ-BCT)",
+    "value": "3.453,72 đ/kWh",
+    "url": "https://baochinhphu.vn/phe-duyet-khung-gia-phat-dien-lng-nam-2026-toi-da-345372-dong-kwh-102261112095155149.htm",
+    "opened_at": "2026-11-23",
+    "quote": "được xác định từ 0 đến 3.453,72 đồng/kWh (chưa bao gồm thuế giá trị gia tăng).",
+    "status": "match",
+    "note": "Báo Chính phủ 12/11/2026"
+  },
+  {
+    "block": "dien-17",
+    "claim": "QĐ 2972/QĐ-BCT ngày 09/11/2026, hiệu lực từ ngày ký",
+    "value": "09/11/2026",
+    "url": "https://baochinhphu.vn/phe-duyet-khung-gia-phat-dien-lng-nam-2026-toi-da-345372-dong-kwh-102261112095155149.htm",
+    "opened_at": "2026-11-23",
+    "quote": "Quyết định có hiệu lực thi hành kể từ ngày ký, 9/11/2026.",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "dien-17",
+    "claim": "Số hiệu và ngày ký QĐ khung giá LNG 2026",
+    "value": "2972/QĐ-BCT, 9/11/2026",
+    "url": "https://tapchicongthuong.vn/phe-duyet-khung-gia-phat-dien-lng-nam-2026--toi-da-3-453-72-dong-kwh-566644.htm",
+    "opened_at": "2026-11-23",
+    "quote": "Thứ trưởng Bộ Công Thương Trương Thanh Hoài vừa ký Quyết định số 2972/QĐ-BCT ngày 9/11/2026",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "dien-17",
+    "claim": "Giá LNG nhập khẩu tham chiếu khung 2026",
+    "value": "13,4099 USD/triệu BTU",
+    "url": "https://congthuong.vn/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-nha-may-nhiet-dien-khi-lng-nam-2026-480828.html",
+    "opened_at": "2026-11-23",
+    "quote": "giá LNG nhập khẩu bao gồm cả thuế nhập khẩu ở mức 13,4099 USD/tr.BTU",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "dien-17",
+    "claim": "Cước vận chuyển LNG tham chiếu khung 2026",
+    "value": "1,831 USD/triệu BTU",
+    "url": "https://baochinhphu.vn/phe-duyet-khung-gia-phat-dien-lng-nam-2026-toi-da-345372-dong-kwh-102261112095155149.htm",
+    "opened_at": "2026-11-23",
+    "quote": "Giá vận chuyển LNG là 1,831 USD/triệu BTU, bao gồm các chi phí vận chuyển LNG về đến kho cảng tái hóa,",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "dien-17",
+    "claim": "Tỷ giá tham chiếu khung LNG 2026",
+    "value": "26.378 đ/USD",
+    "url": "https://tapchicongthuong.vn/phe-duyet-khung-gia-phat-dien-lng-nam-2026--toi-da-3-453-72-dong-kwh-566644.htm",
+    "opened_at": "2026-11-23",
+    "quote": "Tỷ giá sử dụng để tính toán là 26.378 đồng/USD.",
+    "status": "match",
+    "note": ""
+  },
+  {
+    "block": "dien-17",
+    "claim": "Suất hao nhiệt tinh tham chiếu khung LNG 2026",
+    "value": "6.253,43 BTU/kWh",
+    "url": "https://lsvn.vn/phe-duyet-khung-gia-phat-dien-lng-nam-2026-toi-da-3-453-72-dong-kwh-a182580.html",
+    "opened_at": "2026-11-23",
+    "quote": "Cụ thể, công suất tính toán là 1.528.292 kW; suất hao nhiệt tinh ở mức tải 85% là 6.253,43 BTU/kWh.",
+    "status": "match",
+    "note": ""
   }
 ]
