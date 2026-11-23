@@ -187,6 +187,9 @@ a.ov-tk{color:#2938A8;border-color:#b9c3ee}a.ov-tk:hover{background:#2938A8;colo
 .vu-k em{font-style:normal;text-align:right;font-weight:700;font-variant-numeric:tabular-nums;display:flex;flex-direction:column}.vu-k em small{font-weight:500;color:var(--muted,#7a8399);font-size:10.5px}
 .vu-leg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11.5px;color:var(--ink2,#3b4256);margin:4px 0}.vu-leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
 .vu-fmp-k{background:#d23c3c}.vu-ceil-k{background:#1D2678}
+.vu-fam{margin:6px 0 -2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted,#7a8399)}.vu-k span small{color:var(--muted,#7a8399);font-size:11px}
+.vu-ceilrows .vu-k{grid-template-columns:200px minmax(0,1fr) 180px}.vu-ceilrows .vu-k em small{white-space:nowrap}
+@media (max-width:640px){.vu-ceilrows .vu-k{grid-template-columns:110px minmax(0,1fr) 92px}.vu-ceilrows .vu-k em small{white-space:normal}}
 .vu-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0}.vu-h{display:block;font-size:13px;margin-bottom:6px}
 .vw{display:grid;gap:4px}.vw-r{display:grid;grid-template-columns:150px 1fr 82px;gap:8px;align-items:center;font-size:12.5px}
 .vw-t{position:relative;height:20px}.vw-t i{position:absolute;top:2px;bottom:2px;border-radius:3px;background:#2a9fa3}.vw-r.neg .vw-t i{background:#b8443a}.vw-r.tot .vw-t i{background:#1D2678}

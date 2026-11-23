@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-12",
+ "as_of": "2026-11-23",
  "about": "Dữ liệu tab Policy / Tax / Trade ngành Điện. Mỗi số có nguồn đã mở; số trích từ tài liệu có dòng tương ứng trong data/power/evidence.json. Sửa file này rồi chạy python scripts/build_power_policy.py.",
  "groups": [
   {
@@ -227,6 +227,66 @@
     {
      "label": "Điện tử Ứng dụng · mức tăng",
      "url": "https://dientuungdung.vn/bo-cong-thuong-tang-gia-tran-dien-mat-troi-va-dien-gio-nam-2026-19558.html",
+     "kind": "báo ngành"
+    }
+   ]
+  },
+  {
+   "policy_id": "lng-ceiling-2026",
+   "short_name": "Khung giá điện LNG 2026",
+   "policy_name": "Khung giá phát điện nhà máy tua bin khí chu trình hỗn hợp sử dụng LNG năm 2026",
+   "issuing_authority": "Bộ Công Thương",
+   "document_number": "2972/QĐ-BCT",
+   "issue_date": "2026-11-09",
+   "effective_date": "2026-11-09",
+   "expiration_date": "",
+   "policy_status": "Effective",
+   "policy_category": "price",
+   "applicable_technologies": [
+    "lng"
+   ],
+   "applicable_assets": "Nhà máy điện LNG đàm phán PPA mới",
+   "previous_regulation": "QĐ 1313/QĐ-BCT (13/05/2025): trần 3.327,42 đ/kWh.",
+   "regulatory_change": "Trần 2026: 3.453,72 đ/kWh, chưa VAT (+126,30 đ/kWh, +3,8%); giá LNG nhập (gồm thuế nhập khẩu) 13,4099 USD/triệu BTU, cước vận chuyển 1,831 USD/triệu BTU, tỷ giá 26.378 đ/USD, suất hao nhiệt tinh 6.253,43 BTU/kWh ở tải 85%.",
+   "radar_change": "Trần LNG 2026 là 3.453,72 đ/kWh, tăng 3,8% so với 2025.",
+   "impact_mechanism": "Trần cao hơn mở dư địa giá PPA cho các dự án LNG đang đàm phán (Long An I, Bạc Liêu, LNG Quảng Ninh, Quỳnh Lập…). Nhà máy đã ký PPA (Nhơn Trạch 3&4) không tự động đổi giá.",
+   "channel": "Trần khung giá → dư địa giá PPA dự án LNG mới",
+   "financial_drivers": [
+    "revenue"
+   ],
+   "impact_horizon": "medium",
+   "direction": "Positive",
+   "impact_level": "Low",
+   "impact_basis": "Low: chỉ áp cho PPA mới; mức tăng 3,8% nhỏ so với rủi ro giá LNG và khối lượng cam kết.",
+   "exposed_companies": [
+    {
+     "ticker": "POW",
+     "type": "potential",
+     "note": "LNG Quỳnh Lập, LNG Quảng Ninh nếu đàm phán PPA theo khung 2026"
+    }
+   ],
+   "implementation": "",
+   "monitoring_indicators": [
+    "Giá PPA ký của các dự án LNG mới"
+   ],
+   "primary_source_url": "https://baochinhphu.vn/phe-duyet-khung-gia-phat-dien-lng-nam-2026-toi-da-345372-dong-kwh-102261112095155149.htm",
+   "last_verified_at": "2026-11-23",
+   "data_confidence": "High",
+   "impact_from": "khi dự án mới ký PPA",
+   "sources": [
+    {
+     "label": "Báo Chính phủ 12/11/2026",
+     "url": "https://baochinhphu.vn/phe-duyet-khung-gia-phat-dien-lng-nam-2026-toi-da-345372-dong-kwh-102261112095155149.htm",
+     "kind": "cơ quan nhà nước"
+    },
+    {
+     "label": "Tạp chí Công Thương 16/11/2026",
+     "url": "https://tapchicongthuong.vn/phe-duyet-khung-gia-phat-dien-lng-nam-2026--toi-da-3-453-72-dong-kwh-566644.htm",
+     "kind": "báo ngành"
+    },
+    {
+     "label": "Báo Công Thương 11/11/2026 · thông số",
+     "url": "https://congthuong.vn/bo-cong-thuong-phe-duyet-khung-gia-phat-dien-nha-may-nhiet-dien-khi-lng-nam-2026-480828.html",
      "kind": "báo ngành"
     }
    ]
@@ -2209,6 +2269,17 @@
    "nature": "Trần khung giá phát điện"
   },
   {
+   "family": "Nhiệt điện",
+   "label": "LNG (CCGT)",
+   "region": "Toàn quốc",
+   "year": 2026,
+   "ceiling": 3453.72,
+   "decision": "QĐ 2972/QĐ-BCT",
+   "decision_date": "2026-11-09",
+   "url": "https://baochinhphu.vn/phe-duyet-khung-gia-phat-dien-lng-nam-2026-toi-da-345372-dong-kwh-102261112095155149.htm",
+   "nature": "Trần khung giá phát điện"
+  },
+  {
    "family": "Thủy điện & tích năng",
    "label": "Thủy điện",
    "region": "Toàn quốc",
@@ -2430,7 +2501,6 @@
   }
  ],
  "pending_frameworks": [
-  "LNG 2026: chưa thấy quyết định riêng; QĐ 1882/QĐ-BCT (2026) là khí thiên nhiên, không thay khung LNG 2025.",
   "Gió ngoài khơi 2026: QĐ 2945/QĐ-BCT chỉ gồm gió trên đất liền và gần bờ.",
   "Pin lưu trữ độc lập, sinh khối, điện rác, thủy điện tích năng 2026: chưa thấy quyết định trên danh mục văn bản Bộ Công Thương (kiểm 11/11/2026)."
  ],
@@ -4272,7 +4342,7 @@
   "2.2": {
    "block": "dien-17",
    "title": "Khung giá phát điện là gì, và khung mới tác động tới ai?",
-   "conclusion": "Khung 2026 tăng ở mọi loại hình có số so sánh (gió trên đất liền +4,8% đến +11,7%, mặt trời mặt đất +9,1% đến +16,8%, khí +11,1%), nhưng chỉ mở dư địa giá cho dự án chưa ký PPA.",
+   "conclusion": "Khung 2026 tăng ở mọi loại hình có số so sánh (gió trên đất liền +4,8% đến +11,7%, mặt trời mặt đất +9,1% đến +16,8%, khí +11,1%, LNG +3,8%), nhưng chỉ mở dư địa giá cho dự án chưa ký PPA.",
    "quick": "Mỗi năm Bộ Công Thương ban hành khung giá cho từng loại hình, tính từ một \"nhà máy chuẩn\" (suất đầu tư, hiệu suất, giá nhiên liệu, tỷ giá). Khung đi từ 0 đến mức trần; EPTC chỉ được ký giá PPA trong khung. Khung khác nhau giữa công nghệ vì chi phí đầu tư và nhiên liệu khác nhau, và đổi theo năm khi giá thiết bị, nhiên liệu đổi.",
    "pitfall": "Trần khung giá không phải giá PPA đã ký, và không áp ngược cho nhà máy đã có PPA.",
    "how": {
@@ -4304,11 +4374,11 @@
    "framework": [
     [
      "Khung 2026 đã có",
-     "Gió trên đất liền, gần bờ (QĐ 2945/QĐ-BCT, 05/11/2026); mặt trời có/không pin (QĐ 2946/QĐ-BCT, 05/11/2026); than (QĐ 1692, 07/07/2026); khí thiên nhiên (QĐ 1882, 23/07/2026); thủy điện (QĐ 1127)"
+     "Gió trên đất liền, gần bờ (QĐ 2945/QĐ-BCT, 05/11/2026); mặt trời có/không pin (QĐ 2946/QĐ-BCT, 05/11/2026); than (QĐ 1692, 07/07/2026); khí thiên nhiên (QĐ 1882, 23/07/2026); thủy điện (QĐ 1127); LNG (QĐ 2972/QĐ-BCT, 09/11/2026)"
     ],
     [
      "Chưa có khung 2026",
-     "LNG, gió ngoài khơi, pin lưu trữ độc lập, sinh khối, điện rác, thủy điện tích năng (kiểm 12/11/2026)"
+     "Gió ngoài khơi, pin lưu trữ độc lập, sinh khối, điện rác, thủy điện tích năng (kiểm 23/11/2026)"
     ],
     [
      "Vùng",
@@ -4345,6 +4415,7 @@
     "wind-ceiling-2026",
     "solar-ceiling-2026",
     "gas-ceiling-2026",
+    "lng-ceiling-2026",
     "coal-ceiling-2026",
     "hydro-ceiling-2026"
    ],
@@ -4364,6 +4435,10 @@
     {
      "label": "Bộ Công Thương · than 2026",
      "url": "https://moit.gov.vn/van-ban-phap-luat/quyet-dinh-phe-duyet-khung-gia-phat-dien-nam-2026-doi-voi-loai-hinh-nha-may-nhiet-dien-than-do-doanh-nghiep-nha-nuoc-nam.html"
+    },
+    {
+     "label": "Báo Chính phủ · LNG 2026",
+     "url": "https://baochinhphu.vn/phe-duyet-khung-gia-phat-dien-lng-nam-2026-toi-da-345372-dong-kwh-102261112095155149.htm"
     }
    ],
    "id": "2.2",
