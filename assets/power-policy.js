@@ -305,6 +305,8 @@ function renderModule(m) {
       ${drafts.length ? `<div class="pp-drafts"><b>Đang được xem xét — chưa áp dụng</b>${drafts.map(p => `<p><button type="button" class="pp-more pp-open" data-id="${esc(p.policy_id)}">${esc(p.short_name || p.policy_name)}</button>: ${rich(p.radar_change || p.regulatory_change)}</p>`).join('')}</div>` : ''}</div>
     ${m.gap ? `<div class="pp-gap data-gap"><b>Thiếu dữ liệu:</b> ${rich(m.gap)}</div>` : ''}
     <details class="research-fold pp-detail"><summary>Nguồn pháp lý, số liệu và phương pháp</summary><div class="research-detail">${REF_BY_MODULE[m.id] ? `<div class="pp-ref">${REF[REF_BY_MODULE[m.id]]()}</div>` : ''}${pols.length ? `<p><b>Văn bản</b> (bấm để mở phân tích chi tiết):</p><ul class="pp-pols">${pols.map(policyRow).join('')}</ul>` : ''}${srcLine(m.sources, P.as_of)}</div></details>`;
+  // Chart không nằm trong mục thu gọn: khối hình (vd. tiến độ dự án) đưa ra trước phần nguồn/phương pháp; bảng vẫn ở trong.
+  host.querySelectorAll('.pp-detail .viz-block').forEach(v => { if (v.querySelector('svg, canvas')) host.querySelector('.pp-detail').before(v); });
   if (m.data && DATA[m.data.type]) { try { DATA[m.data.type](host.querySelector('.pp-data'), m); } catch (e) { console.error('power-policy data', m.id, e); } }
 }
 

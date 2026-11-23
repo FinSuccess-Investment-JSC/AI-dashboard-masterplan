@@ -170,8 +170,9 @@ function mapPane(p) {
   const host = card('dien-ov-map', 'ov-imap', '');
   if (VIS) VIS.map(host, ctx); else host.append(gap('không tải được module hình ảnh.'));
   const vc = document.querySelector('#pane-mt1 .value-chain-card');
-  const vcFold = vc ? el('details', 'research-fold ov-vcfold', '<summary>Sơ đồ doanh nghiệp niêm yết theo từng khâu (bấm khâu để lọc mã)</summary>') : null;
-  if (vcFold) { vcFold.append(vc); vcFold.addEventListener('toggle', () => vcFold.open && window.dispatchEvent(new Event('resize'))); }
+  // Sơ đồ doanh nghiệp theo khâu hiện thẳng (không thu gọn).
+  const vcFold = vc ? el('div', 'ov-vcwrap') : null;
+  if (vcFold) vcFold.append(vc);
   // Công suất đặt khác sản lượng thực phát
   const MIX = [['coal', 'Than', '#3d4653'], ['hydro', 'Thủy điện', '#2938A8'], ['re', 'Gió & mặt trời', '#2a9fa3'], ['gas', 'Khí, dầu & khác', '#c98a00'], ['imports', 'Nhập khẩu', '#9AA3BD']];
   const gm = card('dien-ov-genmix', 'ov-genmix', `<div class="ov-ctl" role="group" aria-label="Kỳ so sánh">${Object.entries(PERIODS).map(([k, x]) => `<button type="button" data-p="${k}" aria-pressed="${k === 'ytd'}">${esc(x.label)}</button>`).join('')}</div><div class="ov-bars"></div><div class="ov-legend">${MIX.map(m => `<span><i style="background:${m[2]}"></i>${m[1]}</span>`).join('')}</div><p class="ov-note"></p>`);
