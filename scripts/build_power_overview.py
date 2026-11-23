@@ -71,6 +71,20 @@ def validate(data, policy):
     for f in data.get('flows', []):
         if not f.get('nodes') or any(not (n.get('id') and n.get('t') and n.get('d')) for n in f['nodes']):
             errors.append(f'luồng {f.get("id")}: node thiếu id/t/d')
+    # Ma trận doanh nghiệp × chuỗi giá trị (mục 0.2): mã ngoài 18 mã phải ghi sàn và nguồn.
+    cm = data.get('chain_map')
+    if cm:
+        stages = {x['id'] for x in cm.get('stages', [])}
+        techs = {t['id'] for t in data.get('technologies', [])}
+        ents = [(r.get('tech'), e) for r in cm.get('rows', []) for k, v in r.get('cells', {}).items() for e in v] + [('grid', e) for e in cm.get('grid', {}).get('items', [])]
+        for r in cm.get('rows', []):
+            if r.get('tech') not in techs or set(r.get('cells', {})) - stages:
+                errors.append(f'chain_map: hàng {r.get("tech")} sai loại hình hoặc khâu')
+        for tech, e in ents:
+            if not (e.get('t') and e.get('n')) or not isinstance(e.get('listed'), bool):
+                errors.append(f'chain_map {tech}: mục thiếu t/n/listed {e}')
+            elif e['listed'] and e['t'] not in TICKERS and (e.get('ex') not in ('HOSE', 'HNX', 'UPCoM') or not str(e.get('src', '')).startswith('https://')):
+                errors.append(f'chain_map {tech}: {e["t"]} ngoài 18 mã cần ex (HOSE/HNX/UPCoM) và src https')
     if {b['group'] for b in data.get('business_models', [])} != SOURCES:
         errors.append('business_models phải có đủ hydro, coal, gas, re')
     pgroups = {g['id'] for g in policy.get('groups', [])}
