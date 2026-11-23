@@ -315,7 +315,7 @@ const REF = {
   carbon: () => table(['Nội dung', 'Quy định', 'Kênh tới doanh nghiệp'], ((P.carbon || {}).facts || []).map(f => ({cells: [{html: `<b>${rich(f.item)}</b>`}, {html: rich(f.value)}, f.channel || '—']})), {min: 620}),
   grid: () => table(['Chỉ tiêu / văn bản', 'Nội dung', 'Kênh tới doanh nghiệp'], ((P.grid || {}).facts || []).map(f => ({cells: [{html: `<b>${rich(f.item)}</b>`}, {html: rich(f.value)}, {html: rich(f.channel || '—')}]})), {min: 620})
 };
-const REF_BY_MODULE = {'1.1': 'plan', '1.3': 'grid', '1.4': 'pipeline', '2.1': 'price_types', '2.2': 'ceilings', '2.4': 'dppa', '3.2': 'market', '3.3': 'market', '4.1': 'taxes', '4.2': 'trade', '4.3': 'carbon'};
+const REF_BY_MODULE = {'1.1': 'plan', '2.1': 'price_types', '2.2': 'ceilings', '2.4': 'dppa', '3.2': 'market', '3.3': 'market', '4.1': 'taxes', '4.2': 'trade', '4.3': 'carbon'};
 // Thứ tự trong khung hình: số liệu (chart) trước sơ đồ ở các mục mà chart là câu trả lời chính.
 const DATA_FIRST = new Set(['1.1', '2.2', '3.2', '4.3']);
 
