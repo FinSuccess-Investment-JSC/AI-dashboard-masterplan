@@ -241,9 +241,9 @@
    "lastNote": "Runner VN đã chụp hồ EVN 00h đến 11/11/2026 (data/raw/evn-reservoirs/2026-11-11.json). Không sửa trang."
   },
   "power.market-fmp": {
-   "lastAttempt": "2026-10-28T18:13:36+07:00",
-   "lastSuccess": "2026-10-28T18:13:36+07:00",
-   "lastNote": "FMP T9/2026 1.555 đ/kWh (PGV bản tin 16/10); 9T bình quân 1.450"
+   "lastAttempt": "2026-11-24T13:02:37+07:00",
+   "lastSuccess": "2026-11-24T13:02:37+07:00",
+   "lastNote": "PGV IR T10/2026 (số liệu 30/10/2026, đăng 20/11): FMP T10/2026 = 1.787 đ/kWh; T1–T9/2026 khớp; FMP bình quân 10T/2026 1.483 (+55,2% so 10T/2025). CAN chưa đổi. Biểu đồ spread nhiên liệu chưa cập nhật T10 (cần giá than/LNG và tỷ giá T10)"
   },
   "realestate.fdi-projects": {
    "lastAttempt": "2026-11-13T13:02:36+07:00",
@@ -7262,23 +7262,6 @@
    "signals": []
   },
   {
-   "id": "power.market-fmp",
-   "tier": "C",
-   "title": "FMP PGV theo tháng và CAN bình quân năm",
-   "since": "2026-11-15T14:06:27+07:00",
-   "reasons": [
-    "lịch 15/11 07:00",
-    "lịch 16/11 07:00",
-    "lịch 17/11 07:00",
-    "lịch 18/11 07:00",
-    "lịch 19/11 07:00",
-    "lịch 20/11 07:00",
-    "lịch 21/11 07:00",
-    "lịch 22/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "realestate.kcn-broker",
    "tier": "C",
    "title": "Chỉ số KCN theo báo cáo ngành CTCK: ký mới, giá thuê, đất cao su chuyển KCN, FDI theo quốc gia",
@@ -7645,5 +7628,5 @@
    ]
   }
  ],
- "updatedAt": "2026-11-24T09:11:08+07:00"
+ "updatedAt": "2026-11-24T13:02:37+07:00"
 }

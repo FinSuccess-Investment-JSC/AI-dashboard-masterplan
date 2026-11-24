@@ -1998,5 +1998,15 @@
     "quote": "Cụ thể, công suất tính toán là 1.528.292 kW; suất hao nhiệt tinh ở mức tải 85% là 6.253,43 BTU/kWh.",
     "status": "match",
     "note": ""
+  },
+  {
+    "block": "dien-15",
+    "claim": "FMP bình quân tháng 10/2026 (PGV IR)",
+    "value": "1.787 đ/kWh",
+    "url": "https://www.genco3.com/data/files/20261120/639307806800313479_0.pdf",
+    "opened_at": "2026-11-24",
+    "quote": "GIÁ TOÀN PHẦN THỊ TRƯỜNG ĐIỆN BÌNH QUÂN (FMP) ... 2026 1.142 1.191 1.538 1.754 1.650 1.734 1.280 1.203 1.555 1.787",
+    "status": "match",
+    "note": "Bản tin Nhà đầu tư tháng 10/2026 (thời điểm 30/10/2026, đăng 20/11/2026), trang 3; T1–T9/2026 và 2025 khớp số cũ"
   }
 ]
