@@ -290,6 +290,6 @@ function keyPlayers() {
     `<div class="source-note">Định giá phiên ${d ? dm(d) : '—'}; vốn hóa nhóm là tổng các mã, chỉ số khác là trung vị.</div>`;
 }
 
-function run() { topRow(); hydroMap(); heatmap(); table(); businessCards(); spread(); keyPlayers(); setTimeout(companyCards, 200); }
-if (document.readyState === 'complete') setTimeout(run, 300); else addEventListener('load', () => setTimeout(run, 300));
+function run() { topRow(); hydroMap(); heatmap(); table(); businessCards(); spread(); keyPlayers(); DienBoot.add(500, companyCards); }
+DienBoot.add(300, run); // dien-boot.js
 })();

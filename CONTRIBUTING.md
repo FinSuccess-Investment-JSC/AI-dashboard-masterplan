@@ -31,6 +31,8 @@
 
 **Gói riêng theo ngành (từ 25/11/2026):** mỗi ngành dần chuyển thành một thư mục tự chứa — `<Ngành>/index.html` chỉ nạp `app/…` (giao diện của ngành) và `../data/…` (dữ liệu vẫn dùng chung, bot vẫn ghi vào `data/`). `scripts/sync_brand.py` đồng bộ cả các bản `*/app/brand.css`, `share-image.js`, `motion.js`, `chart-arrange.js`. Trong gói riêng, `site-navigation.js` tính gốc trang web bằng `../../` (vì nằm ở `<Ngành>/app/`).
 
+**Điện không còn lộ "tab nền":** `Dien/app/dien-boot.js` nạp đầu tiên trong `<head>`, che nội dung từ lúc vẽ đầu tiên và chạy mọi bước dựng bố cục trong một lượt ngay sau DOMContentLoaded, rồi mới hiện trang. Module mới của Điện cần dựng/dời DOM khi mở trang thì đăng ký `DienBoot.add(mốc, hàm)` (mốc nhỏ chạy trước; các mốc đang dùng: -1, 0, 50, 300, 500, 600, 700, 800, 900, 1500, 2000), **không** dùng `setTimeout` sau sự kiện `load` — làm vậy sẽ lóe lại bố cục cũ. Đo thời điểm hiện trang: `performance.getEntriesByName('dien:ready')`.
+
 **Không sửa tay:**
 - `assets/brand.css` và `share-image.js`: hai file này được chép nguyên văn từ repo cổ phiếu (`FinSuccess-dashboard-source/_template/`) bằng `scripts/sync_brand.py`; sửa ở đây sẽ bị ghi đè. Muốn đổi giao diện chung thì sửa bên repo cổ phiếu.
 - File dữ liệu do workflow tự ghi (`data/daily-data.js`, `data/update-status.json`…), trừ khi đang sửa đúng script sinh ra chúng.

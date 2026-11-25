@@ -161,5 +161,5 @@ function keys() {
 }
 
 function run() { register(); hub(); keys(); }
-if (document.readyState === 'complete') setTimeout(run, 600); else addEventListener('load', () => setTimeout(run, 600));
+DienBoot.add(600, run); // dien-boot.js: dựng một lượt, không hẹn giờ sau load
 })();

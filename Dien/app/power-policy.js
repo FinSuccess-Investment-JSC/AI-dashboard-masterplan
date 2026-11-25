@@ -345,7 +345,7 @@ function dppaInit(host) {
   w.querySelectorAll('.dp-sim input').forEach(i => i.addEventListener('input', () => { touched = true; calc(); })); calc();
   // POWER_CORE (FMP) có thể nạp sau tab Chính sách: lấy FMP gần nhất làm giá thị trường mặc định khi có, nếu người dùng chưa chỉnh.
   const useFmp = () => { const f = window.POWER_CORE?.fmpLast; if (!f?.fmp || touched) return; fl = f; inp('m').value = Math.round(f.fmp / 10) * 10; calc(); };
-  if (!fl) { if (document.readyState === 'complete') setTimeout(useFmp, 1500); else window.addEventListener('load', () => setTimeout(useFmp, 1500)); }
+  if (!fl) DienBoot.add(1500, useFmp); // dien-boot.js
 }
 
 /* ---------- số liệu minh họa ---------- */
