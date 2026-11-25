@@ -277,12 +277,52 @@ const SECTIONS = [
 // Tab Kinh tế đơn vị bỏ 25/11/2026 theo yêu cầu người dùng: khóa cũ ?ov=unit / economics mở Bản đồ ngành.
 const ALIAS = {economics: 'map', unit: 'map', mix: 'tech', pulse: 'map'};
 SECTIONS.forEach(s => { renders[s[0]] = []; });
+/* ===================== 8b. Bản tin dữ liệu đầu Tổng quan (khung .db dùng chung với các ngành khác) ===================== */
+// 25/11/2026 theo yêu cầu người dùng: giữ khối Bản tin dữ liệu nhưng chỉ nói đặc điểm lớn của ngành điện
+// (cầu, cơ cấu nguồn, giá thị trường, giá bán lẻ), không nêu mã khuyến nghị. Số lấy từ POWER_CORE; thiếu số thì bỏ vế đó.
+function powerBrief(pane) {
+  const mk = (tag, cls, text) => { const n = document.createElement(tag); n.className = cls; if (text != null) n.textContent = text; return n; };
+  let db = document.getElementById('dataBrief');
+  if (!db) { db = mk('section', 'db card'); db.id = 'dataBrief'; pane.prepend(db); }
+  db.replaceChildren();
+  const left = mk('div', 'db-l'), right = mk('div', 'db-r'), k = mk('div', 'db-k');
+  k.append(mk('span', 'db-dot'), 'Bản tin dữ liệu');
+  const y = CMP.ytd?.ok ? CMP.ytd : null, m = CMP.m?.ok ? CMP.m : null;
+  const hy = y?.get('hydro'), cy = y?.get('coal'), cm = m?.get('coal');
+  const fmpYoY = fmpLast && fmpLy?.fmp ? (fmpLast.fmp / fmpLy.fmp - 1) * 100 : null;
+  const tv = tariffVals || [], td = tariffDates || [], tLast = tv.at(-1), tPrev = tv.at(-2), tChg = fin(tLast) && fin(tPrev) ? (tLast / tPrev - 1) * 100 : null;
+  const lead = [
+    y ? `Nhu cầu điện ${y.yoy < 0 ? 'giảm' : 'tăng'} ${nf(Math.abs(y.yoy), 1)}% từ đầu năm` : null,
+    hy && cy ? `nước về ít làm thủy điện ${hy.yoy < 0 ? 'giảm' : 'tăng'} ${nf(Math.abs(hy.yoy), 1)}%, than gánh ${nf(cy.shareCur, 0)}% sản lượng` : null,
+    fin(fmpYoY) ? `giá thị trường (FMP) ${fmpYoY >= 0 ? 'cao gấp ' + nf(fmpLast.fmp / fmpLy.fmp, 1) + ' lần' : 'thấp hơn ' + nf(-fmpYoY, 0) + '%'} cùng kỳ` : null,
+    fin(tChg) ? `giá bán lẻ bình quân vừa ${tChg < 0 ? 'giảm' : 'tăng'} ${nf(Math.abs(tChg), 0)}% (${td.at(-1)})` : null
+  ].filter(Boolean).join('; ');
+  left.append(k, mk('div', 'db-tk', 'Điện'), mk('p', 'db-lead', lead ? lead + '.' : ''));
+  const mo = (months || []).filter(x => fin(x.avg));
+  const cards = [
+    y && {h: 'Sản lượng điện từ đầu năm', v: nf(y.curT / 1000, 1), u: 'tỷ kWh', s: `${pc(y.yoy)} so cùng kỳ · ${PERIODS.ytd?.name || ''}`, sp: mo.map(x => x.avg), c: '#2938A8'},
+    cm && {h: 'Tỷ trọng nhiệt điện than', v: nf(cm.shareCur, 1), u: '%', s: `${sg(cm.shareCur - cm.sharePrev, 1)} đ.p. so cùng kỳ · thủy điện ${nf(m.get('hydro').shareCur, 1)}% · ${PERIODS.m?.name || ''}`, sp: mo.map(x => x.share?.coal), c: '#3d4653'},
+    fmpLast && {h: 'Giá thị trường điện (FMP)', v: nf(fmpLast.fmp, 0), u: 'đ/kWh', s: `${fin(fmpYoY) ? pc(fmpYoY) + ' so cùng kỳ · ' : ''}${ml(fmpLast.period)}`, sp: (fmp || []).slice(-24).map(r => r.fmp), c: '#c98a00'},
+    fin(tLast) && {h: 'Giá bán lẻ bình quân', v: nf(tLast, 0), u: 'đ/kWh', s: `${fin(tChg) ? pc(tChg) + ' từ ' : 'từ '}${td.at(-1) || ''}`, sp: tv, c: '#861C52'}
+  ].filter(Boolean);
+  cards.forEach(x => {
+    const b = mk('div', 'db-c card'), v = mk('div', 'db-v', x.v);
+    v.append(mk('span', 'db-u', x.u));
+    b.append(mk('div', 'db-ch', x.h), v, mk('div', 'db-s', x.s));
+    right.append(b);
+    const vals = (x.sp || []).filter(fin);
+    if (vals.length > 2 && window.ChartTypes?.spark) { const h = mk('div', 'db-spark'); b.append(h); try { ChartTypes.spark(h, vals, x.c); } catch (e) { h.remove(); } }
+  });
+  db.append(left, right);
+  if (!cards.length && !lead) db.remove();
+}
+
 function build() {
   const pane = document.getElementById('pane-mt1'); if (!pane || pane.querySelector('.ov-nav')) return;
   const head = pane.querySelector(':scope>.sectionhead');
   // Gỡ khung sub-tab cũ (Chuỗi giá trị / Mô hình kinh doanh / So sánh tài chính / Doanh nghiệp theo dõi) sau khi dời nội dung.
   const oldBar = pane.querySelector(':scope>.pane-subtabs'), oldPanes = [...pane.querySelectorAll(':scope>.pane-subpane')];
-  document.getElementById('dataBrief')?.remove();
+  powerBrief(pane);
   if (head) head.innerHTML = `<div><h2 class="sec">Tổng quan ngành điện</h2><p>Nhìn để hiểu ngành, bấm để phân tích: bản đồ ngành → chuỗi giá trị từng công nghệ → doanh nghiệp niêm yết → triển vọng.</p></div>`;
   const nav = el('div', 'ov-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Tổng quan ngành: bốn bước');
   head ? head.after(nav) : pane.prepend(nav);
