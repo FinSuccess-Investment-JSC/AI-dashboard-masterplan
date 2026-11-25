@@ -189,14 +189,8 @@ function s72() {
     if (window.ChartTypes) ChartTypes.mount(c3.host, m, () => { c3.host.innerHTML = ChartTypes.render(m, 'stack'); });
     foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; khoản còn lại (thu nhập tài chính, liên kết, khác, chi phí tài chính ngoài lãi vay) không vẽ nên tổng có thể khác 100; chưa tách chi phí nhiên liệu`); }
   renders.push(draw3);
-  // Chart 4: động lực biên
-  const c4 = card('dien-fin-drivers', 'Khấu hao và chi phí tài trợ so với doanh thu, EBITDA (%)', 'Khấu hao/doanh thu, lãi vay/doanh thu, lãi vay/EBITDA, biên EBITDA − biên EBIT'); let g4 = 'all'; const p4 = groupPicker(c4, () => g4, (v, q) => { g4 = v; if (!q) draw4(); });
-  function draw4() { p4(); const x = scopeOf(g4), L = E.labels(S.mode), R = (a, b) => E.ratio({m: a}, {m: b}, x, S.mode, 100).values;
-    const e = R('ebitda', 'revenue'), b = R('ebit', 'revenue');
-    chart(c4.host, 'dien-fin-drivers', L, [{name: 'Khấu hao/doanh thu', color: LINE[0], values: R('da', 'revenue')}, {name: 'Lãi vay/doanh thu', color: LINE[2], values: R('interest', 'revenue')}, {name: 'Lãi vay/EBITDA', color: LINE[3], values: R('interest', 'ebitda')}, {name: 'Biên EBITDA − biên EBIT', color: LINE[1], values: e.map((v, i) => fin(v) && fin(b[i]) ? v - b[i] : null)}], {unit: '%', digits: 1});
-    foot(c4, modeName(S.mode)); }
-  renders.push(draw4);
-  s.append(grid2(c1, c4), c3.el);
+  // Chart "Khấu hao và chi phí tài trợ so với doanh thu, EBITDA" bỏ 25/11/2026 theo yêu cầu người dùng.
+  s.append(grid2(c1, c3));
   return s;
 }
 
@@ -226,12 +220,7 @@ function s73() {
     else chart(c3.host, 'dien-fin-cip-' + v3, b.labels, D.groups.filter(g => S.groups.includes(g.id)).map(g => ({name: g.label, color: g.color, values: E.ratio({m: 'cip'}, {m: v3 === 'ta' ? 'total_assets' : 'ppe_net'}, scopeOf(g.id), mode, 100).values})), {unit: '%', digits: 1});
     foot(c3, `số dư cuối ${mode === 'y' ? 'năm' : 'quý'}`); }
   renders.push(draw3);
-  // Chart 4: hình thành tài sản
-  const c4 = card('dien-fin-formation', 'Hình thành tài sản: XDCB dở dang, TSCĐ và khấu hao (tỷ đồng)', 'XDCB dở dang, nguyên giá TSCĐ hữu hình, TSCĐ hữu hình ròng (số dư) và khấu hao TTM'); let g4 = 'all'; const p4 = groupPicker(c4, () => g4, (v, q) => { g4 = v; if (!q) draw4(); });
-  function draw4() { p4(); const x = scopeOf(g4), L = D.periods, T = (m, mode) => E.total(m, x, mode).values;
-    chart(c4.host, 'dien-fin-formation', L, [{name: 'Nguyên giá TSCĐ hữu hình', color: LINE[4], values: T('ppe_gross', 'q')}, {name: 'TSCĐ hữu hình ròng', color: LINE[0], values: T('ppe_net', 'q')}, {name: 'XDCB dở dang', color: LINE[2], values: T('cip', 'q')}, {name: 'Khấu hao TTM', color: LINE[3], values: T('da', 'ttm')}], {unit: 'tỷ đ'});
-    foot(c4, 'XDCB giảm có thể do hoàn thành, chuyển nhượng, thanh lý hoặc đổi phạm vi hợp nhất; chưa có số chuyển XDCB sang TSCĐ'); }
-  renders.push(draw4);
+  // Chart "Hình thành tài sản: XDCB dở dang, TSCĐ và khấu hao" bỏ 25/11/2026 theo yêu cầu người dùng.
   // Chart 5: tài trợ CAPEX
   const c5 = card('dien-fin-funding', 'CAPEX được tài trợ bằng nguồn nào? (tỷ đồng)', 'CFO, CAPEX, FCF, vay nợ ròng, vốn góp bằng tiền, cổ tức đã trả · và CFO/CAPEX');
   function draw5() { const x = sel(), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode), T = m => E.total(m, x, mode).values, cr = E.ratio({m: 'cfo'}, {m: 'capex'}, x, mode).values;
@@ -256,7 +245,7 @@ function s73() {
     if (window.ChartTypes) ChartTypes.mount(c7.host, m, () => { c7.host.innerHTML = ChartTypes.render(m, 'stack'); });
     foot(c7, `${mode === 'y' ? 'năm' : 'TTM'} và số dư kỳ chốt; cột để trống khi có nhóm âm`); }
   renders.push(draw7);
-  s.append(grid2(c1, c2), grid2(c3, c4), grid2(c5, c6), c7.el);
+  s.append(grid2(c1, c2), grid2(c3, c6), grid2(c5, c7));
   return s;
 }
 
