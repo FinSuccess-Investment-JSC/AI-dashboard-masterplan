@@ -1774,7 +1774,6 @@
      "dau-khi-26",
      "sugar-01",
      "sugar-03",
-     "dien-01",
      "dien-03",
      "bds-01",
      "bds-03",
@@ -6536,30 +6535,6 @@
    ]
   },
   {
-   "id": "power.fuel-spread",
-   "tier": "A",
-   "title": "Spread FMP − chi phí nhiên liệu biến đổi (ước)",
-   "schedule": {
-    "type": "data",
-    "sources": [
-     "wb_energy_monthly"
-    ]
-   },
-   "sources": [
-    "wb_energy_monthly"
-   ],
-   "where": {
-    "page": "Dien/index.html",
-    "blocks": [
-     "dien-30"
-    ]
-   },
-   "how": "Tính trong assets/power-visuals.js: FMP tháng (fmpRows, PGV IR, cập nhật tay theo routine C) − than WB/LNG WB × tỷ giá Wi 242638 (data/pharma-wi-data.js) theo tham số QĐ 1692, 1882",
-   "gates": [
-    "Tham số khung giá đổi khi có QĐ năm 2027"
-   ]
-  },
-  {
    "id": "power.hydro-heatmap",
    "tier": "A",
    "title": "Heatmap hồ chứa 3 cụm × 12 tháng",
@@ -6580,26 +6555,6 @@
     "≥80% ngày, nền ≥3 năm"
    ],
    "job": "assets/hydro-reservoirs.js từ HYDRO_RESERVOIRS"
-  },
-  {
-   "id": "power.keyplayers-groups",
-   "tier": "A",
-   "title": "Key players so sánh theo nhóm",
-   "schedule": {
-    "type": "data",
-    "sources": []
-   },
-   "job": "update_valuation.py (đã có)",
-   "where": {
-    "page": "Dien/index.html",
-    "blocks": [
-     "dien-33"
-    ]
-   },
-   "how": "assets/power-visuals.js từ COMPANY_VALUATION/COMPARISON/QUARTERLY",
-   "gates": [
-    "BCTC chỉ khi được nhắn"
-   ]
   },
   {
    "id": "realestate.backlog",

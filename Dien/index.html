@@ -53,7 +53,7 @@
 <script src="../assets/power-overview-visual.js?v=35445dd6a8f5" defer></script>
 <script src="../assets/power-overview.js?v=c26810d249a5" defer></script>
 <script src="../assets/power-labels.js?v=1ca8612f2771" defer></script>
-<script src="../assets/site-navigation.js?v=f56245fce0a9" data-release="20261125-dien-che-tai"></script>
+<script src="../assets/site-navigation.js?v=f56245fce0a9" data-release="20261125-dien-che-tai-2"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="../assets/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="../assets/sector-base.css?v=ba33835e530c">
@@ -137,10 +137,6 @@
   <section class="section">
     <div class="sectionhead"><div><h2>1. Tổng quan ngành điện Việt Nam</h2><p>Bốn nhóm nguồn có bốn biến lợi nhuận khác nhau: than và khí theo giá nhiên liệu và mức huy động, thủy điện theo nước về, năng lượng tái tạo theo giá bán và cắt giảm công suất, xây lắp lưới theo vốn đầu tư.</p></div></div>
     <div class="grid two">
-      <div class="card" data-block-id="dien-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
-        <h3 style="margin-top:0;font-size:13.5px">Chuỗi giá trị</h3>
-        <p style="font-size:12.5px;line-height:1.6;color:var(--ink2);margin:0">EVN (qua Công ty Mua bán điện EPTC) là bên mua chính của nhà máy phát; NSMO điều độ hệ thống và vận hành thị trường bán buôn; EVNNPT truyền tải, các tổng công ty điện lực phân phối và bán lẻ theo giá Nhà nước quy định.</p>
-      </div>
       <div class="card" data-block-id="dien-02" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3 style="margin-top:0;font-size:13.5px">Vị trí trong chu kỳ</h3>
                 <p style="font-size:12.5px;line-height:1.6;color:var(--ink2);margin:0 0 8px">Cầu tăng nhanh hơn nguồn mới: sản lượng 9T/2026 <b>+9,3%</b>, Pmax kỷ lục <b>57.537 MW</b> (25/06/2026), trong khi theo Báo cáo 760/BC-BCT mới khoảng <b>5%</b> dự án nguồn trong quy hoạch đã vận hành.</p>
@@ -351,14 +347,6 @@
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-fmp-trend"></table></div></details>
       </div>
     </div>
-    <div class="card" style="margin-top:14px" data-block-id="dien-30" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-      <div class="chart-title">Spread FMP − chi phí nhiên liệu biến đổi (ước tính) theo tháng</div>
-      <div class="chart-sub">đ/kWh · FMP bình quân tháng (PGV IR) trừ chi phí nhiên liệu quy ra 1 kWh theo suất tiêu hao chuẩn của khung giá phát điện 2026 · dương = bán điện thị trường có lãi biến đổi</div>
-      <div id="chSpread"></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu · phương pháp</summary><div>Ước tính, không phải biên thực của nhà máy nào. <b>Than nhập</b>: giá than Australia (World Bank, 6.000 kcal/kg) × tỷ giá trung tâm tháng × suất tiêu hao <b>2.411,6 kcal/kWh</b> (QĐ 1692/QĐ-BCT, than nội HHV 5.012,61 kcal/kg; áp cùng suất tiêu hao cho than nhập nên chi phí than nhập có thể hơi cao). <b>Than nội (mốc 2026)</b>: 1.962.004 đ/tấn ÷ 5.012,61 kcal/kg × 2.411,6 kcal/kWh ≈ 944 đ/kWh (QĐ 1692). <b>Khí nội (mốc 2026)</b>: (11,98 + 1,87) USD/MMBtu × 6.542,96 BTU/kWh × 26.378 đ/USD ≈ 2.390 đ/kWh (QĐ 1882/QĐ-BCT). <b>LNG nhập</b>: giá LNG Nhật Bản (World Bank) + cước 1,87 USD/MMBtu × 6.542,96 BTU/kWh × tỷ giá tháng. Chưa gồm chi phí vận hành biến đổi khác, thuế, cước vận chuyển than, nhiệt trị thực của từng lô; FMP là bình quân tháng của PGV, không phải giá từng nhà máy. Tỷ giá trung tâm tháng từ Wi (chỉ tiêu 242638, dùng chung với trang ngành Dược).</div></details>
-      <div class="source-note">Nguồn: <a href="https://www.genco3.com/data/files/20261017/639277939479590804_0.pdf" target="_blank" rel="noopener">PGV IR tháng 9/2026</a> · <a href="https://moit.gov.vn/van-ban-phap-luat/quyet-dinh-phe-duyet-khung-gia-phat-dien-nam-2026-doi-voi-loai-hinh-nha-may-nhiet-dien-than-do-doanh-nghiep-nha-nuoc-nam.html" target="_blank" rel="noopener">QĐ 1692/QĐ-BCT (than, 07/07/2026)</a> · <a href="https://mekongasean.vn/bo-cong-thuong-duyet-khung-gia-phat-dien-cua-nhiet-dien-khi-nam-2026-57778.html" target="_blank" rel="noopener">QĐ 1882/QĐ-BCT (khí, 23/07/2026) qua Mekong ASEAN</a> · <a href="https://www.worldbank.org/en/research/commodity-markets" target="_blank" rel="noopener">World Bank Pink Sheet</a> · <a href="https://www.sbv.gov.vn/" target="_blank" rel="noopener">NHNN tỷ giá trung tâm</a> (qua Wi); tham số kiểm 05/11/2026.</div>
-      <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-spread"></table></div></details>
-    </div>
     <div class="card" style="margin-top:14px" data-block-id="dien-16" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
       <div class="chart-title">Lỗ lũy kế công ty mẹ EVN đã xóa hết giữa năm 2026</div>
       <div class="chart-sub">tỷ đồng · lỗ lũy kế cuối kỳ (số âm) · LNST công ty mẹ 2025: 39.762 tỷ đồng (đã kiểm toán)</div>
@@ -436,19 +424,7 @@
   </section>
   </div>
 
-  <div class="majorpane" data-tab="mt6" id="pane-mt6">
-  <section class="section">
-    <div class="sectionhead"><div><h2>6. Key players</h2><p>18 doanh nghiệp niêm yết theo bốn nhóm: nhiệt điện, thủy điện, năng lượng tái tạo, lưới – xây lắp – thiết bị. Bảng so sánh tài chính và định giá hằng ngày nằm ở Tổng quan.</p></div></div>
-    <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Chưa có chuỗi tổng hợp KQKD ngành điện theo nhóm từ nguồn công khai. Khi dựng chuỗi cần loại giao dịch và công ty con trùng hợp nhất (ví dụ POW–NT2, GEX–GEE) trước khi cộng doanh thu/LNST; bảng 18 mã hiện tại chỉ dùng để so sánh từng doanh nghiệp.</div></details>
-    <div class="card" style="margin-top:14px" data-block-id="dien-33" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
-      <div class="chart-title">So sánh gọn theo nhóm: định giá hằng ngày và số quý gần nhất</div>
-      <div class="chart-sub">vốn hóa tổng (tỷ đồng) · P/E, P/B, biên gộp, doanh thu YoY, ROE: trung vị các mã trong nhóm · mở từng nhóm để xem từng mã</div>
-      <div id="kp-groups"></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Trung vị không trọng số, P/E chỉ tính mã có P/E dương. Biên gộp và doanh thu YoY từ BCTC quý Wi (quý gần nhất có số, ghi trong bảng); ROE theo Stock Analysis (quý, không annualize). Không cộng doanh thu/LNST thành nhóm vì POW–NT2, GEX–GEE hợp nhất trùng. Số BCTC chỉ cập nhật khi người dùng yêu cầu.</div></details>
-      <div class="source-note">Nguồn: <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a> (P/E, P/B, vốn hóa mỗi phiên) · <a href="https://stockanalysis.com/" target="_blank" rel="noopener">Stock Analysis</a> (ROE) · BCTC quý qua Wi (biên gộp, doanh thu).</div>
-    </div>
-  </section>
-  </div>
+  <div class="majorpane" data-tab="mt6" id="pane-mt6"></div>
 
   <div class="majorpane" data-tab="mt7" id="pane-mt7">
     <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Ba câu chuyện đang dẫn dắt ngành điện.</p></div></div>
@@ -602,7 +578,6 @@
     </div>
   </div>
 
-  <div class="footer">Vietnam Power Market Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 06/10/2026 · rà soát 09/11/2026.</div>
 </div>
 
 <script>
