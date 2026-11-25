@@ -72,7 +72,7 @@ class KcnWorkbookData(unittest.TestCase):
         for f in ('../data/kcn-market.js', 'app/kcn-insights.js', 'app/kcn-workspace.js', 'app/kcn-workspace.css'):
             self.assertIn(f, html)
         self.assertIn('id="kcn-workspace"', html)
-        self.assertIn('data-subsector="kcn"', html)
+        self.assertIn('data-sector="industrial"', html)
         self.assertIn('.majorpane[data-tab="mt2"]', (ROOT / 'Bat-dong-san-KCN/app/kcn-workspace.js').read_text(encoding='utf-8'))
         bds = (ROOT / 'Bat-dong-san/index.html').read_text(encoding='utf-8')
         self.assertNotIn('kcn-workspace', bds)

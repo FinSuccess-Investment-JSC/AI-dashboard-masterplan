@@ -1,0 +1,32 @@
+"""Danh mục khoản mục BCTC và universe cho Tài chính ngành Khu công nghiệp (KCN), cùng schema với ngành Điện.
+Khoản mục (ITEMS) dùng chung với scripts/power_fin_items.py (mã VNDirect finfo, mẫu TT200/TT202).
+Dùng bởi fetch_kcn_financials.py và build_kcn_financials.py."""
+from power_fin_items import ITEMS  # noqa: F401  (cùng khoản mục với ngành Điện)
+
+# Universe: doanh nghiệp KCN niêm yết (25/11/2026). Mã nào API không có dữ liệu quý thì bỏ khỏi danh sách.
+TICKERS = ['KBC', 'IDC', 'BCM', 'SZC', 'SIP', 'VGC', 'LHG', 'NTC', 'D2D', 'TIP']
+
+# default=True: thuộc tổng hợp "doanh nghiệp KCN" mặc định. Đa ngành có mảng KCN không gộp mặc định.
+# mixed=True: doanh nghiệp có mảng ngoài KCN lớn (bất động sản đô thị, vật liệu, tiện ích…), số theo nhóm chỉ để tham khảo.
+GROUPS = [
+    {'id': 'north', 'label': 'KCN miền Bắc', 'color': '#2938A8', 'default': True},
+    {'id': 'south', 'label': 'KCN miền Nam', 'color': '#2a9fa3', 'default': True},
+    {'id': 'diversified', 'label': 'Đa ngành có mảng KCN', 'color': '#9AA3BD', 'default': False},
+]
+COMPANIES = [
+    {'ticker': 'KBC', 'group': 'north', 'mixed': True, 'note': 'Kinh Bắc: KCN Quang Châu, Tràng Duệ, Nam Sơn Hạp Lĩnh…; kèm bất động sản đô thị'},
+    {'ticker': 'IDC', 'group': 'south', 'note': 'IDICO: KCN Phú Mỹ 2, Phú Mỹ 2 mở rộng, Hựu Thạnh…; có thủy điện, BOT'},
+    {'ticker': 'SZC', 'group': 'south', 'note': 'Sonadezi Châu Đức: KCN Châu Đức (Bà Rịa – Vũng Tàu)'},
+    {'ticker': 'SIP', 'group': 'south', 'mixed': True, 'note': 'Sài Gòn VRG: KCN Phước Đông, Lê Minh Xuân, Đông Nam; kèm điện, nước (tiện ích)'},
+    {'ticker': 'LHG', 'group': 'south', 'note': 'Long Hậu: KCN Long Hậu (Long An)'},
+    {'ticker': 'NTC', 'group': 'south', 'note': 'Nam Tân Uyên: KCN Nam Tân Uyên và mở rộng (Bình Dương)'},
+    {'ticker': 'D2D', 'group': 'south', 'mixed': True, 'note': 'Đô thị Công nghiệp số 2: KCN Nhơn Trạch 2; kèm bất động sản dân cư'},
+    {'ticker': 'TIP', 'group': 'south', 'note': 'Tín Nghĩa: KCN Phú Mỹ 1, Long Đức'},
+    {'ticker': 'BCM', 'group': 'diversified', 'mixed': True, 'note': 'Becamex IDC: KCN, đô thị, hạ tầng giao thông'},
+    {'ticker': 'VGC', 'group': 'diversified', 'mixed': True, 'note': 'Viglacera: KCN và vật liệu xây dựng'},
+]
+# Quan hệ hợp nhất trong universe: không có (kiểm cổ đông lớn trên VNDirect finfo /v4/shareholders, 25/11/2026):
+# D2D, SZC là con của Sonadezi (SNZ), NTC của Cao su Phước Hòa/VRG, TIP của CTCP Tín Nghĩa, LHG của IPC Tân Thuận —
+# công ty mẹ đều ngoài universe. NTC giữ 6,8% SIP (dưới ngưỡng liên kết 20%).
+CONSOLIDATION = []
+ASSOCIATES = []
