@@ -4770,25 +4770,29 @@
       "value": "1",
       "unit": "hợp đồng",
       "sub": "Samsung TN – Đức Huệ 2 (GEG) từ 01/06/2026, khoảng 70 GWh/năm",
-      "hl": true
+      "hl": true,
+      "group": "Cơ chế DPPA"
      },
      {
       "label": "Ngưỡng khách hàng lớn",
       "value": "200.000",
       "unit": "kWh/tháng",
-      "sub": "qua lưới quốc gia; 20.000 qua lưới riêng (TT 29/2026)"
+      "sub": "qua lưới quốc gia; 20.000 qua lưới riêng (TT 29/2026)",
+      "group": "Cơ chế DPPA"
      },
      {
       "label": "Mái nhà được bán dư",
       "value": "20% → 50%",
       "unit": "",
-      "sub": "NĐ 243/2026; giá = giá điện năng thị trường bình quân năm trước"
+      "sub": "NĐ 243/2026; giá = giá điện năng thị trường bình quân năm trước",
+      "group": "Chính sách liên quan · điện mặt trời mái nhà (không thuộc DPPA)"
      },
      {
       "label": "Mái nhà lắp mới đến 07/2026",
       "value": "1.614",
       "unit": "MWp",
-      "sub": "chỉ 287 hệ thống có bán điện dư"
+      "sub": "chỉ 287 hệ thống có bán điện dư",
+      "group": "Chính sách liên quan · điện mặt trời mái nhà (không thuộc DPPA)"
      }
     ]
    },

@@ -165,7 +165,8 @@ const plain = s => String(s ?? '').replace(/\[\[|\]\]/g, '');
 const tip = s => s ? ` title="${esc(plain(s))}"` : '';
 const tickers = list => (list || []).map(c => `<span class="pp-tk"><span class="pp-chip">${esc(c.t)}</span>${c.n ? `<small>${rich(c.n)}</small>` : ''}</span>`).join('');
 // Ô số: nhãn + số lớn; ghi chú nguồn rút một dòng, đủ chữ khi rê chuột.
-const kpis = items => `<div class="pp-kpis pp-kpis-row">${(items || []).map(k => `<div class="pp-kpi${k.hl ? ' hl' : ''}"><span>${rich(k.label)}</span><b>${esc(k.value)}<small> ${esc(k.unit || '')}</small></b>${k.sub ? `<em${tip(k.sub)}>${rich(k.sub)}</em>` : ''}</div>`).join('')}</div>`;
+const kpis = items => (items || []).some(k => k.group) ? [...new Set(items.map(k => k.group || ''))].map(g => `<div class="pp-kgrp">${g ? `<span>${esc(g)}</span>` : ''}${kpis1(items.filter(k => (k.group || '') === g))}</div>`).join('') : kpis1(items);
+const kpis1 = items => `<div class="pp-kpis pp-kpis-row">${(items || []).map(k => `<div class="pp-kpi${k.hl ? ' hl' : ''}"><span>${rich(k.label)}</span><b>${esc(k.value)}<small> ${esc(k.unit || '')}</small></b>${k.sub ? `<em${tip(k.sub)}>${rich(k.sub)}</em>` : ''}</div>`).join('')}</div>`;
 const policyRow = p => `<li><button type="button" class="pp-more pp-open" data-id="${esc(p.policy_id)}">${esc(p.document_number || p.policy_name)}</button> ${badge('st-' + p.policy_status, ST_VI[p.policy_status] || p.policy_status)} ${esc(p.short_name || p.policy_name)}${p.effective_date ? ` · hiệu lực ${dmy(p.effective_date)}` : p.issue_date ? ` · ban hành ${dmy(p.issue_date)}` : ''}${p.data_confidence === 'Low' ? ' · <em>độ tin cậy thấp</em>' : ''} · ${link(p.primary_source_url, 'nguồn ↗')}</li>`;
 // Dải bước gọn: chỉ tên bước, mô tả hiện khi rê chuột.
 const strip = (steps, cls = '') => `<div class="pp-strip ${cls}">${steps.map((s, i) => `${i ? '<span class="pp-sarr" aria-hidden="true">›</span>' : ''}<span class="pp-sstep ${s.cls || ''}"${tip(s.d)}>${rich(s.t)}${s.d ? '<i class="pp-i" aria-hidden="true">ⓘ</i>' : ''}</span>`).join('')}</div>`;
@@ -196,7 +197,7 @@ const VIS = {
         <span class="pp-pr-c"${tip(c.pass)}>${esc(c.pass_s || '')}</span><span class="pp-pr-r"${tip(c.risk)}>${esc(c.risk_s || '')}</span></div>`; }).join('');
     return `<div class="pp-ppa"><div class="pp-pr pp-pr-h"><span>Loại nhà máy</span><span>Sản lượng: giá hợp đồng <i class="k1"></i> · giá thị trường <i class="k2"></i></span><span>Nhiên liệu chuyển vào giá</span><span>Rủi ro chính</span></div>${rows}</div>`;
   },
-  dppa: h => `<div class="pp-two">${h.models.map(m => `<div class="pp-mini"><h4${tip('Rủi ro: ' + m.risk)}>${esc(m.title)} <i class="pp-i" aria-hidden="true">ⓘ</i></h4>${m.lanes.map(l => `<div class="pp-lane"><span class="pp-lane-k">${esc(l.k)}</span>${l.steps.map(s => `<span class="pp-lane-s">${rich(s)}</span>`).join('<span class="pp-arrow">→</span>')}</div>`).join('')}</div>`).join('')}</div>`,
+  dppa: h => dppaViz(h),
   ladder: h => {
     const S = h.scale || [], lo = S[0]?.from ?? 0, hi = S.at(-1)?.to ?? 1, x = v => (v - lo) / (hi - lo) * 100;
     return `<div class="pp-scale"><div class="pp-sc-cap">Giá bán lẻ bình quân tính ra so với hiện hành → ai quyết điều chỉnh</div><div class="pp-sc-bar">${S.map(s => `<div class="pp-sc-seg" style="left:${x(s.from)}%;width:${x(s.to) - x(s.from)}%;background:${s.c}"${tip(s.label + ': ' + s.who)}><b>${esc(s.who)}</b></div>`).join('')}</div>
@@ -227,6 +228,125 @@ const FULL = {
   techmatrix: h => table(['', ...h.axes], h.rows.map(r => ({cells: [{html: `<b>${esc(r.t)}</b>`}, ...r.v.map(([l, t]) => ({html: `${l ? LV[l][0] + ': ' : ''}${rich(t || '')}`}))]})), {min: 760}),
   dppa: h => `<ul>${h.models.map(m => `<li><b>${esc(m.title)}</b> · rủi ro: ${rich(m.risk)}</li>`).join('')}</ul>`
 };
+
+/* ---------- 2.4 DPPA: sơ đồ giao dịch tương tác (25/11/2026) ----------
+   Ba lớp đường nối: dòng điện (xanh dương, liền), dòng tiền (xanh ngọc, liền), hợp đồng (vàng trầm, nét đứt).
+   Trên hình chỉ để nhãn ngắn; vai trò, cơ chế giá, căn cứ nằm trong tooltip khi rê chuột/chạm/Tab.
+   Số và điều kiện lấy từ P.dppa và handbook['2.4'] (không tự thêm số). Bộ mô phỏng CfD dùng số giả định. */
+const DP_ICON = {
+  plant: '<path d="M-10 19V-5"/><path d="M-10-5L-10-20M-10-5L-22 1M-10-5L1 1"/><circle cx="-10" cy="-5" r="1.6" class="dp-fill"/><path d="M2 8h15l3 9H5z"/><path d="M9.5 8l1.6 9M3.5 12.5h15"/><path d="M-22 19h44"/>',
+  line: '<path d="M-14 19V-12M14 19V-12M-19-10h10M9-10h10"/><path d="M-14-10Q0-1 14-10"/><path d="M-22 19h44"/>',
+  grid: '<path d="M-12 19L-4-19h8l8 38"/><path d="M-17-9h34M-13-15h26"/><path d="M-9 7L7-5M9 7L-7-5"/><path d="M-22 19h44"/>',
+  cust: '<path d="M-19 19V-3l9 6v-6l9 6v-6l9 6v-13h7v29z"/><path d="M-13 12h4M-4 12h4M5 12h4"/><path d="M-22 19h44"/>',
+  market: '<rect x="-17" y="-14" width="34" height="28" rx="4"/><path d="M-11 7l7-7 5 4 9-10"/><path d="M-11 10h22" class="dp-thin"/>',
+  tct: '<rect x="-14" y="-13" width="28" height="32" rx="2"/><path d="M2-7l-6 9h5l-3 8 8-11H1z" class="dp-fill"/><path d="M-22 19h44"/>',
+  doc: '<path d="M-7-9h10l5 5v13H-7z" class="dp-doc"/><path d="M-4-3h8M-4 1h8M-4 5h6" class="dp-thin"/>'
+};
+function dppaViz(h) {
+  const D = P.dppa || {}, A = D.models?.[0] || {}, B = D.models?.[1] || {}, fact = (m, k) => (m.facts || []).find(f => f.k === k)?.v || '';
+  const law = (HB['2.4']?.framework || []).find(r => r[0] === 'Văn bản')?.[1] || 'NĐ 57/2025/NĐ-CP';
+  const cA = A.flow?.[2]?.d || '', sB = B.flow?.[0]?.t || 'Nhà máy NLTT', cB = B.flow?.[2]?.d || '';
+  const node = (id, x, y, ic, label, tipText, below = true) => `<g class="dp-n" data-id="${id}" transform="translate(${x} ${y})" tabindex="0" role="img" aria-label="${esc(label)}" data-tip="${esc(tipText)}">
+    <circle r="31" class="dp-nb"/><g class="dp-ic">${DP_ICON[ic]}</g><text y="${below ? 47 : -40}" class="dp-nl">${esc(label)}</text></g>`;
+  const edge = (k, n, d, label, lx, ly, tipText, o = {}) => `<g class="dp-e" data-k="${k}" data-n="${n}" tabindex="0" role="img" aria-label="${esc(label)}" data-tip="${esc(tipText)}">
+    <path class="dp-hit" d="${d}"/><path class="dp-line" d="${d}"${o.end === false ? '' : ` marker-end="url(#dp-a-${k}${o.sfx || ''})"`}${o.both ? ` marker-start="url(#dp-a-${k}${o.sfx || ''})"` : ''}/>
+    ${k === 'contract' ? '' : `<path class="dp-flow" d="${d}"/>`}
+    ${label ? `<text x="${lx}" y="${ly}" class="dp-el${o.anchor ? ' a-' + o.anchor : ''}">${label}</text>` : ''}</g>`;
+  const defs = sfx => `<defs>${[['power', '#2938A8'], ['money', '#16898c'], ['contract', '#a8701a']].map(([k, c]) => `<marker id="dp-a-${k}${sfx}" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="${c}"/></marker>`).join('')}</defs>`;
+  const doc = (x, y) => `<g transform="translate(${x} ${y})" class="dp-docg"><circle r="13" class="dp-nb"/><g class="dp-ic">${DP_ICON.doc}</g></g>`;
+  const svgA = `<svg class="dp-svg" viewBox="0 -4 520 262" aria-label="DPPA qua đường dây riêng">${defs('A')}
+    ${edge('contract', 'plant cust', 'M88 92C150 14 370 14 432 92', 'Hợp đồng mua bán điện (PPA)', 260, 4, `Hợp đồng mua bán điện giữa nhà máy và khách hàng. ${fact(A, 'Giá')}. Căn cứ: ${law}.`, {end: false, sfx: 'A'})}
+    ${doc(260, 33)}
+    ${edge('power', 'plant line cust', 'M104 120H226M294 120H414', 'Điện truyền trực tiếp', 165, 108, 'Dòng điện vật lý · nhà máy → khách hàng qua đường dây riêng, không qua lưới quốc gia.', {sfx: 'A'})}
+    ${edge('money', 'cust plant', 'M450 178C450 238 70 238 70 182', 'Thanh toán theo giá thỏa thuận', 260, 250, `Dòng tiền · khách hàng → nhà máy. ${fact(A, 'Giá')}. ${fact(A, 'Phí lưới')}.`, {sfx: 'A'})}
+    ${node('plant', 70, 120, 'plant', 'Nhà máy NLTT', 'Nhà máy năng lượng tái tạo: bán điện thẳng cho khách hàng; doanh thu = sản lượng × giá thỏa thuận.')}
+    ${node('line', 260, 120, 'line', 'Đường dây riêng', `Đường dây kết nối riêng: ${A.flow?.[1]?.d || 'không qua lưới quốc gia'}. ${fact(A, 'Giới hạn')}.`)}
+    ${node('cust', 450, 120, 'cust', 'Khách hàng', `Khách hàng ${cA}: nhận điện trực tiếp, trả tiền điện cho nhà máy theo giá thỏa thuận.`)}</svg>`;
+  const svgB = `<svg class="dp-svg" viewBox="0 -4 520 322" aria-label="DPPA qua lưới điện quốc gia">${defs('B')}
+    ${edge('contract', 'plant cust', 'M88 92C150 14 370 14 432 92', 'Hợp đồng kỳ hạn (CfD)', 260, 4, `Hợp đồng kỳ hạn (CfD) · nhà máy ⇄ khách hàng: thanh toán chênh lệch giữa giá thỏa thuận và giá thị trường cho phần sản lượng trong hợp đồng; chiều thanh toán đổi theo giá thị trường cao hay thấp hơn giá thỏa thuận. Không có đường điện riêng giữa hai bên. Căn cứ: ${law}.`, {both: true, sfx: 'B'})}
+    ${doc(260, 33)}
+    ${edge('power', 'plant grid', 'M104 120H224', 'Phát lên lưới', 164, 108, `Dòng điện vật lý · ${sB} ${B.flow?.[0]?.d || ''} qua lưới quốc gia.`, {sfx: 'B'})}
+    ${edge('power', 'grid cust tct', 'M296 120H414', 'Cấp điện qua hệ thống', 355, 108, 'Dòng điện vật lý · khách hàng nhận điện từ hệ thống qua tổng công ty điện lực, không phải điện đi thẳng từ nhà máy.', {sfx: 'B'})}
+    ${edge('money', 'market plant', 'M150 232C150 205 70 214 70 182', 'FMP', 98, 214, `Dòng tiền · thị trường → nhà máy. Giá: ${B.flow?.[1]?.d || 'giá FMP'} theo từng chu kỳ giao dịch.`, {sfx: 'B', anchor: 'end'})}
+    ${edge('money', 'cust tct', 'M450 182C450 214 370 205 370 232', 'giá giao ngay + phí hệ thống', 410, 206, `Dòng tiền · khách hàng → tổng công ty điện lực. ${fact(B, 'Khách trả')}.`, {sfx: 'B', anchor: 'end'})}
+    ${edge('money', 'tct market', 'M336 268H186', 'mua điện giao ngay', 260, 258, 'Dòng tiền · tổng công ty điện lực mua điện năng trên thị trường giao ngay để cấp cho khách hàng.', {sfx: 'B'})}
+    ${node('plant', 70, 120, 'plant', 'Nhà máy NLTT', `${sB}: bán toàn bộ điện vào thị trường, nhận FMP; phần chênh với giá thỏa thuận thanh toán qua CfD với khách hàng. Doanh thu = FMP × sản lượng ± khoản CfD.`)}
+    ${node('grid', 260, 120, 'grid', 'Lưới điện quốc gia', 'Hạ tầng truyền tải: điện của nhà máy hòa vào hệ thống; lưới không mua bán điện.')}
+    ${node('cust', 450, 120, 'cust', 'Khách hàng', `Khách hàng lớn ${cB}: nhận điện qua hệ thống, trả tổng công ty điện lực; thanh toán chênh lệch với nhà máy theo CfD.`)}
+    ${node('market', 150, 268, 'market', 'Thị trường điện', 'Thị trường điện giao ngay: xác định giá FMP (giá điện năng + giá công suất) theo chu kỳ giao dịch.')}
+    ${node('tct', 370, 268, 'tct', 'Tổng công ty điện lực', 'Đơn vị bán điện cho khách hàng: thu tiền điện theo giá giao ngay và phí dịch vụ hệ thống.')}</svg>`;
+  const cards = list => `<div class="dp-cards">${list.filter(c => c[1]).map(([k, v]) => `<div class="dp-card"><span>${esc(k)}</span><b>${rich(v)}</b></div>`).join('')}</div>`;
+  return `<div class="dp-wrap" data-f="all">
+    <div class="dp-ctl" role="group" aria-label="Lọc luồng giao dịch">${[['all', 'Tất cả'], ['power', 'Dòng điện'], ['money', 'Dòng tiền'], ['contract', 'Hợp đồng']].map(([k, l]) => `<button type="button" data-f="${k}" aria-pressed="${k === 'all'}">${k === 'all' ? '' : `<i class="dp-sw s-${k}"></i>`}${l}</button>`).join('')}</div>
+    <div class="dp-two">
+      <section class="dp-p"><h4>A. Qua đường dây riêng</h4>${svgA}${cards([['Bên mua', cA ? 'Khách hàng ' + cA : ''], ['Giá', fact(A, 'Giá')], ['Phí lưới', fact(A, 'Phí lưới')]])}</section>
+      <section class="dp-p"><h4>B. Qua lưới điện quốc gia</h4>${svgB}${cards([['Bên bán', sB], ['Bên mua', cB ? 'Khách hàng ' + cB : ''], ['Rủi ro', fact(B, 'Rủi ro')]])}</section>
+    </div>
+    <div class="dp-sim">
+      <div class="dp-sim-h"><b>Mô phỏng thanh toán CfD</b><span class="dp-tag">Số giả định · không phải dữ liệu giao dịch</span></div>
+      <div class="dp-sim-in">
+        <label><span>Giá hợp đồng giả định</span><input type="range" data-v="c" min="500" max="3500" step="10"><output data-o="c"></output></label>
+        <label><span>Giá thị trường giả định</span><input type="range" data-v="m" min="500" max="3500" step="10"><output data-o="m"></output></label>
+        <label><span>Sản lượng trong hợp đồng</span><input type="range" data-v="q" min="1" max="100" step="1"><output data-o="q"></output></label>
+      </div>
+      <div class="dp-sim-out">
+        <svg class="dp-sim-svg" viewBox="0 0 360 96" aria-hidden="true"><defs><marker id="dp-a-sim" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a8701a"/></marker></defs>
+          <g transform="translate(40 46)"><circle r="26" class="dp-nb"/><g class="dp-ic">${DP_ICON.plant}</g><text y="42" class="dp-nl">Nhà máy</text></g>
+          <g transform="translate(320 46)"><circle r="26" class="dp-nb"/><g class="dp-ic">${DP_ICON.cust}</g><text y="42" class="dp-nl">Khách hàng</text></g>
+          <path class="dp-sim-a" d="M78 46H282"/><text class="dp-sim-l" x="180" y="34"></text></svg>
+        <div class="dp-sim-k"></div>
+        <div class="dp-sim-bars"></div>
+      </div>
+      <p class="dp-note">Ví dụ đơn giản hóa cho phần sản lượng ghi trong hợp đồng: chưa tính phí dịch vụ hệ thống, lệch giữa sản lượng phát và tiêu thụ; không phải toàn bộ sản lượng đều được phòng hộ bằng CfD. Cách tính thực tế theo hợp đồng và ${esc(law)}.</p>
+    </div>
+    <div class="dp-tip" role="tooltip" hidden></div>
+  </div>`;
+}
+function dppaInit(host) {
+  const w = host.querySelector('.dp-wrap'); if (!w) return;
+  const tipEl = w.querySelector('.dp-tip');
+  // Lọc luồng
+  w.querySelectorAll('.dp-ctl button').forEach(b => b.addEventListener('click', () => { w.dataset.f = b.dataset.f; w.querySelectorAll('.dp-ctl button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); }));
+  // Rê chuột: chủ thể → sáng các giao dịch liên quan; đường nối → sáng hai đầu
+  const clear = () => { w.classList.remove('dp-focus'); w.querySelectorAll('.on').forEach(n => n.classList.remove('on')); tipEl.hidden = true; };
+  const focus = el => {
+    const svg = el.closest('svg'); clear(); w.classList.add('dp-focus'); el.classList.add('on');
+    if (el.classList.contains('dp-n')) { const id = el.dataset.id; svg.querySelectorAll('.dp-e').forEach(e => { if (e.dataset.n.split(' ').includes(id)) { e.classList.add('on'); e.dataset.n.split(' ').forEach(n => svg.querySelector(`.dp-n[data-id="${n}"]`)?.classList.add('on')); } }); }
+    else el.dataset.n.split(' ').forEach(n => svg.querySelector(`.dp-n[data-id="${n}"]`)?.classList.add('on'));
+    svg.querySelectorAll('.dp-docg').forEach(d => d.classList.add('on'));
+  };
+  const show = (el, x, y) => { const r = w.getBoundingClientRect(); tipEl.textContent = el.dataset.tip; tipEl.hidden = false; const tw = tipEl.offsetWidth; tipEl.style.left = Math.max(4, Math.min(x - r.left + 14, r.width - tw - 4)) + 'px'; tipEl.style.top = (y - r.top + 16) + 'px'; };
+  w.querySelectorAll('.dp-n, .dp-e').forEach(el => {
+    el.addEventListener('mouseenter', e => { focus(el); show(el, e.clientX, e.clientY); });
+    el.addEventListener('mousemove', e => show(el, e.clientX, e.clientY));
+    el.addEventListener('mouseleave', clear);
+    el.addEventListener('focus', () => { focus(el); const b = el.getBoundingClientRect(); show(el, b.left + b.width / 2, b.bottom); });
+    el.addEventListener('blur', clear);
+    el.addEventListener('click', e => { focus(el); show(el, e.clientX, e.clientY); });
+  });
+  // Mô phỏng CfD: giá thị trường mặc định = FMP gần nhất nếu trang có; còn lại là số giả định.
+  let fl = window.POWER_CORE?.fmpLast, touched = false; const inp = k => w.querySelector(`[data-v="${k}"]`), out = k => w.querySelector(`[data-o="${k}"]`);
+  inp('c').value = 1600; inp('m').value = fl?.fmp ? Math.round(fl.fmp / 10) * 10 : 1500; inp('q').value = 10;
+  const f0 = v => Number(v).toLocaleString('vi-VN'), f1 = v => Number(v).toLocaleString('vi-VN', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+  const arrow = w.querySelector('.dp-sim-a'), al = w.querySelector('.dp-sim-l'), k = w.querySelector('.dp-sim-k'), bars = w.querySelector('.dp-sim-bars');
+  const calc = () => {
+    const c = +inp('c').value, m = +inp('m').value, q = +inp('q').value, d = c - m, pay = Math.abs(d) * q / 1000, rev = m * q / 1000, tot = c * q / 1000;
+    out('c').textContent = f0(c) + ' đ/kWh'; out('m').textContent = f0(m) + ' đ/kWh' + (fl?.fmp && Math.abs(m - fl.fmp) < 10 ? ' · ≈ FMP T' + Number(String(fl.period).slice(5, 7)) + '/' + String(fl.period).slice(0, 4) : ''); out('q').textContent = q + ' triệu kWh';
+    const dir = d > 0 ? 'Khách hàng trả nhà máy' : d < 0 ? 'Nhà máy trả khách hàng' : 'Không phát sinh thanh toán';
+    arrow.removeAttribute('marker-start'); arrow.removeAttribute('marker-end'); arrow.classList.toggle('zero', d === 0);
+    if (d > 0) arrow.setAttribute('marker-start', 'url(#dp-a-sim)'); else if (d < 0) arrow.setAttribute('marker-end', 'url(#dp-a-sim)');
+    al.textContent = d ? `${f1(pay)} tỷ đồng` : '0';
+    k.innerHTML = `<div><span>Chênh lệch giá</span><b>${d > 0 ? '+' : d < 0 ? '−' : ''}${f0(Math.abs(d))} <small>đ/kWh</small></b></div><div><span>Giá trị thanh toán chênh lệch</span><b>${f1(pay)} <small>tỷ đồng</small></b></div><div><span>Hướng thanh toán</span><b class="dp-dir">${dir}</b></div>`;
+    const mx = Math.max(rev, tot, 1e-9), pc = v => (v / mx * 100).toFixed(1) + '%';
+    bars.innerHTML = `<div class="dp-bar"><span>Doanh thu từ thị trường (giá thị trường × sản lượng)</span><div class="dp-bt"><i class="b-m" style="width:${pc(rev)}"></i></div><b>${f1(rev)}</b></div>
+      <div class="dp-bar"><span>Sau điều chỉnh CfD (${d >= 0 ? '+' : '−'}${f1(pay)})</span><div class="dp-bt"><i class="b-m" style="width:${pc(Math.min(rev, tot))}"></i>${d > 0 ? `<i class="b-c" style="width:${pc(tot - rev)}"></i>` : d < 0 ? `<i class="b-x" style="width:${pc(rev - tot)}"></i>` : ''}</div><b>${f1(tot)}</b></div>
+      <p class="dp-eq">Nhà máy nhận tổng cộng = giá hợp đồng × sản lượng trong hợp đồng (tỷ đồng).</p>`;
+  };
+  w.querySelectorAll('.dp-sim input').forEach(i => i.addEventListener('input', () => { touched = true; calc(); })); calc();
+  // POWER_CORE (FMP) có thể nạp sau tab Chính sách: lấy FMP gần nhất làm giá thị trường mặc định khi có, nếu người dùng chưa chỉnh.
+  const useFmp = () => { const f = window.POWER_CORE?.fmpLast; if (!f?.fmp || touched) return; fl = f; inp('m').value = Math.round(f.fmp / 10) * 10; calc(); };
+  if (!fl) { if (document.readyState === 'complete') setTimeout(useFmp, 1500); else window.addEventListener('load', () => setTimeout(useFmp, 1500)); }
+}
 
 /* ---------- số liệu minh họa ---------- */
 const DATA = {
@@ -342,6 +462,7 @@ function renderModule(m) {
   // Chart không nằm trong mục thu gọn: khối hình (vd. tiến độ dự án) đưa vào khung hình; bảng vẫn ở trong.
   host.querySelectorAll('.pp-detail .viz-block').forEach(v => { if (v.querySelector('svg, canvas')) host.querySelector('.pp-vis').append(v); });
   if (m.data && DATA[m.data.type]) { try { DATA[m.data.type](host.querySelector('.pp-data'), m); } catch (e) { console.error('power-policy data', m.id, e); } }
+  if (type === 'dppa') { try { dppaInit(host); } catch (e) { console.error('power-policy dppa', e); } }
 }
 
 /* ---------- tab, mục lục, trạng thái URL ---------- */
