@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-25",
+  "articles": [
+    {
+      "id": "sep",
+      "source_name": "EVN",
+      "published_at": "2026-10-06T12:10:00+07:00",
+      "url": "https://www.evn.com.vn/d/vi-VN/news/Tinh-hinh-hoat-dong-thang-9-nam-2026-nhiem-vu-trong-tam-3-thang-cuoi-nam-2026-60-142-509877"
+    },
+    {
+      "id": "oct",
+      "source_name": "EVN",
+      "published_at": "2026-11-03T09:40:00+07:00",
+      "url": "https://www.evn.com.vn/d/vi-VN/news/Tinh-hinh-hoat-dong-thang-10-nam-2026-muc-tieu-nhiem-vu-cong-tac-thang-11-nam-2026-60-142-510184"
+    },
+    {
+      "id": "tariff",
+      "source_name": "EVN",
+      "published_at": "2026-11-04T14:50:00+07:00",
+      "url": "https://www.evn.com.vn/d/vi-VN/news/EVN-thong-tin-ve-viec-thuc-hien-chinh-sach-gia-dien-tu-ngay-1112026-60-134-510202"
+    },
+    {
+      "id": "tariff-doc",
+      "source_name": "Bộ Công Thương",
+      "published_at": null,
+      "url": "https://www.evn.com.vn/userfile/User/tcdl/files/2026/11/1_QD-BCT_2026_2892-20261104131123509.pdf"
+    },
+    {
+      "id": "lng-price",
+      "source_name": "Viện Nghiên cứu Chiến lược, Chính sách Công Thương",
+      "published_at": "2026-11-12",
+      "url": "https://vioit.moit.gov.vn/vn/tin-hoat-dong-nganh/bo-cong-thuong-ban-hanh-khung-gia-phat-dien-cho-nha-may-nhiet-dien-khi-lng-nam-2026-7377.4056.html"
+    },
+    {
+      "id": "quang-trach",
+      "source_name": "EVN",
+      "published_at": "2026-10-20T12:00:00+07:00",
+      "url": "https://www.evn.com.vn/d/vi-VN/news/Le-khoi-cong-phat-dong-thi-dua-du-an-Nha-may-Nhiet-dien-LNG-Quang-Trach-II-va-cong-bo-phat-dien-Nha-may-Nhiet-dien-Quang-Trach-I-len-luoi-dien-quoc-gia-60-142-510032"
+    },
+    {
+      "id": "grid-review",
+      "source_name": "EVN",
+      "published_at": "2026-11-10T15:54:00+07:00",
+      "url": "https://www.evn.com.vn/d/vi-VN/news/EVNNPT-va-EVNNPC-thong-nhat-ra-soat-dinh-ky-tien-do-cac-du-an-luoi-dien-60-13-510263"
+    },
+    {
+      "id": "duc-hoa",
+      "source_name": "EVN",
+      "published_at": "2026-11-21T21:10:00+07:00",
+      "url": "https://evn.com.vn/d/vi-VN/news/EVNNPT-duoc-chap-thuan-la-nha-dau-tu-Du-an-Tram-bien-ap-220kV-Duc-Hoa-2-va-dau-noi-60-13-510396"
+    }
+  ],
+  "events": [
+    {
+      "id": "system-sep-2026",
+      "title": "Điện sản xuất và nhập khẩu tháng 9 tăng 9,2%",
+      "summary": "EVN công bố sản lượng tháng 9 đạt 29,97 tỷ kWh, nâng lũy kế 9 tháng lên 265,79 tỷ kWh.",
+      "category": "demand",
+      "event_date": "2026-09-30",
+      "importance": 2,
+      "topic_ids": [
+        "system"
+      ],
+      "segments": [
+        "Toàn hệ thống"
+      ],
+      "companies": [
+        "EVN"
+      ],
+      "article_ids": [
+        "sep"
+      ],
+      "new_information": "Số thực hiện tháng 9 bổ sung kỳ quan sát mới cho chuỗi EVN.",
+      "key_figures": [
+        "29,97 tỷ kWh tháng 9",
+        "265,79 tỷ kWh lũy kế 9 tháng"
+      ]
+    },
+    {
+      "id": "system-oct-2026",
+      "title": "Điện sản xuất và nhập khẩu tháng 10 tăng 14,3%",
+      "summary": "Sản lượng đạt 31,58 tỷ kWh trong tháng 10 và 297,4 tỷ kWh lũy kế 10 tháng, tăng 9,8% YoY.",
+      "category": "demand",
+      "event_date": "2026-10-31",
+      "importance": 3,
+      "topic_ids": [
+        "system"
+      ],
+      "segments": [
+        "Toàn hệ thống"
+      ],
+      "companies": [
+        "EVN"
+      ],
+      "article_ids": [
+        "oct"
+      ],
+      "new_information": "Tăng trưởng sản lượng tháng tăng từ 9,2% YoY trong tháng 9 lên 14,3% trong tháng 10.",
+      "key_figures": [
+        "31,58 tỷ kWh tháng 10",
+        "297,4 tỷ kWh lũy kế 10 tháng"
+      ]
+    },
+    {
+      "id": "retail-tariff-nov-2026",
+      "title": "Giá bán lẻ điện bình quân giảm 2% từ 1/11",
+      "summary": "Mức bình quân mới là 2.159,9037 đồng/kWh trước VAT. Biểu giá điện sinh hoạt chuyển từ sáu xuống năm bậc.",
+      "category": "policy",
+      "event_date": "2026-11-01",
+      "importance": 4,
+      "topic_ids": [
+        "tariffs"
+      ],
+      "segments": [
+        "Toàn hệ thống"
+      ],
+      "companies": [
+        "EVN"
+      ],
+      "article_ids": [
+        "tariff",
+        "tariff-doc"
+      ],
+      "new_information": "Cơ cấu bậc tiêu thụ và mức giá áp dụng từ đầu tháng 11 thay đổi cùng lúc.",
+      "key_figures": [
+        "2.159,9037 đồng/kWh trước VAT",
+        "Giảm 2% so với mức bình quân trước đó"
+      ]
+    },
+    {
+      "id": "quang-trach-ii-start",
+      "title": "Khởi công dự án nhiệt điện LNG Quảng Trạch II",
+      "summary": "EVN tổ chức lễ khởi công và phát động thi đua tại Trung tâm Điện lực Quảng Trạch, Quảng Trị.",
+      "category": "projects",
+      "event_date": "2026-10-20",
+      "importance": 3,
+      "topic_ids": [
+        "lng"
+      ],
+      "segments": [
+        "Điện khí LNG"
+      ],
+      "companies": [
+        "EVN"
+      ],
+      "article_ids": [
+        "quang-trach"
+      ],
+      "new_information": "Dự án ghi nhận mốc khởi công.",
+      "key_figures": []
+    },
+    {
+      "id": "lng-price-frame-2026",
+      "title": "Bộ Công Thương ban hành khung giá phát điện LNG năm 2026",
+      "summary": "Giá trần là 3.453,72 đồng/kWh trước VAT cho nhà máy tua bin khí chu trình hỗn hợp sử dụng LNG.",
+      "category": "policy",
+      "event_date": "2026-11-09",
+      "importance": 4,
+      "topic_ids": [
+        "lng"
+      ],
+      "segments": [
+        "Điện khí LNG"
+      ],
+      "companies": [
+        "EVN"
+      ],
+      "article_ids": [
+        "lng-price"
+      ],
+      "new_information": "Quyết định 2972/QĐ-BCT có hiệu lực ngày ký và cung cấp căn cứ để EVN cùng các đơn vị phát điện đàm phán PPA.",
+      "key_figures": [
+        "0–3.453,72 đồng/kWh trước VAT"
+      ]
+    },
+    {
+      "id": "npt-npc-grid-review",
+      "title": "EVNNPT và EVNNPC thống nhất rà soát tiến độ lưới định kỳ",
+      "summary": "Hai đơn vị sẽ rà soát ba tháng một lần đối với các dự án lưới 220 kV và 110 kV thuộc thỏa thuận.",
+      "category": "operations",
+      "event_date": null,
+      "importance": 2,
+      "topic_ids": [
+        "grid"
+      ],
+      "segments": [
+        "Truyền tải"
+      ],
+      "companies": [
+        "EVNNPT",
+        "EVNNPC"
+      ],
+      "article_ids": [
+        "grid-review"
+      ],
+      "new_information": "Hai đơn vị thống nhất tần suất rà soát để xử lý vướng mắc dự án.",
+      "key_figures": []
+    },
+    {
+      "id": "duc-hoa-2-investor",
+      "title": "Tây Ninh chấp thuận EVNNPT làm nhà đầu tư trạm Đức Hòa 2",
+      "summary": "Trạm 220/110 kV có tổng công suất thiết kế 500 MVA. EVN công bố thông tin ngày 21/11.",
+      "category": "projects",
+      "event_date": "2026-11-19",
+      "importance": 3,
+      "topic_ids": [
+        "grid"
+      ],
+      "segments": [
+        "Truyền tải"
+      ],
+      "companies": [
+        "EVNNPT"
+      ],
+      "article_ids": [
+        "duc-hoa"
+      ],
+      "new_information": "Quyết định 22156/QĐ-UBND xác định nhà đầu tư cho trạm và phần đấu nối.",
+      "key_figures": [
+        "500 MVA công suất thiết kế"
+      ]
+    }
+  ],
+  "topics": [
+    {
+      "id": "system",
+      "title": "Sản lượng điện toàn hệ thống",
+      "background": "Chuỗi công bố tháng của EVN cho biết lượng điện sản xuất và nhập khẩu cùng cơ cấu nguồn huy động.",
+      "next_check": "Chờ số thực hiện tháng 11 để đối chiếu với mức ước tính 28,9 tỷ kWh.",
+      "related_data": [
+        "Bức tranh ngành · Phụ tải",
+        "?section=demand#mt2"
+      ]
+    },
+    {
+      "id": "lng",
+      "title": "Phát triển điện khí LNG",
+      "background": "Theo dõi các mốc xây dựng dự án và cơ chế đàm phán giá điện của các nhà máy LNG.",
+      "next_check": "Theo dõi các PPA và tiến độ đưa từng dự án vào vận hành.",
+      "related_data": [
+        "Bức tranh ngành · Cung điện dài hạn",
+        "?section=supply#mt2"
+      ]
+    },
+    {
+      "id": "grid",
+      "title": "Đầu tư lưới truyền tải",
+      "background": "Theo dõi các quyết định đầu tư và tiến độ các công trình truyền tải phục vụ cấp điện.",
+      "next_check": "Theo dõi tiến độ triển khai dự án Đức Hòa 2 sau quyết định về nhà đầu tư."
+    },
+    {
+      "id": "tariffs",
+      "title": "Giá bán lẻ điện",
+      "background": "Theo dõi mức giá bán lẻ điện bình quân và biểu giá áp dụng cho từng nhóm khách hàng.",
+      "next_check": "Theo dõi giá thực thu theo cơ cấu khách hàng sau khi biểu giá mới được áp dụng."
+    }
+  ]
+}
