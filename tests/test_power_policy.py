@@ -50,8 +50,8 @@ class PowerPolicyTest(unittest.TestCase):
             for key in t['modules']:
                 m = self.data['handbook'][key]
                 self.assertIn(f'id="pp-m-{key.replace(".", "-")}" data-mod="{key}" data-block-id="{m["block"]}"', page)
-        for name in ('assets/power-policy.js', 'assets/power-policy.css', 'data/power-policy.js'):
-            self.assertRegex(page, re.escape('../' + name) + r'\?v=[0-9a-f]{12}"')
+        for name in ('app/power-policy.js', 'app/power-policy.css', '../data/power-policy.js'):
+            self.assertRegex(page, re.escape(name) + r'\?v=[0-9a-f]{12}"')
 
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
-// Kiểm bộ tổng hợp tài chính ngành (assets/industry-fin.js) trên dữ liệu nhỏ dựng tay và trên data/power-financials.js.
+// Kiểm bộ tổng hợp tài chính ngành (Dien/app/industry-fin.js) trên dữ liệu nhỏ dựng tay và trên data/power-financials.js.
 const assert = require('node:assert/strict'), fs = require('fs'), path = require('path');
 global.window = {};
-eval(fs.readFileSync(path.join(__dirname, '../assets/industry-fin.js'), 'utf8'));
+eval(fs.readFileSync(path.join(__dirname, '../Dien/app/industry-fin.js'), 'utf8'));
 const {create} = window.IndustryFin;
 const P = ['2024Q1', '2024Q2', '2024Q3', '2024Q4', '2025Q1', '2025Q2', '2025Q3', '2025Q4'];
 const D = {periods: P, years: ['2024', '2025'], groups: [{id: 'a', label: 'A'}, {id: 'b', label: 'B'}],

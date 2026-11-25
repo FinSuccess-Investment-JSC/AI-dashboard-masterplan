@@ -49,11 +49,11 @@ class PowerOverviewTest(unittest.TestCase):
 
     def test_page_loads_overview(self):
         html = (ROOT / 'Dien/index.html').read_text(encoding='utf-8')
-        picture, overview, data = html.find('assets/power-picture.js'), html.find('assets/power-overview.js'), html.find('data/power-overview.js')
+        picture, overview, data = html.find('app/power-picture.js'), html.find('app/power-overview.js'), html.find('data/power-overview.js')
         self.assertTrue(picture > 0 and overview > 0 and data > 0)
         self.assertLess(picture, overview)  # power-picture.js xuất window.POWER_CORE
         self.assertLess(data, overview)
-        visual = html.find('assets/power-overview-visual.js')
+        visual = html.find('app/power-overview-visual.js')
         self.assertTrue(0 < visual < overview)  # lớp hình ảnh nạp trước module Tổng quan
 
 

@@ -1325,7 +1325,7 @@
      "dien-pp-pipeline-cod"
     ]
    },
-   "how": "Tính trong assets/power-picture.js khi mở trang từ dữ liệu đã nạp (SECTOR_DAILY, HYDRO_RESERVOIRS, COMPANY_QUARTERLY, tỷ giá NHNN/WiData, hằng số trong script cuối Dien/index.html, bảng dien-26); quy tắc nhận định thuần trong assets/power-insights.js (test: node tests/power-insights.test.cjs). So cùng kỳ chỉ trên các ngày có bản tin EVN đủ nguồn ở cả hai năm; nhận định đổi theo số mới, số cũ thì ẩn.",
+   "how": "Tính trong Dien/app/power-picture.js khi mở trang từ dữ liệu đã nạp (SECTOR_DAILY, HYDRO_RESERVOIRS, COMPANY_QUARTERLY, tỷ giá NHNN/WiData, hằng số trong script cuối Dien/index.html, bảng dien-26); quy tắc nhận định thuần trong Dien/app/power-insights.js (test: node tests/power-insights.test.cjs). So cùng kỳ chỉ trên các ngày có bản tin EVN đủ nguồn ở cả hai năm; nhận định đổi theo số mới, số cũ thì ẩn.",
    "gates": [
     "Không ước tính ngày thiếu bản tin",
     "Kỳ đối chiếu < 80% ngày thì ghi rõ",
@@ -1366,7 +1366,7 @@
      "dien-ov-companies"
     ]
    },
-   "how": "Tính trong assets/power-overview.js khi mở trang từ window.POWER_CORE (cùng phép tính tab Bức tranh ngành), HYDRO_RESERVOIRS, fmpRows, POWER_POLICY (lịch pháp lý, Qc, dự án chuyển tiếp); ngưỡng quy tắc và luận điểm ở data/power-overview.json. Nhận định và trạng thái luận điểm đổi theo số mới, không lưu cố định; chi phí nhiên liệu/kWh theo tham số QĐ 1692/1882 (POWER_FUEL_PARAMS) và tỷ giá tháng; waterfall từ COMPANY_QUARTERLY; kịch bản chỉ là giả định minh họa ghi rõ trên trang; timeline COD từ POWER_POLICY.pipeline",
+   "how": "Tính trong Dien/app/power-overview.js khi mở trang từ window.POWER_CORE (cùng phép tính tab Bức tranh ngành), HYDRO_RESERVOIRS, fmpRows, POWER_POLICY (lịch pháp lý, Qc, dự án chuyển tiếp); ngưỡng quy tắc và luận điểm ở data/power-overview.json. Nhận định và trạng thái luận điểm đổi theo số mới, không lưu cố định; chi phí nhiên liệu/kWh theo tham số QĐ 1692/1882 (POWER_FUEL_PARAMS) và tỷ giá tháng; waterfall từ COMPANY_QUARTERLY; kịch bản chỉ là giả định minh họa ghi rõ trên trang; timeline COD từ POWER_POLICY.pipeline",
    "gates": [
     "Quy tắc không kích hoạt khi kỳ đối chiếu dưới 80% ngày",
     "Không tạo số độ nhạy EBITDA/EPS khi thiếu Qc, PPA, suất hao",
@@ -1589,7 +1589,7 @@
      "dien-19"
     ]
    },
-   "how": "Mọi số và câu chữ của tab nằm ở data/power-policy.json: policies (một bản ghi mỗi văn bản, schema trong scripts/build_power_policy.py) và handbook (18 module theo khuôn A–G, gắn vào 4 tab). Văn bản mới: cập nhật tham số trong framework/how/data của module liên quan, không đổi cấu trúc module; giao diện assets/power-policy.js không cần sửa. Khi watcher báo văn bản mới hoặc đến lượt thứ Hai: (1) mở văn bản gốc hoặc bài cơ quan nhà nước, ghi đoạn trích chứa số vào data/power/evidence.json; (2) thêm/sửa bản ghi trong policies (trạng thái Draft/Issued/Effective/Expired/Superseded, ngày ban hành, ngày hiệu lực, thay đổi so với quy định trước, kênh tác động, doanh nghiệp: direct chỉ khi xác định được tài sản thuộc phạm vi); khung giá năm mới thêm vào price_frameworks (giữ năm cũ); dự án vào pipeline; mốc nghĩa vụ dài hạn vào milestones của module (không gán ngày dự kiến khi chưa có văn bản); dự thảo đặt ở drafts; (3) cập nhật as_of và câu takeaway/implication của module liên quan; (4) chạy python3 scripts/build_power_policy.py (dừng nếu chính sách hết hiệu lực vẫn ghi Effective hoặc trần khung giá không có trong evidence). Đến 12/11/2026 chưa có khung 2026 cho LNG, gió ngoài khơi, BESS độc lập, sinh khối, điện rác, tích năng; kế hoạch thị trường điện 2026 (Qc 80%/98%) mới có nguồn thứ cấp Vietcap.",
+   "how": "Mọi số và câu chữ của tab nằm ở data/power-policy.json: policies (một bản ghi mỗi văn bản, schema trong scripts/build_power_policy.py) và handbook (18 module theo khuôn A–G, gắn vào 4 tab). Văn bản mới: cập nhật tham số trong framework/how/data của module liên quan, không đổi cấu trúc module; giao diện Dien/app/power-policy.js không cần sửa. Khi watcher báo văn bản mới hoặc đến lượt thứ Hai: (1) mở văn bản gốc hoặc bài cơ quan nhà nước, ghi đoạn trích chứa số vào data/power/evidence.json; (2) thêm/sửa bản ghi trong policies (trạng thái Draft/Issued/Effective/Expired/Superseded, ngày ban hành, ngày hiệu lực, thay đổi so với quy định trước, kênh tác động, doanh nghiệp: direct chỉ khi xác định được tài sản thuộc phạm vi); khung giá năm mới thêm vào price_frameworks (giữ năm cũ); dự án vào pipeline; mốc nghĩa vụ dài hạn vào milestones của module (không gán ngày dự kiến khi chưa có văn bản); dự thảo đặt ở drafts; (3) cập nhật as_of và câu takeaway/implication của module liên quan; (4) chạy python3 scripts/build_power_policy.py (dừng nếu chính sách hết hiệu lực vẫn ghi Effective hoặc trần khung giá không có trong evidence). Đến 12/11/2026 chưa có khung 2026 cho LNG, gió ngoài khơi, BESS độc lập, sinh khối, điện rác, tích năng; kế hoạch thị trường điện 2026 (Qc 80%/98%) mới có nguồn thứ cấp Vietcap.",
    "gates": [
     "Số hiệu văn bản, ngày ban hành, ngày hiệu lực; trạng thái hiệu lực đúng tại ngày cập nhật",
     "Link trang gốc đã mở, lưu đoạn văn chứa số vào data/power/evidence.json",
@@ -4673,7 +4673,7 @@
      "dien-fin-pool"
     ]
    },
-   "how": "python scripts/fetch_power_financials.py && python scripts/build_power_financials.py (chạy trong refresh-data.yml); tổng hợp ngành ở assets/industry-fin.js, giao diện assets/power-finance.js",
+   "how": "python scripts/fetch_power_financials.py && python scripts/build_power_financials.py (chạy trong refresh-data.yml); tổng hợp ngành ở Dien/app/industry-fin.js, giao diện Dien/app/power-finance.js",
    "gates": [
     "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
     "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
@@ -6620,7 +6620,7 @@
      "dien-30"
     ]
    },
-   "how": "Tính trong assets/power-visuals.js: FMP tháng (fmpRows, PGV IR, cập nhật tay theo routine C) − than WB/LNG WB × tỷ giá Wi 242638 (data/pharma-wi-data.js) theo tham số QĐ 1692, 1882",
+   "how": "Tính trong Dien/app/power-visuals.js: FMP tháng (fmpRows, PGV IR, cập nhật tay theo routine C) − than WB/LNG WB × tỷ giá Wi 242638 (data/pharma-wi-data.js) theo tham số QĐ 1692, 1882",
    "gates": [
     "Tham số khung giá đổi khi có QĐ năm 2027"
    ]
@@ -6641,11 +6641,11 @@
      "dien-31"
     ]
    },
-   "how": "assets/hydro-reservoirs.js từ HYDRO_RESERVOIRS",
+   "how": "Dien/app/hydro-reservoirs.js từ HYDRO_RESERVOIRS",
    "gates": [
     "≥80% ngày, nền ≥3 năm"
    ],
-   "job": "assets/hydro-reservoirs.js từ HYDRO_RESERVOIRS"
+   "job": "Dien/app/hydro-reservoirs.js từ HYDRO_RESERVOIRS"
   },
   {
    "id": "power.keyplayers-groups",
@@ -6662,7 +6662,7 @@
      "dien-33"
     ]
    },
-   "how": "assets/power-visuals.js từ COMPANY_VALUATION/COMPARISON/QUARTERLY",
+   "how": "Dien/app/power-visuals.js từ COMPANY_VALUATION/COMPARISON/QUARTERLY",
    "gates": [
     "BCTC chỉ khi được nhắn"
    ]

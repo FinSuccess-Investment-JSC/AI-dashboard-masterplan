@@ -27,6 +27,9 @@
 | Nội dung, chart, dữ liệu một ngành | Thư mục của ngành (`Thep/`, `Bank/`, `Dau-khi/`…) và dữ liệu tương ứng trong `data/` |
 | Script cập nhật dữ liệu | `scripts/` — hỏi chủ repo trước nếu script dùng chung nhiều ngành |
 | Giao diện/hành vi chung (`assets/`) | Hỏi chủ repo trước, vì ảnh hưởng mọi ngành |
+| Giao diện của ngành đã tách gói riêng (hiện có: `Dien/`) | `<Ngành>/app/`: ngành giữ bản JS/CSS của riêng nó, sửa ở đây không đụng ngành khác. Muốn dùng lại cải tiến của ngành khác thì chép có chủ đích, không trỏ `../assets/` |
+
+**Gói riêng theo ngành (từ 25/11/2026):** mỗi ngành dần chuyển thành một thư mục tự chứa — `<Ngành>/index.html` chỉ nạp `app/…` (giao diện của ngành) và `../data/…` (dữ liệu vẫn dùng chung, bot vẫn ghi vào `data/`). `scripts/sync_brand.py` đồng bộ cả các bản `*/app/brand.css`, `share-image.js`, `motion.js`, `chart-arrange.js`. Trong gói riêng, `site-navigation.js` tính gốc trang web bằng `../../` (vì nằm ở `<Ngành>/app/`).
 
 **Không sửa tay:**
 - `assets/brand.css` và `share-image.js`: hai file này được chép nguyên văn từ repo cổ phiếu (`FinSuccess-dashboard-source/_template/`) bằng `scripts/sync_brand.py`; sửa ở đây sẽ bị ghi đè. Muốn đổi giao diện chung thì sửa bên repo cổ phiếu.

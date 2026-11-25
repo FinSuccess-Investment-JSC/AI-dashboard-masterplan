@@ -1,6 +1,6 @@
 {
   "as_of": "2026-11-12",
-  "about": "Nội dung định tính của tab Tổng quan ngành Điện (assets/power-overview.js): chuỗi giá trị 3 luồng, mô hình kinh doanh, cơ chế thị trường, đặc điểm nhóm nguồn, bản đồ truyền dẫn biến số → lợi nhuận, luận điểm theo dõi và ngưỡng của bộ quy tắc nhận định. Số liệu không nằm ở đây: trang tính từ SECTOR_DAILY, HYDRO_RESERVOIRS, POWER_POLICY và hằng số có nguồn trong Dien/index.html. Sửa file này rồi chạy python scripts/build_power_overview.py.",
+  "about": "Nội dung định tính của tab Tổng quan ngành Điện (Dien/app/power-overview.js): chuỗi giá trị 3 luồng, mô hình kinh doanh, cơ chế thị trường, đặc điểm nhóm nguồn, bản đồ truyền dẫn biến số → lợi nhuận, luận điểm theo dõi và ngưỡng của bộ quy tắc nhận định. Số liệu không nằm ở đây: trang tính từ SECTOR_DAILY, HYDRO_RESERVOIRS, POWER_POLICY và hằng số có nguồn trong Dien/index.html. Sửa file này rồi chạy python scripts/build_power_overview.py.",
   "thresholds": {
     "demand_accel_pp": {
       "value": 1.0,

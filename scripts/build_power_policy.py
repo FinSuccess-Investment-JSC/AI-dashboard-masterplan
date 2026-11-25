@@ -2,7 +2,7 @@
 """Build data/power-policy.js (window.POWER_POLICY) from data/power-policy.json after validating it.
 
 data/power-policy.json is the single source for the Điện tab Policy / Tax / Trade
-(assets/power-policy.js). Add or update a policy there, then run:
+(Dien/app/power-policy.js). Add or update a policy there, then run:
     python3 scripts/build_power_policy.py
 The build refuses to write when a record breaks the rules below, so an expired policy
 cannot be shown as in force and a chart value cannot appear without opened evidence.
