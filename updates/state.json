@@ -185,9 +185,11 @@
    }
   },
   "power.output-sources": {
-   "lastAttempt": "2026-11-06T13:02:42+07:00",
+   "lastAttempt": "2026-11-25T13:01:41+07:00",
    "lastSuccess": "2026-11-06T13:02:42+07:00",
-   "lastNote": "Trang đã có 9T/2026 vs 9T/2025 từ EVN (tổng 265,79 tỷ kWh, +9,3%; than 132,63, thủy điện 68,48); chưa có kỳ mới. Không sửa."
+   "lastNote": "Trang đã có 9T/2026 vs 9T/2025 từ EVN (tổng 265,79 tỷ kWh, +9,3%; than 132,63, thủy điện 68,48); chưa có kỳ mới. Không sửa.",
+   "lastError": "Đã mở vietnamplus.vn 03/11/2026 (đưa tin EVN): có 10T/2026 theo nguồn (than 147,78; thủy điện 73,39; khí 23,28; tái tạo 40,72; NK 11,77; tổng 297,4 tỷ kWh, +9,8%) nhưng không có 10T/2025 theo nguồn; evn.com.vn bản gốc 10T/2025 chưa mở được từ cloud. Chưa đủ hai kỳ nên không sửa trang, cần người dùng/runner VN cung cấp bản tin EVN 10T/2025.",
+   "attempts": 1
   },
   "realestate.wi.daily": {
    "lastAttempt": "2026-11-25T09:11:39+07:00",
@@ -7628,5 +7630,5 @@
    ]
   }
  ],
- "updatedAt": "2026-11-25T09:11:40+07:00"
+ "updatedAt": "2026-11-25T13:01:41+07:00"
 }

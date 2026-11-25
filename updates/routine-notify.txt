@@ -1,4 +1,4 @@
-Routine Wi 25/11: không cập nhật được mục nào trong 36 mục hàng chờ B.
-Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026); mọi tool lấy số liệu bị từ chối.
-Không sửa số liệu nào; các mục vẫn nằm trong hàng chờ, sẽ chạy lại sau khi credit làm mới.
+Routine tài liệu 25/11/2026: 1/10 mục được thử, không sửa trang.
+power.output-sources: có số 10T/2026 (tổng 297,4 tỷ kWh, +9,8%) từ VietnamPlus 03/11/2026 nhưng thiếu 10T/2025 theo nguồn → chưa cập nhật (--fail).
+Các mục khác còn trong hàng chờ, chưa xử lý.
 Chưa kiểm giao diện bằng trình duyệt.
