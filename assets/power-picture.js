@@ -446,10 +446,13 @@ const SECTIONS = [
   ['dispatch', '03', 'Huy động', 'Cơ cấu huy động', 'Nguồn nào đang được huy động nhiều hơn, nguồn nào đóng góp vào tăng trưởng sản lượng?'],
   ['economics', '04', 'Giá điện', 'Giá & kinh tế phát điện', 'Giá thị trường điện và nhiên liệu đang thuận hay bất lợi cho nhà máy phát điện?'],
   ['evn', '05', 'EVN', 'EVN & dòng tiền hệ thống', 'Giá bán lẻ và tài chính bên mua điện ảnh hưởng thế nào đến dòng tiền ngành?'],
-  ['supply', '06', 'Cung dài hạn', 'Cung điện dài hạn', 'Có đủ công suất cho phụ tải 2027–2030 không, nguồn mới đang ở giai đoạn nào?']
+  ['supply', '06', 'Cung dài hạn', 'Cung điện dài hạn', 'Có đủ công suất cho phụ tải 2027–2030 không, nguồn mới đang ở giai đoạn nào?'],
+  // 07 Tài chính ngành (25/11/2026): dựng ở assets/power-finance.js từ BCTC doanh nghiệp (window.POWER_FIN).
+  ['finance', '07', 'Tài chính ngành', 'Tài chính ngành', 'Lợi nhuận, dòng vốn đầu tư, công nợ và dòng tiền của doanh nghiệp phát điện niêm yết đang diễn biến ra sao?']
 ];
 SECTIONS.forEach(s => { renders[s[0]] = []; });
-const asOf = {demand: lastDay, hydro: H?.last_observation, dispatch: lastDay, economics: fmpLast ? 'FMP ' + ml(fmpLast.period) + ' · nhiên liệu ' + dm(coal3?.date) : null, evn: tariffDates ? 'giá bán lẻ từ ' + tariffDates.at(-1) : null, supply: 'Báo cáo 760/BC-BCT (10/09/2026)'};
+const asOf = {demand: lastDay, hydro: H?.last_observation, dispatch: lastDay, economics: fmpLast ? 'FMP ' + ml(fmpLast.period) + ' · nhiên liệu ' + dm(coal3?.date) : null, evn: tariffDates ? 'giá bán lẻ từ ' + tariffDates.at(-1) : null, supply: 'Báo cáo 760/BC-BCT (10/09/2026)', finance: window.POWER_FIN ? 'BCTC ' + window.POWER_FIN.periods.at(-1).replace(/^(\d{4})Q(\d)$/, 'Q$2/$1') : null};
+renders.finance.push(() => { const p = document.getElementById('mt2-pp-finance'); if (window.PowerFinance) window.PowerFinance.build(p); });
 
 function build() {
   const pane = document.querySelector('.majorpane[data-tab="mt2"]'), section = pane?.querySelector(':scope>.section'); if (!section || pane.querySelector('.pp-nav')) return;

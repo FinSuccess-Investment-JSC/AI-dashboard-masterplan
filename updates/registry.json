@@ -4613,6 +4613,85 @@
    ]
   },
   {
+   "id": "power.industry-financials",
+   "tier": "C",
+   "title": "Bức tranh ngành › 07 Tài chính ngành: tổng hợp BCTC doanh nghiệp phát điện (lợi nhuận, CAPEX, XDCB, phải thu, dòng tiền, đòn bẩy, ROE/ROIC)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "file": "data/power-financials.js",
+    "blocks": [
+     "dien-fin-pnl",
+     "dien-fin-cycle",
+     "dien-fin-contrib",
+     "dien-fin-season",
+     "dien-fin-breadth",
+     "dien-fin-margin",
+     "dien-fin-bridge",
+     "dien-fin-cost",
+     "dien-fin-drivers",
+     "dien-fin-capex",
+     "dien-fin-intensity",
+     "dien-fin-cip",
+     "dien-fin-formation",
+     "dien-fin-funding",
+     "dien-fin-lifecycle",
+     "dien-fin-alloc",
+     "dien-fin-recv",
+     "dien-fin-dso",
+     "dien-fin-conversion",
+     "dien-fin-wc",
+     "dien-fin-recv-table",
+     "dien-fin-debt",
+     "dien-fin-leverage",
+     "dien-fin-interest",
+     "dien-fin-fcf",
+     "dien-fin-levdist",
+     "dien-fin-returns",
+     "dien-fin-dupont",
+     "dien-fin-roic-cycle",
+     "dien-fin-map",
+     "dien-fin-pool"
+    ]
+   },
+   "how": "python scripts/fetch_power_financials.py && python scripts/build_power_financials.py (chạy trong refresh-data.yml); tổng hợp ngành ở assets/industry-fin.js, giao diện assets/power-finance.js",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Loại trùng công ty mẹ − con theo scripts/power_fin_items.py CONSOLIDATION (POW−NT2, PGV−BTP, REE−VSH từ Q2/2021)",
+    "Mã lỗi tải giữ bản trước, ghi vào stale"
+   ]
+  },
+  {
    "id": "realestate.kcn-broker",
    "tier": "C",
    "title": "Chỉ số KCN theo báo cáo ngành CTCK: ký mới, giá thuê, đất cao su chuyển KCN, FDI theo quốc gia",
