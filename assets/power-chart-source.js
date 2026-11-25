@@ -5,7 +5,7 @@
 (() => {
 'use strict';
 if (document.body.dataset.sector !== 'power') return;
-const CHART = 'canvas, [data-ct-type], .ct-canvas, .pv-hm, .vw, .vu-kwh, .ov-spark, .ov-bars, .value-chain-scroll';
+const CHART = 'canvas, [data-ct-type], .ct-canvas, .pv-hm, .vw, .vu-kwh, .ov-spark, .ov-bars, .value-chain-scroll, .ov-q8-bars';
 const UNIT = '.vt-chart-i, .db-c, .viz-block, .card';
 const make = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
@@ -21,7 +21,8 @@ const MANUAL = [
   [/^Giá bán lẻ bình quân/, 'EVN · QĐ 1305/QĐ-EVN'],
   [/^Chi phí than\/kWh/, 'World Bank Pink Sheet; QĐ 1692/QĐ-BCT; NHNN; PGV'],
   [/^Chuỗi giá trị/, 'EVN · bản tin vận hành ngày (tỷ trọng sản lượng); báo cáo thường niên doanh nghiệp'],
-  [/^Trần khung giá phát điện/, 'Bộ Công Thương · quyết định khung giá phát điện']
+  [/^Trần khung giá phát điện/, 'Bộ Công Thương · quyết định khung giá phát điện'],
+  [/Công suất nguồn mục tiêu năm 2030/, 'QĐ 768/QĐ-TTg (Quy hoạch điện VIII điều chỉnh); EVN (công suất cuối 2025)']
 ];
 
 // Bỏ phần ghi chú kỹ thuật/tiếng Anh trong tên nguồn.

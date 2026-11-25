@@ -223,13 +223,14 @@ function releaseDate(r) {
 }
 const REL = Object.fromEntries(O.releases.map(r => [r.id, {...r, ...releaseDate(r)}]));
 // Bảng luận điểm (thesisStatus, THESES, nhận định "Luận điểm bị phản bác") bỏ 23/11/2026 cùng mục 4.2; data/power-overview.json vẫn giữ theses.
-function forward(p) {
+// Quy hoạch điện VIII điều chỉnh: dùng ở Tổng quan › Triển vọng 3.1 và Bức tranh ngành › Cung dài hạn 6.2 (window.PowerPlan8).
+function plan8Card(id) {
   // 4.1 Quy hoạch điện VIII điều chỉnh (QĐ 768/QĐ-TTg): mục tiêu công suất 2030 theo nguồn. Thay biểu đồ và danh sách dự án (23/11/2026, theo yêu cầu người dùng).
   const Q8 = POL.plan || {}, T8 = (Q8.targets || []).filter(t => fin(t.high)).sort((a, b) => b.high - a.high);
   const max8 = Math.max(...T8.map(t => t.high), 1), pct8 = v => (v / max8 * 100).toFixed(2) + '%';
   const leg8 = (Q8.legend || []).filter(l => !/^\|/.test(l.label));
   const proc8 = (Q8.revisions || []).find(r => /thủ tục/i.test(r.item));
-  const ol = card('dien-ov-plan8', 'ov-q8', T8.length ? `
+  const ol = card(id, 'ov-q8', T8.length ? `
     <div class="ov-q8-k">${(Q8.headline || []).map(([k, v]) => `<div><small>${esc(k)}</small><b>${esc(v)}</b></div>`).join('')}</div>
     <h4>Công suất nguồn mục tiêu năm 2030 theo loại hình (MW)</h4>
     <div class="ov-q8-leg">${leg8.map(l => `<span><i style="background:${l.color}"></i>${esc(l.label)}</span>`).join('')}<span><i class="ov-q8-lo"></i>cận dưới</span><span><i class="ov-q8-hi"></i>đến cận trên</span><span><i class="ov-q8-act"></i>công suất thực tế cuối 2025 (EVN ước)</span></div>
@@ -237,7 +238,12 @@ function forward(p) {
       <div class="ov-q8-t" title="${esc(t.source)}: ${nf(t.low, 0)}${t.high !== t.low ? ' – ' + nf(t.high, 0) : ''} MW${fin(t.actual) ? ` · cuối 2025: ${nf(t.actual, 0)} MW` : ''}"><i style="width:${pct8(t.low)};background:${t.color}"></i>${t.high > t.low ? `<i class="ov-q8-up" style="left:${pct8(t.low)};width:${pct8(t.high - t.low)};background:${t.color}"></i>` : ''}${fin(t.actual) ? `<em style="left:${pct8(t.actual)}"></em>` : ''}</div>
       <span class="ov-q8-v">${nf(t.low, 0)}${t.high !== t.low ? '–' + nf(t.high, 0) : ''}</span></div>`).join('')}</div>
     ${proc8 ? `<p class="ov-cap">Đang điều chỉnh: ${esc(proc8.proposal)} (${esc(proc8.status)}).</p>` : ''}` : '');
-  if (!T8.length) ol.append(gap('chưa nạp được số liệu Quy hoạch điện VIII.'));
+  if (!T8.length) ol.hidden = true;
+  return ol;
+}
+window.PowerPlan8 = plan8Card;
+function forward(p) {
+  const ol = plan8Card('dien-ov-plan8');
   // Lịch văn bản tác động giá điện (23/11/2026, thay bảng luận điểm và lịch catalyst chung): trần khung giá phát điện, giá bán lẻ,
   // quy tắc thị trường (Qc, CAN, trần SMP), DPPA. Đã ban hành: văn bản tab Policy 12 tháng gần nhất; sắp tới: mốc theo quy định, dự thảo.
   const PRICE_REL = ['retail_next', 'market_plan_2027', 'evn_cost', 'fit_review'];
