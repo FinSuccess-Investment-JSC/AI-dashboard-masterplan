@@ -46,7 +46,7 @@
       const model={categories,series,unit:units[field],digits:field==='level'?1:0,zeroBase:field!=='level',aria:`${labels[field]} hồ ${name}, ${latestYear} so với ${older} và trung bình 5 năm`};
       ChartTypes.mount(host,model,()=>{ host.innerHTML=ChartTypes.render(model,'line'); });
     }
-    status.textContent = `${name} · ${labels[field]} · dữ liệu đến ${dataset.last_observation} · đường nền: ${prior.length} năm ${prior.join(', ')}; chỉ vẽ tháng đủ ≥80% ngày và ≥3 năm hợp lệ.`;
+    status.textContent = `${name} · ${labels[field]}`;
     table.innerHTML='<thead><tr><th>Tháng</th><th>'+esc(String(latestYear))+'</th><th>'+esc(String(older))+'</th><th>TB 5Y</th><th>Lệch TB</th><th>Đủ ngày</th><th>Đúng 00h</th></tr></thead><tbody>'+categories.map((cat,i)=>{
       const r=actual[i], delta=current[i]!=null&&baseline[i]!=null?current[i]-baseline[i]:null;
       return `<tr><td>${cat}</td><td>${fmt(current[i])}</td><td>${fmt(previous[i])}</td><td>${fmt(baseline[i])}</td><td>${delta==null?'—':(delta>0?'+':'')+fmt(delta)}</td><td>${r?`${r.days}/${r.expected}`:'—'}</td><td>${r?`${r.exact00}/${r.days}`:'—'}</td></tr>`;

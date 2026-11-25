@@ -222,7 +222,7 @@ function map(host, ctx) {
     const t = T[id];
     if (t) { const g = ctx.insFor(t.groups[0]); det.innerHTML = `<div class="vm-dh" style="--c:${t.color}"><b>${esc(t.long)}</b><span>${esc(t.source)} · ${esc(plantSub(id))}</span></div>
       <div class="vm-flow">${t.stages.map((st, i) => `${i ? '<span aria-hidden="true">→</span>' : ''}<em class="vz-f-${st.flow}">${esc(st.t)}</em>`).join('')}</div>
-      ${g.length ? `<ul class="ov-list">${g.slice(0, 2).map(ctx.insLine).join('')}</ul>` : ''}<p>${ctx.chips(t.groups[0])}</p><a class="ov-more" href="?ov=tech&t=${id}#mt1" data-ov-tech="${id}">Mở chuỗi giá trị ${esc(t.long.toLowerCase())} →</a>`; return; }
+      <p>${ctx.chips(t.groups[0])}</p><a class="ov-more" href="?ov=tech&t=${id}#mt1" data-ov-tech="${id}">Mở chuỗi giá trị ${esc(t.long.toLowerCase())} →</a>`; return; }
     const n = N[id] || (id === 'import' ? N.import : null); if (!n) return;
     const go = n.go || {};
     det.innerHTML = `<div class="vm-dh"><b>${esc(n.t)}</b></div><p>${esc(n.d)}</p>${n.tickers ? `<p>${n.tickers.map(x => ctx.chip(x)).join(' ')}</p>` : ''}${go.pp ? `<a class="ov-more" href="?section=${go.pp}#mt2" data-pp-go="${go.pp}">Xem dữ liệu ở Bức tranh ngành →</a>` : ''}${go.policy ? `<a class="ov-more" href="?policy=${go.policy}#mt4" data-ov-policy="${go.policy}">Xem cơ chế ở tab Policy →</a>` : ''}${go.ov ? `<a class="ov-more" href="?ov=${go.ov}#mt1" data-ov-go="${go.ov}">Xem tác động đầu tư →</a>` : ''}`;
@@ -331,7 +331,7 @@ function companies(host, ctx) {
     <div class="vc-groups"></div>
     <div class="vc-two"><section class="vc-box"><h4>Định giá so với hiệu quả sinh lời</h4><p class="vz-take">Góc trên bên trái: ROE cao, P/B thấp. Bong bóng càng to, vốn hóa càng lớn. Đường đứt là trung vị.</p><div class="vc-scatter"></div></section>
       <section class="vc-box"><h4>Lãi ròng quý gần nhất so cùng kỳ</h4><p class="vz-take">Cột phải là tăng, cột trái là giảm; số bên phải là lãi ròng quý (tỷ đồng).</p><div class="vc-yoy"></div></section></div>
-    <section class="vc-box"><h4>Biên lợi nhuận gộp 8 quý gần nhất</h4><p class="vz-take">Ô càng đậm, biên gộp càng cao; ô trống là quý chưa có số.</p><div class="vc-heat"></div></section>
+    <section class="vc-box"><h4>Biên lợi nhuận gộp 8 quý gần nhất</h4><p class="vz-take">Ô càng đậm, biên gộp càng cao.</p><div class="vc-heat"></div></section>
     <p class="source-note">Định giá: VNDirect finfo (P/E, P/B theo EPS 4 quý gần nhất và giá trị sổ sách mỗi cổ phiếu, điều chỉnh theo giá đóng cửa). Lợi nhuận, biên gộp: BCTC hợp nhất quý. ROE = P/B ÷ P/E. Doanh nghiệp đa ngành (REE, HDG, PC1, GEX, POW…) gồm cả mảng ngoài điện. ↗ mở trang phân tích cổ phiếu.</p>`;
   const sel = () => grp === 'all' ? rows : rows.filter(r => r.g === grp);
   // 1) Thẻ tổng hợp theo nhóm

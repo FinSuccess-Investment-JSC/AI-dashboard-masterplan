@@ -258,3 +258,11 @@ table.vc-ht{border-collapse:separate;border-spacing:2px;font-size:11.5px;width:1
 #pane-mt1 .ov-q8-t em{position:absolute;top:-3px;bottom:-3px;width:3px;margin-left:-1px;background:#303540}
 #pane-mt1 .ov-q8-v{text-align:right;font-variant-numeric:tabular-nums;color:#303540}
 @media (max-width:640px){#pane-mt1 .ov-q8-k{grid-template-columns:1fr 1fr}#pane-mt1 .ov-q8-r{grid-template-columns:110px 1fr 84px;font-size:11.5px}}
+/* Dòng nguồn hiện sẵn dưới mọi chart trang Điện (power-chart-source.js, 25/11/2026) */
+.pw-src{margin:8px 0 0;text-align:right;font-size:11px;line-height:1.4;color:var(--muted,#7a8399)}.pw-src a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.pw-src-note.chart-caveat,.pw-src-note{margin:2px 0 0;text-align:right;font-size:10.5px;line-height:1.35;color:#9aa3b5;font-style:normal;background:none;border:0;padding:0}
+/* Bỏ kết luận / nhận định trực tiếp (25/11/2026): tab Chính sách (Hàm ý kinh tế), tab Động lực · Rủi ro (kết luận hiện tại, chấm điểm,
+   trạng thái và diễn giải từng tín hiệu). Các tab dùng mã chung nhiều ngành nên ẩn riêng trên trang Điện. */
+body[data-sector=power] #pane-mt4 .pp-concl,body[data-sector=power] .cr-verdict,body[data-sector=power] .cr-score-wrap,body[data-sector=power] .cr-state,
+body[data-sector=power] .thesis-state,body[data-sector=power] .thesis-impact,body[data-sector=power] .thesis-condition,body[data-sector=power] .thesis-howto,
+body[data-sector=power] .thesis-limitation,body[data-sector=power] .thesis-assumption,body[data-sector=power] .thesis-notice,body[data-sector=power] .ov-note{display:none!important}
