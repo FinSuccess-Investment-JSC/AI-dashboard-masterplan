@@ -320,14 +320,44 @@ function fuelCard() {
   renders.economics.push(draw);
   return c;
 }
-// 4.3 Kinh tế thủy điện: sản lượng (EVN) và FMP (PGV), không suy ra lợi nhuận.
+// Thủy điện › Đầu ra: sản lượng thủy điện và FMP, % so cùng kỳ theo tháng (thay bảng nhỏ cũ, 25/11/2026). Không suy ra lợi nhuận.
 function hydroEconCard() {
-  const c = newCard('dien-pp-hydro-econ', 'Thủy điện: sản lượng và giá thị trường, so cùng kỳ', 'sản lượng thủy điện (EVN, cùng ngày đối chiếu) · FMP bình quân (PGV) · %', `Nguồn: ${link(EVN_URL, 'EVN')} · FMP theo card "Giá thị trường điện" (PGV). Doanh thu thực nhận phụ thuộc Qc và giá hợp đồng từng nhà máy.`, {kind: 'public', cadence: 'monthly'});
-  const h = CMP.ytd?.get('hydro'), hm = CMP.m?.get('hydro');
-  const fmpM = M && fmp.find(r => r.period === M), fmpMly = M && fmp.find(r => r.period === back(M + '-01').slice(0, 7));
-  const rows = [['Sản lượng thủy điện', `${pc(hm?.yoy)} (${ml(M || '')})`, `${pc(h?.yoy)} (${esc(PERIODS.ytd?.name || '')})`],
-    ['FMP bình quân', fmpM && fmpMly ? `${pc((fmpM.fmp / fmpMly.fmp - 1) * 100)} (${ml(M)})` : '<span class="muted">chưa có FMP tháng này</span>', fmpYtd ? `${pc((fmpYtd.cur / fmpYtd.prev - 1) * 100)} (${fmpYtd.n} tháng ${fmpLast.year})` : '—']];
-  c.querySelector('.pp-host').innerHTML = `<div class="tablewrap"><table class="pp-mini"><thead><tr><th>Chỉ tiêu</th><th>Tháng gần nhất</th><th>Lũy kế năm</th></tr></thead><tbody>${rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</tbody></table></div>`;
+  const fm = new Map(fmp.map(r => [r.period, r.fmp])), fy = m => { const a = fm.get(m), b = fm.get(back(m + '-01').slice(0, 7)); return fin(a) && fin(b) ? (a / b - 1) * 100 : null; };
+  const list = months.filter(m => m.m <= M && monthCmp.get(m.m)?.ok).slice(-24);
+  const c = newCard('dien-pp-hydro-econ', 'Thủy điện: sản lượng và giá thị trường điện, so cùng kỳ (%)', '% so cùng tháng năm trước · sản lượng thủy điện (cùng ngày đối chiếu) · FMP bình quân tháng',
+    `Nguồn: ${link(EVN_URL, 'EVN · bản tin vận hành ngày')} · FMP theo bản tin IR PGV. Doanh thu thực nhận phụ thuộc Qc và giá hợp đồng từng nhà máy.`, {kind: 'public', cadence: 'monthly', table: true});
+  const hy = m => monthCmp.get(m)?.get('hydro')?.yoy ?? null;
+  const model = {key: 'dien-pp-hydro-econ', categories: list.map(m => ms(m.m)), unit: '%', digits: 1, zeroBase: false, time: true,
+    series: [{name: 'Sản lượng thủy điện', color: '#2938A8', kind: 'line', values: list.map(m => hy(m.m))}, {name: 'FMP', color: '#c98a00', kind: 'line', values: list.map(m => fy(m.m))}], aria: 'Sản lượng thủy điện và FMP so cùng kỳ'};
+  renders.hydro.push(() => mount(c.querySelector('.pp-host'), model));
+  fillTable(c.querySelector('table'), ['Tháng', 'Sản lượng thủy điện so cùng kỳ', 'FMP so cùng kỳ'], list.slice().reverse().map(m => [ms(m.m), pc(hy(m.m)), pc(fy(m.m))]));
+  return c;
+}
+// Nhiệt điện › Đầu ra: FMP so với chi phí nhiên liệu ước tính cùng tháng (đ/kWh). Chi phí = giá tham chiếu World Bank × suất hao nhiệt × tỷ giá; không phải chi phí thực tế từng nhà máy.
+function spreadCard(kind) {
+  const PI = window.PowerInsights, coal = kind === 'coal', wb = new Map(rec('wb_energy_monthly').map(r => [r.date.slice(0, 7), r]));
+  const costOf = (w, x) => !w || !x || !PI ? null : coal ? (fin(w.coal_au) ? PI.coalCost(w.coal_au, x.v, FUEL.HR_COAL, FUEL.HHV_NC) : null) : (fin(w.lng_japan) ? PI.gasCost(w.lng_japan, FUEL.FEE_USD, FUEL.HR_GAS, x.v) : null);
+  const rows = fmp.map(r => ({m: r.period, fmp: r.fmp, cost: costOf(wb.get(r.period), fxM.get(r.period))})).filter(r => fin(r.fmp) && fin(r.cost)).slice(-36);
+  if (rows.length < 3) return null;
+  const name = coal ? 'Chi phí nhiên liệu than nhập (ước tính)' : 'Chi phí nhiên liệu LNG (ước tính)';
+  const c = newCard('dien-pp-spread-' + kind, `Giá thị trường điện (FMP) so với chi phí nhiên liệu ${coal ? 'than nhập' : 'LNG'} ước tính (đ/kWh)`, 'đ/kWh · theo tháng · chi phí = giá nhiên liệu tham chiếu × suất hao nhiệt × tỷ giá cùng tháng',
+    `Nguồn: FMP theo bản tin IR PGV · ${link('https://www.worldbank.org/en/research/commodity-markets', 'World Bank Pink Sheet')} (${coal ? 'than Úc' : 'LNG Nhật'}) · tỷ giá bình quân tháng. Suất hao nhiệt theo giả định của trang; chi phí ước tính, không phải chi phí thực tế của từng nhà máy.`, {kind: 'public', cadence: 'monthly', table: true});
+  const model = {key: 'dien-pp-spread-' + kind, categories: rows.map(r => ms(r.m)), unit: 'đ/kWh', digits: 0, zeroBase: false, time: true,
+    series: [{name: 'FMP', color: '#2938A8', kind: 'line', values: rows.map(r => r.fmp)}, {name, color: coal ? '#3d4653' : '#c98a00', kind: 'line', values: rows.map(r => r.cost)}], aria: 'FMP so với chi phí nhiên liệu ước tính'};
+  renders[kind].push(() => mount(c.querySelector('.pp-host'), model));
+  fillTable(c.querySelector('table'), ['Tháng', 'FMP (đ/kWh)', name + ' (đ/kWh)', 'Chênh lệch (đ/kWh)'], rows.slice().reverse().map(r => [ms(r.m), nf(r.fmp, 0), nf(r.cost, 0), sg(r.fmp - r.cost, 0)]));
+  return c;
+}
+// Gió & mặt trời › Đầu ra: tỷ trọng trong sản lượng hệ thống theo tháng.
+function reShareCard() {
+  const list = months.filter(m => m.mixDays && m.m >= '2023-06' && m.m <= M && fin(m.share?.re));
+  if (list.length < 3) return null;
+  const c = newCard('dien-pp-re-share', 'Tỷ trọng gió & mặt trời trong sản lượng hệ thống, theo tháng (%)', '% sản lượng hệ thống · bình quân ngày theo nguồn',
+    `Nguồn: ${link(EVN_URL, 'EVN · bản tin vận hành ngày')}; cộng các bản tin có đủ thành phần, không ước tính ngày thiếu.`, {table: true});
+  const model = {key: 'dien-pp-re-share', categories: list.map(m => ms(m.m) + (m.mixDays < m.n ? '*' : '')), unit: '%', digits: 1, zeroBase: false, time: true,
+    series: [{name: 'Gió & mặt trời', color: '#2a9fa3', kind: 'line', values: list.map(m => m.share.re)}], aria: 'Tỷ trọng gió và mặt trời theo tháng'};
+  renders.re.push(() => mount(c.querySelector('.pp-host'), model));
+  fillTable(c.querySelector('table'), ['Tháng', 'Tỷ trọng (%)', 'Bình quân ngày (triệu kWh)', 'Ngày đủ nguồn'], list.slice().reverse().map(m => [ms(m.m), nf(m.share.re, 1), nf(m.avgSrc?.re, 1), `${m.mixDays}/${m.n}`]));
   return c;
 }
 
@@ -440,18 +470,29 @@ const SUPPLY = (() => {
 window.POWER_CORE = {S, rec, fin, sum, mean, median, nf, sg, pc, pp, esc, el, dm, ml, ms, dim, back, addMonths, datesOf, glob, link, block, cardOf, refit, EVN_URL, SRC, days, byDay, lastDay, M, compare, monthDates, PERIODS, CMP, months, monthBy, monthCmp, pmaxYoY, pmaxYtd, ytdOut, accel, oni, oniLast, oni3, oni6, ensoState, nino, ninoLast, nino4, H, reservoir5y, resYoY, fmp, fmpLast, fmpPrev, fmpLy, fmpYtd, chg, coal3, jkm3, hh3, capItems, pipelineStages, pipelineShare, shortfallYears, shortfallMw, outVals, outLabels, tariffDates, tariffVals, lossLabels, lossVals, LV, tag, lines, gap, kpi, kpiCls, newCard, mount, fillTable, panel, G, thermal, topContrib, DEMAND, HYDRO, DISPATCH, ECON, SUPPLY};
 
 /* ===================== 5. Sub-tab ===================== */
+// 25/11/2026 theo yêu cầu người dùng: xếp theo loại hình. 01 Toàn hệ thống (số EVN: nhu cầu, huy động, khí hậu, giá, công suất),
+// 02–05 từng loại nguồn theo luồng Đầu vào → Sản xuất → Đầu ra (tên khâu theo hệ thống ngành), 06 Chính sách (tab lớn Chính sách cũ dời xuống).
+// Tài chính ngành lên tab lớn riêng #mt14 (power-overview.js). Mẫu chuẩn để đồng bộ các ngành khác.
 const SECTIONS = [
-  ['demand', '01', 'Nhu cầu', 'Nhu cầu điện', 'Nhu cầu đang tăng thế nào và mức tăng có tạo áp lực lên hệ thống không?'],
-  ['hydro', '02', 'Thủy văn', 'Thủy văn & nguồn cung', 'Điều kiện thủy văn và khả năng vận hành nguồn đang thuận lợi hay bất lợi?'],
-  ['dispatch', '03', 'Huy động', 'Cơ cấu huy động', 'Nguồn nào đang được huy động nhiều hơn, nguồn nào đóng góp vào tăng trưởng sản lượng?'],
-  ['economics', '04', 'Giá điện', 'Giá & kinh tế phát điện', 'Giá thị trường điện và nhiên liệu đang thuận hay bất lợi cho nhà máy phát điện?'],
-  ['supply', '05', 'Cung dài hạn', 'Cung điện dài hạn', 'Có đủ công suất cho phụ tải 2027–2030 không, nguồn mới đang ở giai đoạn nào?'],
-  // 07 Tài chính ngành (25/11/2026): dựng ở assets/power-finance.js từ BCTC doanh nghiệp (window.POWER_FIN).
-  ['finance', '06', 'Tài chính ngành', 'Tài chính ngành', 'Lợi nhuận, dòng vốn đầu tư, công nợ và dòng tiền của doanh nghiệp phát điện niêm yết đang diễn biến ra sao?']
+  ['system', '01', 'Toàn hệ thống', 'Toàn hệ thống điện', 'Nhu cầu, huy động theo nguồn, khí hậu, giá điện và công suất của cả hệ thống.'],
+  ['hydro', '02', 'Thủy điện', 'Thủy điện', 'Nước về hồ → sản lượng thủy điện → giá bán.'],
+  ['coal', '03', 'Nhiệt điện than', 'Nhiệt điện than', 'Giá than → sản lượng nhiệt điện than → giá bán so với chi phí nhiên liệu.'],
+  ['gas', '04', 'Nhiệt điện khí', 'Nhiệt điện khí & LNG', 'Giá khí, LNG → sản lượng điện khí → giá bán so với chi phí nhiên liệu, nguồn LNG mới.'],
+  ['re', '05', 'Gió & mặt trời', 'Điện gió & mặt trời', 'Sản lượng gió, mặt trời → tỷ trọng trong hệ thống.'],
+  ['policy', '06', 'Chính sách', 'Chính sách', 'Quy hoạch & đầu tư, giá điện & hợp đồng.']
 ];
-SECTIONS.forEach(s => { renders[s[0]] = []; });
-const asOf = {demand: lastDay, hydro: H?.last_observation, dispatch: lastDay, economics: fmpLast ? 'FMP ' + ml(fmpLast.period) + ' · nhiên liệu ' + dm(coal3?.date) : null, evn: tariffDates ? 'giá bán lẻ từ ' + tariffDates.at(-1) : null, supply: 'Báo cáo 760/BC-BCT (10/09/2026)', finance: window.POWER_FIN ? 'BCTC ' + window.POWER_FIN.periods.at(-1).replace(/^(\d{4})Q(\d)$/, 'Q$2/$1') : null};
-renders.finance.push(() => { const p = document.getElementById('mt2-pp-finance'); if (window.PowerFinance) window.PowerFinance.build(p); });
+// Ba khâu của từng loại nguồn; khâu không có chart thì không hiện.
+const FLOW = {
+  hydro: [['in', 'Đầu vào', 'Nước về hồ'], ['make', 'Sản xuất', 'Sản lượng thủy điện'], ['out', 'Đầu ra', 'Giá bán']],
+  coal: [['in', 'Đầu vào', 'Giá than'], ['make', 'Sản xuất', 'Sản lượng nhiệt điện than'], ['out', 'Đầu ra', 'Giá bán so với chi phí nhiên liệu']],
+  gas: [['in', 'Đầu vào', 'Giá khí & LNG'], ['make', 'Sản xuất', 'Sản lượng điện khí'], ['out', 'Đầu ra', 'Giá bán, chi phí nhiên liệu & nguồn mới']],
+  re: [['in', 'Đầu vào', 'Công suất'], ['make', 'Sản xuất', 'Sản lượng gió & mặt trời'], ['out', 'Đầu ra', 'Tỷ trọng trong hệ thống']]
+};
+// Chart dựng theo khóa cũ (demand, dispatch, economics, supply) chạy khi mở sub-tab mới chứa nó.
+const RMAP = {demand: 'system', dispatch: 'system', economics: 'coal', supply: 'gas'};
+const ALIAS = {demand: 'system', dispatch: 'system', economics: 'system', supply: 'system', evn: 'system'};
+[...Object.keys(RMAP), ...SECTIONS.map(s => s[0])].forEach(k => { renders[k] = renders[k] || []; });
+const asOf = {system: lastDay, hydro: H?.last_observation, coal: coal3?.date ? 'giá than ' + dm(coal3.date) : null, gas: jkm3?.date ? 'giá LNG ' + dm(jkm3.date) : null, re: lastDay, policy: window.POWER_POLICY?.as_of || null};
 
 function build() {
   const pane = document.querySelector('.majorpane[data-tab="mt2"]'), section = pane?.querySelector(':scope>.section'); if (!section || pane.querySelector('.pp-nav')) return;
@@ -461,18 +502,21 @@ function build() {
   const keep = {daily: tile('#kpi-daily'), ytd: tileByLabel(/Lũy kế/), pmax: tile('#kpi-pmax'), tariff: tileByLabel(/bán lẻ/i), oni: tileByLabel(/ONI/), coal: tileByLabel(/Newcastle/)};
   const C = id => block(id), H2 = hostId => cardOf(hostId);
   // Card dời từ Chủ đề nóng (pipeline, thiếu hụt): để lại liên kết ở chỗ cũ.
-  const moved = ['dien-24', 'dien-25'].map(id => { const c = C(id); if (!c) return null; const note = el('div', 'card pp-moved', `<div class="chart-title">${esc(c.querySelector('.chart-title')?.textContent || '')}</div><p class="research-caption">Biểu đồ đã chuyển sang <a href="?section=supply#mt2" data-pp-go="supply">Bức tranh ngành › Cung điện dài hạn</a>.</p>`); c.before(note); return c; });
+  const moved = ['dien-24', 'dien-25'].map(id => { const c = C(id); if (!c) return null; const note = el('div', 'card pp-moved', `<div class="chart-title">${esc(c.querySelector('.chart-title')?.textContent || '')}</div><p class="research-caption">Biểu đồ đã chuyển sang <a href="?section=system#mt2" data-pp-go="system">Bức tranh ngành › Toàn hệ thống</a>.</p>`); c.before(note); return c; });
 
-  if (head) head.innerHTML = `<div><h2 class="sec">Bức tranh ngành</h2><p>Cầu → thủy văn & nguồn cung → huy động → giá điện → cung dài hạn → tài chính ngành. Mỗi sub-tab trả lời một câu hỏi; chi tiết số liệu và phương pháp thu gọn ở cuối panel. Toàn cảnh ngành: <a href="?ov=map#mt1" data-ov-go="map">← Tổng quan ngành</a>.</p></div>`;
+  if (head) head.innerHTML = `<div><h2 class="sec">Bức tranh ngành</h2><p>Toàn hệ thống → thủy điện → nhiệt điện than → nhiệt điện khí → gió & mặt trời → chính sách. Mỗi loại nguồn đi theo luồng đầu vào → sản xuất → đầu ra. Toàn cảnh ngành: <a href="?ov=map#mt1" data-ov-go="map">← Tổng quan ngành</a>.</p></div>`;
   const nav = el('div', 'pp-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Nhóm câu hỏi phân tích');
   head ? head.after(nav) : section.prepend(nav);
-  const panes = {}; let anchor = nav;
+  const tabs = {}; let anchor = nav;
   SECTIONS.forEach(([key, num, label, title, goal]) => {
     const b = el('button', 'tabbtn pp-tab', `<span>${num}</span>${esc(label)}`); b.type = 'button'; b.id = 'mt2-pp-' + key + '-tab'; b.setAttribute('role', 'tab'); b.dataset.section = key; nav.append(b);
     const p = el('div', 'pane-subpane pp-pane'); p.id = 'mt2-pp-' + key; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); p.hidden = true; b.setAttribute('aria-controls', p.id);
     p.innerHTML = `<header class="pp-head"><div><span class="pp-k">${num}</span><h2>${esc(title)}</h2><p>${esc(goal)}</p></div><span class="pp-asof">${asOf[key] ? 'Dữ liệu mới nhất: ' + esc(/^\d{4}-\d\d-\d\d$/.test(asOf[key]) ? dm(asOf[key]) : asOf[key]) : ''}</span></header>`;
-    anchor.after(p); anchor = p; panes[key] = p;
+    anchor.after(p); anchor = p; tabs[key] = p;
   });
+  // Nội dung vẫn dựng theo khóa cũ vào khung tạm (ẩn, trong trang để tra card theo mã khối), cuối build() xếp lại theo loại hình.
+  const hold = el('div', 'pp-hold'); hold.hidden = true; anchor.after(hold);
+  const panes = {}; ['demand', 'hydro', 'dispatch', 'economics', 'supply'].forEach(k => { panes[k] = el('div'); hold.append(panes[k]); });
   const strip = (key, tiles) => { const g = el('section', 'grid kpis pp-kpis'); tiles.filter(Boolean).slice(0, 4).forEach(t => g.append(t)); panes[key].append(g); };
 
   const pick = (arr, l) => arr.filter(x => x[0] === l);
@@ -549,7 +593,7 @@ function build() {
   panes.economics.append(qpanel({id: 'econ-prices', num: '4.1', q: 'Giá thị trường điện đang lên hay xuống, và đó là giá gì?', lv: 'A',
     concl: fmpLast ? `FMP ${ml(fmpLast.period)} ${nf(fmpLast.fmp, 0)} đ/kWh, ${pc(F.price.fmpMoM)} so tháng trước, ${pc(F.price.fmpYoY)} so cùng kỳ. FMP là giá thị trường, không phải giá bán thực nhận của mọi nhà máy.` : '',
     metrics: [['FMP', nf(fmpLast?.fmp, 0) + ' đ/kWh', fmpLast ? ml(fmpLast.period) : ''], ['So cùng kỳ', pc(F.price.fmpYoY)], ['Bình quân từ đầu năm', fmpYtd ? pc((fmpYtd.cur / fmpYtd.prev - 1) * 100) : '—', fmpYtd ? fmpYtd.n + ' tháng' : '']],
-    impl: 'FMP cao có lợi cho phần điện năng ngoài Qc của nhà máy chào giá trực tiếp; nhà máy Qc cao hoặc gián tiếp tham gia gần như không hưởng.', main: C('dien-15') || H2('chFmpTrend'), explore: [hydroEconCard()],
+    impl: 'FMP cao có lợi cho phần điện năng ngoài Qc của nhà máy chào giá trực tiếp; nhà máy Qc cao hoặc gián tiếp tham gia gần như không hưởng.', main: C('dien-15') || H2('chFmpTrend'),
     deep: {method: 'FMP bình quân tháng từ bản tin IR PGV; CAN là giá năm, không trừ FMP tháng với CAN năm để suy SMP tháng.'}}));
   panes.economics.append(qpanel({id: 'econ-fuel', num: '4.2', q: 'Giá nhiên liệu đầu vào đang đi hướng nào?', lv: 'A',
     concl: coal3 || jkm3 ? `So 3 tháng trước: than Newcastle ${pc(coal3?.pct)}, LNG JKM ${pc(jkm3?.pct)}${hh3 ? `, khí Henry Hub ${pc(hh3.pct)}` : ''}. Đây là giá tham chiếu quốc tế, không phải giá nhiên liệu theo hợp đồng của từng nhà máy.` : '',
@@ -592,36 +636,106 @@ function build() {
   // 25/11/2026: ô Giá bán lẻ bình quân không thuộc câu hỏi nào, đứng lẻ một hàng ở 01 Cầu điện; bỏ theo yêu cầu người dùng (chart giá bán lẻ đã có ở phần khác).
   keep.tariff?.remove();
   [kpiGrid, top].forEach(n => { if (n && !n.querySelector('.kpi,.card')) n.remove(); });
-  if (kpiGrid?.isConnected && kpiGrid.querySelector('.kpi')) panes.demand.append(kpiGrid);
+  // Ô KPI cũ không thuộc sub-tab nào: bỏ (không để hàng ô đứng lẻ).
+  if (kpiGrid?.isConnected) kpiGrid.remove();
+
+  /* ---------- Xếp lại theo loại hình (25/11/2026) ---------- */
+  const QP = id => hold.querySelector('#pp-' + id), CB = id => hold.querySelector(`[data-block-id="${id}"]`);
+  const tiles = k => [...(panes[k].querySelector(':scope>.pp-kpis')?.children || [])];
+  const T = {demand: tiles('demand'), hydro: tiles('hydro'), dispatch: tiles('dispatch'), economics: tiles('economics'), supply: tiles('supply')};
+  const lab = t => t?.querySelector('.label')?.textContent || '';
+  const tileOf = (arr, re) => arr.find(t => re.test(lab(t)));
+  const strip2 = (key, list) => { const ts = list.filter(Boolean).slice(0, 4); if (ts.length < 2) return; const g = el('section', 'grid kpis pp-kpis'); ts.forEach(t => g.append(t)); tabs[key].append(g); };
+  const grp = (key, title) => tabs[key].append(el('h3', 'pp-grp', esc(title)));
+  const put = (key, nodes) => nodes.filter(Boolean).forEach(n => tabs[key].append(n));
+  const Gy = G('re', 'ytd'), capRe = capItems?.[2];
+  const fuelTile = (label, v, U) => v != null && U ? kpi({label: label + ' · ' + ml(U.period), value: nf(v, 0), unit: 'đ/kWh', delta: `FMP cùng tháng ${nf(U.fmp, 0)} đ/kWh`, cls: 'pp-neutral', sub: 'giá tham chiếu × suất hao nhiệt × tỷ giá'}) : null;
+
+  // 01 Toàn hệ thống: nhu cầu → huy động → khí hậu → giá điện → công suất & quy hoạch.
+  strip2('system', T.demand);
+  const typeCards = ['dien-07', 'dien-07-coal', 'dien-07-gas', 'dien-07-renewables'].map(CB);
+  const coalIn = [CB('fast-price'), CB('dien-12'), CB('dien-pp-fuel')], gasIn = CB('dien-13'), pipe = CB('dien-pp-pipeline-cod');
+  [...typeCards, ...coalIn, gasIn, pipe].forEach(n => n?.remove());
+  grp('system', 'Nhu cầu điện'); put('system', [QP('demand-momentum'), QP('demand-peak')]);
+  grp('system', 'Huy động theo nguồn'); put('system', [QP('dispatch-system'), QP('dispatch-why')]);
+  grp('system', 'Khí hậu'); put('system', [QP('hydro-climate')]);
+  grp('system', 'Giá điện'); put('system', [QP('econ-prices'), QP('econ-retail')]);
+  grp('system', 'Công suất & quy hoạch'); put('system', [QP('supply-cap'), QP('supply-output'), QP('supply-pipe'), QP('supply-gap')]);
+  const pipePanel = tabs.system.querySelector('#pp-supply-pipe');
+  if (pipePanel) { const d24 = pipePanel.querySelector('[data-block-id="dien-24"]'); if (d24) { pipePanel.querySelector('h3').textContent = 'Dự án nguồn điện trong quy hoạch đang ở giai đoạn nào?'; pipePanel.querySelector('.pp-sup1')?.classList.add('pp-main'); } else pipePanel.remove(); }
+
+  // 02–05: luồng Đầu vào → Sản xuất → Đầu ra.
+  const stages = {
+    hydro: {in: [QP('hydro-vn')], make: [qpanel({id: 'hydro-output', q: 'Sản lượng thủy điện từng tháng so với cùng kỳ', main: typeCards[0]})], out: [qpanel({id: 'hydro-price', q: 'Sản lượng thủy điện và giá thị trường điện, so cùng kỳ', main: hydroEconCard()})]},
+    coal: {in: [qpanel({id: 'coal-price', q: 'Giá than nhập theo ngày và theo tháng', main: coalIn[0], explore: [coalIn[1], coalIn[2]]})], make: [qpanel({id: 'coal-output', q: 'Sản lượng nhiệt điện than từng tháng so với cùng kỳ', main: typeCards[1]})],
+      out: [qpanel({id: 'coal-spread', q: 'Giá thị trường điện so với chi phí nhiên liệu than nhập', main: spreadCard('coal')})]},
+    gas: {in: [qpanel({id: 'gas-price', q: 'Giá khí & LNG quốc tế theo tháng', main: gasIn})], make: [qpanel({id: 'gas-output', q: 'Sản lượng điện khí & dầu từng tháng so với cùng kỳ', main: typeCards[2]})],
+      out: [qpanel({id: 'gas-spread', q: 'Giá thị trường điện so với chi phí nhiên liệu LNG', main: spreadCard('gas')}), qpanel({id: 'gas-pipe', q: 'Dự án điện khí LNG theo trạng thái và năm vận hành', main: pipe})]},
+    re: {in: [], make: [qpanel({id: 're-output', q: 'Sản lượng gió & mặt trời từng tháng so với cùng kỳ', main: typeCards[3]})], out: [qpanel({id: 're-share', q: 'Tỷ trọng gió & mặt trời trong sản lượng hệ thống', main: reShareCard()})]}
+  };
+  const U2 = unitM, ciT2 = U2 ? PIr?.coalCost(U2.coalUsd, U2.fx, FUEL.HR_COAL, FUEL.HHV_NC) : null, lgT2 = U2 ? PIr?.gasCost(U2.lngUsd, FUEL.FEE_USD, FUEL.HR_GAS, U2.fx) : null;
+  const strips = {
+    hydro: [tileOf(T.dispatch, /^Thủy điện/), ...T.hydro.filter(t => !/ONI/.test(lab(t)))],
+    coal: [tileOf(T.dispatch, /^Than/), tileOf(T.economics, /Newcastle/), tileOf(T.economics, /^FMP/), fuelTile('Chi phí than nhập ước tính', ciT2, U2)],
+    gas: [tileOf(T.dispatch, /^Khí/), tileOf(T.economics, /JKM/), fuelTile('Chi phí LNG ước tính', lgT2, U2), tileOf(T.supply, /LNG đang xây dựng/)],
+    re: [tileOf(T.dispatch, /^Gió/), Gy ? kpi({label: 'Gió & mặt trời từ đầu năm', value: pc(Gy.yoy), delta: `tỷ trọng ${nf(Gy.shareCur, 1)}% (${pp(Gy.dpp)})`, cls: 'pp-neutral', sub: `${PERIODS.ytd?.name || ''} · so cùng kỳ`}) : null,
+      capRe ? kpi({label: 'Công suất ' + String(capRe[0]).toLowerCase() + ' cuối 2025', value: nf(capRe[1], 0), unit: 'MW', delta: capItems ? `${nf(capRe[1] / sum(capItems.map(x => x[1])) * 100, 0)}% công suất đặt` : '', cls: 'pp-neutral', sub: 'EVN · công suất đặt'}) : null]
+  };
+  Object.entries(stages).forEach(([key, st]) => {
+    strip2(key, strips[key].map(neutral));
+    const live = FLOW[key].filter(([id]) => st[id].some(q => q?.querySelector('.card')));
+    if (live.length > 1) {
+      const bar = el('nav', 'pp-flow'); bar.setAttribute('aria-label', 'Luồng ' + SECTIONS.find(x => x[0] === key)[2].toLowerCase());
+      bar.innerHTML = live.map(([id, k, t], i) => `${i ? '<span class="pp-flow-ar" aria-hidden="true">→</span>' : ''}<a href="#mt2-pp-${key}-${id}" class="pp-flow-s" data-pp-stage="mt2-pp-${key}-${id}"><small>${k}</small><b>${esc(t)}</b></a>`).join('');
+      tabs[key].append(bar);
+    }
+    live.forEach(([id, k, t]) => { const h = el('div', 'pp-stage', `<span>${k}</span><h3>${esc(t)}</h3>`); h.id = `mt2-pp-${key}-${id}`; tabs[key].append(h); put(key, st[id].filter(q => q?.querySelector('.card'))); });
+  });
+
+  // 06 Chính sách: nội dung tab lớn Chính sách cũ (#mt4) dời xuống đây.
+  const pol = document.getElementById('power-policy'); if (pol) tabs.policy.append(pol);
+  const oldPolicy = document.querySelector('.majorpane[data-tab="mt4"]'); if (oldPolicy) oldPolicy.hidden = true;
+
+  // Đánh lại số câu hỏi theo sub-tab; dọn lưới chart phụ còn 0–1 card.
+  SECTIONS.forEach(([key, num]) => tabs[key].querySelectorAll(':scope>.pp-panel .pp-num').forEach((n, i) => { n.textContent = `${+num}.${i + 1}`; }));
+  Object.values(tabs).forEach(t => t.querySelectorAll('.pp-main').forEach(w => { if (!w.children.length) w.remove(); }));
+  Object.values(tabs).forEach(t => t.querySelectorAll('.pp-more').forEach(g => { const n = g.querySelectorAll(':scope>.card').length; if (!n) g.remove(); else if (n === 1) g.className = 'pp-sup1 pp-more'; }));
+  hold.remove();
 
   // Điều hướng: chọn sub-tab, URL ?section=…#mt2, Back/Forward.
   const keys = SECTIONS.map(s => s[0]), done = new Set();
   const btns = [...nav.children];
   const select = (key, push) => {
-    if (key === 'evn') key = 'economics';  // tab EVN đã bỏ 25/11/2026
-    if (!keys.includes(key)) key = 'demand';
-    keys.forEach((k, i) => { const on = k === key; panes[k].hidden = !on; btns[i].setAttribute('aria-selected', String(on)); btns[i].tabIndex = on ? 0 : -1; btns[i].classList.toggle('active', on); });
-    if (!done.has(key)) { done.add(key); renders[key].forEach(f => { try { f(); } catch (e) { document.documentElement.dataset.ppError = (document.documentElement.dataset.ppError || '') + key + ':' + e.message + ';'; } }); }
+    if (key === 'finance') { window.PowerFinTab?.open('fin', true); return; }  // Tài chính ngành lên tab lớn #mt14 (25/11/2026)
+    key = ALIAS[key] || key;  // khóa cũ (demand, dispatch, economics, supply, evn) mở Toàn hệ thống
+    if (!keys.includes(key)) key = 'system';
+    keys.forEach((k, i) => { const on = k === key; tabs[k].hidden = !on; btns[i].setAttribute('aria-selected', String(on)); btns[i].tabIndex = on ? 0 : -1; btns[i].classList.toggle('active', on); });
+    if (!done.has(key)) { done.add(key); [key, ...Object.keys(RMAP).filter(k => RMAP[k] === key)].forEach(rk => renders[rk].forEach(f => { try { f(); } catch (e) { document.documentElement.dataset.ppError = (document.documentElement.dataset.ppError || '') + rk + ':' + e.message + ';'; } })); }
     const u = new URL(location.href);
     if (push && u.searchParams.get('section') !== key) { u.searchParams.set('section', key); history.pushState({ppSection: key}, '', u.pathname + u.search + (location.hash || '#mt2')); }
     const b = btns[keys.indexOf(key)]; if (b) nav.scrollLeft = Math.max(0, b.offsetLeft - (nav.clientWidth - b.offsetWidth) / 2);
-    setTimeout(() => window.dispatchEvent(new Event('resize')), 30); refit(panes[key]);
+    setTimeout(() => window.dispatchEvent(new Event('resize')), 30); refit(tabs[key]);
   };
+  window.PowerPicture = {select};
   btns.forEach((b, i) => {
     b.addEventListener('click', () => select(b.dataset.section, true));
     b.addEventListener('keydown', e => { const d = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!d) return; e.preventDefault(); const n = (i + d + btns.length) % btns.length; btns[n].click(); btns[n].focus(); });
   });
   const fromUrl = () => new URL(location.href).searchParams.get('section');
-  addEventListener('popstate', () => { const s = fromUrl(); if (s && (location.hash === '#mt2' || !location.hash)) window.showMajorTab?.('mt2'); select(s || 'demand', false); });
+  addEventListener('popstate', () => { const s = fromUrl(); if (location.hash === '#mt14') return; if (s && (location.hash === '#mt2' || !location.hash)) window.showMajorTab?.('mt2'); select(s || 'system', false); });
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-pp-go]'); if (a) { e.preventDefault(); window.showMajorTab?.('mt2'); select(a.dataset.ppGo, true); pane.scrollIntoView({block: 'start'}); return; }
-    const m = e.target.closest('[data-pp-main]'); if (m) { e.preventDefault(); window.showMajorTab?.(m.dataset.ppMain); window.scrollTo({top: 0}); }
+    const m = e.target.closest('[data-pp-main]'); if (m) { e.preventDefault(); window.showMajorTab?.(m.dataset.ppMain); window.scrollTo({top: 0}); return; }
+    const st = e.target.closest('[data-pp-stage]'); if (st) { e.preventDefault(); document.getElementById(st.dataset.ppStage)?.scrollIntoView({behavior: 'smooth', block: 'start'}); }
   });
-  const s0 = fromUrl();
+  let s0 = fromUrl();
+  // Link cũ của tab lớn Chính sách (#mt4, ?policy=) mở Bức tranh ngành › Chính sách.
+  if (location.hash === '#mt4' || (!s0 && new URL(location.href).searchParams.get('policy'))) { s0 = 'policy'; const u = new URL(location.href); u.searchParams.set('section', 'policy'); history.replaceState(null, '', u.pathname + u.search + '#mt2'); window.showMajorTab?.('mt2'); }
+  if (s0 === 'finance') { s0 = null; window.PowerFinTab?.open('fin', false); }
   if (s0 && (!location.hash || location.hash === '#')) { history.replaceState(null, '', location.pathname + location.search + '#mt2'); window.showMajorTab?.('mt2'); }
   // Link cũ ?section=pulse#mt2: Industry Pulse nay ở Tổng quan ngành.
   if (s0 === 'pulse') { history.replaceState(null, '', location.pathname + '?ov=map#mt1'); window.showMajorTab?.('mt1'); }
-  select(s0 && s0 !== 'pulse' ? s0 : 'demand', false);
+  select(s0 && s0 !== 'pulse' ? s0 : 'system', false);
   // Thanh sub-tab dính ngay dưới thanh tab chính (thanh tab chính chỉ dính ở desktop).
   const setTop = () => { const t = document.querySelector('.majortabs'); const cs = t && getComputedStyle(t); nav.style.top = cs && cs.position === 'sticky' && innerWidth > 700 ? (t.getBoundingClientRect().height + 8) + 'px' : '0px'; };
   setTop(); addEventListener('resize', setTop);
@@ -636,7 +750,7 @@ const CSS = `
 .pp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:2px 0 12px;flex-wrap:wrap}
 .pp-head h2{margin:0;font-size:19px}.pp-head p{margin:4px 0 0;color:var(--ink2,#3b4256);font-size:13.5px}.pp-k{font:600 12px Inter,sans-serif;color:var(--muted,#7a8399);letter-spacing:.04em}
 .pp-asof{font-size:12px;color:var(--muted,#7a8399)}
-.pp-kpis{margin-bottom:16px}.pp-pane .pp-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}.pp-kpi .value small{font-size:12px;font-weight:500;color:var(--muted,#7a8399)}
+.pp-pane>.pp-kpis{margin-bottom:16px;grid-template-columns:repeat(4,minmax(0,1fr))}.pp-kpi .value small{font-size:12px;font-weight:500;color:var(--muted,#7a8399)}
 .pp-panel{margin:0 0 22px;padding:14px 14px 10px;border:1px solid var(--line,#e3e7f0);border-radius:14px;background:color-mix(in srgb,var(--card,#fff) 92%,#2938A8 3%)}
 .pp-ph{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}.pp-num{flex:0 0 auto;font:700 12px Inter,sans-serif;color:#fff;background:#1D2678;border-radius:6px;padding:3px 7px;margin-top:2px}
 .pp-ph h3{margin:0 0 4px;font-size:15.5px;line-height:1.35}.pp-find{font-size:13px;line-height:1.55}
@@ -665,7 +779,7 @@ const CSS = `
 .pp-part{background:#fff1d6;color:#7a5200;border-radius:4px;padding:0 5px}.pp-moved{opacity:.85}.pp-old{display:none!important}
 :root[data-theme=dark] .pp-panel{background:color-mix(in srgb,var(--card,#141a33) 94%,#6171C5 6%)}:root[data-theme=dark] .pp-expo tr.pp-hl td{background:#3a3214!important}
 :root[data-theme=dark] .pp-lv-A{background:#26306b;color:#dfe4ff}:root[data-theme=dark] .pp-lv-B{background:#4a3b12;color:#ffe3a6}:root[data-theme=dark] .pp-lv-C{background:#4b1d34;color:#ffd0e6}
-@media (max-width:760px){.pp-pane .pp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.pp-div-row{grid-template-columns:96px 1fr 60px}.pp-div-row em{grid-column:2/4}.pp-interp dl{grid-template-columns:1fr}.pp-as-row{grid-template-columns:1fr}.pp-panel{padding:12px 10px}}
+@media (max-width:760px){.pp-pane>.pp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.pp-div-row{grid-template-columns:96px 1fr 60px}.pp-div-row em{grid-column:2/4}.pp-interp dl{grid-template-columns:1fr}.pp-as-row{grid-template-columns:1fr}.pp-panel{padding:12px 10px}}
 `;
 // CSS cho khung 3 lớp (12/11/2026): kết luận chính, nhãn trạng thái, chỉ tiêu, máy tính kịch bản; màu KPI trung tính.
 const CSS2 = `
@@ -684,7 +798,14 @@ const CSS2 = `
 .pp-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px 12px;margin:8px 0}.pp-form label{display:flex;flex-direction:column;font-size:12px;color:var(--muted,#7a8399)}
 .pp-form input{margin-top:3px;padding:6px 8px;border:1px solid var(--line,#d6dbe8);border-radius:7px;font:600 13px Inter,sans-serif;font-variant-numeric:tabular-nums;background:var(--card,#fff);color:var(--ink,#1d2333)}
 .pp-kpi .delta.pp-neutral,.kpi .delta.pp-neutral{color:var(--ink2,#3b4256)!important}
-.pp-pane .ct-period label:first-child{display:none}
+.pp-pane:not(#mt2-pp-policy) .ct-period label:first-child{display:none}
+.pp-grp{margin:22px 0 10px;font:700 12px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#7a8399)}
+.pp-flow{display:flex;align-items:stretch;gap:6px;margin:0 0 16px;flex-wrap:wrap}.pp-flow-s{flex:1 1 170px;display:flex;flex-direction:column;gap:3px;padding:10px 14px;border:1px solid var(--line,#d6dbe8);border-radius:12px;background:var(--card,#fff);color:var(--ink,#1d2333);text-decoration:none}
+.pp-flow-s small{font:700 10.5px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#7a8399)}.pp-flow-s b{font-size:14px;line-height:1.3}.pp-flow-s:hover,.pp-flow-s:focus-visible{border-color:#2938A8}
+.pp-flow-ar{align-self:center;color:#2938A8;font-weight:700}
+.pp-stage{display:flex;align-items:center;gap:10px;margin:24px 0 12px;padding-bottom:8px;border-bottom:2px solid #1D2678;scroll-margin-top:130px}.pp-stage span{font:700 11px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#1D2678;border-radius:6px;padding:3px 9px}.pp-stage h3{margin:0;font-size:16px}
+:root[data-theme=dark] .pp-stage{border-color:#8997D6}:root[data-theme=dark] .pp-stage span{background:#2938A8}
+@media (max-width:760px){.pp-flow-ar{display:none}.pp-flow-s{flex-basis:100%}}
 @media (max-width:760px){.pp-tcard table,.pp-expo table{min-width:720px}.pp-twocol{grid-template-columns:1fr}.pp-deep dl{grid-template-columns:1fr}.pp-m{min-width:46%}}
 :root[data-theme=dark] .pp-take{background:color-mix(in srgb,var(--card,#141a33) 90%,#6171C5 10%)}
 :root[data-theme=dark] .pp-st-Verified{background:#173d27;color:#bfe8cc}:root[data-theme=dark] .pp-st-Estimated{background:#4a3b12;color:#ffe3a6}:root[data-theme=dark] .pp-st-Scenario{background:#33245c;color:#ddd0ff}:root[data-theme=dark] .pp-st-Insufficient{background:#262c3d;color:#b4bbdd;border-color:#3a4260}:root[data-theme=dark] .pp-st-Stale{background:#4a1f1b;color:#ffc9c2}

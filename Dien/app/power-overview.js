@@ -146,7 +146,7 @@ function sec(id, num, q, body, opts = {}) {
 }
 const card = (id, cls, html) => { const c = el('div', 'card ' + cls, html); if (id) Object.assign(c.dataset, {blockId: id, updateKind: 'public', cadence: 'daily', refreshStatus: 'snapshot'}); return c; };
 const goDetail = (key, text = 'Xem phân tích chi tiết') => key ? `<a class="ov-more" href="?section=${key}#mt2" data-pp-go="${key}">${esc(text)} →</a>` : '';
-const goPolicy = (g, text = 'Xem ở tab Policy') => g ? `<a class="ov-more" href="?policy=${g}#mt4" data-ov-policy="${g}">${esc(text)} →</a>` : '';
+const goPolicy = (g, text = 'Xem ở mục Chính sách') => g ? `<a class="ov-more" href="?section=policy&policy=${g}#mt2" data-ov-policy="${g}">${esc(text)} →</a>` : '';
 // Sparkline SVG: đường chính, đường tham chiếu (đứt), vạch 0; không trục, số chi tiết ở dòng chú thích.
 function spark(series, o = {}) {
   const W = 260, Hh = 54, all = series.flatMap(s => s.v).filter(fin); if (all.length < 2) return '<span class="muted">Chưa đủ điểm dữ liệu.</span>';
@@ -278,12 +278,13 @@ function forward(p) {
 const SECTIONS = [
   ['map', '00', 'Bản đồ ngành', 'Toàn cảnh ngành', 'Điện, tiền và quyết định huy động đi qua những ai?', mapPane],
   ['tech', '01', 'Chuỗi giá trị theo công nghệ', 'Than · khí · LNG · thủy điện · gió · mặt trời', 'Mỗi loại nhà máy tạo doanh thu, tốn chi phí ở khâu nào?', techPane],
-  ['transmission', '02', 'Doanh nghiệp niêm yết', 'Định giá · lợi nhuận · So sánh tài chính', 'Doanh nghiệp điện đang được định giá và có lợi nhuận ra sao?', transmission],
-  ['forward', '03', 'Triển vọng', 'Nguồn mới, sự kiện sắp tới', 'Điều gì có thể làm thay đổi luận điểm?', forward]
+  // 02 Doanh nghiệp niêm yết dời sang tab lớn Tài chính ngành (#mt14) 25/11/2026 theo yêu cầu người dùng.
+  ['forward', '02', 'Triển vọng', 'Nguồn mới, sự kiện sắp tới', 'Điều gì có thể làm thay đổi luận điểm?', forward]
 ];
 // Khóa cũ (bản 5 sub-tab) vẫn mở đúng chỗ.
 // Tab Kinh tế đơn vị bỏ 25/11/2026 theo yêu cầu người dùng: khóa cũ ?ov=unit / economics mở Bản đồ ngành.
 const ALIAS = {economics: 'map', unit: 'map', mix: 'tech', pulse: 'map'};
+renders.transmission = [];
 SECTIONS.forEach(s => { renders[s[0]] = []; });
 /* ===================== 8b. Bản tin dữ liệu đầu Tổng quan (khung .db dùng chung với các ngành khác) ===================== */
 // 25/11/2026 theo yêu cầu người dùng: giữ khối Bản tin dữ liệu nhưng chỉ nói đặc điểm lớn của ngành điện
@@ -331,8 +332,8 @@ function build() {
   // Gỡ khung sub-tab cũ (Chuỗi giá trị / Mô hình kinh doanh / So sánh tài chính / Doanh nghiệp theo dõi) sau khi dời nội dung.
   const oldBar = pane.querySelector(':scope>.pane-subtabs'), oldPanes = [...pane.querySelectorAll(':scope>.pane-subpane')];
   powerBrief(pane);
-  if (head) head.innerHTML = `<div><h2 class="sec">Tổng quan ngành điện</h2><p>Nhìn để hiểu ngành, bấm để phân tích: bản đồ ngành → chuỗi giá trị từng công nghệ → doanh nghiệp niêm yết → triển vọng.</p></div>`;
-  const nav = el('div', 'ov-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Tổng quan ngành: bốn bước');
+  if (head) head.innerHTML = `<div><h2 class="sec">Tổng quan ngành điện</h2><p>Nhìn để hiểu ngành, bấm để phân tích: bản đồ ngành → chuỗi giá trị từng công nghệ → triển vọng. Doanh nghiệp niêm yết ở tab Tài chính ngành.</p></div>`;
+  const nav = el('div', 'ov-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Tổng quan ngành: ba bước');
   head ? head.after(nav) : pane.prepend(nav);
   const panes = {}; let anchor = nav;
   SECTIONS.forEach(([key, num, label, tech, q]) => {
@@ -341,13 +342,14 @@ function build() {
     p.innerHTML = `<header class="ov-head"><div><span class="ov-k">${num} · ${esc(tech)}</span><h2>${esc(label)}</h2><p>${esc(q)}</p></div>${key !== 'map' ? '<a href="?ov=map#mt1" data-ov-go="map" class="ov-back">← Bản đồ ngành</a>' : ''}</header>`;
     anchor.after(p); anchor = p; panes[key] = p;
   });
+  const fin = finTab();
   // Nội dung: dựng lần lượt từng phần.
   SECTIONS.forEach(([key, , , , , fn]) => { try { fn(panes[key]); } catch (e) { panes[key].append(gap('lỗi dựng phần này: ' + esc(e.message))); document.documentElement.dataset.ovError = (document.documentElement.dataset.ovError || '') + key + ':' + e.message + ';'; console.error(e); } });
   // Bản đồ ngành 3 bước (đã có trong luồng chuỗi giá trị), khối mô hình kinh doanh cũ và khung sub-tab cũ.
   pane.querySelector('.business-models')?.remove();
   pane.querySelector('.research-roadmap')?.remove();
   const left = oldPanes.flatMap(w => [...w.children]);
-  if (left.length) { const d = el('details', 'research-fold ov-an', '<summary>Nội dung khác của bản trước</summary>'); left.forEach(n => d.append(n)); panes.transmission.append(d); document.documentElement.dataset.ovLeftover = left.map(n => n.dataset.blockId || n.className).join(','); }
+  if (left.length) { const d = el('details', 'research-fold ov-an', '<summary>Nội dung khác của bản trước</summary>'); left.forEach(n => d.append(n)); (fin?.companies || panes.map).append(d); document.documentElement.dataset.ovLeftover = left.map(n => n.dataset.blockId || n.className).join(','); }
   oldPanes.forEach(w => w.remove()); oldBar?.remove();
 
   // Thanh trên cùng (trạng thái, ngày dữ liệu, nút Nhà đầu tư/Analyst, Đi tới) đã bỏ 12/11/2026 theo yêu cầu người dùng: trùng thanh giá và tab chính.
@@ -355,6 +357,7 @@ function build() {
 
   const keys = SECTIONS.map(s => s[0]), done = new Set(), btns = [...nav.children];
   const select = (key, push) => {
+    if (key === 'transmission' || key === 'companies') { fin?.open('companies', push); return; }
     key = ALIAS[key] || key; if (!keys.includes(key)) key = 'map';
     keys.forEach((k, i) => { const on = k === key; panes[k].hidden = !on; btns[i].setAttribute('aria-selected', String(on)); btns[i].tabIndex = on ? 0 : -1; btns[i].classList.toggle('active', on); });
     if (!done.has(key)) { done.add(key); renders[key].forEach(f => { try { f(); } catch (e) { document.documentElement.dataset.ovError = (document.documentElement.dataset.ovError || '') + key + ':' + e.message + ';'; console.error(e); } }); }
@@ -369,22 +372,73 @@ function build() {
   });
   const fromUrl = () => new URL(location.href).searchParams.get('ov');
   addEventListener('popstate', () => { const s = fromUrl(); if (s && location.hash === '#mt1') { window.showMajorTab?.('mt1'); select(s, false); } });
-  const jump = (key, node) => { window.showMajorTab?.('mt1'); select(key, true); setTimeout(() => { if (node?.tagName === 'DETAILS') node.open = true; (node || pane).scrollIntoView({block: 'start'}); refit(panes[key]); }, 40); };
+  const jump = (key, node) => { if (key === 'transmission' || key === 'companies') { fin?.open('companies', true); return; } window.showMajorTab?.('mt1'); select(key, true); setTimeout(() => { if (node?.tagName === 'DETAILS') node.open = true; (node || pane).scrollIntoView({block: 'start'}); refit(panes[key]); }, 40); };
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-ov-go]'); if (a) { e.preventDefault(); jump(a.dataset.ovGo); return; }
     const tt = e.target.closest('[data-ov-tech]'); if (tt) { e.preventDefault(); const u = new URL(location.href); u.searchParams.set('t', tt.dataset.ovTech); u.searchParams.delete('s'); history.replaceState(null, '', u.pathname + u.search + location.hash); jump('tech', panes.tech); techApi?.show(tt.dataset.ovTech); return; }
-    const j = e.target.closest('[data-ov-jump]'); if (j) { e.preventDefault(); jump('transmission', j.dataset.ovJump === 'companies' ? document.getElementById('ov-companies') : pane.querySelector('.financial-comparison')); return; }
+    const j = e.target.closest('[data-ov-jump]'); if (j) { e.preventDefault(); fin?.open('companies', true); setTimeout(() => { const n = j.dataset.ovJump === 'companies' ? document.getElementById('ov-companies') : document.querySelector('#pane-mt14 .financial-comparison'); if (n?.tagName === 'DETAILS') n.open = true; n?.scrollIntoView({block: 'start'}); }, 60); return; }
     const m = e.target.closest('[data-ov-main]'); if (m) { e.preventDefault(); window.showMajorTab?.(m.dataset.ovMain); window.scrollTo({top: 0}); return; }
-    const g = e.target.closest('[data-ov-policy]'); if (g) { e.preventDefault(); window.showMajorTab?.('mt4'); setTimeout(() => { document.getElementById('pp-tabbtn-' + g.dataset.ovPolicy)?.click(); window.scrollTo({top: 0}); }, 30); }
+    const g = e.target.closest('[data-ov-policy]'); if (g) { e.preventDefault(); window.showMajorTab?.('mt2'); window.PowerPicture?.select('policy', true); setTimeout(() => { document.getElementById('pp-tabbtn-' + g.dataset.ovPolicy)?.click(); window.scrollTo({top: 0}); }, 30); }
   });
   // Trạng thái công nghệ / khâu đang chọn lưu ở ?t=&s= để link thẳng tới từng sơ đồ.
   ctx.onState = ({t, s}) => { const u = new URL(location.href); if (u.searchParams.get('ov') !== 'tech') return; u.searchParams.set('t', t); u.searchParams.set('s', s); history.replaceState(null, '', u.pathname + u.search + location.hash); };
   const s0 = fromUrl();
   if (s0) { if (!location.hash || location.hash === '#' || location.hash === '#mt1') { history.replaceState(null, '', location.pathname + location.search + '#mt1'); window.showMajorTab?.('mt1'); } }
-  select(s0 || 'map', false);
+  select(s0 === 'transmission' ? 'map' : (s0 || 'map'), false);
+  if (s0 === 'transmission') fin?.open('companies', false);
   const setTop = () => { const t = document.querySelector('.majortabs'); const cs = t && getComputedStyle(t); nav.style.top = cs && cs.position === 'sticky' && innerWidth > 700 ? (t.getBoundingClientRect().height + 8) + 'px' : '0px'; };
   setTop(); addEventListener('resize', setTop);
   document.documentElement.dataset.ovReady = '1';
+}
+/* ===================== 10. Tab lớn Tài chính ngành (#mt14, 25/11/2026) ===================== */
+// Theo yêu cầu người dùng: Tài chính ngành (trước là sub-tab 06 của Bức tranh ngành) lên tab lớn cạnh Bức tranh ngành, thêm sub-tab
+// Doanh nghiệp niêm yết (trước ở Tổng quan ngành). URL: ?fin=<fin|companies>#mt14; link cũ ?section=finance#mt2, ?ov=transmission#mt1 tự chuyển.
+const FIN_TABS = [
+  ['fin', '01', 'Tài chính ngành', 'Lợi nhuận, dòng vốn đầu tư, công nợ và dòng tiền của doanh nghiệp phát điện niêm yết, từ BCTC quý.'],
+  ['companies', '02', 'Doanh nghiệp niêm yết', 'Định giá, hiệu quả và lợi nhuận của 18 doanh nghiệp điện; so sánh chi tiết theo quý.']
+];
+function finTab() {
+  const mp = document.getElementById('pane-mt14'); if (!mp) return null;
+  const S = el('section', 'section'); S.id = 'power-fin-tab'; mp.append(S);
+  S.append(el('div', 'sectionhead', '<div><h2 class="sec">Tài chính ngành</h2><p>Số liệu tài chính của doanh nghiệp điện niêm yết: tổng hợp toàn ngành và từng doanh nghiệp.</p></div>'));
+  const nav = el('div', 'pp-nav fn-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Tài chính ngành'); S.append(nav);
+  const P2 = {}, built = new Set();
+  FIN_TABS.forEach(([key, num, label, goal]) => {
+    const b = el('button', 'tabbtn pp-tab', `<span>${num}</span>${esc(label)}`); b.type = 'button'; b.id = 'mt14-fn-' + key + '-tab'; b.setAttribute('role', 'tab'); b.dataset.fn = key; nav.append(b);
+    const p = el('div', 'pane-subpane pp-pane fn-pane'); p.id = 'mt14-fn-' + key; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); p.hidden = true; b.setAttribute('aria-controls', p.id);
+    p.innerHTML = `<header class="pp-head"><div><span class="pp-k">${num}</span><h2>${esc(label)}</h2><p>${esc(goal)}</p></div></header>`;
+    S.append(p); P2[key] = p;
+  });
+  transmission(P2.companies);
+  const btns = [...nav.children], keys = FIN_TABS.map(x => x[0]);
+  const run = key => { if (built.has(key)) return; built.add(key);
+    try { if (key === 'fin') window.PowerFinance?.build(P2.fin); else renders.transmission.forEach(f => f()); } catch (e) { document.documentElement.dataset.ovError = (document.documentElement.dataset.ovError || '') + 'fin-' + key + ':' + e.message + ';'; console.error(e); } };
+  const show = (key, push) => {
+    if (!keys.includes(key)) key = 'fin';
+    keys.forEach((k, i) => { const on = k === key; P2[k].hidden = !on; btns[i].setAttribute('aria-selected', String(on)); btns[i].tabIndex = on ? 0 : -1; btns[i].classList.toggle('active', on); });
+    if (!mp.hidden) run(key);
+    const u = new URL(location.href);
+    if (push && (u.searchParams.get('fin') !== key || location.hash !== '#mt14')) { u.searchParams.set('fin', key); ['section', 'ov', 'policy', 'm', 't', 's'].forEach(x => u.searchParams.delete(x)); history.pushState({fin: key}, '', u.pathname + u.search + '#mt14'); }
+    setTimeout(() => window.dispatchEvent(new Event('resize')), 30); refit(P2[key]); cur = key;
+  };
+  let cur = 'fin';
+  const open = (key, push) => { window.showMajorTab?.('mt14'); show(key, push); window.scrollTo({top: 0});
+    if (!push) { const u = new URL(location.href); u.searchParams.set('fin', key); ['section', 'ov', 'policy', 'm', 't', 's'].forEach(x => u.searchParams.delete(x)); history.replaceState({fin: key}, '', u.pathname + u.search + '#mt14'); } };
+  btns.forEach((b, i) => {
+    b.addEventListener('click', () => show(b.dataset.fn, true));
+    b.addEventListener('keydown', e => { const d = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!d) return; e.preventDefault(); const n = (i + d + btns.length) % btns.length; btns[n].click(); btns[n].focus(); });
+  });
+  // Mở tab lớn lần đầu: dựng chart khi pane đã hiện (để đo đúng chiều rộng).
+  new MutationObserver(() => { if (!mp.hidden) { run(cur); refit(P2[cur]); } }).observe(mp, {attributes: true, attributeFilter: ['hidden', 'class']});
+  addEventListener('popstate', () => { if (location.hash === '#mt14') show(new URL(location.href).searchParams.get('fin') || 'fin', false); });
+  const setTop = () => { const t = document.querySelector('.majortabs'); const cs = t && getComputedStyle(t); nav.style.top = cs && cs.position === 'sticky' && innerWidth > 700 ? (t.getBoundingClientRect().height + 8) + 'px' : '0px'; };
+  setTop(); addEventListener('resize', setTop);
+  show(new URL(location.href).searchParams.get('fin') || 'fin', false);
+  // Link cũ Bức tranh ngành › Tài chính ngành (?section=finance#mt2).
+  if (new URL(location.href).searchParams.get('section') === 'finance') setTimeout(() => open('fin', false), 0);
+  const api = {open, companies: P2.companies};
+  window.PowerFinTab = api;
+  return api;
 }
 function start() {
   // Sau tab Bức tranh ngành (ppReady): card dùng chung đã về đúng chỗ; nút "Xem phân tích chi tiết" (data-pp-go) dùng điều hướng của tab đó; dien-02 đã được để lại cho Industry Pulse.

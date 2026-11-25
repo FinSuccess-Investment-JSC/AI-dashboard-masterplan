@@ -23,7 +23,7 @@
 <script src="app/hydro-reservoirs.js?v=8d429f53b57b" defer></script>
 <script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
 <script src="../data/power-policy.js?v=8a883049e23d" defer></script>
-<script src="app/power-policy.js?v=0fe0d39a50c8" defer></script>
+<script src="app/power-policy.js?v=f923475eb71b" defer></script>
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
@@ -33,7 +33,7 @@
 <script src="../data/company-quarterly.js?v=95f3ff4a5c9f" defer></script>
 <script src="app/company-trend.js?v=a340ccdd71a7" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=1a42785e636d" defer></script>
+<script src="app/research-layout.js?v=9beddbca5716" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=86662e805e05" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
@@ -50,13 +50,13 @@
 <script src="../data/power-financials.js?v=9c7649145a56" defer></script>
 <script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
 <script src="app/power-finance.js?v=261a96b37b30" defer></script>
-<script src="app/power-picture.js?v=37330638a590" defer></script>
+<script src="app/power-picture.js?v=bf8ed59de494" defer></script>
 <script src="../data/power-overview.js?v=d83e1d12e845" defer></script>
 <script src="app/power-overview-visual.js?v=843fcba2e1e9" defer></script>
-<script src="app/power-overview.js?v=24ce8f73036b" defer></script>
+<script src="app/power-overview.js?v=ff932509f4cc" defer></script>
 <script src="app/power-chart-source.js?v=e9b78a0f09a1" defer></script>
 <script src="app/power-labels.js?v=6e633cf95d7c" defer></script>
-<script src="app/site-navigation.js?v=2081e5a22426" data-release="20261125-vien-thong"></script>
+<script src="app/site-navigation.js?v=2081e5a22426" data-release="20261125-dien-loai-hinh"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
@@ -75,14 +75,12 @@
 </div>
 
 <nav class="majortabs">
-  <div class="majortabrow">
-    <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
-    <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
-    <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
-    <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
-    <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
-    <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
-  </div>
+  <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
 </nav>
 
 <div class="container">
@@ -354,6 +352,9 @@
     </div>
   </section>
   </div>
+
+  <!-- Tài chính ngành (tab lớn, 25/11/2026): dựng ở app/power-overview.js -->
+  <div class="majorpane" data-tab="mt14" id="pane-mt14"></div>
 
   <div class="majorpane" data-tab="mt4" id="pane-mt4">
   <section id="policy" class="section">
