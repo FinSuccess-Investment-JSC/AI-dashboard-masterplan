@@ -578,10 +578,11 @@ function build() {
     concl: capTotal && pmaxYtd ? `Công suất đặt cuối 2025 khoảng ${nf(capTotal, 0)} MW, Pmax 2026 ${nf(pmaxYtd.cur.pmax, 0)} MW.` : '',
     main: C('dien-10') || H2('chCapacity'),
     deep: {method: 'Công suất đặt theo EVN (ước cuối 2025); Pmax theo bản tin vận hành.', limits: 'Thiếu chuỗi công suất đặt theo năm, công suất khả dụng, dự phòng theo miền.'}}));
-  panes.supply.append(qpanel({id: 'supply-output', num: '6.2', q: 'Sản lượng điện phải tăng bao nhiêu mỗi năm để đạt mục tiêu 2030?', lv: 'A',
-    concl: 'Mục tiêu 2030 theo QHĐ VIII điều chỉnh là 560,4–624,6 tỷ kWh, cần tăng 11,7–14,1%/năm từ mức ước 322,8 tỷ kWh năm 2025; 9 tháng 2026 tăng 9,3% so cùng kỳ.',
-    main: C('dien-11') || H2('chOutputTarget'),
-    deep: {method: 'Tốc độ tăng bình quân năm tự tính từ sản lượng 2025 (ước) tới hai cận mục tiêu 2030.', limits: 'Sản lượng 2025 là số ước; mục tiêu là quy hoạch, không phải dự báo.'}}));
+  // 6.2 Quy hoạch điện VIII (thay chart "Sản lượng cần tăng … để đạt mục tiêu 2030" theo yêu cầu người dùng 25/11/2026); khối dựng ở power-overview.js.
+  const q8 = window.PowerPlan8 ? window.PowerPlan8('dien-pp-plan8') : null;
+  panes.supply.append(qpanel({id: 'supply-output', num: '6.2', q: 'Quy hoạch điện VIII đặt mục tiêu công suất bao nhiêu đến 2030?', lv: 'A',
+    main: q8 || C('dien-11') || H2('chOutputTarget')}));
+  if (q8) { const old = C('dien-11'); if (old) { old.hidden = true; old.classList.add('pp-old'); } }
   panes.supply.append(qpanel({id: 'supply-pipe', num: '6.3', q: 'Nguồn mới đang ở giai đoạn nào và vào vận hành năm nào?', lv: 'A', st: lngP.length ? 'Verified' : 'Insufficient',
     concl: lngP.length ? `Danh sách có MW mới có cho điện khí LNG (${lngP.length} dự án, ${nf(lngMw, 0)} MW). Các nguồn khác chỉ có tỷ trọng theo số dự án (Báo cáo 760), không suy ra MW.` : '',
     impl: 'Dự án đang xây dựng và đã ký EPC là nguồn việc gần nhất cho nhà thầu, thiết bị; dự án vướng PPA, vốn có rủi ro trượt COD.', main: pipelineCard(), support: moved[0],
