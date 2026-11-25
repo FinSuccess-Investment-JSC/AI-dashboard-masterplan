@@ -228,24 +228,9 @@ function s73() {
     const i = endIdx(mode); c5.extra.innerHTML = `<div class="pp-metrics"><span class="pp-m"><b>${nf(cr[i], 2)} lần</b><small>CFO/CAPEX · ${qLabel(L[i] || '')}</small></span><span class="pp-m"><b>${nf(fin(T('capex')[i]) && fin(T('cfo')[i]) ? T('capex')[i] - T('cfo')[i] : null)} tỷ đ</b><small>Khoảng thiếu tài trợ = CAPEX − CFO</small></span></div>`;
     foot(c5, `${mode === 'y' ? 'năm' : 'TTM'}; FCF = CFO − CAPEX tiền mặt; CAPEX và cổ tức vẽ số âm (tiền ra); không phải toàn bộ biến động tiền (còn đầu tư tài chính, tỷ giá…)`); }
   renders.push(draw5);
-  // Chart 6: vòng đời tài sản
-  const c6 = card('dien-fin-lifecycle', 'Mức hao mòn kế toán của nền tài sản', 'TSCĐ ròng/nguyên giá (%), TSCĐ ròng/khấu hao TTM (năm), CAPEX/nguyên giá (%)'); let g6 = 'all'; const p6 = groupPicker(c6, () => g6, (v, q) => { g6 = v; if (!q) draw6(); });
-  function draw6() { p6(); const x = scopeOf(g6), L = D.periods, net = E.ratio({m: 'ppe_net'}, {m: 'ppe_gross'}, x, 'q', 100).values;
-    const yrs = (() => { const a = E.per('ppe_net', x, 'q'), b = E.per('da', x, 'ttm'); return L.map((_, i) => { const ts = x.filter(t => fin(a[t][i]) && fin(b[t][i])); const d = ts.reduce((s, t) => s + b[t][i], 0); return ts.length && d ? ts.reduce((s, t) => s + a[t][i], 0) / d : null; }); })();
-    const cg = (() => { const a = E.per('capex', x, 'ttm'), b = E.per('ppe_gross', x, 'q'); return L.map((_, i) => { const ts = x.filter(t => fin(a[t][i]) && fin(b[t][i])); const d = ts.reduce((s, t) => s + b[t][i], 0); return ts.length && d ? ts.reduce((s, t) => s + a[t][i], 0) / d * 100 : null; }); })();
-    chart(c6.host, 'dien-fin-lifecycle', L, [{name: 'TSCĐ ròng/nguyên giá (%)', color: LINE[0], values: net}, {name: 'TSCĐ ròng/khấu hao TTM (năm)', color: LINE[2], values: yrs}, {name: 'CAPEX TTM/nguyên giá (%)', color: LINE[1], values: cg}], {unit: '', digits: 1});
-    foot(c6, 'TSCĐ ròng/khấu hao là thước đo kế toán, không phải tuổi đời kỹ thuật còn lại của nhà máy'); }
-  renders.push(draw6);
-  // Chart 7: phân bổ vốn theo nhóm
-  const c7 = card('dien-fin-alloc', 'Vốn mới đang vào đâu so với nơi tạo lợi nhuận và dòng tiền?', 'Tỷ trọng từng nhóm nguồn trong CAPEX, XDCB dở dang, TSCĐ, EBIT, CFO · kỳ chốt');
-  function draw7() { const x = sel(), mode = S.mode === 'y' ? 'y' : 'ttm', i = endIdx(mode), iq = S.mode === 'y' ? D.periods.indexOf(E.years[i] + 'Q4') : S.end, gs = D.groups.filter(g => S.groups.includes(g.id));
-    const cats = [['capex', 'CAPEX', mode], ['cip', 'XDCB dở dang', 'q'], ['ppe_net', 'TSCĐ hữu hình ròng', 'q'], ['ebit', 'EBIT', mode], ['cfo', 'CFO', mode]];
-    const vals = cats.map(([m, , md]) => { const b = E.byGroup(m, x, md), k = md === 'q' ? iq : i, pos = b.groups.map(g => fin(g.values[k]) ? g.values[k] : 0), neg = pos.some(v => v < 0), tot = pos.reduce((a, v) => a + v, 0); return gs.map(g => { const gg = b.groups.find(z => z.id === g.id); const v = gg && fin(gg.values[k]) ? gg.values[k] : null; return !neg && tot > 0 && fin(v) ? v / tot * 100 : null; }); });
-    const m = {key: 'dien-fin-alloc', categories: cats.map(c => c[1]), series: gs.map((g, k) => ({name: g.label, color: g.color, values: vals.map(v => fin(v[k]) ? Math.round(v[k] * 10) / 10 : null)})), unit: '%', digits: 1, stackable: true, native: 'stack', time: false, zeroBase: true};
-    if (window.ChartTypes) ChartTypes.mount(c7.host, m, () => { c7.host.innerHTML = ChartTypes.render(m, 'stack'); });
-    foot(c7, `${mode === 'y' ? 'năm' : 'TTM'} và số dư kỳ chốt; cột để trống khi có nhóm âm`); }
-  renders.push(draw7);
-  s.append(grid2(c1, c2), grid2(c3, c6), grid2(c5, c7));
+  // Chart "Mức hao mòn kế toán của nền tài sản" bỏ 25/11/2026 theo yêu cầu người dùng.
+  // Chart "Vốn mới đang vào đâu so với nơi tạo lợi nhuận và dòng tiền?" bỏ 25/11/2026 theo yêu cầu người dùng.
+  s.append(grid2(c1, c2), grid2(c3, c5));
   return s;
 }
 
