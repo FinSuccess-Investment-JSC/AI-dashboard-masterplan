@@ -178,5 +178,5 @@ document.addEventListener('keydown', e => {
 });
 
 function run() { if (document.body.dataset.sector !== 'power') hub(); toc(); }
-if (document.readyState === 'complete') setTimeout(run, 700); else addEventListener('load', () => setTimeout(run, 700));
+DienBoot.add(700, run); // dien-boot.js
 })();

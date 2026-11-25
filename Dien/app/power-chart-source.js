@@ -63,8 +63,9 @@ function run() {
   document.documentElement.dataset.pwSrcMissing = [...missing].join(' | ');
 }
 let t = 0; const later = (ms = 400) => { clearTimeout(t); t = setTimeout(run, ms); };
-const start = () => { later(1500); setTimeout(run, 3500); };
-if (document.readyState === 'complete') start(); else addEventListener('load', start);
+// dien-boot.js: chạy một lượt khi dựng trang (sau mọi module khác), chạy lại sau load để bắt chart vẽ muộn.
+DienBoot.add(1500, run);
+addEventListener('load', () => setTimeout(run, 3500));
 document.addEventListener('click', e => { if (e.target.closest('button, a, [role=tab]')) later(700); });
 addEventListener('popstate', () => later(700));
 })();

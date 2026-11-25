@@ -270,7 +270,7 @@
     list.forEach(n => { n.nodeValue = n.nodeValue.replace(/\b(\d{4})-(\d{2})-(\d{2})\b/g, '$3/$2/$1'); });
   }
   const run = () => { merge(); dmy(document.body); setTimeout(() => { merge(); dmy(document.body); }, 1200); };
-  if (document.readyState === 'complete') run(); else addEventListener('load', run);
+  DienBoot.add(-1, run); // dien-boot.js (gói Điện)
   document.addEventListener('click', e => { if (e.target.closest('.majortabbtn, .tabbtn')) setTimeout(() => { merge(); dmy(document.body); }, 300); });
 })();
 
@@ -389,7 +389,7 @@
     ink();
   }
   const later = () => setTimeout(scan, 260);
-  if (document.readyState === 'complete') later(); else addEventListener('load', () => { scan(); setTimeout(scan, 1300); });
+  DienBoot.add(-1, scan); DienBoot.add(2000, scan); // dien-boot.js (gói Điện)
   document.addEventListener('click', e => { if (e.target.closest('.majortabbtn, .tabbtn, [role="tab"]')) later(); });
   let st = 0; addEventListener('scroll', () => { const s = scrollY > 120; if (s !== st) { st = s; document.documentElement.classList.toggle('fs-scrolled', s); } }, {passive: true});
 })();
@@ -509,6 +509,6 @@
     document.querySelectorAll('.research-caption').forEach(p => { if (!p.dataset.fsVis && /^Tác động:/.test(p.textContent)) { p.dataset.fsVis = '1'; p.innerHTML = p.innerHTML.replace(/^Tác động:\s*/, '<span class="fs-chip-lbl">Tác động</span>').replace(/\s·\s(qua\s)/, ' <span class="fs-chip-lbl alt">Kênh</span> '); } });
   }
   const later = () => setTimeout(run, 350);
-  if (document.readyState === 'complete') later(); else addEventListener('load', () => { run(); setTimeout(run, 1500); });
+  DienBoot.add(-1, run); DienBoot.add(2000, run); // dien-boot.js (gói Điện)
   document.addEventListener('click', e => { if (e.target.closest('.majortabbtn, .tabbtn, summary')) later(); });
 })();

@@ -40,5 +40,5 @@
       if (!pending && muts.some(m => [...m.addedNodes].some(hasTable))) pending = requestAnimationFrame(run);
     }).observe(document.body, {childList: true, subtree: true});
   }
-  if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
+  DienBoot.add(-1, start); // dien-boot.js
 })();

@@ -21,5 +21,5 @@ function mark(){
   }
  });
 }
-if(document.readyState==='complete')mark();else window.addEventListener('load',mark);
+DienBoot.add(-1,mark); // dien-boot.js
 })();

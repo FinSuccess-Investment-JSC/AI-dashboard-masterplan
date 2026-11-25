@@ -696,5 +696,5 @@ function start() {
     if (ready || ++n > 40) { clearInterval(t); try { build(); } catch (e) { document.documentElement.dataset.ppError = 'build:' + e.message; console.error(e); } }
   }, 150);
 }
-if (document.readyState === 'complete') setTimeout(start, 700); else addEventListener('load', () => setTimeout(start, 700));
+DienBoot.add(700, start); // dien-boot.js
 })();

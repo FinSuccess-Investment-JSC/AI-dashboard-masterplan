@@ -45,5 +45,5 @@ function start() {
   run();
   new MutationObserver(later).observe(document.body, {childList: true, subtree: true, characterData: true});
 }
-if (document.readyState === 'complete') setTimeout(start, 900); else addEventListener('load', () => setTimeout(start, 900));
+DienBoot.add(900, start); // dien-boot.js
 })();

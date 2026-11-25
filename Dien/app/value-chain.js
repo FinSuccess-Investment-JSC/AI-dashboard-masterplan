@@ -121,5 +121,5 @@ function upgrade(svg){
 }
 function upgradeAll(){document.querySelectorAll('svg').forEach(s=>{if(s.querySelector('rect.chain-node')&&!s.classList.contains('vc2'))upgrade(s)})}
 window.ValueChain={draw,upgrade,upgradeAll};
-if(document.readyState==='complete')setTimeout(upgradeAll,50);else addEventListener('load',()=>setTimeout(upgradeAll,50));
+DienBoot.add(50,upgradeAll); // dien-boot.js
 })();

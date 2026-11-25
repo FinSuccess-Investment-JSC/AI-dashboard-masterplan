@@ -392,5 +392,5 @@ function start() {
     if (document.documentElement.dataset.ppReady || ++n > 60) { clearInterval(t); try { build(); } catch (e) { document.documentElement.dataset.ovError = 'build:' + e.message; console.error(e); } }
   }, 150);
 }
-if (document.readyState === 'complete') setTimeout(start, 800); else addEventListener('load', () => setTimeout(start, 800));
+DienBoot.add(800, start); // dien-boot.js
 })();
