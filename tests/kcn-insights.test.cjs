@@ -13,8 +13,12 @@ const noBad = v => assert.doesNotMatch(JSON.stringify(v), /NaN|Infinity|undefine
   const s = K.absorptionSeries(D);
   assert.deepStrictEqual(s.map(x => x.id).sort(), ['cbre-North', 'cbre-South', 'cw-post-North', 'cw-post-South', 'cw-pre-North', 'cw-pre-South']);
   const cb = s.find(x => x.id === 'cbre-North');
-  assert.strictEqual(cb.points.find(p => p.period === '2026Q3').cls, 'ESTIMATE');
+  // Q3/2026: số dư 99 ha (ước tính) đã thay bằng số CBRE công bố "hơn 101 ha"; miền Nam = 163 − 124 (phái sinh chính xác).
+  const q3 = cb.points.find(p => p.period === '2026Q3');
+  assert.strictEqual(q3.cls, 'LOWER_BOUND'); assert.strictEqual(q3.value, 101); assert.strictEqual(q3.replaced, 99); assert.ok(q3.web);
+  assert.strictEqual(s.find(x => x.id === 'cbre-South').points.find(p => p.period === '2026Q3').cls, 'DERIVED');
   assert.strictEqual(cb.points.find(p => p.period === '2026Q1').lower, 130);
+  assert.strictEqual(cb.points.find(p => p.period === '2025Q1').value, 200, 'CBRE Q1/2025 bổ sung từ PDF');
   // Không có quý nào bị điền: C&W Bắc sau sáp nhập chỉ có Q4/2025.
   assert.deepStrictEqual(s.find(x => x.id === 'cw-post-North').points.map(p => p.period), ['2025Q4']);
 }
@@ -26,6 +30,24 @@ const noBad = v => assert.doesNotMatch(JSON.stringify(v), /NaN|Infinity|undefine
   assert.ok(r.ok); assert.deepStrictEqual(r.values.map(v => [v.period, v.value, v.est]), [['2026Q2', 460, false], ['2026Q3', 500, true]]);
   const gap = {...fake, points: fake.points.filter(p => p.period !== '2026Q1')};
   assert.strictEqual(K.rolling4(gap).ok, false, 'thiếu một quý thì không tính');
+}
+// 2b. So cùng kỳ lũy kế CBRE: 9T Bắc khoảng 450 so khoảng 350; 9T Nam lệch mức CBRE công bố (+56%) nên bị gắn xung đột.
+{
+  const c = K.cumYoY(D), f = (r, k) => c.find(x => x.region === r && x.label === k && x.year === 2026);
+  assert.ok(Math.abs(f('North', '9T').yoy - (450 / 350 - 1)) < 1e-9);
+  assert.ok(f('North', 'H1').cur.derived, 'H1/2026 Bắc cộng từ Q1 + Q2');
+  assert.ok(f('South', '9T').conflict); assert.strictEqual(f('South', '9T').reported, 0.56);
+  assert.ok(!f('South', 'H1').conflict);
+  const ev = K.rules(D).fired.find(x => x.id === 'R1').evidence.join(' ');
+  assert.doesNotMatch(ev, /2025FY/, 'không lấy số năm cũ vào nhận định năm nay');
+  assert.match(ev, /Nam 9T\/2026: 163 ha, \+56%/);
+}
+// 2c. Số bổ sung từ web: cảnh báo CBRE Q3 đã xử lý; giá thuê vùng so cùng kỳ lấy từ C&W công bố.
+{
+  assert.strictEqual(D.qa.find(q => q.issue === 'Q3_CBRE_RESIDUAL_ONLY').status, 'resolved');
+  ['ABSORPTION_GAPS', 'GEOGRAPHY_REBASE', 'MIXED_CBRE_CW'].forEach(k => assert.strictEqual(D.qa.find(q => q.issue === k).status, 'mitigated'));
+  assert.strictEqual(K.reportedOf(D, 'North', 'rent_yoy', 'C&W').pop().value, 0.018);
+  assert.ok(!K.rules(D).insufficient.some(x => x.id === 'R3/R4'), 'đã có giá thuê so cùng kỳ cấp vùng');
 }
 // 3. So cùng kỳ chỉ trong cùng phạm vi: Q3/2026 so Q3/2025 được; Q2/2026 so Q2/2025 (qua mốc đổi phạm vi) bị chặn.
 {
