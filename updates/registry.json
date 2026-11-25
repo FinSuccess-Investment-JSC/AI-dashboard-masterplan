@@ -1361,7 +1361,6 @@
      "dien-ov-timeline",
      "dien-ov-map",
      "dien-ov-tech",
-     "dien-ov-unit",
      "dien-ov-plan8",
      "dien-ov-companies"
     ]
@@ -1376,7 +1375,7 @@
   {
    "id": "power.overview-content",
    "tier": "C",
-   "title": "Tổng quan ngành Điện: nội dung bản đồ ngành và 6 chuỗi giá trị công nghệ, mô hình kinh doanh, cơ chế thị trường, bảng nhóm nguồn, 11 biến số truyền dẫn và heatmap phơi nhiễm, ma trận exposure",
+   "title": "Tổng quan ngành Điện: nội dung bản đồ ngành và 6 chuỗi giá trị công nghệ",
    "schedule": {
     "type": "weekly",
     "day": "mon",
@@ -1386,9 +1385,8 @@
    "where": {
     "page": "Dien/index.html",
     "blocks": [
-     "dien-ov-bm",
-     "dien-ov-mech",
-     "dien-ov-peer"
+     "dien-ov-map",
+     "dien-ov-tech"
     ]
    },
    "how": "Sửa data/power-overview.json rồi chạy python3 scripts/build_power_overview.py (kiểm mã thuộc 18 mã theo dõi, nhóm, ngưỡng, mốc lịch). Exposure doanh nghiệp theo bảng 18 doanh nghiệp (dien-03) có nguồn; link dashboard cổ phiếu chỉ cho mã đã có trang",

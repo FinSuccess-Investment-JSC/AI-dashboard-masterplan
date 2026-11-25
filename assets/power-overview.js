@@ -1,5 +1,5 @@
-/* Điện · Tổng quan ngành (#mt1), 5 sub-tab: 00 Bản đồ ngành · 01 Chuỗi giá trị theo công nghệ · 02 Kinh tế đơn vị
-   · 03 Doanh nghiệp niêm yết (định giá, hiệu quả, lợi nhuận + bảng so sánh) · 04 Triển vọng (nguồn cung mới, luận điểm, lịch).
+/* Điện · Tổng quan ngành (#mt1), 5 sub-tab: 00 Bản đồ ngành · 01 Chuỗi giá trị theo công nghệ · 02 Doanh nghiệp niêm yết
+   (định giá, hiệu quả, lợi nhuận + bảng so sánh) · 03 Triển vọng (nguồn cung mới, luận điểm, lịch).
    Sub-tab Bức tranh hiện tại đã bỏ 23/11/2026 theo yêu cầu người dùng (trạng thái ngành xem ở tab Bức tranh ngành); khóa cũ ?ov=pulse mở Bản đồ ngành.
    Số liệu và quy tắc dùng chung: window.POWER_CORE (xuất từ assets/power-picture.js). Nội dung định tính, ngưỡng, mã và luận điểm:
    window.POWER_OVERVIEW (data/power-overview.json → scripts/build_power_overview.py). Chính sách: window.POWER_POLICY. Lớp hình ảnh:
@@ -198,29 +198,7 @@ function techPane(p) {
   renders.tech.push(() => { if (!VIS) { host.append(gap('không tải được module hình ảnh.')); return; } const u = new URL(location.href); techApi = VIS.tech(host, ctx, u.searchParams.get('t'), u.searchParams.get('s')); });
 }
 
-/* ===================== 7. 02 · Kinh tế đơn vị ===================== */
-function unitPane(p) {
-  const bmg = card('dien-ov-bm', 'ov-bm', O.business_models.map(b => { const g = GROUP[b.group], sh = ytd?.get(g.mix_key);
-    return `<article class="ov-bm-c" style="--c:${g.color}"><header><b>${esc(g.label)}</b>${sh ? `<span>${nf(sh.shareCur, 1)}% sản lượng</span>` : ''}</header>
-      <p class="ov-formula">${esc(b.formula)}</p><ul class="ov-drv">${b.drivers.map(d => `<li>${esc(d)}</li>`).join('')}</ul>
-      <details class="ov-an"><summary>Chi phí · dòng tiền · đòn bẩy</summary><dl><dt>Chi phí</dt><dd>${esc(b.cost)}</dd><dt>Dòng tiền</dt><dd>${esc(b.cash)}</dd><dt>Đòn bẩy</dt><dd>${esc(b.lever)}</dd></dl></details>
-      <div class="ov-tks">${chips(b.group)}</div></article>`; }).join(''));
-  // Khối mô hình kinh doanh cũ (gộp than & khí, có xây lắp lưới) bỏ hẳn 23/11/2026 theo yêu cầu người dùng.
-  document.querySelector('#pane-mt1 .business-models')?.remove();
-  const mech = card('dien-ov-mech', 'ov-mech', O.mechanisms.map(m => { const c = m.component && comp(m.component);
-    return `<article class="ov-mc"><h4>${esc(m.label)}</h4><p>${esc(m.l1)}</p><details><summary>Ví dụ có điều kiện</summary><p>${esc(m.l2)}</p></details>
-      <details class="ov-an"><summary>Công thức, căn cứ & phạm vi</summary>${c ? `<p><b>Quy định:</b> ${esc(plain(c.rule))}</p><p><b>Số hiện có:</b> ${esc(plain(c.value))}</p>` : ''}<p><b>Phạm vi:</b> ${esc(m.scope)}</p>${POL.glossary?.[m.id] ? `<p class="muted">${esc(POL.glossary[m.id])}</p>` : ''}</details>${goPolicy(m.policy_group)}</article>`; }).join(''));
-  const pm = O.peer_matrix;
-  const peer = card('dien-ov-peer', 'ov-peer', `<div class="tablewrap"><table><thead><tr><th></th>${SOURCES.map(k => `<th style="--c:${GROUP[k].color}">${esc(GROUP[k].label)}</th>`).join('')}</tr></thead><tbody>${pm.dims.map(([d, label]) => `<tr><th scope="row">${esc(label)}</th>${SOURCES.map(k => `<td>${esc(pm.rows[k][d])}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="ov-cap">${esc(pm.note)}</p>`);
-  const ue = card('dien-ov-unit', 'ov-unit', '');
-  renders.unit.push(() => { if (VIS) VIS.unit(ue, ctx); else ue.append(gap('không tải được module hình ảnh.')); });
-  p.append(sec('unit-econ', '2.1', 'Giá thị trường đang ở đâu so với trần giá của từng loại hình?', ue, {sub: 'FMP bình quân tháng gần nhất so với trần khung giá phát điện năm gần nhất của từng loại hình.'}),
-    sec('unit-bm', '2.2', 'Nhà máy điện kiếm tiền như thế nào?', bmg, {sub: 'Công thức nguyên lý; ↗ mở trang phân tích cổ phiếu.'}),
-    sec('unit-peer', '2.3', 'Bốn nhóm nguồn khác nhau ở đâu?', peer),
-    sec('unit-mech', '2.4', 'PPA, Qc, SMP, CAN, FMP, DPPA nghĩa là gì?', mech, {sub: 'Định nghĩa → ví dụ → căn cứ (mục chi tiết).'}));
-}
-
-/* ===================== 7. 03 · Doanh nghiệp niêm yết ===================== */
+/* ===================== 7. 02 · Doanh nghiệp niêm yết ===================== */
 // 23/11/2026: người dùng bỏ các khối chữ (heatmap biến số, bản đồ truyền dẫn, ma trận, độ nhạy); chỉ giữ số liệu doanh nghiệp, làm trực quan.
 function transmission(p) {
   const host = card('dien-ov-companies', 'ov-companies', '');
@@ -229,8 +207,8 @@ function transmission(p) {
   const dn = block('dien-03')?.closest('.section') || block('dien-03');
   const dnFold = dn ? el('details', 'research-fold ov-dnfold', '<summary>Bảng 18 doanh nghiệp: tài sản phát điện, biến lợi nhuận, sự kiện 2025–26</summary>') : null;
   if (dnFold) { dnFold.id = 'ov-companies'; dnFold.append(dn); dn.querySelectorAll(':scope .grid.two').forEach(g => { if (!g.children.length) g.remove(); }); }
-  p.append(sec('co-dash', '3.1', '18 doanh nghiệp điện: định giá, hiệu quả, lợi nhuận', host, {sub: 'Bấm nhóm để lọc mọi biểu đồ.'}),
-    sec('tr-data', '3.2', 'Bảng so sánh chi tiết và xu hướng theo quý', [fc, dnFold].filter(Boolean)));
+  p.append(sec('co-dash', '2.1', '18 doanh nghiệp điện: định giá, hiệu quả, lợi nhuận', host, {sub: 'Bấm nhóm để lọc mọi biểu đồ.'}),
+    sec('tr-data', '2.2', 'Bảng so sánh chi tiết và xu hướng theo quý', [fc, dnFold].filter(Boolean)));
 }
 
 /* ===================== 8. 05 · Forward Monitor ===================== */
@@ -283,21 +261,21 @@ function forward(p) {
   const nextLi = e => `<li><span class="ov-tl-d" style="--c:${KIND[e.kind]?.[1] || '#7a8399'}">${e.label}</span><div><b>${esc(e.text)}</b><small>${esc(KIND[e.kind]?.[0] || '')}${e.note ? ' · ' + esc(e.note) : ''}${e.url ? ` · <a href="${esc(e.url)}" target="_blank" rel="noopener">nguồn</a>` : ''}</small></div></li>`;
   const tl = card('dien-ov-timeline', 'ov-tl ov-pcal', `<div class="ov-pc-col"><h4>Đã ban hành <small>12 tháng gần nhất · ${docs.length} văn bản</small></h4><ol class="ov-tl-list">${docs.map(doneLi).join('') || '<li><span></span><div class="muted">Chưa có văn bản trong 12 tháng.</div></li>'}</ol></div>
     <div class="ov-pc-col"><h4>Sắp tới <small>mốc theo quy định, dự thảo, khung giá còn thiếu</small></h4><ol class="ov-tl-list">${next.map(nextLi).join('')}</ol></div>`);
-  p.append(sec('fw-supply', '4.1', 'Quy hoạch điện VIII đặt mục tiêu công suất bao nhiêu đến 2030?', ol, {sub: 'Quy hoạch điện VIII điều chỉnh (Quyết định 768/QĐ-TTg ngày 15/04/2025): khoảng công suất mục tiêu năm 2030 theo loại hình nguồn.',
+  p.append(sec('fw-supply', '3.1', 'Quy hoạch điện VIII đặt mục tiêu công suất bao nhiêu đến 2030?', ol, {sub: 'Quy hoạch điện VIII điều chỉnh (Quyết định 768/QĐ-TTg ngày 15/04/2025): khoảng công suất mục tiêu năm 2030 theo loại hình nguồn.',
       method: 'Mục tiêu theo Quyết định 768/QĐ-TTg (15/04/2025) phê duyệt điều chỉnh Quy hoạch điện VIII; gió ngoài khơi và điện hạt nhân là mốc 2030–2035. Công suất thực tế cuối 2025 theo EVN ước (chỉ có cho thủy điện và nhiệt điện than).'}),
-    sec('fw-cal', '4.2', 'Văn bản nào vừa duyệt hoặc sắp có, tác động tới giá điện?', tl, {sub: `Trần khung giá phát điện, giá bán lẻ, quy tắc thị trường (Qc, CAN, trần SMP), mua bán điện trực tiếp. Tín hiệu và kịch bản: <a href="#mt5" data-ov-main="mt5">tab Catalyst · Risk →</a>`}));
+    sec('fw-cal', '3.2', 'Văn bản nào vừa duyệt hoặc sắp có, tác động tới giá điện?', tl, {sub: `Trần khung giá phát điện, giá bán lẻ, quy tắc thị trường (Qc, CAN, trần SMP), mua bán điện trực tiếp. Tín hiệu và kịch bản: <a href="#mt5" data-ov-main="mt5">tab Catalyst · Risk →</a>`}));
 }
 
 /* ===================== 9. Dựng tab, điều hướng ===================== */
 const SECTIONS = [
   ['map', '00', 'Bản đồ ngành', 'Toàn cảnh ngành', 'Điện, tiền và quyết định huy động đi qua những ai?', mapPane],
   ['tech', '01', 'Chuỗi giá trị theo công nghệ', 'Than · khí · LNG · thủy điện · gió · mặt trời', 'Mỗi loại nhà máy tạo doanh thu, tốn chi phí ở khâu nào?', techPane],
-  ['unit', '02', 'Kinh tế đơn vị', 'Giá thị trường so với trần giá', 'Giá bán mỗi kWh nằm ở đâu và nhà máy kiếm tiền thế nào?', unitPane],
-  ['transmission', '03', 'Doanh nghiệp niêm yết', 'Định giá · lợi nhuận · So sánh tài chính', 'Doanh nghiệp điện đang được định giá và có lợi nhuận ra sao?', transmission],
-  ['forward', '04', 'Triển vọng', 'Nguồn mới, sự kiện sắp tới', 'Điều gì có thể làm thay đổi luận điểm?', forward]
+  ['transmission', '02', 'Doanh nghiệp niêm yết', 'Định giá · lợi nhuận · So sánh tài chính', 'Doanh nghiệp điện đang được định giá và có lợi nhuận ra sao?', transmission],
+  ['forward', '03', 'Triển vọng', 'Nguồn mới, sự kiện sắp tới', 'Điều gì có thể làm thay đổi luận điểm?', forward]
 ];
 // Khóa cũ (bản 5 sub-tab) vẫn mở đúng chỗ.
-const ALIAS = {economics: 'unit', mix: 'tech', pulse: 'map'};
+// Tab Kinh tế đơn vị bỏ 25/11/2026 theo yêu cầu người dùng: khóa cũ ?ov=unit / economics mở Bản đồ ngành.
+const ALIAS = {economics: 'map', unit: 'map', mix: 'tech', pulse: 'map'};
 SECTIONS.forEach(s => { renders[s[0]] = []; });
 function build() {
   const pane = document.getElementById('pane-mt1'); if (!pane || pane.querySelector('.ov-nav')) return;
@@ -305,8 +283,8 @@ function build() {
   // Gỡ khung sub-tab cũ (Chuỗi giá trị / Mô hình kinh doanh / So sánh tài chính / Doanh nghiệp theo dõi) sau khi dời nội dung.
   const oldBar = pane.querySelector(':scope>.pane-subtabs'), oldPanes = [...pane.querySelectorAll(':scope>.pane-subpane')];
   document.getElementById('dataBrief')?.remove();
-  if (head) head.innerHTML = `<div><h2 class="sec">Tổng quan ngành điện</h2><p>Nhìn để hiểu ngành, bấm để phân tích: bản đồ ngành → chuỗi giá trị từng công nghệ → kinh tế một kWh → doanh nghiệp niêm yết → triển vọng.</p></div>`;
-  const nav = el('div', 'ov-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Tổng quan ngành: sáu bước');
+  if (head) head.innerHTML = `<div><h2 class="sec">Tổng quan ngành điện</h2><p>Nhìn để hiểu ngành, bấm để phân tích: bản đồ ngành → chuỗi giá trị từng công nghệ → doanh nghiệp niêm yết → triển vọng.</p></div>`;
+  const nav = el('div', 'ov-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Tổng quan ngành: bốn bước');
   head ? head.after(nav) : pane.prepend(nav);
   const panes = {}; let anchor = nav;
   SECTIONS.forEach(([key, num, label, tech, q]) => {
@@ -315,9 +293,10 @@ function build() {
     p.innerHTML = `<header class="ov-head"><div><span class="ov-k">${num} · ${esc(tech)}</span><h2>${esc(label)}</h2><p>${esc(q)}</p></div>${key !== 'map' ? '<a href="?ov=map#mt1" data-ov-go="map" class="ov-back">← Bản đồ ngành</a>' : ''}</header>`;
     anchor.after(p); anchor = p; panes[key] = p;
   });
-  // Nội dung: dựng lần lượt từng phần (khối .business-models cũ đã bỏ 23/11/2026, unitPane xóa khỏi DOM).
+  // Nội dung: dựng lần lượt từng phần.
   SECTIONS.forEach(([key, , , , , fn]) => { try { fn(panes[key]); } catch (e) { panes[key].append(gap('lỗi dựng phần này: ' + esc(e.message))); document.documentElement.dataset.ovError = (document.documentElement.dataset.ovError || '') + key + ':' + e.message + ';'; console.error(e); } });
-  // Bản đồ ngành 3 bước (đã có trong luồng chuỗi giá trị) và khung sub-tab cũ.
+  // Bản đồ ngành 3 bước (đã có trong luồng chuỗi giá trị), khối mô hình kinh doanh cũ và khung sub-tab cũ.
+  pane.querySelector('.business-models')?.remove();
   pane.querySelector('.research-roadmap')?.remove();
   const left = oldPanes.flatMap(w => [...w.children]);
   if (left.length) { const d = el('details', 'research-fold ov-an', '<summary>Nội dung khác của bản trước</summary>'); left.forEach(n => d.append(n)); panes.transmission.append(d); document.documentElement.dataset.ovLeftover = left.map(n => n.dataset.blockId || n.className).join(','); }
