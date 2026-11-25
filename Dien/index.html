@@ -4,6 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ngành Điện Việt Nam · FinSuccess Research</title>
+<!-- Che nội dung tới khi các script dựng bố cục mới (chạy sau sự kiện load) xong, tránh lóe bố cục cũ. power-labels.js gỡ lớp pw-boot; quá hạn thì tự gỡ. -->
+<style>html.pw-boot .majortabs,html.pw-boot .container{visibility:hidden}html.pw-boot body::after{content:"Đang tải dashboard ngành điện…";position:fixed;left:50%;top:55%;transform:translate(-50%,-50%);z-index:50;padding:9px 16px;border:1px solid #E3E7F0;border-radius:999px;background:#fff;color:#64748B;font:600 13px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 2px 10px rgba(16,24,64,.08)}html.pw-boot[data-theme="dark"] body::after{background:#161616;border-color:#2A2A2A;color:#A3A3A3}</style>
+<script>(function(){var d=document.documentElement,off=function(){d.classList.remove("pw-boot")};d.classList.add("pw-boot");addEventListener("load",function(){setTimeout(off,4000)});setTimeout(off,20000)})();</script>
 <link rel="stylesheet" href="../assets/dashboard-ui.css?v=8b5f71b2e791">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="../assets/chart-types.js?v=de84f54bfcae"></script>
@@ -49,8 +52,8 @@
 <script src="../data/power-overview.js?v=b89f1a94fa3c" defer></script>
 <script src="../assets/power-overview-visual.js?v=35445dd6a8f5" defer></script>
 <script src="../assets/power-overview.js?v=c26810d249a5" defer></script>
-<script src="../assets/power-labels.js?v=aea436807b99" defer></script>
-<script src="../assets/site-navigation.js?v=f56245fce0a9" data-release="20261124T060228Z"></script>
+<script src="../assets/power-labels.js?v=1ca8612f2771" defer></script>
+<script src="../assets/site-navigation.js?v=f56245fce0a9" data-release="20261125-dien-che-tai"></script>
 <link rel="stylesheet" href="../assets/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="../assets/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="../assets/sector-base.css?v=ba33835e530c">

@@ -43,6 +43,8 @@ const run = () => { timer = null; fix(document.body); };
 const later = () => { if (!timer) timer = setTimeout(run, 150); };
 function start() {
   run();
+  // Bố cục mới đã dựng xong (bước cuối của chuỗi script trang Điện): mở nội dung đang che ở Dien/index.html.
+  requestAnimationFrame(() => document.documentElement.classList.remove('pw-boot'));
   new MutationObserver(later).observe(document.body, {childList: true, subtree: true, characterData: true});
 }
 if (document.readyState === 'complete') setTimeout(start, 900); else addEventListener('load', () => setTimeout(start, 900));
