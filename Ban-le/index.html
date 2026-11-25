@@ -22,26 +22,25 @@
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="app/catalyst-board.js?v=e69ff7b64de8" defer></script>
 <script src="app/sector-smart.js?v=9199819d80e6" defer></script>
 <script src="../data/company-valuation.js?v=59d42616e817" defer></script>
 <script src="../data/company-comparison.js?v=57100795fdb1" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=c3549c738a62" defer></script>
+<script src="app/research-layout.js?v=2f5cb88d6d09" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=53be49980eb9" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
-<script src="app/stock-dom.js?v=5eecaa4c6683" defer></script>
+<script src="app/stock-dom.js?v=54e77361968d" defer></script>
 <script src="app/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <script src="app/source-gap.js?v=f5423408804a" defer></script>
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=7166cf0575e8" defer></script>
-<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-dien-bo-tab-evn"></script>
+<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-bo-dong-luc-rui-ro"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
@@ -58,7 +57,6 @@
   <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
   <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
   <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
-  <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst / Risk</button>
   <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
   <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
 </nav>
@@ -264,34 +262,6 @@
       <div class="tablewrap"><table><thead><tr><th>Văn bản</th><th>Hiệu lực</th><th>Nội dung</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Giảm 2% VAT</b> (NQ Quốc hội 17/6/2025)</td><td>1/7/2025 – <b>31/12/2026</b></td><td>Nhiều hàng hóa, dịch vụ còn 8%; hết hiệu lực là giá bán tăng 2 điểm</td><td>Cả ngành</td><td><a href="https://baodauthau.vn/quoc-hoi-thong-qua-giam-2-thue-vat-voi-nhieu-hang-hoa-dich-vu-den-het-nam-2026-post180339.html" target="_blank" rel="noopener">Báo Đấu thầu</a></td></tr><tr><td><b>Luật Thuế TTĐB</b> (14/6/2025)</td><td>1/1/2026</td><td>Bia 65% (2026) → 90% (2031); rượu ≥20 độ 65→90%; <b>nước giải khát &gt;5 g đường/100 ml: 8% từ 2027, 10% từ 2028</b></td><td>▼ SAB · nước giải khát (MSN, QNS, VNM)</td><td><a href="https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm" target="_blank" rel="noopener">VnEconomy</a></td></tr><tr><td><b>QĐ 01/2025/QĐ-TTg</b></td><td>18/2/2025</td><td>Áp VAT với hàng nhập khẩu dưới 1 triệu đồng qua chuyển phát nhanh</td><td>▲ bán lẻ trong nước so hàng Trung Quốc giá rẻ</td><td><a href="https://vneconomy.vn/hang-hoa-tren-cac-san-thuong-mai-co-kha-nang-tang-gia-sau-chinh-sach-ngung-mien-thue-nhap-khau.htm" target="_blank" rel="noopener">VnEconomy</a></td></tr><tr><td><b>Luật Thương mại điện tử</b> (10/12/2025)</td><td>1/7/2026</td><td>Nền tảng nước ngoài không hiện diện phải ký quỹ; định danh người livestream</td><td>▲ MWG, FRT, DGW (cạnh tranh công bằng hơn)</td><td><a href="https://baodauthau.vn/8-noi-dung-moi-noi-bat-cua-luat-thuong-mai-dien-tu-post191869.html" target="_blank" rel="noopener">Báo Đấu thầu</a></td></tr><tr><td><b>Lương tối thiểu vùng</b> (NĐ 293/2025)</td><td>1/1/2026</td><td>+7,2%; vùng I 5.310.000 đ</td><td>▲ sức mua · ▼ chi phí nhân công chuỗi</td><td><a href="https://nhadautu.vn/chinh-thuc-tang-luong-toi-thieu-vung-tu-1-1-2026-d100632.html" target="_blank" rel="noopener">Nhà đầu tư</a></td></tr><tr><td><b>Lương cơ sở</b> (NĐ 161/2026)</td><td>1/7/2026</td><td>2,34 → 2,53 triệu đồng</td><td>▲ sức mua khu vực công</td><td><a href="https://nhadautu.vn/chinh-thuc-tang-luong-co-so-len-253-trieu-dong-tu-ngay-1-7-d105043.html" target="_blank" rel="noopener">Nhà đầu tư</a></td></tr><tr><td><b>Lệ phí trước bạ ô tô điện</b> (NĐ 51/2025, 202/2026)</td><td>đến 31/12/2030</td><td>0% lần đầu</td><td>▲ VinFast, đại lý VinFast (HAX) · ▼ xe xăng</td><td><a href="https://lsvn.vn/o-to-dien-duoc-ap-dung-le-phi-truoc-ba-lan-dau-0-den-het-nam-2030-a173952.html" target="_blank" rel="noopener">LSVN</a></td></tr></tbody></table></div>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Thuế TTĐB xe điện tăng 1–3% → 4–11% từ 3/2027 (nêu trong bài về SVC) chưa mở được văn bản gốc. Giá sữa bột, lúa mạch, nhôm lon không có nguồn mở được.</div></details>
     </div>
-  </section>
-  </div>
-  <div class="majorpane" data-tab="mt5" id="pane-mt5">
-  <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai (bán lẻ, CPI, khách quốc tế, xe, sản lượng, giá đường, tiền gửi, định giá).</p></div></div>
-    <div class="catriskgrid">
-      <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Catalyst — yếu tố hỗ trợ</h3>
-        <ul><li><b>Bán lẻ 9T +13,4%</b>, loại trừ giá +7,8% — nhanh nhất từ 2022 <span class="muted">(liên tục · MWG · FRT · DGW)</span></li><li><b>Mùa cao điểm quý IV</b>: iPhone mới, Tết sớm (17/2/2027), khách quốc tế kỷ lục <span class="muted">(Q4 · MWG · PNJ · SAB)</span></li><li><b>Luật TMĐT 1/7/2026 + VAT hàng giá rẻ</b> thu hẹp lợi thế hàng xuyên biên giới <span class="muted">(2026–27 · MWG · FRT · DGW)</span></li></ul>
-      </div>
-      <div class="riskbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Risk — rủi ro</h3>
-        <ul><li><b>Thuế TTĐB 2027</b>: bia lên 70%, nước giải khát có đường 8%; hết giảm VAT 2% <span class="muted">(1/1/2027 · SAB · QNS · MSN · VNM)</span></li><li><b>PNJ lỗ 6.271 tỷ</b> theo kế hoạch điều chỉnh (dự phòng thu đổi kim cương 7.071 tỷ) <span class="muted">(2026 · PNJ)</span></li><li><b>CPI 5,08%</b> và lãi suất huy động tăng gần 1 điểm % bào mòn sức mua hàng lâu bền <span class="muted">(1–2 quý · HAX · SVC · điện máy trả góp)</span></li></ul>
-      </div>
-    </div>
-    <div class="card" style="margin-top:14px" data-block-id="bl-51" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
-      <h3 style="margin-top:0;font-size:13.5px">Lịch mùa vụ Q4/2026 – Q1/2027</h3>
-      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Mốc</th><th>Ngày</th><th>Mã hưởng ▲ / chịu ▼</th><th>Năm trước đã thấy gì (bài đã mở)</th></tr></thead><tbody>
-      <tr><td>iPhone mới bán ra</td><td>Cuối T9 – T10</td><td>▲ MWG · FRT · DGW · PET</td><td>Khối Điện Máy Xanh tháng 9/2026 hơn 12.400 tỷ, cao nhất lịch sử (<a href="https://thitruongtaichinhtiente.vn/dien-may-xanh-tien-sat-moc-doanh-thu-100-000-ty-dong-sau-9-thang-86085.html" target="_blank" rel="noopener">TTTC-TT</a>)</td></tr>
-      <tr><td>11/11 · 12/12 · Black Friday</td><td>11/11, 27/11, 12/12/2026</td><td>▲ MWG · FRT · DGW (online) · ▼ chuỗi thuần offline</td><td>Bách Hóa Xanh T11/2025 4.200 tỷ (+6% MoM, ~+20% YoY) (<a href="https://doanhnhan.baophapluat.vn/the-gioi-di-dong-mwg-dragon-capital-tro-lai-ghe-co-dong-lon-doanh-thu-11-thang-vuot-142000-ty-dong-90042.html" target="_blank" rel="noopener">DN&amp;PL</a>)</td></tr>
-      <tr><td>Hết giảm VAT 2%</td><td>31/12/2026</td><td>▼ cả ngành (giá bán +2 điểm từ 1/1/2027); kéo mua sắm về T12</td><td>—</td></tr>
-      <tr><td>Thuế TTĐB bậc mới</td><td>01/01/2027</td><td>▼ SAB (bia 65% → 70%) · QNS, MSN, VNM (nước giải khát có đường 8%)</td><td>SAB tăng giá 3 đợt 2026, doanh thu Q2 chỉ +1% (<a href="https://vietnamfinance.vn/mot-quy-tang-gia-2-lan-bia-sai-gon-van-khong-cai-thien-doanh-thu-va-loi-nhuan-d148046.html" target="_blank" rel="noopener">VietnamFinance</a>)</td></tr>
-      <tr><td>Tết Đinh Mùi</td><td>17/02/2027 (sớm hơn Tết 2026: 17/02 vs 29/01 — doanh thu Tết rơi trọn Q1/2027)</td><td>▲ SAB · VNM · KDC · MSN · PNJ · MWG</td><td>—</td></tr>
-      <tr><td>Vía Thần Tài</td><td>Mùng 10 tháng Giêng ≈ 26/02/2027</td><td>▲ PNJ (vàng 24K, nhẫn)</td><td>PNJ Q1/2026: doanh thu 17.245 tỷ (+79%), vàng 24K +324,7% (<a href="https://doanhnhan.baophapluat.vn/bung-no-mang-vang-24k-loi-nhuan-cua-vang-bac-da-quy-phu-nhuan-pnj-quy-i-2026-cao-gap-doi-cung-ky.html" target="_blank" rel="noopener">DN&amp;PL</a>)</td></tr>
-      </tbody></table></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Chỉ ghi doanh thu tháng năm trước khi bài gốc đã mở; MWG tháng 10–12/2025 theo chuỗi chưa mở được bài gốc nên để trống. VAMA theo tháng chưa đủ điểm trong evidence để vẽ chuỗi (chỉ có T8/2025, T9/2026).</div></details>
-    </div>
-    <div class="srcrow"><a href="https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/" target="_blank" rel="noopener">NSO quý III</a><a href="https://mekongasean.vn/pnj-du-kien-lo-hon-6000-ty-dong-ha-ty-le-co-tuc-60015.html" target="_blank" rel="noopener">PNJ điều chỉnh KH</a><a href="https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm" target="_blank" rel="noopener">Thuế TTĐB</a></div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt6" id="pane-mt6">

@@ -9,7 +9,8 @@
   const n = v => Number.isFinite(v) ? v.toLocaleString('vi-VN',{minimumFractionDigits:2,maximumFractionDigits:2}) : '—';
 
   for (const block of content.blocks) {
-    const host = $(`[data-blocks="${block.tab}"]`);
+    // Tab 5 (Động lực · Rủi ro) đã bỏ 25/11/2026; tỷ giá vẫn hiện ở Bức tranh ngành (research-layout.js dời #bank-fx sang đó).
+    const host = $(`[data-blocks="${block.tab}"]`) || (block.block_id === 'fx' ? $('[data-blocks="2"]') : null);
     if (!host) continue;
     const card = document.createElement('article');
     card.className='card'; card.id='bank-'+block.block_id;
@@ -61,10 +62,10 @@
   ];
   function monitor(w){const b=content.blocks.find(x=>x.block_id===w[1]);return `<article class="monitor-item"><span class="status">Chưa đánh giá · thiếu dữ liệu</span><strong>${w[0]}</strong><p><b>Điều kiện theo dõi:</b> ${w[2]}</p><small>${w[3]}</small><p class="cadence-note">Mới nhất: — · Kỳ: chưa có · Kiểm tra: ${date(b.last_checked_at)}</p><a href="#mt${b.tab}">Nguồn & dữ liệu cần kiểm ↗</a></article>`;}
   $('#overview-watch').innerHTML=watch.map(monitor).join('');
-  $('#catalyst-watch').innerHTML=watch.map(monitor).join('');
+  if($('#catalyst-watch'))$('#catalyst-watch').innerHTML=watch.map(monitor).join(''); // tab Động lực · Rủi ro đã bỏ 25/11/2026
   const scenarios={base:'Cơ sở: tín dụng và huy động cùng mở rộng, NIM ổn định, nợ sớm không tăng; thu phí bổ sung lợi nhuận. Chỉ giữ kịch bản nếu các chuỗi cùng kỳ xác nhận.',up:'Thuận lợi: giá vốn hạ nhanh hơn lợi suất tài sản, room và vốn còn dư địa, thu phí tăng, credit cost giảm mà bao phủ không yếu đi. Kiểm nguy cơ tăng trưởng dư nợ làm đẹp tỷ lệ NPL.',down:'Bất lợi: huy động đắt lên, lãi đầu ra bị nén, nợ nhóm 2/NPL tăng và CAR/thanh khoản hạn chế tăng trưởng. Kiểm mức trích lập thực tế, hoàn nhập và khả năng bổ sung vốn.'};
   function scenario(key){$$('[data-scenario]').forEach(b=>{const yes=b.dataset.scenario===key;b.setAttribute('aria-selected',String(yes));b.tabIndex=yes?0:-1;});$('#scenario-detail').textContent=scenarios[key];$('#scenario-detail').setAttribute('aria-labelledby','scenario-'+key);}
-  $$('[data-scenario]').forEach(b=>b.addEventListener('click',()=>scenario(b.dataset.scenario)));scenario('base');
+  $$('[data-scenario]').forEach(b=>b.addEventListener('click',()=>scenario(b.dataset.scenario)));if($('#scenario-detail'))scenario('base');
 
   const filter = document.createElement('div');filter.className='bank-filter';
   filter.innerHTML='<label for="bank-group">Nhóm</label><select id="bank-group"><option value="all">Tất cả ngân hàng</option>'+Object.entries(content.groups).map(([id,g])=>`<option value="${id}">${g.label}</option>`).join('')+'</select><label for="bank-ticker">Ngân hàng</label><select id="bank-ticker"></select><p>Bộ lọc dành cho bảng so sánh ở tab 07 và góc nhìn analyst ở tab 05. Biểu đồ Eximbank, vốn IFC và số toàn hệ thống giữ phạm vi ghi trên từng card.</p>';
@@ -76,19 +77,21 @@
   $('#players').innerHTML=Object.entries(content.groups).map(([id,g])=>`<article class="player"><h3>${g.label}</h3>${g.tickers.map(t=>`<button data-player="${t}" data-group="${id}">${t==='AGRIBANK'?'Agribank':t}</button>`).join('')}<p>Chọn mã để lọc bảng và góc nhìn riêng.</p></article>`).join('');
   fillTickers();comparison();
   let noteKey='';
-  function loadNote(){
+  // Ô ghi chú analyst nằm ở tab Động lực · Rủi ro (đã bỏ 25/11/2026): không còn ô thì các hàm ghi chú không làm gì.
+  const hasNote=!!$('#analyst-note');
+  function loadNote(){if(!hasNote)return;
     noteKey='finsuccess.bank.analyst.v1.'+$('#bank-group').value+'.'+$('#bank-ticker').value;
     try{const note=JSON.parse(localStorage.getItem(noteKey)||'{}');$('#analyst-author').value=note.author||'';$('#analyst-note').value=note.text||'';$('#note-status').textContent=note.saved_at?'Bản lưu '+new Date(note.saved_at).toLocaleString('vi-VN'):'Chưa có góc nhìn riêng cho lựa chọn này.';}
     catch{$('#analyst-author').value='';$('#analyst-note').value='';$('#note-status').textContent='Trình duyệt không đọc được bản lưu. Có thể xuất JSON để giữ bản sao.';}
   }
-  function saveNote(){const note={owner:'analyst',author:$('#analyst-author').value.trim(),text:$('#analyst-note').value,scope:noteKey,saved_at:new Date().toISOString()};try{localStorage.setItem(noteKey,JSON.stringify(note));$('#note-status').textContent='Đã lưu trên trình duyệt · '+new Date(note.saved_at).toLocaleString('vi-VN');return note;}catch{$('#note-status').textContent='Không lưu được trong trình duyệt. Hãy xuất bản sao JSON.';return note;}}
-  $('#save-note').addEventListener('click',saveNote);
+  function saveNote(){if(!hasNote)return null;const note={owner:'analyst',author:$('#analyst-author').value.trim(),text:$('#analyst-note').value,scope:noteKey,saved_at:new Date().toISOString()};try{localStorage.setItem(noteKey,JSON.stringify(note));$('#note-status').textContent='Đã lưu trên trình duyệt · '+new Date(note.saved_at).toLocaleString('vi-VN');return note;}catch{$('#note-status').textContent='Không lưu được trong trình duyệt. Hãy xuất bản sao JSON.';return note;}}
+  if(hasNote)$('#save-note').addEventListener('click',saveNote);
   // Save drafts before scope changes, without attributing generated content to analyst.
-  function saveDraft(){if($('#analyst-author').value||$('#analyst-note').value)saveNote();}
+  function saveDraft(){if(hasNote&&$('#analyst-author').value||$('#analyst-note').value)saveNote();}
   $('#bank-group').addEventListener('change',()=>{saveDraft();fillTickers();comparison();loadNote();});
   $('#bank-ticker').addEventListener('change',()=>{saveDraft();comparison();loadNote();});
   $$('[data-player]').forEach(b=>b.addEventListener('click',()=>{saveDraft();$('#bank-group').value=b.dataset.group;fillTickers();$('#bank-ticker').value=b.dataset.player;comparison();loadNote();$('#bank-ticker').focus();}));
-  $('#export-note').addEventListener('click',()=>{const note=saveNote(),url=URL.createObjectURL(new Blob([JSON.stringify(note,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='bank-analyst-note.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});loadNote();
+  if(hasNote)$('#export-note').addEventListener('click',()=>{const note=saveNote(),url=URL.createObjectURL(new Blob([JSON.stringify(note,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='bank-analyst-note.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});loadNote();
 
   const publicData=window.BANK_PUBLIC_DATA||{points:[],status:'missing'};
   const points=publicData.points||[];

@@ -21,27 +21,26 @@
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="app/catalyst-board.js?v=e69ff7b64de8" defer></script>
 <script src="app/sector-smart.js?v=9199819d80e6" defer></script>
 <script src="../data/company-valuation.js?v=59d42616e817" defer></script>
 <script src="../data/company-comparison.js?v=57100795fdb1" defer></script>
 <script src="../data/company-quarterly.js?v=95f3ff4a5c9f" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=c3549c738a62" defer></script>
+<script src="app/research-layout.js?v=2f5cb88d6d09" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=53be49980eb9" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
-<script src="app/stock-dom.js?v=5eecaa4c6683" defer></script>
+<script src="app/stock-dom.js?v=54e77361968d" defer></script>
 <script src="app/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <script src="app/source-gap.js?v=f5423408804a" defer></script>
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=7166cf0575e8" defer></script>
-<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-dien-bo-tab-evn"></script>
+<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-bo-dong-luc-rui-ro"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
@@ -59,7 +58,6 @@
   <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
   <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
   <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
-  <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst / Risk</button>
   <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
   <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
 </nav>
@@ -221,22 +219,6 @@
       <tr><td><b>15/10/2031</b></td><td>Hết hạn gia hạn CBPG sợi filament polyester (AD10); rà soát giữa kỳ có thể mở sớm hơn</td><td>Đã biết (QĐ 2652/QĐ-BCT)</td><td>▲ STK</td><td><a href="https://vietnamnews.vn/economy/1801989/viet-nam-extends-anti-dumping-duties-on-polyester-filament-yarn-for-five-years.html" target="_blank" rel="noopener">Viet Nam News</a></td></tr>
       </tbody></table></div>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Mức thuế EU với Bangladesh sau LDC (~12%) và việc EU có gia hạn ưu đãi hay không chưa có văn bản; lương 2027 là dự thảo. Hộ chiếu số sản phẩm EU (DPP) dệt may 2027 chưa xác minh nên không đưa vào lịch.</div></details></div>
-  </section>
-  </div>
-  <div class="majorpane" data-tab="mt5" id="pane-mt5">
-  <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai: xuất khẩu, thị trường Mỹ, giá bông – xơ, bán lẻ quần áo Mỹ, định giá.</p></div></div>
-    <div class="catriskgrid">
-      <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Catalyst — yếu tố hỗ trợ</h3>
-        <ul><li><b>Bangladesh tốt nghiệp LDC 24/11/2026</b>: Nếu EU không gia hạn ưu đãi → thuế EU với hàng Bangladesh có thể ~12%; theo dõi đơn hàng EU chuyển sang VN Q1–Q2/2027 <span class="muted">(Q4/2026–Q2/2027 · TCM · TNG · MSH)</span></li><li><b>Hoàn thuế IEEPA cho nhà nhập khẩu Mỹ</b>: Tích cực nếu buyer chia sẻ phần hoàn thuế/ tăng đơn; đo qua XK sang Mỹ tháng vượt +9% YoY (mục tiêu 19,7 tỷ USD 2026) <span class="muted">(Q4/2026 · TNG · MSH · TCM · GIL)</span></li><li><b>Đạt mục tiêu XK 2026</b>: Mục tiêu phấn đấu VITAS 48 tỷ USD (trước đây nêu 49–49,5); 9T đạt 35,72 tỷ nên Q4 cần ~12,3 tỷ USD; dưới 46 tỷ cả năm = tăng trưởng âm <span class="muted">(Q4/2026 · TCM · TNG · MSH · GIL · VGT)</span></li><li><b>Thượng nguồn xơ sợi tăng nhanh hơn may</b>: Duy trì XK xơ sợi/NPL &gt; +5% YoY <span class="muted">(1–4 quý · STK · ADS)</span></li></ul>
-      </div>
-      <div class="riskbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Risk — rủi ro</h3>
-        <ul><li><b>Bị xếp hàng chuyển tải (40%) do vải nhập từ TQ</b>: Mỹ ban hành quy tắc xuất xứ/ hàm lượng; DN FOB dùng vải TQ chịu rủi ro <span class="muted">(1–4 quý · TNG · MSH · GIL · TCM)</span></li><li><b>Thuế bổ sung Mục 301 12,5% (từ 24/7/2026, 4 năm)</b>: Theo dõi danh sách miễn trừ; XK sang Mỹ tháng âm YoY 2 tháng liên tiếp = tín hiệu xấu <span class="muted">(Q4/2026–2027 · TCM · TNG · MSH · GIL · ADS · VGT)</span></li><li><b>Giá bông tăng</b>: IMF cotton &gt; 90 cent/lb (7/2026: 88,78) → áp lực biên cho DN sợi bông <span class="muted">(1–2 quý · ADS · TCM)</span></li><li><b>Chi phí lao động / thiếu hụt</b>: Đề xuất tăng lương TTV 2027 &gt; 7% hoặc tỷ lệ thiếu lao động kéo dài sang mùa cao điểm <span class="muted">(Q4/2026–Q1/2027 · TNG · MSH · TCM · GIL · VGT)</span></li><li><b>Vụ PVTM mới với sợi VN</b>: Khởi xướng mới tại Mỹ/TNK/Ấn/Brazil với HS 5402 → rủi ro trực tiếp STK <span class="muted">(1–4 quý · STK)</span></li><li><b>Chậm hoàn VAT</b>: Tỷ lệ hoàn/dự toán &lt; 50% giữa năm <span class="muted">(liên tục · TNG · STK · ADS)</span></li></ul>
-      </div>
-    </div>
-    <div class="srcrow"><a href="https://asiatimes.com/2026/02/why-us-bangladesh-rushed-through-a-pre-election-trade-deal/" target="_blank" rel="noopener">Asia Times</a><a href="https://apparelresources.com/business-news/trade-business-news/bangladesh-apparel-exporters-warn-prolonged-challenges-2026/" target="_blank" rel="noopener">Apparel Resources</a><a href="https://vnbusiness.vn/thue-quan-my-bien-dong-co-hoi-hoan-thue-va-bai-toan-15-voi-det-may-viet-nam.html" target="_blank" rel="noopener">VnBusiness</a><a href="https://trungtamwto.vn/tin-tuc/31777-dieu-chinh-chien-luoc-xuat-khau-sang-my" target="_blank" rel="noopener">Trung tâm WTO</a><a href="https://tapchikinhtetaichinh.vn/nganh-det-may-tang-truong-phan-hoa-ap-luc-bien-loi-nhuan-gia-tang-166977.html" target="_blank" rel="noopener">Tạp chí KTTC</a><a href="https://vnbusiness.vn/thue-quan-my-bien-dong-co-hoi-hoan-thue-va-bai-toan-15-voi-det-may-viet-nam.html" target="_blank" rel="noopener">VnBusiness</a><a href="https://tapchikinhtetaichinh.vn/nganh-det-may-tang-truong-phan-hoa-ap-luc-bien-loi-nhuan-gia-tang-166977.html" target="_blank" rel="noopener">Tạp chí KTTC</a><a href="https://trungtamwto.vn/tin-tuc/31777-dieu-chinh-chien-luoc-xuat-khau-sang-my" target="_blank" rel="noopener">Trung tâm WTO</a><a href="https://vnbusiness.vn/viet-nam/tong-thong-trump-cong-bo-thoa-thuan-thue-20-voi-viet-nam-hang-trung-chuyen-chiu-40-1107896.html" target="_blank" rel="noopener">VnBusiness 3/7/2025</a><a href="https://trungtamwto.vn/chuyen-de/33074-hoa-ky-chinh-thuc-ap-thue-bo-sung-len-60-nen-kinh-te-theo-dieu-tra-301-hang-viet-nam-chiu-thue-bo-sung-125" target="_blank" rel="noopener">Trung tâm WTO</a></div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt6" id="pane-mt6">

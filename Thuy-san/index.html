@@ -21,27 +21,26 @@
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="app/catalyst-board.js?v=e69ff7b64de8" defer></script>
 <script src="app/sector-smart.js?v=9199819d80e6" defer></script>
 <script src="../data/company-valuation.js?v=59d42616e817" defer></script>
 <script src="../data/company-comparison.js?v=57100795fdb1" defer></script>
 <script src="../data/company-quarterly.js?v=95f3ff4a5c9f" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=c3549c738a62" defer></script>
+<script src="app/research-layout.js?v=2f5cb88d6d09" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=53be49980eb9" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
-<script src="app/stock-dom.js?v=5eecaa4c6683" defer></script>
+<script src="app/stock-dom.js?v=54e77361968d" defer></script>
 <script src="app/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <script src="app/source-gap.js?v=f5423408804a" defer></script>
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=7166cf0575e8" defer></script>
-<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-dien-bo-tab-evn"></script>
+<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-bo-dong-luc-rui-ro"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
@@ -58,7 +57,6 @@
   <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
   <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
   <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
-  <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst / Risk</button>
   <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
   <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
   <button class="majortabbtn" onclick="showMajorTab('mt10',this)">8. Thuế &amp; phòng vệ thương mại</button>
@@ -207,22 +205,6 @@
       <div class="tablewrap"><table><thead><tr><th>Biện pháp</th><th>Mốc</th><th>Nội dung</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Thẻ vàng IUU của EU</b></td><td>Thanh tra lần 5; QĐ 1516/QĐ-TTg 10/08/2026</td><td>Kế hoạch xử lý khuyến nghị của EC, mục tiêu gỡ thẻ vàng trong năm 2026</td><td>Hải sản khai thác (không trực tiếp cá tra, tôm nuôi)</td><td><a href="https://en.vneconomy.vn/vietnam-targets-removal-of-eu-yellow-card-on-iuu-fishing-in-2026.htm" target="_blank" rel="noopener">VnEconomy</a></td></tr><tr><td><b>MMPA – NOAA</b></td><td>01/01/2026</td><td>12 nghề cá bị từ chối, cấm nhập vào Mỹ; 11 được chấp thuận. Nhóm bị ảnh hưởng XK sang Mỹ 511,5 triệu USD năm 2024 (cá ngừ, cá kiếm, cá mú, cua, mực…)</td><td>Hải sản khai thác</td><td><a href="https://news.tuoitre.vn/us-bans-import-of-seafood-from-12-vietnamese-fisheries-from-january-1-103260102114049278.htm" target="_blank" rel="noopener">Tuổi Trẻ</a></td></tr></tbody></table></div>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Lấy từ báo, chưa mở trang gốc của EC hoặc NOAA; chưa có danh sách chi tiết 12 nghề cá. Chương trình thanh tra cá da trơn USDA (FSIS) chưa thấy thay đổi năm 2026.</div></details>
     </div>
-  </section>
-  </div>
-  <div class="majorpane" data-tab="mt5" id="pane-mt5">
-  <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai (XK theo thị trường, giá nguyên liệu, thức ăn, định giá) và văn bản thuế Mỹ.</p></div></div>
-    <div class="catriskgrid">
-      <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Catalyst — yếu tố hỗ trợ</h3>
-        <ul><li><b>Trung Quốc tăng mạnh</b>: XK sang Trung Quốc – Hồng Kông 10T +30,3% (VASEP) <span class="muted">(1–2 quý · VHC · ANV · tôm)</span></li><li><b>VHC không chịu CBPG cá tra</b>: rút khỏi lệnh từ 24/01/2025 <span class="muted">(dài hạn · VHC)</span></li><li><b>Giá tôm nguyên liệu giảm</b>: xem tín hiệu tôm nguyên liệu <span class="muted">(1–2 quý · FMC · MPC)</span></li></ul>
-      </div>
-      <div class="riskbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Risk — rủi ro</h3>
-        <ul><li><b>Thuế Mỹ Mục 301 12,5%</b> từ 24/07/2026 <span class="muted">(đến 2030 · cả ngành)</span></li><li><b>CBPG tăng</b>: cá tra POR21 Nam Việt 0,84 USD/kg; tôm POR19 cuối cùng Sao Ta 10,71%, STAPIMEX 6,36% <span class="muted">(FR 06/11/2026 · ANV · FMC)</span></li><li><b>Thức ăn đắt lên</b>: khô đậu +13%, ngô +16% YoY <span class="muted">(1–2 quý · ANV · VHC · IDI)</span></li></ul>
-      </div>
-    </div>
-    <div class="srcrow"><a href="https://www.federalregister.gov/d/2026-16553" target="_blank" rel="noopener">FR – cá tra POR21</a><a href="https://www.federalregister.gov/d/2026-22660" target="_blank" rel="noopener">FR – tôm POR19 cuối cùng (06/11/2026)</a><a href="https://www.federalregister.gov/d/2025-02482" target="_blank" rel="noopener">FR – VHC rút khỏi lệnh</a></div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt6" id="pane-mt6">

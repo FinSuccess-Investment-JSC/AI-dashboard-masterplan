@@ -590,6 +590,8 @@ function build() {
   const left = [...section.querySelectorAll('#supply-world .card, #supply-vietnam .card')].filter(c => !c.closest('.pp-pane') && !c.parentElement.closest('.card') && c.dataset.blockId !== 'dien-02');
   if (left.length) { left.forEach(c => { c.hidden = true; c.classList.add('pp-old'); }); document.documentElement.dataset.ppLeftover = left.map(c => c.dataset.blockId).join(' '); }
   section.querySelectorAll(':scope>.supply-tabs, :scope>.supply-pane, :scope>#supply-world, :scope>#supply-vietnam').forEach(n => { n.hidden = true; n.classList.add('pp-old'); });
+  // 25/11/2026: ô Giá bán lẻ bình quân không thuộc câu hỏi nào, đứng lẻ một hàng ở 01 Cầu điện; bỏ theo yêu cầu người dùng (chart giá bán lẻ đã có ở phần khác).
+  keep.tariff?.remove();
   [kpiGrid, top].forEach(n => { if (n && !n.querySelector('.kpi,.card')) n.remove(); });
   if (kpiGrid?.isConnected && kpiGrid.querySelector('.kpi')) panes.demand.append(kpiGrid);
 

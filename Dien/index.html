@@ -27,20 +27,19 @@
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="app/catalyst-board.js?v=e69ff7b64de8" defer></script>
 <script src="app/sector-smart.js?v=f486460f91cb" defer></script>
 <script src="../data/company-valuation.js?v=59d42616e817" defer></script>
 <script src="../data/company-comparison.js?v=57100795fdb1" defer></script>
 <script src="../data/company-quarterly.js?v=95f3ff4a5c9f" defer></script>
 <script src="app/company-trend.js?v=a340ccdd71a7" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=ea9e1a46fbcb" defer></script>
+<script src="app/research-layout.js?v=1a42785e636d" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=86662e805e05" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=0b26617696c0" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
-<script src="app/stock-dom.js?v=5eecaa4c6683" defer></script>
+<script src="app/stock-dom.js?v=54e77361968d" defer></script>
 <script src="app/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <script src="app/source-gap.js?v=9088a32101e6" defer></script>
@@ -51,13 +50,13 @@
 <script src="../data/power-financials.js?v=9c7649145a56" defer></script>
 <script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
 <script src="app/power-finance.js?v=261a96b37b30" defer></script>
-<script src="app/power-picture.js?v=9e8b9fc03a3c" defer></script>
-<script src="../data/power-overview.js?v=41fa072d2230" defer></script>
+<script src="app/power-picture.js?v=39781c512db5" defer></script>
+<script src="../data/power-overview.js?v=d83e1d12e845" defer></script>
 <script src="app/power-overview-visual.js?v=843fcba2e1e9" defer></script>
-<script src="app/power-overview.js?v=092f4719e298" defer></script>
+<script src="app/power-overview.js?v=24ce8f73036b" defer></script>
 <script src="app/power-chart-source.js?v=e9b78a0f09a1" defer></script>
 <script src="app/power-labels.js?v=6e633cf95d7c" defer></script>
-<script src="app/site-navigation.js?v=7d6aa794b156" data-release="20261125-dien-bo-tab-evn"></script>
+<script src="app/site-navigation.js?v=7d6aa794b156" data-release="20261125-bo-dong-luc-rui-ro"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
@@ -81,7 +80,6 @@
     <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
     <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
     <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
-    <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst / Risk</button>
     <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
     <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
   </div>
@@ -388,43 +386,6 @@
   </section>
   </div>
 
-  <div class="majorpane" data-tab="mt5" id="pane-mt5">
-  <section class="section">
-    <div class="sectionhead"><div><h2>5. Động lực & rủi ro</h2><p>Biến dẫn dắt lợi nhuận theo từng nhóm nguồn: thủy văn, giá nhiên liệu, giá bán lẻ và tài chính EVN, phụ tải.</p></div></div>
-    <div class="catriskgrid">
-      <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Catalyst — yếu tố hỗ trợ</h3>
-        <ul>
-          <li><b>Phụ tải tăng nhanh</b>: sản lượng 9T/2026 +9,3%, kế hoạch quý IV +11,3% svck (EVN). Nhà máy hiện hữu được huy động cao.</li>
-          <li><b>EVN hết lỗ lũy kế</b> (30/06/2026), LNST công ty mẹ 2025 đạt 39.762 tỷ đồng (đã kiểm toán): dòng tiền tốt hơn hỗ trợ thanh toán cho nhà máy.</li>
-          <li><b>Cơ chế mới cho nguồn và lưới</b>: NĐ 243/2026 mở rộng DPPA và nâng trần bán điện dư mái nhà lên 50%; NĐ 272/2026 hướng dẫn cơ chế phát triển năng lượng 2026–2030.</li>
-          <li><b>Đầu tư lưới và lưu trữ</b>: quy hoạch 10.000–16.300 MW pin lưu trữ đến 2030; EVN đẩy nhanh BESS miền Bắc, hỗ trợ khối lượng hợp đồng xây lắp, thiết bị.</li>
-        </ul>
-      </div>
-      <div class="riskbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Risk — rủi ro</h3>
-        <ul>
-          <li><b>El Niño mạnh đến rất mạnh</b> (<a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA 08/10/2026</a>: trên <b>83%</b> khả năng kéo dài tới T1–T3/2027): thủy điện giảm sản lượng mùa khô, rủi ro thiếu điện miền Bắc như 05–06/2023.</li>
-          <li><b>Giá bán lẻ giảm 2%</b> còn 2.159,90 đ/kWh từ 01/11/2026 (<a href="https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-gia-ban-le-dien-binh-quan-tu-ngay-01-thang-11-nam-2026-60-134-510169" target="_blank" rel="noopener">QĐ 1305/QĐ-EVN</a>) — lần giảm đầu tiên: doanh thu EVN hụt khi than, LNG đang đắt lên, dư địa thanh toán cho IPP hẹp lại.</li>
-          <li><b>Nguồn mới chậm</b>: Bộ Công Thương tính thiếu hụt 4.256 MW năm 2027, 13.964 MW năm 2030 nếu dự án tiếp tục chậm.</li>
-          <li><b>Năng lượng tái tạo</b>: 173 nhà máy có thể phải đàm phán lại giá FIT (EPTC, 05/10/2026); 7 dự án chuyển tiếp đang nhận giá tạm 50% trần.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="srcrow"><a href="https://www.evn.com.vn/d/vi-VN/news/Tinh-hinh-hoat-dong-thang-9-nam-2026-nhiem-vu-trong-tam-3-thang-cuoi-nam-2026-60-142-509877" target="_blank" rel="noopener">EVN · Tình hình hoạt động tháng 9/2026</a><a href="https://tapchicongthuong.vn/evn-lam-ro-mot-so-thong-tin-trong-bao-cao-tai-chinh-nam-2025-cua-cong-ty-me-evn-va-bao-cao-hop-nhat-toan-tap-doan-524528.htm" target="_blank" rel="noopener">Tạp chí Công Thương · BCTC EVN 2025</a><a href="https://nangluongvietnam.vn/khong-tang-gia-dien-theo-yeu-cau-cua-thu-tuong-va-bai-toan-moi-sau-khi-evn-phuc-hoi-tai-chinh-36721.html" target="_blank" rel="noopener">Năng lượng VN · EVN hết lỗ lũy kế</a><a href="https://dantri.com.vn/thoi-su/thu-tuong-chi-dao-khong-tang-gia-dien-20261003144838224.htm" target="_blank" rel="noopener">Dân trí · không tăng giá điện 03/10/2026</a><a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC · ENSO</a><a href="https://nangluongvietnam.vn/tien-do-cac-loai-hinh-nguon-dien-va-van-de-cung-ung-dien-giai-doan-2026-2030-trong-bao-cao-760-cua-bo-cong-thuong-36624.html" target="_blank" rel="noopener">Năng lượng VN · Báo cáo 760</a><a href="https://vnexpress.net/evn-de-nghi-dam-phan-lai-gia-mua-dien-loat-du-an-tai-tao-vuong-nghiem-thu-5128495.html" target="_blank" rel="noopener">VnExpress · giá FIT 05/10/2026</a><a href="https://baochinhphu.vn/evn-day-nhanh-lo-trinh-phat-trien-pin-luu-tru-nang-luong-tren-luoi-dien-10226040811234785.htm" target="_blank" rel="noopener">Báo Chính phủ · pin lưu trữ</a></div>
-  </section>
-
-  <section id="outlook" class="section">
-    <h3 class="subhead">Kịch bản 6–12 tháng</h3>
-    <p class="subsub">Khung quản trị rủi ro dựa trên dữ liệu đã kiểm, không phải dự báo có xác suất.</p>
-    <div class="grid three">
-      <div class="scenario active" onclick="selectScenario('base',this)" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><span class="badge base">CƠ SỞ</span><div class="note">El Niño mạnh qua mùa khô 2027; giá bán lẻ giữ mức đã giảm 2%</div></div>
-      <div class="scenario" onclick="selectScenario('bull',this)" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><span class="badge bull">THUẬN LỢI</span><div class="note">Phụ tải tăng nhanh, nhiên liệu hạ, giá điện được điều chỉnh</div></div>
-      <div class="scenario" onclick="selectScenario('bear',this)" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><span class="badge bear">BẤT LỢI</span><div class="note">El Niño sâu, nhiên liệu đắt, giá điện không đổi</div></div>
-    </div>
-    <div class="scenarioDetail" id="scenarioDetail"></div>
-  </section>
-  </div>
 
   <div class="majorpane" data-tab="mt6" id="pane-mt6"></div>
 
@@ -1031,7 +992,7 @@ function selectScenario(key, elx){
   elx.classList.add("active");
   document.getElementById("scenarioDetail").innerHTML=scenarioText[key];
 }
-selectScenario("base", document.querySelector(".scenario"));
+if(document.querySelector(".scenario"))selectScenario("base", document.querySelector(".scenario")); // khối kịch bản ở tab Động lực · Rủi ro đã bỏ 25/11/2026
 const initialTab = (location.hash || "").replace("#", "");
 if(document.querySelector('.majorpane[data-tab="'+initialTab+'"]')) showMajorTab(initialTab);
 window.addEventListener("hashchange", () => {

@@ -22,27 +22,26 @@
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="app/catalyst-board.js?v=e69ff7b64de8" defer></script>
 <script src="app/sector-smart.js?v=9199819d80e6" defer></script>
 <script src="../data/company-valuation.js?v=59d42616e817" defer></script>
 <script src="../data/company-comparison.js?v=57100795fdb1" defer></script>
 <script src="../data/company-quarterly.js?v=95f3ff4a5c9f" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=c3549c738a62" defer></script>
+<script src="app/research-layout.js?v=2f5cb88d6d09" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=53be49980eb9" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
-<script src="app/stock-dom.js?v=5eecaa4c6683" defer></script>
+<script src="app/stock-dom.js?v=54e77361968d" defer></script>
 <script src="app/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <script src="app/source-gap.js?v=f5423408804a" defer></script>
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=7166cf0575e8" defer></script>
-<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-dien-bo-tab-evn"></script>
+<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-bo-dong-luc-rui-ro"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
@@ -59,7 +58,6 @@
   <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
   <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
   <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
-  <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst / Risk</button>
   <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
   <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
 </nav>
@@ -261,22 +259,6 @@
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Ngày đóng thầu và giá trị 4 gói (khoảng 7.105 tỷ theo kết quả tìm kiếm) chưa thấy trong trang gốc đã mở nên để trống; mốc kết quả là ước tính theo thời gian chấm thầu thông lệ. Lương cơ sở theo NĐ 161/2026/NĐ-CP qua trang tổng hợp, chưa mở văn bản gốc.</div></details>
       <div class="source-note">Nguồn: <a href="https://baodauthau.vn/tu-khoa/dau-thau-thuoc-quoc-gia-tag61518.html" target="_blank" rel="noopener">Báo Đấu thầu · thầu thuốc quốc gia</a> · <a href="https://baohiemxahoidientu.vn/bhxh/chinh-sach-bhyt-tu-01-07-2026.html" target="_blank" rel="noopener">Chính sách BHYT từ 01/07/2026</a> · TT 32/2026 và BHYT 9T: bảng Pháp lý, Đấu thầu &amp; BHYT ở Tổng quan.</div>
     </div>
-  </section>
-  </div>
-  <div class="majorpane" data-tab="mt5" id="pane-mt5">
-  <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai (nhập khẩu, IIP, tỷ giá, CPI y tế, GDP y tế, định giá).</p></div></div>
-    <div class="catriskgrid">
-      <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Catalyst — yếu tố hỗ trợ</h3>
-        <ul><li><b>Chi KCB BHYT +14,3%</b> (2025) — cầu kênh ETC tăng <span class="muted">(DHG · IMP · DBD)</span></li><li><b>Long Châu +33%</b> doanh thu 6T, 2.639 nhà thuốc <span class="muted">(FRT)</span></li><li><b>Đấu thầu 5 nhóm GMP</b> ưu thế cho nhà máy EU-GMP <span class="muted">(IMP · DHG)</span></li></ul>
-      </div>
-      <div class="riskbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Risk — rủi ro</h3>
-        <ul><li><b>Tỷ giá tăng</b> đẩy giá API trong khi giá trúng thầu cố định <span class="muted">(nhà sản xuất)</span></li><li><b>TNH lỗ 7 quý liên tiếp</b>, kế hoạch 2026 lỗ 51 tỷ <span class="muted">(TNH)</span></li><li><b>Thuốc ngoại nhập</b> cạnh tranh nhóm thầu cao <span class="muted">(cả ngành)</span></li></ul>
-      </div>
-    </div>
-    <div class="srcrow"><a href="https://daibieunhandan.vn/bao-hiem-xa-hoi-viet-nam-no-luc-but-pha-vung-tru-cot-an-sinh-10401248.html" target="_blank" rel="noopener">BHXH 2025</a><a href="https://nhadautu.vn/them-benh-vien-moi-di-vao-van-hanh-tap-doan-tnh-noi-dai-chuoi-lo-sang-quy-thu-7-d106808.html" target="_blank" rel="noopener">TNH Q2</a></div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt6" id="pane-mt6">

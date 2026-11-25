@@ -18,7 +18,6 @@
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="app/catalyst-board.js?v=e69ff7b64de8" defer></script>
 <script src="app/sector-smart.js?v=9199819d80e6" defer></script>
 <script src="app/sector-ticker.js?v=24097f7668e0" defer></script>
 <script src="../data/company-valuation.js?v=59d42616e817" defer></script>
@@ -26,20 +25,20 @@
 <script src="../data/company-quarterly.js?v=95f3ff4a5c9f" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=c3549c738a62" defer></script>
+<script src="app/research-layout.js?v=2f5cb88d6d09" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=53be49980eb9" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
-<script src="app/stock-dom.js?v=5eecaa4c6683" defer></script>
+<script src="app/stock-dom.js?v=54e77361968d" defer></script>
 <script src="app/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <script src="app/source-gap.js?v=f5423408804a" defer></script>
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=7166cf0575e8" defer></script>
-<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-dien-bo-tab-evn"></script>
+<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-bo-dong-luc-rui-ro"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
@@ -55,7 +54,7 @@
     <div class="fiscbar-doc">Dashboard ngành · <b>Dầu khí Việt Nam</b> · khung nghiên cứu gốc 03/09/2026 · rà soát 09/11/2026</div>
     <div class="fiscbar-nav">
       <a href="#mt1">Tổng quan</a><a href="#mt2">Cung – Cầu</a><a href="#mt3">Giá – Margin</a>
-      <a href="#mt4">Policy</a><a href="#mt5">Catalyst</a><a href="#mt6">Key players</a><a href="#mt7">Hormuz</a>
+      <a href="#mt4">Policy</a><a href="#mt6">Key players</a><a href="#mt7">Hormuz</a>
     </div>
   </div>
 </div>
@@ -66,7 +65,6 @@
     <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
     <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
     <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
-    <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst / Risk</button>
     <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
     <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Hormuz &amp; dòng chảy</button>
   </div>
@@ -558,79 +556,6 @@
   </section>
   </div>
 
-  <div class="majorpane" data-tab="mt5" id="pane-mt5">
-  <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst / Risk</h2><p>Mỗi kịch bản đi kèm giả định định lượng và một ngưỡng làm nó sai. Không có ngưỡng invalidation thì đó là dự đoán, không phải phân tích.</p></div></div>
-
-    <div class="catalyst-map">
-      <div class="factor-card good" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Crack sản phẩm cao</h3>
-        <div class="metric">102,8</div>
-        <div class="label2">USD/thùng · diesel crack USGC, 01/09/2026</div>
-        <div class="impact"><b>Hỗ trợ:</b> BSR nếu vẫn có nguyên liệu chạy máy. <b>Ngưỡng đảo chiều:</b> diesel crack xuống dưới 60 USD/thùng trong một tháng.</div>
-      </div>
-      <div class="factor-card bad" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Global balance 2026E thiếu cung</h3>
-        <div class="metric">-1,87</div>
-        <div class="label2">mb/d · EIA STEO, cung trừ cầu</div>
-        <div class="impact"><b>Rủi ro:</b> giá dầu được hỗ trợ nhưng dễ bóp cầu. <b>Ngưỡng đảo chiều:</b> forecast 2027E dư cung xảy ra sớm.</div>
-      </div>
-      <div class="factor-card bad" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Hormuz chưa bình thường hóa</h3>
-        <div class="metric">1,9</div>
-        <div class="label2">tàu chở dầu/ngày · bình quân tháng 8/2026</div>
-        <div class="impact"><b>Rủi ro:</b> Nghi Sơn, nhập khẩu sản phẩm, crack. <b>Follow nhanh:</b> IMF PortWatch API. <b>Ngưỡng đảo chiều:</b> phục hồi trên 30 lượt/ngày.</div>
-      </div>
-      <div class="factor-card good" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Luật Dầu khí 2026</h3>
-        <div class="metric">01/03/27</div>
-        <div class="label2">ngày hiệu lực</div>
-        <div class="impact"><b>Hỗ trợ:</b> xác suất FID và hợp đồng dịch vụ. <b>Độ trễ:</b> nhiều quý tới nhiều năm, không tạo doanh thu ngay.</div>
-      </div>
-      <div class="factor-card good" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Khai thác PVN 6T/2026</h3>
-        <div class="metric">+11,4%</div>
-        <div class="label2">so cùng kỳ · 8,7 triệu tấn quy dầu</div>
-        <div class="impact"><b>Hỗ trợ:</b> tín hiệu ngược trend suy giảm dài hạn. <b>Cần kiểm tra:</b> có duy trì sang 9T/2026 hay không.</div>
-      </div>
-      <div class="factor-card bad" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Demand outlook phân kỳ</h3>
-        <div class="metric">IEA < 0</div>
-        <div class="label2">IEA dự báo cầu giảm; OPEC vẫn tăng nhưng đã hạ outlook</div>
-        <div class="impact"><b>Rủi ro:</b> giá cao tự phá cầu. <b>Cần theo dõi:</b> China, India, Other Asia và OECD demand revision.</div>
-      </div>
-    </div>
-    <div class="srcrow"><a href="https://www.iea.org/topics/oil-market-report" target="_blank" rel="noopener">IEA · Oil Market Report (bản mới nhất)</a><a href="https://publications.opec.org/momr/" target="_blank" rel="noopener">OPEC · Monthly Oil Market Report</a><a href="https://petrovietnam.petrotimes.vn/viet-tiep-chang-duong-khat-vong-moi-744936.html" target="_blank" rel="noopener">PVN · kết quả 6 tháng 2026</a><a href="https://thanhnhan-04.github.io/Luat-Dau-Khi-2026/" target="_blank" rel="noopener">Dashboard Luật Dầu khí 2026</a></div>
-
-    <div class="card focus-card" style="margin-top:14px" data-block-id="dau-khi-29" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-      <h3 style="margin-top:0;font-size:13.5px">Watch KPIs — follow ở đâu để cập nhật thesis nhanh nhất</h3>
-      <div class="tablewrap"><table class="watch-table">
-        <thead><tr><th>Kỳ quan sát / công bố</th><th>KPI</th><th>Follow nhanh nhất</th><th>Ngưỡng cần chú ý</th><th>Tác động chính</th></tr></thead>
-        <tbody>
-          <tr><td>Quan sát ngày · nguồn tuần</td><td>Brent, gasoline/ULSD proxy, crack USGC</td><td><a href="https://www.eia.gov/dnav/pet/pet_pri_spt_s1_d.htm" target="_blank" rel="noopener">EIA spot prices</a></td><td>Crack diesel giữ trên 60 USD/thùng dù Brent giảm</td><td>Xác nhận product bottleneck còn hay đã gỡ</td></tr>
-          <tr><td>Tuần</td><td>US distillate stocks, gasoline stocks, crude stocks, refinery runs</td><td><a href="https://www.eia.gov/petroleum/supply/weekly/" target="_blank" rel="noopener">EIA Weekly Petroleum Status Report</a></td><td>Distillate thủng 100 triệu thùng hoặc hồi phục lên trên 115–120 triệu thùng</td><td>Crack diesel, BSR, PLX</td></tr>
-          <tr><td>Quan sát ngày · nguồn tuần</td><td>Hormuz tanker traffic</td><td><a href="https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query?where=portid%3D%27chokepoint6%27&amp;outFields=date,n_tanker,n_total&amp;orderByFields=date%20DESC&amp;resultRecordCount=30&amp;f=json" target="_blank" rel="noopener">IMF PortWatch API</a></td><td>Phục hồi trên 30 lượt tàu chở dầu/ngày hoặc tiếp tục dưới 10</td><td>Nghi Sơn, nhập khẩu sản phẩm, crack</td></tr>
-          <tr><td>Kỳ điều hành</td><td>Giá bán lẻ xăng dầu trong nước</td><td><a href="https://costflow.vn/du-lieu/gia-xang-dau-lap-du-toan" target="_blank" rel="noopener">CostFlow/Petrolimex</a> + <a href="https://moit.gov.vn/van-ban-phap-luat/van-ban-phap-quy/thong-bao-dieu-hanh-gia-ban-xang-dau.html" target="_blank" rel="noopener">MOIT</a></td><td>Diesel còn cao hơn RON95 hoặc quỹ bình ổn thay đổi trạng thái</td><td>PLX, phân phối, inventory margin</td></tr>
-          <tr><td>Tháng</td><td>IEA/OPEC/EIA global supply-demand revisions</td><td><a href="https://www.iea.org/topics/oil-market-report" target="_blank" rel="noopener">IEA OMR</a> / <a href="https://publications.opec.org/momr/" target="_blank" rel="noopener">OPEC MOMR</a> / <a href="https://www.eia.gov/outlooks/steo/" target="_blank" rel="noopener">EIA STEO</a></td><td>IEA và OPEC cùng hạ demand hoặc cùng nâng supply recovery</td><td>Thay đổi regime giá dầu và margin</td></tr>
-          <tr><td>Quý</td><td>PVD utilization/dayrate; PVS backlog/new awards; GAS gas/LNG volume; PLX inventory/provision</td><td>BCTC, BCTN, tài liệu ĐHĐCĐ và công bố doanh nghiệp</td><td>Đảo chiều backlog, dayrate hoặc dự phòng tồn kho tăng bất thường</td><td>Earnings từng mã, không suy từ Brent</td></tr>
-        </tbody>
-      </table></div>
-      <div class="source-note">Các KPI này biến dashboard từ bảng tình huống thành bảng theo dõi thesis. Khi một ngưỡng bị phá, cần cập nhật lại kịch bản bên dưới thay vì chỉ thay số trên chart.</div>
-      <p style="font-size:12.5px;line-height:1.65;color:var(--ink2);margin:10px 0 0"><b>Đối chiếu 28/10/2026:</b> crack gasoil Singapore <b>64,69 USD/thùng</b> (27/10, Opinet) — vẫn trên 60; distillate Mỹ 104,3 (16/10) — trong vùng 100–115; Hormuz <b>0–2 tàu chở dầu/ngày</b> tuần tới 18/10 — vẫn dưới 10. Chưa ngưỡng nào đổi trạng thái.</p>
-      <p class="note" style="margin:6px 0 0">Phân tích AI ngày 28/10/2026</p>
-    </div>
-
-    <div class="section" style="margin-top:8px">
-      <h3 class="subhead">Ba kịch bản 6–12 tháng</h3>
-      <div class="scenarios">
-        <div class="scenario active" onclick="selectScenario('base',this)" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><span class="badge base">CƠ SỞ</span><div class="range">Brent 85 – 100 USD/thùng</div><div class="note">Gián đoạn kéo dài nhưng không leo thang; crack hạ nhiệt dần từ vùng cực đoan.</div></div>
-        <div class="scenario" onclick="selectScenario('bull',this)" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><span class="badge bull">TĂNG</span><div class="range">Brent &gt; 110 USD/thùng</div><div class="note">Leo thang làm mất thêm dòng chảy vật chất, không chỉ là phần bù rủi ro.</div></div>
-        <div class="scenario" onclick="selectScenario('bear',this)" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><span class="badge bear">GIẢM</span><div class="range">Brent &lt; 75 USD/thùng</div><div class="note">Dòng chảy bình thường hóa, demand yếu theo IEA và OPEC tiếp tục hạ outlook.</div></div>
-      </div>
-      <div class="scenario-detail" id="scenarioDetail"></div>
-    </div>
-  </section>
-  </div>
 
   <div class="majorpane" data-tab="mt6" id="pane-mt6">
   <section class="section">
@@ -1299,7 +1224,7 @@ function selectScenario(key, elx){
   elx.classList.add("active");
   document.getElementById("scenarioDetail").innerHTML=scenarioText[key];
 }
-selectScenario("base", document.querySelector(".scenario"));
+if(document.querySelector(".scenario"))selectScenario("base", document.querySelector(".scenario")); // khối kịch bản ở tab Động lực · Rủi ro đã bỏ 25/11/2026
 const initialTab = (location.hash || "").replace("#", "");
 if(document.querySelector('.majorpane[data-tab="'+initialTab+'"]')) showMajorTab(initialTab);
 window.addEventListener("hashchange", () => {

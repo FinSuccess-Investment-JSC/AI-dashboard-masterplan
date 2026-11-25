@@ -52,4 +52,4 @@ Routine Wi làm hết mục B; routine tài liệu xử lý tối đa 10 mục �
 - Màu và font theo FinSuccess (`DESIGN_RULES.md`, `assets/fin-success-theme.css`, style fisc.vn); không thêm màu ngoài token.
 - Nguồn dưới mỗi chart/bảng/số là link bấm được tới đúng trang hoặc file gốc; không có URL thì ghi tên file nội bộ, tuyệt đối không bịa link.
 - Ít chữ, dễ nắm key: không viết điều đã thấy trên chart; con số và cụm ý chính in đậm/đổi màu (`ResearchLayout.emphasize()`, `<mark class="key-phrase">`); so với kỳ trước thì kẻ bảng Trước/Sau (`.compare-table`). Nhãn lời bình ghi đúng "Phân tích AI ngày dd/mm/yyyy".
-- Giữ thứ tự tab chuẩn (Tổng quan → Cung–Cầu → Giá–Chi phí–Margin → Policy/Trade/Tax → Catalyst/Risk → Key players → tab riêng); nội dung một chủ đề nằm trong dropdown của chủ đề đó; không đổi bố cục khi chỉ cập nhật số.
+- Giữ thứ tự tab chuẩn (Tổng quan → Cung–Cầu → Giá–Chi phí–Margin → Policy/Trade/Tax → Key players → tab riêng); nội dung một chủ đề nằm trong dropdown của chủ đề đó; không đổi bố cục khi chỉ cập nhật số.

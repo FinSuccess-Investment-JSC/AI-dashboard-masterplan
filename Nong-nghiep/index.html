@@ -21,27 +21,26 @@
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="app/catalyst-board.js?v=e69ff7b64de8" defer></script>
 <script src="app/sector-smart.js?v=9199819d80e6" defer></script>
 <script src="../data/company-valuation.js?v=59d42616e817" defer></script>
 <script src="../data/company-comparison.js?v=57100795fdb1" defer></script>
 <script src="../data/company-quarterly.js?v=95f3ff4a5c9f" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=c3549c738a62" defer></script>
+<script src="app/research-layout.js?v=2f5cb88d6d09" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=53be49980eb9" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
-<script src="app/stock-dom.js?v=5eecaa4c6683" defer></script>
+<script src="app/stock-dom.js?v=54e77361968d" defer></script>
 <script src="app/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <script src="app/source-gap.js?v=f5423408804a" defer></script>
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=7166cf0575e8" defer></script>
-<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-dien-bo-tab-evn"></script>
+<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-bo-dong-luc-rui-ro"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
@@ -58,7 +57,6 @@
   <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
   <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
   <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
-  <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst / Risk</button>
   <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
   <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
   <button class="majortabbtn" onclick="showMajorTab('mt10',this)">8. Thời tiết &amp; mùa vụ</button>
@@ -245,22 +243,6 @@
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Mốc 2026, 2027 (bia 70%), 2031 và nước có đường 8% (2027), 10% (2028) đã mở bài gốc (VnEconomy 11/07/2025, Thời báo Tài chính 14/06/2025, LuatVietnam 17/07/2025; data/agri/evidence.json). Các năm 2028–2030 của bia, rượu theo lộ trình +5 điểm %/năm do các bài nêu, chưa mở được toàn văn Điều 8 (hoatieu.vn trả 403, thuvienphapluat chặn máy đọc).</div></details>
       <div class="source-note">Nguồn: <a href="https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm" target="_blank" rel="noopener">VnEconomy 11/07/2025</a> · <a href="https://thoibaotaichinhvietnam.vn/ap-thue-tieu-thu-dac-biet-voi-nuoc-giai-khat-co-duong-tu-nam-2027-178303.html" target="_blank" rel="noopener">Thời báo Tài chính 14/06/2025</a> · <a href="https://luatvietnam.vn/tin-van-ban-moi/tang-thue-tieu-thu-dac-biet-voi-ruou-bia-thuoc-la-tu-01-01-2026-186-103035-article.html" target="_blank" rel="noopener">LuatVietnam</a></div>
     </div>
-  </section>
-  </div>
-  <div class="majorpane" data-tab="mt5" id="pane-mt5">
-  <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai (giá hàng hóa, XNK, sản lượng, bán lẻ, định giá) và NOAA (ENSO).</p></div></div>
-    <div class="catriskgrid">
-      <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Catalyst — yếu tố hỗ trợ</h3>
-        <ul><li><b>Giá cao su tăng mạnh</b>: TSR20 +52% YoY <span class="muted">(1–2 quý · GVR · DPR · PHR)</span></li><li><b>Đền bù, chuyển đất cao su sang KCN</b>: PHR còn ~900 tỷ đền bù VSIP III (08/2026), Bắc Tân Uyên 1 &gt;1.400 tỷ; GVR chuyển đất cao su sang KCN <span class="muted">(2026–2027 · PHR · GVR)</span></li><li><b>Tiêu dùng nội địa</b>: bán lẻ 9T +12%, bia +15% <span class="muted">(1–2 quý · SAB · MSN · VNM)</span></li></ul>
-      </div>
-      <div class="riskbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Risk — rủi ro</h3>
-        <ul><li><b>El Niño mạnh tới Q1/2027</b>: hạn Tây Nguyên, mặn ĐBSCL vụ Đông Xuân <span class="muted">(Q4/2026–Q2/2027 · LTG · PAN · HAG)</span></li><li><b>Biên chăn nuôi ước âm/hẹp</b>: heo hơi dưới band hòa vốn ước 48–52 nghìn đ/kg (tab Giá – Chi phí – Margin) <span class="muted">(1–2 quý · DBC · BAF)</span></li><li><b>Thuế TTĐB bia từ 2027</b> <span class="muted">(2027 · SAB)</span></li><li><b>Gạo: Philippines, Indonesia hạn chế nhập</b> <span class="muted">(theo sự kiện · LTG · PAN)</span></li></ul>
-      </div>
-    </div>
-    <div class="srcrow"><a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC</a><a href="https://elibook.vn/2026/06/25/phr-gia-cao-su-tu-nhien-van-neo-cao-va-suc-bat-tu-3260-ty-dong-tien-boi-thuong-dat/" target="_blank" rel="noopener">Elibook – PHR</a><a href="https://hoatieu.vn/phap-luat/luat-thue-tieu-thu-dac-biet-so-66-2025-qh15-235343" target="_blank" rel="noopener">Luật 66/2025 – TTĐB</a></div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt6" id="pane-mt6">
