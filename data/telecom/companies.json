@@ -1,0 +1,2942 @@
+{
+ "generated": "2026-11-25",
+ "notes": "Đơn vị tiền: tỷ đồng trừ khi ghi khác. p dạng 'YYYY-MM' = cuối tháng (stock) hoặc lũy kế đến tháng (flow YTD, xem scope). Khi một series có nhiều điểm cùng p (event), thứ tự điểm được giải thích trong notes. Mọi src trỏ tới URL đã mở trong phiên.",
+ "companies": {
+  "CTR": {
+   "profile": "Tổng CTCP Công trình Viettel (Viettel Construction, HOSE: CTR) – công ty con 65,66% của Tập đoàn Viettel. 4 mảng: Vận hành khai thác (VHKT, ~45% DT 2025), Xây dựng công trình (B2B hạ tầng viễn thông + dân dụng B2C/SME), Giải pháp tích hợp & dịch vụ kỹ thuật (NLMT, ME&ICT), Hạ tầng cho thuê (TowerCo, ~6% DT nhưng biên gộp ~29%). TowerCo số 1 VN (~12.000 trạm). Công bố kết quả sơ bộ hằng tháng qua thông cáo báo chí.",
+   "series": [
+    {
+     "key": "ctr_bts_owned",
+     "label": "Số trạm BTS sở hữu (TowerCo)",
+     "unit": "trạm",
+     "freq": "M",
+     "kind": "stock",
+     "scope": "CTR – công ty (hạ tầng cho thuê)",
+     "points": [
+      {
+       "p": "2020-09",
+       "v": 1000,
+       "status": "actual",
+       "src": 18
+      },
+      {
+       "p": "2021-12",
+       "v": 2473,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2022-12",
+       "v": 4286,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2023-12",
+       "v": 6334,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2024-05",
+       "v": 7393,
+       "status": "actual",
+       "src": 16
+      },
+      {
+       "p": "2024-12",
+       "v": 10000,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2025-01",
+       "v": 10047,
+       "status": "actual",
+       "src": 17
+      },
+      {
+       "p": "2025-02",
+       "v": 10114,
+       "status": "actual",
+       "src": 12
+      },
+      {
+       "p": "2025-03",
+       "v": 10350,
+       "status": "actual",
+       "src": 0
+      },
+      {
+       "p": "2025-06",
+       "v": 10770,
+       "status": "actual",
+       "src": 4
+      },
+      {
+       "p": "2025-09",
+       "v": 11329,
+       "status": "actual",
+       "src": 4
+      },
+      {
+       "p": "2025-11",
+       "v": 11780,
+       "status": "actual",
+       "src": 14
+      },
+      {
+       "p": "2025-12",
+       "v": 12000,
+       "status": "actual",
+       "src": 7
+      },
+      {
+       "p": "2026-03",
+       "v": 12000,
+       "status": "actual",
+       "src": 7
+      },
+      {
+       "p": "2026-05",
+       "v": 12000,
+       "status": "actual",
+       "src": 13
+      },
+      {
+       "p": "2026-06",
+       "v": 12000,
+       "status": "actual",
+       "src": 9
+      },
+      {
+       "p": "2026-10",
+       "v": 12080,
+       "status": "actual",
+       "src": 2
+      }
+     ],
+     "notes": "Cuối kỳ (tháng). 2020-09 là con số xấp xỉ '1,000 trạm tính đến quý 3/2020' theo VCSC. Cuối 2023: Mirae 6.334 vs MBS 6.436 (xem consistency). Các mốc 2024-12 (10.000) và 2025-12 (~12.000) là số tròn do công ty/CTCK công bố. Không có số liệu tháng liên tục – chỉ các tháng có thông cáo/bài báo."
+    },
+    {
+     "key": "ctr_bts_cotenant",
+     "label": "Số trạm có từ 2 nhà mạng trở lên thuê",
+     "unit": "trạm",
+     "freq": "M",
+     "kind": "stock",
+     "scope": "CTR – công ty",
+     "points": [
+      {
+       "p": "2021-12",
+       "v": 43,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2022-12",
+       "v": 125,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2023-12",
+       "v": 208,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2024-05",
+       "v": 240,
+       "status": "actual",
+       "src": 16
+      },
+      {
+       "p": "2024-12",
+       "v": 333,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2025-01",
+       "v": 338,
+       "status": "actual",
+       "src": 17
+      },
+      {
+       "p": "2025-02",
+       "v": 340,
+       "status": "actual",
+       "src": 12
+      },
+      {
+       "p": "2025-03",
+       "v": 340,
+       "status": "actual",
+       "src": 0
+      },
+      {
+       "p": "2025-06",
+       "v": 363,
+       "status": "actual",
+       "src": 4
+      },
+      {
+       "p": "2025-09",
+       "v": 385,
+       "status": "actual",
+       "src": 4
+      },
+      {
+       "p": "2025-11",
+       "v": 437,
+       "status": "actual",
+       "src": 14
+      },
+      {
+       "p": "2026-06",
+       "v": 573,
+       "status": "actual",
+       "src": 9
+      },
+      {
+       "p": "2026-10",
+       "v": 653,
+       "status": "actual",
+       "src": 2
+      }
+     ],
+     "notes": "Lũy kế cuối kỳ. Cuối 2023: Mirae 208 vs MBS 203. Theo HSC (qua elibook), MobiFone chiếm ~70% khách thuê ngoài Viettel trên trạm dùng chung; ABS ghi khách thuê thêm gồm VinaPhone và MobiFone."
+    },
+    {
+     "key": "ctr_tenancy",
+     "label": "Tỷ lệ dùng chung (tenancy ratio)",
+     "unit": "lần",
+     "freq": "M",
+     "kind": "ratio",
+     "scope": "CTR – công ty",
+     "points": [
+      {
+       "p": "2023-12",
+       "v": 1.032,
+       "status": "actual",
+       "src": 5
+      },
+      {
+       "p": "2024-05",
+       "v": 1.03,
+       "status": "actual",
+       "src": 16
+      },
+      {
+       "p": "2024-12",
+       "v": 1.033,
+       "status": "actual",
+       "src": 5
+      },
+      {
+       "p": "2025-01",
+       "v": 1.03,
+       "status": "actual",
+       "src": 17
+      },
+      {
+       "p": "2025-02",
+       "v": 1.03,
+       "status": "actual",
+       "src": 12
+      },
+      {
+       "p": "2025-03",
+       "v": 1.03,
+       "status": "actual",
+       "src": 0
+      },
+      {
+       "p": "2025-06",
+       "v": 1.03,
+       "status": "actual",
+       "src": 4
+      },
+      {
+       "p": "2025-09",
+       "v": 1.03,
+       "status": "actual",
+       "src": 4
+      },
+      {
+       "p": "2025-11",
+       "v": 1.03,
+       "status": "actual",
+       "src": 14
+      },
+      {
+       "p": "2025-12",
+       "v": 1.045,
+       "status": "plan",
+       "src": 0
+      }
+     ],
+     "notes": "2023-12 và 2024-12 lấy từ bảng của MBS (3 chữ số thập phân). 2025-12 là MỤC TIÊU 1,045 công ty đặt cho năm 2025 (không phải thực hiện). Mục tiêu 2026: 1,05–1,06 (xem facts). Không công bố tỷ lệ chính thức cho 2026-06/2026-10; chỉ có số trạm dùng chung."
+    },
+    {
+     "key": "ctr_rev_seg_y_vhkt",
+     "label": "Doanh thu Vận hành khai thác (năm)",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "CTR – mảng (hợp nhất)",
+     "points": [
+      {
+       "p": "2024",
+       "v": 6252,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2025",
+       "v": 6257,
+       "status": "actual",
+       "src": 7
+      }
+     ],
+     "notes": "Bao gồm VHKT trong và ngoài nước (Mytel, Metfone...)."
+    },
+    {
+     "key": "ctr_rev_seg_y_xd",
+     "label": "Doanh thu Xây dựng công trình / xây lắp (năm)",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "CTR – mảng (hợp nhất)",
+     "points": [
+      {
+       "p": "2024",
+       "v": 4075,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2025",
+       "v": 4763,
+       "status": "actual",
+       "src": 7
+      }
+     ],
+     "notes": "2025: công ty ước 4.639,1 tỷ (thông cáo 01/2026, VietNamNet) vs 4.763 theo BCTC (ABS) – dùng số BCTC."
+    },
+    {
+     "key": "ctr_rev_seg_y_gpth",
+     "label": "Doanh thu Giải pháp tích hợp (năm)",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "CTR – mảng (hợp nhất)",
+     "points": [
+      {
+       "p": "2024",
+       "v": 1455,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2025",
+       "v": 2061,
+       "status": "actual",
+       "src": 7
+      }
+     ],
+     "notes": "Chỉ mảng Giải pháp tích hợp (NLMT, ME&ICT); Dịch vụ kỹ thuật tách riêng và nhỏ (6T/2025: 70,1 tỷ)."
+    },
+    {
+     "key": "ctr_rev_seg_y_htct",
+     "label": "Doanh thu Hạ tầng cho thuê (TowerCo, năm)",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "CTR – mảng (hợp nhất)",
+     "points": [
+      {
+       "p": "2023",
+       "v": 435,
+       "status": "actual",
+       "src": 5
+      },
+      {
+       "p": "2024",
+       "v": 631,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2025",
+       "v": 857,
+       "status": "actual",
+       "src": 7
+      }
+     ],
+     "notes": "2023 lấy từ bảng TowerCo của MBS (cột 2023)."
+    },
+    {
+     "key": "ctr_rev_seg_q_vhkt",
+     "label": "Doanh thu Vận hành khai thác (quý)",
+     "unit": "tỷ đồng",
+     "freq": "Q",
+     "kind": "flow",
+     "scope": "CTR – mảng",
+     "points": [
+      {
+       "p": "2024Q1",
+       "v": 1392,
+       "status": "actual",
+       "src": 5
+      },
+      {
+       "p": "2025Q1",
+       "v": 1393,
+       "status": "actual",
+       "src": 5
+      },
+      {
+       "p": "2025Q4",
+       "v": 1360,
+       "status": "actual",
+       "src": 7
+      },
+      {
+       "p": "2026Q3",
+       "v": 1683,
+       "status": "actual",
+       "src": 11
+      }
+     ],
+     "notes": "2026Q3 theo Mekong ASEAN gọi là 'Dịch vụ vận hành khai thác và ứng cứu thông tin'."
+    },
+    {
+     "key": "ctr_rev_seg_q_xd",
+     "label": "Doanh thu Xây dựng công trình (quý)",
+     "unit": "tỷ đồng",
+     "freq": "Q",
+     "kind": "flow",
+     "scope": "CTR – mảng",
+     "points": [
+      {
+       "p": "2024Q1",
+       "v": 770,
+       "status": "actual",
+       "src": 5
+      },
+      {
+       "p": "2025Q1",
+       "v": 783,
+       "status": "actual",
+       "src": 5
+      },
+      {
+       "p": "2025Q2",
+       "v": 1077,
+       "status": "actual",
+       "src": 4
+      },
+      {
+       "p": "2025Q4",
+       "v": 1822,
+       "status": "actual",
+       "src": 7
+      },
+      {
+       "p": "2026Q3",
+       "v": 1490,
+       "status": "actual",
+       "src": 11
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "key": "ctr_rev_seg_q_gp",
+     "label": "Doanh thu Giải pháp & dịch vụ kỹ thuật (quý)",
+     "unit": "tỷ đồng",
+     "freq": "Q",
+     "kind": "flow",
+     "scope": "CTR – mảng (phạm vi khác nhau theo nguồn)",
+     "points": [
+      {
+       "p": "2024Q1",
+       "v": 327,
+       "status": "actual",
+       "src": 5
+      },
+      {
+       "p": "2025Q1",
+       "v": 364,
+       "status": "actual",
+       "src": 5
+      },
+      {
+       "p": "2025Q4",
+       "v": 549,
+       "status": "actual",
+       "src": 7
+      },
+      {
+       "p": "2026Q3",
+       "v": 808,
+       "status": "actual",
+       "src": 11
+      }
+     ],
+     "notes": "Phạm vi: 2024Q1/2025Q1 = 'System integration & Technical services' (MBS); 2025Q4 = chỉ Giải pháp tích hợp (ABS); 2026Q3 = 'Thương mại, giải pháp và dịch vụ kỹ thuật' (Mekong ASEAN). Không hoàn toàn so sánh được."
+    },
+    {
+     "key": "ctr_rev_seg_q_htct",
+     "label": "Doanh thu Hạ tầng cho thuê (quý)",
+     "unit": "tỷ đồng",
+     "freq": "Q",
+     "kind": "flow",
+     "scope": "CTR – mảng",
+     "points": [
+      {
+       "p": "2024Q1",
+       "v": 135,
+       "status": "actual",
+       "src": 5
+      },
+      {
+       "p": "2025Q1",
+       "v": 198,
+       "status": "actual",
+       "src": 5
+      },
+      {
+       "p": "2025Q2",
+       "v": 213,
+       "status": "actual",
+       "src": 4
+      },
+      {
+       "p": "2025Q4",
+       "v": 225,
+       "status": "actual",
+       "src": 7
+      },
+      {
+       "p": "2026Q3",
+       "v": 246,
+       "status": "actual",
+       "src": 11
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "key": "ctr_rev_seg_ytd_vhkt",
+     "label": "Doanh thu VHKT lũy kế từ đầu năm",
+     "unit": "tỷ đồng",
+     "freq": "M",
+     "kind": "flow",
+     "scope": "CTR – mảng, lũy kế YTD đến tháng p",
+     "points": [
+      {
+       "p": "2024-05",
+       "v": 2406,
+       "status": "actual",
+       "src": 16
+      },
+      {
+       "p": "2025-02",
+       "v": 912,
+       "status": "actual",
+       "src": 12
+      },
+      {
+       "p": "2025-06",
+       "v": 2868,
+       "status": "actual",
+       "src": 4
+      },
+      {
+       "p": "2026-05",
+       "v": 2624,
+       "status": "actual",
+       "src": 13
+      },
+      {
+       "p": "2026-10",
+       "v": 5310,
+       "status": "actual",
+       "src": 2
+      }
+     ],
+     "notes": "p = tháng cuối của kỳ lũy kế (VD 2026-10 = 10 tháng 2026). Số sơ bộ theo thông cáo tháng; 2025-06 theo BCTC (ABS). 2024-05 là 'khoảng'."
+    },
+    {
+     "key": "ctr_rev_seg_ytd_xd",
+     "label": "Doanh thu Xây dựng/xây lắp lũy kế từ đầu năm",
+     "unit": "tỷ đồng",
+     "freq": "M",
+     "kind": "flow",
+     "scope": "CTR – mảng, lũy kế YTD",
+     "points": [
+      {
+       "p": "2024-05",
+       "v": 1349,
+       "status": "actual",
+       "src": 16
+      },
+      {
+       "p": "2025-02",
+       "v": 499,
+       "status": "actual",
+       "src": 12
+      },
+      {
+       "p": "2025-06",
+       "v": 1860,
+       "status": "actual",
+       "src": 4
+      },
+      {
+       "p": "2026-05",
+       "v": 2451,
+       "status": "actual",
+       "src": 13
+      },
+      {
+       "p": "2026-10",
+       "v": 5128,
+       "status": "actual",
+       "src": 2
+      }
+     ],
+     "notes": "6T/2026: 'vượt 3.000 tỷ, +62%' (Tạp chí Công Thương) – không ghi điểm vì không có số chính xác."
+    },
+    {
+     "key": "ctr_rev_seg_ytd_gp",
+     "label": "Doanh thu Giải pháp & dịch vụ kỹ thuật lũy kế từ đầu năm",
+     "unit": "tỷ đồng",
+     "freq": "M",
+     "kind": "flow",
+     "scope": "CTR – mảng, lũy kế YTD",
+     "points": [
+      {
+       "p": "2024-05",
+       "v": 581,
+       "status": "actual",
+       "src": 16
+      },
+      {
+       "p": "2025-02",
+       "v": 218.9,
+       "status": "actual",
+       "src": 12
+      },
+      {
+       "p": "2026-05",
+       "v": 1074,
+       "status": "actual",
+       "src": 13
+      },
+      {
+       "p": "2026-10",
+       "v": 2452,
+       "status": "actual",
+       "src": 2
+      }
+     ],
+     "notes": "6T/2025 ABS tách: Giải pháp tích hợp 766 tỷ, Dịch vụ kỹ thuật 70,1 tỷ (không cộng gộp). 6T/2026: 'gần 1.400 tỷ, +68%'."
+    },
+    {
+     "key": "ctr_rev_seg_ytd_htct",
+     "label": "Doanh thu Hạ tầng cho thuê lũy kế từ đầu năm",
+     "unit": "tỷ đồng",
+     "freq": "M",
+     "kind": "flow",
+     "scope": "CTR – mảng, lũy kế YTD",
+     "points": [
+      {
+       "p": "2024-05",
+       "v": 230.5,
+       "status": "actual",
+       "src": 16
+      },
+      {
+       "p": "2025-01",
+       "v": 64,
+       "status": "actual",
+       "src": 17
+      },
+      {
+       "p": "2025-02",
+       "v": 130,
+       "status": "actual",
+       "src": 12
+      },
+      {
+       "p": "2025-06",
+       "v": 410.8,
+       "status": "actual",
+       "src": 4
+      },
+      {
+       "p": "2026-05",
+       "v": 390,
+       "status": "actual",
+       "src": 13
+      },
+      {
+       "p": "2026-10",
+       "v": 800,
+       "status": "actual",
+       "src": 2
+      }
+     ],
+     "notes": "Tăng trưởng 6T/2026: +15% YoY; 10T/2026: +13% YoY."
+    },
+    {
+     "key": "ctr_gm_htct",
+     "label": "Biên LN gộp Hạ tầng cho thuê (năm)",
+     "unit": "%",
+     "freq": "Y",
+     "kind": "ratio",
+     "scope": "CTR – mảng",
+     "points": [
+      {
+       "p": "2023",
+       "v": 31.0,
+       "status": "actual",
+       "src": 5
+      },
+      {
+       "p": "2024",
+       "v": 28.8,
+       "status": "actual",
+       "src": 5
+      },
+      {
+       "p": "2025",
+       "v": 28.88,
+       "status": "actual",
+       "src": 7
+      }
+     ],
+     "notes": "Series này là mảng HẠ TẦNG CHO THUÊ. 2023–2024 từ bảng TowerCo MBS; 2025 từ ABS (ABS nói giảm 0,43 điểm % so với 2024 → hàm ý 2024 ~29,3%, lệch với MBS 28,8%)."
+    },
+    {
+     "key": "ctr_gm_vhkt",
+     "label": "Biên LN gộp Vận hành khai thác (năm)",
+     "unit": "%",
+     "freq": "Y",
+     "kind": "ratio",
+     "scope": "CTR – mảng",
+     "points": [
+      {
+       "p": "2024",
+       "v": 5.33,
+       "status": "actual",
+       "src": 7
+      },
+      {
+       "p": "2025",
+       "v": 5.58,
+       "status": "actual",
+       "src": 7
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "key": "ctr_gm_xd",
+     "label": "Biên LN gộp Xây dựng công trình (năm)",
+     "unit": "%",
+     "freq": "Y",
+     "kind": "ratio",
+     "scope": "CTR – mảng",
+     "points": [
+      {
+       "p": "2025",
+       "v": 5.16,
+       "status": "actual",
+       "src": 7
+      }
+     ],
+     "notes": "2025 giảm 1,04 điểm % so với 2024 (ABS); không ghi điểm 2024 vì không công bố trực tiếp."
+    },
+    {
+     "key": "ctr_gm_gpth",
+     "label": "Biên LN gộp Giải pháp tích hợp (năm)",
+     "unit": "%",
+     "freq": "Y",
+     "kind": "ratio",
+     "scope": "CTR – mảng",
+     "points": [
+      {
+       "p": "2024",
+       "v": 5.46,
+       "status": "actual",
+       "src": 7
+      },
+      {
+       "p": "2025",
+       "v": 5.13,
+       "status": "actual",
+       "src": 7
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "key": "ctr_viettel_share",
+     "label": "Tỷ trọng doanh thu từ Tập đoàn Viettel",
+     "unit": "%",
+     "freq": "Y",
+     "kind": "ratio",
+     "scope": "CTR – công ty",
+     "points": [
+      {
+       "p": "2018",
+       "v": 88,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2020",
+       "v": 71,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2021",
+       "v": 72,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2022",
+       "v": 65,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2023",
+       "v": 62,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2024",
+       "v": 60,
+       "status": "actual",
+       "src": 6
+      }
+     ],
+     "notes": "Từ biểu đồ 'Doanh thu theo khách hàng' của Mirae (nguồn CTR). 5T/2024: 67% trong Tập đoàn (Tạp chí Công Thương, lũy kế)."
+    },
+    {
+     "key": "ctr_rev_nongroup_m",
+     "label": "Doanh thu ngoài Tập đoàn Viettel (tháng)",
+     "unit": "tỷ đồng",
+     "freq": "M",
+     "kind": "flow",
+     "scope": "CTR – công ty",
+     "points": [
+      {
+       "p": "2026-01",
+       "v": 570,
+       "status": "actual",
+       "src": 3
+      },
+      {
+       "p": "2026-05",
+       "v": 715.8,
+       "status": "actual",
+       "src": 13
+      },
+      {
+       "p": "2026-10",
+       "v": 607,
+       "status": "actual",
+       "src": 2
+      }
+     ],
+     "notes": "Tăng YoY: T1/2026 +82%, T5/2026 +56%, T10/2026 +27%."
+    },
+    {
+     "key": "ctr_rev_m",
+     "label": "Doanh thu hợp nhất (tháng, sơ bộ)",
+     "unit": "tỷ đồng",
+     "freq": "M",
+     "kind": "flow",
+     "scope": "CTR – hợp nhất, thông cáo tháng",
+     "points": [
+      {
+       "p": "2024-02",
+       "v": 834,
+       "status": "actual",
+       "src": 15
+      },
+      {
+       "p": "2024-05",
+       "v": 998,
+       "status": "actual",
+       "src": 16
+      },
+      {
+       "p": "2025-01",
+       "v": 896,
+       "status": "actual",
+       "src": 17
+      },
+      {
+       "p": "2025-02",
+       "v": 866,
+       "status": "actual",
+       "src": 12
+      },
+      {
+       "p": "2025-03",
+       "v": 992.9,
+       "status": "actual",
+       "src": 0
+      },
+      {
+       "p": "2025-11",
+       "v": 1321,
+       "status": "actual",
+       "src": 14
+      },
+      {
+       "p": "2025-12",
+       "v": 1414.7,
+       "status": "actual",
+       "src": 1
+      },
+      {
+       "p": "2026-01",
+       "v": 1303,
+       "status": "actual",
+       "src": 3
+      },
+      {
+       "p": "2026-05",
+       "v": 1401.9,
+       "status": "actual",
+       "src": 13
+      },
+      {
+       "p": "2026-10",
+       "v": 1416,
+       "status": "actual",
+       "src": 2
+      }
+     ],
+     "notes": "Số ước/sơ bộ trong thông cáo tháng; có thể lệch BCTC quý. Không phải tháng nào cũng có bài nguồn đã mở."
+    },
+    {
+     "key": "ctr_pbt_m",
+     "label": "LNTT (tháng, sơ bộ)",
+     "unit": "tỷ đồng",
+     "freq": "M",
+     "kind": "flow",
+     "scope": "CTR – hợp nhất, thông cáo tháng",
+     "points": [
+      {
+       "p": "2024-02",
+       "v": 44,
+       "status": "actual",
+       "src": 15
+      },
+      {
+       "p": "2024-05",
+       "v": 54,
+       "status": "actual",
+       "src": 16
+      },
+      {
+       "p": "2025-01",
+       "v": 50.5,
+       "status": "actual",
+       "src": 17
+      },
+      {
+       "p": "2025-02",
+       "v": 49.2,
+       "status": "actual",
+       "src": 12
+      },
+      {
+       "p": "2025-11",
+       "v": 64,
+       "status": "actual",
+       "src": 14
+      },
+      {
+       "p": "2026-01",
+       "v": 64,
+       "status": "actual",
+       "src": 3
+      },
+      {
+       "p": "2026-05",
+       "v": 72.3,
+       "status": "actual",
+       "src": 13
+      },
+      {
+       "p": "2026-10",
+       "v": 74,
+       "status": "actual",
+       "src": 2
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "key": "ctr_plan",
+     "label": "Kế hoạch năm: doanh thu / LNTT",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "CTR – hợp nhất, kế hoạch ĐHĐCĐ",
+     "points": [
+      {
+       "p": "2026",
+       "v": 15653.4,
+       "status": "plan",
+       "src": 3
+      }
+     ],
+     "notes": "Doanh thu KH 2026 = 15.653,4 tỷ; LNTT KH 2026 = 778 tỷ; LNST KH = 622 tỷ (xem facts). 10T/2026 đạt 88% KH doanh thu, 91% KH LNTT."
+    },
+    {
+     "key": "ctr_bts_capex",
+     "label": "Giá trị đầu tư xây dựng mới trạm BTS (BĐS đầu tư tăng)",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "CTR – công ty",
+     "points": [
+      {
+       "p": "2025",
+       "v": 363.6,
+       "status": "actual",
+       "src": 7
+      }
+     ],
+     "notes": "Theo ABS: 'trong năm, CTR đã đầu tư xây dựng mới trạm BTS với giá trị 363,6 tỷ đồng'. 6T/2025: 222 tỷ (ABS 10/2025). Không phải toàn bộ capex của CTR."
+    },
+    {
+     "key": "ctr_new_bts_plan",
+     "label": "Kế hoạch số trạm BTS xây mới trong năm",
+     "unit": "trạm",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "CTR – kế hoạch",
+     "points": [
+      {
+       "p": "2024",
+       "v": 4000,
+       "status": "plan",
+       "src": 16
+      },
+      {
+       "p": "2025",
+       "v": 2000,
+       "status": "plan",
+       "src": 0
+      }
+     ],
+     "notes": "MBS: 2025 kế hoạch 2.000 trạm, 'giảm 50% so với 4.000 trạm năm 2024'. 2026: không có kế hoạch số trạm chính thức tìm thấy; ABS ghi số trạm giữ ở 12.000 đến hết T3/2026."
+    }
+   ],
+   "facts": [
+    {
+     "text": "CTR bắt đầu tự xây trạm (TowerCo) năm 2019; đến Q3/2020 có ~1.000 trạm, là TowerCo lớn thứ 2 VN sau OCK (~2.300 trạm).",
+     "src": 18
+    },
+    {
+     "text": "Năm 2019 cơ cấu doanh thu CTR: Xây dựng 29%, Vận hành 59%, TowerCo 0,2%, Tích hợp hệ thống 12%.",
+     "src": 18
+    },
+    {
+     "text": "VCSC (01/2021): kế hoạch Viettel chuyển giao 10.000 trong 40.000 trạm hiện có sang CTR giai đoạn 2021–2025 (là kế hoạch/kỳ vọng, chưa xác nhận thực hiện).",
+     "src": 18
+    },
+    {
+     "text": "Mục tiêu dài hạn: sở hữu 20.000–30.000 trạm cho thuê đến 2030; đang triển khai 2 dự án hạ tầng trạm BTS tổng mức đầu tư 1.996 tỷ đồng với 7.000 nhà trạm, dự kiến vận hành 2026–2027.",
+     "src": 4
+    },
+    {
+     "text": "Mục tiêu (03/2024) đầu tư 5.000 trạm BTS toàn quốc đến 2026; dự án hạ tầng BTS vốn trên 1.460 tỷ đồng; dự kiến nâng lên 9.975 trạm trong 2024.",
+     "src": 15
+    },
+    {
+     "text": "MBS: theo công ty, 2026–2030 Viettel cần thêm ít nhất 45.000 trạm cho phủ 5G; CTR kỳ vọng triển khai thêm 10.000–20.000 trạm đến 2030 (giả định CTR làm ~50% theo hình thức leaseback).",
+     "src": 5
+    },
+    {
+     "text": "Kế hoạch 2026: doanh thu 15.653,4 tỷ, LNTT 778 tỷ, LNST 622 tỷ đồng (+~4%).",
+     "src": 3
+    },
+    {
+     "text": "Mục tiêu tỷ lệ dùng chung 2026: 1,05–1,06 lần (theo bài phân tích 24HMoney); công ty chuyển từ tăng số trạm sang tối ưu hiệu quả.",
+     "src": 10
+    },
+    {
+     "text": "Mục tiêu 2025: ~2.000 trạm BTS mới và tối thiểu 300 trạm cho khách ngoài Viettel thuê; tỷ lệ dùng chung mục tiêu 1,045.",
+     "src": 0
+    },
+    {
+     "text": "Năm 2025 CTR lắp đặt 6.452 trạm 5G, đóng góp vào tổng 22.400 trạm 5G của Tập đoàn Viettel (theo ABS).",
+     "src": 7
+    },
+    {
+     "text": "Hạ tầng khác (10/2026): 2,45 triệu m² DAS, 2.716 km truyền dẫn, 17,447 MWp điện mặt trời sở hữu.",
+     "src": 2
+    },
+    {
+     "text": "Giá thuê trạm bình quân tại VN ~300 USD/tháng (Myanmar ~900, Indonesia ~1.150, Malaysia ~1.250 USD); tenancy thị trường VN ~1,2–1,3x.",
+     "src": 12
+    },
+    {
+     "text": "Nguồn việc xây dựng đảm bảo cho 2025 (cuối 2024): B2B 2.202 tỷ (+92%), B2C & SME 1.869 tỷ (+23%); giải pháp NLMT 2024 doanh thu 418 tỷ (+315%).",
+     "src": 6
+    },
+    {
+     "text": "Ký mới hợp đồng xây dựng 6T/2026: 3.125 tỷ đồng (+40,6%); ME&ICT 6T/2026: 314 tỷ (+32%). 6T/2025: nguồn việc B2B 938,2 tỷ (-13,6%), B2C 745 tỷ, SME 530,7 tỷ.",
+     "src": 9
+    },
+    {
+     "text": "Thị phần TowerCo VN (2024, Mirae dẫn TowerXchange): CTR 10.000 trạm (55%), OCK 2.700 (15%), Golden Tower 325, các towerco nhỏ ~5.000 (28%).",
+     "src": 6
+    },
+    {
+     "text": "Rủi ro chính sách: Nghị quyết 66.10/2025/NQ-CP (15/12/2025) cho phép lực lượng QP-AN và DN phục vụ QP-AN dùng chung miễn phí hạ tầng của DN 100% vốn nhà nước; CTR không chịu trực tiếp (Viettel sở hữu 65,7%) nhưng MobiFone (thuộc Bộ Công an, ~70% khách thuê ngoài Viettel của CTR) có thể chuyển sang hạ tầng miễn phí; HSC ước nếu tenancy về 1,0 thì doanh thu cho thuê -4%, EBITDA -6% (2026–27).",
+     "src": 8
+    },
+    {
+     "text": "Tập đoàn Viettel sở hữu 65,66% CTR.",
+     "src": 14
+    },
+    {
+     "text": "Q3/2026: doanh thu thuần 4.227 tỷ (+7%), LNTT 228 tỷ (+9%); 9T/2026: DT 12.186 tỷ (+23%), LNTT 630 tỷ (+16%) theo BCTC (khác số sơ bộ 12.343/616,6 tỷ trong thông cáo).",
+     "src": 11
+    }
+   ]
+  },
+  "FOX": {
+   "profile": "CTCP Viễn thông FPT (FPT Telecom, UPCoM: FOX) – ISP băng rộng cố định lớn thứ 3 VN (sau Viettel, VNPT), truyền hình FPT Play, trung tâm dữ liệu (FPT Fornix), cáp biển. Cổ đông: nhà nước 50,17% (SCIC → Bộ Công an từ 07/2025), FPT 45,66%. Lưu ý phạm vi: FPT Corp báo cáo mảng 'Dịch vụ viễn thông' khác với FOX công ty; từ 2026 FPT hạch toán FOX theo vốn chủ sở hữu.",
+   "series": [
+    {
+     "key": "fox_rev",
+     "label": "Doanh thu thuần FPT Telecom (công ty, hợp nhất)",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "FOX – công ty (BCTC hợp nhất FPT Telecom)",
+     "points": [
+      {
+       "p": "2024",
+       "v": 17610,
+       "status": "actual",
+       "src": 25
+      },
+      {
+       "p": "2025",
+       "v": 19506,
+       "status": "actual",
+       "src": 26
+      },
+      {
+       "p": "2025",
+       "v": 19900,
+       "status": "plan",
+       "src": 25
+      },
+      {
+       "p": "2026",
+       "v": 22000,
+       "status": "plan",
+       "src": 27
+      }
+     ],
+     "notes": "Dữ liệu BCTC chuẩn người dùng đã có; giữ ở đây để đối chiếu phạm vi với mảng của FPT. KH 2026: dịch vụ viễn thông 21.090 tỷ, nội dung số ~910 tỷ."
+    },
+    {
+     "key": "fox_pbt",
+     "label": "LNTT FPT Telecom (công ty)",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "FOX – công ty",
+     "points": [
+      {
+       "p": "2024",
+       "v": 3588,
+       "status": "actual",
+       "src": 25
+      },
+      {
+       "p": "2025",
+       "v": 4363,
+       "status": "actual",
+       "src": 26
+      },
+      {
+       "p": "2025",
+       "v": 4200,
+       "status": "plan",
+       "src": 25
+      },
+      {
+       "p": "2026",
+       "v": 5100,
+       "status": "plan",
+       "src": 27
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "key": "fox_rev_q",
+     "label": "Doanh thu thuần FPT Telecom (quý)",
+     "unit": "tỷ đồng",
+     "freq": "Q",
+     "kind": "flow",
+     "scope": "FOX – công ty",
+     "points": [
+      {
+       "p": "2025Q3",
+       "v": 4930,
+       "status": "actual",
+       "src": 23
+      },
+      {
+       "p": "2025Q4",
+       "v": 5220,
+       "status": "actual",
+       "src": 29
+      },
+      {
+       "p": "2026Q3",
+       "v": 5917,
+       "status": "actual",
+       "src": 28
+      }
+     ],
+     "notes": "2025Q3 'khoảng 4.930 tỷ'. 9T/2026 lũy kế ~16.691 tỷ (+17%)."
+    },
+    {
+     "key": "fox_pat_q",
+     "label": "LNST FPT Telecom (quý)",
+     "unit": "tỷ đồng",
+     "freq": "Q",
+     "kind": "flow",
+     "scope": "FOX – công ty",
+     "points": [
+      {
+       "p": "2025Q3",
+       "v": 904,
+       "status": "actual",
+       "src": 23
+      },
+      {
+       "p": "2025Q4",
+       "v": 905,
+       "status": "actual",
+       "src": 29
+      },
+      {
+       "p": "2026Q3",
+       "v": 1022,
+       "status": "actual",
+       "src": 28
+      }
+     ],
+     "notes": "9T/2026 LNST ~2.934 tỷ; 9T/2025 2.580 tỷ."
+    },
+    {
+     "key": "fpt_seg_telecom_services_rev",
+     "label": "Doanh thu Dịch vụ viễn thông (mảng của Tập đoàn FPT)",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "FPT Corp – mảng 'Dịch vụ viễn thông' (khác FOX công ty)",
+     "points": [
+      {
+       "p": "2023",
+       "v": 15186,
+       "status": "actual",
+       "src": 20
+      },
+      {
+       "p": "2024",
+       "v": 16906,
+       "status": "actual",
+       "src": 24
+      },
+      {
+       "p": "2025",
+       "v": 18702,
+       "status": "actual",
+       "src": 19
+      }
+     ],
+     "notes": "Phạm vi mảng FPT ≠ FOX: 2024 mảng 16.906 vs FOX 17.610; 2025 mảng 18.702 vs FOX 19.506. Từ 01/01/2026 FPT chuyển FOX sang phương pháp vốn chủ sở hữu → không còn hợp nhất doanh thu FOX."
+    },
+    {
+     "key": "fpt_seg_telecom_services_pbt",
+     "label": "LNTT Dịch vụ viễn thông (mảng của FPT)",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "FPT Corp – mảng",
+     "points": [
+      {
+       "p": "2023",
+       "v": 2895,
+       "status": "actual",
+       "src": 20
+      },
+      {
+       "p": "2024",
+       "v": 3420,
+       "status": "actual",
+       "src": 24
+      },
+      {
+       "p": "2025",
+       "v": 4167,
+       "status": "actual",
+       "src": 19
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "key": "fpt_broadband_rev",
+     "label": "Doanh thu băng rộng (Internet)",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "FPT Corp – tiểu mảng băng rộng thuộc Dịch vụ viễn thông",
+     "points": [
+      {
+       "p": "2023",
+       "v": 7838,
+       "status": "actual",
+       "src": 20
+      },
+      {
+       "p": "2025",
+       "v": 10007,
+       "status": "actual",
+       "src": 19
+      }
+     ],
+     "notes": "2025 +13,7% YoY; 2023 +5,9% YoY. 2024 không thấy công bố trực tiếp."
+    },
+    {
+     "key": "fpt_dc_rev",
+     "label": "Doanh thu trung tâm dữ liệu",
+     "unit": "triệu USD",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "FPT Corp – mảng viễn thông (data center)",
+     "points": [
+      {
+       "p": "2023",
+       "v": 20,
+       "status": "actual",
+       "src": 20
+      }
+     ],
+     "notes": "2023: tăng >20%. HCM02 (SHTP) vận hành 2025: ~10.000 m², tới 3.600 rack."
+    },
+    {
+     "key": "fox_internet_subs",
+     "label": "Thuê bao Internet (băng rộng cố định)",
+     "unit": "triệu thuê bao",
+     "freq": "event",
+     "kind": "stock",
+     "scope": "FOX – công ty",
+     "points": [
+      {
+       "p": "2023",
+       "v": 4.0,
+       "status": "actual",
+       "src": 20
+      },
+      {
+       "p": "2026",
+       "v": 3.75,
+       "status": "estimate",
+       "src": 30
+      }
+     ],
+     "notes": "2023: mốc '4 triệu thuê bao Internet' theo BCTN FPT. 2026: ước tính bên thứ ba TelecomLead (không nêu nguồn/ngày) – thấp hơn mốc 2023, không so sánh trực tiếp. FPT/FOX không công bố chuỗi thuê bao định kỳ."
+    },
+    {
+     "key": "fox_fptplay_paid_subs",
+     "label": "Thuê bao trả phí FPT Play",
+     "unit": "triệu thuê bao",
+     "freq": "event",
+     "kind": "stock",
+     "scope": "FOX – công ty (truyền hình/OTT)",
+     "points": [
+      {
+       "p": "2025-12",
+       "v": 5.0,
+       "status": "actual",
+       "src": 21
+      }
+     ],
+     "notes": "2025-12: 'just over 5 million paying subscribers'. Mục tiêu dẫn đầu thị trường cần ≥8 triệu thuê bao (không có mốc thời gian – không đưa vào điểm)."
+    },
+    {
+     "key": "fpt_own_fox",
+     "label": "Tỷ lệ sở hữu của FPT tại FOX",
+     "unit": "%",
+     "freq": "event",
+     "kind": "ratio",
+     "scope": "FPT Corp tại FOX",
+     "points": [
+      {
+       "p": "2025-04",
+       "v": 45.66,
+       "status": "actual",
+       "src": 22
+      },
+      {
+       "p": "2025-12",
+       "v": 45.66,
+       "status": "actual",
+       "src": 23
+      }
+     ],
+     "notes": "Không tìm thấy lịch sử thay đổi trước 2025 trong nguồn đã mở."
+    },
+    {
+     "key": "state_own_fox",
+     "label": "Tỷ lệ sở hữu nhà nước tại FOX (SCIC → Bộ Công an)",
+     "unit": "%",
+     "freq": "event",
+     "kind": "ratio",
+     "scope": "Cổ đông nhà nước tại FOX",
+     "points": [
+      {
+       "p": "2025-07",
+       "v": 50.17,
+       "status": "actual",
+       "src": 23
+      }
+     ],
+     "notes": "SCIC chuyển 50,17% (370,7 triệu cp) sang Bộ Công an ngày 16/07/2025. Znews 10/2026 ghi quyền đại diện tiếp tục giao cho GTINX (chưa xác minh chi tiết). Tổng 2 cổ đông ~95,8% → FOX không đáp ứng điều kiện công ty đại chúng."
+    },
+    {
+     "key": "fox_capex_plan",
+     "label": "Kế hoạch đầu tư phát triển hạ tầng",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "FOX – công ty, kế hoạch ĐHĐCĐ",
+     "points": [
+      {
+       "p": "2025",
+       "v": 3840,
+       "status": "plan",
+       "src": 25
+      },
+      {
+       "p": "2026",
+       "v": 5100,
+       "status": "plan",
+       "src": 27
+      }
+     ],
+     "notes": "2025: 2.790 dự án thường xuyên + 1.050 trọng điểm. 2026: 2.500 thường xuyên + 2.600 trọng điểm (DC Quận 9 GĐ2 580; FTEL Tower Tân Thuận 760; DC HN03 330; cáp biển ALC & VTS 900; chip AI 30)."
+    }
+   ],
+   "facts": [
+    {
+     "text": "Từ 01/01/2026, FPT chuyển FPT Telecom từ hợp nhất toàn bộ sang phương pháp vốn chủ sở hữu (theo CV 1906/H01-P1 của Bộ Công an, 18/03/2026); không đổi LNST thuộc cổ đông mẹ/EPS của FPT.",
+     "src": 26
+    },
+    {
+     "text": "Trước chuyển giao: SCIC 50,17%, FPT 45,66%. Bộ Công an nhận đại diện vốn nhà nước 16/07/2025; ĐHĐCĐ bất thường 24/12/2025 thay đổi HĐQT (thêm thành viên từ Gelex, GTEL).",
+     "src": 23
+    },
+    {
+     "text": "FPT dù là cổ đông lớn thứ 2 nhưng theo BCTC kiểm toán 2024 nắm đa số phiếu biểu quyết tại HĐQT, kiểm soát FOX; FOX có >492,5 triệu cp lưu hành (04/2025).",
+     "src": 22
+    },
+    {
+     "text": "FPT Play: bản quyền Ngoại hạng Anh từ 01/01/2026 đến mùa 2030–31, ~26 triệu USD/năm; điểm hòa vốn ~1,1–1,5 triệu thuê bao mới.",
+     "src": 21
+    },
+    {
+     "text": "FOX nắm 56,51% FPT Online (FOC) – doanh thu FOX công ty bao gồm cả quảng cáo trực tuyến, nên lớn hơn mảng 'Dịch vụ viễn thông' của FPT.",
+     "src": 29
+    },
+    {
+     "text": "Thị trường: ~25,1 triệu thuê bao băng rộng cố định cả nước (+4,7%), ~121,3 triệu thuê bao di động (số liệu ngành trích trong bài ĐHĐCĐ 2026).",
+     "src": 27
+    }
+   ]
+  },
+  "VIETTEL": {
+   "profile": "Tập đoàn Công nghiệp – Viễn thông Quân đội (Viettel), 100% nhà nước, không niêm yết. Nhà mạng số 1 VN (~56% thị phần di động), đầu tư 10 thị trường nước ngoài qua Viettel Global (VGI). Công ty con niêm yết: CTR, VGI, VTP, VTK.",
+   "series": [
+    {
+     "key": "viettel_rev",
+     "label": "Doanh thu Tập đoàn Viettel",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "Viettel – tập đoàn (hợp nhất từ ~2022; trước đó 'doanh thu' tổng)",
+     "points": [
+      {
+       "p": "2015",
+       "v": 222700,
+       "status": "actual",
+       "src": 35
+      },
+      {
+       "p": "2023",
+       "v": 172520,
+       "status": "actual",
+       "src": 32
+      },
+      {
+       "p": "2024",
+       "v": 190000,
+       "status": "actual",
+       "src": 33
+      },
+      {
+       "p": "2025",
+       "v": 220400,
+       "status": "actual",
+       "src": 31
+      },
+      {
+       "p": "2025",
+       "v": 203700,
+       "status": "plan",
+       "src": 34
+      }
+     ],
+     "notes": "2015 (222.700) không cùng cơ sở với doanh thu hợp nhất 2023+ (172.520) – KHÔNG so sánh trực tiếp. 2024: 190.000 (tổng kết) vs 189.900 (ước, VietTimes) vs 190.400 (Nhân Dân, chưa mở)."
+    },
+    {
+     "key": "viettel_pbt",
+     "label": "LNTT Tập đoàn Viettel",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "Viettel – tập đoàn hợp nhất",
+     "points": [
+      {
+       "p": "2023",
+       "v": 46330,
+       "status": "actual",
+       "src": 32
+      },
+      {
+       "p": "2024",
+       "v": 51000,
+       "status": "actual",
+       "src": 33
+      },
+      {
+       "p": "2025",
+       "v": 56800,
+       "status": "actual",
+       "src": 31
+      },
+      {
+       "p": "2025",
+       "v": 51600,
+       "status": "plan",
+       "src": 34
+      }
+     ],
+     "notes": "2015: 'lợi nhuận 45.800 tỷ' (không ghi rõ trước/sau thuế) – xem facts."
+    },
+    {
+     "key": "viettel_5g_stations",
+     "label": "Số trạm 5G Viettel (trong nước)",
+     "unit": "trạm",
+     "freq": "event",
+     "kind": "stock",
+     "scope": "Viettel – tập đoàn, Việt Nam",
+     "points": [
+      {
+       "p": "2025-12",
+       "v": 30000,
+       "status": "actual",
+       "src": 37
+      }
+     ],
+     "notes": "2025: xây mới 23.500 trạm. KH 2026: xây thêm 15.000 trạm (xem viettel_5g_new; không cộng dồn). ABS ghi 'tổng 22.400 trạm 5G của Tập đoàn' cho 2025 – lệch với 30.000."
+    },
+    {
+     "key": "viettel_5g_new",
+     "label": "Số trạm 5G xây mới trong năm",
+     "unit": "trạm",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "Viettel – Việt Nam",
+     "points": [
+      {
+       "p": "2025",
+       "v": 23500,
+       "status": "actual",
+       "src": 41
+      },
+      {
+       "p": "2025",
+       "v": 12000,
+       "status": "plan",
+       "src": 33
+      },
+      {
+       "p": "2026",
+       "v": 15000,
+       "status": "plan",
+       "src": 41
+      }
+     ],
+     "notes": "KH đầu 2025 là 12.000 trạm; thực hiện 23.500 (Viettel là nhà mạng duy nhất đăng ký ưu đãi NQ 193 – ≥20.000 trạm 5G trong 2025)."
+    },
+    {
+     "key": "viettel_5g_subs",
+     "label": "Thuê bao 5G Viettel",
+     "unit": "triệu thuê bao",
+     "freq": "event",
+     "kind": "stock",
+     "scope": "Viettel – Việt Nam",
+     "points": [
+      {
+       "p": "2025-12",
+       "v": 12.9,
+       "status": "actual",
+       "src": 31
+      }
+     ],
+     "notes": "01/2025: ~4 triệu người dùng 5G trong vùng phủ; ~10 triệu thuê bao có máy 5G (VietTimes)."
+    },
+    {
+     "key": "viettel_subs_total",
+     "label": "Tổng thuê bao Viettel (2015: trong nước + nước ngoài)",
+     "unit": "triệu thuê bao",
+     "freq": "event",
+     "kind": "stock",
+     "scope": "Viettel – tập đoàn",
+     "points": [
+      {
+       "p": "2015",
+       "v": 72.9,
+       "status": "actual",
+       "src": 35
+      },
+      {
+       "p": "2025-01",
+       "v": 66,
+       "status": "actual",
+       "src": 34
+      }
+     ],
+     "notes": "2015: 72,9 triệu lũy kế (trong nước 56,4 + nước ngoài 17,1 = 73,5 – nguồn tự lệch). 2025-01: '66 triệu khách hàng đang sử dụng dịch vụ' (trong nước, khái niệm khách hàng). Không cùng định nghĩa."
+    },
+    {
+     "key": "viettel_intl_subs",
+     "label": "Thuê bao di động quốc tế",
+     "unit": "triệu thuê bao",
+     "freq": "event",
+     "kind": "stock",
+     "scope": "Viettel – các thị trường nước ngoài",
+     "points": [
+      {
+       "p": "2015",
+       "v": 17.1,
+       "status": "actual",
+       "src": 35
+      },
+      {
+       "p": "2025",
+       "v": 56,
+       "status": "actual",
+       "src": 42
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "key": "viettel_mobile_share",
+     "label": "Thị phần di động Viettel",
+     "unit": "%",
+     "freq": "event",
+     "kind": "ratio",
+     "scope": "Viettel – Việt Nam",
+     "points": [
+      {
+       "p": "2025-01",
+       "v": 56.6,
+       "status": "actual",
+       "src": 34
+      }
+     ],
+     "notes": "Không rõ cơ sở (thuê bao hay doanh thu)."
+    }
+   ],
+   "facts": [
+    {
+     "text": "Viettel thương mại hóa 5G đầu tiên tại VN (10/2024); cuối 2025: 90% phủ ngoài trời, 70% trong nhà; mục tiêu 2026 85% trong nhà.",
+     "src": 41
+    },
+    {
+     "text": "2015: doanh thu 222.700 tỷ (+13%), lợi nhuận 45.800 tỷ (+8,5%, >2 tỷ USD).",
+     "src": 35
+    },
+    {
+     "text": "2025: doanh thu ~220.400 tỷ (+~14%), LNTT 56.800 tỷ (+~5%), nộp NSNN 40.900 tỷ; doanh thu nước ngoài ~3,3 tỷ USD (+~24%).",
+     "src": 31
+    },
+    {
+     "text": "2024: chuyển 6,5 triệu thuê bao 2G lên 4G; 14 data center với 230.000 máy chủ; KH 2025 phát triển mới 12.000 trạm 5G.",
+     "src": 33
+    },
+    {
+     "text": "2023: LNST hợp nhất 35.267 tỷ; doanh thu công ty mẹ 103.570 tỷ.",
+     "src": 32
+    },
+    {
+     "text": "Viettel chia sẻ 1.000 vị trí BTS, cột và 25.000 (tuyến) cáp quang với nhà mạng khác (2023).",
+     "src": 52
+    }
+   ]
+  },
+  "VNPT": {
+   "profile": "Tập đoàn Bưu chính Viễn thông Việt Nam (VNPT), 100% nhà nước, không niêm yết; thương hiệu di động VinaPhone; nhà cung cấp băng rộng cố định lớn thứ 2.",
+   "series": [
+    {
+     "key": "vnpt_rev",
+     "label": "Doanh thu VNPT (hợp nhất)",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "VNPT – tập đoàn hợp nhất",
+     "points": [
+      {
+       "p": "2024",
+       "v": 58500,
+       "status": "estimate",
+       "src": 34
+      },
+      {
+       "p": "2025",
+       "v": 57943,
+       "status": "actual",
+       "src": 36
+      },
+      {
+       "p": "2025",
+       "v": 62344,
+       "status": "plan",
+       "src": 34
+      },
+      {
+       "p": "2026",
+       "v": 64564,
+       "status": "plan",
+       "src": 36
+      }
+     ],
+     "notes": "2024: 'hơn 58.500 tỷ' (ước lúc tổng kết). 2025: 57.943 tỷ = DOANH THU THUẦN (BCTC); thông cáo tổng kết khác ghi 'tổng doanh thu hợp nhất 61.246 tỷ' (nguồn chưa mở) – khác khái niệm."
+    },
+    {
+     "key": "vnpt_pbt",
+     "label": "LNTT VNPT (hợp nhất)",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "VNPT – tập đoàn hợp nhất",
+     "points": [
+      {
+       "p": "2024",
+       "v": 6000,
+       "status": "estimate",
+       "src": 34
+      },
+      {
+       "p": "2025",
+       "v": 6568.6,
+       "status": "actual",
+       "src": 36
+      },
+      {
+       "p": "2025",
+       "v": 6500,
+       "status": "plan",
+       "src": 34
+      },
+      {
+       "p": "2026",
+       "v": 7255,
+       "status": "plan",
+       "src": 36
+      }
+     ],
+     "notes": "2024 'hơn 6.000 tỷ' (ước). 2025 giảm 5% YoY theo BCTC."
+    },
+    {
+     "key": "vnpt_parent_rev",
+     "label": "Doanh thu công ty mẹ VNPT",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "VNPT – công ty mẹ",
+     "points": [
+      {
+       "p": "2024",
+       "v": 42000,
+       "status": "estimate",
+       "src": 34
+      },
+      {
+       "p": "2025",
+       "v": 44000,
+       "status": "plan",
+       "src": 34
+      },
+      {
+       "p": "2026",
+       "v": 59810,
+       "status": "plan",
+       "src": 36
+      }
+     ],
+     "notes": "KH 2026 công ty mẹ: doanh thu 59.810 tỷ, LNTT 7.068 tỷ (thay đổi lớn so với 2025 – có thể do tái cơ cấu phạm vi; chưa xác minh)."
+    }
+   ],
+   "facts": [
+    {
+     "text": "VNPT (VinaPhone) thương mại hóa 5G từ 20/12/2024; thỏa thuận với MobiFone triển khai ban đầu tối thiểu 3.000 trạm dùng chung.",
+     "src": 34
+    },
+    {
+     "text": "Mục tiêu phủ sóng 5G 55–60% dân số trong năm 2026.",
+     "src": 41
+    },
+    {
+     "text": "VNPT chia sẻ ~33.000 km cáp và 5.000 hạng mục hạ tầng cho dịch vụ di động (2023).",
+     "src": 52
+    },
+    {
+     "text": "Tổng tài sản 31/12/2025: 119.610 tỷ; hàng tồn kho tăng 3,2 lần lên 4.711 tỷ (vật tư tăng 5,55 lần) – liên quan triển khai mạng.",
+     "src": 36
+    },
+    {
+     "text": "VNPT thoái toàn bộ 5,45% vốn tại TTN (VNTT) qua đấu giá 11/2025.",
+     "src": 49
+    }
+   ]
+  },
+  "MOBIFONE": {
+   "profile": "Tổng công ty Viễn thông MobiFone, 100% nhà nước, chuyển về Bộ Công an từ 02/2025; nhà mạng di động thứ 3. Công ty con niêm yết: MFS.",
+   "series": [
+    {
+     "key": "mobifone_parent_rev",
+     "label": "Doanh thu công ty mẹ MobiFone",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "MobiFone – công ty mẹ",
+     "points": [
+      {
+       "p": "2023",
+       "v": 25400,
+       "status": "actual",
+       "src": 34
+      },
+      {
+       "p": "2024",
+       "v": 23500,
+       "status": "estimate",
+       "src": 34
+      },
+      {
+       "p": "2025",
+       "v": 26000,
+       "status": "plan",
+       "src": 34
+      }
+     ],
+     "notes": "2023 'hơn 25.400'; 2024 'gần 23.500' (ước, 90,3% KH). Bài nguồn tự lệch: nói giảm ~1.500 tỷ nhưng số ngụ ý ~1.900 tỷ. 2025 thực hiện chưa tìm thấy."
+    },
+    {
+     "key": "mobifone_pbt",
+     "label": "LNTT MobiFone",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "MobiFone – công ty mẹ (theo bài)",
+     "points": [
+      {
+       "p": "2023",
+       "v": 1600,
+       "status": "estimate",
+       "src": 34
+      },
+      {
+       "p": "2025",
+       "v": 1800,
+       "status": "plan",
+       "src": 34
+      }
+     ],
+     "notes": "2023: 'khoảng 1.600 tỷ' (lợi nhuận/nộp ngân sách mỗi khoản ~1.600 tỷ)."
+    }
+   ],
+   "facts": [
+    {
+     "text": "MobiFone có giấy phép băng C3, dự kiến thương mại hóa 5G đầu năm 2025; doanh thu SMS + thoại ~35% tổng doanh thu (thế giới 8–10%).",
+     "src": 34
+    },
+    {
+     "text": "MobiFone chuyển về Bộ Công an tháng 02/2025.",
+     "src": 29
+    },
+    {
+     "text": "MobiFone chia sẻ gần 4.000 BTS với nhà mạng khác và dùng 13.400 BTS do nhà đầu tư khác phát triển (2023).",
+     "src": 52
+    },
+    {
+     "text": "MobiFone là cổ đông lớn nhất MFS với 31,17%.",
+     "src": 48
+    }
+   ]
+  },
+  "VN_5G_NATIONAL": {
+   "profile": "Chỉ tiêu toàn ngành viễn thông Việt Nam (5G, trạm BTS) – dùng làm mẫu số cho các chỉ số công ty.",
+   "series": [
+    {
+     "key": "vn_5g_stations",
+     "label": "Tổng số trạm 5G cả nước",
+     "unit": "trạm",
+     "freq": "event",
+     "kind": "stock",
+     "scope": "Toàn ngành (Viettel+VNPT+MobiFone)",
+     "points": [
+      {
+       "p": "2025-07",
+       "v": 11000,
+       "status": "actual",
+       "src": 40
+      },
+      {
+       "p": "2026-04",
+       "v": 40000,
+       "status": "actual",
+       "src": 38
+      },
+      {
+       "p": "2026-09",
+       "v": 60034,
+       "status": "actual",
+       "src": 39
+      }
+     ],
+     "notes": "2025-07: 'khoảng 11.000' (công bố 16/07/2025). 2026-04: 'vượt mốc 40.000' (cận dưới). 2026-09: 60.034 cuối Q3/2026. Lưu ý mâu thuẫn: riêng Viettel 30.000 trạm cuối 2025."
+    },
+    {
+     "key": "vn_5g_subs",
+     "label": "Thuê bao 5G cả nước",
+     "unit": "triệu thuê bao",
+     "freq": "event",
+     "kind": "stock",
+     "scope": "Toàn ngành",
+     "points": [
+      {
+       "p": "2025-09",
+       "v": 14,
+       "status": "actual",
+       "src": 39
+      },
+      {
+       "p": "2026-03",
+       "v": 22.4,
+       "status": "actual",
+       "src": 38
+      },
+      {
+       "p": "2026-09",
+       "v": 27.2,
+       "status": "actual",
+       "src": 39
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "key": "vn_5g_pop_coverage",
+     "label": "Tỷ lệ phủ sóng 5G theo dân số",
+     "unit": "%",
+     "freq": "event",
+     "kind": "ratio",
+     "scope": "Toàn ngành",
+     "points": [
+      {
+       "p": "2025-07",
+       "v": 26,
+       "status": "actual",
+       "src": 40
+      },
+      {
+       "p": "2025-12",
+       "v": 99,
+       "status": "plan",
+       "src": 40
+      },
+      {
+       "p": "2026-03",
+       "v": 91.9,
+       "status": "actual",
+       "src": 38
+      },
+      {
+       "p": "2026-09",
+       "v": 93.4,
+       "status": "actual",
+       "src": 39
+      }
+     ],
+     "notes": "Mục tiêu 99% dân số cuối 2025 (Bộ KH&CN) – thực tế ~90% sau 12 tháng."
+    },
+    {
+     "key": "vn_bts_total",
+     "label": "Tổng số trạm BTS viễn thông cả nước",
+     "unit": "trạm",
+     "freq": "event",
+     "kind": "stock",
+     "scope": "Toàn ngành",
+     "points": [
+      {
+       "p": "2019-12",
+       "v": 261000,
+       "status": "actual",
+       "src": 51
+      }
+     ],
+     "notes": "Trong đó 110.000 trạm 4G (cuối 2019)."
+    }
+   ],
+   "facts": [
+    {
+     "text": "Mốc thương mại hóa 5G: chính thức từ 10/2024 (Viettel); VNPT 20/12/2024; MobiFone dự kiến đầu 2025.",
+     "src": 40
+    },
+    {
+     "text": "NQ 193: hỗ trợ 15% chi phí thiết bị cho nhà mạng lắp đặt và kích hoạt ≥20.000 trạm 5G trong 2025.",
+     "src": 40
+    },
+    {
+     "text": "Chi phí ~50.000 USD/trạm 5G giai đoạn đầu; tốc độ di động VN xếp hạng 8 thế giới (09/2026, 230,31 Mbps).",
+     "src": 39
+    }
+   ]
+  },
+  "VGI": {
+   "profile": "Tổng CTCP Đầu tư Quốc tế Viettel (Viettel Global, UPCoM: VGI) – nắm các nhà mạng của Viettel tại 9 thị trường: Metfone (Campuchia), Unitel (Lào), Mytel (Myanmar), Telemor (Timor-Leste), Bitel (Peru), Natcom (Haiti), Movitel (Mozambique), Halotel (Tanzania), Lumitel (Burundi). Không tìm thấy công bố doanh thu/thuê bao tuyệt đối theo từng thị trường trong nguồn đã mở.",
+   "series": [
+    {
+     "key": "vgi_rev",
+     "label": "Doanh thu thuần Viettel Global",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "VGI – hợp nhất",
+     "points": [
+      {
+       "p": "2025",
+       "v": 44188,
+       "status": "actual",
+       "src": 43
+      }
+     ],
+     "notes": "2025 +28% (Nhà Đầu tư/Báo Pháp luật) – nguồn khác ghi +25%."
+    },
+    {
+     "key": "vgi_rev_h1",
+     "label": "Doanh thu thuần VGI 6 tháng",
+     "unit": "tỷ đồng",
+     "freq": "M",
+     "kind": "flow",
+     "scope": "VGI – hợp nhất, lũy kế 6T (p = tháng 6)",
+     "points": [
+      {
+       "p": "2024-06",
+       "v": 16590,
+       "status": "actual",
+       "src": 44
+      },
+      {
+       "p": "2025-06",
+       "v": 20260,
+       "status": "actual",
+       "src": 45
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "key": "vgi_pat",
+     "label": "LNST VGI",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "VGI – hợp nhất",
+     "points": [
+      {
+       "p": "2025",
+       "v": 11273,
+       "status": "actual",
+       "src": 43
+      }
+     ],
+     "notes": "6T/2024 LNST 2.860 tỷ (LNTT 4.740); 6T/2025 LNST 3.267 tỷ."
+    },
+    {
+     "key": "viettel_intl_rev_usd",
+     "label": "Doanh thu khối thị trường nước ngoài",
+     "unit": "tỷ USD",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "Viettel – khối nước ngoài (≈VGI, đơn vị USD)",
+     "points": [
+      {
+       "p": "2025",
+       "v": 3.34,
+       "status": "actual",
+       "src": 42
+      }
+     ],
+     "notes": "Viettel công bố ~3,3 tỷ USD (+~24%). Tiền chuyển về nước 2025: 385,5 triệu USD; tỷ lệ hoàn vốn đầu tư nước ngoài 91%."
+    },
+    {
+     "key": "vgi_mkt_growth_h1_2024",
+     "label": "Tăng trưởng doanh thu theo thị trường 6T/2024",
+     "unit": "% YoY",
+     "freq": "event",
+     "kind": "ratio",
+     "scope": "VGI – từng thị trường",
+     "points": [
+      {
+       "p": "2024-06",
+       "v": 31,
+       "status": "actual",
+       "src": 44
+      },
+      {
+       "p": "2024-06",
+       "v": 27,
+       "status": "actual",
+       "src": 44
+      },
+      {
+       "p": "2024-06",
+       "v": 24,
+       "status": "actual",
+       "src": 44
+      },
+      {
+       "p": "2024-06",
+       "v": 23,
+       "status": "actual",
+       "src": 44
+      },
+      {
+       "p": "2024-06",
+       "v": 18,
+       "status": "actual",
+       "src": 44
+      }
+     ],
+     "notes": "Thứ tự điểm: Lumitel (Burundi) 31; Unitel (Lào) 27; Mytel (Myanmar) 24; Movitel (Mozambique) 23; Natcom (Haiti) 18. Không có doanh thu tuyệt đối theo thị trường."
+    },
+    {
+     "key": "vgi_mkt_growth_h1_2025",
+     "label": "Tăng trưởng doanh thu theo thị trường 6T/2025",
+     "unit": "% YoY",
+     "freq": "event",
+     "kind": "ratio",
+     "scope": "VGI – từng thị trường",
+     "points": [
+      {
+       "p": "2025-06",
+       "v": 42,
+       "status": "actual",
+       "src": 45
+      },
+      {
+       "p": "2025-06",
+       "v": 30,
+       "status": "actual",
+       "src": 45
+      },
+      {
+       "p": "2025-06",
+       "v": 28,
+       "status": "actual",
+       "src": 45
+      }
+     ],
+     "notes": "Thứ tự: Lumitel 42; Halotel (Tanzania) 30; Natcom 28."
+    },
+    {
+     "key": "vgi_ewallet_subs",
+     "label": "Thuê bao ví điện tử",
+     "unit": "triệu thuê bao",
+     "freq": "event",
+     "kind": "stock",
+     "scope": "VGI – các thị trường",
+     "points": [
+      {
+       "p": "2024-06",
+       "v": 18.5,
+       "status": "actual",
+       "src": 44
+      }
+     ],
+     "notes": "41% thuê bao di động; doanh thu ví 6T/2024 2.100 tỷ (11% DT)."
+    }
+   ],
+   "facts": [
+    {
+     "text": "Viettel dẫn đầu 7/10 thị trường đầu tư: Unitel (Lào), Metfone (Campuchia), Mytel (Myanmar), Telemor (Timor-Leste), Lumitel (Burundi), Natcom (Haiti), Movitel (Mozambique); Bitel số 2 tại Peru.",
+     "src": 42
+    },
+    {
+     "text": "5G thương mại tại 5 thị trường: Peru, Lào, Timor-Leste, Burundi, Tanzania (cuối 2025).",
+     "src": 46
+    },
+    {
+     "text": "Q4/2025 doanh thu 12.306 tỷ – cao nhất lịch sử; 16 quý tăng trưởng doanh thu liên tiếp.",
+     "src": 43
+    },
+    {
+     "text": "Tổng thuê bao di động quốc tế 56 triệu (2025), vượt quy mô thuê bao tại Việt Nam.",
+     "src": 42
+    }
+   ]
+  },
+  "VN_TOWER_MARKET": {
+   "profile": "Cấu trúc thị trường trạm/tháp viễn thông VN: MNO vẫn sở hữu phần lớn trạm (Viettel lớn nhất); CTR là towerco số 1, tiếp theo OCK (Malaysia) và các towerco nhỏ.",
+   "series": [
+    {
+     "key": "vn_sites_by_owner_2019",
+     "label": "Số trạm theo chủ sở hữu (cuối 2019)",
+     "unit": "trạm",
+     "freq": "event",
+     "kind": "stock",
+     "scope": "Thị trường trạm VN (TowerXchange/CTR qua VCSC)",
+     "points": [
+      {
+       "p": "2019-12",
+       "v": 40000,
+       "status": "actual",
+       "src": 18
+      },
+      {
+       "p": "2019-12",
+       "v": 18000,
+       "status": "actual",
+       "src": 18
+      },
+      {
+       "p": "2019-12",
+       "v": 18000,
+       "status": "actual",
+       "src": 18
+      },
+      {
+       "p": "2019-12",
+       "v": 6000,
+       "status": "actual",
+       "src": 18
+      },
+      {
+       "p": "2019-12",
+       "v": 11000,
+       "status": "actual",
+       "src": 18
+      }
+     ],
+     "notes": "Thứ tự điểm: Viettel & công ty con 40.000; MobiFone 18.000; VinaPhone 18.000; Vietnamobile & Gtel 6.000; Towerco độc lập 11.000. 88% trạm do MNO sở hữu; tỷ lệ thâm nhập towerco 12% (TQ 100%, Indonesia 72%, Thái 30%, TB thế giới 85%). Đây là 'site', khác số BTS 261.000 (đếm theo thiết bị/công nghệ) của Bộ."
+    },
+    {
+     "key": "vn_towerco_counts_2019",
+     "label": "Số trạm của các towerco độc lập (2019)",
+     "unit": "trạm",
+     "freq": "event",
+     "kind": "stock",
+     "scope": "Towerco VN (TowerXchange qua VCSC)",
+     "points": [
+      {
+       "p": "2019-12",
+       "v": 2300,
+       "status": "actual",
+       "src": 18
+      },
+      {
+       "p": "2019-12",
+       "v": 565,
+       "status": "actual",
+       "src": 18
+      },
+      {
+       "p": "2019-12",
+       "v": 408,
+       "status": "actual",
+       "src": 18
+      },
+      {
+       "p": "2019-12",
+       "v": 350,
+       "status": "actual",
+       "src": 18
+      },
+      {
+       "p": "2019-12",
+       "v": 300,
+       "status": "actual",
+       "src": 18
+      },
+      {
+       "p": "2019-12",
+       "v": 7077,
+       "status": "actual",
+       "src": 18
+      }
+     ],
+     "notes": "Thứ tự: OCK 2.300 (21%); 55T JSC 565; Kiến Trung 408; Golden Tower 350; Nisco 300; khác 7.077 (64%)."
+    },
+    {
+     "key": "vn_towerco_counts_2024",
+     "label": "Số trạm của các towerco (2024)",
+     "unit": "trạm",
+     "freq": "event",
+     "kind": "stock",
+     "scope": "Towerco VN (Mirae dẫn TowerXchange)",
+     "points": [
+      {
+       "p": "2024-12",
+       "v": 10000,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2024-12",
+       "v": 2700,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2024-12",
+       "v": 325,
+       "status": "actual",
+       "src": 6
+      },
+      {
+       "p": "2024-12",
+       "v": 5000,
+       "status": "actual",
+       "src": 6
+      }
+     ],
+     "notes": "Thứ tự: CTR 10.000 (55%); OCK 2.700 (15%); Golden Tower 325; towerco nhỏ địa phương 5.000 (28%)."
+    }
+   ],
+   "facts": [
+    {
+     "text": "Chỉ thị 52/CT-BTTTT (11/11/2019) yêu cầu tăng cường dùng chung hạ tầng kỹ thuật viễn thông thụ động.",
+     "src": 18
+    },
+    {
+     "text": "VinaPhone và MobiFone dùng chung ~30% hạ tầng trạm do cùng thuộc VNPT trước khi tách (2016) (VCSC 2021).",
+     "src": 18
+    },
+    {
+     "text": "VNPT và MobiFone ký thỏa thuận dùng chung hạ tầng cho 700 BTS mới (2020); với tỷ lệ dùng chung 1,5 có thể tiết kiệm 16.000 tỷ cho triển khai 4G (ước tính litbi).",
+     "src": 51
+    },
+    {
+     "text": "GSMA: chia sẻ hạ tầng thụ động giúp tiết kiệm 16–35% CAPEX/OPEX (trích trong bài của Bộ, 2023).",
+     "src": 52
+    },
+    {
+     "text": "NQ 66.10/2025/NQ-CP (15/12/2025): dùng chung miễn phí hạ tầng của DN 100% vốn nhà nước cho QP-AN – rủi ro gián tiếp cho towerco tư nhân/cổ phần.",
+     "src": 8
+    },
+    {
+     "text": "Tenancy thị trường VN ~1,2–1,3x; 2021 khoảng 1,1; mức hòa vốn toàn cầu 1,6–2x; Mỹ 2,5, TQ 1,48, Ấn Độ 2,1, Myanmar 1,6, Indonesia 1,8.",
+     "src": 15
+    }
+   ]
+  },
+  "MFS": {
+   "profile": "CTCP Dịch vụ Kỹ thuật MobiFone (MobiFone Service, UPCoM: MFS) – dịch vụ kỹ thuật/vận hành cho MobiFone; MobiFone sở hữu 31,17%.",
+   "series": [
+    {
+     "key": "mfs_rev",
+     "label": "Doanh thu thuần MFS",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "MFS – công ty",
+     "points": [
+      {
+       "p": "2025",
+       "v": 403.5,
+       "status": "actual",
+       "src": 48
+      }
+     ],
+     "notes": "Mảng dịch vụ 397 tỷ (98% DT). Nguồn khác ghi 409,7 tỷ."
+    },
+    {
+     "key": "mfs_pat",
+     "label": "LNST MFS",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "MFS – công ty",
+     "points": [
+      {
+       "p": "2025",
+       "v": 16,
+       "status": "actual",
+       "src": 48
+      }
+     ],
+     "notes": ""
+    }
+   ],
+   "facts": [
+    {
+     "text": "Doanh thu dịch vụ chiếm 98%; MobiFone là cổ đông lớn nhất (31,17%).",
+     "src": 48
+    }
+   ]
+  },
+  "TTN": {
+   "profile": "CTCP Công nghệ và Truyền thông Việt Nam (VNTT, UPCoM: TTN) – hạ tầng viễn thông, công nghệ cho các KCN của Becamex (Becamex 48,59%); theo phân tích được trích, không sở hữu mạng viễn thông riêng mà hợp tác với VNPT.",
+   "series": [
+    {
+     "key": "ttn_rev_h1",
+     "label": "Doanh thu thuần 6 tháng",
+     "unit": "tỷ đồng",
+     "freq": "M",
+     "kind": "flow",
+     "scope": "TTN – hợp nhất, 6T (p=tháng 6)",
+     "points": [
+      {
+       "p": "2025-06",
+       "v": 174,
+       "status": "actual",
+       "src": 49
+      }
+     ],
+     "notes": "'gần 174 tỷ', +13,1%; LNST 36,4 tỷ; ~20% DT từ hệ sinh thái Becamex (33,4 tỷ)."
+    }
+   ],
+   "facts": [
+    {
+     "text": "VNPT thoái 2 triệu cp (5,45%) TTN qua đấu giá, giá khởi điểm 28.492 đ/cp.",
+     "src": 49
+    }
+   ]
+  },
+  "SGT": {
+   "profile": "CTCP Công nghệ Viễn thông Sài Gòn (Saigontel, HOSE: SGT) – thuộc Saigon Invest Group; 3 trụ cột viễn thông-CNTT, BĐS KCN, tư vấn dự án; đang rút khỏi thương mại thiết bị viễn thông và xây lắp, chuyển sang LNG và data center. Không công bố doanh thu mảng viễn thông riêng.",
+   "series": [
+    {
+     "key": "sgt_rev",
+     "label": "Doanh thu thuần SGT",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "SGT – hợp nhất",
+     "points": [
+      {
+       "p": "2025",
+       "v": 1855,
+       "status": "actual",
+       "src": 50
+      },
+      {
+       "p": "2026",
+       "v": 2000,
+       "status": "plan",
+       "src": 50
+      }
+     ],
+     "notes": "2025 ~1,86 nghìn tỷ (+1%); LNTT 2025 ~499,9 tỷ; KH 2026 LNTT ~500 tỷ."
+    }
+   ],
+   "facts": [
+    {
+     "text": "Dự trữ 5–20 ha đất cho phát triển data center; thoát các mảng thương mại thiết bị viễn thông và xây lắp.",
+     "src": 50
+    }
+   ]
+  },
+  "ELC": {
+   "profile": "CTCP Đầu tư Phát triển Công nghệ Điện tử Viễn thông (Elcom, HOSE: ELC) – hiện chủ yếu là hệ thống giao thông thông minh (ITS), quản lý sân bay; nguồn đã mở KHÔNG nêu mảng viễn thông → mức độ phơi nhiễm viễn thông thấp.",
+   "series": [
+    {
+     "key": "elc_rev",
+     "label": "Doanh thu ELC",
+     "unit": "tỷ đồng",
+     "freq": "Y",
+     "kind": "flow",
+     "scope": "ELC – hợp nhất",
+     "points": [
+      {
+       "p": "2025",
+       "v": 1517,
+       "status": "actual",
+       "src": 47
+      }
+     ],
+     "notes": "Kỷ lục, +~89,7%; LN ròng 128 tỷ; hợp đồng ITS cao tốc Bắc–Nam, sân bay Long Thành (gói 1.938 tỷ, nhà thầu phụ liên danh)."
+    }
+   ],
+   "facts": [
+    {
+     "text": "Mô hình dự án, chủ yếu qua đấu thầu cạnh tranh.",
+     "src": 47
+    }
+   ]
+  },
+  "VTK": {
+   "profile": "CTCP Tư vấn Thiết kế Viettel (UPCoM: VTK) – tư vấn, thiết kế, khảo sát hạ tầng viễn thông cho Viettel. Không tìm được số liệu hoạt động công khai trong nguồn đã mở.",
+   "series": [],
+   "facts": []
+  },
+  "ABC": {
+   "profile": "CTCP Truyền thông VMG (UPCoM: ABC) – dịch vụ giá trị gia tăng/nội dung số trên mạng di động (đã từng là đối tác VAS của các nhà mạng). Không kiểm chứng được số liệu hoạt động trong phiên này.",
+   "series": [],
+   "facts": []
+  },
+  "PTP": {
+   "profile": "CTCP Dịch vụ Viễn thông và In Bưu điện (UPCoM: PTP) – in thẻ cào/ấn phẩm, dịch vụ cho ngành bưu chính-viễn thông. Không kiểm chứng được số liệu hoạt động trong phiên này.",
+   "series": [],
+   "facts": []
+  }
+ },
+ "sources": [
+  {
+   "id": 0,
+   "name": "Tạp chí Công Thương – CTR Q1/2025, TowerCo",
+   "url": "https://tapchicongthuong.vn/viettel-construction--ctr-day-manh-mang-towerco-va-dau-tu-nang-luong-tai-tao-139432.htm",
+   "published": "2025-04-16",
+   "quote": "Tính đến cuối tháng 3/2025, Tổng công ty sở hữu 10.350 trạm BTS."
+  },
+  {
+   "id": 1,
+   "name": "VietNamNet – Viettel Construction hoàn thành toàn diện kế hoạch 2025",
+   "url": "https://vietnamnet.vn/viettel-construction-hoan-thanh-toan-dien-ke-hoach-2025-2485432.html",
+   "published": "2026-01-27",
+   "quote": "doanh thu đạt 14.050 tỷ đồng, tăng 11% so với năm 2024"
+  },
+  {
+   "id": 2,
+   "name": "CafeF – CTR 10 tháng 2026",
+   "url": "https://cafef.vn/mot-doanh-nghiep-ho-viettel-thu-gan-14000-ty-dong-sau-10-thang-188261117105301505.chn",
+   "published": "2026-11-17",
+   "quote": "Lũy kế 653 trạm BTS có lớn hơn 02 nhà mạng trở lên thuê vị trí."
+  },
+  {
+   "id": 3,
+   "name": "Báo Pháp luật – CTR kế hoạch 2026 & tháng 1/2026",
+   "url": "https://doanhnhan.baophapluat.vn/viettel-construction-ctr-dat-muc-tieu-doanh-thu-vuot-15-600-ty-dong-nam-2026-tiep-tuc-duy-tri-da-tang-truong.html",
+   "published": "2026-04-02",
+   "quote": "kế hoạch doanh thu hợp nhất năm 2026 đạt trên 15.653 tỷ đồng, tăng hơn 11%"
+  },
+  {
+   "id": 4,
+   "name": "ABS Research – CTR note 28/10/2025 (KQKD 6T/2025)",
+   "url": "https://www.abs.vn/wp-content/uploads/2025/10/CTR_251028_Note.pdf",
+   "published": "2025-10-28",
+   "quote": "Tính đến hết T9/2025, CTR đang sở hữu 11.329 trạm BTS ... Tỷ lệ dùng chung là 1,03."
+  },
+  {
+   "id": 5,
+   "name": "MBS Research – CTR company report 16/05/2025",
+   "url": "https://mbs.com.vn/files/uploads/2025/05/CTR_Update_20250516-1.pdf",
+   "published": "2025-05-16",
+   "quote": "By the end of March 2025, CTR operated 10,350 BTS stations, adding 350 stations since the start of the year"
+  },
+  {
+   "id": 6,
+   "name": "Mirae Asset Vietnam (đăng trên bsc.com.vn) – CTR cập nhật 24/02/2025",
+   "url": "https://new.bsc.com.vn/Report/ReportFile/12763608",
+   "published": "2025-02-24",
+   "quote": "Tính đến hết năm 2024, CTR vận hành 10,000 trạm BTS, tăng 3,666 trạm so với năm trước"
+  },
+  {
+   "id": 7,
+   "name": "ABS Research – CTR note 17/04/2026 (KQKD 2025)",
+   "url": "https://www.abs.vn/wp-content/uploads/2026/04/CTR_260417_Note.pdf",
+   "published": "2026-04-17",
+   "quote": "Mảng Hạ tầng cho thuê có mức tăng trưởng doanh thu tốt nhất +36% svck, đạt 857 tỷ đồng"
+  },
+  {
+   "id": 8,
+   "name": "elibook.vn tóm tắt HSC – CTR và NQ 66.10/2025/NQ-CP",
+   "url": "https://elibook.vn/2026/01/12/ctr-thach-thuc-gian-tiep-tu-quy-dinh-dung-chung-ha-tang-mien-phi/",
+   "published": "2026-01-12",
+   "quote": "Mặc dù không chịu tác động trực tiếp, CTR đang đối mặt với những rủi ro gián tiếp"
+  },
+  {
+   "id": 9,
+   "name": "Tạp chí Công Thương – CTR 6 tháng 2026",
+   "url": "https://tapchicongthuong.vn/loat-linh-vuc-chu-chot-tang-truong-manh--viettel-construction--ctr--bao-lai-nua-dau-nam-tang-20-535549.htm",
+   "published": "2026-07-21",
+   "quote": "573 trạm đang được từ 2 nhà mạng trở lên thuê vị trí"
+  },
+  {
+   "id": 10,
+   "name": "24HMoney – CTR: hạ tầng viễn thông chững lại (Lê Hồng Hiếu)",
+   "url": "https://24hmoney.vn/news/ctr--viettel-construction-ha-tang-vien-thong-chung-lai-nhung-dong-luc-tang-truong-moi-dang-hinh-thanh-c30a2746197.html",
+   "published": "2026-02-26",
+   "quote": "với mục tiêu nâng hệ số dùng chung trạm (tenancy ratio) lên 1.05–1.06 trong năm 2026"
+  },
+  {
+   "id": 11,
+   "name": "Mekong ASEAN – CTR quý 3/2026",
+   "url": "https://mekongasean.vn/quy-khen-thuong-cua-viettel-construction-tang-gap-doi-sau-9-thang-61266.html",
+   "published": "2026-10-30",
+   "quote": "Trong quý 3/2026, Viettel Construction ghi nhận doanh thu thuần 4.227 tỷ đồng, tăng 7%"
+  },
+  {
+   "id": 12,
+   "name": "Tạp chí Công Thương – CTR 2 tháng 2025, hạ tầng cho thuê +47%",
+   "url": "https://tapchicongthuong.vn/dua-thuong-mai-hoa-5g--mang-ha-tang-cho-thue-cua-viettel-construction--ctr--tang-truong-47-138624.htm",
+   "published": "2025-03-22",
+   "quote": "340 trạm đã có 2 nhà mạng trở lên thuê vị trí, đạt tỷ lệ dùng chung là 1,03."
+  },
+  {
+   "id": 13,
+   "name": "Báo Pháp luật – CTR 5 tháng 2026",
+   "url": "https://doanhnhan.baophapluat.vn/viettel-construction-ctr-bao-lai-hon-260-ty-dong-trong-5-thang-dau-nam-sap-chi-hang-tram-ty-dong-tra-co-tuc.html",
+   "published": "2026-06-18",
+   "quote": "Đến cuối tháng 5, CTR sở hữu 12.000 trạm BTS"
+  },
+  {
+   "id": 14,
+   "name": "VietTimes – CTR 11 tháng 2025",
+   "url": "https://viettimes.vn/mot-cong-ty-ho-viettel-lai-hon-670-ty-dong-sau-11-thang-post192671.html",
+   "published": "2025-12-17",
+   "quote": "437 trạm BTS được hơn hai nhà mạng thuê cùng lúc, đạt tỷ lệ dùng chung 1,03."
+  },
+  {
+   "id": 15,
+   "name": "Tạp chí Công Thương – CTR đầu tư hơn 1.400 tỷ cho TowerCo",
+   "url": "https://tapchicongthuong.vn/viettel-construction--ctr--dau-tu-hon-1-400-ty-dong-nham-khai-pha--mo-vang--towerco-118160.htm",
+   "published": "2024-03-17",
+   "quote": "mục tiêu đầu tư 5.000 trạm BTS trên toàn quốc từ nay đến năm 2026"
+  },
+  {
+   "id": 16,
+   "name": "Tạp chí Công Thương – CTR gần 7.400 trạm BTS (5T/2024)",
+   "url": "https://tapchicongthuong.vn/co-gan-7-400-tram-bts--viettel-construction--ctr--day-manh-khai-thac--mo-vang--towerco-122457.htm",
+   "published": "2024-06-15",
+   "quote": "Viettel Construction đang sở hữu 7.393 trạm BTS trên cả nước"
+  },
+  {
+   "id": 17,
+   "name": "Thị trường Tài chính Tiền tệ – CTR tháng 1/2025",
+   "url": "https://thitruongtaichinhtiente.vn/print/65754.html",
+   "published": "2025-02-17",
+   "quote": "Tính tới cuối tháng 1/2025, Viettel Construction sở hữu 10.047 trạm BTS"
+  },
+  {
+   "id": 18,
+   "name": "VCSC (Vietcap) – CTR báo cáo lần đầu 19/01/2021",
+   "url": "https://static1.vietstock.vn/edocs/8068/CTR_20210119_VCI.pdf",
+   "published": "2021-01-19",
+   "quote": "88% tổng số trạm viễn thông tại Việt Nam thuộc sở hữu của các MNOs tính đến YE2019"
+  },
+  {
+   "id": 19,
+   "name": "FPT Báo cáo thường niên 2025 – Dịch vụ viễn thông",
+   "url": "https://bctn2025.fpt.com/business-performance-analysis/telecommunications/telecommunications-services/",
+   "published": null,
+   "quote": "Telecommunications services recorded revenue of 18,702 billion VND ... profit before tax of 4,167 billion VND"
+  },
+  {
+   "id": 20,
+   "name": "FPT Annual Report 2023 – Telecommunications services",
+   "url": "https://bctn2023.fpt.com/en/business-performance-analysis/telecommunications/telecommunications-services",
+   "published": null,
+   "quote": "the year marked a historic achievement for FPT Telecom as it reached 04 million Internet subscribers"
+  },
+  {
+   "id": 21,
+   "name": "The Investor – FPT Telecom và thị trường truyền hình internet",
+   "url": "https://theinvestor.vn/fpt-telecom-sets-sights-on-top-spot-in-vietnams-internet-tv-market-d17990.html",
+   "published": "2025-12-30",
+   "quote": "After more than 12 years in the market, FPT Play currently has just over 5 million paying subscribers."
+  },
+  {
+   "id": 22,
+   "name": "Tuổi Trẻ – Ai nắm vốn lớn nhất ở FPT Telecom?",
+   "url": "https://tuoitre.vn/ai-nam-von-lon-nhat-o-fpt-telecom-20250417084407661.htm",
+   "published": "2025-04-17",
+   "quote": "SCIC lại là cổ đông lớn nhất nắm giữ hơn 50% vốn tại FPT Telecom"
+  },
+  {
+   "id": 23,
+   "name": "VnEconomy – ĐHĐCĐ bất thường FPT Telecom 12/2025",
+   "url": "https://vneconomy.vn/sep-gelex-duoc-bo-nhiem-lam-thanh-vien-hoi-dong-quan-tri-fpt-telecom.htm",
+   "published": "2025-12-26",
+   "quote": "Sau chuyển nhượng, FPT vẫn nắm giữ 45,66% cổ phần."
+  },
+  {
+   "id": 24,
+   "name": "Báo Đầu tư – FPT năm 2024",
+   "url": "https://baodautu.vn/2024-lan-dau-cong-bo-chien-luoc-ai---ban---xe---so---xanh-fpt-tang-truong-loi-nhuan-tren-20-d242888.html",
+   "published": "2025-01-25",
+   "quote": "Dịch vụ Viễn thông doanh thu đạt 16.906 tỷ đồng, tăng trưởng 11,3% và lợi nhuận trước thuế đạt 3.420 tỷ đồng"
+  },
+  {
+   "id": 25,
+   "name": "VnEconomy – FPT Telecom 2024 & kế hoạch 2025",
+   "url": "https://vneconomy.vn/lai-tang-18-so-voi-cung-ky-vien-thong-fpt-len-ke-hoach-tra-co-tuc-50-bang-tien.htm",
+   "published": "2025-03-21",
+   "quote": "Năm 2024, FPT Telecom ghi nhận doanh thu thuần đạt 17.610 tỷ đồng, tăng 11,4% so với năm 2023"
+  },
+  {
+   "id": 26,
+   "name": "Báo Pháp luật – FPT đổi phương pháp kế toán tại FPT Telecom",
+   "url": "https://doanhnhan.baophapluat.vn/tap-doan-fpt-dam-bao-quyen-loi-co-dong-khi-doi-phuong-phap-ke-toan-tai-fpt-telecom-fox-don-nhan-ket-qua-loi-nhuan-ky-luc.html",
+   "published": "2026-03-19",
+   "quote": "chuyển từ phương pháp hợp nhất toàn bộ sang phương pháp vốn chủ sở hữu"
+  },
+  {
+   "id": 27,
+   "name": "Người Quan Sát – FPT Telecom kế hoạch 2026",
+   "url": "https://nguoiquansat.vn/ve-voi-bo-cong-an-fpt-telecom-fox-mo-rong-sang-nganh-bat-dong-san-muc-tieu-lai-5-100-ty-dong-nam-2026-282518.html",
+   "published": "2026-03-30",
+   "quote": "tổng ngân sách 5.100 tỷ đồng, trong đó 2.500 tỷ đồng cho các dự án thông thường"
+  },
+  {
+   "id": 28,
+   "name": "Znews – FPT Telecom quý III/2026",
+   "url": "https://znews.vn/fpt-telecom-tiep-tuc-co-quy-lai-nghin-ty-post1692107.html",
+   "published": "2026-10-26",
+   "quote": "ghi nhận doanh thu thuần gần 5.917 tỷ đồng, tăng hơn 19% so với cùng kỳ"
+  },
+  {
+   "id": 29,
+   "name": "The Investor – FPT Telecom sau chuyển giao vốn nhà nước",
+   "url": "https://theinvestor.vn/fpt-telecom-sustains-growth-momentum-after-state-capital-oversight-transfer-to-public-security-ministry-d18219.html",
+   "published": "2026-01-25",
+   "quote": "FPT Telecom has maintained strong growth momentum following the transfer of state capital representation"
+  },
+  {
+   "id": 30,
+   "name": "TelecomLead – Best ISP in Vietnam 2026 (ước tính bên thứ ba)",
+   "url": "https://telecomlead.com/broadband/best-isp-in-vietnam-2026-viettel-leads-ftth-market-with-11-million-subscribers-and-1-gbps-rollout-126543",
+   "published": "2026-07-03",
+   "quote": "FPT Telecom serves approximately 3.75 million subscribers, accounting for 15 percent"
+  },
+  {
+   "id": 31,
+   "name": "Báo Pháp luật – Viettel năm 2025",
+   "url": "https://doanhnhan.baophapluat.vn/viettel-bao-lai-gan-57-000-ty-dong-nam-2025-doanh-thu-quoc-te-dat-ky-luc-3-3-ty-usd-ha-tang-5g-phu-rong.html",
+   "published": "2026-01-11",
+   "quote": "khoảng 30.000 trạm phát sóng 5G, phục vụ cho khoảng 12,9 triệu thuê bao 5G trên toàn quốc"
+  },
+  {
+   "id": 32,
+   "name": "VnEconomy – Viettel năm 2023",
+   "url": "https://vneconomy.vn/viettel-lai-gan-2-ty-do-nam-2023-doanh-thu-tu-nuoc-ngoai-tang-truong-hon-20.htm",
+   "published": "2024-07-16",
+   "quote": "tổng doanh thu hợp nhất đạt 172.520 tỷ đồng"
+  },
+  {
+   "id": 33,
+   "name": "Thị trường Tài chính Tiền tệ – Viettel lãi kỷ lục 51.000 tỷ (2024)",
+   "url": "https://thitruongtaichinhtiente.vn/viettel-lai-ky-luc-51-000-ty-dong-65056.html",
+   "published": "2025-01-05",
+   "quote": "Lợi nhuận trước thuế 51.000 tỷ đồng, hoàn thành 111% kế hoạch"
+  },
+  {
+   "id": 34,
+   "name": "VietTimes – 3 ông lớn viễn thông Viettel, VNPT, MobiFone làm ăn ra sao",
+   "url": "https://viettimes.vn/3-ong-lon-vien-thong-viettel-vnpt-va-mobifone-lam-an-ra-sao-post181744.html",
+   "published": "2025-01-09",
+   "quote": "MobiFone có doanh thu công ty mẹ năm 2024 ước đạt gần 23.500 tỷ đồng"
+  },
+  {
+   "id": 35,
+   "name": "VnEconomy – Lợi nhuận của Viettel vượt 2 tỷ USD (2015)",
+   "url": "https://vneconomy.vn/loi-nhuan-cua-viettel-vuot-2-ty-usd.htm",
+   "published": "2015-12-30",
+   "quote": "Năm 2015, Viettel đạt doanh thu 222.700 tỷ đồng, tăng 13% so với năm 2014"
+  },
+  {
+   "id": 36,
+   "name": "Báo Pháp luật – VNPT năm 2025",
+   "url": "https://doanhnhan.baophapluat.vn/vnpt-thu-gan-58-000-ty-dong-nam-2025-loi-nhuan-di-lui-ton-kho-nguyen-vat-lieu-phinh-to.html",
+   "published": "2026-06-02",
+   "quote": "tổng doanh thu thuần đạt 57.943 tỷ đồng, tăng 3,3% so với năm 2024"
+  },
+  {
+   "id": 37,
+   "name": "Bộ KH&CN (english.mst.gov.vn) – One year of 5G commercialisation",
+   "url": "https://english.mst.gov.vn/one-year-of-5g-commercialisation-197260219195923493.htm",
+   "published": "2026-02-18",
+   "quote": "by achieving approximately 90% population coverage within just 12 months"
+  },
+  {
+   "id": 38,
+   "name": "VnEconomy – Phủ sóng 5G đạt gần 92%",
+   "url": "https://vneconomy.vn/techconnect/phu-song-5g-viet-nam-dat-gan-92-nha-mang-doi-mat-bai-toan-toi-uu-hoa-loi-nhuan.htm",
+   "published": "2026-04-23",
+   "quote": "Tỷ lệ phủ sóng 5G đạt 91,9% dân số, với hơn 22,4 triệu thuê bao."
+  },
+  {
+   "id": 39,
+   "name": "VnExpress International – Vietnam has 27.2 million 5G subscribers",
+   "url": "https://e.vnexpress.net/news/tech/vietnam-innovation/vietnam-has-27-2-million-5g-subscribers-5142875.html",
+   "published": "2026-11-10",
+   "quote": "The number of 5G subscribers surged from 14 million in Sep. 2025 to 27.2 million by the third quarter of 2026"
+  },
+  {
+   "id": 40,
+   "name": "Bộ KH&CN – Viet Nam's 5G network covers 26% of population",
+   "url": "https://english.mst.gov.vn/viet-nams-5g-network-covers-26-of-population-197250716153449052.htm",
+   "published": "2025-07-16",
+   "quote": "have deployed around 11,000 5G base stations nationwide"
+  },
+  {
+   "id": 41,
+   "name": "VietNamNet – Vietnam among world's fastest 5G rollouts",
+   "url": "https://vietnamnet.vn/en/vietnam-among-world-s-fastest-5g-rollouts-with-90-coverage-in-one-year-2478376.html",
+   "published": "2026-01-03",
+   "quote": "Viettel: 30,000 5G stations by December 2025, including 23,500 built in 2025"
+  },
+  {
+   "id": 42,
+   "name": "VietTimes – Viettel thu về bao nhiêu tiền từ thị trường quốc tế",
+   "url": "https://viettimes.vn/viettel-thu-ve-bao-nhieu-tien-tu-thi-truong-quoc-te-post193670.html",
+   "published": "2026-01-13",
+   "quote": "Tổng số thuê bao di động quốc tế đạt 56 triệu, chính thức vượt quy mô thuê bao tại Việt Nam."
+  },
+  {
+   "id": 43,
+   "name": "Nhà Đầu tư – Viettel Global 2025",
+   "url": "https://nhadautu.vn/doanh-thu-tang-truong-16-quy-khong-ngung-viettel-global-lap-ky-luc-loi-nhuan-ca-nam-hon-11000-ty-d102674.html",
+   "published": "2026-01-30",
+   "quote": "Lợi nhuận sau thuế đạt 11.273 tỷ đồng, tăng 57% so với cùng kỳ"
+  },
+  {
+   "id": 44,
+   "name": "VIR – Viettel Global H1/2024",
+   "url": "https://vir.com.vn/viettel-global-posts-revenue-growth-of-25-per-cent-in-h1-113975.html",
+   "published": "2024-08-28",
+   "quote": "Viettel Global posted an impressive on-year increase of 25 per cent in its revenue"
+  },
+  {
+   "id": 45,
+   "name": "Nhà Đầu tư – Viettel Global 6 tháng 2025",
+   "url": "https://nhadautu.vn/6-thang-dau-nam-2025-doanh-thu-viettel-global-tang-truong-22-d98723.html",
+   "published": "2025-08-29",
+   "quote": "Lumitel tại Burundi +42%, Halotel tại Tanzania +30%, Natcom tại Haiti +28%."
+  },
+  {
+   "id": 46,
+   "name": "Báo Pháp luật – Viettel Global lãi kỷ lục, 5G tại 5 thị trường",
+   "url": "https://doanhnhan.baophapluat.vn/viettel-global-vgi-lai-rong-ky-luc-hon-11-200-ty-dong-phu-song-5g-tai-5-thi-truong-quoc-te.html",
+   "published": "2026-01-30",
+   "quote": "đã đưa dịch vụ 5G vào kinh doanh tại 5 thị trường bao gồm: Peru, Lào, Timor Leste, Burundi và Tanzania"
+  },
+  {
+   "id": 47,
+   "name": "The Investor – Elcom posts record revenue",
+   "url": "https://theinvestor.vn/vietnams-elcom-posts-record-revenue-amid-margin-pressure-d18397.html",
+   "published": "2026-02-16",
+   "quote": "Elcom operates under a project-based model, primarily through competitive bidding."
+  },
+  {
+   "id": 48,
+   "name": "Báo Pháp luật – MobiFone Service (MFS) 2025",
+   "url": "https://doanhnhan.baophapluat.vn/mobifone-service-mfs-bao-lai-16-ty-dong-nam-2025-hoan-thanh-100-ke-hoach.html",
+   "published": "2026-03-16",
+   "quote": "tỷ lệ sở hữu 31,17% vốn điều lệ"
+  },
+  {
+   "id": 49,
+   "name": "Báo Pháp luật – TTN (VNTT), VNPT thoái vốn",
+   "url": "https://doanhnhan.baophapluat.vn/kinh-doanh-tang-truong-va-khong-vay-no-cong-nghe-truyen-thong-viet-nam-ttn-van-bi-vnpt-thoai-toan-bo-von-voi-gia-cao-hon-60-thi-gia-87540.html",
+   "published": "2025-10-11",
+   "quote": "VNPT sẽ đưa ra đấu giá công khai 2 triệu cổ phiếu TTN, tương ứng 5,45% vốn điều lệ"
+  },
+  {
+   "id": 50,
+   "name": "The Investor – Saigontel kế hoạch 2026",
+   "url": "https://theinvestor.vn/saigontel-eyes-record-revenue-accelerates-lng-data-center-development-in-2026-d18855.html",
+   "published": "2026-04-15",
+   "quote": "a move away from traditional industrial park development toward an integrated ecosystem"
+  },
+  {
+   "id": 51,
+   "name": "Bộ TT&TT (nay english.mst.gov.vn) – Telecom infrastructure sharing to bring huge benefits",
+   "url": "https://english.mst.gov.vn/telecom-infrastructure-sharing-to-bring-huge-benefits-analysts-197142470.htm",
+   "published": "2020-06-10",
+   "quote": "As of the end of 2019, Vietnam had 261,000 telecom BTS and 134.5 million mobile phone subscribers."
+  },
+  {
+   "id": 52,
+   "name": "Bộ TT&TT (nay english.mst.gov.vn) – Shared infrastructure helps telcos cut costs",
+   "url": "https://english.mst.gov.vn/shared-infrastructure-helps-telcos-cut-costs-increase-service-quality-197159300.htm",
+   "published": "2023-07-09",
+   "quote": "MobiFone shares nearly 4,000 BTS with other telcos and 13,400 BTS developed by other investors"
+  }
+ ],
+ "gaps": [
+  "CTR: không tìm được chuỗi số trạm BTS hằng tháng liên tục; chỉ có các tháng có thông cáo/bài báo. Không có số trạm cuối 2019/2020 chính thức (chỉ ~1.000 trạm Q3/2020 theo VCSC).",
+  "CTR: tỷ lệ dùng chung chính thức cho 2026 (Q1 1,04; T8 1,05 – chỉ thấy trong snippet tìm kiếm, không mở được nguồn) chưa đưa vào series.",
+  "CTR: doanh thu theo mảng cả năm 2019–2023 (trừ hạ tầng cho thuê 2023) không có trong nguồn đã mở – có trong BCTC/thuyết minh bộ phận mà người dùng đã có.",
+  "CTR: capex tổng (TSCĐ + BĐS đầu tư trạm) theo năm chưa có – chỉ có giá trị xây mới trạm 2025 (363,6 tỷ) và 6T/2025 (222 tỷ); lấy từ LCTT người dùng đã có.",
+  "CTR: số trạm xây mới theo tháng/năm thực hiện không công bố trực tiếp (chỉ suy ra từ chênh lệch số trạm – không điền).",
+  "FOX: không có chuỗi thuê bao băng rộng/FTTH và truyền hình định kỳ; chỉ mốc 4 triệu (2023, BCTN FPT) và FPT Play >5 triệu trả phí (12/2025). BCTN FOX 2019/2021/2022 (PDF >10MB) không đọc được trong phiên.",
+  "FOX: lịch sử tỷ lệ sở hữu FPT/SCIC trước 2025 chưa xác minh; doanh thu data center sau 2023 chưa có.",
+  "FPT mảng Dịch vụ viễn thông 2015–2022: chưa thu thập (BCTN FPT các năm).",
+  "Viettel: doanh thu/LNTT 2016–2022 chưa thu thập; doanh thu dịch vụ viễn thông riêng, capex, thuê bao di động/băng rộng chính thức theo năm không tìm thấy.",
+  "VNPT, MobiFone: số trạm 5G theo nhà mạng, thuê bao di động/băng rộng, capex không tìm thấy công bố chính thức. MobiFone 2025 thực hiện (doanh thu/LNTT) chưa có; ngày thương mại hóa 5G MobiFone (snippet nói 03/2025) chưa mở được nguồn.",
+  "VGI: không có doanh thu, thuê bao tuyệt đối theo từng thị trường (Mytel, Movitel, Natcom, Unitel, Metfone, Telemor, Bitel, Halotel, Lumitel) trong nguồn đã mở – BCTN VGI (PDF lớn) chưa đọc được.",
+  "Thị phần thuê bao di động/băng rộng chính thức (Sách Trắng Bộ KH&CN) chưa có; số liệu TelecomLead là ước tính bên thứ ba.",
+  "VTK, ABC, PTP: chưa có số liệu hoạt động kiểm chứng."
+ ],
+ "consistency": [
+  "CTR số trạm cuối 2023: Mirae 6.334 vs MBS 6.436; trạm dùng chung cuối 2023: Mirae 208 vs MBS 203.",
+  "CTR doanh thu xây lắp 2025: thông cáo công ty (01/2026) 4.639,1 tỷ vs BCTC (ABS) 4.763 tỷ. Doanh thu 2025: thông cáo 14.050 tỷ (doanh thu) vs BCTC doanh thu thuần 13.939 tỷ; LNTT thông cáo 745,1 tỷ.",
+  "CTR 9T/2026: thông cáo sơ bộ 12.343 tỷ/LNTT 616,6 tỷ vs BCTC quý 12.186 tỷ/630 tỷ.",
+  "CTR biên gộp hạ tầng cho thuê 2024: MBS 28,8% vs hàm ý từ ABS (28,88% + 0,43đ%) ~29,3%.",
+  "CTR 5G: VietTimes 11T/2025 '2.534 trạm 5G (hoàn thành kế hoạch)' vs VietNamNet/ABS cả năm 6.452 trạm 5G – có thể khác hạng mục kế hoạch.",
+  "Viettel trạm 5G cuối 2025: 30.000 (Viettel/Bộ KH&CN) vs ABS '22.400 trạm 5G của Tập đoàn'. Tổng toàn quốc 04/2026 'vượt 40.000' trong khi riêng Viettel 30.000 cuối 2025.",
+  "Viettel doanh thu 2024: 190.000 (tổng kết) vs 189.900 (ước) vs 190.400 (Nhân Dân, chưa mở); 2015 dùng khái niệm doanh thu tổng (222.700) không so được với hợp nhất 2023+ (172.520).",
+  "Viettel thuê bao 2015: 56,4 + 17,1 = 73,5 triệu ≠ 72,9 triệu lũy kế trong cùng bài.",
+  "VNPT 2025: doanh thu thuần 57.943 tỷ (BCTC) vs 'tổng doanh thu hợp nhất 61.246 tỷ' (thông cáo, nguồn chưa mở) – khác khái niệm; LNTT 6.568,6 vs 6.598 tỷ (nguồn chưa mở).",
+  "MobiFone doanh thu mẹ: 2023 >25.400 và 2024 ~23.500 ngụ ý giảm ~1.900 tỷ, bài nói giảm ~1.500 tỷ.",
+  "FOX vs FPT: doanh thu FOX công ty 2025 19.506 tỷ vs mảng Dịch vụ viễn thông FPT 18.702 tỷ (FOX gồm cả FPT Online). FOX LNTT 2025 4.363 vs mảng 4.167.",
+  "FOX LNST 9T/2026: znews '+33%' không khớp với 2.934 vs 2.580 tỷ 9T/2025 (+~14%).",
+  "VGI tăng trưởng doanh thu 2025: +28% (Nhà Đầu tư/Báo Pháp luật) vs +25% (nguồn khác).",
+  "FOX thuê bao Internet: BCTN FPT 2023 '4 triệu' vs TelecomLead 2026 ~3,75 triệu (ước tính bên thứ ba, không nguồn)."
+ ]
+}

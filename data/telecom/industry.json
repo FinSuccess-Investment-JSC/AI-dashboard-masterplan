@@ -1,0 +1,2832 @@
+{
+ "series": [
+  {
+   "key": "nso_telecom_revenue_y",
+   "label": "Doanh thu hoạt động viễn thông (Cục Thống kê, số ước tính công bố lần đầu)",
+   "unit": "nghìn tỷ đồng",
+   "freq": "Y",
+   "kind": "flow",
+   "definition": "Doanh thu hoạt động viễn thông theo giá hiện hành, ước tính tại báo cáo KT-XH quý IV hằng năm của Tổng cục/Cục Thống kê (khái niệm rộng: dịch vụ viễn thông, Internet và dịch vụ khác của DN viễn thông).",
+   "scope": "Toàn quốc, mọi DN hoạt động viễn thông (VSIC 61)",
+   "points": [
+    {
+     "p": "2015",
+     "v": 335,
+     "status": "estimate",
+     "src": 15
+    },
+    {
+     "p": "2016",
+     "v": 381.7,
+     "status": "estimate",
+     "src": 14
+    },
+    {
+     "p": "2017",
+     "v": 380,
+     "status": "estimate",
+     "src": 13
+    },
+    {
+     "p": "2018",
+     "v": 395.8,
+     "status": "estimate",
+     "src": 12
+    },
+    {
+     "p": "2019",
+     "v": 383.3,
+     "status": "estimate",
+     "src": 11
+    },
+    {
+     "p": "2020",
+     "v": 381,
+     "status": "estimate",
+     "src": 10
+    },
+    {
+     "p": "2021",
+     "v": 314.8,
+     "status": "estimate",
+     "src": 8
+    },
+    {
+     "p": "2022",
+     "v": 333.9,
+     "status": "estimate",
+     "src": 6
+    },
+    {
+     "p": "2023",
+     "v": 338.5,
+     "status": "estimate",
+     "src": 4
+    },
+    {
+     "p": "2024",
+     "v": 355.4,
+     "status": "estimate",
+     "src": 2
+    },
+    {
+     "p": "2025",
+     "v": 380.0,
+     "status": "estimate",
+     "src": 0
+    }
+   ],
+   "notes": "Mỗi điểm là số ước tính lần đầu; năm sau Thống kê tính tăng trưởng trên số đã điều chỉnh, nên các điểm KHÔNG nối thành chuỗi so sánh được: 2017 (380) < 2016 (381,7) dù báo cáo ghi +7,3%; 2021 (314,8) ghi −0,1% so với 2020 trong khi 2020 công bố 381. Gãy chuỗi lớn giữa 2020 và 2021 (xem nso_telecom_revenue_y_revised). Tăng trưởng thực/danh nghĩa công bố: 2022 +6,7%, 2023 +2,3%, 2024 +4,0%, 2025 +6,0%."
+  },
+  {
+   "key": "nso_telecom_revenue_y_revised",
+   "label": "Doanh thu hoạt động viễn thông (Cục Thống kê, số đã điều chỉnh)",
+   "unit": "nghìn tỷ đồng",
+   "freq": "Y",
+   "kind": "flow",
+   "definition": "Số doanh thu năm do Tổng cục Thống kê công bố lại trong bài phân tích 05/2021 sau khi điều chỉnh.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2020",
+     "v": 315.2,
+     "status": "actual",
+     "src": 16
+    }
+   ],
+   "notes": "Bài phân tích GSO 5/2021: 2020 giảm 13,6% còn 315,2 nghìn tỷ; 2019 chỉ tăng 2,6%; 2016–2018 tăng gần 8%/năm. Chỉ có điểm 2020 được nêu bằng số tuyệt đối; khác hẳn số ước tính 381 nghìn tỷ công bố 12/2020."
+  },
+  {
+   "key": "nso_telecom_revenue_q",
+   "label": "Doanh thu hoạt động viễn thông theo quý (Cục Thống kê)",
+   "unit": "nghìn tỷ đồng",
+   "freq": "Q",
+   "kind": "flow",
+   "definition": "Doanh thu hoạt động viễn thông quý, giá hiện hành, ước tính tại báo cáo KT-XH quý.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018Q4",
+     "v": 107.4,
+     "status": "estimate",
+     "src": 12
+    },
+    {
+     "p": "2019Q4",
+     "v": 104.5,
+     "status": "estimate",
+     "src": 11
+    },
+    {
+     "p": "2020Q4",
+     "v": 102.8,
+     "status": "estimate",
+     "src": 10
+    },
+    {
+     "p": "2021Q4",
+     "v": 82.9,
+     "status": "estimate",
+     "src": 8
+    },
+    {
+     "p": "2022Q1",
+     "v": 83.8,
+     "status": "estimate",
+     "src": 30
+    },
+    {
+     "p": "2022Q2",
+     "v": 84.4,
+     "status": "estimate",
+     "src": 29
+    },
+    {
+     "p": "2022Q3",
+     "v": 79.9,
+     "status": "estimate",
+     "src": 28
+    },
+    {
+     "p": "2022Q4",
+     "v": 84.9,
+     "status": "estimate",
+     "src": 6
+    },
+    {
+     "p": "2023Q2",
+     "v": 87.1,
+     "status": "estimate",
+     "src": 27
+    },
+    {
+     "p": "2023Q3",
+     "v": 82,
+     "status": "estimate",
+     "src": 26
+    },
+    {
+     "p": "2023Q4",
+     "v": 84.8,
+     "status": "estimate",
+     "src": 4
+    },
+    {
+     "p": "2024Q1",
+     "v": 89.1,
+     "status": "estimate",
+     "src": 25
+    },
+    {
+     "p": "2024Q2",
+     "v": 89.6,
+     "status": "estimate",
+     "src": 24
+    },
+    {
+     "p": "2024Q3",
+     "v": 87.7,
+     "status": "estimate",
+     "src": 23
+    },
+    {
+     "p": "2024Q4",
+     "v": 89.3,
+     "status": "estimate",
+     "src": 2
+    },
+    {
+     "p": "2025Q1",
+     "v": 94.7,
+     "status": "estimate",
+     "src": 22
+    },
+    {
+     "p": "2025Q2",
+     "v": 94.5,
+     "status": "estimate",
+     "src": 21
+    },
+    {
+     "p": "2025Q3",
+     "v": 94.2,
+     "status": "estimate",
+     "src": 20
+    },
+    {
+     "p": "2025Q4",
+     "v": 96.2,
+     "status": "estimate",
+     "src": 0
+    },
+    {
+     "p": "2026Q1",
+     "v": 102.8,
+     "status": "estimate",
+     "src": 19
+    },
+    {
+     "p": "2026Q2",
+     "v": 102.9,
+     "status": "estimate",
+     "src": 18
+    },
+    {
+     "p": "2026Q3",
+     "v": 103.4,
+     "status": "estimate",
+     "src": 17
+    }
+   ],
+   "notes": "Số ước tính từng quý, không được điều chỉnh lại trong chuỗi này; tổng 4 quý có thể khác số năm. Tăng trưởng YoY công bố (vd 2025Q3 +6,5%, 2026Q3 +8,0%) tính trên số quý trước đã điều chỉnh, không khớp nếu tự chia các điểm ở đây. Q1/2023 không tìm được câu doanh thu trong báo cáo."
+  },
+  {
+   "key": "nso_telecom_revenue_ytd",
+   "label": "Doanh thu hoạt động viễn thông lũy kế từ đầu năm (Cục Thống kê)",
+   "unit": "nghìn tỷ đồng",
+   "freq": "Q",
+   "kind": "flow",
+   "definition": "Doanh thu lũy kế 6 tháng (p=Q2) và 9 tháng (p=Q3) — SỐ CỘNG DỒN, không phải số quý.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2022Q2",
+     "v": 168.4,
+     "status": "estimate",
+     "src": 29
+    },
+    {
+     "p": "2022Q3",
+     "v": 248.5,
+     "status": "estimate",
+     "src": 28
+    },
+    {
+     "p": "2023Q2",
+     "v": 174,
+     "status": "estimate",
+     "src": 27
+    },
+    {
+     "p": "2023Q3",
+     "v": 254.3,
+     "status": "estimate",
+     "src": 26
+    },
+    {
+     "p": "2024Q2",
+     "v": 179,
+     "status": "estimate",
+     "src": 24
+    },
+    {
+     "p": "2024Q3",
+     "v": 265.9,
+     "status": "estimate",
+     "src": 23
+    },
+    {
+     "p": "2025Q2",
+     "v": 189.4,
+     "status": "estimate",
+     "src": 21
+    },
+    {
+     "p": "2025Q3",
+     "v": 284.0,
+     "status": "estimate",
+     "src": 20
+    },
+    {
+     "p": "2026Q2",
+     "v": 205.8,
+     "status": "estimate",
+     "src": 18
+    },
+    {
+     "p": "2026Q3",
+     "v": 308.3,
+     "status": "estimate",
+     "src": 17
+    }
+   ],
+   "notes": "Cờ: cumulative YTD. 9T/2026 +6,86% YoY (loại trừ giá +6,94%)."
+  },
+  {
+   "key": "mic_telecom_service_revenue_y",
+   "label": "Tổng doanh thu dịch vụ viễn thông (Bộ TT&TT/Bộ KH&CN)",
+   "unit": "nghìn tỷ đồng",
+   "freq": "Y",
+   "kind": "flow",
+   "definition": "Doanh thu dịch vụ viễn thông theo báo cáo DN gửi Bộ (khái niệm hẹp: chỉ doanh thu dịch vụ viễn thông, không gồm bán thiết bị/dịch vụ số khác).",
+   "scope": "Toàn quốc, DN viễn thông được cấp phép",
+   "points": [
+    {
+     "p": "2017",
+     "v": 131.844,
+     "status": "actual",
+     "src": 32
+    },
+    {
+     "p": "2020",
+     "v": 130,
+     "status": "estimate",
+     "src": 56
+    },
+    {
+     "p": "2022",
+     "v": 138,
+     "status": "estimate",
+     "src": 55
+    },
+    {
+     "p": "2023",
+     "v": 139.26,
+     "status": "estimate",
+     "src": 35
+    },
+    {
+     "p": "2024",
+     "v": 147,
+     "status": "estimate",
+     "src": 54
+    }
+   ],
+   "notes": "2020: Bộ chỉ nêu 'hơn 130 nghìn tỷ', +0,3% so với 2019 (lưu 130 là cận dưới). Khác hoàn toàn quy mô với số Cục Thống kê (~315–380 nghìn tỷ) do khác phạm vi. Chưa tìm được số chính thức năm 2025 và 2018–2019, 2021 bằng VND."
+  },
+  {
+   "key": "mic_telecom_service_revenue_usd_y",
+   "label": "Tổng doanh thu dịch vụ viễn thông (Sách Trắng, USD)",
+   "unit": "triệu USD",
+   "freq": "Y",
+   "kind": "flow",
+   "definition": "Sách Trắng CNTT-TT bảng 'Tổng doanh thu dịch vụ viễn thông'.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 6062.23,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2016",
+     "v": 6158.08,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2017",
+     "v": 5879.35,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2018",
+     "v": 5673.62,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": "Quy đổi USD theo tỷ giá của Bộ; Sách Trắng 2018 ghi 2017 = 131.844 tỷ đồng."
+  },
+  {
+   "key": "mic_revenue_fixed_usd_y",
+   "label": "Doanh thu dịch vụ viễn thông cố định mặt đất (Sách Trắng)",
+   "unit": "triệu USD",
+   "freq": "Y",
+   "kind": "flow",
+   "definition": "Doanh thu dịch vụ viễn thông cố định mặt đất (gồm băng rộng cố định).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 1176.78,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2016",
+     "v": 1142.52,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2017",
+     "v": 1337.59,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2018",
+     "v": 1474.89,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "mic_revenue_fbb_usd_y",
+   "label": "Doanh thu dịch vụ băng rộng cố định (Sách Trắng)",
+   "unit": "triệu USD",
+   "freq": "Y",
+   "kind": "flow",
+   "definition": "Doanh thu dịch vụ truy nhập Internet băng rộng cố định (là một phần của doanh thu cố định).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2017",
+     "v": 866.45,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2018",
+     "v": 1046.97,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": "2015–2016 Sách Trắng ghi '-' (không có số liệu)."
+  },
+  {
+   "key": "mic_revenue_mobile_usd_y",
+   "label": "Doanh thu dịch vụ viễn thông di động mặt đất (Sách Trắng)",
+   "unit": "triệu USD",
+   "freq": "Y",
+   "kind": "flow",
+   "definition": "Doanh thu dịch vụ viễn thông di động mặt đất.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 4882.4,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2016",
+     "v": 5013,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2017",
+     "v": 4539.34,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2018",
+     "v": 4195.6,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "mic_telecom_sector_revenue_broad_y",
+   "label": "Doanh thu lĩnh vực viễn thông (Bộ TT&TT, khái niệm rộng)",
+   "unit": "nghìn tỷ đồng",
+   "freq": "Y",
+   "kind": "flow",
+   "definition": "Doanh thu 'trong lĩnh vực viễn thông' theo báo cáo tổng kết năm của Bộ TT&TT (khái niệm rộng, trước khi Bộ chuyển sang chỉ tiêu doanh thu dịch vụ).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 340,
+     "status": "estimate",
+     "src": 34
+    }
+   ],
+   "notes": "Không so sánh với mic_telecom_service_revenue_y."
+  },
+  {
+   "key": "mic_telecom_service_revenue_h1",
+   "label": "Doanh thu dịch vụ viễn thông 6 tháng đầu năm (Bộ KH&CN)",
+   "unit": "nghìn tỷ đồng",
+   "freq": "Q",
+   "kind": "flow",
+   "definition": "Lũy kế 6 tháng (p=Q2).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2025Q2",
+     "v": 70.422,
+     "status": "estimate",
+     "src": 58
+    }
+   ],
+   "notes": "Cờ: cumulative H1; +1,2% YoY."
+  },
+  {
+   "key": "nso_phone_subs_total_y",
+   "label": "Tổng số thuê bao điện thoại cuối năm (Cục Thống kê)",
+   "unit": "triệu thuê bao",
+   "freq": "Y",
+   "kind": "stock",
+   "definition": "Thuê bao cố định đang hòa mạng + thuê bao di động phát sinh lưu lượng thoại/tin nhắn/dữ liệu hai chiều và bị khóa một chiều, cuối kỳ.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2017",
+     "v": 127.4,
+     "status": "estimate",
+     "src": 13
+    },
+    {
+     "p": "2018",
+     "v": 129.9,
+     "status": "estimate",
+     "src": 12
+    },
+    {
+     "p": "2019",
+     "v": 133.1,
+     "status": "estimate",
+     "src": 11
+    },
+    {
+     "p": "2021",
+     "v": 130.3,
+     "status": "estimate",
+     "src": 9
+    },
+    {
+     "p": "2022",
+     "v": 129.7,
+     "status": "estimate",
+     "src": 7
+    },
+    {
+     "p": "2023",
+     "v": 126.6,
+     "status": "estimate",
+     "src": 5
+    },
+    {
+     "p": "2024",
+     "v": 120.7,
+     "status": "estimate",
+     "src": 3
+    },
+    {
+     "p": "2025",
+     "v": 123.6,
+     "status": "estimate",
+     "src": 1
+    }
+   ],
+   "notes": "Số ước tính cuối năm. 2015 (129,4) và 2020 xem series revised."
+  },
+  {
+   "key": "nso_mobile_subs_y",
+   "label": "Thuê bao di động cuối năm (Cục Thống kê, số công bố lần đầu)",
+   "unit": "triệu thuê bao",
+   "freq": "Y",
+   "kind": "stock",
+   "definition": "Thuê bao di động phát sinh lưu lượng hai chiều + bị khóa một chiều, cuối kỳ (số liệu do Sở/Bộ TT&TT cung cấp).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 127,
+     "status": "estimate",
+     "src": 15
+    },
+    {
+     "p": "2017",
+     "v": 119.7,
+     "status": "estimate",
+     "src": 13
+    },
+    {
+     "p": "2018",
+     "v": 125.6,
+     "status": "estimate",
+     "src": 12
+    },
+    {
+     "p": "2019",
+     "v": 129.5,
+     "status": "estimate",
+     "src": 11
+    },
+    {
+     "p": "2021",
+     "v": 127.2,
+     "status": "estimate",
+     "src": 9
+    },
+    {
+     "p": "2022",
+     "v": 127.2,
+     "status": "estimate",
+     "src": 7
+    },
+    {
+     "p": "2023",
+     "v": 124.2,
+     "status": "estimate",
+     "src": 5
+    },
+    {
+     "p": "2024",
+     "v": 118.4,
+     "status": "estimate",
+     "src": 3
+    },
+    {
+     "p": "2025",
+     "v": 121.3,
+     "status": "estimate",
+     "src": 1
+    }
+   ],
+   "notes": "2017 giảm do xử lý SIM rác (Thống kê nêu rõ); 2019 −0,7% do xử lý SIM rác; 2024 −4,6% do tắt 2G-only (16/10/2024) và siết thuê bao trả trước/SIM rác. 2021 và 2022 cùng 127,2 triệu dù 2022 ghi +3,7% → có điều chỉnh số 2021."
+  },
+  {
+   "key": "nso_mobile_subs_y_revised",
+   "label": "Thuê bao di động cuối năm (Cục Thống kê, số trong bài phân tích 2021)",
+   "unit": "triệu thuê bao",
+   "freq": "Y",
+   "kind": "stock",
+   "definition": "Như trên, số do GSO nêu lại năm 2021.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 123.9,
+     "status": "actual",
+     "src": 16
+    },
+    {
+     "p": "2020",
+     "v": 123.6,
+     "status": "actual",
+     "src": 16
+    }
+   ],
+   "notes": "2015: khác số ước tính 127 triệu công bố 12/2015."
+  },
+  {
+   "key": "nso_fbb_subs_y",
+   "label": "Thuê bao Internet băng rộng cố định cuối năm (Cục Thống kê)",
+   "unit": "triệu thuê bao",
+   "freq": "Y",
+   "kind": "stock",
+   "definition": "Thuê bao truy nhập Internet băng rộng cố định đang duy trì dịch vụ cuối kỳ.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2017",
+     "v": 10.8,
+     "status": "estimate",
+     "src": 13
+    },
+    {
+     "p": "2018",
+     "v": 13.0,
+     "status": "estimate",
+     "src": 12
+    },
+    {
+     "p": "2019",
+     "v": 14.8,
+     "status": "estimate",
+     "src": 11
+    },
+    {
+     "p": "2021",
+     "v": 19.3,
+     "status": "estimate",
+     "src": 9
+    },
+    {
+     "p": "2022",
+     "v": 21.0,
+     "status": "estimate",
+     "src": 7
+    },
+    {
+     "p": "2023",
+     "v": 22.7,
+     "status": "estimate",
+     "src": 5
+    },
+    {
+     "p": "2024",
+     "v": 23.9,
+     "status": "estimate",
+     "src": 3
+    },
+    {
+     "p": "2025",
+     "v": 25.1,
+     "status": "estimate",
+     "src": 1
+    }
+   ],
+   "notes": "2018: 'nearly 13 million'. 2015 báo cáo đầu ghi 'Broadband Internet subscribers 10,5 triệu' (không rõ chỉ cố định) – không đưa vào; số đã điều chỉnh 2015 = 7,7 triệu xem series revised."
+  },
+  {
+   "key": "nso_fbb_subs_y_revised",
+   "label": "Thuê bao băng rộng cố định (Cục Thống kê, số trong bài phân tích 2021)",
+   "unit": "triệu thuê bao",
+   "freq": "Y",
+   "kind": "stock",
+   "definition": "Như trên.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 7.7,
+     "status": "actual",
+     "src": 16
+    },
+    {
+     "p": "2020",
+     "v": 16.7,
+     "status": "actual",
+     "src": 16
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "nso_fixed_phone_subs_y",
+   "label": "Thuê bao điện thoại cố định cuối năm (Cục Thống kê)",
+   "unit": "triệu thuê bao",
+   "freq": "Y",
+   "kind": "stock",
+   "definition": "Thuê bao cố định đang hòa mạng cuối kỳ.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 5.4,
+     "status": "actual",
+     "src": 16
+    },
+    {
+     "p": "2019",
+     "v": 3.6,
+     "status": "estimate",
+     "src": 11
+    },
+    {
+     "p": "2020",
+     "v": 3.2,
+     "status": "actual",
+     "src": 16
+    }
+   ],
+   "notes": "2015 công bố lần đầu 5,9 triệu (báo cáo 12/2015)."
+  },
+  {
+   "key": "mic_mobile_subs_traffic",
+   "label": "Thuê bao di động phát sinh lưu lượng (Bộ TT&TT/Cục Viễn thông)",
+   "unit": "triệu thuê bao",
+   "freq": "M",
+   "kind": "stock",
+   "definition": "Thuê bao di động (điện thoại + datacard) đang hoạt động có phát sinh lưu lượng trong 01 tháng trước thời điểm thống kê (chuẩn của Bộ).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 126.499499,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2016",
+     "v": 128.996179,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2017",
+     "v": 120.016181,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2018",
+     "v": 136.088885,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2019-06",
+     "v": 133.781662,
+     "status": "actual",
+     "src": 42
+    },
+    {
+     "p": "2023-08",
+     "v": 125.548684,
+     "status": "actual",
+     "src": 38
+    },
+    {
+     "p": "2023-10",
+     "v": 125.086105,
+     "status": "actual",
+     "src": 36
+    },
+    {
+     "p": "2024-01",
+     "v": 123.89,
+     "status": "actual",
+     "src": 43
+    },
+    {
+     "p": "2024-02",
+     "v": 123.6,
+     "status": "actual",
+     "src": 43
+    },
+    {
+     "p": "2024-03",
+     "v": 124.0,
+     "status": "actual",
+     "src": 43
+    },
+    {
+     "p": "2024-04",
+     "v": 121.5,
+     "status": "actual",
+     "src": 43
+    }
+   ],
+   "notes": "Điểm năm (2015–2018) = cuối năm, Sách Trắng. Nếu dùng chuẩn ITU (lưu lượng trong 03 tháng) thì 2018 = 140,64 triệu. Gãy chuỗi: 2017 giảm do NĐ 49/2017 & chiến dịch SIM rác; 4/2024 giảm do tắt 2G-only. Tháng 6/2020 Bộ báo 127,01 triệu 'thuê bao di động' (xem notes nguồn VietNamNet) – định nghĩa không nêu rõ nên không ghép."
+  },
+  {
+   "key": "mic_mobile_subs_data_users",
+   "label": "Thuê bao di động đang hoạt động có sử dụng dữ liệu (Bộ TT&TT)",
+   "unit": "triệu thuê bao",
+   "freq": "M",
+   "kind": "stock",
+   "definition": "Thuê bao điện thoại di động đang hoạt động có sử dụng dữ liệu (trả trước + trả sau).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 29.371642,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2016",
+     "v": 32.646754,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2017",
+     "v": 39.853031,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2018",
+     "v": 55.015629,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2019-06",
+     "v": 59.739759,
+     "status": "actual",
+     "src": 42
+    },
+    {
+     "p": "2023-08",
+     "v": 85.767934,
+     "status": "actual",
+     "src": 38
+    },
+    {
+     "p": "2023-10",
+     "v": 85.724435,
+     "status": "actual",
+     "src": 36
+    }
+   ],
+   "notes": "Sách Trắng 2018 ghi 2017 'phát sinh lưu lượng dữ liệu' = 47,75 triệu (gồm datacard?) khác bản 2019 (39,85 triệu) — lưu số của Sách Trắng 2019."
+  },
+  {
+   "key": "mic_mbb_subs",
+   "label": "Thuê bao băng rộng di động (3G/4G/5G) (Bộ TT&TT/Bộ KH&CN)",
+   "unit": "triệu thuê bao",
+   "freq": "M",
+   "kind": "stock",
+   "definition": "Thuê bao Internet băng rộng di động mặt đất đang hoạt động (chuẩn Bộ: phát sinh lưu lượng trong 01 tháng).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 31.946565,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2016",
+     "v": 36.188417,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2017",
+     "v": 44.854554,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2018",
+     "v": 52.819001,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2020-06",
+     "v": 65.67,
+     "status": "actual",
+     "src": 57
+    },
+    {
+     "p": "2023",
+     "v": 84.9,
+     "status": "estimate",
+     "src": 35
+    },
+    {
+     "p": "2023-09",
+     "v": 85.6,
+     "status": "estimate",
+     "src": 37
+    },
+    {
+     "p": "2024-01",
+     "v": 89.77,
+     "status": "actual",
+     "src": 43
+    },
+    {
+     "p": "2024-02",
+     "v": 91.31,
+     "status": "actual",
+     "src": 43
+    },
+    {
+     "p": "2024-03",
+     "v": 92.55,
+     "status": "actual",
+     "src": 43
+    },
+    {
+     "p": "2024-04",
+     "v": 91.54,
+     "status": "actual",
+     "src": 43
+    },
+    {
+     "p": "2024-05",
+     "v": 92.04,
+     "status": "actual",
+     "src": 44
+    },
+    {
+     "p": "2025-06",
+     "v": 104.74,
+     "status": "estimate",
+     "src": 58
+    },
+    {
+     "p": "2026-04",
+     "v": 110.5,
+     "status": "actual",
+     "src": 60
+    },
+    {
+     "p": "2026-07",
+     "v": 131.7,
+     "status": "actual",
+     "src": 45
+    }
+   ],
+   "notes": "Chuẩn ITU (3 tháng) 2018 = 68,69 triệu. Bước nhảy 4/2026 (110,5) → 7/2026 (131,7) +21 triệu trong 3 tháng: khả năng đổi định nghĩa/phạm vi (vd tính theo chuẩn khác) — chưa có giải thích chính thức. Chuỗi 2023 (84,9) < 1/2024 (89,77) cũng có dấu hiệu đổi cách đếm."
+  },
+  {
+   "key": "mic_fbb_subs",
+   "label": "Thuê bao Internet băng rộng cố định (Bộ TT&TT/Bộ KH&CN)",
+   "unit": "triệu thuê bao",
+   "freq": "M",
+   "kind": "stock",
+   "definition": "Tổng thuê bao truy nhập Internet băng rộng cố định (xDSL + leased line + CATV + FTTH).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 7.657619,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2016",
+     "v": 9.098288,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2017",
+     "v": 11.269936,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2018",
+     "v": 12.994451,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2020-06",
+     "v": 15.86,
+     "status": "actual",
+     "src": 57
+    },
+    {
+     "p": "2023-10",
+     "v": 22.620832,
+     "status": "actual",
+     "src": 36
+    },
+    {
+     "p": "2024-01",
+     "v": 22.86,
+     "status": "actual",
+     "src": 43
+    },
+    {
+     "p": "2024-02",
+     "v": 22.94,
+     "status": "actual",
+     "src": 43
+    },
+    {
+     "p": "2024-03",
+     "v": 22.98,
+     "status": "actual",
+     "src": 43
+    },
+    {
+     "p": "2024-04",
+     "v": 23.51,
+     "status": "actual",
+     "src": 43
+    },
+    {
+     "p": "2024-05",
+     "v": 23.62,
+     "status": "actual",
+     "src": 44
+    },
+    {
+     "p": "2025-06",
+     "v": 24.43,
+     "status": "estimate",
+     "src": 58
+    },
+    {
+     "p": "2026-07",
+     "v": 24.79,
+     "status": "actual",
+     "src": 45
+    }
+   ],
+   "notes": "MST 22/9/2026 còn nêu 24,96 triệu không ghi kỳ (không đưa vào). Số Bộ trùng số ITU (World Bank) 2015–2018."
+  },
+  {
+   "key": "mic_ftth_subs",
+   "label": "Thuê bao băng rộng cố định qua FTTH (Bộ TT&TT)",
+   "unit": "triệu thuê bao",
+   "freq": "M",
+   "kind": "stock",
+   "definition": "Thuê bao truy nhập Internet qua cáp quang tới nhà thuê bao (FTTH).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 3.632074,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2016",
+     "v": 6.409022,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2017",
+     "v": 9.385076,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2018",
+     "v": 11.89398,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2023-06",
+     "v": 21.342902,
+     "status": "actual",
+     "src": 41
+    },
+    {
+     "p": "2023-07",
+     "v": 21.443973,
+     "status": "actual",
+     "src": 40
+    },
+    {
+     "p": "2023-08",
+     "v": 21.588724,
+     "status": "actual",
+     "src": 39
+    },
+    {
+     "p": "2023-10",
+     "v": 21.824757,
+     "status": "actual",
+     "src": 36
+    }
+   ],
+   "notes": "Sau 10/2023 Bộ không còn công bố riêng FTTH trên cổng; chỉ công bố tỷ lệ hộ dùng cáp quang."
+  },
+  {
+   "key": "mic_xdsl_subs",
+   "label": "Thuê bao băng rộng cố định qua xDSL (Bộ TT&TT)",
+   "unit": "triệu thuê bao",
+   "freq": "M",
+   "kind": "stock",
+   "definition": "Thuê bao truy nhập Internet qua xDSL.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 3.36995,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2016",
+     "v": 1.774487,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2017",
+     "v": 0.821627,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2018",
+     "v": 0.259261,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2023-06",
+     "v": 0.044724,
+     "status": "actual",
+     "src": 41
+    },
+    {
+     "p": "2023-07",
+     "v": 0.043701,
+     "status": "actual",
+     "src": 40
+    },
+    {
+     "p": "2023-08",
+     "v": 0.043997,
+     "status": "actual",
+     "src": 39
+    },
+    {
+     "p": "2023-10",
+     "v": 0.043551,
+     "status": "actual",
+     "src": 36
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "mic_smartphone_subs",
+   "label": "Thuê bao di động sử dụng smartphone (Bộ TT&TT/Bộ KH&CN)",
+   "unit": "triệu thuê bao",
+   "freq": "event",
+   "kind": "stock",
+   "definition": "Thuê bao di động dùng điện thoại thông minh.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2023",
+     "v": 100.1,
+     "status": "estimate",
+     "src": 35
+    },
+    {
+     "p": "2023-09",
+     "v": 100.6,
+     "status": "estimate",
+     "src": 37
+    },
+    {
+     "p": "2025-06",
+     "v": 105.13,
+     "status": "estimate",
+     "src": 58
+    }
+   ],
+   "notes": "Báo cáo Đại hội Đảng bộ Cục Viễn thông (VnEconomy 13/6/2025) nêu 106,4 triệu — khác số 105,13 cùng thời điểm."
+  },
+  {
+   "key": "mst_ftth_household_pct_highlight",
+   "label": "Tỷ lệ hộ gia đình sử dụng cáp quang (bảng 'Số liệu nổi bật' Bộ KH&CN)",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Hộ gia đình sử dụng Internet cáp quang / tổng số hộ.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2021",
+     "v": 67,
+     "status": "actual",
+     "src": 48
+    },
+    {
+     "p": "2022",
+     "v": 74.3,
+     "status": "actual",
+     "src": 48
+    },
+    {
+     "p": "2023",
+     "v": 80,
+     "status": "actual",
+     "src": 48
+    },
+    {
+     "p": "2024",
+     "v": 83,
+     "status": "actual",
+     "src": 48
+    },
+    {
+     "p": "2025",
+     "v": 87.4,
+     "status": "estimate",
+     "src": 48
+    }
+   ],
+   "notes": "Mẫu số 2025 = 28,14 triệu hộ (Bộ KH&CN)."
+  },
+  {
+   "key": "ftth_household_pct_other",
+   "label": "Tỷ lệ hộ gia đình sử dụng cáp quang (các công bố khác)",
+   "unit": "%",
+   "freq": "event",
+   "kind": "ratio",
+   "definition": "Như trên, theo các công bố tại thời điểm.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2022-12",
+     "v": 74.5,
+     "status": "estimate",
+     "src": 55
+    },
+    {
+     "p": "2023",
+     "v": 79.4,
+     "status": "estimate",
+     "src": 35
+    },
+    {
+     "p": "2023-09",
+     "v": 78.76,
+     "status": "estimate",
+     "src": 37
+    },
+    {
+     "p": "2023-10",
+     "v": 79.1,
+     "status": "actual",
+     "src": 36
+    },
+    {
+     "p": "2024",
+     "v": 82.9,
+     "status": "estimate",
+     "src": 3
+    },
+    {
+     "p": "2025-06",
+     "v": 85.1,
+     "status": "estimate",
+     "src": 58
+    },
+    {
+     "p": "2025",
+     "v": 87.6,
+     "status": "estimate",
+     "src": 62
+    },
+    {
+     "p": "2026-04",
+     "v": 85.8,
+     "status": "actual",
+     "src": 60
+    }
+   ],
+   "notes": "Lệch với bảng nổi bật (2023: 80 vs 79,4; 2024: 83 vs 82,9; 2025: 87,4 vs 87,6). 4/2026 = 85,8% thấp hơn mức 87,4% cuối 2025 — có thể do đổi mẫu số sau sáp nhập tỉnh/điều tra hộ 2024."
+  },
+  {
+   "key": "subs_5g_total",
+   "label": "Thuê bao 5G toàn quốc",
+   "unit": "triệu thuê bao",
+   "freq": "event",
+   "kind": "stock",
+   "definition": "Thuê bao sử dụng 5G (định nghĩa không công bố thống nhất).",
+   "scope": "Toàn quốc, sau thương mại hóa 5G 10/2024",
+   "points": [
+    {
+     "p": "2025-09",
+     "v": 14,
+     "status": "estimate",
+     "src": 46
+    },
+    {
+     "p": "2026-03",
+     "v": 22.4,
+     "status": "estimate",
+     "src": 61
+    },
+    {
+     "p": "2026-08",
+     "v": 27.2,
+     "status": "actual",
+     "src": 46
+    }
+   ],
+   "notes": "9/2025 = 'hơn 14 triệu' (cận dưới). 3/2026 nguồn báo chí không nêu cơ quan. Chưa có số cuối năm 2025 chính thức."
+  },
+  {
+   "key": "subs_5g_viettel",
+   "label": "Thuê bao 5G Viettel (công bố DN)",
+   "unit": "triệu thuê bao",
+   "freq": "event",
+   "kind": "stock",
+   "definition": "Theo công bố của Viettel.",
+   "scope": "Viettel",
+   "points": [
+    {
+     "p": "2025-01",
+     "v": 5.5,
+     "status": "actual",
+     "src": 63
+    },
+    {
+     "p": "2025-07",
+     "v": 6,
+     "status": "actual",
+     "src": 64
+    }
+   ],
+   "notes": "7/2025 = 'hơn 6 triệu' (cận dưới)."
+  },
+  {
+   "key": "subs_5g_vnpt",
+   "label": "Thuê bao 5G VNPT-VinaPhone (công bố DN)",
+   "unit": "triệu thuê bao",
+   "freq": "event",
+   "kind": "stock",
+   "definition": "Thuê bao 5G phát sinh cước.",
+   "scope": "VNPT",
+   "points": [
+    {
+     "p": "2025-03",
+     "v": 3,
+     "status": "actual",
+     "src": 63
+    },
+    {
+     "p": "2025-07",
+     "v": 3,
+     "status": "actual",
+     "src": 64
+    }
+   ],
+   "notes": "Đều là 'khoảng/hơn 3 triệu'; 7/2025 có ~5 triệu thuê bao có máy hỗ trợ 5G."
+  },
+  {
+   "key": "subs_5g_mobifone",
+   "label": "Thuê bao 5G MobiFone (công bố DN)",
+   "unit": "triệu thuê bao",
+   "freq": "event",
+   "kind": "stock",
+   "definition": "Người dùng dịch vụ 5G.",
+   "scope": "MobiFone",
+   "points": [
+    {
+     "p": "2025-07",
+     "v": 2.5,
+     "status": "actual",
+     "src": 64
+    }
+   ],
+   "notes": "'hơn 2,5 triệu'."
+  },
+  {
+   "key": "bts_5g_total",
+   "label": "Số trạm 5G toàn quốc",
+   "unit": "trạm",
+   "freq": "event",
+   "kind": "stock",
+   "definition": "Trạm thu phát sóng 5G đã phát sóng.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2025-05",
+     "v": 11591,
+     "status": "actual",
+     "src": 68
+    },
+    {
+     "p": "2025-07",
+     "v": 11000,
+     "status": "actual",
+     "src": 64
+    },
+    {
+     "p": "2025-10",
+     "v": 16737,
+     "status": "actual",
+     "src": 49
+    },
+    {
+     "p": "2025-12",
+     "v": 35304,
+     "status": "actual",
+     "src": 62
+    },
+    {
+     "p": "2026-03",
+     "v": 40000,
+     "status": "actual",
+     "src": 61
+    }
+   ],
+   "notes": "5/2025: 11.591 trạm ≈ 7,72% số trạm 4G; 7/2025 'khoảng 11.000' (3 nhà mạng); 10/2025 = 14% số trạm 4G; 12/2025: số 35.304 do Cục Tần số VTĐ nêu 1/2026 (kỳ tham chiếu là cuối 2025 theo ngữ cảnh 'nhiệm kỳ'); 3/2026 'vượt mốc 40.000' (Cục Viễn thông)."
+  },
+  {
+   "key": "bts_5g_viettel",
+   "label": "Số trạm 5G Viettel (công bố DN)",
+   "unit": "trạm",
+   "freq": "event",
+   "kind": "stock",
+   "definition": "Trạm 5G Viettel.",
+   "scope": "Viettel",
+   "points": [
+    {
+     "p": "2025-03",
+     "v": 6500,
+     "status": "actual",
+     "src": 63
+    },
+    {
+     "p": "2025-12",
+     "v": 30000,
+     "status": "actual",
+     "src": 51
+    }
+   ],
+   "notes": "3/2025 'hơn 6.500'."
+  },
+  {
+   "key": "bts_total",
+   "label": "Tổng số trạm thu phát sóng di động (BTS/NodeB/eNodeB/gNodeB)",
+   "unit": "trạm",
+   "freq": "event",
+   "kind": "stock",
+   "definition": "Tổng số trạm phát sóng di động mọi công nghệ.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2017",
+     "v": 227250,
+     "status": "actual",
+     "src": 32
+    },
+    {
+     "p": "2025-04",
+     "v": 318000,
+     "status": "actual",
+     "src": 59
+    }
+   ],
+   "notes": "4/2025: 'hơn 318.000 trạm cho khoảng 146.000 vị trí' (báo cáo Cục Viễn thông). Không có số trạm 4G tuyệt đối chính thức (chỉ tỷ lệ 5G/4G)."
+  },
+  {
+   "key": "coverage_5g_pct",
+   "label": "Tỷ lệ dân số được phủ sóng 5G",
+   "unit": "%",
+   "freq": "event",
+   "kind": "ratio",
+   "definition": "% dân số trong vùng phủ 5G.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2025-10",
+     "v": 39.52,
+     "status": "actual",
+     "src": 49
+    },
+    {
+     "p": "2025",
+     "v": 91.2,
+     "status": "estimate",
+     "src": 48
+    },
+    {
+     "p": "2026-03",
+     "v": 91.9,
+     "status": "actual",
+     "src": 61
+    }
+   ],
+   "notes": "Cục Tần số VTĐ (1/2026) nêu 0,93% (2023) → 90,2% (2025) — lệch 1 điểm % với bảng Bộ KH&CN 91,2%."
+  },
+  {
+   "key": "mbb_traffic_gb_per_sub_month",
+   "label": "Lưu lượng Internet băng rộng di động bình quân",
+   "unit": "GB/thuê bao/tháng",
+   "freq": "M",
+   "kind": "ratio",
+   "definition": "Lưu lượng Internet băng rộng di động / thuê bao / tháng.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2023-10",
+     "v": 12.93,
+     "status": "actual",
+     "src": 36
+    }
+   ],
+   "notes": "Chỉ một điểm công khai."
+  },
+  {
+   "key": "fbb_traffic_gb_per_sub_month",
+   "label": "Lưu lượng Internet băng rộng cố định bình quân",
+   "unit": "GB/thuê bao/tháng",
+   "freq": "M",
+   "kind": "ratio",
+   "definition": "Lưu lượng Internet băng rộng cố định / thuê bao / tháng.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2023-10",
+     "v": 433.78,
+     "status": "actual",
+     "src": 36
+    }
+   ],
+   "notes": "Chỉ một điểm công khai."
+  },
+  {
+   "key": "ms_mobile_subs_viettel",
+   "label": "Thị phần thuê bao di động – Viettel",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao dịch vụ di động mặt đất (Sách Trắng CNTT-TT, Bộ TT&TT).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2016",
+     "v": 46.7,
+     "status": "actual",
+     "src": 66
+    },
+    {
+     "p": "2018",
+     "v": 50.0,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2024",
+     "v": 56.2,
+     "status": "estimate",
+     "src": 65
+    }
+   ],
+   "notes": "2016 theo bài báo dẫn Sách Trắng 2017, ghi 'thị phần dịch vụ viễn thông di động' (không nói rõ theo thuê bao hay doanh thu). 2024 = báo cáo sơ kết 6 tháng 2024 của Bộ (p=2024 nhưng là thời điểm giữa năm)."
+  },
+  {
+   "key": "ms_mobile_subs_vnpt",
+   "label": "Thị phần thuê bao di động – VNPT (VinaPhone)",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao dịch vụ di động mặt đất (Sách Trắng CNTT-TT, Bộ TT&TT).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2016",
+     "v": 22.2,
+     "status": "actual",
+     "src": 66
+    },
+    {
+     "p": "2018",
+     "v": 24.54,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": "Xem ghi chú 2016 ở Viettel."
+  },
+  {
+   "key": "ms_mobile_subs_mobifone",
+   "label": "Thị phần thuê bao di động – MobiFone",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao dịch vụ di động mặt đất (Sách Trắng CNTT-TT, Bộ TT&TT).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2016",
+     "v": 26.1,
+     "status": "actual",
+     "src": 66
+    },
+    {
+     "p": "2018",
+     "v": 20.85,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_mobile_subs_vietnamobile",
+   "label": "Thị phần thuê bao di động – Vietnamobile",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao dịch vụ di động mặt đất (Sách Trắng CNTT-TT, Bộ TT&TT).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2016",
+     "v": 2.9,
+     "status": "actual",
+     "src": 66
+    }
+   ],
+   "notes": "2018 Sách Trắng gộp vào 'Khác (Vietnamobile, Indochina, Gtel) 4,61%'."
+  },
+  {
+   "key": "ms_mobile_subs_gtel",
+   "label": "Thị phần thuê bao di động – Gtel (Gmobile)",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao dịch vụ di động mặt đất (Sách Trắng CNTT-TT, Bộ TT&TT).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2016",
+     "v": 2.1,
+     "status": "actual",
+     "src": 66
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_mobile_subs_others",
+   "label": "Thị phần thuê bao di động – Khác (Vietnamobile, Indochina, Gtel)",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao dịch vụ di động mặt đất (Sách Trắng CNTT-TT, Bộ TT&TT).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018",
+     "v": 4.61,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_mbb_subs_viettel",
+   "label": "Thị phần thuê bao băng rộng di động – Viettel",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao băng rộng di động mặt đất (Sách Trắng 2019).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018",
+     "v": 50.16,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": "Nhãn Viettel bị mất trong lớp chữ của biểu đồ; 50,16% là phần còn lại khớp tổng 100%."
+  },
+  {
+   "key": "ms_mbb_subs_vnpt",
+   "label": "Thị phần thuê bao băng rộng di động – VNPT",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao băng rộng di động mặt đất (Sách Trắng 2019).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018",
+     "v": 22.93,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_mbb_subs_mobifone",
+   "label": "Thị phần thuê bao băng rộng di động – MobiFone",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao băng rộng di động mặt đất (Sách Trắng 2019).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018",
+     "v": 19.85,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_mbb_subs_vietnamobile",
+   "label": "Thị phần thuê bao băng rộng di động – Vietnamobile",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao băng rộng di động mặt đất (Sách Trắng 2019).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018",
+     "v": 6.61,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_mbb_subs_indochina",
+   "label": "Thị phần thuê bao băng rộng di động – Indochina Telecom",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao băng rộng di động mặt đất (Sách Trắng 2019).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018",
+     "v": 0.45,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_fbb_subs_vnpt",
+   "label": "Thị phần thuê bao băng rộng cố định – VNPT",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao băng rộng cố định mặt đất (Sách Trắng CNTT-TT).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2016",
+     "v": 46.1,
+     "status": "actual",
+     "src": 66
+    },
+    {
+     "p": "2018",
+     "v": 40.9,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_fbb_subs_viettel",
+   "label": "Thị phần thuê bao băng rộng cố định – Viettel",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao băng rộng cố định mặt đất (Sách Trắng CNTT-TT).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2016",
+     "v": 26.1,
+     "status": "actual",
+     "src": 66
+    },
+    {
+     "p": "2018",
+     "v": 37.3,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_fbb_subs_fpt",
+   "label": "Thị phần thuê bao băng rộng cố định – FPT Telecom",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao băng rộng cố định mặt đất (Sách Trắng CNTT-TT).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2016",
+     "v": 18.6,
+     "status": "actual",
+     "src": 66
+    },
+    {
+     "p": "2018",
+     "v": 14.85,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_fbb_subs_sctv",
+   "label": "Thị phần thuê bao băng rộng cố định – SCTV",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao băng rộng cố định mặt đất (Sách Trắng CNTT-TT).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2016",
+     "v": 5.7,
+     "status": "actual",
+     "src": 66
+    },
+    {
+     "p": "2018",
+     "v": 5.91,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_fbb_subs_others",
+   "label": "Thị phần thuê bao băng rộng cố định – Khác (CMC, SPT, NetNam…)",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần thuê bao băng rộng cố định mặt đất (Sách Trắng CNTT-TT).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2016",
+     "v": 3.5,
+     "status": "actual",
+     "src": 66
+    },
+    {
+     "p": "2018",
+     "v": 1.04,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_fbb_rev_vnpt",
+   "label": "Thị phần doanh thu băng rộng cố định – VNPT",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần doanh thu dịch vụ băng rộng cố định mặt đất (Sách Trắng 2019).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018",
+     "v": 46.07,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_fbb_rev_viettel",
+   "label": "Thị phần doanh thu băng rộng cố định – Viettel",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần doanh thu dịch vụ băng rộng cố định mặt đất (Sách Trắng 2019).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018",
+     "v": 34.66,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_fbb_rev_fpt",
+   "label": "Thị phần doanh thu băng rộng cố định – FPT",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần doanh thu dịch vụ băng rộng cố định mặt đất (Sách Trắng 2019).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018",
+     "v": 14.23,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "ms_fbb_rev_others",
+   "label": "Thị phần doanh thu băng rộng cố định – SCTV, SPT và khác",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần doanh thu dịch vụ băng rộng cố định mặt đất (Sách Trắng 2019).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018",
+     "v": 5.04,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": "Cộng của SCTV 1,75% + SPT 0,62% + Khác 2,67% như Sách Trắng ghi riêng từng mục."
+  },
+  {
+   "key": "ms_mobile_rev_viettel",
+   "label": "Thị phần doanh thu di động – Viettel",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần doanh thu dịch vụ viễn thông di động mặt đất (Sách Trắng 2019).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018",
+     "v": 55.58,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": "Nhãn MobiFone/Vietnamobile trong biểu đồ bị lỗi trích xuất (đều hiện 1,05%) nên không đưa MobiFone vào."
+  },
+  {
+   "key": "ms_mobile_rev_vnpt",
+   "label": "Thị phần doanh thu di động – VNPT",
+   "unit": "%",
+   "freq": "Y",
+   "kind": "ratio",
+   "definition": "Thị phần doanh thu dịch vụ viễn thông di động mặt đất (Sách Trắng 2019).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018",
+     "v": 20.24,
+     "status": "actual",
+     "src": 33
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "nso_population_avg",
+   "label": "Dân số trung bình (Cục Thống kê)",
+   "unit": "triệu người",
+   "freq": "Y",
+   "kind": "stock",
+   "definition": "Dân số trung bình năm, ước tính tại báo cáo KT-XH cuối năm.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 91.7,
+     "status": "estimate",
+     "src": 15
+    },
+    {
+     "p": "2016",
+     "v": 92.7,
+     "status": "estimate",
+     "src": 14
+    },
+    {
+     "p": "2017",
+     "v": 93.7,
+     "status": "estimate",
+     "src": 13
+    },
+    {
+     "p": "2018",
+     "v": 94.67,
+     "status": "estimate",
+     "src": 12
+    },
+    {
+     "p": "2019",
+     "v": 96.48,
+     "status": "estimate",
+     "src": 11
+    },
+    {
+     "p": "2020",
+     "v": 97.58,
+     "status": "estimate",
+     "src": 10
+    },
+    {
+     "p": "2021",
+     "v": 98.51,
+     "status": "estimate",
+     "src": 8
+    },
+    {
+     "p": "2022",
+     "v": 99.46,
+     "status": "estimate",
+     "src": 6
+    },
+    {
+     "p": "2023",
+     "v": 100.3,
+     "status": "estimate",
+     "src": 4
+    },
+    {
+     "p": "2024",
+     "v": 101.3,
+     "status": "estimate",
+     "src": 2
+    },
+    {
+     "p": "2025",
+     "v": 102.3,
+     "status": "estimate",
+     "src": 0
+    }
+   ],
+   "notes": "Gãy chuỗi 2018→2019: số 2019 dựa trên Tổng điều tra 1/4/2019 (+1,8 triệu so với ước tính 2018). Sách Trắng 2019 ghi dân số 31/12/2018 = 95,35 triệu."
+  },
+  {
+   "key": "households",
+   "label": "Số hộ dân cư",
+   "unit": "hộ",
+   "freq": "event",
+   "kind": "stock",
+   "definition": "Tổng số hộ dân cư.",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2018",
+     "v": 26084365,
+     "status": "actual",
+     "src": 33
+    },
+    {
+     "p": "2024-04-01",
+     "v": 28146939,
+     "status": "actual",
+     "src": 31
+    },
+    {
+     "p": "2025",
+     "v": 28140000,
+     "status": "estimate",
+     "src": 50
+    }
+   ],
+   "notes": "2018: Sách Trắng 2019 dẫn Tổng cục Thống kê. 2024: Điều tra dân số giữa kỳ 1/4/2024 (tăng gần 1,3 triệu hộ so với 2019). Bộ KH&CN dùng mẫu số 28,14 triệu hộ cho tỷ lệ cáp quang 2025."
+  },
+  {
+   "key": "itu_mobile_cellular_subs",
+   "label": "Thuê bao di động tế bào (ITU, qua World Bank)",
+   "unit": "thuê bao",
+   "freq": "Y",
+   "kind": "stock",
+   "definition": "ITU: thuê bao di động hoạt động trong 3 tháng gần nhất (chuẩn ITU).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 120324052,
+     "status": "actual",
+     "src": 52
+    },
+    {
+     "p": "2016",
+     "v": 120600235,
+     "status": "actual",
+     "src": 52
+    },
+    {
+     "p": "2017",
+     "v": 120016181,
+     "status": "actual",
+     "src": 52
+    },
+    {
+     "p": "2018",
+     "v": 140639140,
+     "status": "actual",
+     "src": 52
+    },
+    {
+     "p": "2019",
+     "v": 136230406,
+     "status": "actual",
+     "src": 52
+    },
+    {
+     "p": "2020",
+     "v": 138934626,
+     "status": "actual",
+     "src": 52
+    },
+    {
+     "p": "2021",
+     "v": 135349460,
+     "status": "actual",
+     "src": 52
+    },
+    {
+     "p": "2022",
+     "v": 137412198,
+     "status": "actual",
+     "src": 52
+    },
+    {
+     "p": "2023",
+     "v": 131452770,
+     "status": "actual",
+     "src": 52
+    },
+    {
+     "p": "2024",
+     "v": 128866823,
+     "status": "actual",
+     "src": 52
+    }
+   ],
+   "notes": "Chuẩn 3 tháng nên cao hơn số Bộ/Thống kê (chuẩn 1 tháng). 2015–2016 thấp hơn số Bộ (126,5/129,0) — ITU có thể dùng định nghĩa khác; 2017 trùng số Bộ."
+  },
+  {
+   "key": "itu_fbb_subs",
+   "label": "Thuê bao băng rộng cố định (ITU, qua World Bank)",
+   "unit": "thuê bao",
+   "freq": "Y",
+   "kind": "stock",
+   "definition": "ITU fixed broadband subscriptions (≥256 kbit/s).",
+   "scope": "Toàn quốc",
+   "points": [
+    {
+     "p": "2015",
+     "v": 7657619,
+     "status": "actual",
+     "src": 53
+    },
+    {
+     "p": "2016",
+     "v": 9098288,
+     "status": "actual",
+     "src": 53
+    },
+    {
+     "p": "2017",
+     "v": 11269936,
+     "status": "actual",
+     "src": 53
+    },
+    {
+     "p": "2018",
+     "v": 12994451,
+     "status": "actual",
+     "src": 53
+    },
+    {
+     "p": "2019",
+     "v": 14802380,
+     "status": "actual",
+     "src": 53
+    },
+    {
+     "p": "2020",
+     "v": 16699249,
+     "status": "actual",
+     "src": 53
+    },
+    {
+     "p": "2021",
+     "v": 19328191,
+     "status": "actual",
+     "src": 53
+    },
+    {
+     "p": "2022",
+     "v": 21299900,
+     "status": "actual",
+     "src": 53
+    },
+    {
+     "p": "2023",
+     "v": 22760547,
+     "status": "actual",
+     "src": 53
+    },
+    {
+     "p": "2024",
+     "v": 23945452,
+     "status": "actual",
+     "src": 53
+    }
+   ],
+   "notes": "2015–2018 trùng hoàn toàn số Bộ (Sách Trắng); 2019–2024 gần với số Cục Thống kê."
+  }
+ ],
+ "sources": [
+  {
+   "id": 0,
+   "name": "Cục Thống kê – Báo cáo KT-XH quý IV và năm 2025",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/01/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2025/",
+   "published": "2026-01-05",
+   "quote": "Doanh thu hoạt động viễn thông quý IV/2025 ước đạt 96,2 nghìn tỷ đồng; năm 2025 ước đạt 380,0 nghìn tỷ đồng"
+  },
+  {
+   "id": 1,
+   "name": "Cục Thống kê – Thông cáo báo chí KT-XH quý IV và năm 2025",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/01/thong-cao-bao-chi-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2025/",
+   "published": "2026-01-05",
+   "quote": "Tổng số thuê bao điện thoại cuối năm 2025 ước đạt 123,6 triệu; di động 121,3 triệu; băng rộng cố định 25,1 triệu"
+  },
+  {
+   "id": 2,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý IV và năm 2024",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2025/01/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2024/",
+   "published": "2025-01",
+   "quote": "Doanh thu hoạt động viễn thông quý IV/2024 ước đạt 89,3 nghìn tỷ đồng; năm 2024 ước đạt 355,4 nghìn tỷ đồng"
+  },
+  {
+   "id": 3,
+   "name": "Tổng cục Thống kê – Thông cáo báo chí KT-XH quý IV và năm 2024",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2025/01/thong-cao-bao-chi-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2024/",
+   "published": "2025-01",
+   "quote": "thuê bao điện thoại cuối năm 2024 ước đạt 120,7 triệu… di động là 118,4 triệu, giảm 4,6%"
+  },
+  {
+   "id": 4,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý IV và năm 2023",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2023/12/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2023/",
+   "published": "2023-12",
+   "quote": "Doanh thu hoạt động viễn thông quý IV/2023 ước đạt 84,8 nghìn tỷ đồng; năm 2023 ước đạt 338,5 nghìn tỷ đồng"
+  },
+  {
+   "id": 5,
+   "name": "Tổng cục Thống kê – Thông cáo báo chí KT-XH quý IV và năm 2023",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2023/12/thong-cao-bao-chi-ve-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2023/",
+   "published": "2023-12",
+   "quote": "tổng số thuê bao điện thoại ước đạt 126,6 triệu… di động là 124,2 triệu… băng rộng cố định ước đạt 22,7 triệu"
+  },
+  {
+   "id": 6,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý IV và năm 2022",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2022/12/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2022/",
+   "published": "2022-12",
+   "quote": "Doanh thu hoạt động viễn thông quý IV/2022 ước đạt 84,9 nghìn tỷ đồng; năm 2022 ước đạt 333,9 nghìn tỷ đồng"
+  },
+  {
+   "id": 7,
+   "name": "Tổng cục Thống kê – Thông cáo báo chí KT-XH quý IV và năm 2022",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2022/12/thong-cao-bao-chi-ve-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2022/",
+   "published": "2022-12",
+   "quote": "tổng số thuê bao điện thoại ước đạt 129,7 triệu… di động là 127,2 triệu… băng rộng cố định ước đạt 21 triệu"
+  },
+  {
+   "id": 8,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý IV và năm 2021",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2021/12/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2021/",
+   "published": "2021-12",
+   "quote": "Doanh thu hoạt động viễn thông quý IV/2021 ước đạt 82,9 nghìn tỷ đồng; năm 2021 đạt 314,8 nghìn tỷ đồng"
+  },
+  {
+   "id": 9,
+   "name": "Tổng cục Thống kê – Thông cáo báo chí KT-XH quý IV và năm 2021",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2021/12/thong-cao-bao-chi-ve-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2021/",
+   "published": "2021-12",
+   "quote": "tổng số thuê bao điện thoại ước đạt 130,3 triệu… di động đạt 127,2 triệu… băng rộng cố định ước đạt 19,3 triệu"
+  },
+  {
+   "id": 10,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý IV và năm 2020",
+   "url": "https://www.nso.gov.vn/?p=29651",
+   "published": "2020-12",
+   "quote": "Doanh thu hoạt động viễn thông quý IV/2020 ước tính đạt 102,8 nghìn tỷ đồng… cả năm 2020 ước tính đạt 381 nghìn tỷ đồng"
+  },
+  {
+   "id": 11,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý IV và năm 2019",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2019/12/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2019/",
+   "published": "2019-12-27",
+   "quote": "cả năm 2019 đạt 383,3 nghìn tỷ đồng… thuê bao di động đạt 129,5 triệu… băng rộng cố định đạt 14,8 triệu"
+  },
+  {
+   "id": 12,
+   "name": "GSO – Report on socio-economic situation Q4 and 2018 (English)",
+   "url": "https://www.nso.gov.vn/en/data-and-statistics/2019/05/report-social-and-economic-situations-in-the-fourth-quarter-and-the-year-of-2018/",
+   "published": "2018-12",
+   "quote": "Telecommunication turnover in Q4 2018 … 107.4 trillion VND … 2018 … 395.8 trillion VND; mobile 125.6 million"
+  },
+  {
+   "id": 13,
+   "name": "GSO – Report on socio-economic situation 2017 (English)",
+   "url": "https://www.nso.gov.vn/en/data-and-statistics/2019/10/report-social-and-economic-situations-in-2017/",
+   "published": "2017-12",
+   "quote": "Revenue from telecommunication in 2017 was estimated at 380 trillion VND; mobile subscribers reached 119.7 million"
+  },
+  {
+   "id": 14,
+   "name": "GSO – Socio-economic situation Q4 and whole year 2016 (English)",
+   "url": "https://www.nso.gov.vn/en/data-and-statistics/2020/01/report-social-and-economic-situations-in-2016/",
+   "published": "2016-12",
+   "quote": "In 2016, telecommunication revenue was estimated at 381.7 trillion VND, up 6.6% compared to 2015"
+  },
+  {
+   "id": 15,
+   "name": "GSO – Socio-economic situation Q4 and whole year 2015 (English)",
+   "url": "https://www.nso.gov.vn/en/data-and-statistics/2020/02/report-social-and-economic-situations-in-2015/",
+   "published": "2015-12",
+   "quote": "Revenue from telecommunications activities in 2015 was estimated at 335 trillion VND; mobile phone subscribers … 127 million"
+  },
+  {
+   "id": 16,
+   "name": "GSO – Which direction for telecommunications businesses when traditional telecommunications services saturated?",
+   "url": "https://www.nso.gov.vn/en/data-and-statistics/2021/05/which-direction-for-telecommunications-businesses-when-traditional-telecommunications-services-saturated/",
+   "published": "2021-05",
+   "quote": "2020 … telecommunications revenue has fell sharply by 13.6%, reaching only 315.2 trillion dongs"
+  },
+  {
+   "id": 17,
+   "name": "Cục Thống kê – Báo cáo KT-XH quý III và 9 tháng năm 2026",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/",
+   "published": "2026-10",
+   "quote": "Doanh thu viễn thông quý III/2026 … ước đạt 103,4 nghìn tỷ đồng; chín tháng … 308,3 nghìn tỷ đồng"
+  },
+  {
+   "id": 18,
+   "name": "Cục Thống kê – Báo cáo KT-XH quý II và 6 tháng đầu năm 2026",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/07/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-ii-va-sau-thang-dau-nam-2026/",
+   "published": "2026-07",
+   "quote": "Doanh thu hoạt động viễn thông quý II/2026 ước đạt 102,9 nghìn tỷ đồng; sáu tháng … 205,8 nghìn tỷ đồng"
+  },
+  {
+   "id": 19,
+   "name": "Cục Thống kê – Báo cáo KT-XH quý I năm 2026",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/04/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-i-nam-2026/",
+   "published": "2026-04",
+   "quote": "Doanh thu viễn thông quý I/2026 theo giá hiện hành ước đạt 102,8 nghìn tỷ đồng, tăng 6,3%"
+  },
+  {
+   "id": 20,
+   "name": "Cục Thống kê – Báo cáo KT-XH quý III và 9 tháng năm 2025",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2025/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2025/",
+   "published": "2025-10",
+   "quote": "Doanh thu hoạt động viễn thông quý III/2025 ước đạt 94,2 nghìn tỷ đồng; chín tháng … 284,0 nghìn tỷ đồng"
+  },
+  {
+   "id": 21,
+   "name": "Cục Thống kê – Báo cáo KT-XH quý II và 6 tháng đầu năm 2025",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2025/07/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-ii-va-6-thang-dau-nam-2025/",
+   "published": "2025-07",
+   "quote": "Doanh thu hoạt động viễn thông quý II/2025 ước đạt 94,5 nghìn tỷ đồng; sáu tháng … 189,4 nghìn tỷ đồng"
+  },
+  {
+   "id": 22,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý I năm 2025",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2025/04/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-i-nam-2025/",
+   "published": "2025-04",
+   "quote": "Doanh thu viễn thông quý I/2025 theo giá hiện hành ước đạt 94,7 nghìn tỷ đồng, tăng 5,1%"
+  },
+  {
+   "id": 23,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý III và 9 tháng năm 2024",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2024/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2024/",
+   "published": "2024-10",
+   "quote": "Doanh thu hoạt động viễn thông quý III/2024 ước đạt 87,7 nghìn tỷ đồng; chín tháng … 265,9 nghìn tỷ đồng"
+  },
+  {
+   "id": 24,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý II và 6 tháng đầu năm 2024",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2024/06/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-ii-va-sau-thang-dau-nam-2024/",
+   "published": "2024-06",
+   "quote": "Doanh thu hoạt động viễn thông quý II/2024 ước đạt 89,6 nghìn tỷ đồng; sáu tháng … 179 nghìn tỷ đồng"
+  },
+  {
+   "id": 25,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý I năm 2024",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2024/03/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-i-nam-2024/",
+   "published": "2024-03",
+   "quote": "Hoạt động viễn thông quý I/2024 … doanh thu … ước đạt 89,1 nghìn tỷ đồng, tăng 3,4%"
+  },
+  {
+   "id": 26,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý III và 9 tháng năm 2023",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2023/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2023/",
+   "published": "2023-09",
+   "quote": "Doanh thu hoạt động viễn thông quý III/2023 ước đạt 82 nghìn tỷ đồng; 9 tháng … 254,3 nghìn tỷ đồng"
+  },
+  {
+   "id": 27,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý II và 6 tháng đầu năm 2023",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2023/06/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-ii-va-6-thang-dau-nam-2023/",
+   "published": "2023-06",
+   "quote": "Doanh thu hoạt động viễn thông quý II/2023 ước đạt 87,1 nghìn tỷ đồng; 6 tháng … 174 nghìn tỷ đồng"
+  },
+  {
+   "id": 28,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý III và 9 tháng năm 2022",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2022/09/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2022/",
+   "published": "2022-09",
+   "quote": "Doanh thu hoạt động viễn thông quý III/2022 ước đạt 79,9 nghìn tỷ đồng; 9 tháng … 248,5 nghìn tỷ đồng"
+  },
+  {
+   "id": 29,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý II và 6 tháng đầu năm 2022",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2022/06/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-ii-va-6-thang-dau-nam-2022/",
+   "published": "2022-06",
+   "quote": "Doanh thu hoạt động viễn thông quý II/2022 ước đạt 84,4 nghìn tỷ đồng; 6 tháng … 168,4 nghìn tỷ đồng"
+  },
+  {
+   "id": 30,
+   "name": "Tổng cục Thống kê – Báo cáo KT-XH quý I năm 2022",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2022/03/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-i-nam-2022/",
+   "published": "2022-03",
+   "quote": "Hoạt động viễn thông quý I năm 2022 … doanh thu ước đạt 83,8 nghìn tỷ đồng, tăng 5,1%"
+  },
+  {
+   "id": 31,
+   "name": "Tổng cục Thống kê – Thông cáo báo chí kết quả Điều tra dân số và nhà ở giữa kỳ 2024",
+   "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2025/01/thong-cao-bao-chi-ket-qua-dieu-tra-dan-so-va-nha-o-giua-ky-nam-2024/",
+   "published": "2025-01",
+   "quote": "Cả nước có 28.146.939 hộ dân cư, tăng gần 1,3 triệu hộ so với năm 2019"
+  },
+  {
+   "id": 32,
+   "name": "Bộ TT&TT – Sách Trắng CNTT-TT Việt Nam 2018 (số liệu 2015–2017), bản PDF trên trungtamwto.vn",
+   "url": "https://trungtamwto.vn/download/19425/sach-trang-cntt-va-tt-2018.pdf",
+   "published": "2018",
+   "quote": "Tổng số trạm di động BTS/Node B trên toàn quốc là 227.250 trạm… doanh thu dịch vụ viễn thông năm 2017… đạt 131.844 tỷ đồng"
+  },
+  {
+   "id": 33,
+   "name": "Bộ TT&TT – Sách Trắng CNTT-TT Việt Nam 2019 (số liệu 2015–2018), bản PDF trên trungtamwto.vn",
+   "url": "https://www.trungtamwto.vn/download/19426/sach-trang-cntt-va-tt-2019.pdf",
+   "published": "2019",
+   "quote": "Số thuê bao di động phát sinh lưu lượng … 136.088.885 (2018); Tổng doanh thu dịch vụ viễn thông 5.673,62 triệu USD"
+  },
+  {
+   "id": 34,
+   "name": "Bộ TT&TT (lưu trên mst.gov.vn) – Tình hình phát triển lĩnh vực viễn thông, internet năm 2015",
+   "url": "https://mst.gov.vn/tinh-hinh-phat-trien-linh-vuc-vien-thong-internet-nam-2015-197116098.htm",
+   "published": "2015",
+   "quote": "Doanh thu trong lĩnh vực viễn thông ước đạt 340.000 tỷ đồng"
+  },
+  {
+   "id": 35,
+   "name": "Bộ TT&TT (mst.gov.vn) – Số liệu phát triển lĩnh vực Viễn thông năm 2023",
+   "url": "https://mst.gov.vn/so-lieu-phat-trien-linh-vuc-vien-thong-nam-2023-197240110083214636.htm",
+   "published": "2024-01-10",
+   "quote": "Tổng doanh thu dịch vụ viễn thông ước đạt 139,26 nghìn tỷ đồng… thuê bao băng rộng di động 84,9 triệu"
+  },
+  {
+   "id": 36,
+   "name": "Bộ TT&TT (mst.gov.vn) – Số liệu phát triển lĩnh vực Viễn thông tháng 10/2023",
+   "url": "https://mst.gov.vn/so-lieu-phat-trien-linh-vuc-vien-thong-thang-10-2023-197231128112722394.htm",
+   "published": "2023-11-28",
+   "quote": "Tổng số thuê bao điện thoại di động có phát sinh lưu lượng 125,086,105; FTTH 21,824,757"
+  },
+  {
+   "id": 37,
+   "name": "Bộ TT&TT (mst.gov.vn) – Sự phát triển của lĩnh vực Viễn thông quý III/2023",
+   "url": "https://mst.gov.vn/su-phat-trien-cua-linh-vuc-vien-thong-quy-iii-2023-197231113111359211.htm",
+   "published": "2023-11-13",
+   "quote": "Thuê bao băng rộng di động 85,6 triệu; tỷ lệ hộ gia đình sử dụng cáp quang 78,76%"
+  },
+  {
+   "id": 38,
+   "name": "Bộ TT&TT (mst.gov.vn) – Tình hình phát triển thuê bao điện thoại di động tháng 8/2023",
+   "url": "https://mst.gov.vn/tinh-hinh-phat-trien-thue-bao-dien-thoai-di-dong-thang-8-2023-197231121130028257.htm",
+   "published": "2023-09-01",
+   "quote": "Tổng số thuê bao điện thoại di động có phát sinh lưu lượng 125,548,684"
+  },
+  {
+   "id": 39,
+   "name": "Bộ TT&TT (mst.gov.vn) – Tình hình phát triển thuê bao băng rộng cố định tháng 8/2023",
+   "url": "https://mst.gov.vn/tinh-hinh-phat-trien-thue-bao-bang-rong-co-dinh-thang-8-2023-197231121125808507.htm",
+   "published": "2023-09-01",
+   "quote": "Số thuê bao truy nhập Internet qua hệ thống cáp quang tới nhà thuê bao (FTTH) 21,588,724"
+  },
+  {
+   "id": 40,
+   "name": "Bộ TT&TT (mst.gov.vn) – Tình hình phát triển thuê bao băng rộng cố định tháng 7/2023",
+   "url": "https://mst.gov.vn/tinh-hinh-phat-trien-thue-bao-bang-rong-co-dinh-thang-7-2023-19723112113034944.htm",
+   "published": "2023-08",
+   "quote": "Số thuê bao truy nhập Internet qua hệ thống cáp quang tới nhà thuê bao (FTTH): 21,443,973"
+  },
+  {
+   "id": 41,
+   "name": "Bộ TT&TT (mst.gov.vn) – Tình hình phát triển thuê bao băng rộng cố định tháng 6/2023",
+   "url": "https://mst.gov.vn/tinh-hinh-phat-trien-thue-bao-bang-rong-co-dinh-thang-6-2023-197231121130519401.htm",
+   "published": "2023-07",
+   "quote": "Số thuê bao truy nhập Internet qua hệ thống cáp quang tới nhà thuê bao (FTTH): 21,342,902"
+  },
+  {
+   "id": 42,
+   "name": "Bộ TT&TT (mst.gov.vn) – Tình hình phát triển thuê bao điện thoại di động tháng 6/2019",
+   "url": "https://mst.gov.vn/tinh-hinh-phat-trien-thue-bao-dien-thoai-di-dong-thang-62019-197139413.htm",
+   "published": "2019-07",
+   "quote": "Tổng số thuê bao điện thoại di động có phát sinh lưu lượng: 133,781,662"
+  },
+  {
+   "id": 43,
+   "name": "Bộ TT&TT (mst.gov.vn) – Số liệu phát triển lĩnh vực Viễn thông tháng 4/2024",
+   "url": "https://mst.gov.vn/so-lieu-phat-trien-linh-vuc-vien-thong-thang-4-2024-197240527092244871.htm",
+   "published": "2024-05-27",
+   "quote": "Tháng 4-2024 | 23.51 | 91.54 | 121.5 (BR cố định | BR di động | di động có phát sinh lưu lượng)"
+  },
+  {
+   "id": 44,
+   "name": "Bộ TT&TT (mst.gov.vn) – Số liệu phát triển lĩnh vực Viễn thông tháng 5/2024",
+   "url": "https://mst.gov.vn/so-lieu-phat-trien-linh-vuc-vien-thong-thang-5-2024-197240621153129691.htm",
+   "published": "2024-06-21",
+   "quote": "5-2024: TB Internet BR cố định 23.62; TB Internet BR di động 92.04"
+  },
+  {
+   "id": 45,
+   "name": "Bộ KH&CN – Số liệu tăng trưởng lĩnh vực Viễn thông tháng 8/2026",
+   "url": "https://mst.gov.vn/so-lieu-tang-truong-linh-vuc-vien-thong-thang-8-2026-197260827135605184.htm",
+   "published": "2026-08-28",
+   "quote": "131,7 triệu thuê bao băng rộng di động; 24,79 triệu thuê bao băng rộng cố định (tháng 7/2026)"
+  },
+  {
+   "id": 46,
+   "name": "Bộ KH&CN – Viễn thông Việt Nam tăng tốc, từ phủ sóng đến hạ tầng số thế hệ mới",
+   "url": "https://mst.gov.vn/vien-thong-viet-nam-tang-toc-tu-phu-song-den-ha-tang-so-the-he-moi-197261005143854168.htm",
+   "published": "2026-10-05",
+   "quote": "Việt Nam có 27,2 triệu thuê bao 5G… tháng 9/2025 mới có hơn 14 triệu thuê bao 5G"
+  },
+  {
+   "id": 47,
+   "name": "Bộ KH&CN – Hạ tầng viễn thông tăng tốc, mở rộng không gian cho kinh tế và xã hội số",
+   "url": "https://mst.gov.vn/ha-tang-vien-thong-tang-toc-mo-rong-khong-gian-cho-kinh-te-va-xa-hoi-so-197260922095158154.htm",
+   "published": "2026-09-22",
+   "quote": "Thuê bao băng rộng cố định: 24,96 triệu"
+  },
+  {
+   "id": 48,
+   "name": "Bộ KH&CN – Số liệu nổi bật lĩnh vực bưu chính, viễn thông năm 2025",
+   "url": "https://mst.gov.vn/so-lieu-noi-bat-linh-vuc-buu-chinh-vien-thong-197260106120829422.htm",
+   "published": "2026-01-06",
+   "quote": "Phủ sóng 5G | % dân số | 91,2; Tỷ lệ hộ gia đình sử dụng cáp quang | % | 87,4"
+  },
+  {
+   "id": 49,
+   "name": "Bộ KH&CN – Bứt tốc chuyển đổi số quốc gia… hạ tầng 5G mở rộng chưa từng có",
+   "url": "https://mst.gov.vn/but-toc-chuyen-doi-so-quoc-gia-doanh-nghiep-cong-nghe-so-tang-truong-manh-ha-tang-5g-mo-rong-chua-tung-co-197251115181734895.htm",
+   "published": "2025-11-15",
+   "quote": "cả nước đã có 16.737 trạm 5G, tương đương 14% số trạm 4G, phủ sóng 39,52% dân số"
+  },
+  {
+   "id": 50,
+   "name": "Bộ KH&CN – Hạ tầng số quốc gia bứt phá mạnh mẽ…",
+   "url": "https://mst.gov.vn/ha-tang-so-quoc-gia-but-pha-manh-me-tao-nen-tang-cho-chuyen-doi-so-toan-dien-197251118180215903.htm",
+   "published": "2025-11-19",
+   "quote": "Tỷ lệ hộ gia đình sử dụng cáp quang đạt 87,4% trên tổng số 28,14 triệu hộ"
+  },
+  {
+   "id": 51,
+   "name": "MST (English) – One year of 5G commercialisation",
+   "url": "https://english.mst.gov.vn/one-year-of-5g-commercialisation-197260219195923493.htm",
+   "published": "2026-02-18",
+   "quote": "Viettel had deployed 30,000 5G stations by the end of 2025"
+  },
+  {
+   "id": 52,
+   "name": "World Bank API (ITU data) – IT.CEL.SETS Mobile cellular subscriptions, Viet Nam",
+   "url": "https://api.worldbank.org/v2/country/VNM/indicator/IT.CEL.SETS?format=json&date=2015:2025",
+   "published": "2026-11-11",
+   "quote": "2024: 128866823; 2018: 140639140 (ITU mobile cellular subscriptions)"
+  },
+  {
+   "id": 53,
+   "name": "World Bank API (ITU data) – IT.NET.BBND Fixed broadband subscriptions, Viet Nam",
+   "url": "https://api.worldbank.org/v2/country/VNM/indicator/IT.NET.BBND?format=json&date=2015:2025",
+   "published": "2026-11-11",
+   "quote": "2024: 23945452; 2023: 22760547 (ITU fixed broadband subscriptions)"
+  },
+  {
+   "id": 54,
+   "name": "SGGP – Doanh thu toàn ngành TT-TT năm 2024 tăng 13,2% (hội nghị tổng kết Bộ TT&TT)",
+   "url": "https://www.sggp.org.vn/doanh-thu-toan-nganh-tt-tt-nam-2024-tang-132-post775390.html",
+   "published": "2024-12-29",
+   "quote": "tổng doanh thu dịch vụ viễn thông ước đạt 147.000 tỷ đồng, tăng 3,49% so với năm 2023"
+  },
+  {
+   "id": 55,
+   "name": "SGGP – Doanh thu dịch vụ viễn thông năm 2022 ước đạt 138.000 tỷ đồng (Bộ TT&TT)",
+   "url": "https://www.sggp.org.vn/doanh-thu-dich-vu-vien-thong-nam-2022-uoc-dat-138000-ty-dong-post673792.html",
+   "published": "2022-12-29",
+   "quote": "ước tính doanh thu dịch vụ viễn thông đạt 138.000 tỷ đồng, tăng 1,6% so với năm 2021"
+  },
+  {
+   "id": 56,
+   "name": "An ninh Thủ đô – Năm 2020: Doanh thu dịch vụ viễn thông ước đạt hơn 130 nghìn tỷ đồng (Bộ TT&TT)",
+   "url": "https://anninhthudo.vn/nam-2020-doanh-thu-dich-vu-vien-thong-uoc-dat-hon-130-nghin-ty-dong-post455153.antd",
+   "published": "2021-01-08",
+   "quote": "doanh thu dịch vụ viễn thông năm 2020 ước đạt hơn 130 nghìn tỷ đồng… chỉ tăng 0,3% so với năm 2019"
+  },
+  {
+   "id": 57,
+   "name": "VietNamNet – Doanh thu dịch vụ di động giảm nhẹ, doanh thu cố định tăng cao (số liệu Bộ TT&TT tháng 6/2020)",
+   "url": "https://vietnamnet.vn/vien-thong/doanh-thu-dich-vu-di-dong-giam-nhe-doanh-thu-co-dinh-tang-cao-i260975.html",
+   "published": "2020-08-10",
+   "quote": "băng rộng cố định khoảng 15,86 triệu… băng rộng di động 65,67 triệu (tháng 6/2020)"
+  },
+  {
+   "id": 58,
+   "name": "VnEconomy – Doanh thu ngành viễn thông ước đạt hơn 70 nghìn tỷ đồng trong nửa đầu năm 2025 (Bộ KH&CN)",
+   "url": "https://vneconomy.vn/doanh-thu-nganh-vien-thong-uoc-dat-hon-70-nghin-ty-dong-trong-nua-dau-nam-2025.htm",
+   "published": "2025-07-16",
+   "quote": "doanh thu dịch vụ viễn thông … 70.422 tỷ đồng; băng rộng di động gần 104,74 triệu; cố định 24,43 triệu"
+  },
+  {
+   "id": 59,
+   "name": "VnEconomy – Băng rộng di động 3G, 4G, 5G đã phủ sóng hơn 99,8% dân số (báo cáo Cục Viễn thông)",
+   "url": "https://vneconomy.vn/bang-rong-di-dong-3g-4g-5g-da-phu-song-hon-99-8-dan-so.htm",
+   "published": "2025-06-13",
+   "quote": "các doanh nghiệp đã triển khai hơn 318.000 trạm thu phát sóng cho khoảng 146.000 vị trí"
+  },
+  {
+   "id": 60,
+   "name": "VnEconomy – Doanh thu công nghiệp công nghệ số tháng 4/2026… (họp báo Bộ KH&CN 29/4/2026)",
+   "url": "https://vneconomy.vn/doanh-thu-cong-nghiep-cong-nghe-so-thang-42026-uoc-dat-622402-ty.htm",
+   "published": "2026-04-29",
+   "quote": "Việt Nam hiện có 110,5 triệu thuê bao Internet băng rộng di động; cáp quang 85,8%"
+  },
+  {
+   "id": 61,
+   "name": "VnEconomy TechConnect – Phủ sóng 5G Việt Nam đạt gần 92%…",
+   "url": "https://vneconomy.vn/techconnect/phu-song-5g-viet-nam-dat-gan-92-nha-mang-doi-mat-bai-toan-toi-uu-hoa-loi-nhuan.htm",
+   "published": "2026-04-23",
+   "quote": "Đến cuối tháng 3/2026, tỷ lệ phủ sóng 5G đạt 91,9% dân số, với hơn 22,4 triệu thuê bao"
+  },
+  {
+   "id": 62,
+   "name": "VnEconomy – Viễn thông Việt Nam đứng trước nguy cơ 'già đi'… (phát biểu Cục trưởng Cục Tần số VTĐ)",
+   "url": "https://vneconomy.vn/vien-thong-viet-nam-dung-truoc-nguy-co-gia-di-rat-nhanh-neu-khong-quyet-liet-doi-moi.htm",
+   "published": "2026-01-12",
+   "quote": "từ 0,93% năm 2023 lên 90,2% (2025)… số trạm 5G từ 184 tăng lên 35.304 trạm"
+  },
+  {
+   "id": 63,
+   "name": "VnEconomy – Tăng tốc phủ sóng 5G toàn quốc trong năm 2025",
+   "url": "https://vneconomy.vn/tang-toc-phu-song-5g-toan-quoc-trong-nam-2025.htm",
+   "published": "2025-03-24",
+   "quote": "Viettel … hơn 6.500 trạm BTS 5G; thuê bao 5G 5,5 triệu (cuối tháng 1/2025)"
+  },
+  {
+   "id": 64,
+   "name": "Báo Đầu tư – Tăng tốc thương mại hóa, phổ cập 5G",
+   "url": "https://baodautu.vn/tang-toc-thuong-mai-hoa-pho-cap-5g-d324160.html",
+   "published": "2025-07-08",
+   "quote": "khoảng 11.000 trạm 5G … tương đương 7,7% số trạm 4G hiện có"
+  },
+  {
+   "id": 65,
+   "name": "VnEconomy – Doanh thu Viettel 6 tháng đầu năm hơn gấp đôi các nhà mạng khác cộng lại (báo cáo Bộ TT&TT)",
+   "url": "https://vneconomy.vn/doanh-thu-viettel-6-thang-dau-nam-hon-gap-doi-cac-nha-mang-khac-cong-lai.htm",
+   "published": "2024-07-29",
+   "quote": "Viettel duy trì vị trí số một với 56,2% thị phần thuê bao di động"
+  },
+  {
+   "id": 66,
+   "name": "VietNamNet – Viettel, VNPT, MobiFone chiếm tới 95% thị phần dịch vụ viễn thông di động (dẫn Sách Trắng 2017)",
+   "url": "https://vietnamnet.vn/viettel-vnpt-mobifone-chiem-toi-95-thi-phan-dich-vu-vien-thong-di-dong-i359897.html",
+   "published": "2017",
+   "quote": "Viettel chiếm 46,7% trong năm 2016… VNPT chiếm 22,2% thị phần"
+  },
+  {
+   "id": 67,
+   "name": "VnEconomy – Doanh thu viễn thông giảm mạnh, điện thoại cố định chỉ còn cầm chừng (dẫn Tổng cục Thống kê)",
+   "url": "https://vneconomy.vn/doanh-thu-vien-thong-giam-manh-dien-thoai-co-dinh-chi-con-cam-chung.htm",
+   "published": "2021-05-24",
+   "quote": "cuối năm 2020 … thuê bao di động là 123,6 triệu … băng rộng 16,7 triệu; doanh thu 315.200 tỉ đồng"
+  },
+  {
+   "id": 68,
+   "name": "Báo Mới (Hà Nội Mới) – Lắp 11.591 trạm BTS 5G, gần bằng 8% số trạm 4G",
+   "url": "https://baomoi.com/lap-11-591-tram-bts-5g-gan-bang-8-so-tram-4g-c52261382.epi",
+   "published": "2025-05",
+   "quote": "Lắp 11.591 trạm BTS 5G, gần bằng 8% số trạm 4G"
+  }
+ ],
+ "gaps": [
+  "Không lấy được Sách Trắng CNTT-TT 2020–2024 (PDF >10MB, WebFetch từ chối; không tải trực tiếp vì cần xin phép tải file) → thiếu số liệu năm Bộ TT&TT 2019–2022 cho thuê bao di động, băng rộng di động, FTTH và thị phần 2019–2023.",
+  "Doanh thu dịch vụ viễn thông (khái niệm hẹp của Bộ) năm 2018, 2019, 2021 bằng VND và năm 2025 cả năm: chưa tìm được công bố chính thức (chỉ có 6T/2025 = 70.422 tỷ). Số 2019 'tổng doanh thu viễn thông 469,7 nghìn tỷ' chỉ thấy qua tiêu đề Infonet, không mở được nguồn gốc nên không đưa vào.",
+  "Số liệu tháng của Bộ KH&CN/Cục Viễn thông 2024-06 → 2026-06 hầu như không còn đăng dạng bảng trên mst.gov.vn (chỉ có file Excel đính kèm cho 1/2024, 2/2024, 3/2024 — không tải); data.mst.gov.vn và vnta.gov.vn lỗi chứng chỉ SSL.",
+  "Thuê bao 4G riêng và thuê bao 5G cuối năm 2025 (toàn quốc): không có số chính thức; chỉ có điểm 9/2025 (>14 triệu), 3/2026 (22,4 triệu), 8/2026 (27,2 triệu).",
+  "Số trạm 4G tuyệt đối và tổng BTS theo năm 2018–2024: không tìm được (chỉ 2017 và 4/2025).",
+  "ARPU chính thức (di động/cố định): không có cơ quan nhà nước nào công bố; không đưa số ước tính của công ty nghiên cứu.",
+  "Tổng lưu lượng dữ liệu di động (PB) và chuỗi GB/thuê bao/tháng: chỉ có 1 điểm 10/2023.",
+  "Thị phần thuê bao di động theo nhà mạng 2019–2025 (trừ Viettel 56,2% giữa 2024) và thị phần băng rộng cố định sau 2018: không tìm được công bố chính thức dạng số.",
+  "Doanh thu chia thoại/SMS vs dữ liệu: không có công bố chính thức; chỉ có chia di động/cố định 2015–2018 (USD) và một điểm tháng 6/2020 (di động 7,39 nghìn tỷ, cố định 2,87 nghìn tỷ/tháng, VietNamNet dẫn Bộ TT&TT — không đưa thành series).",
+  "Thuê bao cuối năm 2016 và 2020 trong báo cáo KT-XH của Thống kê: báo cáo năm không có câu thuê bao (2020 chỉ có trong bài phân tích 5/2021).",
+  "Niên giám thống kê quốc gia 2024 (PDF >10MB) không đọc được → chưa có chuỗi số hộ hằng năm của Thống kê.",
+  "Doanh thu Thống kê Q1/2023 và các quý 2015–2021 (trừ Q4) chưa lấy."
+ ],
+ "consistency": [
+  "Hai khái niệm doanh thu khác hẳn quy mô: Cục Thống kê 'doanh thu hoạt động viễn thông' (~315–380 nghìn tỷ, gồm cả bán thiết bị/dịch vụ khác của DN viễn thông) vs Bộ TT&TT/KH&CN 'doanh thu dịch vụ viễn thông' (~130–147 nghìn tỷ). Bộ TT&TT 2015 còn dùng 'doanh thu lĩnh vực viễn thông' 340 nghìn tỷ. Không trộn.",
+  "Số năm của Thống kê là ước tính lần đầu; tăng trưởng năm sau tính trên số đã điều chỉnh → chuỗi gãy (2016 381,7 → 2017 380 nhưng ghi +7,3%; 2020 381 → 2021 314,8 nhưng ghi −0,1%). Bài phân tích GSO 5/2021 điều chỉnh 2020 xuống 315,2 nghìn tỷ (−13,6%).",
+  "Định nghĩa thuê bao di động: Bộ/Thống kê dùng phát sinh lưu lượng trong 01 tháng; ITU dùng 03 tháng (2018: 136,09 vs 140,64 triệu; MBB 52,82 vs 68,69 triệu).",
+  "Gãy chuỗi thuê bao di động do chính sách: NĐ 49/2017/NĐ-CP + chiến dịch SIM rác (2017–2018, thuê bao giảm còn 120 triệu năm 2017 rồi tăng lại 136 triệu 2018); xử lý SIM rác 2019; chuẩn hóa thông tin thuê bao 2023–2024; tắt sóng 2G-only 16/10/2024 (Thống kê: di động 2024 −4,6%); MST ghi tắt 2G toàn quốc 16/9/2026.",
+  "Thống kê ghi thuê bao di động 2021 và 2022 cùng 127,2 triệu nhưng 2022 tăng 3,7% → số 2021 đã được điều chỉnh xuống.",
+  "Băng rộng di động (Bộ KH&CN): 110,5 triệu (4/2026) → 131,7 triệu (7/2026), +19% trong 3 tháng, nghi đổi phương pháp; 2023 cả năm 84,9 triệu vs 1/2024 89,77 triệu.",
+  "Tỷ lệ hộ dùng cáp quang: nhiều số khác nhau cho cùng kỳ (2023: 79,4/80; 2024: 82,9/83; 2025: 87,4/87,6) và 4/2026 = 85,8% thấp hơn cuối 2025.",
+  "Phủ sóng 5G 2025: 91,2% (Bộ KH&CN) vs 90,2% (Cục Tần số VTĐ).",
+  "Băng rộng cố định 2015: Thống kê công bố đầu 10,5 triệu 'Broadband Internet' vs Bộ/ITU 7,66 triệu; GSO 2021 tự điều chỉnh còn 7,7 triệu.",
+  "Thị phần 2016 lấy qua bài báo dẫn Sách Trắng 2017 ('thị phần dịch vụ viễn thông di động' – không rõ thuê bao hay doanh thu); thị phần 2018 trích từ lớp chữ biểu đồ trong PDF Sách Trắng 2019 (một số nhãn bị lỗi).",
+  "Dân số trung bình gãy chuỗi 2019 do rebase theo Tổng điều tra 1/4/2019."
+ ]
+}
