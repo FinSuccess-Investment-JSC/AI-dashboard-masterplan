@@ -4709,6 +4709,196 @@
    ]
   },
   {
+   "id": "telecom.industry-financials",
+   "tier": "C",
+   "title": "Viễn thông · Bức tranh ngành › 07 Tài chính ngành: BCTC 11 doanh nghiệp niêm yết theo mô hình kinh doanh (FOX, CTR, VGI…)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Vien-thong/index.html",
+    "file": "data/telecom-financials.js",
+    "blocks": [
+     "vt-fin-pnl",
+     "vt-fin-season",
+     "vt-fin-breadth",
+     "vt-fin-margin",
+     "vt-fin-cost",
+     "vt-fin-capex",
+     "vt-fin-intensity",
+     "vt-fin-cip",
+     "vt-fin-funding",
+     "vt-fin-recv",
+     "vt-fin-dso",
+     "vt-fin-conversion",
+     "vt-fin-debt",
+     "vt-fin-leverage",
+     "vt-fin-interest",
+     "vt-fin-fcf",
+     "vt-fin-levdist",
+     "vt-fin-returns",
+     "vt-fin-dupont",
+     "vt-fin-roic-cycle",
+     "vt-fin-map",
+     "vt-fin-pool",
+     "vt-ov-listed"
+    ]
+   },
+   "how": "python scripts/fetch_telecom_financials.py && python scripts/build_telecom_financials.py (chạy trong refresh-data.yml); tổng hợp ở Vien-thong/app/industry-fin.js, giao diện Vien-thong/app/telecom-finance.js",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Mã lỗi tải giữ bản trước, ghi vào stale",
+    "Universe và nhóm mô hình ở scripts/telecom_fin_items.py; không có quan hệ mẹ − con trong universe (FPT không thuộc universe)"
+   ]
+  },
+  {
+   "id": "telecom.benchmarks",
+   "tier": "C",
+   "title": "Viễn thông · so sánh ASEAN: thuê bao di động, băng rộng cố định trên 100 dân, GDP bình quân đầu người",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     1
+    ],
+    "at": "07:00"
+   },
+   "publication": "ITU/World Bank cập nhật năm (thường giữa năm sau)",
+   "source": {
+    "name": "World Bank WDI (số liệu ITU)",
+    "url": "https://data.worldbank.org/indicator/IT.NET.BBND.P2"
+   },
+   "where": {
+    "page": "Vien-thong/index.html",
+    "file": "data/telecom-benchmarks.js",
+    "blocks": [
+     "vt-gr-bench",
+     "vt-fx-asean",
+     "vt-fx-asean-t"
+    ]
+   },
+   "how": "python scripts/fetch_telecom_benchmarks.py && python scripts/build_telecom_industry.py",
+   "gates": [
+    "Năm thiếu để trống, không nội suy",
+    "Chỉ tiêu tải lỗi giữ bản trước"
+   ]
+  },
+  {
+   "id": "telecom.industry-manual",
+   "tier": "C",
+   "title": "Viễn thông · số liệu ngành nhập tay có nguồn: thuê bao, doanh thu, 5G, thị phần, CTR, tần số, chính sách, giá cước, sự kiện",
+   "schedule": {
+    "type": "monthly",
+    "days": [
+     10,
+     15
+    ],
+    "at": "07:00"
+   },
+   "publication": "Bộ KH&CN công bố số liệu viễn thông theo quý/năm; CTR công bố KQKD tháng; tần số, chính sách theo sự kiện",
+   "source": {
+    "name": "Bộ KH&CN (Cục Viễn thông), Cục Thống kê, công bố thông tin doanh nghiệp, báo chí chuyên ngành",
+    "url": "https://mst.gov.vn/so-lieu-thong-ke/buu-chinh-vien-thong.htm"
+   },
+   "where": {
+    "page": "Vien-thong/index.html",
+    "file": "data/telecom-industry.js",
+    "blocks": [
+     "vt-5g-capex",
+     "vt-5g-ops",
+     "vt-5g-share",
+     "vt-5g-spectrum",
+     "vt-5g-subs",
+     "vt-cp-hhi",
+     "vt-cp-mob",
+     "vt-cp-profit",
+     "vt-cp-rev",
+     "vt-cp-subrev",
+     "vt-cp-vgi",
+     "vt-data-arpu",
+     "vt-data-gb",
+     "vt-data-index",
+     "vt-data-prices",
+     "vt-data-share",
+     "vt-data-users-rev",
+     "vt-fx-fox",
+     "vt-fx-hh",
+     "vt-fx-hhpct",
+     "vt-fx-prices",
+     "vt-fx-share",
+     "vt-fx-subs",
+     "vt-fx-tech",
+     "vt-gr-index",
+     "vt-gr-netadd",
+     "vt-gr-pen",
+     "vt-gr-revdef",
+     "vt-gr-revmix",
+     "vt-gr-yoy",
+     "vt-ov-chain",
+     "vt-ov-models",
+     "vt-pol-docs",
+     "vt-pol-prices",
+     "vt-pol-roadmap",
+     "vt-pol-spectrum",
+     "vt-src-datasets",
+     "vt-src-list",
+     "vt-tw-bridge",
+     "vt-tw-cotenant",
+     "vt-tw-facts",
+     "vt-tw-margin",
+     "vt-tw-owners",
+     "vt-tw-seg",
+     "vt-tw-tenancy",
+     "vt-tw-towers",
+     "vt-tw-viettel",
+     "vt-hot-0",
+     "vt-hot-1",
+     "vt-hot-2",
+     "vt-hot-3",
+     "vt-hot-4",
+     "vt-hot-5",
+     "vt-hot-6",
+     "vt-hot-7",
+     "vt-hot-8",
+     "vt-hot-9"
+    ]
+   },
+   "how": "Cập nhật data/telecom/{industry,companies,policy}.json (mỗi điểm có nguồn, URL, ngày công bố, trạng thái) rồi python scripts/build_telecom_industry.py",
+   "gates": [
+    "Mỗi điểm số có nguồn đã mở được, kỳ dữ liệu, đơn vị, trạng thái actual/estimate",
+    "Thuê bao, số trạm là số dư cuối kỳ, không cộng dồn",
+    "Kế hoạch, mục tiêu không đưa vào chuỗi thực tế",
+    "Không nội suy, không điền 0 cho số thiếu"
+   ]
+  },
+  {
    "id": "realestate.kcn-broker",
    "tier": "C",
    "title": "Chỉ số KCN theo báo cáo ngành CTCK: ký mới, giá thuê, đất cao su chuyển KCN, FDI theo quốc gia",
