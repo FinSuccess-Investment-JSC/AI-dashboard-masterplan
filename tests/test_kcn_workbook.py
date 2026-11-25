@@ -62,18 +62,23 @@ class KcnWorkbookData(unittest.TestCase):
         self.assertIsNone(next(m for m in self.d['market'] if m['period'] == '2026Q3' and m['region'] == 'North')['abs_ha'])
 
     def test_workspace_has_no_hardcoded_market_numbers(self):
-        js = (ROOT / 'Bat-dong-san/app/kcn-workspace.js').read_text(encoding='utf-8')
+        js = (ROOT / 'Bat-dong-san-KCN/app/kcn-workspace.js').read_text(encoding='utf-8')
         for n in ('25455', '35800', '9230', '4474', '613', '13,4'):
             self.assertNotRegex(js, r'(?<![\d.])' + re.escape(n) + r'(?![\d])', n)
 
     def test_page_wiring(self):
-        html = (ROOT / 'Bat-dong-san/index.html').read_text(encoding='utf-8')
+        # 25/11/2026: KCN tách thành trang riêng Bat-dong-san-KCN (workspace ở tab Bức tranh ngành #mt2).
+        html = (ROOT / 'Bat-dong-san-KCN/index.html').read_text(encoding='utf-8')
         for f in ('../data/kcn-market.js', 'app/kcn-insights.js', 'app/kcn-workspace.js', 'app/kcn-workspace.css'):
             self.assertIn(f, html)
-        self.assertIn('data-tab="mt13"', html)
-        self.assertNotIn('data-block-id="bds-12"', html)
-        self.assertNotIn('data-block-id="bds-18"', html)
-        self.assertIn("['mt13','Khu công nghiệp']", (ROOT / 'Bat-dong-san/app/research-layout.js').read_text(encoding='utf-8'))
+        self.assertIn('id="kcn-workspace"', html)
+        self.assertIn('data-subsector="kcn"', html)
+        self.assertIn('.majorpane[data-tab="mt2"]', (ROOT / 'Bat-dong-san-KCN/app/kcn-workspace.js').read_text(encoding='utf-8'))
+        bds = (ROOT / 'Bat-dong-san/index.html').read_text(encoding='utf-8')
+        self.assertNotIn('kcn-workspace', bds)
+        self.assertNotIn('data-tab="mt13"', bds)
+        self.assertNotIn('data-block-id="bds-12"', bds)
+        self.assertNotIn('data-block-id="bds-18"', bds)
 
     def test_build_is_reproducible(self):
         try:

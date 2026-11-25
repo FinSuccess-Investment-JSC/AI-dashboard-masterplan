@@ -1,8 +1,8 @@
-/* Bất động sản · workspace Khu công nghiệp (tab #mt13), 6 sub-tab theo câu hỏi đầu tư.
+/* Bất động sản · workspace Khu công nghiệp (tab #mt2), 6 sub-tab theo câu hỏi đầu tư.
    Dữ liệu: window.KCN_MARKET (scripts/build_kcn_workbook.py, workbook nghiên cứu KCN); quy tắc: window.KcnInsights.
    Chart vẽ bằng Chart.js của trang: số thiếu để trống (không nối), số ước tính tô gạch chéo, mốc đổi phạm vi khảo sát
    là vạch đứt; tooltip có kỳ, nguồn, loại số. Card cũ của KCN (FDI NSO, IIP, P/B, VDSC) được dời vào đây, không nhân bản.
-   Deep-link: Bat-dong-san/?kcn=<overview|demand|supply|rent|landbank|data>#mt13 */
+   Deep-link: Bat-dong-san-KCN/?kcn=<overview|demand|supply|rent|landbank|data>#mt2 */
 (() => {
   'use strict';
   const D = window.KCN_MARKET, K = window.KcnInsights;
@@ -88,7 +88,7 @@
       (n ? tile(`Lấp đầy miền Bắc ${QL(n.period)}`, pf(n.occ, 1, false), nb && nb.ok ? `${ppf(nb.abs)} so cùng kỳ · C&W` : 'C&W') : '') +
       (s ? tile(`Lấp đầy miền Nam ${QL(s.period)}`, pf(s.occ, 1, false), sb && sb.ok ? `${ppf(sb.abs)} so cùng kỳ · C&W` : 'C&W') : '') +
       (pipe.length ? tile('Cung dự kiến 2026–2028', pipe.map(p => `${REG[p.region]} ${nf(p.pipeline)}`).join(' · ') + ' ha', 'dự phóng C&W, chưa phải đất sẵn sàng') : '') +
-      `</div><a class="kc-pv-go" href="?kcn=overview#mt13" data-kcn-go="overview">Mở phân tích Khu công nghiệp →</a>`;
+      `</div><a class="kc-pv-go" href="?kcn=overview#mt2" data-kcn-go="overview">Mở phân tích chi tiết →</a>`;
   }
   // Câu KCN ở "Vị trí trong chu kỳ" và chủ đề nóng "Quỹ đất KCN": cùng số với workspace, không giữ số tay.
   function regionLine(r) {
@@ -103,7 +103,7 @@
     const head = [has('R1') ? 'cầu thuê phục hồi' : 'cầu thuê chưa rõ xu hướng', has('R2') ? 'cung mới vào nhanh hơn' : ''].filter(Boolean).join(', ');
     $$('[data-kcn-cycle]').forEach(n => { n.innerHTML = `<mark class="key-phrase">Khu công nghiệp: ${esc(head)}.</mark> ` +
       [c9 ? `Hấp thụ đất ${PL(c9.period)} (CBRE Tier-1) khoảng <b>${nf(c9.value)} ha</b>${y9 ? ` (${sg(y9[1])}%)` : ''}` : '', fn ? `FDI chế biến chế tạo cấp mới ${PL(fn.period)} <b>${nf(fn.value, 1)} tỷ USD</b>${yf ? ` (${sg(yf[1])}%)` : ''}` : '',
-        regionLine('North'), regionLine('South')].filter(Boolean).join('; ') + `. <a href="?kcn=overview#mt13" data-kcn-go="overview">Chi tiết ở tab Khu công nghiệp</a>.`; });
+        regionLine('North'), regionLine('South')].filter(Boolean).join('; ') + `. <a href="?kcn=overview#mt2" data-kcn-go="overview">Chi tiết ở tab Bức tranh ngành</a>.`; });
     const pipe = K.pipelineRatios(D);
     $$('[data-kcn-topic="north"]').forEach(n => { const p = pipe.find(x => x.region === 'North'); n.innerHTML = `Miền Bắc: ${regionLine('North')}${p ? `; cung dự kiến 2026–2028 thêm <b>${nf(p.pipeline)} ha</b> (${pf(p.ratio, 0, false)} nguồn cung hiện hữu, dự phóng C&W)` : ''}.`; });
     $$('[data-kcn-topic="south"]').forEach(n => { const pts = K.provincePoints(D).filter(x => x.region === 'South'); n.innerHTML = `Miền Nam ${pts[0] ? QL(pts[0].period) : ''}: ${pts.map(x => `${esc(x.province_vi)} lấp đầy <b>${pf(x.occ, 1, false)}</b>, giá chào thuê ${pf(x.rent_yoy)} so cùng kỳ`).join('; ')} (C&W, địa giới sau sáp nhập).`; });
@@ -134,7 +134,7 @@
     const u = new URLSearchParams(location.search);
     u.set('kcn', st.tab);
     [['r', 'both'], ['src', 'all'], ['seg', 'land'], ['prov', 'all'], ['co', 'all'], ['from', QUARTERS[0]], ['to', QUARTERS[QUARTERS.length - 1]]].forEach(([k, def]) => { if (st[k] && st[k] !== def) u.set(k, st[k]); else u.delete(k); });
-    history.replaceState(null, '', '?' + u.toString() + '#mt13');
+    history.replaceState(null, '', '?' + u.toString() + '#mt2');
   }
 
   /* ---------- Chart.js ---------- */
@@ -876,7 +876,7 @@
   }
   function rerender() { Object.keys(rendered).forEach(k => { rendered[k] = false; }); renderTab(st.tab, true); writeUrl(); }
   function build() {
-    const pane = $('.majorpane[data-tab="mt13"]'); if (!pane) return;
+    const pane = $('.majorpane[data-tab="mt2"]'); if (!pane) return;
     root = $('#kcn-workspace', pane) || pane.appendChild(el('div', '', '')); root.id = 'kcn-workspace'; root.className = 'kc-ws';
     nav = el('div', 'kc-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Phân tích Khu công nghiệp');
     TABS.forEach(([k, t], i) => { const b = el('button', 'kc-tab', `<span>${String(i + 1).padStart(2, '0')}</span>${esc(t)}`); b.type = 'button'; b.dataset.kcTab = k; b.id = 'kc-tab-' + k; b.setAttribute('role', 'tab'); b.setAttribute('aria-controls', 'kc-panel-' + k); nav.append(b); });
@@ -926,7 +926,7 @@
     const a = e.target.closest('[data-kcn-go]'); if (!a) return;
     e.preventDefault();
     if (a.dataset.kcQa) { st.qaFilter = a.dataset.kcQa; st.ex.set = 'facts'; rendered.data = false; if (popo) popo.hidden = true; }
-    const btn = document.getElementById('research-tab-mt13'); if (btn && btn.getAttribute('aria-selected') !== 'true') btn.click(); else if (window.showMajorTab) window.showMajorTab('mt13');
+    const btn = document.getElementById('research-tab-mt2'); if (btn && btn.getAttribute('aria-selected') !== 'true') btn.click(); else if (window.showMajorTab) window.showMajorTab('mt2');
     select(a.dataset.kcnGo); setTimeout(() => root && root.scrollIntoView({block: 'start'}), 30);
   });
 

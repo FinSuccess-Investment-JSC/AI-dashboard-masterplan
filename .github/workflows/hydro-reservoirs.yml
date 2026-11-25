@@ -38,7 +38,7 @@ jobs:
           fi
           python scripts/prepare_release.py --version "$(date -u +%Y%m%dT%H%M%SZ)-hydro"
           python -m unittest discover -s tests -q
-          git add data/raw/evn-reservoirs data/hydro-reservoirs.js data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html Dien/index.html Bat-dong-san/index.html Det-may/index.html
+          git add data/raw/evn-reservoirs data/hydro-reservoirs.js data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html Dien/index.html Bat-dong-san/index.html Bat-dong-san-KCN/index.html Det-may/index.html
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'Update EVN reservoir 00h observations'

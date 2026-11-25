@@ -30,7 +30,7 @@
 | Quy tắc chuẩn áp cho mọi ngành (lấy từ trang Điện) | `scripts/sector_package/` rồi chạy `python scripts/make_sector_package.py <các ngành>` để đưa bản mới vào từng `<Ngành>/app/` |
 | `assets/` | Chỉ còn trang chủ, `Chung-khoan/`, `duong/` nạp; bản gốc để đối chiếu. Sửa ở đây **không** đổi trang ngành |
 
-**Gói riêng theo ngành (từ 25/11/2026, cả 15 trang ngành):** mỗi ngành là một thư mục tự chứa — `<Ngành>/index.html` chỉ nạp `app/…` (giao diện của ngành) và `../data/…` (dữ liệu vẫn dùng chung, bot vẫn ghi vào `data/`). `scripts/sync_brand.py` đồng bộ cả các bản `*/app/brand.css`, `share-image.js`, `motion.js`, `chart-arrange.js` (không sửa tay 4 file này trong `app/`). Trong gói riêng, `site-navigation.js` tính gốc trang web bằng `../../` (vì nằm ở `<Ngành>/app/`).
+**Gói riêng theo ngành (từ 25/11/2026, cả 16 trang ngành; BĐS KCN tách khỏi Bất động sản thành `Bat-dong-san-KCN/`):** mỗi ngành là một thư mục tự chứa — `<Ngành>/index.html` chỉ nạp `app/…` (giao diện của ngành) và `../data/…` (dữ liệu vẫn dùng chung, bot vẫn ghi vào `data/`). `scripts/sync_brand.py` đồng bộ cả các bản `*/app/brand.css`, `share-image.js`, `motion.js`, `chart-arrange.js` (không sửa tay 4 file này trong `app/`). Trong gói riêng, `site-navigation.js` tính gốc trang web bằng `../../` (vì nằm ở `<Ngành>/app/`).
 
 **Kho mẫu chuẩn `scripts/sector_package/`** (quy tắc rút từ trang Điện, áp cho 14 ngành; Điện giữ bản gốc `power-*` + `dien-boot.js`):
 - `sector-boot.js` — nạp đầu `<head>`, che nội dung và dựng bố cục một lượt rồi mới hiện (hết lộ "tab nền"). Module cần dựng/dời DOM khi mở trang đăng ký `SectorBoot.add(mốc, hàm)`; module bất đồng bộ báo `SectorBoot.wait(promise)`. Không dùng `setTimeout` sau `load`.

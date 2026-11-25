@@ -19,7 +19,7 @@
 <script src="../data/realestate-market-history.js?v=ad8024a4d701" defer></script>
 <script src="app/realestate-market-history.js?v=735e18211ab0" defer></script>
 <script src="../data/realestate-backlog.js?v=8e3ee87916ce" defer></script>
-<script src="app/realestate-dashboard.js?v=20642948a6e3" defer></script>
+<script src="app/realestate-dashboard.js?v=f280a5d32c86" defer></script>
 <script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=3ca9033119b7" defer></script>
@@ -29,41 +29,37 @@
 <script src="../data/company-valuation.js?v=59d42616e817" defer></script>
 <script src="../data/company-comparison.js?v=57100795fdb1" defer></script>
 <script src="../data/company-quarterly.js?v=95f3ff4a5c9f" defer></script>
+<script src="app/ticker-scope.js?v=6668f0e2c31a" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=c3549c738a62" defer></script>
+<script src="app/research-layout.js?v=bc4d9a2e8722" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=53be49980eb9" defer></script>
-<script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
+<script src="app/pane-subtabs.js?v=252d143e2329" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
 <script src="app/stock-dom.js?v=5eecaa4c6683" defer></script>
 <script src="app/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <script src="app/source-gap.js?v=f5423408804a" defer></script>
-<script src="../data/kcn-market.js?v=5852e5de9961" defer></script>
-<script src="app/kcn-insights.js?v=7097c9354fff" defer></script>
-<script src="app/kcn-workspace.js?v=0db51e66f102" defer></script>
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=7166cf0575e8" defer></script>
-<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-dien-bo-tab-evn"></script>
+<script src="app/site-navigation.js?v=8bde452e4873" data-release="20261125-dien-bo-tab-evn"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
-<link rel="stylesheet" href="app/kcn-workspace.css?v=b1e3dd73060f">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
 <link rel="stylesheet" href="app/fin-success-theme.css?v=0761641d486e">
 <link rel="stylesheet" href="app/brand.css?v=048c9b941573">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
 </head>
 <body data-sector="realestate">
-<nav data-site-navigation="realestate"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="./" aria-current="page">Bất động sản</a><a data-site-route="textile" href="../Det-may/">Dệt may</a><a data-site-route="port" href="../Cang-bien/">Cảng &amp; kho bãi</a><a data-site-route="agri" href="../Nong-nghiep/">Nông nghiệp &amp; thực phẩm</a><a data-site-route="seafood" href="../Thuy-san/">Thủy sản</a></nav>
+<nav data-site-navigation="realestate"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="./" aria-current="page">Bất động sản</a><a data-site-route="industrial" href="../Bat-dong-san-KCN/">BĐS KCN</a><a data-site-route="textile" href="../Det-may/">Dệt may</a><a data-site-route="port" href="../Cang-bien/">Cảng &amp; kho bãi</a><a data-site-route="agri" href="../Nong-nghiep/">Nông nghiệp &amp; thực phẩm</a><a data-site-route="seafood" href="../Thuy-san/">Thủy sản</a></nav>
 <div class="fiscbar"><span>Dashboard ngành · Bất động sản Việt Nam · khung nghiên cứu gốc 08/10/2026 · rà soát 09/11/2026</span></div>
 
 <nav class="majortabs">
   <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
   <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
-  <button class="majortabbtn" onclick="showMajorTab('mt13',this)">Khu công nghiệp</button>
   <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
   <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
   <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst / Risk</button>
@@ -77,7 +73,7 @@
 <div class="container">
   <section class="hero">
     <h1>Bức tranh ngành bất động sản <em>Việt Nam</em></h1>
-    <p>Nhà ở đi theo pháp lý – vốn – lãi suất; khu công nghiệp đi theo FDI – quỹ đất sạch. Đọc theo từng khâu, không gom thành một con số chung.</p>
+    <p>Nhà ở đi theo pháp lý – vốn – lãi suất. Đọc theo từng khâu, không gom thành một con số chung.</p>
     <div class="tagrow">
       <span class="tag">Bản nghiên cứu: 08/10/2026 · rà 09/11/2026</span>
       <span class="tag">Trái phiếu: <a href="https://cbonds.hnx.vn/" target="_blank" rel="noopener">HNX</a></span>
@@ -88,7 +84,7 @@
   </section>
 
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
-    <div class="sectionhead"><div><h2>1. Tổng quan ngành bất động sản</h2><p>Hai mảng chạy bằng hai động cơ khác nhau. Nhà ở: pháp lý và vốn quyết định khi nào được bán, lãi suất quyết định ai mua. Khu công nghiệp: FDI chế biến chế tạo và quỹ đất đã đền bù.</p></div></div>
+    <div class="sectionhead"><div><h2>1. Tổng quan ngành bất động sản</h2><p>Pháp lý và vốn quyết định khi nào được bán, lãi suất quyết định ai mua.</p></div></div>
     <section class="grid kpis">
       <div class="kpi"><div class="label">P/B BĐS dân cư</div><div class="value">—</div><div class="delta"></div><div class="sub">—</div><div id="spk-pb"></div></div>
       <div class="kpi"><div class="label">Gốc TPDN BĐS đến hạn 12T</div><div class="value">—</div><div class="delta"></div><div class="sub">HNX</div><div id="spk-maturity"></div></div>
@@ -97,17 +93,15 @@
       <div class="kpi"><div class="label">CPI nhà ở &amp; VLXD</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-cpi"></div></div>
       <div class="kpi"><div class="label">Lãi suất tái cấp vốn</div><div class="value">—</div><div class="delta"></div><div class="sub">NHNN</div><div id="spk-refi"></div></div>
     </section>
-    <div data-kcn-preview="mt1"></div>
     <div class="grid two">
       <div class="card" data-block-id="bds-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
         <h3 style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3>
-        <p style="font-size:12.5px;line-height:1.6;margin:0">20 doanh nghiệp theo bốn nhóm: nhà ở (11), khu công nghiệp (7), cho thuê bán lẻ (VRE), môi giới (DXS).</p>
+        <p style="font-size:12.5px;line-height:1.6;margin:0">13 doanh nghiệp theo ba nhóm: nhà ở (11), cho thuê bán lẻ (VRE), môi giới (DXS).</p>
       </div>
       <div class="card" data-block-id="bds-02" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3 style="margin-top:0;font-size:13.5px">Vị trí trong chu kỳ</h3>
         <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Nhà ở: giá đỉnh, thanh khoản chững.</mark> Giá căn hộ sơ cấp Hà Nội <b>95–116 triệu đ/m²</b> (+21–27% YoY), TP.HCM <b>76 triệu đ/m²</b> (+16% YoY), nhưng giao dịch cả nước Q3/2026 còn <b>92.004</b> (= 92% Q2, Q2 đã chỉ bằng 63,7% cùng kỳ) và tồn kho lên <b>51.950</b> căn/lô (27/34 tỉnh). Lãi vay mua nhà thả nổi <b>13–16%</b>.</p>
         <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Vốn: đảo nợ được nhưng đắt.</mark> Trái phiếu bất động sản vẫn phát hành với lãi suất <b>11–12,5%</b>; dư nợ chậm trả giảm chậm; ba đỉnh đáo hạn <b>12/2026</b>, <b>8/2027</b>, <b>12/2027</b>.</p>
-        <p style="font-size:12.5px;line-height:1.65;margin-bottom:0" data-kcn-cycle><mark class="key-phrase">Khu công nghiệp:</mark> số liệu cầu thuê, lấp đầy và nguồn cung ở tab Khu công nghiệp.</p>
         <div class="source-note">Nguồn: <a href="https://vov.vn/kinh-te/thi-truong-bat-dong-san-luong-giao-dich-giam-sau-gia-nha-van-o-dinh-post1342677.vov" target="_blank" rel="noopener">Bộ Xây dựng Q3/2026 (VOV 20/10/2026)</a> · <a href="https://doanhnhan.baophapluat.vn/nguon-cung-nha-ha-noi-lap-dinh-5-nam-phan-khuc-cao-cap-tiep-tuc-chiem-uu-the.html" target="_blank" rel="noopener">CBRE Q2/2026</a> · <a href="https://cafef.vn/chung-cu-ha-noi-vang-bong-can-ho-duoi-70-trieu-dong-m2-188260814143655062.chn" target="_blank" rel="noopener">Savills Q2/2026</a> · <a href="https://thitruongtaichinhtiente.vn/9-thang-nam-2026-fdi-thuc-hien-dat-21-07-ty-usd-cao-nhat-5-nam-86014.html" target="_blank" rel="noopener">FDI 9T/2026 (NSO)</a> · <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/northern-vietnam-industrial-property-market-maintains-growth-momentum" target="_blank" rel="noopener">Cushman &amp; Wakefield Q2/2026</a> · TPDN: HNX (tab Vốn &amp; Trái phiếu).</div>
       </div>
     </div>
@@ -117,7 +111,6 @@
         <thead><tr><th>Nhóm</th><th>Mã</th><th>Doanh thu đến từ</th><th>Biến quyết định</th><th>Đọc ở tab</th></tr></thead>
         <tbody>
           <tr><td><b>Nhà ở</b></td><td>VHM · NVL · KDH · NLG · DXG · PDR · DIG · CEO · AGG · TCH · NTL</td><td>Bàn giao căn hộ, thấp tầng, đất nền; doanh số bán đi trước 1–3 năm</td><td>Pháp lý dự án · lịch trả nợ · lãi vay mua nhà · giá sơ cấp</td><td>Pháp lý dự án · Vốn &amp; Trái phiếu</td></tr>
-          <tr><td><b>Khu công nghiệp</b></td><td>KBC · IDC · BCM · SZC · SIP · VGC · LHG</td><td>Cho thuê đất, nhà xưởng, dịch vụ hạ tầng</td><td>FDI chế biến chế tạo · quỹ đất đã đền bù · giá thuê · thuế quan</td><td>Cung – Cầu (Khu công nghiệp)</td></tr>
           <tr><td><b>Cho thuê bán lẻ</b></td><td>VRE</td><td>Tiền thuê cố định + theo doanh thu khách thuê</td><td>Lấp đầy · sức mua · lịch mở trung tâm mới</td><td>Cung – Cầu (CPI nhà ở, FDI)</td></tr>
           <tr><td><b>Môi giới</b></td><td>DXS</td><td>Phí giao dịch sơ cấp</td><td>Số căn mở bán · hấp thụ toàn thị trường</td><td>Cung – Cầu (Nhà ở)</td></tr>
         </tbody>
@@ -128,7 +121,7 @@
 
   <div class="majorpane" data-tab="mt2" id="pane-mt2">
   <section class="section">
-    <div class="sectionhead"><div><h2>2. Cung – Cầu</h2><p>Nhà ở: hoạt động ngành, vốn ngoại, chi phí ở và giao dịch theo báo cáo quý. Khu công nghiệp: FDI chế biến chế tạo, sản xuất của khách thuê, lấp đầy và giá thuê.</p></div></div>
+    <div class="sectionhead"><div><h2>2. Cung – Cầu</h2><p>Hoạt động ngành, vốn ngoại, chi phí ở và giao dịch theo báo cáo quý.</p></div></div>
 
     <h3 class="subhead">Nhà ở</h3>
     <div class="grid two">
@@ -154,7 +147,7 @@
       </div>
       <div class="card" data-block-id="bds-05d" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
         <div class="chart-title">FDI đăng ký vào các ngành gắn với bất động sản — theo năm</div>
-        <div class="chart-sub">triệu USD · năm hiện tại lũy kế đến tháng gần nhất · chế biến chế tạo ở pane Khu công nghiệp</div>
+        <div class="chart-sub">triệu USD · năm hiện tại lũy kế đến tháng gần nhất</div>
         <div id="chFdiSector"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-fdi-sector"></table></div></details>
       </div>
@@ -236,70 +229,9 @@
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Chưa có số căn mở bán, bán được tách riêng cho Hải Phòng, Bắc Ninh, Khánh Hòa, Bà Rịa – Vũng Tàu (cũ), Long An (cũ), Đồng Nai, Cần Thơ trong nguồn công khai; DKRA chỉ công bố tổng vùng TP.HCM và phụ cận.</div></details>
     </div>
 
-    <h3 class="subhead">Khu công nghiệp</h3>
-    <div data-kcn-preview="mt2"></div>
-    <div class="grid two">
-      <div class="card" data-block-id="bds-09" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">FDI đăng ký vào công nghiệp chế biến, chế tạo — lũy kế cùng kỳ</div>
-        <div class="chart-sub">triệu USD · nguồn cầu chính của đất khu công nghiệp · cùng số tháng đầu năm mỗi năm</div>
-        <div id="chFdiMfg"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-fdi-mfg"></table></div></details>
-      </div>
-      <div class="card" data-block-id="bds-10" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">Vốn FDI thực hiện — lũy kế cùng kỳ</div>
-        <div class="chart-sub">triệu USD · toàn nền kinh tế · cùng mốc tháng với chart FDI đăng ký · 9T/2026: 21,07 tỷ USD, cao nhất 5 năm</div>
-        <div id="chFdiRealized"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-fdi-realized"></table></div></details>
-      </div>
-    </div>
-    <div class="grid two" style="margin-top:14px">
-      <div class="card" data-block-id="bds-11" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">IIP công nghiệp chế biến, chế tạo — so cùng kỳ</div>
-        <div class="chart-sub">% · sản xuất của khách thuê khu công nghiệp</div>
-        <div id="chIipMfg"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-iip-mfg"></table></div></details>
-      </div>
-    </div>
-    <div class="grid two" style="margin-top:14px">
-      <div class="card" data-block-id="bds-44" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
-        <div class="chart-title">Diện tích ký mới của doanh nghiệp KCN</div>
-        <div class="chart-sub">ha · 2024 thực tế, 2025–2026 là dự phóng của VDSC</div>
-        <div id="chKcnLeased"></div>
-        <div class="source-note">Nguồn: <a href="https://www.vdsc.com.vn/" target="_blank" rel="noopener">VDSC · BĐS KCN "Vững vàng trước những cơn gió" (01/2026)</a>, tr. 10. NTC 2024 không có nhãn số trong báo cáo nên để trống.</div>
-      </div>
-      <div class="card" data-block-id="bds-45" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
-        <div class="chart-title">Giá thuê các KCN mở bán 2026</div>
-        <div class="chart-sub">USD/m² · KCN dự kiến triển khai trong 2026, kèm diện tích dự án</div>
-        <div id="chKcnRent"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-kcn-rent"></table></div></details>
-        <div class="source-note">Nguồn: <a href="https://www.vdsc.com.vn/" target="_blank" rel="noopener">VDSC · BĐS KCN "Vững vàng trước những cơn gió" (01/2026)</a>, tr. 7 (bảng trên bản đồ). Giá chào thuê theo chu kỳ thuê, không phải giá giao dịch bình quân.</div>
-      </div>
-      <div class="card" data-block-id="bds-46" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
-        <div class="chart-title">Đất cao su chuyển sang KCN</div>
-        <div class="chart-sub">ha · nguồn doanh thu đền bù của PHR, TRC, GVR</div>
-        <div class="tablewrap"><table><thead><tr><th>KCN</th><th>Địa phương</th><th>Quy mô (ha)</th><th>Triển khai</th></tr></thead><tbody>
-          <tr><td>Hiệp Thạnh giai đoạn 1 (TRC)</td><td>Tây Ninh</td><td><b>495</b></td><td>2025–2027</td></tr>
-          <tr><td>Chuyên ngành cơ khí · Thaco (PHR)</td><td>Tân Uyên, Bình Dương cũ</td><td><b>786</b></td><td>2025–2028</td></tr>
-          <tr><td>Bắc Đồng Phú giai đoạn 2</td><td>Bình Phước cũ</td><td><b>317</b></td><td>2025–2030</td></tr>
-          <tr><td>Minh Hưng III giai đoạn 2</td><td>Bình Phước cũ</td><td><b>483</b></td><td>2026–2030</td></tr>
-          <tr><td>Nam Đồng Phú giai đoạn 2</td><td>Bình Phước cũ</td><td><b>480</b></td><td>Sau 2025</td></tr>
-        </tbody></table></div>
-        <div class="source-note">Nguồn: <a href="https://www.vdsc.com.vn/" target="_blank" rel="noopener">VDSC · BĐS KCN "Vững vàng trước những cơn gió" (01/2026)</a>, tr. 11. Đơn giá đền bù VDSC giả định: PHR ~2,5 tỷ đồng/ha, TRC ~1,3 tỷ đồng/ha (tr. 22, 25).</div>
-      </div>
-      <div class="card" data-block-id="bds-47" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
-        <div class="chart-title">FDI đăng ký mới theo quốc gia, 2025</div>
-        <div class="chart-sub">% tổng vốn đăng ký mới · FDI ngoài BĐS 2025 ước <b>36,7 tỷ USD (+15%)</b></div>
-        <div id="chFdiCountry"></div>
-        <div class="source-note">Nguồn: <a href="https://www.vdsc.com.vn/" target="_blank" rel="noopener">VDSC · BĐS KCN "Vững vàng trước những cơn gió" (01/2026)</a>, tr. 4–5 (GSO). Singapore chủ yếu vào BĐS; Trung Quốc chiếm gần 23% vốn đăng ký mới đến 10/2025.</div>
-      </div>
-    </div>
   </section>
   </div>
 
-  <div class="majorpane" data-tab="mt13" id="pane-mt13">
-    <div class="sectionhead"><div><h2>Khu công nghiệp</h2><p>Cầu thuê đất, FDI, nguồn cung, giá thuê theo địa phương và quỹ đất doanh nghiệp niêm yết. Mỗi số giữ nguồn, kỳ, phạm vi khảo sát và loại số (thực tế, ước tính, dự phóng).</p></div></div>
-    <div id="kcn-workspace"></div>
-  </div>
 
   <div class="majorpane" data-tab="mt3" id="pane-mt3">
   <section id="price" class="section">
@@ -345,17 +277,10 @@
     <div class="grid two" style="margin-top:14px">
       <div class="card" data-block-id="bds-17" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">P/B nhà ở, cho thuê, môi giới — theo phiên</div>
-        <div class="chart-sub">lần · rổ mã theo dõi (VNDirect) · mỗi 5 phiên · BĐS công nghiệp ở pane Khu công nghiệp</div>
+        <div class="chart-sub">lần · rổ mã theo dõi (VNDirect) · mỗi 5 phiên</div>
         <div id="chSectorPb"></div>
         <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>BĐS dân cư</span><span class="li"><span class="dot" style="background:#c29100"></span>Cho thuê</span><span class="li"><span class="dot" style="background:#861C52"></span>Môi giới</span></div>
         <details class="dtable" open><summary>Phiên mới nhất</summary><div class="tablewrap"><table id="tbl-sector-pb"></table></div></details>
-      </div>
-      <div class="card" data-block-id="bds-41" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
-        <div class="chart-title">P/B và P/E bất động sản công nghiệp — theo phiên</div>
-        <div class="chart-sub">lần · rổ 7 mã KCN (KBC, IDC, BCM, SZC, SIP, VGC, LHG) · mỗi 5 phiên</div>
-        <div id="chIpPb"></div>
-        <div class="legend"><span class="li"><span class="dot" style="background:#2938A8"></span>P/B</span><span class="li"><span class="dot" style="background:#c29100"></span>P/E ÷ 10</span></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-ip-pb"></table></div></details>
       </div>
     </div>
   </section>
@@ -400,23 +325,10 @@
         <thead><tr><th>Văn bản · thời điểm</th><th>Nội dung</th><th>Ý nghĩa với doanh nghiệp</th></tr></thead>
         <tbody>
           <tr><td><a href="https://nhadautu.vn/nhnn-kiem-soat-tang-truong-tin-dung-bat-dong-san-trong-nam-2026-d102315.html" target="_blank" rel="noopener">CV 11686/NHNN-CSTT · 31/12/2025</a></td><td>Tăng trưởng tín dụng BĐS của mỗi ngân hàng <b>không vượt tốc độ tăng chung</b> của chính ngân hàng đó; mục tiêu tín dụng 2026 ~15%</td><td>Room cho chủ đầu tư bị khóa theo room chung; vay mới khó hơn vay cũ</td></tr>
-          <tr><td><a href="https://lsvn.vn/25-ngan-hang-duoc-noi-dieu-kien-cho-vay-nha-o-xa-hoi-a173572.html" target="_blank" rel="noopener">25 ngân hàng được nới</a></td><td>Dư nợ tăng thêm cho nhà ở xã hội, khu công nghiệp, khu chế xuất <b>không tính</b> vào giới hạn tín dụng BĐS</td><td>KCN và NOXH được ưu tiên vốn hơn nhà ở thương mại</td></tr>
+          <tr><td><a href="https://lsvn.vn/25-ngan-hang-duoc-noi-dieu-kien-cho-vay-nha-o-xa-hoi-a173572.html" target="_blank" rel="noopener">25 ngân hàng được nới</a></td><td>Dư nợ tăng thêm cho nhà ở xã hội <b>không tính</b> vào giới hạn tín dụng BĐS</td><td>NOXH được ưu tiên vốn hơn nhà ở thương mại</td></tr>
           <tr><td><a href="https://vnbusiness.vn/giai-ngan-goi-tin-dung-145000-ty-dong-cho-nha-o-xa-hoi-sau-3-nam-ra-sao.html" target="_blank" rel="noopener">Gói 145.000 tỷ NOXH</a></td><td>Giải ngân đến cuối 5/2026: <b>~12.440 tỷ (8,5%)</b>; lãi 7%/năm chủ đầu tư, 6,5%/năm người mua; không tính vào room</td><td>Nút thắt là dự án đủ điều kiện, không phải vốn</td></tr>
           <tr><td><a href="https://thuehaiquan.tapchikinhtetaichinh.vn/tiep-tuc-nghien-cuu-hoan-thien-chinh-sach-thue-su-dung-dat-phi-nong-nghiep-156156.html" target="_blank" rel="noopener">Thuế BĐS · Bộ Tài chính</a></td><td>Luật Thuế sử dụng đất phi nông nghiệp (sửa đổi) có trong chương trình kỳ họp thứ 2 ngày 23/10/2026 (<a href="https://baolamdong.vn/thong-cao-bao-chi-so-06-ky-hop-thu-2-quoc-hoi-khoa-xvi-470757.html" target="_blank" rel="noopener">Thông cáo số 06 kỳ họp thứ 2 (23/10/2026)</a>), hướng tới Luật Thuế bất động sản; thuế BĐS thứ hai mới ở mức nghiên cứu; <a href="https://doanhnghiephoinhap.vn/de-xuat-giu-muc-2-thue-chuyen-nhuong-bat-dong-san-siet-chat-gia-tinh-thue-131174.html" target="_blank" rel="noopener">giữ thuế chuyển nhượng 2%</a>, tính theo bảng giá đất nếu giá hợp đồng thấp hơn</td><td>Chưa có thuế mới trong 2026; rủi ro ở 2027 trở đi</td></tr>
           <tr class="gap-row"><td>Hệ số rủi ro tín dụng BĐS 2026</td><td colspan="2">Chưa xác minh được thông tư mới của NHNN; giữ khung Thông tư 41/2016 cho tới khi có văn bản.</td></tr>
-        </tbody>
-      </table></div>
-    </div>
-    <div class="card" style="margin-top:14px" data-block-id="bds-42" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
-      <h3 style="margin-top:0;font-size:13.5px">Khu công nghiệp: khung quản lý, vốn, giá đất và thuế quan</h3>
-      <div class="tablewrap"><table>
-        <thead><tr><th>Văn bản · mốc</th><th>Nội dung</th><th>Ý nghĩa với doanh nghiệp KCN</th></tr></thead>
-        <tbody>
-          <tr><td><a href="https://luatvietnam.vn/cong-nghiep/nghi-dinh-35-2022-nd-cp-quy-dinh-quan-ly-khu-cong-nghiep-va-khu-kinh-te-221871-d1.html" target="_blank" rel="noopener">NĐ 35/2022/NĐ-CP</a> · hiệu lực 15/07/2022</td><td>Quản lý KCN, khu kinh tế: quy hoạch, đầu tư hạ tầng, chính sách phát triển; bỏ bước "thành lập KCN" riêng so với NĐ 82/2018</td><td>Rút thủ tục mở KCN mới; tốc độ có quỹ đất cho thuê phụ thuộc phê duyệt chủ trương và giải phóng mặt bằng</td></tr>
-          <tr><td><a href="https://lsvn.vn/25-ngan-hang-duoc-noi-dieu-kien-cho-vay-nha-o-xa-hoi-a173572.html" target="_blank" rel="noopener">25 ngân hàng được nới · 2026</a></td><td>Dư nợ tăng thêm cho KCN, khu chế xuất <b>không tính</b> vào giới hạn tăng trưởng tín dụng bất động sản</td><td>KCN được ưu tiên vốn hơn nhà ở thương mại; dư nợ KCN/KCX 30/06/2026 <b>184.137 tỷ</b> (+32,4%) theo <a href="https://thanhtra.com.vn/nha-dat-57A4B2310/du-no-kinh-doanh-bat-dong-san-vuot-25-trieu-ty-dong-eca280581.html" target="_blank" rel="noopener">Bộ Xây dựng</a></td></tr>
-          <tr><td><a href="https://luatvietnam.vn/tin-van-ban-moi/da-co-nghi-quyet-254-2025-qh15-ve-co-che-thao-go-kho-khan-vuong-mac-trong-thi-hanh-luat-dat-dai-186-105881-article.html" target="_blank" rel="noopener">NQ 254/2025/QH15</a> · 01/01/2026</td><td>Thu hồi phần đất còn lại khi đã thỏa thuận &gt;75% diện tích và &gt;75% người sử dụng đất</td><td>Rút ngắn đền bù khu đất KCN dang dở — yếu tố quyết định diện tích sẵn sàng cho thuê</td></tr>
-          <tr><td><a href="https://tienphong.vn/chi-tiet-bang-gia-dat-moi-se-ap-dung-o-tphcm-tu-1-1-2026-post1808173.tpo" target="_blank" rel="noopener">Bảng giá đất 2026</a> · cập nhật hằng năm</td><td>Bình Dương cũ (nay thuộc TP.HCM) tăng tới <b>&gt;8 lần</b>, Bà Rịa – Vũng Tàu cũ 1,7–&gt;4 lần</td><td>Tiền thuê đất, tiền sử dụng đất của KCN phía Nam tăng; hỗ trợ giá cho thuê lại nhưng tăng chi phí dự án mới</td></tr>
-          <tr><td><a href="https://trungtamwto.vn/chuyen-de/31841-hang-viet-nam-dang-chiu-cac-loai-thue-quan-nao-khi-xuat-khau-sang-thi-truong-my" target="_blank" rel="noopener">Thuế quan Mỹ</a></td><td>Thuế đối ứng 20% (08/2025) bị Tòa Tối cao Mỹ bác (02/2026) → thuế toàn cầu 10% theo Section 122 đến 24/07/2026</td><td>Quyết định chuyển nhà máy vào Việt Nam của khách thuê FDI; cơ chế sau 24/07/2026 chưa xác minh</td></tr>
         </tbody>
       </table></div>
     </div>
@@ -549,12 +461,12 @@
 
   <div class="majorpane" data-tab="mt6" id="pane-mt6">
   <section class="section">
-    <div class="sectionhead"><div><h2>6. Key players</h2><p>20 doanh nghiệp niêm yết theo bốn nhóm. Bảng so sánh tài chính và định giá hằng ngày nằm ở Tổng quan.</p></div></div>
+    <div class="sectionhead"><div><h2>6. Key players</h2><p>13 doanh nghiệp niêm yết theo ba nhóm. Bảng so sánh tài chính và định giá hằng ngày nằm ở Tổng quan.</p></div></div>
   </section>
   </div>
 
   <div class="majorpane" data-tab="mt7" id="pane-mt7">
-    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Sáu câu chuyện đang dẫn dắt ngành.</p></div></div>
+    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Năm câu chuyện đang dẫn dắt ngành.</p></div></div>
     <div data-topic-key="phap-ly" data-topic-segment="Chung" data-topic-title="Tháo gỡ dự án tồn đọng · Hệ thống 751 &amp; NQ 254">
       <div class="card" data-block-id="bds-22" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
         <div class="tablewrap"><table>
@@ -588,7 +500,7 @@
       <div class="card" data-block-id="bds-24" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
         <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px">
           <li>34 tỉnh áp bảng giá mới từ 01/01/2026; từ nay cập nhật hằng năm.</li>
-          <li>TP.HCM mở rộng: Bình Dương cũ tăng tới <b>&gt;8 lần</b>, Bà Rịa – Vũng Tàu cũ 1,7–&gt;4 lần → KCN và nhà ở phía Nam chịu tiền thuê/sử dụng đất cao hơn.</li>
+          <li>TP.HCM mở rộng: Bình Dương cũ tăng tới <b>&gt;8 lần</b>, Bà Rịa – Vũng Tàu cũ 1,7–&gt;4 lần → nhà ở phía Nam chịu tiền thuê/sử dụng đất cao hơn.</li>
           <li>VARS: công thức giá đất mới làm tăng mạnh chi phí đầu vào, khó giảm giá bán.</li>
         </ul>
         <p style="font-size:12.5px;line-height:1.6;margin:0"><mark class="key-phrase">Điều kiện kết thúc:</mark> các tỉnh công bố bảng giá 2027 (áp dụng 01/01/2027) với mức thay đổi dưới 10%.</p>
@@ -607,28 +519,6 @@
         <div class="source-note">Nguồn: <a href="https://mekongasean.vn/bo-xay-dung-thuc-tien-do-hoan-thanh-158700-can-nha-o-xa-hoi-nam-2026-54653.html" target="_blank" rel="noopener">Công điện 08/CĐ-BXD</a> · <a href="https://vnbusiness.vn/giai-ngan-goi-tin-dung-145000-ty-dong-cho-nha-o-xa-hoi-sau-3-nam-ra-sao.html" target="_blank" rel="noopener">VnBusiness · gói 145.000 tỷ</a> · <a href="https://vietnamfinance.vn/bo-xay-dung-de-xuat-cap-10000-ty-von-dieu-le-quy-nha-o-trung-uong-d144966.html" target="_blank" rel="noopener">VietnamFinance · Quỹ nhà ở</a> · <a href="https://cafeland.vn/tin-tuc/nha-o-xa-hoi-don-song-lon-40-du-an-voi-hon-36590-can-do-bo-thi-truong-151066.html" target="_blank" rel="noopener">CafeLand · tiến độ</a>.</div>
       </div>
     </div>
-    <div data-topic-key="kcn-fdi" data-topic-segment="Khu công nghiệp" data-topic-title="FDI kỷ lục &amp; thuế quan Mỹ">
-      <div class="card" data-block-id="bds-26" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px">
-          <li>FDI 10T/2026: đăng ký <b>54,85 tỷ USD</b> (+74%), chế biến chế tạo &gt;24,1 tỷ, kinh doanh BĐS &gt;7 tỷ (hạng 2); thực hiện ước <b>~24 tỷ USD</b> (+13%), BĐS 1,76 tỷ (<a href="https://cafef.vn/von-fdi-dang-ky-vao-viet-nam-cao-nhat-tu-nam-2009-188261103135738172.chn" target="_blank" rel="noopener">CafeF 03/11/2026</a>). Trước đó 9T: đăng ký 50,36 tỷ (+76,4%), thực hiện 21,07 tỷ.</li>
-          <li>Miền Bắc lấp đầy giảm còn 64% vì +1.200 ha cung mới; miền Nam giá thuê 186,4 USD/m²/kỳ, TP.HCM lấp đầy 98,7%.</li>
-          <li>Thuế quan Mỹ: thuế đối ứng 20% bị Tòa Tối cao bác (2/2026) → thuế toàn cầu 10% theo Section 122 đến 24/07/2026; cơ chế sau đó chưa xác minh.</li>
-        </ul>
-        <p style="font-size:12.5px;line-height:1.6;margin:0"><mark class="key-phrase">Điều kiện kết thúc:</mark> có cơ chế thuế quan Mỹ ổn định sau 24/07/2026 và lấp đầy miền Bắc quay lại trên 70%.</p>
-        <div class="source-note">Nguồn: <a href="https://thitruongtaichinhtiente.vn/9-thang-nam-2026-fdi-thuc-hien-dat-21-07-ty-usd-cao-nhat-5-nam-86014.html" target="_blank" rel="noopener">NSO · FDI 9T/2026</a> · <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/southern-vietnam-industrial-real-estate-maintains-stable-fundamentals" target="_blank" rel="noopener">Cushman · miền Nam</a> · <a href="https://trungtamwto.vn/chuyen-de/31841-hang-viet-nam-dang-chiu-cac-loai-thue-quan-nao-khi-xuat-khau-sang-thi-truong-my" target="_blank" rel="noopener">Trung tâm WTO · thuế quan</a> · <a href="https://www.whitecase.com/insight-alert/trump-administration-imposes-10-section-122-tariff-plan-replace-ieepa-tariffs" target="_blank" rel="noopener">White &amp; Case · Section 122</a>.</div>
-      </div>
-    </div>
-    <div data-topic-key="kcn-quy-dat" data-topic-segment="Khu công nghiệp" data-topic-title="Quỹ đất KCN · cung mới miền Bắc, giá thuê miền Nam">
-      <div class="card" data-block-id="bds-43" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px">
-          <li data-kcn-topic="north">Miền Bắc: nguồn cung tăng nhanh hơn lấp đầy (số ở tab Khu công nghiệp).</li>
-          <li data-kcn-topic="south">Miền Nam: lấp đầy và giá thuê phân hóa theo tỉnh (số ở tab Khu công nghiệp).</li>
-          <li>Vốn được ưu tiên: dư nợ KCN/KCX <b>184.137 tỷ</b> (+32,4%), không tính vào room tín dụng bất động sản ở 25 ngân hàng.</li>
-        </ul>
-        <p style="font-size:12.5px;line-height:1.6;margin:0"><mark class="key-phrase">Điều kiện kết thúc:</mark> lấp đầy miền Bắc quay lại trên 70% hoặc giá thuê miền Nam đi ngang hai quý liên tiếp.</p>
-        <div class="source-note">Nguồn: <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/northern-vietnam-industrial-property-market-maintains-growth-momentum" target="_blank" rel="noopener">Cushman · miền Bắc</a> · <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/southern-vietnam-industrial-real-estate-maintains-stable-fundamentals" target="_blank" rel="noopener">Cushman · miền Nam</a> · <a href="https://24hmoney.vn/news/jll-gia-thue-dat-cong-nghiep-tiep-tuc-tang-co-them-gan-2-000ha-den-cuoi-nam-2026-c3a2811536.html" target="_blank" rel="noopener">JLL 6T/2026</a> · <a href="https://thanhtra.com.vn/nha-dat-57A4B2310/du-no-kinh-doanh-bat-dong-san-vuot-25-trieu-ty-dong-eca280581.html" target="_blank" rel="noopener">Bộ Xây dựng · dư nợ KCN</a> · <a href="https://lsvn.vn/25-ngan-hang-duoc-noi-dieu-kien-cho-vay-nha-o-xa-hoi-a173572.html" target="_blank" rel="noopener">25 ngân hàng nới</a>.</div>
-      </div>
-    </div>
     <div data-topic-key="tai-cau-truc" data-topic-segment="Nhà ở" data-topic-title="Tái cấu trúc nợ · Novaland &amp; di sản Vạn Thịnh Phát">
       <div class="card" data-block-id="bds-27" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
         <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px">
@@ -642,7 +532,7 @@
   </div>
 
   <div class="majorpane" data-tab="mt10" id="pane-mt10">
-    <div class="sectionhead"><div><h2>8. Vốn &amp; Trái phiếu</h2><p>Trái phiếu bất động sản theo tháng từ HNX: phát hành, dư nợ, chậm trả, lịch đáo hạn. Số chung toàn ngành (Nguồn công khai chưa tách KCN); thực chất phần lớn là chủ đầu tư nhà ở — phần của 7 mã KCN ghi riêng ở bảng tổ chức phát hành. Tín dụng và lãi suất từ NHNN.</p></div></div>
+    <div class="sectionhead"><div><h2>8. Vốn &amp; Trái phiếu</h2><p>Trái phiếu bất động sản theo tháng từ HNX: phát hành, dư nợ, chậm trả, lịch đáo hạn. Số chung toàn ngành; phần lớn là chủ đầu tư nhà ở. Tín dụng và lãi suất từ NHNN.</p></div></div>
     <div class="bds-bond">
       <div class="grid two">
         <div class="card" data-block-id="bds-28" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
@@ -677,7 +567,6 @@
       <div class="card" style="margin-top:14px" data-block-id="bds-32" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="snapshot">
         <div class="chart-title">Tổ chức phát hành BĐS có gốc đến hạn lớn nhất — đến cuối 2027</div>
         <div class="chart-sub">tỷ VND · 15 tổ chức · mã nội bộ HNX cho doanh nghiệp chưa niêm yết</div>
-        <p class="research-caption" id="bond-kcn-share"></p>
         <div class="tablewrap"><table id="tbl-bond-top"></table></div>
         <div class="source-note">Đối chiếu thị trường: VIS Rating ước ~253.000 tỷ TPDN toàn thị trường đáo hạn 12 tháng tới (10/2026 ~24.000; 11/2026 ~20.000; 12/2026 ~31.000 tỷ); BĐS chiếm 55,6% giá trị đáo hạn còn lại của 2026 (VBMA). <a href="https://thoibaotaichinhvietnam.vn/hon-250-000-ty-dong-trai-phieu-doanh-nghiep-se-dao-han-trong-12-thang-toi-203448.html" target="_blank" rel="noopener">Thời báo Tài chính 08/09/2026</a> · <a href="https://doanhnhan.baophapluat.vn/gan-290-000-ty-dong-trai-phieu-doanh-nghiep-duoc-huy-dong-bat-dong-san-doi-mat-ap-luc-dao-han-lon.html" target="_blank" rel="noopener">VBMA 7T/2026</a>. Số Nguồn tính riêng gốc còn lại của ngành BĐS nên thấp hơn ước tính toàn thị trường.</div>
       </div>
@@ -708,7 +597,7 @@
             <tbody>
               <tr><td>Tín dụng BĐS / tổng dư nợ</td><td><b>25,73%</b> · tự sử dụng 51,97% · nợ xấu BĐS 2,3%</td><td>cuối 5/2026</td></tr>
               <tr><td>Tín dụng kinh doanh BĐS · tiêu dùng BĐS</td><td><b>+14%</b> · <b>−1,32%</b> (cùng kỳ 2025: +15%)</td><td>5T/2026</td></tr>
-              <tr><td>Dư nợ kinh doanh BĐS</td><td>&gt;2,519 triệu tỷ; dự án đô thị/nhà ở 833.558 tỷ; quyền sử dụng đất 314.449 tỷ (+23,1%); KCN/KCX 184.137 tỷ (+32,4%)</td><td>30/06/2026</td></tr>
+              <tr><td>Dư nợ kinh doanh BĐS</td><td>&gt;2,519 triệu tỷ; dự án đô thị/nhà ở 833.558 tỷ; quyền sử dụng đất 314.449 tỷ (+23,1%)</td><td>30/06/2026</td></tr>
               <tr><td>Tổng dư nợ toàn hệ thống</td><td>~20,75 triệu tỷ (+11,59% YTD, +16,59% YoY); lãi suất huy động mới bình quân 6,38%</td><td>cuối 9/2026</td></tr>
               <tr class="gap-row"><td>Tín dụng BĐS cuối 9/2026</td><td colspan="2">Chưa công bố (họp báo 03/10/2026 không nêu).</td></tr>
             </tbody>
@@ -748,7 +637,6 @@
             <tr><td><span class="seg-chip" data-seg="Chung">Chung</span></td><td><a href="https://mekongasean.vn/loat-thay-doi-trong-chinh-sach-dat-dai-co-hieu-luc-tu-112026-50150.html" target="_blank" rel="noopener">Luật sửa 15 luật nông nghiệp – môi trường</a></td><td>146/2025/QH15</td><td>01/01/2026</td><td>Bảng giá đất ban hành hằng năm</td></tr>
             <tr><td><span class="seg-chip" data-seg="Chung">Chung</span></td><td><a href="https://luatvietnam.vn/tin-van-ban-moi/quoc-hoi-xem-xet-luat-dat-dai-sua-doi-tai-ky-hop-thang-10-2026-186-110407-article.html" target="_blank" rel="noopener">Luật Đất đai (sửa đổi) toàn diện</a></td><td>Dự án luật</td><td>Trình 22/10/2026, thảo luận ở Tổ; chưa biểu quyết</td><td>NQ 07/2026/UBTVQH16; UBTVQH cho ý kiến 9/2026</td></tr>
             <tr><td><span class="seg-chip" data-seg="Nhà ở">Nhà ở</span></td><td><a href="https://luatvietnam.vn/tin-van-ban-moi/chinh-phu-thong-qua-10-chinh-sach-lon-sua-luat-nha-o-va-luat-kinh-doanh-bat-dong-san-186-110341-article.html" target="_blank" rel="noopener">Sửa Luật Nhà ở &amp; Luật KD BĐS</a></td><td>Dự án luật</td><td>Trình 22/10/2026, thảo luận ở Tổ; chưa biểu quyết</td><td>Đặt cọc tối đa 5% giá bán; ba luật đất đai – nhà ở – KD BĐS hiệu lực cùng ngày</td></tr>
-          <tr><td><span class="seg-chip" data-seg="Khu công nghiệp">Khu công nghiệp</span></td><td><a href="https://luatvietnam.vn/cong-nghiep/nghi-dinh-35-2022-nd-cp-quy-dinh-quan-ly-khu-cong-nghiep-va-khu-kinh-te-221871-d1.html" target="_blank" rel="noopener">NĐ quản lý KCN và khu kinh tế</a></td><td>35/2022/NĐ-CP</td><td>15/07/2022</td><td>Thay NĐ 82/2018; quy hoạch, đầu tư hạ tầng, chính sách KCN</td></tr>
           </tbody>
         </table></div>
         <div class="source-note">Văn bản gốc tra tại <a href="https://vanban.chinhphu.vn/" target="_blank" rel="noopener">vanban.chinhphu.vn</a>; các link trên là bài tóm tắt có số hiệu và ngày hiệu lực. Kỳ họp thứ 2 Quốc hội khóa XVI: 20/10–13/11 và 25/11–05/12/2026 (<a href="https://lsvn.vn/du-kien-ky-hop-thu-2-quoc-hoi-khoa-xvi-khai-mac-vao-ngay-20-10-2026-a172642.html" target="_blank" rel="noopener">LSVN</a>). Mốc mới: <a href="https://chinhphu.vn/?pageid=27160&amp;docid=220296" target="_blank" rel="noopener">Thông báo 586/TB-VPCP ngày 15/11/2026</a> ghi kết luận của Phó Thủ tướng Thường trực về tiếp thu, giải trình ý kiến dự thảo Luật KD BĐS (sửa đổi) và Luật Nhà ở (sửa đổi); chưa đọc toàn văn nên chưa ghi nội dung chỉ đạo, trạng thái vẫn là dự án luật chưa biểu quyết. · Kiểm tra: 18/11/2026</div>
@@ -784,23 +672,13 @@
   </div>
   <div class="majorpane" data-tab="mt12" id="pane-mt12">
   <section class="section">
-    <div class="sectionhead"><div><h2>Hạ tầng</h2><p>Dự án làm thay đổi bản đồ đất ở và đất KCN: sân bay, vành đai, cao tốc, cảng, đường sắt, và các thay đổi quy hoạch.</p></div></div>
+    <div class="sectionhead"><div><h2>Hạ tầng</h2><p>Dự án làm thay đổi bản đồ đất ở: sân bay, vành đai, cao tốc, cảng, đường sắt, và các thay đổi quy hoạch.</p></div></div>
     <div class="grid two">
       <div class="card" data-block-id="bds-48" data-update-kind="document" data-cadence="rare" data-refresh-status="snapshot">
         <div class="chart-title">Đường bộ cao tốc: kế hoạch và thực tế</div>
         <div class="chart-sub">km · 2021–2025 vượt kế hoạch; mục tiêu ~5.000 km năm 2030</div>
         <div id="chInfraExpressway"></div>
         <div class="source-note">Nguồn: <a href="https://www.vdsc.com.vn/" target="_blank" rel="noopener">VDSC 01/2026, tr. 6, 9</a>. Báo Pháp luật TP.HCM ghi hơn 3.300 km khai thác đến hết 2025: <a href="https://tuoitre.vn/plo/tu-3000-km-cao-toc-den-muc-tieu-5000-km-kich-hoat-dong-luc-tang-truong-moi-post913149.html" target="_blank" rel="noopener">PLO 29/06/2026</a>.</div>
-      </div>
-      <div class="card" data-block-id="bds-49" data-update-kind="document" data-cadence="rare" data-refresh-status="snapshot">
-        <div class="chart-title">Thay đổi bản đồ quy hoạch</div>
-        <div class="chart-sub">địa giới, khu thương mại tự do, khu kinh tế</div>
-        <div class="tablewrap"><table><thead><tr><th>Thay đổi</th><th>Nội dung</th><th>Nguồn</th></tr></thead><tbody>
-          <tr><td><b>Sáp nhập tỉnh</b></td><td>63 → <b>34</b> tỉnh/thành từ 1/7/2025; tên địa bàn KCN, quy hoạch tỉnh đổi theo</td><td><a href="https://nhadautu.vn/34-tinh-thanh-du-kien-hoat-dong-tu-1-7-2025-co-ten-nhu-the-nao-d96897.html" target="_blank" rel="noopener">Nhà đầu tư</a></td></tr>
-          <tr><td><b>KTM tự do Hải Phòng</b></td><td>~<b>6.292 ha</b>, QĐ 4068/QĐ-UBND; gắn KKT Đình Vũ – Cát Hải</td><td><a href="https://nhadautu.vn/thanh-lap-khu-thuong-mai-tu-do-hai-phong-gan-6300-ha-d100001.html" target="_blank" rel="noopener">Nhà đầu tư 17/10/2025</a></td></tr>
-          <tr><td><b>Trung tâm tài chính QT TP.HCM</b></td><td>Thủ tướng yêu cầu ra mắt chậm nhất 9/2/2026</td><td><a href="https://baovanhoa.vn/chinh-tri/thu-tuong-cham-nhat-ngay-922026-ra-mat-trung-tam-tai-chinh-quoc-te-tai-tphcm-197918.html" target="_blank" rel="noopener">Báo Văn hóa 16/01/2026</a></td></tr>
-          <tr><td><b>Khu kinh tế trọng điểm</b></td><td>Đình Vũ – Cát Hải (Tràng Duệ 3 · KBC), Vũng Áng (VHM), Chu Lai (Thaco), Nam Phú Yên (Hòa Tâm · HPG)</td><td><a href="https://www.vdsc.com.vn/" target="_blank" rel="noopener">VDSC 01/2026, tr. 6, 9</a></td></tr>
-        </tbody></table></div>
       </div>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="bds-50" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
@@ -828,7 +706,7 @@
         <tr><td><b>Giá sơ cấp so CPI nhà ở; bộ tính mua nhà</b></td><td>CBRE, NSO (tự tính)</td><td>Quý</td><td>Tự tính trên trang khi số nền đổi</td></tr>
         <tr><td><b>P/B, P/E bốn phân ngành</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect finfo</a> · rổ mã theo dõi</td><td>Phiên</td><td>Script mỗi lượt job</td></tr>
         <tr><td><b>P/E, P/B, vốn hóa từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script GitHub mỗi lượt job</td></tr>
-        <tr><td><b>Cung, giao dịch, giá nhà; lấp đầy, giá thuê KCN; pháp lý</b></td><td>Bộ Xây dựng, CBRE, Savills, Cushman &amp; Wakefield, JLL, VARS, văn bản Chính phủ (link tại từng thẻ)</td><td>Quý / theo sự kiện</td><td>Routine tài liệu thứ Hai</td></tr>
+        <tr><td><b>Cung, giao dịch, giá nhà; pháp lý</b></td><td>Bộ Xây dựng, CBRE, Savills, Cushman &amp; Wakefield, JLL, VARS, văn bản Chính phủ (link tại từng thẻ)</td><td>Quý / theo sự kiện</td><td>Routine tài liệu thứ Hai</td></tr>
         <tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr>
         <tr class="gap-row"><td><b>Tín dụng kinh doanh BĐS theo tháng, lãi suất vay mua nhà theo chuỗi, số căn mở bán theo tháng</b></td><td>NHNN, ngân hàng, CBRE</td><td>—</td><td>Chưa có nguồn máy đọc được; giữ các mốc rời theo báo cáo</td></tr>
       </tbody>

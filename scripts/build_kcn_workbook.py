@@ -8,7 +8,7 @@ Nguồn duy nhất: data/raw/kcn/Vietnam_Industrial_Park_Research_Data_2026_Expa
     python scripts/build_kcn_workbook.py [đường-dẫn.xlsx]
 
 Script chỉ chuẩn hóa và kiểm, không tính chỉ tiêu phái sinh (rolling 4Q, YoY, years of supply…):
-các phép tính đó nằm ở Bat-dong-san/app/kcn-insights.js để trang và test dùng cùng một bản.
+các phép tính đó nằm ở Bat-dong-san-KCN/app/kcn-insights.js để trang và test dùng cùng một bản.
 Bất kỳ kiểm tra nào hỏng thì dừng, không ghi file (giữ bản cũ trên web).
 """
 from __future__ import annotations
