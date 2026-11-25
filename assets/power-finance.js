@@ -255,23 +255,8 @@ function s74() {
     chart(c3.host, 'dien-fin-conversion', L, [{name: 'CFO/EBITDA (lần)', color: LINE[0], values: R('cfo', 'ebitda')}, {name: 'CFO/LNST (lần)', color: LINE[2], values: R('cfo', 'npat')}, {name: 'Biên CFO (%) ÷ 100', color: LINE[1], values: R('cfo', 'revenue')}], {unit: 'lần', digits: 2});
     foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; biên CFO vẽ dạng tỷ lệ (0,2 = 20%)`); }
   renders.push(draw3);
-  const c4 = card('dien-fin-wc', 'Vốn lưu động và áp lực tài trợ (tỷ đồng)', 'Biến động phải thu (LCTT), CFO, nợ vay ngắn hạn, chi phí lãi vay');
-  function draw4() { const x = sel(), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode), T = (m, md) => E.total(m, x, md).values;
-    const st = mode === 'y' ? T('st_debt', 'y') : T('st_debt', 'q');
-    chart(c4.host, 'dien-fin-wc', L, [{name: 'Biến động phải thu (LCTT, âm = phải thu tăng)', color: LINE[2], values: T('chg_receivables', mode)}, {name: 'CFO', color: LINE[0], values: T('cfo', mode)}, {name: 'Nợ vay ngắn hạn (số dư)', color: LINE[4], values: st}, {name: 'Chi phí lãi vay', color: LINE[3], values: T('interest', mode)}], {unit: 'tỷ đ'});
-    foot(c4, `${mode === 'y' ? 'năm' : 'TTM'}; đặt cạnh nhau để đối chiếu, không ngầm định quan hệ nhân quả`); }
-  renders.push(draw4);
-  // Bảng theo doanh nghiệp
-  const c5 = card('dien-fin-recv-table', 'Phải thu và chuyển hóa dòng tiền theo doanh nghiệp', 'Kỳ chốt · bấm tiêu đề cột để sắp xếp'); let sortK = 'recv', sortD = -1;
-  function draw5() { const x = sel(), i = S.end, r = E.per('receivables', x, 'q'), dso = E.ratio({m: 'receivables', avg: true}, {m: 'revenue'}, x, 'ttm', 365).each, ce = E.ratio({m: 'cfo'}, {m: 'ebitda'}, x, 'ttm').each;
-    const rows = x.map(t => ({t, g: D.groups.find(g => g.id === E.groupOf[t])?.label, recv: r[t][i], yoy: fin(r[t][i]) && fin(r[t][i - 4]) && r[t][i - 4] > 0 ? (r[t][i] / r[t][i - 4] - 1) * 100 : null, dso: dso[t][i], ce: ce[t][i]}));
-    rows.sort((a, b) => ((fin(a[sortK]) ? a[sortK] : -1e18) - (fin(b[sortK]) ? b[sortK] : -1e18)) * sortD);
-    const H = [['t', 'Mã'], ['g', 'Nhóm nguồn'], ['recv', 'Phải thu KH (tỷ đ)'], ['evn', 'Phải thu EVN'], ['yoy', 'So cùng kỳ (%)'], ['dso', 'DSO (ngày)'], ['ce', 'CFO/EBITDA TTM']];
-    c5.host.innerHTML = `<div class="tablewrap"><table class="pf-table"><thead><tr>${H.map(([k, h]) => `<th data-k="${k}">${esc(h)}${sortK === k ? (sortD < 0 ? ' ↓' : ' ↑') : ''}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr><td><b>${r.t}</b></td><td>${esc(r.g)}</td><td class="n">${nf(r.recv)}</td><td class="n">N/A</td><td class="n">${sg(r.yoy)}</td><td class="n">${nf(r.dso)}</td><td class="n">${nf(r.ce, 2)}</td></tr>`).join('')}</tbody></table></div>`;
-    c5.host.querySelectorAll('th[data-k]').forEach(th => th.addEventListener('click', () => { const k = th.dataset.k; if (k === 'evn') return; sortD = sortK === k ? -sortD : -1; sortK = k; draw5(); }));
-    foot(c5, `${qLabel(D.periods[i])}; phải thu EVN cần thuyết minh BCTC, đang N/A`); }
-  renders.push(draw5);
-  s.append(grid2(c1, c2), grid2(c3, c4), c5.el);
+  // Chart "Vốn lưu động và áp lực tài trợ" và bảng "Phải thu và chuyển hóa dòng tiền theo doanh nghiệp" bỏ 25/11/2026 theo yêu cầu người dùng.
+  s.append(grid2(c1, c2), c3.el);
   return s;
 }
 
