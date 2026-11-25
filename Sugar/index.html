@@ -18,7 +18,6 @@
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="app/catalyst-board.js?v=e69ff7b64de8" defer></script>
 <script src="app/sector-smart.js?v=9199819d80e6" defer></script>
 <script src="app/sector-ticker.js?v=24097f7668e0" defer></script>
 <script src="../data/company-valuation.js?v=59d42616e817" defer></script>
@@ -26,20 +25,20 @@
 <script src="../data/company-quarterly.js?v=95f3ff4a5c9f" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=c3549c738a62" defer></script>
+<script src="app/research-layout.js?v=2f5cb88d6d09" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=53be49980eb9" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
-<script src="app/stock-dom.js?v=5eecaa4c6683" defer></script>
+<script src="app/stock-dom.js?v=54e77361968d" defer></script>
 <script src="app/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <script src="app/source-gap.js?v=f5423408804a" defer></script>
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=7166cf0575e8" defer></script>
-<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-dien-gia-ban-le"></script>
+<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-bo-dong-luc-rui-ro"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
@@ -61,7 +60,6 @@
     <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
     <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
     <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy/Trade/Tax</button>
-    <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst/Risk</button>
     <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
     <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Mùa vụ &amp; Sản phẩm phụ</button>
   </div>
@@ -331,43 +329,6 @@
   </section>
   </div>
 
-  <div class="majorpane" data-tab="mt5">
-  <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Các biến dẫn dắt giá và lợi nhuận ngành, phân theo chiều tác động, hơn là chỉ nhìn một mức giá tại một thời điểm.</p></div></div>
-    <div class="catriskgrid">
-      <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Catalyst — yếu tố hỗ trợ</h3>
-        <ul>
-          <li><b>PVTM vừa gia hạn đến 2031</b> (QĐ 1309 &amp; 1310/QĐ-BCT) — duy trì lá chắn AD/CVD 47,64% với đường Thái Lan, nhập khẩu Thái đã giảm từ 924.000 xuống 82.000 tấn trong giai đoạn áp thuế trước.</li>
-          <li><b>Sản lượng &amp; năng suất trong nước cải thiện</b> — sản lượng đường 2025/26 tăng gần gấp đôi từ đáy 2020/21 (750 nghìn tấn) lên 1,35 triệu tấn, chủ yếu nhờ năng suất chứ không phải mở rộng diện tích, giúp giảm phụ thuộc nhập khẩu về dài hạn.</li>
-          <li><b>Giá thế giới đã bật từ đáy</b> — 0,43 USD/kg (T10/2026), +39% từ đáy 0,31 (T2/2026); đã gần vùng đáy chu kỳ 2015 (0,295); một nhịp hồi phục thế giới sẽ truyền dẫn trực tiếp vào giá trong nước.</li>
-          <li><b>Dư địa kiểm soát đường lậu/HFCS tốt hơn</b> — nếu thực thi mạnh tay hơn, có thể thu hẹp phần cung "ngoài sổ sách" hiện ước ~30% thị phần (đường lậu) cộng với HFCS đang tăng nhanh.</li>
-        </ul>
-      </div>
-      <div class="riskbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Risk — rủi ro</h3>
-        <ul>
-          <li><b>Tồn kho kỷ lục chưa có dấu hiệu giảm</b> — 426 nghìn tấn cuối vụ 2025/26, cao nhất 16 niên vụ có số liệu USDA — leading indicator trực tiếp nhất của sức ép cung–cầu, hiện đang bất lợi cho giá.</li>
-          <li><b>Đường lậu &amp; HFCS nằm ngoài phạm vi PVTM</b> — đường lậu ước ~30% thị phần nội địa; nhập khẩu HFCS tăng hơn gấp đôi 2021–2024 — cả hai đều không bị chặn bởi thuế CBPG/CTC vì không đi qua kênh chính ngạch hoặc không phải cùng mã hàng.</li>
-          <li><b>Giá mía giảm ảnh hưởng động lực nông dân</b> — giá mía 2025/26 tại một số nhà máy giảm hai chữ số so với vụ trước; rủi ro trung hạn là nông dân thu hẹp vùng nguyên liệu (xem thêm tab 7).</li>
-          <li><b>Giá thế giới có thể giảm sâu hơn</b> — nếu xu hướng giảm từ đỉnh 2023 (0,52 USD/kg) tiếp diễn, mặt bằng giá trong nước khó tránh bị kéo xuống theo.</li>
-          <li><b>Mức thuế cụ thể sau gia hạn 06/2026 chưa xác nhận đầy đủ</b> từ văn bản gốc — cần theo dõi thêm để biết liệu mức bảo hộ có giữ nguyên 47,64% hay thay đổi.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="outlook" class="section">
-    <h3 class="subhead">Kịch bản 6–12 tháng</h3>
-    <p class="subsub">Kịch bản quản trị rủi ro dựa trên dữ liệu đã xác minh ở trên — không phải dự báo thống kê với xác suất cố định.</p>
-    <div class="grid three">
-      <div class="scenario active" onclick="selectScenario('base',this)" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><span class="badge base">CƠ SỞ</span><div class="range">16 – 17k đ/kg</div><div class="note">Giá đi ngang vùng thấp cho đến khi tồn kho kỷ lục giảm rõ rệt.</div></div>
-      <div class="scenario" onclick="selectScenario('bull',this)" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><span class="badge bull">TĂNG</span><div class="range">&gt; 18k đ/kg</div><div class="note">Thế giới hồi phục mạnh, kiểm soát đường lậu/HFCS hiệu quả hơn.</div></div>
-      <div class="scenario" onclick="selectScenario('bear',this)" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><span class="badge bear">GIẢM</span><div class="range">&lt; 15k đ/kg</div><div class="note">Tồn kho tiếp tục phá đỉnh, giá thế giới giảm sâu hơn.</div></div>
-    </div>
-    <div class="scenarioDetail" id="scenarioDetail"><b>Kịch bản cơ sở:</b> tồn kho 426 nghìn tấn (cao nhất 16 niên vụ) khiến giá khó phục hồi cho đến khi tốc độ tiêu thụ vượt tốc độ đưa hàng mới + nhập khẩu ra thị trường. Trọng tâm theo dõi: tồn kho theo tháng, tiến độ ép vụ 2026/27, và diễn biến giá thế giới.</div>
-  </section>
-  </div>
 
   <div class="majorpane" data-tab="mt6">
   <section class="section">
