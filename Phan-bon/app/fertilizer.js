@@ -1,361 +1,347 @@
-/* Dashboard ngành Phân bón (Phan-bon/). Trang viết sẵn bố cục cuối; file này chỉ:
-   - chuyển tab chính / sub-tab (hash #mt1, #mt2…; ?sub=price|cost|output|fin),
-   - vẽ chart vào các thẻ [data-chart] khi thẻ hiện lần đầu (Chart.js không vẽ được trong khung ẩn),
-   - mỗi chart có ⓘ (cách đọc, cách tính), nút Bảng (số liệu đúng như chart) và dòng "Nguồn:" hiện sẵn ở góc phải dưới.
-   Chỉ mô tả dữ liệu; không viết nhận định. Dữ liệu: window.FERT_DATA (scripts/build_fertilizer.py). */
+/* Dashboard ngành Phân bón (Phan-bon/) theo khung trang Điện (25/11/2026):
+   - Tổng quan ngành: Bản tin dữ liệu (câu mô tả + 4 ô số có đường nhỏ), sub-tab 00 Bản đồ ngành (sơ đồ chuỗi giá trị tương tác
+     ValueChain.draw như Điện, tỷ trọng doanh thu, sản lượng năm) và 01 Doanh nghiệp niêm yết (thẻ từng mã).
+   - Bức tranh ngành: thanh pp-nav 01 Giá phân bón · 02 Chi phí đầu vào · 03 Sản xuất trong nước · 04 Chính sách & thuế; mỗi sub-tab có
+     hàng KPI, nhóm câu hỏi đánh số (pp-panel) với chart chính + chart phụ (so cùng tháng theo năm, bảng nhiệt so cùng kỳ).
+   - Tài chính ngành: app/fertilizer-finance.js (chép bộ Tài chính ngành của Điện qua BĐS KCN).
+   Chart vẽ bằng ChartTypes (app/chart-types.js, như Điện): nút Số kỳ, Bảng, Tùy chỉnh; dòng "Nguồn:" hiện sẵn ở góc phải dưới.
+   Chỉ mô tả dữ liệu, không nhận định. Dữ liệu: window.FERT_DATA (scripts/build_fertilizer.py). */
 (() => {
 'use strict';
 const D = window.FERT_DATA;
 if (!D) return;
-const S = D.series || {};
+const S = D.series || {}, F = D.fin;
+const E = F && window.IndustryFin ? IndustryFin.create(F) : null;
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const fin = v => typeof v === 'number' && Number.isFinite(v);
-const make = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
-const esc = s => String(s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+const el = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 const nf = (v, d = 0) => fin(v) ? v.toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d}) : '–';
-const pct = (v, d = 1) => fin(v) ? (v > 0 ? '+' : '') + nf(v, d) + '%' : '–';
-const mLabel = ym => { const [y, m] = ym.split('-'); return `T${+m}/${y}`; };
-const qLabel = p => `Q${p.slice(5)}/${p.slice(0, 4)}`;
-const dLabel = d => d.split('-').reverse().join('/');
-const C = {navy: '#2938A8', gold: '#c98a00', teal: '#2a9fa3', grey: '#3d4653', plum: '#861C52', sky: '#8997D6', green: '#1f8a5b', red: '#c0392b'};
+const sg = (v, d = 1) => fin(v) ? (v > 0 ? '+' : v < 0 ? '−' : '') + nf(Math.abs(v), d) : '–';
+const mL = ym => `T${+ym.slice(5, 7)}/${ym.slice(0, 4)}`;
+const qL = p => `Q${p.slice(5)}/${p.slice(0, 4)}`;
+const dL = d => d.slice(0, 10).split('-').reverse().join('/');
+const C = {navy: '#1D2678', blue: '#2938A8', teal: '#2a9fa3', gold: '#c98a00', plum: '#861C52', grey: '#3d4653', sky: '#8997D6', slate: '#5a6682', bronze: '#b8801f'};
+const YEARC = ['#C9D0EE', '#8997D6', '#4B5BD4', '#1D2678'];  // màu năm cũ → năm mới (như chart so cùng tháng của Điện)
 const SRC = {
   wb: '<a href="https://www.worldbank.org/en/research/commodity-markets" target="_blank" rel="noopener">World Bank · Pink Sheet</a>',
-  zce: '<a href="https://finance.sina.com.cn/futures/quotes/UR0.shtml" target="_blank" rel="noopener">Sina Finance · ZCE UR0</a>',
-  nso: '<a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê · số liệu KT-XH tháng</a>',
-  vnd: '<a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect · BCTC hợp nhất</a>',
-  law: 'Luật Thuế GTGT số 48/2024/QH15 (<a href="https://thuvienphapluat.vn/van-ban/Thue-Phi-Le-Phi/Luat-thue-gia-tri-gia-tang-sua-doi-556390.aspx" target="_blank" rel="noopener">văn bản</a>, <a href="https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/02/12-vbhn-vpqh.pdf" target="_blank" rel="noopener">văn bản hợp nhất</a>); Luật số 71/2014/QH13',
-  ar: 'Báo cáo thường niên, website doanh nghiệp'
+  zce: '<a href="https://finance.sina.com.cn/futures/quotes/UR0.shtml" target="_blank" rel="noopener">Sina Finance · Sở GDHH Trịnh Châu (UR0)</a>',
+  nso: '<a href="https://www.nso.gov.vn/bao-cao-tinh-hinh-kinh-te-xa-hoi-hang-thang/" target="_blank" rel="noopener">Cục Thống kê · số liệu KT-XH tháng</a>',
+  vnd: '<a href="https://api-finfo.vndirect.com.vn/v4/financial_statements" target="_blank" rel="noopener">BCTC hợp nhất theo quý (VNDirect finfo)</a>',
+  ar: 'Báo cáo thường niên, website doanh nghiệp',
+  law: 'Luật Thuế GTGT số 48/2024/QH15 (<a href="https://thuvienphapluat.vn/van-ban/Thue-Phi-Le-Phi/Luat-thue-gia-tri-gia-tang-sua-doi-556390.aspx" target="_blank" rel="noopener">văn bản</a>, <a href="https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/02/12-vbhn-vpqh.pdf" target="_blank" rel="noopener">văn bản hợp nhất</a>); Luật số 71/2014/QH13'
 };
 const recs = k => (S[k] && S[k].records) || [];
 const last = k => recs(k).at(-1);
-const valAt = (k, date) => recs(k).find(r => r.date === date)?.value;
-const ink = () => getComputedStyle(document.documentElement).getPropertyValue('--fb-ink2').trim() || '#3b4256';
-const grid = () => getComputedStyle(document.documentElement).getPropertyValue('--fb-line').trim() || '#e3e7f0';
+const val = (k, d) => { const r = recs(k).find(x => x.date === d); return r ? r.value : null; };
+const ymAdd = (ym, n) => { const d = new Date(+ym.slice(0, 4), +ym.slice(5, 7) - 1 + n, 1); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`; };
+const yoy = (k, d) => { const a = val(k, d), b = val(k, ymAdd(d, -12)); return fin(a) && fin(b) && b ? (a / b - 1) * 100 : null; };
+const months = (from, to) => { const out = []; for (let m = from; m <= to; m = ymAdd(m, 1)) out.push(m); return out; };
+const ytd = (k, y, M) => { let s = 0; for (let m = 1; m <= M; m++) { const v = val(k, `${y}-${String(m).padStart(2, '0')}`); if (!fin(v)) return null; s += v; } return s; };
 
-/* ---------- khung thẻ chart ---------- */
-const charts = {};
-function card(el, o) {
-  el.innerHTML = '';
-  const title = make('div', 'chart-title', esc(o.title) + (o.unit ? `<span class="fb-unit">${esc(o.unit)}</span>` : ''));
-  const tools = make('div', 'fb-tools');
-  const infoBtn = make('button', '', 'ⓘ'); infoBtn.type = 'button'; infoBtn.title = 'Cách đọc, cách tính'; infoBtn.setAttribute('aria-expanded', 'false');
-  const tblBtn = make('button', '', 'Bảng'); tblBtn.type = 'button'; tblBtn.setAttribute('aria-pressed', 'false');
-  if (o.info) tools.append(infoBtn);
-  if (o.table) tools.append(tblBtn);
-  const info = make('div', 'fb-info', o.info || ''); info.hidden = true;
-  const body = make('div', o.html ? 'fb-html' : 'fb-canvas');
-  const table = make('div', 'fb-table'); table.hidden = true;
-  const src = make('p', 'pw-src', 'Nguồn: ' + o.source);
-  el.append(title, tools, info, body, table, src);
-  if (o.note) el.append(make('p', 'pw-src-note', esc(o.note)));
-  infoBtn.addEventListener('click', () => { info.hidden = !info.hidden; infoBtn.setAttribute('aria-expanded', String(!info.hidden)); });
-  tblBtn.addEventListener('click', () => {
-    const on = table.hidden; table.hidden = !on; body.hidden = on; tblBtn.setAttribute('aria-pressed', String(on));
-    if (on) table.innerHTML = tableHtml(o.table());
-  });
-  if (o.html) body.innerHTML = o.html;
-  return body;
+/* ---------- thẻ chart (cùng cấu trúc thẻ của Điện) ---------- */
+function card(id, title, o = {}) {
+  const c = el('div', 'card pp-card fs-share-host' + (o.cls ? ' ' + o.cls : ''));
+  c.dataset.blockId = id; c.dataset.updateKind = o.kind || 'public'; c.dataset.cadence = o.cadence || 'monthly'; c.dataset.refreshStatus = 'loaded';
+  c.innerHTML = `<div class="chart-title">${esc(title)}${o.info ? '<button class="chart-info-button fb-info-btn" type="button" aria-expanded="false" aria-label="Cách đọc, cách tính">ⓘ</button>' : ''}</div>`
+    + (o.sub ? `<div class="chart-sub">${o.sub}</div>` : '') + (o.info ? `<div class="fb-info" hidden>${o.info}</div>` : '')
+    + `<div class="pp-host" id="${id}-host"></div><div class="pw-src">Nguồn: ${o.source || ''}</div>` + (o.note ? `<div class="pw-src-note">${esc(o.note)}</div>` : '');
+  const b = c.querySelector('.fb-info-btn');
+  if (b) b.addEventListener('click', () => { const i = c.querySelector('.fb-info'); i.hidden = !i.hidden; b.setAttribute('aria-expanded', String(!i.hidden)); });
+  return {el: c, host: c.querySelector('.pp-host')};
 }
-function tableHtml(t) {
-  const head = '<tr>' + t.head.map(h => `<th>${esc(h)}</th>`).join('') + '</tr>';
-  const rows = t.rows.map(r => '<tr>' + r.map((c, i) => `<td>${i === 0 ? esc(c) : (fin(c) ? nf(c, t.digits ?? 1) : esc(c ?? '–'))}</td>`).join('') + '</tr>').join('');
-  return `<table><thead>${head}</thead><tbody>${rows}</tbody></table>`;
+function chart(host, key, categories, series, o = {}) {
+  const model = {key, categories, series: series.map(s => ({...s, values: s.values.map(v => fin(v) ? Math.round(v * 100) / 100 : null)})), unit: o.unit || '', digits: o.digits ?? 0,
+    stackable: !!o.stackable, native: o.native || 'line', zeroBase: o.zeroBase !== false, aria: o.aria || key};
+  if (o.native === 'line' || !o.native) model.series.forEach(s => { s.kind = s.kind || 'line'; });
+  if (!window.ChartTypes) return;
+  ChartTypes.mount(host, model, () => { host.innerHTML = ChartTypes.render(model, model.native); });
 }
-// Bảng từ các chuỗi của chart: cột = chuỗi, dòng = kỳ (mới nhất trên cùng).
-const seriesTable = (labels, sets, digits = 1) => ({head: ['Kỳ', ...sets.map(s => s.label)], rows: labels.map((l, i) => [l, ...sets.map(s => s.data[i])]).reverse(), digits});
+// Bảng nhiệt so cùng kỳ năm × tháng (kiểu .pv-hm của Điện).
+function heat(id, title, sub, k, years, source) {
+  const cell = v => v == null ? '#EEF0F6' : v >= 30 ? '#1D2678' : v >= 15 ? '#2938A8' : v >= 5 ? '#6171C5' : v >= 0 ? '#B3BDE8' : v >= -15 ? '#f3c3ad' : '#dd7f4e';
+  const c = el('div', 'card pv-hm'); c.dataset.blockId = id; c.dataset.updateKind = 'public'; c.dataset.cadence = 'monthly';
+  const rows = years.map(y => `<div class="pv-hm-row"><span class="pv-hm-y">${y}</span>${Array.from({length: 12}, (_, i) => {
+    const m = `${y}-${String(i + 1).padStart(2, '0')}`, v = yoy(k, m);
+    return `<span class="pv-hm-c" style="background:${cell(v)};color:${v != null && v >= 5 ? '#fff' : '#303540'}" title="${i + 1}/${y}: ${v == null ? 'chưa có số' : sg(v) + '% so cùng kỳ'}">${v == null ? '' : sg(v, 0)}</span>`; }).join('')}</div>`).join('');
+  c.innerHTML = `<div class="chart-title">${esc(title)}</div><div class="chart-sub">${sub}</div>
+    <div class="pv-hm-grid"><div class="pv-hm-row pv-hm-head"><span class="pv-hm-y"></span>${Array.from({length: 12}, (_, i) => `<span>T${i + 1}</span>`).join('')}</div>${rows}</div>
+    <div class="pw-src">Nguồn: ${source}; tự tính so cùng tháng năm trước</div>`;
+  return c;
+}
+// Chart "so cùng tháng": mỗi năm một chuỗi, trục T1…T12 (như chart sản lượng tháng của Điện).
+function seasonal(host, key, k, years, o = {}) {
+  const cats = Array.from({length: 12}, (_, i) => `T${String(i + 1).padStart(2, '0')}`);
+  const cols = YEARC.slice(-years.length);
+  chart(host, key, cats, years.map((y, j) => ({name: String(y), color: cols[j], kind: o.native === 'line' ? 'line' : 'bar', values: cats.map((_, i) => val(k, `${y}-${String(i + 1).padStart(2, '0')}`))})),
+    {unit: o.unit, digits: o.digits, native: o.native || 'bar', zeroBase: o.zeroBase});
+}
+const panel = (num, q, sub) => el('section', 'pp-panel pp-q', `<header class="pp-ph"><span class="pp-num">${num}</span><div><h3>${esc(q)}</h3>${sub ? `<p>${sub}</p>` : ''}</div></header>`);
+const two = (...cards) => { const g = el('div', 'grid two g2'); cards.forEach(c => g.append(c.el || c)); return g; };
+// Ô KPI có đường nhỏ (giống hàng KPI đầu sub-tab của Điện).
+function kpi(label, value, unit, delta, sub, spark, color) {
+  const k = el('div', 'kpi pp-kpi', `<div class="label l">${esc(label)}</div><div class="value v">${value}${unit ? `<small> ${esc(unit)}</small>` : ''}</div><div class="delta pp-neutral">${delta || ''}</div><div class="sub s">${sub || ''}</div><div class="fb-spark"></div>`);
+  if (spark && window.ChartTypes) requestAnimationFrame(() => ChartTypes.spark(k.querySelector('.fb-spark'), spark, color || C.blue));
+  return k;
+}
+const kpiRow = items => { const g = el('section', 'grid kpis pp-kpis'); items.forEach(i => g.append(i)); return g; };
+const tail = (k, n) => recs(k).slice(-n).map(r => r.value);
+const lastYears = (k, n) => { const ys = [...new Set(recs(k).map(r => r.date.slice(0, 4)))]; return ys.slice(-n); };
 
-function draw(el, cfg) {
-  const id = el.closest('[data-chart]').dataset.chart;
-  charts[id]?.destroy();
-  const cv = make('canvas'); el.replaceChildren(cv);
-  const base = {responsive: true, maintainAspectRatio: false, animation: false, interaction: {mode: 'index', intersect: false},
-    plugins: {legend: {position: 'bottom', labels: {boxWidth: 10, boxHeight: 10, color: ink(), font: {size: 12}}},
-      tooltip: {filter: c => c.raw != null, callbacks: {label: c => `${c.dataset.label}: ${fin(c.parsed.y ?? c.parsed.x) ? nf(c.parsed[cfg.type === 'bar' && cfg.options?.indexAxis === 'y' ? 'x' : 'y'], cfg.digits ?? 1) : '–'}`}}},
-    scales: {x: {ticks: {color: ink(), maxRotation: 0, autoSkip: true, autoSkipPadding: 14}, grid: {display: false}},
-      y: {ticks: {color: ink(), callback: v => nf(v, cfg.yDigits ?? 0)}, grid: {color: grid()}}}};
-  const options = merge(base, cfg.options || {});
-  charts[id] = new Chart(cv, {type: cfg.type || 'line', data: cfg.data, options, plugins: cfg.plugins || []});
-}
-function merge(a, b) { const o = {...a}; for (const k in b) o[k] = b[k] && typeof b[k] === 'object' && !Array.isArray(b[k]) && a[k] && typeof a[k] === 'object' ? merge(a[k], b[k]) : b[k]; return o; }
-const line = (label, data, color, extra = {}) => ({label, data, borderColor: color, backgroundColor: color, borderWidth: 2, pointRadius: 0, pointHoverRadius: 3, tension: .2, spanGaps: false, ...extra});
-const bar = (label, data, color, extra = {}) => ({label, data, backgroundColor: color, borderColor: color, borderWidth: 0, ...extra});
-// Vạch dọc đánh dấu một mốc (vd. thuế GTGT 5% từ 01/07/2025).
-const marker = (labelAt, text) => ({id: 'fbMarker', afterDraw(chart) {
-  const x = chart.scales.x, i = chart.data.labels.indexOf(labelAt); if (i < 0) return;
-  const px = x.getPixelForValue(i), {top, bottom} = chart.chartArea, ctx = chart.ctx;
-  ctx.save(); ctx.strokeStyle = C.plum; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(px, top); ctx.lineTo(px, bottom); ctx.stroke();
-  ctx.setLineDash([]); ctx.fillStyle = C.plum; ctx.font = '600 11px Inter, system-ui, sans-serif'; ctx.textAlign = 'left'; ctx.fillText(text, px + 4, top + 12); ctx.restore();
-}});
-
-/* ---------- chuỗi tháng ---------- */
-function monthAxis(keys, from) {
-  const set = new Set(); keys.forEach(k => recs(k).forEach(r => { if (r.date >= from) set.add(r.date); }));
-  return [...set].sort();
-}
-const align = (k, labels) => { const m = new Map(recs(k).map(r => [r.date, r.value])); return labels.map(l => m.has(l) ? m.get(l) : null); };
-const yoy = (k, date) => { const [y, m] = date.split('-'); const a = valAt(k, date), b = valAt(k, `${+y - 1}-${m}`); return fin(a) && fin(b) && b ? (a / b - 1) * 100 : null; };
-
-/* ---------- KPI đầu trang ---------- */
-function kpis() {
-  const host = $('#fb-kpis'); if (!host) return;
-  const zce = last('urea_zce_daily');
-  const zceYoy = (() => { if (!zce) return null; const d = new Date(zce.date); d.setFullYear(d.getFullYear() - 1); const t = d.toISOString().slice(0, 10);
-    const r = recs('urea_zce').find(x => x.date === t.slice(0, 7)); return r ? (zce.value / r.value - 1) * 100 : null; })();
-  const items = [
-    ['Urê thế giới · ' + mLabel(last('urea').date), nf(last('urea').value, 0), 'USD/tấn', yoy('urea', last('urea').date), 'so cùng kỳ'],
-    ['Urê Trịnh Châu · ' + dLabel(zce.date), nf(zce.value, 0), 'CNY/tấn', zceYoy, 'so cuối tháng cùng kỳ'],
-    ['DAP · ' + mLabel(last('dap').date), nf(last('dap').value, 0), 'USD/tấn', yoy('dap', last('dap').date), 'so cùng kỳ'],
-    ['Khí châu Âu (TTF) · ' + mLabel(last('gas_eu').date), nf(last('gas_eu').value, 2), 'USD/MMBtu', yoy('gas_eu', last('gas_eu').date), 'so cùng kỳ'],
+/* =========================== TỔNG QUAN NGÀNH =========================== */
+function brief() {
+  const host = $('#dataBrief'); if (!host) return;
+  const u = last('urea'), dap = last('dap'), g = last('gas_eu'), o = last('urea_output'), M = +o.date.slice(5), y = +o.date.slice(0, 4);
+  const uo = ytd('urea_output', y, M), uo0 = ytd('urea_output', y - 1, M), no = ytd('npk_output', y, M), no0 = ytd('npk_output', y - 1, M);
+  const lead = `Giá urê thế giới ${mL(u.date)} ${nf(u.value)} USD/tấn (${sg(yoy('urea', u.date))}% so cùng kỳ), DAP ${nf(dap.value)} USD/tấn (${sg(yoy('dap', dap.date))}%); `
+    + `khí châu Âu ${nf(g.value, 1)} USD/MMBtu (${sg(yoy('gas_eu', g.date), 0)}%); sản lượng urê ${M} tháng ${nf(uo)} nghìn tấn (${sg((uo / uo0 - 1) * 100)}%), NPK ${nf(no)} nghìn tấn (${sg((no / no0 - 1) * 100)}%).`;
+  const tiles = [
+    ['Giá urê thế giới', nf(u.value), 'USD/tấn', `${sg(yoy('urea', u.date))}% so cùng kỳ · ${mL(u.date)}`, tail('urea', 36), C.blue, SRC.wb],
+    ['Giá DAP', nf(dap.value), 'USD/tấn', `${sg(yoy('dap', dap.date))}% so cùng kỳ · ${mL(dap.date)}`, tail('dap', 36), C.gold, SRC.wb],
+    ['Khí châu Âu (TTF)', nf(g.value, 1), 'USD/MMBtu', `${sg(yoy('gas_eu', g.date), 0)}% so cùng kỳ · ${mL(g.date)}`, tail('gas_eu', 36), C.grey, SRC.wb],
+    [`Sản lượng urê ${M} tháng`, nf(uo), 'nghìn tấn', `${sg((uo / uo0 - 1) * 100)}% so cùng kỳ · 01–${String(M).padStart(2, '0')}/${y}`, tail('urea_output', 36), C.teal, SRC.nso],
   ];
-  host.innerHTML = items.map(([l, v, u, g, gl]) => `<div class="kpi card"><div class="l">${esc(l)}</div><div class="v">${v} <small class="fb-unit">${u}</small></div>`
-    + `<div class="d">${fin(g) ? `<b class="${g >= 0 ? 'up' : 'down'}">${pct(g)}</b> ${gl}` : ''}</div></div>`).join('');
+  host.innerHTML = `<div class="db-l"><div class="db-k"><span class="db-dot"></span>Bản tin dữ liệu</div><div class="db-tk">Phân bón</div><p class="db-lead">${esc(lead)}</p></div><div class="db-r"></div>`;
+  tiles.forEach(([t, v, un, s, sp, col, src]) => {
+    const c = el('div', 'db-c card', `<div class="db-ch">${esc(t)}</div><div class="db-v">${v}<span class="db-u">${esc(un)}</span></div><div class="db-s">${esc(s)}</div><div class="db-spark"></div><div class="pw-src">Nguồn: ${src}</div>`);
+    host.querySelector('.db-r').append(c);
+    if (window.ChartTypes) requestAnimationFrame(() => ChartTypes.spark(c.querySelector('.db-spark'), sp, col));
+  });
 }
-
-/* ---------- định nghĩa từng chart ---------- */
-const F = D.fin, E = F && window.IndustryFin ? window.IndustryFin.create(F) : null;
-const groupColor = Object.fromEntries((F?.groups || []).map(g => [g.id, g.color]));
-const finState = {mode: 'q', n: 12, groups: new Set((F?.groups || []).map(g => g.id))};
-const finSel = () => E ? E.tickersOf([...finState.groups]) : [];
-const finLabels = res => { const L = res.labels.map(l => finState.mode === 'y' ? l : qLabel(l)); return L; };
-// Cắt n kỳ gần nhất có số (bỏ kỳ đầu toàn null khi TTM).
-function cut(labels, sets) {
-  let end = labels.length; while (end > 0 && sets.every(s => !fin(s.data[end - 1]))) end--;
-  const n = finState.mode === 'y' ? labels.length : finState.n, start = Math.max(0, end - n);
-  return {labels: labels.slice(start, end), sets: sets.map(s => ({...s, data: s.data.slice(start, end)}))};
+// Tỷ trọng doanh thu 4 quý gần nhất theo nhóm sản phẩm (chip % và độ dày luồng trên sơ đồ).
+function groupShare() {
+  if (!E) return {};
+  const r = E.byGroup('revenue', E.tickers, 'ttm'), i = r.labels.length - 1, tot = r.groups.reduce((a, g) => a + (g.values[i] || 0), 0);
+  return Object.fromEntries(r.groups.map(g => [g.id, tot ? g.values[i] / tot * 100 : null]));
 }
-const modeText = () => ({q: 'theo quý', ttm: '4 quý gần nhất cộng dồn', y: 'theo năm'})[finState.mode];
-const lastQ = F ? F.periods.at(-1) : null;
-
-const SPEC = {
-  chain: () => ({
-    title: 'Chuỗi giá trị ngành phân bón và doanh nghiệp niêm yết', source: SRC.ar,
-    info: 'Sơ đồ xếp doanh nghiệp theo sản phẩm chính. Đạm urê đi từ khí tự nhiên hoặc than qua amoniac; lân và DAP đi từ quặng apatit và axit; NPK phối trộn đạm, lân, kali (kali Việt Nam nhập khẩu).',
-    html: `<div class="fb-chain">
-      <div class="fb-col"><h4>Nguyên liệu</h4>
-        <div class="fb-node" style="--c:${C.navy}"><b>Khí tự nhiên</b>nguồn khí trong nước</div>
-        <div class="fb-node" style="--c:${C.grey}"><b>Than</b>than antraxit</div>
-        <div class="fb-node" style="--c:${C.gold}"><b>Quặng apatit, lưu huỳnh</b>apatit Lào Cai</div>
-        <div class="fb-node" style="--c:${C.teal}"><b>Kali (MOP)</b>nhập khẩu</div></div>
-      <div class="fb-col"><h4>Trung gian</h4>
-        <div class="fb-node" style="--c:${C.navy}"><b>Amoniac (NH₃)</b>từ khí hoặc than</div>
-        <div class="fb-node" style="--c:${C.gold}"><b>Axit sulfuric, axit phosphoric</b>từ lưu huỳnh, apatit</div></div>
-      <div class="fb-col"><h4>Phân bón · doanh nghiệp</h4>
-        <div class="fb-node" style="--c:${C.navy}"><b>Urê từ khí</b><span class="fb-tk">DPM</span><span class="fb-tk">DCM</span></div>
-        <div class="fb-node" style="--c:${C.grey}"><b>Urê từ than</b><span class="fb-tk">DHB</span></div>
-        <div class="fb-node" style="--c:${C.gold}"><b>DAP, supe lân, lân nung chảy</b><span class="fb-tk">DDV</span><span class="fb-tk">LAS</span><span class="fb-tk">VAF</span><span class="fb-tk">NFC</span></div>
-        <div class="fb-node" style="--c:${C.teal}"><b>NPK phối trộn</b><span class="fb-tk">BFC</span><span class="fb-tk">SFG</span> · DPM, DCM, LAS cũng có NPK</div></div>
-      <div class="fb-col"><h4>Đầu ra</h4>
-        <div class="fb-node" style="--c:${C.sky}"><b>Tiêu thụ trong nước</b>lúa, cà phê, cây ăn trái, rau màu</div>
-        <div class="fb-node" style="--c:${C.sky}"><b>Xuất khẩu</b>Campuchia, Hàn Quốc, Philippines…</div></div>
-    </div>`
-  }),
-  scale: () => {
-    if (!E) return null;
-    const sel = E.tickers, rev = E.total('revenue', sel, 'ttm'), np = E.total('npat_parent', sel, 'ttm'), i = rev.labels.length - 1;
-    const rows = sel.map(t => ({t, g: E.groupOf[t], r: rev.per[t][i], p: np.per[t][i]})).sort((a, b) => (b.r ?? -1) - (a.r ?? -1));
-    return {title: `Doanh thu và lợi nhuận 4 quý gần nhất (đến ${qLabel(lastQ)})`, unit: 'tỷ đồng', source: SRC.vnd,
-      info: 'Cộng 4 quý gần nhất của BCTC hợp nhất. Lợi nhuận là LNST thuộc cổ đông công ty mẹ. Màu cột doanh thu theo nhóm sản phẩm chính.',
-      table: () => ({head: ['Mã', 'Nhóm', 'Doanh thu', 'LNST cổ đông mẹ'], rows: rows.map(r => [r.t, F.groups.find(g => g.id === r.g).label, r.r, r.p]), digits: 0}),
-      // Mỗi nhóm một chuỗi doanh thu (chú giải theo màu nhóm), cùng chồng 'rev'; LNST chồng riêng 'np' đứng cạnh.
-      chart: {type: 'bar', digits: 0, data: {labels: rows.map(r => r.t), datasets: [
-        ...F.groups.map(g => bar('Doanh thu · ' + g.label, rows.map(r => r.g === g.id ? r.r : null), g.color, {stack: 'rev'})),
-        bar('LNST cổ đông mẹ', rows.map(r => r.p), C.sky, {stack: 'np'})]},
-        options: {scales: {x: {stacked: true}, y: {stacked: true}}}}};
-  },
-  prices: () => {
-    const keys = ['urea', 'dap', 'tsp', 'potash', 'phosrock'], L = monthAxis(keys, '2019-01');
-    const sets = [line('Urê', align('urea', L), C.navy), line('DAP', align('dap', L), C.gold), line('TSP', align('tsp', L), C.plum),
-      line('Kali clorua', align('potash', L), C.teal), line('Quặng phosphate', align('phosrock', L), C.grey, {borderDash: [4, 3]})];
-    const labels = L.map(mLabel);
-    return {title: 'Giá phân bón và nguyên liệu thế giới', unit: 'USD/tấn, bình quân tháng', source: SRC.wb,
-      info: 'Urê: hạt, FOB Trung Đông. DAP: FOB Mỹ vùng Vịnh. TSP: supe lân kép. Kali clorua: MOP. Quặng phosphate: Morocco. Số bình quân tháng do World Bank công bố (cập nhật đầu tháng sau).',
-      table: () => seriesTable(labels, sets, 1), chart: {data: {labels, datasets: sets}}};
-  },
-  zce: () => {
-    const R = recs('urea_zce_daily'), labels = R.map(r => dLabel(r.date)), sets = [line('Urê ZCE (HĐ liên tục)', R.map(r => r.value), C.navy)];
-    return {title: 'Urê tương lai Trịnh Châu · 1 năm', unit: 'CNY/tấn', source: SRC.zce,
-      info: 'Giá đóng cửa ngày của hợp đồng urê liên tục (UR0) trên Sở Giao dịch hàng hóa Trịnh Châu. Hợp đồng liên tục chuyển kỳ hạn, nên chênh lệch qua ngày chuyển có thể gồm khoảng chênh giữa hai kỳ hạn.',
-      table: () => seriesTable(labels, sets, 0), chart: {digits: 0, data: {labels, datasets: sets}}};
-  },
-  yoy: () => {
-    const lastM = last('urea').date, [y, m] = lastM.split('-').map(Number);
-    const months = Array.from({length: 12}, (_, i) => { const d = new Date(y, m - 12 + i, 1); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`; });
-    const labels = months.map(mLabel), sets = [bar('Urê', months.map(d => yoy('urea', d)), C.navy), bar('DAP', months.map(d => yoy('dap', d)), C.gold), bar('Kali clorua', months.map(d => yoy('potash', d)), C.teal)];
-    return {title: 'Giá so cùng kỳ năm trước', unit: '%', source: SRC.wb, info: 'Giá bình quân tháng so với cùng tháng năm trước, tính từ số World Bank.',
-      table: () => seriesTable(labels, sets, 1), chart: {type: 'bar', data: {labels, datasets: sets}, options: {scales: {y: {ticks: {callback: v => nf(v, 0) + '%'}}}}}};
-  },
-  gas: () => {
-    const L = monthAxis(['gas_us', 'gas_eu', 'lng_jp'], '2019-01'), labels = L.map(mLabel);
-    const sets = [line('Khí châu Âu (TTF)', align('gas_eu', L), C.navy), line('LNG nhập khẩu Nhật Bản', align('lng_jp', L), C.gold), line('Khí Mỹ (Henry Hub)', align('gas_us', L), C.teal)];
-    return {title: 'Giá khí tự nhiên', unit: 'USD/MMBtu, bình quân tháng', source: SRC.wb, info: 'Khí là nguyên liệu chính để sản xuất amoniac rồi urê. Ba chuỗi bình quân tháng của World Bank: TTF (châu Âu), LNG nhập khẩu Nhật Bản, Henry Hub (Mỹ).',
-      table: () => seriesTable(labels, sets, 2), chart: {digits: 2, yDigits: 0, data: {labels, datasets: sets}}};
-  },
-  spread: () => {
-    const L = monthAxis(['urea', 'gas_eu'], '2019-01'), labels = L.map(mLabel), u = align('urea', L), g = align('gas_eu', L);
-    const cost = g.map(v => fin(v) ? v * 22 : null), sp = u.map((v, i) => fin(v) && fin(cost[i]) ? v - cost[i] : null);
-    const sets = [line('Giá urê', u, C.navy), line('Chi phí khí cho 1 tấn urê ở châu Âu', cost, C.gold), bar('Chênh lệch', sp, 'rgba(137,151,214,.45)', {type: 'bar'})];
-    return {title: 'Giá urê so với chi phí khí ở châu Âu (tự tính)', unit: 'USD/tấn', source: SRC.wb,
-      info: 'Chi phí khí = giá khí TTF × 22 MMBtu cho mỗi tấn urê (mức tiêu hao giả định của nhà máy dùng khí). Chênh lệch = giá urê − chi phí khí; chưa trừ chi phí khác. Không phản ánh giá khí của nhà máy trong nước.',
-      table: () => seriesTable(labels, sets, 0), chart: {digits: 0, data: {labels, datasets: sets}}};
-  },
-  oilcoal: () => {
-    const L = monthAxis(['brent', 'coal_au'], '2019-01'), labels = L.map(mLabel);
-    const sets = [line('Dầu Brent (USD/thùng)', align('brent', L), C.navy, {yAxisID: 'y'}), line('Than Úc (USD/tấn)', align('coal_au', L), C.grey, {yAxisID: 'y1'})];
-    return {title: 'Dầu Brent và than Úc', unit: 'bình quân tháng', source: SRC.wb, info: 'Trục trái: Brent (USD/thùng). Trục phải: than Úc Newcastle (USD/tấn). Than là nguyên liệu của urê từ than.',
-      table: () => seriesTable(labels, sets, 1), chart: {data: {labels, datasets: sets}, options: {scales: {y1: {position: 'right', grid: {display: false}, ticks: {color: ink()}}}}}};
-  },
-  output: () => {
-    const L = monthAxis(['urea_output', 'npk_output'], '2021-01'), labels = L.map(mLabel);
-    const sets = [bar('Phân urê', align('urea_output', L), C.navy), bar('Phân NPK', align('npk_output', L), C.teal)];
-    return {title: 'Sản lượng phân bón sản xuất trong nước theo tháng', unit: 'nghìn tấn', source: SRC.nso,
-      info: 'Sản lượng sản phẩm công nghiệp chủ yếu do Cục Thống kê công bố hằng tháng. Tháng gần nhất là số ước tính; số sơ bộ của tháng trước thay số ước tính khi có biểu tháng sau. Tháng không có số để trống.',
-      table: () => seriesTable(labels, sets, 1), chart: {type: 'bar', data: {labels, datasets: sets}}};
-  },
-  outputYtd: () => {
-    const lm = last('urea_output').date, M = +lm.slice(5), years = [...new Set(recs('urea_output').map(r => r.date.slice(0, 4)))].filter(y => y >= '2019');
-    const sum = (k, y) => { let s = 0; for (let m = 1; m <= M; m++) { const v = valAt(k, `${y}-${String(m).padStart(2, '0')}`); if (!fin(v)) return null; s += v; } return s; };
-    const labels = years.map(y => `${M}T/${y}`), sets = [bar('Phân urê', years.map(y => sum('urea_output', y)), C.navy), bar('Phân NPK', years.map(y => sum('npk_output', y)), C.teal)];
-    return {title: `Sản lượng lũy kế ${M} tháng đầu năm`, unit: 'nghìn tấn', source: SRC.nso,
-      info: `Cộng tháng 1 đến tháng ${M} của từng năm. Năm thiếu số một tháng thì để trống, không ước lượng.`,
-      table: () => seriesTable(labels, sets, 1), chart: {type: 'bar', data: {labels, datasets: sets}}};
-  },
-  finRevenue: () => finGroupBar('revenue', 'Doanh thu thuần theo nhóm', 'Tổng doanh thu thuần của các doanh nghiệp trong nhóm.'),
-  finProfit: () => finGroupBar('npat_parent', 'LNST cổ đông công ty mẹ theo nhóm', 'Tổng LNST thuộc cổ đông công ty mẹ của các doanh nghiệp trong nhóm.'),
-  finInventory: () => finGroupBar('inventory', 'Hàng tồn kho cuối kỳ theo nhóm', 'Số dư hàng tồn kho cuối kỳ (chế độ Năm: cuối quý 4).', true),
-  finMargin: () => finGroupRatio({m: 'gross'}, {m: 'revenue'}, 'Biên lợi nhuận gộp theo nhóm', 'Biên gộp nhóm = tổng LN gộp ÷ tổng doanh thu của các doanh nghiệp có đủ cả hai số trong kỳ (không lấy trung bình các biên).'),
-  finRoe: () => {
-    if (!E) return null;
-    // ROE = LNST hợp nhất (4 quý hoặc năm) ÷ VCSH bình quân; chỉ tính doanh nghiệp có VCSH dương ở cả hai đầu kỳ (VCSH âm làm hệ số vô nghĩa).
-    const mode = finState.mode === 'q' ? 'ttm' : finState.mode, k = mode === 'y' ? 1 : 4, sel = finSel();
-    const num = E.per('npat', sel, mode), den = E.per('equity', sel, mode, true), eq = E.per('equity', sel, mode === 'y' ? 'y' : 'q');
-    const L = E.labels(mode), ok = (t, i) => fin(num[t][i]) && fin(den[t][i]) && den[t][i] > 0 && eq[t][i] > 0 && eq[t][i - k] > 0;
-    const roe = ts => L.map((_, i) => { const u = ts.filter(t => ok(t, i)); if (!u.length) return null; const d = u.reduce((a, t) => a + den[t][i], 0); return u.reduce((a, t) => a + num[t][i], 0) / d * 100; });
-    const gs = F.groups.filter(g => sel.some(t => E.groupOf[t] === g.id));
-    const sets0 = [...gs.map(g => line(g.label, roe(sel.filter(t => E.groupOf[t] === g.id)), g.color)), line('Cả nhóm chọn', roe(sel), C.plum, {borderDash: [5, 4]})];
-    const {labels, sets} = cut(L.map(l => mode === 'y' ? l : qLabel(l)), sets0);
-    return {title: 'ROE theo nhóm', unit: '% · ' + (mode === 'y' ? 'theo năm' : '4 quý gần nhất cộng dồn'), source: SRC.vnd,
-      info: 'ROE nhóm = tổng LNST hợp nhất ÷ tổng VCSH bình quân (cuối kỳ và cùng kỳ năm trước, gồm cổ đông không kiểm soát). Doanh nghiệp có VCSH âm ở một trong hai đầu kỳ không được tính kỳ đó. Chế độ Quý dùng 4 quý gần nhất cộng dồn.',
-      table: () => seriesTable(labels, sets, 1), chart: {data: {labels, datasets: sets}, options: {scales: {y: {ticks: {callback: v => nf(v, 0) + '%'}}}}}};
-  },
-  finNetDebt: () => {
-    if (!E) return null;
-    const sel = finSel(), i = F.periods.length - 1;
-    const rows = sel.map(t => ({t, g: E.groupOf[t], v: E.series(t, 'net_debt', 'q')[i]})).sort((a, b) => (a.v ?? 0) - (b.v ?? 0));
-    return {title: `Nợ vay ròng cuối ${qLabel(lastQ)}`, unit: 'tỷ đồng', source: SRC.vnd,
-      info: 'Nợ vay ròng = vay ngắn hạn + vay dài hạn − tiền − đầu tư tài chính ngắn hạn. Số âm: tiền và tiền gửi nhiều hơn nợ vay.',
-      table: () => ({head: ['Mã', 'Nợ vay ròng'], rows: rows.map(r => [r.t, r.v]), digits: 0}),
-      chart: {type: 'bar', digits: 0, data: {labels: rows.map(r => r.t), datasets: [bar('Nợ vay ròng', rows.map(r => r.v), rows.map(r => groupColor[r.g]))]},
-        options: {indexAxis: 'y', plugins: {legend: {display: false}}, scales: {x: {grid: {color: grid()}, ticks: {callback: v => nf(v, 0)}}, y: {grid: {display: false}, ticks: {callback(v) { return this.getLabelForValue(v); }}}}}}};
-  },
-  vat: () => ({
-    title: 'Thuế GTGT đối với phân bón', source: SRC.law,
-    info: 'Hai mốc thay đổi cách tính thuế giá trị gia tăng với phân bón. Khi không chịu thuế, thuế GTGT đầu vào của nhà sản xuất không được khấu trừ; khi chịu thuế 5%, thuế đầu vào được khấu trừ.',
-    html: `<div class="fb-timeline">
-      <div class="fb-step"><div class="fb-when">01/01/2015 → 30/06/2025 · Luật số 71/2014/QH13</div><div class="fb-big">Không chịu thuế</div><div class="fb-what">Phân bón chuyển sang nhóm không chịu thuế GTGT; thuế GTGT đầu vào không được khấu trừ.</div></div>
-      <div class="fb-step now"><div class="fb-when">Từ 01/07/2025 · Luật Thuế GTGT số 48/2024/QH15</div><div class="fb-big">5%</div><div class="fb-what">Phân bón chịu thuế suất 5%; thuế GTGT đầu vào được khấu trừ.</div></div>
-    </div>`
-  }),
-  vatMargin: () => {
-    if (!E) return null;
-    const tick = ['DPM', 'DCM', 'DHB', 'DDV', 'BFC'], P = F.periods, start = P.indexOf('2023Q1');
-    const labels = P.slice(start).map(qLabel), cols = [C.navy, C.sky, C.grey, C.gold, C.teal];
-    const sets = tick.map((t, j) => line(t, E.ratio({m: 'gross'}, {m: 'revenue'}, [t], 'q', 100).values.slice(start), cols[j]));
-    return {title: 'Biên lợi nhuận gộp theo quý quanh mốc thuế GTGT 5%', unit: '%', source: SRC.vnd,
-      info: 'Biên gộp = LN gộp ÷ doanh thu thuần của từng doanh nghiệp, theo quý. Vạch đứt: quý 3/2025, quý đầu tiên áp dụng thuế GTGT 5%.',
-      table: () => seriesTable(labels, sets, 1), chart: {data: {labels, datasets: sets}, plugins: [marker('Q3/2025', 'GTGT 5%')], options: {scales: {y: {ticks: {callback: v => nf(v, 0) + '%'}}}}}};
-  },
-};
-function finGroupBar(m, title, info, stock) {
-  if (!E) return null;
-  const res = E.byGroup(m, finSel(), finState.mode === 'ttm' && stock ? 'q' : finState.mode);
-  const raw = finLabels(res), sets0 = res.groups.map(g => bar(g.label, g.values, g.color, {stack: 's'}));
-  const {labels, sets} = cut(raw, sets0);
-  return {title, unit: 'tỷ đồng · ' + (stock ? (finState.mode === 'y' ? 'cuối năm' : 'cuối quý') : modeText()), source: SRC.vnd, info: info + ' Doanh nghiệp thiếu số kỳ nào thì không được cộng kỳ đó.',
-    table: () => seriesTable(labels, sets, 0), chart: {type: 'bar', digits: 0, data: {labels, datasets: sets}, options: {scales: {x: {stacked: true}, y: {stacked: true}}}}};
+function chain(host) {
+  if (!window.ValueChain) return;
+  const K = {gas: C.blue, coal: C.grey, phos: C.gold, pot: C.plum, npk: C.teal, out: C.slate, pol: C.bronze}, H = 74, share = groupShare();
+  const N = [
+    ['gas', 20, 40, 230, K.gas, 'gas', 'Khí tự nhiên', 'Mỏ khí trong nước'],
+    ['coal', 20, 140, 230, K.coal, 'coal', 'Than', 'Than antraxit trong nước'],
+    ['apatit', 20, 240, 230, K.phos, 'box', 'Quặng apatit • lưu huỳnh', 'Apatit Lào Cai'],
+    ['potash', 20, 340, 230, K.pot, 'ship', 'Kali (MOP)', 'Nhập khẩu'],
+    ['urea_gas', 318, 40, 262, K.gas, 'factory', 'Đạm urê từ khí', 'DPM • DCM'],
+    ['urea_coal', 318, 140, 262, K.coal, 'factory', 'Đạm urê từ than', 'DHB'],
+    ['phosphate', 318, 240, 262, K.phos, 'refinery', 'DAP • supe lân • lân nung chảy', 'DDV • LAS • VAF • NFC'],
+    ['npk', 318, 340, 262, K.npk, 'factory', 'NPK phối trộn', 'BFC • SFG'],
+    ['import', 672, 40, 218, K.pot, 'ship', 'Phân bón nhập khẩu', 'Urê • DAP • kali • NPK'],
+    ['dist', 672, 190, 218, K.out, 'truck', 'Phân phối • đại lý', 'Tổng công ty • đại lý cấp 1–2'],
+    ['export', 672, 340, 218, K.out, 'ship', 'Xuất khẩu', 'Thị trường nước ngoài'],
+    ['policy', 935, 40, 222, K.pol, 'law', 'Chính sách', 'Thuế GTGT 5% • giá khí'],
+    ['farm', 935, 190, 222, K.out, 'leaf', 'Nông dân', 'Lúa • cà phê • cây ăn trái'],
+  ];
+  const into = (id, c, o) => [id, 'dist', c, (R, cy) => `M${R(id)} ${cy(id)} C626 ${cy(id)},626 ${cy('dist') + o},672 ${cy('dist') + o}`];
+  const E2 = [
+    ['gas', 'urea_gas', K.gas], ['coal', 'urea_coal', K.coal], ['apatit', 'phosphate', K.phos], ['potash', 'npk', K.pot],
+    into('urea_gas', K.gas, -18), into('urea_coal', K.coal, -6), into('phosphate', K.phos, 6), into('npk', K.npk, 18),
+    ['urea_gas', 'npk', K.gas, () => `M${318 + 262} ${40 + H / 2 + 14} H606 V${340 + H / 2 - 10} H${318 + 262}`],
+    ['phosphate', 'npk', K.phos, () => `M${318 + 262} ${240 + H / 2 + 14} H598 V${340 + H / 2 + 8} H${318 + 262}`],
+    ['npk', 'export', K.npk], ['import', 'dist', K.pot, () => `M${672 + 109} ${40 + H} V190`],
+    ['dist', 'farm', K.out], ['policy', 'farm', K.pol, () => `M${935 + 111} ${40 + H} V190`, true],
+  ];
+  const pct = id => ({urea_gas: share.urea_gas, urea_coal: share.urea_coal, phosphate: share.phosphate, npk: share.npk})[id] ?? null;
+  const fig = ValueChain.draw({N, E: E2, H, height: 440, pct, width: (a, b) => b === 'dist' && fin(pct(a)) ? (3 + pct(a) * .3).toFixed(1) : null, table: 'pb-04',
+    lanes: [['NGUYÊN LIỆU', 0, 270, '#eef3fb', '#1D2678'], ['SẢN XUẤT PHÂN BÓN', 285, 320, '#eefaf9', '#2a9fa3'], ['PHÂN PHỐI · TIÊU THỤ', 620, 550, '#fbf6ea', '#b8801f']],
+    labels: [[781, 176, 'bán buôn'], [1046, 166, 'chi phí đầu vào, giá bán']],
+    legend: [[K.gas, 'Khí → urê'], [K.coal, 'Than → urê'], [K.phos, 'Apatit → lân, DAP'], [K.pot, 'Kali, hàng nhập'], [K.npk, 'NPK'], [K.out, 'Phân phối'], [K.pol, 'Chính sách', true]],
+    title: 'Chuỗi giá trị ngành phân bón', desc: 'Khí và than đi vào nhà máy đạm urê; quặng apatit và lưu huỳnh đi vào nhà máy DAP và lân; urê, lân và kali nhập khẩu được phối trộn thành NPK; phân bón qua hệ thống phân phối, đại lý tới nông dân, một phần xuất khẩu.',
+    foot: E ? `<div class="vc-day">Độ dày luồng và chip % = tỷ trọng doanh thu 4 quý gần nhất (đến ${qL(F.periods.at(-1))}) của 9 doanh nghiệp niêm yết, theo nhóm sản phẩm chính</div>` : ''});
+  host.replaceChildren(fig);
 }
-function finGroupRatio(num, den, title, info) {
-  if (!E) return null;
-  const sel = finSel(), gs = F.groups.filter(g => sel.some(t => E.groupOf[t] === g.id));
-  const raw = finLabels(E.ratio(num, den, sel, finState.mode, 100));
-  const sets0 = [...gs.map(g => line(g.label, E.ratio(num, den, E.tickersOf([g.id]), finState.mode, 100).values, g.color)),
-    line('Cả nhóm chọn', E.ratio(num, den, sel, finState.mode, 100).values, C.plum, {borderDash: [5, 4]})];
-  const {labels, sets} = cut(raw, sets0);
-  return {title, unit: '% · ' + modeText(), source: SRC.vnd, info, table: () => seriesTable(labels, sets, 1),
-    chart: {data: {labels, datasets: sets}, options: {scales: {y: {ticks: {callback: v => nf(v, 0) + '%'}}}}}};
+function overview() {
+  const pane = $('#fb-ov-map'); if (!pane) return;
+  const s1 = el('section', 'ov-sec', `<header class="ov-sh"><span class="ov-num">0.1</span><div><h3>Phân bón đi từ nguyên liệu nào, qua nhà máy nào, tới ai?</h3><p>Rê chuột vào một khâu để xem luồng; bấm khâu để xem các mã niêm yết.</p></div></header>`);
+  const c1 = el('div', 'card value-chain-card'); c1.dataset.blockId = 'pb-01'; c1.dataset.updateKind = 'static'; c1.dataset.cadence = 'rare';
+  c1.innerHTML = '<h3 class="chart-title" style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3><div class="fb-chain"></div><div class="pw-src">Nguồn: ' + SRC.ar + '; ' + SRC.vnd + '</div>';
+  s1.append(c1); pane.append(s1); chain(c1.querySelector('.fb-chain'));
+  if (E) {
+    const s2 = el('section', 'ov-sec', `<header class="ov-sh"><span class="ov-num">0.2</span><div><h3>Mỗi nhóm sản phẩm chiếm bao nhiêu doanh thu và lợi nhuận?</h3><p>Tổng 9 doanh nghiệp niêm yết, 4 quý gần nhất cộng dồn.</p></div></header>`);
+    const c2 = card('pb-02', 'Doanh thu và LNST cổ đông mẹ theo nhóm sản phẩm', {sub: `tỷ đồng · 4 quý đến ${qL(F.periods.at(-1))}`, source: SRC.vnd, cadence: 'quarterly'});
+    s2.append(c2.el); pane.append(s2);
+    const r = E.byGroup('revenue', E.tickers, 'ttm'), p = E.byGroup('npat_parent', E.tickers, 'ttm'), i = r.labels.length - 1;
+    chart(c2.host, 'pb-02', r.groups.map(g => g.label), [{name: 'Doanh thu', color: C.blue, kind: 'bar', values: r.groups.map(g => g.values[i])}, {name: 'LNST cổ đông mẹ', color: C.teal, kind: 'bar', values: p.groups.map(g => g.values[i])}], {unit: 'tỷ đ', native: 'bar'});
+  }
+  const s3 = el('section', 'ov-sec', `<header class="ov-sh"><span class="ov-num">0.3</span><div><h3>Trong nước sản xuất bao nhiêu phân urê và NPK mỗi năm?</h3><p>Cộng 12 tháng theo số Cục Thống kê; năm nay tính đến tháng mới nhất.</p></div></header>`);
+  const c3 = card('pb-03', 'Sản lượng phân urê và NPK theo năm', {sub: 'nghìn tấn', source: SRC.nso, info: 'Năm đủ 12 tháng cộng cả năm; năm hiện tại cộng các tháng đã có (ghi số tháng trên trục). Năm thiếu số một tháng thì để trống, không ước lượng.'});
+  s3.append(c3.el); pane.append(s3);
+  const lo = last('urea_output').date, ly = +lo.slice(0, 4), M = +lo.slice(5), years = [];
+  for (let y = 2019; y <= ly; y++) years.push(y);
+  chart(c3.host, 'pb-03', years.map(y => y === ly && M < 12 ? `${M}T/${y}` : String(y)), [
+    {name: 'Phân urê', color: C.blue, kind: 'bar', values: years.map(y => ytd('urea_output', y, y === ly ? M : 12))},
+    {name: 'Phân NPK', color: C.teal, kind: 'bar', values: years.map(y => ytd('npk_output', y, y === ly ? M : 12))}], {unit: 'nghìn tấn', native: 'bar', stackable: true});
 }
-
-/* ---------- vẽ khi thẻ hiện ---------- */
-function render(el) {
-  const f = SPEC[el.dataset.chart]; if (!f) return;
-  const o = f(); if (!o) { el.hidden = true; return; }
-  const body = card(el, o);
-  if (o.chart) draw(body, o.chart);
-  el.dataset.rendered = '1';
-}
-function renderVisible(root) { $$('[data-chart]', root).forEach(el => { if (!el.dataset.rendered && el.offsetParent !== null) render(el); }); }
-
-/* ---------- bộ lọc Tài chính ngành ---------- */
-function finControls() {
-  const host = $('#fb-fin-controls'); if (!host || !F) return;
-  host.innerHTML = `<label>Kỳ <select data-k="mode"><option value="q">Quý</option><option value="ttm">4 quý cộng dồn</option><option value="y">Năm</option></select></label>`
-    + `<label>Số kỳ <select data-k="n"><option value="8">8</option><option value="12" selected>12</option><option value="20">20</option><option value="99">Tất cả</option></select></label>`
-    + F.groups.map(g => `<label><input type="checkbox" data-g="${g.id}" checked><span class="fb-dot" style="background:${g.color}"></span>${esc(g.label)} <small>(${F.companies.filter(c => c.group === g.id).map(c => c.ticker).join(', ')})</small></label>`).join('');
-  const redraw = () => $$('#pane-mt2 .fb-subpane[data-sub="fin"] [data-chart]').forEach(render);
-  host.addEventListener('change', e => {
-    const t = e.target;
-    if (t.dataset.k === 'mode') finState.mode = t.value;
-    if (t.dataset.k === 'n') finState.n = +t.value;
-    if (t.dataset.g) { t.checked ? finState.groups.add(t.dataset.g) : finState.groups.delete(t.dataset.g); if (!finState.groups.size) { t.checked = true; finState.groups.add(t.dataset.g); } }
-    redraw();
+// 01 Doanh nghiệp niêm yết: thẻ từng mã (như bảng doanh nghiệp của Điện, rút gọn), bấm một khâu trên sơ đồ để lọc.
+function listed() {
+  const pane = $('#fb-ov-listed'); if (!pane || !E) return;
+  const i = F.periods.length - 1, T = m => E.total(m, E.tickers, 'ttm').per;
+  const rev = T('revenue'), np = T('npat_parent'), gr = T('gross'), nd = E.total('net_debt', E.tickers, 'q').per;
+  const box = el('div', 'card fb-co-wrap'); box.dataset.blockId = 'pb-04'; box.dataset.updateKind = 'public'; box.dataset.cadence = 'quarterly';
+  box.innerHTML = `<div class="chart-title">Doanh nghiệp niêm yết</div><div class="chart-sub">4 quý gần nhất đến ${qL(F.periods[i])} · tỷ đồng · đường nhỏ: doanh thu 12 quý</div><div class="fb-co-filter" hidden></div><div class="fb-co-grid"></div><div class="pw-src">Nguồn: ${SRC.vnd}; tự tính</div>`;
+  const grid = box.querySelector('.fb-co-grid'), gl = Object.fromEntries(F.groups.map(g => [g.id, g]));
+  const rows = F.companies.map(c => ({...c, r: rev[c.ticker][i], p: np[c.ticker][i], m: fin(gr[c.ticker][i]) && rev[c.ticker][i] ? gr[c.ticker][i] / rev[c.ticker][i] * 100 : null, d: nd[c.ticker][i]})).sort((a, b) => (b.r ?? 0) - (a.r ?? 0));
+  rows.forEach(c => {
+    const g = gl[c.group], t = el('div', 'fb-co', `<div class="fb-co-h"><b>${c.ticker}</b><span class="fb-co-g" style="--c:${g.color}">${esc(g.label)}</span></div><p>${esc(c.note || '')}</p>
+      <dl><div><dt>Doanh thu</dt><dd>${nf(c.r)}</dd></div><div><dt>LNST cổ đông mẹ</dt><dd>${nf(c.p)}</dd></div><div><dt>Biên gộp</dt><dd>${nf(c.m, 1)}%</dd></div><div><dt>Nợ vay ròng</dt><dd>${nf(c.d)}</dd></div></dl><div class="fb-spark"></div>`);
+    t.dataset.code = c.ticker; grid.append(t);
+    if (window.ChartTypes) requestAnimationFrame(() => ChartTypes.spark(t.querySelector('.fb-spark'), F.data[c.ticker].revenue.slice(-12), g.color));
+  });
+  pane.append(box);
+  // Bấm một khâu trên sơ đồ chuỗi giá trị → chỉ hiện các mã của khâu đó.
+  document.addEventListener('vc:select', e => {
+    const codes = e.detail?.codes, f = box.querySelector('.fb-co-filter');
+    grid.querySelectorAll('.fb-co').forEach(t => { t.hidden = !!codes && !codes.includes(t.dataset.code); });
+    f.hidden = !codes; f.innerHTML = codes ? `Đang lọc theo <b>${esc(e.detail.label)}</b> · <button type="button">Bỏ lọc</button>` : '';
+    f.querySelector('button')?.addEventListener('click', () => document.dispatchEvent(new CustomEvent('vc:select', {detail: {}})));
   });
 }
 
-/* ---------- tab chính, sub-tab ---------- */
+/* =========================== BỨC TRANH NGÀNH =========================== */
+const BUILT = new Set();
+const PIC = {
+  price() {
+    const p = $('#fb-pp-price'), u = last('urea'), dap = last('dap'), k = last('potash'), z = last('urea_zce_daily');
+    const zy = (() => { const t = ymAdd(z.date.slice(0, 7), -12); const r = val('urea_zce', t); return fin(r) ? (z.value / r - 1) * 100 : null; })();
+    p.append(kpiRow([
+      kpi('Urê · ' + mL(u.date), nf(u.value), 'USD/tấn', `${sg(yoy('urea', u.date))}% so cùng kỳ`, 'FOB Trung Đông · World Bank', tail('urea', 24), C.blue),
+      kpi('Urê Trịnh Châu · ' + dL(z.date), nf(z.value), 'CNY/tấn', `${sg(zy)}% so cuối tháng cùng kỳ`, 'hợp đồng liên tục UR0', tail('urea_zce_daily', 120), C.navy),
+      kpi('DAP · ' + mL(dap.date), nf(dap.value), 'USD/tấn', `${sg(yoy('dap', dap.date))}% so cùng kỳ`, 'FOB Mỹ vùng Vịnh · World Bank', tail('dap', 24), C.gold),
+      kpi('Kali clorua · ' + mL(k.date), nf(k.value), 'USD/tấn', `${sg(yoy('potash', k.date))}% so cùng kỳ`, 'MOP · World Bank', tail('potash', 24), C.plum)]));
+    p.append(el('h3', 'pp-grp', 'Đạm urê'));
+    const q1 = panel('1.1', 'Giá urê thế giới năm nay so với các năm trước thế nào?');
+    const a = card('pb-10', 'Giá urê thế giới — so cùng tháng', {sub: 'USD/tấn · bình quân tháng · FOB Trung Đông', source: SRC.wb, info: 'Số bình quân tháng World Bank công bố đầu tháng sau. Mỗi cột một năm để so cùng tháng.'});
+    const ys = lastYears('urea', 4);
+    q1.append(el('div', 'pp-main'), heat('pb-13', 'Giá urê tăng giảm bao nhiêu so cùng kỳ, từng tháng', '% · so cùng tháng năm trước', 'urea', ys.slice(-3), SRC.wb));
+    q1.querySelector('.pp-main').append(a.el); p.append(q1); seasonal(a.host, 'pb-10', 'urea', ys, {unit: 'USD/tấn'});
+    const q2 = panel('1.2', 'Giá urê tương lai ở Trung Quốc biến động thế nào trong năm qua?');
+    const b = card('pb-11', 'Urê tương lai Trịnh Châu — 1 năm', {sub: 'CNY/tấn · giá đóng cửa ngày', cadence: 'daily', source: SRC.zce, info: 'Hợp đồng urê liên tục UR0 trên Sở Giao dịch hàng hóa Trịnh Châu. Hợp đồng liên tục chuyển kỳ hạn nên chênh lệch qua ngày chuyển có thể gồm khoảng chênh giữa hai kỳ hạn.'});
+    q2.append(b.el); p.append(q2);
+    const R = recs('urea_zce_daily'); chart(b.host, 'pb-11', R.map(r => dL(r.date)), [{name: 'Urê ZCE', color: C.navy, values: R.map(r => r.value)}], {unit: 'CNY/tấn', zeroBase: false});
+    p.append(el('h3', 'pp-grp', 'Lân, DAP và kali'));
+    const q3 = panel('1.3', 'Giá DAP, lân và kali đi cùng hay ngược chiều với urê?');
+    const L = months('2019-01', u.date), c = card('pb-12', 'Giá phân bón và nguyên liệu thế giới', {sub: 'USD/tấn · bình quân tháng', source: SRC.wb, info: 'Urê: FOB Trung Đông. DAP: FOB Mỹ vùng Vịnh. TSP: supe lân kép. Kali clorua: MOP. Quặng phosphate: Morocco.'});
+    const d = card('pb-14', 'Giá so cùng kỳ năm trước, 12 tháng gần nhất', {sub: '%', source: SRC.wb + '; tự tính'});
+    q3.append(c.el, d.el); p.append(q3);
+    chart(c.host, 'pb-12', L.map(mL), [['urea', 'Urê', C.blue], ['dap', 'DAP', C.gold], ['tsp', 'TSP', C.plum], ['potash', 'Kali clorua', C.teal], ['phosrock', 'Quặng phosphate', C.grey]].map(([k2, n, col]) => ({name: n, color: col, values: L.map(m => val(k2, m))})), {unit: 'USD/tấn'});
+    const L12 = months(ymAdd(u.date, -11), u.date);
+    chart(d.host, 'pb-14', L12.map(mL), [['urea', 'Urê', C.blue], ['dap', 'DAP', C.gold], ['potash', 'Kali clorua', C.teal]].map(([k2, n, col]) => ({name: n, color: col, kind: 'bar', values: L12.map(m => yoy(k2, m))})), {unit: '%', digits: 1, native: 'bar', zeroBase: true});
+  },
+  cost() {
+    const p = $('#fb-pp-cost'), g = last('gas_eu'), h = last('gas_us'), l = last('lng_jp'), b = last('brent');
+    p.append(kpiRow([
+      kpi('Khí châu Âu (TTF) · ' + mL(g.date), nf(g.value, 2), 'USD/MMBtu', `${sg(yoy('gas_eu', g.date), 0)}% so cùng kỳ`, 'World Bank', tail('gas_eu', 24), C.blue),
+      kpi('LNG Nhật Bản · ' + mL(l.date), nf(l.value, 2), 'USD/MMBtu', `${sg(yoy('lng_jp', l.date), 0)}% so cùng kỳ`, 'World Bank', tail('lng_jp', 24), C.gold),
+      kpi('Khí Mỹ (Henry Hub) · ' + mL(h.date), nf(h.value, 2), 'USD/MMBtu', `${sg(yoy('gas_us', h.date), 0)}% so cùng kỳ`, 'World Bank', tail('gas_us', 24), C.teal),
+      kpi('Dầu Brent · ' + mL(b.date), nf(b.value, 1), 'USD/thùng', `${sg(yoy('brent', b.date), 0)}% so cùng kỳ`, 'World Bank', tail('brent', 24), C.grey)]));
+    p.append(el('h3', 'pp-grp', 'Khí — nguyên liệu của đạm urê'));
+    const q1 = panel('2.1', 'Giá khí, nguyên liệu chính để làm urê, đang ở mức nào?');
+    const L = months('2019-01', g.date), a = card('pb-20', 'Giá khí tự nhiên', {sub: 'USD/MMBtu · bình quân tháng', source: SRC.wb, info: 'Khí là nguyên liệu để sản xuất amoniac rồi urê. TTF (châu Âu), LNG nhập khẩu Nhật Bản, Henry Hub (Mỹ).'});
+    q1.append(a.el, heat('pb-23', 'Giá khí châu Âu tăng giảm bao nhiêu so cùng kỳ, từng tháng', '% · so cùng tháng năm trước', 'gas_eu', lastYears('gas_eu', 3), SRC.wb)); p.append(q1);
+    chart(a.host, 'pb-20', L.map(mL), [['gas_eu', 'Khí châu Âu (TTF)', C.blue], ['lng_jp', 'LNG Nhật Bản', C.gold], ['gas_us', 'Khí Mỹ (Henry Hub)', C.teal]].map(([k, n, c]) => ({name: n, color: c, values: L.map(m => val(k, m))})), {unit: 'USD/MMBtu', digits: 2});
+    const q2 = panel('2.2', 'Giá urê còn cách chi phí khí bao xa?');
+    const U = L.map(m => val('urea', m)), G = L.map(m => { const v = val('gas_eu', m); return fin(v) ? v * 22 : null; });
+    const sCard = card('pb-21', 'Giá urê so với chi phí khí ở châu Âu (tự tính)', {sub: 'USD/tấn urê', source: SRC.wb + '; tự tính',
+      info: 'Chi phí khí = giá khí TTF × 22 MMBtu cho mỗi tấn urê (mức tiêu hao giả định của nhà máy dùng khí). Chênh lệch = giá urê − chi phí khí, chưa trừ chi phí khác. Không phản ánh giá khí của nhà máy trong nước.'});
+    q2.append(sCard.el); p.append(q2);
+    chart(sCard.host, 'pb-21', L.map(mL), [{name: 'Chênh lệch', color: '#B3BDE8', kind: 'bar', values: U.map((v, i) => fin(v) && fin(G[i]) ? v - G[i] : null)}, {name: 'Giá urê', color: C.blue, kind: 'line', values: U}, {name: 'Chi phí khí / tấn urê', color: C.gold, kind: 'line', values: G}], {unit: 'USD/tấn', native: 'bar'});
+    p.append(el('h3', 'pp-grp', 'Dầu và than'));
+    const q3 = panel('2.3', 'Giá dầu và than thay đổi ra sao?', 'Than là nguyên liệu của đạm urê từ than; dầu ảnh hưởng chi phí vận chuyển và giá khí theo hợp đồng.');
+    const c1 = card('pb-22', 'Dầu Brent', {sub: 'USD/thùng · bình quân tháng', source: SRC.wb}), c2 = card('pb-24', 'Than Úc (Newcastle)', {sub: 'USD/tấn · bình quân tháng', source: SRC.wb});
+    q3.append(two(c1, c2)); p.append(q3);
+    chart(c1.host, 'pb-22', L.map(mL), [{name: 'Brent', color: C.navy, values: L.map(m => val('brent', m))}], {unit: 'USD/thùng', digits: 1});
+    chart(c2.host, 'pb-24', L.map(mL), [{name: 'Than Úc', color: C.grey, values: L.map(m => val('coal_au', m))}], {unit: 'USD/tấn', digits: 1});
+  },
+  output() {
+    const p = $('#fb-pp-output'), u = last('urea_output'), n = last('npk_output'), M = +u.date.slice(5), y = +u.date.slice(0, 4);
+    const uy = ytd('urea_output', y, M), uy0 = ytd('urea_output', y - 1, M), ny = ytd('npk_output', y, M), ny0 = ytd('npk_output', y - 1, M);
+    p.append(kpiRow([
+      kpi('Phân urê · ' + mL(u.date), nf(u.value, 1), 'nghìn tấn', `${sg(yoy('urea_output', u.date))}% so cùng kỳ`, 'tháng gần nhất là số ước tính', tail('urea_output', 24), C.blue),
+      kpi(`Phân urê ${M} tháng`, nf(uy), 'nghìn tấn', `${sg((uy / uy0 - 1) * 100)}% so cùng kỳ`, 'lũy kế từ đầu năm', null),
+      kpi('Phân NPK · ' + mL(n.date), nf(n.value, 1), 'nghìn tấn', `${sg(yoy('npk_output', n.date))}% so cùng kỳ`, 'tháng gần nhất là số ước tính', tail('npk_output', 24), C.teal),
+      kpi(`Phân NPK ${M} tháng`, nf(ny), 'nghìn tấn', `${sg((ny / ny0 - 1) * 100)}% so cùng kỳ`, 'lũy kế từ đầu năm', null)]));
+    const info = 'Sản lượng sản phẩm công nghiệp chủ yếu do Cục Thống kê công bố hằng tháng. Tháng gần nhất là số ước tính; số sơ bộ của tháng trước thay số ước tính khi có biểu tháng sau. Tháng không có số để trống.';
+    [['3.1', 'Sản lượng phân urê năm nay so với các năm trước?', 'urea_output', 'Phân urê', 'pb-30', 'pb-32'], ['3.2', 'Sản lượng phân NPK năm nay so với các năm trước?', 'npk_output', 'Phân NPK', 'pb-33', 'pb-34']].forEach(([num, q, k, name, id, hid]) => {
+      const pn = panel(num, q), a = card(id, `${name} — so cùng tháng`, {sub: 'nghìn tấn', source: SRC.nso, info});
+      const pm = el('div', 'pp-main'); pm.append(a.el); pn.append(pm, heat(hid, `${name} tăng giảm bao nhiêu so cùng kỳ, từng tháng`, '% · so cùng tháng năm trước', k, lastYears(k, 3), SRC.nso)); p.append(pn);
+      seasonal(a.host, id, k, lastYears(k, 4), {unit: 'nghìn tấn', digits: 1});
+    });
+    const q3 = panel('3.3', `Lũy kế ${M} tháng đầu năm qua các năm`);
+    const c = card('pb-31', `Sản lượng lũy kế ${M} tháng đầu năm`, {sub: 'nghìn tấn', source: SRC.nso, info: `Cộng tháng 1 đến tháng ${M} của từng năm. Năm thiếu số một tháng thì để trống, không ước lượng.`});
+    q3.append(c.el); p.append(q3);
+    const ys = []; for (let yy = 2019; yy <= y; yy++) ys.push(yy);
+    chart(c.host, 'pb-31', ys.map(yy => `${M}T/${yy}`), [{name: 'Phân urê', color: C.blue, kind: 'bar', values: ys.map(yy => ytd('urea_output', yy, M))}, {name: 'Phân NPK', color: C.teal, kind: 'bar', values: ys.map(yy => ytd('npk_output', yy, M))}], {unit: 'nghìn tấn', native: 'bar', stackable: true});
+  },
+  policy() {
+    const p = $('#fb-pp-policy');
+    const q1 = panel('4.1', 'Thuế GTGT với phân bón thay đổi thế nào?');
+    const c = el('div', 'card'); c.dataset.blockId = 'pb-50'; c.dataset.updateKind = 'event'; c.dataset.cadence = 'event';
+    c.innerHTML = `<div class="chart-title">Thuế GTGT đối với phân bón</div><div class="fb-timeline">
+      <div class="fb-step"><div class="fb-when">01/01/2015 → 30/06/2025 · Luật số 71/2014/QH13</div><div class="fb-big">Không chịu thuế</div><div class="fb-what">Thuế GTGT đầu vào của nhà sản xuất không được khấu trừ.</div></div>
+      <div class="fb-arrow" aria-hidden="true">→</div>
+      <div class="fb-step now"><div class="fb-when">Từ 01/07/2025 · Luật Thuế GTGT số 48/2024/QH15</div><div class="fb-big">5%</div><div class="fb-what">Phân bón chịu thuế suất 5%; thuế GTGT đầu vào được khấu trừ.</div></div>
+    </div><div class="pw-src">Nguồn: ${SRC.law}</div>`;
+    q1.append(c); p.append(q1);
+    if (!E) return;
+    const q2 = panel('4.2', 'Biên lợi nhuận gộp của các nhà sản xuất trước và sau mốc thuế 5%?', 'Quý 3/2025 là quý đầu áp dụng thuế suất 5%.');
+    const a = card('pb-51', 'Biên lợi nhuận gộp theo quý', {sub: '% · LN gộp ÷ doanh thu thuần · từng doanh nghiệp', cadence: 'quarterly', source: SRC.vnd + '; tự tính'});
+    q2.append(a.el); p.append(q2);
+    const P = F.periods, st = P.indexOf('2023Q1'), cols = [C.blue, C.sky, C.grey, C.gold, C.teal];
+    chart(a.host, 'pb-51', P.slice(st).map(qL), ['DPM', 'DCM', 'DHB', 'DDV', 'BFC'].map((t, j) => ({name: t, color: cols[j], values: E.ratio({m: 'gross'}, {m: 'revenue'}, [t], 'q', 100).values.slice(st)})), {unit: '%', digits: 1, zeroBase: false});
+  }
+};
+function showPic(key) {
+  if (!PIC[key]) key = 'price';
+  $$('#pane-mt2 .pp-pane').forEach(p => { p.hidden = p.dataset.sub !== key; });
+  $$('#pane-mt2 .pp-tab').forEach(b => { const on = b.dataset.sub === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
+  if (!BUILT.has(key)) { BUILT.add(key); try { PIC[key](); } catch (e) { console.error(e); } }
+  const u = new URL(location.href); u.searchParams.set('sub', key); history.replaceState(null, '', u.pathname + u.search + u.hash);
+}
+function showOv(key) {
+  $$('#pane-mt1 .ov-pane').forEach(p => { p.hidden = p.dataset.ov !== key; });
+  $$('#pane-mt1 .ov-tab').forEach(b => { const on = b.dataset.ov === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
+}
+
+/* =========================== NGUỒN DỮ LIỆU =========================== */
+function sources() {
+  const host = $('#fb-sources'); if (!host) return;
+  const rows = [
+    ['Giá urê, DAP, TSP, quặng phosphate, kali; khí TTF, Henry Hub, LNG Nhật; Brent; than Úc', SRC.wb + ' (bình quân tháng)', 'đến ' + mL(last('urea').date), 'scripts/fetch_fertilizer_markets.py'],
+    ['Urê tương lai Trịnh Châu (UR0)', SRC.zce, 'đến ' + dL(last('urea_zce_daily').date), 'scripts/fetch_fertilizer_markets.py'],
+    ['Sản lượng phân urê, phân NPK', SRC.nso, 'đến ' + mL(last('urea_output').date), 'scripts/fetch_fertilizer_nso.py'],
+    ['BCTC hợp nhất theo quý: DPM, DCM, DHB, DDV, LAS, VAF, NFC, BFC, SFG', SRC.vnd, F ? 'đến ' + qL(F.periods.at(-1)) : '', 'scripts/fetch_fertilizer_financials.py'],
+    ['Thuế GTGT với phân bón', SRC.law, 'hiệu lực 01/07/2025', 'nhập tay'],
+  ];
+  host.innerHTML = `<div class="chart-title">Nguồn dữ liệu</div><div class="chart-sub">Mỗi chart ghi nguồn ngay dưới chart; bảng dưới gom lại nguồn, kỳ số mới nhất và cách lấy.</div><div class="tbl-wrap"><table class="compare-table fb-src-table"><thead><tr><th>Dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách lấy</th></tr></thead><tbody>`
+    + rows.map(r => `<tr><td>${esc(r[0])}</td><td>${r[1]}</td><td>${esc(r[2])}</td><td><code>${esc(r[3])}</code></td></tr>`).join('') + `</tbody></table></div>`
+    + `<div class="pw-src">Dữ liệu dựng lại bằng scripts/build_fertilizer.py · ${esc(dL(D.built_at))}</div>`;
+}
+
+/* =========================== khung trang =========================== */
 function showTab(key) {
   if (!$(`.majorpane[data-tab="${key}"]`)) key = 'mt1';
   $$('.majorpane').forEach(p => p.classList.toggle('active', p.dataset.tab === key));
   $$('.majortabbtn').forEach(b => { const on = b.dataset.tab === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); });
   if (location.hash !== '#' + key) history.replaceState(null, '', location.pathname + location.search + '#' + key);
-  renderVisible($(`.majorpane[data-tab="${key}"]`));
-}
-function showSub(key) {
-  if (!$(`.fb-subpane[data-sub="${key}"]`)) key = 'price';
-  $$('.fb-subpane').forEach(p => { p.hidden = p.dataset.sub !== key; });
-  $$('.fb-subtab').forEach(b => b.setAttribute('aria-selected', String(b.dataset.sub === key)));
-  const u = new URL(location.href); u.searchParams.set('sub', key); history.replaceState(null, '', u.pathname + u.search + u.hash);
-  renderVisible($(`.fb-subpane[data-sub="${key}"]`));
+  if (key === 'mt3' && window.FertFinance && !$('#fb-fin-root').childElementCount) FertFinance.build($('#fb-fin-root'));
+  setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
 }
 function asof() {
-  const txt = {urea: () => 'Số mới nhất: ' + mLabel(last('urea').date) + ' (World Bank) · ' + dLabel(last('urea_zce_daily').date) + ' (Trịnh Châu)',
-    gas_eu: () => 'Số mới nhất: ' + mLabel(last('gas_eu').date), urea_output: () => 'Số mới nhất: ' + mLabel(last('urea_output').date),
-    fin: () => F ? 'BCTC đến ' + qLabel(lastQ) + ' · tải ' + dLabel(F.captured) : ''};
-  $$('[data-asof]').forEach(n => { try { n.textContent = txt[n.dataset.asof](); } catch (e) { n.textContent = ''; } });
+  const t = {urea: () => mL(last('urea').date) + ' (World Bank) · ' + dL(last('urea_zce_daily').date) + ' (Trịnh Châu)', gas_eu: () => mL(last('gas_eu').date),
+    urea_output: () => mL(last('urea_output').date), fin: () => F ? `BCTC đến ${qL(F.periods.at(-1))} · tải ${dL(F.captured)}` : ''};
+  $$('[data-asof]').forEach(n => { try { n.textContent = 'Dữ liệu mới nhất: ' + t[n.dataset.asof](); } catch (e) { n.textContent = ''; } });
 }
-function sources() {
-  const host = $('#fb-sources'); if (!host) return;
-  const rows = [
-    ['Giá urê, DAP, TSP, quặng phosphate, kali; khí TTF, Henry Hub, LNG Nhật; Brent; than Úc', 'World Bank · Pink Sheet (bình quân tháng)', 'đến ' + mLabel(last('urea').date), 'scripts/fetch_fertilizer_markets.py'],
-    ['Urê tương lai Trịnh Châu (UR0)', 'Sina Finance · Sở GDHH Trịnh Châu', 'đến ' + dLabel(last('urea_zce_daily').date), 'scripts/fetch_fertilizer_markets.py'],
-    ['Sản lượng phân urê, phân NPK', 'Cục Thống kê · biểu KT-XH tháng', 'đến ' + mLabel(last('urea_output').date), 'scripts/fetch_fertilizer_nso.py'],
-    ['BCTC hợp nhất theo quý của DPM, DCM, DHB, DDV, LAS, VAF, NFC, BFC, SFG', 'VNDirect finfo', F ? 'đến ' + qLabel(lastQ) : '', 'scripts/fetch_fertilizer_financials.py'],
-    ['Thuế GTGT với phân bón', 'Luật 71/2014/QH13; Luật 48/2024/QH15', 'hiệu lực 01/07/2025', 'nhập tay'],
-  ];
-  host.innerHTML = `<div class="chart-title">Nguồn dữ liệu</div><div class="fb-table fb-src-table"><table><thead><tr><th>Dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách lấy</th></tr></thead><tbody>`
-    + rows.map(r => '<tr>' + r.map(c => `<td>${esc(c)}</td>`).join('') + '</tr>').join('') + `</tbody></table></div>`
-    + `<p class="pw-src">Dữ liệu dựng lại bằng scripts/build_fertilizer.py · ${esc(dLabel(D.built_at.slice(0, 10)))}</p>`;
-}
-
 function init() {
-  kpis(); asof(); sources(); finControls();
+  brief(); overview(); listed(); sources(); asof();
+  $$('#pane-mt1 .ov-tab').forEach(b => b.addEventListener('click', () => showOv(b.dataset.ov)));
+  $$('#pane-mt2 .pp-tab').forEach(b => b.addEventListener('click', () => { showPic(b.dataset.sub); setTimeout(() => window.dispatchEvent(new Event('resize')), 30); }));
   $$('.majortabbtn').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
-  $$('.fb-subtab').forEach(b => b.addEventListener('click', () => showSub(b.dataset.sub)));
   addEventListener('hashchange', () => showTab(location.hash.slice(1)));
-  const sub = new URLSearchParams(location.search).get('sub');
-  if (sub) showSub(sub); else $$('.fb-subpane').forEach(p => { p.hidden = p.dataset.sub !== 'price'; });
+  // Nút "Xem bảng →" của sơ đồ: mở sub-tab Doanh nghiệp niêm yết.
+  document.addEventListener('click', e => { if (e.target.closest('.vc-status button')) showOv('listed'); });
+  showOv('map');
+  showPic(new URLSearchParams(location.search).get('sub') || 'price');
   showTab(location.hash.slice(1) || 'mt1');
-  // Đổi giao diện sáng/tối: vẽ lại để chữ trục theo màu mới.
-  new MutationObserver(() => $$('[data-chart][data-rendered]').forEach(el => { if (el.offsetParent !== null) render(el); else delete el.dataset.rendered; }))
-    .observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
 }
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+if (window.SectorBoot) SectorBoot.add(10, init); else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

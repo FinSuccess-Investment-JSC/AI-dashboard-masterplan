@@ -7023,12 +7023,17 @@
     "page": "Phan-bon/index.html",
     "file": "data/fertilizer-data.js",
     "blocks": [
+     "pb-00",
      "pb-10",
      "pb-11",
      "pb-12",
+     "pb-13",
+     "pb-14",
      "pb-20",
      "pb-21",
-     "pb-22"
+     "pb-22",
+     "pb-23",
+     "pb-24"
     ]
    },
    "how": "python3 scripts/fetch_fertilizer_markets.py && python3 scripts/fetch_fertilizer_nso.py && python3 scripts/fetch_fertilizer_financials.py && python3 scripts/build_fertilizer.py (chạy tay; chưa gắn vào refresh-data.yml)",
@@ -7058,8 +7063,12 @@
     "page": "Phan-bon/index.html",
     "file": "data/fertilizer-data.js",
     "blocks": [
+     "pb-03",
      "pb-30",
-     "pb-31"
+     "pb-31",
+     "pb-32",
+     "pb-33",
+     "pb-34"
     ]
    },
    "how": "python3 scripts/fetch_fertilizer_markets.py && python3 scripts/fetch_fertilizer_nso.py && python3 scripts/fetch_fertilizer_financials.py && python3 scripts/build_fertilizer.py (chạy tay; chưa gắn vào refresh-data.yml)",
@@ -7091,14 +7100,10 @@
     "file": "data/fertilizer-data.js",
     "blocks": [
      "pb-02",
-     "pb-40",
-     "pb-41",
-     "pb-42",
-     "pb-43",
-     "pb-44",
-     "pb-45",
+     "pb-04",
      "pb-51"
-    ]
+    ],
+    "note": "Tab Tài chính ngành (app/fertilizer-finance.js) dựng thêm các thẻ pb-fin-* từ cùng dữ liệu"
    },
    "how": "python3 scripts/fetch_fertilizer_markets.py && python3 scripts/fetch_fertilizer_nso.py && python3 scripts/fetch_fertilizer_financials.py && python3 scripts/build_fertilizer.py (chạy tay; chưa gắn vào refresh-data.yml)",
    "gates": [

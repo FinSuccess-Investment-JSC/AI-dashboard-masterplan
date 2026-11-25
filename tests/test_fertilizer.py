@@ -28,12 +28,19 @@ class FertilizerTests(unittest.TestCase):
             for c, g, r in zip(rows['cogs'], rows['gross'], rows['revenue']):
                 self.assertFalse(c == 0 and (r or 0) > 0, t)
 
-    def test_every_chart_has_spec(self):
-        charts = set(re.findall(r'data-chart="([^"]+)"', self.html))
-        self.assertTrue(charts)
-        for c in charts:
-            self.assertIn('\n  ' + c + ': (', self.js, c)
+    def test_registry_blocks_built_by_page(self):
+        # Mọi block trong registry của Phân bón phải được trang dựng (id nằm trong HTML hoặc trong app/fertilizer.js).
+        reg = json.loads((ROOT / 'updates/registry.json').read_text(encoding='utf-8'))
+        blocks = [b for i in reg['items'] if i['id'].startswith('fertilizer.') for b in i['where']['blocks']]
+        self.assertTrue(blocks)
+        for b in blocks:
+            self.assertTrue(f"'{b}'" in self.js or f'"{b}"' in self.html, b)
 
+    def test_finance_module_uses_fertilizer_data(self):
+        fin = (ROOT / 'Phan-bon/app/fertilizer-finance.js').read_text(encoding='utf-8')
+        self.assertIn('window.FERT_FIN', fin)
+        self.assertNotIn('KCN_FIN', fin)
+        self.assertIn('window.FERT_FIN', (ROOT / 'data/fertilizer-data.js').read_text(encoding='utf-8')[-200:])
 
 if __name__ == '__main__':
     unittest.main()
