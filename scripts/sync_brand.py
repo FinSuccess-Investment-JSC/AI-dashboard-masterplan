@@ -24,11 +24,12 @@ def main():
         lines = text.split('\n')
         if name.endswith('.css') and lines[0].startswith('@import'):
             text = '\n'.join(lines[1:])
-        path = ROOT / target
-        if path.read_text() != text:
-            path.write_text(text)
-            changed = True
-            print('updated', target)
+        # Ngành đã tách thành gói riêng (<Ngành>/app/) giữ bản sao của chính nó; đồng bộ cả các bản đó.
+        for path in [ROOT / target, *sorted(ROOT.glob(f'*/app/{name}'))]:
+            if path.read_text() != text:
+                path.write_text(text)
+                changed = True
+                print('updated', path.relative_to(ROOT).as_posix())
     print('changed' if changed else 'unchanged')
     return 0
 

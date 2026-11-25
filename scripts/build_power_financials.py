@@ -11,7 +11,7 @@ Kiểm tra (ghi vào 'checks', không sửa số nguồn):
     (trước 2024 phần lớn số quý trên VNDirect không khớp số năm: không phải quý riêng, cũng không phải lũy kế).
     LCTT theo năm lấy từ báo cáo năm (annual) cho chế độ Năm.
 Không điền số thiếu, không đổi số âm thành 0. Phần tổng hợp ngành (loại trùng công ty mẹ – con, hệ số tính lại từ tổng
-tử số / tổng mẫu số, TTM, bình quân) làm ở assets/industry-fin.js để mọi bộ lọc trên trang dùng cùng một phép tính.
+tử số / tổng mẫu số, TTM, bình quân) làm ở Dien/app/industry-fin.js để mọi bộ lọc trên trang dùng cùng một phép tính.
 """
 import datetime as dt, json, sys
 from pathlib import Path

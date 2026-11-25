@@ -1,6 +1,6 @@
-// Bộ quy tắc nhận định Điện (assets/power-insights.js): tăng, giảm, đi ngang, thiếu dữ liệu, dữ liệu cũ; công thức chi phí nhiên liệu.
+// Bộ quy tắc nhận định Điện (Dien/app/power-insights.js): tăng, giảm, đi ngang, thiếu dữ liệu, dữ liệu cũ; công thức chi phí nhiên liệu.
 const assert = require('assert');
-const I = require('../assets/power-insights.js');
+const I = require('../Dien/app/power-insights.js');
 
 const base = () => ({
   today: '2026-11-12', mLabel: 'T10/2026', fmpLabel: 'T9/2026', fuelParams: {GAS_USD: 11.98},

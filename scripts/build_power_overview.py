@@ -2,7 +2,7 @@
 """Build data/power-overview.js (window.POWER_OVERVIEW) from data/power-overview.json after validating it.
 
 data/power-overview.json holds the qualitative layer of the Điện tab Tổng quan ngành
-(assets/power-overview.js): value-chain flows, business models, market mechanisms, driver → earnings
+(Dien/app/power-overview.js): value-chain flows, business models, market mechanisms, driver → earnings
 map, theses and the thresholds of the insight rules. Numbers are not stored there; the page computes
 them from data already loaded. Edit the JSON, then run:
     python3 scripts/build_power_overview.py
