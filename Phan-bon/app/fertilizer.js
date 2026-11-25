@@ -156,21 +156,7 @@ function overview() {
   const c1 = el('div', 'card value-chain-card'); c1.dataset.blockId = 'pb-01'; c1.dataset.updateKind = 'static'; c1.dataset.cadence = 'rare';
   c1.innerHTML = '<h3 class="chart-title" style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3><div class="fb-chain"></div><div class="pw-src">Nguồn: ' + SRC.ar + '; ' + SRC.vnd + '</div>';
   s1.append(c1); pane.append(s1); chain(c1.querySelector('.fb-chain'));
-  if (E) {
-    const s2 = el('section', 'ov-sec', `<header class="ov-sh"><span class="ov-num">0.2</span><div><h3>Mỗi nhóm sản phẩm chiếm bao nhiêu doanh thu và lợi nhuận?</h3><p>Tổng 9 doanh nghiệp niêm yết, 4 quý gần nhất cộng dồn.</p></div></header>`);
-    const c2 = card('pb-02', 'Doanh thu và LNST cổ đông mẹ theo nhóm sản phẩm', {sub: `tỷ đồng · 4 quý đến ${qL(F.periods.at(-1))}`, source: SRC.vnd, cadence: 'quarterly'});
-    s2.append(c2.el); pane.append(s2);
-    const r = E.byGroup('revenue', E.tickers, 'ttm'), p = E.byGroup('npat_parent', E.tickers, 'ttm'), i = r.labels.length - 1;
-    chart(c2.host, 'pb-02', r.groups.map(g => g.label), [{name: 'Doanh thu', color: C.blue, kind: 'bar', values: r.groups.map(g => g.values[i])}, {name: 'LNST cổ đông mẹ', color: C.teal, kind: 'bar', values: p.groups.map(g => g.values[i])}], {unit: 'tỷ đ', native: 'bar'});
-  }
-  const s3 = el('section', 'ov-sec', `<header class="ov-sh"><span class="ov-num">0.3</span><div><h3>Trong nước sản xuất bao nhiêu phân urê và NPK mỗi năm?</h3><p>Cộng 12 tháng theo số Cục Thống kê; năm nay tính đến tháng mới nhất.</p></div></header>`);
-  const c3 = card('pb-03', 'Sản lượng phân urê và NPK theo năm', {sub: 'nghìn tấn', source: SRC.nso, info: 'Năm đủ 12 tháng cộng cả năm; năm hiện tại cộng các tháng đã có (ghi số tháng trên trục). Năm thiếu số một tháng thì để trống, không ước lượng.'});
-  s3.append(c3.el); pane.append(s3);
-  const lo = last('urea_output').date, ly = +lo.slice(0, 4), M = +lo.slice(5), years = [];
-  for (let y = 2019; y <= ly; y++) years.push(y);
-  chart(c3.host, 'pb-03', years.map(y => y === ly && M < 12 ? `${M}T/${y}` : String(y)), [
-    {name: 'Phân urê', color: C.blue, kind: 'bar', values: years.map(y => ytd('urea_output', y, y === ly ? M : 12))},
-    {name: 'Phân NPK', color: C.teal, kind: 'bar', values: years.map(y => ytd('npk_output', y, y === ly ? M : 12))}], {unit: 'nghìn tấn', native: 'bar', stackable: true});
+  // 0.2 Doanh thu/LNST theo nhóm và 0.3 Sản lượng theo năm bỏ 25/11/2026 (theo yêu cầu người dùng).
 }
 // 01 Doanh nghiệp niêm yết: thẻ từng mã (như bảng doanh nghiệp của Điện, rút gọn), bấm một khâu trên sơ đồ để lọc.
 function listed() {

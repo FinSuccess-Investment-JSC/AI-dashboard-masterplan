@@ -7063,7 +7063,6 @@
     "page": "Phan-bon/index.html",
     "file": "data/fertilizer-data.js",
     "blocks": [
-     "pb-03",
      "pb-30",
      "pb-31",
      "pb-32",
@@ -7099,7 +7098,6 @@
     "page": "Phan-bon/index.html",
     "file": "data/fertilizer-data.js",
     "blocks": [
-     "pb-02",
      "pb-04",
      "pb-51"
     ],
