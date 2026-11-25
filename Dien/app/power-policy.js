@@ -2,7 +2,7 @@
    Sơ đồ khung → 4 tab theo vòng đời dự án (Quy hoạch & Đầu tư → Giá điện & Hợp đồng → Điều độ & Thị trường → Thuế & Môi trường)
    → mỗi module theo khuôn A–G (câu hỏi, hiểu nhanh, cơ chế vận hành, quy định hiện hành, hàm ý kinh tế, ai chịu tác động, nguồn pháp lý)
    → phần Tra cứu (ma trận văn bản – doanh nghiệp). Nội dung, tham số lấy từ data/power-policy.js (window.POWER_POLICY);
-   văn bản mới chỉ cần sửa data/power-policy.json. Không đổi hash: #mt4 vẫn là route, nhóm đang mở lưu ở ?policy=&m=. */
+   văn bản mới chỉ cần sửa data/power-policy.json. Từ 25/11/2026 nằm ở Bức tranh ngành › 06 Chính sách (?section=policy#mt2; link cũ #mt4 tự chuyển); nhóm đang mở lưu ở ?policy=&m=. */
 (() => {
 'use strict';
 if (document.body.dataset.sector !== 'power') return;
@@ -514,5 +514,5 @@ const q = new URLSearchParams(location.search), qt = q.get('policy'), qm = q.get
 const start = panes.some(p => p.dataset.pane === qt) ? qt : qm ? (TABS.find(t => t.modules.includes(qm)) || {}).id : store.get('pp-tab');
 showTab(panes.some(p => p.dataset.pane === start) ? start : TABS[0]?.id, {silent: true});
 // Link sâu ?m=2.4: cuộn sau khi các script chung đã chọn tab lớn và đưa trang về đầu.
-if (qm && HB[qm]) { const go = () => setTimeout(() => { if (document.querySelector('.majorpane.active')?.dataset.tab === 'mt4') document.getElementById('pp-m-' + qm.replace('.', '-'))?.scrollIntoView({block: 'start'}); }, 400); if (document.readyState === 'complete') go(); else addEventListener('load', go, {once: true}); }
+if (qm && HB[qm]) { const go = () => setTimeout(() => { const pol = document.getElementById('mt2-pp-policy'); if ((pol && !pol.hidden) || document.querySelector('.majorpane.active')?.dataset.tab === 'mt4') document.getElementById('pp-m-' + qm.replace('.', '-'))?.scrollIntoView({block: 'start'}); }, 400); if (document.readyState === 'complete') go(); else addEventListener('load', go, {once: true}); }
 })();
