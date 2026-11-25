@@ -1926,7 +1926,7 @@
      "bds-13b"
     ]
    },
-   "how": "Thêm dòng quý mới vào data/realestate-market/{moc_quarterly,hn_series,hcm_series,supply_detail,provinces}.json (mỗi dòng có sources link đã mở, ô thiếu = null, không nội suy), rồi chạy python3 scripts/build_realestate_market.py. Giá CBRE: một hãng cho chuỗi dài, TP.HCM sau sáp nhập là đường riêng. Chart cơ cấu Q2/2026 (chSupplyFirms/Loc/Price) và bảng Q2/2026 trong bds-08 đang viết trong assets/realestate-market-history.js và HTML: thay bằng quý mới.",
+   "how": "Thêm dòng quý mới vào data/realestate-market/{moc_quarterly,hn_series,hcm_series,supply_detail,provinces}.json (mỗi dòng có sources link đã mở, ô thiếu = null, không nội suy), rồi chạy python3 scripts/build_realestate_market.py. Giá CBRE: một hãng cho chuỗi dài, TP.HCM sau sáp nhập là đường riêng. Chart cơ cấu Q2/2026 (chSupplyFirms/Loc/Price) và bảng Q2/2026 trong bds-08 đang viết trong Bat-dong-san/app/realestate-market-history.js và HTML: thay bằng quý mới.",
    "gates": [
     "Link bài gốc hoặc thông cáo",
     "Ghi kỳ và ngày công bố",
@@ -2291,7 +2291,7 @@
      "dm-34"
     ]
    },
-   "how": "Cập nhật data/textile/trade.json (mỗi dòng có sources link đã mở) và bảng/chart tương ứng trong Det-may/index.html, assets/textile-dashboard.js. Ghi rõ mức thuế còn mâu thuẫn giữa nguồn.",
+   "how": "Cập nhật data/textile/trade.json (mỗi dòng có sources link đã mở) và bảng/chart tương ứng trong Det-may/index.html, Det-may/app/textile-dashboard.js. Ghi rõ mức thuế còn mâu thuẫn giữa nguồn.",
    "gates": [
     "Link văn bản hoặc bài gốc đã mở",
     "Ghi ngày hiệu lực",
@@ -2523,7 +2523,7 @@
      "cg-05"
     ]
    },
-   "how": "Thêm tuần mới vào mảng wk và wci trong assets/port-dashboard.js; cập nhật KPI WCI trong Cang-bien/index.html.",
+   "how": "Thêm tuần mới vào mảng wk và wci trong Cang-bien/app/port-dashboard.js; cập nhật KPI WCI trong Cang-bien/index.html.",
    "gates": [
     "Link trang Drewry đã mở",
     "Không nối tuần thiếu"
@@ -2555,7 +2555,7 @@
      "cg-12"
     ]
    },
-   "how": "Thêm kỳ mới có link vào bảng cg-12, chart chThroughput, chCaiMep trong assets/port-dashboard.js.",
+   "how": "Thêm kỳ mới có link vào bảng cg-12, chart chThroughput, chCaiMep trong Cang-bien/app/port-dashboard.js.",
    "gates": [
     "Ghi rõ phạm vi (tấn, TEU, tàu mẹ)",
     "Link nguồn đã mở"
@@ -2616,7 +2616,7 @@
      "cg-19"
     ]
    },
-   "how": "Cập nhật tiến độ, công suất trong bảng cg-42 và mảng cap trong assets/port-dashboard.js.",
+   "how": "Cập nhật tiến độ, công suất trong bảng cg-42 và mảng cap trong Cang-bien/app/port-dashboard.js.",
    "gates": [
     "Mỗi dòng có link",
     "Tách số đoạn trích"
@@ -2691,7 +2691,7 @@
      "cg-02"
     ]
    },
-   "how": "Cập nhật số và nhận định trong cg-02 và catbox/riskbox; thẻ tín hiệu tự tính từ dữ liệu công khai trong assets/port-dashboard.js.",
+   "how": "Cập nhật số và nhận định trong cg-02 và catbox/riskbox; thẻ tín hiệu tự tính từ dữ liệu công khai trong Cang-bien/app/port-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
@@ -2922,7 +2922,7 @@
      "nn-02"
     ]
    },
-   "how": "Cập nhật số và nhận định trong nn-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/agri-dashboard.js.",
+   "how": "Cập nhật số và nhận định trong nn-02 và catbox/riskbox; thẻ tín hiệu tự tính trong Nong-nghiep/app/agri-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
@@ -3010,7 +3010,7 @@
      "ts-42"
     ]
    },
-   "how": "Tìm kết luận mới (A-552-801 cá tra, A-552-802 tôm) trên Federal Register; cập nhật mảng pd/items trong assets/seafood-dashboard.js và bảng ts-42; thêm dòng evidence.",
+   "how": "Tìm kết luận mới (A-552-801 cá tra, A-552-802 tôm) trên Federal Register; cập nhật mảng pd/items trong Thuy-san/app/seafood-dashboard.js và bảng ts-42; thêm dòng evidence.",
    "gates": [
     "Mở văn bản Federal Register",
     "Ghi rõ sơ bộ/cuối cùng, POR"
@@ -3121,7 +3121,7 @@
      "ts-02"
     ]
    },
-   "how": "Cập nhật ts-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/seafood-dashboard.js.",
+   "how": "Cập nhật ts-02 và catbox/riskbox; thẻ tín hiệu tự tính trong Thuy-san/app/seafood-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
@@ -3527,7 +3527,7 @@
      "vt-02"
     ]
    },
-   "how": "Cập nhật vt-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/shipping-dashboard.js.",
+   "how": "Cập nhật vt-02 và catbox/riskbox; thẻ tín hiệu tự tính trong Van-tai-bien/app/shipping-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
@@ -3736,7 +3736,7 @@
     ],
     "file": null
    },
-   "how": "Cập nhật th-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/steel-dashboard.js.",
+   "how": "Cập nhật th-02 và catbox/riskbox; thẻ tín hiệu tự tính trong Thep/app/steel-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
@@ -3931,7 +3931,7 @@
      "xd-42"
     ]
    },
-   "how": "Mở báo cáo/bài dẫn số giải ngân lũy kế mới; cập nhật bảng xd-42, chart chPubPlan (assets/construction-dashboard.js) và dự án xd-32; thêm dòng evidence.",
+   "how": "Mở báo cáo/bài dẫn số giải ngân lũy kế mới; cập nhật bảng xd-42, chart chPubPlan (Xay-dung/app/construction-dashboard.js) và dự án xd-32; thêm dòng evidence.",
    "gates": [
     "Mở trang gốc",
     "Ghi số báo cáo, ngày"
@@ -4067,7 +4067,7 @@
      "xd-02"
     ]
    },
-   "how": "Cập nhật xd-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/construction-dashboard.js.",
+   "how": "Cập nhật xd-02 và catbox/riskbox; thẻ tín hiệu tự tính trong Xay-dung/app/construction-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
@@ -4223,7 +4223,7 @@
      "bh-32"
     ]
    },
-   "how": "Mở bài công bố mới; cập nhật bảng và chart chMarket, chNlLines trong assets/insurance-dashboard.js; thêm evidence.",
+   "how": "Mở bài công bố mới; cập nhật bảng và chart chMarket, chNlLines trong Bao-hiem/app/insurance-dashboard.js; thêm evidence.",
    "gates": [
     "Mở trang gốc",
     "Ghi kỳ số liệu"
@@ -4327,7 +4327,7 @@
      "bh-02"
     ]
    },
-   "how": "Cập nhật bh-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/insurance-dashboard.js.",
+   "how": "Cập nhật bh-02 và catbox/riskbox; thẻ tín hiệu tự tính trong Bao-hiem/app/insurance-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
@@ -4454,7 +4454,7 @@
      "bl-23"
     ]
    },
-   "how": "Mở bài công bố mới; cập nhật bảng và chart chRetailMix, chStores trong assets/retail-dashboard.js; thêm evidence.",
+   "how": "Mở bài công bố mới; cập nhật bảng và chart chRetailMix, chStores trong Ban-le/app/retail-dashboard.js; thêm evidence.",
    "gates": [
     "Mở trang gốc",
     "Ghi kỳ số liệu"
@@ -4561,7 +4561,7 @@
      "bl-02"
     ]
    },
-   "how": "Cập nhật bl-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/retail-dashboard.js.",
+   "how": "Cập nhật bl-02 và catbox/riskbox; thẻ tín hiệu tự tính trong Ban-le/app/retail-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
@@ -4939,7 +4939,7 @@
      "duoc-02"
     ]
    },
-   "how": "Cập nhật duoc-02 và catbox/riskbox; thẻ tín hiệu tự tính trong assets/pharma-dashboard.js.",
+   "how": "Cập nhật duoc-02 và catbox/riskbox; thẻ tín hiệu tự tính trong Duoc/app/pharma-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"
@@ -6068,7 +6068,7 @@
    },
    "where": {
     "page": "Xay-dung/index.html",
-    "file": "assets/construction-dashboard.js (WEEK, MOF)",
+    "file": "Xay-dung/app/construction-dashboard.js (WEEK, MOF)",
     "blocks": [
      "xd-43"
     ]
@@ -6195,8 +6195,8 @@
      "bh-34"
     ]
    },
-   "how": "Tự tính trong assets/insurance-dashboard.js từ fs + gbond.",
-   "job": "Tự tính trong assets/insurance-dashboard.js từ fs + gbond."
+   "how": "Tự tính trong Bao-hiem/app/insurance-dashboard.js từ fs + gbond.",
+   "job": "Tự tính trong Bao-hiem/app/insurance-dashboard.js từ fs + gbond."
   },
   {
    "id": "insurance.reinsurance",
@@ -6394,11 +6394,11 @@
      "duoc-31"
     ]
    },
-   "how": "Tự tính trong assets/pharma-dashboard.js từ PHARMA_PUBLIC và COMPANY_QUARTERLY",
+   "how": "Tự tính trong Duoc/app/pharma-dashboard.js từ PHARMA_PUBLIC và COMPANY_QUARTERLY",
    "gates": [
     "Không cập nhật BCTC trong đợt này"
    ],
-   "job": "Tự tính trong assets/pharma-dashboard.js từ PHARMA_PUBLIC và COMPANY_QUARTERLY"
+   "job": "Tự tính trong Duoc/app/pharma-dashboard.js từ PHARMA_PUBLIC và COMPANY_QUARTERLY"
   },
   {
    "id": "pharma.calendar",
@@ -6808,7 +6808,7 @@
      "th-15"
     ]
    },
-   "how": "Mở tin sản lượng quý mới; thêm cột quý vào vol trong assets/steel-dashboard.js (chHpgVol) và bảng; ghi evidence th-15.",
+   "how": "Mở tin sản lượng quý mới; thêm cột quý vào vol trong Thep/app/steel-dashboard.js (chHpgVol) và bảng; ghi evidence th-15.",
    "gates": [
     "Mở trang gốc",
     "Quote chứa số"
