@@ -345,7 +345,7 @@ const metric = (label, value, sub) => `<span class="pp-m"><b>${value}</b><small>
 function qpanel(o) {
   const p = el('section', 'pp-panel pp-q'); p.id = 'pp-' + o.id;
   p.innerHTML = `<header class="pp-ph"><span class="pp-num">${esc(o.num)}</span><div><h3>${esc(o.q)}</h3>` +
-    (o.metrics?.length ? `<div class="pp-metrics">${o.metrics.filter(Boolean).map(m => metric(...m)).join('')}</div>` : '') +
+    // Hàng ô chỉ số nhỏ (pp-metrics) bỏ 25/11/2026 theo yêu cầu người dùng: khó nhìn; số đã có trong kết luận và chart.
     `</div></header>`;
   [].concat(o.main || []).filter(Boolean).forEach(n => { const w = el('div', 'pp-main'); w.append(n); p.append(w); });
   if (o.support) { const w = el('div', 'pp-sup1'); w.append(o.support); p.append(w); }

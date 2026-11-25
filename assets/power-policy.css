@@ -40,7 +40,6 @@
 .pp-subnav{position:sticky;top:var(--geography-top,0px);z-index:5;display:flex;gap:6px;overflow-x:auto;padding:8px 2px;margin:16px 0 4px;background:var(--fs-page,#F7F8FC);scrollbar-width:thin}
 .pp-subnav button{flex:0 0 auto;font:inherit;font-size:12.5px;padding:7px 12px;border-radius:999px;border:1px solid var(--pp-line);background:#fff;color:var(--pp-ink);cursor:pointer;font-weight:400;white-space:nowrap}
 .pp-subnav button[aria-selected="true"]{background:#E3F5F5;border-color:var(--pp-teal);font-weight:700;color:#11393b}
-.pp-subnav button.pp-jump{margin-left:auto;border-style:dashed;color:var(--pp-blue)}
 .pp-group[hidden]{display:none}
 .pp-group-head{margin:10px 2px 0;font-size:12.5px;color:var(--pp-muted)}
 /* Module text hierarchy */
@@ -144,23 +143,10 @@
 .pp-cal li.s-Delayed::before{border-color:#b8443a;background:#fff}
 .pp-cal .pp-cal-date{font-weight:700;color:#1D2678;margin-right:6px}
 /* ---- Cẩm nang: sơ đồ khung ---- */
-.pp-fmap{display:flex;align-items:stretch;gap:0;margin-top:6px}
-.pp-fmap .pp-arrow{flex:0 0 22px;display:flex;align-items:center;justify-content:center;color:#8997D6;font-weight:700}
-.pp-fblock{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:3px;text-align:left;font:inherit;border:1px solid var(--pp-line);border-radius:12px;padding:10px 12px;background:#fff;cursor:pointer;transition:border-color .15s,box-shadow .15s}
-.pp-fblock:hover,.pp-fblock:focus-visible{border-color:var(--pp-blue);box-shadow:0 2px 10px rgba(41,56,168,.12);outline:none}
-.pp-fblock small{font-size:11px;font-weight:700;color:var(--pp-blue)}
-.pp-fblock b{font-size:13.5px;color:var(--pp-navy);line-height:1.3}
-.pp-fblock span{font-size:12px;color:var(--pp-ink);line-height:1.4}
-.pp-fblock em{font-style:normal;font-size:11px;color:var(--pp-purple);font-weight:600;margin-top:auto}
-.pp-fblock.fin{cursor:default;background:var(--pp-soft);border-style:dashed}
-.pp-fblock.fin:hover{border-color:var(--pp-line);box-shadow:none}
-.pp-fmap-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;margin-top:10px;font-size:11.5px;color:var(--pp-muted)}
 /* ---- tab + mục lục ---- */
 .pp-tabpane{display:grid;grid-template-columns:210px minmax(0,1fr);gap:16px;align-items:start}
 .pp-mods{min-width:0}
 .pp-tabpane[hidden]{display:none}
-.pp-tabpane.pp-lookup{display:block}
-.pp-tabpane.pp-lookup[hidden]{display:none}
 .pp-toc{position:sticky;top:calc(var(--geography-top,0px) + 60px);margin-top:14px;padding:12px;border:1px solid var(--pp-line);border-radius:12px;background:var(--pp-card);max-height:calc(100vh - 140px);overflow:auto}
 .pp-toc-q{margin:0 0 8px;font-size:12px;line-height:1.45;color:var(--pp-muted)}
 .pp-toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
@@ -395,7 +381,6 @@ html[data-theme="dark"] .pp-dialog .pp-dlg-head{background:#161616}
 #power-policy .pp-kpis-row{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
 #power-policy .pp-foot .pp-chip.t-potential{border-color:#8997D6}
 .pp-kpi em{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pp-fblock span{color:var(--pp-muted)}
 @media (max-width:900px){.pp-pr{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.pp-pr-h{display:none}.pp-pr-t,.pp-pr-bar{grid-column:span 2}.pp-taxs{grid-template-columns:1fr 1fr}.pp-se{grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr)}.pp-se b{grid-column:1/-1}}
 @media (max-width:640px){.pp-steps{flex-direction:column;align-items:stretch;gap:6px}.pp-steps li{flex-direction:row;text-align:left}.pp-steps li::before{display:none}.pp-tl{flex-direction:column;gap:8px;padding-top:0}.pp-tl::before{display:none}.pp-tl-i{padding:0 0 0 16px}.pp-tl-i::before{top:3px}.pp-sc-seg b{font-size:10px}.pp-sc-bar{height:52px}.pp-pr{padding-bottom:8px;border-bottom:1px solid var(--pp-line)}.pp-exr{grid-template-columns:minmax(0,1fr)}.pp-exr>b{grid-column:1}.pp-ch-k{flex-basis:100%}.pp-draftb{margin-left:0}}
 html[data-theme="dark"] #power-policy :is(.pp-sstep,.pp-dc,.pp-tax,.pp-pr-c,.pp-se-c,.pp-se-f,.pp-cbx span){background:#1F1F1F;color:#F5F5F5;border-color:#2A2A2A}

@@ -344,15 +344,6 @@ function renderModule(m) {
   if (m.data && DATA[m.data.type]) { try { DATA[m.data.type](host.querySelector('.pp-data'), m); } catch (e) { console.error('power-policy data', m.id, e); } }
 }
 
-/* ---------- sơ đồ khung ---------- */
-function frameworkMap() {
-  const host = document.getElementById('pp-map'); if (!host) return;
-  const F = P.framework_map || [];
-  host.innerHTML = `<h3 class="pp-title">Cẩm nang cơ chế ngành điện</h3>
-    <div class="pp-fmap">${F.map((b, i) => `${i ? '<span class="pp-arrow" aria-hidden="true">→</span>' : ''}<${b.tab ? 'button type="button"' : 'div'} class="pp-fblock${b.tab ? '' : ' fin'}"${b.tab ? ` data-go="${esc(b.tab)}"` : ''}${tip(b.drives)}><small>${b.tab ? (TABS.find(t => t.id === b.tab)?.n || '') : '='}</small><b>${esc(b.title)}</b><span>${esc(b.q)}</span></${b.tab ? 'button' : 'div'}>`).join('')}</div>
-    <div class="pp-fmap-foot"><span class="pp-key"><span><i class="pp-chip t-direct"></i>tác động trực tiếp</span><span><i class="pp-chip t-indirect"></i>gián tiếp</span><span><i class="pp-chip t-potential"></i>tiềm năng</span><span>rê chuột vào ô có ⓘ để xem chi tiết</span></span><button type="button" class="pp-more" data-go="lookup">Tra cứu văn bản →</button></div>`;
-}
-
 /* ---------- tab, mục lục, trạng thái URL ---------- */
 const panes = [...root.querySelectorAll('.pp-tabpane')];
 const tabbar = document.getElementById('pp-tabs');
@@ -371,8 +362,9 @@ function showTab(id, opts = {}) {
 }
 function buildNav() {
   tabbar.setAttribute('role', 'tablist'); tabbar.setAttribute('aria-label', 'Nhóm cơ chế');
-  [...TABS.map(t => [t.id, `${t.n}. ${t.label}`]), ['lookup', 'Tra cứu']].forEach(([id, label]) => {
-    const b = el('button', id === 'lookup' ? 'pp-jump' : '', esc(label)); b.type = 'button'; b.dataset.go = id; b.setAttribute('role', 'tab'); b.id = 'pp-tabbtn-' + id;
+  // 25/11/2026: chỉ còn 2 tab chính (bỏ Cẩm nang cơ chế và Tra cứu theo yêu cầu người dùng).
+  TABS.map(t => [t.id, `${t.n}. ${t.label}`]).forEach(([id, label]) => {
+    const b = el('button', '', esc(label)); b.type = 'button'; b.dataset.go = id; b.setAttribute('role', 'tab'); b.id = 'pp-tabbtn-' + id;
     const pane = panes.find(p => p.dataset.pane === id); if (pane) { b.setAttribute('aria-controls', pane.id); pane.setAttribute('role', 'tabpanel'); pane.setAttribute('aria-labelledby', b.id); }
     tabbar.append(b);
   });
@@ -388,21 +380,6 @@ function buildNav() {
   }
 }
 
-/* ---------- tra cứu ---------- */
-function lookup() {
-  const host = document.getElementById('pp-matrix'); if (!host) return;
-  const M = P.matrix || {}, keys = ['cat', 'tech', 'ticker', 'driver', 'status'];
-  host.innerHTML = `<h3 class="pp-title">${esc(M.title || 'Tra cứu')}</h3><p class="pp-q">${rich(M.note || '')}</p>`;
-  host.append(filterBar(keys, 'Lọc tra cứu'));
-  const count = el('div', 'pp-count'), out = el('div'); host.append(count, out);
-  const draw = () => {
-    const rows = policies.filter(p => matches(p, keys));
-    count.textContent = `${rows.length}/${policies.length} văn bản, cơ chế · bấm một dòng để mở phân tích`;
-    out.innerHTML = rows.length ? table(['Chính sách', 'Nhóm', 'Tình trạng', 'Thay đổi', 'Kênh tác động', 'Tác động tài chính', 'Doanh nghiệp'], rows.map(p => ({id: p.policy_id, cells: [{html: `<b>${esc(p.short_name || p.policy_name)}</b><br><small>${esc(p.document_number || '')}</small>`}, (groups[p.policy_category] || {}).short || '', {html: badge('st-' + p.policy_status, ST_VI[p.policy_status] || p.policy_status)}, {html: rich(p.radar_change || p.regulatory_change)}, {html: rich(p.channel || p.impact_mechanism)}, (p.financial_drivers || []).map(d => DRIVER[d] || d).join(', '), {html: `<div class="pp-chips">${chips(p.exposed_companies)}</div>`}]})), {min: 1080}) : '<div class="pp-empty">Không có văn bản khớp bộ lọc.</div>';
-  };
-  listeners.push(draw); draw();
-}
-
 /* ---------- chạy ---------- */
 root.addEventListener('click', e => {
   const g = e.target.closest('[data-go]'); if (g) { showTab(g.dataset.go, {scroll: true}); return; }
@@ -410,9 +387,7 @@ root.addEventListener('click', e => {
   const t = e.target.closest('.pp-row,.pp-open'); if (t) openPolicy(t.dataset.id);
 });
 root.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.pp-row')) { e.preventDefault(); openPolicy(e.target.dataset.id); } });
-frameworkMap();
 Object.values(HB).forEach(m => { try { renderModule(m); } catch (e) { console.error('power-policy', m.id, e); } });
-lookup();
 buildNav();
 const q = new URLSearchParams(location.search), qt = q.get('policy'), qm = q.get('m');
 const start = panes.some(p => p.dataset.pane === qt) ? qt : qm ? (TABS.find(t => t.modules.includes(qm)) || {}).id : store.get('pp-tab');
