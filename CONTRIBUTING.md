@@ -26,10 +26,18 @@
 |---|---|
 | Nội dung, chart, dữ liệu một ngành | Thư mục của ngành (`Thep/`, `Bank/`, `Dau-khi/`…) và dữ liệu tương ứng trong `data/` |
 | Script cập nhật dữ liệu | `scripts/` — hỏi chủ repo trước nếu script dùng chung nhiều ngành |
-| Giao diện/hành vi chung (`assets/`) | Hỏi chủ repo trước, vì ảnh hưởng mọi ngành |
-| Giao diện của ngành đã tách gói riêng (hiện có: `Dien/`) | `<Ngành>/app/`: ngành giữ bản JS/CSS của riêng nó, sửa ở đây không đụng ngành khác. Muốn dùng lại cải tiến của ngành khác thì chép có chủ đích, không trỏ `../assets/` |
+| Giao diện của một ngành | `<Ngành>/app/`: mỗi ngành giữ bản JS/CSS của riêng nó, sửa ở đây không đụng ngành khác. Muốn dùng lại cải tiến của ngành khác thì chép có chủ đích, không trỏ `../assets/` |
+| Quy tắc chuẩn áp cho mọi ngành (lấy từ trang Điện) | `scripts/sector_package/` rồi chạy `python scripts/make_sector_package.py <các ngành>` để đưa bản mới vào từng `<Ngành>/app/` |
+| `assets/` | Chỉ còn trang chủ, `Chung-khoan/`, `duong/` nạp; bản gốc để đối chiếu. Sửa ở đây **không** đổi trang ngành |
 
-**Gói riêng theo ngành (từ 25/11/2026):** mỗi ngành dần chuyển thành một thư mục tự chứa — `<Ngành>/index.html` chỉ nạp `app/…` (giao diện của ngành) và `../data/…` (dữ liệu vẫn dùng chung, bot vẫn ghi vào `data/`). `scripts/sync_brand.py` đồng bộ cả các bản `*/app/brand.css`, `share-image.js`, `motion.js`, `chart-arrange.js`. Trong gói riêng, `site-navigation.js` tính gốc trang web bằng `../../` (vì nằm ở `<Ngành>/app/`).
+**Gói riêng theo ngành (từ 25/11/2026, cả 15 trang ngành):** mỗi ngành là một thư mục tự chứa — `<Ngành>/index.html` chỉ nạp `app/…` (giao diện của ngành) và `../data/…` (dữ liệu vẫn dùng chung, bot vẫn ghi vào `data/`). `scripts/sync_brand.py` đồng bộ cả các bản `*/app/brand.css`, `share-image.js`, `motion.js`, `chart-arrange.js` (không sửa tay 4 file này trong `app/`). Trong gói riêng, `site-navigation.js` tính gốc trang web bằng `../../` (vì nằm ở `<Ngành>/app/`).
+
+**Kho mẫu chuẩn `scripts/sector_package/`** (quy tắc rút từ trang Điện, áp cho 14 ngành; Điện giữ bản gốc `power-*` + `dien-boot.js`):
+- `sector-boot.js` — nạp đầu `<head>`, che nội dung và dựng bố cục một lượt rồi mới hiện (hết lộ "tab nền"). Module cần dựng/dời DOM khi mở trang đăng ký `SectorBoot.add(mốc, hàm)`; module bất đồng bộ báo `SectorBoot.wait(promise)`. Không dùng `setTimeout` sau `load`.
+- `labels-vi.js` — chữ tiếng Anh do module chung sinh ra (Policy · Tax · Trade, Catalyst · Risk, Sources, YoY…) thành tiếng Việt.
+- `chart-unfold.js` — chart không nằm trong mục thu gọn (mục `<details>` có chart được mở sẵn); bảng/chữ vẫn thu gọn được. Muốn giữ gập thì gắn `data-keep-folded`.
+- `chart-source.js` + `sector-standard.css` — dòng "Nguồn: …" dưới mọi chart. Chart không tự tìm được nguồn được liệt kê ở `document.documentElement.dataset.pwSrcMissing`; thêm nguồn ghi tay cho ngành bằng `window.SECTOR_SOURCE_MANUAL = [[/^Tiêu đề/, 'Nguồn'], …]` trong trang ngành, không đoán.
+- Sửa mẫu → chạy lại `python scripts/make_sector_package.py Ban-le Bank …` (chạy lại được nhiều lần: chép bản mẫu mới, đổi hẹn giờ, cập nhật `?v=`) → so lại từng ngành trước khi PR.
 
 **Điện không còn lộ "tab nền":** `Dien/app/dien-boot.js` nạp đầu tiên trong `<head>`, che nội dung từ lúc vẽ đầu tiên và chạy mọi bước dựng bố cục trong một lượt ngay sau DOMContentLoaded, rồi mới hiện trang. Module mới của Điện cần dựng/dời DOM khi mở trang thì đăng ký `DienBoot.add(mốc, hàm)` (mốc nhỏ chạy trước; các mốc đang dùng: -1, 0, 50, 300, 500, 600, 700, 800, 900, 1500, 2000), **không** dùng `setTimeout` sau sự kiện `load` — làm vậy sẽ lóe lại bố cục cũ. Đo thời điểm hiện trang: `performance.getEntriesByName('dien:ready')`.
 
