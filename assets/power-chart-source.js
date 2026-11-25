@@ -5,7 +5,7 @@
 (() => {
 'use strict';
 if (document.body.dataset.sector !== 'power') return;
-const CHART = 'canvas, [data-ct-type], .ct-canvas, .pv-hm, .vw, .vu-kwh, .ov-spark, .ov-bars';
+const CHART = 'canvas, [data-ct-type], .ct-canvas, .pv-hm, .vw, .vu-kwh, .ov-spark, .ov-bars, .value-chain-scroll';
 const UNIT = '.vt-chart-i, .db-c, .viz-block, .card';
 const make = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
@@ -20,6 +20,7 @@ const MANUAL = [
   [/^Giá thị trường điện \(FMP\)/, 'PGV · bản tin nhà đầu tư tháng'],
   [/^Giá bán lẻ bình quân/, 'EVN · QĐ 1305/QĐ-EVN'],
   [/^Chi phí than\/kWh/, 'World Bank Pink Sheet; QĐ 1692/QĐ-BCT; NHNN; PGV'],
+  [/^Chuỗi giá trị/, 'EVN · bản tin vận hành ngày (tỷ trọng sản lượng); báo cáo thường niên doanh nghiệp'],
   [/^Trần khung giá phát điện/, 'Bộ Công Thương · quyết định khung giá phát điện']
 ];
 
@@ -37,7 +38,7 @@ function sourceRaw(unit) {
   const ids = (unit.dataset.sourceIds || unit.closest('[data-source-ids]')?.dataset.sourceIds || '').split(',').filter(Boolean);
   const names = ids.map(id => window.SECTOR_DAILY?.sources?.[id]).filter(Boolean).map(s => s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name || s.id)}</a>` : esc(s.name || s.id));
   if (names.length) return [...new Set(names)].join(' · ');
-  const title = clean(unit.querySelector('.chart-title, h3, h4, .db-l, b, span')?.textContent || unit.textContent).slice(0, 120);
+  const title = clean((unit.querySelector('.chart-title') || unit.querySelector('h3, h4, .db-l, b'))?.textContent || unit.textContent).slice(0, 120);
   const m = MANUAL.find(([rx]) => rx.test(title) || rx.test(clean(unit.textContent)));
   return m ? esc(m[1]) : '';
 }

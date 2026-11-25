@@ -169,8 +169,10 @@ const ctx = {P, O, POL, chip, expo, chips, insLine, insFor: g => INS.filter(i =>
 function mapPane(p) {
   const host = card('dien-ov-map', 'ov-imap', '');
   if (VIS) VIS.map(host, ctx); else host.append(gap('không tải được module hình ảnh.'));
-  // Sơ đồ cũ "doanh nghiệp theo từng khâu" (thẻ value-chain-card dùng chung) bỏ; ma trận chuỗi × khâu (0.2) cũng bỏ theo yêu cầu người dùng 23/11/2026.
-  document.querySelector('#pane-mt1 .value-chain-card')?.remove();
+  // 0.2 Sơ đồ chuỗi giá trị và vị trí doanh nghiệp niêm yết (thẻ value-chain-card dùng chung, cùng dạng trang Dầu khí):
+  // đưa lại 25/11/2026 theo yêu cầu người dùng, hiện thẳng dưới mục 0.1 (không thu gọn).
+  const vc = document.querySelector('#pane-mt1 .value-chain-card');
+  if (vc) { const h = vc.querySelector('h3'); const tn = h && [...h.childNodes].find(n => n.nodeType === 3 && n.nodeValue.trim() === 'Chuỗi giá trị'); if (tn) tn.nodeValue = 'Chuỗi giá trị và vị trí doanh nghiệp niêm yết'; renders.map.push(() => setTimeout(() => window.dispatchEvent(new Event('resize')), 60)); }
   // Công suất đặt khác sản lượng thực phát
   const MIX = [['coal', 'Than', '#3d4653'], ['hydro', 'Thủy điện', '#2938A8'], ['re', 'Gió & mặt trời', '#2a9fa3'], ['gas', 'Khí, dầu & khác', '#c98a00'], ['imports', 'Nhập khẩu', '#9AA3BD']];
   const gm = card('dien-ov-genmix', 'ov-genmix', `<div class="ov-ctl" role="group" aria-label="Kỳ so sánh">${Object.entries(PERIODS).map(([k, x]) => `<button type="button" data-p="${k}" aria-pressed="${k === 'ytd'}">${esc(x.label)}</button>`).join('')}</div><div class="ov-bars"></div><div class="ov-legend">${MIX.map(m => `<span><i style="background:${m[2]}"></i>${m[1]}</span>`).join('')}</div><p class="ov-note"></p>`);
@@ -186,7 +188,8 @@ function mapPane(p) {
   renders.map.push(() => draw('ytd'));
   p.append(sec('map', '0.1', 'Điện đi từ đâu, tiền đi qua ai, ai quyết định huy động?', host, {sub: 'Ba lớp luồng tách riêng, bật/tắt từng lớp. Bấm một loại hình để mở chuỗi giá trị chi tiết.',
       method: 'Tỷ trọng sản lượng từ đầu năm theo bản tin vận hành ngày EVN (cùng ngày đối chiếu với tab Bức tranh ngành; gió và mặt trời tách từ số EVN, mái nhà là số EVN ước tính). Khí, dầu và LNG gộp trong bản tin EVN. Vai trò các đơn vị theo Luật Điện lực 61/2024, TT 29/2026/TT-BCT và bảng 18 doanh nghiệp.'}),
-    sec('mix', '0.2', 'Công suất đặt khác sản lượng thực phát thế nào?', gm, {method: 'Công suất đặt cuối 2025 theo biểu đồ "Công suất nguồn cuối 2025" (Bức tranh ngành › Cung dài hạn); "Khí, dầu & khác" là phần còn lại của tổng 87.600 MW; nhóm NLTT của công suất đặt có thể gồm sinh khối, điện rác. Sản lượng: các ngày có bản tin đủ nguồn ở cả hai năm.'}));
+    ...(vc ? [sec('chain', '0.2', 'Các doanh nghiệp nằm trên chuỗi giá trị thế nào?', vc, {sub: 'Rê chuột vào một khâu để xem luồng; bấm khâu để xem các mã niêm yết.'})] : []),
+    sec('mix', '0.3', 'Công suất đặt khác sản lượng thực phát thế nào?', gm, {method: 'Công suất đặt cuối 2025 theo biểu đồ "Công suất nguồn cuối 2025" (Bức tranh ngành › Cung dài hạn); "Khí, dầu & khác" là phần còn lại của tổng 87.600 MW; nhóm NLTT của công suất đặt có thể gồm sinh khối, điện rác. Sản lượng: các ngày có bản tin đủ nguồn ở cả hai năm.'}));
 }
 
 /* ===================== 6. 01 · Chuỗi giá trị theo công nghệ ===================== */
