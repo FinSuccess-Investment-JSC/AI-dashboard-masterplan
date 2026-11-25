@@ -1,0 +1,548 @@
+{
+ "about": "Số tìm thêm trên web để lấp khoảng trống workbook KCN. Mỗi dòng có bằng chứng (đoạn trích nguyên văn) trong data/kcn/evidence.json; build ghép vào bảng tương ứng. Không sửa workbook gốc.",
+ "checked": "2026-11-12",
+ "sources": {
+  "WEB_CBRE_Q3_26N": {
+   "what": "CBRE Q3/2026 qua Doanh nhân (Báo Pháp luật) 21/10/2026: hấp thụ đất KCN cấp 1, giá thuê miền Bắc",
+   "cls": "SECONDARY/INDEX",
+   "use": "PUBLISHED",
+   "url": "https://doanhnhan.baophapluat.vn/nha-xuong-xay-san-lap-ky-luc-hap-thu-ai-va-ban-dan-thuc-day-bat-dong-san-cong-nghiep.html",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json"
+  },
+  "WEB_CBRE_9M_26S": {
+   "what": "CBRE 9T/2026 miền Nam qua Thời báo Tài chính Việt Nam 15/10/2026",
+   "cls": "SECONDARY/INDEX",
+   "use": "PUBLISHED",
+   "url": "https://thoibaotaichinhvietnam.vn/bat-dong-san-cong-nghiep-phia-nam-hap-thu-163-ha-dat-trong-9-thang-205377.html",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json"
+  },
+  "WEB_CBRE_HN25Q1": {
+   "what": "CBRE Hanoi Figures Q1/2025 (PDF, trang 6)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://mktgdocs.cbre.com/2299/200b6b1b-1213-47cb-8b75-240c9e966c9e-1391604255/CBRE_Vietnam_Hanoi_Figures_Q1_.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json"
+  },
+  "WEB_CBRE_HN25Q2": {
+   "what": "CBRE Hanoi Figures Q2/2025 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://mktgdocs.cbre.com/2299/085df066-54d0-4fca-81c9-cd56b23f628c-1198311695/CBRE_Vietnam_Hanoi_Figures_Q2_.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json"
+  },
+  "WEB_CBRE_HN25Q3": {
+   "what": "CBRE Hanoi Figures Q3/2025 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://mktgdocs.cbre.com/2299/9c3fa410-42d1-4157-b045-b1102a3f379f-1491714702/CBRE_Vietnam_Hanoi_Figures_Q3_.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json"
+  },
+  "WEB_CBRE_HN25Q4": {
+   "what": "CBRE Hanoi Figures Q4/2025 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://mktgdocs.cbre.com/2299/f2dfc91b-e6a5-4242-8612-4702511e1f62-1785117709/CBRE_Vietnam_Hanoi_Figures_Q4_.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json"
+  },
+  "WEB_CBRE_HCM25Q2": {
+   "what": "CBRE HCMC Figures Q2/2025 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://mktgdocs.cbre.com/2299/4dc37d69-04bf-4dc1-a2fa-2ea2b14d3068-646554789/CBRE_Vietnam_HCMC_Figures_Q2_2.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json"
+  },
+  "WEB_CBRE_HCM25Q3": {
+   "what": "CBRE HCMC Figures Q3/2025 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://mktgdocs.cbre.com/2299/88f31369-b095-4788-9629-4d25b3506206-353151782/CBRE_Vietnam_HCMC_Figures_Q3_2.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json"
+  },
+  "WEB_CW_N25Q3": {
+   "what": "C&W MarketBeat Hà Nội công nghiệp Q3/2025 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2025/q3/apac-and-gc/q3-2025-hanoi-marketbeat-en_industrial.pdf",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json"
+  },
+  "WEB_CW_S26Q1": {
+   "what": "C&W MarketBeat miền Nam công nghiệp Q1/2026 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q1/apac-and-gc/q1-2026-southern-key-economic-zone-industrial-markets-en-260428---final.pdf?rev=e46c8d71df664368acb309406be4cff9",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json"
+  },
+  "WEB_CW_S26Q2": {
+   "what": "C&W MarketBeat TP.HCM công nghiệp Q2/2026 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q2/apac-and-gc/hcmc-marketbeat-industrial-q2-2026---en.pdf?rev=130f404dbceb4f36840bbf5838bdedb2",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json"
+  },
+  "WEB_CW_S26Q3": {
+   "what": "C&W MarketBeat TP.HCM công nghiệp Q3/2026 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hcmc-industrial-q3-2026-en.pdf?rev=885a3b2109c843e0ac05c565cde3483c",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json"
+  },
+  "WEB_CW_N26Q3": {
+   "what": "C&W MarketBeat Hà Nội công nghiệp Q3/2026 (PDF)",
+   "cls": "PRIMARY",
+   "use": "PUBLISHED",
+   "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hn-industrial-q3-2026-en.pdf?rev=c905e530b50045ff9c059416318e32cd",
+   "checked": "2026-11-12",
+   "note": "Bổ sung từ tra cứu web; xem data/kcn/evidence.json"
+  }
+ },
+ "rows": [
+  {
+   "id": "cbre-n-2026q3",
+   "table": "cbre",
+   "mode": "replace",
+   "key": {
+    "period": "2026Q3",
+    "region": "North"
+   },
+   "set": {
+    "value": 101,
+    "status": "LOWER_BOUND"
+   },
+   "src": "WEB_CBRE_Q3_26N",
+   "note": "CBRE công bố \"hơn 101 ha\" trong Q3/2026 ở thị trường cấp 1, \"chủ yếu tại các KCN ở miền Bắc\", +30,1% so cùng kỳ. Nguồn không tách rõ Bắc hay cả nước; đối chiếu 9T/2026 (Bắc khoảng 450, Nam 163, cả nước khoảng 613 ha) chỉ khớp khi đọc là miền Bắc. Thay số dư 99 ha suy từ 9T làm tròn."
+  },
+  {
+   "id": "cbre-s-2026q3",
+   "table": "cbre",
+   "mode": "replace",
+   "key": {
+    "period": "2026Q3",
+    "region": "South"
+   },
+   "set": {
+    "value": 39,
+    "status": "DERIVED_EXACT"
+   },
+   "src": "WEB_CBRE_9M_26S",
+   "note": "= 9T/2026 163 ha − H1/2026 124 ha: hai số CBRE công bố cho cùng phạm vi miền Nam cấp 1, không còn là phần dư từ số cả nước làm tròn."
+  },
+  {
+   "id": "cbre-n-2025q1",
+   "table": "cbre",
+   "mode": "add",
+   "key": {
+    "period": "2025Q1",
+    "region": "North"
+   },
+   "set": {
+    "value": 200,
+    "status": "ACTUAL_PRIMARY",
+    "unit": "ha",
+    "coverage": "CBRE Tier-1 market"
+   },
+   "src": "WEB_CBRE_HN25Q1",
+   "note": "CBRE Hanoi Figures Q1/2025, trang 6 (PDF không có lớp chữ, đọc từ ảnh trang)."
+  },
+  {
+   "id": "cbre-n-2025h1",
+   "table": "absorption",
+   "mode": "add",
+   "key": {
+    "period": "2025H1",
+    "region": "North",
+    "reporter": "CBRE",
+    "coverage": "CBRE_TIER1",
+    "ptype": "6 months"
+   },
+   "set": {
+    "value": 260,
+    "unit": "ha",
+    "obs": "ACTUAL",
+    "precision": "APPROX"
+   },
+   "src": "WEB_CBRE_HN25Q2",
+   "note": "CBRE ghi \"gần 260 ha\"; 75% trong Q1."
+  },
+  {
+   "id": "cbre-n-2025m9",
+   "table": "absorption",
+   "mode": "add",
+   "key": {
+    "period": "2025M9",
+    "region": "North",
+    "reporter": "CBRE",
+    "coverage": "CBRE_TIER1",
+    "ptype": "9 months"
+   },
+   "set": {
+    "value": 350,
+    "unit": "ha",
+    "obs": "ACTUAL",
+    "precision": "APPROX"
+   },
+   "src": "WEB_CBRE_HN25Q3",
+   "note": "CBRE ghi \"gần 350 ha\"."
+  },
+  {
+   "id": "cbre-n-2025fy",
+   "table": "absorption",
+   "mode": "add",
+   "key": {
+    "period": "2025FY",
+    "region": "North",
+    "reporter": "CBRE",
+    "coverage": "CBRE_TIER1",
+    "ptype": "Year"
+   },
+   "set": {
+    "value": 480,
+    "unit": "ha",
+    "obs": "ACTUAL",
+    "precision": "APPROX"
+   },
+   "src": "WEB_CBRE_HN25Q4",
+   "note": "CBRE ghi \"gần 480 ha\", −24% YoY."
+  },
+  {
+   "id": "cbre-s-2025h1",
+   "table": "absorption",
+   "mode": "add",
+   "key": {
+    "period": "2025H1",
+    "region": "South",
+    "reporter": "CBRE",
+    "coverage": "CBRE_TIER1",
+    "ptype": "6 months"
+   },
+   "set": {
+    "value": 55,
+    "unit": "ha",
+    "obs": "ACTUAL",
+    "precision": "EXACT"
+   },
+   "src": "WEB_CBRE_HCM25Q2",
+   "note": "Khớp mức +125% của H1/2026 (124 ha)."
+  },
+  {
+   "id": "cbre-s-2025m9",
+   "table": "absorption",
+   "mode": "add",
+   "key": {
+    "period": "2025M9",
+    "region": "South",
+    "reporter": "CBRE",
+    "coverage": "CBRE_TIER1",
+    "ptype": "9 months"
+   },
+   "set": {
+    "value": 80,
+    "unit": "ha",
+    "obs": "ACTUAL",
+    "precision": "APPROX"
+   },
+   "src": "WEB_CBRE_HCM25Q3",
+   "note": "CBRE ghi \"khoảng 80 ha\". Mức +56% CBRE công bố cho 9T/2026 hàm ý nền 9T/2025 khoảng 104 ha: CBRE có thể đã điều chỉnh số 2025."
+  },
+  {
+   "id": "cbre-s-2026m9",
+   "table": "absorption",
+   "mode": "add",
+   "key": {
+    "period": "2026M9",
+    "region": "South",
+    "reporter": "CBRE",
+    "coverage": "CBRE_TIER1",
+    "ptype": "9 months"
+   },
+   "set": {
+    "value": 163,
+    "unit": "ha",
+    "obs": "ACTUAL",
+    "precision": "EXACT"
+   },
+   "src": "WEB_CBRE_9M_26S",
+   "note": "CBRE, +56% YoY."
+  },
+  {
+   "id": "cw-n-2025q3-rent",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2025Q3",
+    "region": "North",
+    "reporter": "C&W",
+    "metric": "rent_yoy"
+   },
+   "set": {
+    "value": 0.04,
+    "unit": "USD",
+    "basis": "like-for-like"
+   },
+   "src": "WEB_CW_N25Q3",
+   "note": "C&W tự tính trên cùng phạm vi; giá Q3/2025 133 USD giảm 2% QoQ do nhập tỉnh có giá thấp."
+  },
+  {
+   "id": "cw-s-2026q1-stock",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2026Q1",
+    "region": "South",
+    "reporter": "C&W",
+    "metric": "stock_yoy"
+   },
+   "set": {
+    "value": 0.086,
+    "basis": "post-merger"
+   },
+   "src": "WEB_CW_S26Q1",
+   "note": "Ghi chú chart của C&W: số cung theo địa giới sau sáp nhập."
+  },
+  {
+   "id": "cw-s-2026q1-occ",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2026Q1",
+    "region": "South",
+    "reporter": "C&W",
+    "metric": "occ_yoy_pp"
+   },
+   "set": {
+    "value": -0.013,
+    "basis": "post-merger"
+   },
+   "src": "WEB_CW_S26Q1",
+   "note": null
+  },
+  {
+   "id": "cw-s-2026q1-rent",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2026Q1",
+    "region": "South",
+    "reporter": "C&W",
+    "metric": "rent_yoy"
+   },
+   "set": {
+    "value": 0.017,
+    "unit": "USD",
+    "basis": "post-merger"
+   },
+   "src": "WEB_CW_S26Q1",
+   "note": null
+  },
+  {
+   "id": "cw-s-2026q1-leased",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2026Q1",
+    "region": "South",
+    "reporter": "C&W",
+    "metric": "leased_area_change_ha"
+   },
+   "set": {
+    "value": 1710,
+    "basis": "post-merger"
+   },
+   "src": "WEB_CW_S26Q1",
+   "note": "Thay đổi diện tích đã thuê so cùng kỳ (C&W tự tính), khác định nghĩa hấp thụ thuần theo quý: không cộng với hấp thụ."
+  },
+  {
+   "id": "cw-s-2026q2-stock",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2026Q2",
+    "region": "South",
+    "reporter": "C&W",
+    "metric": "stock_yoy"
+   },
+   "set": {
+    "value": 0.046,
+    "basis": "post-merger"
+   },
+   "src": "WEB_CW_S26Q2",
+   "note": null
+  },
+  {
+   "id": "cw-s-2026q2-rent",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2026Q2",
+    "region": "South",
+    "reporter": "C&W",
+    "metric": "rent_yoy"
+   },
+   "set": {
+    "value": 0.017,
+    "unit": "USD",
+    "basis": "post-merger"
+   },
+   "src": "WEB_CW_S26Q2",
+   "note": null
+  },
+  {
+   "id": "cw-s-2026q3-occ",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2026Q3",
+    "region": "South",
+    "reporter": "C&W",
+    "metric": "occ_yoy_pp"
+   },
+   "set": {
+    "value": 0.015,
+    "basis": "post-merger"
+   },
+   "src": "WEB_CW_S26Q3",
+   "note": null
+  },
+  {
+   "id": "cw-s-2026q3-rent",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2026Q3",
+    "region": "South",
+    "reporter": "C&W",
+    "metric": "rent_yoy"
+   },
+   "set": {
+    "value": 0.012,
+    "unit": "VND",
+    "basis": "post-merger"
+   },
+   "src": "WEB_CW_S26Q3",
+   "note": "So cùng kỳ tính trên giá VND do C&W công bố."
+  },
+  {
+   "id": "cw-n-2026q3-stock",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2026Q3",
+    "region": "North",
+    "reporter": "C&W",
+    "metric": "stock_yoy"
+   },
+   "set": {
+    "value": 0.074,
+    "basis": "post-merger"
+   },
+   "src": "WEB_CW_N26Q3",
+   "note": null
+  },
+  {
+   "id": "cw-n-2026q3-occ",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2026Q3",
+    "region": "North",
+    "reporter": "C&W",
+    "metric": "occ_yoy_pp"
+   },
+   "set": {
+    "value": -0.021,
+    "basis": "post-merger"
+   },
+   "src": "WEB_CW_N26Q3",
+   "note": null
+  },
+  {
+   "id": "cw-n-2026q3-rent",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2026Q3",
+    "region": "North",
+    "reporter": "C&W",
+    "metric": "rent_yoy"
+   },
+   "set": {
+    "value": 0.018,
+    "unit": "VND",
+    "basis": "post-merger"
+   },
+   "src": "WEB_CW_N26Q3",
+   "note": "So cùng kỳ tính trên giá VND do C&W công bố."
+  },
+  {
+   "id": "cbre-n-2026q3-rent",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2026Q3",
+    "region": "North",
+    "reporter": "CBRE",
+    "metric": "rent_yoy"
+   },
+   "set": {
+    "value": 0.008,
+    "unit": "USD",
+    "level": 144,
+    "basis": "CBRE Tier-1"
+   },
+   "src": "WEB_CBRE_Q3_26N",
+   "note": "Giá CBRE, phạm vi Tier-1, khác C&W."
+  },
+  {
+   "id": "cbre-s-2026q3-rent",
+   "table": "reported",
+   "mode": "add",
+   "key": {
+    "period": "2026Q3",
+    "region": "South",
+    "reporter": "CBRE",
+    "metric": "rent_yoy"
+   },
+   "set": {
+    "value": 0.015,
+    "unit": "USD",
+    "level": 185,
+    "basis": "CBRE Tier-1"
+   },
+   "src": "WEB_CBRE_9M_26S",
+   "note": "Cùng đoạn: \"tăng 1,5% so với cùng kỳ năm 2025\". Giá CBRE, phạm vi Tier-1."
+  }
+ ],
+ "qa_updates": [
+  {
+   "issue": "Q3_CBRE_RESIDUAL_ONLY",
+   "status": "resolved",
+   "note": "Miền Nam Q3/2026 = 163 − 124 ha, hai số CBRE công bố cho cùng phạm vi; miền Bắc Q3/2026 thay bằng số CBRE công bố \"hơn 101 ha\" (cận dưới). Không còn số dư từ số cả nước làm tròn."
+  },
+  {
+   "issue": "ABSORPTION_GAPS",
+   "status": "mitigated",
+   "note": "Đã kiểm MarketBeat C&W Q3/2025–Q3/2026 (PDF và thông cáo): C&W không công bố hấp thụ theo ha ở các quý còn trống. Nhịp cầu theo quý đọc ở chuỗi CBRE; lũy kế CBRE 2025 đã bổ sung để so cùng kỳ."
+  },
+  {
+   "issue": "GEOGRAPHY_REBASE",
+   "status": "mitigated",
+   "note": "Dùng các mức so cùng kỳ C&W tự công bố trên cùng địa giới mới (miền Nam từ Q1/2026, miền Bắc Q3/2026; giá thuê miền Bắc Q3/2025 +4% cùng phạm vi). Mức trước/sau mốc vẫn không so trực tiếp."
+  },
+  {
+   "issue": "MIXED_CBRE_CW",
+   "status": "mitigated",
+   "note": "Hai nguồn vẽ thành chuỗi riêng; so cùng kỳ chỉ trong từng nguồn (CBRE lũy kế 2026 so 2025 cùng phạm vi cấp 1)."
+  }
+ ]
+}

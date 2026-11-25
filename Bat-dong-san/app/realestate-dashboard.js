@@ -27,10 +27,10 @@ if(chain){
  const w=220,h=65;
  const nodes=[
   ['land',25,40,['Quỹ đất · đấu giá','Bảng giá đất mới từ 01/01/2026']],['legal',25,135,['Pháp lý dự án','Chấp thuận chủ trương · tiền SDĐ']],['bank',25,230,['Vốn ngân hàng','Lãi suất · room tín dụng']],['bond',25,325,['Trái phiếu doanh nghiệp','Đáo hạn · chậm trả']],['presale',25,420,['Tiền người mua trả trước','Presales · bàn giao']],
-  ['housing',315,40,['Phát triển nhà ở','VHM • NVL • KDH • NLG • DXG • PDR']],['housing2',315,135,['Nhà ở (tiếp)','DIG • CEO • AGG • TCH • NTL']],['ip',315,230,['Khu công nghiệp','KBC • IDC • BCM • SZC • SIP • VGC • LHG']],['retail',315,325,['Cho thuê bán lẻ','VRE']],['broker',315,420,['Môi giới','DXS']],
-  ['buyer',655,88,['Người mua nhà','Tín dụng mua nhà · lãi suất']],['tenant',655,230,['Khách thuê FDI','Chế biến chế tạo · logistics']],['shopper',655,325,['Khách thuê bán lẻ','Sức mua · lấp đầy']],['build',925,135,['Nhà thầu · VLXD','Thép • xi măng • giá nhân công']]
+  ['housing',315,40,['Phát triển nhà ở','VHM • NVL • KDH • NLG • DXG • PDR']],['housing2',315,135,['Nhà ở (tiếp)','DIG • CEO • AGG • TCH • NTL']],['retail',315,325,['Cho thuê bán lẻ','VRE']],['broker',315,420,['Môi giới','DXS']],
+  ['buyer',655,88,['Người mua nhà','Tín dụng mua nhà · lãi suất']],['shopper',655,325,['Khách thuê bán lẻ','Sức mua · lấp đầy']],['build',925,135,['Nhà thầu · VLXD','Thép • xi măng • giá nhân công']]
  ];
- const edges=[['land','housing'],['legal','housing'],['legal','housing2'],['bank','housing2'],['bond','housing2'],['presale','housing2'],['land','ip'],['bank','ip'],['housing','buyer'],['housing2','buyer'],['ip','tenant'],['retail','shopper'],['broker','buyer',true],['build','housing',true]];
+ const edges=[['land','housing'],['legal','housing'],['legal','housing2'],['bank','housing2'],['bond','housing2'],['presale','housing2'],['housing','buyer'],['housing2','buyer'],['retail','shopper'],['broker','buyer',true],['build','housing',true]];
  const byId=Object.fromEntries(nodes.map(n=>[n[0],n]));
  const paths=edges.map(([a,b,dashed])=>{const A=byId[a],Bn=byId[b],forward=Bn[1]>A[1],x1=A[1]+(forward?w:0),x2=Bn[1]+(forward?0:w),y1=A[2]+h/2,y2=Bn[2]+h/2,mid=(x1+x2)/2;const custom={'build:housing':'M925 167 H900 V72 H535','broker:buyer':'M535 452 H600 V120 H655'};const route=custom[a+':'+b]||`M${x1} ${y1} H${mid} V${y2} H${x2}`;return `<path d="${route}" class="chain-edge ${dashed?'support':''}" marker-end="url(#chain-arrow)"/>`}).join('');
  const boxes=nodes.map(([id,x,y,lines])=>`<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="9" class="chain-node"/><text x="${x+w/2}" y="${y+(lines.length===1?37:27)}" text-anchor="middle">${lines.map((t,i)=>`<tspan x="${x+w/2}" dy="${i?21:0}">${t}</tspan>`).join('')}</text></g>`).join('');
@@ -50,7 +50,7 @@ if(section){
  const tabs=make('div','supply-tabs');tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','Phân khúc');
  const panes=[housing,ip];function select(i){panes.forEach((p,j)=>{p.hidden=i!==j;const b=tabs.children[j];b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1})}
  ['Nhà ở','Khu công nghiệp'].forEach((label,i)=>{const b=make('button','tabbtn',label);b.type='button';b.id='supply-tab-'+i;b.setAttribute('role','tab');b.setAttribute('aria-controls',panes[i].id);panes[i].setAttribute('role','tabpanel');panes[i].setAttribute('aria-labelledby',b.id);b.addEventListener('click',()=>select(i));b.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight'||e.key==='ArrowLeft')next=1-i;else if(e.key==='Home')next=0;else if(e.key==='End')next=1;if(next!==undefined){e.preventDefault();select(next);tabs.children[next].focus()}});tabs.append(b)});
- head.after(tabs,housing,ip);select(0);
+ head.after(tabs,housing,ip);select(0);tabs.hidden=true;tabs.style.display='none';ip.hidden=true; // KCN đã tách sang Bat-dong-san-KCN (25/11/2026)
 }
 
 // ---------- 3. Charts ----------

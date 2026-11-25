@@ -1772,7 +1772,9 @@
      "dien-01",
      "dien-03",
      "bds-01",
+     "kcn-01",
      "bds-03",
+     "kcn-03",
      "bds-40",
      "dm-01",
      "dm-03",
@@ -1819,7 +1821,7 @@
     "url": "https://cbonds.hnx.vn/"
    },
    "where": {
-    "page": "Bat-dong-san/index.html",
+    "page": "Bat-dong-san/index.html · Bat-dong-san-KCN/index.html (bds-09, bds-10, bds-11, bds-41)",
     "file": "data/realestate-public-data.js",
     "blocks": [
      "bds-04",
@@ -1997,7 +1999,7 @@
     "url": "https://www.cushmanwakefield.com/vi-vn/vietnam/insights"
    },
    "where": {
-    "page": "Bat-dong-san/index.html",
+    "page": "Bat-dong-san-KCN/index.html",
     "file": "data/kcn-market.js",
     "blocks": [
      "kcn-ov-abs",
@@ -2027,10 +2029,12 @@
      "kcn-da-explorer",
      "kcn-da-qa",
      "kcn-da-checks",
-     "kcn-da-rules"
+     "kcn-da-rules",
+     "kcn-su-reported",
+     "kcn-da-web"
     ]
    },
-   "how": "Cập nhật workbook data/raw/kcn/Vietnam_Industrial_Park_Research_Data_2026_Expanded_Landbank.xlsx khi C&W/CBRE ra số quý mới (giữ tên sheet, cột, Source_ID, Coverage, Geography_version) → python scripts/build_kcn_workbook.py → node tests/kcn-insights.test.cjs và pytest tests/test_kcn_workbook.py → prepare_release",
+   "how": "Cập nhật workbook data/raw/kcn/Vietnam_Industrial_Park_Research_Data_2026_Expanded_Landbank.xlsx khi C&W/CBRE ra số quý mới (giữ tên sheet, cột, Source_ID, Coverage, Geography_version) (hoặc thêm số tìm trên web vào data/kcn/supplement.json, mỗi số một dòng bằng chứng có trích dẫn trong data/kcn/evidence.json) → python scripts/build_kcn_workbook.py → node tests/kcn-insights.test.cjs và pytest tests/test_kcn_workbook.py → prepare_release",
    "gates": [
     "Link báo cáo/thông cáo gốc trong 11_SOURCES",
     "Không nối chuỗi qua đổi phạm vi khảo sát hay đổi đơn vị USD/VND",
@@ -2052,7 +2056,7 @@
     "url": "https://www.idico.com.vn/"
    },
    "where": {
-    "page": "Bat-dong-san/index.html",
+    "page": "Bat-dong-san-KCN/index.html",
     "file": "data/kcn-market.js",
     "blocks": [
      "kcn-lb-company",
@@ -2091,7 +2095,7 @@
     "url": "https://vanban.chinhphu.vn/"
    },
    "where": {
-    "page": "Bat-dong-san/index.html",
+    "page": "Bat-dong-san/index.html · Bat-dong-san-KCN/index.html (bds-42)",
     "blocks": [
      "bds-19",
      "bds-20",
@@ -2155,7 +2159,7 @@
     "url": "https://moc.gov.vn/"
    },
    "where": {
-    "page": "Bat-dong-san/index.html",
+    "page": "Bat-dong-san/index.html · Bat-dong-san-KCN/index.html (bds-26, bds-43)",
     "blocks": [
      "bds-22",
      "bds-23",
@@ -2188,6 +2192,29 @@
     "page": "Bat-dong-san/index.html",
     "blocks": [
      "bds-02"
+    ]
+   },
+   "how": "Cập nhật số và nhận định trong bds-02 và catbox/riskbox theo số mới; bảng tín hiệu tự tính từ dữ liệu công khai",
+   "gates": [
+    "Số khớp chart",
+    "Không đụng ô analyst"
+   ]
+  },
+  {
+   "id": "industrial.ai.cycle",
+   "tier": "D",
+   "title": "BĐS KCN: vị trí trong chu kỳ, đọc nhanh",
+   "schedule": {
+    "type": "data",
+    "sources": [],
+    "minDays": 7,
+    "material": [],
+    "note": "Viết lại khi dư nợ chậm trả TPDN BĐS đổi ≥ 5% hoặc gốc đến hạn 3 tháng tới / dư nợ đổi ≥ 1 điểm %, hoặc có số quý mới của Bộ Xây dựng"
+   },
+   "where": {
+    "page": "Bat-dong-san-KCN/index.html",
+    "blocks": [
+     "kcn-02"
     ]
    },
    "how": "Cập nhật số và nhận định trong bds-02 và catbox/riskbox theo số mới; bảng tín hiệu tự tính từ dữ liệu công khai",
@@ -4699,7 +4726,7 @@
     "url": "https://www.vdsc.com.vn/"
    },
    "where": {
-    "page": "Bat-dong-san/index.html",
+    "page": "Bat-dong-san-KCN/index.html",
     "blocks": [
      "bds-44",
      "bds-45",
@@ -4732,7 +4759,7 @@
     "url": "https://baochinhphu.vn/"
    },
    "where": {
-    "page": "Bat-dong-san/index.html",
+    "page": "Bat-dong-san/index.html · Bat-dong-san-KCN/index.html (bds-49)",
     "blocks": [
      "bds-48",
      "bds-49",
@@ -5046,7 +5073,7 @@
     "url": "https://widata.vn/"
    },
    "where": {
-    "page": "Bat-dong-san/index.html",
+    "page": "Bat-dong-san/index.html · Bat-dong-san-KCN/index.html (bds-09, bds-10, bds-11, bds-41)",
     "file": "data/realestate-public-data.js",
     "blocks": [
      "bds-04",

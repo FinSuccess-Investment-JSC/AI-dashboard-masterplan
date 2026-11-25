@@ -1,0 +1,111 @@
+/* Analyst-owned lifecycle database. No job overwrites user notes or states. */
+SectorBoot.wait((async () => { // sector-boot.js đợi phần này
+'use strict';
+const R=window.ResearchLayout;if(!R)return;const {make,fold,sector,hot}=R;
+let db;const failures=[];
+try{db=await new Promise((resolve,reject)=>{const req=indexedDB.open('finsuccess-research',1);req.onupgradeneeded=()=>req.result.createObjectStore('entries',{keyPath:'id'});req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);req.onblocked=()=>reject(new Error('blocked'))})}catch(e){failures.push(e)}
+const readAll=()=>new Promise((resolve,reject)=>{if(!db)return resolve([]);const q=db.transaction('entries').objectStore('entries').getAll();q.onsuccess=()=>resolve(q.result.filter(r=>r.sector===sector));q.onerror=()=>reject(q.error)});
+const save=record=>new Promise((resolve,reject)=>{if(!db)return reject(new Error('Cơ sở dữ liệu không khả dụng'));const tx=db.transaction('entries','readwrite');tx.objectStore('entries').put(record);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error)});
+const remove=id=>new Promise((resolve,reject)=>{if(!db)return reject(new Error('Cơ sở dữ liệu không khả dụng'));const tx=db.transaction('entries','readwrite');tx.objectStore('entries').delete(id);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)});
+let stored=[];try{stored=await readAll()}catch(e){failures.push(e)}const records=new Map(stored.map(r=>[r.id,r]));
+function editor(card,key,type,initial={}){
+ const id=sector+':'+type+':'+key;
+ let record=records.get(id)||{id,sector,type,status:'active',author:'',note:'',createdAt:new Date().toISOString(),...initial};
+ records.set(id,record);const badge=make('span','research-lifecycle');
+ const heading=card.querySelector('.thesis-signal-top')||card.querySelector(':scope > details > summary')||card;heading.append(' ',badge);
+ const form=make('form','research-editor');
+ const select=make('select');select.setAttribute('aria-label','Trạng thái luận điểm');[['active','Đang theo dõi'],['archived','Đã lưu']].forEach(([v,t])=>{const o=make('option','',t);o.value=v;select.append(o)});
+ const uid=id.replace(/:/g,'-'),author=make('input');author.id=uid+'-author';author.maxLength=100;author.placeholder='Tên analyst';
+ const lab=make('label','','Tác giả');lab.htmlFor=author.id;
+ const memo=make('textarea');memo.id=uid+'-memo';memo.rows=3;memo.maxLength=10000;memo.placeholder='Luận điểm / phản biện, lý do lưu và điều kiện mở lại';const ml=make('label','','Góc nhìn analyst');ml.htmlFor=memo.id;
+ const button=make('button','','Lưu thay đổi');button.type='submit';const status=make('p','research-save-status');status.setAttribute('role','status');
+ form.append(select,lab,author,ml,memo,button,status);
+ const d=make('details','research-fold');d.append(make('summary','','Góc nhìn analyst & trạng thái'),form);
+ (card.querySelector('.research-detail')||card).append(d);
+ const apply=()=>{card.dataset.lifecycle=record.status;badge.textContent=record.status==='archived'?'Đã lưu':'';badge.hidden=record.status!=='archived';badge.classList.toggle('is-archived',record.status==='archived');select.value=record.status;author.value=record.author||'';memo.value=record.note||'';status.textContent=record.updatedAt?'Đã lưu trên trình duyệt · '+new Date(record.updatedAt).toLocaleString('vi-VN'):'';card.dispatchEvent(new CustomEvent('lifecyclechange',{bubbles:true}))};
+ form.addEventListener('submit',async e=>{e.preventDefault();if((memo.value.trim()||select.value!==record.status)&&!author.value.trim()){status.textContent='Điền tác giả cho thay đổi hoặc góc nhìn riêng.';author.focus();return}button.disabled=true;const next={...record,status:select.value,author:author.value.trim(),note:memo.value.trim(),updatedAt:new Date().toISOString()};try{await save(next);record=next;records.set(id,next);apply()}catch(e){status.textContent='Chưa lưu được. Nội dung vẫn ở ô nhập; hãy xuất bản sao hoặc thử lại.'}finally{button.disabled=false}});
+ apply();if(!db){button.disabled=true;status.textContent='Trình duyệt không cho lưu dữ liệu. Vẫn đọc được nội dung gốc.'}
+ return {card,record};
+}
+const strategies={
+ oil:[['Dòng chảy giảm có chuyển thành thay đổi lợi nhuận?','Ngắn hạn · ngày đến quý','Crack, thiếu nguyên liệu và cước có thể truyền dẫn khác nhau tới BSR, PLX, PVT.','Dòng tàu phục hồi nhưng crack còn cao: kiểm tra thêm tồn kho sản phẩm. Không dùng riêng AIS để kết luận.'],['Crack cao có bền qua chu kỳ tồn kho?','1–2 quý','BSR có thể hưởng biên; PLX phụ thuộc giá vốn và cơ chế giá.','Đối chiếu crack cùng kỳ biên BSR, lịch bảo dưỡng và tác động tồn kho.'],['Thắt chặt cung có vượt tác động cầu yếu?','2–4 quý','Giá dầu chỉ truyền tới doanh nghiệp niêm yết qua từng khâu.','So revision cung/cầu và tồn kho, không suy dự báo thiếu cung thành giá chắc chắn tăng.'],['Đầu tư có trở thành hợp đồng và dòng tiền?','Nhiều quý đến nhiều năm','PVD/PVS: khối lượng công việc; GAS: nguồn khí và tiêu thụ.','So chu kỳ dự án trước theo FID → ký hợp đồng → nghiệm thu → thu tiền. Chưa có nghiên cứu sự kiện định lượng.']],
+ sugar:[['Tồn kho giảm có mở đường tăng giá bán?','Trong niên vụ','Giá bán và vòng quay hàng có thể hỗ trợ dòng tiền doanh nghiệp.','Đối chiếu tồn kho/tiêu thụ cùng niên vụ; loại ảnh hưởng mùa ép mía.'],['Giá đường tăng có chuyển thành biên và giá cổ phiếu?','Ngắn hạn · 1–2 quý','Tự chủ mía và nhập đường thô có độ nhạy chi phí khác nhau.','Kiểm tra 2022 bằng giá đường, giá mía, biên doanh nghiệp và lợi suất cổ phiếu so VN-Index. Chưa đủ chuỗi để kết luận hay quy nguyên nhân cho chiến tranh.'],['Nguồn cung thay thế có chặn tăng giá nội địa?','1–4 quý','Nhập khẩu và HFCS ảnh hưởng khả năng chuyển giá ở khách hàng công nghiệp.','So cùng kỳ, cùng độ ngọt và chi phí quy đổi; tách nhập khẩu thực tế với hạn ngạch.'],['Bảo hộ có chuyển thành thực thi?','Theo mốc hiệu lực và rà soát','Lợi ích phụ thuộc xuất xứ, thuế thực nộp và cạnh tranh nội địa.','So trước/sau 2021 và 2022 cùng cung cầu; chưa quy toàn bộ biến động giá cho thuế.']],
+ power:[['El Niño có làm giảm sản lượng thủy điện mùa khô 2027?','1–3 quý · mùa khô 11/2026–6/2027','Thủy điện (REE, VSH, CHP, SBA, TMP, SHP) giảm sản lượng; nhiệt điện than, khí (PPC, QTP, HND, POW, NT2) được huy động nhiều hơn.','So các đợt El Niño mạnh 2015–16 và 2023–24 với sản lượng thủy điện và tỷ trọng than trong bản tin EVN. ONI chỉ là chỉ báo sớm, không thay số nước về hồ.'],['Giá than, LNG đổi hướng có chuyển thành biên nhiệt điện?','1–2 quý','PPA với EVN chuyển phần lớn chi phí nhiên liệu vào giá điện năng; biên đổi chủ yếu qua mức huy động và giá thị trường.','Đối chiếu giá than/LNG cùng kỳ với biên gộp quý của PPC, QTP, HND, POW, NT2; tách lỗ/lãi tỷ giá.'],['Tài chính EVN tốt lên có giúp nhà máy thu tiền nhanh hơn?','2–4 quý','Phải thu EVN của IPP nhiệt điện và NLTT quyết định dòng tiền và chi phí lãi vay.','Theo dõi phải thu EVN trong BCTC quý từng doanh nghiệp cùng kết quả tài chính EVN và quyết định giá bán lẻ.'],['Phụ tải tăng nhanh có kéo đầu tư nguồn và lưới?','Nhiều quý đến nhiều năm','Xây lắp lưới (PC1, TV2) hưởng lợi từ vốn đầu tư; nhà máy hiện hữu được huy động cao.','So tăng trưởng sản lượng và Pmax với công suất mới vào vận hành và vốn đầu tư EVN/NPT; kế hoạch chưa đồng nghĩa giải ngân.']],
+ realestate:[['Trái phiếu đáo hạn có đảo được bằng phát hành mới và bán hàng?','1–4 quý','Chủ đầu tư nhà ở có lịch đáo hạn dày (VHM, NVL, nhóm chưa niêm yết) chịu áp lực trước; KCN ít phụ thuộc trái phiếu.','So gốc đến hạn 3–12 tháng tới với phát hành mới, mua lại trước hạn và tiền người mua trả trước trong BCTC; không coi dư nợ chậm trả giảm là đã trả nếu chỉ là gia hạn.'],['Tín dụng rẻ có chuyển thành hấp thụ và giá bán?','1–2 quý','Lãi suất tái cấp vốn và tín dụng xây dựng là đầu vào; hấp thụ phụ thuộc giá sơ cấp và nguồn cung mở bán.','Đối chiếu tăng trưởng tín dụng xây dựng, lãi suất vay mua nhà và số căn bán theo báo cáo quý của Bộ Xây dựng/CBRE; tách Hà Nội và TP.HCM.'],['Bảng giá đất mới có làm tăng giá vốn dự án?','2–8 quý','Dự án chưa nộp tiền sử dụng đất chịu chi phí cao hơn; dự án đã nộp hưởng lợi khi giá bán tăng theo.','Theo dõi quyết định bảng giá đất từng tỉnh (hiệu lực 01/01/2026) và thuyết minh tiền sử dụng đất phải nộp trong BCTC; không suy từ giá rao bán.'],['FDI đăng ký có chuyển thành diện tích cho thuê thực tế?','2–6 quý','KBC, IDC, BCM, SZC, SIP, VGC, LHG: doanh thu đi theo biên bản bàn giao đất, không theo FDI đăng ký.','So FDI chế biến chế tạo lũy kế, tỷ lệ lấp đầy và giá thuê (CBRE/Savills) với diện tích đã ký MOU/hợp đồng của từng doanh nghiệp.']],
+ textile:[],
+ port:[],
+ agri:[],
+ seafood:[],
+ shipping:[],
+ construction:[],
+ steel:[],
+ insurance:[],
+ retail:[],
+ pharma:[],
+ bank:[['Tăng trưởng tín dụng có đủ vốn tài trợ?','1–2 quý','Tiền gửi dân cư/TCKT, trái phiếu, chứng chỉ tiền gửi và liên ngân hàng đều tài trợ được tăng trưởng nhưng khác giá vốn và kỳ hạn.','So chênh tăng trưởng tín dụng–huy động, cơ cấu từng nguồn và giá vốn cùng kỳ; không coi vốn thị trường 2 như tiền gửi ổn định.'],['NIM phục hồi có bền sau tái định giá?','1–4 quý','CASA, chi phí tiền gửi và lợi suất tài sản cùng tác động lợi nhuận.','So NIM thực tế qua các lần lãi suất biến động với khe hở tái định giá theo kỳ hạn; gap tổng không đủ để kết luận tốc độ repricing.'],['Nợ sớm có chuyển thành chi phí dự phòng?','1–4 quý','Credit cost có thể triệt tiêu tăng trưởng thu nhập.','Theo dõi dịch chuyển nhóm nợ, thu hồi và bao phủ; tăng dư nợ có thể làm loãng tỷ lệ NPL.'],['Vốn có mở thêm dư địa tăng trưởng?','Theo công bố từng bank','Room còn phụ thuộc chất lượng bảng cân đối, mục tiêu chính sách và quyết định NHNN.','So CAR, chất lượng tài sản, tăng vốn và công bố room/danh mục ưu tiên chính thức; không dùng số hệ thống thay room từng bank.'],['ROE cải thiện đã được phản ánh vào P/B?','2–4 quý','P/B cần đối chiếu ROE bền vững, chất lượng tài sản và chi phí vốn.','Chưa có kỳ vọng lợi nhuận thị trường đồng bộ để lượng hóa dư địa định giá lại.']]
+};
+document.querySelectorAll('.thesis-signal').forEach((c,i)=>{
+ const title=c.querySelector('h3').textContent;const s=strategies[sector][i];if(!s)return;
+ const ask=make('p','thesis-question');ask.append(s[0],' ',make('span','thesis-horizon',s[1]));c.querySelector('.thesis-signal-top').after(ask);
+ const how=make('p','thesis-howto');how.append(make('b','','Cách đối chiếu: '),s[3]);(c.querySelector('.thesis-limitation')||c.querySelector('.thesis-evidence-links')||c.lastElementChild).before(how);
+ editor(c,'signal-'+i,'catalyst',{title});
+});
+if (sector === 'power' && hot.querySelector('#power-news')) {
+  document.querySelectorAll('.thesis-signal,.thesis-scenario-panel,.thesis-fold-body,.majorpane[data-tab="mt4"] .research-detail,.majorpane[data-tab="mt4"] .policy-timeline,.research-steps,.business-models').forEach(n=>R.emphasize(n));
+  return;
+}
+// Topic lifecycle can outlive a market event; structural material lives in Overview/Market.
+const old=[...hot.children];hot.replaceChildren();const h=make('div','sectionhead');h.append(make('h2','','Chủ đề nóng'));hot.append(h,make('p','research-caption','Câu chuyện có thời hạn · mỗi chủ đề giữ nguồn, ngày phân tích và điều kiện kết thúc.'));
+const toolbar=make('div','research-toolbar'),active=make('button','','Đang theo dõi'),archive=make('button','','Đã lưu');active.type=archive.type='button';toolbar.append(active,archive);hot.append(toolbar);const list=make('div','research-topics');hot.append(list);let view='active';
+function filter(){list.querySelectorAll(':scope > .research-topic').forEach(n=>n.hidden=n.dataset.lifecycle!==view);active.setAttribute('aria-pressed',String(view==='active'));archive.setAttribute('aria-pressed',String(view==='archived'));const count=[...list.children].filter(n=>!n.hidden).length;empty.hidden=count>0;}
+const empty=make('p','research-caption','Chưa có chủ đề trong nhóm này.');hot.append(empty);active.onclick=()=>{view='active';filter()};archive.onclick=()=>{view='archived';filter()};list.addEventListener('lifecyclechange',filter);
+function topic(key,title,content,initial={}){const c=make('article','research-topic');c.append(...content);list.append(c);const f=fold(c,title,{all:true,open:true});editor(c,key,'topic',{title,...initial});return c;}
+if(sector==='oil')topic('hormuz','Hormuz · dòng chảy & tác động',old);
+else if(sector==='power'||sector==='realestate'||sector==='textile'||sector==='port'||sector==='agri'||sector==='seafood'||sector==='shipping'||sector==='construction'||sector==='steel'||sector==='insurance'||sector==='retail'||sector==='pharma')old.filter(n=>n.dataset?.topicKey).forEach(n=>{const t=topic(n.dataset.topicKey,n.dataset.topicTitle,[...n.children]);if(n.dataset.topicSegment)t.dataset.segment=n.dataset.topicSegment});
+else if(sector==='bank'){
+ const news=document.getElementById('bank-news');if(news)topic('bank-news','Tin & công bố doanh nghiệp',[news]);
+}
+for(const r of stored.filter(r=>r.type==='topic'&&r.custom)){
+ const p=make('p','',r.description||''),source=make('a','','Nguồn tham khảo ↗');if(/^https?:\/\//.test(r.source||'')){source.href=r.source;source.target='_blank';source.rel='noopener';}
+ topic(r.id.split(':').slice(2).join(':'),r.title,[p,...(source.href?[source]:[])],r);
+}
+const create=make('details','research-fold');create.append(make('summary','','Thêm chủ đề theo dõi'));const form=make('form','research-editor');
+const inputs={};[['title','Tiêu đề','input'],['description','Luận điểm · bằng chứng · điều kiện kết thúc','textarea'],['source','Link nguồn / dashboard chuyên đề','input'],['author','Analyst','input']].forEach(([k,label,tag])=>{const n=make(tag);n.id='topic-new-'+k;n.maxLength=k==='description'?10000:500;n.required=k!=='source';if(k==='source')n.type='url';const l=make('label','',label);l.htmlFor=n.id;inputs[k]=n;form.append(l,n)});
+const add=make('button','','Thêm chủ đề');add.type='submit';const msg=make('p','research-save-status');msg.setAttribute('role','status');form.append(add,msg);create.append(form);hot.append(create);
+form.onsubmit=async e=>{e.preventDefault();const values=Object.fromEntries(Object.entries(inputs).map(([k,n])=>[k,n.value.trim()]));if(Object.entries(values).some(([k,v])=>k!=='source'&&!v)){msg.textContent='Điền tiêu đề, nội dung và tác giả.';return}if(values.source&&!/^https?:\/\//.test(values.source)){msg.textContent='Link nguồn cần bắt đầu bằng https:// hoặc http://';return}const key='custom-'+crypto.randomUUID(),record={id:sector+':topic:'+key,sector,type:'topic',custom:true,status:'active',note:'',createdAt:new Date().toISOString(),updatedAt:new Date().toISOString(),...values};add.disabled=true;try{await save(record);records.set(record.id,record);const content=[make('p','',values.description)];if(values.source){const a=make('a','','Nguồn tham khảo ↗');a.href=values.source;a.target='_blank';a.rel='noopener';content.push(a)}topic(key,values.title,content,record);view='active';filter();form.reset();msg.textContent='Đã lưu chủ đề trên trình duyệt.'}catch(e){msg.textContent='Chưa lưu được. Giữ nguyên nội dung để thử lại.'}finally{add.disabled=false}};
+if(sector==='bank'){
+ const rumorBox=make('section','bank-rumors card');rumorBox.append(make('h3','','Rumor do analyst theo dõi'),make('p','research-caption','Nguồn không chính thống · chưa dùng làm dữ kiện ngành. Ghi ngày nhập, trạng thái kiểm chứng và link nếu có. Từ khóa chỉ hỗ trợ đối chiếu; chưa có job AI tự động phân tích rumor.'));
+ const rumorList=make('div','bank-rumor-list');rumorBox.append(rumorList);
+ const rumorForm=make('form','research-editor');rumorForm.innerHTML='<label for="rumor-text">Nội dung rumor</label><textarea id="rumor-text" required maxlength="3000"></textarea><label for="rumor-source">Link nơi xuất hiện (nếu có)</label><input id="rumor-source" type="url" maxlength="500"><label for="rumor-author">Người ghi nhận</label><input id="rumor-author" required maxlength="100"><button type="submit">Thêm rumor</button><p class="research-save-status" role="status"></p>';rumorBox.append(rumorForm);hot.append(rumorBox);
+ const renderRumor=r=>{const item=make('article','bank-rumor');item.dataset.rumorId=r.id;const head=make('div','bank-rumor-head');head.append(make('b','','Chưa xác minh · nguồn không chính thống'),make('small','',new Date(r.createdAt).toLocaleString('vi-VN')+' · '+r.author));item.append(head,make('p','',r.description));if(/^https?:\/\//.test(r.source||'')){const a=make('a','','Nguồn rumor ↗');a.href=r.source;a.target='_blank';a.rel='noopener';item.append(a)}const keywords=[...new Set((r.description.match(/\b(?:NIM|CASA|NPL|CAR|room|tín dụng|huy động|trái phiếu|tỷ giá|cổ tức)\b/gi)||[]).map(x=>x.toUpperCase()))];if(keywords.length)item.append(make('p','research-caption','Từ khóa để đối chiếu: '+keywords.join(' · ')));const controls=make('div','bank-rumor-controls'),state=make('select');state.setAttribute('aria-label','Kết quả xác minh rumor');[['unknown','Chưa xác định'],['true','Đã xác minh đúng'],['false','Đã xác minh sai']].forEach(([v,t])=>{const o=make('option','',t);o.value=v;state.append(o)});state.value=r.verification||'unknown';const del=make('button','','Xóa');del.type='button';controls.append(state,del);item.append(controls);state.onchange=async()=>{const next={...r,verification:state.value,updatedAt:new Date().toISOString()};try{await save(next);records.set(r.id,next);r=next;head.querySelector('b').textContent=state.selectedOptions[0].textContent+' · nguồn không chính thống'}catch{state.value=r.verification||'unknown'}};del.onclick=async()=>{try{await remove(r.id);records.delete(r.id);item.remove()}catch{item.append(make('p','data-gap','Chưa xóa được; thử lại.'))}};head.querySelector('b').textContent=state.selectedOptions[0].textContent+' · nguồn không chính thống';rumorList.append(item)};
+ stored.filter(r=>r.type==='rumor').forEach(renderRumor);
+ rumorForm.onsubmit=async e=>{e.preventDefault();const description=rumorForm.querySelector('#rumor-text').value.trim(),source=rumorForm.querySelector('#rumor-source').value.trim(),author=rumorForm.querySelector('#rumor-author').value.trim(),status=rumorForm.querySelector('[role="status"]');if(!description||!author)return;const r={id:'bank:rumor:'+crypto.randomUUID(),sector:'bank',type:'rumor',description,source,author,verification:'unknown',createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()};try{await save(r);records.set(r.id,r);renderRumor(r);rumorForm.reset();status.textContent='Đã lưu rumor trên trình duyệt.'}catch{status.textContent='Chưa lưu được; nội dung vẫn ở ô nhập.'}};
+}
+const backup=make('button','','Xuất bản sao JSON');backup.type='button';toolbar.append(backup);backup.onclick=()=>{const blob=new Blob([JSON.stringify({schema:1,sector,exportedAt:new Date().toISOString(),entries:[...records.values()]},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=make('a');a.href=url;a.download='research-'+sector+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+hot.append(make('p','research-caption',failures.length?'Không mở được cơ sở dữ liệu của trình duyệt; các nút lưu chưa khả dụng.':'Lưu trên trình duyệt này · xuất JSON để giữ bản sao.'));
+// Key figures in prose stand out after every block has settled.
+document.querySelectorAll('.thesis-signal,.thesis-scenario-panel,.thesis-fold-body,.majorpane[data-tab="mt4"] .research-detail,.majorpane[data-tab="mt4"] .policy-timeline,.research-topic,.research-steps,.business-models').forEach(n=>R.emphasize(n));
+// Hot topics read like the other tabs: one sub-tab per topic; lifecycle filter, JSON backup and "add topic" sit below the content.
+(()=>{
+ const bar=make('div','supply-tabs pane-subtabs topic-tabs');bar.setAttribute('role','tablist');bar.setAttribute('aria-label','Chủ đề');list.before(bar);empty.after(toolbar);
+ let selected=null;
+ function sync(){
+  const order=['Nhà ở','Khu công nghiệp','Dệt nhuộm – May','Sợi','Chung'],ts=[...list.querySelectorAll(':scope > .research-topic')].filter(t=>!t.hidden);
+  if(ts.some(t=>t.dataset.segment))ts.sort((a,b)=>order.indexOf(a.dataset.segment||'Chung')-order.indexOf(b.dataset.segment||'Chung'));
+  if(!ts.includes(selected))selected=ts[0]||null;
+  bar.replaceChildren();bar.hidden=ts.length<2;
+  // Topics tagged with a segment (Nhà ở / Khu công nghiệp / Chung) are grouped under a small label.
+  let lastSeg=null;
+  ts.forEach(t=>{
+   const seg=t.dataset.segment;if(seg&&seg!==lastSeg){bar.append(make('span','topic-seg',seg));lastSeg=seg}
+   const title=t.querySelector(':scope > .research-fold > summary')?.childNodes[0]?.textContent.trim()||'Chủ đề';
+   const b=make('button','tabbtn',title.split(' · ')[0]);b.type='button';b.title=title;b.setAttribute('role','tab');b.setAttribute('aria-selected',String(t===selected));b.tabIndex=t===selected?0:-1;
+   b.onclick=()=>{selected=t;sync()};bar.append(b);
+  });
+  ts.forEach(t=>t.classList.toggle('topic-off',ts.length>1&&t!==selected));
+ }
+ new MutationObserver(sync).observe(list,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden']});
+ sync();
+})();
+filter();document.body.dataset.editorialReady='true';
+})());
