@@ -4069,8 +4069,7 @@
    "label": "Quy hoạch & Đầu tư",
    "question": "Ngành điện định hướng phát triển ra sao, và một nhà máy phải qua những bước nào để được xây dựng, vận hành?",
    "modules": [
-    "1.1",
-    "1.2"
+    "1.1"
    ]
   },
   {
@@ -4229,147 +4228,6 @@
    ],
    "id": "1.1",
    "short": "Định hướng nguồn điện"
-  },
-  "1.2": {
-   "block": "dien-47",
-   "title": "Một dự án trong quy hoạch phải qua những bước nào trước khi phát điện?",
-   "conclusion": "Mỗi bước là một điểm có thể kéo dài tiến độ. Theo Báo cáo 760/BC-BCT, mới khoảng 5% dự án nguồn trong quy hoạch đã vận hành.",
-   "quick": "Dự án đi từ quy hoạch, qua chọn nhà đầu tư, ký PPA và thu xếp vốn, xây dựng, nghiệm thu rồi mới vận hành thương mại (COD). Với nhà máy bán điện cho EVN, PPA thường là điều kiện để ngân hàng cho vay: nhiều dự án LNG đã có nhà đầu tư nhưng chưa khởi công vì chưa thống nhất PPA.",
-   "pitfall": "Nghiệm thu không phải thủ tục hình thức: 173 nhà máy gió, mặt trời đang bị đề nghị đàm phán lại giá vì thiếu văn bản chấp thuận nghiệm thu khi COD.",
-   "how": {
-    "type": "process",
-    "steps": [
-     {
-      "t": "Quy hoạch",
-      "d": "Dự án có tên trong QĐ 768 hoặc quy hoạch tỉnh",
-      "stop": "Đợt điều chỉnh lần 2 chưa phê duyệt"
-     },
-     {
-      "t": "Chọn nhà đầu tư",
-      "d": "Đấu thầu hoặc chấp thuận nhà đầu tư; lưới trong quy hoạch không cần chấp thuận chủ trương (NQ 253)",
-      "stop": "Nghi Sơn LNG: mời thầu lần 3 không có hồ sơ"
-     },
-     {
-      "t": "PPA & thu xếp vốn",
-      "d": "Đàm phán giá ≤ trần khung giá với EPTC; LNG được cam kết Qc ≥65% để vay vốn",
-      "stop": "Long An I, Bạc Liêu, LNG Quảng Ninh: chưa thống nhất PPA"
-     },
-     {
-      "t": "Xây dựng",
-      "d": "Ký EPC, giải ngân theo tiến độ",
-      "stop": ""
-     },
-     {
-      "t": "Nghiệm thu",
-      "d": "Cơ quan có thẩm quyền chấp thuận kết quả nghiệm thu",
-      "stop": "173 nhà máy thiếu văn bản chấp thuận khi COD"
-     },
-     {
-      "t": "COD",
-      "d": "Bắt đầu ghi nhận doanh thu theo PPA",
-      "stop": ""
-     }
-    ]
-   },
-   "framework": [
-    [
-     "Khung chung",
-     "Luật Điện lực 61/2024/QH15, hiệu lực 01/02/2025"
-    ],
-    [
-     "Cơ chế đặc thù",
-     "NQ 253/2025/QH15 (01/03/2026): điều chỉnh quy hoạch rút gọn; lưới trong quy hoạch miễn chấp thuận chủ trương đầu tư"
-    ],
-    [
-     "Hướng dẫn",
-     "NĐ 272/2026/NĐ-CP (04/07/2026 – 31/12/2030): UBND tỉnh chấp thuận nhà đầu tư lưới trong 30 ngày; điều kiện nhà đầu tư gió ngoài khơi"
-    ],
-    [
-     "Điện khí",
-     "NĐ 100/2025/NĐ-CP: Qc tối thiểu 65% cho LNG phát điện trước 01/01/2031"
-    ]
-   ],
-   "drafts": [
-    "nd100-draft"
-   ],
-   "implication": {
-    "channels": [
-     "Vốn đầu tư",
-     "IRR",
-     "Chi phí vốn"
-    ],
-    "text": "Chậm một bước làm lãi vay trong thời gian xây dựng cộng vào vốn đầu tư và lùi dòng tiền về, nên IRR giảm. Rủi ro PPA và nghiệm thu còn kéo sang sau COD: giá bán có thể bị đàm phán lại."
-   },
-   "affected": {
-    "direct": [
-     {
-      "t": "POW",
-      "n": "Quỳnh Lập đang xây hạ tầng; LNG Quảng Ninh kẹt PPA"
-     },
-     {
-      "t": "REE",
-      "n": "Gió Phú Cường 1A&1B 200 MW khởi công 19/05/2026"
-     }
-    ],
-    "indirect": [
-     {
-      "t": "TV2",
-      "n": "doanh thu tư vấn, EPC theo tiến độ dự án"
-     },
-     {
-      "t": "PC1",
-      "n": "EPC"
-     }
-    ],
-    "potential": []
-   },
-   "data": {
-    "type": "kpis",
-    "items": [
-     {
-      "label": "Dự án nguồn trong quy hoạch đã vận hành",
-      "value": "≈5%",
-      "unit": "",
-      "sub": "Báo cáo 760/BC-BCT (10/09/2026); chưa rõ tính theo số dự án hay MW"
-     },
-     {
-      "label": "Thiếu hụt nếu dự án tiếp tục chậm",
-      "value": "4.256",
-      "unit": "MW năm 2027",
-      "sub": "13.964 MW năm 2030 · kịch bản Bộ Công Thương"
-     },
-     {
-      "label": "Nhà máy thiếu văn bản nghiệm thu khi COD",
-      "value": "173",
-      "unit": "nhà máy",
-      "sub": "gió, mặt trời; Báo Xây dựng ghi 172 dự án, gần 9.800 MW"
-     }
-    ]
-   },
-   "policies": [
-    "luat-dien-luc-2024",
-    "nq253-energy",
-    "nd272-energy",
-    "nd100-lng",
-    "nd100-draft",
-    "fit-review"
-   ],
-   "sources": [
-    {
-     "label": "Năng lượng VN · Báo cáo 760",
-     "url": "https://nangluongvietnam.vn/tien-do-cac-loai-hinh-nguon-dien-va-van-de-cung-ung-dien-giai-doan-2026-2030-trong-bao-cao-760-cua-bo-cong-thuong-36624.html"
-    },
-    {
-     "label": "VCCI · NQ 253",
-     "url": "https://vcci.com.vn/tin-tuc/co-che-chinh-sach-phat-trien-nang-luong-quoc-gia-giai-doan-2026-2030"
-    },
-    {
-     "label": "Tạp chí Công Thương · NĐ 272",
-     "url": "https://tapchicongthuong.vn/chinh-phu-quy-dinh-chi-tiet-mot-so-co-che--chinh-sach-phat-trien-nang-luong-giai-doan-2026-2030-531949.htm"
-    }
-   ],
-   "id": "1.2",
-   "short": "Phê duyệt & đầu tư dự án"
   },
   "2.1": {
    "block": "dien-35",
@@ -4912,25 +4770,29 @@
       "value": "1",
       "unit": "hợp đồng",
       "sub": "Samsung TN – Đức Huệ 2 (GEG) từ 01/06/2026, khoảng 70 GWh/năm",
-      "hl": true
+      "hl": true,
+      "group": "Cơ chế DPPA"
      },
      {
       "label": "Ngưỡng khách hàng lớn",
       "value": "200.000",
       "unit": "kWh/tháng",
-      "sub": "qua lưới quốc gia; 20.000 qua lưới riêng (TT 29/2026)"
+      "sub": "qua lưới quốc gia; 20.000 qua lưới riêng (TT 29/2026)",
+      "group": "Cơ chế DPPA"
      },
      {
       "label": "Mái nhà được bán dư",
       "value": "20% → 50%",
       "unit": "",
-      "sub": "NĐ 243/2026; giá = giá điện năng thị trường bình quân năm trước"
+      "sub": "NĐ 243/2026; giá = giá điện năng thị trường bình quân năm trước",
+      "group": "Chính sách liên quan · điện mặt trời mái nhà (không thuộc DPPA)"
      },
      {
       "label": "Mái nhà lắp mới đến 07/2026",
       "value": "1.614",
       "unit": "MWp",
-      "sub": "chỉ 287 hệ thống có bán điện dư"
+      "sub": "chỉ 287 hệ thống có bán điện dư",
+      "group": "Chính sách liên quan · điện mặt trời mái nhà (không thuộc DPPA)"
      }
     ]
    },
