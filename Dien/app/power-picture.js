@@ -559,8 +559,7 @@ function build() {
 
   /* ---------- Tab EVN bỏ 25/11/2026 (theo yêu cầu người dùng): giá bán lẻ vào 04 Giá điện, lỗ lũy kế EVN vào Tài chính ngành ---------- */
   panes.economics.append(qpanel({id: 'econ-retail', num: '4.3', q: 'Giá bán lẻ điện bình quân đã điều chỉnh thế nào?', lv: 'A', main: C('dien-14') || H2('chTariff')}));
-  // Lỗ lũy kế công ty mẹ EVN (bên mua điện) đặt cạnh phải thu & dòng tiền của doanh nghiệp phát điện (dựng khi mở Tài chính ngành).
-  renders.finance.push(() => { const c = C('dien-16'), host = document.getElementById('pf-sec-cash'); if (!c || !host) return; c.hidden = false; c.classList.remove('pp-old'); host.append(c); refit(panes.finance); });
+  // Chart lỗ lũy kế công ty mẹ EVN (dien-16) bỏ 25/11/2026 theo yêu cầu người dùng.
 
   /* ---------- 06 Cung dài hạn ---------- */
   const capTotal = capItems ? sum(capItems.map(x => x[1])) : null, lngP = lngProjects(), lngMw = sum(lngP.map(p => p.mw)), lngOp = sum(lngP.filter(p => p.stage === 'op').map(p => p.mw)), lngBuild = sum(lngP.filter(p => p.stage === 'build').map(p => p.mw)), lngDelay = sum(lngP.filter(p => p.stage === 'delay').map(p => p.mw));
