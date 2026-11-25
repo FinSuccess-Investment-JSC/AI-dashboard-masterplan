@@ -66,12 +66,14 @@ function filterBar() {
     <div class="pf-row"><span class="pf-lb">Chu kỳ</span><div class="pf-seg" data-role="mode">${MODES.map(([k, t]) => `<button type="button" data-m="${k}" aria-pressed="${S.mode === k}">${t}</button>`).join('')}</div>
     <span class="pf-lb">Kỳ chốt</span><select data-role="end">${D.periods.map((p, i) => `<option value="${i}"${i === S.end ? ' selected' : ''}>${qLabel(p)}</option>`).join('')}</select>
     <span class="pf-lb">Tải dữ liệu</span><div class="pf-seg"><button type="button" data-x="raw">Từng doanh nghiệp</button><button type="button" data-x="group">Tổng hợp nhóm</button><button type="button" data-x="ratio">Hệ số</button><button type="button" data-x="map">Universe & phương pháp</button></div></div>
-    <p class="pf-scope"></p>`;
+    <p class="pf-scope"></p><div class="pf-legend"></div>`;
   f.querySelectorAll('[data-g]').forEach(b => b.addEventListener('click', () => { const g = b.dataset.g; S.groups = S.groups.includes(g) ? S.groups.filter(x => x !== g) : [...S.groups, g]; if (!S.groups.length) S.groups = [g]; b.setAttribute('aria-pressed', String(S.groups.includes(g))); f.querySelectorAll('[data-g]').forEach(x => x.setAttribute('aria-pressed', String(S.groups.includes(x.dataset.g)))); redraw(); }));
   f.querySelectorAll('[data-m]').forEach(b => b.addEventListener('click', () => { S.mode = b.dataset.m; f.querySelectorAll('[data-m]').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.m === S.mode))); redraw(); }));
   f.querySelector('[data-role=end]').addEventListener('change', e => { S.end = +e.target.value; redraw(); });
   f.querySelectorAll('[data-x]').forEach(b => b.addEventListener('click', () => exportCsv(b.dataset.x)));
   renders.push(() => { const s = sel(), cons = E.consolidation.filter(c => s.includes(c.parent) && s.includes(c.child));
+    // Chú thích nhóm (dùng xuyên suốt tab): mỗi nhóm gồm mã nào; mã nhiều loại hình có dấu *.
+    f.querySelector('.pf-legend').innerHTML = `<p>Mỗi doanh nghiệp xếp vào loại hình có công suất lớn nhất. Doanh nghiệp có dấu * có nhiều loại hình nên số theo nhóm chỉ mang tính tham khảo.</p><ul>${D.groups.map(g => `<li><i style="background:${g.color}"></i><b>${esc(g.label)}:</b> ${D.companies.filter(c => c.group === g.id).map(c => `<span title="${esc(c.note || '')}">${c.ticker}${c.mixed ? '*' : ''}</span>`).join(', ')}</li>`).join('')}</ul>`;
     f.querySelector('.pf-scope').innerHTML = `${s.length} doanh nghiệp: ${s.join(', ')}${cons.length ? ` · loại trùng hợp nhất: ${cons.map(c => `${c.parent} trừ ${c.child}`).join(', ')}` : ''}`; });
   return f;
 }
@@ -124,27 +126,8 @@ function s71() {
       chart(c1.host, 'dien-fin-pnl-share', b.labels, b.groups.map(g => ({name: g.label, color: g.color, values: g.values.map((v, i) => fin(v) && tot[i] > 0 && !neg[i] ? v / tot[i] * 100 : null)})), {unit: '%', digits: 1, native: 'stack', stackable: true}); }
     foot(c1, `${name} ${modeName(S.mode)}; EBIT = LN gộp − CP bán hàng − CP QLDN; EBITDA = EBIT + khấu hao (LCTT)${v1 === 'share' ? '; tỷ trọng để trống ở kỳ có nhóm lỗ' : ''}; ${covNote(b.groups.reduce((a, g) => a.map((x, i) => x + g.cov[i]), b.labels.map(() => 0)), sel().length, b.labels.length - 1)}`); }
   renders.push(draw1);
-  // Chart 2: chu kỳ lợi nhuận
-  const c2 = card('dien-fin-cycle', 'Chu kỳ lợi nhuận theo nhóm nguồn', 'EBIT hoặc LNST TTM · giá trị, so cùng kỳ hoặc chỉ số (kỳ gốc = 100)'); let m2 = 'ebit', v2 = 'abs';
-  seg(c2, 'Chỉ tiêu', [['ebit', 'EBIT'], ['npat', 'LNST']], () => m2, k => { m2 = k; draw2(); }); seg(c2, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['idx', 'Chỉ số = 100']], () => v2, k => { v2 = k; draw2(); });
-  function draw2() { const b = E.byGroup(m2, sel(), 'ttm');
-    const idx = vals => { const i0 = vals.findIndex(v => fin(v) && v > 0); return vals.map((v, i) => i >= i0 && i0 >= 0 && fin(v) ? v / vals[i0] * 100 : null); };
-    chart(c2.host, 'dien-fin-cycle-' + v2, b.labels, b.groups.map(g => ({name: g.label, color: g.color, values: v2 === 'abs' ? g.values : v2 === 'yoy' ? (E.growth(m2, sel(), 'ttm').groups.find(z => z.id === g.id)?.values || []) : idx(g.values)})), {unit: v2 === 'abs' ? 'tỷ đ' : v2 === 'yoy' ? '%' : 'điểm', digits: v2 === 'abs' ? 0 : 1, zeroBase: v2 === 'abs'});
-    foot(c2, `${m2 === 'ebit' ? 'EBIT' : 'LNST'} TTM${v2 === 'idx' ? '; chỉ số lấy kỳ dương đầu tiên của từng nhóm làm gốc' : ''}`); }
-  renders.push(draw2);
-  // Chart 3: đóng góp thay đổi lợi nhuận
-  const c3 = card('dien-fin-contrib', 'Nhóm nguồn nào đóng góp vào thay đổi LNST so cùng kỳ (tỷ đồng)', 'Thác nước: LNST cùng kỳ → đóng góp từng nhóm → LNST kỳ chốt · bấm một nhóm để xem từng doanh nghiệp');
-  function draw3(drill) { const mode = S.mode === 'y' ? 'y' : 'ttm', i = endIdx(mode), k = mode === 'y' ? 1 : 4, s = sel(), b = E.byGroup('npat', s, mode);
-    if (i < k) { c3.host.textContent = ''; return; }
-    // Chỉ doanh nghiệp có số cả hai kỳ (cùng phạm vi)
-    const ok = t => fin(b.per[t][i]) && fin(b.per[t][i - k]);
-    const steps = b.groups.map(g => { const ts = g.tickers.filter(ok); return {l: g.label, id: g.id, c: g.color, v: ts.reduce((a, t) => a + b.per[t][i] - b.per[t][i - k], 0), ts}; });
-    const base = s.filter(ok).reduce((a, t) => a + b.per[t][i - k], 0), cur = s.filter(ok).reduce((a, t) => a + b.per[t][i], 0);
-    c3.host.innerHTML = wf([{l: 'LNST ' + qLabel(b.labels[i - k]), v: base, total: true}, ...steps.map(x => ({l: x.l, v: x.v, c: x.c, id: x.id})), {l: 'LNST ' + qLabel(b.labels[i]), v: cur, total: true}], 'tỷ đ');
-    c3.host.querySelectorAll('[data-id]').forEach(r => r.addEventListener('click', () => draw3(r.dataset.id)));
-    if (drill) { const g = steps.find(x => x.id === drill); c3.extra.innerHTML = `<h4 class="pf-h4">${esc(g.l)}: từng doanh nghiệp</h4>` + wf(g.ts.map(t => ({l: t, v: b.per[t][i] - b.per[t][i - k], c: g.c})), 'tỷ đ'); } else c3.extra.innerHTML = '';
-    foot(c3, `LNST ${mode === 'y' ? 'năm' : 'TTM'}; chỉ doanh nghiệp có số cả hai kỳ (${s.filter(ok).length}/${s.length})`); }
-  renders.push(() => draw3());
+  // Chart "Chu kỳ lợi nhuận theo nhóm nguồn" bỏ 25/11/2026 (trùng chart doanh thu và lợi nhuận ở trên).
+  // Chart thác nước "đóng góp vào thay đổi LNST" bỏ 25/11/2026 theo yêu cầu người dùng.
   // Chart 4: mùa vụ
   const c4 = card('dien-fin-season', 'Tính mùa vụ của lợi nhuận theo quý', 'Bảng nhiệt năm × quý · chọn nhóm nguồn và chỉ tiêu'); let g4 = 'all', m4 = 'npat', v4 = 'abs';
   const gsel = el('select', 'pf-sel'); c4.ctl.append(gsel); gsel.addEventListener('change', () => { g4 = gsel.value; draw4(); });
@@ -172,7 +155,7 @@ function s71() {
       {name: 'Lỗ cả hai kỳ', color: '#3d4653', values: cnt((a, b) => a <= 0 && b <= 0)}], {unit: 'DN', native: 'stack', stackable: true});
     foot(c5, 'LNST quý so cùng quý năm trước; chỉ doanh nghiệp có số cả hai kỳ'); }
   renders.push(draw5);
-  s.append(grid2(c1, c2), grid2(c3, c4), c5.el);
+  s.append(c1.el, grid2(c4, c5));
   return s;
 }
 // Thác nước HTML (chiều ngang): các bước có thể bấm (data-id).
@@ -195,19 +178,7 @@ function s72() {
     chart(c1.host, 'dien-fin-margin', L, [['gross', 'Biên gộp'], ['ebitda', 'Biên EBITDA'], ['ebit', 'Biên EBIT'], ['npat', 'Biên LNST']].map(([m, n], k) => ({name: n, color: LINE[k], values: r(m)})), {unit: '%', digits: 1, zeroBase: false});
     foot(c1, `tổng lợi nhuận ÷ tổng doanh thu, ${modeName(S.mode)}; cùng tập doanh nghiệp có đủ tử và mẫu`); }
   renders.push(draw1);
-  // Chart 2: cầu nối doanh thu → LNST
-  const c2 = card('dien-fin-bridge', 'Từ doanh thu đến lợi nhuận sau thuế', 'Doanh thu → EBITDA → khấu hao → EBIT → tài chính & liên kết → khác → LNTT → thuế → LNST · kỳ chốt'); let g2 = 'all', v2 = 'abs'; const p2 = groupPicker(c2, () => g2, (v, q) => { g2 = v; if (!q) draw2(); });
-  seg(c2, 'Cách xem', [['abs', 'Tỷ đồng'], ['pct', '% doanh thu']], () => v2, k => { v2 = k; draw2(); });
-  function draw2() { p2(); const x = scopeOf(g2), mode = S.mode === 'y' ? 'y' : 'ttm', i = endIdx(mode);
-    // Chỉ doanh nghiệp đủ mọi khoản mục kỳ đó
-    const ms = ['revenue', 'ebitda', 'da', 'ebit', 'fin_net', 'other', 'pbt', 'tax', 'npat'], pv = Object.fromEntries(ms.map(m => [m, E.per(m, x, mode)]));
-    const ok = x.filter(t => ms.every(m => fin(pv[m][t][i]))), T = m => ok.reduce((a, t) => a + pv[m][t][i], 0), rev = T('revenue'), f = v => v2 === 'pct' ? (rev ? v / rev * 100 : null) : v;
-    const st = [{l: 'Doanh thu', v: f(rev), total: true}, {l: 'Chi phí hoạt động (trừ khấu hao)', v: f(T('ebitda') - rev), c: '#9AA3BD'}, {l: 'EBITDA', v: f(T('ebitda')), total: true}, {l: 'Khấu hao', v: f(-T('da')), c: '#9AA3BD'},
-      {l: 'EBIT', v: f(T('ebit')), total: true}, {l: 'Tài chính ròng & liên kết', v: f(T('fin_net')), c: '#8997D6'}, {l: 'Lợi nhuận khác', v: f(T('other')), c: '#8997D6'}, {l: 'LNTT', v: f(T('pbt')), total: true}, {l: 'Thuế TNDN', v: f(-T('tax')), c: '#9AA3BD'}, {l: 'LNST', v: f(T('npat')), total: true}];
-    c2.host.innerHTML = ok.length ? wf(st, v2 === 'pct' ? '% doanh thu' : 'tỷ đ') : '';
-    const gapEbit = T('ebit') + T('fin_net') + T('other') - T('pbt');
-    foot(c2, `${mode === 'y' ? 'năm' : 'TTM'} ${qLabel(E.labels(mode)[i] || '')}; ${ok.length}/${x.length} doanh nghiệp đủ khoản mục; lệch đối chiếu EBIT + tài chính + khác − LNTT: ${nf(gapEbit, 1)} tỷ đ`); }
-  renders.push(draw2);
+  // Chart cầu nối "Từ doanh thu đến lợi nhuận sau thuế" bỏ 25/11/2026 theo yêu cầu người dùng.
   // Chart 3: cơ cấu chi phí trên 100 đồng doanh thu
   const c3 = card('dien-fin-cost', 'Cơ cấu chi phí trên 100 đồng doanh thu', 'Theo nhóm nguồn, kỳ chốt · giá vốn trừ khấu hao, khấu hao, bán hàng & QLDN, lãi vay, thuế, lợi nhuận còn lại');
   function draw3() { const mode = S.mode === 'y' ? 'y' : 'ttm', i = endIdx(mode), x = sel();
@@ -225,7 +196,7 @@ function s72() {
     chart(c4.host, 'dien-fin-drivers', L, [{name: 'Khấu hao/doanh thu', color: LINE[0], values: R('da', 'revenue')}, {name: 'Lãi vay/doanh thu', color: LINE[2], values: R('interest', 'revenue')}, {name: 'Lãi vay/EBITDA', color: LINE[3], values: R('interest', 'ebitda')}, {name: 'Biên EBITDA − biên EBIT', color: LINE[1], values: e.map((v, i) => fin(v) && fin(b[i]) ? v - b[i] : null)}], {unit: '%', digits: 1});
     foot(c4, modeName(S.mode)); }
   renders.push(draw4);
-  s.append(grid2(c1, c2), grid2(c3, c4));
+  s.append(grid2(c1, c4), c3.el);
   return s;
 }
 
@@ -483,7 +454,7 @@ function style() {
 .pf-chips button i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}.pf-chips button small{color:var(--muted,#7a8399);font-weight:500}
 .pf-chips button[aria-pressed=false]{opacity:.55}.pf-seg{display:inline-flex;flex-wrap:wrap;gap:4px}.pf-seg button[aria-pressed=true],.pf-chips button[aria-pressed=true]{border-color:#2938A8;box-shadow:inset 0 0 0 1px #2938A8}
 .pf-seg button[aria-pressed=true]{background:#2938A8;color:#fff}.pf-filter select,.pf-sel{font:600 12px Inter,sans-serif;padding:4px 6px;border:1px solid var(--line,#d6dbe8);border-radius:7px;background:var(--card,#fff);color:inherit}
-.pf-scope{margin:0;font-size:11.5px;color:var(--muted,#7a8399)}.pf-kpis{grid-template-columns:repeat(6,minmax(0,1fr))!important}.pf-kpis .kpi{position:relative}.pf-spark{display:block;width:100%;height:28px;margin:4px 0}.pf-spark polyline{fill:none;stroke:#2938A8;stroke-width:1.6}
+.pf-scope{margin:0;font-size:11.5px;color:var(--muted,#7a8399)}.pf-legend{font-size:11px;color:var(--muted,#7a8399);border-top:1px dashed var(--line,#e3e7f0);padding-top:6px}.pf-legend p{margin:0 0 3px}.pf-legend ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:2px 14px}.pf-legend i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px}.pf-legend b{color:var(--ink2,#3b4256);font-weight:600}.pf-legend span{cursor:help}.pf-kpis{grid-template-columns:repeat(6,minmax(0,1fr))!important}.pf-kpis .kpi{position:relative}.pf-spark{display:block;width:100%;height:28px;margin:4px 0}.pf-spark polyline{fill:none;stroke:#2938A8;stroke-width:1.6}
 .pf-ctl{display:flex;flex-wrap:wrap;gap:8px 12px;margin:6px 0;align-items:center}.pf-box{padding:3px;border:1px solid var(--line,#d6dbe8);border-radius:9px;background:var(--card,#fff)}.pf-box button{border-color:transparent}.pf-view{margin-left:auto}.pf-sec{margin-top:14px}.pf-h4{margin:10px 0 4px;font-size:12.5px}
 .pf-wf{display:grid;gap:4px;margin:6px 0}.pf-wf-r{display:grid;grid-template-columns:minmax(120px,200px) 1fr 84px;gap:8px;align-items:center;font-size:12.5px}.pf-wf-r em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
 .pf-wf-t{position:relative;height:18px;background:#f4f5f9;border-radius:3px}.pf-wf-t i{position:absolute;top:2px;bottom:2px;border-radius:2px}.pf-wf-t b{position:absolute;top:0;bottom:0;width:1px;background:#9AA3BD}.pf-click{cursor:pointer}.pf-click:hover span{text-decoration:underline}.pf-unit{font-size:11px;color:var(--muted,#7a8399);text-align:right}

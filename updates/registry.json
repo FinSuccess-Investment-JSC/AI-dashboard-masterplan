@@ -4650,12 +4650,9 @@
     "file": "data/power-financials.js",
     "blocks": [
      "dien-fin-pnl",
-     "dien-fin-cycle",
-     "dien-fin-contrib",
      "dien-fin-season",
      "dien-fin-breadth",
      "dien-fin-margin",
-     "dien-fin-bridge",
      "dien-fin-cost",
      "dien-fin-drivers",
      "dien-fin-capex",
