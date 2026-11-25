@@ -66,7 +66,7 @@ function mount(host,{sector}){
   }catch(e){}
   const save=()=>{try{localStorage.setItem(KEY+sector,JSON.stringify({mode:state.mode,metric:state.metric,type:state.type,fit:state.fit,agg:state.agg,yoy:state.yoy,selected:[...state.selected],hidden:[...state.hidden],from:state.from,to:state.to}))}catch(e){}};
   const view=()=>views[state.mode];
-  const EXTRA=sector==='power';if(!EXTRA){state.agg=false;state.yoy=false}
+  const EXTRA=sector==='power'||sector==='industrial';if(!EXTRA){state.agg=false;state.yoy=false}
 
   const card=make('div','card company-trend');
   card.append(make('div','chart-title','Xu hướng tài chính theo kỳ'));
