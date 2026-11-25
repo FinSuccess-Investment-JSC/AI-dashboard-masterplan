@@ -2201,29 +2201,6 @@
    ]
   },
   {
-   "id": "industrial.ai.cycle",
-   "tier": "D",
-   "title": "BĐS KCN: vị trí trong chu kỳ, đọc nhanh",
-   "schedule": {
-    "type": "data",
-    "sources": [],
-    "minDays": 7,
-    "material": [],
-    "note": "Viết lại khi dư nợ chậm trả TPDN BĐS đổi ≥ 5% hoặc gốc đến hạn 3 tháng tới / dư nợ đổi ≥ 1 điểm %, hoặc có số quý mới của Bộ Xây dựng"
-   },
-   "where": {
-    "page": "Bat-dong-san-KCN/index.html",
-    "blocks": [
-     "kcn-02"
-    ]
-   },
-   "how": "Cập nhật số và nhận định trong bds-02 và catbox/riskbox theo số mới; bảng tín hiệu tự tính từ dữ liệu công khai",
-   "gates": [
-    "Số khớp chart",
-    "Không đụng ô analyst"
-   ]
-  },
-  {
    "id": "textile.public.daily",
    "tier": "A",
    "title": "xuất nhập khẩu dệt may theo tháng và thị trường, sản lượng, IIP, bán lẻ quần áo Mỹ, định giá hai phân ngành",

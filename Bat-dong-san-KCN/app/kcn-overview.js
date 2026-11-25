@@ -1,5 +1,5 @@
 /* BĐS KCN · Tổng quan ngành (#mt1), 4 sub-tab theo mẫu trang Điện (power-overview.js), 25/11/2026:
-   00 Bản đồ ngành (chuỗi giá trị, vị trí trong chu kỳ, hàm ý) · 01 Chuỗi giá trị theo mô hình kinh doanh · 02 Doanh nghiệp niêm yết
+   00 Bản đồ ngành (chỉ chuỗi giá trị) · 01 Chuỗi giá trị theo mô hình kinh doanh · 02 Doanh nghiệp niêm yết
    (so sánh tài chính & định giá, bảng doanh nghiệp) · 03 Triển vọng (nguồn cung mới 2026–2028, điều kiện đổi chiều, chính sách).
    Nội dung lấy từ các khối đã dựng sẵn (research-layout.js: lộ trình, mô hình kinh doanh, so sánh tài chính; kcn-brief.js: chuỗi giá trị)
    và workbook KCN (window.KcnWS từ kcn-workspace.js). Thêm mục "Dữ liệu khu công nghiệp" vào tab Nguồn dữ liệu.
@@ -23,17 +23,11 @@ function sec(id, num, q, body, opts = {}) {
 const block = id => document.querySelector(`[data-block-id="${id}"]`);
 
 /* ---------- 00 · Bản đồ ngành ---------- */
+// 26/11/2026 (người dùng): Bản đồ ngành chỉ gồm chuỗi giá trị; KCN không có số toàn hệ thống tương đương "% công suất nguồn" của Điện.
 function mapPane(p) {
   const vc = block('kcn-01');
   if (vc) { vc.closest('.grid')?.classList.remove('grid'); }
-  const cyc = block('kcn-02');
-  const cycleBox = el('div', 'kc-ov-cycle');
-  p.append(
-    vc ? sec('chain', '0.1', 'Đất, vốn và khách thuê đi qua những ai?', vc, {sub: 'Từ quỹ đất đã đền bù đến hạ tầng, nhà xưởng và khách thuê; vị trí 10 doanh nghiệp niêm yết trên chuỗi.'}) : null,
-    sec('pulse', '0.2', 'Thị trường khu công nghiệp đang ở đâu?', [el('div', 'kc-pv-host', window.KcnWS ? window.KcnWS.preview() : ''), cyc].filter(Boolean), {sub: 'Lấp đầy, hấp thụ và nguồn cung dự kiến từ workbook KCN; số chi tiết ở tab Bức tranh ngành.'}),
-    cycleBox
-  );
-  if (window.KcnWS && window.KcnWS.ready()) window.KcnWS.render('overview', cycleBox, '0', 2); else cycleBox.append(gap('không tải được workbook KCN.'));
+  p.append(vc ? sec('chain', '0.1', 'Đất, vốn và khách thuê đi qua những ai?', vc, {sub: 'Bốn dòng sản phẩm: đất khu công nghiệp, nhà xưởng xây sẵn, dịch vụ tiện ích, đô thị kèm khu công nghiệp. Rê chuột vào một khâu để xem luồng; bấm khâu để xem các mã niêm yết.'}) : gap('chưa dựng được sơ đồ chuỗi giá trị.'));
 }
 
 /* ---------- 01 · Chuỗi giá trị theo mô hình kinh doanh ---------- */
@@ -82,7 +76,7 @@ function forwardPane(p) {
 }
 
 const SECTIONS = [
-  ['map', '00', 'Bản đồ ngành', 'Toàn cảnh ngành', 'Đất, vốn và khách thuê đi qua những ai; thị trường đang ở đâu trong chu kỳ?', mapPane],
+  ['map', '00', 'Bản đồ ngành', 'Chuỗi giá trị ngành', 'Đất, vốn và khách thuê đi qua những ai?', mapPane],
   ['model', '01', 'Chuỗi giá trị theo mô hình', 'Cho thuê đất · nhà xưởng · tiện ích · đa ngành', 'Mỗi mô hình kinh doanh tạo doanh thu, ghi nhận lợi nhuận ở khâu nào?', modelPane],
   ['companies', '02', 'Doanh nghiệp niêm yết', 'Định giá · lợi nhuận · So sánh tài chính', 'Doanh nghiệp KCN đang được định giá và có lợi nhuận ra sao?', companiesPane],
   ['forward', '03', 'Triển vọng', 'Nguồn cung mới, mốc chính sách', 'Điều gì có thể làm thay đổi luận điểm?', forwardPane]
