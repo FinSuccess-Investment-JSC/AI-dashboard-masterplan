@@ -907,6 +907,7 @@
     const n = renderInto(key, dyn, BAR_TABS.indexOf(key) + 1);
     const mv = moved[key]; if (mv) { const num = mv.querySelector('.pp-num'); if (num) num.textContent = `${BAR_TABS.indexOf(key) + 1}.${n + 1}`; }
     rendered[key] = true;
+    setTimeout(() => dispatchEvent(new Event('pv:toc')), 60); // mục lục (sector-smart.js) dựng lại theo mục vừa vẽ
   }
   function select(key, push) {
     if (!BAR_TABS.includes(key)) key = 'demand';

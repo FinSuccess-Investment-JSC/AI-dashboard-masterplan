@@ -99,7 +99,8 @@ function finTab(pane1) {
   let cur = 'fin';
   const run = key => { if (built.has(key)) return; built.add(key);
     try { if (key === 'fin') { if (window.KcnFinance) window.KcnFinance.build(P2.fin); else P2.fin.append(gap('không tải được dữ liệu tài chính ngành.')); } }
-    catch (e) { document.documentElement.dataset.ovError = (document.documentElement.dataset.ovError || '') + 'fin-' + key + ':' + e.message + ';'; console.error(e); } };
+    catch (e) { document.documentElement.dataset.ovError = (document.documentElement.dataset.ovError || '') + 'fin-' + key + ':' + e.message + ';'; console.error(e); }
+    setTimeout(() => dispatchEvent(new Event('pv:toc')), 60); };
   const show = (key, push) => {
     if (!keys.includes(key)) key = 'fin';
     keys.forEach((k, i) => { const on = k === key; P2[k].hidden = !on; btns[i].setAttribute('aria-selected', String(on)); btns[i].tabIndex = on ? 0 : -1; btns[i].classList.toggle('active', on); });
