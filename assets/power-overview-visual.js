@@ -280,26 +280,6 @@ function waterfall(steps, unit, digits = 0) {
   return `<div class="vw" role="img" aria-label="Biểu đồ từng bước, ${unit}">${rows.map(r => { const x = Math.min(pos(r.a), pos(r.b)), w = Math.max(Math.abs(pos(r.b) - pos(r.a)), .4);
     return `<div class="vw-r ${r.total ? 'tot' : r.v < 0 ? 'neg' : 'pos'}"><span>${r.l}</span><div class="vw-t"><i style="left:${x}%;width:${w}%"></i>${lo < 0 ? `<b class="vw-0" style="left:${pos(0)}%"></b>` : ''}</div><em>${r.total ? '' : r.v > 0 ? '+' : ''}${nf(r.v, digits)}</em></div>`; }).join('')}</div><p class="vz-unit">${unit}</p>`;
 }
-function unit(host, ctx) {
-  const {P, POL} = ctx, {nf, esc, ml, fmpLast, gap} = P;
-  // Trần khung giá năm gần nhất của từng loại hình (loại có giá theo miền: dải thấp–cao), so với FMP bình quân tháng gần nhất.
-  // Không dùng chi phí nhiên liệu ước tính: phụ thuộc lịch huy động nên không phải mốc so sánh ổn định.
-  const F = POL.price_frameworks || [], FAM = ['Nhiệt điện', 'Thủy điện & tích năng', 'Điện gió', 'Điện mặt trời', 'Sinh khối & rác'], fo = f => (FAM.indexOf(f) + 1 || 99);
-  const order = [...new Set(F.map(f => f.family + '|' + f.label))].sort((x, y) => fo(x.split('|')[0]) - fo(y.split('|')[0]));
-  const rows = order.map(k => { const a = F.filter(f => f.family + '|' + f.label === k), y = Math.max(...a.map(f => f.year)), cur = a.filter(f => f.year === y), v = cur.map(f => f.ceiling);
-    return {family: cur[0].family, label: cur[0].label, year: y, lo: Math.min(...v), hi: Math.max(...v), n: cur.length, dec: cur[0].decision}; });
-  if (!rows.length) { host.replaceChildren(gap('chưa có dữ liệu khung giá phát điện.')); return; }
-  const fmp = fmpLast?.fmp, max = Math.max(...rows.map(r => r.hi), fmp || 0) * 1.04, pct = v => (v / max * 100).toFixed(2);
-  const col = {'Nhiệt điện': '#1D2678', 'Thủy điện & tích năng': '#2938A8', 'Điện gió': '#59C5C8', 'Điện mặt trời': '#c29100', 'Sinh khối & rác': '#8997D6'};
-  let fam = '';
-  const html = rows.map(r => { const head = r.family !== fam ? `<div class="vu-fam">${esc(r.family)}</div>` : ''; fam = r.family; const c = col[r.family] || '#2938A8';
-    const gapTxt = !fmp ? '' : r.hi > r.lo ? (fmp < r.lo ? 'FMP thấp hơn trần mọi miền' : fmp > r.hi ? 'FMP cao hơn trần mọi miền' : 'FMP nằm trong dải trần các miền') : fmp <= r.hi ? `FMP thấp hơn trần ${nf((1 - fmp / r.hi) * 100, 0)}%` : `FMP cao hơn trần ${nf((fmp / r.hi - 1) * 100, 0)}%`;
-    return head + `<div class="vu-k"><span>${esc(r.label)} <small>${r.year}</small></span><div class="vu-kt" title="${esc(r.dec)} · trần ${r.n > 1 ? nf(r.lo, 0) + '–' + nf(r.hi, 0) + ' (theo miền)' : nf(r.hi, 0)} đ/kWh"><i style="width:${pct(r.lo)}%;background:${c}"></i>${r.hi > r.lo ? `<i style="left:${pct(r.lo)}%;width:${(r.hi - r.lo) / max * 100}%;background:${c};opacity:.4"></i>` : ''}${fmp ? `<b class="vu-fmp" style="left:${pct(fmp)}%"></b>` : ''}</div><em>${r.n > 1 ? nf(r.lo, 0) + '–' + nf(r.hi, 0) : nf(r.hi, 0)}<small>${esc(gapTxt)}</small></em></div>`; }).join('');
-  host.innerHTML = `<section class="vu-sec"><p class="vz-take">Thanh = trần khung giá phát điện năm gần nhất của từng loại hình (đ/kWh, chưa VAT; phần nhạt = chênh giữa các miền). Vạch đỏ = FMP${fmp ? ' ' + ml(fmpLast.period) + ' ' + nf(fmp, 0) + ' đ/kWh' : ''}. Trần là mức tối đa dự án mới được đàm phán PPA; nhà máy đang vận hành bán theo PPA đã ký và FMP.</p>
-      <div class="vu-kwh vu-ceilrows">${html}</div>
-      <div class="vu-leg"><span><i class="vu-fmp-k"></i>FMP bình quân tháng gần nhất (bản tin IR PGV)</span><span><i class="vu-ceil-k"></i>trần khung giá phát điện (Bộ Công Thương)</span></div>
-      <div class="source-note">Trần khung giá theo quyết định của Bộ Công Thương cho từng loại hình và năm (chi tiết, văn bản ở tab Chính sách › 2.2 Khung giá phát điện). FMP = SMP + CAN, bình quân tháng của danh mục PGV; không phải giá từng nhà máy. Chi phí nhiên liệu không dùng làm mốc so sánh vì thay đổi theo lịch huy động.</div></section>`;
-}
 
 /* ===================== Module 04 · heatmap phơi nhiễm ===================== */
 function heat(host, ctx, onPick) {
@@ -394,5 +374,5 @@ function companies(host, ctx) {
   all();
 }
 
-window.PowerOverviewVisual = {map, tech, data, unit, heat, waterfall, companies};
+window.PowerOverviewVisual = {map, tech, data, heat, waterfall, companies};
 })();
