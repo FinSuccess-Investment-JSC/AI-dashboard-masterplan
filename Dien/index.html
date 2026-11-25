@@ -45,6 +45,8 @@
 <script src="../assets/source-gap.js?v=02afdd3cfa3d" defer></script>
 <script src="../data/power-hydro-assets.js?v=7826338c16e2" defer></script>
 <script src="../assets/power-insights.js?v=a60f497a8a82" defer></script>
+<link rel="stylesheet" href="../assets/power-news.css">
+<script src="../assets/power-news.js" defer></script>
 <script src="../assets/power-picture.js?v=7ea06dfd3597" defer></script>
 <script src="../data/power-overview.js?v=b89f1a94fa3c" defer></script>
 <script src="../assets/power-overview-visual.js?v=843fcba2e1e9" defer></script>
@@ -448,7 +450,8 @@
   </div>
 
   <div class="majorpane" data-tab="mt7" id="pane-mt7">
-    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Ba câu chuyện đang dẫn dắt ngành điện.</p></div></div>
+    <section id="power-news" data-feed="../data/power/news.json" aria-label="Tin ngành Điện"><p role="status">Đang tải tin ngành Điện…</p></section>
+    <div hidden id="power-news-legacy" style="display:none">
     <div data-topic-key="el-nino" data-topic-title="El Niño &amp; thủy văn">
       <p class="research-caption">Phân tích AI ngày 06/10/2026 · El Niño mạnh là rủi ro lớn nhất với sản lượng thủy điện mùa khô 2026–27; nhiệt điện than, khí được huy động bù.</p>
       <div class="grid two">
@@ -596,6 +599,7 @@
           </table></div>
         </div>
       </details>
+    </div>
     </div>
   </div>
 

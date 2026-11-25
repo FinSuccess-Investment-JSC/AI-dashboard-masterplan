@@ -50,6 +50,10 @@ document.querySelectorAll('.thesis-signal').forEach((c,i)=>{
  const how=make('p','thesis-howto');how.append(make('b','','Cách đối chiếu: '),s[3]);(c.querySelector('.thesis-limitation')||c.querySelector('.thesis-evidence-links')||c.lastElementChild).before(how);
  editor(c,'signal-'+i,'catalyst',{title});
 });
+if (sector === 'power' && hot.querySelector('#power-news')) {
+  document.querySelectorAll('.thesis-signal,.thesis-scenario-panel,.thesis-fold-body,.majorpane[data-tab="mt4"] .research-detail,.majorpane[data-tab="mt4"] .policy-timeline,.research-steps,.business-models').forEach(n=>R.emphasize(n));
+  return;
+}
 // Topic lifecycle can outlive a market event; structural material lives in Overview/Market.
 const old=[...hot.children];hot.replaceChildren();const h=make('div','sectionhead');h.append(make('h2','','Chủ đề nóng'));hot.append(h,make('p','research-caption','Câu chuyện có thời hạn · mỗi chủ đề giữ nguồn, ngày phân tích và điều kiện kết thúc.'));
 const toolbar=make('div','research-toolbar'),active=make('button','','Đang theo dõi'),archive=make('button','','Đã lưu');active.type=archive.type='button';toolbar.append(active,archive);hot.append(toolbar);const list=make('div','research-topics');hot.append(list);let view='active';
