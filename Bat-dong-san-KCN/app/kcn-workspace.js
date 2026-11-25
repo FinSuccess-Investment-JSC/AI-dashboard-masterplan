@@ -88,7 +88,7 @@
       (n ? tile(`Lấp đầy miền Bắc ${QL(n.period)}`, pf(n.occ, 1, false), nb && nb.ok ? `${ppf(nb.abs)} so cùng kỳ · C&W` : 'C&W') : '') +
       (s ? tile(`Lấp đầy miền Nam ${QL(s.period)}`, pf(s.occ, 1, false), sb && sb.ok ? `${ppf(sb.abs)} so cùng kỳ · C&W` : 'C&W') : '') +
       (pipe.length ? tile('Cung dự kiến 2026–2028', pipe.map(p => `${REG[p.region]} ${nf(p.pipeline)}`).join(' · ') + ' ha', 'dự phóng C&W, chưa phải đất sẵn sàng') : '') +
-      `</div><a class="kc-pv-go" href="?kcn=overview#mt2" data-kcn-go="overview">Mở phân tích chi tiết →</a>`;
+      `</div><a class="kc-pv-go" href="?kcn=demand#mt2" data-kcn-go="demand">Mở phân tích chi tiết →</a>`;
   }
   // Câu KCN ở "Vị trí trong chu kỳ" và chủ đề nóng "Quỹ đất KCN": cùng số với workspace, không giữ số tay.
   function regionLine(r) {
@@ -103,7 +103,7 @@
     const head = [has('R1') ? 'cầu thuê phục hồi' : 'cầu thuê chưa rõ xu hướng', has('R2') ? 'cung mới vào nhanh hơn' : ''].filter(Boolean).join(', ');
     $$('[data-kcn-cycle]').forEach(n => { n.innerHTML = `<mark class="key-phrase">Khu công nghiệp: ${esc(head)}.</mark> ` +
       [c9 ? `Hấp thụ đất ${PL(c9.period)} (CBRE Tier-1) khoảng <b>${nf(c9.value)} ha</b>${y9 ? ` (${sg(y9[1])}%)` : ''}` : '', fn ? `FDI chế biến chế tạo cấp mới ${PL(fn.period)} <b>${nf(fn.value, 1)} tỷ USD</b>${yf ? ` (${sg(yf[1])}%)` : ''}` : '',
-        regionLine('North'), regionLine('South')].filter(Boolean).join('; ') + `. <a href="?kcn=overview#mt2" data-kcn-go="overview">Chi tiết ở tab Bức tranh ngành</a>.`; });
+        regionLine('North'), regionLine('South')].filter(Boolean).join('; ') + `. <a href="?kcn=demand#mt2" data-kcn-go="demand">Chi tiết ở tab Bức tranh ngành</a>.`; });
     const pipe = K.pipelineRatios(D);
     $$('[data-kcn-topic="north"]').forEach(n => { const p = pipe.find(x => x.region === 'North'); n.innerHTML = `Miền Bắc: ${regionLine('North')}${p ? `; cung dự kiến 2026–2028 thêm <b>${nf(p.pipeline)} ha</b> (${pf(p.ratio, 0, false)} nguồn cung hiện hữu, dự phóng C&W)` : ''}.`; });
     $$('[data-kcn-topic="south"]').forEach(n => { const pts = K.provincePoints(D).filter(x => x.region === 'South'); n.innerHTML = `Miền Nam ${pts[0] ? QL(pts[0].period) : ''}: ${pts.map(x => `${esc(x.province_vi)} lấp đầy <b>${pf(x.occ, 1, false)}</b>, giá chào thuê ${pf(x.rent_yoy)} so cùng kỳ`).join('; ')} (C&W, địa giới sau sáp nhập).`; });
@@ -114,7 +114,7 @@
   const QUARTERS = D ? [...new Set(D.market.map(m => m.period).concat(D.cbre.map(c => c.period)))].sort((a, b) => K.qk(a) - K.qk(b)) : [];
   const PROVS = D ? [...new Set(D.province.map(p => p.province_vi).concat(D.pipeline.filter(p => p.province !== 'Regional').map(p => p.province_vi), D.landbank.map(l => PROV_NORM(l.province))))].sort((a, b) => a.localeCompare(b, 'vi')) : [];
   const COS = D ? [...new Set(D.company.map(c => c.ticker).concat(D.coverage.map(c => c.ticker)))] : [];
-  const st = {tab: 'overview', r: 'both', src: 'all', from: QUARTERS[0], to: QUARTERS[QUARTERS.length - 1], seg: 'land', prov: 'all', co: 'all', unit: 'usd', side: 'North', mOcc: K && K.TH.m_occ, mRent: K && K.TH.m_rent, ex: {set: 'facts', q: '', src: 'all', reg: 'all', cls: 'all'}};
+  const st = {tab: 'demand', r: 'both', src: 'all', from: QUARTERS[0], to: QUARTERS[QUARTERS.length - 1], seg: 'land', prov: 'all', co: 'all', unit: 'usd', side: 'North', mOcc: K && K.TH.m_occ, mRent: K && K.TH.m_rent, ex: {set: 'facts', q: '', src: 'all', reg: 'all', cls: 'all'}};
   const pEnd = p => { const s = String(p || ''); let m; if ((m = /^(\d{4})Q([1-4])$/.exec(s))) return K.qk(s); if ((m = /^(\d{4})(FY|AGM)$/.exec(s))) return K.qk(m[1] + 'Q4'); if ((m = /^(\d{4})H1$/.exec(s))) return K.qk(m[1] + 'Q2'); if ((m = /^(\d{4})M(\d+)$/.exec(s))) return K.qk(m[1] + 'Q' + Math.ceil(+m[2] / 3)); if ((m = /^(\d{4})$/.exec(s))) return K.qk(m[1] + 'Q4'); return null; };
   // Quý: nằm trong khoảng. Kỳ lũy kế (năm, H1, 9T, 10T): giao với khoảng (kỳ bắt đầu từ Q1 cùng năm).
   const inRange = p => { const k = pEnd(p); if (k == null) return true; const q = /^\d{4}Q[1-4]$/.test(String(p)), a = q ? k : Math.floor(k / 4) * 4; return a <= K.qk(st.to) && k >= K.qk(st.from); };
@@ -123,7 +123,7 @@
   const labelsInRange = () => QUARTERS.filter(q => inRange(q));
   function readUrl() {
     const u = new URLSearchParams(location.search);
-    if (TABS.some(t => t[0] === u.get('kcn'))) st.tab = u.get('kcn');
+    if (['demand', 'supply', 'rent', 'landbank', 'finance'].includes(u.get('kcn'))) st.tab = u.get('kcn');
     [['r', ['both', 'North', 'South']], ['src', ['all', 'cw', 'cbre']], ['seg', ['land', 'RBF', 'RBW']]].forEach(([k, ok]) => { if (ok.includes(u.get(k))) st[k] = u.get(k); });
     if (QUARTERS.includes(u.get('from'))) st.from = u.get('from');
     if (QUARTERS.includes(u.get('to'))) st.to = u.get('to');
@@ -846,7 +846,7 @@
   }
 
   /* ---------- Khung workspace ---------- */
-  let root, nav, bar, panels = {}, moved = {}, rendered = {};
+  let root, nav, bar, panels = {}, moved = {}, rendered = {}; const ext = {};
   function filterBar() {
     const ap = APPLY[st.tab] || [];
     const dis = k => (ap.includes(k) ? '' : 'disabled title="Không áp dụng ở tab này"');
@@ -859,75 +859,139 @@
       `<label>Doanh nghiệp <select data-kc-f="co" ${dis('co')}>${opt('co', [['all', 'Tất cả']].concat(COS.map(c => [c, c])))}</select></label>` +
       `<button type="button" class="kc-reset" data-kc-reset>Đặt lại</button>`;
   }
+  /* Câu hỏi của từng mục (khung Điện: số mục + câu hỏi); chữ mô tả cũ của workspace giữ làm dòng phụ. */
+  const QMAP = {
+    demand: {'1': 'Cầu thuê đất thực tế đang tăng hay chậm lại?', '2': 'FDI chế biến chế tạo có xác nhận xu hướng cầu không?', '3': 'FDI đã chuyển thành nhu cầu đất và sản xuất chưa?'},
+    supply: {A: 'Nguồn cung có tăng nhanh hơn nhu cầu không?', B: 'Nguồn cung mới sắp vào đến đâu?'},
+    rent: {A: 'Giá chào thuê đang lên hay đi ngang?', B: 'Tỉnh nào lấp đầy cao, tỉnh nào còn nhiều đất trống?', C: 'Khu vực nào có sức mạnh tăng giá, khu vực nào có nguy cơ dư cung?', D: 'Hai địa phương khác nhau ở đâu?', E: 'Hàm ý theo địa phương là gì?'},
+    landbank: {A: 'Doanh nghiệp nào còn quỹ đất để giao, theo đúng loại diện tích?', B: 'Dự án nào đang triển khai, ở tỉnh nào?', C: 'Doanh nghiệp nào đã chuyển cầu thành hợp đồng thực tế?', D: 'Cầu thị trường đi vào kết quả doanh nghiệp thế nào?'},
+    overview: {A: 'Ngành đang ở đâu trong chu kỳ: hấp thụ, nguồn cung, lấp đầy?', B: 'Dữ liệu hiện tại gợi ý điều gì cho nhà đầu tư?'},
+    data: {A: 'Số trên trang lấy từ bảng nào?', B: 'Dữ liệu đang có cảnh báo gì?', C: 'Nhận định sinh từ quy tắc nào, ngưỡng bao nhiêu?', D: 'Định nghĩa, nguồn và cách cập nhật'}
+  };
+  const TITLE = {demand: 'Nhu cầu thuê đất & FDI', supply: 'Nguồn cung & lấp đầy', rent: 'Giá thuê & địa phương', landbank: 'Quỹ đất & doanh nghiệp', finance: 'Tài chính ngành'};
+  const SHORT = {demand: 'Nhu cầu', supply: 'Nguồn cung', rent: 'Giá thuê', landbank: 'Quỹ đất', finance: 'Tài chính ngành'};
+  const MOVE_Q = {demand: 'Các chỉ báo hằng tháng (FDI đăng ký, vốn thực hiện, IIP) đang nói gì?', supply: 'Đất cao su chuyển đổi bổ sung bao nhiêu nguồn cung phía Nam?', rent: 'Giá chào thuê các KCN mở bán 2026 ở mức nào?', landbank: 'Thị trường đang định giá nhóm KCN thế nào, doanh nghiệp dự kiến ký mới bao nhiêu?'};
+  const BAR_TABS = ['demand', 'supply', 'rent', 'landbank', 'finance'];
+  // Mỗi đoạn có tiêu đề (kc-sec-h) thành một mục câu hỏi pp-panel; phần trước đoạn đầu (ô số) giữ nguyên.
+  function toPanels(box, key, prefix, start = 0) {
+    let cur = null, k = start;
+    [...box.children].forEach(n => {
+      if (n.classList.contains('kc-sec-h')) {
+        k += 1;
+        const code = ((n.querySelector('.kc-num') || {}).textContent || '').trim(), title = (n.querySelector('h3') || {}).textContent || '', sub = (n.querySelector('p') || {}).innerHTML || '';
+        const q = (QMAP[key] || {})[code] || title;
+        cur = el('section', 'pp-panel pp-q kc-q'); cur.id = 'kc-' + key + '-' + k;
+        cur.innerHTML = `<header class="pp-ph"><span class="pp-num">${prefix}.${k}</span><div><h3>${esc(q)}</h3>${sub ? `<p class="kc-q-sub">${sub}</p>` : ''}</div></header>`;
+        n.replaceWith(cur); return;
+      }
+      if (cur) cur.append(n);
+    });
+    return k - start;
+  }
+  function renderInto(key, box, prefix, start = 0) {
+    box.replaceChildren();
+    try { ({overview: renderOverview, demand: renderDemand, supply: renderSupply, rent: renderRent, landbank: renderLandbank, data: renderData})[key](box); }
+    catch (e) { box.append(el('p', 'kc-gap', 'Không dựng được phần này: ' + esc(e.message))); console.error(e); }
+    const n = toPanels(box, key, prefix, start);
+    setTimeout(() => { paint(box); refit(box); if (window.FinShareImage) window.FinShareImage.scan(box); }, 0); // không dùng rAF: tab chạy nền sẽ không vẽ
+    return n;
+  }
   function renderTab(key, force) {
     const p = panels[key]; if (!p) return;
     if (rendered[key] && !force) { refit(p); return; }
-    const dyn = p.querySelector('.kc-dyn'); dyn.replaceChildren();
-    try { ({overview: renderOverview, demand: renderDemand, supply: renderSupply, rent: renderRent, landbank: renderLandbank, data: renderData})[key](dyn); }
-    catch (e) { dyn.append(el('p', 'kc-gap', 'Không dựng được phần này: ' + esc(e.message))); console.error(e); }
+    const dyn = p.querySelector('.kc-dyn');
+    if (key === 'finance') {
+      if (!rendered.finance) { if (window.KcnFinance) window.KcnFinance.build(dyn); else dyn.append(el('p', 'kc-gap', 'Không tải được dữ liệu tài chính ngành.')); }
+      rendered.finance = true; return;
+    }
+    const n = renderInto(key, dyn, BAR_TABS.indexOf(key) + 1);
+    const mv = moved[key]; if (mv) { const num = mv.querySelector('.pp-num'); if (num) num.textContent = `${BAR_TABS.indexOf(key) + 1}.${n + 1}`; }
     rendered[key] = true;
-    setTimeout(() => { paint(dyn); refit(p); if (window.FinShareImage) window.FinShareImage.scan(p); }, 0); // không dùng rAF: tab chạy nền sẽ không vẽ
   }
   function select(key, push) {
+    if (!BAR_TABS.includes(key)) key = 'demand';
     st.tab = key;
-    $$('.kc-tab', nav).forEach(b => { const on = b.dataset.kcTab === key; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
+    $$('[data-kc-tab]', nav).forEach(b => { const on = b.dataset.kcTab === key; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
     Object.entries(panels).forEach(([k, p]) => { p.hidden = k !== key; });
+    bar.hidden = key === 'finance';
     filterBar(); renderTab(key); if (push !== false) writeUrl();
   }
-  function rerender() { Object.keys(rendered).forEach(k => { rendered[k] = false; }); renderTab(st.tab, true); writeUrl(); }
-  function build() {
-    const pane = $('.majorpane[data-tab="mt2"]'); if (!pane) return;
-    root = $('#kcn-workspace', pane) || pane.appendChild(el('div', '', '')); root.id = 'kcn-workspace'; root.className = 'kc-ws';
-    nav = el('div', 'kc-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Phân tích Khu công nghiệp');
-    TABS.forEach(([k, t], i) => { const b = el('button', 'kc-tab', `<span>${String(i + 1).padStart(2, '0')}</span>${esc(t)}`); b.type = 'button'; b.dataset.kcTab = k; b.id = 'kc-tab-' + k; b.setAttribute('role', 'tab'); b.setAttribute('aria-controls', 'kc-panel-' + k); nav.append(b); });
-    bar = el('div', 'kc-filters'); bar.setAttribute('role', 'group'); bar.setAttribute('aria-label', 'Bộ lọc chung');
-    root.append(nav, bar);
-    // Thanh sub-tab dính ngay dưới thanh tab lớn (cũng sticky, cao thay đổi theo bề rộng).
-    const setTop = () => root.style.setProperty('--kc-top', (($('.majortabs') || {}).offsetHeight || 0) + 'px'); setTop(); addEventListener('resize', setTop);
-    TABS.forEach(([k, t, q]) => {
-      const p = el('section', 'kc-panel'); p.id = 'kc-panel-' + k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', 'kc-tab-' + k); p.hidden = true;
-      p.innerHTML = `<header class="kc-head"><div><span class="kc-eyebrow">Khu công nghiệp · ${esc(t)}</span><h3>${esc(q)}</h3></div><span class="kc-asof">Workbook ${esc((D.as_of || '').split('-').reverse().join('/'))} · ${esc(D.workbook.sheets.length)} sheet</span></header><div class="kc-dyn"></div>`;
-      if (MOVE[k]) {
-        const cards = MOVE[k].map(id => document.querySelector(`[data-block-id="${id}"]`)).filter(Boolean);
-        if (cards.length) { const d = el('details', 'kc-fold kc-moved'); d.innerHTML = `<summary>${esc(MOVE_TITLE[k])}</summary>`; const gwrap = el('div', 'kc-grid'); cards.forEach(c => { c.classList.add('kc-old'); gwrap.append(c); }); d.append(gwrap); d.addEventListener('toggle', () => d.open && refit(d)); p.append(d); moved[k] = cards; }
-      }
-      panels[k] = p; root.append(p);
-    });
-    // Dọn các khung rỗng còn lại ở pane KCN của Bức tranh ngành (thẻ đã dời sang workspace).
-    const ip = $('#supply-vietnam');
-    if (ip) $$('.grid.two, .research-grid', ip).forEach(gr => { if (!gr.querySelector('.card')) gr.remove(); });
-    nav.addEventListener('click', e => { const b = e.target.closest('.kc-tab'); if (b) select(b.dataset.kcTab); });
-    nav.addEventListener('keydown', e => { if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return; const i = TABS.findIndex(t => t[0] === st.tab), j = (i + (e.key === 'ArrowRight' ? 1 : TABS.length - 1)) % TABS.length; select(TABS[j][0]); nav.children[j].focus(); });
-    bar.addEventListener('change', e => { const s = e.target.closest('[data-kc-f]'); if (!s) return; st[s.dataset.kcF] = s.value; if (K.qk(st.from) > K.qk(st.to)) [st.from, st.to] = [st.to, st.from]; filterBar(); rerender(); });
-    bar.addEventListener('click', e => { if (e.target.closest('[data-kc-reset]')) { Object.assign(st, {r: 'both', src: 'all', from: QUARTERS[0], to: QUARTERS[QUARTERS.length - 1], seg: 'land', prov: 'all', co: 'all'}); filterBar(); rerender(); } });
-    root.addEventListener('click', e => {
+  function rerender() {
+    Object.keys(rendered).forEach(k => { if (k !== 'finance') rendered[k] = false; });
+    renderTab(st.tab, true);
+    Object.entries(ext).forEach(([k, o]) => renderInto(k, o.box, o.prefix, o.start));
+    writeUrl();
+  }
+  function bindHost(h) {
+    h.addEventListener('click', e => {
       const sd = e.target.closest('[data-kc-side]'); if (sd) { st.side = sd.dataset.kcSide; rerender(); return; }
       const un = e.target.closest('[data-kc-unit]'); if (un) { st.unit = un.dataset.kcUnit; rerender(); return; }
       const sb = e.target.closest('[data-kc-sortby]'); if (sb) { const k = sb.dataset.kcSortby; st.lb.dir = st.lb.sort === k ? -st.lb.dir : -1; st.lb.sort = k; rerender(); return; }
       if (e.target.closest('[data-kc-excsv]')) { const c = e.target.closest('.kc-card'); if (c && c._csv) download(`kcn-${st.ex.set}.csv`, csvOf(c._csv())); return; }
       if (e.target.closest('[data-kc-qaclear]')) { st.qaFilter = null; rerender(); return; }
     });
-    root.addEventListener('change', e => {
+    h.addEventListener('change', e => {
       const ex = e.target.closest('[data-kc-ex]'); if (ex && ex.tagName === 'SELECT') { st.ex[ex.dataset.kcEx] = ex.value; if (ex.dataset.kcEx === 'set') st.ex.src = 'all'; rerender(); return; }
       const cm = e.target.closest('[data-kc-cmp]'); if (cm) { st.cmp[+cm.dataset.kcCmp] = cm.value; rerender(); return; }
       const ls = e.target.closest('[data-kc-lbs]'); if (ls) { st.lb.status = ls.value; rerender(); return; }
     });
     let tq;
-    root.addEventListener('input', e => {
+    h.addEventListener('input', e => {
       const th = e.target.closest('[data-kc-th]'); if (th) { st[th.dataset.kcTh] = +th.value / 100; th.nextElementSibling.textContent = th.dataset.kcTh === 'mOcc' ? nf(+th.value, 0) + '%' : pf(+th.value / 100, 1); clearTimeout(tq); tq = setTimeout(rerender, 180); return; }
       const q = e.target.closest('[data-kc-ex="q"],[data-kc-lbq]'); if (q) { clearTimeout(tq); tq = setTimeout(() => { if (q.dataset.kcLbq != null) st.lb.q = q.value; else st.ex.q = q.value; const pos = q.selectionStart; rerender(); const n = $(q.dataset.kcLbq != null ? '[data-kc-lbq]' : '[data-kc-ex="q"]', root); if (n) { n.focus(); try { n.setSelectionRange(pos, pos); } catch (err) { /* type=search */ } } }, 250); }
     });
-    // Theo dõi pane được bật/tắt bởi router của research-layout.js.
+  }
+  function build() {
+    const pane = $('.majorpane[data-tab="mt2"]'); if (!pane) return;
+    const section = pane.querySelector(':scope>.section') || pane;
+    root = $('#kcn-workspace', pane) || section.appendChild(el('div', '', '')); root.id = 'kcn-workspace'; root.className = 'kc-ws';
+    // Thanh câu hỏi cùng dạng tab Bức tranh ngành của trang Điện (pp-nav).
+    nav = el('div', 'pp-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Nhóm câu hỏi phân tích');
+    BAR_TABS.forEach((k, i) => {
+      const b = el('button', 'tabbtn pp-tab', `<span>${String(i + 1).padStart(2, '0')}</span>${esc(SHORT[k])}`);
+      b.type = 'button'; b.dataset.kcTab = k; b.id = 'mt2-pp-' + k + '-tab'; b.setAttribute('role', 'tab'); b.setAttribute('aria-controls', 'mt2-pp-' + k); nav.append(b);
+    });
+    bar = el('div', 'kc-filters'); bar.setAttribute('role', 'group'); bar.setAttribute('aria-label', 'Bộ lọc chung');
+    root.append(nav, bar);
+    const setTop = () => { const t = $('.majortabs'), cs = t && getComputedStyle(t); nav.style.top = cs && cs.position === 'sticky' && innerWidth > 700 ? (t.getBoundingClientRect().height + 8) + 'px' : '0px'; };
+    setTop(); addEventListener('resize', setTop);
+    BAR_TABS.forEach((k, i) => {
+      const p = el('div', 'pane-subpane pp-pane'); p.id = 'mt2-pp-' + k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', 'mt2-pp-' + k + '-tab'); p.hidden = true;
+      p.innerHTML = `<h2>${esc(TITLE[k])}</h2><div class="kc-dyn"></div>`;
+      if (MOVE[k]) {
+        const cards = MOVE[k].map(id => document.querySelector(`[data-block-id="${id}"]`)).filter(Boolean);
+        if (cards.length) {
+          const s = el('section', 'pp-panel pp-q kc-q kc-moved');
+          s.innerHTML = `<header class="pp-ph"><span class="pp-num">${i + 1}.·</span><div><h3>${esc(MOVE_Q[k])}</h3><p class="kc-q-sub">${esc(MOVE_TITLE[k])}</p></div></header>`;
+          const g = el('div', 'grid two g2'); cards.forEach(c => g.append(c)); s.append(g); p.append(s); moved[k] = s;
+        }
+      }
+      panels[k] = p; root.append(p);
+    });
+    // Khung cũ của Bức tranh ngành (#supply-world / #supply-vietnam, lưới giá) không dùng ở trang này.
+    $$('#supply-world, #supply-vietnam, .supply-tabs', pane).forEach(n => { n.hidden = true; n.style.display = 'none'; });
+    nav.addEventListener('click', e => { const b = e.target.closest('[data-kc-tab]'); if (b) select(b.dataset.kcTab); });
+    nav.addEventListener('keydown', e => { if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return; const i = BAR_TABS.indexOf(st.tab), j = (i + (e.key === 'ArrowRight' ? 1 : BAR_TABS.length - 1)) % BAR_TABS.length; select(BAR_TABS[j]); nav.children[j].focus(); });
+    bar.addEventListener('change', e => { const s = e.target.closest('[data-kc-f]'); if (!s) return; st[s.dataset.kcF] = s.value; if (K.qk(st.from) > K.qk(st.to)) [st.from, st.to] = [st.to, st.from]; filterBar(); rerender(); });
+    bar.addEventListener('click', e => { if (e.target.closest('[data-kc-reset]')) { Object.assign(st, {r: 'both', src: 'all', from: QUARTERS[0], to: QUARTERS[QUARTERS.length - 1], seg: 'land', prov: 'all', co: 'all'}); filterBar(); rerender(); } });
+    bindHost(root);
     new MutationObserver(() => { if (!pane.hidden) { renderTab(st.tab); refit(panels[st.tab]); } }).observe(pane, {attributes: true, attributeFilter: ['hidden', 'class']});
     readUrl(); select(st.tab, false);
   }
-  // Link "Mở phân tích KCN" ở xem trước, nút "Xem chart →" trong nhận định, nút cảnh báo → Dữ liệu.
+  // Dựng phần chu kỳ (Tổng quan) và Dữ liệu & phương pháp (Nguồn dữ liệu) ở tab khác (kcn-overview.js): cùng trạng thái bộ lọc.
+  window.KcnWS = {
+    render(key, box, prefix, start = 0) { if (!D || !K) return; ext[key] = {box, prefix, start}; bindHost(box); renderInto(key, box, prefix, start); },
+    preview: () => (D && K ? previewHtml() : ''), ready: () => !!(D && K)
+  };
+  // Link "Mở phân tích chi tiết", nút "Xem chart →" trong nhận định, nút cảnh báo → Dữ liệu.
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-kcn-go]'); if (!a) return;
     e.preventDefault();
-    if (a.dataset.kcQa) { st.qaFilter = a.dataset.kcQa; st.ex.set = 'facts'; rendered.data = false; if (popo) popo.hidden = true; }
-    const btn = document.getElementById('research-tab-mt2'); if (btn && btn.getAttribute('aria-selected') !== 'true') btn.click(); else if (window.showMajorTab) window.showMajorTab('mt2');
-    select(a.dataset.kcnGo); setTimeout(() => root && root.scrollIntoView({block: 'start'}), 30);
+    if (a.dataset.kcQa) { st.qaFilter = a.dataset.kcQa; st.ex.set = 'facts'; if (popo) popo.hidden = true; rerender(); if (window.showMajorTab) window.showMajorTab('mt8'); return; }
+    const go = a.dataset.kcnGo;
+    if (!BAR_TABS.includes(go)) { if (window.showMajorTab) window.showMajorTab(go === 'data' ? 'mt8' : 'mt1'); return; }
+    if (window.showMajorTab) window.showMajorTab('mt2');
+    select(go); setTimeout(() => root && root.scrollIntoView({block: 'start'}), 30);
   });
 
   function start() {
