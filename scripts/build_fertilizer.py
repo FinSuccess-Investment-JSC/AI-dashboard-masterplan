@@ -80,6 +80,26 @@ def financials(raw):
             'associates': ASSOCIATES, 'items': items, 'data': data, 'cf_annual': ycf, 'checks': checks, 'stale': raw.get('stale', [])}
 
 
+# definition, benchmark/khu vực, tần suất công bố, loại (Actual/Calculated/Estimate/Proxy), phương pháp
+META = {
+    'urea': ('Giá urê hạt rời, bình quân tháng', 'FOB Trung Đông (World Bank)', 'tháng, đầu tháng sau', 'Actual', 'số công bố, không tính lại'),
+    'dap': ('Giá DAP, bình quân tháng', 'FOB Mỹ vùng Vịnh (World Bank)', 'tháng, đầu tháng sau', 'Actual', 'số công bố'),
+    'tsp': ('Giá supe lân kép TSP, bình quân tháng', 'World Bank', 'tháng, đầu tháng sau', 'Actual', 'số công bố'),
+    'phosrock': ('Giá quặng phosphate, bình quân tháng', 'Morocco (World Bank)', 'tháng, đầu tháng sau', 'Actual', 'số công bố; benchmark quốc tế, không phải giá apatit nội địa'),
+    'potash': ('Giá kali clorua (MOP), bình quân tháng', 'World Bank', 'tháng, đầu tháng sau', 'Actual', 'số công bố'),
+    'gas_eu': ('Giá khí tự nhiên châu Âu, bình quân tháng', 'TTF Hà Lan (World Bank)', 'tháng, đầu tháng sau', 'Actual', 'số công bố; không phải giá khí của DPM, DCM'),
+    'gas_us': ('Giá khí tự nhiên Mỹ, bình quân tháng', 'Henry Hub (World Bank)', 'tháng, đầu tháng sau', 'Actual', 'số công bố'),
+    'lng_jp': ('Giá LNG nhập khẩu Nhật Bản, bình quân tháng', 'Nhật Bản CIF (World Bank)', 'tháng, đầu tháng sau', 'Actual', 'số công bố'),
+    'brent': ('Giá dầu Brent, bình quân tháng', 'Brent (World Bank)', 'tháng, đầu tháng sau', 'Actual', 'số công bố'),
+    'coal_au': ('Giá than nhiệt Úc, bình quân tháng', 'Newcastle (World Bank)', 'tháng, đầu tháng sau', 'Proxy', 'benchmark quốc tế; không phải giá than DHB mua'),
+    'urea_zce': ('Giá urê tương lai, đóng cửa ngày cuối tháng', 'Sở GDHH Trịnh Châu, HĐ liên tục UR0', 'ngày giao dịch', 'Actual', 'giá đóng cửa ngày cuối tháng'),
+    'urea_zce_daily': ('Giá urê tương lai, đóng cửa ngày', 'Sở GDHH Trịnh Châu, HĐ liên tục UR0', 'ngày giao dịch', 'Actual', 'giá đóng cửa; HĐ liên tục có khoảng chuyển kỳ hạn'),
+    'urea_output': ('Sản lượng phân urê sản xuất trong nước', 'Việt Nam (Cục Thống kê)', 'tháng, ngày 6 tháng sau', 'Actual', 'tháng gần nhất là số ước tính, tháng trước là sơ bộ'),
+    'npk_output': ('Sản lượng phân NPK sản xuất trong nước', 'Việt Nam (Cục Thống kê)', 'tháng, ngày 6 tháng sau', 'Actual', 'tháng gần nhất là số ước tính, tháng trước là sơ bộ'),
+    'usdvnd': ('Tỷ giá trung tâm USD/VND, bình quân tháng', 'Ngân hàng Nhà nước', 'ngày làm việc', 'Calculated', 'bình quân các ngày trong tháng; tháng hiện tại chưa đủ ngày'),
+}
+
+
 def monthly(d):
     return [{'date': k, 'value': v} for k, v in sorted(d.items())]
 
@@ -112,10 +132,23 @@ def main():
             if k in n['series']:
                 S[k] = {'name': name, 'unit': 'nghìn tấn', 'freq': 'monthly', 'source': 'Cục Thống kê', 'records': monthly(n['series'][k])}
         src['nso'] = {'url': n.get('url'), 'months': len(n.get('files', {}))}
+    sbv = load('sbv-monthly.json')  # scripts/fetch_sbv.py (bot refresh-data.yml): bình quân tháng tỷ giá trung tâm
+    if sbv and sbv.get('series', {}).get('usdvnd'):
+        S['usdvnd'] = {'name': 'Tỷ giá trung tâm USD/VND', 'unit': 'đồng/USD', 'freq': 'monthly', 'source': 'Ngân hàng Nhà nước',
+                       'records': monthly(sbv['series']['usdvnd'])}
     f = load('fs_fertilizer_full_vndirect.json')
     if f:
         out['fin'] = financials(f)
-    text = json.dumps(out, ensure_ascii=False, separators=(',', ':'))
+    # Metadata từng chuỗi (định nghĩa, benchmark, loại số liệu); kỳ và ngày cập nhật lấy từ records/captured.
+    for k, s in S.items():
+        if k in META:
+            s['meta'] = dict(zip(('definition', 'benchmark', 'freq_pub', 'class', 'method'), META[k]))
+            s['meta']['period'] = s['records'][-1]['date'] if s['records'] else None
+            s['meta']['updated'] = (m or {}).get('captured') if k in (m or {}).get('series', {}) else out['built_at'][:10]
+    plants = ROOT / 'data/fertilizer/plants.json'  # nhập tay có nguồn từng dòng (xem file)
+    if plants.exists():
+        out['plants'] = json.loads(plants.read_text(encoding='utf-8'))
+    text =json.dumps(out, ensure_ascii=False, separators=(',', ':'))
     OUT.write_text(text + '\n', encoding='utf-8', newline='\n')
     OUT_JS.write_text('window.FERT_DATA = ' + text + ';\nwindow.FERT_FIN = window.FERT_DATA.fin;\n', encoding='utf-8', newline='\n')
     print(OUT.relative_to(ROOT), {k: (len(v['records']), v['records'][-1]['date'] if v['records'] else None) for k, v in S.items()},

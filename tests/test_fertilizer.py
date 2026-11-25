@@ -12,7 +12,7 @@ class FertilizerTests(unittest.TestCase):
     def setUpClass(cls):
         cls.d = json.loads((ROOT / 'data/fertilizer-data.json').read_text(encoding='utf-8'))
         cls.html = (ROOT / 'Phan-bon/index.html').read_text(encoding='utf-8')
-        cls.js = (ROOT / 'Phan-bon/app/fertilizer.js').read_text(encoding='utf-8')
+        cls.js = ''.join(f.read_text(encoding='utf-8') for f in sorted((ROOT / 'Phan-bon/app').glob('fertilizer*.js')))
 
     def test_series_present(self):
         for k in ('urea', 'dap', 'potash', 'gas_eu', 'brent', 'urea_zce_daily', 'urea_output', 'npk_output'):
@@ -35,6 +35,21 @@ class FertilizerTests(unittest.TestCase):
         self.assertTrue(blocks)
         for b in blocks:
             self.assertTrue(f"'{b}'" in self.js or f'"{b}"' in self.html, b)
+
+    def test_plants_dataset(self):
+        P = self.d['plants']
+        ids = {p['id'] for p in P['plants']}
+        self.assertGreaterEqual(len(ids), 20)
+        for p in P['plants']:
+            self.assertTrue(p['sources'], p['id'])
+            self.assertTrue(101.8 < p['lon'] < 117.4 and 6.6 < p['lat'] < 23.5, p['id'])
+            for x in p['products']:
+                # công suất có số thì phải có nguồn hoặc ghi chú cách tính
+                if x.get('capacity_kt') is not None:
+                    self.assertTrue(x.get('source') or x.get('capacity_note'), (p['id'], x['product']))
+        raws = {z['id'] for z in P['raw_regions']}
+        for l in P['links']:
+            self.assertIn(l['from'], raws); self.assertIn(l['to'], ids); self.assertTrue(l.get('source'))
 
     def test_finance_module_uses_fertilizer_data(self):
         fin = (ROOT / 'Phan-bon/app/fertilizer-finance.js').read_text(encoding='utf-8')

@@ -1,0 +1,1099 @@
+{
+ "meta": {
+  "updated": "2026-11-25",
+  "method": "Nhập tay từ tài liệu đã mở (BCTN, website doanh nghiệp, Petrovietnam, Vinachem, báo chuyên ngành); mỗi dòng ghi nguồn và kỳ. Số không xác minh được để null.",
+  "source_note": "BCTN, website doanh nghiệp, Petrovietnam, Vinachem, báo chuyên ngành (nguồn ghi theo từng nhà máy)",
+  "coord_note": "Tọa độ ước theo khu công nghiệp/xã của nhà máy, chưa đo trên bản đồ địa chính",
+  "note": "Chỉ ghi số liệu có nguồn đã mở; null = chưa xác minh"
+ },
+ "plants": [
+  {
+   "id": "dpm_phumy",
+   "plant": "Nhà máy Đạm Phú Mỹ",
+   "owner": "TCT Phân bón và Hóa chất Dầu khí (PVFCCo)",
+   "ticker": "DPM",
+   "listed": true,
+   "province_current": "TP. Hồ Chí Minh",
+   "province_old": "Bà Rịa – Vũng Tàu",
+   "location": "KCN Phú Mỹ I, Phú Mỹ",
+   "lat": 10.6,
+   "lon": 107.03,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Đông Nam Bộ",
+   "products": [
+    {
+     "product": "Urê",
+     "capacity_kt": 740,
+     "capacity_note": "Công suất thiết kế; năm 2026 chạy ~2.500–2.534 tấn/ngày",
+     "source": "https://tapchicongthuong.vn/pvfcco-phu-my--22-nam-tu-dau-moc-tu-chu-den-nhung-dong-luc-tang-truong-moi-551785.htm"
+    },
+    {
+     "product": "Amoniac",
+     "capacity_kt": null,
+     "capacity_note": "Dự án 2015 nâng xưởng NH3 thêm 90 lên 540 nghìn t/năm; chưa xác minh hoàn thành",
+     "source": "https://baodautu.vn/pvfcco-trao-thau-gan-5000-ty-dong-cho-nhieu-nha-thau-ngoai-d27938.html"
+    }
+   ],
+   "technology": "Urê từ khí",
+   "feedstock": "Khí thiên nhiên",
+   "feed_supply": "Khí Bạch Hổ–Rạng Đông, cấp bù từ Nam Côn Sơn và Cửu Long (kế hoạch 2023)",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://petrovietnam.vn/DataStore/Documents/2023/Hoinghi%20khau%20sau/3.%20PVFCCo%20Tham%20luan%20Hoi%20nghi%20Thuc%20day%20SXKD%20.pdf",
+   "cost_mechanism": "Từ 2014: 46% giá FO Singapore bình quân tháng + cước vận chuyển khí (tariff)",
+   "cost_mechanism_source": "https://tapchicongthuong.vn/pvfcco-lam-ro-cac-nghi-van-cua-co-dong-54546.htm",
+   "output_note": "2026: ~2.500–2.534 tấn urê/ngày; lũy kế >16,8 triệu tấn urê",
+   "sources": [
+    "https://tapchicongthuong.vn/pvfcco-phu-my--22-nam-tu-dau-moc-tu-chu-den-nhung-dong-luc-tang-truong-moi-551785.htm",
+    "https://daibieunhandan.vn/nha-may-dam-phu-my-cong-trinh-bieu-tuong-mo-ra-huong-di-ben-vung-cho-cong-nghiep-hoa-dau-viet-nam-10408969.html",
+    "https://baodautu.vn/pvfcco-trao-thau-gan-5000-ty-dong-cho-nhieu-nha-thau-ngoai-d27938.html",
+    "https://petrovietnam.vn/DataStore/Documents/2023/Hoinghi%20khau%20sau/3.%20PVFCCo%20Tham%20luan%20Hoi%20nghi%20Thuc%20day%20SXKD%20.pdf",
+    "https://tapchicongthuong.vn/pvfcco-lam-ro-cac-nghi-van-cua-co-dong-54546.htm"
+   ],
+   "period": "2026 (urê); 2015 (NH3)"
+  },
+  {
+   "id": "dpm_npk",
+   "plant": "Nhà máy NPK Phú Mỹ",
+   "owner": "PVFCCo",
+   "ticker": "DPM",
+   "listed": true,
+   "province_current": "TP. Hồ Chí Minh",
+   "province_old": "Bà Rịa – Vũng Tàu",
+   "location": "Cạnh Nhà máy Đạm Phú Mỹ, KCN Phú Mỹ I",
+   "lat": 10.6,
+   "lon": 107.03,
+   "coord_note": "Đặt trùng tọa độ Đạm Phú Mỹ (cùng tổ hợp)",
+   "region": "Đông Nam Bộ",
+   "products": [
+    {
+     "product": "NPK",
+     "capacity_kt": 250,
+     "capacity_note": "Công suất thiết kế; công nghệ hóa học (Incro); SX thương mại đầu 2018",
+     "source": "https://baodautu.vn/pvfcco-trao-thau-gan-5000-ty-dong-cho-nhieu-nha-thau-ngoai-d27938.html"
+    }
+   ],
+   "technology": "NPK",
+   "feedstock": "NH3, urê từ Đạm Phú Mỹ; thành phần khác nhập khẩu",
+   "feed_supply": "NH3 và urê từ Nhà máy Đạm Phú Mỹ",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://daibieunhandan.vn/npk-phu-my-cham-moc-1-trieu-tan-vung-buoc-vi-mua-boi-thu-10389172.html",
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": "Mốc 1 triệu tấn NPK (10/2025, không rõ lũy kế hay năm)",
+   "sources": [
+    "https://baodautu.vn/pvfcco-trao-thau-gan-5000-ty-dong-cho-nhieu-nha-thau-ngoai-d27938.html",
+    "https://daibieunhandan.vn/npk-phu-my-cham-moc-1-trieu-tan-vung-buoc-vi-mua-boi-thu-10389172.html",
+    "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf"
+   ],
+   "period": "2015 (dự án)"
+  },
+  {
+   "id": "dcm_camau",
+   "plant": "Nhà máy Đạm Cà Mau",
+   "owner": "CTCP Phân bón Dầu khí Cà Mau (PVCFC)",
+   "ticker": "DCM",
+   "listed": true,
+   "province_current": "Cà Mau",
+   "province_old": "Cà Mau",
+   "location": "Xã Khánh An, cụm Khí–Điện–Đạm Cà Mau",
+   "lat": 9.27,
+   "lon": 105.11,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Tây Nam Bộ",
+   "products": [
+    {
+     "product": "Urê",
+     "capacity_kt": 800,
+     "capacity_note": "800 nghìn t/năm (bài EPC 2008 ghi chung 'phân bón'); thực tế chạy 103–110%",
+     "source": "https://en.baochinhphu.vn/epc-contract-for-ca-mau-fertilizer-factory-inked-111349.htm"
+    }
+   ],
+   "technology": "Urê từ khí",
+   "feedstock": "Khí thiên nhiên",
+   "feed_supply": "Khí PM3-CAA qua đường ống PM3–Cà Mau (PV GAS thu cước)",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://petrovietnam.vn/DataStore/Documents/2023/Hoinghi%20khau%20sau/2.%20PVCFC%20Tham%20luan%20HN%20giai%20phap%20khau%20sau%202023.pdf",
+   "cost_mechanism": "Khí nội địa 46% giá HFSO; khí nhập Malaysia 12,7% Brent; cộng cước ống PM3–Cà Mau",
+   "cost_mechanism_source": "https://tapchicongthuong.vn/dam-ca-mau--dcm-doanh-thu-quy-3-uoc-dat-9-500-ty--lai-rong-nam-2024-co-the-tang-61-112320.htm",
+   "output_note": "Cung ứng ~860 nghìn tấn urê/năm (bài 12/2024); kế hoạch 2023: 950 nghìn tấn",
+   "sources": [
+    "https://en.baochinhphu.vn/epc-contract-for-ca-mau-fertilizer-factory-inked-111349.htm",
+    "https://vneconomy.vn/phan-bon-ca-mau-can-moc-8-trieu-tan-ure.htm",
+    "https://www.vcci.com.vn/tin-tuc/nha-may-dam-ca-mau-can-moc-san-luong-11-trieu-tan-urea",
+    "https://petrovietnam.vn/DataStore/Documents/2023/Hoinghi%20khau%20sau/2.%20PVCFC%20Tham%20luan%20HN%20giai%20phap%20khau%20sau%202023.pdf",
+    "https://tapchicongthuong.vn/dam-ca-mau--dcm-doanh-thu-quy-3-uoc-dat-9-500-ty--lai-rong-nam-2024-co-the-tang-61-112320.htm"
+   ],
+   "period": "2008/2021"
+  },
+  {
+   "id": "dcm_npk",
+   "plant": "Nhà máy NPK Cà Mau (phân bón phức hợp)",
+   "owner": "PVCFC",
+   "ticker": "DCM",
+   "listed": true,
+   "province_current": "Cà Mau",
+   "province_old": "Cà Mau",
+   "location": "Trong cụm Đạm Cà Mau, xã Khánh An",
+   "lat": 9.27,
+   "lon": 105.11,
+   "coord_note": "Đặt trùng Đạm Cà Mau (dùng urê nóng chảy tại chỗ)",
+   "region": "Tây Nam Bộ",
+   "products": [
+    {
+     "product": "NPK",
+     "capacity_kt": 300,
+     "capacity_note": "Phức hợp một hạt từ urê nóng chảy, dây chuyền ESPINDESA; chạy thử 8/2020",
+     "source": "https://tapchicongthuong.vn/pvcfc-van-hanh-thu-nghiem-du-an-phan-bon-phuc-hop-tu-urea-nong-chay-73868.htm"
+    }
+   ],
+   "technology": "NPK",
+   "feedstock": "Urê nóng chảy từ Đạm Cà Mau; DAP, kali mua ngoài",
+   "feed_supply": "Urê nóng chảy từ Nhà máy Đạm Cà Mau",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://tapchicongthuong.vn/pvcfc-van-hanh-thu-nghiem-du-an-phan-bon-phuc-hop-tu-urea-nong-chay-73868.htm",
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://tapchicongthuong.vn/pvcfc-van-hanh-thu-nghiem-du-an-phan-bon-phuc-hop-tu-urea-nong-chay-73868.htm"
+   ],
+   "period": "2020"
+  },
+  {
+   "id": "dcm_kvf",
+   "plant": "Nhà máy NPK Hàn – Việt (KVF)",
+   "owner": "Công ty TNHH Phân bón Hàn – Việt (100% PVCFC)",
+   "ticker": "DCM",
+   "listed": true,
+   "province_current": "TP. Hồ Chí Minh",
+   "province_old": "TP. Hồ Chí Minh",
+   "location": "KCN Hiệp Phước, Nhà Bè",
+   "lat": 10.62,
+   "lon": 106.76,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Đông Nam Bộ",
+   "products": [
+    {
+     "product": "NPK",
+     "capacity_kt": 360,
+     "capacity_note": "Công suất thiết kế; vận hành từ 12/2017; PVCFC tiếp nhận 4/2024",
+     "source": "https://tapchicongthuong.vn/phan-bon-han-viet-chinh-thuc-ve-chung-nha-voi-dam-ca-mau--dcm-119049.htm"
+    }
+   ],
+   "technology": "NPK",
+   "feedstock": "Phân đơn urê, DAP, kali",
+   "feed_supply": null,
+   "feed_supply_status": "unknown",
+   "feed_supply_source": null,
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://tapchicongthuong.vn/phan-bon-han-viet-chinh-thuc-ve-chung-nha-voi-dam-ca-mau--dcm-119049.htm"
+   ],
+   "period": "2024"
+  },
+  {
+   "id": "dhb",
+   "plant": "Nhà máy Đạm Hà Bắc",
+   "owner": "CTCP Phân đạm và Hóa chất Hà Bắc",
+   "ticker": "DHB",
+   "listed": true,
+   "province_current": "Bắc Ninh",
+   "province_old": "Bắc Giang",
+   "location": "TP. Bắc Giang cũ (Thọ Xương)",
+   "lat": 21.29,
+   "lon": 106.2,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km; địa chỉ chi tiết chưa xác minh từ nguồn đã mở",
+   "region": "Bắc",
+   "products": [
+    {
+     "product": "Urê",
+     "capacity_kt": 500,
+     "capacity_note": "Sau cải tạo mở rộng (khánh thành 6/2015): dây chuyền mới 320 + cũ 180",
+     "source": "https://tapchicongthuong.vn/khanh-thanh-du-an-dau-tu-xay-dung-cong-trinh-cai-tao--mo-rong-dam-ha-bac-41807.htm"
+    },
+    {
+     "product": "Amoniac",
+     "capacity_kt": 300,
+     "capacity_note": "NH3 trung gian: mới 192 + cũ 108",
+     "source": "https://tapchicongthuong.vn/khanh-thanh-du-an-dau-tu-xay-dung-cong-trinh-cai-tao--mo-rong-dam-ha-bac-41807.htm"
+    }
+   ],
+   "technology": "Urê từ than",
+   "feedstock": "Than cám 4a.1, 5a.1 (khí hóa than)",
+   "feed_supply": "Than TKV (hợp đồng mua bán than 2016–2017)",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://viettimes.vn/tkv-se-hiep-thuong-gia-ban-than-cho-san-xuat-phan-bon-post45671.html",
+   "cost_mechanism": "Giá than cho sản xuất phân bón do TKV và Vinachem hiệp thương (2017)",
+   "cost_mechanism_source": "https://viettimes.vn/tkv-se-hiep-thuong-gia-ban-than-cho-san-xuat-phan-bon-post45671.html",
+   "output_note": "2025: 396.522 tấn urê quy đổi (88% kế hoạch)",
+   "sources": [
+    "https://tapchicongthuong.vn/khanh-thanh-du-an-dau-tu-xay-dung-cong-trinh-cai-tao--mo-rong-dam-ha-bac-41807.htm",
+    "https://tapchicongthuong.vn/dam-ha-bac--dong-bo-giai-phap--nang-cao-hieu-qua-su-dung-nang-luong-548581.htm",
+    "https://viettimes.vn/tkv-se-hiep-thuong-gia-ban-than-cho-san-xuat-phan-bon-post45671.html"
+   ],
+   "period": "2015"
+  },
+  {
+   "id": "dnb",
+   "plant": "Nhà máy Đạm Ninh Bình",
+   "owner": "Công ty TNHH MTV Đạm Ninh Bình (Vinachem)",
+   "ticker": null,
+   "listed": false,
+   "province_current": "Ninh Bình",
+   "province_old": "Ninh Bình",
+   "location": "KCN Khánh Phú (trước là Ninh Phúc)",
+   "lat": 20.22,
+   "lon": 106.03,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Bắc",
+   "products": [
+    {
+     "product": "Urê",
+     "capacity_kt": 560,
+     "capacity_note": "Công suất thiết kế 560 nghìn t/năm",
+     "source": "https://tapchicongthuong.vn/dam-ninh-binh--15-nam-kien-tao-gia-tri-xanh-567046.htm"
+    }
+   ],
+   "technology": "Urê từ than",
+   "feedstock": "Than cám (khí hóa Shell, tổng hợp NH3 Topsoe)",
+   "feed_supply": "Than TKV (hợp đồng mua bán than 2016–2017)",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://viettimes.vn/tkv-se-hiep-thuong-gia-ban-than-cho-san-xuat-phan-bon-post45671.html",
+   "cost_mechanism": "Giá than do TKV và Vinachem hiệp thương (2017)",
+   "cost_mechanism_source": "https://viettimes.vn/tkv-se-hiep-thuong-gia-ban-than-cho-san-xuat-phan-bon-post45671.html",
+   "output_note": "2025: >516 nghìn tấn urê (vượt KH 11%); 2020–2025: 2,59 triệu tấn",
+   "sources": [
+    "https://tapchicongthuong.vn/dam-ninh-binh--15-nam-kien-tao-gia-tri-xanh-567046.htm",
+    "https://viettimes.vn/tkv-se-hiep-thuong-gia-ban-than-cho-san-xuat-phan-bon-post45671.html"
+   ],
+   "period": "2026 (bài)",
+   "short": "Đạm Ninh Bình"
+  },
+  {
+   "id": "ddv",
+   "plant": "Nhà máy DAP Đình Vũ",
+   "owner": "CTCP DAP – Vinachem",
+   "ticker": "DDV",
+   "listed": true,
+   "province_current": "Hải Phòng",
+   "province_old": "Hải Phòng",
+   "location": "KCN Đình Vũ",
+   "lat": 20.84,
+   "lon": 106.77,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Bắc",
+   "products": [
+    {
+     "product": "DAP",
+     "capacity_kt": 330,
+     "capacity_note": "Công suất thiết kế",
+     "source": "https://www.vndirect.com.vn/cmsupload/beta/DDV_BCCapnhat_20250812.pdf"
+    }
+   ],
+   "technology": "DAP/MAP",
+   "feedstock": "Quặng apatit, lưu huỳnh, NH3, than",
+   "feed_supply": "Quặng apatit tuyển từ Apatit Việt Nam (~574 tỷ đồng năm 2025); có nhập khẩu bổ sung",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://stockbiz.vn/tin-tuc/dgc-tai-sao-cung-quang-apatit-hoa-chat-duc-giang-lai-gap-3-lan-cac-cong-ty-phan-bon/38956636",
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": "Tiêu thụ DAP 6T2025: 146.016 tấn; VNDirect dự báo cả 2025: 268.202 tấn",
+   "sources": [
+    "https://www.vndirect.com.vn/cmsupload/beta/DDV_BCCapnhat_20250812.pdf",
+    "https://stockbiz.vn/tin-tuc/dgc-tai-sao-cung-quang-apatit-hoa-chat-duc-giang-lai-gap-3-lan-cac-cong-ty-phan-bon/38956636",
+    "https://tapchicongthuong.vn/san-xuat-phan-bon-chua-lan-co-nguy-co--phai-dong-cua-do-thieu-quang-apatit-83761.htm"
+   ],
+   "period": "2025"
+  },
+  {
+   "id": "dap2",
+   "plant": "Nhà máy DAP số 2 (Lào Cai)",
+   "owner": "CTCP DAP số 2 – Vinachem",
+   "ticker": null,
+   "listed": false,
+   "province_current": "Lào Cai",
+   "province_old": "Lào Cai",
+   "location": "KCN Tằng Loỏng, Bảo Thắng",
+   "lat": 22.3,
+   "lon": 104.12,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Trung du & miền núi phía Bắc",
+   "products": [
+    {
+     "product": "DAP",
+     "capacity_kt": 330,
+     "capacity_note": "Công suất kế hoạch; khánh thành 28/12/2014",
+     "source": "https://bizhub.vietnamnews.vn/dap-fertilizer-plant-inaugurated-in-lao-cai-post9271.html"
+    }
+   ],
+   "technology": "DAP/MAP",
+   "feedstock": "Quặng apatit Lào Cai, lưu huỳnh, NH3",
+   "feed_supply": "Quặng tuyển nhận trực tiếp từ nhà máy tuyển Tằng Loỏng (Apatit Việt Nam)",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://tapchicongthuong.vn/san-xuat-phan-bon-chua-lan-co-nguy-co--phai-dong-cua-do-thieu-quang-apatit-83761.htm",
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": "Ước >200 nghìn tấn DAP/năm (ước tính báo chí, không có BCTC)",
+   "sources": [
+    "https://bizhub.vietnamnews.vn/dap-fertilizer-plant-inaugurated-in-lao-cai-post9271.html",
+    "https://tapchicongthuong.vn/san-xuat-phan-bon-chua-lan-co-nguy-co--phai-dong-cua-do-thieu-quang-apatit-83761.htm",
+    "https://stockbiz.vn/tin-tuc/dgc-tai-sao-cung-quang-apatit-hoa-chat-duc-giang-lai-gap-3-lan-cac-cong-ty-phan-bon/38956636"
+   ],
+   "period": "2014",
+   "short": "DAP số 2"
+  },
+  {
+   "id": "las_lamthao",
+   "plant": "Nhà máy Supe phốt phát Lâm Thao",
+   "owner": "CTCP Supe phốt phát và Hóa chất Lâm Thao",
+   "ticker": "LAS",
+   "listed": true,
+   "province_current": "Phú Thọ",
+   "province_old": "Phú Thọ",
+   "location": "Lâm Thao",
+   "lat": 21.32,
+   "lon": 105.29,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Trung du & miền núi phía Bắc",
+   "products": [
+    {
+     "product": "Supe lân",
+     "capacity_kt": 750,
+     "capacity_note": "Tổng supe lân sau mở rộng 1999–2004",
+     "source": "https://static2.vietstock.vn/vietstock/2018/4/13/1.LAS_2018.4.13_822bb92_LAS_Bao_cao_TN_2017.pdf"
+    },
+    {
+     "product": "Axit sulfuric",
+     "capacity_kt": 250,
+     "capacity_note": "Sau mở rộng 1999–2004",
+     "source": "https://static2.vietstock.vn/vietstock/2018/4/13/1.LAS_2018.4.13_822bb92_LAS_Bao_cao_TN_2017.pdf"
+    },
+    {
+     "product": "NPK",
+     "capacity_kt": 600,
+     "capacity_note": "Suy ra: tổng 600 (gồm Hải Dương 150) + NPK số 4 150 (2018); chưa có số theo site",
+     "source": "https://static2.vietstock.vn/vietstock/2018/4/13/1.LAS_2018.4.13_822bb92_LAS_Bao_cao_TN_2017.pdf"
+    },
+    {
+     "product": "Lân nung chảy",
+     "capacity_kt": 300,
+     "capacity_note": "Dây chuyền đầu tư năm 2010",
+     "source": "https://static2.vietstock.vn/vietstock/2018/4/13/1.LAS_2018.4.13_822bb92_LAS_Bao_cao_TN_2017.pdf"
+    },
+    {
+     "product": "Khác",
+     "capacity_kt": 20,
+     "capacity_note": "Kali sulphat (SOP) khánh thành 7/5/2026; kèm HCl 24 nghìn t/năm",
+     "source": "https://tapchicongthuong.vn/lam-chu-cong-nghe-sop-hien-dai--supe-lam-thao-mo-rong-he-sinh-thai-phan-bon-chat-luong-cao-516208.htm"
+    }
+   ],
+   "technology": "Supe lân",
+   "feedstock": "Quặng apatit, lưu huỳnh (tự sản xuất H2SO4)",
+   "feed_supply": "Quặng apatit tuyển từ Apatit Việt Nam (~552 tỷ đồng năm 2025)",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://stockbiz.vn/tin-tuc/dgc-tai-sao-cung-quang-apatit-hoa-chat-duc-giang-lai-gap-3-lan-cac-cong-ty-phan-bon/38956636",
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://static2.vietstock.vn/vietstock/2018/4/13/1.LAS_2018.4.13_822bb92_LAS_Bao_cao_TN_2017.pdf",
+    "https://tapchicongthuong.vn/lam-chu-cong-nghe-sop-hien-dai--supe-lam-thao-mo-rong-he-sinh-thai-phan-bon-chat-luong-cao-516208.htm",
+    "https://stockbiz.vn/tin-tuc/dgc-tai-sao-cung-quang-apatit-hoa-chat-duc-giang-lai-gap-3-lan-cac-cong-ty-phan-bon/38956636",
+    "https://tapchicongthuong.vn/san-xuat-phan-bon-chua-lan-co-nguy-co--phai-dong-cua-do-thieu-quang-apatit-83761.htm"
+   ],
+   "period": "2017 (BCTN)"
+  },
+  {
+   "id": "las_haiduong",
+   "plant": "Xí nghiệp Phân bón và Hóa chất Hải Dương (chi nhánh LAS)",
+   "owner": "CTCP Supe phốt phát và Hóa chất Lâm Thao",
+   "ticker": "LAS",
+   "listed": true,
+   "province_current": "Hải Phòng",
+   "province_old": "Hải Dương",
+   "location": "Cẩm Giàng",
+   "lat": 20.96,
+   "lon": 106.21,
+   "coord_note": "Ước theo trung tâm huyện Cẩm Giàng cũ; vị trí nhà máy chưa xác minh",
+   "region": "Bắc",
+   "products": [
+    {
+     "product": "NPK",
+     "capacity_kt": 150,
+     "capacity_note": "Dây chuyền đầu tư năm 2003",
+     "source": "https://static2.vietstock.vn/vietstock/2018/4/13/1.LAS_2018.4.13_822bb92_LAS_Bao_cao_TN_2017.pdf"
+    }
+   ],
+   "technology": "NPK",
+   "feedstock": "Supe lân, urê, kali",
+   "feed_supply": null,
+   "feed_supply_status": "unknown",
+   "feed_supply_source": null,
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://static2.vietstock.vn/vietstock/2018/4/13/1.LAS_2018.4.13_822bb92_LAS_Bao_cao_TN_2017.pdf"
+   ],
+   "period": "2017 (BCTN)"
+  },
+  {
+   "id": "sfg_longthanh",
+   "plant": "Nhà máy Super Phốt phát Long Thành",
+   "owner": "CTCP Phân bón Miền Nam",
+   "ticker": "SFG",
+   "listed": true,
+   "province_current": "Đồng Nai",
+   "province_old": "Đồng Nai",
+   "location": "KCN Gò Dầu, Long Thành",
+   "lat": 10.67,
+   "lon": 107.02,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Đông Nam Bộ",
+   "products": [
+    {
+     "product": "Supe lân",
+     "capacity_kt": 200,
+     "capacity_note": "Nâng lên 200 nghìn t/năm sau dây chuyền axit 2 (2005)",
+     "source": "https://tapchicongthuong.vn/cong-ty-cp-phan-bon-mien-nam--50-nam-tu-hao-truyen-thong--vung-buoc-tuong-lai-510897.htm"
+    },
+    {
+     "product": "Axit sulfuric",
+     "capacity_kt": 80,
+     "capacity_note": "Sau dây chuyền axit thứ hai (2005)",
+     "source": "https://tapchicongthuong.vn/cong-ty-cp-phan-bon-mien-nam--50-nam-tu-hao-truyen-thong--vung-buoc-tuong-lai-510897.htm"
+    },
+    {
+     "product": "NPK",
+     "capacity_kt": null,
+     "capacity_note": "Có sản xuất NPK; công suất chưa xác minh từ nguồn đã mở",
+     "source": "https://tapchicongthuong.vn/cong-ty-cp-phan-bon-mien-nam--50-nam-tu-hao-truyen-thong--vung-buoc-tuong-lai-510897.htm"
+    }
+   ],
+   "technology": "Supe lân",
+   "feedstock": "Quặng apatit, lưu huỳnh",
+   "feed_supply": null,
+   "feed_supply_status": "unknown",
+   "feed_supply_source": null,
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://tapchicongthuong.vn/cong-ty-cp-phan-bon-mien-nam--50-nam-tu-hao-truyen-thong--vung-buoc-tuong-lai-510897.htm"
+   ],
+   "period": "2026 (bài)"
+  },
+  {
+   "id": "sfg_hiepphuoc",
+   "plant": "Nhà máy Phân bón Hiệp Phước",
+   "owner": "CTCP Phân bón Miền Nam",
+   "ticker": "SFG",
+   "listed": true,
+   "province_current": "TP. Hồ Chí Minh",
+   "province_old": "TP. Hồ Chí Minh",
+   "location": "Lô B2, Khu B, KCN Hiệp Phước, Nhà Bè",
+   "lat": 10.62,
+   "lon": 106.75,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Đông Nam Bộ",
+   "products": [
+    {
+     "product": "NPK",
+     "capacity_kt": 100,
+     "capacity_note": "Chỉ dây chuyền hơi nước thùng quay quyết toán 2023; tổng nhà máy chưa rõ",
+     "source": "https://static2.vietstock.vn/vietstock/2024/3/28/20240328_20240327___sfg___bao_cao_thuong_nien_nam_2023.pdf"
+    }
+   ],
+   "technology": "NPK",
+   "feedstock": "Urê, DAP/supe lân, kali",
+   "feed_supply": null,
+   "feed_supply_status": "unknown",
+   "feed_supply_source": null,
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://static2.vietstock.vn/vietstock/2024/3/28/20240328_20240327___sfg___bao_cao_thuong_nien_nam_2023.pdf"
+   ],
+   "period": "2023"
+  },
+  {
+   "id": "sfg_cuulong",
+   "plant": "Nhà máy Phân bón Cửu Long",
+   "owner": "CTCP Phân bón Miền Nam",
+   "ticker": "SFG",
+   "listed": true,
+   "province_current": "Vĩnh Long",
+   "province_old": "Vĩnh Long",
+   "location": "405 QL1A, P. Tân Hòa, TP Vĩnh Long cũ",
+   "lat": 10.24,
+   "lon": 105.97,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Tây Nam Bộ",
+   "products": [
+    {
+     "product": "NPK",
+     "capacity_kt": null,
+     "capacity_note": "Công suất chưa công bố trong nguồn đã mở",
+     "source": "https://static2.vietstock.vn/vietstock/2024/3/28/20240328_20240327___sfg___bao_cao_thuong_nien_nam_2023.pdf"
+    }
+   ],
+   "technology": "NPK",
+   "feedstock": "Phân đơn",
+   "feed_supply": null,
+   "feed_supply_status": "unknown",
+   "feed_supply_source": null,
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://static2.vietstock.vn/vietstock/2024/3/28/20240328_20240327___sfg___bao_cao_thuong_nien_nam_2023.pdf"
+   ],
+   "period": "2023"
+  },
+  {
+   "id": "vaf",
+   "plant": "Nhà máy Phân lân nung chảy Văn Điển",
+   "owner": "CTCP Phân lân nung chảy Văn Điển",
+   "ticker": "VAF",
+   "listed": true,
+   "province_current": "Hà Nội",
+   "province_old": "Hà Nội",
+   "location": "Văn Điển, Thanh Trì",
+   "lat": 20.95,
+   "lon": 105.84,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Bắc",
+   "products": [
+    {
+     "product": "Lân nung chảy",
+     "capacity_kt": 300,
+     "capacity_note": "Tổng công suất công ty 450 nghìn t/năm",
+     "source": "https://tapchicongthuong.vn/phan-lan-van-dien--di-dau-trong-doi-moi-khoa-hoc-cong-nghe-phuc-vu-nong-nghiep-xanh-45045.htm"
+    },
+    {
+     "product": "NPK",
+     "capacity_kt": 150,
+     "capacity_note": "",
+     "source": "https://tapchicongthuong.vn/phan-lan-van-dien--di-dau-trong-doi-moi-khoa-hoc-cong-nghe-phuc-vu-nong-nghiep-xanh-45045.htm"
+    }
+   ],
+   "technology": "Lân nung chảy",
+   "feedstock": "Quặng apatit (loại 2), than antraxit thay than cốc",
+   "feed_supply": "Apatit từ Apatit Việt Nam (~191 tỷ đồng 2025); than TKV (hợp đồng 2016–2017)",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://stockbiz.vn/tin-tuc/dgc-tai-sao-cung-quang-apatit-hoa-chat-duc-giang-lai-gap-3-lan-cac-cong-ty-phan-bon/38956636",
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://tapchicongthuong.vn/phan-lan-van-dien--di-dau-trong-doi-moi-khoa-hoc-cong-nghe-phuc-vu-nong-nghiep-xanh-45045.htm",
+    "https://stockbiz.vn/tin-tuc/dgc-tai-sao-cung-quang-apatit-hoa-chat-duc-giang-lai-gap-3-lan-cac-cong-ty-phan-bon/38956636",
+    "https://viettimes.vn/tkv-se-hiep-thuong-gia-ban-than-cho-san-xuat-phan-bon-post45671.html"
+   ],
+   "period": "2016"
+  },
+  {
+   "id": "nfc",
+   "plant": "Nhà máy Phân lân Ninh Bình",
+   "owner": "CTCP Phân lân Ninh Bình (NIFERCO)",
+   "ticker": "NFC",
+   "listed": true,
+   "province_current": "Ninh Bình",
+   "province_old": "Ninh Bình",
+   "location": "Xã Ninh An, Hoa Lư; cạnh QL1A, ~6 km nam TP Ninh Bình",
+   "lat": 20.21,
+   "lon": 105.96,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Bắc",
+   "products": [
+    {
+     "product": "Lân nung chảy",
+     "capacity_kt": 300,
+     "capacity_note": "",
+     "source": "https://vneconomy.vn/cong-ty-co-phan-phan-lan-ninh-binh-niferco.htm"
+    },
+    {
+     "product": "NPK",
+     "capacity_kt": 150,
+     "capacity_note": "Nguồn 2012; nguồn khác (chưa mở) ghi 200 nghìn",
+     "source": "https://vneconomy.vn/cong-ty-co-phan-phan-lan-ninh-binh-niferco.htm"
+    }
+   ],
+   "technology": "Lân nung chảy",
+   "feedstock": "Quặng apatit, serpentin, than",
+   "feed_supply": "Apatit từ Apatit Việt Nam (~179 tỷ đồng 'năm qua'); than TKV (hợp đồng 2016–2017)",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://stockbiz.vn/tin-tuc/dgc-tai-sao-cung-quang-apatit-hoa-chat-duc-giang-lai-gap-3-lan-cac-cong-ty-phan-bon/38956636",
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://vneconomy.vn/cong-ty-co-phan-phan-lan-ninh-binh-niferco.htm",
+    "https://stockbiz.vn/tin-tuc/dgc-tai-sao-cung-quang-apatit-hoa-chat-duc-giang-lai-gap-3-lan-cac-cong-ty-phan-bon/38956636",
+    "https://viettimes.vn/tkv-se-hiep-thuong-gia-ban-than-cho-san-xuat-phan-bon-post45671.html"
+   ],
+   "period": "2012"
+  },
+  {
+   "id": "bfc_longan",
+   "plant": "Nhà máy Phân bón Bình Điền – Long An",
+   "owner": "CTCP Phân bón Bình Điền (nhà máy trực thuộc)",
+   "ticker": "BFC",
+   "listed": true,
+   "province_current": "Tây Ninh",
+   "province_old": "Long An",
+   "location": "Long An (địa chỉ cụ thể chưa xác minh)",
+   "lat": 10.63,
+   "lon": 106.48,
+   "coord_note": "Ước gần Bến Lức (BCTN: nước thải ra sông Vàm Cỏ Đông); CHƯA xác minh",
+   "region": "Đông Nam Bộ",
+   "products": [
+    {
+     "product": "NPK",
+     "capacity_kt": 500,
+     "capacity_note": "CSTK theo bảng FPTS 10/2018; hoạt động từ 1973",
+     "source": "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf"
+    }
+   ],
+   "technology": "NPK",
+   "feedstock": "Urê, DAP, kali mua ngoài (~80% chi phí sản xuất)",
+   "feed_supply": "Cấp công ty: urê từ Đạm Cà Mau, Đạm Ninh Bình; DAP từ DAP-Vinachem, DAP Lào Cai (FPTS 2018)",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf",
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf",
+    "https://static2.vietstock.vn/vietstock/2025/3/31/20250331_20250331___bfc___bao_cao_thuong_nien_nam_2024.pdf"
+   ],
+   "period": "2018"
+  },
+  {
+   "id": "bfc_ninhbinh",
+   "plant": "Nhà máy Bình Điền – Ninh Bình",
+   "owner": "CTCP Bình Điền Ninh Bình (BFC 51%)",
+   "ticker": "BFC",
+   "listed": true,
+   "province_current": "Ninh Bình",
+   "province_old": "Ninh Bình",
+   "location": "KCN Khánh Phú, Yên Khánh",
+   "lat": 20.22,
+   "lon": 106.04,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Bắc",
+   "products": [
+    {
+     "product": "NPK",
+     "capacity_kt": 200,
+     "capacity_note": "CSTK theo bảng FPTS 10/2018; hoạt động từ 2015",
+     "source": "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf"
+    }
+   ],
+   "technology": "NPK",
+   "feedstock": "Urê, DAP, kali mua ngoài (~80% chi phí sản xuất)",
+   "feed_supply": "Cấp công ty: urê từ Đạm Cà Mau, Đạm Ninh Bình; DAP từ DAP-Vinachem, DAP Lào Cai (FPTS 2018)",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf",
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf",
+    "https://static2.vietstock.vn/vietstock/2025/3/31/20250331_20250331___bfc___bao_cao_thuong_nien_nam_2024.pdf"
+   ],
+   "period": "2018"
+  },
+  {
+   "id": "bfc_lamdong",
+   "plant": "Nhà máy Bình Điền – Lâm Đồng",
+   "owner": "CTCP Bình Điền Lâm Đồng (BFC 51%)",
+   "ticker": "BFC",
+   "listed": true,
+   "province_current": "Lâm Đồng",
+   "province_old": "Lâm Đồng",
+   "location": "QL20, xã Hiệp Thạnh, Đức Trọng",
+   "lat": 11.73,
+   "lon": 108.37,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Tây Nguyên",
+   "products": [
+    {
+     "product": "NPK",
+     "capacity_kt": 100,
+     "capacity_note": "CSTK theo bảng FPTS 10/2018; hoạt động từ 1997",
+     "source": "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf"
+    }
+   ],
+   "technology": "NPK",
+   "feedstock": "Urê, DAP, kali mua ngoài (~80% chi phí sản xuất)",
+   "feed_supply": "Cấp công ty: urê từ Đạm Cà Mau, Đạm Ninh Bình; DAP từ DAP-Vinachem, DAP Lào Cai (FPTS 2018)",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf",
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf",
+    "https://static2.vietstock.vn/vietstock/2025/3/31/20250331_20250331___bfc___bao_cao_thuong_nien_nam_2024.pdf"
+   ],
+   "period": "2018"
+  },
+  {
+   "id": "bfc_quangtri",
+   "plant": "Nhà máy Bình Điền – Quảng Trị",
+   "owner": "CTCP Bình Điền Quảng Trị (BFC 51%)",
+   "ticker": "BFC",
+   "listed": true,
+   "province_current": "Quảng Trị",
+   "province_old": "Quảng Trị",
+   "location": "Lô 22 KCN Quán Ngang, Gio Linh",
+   "lat": 16.9,
+   "lon": 107.1,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Bắc Trung Bộ",
+   "products": [
+    {
+     "product": "NPK",
+     "capacity_kt": 75,
+     "capacity_note": "CSTK theo bảng FPTS 10/2018; hoạt động từ 2007",
+     "source": "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf"
+    }
+   ],
+   "technology": "NPK",
+   "feedstock": "Urê, DAP, kali mua ngoài (~80% chi phí sản xuất)",
+   "feed_supply": "Cấp công ty: urê từ Đạm Cà Mau, Đạm Ninh Bình; DAP từ DAP-Vinachem, DAP Lào Cai (FPTS 2018)",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf",
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf",
+    "https://static2.vietstock.vn/vietstock/2025/3/31/20250331_20250331___bfc___bao_cao_thuong_nien_nam_2024.pdf"
+   ],
+   "period": "2018"
+  },
+  {
+   "id": "bfc_mekong",
+   "plant": "Nhà máy Bình Điền – Mekong",
+   "owner": "CTCP Bình Điền Mekong (BFC 51%)",
+   "ticker": "BFC",
+   "listed": true,
+   "province_current": "Tây Ninh",
+   "province_old": "Tây Ninh",
+   "location": "Lô A10.1 KCN Thành Thành Công, Trảng Bàng",
+   "lat": 11.03,
+   "lon": 106.37,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Đông Nam Bộ",
+   "products": [
+    {
+     "product": "NPK",
+     "capacity_kt": 100,
+     "capacity_note": "CSTK theo bảng FPTS 10/2018; hoạt động từ 2005",
+     "source": "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf"
+    }
+   ],
+   "technology": "NPK",
+   "feedstock": "Urê, DAP, kali mua ngoài (~80% chi phí sản xuất)",
+   "feed_supply": "Cấp công ty: urê từ Đạm Cà Mau, Đạm Ninh Bình; DAP từ DAP-Vinachem, DAP Lào Cai (FPTS 2018)",
+   "feed_supply_status": "verified",
+   "feed_supply_source": "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf",
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://static1.vietstock.vn/edocs/6238/BFC_20181008_FTS.pdf",
+    "https://static2.vietstock.vn/vietstock/2025/3/31/20250331_20250331___bfc___bao_cao_thuong_nien_nam_2024.pdf"
+   ],
+   "period": "2018"
+  },
+  {
+   "id": "jvf",
+   "plant": "Nhà máy Phân bón Việt Nhật (JVF)",
+   "owner": "Công ty Phân bón Việt Nhật (100% vốn Nhật)",
+   "ticker": null,
+   "listed": false,
+   "province_current": "Đồng Nai",
+   "province_old": "Đồng Nai",
+   "location": "KCN Gò Dầu, xã Phước Thái, Long Thành",
+   "lat": 10.67,
+   "lon": 107.03,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Đông Nam Bộ",
+   "products": [
+    {
+     "product": "NPK",
+     "capacity_kt": null,
+     "capacity_note": "Không nêu công suất; hoạt động từ 1998, lũy kế >5 triệu tấn NPK",
+     "source": "https://thuonghieucongluan.com.vn/cong-ty-phan-bon-viet-nhat-jvf-25-nam-dong-hanh-va-phat-trien-cung-nen-nong-nghiep-viet-nam-a197127.html"
+    }
+   ],
+   "technology": "NPK",
+   "feedstock": "Phân đơn",
+   "feed_supply": null,
+   "feed_supply_status": "unknown",
+   "feed_supply_source": null,
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://thuonghieucongluan.com.vn/cong-ty-phan-bon-viet-nhat-jvf-25-nam-dong-hanh-va-phat-trien-cung-nen-nong-nghiep-viet-nam-a197127.html"
+   ],
+   "period": "2023",
+   "short": "JVF"
+  },
+  {
+   "id": "baconco",
+   "plant": "Nhà máy Baconco",
+   "owner": "Công ty TNHH Baconco",
+   "ticker": null,
+   "listed": false,
+   "province_current": "TP. Hồ Chí Minh",
+   "province_old": "Bà Rịa – Vũng Tàu",
+   "location": "Phú Mỹ, cạnh cảng Baria Serece",
+   "lat": 10.58,
+   "lon": 107.03,
+   "coord_note": "Ước lượng thủ công theo vị trí KCN/xã đã biết, sai số vài km",
+   "region": "Đông Nam Bộ",
+   "products": [
+    {
+     "product": "NPK",
+     "capacity_kt": null,
+     "capacity_note": "Trang công ty ghi '200.000t NPK' nhưng không rõ là tấn/năm",
+     "source": "https://wp.baconco.aesirx.io/en/about-us/our-factory/"
+    }
+   ],
+   "technology": "NPK",
+   "feedstock": "Phân đơn",
+   "feed_supply": null,
+   "feed_supply_status": "unknown",
+   "feed_supply_source": null,
+   "cost_mechanism": null,
+   "cost_mechanism_source": null,
+   "output_note": null,
+   "sources": [
+    "https://wp.baconco.aesirx.io/en/about-us/our-factory/"
+   ],
+   "period": null,
+   "short": "Baconco"
+  }
+ ],
+ "raw_regions": [
+  {
+   "id": "apatit_laocai",
+   "name": "Mỏ & tuyển apatit Lào Cai (Apatit Việt Nam)",
+   "lat": 22.4,
+   "lon": 104.05,
+   "material": "Quặng apatit",
+   "note": "Đơn vị duy nhất trong nước SX quặng apatit tuyển; nhà máy tuyển Tằng Loỏng",
+   "source": "https://tapchicongthuong.vn/san-xuat-phan-bon-chua-lan-co-nguy-co--phai-dong-cua-do-thieu-quang-apatit-83761.htm",
+   "material_key": "apatit",
+   "short": "Apatit Lào Cai"
+  },
+  {
+   "id": "than_tkv",
+   "name": "Than TKV (chủ yếu Quảng Ninh)",
+   "lat": 21.02,
+   "lon": 107.25,
+   "material": "Than cám, than antraxit",
+   "note": "Tọa độ đại diện vùng Hạ Long–Cẩm Phả; nguồn không nêu mỏ cụ thể",
+   "source": "https://viettimes.vn/tkv-se-hiep-thuong-gia-ban-than-cho-san-xuat-phan-bon-post45671.html",
+   "material_key": "coal",
+   "short": "Than TKV (Quảng Ninh)"
+  },
+  {
+   "id": "khi_dnb",
+   "name": "Khí Đông Nam Bộ: Bạch Hổ–Rạng Đông, Cửu Long, Nam Côn Sơn → Phú Mỹ",
+   "lat": 9.75,
+   "lon": 107.98,
+   "material": "Khí thiên nhiên",
+   "note": "Tọa độ ước tại vùng mỏ Bạch Hổ; khí về bờ tại trung tâm Phú Mỹ",
+   "source": "https://petrovietnam.vn/DataStore/Documents/2023/Hoinghi%20khau%20sau/3.%20PVFCCo%20Tham%20luan%20Hoi%20nghi%20Thuc%20day%20SXKD%20.pdf",
+   "material_key": "gas",
+   "short": "Khí Đông Nam Bộ"
+  },
+  {
+   "id": "khi_pm3",
+   "name": "Khí PM3-CAA → đường ống PM3–Cà Mau",
+   "lat": 7.1,
+   "lon": 103.4,
+   "material": "Khí thiên nhiên",
+   "note": "Vùng thỏa thuận thương mại Việt Nam–Malaysia; tọa độ ước",
+   "source": "https://petrovietnam.vn/DataStore/Documents/2023/Hoinghi%20khau%20sau/2.%20PVCFC%20Tham%20luan%20HN%20giai%20phap%20khau%20sau%202023.pdf",
+   "material_key": "gas",
+   "short": "Khí PM3-CAA"
+  },
+  {
+   "id": "khi_lob",
+   "name": "Khí Lô B – Ô Môn (Tây Nam Bộ)",
+   "lat": 8.3,
+   "lon": 103.6,
+   "material": "Khí thiên nhiên",
+   "note": "Chưa có bằng chứng cấp khí cho Đạm Cà Mau; tọa độ ước",
+   "source": null,
+   "material_key": "gas",
+   "short": "Khí Lô B"
+  }
+ ],
+ "links": [
+  {
+   "from": "khi_dnb",
+   "to": "dpm_phumy",
+   "what": "Khí nguyên liệu (BH–RĐ, bù Nam Côn Sơn, Cửu Long)",
+   "source": "https://petrovietnam.vn/DataStore/Documents/2023/Hoinghi%20khau%20sau/3.%20PVFCCo%20Tham%20luan%20Hoi%20nghi%20Thuc%20day%20SXKD%20.pdf"
+  },
+  {
+   "from": "khi_pm3",
+   "to": "dcm_camau",
+   "what": "Khí PM3-CAA qua ống PM3–Cà Mau",
+   "source": "https://petrovietnam.vn/DataStore/Documents/2023/Hoinghi%20khau%20sau/2.%20PVCFC%20Tham%20luan%20HN%20giai%20phap%20khau%20sau%202023.pdf"
+  },
+  {
+   "from": "than_tkv",
+   "to": "dhb",
+   "what": "Than (hợp đồng TKV 2016–2017)",
+   "source": "https://viettimes.vn/tkv-se-hiep-thuong-gia-ban-than-cho-san-xuat-phan-bon-post45671.html"
+  },
+  {
+   "from": "than_tkv",
+   "to": "dnb",
+   "what": "Than (hợp đồng TKV 2016–2017)",
+   "source": "https://viettimes.vn/tkv-se-hiep-thuong-gia-ban-than-cho-san-xuat-phan-bon-post45671.html"
+  },
+  {
+   "from": "than_tkv",
+   "to": "vaf",
+   "what": "Than (hợp đồng TKV 2016–2017)",
+   "source": "https://viettimes.vn/tkv-se-hiep-thuong-gia-ban-than-cho-san-xuat-phan-bon-post45671.html"
+  },
+  {
+   "from": "than_tkv",
+   "to": "nfc",
+   "what": "Than (hợp đồng TKV 2016–2017)",
+   "source": "https://viettimes.vn/tkv-se-hiep-thuong-gia-ban-than-cho-san-xuat-phan-bon-post45671.html"
+  },
+  {
+   "from": "apatit_laocai",
+   "to": "ddv",
+   "what": "Quặng apatit tuyển, ~574 tỷ đồng 2025",
+   "source": "https://stockbiz.vn/tin-tuc/dgc-tai-sao-cung-quang-apatit-hoa-chat-duc-giang-lai-gap-3-lan-cac-cong-ty-phan-bon/38956636"
+  },
+  {
+   "from": "apatit_laocai",
+   "to": "las_lamthao",
+   "what": "Quặng apatit tuyển, ~552 tỷ đồng 2025",
+   "source": "https://stockbiz.vn/tin-tuc/dgc-tai-sao-cung-quang-apatit-hoa-chat-duc-giang-lai-gap-3-lan-cac-cong-ty-phan-bon/38956636"
+  },
+  {
+   "from": "apatit_laocai",
+   "to": "vaf",
+   "what": "Quặng apatit, ~191 tỷ đồng 2025",
+   "source": "https://stockbiz.vn/tin-tuc/dgc-tai-sao-cung-quang-apatit-hoa-chat-duc-giang-lai-gap-3-lan-cac-cong-ty-phan-bon/38956636"
+  },
+  {
+   "from": "apatit_laocai",
+   "to": "nfc",
+   "what": "Quặng apatit, ~179 tỷ đồng",
+   "source": "https://stockbiz.vn/tin-tuc/dgc-tai-sao-cung-quang-apatit-hoa-chat-duc-giang-lai-gap-3-lan-cac-cong-ty-phan-bon/38956636"
+  },
+  {
+   "from": "apatit_laocai",
+   "to": "dap2",
+   "what": "Quặng tuyển trực tiếp từ Tằng Loỏng",
+   "source": "https://tapchicongthuong.vn/san-xuat-phan-bon-chua-lan-co-nguy-co--phai-dong-cua-do-thieu-quang-apatit-83761.htm"
+  }
+ ],
+ "gas_pricing": [
+  {
+   "company": "DPM",
+   "period": "Từ 2014",
+   "gas_source": "",
+   "mechanism": "46% giá FO Singapore bình quân tháng + chi phí vận chuyển khí (tariff)",
+   "note": "Chi phí khí: 3.001 tỷ (2014), 1.848 (2015), 1.657 (2016), 2.082 (2017); bài 7/2018",
+   "sources": [
+    "https://tapchicongthuong.vn/pvfcco-lam-ro-cac-nghi-van-cua-co-dong-54546.htm"
+   ]
+  },
+  {
+   "company": "DPM",
+   "period": "2023",
+   "gas_source": "Nguồn khí: tối đa BH–RĐ, bù Nam Côn Sơn, Cửu Long; PVFCCo đề nghị giá khí ổn định",
+   "mechanism": "Chưa có công thức; Nguồn khí: tối đa BH–RĐ, bù Nam Côn Sơn, Cửu Long; PVFCCo đề nghị giá khí ổn định",
+   "note": "Nguồn khí: tối đa BH–RĐ, bù Nam Côn Sơn, Cửu Long; PVFCCo đề nghị giá khí ổn định",
+   "sources": [
+    "https://petrovietnam.vn/DataStore/Documents/2023/Hoinghi%20khau%20sau/3.%20PVFCCo%20Tham%20luan%20Hoi%20nghi%20Thuc%20day%20SXKD%20.pdf"
+   ]
+  },
+  {
+   "company": "DCM",
+   "period": "2015–2018",
+   "gas_source": "",
+   "mechanism": "PVN điều tiết giá khí để DCM đạt ROE 12%",
+   "note": "Ghi chú VCSC 12/2014, trước IPO",
+   "sources": [
+    "https://www.vietcap.com.vn/en/research-center/dcm-non-rated-gas-input-price-set-to-guarantee-an-roe-of-12-pre-ipo"
+   ]
+  },
+  {
+   "company": "DCM",
+   "period": "Nêu 10/2023",
+   "gas_source": "",
+   "mechanism": "Khí mỏ nội địa = 46% giá HFSO; khí nhập Malaysia = 12,7% Brent (đến hết 2026)",
+   "note": "Trước đây tỷ trọng nội địa/nhập 90/10",
+   "sources": [
+    "https://tapchicongthuong.vn/dam-ca-mau--dcm-doanh-thu-quy-3-uoc-dat-9-500-ty--lai-rong-nam-2024-co-the-tang-61-112320.htm"
+   ]
+  },
+  {
+   "company": "DCM",
+   "period": "Từ 01/01/2023",
+   "gas_source": "",
+   "mechanism": "Tạm trích theo tỷ lệ 50/50 khí quyền nhận PVN và khí mua Petronas",
+   "note": "Khí Petronas ước đắt gấp đôi khí PVN (PSI, 11/2023)",
+   "sources": [
+    "https://tapchicongthuong.vn/dam-ca-mau--dcm-gia-phan-ure-tang-18--tu-day--lai-quy-4-co-the-cao-dot-bien-113501.htm"
+   ]
+  },
+  {
+   "company": "DCM",
+   "period": "2023",
+   "gas_source": "",
+   "mechanism": "Cộng cước vận chuyển (tariff) qua ống PM3–Cà Mau của PV GAS",
+   "note": "Giá khí kế hoạch 2023 tính theo dầu 70 USD/thùng",
+   "sources": [
+    "https://petrovietnam.vn/DataStore/Documents/2023/Hoinghi%20khau%20sau/2.%20PVCFC%20Tham%20luan%20HN%20giai%20phap%20khau%20sau%202023.pdf"
+   ]
+  }
+ ],
+ "consumption_norms": [
+  {
+   "plant": "dcm_camau",
+   "norm": "Tiêu hao năng lượng ròng 21,7 GJ/tấn urê (2023), giảm từ 23,7 (2013)",
+   "unit": "GJ/tấn urê",
+   "source": "https://www.vcci.com.vn/tin-tuc/nha-may-thong-minh-dau-tien-cua-petrovietnam-dau-an-dam-net-chuyen-doi-so"
+  }
+ ],
+ "gaps": [
+  "Định mức khí (MMBtu/tấn urê) của DPM và DCM: chưa tìm được số công bố",
+  "Định mức than/tấn urê của Đạm Hà Bắc, Đạm Ninh Bình: chưa có",
+  "Công suất amoniac Đạm Phú Mỹ: chỉ có dự án nâng lên 540 nghìn t (2015), chưa xác minh hoàn thành",
+  "Công thức giá khí DPM trước 2014 và sau 2018 chưa xác minh từ nguồn gốc",
+  "DCM: ACBS 10/2023 nói áp dụng 'cơ chế giá khí mới' – chi tiết chưa mở; một kết quả tìm kiếm ghi Brent 12,7% đến 7/2023, bài đã mở ghi đến hết 2026",
+  "Hợp đồng TKV cấp than chỉ có bằng chứng 2016–2017; chưa xác minh hợp đồng hiện hành",
+  "Supe Lâm Thao: số liệu theo BCTN 2017; công suất 2024–2025 và chia NPK theo site chưa xác minh",
+  "SFG: công suất NPK Long Thành, tổng NPK Hiệp Phước, Cửu Long chưa xác minh; nguồn apatit cho Long Thành chưa xác minh",
+  "BFC: công suất theo FPTS 2018; địa chỉ nhà máy Long An chưa xác minh; nhà máy Long Hậu (Cần Giuộc, 100 nghìn t, 2018) chưa rõ thuộc BFC",
+  "NFC: NPK 150 (2012) vs 200 nghìn t (nguồn khác chưa mở)",
+  "VAF: dự án nhà máy Bỉm Sơn (Thanh Hóa) chưa xác minh trạng thái",
+  "JVF, Baconco: chưa có công suất tấn/năm từ nguồn đã mở",
+  "DAP số 2: mã chứng khoán/niêm yết chưa xác minh; sản lượng chỉ là ước tính báo chí",
+  "Đức Giang (DGC) Lào Cai: dự án NPK 200 nghìn t (FPTS 2018) chưa xác minh, chưa đưa vào",
+  "Lô B – Ô Môn: không có bằng chứng cấp khí cho Đạm Cà Mau; Nam Du–U Minh chưa xác minh",
+  "Tọa độ toàn bộ là ước lượng thủ công, chưa đối chiếu bản đồ"
+ ]
+}

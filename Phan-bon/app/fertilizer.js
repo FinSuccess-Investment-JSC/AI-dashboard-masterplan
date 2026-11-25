@@ -157,6 +157,8 @@ function overview() {
   c1.innerHTML = '<h3 class="chart-title" style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3><div class="fb-chain"></div><div class="pw-src">Nguồn: ' + SRC.ar + '; ' + SRC.vnd + '</div>';
   s1.append(c1); pane.append(s1); chain(c1.querySelector('.fb-chain'));
   // 0.2 Doanh thu/LNST theo nhóm và 0.3 Sản lượng theo năm bỏ 25/11/2026 (theo yêu cầu người dùng).
+  // 0.2 Bản đồ nhà máy, 0.3 cơ cấu công suất, 0.4 ma trận cấu trúc sản xuất (app/fertilizer-map.js, 25/11/2026).
+  if (window.FertMap) { try { FertMap.build(pane); } catch (e) { console.error(e); } }
 }
 // 01 Doanh nghiệp niêm yết: thẻ từng mã (như bảng doanh nghiệp của Điện, rút gọn), bấm một khâu trên sơ đồ để lọc.
 function listed() {
@@ -213,31 +215,7 @@ const PIC = {
     const L12 = months(ymAdd(u.date, -11), u.date);
     chart(d.host, 'pb-14', L12.map(mL), [['urea', 'Urê', C.blue], ['dap', 'DAP', C.gold], ['potash', 'Kali clorua', C.teal]].map(([k2, n, col]) => ({name: n, color: col, kind: 'bar', values: L12.map(m => yoy(k2, m))})), {unit: '%', digits: 1, native: 'bar', zeroBase: true});
   },
-  cost() {
-    const p = $('#fb-pp-cost'), g = last('gas_eu'), h = last('gas_us'), l = last('lng_jp'), b = last('brent');
-    p.append(kpiRow([
-      kpi('Khí châu Âu (TTF) · ' + mL(g.date), nf(g.value, 2), 'USD/MMBtu', `${sg(yoy('gas_eu', g.date), 0)}% so cùng kỳ`, 'World Bank', tail('gas_eu', 24), C.blue),
-      kpi('LNG Nhật Bản · ' + mL(l.date), nf(l.value, 2), 'USD/MMBtu', `${sg(yoy('lng_jp', l.date), 0)}% so cùng kỳ`, 'World Bank', tail('lng_jp', 24), C.gold),
-      kpi('Khí Mỹ (Henry Hub) · ' + mL(h.date), nf(h.value, 2), 'USD/MMBtu', `${sg(yoy('gas_us', h.date), 0)}% so cùng kỳ`, 'World Bank', tail('gas_us', 24), C.teal),
-      kpi('Dầu Brent · ' + mL(b.date), nf(b.value, 1), 'USD/thùng', `${sg(yoy('brent', b.date), 0)}% so cùng kỳ`, 'World Bank', tail('brent', 24), C.grey)]));
-    p.append(el('h3', 'pp-grp', 'Khí — nguyên liệu của đạm urê'));
-    const q1 = panel('2.1', 'Giá khí, nguyên liệu chính để làm urê, đang ở mức nào?');
-    const L = months('2019-01', g.date), a = card('pb-20', 'Giá khí tự nhiên', {sub: 'USD/MMBtu · bình quân tháng', source: SRC.wb, info: 'Khí là nguyên liệu để sản xuất amoniac rồi urê. TTF (châu Âu), LNG nhập khẩu Nhật Bản, Henry Hub (Mỹ).'});
-    q1.append(a.el, heat('pb-23', 'Giá khí châu Âu tăng giảm bao nhiêu so cùng kỳ, từng tháng', '% · so cùng tháng năm trước', 'gas_eu', lastYears('gas_eu', 3), SRC.wb)); p.append(q1);
-    chart(a.host, 'pb-20', L.map(mL), [['gas_eu', 'Khí châu Âu (TTF)', C.blue], ['lng_jp', 'LNG Nhật Bản', C.gold], ['gas_us', 'Khí Mỹ (Henry Hub)', C.teal]].map(([k, n, c]) => ({name: n, color: c, values: L.map(m => val(k, m))})), {unit: 'USD/MMBtu', digits: 2});
-    const q2 = panel('2.2', 'Giá urê còn cách chi phí khí bao xa?');
-    const U = L.map(m => val('urea', m)), G = L.map(m => { const v = val('gas_eu', m); return fin(v) ? v * 22 : null; });
-    const sCard = card('pb-21', 'Giá urê so với chi phí khí ở châu Âu (tự tính)', {sub: 'USD/tấn urê', source: SRC.wb + '; tự tính',
-      info: 'Chi phí khí = giá khí TTF × 22 MMBtu cho mỗi tấn urê (mức tiêu hao giả định của nhà máy dùng khí). Chênh lệch = giá urê − chi phí khí, chưa trừ chi phí khác. Không phản ánh giá khí của nhà máy trong nước.'});
-    q2.append(sCard.el); p.append(q2);
-    chart(sCard.host, 'pb-21', L.map(mL), [{name: 'Chênh lệch', color: '#B3BDE8', kind: 'bar', values: U.map((v, i) => fin(v) && fin(G[i]) ? v - G[i] : null)}, {name: 'Giá urê', color: C.blue, kind: 'line', values: U}, {name: 'Chi phí khí / tấn urê', color: C.gold, kind: 'line', values: G}], {unit: 'USD/tấn', native: 'bar'});
-    p.append(el('h3', 'pp-grp', 'Dầu và than'));
-    const q3 = panel('2.3', 'Giá dầu và than thay đổi ra sao?', 'Than là nguyên liệu của đạm urê từ than; dầu ảnh hưởng chi phí vận chuyển và giá khí theo hợp đồng.');
-    const c1 = card('pb-22', 'Dầu Brent', {sub: 'USD/thùng · bình quân tháng', source: SRC.wb}), c2 = card('pb-24', 'Than Úc (Newcastle)', {sub: 'USD/tấn · bình quân tháng', source: SRC.wb});
-    q3.append(two(c1, c2)); p.append(q3);
-    chart(c1.host, 'pb-22', L.map(mL), [{name: 'Brent', color: C.navy, values: L.map(m => val('brent', m))}], {unit: 'USD/thùng', digits: 1});
-    chart(c2.host, 'pb-24', L.map(mL), [{name: 'Than Úc', color: C.grey, values: L.map(m => val('coal_au', m))}], {unit: 'USD/tấn', digits: 1});
-  },
+  cost() { if (window.FertCost) FertCost.build($('#fb-pp-cost')); },  // app/fertilizer-cost.js: tổ chức theo mô hình sản xuất (25/11/2026)
   output() {
     const p = $('#fb-pp-output'), u = last('urea_output'), n = last('npk_output'), M = +u.date.slice(5), y = +u.date.slice(0, 4);
     const uy = ytd('urea_output', y, M), uy0 = ytd('urea_output', y - 1, M), ny = ytd('npk_output', y, M), ny0 = ytd('npk_output', y - 1, M);
@@ -297,9 +275,12 @@ function sources() {
     ['Sản lượng phân urê, phân NPK', SRC.nso, 'đến ' + mL(last('urea_output').date), 'scripts/fetch_fertilizer_nso.py'],
     ['BCTC hợp nhất theo quý: DPM, DCM, DHB, DDV, LAS, VAF, NFC, BFC, SFG', SRC.vnd, F ? 'đến ' + qL(F.periods.at(-1)) : '', 'scripts/fetch_fertilizer_financials.py'],
     ['Thuế GTGT với phân bón', SRC.law, 'hiệu lực 01/07/2025', 'nhập tay'],
+    ['Nhà máy, công suất thiết kế, vùng nguyên liệu, quan hệ cung ứng, cơ chế giá khí', 'BCTN, website doanh nghiệp, Petrovietnam, Vinachem, báo chuyên ngành (nguồn từng dòng)', D.plants ? 'tài liệu 2012–2026, kỳ ghi từng nhà máy' : 'N/A', 'nhập tay · data/fertilizer/plants.json'],
+    ['Tỷ giá trung tâm USD/VND', 'Ngân hàng Nhà nước', recs('usdvnd').length ? 'đến ' + mL(last('usdvnd').date) : 'N/A', 'scripts/fetch_sbv.py (bot)'],
   ];
   host.innerHTML = `<div class="chart-title">Nguồn dữ liệu</div><div class="chart-sub">Mỗi chart ghi nguồn ngay dưới chart; bảng dưới gom lại nguồn, kỳ số mới nhất và cách lấy.</div><div class="tbl-wrap"><table class="compare-table fb-src-table"><thead><tr><th>Dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách lấy</th></tr></thead><tbody>`
     + rows.map(r => `<tr><td>${esc(r[0])}</td><td>${r[1]}</td><td>${esc(r[2])}</td><td><code>${esc(r[3])}</code></td></tr>`).join('') + `</tbody></table></div>`
+    + (D.plants && D.plants.gaps && D.plants.gaps.length ? `<div class="chart-title" style="margin-top:16px">Dữ liệu chưa thu thập được</div><ul class="fb-gaps">${D.plants.gaps.map(g => `<li>${esc(g)}</li>`).join('')}<li>Giá urê, DAP nội địa (Phú Mỹ, Cà Mau, Đình Vũ): WiData hết hạn mức tuần này, làm mới 27/11/2026</li><li>Giá FO/MFO Singapore, lưu huỳnh, amoniac: chưa có nguồn công khai miễn phí</li><li>Xuất nhập khẩu phân bón (Hải quan): bản PDF đọc ra số không ổn định, chưa dùng</li></ul>` : '')
     + `<div class="pw-src">Dữ liệu dựng lại bằng scripts/build_fertilizer.py · ${esc(dL(D.built_at))}</div>`;
 }
 
@@ -329,5 +310,6 @@ function init() {
   showPic(new URLSearchParams(location.search).get('sub') || 'price');
   showTab(location.hash.slice(1) || 'mt1');
 }
+window.FertKit = {card, chart, panel, kpi, kpiRow, el, esc, nf, sg, mL, qL, dL, last, recs, yoy, val, months, ymAdd, heat, two, lastYears, SRC, C, E, F, D};
 if (window.SectorBoot) SectorBoot.add(10, init); else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
