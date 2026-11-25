@@ -909,5 +909,5 @@
     if (!D || !K) { $$('[data-kcn-preview]').forEach(n => { n.innerHTML = '<p class="kc-gap">Không tải được dữ liệu KCN.</p>'; }); return; }
     fillPreviews(); build();
   }
-  if (document.readyState === 'complete') setTimeout(start, 700); else addEventListener('load', () => setTimeout(start, 700));
+  SectorBoot.add(700, start); // sector-boot.js
 })();

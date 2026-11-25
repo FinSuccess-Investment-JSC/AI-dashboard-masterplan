@@ -1,9 +1,9 @@
-// Bộ quy tắc KCN (assets/kcn-insights.js) trên dữ liệu thật data/kcn-market.js và dữ liệu giả:
+// Bộ quy tắc KCN (Bat-dong-san/app/kcn-insights.js) trên dữ liệu thật data/kcn-market.js và dữ liệu giả:
 // không nối qua đổi phạm vi, không cộng hai nguồn, rolling 4Q chỉ khi đủ quý liên tiếp, ẩn số năm đủ cung khi thiếu điều kiện.
 const assert = require('assert');
 globalThis.window = globalThis;
 require('../data/kcn-market.js');
-const K = require('../assets/kcn-insights.js');
+const K = require('../Bat-dong-san/app/kcn-insights.js');
 const D = window.KCN_MARKET;
 const clone = o => JSON.parse(JSON.stringify(o));
 const noBad = v => assert.doesNotMatch(JSON.stringify(v), /NaN|Infinity|undefined/, 'không có NaN/Infinity/undefined');

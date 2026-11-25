@@ -50,18 +50,18 @@ class KcnWorkbookData(unittest.TestCase):
         self.assertEqual(self.d['dup']['unmatched'], 0)
 
     def test_workspace_has_no_hardcoded_market_numbers(self):
-        js = (ROOT / 'assets/kcn-workspace.js').read_text(encoding='utf-8')
+        js = (ROOT / 'Bat-dong-san/app/kcn-workspace.js').read_text(encoding='utf-8')
         for n in ('25455', '35800', '9230', '4474', '613', '13,4'):
             self.assertNotRegex(js, r'(?<![\d.])' + re.escape(n) + r'(?![\d])', n)
 
     def test_page_wiring(self):
         html = (ROOT / 'Bat-dong-san/index.html').read_text(encoding='utf-8')
-        for f in ('data/kcn-market.js', 'assets/kcn-insights.js', 'assets/kcn-workspace.js', 'assets/kcn-workspace.css'):
-            self.assertIn('../' + f, html)
+        for f in ('../data/kcn-market.js', 'app/kcn-insights.js', 'app/kcn-workspace.js', 'app/kcn-workspace.css'):
+            self.assertIn(f, html)
         self.assertIn('data-tab="mt13"', html)
         self.assertNotIn('data-block-id="bds-12"', html)
         self.assertNotIn('data-block-id="bds-18"', html)
-        self.assertIn("['mt13','Khu công nghiệp']", (ROOT / 'assets/research-layout.js').read_text(encoding='utf-8'))
+        self.assertIn("['mt13','Khu công nghiệp']", (ROOT / 'Bat-dong-san/app/research-layout.js').read_text(encoding='utf-8'))
 
     def test_build_is_reproducible(self):
         try:
