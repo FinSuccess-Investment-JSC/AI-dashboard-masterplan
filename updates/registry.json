@@ -6811,6 +6811,126 @@
     "Mở trang gốc",
     "Quote chứa số"
    ]
+  },
+  {
+   "id": "fertilizer.public.markets",
+   "tier": "A",
+   "title": "Giá urê, DAP, TSP, quặng phosphate, kali; khí TTF, Henry Hub, LNG Nhật; Brent; than Úc; urê Trịnh Châu",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     5
+    ]
+   },
+   "publication": "World Bank Pink Sheet đầu tháng (bình quân tháng trước); ZCE theo phiên",
+   "source": {
+    "name": "World Bank Pink Sheet; Sina Finance (ZCE UR0)",
+    "url": "https://www.worldbank.org/en/research/commodity-markets"
+   },
+   "where": {
+    "page": "Phan-bon/index.html",
+    "file": "data/fertilizer-data.js",
+    "blocks": [
+     "pb-10",
+     "pb-11",
+     "pb-12",
+     "pb-20",
+     "pb-21",
+     "pb-22"
+    ]
+   },
+   "how": "python3 scripts/fetch_fertilizer_markets.py && python3 scripts/fetch_fertilizer_nso.py && python3 scripts/fetch_fertilizer_financials.py && python3 scripts/build_fertilizer.py (chạy tay; chưa gắn vào refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "chạy tay"
+  },
+  {
+   "id": "fertilizer.public.output",
+   "tier": "A",
+   "title": "Sản lượng phân urê, phân NPK theo tháng",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     6
+    ]
+   },
+   "publication": "Cục Thống kê ngày 6 hằng tháng",
+   "source": {
+    "name": "Cục Thống kê (NSO)",
+    "url": "https://www.nso.gov.vn/bao-cao-tinh-hinh-kinh-te-xa-hoi-hang-thang/"
+   },
+   "where": {
+    "page": "Phan-bon/index.html",
+    "file": "data/fertilizer-data.js",
+    "blocks": [
+     "pb-30",
+     "pb-31"
+    ]
+   },
+   "how": "python3 scripts/fetch_fertilizer_markets.py && python3 scripts/fetch_fertilizer_nso.py && python3 scripts/fetch_fertilizer_financials.py && python3 scripts/build_fertilizer.py (chạy tay; chưa gắn vào refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "chạy tay"
+  },
+  {
+   "id": "fertilizer.financials",
+   "tier": "A",
+   "title": "BCTC hợp nhất theo quý DPM, DCM, DHB, DDV, LAS, VAF, NFC, BFC, SFG",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     1,
+     20
+    ]
+   },
+   "publication": "BCTC quý: hạn 30 ngày (riêng), 45 ngày (hợp nhất) sau quý",
+   "source": {
+    "name": "VNDirect finfo",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Phan-bon/index.html",
+    "file": "data/fertilizer-data.js",
+    "blocks": [
+     "pb-02",
+     "pb-40",
+     "pb-41",
+     "pb-42",
+     "pb-43",
+     "pb-44",
+     "pb-45",
+     "pb-51"
+    ]
+   },
+   "how": "python3 scripts/fetch_fertilizer_markets.py && python3 scripts/fetch_fertilizer_nso.py && python3 scripts/fetch_fertilizer_financials.py && python3 scripts/build_fertilizer.py (chạy tay; chưa gắn vào refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay",
+    "Giá vốn = 0 khi có doanh thu: để trống biên gộp (checks.cogs_zero)"
+   ],
+   "job": "chạy tay"
+  },
+  {
+   "id": "fertilizer.static",
+   "tier": "static",
+   "title": "Phân bón: chuỗi giá trị và doanh nghiệp (pb-01), mốc thuế GTGT với phân bón (pb-50)",
+   "schedule": {
+    "type": "none"
+   },
+   "where": {
+    "page": "Phan-bon/index.html",
+    "blocks": [
+     "pb-01",
+     "pb-50"
+    ]
+   }
   }
  ]
 }
