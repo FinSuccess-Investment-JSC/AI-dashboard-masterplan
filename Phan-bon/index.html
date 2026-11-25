@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ngành Phân bón Việt Nam · FinSuccess Research</title>
+<link rel="stylesheet" href="app/dashboard-ui.css?v=8b5f71b2e791">
+<script src="app/sector-boot.js?v=555dd1c98235"></script>
+<link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
+<link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
+<link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
+<link rel="stylesheet" href="app/fin-success-theme.css?v=0761641d486e">
+<link rel="stylesheet" href="app/brand.css?v=048c9b941573">
+<link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
+<link rel="stylesheet" href="app/fertilizer.css?v=fcc16ac99a8d">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../data/fertilizer-data.js?v=d9029b1623fb" defer></script>
+<script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
+<script src="app/fertilizer.js?v=d6157cf5bbd6" defer></script>
+<script src="app/site-navigation.js?v=41a78caef8e0" data-release="20261125-phan-bon"></script>
+</head>
+<!-- Trang viết sẵn bố cục cuối (không có "tab nền" để dời DOM): app/fertilizer.js chỉ vẽ chart vào các thẻ có sẵn.
+     Dữ liệu: data/fertilizer-data.js (scripts/build_fertilizer.py). Mỗi thẻ có data-block-id + mục updates/registry.json. -->
+<body data-sector="fertilizer">
+<div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="fertilizer"><a href="../">Trang tổng</a><a href="../Phan-bon/">Phân bón</a></nav><p class="site-release-note" data-release-label></p></div></div>
+
+<nav class="majortabs">
+  <div class="majortabrow" role="tablist" aria-label="Các phần nghiên cứu">
+    <button class="majortabbtn active" type="button" data-tab="mt1" role="tab">Tổng quan ngành</button>
+    <button class="majortabbtn" type="button" data-tab="mt2" role="tab">Bức tranh ngành</button>
+    <button class="majortabbtn" type="button" data-tab="mt4" role="tab">Chính sách · Thuế</button>
+    <button class="majortabbtn" type="button" data-tab="mt8" role="tab">Nguồn dữ liệu</button>
+  </div>
+</nav>
+
+<div class="container">
+  <header class="research-header"><h1>Phân bón</h1></header>
+
+  <section class="majorpane active" data-tab="mt1" id="pane-mt1">
+    <section class="grid kpis fb-kpis" id="fb-kpis" aria-label="Chỉ số chính"></section>
+
+    <div class="card fb-card fb-wide" data-block-id="pb-01" data-update-kind="document" data-cadence="annual" data-chart="chain"></div>
+    <div class="card fb-card fb-wide" data-block-id="pb-02" data-update-kind="public" data-cadence="quarterly" data-chart="scale"></div>
+  </section>
+
+  <section class="majorpane" data-tab="mt2" id="pane-mt2">
+    <nav class="fb-subnav" role="tablist" aria-label="Bức tranh ngành">
+      <button type="button" class="fb-subtab" data-sub="price" aria-selected="true"><span>01</span>Giá phân bón</button>
+      <button type="button" class="fb-subtab" data-sub="cost" aria-selected="false"><span>02</span>Chi phí đầu vào</button>
+      <button type="button" class="fb-subtab" data-sub="output" aria-selected="false"><span>03</span>Sản xuất trong nước</button>
+      <button type="button" class="fb-subtab" data-sub="fin" aria-selected="false"><span>04</span>Tài chính ngành</button>
+    </nav>
+
+    <div class="fb-subpane" data-sub="price">
+      <header class="fb-head"><div><span class="fb-k">01</span><h2>Giá phân bón thế giới</h2></div><span class="fb-asof" data-asof="urea"></span></header>
+      <div class="fb-grid">
+        <div class="card fb-card fb-wide" data-block-id="pb-10" data-update-kind="public" data-cadence="monthly" data-chart="prices"></div>
+        <div class="card fb-card" data-block-id="pb-11" data-update-kind="public" data-cadence="daily" data-chart="zce"></div>
+        <div class="card fb-card" data-block-id="pb-12" data-update-kind="public" data-cadence="monthly" data-chart="yoy"></div>
+      </div>
+    </div>
+
+    <div class="fb-subpane" data-sub="cost" hidden>
+      <header class="fb-head"><div><span class="fb-k">02</span><h2>Chi phí đầu vào</h2></div><span class="fb-asof" data-asof="gas_eu"></span></header>
+      <div class="fb-grid">
+        <div class="card fb-card fb-wide" data-block-id="pb-20" data-update-kind="public" data-cadence="monthly" data-chart="gas"></div>
+        <div class="card fb-card" data-block-id="pb-21" data-update-kind="public" data-cadence="monthly" data-chart="spread"></div>
+        <div class="card fb-card" data-block-id="pb-22" data-update-kind="public" data-cadence="monthly" data-chart="oilcoal"></div>
+      </div>
+    </div>
+
+    <div class="fb-subpane" data-sub="output" hidden>
+      <header class="fb-head"><div><span class="fb-k">03</span><h2>Sản xuất trong nước</h2></div><span class="fb-asof" data-asof="urea_output"></span></header>
+      <div class="fb-grid">
+        <div class="card fb-card fb-wide" data-block-id="pb-30" data-update-kind="public" data-cadence="monthly" data-chart="output"></div>
+        <div class="card fb-card fb-wide" data-block-id="pb-31" data-update-kind="public" data-cadence="monthly" data-chart="outputYtd"></div>
+      </div>
+    </div>
+
+    <div class="fb-subpane" data-sub="fin" hidden>
+      <header class="fb-head"><div><span class="fb-k">04</span><h2>Tài chính ngành</h2></div><span class="fb-asof" data-asof="fin"></span></header>
+      <div class="fb-controls" id="fb-fin-controls"></div>
+      <div class="fb-grid">
+        <div class="card fb-card" data-block-id="pb-40" data-update-kind="public" data-cadence="quarterly" data-chart="finRevenue"></div>
+        <div class="card fb-card" data-block-id="pb-41" data-update-kind="public" data-cadence="quarterly" data-chart="finMargin"></div>
+        <div class="card fb-card" data-block-id="pb-42" data-update-kind="public" data-cadence="quarterly" data-chart="finProfit"></div>
+        <div class="card fb-card" data-block-id="pb-43" data-update-kind="public" data-cadence="quarterly" data-chart="finRoe"></div>
+        <div class="card fb-card" data-block-id="pb-44" data-update-kind="public" data-cadence="quarterly" data-chart="finNetDebt"></div>
+        <div class="card fb-card" data-block-id="pb-45" data-update-kind="public" data-cadence="quarterly" data-chart="finInventory"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="majorpane" data-tab="mt4" id="pane-mt4">
+    <div class="fb-grid">
+      <div class="card fb-card fb-wide" data-block-id="pb-50" data-update-kind="event" data-cadence="event" data-chart="vat"></div>
+      <div class="card fb-card fb-wide" data-block-id="pb-51" data-update-kind="public" data-cadence="quarterly" data-chart="vatMargin"></div>
+    </div>
+  </section>
+
+  <section class="majorpane" data-tab="mt8" id="pane-mt8">
+    <div class="card fb-card fb-wide" id="fb-sources"></div>
+  </section>
+</div>
+</body>
+</html>
