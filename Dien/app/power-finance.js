@@ -113,7 +113,7 @@ const grid2 = (...cards) => { const g = el('div', 'grid two g2 pf-g2'); cards.fo
 /* ---------- 6.1 Chu kỳ doanh thu và lợi nhuận ---------- */
 const PNL = [['revenue', 'Doanh thu'], ['gross', 'Lợi nhuận gộp'], ['ebitda', 'EBITDA'], ['ebit', 'EBIT'], ['npat', 'LNST']];
 function s71() {
-  const s = section('6.1', 'Lợi nhuận ngành điện đang dịch chuyển về nhóm nguồn nào?');
+  const s = section('1.1', 'Lợi nhuận ngành điện đang dịch chuyển về nhóm nguồn nào?');
   // Chart 1: quy mô theo nhóm
   const c1 = card('dien-fin-pnl', 'Doanh thu và lợi nhuận theo nhóm nguồn (tỷ đồng)', 'Cột chồng theo nhóm nguồn · đổi chỉ tiêu và cách xem'); let m1 = 'npat', v1 = 'abs';
   seg(c1, 'Chỉ tiêu', PNL, () => m1, k => { m1 = k; draw1(); }); seg(c1, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['share', 'Tỷ trọng (%)']], () => v1, k => { v1 = k; draw1(); });
@@ -167,7 +167,7 @@ function wf(steps, unit) {
 function groupPicker(c, get, set) { const g = el('select', 'pf-sel'); c.ctl.append(g); g.addEventListener('change', () => set(g.value)); return () => { g.innerHTML = `<option value="all">Tất cả nhóm đang chọn</option>` + D.groups.filter(x => S.groups.includes(x.id)).map(x => `<option value="${x.id}"${x.id === get() ? ' selected' : ''}>${esc(x.label)}</option>`).join(''); if (get() !== 'all' && !S.groups.includes(get())) set('all', true); }; }
 const scopeOf = gid => gid === 'all' ? sel() : sel().filter(t => E.groupOf[t] === gid);
 function s72() {
-  const s = section('6.2', 'Tại sao các nhóm nguồn có biên lợi nhuận khác nhau, và yếu tố nào đang làm thay đổi khả năng sinh lời?');
+  const s = section('1.2', 'Tại sao các nhóm nguồn có biên lợi nhuận khác nhau, và yếu tố nào đang làm thay đổi khả năng sinh lời?');
   // Chart 1: biên theo thời gian
   const c1 = card('dien-fin-margin', 'Biên lợi nhuận theo thời gian (%)', 'Biên gộp, EBITDA, EBIT, LNST trên doanh thu · chọn nhóm nguồn'); let g1 = 'all'; const p1 = groupPicker(c1, () => g1, (v, q) => { g1 = v; if (!q) draw1(); });
   function draw1() { p1(); const x = scopeOf(g1), L = E.labels(S.mode), r = n => E.ratio({m: n}, {m: 'revenue'}, x, S.mode, 100).values;
@@ -192,7 +192,7 @@ function s72() {
 
 /* ---------- 6.3 CAPEX và hình thành tài sản ---------- */
 function s73() {
-  const s = section('6.3', 'Dòng vốn đầu tư đang dịch chuyển vào đâu, và ngành đang ở giai đoạn nào của chu kỳ vốn?');
+  const s = section('1.3', 'Dòng vốn đầu tư đang dịch chuyển vào đâu, và ngành đang ở giai đoạn nào của chu kỳ vốn?');
   // Chart 1: CAPEX theo nhóm
   const c1 = card('dien-fin-capex', 'CAPEX toàn ngành theo nhóm nguồn (tỷ đồng)', 'Tiền chi mua sắm, xây dựng TSCĐ (LCTT) · quy mô, so cùng kỳ, tỷ trọng'); let v1 = 'abs';
   seg(c1, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['share', 'Tỷ trọng (%)']], () => v1, k => { v1 = k; draw1(); });
@@ -229,7 +229,7 @@ function s73() {
 
 /* ---------- 6.4 Phải thu và chất lượng dòng tiền ---------- */
 function s74() {
-  const s = section('6.4', 'Lợi nhuận ghi nhận có chuyển thành dòng tiền, hay đang nằm lại ở công nợ?');
+  const s = section('1.4', 'Lợi nhuận ghi nhận có chuyển thành dòng tiền, hay đang nằm lại ở công nợ?');
   s.id = 'pf-sec-cash';  // nhận chart lỗ lũy kế EVN (power-picture.js) khi tab EVN đã bỏ
   const c1 = card('dien-fin-recv', 'Phải thu khách hàng theo nhóm nguồn (tỷ đồng)', 'Số dư cuối kỳ · giá trị hoặc so cùng kỳ'); let v1 = 'abs';
   seg(c1, 'Cách xem', [['abs', 'Tỷ đồng'], ['yoy', 'So cùng kỳ (%)']], () => v1, k => { v1 = k; draw1(); });
@@ -254,7 +254,7 @@ function s74() {
 
 /* ---------- 6.5 Đòn bẩy và phân bổ dòng tiền ---------- */
 function s75() {
-  const s = section('6.5', 'Chu kỳ đầu tư đang tạo áp lực tài chính hay ngành đang thu hoạch dòng tiền?');
+  const s = section('1.5', 'Chu kỳ đầu tư đang tạo áp lực tài chính hay ngành đang thu hoạch dòng tiền?');
   const c1 = card('dien-fin-debt', 'Cơ cấu nợ vay (tỷ đồng)', 'Nợ vay ngắn hạn, dài hạn (cột chồng); tiền & đầu tư ngắn hạn, nợ vay ròng (đường)');
   function draw1() { const x = sel(), mode = S.mode === 'y' ? 'y' : 'q', L = E.labels(mode), T = m => E.total(m, x, mode).values;
     chart(c1.host, 'dien-fin-debt', L, [{name: 'Nợ vay ngắn hạn', color: '#8997D6', values: T('st_debt')}, {name: 'Nợ vay dài hạn', color: '#1D2678', values: T('lt_debt')}, {name: 'Tiền & đầu tư ngắn hạn', color: '#2a9fa3', values: T('cash_all'), kind: 'line'}, {name: 'Nợ vay ròng', color: '#c98a00', values: T('net_debt'), kind: 'line'}], {unit: 'tỷ đ', native: 'stack', stackable: true});
@@ -299,7 +299,7 @@ function roic(x, mode) {
   return {labels: L, values, each, ic};
 }
 function s76() {
-  const s = section('6.6', 'Vốn đầu tư vào ngành điện đang tạo ra mức sinh lời thế nào?');
+  const s = section('1.6', 'Vốn đầu tư vào ngành điện đang tạo ra mức sinh lời thế nào?');
   const c1 = card('dien-fin-returns', 'ROE, ROA, ROIC (%)', 'TTM hoặc năm · chọn nhóm nguồn · đường mảnh là bình quân lịch sử của chính chỉ tiêu'); let g1 = 'all'; const p1 = groupPicker(c1, () => g1, (v, q) => { g1 = v; if (!q) draw1(); });
   function draw1() { p1(); const x = scopeOf(g1), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode), roe = E.ratio({m: 'npat'}, {m: 'equity', avg: true}, x, mode, 100).values, roa = E.ratio({m: 'npat'}, {m: 'total_assets', avg: true}, x, mode, 100).values, ri = roic(x, mode).values;
     const avg = v => { const a = v.filter(fin); return a.length ? a.reduce((s, z) => s + z, 0) / a.length : null; };

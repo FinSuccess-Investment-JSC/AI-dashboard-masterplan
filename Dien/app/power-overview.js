@@ -419,7 +419,7 @@ function finTab() {
     if (!mp.hidden) run(key);
     const u = new URL(location.href);
     if (push && (u.searchParams.get('fin') !== key || location.hash !== '#mt14')) { u.searchParams.set('fin', key); ['section', 'ov', 'policy', 'm', 't', 's'].forEach(x => u.searchParams.delete(x)); history.pushState({fin: key}, '', u.pathname + u.search + '#mt14'); }
-    setTimeout(() => window.dispatchEvent(new Event('resize')), 30); refit(P2[key]); cur = key;
+    setTimeout(() => window.dispatchEvent(new Event('resize')), 30); refit(P2[key]); cur = key; window.dispatchEvent(new Event('pv:toc'));
   };
   let cur = 'fin';
   const open = (key, push) => { window.showMajorTab?.('mt14'); show(key, push); window.scrollTo({top: 0});
@@ -429,7 +429,7 @@ function finTab() {
     b.addEventListener('keydown', e => { const d = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!d) return; e.preventDefault(); const n = (i + d + btns.length) % btns.length; btns[n].click(); btns[n].focus(); });
   });
   // Mở tab lớn lần đầu: dựng chart khi pane đã hiện (để đo đúng chiều rộng).
-  new MutationObserver(() => { if (!mp.hidden) { run(cur); refit(P2[cur]); } }).observe(mp, {attributes: true, attributeFilter: ['hidden', 'class']});
+  new MutationObserver(() => { if (!mp.hidden) { run(cur); refit(P2[cur]); window.dispatchEvent(new Event('pv:toc')); } }).observe(mp, {attributes: true, attributeFilter: ['hidden', 'class']});
   addEventListener('popstate', () => { if (location.hash === '#mt14') show(new URL(location.href).searchParams.get('fin') || 'fin', false); });
   const setTop = () => { const t = document.querySelector('.majortabs'); const cs = t && getComputedStyle(t); nav.style.top = cs && cs.position === 'sticky' && innerWidth > 700 ? (t.getBoundingClientRect().height + 8) + 'px' : '0px'; };
   setTop(); addEventListener('resize', setTop);
