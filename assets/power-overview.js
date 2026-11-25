@@ -181,8 +181,7 @@ function mapPane(p) {
     const gen = key => MIX.map(([mk, name]) => [name, mk === 'gas' ? r.get('gas')[key] + r.get('other')[key] : r.get(mk)[key]]);
     bars.innerHTML = (capItems ? bar('Công suất đặt cuối 2025', [['Than', capItems[0][1]], ['Thủy điện', capItems[1][1]], ['Gió & mặt trời', capItems[2][1]], ['Khí, dầu & khác', capItems[3][1]], ['Nhập khẩu', 0]], `${nf(capTotal, 0)} MW`) : '') +
       bar('Sản lượng ' + PERIODS[k].name, gen('cur'), `${nf(r.curT, 0)} triệu kWh`) + bar('Cùng kỳ năm trước', gen('prev'), `${nf(r.prevT, 0)} triệu kWh`);
-    const re = r.get('re'), capShare = capItems && capRe ? capRe / capTotal * 100 : null;
-    gm.querySelector('.ov-note').innerHTML = capShare != null ? `NLTT chiếm <b>${nf(capShare, 0)}%</b> công suất đặt nhưng gió & mặt trời chỉ <b>${nf(re.shareCur, 1)}%</b> sản lượng: MW không phải kWh.` : ''; };
+  };
   gm.querySelectorAll('[data-p]').forEach(b => b.addEventListener('click', () => draw(b.dataset.p)));
   renders.map.push(() => draw('ytd'));
   p.append(sec('map', '0.1', 'Điện đi từ đâu, tiền đi qua ai, ai quyết định huy động?', host, {sub: 'Ba lớp luồng tách riêng, bật/tắt từng lớp. Bấm một loại hình để mở chuỗi giá trị chi tiết.',

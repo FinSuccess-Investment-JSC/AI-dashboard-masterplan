@@ -345,7 +345,6 @@ else if(power){
   const lastYear=Number(ms.at(-1)?.date.slice(0,4)),seasonYears=[lastYear-2,lastYear-1,lastYear];
   const seasonMonths=ms.filter(m=>seasonYears.includes(Number(m.date.slice(0,4)))&&m.date<=today);
   const latestMonth=seasonMonths.at(-1),daysInLatest=latestMonth?new Date(Date.UTC(Number(latestMonth.date.slice(0,4)),Number(latestMonth.date.slice(5,7)),0)).getUTCDate():0;
-  if(latestMonth&&(latestMonth.days<daysInLatest||latestMonth.mixDays<daysInLatest)){const status=document.createElement('p');status.className='power-seasonal-status';status.textContent=`${label(latestMonth.date)}: ${latestMonth.days}/${daysInLatest} ngày có bản tin, ${latestMonth.mixDays} ngày đủ cơ cấu nguồn; cột nhạt là số chưa đủ tháng.`;seasonalGrid.prepend(status)}
   const mix=ms.filter(m=>m.mixDays).slice(-24).map(m=>({...m,label:label(m.date)+(m.date<today&&m.mixDays>=0.9*Number(new Date(Date.UTC(+m.date.slice(0,4),+m.date.slice(5,7),0)).getUTCDate())?'':'*'),coal_s:m.coal/m.mixTotal*100,hydro_s:m.hydro/m.mixTotal*100,gas_s:m.gas/m.mixTotal*100,re_s:m.re/m.mixTotal*100,imports_s:m.imports/m.mixTotal*100}));
   if(mix.length){
    fillTable('tbl-mix',['Tháng','Than %','Thủy điện %','NLTT %','Khí & dầu %','Nhập khẩu %','Ngày có số'],mix.slice().reverse().map(m=>[m.label,...['coal_s','hydro_s','re_s','gas_s','imports_s'].map(f=>nf(m[f],1)),String(m.mixDays)]));

@@ -46,7 +46,6 @@ function topRow() {
       <div class="pv-oni-val"><b>${o.oni > 0 ? '+' : ''}${nf(o.oni, 2)}</b><span>${cls}</span>${p ? `<em>3 mùa trước: ${p.oni > 0 ? '+' : ''}${nf(p.oni, 2)}</em>` : ''}</div>
       <div class="pv-gauge"><div class="pv-scale"></div>${p ? `<i class="pv-ghost" style="left:${pos(p.oni)}%"></i>` : ''}<i class="pv-needle" style="left:${pos(o.oni)}%"></i></div>
       <div class="pv-ticks">${[[-3, 'La Niña mạnh'], [-1.5, '−1,5'], [-.5, '−0,5'], [.5, '+0,5'], [1.5, '+1,5'], [3, 'El Niño mạnh']].map(([v, t]) => `<span style="left:${pos(v)}%">${t}</span>`).join('')}</div>
-      <p class="pv-take">${o.oni >= .5 ? 'Nước về hồ mùa khô tới nghiêng về thiếu: thủy điện yếu, than và khí được huy động nhiều hơn.' : o.oni <= -.5 ? 'Mưa nhiều hơn bình thường: thủy điện thuận lợi, nhiệt điện bị huy động ít đi.' : 'Thủy văn chưa nghiêng rõ về phía nào.'}</p>
       <div class="source-note">Nguồn: ${link('https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt', 'NOAA CPC · ONI')}</div>`;
     row.append(g);
   }
@@ -99,12 +98,12 @@ function heatmap() {
   const grid = ys.map(y => `<div class="pv-hm-row"><span class="pv-hm-y">${y}</span>${Array.from({length: 12}, (_, i) => {
     const k = `${y}-${String(i + 1).padStart(2, '0')}`, a = avg(k), b = avg(`${+y - 1}-${String(i + 1).padStart(2, '0')}`), v = a && b ? (a / b - 1) * 100 : null, part = mon[k] && mon[k].n < dim(k);
     if (v != null && (!best || v > best.v)) best = {k, v};
-    return `<span class="pv-hm-c" style="background:${cell(v)};color:${v != null && v >= 5 ? '#fff' : '#303540'}" title="${i + 1}/${y}: ${v == null ? 'chưa đủ dữ liệu' : (v > 0 ? '+' : '') + nf(v) + '% so cùng kỳ'}${part ? ' · tháng chưa đủ ngày' : ''}">${v == null ? '' : (v > 0 ? '+' : '') + nf(v, 0)}${part && v != null ? '*' : ''}</span>`;
+    return `<span class="pv-hm-c" style="background:${cell(v)};color:${v != null && v >= 5 ? '#fff' : '#303540'}" title="${i + 1}/${y}: ${v == null ? 'chưa đủ dữ liệu' : (v > 0 ? '+' : '') + nf(v) + '% so cùng kỳ'}">${v == null ? '' : (v > 0 ? '+' : '') + nf(v, 0)}</span>`;
   }).join('')}</div>`).join('');
   const c = el('div', 'card pv-hm');
   c.dataset.blockId = 'dien-output-heatmap'; c.dataset.updateKind = 'public'; c.dataset.cadence = 'daily'; c.style.marginTop = '14px';
   c.innerHTML = `<div class="chart-title">Sản lượng điện tăng bao nhiêu so cùng kỳ, từng tháng</div>
-    <div class="chart-sub">% · bình quân ngày so cùng tháng năm trước · * tháng chưa đủ ngày${best ? ` · cao nhất ${+best.k.slice(5)}/${best.k.slice(0, 4)}: <b>+${nf(best.v)}%</b>` : ''}</div>
+    <div class="chart-sub">% · bình quân ngày so cùng tháng năm trước${best ? ` · cao nhất ${+best.k.slice(5)}/${best.k.slice(0, 4)}: <b>+${nf(best.v)}%</b>` : ''}</div>
     <div class="pv-hm-grid"><div class="pv-hm-row pv-hm-head"><span class="pv-hm-y"></span>${Array.from({length: 12}, (_, i) => `<span>T${i + 1}</span>`).join('')}</div>${grid}</div>
     <div class="source-note">Nguồn: ${link(src.vn_power_daily.source_url, 'EVN · bản tin vận hành ngày')}, cộng theo tháng như chart sản lượng tháng bên trên.</div>`;
   anchor.after(c);
@@ -219,7 +218,7 @@ function companyCards() {
    FMP tháng: fmpRows của trang (PGV IR). Than: World Bank coal_au × tỷ giá trung tâm tháng (Wi 242638 qua PHARMA_WI).
    Suất tiêu hao & mốc nội địa theo QĐ 1692/QĐ-BCT (than) và QĐ 1882/QĐ-BCT (khí) năm 2026 — xem ⓘ của card. */
 const P = {HR_COAL: 2411.6, HHV_NC: 6000, HHV_DOM: 5012.61, COAL_DOM: 1962004, HR_GAS: 6542.96, GAS_USD: 11.98, FEE_USD: 1.87, FX_QD: 26378};
-window.POWER_FUEL_PARAMS = P;  // dùng chung với Bức tranh ngành › Giá & biên (assets/power-picture.js)
+window.POWER_FUEL_PARAMS = P;  // dùng chung với Bức tranh ngành › Giá điện (assets/power-picture.js)
 // Tỷ giá tháng: ưu tiên tỷ giá trung tâm NHNN (pharma-public-data.js), thiếu thì WiData 242638 (pharma-wi-data.js); trang Điện nạp cả hai.
 function fxMonthly() {
   const m = new Map(), put = (recs, src) => recs.forEach(r => { if (isFinite(r.value)) m.set(r.date.slice(0, 7), {v: r.value, src}); });
