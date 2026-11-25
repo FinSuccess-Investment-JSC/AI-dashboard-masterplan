@@ -87,11 +87,12 @@ jobs:
           python scripts/build_pharma_extra.py || true
           python scripts/build_sector_public.py
           python scripts/fetch_public_fs.py && python scripts/build_company_quarterly.py
+          python scripts/fetch_power_financials.py && python scripts/build_power_financials.py || true
       - name: Re-version pages when sector data changed
         # 16/11/2026: the release step above runs before the sector feeds; without this, pages keep the old ?v= hash
         # of data/*-public-data.js and browsers serve the cached file.
         run: |
-          if ! git diff --quiet -- 'data/*-public-data.js' data/daily-data.js; then
+          if ! git diff --quiet -- 'data/*-public-data.js' data/daily-data.js data/power-financials.js; then
             python scripts/prepare_release.py --version "$(date -u +%Y%m%dT%H%M%SZ)-data"
           fi
       - name: Validate generated data
