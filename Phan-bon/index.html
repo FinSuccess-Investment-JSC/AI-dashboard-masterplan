@@ -6,98 +6,97 @@
 <title>Ngành Phân bón Việt Nam · FinSuccess Research</title>
 <link rel="stylesheet" href="app/dashboard-ui.css?v=8b5f71b2e791">
 <script src="app/sector-boot.js?v=555dd1c98235"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="app/chart-types.js?v=de84f54bfcae"></script>
+<script src="../data/fertilizer-data.js?v=db525b6c6aea" defer></script>
+<script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
+<script src="app/value-chain.js?v=a597c7c73610" defer></script>
+<script src="app/fertilizer-finance.js?v=51001a441612" defer></script>
+<script src="app/fertilizer.js?v=84594680f810" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
+<script src="app/site-navigation.js?v=9abea12d0335" data-release="20261125-phan-bon-mau-dien"></script>
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
 <link rel="stylesheet" href="app/fin-success-theme.css?v=0761641d486e">
 <link rel="stylesheet" href="app/brand.css?v=048c9b941573">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
-<link rel="stylesheet" href="app/fertilizer.css?v=fcc16ac99a8d">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="../data/fertilizer-data.js?v=d9029b1623fb" defer></script>
-<script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
-<script src="app/fertilizer.js?v=d6157cf5bbd6" defer></script>
-<script src="app/site-navigation.js?v=9abea12d0335" data-release="20261125-dien-loai-hinh"></script>
+<link rel="stylesheet" href="app/overview.css?v=eff54e08565b">
+<link rel="stylesheet" href="app/fertilizer.css?v=af8d6fd4f339">
 </head>
-<!-- Trang viết sẵn bố cục cuối (không có "tab nền" để dời DOM): app/fertilizer.js chỉ vẽ chart vào các thẻ có sẵn.
-     Dữ liệu: data/fertilizer-data.js (scripts/build_fertilizer.py). Mỗi thẻ có data-block-id + mục updates/registry.json. -->
+<!-- Trang Phân bón theo khung trang Điện (25/11/2026), viết sẵn bố cục cuối (không có "tab nền" để dời DOM).
+     app/fertilizer.js dựng nội dung Tổng quan + Bức tranh ngành; app/fertilizer-finance.js dựng tab Tài chính ngành.
+     Dữ liệu: data/fertilizer-data.js (scripts/build_fertilizer.py). Thẻ chart có data-block-id + mục updates/registry.json. -->
 <body data-sector="fertilizer">
 <div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="fertilizer"><a href="../">Trang tổng</a><a href="../Phan-bon/">Phân bón</a></nav><p class="site-release-note" data-release-label></p></div></div>
 
-<nav class="majortabs" role="tablist" aria-label="Các phần nghiên cứu">
-  <button class="majortabbtn active" type="button" data-tab="mt1" role="tab">Tổng quan ngành</button>
-  <button class="majortabbtn" type="button" data-tab="mt2" role="tab">Bức tranh ngành</button>
-  <button class="majortabbtn" type="button" data-tab="mt4" role="tab">Chính sách · Thuế</button>
-  <button class="majortabbtn" type="button" data-tab="mt8" role="tab">Nguồn dữ liệu</button>
+<nav class="majortabs">
+  <div class="majortabrow" role="tablist" aria-label="Các phần nghiên cứu">
+    <button class="majortabbtn active" type="button" data-tab="mt1" role="tab">Tổng quan ngành</button>
+    <button class="majortabbtn" type="button" data-tab="mt2" role="tab">Bức tranh ngành</button>
+    <button class="majortabbtn" type="button" data-tab="mt3" role="tab">Tài chính ngành</button>
+    <button class="majortabbtn" type="button" data-tab="mt8" role="tab">Nguồn dữ liệu</button>
+  </div>
 </nav>
 
-<div class="container">
+<div class="container wrap">
   <header class="research-header"><h1>Phân bón</h1></header>
 
   <section class="majorpane active" data-tab="mt1" id="pane-mt1">
-    <section class="grid kpis fb-kpis" id="fb-kpis" aria-label="Chỉ số chính"></section>
-
-    <div class="card fb-card fb-wide" data-block-id="pb-01" data-update-kind="document" data-cadence="annual" data-chart="chain"></div>
-    <div class="card fb-card fb-wide" data-block-id="pb-02" data-update-kind="public" data-cadence="quarterly" data-chart="scale"></div>
+    <section class="db card" id="dataBrief" data-block-id="pb-00" data-update-kind="public" data-cadence="monthly"></section>
+    <section class="section">
+      <div class="sectionhead"><div><h2 class="sec">Tổng quan ngành phân bón</h2><p>Nhìn để hiểu ngành: chuỗi giá trị → quy mô từng nhóm sản phẩm → sản lượng trong nước. Số tài chính chi tiết ở tab Tài chính ngành.</p></div></div>
+      <div class="ov-nav" role="tablist" aria-label="Tổng quan ngành">
+        <button class="tabbtn ov-tab active" type="button" id="fb-ov-map-tab" role="tab" data-ov="map" aria-controls="fb-ov-map" aria-selected="true"><span>00</span>Bản đồ ngành<small>Chuỗi giá trị · quy mô · sản lượng</small></button>
+        <button class="tabbtn ov-tab" type="button" id="fb-ov-listed-tab" role="tab" data-ov="listed" aria-controls="fb-ov-listed" aria-selected="false"><span>01</span>Doanh nghiệp niêm yết<small>9 mã: đạm, lân & DAP, NPK</small></button>
+      </div>
+      <div class="pane-subpane ov-pane" id="fb-ov-map" data-ov="map" role="tabpanel" aria-labelledby="fb-ov-map-tab">
+        <header class="ov-head"><div><span class="ov-k">00 · Toàn cảnh ngành</span><h2>Bản đồ ngành</h2><p>Nguyên liệu, nhà máy và đầu ra của phân bón đi qua những ai?</p></div></header>
+      </div>
+      <div class="pane-subpane ov-pane" id="fb-ov-listed" data-ov="listed" role="tabpanel" aria-labelledby="fb-ov-listed-tab" hidden>
+        <header class="ov-head"><div><span class="ov-k">01 · Doanh nghiệp</span><h2>Doanh nghiệp niêm yết</h2><p>Quy mô, lợi nhuận và nợ vay của từng mã.</p></div></header>
+      </div>
+    </section>
   </section>
 
   <section class="majorpane" data-tab="mt2" id="pane-mt2">
-    <nav class="fb-subnav" role="tablist" aria-label="Bức tranh ngành">
-      <button type="button" class="fb-subtab" data-sub="price" aria-selected="true"><span>01</span>Giá phân bón</button>
-      <button type="button" class="fb-subtab" data-sub="cost" aria-selected="false"><span>02</span>Chi phí đầu vào</button>
-      <button type="button" class="fb-subtab" data-sub="output" aria-selected="false"><span>03</span>Sản xuất trong nước</button>
-      <button type="button" class="fb-subtab" data-sub="fin" aria-selected="false"><span>04</span>Tài chính ngành</button>
-    </nav>
-
-    <div class="fb-subpane" data-sub="price">
-      <header class="fb-head"><div><span class="fb-k">01</span><h2>Giá phân bón thế giới</h2></div><span class="fb-asof" data-asof="urea"></span></header>
-      <div class="fb-grid">
-        <div class="card fb-card fb-wide" data-block-id="pb-10" data-update-kind="public" data-cadence="monthly" data-chart="prices"></div>
-        <div class="card fb-card" data-block-id="pb-11" data-update-kind="public" data-cadence="daily" data-chart="zce"></div>
-        <div class="card fb-card" data-block-id="pb-12" data-update-kind="public" data-cadence="monthly" data-chart="yoy"></div>
+    <section class="section">
+      <div class="sectionhead"><div><h2 class="sec">Bức tranh ngành</h2><p>Giá phân bón → chi phí đầu vào → sản xuất trong nước → chính sách & thuế.</p></div></div>
+      <div class="pp-nav" role="tablist" aria-label="Nhóm câu hỏi phân tích">
+        <button class="tabbtn pp-tab active" type="button" role="tab" data-sub="price" aria-selected="true"><span>01</span>Giá phân bón</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="cost" aria-selected="false"><span>02</span>Chi phí đầu vào</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="output" aria-selected="false"><span>03</span>Sản xuất trong nước</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="policy" aria-selected="false"><span>04</span>Chính sách & thuế</button>
       </div>
-    </div>
-
-    <div class="fb-subpane" data-sub="cost" hidden>
-      <header class="fb-head"><div><span class="fb-k">02</span><h2>Chi phí đầu vào</h2></div><span class="fb-asof" data-asof="gas_eu"></span></header>
-      <div class="fb-grid">
-        <div class="card fb-card fb-wide" data-block-id="pb-20" data-update-kind="public" data-cadence="monthly" data-chart="gas"></div>
-        <div class="card fb-card" data-block-id="pb-21" data-update-kind="public" data-cadence="monthly" data-chart="spread"></div>
-        <div class="card fb-card" data-block-id="pb-22" data-update-kind="public" data-cadence="monthly" data-chart="oilcoal"></div>
+      <div class="pane-subpane pp-pane" id="fb-pp-price" data-sub="price">
+        <header class="pp-head"><div><span class="pp-k">01</span><h2>Giá phân bón</h2><p>Giá urê, DAP, lân và kali trên thị trường thế giới.</p></div><span class="pp-asof" data-asof="urea"></span></header>
       </div>
-    </div>
-
-    <div class="fb-subpane" data-sub="output" hidden>
-      <header class="fb-head"><div><span class="fb-k">03</span><h2>Sản xuất trong nước</h2></div><span class="fb-asof" data-asof="urea_output"></span></header>
-      <div class="fb-grid">
-        <div class="card fb-card fb-wide" data-block-id="pb-30" data-update-kind="public" data-cadence="monthly" data-chart="output"></div>
-        <div class="card fb-card fb-wide" data-block-id="pb-31" data-update-kind="public" data-cadence="monthly" data-chart="outputYtd"></div>
+      <div class="pane-subpane pp-pane" id="fb-pp-cost" data-sub="cost" hidden>
+        <header class="pp-head"><div><span class="pp-k">02</span><h2>Chi phí đầu vào</h2><p>Khí, dầu và than: nguyên liệu và năng lượng của nhà máy phân bón.</p></div><span class="pp-asof" data-asof="gas_eu"></span></header>
       </div>
-    </div>
-
-    <div class="fb-subpane" data-sub="fin" hidden>
-      <header class="fb-head"><div><span class="fb-k">04</span><h2>Tài chính ngành</h2></div><span class="fb-asof" data-asof="fin"></span></header>
-      <div class="fb-controls" id="fb-fin-controls"></div>
-      <div class="fb-grid">
-        <div class="card fb-card" data-block-id="pb-40" data-update-kind="public" data-cadence="quarterly" data-chart="finRevenue"></div>
-        <div class="card fb-card" data-block-id="pb-41" data-update-kind="public" data-cadence="quarterly" data-chart="finMargin"></div>
-        <div class="card fb-card" data-block-id="pb-42" data-update-kind="public" data-cadence="quarterly" data-chart="finProfit"></div>
-        <div class="card fb-card" data-block-id="pb-43" data-update-kind="public" data-cadence="quarterly" data-chart="finRoe"></div>
-        <div class="card fb-card" data-block-id="pb-44" data-update-kind="public" data-cadence="quarterly" data-chart="finNetDebt"></div>
-        <div class="card fb-card" data-block-id="pb-45" data-update-kind="public" data-cadence="quarterly" data-chart="finInventory"></div>
+      <div class="pane-subpane pp-pane" id="fb-pp-output" data-sub="output" hidden>
+        <header class="pp-head"><div><span class="pp-k">03</span><h2>Sản xuất trong nước</h2><p>Sản lượng phân urê và NPK theo tháng của Cục Thống kê.</p></div><span class="pp-asof" data-asof="urea_output"></span></header>
       </div>
-    </div>
+      <div class="pane-subpane pp-pane" id="fb-pp-policy" data-sub="policy" hidden>
+        <header class="pp-head"><div><span class="pp-k">04</span><h2>Chính sách & thuế</h2><p>Các mốc chính sách thay đổi chi phí và giá bán phân bón.</p></div></header>
+      </div>
+    </section>
   </section>
 
-  <section class="majorpane" data-tab="mt4" id="pane-mt4">
-    <div class="fb-grid">
-      <div class="card fb-card fb-wide" data-block-id="pb-50" data-update-kind="event" data-cadence="event" data-chart="vat"></div>
-      <div class="card fb-card fb-wide" data-block-id="pb-51" data-update-kind="public" data-cadence="quarterly" data-chart="vatMargin"></div>
-    </div>
+  <section class="majorpane" data-tab="mt3" id="pane-mt3">
+    <section class="section">
+      <div class="sectionhead"><div><h2 class="sec">Tài chính ngành</h2><p>Số liệu tài chính của 9 doanh nghiệp phân bón niêm yết: tổng hợp theo nhóm sản phẩm, từ BCTC quý.</p></div></div>
+      <div class="pane-subpane pp-pane fn-pane">
+        <header class="pp-head"><div><span class="pp-k">01</span><h2>Tài chính ngành</h2><p>Lợi nhuận, biên, dòng vốn đầu tư, công nợ, dòng tiền và hiệu quả vốn.</p></div><span class="pp-asof" data-asof="fin"></span></header>
+        <div id="fb-fin-root"></div>
+      </div>
+    </section>
   </section>
 
   <section class="majorpane" data-tab="mt8" id="pane-mt8">
-    <div class="card fb-card fb-wide" id="fb-sources"></div>
+    <section class="section">
+      <div class="sectionhead"><div><h2 class="sec">Nguồn dữ liệu</h2><p>Nguồn, kỳ số mới nhất và cách lấy của từng nhóm dữ liệu.</p></div></div>
+      <div class="card" id="fb-sources"></div>
+    </section>
   </section>
 </div>
 </body>

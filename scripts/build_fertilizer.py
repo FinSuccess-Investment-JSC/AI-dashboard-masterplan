@@ -117,7 +117,7 @@ def main():
         out['fin'] = financials(f)
     text = json.dumps(out, ensure_ascii=False, separators=(',', ':'))
     OUT.write_text(text + '\n', encoding='utf-8', newline='\n')
-    OUT_JS.write_text('window.FERT_DATA = ' + text + ';\n', encoding='utf-8', newline='\n')
+    OUT_JS.write_text('window.FERT_DATA = ' + text + ';\nwindow.FERT_FIN = window.FERT_DATA.fin;\n', encoding='utf-8', newline='\n')
     print(OUT.relative_to(ROOT), {k: (len(v['records']), v['records'][-1]['date'] if v['records'] else None) for k, v in S.items()},
           'fin' in out and {k: len(v) for k, v in out['fin']['checks'].items()})
 
