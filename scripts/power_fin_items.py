@@ -61,20 +61,21 @@ TICKERS = ['POW', 'NT2', 'PGV', 'BTP', 'PPC', 'QTP', 'HND', 'DTK', 'VSH', 'CHP',
 
 # Nhóm theo mô hình kinh doanh; màu thống nhất với các tab khác (than #3d4653, thủy điện #2938A8, khí #c98a00, NLTT #2a9fa3).
 # default=True: thuộc tổng hợp "doanh nghiệp phát điện" mặc định. Đa ngành, xây lắp & thiết bị không gộp mặc định.
+# Doanh nghiệp nhiều loại hình xếp vào loại hình có công suất lớn nhất (25/11/2026, theo yêu cầu người dùng); mixed=True
+# đánh dấu doanh nghiệp có nhiều loại hình, số theo nhóm chỉ mang tính tham khảo.
 GROUPS = [
     {'id': 'hydro', 'label': 'Thủy điện', 'color': '#2938A8', 'default': True},
     {'id': 'coal', 'label': 'Nhiệt điện than', 'color': '#3d4653', 'default': True},
     {'id': 'gas', 'label': 'Nhiệt điện khí & LNG', 'color': '#c98a00', 'default': True},
     {'id': 're', 'label': 'Gió & mặt trời', 'color': '#2a9fa3', 'default': True},
-    {'id': 'multi', 'label': 'Phát điện đa nguồn', 'color': '#8997D6', 'default': True},
     {'id': 'diversified', 'label': 'Đa ngành có mảng điện', 'color': '#9AA3BD', 'default': False},
     {'id': 'epc', 'label': 'Xây lắp & thiết bị điện', 'color': '#861C52', 'default': False},
 ]
 COMPANIES = [
     {'ticker': 'VSH', 'group': 'hydro', 'note': 'Vĩnh Sơn, Sông Hinh, Thượng Kon Tum'},
-    {'ticker': 'CHP', 'group': 'hydro', 'note': 'A Lưới; có mặt trời Cư Jút'},
+    {'ticker': 'CHP', 'group': 'hydro', 'mixed': True, 'note': 'Thủy điện A Lưới 170 MW; mặt trời Cư Jút 50 MWp'},
     {'ticker': 'SBA', 'group': 'hydro', 'note': "Krông H'năng, Khe Diên"},
-    {'ticker': 'TMP', 'group': 'hydro', 'note': 'Thác Mơ; có mặt trời'},
+    {'ticker': 'TMP', 'group': 'hydro', 'mixed': True, 'note': 'Thủy điện Thác Mơ 170 MW; mặt trời 50 MWp'},
     {'ticker': 'SHP', 'group': 'hydro', 'note': 'Đambri và các nhà máy ở Lâm Đồng'},
     {'ticker': 'PPC', 'group': 'coal', 'note': 'Phả Lại 1&2'},
     {'ticker': 'QTP', 'group': 'coal', 'note': 'Quảng Ninh 1&2'},
@@ -82,10 +83,10 @@ COMPANIES = [
     {'ticker': 'DTK', 'group': 'coal', 'note': 'Điện lực TKV: Cẩm Phả, Đông Triều, Sơn Động…'},
     {'ticker': 'NT2', 'group': 'gas', 'note': 'Nhơn Trạch 2'},
     {'ticker': 'BTP', 'group': 'gas', 'note': 'Bà Rịa'},
-    {'ticker': 'GEG', 'group': 're', 'note': 'Gió, mặt trời, thủy điện nhỏ'},
-    {'ticker': 'TTA', 'group': 're', 'note': 'Mặt trời, thủy điện nhỏ'},
-    {'ticker': 'POW', 'group': 'multi', 'note': 'Khí, LNG, than, thủy điện'},
-    {'ticker': 'PGV', 'group': 'multi', 'note': 'Khí Phú Mỹ, than Vĩnh Tân 2, Mông Dương 1, thủy điện'},
+    {'ticker': 'GEG', 'group': 're', 'mixed': True, 'note': 'Gió, mặt trời, mái nhà; có thủy điện nhỏ'},
+    {'ticker': 'TTA', 'group': 're', 'mixed': True, 'note': 'Mặt trời 111,8 MWp; thủy điện 82,4 MW'},
+    {'ticker': 'POW', 'group': 'gas', 'mixed': True, 'note': 'Khí + LNG ~4.324 MW; than Vũng Áng 1 1.200 MW; thủy điện ~325 MW'},
+    {'ticker': 'PGV', 'group': 'gas', 'mixed': True, 'note': 'Khí Phú Mỹ ~2.540 MW; than Vĩnh Tân 2, Mông Dương 1 ~2.324 MW; thủy điện Buôn Kuốp 586 MW'},
     {'ticker': 'REE', 'group': 'diversified', 'note': 'Năng lượng, cơ điện lạnh, bất động sản, nước'},
     {'ticker': 'HDG', 'group': 'diversified', 'note': 'Năng lượng, bất động sản'},
     {'ticker': 'PC1', 'group': 'diversified', 'note': 'Xây lắp, năng lượng, khu công nghiệp'},
