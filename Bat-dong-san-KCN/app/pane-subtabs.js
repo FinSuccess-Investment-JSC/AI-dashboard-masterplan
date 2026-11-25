@@ -9,7 +9,7 @@
     mt8:[['Độ tin cậy','.focus-card,.classification-key,.update-legend'],['Nguồn dữ liệu','.card:not(.focus-card),.source-register'],['Tài liệu khác','.research-fold']]
   };
   const config={
-    industrial:{mt4:[['1. Quy hoạch & đất đai','.kcn-pol-plan'],['2. Vốn, thuế & thương mại','.kcn-pol-capital']],mt8:common.mt8},
+    industrial:{},
     oil:{...common,mt4:[['Điều hành giá','.policy-impact,.policy-visuals,.card:has(h2,h3):not(:has(.compare-table))'],['Luật Dầu khí 2026','.card:has(.compare-table)']]},
     power:{...common,mt1:[...common.mt1,['Doanh nghiệp theo dõi',':scope>.section']],mt4:[['Giá điện',card(0)],['Quy hoạch điện VIII',card(1)],['DPPA & điện mái nhà',card(2)],['Lịch 12 tháng',card(3)]]},
     sugar:{...common,mt1:[...common.mt1,['Mùa vụ & sản phẩm phụ',':scope>.section']]},

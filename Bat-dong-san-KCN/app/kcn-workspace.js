@@ -123,7 +123,7 @@
   const labelsInRange = () => QUARTERS.filter(q => inRange(q));
   function readUrl() {
     const u = new URLSearchParams(location.search);
-    if (['demand', 'supply', 'rent', 'landbank', 'finance'].includes(u.get('kcn'))) st.tab = u.get('kcn');
+    if (['demand', 'supply', 'rent', 'landbank'].includes(u.get('kcn'))) st.tab = u.get('kcn');
     [['r', ['both', 'North', 'South']], ['src', ['all', 'cw', 'cbre']], ['seg', ['land', 'RBF', 'RBW']]].forEach(([k, ok]) => { if (ok.includes(u.get(k))) st[k] = u.get(k); });
     if (QUARTERS.includes(u.get('from'))) st.from = u.get('from');
     if (QUARTERS.includes(u.get('to'))) st.to = u.get('to');
@@ -871,7 +871,7 @@
   const TITLE = {demand: 'Nhu cầu thuê đất & FDI', supply: 'Nguồn cung & lấp đầy', rent: 'Giá thuê & địa phương', landbank: 'Quỹ đất & doanh nghiệp', finance: 'Tài chính ngành'};
   const SHORT = {demand: 'Nhu cầu', supply: 'Nguồn cung', rent: 'Giá thuê', landbank: 'Quỹ đất', finance: 'Tài chính ngành'};
   const MOVE_Q = {demand: 'Các chỉ báo hằng tháng (FDI đăng ký, vốn thực hiện, IIP) đang nói gì?', supply: 'Đất cao su chuyển đổi bổ sung bao nhiêu nguồn cung phía Nam?', rent: 'Giá chào thuê các KCN mở bán 2026 ở mức nào?', landbank: 'Thị trường đang định giá nhóm KCN thế nào, doanh nghiệp dự kiến ký mới bao nhiêu?'};
-  const BAR_TABS = ['demand', 'supply', 'rent', 'landbank', 'finance'];
+  const BAR_TABS = ['demand', 'supply', 'rent', 'landbank']; // Tài chính ngành lên tab lớn #mt14 (kcn-overview.js), 26/11/2026
   // Mỗi đoạn có tiêu đề (kc-sec-h) thành một mục câu hỏi pp-panel; phần trước đoạn đầu (ô số) giữ nguyên.
   function toPanels(box, key, prefix, start = 0) {
     let cur = null, k = start;
@@ -989,7 +989,7 @@
     e.preventDefault();
     if (a.dataset.kcQa) { st.qaFilter = a.dataset.kcQa; st.ex.set = 'facts'; if (popo) popo.hidden = true; rerender(); if (window.showMajorTab) window.showMajorTab('mt8'); return; }
     const go = a.dataset.kcnGo;
-    if (!BAR_TABS.includes(go)) { if (window.showMajorTab) window.showMajorTab(go === 'data' ? 'mt8' : 'mt1'); return; }
+    if (!BAR_TABS.includes(go)) { if (go === 'finance' && window.KcnFinTab) window.KcnFinTab.open('fin'); else if (window.showMajorTab) window.showMajorTab('mt1'); return; }
     if (window.showMajorTab) window.showMajorTab('mt2');
     select(go); setTimeout(() => root && root.scrollIntoView({block: 'start'}), 30);
   });
