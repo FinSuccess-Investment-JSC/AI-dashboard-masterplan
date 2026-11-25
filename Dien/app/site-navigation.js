@@ -67,7 +67,7 @@
     const norm = t => String(t || '').toLocaleLowerCase('vi').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
     let entries = [], loaded = false, matches = [], selected = 0;
     function build() {
-      entries = ['oil','sugar','bank','securities','power','realestate','textile','port','agri','seafood','shipping','steel','construction','insurance','retail','pharma'].map(k => ({kind:'sector', code:routes[k].label, sub:'', key:k, words:norm(routes[k].label + ' ' + SECTOR_WORDS[k])}));
+      entries = ['oil','sugar','bank','securities','power','realestate','industrial','textile','port','agri','seafood','shipping','steel','construction','insurance','retail','pharma'].map(k => ({kind:'sector', code:routes[k].label, sub:'', key:k, words:norm(routes[k].label + ' ' + SECTOR_WORDS[k])}));
       const companies = (window.COMPANY_COMPARISON && window.COMPANY_COMPARISON.companies) || [];
       companies.forEach(c => { if (!routes[c.sector]) return; entries.push({kind:'stock', code:c.symbol, sub:routes[c.sector].label + (c.group ? ' · ' + c.group : ''), key:c.sector, words:norm(c.symbol + ' ' + c.group)}); });
       loaded = companies.length > 0;
@@ -182,7 +182,7 @@
     const hubMain = document.querySelector('.fs-home-main');
     if (hubMain && !hubMain.querySelector('.fs-sector-grid')) {
       const grid = document.createElement('div'); grid.className = 'fs-sector-grid'; grid.setAttribute('aria-label', 'Dashboard ngành');
-      for (const key of ['oil','sugar','bank','securities','power','realestate','textile','port','agri','seafood','shipping','steel','construction','insurance','retail','pharma']) {
+      for (const key of ['oil','sugar','bank','securities','power','realestate','industrial','textile','port','agri','seafood','shipping','steel','construction','insurance','retail','pharma']) {
         const a = document.createElement('a'); a.className = 'fs-sector-tile'; a.href = href(key); a.textContent = routes[key].label; grid.append(a);
       }
       hubMain.append(grid);
@@ -197,7 +197,7 @@
       nav.classList.add('site-navigation');
       nav.setAttribute('aria-label','Điều hướng dashboard ngành');
       nav.replaceChildren();
-      for (const key of ['oil','sugar','bank','securities','power','realestate','textile','port','agri','seafood','shipping','steel','construction','insurance','retail','pharma']) {
+      for (const key of ['oil','sugar','bank','securities','power','realestate','industrial','textile','port','agri','seafood','shipping','steel','construction','insurance','retail','pharma']) {
         const link = document.createElement('a');
         link.href = href(key);
         link.dataset.siteRoute = key;
