@@ -271,7 +271,7 @@ function forward(p) {
     <div class="ov-pc-col"><h4>Sắp tới <small>mốc theo quy định, dự thảo, khung giá còn thiếu</small></h4><ol class="ov-tl-list">${next.map(nextLi).join('')}</ol></div>`);
   p.append(sec('fw-supply', '3.1', 'Quy hoạch điện VIII đặt mục tiêu công suất bao nhiêu đến 2030?', ol, {sub: 'Quy hoạch điện VIII điều chỉnh (Quyết định 768/QĐ-TTg ngày 15/04/2025): khoảng công suất mục tiêu năm 2030 theo loại hình nguồn.',
       method: 'Mục tiêu theo Quyết định 768/QĐ-TTg (15/04/2025) phê duyệt điều chỉnh Quy hoạch điện VIII; gió ngoài khơi và điện hạt nhân là mốc 2030–2035. Công suất thực tế cuối 2025 theo EVN ước (chỉ có cho thủy điện và nhiệt điện than).'}),
-    sec('fw-cal', '3.2', 'Văn bản nào vừa duyệt hoặc sắp có, tác động tới giá điện?', tl, {sub: `Trần khung giá phát điện, giá bán lẻ, quy tắc thị trường (Qc, CAN, trần SMP), mua bán điện trực tiếp. Tín hiệu và kịch bản: <a href="#mt5" data-ov-main="mt5">tab Catalyst · Risk →</a>`}));
+    sec('fw-cal', '3.2', 'Văn bản nào vừa duyệt hoặc sắp có, tác động tới giá điện?', tl, {sub: `Trần khung giá phát điện, giá bán lẻ, quy tắc thị trường (Qc, CAN, trần SMP), mua bán điện trực tiếp.`}));
 }
 
 /* ===================== 9. Dựng tab, điều hướng ===================== */

@@ -23,27 +23,26 @@
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="app/catalyst-board.js?v=e69ff7b64de8" defer></script>
 <script src="app/sector-smart.js?v=9199819d80e6" defer></script>
 <script src="../data/company-valuation.js?v=59d42616e817" defer></script>
 <script src="../data/company-comparison.js?v=57100795fdb1" defer></script>
 <script src="../data/company-quarterly.js?v=95f3ff4a5c9f" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=c3549c738a62" defer></script>
+<script src="app/research-layout.js?v=2f5cb88d6d09" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=53be49980eb9" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
-<script src="app/stock-dom.js?v=5eecaa4c6683" defer></script>
+<script src="app/stock-dom.js?v=54e77361968d" defer></script>
 <script src="app/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <script src="app/source-gap.js?v=f5423408804a" defer></script>
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=7166cf0575e8" defer></script>
-<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-dien-gia-ban-le"></script>
+<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-bo-dong-luc-rui-ro"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
@@ -60,7 +59,6 @@
   <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
   <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
   <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
-  <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst / Risk</button>
   <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
   <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
   <button class="majortabbtn" onclick="showMajorTab('mt10',this)">8. Địa chính trị &amp; tuyến</button>
@@ -345,22 +343,6 @@
       <div class="tablewrap" style="margin-top:10px"><table class="compare-table"><thead><tr><th>Đội tàu Việt Nam</th><th>12/2024</th><th>12/2025</th><th>Nguồn</th></tr></thead><tbody><tr><td>Số tàu / tổng trọng tải</td><td>1.430 tàu / 11,37 triệu DWT (956 tàu vận tải, 10,5 triệu DWT)</td><td><b>1.434 tàu / ~9,4 triệu DWT</b>; 73 tàu đăng ký mới</td><td><a href="https://vneconomy.vn/techconnect//nganh-hang-hai-tang-truong-manh-me-huong-toi-muc-tieu-moi.htm" target="_blank" rel="noopener">VnEconomy</a> · <a href="https://moc.gov.vn/vn/tin-tuc/1173/90629/cuc-hang-hai-va-duong-thuy-viet-nam-hoan-thien-the-che-tao-moi-truong-kinh-doanh-thong-thoang-minh-bach-on-dinh-an-toan.aspx" target="_blank" rel="noopener">Bộ Xây dựng</a></td></tr><tr><td>Tuổi bình quân tàu vận tải</td><td>17,4 (container 18,5)</td><td>—</td><td>VnEconomy</td></tr></tbody></table></div>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>9,4 vs 11,37 triệu DWT: hai số khác nguồn và phạm vi (Bộ Xây dựng 12/2025 vs VnEconomy 12/2024, nhiều khả năng một số gồm tàu nước ngoài/tàu không vận tải), không phải đội tàu giảm — không so hai số với nhau. Tuổi tàu 2025 chưa có. PDF gốc QĐ 1254 tải về rỗng nên dẫn báo.</div></details>
     </div>
-  </section>
-  </div>
-  <div class="majorpane" data-tab="mt5" id="pane-mt5">
-  <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu công khai (Baltic, Brent, vận chuyển, định giá) và PortWatch (Hormuz, Biển Đỏ).</p></div></div>
-    <div class="catriskgrid">
-      <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Catalyst — yếu tố hỗ trợ</h3>
-        <ul><li><b>Cước tanker cao</b>: BDTI <span id="cat-bdti-x">gấp ~3 lần</span>, BCTI <span id="cat-bcti-x">gấp ~3 lần</span> cùng kỳ <span class="muted">(1–3 quý · PVT · PVP · VTO · VIP)</span></li><li><b>Hàng rời cung chặt</b>: orderbook 14%, BDI +48% YoY <span class="muted">(2026 · VOS · VNA)</span></li><li><b>Cấm vận hút cung</b>: OFAC +22 tàu dầu/khí (8/10), EU &gt;670 tàu bị cấm <span class="muted">(liên tục · tanker)</span></li></ul>
-      </div>
-      <div class="riskbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3>Risk — rủi ro</h3>
-        <ul><li><b>Hormuz, Suez mở lại</b>: tấn-dặm mất đi, BIMCO ước cầu tàu container −10% nếu Suez bình thường <span class="muted">(theo sự kiện · cả ngành)</span></li><li><b>Cung tàu container 2027 +9%</b>, orderbook 42% <span class="muted">(2027 · HAH)</span></li><li><b>Nhiên liệu đắt</b>: Brent +59% YoY <span class="muted">(1–2 quý · VOS · VNA chạy chuyến)</span></li><li><b>Phí bảo hiểm chiến tranh 7,5–12,5%/lượt</b> với tàu vào Vịnh <span class="muted">(hiện tại · tàu dầu)</span></li></ul>
-      </div>
-    </div>
-    <div class="srcrow"><a href="https://portwatch.imf.org/" target="_blank" rel="noopener">IMF PortWatch</a><a href="https://ofac.treasury.gov/recent-actions/20261008" target="_blank" rel="noopener">OFAC 08/10/2026</a><a href="https://cyprusshippingnews.com/2026/09/28/bimcos-container-shipping-market-overview-outlook-september-2026-is-out/" target="_blank" rel="noopener">BIMCO container</a></div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt6" id="pane-mt6">

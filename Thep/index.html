@@ -21,27 +21,26 @@
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=3ca9033119b7" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="app/catalyst-board.js?v=e69ff7b64de8" defer></script>
 <script src="app/sector-smart.js?v=9199819d80e6" defer></script>
 <script src="../data/company-valuation.js?v=59d42616e817" defer></script>
 <script src="../data/company-comparison.js?v=57100795fdb1" defer></script>
 <script src="../data/company-quarterly.js?v=95f3ff4a5c9f" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=c3549c738a62" defer></script>
+<script src="app/research-layout.js?v=2f5cb88d6d09" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=53be49980eb9" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
-<script src="app/stock-dom.js?v=5eecaa4c6683" defer></script>
+<script src="app/stock-dom.js?v=54e77361968d" defer></script>
 <script src="app/layout-balance.js?v=1266e321a8da" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <script src="app/source-gap.js?v=f5423408804a" defer></script>
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=7166cf0575e8" defer></script>
-<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-dien-gia-ban-le"></script>
+<script src="app/site-navigation.js?v=71ae283e77ce" data-release="20261125-bo-dong-luc-rui-ro"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
@@ -63,7 +62,6 @@
   <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Cung – Cầu</button>
   <button class="majortabbtn" onclick="showMajorTab('mt3',this)">3. Giá – Chi phí – Margin</button>
   <button class="majortabbtn" onclick="showMajorTab('mt4',this)">4. Policy / Trade / Tax</button>
-  <button class="majortabbtn" onclick="showMajorTab('mt5',this)">5. Catalyst / Risk</button>
   <button class="majortabbtn" onclick="showMajorTab('mt6',this)">6. Key players</button>
   <button class="majortabbtn" onclick="showMajorTab('mt7',this)">7. Chủ đề nóng</button>
 </nav>
@@ -162,15 +160,6 @@
       <tr><td><b>~7/2027</b></td><td>Kết luận điều tra CBPG thanh thép dự ứng lực Trung Quốc (AD24, khởi xướng 27/7/2026)</td><td><span class="est">Ước, 12 tháng</span></td><td>▲ HPG</td><td><a href="https://trungtamwto.vn/chuyen-de/33117-bct-quyet-dinh-dieu-tra-ap-dung-bien-phap-cbpg-doi-voi-thanh-thep-du-ung-luc-nhap-khau-tu-trung-quoc" target="_blank" rel="noopener">Trung tâm WTO</a></td></tr>
       </tbody></table></div>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>"Ước" là suy từ thời hạn luật định hoặc thông lệ, chưa có văn bản ấn định ngày; trav.gov.vn không có lịch deadline tập trung, chỉ có tin từng vụ (đã mở 05/11/2026). Trang tham vấn hạn ngạch EU mở được nhưng là biểu mẫu, không có API; số dư hạn ngạch riêng Việt Nam chưa lấy được. CBAM: mức chưa có.</div></details></div>
-  </section>
-  </div>
-  <div class="majorpane" data-tab="mt5" id="pane-mt5">
-  <section class="section">
-    <div class="sectionhead"><div><h2>5. Catalyst/Risk</h2><p>Tín hiệu tính từ dữ liệu giá, sản lượng, thương mại, định giá.</p></div></div>
-    <div class="catriskgrid">
-      <div class="catbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><h3>Catalyst — yếu tố hỗ trợ</h3><ul><li><b>Ray Hòa Phát 700.000 tấn/năm</b>, đạt 80%, ray từ quý II/2027 <span class="muted">(HPG)</span></li><li><b>NKG Phú Mỹ 1,3 triệu tấn/năm</b>, chưa xác nhận chạy thương mại <span class="muted">(NKG)</span></li><li><b>Chống lẩn tránh HRC khổ rộng 27,83%</b> tạm thời từ 17/4/2026 <span class="muted">(HPG)</span></li></ul></div>
-      <div class="riskbox" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><h3>Risk — rủi ro</h3><ul><li><b>Rà soát CBPG HRC</b> mở 27/7/2026 <span class="muted">(HPG · HSG · NKG)</span></li><li><b>EU hạn ngạch 18,35 triệu tấn</b>, vượt 50% <span class="muted">(HSG · NKG · HPG)</span></li><li><b>NKG nợ vay 8.635 tỷ</b>, 111% VCSH <span class="muted">(NKG)</span></li><li><b>POM âm vốn gần 948 tỷ</b> <span class="muted">(POM)</span></li></ul></div>
-    </div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt6" id="pane-mt6">
