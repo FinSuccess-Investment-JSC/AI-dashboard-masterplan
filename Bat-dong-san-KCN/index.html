@@ -13,7 +13,8 @@
 <script src="app/data-math.js?v=ed6356aac3af" defer></script>
 <script src="../data/kcn-market.js?v=bceb7010ab87" defer></script>
 <script src="app/kcn-insights.js?v=360fc8f883c0" defer></script>
-<script src="app/kcn-brief.js?v=ddd326149166" defer></script>
+<script src="app/value-chain.js?v=a597c7c73610" defer></script>
+<script src="app/kcn-brief.js?v=0277f0759ba6" defer></script>
 <script src="app/kcn-charts.js?v=10f0ff3c07f9" defer></script>
 <script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
@@ -26,10 +27,10 @@
 <script src="app/ticker-scope.js?v=5442eb0f9351" defer></script>
 <script src="app/company-trend.js?v=b3b8ce6baee9" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=9af31a22890e" defer></script>
+<script src="app/research-layout.js?v=1b1ed1b7256f" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=11ab16f80046" defer></script>
-<script src="app/pane-subtabs.js?v=20ac5f6ba164" defer></script>
+<script src="app/pane-subtabs.js?v=f5823a01e98b" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
 <script src="app/stock-dom.js?v=54e77361968d" defer></script>
@@ -39,8 +40,8 @@
 <script src="../data/kcn-financials.js?v=15380f0d7fb6" defer></script>
 <script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
 <script src="app/kcn-finance.js?v=81d1d9b90ff3" defer></script>
-<script src="app/kcn-workspace.js?v=fee971800132" defer></script>
-<script src="app/kcn-overview.js?v=c53b7d95b1aa" defer></script>
+<script src="app/kcn-workspace.js?v=8f5dc142e09f" defer></script>
+<script src="app/kcn-overview.js?v=0adc82aff569" defer></script>
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=7166cf0575e8" defer></script>
@@ -61,7 +62,7 @@
 <nav class="majortabs">
   <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
   <button class="majortabbtn" onclick="showMajorTab('mt2',this)">2. Bức tranh ngành</button>
-  <button class="majortabbtn" onclick="showMajorTab('mt4',this)">3. Chính sách · Thuế · Thương mại</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt14',this)">3. Tài chính ngành</button>
   <button class="majortabbtn" onclick="showMajorTab('mt7',this)">4. Chủ đề nóng</button>
 </nav>
 
@@ -89,11 +90,6 @@
       <div class="card" data-block-id="kcn-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
         <h3 style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3>
         <p style="font-size:12.5px;line-height:1.6;margin:0">10 doanh nghiệp hạ tầng khu công nghiệp niêm yết: KBC, IDC, BCM, SZC, SIP, VGC, LHG, NTC, D2D, TIP.</p>
-      </div>
-      <div class="card" data-block-id="kcn-02" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3 style="margin-top:0;font-size:13.5px">Vị trí trong chu kỳ</h3>
-        <p style="font-size:12.5px;line-height:1.65;margin-bottom:0" data-kcn-cycle><mark class="key-phrase">Khu công nghiệp:</mark> số liệu cầu thuê, lấp đầy và nguồn cung ở tab Khu công nghiệp.</p>
-        <div class="source-note">Nguồn: workbook KCN (Cushman &amp; Wakefield, CBRE), Cục ĐTNN.</div>
       </div>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="kcn-03" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
@@ -185,29 +181,9 @@
   </section>
   </div>
 
-  <div class="majorpane" data-tab="mt4" id="pane-mt4">
-  <section id="policy" class="section">
-    <div class="sectionhead"><div><h2>4. Policy / Trade / Tax</h2><p>Khu công nghiệp được lập và tính tiền đất thế nào; vốn và thuế quan tác động tới chủ đầu tư, khách thuê ra sao.</p></div></div>
-    <div class="card kcn-pol-plan" data-block-id="bds-42" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
-      <h3 style="margin-top:0;font-size:13.5px">Khu công nghiệp được lập, mở rộng và tính tiền đất thế nào?</h3>
-      <div class="tablewrap"><table><thead><tr><th>Văn bản · mốc</th><th>Nội dung</th><th>Ý nghĩa với doanh nghiệp KCN</th></tr></thead><tbody><tr><td><a href="https://luatvietnam.vn/cong-nghiep/nghi-dinh-35-2022-nd-cp-quy-dinh-quan-ly-khu-cong-nghiep-va-khu-kinh-te-221871-d1.html" target="_blank" rel="noopener">NĐ 35/2022/NĐ-CP</a> · hiệu lực 15/07/2022</td><td>Quản lý KCN, khu kinh tế: quy hoạch, đầu tư hạ tầng, chính sách phát triển; bỏ bước "thành lập KCN" riêng so với NĐ 82/2018</td><td>Rút thủ tục mở KCN mới; tốc độ có quỹ đất cho thuê phụ thuộc phê duyệt chủ trương và giải phóng mặt bằng</td></tr><tr><td><a href="https://luatvietnam.vn/tin-van-ban-moi/da-co-nghi-quyet-254-2025-qh15-ve-co-che-thao-go-kho-khan-vuong-mac-trong-thi-hanh-luat-dat-dai-186-105881-article.html" target="_blank" rel="noopener">NQ 254/2025/QH15</a> · 01/01/2026</td><td>Thu hồi phần đất còn lại khi đã thỏa thuận &gt;75% diện tích và &gt;75% người sử dụng đất</td><td>Rút ngắn đền bù khu đất KCN dang dở — yếu tố quyết định diện tích sẵn sàng cho thuê</td></tr><tr><td><a href="https://tienphong.vn/chi-tiet-bang-gia-dat-moi-se-ap-dung-o-tphcm-tu-1-1-2026-post1808173.tpo" target="_blank" rel="noopener">Bảng giá đất 2026</a> · cập nhật hằng năm</td><td>Bình Dương cũ (nay thuộc TP.HCM) tăng tới <b>&gt;8 lần</b>, Bà Rịa – Vũng Tàu cũ 1,7–&gt;4 lần</td><td>Tiền thuê đất, tiền sử dụng đất của KCN phía Nam tăng; hỗ trợ giá cho thuê lại nhưng tăng chi phí dự án mới</td></tr></tbody></table></div>
-    </div>
-    <div class="card kcn-pol-plan" data-block-id="bds-49" data-update-kind="document" data-cadence="rare" data-refresh-status="snapshot">
-        <div class="chart-title">Bản đồ quy hoạch đang thay đổi ở đâu?</div>
-        <div class="chart-sub">địa giới, khu thương mại tự do, khu kinh tế</div>
-        <div class="tablewrap"><table><thead><tr><th>Thay đổi</th><th>Nội dung</th><th>Nguồn</th></tr></thead><tbody>
-          <tr><td><b>Sáp nhập tỉnh</b></td><td>63 → <b>34</b> tỉnh/thành từ 1/7/2025; tên địa bàn KCN, quy hoạch tỉnh đổi theo</td><td><a href="https://nhadautu.vn/34-tinh-thanh-du-kien-hoat-dong-tu-1-7-2025-co-ten-nhu-the-nao-d96897.html" target="_blank" rel="noopener">Nhà đầu tư</a></td></tr>
-          <tr><td><b>KTM tự do Hải Phòng</b></td><td>~<b>6.292 ha</b>, QĐ 4068/QĐ-UBND; gắn KKT Đình Vũ – Cát Hải</td><td><a href="https://nhadautu.vn/thanh-lap-khu-thuong-mai-tu-do-hai-phong-gan-6300-ha-d100001.html" target="_blank" rel="noopener">Nhà đầu tư 17/10/2025</a></td></tr>
-          <tr><td><b>Trung tâm tài chính QT TP.HCM</b></td><td>Thủ tướng yêu cầu ra mắt chậm nhất 9/2/2026</td><td><a href="https://baovanhoa.vn/chinh-tri/thu-tuong-cham-nhat-ngay-922026-ra-mat-trung-tam-tai-chinh-quoc-te-tai-tphcm-197918.html" target="_blank" rel="noopener">Báo Văn hóa 16/01/2026</a></td></tr>
-          <tr><td><b>Khu kinh tế trọng điểm</b></td><td>Đình Vũ – Cát Hải (Tràng Duệ 3 · KBC), Vũng Áng (VHM), Chu Lai (Thaco), Nam Phú Yên (Hòa Tâm · HPG)</td><td><a href="https://www.vdsc.com.vn/" target="_blank" rel="noopener">VDSC 01/2026, tr. 6, 9</a></td></tr>
-        </tbody></table></div>
-      </div>
-    <div class="card kcn-pol-capital" data-block-id="kcn-42b" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
-      <h3 style="margin-top:0;font-size:13.5px">Vốn và thuế quan tác động tới chủ đầu tư và khách thuê ra sao?</h3>
-      <div class="tablewrap"><table><thead><tr><th>Văn bản · mốc</th><th>Nội dung</th><th>Ý nghĩa với doanh nghiệp KCN</th></tr></thead><tbody><tr><td><a href="https://lsvn.vn/25-ngan-hang-duoc-noi-dieu-kien-cho-vay-nha-o-xa-hoi-a173572.html" target="_blank" rel="noopener">25 ngân hàng được nới · 2026</a></td><td>Dư nợ tăng thêm cho KCN, khu chế xuất <b>không tính</b> vào giới hạn tăng trưởng tín dụng bất động sản</td><td>KCN được ưu tiên vốn hơn nhà ở thương mại; dư nợ KCN/KCX 30/06/2026 <b>184.137 tỷ</b> (+32,4%) theo <a href="https://thanhtra.com.vn/nha-dat-57A4B2310/du-no-kinh-doanh-bat-dong-san-vuot-25-trieu-ty-dong-eca280581.html" target="_blank" rel="noopener">Bộ Xây dựng</a></td></tr><tr><td><a href="https://trungtamwto.vn/chuyen-de/31841-hang-viet-nam-dang-chiu-cac-loai-thue-quan-nao-khi-xuat-khau-sang-thi-truong-my" target="_blank" rel="noopener">Thuế quan Mỹ</a></td><td>Thuế đối ứng 20% (08/2025) bị Tòa Tối cao Mỹ bác (02/2026) → thuế toàn cầu 10% theo Section 122 đến 24/07/2026</td><td>Quyết định chuyển nhà máy vào Việt Nam của khách thuê FDI; cơ chế sau 24/07/2026 chưa xác minh</td></tr></tbody></table></div>
-    </div>
-  </section>
-  </div>
+  <div class="majorpane" data-tab="mt4" id="pane-mt4"><section id="policy" class="section"><div class="sectionhead"><div><h2>Chính sách</h2></div></div></section></div>
+
+  <div class="majorpane" data-tab="mt14" id="pane-mt14"></div>
 
   <div class="majorpane" data-tab="mt6" id="pane-mt6">
   <section class="section">

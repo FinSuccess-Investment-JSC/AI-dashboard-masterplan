@@ -2101,8 +2101,7 @@
      "bds-21",
      "bds-37",
      "bds-38",
-     "bds-42",
-     "kcn-42b"
+     "bds-42"
     ]
    },
    "how": "Kiểm văn bản mới (luật sửa đổi, nghị định, thông tư NHNN, nghị quyết bảng giá đất); cập nhật bảng Trước/Sau và chLandPrice; đổi 'chưa xác minh' thành số hiệu khi có",
@@ -2192,29 +2191,6 @@
     "page": "Bat-dong-san/index.html",
     "blocks": [
      "bds-02"
-    ]
-   },
-   "how": "Cập nhật số và nhận định trong bds-02 và catbox/riskbox theo số mới; bảng tín hiệu tự tính từ dữ liệu công khai",
-   "gates": [
-    "Số khớp chart",
-    "Không đụng ô analyst"
-   ]
-  },
-  {
-   "id": "industrial.ai.cycle",
-   "tier": "D",
-   "title": "BĐS KCN: vị trí trong chu kỳ, đọc nhanh",
-   "schedule": {
-    "type": "data",
-    "sources": [],
-    "minDays": 7,
-    "material": [],
-    "note": "Viết lại khi dư nợ chậm trả TPDN BĐS đổi ≥ 5% hoặc gốc đến hạn 3 tháng tới / dư nợ đổi ≥ 1 điểm %, hoặc có số quý mới của Bộ Xây dựng"
-   },
-   "where": {
-    "page": "Bat-dong-san-KCN/index.html",
-    "blocks": [
-     "kcn-02"
     ]
    },
    "how": "Cập nhật số và nhận định trong bds-02 và catbox/riskbox theo số mới; bảng tín hiệu tự tính từ dữ liệu công khai",
