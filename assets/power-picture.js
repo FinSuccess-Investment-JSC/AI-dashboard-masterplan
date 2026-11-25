@@ -445,10 +445,9 @@ const SECTIONS = [
   ['hydro', '02', 'Thủy văn', 'Thủy văn & nguồn cung', 'Điều kiện thủy văn và khả năng vận hành nguồn đang thuận lợi hay bất lợi?'],
   ['dispatch', '03', 'Huy động', 'Cơ cấu huy động', 'Nguồn nào đang được huy động nhiều hơn, nguồn nào đóng góp vào tăng trưởng sản lượng?'],
   ['economics', '04', 'Giá điện', 'Giá & kinh tế phát điện', 'Giá thị trường điện và nhiên liệu đang thuận hay bất lợi cho nhà máy phát điện?'],
-  ['evn', '05', 'EVN', 'EVN & dòng tiền hệ thống', 'Giá bán lẻ và tài chính bên mua điện ảnh hưởng thế nào đến dòng tiền ngành?'],
-  ['supply', '06', 'Cung dài hạn', 'Cung điện dài hạn', 'Có đủ công suất cho phụ tải 2027–2030 không, nguồn mới đang ở giai đoạn nào?'],
+  ['supply', '05', 'Cung dài hạn', 'Cung điện dài hạn', 'Có đủ công suất cho phụ tải 2027–2030 không, nguồn mới đang ở giai đoạn nào?'],
   // 07 Tài chính ngành (25/11/2026): dựng ở assets/power-finance.js từ BCTC doanh nghiệp (window.POWER_FIN).
-  ['finance', '07', 'Tài chính ngành', 'Tài chính ngành', 'Lợi nhuận, dòng vốn đầu tư, công nợ và dòng tiền của doanh nghiệp phát điện niêm yết đang diễn biến ra sao?']
+  ['finance', '06', 'Tài chính ngành', 'Tài chính ngành', 'Lợi nhuận, dòng vốn đầu tư, công nợ và dòng tiền của doanh nghiệp phát điện niêm yết đang diễn biến ra sao?']
 ];
 SECTIONS.forEach(s => { renders[s[0]] = []; });
 const asOf = {demand: lastDay, hydro: H?.last_observation, dispatch: lastDay, economics: fmpLast ? 'FMP ' + ml(fmpLast.period) + ' · nhiên liệu ' + dm(coal3?.date) : null, evn: tariffDates ? 'giá bán lẻ từ ' + tariffDates.at(-1) : null, supply: 'Báo cáo 760/BC-BCT (10/09/2026)', finance: window.POWER_FIN ? 'BCTC ' + window.POWER_FIN.periods.at(-1).replace(/^(\d{4})Q(\d)$/, 'Q$2/$1') : null};
@@ -464,7 +463,7 @@ function build() {
   // Card dời từ Chủ đề nóng (pipeline, thiếu hụt): để lại liên kết ở chỗ cũ.
   const moved = ['dien-24', 'dien-25'].map(id => { const c = C(id); if (!c) return null; const note = el('div', 'card pp-moved', `<div class="chart-title">${esc(c.querySelector('.chart-title')?.textContent || '')}</div><p class="research-caption">Biểu đồ đã chuyển sang <a href="?section=supply#mt2" data-pp-go="supply">Bức tranh ngành › Cung điện dài hạn</a>.</p>`); c.before(note); return c; });
 
-  if (head) head.innerHTML = `<div><h2 class="sec">Bức tranh ngành</h2><p>Cầu → thủy văn & nguồn cung → huy động → giá & biên → dòng tiền EVN → cung dài hạn. Mỗi sub-tab trả lời một câu hỏi; chi tiết số liệu và phương pháp thu gọn ở cuối panel. Toàn cảnh ngành: <a href="?ov=map#mt1" data-ov-go="map">← Tổng quan ngành</a>.</p></div>`;
+  if (head) head.innerHTML = `<div><h2 class="sec">Bức tranh ngành</h2><p>Cầu → thủy văn & nguồn cung → huy động → giá điện → cung dài hạn → tài chính ngành. Mỗi sub-tab trả lời một câu hỏi; chi tiết số liệu và phương pháp thu gọn ở cuối panel. Toàn cảnh ngành: <a href="?ov=map#mt1" data-ov-go="map">← Tổng quan ngành</a>.</p></div>`;
   const nav = el('div', 'pp-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Nhóm câu hỏi phân tích');
   head ? head.after(nav) : section.prepend(nav);
   const panes = {}; let anchor = nav;
@@ -558,17 +557,10 @@ function build() {
     main: fuelCard(), explore: [C('fast-price') || H2('chFastPrice'), C('dien-12') || H2('chCoalM'), C('dien-13') || H2('chGasM')],
     deep: {method: 'Giá tháng World Bank (than Úc, LNG Nhật, Henry Hub); giá ngày ICE (Newcastle, JKM); so 3 tháng theo 63 phiên.'}}));
 
-  /* ---------- 05 EVN ---------- */
-  const tFirst = tariffVals?.[0], tLast = tariffVals?.at(-1);
-  panes.evn.append(take(tLast && lossVals ? `Giá bán lẻ bình quân ${nf(tLast, 2)} đ/kWh từ ${tariffDates.at(-1)} (${pc((tLast / tariffVals.at(-2) - 1) * 100)}); lỗ lũy kế công ty mẹ EVN ${lossVals.at(-1) === 0 ? 'đã xử lý hết' : nf(lossVals.at(-1), 0) + ' tỷ đồng'} (${lossLabels.at(-1)}). Chưa có bằng chứng trực tiếp về rủi ro thanh toán cho nhà máy.` : 'Chưa đủ dữ liệu.', 'B', 'Verified'), legend());
-  strip('evn', [neutral(keep.tariff), kpi({label: 'Thay đổi từ ' + (tariffDates?.[0]?.slice(-4) || '—'), value: pc(tFirst && tLast ? (tLast / tFirst - 1) * 100 : null), delta: `${tariffVals ? tariffVals.length - 1 : '—'} lần điều chỉnh`, cls: 'pp-neutral', sub: `giá bán lẻ bình quân, ${tariffDates?.[0] || '—'} → ${tariffDates?.at(-1) || '—'}`}),
-    kpi({label: 'Lỗ lũy kế công ty mẹ EVN', value: lossVals ? (lossVals.at(-1) === 0 ? 'Đã xử lý hết' : nf(lossVals.at(-1), 0)) : '—', delta: lossVals ? `cuối 2024: lỗ ${nf(Math.abs(lossVals[0]), 0)} tỷ đồng` : '', cls: 'pp-neutral', sub: `${lossLabels?.at(-1) || '—'} · công ty mẹ, không phải hợp nhất`})]);
-  panes.evn.append(qpanel({id: 'evn-tariff', num: '5.1', q: 'Giá bán lẻ đã điều chỉnh thế nào?', lv: 'A', concl: tLast ? `Giá bán lẻ bình quân ${nf(tLast, 2)} đ/kWh (chưa VAT) từ ${tariffDates.at(-1)}, ${pc((tLast / tariffVals.at(-2) - 1) * 100)} so mức trước; ${pc((tLast / tFirst - 1) * 100)} so ${tariffDates[0]}.` : '',
-    impl: 'Giá bán lẻ là nguồn tiền chính của bên mua điện; giảm giá thu hẹp đệm tài chính của EVN nếu chi phí mua điện không giảm tương ứng.', main: C('dien-14') || H2('chTariff'),
-    deep: {method: 'Quyết định giá bán lẻ bình quân của EVN/Bộ Công Thương. Không ghép với khung giá phát điện (loại giá khác, xem tab Policy · Tax · Trade).'}}));
-  panes.evn.append(qpanel({id: 'evn-fin', num: '5.2', q: 'Tài chính EVN đang cải thiện hay xấu đi?', lv: 'A', concl: lossVals ? `Phạm vi: công ty mẹ EVN. Lỗ lũy kế ${nf(Math.abs(lossVals[0]), 0)} tỷ đồng (${lossLabels[0]}) → ${nf(Math.abs(lossVals[1]), 0)} (${lossLabels[1]}) → ${lossVals.at(-1) === 0 ? 'đã xử lý hết' : nf(lossVals.at(-1), 0)} (${lossLabels.at(-1)}).` : '',
-    impl: 'Lỗ lũy kế giảm làm giảm áp lực tài chính lên bên mua; chưa đủ để kết luận về tốc độ thanh toán cho từng nhà máy.', main: C('dien-16') || H2('chEvnLoss'),
-    body: gap('Báo cáo hợp nhất EVN, dòng tiền, khoản phải trả các đơn vị phát điện theo kỳ. Không nối số công ty mẹ với số hợp nhất thành một chuỗi.')}));
+  /* ---------- Tab EVN bỏ 25/11/2026 (theo yêu cầu người dùng): giá bán lẻ vào 04 Giá điện, lỗ lũy kế EVN vào Tài chính ngành ---------- */
+  panes.economics.append(qpanel({id: 'econ-retail', num: '4.3', q: 'Giá bán lẻ điện bình quân đã điều chỉnh thế nào?', lv: 'A', main: C('dien-14') || H2('chTariff')}));
+  // Lỗ lũy kế công ty mẹ EVN (bên mua điện) đặt cạnh phải thu & dòng tiền của doanh nghiệp phát điện (dựng khi mở Tài chính ngành).
+  renders.finance.push(() => { const c = C('dien-16'), host = document.getElementById('pf-sec-cash'); if (!c || !host) return; c.hidden = false; c.classList.remove('pp-old'); host.append(c); refit(panes.finance); });
 
   /* ---------- 06 Cung dài hạn ---------- */
   const capTotal = capItems ? sum(capItems.map(x => x[1])) : null, lngP = lngProjects(), lngMw = sum(lngP.map(p => p.mw)), lngOp = sum(lngP.filter(p => p.stage === 'op').map(p => p.mw)), lngBuild = sum(lngP.filter(p => p.stage === 'build').map(p => p.mw)), lngDelay = sum(lngP.filter(p => p.stage === 'delay').map(p => p.mw));
@@ -577,20 +569,20 @@ function build() {
     kpi({label: 'Pmax từ đầu năm', value: nf(pmaxYtd?.cur.pmax, 0), unit: 'MW', delta: dm(pmaxYtd?.cur.date), cls: 'pp-neutral', sub: 'EVN · không so trực tiếp với công suất đặt'}),
     kpi({label: 'LNG đang xây dựng', value: nf(lngBuild, 0), unit: 'MW', delta: `${nf(lngDelay, 0)} MW chậm/chưa chắc`, cls: 'pp-neutral', sub: `trên ${nf(lngMw, 0)} MW dự án LNG theo dõi`}),
     kpi({label: 'Thiếu hụt 2030 nếu dự án chậm', value: nf(shortfallMw?.at(-1), 0), unit: 'MW', delta: 'kịch bản, không phải dự báo', cls: 'pp-neutral', sub: 'Báo cáo 760/BC-BCT'})]);
-  panes.supply.append(qpanel({id: 'supply-cap', num: '6.1', q: 'Công suất hiện có so với phụ tải: biết được gì, chưa biết gì?', lv: 'A',
+  panes.supply.append(qpanel({id: 'supply-cap', num: '5.1', q: 'Công suất hiện có so với phụ tải: biết được gì, chưa biết gì?', lv: 'A',
     concl: capTotal && pmaxYtd ? `Công suất đặt cuối 2025 khoảng ${nf(capTotal, 0)} MW, Pmax 2026 ${nf(pmaxYtd.cur.pmax, 0)} MW.` : '',
     main: C('dien-10') || H2('chCapacity'),
     deep: {method: 'Công suất đặt theo EVN (ước cuối 2025); Pmax theo bản tin vận hành.', limits: 'Thiếu chuỗi công suất đặt theo năm, công suất khả dụng, dự phòng theo miền.'}}));
   // 6.2 Quy hoạch điện VIII (thay chart "Sản lượng cần tăng … để đạt mục tiêu 2030" theo yêu cầu người dùng 25/11/2026); khối dựng ở power-overview.js.
   const q8 = window.PowerPlan8 ? window.PowerPlan8('dien-pp-plan8') : null;
-  panes.supply.append(qpanel({id: 'supply-output', num: '6.2', q: 'Quy hoạch điện VIII đặt mục tiêu công suất bao nhiêu đến 2030?', lv: 'A',
+  panes.supply.append(qpanel({id: 'supply-output', num: '5.2', q: 'Quy hoạch điện VIII đặt mục tiêu công suất bao nhiêu đến 2030?', lv: 'A',
     main: q8 || C('dien-11') || H2('chOutputTarget')}));
   if (q8) { const old = C('dien-11'); if (old) { old.hidden = true; old.classList.add('pp-old'); } }
-  panes.supply.append(qpanel({id: 'supply-pipe', num: '6.3', q: 'Nguồn mới đang ở giai đoạn nào và vào vận hành năm nào?', lv: 'A', st: lngP.length ? 'Verified' : 'Insufficient',
+  panes.supply.append(qpanel({id: 'supply-pipe', num: '5.3', q: 'Nguồn mới đang ở giai đoạn nào và vào vận hành năm nào?', lv: 'A', st: lngP.length ? 'Verified' : 'Insufficient',
     concl: lngP.length ? `Danh sách có MW mới có cho điện khí LNG (${lngP.length} dự án, ${nf(lngMw, 0)} MW). Các nguồn khác chỉ có tỷ trọng theo số dự án (Báo cáo 760), không suy ra MW.` : '',
     impl: 'Dự án đang xây dựng và đã ký EPC là nguồn việc gần nhất cho nhà thầu, thiết bị; dự án vướng PPA, vốn có rủi ro trượt COD.', main: pipelineCard(), support: moved[0],
     deep: {method: 'Phân loại theo mô tả trạng thái trong bảng nguồn: vận hành; đang xây dựng (khởi công); đã ký hợp đồng EPC/dự án; chậm/chưa chắc (vướng PPA, vốn, chưa khởi công, không có hồ sơ); còn lại là quy hoạch. Đây là phân loại trạng thái, không phải xác suất hoàn thành.', limits: 'Chưa có danh sách MW theo COD cho than, thủy điện, gió, mặt trời, lưu trữ; tỷ lệ 5% của Báo cáo 760 là theo số dự án.'}}));
-  panes.supply.append(qpanel({id: 'supply-gap', num: '6.4', q: 'Nếu dự án tiếp tục chậm, thiếu hụt lớn đến đâu?', lv: 'A', st: 'Scenario', concl: shortfallMw ? `Kịch bản chậm tiến độ: thiếu ${nf(shortfallMw[0], 0)} MW (${shortfallYears[0]}) đến ${nf(shortfallMw.at(-1), 0)} MW (${shortfallYears.at(-1)}). Không phải dự báo thiếu điện chắc chắn.` : '',
+  panes.supply.append(qpanel({id: 'supply-gap', num: '5.4', q: 'Nếu dự án tiếp tục chậm, thiếu hụt lớn đến đâu?', lv: 'A', st: 'Scenario', concl: shortfallMw ? `Kịch bản chậm tiến độ: thiếu ${nf(shortfallMw[0], 0)} MW (${shortfallYears[0]}) đến ${nf(shortfallMw.at(-1), 0)} MW (${shortfallYears.at(-1)}). Không phải dự báo thiếu điện chắc chắn.` : '',
     main: moved[1], deep: {method: 'Báo cáo 760/BC-BCT ngày 10/09/2026; chưa có kịch bản cơ sở và stress của cùng nguồn để đặt cạnh.'}}));
 
   // Card cũ không được đặt vào câu hỏi nào thì ẩn (không gom vào mục thu gọn); mã khối ghi ở html[data-pp-leftover].
@@ -605,6 +597,7 @@ function build() {
   const keys = SECTIONS.map(s => s[0]), done = new Set();
   const btns = [...nav.children];
   const select = (key, push) => {
+    if (key === 'evn') key = 'economics';  // tab EVN đã bỏ 25/11/2026
     if (!keys.includes(key)) key = 'demand';
     keys.forEach((k, i) => { const on = k === key; panes[k].hidden = !on; btns[i].setAttribute('aria-selected', String(on)); btns[i].tabIndex = on ? 0 : -1; btns[i].classList.toggle('active', on); });
     if (!done.has(key)) { done.add(key); renders[key].forEach(f => { try { f(); } catch (e) { document.documentElement.dataset.ppError = (document.documentElement.dataset.ppError || '') + key + ':' + e.message + ';'; } }); }

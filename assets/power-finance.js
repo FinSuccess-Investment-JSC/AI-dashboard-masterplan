@@ -1,4 +1,4 @@
-/* Điện · Bức tranh ngành › 07 Tài chính ngành (25/11/2026). Số từ window.POWER_FIN (BCTC hợp nhất quý, VNDirect finfo;
+/* Điện · Bức tranh ngành › 06 Tài chính ngành (25/11/2026). Số từ window.POWER_FIN (BCTC hợp nhất quý, VNDirect finfo;
    scripts/build_power_financials.py), tổng hợp bằng window.IndustryFin (assets/industry-fin.js). Dựng khi sub-tab mở lần đầu
    (power-picture.js gọi PowerFinance.build). Chỉ mô tả dữ liệu: không kết luận, không chấm điểm; nguồn hiện dưới mọi chart.
    Bộ lọc chung: nhóm nguồn (universe), chu kỳ Quý / TTM / Năm, kỳ chốt cho các biểu đồ một kỳ. */
@@ -110,10 +110,10 @@ function section(num, q) {
 }
 const grid2 = (...cards) => { const g = el('div', 'grid two g2 pf-g2'); cards.forEach(c => g.append(c.el)); return g; };
 
-/* ---------- 7.1 Chu kỳ doanh thu và lợi nhuận ---------- */
+/* ---------- 6.1 Chu kỳ doanh thu và lợi nhuận ---------- */
 const PNL = [['revenue', 'Doanh thu'], ['gross', 'Lợi nhuận gộp'], ['ebitda', 'EBITDA'], ['ebit', 'EBIT'], ['npat', 'LNST']];
 function s71() {
-  const s = section('7.1', 'Lợi nhuận ngành điện đang dịch chuyển về nhóm nguồn nào?');
+  const s = section('6.1', 'Lợi nhuận ngành điện đang dịch chuyển về nhóm nguồn nào?');
   // Chart 1: quy mô theo nhóm
   const c1 = card('dien-fin-pnl', 'Doanh thu và lợi nhuận theo nhóm nguồn (tỷ đồng)', 'Cột chồng theo nhóm nguồn · đổi chỉ tiêu và cách xem'); let m1 = 'npat', v1 = 'abs';
   seg(c1, 'Chỉ tiêu', PNL, () => m1, k => { m1 = k; draw1(); }); seg(c1, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['share', 'Tỷ trọng (%)']], () => v1, k => { v1 = k; draw1(); });
@@ -163,11 +163,11 @@ function wf(steps, unit) {
   return `<div class="pf-wf">${rows.map(r => `<div class="pf-wf-r${r.id ? ' pf-click' : ''}"${r.id ? ` data-id="${r.id}" role="button" tabindex="0"` : ''}><span>${esc(r.l)}</span><div class="pf-wf-t"><i style="left:${Math.min(pos(r.a), pos(r.b))}%;width:${Math.max(.4, Math.abs(pos(r.b) - pos(r.a)))}%;background:${r.total ? '#1D2678' : r.v < 0 ? '#c98a00' : (r.c || '#2a9fa3')}"></i>${lo < 0 ? `<b style="left:${pos(0)}%"></b>` : ''}</div><em>${r.total ? nf(r.v) : sg(r.v, 0)}</em></div>`).join('')}</div><div class="pf-unit">${esc(unit)}</div>`;
 }
 
-/* ---------- 7.2 Cấu trúc chi phí và biên lợi nhuận ---------- */
+/* ---------- 6.2 Cấu trúc chi phí và biên lợi nhuận ---------- */
 function groupPicker(c, get, set) { const g = el('select', 'pf-sel'); c.ctl.append(g); g.addEventListener('change', () => set(g.value)); return () => { g.innerHTML = `<option value="all">Tất cả nhóm đang chọn</option>` + D.groups.filter(x => S.groups.includes(x.id)).map(x => `<option value="${x.id}"${x.id === get() ? ' selected' : ''}>${esc(x.label)}</option>`).join(''); if (get() !== 'all' && !S.groups.includes(get())) set('all', true); }; }
 const scopeOf = gid => gid === 'all' ? sel() : sel().filter(t => E.groupOf[t] === gid);
 function s72() {
-  const s = section('7.2', 'Tại sao các nhóm nguồn có biên lợi nhuận khác nhau, và yếu tố nào đang làm thay đổi khả năng sinh lời?');
+  const s = section('6.2', 'Tại sao các nhóm nguồn có biên lợi nhuận khác nhau, và yếu tố nào đang làm thay đổi khả năng sinh lời?');
   // Chart 1: biên theo thời gian
   const c1 = card('dien-fin-margin', 'Biên lợi nhuận theo thời gian (%)', 'Biên gộp, EBITDA, EBIT, LNST trên doanh thu · chọn nhóm nguồn'); let g1 = 'all'; const p1 = groupPicker(c1, () => g1, (v, q) => { g1 = v; if (!q) draw1(); });
   function draw1() { p1(); const x = scopeOf(g1), L = E.labels(S.mode), r = n => E.ratio({m: n}, {m: 'revenue'}, x, S.mode, 100).values;
@@ -190,9 +190,9 @@ function s72() {
   return s;
 }
 
-/* ---------- 7.3 CAPEX và hình thành tài sản ---------- */
+/* ---------- 6.3 CAPEX và hình thành tài sản ---------- */
 function s73() {
-  const s = section('7.3', 'Dòng vốn đầu tư đang dịch chuyển vào đâu, và ngành đang ở giai đoạn nào của chu kỳ vốn?');
+  const s = section('6.3', 'Dòng vốn đầu tư đang dịch chuyển vào đâu, và ngành đang ở giai đoạn nào của chu kỳ vốn?');
   // Chart 1: CAPEX theo nhóm
   const c1 = card('dien-fin-capex', 'CAPEX toàn ngành theo nhóm nguồn (tỷ đồng)', 'Tiền chi mua sắm, xây dựng TSCĐ (LCTT) · quy mô, so cùng kỳ, tỷ trọng'); let v1 = 'abs';
   seg(c1, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['share', 'Tỷ trọng (%)']], () => v1, k => { v1 = k; draw1(); });
@@ -227,9 +227,10 @@ function s73() {
   return s;
 }
 
-/* ---------- 7.4 Phải thu và chất lượng dòng tiền ---------- */
+/* ---------- 6.4 Phải thu và chất lượng dòng tiền ---------- */
 function s74() {
-  const s = section('7.4', 'Lợi nhuận ghi nhận có chuyển thành dòng tiền, hay đang nằm lại ở công nợ?');
+  const s = section('6.4', 'Lợi nhuận ghi nhận có chuyển thành dòng tiền, hay đang nằm lại ở công nợ?');
+  s.id = 'pf-sec-cash';  // nhận chart lỗ lũy kế EVN (power-picture.js) khi tab EVN đã bỏ
   const c1 = card('dien-fin-recv', 'Phải thu khách hàng theo nhóm nguồn (tỷ đồng)', 'Số dư cuối kỳ · giá trị hoặc so cùng kỳ'); let v1 = 'abs';
   seg(c1, 'Cách xem', [['abs', 'Tỷ đồng'], ['yoy', 'So cùng kỳ (%)']], () => v1, k => { v1 = k; draw1(); });
   function draw1() { const mode = S.mode === 'y' ? 'y' : 'q', b = E.byGroup('receivables', sel(), mode);
@@ -251,9 +252,9 @@ function s74() {
   return s;
 }
 
-/* ---------- 7.5 Đòn bẩy và phân bổ dòng tiền ---------- */
+/* ---------- 6.5 Đòn bẩy và phân bổ dòng tiền ---------- */
 function s75() {
-  const s = section('7.5', 'Chu kỳ đầu tư đang tạo áp lực tài chính hay ngành đang thu hoạch dòng tiền?');
+  const s = section('6.5', 'Chu kỳ đầu tư đang tạo áp lực tài chính hay ngành đang thu hoạch dòng tiền?');
   const c1 = card('dien-fin-debt', 'Cơ cấu nợ vay (tỷ đồng)', 'Nợ vay ngắn hạn, dài hạn (cột chồng); tiền & đầu tư ngắn hạn, nợ vay ròng (đường)');
   function draw1() { const x = sel(), mode = S.mode === 'y' ? 'y' : 'q', L = E.labels(mode), T = m => E.total(m, x, mode).values;
     chart(c1.host, 'dien-fin-debt', L, [{name: 'Nợ vay ngắn hạn', color: '#8997D6', values: T('st_debt')}, {name: 'Nợ vay dài hạn', color: '#1D2678', values: T('lt_debt')}, {name: 'Tiền & đầu tư ngắn hạn', color: '#2a9fa3', values: T('cash_all'), kind: 'line'}, {name: 'Nợ vay ròng', color: '#c98a00', values: T('net_debt'), kind: 'line'}], {unit: 'tỷ đ', native: 'stack', stackable: true});
@@ -287,7 +288,7 @@ function s75() {
   return s;
 }
 
-/* ---------- 7.6 Hiệu quả sử dụng vốn ---------- */
+/* ---------- 6.6 Hiệu quả sử dụng vốn ---------- */
 // NOPAT = EBIT × (1 − thuế suất hiệu dụng); thuế suất hiệu dụng = thuế TNDN ÷ LNTT cùng kỳ, giới hạn 0–30%.
 function roic(x, mode) {
   const L = E.labels(mode), e = E.per('ebit', x, mode), tx = E.per('tax', x, mode), pb = E.per('pbt', x, mode), ic = E.per('ic', x, mode, true);
@@ -298,7 +299,7 @@ function roic(x, mode) {
   return {labels: L, values, each, ic};
 }
 function s76() {
-  const s = section('7.6', 'Vốn đầu tư vào ngành điện đang tạo ra mức sinh lời thế nào?');
+  const s = section('6.6', 'Vốn đầu tư vào ngành điện đang tạo ra mức sinh lời thế nào?');
   const c1 = card('dien-fin-returns', 'ROE, ROA, ROIC (%)', 'TTM hoặc năm · chọn nhóm nguồn · đường mảnh là bình quân lịch sử của chính chỉ tiêu'); let g1 = 'all'; const p1 = groupPicker(c1, () => g1, (v, q) => { g1 = v; if (!q) draw1(); });
   function draw1() { p1(); const x = scopeOf(g1), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode), roe = E.ratio({m: 'npat'}, {m: 'equity', avg: true}, x, mode, 100).values, roa = E.ratio({m: 'npat'}, {m: 'total_assets', avg: true}, x, mode, 100).values, ri = roic(x, mode).values;
     const avg = v => { const a = v.filter(fin); return a.length ? a.reduce((s, z) => s + z, 0) / a.length : null; };

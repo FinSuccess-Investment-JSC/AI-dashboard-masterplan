@@ -1525,7 +1525,7 @@
       "t": "EVN / EPTC · bên mua buôn",
       "d": "Công ty Mua bán điện (EPTC) thuộc EVN là bên mua trong phần lớn PPA và thanh toán tiền điện cho nhà máy. Tài chính EVN phụ thuộc chênh lệch giá bán lẻ với chi phí mua điện.",
       "go": {
-        "pp": "evn"
+        "pp": "finance"
       }
     },
     "trans": {
@@ -1539,14 +1539,14 @@
       "t": "Phân phối · 5 tổng công ty điện lực",
       "d": "Lưới 110 kV trở xuống; bán lẻ cho khách hàng theo biểu giá bán lẻ do Nhà nước quy định.",
       "go": {
-        "pp": "evn"
+        "pp": "economics"
       }
     },
     "pc": {
       "t": "Thu tiền điện",
       "d": "Các tổng công ty điện lực thu tiền điện theo biểu giá bán lẻ; dòng tiền về hệ thống EVN để mua điện từ nhà máy.",
       "go": {
-        "pp": "evn"
+        "pp": "economics"
       }
     },
     "user": {
