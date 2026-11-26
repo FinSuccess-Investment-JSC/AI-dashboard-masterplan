@@ -287,32 +287,20 @@ function coalChart() {
   return lineChart('Giá than Newcastle, cuối tháng (USD/tấn)', 'phiên cuối mỗi tháng · chi phí nhiên liệu của lò nung clinker', m.map(([k]) => dmy(k)), [{name: 'Than Newcastle', color: '#3d4653', values: m.map(x => x[1])}], {unit: 'USD/tấn', src: SRCN('coal_newcastle', 'ICE Newcastle'), note: 'Giá tham chiếu quốc tế; giá than doanh nghiệp xi măng mua trong nước chưa có chuỗi.'});
 }
 function marketPane(p) {
-  const demand = card(`<ul class="pp-ul">
-    <li><b>Đầu tư công</b>: vốn NSNN thực hiện theo tháng, giải ngân theo kế hoạch theo tuần. ${go('Đầu tư công', '?section=public#mt2')}</li>
-    <li><b>Nhà ở, bất động sản</b>: nguồn cung, hấp thụ ở dashboard ${ext('Bất động sản', '../Bat-dong-san/')}.</li>
-    <li><b>Nhà xưởng, khu công nghiệp</b>: FDI, hấp thụ đất KCN ở dashboard ${ext('BĐS KCN', '../Bat-dong-san-KCN/')}.</li>
-    <li><b>Xuất khẩu vật liệu</b>: xi măng, clinker. ${go('Xi măng', '?section=cement&g=cement-sales#mt2')}</li></ul>
-    <p class="xd-na">Chưa có chuỗi giá trị hợp đồng ký mới toàn ngành theo kỳ; backlog từng doanh nghiệp ở Nhà thầu & BOT.</p>`);
+  // 26/11/2026 (người dùng): bỏ mục "Nguồn cầu nào đang có dữ liệu?" (danh sách dẫn link); dự án trọng điểm thành 1.3.
   // Bảng nhiệt so cùng kỳ của sector-visuals.js (đầu tab Bức tranh cũ, hiện ở mọi tab con) → mục 1.0 của Toàn thị trường.
   const heat = document.querySelector('#pane-mt2 > .fsv-heat');
   if (heat && !heat.querySelector('.pw-src')) heat.append(el('div', 'pw-src', `Nguồn: ${NSO()} (vốn NSNN, xi măng, xuất khẩu) · ICE (than Newcastle) · ${ext('SHFE', 'https://www.shfe.com.cn/eng/Market/Futures/')} (nhựa đường); tự tính so cùng kỳ`));
   p.append(heat ? panel('heat', '1.0', 'Chuỗi số nào đang tăng, chuỗi nào giảm so cùng kỳ?', heat, 'Mỗi ô so với cùng tháng năm trước của chính chuỗi đó; các chuỗi khác đơn vị, chỉ đọc chiều.') : '',
     panel('activity', '1.1', 'Hoạt động xây dựng đang tăng nhanh hay chậm lại?', take('xd-31')),
     panel('credit', '1.2', 'Tín dụng cho ngành xây dựng tăng bao nhiêu?', take('xd-30')),
-    panel('demand', '1.3', 'Nguồn cầu nào đang có dữ liệu?', demand),
-    panel('projects', '1.4', 'Dự án trọng điểm: vốn từ đâu, gói thầu nào, đang ở bước nào, doanh nghiệp nào liên quan?', projectMaster(), 'Một bảng dự án chính cho cả dashboard; các tab khác dẫn về đúng dòng. Chi tiết giải ngân ở Đầu tư công.'));
+    panel('projects', '1.3', 'Dự án trọng điểm: vốn từ đâu, gói thầu nào, đang ở bước nào, doanh nghiệp nào liên quan?', projectMaster(), 'Một bảng dự án chính cho cả dashboard; các tab khác dẫn về đúng dòng. Chi tiết giải ngân ở Đầu tư công.'));
 }
 function publicPane(p) {
-  const def = card(`<div class="xd-def">
-    <div><b>Vốn NSNN thực hiện (Cục Thống kê)</b>Loại số: thực tế (tháng cuối là ước tính). Kỳ: tháng, cộng dồn từ đầu năm. Phạm vi: vốn đầu tư thực hiện từ ngân sách Nhà nước, Trung ương và địa phương; đo khối lượng thực hiện, không phải tiền đã thanh toán qua Kho bạc.</div>
-    <div><b>Giải ngân theo kế hoạch (Bộ Tài chính)</b>Loại số: thực tế. Kỳ chốt: ngày trong báo cáo tuần, tháng. Mẫu số: kế hoạch Thủ tướng giao (2026: 1.022.607 tỷ đồng; 2025: 905.481,7 tỷ đồng). Báo cáo 9T/2026 còn nêu tỷ lệ 64,8% trên mẫu số 991.931,6 tỷ đồng (loại 5% NSĐP tiết kiệm).</div>
-    <div><b>Kế hoạch</b>Số Thủ tướng giao đầu năm; không phải số thực hiện.</div>
-    <div><b>Phép tính tham chiếu</b>Đường "NSO" trong chart Đường đua = vốn NSNN thực hiện cộng dồn ÷ kế hoạch Thủ tướng giao, khác phạm vi số Bộ Tài chính nên cao hơn; giải ngân 9T/2025 suy ra từ chênh lệch Bộ Tài chính công bố.</div></div>
-    <div class="pw-src">Nguồn: ${NSO()} · ${MOF_SRC}</div>`);
+  // 26/11/2026 (người dùng): bỏ mục 2.0 "Hai chuỗi số khác nhau thế nào?"; phạm vi từng chuỗi vẫn ghi ở ô số và ⓘ của từng chart.
   p.append(kpiTiles([(() => { const a = ytd(S.pi || []); return a ? ['Vốn NSNN thực hiện lũy kế', nf(a.cur / 1000, 0), 'nghìn tỷ đồng', `${sg(a.yoy, 1)}% so cùng kỳ`, `${a.m}T/${a.y} · Cục Thống kê`] : null; })(),
     (() => { const l = (X.WEEK || []).at(-1); return l ? ['Giải ngân / kế hoạch', nf(l[2], 1), '%', 'chưa có số cùng mốc 2025', `lũy kế đến ${l[0]}/2026 · Bộ Tài chính`] : null; })()]) || '',
   flow([['xd-st-plan', 'Bước 1', 'Kế hoạch vốn'], ['xd-st-disb', 'Bước 2', 'Vốn thực hiện & giải ngân'], ['xd-st-prog', 'Bước 3', 'Tiến độ dự án, gói thầu']]),
-  panel('def', '2.0', 'Hai chuỗi số khác nhau thế nào?', def, 'Đọc riêng từng chuỗi; không nối hai chuỗi thành một.'),
   stage('plan', 'Bước 1', 'Kế hoạch vốn'),
   panel('plan2026', '2.1', 'Kế hoạch vốn 2026 bao nhiêu, đã giải ngân bao nhiêu?', take('xd-42')),
   stage('disb', 'Bước 2', 'Vốn thực hiện & giải ngân'),
