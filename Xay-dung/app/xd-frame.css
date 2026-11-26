@@ -175,3 +175,16 @@
 .xd-src-fold{margin-top:28px;border-top:1px solid var(--line,#e3e7f0);padding-top:6px}
 @media (max-width:700px){.pp-flow-ar{display:none}.pp-flow-s{flex-basis:100%}.xd-t{font-size:12px}.xd-hide-sm{display:none}}
 :root[data-theme=dark] .xd-grp{background:#262c45;color:#dfe4ff}
+
+/* Tài chính ngành: 4 tab loại hình doanh nghiệp (26/11/2026) */
+.xd-mtabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:4px 0 14px;padding:5px;border-radius:12px;background:#eef1fb}
+.xd-mtab{display:flex;flex-wrap:wrap;align-items:center;gap:4px 7px;padding:9px 12px;border:0;border-radius:9px;background:transparent;color:var(--ink2,#3b4256);font:600 13px/1.25 Inter,system-ui,sans-serif;text-align:left;cursor:pointer}
+.xd-mtab i{width:9px;height:9px;border-radius:2px;flex:none}
+.xd-mtab span{font-variant-numeric:tabular-nums;color:var(--muted,#7a8399);font-weight:500}
+.xd-mtab small{flex-basis:100%;font-weight:500;color:var(--muted,#7a8399);font-size:11.5px;padding-left:16px}
+.xd-mtab:hover{background:rgba(255,255,255,.6)}
+.xd-mtab[aria-selected=true]{background:var(--card,#fff);color:#1D2678;box-shadow:0 1px 4px rgba(29,38,120,.14)}
+.xd-mtab:focus-visible{outline:2px solid #2938A8;outline-offset:1px}
+.pf-chips button i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
+@media (max-width:700px){.xd-mtabs{grid-template-columns:repeat(2,minmax(0,1fr))}.xd-mtab{padding:7px 9px;font-size:12px}.xd-mtab small{display:none}}
+:root[data-theme=dark] .xd-mtabs{background:#262c45}
