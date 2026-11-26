@@ -75,7 +75,6 @@ function views() {
   const P = F ? F.periods : [], st = Math.max(0, P.indexOf('2021Q1')), QL = P.slice(st).map(qL);
   const qOf = key => { const q = quarterly(recs(key)); return P.slice(st).map(p => q[p] ?? null); };
   const gm = t => E ? E.ratio({m: 'gross'}, {m: 'revenue'}, [t], 'q', 100).values.slice(st) : [];
-  const naCard = (title, items) => { const c = el('div', 'card fb-na'); c.innerHTML = `<div class="chart-title">${esc(title)}</div><ul>${items.map(([w, why, need]) => `<li><b>N/A · ${esc(w)}</b><span>${esc(why)}</span>${need ? `<em>Cần bổ sung: ${esc(need)}</em>` : ''}</li>`).join('')}</ul>`; return c; };
   const insight = t => el('p', 'fb-insight', t);
   const corrNote = (t, key) => { const r0 = pearson(gm(t), qOf(key)); return fin(r0.r) ? `${t}: hệ số tương quan biên gộp quý với giá ${key === 'urea' ? 'urê' : key === 'dap' ? 'DAP' : key === 'coal_au' ? 'than Newcastle' : key} cùng quý ${nf(r0.r, 2)} (${r0.n} quý)` : `${t}: chưa đủ quý để tính tương quan`; };
   const gasRows = (D.plants && D.plants.gas_pricing) || [];
@@ -96,7 +95,7 @@ function views() {
       chart(a.host, 'pb-c-coal-px', QL, [{name: 'Urê (World Bank)', color: C.blue, values: qOf('urea')}, {name: 'Than Newcastle (proxy)', color: C.grey, values: qOf('coal_au')}], {unit: 'USD/tấn', zeroBase: false});
       const q2 = panel('1.7', 'Biên gộp công nghệ than khác công nghệ khí thế nào?', 'Biên gộp hợp nhất theo nhóm doanh nghiệp, tổng LN gộp ÷ tổng doanh thu.');
       const b = card('pb-c-coal-gm', 'Biên gộp: urê từ than (DHB) so với urê từ khí (DPM + DCM)', {sub: '% · theo quý · Actual', source: SRC.vnd + '; tự tính', info: 'Nhóm khí = tổng LN gộp DPM + DCM ÷ tổng doanh thu; nhóm than = DHB. DHB Q4/2023 giá vốn bằng 0 trên nguồn nên để trống.'});
-      q2.append(b.el, insight(corrNote('DHB', 'urea') + '.'), naCard('Dữ liệu còn thiếu', [['Giá than cám TKV bán cho nhà máy đạm', NA.coal, 'TKV, BCTN DHB'], ['Định mức tiêu hao than (tấn than/tấn urê)', 'Chưa có tài liệu công bố', 'BCTN DHB, hồ sơ dự án Đạm Ninh Bình'], ['Đạm Ninh Bình (Vinachem)', 'Chưa niêm yết, không có BCTC quý công khai', 'BCTC Vinachem']]));
+      q2.append(b.el, insight(corrNote('DHB', 'urea') + '.'));
       h.append(q2);
       const g = E ? E.ratio({m: 'gross'}, {m: 'revenue'}, ['DPM', 'DCM'], 'q', 100).values.slice(st) : [];
       chart(b.host, 'pb-c-coal-gm', QL, [{name: 'Urê từ khí (DPM+DCM)', color: C.blue, values: g}, {name: 'Urê từ than (DHB)', color: C.grey, values: gm('DHB')}], {unit: '%', digits: 1, zeroBase: false});
@@ -105,7 +104,7 @@ function views() {
       const L = k.months('2021-01', last('dap').date);
       const q1 = panel('2.2', 'Giá nguyên liệu và sản phẩm phân lân biến động ra sao?', 'Từng chuỗi độc lập: chưa có định mức tiêu hao có nguồn nên không ghép thành chi phí rổ.');
       const a = card('pb-c-phos-px', 'Giá DAP, TSP và quặng phosphate', {sub: 'USD/tấn · bình quân tháng · quặng: Proxy cho apatit', source: SRC.wb, info: 'Quặng phosphate Morocco là benchmark quốc tế; apatit Lào Cai có hàm lượng và cơ chế giá khác.'});
-      q1.append(a.el, naCard('Nguyên liệu chưa có chuỗi giá', [['Lưu huỳnh', NA.sulfur, 'WiData (CNY/tấn), Argus'], ['Amoniac', NA.nh3, 'Argus/ICIS, WiData'], ['Apatit Lào Cai', 'Giá bán nội bộ Vinachem, không công bố theo tháng', 'BCTN DDV, LAS'], ['Định mức tiêu hao DAP, supe lân, lân nung chảy', 'Chưa có tài liệu công bố', 'BCTN, hồ sơ dự án']]));
+      q1.append(a.el);
       h.append(q1);
       chart(a.host, 'pb-c-phos-px', L.map(mL), [['dap', 'DAP', C.gold], ['tsp', 'TSP', C.plum], ['phosrock', 'Quặng phosphate (proxy)', C.grey]].map(([key, n, col]) => ({name: n, color: col, values: L.map(m => k.val(key, m))})), {unit: 'USD/tấn'});
       const q2 = panel('2.3', 'Giá DAP có truyền vào biên gộp các nhà sản xuất lân không?');
@@ -130,7 +129,6 @@ function views() {
       q2.append(b.el, c.el, insight(lagTxt + '. Hệ số âm nghĩa là giá urê tăng đi kèm biên gộp NPK giảm.')); h.append(q2);
       chart(b.host, 'pb-c-npk-gm', QL, [['BFC', C.teal], ['SFG', C.grey]].map(([t, col]) => ({name: t, color: col, values: gm(t)})), {unit: '%', digits: 1, zeroBase: false});
       if (E) chart(c.host, 'pb-c-npk-dio', QL, [['BFC', C.teal], ['SFG', C.grey]].map(([t, col]) => ({name: t, color: col, values: E.ratio({m: 'inventory', avg: true}, {m: 'cogs'}, [t], 'ttm', 365).values.slice(st)})), {unit: 'ngày'});
-      h.append(naCard('Dữ liệu còn thiếu', [['Giá bán NPK theo chủng loại', 'Không có chuỗi công khai', 'bảng giá đại lý, WiData'], ['Công thức phối trộn đại diện', 'Doanh nghiệp không công bố', 'tài liệu kỹ thuật, BCTN'], ['Biên gộp riêng mảng NPK của DPM, DCM', 'BCTC chỉ có số hợp nhất', 'thuyết minh doanh thu theo sản phẩm']]));
     },
     gas(h) {
       const L = k.months('2019-01', last('gas_eu').date);
@@ -147,12 +145,7 @@ function views() {
       m.innerHTML = `<div class="chart-title">Cơ chế giá khí theo doanh nghiệp</div>` + (gasRows.length
         ? `<div class="tbl-wrap"><table class="compare-table fb-mech"><thead><tr><th>Doanh nghiệp</th><th>Giai đoạn</th><th>Cơ chế giá khí</th><th>Ghi chú</th><th>Nguồn</th></tr></thead><tbody>${gasRows.map(r => `<tr><td><b>${esc(r.company)}</b></td><td>${esc(r.period || '–')}</td><td>${esc(r.mechanism || 'N/A')}</td><td>${esc(r.note && r.note !== r.mechanism.replace(/^Chưa có công thức; /, '') ? r.note : '')}</td><td>${(r.sources || []).map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener">[${i + 1}]</a>`).join(' ')}</td></tr>`).join('')}</tbody></table></div>`
         : '<p class="fb-na-p">N/A · chưa xác minh được công thức giá khí từ tài liệu doanh nghiệp.</p>') + `<div class="pw-src">Nguồn: tài liệu doanh nghiệp, PV GAS (ghi theo từng dòng)</div>`;
-      const norms = (D.plants && D.plants.consumption_norms) || [];
-      if (norms.length) { const nc = el('div', 'card'); nc.innerHTML = `<div class="chart-title">Định mức tiêu hao đã công bố</div><div class="tbl-wrap"><table class="compare-table fb-mech"><thead><tr><th>Nhà máy</th><th>Định mức</th><th>Nguồn</th></tr></thead><tbody>${norms.map(n => `<tr><td>${esc(n.plant === 'dcm_camau' ? 'Đạm Cà Mau (DCM)' : n.plant)}</td><td>${esc(n.norm)}</td><td>${n.source ? `<a href="${esc(n.source)}" target="_blank" rel="noopener">[1]</a>` : ''}</td></tr>`).join('')}</tbody></table></div><p class="fb-na-p">Là tổng năng lượng ròng (khí nguyên liệu và nhiên liệu), không phải định mức khí nguyên liệu riêng; chưa đủ để tính chi phí khí/tấn urê.</p>`; q2.append(nc); }
-      q2.append(m, naCard('Dữ liệu còn thiếu cho spread urê – khí theo doanh nghiệp', [
-        ['Giá khí đầu vào thực tế DPM, DCM theo quý', NA.gas, 'thuyết minh BCTC / tài liệu IR (giá khí bình quân kỳ)'],
-        ['Giá FO/MFO Singapore', NA.fo, 'Platts/Argus hoặc WiData'], ['Định mức tiêu hao khí (MMBtu/tấn urê)', 'Doanh nghiệp chưa công bố định mức hiện hành', 'BCTN, hồ sơ dự án'],
-        ['Giá bán urê bình quân DPM, DCM', 'Không công bố theo quý', 'tài liệu IR (doanh thu, sản lượng urê bán)'], ['Giá urê nội địa (Phú Mỹ, Cà Mau)', 'WiData hết hạn mức tuần này', 'WiData, làm mới 27/11']]));
+      q2.append(m);  // 26/11: bỏ thẻ định mức tiêu hao và thẻ dữ liệu còn thiếu theo yêu cầu người dùng
       h.append(q2);
       h.append(insight('Spread urê – khí quốc tế không được dựng: chưa có giá urê giao tại châu Âu và định mức có nguồn cho cùng khu vực, nên ghép giá urê Trung Đông với khí châu Âu sẽ sai khu vực.'));
     },
