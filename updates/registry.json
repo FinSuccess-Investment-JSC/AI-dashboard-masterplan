@@ -2009,13 +2009,10 @@
      "kcn-de-mix",
      "kcn-de-fdi",
      "kcn-de-fdi2",
-     "kcn-de-fdi-types",
-     "kcn-de-flow",
      "kcn-su-stock",
      "kcn-su-occ",
      "kcn-su-dvs",
      "kcn-su-rbf",
-     "kcn-su-yos",
      "kcn-su-pipe",
      "kcn-su-proj",
      "kcn-re-usd",
@@ -2029,7 +2026,6 @@
      "kcn-da-qa",
      "kcn-da-checks",
      "kcn-da-rules",
-     "kcn-su-reported",
      "kcn-da-web"
     ]
    },
