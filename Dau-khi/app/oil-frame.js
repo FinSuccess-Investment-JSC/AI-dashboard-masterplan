@@ -24,8 +24,7 @@ const TREE = {
     {k: 'crude', n: '01', t: 'Dầu thô toàn cầu', d: 'Cung OPEC+ và ngoài OPEC, cầu, tồn kho, Brent/WTI, đường cong kỳ hạn, vị thế quỹ.', ids: ['dau-khi-05', 'dau-khi-12', 'dau-khi-23', 'dau-khi-24', 'dau-khi-25', 'dau-khi-11', 'dau-khi-06', 'dau-khi-07', 'dau-khi-08', 'dau-khi-09', 'dau-khi-10', 'dau-khi-13'], canv: ['chFastPrice'], sel: ['.opec-drivers', '.inventory-group'], kpis: true},
     {k: 'upstream', n: '02', t: 'Thượng nguồn VN', d: 'Sản lượng khai thác dầu và khí, chuỗi dự án và dòng khí đầu tiên.', ids: ['dau-khi-15', 'dau-khi-19'],
       gap: 'Chưa có chuỗi giá thuê và tỷ lệ sử dụng giàn khoan Đông Nam Á theo thời gian; số của PVD đang ở thẻ PVD (Tổng quan › Chuỗi giá trị).'},
-    {k: 'gas', n: '03', t: 'Khí & LNG', d: 'Khí vào bờ, LNG nhập khẩu và vị trí của PV GAS.', ids: ['dau-khi-16', 'dau-khi-17'],
-      gap: 'Chưa có chuỗi giá LNG JKM và giá khí bán theo từng hợp đồng trên trang này; JKM đang ở dashboard Điện.'},
+    {k: 'gas', n: '03', t: 'Khí & LNG', d: 'Khí vào bờ, LNG nhập khẩu và vị trí của PV GAS.', ids: ['dau-khi-16', 'dau-khi-17']},
     {k: 'refining', n: '04', t: 'Lọc dầu', d: 'Crack spread Singapore và Mỹ, giá sản phẩm, cân đối hai nhà máy lọc dầu.', ids: ['dau-khi-singapore-crack', 'dau-khi-20', 'dau-khi-21', 'dau-khi-18'],
       gap: 'Biên lọc dầu thực tế của BSR không công bố theo tháng; crack Singapore so Dubai là proxy.'},
     {k: 'retail', n: '05', t: 'Phân phối xăng dầu', d: 'Giá bán lẻ trong nước theo kỳ điều hành.', ids: ['dau-khi-22'],
@@ -343,6 +342,50 @@ function unfoldCards(ids) {
   const go = () => ids.forEach(id => { const card = block(id); if (!card) return; card.querySelectorAll(':scope > details.research-fold').forEach(f => { const body = f.querySelector(':scope > .research-detail') || f; f.replaceWith(...[...body.childNodes].filter(n => n.tagName !== 'SUMMARY')); }); card.querySelectorAll('.research-repeated-heading').forEach(h => h.classList.remove('research-repeated-heading')); });
   go(); [800, 3000].forEach(t => setTimeout(go, t));
 }
+
+// Thẻ chart đường dùng chung cho các chart bổ sung (26/11/2026).
+function lineCard(host, o) {
+  if (!host || $('#' + o.id)) return null;
+  const card = el('div', 'card ' + (o.wide === false ? '' : 'of-wide')); card.dataset.ofAdded = o.id;
+  card.innerHTML = `<div class="chart-title">${o.title}</div>${o.sub ? `<div class="chart-sub">${o.sub}</div>` : ''}
+    <div class="ct-canvas" style="position:relative;height:${o.h || 300}px"><canvas id="${o.id}" role="img" aria-label="${o.title}"></canvas></div>
+    <div class="pw-src">Nguồn: ${o.src}</div>`;
+  (o.before ? o.before.before(card) : host.append(card));
+  if (!window.Chart) return card;
+  const nf = (v, d) => v == null ? '—' : v.toLocaleString('vi-VN', {maximumFractionDigits: d ?? 1});
+  new Chart(card.querySelector('canvas'), {type: o.type || 'line', data: {labels: o.labels, datasets: o.series.map(s => ({label: s.name, data: s.values, borderColor: s.color, backgroundColor: s.fill || s.color, borderWidth: 2, pointRadius: 0, tension: .25, yAxisID: s.axis || 'y', type: s.type, borderRadius: s.type === 'bar' || o.type === 'bar' ? 4 : 0, spanGaps: true}))},
+    options: {responsive: true, maintainAspectRatio: false, interaction: {mode: 'index', intersect: false},
+      plugins: {legend: {display: o.series.length > 1, position: 'bottom', labels: {usePointStyle: true, boxWidth: 8, color: '#3B4256', font: {size: 12.5}}}, tooltip: {callbacks: {label: c => ` ${c.dataset.label}: ${nf(c.parsed.y, o.digits)}${o.unit ? ' ' + o.unit : ''}`}}},
+      scales: Object.assign({x: {grid: {display: false}, ticks: {color: '#6B7392', maxRotation: 0, autoSkip: true, maxTicksLimit: 10, font: {size: 12}}, stacked: !!o.stacked},
+        y: {beginAtZero: !!o.zero, stacked: !!o.stacked, grid: {color: '#EEF0F6'}, ticks: {color: '#6B7392', font: {size: 12}, callback: v => nf(v, o.digits)}, title: o.yTitle ? {display: true, text: o.yTitle, color: '#6B7392'} : undefined}},
+        o.y2 ? {y2: {position: 'right', grid: {display: false}, ticks: {color: '#6B7392', font: {size: 12}}, title: {display: true, text: o.y2, color: '#6B7392'}}} : {})}});
+  return card;
+}
+const vnDate = d => { const [y, m, dd] = d.split('-'); return dd ? `${dd}/${m}/${y.slice(2)}` : `${m}/${y.slice(2)}`; };
+
+// Vận tải: chỉ số cước tàu dầu thô (BDTI) và tàu sản phẩm (BCTI), 2 năm gần nhất, số ngày.
+function tankerRates() {
+  const s = window.SHIPPING_DAILY?.eastmoney?.series; if (!s?.bdti?.records?.length) return;
+  const from = new Date(Date.now() - 730 * 864e5).toISOString().slice(0, 10);
+  const bcti = new Map(s.bcti.records.map(r => [r[0], r[1]]));
+  const rows = s.bdti.records.filter(r => r[0] >= from);
+  lineCard($('#of-mt2-flows .of-body'), {id: 'chTankerIdx', title: 'Cước tàu dầu: Baltic Dirty Tanker (dầu thô) và Clean Tanker (sản phẩm) — 2 năm', sub: `điểm chỉ số, số ngày · mới nhất ${vnDate(rows.at(-1)[0])}: BDTI ${rows.at(-1)[1].toLocaleString('vi-VN')}, BCTI ${(bcti.get(rows.at(-1)[0]) ?? '—').toLocaleString('vi-VN')}`,
+    labels: rows.map(r => vnDate(r[0])), series: [{name: 'BDTI · tàu dầu thô', color: '#2938A8', values: rows.map(r => r[1])}, {name: 'BCTI · tàu sản phẩm', color: '#59C5C8', values: rows.map(r => bcti.get(r[0]) ?? null)}], digits: 0,
+    src: '<a href="https://data.eastmoney.com/cjsj/hyzs_list_EMI00107668.html" target="_blank" rel="noopener">East Money datacenter (số Baltic Exchange)</a> · cùng chuỗi dashboard Vận tải biển; PVT hưởng lợi khi cước tàu dầu tăng'});
+}
+
+// Khí & LNG: giá LNG châu Á (JKM) so với khí Mỹ (Henry Hub), bình quân tuần 2 năm — biên nhập LNG và giá khí đầu vào điện.
+function lngPrices() {
+  const src = window.SECTOR_DAILY?.sources, j = src?.lng_jkm?.records, h = src?.henry_hub?.records; if (!j?.length || !h?.length) return;
+  const from = new Date(Date.now() - 730 * 864e5).toISOString().slice(0, 10);
+  const wk = d => { const t = new Date(d + 'T00:00:00Z'); t.setUTCDate(t.getUTCDate() - ((t.getUTCDay() + 6) % 7)); return t.toISOString().slice(0, 10); };
+  const avg = recs => { const m = new Map(); recs.filter(r => r.date >= from).forEach(r => { const k = wk(r.date); (m.get(k) || m.set(k, []).get(k)).push(r.value); }); return new Map([...m].map(([k, v]) => [k, v.reduce((a, b) => a + b, 0) / v.length])); };
+  const J = avg(j), H = avg(h), keys = [...J.keys()].sort();
+  const lj = j.at(-1), lh = h.at(-1);
+  lineCard($('#of-mt2-gas .of-body'), {id: 'chLngSpread', title: 'Giá LNG châu Á (JKM) so với khí Mỹ (Henry Hub) — bình quân tuần, 2 năm', sub: `USD/MMBtu · JKM ${lj.value.toLocaleString('vi-VN', {maximumFractionDigits: 2})} (${vnDate(lj.date)}), Henry Hub ${lh.value.toLocaleString('vi-VN', {maximumFractionDigits: 2})} (${vnDate(lh.date)}) · chênh lệch là dư địa giá LNG nhập về Việt Nam so với khí nội địa`,
+    labels: keys.map(vnDate), series: [{name: 'JKM (LNG giao Nhật–Hàn)', color: '#2938A8', values: keys.map(k => J.get(k))}, {name: 'Henry Hub (Mỹ)', color: '#D4A72C', values: keys.map(k => H.get(k) ?? null)}], digits: 2, unit: 'USD/MMBtu', zero: true,
+    src: `<a href="${src.lng_jkm.source_url}" target="_blank" rel="noopener">ICE · JKM (Platts) hợp đồng tương lai, dữ liệu biểu đồ công khai</a> · <a href="https://www.eia.gov/dnav/ng/hist/rngwhhdd.htm" target="_blank" rel="noopener">EIA · Henry Hub giao ngay</a>`});
+}
 function run() {
   if (document.body.dataset.oilFrame) return; document.body.dataset.oilFrame = '1';
   style();
@@ -361,6 +404,8 @@ function run() {
   topExporters();
   unfoldCards(['dau-khi-28']);
   crudeLayout();
+  tankerRates();
+  lngPrices();
   const finHost = financePane();
   nav(finHost);
   // Tab Sources không còn trong thanh tab (nguồn đã ghi dưới từng chart, như Điện); nội dung vẫn trong DOM.
