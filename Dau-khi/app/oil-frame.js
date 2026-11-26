@@ -49,7 +49,7 @@ const ALIAS = {mt3: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
 function style() {
   const st = el('style'); st.id = 'oil-frame-style';
   st.textContent = `.of-nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:12px 0 20px;counter-reset:x}
-.of-nav button{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:14px 16px;border:1px solid var(--line,#e3e7f0);border-radius:12px;background:var(--card,#fff);font:inherit;color:var(--ink2,#3b4256);cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s}
+.of-nav button{position:relative;display:flex;flex-direction:row;align-items:center;gap:8px;text-align:left;padding:12px 16px;border:1px solid var(--line,#e3e7f0);border-radius:12px;background:var(--card,#fff);font:inherit;color:var(--ink2,#3b4256);cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s}
 .of-nav button:hover{border-color:#2938A8;box-shadow:0 4px 14px rgba(41,56,168,.12);transform:translateY(-1px)}
 .of-nav button:not(:last-child)::after{content:'→';position:absolute;right:-11px;top:50%;transform:translateY(-50%);font-size:13px;color:#9aa3c7;z-index:1}
 .of-nav .of-n{font:700 12px Inter,sans-serif;color:#2938A8;letter-spacing:.04em}
@@ -85,7 +85,7 @@ function buildTab(key) {
   const nav = el('div', 'of-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', def.title); sec.append(nav);
   const used = new Set();
   const subs = def.subs.map((s, i) => {
-    const b = el('button', '', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b><small>${s.d}</small>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-${key}-${s.k}-tab`;
+    const b = el('button', '', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-${key}-${s.k}-tab`;
     const p = el('div', 'pane-subpane of-pane'); p.id = `of-${key}-${s.k}`; p.dataset.sub = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
         const body = el('div', 'of-body'); p.append(body);
     if (s.kpis) { const k = $('.majorpane[data-tab="mt2"] .kpis'); if (k) { body.append(k); used.add(k); } }
