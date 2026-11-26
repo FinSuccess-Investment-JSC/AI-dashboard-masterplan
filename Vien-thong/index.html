@@ -7,61 +7,42 @@
 <link rel="stylesheet" href="app/dashboard-ui.css?v=8b5f71b2e791">
 <script src="app/sector-boot.js?v=555dd1c98235"></script>
 <script src="app/chart-types.js?v=de84f54bfcae"></script>
-<script src="../data/telecom-industry.js?v=18d5d634d320" defer></script>
+<script src="../data/telecom-industry.js?v=f89791b4f08d" defer></script>
 <script src="../data/telecom-benchmarks.js?v=a36c8a3f02c3" defer></script>
 <script src="../data/telecom-financials.js?v=7c9624ea6cff" defer></script>
 <script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
-<script src="app/telecom-finance.js?v=b7890d5f7f43" defer></script>
-<script src="app/telecom-dashboard.js?v=ad63dc5064fa" defer></script>
+<script src="app/telecom-finance.js?v=ffec5238407f" defer></script>
+<script src="../data/telecom-news.js?v=263564ec08bf" defer></script>
+<script src="app/telecom-dashboard.js?v=5d9746dd9c82" defer></script>
+<script src="app/telecom-news.js?v=a2b2352e65ad" defer></script>
+<script src="app/sector-smart.js?v=487399de7e47" defer></script>
+<link rel="stylesheet" href="app/telecom-news.css?v=5f8834280940">
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
-<script src="app/site-navigation.js?v=9abea12d0335" data-release="2026.11.26-kcn-cau-truc"></script>
+<script src="app/site-navigation.js?v=9abea12d0335" data-release="20261126-vien-thong-cau-truc"></script>
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
 <link rel="stylesheet" href="app/fin-success-theme.css?v=0761641d486e">
 <link rel="stylesheet" href="app/brand.css?v=048c9b941573">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
-<link rel="stylesheet" href="app/telecom.css?v=751860467085">
+<link rel="stylesheet" href="app/telecom.css?v=cfda7f5bf37c">
 </head>
 <body data-sector="telecom">
 <nav data-site-navigation="telecom" aria-label="Điều hướng dashboard ngành"></nav>
 <div class="fiscbar"><span>Dashboard ngành · Viễn thông · khung nghiên cứu 25/11/2026</span></div>
 
-<nav class="majortabs">
-  <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">Tổng quan ngành</button>
-  <button class="majortabbtn" onclick="showMajorTab('mt2',this)">Bức tranh ngành</button>
-  <button class="majortabbtn" onclick="showMajorTab('mt3',this)">Chính sách · Tần số · Giá cước</button>
-  <button class="majortabbtn" onclick="showMajorTab('mt4',this)">Chủ đề nóng</button>
-  <button class="majortabbtn" onclick="showMajorTab('mt5',this)">Nguồn dữ liệu</button>
+<nav class="majortabs" role="tablist" aria-label="Tab chính">
+  <button class="majortabbtn active" type="button" data-tab="mt1" aria-selected="true">Tổng quan ngành</button>
+  <button class="majortabbtn" type="button" data-tab="mt2" aria-selected="false">Bức tranh ngành</button>
+  <button class="majortabbtn" type="button" data-tab="mt14" aria-selected="false">Tài chính ngành</button>
+  <button class="majortabbtn" type="button" data-tab="mt7" aria-selected="false">Chủ đề nóng</button>
 </nav>
 
 <div class="container">
-  <section class="hero">
-    <h1>Ngành <em>Viễn thông</em> Việt Nam</h1>
-    <p>Di động, Internet cố định và hạ tầng cho thuê: thuê bao, doanh thu, đầu tư 5G, cạnh tranh và hiệu quả sử dụng vốn của doanh nghiệp niêm yết.</p>
-  </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1"></div>
   <div class="majorpane" data-tab="mt2" id="pane-mt2"></div>
-  <div class="majorpane" data-tab="mt3" id="pane-mt3"></div>
-  <div class="majorpane" data-tab="mt4" id="pane-mt4"></div>
-  <div class="majorpane" data-tab="mt5" id="pane-mt5"></div>
-  <div class="footer">Vietnam Telecom Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 25/11/2026.</div>
+  <div class="majorpane" data-tab="mt14" id="pane-mt14"></div>
+  <div class="majorpane" data-tab="mt7" id="pane-mt7"></div>
+  <div class="footer">Vietnam Telecom Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 25/11/2026 · cấu trúc theo trang Điện 26/11/2026.</div>
 </div>
-<script>
-function showMajorTab(key, btn){
-  document.querySelectorAll(".majorpane").forEach(x=>x.classList.remove("active"));
-  document.querySelectorAll(".majortabbtn").forEach(x=>x.classList.remove("active"));
-  document.querySelectorAll('.majorpane[data-tab="'+key+'"]').forEach(x=>x.classList.add("active"));
-  const activeBtn = btn || Array.from(document.querySelectorAll(".majortabbtn")).find(x => (x.getAttribute("onclick") || "").indexOf("'"+key+"'") >= 0);
-  if(activeBtn) activeBtn.classList.add("active");
-  if(location.hash !== "#"+key) history.replaceState(null, "", location.pathname + location.search + "#"+key);
-  setTimeout(() => window.dispatchEvent(new Event("resize")), 30);
-}
-const initialTab = (location.hash || "").replace("#", "");
-if(document.querySelector('.majorpane[data-tab="'+initialTab+'"]')) showMajorTab(initialTab);
-window.addEventListener("hashchange", () => {
-  const nextTab = (location.hash || "").replace("#", "");
-  if(document.querySelector('.majorpane[data-tab="'+nextTab+'"]')) showMajorTab(nextTab);
-});
-</script>
 </body>
 </html>

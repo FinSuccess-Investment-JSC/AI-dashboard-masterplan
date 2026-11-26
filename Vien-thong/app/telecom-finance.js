@@ -16,8 +16,17 @@ const qLabel = p => /Q\d$/.test(p) ? `Q${p.slice(-1)}/${p.slice(0, 4)}` : p;
 const SRC = `<a href="https://api-finfo.vndirect.com.vn/v4/financial_statements" target="_blank" rel="noopener">BCTC hợp nhất theo quý (VNDirect finfo)</a>`;
 const LINE = ['#1D2678', '#2a9fa3', '#c98a00', '#861C52', '#3d4653', '#8997D6'];
 const GC = Object.fromEntries(D.groups.map(g => [g.id, g.color]));
-const S = {groups: D.groups.filter(g => g.default).map(g => g.id), mode: 'ttm', end: D.periods.length - 1};
-const sel = () => E.tickersOf(S.groups);
+const S = {groups: D.groups.filter(g => g.default).map(g => g.id), mode: 'ttm', end: D.periods.length - 1, off: []};
+// Bộ lọc đọc / ghi URL (26/11/2026): fg = nhóm, fm = chu kỳ, fe = kỳ chốt, fx = mã bỏ khỏi rổ.
+(() => { const q = new URL(location.href).searchParams, gs = (q.get('fg') || '').split(',').filter(g => D.groups.some(x => x.id === g));
+  if (gs.length) S.groups = gs; if (['q', 'ttm', 'y'].includes(q.get('fm'))) S.mode = q.get('fm');
+  const e = D.periods.indexOf(q.get('fe') || ''); if (e >= 0) S.end = e;
+  S.off = (q.get('fx') || '').split(',').filter(t => D.companies.some(c => c.ticker === t)); })();
+function syncUrl() { if (location.hash !== '#mt14') return; const u = new URL(location.href), def = D.groups.filter(g => g.default).map(g => g.id).join(',');
+  const set = (k, v, d) => v && v !== d ? u.searchParams.set(k, v) : u.searchParams.delete(k);
+  set('fg', S.groups.join(','), def); set('fm', S.mode, 'ttm'); set('fe', D.periods[S.end], D.periods.at(-1)); set('fx', S.off.join(','), '');
+  history.replaceState(null, '', u.pathname + u.search + u.hash); }
+const sel = () => E.tickersOf(S.groups).filter(t => !S.off.includes(t));
 const MODES = [['q', 'Quý'], ['ttm', 'TTM'], ['y', 'Năm']];
 const modeName = m => ({q: 'quý', ttm: 'TTM (4 quý gần nhất)', y: 'năm'})[m];
 const renders = [];
@@ -70,11 +79,17 @@ function filterBar() {
   f.querySelectorAll('[data-g]').forEach(b => b.addEventListener('click', () => { const g = b.dataset.g; S.groups = S.groups.includes(g) ? S.groups.filter(x => x !== g) : [...S.groups, g]; if (!S.groups.length) S.groups = [g]; b.setAttribute('aria-pressed', String(S.groups.includes(g))); f.querySelectorAll('[data-g]').forEach(x => x.setAttribute('aria-pressed', String(S.groups.includes(x.dataset.g)))); redraw(); }));
   f.querySelectorAll('[data-m]').forEach(b => b.addEventListener('click', () => { S.mode = b.dataset.m; f.querySelectorAll('[data-m]').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.m === S.mode))); redraw(); }));
   f.querySelector('[data-role=end]').addEventListener('change', e => { S.end = +e.target.value; redraw(); });
+  f.addEventListener('click', e => { const b = e.target.closest('[data-tk]'); if (!b) return; const t = b.dataset.tk, g = E.groupOf[t];
+    if (!S.groups.includes(g)) { S.groups = [...S.groups, g]; S.off = [...S.off.filter(x => x !== t), ...D.companies.filter(c => c.group === g && c.ticker !== t).map(c => c.ticker)];  /* bấm mã ở nhóm chưa chọn: chỉ thêm mã đó */ f.querySelectorAll('[data-g]').forEach(x => x.setAttribute('aria-pressed', String(S.groups.includes(x.dataset.g)))); }
+    else S.off = S.off.includes(t) ? S.off.filter(x => x !== t) : [...S.off, t];
+    if (!sel().length) S.off = S.off.filter(x => x !== t);
+    redraw(); });
   // Bảng nhóm mô hình (dùng xuyên suốt tab): nhóm · doanh nghiệp · có trong tổng hay không.
   renders.push(() => { const s = sel(), cons = E.consolidation.filter(c => s.includes(c.parent) && s.includes(c.child));
     f.querySelector('.pf-legend').innerHTML = `<table class="pf-gtable"><thead><tr><th>Nhóm mô hình</th><th>Doanh nghiệp</th><th>Trong tổng</th></tr></thead><tbody>${D.groups.map(g => { const on = S.groups.includes(g.id);
-        return `<tr class="${on ? '' : 'off'}"><td><i style="background:${g.color}"></i>${esc(g.label)}</td><td>${D.companies.filter(c => c.group === g.id).map(c => `<span class="pf-tk" title="${esc(c.note || '')}">${c.ticker}${c.mixed ? '*' : ''}</span>`).join('')}</td><td>${on ? 'Có' : 'Không'}</td></tr>`; }).join('')}</tbody></table>
-      <p class="pf-note">Mỗi doanh nghiệp xếp vào mảng có doanh thu lớn nhất; dấu * là doanh nghiệp nhiều mảng kinh doanh, số theo nhóm chỉ mang tính tham khảo. Mẫu doanh nghiệp niêm yết, không đại diện toàn ngành viễn thông.${cons.length ? ` Loại trùng hợp nhất: ${cons.map(c => `${c.parent} trừ ${c.child}`).join(', ')}.` : ''}</p>`; });
+        return `<tr class="${on ? '' : 'off'}"><td><i style="background:${g.color}"></i>${esc(g.label)}</td><td>${D.companies.filter(c => c.group === g.id).map(c => `<button type="button" class="pf-tk" data-tk="${c.ticker}" aria-pressed="${on && !S.off.includes(c.ticker)}" title="${esc(c.note || '')} · bấm để bỏ khỏi / thêm vào rổ">${c.ticker}${c.mixed ? '*' : ''}</button>`).join('')}</td><td>${on ? 'Có' : 'Không'}</td></tr>`; }).join('')}</tbody></table>
+      <p class="pf-scope">Rổ đang chọn: <b>${s.length}</b> doanh nghiệp (${s.join(', ') || '—'}) · số tổng hợp từ BCTC hợp nhất; mỗi chart ghi số mã có dữ liệu ở kỳ chốt · không đại diện toàn thị trường viễn thông Việt Nam.</p>
+      <p class="pf-note">Bấm mã để bỏ khỏi hoặc thêm vào rổ. Mỗi doanh nghiệp xếp vào mảng có doanh thu lớn nhất; dấu * là doanh nghiệp nhiều mảng kinh doanh, số theo nhóm chỉ mang tính tham khảo. Mẫu doanh nghiệp niêm yết, không đại diện toàn ngành viễn thông.${cons.length ? ` Loại trùng hợp nhất: ${cons.map(c => `${c.parent} trừ ${c.child}`).join(', ')}.` : ''}</p>`; });
   return f;
 }
 function spark(vals) {
@@ -104,16 +119,17 @@ function kpis() {
 }
 // Section: câu hỏi + hàng mini KPI + các card
 // Không có hàng ô số nhỏ dưới câu hỏi (quy tắc chung trang Điện, PR #35, 25/11/2026); chỉ giữ hàng KPI đầu sub-tab.
-function section(num, q) {
-  const s = el('section', 'pp-panel pp-q pf-sec'); s.innerHTML = `<header class="pp-ph"><span class="pp-num">${num}</span><div><h3>${esc(q)}</h3></div></header>`;
+// Mục lục: 6 nhóm Kết quả kinh doanh → Biên lợi nhuận → CAPEX & dở dang → Công nợ & chuyển đổi tiền → Nợ, thanh khoản & FCF → Hiệu quả vốn.
+function section(num, title, q) {
+  const s = el('section', 'pp-panel pp-q pf-sec'); s.innerHTML = `<header class="pp-ph"><span class="pp-num">${num}</span><div><h3>${esc(title)}</h3><p class="pf-q">${esc(q)}</p></div></header>`;
   return s;
 }
 const grid2 = (...cards) => { const g = el('div', 'grid two g2 pf-g2'); cards.forEach(c => g.append(c.el)); return g; };
 
-/* ---------- 7.1 Chu kỳ doanh thu và lợi nhuận ---------- */
+/* ---------- 1.1 Chu kỳ doanh thu và lợi nhuận ---------- */
 const PNL = [['revenue', 'Doanh thu'], ['gross', 'Lợi nhuận gộp'], ['ebitda', 'EBITDA'], ['ebit', 'EBIT'], ['npat', 'LNST']];
 function s71() {
-  const s = section('7.1', 'Tăng trưởng doanh thu có chuyển thành tăng trưởng lợi nhuận, và lợi nhuận nằm ở mô hình kinh doanh nào?');
+  const s = section('1.1', 'Kết quả kinh doanh', 'Tăng trưởng doanh thu có chuyển thành tăng trưởng lợi nhuận, và lợi nhuận nằm ở mô hình kinh doanh nào?');
   // Chart 1: quy mô theo nhóm
   const c1 = card('vt-fin-pnl', 'Doanh thu và lợi nhuận theo nhóm mô hình (tỷ đồng)', 'Cột chồng theo nhóm mô hình · đổi chỉ tiêu và cách xem'); let m1 = 'npat', v1 = 'abs';
   seg(c1, 'Chỉ tiêu', PNL, () => m1, k => { m1 = k; draw1(); }); seg(c1, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['share', 'Tỷ trọng (%)']], () => v1, k => { v1 = k; draw1(); });
@@ -163,11 +179,11 @@ function wf(steps, unit) {
   return `<div class="pf-wf">${rows.map(r => `<div class="pf-wf-r${r.id ? ' pf-click' : ''}"${r.id ? ` data-id="${r.id}" role="button" tabindex="0"` : ''}><span>${esc(r.l)}</span><div class="pf-wf-t"><i style="left:${Math.min(pos(r.a), pos(r.b))}%;width:${Math.max(.4, Math.abs(pos(r.b) - pos(r.a)))}%;background:${r.total ? '#1D2678' : r.v < 0 ? '#c98a00' : (r.c || '#2a9fa3')}"></i>${lo < 0 ? `<b style="left:${pos(0)}%"></b>` : ''}</div><em>${r.total ? nf(r.v) : sg(r.v, 0)}</em></div>`).join('')}</div><div class="pf-unit">${esc(unit)}</div>`;
 }
 
-/* ---------- 7.2 Cấu trúc chi phí và biên lợi nhuận ---------- */
+/* ---------- 1.2 Cấu trúc chi phí và biên lợi nhuận ---------- */
 function groupPicker(c, get, set) { const g = el('select', 'pf-sel'); c.ctl.append(g); g.addEventListener('change', () => set(g.value)); return () => { g.innerHTML = `<option value="all">Tất cả nhóm đang chọn</option>` + D.groups.filter(x => S.groups.includes(x.id)).map(x => `<option value="${x.id}"${x.id === get() ? ' selected' : ''}>${esc(x.label)}</option>`).join(''); if (get() !== 'all' && !S.groups.includes(get())) set('all', true); }; }
 const scopeOf = gid => gid === 'all' ? sel() : sel().filter(t => E.groupOf[t] === gid);
 function s72() {
-  const s = section('7.2', 'Biên lợi nhuận khác nhau thế nào giữa các mô hình kinh doanh, và đòn bẩy hoạt động có cải thiện không?');
+  const s = section('1.2', 'Biên lợi nhuận', 'Biên lợi nhuận khác nhau thế nào giữa các mô hình kinh doanh, và đòn bẩy hoạt động có cải thiện không?');
   // Chart 1: biên theo thời gian
   const c1 = card('vt-fin-margin', 'Biên lợi nhuận theo thời gian (%)', 'Biên gộp, EBITDA, EBIT, LNST trên doanh thu · chọn nhóm mô hình'); let g1 = 'all'; const p1 = groupPicker(c1, () => g1, (v, q) => { g1 = v; if (!q) draw1(); });
   function draw1() { p1(); const x = scopeOf(g1), L = E.labels(S.mode), r = n => E.ratio({m: n}, {m: 'revenue'}, x, S.mode, 100).values;
@@ -190,9 +206,9 @@ function s72() {
   return s;
 }
 
-/* ---------- 7.3 CAPEX và hình thành tài sản ---------- */
+/* ---------- 1.3 CAPEX và hình thành tài sản ---------- */
 function s73() {
-  const s = section('7.3', 'CAPEX đang tăng nhanh hay chậm hơn doanh thu, và doanh nghiệp đang ở giai đoạn nào của chu kỳ đầu tư?');
+  const s = section('1.3', 'CAPEX & dở dang', 'CAPEX đang tăng nhanh hay chậm hơn doanh thu, và doanh nghiệp đang ở giai đoạn nào của chu kỳ đầu tư?');
   // Chart 1: CAPEX theo nhóm
   const c1 = card('vt-fin-capex', 'CAPEX theo nhóm mô hình (tỷ đồng)', 'Tiền chi mua sắm, xây dựng TSCĐ (LCTT) · quy mô, so cùng kỳ, tỷ trọng'); let v1 = 'abs';
   seg(c1, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['share', 'Tỷ trọng (%)']], () => v1, k => { v1 = k; draw1(); });
@@ -227,9 +243,9 @@ function s73() {
   return s;
 }
 
-/* ---------- 7.4 Phải thu và chất lượng dòng tiền ---------- */
+/* ---------- 1.4 Phải thu và chất lượng dòng tiền ---------- */
 function s74() {
-  const s = section('7.4', 'Lợi nhuận ghi nhận có chuyển thành dòng tiền, hay đang nằm lại ở công nợ?');
+  const s = section('1.4', 'Công nợ & chuyển đổi tiền', 'Lợi nhuận ghi nhận có chuyển thành dòng tiền, hay đang nằm lại ở công nợ?');
   const c1 = card('vt-fin-recv', 'Phải thu khách hàng theo nhóm mô hình (tỷ đồng)', 'Số dư cuối kỳ · giá trị hoặc so cùng kỳ'); let v1 = 'abs';
   seg(c1, 'Cách xem', [['abs', 'Tỷ đồng'], ['yoy', 'So cùng kỳ (%)']], () => v1, k => { v1 = k; draw1(); });
   function draw1() { const mode = S.mode === 'y' ? 'y' : 'q', b = E.byGroup('receivables', sel(), mode);
@@ -251,9 +267,9 @@ function s74() {
   return s;
 }
 
-/* ---------- 7.5 Đòn bẩy và phân bổ dòng tiền ---------- */
+/* ---------- 1.5 Đòn bẩy và phân bổ dòng tiền ---------- */
 function s75() {
-  const s = section('7.5', 'Chu kỳ đầu tư đang tạo áp lực tài chính hay doanh nghiệp đang thu hoạch dòng tiền?');
+  const s = section('1.5', 'Nợ, thanh khoản & FCF', 'Chu kỳ đầu tư đang tạo áp lực tài chính hay doanh nghiệp đang thu hoạch dòng tiền?');
   const c1 = card('vt-fin-debt', 'Cơ cấu nợ vay (tỷ đồng)', 'Nợ vay ngắn hạn, dài hạn (cột chồng); tiền & đầu tư ngắn hạn, nợ vay ròng (đường)');
   function draw1() { const x = sel(), mode = S.mode === 'y' ? 'y' : 'q', L = E.labels(mode), T = m => E.total(m, x, mode).values;
     chart(c1.host, 'vt-fin-debt', L, [{name: 'Nợ vay ngắn hạn', color: '#8997D6', values: T('st_debt')}, {name: 'Nợ vay dài hạn', color: '#1D2678', values: T('lt_debt')}, {name: 'Tiền & đầu tư ngắn hạn', color: '#2a9fa3', values: T('cash_all'), kind: 'line'}, {name: 'Nợ vay ròng', color: '#c98a00', values: T('net_debt'), kind: 'line'}], {unit: 'tỷ đ', native: 'stack', stackable: true});
@@ -287,7 +303,7 @@ function s75() {
   return s;
 }
 
-/* ---------- 7.6 Hiệu quả sử dụng vốn ---------- */
+/* ---------- 1.6 Hiệu quả sử dụng vốn ---------- */
 // NOPAT = EBIT × (1 − thuế suất hiệu dụng); thuế suất hiệu dụng = thuế TNDN ÷ LNTT cùng kỳ, giới hạn 0–30%.
 function roic(x, mode) {
   const L = E.labels(mode), e = E.per('ebit', x, mode), tx = E.per('tax', x, mode), pb = E.per('pbt', x, mode), ic = E.per('ic', x, mode, true);
@@ -298,7 +314,7 @@ function roic(x, mode) {
   return {labels: L, values, each, ic};
 }
 function s76() {
-  const s = section('7.6', 'Vốn đầu tư đang tạo ra mức sinh lời thế nào ở từng mô hình kinh doanh?');
+  const s = section('1.6', 'Hiệu quả vốn', 'Vốn đầu tư đang tạo ra mức sinh lời thế nào ở từng mô hình kinh doanh?');
   const c1 = card('vt-fin-returns', 'ROE, ROA, ROIC (%)', 'TTM hoặc năm · chọn nhóm mô hình · đường mảnh là bình quân lịch sử của chính chỉ tiêu'); let g1 = 'all'; const p1 = groupPicker(c1, () => g1, (v, q) => { g1 = v; if (!q) draw1(); });
   function draw1() { p1(); const x = scopeOf(g1), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode), roe = E.ratio({m: 'npat'}, {m: 'equity', avg: true}, x, mode, 100).values, roa = E.ratio({m: 'npat'}, {m: 'total_assets', avg: true}, x, mode, 100).values, ri = roic(x, mode).values;
     const avg = v => { const a = v.filter(fin); return a.length ? a.reduce((s, z) => s + z, 0) / a.length : null; };
@@ -381,11 +397,24 @@ function exportCsv(kind) {
 }
 
 /* ---------- Dựng ---------- */
-function redraw() { renders.forEach(f => { try { f(); } catch (e) { document.documentElement.dataset.pfError = (document.documentElement.dataset.pfError || '') + e.message + ';'; console.error(e); } }); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
+function methods() {
+  const d = el('details', 'card pf-method'); d.dataset.blockId = 'vt-fin-method'; d.dataset.updateKind = 'public'; d.dataset.cadence = 'quarterly'; d.dataset.refreshStatus = 'snapshot';
+  d.innerHTML = `<summary><b>Phương pháp & tải dữ liệu</b> <small>BCTC hợp nhất · ${D.companies.length} doanh nghiệp · ${qLabel(D.periods[0])} – ${qLabel(D.periods.at(-1))}</small></summary>
+    <ul class="pp-ul"><li>Tổng tuyệt đối = tổng các doanh nghiệp có số ở kỳ đó; doanh nghiệp thiếu số không được cộng, độ phủ ghi dưới mỗi chart.</li>
+    <li>Hệ số = tổng tử số ÷ tổng mẫu số trên cùng tập doanh nghiệp có đủ cả hai; không lấy trung bình các hệ số.</li>
+    <li>TTM = tổng 4 quý liền, đủ cả 4 quý. Năm: KQKD = tổng 4 quý, LCTT = số báo cáo năm (LCTT quý trên VNDirect trước 2024 không khớp số năm thì để trống). Số dư: cuối kỳ; bình quân = (cuối kỳ + cùng kỳ năm trước)/2.</li>
+    <li>EBITDA = LN gộp − chi phí bán hàng − chi phí QLDN + khấu hao; FCF = CFO − tiền chi mua sắm TSCĐ; vốn đầu tư = VCSH + nợ vay − tiền − đầu tư ngắn hạn.</li>
+    <li>Không có quan hệ công ty mẹ – con trong rổ (FPT hợp nhất FOX không nằm trong rổ).</li></ul>
+    <div class="pf-ctl"><span class="pf-lb">Tải CSV</span>${[['raw', 'Số liệu từng doanh nghiệp'], ['group', 'Tổng theo nhóm (chu kỳ đang chọn)'], ['ratio', 'Hệ số theo nhóm'], ['universe', 'Danh mục doanh nghiệp & phương pháp']].map(([k, t]) => `<button type="button" class="pf-dl" data-x="${k}">${t}</button>`).join('')}</div>`;
+  d.querySelectorAll('[data-x]').forEach(b => b.addEventListener('click', () => exportCsv(b.dataset.x)));
+  const src = el('div', 'pw-src', `Nguồn: ${SRC}`); d.append(src);
+  return d;
+}
+function redraw() { syncUrl(); renders.forEach(f => { try { f(); } catch (e) { document.documentElement.dataset.pfError = (document.documentElement.dataset.pfError || '') + e.message + ';'; console.error(e); } }); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
 function build(pane) {
   if (!pane || root) return; root = pane;
   style();
-  pane.append(filterBar(), kpis(), s71(), s72(), s73(), s74(), s75(), s76());
+  pane.append(filterBar(), kpis(), s71(), s72(), s73(), s74(), s75(), s76(), methods());
   redraw();
 }
 function style() {
@@ -396,7 +425,8 @@ function style() {
 .pf-legend{margin-top:4px}.pf-gtable{width:100%;border-collapse:collapse;font-size:12.5px}.pf-gtable th{text-align:left;font:600 11px Inter,sans-serif;color:var(--muted,#7a8399);text-transform:uppercase;letter-spacing:.04em;padding:6px 10px;border-bottom:1px solid var(--line,#e3e7f0)}
 .pf-gtable td{padding:7px 10px;border-bottom:1px solid var(--line,#eef0f6);vertical-align:middle}.pf-gtable td:first-child{white-space:nowrap;font-weight:600;color:var(--ink2,#3b4256);width:230px}.pf-gtable td:last-child{width:90px;color:var(--muted,#7a8399)}
 .pf-gtable td i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;vertical-align:-1px}.pf-gtable tr.off td{opacity:.45}.pf-tk{display:inline-block;margin:2px 6px 2px 0;padding:1px 7px;border:1px solid var(--line,#d6dbe8);border-radius:6px;font:600 12px Inter,sans-serif;cursor:help;background:var(--card,#fff)}
-.pf-note{margin:6px 2px 0;font-size:11px;color:var(--muted,#7a8399)}@media (max-width:640px){.pf-grid{grid-template-columns:1fr;gap:4px}.pf-gtable td:first-child{width:auto;white-space:normal}}.pf-lb{font:600 11.5px Inter,sans-serif;color:var(--muted,#7a8399);text-transform:uppercase;letter-spacing:.04em}
+.pf-note{margin:6px 2px 0;font-size:11px;color:var(--muted,#7a8399)}.pf-scope{margin:8px 2px 0;font-size:12px;color:var(--ink2,#3b4256)}.pf-q{margin:2px 0 0;font-size:12.5px;color:var(--ink2,#3b4256)}
+button.pf-tk[aria-pressed=false]{opacity:.45;text-decoration:line-through}.pf-method{margin-top:18px}.pf-method>summary{cursor:pointer}.pf-method>summary small{color:var(--muted,#7a8399);margin-left:8px}.pf-dl{border:1px solid var(--line,#d6dbe8);background:var(--card,#fff);border-radius:7px;padding:4px 10px;font:600 12px Inter,sans-serif;cursor:pointer}@media (max-width:640px){.pf-grid{grid-template-columns:1fr;gap:4px}.pf-gtable td:first-child{width:auto;white-space:normal}}.pf-lb{font:600 11.5px Inter,sans-serif;color:var(--muted,#7a8399);text-transform:uppercase;letter-spacing:.04em}
 .pf-chips{display:flex;flex-wrap:wrap;gap:6px}.pf-chips button,.pf-seg button{border:1px solid var(--line,#d6dbe8);background:var(--card,#fff);color:var(--ink2,#3b4256);border-radius:7px;padding:4px 9px;font:600 12px Inter,sans-serif;cursor:pointer}
 .pf-chips button i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}.pf-chips button small{color:var(--muted,#7a8399);font-weight:500}
 .pf-chips button[aria-pressed=false]{opacity:.55}.pf-seg{display:inline-flex;flex-wrap:wrap;gap:4px}.pf-seg button[aria-pressed=true],.pf-chips button[aria-pressed=true]{border-color:#2938A8;box-shadow:inset 0 0 0 1px #2938A8}
