@@ -12,12 +12,52 @@ window.PKG = {
     {spark: 'spk-pe', pe: '239', label: 'Sữa'},
   ],
   charts: [
-    {id: 'chDairyChain', type: 'steps', steps: [
-      ['Nguồn sữa', 'Sữa tươi trong nước + sữa bột nhập', 'Trang trại bò sữa (VNM, MCM); sữa bột SMP, WMP nhập khẩu để hoàn nguyên'],
-      ['Chế biến', 'Sữa nước, sữa bột, sữa chua, sữa đặc', 'Nhà máy trong nước; cơ cấu sản phẩm quyết định giá bán bình quân'],
-      ['Kênh bán', 'Truyền thống · hiện đại · cửa hàng riêng · xuất khẩu', 'Sức mua nội địa, giá bán, thị phần'],
-      ['Biên', 'Giá bán − giá sữa nguyên liệu, đường, bao bì', 'Giá sữa bột đi vào giá vốn sau độ trễ tồn kho']],
-      note: 'Sơ đồ mô hình, không biểu thị tỷ trọng.', src: [['FinSuccess tổng hợp', '#rf-q-model']]},
+    {id: 'chDairyChain', type: 'html', src: [['FinSuccess tự tổng hợp', '#rf-q-model']],
+      method: 'Số trang trại, hộ chăn nuôi, nhà máy, tỷ trọng nhập khẩu sữa bột theo nước, cơ cấu doanh thu theo loại sữa năm 2023 và số thị trường xuất khẩu: FinSuccess tự tổng hợp. Cơ cấu doanh thu là của toàn thị trường sữa Việt Nam, không phải của một doanh nghiệp.',
+      render: esc => {
+        const box = t => `<span class="dc-box">${esc(t)}</span>`;
+        const ar = '<span class="dc-ar" aria-hidden="true">→</span>';
+        const flow = (steps, out) => `<li><span class="dc-steps">${steps.map(esc).join(' → ')}</span>${ar}<b class="dc-out">${esc(out)}</b></li>`;
+        const mix = [['Sữa uống', 48, '#1D2678'], ['Sữa bột', 29, '#C0272D'], ['Yogurt', 15, '#4A90D9'], ['Khác', 6, '#C9CDD6'], ['Phô mai', 2, '#2FB3D8']];
+        return `<div class="dc dc-dairy">
+  <p class="dc-lead">Việt Nam chỉ đáp ứng 40–50% nhu cầu sữa trong nước</p>
+  <div class="dc-band"><span class="dc-b dc-b1">Đầu vào</span><span class="dc-b dc-b2">Quy trình sản xuất</span><span class="dc-b dc-b3">Đầu ra</span></div>
+  <div class="dc-cols">
+    <section class="dc-col dc-in"><h4><span>1</span>Nguyên vật liệu đầu vào</h4>
+      <div class="dc-row">${box('Bò')}${box('Cỏ')}${box('Trang trại, hộ chăn nuôi')}</div>
+      <p class="dc-num"><b>&gt; 1.700</b> trại · <b>&gt; 28.700</b> hộ</p>
+      <div class="dc-or"><div class="dc-src"><b>Sữa tươi tự cung</b></div><em>hoặc</em><div class="dc-src"><b>Nhập khẩu từ nước ngoài</b><small>Sữa bột nguyên kem (WMP) · Sữa bột gầy (SMP)</small></div></div>
+      <p class="dc-lbl">Nguồn nhập sữa bột</p>
+      <ul class="dc-ctry"><li><b>28%</b>New Zealand</li><li><b>18%</b>Hoa Kỳ</li><li>Úc</li><li>Nhật Bản</li></ul>
+      <p class="dc-note">Và các nguyên liệu khác: đường, hương liệu, bao bì…</p>
+    </section>
+    <section class="dc-col dc-mid"><h4><span>2</span>Quy trình sản xuất</h4>
+      <p class="dc-num"><b>30+</b> nhà máy đạt chuẩn GMP / HACCP / ISO · bắt đầu bằng <b>chuẩn hóa</b> sữa nguyên liệu</p>
+      <ul class="dc-flow">
+        ${flow(['Phối trộn', 'Đồng hóa', 'Thanh trùng'], 'Rót sản phẩm')}
+        ${flow(['140°C trong 4–6 giây', 'làm lạnh 20°C'], 'Sữa tiệt trùng')}
+        ${flow(['90°C trong 30 giây', 'làm lạnh 4°C'], 'Sữa thanh trùng')}
+        ${flow(['Trộn sữa bột và nước ở 40°C'], 'Sữa hoàn nguyên')}
+        ${flow(['Nấu', 'bổ sung syrup', 'kết tinh'], 'Sữa đặc')}
+        ${flow(['Thanh trùng', 'cô đặc', 'đồng hóa', 'sấy sữa'], 'Sữa bột')}
+        ${flow(['Tách béo một phần', 'lên men', 'đông sữa lactic', 'tạo hình, rút nước váng sữa'], 'Phô mai')}
+      </ul>
+      <h4 class="dc-sub"><span>3</span>Thành phẩm · doanh thu các loại sữa năm 2023</h4>
+      <div class="dc-stack" role="img" aria-label="${mix.map(([n, v]) => n + ' ' + v + '%').join(', ')}">${mix.map(([n, v, c]) => `<span style="flex:${v} 1 0;background:${c}">${v >= 6 ? v + '%' : ''}</span>`).join('')}</div>
+      <ul class="dc-leg">${mix.map(([n, v, c]) => `<li><i style="background:${c}"></i>${esc(n)} <b>${v}%</b></li>`).join('')}<li><i style="background:#111"></i>Bơ</li></ul>
+      <p class="dc-lbl">Doanh nghiệp dẫn đầu</p>
+      <p class="dc-brands"><b>Vinamilk</b> (số 1) · Nutifood · TH true MILK · IDP · Nestlé</p>
+    </section>
+    <section class="dc-col dc-right">
+      <h4><span>5</span>Phân phối trong nước</h4>
+      <ul class="dc-list"><li>Siêu thị, trung tâm thương mại, cửa hàng tiện lợi</li><li>Phân phối độc quyền, đại lý</li><li>Cửa hàng thương hiệu riêng</li><li>Sàn thương mại điện tử</li><li>Điểm bán lẻ, tạp hóa</li></ul>
+      <h4><span>4</span>Xuất khẩu</h4>
+      <p class="dc-num"><b>60+</b> quốc gia, vùng lãnh thổ</p>
+      <p class="dc-note">Thị trường chính: Đông Nam Á, Trung Đông, Nhật Bản, Hàn Quốc, Trung Quốc</p>
+    </section>
+  </div>
+</div>`;
+      }},
     {id: 'chDairyModels', type: 'models', items: [
       ['Sữa đa sản phẩm, nội địa + xuất khẩu', 'VNM', 'Sữa nước, sữa bột, sữa chua, sữa đặc, nước giải khát; kênh truyền thống, hiện đại, chuỗi cửa hàng riêng và xuất khẩu', 'Giá sữa bột nhập (SMP, WMP), đường; giá bán và cơ cấu sản phẩm; chi phí bán hàng', [['#rf-q-input', 'Giá đầu vào'], ['#rf-q-gm', 'Biên gộp']]],
       ['Sữa tươi từ đàn bò', 'MCM', 'Sữa tươi, sữa chua từ trang trại tại Mộc Châu, thị trường chủ yếu miền Bắc', 'Giá sữa tươi nguyên liệu, thức ăn chăn nuôi (ngô, khô đậu), khấu hao trang trại', [['#rf-q-output', 'Sản lượng'], ['#rf-q-gm', 'Biên gộp']]]],
