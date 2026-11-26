@@ -65,3 +65,14 @@
 .pp-stage{display:flex;align-items:center;gap:10px;margin:24px 0 12px;padding-bottom:8px;border-bottom:2px solid #1D2678;scroll-margin-top:130px}.pp-stage span{font:700 11px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#1D2678;border-radius:6px;padding:3px 9px}.pp-stage h3{margin:0;font-size:16px}
 :root[data-theme=dark] .pp-stage{border-color:#8997D6}:root[data-theme=dark] .pp-stage span{background:#2938A8}
 @media (max-width:760px){.pp-flow-ar{display:none}.pp-flow-s{flex-basis:100%}}
+/* 26/11/2026 (người dùng: chart to quá, cần 2 chart một hàng như các ngành khác). fin-success-theme.css chỉ chia 2 cột cho card có
+   id bắt đầu "ch", card khác bị kéo hết hàng; trang Viễn thông đặt lưới riêng: chart 2 cột, bảng/sơ đồ chiếm cả hàng, màn hẹp 1 cột. */
+body[data-sector=telecom] .vt-grid,body[data-sector=telecom] .vt-one{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+body[data-sector=telecom] .vt-grid>.card,body[data-sector=telecom] .vt-one>.card{grid-column:auto!important;margin:0}
+body[data-sector=telecom] :is(.vt-grid,.vt-one)>:is(.pp-tcard,.vt-chain,.vt-model,.vt-listed,.vt-profile){grid-column:1/-1!important}
+body[data-sector=telecom] .pf-sec{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+body[data-sector=telecom] .pf-sec>header{grid-column:1/-1}
+body[data-sector=telecom] .pf-sec>.pf-g2{display:contents}
+body[data-sector=telecom] .pf-sec .card{grid-column:auto!important;margin:0}
+body[data-sector=telecom] .vt-card .pp-host{min-height:0}
+@media (max-width:900px){body[data-sector=telecom] :is(.vt-grid,.vt-one,.pf-sec){grid-template-columns:minmax(0,1fr)}}
