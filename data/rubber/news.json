@@ -1,0 +1,1335 @@
+{
+ "updated_at": "2026-11-26",
+ "articles": [
+  {
+   "id": "a1",
+   "source_name": "Thời báo Tài chính Việt Nam",
+   "title": "Ngày 19/11: Giá cao su thế giới đồng loạt giảm theo giá dầu",
+   "url": "https://thoibaotaichinhvietnam.vn/ngay-19-11-gia-cao-su-the-gioi-dong-loat-giam-theo-gia-dau-207168.html",
+   "published_at": "2026-11-19"
+  },
+  {
+   "id": "a2",
+   "source_name": "Vietnam+",
+   "title": "Nông, lâm, thủy sản xuất siêu gần 19 tỷ USD trong 10 tháng năm 2026",
+   "url": "https://www.vietnamplus.vn/nong-lam-thuy-san-xuat-sieu-gan-19-ty-usd-trong-10-thang-nam-2026-post1146030.amp",
+   "published_at": "2026-11-04"
+  },
+  {
+   "id": "a3",
+   "source_name": "Báo Pháp Luật Việt Nam",
+   "title": "Cao su Việt Nam (GVR) ước lãi hơn 6.800 tỷ đồng, lợi nhuận cả năm dự báo vượt 52% kế hoạch",
+   "url": "https://doanhnhan.baophapluat.vn/cao-su-viet-nam-gvr-uoc-lai-hon-6-800-ty-dong-loi-nhuan-ca-nam-du-bao-vuot-52-ke-hoach.html",
+   "published_at": "2026-10-06"
+  },
+  {
+   "id": "a4",
+   "source_name": "Báo Pháp Luật Việt Nam",
+   "title": "Cao su Phước Hòa (PHR) báo lãi vượt kế hoạch năm chỉ sau 9 tháng, đẩy mạnh mở rộng quỹ đất công nghiệp",
+   "url": "https://doanhnhan.baophapluat.vn/cao-su-phuoc-hoa-phr-bao-lai-vuot-ke-hoach-nam-chi-sau-9-thang-day-manh-mo-rong-quy-dat-cong-nghiep.html",
+   "published_at": "2026-10-20"
+  },
+  {
+   "id": "a5",
+   "source_name": "VietTimes",
+   "title": "9 tháng bội thu của doanh nghiệp trồng cao su",
+   "url": "https://viettimes.vn/9-thang-boi-thu-cua-doanh-nghiep-trong-cao-su-post207674.html",
+   "published_at": "2026-11-02"
+  },
+  {
+   "id": "a6",
+   "source_name": "Trung tâm WTO và Hội nhập (VCCI)",
+   "title": "Cao su Việt Nam: Giá bán tăng nhưng lượng xuất khẩu vẫn lao dốc",
+   "url": "https://trungtamwto.vn/tin-tuc/33839-cao-su-viet-nam-gia-ban-tang-nhung-luong-xuat-khau-van-lao-doc",
+   "published_at": "2026-10-23"
+  },
+  {
+   "id": "a7",
+   "source_name": "Thị trường Tài chính Tiền tệ",
+   "title": "Cao su Việt Nam giảm lượng xuất khẩu, mở rộng thị trường Ấn Độ",
+   "url": "https://thitruongtaichinhtiente.vn/cao-su-viet-nam-giam-luong-xuat-khau-mo-rong-thi-truong-an-do-85899.html",
+   "published_at": "2026-09-29"
+  },
+  {
+   "id": "a8",
+   "source_name": "24HMoney",
+   "title": "DPR tăng gấp đôi vốn điều lệ, bầu Chủ tịch mới",
+   "url": "https://24hmoney.vn/news/dpr-tang-gap-doi-von-dieu-le-bau-chu-tich-moi-c2a2857218.html",
+   "published_at": "2026-11-11"
+  },
+  {
+   "id": "a9",
+   "source_name": "VCCI",
+   "title": "Nguồn cung cao su có thể thiếu hụt năm thứ 5 liên tiếp, nhiều doanh nghiệp được kỳ vọng hưởng lợi",
+   "url": "https://vcci.com.vn/tin-tuc/nguon-cung-cao-su-co-the-thieu-hut-nam-thu-5-lien-tiep-nhieu-doanh-nghiep-duoc-ky-vong-huong-loi",
+   "published_at": "2026-10-05"
+  },
+  {
+   "id": "a10",
+   "source_name": "24HMoney",
+   "title": "Giá cao su lên mức cao nhất kể từ năm 2013",
+   "url": "https://24hmoney.vn/news/gia-cao-su-len-muc-cao-nhat-ke-tu-nam-2013-c25a2825311.html",
+   "published_at": "2026-08-26"
+  },
+  {
+   "id": "a11",
+   "source_name": "Tạp chí Công Thương",
+   "title": "EU ban hành hướng dẫn mới về EUDR: Doanh nghiệp Việt Nam cần chủ động hoàn thiện hồ sơ truy xuất nguồn gốc",
+   "url": "https://tapchicongthuong.vn/eu-ban-hanh-huong-dan-moi-ve-eudr--doanh-nghiep-viet-nam-can-chu-dong-hoan-thien-ho-so-truy-xuat-nguon-goc-543901.htm",
+   "published_at": "2026-08-22"
+  },
+  {
+   "id": "a12",
+   "source_name": "Bộ Công Thương",
+   "title": "EU công bố Quy định mới sửa đổi danh mục sản phẩm và mặt hàng trong Quy định chống phá rừng (EUDR)",
+   "url": "https://moit.gov.vn/tin-tuc/eu-cong-bo-quy-dinh-moi-sua-doi-danh-muc-san-pham-va-mat-hang-trong-quy-dinh-chong-pha-rung-eudr-.html",
+   "published_at": "2026-09-18"
+  },
+  {
+   "id": "a13",
+   "source_name": "Thời báo Tài chính Việt Nam",
+   "title": "Cao su Việt đang có lợi thế về giá",
+   "url": "https://thoibaotaichinhvietnam.vn/cao-su-viet-dang-co-loi-the-ve-gia-205500.html",
+   "published_at": "2026-10-16"
+  },
+  {
+   "id": "a14",
+   "source_name": "Thời báo Tài chính Việt Nam",
+   "title": "Ngày 20/11: Giá cao su thế giới đồng loạt giảm mạnh",
+   "url": "https://thoibaotaichinhvietnam.vn/ngay-20-11-gia-cao-su-the-gioi-dong-loat-giam-manh-207246.html",
+   "published_at": "2026-11-20"
+  },
+  {
+   "id": "a15",
+   "source_name": "Báo Pháp Luật Việt Nam",
+   "title": "Cao su Tân Biên (RTB) báo lãi quý 3 tăng trưởng 20%, chính thức vượt kế hoạch cả năm",
+   "url": "https://doanhnhan.baophapluat.vn/cao-su-tan-bien-rtb-bao-lai-quy-3-tang-truong-20-chinh-thuc-vuot-ke-hoach-ca-nam.html",
+   "published_at": "2026-10-20"
+  },
+  {
+   "id": "a16",
+   "source_name": "Thời báo Tài chính Việt Nam",
+   "title": "Ngày 17/10: Giá cao su xuất khẩu của Việt Nam liên tục tăng cao",
+   "url": "https://thoibaotaichinhvietnam.vn/ngay-17-10-gia-cao-su-xuat-khau-cua-viet-nam-lien-tuc-tang-cao-205525.html",
+   "published_at": "2026-10-17"
+  },
+  {
+   "id": "a17",
+   "source_name": "Thời báo Tài chính Việt Nam",
+   "title": "Ngày 10/11: Giá cao su thế giới chịu áp lực giảm",
+   "url": "https://thoibaotaichinhvietnam.vn/ngay-10-11-gia-cao-su-the-gioi-chiu-ap-luc-giam-206655.html",
+   "published_at": "2026-11-10"
+  },
+  {
+   "id": "a18",
+   "source_name": "Trung tâm WTO và Hội nhập (VCCI)",
+   "title": "Xuất khẩu lốp xe nâng giá trị ngành cao su Việt Nam",
+   "url": "https://trungtamwto.vn/tin-tuc/33879-xuat-khau-lop-xe-nang-gia-tri-nganh-cao-su-viet-nam",
+   "published_at": "2026-10-30"
+  },
+  {
+   "id": "a19",
+   "source_name": "Thị trường Tài chính Tiền tệ",
+   "title": "Nguồn cung biến động, thị trường hàng hóa diễn biến trái chiều",
+   "url": "https://thitruongtaichinhtiente.vn/nguon-cung-bien-dong-thi-truong-hang-hoa-dien-bien-trai-chieu-85958.html",
+   "published_at": "2026-10-01"
+  },
+  {
+   "id": "a20",
+   "source_name": "Việt Báo",
+   "title": "Giá cao su hôm nay 7/11: Đồng loạt lao dốc",
+   "url": "https://vietbao.vn/index%2Ephp/print-614857.html",
+   "published_at": "2026-11-07"
+  },
+  {
+   "id": "a21",
+   "source_name": "CafeF",
+   "title": "Casumina gặp khó vì chi phí tài chính và biến động giá nguyên vật liệu",
+   "url": "https://cafef.vn/casumina-gap-kho-188261020100322609.chn",
+   "published_at": "2026-10-20"
+  },
+  {
+   "id": "a22",
+   "source_name": "24HMoney",
+   "title": "Tóm tắt kết quả ĐHCĐ bất thường & Triển vọng kinh doanh PHR",
+   "url": "https://24hmoney.vn/posts/-c55a2846500.html",
+   "published_at": "2026-10-19"
+  },
+  {
+   "id": "a23",
+   "source_name": "CafeF",
+   "title": "Doanh nghiệp VN30 đầu tiên hé lộ kết quả kinh doanh 9 tháng đầu năm",
+   "url": "https://cafef.vn/doanh-nghiep-vn30-dau-tien-he-lo-ket-qua-kinh-doanh-9-thang-10-188261005115422674.chn",
+   "published_at": "2026-10-05"
+  },
+  {
+   "id": "a24",
+   "source_name": "VCCI",
+   "title": "Ngành cao su tìm lời giải để khai thác tín chỉ carbon",
+   "url": "https://vcci.com.vn/tin-tuc/nganh-cao-su-tim-loi-giai-de-khai-thac-tin-chi-carbon",
+   "published_at": "2026-08-13"
+  },
+  {
+   "id": "a25",
+   "source_name": "CafeLand",
+   "title": "Bất động sản 24h: Tây Ninh chuẩn bị khởi công KCN 500ha; Hải Phòng chốt mốc thông xe 5 dự án hơn 21.000 tỷ",
+   "url": "https://cafeland.vn/tin-tuc/bat-dong-san-24h-tay-ninh-chuan-bi-khoi-cong-kcn-500ha-hai-phong-chot-moc-thong-xe-5-du-an-hon-21000-ty-154486.html",
+   "published_at": "2026-08-25"
+  },
+  {
+   "id": "a26",
+   "source_name": "Thời báo Tài chính Việt Nam",
+   "title": "Ngày 13/11: Giá cao su thế giới phục hồi tích cực",
+   "url": "https://thoibaotaichinhvietnam.vn/ngay-13-11-gia-cao-su-the-gioi-phuc-hoi-tich-cuc-206874.html",
+   "published_at": "2026-11-13"
+  },
+  {
+   "id": "a27",
+   "source_name": "Thời báo Tài chính Việt Nam",
+   "title": "Ngày 12/10: Giá cao su tại Thái Lan, Trung Quốc và Singapore tiếp tục tăng",
+   "url": "https://thoibaotaichinhvietnam.vn/ngay-12-10-gia-cao-su-tai-thai-lan-trung-quoc-va-singapore-tiep-tuc-tang-205197.html",
+   "published_at": "2026-10-12"
+  },
+  {
+   "id": "a28",
+   "source_name": "Thương hiệu và Công luận",
+   "title": "Giá cao su hôm nay 15/11: Khởi sắc phiên cuối tuần",
+   "url": "https://thuonghieucongluan.com.vn/gia-cao-su-hom-nay-15-11-khoi-sac-phien-cuoi-tuan-a341947.html",
+   "published_at": "2026-11-15"
+  }
+ ],
+ "events": [
+  {
+   "id": "ev1",
+   "title": "TSR20 kỳ hạn tháng 11 lên 2.548 USD/tấn, cao nhất từ tháng 5/2013",
+   "summary": "Phiên 30/9/2026, hợp đồng TSR20 kỳ hạn tháng 11 tăng 3,75%, RSS3 cùng kỳ hạn tăng gần 3%. Bài viết nêu nguyên nhân là cao su tổng hợp đắt lên do gián đoạn qua eo Hormuz và nguồn cung Đông Nam Á giảm.",
+   "new_information": "Mức giá TSR20 cao nhất 13 năm; giá mủ nước tại Bình Phước sáng 1/10 lên 550–565 đồng/độ.",
+   "key_figures": [
+    "TSR20 kỳ hạn T11/2026: 2.548 USD/tấn, +3,75% (phiên 30/9/2026)",
+    "RSS3 kỳ hạn T11/2026: 2.831 USD/tấn, tăng gần 3%",
+    "Mủ nước Bình Phước: 550–565 đồng/độ (1/10/2026)",
+    "Mủ chén Bình Phước: 26.000–27.000 đồng/kg (1/10/2026)"
+   ],
+   "companies": [],
+   "segments": [
+    "Giá"
+   ],
+   "category": "price",
+   "topic_ids": [
+    "price"
+   ],
+   "importance": 3,
+   "event_date": "2026-09-30",
+   "article_ids": [
+    "a19"
+   ],
+   "impact": "Biến số liên quan: giá TSR20/RSS3, giá bán mủ của doanh nghiệp trồng cao su, giá mủ thu mua trong nước."
+  },
+  {
+   "id": "ev2",
+   "title": "Giá cao su kỳ hạn khoảng 236 cent Mỹ/kg, cao nhất từ năm 2013",
+   "summary": "Cuối tháng 8/2026, giá cao su kỳ hạn tăng lên khoảng 236 cent Mỹ/kg. Bài viết gắn mức tăng với mưa bão ở Thái Lan, nguy cơ El Niño trong quý 4 và giá dầu cao.",
+   "new_information": "Mốc giá cao nhất kể từ năm 2013 được ghi nhận lần đầu trong năm 2026.",
+   "key_figures": [
+    "Giá kỳ hạn: ~236 cent Mỹ/kg (26/8/2026)",
+    "Mùa khai thác cao điểm Đông Nam Á kết thúc vào tháng 9"
+   ],
+   "companies": [],
+   "segments": [
+    "Giá"
+   ],
+   "category": "price",
+   "topic_ids": [
+    "price"
+   ],
+   "importance": 2,
+   "event_date": "2026-08-26",
+   "article_ids": [
+    "a10"
+   ],
+   "impact": "Biến số liên quan: giá kỳ hạn SGX, thời tiết vùng cạo Thái Lan, giá dầu thô."
+  },
+  {
+   "id": "ev3",
+   "title": "SGX TSR20 tháng 11 tăng 4,56% lên 270,80 cent Mỹ/kg ngày 12/10",
+   "summary": "Phiên trước ngày 12/10/2026, giá tăng đồng loạt tại Singapore, Thượng Hải và Thái Lan. Bài viết nêu mưa lớn kéo dài tại Thái Lan và dự báo El Niño của WMO.",
+   "new_information": "SHFE kỳ hạn tháng 1/2027 lên 20.980 NDT/tấn.",
+   "key_figures": [
+    "SGX TSR20 T11/2026: 270,80 cent Mỹ/kg, +4,56%",
+    "SGX TSR20 T12/2026: 268,20 cent Mỹ/kg, +4,11%",
+    "SHFE T1/2027: 20.980 NDT/tấn, +3,76%",
+    "Thái Lan RSS3 FOB: 97,59 baht/kg"
+   ],
+   "companies": [],
+   "segments": [
+    "Giá"
+   ],
+   "category": "price",
+   "topic_ids": [
+    "price"
+   ],
+   "importance": 2,
+   "event_date": "2026-10-12",
+   "article_ids": [
+    "a27"
+   ],
+   "impact": "Biến số liên quan: giá SGX/SHFE, giá chào RSS3 Thái Lan."
+  },
+  {
+   "id": "ev4",
+   "title": "Giá chào RSS3 Thái Lan giảm còn 96,65 baht/kg ngày 17/10",
+   "summary": "Giữa tháng 10/2026, giá các sàn diễn biến trái chiều: SHFE tăng, SGX giảm, TOCOM đi ngang. Giá chào RSS3 tại Laem Chabang giảm 0,6%.",
+   "new_information": "SGX TSR20 tháng 11 lùi về 254,90 cent Mỹ/kg, thấp hơn mức 270,80 ngày 12/10.",
+   "key_figures": [
+    "SGX TSR20 T11/2026: 254,90 cent Mỹ/kg, -1,43%",
+    "SHFE T1/2027: 19.900 NDT/tấn, +0,71%",
+    "TOCOM RSS3 T11/2026: 448 yên/kg",
+    "Thái Lan RSS3 FOB: 96,65 baht/kg, -0,6%"
+   ],
+   "companies": [],
+   "segments": [
+    "Giá"
+   ],
+   "category": "price",
+   "topic_ids": [
+    "price"
+   ],
+   "importance": 1,
+   "event_date": "2026-10-17",
+   "article_ids": [
+    "a16"
+   ],
+   "impact": "Biến số liên quan: giá SGX/SHFE/TOCOM, giá chào Thái Lan."
+  },
+  {
+   "id": "ev5",
+   "title": "Đầu tháng 11, SGX TSR20 tháng 12 giảm về 237,30 cent Mỹ/kg",
+   "summary": "Ngày 6–7/11/2026, giá giảm đồng loạt trên TOCOM, SHFE và SGX. Đến 10/11, giá chào RSS3 Thái Lan còn 92,08 baht/kg; giá thu mua trong nước đứng yên.",
+   "new_information": "Giá chào RSS3 Thái Lan giảm từ 97,59 (12/10) xuống 92,08 baht/kg (10/11).",
+   "key_figures": [
+    "SGX TSR20 T12/2026: 237,30 cent Mỹ/kg, -1,78% (7/11)",
+    "SHFE T1/2027: 18.585 NDT/tấn, -1,87% (7/11)",
+    "TOCOM RSS3 T11/2026: 433 yên/kg, -2,77%",
+    "Thái Lan RSS3 FOB: 92,08 baht/kg (10/11)"
+   ],
+   "companies": [],
+   "segments": [
+    "Giá"
+   ],
+   "category": "price",
+   "topic_ids": [
+    "price"
+   ],
+   "importance": 2,
+   "event_date": "2026-11-07",
+   "article_ids": [
+    "a20",
+    "a17"
+   ],
+   "impact": "Biến số liên quan: giá SGX/SHFE/TOCOM, nhu cầu lốp Trung Quốc, giá dầu."
+  },
+  {
+   "id": "ev6",
+   "title": "Giá phục hồi 5,4–6,5% trong tuần 10–14/11",
+   "summary": "Trong tuần 10–14/11/2026, các hợp đồng kỳ hạn tháng 1/2027 tại Osaka, Thượng Hải và Singapore tăng trở lại. Phiên 13/11, SHFE tháng 11 tăng 4,13%, SGX tháng 12 tăng 3,25%.",
+   "new_information": "Đảo chiều sau tuần giảm đầu tháng 11; SHFE tháng 1/2027 lên 19.720 NDT/tấn.",
+   "key_figures": [
+    "SGX TSR20 T1/2027: 238,60 → 251,50 cent Mỹ/kg (+5,41%)",
+    "SHFE T1/2027: 18.705 → 19.720 NDT/tấn (+5,43%)",
+    "Osaka RSS3 T1/2027: 408 → 434,60 yên/kg (+6,52%)",
+    "Thái Lan RSS3 FOB: 91,53 baht/kg, +1,4% (13/11)"
+   ],
+   "companies": [],
+   "segments": [
+    "Giá"
+   ],
+   "category": "price",
+   "topic_ids": [
+    "price"
+   ],
+   "importance": 2,
+   "event_date": "2026-11-14",
+   "article_ids": [
+    "a28",
+    "a26"
+   ],
+   "impact": "Biến số liên quan: giá kỳ hạn SGX/SHFE/Osaka, giá chào Thái Lan."
+  },
+  {
+   "id": "ev7",
+   "title": "SGX TSR20 tháng 12 giảm 2,15% còn 241,30 cent Mỹ/kg ngày 20/11",
+   "summary": "Hai phiên 19–20/11/2026, giá cao su giảm trên cả ba sàn châu Á cùng chiều giá dầu; cao su tổng hợp butadiene trên SHFE giảm mạnh hơn.",
+   "new_information": "Xóa phần lớn mức phục hồi giữa tháng 11; butadiene SHFE tháng 1/2027 còn 15.260 NDT/tấn.",
+   "key_figures": [
+    "SGX TSR20 T12/2026: 244,70 (19/11, -1,81%) → 241,30 cent Mỹ/kg (20/11, -2,15%)",
+    "SHFE T1/2027: 19.160 (19/11) → 18.865 NDT/tấn (20/11)",
+    "Butadiene SHFE T1/2027: 15.605 (-3,58%) → 15.260 NDT/tấn (-2,71%)",
+    "TOCOM RSS3 T1/2027: 420,50 yên/kg, -2,86% (20/11)",
+    "Thái Lan RSS3 FOB: 93,16 baht/kg (20/11)"
+   ],
+   "companies": [],
+   "segments": [
+    "Giá",
+    "Cao su tổng hợp"
+   ],
+   "category": "price",
+   "topic_ids": [
+    "price"
+   ],
+   "importance": 2,
+   "event_date": "2026-11-20",
+   "article_ids": [
+    "a1",
+    "a14"
+   ],
+   "impact": "Biến số liên quan: giá SGX/SHFE, giá dầu thô, giá cao su tổng hợp butadiene."
+  },
+  {
+   "id": "ev8",
+   "title": "Giá mủ thu mua trong nước đứng yên giữa tháng 11: Bình Long 540 đồng/TSC",
+   "summary": "Từ 10/11 đến 20/11/2026, giá thu mua tại các công ty lớn không đổi dù giá thế giới biến động mạnh.",
+   "new_information": "Giá trong nước đi ngang trong khi SGX dao động 237–252 cent Mỹ/kg.",
+   "key_figures": [
+    "Bình Long: 540 đồng/TSC tại nhà máy, 530 đồng/TSC tại đội sản xuất",
+    "Bà Rịa: mủ nước 420 đồng/TSC; mủ đông DRC 35–44% 14.600 đồng/kg",
+    "Mang Yang: mủ nước 458–463 đồng/TSC",
+    "Phú Riềng: mủ nước 420 đồng/TSC; mủ tạp 390 đồng/DRC"
+   ],
+   "companies": [],
+   "segments": [
+    "Giá trong nước"
+   ],
+   "category": "price",
+   "topic_ids": [
+    "price"
+   ],
+   "importance": 1,
+   "event_date": "2026-11-20",
+   "article_ids": [
+    "a14",
+    "a17"
+   ],
+   "impact": "Biến số liên quan: giá mủ nguyên liệu trong nước, giá vốn của doanh nghiệp chế biến."
+  },
+  {
+   "id": "ev9",
+   "title": "IRSG: giá tháng 9/2026 tăng 33–68% so với cùng kỳ",
+   "summary": "Báo cáo tháng 10/2026 của IRSG cho thấy giá các chủng loại cao su tự nhiên tháng 9 tăng mạnh so với cùng kỳ. Trong nước, giá mủ chén tăng khoảng 30% và mủ nước khoảng 22% so với cuối tháng 3.",
+   "new_information": "Mặt bằng giá các nước sản xuất chính đều tăng trên 30% so với cùng kỳ.",
+   "key_figures": [
+    "STR20 (Thái Lan): +33% so cùng kỳ (T9/2026)",
+    "SMR20 (Malaysia): +34%",
+    "SIR20 (Indonesia): +39%",
+    "TSR20 (châu Âu): +68%",
+    "Mủ chén trong nước: +~30% từ đầu tháng 4",
+    "SVR10, SVR3L xuất khẩu: +~15% cùng giai đoạn"
+   ],
+   "companies": [],
+   "segments": [
+    "Giá"
+   ],
+   "category": "price",
+   "topic_ids": [
+    "price"
+   ],
+   "importance": 2,
+   "event_date": "2026-10-16",
+   "article_ids": [
+    "a13"
+   ],
+   "impact": "Biến số liên quan: giá xuất khẩu SVR, giá mủ chén, mủ nước trong nước."
+  },
+  {
+   "id": "ev10",
+   "title": "ANRPC: thiếu hụt cao su tự nhiên khoảng 213.000 tấn năm 2026",
+   "summary": "Bài viết dẫn ANRPC cho biết nguồn cung toàn cầu năm 2026 thiếu khoảng 213.000 tấn, tiêu thụ khoảng 15,6 triệu tấn. Sản lượng toàn cầu tháng 7 giảm 5,2%, xuất khẩu của Thái Lan 8 tháng giảm 10%.",
+   "new_information": "Mức thiếu hụt lớn hơn bản dự báo ANRPC được dẫn cuối tháng 8 (khoảng 101.000 tấn).",
+   "key_figures": [
+    "Thiếu hụt 2026: ~213.000 tấn",
+    "Tiêu thụ 2026: ~15,6 triệu tấn",
+    "Sản lượng toàn cầu T7/2026: -5,2% so cùng kỳ",
+    "Xuất khẩu Thái Lan 8T/2026: 1,62 triệu tấn, -10%",
+    "Dự báo dẫn cuối T8: sản lượng 15,31, tiêu thụ 15,41 triệu tấn"
+   ],
+   "companies": [],
+   "segments": [
+    "Cung cầu"
+   ],
+   "category": "supply",
+   "topic_ids": [
+    "supply"
+   ],
+   "importance": 3,
+   "event_date": "2026-10-05",
+   "article_ids": [
+    "a9",
+    "a10"
+   ],
+   "impact": "Biến số liên quan: cân đối cung cầu toàn cầu, sản lượng Thái Lan, giá cao su."
+  },
+  {
+   "id": "ev11",
+   "title": "ANRPC: sản lượng 2026 khoảng 15,039 triệu tấn, thấp hơn nhu cầu 15,356 triệu tấn",
+   "summary": "Một bản tin khác dẫn ANRPC dự báo thiếu khoảng 317.000 tấn; sản lượng Indonesia, Malaysia và Việt Nam được dự báo giảm.",
+   "new_information": "Việt Nam nằm trong nhóm nước được dự báo giảm sản lượng; quý 4 là mùa cạo cao điểm Đông Nam Á.",
+   "key_figures": [
+    "Sản lượng 2026: ~15,039 triệu tấn",
+    "Nhu cầu 2026: ~15,356 triệu tấn",
+    "Thiếu hụt: ~317.000 tấn"
+   ],
+   "companies": [],
+   "segments": [
+    "Cung cầu"
+   ],
+   "category": "supply",
+   "topic_ids": [
+    "supply"
+   ],
+   "importance": 2,
+   "event_date": "2026-10-23",
+   "article_ids": [
+    "a6"
+   ],
+   "impact": "Biến số liên quan: sản lượng Việt Nam, Indonesia, Malaysia; cân đối cung cầu."
+  },
+  {
+   "id": "ev12",
+   "title": "Mưa lớn ở Thái Lan; El Niño có thể kéo dài tới tháng 2/2027",
+   "summary": "Mưa lớn kéo dài tại Thái Lan làm gián đoạn cạo mủ và vận chuyển đầu tháng 10/2026. WMO dự báo El Niño đạt đỉnh tháng 12 và kéo dài đến tháng 2/2027.",
+   "new_information": "Lũ khiến một số nhà cung cấp phụ tùng ô tô tại Thái Lan tạm ngừng, ảnh hưởng giao hàng cho Toyota và Isuzu.",
+   "key_figures": [
+    "El Niño: đỉnh dự kiến T12/2026, kéo dài đến T2/2027 (WMO)",
+    "Mưa có thể kéo dài đến giữa tháng 10 (giới kinh doanh Malaysia)"
+   ],
+   "companies": [],
+   "segments": [
+    "Thời tiết",
+    "Nguồn cung"
+   ],
+   "category": "supply",
+   "topic_ids": [
+    "supply"
+   ],
+   "importance": 2,
+   "event_date": "2026-10-12",
+   "article_ids": [
+    "a27"
+   ],
+   "impact": "Biến số liên quan: số ngày cạo, năng suất mủ đầu vụ 2027, nguồn cung Thái Lan."
+  },
+  {
+   "id": "ev13",
+   "title": "Tồn kho cao su Thanh Đảo giảm 17.400 tấn trong tuần đến 18/9",
+   "summary": "Tồn kho cao su tự nhiên tại Thanh Đảo giảm cả ở kho ngoại quan và kho thương mại. Chứng chỉ lưu kho của hợp đồng kỳ hạn nội địa Trung Quốc thấp hơn cùng kỳ.",
+   "new_information": "Tồn kho cảng giảm cùng giai đoạn giá TSR20 lập đỉnh 13 năm.",
+   "key_figures": [
+    "Tồn kho Thanh Đảo: -17.400 tấn so tuần trước (đến 18/9/2026)",
+    "Kho ngoại quan: -9.100 tấn (-9,35%)",
+    "Kho thương mại thông thường: -8.300 tấn"
+   ],
+   "companies": [],
+   "segments": [
+    "Tồn kho",
+    "Trung Quốc"
+   ],
+   "category": "supply",
+   "topic_ids": [
+    "supply",
+    "demand"
+   ],
+   "importance": 2,
+   "event_date": "2026-09-18",
+   "article_ids": [
+    "a19"
+   ],
+   "impact": "Biến số liên quan: tồn kho Thanh Đảo, chứng chỉ lưu kho SHFE."
+  },
+  {
+   "id": "ev14",
+   "title": "Xuất khẩu 8 tháng 2026 đạt 944,89 nghìn tấn, giảm 15,4%",
+   "summary": "Theo Cục Hải quan, lượng xuất khẩu 8 tháng giảm mạnh nhưng giá bình quân tăng. Tháng 8 xuất 156,84 nghìn tấn, trị giá 332,13 triệu USD.",
+   "new_information": "Giá bình quân tháng 8 lên 2.118 USD/tấn, tăng 27,7% so cùng kỳ.",
+   "key_figures": [
+    "8T/2026: 944,89 nghìn tấn (-15,4%), 1,88 tỷ USD (-5,1%)",
+    "Giá bình quân 8T: 1.990 USD/tấn (+12,1%)",
+    "T8/2026: 156,84 nghìn tấn (-27,6%), 332,13 triệu USD (-7,6%)",
+    "Giá T8/2026: 2.118 USD/tấn (+27,7%)"
+   ],
+   "companies": [],
+   "segments": [
+    "Xuất khẩu"
+   ],
+   "category": "trade",
+   "topic_ids": [
+    "export"
+   ],
+   "importance": 2,
+   "event_date": "2026-09-29",
+   "article_ids": [
+    "a7"
+   ],
+   "impact": "Biến số liên quan: lượng và giá xuất khẩu, kim ngạch xuất khẩu cao su."
+  },
+  {
+   "id": "ev15",
+   "title": "Xuất sang Trung Quốc tháng 8 giảm 41,2%, tháng giảm thứ 6 liên tiếp",
+   "summary": "Tháng 8/2026, Việt Nam xuất sang Trung Quốc 93,33 nghìn tấn, giảm mạnh so cùng kỳ dù tăng 11,2% so với tháng 7. Lũy kế 8 tháng giảm 30,1% về lượng.",
+   "new_information": "Giá bình quân xuất sang Trung Quốc tháng 8 đạt 2.140 USD/tấn, tăng 30,5%.",
+   "key_figures": [
+    "T8/2026: 93,33 nghìn tấn, 199,7 triệu USD",
+    "So T8/2025: -41,2% lượng",
+    "8T/2026: 556,04 nghìn tấn (-30,1%), 1,1 tỷ USD (-20,8%)"
+   ],
+   "companies": [],
+   "segments": [
+    "Xuất khẩu",
+    "Trung Quốc"
+   ],
+   "category": "trade",
+   "topic_ids": [
+    "export",
+    "demand"
+   ],
+   "importance": 2,
+   "event_date": "2026-09-29",
+   "article_ids": [
+    "a7"
+   ],
+   "impact": "Biến số liên quan: lượng xuất sang Trung Quốc, tỷ trọng thị trường Trung Quốc."
+  },
+  {
+   "id": "ev16",
+   "title": "Xuất sang Ấn Độ tháng 8 tăng 31,1%, thị phần lên 5,3%",
+   "summary": "Tháng 8/2026, Việt Nam xuất 14,57 nghìn tấn sang Ấn Độ. Trong 6 tháng, Ấn Độ nhập 42,82 nghìn tấn từ Việt Nam, đứng thứ 7.",
+   "new_information": "Thị phần Việt Nam trong nhập khẩu cao su Ấn Độ tăng từ 4,6% lên 5,3%; xuất sang Malaysia, Indonesia cũng tăng mạnh.",
+   "key_figures": [
+    "Xuất sang Ấn Độ T8/2026: 14,57 nghìn tấn (+31,1%)",
+    "Ấn Độ nhập từ VN 6T/2026: 42,82 nghìn tấn (+39,2%), 92,81 triệu USD",
+    "Ấn Độ nhập khẩu 6T/2026: 813,21 nghìn tấn (+21,5%)",
+    "Malaysia T8: 9,01 nghìn tấn (+96,7%); Indonesia: 7,41 nghìn tấn (+51,4%)"
+   ],
+   "companies": [],
+   "segments": [
+    "Xuất khẩu",
+    "Ấn Độ"
+   ],
+   "category": "trade",
+   "topic_ids": [
+    "export"
+   ],
+   "importance": 1,
+   "event_date": "2026-09-29",
+   "article_ids": [
+    "a7"
+   ],
+   "impact": "Biến số liên quan: cơ cấu thị trường xuất khẩu, lượng xuất sang Ấn Độ."
+  },
+  {
+   "id": "ev17",
+   "title": "Xuất khẩu 9 tháng 2026: 1,08 triệu tấn, giá bình quân 2.022 USD/tấn",
+   "summary": "9 tháng 2026, lượng xuất khẩu giảm 15,8% còn kim ngạch giảm 3,7% nhờ giá tăng. Tháng 9 là tháng thứ sáu liên tiếp lượng giảm so cùng kỳ.",
+   "new_information": "Tháng 9 kim ngạch tăng 5,3% dù lượng giảm 18,9%; giá xuất khẩu tháng 9 tăng 29,8% so cùng kỳ, cao nhất gần 13 năm.",
+   "key_figures": [
+    "9T/2026: 1,08 triệu tấn (-15,8%), 2,19 tỷ USD (-3,7%)",
+    "Giá bình quân 9T: 2.022 USD/tấn (+14,4%)",
+    "T9/2026: 142,37 nghìn tấn (-18,9%), 317,77 triệu USD (+5,3%)"
+   ],
+   "companies": [],
+   "segments": [
+    "Xuất khẩu"
+   ],
+   "category": "trade",
+   "topic_ids": [
+    "export",
+    "price"
+   ],
+   "importance": 3,
+   "event_date": "2026-10-17",
+   "article_ids": [
+    "a6",
+    "a16"
+   ],
+   "impact": "Biến số liên quan: lượng, giá và kim ngạch xuất khẩu cao su."
+  },
+  {
+   "id": "ev18",
+   "title": "Xuất sang Trung Quốc 9 tháng giảm 31,3% còn 635,77 nghìn tấn",
+   "summary": "9 tháng 2026, xuất khẩu cao su sang Trung Quốc đạt 1,28 tỷ USD; riêng tháng 9 lượng giảm 38,8%.",
+   "new_information": "Tháng 9 xuất sang Ấn Độ tăng 97,1%, Indonesia +60%, Malaysia +35,4%.",
+   "key_figures": [
+    "Trung Quốc 9T/2026: 635,77 nghìn tấn (-31,3%), 1,28 tỷ USD (-20,5%)",
+    "Trung Quốc T9/2026: -38,8% lượng",
+    "Ấn Độ T9/2026: +97,1%"
+   ],
+   "companies": [],
+   "segments": [
+    "Xuất khẩu",
+    "Trung Quốc"
+   ],
+   "category": "trade",
+   "topic_ids": [
+    "export",
+    "demand"
+   ],
+   "importance": 2,
+   "event_date": "2026-10-23",
+   "article_ids": [
+    "a6"
+   ],
+   "impact": "Biến số liên quan: lượng xuất sang Trung Quốc, cơ cấu thị trường."
+  },
+  {
+   "id": "ev19",
+   "title": "Kim ngạch xuất khẩu cao su 10 tháng 2026 đạt 2,54 tỷ USD, giảm 2,5%",
+   "summary": "Theo số liệu nông, lâm, thủy sản 10 tháng 2026, kim ngạch cao su giảm nhẹ; giá xuất khẩu bình quân tăng ở mức hai con số.",
+   "new_information": "Mức giảm kim ngạch thu hẹp từ -3,7% (9 tháng) xuống -2,5% (10 tháng).",
+   "key_figures": [
+    "Kim ngạch 10T/2026: 2,54 tỷ USD (-2,5%)",
+    "Giá xuất khẩu bình quân: tăng hai con số"
+   ],
+   "companies": [],
+   "segments": [
+    "Xuất khẩu"
+   ],
+   "category": "trade",
+   "topic_ids": [
+    "export"
+   ],
+   "importance": 2,
+   "event_date": "2026-11-04",
+   "article_ids": [
+    "a2"
+   ],
+   "impact": "Biến số liên quan: kim ngạch xuất khẩu cao su, giá xuất khẩu bình quân."
+  },
+  {
+   "id": "ev20",
+   "title": "Việt Nam là nhà cung cấp lốp xe lớn thứ hai vào EU, chiếm 19,2%",
+   "summary": "Theo Cục Phòng vệ thương mại, Việt Nam đứng sau Thái Lan trong nhập khẩu một số loại lốp của EU. EU đang áp thuế chống bán phá giá, chống trợ cấp với một số lốp xe buýt, xe tải xuất xứ Trung Quốc.",
+   "new_information": "Tỷ trọng 19,2% kim ngạch nhập khẩu lốp cùng loại của EU.",
+   "key_figures": [
+    "Thị phần lốp VN tại EU: ~19,2%",
+    "VN là nước sản xuất cao su tự nhiên lớn thứ 3 thế giới năm 2025"
+   ],
+   "companies": [
+    "DRC",
+    "CSM"
+   ],
+   "segments": [
+    "Lốp xe",
+    "Xuất khẩu"
+   ],
+   "category": "trade",
+   "topic_ids": [
+    "export",
+    "companies"
+   ],
+   "importance": 1,
+   "event_date": "2026-10-30",
+   "article_ids": [
+    "a18"
+   ],
+   "impact": "Biến số liên quan: xuất khẩu lốp sang EU, biện pháp phòng vệ thương mại."
+  },
+  {
+   "id": "ev21",
+   "title": "Trung Quốc nhập khẩu cao su 9 tháng giảm 7,1% còn 5,683 triệu tấn",
+   "summary": "Nhu cầu nhập khẩu cao su tự nhiên và tổng hợp của Trung Quốc 9 tháng 2026 giảm so cùng kỳ.",
+   "new_information": "Cầu nhập khẩu Trung Quốc giảm cùng lúc lượng xuất của Việt Nam sang thị trường này giảm 31,3%.",
+   "key_figures": [
+    "Trung Quốc nhập cao su tự nhiên và tổng hợp 9T/2026: 5,683 triệu tấn (-7,1%)"
+   ],
+   "companies": [],
+   "segments": [
+    "Trung Quốc",
+    "Nhập khẩu"
+   ],
+   "category": "demand",
+   "topic_ids": [
+    "demand"
+   ],
+   "importance": 2,
+   "event_date": "2026-10-23",
+   "article_ids": [
+    "a6"
+   ],
+   "impact": "Biến số liên quan: nhập khẩu cao su Trung Quốc, lượng xuất khẩu của Việt Nam."
+  },
+  {
+   "id": "ev22",
+   "title": "Doanh số xe du lịch nội địa Trung Quốc tháng 10 giảm 27,3%",
+   "summary": "Tháng 10/2026, doanh số xe du lịch trong nước Trung Quốc còn 1,65 triệu chiếc, trong khi xuất khẩu xe tăng 68,2%. Thái Lan bước vào mùa cạo cao điểm, sản xuất lốp thấp hơn cùng kỳ.",
+   "new_information": "Số liệu tháng 10 cho thấy cầu ô tô nội địa Trung Quốc giảm sâu, xuất khẩu xe tăng mạnh.",
+   "key_figures": [
+    "Doanh số xe du lịch nội địa T10/2026: 1,65 triệu chiếc (-27,3%)",
+    "Xuất khẩu xe T10/2026: 932.000 chiếc (+68,2%)"
+   ],
+   "companies": [],
+   "segments": [
+    "Trung Quốc",
+    "Ô tô",
+    "Lốp xe"
+   ],
+   "category": "demand",
+   "topic_ids": [
+    "demand"
+   ],
+   "importance": 3,
+   "event_date": "2026-11-15",
+   "article_ids": [
+    "a28"
+   ],
+   "impact": "Biến số liên quan: sản lượng lốp Trung Quốc, nhu cầu mua nguyên liệu của nhà máy lốp."
+  },
+  {
+   "id": "ev23",
+   "title": "GVR ước 9 tháng: doanh thu 29.428 tỷ, lãi trước thuế 6.818 tỷ đồng",
+   "summary": "Tập đoàn Công nghiệp Cao su Việt Nam ước lũy kế 9 tháng 2026 doanh thu tăng 28,9%, lợi nhuận trước thuế tăng 9,6%, đạt 98,8% kế hoạch năm.",
+   "new_information": "Tiêu thụ 407.688 tấn, tăng hơn 102.000 tấn so cùng kỳ; giá bán bình quân 53,7 triệu đồng/tấn.",
+   "key_figures": [
+    "Doanh thu 9T/2026: 29.428 tỷ đồng (+28,9%), 87,1% KH",
+    "LNTT 9T/2026: 6.818 tỷ đồng (+9,6%), 98,8% KH",
+    "LNST 9T/2026: 5.311 tỷ đồng (+1,8%)",
+    "Tiêu thụ 9T: 407.688 tấn; giá bán ~53,7 triệu đồng/tấn",
+    "Nộp ngân sách 9T: ~3.250 tỷ đồng (+55,2%)"
+   ],
+   "companies": [
+    "GVR"
+   ],
+   "segments": [
+    "Doanh nghiệp",
+    "Mủ cao su"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "companies"
+   ],
+   "importance": 3,
+   "event_date": "2026-10-05",
+   "article_ids": [
+    "a23",
+    "a3",
+    "a5"
+   ],
+   "impact": "Biến số liên quan: giá bán mủ, sản lượng tiêu thụ, lợi nhuận GVR."
+  },
+  {
+   "id": "ev24",
+   "title": "GVR ước lãi trước thuế cả năm 2026 khoảng 10.488 tỷ đồng, 152% kế hoạch",
+   "summary": "GVR đặt mục tiêu sản lượng mủ khai thác 455.845 tấn, quý 4 cần thu hoạch khoảng 183.542 tấn. Quý 4 dự kiến đóng góp 53,1% kế hoạch lợi nhuận trước thuế năm.",
+   "new_information": "Doanh thu cả năm ước 37.525 tỷ đồng, vượt 11% kế hoạch, tăng 15,7% so 2025.",
+   "key_figures": [
+    "LNTT ước 2026: ~10.488 tỷ đồng (+47,6%)",
+    "Doanh thu ước 2026: ~37.525 tỷ đồng",
+    "Sản lượng khai thác 2026: 455.845 tấn (100,6% KH)",
+    "Sản lượng cần khai thác Q4: ~183.542 tấn",
+    "Chế biến gỗ 9T: doanh thu ~4.907 tỷ, LNTT ~129,6 tỷ đồng"
+   ],
+   "companies": [
+    "GVR"
+   ],
+   "segments": [
+    "Doanh nghiệp",
+    "Kế hoạch"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "companies"
+   ],
+   "importance": 2,
+   "event_date": "2026-10-06",
+   "article_ids": [
+    "a3"
+   ],
+   "impact": "Biến số liên quan: sản lượng khai thác quý 4, giá bán mủ, thu nhập từ đất."
+  },
+  {
+   "id": "ev25",
+   "title": "KCN của GVR 9 tháng cho thuê mới 18,3 ha, lãi trước thuế khoảng 873 tỷ đồng",
+   "summary": "Mảng khu công nghiệp của tập đoàn ghi nhận doanh thu khoảng 1.824 tỷ đồng trong 9 tháng 2026.",
+   "new_information": "Diện tích cho thuê mới 9 tháng 2026 là 18,3 ha.",
+   "key_figures": [
+    "Cho thuê mới 9T/2026: 18,3 ha",
+    "Doanh thu KCN 9T: ~1.824 tỷ đồng",
+    "LNTT KCN 9T: ~873 tỷ đồng"
+   ],
+   "companies": [
+    "GVR"
+   ],
+   "segments": [
+    "Khu công nghiệp"
+   ],
+   "category": "land",
+   "topic_ids": [
+    "land",
+    "companies"
+   ],
+   "importance": 2,
+   "event_date": "2026-10-05",
+   "article_ids": [
+    "a23",
+    "a3"
+   ],
+   "impact": "Biến số liên quan: diện tích cho thuê KCN, lợi nhuận mảng KCN."
+  },
+  {
+   "id": "ev26",
+   "title": "PHR 9 tháng lãi sau thuế hơn 882 tỷ đồng, tăng 91%, vượt kế hoạch năm",
+   "summary": "Cao su Phước Hòa đạt doanh thu gần 2.337 tỷ đồng (+51%) sau 9 tháng 2026, vượt kế hoạch cả năm. Giá bán mủ bình quân gần 57 triệu đồng/tấn.",
+   "new_information": "Kế hoạch quý 4: tiêu thụ khoảng 7 nghìn tấn mủ, giá bình quân khoảng 62 triệu đồng/tấn.",
+   "key_figures": [
+    "Doanh thu 9T/2026: ~2.337 tỷ đồng (+51%)",
+    "LNST 9T/2026: >882 tỷ đồng (+91%)",
+    "KH 2026: doanh thu >2.280 tỷ, LNST >779 tỷ đồng",
+    "Tiêu thụ 9T: ~21,5 nghìn tấn; giá ~57 triệu đồng/tấn",
+    "Q4 dự kiến: ~7 nghìn tấn, ~62 triệu đồng/tấn, doanh thu cao su 434 tỷ"
+   ],
+   "companies": [
+    "PHR"
+   ],
+   "segments": [
+    "Doanh nghiệp"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "companies"
+   ],
+   "importance": 2,
+   "event_date": "2026-10-20",
+   "article_ids": [
+    "a4",
+    "a5"
+   ],
+   "impact": "Biến số liên quan: giá bán mủ, thu nhập đền bù đất, lợi nhuận PHR."
+  },
+  {
+   "id": "ev27",
+   "title": "PHR thông qua nâng tỷ lệ sở hữu nước ngoài tối đa từ 0% lên 50%",
+   "summary": "ĐHĐCĐ bất thường ngày 16/10/2026 của PHR thông qua điều chỉnh ngành nghề kinh doanh, nâng giới hạn sở hữu nước ngoài và miễn nhiệm một thành viên HĐQT theo nguyện vọng cá nhân.",
+   "new_information": "Giới hạn sở hữu nước ngoài về 0% từ 4/8/2026 do hai ngành nghề thuộc danh mục hạn chế; thay đổi dự kiến có hiệu lực giữa tháng 11/2026.",
+   "key_figures": [
+    "Giới hạn sở hữu nước ngoài: 0% → 50%",
+    "Hiệu lực dự kiến: giữa tháng 11/2026",
+    "Ngày đại hội: 16/10/2026"
+   ],
+   "companies": [
+    "PHR"
+   ],
+   "segments": [
+    "Doanh nghiệp",
+    "Quản trị"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "companies"
+   ],
+   "importance": 1,
+   "event_date": "2026-10-16",
+   "article_ids": [
+    "a22",
+    "a4"
+   ],
+   "impact": "Biến số liên quan: giới hạn sở hữu nước ngoài, thanh khoản cổ phiếu PHR."
+  },
+  {
+   "id": "ev29",
+   "title": "PHR lập hồ sơ 4 KCN mới trên quỹ đất cao su",
+   "summary": "PHR đẩy nhanh quy hoạch 1/2.000 để xin chủ trương đầu tư KCN Tân Lập 1, Bắc Tân Uyên 2, Lai Hưng và Tân Bình mở rộng giai đoạn 2; theo dõi phê duyệt cụm công nghiệp Bố Lá 3, Bố Lá 4.",
+   "new_information": "Danh sách dự án KCN mới được công bố cùng KQKD 9 tháng.",
+   "key_figures": [
+    "KCN đang lập hồ sơ: Tân Lập 1, Bắc Tân Uyên 2, Lai Hưng, Tân Bình mở rộng GĐ2",
+    "Cụm công nghiệp chờ phê duyệt: Bố Lá 3, Bố Lá 4"
+   ],
+   "companies": [
+    "PHR"
+   ],
+   "segments": [
+    "Đất KCN"
+   ],
+   "category": "land",
+   "topic_ids": [
+    "land"
+   ],
+   "importance": 1,
+   "event_date": "2026-10-20",
+   "article_ids": [
+    "a4"
+   ],
+   "impact": "Biến số liên quan: tiến độ chuyển đổi đất cao su sang KCN."
+  },
+  {
+   "id": "ev30",
+   "title": "DPR quý 3: giá bán 63,2 triệu đồng/tấn, lãi sau thuế khoảng 199 tỷ đồng",
+   "summary": "Cao su Đồng Phú quý 3/2026 có doanh thu khoảng 559 tỷ đồng (+16%), sản lượng bán giảm khoảng 3%. Thu nhập khác khoảng 146 tỷ đồng, phần lớn liên quan đền bù dự án Bắc Đồng Phú.",
+   "new_information": "Chi phí quản lý tăng 5,5 lần, trong đó khoảng 102 tỷ đồng trích quỹ khoa học công nghệ.",
+   "key_figures": [
+    "Doanh thu Q3/2026: ~559 tỷ đồng (+16%)",
+    "Giá bán Q3: 63,2 triệu đồng/tấn (+~30%)",
+    "Sản lượng bán Q3: 5.571 tấn (Q3/2025: 5.761 tấn)",
+    "Thu nhập khác Q3: ~146 tỷ đồng (~127 tỷ liên quan Bắc Đồng Phú)",
+    "LNST Q3: ~199 tỷ đồng (+45%)"
+   ],
+   "companies": [
+    "DPR"
+   ],
+   "segments": [
+    "Doanh nghiệp",
+    "Đền bù"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "companies",
+    "land"
+   ],
+   "importance": 2,
+   "event_date": "2026-11-11",
+   "article_ids": [
+    "a8"
+   ],
+   "impact": "Biến số liên quan: giá bán mủ, thu nhập đền bù Bắc Đồng Phú, chi phí quản lý."
+  },
+  {
+   "id": "ev31",
+   "title": "DPR thưởng cổ phiếu tỷ lệ 1:1, vốn điều lệ lên gần 1.738 tỷ đồng",
+   "summary": "ĐHĐCĐ bất thường ngày 9/11/2026 của DPR thông qua phát hành khoảng 86,9 triệu cổ phiếu thưởng từ quỹ đầu tư phát triển, dự kiến trong quý 4/2026, và bầu Chủ tịch HĐQT mới.",
+   "new_information": "Cổ tức tiền mặt 2025 tỷ lệ 14%, ngày giao dịch không hưởng quyền 13/11, thanh toán 27/11.",
+   "key_figures": [
+    "Cổ phiếu thưởng: ~86,9 triệu (1:1)",
+    "Vốn điều lệ: ~868,86 → ~1.738 tỷ đồng",
+    "Cổ tức 2025: 14% (1.400 đồng/cp), ~122 tỷ đồng",
+    "GDKHQ: 13/11/2026; thanh toán: 27/11/2026"
+   ],
+   "companies": [
+    "DPR"
+   ],
+   "segments": [
+    "Doanh nghiệp",
+    "Cổ tức"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "companies"
+   ],
+   "importance": 1,
+   "event_date": "2026-11-09",
+   "article_ids": [
+    "a8"
+   ],
+   "impact": "Biến số liên quan: cổ tức tiền mặt, số lượng cổ phiếu lưu hành DPR."
+  },
+  {
+   "id": "ev32",
+   "title": "TRC quý 3 doanh thu 303 tỷ đồng, cao nhất trong 55 quý",
+   "summary": "Cao su Tây Ninh quý 3/2026 tăng doanh thu gần 27%; lợi nhuận hoạt động tăng 19 tỷ nhưng thu nhập khác giảm 38 tỷ đồng. Lũy kế 9 tháng lãi sau thuế 246 tỷ đồng.",
+   "new_information": "Mức doanh thu quý cao nhất 55 quý của TRC.",
+   "key_figures": [
+    "Doanh thu Q3/2026: 303 tỷ đồng (+~27%)",
+    "Doanh thu 9T/2026: 706 tỷ đồng (+18%)",
+    "LNST 9T/2026: 246 tỷ đồng (+11%)"
+   ],
+   "companies": [
+    "TRC"
+   ],
+   "segments": [
+    "Doanh nghiệp"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "companies"
+   ],
+   "importance": 1,
+   "event_date": "2026-11-02",
+   "article_ids": [
+    "a5"
+   ],
+   "impact": "Biến số liên quan: giá bán mủ, thu nhập thanh lý vườn cây, lợi nhuận TRC."
+  },
+  {
+   "id": "ev33",
+   "title": "RTB quý 3 lãi gần 136 tỷ đồng, biên lãi gộp 49,32%",
+   "summary": "Cao su Tân Biên quý 3/2026 có doanh thu hơn 401 tỷ đồng (+27%), lợi nhuận gộp gần 198 tỷ (+43%). Thu nhập khác giảm hơn 12 tỷ do tiền thuê đất không được miễn giảm.",
+   "new_information": "Sau 9 tháng, lãi sau thuế vượt khoảng 33% kế hoạch năm 349 tỷ đồng.",
+   "key_figures": [
+    "Doanh thu Q3/2026: >401 tỷ đồng (+27%)",
+    "Biên lãi gộp Q3: 49,32% (cùng kỳ 43,77%)",
+    "LNST Q3: ~136 tỷ đồng (+20%)",
+    "KH 2026: doanh thu 824 tỷ, LNST 349 tỷ đồng"
+   ],
+   "companies": [],
+   "segments": [
+    "Doanh nghiệp"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "companies"
+   ],
+   "importance": 1,
+   "event_date": "2026-10-20",
+   "article_ids": [
+    "a15"
+   ],
+   "impact": "Biến số liên quan: giá bán mủ, tiền thuê đất, biên lãi gộp doanh nghiệp trồng cao su."
+  },
+  {
+   "id": "ev34",
+   "title": "BRR 9 tháng lãi 228 tỷ đồng, tăng 81%",
+   "summary": "Cao su Bà Rịa đạt doanh thu 9 tháng 2026 là 463 tỷ đồng (+83%), quý 3 đóng góp 124 tỷ đồng lợi nhuận. Cao su Hòa Bình quý 3 lãi 18 tỷ đồng (-22%) do chi phí quản lý tăng.",
+   "new_information": "Số liệu 9 tháng của BRR và HRC trong mùa báo cáo quý 3.",
+   "key_figures": [
+    "BRR doanh thu 9T/2026: 463 tỷ đồng (+83%)",
+    "BRR LNST 9T/2026: 228 tỷ đồng (+81%); Q3: 124 tỷ",
+    "HRC Q3/2026: doanh thu 82 tỷ (+20%), LNST 18 tỷ (-22%)"
+   ],
+   "companies": [],
+   "segments": [
+    "Doanh nghiệp"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "companies"
+   ],
+   "importance": 1,
+   "event_date": "2026-11-02",
+   "article_ids": [
+    "a5"
+   ],
+   "impact": "Biến số liên quan: giá bán mủ, lợi nhuận doanh nghiệp trồng cao su quy mô nhỏ."
+  },
+  {
+   "id": "ev35",
+   "title": "CSM 9 tháng lãi sau thuế 15,9 tỷ đồng, giảm 74%",
+   "summary": "Casumina quý 3/2026 có doanh thu thuần 1.129 tỷ đồng (+~10%); 9 tháng doanh thu 3.382 tỷ (+7,2%). Chi phí nguyên vật liệu tăng khoảng 7,5% do cao su tổng hợp, muội than tăng giá.",
+   "new_information": "Thị trường săm lốp trong nước và xuất khẩu giảm, hàng nhập khẩu giá rẻ cạnh tranh; tồn kho 1.365 tỷ đồng tại 30/9.",
+   "key_figures": [
+    "Doanh thu Q3/2026: 1.129 tỷ đồng (+~10%)",
+    "Doanh thu 9T/2026: 3.382 tỷ đồng (+7,2%)",
+    "LNST 9T/2026: 15,9 tỷ đồng (-74%)",
+    "Chi phí nguyên vật liệu: +~7,5%",
+    "Hàng tồn kho 30/9/2026: 1.365 tỷ đồng"
+   ],
+   "companies": [
+    "CSM"
+   ],
+   "segments": [
+    "Lốp xe",
+    "Doanh nghiệp"
+   ],
+   "category": "companies",
+   "topic_ids": [
+    "companies"
+   ],
+   "importance": 2,
+   "event_date": "2026-10-20",
+   "article_ids": [
+    "a21"
+   ],
+   "impact": "Biến số liên quan: giá cao su tự nhiên và tổng hợp đầu vào, giá bán lốp, biên lãi gộp săm lốp."
+  },
+  {
+   "id": "ev36",
+   "title": "KCN Thạnh Đức 1 (500 ha) tại Tây Ninh được chấp thuận, VRG trong liên danh",
+   "summary": "Tây Ninh chấp thuận KCN Thạnh Đức 1 khoảng 500 ha do liên danh Becamex IDC, VSIP và VRG đầu tư, dự kiến khởi công tháng 9/2026.",
+   "new_information": "Thêm một KCN có VRG tham gia tại Tây Ninh.",
+   "key_figures": [
+    "Diện tích: ~500 ha",
+    "Chủ đầu tư: liên danh Becamex IDC – VSIP – VRG",
+    "Khởi công dự kiến: tháng 9/2026"
+   ],
+   "companies": [
+    "GVR"
+   ],
+   "segments": [
+    "Khu công nghiệp"
+   ],
+   "category": "land",
+   "topic_ids": [
+    "land"
+   ],
+   "importance": 1,
+   "event_date": "2026-08-25",
+   "article_ids": [
+    "a25"
+   ],
+   "impact": "Biến số liên quan: quỹ đất KCN của GVR, tiến độ chuyển đổi đất."
+  },
+  {
+   "id": "ev37",
+   "title": "EC công bố hướng dẫn EUDR mới; nghĩa vụ áp dụng từ 30/12/2026",
+   "summary": "Ngày 13/7/2026, Ủy ban châu Âu công bố bản mới Tài liệu hướng dẫn thực hiện Quy định (EU) 2023/1115. Phần lớn nghĩa vụ áp dụng từ 30/12/2026; doanh nghiệp nhỏ, siêu nhỏ thành lập trước 31/12/2024 được lùi đến 30/6/2027.",
+   "new_information": "Hướng dẫn làm rõ thẩm định, đánh giá rủi ro, truy xuất nguồn gốc; cao su là một trong 7 nhóm hàng thuộc phạm vi.",
+   "key_figures": [
+    "Mốc áp dụng: 30/12/2026",
+    "Doanh nghiệp nhỏ, siêu nhỏ: 30/6/2027",
+    "Phạm vi: 7 nhóm hàng, gồm cao su"
+   ],
+   "companies": [],
+   "segments": [
+    "Chính sách",
+    "EU"
+   ],
+   "category": "policy",
+   "topic_ids": [
+    "policy"
+   ],
+   "importance": 2,
+   "event_date": "2026-08-22",
+   "article_ids": [
+    "a11"
+   ],
+   "impact": "Biến số liên quan: chi phí tuân thủ truy xuất, xuất khẩu cao su sang EU."
+  },
+  {
+   "id": "ev38",
+   "title": "Quy định (EU) 2026/2102 loại một số sản phẩm cao su HS 4010, 4016 khỏi EUDR",
+   "summary": "Quy định sửa đổi danh mục sản phẩm của EUDR có hiệu lực từ 18/9/2026. Băng tải, băng truyền và một số sản phẩm cao su lưu hóa thuộc HS 4010, 4016 bị loại; lốp đắp lại thu hẹp về HS 4012 90 30.",
+   "new_information": "Phạm vi sản phẩm cao su chịu EUDR được thu hẹp.",
+   "key_figures": [
+    "Số hiệu: Quy định (EU) 2026/2102, ban hành 13/7/2026",
+    "Hiệu lực: 18/9/2026",
+    "Loại khỏi phạm vi: một số mặt hàng HS 4010, HS 4016",
+    "Lốp đắp lại: thu hẹp về HS 4012 90 30"
+   ],
+   "companies": [],
+   "segments": [
+    "Chính sách",
+    "EU"
+   ],
+   "category": "policy",
+   "topic_ids": [
+    "policy"
+   ],
+   "importance": 1,
+   "event_date": "2026-09-18",
+   "article_ids": [
+    "a12"
+   ],
+   "impact": "Biến số liên quan: phạm vi mặt hàng cao su chịu EUDR."
+  },
+  {
+   "id": "ev39",
+   "title": "VRG bán khoảng 10.000 tấn cao su đáp ứng EUDR, giá cao hơn 120–250 USD/tấn",
+   "summary": "Trong năm 2025 và 6 tháng 2026, VRG tiêu thụ khoảng 10.000 tấn cao su đáp ứng EUDR; EU là thị trường lớn thứ ba của cao su Việt Nam sau Trung Quốc và Mỹ.",
+   "new_information": "Giá trị gia tăng ước khoảng 30 tỷ đồng; mức chênh giá chỉ phản ánh kết quả của VRG.",
+   "key_figures": [
+    "Lượng đáp ứng EUDR: ~10.000 tấn (2025 và 6T/2026)",
+    "Chênh giá: +120–250 USD/tấn",
+    "Giá trị gia tăng: ~30 tỷ đồng"
+   ],
+   "companies": [
+    "GVR"
+   ],
+   "segments": [
+    "Chính sách",
+    "Xuất khẩu"
+   ],
+   "category": "policy",
+   "topic_ids": [
+    "policy",
+    "export"
+   ],
+   "importance": 2,
+   "event_date": "2026-10-16",
+   "article_ids": [
+    "a13"
+   ],
+   "impact": "Biến số liên quan: giá bán cao su đáp ứng EUDR, xuất khẩu sang EU."
+  },
+  {
+   "id": "ev40",
+   "title": "VRA bàn khai thác tín chỉ carbon cho vườn cao su",
+   "summary": "Ngày 11/8/2026, VRA cùng Forest Trends tổ chức hội thảo về thị trường tín chỉ carbon cho ngành cao su; sàn giao dịch carbon trong nước khởi động từ cuối tháng 6/2026.",
+   "new_information": "Kiến nghị làm rõ tư cách pháp lý đất trồng cây lâu năm và trách nhiệm khi Nhà nước thu hồi diện tích dự án.",
+   "key_figures": [
+    "Cao su Đồng Nai: ~31.000 ha, >9.000 ha có chứng chỉ quản lý rừng bền vững",
+    "Chu kỳ kinh doanh cây cao su: ~25–35 năm"
+   ],
+   "companies": [],
+   "segments": [
+    "Chính sách",
+    "Carbon"
+   ],
+   "category": "policy",
+   "topic_ids": [
+    "policy"
+   ],
+   "importance": 1,
+   "event_date": "2026-08-11",
+   "article_ids": [
+    "a24"
+   ],
+   "impact": "Biến số liên quan: thu nhập tín chỉ carbon, quy định đất trồng cây lâu năm."
+  }
+ ],
+ "topics": [
+  {
+   "id": "price",
+   "title": "Giá cao su thế giới",
+   "background": "SGX TSR20 lập đỉnh 13 năm cuối tháng 9/2026 (2.548 USD/tấn kỳ hạn tháng 11 ngày 30/9) và lên 270,80 cent Mỹ/kg ngày 12/10. Đầu tháng 11 giá giảm về 237,30 cent Mỹ/kg, phục hồi lên 251,50 giữa tháng rồi còn 241,30 ngày 20/11 cùng chiều giá dầu. Giá chào RSS3 Thái Lan giảm từ 97,59 (12/10) xuống 93,16 baht/kg (20/11); giá mủ thu mua trong nước đứng yên giữa tháng 11 (Bình Long 540 đồng/TSC).",
+   "next_check": "Theo dõi: SGX TSR20 quanh 240–250 cent Mỹ/kg, giá dầu và butadiene SHFE, giá chào RSS3 Thái Lan, giá mủ trong nước tháng 12.",
+   "related_data": [
+    "Bức tranh ngành › 01 Giá cao su",
+    "?sub=price#mt2"
+   ]
+  },
+  {
+   "id": "supply",
+   "title": "Nguồn cung & thời tiết",
+   "background": "ANRPC dự báo cung cao su tự nhiên 2026 thiếu khoảng 213.000 tấn (bản tin 5/10/2026), tiêu thụ khoảng 15,6 triệu tấn; một bản dẫn khác nêu sản lượng 15,039 so với nhu cầu 15,356 triệu tấn. Xuất khẩu Thái Lan 8 tháng 2026 giảm 10% còn 1,62 triệu tấn. Tồn kho Thanh Đảo giảm 17.400 tấn trong tuần đến 18/9; WMO dự báo El Niño kéo dài đến tháng 2/2027.",
+   "next_check": "Theo dõi: báo cáo tháng ANRPC, mưa và mùa cạo cao điểm Thái Lan quý 4, tồn kho Thanh Đảo/SHFE, hạn hán đầu vụ 2027.",
+   "related_data": [
+    "Bức tranh ngành › 04 Cung & tồn kho",
+    "?sub=supply#mt2"
+   ]
+  },
+  {
+   "id": "export",
+   "title": "Xuất khẩu cao su Việt Nam",
+   "background": "9 tháng 2026 xuất 1,08 triệu tấn (-15,8%), 2,19 tỷ USD (-3,7%), giá bình quân 2.022 USD/tấn (+14,4%). Kim ngạch 10 tháng đạt 2,54 tỷ USD (-2,5%). Xuất sang Trung Quốc 9 tháng giảm 31,3% còn 635,77 nghìn tấn, trong khi Ấn Độ, Malaysia, Indonesia tăng mạnh. Tháng 9 là tháng thứ sáu liên tiếp lượng xuất khẩu giảm so cùng kỳ.",
+   "next_check": "Theo dõi: số liệu Hải quan tháng 10–11/2026 (lượng, giá, thị trường), tỷ trọng Trung Quốc, xuất sang EU trước mốc EUDR.",
+   "related_data": [
+    "Bức tranh ngành › 02 Xuất khẩu Việt Nam",
+    "?sub=export#mt2"
+   ]
+  },
+  {
+   "id": "demand",
+   "title": "Cầu Trung Quốc",
+   "background": "Trung Quốc nhập khẩu cao su tự nhiên và tổng hợp 9 tháng 2026 giảm 7,1% còn 5,683 triệu tấn. Doanh số xe du lịch nội địa tháng 10/2026 giảm 27,3% còn 1,65 triệu chiếc, xuất khẩu xe tăng 68,2% lên 932.000 chiếc. Lượng cao su Việt Nam xuất sang Trung Quốc tháng 8 giảm 41,2%, tháng 9 giảm 38,8% so cùng kỳ.",
+   "next_check": "Theo dõi: nhập khẩu cao su Trung Quốc tháng 10–11, doanh số ô tô tháng 11, công suất nhà máy lốp, tồn kho Thanh Đảo.",
+   "related_data": [
+    "Bức tranh ngành › 03 Cầu Trung Quốc",
+    "?sub=demand#mt2"
+   ]
+  },
+  {
+   "id": "companies",
+   "title": "Doanh nghiệp niêm yết: KQKD quý 3/2026",
+   "background": "GVR ước 9 tháng 2026 doanh thu 29.428 tỷ đồng (+28,9%), lãi trước thuế 6.818 tỷ (+9,6%), giá bán bình quân 53,7 triệu đồng/tấn. PHR 9 tháng lãi sau thuế hơn 882 tỷ (+91%); DPR quý 3 giá bán 63,2 triệu đồng/tấn, lãi khoảng 199 tỷ (+45%); TRC 9 tháng lãi 246 tỷ (+11%). Ở hạ nguồn, CSM 9 tháng lãi 15,9 tỷ đồng (-74%) do chi phí nguyên liệu tăng.",
+   "next_check": "Theo dõi: KQKD quý 4 và cả năm 2026, giá bán mủ quý 4 (PHR dự kiến ~62 triệu đồng/tấn), cổ phiếu thưởng DPR, giới hạn sở hữu nước ngoài PHR.",
+   "related_data": [
+    "Bức tranh ngành › 05 Doanh nghiệp",
+    "?sub=company#mt2"
+   ]
+  },
+  {
+   "id": "land",
+   "title": "Đất cao su chuyển sang KCN & đền bù",
+   "background": "Mảng KCN của GVR 9 tháng 2026 cho thuê mới 18,3 ha, lãi trước thuế khoảng 873 tỷ đồng. PHR có đền bù VSIP III tổng 3.260 tỷ (đã thu 1.480 tỷ) và Bắc Tân Uyên 1 khoảng 1.500 tỷ (đã nhận 172 tỷ, phần còn lại đến hạn 1/2027). DPR ghi nhận khoảng 127 tỷ đồng liên quan đền bù Bắc Đồng Phú trong quý 3/2026; KCN Thạnh Đức 1 (500 ha, Tây Ninh) có VRG trong liên danh chủ đầu tư.",
+   "next_check": "Theo dõi: tiến độ chi trả đền bù VSIP III, Bắc Tân Uyên 1, Bắc Đồng Phú; phê duyệt KCN mới của PHR, GVR.",
+   "related_data": [
+    "Tài chính ngành",
+    "#mt3"
+   ]
+  },
+  {
+   "id": "policy",
+   "title": "EUDR & chính sách",
+   "background": "Phần lớn nghĩa vụ EUDR áp dụng từ 30/12/2026, doanh nghiệp nhỏ và siêu nhỏ từ 30/6/2027 (hướng dẫn EC công bố 13/7/2026). Quy định (EU) 2026/2102 hiệu lực 18/9/2026 loại một số sản phẩm cao su HS 4010, 4016 khỏi phạm vi. EU là thị trường lớn thứ ba của cao su Việt Nam; VRG đã bán khoảng 10.000 tấn cao su đáp ứng EUDR với giá cao hơn 120–250 USD/tấn.",
+   "next_check": "Theo dõi: hướng dẫn tuân thủ EUDR ngành cao su của Việt Nam, cơ sở dữ liệu vùng trồng, thông báo mới của EC trước 30/12/2026.",
+   "related_data": [
+    "Bức tranh ngành › 02 Xuất khẩu Việt Nam",
+    "?sub=export#mt2"
+   ]
+  }
+ ]
+}

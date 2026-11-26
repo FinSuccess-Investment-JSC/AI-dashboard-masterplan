@@ -13,11 +13,13 @@
 <script src="app/rubber-finance.js?v=2cc5b73c0653" defer></script>
 <script src="app/rubber.js?v=8b29d3695300" defer></script>
 <script src="app/rubber-more.js?v=9d12686c2889" defer></script>
+<script src="../data/rubber-news.js?v=8334798842f8" defer></script>
+<script src="app/rubber-news.js?v=c3a443487c87" defer></script>
 <script src="app/value-chain.js?v=a597c7c73610" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
 <link rel="stylesheet" href="app/site-sidebar.css?v=c15c75326931">
 <link rel="stylesheet" href="app/site-tidy.css?v=3ad28c2a6d19">
-<script src="app/site-navigation.js?v=5ea76d882041" data-release="20261126-van-tai-key-players"></script>
+<script src="app/site-navigation.js?v=5ea76d882041" data-release="20261126-cao-su-chu-de-nong-4"></script>
 <script src="../data/site-nav.js?v=d23f41a5d501"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
@@ -27,6 +29,7 @@
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
 <link rel="stylesheet" href="app/overview.css?v=eff54e08565b">
 <link rel="stylesheet" href="app/rubber.css?v=f777ce54c94d">
+<link rel="stylesheet" href="app/rubber-news.css?v=843c2faff20d">
 </head>
 <!-- Trang Cao su (26/11/2026) theo khung trang Điện / Phân bón, viết sẵn bố cục cuối (không "tab nền").
      app/rubber.js dựng Tổng quan + Bức tranh ngành 01–02; app/rubber-more.js dựng 03–05 từ khối nhập tay có nguồn;
@@ -38,6 +41,7 @@
   <button class="majortabbtn active" type="button" data-tab="mt1" role="tab" aria-selected="true">Tổng quan ngành</button>
   <button class="majortabbtn" type="button" data-tab="mt2" role="tab" aria-selected="false">Bức tranh ngành</button>
   <button class="majortabbtn" type="button" data-tab="mt3" role="tab" aria-selected="false">Tài chính ngành</button>
+  <button class="majortabbtn" type="button" data-tab="mt7" role="tab" aria-selected="false">Chủ đề nóng</button>
 </nav>
 
 <div class="container wrap">
@@ -96,6 +100,10 @@
         <div id="cs-fin-root"></div>
       </div>
     </section>
+  </section>
+
+  <section class="majorpane" data-tab="mt7" id="pane-mt7">
+    <section class="section"><div id="cs-news" aria-label="Tin ngành Cao su"><p role="status">Đang tải tin ngành Cao su…</p></div></section>
   </section>
 
 </div>
