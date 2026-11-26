@@ -64,14 +64,13 @@ function style() {
 .tx-row.mix{border-left:4px solid #A78BFA}.tx-row.mix .tx-dir{background:#F1EDFF;color:#5B4FD6}
 @media (max-width:900px){.tx-flow{grid-template-columns:1fr;gap:12px}.tx-row{grid-template-columns:1fr}.tx-rows{padding-left:14px}.tx-row::before{width:14px;left:-15px}.tx-row::after{left:-20px}}
 :root[data-theme=dark] .tx-row{background:var(--card);border-color:var(--line)}:root[data-theme=dark] .tx-ch,:root[data-theme=dark] .tx-who{color:#E8EBFA}:root[data-theme=dark] .tx-mech{color:#B8BEDA}
-.of-nav{display:inline-flex;flex-wrap:wrap;gap:2px;margin:4px 0 20px;padding:4px;border-radius:12px;background:#EEF0F6}
-body .of-nav button.of-tab{display:flex;align-items:center;gap:6px;padding:7px 14px;border:0;border-radius:9px;background:transparent;font:600 13.5px/1.2 Inter,system-ui,sans-serif;color:#5A6385;cursor:pointer;transition:background .15s,color .15s}
-body .of-nav button.of-tab:hover{color:#1F2677}
-body .of-nav .of-n{font:600 11.5px Inter,sans-serif;color:#9AA1BC}
+.of-nav{position:sticky;top:var(--of-top,76px);z-index:30;display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 20px;padding:10px 0 12px;background:var(--fs-page,#F7F8FC);border-bottom:1px solid #E6E9F2}
+body .of-nav button.of-tab{display:flex;align-items:center;padding:10px 20px;border:1px solid #E2E5EE;border-radius:12px;background:#fff;font:600 15.5px/1.2 Inter,system-ui,sans-serif;color:#3D4566;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+body .of-nav button.of-tab:hover{border-color:#B9C0DC;color:#1F2677}
+body .of-nav .of-n{display:none}
 body .of-nav b{font-weight:600}
-body .of-nav button.of-tab[aria-selected=true]{background:#fff!important;color:#1F2677!important;box-shadow:0 1px 3px rgba(20,28,80,.12)!important}
-body .of-nav button.of-tab[aria-selected=true] .of-n{color:#1F2677}
-:root[data-theme=dark] .of-nav{background:#1E1E1E}:root[data-theme=dark] body .of-nav button.of-tab{color:#B8BEDA}:root[data-theme=dark] body .of-nav button.of-tab[aria-selected=true]{background:#2A2A2A!important;color:#fff!important}
+body .of-nav button.of-tab[aria-selected=true]{background:#1F2677!important;border-color:#1F2677!important;color:#fff!important;box-shadow:0 4px 12px -4px rgba(31,38,119,.45)!important}
+:root[data-theme=dark] .of-nav{background:#0A0A0A;border-color:#2A2A2A}:root[data-theme=dark] body .of-nav button.of-tab{background:#161616;border-color:#2A2A2A;color:#C8CCE0}:root[data-theme=dark] body .of-nav button.of-tab[aria-selected=true]{background:#2938A8!important;color:#fff!important}
 .of-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;margin:4px 0 12px;padding:10px 0;border-bottom:1px solid var(--line,#e3e7f0)}
 .of-head h2{margin:0;font-size:24px}.of-head .of-k{font:500 13px Inter,sans-serif;color:var(--muted,#7a8399);margin-right:8px}.of-head p{margin:4px 0 0;color:var(--ink2,#3b4256)}
 .of-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}.of-body>*{min-width:0;margin:0!important}
@@ -222,10 +221,17 @@ function channelDiagram() {
     <div class="tx-dir"><i>${icon[t]}</i>${dir}</div></div>`; }).join('')}</div>`;
   const d = el('details', 'dtable'); d.append(el('summary', '', 'Xem dạng bảng')); wrap.before(flow); wrap.replaceWith(d); d.append(wrap);
 }
+
+// Thanh sub-tab dính ngay dưới thanh tab chính khi cuộn.
+function stickySub() {
+  const set = () => { const m = $('nav.majortabs'); if (!m) return; const cs = getComputedStyle(m); const top = (parseFloat(cs.top) || 0) + m.offsetHeight + 4; document.documentElement.style.setProperty('--of-top', top + 'px'); };
+  set(); window.addEventListener('resize', set); setTimeout(set, 1500);
+}
 function run() {
   if (document.body.dataset.oilFrame) return; document.body.dataset.oilFrame = '1';
   style();
   channelDiagram();
+  stickySub();
   // Hormuz: thẻ đang nằm trong chủ đề "Hormuz · dòng chảy & tác động" ở Chủ đề nóng → Bức tranh ngành › 06.
   ['mt1', 'mt2', 'mt4'].forEach(buildTab);
   // Thẻ truyền dẫn dau-khi-38 nằm cùng chủ đề Hormuz; đã dời sang Tổng quan › 01. Chủ đề rỗng thì ẩn.
