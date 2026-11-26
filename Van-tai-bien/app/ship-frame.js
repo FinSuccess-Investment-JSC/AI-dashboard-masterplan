@@ -18,8 +18,8 @@ const TREE = {
   mt1: {label: 'Tổng quan ngành', title: 'Tổng quan ngành vận tải biển', intro: 'Doanh thu = ngày tàu × cước (TCE); chuỗi giá trị → doanh nghiệp niêm yết → triển vọng.', subs: [
     {k: 'map', n: '00', t: 'Bản đồ ngành', d: 'Chủ hàng → thuê tàu → ba đội tàu → cước thế giới.', sel: ['.research-roadmap'], ids: ['vt-01']},
     {k: 'chain', n: '01', t: 'Chuỗi giá trị', d: 'Mô hình kinh doanh từng mã, biến quyết định từng nhóm.', sel: ['.business-models'], ids: ['vt-04'], rest: true},
-    {k: 'listed', n: '02', t: 'Doanh nghiệp niêm yết', d: 'Định giá ngành theo phiên, biến động cổ phiếu.', ids: ['vt-03', 'vt-66', 'vt-67']},
-    {k: 'outlook', n: '03', t: 'Triển vọng', d: 'Vị trí trong chu kỳ và cung tàu mới.', ids: ['vt-02', 'vt-25']},
+    {k: 'listed', n: '02', t: 'Doanh nghiệp niêm yết', d: 'Đội tàu, cách bán cước, kế hoạch và kết quả; định giá theo phiên.', ids: ['vt-60', 'vt-03', 'vt-66', 'vt-67']},
+    {k: 'outlook', n: '03', t: 'Triển vọng', d: 'Vị trí trong chu kỳ và cung tàu mới.', ids: ['vt-02', 'vt-62', 'vt-25']},
   ]},
   mt2: {label: 'Bức tranh ngành', title: 'Bức tranh ngành', intro: 'Theo phân khúc: cước chung → tàu dầu thô → tàu sản phẩm & hóa chất → hàng rời → container → chi phí & giá tàu → tuyến.', subs: [
     {k: 'overview', n: '01', t: 'Tổng quan cước', d: 'Chỉ số cước các phân khúc, so cùng kỳ, vận tải biển Việt Nam.', kpis: true, sel: ['.fsv-heat'], ids: ['vt-21', 'vt-22']},
