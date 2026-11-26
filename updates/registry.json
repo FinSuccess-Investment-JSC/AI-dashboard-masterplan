@@ -4820,6 +4820,77 @@
    ]
   },
   {
+   "id": "oil.industry-financials",
+   "tier": "C",
+   "title": "Dầu khí · tab Tài chính ngành: BCTC 12 doanh nghiệp niêm yết theo khâu (thượng nguồn, trung nguồn, hạ nguồn)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "file": "data/oil-financials.js",
+    "blocks": [
+     "dk-fin-pnl",
+     "dk-fin-season",
+     "dk-fin-breadth",
+     "dk-fin-margin",
+     "dk-fin-cost",
+     "dk-fin-capex",
+     "dk-fin-intensity",
+     "dk-fin-cip",
+     "dk-fin-funding",
+     "dk-fin-recv",
+     "dk-fin-dso",
+     "dk-fin-conversion",
+     "dk-fin-debt",
+     "dk-fin-leverage",
+     "dk-fin-interest",
+     "dk-fin-fcf",
+     "dk-fin-levdist",
+     "dk-fin-returns",
+     "dk-fin-dupont",
+     "dk-fin-roic-cycle",
+     "dk-fin-map",
+     "dk-fin-pool",
+     "dk-fin-method"
+    ]
+   },
+   "how": "python scripts/fetch_oil_financials.py && python scripts/build_oil_financials.py (chạy trong refresh-data.yml); tổng hợp ở Dau-khi/app/industry-fin.js, giao diện Dau-khi/app/oil-finance.js, khung tab Dau-khi/app/oil-frame.js",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Mã lỗi tải giữ bản trước, ghi vào stale",
+    "Universe và nhóm khâu ở scripts/oil_fin_items.py; loại trùng mẹ − con PLX ← PLC, PVT ← PVP (tỷ lệ sở hữu chưa đối chiếu báo cáo thường niên)"
+   ]
+  },
+  {
    "id": "telecom.benchmarks",
    "tier": "C",
    "title": "Viễn thông · so sánh ASEAN: thuê bao di động, băng rộng cố định trên 100 dân, GDP bình quân đầu người",
@@ -4873,7 +4944,6 @@
     "blocks": [
      "vt-5g-ops",
      "vt-5g-share",
-     "vt-5g-spectrum",
      "vt-5g-stations",
      "vt-5g-subs",
      "vt-5g-targets",

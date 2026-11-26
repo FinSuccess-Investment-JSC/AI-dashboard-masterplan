@@ -171,7 +171,7 @@
       article.id = 'pn-event-' + event.id;
       const details = make('details');
       const summary = make('summary');
-      summary.append(make('strong', event.title), meta(event), make('span', event.summary, 'pn-summary'));
+      summary.append(make('strong', event.title), meta(event), make('span', event.brief || event.summary, 'pn-summary'));
       const body = make('div', '', 'pn-detail');
       body.append(make('p', 'Ngày đăng bài: ' + date(published(event)) + (event.event_date ? ' · ngày sự kiện: ' + date(event.event_date) : ''), 'pn-meta'));
       body.append(make('p', 'Thông tin mới: ' + event.new_information));

@@ -91,12 +91,13 @@ jobs:
           python scripts/fetch_kcn_financials.py && python scripts/build_kcn_financials.py || true
           python scripts/fetch_xd_financials.py && python scripts/build_xd_financials.py || true
           python scripts/fetch_telecom_financials.py && python scripts/build_telecom_financials.py || true
+          python scripts/fetch_oil_financials.py && python scripts/build_oil_financials.py || true
           python scripts/fetch_telecom_benchmarks.py && python scripts/build_telecom_industry.py || true
       - name: Re-version pages when sector data changed
         # 16/11/2026: the release step above runs before the sector feeds; without this, pages keep the old ?v= hash
         # of data/*-public-data.js and browsers serve the cached file.
         run: |
-          if ! git diff --quiet -- 'data/*-public-data.js' data/daily-data.js data/power-financials.js data/kcn-financials.js data/construction-financials.js data/telecom-financials.js data/telecom-benchmarks.js; then
+          if ! git diff --quiet -- 'data/*-public-data.js' data/daily-data.js data/power-financials.js data/kcn-financials.js data/construction-financials.js data/telecom-financials.js data/telecom-benchmarks.js data/oil-financials.js; then
             python scripts/prepare_release.py --version "$(date -u +%Y%m%dT%H%M%SZ)-data"
           fi
       - name: Validate generated data
@@ -109,7 +110,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           DATA_CHANGED: ${{ steps.refresh.outputs.changed }}
         run: |
-          git add */index.html data/daily-data.js data/update-status.json data/bank-public-data.js data/company-valuation.js data/company-valuation.json data/company-comparison.js data/company-comparison.json data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html Dien/index.html Bat-dong-san/index.html Bat-dong-san-KCN/index.html Det-may/index.html data/*-public-data.js data/*-public-data.json data/company-quarterly.js data/company-quarterly.json data/power-financials.js data/power-financials.json data/kcn-financials.js data/kcn-financials.json data/construction-financials.js data/construction-financials.json data/raw/public data/telecom-financials.js data/telecom-financials.json data/telecom-industry.js data/telecom-industry.json data/telecom-benchmarks.js data/telecom-news.js data/telecom-news.json updates/state.json updates/last-run.md
+          git add */index.html data/daily-data.js data/update-status.json data/bank-public-data.js data/company-valuation.js data/company-valuation.json data/company-comparison.js data/company-comparison.json data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html Dien/index.html Bat-dong-san/index.html Bat-dong-san-KCN/index.html Det-may/index.html data/*-public-data.js data/*-public-data.json data/company-quarterly.js data/company-quarterly.json data/power-financials.js data/power-financials.json data/kcn-financials.js data/kcn-financials.json data/construction-financials.js data/construction-financials.json data/raw/public data/telecom-financials.js data/telecom-financials.json data/oil-financials.js data/oil-financials.json data/telecom-industry.js data/telecom-industry.json data/telecom-benchmarks.js data/telecom-news.js data/telecom-news.json updates/state.json updates/last-run.md
           if git diff --cached --quiet; then
             echo 'No observations, source statuses or schedule state changed.'
             exit 0
