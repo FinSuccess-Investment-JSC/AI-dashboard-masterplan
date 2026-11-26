@@ -25,7 +25,7 @@ window.FS_SITE_NAV = {
       {label: 'Vận tải', children: [
         {key: 'port', label: 'Cảng & kho bãi'},
         {key: 'shipping', label: 'Vận tải biển'},
-        {label: 'Hàng không', soon: true}
+        {key: 'aviation', label: 'Hàng không'}
       ]},
       {key: 'rubber', label: 'Cao su'},
       {key: 'textile', label: 'Dệt may'},
@@ -36,7 +36,7 @@ window.FS_SITE_NAV = {
       {label: 'Hóa chất', children: [
         {key: 'fertilizer', label: 'Phân bón'},
         {label: 'Phốt pho', soon: true},
-        {label: 'Xút', soon: true}
+        {key: 'chloralkali', label: 'Xút – Clo'}
       ]},
       {label: 'Thực phẩm & đồ uống', children: [
         {key: 'agri', label: 'Nông nghiệp & thực phẩm'},

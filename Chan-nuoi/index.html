@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="app/dashboard-ui.css?v=8b5f71b2e791">
 <script src="app/sector-boot.js?v=555dd1c98235"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="app/chart-types.js?v=de84f54bfcae"></script>
+<script src="app/chart-types.js?v=0ad97400e925"></script>
 <script src="../data/daily-data.js?v=293eac683185" defer></script>
 <script src="app/value-chain.js?v=a597c7c73610" defer></script>
 <script src="app/data-math.js?v=ed6356aac3af" defer></script>
@@ -15,10 +15,13 @@
 <script src="app/sector-content.js?v=649051e35a0c" defer></script>
 <script src="app/sector-layout.js?v=851d26cc3f7c" defer></script>
 <script src="../data/agri-public-data.js?v=a97028654e3c" defer></script>
+<script src="../data/livestock-public-data.js?v=ac40b763b120" defer></script>
 <script src="app/sector-visuals.js?v=600d63e56c74" defer></script>
 <script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
-<script src="app/livestock-config.js?v=b6e7ace96542" defer></script>
-<script src="app/pkg-dashboard.js?v=487b6d6ca021" defer></script>
+<script src="app/livestock-config.js?v=e17119ec5f68" defer></script>
+<script src="app/pkg-dashboard.js?v=8854138f84ca" defer></script>
+<script src="app/hog-dashboard.js?v=93a4b43175ea" defer></script>
+<link rel="stylesheet" href="app/hog-dashboard.css?v=ad11b5e74763">
 <script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=bb5b95d73397" defer></script>
@@ -44,10 +47,10 @@
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=20de8094fc85" defer></script>
-<script src="app/pkg-frame.js?v=9f3ff233c4ce" defer></script>
+<script src="app/pkg-frame.js?v=9ecaead3961a" defer></script>
 <link rel="stylesheet" href="app/pkg-frame.css?v=38b89b59c752">
-<script src="app/site-navigation.js?v=f848fdd12069" data-release="20261127-ban-le-tong-quan"></script>
-<script src="../data/site-nav.js?v=30585119cf13"></script>
+<script src="app/site-navigation.js?v=235aee299bbd" data-release="2026.11.27-nganh-xut-clo"></script>
+<script src="../data/site-nav.js?v=a08e16075531"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=a27a8ee6bc32">
@@ -68,7 +71,7 @@
 
 <div class="container">
   <section class="hero">
-    <h1>Bức tranh ngành <em>chăn nuôi</em> Việt Nam</h1>
+    <h1>Ngành <em>chăn nuôi heo</em> Việt Nam</h1>
     <p>Giá heo hơi quyết định doanh thu; giá ngô, khô đậu nhập khẩu và tỷ giá quyết định giá thành.</p>
   </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
@@ -78,7 +81,6 @@
   <section class="section">
     <div class="sectionhead"><div><h2>Bức tranh ngành</h2><p></p></div></div>
     <section class="grid kpis">
-      <div class="kpi"><div class="label">Heo hơi toàn quốc</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-hog"></div></div>
       <div class="kpi"><div class="label">Thức ăn gia súc sản xuất</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-feed"></div></div>
       <div class="kpi"><div class="label">Giá khô đậu tương</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-soy"></div></div>
       <div class="kpi"><div class="label">P/E rổ chăn nuôi</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-pe"></div></div>
@@ -94,17 +96,120 @@
         <div class="chart-title">Mô hình kiếm tiền của doanh nghiệp chăn nuôi niêm yết</div>
         <div id="chLiveModels"></div>
       </div>
+      <div class="card" data-block-id="cn-h1" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">Giá heo hơi ba miền đang hồi hay giảm?</div>
+        <div class="chart-sub">nghìn đ/kg tại chuồng · bình quân 7 ngày hoặc giá ngày</div>
+        <div id="chHog3"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-hog3"></table></div></details>
+      </div>
+      <div class="card" data-block-id="cn-h2" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Ngô và khô đậu tương đang đi cùng chiều?</div>
+        <div class="chart-sub">USD/tấn · theo tháng · giá nguyên liệu tham chiếu</div>
+        <div id="chGrain"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-grain"></table></div></details>
+      </div>
+      <div class="card" data-block-id="cn-h3" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Tổng đàn heo đang tăng hay giảm?</div>
+        <div class="chart-sub">% so cùng kỳ · cuối tháng</div>
+        <div id="chHerdS"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-herds"></table></div></details>
+      </div>
+      <div class="card" data-block-id="cn-h4" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Sản lượng heo hơi xuất chuồng</div>
+        <div class="chart-sub">theo kỳ NSO công bố</div>
+        <div id="chPigOutS"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-pigouts"></table></div></details>
+      </div>
+      <div class="card" data-block-id="cn-h6" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">Giá heo theo tỉnh: tăng ở diện rộng hay cục bộ?</div>
+        <div class="chart-sub">nghìn đ/kg · tỉnh × tuần (bật theo ngày)</div>
+        <div id="chHeat"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-heat"></table></div></details>
+      </div>
+      <div class="card" data-block-id="cn-h7" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">Bao nhiêu tỉnh có giá cao hơn 7 ngày trước?</div>
+        <div class="chart-sub">% số tỉnh có giá cả hai ngày</div>
+        <div id="chBreadth"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-breadth"></table></div></details>
+      </div>
+      <div class="card" data-block-id="cn-h8" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">Các nguồn báo giá cùng ngày</div>
+        <div class="chart-sub">nghìn đ/kg · nguồn chính và nguồn đối chiếu</div>
+        <div id="chHogRef"></div>
+      </div>
       <div class="card" data-block-id="cn-10" data-update-kind="periodic" data-cadence="weekly" data-refresh-status="snapshot">
-        <div class="chart-title">Giá heo hơi toàn quốc và theo vùng</div>
-        <div class="chart-sub">nghìn đ/kg · theo tháng</div>
+        <div class="chart-title">Giá heo hơi toàn quốc nhiều năm</div>
+        <div class="chart-sub">nghìn đ/kg · bình quân tháng</div>
         <div id="chHog"></div>
         <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-hog"></table></div></details>
       </div>
-      <div class="card" data-block-id="cn-20" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">Giá ngô, khô đậu tương và heo hơi</div>
-        <div class="chart-sub">chỉ số, T1/2024 = 100 · theo tháng</div>
-        <div id="chFeedPx"></div>
-        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-feedpx"></table></div></details>
+      <div class="card" data-block-id="cn-21h" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Tổng đàn heo cuối kỳ so cùng kỳ</div>
+        <div class="chart-sub">% so cùng thời điểm năm trước · NSO ước tính</div>
+        <div id="chHerd"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-herd"></table></div></details>
+      </div>
+      <div class="card" data-block-id="cn-22h" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Sản lượng thịt heo hơi xuất chuồng</div>
+        <div class="chart-sub">theo kỳ NSO công bố</div>
+        <div id="chPigOut"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-pigout"></table></div></details>
+      </div>
+      <div class="card" data-block-id="cn-24" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Sản lượng thịt gia cầm hơi xuất chuồng</div>
+        <div class="chart-sub">protein thay thế · theo kỳ NSO công bố</div>
+        <div id="chPoultry"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-poultry"></table></div></details>
+      </div>
+      <div class="card" data-block-id="cn-30" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Thịt heo nhập khẩu (HS 0203) lũy kế từ đầu năm</div>
+        <div class="chart-sub">nghìn tấn · 2026 so với 2025 cùng số tháng</div>
+        <div id="chImp"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-imp"></table></div></details>
+      </div>
+      <div class="card" data-block-id="cn-31" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Đơn giá thịt heo nhập khẩu hàm ý</div>
+        <div class="chart-sub">USD/tấn = trị giá ÷ lượng · lũy kế từ đầu năm</div>
+        <div id="chImpPx"></div>
+      </div>
+      <div class="card" data-block-id="cn-32" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Thịt heo nhập khẩu theo xuất xứ</div>
+        <div class="chart-sub">% lượng nhập khẩu HS 0203</div>
+        <div id="chImpOrigin"></div>
+      </div>
+      <div class="card" data-block-id="cn-40" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
+        <div class="chart-title">Dịch tả heo châu Phi</div>
+        <div class="chart-sub">sự kiện theo kỳ công bố</div>
+        <div id="asfEvents"></div>
+      </div>
+      <div class="card" data-block-id="cn-h2b" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Ngô và khô đậu tương 10 năm</div>
+        <div class="chart-sub">USD/tấn hoặc quy đổi VND/tấn · theo tháng</div>
+        <div id="chGrain2"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-grain2"></table></div></details>
+      </div>
+      <div class="card" data-block-id="cn-s1" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Kinh tế một con heo: từ doanh thu đến lãi mô phỏng</div>
+        <div class="chart-sub">đ/con · sửa tham số để chạy lại</div>
+        <div id="cn-sim"></div>
+      </div>
+      <div class="card" data-block-id="cn-s2" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Lãi mô phỏng theo giá heo hơi và giá cám</div>
+        <div class="chart-sub">nghìn đ/con · cột giá heo (đ/kg), hàng giá cám (đ/kg)</div>
+        <div id="cn-sens"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-sens"></table></div></details>
+      </div>
+      <div class="card" data-block-id="cn-d1" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Doanh thu và lợi nhuận theo quý</div>
+        <div class="chart-sub">nghìn tỷ đồng · mã đang chọn</div>
+        <div id="chCoView"></div>
+        <div id="coKpis" class="hd-cokpis"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-coview"></table></div></details>
+      </div>
+      <div class="card" data-block-id="cn-d2" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Biên gộp so với giá heo bình quân quý</div>
+        <div class="chart-sub">% và nghìn đ/kg · mã đang chọn</div>
+        <div id="chCoMargin"></div>
       </div>
       <div class="card" data-block-id="cn-12" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
         <div class="chart-title">Nhập khẩu ngô, đậu tương, thức ăn chăn nuôi</div>
@@ -117,12 +222,6 @@
         <div class="chart-sub">nghìn tấn · theo tháng · toàn ngành</div>
         <div id="chFeed"></div>
         <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-feed"></table></div></details>
-      </div>
-      <div class="card" data-block-id="cn-21" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">Biên chăn nuôi heo ước tính</div>
-        <div class="chart-sub">nghìn đ/kg heo hơi · heo hơi so với giá thành ước · vùng hòa vốn 48–52</div>
-        <div id="chHogMargin"></div>
-        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-hog-margin"></table></div></details>
       </div>
       <div class="card" data-block-id="cn-22" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
         <div class="chart-title">Biên gộp và biên ròng theo quý</div>
@@ -170,7 +269,7 @@
   </div>
   <div class="card" style="margin-top:14px" data-block-id="cn-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="source-note">Chuỗi tháng: scripts/build_sector_public.py (heo hơi WiData, ngô và khô đậu IMF/FRED, thức ăn NSO, nhập khẩu Hải quan, tỷ giá NHNN, P/E rổ VNDirect) → data/agri-public-data.js. BCTC quý: scripts/update_company_comparison.py (rổ livestock) → data/company-comparison.js, data/company-quarterly.js. Số tài liệu: data/agri/evidence.json.</div>
+    <div class="source-note">Giá heo ba miền và tỉnh: scripts/fetch_hog_prices.py (Báo Hà Tĩnh, mỗi lượt 07:30 và 15:30) → data/raw/public/hog-prices.json; ngô, khô đậu: scripts/fetch_pinksheet.py (World Bank); ghép: scripts/build_livestock_public.py → data/livestock-public-data.js; quan sát nhập tay có kiểm: data/livestock/observations.json. Chuỗi tháng khác: scripts/build_sector_public.py (heo hơi WiData, ngô và khô đậu IMF/FRED, thức ăn NSO, nhập khẩu Hải quan, tỷ giá NHNN, P/E rổ VNDirect) → data/agri-public-data.js. BCTC quý: scripts/update_company_comparison.py (rổ livestock) → data/company-comparison.js, data/company-quarterly.js. Số tài liệu: data/agri/evidence.json.</div>
   </div>
   <div class="footer">Ngành Chăn nuôi Việt Nam · Dựng từ nguồn công khai có trích dẫn · 26/11/2026.</div>
 </div>

@@ -1,0 +1,124 @@
+{
+ "source": {
+  "title": "FPTS – Báo cáo định giá DGC (10/05/2024), tr. 20–22",
+  "url": null,
+  "published": "2024-05-10"
+ },
+ "note": "Số nhập tay từ PDF báo cáo FPTS (tr. 20–22); chart trong PDF đọc theo nhãn số in trên cột, không đo chiều cao cột.",
+ "capacity_snapshot": {
+  "unit": "nghìn tấn/năm",
+  "basis": "FPTS ghi tổng ~200.000 tấn/năm quy về nồng độ 100%",
+  "rows": [
+   {
+    "plant": "Vedan",
+    "value": 80,
+    "class": "captive"
+   },
+   {
+    "plant": "HVT",
+    "value": 40,
+    "class": "merchant"
+   },
+   {
+    "plant": "CSV",
+    "value": 40,
+    "class": "merchant"
+   },
+   {
+    "plant": "Dongachem",
+    "value": 18,
+    "class": "merchant"
+   },
+   {
+    "plant": "Giấy Bãi Bằng",
+    "value": 10,
+    "class": "captive"
+   },
+   {
+    "plant": "DGC Nghi Sơn",
+    "value": 50,
+    "class": "project"
+   }
+  ],
+  "text_totals": {
+   "existing_text": 200,
+   "merchant_text": 110
+  },
+  "chart_sums": {
+   "existing": 188,
+   "merchant": 98
+  }
+ },
+ "imports_total": {
+  "unit": "nghìn tấn",
+  "note": "Tổng nhập khẩu xút theo FPTS (nguồn ITC); cơ sở quy đổi nồng độ chưa xác minh",
+  "rows": [
+   [
+    2018,
+    116
+   ],
+   [
+    2019,
+    116
+   ],
+   [
+    2020,
+    121
+   ],
+   [
+    2021,
+    116
+   ],
+   [
+    2022,
+    118
+   ]
+  ]
+ },
+ "demand": {
+  "value": 350,
+  "unit": "nghìn tấn/năm",
+  "label": "Ước tính FPTS, công bố 10/05/2024"
+ },
+ "power_cost_share": {
+  "value": 50,
+  "unit": "%",
+  "label": "Ước tính FPTS 2024: điện chiếm khoảng 50% giá thành xút"
+ },
+ "power_price_compare": {
+  "unit": "US cent/kWh",
+  "source": "Global Petrol Prices, FPTS tổng hợp",
+  "rows": [
+   [
+    "Việt Nam",
+    7.2
+   ],
+   [
+    "Trung Quốc",
+    8.9
+   ],
+   [
+    "Hàn Quốc",
+    12.6
+   ],
+   [
+    "Ấn Độ",
+    12.9
+   ],
+   [
+    "Đài Loan",
+    15.2
+   ],
+   [
+    "Nhật Bản",
+    19.0
+   ]
+  ]
+ },
+ "salt": {
+  "quota_text": "hạn ngạch nhập khẩu hằng năm khoảng ~90.000 tấn, tương đương khoảng 30% nhu cầu",
+  "out_quota_tariff_pct": 50,
+  "dgc_salt_need_text": "75.500 nghìn tấn/năm (nghi lỗi đơn vị, để trống)"
+ },
+ "import_tariff_text": "sản phẩm xút trong nước được bảo hộ với thuế nhập khẩu 5–20%"
+}

@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ngành Hàng không Việt Nam · FinSuccess Research</title>
+<link rel="stylesheet" href="app/dashboard-ui.css?v=8b5f71b2e791">
+<script src="app/sector-boot.js?v=555dd1c98235"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="app/chart-types.js?v=de84f54bfcae"></script>
+<script src="../data/daily-data.js?v=293eac683185" defer></script>
+<script src="app/value-chain.js?v=a597c7c73610" defer></script>
+<script src="app/data-math.js?v=ed6356aac3af" defer></script>
+<script src="app/sector-runtime.js?v=6eb19cde98b2" defer></script>
+<script src="app/sector-content.js?v=649051e35a0c" defer></script>
+<script src="app/sector-layout.js?v=851d26cc3f7c" defer></script>
+<script src="../data/aviation-data.js?v=d91a2ca9ba4b" defer></script>
+<script src="../data/aviation-financials.js?v=c485482397a6" defer></script>
+<script src="app/sector-visuals.js?v=600d63e56c74" defer></script>
+<script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
+<script src="app/aviation-config.js?v=ad5ad5676259" defer></script>
+<script src="app/pkg-dashboard.js?v=bc8bff05015e" defer></script>
+<script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
+<script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
+<script src="app/chart-arrange.js?v=bb5b95d73397" defer></script>
+<script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
+<script src="app/sector-smart.js?v=b3c41b61cc4a" defer></script>
+<script src="../data/company-valuation.js?v=fa31970141b7" defer></script>
+<script src="../data/company-comparison.js?v=0a183f0e1b9c" defer></script>
+<script src="app/pkg-shim.js?v=d953110f5aa0" defer></script>
+<script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
+<script src="app/financial-comparison.js?v=db7f3db7126d" defer></script>
+<script src="app/research-layout.js?v=1fc6a24f5b9e" defer></script>
+<script src="app/research-sources.js?v=2e0a8424c403" defer></script>
+<script src="app/research-editorial.js?v=53be49980eb9" defer></script>
+<script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
+<script src="app/table-fold.js?v=ef1324e22786" defer></script>
+<script src="app/motion.js?v=fdb0c76dabb8" defer></script>
+<script src="app/stock-dom.js?v=54e77361968d" defer></script>
+<script src="app/layout-balance.js?v=1266e321a8da" defer></script>
+<link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
+<link rel="stylesheet" href="app/site-sidebar.css?v=c15c75326931">
+<link rel="stylesheet" href="app/site-tidy.css?v=3ad28c2a6d19">
+<script src="app/source-gap.js?v=f5423408804a" defer></script>
+<script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
+<script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
+<script src="app/chart-source.js?v=20de8094fc85" defer></script>
+<script src="app/aviation-map.js?v=7103282cdca5" defer></script>
+<script src="app/pkg-frame.js?v=9f3ff233c4ce" defer></script>
+<link rel="stylesheet" href="app/pkg-frame.css?v=d213fb64c5f3">
+<script src="app/site-navigation.js?v=235aee299bbd" data-release="2026.11.27-nganh-xut-clo"></script>
+<script src="../data/site-nav.js?v=a08e16075531"></script>
+<script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
+<link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
+<link rel="stylesheet" href="app/research-layout.css?v=a27a8ee6bc32">
+<link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
+<link rel="stylesheet" href="app/fin-success-theme.css?v=d2a28183412c">
+<link rel="stylesheet" href="app/brand.css?v=4fab96877d3a">
+<link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
+</head>
+<body data-sector="retail" data-pkg="aviation">
+<nav data-site-navigation="aviation" aria-label="Điều hướng dashboard ngành"></nav>
+<div class="fiscbar"><span>Dashboard ngành · Hàng không · dựng 26/11/2026</span></div>
+
+<nav class="majortabs">
+  <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">Tổng quan ngành</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt2',this)">Bức tranh ngành</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt7',this)">Chủ đề nóng</button>
+</nav>
+
+<div class="container">
+  <section class="hero">
+    <h1>Bức tranh ngành <em>hàng không</em> Việt Nam</h1>
+    <p>Cầu đi lại quyết định sản lượng; cung ghế và giá vé quyết định yield; nhiên liệu bay và tỷ giá quyết định chi phí; hạ tầng sân bay quyết định trần tăng trưởng.</p>
+  </section>
+  <div class="majorpane active" data-tab="mt1" id="pane-mt1">
+    <div class="sectionhead"><div><h2>Tổng quan ngành hàng không</h2></div></div>
+  </div>
+  <div class="majorpane" data-tab="mt2" id="pane-mt2">
+  <section class="section">
+    <div class="sectionhead"><div><h2>Bức tranh ngành</h2><p></p></div></div>
+    <section class="grid kpis">
+      <div class="kpi"><div class="label">Khách vận chuyển đường hàng không</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-pax"></div></div>
+      <div class="kpi"><div class="label">Khách quốc tế đến bằng đường không</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-visair"></div></div>
+      <div class="kpi"><div class="label">Jet fuel US Gulf Coast</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-jet"></div></div>
+      <div class="kpi"><div class="label">Hàng hóa vận chuyển đường hàng không</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-cargo"></div></div>
+    </section>
+    <!-- research-layout.js dựng lưới giá vào #supply-world / #supply-vietnam (khung chung của gói); để rỗng -->
+    <div class="supply-pane" id="supply-world"></div><div class="supply-pane" id="supply-vietnam"></div>
+      <div class="card" data-block-id="hk-00" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Đọc nhanh kỳ mới nhất</div>
+        <div class="chart-sub">hai quan sát có số · nhóm doanh nghiệp chịu tác động · chỉ số kỳ tới</div>
+        <div id="hkBrief"></div>
+      </div>
+      <div class="card" data-block-id="hk-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Chuỗi giá trị ngành hàng không</div>
+        <div class="chart-sub">đầu vào → hãng bay → cảng hàng không → dịch vụ sân bay</div>
+        <div id="hkChain"></div>
+      </div>
+      <div class="card" data-block-id="hk-05" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Mô hình kiếm tiền của doanh nghiệp hàng không niêm yết</div>
+        <div class="chart-sub"></div>
+        <div id="hkModels"></div>
+      </div>
+      <div class="card" data-block-id="hk-10" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Khách vận chuyển nội địa và quốc tế</div>
+        <div class="chart-sub">triệu lượt khách · năm và lũy kế theo kỳ công bố của Cục Hàng không</div>
+        <div id="hkCarried"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-carried"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-11" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Khách vận chuyển đường hàng không theo tháng</div>
+        <div class="chart-sub">nghìn lượt khách · doanh nghiệp vận tải trong nước (NSO)</div>
+        <div id="hkAirPax"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-airpax"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-12" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Lượt khách qua cảng hàng không</div>
+        <div class="chart-sub">triệu lượt · nội địa và quốc tế · năm và lũy kế</div>
+        <div id="hkThrough"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-through"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-15" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Thị phần quốc tế của hãng Việt</div>
+        <div class="chart-sub">% · khách quốc tế do hãng Việt vận chuyển ÷ khách quốc tế vận chuyển toàn thị trường, cùng kỳ</div>
+        <div id="hkIntlShare"></div>
+      </div>
+      <div class="card" data-block-id="hk-13" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Khách quốc tế đến Việt Nam theo thị trường</div>
+        <div class="chart-sub">nghìn lượt · theo tháng · 12 thị trường lớn (NSO)</div>
+        <div id="hkVisHeat"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-visheat"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-14" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Khách quốc tế đến bằng đường không</div>
+        <div class="chart-sub">lượt · theo tháng (NSO)</div>
+        <div id="hkVisAir"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-visair"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-20" data-update-kind="document" data-cadence="event" data-refresh-status="snapshot">
+        <div class="chart-title">Lịch bay theo mùa</div>
+        <div class="chart-sub">chuyến khứ hồi/tuần (quốc tế), chuyến/tuần (nội địa) · lịch bay được duyệt, không phải chuyến đã thực hiện</div>
+        <div id="hkSched"></div>
+      </div>
+      <div class="card" data-block-id="hk-21" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Luân chuyển hành khách (RPK) và số khách của hãng Việt</div>
+        <div class="chart-sub">triệu HK.km, nghìn lượt · theo tháng (NSO)</div>
+        <div id="hkRpk"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-rpk"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-22" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Thị phần nội địa theo hãng</div>
+        <div class="chart-sub">% số khách · 2017–2024 (SHS tổng hợp)</div>
+        <div id="hkShare"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-share"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-23" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Đội tàu bay khai thác theo hãng</div>
+        <div class="chart-sub">tàu bay · 2024 thực tế, 2025–2027 dự báo của SHS (màu nhạt)</div>
+        <div id="hkFleet"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-fleet"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-24" data-update-kind="document" data-cadence="event" data-refresh-status="snapshot">
+        <div class="chart-title">Tàu bay: đăng ký, khai thác và theo hãng</div>
+        <div class="chart-sub">tàu bay · số dư tại từng ngày Cục Hàng không nêu</div>
+        <div id="hkFleetReg"></div>
+      </div>
+      <div class="card" data-block-id="hk-26" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Tỷ lệ cất cánh đúng giờ theo hãng, theo tháng</div>
+        <div class="chart-sub">% chuyến cất cánh đúng giờ · hãng Việt tại cảng Việt Nam</div>
+        <div id="hkOtpHeat"></div>
+      </div>
+      <div class="card" data-block-id="hk-25" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Tỷ lệ cất cánh đúng giờ theo hãng</div>
+        <div class="chart-sub">% · năm 2024 (SHS tổng hợp)</div>
+        <div id="hkOtp"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-otp"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-30" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
+        <div class="chart-title">Giá nhiên liệu bay và tỷ giá USD/VND</div>
+        <div class="chart-sub">jet fuel spot US Gulf Coast, USD/gallon · tỷ giá trung tâm, đồng/USD · bình quân tháng</div>
+        <div id="hkFuel"></div>
+        <div class="hk-sub2">Tỷ giá trung tâm USD/VND (NHNN)</div>
+        <div id="hkFx"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-fuelfx"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-31" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="chart-title">Giá nhiên liệu bay bình quân toàn cầu (IATA)</div>
+        <div class="chart-sub">USD/thùng · tuần gần nhất · Platts qua IATA Fuel Price Monitor</div>
+        <div id="hkIata"></div>
+      </div>
+      <div class="card" data-block-id="hk-32" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Độ nhạy chi phí với jet fuel và tỷ giá</div>
+        <div class="chart-sub">kịch bản minh họa · tham số chỉnh được</div>
+        <div id="hkSens"></div>
+      </div>
+      <div class="card" data-block-id="hk-33" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Doanh thu, biên và dòng tiền của HVN, VJC</div>
+        <div class="chart-sub">tỷ đồng, % · BCTC hợp nhất theo quý</div>
+        <div id="hkAirlineFin"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-airlinefin"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-40" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Bản đồ cảng hàng không Việt Nam</div>
+        <div class="chart-sub">mã IATA · đơn vị khai thác · rê chuột xem số đã xác minh</div>
+        <div id="hkMap"></div>
+      </div>
+      <div class="card" data-block-id="hk-41" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
+        <div class="chart-title">Mốc dự án Long Thành, T3 Tân Sơn Nhất, T2 Nội Bài</div>
+        <div class="chart-sub">● đã diễn ra · ○ dự kiến</div>
+        <div id="hkAirportTl"></div>
+      </div>
+      <div class="card" data-block-id="hk-42" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
+        <div class="chart-title">Tiến độ dự án thành phần 3 Long Thành</div>
+        <div class="chart-sub">% · giá trị hợp đồng theo khối lượng thực hiện và giải ngân</div>
+        <div id="hkLtProg"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-ltprog"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-43" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Lượt khách qua hệ thống cảng ACV</div>
+        <div class="chart-sub">triệu lượt · nội địa và quốc tế</div>
+        <div id="hkAcvPax"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-acvpax"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-44" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">ACV: XDCB dở dang, chi đầu tư và CFO sau capex</div>
+        <div class="chart-sub">tỷ đồng · BCTC hợp nhất theo quý</div>
+        <div id="hkAcvCapex"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-acvcapex"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-50" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Hàng hóa thông qua cảng hàng không</div>
+        <div class="chart-sub">triệu tấn · năm và lũy kế theo kỳ công bố</div>
+        <div id="hkCargo"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-cargo"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-51" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Hàng hóa vận chuyển đường hàng không theo tháng</div>
+        <div class="chart-sub">nghìn tấn · doanh nghiệp vận tải trong nước (NSO)</div>
+        <div id="hkAirFreight"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-airfreight"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-52" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Sản lượng hàng qua nhà ga SCSC</div>
+        <div class="chart-sub">tấn · theo quý · quốc tế và nội địa</div>
+        <div id="hkScsTon"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-scston"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-53" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">SCS: doanh thu trên tấn hàng</div>
+        <div class="chart-sub">nghìn đồng/tấn · doanh thu thuần quý ÷ sản lượng nhà ga cùng quý</div>
+        <div id="hkScsYield"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-scsyield"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-54" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Doanh thu và biên của dịch vụ sân bay</div>
+        <div class="chart-sub">tỷ đồng, % · SCS, NCT, SGN, AST, SAS · BCTC hợp nhất quý</div>
+        <div id="hkSvcFin"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-svcfin"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-60" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Doanh thu và lợi nhuận theo quý từng mã</div>
+        <div class="chart-sub">tỷ đồng · từng mã, không cộng</div>
+        <div id="hkFinAll"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-finall"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-61" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Nợ vay ròng</div>
+        <div class="chart-sub">tỷ đồng · vay ngắn + dài hạn − tiền − đầu tư ngắn hạn</div>
+        <div id="hkNetDebt"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-netdebt"></table></div></details>
+      </div>
+      <div class="card" data-block-id="hk-62" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Số vận hành doanh nghiệp công bố 9T/2026</div>
+        <div class="chart-sub">số doanh nghiệp công bố</div>
+        <div id="hkOps"></div>
+      </div>
+  </section>
+  </div>
+  <!-- research-layout.js cần các pane mt3, mt4, mt6 (bố cục chung của gói); để rỗng -->
+  <div class="majorpane" data-tab="mt3" id="pane-mt3"></div>
+  <div class="majorpane" data-tab="mt4" id="pane-mt4"><section id="policy" class="section"></section></div>
+  <div class="majorpane" data-tab="mt6" id="pane-mt6"></div>
+  <div class="majorpane" data-tab="mt7" id="pane-mt7">
+    <div class="sectionhead"><div><h2>Chủ đề nóng</h2><p>Tối đa ba sự kiện đang tác động đến đầu tư.</p></div></div>
+    <div data-topic-key="fuel" data-topic-segment="Nhiên liệu bay" data-topic-title="Giá nhiên liệu bay gấp đôi cùng kỳ">
+      <div class="card" data-block-id="hk-t1" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="chart-title">Giá nhiên liệu bay gấp đôi cùng kỳ</div>
+        <ul style="font-size:12.5px;line-height:1.65;margin:6px 0 8px;padding-left:18px"><li>Jet fuel US Gulf Coast bình quân T10/2026: <b>4,48 USD/gallon</b>, gấp 2,1 lần T10/2025 (2,15)</li><li>IATA tuần đến 20/11/2026: <b>154,76 USD/thùng</b> toàn cầu, giảm 8,9% so tuần trước nhưng cao hơn 71,9% so bình quân năm trước</li></ul>
+        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▼ HVN · VJC</p>
+        <div class="source-note">Nguồn: <a href="https://www.eia.gov/dnav/pet/hist/EER_EPJK_PF4_RGC_DPGD.htm" target="_blank" rel="noopener">EIA</a> · <a href="https://www.iata.org/en/publications/economics/fuel-monitor/" target="_blank" rel="noopener">IATA Fuel Price Monitor</a></div>
+      </div>
+    </div>
+    <div data-topic-key="share" data-topic-segment="Thị phần quốc tế" data-topic-title="Hãng Việt chở ít hơn phần tăng của thị trường quốc tế">
+      <div class="card" data-block-id="hk-t2" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="chart-title">Hãng Việt chở ít hơn phần tăng của thị trường quốc tế</div>
+        <ul style="font-size:12.5px;line-height:1.65;margin:6px 0 8px;padding-left:18px"><li>Thị phần khách quốc tế của hãng Việt: <b>41,4%</b> năm 2025 (Cục HK) → <b>36,2%</b> quý 1/2026 (5,06 ÷ 13,99 triệu)</li><li>10T/2026: khách quốc tế hãng Việt chở <b>+2,0%</b>, lượt khách quốc tế qua cảng <b>+11,3%</b>; lịch bay quốc tế mùa Đông 2026 +8,3%, 79 hãng nước ngoài</li><li>Bamboo Airways thu hẹp (725 chuyến T6 → 38 chuyến T9/2026); Sun PhuQuoc Airways mở 126 chuyến khứ hồi quốc tế/tuần</li></ul>
+        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▼ HVN · VJC · ▲ ACV · SCS · SGN</p>
+        <div class="source-note">Nguồn: <a href="https://caa.gov.vn/hoat-dong-nganh/hang-khong-viet-nam-tiep-tuc-duy-tri-da-tang-truong-trong-10-thang-cua-nam-2026-20261027153831131.htm" target="_blank" rel="noopener">Cục HK 10T/2026</a> · <a href="https://caa.gov.vn/hoat-dong-nganh/thi-truong-van-tai-hang-khong-viet-nam-tiep-tuc-tang-truong-mo-rong-ket-noi-trong-lich-bay-mua-dong-2026-20261125192204982.htm" target="_blank" rel="noopener">Cục HK lịch bay Đông 2026</a> · <a href="https://caa.gov.vn/bao-cao-thong-ke.htm" target="_blank" rel="noopener">Cục HK số liệu đúng giờ</a></div>
+      </div>
+    </div>
+    <div data-topic-key="longthanh" data-topic-segment="Long Thành" data-topic-title="Long Thành chưa khai thác trong 2026">
+      <div class="card" data-block-id="hk-t3" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <div class="chart-title">Long Thành chưa khai thác trong 2026</div>
+        <ul style="font-size:12.5px;line-height:1.65;margin:6px 0 8px;padding-left:18px"><li>Dự án thành phần 3: <b>88,63%</b> giá trị hợp đồng theo khối lượng, giải ngân <b>57%</b> (25/11/2026); không thể hoàn thành trong năm 2026</li><li>Nhà ga hành khách, nhà ga hàng hóa số 1 dự kiến hoàn thành hoặc chạy thử <b>T6/2027</b>; chưa có ngày khai thác thương mại</li></ul>
+        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ● ACV · SCS · SGN · AST</p>
+        <div class="source-note">Nguồn: <a href="https://baochinhphu.vn/thao-go-vuong-mac-du-an-san-bay-long-thanh-bao-dam-tuyet-doi-an-toan-khi-dua-vao-khai-thac-102261125161921495.htm" target="_blank" rel="noopener">Báo Chính phủ 25/11/2026</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px" data-block-id="hk-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+    <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
+    <div class="source-note">Tự động (refresh-data.yml): chuỗi tháng NSO (scripts/fetch_nso.py: khách, HK.km, hàng hóa đường hàng không; khách quốc tế đến theo thị trường, theo đường không), tỷ giá trung tâm NHNN (scripts/fetch_sbv.py), jet fuel EIA (scripts/build_aviation_data.py) → data/aviation-data.js; BCTC quý HVN, VJC, ACV, SCS, NCT, SGN, AST, SAS (scripts/fetch_aviation_financials.py, build_aviation_financials.py) → data/aviation-financials.js. Nhập tay có nguồn từng dòng: data/aviation/observations.json (Cục Hàng không, ACV, SCSC, IATA, Long Thành, SHS; mỗi dòng có link nguồn, ngày công bố, trích dẫn), data/aviation/airports.json.</div>
+  </div>
+  <div class="footer">Ngành Hàng không Việt Nam · Dựng từ nguồn công khai có trích dẫn · 26/11/2026.</div>
+</div>
+<script>
+/* ---------- tiny SVG chart engine ---------- */
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs){
+  const e=document.createElementNS(NS,tag);
+  if(attrs){ for(const k in attrs){ e.setAttribute(k, attrs[k]); } }
+  return e;
+}
+function txt(tag,attrs,text){ const e=el(tag,attrs); if(text!==undefined) e.textContent=text; return e; }
+function niceMax(v){
+  if(v<=0) return 1;
+  const mag=Math.pow(10,Math.floor(Math.log10(v)));
+  const n=v/mag;
+  let step;
+  if(n<=1) step=1; else if(n<=2) step=2; else if(n<=2.5) step=2.5; else if(n<=5) step=5; else step=10;
+  return step*mag;
+}
+function fmt(v,d){
+  d = d===undefined?0:d;
+  return Number(v).toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d});
+}
+let tipEl=null;
+function tipBox(){
+  if(!tipEl){ tipEl=document.createElement('div'); tipEl.className='chtip'; document.body.appendChild(tipEl); }
+  return tipEl;
+}
+function showTip(evt,title,rows){
+  const t=tipBox();
+  t.innerHTML='';
+  const h=document.createElement('div'); h.className='chtip-title'; h.textContent=title; t.appendChild(h);
+  rows.forEach(r=>{
+    const row=document.createElement('div'); row.className='chtip-row';
+    const key=document.createElement('span'); key.className='chtip-key';
+    if(r.color){ const dot=document.createElement('span'); dot.className='chtip-dot'; dot.style.background=r.color; key.appendChild(dot); }
+    const kt=document.createElement('span'); kt.textContent=r.label; key.appendChild(kt);
+    const val=document.createElement('span'); val.className='chtip-val'; val.textContent=r.value;
+    row.appendChild(key); row.appendChild(val);
+    t.appendChild(row);
+  });
+  t.style.display='block';
+  moveTip(evt);
+}
+function moveTip(evt){
+  const t=tipBox();
+  const pad=16;
+  let x=evt.clientX+pad, y=evt.clientY+pad;
+  const rect=t.getBoundingClientRect();
+  if(x+rect.width>window.innerWidth-8) x=evt.clientX-rect.width-pad;
+  if(y+rect.height>window.innerHeight-8) y=evt.clientY-rect.height-pad;
+  t.style.left=x+'px'; t.style.top=y+'px';
+}
+function hideTip(){ if(tipEl) tipEl.style.display='none'; }
+
+function baseSvg(W,H,label){
+  return el('svg',{viewBox:'0 0 '+W+' '+H, width:'100%', height:H, class:'chartsvg', role:'img', 'aria-label':label||''});
+}
+function floatRange(minV,maxV){
+  const span=(maxV-minV)||Math.abs(maxV)||1;
+  const step=niceMax(span/4);
+  const lo=Math.floor((minV-span*0.15)/step)*step;
+  const hi=Math.ceil((maxV+span*0.15)/step)*step;
+  return [minV<0?lo:Math.max(lo,0), hi]; // negative series (YoY %) keep their own floor
+}
+function yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,digits,yMin,steps=4){
+  yMin=yMin||0;
+  const yToPx=(v)=> padT + plotH*(1-(v-yMin)/(yMax-yMin));
+  for(let i=0;i<=steps;i++){
+    const v=yMin+(yMax-yMin)*i/steps;
+    const y=yToPx(v);
+    svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:y,y2:y,class:'gridline'}));
+    svg.appendChild(txt('text',{x:padL-8,y:y+3,'text-anchor':'end',class:'axislabel'}, fmt(v,digits)));
+  }
+  return yToPx;
+}
+
+/* categorical bar / combo chart */
+function barLineChartBase(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host) return;
+  const cats=opts.categories, n=cats.length;
+  const rotate = opts.rotateLabels===false ? false : n>8;
+  const W=640, H=260;
+  const padL=50,padR=14,padT=14,padB= rotate?56:30;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  let maxV=0;
+  opts.series.forEach(s=> s.values.forEach(v=>{ if(v!=null && v>maxV) maxV=v; }));
+  let yMin=0, yMax=niceMax(maxV*1.15);
+  if(opts.zeroBase===false && opts.series.every(s=>s.kind==='line')){
+    let mn=Infinity; opts.series.forEach(s=>s.values.forEach(v=>{ if(v!=null && v<mn) mn=v; }));
+    const r=floatRange(mn,maxV); yMin=r[0]; yMax=r[1];
+  }
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits,yMin,opts.yGridSteps||4);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  const band=plotW/n;
+  const barSeries=opts.series.filter(s=>s.kind!=='line');
+  const lineSeries=opts.series.filter(s=>s.kind==='line');
+  const barW=Math.min(24, band*0.62/(barSeries.length||1));
+  const linePts={};
+  lineSeries.forEach(s=>{ linePts[s.name]=[]; });
+
+  cats.forEach((cat,i)=>{
+    const bandX=padL+i*band;
+    const cx=bandX+band/2;
+    const rows=[];
+    barSeries.forEach((s,si)=>{
+      const v=s.values[i];
+      const gx = cx - (barSeries.length*barW)/2 + si*barW;
+      if(v!=null){
+        const y0=yToPx(0), y1=yToPx(v);
+        const r=el('rect',{x:gx+1,y:Math.min(y0,y1),width:Math.max(barW-2,2),height:Math.max(Math.abs(y0-y1),1),rx:3,ry:3,fill:s.color, opacity: s.confArr && s.confArr[i]===false ? 0.55 : 1});
+        r.appendChild(txt('title',{},cat+' — '+s.name+': '+fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+        svg.appendChild(r);
+        if(i===n-1){ svg.appendChild(txt('text',{x:gx+barW/2,y:Math.min(y0,y1)-6,'text-anchor':'middle',class:'endlabel',fill:s.color},fmt(v,opts.digits))); }
+        rows.push({label:s.name,value:fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):''),color:s.color});
+      }
+    });
+    lineSeries.forEach(s=>{
+      const v=s.values[i];
+      if(v!=null){ linePts[s.name].push([cx, yToPx(v)]); rows.push({label:s.name,value:fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):''),color:s.color}); }
+      else { linePts[s.name].push(null); }
+    });
+    const hit=el('rect',{x:bandX,y:padT,width:band,height:plotH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, cat, rows));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    hit.addEventListener('focus',e=>showTip({clientX:bandX+ (host.getBoundingClientRect ? host.getBoundingClientRect().left:0), clientY:80}, cat, rows));
+    hit.addEventListener('blur',hideTip);
+    svg.appendChild(hit);
+    const lx=cx, ly=padT+plotH+14;
+    const everyN = opts.maxLabels ? Math.max(1,Math.ceil(n/opts.maxLabels)) : n>24 ? Math.ceil(n/18) : 1;
+    if(i%everyN===0 || i===n-1){
+      const label=txt('text',{x:lx,y:ly,'text-anchor': rotate?'end':'middle',class:'catlabel'}, opts.tickLabels?.[i]||cat);
+      if(rotate) label.setAttribute('transform','rotate(-40 '+lx+' '+ly+')');
+      svg.appendChild(label);
+    }
+  });
+
+  const endLabelY=[];
+  lineSeries.forEach(s=>{
+    const pts=linePts[s.name].filter(p=>p);
+    if(pts.length>1){
+      let d='', pen=false;
+      linePts[s.name].forEach(p=>{if(!p){pen=false;return;}d+=(pen?' L':' M')+p[0]+','+p[1];pen=true;});
+      svg.appendChild(el('path',{d:d,fill:'none',stroke:s.color,'stroke-width':s.strokeWidth||2,'stroke-linecap':'round','stroke-linejoin':'round'}));
+    }
+    linePts[s.name].forEach((p,i)=>{
+      if(!p) return;
+      if(s.markers!==false){
+        const c=el('circle',{cx:p[0],cy:p[1],r:3.5,fill:s.color,stroke:'var(--card)','stroke-width':1.5});
+        svg.appendChild(c);
+      }
+      if(i===n-1){
+        let ly=p[1]-12;
+        while(endLabelY.some(v=>Math.abs(v-ly)<13)) ly-=14;
+        endLabelY.push(ly);
+        svg.appendChild(txt('text',{x:p[0],y:ly,'text-anchor':'middle',class:'endlabel',fill:s.color}, fmt(s.values[i],opts.digits)));
+      }
+    });
+  });
+
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* single-series line chart, evenly spaced (for monthly world price) */
+function lineChartBase(containerId, opts){
+  const labels=opts.labels, n=labels.length;
+  const W=640,H=260;
+  const padL=44,padR=14,padT=14,padB=30;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const maxV=Math.max.apply(null, opts.values);
+  const minV=Math.min.apply(null, opts.values);
+  let yMin=0, yMax=niceMax(maxV*1.1);
+  if(opts.zeroBase===false){ const r=floatRange(minV,maxV); yMin=r[0]; yMax=r[1]; }
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits,yMin);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  const step=plotW/(n-1);
+  const pts=opts.values.map((v,i)=>[padL+i*step, yToPx(v)]);
+  const areaD='M'+pts.map(p=>p[0]+','+p[1]).join(' L')+' L'+pts[pts.length-1][0]+','+(padT+plotH)+' L'+pts[0][0]+','+(padT+plotH)+' Z';
+  svg.appendChild(el('path',{d:areaD,fill:opts.color,opacity:0.1}));
+  const lineD='M'+pts.map(p=>p[0]+','+p[1]).join(' L');
+  svg.appendChild(el('path',{d:lineD,fill:'none',stroke:opts.color,'stroke-width':2,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  labels.forEach((lab,i)=>{
+    const showTick = (i%Math.max(1,Math.ceil(n/10))===0)||i===n-1;
+    const hit=el('rect',{x:padL+i*step-step/2,y:padT,width:step,height:plotH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, lab, [{label:opts.seriesName||'Giá trị',value:fmt(opts.values[i],opts.digits)+(opts.unit?(' '+opts.unit):''),color:opts.color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    svg.appendChild(hit);
+    const c=el('circle',{cx:pts[i][0],cy:pts[i][1],r:2.6,fill:opts.color,stroke:'var(--card)','stroke-width':1});
+    svg.appendChild(c);
+    if(showTick){
+      svg.appendChild(txt('text',{x:pts[i][0],y:padT+plotH+14,'text-anchor':'middle',class:'catlabel'}, lab));
+    }
+    if(i===n-1){ svg.appendChild(txt('text',{x:pts[i][0],y:pts[i][1]-10,'text-anchor':'end',class:'endlabel',fill:opts.color}, fmt(opts.values[i],opts.digits))); }
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* chart-type switcher (assets/chart-types.js): native view = renderer above */
+function barLineChart(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host||!window.ChartTypes) return barLineChartBase(containerId, opts);
+  ChartTypes.mount(host,{categories:opts.categories,tickLabels:opts.tickLabels,series:opts.series.map(s=>({name:s.name,color:s.color,kind:s.kind,values:s.values,conf:s.confArr,strokeWidth:s.strokeWidth})),unit:opts.unit,digits:opts.digits,zeroBase:opts.zeroBase,height:opts.height,stackable:opts.stackable,aria:opts.ariaLabel},()=>barLineChartBase(containerId,opts));
+}
+function lineChart(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host||!window.ChartTypes) return lineChartBase(containerId, opts);
+  ChartTypes.mount(host,{categories:opts.labels,series:[{name:opts.seriesName||'Giá trị',color:opts.color,kind:'line',values:opts.values}],unit:opts.unit,digits:opts.digits,zeroBase:opts.zeroBase,height:opts.height,aria:opts.ariaLabel},()=>lineChartBase(containerId,opts));
+}
+
+/* multi-series real-date range/dot chart (VN price) */
+function rangeDotChart(containerId, opts){
+  if(window.ChartTypes&&ChartTypes.useChart()&&ChartTypes.dots(document.getElementById(containerId),opts))return;
+  const W=640,H=260;
+  const padL=48,padR=14,padT=14,padB=28;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const domainStart=opts.domain[0].getTime(), domainEnd=opts.domain[1].getTime();
+  const xOf=(d)=> padL + plotW*( (d.getTime()-domainStart) / (domainEnd-domainStart) );
+  let maxV=0;
+  opts.series.forEach(s=> s.points.forEach(p=>{ if(p.high>maxV) maxV=p.high; }));
+  const yMax=niceMax(maxV*1.1);
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  for(let y=opts.domain[0].getFullYear(); y<=opts.domain[1].getFullYear(); y++){
+    const d=new Date(y+'-01-01T00:00:00');
+    if(d<opts.domain[0]||d>opts.domain[1]) continue;
+    const x=xOf(d);
+    svg.appendChild(el('line',{x1:x,x2:x,y1:padT,y2:padT+plotH,class:'gridline'}));
+    svg.appendChild(txt('text',{x:x,y:padT+plotH+13,'text-anchor':'start',class:'catlabel'}, String(y)));
+  }
+  opts.series.forEach(s=>{
+    s.points.forEach(p=>{
+      const d=new Date(p.date+'T00:00:00');
+      const x=xOf(d);
+      const yLow=yToPx(p.low), yHigh=yToPx(p.high), yMid=yToPx(p.mid);
+      if(p.high>p.low){ svg.appendChild(el('line',{x1:x,x2:x,y1:yHigh,y2:yLow,stroke:s.color,'stroke-width':2,opacity:0.55})); }
+      const c=el('circle',{cx:x,cy:yMid,r: p.conf===false?4:4.5, fill: p.conf===false? 'var(--card)':s.color, stroke:s.color,'stroke-width':2});
+      const hit=el('circle',{cx:x,cy:yMid,r:13,fill:'transparent',class:'hitband',tabindex:'0'});
+      const label=p.label+(p.conf===false?' (độ tin cậy thấp)':'');
+      hit.addEventListener('pointerenter',e=>showTip(e, p.date.split('-').reverse().join('/'), [{label:label,value:fmt(p.low)+'–'+fmt(p.high)+' đ/kg',color:s.color}]));
+      hit.addEventListener('pointermove',moveTip);
+      hit.addEventListener('pointerleave',hideTip);
+      svg.appendChild(hit);
+      svg.appendChild(c);
+    });
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* horizontal compare bars — single snapshot, N entities */
+function hbarCompare(containerId, opts){
+  if(window.ChartTypes&&ChartTypes.useChart()&&ChartTypes.hbar(document.getElementById(containerId),opts))return;
+  const items=opts.items, n=items.length;
+  const W=640, padT=8, padB=8, rowH=Math.max(38,(260-padT-padB)/n); /* same total height as the other charts */
+  const H=padT+padB+rowH*n;
+  const padL=8, padR=64, labelW=opts.labelW||112;
+  const plotW=W-padL-padR-labelW;
+  const maxV=niceMax(Math.max.apply(null, items.map(it=>it.value))*1.15);
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  items.forEach((it,i)=>{
+    const y=padT+i*rowH;
+    const barH=Math.min(rowH-16,30), barY=y+(rowH-barH)/2;
+    const bw=plotW*(it.value/maxV);
+    svg.appendChild(txt('text',{x:padL+labelW-8,y:y+rowH/2+4,'text-anchor':'end',class:'catlabel',style:'font-weight:700'}, it.label));
+    const r=el('rect',{x:padL+labelW,y:barY,width:Math.max(bw,2),height:barH,rx:4,ry:4,fill:it.color});
+    r.appendChild(txt('title',{},it.label+': '+fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+    const hit=el('rect',{x:padL+labelW,y:barY,width:Math.max(bw,2),height:barH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, it.label, [{label:opts.unit||'Giá trị', value:fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):''), color:it.color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    svg.appendChild(r);
+    svg.appendChild(txt('text',{x:padL+labelW+bw+8,y:y+rowH/2+4,class:'endlabel',fill:'var(--ink2)'}, fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+    svg.appendChild(hit);
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+function balanceBarChart(containerId, opts){
+  if(window.ChartTypes&&ChartTypes.useChart()&&ChartTypes.balance(document.getElementById(containerId),opts))return;
+  const labels=opts.labels, values=opts.values, every=opts.labelEvery||1, digits=opts.digits??1;
+  const W=640,H=260,padL=52,padR=20,padT=16,padB=38;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const maxAbs=Math.max(opts.minScale||1, Math.max.apply(null, values.map(v=>Math.abs(v))))*1.2;
+  const zeroY=padT+plotH/2;
+  const svg=baseSvg(W,H,opts.ariaLabel||containerId);
+  [-1,0,1].forEach(t=>{
+    const y=zeroY-(plotH/2)*t;
+    svg.appendChild(el('line',{x1:padL,y1:y,x2:W-padR,y2:y,class:t===0?'axisline':'gridline'}));
+    svg.appendChild(txt('text',{x:padL-8,y:y+3,'text-anchor':'end',class:'axislabel'},fmt(t*maxAbs,digits)));
+  });
+  const band=plotW/labels.length, barW=Math.max(1,Math.min(46, band*(every>1?0.8:0.55)));
+  values.forEach((v,i)=>{
+    const x=padL+i*band+(band-barW)/2;
+    const yVal=zeroY-(plotH/2)*(v/maxAbs);
+    const y=Math.min(zeroY,yVal);
+    const h=Math.max(1,Math.abs(zeroY-yVal));
+    const color=v>=0?(opts.colors?.[0]||S3):(opts.colors?.[1]||S2);
+    svg.appendChild(el('rect',{x:x,y:y,width:barW,height:h,rx:every>1?0:4,ry:every>1?0:4,fill:color,opacity:.9}));
+    const hit=el('rect',{x:padL+i*band,y:padT,width:band,height:plotH,fill:'transparent',class:'hitband',tabindex:every>1?'-1':'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, labels[i], [{label:opts.name||'Cung - cầu', value:fmt(v,digits)+' '+(opts.unit||''), color:color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    if(every===1) svg.appendChild(txt('text',{x:x+barW/2,y:v>=0?y-5:y+h+12,'text-anchor':'middle',class:'endlabel',fill:'var(--ink2)'},fmt(v,digits)));
+    if((i%every===0&&labels.length-1-i>=every/2)||i===labels.length-1) svg.appendChild(txt('text',{x:x+barW/2,y:H-14,'text-anchor':'middle',class:'catlabel'},labels[i]));
+    svg.appendChild(hit);
+  });
+  if(every>1){const i=values.length-1,v=values[i],x=padL+i*band+band/2,yVal=zeroY-(plotH/2)*(v/maxAbs);svg.appendChild(txt('text',{x:x-4,y:v>=0?yVal-6:yVal+14,'text-anchor':'end',class:'endlabel',fill:'var(--ink2)'},fmt(v,digits)));}
+  svg.appendChild(txt('text',{x:padL,y:H-4,class:'axislabel'},opts.unit||''));
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+function sparkline(id, values, color){
+  const host=document.getElementById(id);
+  if(!host) return;
+  if(window.ChartTypes&&ChartTypes.useChart()&&ChartTypes.spark(host,values,color))return;
+  const W=100,H=26,pad=3;
+  const maxV=Math.max.apply(null, values), minV=Math.min.apply(null, values);
+  const range=(maxV-minV)||1;
+  const step=(W-pad*2)/(values.length-1);
+  const pts=values.map((v,i)=>[pad+i*step, H-pad-(H-pad*2)*((v-minV)/range)]);
+  const d='M'+pts.map(p=>p[0]+','+p[1]).join(' L');
+  host.appendChild(el('path',{d:d,fill:'none',stroke:color,'stroke-width':1.6,'stroke-linecap':'round','stroke-linejoin':'round',opacity:0.55}));
+  const last=pts[pts.length-1];
+  host.appendChild(el('circle',{cx:last[0],cy:last[1],r:2.4,fill:color}));
+}
+
+function fillTable(id, headers, rows){
+  const t=document.getElementById(id);
+  if(!t) return;
+  const thead=el('thead' ); // not svg NS, use html
+  t.innerHTML='';
+  const theadHtml=document.createElement('thead');
+  const trh=document.createElement('tr');
+  headers.forEach(h=>{ const th=document.createElement('th'); th.textContent=h; trh.appendChild(th); });
+  theadHtml.appendChild(trh); t.appendChild(theadHtml);
+  const tbody=document.createElement('tbody');
+  rows.forEach(r=>{
+    const tr=document.createElement('tr');
+    r.forEach(c=>{ const td=document.createElement('td'); td.textContent=c; tr.appendChild(td); });
+    tbody.appendChild(tr);
+  });
+  t.appendChild(tbody);
+}
+
+function showMajorTab(key, btn){
+  document.querySelectorAll(".majorpane").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll(".majortabbtn").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll('.majorpane[data-tab="'+key+'"]').forEach(x=>x.classList.add("active"));
+  const activeBtn = btn || Array.from(document.querySelectorAll(".majortabbtn")).find(x => (x.getAttribute("onclick") || "").indexOf("'"+key+"'") >= 0);
+  if(activeBtn) activeBtn.classList.add("active");
+  if(location.hash !== "#"+key) history.replaceState(null, "", "#"+key);
+}
+const initialTab = (location.hash || "").replace("#", "");
+if(document.querySelector('.majorpane[data-tab="'+initialTab+'"]')) showMajorTab(initialTab);
+window.addEventListener("hashchange", () => {
+  const nextTab = (location.hash || "").replace("#", "");
+  if(document.querySelector('.majorpane[data-tab="'+nextTab+'"]')) showMajorTab(nextTab);
+});
+</script>
+</body>
+</html>

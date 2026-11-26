@@ -1760,7 +1760,7 @@
     "type": "none"
    },
    "where": {
-    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html, Xay-dung/index.html, Bao-hiem/index.html, Ban-le/index.html, Duoc/index.html, Sua/index.html, Bia/index.html, O-to-xe-may/index.html, Chan-nuoi/index.html",
+    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html, Xay-dung/index.html, Bao-hiem/index.html, Ban-le/index.html, Duoc/index.html, Sua/index.html, Bia/index.html, O-to-xe-may/index.html, Chan-nuoi/index.html, Hang-khong/index.html",
     "blocks": [
      "dau-khi-01",
      "dau-khi-03",
@@ -1813,6 +1813,10 @@
      "cn-01",
      "cn-05",
      "cn-90",
+     "hk-01",
+     "hk-05",
+     "hk-40",
+     "hk-90",
      "bl-08"
     ]
    }
@@ -6502,7 +6506,7 @@
   {
    "id": "livestock.public.weekly",
    "tier": "A",
-   "title": "Chăn nuôi: heo hơi toàn quốc và 3 vùng, ngô, khô đậu",
+   "title": "Chăn nuôi: heo hơi toàn quốc dài hạn (WiData, bình quân tháng)",
    "schedule": {
     "type": "policy",
     "note": "mỗi lượt refresh; heo hơi qua routine Wi; IMF/FRED cập nhật hằng tháng"
@@ -6516,8 +6520,7 @@
     "page": "Chan-nuoi/index.html",
     "file": "data/agri-public-data.js",
     "blocks": [
-     "cn-10",
-     "cn-20"
+     "cn-10"
     ]
    },
    "how": "python3 scripts/build_sector_public.py; heo hơi theo data/agri-wi-contract.json (hog_regions, commodity_agri). Trang Chăn nuôi (Chan-nuoi/) dựng từ cùng nguồn qua Chan-nuoi/app/livestock-config.js + pkg-dashboard.js.",
@@ -6526,7 +6529,7 @@
   {
    "id": "livestock.public.margin",
    "tier": "A",
-   "title": "Chăn nuôi: biên chăn nuôi heo ước, biên gộp và doanh thu quý DBC, BAF, HAG",
+   "title": "Chăn nuôi: biên gộp và doanh thu quý DBC, BAF, HAG",
    "schedule": {
     "type": "policy",
     "note": "mỗi lượt refresh; BCTC theo quý"
@@ -6539,7 +6542,6 @@
     "page": "Chan-nuoi/index.html",
     "file": "data/agri-public-data.js",
     "blocks": [
-     "cn-21",
      "cn-22",
      "cn-06"
     ]
@@ -6590,10 +6592,12 @@
    "where": {
     "page": "Chan-nuoi/index.html",
     "blocks": [
-     "cn-60"
+     "cn-60",
+     "cn-d1",
+     "cn-d2"
     ]
    },
-   "how": "Khi người dùng nhắn: cập nhật ô kế hoạch, kết quả trong Chan-nuoi/app/livestock-config.js (chLivePlan).",
+   "how": "Khi BAF, DBC, Masan (MML) công bố KQKD: thêm quan sát vào data/livestock/observations.json (chỉ tiêu, kỳ, phạm vi, ngày công bố, URL, trạng thái), chạy scripts/build_livestock_public.py; kế hoạch ở Chan-nuoi/app/livestock-config.js (chLivePlan).",
    "gates": [
     "Link BCTC hoặc bài dẫn"
    ]
@@ -6615,7 +6619,8 @@
    "where": {
     "page": "Chan-nuoi/index.html",
     "blocks": [
-     "cn-52"
+     "cn-52",
+     "cn-40"
     ]
    },
    "how": "Kiểm văn bản, sự kiện mới; thêm mốc vào liveTimeline trong Chan-nuoi/app/livestock-config.js.",
@@ -6647,6 +6652,155 @@
    "how": "Thêm mốc mới có ngày và link.",
    "gates": [
     "Mỗi dòng có ngày + link"
+   ]
+  },
+  {
+   "id": "livestock.hog.daily",
+   "tier": "A",
+   "title": "Chăn nuôi: giá heo hơi ba miền và theo tỉnh (Báo Hà Tĩnh), độ rộng theo tỉnh",
+   "schedule": {
+    "type": "daily",
+    "at": "07:30"
+   },
+   "publication": "Nguồn cập nhật hằng ngày, giữ 30 ngày gần nhất",
+   "source": {
+    "name": "Báo Hà Tĩnh – Giá lợn hôm nay",
+    "url": "https://baohatinh.vn/cong-cu/gia-lon-hom-nay"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/livestock-public-data.js",
+    "blocks": [
+     "cn-h1",
+     "cn-h6",
+     "cn-h7",
+     "cn-h8"
+    ]
+   },
+   "how": "refresh-data.yml chạy python scripts/fetch_hog_prices.py; python scripts/fetch_pinksheet.py; python scripts/build_livestock_public.py; kho lưu nối tiếp data/raw/public/hog-prices.json (revisions, checks).",
+   "job": "python scripts/fetch_hog_prices.py; python scripts/fetch_pinksheet.py; python scripts/build_livestock_public.py",
+   "gates": [
+    "Nguồn lỗi → giữ số cũ, ghi lỗi vào checks",
+    "Không backfill từ nguồn khác"
+   ]
+  },
+  {
+   "id": "livestock.pinksheet.monthly",
+   "tier": "A",
+   "title": "Chăn nuôi: ngô, khô đậu tương World Bank Pink Sheet",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     3,
+     6
+    ]
+   },
+   "publication": "World Bank cập nhật Pink Sheet đầu mỗi tháng (ngày làm việc thứ 2–3)",
+   "source": {
+    "name": "World Bank Pink Sheet",
+    "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/world-bank-commodities-price-data-the-pink-sheet"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/livestock-public-data.js",
+    "blocks": [
+     "cn-h2",
+     "cn-h2b"
+    ]
+   },
+   "how": "refresh-data.yml chạy python scripts/fetch_hog_prices.py; python scripts/fetch_pinksheet.py; python scripts/build_livestock_public.py.",
+   "job": "python scripts/fetch_hog_prices.py; python scripts/fetch_pinksheet.py; python scripts/build_livestock_public.py"
+  },
+  {
+   "id": "livestock.nso.supply",
+   "tier": "C",
+   "title": "Chăn nuôi: tổng đàn heo % so cùng kỳ (tháng), sản lượng heo, gia cầm xuất chuồng (quý), ASF",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     6,
+     7
+    ]
+   },
+   "publication": "NSO công bố báo cáo KT-XH ngày 6 hằng tháng; số quý trong file .xlsx báo cáo quý",
+   "source": {
+    "name": "Cục Thống kê (NSO)",
+    "url": "https://www.nso.gov.vn/category/nong-lam-nghiep-va-thuy-san/"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/livestock/observations.json",
+    "blocks": [
+     "cn-h3",
+     "cn-h4",
+     "cn-21h",
+     "cn-22h",
+     "cn-24"
+    ]
+   },
+   "how": "Đọc báo cáo tháng/quý mới; thêm dòng vào data/livestock/observations.json (bản sửa đổi kỳ trước: dòng mới cùng chỉ tiêu × kỳ, ngày công bố sau → bản cũ tự vào revisions); chạy scripts/build_livestock_public.py.",
+   "gates": [
+    "Câu trích + URL",
+    "Không tự trừ hai mốc lũy kế"
+   ]
+  },
+  {
+   "id": "livestock.moit.import",
+   "tier": "C",
+   "title": "Chăn nuôi: nhập khẩu thịt heo HS 0203 (lượng, trị giá, xuất xứ)",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     1,
+     2
+    ]
+   },
+   "publication": "Bộ Công Thương phát hành Bản tin thị trường NLTS cuối mỗi tháng (PDF)",
+   "source": {
+    "name": "Bộ Công Thương – Bản tin thị trường nông, lâm, thủy sản",
+    "url": "https://moit.gov.vn/tin-tuc/ban-tin-thi-truong-nong-lam-thuy-san"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/livestock/observations.json",
+    "blocks": [
+     "cn-30",
+     "cn-31",
+     "cn-32"
+    ]
+   },
+   "how": "Mở PDF bản tin mới, kiểm tiêu đề kỳ, đơn vị, footnote; thêm dòng imp_hs0203_t/usd/share vào evidence.json; chạy build_livestock_public.py.",
+   "gates": [
+    "Kỳ thống kê và ngày phát hành là hai trường riêng",
+    "Đối soát lượng × đơn giá"
+   ]
+  },
+  {
+   "id": "livestock.sim",
+   "tier": "C",
+   "status": "manual",
+   "title": "Chăn nuôi: mô phỏng kinh tế một con heo (preset VCBS 11/05/2023)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Preset lịch sử; số hiện tại do người dùng nhập",
+   "source": {
+    "name": "VCBS – Báo cáo ngành chăn nuôi heo 11/05/2023",
+    "url": "#cn-s1"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "blocks": [
+     "cn-s1",
+     "cn-s2"
+    ]
+   },
+   "how": "Thêm preset trong Chan-nuoi/app/hog-dashboard.js (PRESETS) khi có giá cám, giá giống cùng kỳ có nguồn.",
+   "gates": [
+    "Ghi nguồn và cách tách số"
    ]
   },
   {
@@ -8468,6 +8622,256 @@
     ]
    },
    "how": "Finsuccess tổng hợp từ nguồn gốc ghi dưới từng chart; chỉ sửa khi người dùng yêu cầu."
+  },
+  {
+   "id": "aviation.public.monthly",
+   "tier": "A",
+   "title": "Hàng không: khách, HK.km, hàng hóa đường hàng không; khách quốc tế đến theo thị trường (NSO)",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     3,
+     15
+    ]
+   },
+   "publication": "NSO công bố biểu số liệu KT-XH ngày 3–6 hằng tháng",
+   "source": {
+    "name": "Cục Thống kê (NSO)",
+    "url": "https://www.nso.gov.vn/"
+   },
+   "where": {
+    "page": "Hang-khong/index.html",
+    "file": "data/aviation-data.js",
+    "blocks": [
+     "hk-11",
+     "hk-13",
+     "hk-14",
+     "hk-21",
+     "hk-51"
+    ]
+   },
+   "how": "python3 scripts/fetch_nso.py --recent 70 rồi python3 scripts/build_aviation_data.py (chạy trong refresh-data.yml).",
+   "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "aviation.public.daily",
+   "tier": "A",
+   "title": "Hàng không: jet fuel EIA (US Gulf Coast) và tỷ giá trung tâm NHNN",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh; EIA cập nhật giá ngày với độ trễ vài ngày"
+   },
+   "publication": "EIA giá ngày; NHNN tỷ giá trung tâm mỗi ngày làm việc",
+   "source": {
+    "name": "EIA, Ngân hàng Nhà nước",
+    "url": "https://www.eia.gov/dnav/pet/hist/EER_EPJK_PF4_RGC_DPGD.htm"
+   },
+   "where": {
+    "page": "Hang-khong/index.html",
+    "file": "data/aviation-data.js",
+    "blocks": [
+     "hk-30"
+    ]
+   },
+   "how": "python3 scripts/fetch_sbv.py rồi python3 scripts/build_aviation_data.py (tải EIA xls).",
+   "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "aviation.financials",
+   "tier": "A",
+   "title": "Hàng không: BCTC hợp nhất quý HVN, VJC, ACV, SCS, NCT, SGN, AST, SAS",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh; số mới theo mùa BCTC quý"
+   },
+   "source": {
+    "name": "VNDirect finfo",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Hang-khong/index.html",
+    "file": "data/aviation-financials.js",
+    "blocks": [
+     "hk-33",
+     "hk-44",
+     "hk-53",
+     "hk-54",
+     "hk-60",
+     "hk-61"
+    ]
+   },
+   "how": "python3 scripts/fetch_aviation_financials.py && python3 scripts/build_aviation_financials.py",
+   "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "aviation.caa",
+   "tier": "C",
+   "title": "Hàng không: số Cục Hàng không (khách, hàng qua cảng, khách vận chuyển, lịch bay mùa, đội tàu, đúng giờ)",
+   "schedule": {
+    "type": "monthly",
+    "at": "09:00",
+    "days": [
+     28
+    ]
+   },
+   "publication": "Cục HK đăng số lũy kế cuối mỗi tháng (thường ngày 25–30, trước cuối kỳ); lịch bay mùa cuối tháng 3 và 10; báo cáo đúng giờ khoảng ngày 10 tháng sau",
+   "source": {
+    "name": "Cục Hàng không Việt Nam",
+    "url": "https://caa.gov.vn/hoat-dong-nganh.htm"
+   },
+   "where": {
+    "page": "Hang-khong/index.html",
+    "file": "data/aviation/observations.json",
+    "blocks": [
+     "hk-00",
+     "hk-10",
+     "hk-12",
+     "hk-15",
+     "hk-20",
+     "hk-24",
+     "hk-26",
+     "hk-50"
+    ]
+   },
+   "how": "Đọc bài mới trên caa.gov.vn (hoạt động ngành, báo cáo thống kê); thêm dòng vào data/aviation/observations.json (giữ dòng cũ, period_label theo kỳ), rồi python3 scripts/build_aviation_data.py.",
+   "gates": [
+    "Mỗi số có source_url, published_at, quote",
+    "Không trừ lũy kế để ra số tháng nếu không cùng cơ sở"
+   ]
+  },
+  {
+   "id": "aviation.documents",
+   "tier": "C",
+   "title": "Hàng không: số tài liệu (SHS, ACV, SCSC, Long Thành, IATA, kế hoạch doanh nghiệp, chủ đề nóng)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "IATA theo tuần; ACV, SCSC theo quý; Long Thành theo họp Chính phủ, Bộ Xây dựng",
+   "source": {
+    "name": "IATA, ACV, SCSC, Báo Chính phủ, SHS",
+    "url": "https://www.iata.org/en/publications/economics/fuel-monitor/"
+   },
+   "where": {
+    "page": "Hang-khong/index.html",
+    "file": "data/aviation/observations.json",
+    "blocks": [
+     "hk-22",
+     "hk-23",
+     "hk-25",
+     "hk-31",
+     "hk-32",
+     "hk-41",
+     "hk-42",
+     "hk-43",
+     "hk-52",
+     "hk-62",
+     "hk-t1",
+     "hk-t2",
+     "hk-t3"
+    ]
+   },
+   "how": "Cập nhật data/aviation/observations.json (extra.iata, extra.longthanh_progress, extra.airport_milestones, acv_*, scs_tonnage) và ô hkOps, chủ đề nóng trong Hang-khong/app/aviation-config.js, Hang-khong/index.html; rồi python3 scripts/build_aviation_data.py.",
+   "gates": [
+    "Link nguồn gốc hoặc bài dẫn",
+    "Số dự báo ghi tên bên dự báo"
+   ]
+  },
+  {
+   "id": "chloralkali.public.trade",
+   "tier": "A",
+   "title": "Nhập khẩu xút HS 281511, 281512 của Việt Nam theo tháng, năm, đối tác; số liệu đối tác",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     15
+    ]
+   },
+   "publication": "UN Comtrade: Việt Nam báo cáo chậm (đến 2023 tại 11/2026); số liệu đối tác cập nhật theo năm",
+   "source": {
+    "name": "UN Comtrade (API công khai)",
+    "url": "https://comtradeplus.un.org/"
+   },
+   "where": {
+    "page": "Xut-clo/index.html",
+    "file": "data/chloralkali-data.js",
+    "blocks": [
+     "xc-00",
+     "xc-11",
+     "xc-12",
+     "xc-13",
+     "xc-14",
+     "xc-90"
+    ]
+   },
+   "how": "python3 scripts/fetch_chloralkali_trade.py && python3 scripts/fetch_chloralkali_financials.py && python3 scripts/build_chloralkali.py (chạy tay; chưa gắn vào refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "chạy tay"
+  },
+  {
+   "id": "chloralkali.financials",
+   "tier": "A",
+   "title": "BCTC hợp nhất theo quý CSV, HVT, DGC",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     1,
+     20
+    ]
+   },
+   "publication": "BCTC quý: hạn 30 ngày (riêng), 45 ngày (hợp nhất) sau quý",
+   "source": {
+    "name": "VNDirect finfo",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Xut-clo/index.html",
+    "file": "data/chloralkali-data.js",
+    "blocks": [
+     "xc-04"
+    ],
+    "note": "Tab Tài chính ngành (app/chloralkali-finance.js) dựng thêm các thẻ xc-fin-* từ cùng dữ liệu"
+   },
+   "how": "python3 scripts/fetch_chloralkali_trade.py && python3 scripts/fetch_chloralkali_financials.py && python3 scripts/build_chloralkali.py (chạy tay; chưa gắn vào refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay",
+    "Giá vốn = 0 khi có doanh thu: để trống biên gộp (checks.cogs_zero)"
+   ],
+   "job": "chạy tay"
+  },
+  {
+   "id": "chloralkali.static",
+   "tier": "static",
+   "title": "Xút – Clo: chuỗi giá trị, công suất nhà máy, sản lượng HVT, tiến độ và sản phẩm Nghi Sơn, biểu giá điện, hạn ngạch muối (data/chloralkali/*.json nhập tay có nguồn từng dòng)",
+   "schedule": {
+    "type": "none"
+   },
+   "where": {
+    "page": "Xut-clo/index.html",
+    "blocks": [
+     "xc-01",
+     "xc-21",
+     "xc-22",
+     "xc-31",
+     "xc-32",
+     "xc-33",
+     "xc-34",
+     "xc-41",
+     "xc-42",
+     "xc-43",
+     "xc-44",
+     "xc-45"
+    ]
+   },
+   "note": "Cập nhật khi doanh nghiệp/Bộ Công Thương công bố: sửa data/chloralkali/{plants,inputs,fpts}.json; tin Chủ đề nóng ở data/chloralkali/news.json; rồi chạy scripts/build_chloralkali.py"
   }
  ]
 }

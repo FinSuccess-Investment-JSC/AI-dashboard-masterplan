@@ -1,0 +1,2314 @@
+{
+ "generated": "2026-11-26",
+ "plants": [
+  {
+   "id": "vedan",
+   "company": "Công ty CP Hữu hạn Vedan Việt Nam",
+   "ticker": null,
+   "plant": "Dây chuyền xút–clo trong tổ hợp Vedan Phước Thái",
+   "location": {
+    "province": "Đồng Nai",
+    "address": "Xã Phước Thái (theo danh bạ doanh nghiệp, chưa mở trang gốc)",
+    "lat": 10.68,
+    "lon": 107.03,
+    "precision": "xấp xỉ ±5 km, tâm khu vực Phước Thái; chưa xác minh vị trí xưởng xút"
+   },
+   "products": "Xút (nồng độ chưa xác minh), HCl",
+   "capacity_naoh_tpy": 80000,
+   "capacity_basis": "quy 100% (theo FPTS)",
+   "capacity_note": "FPTS DGC 10/05/2024 và FPTS HVT 2025 đều ghi 80 nghìn tấn; QĐ 676/QĐ-BCT (2017) có dự án mở rộng Vedan lên '100.000 NaOH; 98.000 HCl' giai đoạn 2016–2018 – chưa xác minh đã hoàn thành",
+   "status": "đang vận hành (theo FPTS)",
+   "as_of": "2025-07",
+   "classification": "captive (chủ yếu tiêu thụ nội bộ)",
+   "classification_source": "FPTS HVT 2025: 'Vedan và Giấy Bãi Bằng chủ yếu sản xuất để tiêu thụ nội bộ'",
+   "sources": [
+    {
+     "title": "FPTS – Báo cáo DGC (trang 21) – theo brief, không mở lại trong phiên này",
+     "url": null,
+     "published": "2024-05-10"
+    },
+    {
+     "title": "FPTS – Báo cáo định giá lần đầu HVT (Tạ Duy Anh)",
+     "url": "https://finance.vietstock.vn/downloadedoc/16435",
+     "published": "2025-07 (số liệu giao dịch đến 30/06/2025; ngày phát hành chính xác không thấy trong phần đã đọc)"
+    },
+    {
+     "title": "Quyết định 676/QĐ-BCT phê duyệt Quy hoạch phát triển sản xuất các sản phẩm hóa chất cơ bản đến 2025, tầm nhìn 2035",
+     "url": "https://caselaw.vn/van-ban-phap-luat/318057-quyet-dinh-676-qd-bct-nam-2017-phe-duyet-quy-hoach-phat-trien-san-xuat-cac-san-pham-hoa-chat-co-ban-viet-nam-den-nam-2025-tam-nhin-den-nam-2035-do-bo-truong-bo-cong-thuong-ban-hanh",
+     "published": "2017-03-06"
+    }
+   ]
+  },
+  {
+   "id": "hvt",
+   "company": "CTCP Hóa chất Việt Trì (Vitrichem)",
+   "ticker": "HVT (HNX)",
+   "plant": "Nhà máy Hóa chất Việt Trì (2 nhà máy xút–clo, 1 nhà máy PAC, 1 nhà máy chất tẩy rửa theo FPTS)",
+   "location": {
+    "province": "Phú Thọ",
+    "address": "Phố Sông Thao, phường Thanh Miếu, tỉnh Phú Thọ (BCTN 2025)",
+    "lat": 21.3,
+    "lon": 105.43,
+    "precision": "xấp xỉ ±3 km, khu công nghiệp Việt Trì cũ"
+   },
+   "products": "Xút lỏng NaOH 20–50%; HCl 10–37%; Javen NaClO 8–12%; Clo lỏng; PAC bột/dịch; Vi-CHLORiNE Ca(ClO)2",
+   "capacity_naoh_tpy": 70000,
+   "capacity_basis": "tấn xút/năm (FPTS; sản lượng HVT công bố theo 'Xút 100%')",
+   "capacity_note": "Lịch sử: 40.000 t/năm sau dự án Membrane đóng điện 30/12/2019 (Tạp chí Công Thương 09/12/2020); FPTS ghi 45.000 (2019) → 70.000 (2024), kế hoạch 75.000 năm 2025. BCTN 2025 không nêu con số công suất; đầu tư XDCB 2025 chỉ 13,2 tỷ đồng (KH 150,3 tỷ).",
+   "status": "đang vận hành; 100% công nghệ màng trao đổi ion",
+   "as_of": "2025-12-31",
+   "classification": "merchant",
+   "classification_source": "FPTS HVT 2025: HVT, CSV, Đông Á 'vừa sản xuất vừa bán ra thị trường'; ~85% xút được bán, ~15% giữ lại làm Javen/Vi-Chlorine",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    },
+    {
+     "title": "FPTS – Báo cáo định giá lần đầu HVT (Tạ Duy Anh)",
+     "url": "https://finance.vietstock.vn/downloadedoc/16435",
+     "published": "2025-07 (số liệu giao dịch đến 30/06/2025; ngày phát hành chính xác không thấy trong phần đã đọc)"
+    },
+    {
+     "title": "Tạp chí Công Thương – Vitrichem thống nhất hóa 100% dây chuyền sản xuất xút bằng công nghệ Membrane",
+     "url": "https://tapchicongthuong.vn/vitrichem-thong-nhat-hoa-100--day-chuyen-san-xuat-xut-bang-cong-nghe-membrane-77134.htm",
+     "published": "2020-12-09"
+    },
+    {
+     "title": "Tạp chí Công Thương – VITRICHEM: Nâng cao năng lực cạnh tranh nhờ tiết kiệm năng lượng và đổi mới công nghệ",
+     "url": "https://tapchicongthuong.vn/vitrichem--nang-cao-nang-luc-canh-tranh-nho-tiet-kiem-nang-luong-va-doi-moi-cong-nghe-88722.htm",
+     "published": "2022-05-17"
+    }
+   ]
+  },
+  {
+   "id": "csv_bienhoa",
+   "company": "CTCP Hóa chất Cơ bản Miền Nam",
+   "ticker": "CSV (HOSE)",
+   "plant": "Nhà máy Hóa chất Biên Hòa (VICACO) – đơn vị phụ thuộc của CSV, không phải công ty con",
+   "location": {
+    "province": "Đồng Nai",
+    "address": "Đường 5, KCN Biên Hòa 1, phường Trấn Biên",
+    "lat": 10.93,
+    "lon": 106.85,
+    "precision": "xấp xỉ ±2 km, KCN Biên Hòa 1"
+   },
+   "products": "Xút lỏng 20–50%; HCl 20–35%; clo lỏng 99,99%; PAC lỏng 10–17%, PAC bột 30–31%; Javen 40–120 g/l clo hữu hiệu (công nghệ màng trao đổi ion)",
+   "capacity_naoh_tpy": 50000,
+   "capacity_basis": "tấn xút/năm (không ghi quy đổi)",
+   "capacity_note": "Tạp chí Công Thương 18/12/2024 ghi 'khoảng 40.000 tấn xút/năm'; bài 21/05/2025 ghi 50.000 tấn xút/năm, chạy 90–100% công suất; FPTS DGC 2024 ghi 40 nghìn tấn, FPTS HVT 2025 ghi 50. BCTN 2025 không nêu công suất.",
+   "status": "đang vận hành nhưng trong lộ trình di dời: cưỡng chế tháo dỡ tài sản 3 thửa đất KCN Biên Hòa 1 từ 15/07–31/12/2026; Tân Bình 2 (H2SO4, phèn) dừng toàn bộ sau 15/08/2026. Chưa có thông tin dừng dây chuyền xút.",
+   "as_of": "2026-08-04",
+   "classification": "merchant",
+   "classification_source": "FPTS HVT 2025; CSV BCTN 2025 'sản phẩm cung ứng chủ yếu cho thị trường phía Nam'",
+   "sources": [
+    {
+     "title": "CSV – Báo cáo thường niên 2025 (VN-EN, đã ký số)",
+     "url": "https://static2.vietstock.vn/vietstock/2026/3/13/20260313___csv___bao_cao_thuong_nien_nam_2025__vn_en__dakyso.pdf",
+     "published": "2026-03-13"
+    },
+    {
+     "title": "Tạp chí Công Thương – Thiếu nguồn cung xút kéo dài, CSV hưởng lợi lớn",
+     "url": "https://tapchicongthuong.vn/thieu-nguon-cung-xut-keo-dai--hoa-chat-co-ban-mien-nam--csv--huong-loi-lon-131232.htm",
+     "published": "2024-12-18"
+    },
+    {
+     "title": "Tạp chí Công Thương – Giá Xút thiết lập nền giá mới, CSV hưởng lợi lớn",
+     "url": "https://tapchicongthuong.vn/gia-xut-thiet-lap-nen-gia-moi--hoa-chat-co-ban-mien-nam--csv--huong-loi-lon-140693.htm",
+     "published": "2025-05-21"
+    },
+    {
+     "title": "CafeF – Sau cưỡng chế, công ty hóa chất 2.400 tỷ trên sàn phải dừng nhà máy sau ngày 15/8",
+     "url": "https://cafef.vn/sau-cuong-che-cong-ty-hoa-chat-2400-ty-tren-san-phai-dung-nha-may-sau-ngay-15-8-188260804081236249.chn",
+     "published": "2026-08-04"
+    },
+    {
+     "title": "DSC – Báo cáo cập nhật CSV Q2/2026",
+     "url": "https://extgw.dsc.com.vn/eback/uploads/BCCN_CSV_Q2_2026_acbfc95985.pdf",
+     "published": "2026-07-29"
+    },
+    {
+     "title": "FPTS – Báo cáo định giá lần đầu HVT (Tạ Duy Anh)",
+     "url": "https://finance.vietstock.vn/downloadedoc/16435",
+     "published": "2025-07 (số liệu giao dịch đến 30/06/2025; ngày phát hành chính xác không thấy trong phần đã đọc)"
+    }
+   ]
+  },
+  {
+   "id": "csv_nhontrach",
+   "company": "CTCP Hóa chất Cơ bản Miền Nam",
+   "ticker": "CSV (HOSE)",
+   "plant": "Nhà máy Hóa chất Nhơn Trạch (dự án di dời 3 nhà máy từ KCN Biên Hòa 1)",
+   "location": {
+    "province": "Đồng Nai",
+    "address": "Phân KCN Nhơn Trạch 6C, KCN Nhơn Trạch 6, xã Phước An",
+    "lat": 10.66,
+    "lon": 106.93,
+    "precision": "xấp xỉ ±5 km"
+   },
+   "products": "Xút–clo và dẫn xuất, H2SO4, H3PO4…; tổng 307.900 tấn sản phẩm/năm (quy đổi 100%)",
+   "capacity_naoh_tpy": 100000,
+   "capacity_basis": "quy 100% (CafeF 04/08/2026; Tạp chí Công Thương 24/09/2025)",
+   "capacity_note": "Các nguồn lệch nhau: TCCT 21/05/2025: 3 giai đoạn di dời 20.000 + 15.000 + 15.000 tấn NaOH 100%/năm (=50.000); CafeF 04/08/2026 & TCCT 24/09/2025: mục tiêu 100.000 tấn NaOH 100%/năm; DSC 29/07/2026: 120.000 tấn/năm. Tổng mức đầu tư 1.844 tỷ đồng; khởi công 24/09/2025; hoàn thành toàn bộ 12/2031, không phân kỳ đầu tư (BCTN 2025).",
+   "status": "đầu tư/xây dựng; BCTN 2025 ghi 'dự kiến nhà máy bắt đầu vận hành từ năm 2026'; giá trị đầu tư thực hiện 2025: 70.643 triệu đồng",
+   "as_of": "2026-08-04",
+   "classification": "merchant (dự kiến)",
+   "classification_source": "suy từ mô hình kinh doanh CSV",
+   "sources": [
+    {
+     "title": "CSV – Báo cáo thường niên 2025 (VN-EN, đã ký số)",
+     "url": "https://static2.vietstock.vn/vietstock/2026/3/13/20260313___csv___bao_cao_thuong_nien_nam_2025__vn_en__dakyso.pdf",
+     "published": "2026-03-13"
+    },
+    {
+     "title": "Tạp chí Công Thương – Giá Xút thiết lập nền giá mới, CSV hưởng lợi lớn",
+     "url": "https://tapchicongthuong.vn/gia-xut-thiet-lap-nen-gia-moi--hoa-chat-co-ban-mien-nam--csv--huong-loi-lon-140693.htm",
+     "published": "2025-05-21"
+    },
+    {
+     "title": "Tạp chí Công Thương – CSV: Khẳng định vị thế với Dự án Nhà máy Hóa chất Nhơn Trạch",
+     "url": "https://tapchicongthuong.vn/hoa-chat-co-ban-mien-nam--khang-dinh-vi-the-voi-du-an-nha-may-hoa-chat-nhon-trach-239793.htm",
+     "published": "2025-09-24"
+    },
+    {
+     "title": "CafeF – Sau cưỡng chế, công ty hóa chất 2.400 tỷ trên sàn phải dừng nhà máy sau ngày 15/8",
+     "url": "https://cafef.vn/sau-cuong-che-cong-ty-hoa-chat-2400-ty-tren-san-phai-dung-nha-may-sau-ngay-15-8-188260804081236249.chn",
+     "published": "2026-08-04"
+    },
+    {
+     "title": "DSC – Báo cáo cập nhật CSV Q2/2026",
+     "url": "https://extgw.dsc.com.vn/eback/uploads/BCCN_CSV_Q2_2026_acbfc95985.pdf",
+     "published": "2026-07-29"
+    }
+   ]
+  },
+  {
+   "id": "donga",
+   "company": "Công ty CP Đông Á – Hóa chất Đông Á (Dongachem)",
+   "ticker": null,
+   "plant": "Nhà máy Hóa chất Đông Á Phú Thọ",
+   "location": {
+    "province": "Phú Thọ",
+    "address": "Khu 9, TT. Phong Châu, H. Phù Ninh (trụ sở theo Yellow Pages)",
+    "lat": 21.42,
+    "lon": 105.31,
+    "precision": "xấp xỉ ±3 km, theo địa chỉ trụ sở"
+   },
+   "products": "Xút NaOH 45% và 32%; HCl 30%, 32%; Clo lỏng; Javen 7%, 9%; PAC lỏng, PAC bột",
+   "capacity_naoh_tpy": 20000,
+   "capacity_basis": "tấn xút quy đặc/năm (sau giai đoạn 2 màng trao đổi ion năm 2019)",
+   "capacity_note": "Hồ sơ tự công bố (cập nhật 27/08/2021): dự kiến 40.000 tấn quy đặc/năm vào 2023 – chưa xác minh. FPTS DGC 2024 ghi 18 nghìn tấn; biểu đồ FPTS HVT 2025 ghi Đông Á 30 nghìn tấn.",
+   "status": "đang vận hành (theo FPTS)",
+   "as_of": "2025-07",
+   "classification": "merchant",
+   "classification_source": "FPTS HVT 2025",
+   "sources": [
+    {
+     "title": "Yellow Pages – Hóa Chất Đông Á – Công ty CP Đông Á (hồ sơ tự công bố, cập nhật 27/08/2021)",
+     "url": "https://yellowpages.vn/lgs/1187827728/hoa-chat-dong-a-cong-ty-cp-dong-a.html",
+     "published": "2021-08-27"
+    },
+    {
+     "title": "FPTS – Báo cáo DGC (trang 21) – theo brief, không mở lại trong phiên này",
+     "url": null,
+     "published": "2024-05-10"
+    },
+    {
+     "title": "FPTS – Báo cáo định giá lần đầu HVT (Tạ Duy Anh)",
+     "url": "https://finance.vietstock.vn/downloadedoc/16435",
+     "published": "2025-07 (số liệu giao dịch đến 30/06/2025; ngày phát hành chính xác không thấy trong phần đã đọc)"
+    }
+   ]
+  },
+  {
+   "id": "baibang",
+   "company": "Tổng Công ty Giấy Việt Nam – Nhà máy Giấy Bãi Bằng",
+   "ticker": null,
+   "plant": "Dây chuyền xút–clo nội bộ Nhà máy Giấy Bãi Bằng",
+   "location": {
+    "province": "Phú Thọ",
+    "address": "Phù Ninh",
+    "lat": 21.43,
+    "lon": 105.3,
+    "precision": "xấp xỉ ±3 km; chưa mở nguồn xác định vị trí xưởng"
+   },
+   "products": "Xút (phục vụ sản xuất bột giấy)",
+   "capacity_naoh_tpy": 10000,
+   "capacity_basis": "quy 100% (FPTS)",
+   "capacity_note": "QĐ 676/QĐ-BCT (2017) có dự án chuyển đổi xút sang màng trao đổi ion ở Phù Ninh, Phú Thọ, nâng 6.000 → 9.000 t/năm (2016–2017), không nêu tên công ty – có thể là Bãi Bằng hoặc Đông Á, chưa xác minh.",
+   "status": "đang vận hành (theo FPTS)",
+   "as_of": "2025-07",
+   "classification": "captive",
+   "classification_source": "FPTS HVT 2025",
+   "sources": [
+    {
+     "title": "FPTS – Báo cáo DGC (trang 21) – theo brief, không mở lại trong phiên này",
+     "url": null,
+     "published": "2024-05-10"
+    },
+    {
+     "title": "FPTS – Báo cáo định giá lần đầu HVT (Tạ Duy Anh)",
+     "url": "https://finance.vietstock.vn/downloadedoc/16435",
+     "published": "2025-07 (số liệu giao dịch đến 30/06/2025; ngày phát hành chính xác không thấy trong phần đã đọc)"
+    },
+    {
+     "title": "Quyết định 676/QĐ-BCT phê duyệt Quy hoạch phát triển sản xuất các sản phẩm hóa chất cơ bản đến 2025, tầm nhìn 2035",
+     "url": "https://caselaw.vn/van-ban-phap-luat/318057-quyet-dinh-676-qd-bct-nam-2017-phe-duyet-quy-hoach-phat-trien-san-xuat-cac-san-pham-hoa-chat-co-ban-viet-nam-den-nam-2025-tam-nhin-den-nam-2035-do-bo-truong-bo-cong-thuong-ban-hanh",
+     "published": "2017-03-06"
+    }
+   ]
+  },
+  {
+   "id": "dgc_nghison",
+   "company": "CTCP Tập đoàn Hóa chất Đức Giang – qua công ty con 100% (CAV, Hóa chất Đức Giang Nghi Sơn)",
+   "ticker": "DGC (HOSE)",
+   "plant": "Dự án số 1 – Tổ hợp Hóa chất Đức Giang Nghi Sơn (giai đoạn 1)",
+   "location": {
+    "province": "Thanh Hóa",
+    "address": "KCN Đồng Vàng, phân khu CN số 15 – KKT Nghi Sơn, xã Trường Lâm (theo điều chỉnh 16/07/2026)",
+    "lat": 19.38,
+    "lon": 105.7,
+    "precision": "xấp xỉ ±10 km"
+   },
+   "products": "NaOH, HCl 31%, PAC, Javen, Ca(OCl)2, Clo lỏng, Chloramin B, CaCl2, H3PO3/H3PO4/PCl3/PCl5 – xem nghison_products",
+   "capacity_naoh_tpy": 50000,
+   "capacity_basis": "NaOH 100% (Yuanta 10/11/2026, bảng 16/07/2026 và 15/10/2026)",
+   "capacity_note": "Một số bài 2025–2026 (TCCT 18/02/2025, 06/03/2025; IIR 04/02/2026) ghi xút 80.000 t/năm – không nêu quy đổi; FPTS 2024 và TCCT 24/10/2024 ghi 50.000 t NaOH. Dùng 50.000 (100%) theo tài liệu mới nhất.",
+   "status": "lắp đặt thiết bị/chạy thử; dây chuyền xút và PAC dự kiến vận hành trong Q4/2026, toàn dự án Q1/2027. Đến 26/11/2026 chưa tìm thấy tin xác nhận mẻ xút đầu tiên/chạy thử.",
+   "as_of": "2026-11-12",
+   "classification": "merchant (dự kiến)",
+   "classification_source": "PVChem ký bao tiêu 30% sản lượng giai đoạn 1 + cam kết thêm 20% (Người Quan Sát 27/04/2026)",
+   "sources": [
+    {
+     "title": "Yuanta Việt Nam – DGC: Lợi nhuận hồi phục, rủi ro còn đó (Báo cáo nhanh KQKD Q3/2026)",
+     "url": "https://static1.vietstock.vn/edocs/23041/DGC_3Q26_results_VN.pdf",
+     "published": "2026-11-10"
+    },
+    {
+     "title": "Người Quan Sát – Hóa chất Đức Giang (DGC) bất ngờ điều chỉnh dự án 2.400 tỷ đồng tại Nghi Sơn",
+     "url": "https://nguoiquansat.vn/hoa-chat-duc-giang-dgc-bat-ngo-dieu-chinh-du-an-2-400-ty-dong-tai-nghi-son-322162.html",
+     "published": "2026-10-15"
+    },
+    {
+     "title": "Báo Pháp Luật VN – DGC sụt giảm lợi nhuận, chi phí nguyên liệu bào mòn đà tăng trưởng",
+     "url": "https://doanhnhan.baophapluat.vn/hoa-chat-duc-giang-dgc-sut-giam-loi-nhuan-chi-phi-nguyen-lieu-bao-mon-da-tang-truong.md",
+     "published": "2026-11-12"
+    },
+    {
+     "title": "Người Quan Sát – DGC đại dự án 12.000 tỷ tại Thanh Hóa sắp vận hành, đã chốt đầu ra 50% công suất",
+     "url": "https://nguoiquansat.vn/hoa-chat-duc-giang-dgc-dai-du-an-12-000-ty-tai-thanh-hoa-sap-van-hanh-da-chot-dau-ra-50-cong-suat-288539.html",
+     "published": "2026-04-27"
+    }
+   ]
+  },
+  {
+   "id": "hc_baolam",
+   "company": "Công ty Cổ phần HC Bảo Lâm",
+   "ticker": null,
+   "plant": "Nhà máy sản xuất xút Bảo Lâm",
+   "location": {
+    "province": "Lâm Đồng",
+    "address": "Xã Bảo Lâm 1 (trước là TT Lộc Thắng, huyện Bảo Lâm)",
+    "lat": 11.63,
+    "lon": 107.83,
+    "precision": "xấp xỉ ±5 km"
+   },
+   "products": "GĐ1: clo lỏng, Javen, HCl, PAC; GĐ2: HCl 50.000 t, Javen 17.600 t, PAC bột 30.000 t, PAC lỏng 20.000 t, clo lỏng 36.150 t, H2SO4 ~1.100 t/năm",
+   "capacity_naoh_tpy": 20000,
+   "capacity_basis": "tấn NaOH/năm (GĐ1); GĐ2 nâng lên 45.000 tấn/năm (quy 100%)",
+   "capacity_note": "Tổng vốn 629 tỷ đồng; GĐ2 thực hiện Q1/2026–Q4/2029. Ngày bắt đầu vận hành GĐ1 không nêu; theo kết quả tìm kiếm (chưa mở trang), tai nạn nổ bồn HCl ngày 09/11/2025 khi nhà máy đang chuẩn bị đưa vào hoạt động.",
+   "status": "GĐ1 'đã hoàn thành và đưa vào hoạt động' (bài 13/07/2026); GĐ2 đầu tư",
+   "as_of": "2026-07-13",
+   "classification": "chưa rõ",
+   "classification_source": "bài báo chỉ nói phục vụ xử lý nước và ngành khác, trong nước và xuất khẩu",
+   "sources": [
+    {
+     "title": "Báo Pháp Luật VN – Lâm Đồng điều chỉnh dự án nhà máy sản xuất xút Bảo Lâm nâng công suất lên 45.000 tấn/năm",
+     "url": "https://doanhnhan.baophapluat.vn/lam-dong-dieu-chinh-du-an-nha-may-san-xuat-xut-bao-lam-nang-cong-suat-len-45-000-tan-nam.md",
+     "published": "2026-07-13"
+    },
+    {
+     "title": "Znews – Nổ bình hơi tại nhà máy (HC Bảo Lâm), sự cố 09/11/2025 – chỉ thấy qua kết quả tìm kiếm, chưa mở trang",
+     "url": "https://znews.vn/no-binh-hoi-tai-nha-may-hai-cong-nhan-tu-vong-thuong-tam-post1601333.html",
+     "published": "2025-11"
+    }
+   ]
+  },
+  {
+   "id": "hc_hatinh",
+   "company": "Công ty Cổ phần Hóa chất Hà Tĩnh",
+   "ticker": null,
+   "plant": "Dự án hóa chất KCN Phú Vinh (2.800 tỷ đồng)",
+   "location": {
+    "province": "Hà Tĩnh",
+    "address": "KCN Phú Vinh, phường Hoành Sơn, lô D7–D16 và một phần D17 khu CN3",
+    "lat": 18.06,
+    "lon": 106.36,
+    "precision": "xấp xỉ ±10 km"
+   },
+   "products": "Tổng 380.000 tấn hóa chất/năm; GĐ2 (đến tháng 48) gồm dây chuyền axit sunfuric và NaOH–clo",
+   "capacity_naoh_tpy": null,
+   "capacity_basis": null,
+   "capacity_note": "Bài không nêu công suất NaOH riêng.",
+   "status": "vừa cấp GCN đăng ký đầu tư; chưa có ĐTM/giấy phép môi trường",
+   "as_of": "2026-10-20",
+   "classification": "chưa rõ",
+   "classification_source": null,
+   "sources": [
+    {
+     "title": "Báo Pháp Luật VN – Khu công nghiệp Phú Vinh đón dự án hóa chất 2.800 tỷ đồng",
+     "url": "https://doanhnhan.baophapluat.vn/khu-cong-nghiep-phu-vinh-don-du-an-hoa-chat-2-800-ty-dong.md",
+     "published": "2026-10-20"
+    }
+   ]
+  }
+ ],
+ "production": [
+  {
+   "company": "HVT",
+   "year_or_period": "2019",
+   "metric": "Sản lượng sản xuất",
+   "product": "Xút (tổng số)",
+   "basis": "Xút 100% (HVT ghi 'Xút 100% T.số')",
+   "value": 45827,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2019",
+   "metric": "Sản lượng sản xuất",
+   "product": "Xút thương phẩm",
+   "basis": "Xút 100% (HVT ghi 'Xút 100% T.số')",
+   "value": 39792,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ],
+   "note": "Phần bán ra thị trường; chỉ BCTN 2020–2021 tách dòng này"
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2019",
+   "metric": "Sản lượng sản xuất",
+   "product": "HCl (tổng số)",
+   "basis": "HCl tổng số (nồng độ không ghi)",
+   "value": 88690,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2019",
+   "metric": "Sản lượng sản xuất",
+   "product": "HCl thương phẩm",
+   "basis": "HCl tổng số (nồng độ không ghi)",
+   "value": 59485,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ],
+   "note": "Phần bán ra thị trường; chỉ BCTN 2020–2021 tách dòng này"
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2019",
+   "metric": "Sản lượng sản xuất",
+   "product": "Clo lỏng",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 3754,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2019",
+   "metric": "Sản lượng sản xuất",
+   "product": "Javen",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 35905,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2019",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC bột",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 14005,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2019",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC dịch",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 11797,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2020",
+   "metric": "Sản lượng sản xuất",
+   "product": "Xút (tổng số)",
+   "basis": "Xút 100% (HVT ghi 'Xút 100% T.số')",
+   "value": 39184,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ],
+   "note": "BCTN 2020 in nhầm '3.184'; dùng 39.184 theo BCTN 2021 (cột Thực hiện 2020)"
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2020",
+   "metric": "Sản lượng sản xuất",
+   "product": "Xút thương phẩm",
+   "basis": "Xút 100% (HVT ghi 'Xút 100% T.số')",
+   "value": 33417,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ],
+   "note": "Phần bán ra thị trường; chỉ BCTN 2020–2021 tách dòng này"
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2020",
+   "metric": "Sản lượng sản xuất",
+   "product": "HCl (tổng số)",
+   "basis": "HCl tổng số (nồng độ không ghi)",
+   "value": 81258,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2020",
+   "metric": "Sản lượng sản xuất",
+   "product": "HCl thương phẩm",
+   "basis": "HCl tổng số (nồng độ không ghi)",
+   "value": 47174,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ],
+   "note": "Phần bán ra thị trường; chỉ BCTN 2020–2021 tách dòng này"
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2020",
+   "metric": "Sản lượng sản xuất",
+   "product": "Clo lỏng",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 3655,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2020",
+   "metric": "Sản lượng sản xuất",
+   "product": "Javen",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 32915,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2020",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC bột",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 17144,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2020",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC dịch",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 15019,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2020 (bản scan, đọc từ ảnh trang 6–7)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2021/03/30.3.Báo-cáo-thường-niên.pdf",
+     "published": "2021-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2021",
+   "metric": "Sản lượng sản xuất",
+   "product": "Xút (tổng số)",
+   "basis": "Xút 100% (HVT ghi 'Xút 100% T.số')",
+   "value": 44205,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    }
+   ],
+   "note": "Tỷ lệ % trong bảng BCTN 2021 không khớp hoàn toàn với số tuyệt đối (44.205/39.184=112,8% nhưng bảng ghi 112,0)"
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2021",
+   "metric": "Sản lượng sản xuất",
+   "product": "Xút thương phẩm",
+   "basis": "Xút 100% (HVT ghi 'Xút 100% T.số')",
+   "value": 36809,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    }
+   ],
+   "note": "Phần bán ra thị trường; chỉ BCTN 2020–2021 tách dòng này"
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2021",
+   "metric": "Sản lượng sản xuất",
+   "product": "HCl (tổng số)",
+   "basis": "HCl tổng số (nồng độ không ghi)",
+   "value": 93834,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2021",
+   "metric": "Sản lượng sản xuất",
+   "product": "HCl thương phẩm",
+   "basis": "HCl tổng số (nồng độ không ghi)",
+   "value": 56199,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    }
+   ],
+   "note": "Phần bán ra thị trường; chỉ BCTN 2020–2021 tách dòng này"
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2021",
+   "metric": "Sản lượng sản xuất",
+   "product": "Clo lỏng",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 3678,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2021",
+   "metric": "Sản lượng sản xuất",
+   "product": "Javen",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 37525,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2021",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC bột",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 18512,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2021",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC dịch",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 17374,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2021 (bản scan, đọc từ ảnh trang 5–6)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2022/03/Báo-cáo-thường-niên-2021.pdf",
+     "published": "2022-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2022",
+   "metric": "Sản lượng sản xuất",
+   "product": "Xút (tổng số)",
+   "basis": "Xút 100% (HVT ghi 'Xút 100% T.số')",
+   "value": 52944,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2023 (bản scan, đọc từ ảnh trang 5)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2024/03/Bao-cao-thuong-nien-2023_signed.pdf",
+     "published": "2024-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2022",
+   "metric": "Sản lượng sản xuất",
+   "product": "HCl (tổng số)",
+   "basis": "HCl tổng số (nồng độ không ghi)",
+   "value": 113477,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2023 (bản scan, đọc từ ảnh trang 5)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2024/03/Bao-cao-thuong-nien-2023_signed.pdf",
+     "published": "2024-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2022",
+   "metric": "Sản lượng sản xuất",
+   "product": "Clo lỏng",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 3900,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2023 (bản scan, đọc từ ảnh trang 5)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2024/03/Bao-cao-thuong-nien-2023_signed.pdf",
+     "published": "2024-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2022",
+   "metric": "Sản lượng sản xuất",
+   "product": "Javen",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 41247,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2023 (bản scan, đọc từ ảnh trang 5)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2024/03/Bao-cao-thuong-nien-2023_signed.pdf",
+     "published": "2024-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2022",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC bột",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 28401,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2023 (bản scan, đọc từ ảnh trang 5)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2024/03/Bao-cao-thuong-nien-2023_signed.pdf",
+     "published": "2024-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2022",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC dịch",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 20859,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2023 (bản scan, đọc từ ảnh trang 5)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2024/03/Bao-cao-thuong-nien-2023_signed.pdf",
+     "published": "2024-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2023",
+   "metric": "Sản lượng sản xuất",
+   "product": "Xút (tổng số)",
+   "basis": "Xút 100% (HVT ghi 'Xút 100% T.số')",
+   "value": 56528,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2023 (bản scan, đọc từ ảnh trang 5)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2024/03/Bao-cao-thuong-nien-2023_signed.pdf",
+     "published": "2024-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2023",
+   "metric": "Sản lượng sản xuất",
+   "product": "HCl (tổng số)",
+   "basis": "HCl tổng số (nồng độ không ghi)",
+   "value": 122581,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2023 (bản scan, đọc từ ảnh trang 5)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2024/03/Bao-cao-thuong-nien-2023_signed.pdf",
+     "published": "2024-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2023",
+   "metric": "Sản lượng sản xuất",
+   "product": "Clo lỏng",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 4622,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2023 (bản scan, đọc từ ảnh trang 5)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2024/03/Bao-cao-thuong-nien-2023_signed.pdf",
+     "published": "2024-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2023",
+   "metric": "Sản lượng sản xuất",
+   "product": "Javen",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 41204,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2023 (bản scan, đọc từ ảnh trang 5)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2024/03/Bao-cao-thuong-nien-2023_signed.pdf",
+     "published": "2024-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2023",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC bột",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 27705,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2023 (bản scan, đọc từ ảnh trang 5)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2024/03/Bao-cao-thuong-nien-2023_signed.pdf",
+     "published": "2024-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2023",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC dịch",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 29479,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2023 (bản scan, đọc từ ảnh trang 5)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2024/03/Bao-cao-thuong-nien-2023_signed.pdf",
+     "published": "2024-03"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2024",
+   "metric": "Sản lượng sản xuất",
+   "product": "Xút (tổng số)",
+   "basis": "Xút 100% (HVT ghi 'Xút 100% T.số')",
+   "value": 61090,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2024",
+   "metric": "Sản lượng sản xuất",
+   "product": "HCl (tổng số)",
+   "basis": "HCl tổng số (nồng độ không ghi)",
+   "value": 128452,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2024",
+   "metric": "Sản lượng sản xuất",
+   "product": "Clo lỏng",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 4945,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2024",
+   "metric": "Sản lượng sản xuất",
+   "product": "Javen",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 49859,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2024",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC bột",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 27890,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2024",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC dịch",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 31762,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2024",
+   "metric": "Sản lượng sản xuất",
+   "product": "Vi-Chlorine",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 1700,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2025",
+   "metric": "Sản lượng sản xuất",
+   "product": "Xút (tổng số)",
+   "basis": "Xút 100% (HVT ghi 'Xút 100% T.số')",
+   "value": 56041,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2025",
+   "metric": "Sản lượng sản xuất",
+   "product": "HCl (tổng số)",
+   "basis": "HCl tổng số (nồng độ không ghi)",
+   "value": 115384,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2025",
+   "metric": "Sản lượng sản xuất",
+   "product": "Clo lỏng",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 4777,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2025",
+   "metric": "Sản lượng sản xuất",
+   "product": "Javen",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 52289,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2025",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC bột",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 21354,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2025",
+   "metric": "Sản lượng sản xuất",
+   "product": "PAC dịch",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 33355,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2025",
+   "metric": "Sản lượng sản xuất",
+   "product": "Vi-Chlorine",
+   "basis": "tấn sản phẩm (nồng độ không ghi)",
+   "value": 3054,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2025",
+   "metric": "Kế hoạch sản xuất",
+   "product": "Xút (tổng số)",
+   "basis": "Xút 100%",
+   "value": 65000,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2024",
+   "metric": "Kế hoạch sản xuất",
+   "product": "Xút (tổng số)",
+   "basis": "Xút 100%",
+   "value": 65000,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2024",
+     "url": "https://vitrichem.vn/wp-content/uploads/2025/03/VI_BaoCaoThuongNien_2024.pdf",
+     "published": "2025-03 (Vietstock đăng 28/03/2025)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2023",
+   "metric": "Kế hoạch sản xuất",
+   "product": "Xút (tổng số)",
+   "basis": "Xút 100%",
+   "value": 54600,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2023 (bản scan, đọc từ ảnh trang 5)",
+     "url": "https://vitrichem.vn/wp-content/uploads/2024/03/Bao-cao-thuong-nien-2023_signed.pdf",
+     "published": "2024-03"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2022 trở đi",
+   "metric": "Tỷ lệ xút bán ra/sản xuất (FPTS ước tính)",
+   "product": "Xút",
+   "basis": "%",
+   "value": 85,
+   "unit": "%",
+   "sources": [
+    {
+     "title": "FPTS – Báo cáo định giá lần đầu HVT (Tạ Duy Anh)",
+     "url": "https://finance.vietstock.vn/downloadedoc/16435",
+     "published": "2025-07 (số liệu giao dịch đến 30/06/2025; ngày phát hành chính xác không thấy trong phần đã đọc)"
+    }
+   ],
+   "note": "FPTS ước tính; năm 2024 tỷ lệ giữ lại nội bộ 10,9%"
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2024",
+   "metric": "Hiệu suất công suất (FPTS)",
+   "product": "Xút",
+   "basis": "sản lượng/CSTK 70.000",
+   "value": 87,
+   "unit": "%",
+   "sources": [
+    {
+     "title": "FPTS – Báo cáo định giá lần đầu HVT (Tạ Duy Anh)",
+     "url": "https://finance.vietstock.vn/downloadedoc/16435",
+     "published": "2025-07 (số liệu giao dịch đến 30/06/2025; ngày phát hành chính xác không thấy trong phần đã đọc)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2025",
+   "metric": "Doanh thu thuần",
+   "product": "Toàn công ty",
+   "basis": "BCTN 2025",
+   "value": 1603.37,
+   "unit": "tỷ đồng",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    }
+   ],
+   "note": "BCTN 2025 ghi DT thuần 2024 = 1.450,93 tỷ; BCTN 2024 ghi 2024 = 1.455,90 tỷ (lệch, có thể điều chỉnh hồi tố)"
+  },
+  {
+   "company": "HVT",
+   "year_or_period": "2025",
+   "metric": "Giá bán xút bình quân",
+   "product": "Xút",
+   "basis": null,
+   "value": null,
+   "unit": "đồng/tấn",
+   "sources": [
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    },
+    {
+     "title": "FPTS – Báo cáo định giá lần đầu HVT (Tạ Duy Anh)",
+     "url": "https://finance.vietstock.vn/downloadedoc/16435",
+     "published": "2025-07 (số liệu giao dịch đến 30/06/2025; ngày phát hành chính xác không thấy trong phần đã đọc)"
+    }
+   ],
+   "note": "Không công bố. FPTS chỉ dự phóng 2025 tăng 1 triệu đồng/tấn (+7,0%) và doanh thu xút 2025 = 818 tỷ (+14,9%); xút ~53% doanh thu 2024"
+  },
+  {
+   "company": "CSV",
+   "year_or_period": "2019–2025",
+   "metric": "Sản lượng sản xuất/tiêu thụ xút",
+   "product": "Xút",
+   "basis": null,
+   "value": null,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "CSV – Báo cáo thường niên 2025 (VN-EN, đã ký số)",
+     "url": "https://static2.vietstock.vn/vietstock/2026/3/13/20260313___csv___bao_cao_thuong_nien_nam_2025__vn_en__dakyso.pdf",
+     "published": "2026-03-13"
+    }
+   ],
+   "note": "BCTN 2025 không công bố sản lượng theo tấn"
+  },
+  {
+   "company": "CSV",
+   "year_or_period": "Q2/2026",
+   "metric": "Tăng trưởng sản lượng tiêu thụ",
+   "product": "NaOH",
+   "basis": "YoY",
+   "value": 22,
+   "unit": "%",
+   "sources": [
+    {
+     "title": "DSC – Báo cáo cập nhật CSV Q2/2026",
+     "url": "https://extgw.dsc.com.vn/eback/uploads/BCCN_CSV_Q2_2026_acbfc95985.pdf",
+     "published": "2026-07-29"
+    }
+   ],
+   "note": "DSC: sản lượng tiêu thụ NaOH +22% và H2SO4 +27% so với cùng kỳ"
+  },
+  {
+   "company": "CSV",
+   "year_or_period": "2024",
+   "metric": "Doanh thu mảng xút–clo",
+   "product": "Xút–clo",
+   "basis": "tỷ đồng",
+   "value": 1200,
+   "unit": "tỷ đồng",
+   "sources": [
+    {
+     "title": "Tạp chí Công Thương – Giá Xút thiết lập nền giá mới, CSV hưởng lợi lớn",
+     "url": "https://tapchicongthuong.vn/gia-xut-thiet-lap-nen-gia-moi--hoa-chat-co-ban-mien-nam--csv--huong-loi-lon-140693.htm",
+     "published": "2025-05-21"
+    },
+    {
+     "title": "CafeF – Sau cưỡng chế, công ty hóa chất 2.400 tỷ trên sàn phải dừng nhà máy sau ngày 15/8",
+     "url": "https://cafef.vn/sau-cuong-che-cong-ty-hoa-chat-2400-ty-tren-san-phai-dung-nha-may-sau-ngay-15-8-188260804081236249.chn",
+     "published": "2026-08-04"
+    }
+   ],
+   "note": "'hơn 1.200 tỷ đồng', 'hơn 60%' tổng doanh thu"
+  },
+  {
+   "company": "Thị trường",
+   "year_or_period": "T1–T4/2025",
+   "metric": "Giá xút lỏng nội địa",
+   "product": "NaOH lỏng",
+   "basis": "nồng độ không ghi",
+   "value": "13.000–16.000",
+   "unit": "đồng/kg",
+   "sources": [
+    {
+     "title": "Tạp chí Công Thương – Giá Xút thiết lập nền giá mới, CSV hưởng lợi lớn",
+     "url": "https://tapchicongthuong.vn/gia-xut-thiet-lap-nen-gia-moi--hoa-chat-co-ban-mien-nam--csv--huong-loi-lon-140693.htm",
+     "published": "2025-05-21"
+    }
+   ],
+   "note": "+3% YoY"
+  },
+  {
+   "company": "Thị trường",
+   "year_or_period": "2024",
+   "metric": "Nhu cầu xút nội địa (FPTS)",
+   "product": "NaOH",
+   "basis": "quy 100%",
+   "value": 410000,
+   "unit": "tấn",
+   "sources": [
+    {
+     "title": "FPTS – Báo cáo định giá lần đầu HVT (Tạ Duy Anh)",
+     "url": "https://finance.vietstock.vn/downloadedoc/16435",
+     "published": "2025-07 (số liệu giao dịch đến 30/06/2025; ngày phát hành chính xác không thấy trong phần đã đọc)"
+    }
+   ],
+   "note": "Nguồn cung trong nước đáp ứng 58,5%; tổng CSTK 5 DN lớn 240.000 t"
+  },
+  {
+   "company": "Thị trường",
+   "year_or_period": "2024–2025",
+   "metric": "Nhu cầu xút nội địa (CSV BCTN 2025)",
+   "product": "NaOH",
+   "basis": null,
+   "value": 450000,
+   "unit": "tấn/năm",
+   "sources": [
+    {
+     "title": "CSV – Báo cáo thường niên 2025 (VN-EN, đã ký số)",
+     "url": "https://static2.vietstock.vn/vietstock/2026/3/13/20260313___csv___bao_cao_thuong_nien_nam_2025__vn_en__dakyso.pdf",
+     "published": "2026-03-13"
+    }
+   ],
+   "note": "'năng lực sản xuất trong nước hiện chỉ đáp ứng khoảng 55% nhu cầu'"
+  }
+ ],
+ "nghison_timeline": [
+  {
+   "date_published": "2024-05-10",
+   "milestone": "FPTS: khởi công Q3/2024, vận hành 2026, vốn GĐ1 2.400 tỷ, NaOH 50.000 t",
+   "planned_date": "khởi công Q3/2024; vận hành 2026",
+   "actual_date": null,
+   "status": "đầu tư/xây dựng",
+   "note": "FPTS tr. 20–22",
+   "sources": [
+    {
+     "title": "FPTS – Báo cáo định giá DGC (10/05/2024), tr. 20–22",
+     "url": null,
+     "published": "2024-05-10"
+    }
+   ]
+  },
+  {
+   "date_published": "2024-07-26",
+   "milestone": "Lùi khởi công từ 06/2024 sang Q4/2024 (vướng PCCC, quy hoạch 1/2.000, tái định cư); xây dựng–chạy thử–bàn giao Q4/2024–Q1/2026",
+   "planned_date": "vận hành Q1/2026",
+   "actual_date": null,
+   "status": "đầu tư/xây dựng",
+   "sources": [
+    {
+     "title": "Tạp chí Công Thương – DGC lùi thời gian khởi công dự án hóa chất quy mô 12.000 tỷ đồng",
+     "url": "https://tapchicongthuong.vn/hoa-chat-duc-giang--dgc--lui-thoi-gian-khoi-cong-du-an-hoa-chat-quy-mo-12-000-ty-dong-124145.htm",
+     "published": "2024-07-26"
+    }
+   ]
+  },
+  {
+   "date_published": "2024-10-24",
+   "milestone": "HĐQT: khởi công tháng 12/2024; GĐ1 50.000 t NaOH/năm, tổ hợp 136.000 t hóa chất/năm",
+   "planned_date": "khởi công 12/2024; vận hành Q1/2026",
+   "actual_date": null,
+   "status": "đầu tư/xây dựng",
+   "sources": [
+    {
+     "title": "Tạp chí Công Thương – HĐQT DGC: Sẽ khởi công Tổ hợp hoá chất Nghi Sơn trong tháng 12",
+     "url": "https://tapchicongthuong.vn/hdqt-hoa-chat-duc-giang--dgc-se-khoi-cong-to-hop-hoa-chat-nghi-son-trong-thang-12-128729.htm",
+     "published": "2024-10-24"
+    }
+   ]
+  },
+  {
+   "date_published": "2025-02-18",
+   "milestone": "Lễ khởi công Dự án số 1 (GĐ1 30 ha, 2.400 tỷ; 151.000 t hóa chất/năm)",
+   "planned_date": "vận hành Q1/2026",
+   "actual_date": "2025-02-17",
+   "status": "đầu tư/xây dựng",
+   "sources": [
+    {
+     "title": "Tạp chí Công Thương – DGC chính thức khởi công 'siêu' dự án tổ hợp hoá chất tại Thanh Hoá",
+     "url": "https://tapchicongthuong.vn/hoa-chat-duc-giang--dgc--chinh-thuc-khoi-cong--sieu--du-an-to-hop-hoa-chat-tai-thanh-hoa-133258.htm",
+     "published": "2025-02-18"
+    }
+   ]
+  },
+  {
+   "date_published": "2025-03-06",
+   "milestone": "Tài liệu ĐHĐCĐ 2025: chi 1.200 tỷ đồng cho Nghi Sơn năm 2025; GĐ1 vận hành Q1/2026",
+   "planned_date": "Q1/2026",
+   "actual_date": null,
+   "status": "đầu tư/xây dựng",
+   "sources": [
+    {
+     "title": "Tạp chí Công Thương – DGC muốn chi gần 1.300 tỷ đồng làm loạt dự án, chia cổ tức 30% (tài liệu ĐHĐCĐ 2025)",
+     "url": "https://tapchicongthuong.vn/hoa-chat-duc-giang--dgc--muon-chi-gan-1-300-ty-dong-lam-loat-du-an--chia-co-tuc-30-138163.htm",
+     "published": "2025-03-06"
+    }
+   ]
+  },
+  {
+   "date_published": "2025-08-09",
+   "milestone": "BCTC Q2/2025: đã giải ngân 724 tỷ đồng XDCB tại Nghi Sơn (đến 30/06/2025); dự kiến giải ngân thêm 600 tỷ trong Q3/2025",
+   "planned_date": "GĐ1A vận hành Q2/2026",
+   "actual_date": null,
+   "status": "đầu tư/xây dựng",
+   "sources": [
+    {
+     "title": "VnEconomy – Tiến độ giải ngân dự án tổ hợp hóa chất 12.000 tỷ đồng tại Nghi Sơn",
+     "url": "https://vneconomy.vn/tien-do-giai-ngan-du-an-to-hop-hoa-chat-12-000-ty-dong-tai-nghi-son.htm",
+     "published": "2025-08-09"
+    }
+   ]
+  },
+  {
+   "date_published": "2025-09-16",
+   "milestone": "HĐQT nâng vốn Dự án số 1 từ 2.400 lên 2.900 tỷ (phần tăng cho GĐ2: K2SO4 20.000 t, H2O2 15.000 t, ắc quy 2 triệu kWh); GĐ1 giữ 151.000 t",
+   "planned_date": "GĐ1 hoàn thành và vận hành Q2/2026; GĐ2 Q4/2027",
+   "actual_date": null,
+   "status": "đầu tư/xây dựng",
+   "sources": [
+    {
+     "title": "Báo Pháp Luật VN – DGC nâng vốn đầu tư dự án tại Thanh Hoá lên 2.900 tỷ đồng",
+     "url": "https://doanhnhan.baophapluat.vn/tap-doan-hoa-chat-duc-giang-dgc-nang-von-dau-tu-du-an-tai-thanh-hoa-len-2900-ty-dong-86683.html",
+     "published": "2025-09-16"
+    },
+    {
+     "title": "Thời báo Tài chính VN – Hóa chất Đức Giang tăng gấp rưỡi công suất dự án số 1 tại Nghi Sơn",
+     "url": "https://thoibaotaichinhvietnam.vn/hoa-chat-duc-giang-tang-gap-ruoi-cong-suat-du-an-so-1-tai-nghi-son-183390.html",
+     "published": "2025-09-17"
+    }
+   ]
+  },
+  {
+   "date_published": "2025-12-29",
+   "milestone": "Xây dựng cơ bản hoàn thành ~95%, chuyển sang lắp đặt thiết bị",
+   "planned_date": "hoàn thành Q1/2026, chạy thử Q2/2026",
+   "actual_date": null,
+   "status": "đầu tư/xây dựng",
+   "sources": [
+    {
+     "title": "Người Quan Sát – 'Át chủ bài' 12.000 tỷ đồng của DGC hoàn thiện 95%, chuẩn bị vận hành từ năm 2026",
+     "url": "https://nguoiquansat.vn/at-chu-bai-12-000-ty-dong-cua-hoa-chat-duc-giang-dgc-hoan-thien-95-chuan-bi-van-hanh-tu-nam-2026-263540.html",
+     "published": "2025-12-29"
+    }
+   ]
+  },
+  {
+   "date_published": "2026-02-04",
+   "milestone": "Chiến dịch 100 ngày thi công 3 ca hỗ trợ chạy thử GĐ1",
+   "planned_date": "chạy thử Q2/2026",
+   "actual_date": null,
+   "status": "đầu tư/xây dựng",
+   "sources": [
+    {
+     "title": "Industrial Info Resources – Vietnam Chemical Project Hastens Progress",
+     "url": "https://www.industrialinfo.com/news/article/vietnam-chemical-project-hastens-progress--352623",
+     "published": "2026-02-04"
+    }
+   ]
+  },
+  {
+   "date_published": "2026-04-27",
+   "milestone": "PVChem ký bao tiêu 30% sản lượng GĐ1, cam kết thêm ~20%; giải ngân ~2.000 tỷ (83,3%)",
+   "planned_date": "chạy thử Q2/2026",
+   "actual_date": null,
+   "status": "đầu tư/xây dựng",
+   "sources": [
+    {
+     "title": "Người Quan Sát – DGC đại dự án 12.000 tỷ tại Thanh Hóa sắp vận hành, đã chốt đầu ra 50% công suất",
+     "url": "https://nguoiquansat.vn/hoa-chat-duc-giang-dgc-dai-du-an-12-000-ty-tai-thanh-hoa-sap-van-hanh-da-chot-dau-ra-50-cong-suat-288539.html",
+     "published": "2026-04-27"
+    }
+   ]
+  },
+  {
+   "date_published": "2026-04-29",
+   "milestone": "BCTN 2025: giải ngân lũy kế 1.378 tỷ đến 31/12/2025; dự kiến hoàn thành và chạy thử đầu Q3/2026",
+   "planned_date": "đầu Q3/2026",
+   "actual_date": null,
+   "status": "đầu tư/xây dựng",
+   "sources": [
+    {
+     "title": "Người Quan Sát – DGC dồn lực vào 'át chủ bài' 12.000 tỷ đồng, dự kiến vận hành vào quý III/2026",
+     "url": "https://nguoiquansat.vn/hoa-chat-duc-giang-dgc-don-luc-vao-at-chu-bai-12-000-ty-dong-du-kien-van-hanh-vao-quy-iii-2026-288957.html",
+     "published": "2026-04-29"
+    }
+   ]
+  },
+  {
+   "date_published": "2026-05-08",
+   "milestone": "ĐHĐCĐ bất thường 08/05/2026: chạy từng phần cuối Q3 hoặc đầu Q4/2026, sau đó nâng dần công suất",
+   "planned_date": "cuối Q3–đầu Q4/2026",
+   "actual_date": null,
+   "status": "chạy thử",
+   "sources": [
+    {
+     "title": "Người Quan Sát – Lãnh đạo DGC: Dự án Nghi Sơn 12.000 tỷ đồng sẽ vận hành thử từ nửa cuối năm 2026 (ĐHĐCĐ bất thường 08/05/2026)",
+     "url": "https://nguoiquansat.vn/lanh-dao-hoa-chat-duc-giang-dgc-du-an-nghi-son-12-000-ty-dong-se-van-hanh-thu-tu-nua-cuoi-nam-2026-290534.html",
+     "published": "2026-05-08"
+    }
+   ]
+  },
+  {
+   "date_published": "2026-07-17",
+   "milestone": "NQ HĐQT 16/07/2026: lùi hoàn thành và vận hành từ Q1/2026 sang Q4/2026; đổi địa điểm sang KCN Đồng Vàng; bổ sung H3PO4/PCl3/PCl5 (trần 10.000 t quy H3PO3); 151.000 t giữ nguyên",
+   "planned_date": "Q4/2026",
+   "actual_date": null,
+   "status": "đầu tư/xây dựng",
+   "note": "Nguyên nhân: Trung Quốc kiểm soát xuất khẩu thiết bị titan (giấy phép 3–6 tháng)",
+   "sources": [
+    {
+     "title": "Báo Pháp Luật VN – Tập đoàn Hóa chất Đức Giang (DGC) lùi tiến độ dự án hóa chất 12.000 tỷ đồng",
+     "url": "https://doanhnhan.baophapluat.vn/tap-doan-hoa-chat-duc-giang-dgc-lui-tien-do-du-an-hoa-chat-12-000-ty-dong.html",
+     "published": "2026-07-17"
+    },
+    {
+     "title": "Người Quan Sát – Hóa chất Đức Giang dồn lực cho 'át chủ bài' 12.000 tỷ đồng, đang xin giấy phép từ Chính phủ Trung Quốc",
+     "url": "https://nguoiquansat.vn/hoa-chat-duc-giang-don-luc-cho-at-chu-bai-12-000-ty-dong-dang-xin-giay-phep-tu-chinh-phu-trung-quoc-305669.html",
+     "published": "2026-07-22"
+    }
+   ]
+  },
+  {
+   "date_published": "2026-08-13",
+   "milestone": "ĐHĐCĐ thường niên 13/08/2026: XDCB hoàn thành, lắp đặt thiết bị ~90%; giữ mục tiêu chạy thử/vận hành Q4/2026",
+   "planned_date": "Q4/2026",
+   "actual_date": null,
+   "status": "chạy thử",
+   "sources": [
+    {
+     "title": "Nhà Đầu Tư – DGC đặt kế hoạch lợi nhuận giảm gần một nửa, nguồn quặng trở thành biến số (ĐHĐCĐ thường niên 13/08/2026)",
+     "url": "https://nhadautu.vn/dgc-dat-ke-hoach-loi-nhuan-giam-gan-mot-nua-nguon-quang-tro-thanh-bien-so-d106952.html",
+     "published": "2026-08-13"
+    },
+    {
+     "title": "Vietcap – DGC AGM note: Business operations remain normal; Nghi Son on track for Q4 trial run",
+     "url": "https://www.vietcap.com.vn/en/research-center/dgc-business-operations-remain-normal-nghi-son-on-track-for-q4-trial-run-cost-pressures-pose-downside-to-earnings-forecast-agm-note",
+     "published": "2026-08-13"
+    }
+   ]
+  },
+  {
+   "date_published": "2026-10-15",
+   "milestone": "NQ HĐQT 34/2026 (15/10/2026): hoàn tất lắp đặt + chạy thử trong Q4/2026; dây chuyền xút và PAC vận hành trong Q4/2026; toàn dự án vận hành thương mại Q1/2027; PAC đổi 30%→32% Al2O3",
+   "planned_date": "xút & PAC Q4/2026; toàn dự án Q1/2027",
+   "actual_date": null,
+   "status": "vận hành thương mại dây chuyền",
+   "note": "Trang CafeF chỉ có tiêu đề; nội dung lấy từ Người Quan Sát 15/10/2026 và Yuanta 10/11/2026",
+   "sources": [
+    {
+     "title": "CafeF – DGC: Nghị quyết HĐQT số 34/2026 ngày 15/10/2026 (trang chỉ có tiêu đề + file PDF đính kèm)",
+     "url": "https://cafef.vn/du-lieu/dgc-2998794/dgc-nghi-quyet-hdqt-so-342026-ngay-15102026.chn",
+     "published": "2026-10-15"
+    },
+    {
+     "title": "Người Quan Sát – Hóa chất Đức Giang (DGC) bất ngờ điều chỉnh dự án 2.400 tỷ đồng tại Nghi Sơn",
+     "url": "https://nguoiquansat.vn/hoa-chat-duc-giang-dgc-bat-ngo-dieu-chinh-du-an-2-400-ty-dong-tai-nghi-son-322162.html",
+     "published": "2026-10-15"
+    },
+    {
+     "title": "Yuanta Việt Nam – DGC: Lợi nhuận hồi phục, rủi ro còn đó (Báo cáo nhanh KQKD Q3/2026)",
+     "url": "https://static1.vietstock.vn/edocs/23041/DGC_3Q26_results_VN.pdf",
+     "published": "2026-11-10"
+    }
+   ]
+  },
+  {
+   "date_published": "2026-11-10",
+   "milestone": "Yuanta cập nhật Q3/2026: giữ kế hoạch vận hành một phần Q4/2026, toàn bộ Q1/2027; tổng CSTK 151.000 t/năm không đổi",
+   "planned_date": "một phần Q4/2026; toàn bộ Q1/2027",
+   "actual_date": null,
+   "status": "vận hành toàn dự án",
+   "sources": [
+    {
+     "title": "Yuanta Việt Nam – DGC: Lợi nhuận hồi phục, rủi ro còn đó (Báo cáo nhanh KQKD Q3/2026)",
+     "url": "https://static1.vietstock.vn/edocs/23041/DGC_3Q26_results_VN.pdf",
+     "published": "2026-11-10"
+    }
+   ]
+  },
+  {
+   "date_published": "2026-11-12",
+   "milestone": "Báo Pháp Luật: xút (NaOH) và PAC là cấu phần đầu tiên vào vận hành; lùi vận hành toàn bộ sang Q1/2027",
+   "planned_date": "Q4/2026 / Q1/2027",
+   "actual_date": null,
+   "status": "vận hành thương mại dây chuyền",
+   "sources": [
+    {
+     "title": "Báo Pháp Luật VN – DGC sụt giảm lợi nhuận, chi phí nguyên liệu bào mòn đà tăng trưởng",
+     "url": "https://doanhnhan.baophapluat.vn/hoa-chat-duc-giang-dgc-sut-giam-loi-nhuan-chi-phi-nguyen-lieu-bao-mon-da-tang-truong.md",
+     "published": "2026-11-12"
+    }
+   ]
+  },
+  {
+   "date_published": null,
+   "milestone": "Sản lượng bán xút Nghi Sơn",
+   "planned_date": null,
+   "actual_date": null,
+   "status": "sản lượng bán",
+   "value": null,
+   "note": "Chưa có công bố tính đến 26/11/2026",
+   "sources": []
+  }
+ ],
+ "nghison_xdcb": [
+  {
+   "as_of": "2025-06-30",
+   "metric": "Giải ngân XDCB lũy kế tại Nghi Sơn",
+   "value": 724,
+   "unit": "tỷ đồng",
+   "sources": [
+    {
+     "title": "VnEconomy – Tiến độ giải ngân dự án tổ hợp hóa chất 12.000 tỷ đồng tại Nghi Sơn",
+     "url": "https://vneconomy.vn/tien-do-giai-ngan-du-an-to-hop-hoa-chat-12-000-ty-dong-tai-nghi-son.htm",
+     "published": "2025-08-09"
+    }
+   ]
+  },
+  {
+   "as_of": "2025-12-31",
+   "metric": "Giải ngân lũy kế (BCTN 2025, dòng tiền – không phải số dư XDCB dở dang)",
+   "value": 1378,
+   "unit": "tỷ đồng",
+   "sources": [
+    {
+     "title": "Người Quan Sát – DGC dồn lực vào 'át chủ bài' 12.000 tỷ đồng, dự kiến vận hành vào quý III/2026",
+     "url": "https://nguoiquansat.vn/hoa-chat-duc-giang-dgc-don-luc-vao-at-chu-bai-12-000-ty-dong-du-kien-van-hanh-vao-quy-iii-2026-288957.html",
+     "published": "2026-04-29"
+    },
+    {
+     "title": "Báo Pháp Luật VN – Tập đoàn Hóa chất Đức Giang (DGC) lùi tiến độ dự án hóa chất 12.000 tỷ đồng",
+     "url": "https://doanhnhan.baophapluat.vn/tap-doan-hoa-chat-duc-giang-dgc-lui-tien-do-du-an-hoa-chat-12-000-ty-dong.html",
+     "published": "2026-07-17"
+    }
+   ]
+  },
+  {
+   "as_of": "2026-03-31 (suy từ BCTC Q1/2026)",
+   "metric": "XDCB dở dang dự án Nghi Sơn (91,4% tổng XDCB dở dang 1.033,5 tỷ)",
+   "value": 944.5,
+   "unit": "tỷ đồng",
+   "sources": [
+    {
+     "title": "Người Quan Sát – DGC dồn lực vào 'át chủ bài' 12.000 tỷ đồng, dự kiến vận hành vào quý III/2026",
+     "url": "https://nguoiquansat.vn/hoa-chat-duc-giang-dgc-don-luc-vao-at-chu-bai-12-000-ty-dong-du-kien-van-hanh-vao-quy-iii-2026-288957.html",
+     "published": "2026-04-29"
+    }
+   ]
+  },
+  {
+   "as_of": "2026-06-30",
+   "metric": "XDCB dở dang dự án Nghi Sơn (BCTC bán niên soát xét; 92,5% tổng; +70% so với đầu năm)",
+   "value": 1221.4,
+   "unit": "tỷ đồng",
+   "sources": [
+    {
+     "title": "Người Quan Sát – Hóa chất Đức Giang (DGC) bất ngờ điều chỉnh dự án 2.400 tỷ đồng tại Nghi Sơn",
+     "url": "https://nguoiquansat.vn/hoa-chat-duc-giang-dgc-bat-ngo-dieu-chinh-du-an-2-400-ty-dong-tai-nghi-son-322162.html",
+     "published": "2026-10-15"
+    },
+    {
+     "title": "Người Quan Sát – Hóa chất Đức Giang dồn lực cho 'át chủ bài' 12.000 tỷ đồng, đang xin giấy phép từ Chính phủ Trung Quốc",
+     "url": "https://nguoiquansat.vn/hoa-chat-duc-giang-don-luc-cho-at-chu-bai-12-000-ty-dong-dang-xin-giay-phep-tu-chinh-phu-trung-quoc-305669.html",
+     "published": "2026-07-22"
+    },
+    {
+     "title": "Nhà Đầu Tư – DGC đặt kế hoạch lợi nhuận giảm gần một nửa, nguồn quặng trở thành biến số (ĐHĐCĐ thường niên 13/08/2026)",
+     "url": "https://nhadautu.vn/dgc-dat-ke-hoach-loi-nhuan-giam-gan-mot-nua-nguon-quang-tro-thanh-bien-so-d106952.html",
+     "published": "2026-08-13"
+    }
+   ]
+  },
+  {
+   "as_of": "2026-09-30",
+   "metric": "XDCB dở dang dự án Nghi Sơn",
+   "value": null,
+   "unit": "tỷ đồng",
+   "note": "Không tìm thấy số công bố trong các nguồn đã đọc",
+   "sources": []
+  }
+ ],
+ "nghison_products": {
+  "fpts_2024": [
+   {
+    "product": "NaOH",
+    "concentration": "99%",
+    "capacity_tpy": 50000
+   },
+   {
+    "product": "HCl",
+    "concentration": "31%",
+    "capacity_tpy": 15000
+   },
+   {
+    "product": "PAC",
+    "concentration": "30%",
+    "capacity_tpy": 30000
+   },
+   {
+    "product": "Javen",
+    "concentration": "10%",
+    "capacity_tpy": 10000
+   },
+   {
+    "product": "Bột tẩy",
+    "concentration": "60%",
+    "capacity_tpy": 20000
+   },
+   {
+    "product": "Chloramin B",
+    "concentration": "25%",
+    "capacity_tpy": 1000
+   },
+   {
+    "product": "H3PO3",
+    "concentration": null,
+    "capacity_tpy": 10000
+   },
+   {
+    "product": "Cl2 lỏng",
+    "concentration": null,
+    "capacity_tpy": 5000
+   },
+   {
+    "product": "CaCl2",
+    "concentration": null,
+    "capacity_tpy": 10000
+   }
+  ],
+  "fpts_2024_source": {
+   "title": "FPTS – Báo cáo định giá DGC (10/05/2024), tr. 20–22",
+   "url": null,
+   "published": "2024-05-10"
+  },
+  "latest": [
+   {
+    "product": "NaOH",
+    "concentration": "100% (quy đổi)",
+    "capacity_tpy": 50000,
+    "status": "Không thay đổi; dây chuyền xút dự kiến vận hành Q4/2026"
+   },
+   {
+    "product": "Axit HCl",
+    "concentration": "31%",
+    "capacity_tpy": 15000,
+    "status": "Không thay đổi"
+   },
+   {
+    "product": "PAC",
+    "concentration": "32% Al2O3 (trước 30%)",
+    "capacity_tpy": 30000,
+    "status": "Đổi hàm lượng; dây chuyền PAC dự kiến vận hành Q4/2026"
+   },
+   {
+    "product": "Javen (sodium hypochlorite)",
+    "concentration": null,
+    "capacity_tpy": 10000,
+    "status": "Không thay đổi"
+   },
+   {
+    "product": "Ca(OCl)2",
+    "concentration": null,
+    "capacity_tpy": 20000,
+    "status": "Không thay đổi"
+   },
+   {
+    "product": "Clo lỏng",
+    "concentration": null,
+    "capacity_tpy": 5000,
+    "status": "Không thay đổi"
+   },
+   {
+    "product": "Chloramin B",
+    "concentration": null,
+    "capacity_tpy": 1000,
+    "status": "Không thay đổi"
+   },
+   {
+    "product": "Calcium chloride (CaCl2)",
+    "concentration": null,
+    "capacity_tpy": 10000,
+    "status": "Không thay đổi"
+   },
+   {
+    "product": "Hóa chất gốc phốt pho (H3PO3, H3PO4, PCl3, PCl5)",
+    "concentration": "quy H3PO3 tương đương",
+    "capacity_tpy": 10000,
+    "status": "Linh hoạt cơ cấu giữa 4 sản phẩm, trần 10.000 t/năm"
+   },
+   {
+    "product": "Phụ phẩm axit HCl",
+    "concentration": "31%",
+    "capacity_tpy": 75000,
+    "status": "Không thay đổi; sinh ra khi sản xuất 10.000 t H3PO3; không cộng vào tổng 151.000"
+   },
+   {
+    "product": "Tổng công suất thiết kế",
+    "concentration": null,
+    "capacity_tpy": 151000,
+    "status": "Không thay đổi (16/07/2026 và 15/10/2026)"
+   }
+  ],
+  "latest_source": {
+   "title": "Yuanta Việt Nam – DGC: Lợi nhuận hồi phục, rủi ro còn đó (Báo cáo nhanh KQKD Q3/2026) – Bảng 1, trang 2",
+   "url": "https://static1.vietstock.vn/edocs/23041/DGC_3Q26_results_VN.pdf",
+   "published": "2026-11-10",
+   "basis_note": "Yuanta ghi NaOH (100%); bảng so sánh phiên bản 16/07/2026 với 15/10/2026 (NQ HĐQT 34/2026)"
+  },
+  "diff_vs_fpts_2024": "Khối lượng từng sản phẩm giữ nguyên; thay đổi: NaOH ghi quy 100% (FPTS: 99%), PAC 32% Al2O3 (FPTS: 30%), H3PO3 mở rộng thành nhóm 4 chất gốc phốt pho trần 10.000 t, nêu thêm phụ phẩm HCl 31% 75.000 t/năm. 'Bột tẩy 60%' của FPTS tương ứng Ca(OCl)2 20.000 t.",
+  "conflicting_reports": [
+   {
+    "claim": "Xút 80.000 t/năm (không ghi quy đổi)",
+    "sources": [
+     {
+      "title": "Tạp chí Công Thương – DGC chính thức khởi công 'siêu' dự án tổ hợp hoá chất tại Thanh Hoá",
+      "url": "https://tapchicongthuong.vn/hoa-chat-duc-giang--dgc--chinh-thuc-khoi-cong--sieu--du-an-to-hop-hoa-chat-tai-thanh-hoa-133258.htm",
+      "published": "2025-02-18"
+     },
+     {
+      "title": "Tạp chí Công Thương – DGC muốn chi gần 1.300 tỷ đồng làm loạt dự án, chia cổ tức 30% (tài liệu ĐHĐCĐ 2025)",
+      "url": "https://tapchicongthuong.vn/hoa-chat-duc-giang--dgc--muon-chi-gan-1-300-ty-dong-lam-loat-du-an--chia-co-tuc-30-138163.htm",
+      "published": "2025-03-06"
+     },
+     {
+      "title": "Industrial Info Resources – Vietnam Chemical Project Hastens Progress",
+      "url": "https://www.industrialinfo.com/news/article/vietnam-chemical-project-hastens-progress--352623",
+      "published": "2026-02-04"
+     }
+    ]
+   }
+  ]
+ },
+ "pvc": [
+  {
+   "plant": "AGC Chemicals Vietnam (trước là Phu My Plastics & Chemicals), KCN Cái Mép, Phú Mỹ, Bà Rịa–Vũng Tàu",
+   "capacity_pvc_tpy": 150000,
+   "feedstock": "VCM nhập khẩu từ P.T. Asahimas Chemical (Indonesia, công ty con AGC)",
+   "uses_domestic_chlorine": false,
+   "evidence": "HBN 03/2019: VCM của Asahimas dùng cho PVC tại chỗ và cho nhà máy PVC Phu My (150.000 t/năm); AGC 17/05/2016: một phần VCM tăng thêm của ASC được phân bổ xuất khẩu cho Phu My Plastic and Chemical. Nguồn cũ (2016–2019), chưa có xác nhận 2025–2026.",
+   "sources": [
+    {
+     "title": "Healthy Building Network – Chlorine and Building Materials, Phase 2: Asia",
+     "url": "https://habitablefuture.org/wp-content/uploads/2024/03/58-Chlorine-Building-Materials-Phase-2-Asia.pdf",
+     "published": "2019-03"
+    },
+    {
+     "title": "AGC Chemicals Americas – AGC to Expand Vinyl Chloride Monomer Capacity for PVC Production",
+     "url": "https://agcchem.com/news/2016/may-17-2016-agc-to-expand-vinyl-chloride-monomer-capacity-for-pvc-production",
+     "published": "2016-05-17"
+    }
+   ]
+  },
+  {
+   "plant": "TPC Vina Plastic and Chemical Corp. (công ty con Thai Plastic and Chemicals), Phú Mỹ",
+   "capacity_pvc_tpy": null,
+   "feedstock": null,
+   "uses_domestic_chlorine": null,
+   "evidence": "Không tìm được nguồn đã mở nêu nguồn VCM của TPC Vina; plasticsnews.com (2007) bị chặn 403.",
+   "sources": []
+  },
+  {
+   "plant": "Bối cảnh ngành",
+   "capacity_pvc_tpy": null,
+   "feedstock": null,
+   "uses_domestic_chlorine": false,
+   "evidence": "CSV BCTN 2025: tiêu thụ clo trong nước còn hạn chế; 'về dài hạn, nếu các ngành phụ trợ như PVC, hóa dầu và xử lý nước phát triển' DN mới tận dụng được clo dư – tức hiện chưa có đầu ra clo cho PVC trong nước. DGC: PVC chỉ nằm ở GĐ2 tổ hợp Nghi Sơn (~6.000 tỷ, chưa triển khai). QĐ 676/QĐ-BCT (2017) chỉ định hướng tổ hợp CA/EDC/VCM miền Nam 2026–2035.",
+   "sources": [
+    {
+     "title": "CSV – Báo cáo thường niên 2025 (VN-EN, đã ký số)",
+     "url": "https://static2.vietstock.vn/vietstock/2026/3/13/20260313___csv___bao_cao_thuong_nien_nam_2025__vn_en__dakyso.pdf",
+     "published": "2026-03-13"
+    },
+    {
+     "title": "VnEconomy – Tiến độ giải ngân dự án tổ hợp hóa chất 12.000 tỷ đồng tại Nghi Sơn",
+     "url": "https://vneconomy.vn/tien-do-giai-ngan-du-an-to-hop-hoa-chat-12-000-ty-dong-tai-nghi-son.htm",
+     "published": "2025-08-09"
+    },
+    {
+     "title": "Quyết định 676/QĐ-BCT phê duyệt Quy hoạch phát triển sản xuất các sản phẩm hóa chất cơ bản đến 2025, tầm nhìn 2035",
+     "url": "https://caselaw.vn/van-ban-phap-luat/318057-quyet-dinh-676-qd-bct-nam-2017-phe-duyet-quy-hoach-phat-trien-san-xuat-cac-san-pham-hoa-chat-co-ban-viet-nam-den-nam-2025-tam-nhin-den-nam-2035-do-bo-truong-bo-cong-thuong-ban-hanh",
+     "published": "2017-03-06"
+    }
+   ]
+  }
+ ],
+ "margins": [
+  {
+   "company": "CSV",
+   "year": 2025,
+   "scope": "Hợp nhất, BCTN 2025 (LN gộp/DT thuần)",
+   "gross_margin_pct": 25.04,
+   "revenue_bn": 2160.144,
+   "gross_profit_bn": 540.978,
+   "sources": [
+    {
+     "title": "CSV – Báo cáo thường niên 2025 (VN-EN, đã ký số)",
+     "url": "https://static2.vietstock.vn/vietstock/2026/3/13/20260313___csv___bao_cao_thuong_nien_nam_2025__vn_en__dakyso.pdf",
+     "published": "2026-03-13"
+    }
+   ]
+  },
+  {
+   "company": "CSV",
+   "year": 2024,
+   "scope": "Hợp nhất, BCTN 2025 (số so sánh)",
+   "gross_margin_pct": 27.21,
+   "revenue_bn": 1855.579,
+   "gross_profit_bn": 504.857,
+   "sources": [
+    {
+     "title": "CSV – Báo cáo thường niên 2025 (VN-EN, đã ký số)",
+     "url": "https://static2.vietstock.vn/vietstock/2026/3/13/20260313___csv___bao_cao_thuong_nien_nam_2025__vn_en__dakyso.pdf",
+     "published": "2026-03-13"
+    }
+   ]
+  },
+  {
+   "company": "CSV",
+   "year": 2023,
+   "scope": "Hợp nhất, StockAnalysis (LN gộp có thể khác BCTN: 2025 SA = 554,8 tỷ vs BCTN 541,0)",
+   "gross_margin_pct": 25.78,
+   "revenue_bn": 1588.441,
+   "gross_profit_bn": 409.546,
+   "sources": [
+    {
+     "title": "StockAnalysis – CSV Income Statement (triệu VND)",
+     "url": "https://stockanalysis.com/quote/hose/CSV/financials/",
+     "published": "truy cập 2026-11-26"
+    }
+   ]
+  },
+  {
+   "company": "CSV",
+   "year": 2022,
+   "scope": "Hợp nhất, StockAnalysis",
+   "gross_margin_pct": 31.37,
+   "revenue_bn": 2104.252,
+   "gross_profit_bn": 660.171,
+   "sources": [
+    {
+     "title": "StockAnalysis – CSV Income Statement (triệu VND)",
+     "url": "https://stockanalysis.com/quote/hose/CSV/financials/",
+     "published": "truy cập 2026-11-26"
+    }
+   ]
+  },
+  {
+   "company": "CSV",
+   "year": 2021,
+   "scope": "Hợp nhất, StockAnalysis",
+   "gross_margin_pct": 26.13,
+   "revenue_bn": 1576.769,
+   "gross_profit_bn": 412.005,
+   "sources": [
+    {
+     "title": "StockAnalysis – CSV Income Statement (triệu VND)",
+     "url": "https://stockanalysis.com/quote/hose/CSV/financials/",
+     "published": "truy cập 2026-11-26"
+    }
+   ]
+  },
+  {
+   "company": "CSV",
+   "year": "Q1/2026",
+   "scope": "Hợp nhất, DSC",
+   "gross_margin_pct": 20.09,
+   "sources": [
+    {
+     "title": "DSC – Báo cáo cập nhật CSV Q2/2026",
+     "url": "https://extgw.dsc.com.vn/eback/uploads/BCCN_CSV_Q2_2026_acbfc95985.pdf",
+     "published": "2026-07-29"
+    }
+   ]
+  },
+  {
+   "company": "CSV",
+   "year": "Q2/2026",
+   "scope": "Hợp nhất, DSC (+6,2 đpt YoY, nhờ giá H2SO4)",
+   "gross_margin_pct": 33.6,
+   "sources": [
+    {
+     "title": "DSC – Báo cáo cập nhật CSV Q2/2026",
+     "url": "https://extgw.dsc.com.vn/eback/uploads/BCCN_CSV_Q2_2026_acbfc95985.pdf",
+     "published": "2026-07-29"
+    }
+   ]
+  },
+  {
+   "company": "CSV",
+   "year": "TTM 30/09/2026",
+   "scope": "Hợp nhất, StockAnalysis",
+   "gross_margin_pct": 25.43,
+   "revenue_bn": 2773.711,
+   "gross_profit_bn": 705.336,
+   "sources": [
+    {
+     "title": "StockAnalysis – CSV Income Statement (triệu VND)",
+     "url": "https://stockanalysis.com/quote/hose/CSV/financials/",
+     "published": "truy cập 2026-11-26"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year": 2025,
+   "scope": "Toàn công ty, StockAnalysis (DT thuần khớp BCTN 2025: 1.603,37 tỷ)",
+   "gross_margin_pct": 19.14,
+   "revenue_bn": 1603.37,
+   "gross_profit_bn": 306.842,
+   "sources": [
+    {
+     "title": "StockAnalysis – HVT Income Statement (triệu VND)",
+     "url": "https://stockanalysis.com/quote/hnx/HVT/financials/",
+     "published": "truy cập 2026-11-26"
+    },
+    {
+     "title": "HVT – Báo cáo thường niên 2025",
+     "url": "https://vitrichem.vn/wp-content/uploads/2026/04/VI_214_Baocaothuongnien_2025.pdf",
+     "published": "2026-04 (Vietstock đăng 02/04/2026)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year": 2024,
+   "scope": "Toàn công ty, StockAnalysis (DT theo số so sánh BCTN 2025)",
+   "gross_margin_pct": 20.12,
+   "revenue_bn": 1450.932,
+   "gross_profit_bn": 291.899,
+   "sources": [
+    {
+     "title": "StockAnalysis – HVT Income Statement (triệu VND)",
+     "url": "https://stockanalysis.com/quote/hnx/HVT/financials/",
+     "published": "truy cập 2026-11-26"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year": 2023,
+   "scope": "Toàn công ty, StockAnalysis",
+   "gross_margin_pct": 18.38,
+   "revenue_bn": 1258.744,
+   "gross_profit_bn": 231.331,
+   "sources": [
+    {
+     "title": "StockAnalysis – HVT Income Statement (triệu VND)",
+     "url": "https://stockanalysis.com/quote/hnx/HVT/financials/",
+     "published": "truy cập 2026-11-26"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year": 2019,
+   "scope": "Toàn công ty, StockAnalysis",
+   "gross_margin_pct": 16.84,
+   "revenue_bn": 975.116,
+   "gross_profit_bn": 164.236,
+   "sources": [
+    {
+     "title": "StockAnalysis – HVT Income Statement (triệu VND)",
+     "url": "https://stockanalysis.com/quote/hnx/HVT/financials/",
+     "published": "truy cập 2026-11-26"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year": "2020–2022",
+   "scope": null,
+   "gross_margin_pct": null,
+   "note": "StockAnalysis không hiển thị; biểu đồ FPTS có nhưng text trích xuất bị xáo, không gán năm chắc chắn",
+   "sources": [
+    {
+     "title": "StockAnalysis – HVT Income Statement (triệu VND)",
+     "url": "https://stockanalysis.com/quote/hnx/HVT/financials/",
+     "published": "truy cập 2026-11-26"
+    },
+    {
+     "title": "FPTS – Báo cáo định giá lần đầu HVT (Tạ Duy Anh)",
+     "url": "https://finance.vietstock.vn/downloadedoc/16435",
+     "published": "2025-07 (số liệu giao dịch đến 30/06/2025; ngày phát hành chính xác không thấy trong phần đã đọc)"
+    }
+   ]
+  },
+  {
+   "company": "HVT",
+   "year": "TTM 30/09/2026",
+   "scope": "Toàn công ty, StockAnalysis",
+   "gross_margin_pct": 20.4,
+   "revenue_bn": 1730.586,
+   "gross_profit_bn": 353.098,
+   "sources": [
+    {
+     "title": "StockAnalysis – HVT Income Statement (triệu VND)",
+     "url": "https://stockanalysis.com/quote/hnx/HVT/financials/",
+     "published": "truy cập 2026-11-26"
+    }
+   ]
+  },
+  {
+   "company": "DGC",
+   "year": "Q3/2026",
+   "scope": "Hợp nhất, Yuanta (biên LN gộp 21%, +2 đpt QoQ, −11 đpt YoY)",
+   "gross_margin_pct": 21,
+   "sources": [
+    {
+     "title": "Yuanta Việt Nam – DGC: Lợi nhuận hồi phục, rủi ro còn đó (Báo cáo nhanh KQKD Q3/2026)",
+     "url": "https://static1.vietstock.vn/edocs/23041/DGC_3Q26_results_VN.pdf",
+     "published": "2026-11-10"
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  "CSV không công bố sản lượng sản xuất/tiêu thụ xút theo tấn trong BCTN 2025; chưa tìm thấy ở nguồn khác (chỉ có % tăng Q2/2026 từ DSC).",
+  "HVT: chưa có sản lượng 9T/2026; BCTN chỉ có sản lượng sản xuất, không có sản lượng tiêu thụ (trừ 'thương phẩm' 2019–2021) và không có giá bán bình quân.",
+  "HVT biên gộp 2020–2022 chưa lấy được từ nguồn đã mở.",
+  "Công suất CSV Biên Hòa lệch giữa nguồn (40.000 vs 50.000); công suất NaOH mục tiêu Nhơn Trạch lệch (50.000 / 100.000 / 120.000).",
+  "Vedan, Bãi Bằng: chỉ có số từ FPTS; không mở được nguồn của doanh nghiệp. Mở rộng Vedan lên 100.000 t (QĐ 676/2017) chưa xác minh.",
+  "Đông Á: công suất 18 / 20 / 30 nghìn tấn tùy nguồn; kế hoạch 40.000 t năm 2023 chưa xác minh.",
+  "Formosa Hà Tĩnh: không tìm thấy nguồn nào cho thấy có dây chuyền xút–clo; không đưa vào danh sách.",
+  "'Tân Long' và các nhà sản xuất nhỏ khác: chưa tìm được nguồn.",
+  "Nghị quyết HĐQT 34/2026: trang CafeF chỉ có tiêu đề, chưa đọc được PDF gốc; nội dung lấy qua Người Quan Sát và Yuanta.",
+  "DGC Nghi Sơn: chưa có tin xác nhận chạy thử/mẻ xút đầu tiên tính đến 26/11/2026; số dư XDCB dở dang 30/09/2026 chưa tìm thấy.",
+  "Mâu thuẫn công suất xút Nghi Sơn: 50.000 t NaOH 100% (Yuanta, FPTS) vs 80.000 t (TCCT 02–03/2025, IIR 02/2026, không nêu quy đổi).",
+  "TPC Vina: chưa xác minh nguồn VCM (nhập khẩu hay không). Nguồn AGC Phú Mỹ dùng VCM Indonesia là tài liệu 2016–2019.",
+  "HC Bảo Lâm: ngày vận hành GĐ1 chưa rõ.",
+  "Tọa độ tất cả nhà máy là ước lượng thủ công theo địa danh, không lấy từ bản đồ/hồ sơ."
+ ]
+}
