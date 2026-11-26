@@ -5,13 +5,13 @@
    Dùng chung cho Stock dashboard và dashboard ngành (sao nguyên văn, như share-image.js). */
 (function(){
   if(window.FinChartArrange)return;
-  const NAVY='#1D2678',LINE='#dce1e9',SPANS=[3,4,6,8,9,12],STEP=20,MINH=60,MAXH=960;
+  const NAVY='#1D2678',LINE='#dce1e9',SPANS=[6,8,12],MINSPAN=6,STEP=20,MINH=60,MAXH=960;
   const KEY='fs-arrange2:'+location.pathname;
   const css=`.fs-arr-toggle{position:fixed;right:16px;bottom:88px;z-index:900;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:1px solid ${LINE};border-radius:999px;background:#fff;color:${NAVY};font:600 13px Inter,Arial,system-ui,sans-serif;box-shadow:0 4px 14px rgba(16,22,48,.12);cursor:pointer}
 .fs-arr-toggle[aria-pressed=true]{background:${NAVY};border-color:${NAVY};color:#fff}
 .fs-arr-reset{position:fixed;right:16px;bottom:132px;z-index:900;height:32px;padding:0 12px;border:1px solid ${LINE};border-radius:999px;background:#fff;color:#596272;font:600 12.5px Inter,Arial,system-ui,sans-serif;cursor:pointer;display:none}
 body.fs-arr-on .fs-arr-reset{display:inline-block}
-.fs-arr-grid{display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;align-items:start}
+.fs-arr-grid{display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;grid-auto-flow:row dense;align-items:start}
 .fs-arr-grid>*{grid-column:span 12;min-width:0}
 body.fs-arr-on .fs-arr-card{outline:1.5px dashed #9aa6d6;outline-offset:2px}
 .fs-arr-handle,.fs-arr-size{display:none}
@@ -54,9 +54,9 @@ body.fs-arr-on .fs-arr-size{display:block;position:absolute;right:2px;bottom:2px
     if(h){if(!b.dataset.fsArrH0)b.dataset.fsArrH0=b.style.height||'-';b.style.height=h+'px';b.style.maxHeight='none'}
     charts(card).forEach(ch=>{try{ch.resize()}catch(e){}});
   }
-  function snap(n){return SPANS.reduce((a,b)=>Math.abs(b-n)<Math.abs(a-n)?b:a)}
+  function snap(n){n=Math.max(MINSPAN,n||12);return SPANS.reduce((a,b)=>Math.abs(b-n)<Math.abs(a-n)?b:a)}
   function spanOf(n,W){
-    if(isCard(n)){const k=cardKey(n),c=saved.cards[k];if(c&&c.span)return c.span}
+    if(isCard(n)){const k=cardKey(n),c=saved.cards[k];if(c&&c.span)return snap(c.span)}
     const w=n.offsetWidth;return w?snap(Math.round(w/W*12)):12;
   }
   // Chuyển khối sang lưới 12 cột, giữ bề rộng hiện tại của từng card (làm tròn về nấc gần nhất).
@@ -76,7 +76,7 @@ body.fs-arr-on .fs-arr-size{display:block;position:absolute;right:2px;bottom:2px
       boxes.forEach(toGrid);
       lay.forEach((keys,i)=>{const b=boxes[i];if(!b)return;keys.forEach(k=>{const c=all.get(k);if(c){b.append(c);all.delete(k)}})})}
     boxes.forEach(b=>[...b.children].filter(isCard).forEach(c=>{const s=saved.cards[cardKey(c)];if(!s)return;
-      if(s.span){toGrid(b);c.style.gridColumn='span '+s.span}if(s.h)setHeight(c,s.h)}));
+      if(s.span){s.span=snap(s.span);toGrid(b);c.style.gridColumn='span '+s.span}if(s.h)setHeight(c,s.h)}));
   }
   function tip(text,x,y){let t=document.querySelector('.fs-arr-tip');if(!t){t=el('div','fs-arr-tip');document.body.append(t)}t.textContent=text;t.style.left=(x+14)+'px';t.style.top=(y+14)+'px'}
   const untip=()=>{const t=document.querySelector('.fs-arr-tip');if(t)t.remove()};
@@ -89,8 +89,9 @@ body.fs-arr-on .fs-arr-size{display:block;position:absolute;right:2px;bottom:2px
       else tip(t&&t!==card?'Chỉ kéo trong cùng khu vực':'Kéo tới chart khác',ev.clientX,ev.clientY)};
     const up=()=>{document.removeEventListener('pointermove',move);document.removeEventListener('pointerup',up);clear();untip();card.classList.remove('fs-arr-drag');
       if(target){const tb=target.parentElement;toGrid(tb);tb.insertBefore(card,after?target.nextSibling:target);
-        const W=tb.clientWidth||1,ts=saved.cards[cardKey(target)],tsp=(ts&&ts.span)||spanOf(target,W),free=12-tsp;
-        let sp=snap(Math.round(card.offsetWidth/W*12));if(free>=3&&sp>free)sp=free;
+        const W=tb.clientWidth||1,ts=saved.cards[cardKey(target)],tsp=snap((ts&&ts.span)||spanOf(target,W)),free=Math.max(MINSPAN,12-tsp);
+        let sp=snap(Math.round(card.offsetWidth/W*12));if(sp>free)sp=free;
+        if(tsp+sp>12){const t2=saved.cards[cardKey(target)]||(saved.cards[cardKey(target)]={});t2.span=12-sp;target.style.gridColumn='span '+(12-sp)}
         const s=saved.cards[cardKey(card)]||(saved.cards[cardKey(card)]={});s.span=sp;card.style.gridColumn='span '+sp;
         charts(card).forEach(ch=>{try{ch.resize()}catch(e){}});record(pane)}};
     document.addEventListener('pointermove',move);document.addEventListener('pointerup',up);
