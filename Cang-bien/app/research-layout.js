@@ -6,8 +6,6 @@ const bank=document.body.dataset.sector==='bank',power=document.body.dataset.sec
 const sector=bank?'bank':power?'power':re?'realestate':tx?'textile':pt?'port':ag?'agri':sf?'seafood':sh?'shipping':st?'steel':xd?'construction':bh?'insurance':bl?'retail':ph?'pharma':oil?'oil':'sugar';document.body.dataset.researchSector=sector;
 const make=(tag,cls,text)=>{const n=document.createElement(tag);n.className=cls||'';if(text)n.textContent=text;return n};
 const pane=k=>$(`.majorpane[data-tab="mt${k}"]`),overview=pane(1),market=pane(2),policy=pane(4),hot=pane(7);
-// Cảng (27/11/2026): giữ thẻ Kế hoạch và kết quả 2026 (cg-30) của Key players; port-frame.js đặt vào Tổng quan.
-if(pt)['cg-30'].forEach(id=>{const c=document.querySelector(`[data-block-id="${id}"]`);if(c&&pane(6)?.contains(c))overview.append(c)});
 const legacyPlayerNodes=[...(bank?hot:pane(6)).children];
 const sources=make('section','majorpane');sources.dataset.tab='mt8';sources.id='pane-mt8';sources.hidden=true;hot.after(sources);sources.append(make('h2','','Sources'),make('p','research-caption','Nguồn dữ liệu, kỳ quan sát và phạm vi sử dụng.'));
 const world=$(bank?'#geo-pane-world':'#supply-world'),vn=$(bank?'#geo-pane-vn':'#supply-vietnam');
