@@ -42,7 +42,9 @@ const ALIAS = {mt3: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
 
 function style() {
   const st = el('style'); st.id = 'oil-frame-style';
-  st.textContent = `.dv{margin:10px 0 4px}.dv-axis{display:grid;grid-template-columns:260px 1fr;margin-bottom:4px}.dv-axis{position:relative}.dv-axis span{font:600 11.5px Inter,sans-serif;color:#9AA1BC}
+  st.textContent = `.of-lead{margin:6px 0 4px;font-size:14px;line-height:1.6;color:#3B4256}.of-lead b{color:#1F2A5C}.of-lead b.neg{color:#B3303F}.of-lead b.pos{color:#17784A}
+.dv-row.dv-total{border-bottom:2px solid #DCE1EE}.dv-row.dv-total .dv-l b{font-weight:800}.dv-row.dv-total .dv-bar{opacity:1}
+.dv{margin:10px 0 4px}.dv-axis{display:grid;grid-template-columns:260px 1fr;margin-bottom:4px}.dv-axis{position:relative}.dv-axis span{font:600 11.5px Inter,sans-serif;color:#9AA1BC}
 .dv-axis{display:flex;justify-content:space-between;padding-left:276px}.dv-g{margin:12px 0 4px;font:700 12px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#2938A8}
 .dv-row{display:grid;grid-template-columns:260px minmax(0,1fr);gap:16px;align-items:center;min-height:44px;border-bottom:1px solid #F0F2F8}
 .dv-l b{display:block;font:600 14px/1.3 Inter,sans-serif;color:#1F2A5C}.dv-l small{font-size:12px;color:#6B7392}
@@ -517,6 +519,34 @@ function driversChart() {
   grid.replaceWith(box);
   const sub = card.querySelector('.chart-sub'); if (sub) sub.textContent = 'Thay đổi so với mốc tham chiếu · bản nguồn tháng 8/2026';
 }
+
+// Đóng góp vào thay đổi cung và cầu so cùng kỳ (EIA STEO, tháng gần nhất có số): nước/khu vực nào kéo tăng, kéo giảm.
+function contribCharts() {
+  const S = window.SECTOR_DAILY?.sources, anchor = $('#chSDCombo')?.closest('.card'); if (!anchor || $('#of-contrib-supply')) return;
+  const nf = (v, d = 2) => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v).toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d});
+  const build = (src, id, kind) => {
+    const rec = src?.records; if (!rec?.length) return null;
+    const last = rec.at(-1), ym = last.date.slice(0, 7), prev = rec.find(r => r.date.slice(0, 7) === (+ym.slice(0, 4) - 1) + ym.slice(4)); if (!prev) return null;
+    const names = src.names, keys = Object.keys(names).filter(k => k !== 'WD');
+    const rows = keys.map(k => [names[k], last[k] - prev[k]]);
+    const total = last.WD - prev.WD, other = total - rows.reduce((a, r) => a + r[1], 0);
+    rows.push([kind === 'cung' ? 'Các nước khác' : 'Khu vực khác', other]);
+    rows.sort((a, b) => a[1] - b[1]);
+    const max = Math.max(...rows.map(r => Math.abs(r[1])), Math.abs(total)) * 1.15, pct = v => (Math.abs(v) / max * 50).toFixed(2) + '%';
+    const mm = `${+ym.slice(5)}/${ym.slice(0, 4)}`, mp = `${+ym.slice(5)}/${+ym.slice(0, 4) - 1}`;
+    const down = rows.filter(r => r[1] < -0.05).slice(0, 3), up = rows.filter(r => r[1] > 0.05).reverse().slice(0, 3);
+    const lead = `${kind === 'cung' ? 'Cung' : 'Cầu'} dầu toàn cầu tháng ${mm} ${total < 0 ? 'giảm' : 'tăng'} <b>${nf(Math.abs(total)).replace(/^[+−]/, '')}</b> triệu thùng/ngày so với ${mp} (${last.WD.toLocaleString('vi-VN', {maximumFractionDigits: 2})} so với ${prev.WD.toLocaleString('vi-VN', {maximumFractionDigits: 2})}).` +
+      (down.length ? ` Kéo giảm: ${down.map(r => `${r[0]} <b class="neg">${nf(r[1])}</b>`).join(', ')}.` : '') + (up.length ? ` ${total < 0 ? 'Bù lại' : 'Kéo tăng'}: ${up.map(r => `${r[0]} <b class="pos">${nf(r[1])}</b>`).join(', ')}.` : '');
+    const bar = (l, v, cls = '') => `<div class="dv-row ${cls}"><div class="dv-l"><b>${l}</b></div><div class="dv-track"><i class="dv-zero"></i><span class="dv-bar ${v < 0 ? 'neg' : 'pos'}" style="${v < 0 ? 'right:50%' : 'left:50%'};width:${pct(v)}"></span><em class="dv-v ${v < 0 ? 'neg' : 'pos'}" style="${v < 0 ? `right:calc(50% + ${pct(v)} + 6px)` : `left:calc(50% + ${pct(v)} + 6px)`}">${nf(v)}</em></div></div>`;
+    const card = el('div', 'card of-wide'); card.id = id; card.dataset.ofAdded = id;
+    card.innerHTML = `<div class="chart-title">${kind === 'cung' ? 'Ai làm cung thay đổi' : 'Ai làm cầu thay đổi'}: đóng góp theo ${kind === 'cung' ? 'nước' : 'khu vực'}, tháng ${mm} so cùng kỳ</div>
+      <p class="of-lead">${lead}</p><div class="dv">${bar(`Tổng ${kind} toàn cầu`, total, 'dv-total')}${rows.map(r => bar(r[0], r[1])).join('')}</div>
+      <div class="pw-src">Nguồn: <a href="https://www.eia.gov/outlooks/steo/" target="_blank" rel="noopener">EIA STEO ${src.issue || ''}</a> · ${kind === 'cung' ? 'sản lượng tổng chất lỏng, bảng 3b, 3c; "các nước khác" = thế giới trừ 10 nước' : 'tiêu thụ, bảng 3e; "khu vực khác" = thế giới trừ các nhóm trên (Canada, Mexico, châu Á khác…)'} · triệu thùng/ngày, số ước tính của EIA có thể được sửa ở bản sau</div>`;
+    return card;
+  };
+  const sup = build(S?.top_producers, 'of-contrib-supply', 'cung'), dem = build(S?.world_demand, 'of-contrib-demand', 'cầu');
+  if (sup) anchor.after(sup); if (dem) (sup || anchor).after(dem);
+}
 function run() {
   if (document.body.dataset.oilFrame) return; document.body.dataset.oilFrame = '1';
   style();
@@ -537,6 +567,7 @@ function run() {
   crudeLayout();
   supplyDemandCombo();
   driversChart();
+  contribCharts();
   tankerRates();
   lngPrices();
   taxTimeline();
