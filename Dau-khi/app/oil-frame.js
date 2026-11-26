@@ -59,6 +59,10 @@ function style() {
 .of-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}.of-body>*{min-width:0;margin:0!important}
 .of-body>.of-wide,.of-body>.of-gap,.of-body>details,.of-body>.kpis,.of-body>.research-grid,.of-body>table,.of-body>.tablewrap{grid-column:1/-1}
 @media (max-width:900px){.of-body{grid-template-columns:minmax(0,1fr)}}
+.of-body>.of-span{grid-column:1/-1}
+.of-body .card,.of-body .card *{min-width:0}.of-body canvas{max-width:100%!important}
+.of-body>.card{display:flex;flex-direction:column;align-self:stretch}
+.of-body>.card .chart{position:relative;width:100%;height:300px!important;min-height:0!important;flex:none}
 .of-gap{padding:10px 12px;border:1px dashed var(--line,#d6dbe8);border-radius:10px;color:var(--muted,#6b7280);font-size:13px}
 .of-rest{display:none!important}.of-next{display:inline-flex;align-items:center;gap:6px;margin:24px 0 0;padding:9px 18px;border:1px solid #C9D0EC;border-radius:999px;background:#fff;color:#2938A8;font:600 13.5px Inter,sans-serif;cursor:pointer;box-shadow:0 1px 2px rgba(31,42,92,.06);transition:.2s}.of-next:hover{background:#2938A8;color:#fff;border-color:#2938A8;box-shadow:0 4px 12px rgba(41,56,168,.2)}.of-pane .research-roadmap>h2{display:none}.of-hidden-legacy{display:none!important}`;
   document.head.append(st);
@@ -116,6 +120,9 @@ function buildTab(key) {
     if (!box.querySelector('[data-block-id],canvas,svg,table,.card')) d.remove();
   }
   pane.replaceChildren(sec);
+  // Thẻ lẻ đứng một mình trước khối rộng (hoặc cuối) thì trải hết hàng, tránh nửa trang trống.
+  subs.forEach(({body}) => { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
+    [...body.children].forEach(n => { const wide = n.matches('.of-wide,.of-gap,details,.kpis,.research-grid,table,.tablewrap') || getComputedStyle(n).gridColumnEnd === '-1'; if (wide) flush(); else run.push(n); }); flush(); });
   TABS[key] = subs;
 }
 const TABS = {};
