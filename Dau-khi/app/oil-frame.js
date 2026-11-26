@@ -46,7 +46,10 @@ const ALIAS = {mt3: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
 
 function style() {
   const st = el('style'); st.id = 'oil-frame-style';
-  st.textContent = `/* Thang chữ thống nhất cho Dầu khí (26/11/2026): tiêu đề thẻ 16 · chữ thường 14 · chú thích 12.5; ba màu chữ */
+  st.textContent = `.of-group{grid-column:1/-1;margin:18px 0 -4px;padding-top:14px;border-top:1px solid #E6E9F2}
+.of-group h3{margin:0;font:700 20px/1.3 Inter,system-ui,sans-serif;color:#1F2A5C}.of-group p{margin:4px 0 0;font-size:13.5px;color:#6B7392}
+.of-body>.kpis+.of-group{border-top:0;padding-top:0}
+/* Thang chữ thống nhất cho Dầu khí (26/11/2026): tiêu đề thẻ 16 · chữ thường 14 · chú thích 12.5; ba màu chữ */
 body[data-oil-frame] .majorpane{--of-t1:#1F2A5C;--of-t2:#3B4256;--of-t3:#6B7392}
 body[data-oil-frame] .majorpane :is(.chart-title,.card>h3,.card>h4,.card .research-detail>h3,.research-fold>summary,.business-model h3,.opec-drivers h3,.sectionhead h2.sec,.of-section h2){font:700 16px/1.35 Inter,system-ui,sans-serif!important;color:var(--of-t1)!important;letter-spacing:-.005em}
 body[data-oil-frame] .majorpane :is(.business-models>h2,.research-roadmap>h2,.section>h2,.sectionhead h2){font:700 20px/1.3 Inter,system-ui,sans-serif!important;color:var(--of-t1)!important}
@@ -290,6 +293,33 @@ function gasTimeline() {
   const unfold = () => card.querySelectorAll(':scope > details.research-fold').forEach(f => { const body = f.querySelector(':scope > .research-detail') || f; f.replaceWith(...[...body.childNodes].filter(n => n.tagName !== 'SUMMARY')); card.querySelectorAll('.research-repeated-heading').forEach(h => h.classList.remove('research-repeated-heading')); });
   unfold(); [800, 3000].forEach(t => setTimeout(unfold, t));
 }
+
+// Dầu thô toàn cầu: sắp theo 4 nhóm (Cung–cầu → Tồn kho → Giá → Dòng tiền đầu cơ); tách 2 chart cung cầu khỏi khối gộp cho to; bỏ chart Brent 24 tháng trùng với Brent so với WTI.
+function crudeLayout() {
+  const body = $('#of-mt2-crude .of-body'); if (!body || body.dataset.ofCrude) return; body.dataset.ofCrude = '1';
+  const card = id => { const n = $('#' + id); return n && (n.closest('.fs-share-host') || n.closest('.card')); };
+  const wrap05 = block('dau-khi-05');
+  const sd = card('chWorldSD'), gap = card('chWorldBalance');
+  if (sd && wrap05) { const t = wrap05.querySelector('details'); if (t) sd.append(t); }
+  const hide = n => { if (n) { n.hidden = true; n.classList.add('of-hidden-legacy'); } };
+  const head = (t, d) => { const h = el('div', 'of-group of-wide', `<h3>${t}</h3>${d ? `<p>${d}</p>` : ''}`); return h; };
+  const groups = [
+    ['Cung – cầu', 'Cân bằng cung cầu toàn cầu, dư địa công suất và các nguồn cung chính.', [sd, gap, block('dau-khi-12'), $('#of-top-exporters'), $('.opec-drivers'), block('dau-khi-09')]],
+    ['Tồn kho', 'Tồn kho Mỹ cập nhật theo tuần, chỉ báo sớm cho cân bằng.', [$('.inventory-group'), block('dau-khi-06'), block('dau-khi-07'), block('dau-khi-08'), block('dau-khi-10')]],
+    ['Giá', 'Giá giao ngay, chênh Brent–WTI, mặt bằng dài hạn và đường cong kỳ hạn.', [card('chFastPrice'), block('dau-khi-25'), block('dau-khi-24'), block('dau-khi-11')]],
+    ['Dòng tiền đầu cơ', '', [block('dau-khi-13')]],
+  ];
+  const kpis = body.querySelector(':scope > .kpis');
+  const keep = [kpis].filter(Boolean);
+  groups.forEach(([t, d, items]) => { const xs = items.filter(n => n && body.contains(n) && (n.parentElement === body || n === sd || n === gap) && !keep.includes(n) && !keep.some(k => k.contains(n))); if (!xs.length) return; keep.push(head(t, d), ...xs); });
+  [...body.children].forEach(n => { if (!keep.includes(n)) keep.push(n); });
+  keep.forEach(n => body.append(n));
+  [sd, gap, block('dau-khi-12')].forEach(n => n && n.classList.add('of-wide'));
+  hide(wrap05); hide(block('dau-khi-23'));
+  [...body.children].forEach(n => n.classList.remove('of-span'));
+  let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
+  [...body.children].forEach(n => { if (n.hidden) return; if (n.matches('.of-wide,.of-group,details,.kpis')) flush(); else run.push(n); }); flush();
+}
 function run() {
   if (document.body.dataset.oilFrame) return; document.body.dataset.oilFrame = '1';
   style();
@@ -305,6 +335,7 @@ function run() {
     const a = el('p', 'research-caption of-moved', 'Biểu đồ Hormuz, Bab el-Mandeb và xuất khẩu dầu Trung Đông đã chuyển sang <a href="#of-mt2-flows">Bức tranh ngành › 06 Vận tải & dòng chảy</a>; năm kênh truyền dẫn ở <a href="#of-mt1-chain">Tổng quan › 01 Chuỗi giá trị</a>.');
     (t.querySelector('details.research-fold > :not(summary)') || t).prepend(a);
   });
+  crudeLayout();
   const finHost = financePane();
   nav(finHost);
   // Tab Sources không còn trong thanh tab (nguồn đã ghi dưới từng chart, như Điện); nội dung vẫn trong DOM.
