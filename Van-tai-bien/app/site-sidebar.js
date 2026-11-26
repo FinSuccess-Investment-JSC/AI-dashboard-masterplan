@@ -7,7 +7,9 @@
   const root = document.documentElement, NAV = window.FS_SITE_NAV;
   if (!NAV || root.classList.contains('fs-embed')) return;
   root.classList.add('fs-has-sidebar');
-  const OPEN = 'fs_sb_open_v1';
+  const OPEN = 'fs_sb_open_v1', SHUT = 'fs_sb_collapsed_v1';
+  // Thu gọn / mở thanh (máy tính, máy tính bảng): nhớ lựa chọn; đặt lớp ngay từ đầu để không xô bố cục.
+  try { if (localStorage.getItem(SHUT) === '1') root.classList.add('fs-sb-collapsed'); } catch (e) { /* mặc định mở */ }
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
   const mobile = matchMedia('(max-width: 767px)');
   let opened = {};
@@ -68,8 +70,10 @@
     const cur = current(), act = activeItem(cur);
     const homeA = document.querySelector('.fs-brandbar a[data-site-route="home"]'), logo = homeA?.querySelector('img');
     const sb = document.createElement('aside'); sb.className = 'fs-sb'; sb.setAttribute('aria-label', 'Danh mục ngành');
-    sb.innerHTML = `<a class="fs-sb-logo" href="${esc(homeA?.href || hrefOf({key: 'home'}) || '../')}" aria-label="FinSuccess · trang tổng">${logo ? `<img src="${esc(logo.src)}" alt="FinSuccess">` : 'FinSuccess'}</a>`
-      + '<div class="fs-sb-search"></div><nav class="fs-sb-tree" aria-label="Ngành">'
+    sb.innerHTML = `<div class="fs-sb-top"><a class="fs-sb-logo" href="${esc(homeA?.href || hrefOf({key: 'home'}) || '../')}" aria-label="FinSuccess · trang tổng">${logo ? `<img src="${esc(logo.src)}" alt="FinSuccess">` : 'FinSuccess'}</a>`
+      + '<button type="button" class="fs-sb-fold" aria-controls="fs-sb-body"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>'
+      + '<button type="button" class="fs-sb-rail" aria-label="Mở thanh ngành"><span>Ngành</span></button>'
+      + '<div class="fs-sb-search"></div><nav class="fs-sb-tree" id="fs-sb-body" aria-label="Ngành">'
       + NAV.groups.map((g, gi) => `<div class="fs-sb-h${gi ? ' sub' : ''}">${gi ? '' : '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 14h12M4 12V7M8 12V3M12 12V9" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>'}${esc(g.title)}</div><ul>${g.items.map(it => itemHtml(it, act, 0)).join('')}</ul>`).join('')
       + '</nav>';
     document.body.prepend(sb);
@@ -105,12 +109,31 @@
 
     // Ô tra cứu: trong thanh trái trên máy tính, trở lại đầu trang trên điện thoại.
     const search = document.querySelector('.fs-search.fs-search-inline');
+    const collapsed = () => root.classList.contains('fs-sb-collapsed');
     const place = () => {
       if (!search || !inner) return;
-      if (mobile.matches) { if (search.parentElement !== inner) inner.insertBefore(search, inner.querySelector('.fs-theme')); }
+      if (mobile.matches || collapsed()) { if (search.parentElement !== inner) inner.insertBefore(search, inner.querySelector('.fs-theme')); }
       else if (search.parentElement !== sb.querySelector('.fs-sb-search')) sb.querySelector('.fs-sb-search').append(search);
     };
     place(); mobile.addEventListener?.('change', () => { place(); measure(); });
+
+    // Nút « thu thanh về một dải hẹp bên trái; bấm dải hẹp để mở lại. Nhớ lựa chọn cho các lần mở trang sau.
+    const fold = sb.querySelector('.fs-sb-fold'), rail = sb.querySelector('.fs-sb-rail');
+    const syncFold = () => {
+      const c = collapsed();
+      fold.setAttribute('aria-expanded', String(!c)); fold.setAttribute('aria-label', c ? 'Mở thanh ngành' : 'Thu gọn thanh ngành'); fold.title = c ? 'Mở thanh ngành' : 'Thu gọn thanh ngành';
+    };
+    const setCollapsed = c => {
+      root.classList.toggle('fs-sb-collapsed', c);
+      try { localStorage.setItem(SHUT, c ? '1' : '0'); } catch (e) { /* chỉ phiên này */ }
+      syncFold(); place();
+      // Chart vẽ theo bề rộng khung: báo đổi kích thước sau khi lề trái đổi xong.
+      setTimeout(() => dispatchEvent(new Event('resize')), 220);
+      (c ? rail : fold).focus({preventScroll: true});
+    };
+    fold.addEventListener('click', () => setCollapsed(!collapsed()));
+    rail.addEventListener('click', () => setCollapsed(false));
+    syncFold();
 
     // Thanh tab lớn dính ngay dưới dải ngành trên điện thoại.
     function measure() { root.style.setProperty('--fs-strip-h', (mobile.matches ? strip.offsetHeight : 0) + 'px'); }
