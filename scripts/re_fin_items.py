@@ -1,0 +1,34 @@
+"""Universe và nhóm doanh nghiệp cho tab Tài chính ngành BĐS dân cư (Bat-dong-san/), 26/11/2026.
+Khoản mục BCTC dùng chung với Khu công nghiệp (kcn_fin_items.ITEMS = khoản mục ngành Điện + người mua trả tiền trước,
+doanh thu chưa thực hiện, chi phí dở dang dài hạn, bất động sản đầu tư). Dùng bởi fetch_re_financials.py và build_re_financials.py.
+
+Nhóm: VHM tách riêng vì một mã chiếm phần lớn lợi nhuận ngành, gộp chung sẽ che chu kỳ của các chủ đầu tư còn lại."""
+from kcn_fin_items import ITEMS  # noqa: F401
+
+TICKERS = ['VHM', 'NVL', 'KDH', 'NLG', 'DXG', 'PDR', 'DIG', 'CEO', 'AGG', 'TCH', 'NTL', 'VRE', 'DXS']
+
+GROUPS = [
+    {'id': 'vhm', 'label': 'Vinhomes (VHM)', 'color': '#2938A8', 'default': True},
+    {'id': 'dev', 'label': 'Chủ đầu tư nhà ở khác', 'color': '#2a9fa3', 'default': True},
+    {'id': 'service', 'label': 'Cho thuê & môi giới', 'color': '#c98a00', 'default': True},
+]
+COMPANIES = [
+    {'ticker': 'VHM', 'group': 'vhm', 'note': 'Vinhomes: đại đô thị, căn hộ, thấp tầng; có bán buôn dự án và KCN'},
+    {'ticker': 'NVL', 'group': 'dev', 'note': 'Novaland: Aqua City, NovaWorld Phan Thiết, Hồ Tràm; đang tái cấu trúc nợ'},
+    {'ticker': 'KDH', 'group': 'dev', 'note': 'Khang Điền: nhà ở TP.HCM (TP Thủ Đức, Bình Chánh)'},
+    {'ticker': 'NLG', 'group': 'dev', 'note': 'Nam Long: nhà ở vừa túi tiền, Waterpoint, Izumi, Mizuki'},
+    {'ticker': 'DXG', 'group': 'dev', 'mixed': True, 'note': 'Đất Xanh: phát triển dự án và môi giới (sở hữu DXS)'},
+    {'ticker': 'PDR', 'group': 'dev', 'note': 'Phát Đạt: dự án Bình Dương, Bình Định, Đà Nẵng'},
+    {'ticker': 'DIG', 'group': 'dev', 'mixed': True, 'note': 'DIC Corp: khu đô thị, du lịch; có vật liệu xây dựng'},
+    {'ticker': 'CEO', 'group': 'dev', 'mixed': True, 'note': 'C.E.O Group: đất nền, du lịch nghỉ dưỡng Phú Quốc'},
+    {'ticker': 'AGG', 'group': 'dev', 'note': 'An Gia: căn hộ TP.HCM'},
+    {'ticker': 'TCH', 'group': 'dev', 'mixed': True, 'note': 'Tài chính Hoàng Huy: Hoang Huy Commerce (Hải Phòng); có kinh doanh xe'},
+    {'ticker': 'NTL', 'group': 'dev', 'note': 'Lideco: khu đô thị Hà Nội, Quảng Ninh'},
+    {'ticker': 'VRE', 'group': 'service', 'note': 'Vincom Retail: cho thuê trung tâm thương mại'},
+    {'ticker': 'DXS', 'group': 'service', 'note': 'Dịch vụ BĐS Đất Xanh: môi giới sơ cấp'},
+]
+# DXS là công ty con của DXG: khi cả hai cùng nằm trong rổ thì loại doanh thu nội bộ (tỷ lệ chưa đối chiếu báo cáo thường niên).
+CONSOLIDATION = [
+    {'parent': 'DXG', 'child': 'DXS', 'since': '2019Q1', 'ownership': None, 'source': '', 'note': 'công ty con của Đất Xanh; tỷ lệ chưa đối chiếu'},
+]
+ASSOCIATES = []
