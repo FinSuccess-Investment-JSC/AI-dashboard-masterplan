@@ -37,7 +37,7 @@ function note(k) { const p = document.createElement('p'); p.className = 'rf-note
 window.PKG = {
   key: 'aviation', prefix: 'hk', label: 'Hàng không', dataVar: 'AVIATION_DATA',
   ticker: {commodity: [], ratio: []},
-  wide: ['hk-00', 'hk-01', 'hk-05', 'hk-13', 'hk-30', 'hk-32', 'hk-40', 'hk-41', 'hk-62'],
+  wide: ['hk-01', 'hk-05', 'hk-13', 'hk-30', 'hk-32', 'hk-40', 'hk-41', 'hk-62'],
   kpis: [
     {spark: 'spk-pax', series: 'air_pax', unit: 'nghìn lượt', digits: 0, note: 'NSO', color: C.navy},
     {spark: 'spk-visair', series: 'visitors_air', unit: 'nghìn lượt', div: 1000, digits: 0, note: 'NSO', color: C.teal},
@@ -45,17 +45,6 @@ window.PKG = {
     {spark: 'spk-cargo', series: 'air_freight', unit: 'nghìn tấn', digits: 1, note: 'NSO', color: C.plum},
   ],
   charts: [
-    {id: 'hkBrief', type: 'brief', src: [CAA10, ['EIA', 'https://www.eia.gov/dnav/pet/hist/EER_EPJK_PF4_RGC_DPGD.htm'], ['NHNN', 'https://sbv.gov.vn/'], VND],
-      render: () => {
-        const vd = last('caa_pax_carried_vn', 'dom'), vi = last('caa_pax_carried_vn', 'intl'), ai = last('caa_pax_airport', 'intl'), ad = last('caa_pax_airport', 'dom');
-        const fx = (W.fx || {}).monthly || [], fxl = fx.at(-1), fxly = fxl && fx.find(r => r[0] === (Number(fxl[0].slice(0, 4)) - 1) + fxl[0].slice(4));
-        const p = [];
-        if (vi && ai) p.push(`<li><b>Quốc tế: hãng Việt tăng chậm hơn thị trường.</b> ${esc(vi.period_label)}, lượt khách quốc tế qua cảng ${nf(ai.value, 1)} triệu (${sg(ai.yoy, 1)}%), còn khách quốc tế do hãng Việt vận chuyển ${nf(vi.value, 1)} triệu (${sg(vi.yoy, 1)}%). Nội địa hãng Việt ${nf(vd?.value, 1)} triệu (${sg(vd?.yoy, 1)}%), cùng nhịp lượt khách nội địa qua cảng (${sg(ad?.yoy, 1)}%).</li>`);
-        if (fuelL && fuelLY && fxl && fxly) p.push(`<li><b>Chi phí đầu vào tăng mạnh.</b> Jet fuel US Gulf Coast bình quân T${Number(fuelL[0].slice(5))}/${fuelL[0].slice(0, 4)} ${nf(fuelL[1], 2)} USD/gallon (${sg((fuelL[1] / fuelLY[1] - 1) * 100, 0)}% so cùng kỳ); tỷ giá trung tâm bình quân T${Number(fxl[0].slice(5))}/${fxl[0].slice(0, 4)} ${nf(fxl[1], 0)} đồng/USD (${sg((fxl[1] / fxly[1] - 1) * 100, 1)}%).</li>`);
-        p.push(`<li><b>Nhóm chịu tác động:</b> HVN, VJC chịu cả chi phí nhiên liệu tính bằng USD lẫn áp lực giữ thị phần quốc tế${EX.winter_intl_yoy != null ? ` khi lịch bay quốc tế mùa Đông 2026 tăng ${sg(EX.winter_intl_yoy, 1)}% chuyến khứ hồi/tuần` : ''}. ACV, SCS, SGN, AST thu theo lượt khách và hàng qua cảng, không phụ thuộc hãng nào chở.</li>`);
-        p.push(`<li><b>Kỳ tới cần kiểm tra:</b> số 11 tháng của Cục Hàng không (khách quốc tế hãng Việt so với lượt khách quốc tế qua cảng); BCTC quý 4/2026 của HVN, VJC (chi phí nhiên liệu, chênh lệch tỷ giá). <b>Chưa đủ dữ liệu kết luận về yield và biên theo hãng</b>: thiếu ASK, RPK theo hãng, doanh thu hành khách tách riêng và chi phí nhiên liệu theo thuyết minh quý.</li>`);
-        return `<ul class="hk-brief">${p.join('')}</ul>`;
-      }},
     {id: 'hkChain', type: 'html',
       src: [['Cường Anh Eco-Writer – Chuỗi giá trị ngành Hàng không (06/08/2025)', 'https://cuonganhecowriter.substack.com/p/chuoi-gia-tri-nganh-hang-khong'], SHS],
       method: 'Sơ đồ định tính. Mũi tên liền biểu thị luồng cung ứng và vận chuyển. Nét đứt biểu thị hạ tầng và dịch vụ hỗ trợ hãng bay. Cơ chế thanh toán thực tế tùy biểu giá, hợp đồng và nhà ga.',
@@ -239,8 +228,7 @@ window.PKG = {
   section: {demand: ['mt2', 'demand'], supply: ['mt2', 'supply'], cost: ['mt2', 'cost'], airport: ['mt2', 'airport'], cargo: ['mt2', 'cargo']},
   tree: {
     mt1: {title: 'Tổng quan ngành', subs: [
-      {k: 'map', t: 'Đọc nhanh & bản đồ ngành', d: 'Theo dõi kỳ công bố mới nhất và cách từng doanh nghiệp thu tiền từ một chuyến bay.', items: [
-        {q: 'Kỳ mới nhất nói gì?', id: 'rf-q-brief', take: ['hk-00']},
+      {k: 'map', t: 'Bản đồ ngành', d: 'Cách từng doanh nghiệp thu tiền từ một chuyến bay.', items: [
         {q: 'Một chuyến bay tạo doanh thu cho những ai?', id: 'rf-q-map', take: ['hk-01']}]},
       {k: 'model', t: 'Mô hình kiếm tiền', d: 'Doanh thu đến từ đâu, biến nào quyết định biên, mã nào đại diện.', items: [
         {q: 'Mỗi doanh nghiệp kiếm tiền từ đâu, biến nào quyết định biên?', id: 'rf-q-model', take: ['hk-05']}]},
