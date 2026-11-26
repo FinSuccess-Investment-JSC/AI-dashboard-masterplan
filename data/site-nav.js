@@ -16,7 +16,8 @@ window.FS_SITE_NAV = {
       {label: 'Xây dựng - Đầu tư công', children: [
         {key: 'construction', label: 'Xây dựng'},
         {key: 'materials', label: 'Vật liệu xây dựng'},
-        {key: 'publicinv', label: 'Đầu tư công & BOT'}
+        {key: 'publicinv', label: 'Đầu tư công & BOT'},
+        {key: 'plastic', label: 'Nhựa'}
       ]},
       {key: 'retail', label: 'Bán lẻ'},
       {key: 'auto', label: 'Ô tô - Xe máy'},

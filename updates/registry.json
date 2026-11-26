@@ -8132,6 +8132,177 @@
     "Mở trang gốc",
     "Không đoán số: không chắc thì null + gaps"
    ]
+  },
+  {
+   "id": "plastic.prices",
+   "tier": "A",
+   "title": "Nhựa: giá hạt nhựa (PPI Mỹ), dầu Brent, khí Henry Hub theo tháng",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     5,
+     20
+    ]
+   },
+   "publication": "FRED cập nhật hằng tháng (BLS PPI giữa tháng, IMF Brent trễ 1 tháng)",
+   "source": {
+    "name": "FRED (BLS WPU066, IMF POILBREUSDM, EIA MHHNGSP)",
+    "url": "https://fred.stlouisfed.org/series/WPU066"
+   },
+   "where": {
+    "page": "Nhua/index.html",
+    "file": "data/plastic-prices.js",
+    "blocks": [
+     "nh-20"
+    ]
+   },
+   "how": "python3 scripts/build_plastic_prices.py Trang Nhựa (Nhua/) dựng qua Nhua/app/plastic-config.js + pkg-dashboard.js.",
+   "job": "python3 scripts/build_plastic_prices.py"
+  },
+  {
+   "id": "plastic.companies.quarterly",
+   "tier": "A",
+   "title": "Nhựa: doanh thu, lợi nhuận, biên theo quý 9 mã (BMP, NTP, DNP, HCD, AAA, TDP, TPP, NHH, VTZ)",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     1,
+     10
+    ]
+   },
+   "source": {
+    "name": "Stock Analysis · BCTC quý",
+    "url": "https://stockanalysis.com/"
+   },
+   "where": {
+    "page": "Nhua/index.html",
+    "file": "data/company-quarterly.js",
+    "blocks": [
+     "nh-40",
+     "nh-41",
+     "nh-42"
+    ]
+   },
+   "how": "python3 scripts/update_company_comparison.py (rổ 'plastic') → build_company_quarterly.py. Trang Nhựa (Nhua/) dựng qua Nhua/app/plastic-config.js + pkg-dashboard.js.",
+   "job": "python3 scripts/update_company_comparison.py"
+  },
+  {
+   "id": "plastic.customs",
+   "tier": "C",
+   "title": "Nhựa: xuất nhập khẩu chất dẻo nguyên liệu và sản phẩm từ chất dẻo (Hải quan)",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     8
+    ]
+   },
+   "publication": "Hải quan biểu 2X/2N tháng, khoảng ngày 5–7 tháng sau",
+   "source": {
+    "name": "Hải quan Việt Nam",
+    "url": "https://files.customs.gov.vn/CustomsCMS/TONG_CUC/2026/11/5/2026-t10-2x(vn-sb).pdf"
+   },
+   "where": {
+    "page": "Nhua/index.html",
+    "blocks": [
+     "nh-31",
+     "nh-34"
+    ]
+   },
+   "how": "Mở biểu 2X (xuất) và 2N (nhập) tháng mới; sửa cột kỳ cuối trong chNhImport, chNhExport và ô số spk-ex, spk-im ở Nhua/app/plastic-config.js.",
+   "gates": [
+    "Lấy đúng nhóm hàng 'Chất dẻo nguyên liệu', 'Sản phẩm từ chất dẻo'",
+    "Ghi kỳ lũy kế"
+   ]
+  },
+  {
+   "id": "plastic.policy",
+   "tier": "C",
+   "title": "Nhựa: NĐ 08/2022, NĐ 05/2025 tái chế bao bì, NĐ 199/2025 thuế nhập hạt nhựa, tự vệ PET của Anh",
+   "schedule": {
+    "type": "watch",
+    "note": "Mốc: 01/12/2026 Anh tự vệ PET; 31/12/2030 dừng nhựa dùng một lần"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Thư viện pháp luật",
+    "url": "https://thuvienphapluat.vn/"
+   },
+   "where": {
+    "page": "Nhua/index.html",
+    "blocks": [
+     "nh-52"
+    ]
+   },
+   "how": "Mở văn bản gốc; sửa mốc trong nhTimeline ở Nhua/app/plastic-config.js.",
+   "gates": [
+    "Mở văn bản gốc",
+    "Ghi ngày hiệu lực"
+   ]
+  },
+  {
+   "id": "plastic.hot-topics",
+   "tier": "C",
+   "title": "Nhựa: Chủ đề nóng: Long Sơn, sàn nhựa sang Mỹ, tự vệ PET",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Hải quan Việt Nam, U.S. ITC",
+    "url": "https://dataweb.usitc.gov/"
+   },
+   "where": {
+    "page": "Nhua/index.html",
+    "blocks": [
+     "nh-t1",
+     "nh-t2",
+     "nh-t3"
+    ]
+   },
+   "how": "Thêm mốc mới có ngày và link vào tab Chủ đề nóng Nhua/index.html.",
+   "gates": [
+    "Mỗi dòng có ngày + link"
+   ]
+  },
+  {
+   "id": "plastic.static",
+   "tier": "static",
+   "title": "Nhựa: chuỗi giá trị, cơ cấu, số tổng hợp thế giới và Việt Nam",
+   "schedule": {
+    "type": "none"
+   },
+   "where": {
+    "page": "Nhua/index.html",
+    "blocks": [
+     "nh-01",
+     "nh-02",
+     "nh-03",
+     "nh-05",
+     "nh-21",
+     "nh-22",
+     "nh-23",
+     "nh-24",
+     "nh-25",
+     "nh-26",
+     "nh-27",
+     "nh-28",
+     "nh-29",
+     "nh-30",
+     "nh-32",
+     "nh-33",
+     "nh-35",
+     "nh-36",
+     "nh-37",
+     "nh-38",
+     "nh-39"
+    ]
+   },
+   "how": "Finsuccess tổng hợp từ nguồn gốc ghi dưới từng chart; chỉ sửa khi người dùng yêu cầu."
   }
  ]
 }

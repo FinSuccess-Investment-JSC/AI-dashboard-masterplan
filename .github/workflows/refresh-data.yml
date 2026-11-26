@@ -87,6 +87,7 @@ jobs:
           python scripts/build_pharma_extra.py || true
           python scripts/build_sector_public.py
           python scripts/build_oil_public.py || true
+          python scripts/build_plastic_prices.py || true
           python scripts/fetch_public_fs.py && python scripts/build_company_quarterly.py
           python scripts/fetch_power_financials.py && python scripts/build_power_financials.py || true
           python scripts/fetch_kcn_financials.py && python scripts/build_kcn_financials.py || true

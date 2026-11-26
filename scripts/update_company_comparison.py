@@ -31,6 +31,7 @@ UNIVERSE={
  'dairy':[('VNM','hose','Sữa'),('MCM','hose','Sữa')],
  'beer':[('SAB','hose','Bia'),('BHN','hose','Bia'),('SMB','hose','Bia'),('HAD','hnx','Bia')],
  'auto':[('HAX','hose','Đại lý ô tô'),('SVC','hose','Đại lý ô tô'),('CTF','hose','Đại lý ô tô'),('TMT','hose','Sản xuất, lắp ráp')],
+ 'plastic':[('BMP','hose','Nhựa xây dựng'),('NTP','hnx','Nhựa xây dựng'),('DNP','hnx','Nhựa xây dựng'),('HCD','hose','Nhựa xây dựng'),('AAA','hose','Nhựa bao bì'),('TDP','hose','Nhựa bao bì'),('TPP','hnx','Nhựa bao bì'),('NHH','hose','Nhựa kỹ thuật'),('VTZ','hnx','Nhựa gia dụng')],
  'pharma':[('DHG','hose','Dược phẩm'),('IMP','hose','Dược phẩm'),('DBD','hose','Dược phẩm'),('TRA','hose','Dược phẩm'),('DMC','hose','Dược phẩm'),('DVN','upcom','Dược phẩm'),('FRT','hose','Dịch vụ y tế'),('TNH','hose','Dịch vụ y tế')],
  'insurance':[('BVH','hose','Tập đoàn'),('PVI','hnx','Phi nhân thọ'),('BMI','hose','Phi nhân thọ'),('MIG','hose','Phi nhân thọ'),('PTI','hnx','Phi nhân thọ'),('BIC','hose','Phi nhân thọ'),('VNR','hnx','Tái bảo hiểm')],
  'bank':[(s,'hose',g) for s,g in [('VCB','Quốc doanh'),('CTG','Quốc doanh'),('BID','Quốc doanh'),('TCB','Tư nhân'),('VPB','Tư nhân'),('MBB','Tư nhân'),('ACB','Tư nhân'),('HDB','Tư nhân'),('TPB','Tư nhân'),('VIB','Tư nhân'),('SHB','Tư nhân')]]}
