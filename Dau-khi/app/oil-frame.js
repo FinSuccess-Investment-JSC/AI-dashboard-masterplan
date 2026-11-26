@@ -48,9 +48,17 @@ const ALIAS = {mt3: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
 
 function style() {
   const st = el('style'); st.id = 'oil-frame-style';
-  st.textContent = `.of-nav{display:flex;flex-wrap:wrap;gap:4px;margin:10px 0 14px;padding:6px;border:1px solid var(--line,#e3e7f0);border-radius:12px;background:var(--card,#fff)}
-.of-nav button{border:0;background:none;padding:8px 14px;border-radius:8px;font:600 14px Inter,system-ui,sans-serif;color:var(--ink2,#3b4256);cursor:pointer}
-.of-nav button span{color:var(--muted,#7a8399);font-weight:500;margin-right:6px}.of-nav button[aria-selected=true]{background:#2938A8;color:#fff}.of-nav button[aria-selected=true] span{color:#c9cff2}
+  st.textContent = `.of-nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:12px 0 20px;counter-reset:x}
+.of-nav button{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:14px 16px;border:1px solid var(--line,#e3e7f0);border-radius:12px;background:var(--card,#fff);font:inherit;color:var(--ink2,#3b4256);cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s}
+.of-nav button:hover{border-color:#2938A8;box-shadow:0 4px 14px rgba(41,56,168,.12);transform:translateY(-1px)}
+.of-nav button:not(:last-child)::after{content:'→';position:absolute;right:-11px;top:50%;transform:translateY(-50%);font-size:13px;color:#9aa3c7;z-index:1}
+.of-nav .of-n{font:700 12px Inter,sans-serif;color:#2938A8;letter-spacing:.04em}
+.of-nav b{font:700 16px Inter,sans-serif;color:var(--ink,#1f2a5c)}
+.of-nav small{font-size:12.5px;line-height:1.45;color:var(--muted,#6b7280);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.of-nav button[aria-selected=true]{background:#2938A8;border-color:#2938A8;box-shadow:0 6px 18px rgba(41,56,168,.25)}
+.of-nav button[aria-selected=true] *{color:#fff!important}.of-nav button[aria-selected=true] small{opacity:.85}
+.of-next{display:block;margin:24px 0 0 auto;padding:10px 18px;border:1px solid #2938A8;border-radius:999px;background:none;color:#2938A8;font:600 14px Inter,sans-serif;cursor:pointer}.of-next:hover{background:#2938A8;color:#fff}
+@media (max-width:700px){.of-nav{grid-template-columns:1fr 1fr}.of-nav button::after{display:none}}
 .of-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;margin:4px 0 12px;padding:10px 0;border-bottom:1px solid var(--line,#e3e7f0)}
 .of-head h2{margin:0;font-size:24px}.of-head .of-k{font:500 13px Inter,sans-serif;color:var(--muted,#7a8399);margin-right:8px}.of-head p{margin:4px 0 0;color:var(--ink2,#3b4256)}
 .of-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}.of-body>*{min-width:0;margin:0!important}
@@ -73,14 +81,13 @@ function buildTab(key) {
   const legacy = [...pane.children];
   const sec = el('section', 'section of-section');
   const brief = key === 'mt1' && $('#dataBrief'); if (brief) sec.append(brief);
-  sec.append(el('div', 'sectionhead', `<div><h2 class="sec">${def.title}</h2><p>${def.intro}</p></div>`));
+  sec.append(el('div', 'sectionhead', `<div><h2 class="sec">${def.title}</h2></div>`));
   const nav = el('div', 'of-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', def.title); sec.append(nav);
   const used = new Set();
   const subs = def.subs.map((s, i) => {
-    const b = el('button', '', `<span>${s.n}</span>${s.t}`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-${key}-${s.k}-tab`;
+    const b = el('button', '', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b><small>${s.d}</small>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-${key}-${s.k}-tab`;
     const p = el('div', 'pane-subpane of-pane'); p.id = `of-${key}-${s.k}`; p.dataset.sub = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
-    p.append(el('header', 'of-head', `<div><h2><span class="of-k">${s.n}</span>${s.t}</h2><p>${s.d}</p></div>`));
-    const body = el('div', 'of-body'); p.append(body);
+        const body = el('div', 'of-body'); p.append(body);
     if (s.kpis) { const k = $('.majorpane[data-tab="mt2"] .kpis'); if (k) { body.append(k); used.add(k); } }
     const put = n => { if (!n || used.has(n) || [...used].some(u => u.contains?.(n))) return; body.append(n); used.add(n); wideIfTable(n); };
     (s.canv || []).forEach(c => put(byCanvas(c)));
@@ -88,6 +95,7 @@ function buildTab(key) {
     s.ids.forEach(id => put(block(id)));
     if (s.gap) body.insertAdjacentHTML('beforeend', GAP(s.gap));
     if (!body.children.length) body.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu cho mục này.'));
+    const nx = def.subs[i + 1]; if (nx) { const go = el('button', 'of-next', `Tiếp: ${nx.t} →`); go.type = 'button'; go.addEventListener('click', () => { open(key, nx.k, true); nav.scrollIntoView({behavior: 'smooth', block: 'start'}); }); p.append(go); }
     nav.append(b); sec.append(p);
     b.addEventListener('click', () => open(key, s.k, true));
     return {s, b, p, body};

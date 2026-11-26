@@ -1278,3 +1278,75 @@ table.is-sheet tbody tr:nth-child(even) td{background:#fff}
 .card:has(canvas):not(:has(details:not([open]) canvas))::after,.viz-block:has(canvas):not(:has(details:not([open]) canvas))::after{content:"fisc.vn";display:block;text-align:right;font:700 12.5px/1 Inter,Arial,sans-serif;color:#2938A8;margin-top:6px;letter-spacing:.2px}
 html[data-theme="dark"] .card:has(canvas)::after,html.dark .card:has(canvas)::after{color:#59C5C8}
 @media print{.card:has(canvas)::after,.viz-block:has(canvas)::after{display:none}}
+
+/* re-pack · ma trận tiến độ dự án */
+.re-pg-tbl td.re-pg,.re-pg-tbl th.re-pg-sub{text-align:center;font-size:12.5px;min-width:92px}
+.re-pg-tbl th.re-pg-h{text-align:center;border-bottom:2px solid #59C5C8}
+.re-pg-leg .re-pg-ok,table.re-pg-tbl tr td.re-pg-ok{background:#E3F5F5!important;color:#0E6B6E;font-weight:700}
+.re-pg-leg .re-pg-part,table.re-pg-tbl tr td.re-pg-part{background:repeating-linear-gradient(135deg,#E3F5F5 0 6px,#fff 6px 12px)!important;color:#0E6B6E;font-weight:600}
+.re-pg-leg .re-pg-plan,table.re-pg-tbl tr td.re-pg-plan{background:#FFF6DB!important;color:#7A5A00;font-weight:600}
+.re-pg-leg .re-pg-na,table.re-pg-tbl tr td.re-pg-na{background:#F3F5F8!important;color:#94A3B8}
+.re-pg-ho{font-size:12.5px;min-width:200px}
+table.re-pg-tbl tr.re-pg-grp td{background:#EEF2F7!important;font-weight:650;color:#243878}
+.re-pg-leg{display:flex;gap:6px 14px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:#64748B}
+.re-pg-leg span{display:inline-block;min-width:36px;padding:2px 6px;border-radius:4px;text-align:center}
+html[data-theme="dark"] table.re-pg-tbl tr td.re-pg-ok,html[data-theme="dark"] table.re-pg-tbl tr td.re-pg-part{background:#12393A!important;color:#59C5C8}
+html[data-theme="dark"] table.re-pg-tbl tr td.re-pg-plan{background:#3A3010!important;color:#FFD45D}
+html[data-theme="dark"] table.re-pg-tbl tr td.re-pg-na{background:#1E1E1E!important;color:#737373}
+html[data-theme="dark"] table.re-pg-tbl tr.re-pg-grp td{background:#1E1E1E!important;color:#59C5C8}
+
+.re-u-row{display:grid;grid-template-columns:200px 1fr;gap:4px 14px;padding:10px 0;border-bottom:1px solid #E3E8F0}
+.re-u-name{display:flex;flex-direction:column;font-size:13.5px}.re-u-name span{font-size:12.5px;color:#64748B}
+.re-u-bar{display:flex;height:16px;border-radius:8px;overflow:hidden;background:#F3F5F8;align-self:center}
+.re-u-kpi{grid-column:2;display:flex;gap:6px 18px;flex-wrap:wrap;font-size:12.5px;color:#64748B}.re-u-kpi b{color:#243878}
+html[data-theme="dark"] .re-u-kpi b{color:#59C5C8}html[data-theme="dark"] .re-u-row{border-color:#2A2A2A}
+@media(max-width:700px){.re-u-row{grid-template-columns:1fr}.re-u-kpi{grid-column:1}}
+
+.re-gt{position:relative;min-width:900px;font-size:12.5px}
+.re-gt-row{display:grid;grid-template-columns:190px 1fr;align-items:center;min-height:34px;border-bottom:1px solid #EEF1F6}
+.re-gt-name{font-weight:600;color:#243878;padding-right:8px}
+.re-gt-track{position:relative;height:32px}
+.re-gt-years{height:22px;background:none}.re-gt-years div{position:absolute;top:2px;text-align:center;color:#64748B;font-weight:600;border-left:1px solid #D6DDE8}
+.re-gt-grp{font-weight:650;color:#243878;background:#EEF2F7;padding:4px 8px;margin-top:6px}
+.re-gt-bar{position:absolute;height:7px;border-radius:4px;background:repeating-linear-gradient(135deg,var(--c) 0 5px,color-mix(in srgb,var(--c) 45%,#fff) 5px 9px)}
+.re-gt-est{opacity:.45}
+.re-gt-ok{position:absolute;font-size:10px;color:#0E6B6E;font-weight:700}
+.re-gt-ho{position:absolute;top:9px;width:12px;height:12px;margin-left:-6px;transform:rotate(45deg);border:2px solid #1D2678;background:#fff;display:inline-block}
+.re-gt-ho.on{background:#1D2678}.re-gt-ho.main{border-color:#D4A72C;background:#D4A72C}
+.re-gt-lbl{position:absolute;top:20px;font-size:10.5px;color:#64748B;margin-left:4px}
+.re-gt-now{position:absolute;top:0;bottom:0;border-left:2px dashed #D4A72C;pointer-events:none}.re-gt-now span{position:absolute;top:-2px;left:4px;font-size:11px;font-weight:600;color:#7A5A00;white-space:nowrap;background:#FFF6DB;padding:0 4px;border-radius:3px}
+.re-gt-leg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:#64748B;margin-bottom:8px}.re-gt-leg i{display:inline-block;width:14px;height:8px;border-radius:3px;margin-right:5px;vertical-align:middle}
+.re-gt-leg i.re-gt-ho{width:10px;height:10px;margin:0 6px 0 2px;border-radius:0}
+html[data-theme="dark"] .re-gt-name,html[data-theme="dark"] .re-gt-grp{color:#59C5C8}html[data-theme="dark"] .re-gt-grp{background:#1E1E1E}html[data-theme="dark"] .re-gt-row{border-color:#2A2A2A}
+
+/* Card trong lưới 2+ cột luôn thẳng mép trên: bỏ margin-top kế thừa khi card được dời vào hàng (người dùng chốt 25/11/2026) */
+:is(.grid,.fs-arr-grid,.fs-kq-own)>.card{margin-top:0!important}
+
+/* Hai cỡ khung chart cố định (người dùng chốt 25/11/2026): khung 1/2 màn hình và khung full.
+   Card chart cạnh nhau trong một hàng luôn cùng chiều cao; vùng vẽ giãn lấp phần còn lại, không để khoảng trắng.
+   Vùng vẽ: 1/2 màn hình tối thiểu 340px, full tối thiểu 420px. Chiều cao do người dùng kéo ở "Bố cục" (inline) vẫn được giữ. */
+@media screen and (min-width:761px){
+  :is(.grid,.fs-arr-grid,.fs-kq-own){align-items:stretch!important}
+  :is(.grid,.fs-arr-grid,.fs-kq-own)>.card:has(canvas){display:flex;flex-direction:column}
+  :is(.grid,.fs-arr-grid,.fs-kq-own)>.card:has(canvas)>.chart{flex:1 1 auto;height:auto;min-height:340px}
+  :is(.grid.g1,.grid:not(.g2):not(.g3):not(.g4))>.card:has(canvas)>.chart,
+  :is(.grid,.fs-arr-grid,.fs-kq-own)>.card:has(canvas):only-child>.chart,
+  section>.card:has(canvas)>.chart{min-height:420px}
+}
+
+/* Bỏ Checklist điều kiện mua + Có gì mới 45 ngày ở Tổng quan (người dùng chốt 26/11/2026, mọi trang) */
+.card:has(#checklist),.card:has(#recentEvents),#overview .grid.g2:has(#checklist){display:none!important}
+
+/* Quản trị & sở hữu: hàng trên Cổ đông (1/3) + Quản trị (2/3) cùng cao; hàng dưới Công ty con · LDLK cả chiều ngang (người dùng chốt 26/11/2026) */
+#governanceBox .gov-grid{grid-template-columns:minmax(0,1fr) minmax(0,2fr);align-items:stretch}
+#governanceBox .gov-grid>.gov-section{margin-top:0;border:1px solid #E1E6EE;background:#F8FAFC;border-radius:10px;padding:14px 16px;min-width:0}
+#governanceBox .gov-grid>.gov-section:nth-child(-n+2){height:330px;overflow:auto}
+#governanceBox .gov-grid>.gov-section:nth-child(3){grid-column:1/-1;max-height:520px;overflow:auto}
+#governanceBox .gov-section td,#governanceBox .gov-section th{white-space:nowrap}
+#governanceBox .gov-section td:nth-child(2){white-space:normal}
+#governanceTrades .it-head>h4{display:none}
+@media(max-width:900px){#governanceBox .gov-grid{grid-template-columns:1fr}#governanceBox .gov-grid>.gov-section{height:auto!important;max-height:440px}}
+@media print{#governanceBox .gov-grid>.gov-section{height:auto!important;max-height:none!important;overflow:visible!important}}
+
+/* Khung "Trong tab" nổi trên thanh tab/sub-tab dính (người dùng báo 26/11/2026) */
+.mkt-toc{z-index:60!important}
