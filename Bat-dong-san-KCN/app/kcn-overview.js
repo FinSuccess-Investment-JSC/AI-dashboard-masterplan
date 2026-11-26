@@ -28,7 +28,7 @@ const block = id => document.querySelector(`[data-block-id="${id}"]`);
 function mapPane(p) {
   const vc = block('kcn-01');
   if (vc) { vc.closest('.grid')?.classList.remove('grid'); }
-  p.append(vc ? sec('chain', '0.1', 'Đất, vốn và khách thuê đi qua những ai?', vc, {sub: 'Ba lớp bật/tắt được: luồng đất và hạ tầng, luồng hợp đồng và thanh toán, luồng pháp lý và phê duyệt. Bấm một bên để xem việc họ làm, ai trả tiền cho ai, điều kiện mở bước tiếp theo và các mã niêm yết.'}) : gap('chưa dựng được sơ đồ chuỗi giá trị.'));
+  p.append(vc ? sec('chain', '0.1', 'Đất, vốn và khách thuê đi qua những ai?', vc, {sub: 'Ba lớp bật/tắt được: luồng đất và hạ tầng, luồng hợp đồng và thanh toán, luồng pháp lý và phê duyệt. Rê chuột vào một bên hoặc đường nối để xem luồng.'}) : gap('chưa dựng được sơ đồ chuỗi giá trị.'));
 }
 
 /* ---------- 01 · Chuỗi giá trị theo mô hình kinh doanh (26/11/2026) ----------
