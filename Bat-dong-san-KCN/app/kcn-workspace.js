@@ -269,6 +269,15 @@
   function download(name, text) { const b = new Blob([text], {type: 'text/csv;charset=utf-8'}), a = el('a'); a.href = URL.createObjectURL(b); a.download = name; document.body.append(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
   const tableHtml = t => `<div class="tablewrap kc-tw" data-no-fold><table class="kc-t" data-no-fold><thead><tr>${t.head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${t.rows.map(r => `<tr>${r.map(c => `<td>${c == null ? '<span class="kc-na">—</span>' : esc(c)}</td>`).join('')}</tr>`).join('') || `<tr><td colspan="${t.head.length}">Không có dòng nào trong bộ lọc hiện tại.</td></tr>`}</tbody></table></div>`;
   // Một card chart: tiêu đề · đơn vị/kỳ · công cụ (cảnh báo dữ liệu, nguồn, bảng, CSV) · chart · một dòng nhận định.
+  // Dòng "Nguồn: …" hiện sẵn dưới mọi thẻ (quy tắc trang Điện, 26/11/2026): gộp mã nguồn của workbook thành tên tổ chức, link tới bản gần nhất.
+  const SRC_ORG = [[/^CWDN$/, 'Ban quản lý các KCN Đồng Nai'], [/^(WEB_)?CW/, 'Cushman & Wakefield'], [/CBRE/, 'CBRE'], [/^VIETCAP/, 'Vietcap (số CBRE)'], [/^SSI/, 'SSI Research'], [/^MFGHIST$/, 'Vietnam Briefing (số Bộ KH&ĐT)'],
+    [/^NSO/, 'Cục Thống kê'], [/^IDICO/, 'BCTN IDICO'], [/^VGC$/, 'Viglacera'], [/^SHINHAN$/, 'Shinhan Securities'], [/^HPADMIN$/, 'UBND Hải Phòng']];
+  function srcLine(o) {
+    const ids = [...new Set((o.srcs || []).filter(Boolean))], by = new Map();
+    ids.forEach(id => { const org = (SRC_ORG.find(([re]) => re.test(id)) || [])[1] || id, u = D && D.sources[id] && D.sources[id].url; if (!by.has(org) || u) by.set(org, u || by.get(org)); });
+    const txt = [...by].map(([org, u]) => u ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(org)}</a>` : esc(org)).join(' · ');
+    return [txt, o.srcText ? esc(o.srcText) : ''].filter(Boolean).join(' · ') || 'BCTN 2025 của doanh nghiệp (workbook nghiên cứu KCN)';
+  }
   function card(o) {
     const c = el('div', 'card kc-card' + (o.wide ? ' kc-wide' : ''));
     Object.assign(c.dataset, {blockId: o.id, updateKind: o.kind || 'document', cadence: o.cadence || 'quarterly', refreshStatus: 'snapshot'});
@@ -279,7 +288,7 @@
       (o.table ? '<button type="button" class="kc-tool" data-kc-tbl aria-pressed="false">Bảng</button><button type="button" class="kc-tool" data-kc-csv>CSV</button>' : '') + `</div></div>` +
       (o.controls ? `<div class="kc-ctl" role="group">${o.controls}</div>` : '') +
       (o.body ? `<div class="kc-body">${o.body}</div>` : `<div class="kc-plot" style="height:${o.height || 280}px"></div>`) + (o.legend ? `<div class="kc-legend">${o.legend}</div>` : '') +
-      (o.take ? `<div class="kc-take">${o.take}</div>` : '') + '<div class="kc-tblbox" hidden></div>';
+      (o.take ? `<div class="kc-take">${o.take}</div>` : '') + `<div class="pw-src">Nguồn: ${srcLine(o)}</div>` + '<div class="kc-tblbox" hidden></div>';
     const qb = c.querySelector('[data-kc-pop="qa"]'); if (qb) qb.onclick = () => pop(qb, `<h4>Cảnh báo dữ liệu</h4><ul>${qa.map(k => `<li><b>${esc(ISSUE_TITLE[k] || k)}</b>: ${esc(issueText(k))}</li>`).join('')}</ul>`);
     const sb = c.querySelector('[data-kc-pop="src"]'); if (sb) sb.onclick = () => pop(sb, `<h4>Nguồn</h4><ul>${[...new Set(o.srcs)].map(id => `<li>${srcA(id)} · ${esc((D.sources[id] || {}).what || '')}${(D.sources[id] || {}).checked ? ` <span class="kc-na">· kiểm ${esc(D.sources[id].checked.split('-').reverse().join('/'))}</span>` : ''}</li>`).join('')}</ul>${o.method ? `<p>${o.method}</p>` : ''}`);
     const tb = c.querySelector('[data-kc-tbl]'); if (tb) tb.onclick = () => { const box = c.querySelector('.kc-tblbox'), on = tb.getAttribute('aria-pressed') !== 'true'; tb.setAttribute('aria-pressed', String(on)); box.hidden = !on; if (on) box.innerHTML = tableHtml(o.table()); };
@@ -514,25 +523,10 @@
       table: () => ({head: ['Năm', 'Vốn bình quân (triệu USD/dự án)', 'Vốn cấp mới so năm trước'], rows: F.map((f, i) => [f.year, avg[i] == null ? null : Math.round(avg[i] * 10) / 10, yoyC[i] == null ? null : pf(yoyC[i] / 100)])}),
       draw: h => draw(h, combo({labels: YL, sets: [{label: 'Vốn bình quân/dự án', type: 'bar', color: C.blue, data: avg, meta: F.map(f => ({period: String(f.year), cls: 'DERIVED', src: f.src, extra: ['= vốn cấp mới ÷ số dự án']}))}, {label: 'Vốn cấp mới so năm trước', type: 'line', axis: 'y2', color: C.plum, data: yoyC, meta: F.map(f => ({period: String(f.year), cls: 'DERIVED', src: f.src}))}],
         y: {unit: 'triệu USD', fmt: v => nf(v, 1), title: 'triệu USD/dự án'}, y2: {unit: '%', fmt: v => nf(v, 1), zero: false, title: '% so năm trước'}}))}));
-    const types = {registered_new: 'Đăng ký cấp mới', registered_all: 'Đăng ký (mới + điều chỉnh + góp vốn)', disbursed: 'Thực hiện (giải ngân)'};
-    const snapRows = D.fdi_snap.filter(f => inRange(f.period)).map(f => `<tr><td>${esc(types[f.ctype] || f.ctype)}</td><td>${f.sector === 'FDI_MFG' ? 'Chế biến chế tạo' : 'Toàn nền kinh tế'}</td><td>${esc(PL(f.period))}</td><td class="kc-num">${nf(f.value, 2)}</td><td>${f.agg === 'FY' ? 'Cả năm' : 'Lũy kế ' + esc(f.agg)}</td><td>${srcA(f.src)}</td><td>${esc(f.note || '')}</td></tr>`).join('');
-    g2.append(card({id: 'kcn-de-fdi-types', title: 'Các loại vốn FDI — số theo kỳ công bố', sub: 'tỷ USD · tách loại vốn và kỳ lũy kế, không cộng giữa các dòng', wide: true, srcs: D.fdi_snap.map(f => f.src), kind: 'document', cadence: 'monthly',
-      body: `<div class="tablewrap" data-no-fold><table class="kc-t" data-no-fold><thead><tr><th>Loại vốn</th><th>Phạm vi ngành</th><th>Kỳ</th><th>Tỷ USD</th><th>Cách cộng</th><th>Nguồn</th><th>Ghi chú</th></tr></thead><tbody>${snapRows}</tbody></table></div>`}));
+    // Bảng "Các loại vốn FDI — số theo kỳ công bố" bỏ 26/11/2026 theo yêu cầu người dùng.
     box.append(g2);
 
-    box.append(section('3', 'Từ FDI đến nhu cầu đất', 'Chuỗi truyền dẫn và dữ liệu đang có ở từng khâu. Tương quan không chứng minh nhân quả.'));
-    const steps = [
-      ['FDI cấp mới', fdiNew ? `${nf(fdiNew.value, 1)} tỷ USD ${PL(fdiNew.period)}` : '—', 'ok'],
-      ['Nhu cầu địa điểm nhà máy', 'Không đo trực tiếp', 'gap'],
-      ['Ký thuê đất', vn9 ? `CBRE ${nf(vn9.value)} ha 9T/2026` : '—', 'ok'],
-      ['Bàn giao đất', 'Chưa có số toàn thị trường; doanh nghiệp công bố riêng', 'gap'],
-      ['Xây dựng nhà máy', 'Chưa có số', 'gap'],
-      ['Sản xuất', 'IIP chế biến chế tạo (NSO) ở mục cập nhật hằng tháng bên dưới', 'ok']
-    ];
-    const lagOk = D.absorption.filter(a => a.ptype === 'Year').length >= 5;
-    box.append(card({id: 'kcn-de-flow', title: 'Chuỗi truyền dẫn FDI → hoạt động sản xuất', sub: 'trạng thái dữ liệu từng khâu', wide: true, kind: 'static', srcs: ['VIETCAP26', 'MFGHIST'],
-      body: `<div class="kc-flow">${steps.map((s, i) => `${i ? '<span class="kc-arr">→</span>' : ''}<div class="kc-node kc-node-${s[2]}"><b>${esc(s[0])}</b><small>${esc(s[1])}</small></div>`).join('')}</div>` +
-        `<div class="kc-gap"><b>So FDI với hấp thụ trên cùng trục thời gian:</b> ${lagOk ? '' : 'chưa vẽ. Hấp thụ cả năm cùng một nguồn mới có 2025 (Shinhan, Bắc 524 ha, Nam 261 ha), trong khi FDI có 10 năm; cần ít nhất 5 năm cùng nguồn để xét độ trễ. Công cụ đo độ trễ tự bật khi workbook có đủ.'}</div>`}));
+    // Mục "FDI đã chuyển thành nhu cầu đất và sản xuất chưa?" (chuỗi truyền dẫn kcn-de-flow) bỏ 26/11/2026 theo yêu cầu người dùng.
   }
 
   /* ===================== 3. Nguồn cung & lấp đầy ===================== */
@@ -544,8 +538,7 @@
     box.append(el('div', '', kpis([
       ...dl.map(x => ({label: `Nguồn cung đất KCN miền ${REG[x.r]} ${QL(x.l.period)}`, value: `${nf(x.l.stock_ha)} ha`, delta: x.c.ok ? `${pf(x.c.rel)} so ${QL(x.c.from.period)}` : '', sub: `C&W ${srcA(x.l.src)}${K.qaFor(D, x.r, x.l.period).some(q => q.issue === 'STOCK_REVISIONS') ? ' · ⚠ có điều chỉnh số nền' : ''}`})),
       ...dl.map(x => ({label: `Đất trống ước tính miền ${REG[x.r]}`, value: `${nf(x.l.vacant_proxy)} ha`, sub: `${chip('PROXY')} nguồn cung × (1 − lấp đầy)`})),
-      ...pipe.map(p => ({label: `Cung dự kiến miền ${REG[p.region]} 2026–2028`, value: `${nf(p.pipeline)} ha`, delta: `= ${pf(p.ratio, 0, false)} nguồn cung hiện hữu`, dcls: p.ratio >= K.TH.r5_ratio ? 'dn' : '', sub: `${chip('FORECAST')} ${srcA(p.src)}`})),
-      ...ys.map(x => ({label: `Số năm đủ cung miền ${REG[x.r]}`, value: x.y.ok ? nf(x.y.value, 1) + ' năm' : 'Ẩn', sub: x.y.ok ? 'đất trống ÷ hấp thụ 4 quý' : esc(x.y.reasons[0])}))
+      ...pipe.map(p => ({label: `Cung dự kiến miền ${REG[p.region]} 2026–2028`, value: `${nf(p.pipeline)} ha`, delta: `= ${pf(p.ratio, 0, false)} nguồn cung hiện hữu`, dcls: p.ratio >= K.TH.r5_ratio ? 'dn' : '', sub: `${chip('FORECAST')} ${srcA(p.src)}`}))
     ])));
     box.append(section('A', 'Động lực nguồn cung', st.seg === 'land' ? 'Đất KCN trong phạm vi khảo sát C&W. Đổi bộ lọc Phân khúc để xem nhà xưởng, nhà kho xây sẵn.' : `Phân khúc ${st.seg === 'RBF' ? 'nhà xưởng' : 'nhà kho'} xây sẵn (m²), khác thị trường đất.`));
     const g = el('div', 'kc-grid');
@@ -584,15 +577,9 @@
         draw: h => draw(h, combo({labels: labels.map(QL), sets: sets.concat(occ), y: {unit: 'nghìn m²', title: 'nghìn m²'}, y2: {unit: '%', zero: false, min: 60, max: 100, fmt: v => nf(v, 1), title: 'lấp đầy %'}, missing: true, markers: labels.indexOf('2025Q3') > 0 ? [{label: 'Q3/2025', text: 'Đổi phạm vi'}] : []}))}));
     }
     box.append(g);
-    box.append(card({id: 'kcn-su-yos', title: 'Số năm đủ cung (Years of Supply)', sub: 'đất trống ÷ hấp thụ thuần năm hóa · chỉ hiện khi đủ 4 điều kiện', kind: 'derived', wide: true, srcs: ['CW_N26Q3', 'CW_S26Q3'],
-      body: `<ul class="kc-cond">${['Cùng phạm vi khảo sát (đất trống và hấp thụ cùng C&W, cùng phiên bản địa giới)', 'Có ít nhất 4 quý hấp thụ liên tiếp', 'Hấp thụ 4 quý dương', 'Không có đổi phạm vi chưa xử lý trong cửa sổ'].map(t => `<li>${esc(t)}</li>`).join('')}</ul>` +
-        ys.map(x => `<p class="kc-gap"><b>Miền ${REG[x.r]}:</b> ${x.y.ok ? `${nf(x.y.value, 1)} năm (${nf(x.y.vacant)} ha ÷ ${nf(x.y.annual)} ha/năm)` : `ẩn — ${esc(x.y.reasons.join(' '))}`}</p>`).join('')}));
+    // Khối "Số năm đủ cung" (kcn-su-yos) bỏ 26/11/2026 theo yêu cầu người dùng.
 
-    const RP = (D.reported || []).filter(x => regOn(x.region) && inRange(x.period));
-    const MET = {stock_yoy: 'Nguồn cung so cùng kỳ', occ_yoy_pp: 'Lấp đầy so cùng kỳ', rent_yoy: 'Giá chào thuê so cùng kỳ', leased_area_change_ha: 'Diện tích đã thuê tăng so cùng kỳ'};
-    if (RP.length) box.append(card({id: 'kcn-su-reported', title: 'So cùng kỳ do nguồn tự công bố trên cùng phạm vi địa giới', sub: 'thay cho phép so trực tiếp qua mốc đổi phạm vi Q3/2025 · C&W tính trên địa giới mới; CBRE trên thị trường cấp 1', wide: true, kind: 'document', srcs: [...new Set(RP.map(x => x.src))], qa: ['GEOGRAPHY_REBASE'],
-      body: `<div class="tablewrap" data-no-fold><table class="kc-t" data-no-fold><thead><tr><th>Kỳ</th><th>Vùng</th><th>Nguồn</th><th>Chỉ tiêu</th><th>Mức thay đổi</th><th>Ghi chú</th></tr></thead><tbody>${RP.map(x => `<tr><td>${QL(x.period)}</td><td>${REG[x.region]}</td><td>${esc(x.reporter)}</td><td>${esc(MET[x.metric] || x.metric)}${x.unit ? ` (${esc(x.unit)})` : ''}</td><td class="kc-num">${x.metric === 'occ_yoy_pp' ? ppf(x.value) : x.metric === 'leased_area_change_ha' ? '+' + nf(x.value) + ' ha' : pf(x.value)}</td><td class="kc-na">${esc(x.note || (x.basis === 'like-for-like' ? 'C&W ghi rõ "like-for-like"' : ''))} ${srcA(x.src, '↗')}</td></tr>`).join('')}</tbody></table></div>`,
-      take: 'Đây là mức thay đổi nguồn tự tính trên cùng phạm vi; mức tuyệt đối trước và sau Q3/2025 vẫn không đặt cạnh nhau.'}));
+    // Bảng "So cùng kỳ do nguồn tự công bố trên cùng phạm vi địa giới" (kcn-su-reported) bỏ 26/11/2026 theo yêu cầu người dùng.
 
     box.append(section('B', 'Nguồn cung tương lai', 'Nguồn cung trả lời thị trường nhận thêm bao nhiêu và khi nào; Quỹ đất trả lời doanh nghiệp nào có quyền lợi và còn bao nhiêu đất có thể giao. Diện tích quy hoạch hay mở bán không đồng nghĩa đất sạch sẵn sàng bàn giao; không cộng dự án với số dự phóng toàn vùng.'));
     box.append(ladderCard());
@@ -1079,6 +1066,8 @@
         if (cards.length) {
           const s = el('section', 'pp-panel pp-q kc-q kc-moved');
           s.innerHTML = `<header class="pp-ph"><span class="pp-num">${i + 1}.·</span><div><h3>${esc(MOVE_Q[k])}</h3><p class="kc-q-sub">${esc(MOVE_TITLE[k])}</p></div></header>`;
+          // Thẻ dời vào chưa có dòng nguồn hiện sẵn (bảng, không có chart): lấy từ ghi chú "Nguồn:" có sẵn của thẻ.
+          cards.forEach(c => { if (c.querySelector('.pw-src')) return; const b = c.querySelector('.chart-info-button[aria-controls]'), pn = b && document.getElementById(b.getAttribute('aria-controls')); const n = c.querySelector('.source-note') || pn?.querySelector('.chart-primary-source, .source-note, a[href]')?.closest('li, p, div') || pn, a = n && n.querySelector('a[href]'); if (!n) return; const d = el('div', 'pw-src'); d.append('Nguồn: '); d.append(a ? a.cloneNode(true) : n.textContent.replace(/^\s*Nguồn\s*:\s*/i, '').split('. ')[0]); c.append(d); });
           const g = el('div', 'grid two g2'); cards.forEach(c => g.append(c)); s.append(g); p.append(s); moved[k] = s;
         }
       }
