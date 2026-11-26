@@ -56,22 +56,56 @@ window.PKG = {
         p.push(`<li><b>Kỳ tới cần kiểm tra:</b> số 11 tháng của Cục Hàng không (khách quốc tế hãng Việt so với lượt khách quốc tế qua cảng); BCTC quý 4/2026 của HVN, VJC (chi phí nhiên liệu, chênh lệch tỷ giá). <b>Chưa đủ dữ liệu kết luận về yield và biên theo hãng</b>: thiếu ASK, RPK theo hãng, doanh thu hành khách tách riêng và chi phí nhiên liệu theo thuyết minh quý.</li>`);
         return `<ul class="hk-brief">${p.join('')}</ul>`;
       }},
-    {id: 'hkChain', type: 'html', src: [SHS, ['FinSuccess tổng hợp', '#rf-q-model']],
-      method: 'Sơ đồ các khâu và vị trí doanh nghiệp niêm yết; không có số liệu định lượng.',
-      render: e => {
-        const box = t => `<span class="dc-box">${e(t)}</span>`;
-        const col = (n, t, boxes, who, nt) => `<section class="dc-col"><h4><span>${n}</span>${e(t)}</h4><div class="dc-row">${boxes.map(box).join('')}</div>${nt ? `<p class="dc-note">${e(nt)}</p>` : ''}<p class="dc-lbl">Doanh nghiệp niêm yết</p><p class="dc-brands">${who}</p></section>`;
-        return `<div class="dc dc-live">
-  <p class="dc-lead">Hãng bay chịu rủi ro giá vé, nhiên liệu và tỷ giá; cảng và dịch vụ sân bay thu phí theo lượt khách, chuyến bay và tấn hàng</p>
-  <div class="dc-band dc-band4"><span class="dc-b dc-b1">Đầu vào</span><span class="dc-b dc-b2">Hãng bay</span><span class="dc-b dc-b2">Cảng hàng không</span><span class="dc-b dc-b3">Dịch vụ sân bay</span></div>
-  <div class="dc-cols dc-cols4">
-    ${col(1, 'Tàu bay, nhiên liệu, nhân lực', ['Thuê, mua tàu bay', 'Nhiên liệu bay (giá USD)', 'Bảo dưỡng, động cơ', 'Phi công, tiếp viên'], 'VJC (bán và thuê lại tàu bay)', 'Nhiên liệu và thuê tàu tính bằng USD')}
-    ${col(2, 'Vận chuyển hành khách, hàng hóa', ['Nội địa', 'Quốc tế', 'Phụ trợ (hành lý, chọn chỗ)', 'Hàng hóa bụng tàu'], '<b>HVN</b> · <b>VJC</b>')}
-    ${col(3, 'Hạ tầng sân bay', ['Phí phục vụ hành khách', 'Phí cất hạ cánh', 'Cho thuê mặt bằng'], '<b>ACV</b> (21/22 cảng)', 'Long Thành, T3 Tân Sơn Nhất, T2 Nội Bài')}
-    ${col(4, 'Phục vụ mặt đất, hàng hóa, bán lẻ', ['Nhà ga hàng hóa', 'Phục vụ mặt đất', 'Bán lẻ, ẩm thực, suất ăn'], '<b>SCS</b> · <b>NCT</b> · <b>SGN</b> · <b>AST</b> · <b>SAS</b>')}
-  </div>
-</div>`;
-      }},
+    {id: 'hkChain', type: 'html',
+      src: [['Cường Anh Eco-Writer – Chuỗi giá trị ngành Hàng không (06/08/2025)', 'https://cuonganhecowriter.substack.com/p/chuoi-gia-tri-nganh-hang-khong'], SHS],
+      method: 'Sơ đồ định tính. Mũi tên liền biểu thị luồng cung ứng và vận chuyển. Nét đứt biểu thị hạ tầng và dịch vụ hỗ trợ hãng bay. Cơ chế thanh toán thực tế tùy biểu giá, hợp đồng và nhà ga.',
+      render: () => `<div class="hk-chain">
+        <div class="hk-chain-flow" role="group" aria-label="Luồng cung ứng và vận chuyển">
+          <section class="hk-chain-node">
+            <h4>Nguồn lực khai thác</h4>
+            <ul><li>Tàu bay và hợp đồng thuê</li><li>Nhiên liệu, bảo dưỡng</li><li>Phi công, tiếp viên</li></ul>
+            <a href="#rf-q-fuel">Giá nhiên liệu và tỷ giá <span aria-hidden="true">›</span></a>
+          </section>
+          <span class="hk-chain-arrow" aria-hidden="true"></span>
+          <section class="hk-chain-node hk-chain-airline">
+            <div class="hk-chain-heading"><h4>Hãng bay</h4><b>HVN · VJC</b></div>
+            <p>Vé, dịch vụ phụ trợ và cước vận chuyển hàng.</p>
+            <a href="#rf-q-airfin">Doanh thu, biên và dòng tiền <span aria-hidden="true">›</span></a>
+          </section>
+          <span class="hk-chain-arrow" aria-hidden="true"></span>
+          <section class="hk-chain-node">
+            <h4>Khách hàng</h4>
+            <ul><li><strong>Hành khách</strong> mua vé, hành lý, chọn chỗ.</li><li><strong>Chủ hàng</strong> trả cước trực tiếp hoặc qua forwarder.</li></ul>
+            <a href="#rf-q-carried">Lưu lượng hành khách <span aria-hidden="true">›</span></a>
+          </section>
+        </div>
+        <div class="hk-chain-support">
+          <h4>Hạ tầng và dịch vụ phục vụ chuyến bay</h4>
+          <div class="hk-chain-services">
+            <section class="hk-chain-node">
+              <div class="hk-chain-heading"><h5>Khai thác cảng</h5><b>ACV</b></div>
+              <p>Hãng trả phí cất hạ cánh. Phí phục vụ hành khách thường thu qua vé.</p>
+              <a href="#rf-q-acv">Lượt khách qua cảng <span aria-hidden="true">›</span></a>
+            </section>
+            <section class="hk-chain-node">
+              <div class="hk-chain-heading"><h5>Phục vụ mặt đất</h5><b>SGN</b></div>
+              <p>Hãng trả theo dịch vụ và số chuyến trong hợp đồng.</p>
+              <a href="#rf-q-svc">Doanh thu dịch vụ <span aria-hidden="true">›</span></a>
+            </section>
+            <section class="hk-chain-node">
+              <div class="hk-chain-heading"><h5>Nhà ga hàng hóa</h5><b>SCS · NCT</b></div>
+              <p>Hãng hoặc khách hàng logistics trả phí xử lý, lưu kho.</p>
+              <a href="#rf-q-scs">Sản lượng và doanh thu/tấn <span aria-hidden="true">›</span></a>
+            </section>
+            <section class="hk-chain-node">
+              <div class="hk-chain-heading"><h5>Bán lẻ và ẩm thực</h5><b>AST · SAS</b></div>
+              <p>Hành khách chi tiêu tại nhà ga có điểm bán.</p>
+              <a href="#rf-q-svc">Kết quả nhóm dịch vụ <span aria-hidden="true">›</span></a>
+            </section>
+          </div>
+        </div>
+        <p class="hk-chain-legend"><span>Cung ứng và vận chuyển</span><span>Hạ tầng và dịch vụ hỗ trợ</span></p>
+      </div>`},
     {id: 'hkModels', type: 'models', items: [
       ['Hãng bay truyền thống', 'HVN', 'Vé hành khách nội địa, quốc tế; hàng hóa; hợp nhất Pacific Airlines, VASCO', 'Hệ số tải và yield; giá nhiên liệu; USD/VND (thuê tàu, nợ USD)', [['#rf-q-carried', 'Khách vận chuyển'], ['#rf-q-fuel', 'Nhiên liệu, tỷ giá']]],
       ['Hãng bay chi phí thấp', 'VJC', 'Vé hành khách, doanh thu phụ trợ, bán và thuê lại tàu bay', 'Cung ghế so với cầu; nhiên liệu; lãi vay và tỷ giá; số tàu bàn giao', [['#rf-q-sched', 'Lịch bay'], ['#rf-q-airfin', 'Doanh thu, biên, dòng tiền']]],
@@ -197,7 +231,6 @@ window.PKG = {
         ['VJC · 9T/2026', '74.385 tỷ doanh thu', '+41%, hợp nhất; LNST 1.721 tỷ'], ['ACV · 9T/2026', '94,1 triệu lượt khách', '+8,6%; quốc tế 36 triệu (+10,8%); hàng 1,4 triệu tấn (+9,8%)']],
       method: 'Số doanh nghiệp công bố. HVN, VJC chưa công bố ASK, RPK, hệ số tải năm 2026.'},
   ],
-  sourceManual: [[/^Chuỗi giá trị ngành hàng không/, 'FinSuccess tổng hợp']],
   topics: {
     'hk-t1': ['Chi phí nhiên liệu trên ghế, biên gộp HVN, VJC', 'EIA, IATA theo tuần; chi phí nhiên liệu trong thuyết minh BCTC quý 4/2026; mức phụ thu nhiên liệu và giá vé', [['#rf-q-fuel', 'Nhiên liệu, tỷ giá'], ['#rf-q-sens', 'Độ nhạy'], ['#rf-q-airfin', 'Biên HVN, VJC']]],
     'hk-t2': ['Sản lượng và yield quốc tế của HVN, VJC; lượt khách quốc tế qua ACV', 'Số 11 tháng của Cục HK (khách quốc tế toàn thị trường và hãng Việt); lịch bay mùa Hè 2027; số chuyến theo hãng trong báo cáo đúng giờ', [['#rf-q-share', 'Thị phần quốc tế'], ['#rf-q-sched', 'Lịch bay'], ['#rf-q-otp', 'Chuyến theo hãng']]],
@@ -206,7 +239,7 @@ window.PKG = {
   section: {demand: ['mt2', 'demand'], supply: ['mt2', 'supply'], cost: ['mt2', 'cost'], airport: ['mt2', 'airport'], cargo: ['mt2', 'cargo']},
   tree: {
     mt1: {title: 'Tổng quan ngành', subs: [
-      {k: 'map', t: 'Đọc nhanh & bản đồ ngành', d: 'Kỳ mới nhất nói gì; tiền đi từ hành khách qua hãng bay, cảng và dịch vụ sân bay.', items: [
+      {k: 'map', t: 'Đọc nhanh & bản đồ ngành', d: 'Theo dõi kỳ công bố mới nhất và cách từng doanh nghiệp thu tiền từ một chuyến bay.', items: [
         {q: 'Kỳ mới nhất nói gì?', id: 'rf-q-brief', take: ['hk-00']},
         {q: 'Một chuyến bay tạo doanh thu cho những ai?', id: 'rf-q-map', take: ['hk-01']}]},
       {k: 'model', t: 'Mô hình kiếm tiền', d: 'Doanh thu đến từ đâu, biến nào quyết định biên, mã nào đại diện.', items: [
