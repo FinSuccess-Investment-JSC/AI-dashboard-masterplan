@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ngành Cao su Việt Nam · FinSuccess Research</title>
+<link rel="stylesheet" href="app/dashboard-ui.css?v=8b5f71b2e791">
+<script src="app/sector-boot.js?v=555dd1c98235"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="app/chart-types.js?v=de84f54bfcae"></script>
+<script src="../data/rubber-data.js?v=de26ec2ff526" defer></script>
+<script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
+<script src="app/rubber-finance.js?v=2cc5b73c0653" defer></script>
+<script src="app/rubber.js?v=8b29d3695300" defer></script>
+<script src="app/rubber-more.js?v=cf3ff0eb406c" defer></script>
+<script src="app/value-chain.js?v=a597c7c73610" defer></script>
+<link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
+<link rel="stylesheet" href="app/site-sidebar.css?v=c15c75326931">
+<link rel="stylesheet" href="app/site-tidy.css?v=3ad28c2a6d19">
+<script src="app/site-navigation.js?v=ac40d26f955c" data-release="20261126-cao-su"></script>
+<script src="../data/site-nav.js?v=bb4bfe643bee"></script>
+<script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
+<link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
+<link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
+<link rel="stylesheet" href="app/fin-success-theme.css?v=d2a28183412c">
+<link rel="stylesheet" href="app/brand.css?v=4fab96877d3a">
+<link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
+<link rel="stylesheet" href="app/overview.css?v=eff54e08565b">
+<link rel="stylesheet" href="app/rubber.css?v=a6bb3c5c6b0e">
+</head>
+<!-- Trang Cao su (26/11/2026) theo khung trang Điện / Phân bón, viết sẵn bố cục cuối (không "tab nền").
+     app/rubber.js dựng Tổng quan + Bức tranh ngành 01–02; app/rubber-more.js dựng 03–05 từ khối nhập tay có nguồn;
+     app/rubber-finance.js dựng tab Tài chính ngành. Dữ liệu: data/rubber-data.js (scripts/build_rubber.py). -->
+<body data-sector="rubber">
+<div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="rubber"><a href="../">Trang tổng</a><a href="../Cao-su/">Cao su</a></nav><p class="site-release-note" data-release-label></p></div></div>
+
+<nav class="majortabs tabs" role="tablist" aria-label="Các phần nghiên cứu">
+  <button class="majortabbtn active" type="button" data-tab="mt1" role="tab" aria-selected="true">Tổng quan ngành</button>
+  <button class="majortabbtn" type="button" data-tab="mt2" role="tab" aria-selected="false">Bức tranh ngành</button>
+  <button class="majortabbtn" type="button" data-tab="mt3" role="tab" aria-selected="false">Tài chính ngành</button>
+</nav>
+
+<div class="container wrap">
+  <header class="research-header"><h1>Cao su</h1></header>
+
+  <section class="majorpane active" data-tab="mt1" id="pane-mt1">
+    <section class="db card" id="dataBrief" data-block-id="cs-00" data-update-kind="public" data-cadence="daily"></section>
+    <section class="section">
+      <div class="sectionhead"><div><h2 class="sec">Tổng quan ngành cao su</h2></div></div>
+      <div class="ov-nav" role="tablist" aria-label="Tổng quan ngành">
+        <button class="tabbtn ov-tab active" type="button" id="cs-ov-map-tab" role="tab" data-ov="map" aria-controls="cs-ov-map" aria-selected="true"><span>00</span>Bản đồ ngành<small>Chuỗi giá trị · vị trí doanh nghiệp</small></button>
+        <button class="tabbtn ov-tab" type="button" id="cs-ov-listed-tab" role="tab" data-ov="listed" aria-controls="cs-ov-listed" aria-selected="false"><span>01</span>Doanh nghiệp niêm yết<small>GVR, trồng & khai thác, săm lốp</small></button>
+      </div>
+      <div class="pane-subpane ov-pane" id="cs-ov-map" data-ov="map" role="tabpanel" aria-labelledby="cs-ov-map-tab">
+        <header class="ov-head"><div><span class="ov-k">00 · Toàn cảnh ngành</span><h2>Bản đồ ngành</h2></div></header>
+      </div>
+      <div class="pane-subpane ov-pane" id="cs-ov-listed" data-ov="listed" role="tabpanel" aria-labelledby="cs-ov-listed-tab" hidden>
+        <header class="ov-head"><div><span class="ov-k">01 · Doanh nghiệp</span><h2>Doanh nghiệp niêm yết</h2></div></header>
+      </div>
+    </section>
+  </section>
+
+  <section class="majorpane" data-tab="mt2" id="pane-mt2">
+    <section class="section">
+      <div class="sectionhead"><div><h2 class="sec">Bức tranh ngành</h2></div></div>
+      <div class="pp-nav" role="tablist" aria-label="Bức tranh ngành cao su">
+        <button class="tabbtn pp-tab active" type="button" role="tab" data-sub="price" aria-selected="true"><span>01</span>Giá cao su</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="export" aria-selected="false"><span>02</span>Xuất khẩu Việt Nam</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="demand" aria-selected="false"><span>03</span>Cầu Trung Quốc</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="supply" aria-selected="false"><span>04</span>Cung & tồn kho</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="company" aria-selected="false"><span>05</span>Doanh nghiệp: giá bán & biên</button>
+      </div>
+      <div class="pane-subpane pp-pane" id="cs-pp-price" data-sub="price">
+        <header class="pp-head"><div><span class="pp-k">01</span><h2>Giá cao su</h2></div><span class="pp-asof" data-asof="price"></span></header>
+      </div>
+      <div class="pane-subpane pp-pane" id="cs-pp-export" data-sub="export" hidden>
+        <header class="pp-head"><div><span class="pp-k">02</span><h2>Xuất khẩu Việt Nam</h2></div><span class="pp-asof" data-asof="export"></span></header>
+      </div>
+      <div class="pane-subpane pp-pane" id="cs-pp-demand" data-sub="demand" hidden>
+        <header class="pp-head"><div><span class="pp-k">03</span><h2>Cầu Trung Quốc</h2></div><span class="pp-asof" data-asof="demand"></span></header>
+      </div>
+      <div class="pane-subpane pp-pane" id="cs-pp-supply" data-sub="supply" hidden>
+        <header class="pp-head"><div><span class="pp-k">04</span><h2>Cung & tồn kho</h2></div><span class="pp-asof" data-asof="supply"></span></header>
+      </div>
+      <div class="pane-subpane pp-pane" id="cs-pp-company" data-sub="company" hidden>
+        <header class="pp-head"><div><span class="pp-k">05</span><h2>Doanh nghiệp: giá bán & biên</h2></div><span class="pp-asof" data-asof="company"></span></header>
+      </div>
+    </section>
+  </section>
+
+  <section class="majorpane" data-tab="mt3" id="pane-mt3">
+    <section class="section">
+      <div class="sectionhead"><div><h2 class="sec">Tài chính ngành</h2></div></div>
+      <div class="pane-subpane pp-pane fn-pane">
+        <header class="pp-head"><div><span class="pp-k">01</span><h2>Tài chính ngành</h2></div><span class="pp-asof" data-asof="fin"></span></header>
+        <div id="cs-fin-root"></div>
+      </div>
+    </section>
+  </section>
+
+</div>
+<script src="app/chart-source.js?v=20de8094fc85" defer></script>
+</body>
+</html>
