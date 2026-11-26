@@ -180,6 +180,9 @@
     }
     if (document.querySelector('.fs-brandbar') && !document.querySelector('.fs-search')) mountSearch();
     embedBank();
+    // Tab chính kiểu Stock: bỏ số thứ tự "1. " trước tên tab (26/11/2026).
+    const unnumber = () => document.querySelectorAll('.majortabbtn').forEach(b => { const t = b.firstChild; if (t && t.nodeType === 3 && /^\s*\d+\.\s+/.test(t.textContent)) t.textContent = t.textContent.replace(/^\s*\d+\.\s+/, ''); });
+    [0, 800, 2000, 4000].forEach(ms => setTimeout(unnumber, ms));
     // Hub: sector tiles visible at once, one click opens the dashboard.
     const hubMain = document.querySelector('.fs-home-main');
     if (hubMain && !hubMain.querySelector('.fs-sector-grid')) {
