@@ -13,7 +13,7 @@ import re
 from urllib.parse import urlsplit, unquote
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = ['index.html','Bank/index.html','Chung-khoan/index.html','Dau-khi/index.html','Sugar/index.html','duong/index.html','Dien/index.html','Bat-dong-san/index.html','Bat-dong-san-KCN/index.html','Det-may/index.html','Cang-bien/index.html','Nong-nghiep/index.html','Thuy-san/index.html','Van-tai-bien/index.html','Thep/index.html','Xay-dung/index.html','Bao-hiem/index.html','Ban-le/index.html','Duoc/index.html','Phan-bon/index.html','Vien-thong/index.html','404.html']
+PAGES = ['index.html','Bank/index.html','Chung-khoan/index.html','Dau-khi/index.html','Sugar/index.html','duong/index.html','Dien/index.html','Bat-dong-san/index.html','Bat-dong-san-KCN/index.html','Det-may/index.html','Cang-bien/index.html','Nong-nghiep/index.html','Thuy-san/index.html','Van-tai-bien/index.html','Thep/index.html','Xay-dung/index.html','Bao-hiem/index.html','Bao-hiem/cu.html','Ban-le/index.html','Duoc/index.html','Phan-bon/index.html','Vien-thong/index.html','404.html']
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()

@@ -53,7 +53,7 @@
   }
 
   // Search box as in the Stock dashboard ("Tra cứu cổ phiếu"): sectors by name, listed companies by ticker.
-  const SECTOR_WORDS = {steel:'thép steel hrc tôn mạ ống thép', home:'trang tổng hub', oil:'dầu khí oil gas xăng', sugar:'đường mía sugar', bank:'ngân hàng bank tín dụng', securities:'chứng khoán ctck môi giới ký quỹ margin tự doanh ib ssi tcx vck vpx hcm vci mbs vnd shs vix', power:'điện power năng lượng', realestate:'bất động sản bds nhà ở căn hộ', industrial:'bđs kcn khu công nghiệp bất động sản công nghiệp kbc idc bcm szc sip vgc lhg fdi', textile:'dệt may sợi garment', port:'cảng biển kho bãi logistics vận tải', agri:'nông nghiệp thực phẩm gạo cà phê cao su chăn nuôi heo sữa bia', seafood:'thủy sản cá tra tôm seafood', shipping:'vận tải biển tàu dầu tanker hàng rời container shipping cước hormuz', construction:'xây dựng vật liệu vlxd đầu tư công thép xi măng đá nhựa đường hạ tầng cao tốc nhà thầu giải ngân', insurance:'bảo hiểm insurance nhân thọ phi nhân thọ tái bảo hiểm bancassurance', retail:'bán lẻ tiêu dùng retail siêu thị điện máy sữa bia đường ô tô trang sức vàng tmđt', pharma:'dược phẩm y tế thuốc pharma bệnh viện nhà thuốc long châu bhyt đấu thầu', fertilizer:'phân bón fertilizer urê ure đạm dap lân npk kali hóa chất dpm dcm dhb ddv las bfc sfg', telecom:'viễn thông telecom nhà mạng di động internet cáp quang ftth 5g trạm bts towerco viettel vnpt mobifone fox ctr vgi'};
+  const SECTOR_WORDS = {steel:'thép steel hrc tôn mạ ống thép', home:'trang tổng hub', oil:'dầu khí oil gas xăng', sugar:'đường mía sugar', bank:'ngân hàng bank tín dụng', securities:'chứng khoán ctck môi giới ký quỹ margin tự doanh ib ssi tcx vck vpx hcm vci mbs vnd shs vix', power:'điện power năng lượng', realestate:'bất động sản bds nhà ở căn hộ', industrial:'bđs kcn khu công nghiệp bất động sản công nghiệp kbc idc bcm szc sip vgc lhg fdi', textile:'dệt may sợi garment', port:'cảng biển kho bãi logistics vận tải', agri:'nông nghiệp thực phẩm gạo cà phê cao su chăn nuôi heo sữa bia', seafood:'thủy sản cá tra tôm seafood', shipping:'vận tải biển tàu dầu tanker hàng rời container shipping cước hormuz', construction:'xây dựng vật liệu vlxd đầu tư công thép xi măng đá nhựa đường hạ tầng cao tốc nhà thầu giải ngân', insurance:'bảo hiểm insurance nhân thọ phi nhân thọ tái bảo hiểm bancassurance bvh pvi bic mig pti bmi', retail:'bán lẻ tiêu dùng retail siêu thị điện máy sữa bia đường ô tô trang sức vàng tmđt', pharma:'dược phẩm y tế thuốc pharma bệnh viện nhà thuốc long châu bhyt đấu thầu', fertilizer:'phân bón fertilizer urê ure đạm dap lân npk kali hóa chất dpm dcm dhb ddv las bfc sfg', telecom:'viễn thông telecom nhà mạng di động internet cáp quang ftth 5g trạm bts towerco viettel vnpt mobifone fox ctr vgi'};
   function mountSearch() {
     const sec = document.createElement('section'); sec.className = 'fs-search'; sec.setAttribute('aria-label', 'Tìm dashboard ngành');
     sec.innerHTML = '<form id="fsSearch" role="search" autocomplete="off"><label for="fsQuery">Tra cứu ngành</label>'
@@ -144,12 +144,17 @@
   const BANK_PAGES = {VCB:'vcb.html', BID:'bid.html', CTG:'index.html', TCB:'tcb.html', MBB:'mbb.html', ACB:'acb.html', STB:'stb.html', VPB:'vpb.html', HDB:'hdb.html'};
   // Chứng khoán (23/11/2026): cùng bank-dashboard, ck.html (ngành) hoặc dn.html?s=<MÃ> (10 CTCK), ?ma=SSI#fin chọn mã/tab.
   const CK_CODES = ['SSI','TCX','VCK','VPX','HCM','VCI','MBS','VND','SHS','VIX'];
+  // Bảo hiểm (26/11/2026): bh.html (ngành) hoặc dn.html?s=<MÃ> (6 DN), ?ma=PVI#fin chọn mã/tab; bản cũ ở Bao-hiem/cu.html.
+  const BH_CODES = ['BVH','PVI','BIC','MIG','PTI','BMI'];
   function embedBank() {
     const qs = new URLSearchParams(location.search), sector = document.body.dataset.sector;
-    if (!document.querySelector('body[data-sector="bank"] main.wrap, body[data-sector="securities"] main.wrap') || qs.get('cu') === '1') return;
+    if (!document.querySelector('body[data-sector="bank"] main.wrap, body[data-sector="securities"] main.wrap, body[data-sector="insurance"] main.wrap') || qs.get('cu') === '1') return;
     const code = (qs.get('ma') || '').toUpperCase();
     let label, src;
-    if (sector === 'securities') {
+    if (sector === 'insurance') {
+      const ok = BH_CODES.includes(code); label = ok ? 'Bảo hiểm · ' + code : 'Bảo hiểm';
+      src = BANK_EMBED + (ok ? 'dn.html?s=' + code + '&embed=1' : 'bh.html?embed=1') + location.hash;
+    } else if (sector === 'securities') {
       const ok = CK_CODES.includes(code); label = ok ? 'Chứng khoán · ' + code : 'Chứng khoán';
       src = BANK_EMBED + (ok ? 'dn.html?s=' + code + '&embed=1' : 'ck.html?embed=1') + location.hash;
     } else {
