@@ -160,7 +160,7 @@
       "topic_ids": ["quy-dat"],
       "segments": ["Miền Nam", "TP.HCM"],
       "article_ids": ["cw-south-q2"],
-      "new_information": "Giá thuê miền Nam đi ngang theo quý trong khi lấp đầy tăng; TP.HCM lấp đầy cao nhất vùng.",
+      "new_information": "Giá chào thuê miền Nam giảm 0,5% so quý trước (C&W, USD/m²/kỳ thuê) trong khi lấp đầy tăng; TP.HCM lấp đầy cao nhất vùng.",
       "key_figures": ["Quỹ đất 36.063 ha, +4,6% so với cùng kỳ", "Lấp đầy 76,3% (+1,4% QoQ, +2,2% YoY)", "TP.HCM lấp đầy 86,1%", "186,4 USD/m²/kỳ thuê (-0,5% QoQ, +1,7% YoY)"]
     },
     {
@@ -186,8 +186,8 @@
       "topic_ids": ["quy-dat"],
       "segments": ["Miền Nam", "TP.HCM", "Đồng Nai", "Tây Ninh"],
       "article_ids": ["tbtc-cbre-9m-south", "cbre-hcm-q3-pdf", "cw-south-q3-pdf"],
-      "new_information": "Giá thuê miền Nam đi ngang quý thứ hai liên tiếp theo cả CBRE và C&W; TP.HCM vẫn tăng giá còn Tây Ninh giảm.",
-      "key_figures": ["CBRE: 163 ha hấp thụ 9 tháng, +56%", "CBRE: 185 USD/m²/thời hạn còn lại, ổn định QoQ, +1,5% YoY", "CBRE: xưởng xây sẵn lấp đầy 88%, kho 80%", "C&W: lấp đầy 75,8%, +1,5 điểm % YoY", "C&W: 4,89 triệu đồng/m²/chu kỳ (-0,4% QoQ, +1,2% YoY)", "C&W: TP.HCM lấp đầy 85,1%, giá 4,99 triệu đồng/m², +7,5% YoY", "C&W: khoảng 5.254 ha cung mới giai đoạn 2026–2028"]
+      "new_information": "Giá chào thuê đất miền Nam: C&W báo 4,892 triệu đồng/m²/kỳ thuê, −0,4% so quý trước (đơn vị đồng từ quý III, không công bố giá USD); CBRE 185 USD/m², ổn định so quý trước theo CBRE (thị trường cấp 1). TP.HCM vẫn tăng giá còn Tây Ninh giảm.",
+      "key_figures": ["CBRE: 163 ha hấp thụ 9 tháng, +56%", "CBRE: 185 USD/m²/thời hạn còn lại, ổn định QoQ, +1,5% YoY", "CBRE: xưởng xây sẵn lấp đầy 88%, kho 80%", "C&W: lấp đầy 75,8%, +1,5 điểm % YoY", "C&W: 4,892 triệu đồng/m²/kỳ thuê (-0,4% QoQ, +1,2% YoY)", "C&W: TP.HCM lấp đầy 85,1%, giá 4,99 triệu đồng/m², +7,5% YoY", "C&W: khoảng 5.254 ha cung mới giai đoạn 2026–2028"]
     },
     {
       "id": "kbc-q2-2026",
@@ -341,10 +341,10 @@
     {
       "id": "quy-dat",
       "title": "Quỹ đất KCN · cung mới miền Bắc, giá thuê miền Nam",
-      "thesis": "Cung đất KCN miền Bắc tăng nhanh hơn lấp đầy: C&W ghi nhận lấp đầy 64% quý II và 65% quý III sau hơn 1.200 ha cung mới nửa đầu năm. Giá thuê miền Nam đi ngang quanh 185–186 USD/m²/kỳ thuê trong quý II–III.",
+      "thesis": "Cung đất KCN miền Bắc tăng nhanh hơn lấp đầy: C&W ghi nhận lấp đầy 64% quý II và 65% quý III sau hơn 1.200 ha cung mới nửa đầu năm. Giá chào thuê đất miền Nam theo C&W: 186,4 USD/m²/kỳ thuê quý II (−0,5% so quý trước); quý III C&W chỉ báo giá đồng, 4,892 triệu đồng/m²/kỳ thuê (−0,4% so quý trước, +1,2% so cùng kỳ, mức C&W công bố).",
       "analysis_date": "2026-11-25",
-      "background": "Miền Bắc thêm gần 1.500 ha trong 9 tháng 2026 và dự kiến khoảng 8.577 ha giai đoạn 2026–2028 (C&W). Miền Nam không có dự án mới trong quý II–III; giá chào thuê C&W 186,4 USD/m²/kỳ thuê quý II, CBRE 185 USD/m² quý III. Từ 2026, 25 ngân hàng được loại dư nợ tăng thêm cho KCN, KCX khỏi room tín dụng bất động sản.",
-      "end_condition": "Lấp đầy miền Bắc trở lại trên 70% hoặc giá thuê miền Nam đi ngang hai quý liên tiếp.",
+      "background": "Miền Bắc thêm gần 1.500 ha trong 9 tháng 2026 và dự kiến khoảng 8.577 ha giai đoạn 2026–2028 (C&W). Miền Nam không có dự án mới trong quý II–III. Giá chào thuê đất miền Nam: C&W 186,4 USD/m²/kỳ thuê quý II; quý III C&W chuyển sang báo giá đồng (4,892 triệu đồng/m²/kỳ thuê, ghi tỷ giá 26.250 nhưng không công bố giá USD); CBRE quý III 185 USD/m²/thời hạn còn lại, thị trường cấp 1 (phạm vi khác C&W, không ghép hai chuỗi). Từ 2026, 25 ngân hàng được loại dư nợ tăng thêm cho KCN, KCX khỏi room tín dụng bất động sản.",
+      "end_condition": "Lấp đầy miền Bắc trở lại trên 70%, hoặc giá chào thuê đất miền Nam theo C&W không tăng so quý trước hai quý liên tiếp (theo mức thay đổi C&W công bố, cùng đơn vị).",
       "next_check": "Báo cáo quý IV/2026 của CBRE và Cushman & Wakefield (tháng 1/2027): lấp đầy miền Bắc, giá thuê miền Nam so với quý III.",
       "related_data": ["Quỹ đất KCN", "?kcn=landbank#mt2"]
     }
