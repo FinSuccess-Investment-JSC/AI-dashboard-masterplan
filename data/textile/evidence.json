@@ -141,5 +141,65 @@
   "status": "match",
   "correct_value": "",
   "note": ""
+ },
+ {
+  "block": "dm-tariff-flow",
+  "claim": "TNG: Mỹ gần 50% kim ngạch xuất khẩu",
+  "value": "~50%",
+  "url": "https://new.bsc.com.vn/Report/ReportFile/12766940",
+  "opened_at": "2026-11-26",
+  "quote": "Thị trường Mỹ chiếm gần 50% kim ngạch xuất khẩu của TNG.",
+  "status": "match",
+  "note": "BSC · Câu chuyện đầu tư 2026; agent mở trang gốc/PDF"
+ },
+ {
+  "block": "dm-tariff-flow",
+  "claim": "TNG: EU 34% doanh thu 2024",
+  "value": "34%",
+  "url": "https://file.fpts.com.vn/FileStore2/File/2025/06/27/TNG_-_InitialValuationReport_-_Jun2025_96c58b58.pdf",
+  "opened_at": "2026-11-26",
+  "quote": "Triển vọng về thị trường EU (34% doanh thu năm 2024)",
+  "status": "match",
+  "note": "FPTS 27/06/2025; agent mở trang gốc/PDF"
+ },
+ {
+  "block": "dm-tariff-flow",
+  "claim": "MSH: Mỹ ~80% doanh thu xuất khẩu 1H2026",
+  "value": "80%",
+  "url": "https://stockbiz.vn/tin-tuc/msh-linh-hoat-chuyen-dich-don-hang-duy-tri-nhip-tang-truong-thue-section-301-la-phep-thu-cua-nua-cuoi-2026/41651361",
+  "opened_at": "2026-11-26",
+  "quote": "nơi đóng góp khoảng 80% doanh thu xuất khẩu của MSH",
+  "status": "match",
+  "note": "Stockbiz 03/09/2026; agent mở trang gốc/PDF"
+ },
+ {
+  "block": "dm-tariff-flow",
+  "claim": "TCM: Mỹ 21%, Hàn 30%, Nhật 17% doanh thu 2024",
+  "value": "21%",
+  "url": "https://vndirect.com.vn/cmsupload/beta/TCM_BCCapnhat_20250305.pdf",
+  "opened_at": "2026-11-26",
+  "quote": "Xuất khẩu sang Mỹ chiếm 21% doanh thu năm 2024, trong khi Hàn Quốc và Nhật Bản đóng góp lần lượt 30% và 17%.",
+  "status": "match",
+  "note": "VNDirect 05/03/2025; agent mở trang gốc/PDF"
+ },
+ {
+  "block": "dm-tariff-flow",
+  "claim": "VGT: Mỹ 43,8% kim ngạch xuất khẩu 6T2025",
+  "value": "43,8%",
+  "url": "https://static.fireant.vn/Upload/AttachedFiles/VAnh-VGT-21072025a.pdf",
+  "opened_at": "2026-11-26",
+  "quote": "Mỹ vẫn là thị trường xuất khẩu chủ lực của Vinatex, chiếm 43.8% tổng kim ngạch",
+  "status": "match",
+  "note": "FireAnt PDF 21/07/2025; agent mở trang gốc/PDF"
+ },
+ {
+  "block": "dm-tariff-flow",
+  "claim": "STK: nội địa ~70% doanh thu 9T2025",
+  "value": "~70%",
+  "url": "https://file.fpts.com.vn/FileStore2/File/2025/11/28/112025STKCap_nhat_nhanhHuyTG_f6a20453.pdf",
+  "opened_at": "2026-11-26",
+  "quote": "hạ nguồn ở nội địa (~70% doanh thu của STK 09T2025)",
+  "status": "match",
+  "note": "FPTS 28/11/2025; agent mở trang gốc/PDF"
  }
 ]
