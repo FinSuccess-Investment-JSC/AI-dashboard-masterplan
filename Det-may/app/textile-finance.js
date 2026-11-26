@@ -410,10 +410,100 @@ function methods() {
   return d;
 }
 function redraw() { syncUrl(); renders.forEach(f => { try { f(); } catch (e) { document.documentElement.dataset.pfError = (document.documentElement.dataset.pfError || '') + e.message + ';'; console.error(e); } }); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
+/* ---------- 1.7 So sánh tỷ số từng mã (26/11/2026, theo bảng trong BCTN 2025 của TNG) ----------
+   Tính lại từ BCTC hợp nhất, không chép số từ BCTN. Năm: KQKD = tổng 4 quý, LCTT = báo cáo năm, số dư cuối Q4,
+   bình quân = (cuối năm + cuối năm trước)/2. TTM: 4 quý gần nhất, số dư kỳ chốt, bình quân với cùng kỳ năm trước. */
+const RATIO_ROWS = [
+  ['Thanh khoản'],
+  ['Thanh toán bằng tiền mặt', 'lần', v => v.d('cash', 'cur_liab')],
+  ['Thanh toán nhanh', 'lần', v => v.r(v.b('cur_assets') - v.b('inventory'), v.b('cur_liab'))],
+  ['Thanh toán hiện hành', 'lần', v => v.d('cur_assets', 'cur_liab')],
+  ['Khả năng thanh toán lãi vay (EBIT/lãi vay)', 'lần', v => v.r(v.f('pbt') + v.f('interest'), v.f('interest'))],
+  ['Hiệu quả hoạt động'],
+  ['Vòng quay phải thu khách hàng', 'vòng', v => v.r(v.f('revenue'), v.a('receivables'))],
+  ['Thời gian thu tiền bình quân', 'ngày', v => v.r(365, v.r(v.f('revenue'), v.a('receivables')))],
+  ['Vòng quay hàng tồn kho', 'vòng', v => v.r(v.f('cogs'), v.a('inventory'))],
+  ['Thời gian tồn kho bình quân', 'ngày', v => v.r(365, v.r(v.f('cogs'), v.a('inventory')))],
+  ['Vòng quay phải trả người bán', 'vòng', v => v.r(v.f('cogs'), v.a('payables'))],
+  ['Thời gian trả tiền người bán', 'ngày', v => v.r(365, v.r(v.f('cogs'), v.a('payables')))],
+  ['Vòng quay tài sản cố định', 'vòng', v => v.r(v.f('revenue'), v.a('fixed_assets'))],
+  ['Vòng quay tổng tài sản', 'vòng', v => v.r(v.f('revenue'), v.a('total_assets'))],
+  ['Vòng quay vốn chủ sở hữu', 'vòng', v => v.r(v.f('revenue'), v.a('equity'))],
+  ['Đòn bẩy tài chính'],
+  ['Nợ ngắn hạn/Nợ phải trả', '%', v => v.p('cur_liab', 'liabilities')],
+  ['Nợ vay/Tổng tài sản', '%', v => v.r(v.b('st_debt') + v.b('lt_debt'), v.b('total_assets'), 100)],
+  ['Nợ phải trả/Tổng tài sản', '%', v => v.p('liabilities', 'total_assets')],
+  ['Vốn chủ sở hữu/Tổng tài sản', '%', v => v.p('equity', 'total_assets')],
+  ['Nợ ngắn hạn/Vốn chủ sở hữu', '%', v => v.p('cur_liab', 'equity')],
+  ['Nợ vay/Vốn chủ sở hữu', '%', v => v.r(v.b('st_debt') + v.b('lt_debt'), v.b('equity'), 100)],
+  ['Nợ phải trả/Vốn chủ sở hữu', '%', v => v.p('liabilities', 'equity')],
+  ['Dòng tiền'],
+  ['CFO/Doanh thu thuần', '%', v => v.r(v.f('cfo'), v.f('revenue'), 100)],
+  ['CFO/Nợ ngắn hạn', '%', v => v.r(v.f('cfo'), v.b('cur_liab'), 100)],
+  ['Lưu chuyển tiền thuần/Nợ ngắn hạn', '%', v => v.r(v.f('net_cash_flow'), v.b('cur_liab'), 100)],
+  ['CFO/Tổng tài sản', '%', v => v.r(v.f('cfo'), v.b('total_assets'), 100)],
+  ['CFO/Vốn chủ sở hữu', '%', v => v.r(v.f('cfo'), v.b('equity'), 100)],
+  ['CFO/LN thuần từ HĐKD', '%', v => v.r(v.f('cfo'), v.f('op_profit'), 100)],
+  ['CFO/Nợ phải trả', '%', v => v.r(v.f('cfo'), v.b('liabilities'), 100)],
+  ['Cơ cấu chi phí (trên doanh thu thuần)'],
+  ['Giá vốn hàng bán', '%', v => v.r(v.f('cogs'), v.f('revenue'), 100)],
+  ['Chi phí bán hàng', '%', v => v.r(v.f('selling'), v.f('revenue'), 100)],
+  ['Chi phí quản lý doanh nghiệp', '%', v => v.r(v.f('admin'), v.f('revenue'), 100)],
+  ['Chi phí lãi vay', '%', v => v.r(v.f('interest'), v.f('revenue'), 100)],
+  ['Cơ cấu tài sản ngắn hạn'],
+  ['Tài sản ngắn hạn/Tổng tài sản', '%', v => v.p('cur_assets', 'total_assets')],
+  ['Tiền/Tài sản ngắn hạn', '%', v => v.p('cash', 'cur_assets')],
+  ['Đầu tư tài chính ngắn hạn/TSNH', '%', v => v.p('st_invest', 'cur_assets')],
+  ['Phải thu ngắn hạn/TSNH', '%', v => v.p('st_recv_all', 'cur_assets')],
+  ['Hàng tồn kho/TSNH', '%', v => v.p('inventory', 'cur_assets')],
+  ['Tài sản ngắn hạn khác/TSNH', '%', v => v.p('other_ca', 'cur_assets')],
+  ['Cơ cấu tài sản dài hạn'],
+  ['Tài sản dài hạn/Tổng tài sản', '%', v => v.p('lt_assets', 'total_assets')],
+  ['Tài sản cố định/Tổng tài sản', '%', v => v.p('fixed_assets', 'total_assets')],
+  ['TSCĐ hữu hình/Tài sản cố định', '%', v => v.p('ppe_net', 'fixed_assets')],
+  ['TSCĐ vô hình/Tài sản cố định', '%', v => v.p('intangible', 'fixed_assets')],
+];
+function ratioCtx(t, basis) {
+  const P = D.periods, X = D.data[t] || {}, r = (a, b, k = 1) => fin(a) && fin(b) && b !== 0 ? a / b * k : null;
+  let fi, bi, bp;  // quý cộng KQKD, số dư cuối kỳ, số dư cùng kỳ năm trước
+  if (basis === 'ttm') { bi = P.length - 1; fi = [0, 1, 2, 3].map(k => bi - k); bp = bi - 4; }
+  else { fi = [1, 2, 3, 4].map(q => P.indexOf(`${basis}Q${q}`)); bi = P.indexOf(`${basis}Q4`); bp = P.indexOf(`${+basis - 1}Q4`); }
+  const bal = (k, i) => i >= 0 ? X[k]?.[i] : null;
+  const b = k => bal(k, bi);
+  const f = k => { if (basis !== 'ttm' && (k === 'cfo' || k === 'net_cash_flow')) return D.cf_annual?.[t]?.[k]?.[D.years.indexOf(basis)] ?? null;
+    const v = fi.map(i => i >= 0 ? X[k]?.[i] : null); return v.every(fin) ? v.reduce((a, c) => a + c, 0) : null; };
+  const a = k => { const x = b(k), y = bal(k, bp); return fin(x) && fin(y) ? (x + y) / 2 : null; };
+  return {r, b, f, a, d: (x, y) => r(b(x), b(y)), p: (x, y) => r(b(x), b(y), 100)};
+}
+function s77() {
+  const s = section('1.7', 'So sánh tỷ số từng mã', 'Doanh nghiệp nào thanh khoản, vòng quay vốn, đòn bẩy và dòng tiền tốt hơn nhóm?');
+  const c = card('dm-fin-ratios', 'Bảng tỷ số tài chính theo doanh nghiệp', 'Tính lại từ BCTC hợp nhất · cột cuối là trung vị 7 mã'); s.append(c.el);
+  const full = D.years.filter(y => [1, 2, 3, 4].every(q => D.periods.includes(`${y}Q${q}`)));
+  let basis = full.at(-1);
+  const opts = [...full.slice(-4).reverse().map(y => [y, 'Năm ' + y]), ['ttm', 'TTM ' + qLabel(D.periods.at(-1))]];
+  const pick = el('select', 'pf-sel'); pick.innerHTML = opts.map(([k, n]) => `<option value="${k}"${k === basis ? ' selected' : ''}>${n}</option>`).join(''); c.ctl.append(pick);
+  pick.addEventListener('change', () => { basis = pick.value; draw(); });
+  const T = D.groups.flatMap(g => D.companies.filter(x => x.group === g.id).map(x => x.ticker));
+  const med = a => { const v = a.filter(fin).sort((x, y) => x - y); if (!v.length) return null; const m = v.length >> 1; return v.length % 2 ? v[m] : (v[m - 1] + v[m]) / 2; };
+  const fmt = (v, d) => fin(v) ? (v < 0 ? '(' + nf(-v, d) + ')' : nf(v, d)) : '—';
+  function draw() {
+    const ctx = Object.fromEntries(T.map(t => [t, ratioCtx(t, basis)]));
+    const body = RATIO_ROWS.map(row => {
+      if (row.length === 1) return `<tr class="pf-rg"><td colspan="${T.length + 3}">${esc(row[0])}</td></tr>`;
+      const [n, u, fn] = row, vals = T.map(t => { try { return fn(ctx[t]); } catch { return null; } }), m = med(vals), d = u === 'ngày' ? 0 : 2;
+      return `<tr><td>${esc(n)}</td><td class="pf-u">${u}</td>${vals.map(v => `<td class="num">${fmt(v, d)}</td>`).join('')}<td class="num pf-med">${fmt(m, d)}</td></tr>`;
+    }).join('');
+    c.host.innerHTML = `<div class="tablewrap pf-ratio" data-no-fold><table><thead><tr><th>Chỉ số</th><th>ĐVT</th>${T.map(t => `<th class="num" style="color:${GC[E.groupOf[t]]}">${t}</th>`).join('')}<th class="num">Trung vị</th></tr></thead><tbody>${body}</tbody></table></div>`;
+  }
+  if (!document.getElementById('pf-ratio-style')) { const st = el('style'); st.id = 'pf-ratio-style'; st.textContent = '.pf-ratio table{width:100%;border-collapse:collapse;font-size:13.5px}.pf-ratio th,.pf-ratio td{padding:6px 10px;border-bottom:1px solid #EEF0F6;white-space:nowrap}.pf-ratio td:first-child{white-space:normal;min-width:220px}.pf-ratio .num{text-align:right;font-variant-numeric:tabular-nums}.pf-ratio .pf-u{color:#6B7392}.pf-ratio .pf-rg td{padding-top:14px;font:700 12px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#2938A8;border-bottom:1.5px solid #DCE1EE}.pf-ratio .pf-med{font-weight:700;background:#F5F7FC}:root[data-theme=dark] .pf-ratio .pf-med{background:#1b1b1b}'; document.head.append(st); }
+  draw();
+  foot(c, 'Số âm trong ngoặc. Năm: KQKD cộng 4 quý, LCTT lấy báo cáo năm; vòng quay dùng số dư bình quân đầu – cuối kỳ. TTM: LCTT là tổng 4 quý, trống nếu quý thiếu hoặc lệch số năm. Nợ vay gồm nợ thuê tài chính. VGT là số hợp nhất tập đoàn, GIL có mảng BĐS KCN');
+  return s;
+}
 function build(pane) {
   if (!pane || root) return; root = pane;
   style();
-  pane.append(filterBar(), kpis(), s71(), s72(), s73(), s74(), s75(), s76(), methods());
+  pane.append(filterBar(), kpis(), s71(), s72(), s73(), s74(), s75(), s76(), s77(), methods());
   redraw();
 }
 function style() {
