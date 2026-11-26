@@ -714,7 +714,7 @@ function build() {
     const u = new URL(location.href);
     if (push && u.searchParams.get('section') !== key) { u.searchParams.set('section', key); history.pushState({ppSection: key}, '', u.pathname + u.search + (location.hash || '#mt2')); }
     const b = btns[keys.indexOf(key)]; if (b) nav.scrollLeft = Math.max(0, b.offsetLeft - (nav.clientWidth - b.offsetWidth) / 2);
-    setTimeout(() => window.dispatchEvent(new Event('resize')), 30); refit(tabs[key]);
+    setTimeout(() => window.dispatchEvent(new Event('resize')), 30); refit(tabs[key]); window.dispatchEvent(new Event('pv:toc'));
   };
   window.PowerPicture = {select};
   btns.forEach((b, i) => {
