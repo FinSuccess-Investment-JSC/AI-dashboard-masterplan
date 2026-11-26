@@ -384,8 +384,7 @@ function marketPane(p) {
   ]);
 }
 function mobilePane(p) {
-  const sp = (T.spectrum || []).filter(x => fin(x.price_bn_vnd));
-  const c1 = chartCard({id: 'vt-5g-spectrum', title: 'Giá trúng đấu giá tần số so với giá khởi điểm (tỷ đồng)', cats: sp.map(x => `${x.winner} · ${x.band.split(' (')[0]}`), series: [{name: 'Giá khởi điểm', color: '#9AA3BD', values: sp.map(x => x.reserve_bn_vnd), kind: 'bar'}, {name: 'Giá trúng', color: COL[0], values: sp.map(x => x.price_bn_vnd), kind: 'bar'}], unit: 'tỷ đ', digits: 0, native: 'bar', src: sp.map(x => x.src), min: 1, cadence: 'on-data-change', note: 'Thời hạn, nghĩa vụ từng khối ở Chính sách'});
+  // Chart giá trúng đấu giá tần số (2.1) bỏ 26/11/2026 theo yêu cầu người dùng; bảng đấu giá đầy đủ ở Chính sách.
   const st = stations5g();
   const c2 = chartCard({id: 'vt-5g-stations', title: 'Số trạm 5G toàn quốc (trạm, thực tế)', cats: st.map(x => x.k), series: [{name: 'Trạm 5G', color: COL[2], values: st.map(x => x.v), kind: 'bar'}], unit: 'trạm', digits: 0, native: 'bar', src: st.map(x => x.src), cadence: 'on-data-change', note: 'Mỗi tháng một mốc công bố; mục tiêu không vẽ vào chuỗi thực tế'});
   const ops = FG.filter(x => x.operator !== 'Toàn quốc' && ['launch', 'stations', 'subscribers'].includes(x.event) && x.status === 'actual').sort((a, b) => a.date.localeCompare(b.date));
@@ -413,10 +412,10 @@ function mobilePane(p) {
   const rowsSR = Object.keys(SH.mobile_rev || {}).flatMap(y => Object.keys(SH.mobile_rev[y]).map(o => [y, esc(o), fin(SH.mobile?.[y]?.[o]) ? nf(SH.mobile[y][o], 1) + '%' : '—', fin(SH.mbb?.[y]?.[o]) ? nf(SH.mbb[y][o], 1) + '%' : '—', nf(SH.mobile_rev[y][o], 1) + '%']));
   const c11 = tableCard('vt-cp-subrev-mob', 'Di động: thị phần thuê bao so với thị phần doanh thu', ['Năm', 'Nhà mạng', 'Thuê bao di động', 'Thuê bao băng rộng di động', 'Doanh thu di động'], rowsSR, [...(SH.mobile_rev_src || []), ...(SH.mbb_src || [])], 'Năm gần nhất có cả ba chỉ tiêu (Sách Trắng CNTT-TT)');
   stages(p, 'mt2', 'mobile', [
-    ['network', 'Đầu tư', 'Đầu tư & năng lực mạng', [qpanel('2.1', 'Nhà mạng đã trả bao nhiêu cho phổ tần?', [c1], go('Bảng đấu giá đầy đủ ở Chính sách', 'mt2:policy:license')), qpanel('2.2', 'Số trạm 5G tăng thế nào, từng nhà mạng ở đâu so với mục tiêu?', [c2, c3, c4])]],
-    ['usage', 'Sử dụng', 'Thuê bao & người dùng data', [qpanel('2.3', 'Thuê bao 5G tăng ra sao, chiếm bao nhiêu trong băng rộng di động?', [c5, c6]), qpanel('2.4', 'Bao nhiêu thuê bao di động dùng data?', [c7])]],
-    ['commercial', 'Thương mại hóa', 'Gói cước & doanh thu di động', [qpanel('2.5', 'Gói data niêm yết ở mức nào?', [c8]), qpanel('2.6', 'Doanh thu di động thay đổi thế nào khi người dùng data tăng?', [c9])]],
-    ['share', 'Thị phần', 'Thị phần di động', [qpanel('2.7', 'Nhà mạng nào chiếm bao nhiêu thuê bao và doanh thu di động?', [c10, c11])]]
+    ['network', 'Đầu tư', 'Đầu tư & năng lực mạng', [qpanel('2.1', 'Số trạm 5G tăng thế nào, từng nhà mạng ở đâu so với mục tiêu?', [c2, c3, c4])]],
+    ['usage', 'Sử dụng', 'Thuê bao & người dùng data', [qpanel('2.2', 'Thuê bao 5G tăng ra sao, chiếm bao nhiêu trong băng rộng di động?', [c5, c6]), qpanel('2.3', 'Bao nhiêu thuê bao di động dùng data?', [c7])]],
+    ['commercial', 'Thương mại hóa', 'Gói cước & doanh thu di động', [qpanel('2.4', 'Gói data niêm yết ở mức nào?', [c8]), qpanel('2.5', 'Doanh thu di động thay đổi thế nào khi người dùng data tăng?', [c9])]],
+    ['share', 'Thị phần', 'Thị phần di động', [qpanel('2.6', 'Nhà mạng nào chiếm bao nhiêu thuê bao và doanh thu di động?', [c10, c11])]]
   ]);
 }
 function fixedPane(p) {

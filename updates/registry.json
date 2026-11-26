@@ -4807,7 +4807,6 @@
     "blocks": [
      "vt-5g-ops",
      "vt-5g-share",
-     "vt-5g-spectrum",
      "vt-5g-stations",
      "vt-5g-subs",
      "vt-5g-targets",
