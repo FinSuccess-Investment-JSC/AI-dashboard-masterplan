@@ -83,3 +83,14 @@ class GasSystemTests(unittest.TestCase):
         self.assertIn('Hoàng Sa (Việt Nam)', base)
         self.assertIn('Trường Sa (Việt Nam)', base)
 
+    def test_news_dataset(self):
+        # Chủ đề nóng: dữ liệu dựng lại được, mọi sự kiện trỏ tới bài và chủ đề có thật.
+        import subprocess, sys
+        subprocess.run([sys.executable, str(ROOT / 'scripts/build_fertilizer_news.py')], check=True, capture_output=True)
+        js = (ROOT / 'data/fertilizer-news.js').read_text(encoding='utf-8')
+        d = json.loads(js[js.index('=') + 1:].strip().rstrip(';'))
+        self.assertGreaterEqual(len(d['events']), 10)
+        arts = {a['id'] for a in d['articles']}
+        for e in d['events']:
+            self.assertTrue(set(e['article_ids']) <= arts, e['id'])
+

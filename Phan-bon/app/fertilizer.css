@@ -193,3 +193,10 @@
 .fb-gm-tip{font-size:12px}
 @media (max-width:760px){.fb-gm-map{height:560px}.fb-gm-side{position:static;width:auto;max-height:none;margin-top:8px;box-shadow:none}}
 :root[data-theme=dark] .fb-gm-side{background:#161a24;border-color:#2a2f3d}:root[data-theme=dark] .fb-gm-side dd,:root[data-theme=dark] .fb-gm-sup span{color:#e6e9f5}
+/* Luồng Đầu vào → Sản xuất → Đầu ra (chép Dien/app/power-picture.js, 26/11/2026) */
+.pp-flow{display:flex;align-items:stretch;gap:6px;margin:0 0 16px;flex-wrap:wrap}.pp-flow-s{flex:1 1 170px;display:flex;flex-direction:column;gap:3px;padding:10px 14px;border:1px solid var(--line,#d6dbe8);border-radius:12px;background:var(--card,#fff);color:var(--ink,#1d2333);text-decoration:none}
+.pp-flow-s small{font:700 10.5px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#7a8399)}.pp-flow-s b{font-size:14px;line-height:1.3}.pp-flow-s:hover,.pp-flow-s:focus-visible{border-color:#2938A8}
+.pp-flow-ar{align-self:center;color:#2938A8;font-weight:700}
+.pp-stage{display:flex;align-items:center;gap:10px;margin:24px 0 12px;padding-bottom:8px;border-bottom:2px solid #1D2678;scroll-margin-top:130px}.pp-stage span{font:700 11px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#1D2678;border-radius:6px;padding:3px 9px}.pp-stage h3{margin:0;font-size:16px}
+:root[data-theme=dark] .pp-stage{border-color:#8997D6}:root[data-theme=dark] .pp-stage span{background:#2938A8}
+@media (max-width:760px){.pp-flow-ar{display:none}.pp-flow-s{flex-basis:100%}}

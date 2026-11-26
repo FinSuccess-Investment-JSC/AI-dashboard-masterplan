@@ -80,7 +80,7 @@ function views() {
   const gasRows = (D.plants && D.plants.gas_pricing) || [];
 
   const V = {
-    ureaGas(h) {
+    ureaMargin(h) {
       const q1 = panel('1.5', 'Giá urê thế giới có truyền vào biên gộp của DPM, DCM không?', 'Hai chart cùng trục quý: trên là giá bán tham chiếu, dưới là biên gộp thực tế từ BCTC.');
       const a = card('pb-c-gas-px', 'Giá urê thế giới, bình quân quý', {sub: 'USD/tấn · FOB Trung Đông · Actual', source: SRC.wb + '; bình quân 3 tháng', info: 'Quý chỉ tính khi đủ 3 tháng. Đây là benchmark quốc tế, không phải giá bán thực tế của DPM, DCM; giá urê nội địa chưa có (WiData).'});
       const b = card('pb-c-gas-gm', 'Biên lợi nhuận gộp DPM, DCM theo quý', {sub: '% · LN gộp ÷ doanh thu thuần hợp nhất · Actual', source: SRC.vnd + '; tự tính', info: 'Biên gộp hợp nhất gồm urê, NPK và hàng kinh doanh thương mại; không phải biên riêng mảng urê.'});
@@ -88,11 +88,13 @@ function views() {
       chart(a.host, 'pb-c-gas-px', QL, [{name: 'Urê (World Bank)', color: C.blue, values: qOf('urea')}], {unit: 'USD/tấn', zeroBase: false});
       chart(b.host, 'pb-c-gas-gm', QL, [{name: 'DPM', color: C.blue, values: gm('DPM')}, {name: 'DCM', color: C.sky, values: gm('DCM')}], {unit: '%', digits: 1, zeroBase: false});
     },
-    ureaCoal(h) {
+    coalIn(h) {
       const q1 = panel('1.6', 'Giá than và giá urê đang dịch chuyển thế nào với nhà sản xuất urê từ than?');
       const a = card('pb-c-coal-px', 'Giá than Newcastle và giá urê, bình quân quý', {sub: 'USD/tấn · than: Proxy · urê: benchmark', source: SRC.wb, info: 'Newcastle là giá than nhiệt xuất khẩu Úc, không phải giá than antraxit TKV bán cho DHB, Đạm Ninh Bình. Giá than nội địa chưa có nguồn công khai theo tháng.'});
       q1.append(a.el); h.append(q1);
       chart(a.host, 'pb-c-coal-px', QL, [{name: 'Urê (World Bank)', color: C.blue, values: qOf('urea')}, {name: 'Than Newcastle (proxy)', color: C.grey, values: qOf('coal_au')}], {unit: 'USD/tấn', zeroBase: false});
+    },
+    coalMargin(h) {
       const q2 = panel('1.7', 'Biên gộp công nghệ than khác công nghệ khí thế nào?', 'Biên gộp hợp nhất theo nhóm doanh nghiệp, tổng LN gộp ÷ tổng doanh thu.');
       const b = card('pb-c-coal-gm', 'Biên gộp: urê từ than (DHB) so với urê từ khí (DPM + DCM)', {sub: '% · theo quý · Actual', source: SRC.vnd + '; tự tính', info: 'Nhóm khí = tổng LN gộp DPM + DCM ÷ tổng doanh thu; nhóm than = DHB. DHB Q4/2023 giá vốn bằng 0 trên nguồn nên để trống.'});
       q2.append(b.el, insight(corrNote('DHB', 'urea') + '.'));
@@ -100,13 +102,15 @@ function views() {
       const g = E ? E.ratio({m: 'gross'}, {m: 'revenue'}, ['DPM', 'DCM'], 'q', 100).values.slice(st) : [];
       chart(b.host, 'pb-c-coal-gm', QL, [{name: 'Urê từ khí (DPM+DCM)', color: C.blue, values: g}, {name: 'Urê từ than (DHB)', color: C.grey, values: gm('DHB')}], {unit: '%', digits: 1, zeroBase: false});
     },
-    phos(h) {
+    phosIn(h) {
       const L = k.months('2021-01', last('dap').date);
-      const q1 = panel('2.2', 'Giá nguyên liệu và sản phẩm phân lân biến động ra sao?', 'Từng chuỗi độc lập: chưa có định mức tiêu hao có nguồn nên không ghép thành chi phí rổ.');
+      const q1 = panel('2.2', 'Giá quặng phosphate (nguyên liệu) và giá DAP, TSP biến động ra sao?', 'Từng chuỗi độc lập: chưa có định mức tiêu hao có nguồn nên không ghép thành chi phí rổ.');
       const a = card('pb-c-phos-px', 'Giá DAP, TSP và quặng phosphate', {sub: 'USD/tấn · bình quân tháng · quặng: Proxy cho apatit', source: SRC.wb, info: 'Quặng phosphate Morocco là benchmark quốc tế; apatit Lào Cai có hàm lượng và cơ chế giá khác.'});
       q1.append(a.el);
       h.append(q1);
       chart(a.host, 'pb-c-phos-px', L.map(mL), [['dap', 'DAP', C.gold], ['tsp', 'TSP', C.plum], ['phosrock', 'Quặng phosphate (proxy)', C.grey]].map(([key, n, col]) => ({name: n, color: col, values: L.map(m => k.val(key, m))})), {unit: 'USD/tấn'});
+    },
+    phosMargin(h) {
       const q2 = panel('2.3', 'Giá DAP có truyền vào biên gộp các nhà sản xuất lân không?');
       const b = card('pb-c-phos-gm', 'Biên gộp DDV, LAS, VAF, NFC theo quý', {sub: '% · Actual', source: SRC.vnd + '; tự tính'});
       const c2 = card('pb-c-phos-dapq', 'Giá DAP, bình quân quý', {sub: 'USD/tấn · benchmark', source: SRC.wb});
@@ -114,7 +118,7 @@ function views() {
       chart(c2.host, 'pb-c-phos-dapq', QL, [{name: 'DAP', color: C.gold, values: qOf('dap')}], {unit: 'USD/tấn', zeroBase: false});
       chart(b.host, 'pb-c-phos-gm', QL, [['DDV', C.gold], ['LAS', C.plum], ['VAF', C.teal], ['NFC', C.grey]].map(([t, col]) => ({name: t, color: col, values: gm(t)})), {unit: '%', digits: 1, zeroBase: false});
     },
-    npk(h) {
+    npkIn(h) {
       // Chỉ số giá từng nguyên liệu, gốc = bình quân 2024 = 100 (tự tính). Không ghép thành rổ vì chưa có công thức có nguồn.
       const base = key => { const v = recs(key).filter(r => r.date.startsWith('2024')).map(r => r.value); return v.length === 12 ? v.reduce((a, b) => a + b, 0) / 12 : null; };
       const L = k.months('2021-01', last('urea').date);
@@ -122,6 +126,8 @@ function views() {
       const a = card('pb-c-npk-idx', 'Chỉ số giá nguyên liệu NPK (bình quân 2024 = 100)', {sub: 'Calculated · từng chuỗi riêng, không phải chi phí rổ', source: SRC.wb + '; tự tính', info: 'Chỉ số = giá tháng ÷ bình quân 12 tháng 2024 × 100. Không dùng hàm lượng N-P-K trên bao bì làm tỷ trọng chi phí; chưa có công thức phối trộn có nguồn nên không tính rổ.'});
       q1.append(a.el); h.append(q1);
       chart(a.host, 'pb-c-npk-idx', L.map(mL), [['urea', 'Urê', C.blue], ['dap', 'DAP', C.gold], ['potash', 'Kali', C.plum]].map(([key, n, col]) => { const b = base(key); return {name: n, color: col, values: L.map(m => { const v = k.val(key, m); return fin(v) && b ? v / b * 100 : null; })}; }), {unit: 'điểm', zeroBase: false});
+    },
+    npkMargin(h) {
       const q2 = panel('3.5', 'Giá nguyên liệu đi qua tồn kho rồi mới vào biên gộp NPK: độ trễ bao lâu?', 'Giá nguyên liệu → giá vốn hàng tồn kho → giá bán NPK → biên gộp.');
       const b = card('pb-c-npk-gm', 'Biên gộp BFC, SFG theo quý', {sub: '% · Actual', source: SRC.vnd + '; tự tính'});
       const c = card('pb-c-npk-dio', 'Số ngày tồn kho BFC, SFG', {sub: 'ngày · hàng tồn kho bình quân ÷ giá vốn 4 quý × 365 · Calculated', source: SRC.vnd + '; tự tính', info: 'Hàng tồn kho bình quân = (cuối kỳ + cùng kỳ năm trước) ÷ 2. Số ngày tồn kho cho biết khoảng thời gian giá nguyên liệu mua vào nằm trong giá vốn trước khi bán ra.'});
