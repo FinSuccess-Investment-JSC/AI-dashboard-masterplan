@@ -1,5 +1,5 @@
 /* Bán lẻ & tiêu dùng · khung 4 tab theo mẫu Điện (26/11/2026), dựng từ khung Thủy sản (Thuy-san/app/seafood-frame.js).
-   Tab lớn: Tổng quan ngành (#mt1: 00 Bản đồ ngành · 01 Vị trí chu kỳ; bỏ tab Mô hình kiếm tiền 27/11/2026; Bản tin dữ liệu ở đầu)
+   Tab lớn: Tổng quan ngành (#mt1: 00 Bản đồ ngành; bỏ tab Mô hình kiếm tiền, Vị trí chu kỳ 27/11/2026; Bản tin dữ liệu ở đầu)
           · Bức tranh ngành (#mt2: 01 Toàn ngành · 02 Bán lẻ hiện đại & điện máy · 03 Trang sức · 04 Hàng tiêu dùng nhanh · 05 Chính sách & thuế)
           · Tài chính ngành (#mt14: 01 Tài chính ngành · 02 Doanh nghiệp niêm yết)
           · Chủ đề nóng (#mt7, giữ research-editorial; mỗi chủ đề thêm dòng mô hình bị tác động, chỉ báo xác nhận, link chart).
@@ -24,9 +24,6 @@ const TREE = {
   mt1: {title: 'Tổng quan ngành', subs: [
     {k: 'map', t: 'Bản đồ ngành', d: 'Sức mua (thu nhập, khách, tín dụng) → ba nhóm doanh nghiệp → kênh bán → biên lợi nhuận.', items: [
       {q: 'Sức mua đi qua những khâu nào trước khi thành lợi nhuận?', id: 'rf-q-map', take: ['bl-01']},
-    ]},
-    {k: 'cycle', t: 'Vị trí chu kỳ', d: 'Đọc nhanh sức mua, kết quả doanh nghiệp và ngược gió 2027.', items: [
-      {q: 'Ngành đang ở pha nào của chu kỳ sức mua?', id: 'rf-q-cycle', take: ['bl-02']},
     ]},
   ]},
   mt2: {title: 'Bức tranh ngành', subs: [
@@ -80,7 +77,7 @@ const TREE = {
   ]},
 };
 const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
-const SUB_ALIAS = {durable: 'jewelry', model: 'map'}; // ?sub= cũ trước khi tách Ô tô – Xe máy
+const SUB_ALIAS = {durable: 'jewelry', model: 'map', cycle: 'map'}; // ?sub= cũ trước khi tách Ô tô – Xe máy
 // ?sub=model cũ → Bản đồ ngành
 const ALIAS = {mt3: ['mt2', 'fmcg'], mt4: ['mt2', 'policy'], mt5: ['mt1'], mt6: ['mt14', 'listed'], mt8: ['mt1', 'map', 'rf-sources'], mt9: ['mt14', 'sector']};
 const SECTION = {policy: ['mt2', 'policy'], tax: ['mt2', 'policy'], trade: ['mt2', 'policy'], demand: ['mt2', 'all'], supply: ['mt2', 'modern'], price: ['mt2', 'fmcg'], margin: ['mt2', 'fmcg'],
