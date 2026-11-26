@@ -268,7 +268,7 @@ function gasTimeline() {
   const axis = [...Array(y1 - y0 + 1)].map((_, i) => `<span style="left:${X(y0 + i)}">${y0 + i}</span>`).join('');
   const box = el('div', 'gt');
   box.innerHTML = `<div class="gt-head"><div></div><div class="gt-axis">${axis}<i class="gt-nowh" style="left:${X(now)}">Hôm nay</i></div><div class="gt-tbd">Chưa có lịch</div></div>` +
-    rows.map(r => { const st = r.t == null ? 'tbd' : (r.t <= now && /\d{1,2}\/\d{1,2}\/\d{4}/.test(r.first)) ? 'on' : 'next'  // chỉ coi là đã có khí khi có ngày cụ thể đã qua; mốc theo quý vẫn là sắp vận hành, d = size(r);
+    rows.map(r => { const st = r.t == null ? 'tbd' : (r.t <= now && /\d{1,2}\/\d{1,2}\/\d{4}/.test(r.first)) ? 'on' : 'next', d = size(r);  // 'on' chỉ khi có ngày cụ thể đã qua; mốc theo quý vẫn là sắp vận hành
       const dot = `<span class="gt-dot ${st}" style="width:${d}px;height:${d}px" title="${r.first}"></span>`;
       const lab = `<span class="gt-lab"><b>${r.first}</b><small>${r.res ? 'Trữ lượng ' + f(r.res) + ' tỷ m³' : 'Trữ lượng chưa công bố'}${r.out ? ' · ' + f(r.out) + ' tỷ m³/năm' : ''}${r.capex ? ' · ' + f(r.capex) + ' tr USD' : ''}</small></span>`;
       return `<div class="gt-row"><div class="gt-name"><b>${r.name}</b><small>${r.lot}</small></div>
