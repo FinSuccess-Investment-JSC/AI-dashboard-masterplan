@@ -61,7 +61,10 @@ def load(old_records=None):
     current = {}
     session = requests.Session()
     session.headers.update({'User-Agent': 'FinSuccessDashboard/2.0 (public data research)'})
-    for year in (today.year - 1, today.year):
+    # Backfill once to 2015 when the stored history starts later; afterwards only the last two annual files.
+    first = min((int(r['date'][:4]) for r in (old_records or [])), default=today.year)
+    years = range(2015, today.year + 1) if first > 2015 else (today.year - 1, today.year)
+    for year in years:
         filename = f'primaryyear{year}.csv' if year == today.year else f'{year}.csv'
         response = session.get(BASE + filename, timeout=90)
         if response.status_code == 404 and year == today.year:

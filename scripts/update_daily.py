@@ -101,7 +101,7 @@ def parse_portwatch(features, portid='chokepoint6'):
 def load_portwatch(portid='chokepoint6'):
     features=[];raw_pages=[];offset=0
     while True:
-        query={'where':f"portid='{portid}' AND date >= DATE '2023-01-01'",'outFields':'date,portid,n_tanker,n_total','orderByFields':'date ASC','resultOffset':offset,'resultRecordCount':1000,'f':'json'}
+        query={'where':f"portid='{portid}' AND date >= DATE '2019-01-01'",'outFields':'date,portid,n_tanker,n_total','orderByFields':'date ASC','resultOffset':offset,'resultRecordCount':1000,'f':'json'}
         raw=fetch(PORTWATCH+'?'+urllib.parse.urlencode(query));page=json.loads(raw)
         if 'error' in page:raise ValueError('PortWatch: '+str(page['error']))
         batch=page.get('features',[]);features.extend(batch);raw_pages.append(page)

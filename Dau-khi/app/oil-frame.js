@@ -390,7 +390,7 @@ const vnDate = d => { const [y, m, dd] = d.split('-'); return dd ? `${dd}/${m}/$
 // Vận tải: chỉ số cước tàu dầu thô (BDTI) và tàu sản phẩm (BCTI), 2 năm gần nhất, số ngày.
 function tankerRates() {
   const s = window.SHIPPING_DAILY?.eastmoney?.series; if (!s?.bdti?.records?.length) return;
-  const from = new Date(Date.now() - 730 * 864e5).toISOString().slice(0, 10);
+  const from = '2019-01-01';  // 26/11/2026: cả chuỗi East Money (từ 2019) thay vì 2 năm
   const bcti = new Map(s.bcti.records.map(r => [r[0], r[1]]));
   const rows = s.bdti.records.filter(r => r[0] >= from);
   lineCard($('#of-mt2-flows .of-body'), {id: 'chTankerIdx', title: 'Cước tàu dầu: Baltic Dirty Tanker (dầu thô) và Clean Tanker (sản phẩm) — 2 năm', sub: `điểm chỉ số, số ngày · mới nhất ${vnDate(rows.at(-1)[0])}: BDTI ${rows.at(-1)[1].toLocaleString('vi-VN')}, BCTI ${(bcti.get(rows.at(-1)[0]) ?? '—').toLocaleString('vi-VN')}`,
@@ -401,7 +401,7 @@ function tankerRates() {
 // Khí & LNG: giá LNG châu Á (JKM) so với khí Mỹ (Henry Hub), bình quân tuần 2 năm — biên nhập LNG và giá khí đầu vào điện.
 function lngPrices() {
   const src = window.SECTOR_DAILY?.sources, j = src?.lng_jkm?.records, h = src?.henry_hub?.records; if (!j?.length || !h?.length) return;
-  const from = new Date(Date.now() - 730 * 864e5).toISOString().slice(0, 10);
+  const from = '2019-01-01';  // 26/11/2026: từ 2019 thay vì 2 năm
   const wk = d => { const t = new Date(d + 'T00:00:00Z'); t.setUTCDate(t.getUTCDate() - ((t.getUTCDay() + 6) % 7)); return t.toISOString().slice(0, 10); };
   const avg = recs => { const m = new Map(); recs.filter(r => r.date >= from).forEach(r => { const k = wk(r.date); (m.get(k) || m.set(k, []).get(k)).push(r.value); }); return new Map([...m].map(([k, v]) => [k, v.reduce((a, b) => a + b, 0) / v.length])); };
   const J = avg(j), H = avg(h), keys = [...J.keys()].sort();
