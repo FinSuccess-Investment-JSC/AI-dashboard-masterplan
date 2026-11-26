@@ -27,7 +27,7 @@ function company() {
     items.push(kpi(`DPR lũy kế ${+lr.period.slice(5)} tháng · ` + lr.period.slice(0, 4), nf(lr.ytd?.sold_t, 0), 'tấn tiêu thụ', lr.plan_year?.sold_t ? `${nf(lr.ytd.sold_t / lr.plan_year.sold_t * 100, 0)}% kế hoạch năm` : '', `khai thác ${nf(lr.ytd?.tapped_t, 0)} t`, null));
     p.append(kpiRow(items));
   }
-  flow(p, 'company', [['vol', 'Lượng', 'Khai thác, thu mua, tiêu thụ'], ['px', 'Giá', 'Giá bán so benchmark'], ['bridge', 'Doanh thu', 'Lượng – giá – cơ cấu'], ['land', 'Ngoài mủ', 'Thanh lý, đền bù, KCN'], ['cash', 'Tiền', 'Biên, dòng tiền, độ nhạy']]);
+  flow(p, 'company', [['vol', 'Lượng', 'Khai thác, thu mua, tiêu thụ'], ['px', 'Giá', 'Giá bán so benchmark'], ['bridge', 'Doanh thu', 'Lượng – giá – cơ cấu'], ['land', 'Ngoài mủ', 'Thanh lý, đền bù, KCN'], ['cash', 'Tiền', 'Biên, dòng tiền']]);
   const L = M.length ? months(M[0].period, lr.period) : [];
   const g = (per, k) => at(per)?.[k] ?? null;
   stage(p, 'company', 'vol', 'Lượng', 'Khai thác, thu mua, tiêu thụ');
@@ -65,9 +65,8 @@ function company() {
   if (M.length) bridge(p, M, at, lr);
   stage(p, 'company', 'land', 'Ngoài mủ', 'Thanh lý, đền bù, KCN');
   landBridge(p);
-  stage(p, 'company', 'cash', 'Tiền', 'Biên, dòng tiền, độ nhạy');
+  stage(p, 'company', 'cash', 'Tiền', 'Biên, dòng tiền');
   cashPanel(p);
-  sensitivity(p, M, lr);
   // khâu nào không có chart thì bỏ tiêu đề khâu và nút trên thanh luồng
   p.querySelectorAll(':scope>.pp-stage').forEach(h => { let n = h.nextElementSibling; if (!n || n.classList.contains('pp-stage')) { p.querySelector(`.pp-flow [data-pp-stage="${h.id}"]`)?.remove(); h.remove(); } });
   p.querySelectorAll('.pp-flow').forEach(f => f.querySelectorAll('.pp-flow-ar').forEach(ar => { if (!ar.nextElementSibling || ar.nextElementSibling.classList.contains('pp-flow-ar')) ar.remove(); }));
@@ -164,7 +163,6 @@ function landBridge(p) {
 }
 function landEvents(p) {
   if (!OPS) return;
-  const ev = Object.entries(OPS).flatMap(([t, o]) => (o.land_events || []).map(e => ({...e, t}))).filter(e => e.date).sort((x, y) => x.date < y.date ? -1 : 1);
   const rows = Object.entries(OPS).flatMap(([t, o]) => (o.annual || []).filter(r => [r.liquidation_bvnd, r.land_comp_bvnd, r.kcn_bvnd].some(fin)).map(r => ({...r, t})));
   if (rows.length) {
     const Y = opsYears(), T = [...new Set(rows.map(r => r.t))];
@@ -176,13 +174,6 @@ function landEvents(p) {
     const v = (k, y) => { const r = rows.find(x => x.t === t && String(x.period) === y); return r && fin(r[k]) ? r[k] : null; };
     const draw = () => chart(c.host, 'cs-57-' + t, Y, [{name: 'Thanh lý vườn cây', color: C.green, kind: 'bar', values: Y.map(y => v('liquidation_bvnd', y))}, {name: 'Đền bù đất', color: C.bronze, kind: 'bar', values: Y.map(y => v('land_comp_bvnd', y))}, {name: 'KCN', color: C.plum, kind: 'bar', values: Y.map(y => v('kcn_bvnd', y))}], {unit: 'tỷ đồng', digits: 0, native: 'stack', stackable: true});
     seg(c, 'Doanh nghiệp', T.map(x => [x, x]), t, k => { t = k; draw(); }); draw();
-  }
-  if (ev.length) {
-    const q = panel('·', 'Dòng thời gian chuyển đất cao su sang KCN và đền bù: pháp lý → bàn giao → ghi nhận → thu tiền');
-    const c = el('div', 'card cs-tl'); c.dataset.blockId = 'cs-58'; c.dataset.updateKind = 'manual'; c.dataset.cadence = 'event';
-    const ST = {'pháp lý': C.grey, 'bàn giao': C.blue, 'ghi nhận': C.teal, 'thu tiền': C.gold};
-    c.innerHTML = `<div class="chart-title">Sự kiện đất theo doanh nghiệp</div><div class="cs-tl-list">${ev.map(e => `<div class="cs-tl-row"><span class="cs-tl-d">${esc(dL(e.date))}</span><span class="cs-tl-t">${e.t}</span><span class="cs-tl-s" style="--c:${ST[e.stage] || C.slate}">${esc(e.stage || '')}</span><span class="cs-tl-x">${esc(e.project || '')}${fin(e.ha) ? ` · ${nf(e.ha, 0)} ha` : ''}${fin(e.amount_bvnd) ? ` · ${nf(e.amount_bvnd, 0)} tỷ đồng` : ''}</span><span class="cs-tl-l">${e.source_url ? a(e.source_url, 'nguồn') : ''}</span></div>`).join('')}</div><div class="pw-src">Nguồn: văn bản, nghị quyết, BCTC, BCTN của doanh nghiệp (link từng dòng)</div>`;
-    q.append(c); p.append(q);
   }
 }
 function cashPanel(p) {
@@ -202,38 +193,6 @@ function cashPanel(p) {
     const np = Y.map(y => { const ix = P.map((x, i) => x.startsWith(y) ? i : -1).filter(i => i >= 0); const v = ix.map(i => d.npat[i]); return ix.length === 4 && v.every(fin) ? v.reduce((s, x) => s + x, 0) : null; });
     chart(c2.host, 'cs-60-' + t2, Y, [{name: 'CFO', color: C.teal, kind: 'bar', values: cf}, {name: 'LNST', color: C.navy, kind: 'bar', values: np}], {unit: 'tỷ đồng', native: 'bar'}); };
   seg(c2, 'Doanh nghiệp', T.map(x => [x, x]), t2, k => { t2 = k; d2(); }); d2();
-}
-// Kịch bản: mỗi +1 triệu đồng/tấn giá bán × lượng bán áp dụng; lãi gộp sau phần giá mua ngoài tăng theo; LNST sau thuế; phần cổ đông mẹ.
-function sensitivity(p, M, lr) {
-  const base = {};
-  if (lr?.plan_year?.sold_t) base.DPR = {sold: lr.plan_year.sold_t, buy: lr.plan_year.purchased_t && lr.plan_year.sold_t ? lr.plan_year.purchased_t / lr.plan_year.sold_t * 100 : 15, note: `kế hoạch tiêu thụ ${lr.period.slice(0, 4)} (báo cáo SXKD ${mL(lr.period)})`};
-  if (OPS) Object.entries(OPS).forEach(([t, o]) => { if (base[t]) return; const r = [...(o.annual || [])].reverse().find(x => fin(x.sold_t)); if (r) base[t] = {sold: r.sold_t, buy: fin(r.purchased_t) ? r.purchased_t / r.sold_t * 100 : 0, note: `tiêu thụ năm ${r.period} (${o.scope || 'theo công bố'})`}; });
-  const T = Object.keys(base); if (!T.length) return;
-  const q = panel('·', 'Kịch bản: giá bán tăng thêm 1 triệu đồng/tấn thì doanh thu và lợi nhuận tăng bao nhiêu?');
-  const c = el('div', 'card cs-sens'); c.dataset.blockId = 'cs-61'; c.dataset.updateKind = 'manual'; c.dataset.cadence = 'event';
-  c.innerHTML = `<div class="chart-title">Độ nhạy lợi nhuận theo giá bán (kịch bản, tự chỉnh tham số)</div>
-    <div class="cs-sens-grid"><div class="cs-sens-in">
-      <label>Doanh nghiệp <select data-k="t">${T.map(t => `<option>${t}</option>`).join('')}</select></label>
-      <label>Thay đổi giá bán (triệu đồng/tấn) <input data-k="dp" type="number" step="0.5" value="1"></label>
-      <label>Lượng bán áp dụng (tấn/năm) <input data-k="q" type="number" step="100"></label>
-      <label>Tỷ trọng mủ mua ngoài (%) <input data-k="buy" type="number" step="1"></label>
-      <label>Giá mua ngoài tăng theo giá bán (%) <input data-k="pass" type="number" step="5" value="100"></label>
-      <label>Chi phí khác tăng thêm (triệu đồng/tấn) <input data-k="cost" type="number" step="0.1" value="0"></label>
-      <label>Thuế TNDN (%) <input data-k="tax" type="number" step="1" value="20"></label>
-      <label>Lợi ích cổ đông công ty mẹ (%) <input data-k="own" type="number" step="1" value="100"></label>
-    </div><div class="cs-sens-out"></div></div>
-    <div class="pw-src">Nguồn: lượng bán theo báo cáo doanh nghiệp (ghi dưới kết quả); tự tính theo tham số người dùng nhập</div>`;
-  q.append(c); p.append(q);
-  const I = k => c.querySelector(`[data-k="${k}"]`);
-  const fill = () => { const b = base[I('t').value]; I('q').value = Math.round(b.sold); I('buy').value = Math.round(b.buy); calc(); };
-  const calc = () => {
-    const n = k => +I(k).value || 0, b = base[I('t').value];
-    const rev = n('dp') * n('q') / 1000, buyCost = n('dp') * n('q') * n('buy') / 100 * n('pass') / 100 / 1000, oc = n('cost') * n('q') / 1000;
-    const gp = rev - buyCost - oc, np = gp * (1 - n('tax') / 100), par = np * n('own') / 100;
-    c.querySelector('.cs-sens-out').innerHTML = [['Doanh thu tăng thêm', rev], ['Giá vốn mủ mua ngoài tăng', -buyCost], ['Chi phí khác tăng', -oc], ['Lãi gộp tăng thêm', gp], ['LNST tăng thêm', np], ['Phần cổ đông công ty mẹ', par]]
-      .map(([l, v], i) => `<div class="cs-sens-r${i >= 3 ? ' b' : ''}"><span>${l}</span><b>${sg(v, 1)} tỷ đồng</b></div>`).join('') + `<p class="cs-sens-n">Lượng mặc định: ${esc(b.note)}. Kịch bản giữ nguyên lượng; không gồm thay đổi tỷ giá, cơ cấu grade, thanh lý vườn cây.</p>`;
-  };
-  c.querySelectorAll('input').forEach(x => x.addEventListener('input', calc)); I('t').addEventListener('change', fill); fill();
 }
 if (DPR || OPS || E) PIC.company = company;
 
