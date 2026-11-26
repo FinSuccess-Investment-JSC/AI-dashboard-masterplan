@@ -311,7 +311,7 @@ function crudeLayout() {
   const groups = [
     ['Cung – cầu', 'Cân bằng cung cầu toàn cầu, dư địa công suất và các nguồn cung chính.', [sd, gap, block('dau-khi-12'), $('#of-top-exporters'), $('.opec-drivers'), block('dau-khi-09')]],
     ['Tồn kho', 'Tồn kho Mỹ cập nhật theo tuần, chỉ báo sớm cho cân bằng.', [$('.inventory-group'), block('dau-khi-06'), block('dau-khi-07'), block('dau-khi-08'), block('dau-khi-10')]],
-    ['Giá', 'Giá giao ngay, chênh Brent–WTI, mặt bằng dài hạn và đường cong kỳ hạn.', [card('chFastPrice'), block('dau-khi-25'), block('dau-khi-24'), block('dau-khi-11')]],
+    ['Giá', 'Brent theo ngày, mặt bằng dài hạn theo năm và đường cong kỳ hạn WTI.', [card('chFastPrice'), block('dau-khi-24'), block('dau-khi-11')]],
     ['Dòng tiền đầu cơ', '', [block('dau-khi-13')]],
   ];
   const kpis = body.querySelector(':scope > .kpis');
@@ -320,7 +320,7 @@ function crudeLayout() {
   [...body.children].forEach(n => { if (!keep.includes(n)) keep.push(n); });
   keep.forEach(n => body.append(n));
   [sd, gap, block('dau-khi-12')].forEach(n => n && n.classList.add('of-wide'));
-  hide(wrap05); hide(block('dau-khi-23'));
+  hide(wrap05); hide(block('dau-khi-23')); hide(block('dau-khi-25'));  // 23, 25 trùng Brent Futures theo ngày
   [...body.children].forEach(n => n.classList.remove('of-span'));
   let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
   [...body.children].forEach(n => { if (n.hidden) return; if (n.matches('.of-wide,.of-group,details,.kpis')) flush(); else run.push(n); }); flush();
