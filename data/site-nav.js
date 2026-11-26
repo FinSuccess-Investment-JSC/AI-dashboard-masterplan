@@ -40,9 +40,6 @@ window.FS_SITE_NAV = {
       ]},
       {key: 'pharma', label: 'Dược & y tế'},
       {key: 'telecom', label: 'Viễn thông'}
-    ]},
-    {title: 'Khác', items: [
-      {key: 'plan', label: 'Master plan'}
     ]}
   ]
 };
