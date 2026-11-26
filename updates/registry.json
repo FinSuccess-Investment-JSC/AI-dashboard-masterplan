@@ -4947,6 +4947,79 @@
    ]
   },
   {
+   "id": "realestate.industry-financials",
+   "tier": "C",
+   "title": "BĐS dân cư · tab Tài chính ngành: BCTC 13 doanh nghiệp niêm yết theo nhóm (VHM, chủ đầu tư nhà ở khác, cho thuê & môi giới)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "file": "data/re-financials.js",
+    "blocks": [
+     "re-fin-advance",
+     "re-fin-breadth",
+     "re-fin-capex",
+     "re-fin-cip",
+     "re-fin-conversion",
+     "re-fin-cost",
+     "re-fin-debt",
+     "re-fin-dso",
+     "re-fin-dupont",
+     "re-fin-fcf",
+     "re-fin-funding",
+     "re-fin-intensity",
+     "re-fin-interest",
+     "re-fin-landcap",
+     "re-fin-levdist",
+     "re-fin-leverage",
+     "re-fin-map",
+     "re-fin-margin",
+     "re-fin-method",
+     "re-fin-pnl",
+     "re-fin-pool",
+     "re-fin-recv",
+     "re-fin-returns",
+     "re-fin-roic-cycle",
+     "re-fin-season"
+    ]
+   },
+   "how": "python scripts/fetch_re_financials.py && python scripts/build_re_financials.py (chạy trong refresh-data.yml); tổng hợp ở Bat-dong-san/app/industry-fin.js, giao diện Bat-dong-san/app/re-finance.js, khung tab Bat-dong-san/app/re-frame.js",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Mã lỗi tải giữ bản trước, ghi vào stale",
+    "Universe và nhóm ở scripts/re_fin_items.py; loại trùng mẹ − con DXG ← DXS (tỷ lệ sở hữu chưa đối chiếu báo cáo thường niên)"
+   ]
+  },
+  {
    "id": "telecom.benchmarks",
    "tier": "C",
    "title": "Viễn thông · so sánh ASEAN: thuê bao di động, băng rộng cố định trên 100 dân, GDP bình quân đầu người",
@@ -5057,7 +5130,11 @@
      "bds-44",
      "bds-45",
      "bds-46",
-     "bds-47"
+     "bds-47",
+     "bds-60",
+     "bds-57",
+     "bds-58",
+     "bds-59"
     ]
    },
    "how": "Khi có báo cáo ngành KCN mới (VDSC hoặc CTCK khác) hoặc kết quả ký mới thực tế 2025–2026 của KBC, SIP, NTC, LHG: thay số dự phóng bằng số thực tế, giữ năm cũ; ghi trang và đoạn văn vào data/realestate-market/evidence.json",

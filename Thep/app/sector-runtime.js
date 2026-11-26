@@ -84,8 +84,8 @@ if(oil){
  }
  if(['brent','gasoline','diesel'].every(available)){
   crackRows=M.cracks(rows('brent'),rows('gasoline'),rows('diesel'));
-  const base=monthly(crackRows,'diesel_crack');const fields=['gasoline_crack','crack321','brent','gasoline','diesel'];
-  const maps=Object.fromEntries(fields.map(f=>[f,new Map(monthly(crackRows,f).map(r=>[r.date,r.value]))]));
+  const base=monthly(crackRows,'diesel_crack','mean',999);const fields=['gasoline_crack','crack321','brent','gasoline','diesel'];
+  const maps=Object.fromEntries(fields.map(f=>[f,new Map(monthly(crackRows,f,'mean',999).map(r=>[r.date,r.value]))]));
   const rs=base.map(r=>({...r,diesel_crack:r.value,...Object.fromEntries(fields.map(f=>[f,maps[f].get(r.date)]))}));
   plot('chCrack',rs,[['Crack diesel','diesel_crack',color[1]],['Crack xăng USGC','gasoline_crack',color[3]],['Crack 3-2-1','crack321',color[0]]],'USD/thùng');
   table('tbl-crack',['Tháng','Crack diesel','Crack xăng','Crack 3-2-1'],rs,['diesel_crack','gasoline_crack','crack321']);
@@ -96,8 +96,8 @@ if(oil){
  }
  if(available('singapore_cracks')){
   const daily=rows('singapore_cracks');
-  const gasoil=monthly(daily,'gasoil_crack');
-  const gasoline=new Map(monthly(daily,'gasoline_crack').map(r=>[r.date,r.value]));
+  const gasoil=monthly(daily,'gasoil_crack','mean',999);
+  const gasoline=new Map(monthly(daily,'gasoline_crack','mean',999).map(r=>[r.date,r.value]));
   const rs=gasoil.map(r=>({...r,gasoil_crack:r.value,gasoline_crack:gasoline.get(r.date)}));
   plot('chSingaporeCrack',rs,[['Gasoil 10ppm – Dubai','gasoil_crack',color[1]],['Gasoline RON 92 – Dubai','gasoline_crack',color[3]]],'USD/thùng');
   table('tbl-singapore-crack',['Tháng','Gasoil – Dubai','Gasoline – Dubai'],rs,['gasoil_crack','gasoline_crack'],2);
@@ -131,7 +131,7 @@ if(oil){
  }
  note('chMiddleEastExports',['middle_east_crude_exports'],'JODI Oil: CRUDEOIL / TOTEXPSB / KBD, đổi nghìn sang triệu thùng/ngày. Chỉ giữ tháng cả Saudi Arabia và Kuwait cùng báo cáo. Nguồn thường cập nhật quanh ngày 20; job kiểm theo lịch tháng. Thiếu số không được điền bằng 0, không suy ra tổng Trung Đông. Link IEA là bối cảnh xuất khẩu dầu vùng Vịnh rộng hơn, không phải dữ liệu của hai đường chart.');
  if(available('wti_cot')){
-  const cot=rows('wti_cot').slice(-104);
+  const cot=rows('wti_cot');
   plot('chCot',cot,[['Managed money · ròng','net_thousands',color[0]]],'nghìn hợp đồng',1,290);
   fillTable('tbl-cot',['Tuần kết thúc','Mua','Bán','Ròng (nghìn HĐ)'],cot.map(r=>[short(r.date),nf(r.long,0),nf(r.short,0),nf(r.net_thousands,1)]));
   const point=cot.at(-1);
@@ -159,14 +159,14 @@ if(oil){
  const priceMethod='Tải lịch sử XLS từ EIA; bỏ ngày thiếu số, không điền 0. Bình quân tháng từ các phiên có dữ liệu; dấu * là tháng hiện tại chưa đủ kỳ. Spread/crack chỉ dùng ngày có đủ các đầu vào; xăng và ULSD đổi USD/gallon × 42 rồi trừ Brent.';
  [['chBrent24',['brent']],['chBrentYear',['brent']],['chBrentWti',['brent','wti']],['chCrack',['brent','gasoline','diesel']],['chMoit',['brent','gasoline','diesel']]].forEach(([id,ks])=>note(id,ks,priceMethod));
  const stocks=[['chCrudeStock','tbl-crudestock','crude_stock','Tồn kho dầu thô','last'],['chCushing','tbl-cushing','cushing','Tồn kho Cushing','last'],['chUsProd','tbl-usprod','us_production','Sản lượng dầu Mỹ','mean']];
- stocks.forEach(([id,tbl,key,name,method])=>{if(available(key)){const rs=monthly(rows(key),'value',method,36);plot(id,rs,[[name,'value',color[2]]],key==='us_production'?'triệu thùng/ngày':'triệu thùng');table(tbl,['Tháng',name],rs,['value'])}note(id,[key],method==='last'?'Lấy số tuần cuối cùng có dữ liệu trong từng tháng; tháng hiện tại là mốc gần nhất, chưa phải cuối tháng.':'Bình quân các quan sát tuần có dữ liệu trong tháng; không phải sản lượng tháng do EIA điều tra riêng.');});
+ stocks.forEach(([id,tbl,key,name,method])=>{if(available(key)){const rs=monthly(rows(key),'value',method,999);plot(id,rs,[[name,'value',color[2]]],key==='us_production'?'triệu thùng/ngày':'triệu thùng');table(tbl,['Tháng',name],rs,['value'])}note(id,[key],method==='last'?'Lấy số tuần cuối cùng có dữ liệu trong từng tháng; tháng hiện tại là mốc gần nhất, chưa phải cuối tháng.':'Bình quân các quan sát tuần có dữ liệu trong tháng; không phải sản lượng tháng do EIA điều tra riêng.');});
  if(['gasoline_stock','distillate_stock'].every(available)){
-  const ds=monthly(rows('distillate_stock'),'value','last',36);const gs=new Map(monthly(rows('gasoline_stock'),'value','last',36).map(r=>[r.date,r.value]));const rs=ds.map(r=>({...r,dist:r.value,gas:gs.get(r.date)}));
+  const ds=monthly(rows('distillate_stock'),'value','last',999);const gs=new Map(monthly(rows('gasoline_stock'),'value','last',999).map(r=>[r.date,r.value]));const rs=ds.map(r=>({...r,dist:r.value,gas:gs.get(r.date)}));
   plot('chProdStock',rs,[['Xăng','gas',color[3]],['Distillate','dist',color[1]]],'triệu thùng');table('tbl-prodstock',['Tháng','Xăng','Distillate'],rs,['gas','dist']);
  }
  note('chProdStock',['gasoline_stock','distillate_stock'],'Dùng số tuần cuối cùng có dữ liệu trong tháng. Giữ nguyên dữ liệu thiếu.');
  if(available('distillate_stock')){
-  const rs=M.aggregate(rows('distillate_stock').filter(r=>r.date.slice(5,7)==='08'),'value','year').slice(-6);
+  const rs=M.aggregate(rows('distillate_stock').filter(r=>r.date.slice(5,7)==='08'),'value','year');
   barLineChart('chDistYear',{categories:rs.map(r=>r.date),series:[{name:'Tồn kho distillate tháng 8',color:color[1],values:rs.map(r=>r.value)}],unit:'triệu thùng',digits:1,height:240});table('tbl-distyear',['Năm','Bình quân tháng 8'],rs,['value']);
   showKpi('spk-dist',rows('distillate_stock'),'triệu thùng','Quan sát tuần gần nhất');
  }

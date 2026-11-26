@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 VN = ZoneInfo('Asia/Ho_Chi_Minh')
 SPOT = {'brent', 'wti', 'gasoline', 'diesel', 'henry_hub'}  # EIA spot files publish weekly (Wednesday)
 WPSR = {'crude_stock', 'gasoline_stock', 'distillate_stock', 'cushing', 'us_production'}
-FUTURES = {'wti_curve', 'brent_futures', 'sugar_futures', 'coal_newcastle', 'lng_jkm'}
+FUTURES = {'wti_curve', 'brent_futures', 'sugar_futures', 'coal_newcastle', 'lng_jkm', 'lng_jkm_history'}
 
 
 def due(key: str, now: dt.datetime, last_checked: str | None) -> bool:
