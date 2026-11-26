@@ -16,7 +16,7 @@
 <script src="app/sector-layout.js?v=851d26cc3f7c" defer></script>
 <script src="../data/seafood-public-data.js?v=0dc690014ec1" defer></script>
 <script src="app/sector-visuals.js?v=6e232e4a9320" defer></script>
-<script src="app/seafood-dashboard.js?v=6d476ec4edbc" defer></script>
+<script src="app/seafood-dashboard.js?v=27bb88f140f8" defer></script>
 <script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=bb5b95d73397" defer></script>
@@ -43,10 +43,10 @@
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=20de8094fc85" defer></script>
-<script src="app/seafood-frame.js?v=d34bd20b4375" defer></script>
+<script src="app/seafood-frame.js?v=53ac36952143" defer></script>
 <link rel="stylesheet" href="app/seafood-frame.css?v=16d260f311b1">
-<script src="app/site-navigation.js?v=56901bcf2275" data-release="2026.11.26-nhom-bds"></script>
-<script src="../data/site-nav.js?v=353de419484a"></script>
+<script src="app/site-navigation.js?v=56901bcf2275" data-release="20261126-ca-tra-chuoi"></script>
+<script src="../data/site-nav.js?v=7aca23cf64d8"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
@@ -166,6 +166,20 @@
         <div class="chart-sub">triệu USD · toàn ngành thủy sản</div>
         <div id="chMkt"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-mkt"></table></div></details>
+      </div>
+      <div class="card" data-block-id="ts-18" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu chi phí nuôi cá tra (%)</div>
+        <div class="chart-sub">% tổng chi phí nuôi tại các vùng nuôi · ước tính</div>
+        <div id="chPangCost"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-pang-cost"></table></div></details>
+        <div class="source-note">Nguồn: FinSuccess ước tính</div>
+      </div>
+      <div class="card" data-block-id="ts-19" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu chi phí thức ăn nuôi cá tra (%)</div>
+        <div class="chart-sub">% chi phí nguyên liệu thức ăn · ước tính</div>
+        <div id="chPangFeedMix"></div>
+        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-pang-feedmix"></table></div></details>
+        <div class="source-note">Nguồn: FinSuccess ước tính</div>
       </div>
       <div class="card" data-block-id="ts-11" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">Giá cá tra nguyên liệu và cá giống</div>

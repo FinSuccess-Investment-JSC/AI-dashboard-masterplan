@@ -40,6 +40,7 @@ const CHAIN = PANG
   ? {k: 'chain', t: 'Chuỗi cá tra', d: 'Đầu vào (giống, cá nguyên liệu, thức ăn) → Sản xuất (tín hiệu nguồn cung) → Đầu ra (đơn giá tham chiếu, spread sau nguyên liệu và thuế).', kpis: ['spk-pang'],
     flow: [['in', 'Đầu vào', 'Giống, cá nguyên liệu, thức ăn'], ['prod', 'Sản xuất', 'Nguồn cung cá nguyên liệu'], ['out', 'Đầu ra', 'Giá tham chiếu, spread sau thuế']], items: [
     {stage: 'in'},
+    {q: 'Chi phí nuôi cá tra nằm ở khoản nào, thức ăn gồm những gì?', id: 'sf-q-pang-cost', meta: '% tổng chi phí nuôi và % chi phí thức ăn · ước tính, không theo kỳ', take: ['ts-18', 'ts-19']},
     {q: 'Giá cá giống, cá nguyên liệu và thức ăn đang đi hướng nào?', id: 'sf-q-pang-in', meta: 'nghìn đ/kg cuối tháng (VASEP, WiData) · khô đậu, ngô % so cùng kỳ (IMF) · chỉ số chi phí thức ăn quy VND', take: ['ts-11', 'ts-13', 'ts-16']},
     {stage: 'prod'},
     {q: 'Giá cá giống đang báo trước nguồn cung cá nguyên liệu thế nào?', id: 'sf-q-pang-prod', take: ['ts-17'],

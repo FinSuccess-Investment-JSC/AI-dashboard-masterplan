@@ -49,6 +49,59 @@ if(chain){
  heading.after(figure);
  chain.append(make('div','chart-insight','AI · cách đọc chuỗi: nhà cá tra lớn (VHC, ANV) tự nuôi phần lớn cá và tự làm thức ăn, nên biên đi theo giá bán XK trừ giá khô đậu, ngô; nhà tôm mua tôm của hộ nuôi nên giá tôm nguyên liệu giảm là có lợi. Thuế CBPG của Mỹ áp riêng cho từng doanh nghiệp theo từng kỳ rà soát, nên cùng một ngành có mã chịu 0 (VHC) và mã chịu 0,84 USD/kg (ANV).'));
  figure.after(make('div','source-note','Mũi tên liền: dòng nguyên liệu và sản phẩm · Mũi tên đứt: thuế, cạnh tranh, sở hữu. Sơ đồ không biểu thị tỷ trọng.'));
+ // Cá tra (26/11/2026, người dùng gửi mẫu): Đầu vào → Sản xuất → Đầu ra, % trên mũi tên là tỷ trọng sản lượng cá nguyên liệu
+ // đi qua mỗi luồng, % trong ô đầu vào là tỷ trọng trong chi phí nuôi (FinSuccess ước tính).
+ if(document.body.dataset.seafoodLine==='pang'&&window.ValueChain){
+  const IN='#2a9fa3',FARM='#2f8f4e',MAIN='#2938A8',DOM='#c98a00',H=74;
+  const N=[
+   ['feed',24,58,170,IN,'box','Thức ăn','84% chi phí nuôi'],
+   ['fry',24,142,170,IN,'fish','Cá giống','10% chi phí nuôi'],
+   ['med',24,226,170,IN,'pill','Thuốc, thú y','3% chi phí nuôi'],
+   ['pond',24,310,170,IN,'water','Vùng nuôi','cải tạo, xây dựng, thuê'],
+   ['farm',216,184,176,FARM,'fish','Cơ sở nuôi','cá tra nguyên liệu'],
+   ['proc',432,78,236,MAIN,'factory','Doanh nghiệp chế biến','VHC · ANV · IDI'],
+   ['trader',432,300,236,DOM,'truck','Thương lái','gom cá từ ao nuôi'],
+   ['export',964,78,190,MAIN,'ship','Xuất khẩu','Trung Quốc · Mỹ · EU'],
+   ['retail',762,300,180,DOM,'store','Nhà bán lẻ','chủ vựa'],
+   ['domestic',974,300,180,DOM,'home','Nội địa','người tiêu dùng']
+  ];
+  const cy=y=>y+H/2;
+  const E=[
+   ['feed','farm',IN],['fry','farm',IN],['med','farm',IN],['pond','farm',IN],
+   ['farm','proc',MAIN],['farm','trader',DOM],
+   ['trader','proc',DOM,`M550 300 V${78+H}`],
+   ['proc','export',MAIN],['trader','retail',DOM],
+   ['proc','retail',MAIN,`M640 ${78+H} C700 ${78+H+60},790 240,852 300`],
+   ['retail','domestic',DOM]
+  ];
+  const W={'farm>proc':6,'proc>export':6};
+  const fig=ValueChain.draw({N,E,H,height:400,
+   lanes:[['ĐẦU VÀO',10,394,'#eef1f8','#1D2678'],['SẢN XUẤT',414,268,'#eef6e6','#6a9a3a'],['ĐẦU RA',692,468,'#eaf0f8','#7f9cc4']],
+   labels:[[412,128,'97%'],[412,282,'3%'],[574,232,'1%'],[815,cy(78)-12,'97%'],[715,cy(300)-12,'2%'],[760,214,'1%'],[958,cy(300)-12,'3%']],
+   width:(a,b)=>W[a+'>'+b]||null,
+   legend:[[MAIN,'Doanh nghiệp chế biến → xuất khẩu'],[DOM,'Thương lái, bán lẻ → nội địa'],[IN,'Chi phí nuôi']],
+   title:'Chuỗi giá trị ngành cá tra',desc:'Thức ăn, cá giống, thuốc và vùng nuôi vào cơ sở nuôi; 97% cá nguyên liệu vào doanh nghiệp chế biến và xuất khẩu, 3% qua thương lái; 3% tiêu thụ nội địa.'});
+  figure.replaceWith(fig);
+  chain.querySelector('.chart-insight')?.remove();
+  const note=chain.querySelector(':scope>.source-note:last-of-type');
+  if(note)note.textContent='% trên mũi tên: tỷ trọng sản lượng cá tra nguyên liệu đi qua mỗi luồng · % trong ô đầu vào: tỷ trọng trong chi phí nuôi. Nguồn: FinSuccess ước tính.';
+ }
+}
+
+// Cơ cấu chi phí nuôi và chi phí thức ăn cá tra (26/11/2026, FinSuccess ước tính): biểu đồ tròn dạng vành.
+function donut(id,items){
+ const host=document.getElementById(id);if(!host)return;const tot=items.reduce((a,x)=>a+x[1],0),R=88,r=52,c=110;let a0=-Math.PI/2;
+ const pt=(a,rr)=>[c+rr*Math.cos(a),c+rr*Math.sin(a)];
+ const arcs=items.map(([n,v,col])=>{const a1=a0+v/tot*2*Math.PI,big=a1-a0>Math.PI?1:0,[x1,y1]=pt(a0,R),[x2,y2]=pt(a1,R),[x3,y3]=pt(a1,r),[x4,y4]=pt(a0,r),mid=(a0+a1)/2,[lx,ly]=pt(mid,(R+r)/2);a0=a1;
+  return `<path d="M${x1.toFixed(2)} ${y1.toFixed(2)}A${R} ${R} 0 ${big} 1 ${x2.toFixed(2)} ${y2.toFixed(2)}L${x3.toFixed(2)} ${y3.toFixed(2)}A${r} ${r} 0 ${big} 0 ${x4.toFixed(2)} ${y4.toFixed(2)}Z" fill="${col}" stroke="var(--card,#fff)" stroke-width="1.5"><title>${n}: ${nf(v,0)}%</title></path>`+(v>=8?`<text x="${lx.toFixed(1)}" y="${(ly+4).toFixed(1)}" text-anchor="middle" style="font:700 12px Inter,sans-serif;fill:#fff">${nf(v,0)}%</text>`:'')}).join('');
+ host.innerHTML=`<div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px"><svg viewBox="0 0 220 220" width="200" height="200" role="img" aria-label="${items.map(x=>x[0]+' '+nf(x[1],0)+'%').join(', ')}">${arcs}</svg><ul style="list-style:none;margin:0;padding:0;font-size:13px;line-height:1.9">${items.map(([n,v,col])=>`<li><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${col};margin-right:8px"></span>${n} <b>${nf(v,0)}%</b></li>`).join('')}</ul></div>`;
+}
+if(document.body.dataset.seafoodLine==='pang'){
+ const cost=[['Thức ăn',84,'#8ab44e'],['Con giống',10,'#1d2b53'],['Thuốc, thú y',3,'#5b7598'],['Nhân công, khấu hao, khác',3,'#b9c2d0']];
+ const feed=[['Bã đậu nành',55,'#8ab44e'],['Cám gạo',25,'#1d2b53'],['Khác',20,'#b9c2d0']];
+ donut('chPangCost',cost);donut('chPangFeedMix',feed);
+ fillTable('tbl-pang-cost',['Khoản mục','% chi phí nuôi'],cost.map(x=>[x[0],nf(x[1],0)]));
+ fillTable('tbl-pang-feedmix',['Nguyên liệu','% chi phí thức ăn'],feed.map(x=>[x[0],nf(x[1],0)]));
 }
 
 // ---------- 2. Panes ----------
