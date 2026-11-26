@@ -398,8 +398,7 @@ function marketPane(p) {
   stages(p, 'mt2', 'market', [
     ['size', 'Quy mô', 'Quy mô & tăng trưởng', [qpanel('1.1', 'Doanh thu ngành tăng nhanh hay chậm hơn số thuê bao?', [c1, c2], leadMarket()), qpanel('1.2', 'Hai cách đo doanh thu ngành khác nhau thế nào?', [c3], 'Dùng chuỗi <b>doanh thu hoạt động viễn thông</b> của Cục Thống kê (phạm vi rộng, có số quý) để theo dõi tốc độ tăng của cả ngành; dùng chuỗi <b>doanh thu dịch vụ viễn thông</b> của Bộ TT&TT/Bộ KH&CN khi đặt cạnh thuê bao hoặc doanh thu theo dịch vụ. Hai chuỗi khác phạm vi, giữ riêng, không ghép.')]],
     ['subs', 'Khách hàng', 'Thuê bao mới & mức thâm nhập', [qpanel('1.3', 'Tăng trưởng thuê bao đang tăng tốc hay giảm tốc?', [c4], 'Số thuê bao di động là số SIM ghi nhận. Các đợt khóa SIM không chính chủ, xác thực sinh trắc (2026), dừng 2G và thay đổi cách đếm có thể làm số SIM tăng, giảm mà không phản ánh khách hàng mới hay mất đi; nguồn chưa tách phần này nên không quy nguyên nhân cho từng năm.'), qpanel('1.4', 'Phân khúc nào còn dư địa mở rộng số khách hàng?', [c5, c6])]],
-    ['mix', 'Cơ cấu', 'Cơ cấu doanh thu', [qpanel('1.5', 'Doanh thu đến từ di động hay cố định?', [c7])]],
-    ['compete', 'Cạnh tranh', 'Cấu trúc cạnh tranh', [qpanel('1.6', 'Thị trường tập trung đến mức nào, quy mô các nhà mạng ra sao?', [c8, c9, c10], `Thị phần chi tiết: ${go('Di động', 'mt2:mobile:share')} ${go('Internet cố định', 'mt2:fixed')}`)]]
+    ['compete', 'Cạnh tranh', 'Quy mô các nhà mạng', [qpanel('1.5', 'Quy mô doanh thu và lợi nhuận các nhà mạng ra sao?', [c9, c10])]]
   ]);
 }
 function mobilePane(p) {
@@ -462,9 +461,7 @@ function mobilePane(p) {
   const c11 = tableCard('vt-cp-subrev-mob', 'Di động: thị phần thuê bao so với thị phần doanh thu', ['Năm', 'Nhà mạng', 'Thuê bao di động', 'Thuê bao băng rộng di động', 'Doanh thu di động'], rowsSR, [...(SH.mobile_rev_src || []), ...(SH.mbb_src || [])], 'Năm gần nhất có cả ba chỉ tiêu (Sách Trắng CNTT-TT)');
   stages(p, 'mt2', 'mobile', [
     ['network', 'Đầu tư', 'Đầu tư & năng lực mạng', [qpanel('2.1', 'Số trạm 5G tăng thế nào, từng nhà mạng ở đâu so với mục tiêu?', [c2, c2b, c3], st.length ? `Số thực hiện: <b>${nf(st.at(-1).v, 0)} trạm 5G</b> toàn quốc ngày ${dmy(st.at(-1).date)}. Mục tiêu vẽ cột nhạt cạnh số thực hiện; các mục tiêu khác định nghĩa (trạm xây thêm, vị trí trạm, độ phủ theo dân số) được ghi tên riêng, không tính tỷ lệ hoàn thành khi khác định nghĩa.` : '')]],
-    ['usage', 'Sử dụng', 'Thuê bao & người dùng data', [qpanel('2.2', 'Thuê bao 5G tăng ra sao so với mục tiêu?', [c5], 'Chưa tính tỷ lệ 5G trên thuê bao băng rộng di động: các kỳ công bố của hai chỉ tiêu không trùng nhau.'), qpanel('2.3', 'Bao nhiêu thuê bao di động dùng data?', [c7])]],
-    ['commercial', 'Thương mại hóa', 'Doanh thu di động', [qpanel('2.4', `Giai đoạn ${yr || 'trước 5G'}: người dùng data tăng có đi kèm doanh thu di động không?`, [c9], dmLead)]],
-    ['share', 'Thị phần', 'Thị phần di động', [qpanel('2.5', 'Nhà mạng nào chiếm bao nhiêu thuê bao và doanh thu di động?', [c10, c11])]]
+    ['usage', 'Sử dụng', 'Thuê bao 5G', [qpanel('2.2', 'Thuê bao 5G tăng ra sao so với mục tiêu?', [c5], 'Chưa tính tỷ lệ 5G trên thuê bao băng rộng di động: các kỳ công bố của hai chỉ tiêu không trùng nhau.')]],
   ]);
 }
 function leadFixedDef() {
@@ -502,7 +499,7 @@ function fixedPane(p) {
   const cy = [...foxRev.keys()].filter(y => fx.has(y)).sort();
   const c12 = cy.length > 2 ? chartCard({id: 'vt-fx-fox', title: 'FOX so với thị trường: tăng trưởng so với năm trước (%)', cats: cy, series: [{name: 'Doanh thu thuần FOX hợp nhất', color: '#c98a00', values: yoy(cy.map(y => foxRev.get(y)))}, {name: 'Thuê bao băng rộng cố định toàn thị trường', color: COL[0], values: yoy(cy.map(y => fx.get(y)))}], unit: '%', digits: 1, zeroBase: false, src: seriesSrc(['fix_bb']), extraSrc: FIN_SRC, cadence: 'yearly', note: 'Doanh thu FOX hợp nhất gồm cả truyền hình, quảng cáo trực tuyến, trung tâm dữ liệu'}) : null;
   stages(p, 'mt2', 'fixed', [
-    ['infra', 'Hạ tầng', 'Hạ tầng & mức phủ', [qpanel('3.1', 'Mạng cố định đã chuyển sang cáp quang đến mức nào, bao nhiêu hộ đang dùng?', [c1, c2], leadFixedDef())]],
+    ['infra', 'Hạ tầng', 'Hạ tầng & mức phủ', [qpanel('3.1', 'Bao nhiêu hộ gia đình đang dùng cáp quang?', [c2], leadFixedDef())]],
     ['subs', 'Khách hàng', 'Thuê bao FTTH & thâm nhập hộ gia đình', [qpanel('3.2', 'Thuê bao Internet cố định còn tăng nhanh không?', [c3, c4]), qpanel('3.3', 'Mức thâm nhập của Việt Nam so với khu vực?', [c5, c6], leadAsean())]],
     ['fox', 'Doanh nghiệp', 'Trường hợp FOX', [qpanel('3.4', 'FOX tăng trưởng nhanh hay chậm hơn thị trường?', [c11, c12], leadFox())]]
   ]);
@@ -533,9 +530,8 @@ function towerPane(p) {
   const c10 = ys.length > 1 ? chartCard({id: 'vt-tw-bridge', title: 'CTR: doanh thu hạ tầng cho thuê trên mỗi trạm sở hữu · chỉ số tham chiếu (triệu đồng/trạm/năm)', sub: 'Tử số: doanh thu mảng hạ tầng cho thuê cả năm · mẫu số: số trạm sở hữu cuối năm', cats: ys, series: [{name: 'Doanh thu hạ tầng cho thuê / trạm sở hữu cuối năm', color: COL[3], values: ys.map(y => inf.get(y) / tw.get(y) * 1000), kind: 'bar'}], unit: 'triệu đ/trạm', digits: 1, native: 'bar', src: seriesSrc(['ctr_rev_infra', 'ctr_towers']), cadence: 'yearly', note: 'Chỉ số tham chiếu: mẫu số là trạm sở hữu cuối kỳ, không phải trạm khai thác bình quân; chưa tách giá thuê và số khách thuê'}) : null;
   // Bảng kế hoạch, hợp đồng CTR (4.5) bỏ 26/11/2026 theo yêu cầu người dùng.
   stages(p, 'mt2', 'tower', [
-    ['market', 'Thị trường', 'Tài sản & chủ sở hữu trạm', [qpanel('4.1', 'Trạm viễn thông do nhà mạng hay TowerCo sở hữu?', [c1], 'Đếm theo <b>vị trí trạm</b> (site, nơi đặt cột/nhà trạm), khác số thiết bị BTS. CTR công bố số vị trí sở hữu và số vị trí có từ 2 nhà mạng thuê; chưa công bố số vị trí đang khai thác. Cơ cấu sở hữu toàn thị trường là số cuối 2019.')]],
-    ['ctr', 'CTR', 'Số trạm & khách thuê trên trạm', [qpanel('4.2', 'CTR tăng trưởng nhờ thêm trạm hay thêm khách thuê trên mỗi trạm?', [c4, c6])]],
-    ['rev', 'Doanh thu', 'Doanh thu, biên gộp & tập trung khách hàng', [qpanel('4.3', 'Mảng nào tạo doanh thu, biên lợi nhuận ra sao?', [c7, c8, c10], leadCtrSeg()), qpanel('4.4', 'CTR phụ thuộc vào khách hàng lớn đến mức nào?', [c9], (() => { const v = lastY('ctr_viettel_share'), f = (S('ctr_viettel_share')?.points || [])[0]; return v ? `Doanh thu từ Tập đoàn Viettel chiếm <b>${nf(v.v, 0)}%</b> tổng doanh thu CTR năm ${v.y}${f ? ` (${nf(f[1], 0)}% năm ${f[0]})` : ''}, theo CTR công bố cho toàn công ty, chưa tách theo mảng.` : ''; })())]],
+    ['ctr', 'CTR', 'Số trạm & khách thuê trên trạm', [qpanel('4.1', 'CTR tăng trưởng nhờ thêm trạm hay thêm khách thuê trên mỗi trạm?', [c4, c6])]],
+    ['rev', 'Doanh thu', 'Doanh thu, biên gộp & tập trung khách hàng', [qpanel('4.2', 'Mảng nào tạo doanh thu, biên lợi nhuận ra sao?', [c7, c8, c10], leadCtrSeg()), qpanel('4.3', 'CTR phụ thuộc vào khách hàng lớn đến mức nào?', [c9], (() => { const v = lastY('ctr_viettel_share'), f = (S('ctr_viettel_share')?.points || [])[0]; return v ? `Doanh thu từ Tập đoàn Viettel chiếm <b>${nf(v.v, 0)}%</b> tổng doanh thu CTR năm ${v.y}${f ? ` (${nf(f[1], 0)}% năm ${f[0]})` : ''}, theo CTR công bố cho toàn công ty, chưa tách theo mảng.` : ''; })())]],
   ]);
 }
 function leadCtrSeg() {
@@ -636,10 +632,10 @@ function listedPane(p) {
 
 /* ================= Khởi động ================= */
 const BTAB = [
-  ['market', '01', 'Toàn thị trường', 'Toàn thị trường', 'Quy mô và tăng trưởng → thuê bao mới, mức thâm nhập → cơ cấu doanh thu → cạnh tranh', marketPane],
-  ['mobile', '02', 'Di động & 5G', 'Di động & 5G', 'Đầu tư và năng lực mạng → sử dụng → thương mại hóa → thị phần', mobilePane],
+  ['market', '01', 'Toàn thị trường', 'Toàn thị trường', 'Quy mô và tăng trưởng → thuê bao mới, mức thâm nhập → quy mô các nhà mạng', marketPane],
+  ['mobile', '02', 'Di động & 5G', 'Di động & 5G', 'Đầu tư và năng lực mạng → thuê bao 5G', mobilePane],
   ['fixed', '03', 'Internet cố định', 'Internet cố định', 'Hạ tầng và mức phủ → thuê bao, thâm nhập hộ gia đình → trường hợp FOX', fixedPane],
-  ['tower', '04', 'TowerCo & hạ tầng', 'TowerCo & hạ tầng', 'Tài sản và chủ sở hữu trạm → số trạm, khách thuê CTR → doanh thu, biên gộp', towerPane],
+  ['tower', '04', 'TowerCo & hạ tầng', 'TowerCo & hạ tầng', 'Số trạm, khách thuê CTR → doanh thu, biên gộp, tập trung khách hàng', towerPane],
   ['policy', '05', 'Chính sách', 'Chính sách', 'Cấp phép và phổ tần → lộ trình, nghĩa vụ triển khai → quy định về giá cước và cạnh tranh', policyPane]
 ];
 const OTAB = [
