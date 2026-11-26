@@ -3,7 +3,19 @@
 
 7 mã đã chốt 08/10/2026, nhóm theo khâu (khung 5 tab theo Dầu khí, 26/11/2026): Sợi & xơ · May xuất khẩu · Holding.
 VGT nắm cổ phần thiểu số ở nhiều công ty dệt may nhưng không hợp nhất TCM, TNG, MSH, GIL, STK, ADS: không có cặp loại trùng."""
-from power_fin_items import ITEMS  # noqa: F401
+from power_fin_items import ITEMS as _BASE
+
+# Khoản mục thêm cho bảng so sánh tỷ số từng mã (26/11/2026, theo bảng trong BCTN 2025 của TNG): mã VNDirect finfo TT200,
+# đã đối chiếu TNG Q3/2026: 11000 + 12000 = 12700; 12200 = 12210 + 12240 + 12270.
+ITEMS = _BASE + [
+    {'id': 'cur_assets', 'model': 1, 'code': 11000, 'kind': 'stock', 'name': 'Tài sản ngắn hạn'},
+    {'id': 'st_recv_all', 'model': 1, 'code': 11300, 'kind': 'stock', 'name': 'Các khoản phải thu ngắn hạn'},
+    {'id': 'other_ca', 'model': 1, 'code': 11500, 'kind': 'stock', 'name': 'Tài sản ngắn hạn khác'},
+    {'id': 'lt_assets', 'model': 1, 'code': 12000, 'kind': 'stock', 'name': 'Tài sản dài hạn'},
+    {'id': 'fixed_assets', 'model': 1, 'code': 12200, 'kind': 'stock', 'name': 'Tài sản cố định'},
+    {'id': 'intangible', 'model': 1, 'code': 12270, 'kind': 'stock', 'name': 'TSCĐ vô hình'},
+    {'id': 'cur_liab', 'model': 1, 'code': 13100, 'kind': 'stock', 'name': 'Nợ ngắn hạn'},
+]
 
 GROUPS = [
     {'id': 'yarn', 'label': 'Sợi & xơ', 'color': '#2a9fa3', 'default': True},

@@ -11,8 +11,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
+import fetch_power_financials as _fp  # noqa: E402
 from fetch_power_financials import API, fetch  # noqa: E402
-from textile_fin_items import TICKERS  # noqa: E402
+from textile_fin_items import ITEMS, TICKERS  # noqa: E402
+
+_fp.ITEMS = ITEMS  # fetch() đọc ITEMS của module: dùng danh mục dệt may (thêm khoản mục cho bảng tỷ số)
 
 OUT = ROOT / 'data/raw/public/fs_textile_full_vndirect.json'
 
