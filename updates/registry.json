@@ -7002,9 +7002,11 @@
      "pb-00",
      "pb-10",
      "pb-11",
-     "pb-12",
      "pb-13",
-     "pb-14",
+     "pb-15",
+     "pb-16",
+     "pb-17",
+     "pb-18",
      "pb-c-gas-px",
      "pb-c-gas-brent",
      "pb-c-coal-px",
@@ -7013,8 +7015,6 @@
      "pb-c-npk-idx",
      "pb-c-intl-gas",
      "pb-c-intl-heat",
-     "pb-c-intl-coal",
-     "pb-c-intl-brent",
      "pb-c-matrix"
     ]
    },
@@ -7049,7 +7049,8 @@
      "pb-31",
      "pb-32",
      "pb-33",
-     "pb-34"
+     "pb-34",
+     "pb-35"
     ]
    },
    "how": "python3 scripts/fetch_fertilizer_markets.py && python3 scripts/fetch_fertilizer_nso.py && python3 scripts/fetch_fertilizer_financials.py && python3 scripts/build_fertilizer.py (chạy tay; chưa gắn vào refresh-data.yml)",
@@ -7081,7 +7082,6 @@
     "file": "data/fertilizer-data.js",
     "blocks": [
      "pb-04",
-     "pb-51",
      "pb-c-gas-gm",
      "pb-c-coal-gm",
      "pb-c-phos-gm",
@@ -7101,7 +7101,7 @@
   {
    "id": "fertilizer.static",
    "tier": "static",
-   "title": "Phân bón: chuỗi giá trị (pb-01), bản đồ nhà máy và công suất (pb-05…pb-09, data/fertilizer/plants.json nhập tay có nguồn), mốc thuế GTGT (pb-50), cơ chế giá khí DPM/DCM (pb-c-gas-mech)",
+   "title": "Phân bón: chuỗi giá trị (pb-01), bản đồ nhà máy và công suất (pb-05…pb-09, data/fertilizer/plants.json nhập tay có nguồn), cơ chế giá khí DPM/DCM (pb-c-gas-mech)",
    "schedule": {
     "type": "none"
    },
@@ -7114,7 +7114,6 @@
      "pb-07",
      "pb-08",
      "pb-09",
-     "pb-50",
      "pb-c-gas-mech"
     ]
    },

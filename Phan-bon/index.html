@@ -13,11 +13,11 @@
 <script src="app/value-chain.js?v=a597c7c73610" defer></script>
 <script src="app/fertilizer-finance.js?v=51001a441612" defer></script>
 <script src="app/vn-geo.js?v=07f6be6d571b" defer></script>
-<script src="app/fertilizer-map.js?v=d1b60648bbae" defer></script>
-<script src="app/fertilizer-cost.js?v=a3d025dabfbd" defer></script>
-<script src="app/fertilizer.js?v=642c26cf5674" defer></script>
+<script src="app/fertilizer-map.js?v=7d04329b006a" defer></script>
+<script src="app/fertilizer-cost.js?v=d5eae288d8c0" defer></script>
+<script src="app/fertilizer.js?v=9f6e5a5f5a7d" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
-<script src="app/site-navigation.js?v=9abea12d0335" data-release="20261126-dien-muc-luc"></script>
+<script src="app/site-navigation.js?v=9abea12d0335" data-release="2026.11.26-phan-bon-theo-loai"></script>
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
 <link rel="stylesheet" href="app/fin-success-theme.css?v=0761641d486e">
@@ -63,24 +63,28 @@
 
   <section class="majorpane" data-tab="mt2" id="pane-mt2">
     <section class="section">
-      <div class="sectionhead"><div><h2 class="sec">Bức tranh ngành</h2><p>Giá phân bón → chi phí đầu vào → sản xuất trong nước → chính sách & thuế.</p></div></div>
-      <div class="pp-nav" role="tablist" aria-label="Nhóm câu hỏi phân tích">
-        <button class="tabbtn pp-tab active" type="button" role="tab" data-sub="price" aria-selected="true"><span>01</span>Giá phân bón</button>
-        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="cost" aria-selected="false"><span>02</span>Chi phí đầu vào</button>
-        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="output" aria-selected="false"><span>03</span>Sản xuất trong nước</button>
-        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="policy" aria-selected="false"><span>04</span>Chính sách & thuế</button>
+      <div class="sectionhead"><div><h2 class="sec">Bức tranh ngành</h2><p>Theo loại phân: giá → sản xuất trong nước → chi phí và biên gộp doanh nghiệp; giá khí đầu vào; ma trận tác động.</p></div></div>
+      <div class="pp-nav" role="tablist" aria-label="Loại phân bón">
+        <button class="tabbtn pp-tab active" type="button" role="tab" data-sub="urea" aria-selected="true"><span>01</span>Phân đạm (urê)</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="phos" aria-selected="false"><span>02</span>Phân lân & DAP</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="npk" aria-selected="false"><span>03</span>NPK & kali</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="gas" aria-selected="false"><span>04</span>Giá khí</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="matrix" aria-selected="false"><span>05</span>Ma trận tác động</button>
       </div>
-      <div class="pane-subpane pp-pane" id="fb-pp-price" data-sub="price">
-        <header class="pp-head"><div><span class="pp-k">01</span><h2>Giá phân bón</h2><p>Giá urê, DAP, lân và kali trên thị trường thế giới.</p></div><span class="pp-asof" data-asof="urea"></span></header>
+      <div class="pane-subpane pp-pane" id="fb-pp-urea" data-sub="urea">
+        <header class="pp-head"><div><span class="pp-k">01</span><h2>Phân đạm (urê)</h2><p>Giá urê thế giới, sản lượng urê trong nước, chi phí và biên gộp nhà sản xuất urê từ khí (DPM, DCM) và từ than (DHB).</p></div><span class="pp-asof" data-asof="urea"></span></header>
       </div>
-      <div class="pane-subpane pp-pane" id="fb-pp-cost" data-sub="cost" hidden>
-        <header class="pp-head"><div><span class="pp-k">02</span><h2>Chi phí đầu vào</h2><p>Theo mô hình sản xuất: urê từ khí, urê từ than, DAP & lân, NPK; benchmark quốc tế; ma trận tác động lên doanh nghiệp.</p></div><span class="pp-asof" data-asof="gas_eu"></span></header>
+      <div class="pane-subpane pp-pane" id="fb-pp-phos" data-sub="phos" hidden>
+        <header class="pp-head"><div><span class="pp-k">02</span><h2>Phân lân & DAP</h2><p>Giá DAP, TSP, quặng phosphate và biên gộp nhà sản xuất lân (DDV, LAS, VAF, NFC).</p></div><span class="pp-asof" data-asof="dap"></span></header>
       </div>
-      <div class="pane-subpane pp-pane" id="fb-pp-output" data-sub="output" hidden>
-        <header class="pp-head"><div><span class="pp-k">03</span><h2>Sản xuất trong nước</h2><p>Sản lượng phân urê và NPK theo tháng của Cục Thống kê.</p></div><span class="pp-asof" data-asof="urea_output"></span></header>
+      <div class="pane-subpane pp-pane" id="fb-pp-npk" data-sub="npk" hidden>
+        <header class="pp-head"><div><span class="pp-k">03</span><h2>NPK & kali</h2><p>Sản lượng NPK trong nước, giá kali và nguyên liệu NPK, biên gộp và tồn kho nhà sản xuất NPK (BFC, SFG).</p></div><span class="pp-asof" data-asof="npk_output"></span></header>
       </div>
-      <div class="pane-subpane pp-pane" id="fb-pp-policy" data-sub="policy" hidden>
-        <header class="pp-head"><div><span class="pp-k">04</span><h2>Chính sách & thuế</h2><p>Các mốc chính sách thay đổi chi phí và giá bán phân bón.</p></div></header>
+      <div class="pane-subpane pp-pane" id="fb-pp-gas" data-sub="gas" hidden>
+        <header class="pp-head"><div><span class="pp-k">04</span><h2>Giá khí</h2><p>Giá khí theo khu vực, dầu Brent và cơ chế giá khí đầu vào của DPM, DCM.</p></div><span class="pp-asof" data-asof="gas_eu"></span></header>
+      </div>
+      <div class="pane-subpane pp-pane" id="fb-pp-matrix" data-sub="matrix" hidden>
+        <header class="pp-head"><div><span class="pp-k">05</span><h2>Ma trận tác động</h2><p>Biến giá nào tác động lên doanh nghiệp niêm yết nào, theo chiều nào.</p></div></header>
       </div>
     </section>
   </section>
