@@ -102,5 +102,53 @@
   "opened_at": "2026-11-26",
   "quote": "xăng E5RON92 tiếp tục được phối trộn, pha chế và cung ứng để sử dụng cho động cơ xăng đến hết ngày 31/12/2030.",
   "status": "match"
+ },
+ {
+  "block": "dau-khi-ops",
+  "claim": "Kho LNG Thị Vải: công suất tái hóa 288 tấn/giờ",
+  "value": "288",
+  "url": "https://vir.com.vn/pv-gas-increases-capacity-of-thi-vai-lng-terminal-150173.html",
+  "opened_at": "2026-11-26",
+  "quote": "with a capacity of 288 tonnes per hour",
+  "status": "match",
+  "note": "VIR 08/04/2026"
+ },
+ {
+  "block": "dau-khi-ops",
+  "claim": "Kho LNG Thị Vải: công suất thiết kế ban đầu 171 tấn/giờ",
+  "value": "171",
+  "url": "https://vir.com.vn/pv-gas-increases-capacity-of-thi-vai-lng-terminal-150173.html",
+  "opened_at": "2026-11-26",
+  "quote": "compared with the initial design capacity of 171 tonnes per hour",
+  "status": "match"
+ },
+ {
+  "block": "dau-khi-ops",
+  "claim": "Kho LNG Thị Vải: tương đương 9,5 triệu m3 khí/ngày",
+  "value": "9.5",
+  "url": "https://vir.com.vn/pv-gas-increases-capacity-of-thi-vai-lng-terminal-150173.html",
+  "opened_at": "2026-11-26",
+  "quote": "equalling 9.5 million standard cubic metres per day",
+  "status": "match"
+ },
+ {
+  "block": "dau-khi-ops",
+  "claim": "Kho LNG Thị Vải giai đoạn 2: 1 lên 3 triệu tấn/năm, dự kiến 2029",
+  "value": "2029",
+  "url": "https://baonghean.vn/en/doan-cong-tac-tinh-nghe-an-khao-sat-kho-cang-lng-thi-vai-10330025.html",
+  "opened_at": "2026-11-26",
+  "quote": "increasing its capacity from 1 million to 3 million tons per year, with completion expected in 2029.",
+  "status": "match",
+  "note": "Báo Nghệ An 25/03/2026"
+ },
+ {
+  "block": "dau-khi-ops",
+  "claim": "BSR 9 tháng 2026: sản xuất khoảng 6,15 triệu tấn, tiêu thụ 6,08 triệu tấn",
+  "value": "6,15",
+  "url": "https://giaoduc.net.vn/bsr-cung-co-noi-luc-mo-rong-khong-gian-tang-truong-post263415.gd",
+  "opened_at": "2026-11-26",
+  "quote": "Sản lượng sản xuất của Tổng Công ty đạt khoảng 6,15 triệu tấn, sản lượng tiêu thụ đạt khoảng 6,08 triệu tấn.",
+  "status": "match",
+  "note": "Giáo dục & Thời đại, hội thảo nhà đầu tư 15/10/2026"
  }
 ]

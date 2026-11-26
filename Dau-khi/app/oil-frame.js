@@ -42,7 +42,10 @@ const ALIAS = {mt3: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
 
 function style() {
   const st = el('style'); st.id = 'oil-frame-style';
-  st.textContent = `.tx2{margin:10px 0 6px;font-size:13px}.tx2-head,.tx2-row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:16px;align-items:center}
+  st.textContent = `.of-ops-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:12px 0 4px}
+.of-ops-i{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border:1px solid #E6E9F2;border-radius:12px;background:#FAFBFE}
+.of-ops-i span{font:600 12.5px Inter,sans-serif;color:#6B7392}.of-ops-i b{font:700 26px/1.15 Inter,sans-serif;color:#1F2A5C}.of-ops-i b small{font:600 13px Inter,sans-serif;color:#6B7392;margin-left:4px}.of-ops-i em{font-style:normal;font-size:12px;color:#6B7392}
+.tx2{margin:10px 0 6px;font-size:13px}.tx2-head,.tx2-row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:16px;align-items:center}
 .tx2-head{height:40px}.tx2-axis{position:relative;height:100%;border-bottom:1px solid #DCE1EE}.tx2-axis span{position:absolute;bottom:6px;transform:translateX(-50%);font:600 12px Inter,sans-serif;color:#7A84A6}
 .tx2-row{min-height:64px;border-bottom:1px solid #F0F2F8}.tx2-lane{position:relative;height:64px}
 .tx2-bar{position:absolute;top:8px;bottom:8px;display:flex;flex-direction:column;justify-content:center;padding:0 10px;border-radius:9px;overflow:hidden;white-space:nowrap;background:#E8ECFB;border-left:4px solid #2938A8}
@@ -441,6 +444,19 @@ function vnMonthly() {
 }
 // Sub-tab đã có chart bổ sung thì ẩn ô "Chưa có dữ liệu cho mục này".
 function hideEmptyGaps() { $$('.of-body').forEach(b => { if (b.querySelector('[data-of-added], #of-tax')) b.querySelectorAll(':scope > .of-gap').forEach(g => { if (/Chưa có dữ liệu cho mục này/.test(g.textContent)) g.hidden = true; }); }); }
+
+// Chỉ số vận hành doanh nghiệp (nhập tay, đã mở trang gốc; xem data/oil/evidence.json khối dau-khi-ops).
+function opsCards() {
+  const kpi = (host, id, title, items, src) => { if (!host || $('#' + id)) return; const c = el('div', 'card of-wide of-ops'); c.id = id; c.dataset.ofAdded = id;
+    c.innerHTML = `<div class="chart-title">${title}</div><div class="of-ops-grid">${items.map(([k, v, u, note]) => `<div class="of-ops-i"><span>${k}</span><b>${v}<small>${u}</small></b><em>${note}</em></div>`).join('')}</div><div class="pw-src">Nguồn: ${src} · số doanh nghiệp công bố qua báo chí, chưa phải BCTC kiểm toán</div>`; host.append(c); };
+  kpi($('#of-mt2-gas .of-body'), 'of-ops-thivai', 'Kho LNG Thị Vải (PV GAS) — năng lực nhập và tái hóa LNG', [
+    ['Công suất tái hóa hiện tại', '288', ' tấn/giờ', 'chạy thử thành công, công bố 07/04/2026'], ['Công suất thiết kế ban đầu', '171', ' tấn/giờ', 'tăng khoảng 68% sau nâng cấp'],
+    ['Tương đương', '9,5', ' triệu m³ khí/ngày', 'quy đổi theo công bố của PV GAS'], ['Giai đoạn 2', '1 → 3', ' triệu tấn/năm', 'dự kiến hoàn thành 2029']],
+    '<a href="https://vir.com.vn/pv-gas-increases-capacity-of-thi-vai-lng-terminal-150173.html" target="_blank" rel="noopener">VIR 08/04/2026</a> · <a href="https://baonghean.vn/en/doan-cong-tac-tinh-nghe-an-khao-sat-kho-cang-lng-thi-vai-10330025.html" target="_blank" rel="noopener">Báo Nghệ An 25/03/2026</a>');
+  kpi($('#of-mt2-refining .of-body'), 'of-ops-bsr', 'Lọc dầu Dung Quất (BSR) — 9 tháng 2026', [
+    ['Sản lượng sản xuất', '6,15', ' triệu tấn', 'khoảng, 9 tháng 2026'], ['Sản lượng tiêu thụ', '6,08', ' triệu tấn', 'khoảng, 9 tháng 2026']],
+    '<a href="https://giaoduc.net.vn/bsr-cung-co-noi-luc-mo-rong-khong-gian-tang-truong-post263415.gd" target="_blank" rel="noopener">Giáo dục & Thời đại, hội thảo nhà đầu tư BSR 15/10/2026</a>');
+}
 function run() {
   if (document.body.dataset.oilFrame) return; document.body.dataset.oilFrame = '1';
   style();
@@ -463,6 +479,7 @@ function run() {
   lngPrices();
   taxTimeline();
   vnMonthly();
+  opsCards();
   hideEmptyGaps();
   const finHost = financePane();
   nav(finHost);
