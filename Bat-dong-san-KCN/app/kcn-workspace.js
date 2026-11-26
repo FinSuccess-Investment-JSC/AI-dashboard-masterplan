@@ -427,13 +427,7 @@
       take: `<div class="kc-mk-num"><b>${u ? nf(u.ask_usd, 1) + ' USD' : vnd ? nf(vnd.ask_vnd / 1e6, 2) + ' triệu đ' : '—'}</b><span>/m²/kỳ thuê còn lại, ${QL(q)}${u && pr.ok ? ` · ${pf(pr.rel)} so ${QL(yq)}` : ''}${ry ? ` · ${pf(ry.value)} so cùng kỳ (C&W công bố, cùng phạm vi)` : ''}</span>${!u && vnd ? '<span class="kc-na">Từ kỳ này C&W báo giá VND; chuỗi USD dừng ở kỳ trước.</span>' : ''}${u && !pr.ok && !ry ? why(pr) : ''}</div>`,
       draw: h => draw(h, hilite(combo({labels: L, sets: [{label: 'Giá chào thuê', type: 'line', color: r === 'North' ? C.blue : C.tealD, data: rows.map(m => fin(m.ask_usd) ? m.ask_usd : null), meta: rows.map(m => ({period: m.period, cls: 'ACTUAL', src: m.src, extra: [scope(m), 'USD/m²/kỳ thuê còn lại']}))}], y: {unit: 'USD/m²', zero: false, fmt: v => nf(v, 0)}, markers: L.indexOf(QL(D.rebase)) > 0 ? [{label: QL(D.rebase), text: 'Đổi phạm vi'}] : []}), hl))}));
     box.append(g);
-    // Câu chốt: chỉ khi hai quý liền nhau cùng phạm vi có đủ hấp thụ và lấp đầy (K.regimes); nếu không, nói rõ vì sao chưa kết luận.
-    box.append(section('K', 'Kết luận theo vùng', 'Một câu có căn cứ: chỉ dùng hai kỳ cùng phạm vi C&W.'));
-    const rg = K.regimes(D, r).find(x => x.to === q);
-    const yoyLine = oc.ok && sk.ok ? `So ${QL(yq)} cùng phạm vi: lấp đầy ${ppf(oc.abs)}, nguồn cung ${pf(sk.rel)}${ab.ok ? `, hấp thụ quý ${pf(ab.rel, 0)}` : ''}${oc.abs < 0 && sk.rel > 0 ? ': cung mới đang vào nhanh hơn phần được hấp thụ.' : oc.abs > 0 && sk.rel > 0 ? ': cung mới đang được hấp thụ.' : '.'}` : '';
-    box.append(el('div', 'kc-mk-verdict', `<b>Miền ${REG[r]} ${QL(q)}:</b> ${rg ? `${esc(K.REGIME_TEXT[rg.key])} (hấp thụ ${nf(rg.absFrom)} → ${nf(rg.absTo)} ha, lấp đầy ${pf(rg.occFrom, 1, false)} → ${pf(rg.occTo, 1, false)} so ${QL(rg.from)}, C&W cùng phạm vi). ` : ''}${yoyLine || (rg ? '' : 'Chưa đủ hai kỳ cùng phạm vi C&W có cả hấp thụ và lấp đầy để kết luận cho kỳ này.')}` +
-      `<span class="kc-na">Căn cứ: Cushman & Wakefield ${esc(row ? row.src : '')}. Số CBRE là chuỗi riêng, không dùng để kết luận cùng câu này.</span>`));
-    box.append(el('div', 'kc-mk-go', `<span>Xem chi tiết:</span>${[['demand', 'Nhu cầu', 'hấp thụ theo nguồn, FDI, chỉ báo tháng'], ['supply', 'Nguồn cung', 'lấp đầy, cung mới theo tiến độ, đất cao su'], ['rent', 'Giá thuê', 'xu hướng vùng, tỉnh, dự án'], ['landbank', 'Quỹ đất', 'đất có thể giao của từng doanh nghiệp']].map(([k, t, s]) => `<button type="button" class="kc-link" data-kcn-go="${k}"><b>${t} →</b><small>${s}</small></button>`).join('')}`));
+    // Mục "Cung mới đang được hấp thụ, hay lấp đầy đang giảm?" (câu kết luận theo vùng + nút xem chi tiết) bỏ 26/11/2026 theo yêu cầu người dùng.
   }
   // Tô đậm cột/điểm của kỳ đang chọn (các kỳ khác nhạt đi).
   function hilite(cfg, on) { if (!on.some(Boolean)) return cfg; cfg.data.datasets.forEach(ds => { if (ds.type === 'line') ds.pointRadius = on.map(x => (x ? 5 : 2)); else if (typeof ds.backgroundColor === 'string' && /^#[0-9a-f]{6}$/i.test(ds.backgroundColor)) { const c = ds.backgroundColor; ds.backgroundColor = on.map(x => (x ? c : c + '66')); } }); return cfg; }
@@ -964,7 +958,7 @@
     rent: {A: 'Giá chào thuê theo vùng đang lên hay đi ngang, và có được lấp đầy, hấp thụ đỡ không?', B: 'Tỉnh nào lấp đầy cao, tỉnh nào còn nhiều đất trống?', C: 'Tỉnh nào có sức mạnh tăng giá, tỉnh nào có nguy cơ dư cung?', D: 'Hai địa phương khác nhau ở đâu?', E: 'Hàm ý theo địa phương là gì?'},
     landbank: {A: 'Doanh nghiệp nào còn quỹ đất có thể giao, theo đúng loại diện tích?', B: 'Dự án của từng doanh nghiệp đang ở giai đoạn nào?', C: 'Doanh nghiệp nào đã ký mới, kế hoạch ký bao nhiêu?', D: 'Ký mới đi đến bàn giao, doanh thu và tiền thế nào?'},
     overview: {A: 'Ngành đang ở đâu trong chu kỳ: hấp thụ, nguồn cung, lấp đầy?', B: 'Dữ liệu hiện tại gợi ý điều gì cho nhà đầu tư?'},
-    market: {M: 'Cầu thuê, cung chào thuê và giá chào đang ở đâu, theo từng vùng?', K: 'Cung mới đang được hấp thụ, hay lấp đầy đang giảm?'},
+    market: {M: 'Cầu thuê, cung chào thuê và giá chào đang ở đâu, theo từng vùng?'},
     data: {A: 'Số trên trang lấy từ bảng nào?', B: 'Dữ liệu đang có cảnh báo gì?', C: 'Nhận định sinh từ quy tắc nào, ngưỡng bao nhiêu?', D: 'Định nghĩa, nguồn và cách cập nhật'}
   };
   const TITLE = {market: 'Toàn thị trường', demand: 'Nhu cầu thuê đất & FDI', supply: 'Nguồn cung & lấp đầy', rent: 'Giá thuê & địa phương', landbank: 'Quỹ đất & doanh nghiệp', finance: 'Tài chính ngành'};

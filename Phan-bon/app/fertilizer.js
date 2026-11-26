@@ -156,8 +156,8 @@ function overview() {
   c1.innerHTML = '<h3 class="chart-title" style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3><div class="fb-chain"></div><div class="pw-src">Nguồn: ' + SRC.ar + '; ' + SRC.vnd + '</div>';
   s1.append(c1); pane.append(s1); chain(c1.querySelector('.fb-chain'));
   // 0.2 Doanh thu/LNST theo nhóm và 0.3 Sản lượng theo năm bỏ 25/11/2026 (theo yêu cầu người dùng).
-  // 0.2 Bản đồ nhà máy, 0.3 cơ cấu công suất, 0.4 ma trận cấu trúc sản xuất (app/fertilizer-map.js, 25/11/2026).
-  if (window.FertMap) { try { FertMap.build(pane); } catch (e) { console.error(e); } }
+  // 0.2 Bản đồ nhà máy (app/fertilizer-map.js); cơ cấu công suất và ma trận cấu trúc sản xuất dời sang sub-tab 01 Năng lực sản xuất (26/11/2026).
+  if (window.FertMap) { try { FertMap.build(pane, $('#fb-ov-cap')); } catch (e) { console.error(e); } }
 }
 // 01 Doanh nghiệp niêm yết: thẻ từng mã (như bảng doanh nghiệp của Điện, rút gọn), bấm một khâu trên sơ đồ để lọc.
 function listed() {
@@ -187,68 +187,90 @@ function listed() {
 /* =========================== BỨC TRANH NGÀNH =========================== */
 const BUILT = new Set();
 const PIC = {
-  // Sub-tab theo loại phân (26/11/2026): mỗi loại gồm giá → sản xuất trong nước → chi phí và biên gộp doanh nghiệp (app/fertilizer-cost.js).
+  // 01–03 từng loại phân theo luồng Đầu vào → Sản xuất → Đầu ra (như Điện, 26/11/2026). Khâu không có chart thì không hiện.
   urea() {
-    const p = $('#fb-pp-urea'), u = last('urea'), z = last('urea_zce_daily'), o = last('urea_output'), M = +o.date.slice(5), y = +o.date.slice(0, 4);
+    const p = $('#fb-pp-urea'), u = last('urea'), z = last('urea_zce_daily'), o = last('urea_output'), M = +o.date.slice(5), y = +o.date.slice(0, 4), b = last('brent');
     const zy = (() => { const t = ymAdd(z.date.slice(0, 7), -12); const r = val('urea_zce', t); return fin(r) ? (z.value / r - 1) * 100 : null; })();
     const uy = ytd('urea_output', y, M), uy0 = ytd('urea_output', y - 1, M);
     p.append(kpiRow([
-      kpi('Urê thế giới · ' + mL(u.date), nf(u.value), 'USD/tấn', `${sg(yoy('urea', u.date))}% so cùng kỳ`, 'FOB Trung Đông · World Bank', tail('urea', 24), C.blue),
-      kpi('Urê Trịnh Châu · ' + dL(z.date), nf(z.value), 'CNY/tấn', `${sg(zy)}% so cuối tháng cùng kỳ`, 'hợp đồng liên tục UR0', tail('urea_zce_daily', 120), C.navy),
-      kpi('Sản lượng urê · ' + mL(o.date), nf(o.value, 1), 'nghìn tấn', `${sg(yoy('urea_output', o.date))}% so cùng kỳ`, 'tháng gần nhất là số ước tính', tail('urea_output', 24), C.sky),
-      kpi(`Sản lượng urê ${M} tháng`, nf(uy), 'nghìn tấn', `${sg((uy / uy0 - 1) * 100)}% so cùng kỳ`, 'lũy kế từ đầu năm', null)]));
-    p.append(el('h3', 'pp-grp', 'Giá urê'));
-    const q1 = panel('1.1', 'Giá urê thế giới năm nay so với các năm trước thế nào?');
+      kpi('Dầu Brent · ' + mL(b.date), nf(b.value, 1), 'USD/thùng', `${sg(yoy('brent', b.date))}% so cùng kỳ`, 'đầu vào · công thức giá khí gắn giá dầu', tail('brent', 24), C.grey),
+      kpi(`Sản lượng urê ${M} tháng`, nf(uy), 'nghìn tấn', `${sg((uy / uy0 - 1) * 100)}% so cùng kỳ`, 'sản xuất · lũy kế từ đầu năm', tail('urea_output', 24), C.sky),
+      kpi('Urê thế giới · ' + mL(u.date), nf(u.value), 'USD/tấn', `${sg(yoy('urea', u.date))}% so cùng kỳ`, 'đầu ra · FOB Trung Đông', tail('urea', 24), C.blue),
+      kpi('Urê Trịnh Châu · ' + dL(z.date), nf(z.value), 'CNY/tấn', `${sg(zy)}% so cuối tháng cùng kỳ`, 'đầu ra · hợp đồng UR0', tail('urea_zce_daily', 120), C.navy)]));
+    flow(p, 'urea', [['in', 'Đầu vào', 'Khí & than'], ['make', 'Sản xuất', 'Sản lượng và công suất urê'], ['out', 'Đầu ra', 'Giá bán & biên gộp']]);
+    // Đầu vào
+    stage(p, 'urea', 'in', 'Đầu vào', 'Khí & than');
+    const qi = panel('·', 'Giá dầu và giá than — biến số chi phí nhiên liệu của urê từ khí và urê từ than', 'Giá khí DPM, DCM tính theo công thức gắn giá dầu FO (xem 04 Nguồn khí, mục 4.3); urê từ than (DHB) dùng than antraxit trong nước.');
+    const cb = card('pb-u-brent', 'Dầu Brent, bình quân tháng', {sub: 'USD/thùng · Proxy cho nhóm giá dầu trong công thức giá khí', source: SRC.wb, info: 'Brent không phải giá FO Singapore; chỉ thể hiện xu hướng nhóm giá dầu.'});
+    qi.append(cb.el); p.append(qi);
+    const LB = months('2021-01', b.date);
+    chart(cb.host, 'pb-u-brent', LB.map(mL), [{name: 'Brent', color: C.grey, values: LB.map(m => val('brent', m))}], {unit: 'USD/thùng', digits: 1, zeroBase: false});
+    if (window.FertCost) FertCost.render('coalIn', p);
+    // Sản xuất
+    stage(p, 'urea', 'make', 'Sản xuất', 'Sản lượng và công suất urê');
+    output(p, '·', 'urea_output', 'Phân urê', 'pb-30', 'pb-32');
+    ytdBars(p, '·', 'urea_output', 'Phân urê', 'pb-31', C.blue);
+    capacity(p, 'pb-u-cap', 'Urê', ['Urê']);
+    // Đầu ra
+    stage(p, 'urea', 'out', 'Đầu ra', 'Giá bán & biên gộp');
+    const q1 = panel('·', 'Giá urê thế giới năm nay so với các năm trước thế nào?');
     const a = card('pb-10', 'Giá urê thế giới — so cùng tháng', {sub: 'USD/tấn · bình quân tháng · FOB Trung Đông', source: SRC.wb, info: 'Số bình quân tháng World Bank công bố đầu tháng sau. Mỗi cột một năm để so cùng tháng.'});
     const ys = lastYears('urea', 4);
     q1.append(el('div', 'pp-main'), heat('pb-13', 'Giá urê tăng giảm bao nhiêu so cùng kỳ, từng tháng', '% · so cùng tháng năm trước', 'urea', ys.slice(-3), SRC.wb));
     q1.querySelector('.pp-main').append(a.el); p.append(q1); seasonal(a.host, 'pb-10', 'urea', ys, {unit: 'USD/tấn'});
-    const q2 = panel('1.2', 'Giá urê tương lai ở Trung Quốc biến động thế nào trong năm qua?');
-    const b = card('pb-11', 'Urê tương lai Trịnh Châu — 1 năm', {sub: 'CNY/tấn · giá đóng cửa ngày', cadence: 'daily', source: SRC.zce, info: 'Hợp đồng urê liên tục UR0 trên Sở Giao dịch hàng hóa Trịnh Châu. Hợp đồng liên tục chuyển kỳ hạn nên chênh lệch qua ngày chuyển có thể gồm khoảng chênh giữa hai kỳ hạn.'});
-    q2.append(b.el); p.append(q2);
-    const R = recs('urea_zce_daily'); chart(b.host, 'pb-11', R.map(r => dL(r.date)), [{name: 'Urê ZCE', color: C.navy, values: R.map(r => r.value)}], {unit: 'CNY/tấn', zeroBase: false});
-    p.append(el('h3', 'pp-grp', 'Sản xuất trong nước'));
-    output(p, '1.3', 'urea_output', 'Phân urê', 'pb-30', 'pb-32');
-    ytdBars(p, '1.4', 'urea_output', 'Phân urê', 'pb-31', C.blue);
-    if (!window.FertCost) return;
-    p.append(el('h3', 'pp-grp', 'Urê từ khí · DPM, DCM')); FertCost.render('ureaGas', p);
-    p.append(el('h3', 'pp-grp', 'Urê từ than · DHB')); FertCost.render('ureaCoal', p);
+    const q2 = panel('·', 'Giá urê tương lai ở Trung Quốc biến động thế nào trong năm qua?');
+    const c = card('pb-11', 'Urê tương lai Trịnh Châu — 1 năm', {sub: 'CNY/tấn · giá đóng cửa ngày', cadence: 'daily', source: SRC.zce, info: 'Hợp đồng urê liên tục UR0 trên Sở Giao dịch hàng hóa Trịnh Châu. Hợp đồng liên tục chuyển kỳ hạn nên chênh lệch qua ngày chuyển có thể gồm khoảng chênh giữa hai kỳ hạn.'});
+    q2.append(c.el); p.append(q2);
+    const R = recs('urea_zce_daily'); chart(c.host, 'pb-11', R.map(r => dL(r.date)), [{name: 'Urê ZCE', color: C.navy, values: R.map(r => r.value)}], {unit: 'CNY/tấn', zeroBase: false});
+    if (window.FertCost) { FertCost.render('ureaMargin', p); FertCost.render('coalMargin', p); }
+    renum(p, 1);
   },
   phos() {
     const p = $('#fb-pp-phos'), d = last('dap'), t = last('tsp'), r = last('phosrock');
     const gmT = tk => E ? E.ratio({m: 'gross'}, {m: 'revenue'}, [tk], 'q', 100).values : [];
     p.append(kpiRow([
-      kpi('DAP · ' + mL(d.date), nf(d.value), 'USD/tấn', `${sg(yoy('dap', d.date))}% so cùng kỳ`, 'FOB Mỹ vùng Vịnh · World Bank', tail('dap', 24), C.gold),
-      kpi('TSP · ' + mL(t.date), nf(t.value), 'USD/tấn', `${sg(yoy('tsp', t.date))}% so cùng kỳ`, 'supe lân kép · World Bank', tail('tsp', 24), C.plum),
-      kpi('Quặng phosphate · ' + mL(r.date), nf(r.value), 'USD/tấn', `${sg(yoy('phosrock', r.date))}% so cùng kỳ`, 'Morocco · World Bank', tail('phosrock', 24), C.grey),
-      E ? kpi('Biên gộp DDV · ' + qL(F.periods.at(-1)), nf(gmT('DDV').at(-1), 1), '%', '', 'BCTC hợp nhất', gmT('DDV').slice(-12), C.gold) : null].filter(Boolean)));
-    p.append(el('h3', 'pp-grp', 'Giá DAP'));
-    const q1 = panel('2.1', 'Giá DAP thế giới năm nay so với các năm trước thế nào?');
+      kpi('Quặng phosphate · ' + mL(r.date), nf(r.value), 'USD/tấn', `${sg(yoy('phosrock', r.date))}% so cùng kỳ`, 'đầu vào · Morocco · World Bank', tail('phosrock', 24), C.grey),
+      kpi('DAP · ' + mL(d.date), nf(d.value), 'USD/tấn', `${sg(yoy('dap', d.date))}% so cùng kỳ`, 'đầu ra · FOB Mỹ vùng Vịnh', tail('dap', 24), C.gold),
+      kpi('TSP · ' + mL(t.date), nf(t.value), 'USD/tấn', `${sg(yoy('tsp', t.date))}% so cùng kỳ`, 'đầu ra · supe lân kép', tail('tsp', 24), C.plum),
+      E ? kpi('Biên gộp DDV · ' + qL(F.periods.at(-1)), nf(gmT('DDV').at(-1), 1), '%', '', 'đầu ra · BCTC hợp nhất', gmT('DDV').slice(-12), C.gold) : null].filter(Boolean)));
+    flow(p, 'phos', [['in', 'Đầu vào', 'Quặng phosphate'], ['make', 'Sản xuất', 'Công suất DAP & lân'], ['out', 'Đầu ra', 'Giá DAP & biên gộp']]);
+    stage(p, 'phos', 'in', 'Đầu vào', 'Quặng phosphate');
+    if (window.FertCost) FertCost.render('phosIn', p);
+    stage(p, 'phos', 'make', 'Sản xuất', 'Công suất DAP & lân');
+    capacity(p, 'pb-p-cap', 'DAP & phân lân', ['DAP', 'Supe lân', 'Lân nung chảy']);
+    stage(p, 'phos', 'out', 'Đầu ra', 'Giá DAP & biên gộp');
+    const q1 = panel('·', 'Giá DAP thế giới năm nay so với các năm trước thế nào?');
     const a = card('pb-15', 'Giá DAP thế giới — so cùng tháng', {sub: 'USD/tấn · bình quân tháng · FOB Mỹ vùng Vịnh', source: SRC.wb});
     const ys = lastYears('dap', 4);
     q1.append(el('div', 'pp-main'), heat('pb-16', 'Giá DAP tăng giảm bao nhiêu so cùng kỳ, từng tháng', '% · so cùng tháng năm trước', 'dap', ys.slice(-3), SRC.wb));
     q1.querySelector('.pp-main').append(a.el); p.append(q1); seasonal(a.host, 'pb-15', 'dap', ys, {unit: 'USD/tấn'});
-    if (window.FertCost) { p.append(el('h3', 'pp-grp', 'Nguyên liệu và biên gộp · DDV, LAS, VAF, NFC')); FertCost.render('phos', p); }
+    if (window.FertCost) FertCost.render('phosMargin', p);
+    renum(p, 2);
   },
   npk() {
     const p = $('#fb-pp-npk'), k = last('potash'), n = last('npk_output'), M = +n.date.slice(5), y = +n.date.slice(0, 4);
     const ny = ytd('npk_output', y, M), ny0 = ytd('npk_output', y - 1, M);
     const gmT = tk => E ? E.ratio({m: 'gross'}, {m: 'revenue'}, [tk], 'q', 100).values : [];
     p.append(kpiRow([
-      kpi('Sản lượng NPK · ' + mL(n.date), nf(n.value, 1), 'nghìn tấn', `${sg(yoy('npk_output', n.date))}% so cùng kỳ`, 'tháng gần nhất là số ước tính', tail('npk_output', 24), C.teal),
-      kpi(`Sản lượng NPK ${M} tháng`, nf(ny), 'nghìn tấn', `${sg((ny / ny0 - 1) * 100)}% so cùng kỳ`, 'lũy kế từ đầu năm', null),
-      kpi('Kali clorua · ' + mL(k.date), nf(k.value), 'USD/tấn', `${sg(yoy('potash', k.date))}% so cùng kỳ`, 'MOP · World Bank', tail('potash', 24), C.plum),
-      E ? kpi('Biên gộp BFC · ' + qL(F.periods.at(-1)), nf(gmT('BFC').at(-1), 1), '%', '', 'BCTC hợp nhất', gmT('BFC').slice(-12), C.teal) : null].filter(Boolean)));
-    p.append(el('h3', 'pp-grp', 'Sản xuất trong nước'));
-    output(p, '3.1', 'npk_output', 'Phân NPK', 'pb-33', 'pb-34');
-    ytdBars(p, '3.2', 'npk_output', 'Phân NPK', 'pb-35', C.teal);
-    p.append(el('h3', 'pp-grp', 'Kali'));
-    const q3 = panel('3.3', 'Giá kali thế giới năm nay so với các năm trước thế nào?');
+      kpi('Kali clorua · ' + mL(k.date), nf(k.value), 'USD/tấn', `${sg(yoy('potash', k.date))}% so cùng kỳ`, 'đầu vào · MOP · World Bank', tail('potash', 24), C.plum),
+      kpi('Sản lượng NPK · ' + mL(n.date), nf(n.value, 1), 'nghìn tấn', `${sg(yoy('npk_output', n.date))}% so cùng kỳ`, 'sản xuất · tháng gần nhất là ước tính', tail('npk_output', 24), C.teal),
+      kpi(`Sản lượng NPK ${M} tháng`, nf(ny), 'nghìn tấn', `${sg((ny / ny0 - 1) * 100)}% so cùng kỳ`, 'sản xuất · lũy kế từ đầu năm', null),
+      E ? kpi('Biên gộp BFC · ' + qL(F.periods.at(-1)), nf(gmT('BFC').at(-1), 1), '%', '', 'đầu ra · BCTC hợp nhất', gmT('BFC').slice(-12), C.teal) : null].filter(Boolean)));
+    flow(p, 'npk', [['in', 'Đầu vào', 'Kali, urê, DAP'], ['make', 'Sản xuất', 'Sản lượng và công suất NPK'], ['out', 'Đầu ra', 'Biên gộp & tồn kho']]);
+    stage(p, 'npk', 'in', 'Đầu vào', 'Kali, urê, DAP');
+    const q3 = panel('·', 'Giá kali thế giới năm nay so với các năm trước thế nào?');
     const a = card('pb-17', 'Giá kali clorua thế giới — so cùng tháng', {sub: 'USD/tấn · bình quân tháng · MOP', source: SRC.wb});
     const ys = lastYears('potash', 4);
     q3.append(el('div', 'pp-main'), heat('pb-18', 'Giá kali tăng giảm bao nhiêu so cùng kỳ, từng tháng', '% · so cùng tháng năm trước', 'potash', ys.slice(-3), SRC.wb));
     q3.querySelector('.pp-main').append(a.el); p.append(q3); seasonal(a.host, 'pb-17', 'potash', ys, {unit: 'USD/tấn'});
-    if (window.FertCost) { p.append(el('h3', 'pp-grp', 'Nguyên liệu và biên gộp · BFC, SFG')); FertCost.render('npk', p); }
+    if (window.FertCost) FertCost.render('npkIn', p);
+    stage(p, 'npk', 'make', 'Sản xuất', 'Sản lượng và công suất NPK');
+    output(p, '·', 'npk_output', 'Phân NPK', 'pb-33', 'pb-34');
+    ytdBars(p, '·', 'npk_output', 'Phân NPK', 'pb-35', C.teal);
+    capacity(p, 'pb-n-cap', 'NPK', ['NPK']);
+    stage(p, 'npk', 'out', 'Đầu ra', 'Biên gộp & tồn kho');
+    if (window.FertCost) FertCost.render('npkMargin', p);
+    renum(p, 3);
   },
   gas() {
     const p = $('#fb-pp-gas'), e = last('gas_eu'), us = last('gas_us'), j = last('lng_jp'), b = last('brent');
@@ -264,6 +286,28 @@ const PIC = {
   },
   matrix() { if (window.FertCost) FertCost.render('matrix', $('#fb-pp-matrix')); }
 };
+// Thanh luồng Đầu vào → Sản xuất → Đầu ra và tiêu đề khâu (cùng .pp-flow/.pp-stage của Điện).
+function flow(p, key, steps) {
+  const bar = el('nav', 'pp-flow'); bar.setAttribute('aria-label', 'Luồng đầu vào, sản xuất, đầu ra');
+  bar.innerHTML = steps.map(([id, k, t], i) => `${i ? '<span class="pp-flow-ar" aria-hidden="true">→</span>' : ''}<a href="#mt2-pp-${key}-${id}" class="pp-flow-s" data-pp-stage="mt2-pp-${key}-${id}"><small>${k}</small><b>${esc(t)}</b></a>`).join('');
+  bar.addEventListener('click', e => { const a = e.target.closest('[data-pp-stage]'); if (a) { e.preventDefault(); document.getElementById(a.dataset.ppStage)?.scrollIntoView({behavior: 'smooth', block: 'start'}); } });
+  p.append(bar);
+}
+function stage(p, key, id, k, t) { const h = el('div', 'pp-stage', `<span>${k}</span><h3>${esc(t)}</h3>`); h.id = `mt2-pp-${key}-${id}`; p.append(h); }
+// Đánh lại số câu hỏi theo sub-tab (1.1, 1.2…).
+function renum(p, n) { p.querySelectorAll(':scope>.pp-panel .pp-num').forEach((x, i) => { x.textContent = `${n}.${i + 1}`; }); }
+// Công suất thiết kế theo nhà máy (data/fertilizer/plants.json), cột chồng theo sản phẩm. Không phải sản lượng thực tế.
+function capacity(p, id, name, prods) {
+  const P = (D.plants && D.plants.plants) || [];
+  const capOf = (pl, pr) => (pl.products || []).filter(x => x.product === pr && fin(x.capacity_kt)).reduce((s, x) => s + x.capacity_kt, 0);
+  const rows = P.map(pl => ({pl, v: prods.map(pr => capOf(pl, pr)), t: prods.reduce((s, pr) => s + capOf(pl, pr), 0)})).filter(r => r.t > 0).sort((a, b) => b.t - a.t);
+  if (!rows.length) return;
+  const q = panel('·', `Công suất thiết kế ${name} của từng nhà máy`, 'Công suất thiết kế theo tài liệu doanh nghiệp, không phải sản lượng thực tế; nhiều số từ tài liệu 2012–2018.');
+  const c = card(id, `Công suất thiết kế ${name} theo nhà máy`, {sub: 'nghìn tấn/năm', cadence: 'event', kind: 'static', source: 'BCTN, website doanh nghiệp, Petrovietnam, Vinachem (nguồn từng nhà máy ở bản đồ Tổng quan 0.2)', info: 'Nhà máy chưa có số công suất có nguồn thì không vẽ. Xem nguồn và kỳ số liệu từng nhà máy ở Tổng quan › Bản đồ ngành.'});
+  q.append(c.el); p.append(q);
+  const PC = {'Urê': C.blue, 'DAP': C.gold, 'Supe lân': C.teal, 'Lân nung chảy': C.plum, 'NPK': C.teal};
+  chart(c.host, id, rows.map(r => (r.pl.ticker ? r.pl.ticker + ' · ' : '') + (r.pl.short || r.pl.plant).replace(/^Nhà máy /, '')), prods.map((pr, j) => ({name: pr, color: PC[pr] || C.grey, kind: 'bar', values: rows.map(r => r.v[j] || null)})), {unit: 'nghìn tấn/năm', native: 'bar', stackable: prods.length > 1});
+}
 // Sản lượng một loại phân: so cùng tháng + bảng nhiệt so cùng kỳ (Cục Thống kê).
 function output(p, num, k, name, id, hid) {
   const info = 'Sản lượng sản phẩm công nghiệp chủ yếu do Cục Thống kê công bố hằng tháng. Tháng gần nhất là số ước tính; số sơ bộ của tháng trước thay số ước tính khi có biểu tháng sau. Tháng không có số để trống.';
@@ -290,6 +334,7 @@ function showPic(key) {
 function showOv(key) {
   $$('#pane-mt1 .ov-pane').forEach(p => { p.hidden = p.dataset.ov !== key; });
   $$('#pane-mt1 .ov-tab').forEach(b => { const on = b.dataset.ov === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
+  setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
 }
 
 /* =========================== NGUỒN DỮ LIỆU =========================== */
@@ -326,7 +371,7 @@ function asof() {
   $$('[data-asof]').forEach(n => { try { n.textContent = 'Dữ liệu mới nhất: ' + t[n.dataset.asof](); } catch (e) { n.textContent = ''; } });
 }
 function init() {
-  brief(); overview(); listed(); sources(); asof();
+  brief(); overview(); listed(); asof();  // 26/11/2026: bỏ tab Nguồn dữ liệu (như Điện); nguồn ghi dưới từng chart
   $$('#pane-mt1 .ov-tab').forEach(b => b.addEventListener('click', () => showOv(b.dataset.ov)));
   $$('#pane-mt2 .pp-tab').forEach(b => b.addEventListener('click', () => { showPic(b.dataset.sub); setTimeout(() => window.dispatchEvent(new Event('resize')), 30); }));
   $$('.majortabbtn').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));

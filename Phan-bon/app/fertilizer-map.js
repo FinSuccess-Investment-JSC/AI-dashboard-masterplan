@@ -2,9 +2,9 @@
    Dữ liệu: D.plants (data/fertilizer/plants.json, nhập tay có nguồn từng dòng) + window.VN_GEO (app/vn-geo.js, Natural Earth).
    - 0.2 Bản đồ nhà máy và vùng nguyên liệu: màu = công nghệ, kích thước = công suất thiết kế của SẢN PHẨM đang chọn;
      liên kết nguyên liệu → nhà máy chỉ vẽ khi có bằng chứng cung ứng (links); vị trí gần vùng nguyên liệu không suy ra quan hệ cung ứng.
-   - 0.3 Cơ cấu công suất theo vùng × công nghệ (cột chồng, MỘT sản phẩm mỗi lần — không cộng sản phẩm khác nhau), treemap nhà máy,
+   - (sub-tab 01 Năng lực sản xuất) 1.1 Cơ cấu công suất theo vùng × công nghệ (cột chồng, MỘT sản phẩm mỗi lần — không cộng sản phẩm khác nhau), treemap nhà máy,
      tỷ trọng công suất urê theo nguyên liệu (khí / than).
-   - 0.4 Ma trận cấu trúc sản xuất: vùng → doanh nghiệp → nhà máy → sản phẩm (bấm vùng để mở/đóng), công suất, công nghệ,
+   - 1.2 Ma trận cấu trúc sản xuất: vùng → doanh nghiệp → nhà máy → sản phẩm (bấm vùng để mở/đóng), công suất, công nghệ,
      nguyên liệu, nguồn cung (đã xác minh / chỉ vị trí / chưa rõ), yếu tố chi phí. */
 (() => {
 'use strict';
@@ -17,7 +17,8 @@ const DRIVER = {'Urê từ khí': 'Giá khí theo hợp đồng (xem Bức tranh
   'Supe lân': 'Apatit, lưu huỳnh/axit sulfuric', 'Lân nung chảy': 'Apatit, serpentin, than cục', 'NPK': 'Urê, DAP/MAP, kali nhập khẩu'};
 const SUP = {verified: ['Đã xác minh', '#2a9fa3'], geographic_only: ['Chỉ gần vị trí', '#c9b26b'], unknown: ['Chưa rõ', '#9AA3BD']};
 
-function build(host) {
+function build(host, capHost) {
+  capHost = capHost || host;  // 26/11/2026: mục Năng lực sản xuất (công suất + ma trận) dựng ở sub-tab riêng
   const k = window.FertKit, D = k.D, P = D.plants, G = window.VN_GEO;
   if (!P || !P.plants || !G) { host.append(k.el('div', 'card fb-na', '<div class="chart-title">Bản đồ nhà máy</div><p class="fb-na-p">N/A · chưa nạp được danh mục nhà máy (data/fertilizer/plants.json).</p>')); return; }
   const {el, esc, nf, card, chart, two} = k;
@@ -93,15 +94,15 @@ function build(host) {
   mc.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.fb-plant')) { e.preventDefault(); pick(e.target.closest('.fb-plant').dataset.id); } });
 
   /* ---------- 0.3 Cơ cấu công suất ---------- */
-  const s3 = el('section', 'ov-sec', `<header class="ov-sh"><span class="ov-num">0.3</span><div><h3>Công suất từng sản phẩm phân theo vùng và công nghệ thế nào?</h3><p>Mỗi lần một sản phẩm (không cộng urê với DAP hay NPK). Công suất thiết kế, không phải sản lượng thực tế.</p></div></header>`);
+  const s3 = el('section', 'ov-sec', `<header class="ov-sh"><span class="ov-num">1.1</span><div><h3>Công suất từng sản phẩm phân theo vùng và công nghệ thế nào?</h3><p>Mỗi lần một sản phẩm (không cộng urê với DAP hay NPK). Công suất thiết kế, không phải sản lượng thực tế.</p></div></header>`);
   const pickBar = el('div', 'fb-prod-pick'); pickBar.innerHTML = PRODUCTS.map(p => `<button type="button" data-p="${p}" aria-pressed="${p === 'Urê'}">${p}</button>`).join('');
   const cA = card('pb-06', 'Công suất thiết kế theo vùng, phân màu theo công nghệ', {sub: 'nghìn tấn/năm', kind: 'document', cadence: 'annual', source: esc(src), info: 'Cộng công suất thiết kế của các nhà máy có số trong vùng, cho đúng sản phẩm đang chọn. Nhà máy chưa có số công suất không được cộng (ghi số lượng dưới chart).'});
   const cB = card('pb-07', 'Quy mô từng nhà máy', {sub: 'treemap · diện tích = công suất thiết kế · nghìn tấn/năm', kind: 'document', cadence: 'annual', source: esc(src)});
   const cC = card('pb-08', 'Công suất urê theo nguyên liệu đầu vào', {sub: '% công suất urê thiết kế trong nước', kind: 'document', cadence: 'annual', source: esc(src), info: 'Chỉ tính các nhà máy urê có số công suất có nguồn; nhóm khí và nhóm than.'});
   const ins = el('p', 'fb-insight');
-  s3.append(pickBar, cA.el, two(cB, cC), ins); host.append(s3);
+  s3.append(pickBar, cA.el, two(cB, cC), ins); capHost.append(s3);
   let capProd = 'Urê';
-  pickBar.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; capProd = b.dataset.p; pickBar.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); drawCap(); });
+  pickBar.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; capProd = b.dataset.p; pickBar.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); drawCap(); drawTable(); });
   function treemap(items, W = 560, H = 300) {
     // Squarified treemap đơn giản (Bruls et al.).
     const tot = items.reduce((a, x) => a + x.v, 0); if (!tot) return '';
@@ -130,16 +131,16 @@ function build(host) {
   }
 
   /* ---------- 0.4 Ma trận cấu trúc sản xuất (drill-down) ---------- */
-  const s4 = el('section', 'ov-sec', `<header class="ov-sh"><span class="ov-num">0.4</span><div><h3>Mỗi nhà máy dùng công nghệ, nguyên liệu và nguồn cung nào — yếu tố chi phí là gì?</h3><p>Bấm tên vùng để mở/đóng. Cột "Yếu tố chi phí" nối sang tab Chi phí đầu vào.</p></div></header>`);
+  const s4 = el('section', 'ov-sec', `<header class="ov-sh"><span class="ov-num">1.2</span><div><h3>Mỗi nhà máy dùng công nghệ, nguyên liệu và nguồn cung nào — yếu tố chi phí là gì?</h3><p>Bấm tên vùng để mở/đóng. Theo sản phẩm đang chọn ở mục 1.1. Cột "Yếu tố chi phí" nối sang Bức tranh ngành.</p></div></header>`);
   const tb = el('div', 'card fb-mtx'); tb.dataset.blockId = 'pb-09'; tb.dataset.updateKind = 'document'; tb.dataset.cadence = 'annual';
-  tb.innerHTML = `<div class="chart-title">Ma trận cấu trúc sản xuất ngành</div><div class="chart-sub">Theo bộ lọc của bản đồ (sản phẩm, công nghệ, vùng, doanh nghiệp) · công suất thiết kế nghìn tấn/năm</div><div class="tbl-wrap"></div><div class="pw-src">Nguồn: ${esc(src)}</div>`;
-  s4.append(tb); host.append(s4);
+  tb.innerHTML = `<div class="chart-title">Ma trận cấu trúc sản xuất ngành</div><div class="chart-sub">Theo sản phẩm đang chọn ở mục 1.1 · công suất thiết kế nghìn tấn/năm</div><div class="tbl-wrap"></div><div class="pw-src">Nguồn: ${esc(src)}</div>`;
+  s4.append(tb); capHost.append(s4);
   const open = new Set(regions);
   function drawTable() {
-    const list = sel(), regs = [...new Set(list.map(p => p.region))];
+    const list = plants.filter(p => hasProd(p, capProd)), regs = [...new Set(list.map(p => p.region))];
     const rows = regs.map(r => { const ps = list.filter(p => p.region === r);
       return `<tr class="fb-mtx-g" data-r="${esc(r)}"><td colspan="9"><button type="button" aria-expanded="${open.has(r)}">${open.has(r) ? '▾' : '▸'} ${esc(r)}</button> <small>${ps.length} nhà máy</small></td></tr>`
-        + (open.has(r) ? ps.map(p => (p.products || []).filter(x => !S.prod || prodKey(x.product) === S.prod).map((x, i) => { const sup = SUP[p.feed_supply_status] || SUP.unknown;
+        + (open.has(r) ? ps.map(p => (p.products || []).filter(x => prodKey(x.product) === capProd).map((x, i) => { const sup = SUP[p.feed_supply_status] || SUP.unknown;
           return `<tr><td>${i ? '' : `<b>${esc(p.ticker || '—')}</b> ${esc(p.owner)}`}</td><td>${i ? '' : esc(p.plant)}</td><td>${i ? '' : esc(p.province_current || '')}</td><td>${esc(x.product)}</td><td class="n">${fin(x.capacity_kt) ? nf(x.capacity_kt) : 'N/A'}</td><td><i class="fb-tdot" style="background:${TECH[p.technology]}"></i>${esc(p.technology)}</td><td>${esc(p.feedstock || '')}</td><td><span class="fb-sup" style="--c:${sup[1]}">${sup[0]}</span> ${esc(p.feed_supply || '')}</td><td>${esc(DRIVER[p.technology] || '')}</td></tr>`; }).join('')).join('') : ''); }).join('');
     tb.querySelector('.tbl-wrap').innerHTML = `<table class="compare-table fb-mtx-t"><thead><tr><th>Doanh nghiệp</th><th>Nhà máy</th><th>Tỉnh (từ 1/7/2025)</th><th>Sản phẩm</th><th class="n">Công suất</th><th>Công nghệ</th><th>Nguyên liệu</th><th>Nguồn cung</th><th>Yếu tố chi phí</th></tr></thead><tbody>${rows}</tbody></table>`;
   }
