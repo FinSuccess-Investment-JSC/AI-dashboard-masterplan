@@ -93,6 +93,7 @@ jobs:
           python scripts/fetch_xd_financials.py && python scripts/build_xd_financials.py || true
           python scripts/fetch_telecom_financials.py && python scripts/build_telecom_financials.py || true
           python scripts/fetch_oil_financials.py && python scripts/build_oil_financials.py || true
+          python scripts/fetch_textile_financials.py && python scripts/build_textile_financials.py || true
           python scripts/fetch_telecom_benchmarks.py && python scripts/build_telecom_industry.py || true
       - name: Re-version pages when sector data changed
         # 16/11/2026: the release step above runs before the sector feeds; without this, pages keep the old ?v= hash
