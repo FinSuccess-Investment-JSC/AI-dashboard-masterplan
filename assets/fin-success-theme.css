@@ -402,7 +402,7 @@ table:not(.fintbl) th{font-size:12px}
 @media print{
 .ct-switch{display:none!important}
 }
-.ct-period{flex:1 0 100%;margin:0 0 2px}
+.ct-period{flex:0 1 auto;margin:0 0 2px}
 .ct-switch>button{padding:4px 8px}
 .fs-theme{flex:none;width:36px;height:36px;margin-left:10px;border:1px solid #DCE1E9;border-radius:9px;background:#fff;color:#1D2678;font-size:16px;cursor:pointer}
 .fs-brandbar .in .fs-search-inline{margin-left:auto}

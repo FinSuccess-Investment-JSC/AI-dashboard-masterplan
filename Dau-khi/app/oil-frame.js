@@ -60,6 +60,14 @@ function style() {
 .of-body>.of-wide,.of-body>.of-gap,.of-body>details,.of-body>.kpis,.of-body>.research-grid,.of-body>table,.of-body>.tablewrap{grid-column:1/-1}
 @media (max-width:900px){.of-body{grid-template-columns:minmax(0,1fr)}}
 .of-body>.of-span{grid-column:1/-1}
+.of-body .ct-switch{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;margin:6px 0 2px!important}
+.of-body .ct-switch .ct-main{margin:0 0 0 auto!important;order:2}.of-body .ct-switch .ct-period{order:1;margin:0!important}
+.of-body .ct-canvas{margin-top:4px}
+.of-body>.card{padding:18px 20px 12px!important}
+.of-body>.card .chart-title{margin-bottom:4px!important}
+.of-body .cts-legend{margin:6px 0 0!important}
+.of-body .pw-src,.of-body .chart-source,.of-body .source-note,.of-body .srcrow{margin-top:6px!important;padding-top:6px!important}
+.of-body>.card::after{margin-top:2px!important}
 .of-body .card,.of-body .card *{min-width:0}.of-body canvas{max-width:100%!important}
 .of-body>.card{display:flex;flex-direction:column;align-self:stretch}
 .of-body>.card .chart{position:relative;width:100%;height:300px!important;min-height:0!important;flex:none}
@@ -124,6 +132,7 @@ function buildTab(key) {
   subs.forEach(({body}) => { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
     [...body.children].forEach(n => { const wide = n.matches('.of-wide,.of-gap,details,.kpis,.research-grid,table,.tablewrap') || getComputedStyle(n).gridColumnEnd === '-1'; if (wide) flush(); else run.push(n); }); flush(); });
   TABS[key] = subs;
+  [100, 600, 1500].forEach(t => setTimeout(() => { window.dispatchEvent(new Event('resize')); $$('.of-body canvas').forEach(c => { const ch = window.Chart?.getChart?.(c); if (ch && c.offsetParent) ch.resize(); }); }, t));
 }
 const TABS = {};
 function open(key, sub, push) {
