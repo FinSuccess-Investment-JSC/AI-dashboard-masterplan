@@ -129,3 +129,31 @@
 .rf-ol-num{display:flex;flex-direction:column;gap:3px}.rf-ol-num span{font-weight:700;color:var(--ink,#1d2333)}
 .rf-ol-next{border-top:1px dashed var(--line,#e3e7f0);padding-top:6px;font-size:12.5px!important}
 @media (max-width:900px){.rf-ol-grid{grid-template-columns:minmax(0,1fr)}}
+/* Bức tranh › Mạng lưới bán lẻ (Bizmap.live). Màu thương hiệu qua biến --bc. */
+.bn-filters{display:grid;gap:8px;margin:4px 0 10px}
+.bn-chips{display:flex;flex-wrap:wrap;gap:6px}
+.bn-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line,#d6dbe8);background:var(--card,#fff);border-radius:999px;padding:4px 11px;font:600 12.5px Inter,system-ui,sans-serif;color:var(--ink2,#3b4256);cursor:pointer}
+.bn-chip i{width:10px;height:10px;border-radius:50%;background:var(--bc);opacity:.35}
+.bn-chip.on{border-color:var(--bc);color:var(--ink,#1d2333);box-shadow:inset 0 0 0 1px var(--bc)}.bn-chip.on i{opacity:1}
+.bn-sel{display:flex;flex-wrap:wrap;gap:10px;font-size:12.5px;color:var(--muted,#6b7280)}
+.bn-sel select{margin-left:4px;border:1px solid var(--line,#d6dbe8);border-radius:8px;padding:3px 6px;background:var(--card,#fff);color:var(--ink,#1d2333);font-size:12.5px}
+.bn-kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.bn-kpi{border:1px solid var(--line,#e3e7f0);border-top:3px solid var(--bc);border-radius:10px;padding:10px 12px;background:var(--card,#fff)}
+.bn-kpi-h{display:flex;align-items:center;gap:7px}.bn-kpi-h img{width:22px;height:22px;object-fit:contain}
+.bn-kpi-h b{font-size:13.5px}.bn-kpi-h small{margin-left:auto;font:700 11px Inter,sans-serif;color:var(--muted,#7a8399)}
+.bn-badge{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:22px;padding:0 5px;border-radius:6px;background:var(--bc);color:#fff;font:700 10.5px Inter,sans-serif}
+.bn-kpi-v{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;margin:6px 0 2px}.bn-kpi-v span{font-size:12px;font-weight:600;color:var(--muted,#6b7a90);margin-left:6px}
+.bn-kpi-s{font-size:12px;color:var(--ink2,#3b4256)}
+.bn-empty{color:var(--muted,#6b7280);font-size:13px;margin:8px 0}
+.bn-map{height:520px;border:1px solid var(--line,#e3e7f0);border-radius:12px;overflow:hidden;background:#dfe7f3}
+.bn-map .leaflet-container{background:#dfe7f3;font:12.5px Inter,system-ui,sans-serif}
+.bn-isl{font:600 11px Inter,sans-serif;color:#5b6886;white-space:nowrap}
+.bn-map-legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:8px;font-size:12.5px}
+.bn-map-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.bn-row{grid-template-columns:120px minmax(0,1fr)}
+.bn-heat-w{overflow-x:auto}
+.bn-heat{border-collapse:separate;border-spacing:2px;font-size:12px;min-width:520px;width:100%}
+.bn-heat th{font:600 11.5px Inter,sans-serif;text-align:left;white-space:nowrap;padding:3px 6px}
+.bn-heat thead th{text-align:center;border-bottom:3px solid var(--bc)}
+.bn-heat td{text-align:center;padding:5px 4px;border-radius:4px;font-variant-numeric:tabular-nums}
+@media (max-width:600px){.bn-map{height:380px}.bn-row{grid-template-columns:86px minmax(0,1fr)}}

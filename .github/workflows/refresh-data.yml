@@ -61,6 +61,8 @@ jobs:
       # Public replacements for the removed Wi company/sector data (NSO, Hải quan, SHFE, IMF/FRED, EIA, ICE, VNDirect finfo).
       - name: Refresh public sector commodities and company quarterly statements
         continue-on-error: true
+        env:
+          BIZMAP_API_KEY: ${{ secrets.BIZMAP_API_KEY }}
         run: |
           python scripts/fetch_nso.py --recent 70 || true
           python scripts/fetch_customs.py --recent 45 || true
@@ -86,6 +88,7 @@ jobs:
           if [ "$(date -u +%u)" = "1" ] && [ "${{ github.event.schedule }}" = '30 0 * * *' ]; then python scripts/fetch_dav_tenders.py --page-size 5000 || true; fi
           python scripts/build_pharma_extra.py || true
           python scripts/build_sector_public.py
+          python scripts/fetch_bizmap.py || true
           python scripts/build_oil_public.py || true
           python scripts/build_plastic_prices.py || true
           python scripts/fetch_hog_prices.py || true
@@ -119,7 +122,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           DATA_CHANGED: ${{ steps.refresh.outputs.changed }}
         run: |
-          git add */index.html data/daily-data.js data/update-status.json data/bank-public-data.js data/company-valuation.js data/company-valuation.json data/company-comparison.js data/company-comparison.json data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html Dien/index.html Bat-dong-san/index.html Bat-dong-san-KCN/index.html Det-may/index.html data/*-public-data.js data/*-public-data.json data/company-quarterly.js data/company-quarterly.json data/power-financials.js data/power-financials.json data/kcn-financials.js data/kcn-financials.json data/construction-financials.js data/construction-financials.json data/raw/public data/telecom-financials.js data/telecom-financials.json data/oil-financials.js data/oil-financials.json data/re-financials.js data/re-financials.json data/aviation-data.js data/aviation-data.json data/aviation-financials.js data/aviation-financials.json data/telecom-industry.js data/telecom-industry.json data/telecom-benchmarks.js data/telecom-news.js data/telecom-news.json updates/state.json updates/last-run.md
+          git add */index.html data/daily-data.js data/update-status.json data/bank-public-data.js data/company-valuation.js data/company-valuation.json data/company-comparison.js data/company-comparison.json data/site-release.json index.html 404.html Bank/index.html Dau-khi/index.html Sugar/index.html duong/index.html Dien/index.html Bat-dong-san/index.html Bat-dong-san-KCN/index.html Det-may/index.html data/*-public-data.js data/*-public-data.json data/company-quarterly.js data/company-quarterly.json data/retail-bizmap.js data/retail/bizmap.json data/retail/bizmap-history.json data/power-financials.js data/power-financials.json data/kcn-financials.js data/kcn-financials.json data/construction-financials.js data/construction-financials.json data/raw/public data/telecom-financials.js data/telecom-financials.json data/oil-financials.js data/oil-financials.json data/re-financials.js data/re-financials.json data/aviation-data.js data/aviation-data.json data/aviation-financials.js data/aviation-financials.json data/telecom-industry.js data/telecom-industry.json data/telecom-benchmarks.js data/telecom-news.js data/telecom-news.json updates/state.json updates/last-run.md
           if git diff --cached --quiet; then
             echo 'No observations, source statuses or schedule state changed.'
             exit 0

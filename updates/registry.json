@@ -7084,6 +7084,42 @@
    ]
   },
   {
+   "id": "retail.bizmap",
+   "tier": "C",
+   "title": "Bán lẻ: mạng lưới cửa hàng các chuỗi niêm yết (Bizmap.live)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:30"
+   },
+   "publication": "Bizmap.live cập nhật cửa hàng hằng giờ/hằng ngày; job chạy mỗi lượt refresh, lịch sử lưu mỗi tuần",
+   "source": {
+    "name": "Bizmap.live API",
+    "url": "https://bizmap.live/api"
+   },
+   "where": {
+    "page": "Ban-le/index.html",
+    "file": "data/retail-bizmap.js",
+    "blocks": [
+     "bl-70",
+     "bl-71",
+     "bl-72",
+     "bl-73",
+     "bl-74",
+     "bl-75",
+     "bl-76",
+     "bl-77"
+    ]
+   },
+   "how": "python scripts/fetch_bizmap.py trong refresh-data.yml, đọc secret BIZMAP_API_KEY (thiếu key thì giữ dữ liệu cũ). Ghi data/retail/bizmap.json, data/retail/bizmap-history.json (mỗi tuần), data/retail-bizmap.js.",
+   "gates": [
+    "Chỉ số tổng hợp theo chuỗi/tỉnh; không công bố tọa độ từng cửa hàng khi chưa xác nhận quyền",
+    "Σ tỉnh khớp tổng chuỗi (lệch ≤ 2%), ≤ 34 tỉnh; lỗi thì giữ bản hợp lệ gần nhất",
+    "Không ghi đè số cửa hàng doanh nghiệp công bố",
+    "Ghi nguồn bizmap.live kèm link"
+   ]
+  },
+  {
    "id": "dairy.public.monthly",
    "tier": "A",
    "title": "Sữa: tổng mức bán lẻ, CPI, khách quốc tế, tiền gửi, tín dụng, sản lượng xe, bia, sữa, IIP",
