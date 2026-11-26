@@ -1,7 +1,7 @@
 /* Dashboard ngành Phân bón (Phan-bon/) theo khung trang Điện (25/11/2026):
    - Tổng quan ngành: Bản tin dữ liệu (câu mô tả + 4 ô số có đường nhỏ), sub-tab 00 Bản đồ ngành (sơ đồ chuỗi giá trị tương tác
      ValueChain.draw như Điện, tỷ trọng doanh thu, sản lượng năm) và 01 Doanh nghiệp niêm yết (thẻ từng mã).
-   - Bức tranh ngành: thanh pp-nav theo loại phân 01 Phân đạm · 02 Phân lân & DAP · 03 NPK & kali · 04 Giá khí · 05 Ma trận tác động (26/11/2026, bỏ Chính sách & thuế); mỗi sub-tab có
+   - Bức tranh ngành: thanh pp-nav theo loại phân 01 Phân đạm · 02 Phân lân & DAP · 03 NPK & kali · 04 Nguồn khí · 05 Ma trận tác động (26/11/2026, bỏ Chính sách & thuế); mỗi sub-tab có
      hàng KPI, nhóm câu hỏi đánh số (pp-panel) với chart chính + chart phụ (so cùng tháng theo năm, bảng nhiệt so cùng kỳ).
    - Tài chính ngành: app/fertilizer-finance.js (chép bộ Tài chính ngành của Điện qua BĐS KCN).
    Chart vẽ bằng ChartTypes (app/chart-types.js, như Điện): nút Số kỳ, Bảng, Tùy chỉnh; dòng "Nguồn:" hiện sẵn ở góc phải dưới.
@@ -258,6 +258,9 @@ const PIC = {
       kpi('Khí Mỹ (Henry Hub) · ' + mL(us.date), nf(us.value, 2), 'USD/MMBtu', `${sg(yoy('gas_us', us.date))}% so cùng kỳ`, 'World Bank', tail('gas_us', 24), C.teal),
       kpi('Dầu Brent · ' + mL(b.date), nf(b.value, 1), 'USD/thùng', `${sg(yoy('brent', b.date))}% so cùng kỳ`, 'World Bank', tail('brent', 24), C.grey)]));
     if (window.FertCost) FertCost.render('gas', p);
+    // 4.4 Bản đồ hệ thống cung cấp khí (app/fertilizer-gasmap.js): nạp Leaflet khi mở sub-tab.
+    const q = panel('4.4', 'Bản đồ hệ thống cung cấp khí Việt Nam', 'Khí đi từ mỏ nào, qua đường ống nào, tới nhà máy đạm và nhà máy điện nào; chọn DPM hoặc DCM để xem hệ thống cấp khí riêng của từng nhà máy.');
+    p.append(q); if (window.FertGasMap) FertGasMap.build(q);
   },
   matrix() { if (window.FertCost) FertCost.render('matrix', $('#fb-pp-matrix')); }
 };
@@ -298,11 +301,13 @@ function sources() {
     ['Sản lượng phân urê, phân NPK', SRC.nso, 'đến ' + mL(last('urea_output').date), 'scripts/fetch_fertilizer_nso.py'],
     ['BCTC hợp nhất theo quý: DPM, DCM, DHB, DDV, LAS, VAF, NFC, BFC, SFG', SRC.vnd, F ? 'đến ' + qL(F.periods.at(-1)) : '', 'scripts/fetch_fertilizer_financials.py'],
     ['Nhà máy, công suất thiết kế, vùng nguyên liệu, quan hệ cung ứng, cơ chế giá khí', 'BCTN, website doanh nghiệp, Petrovietnam, Vinachem, báo chuyên ngành (nguồn từng dòng)', D.plants ? 'tài liệu 2012–2026, kỳ ghi từng nhà máy' : 'N/A', 'nhập tay · data/fertilizer/plants.json'],
+    ['Hệ thống cung cấp khí: bể, mỏ, đường ống, kho LNG, hộ tiêu thụ; hợp đồng khí DPM, DCM', 'PV GAS, Petrovietnam, PVEP, Bộ Công Thương, Tạp chí Dầu khí, tài liệu ĐHĐCĐ DPM, DCM, báo cáo CTCK (nguồn từng đối tượng, bấm trên bản đồ 4.4); nền bản đồ Natural Earth 1:10m', D.gas ? 'tra cứu ' + dL(D.gas.meta.updated) : 'N/A', 'nhập tay · data/fertilizer/gas-system.json; nền: scripts/build_gas_basemap.py'],
     ['Tỷ giá trung tâm USD/VND', 'Ngân hàng Nhà nước', recs('usdvnd').length ? 'đến ' + mL(last('usdvnd').date) : 'N/A', 'scripts/fetch_sbv.py (bot)'],
   ];
   host.innerHTML = `<div class="chart-title">Nguồn dữ liệu</div><div class="chart-sub">Mỗi chart ghi nguồn ngay dưới chart; bảng dưới gom lại nguồn, kỳ số mới nhất và cách lấy.</div><div class="tbl-wrap"><table class="compare-table fb-src-table"><thead><tr><th>Dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách lấy</th></tr></thead><tbody>`
     + rows.map(r => `<tr><td>${esc(r[0])}</td><td>${r[1]}</td><td>${esc(r[2])}</td><td><code>${esc(r[3])}</code></td></tr>`).join('') + `</tbody></table></div>`
     + (D.plants && D.plants.gaps && D.plants.gaps.length ? `<div class="chart-title" style="margin-top:16px">Dữ liệu chưa thu thập được</div><ul class="fb-gaps">${D.plants.gaps.map(g => `<li>${esc(g)}</li>`).join('')}<li>Giá urê, DAP nội địa (Phú Mỹ, Cà Mau, Đình Vũ): WiData hết hạn mức tuần này, làm mới 27/11/2026</li><li>Giá FO/MFO Singapore, lưu huỳnh, amoniac: chưa có nguồn công khai miễn phí</li><li>Xuất nhập khẩu phân bón (Hải quan): bản PDF đọc ra số không ổn định, chưa dùng</li></ul>` : '')
+    + (D.gas && D.gas.gaps && D.gas.gaps.length ? `<div class="chart-title" style="margin-top:16px">Bản đồ hệ thống khí: dữ liệu chưa thu thập được</div><ul class="fb-gaps">${D.gas.gaps.map(g => `<li>${esc(g)}</li>`).join('')}</ul>` : '')
     + `<div class="pw-src">Dữ liệu dựng lại bằng scripts/build_fertilizer.py · ${esc(dL(D.built_at))}</div>`;
 }
 

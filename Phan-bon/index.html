@@ -8,23 +8,24 @@
 <script src="app/sector-boot.js?v=555dd1c98235"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="app/chart-types.js?v=de84f54bfcae"></script>
-<script src="../data/fertilizer-data.js?v=1801ec8e50a1" defer></script>
+<script src="../data/fertilizer-data.js?v=2711cf47ff4a" defer></script>
 <script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
 <script src="app/value-chain.js?v=a597c7c73610" defer></script>
 <script src="app/fertilizer-finance.js?v=51001a441612" defer></script>
 <script src="app/vn-geo.js?v=07f6be6d571b" defer></script>
-<script src="app/fertilizer-map.js?v=7d04329b006a" defer></script>
-<script src="app/fertilizer-cost.js?v=d5eae288d8c0" defer></script>
-<script src="app/fertilizer.js?v=9f6e5a5f5a7d" defer></script>
+<script src="app/fertilizer-map.js?v=2eed3f23f03a" defer></script>
+<script src="app/fertilizer-cost.js?v=c300d4c4d85d" defer></script>
+<script src="app/fertilizer-gasmap.js?v=e5bf48090cbc" defer></script>
+<script src="app/fertilizer.js?v=678628728bde" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
-<script src="app/site-navigation.js?v=9abea12d0335" data-release="20261126-vien-thong-cau-truc"></script>
+<script src="app/site-navigation.js?v=9abea12d0335" data-release="2026.11.26-phan-bon-nguon-khi"></script>
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
 <link rel="stylesheet" href="app/fin-success-theme.css?v=0761641d486e">
 <link rel="stylesheet" href="app/brand.css?v=048c9b941573">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
 <link rel="stylesheet" href="app/overview.css?v=eff54e08565b">
-<link rel="stylesheet" href="app/fertilizer.css?v=fe541a2becd5">
+<link rel="stylesheet" href="app/fertilizer.css?v=9721f885ea1b">
 </head>
 <!-- Trang Phân bón theo khung trang Điện (25/11/2026), viết sẵn bố cục cuối (không có "tab nền" để dời DOM).
      app/fertilizer.js dựng nội dung Tổng quan + Bức tranh ngành; app/fertilizer-finance.js dựng tab Tài chính ngành.
@@ -63,12 +64,12 @@
 
   <section class="majorpane" data-tab="mt2" id="pane-mt2">
     <section class="section">
-      <div class="sectionhead"><div><h2 class="sec">Bức tranh ngành</h2><p>Theo loại phân: giá → sản xuất trong nước → chi phí và biên gộp doanh nghiệp; giá khí đầu vào; ma trận tác động.</p></div></div>
+      <div class="sectionhead"><div><h2 class="sec">Bức tranh ngành</h2><p>Theo loại phân: giá → sản xuất trong nước → chi phí và biên gộp doanh nghiệp; nguồn khí đầu vào; ma trận tác động.</p></div></div>
       <div class="pp-nav" role="tablist" aria-label="Loại phân bón">
         <button class="tabbtn pp-tab active" type="button" role="tab" data-sub="urea" aria-selected="true"><span>01</span>Phân đạm (urê)</button>
         <button class="tabbtn pp-tab" type="button" role="tab" data-sub="phos" aria-selected="false"><span>02</span>Phân lân & DAP</button>
         <button class="tabbtn pp-tab" type="button" role="tab" data-sub="npk" aria-selected="false"><span>03</span>NPK & kali</button>
-        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="gas" aria-selected="false"><span>04</span>Giá khí</button>
+        <button class="tabbtn pp-tab" type="button" role="tab" data-sub="gas" aria-selected="false"><span>04</span>Nguồn khí</button>
         <button class="tabbtn pp-tab" type="button" role="tab" data-sub="matrix" aria-selected="false"><span>05</span>Ma trận tác động</button>
       </div>
       <div class="pane-subpane pp-pane" id="fb-pp-urea" data-sub="urea">
@@ -81,7 +82,7 @@
         <header class="pp-head"><div><span class="pp-k">03</span><h2>NPK & kali</h2><p>Sản lượng NPK trong nước, giá kali và nguyên liệu NPK, biên gộp và tồn kho nhà sản xuất NPK (BFC, SFG).</p></div><span class="pp-asof" data-asof="npk_output"></span></header>
       </div>
       <div class="pane-subpane pp-pane" id="fb-pp-gas" data-sub="gas" hidden>
-        <header class="pp-head"><div><span class="pp-k">04</span><h2>Giá khí</h2><p>Giá khí theo khu vực, dầu Brent và cơ chế giá khí đầu vào của DPM, DCM.</p></div><span class="pp-asof" data-asof="gas_eu"></span></header>
+        <header class="pp-head"><div><span class="pp-k">04</span><h2>Nguồn khí</h2><p>Giá khí theo khu vực, dầu Brent, cơ chế giá khí đầu vào của DPM, DCM và bản đồ hệ thống cung cấp khí Việt Nam.</p></div><span class="pp-asof" data-asof="gas_eu"></span></header>
       </div>
       <div class="pane-subpane pp-pane" id="fb-pp-matrix" data-sub="matrix" hidden>
         <header class="pp-head"><div><span class="pp-k">05</span><h2>Ma trận tác động</h2><p>Biến giá nào tác động lên doanh nghiệp niêm yết nào, theo chiều nào.</p></div></header>

@@ -59,3 +59,27 @@ class FertilizerTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class GasSystemTests(unittest.TestCase):
+    def test_gas_system_dataset(self):
+        # Bản đồ 4.4: mọi đối tượng có tọa độ/tuyến hợp lệ, có nguồn; chế độ doanh nghiệp chỉ trỏ tới id có thật.
+        G = json.loads((ROOT / 'data/fertilizer/gas-system.json').read_text(encoding='utf-8'))
+        ids = {a['id'] for a in G['assets']} | {p['id'] for p in G['pipelines']}
+        self.assertTrue({'fert_dpm', 'fert_dcm'} <= ids)
+        for a in G['assets']:
+            self.assertTrue(100 < a['lon'] < 121 and 3 < a['lat'] < 26, a['id'])
+            self.assertTrue(a['sources'], a['id'])
+        for p in G['pipelines']:
+            self.assertIn(p['status'], ('operating', 'construction', 'planned'), p['id'])
+            self.assertIn(p['gas'], ('domestic', 'lng'), p['id'])
+            self.assertGreaterEqual(len(p['path']), 2, p['id'])
+            self.assertTrue(p['sources'], p['id'])
+        for co in ('DPM', 'DCM'):
+            c = G['companies'][co]
+            for k in ('existing', 'agreed', 'potential', 'shared'):
+                self.assertFalse(set(c[k]) - ids, (co, k))
+        base = (ROOT / 'Phan-bon/app/gas-base.js').read_text(encoding='utf-8')
+        self.assertIn('Hoàng Sa (Việt Nam)', base)
+        self.assertIn('Trường Sa (Việt Nam)', base)
+

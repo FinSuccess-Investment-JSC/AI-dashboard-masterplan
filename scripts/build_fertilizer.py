@@ -145,6 +145,9 @@ def main():
             s['meta'] = dict(zip(('definition', 'benchmark', 'freq_pub', 'class', 'method'), META[k]))
             s['meta']['period'] = s['records'][-1]['date'] if s['records'] else None
             s['meta']['updated'] = (m or {}).get('captured') if k in (m or {}).get('series', {}) else out['built_at'][:10]
+    gas = ROOT / 'data/fertilizer/gas-system.json'  # hệ thống khí cho bản đồ 4.4, nhập tay có nguồn từng dòng
+    if gas.exists():
+        out['gas'] = json.loads(gas.read_text(encoding='utf-8'))
     plants = ROOT / 'data/fertilizer/plants.json'  # nhập tay có nguồn từng dòng (xem file)
     if plants.exists():
         out['plants'] = json.loads(plants.read_text(encoding='utf-8'))

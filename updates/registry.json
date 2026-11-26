@@ -7095,7 +7095,7 @@
   {
    "id": "fertilizer.static",
    "tier": "static",
-   "title": "Phân bón: chuỗi giá trị (pb-01), bản đồ nhà máy và công suất (pb-05…pb-09, data/fertilizer/plants.json nhập tay có nguồn), cơ chế giá khí DPM/DCM (pb-c-gas-mech)",
+   "title": "Phân bón: chuỗi giá trị (pb-01), bản đồ nhà máy và công suất (pb-05…pb-09, data/fertilizer/plants.json nhập tay có nguồn), cơ chế giá khí DPM/DCM (pb-c-gas-mech), bản đồ hệ thống cung cấp khí Việt Nam (pb-c-gas-map, data/fertilizer/gas-system.json nhập tay có nguồn từng đối tượng)",
    "schedule": {
     "type": "none"
    },
@@ -7108,10 +7108,11 @@
      "pb-07",
      "pb-08",
      "pb-09",
-     "pb-c-gas-mech"
+     "pb-c-gas-mech",
+     "pb-c-gas-map"
     ]
    },
-   "note": "Cập nhật khi doanh nghiệp công bố công suất/nhà máy mới hoặc thay đổi cơ chế giá khí; sửa data/fertilizer/plants.json rồi chạy build_fertilizer.py"
+   "note": "Cập nhật khi doanh nghiệp công bố công suất/nhà máy mới hoặc thay đổi cơ chế giá khí; sửa data/fertilizer/plants.json rồi chạy build_fertilizer.py; bản đồ khí: sửa data/fertilizer/gas-system.json khi có mỏ/đường ống/kho LNG mới hoặc hợp đồng khí DPM, DCM thay đổi, rồi chạy build_fertilizer.py"
   }
  ]
 }

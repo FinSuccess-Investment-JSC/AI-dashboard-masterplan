@@ -1,0 +1,3874 @@
+{
+ "meta": {
+  "updated": "2026-11-26",
+  "source_note": "PV GAS, Petrovietnam, PVEP, Bộ Công Thương, Tạp chí Dầu khí, BCTN và tài liệu ĐHĐCĐ DPM, DCM, báo cáo CTCK, báo chí chuyên ngành",
+  "precision_note": "Tuyến ống là sơ đồ minh họa theo điểm đầu/cuối và mô tả đã công bố, không phải tuyến khảo sát; mỏ ngoài khơi đặt gần đúng ±20–40 km, công trình trên bờ ±2–5 km.",
+  "method": "Nhập tay từ tài liệu đã mở; số chỉ thấy ở kết quả tìm kiếm để trống. Kết nối vẽ khi có nguồn nêu; cấp khí phân biệt hợp đồng / kết nối vật lý / dự kiến."
+ },
+ "basins": [
+  {
+   "id": "song_hong",
+   "name": "Bể Sông Hồng",
+   "poly": [
+    [
+     105.9,
+     20.9
+    ],
+    [
+     106.8,
+     21.2
+    ],
+    [
+     107.8,
+     20.9
+    ],
+    [
+     108.4,
+     20.0
+    ],
+    [
+     108.6,
+     19.0
+    ],
+    [
+     108.9,
+     18.0
+    ],
+    [
+     109.6,
+     17.0
+    ],
+    [
+     109.9,
+     16.2
+    ],
+    [
+     110.0,
+     15.3
+    ],
+    [
+     109.3,
+     15.1
+    ],
+    [
+     108.9,
+     15.6
+    ],
+    [
+     108.4,
+     16.0
+    ],
+    [
+     107.6,
+     16.5
+    ],
+    [
+     107.2,
+     17.4
+    ],
+    [
+     106.6,
+     18.6
+    ],
+    [
+     106.1,
+     19.6
+    ],
+    [
+     105.8,
+     20.3
+    ]
+   ],
+   "systems": [
+    "songhong",
+    "cvx"
+   ],
+   "note": "Bể Kainozoi ở vịnh Bắc Bộ kéo xuống ngoài khơi Bắc Trung Bộ; có mỏ Thái Bình, Hàm Rồng (Lô 102&106), Kèn Bầu (Lô 114), Cá Voi Xanh (Lô 118, rìa nam). Ranh giới: approximate (schematic outline from published basin maps)",
+   "sources": [
+    {
+     "title": "Bách khoa thư địa chất – mục Tài nguyên dầu khí (dulieu.itrithuc.vn)",
+     "url": "https://dulieu.itrithuc.vn/media/dataset/2020_08/bachkhoathudiachat_tai-nguyen-du-khi.pdf",
+     "period": "tài liệu tham khảo, không rõ năm (đăng 08/2020)"
+    },
+    {
+     "title": "Quảng Trị kỳ vọng phát triển điện khí từ mỏ khí Kèn Bầu (Nhà Đầu Tư)",
+     "url": "https://nhadautu.vn/quang-tri-ky-vong-phat-trien-dien-khi-tu-mo-khi-ken-bau-d94048.html",
+     "period": "bài 01/03/2025"
+    }
+   ]
+  },
+  {
+   "id": "phu_khanh",
+   "name": "Bể Phú Khánh",
+   "poly": [
+    [
+     109.3,
+     11.0
+    ],
+    [
+     109.7,
+     12.0
+    ],
+    [
+     109.9,
+     13.2
+    ],
+    [
+     109.6,
+     14.4
+    ],
+    [
+     109.8,
+     15.0
+    ],
+    [
+     110.6,
+     14.6
+    ],
+    [
+     111.2,
+     13.0
+    ],
+    [
+     111.0,
+     11.5
+    ],
+    [
+     110.4,
+     10.8
+    ]
+   ],
+   "systems": [],
+   "note": "Bể nước sâu ngoài khơi Nam Trung Bộ; chưa có mỏ khí khai thác (đưa vào cho đủ khung bản đồ). Ranh giới: approximate (schematic outline from published basin maps)",
+   "sources": [
+    {
+     "title": "Bách khoa thư địa chất – mục Tài nguyên dầu khí (dulieu.itrithuc.vn)",
+     "url": "https://dulieu.itrithuc.vn/media/dataset/2020_08/bachkhoathudiachat_tai-nguyen-du-khi.pdf",
+     "period": "tài liệu tham khảo, không rõ năm (đăng 08/2020)"
+    }
+   ]
+  },
+  {
+   "id": "cuu_long",
+   "name": "Bể Cửu Long",
+   "poly": [
+    [
+     105.6,
+     9.3
+    ],
+    [
+     106.0,
+     8.9
+    ],
+    [
+     106.8,
+     9.0
+    ],
+    [
+     107.5,
+     9.3
+    ],
+    [
+     108.2,
+     9.6
+    ],
+    [
+     108.8,
+     10.1
+    ],
+    [
+     109.1,
+     10.7
+    ],
+    [
+     108.9,
+     11.0
+    ],
+    [
+     108.3,
+     10.9
+    ],
+    [
+     107.6,
+     10.6
+    ],
+    [
+     107.0,
+     10.3
+    ],
+    [
+     106.4,
+     10.0
+    ],
+    [
+     105.9,
+     9.7
+    ]
+   ],
+   "systems": [
+    "cuulong"
+   ],
+   "note": "Bể hình bầu dục chạy ĐB–TN dọc bờ biển từ Bình Thuận xuống Bạc Liêu, ngăn với bể Nam Côn Sơn bởi đới nâng Côn Sơn; chứa Bạch Hổ, Rồng, Rạng Đông, Sư Tử Đen/Vàng/Trắng. Nguồn khí đồng hành cho hệ thống Cửu Long → Dinh Cố → Phú Mỹ (nuôi Đạm Phú Mỹ). Ranh giới: approximate (schematic outline from published basin maps)",
+   "sources": [
+    {
+     "title": "Bách khoa thư địa chất – mục Tài nguyên dầu khí (dulieu.itrithuc.vn)",
+     "url": "https://dulieu.itrithuc.vn/media/dataset/2020_08/bachkhoathudiachat_tai-nguyen-du-khi.pdf",
+     "period": "tài liệu tham khảo, không rõ năm (đăng 08/2020)"
+    },
+    {
+     "title": "Tống Cảnh Sơn và cs., Công nghệ thu gom, xử lý và vận chuyển khí đồng hành ở các mỏ của Vietsovpetro tại Lô 09-1, Tạp chí Dầu khí số 9/2020 tr.40-48",
+     "url": "https://petrovietnam.vn/DataStore/Documents/2020/TCDK/T%209/p.40-48%20-%20Tong%20Canh%20Son-1.pdf",
+     "period": "số 9/2020; số liệu đến 31/12/2019"
+    }
+   ]
+  },
+  {
+   "id": "nam_con_son",
+   "name": "Bể Nam Côn Sơn",
+   "poly": [
+    [
+     106.6,
+     7.9
+    ],
+    [
+     106.8,
+     8.6
+    ],
+    [
+     107.6,
+     9.2
+    ],
+    [
+     108.3,
+     9.4
+    ],
+    [
+     109.0,
+     9.6
+    ],
+    [
+     109.8,
+     9.3
+    ],
+    [
+     110.2,
+     8.5
+    ],
+    [
+     110.0,
+     7.5
+    ],
+    [
+     109.4,
+     6.6
+    ],
+    [
+     108.5,
+     6.2
+    ],
+    [
+     107.6,
+     6.5
+    ],
+    [
+     107.0,
+     7.2
+    ]
+   ],
+   "systems": [
+    "ncs"
+   ],
+   "note": "Bể lớn phía đông nam bể Cửu Long; chứa Lan Tây–Lan Đỏ (06.1), Rồng Đôi (11-2), Hải Thạch–Mộc Tinh (05-2/05-3), Đại Hùng (05-1a), Sao Vàng–Đại Nguyệt (05-1b/c), Thiên Ưng (04-3), Thiên Nga–Hải Âu (12/11), Cá Rồng Đỏ (07/03). Nguồn cho NCS1 và NCS2. Ranh giới: approximate (schematic outline from published basin maps)",
+   "sources": [
+    {
+     "title": "Bách khoa thư địa chất – mục Tài nguyên dầu khí (dulieu.itrithuc.vn)",
+     "url": "https://dulieu.itrithuc.vn/media/dataset/2020_08/bachkhoathudiachat_tai-nguyen-du-khi.pdf",
+     "period": "tài liệu tham khảo, không rõ năm (đăng 08/2020)"
+    },
+    {
+     "title": "Hoàn thành và đưa vào khai thác Dự án khí Nam Côn Sơn 2, giai đoạn 1",
+     "url": "https://tapchicongthuong.vn/hoan-thanh-va-dua-vao-khai-thac-du-an-khi-nam-con-son-2--giai-doan-1-25699.htm",
+     "period": "bài 16/12/2015"
+    }
+   ]
+  },
+  {
+   "id": "malay_tho_chu",
+   "name": "Bể Malay – Thổ Chu (phần Việt Nam)",
+   "poly": [
+    [
+     102.4,
+     7.3
+    ],
+    [
+     102.6,
+     6.6
+    ],
+    [
+     103.4,
+     6.5
+    ],
+    [
+     104.2,
+     7.0
+    ],
+    [
+     104.6,
+     7.8
+    ],
+    [
+     104.5,
+     8.6
+    ],
+    [
+     104.0,
+     9.2
+    ],
+    [
+     103.4,
+     9.3
+    ],
+    [
+     102.9,
+     8.8
+    ],
+    [
+     102.6,
+     8.0
+    ]
+   ],
+   "systems": [
+    "pm3",
+    "lob"
+   ],
+   "note": "Bể ở vùng biển tây nam, giáp Malaysia; chứa PM3-CAA (vùng chồng lấn VN–MY), Lô 46 Cái Nước, Lô B&48/95 & 52/97 (Kim Long, Ác Quỷ, Cá Voi), Nam Du (46/07), U Minh (51). Nguồn khí cho PM3–Cà Mau (nuôi Đạm Cà Mau) và Lô B–Ô Môn. Ranh giới: approximate (schematic outline from published basin maps)",
+   "sources": [
+    {
+     "title": "Bách khoa thư địa chất – mục Tài nguyên dầu khí (dulieu.itrithuc.vn)",
+     "url": "https://dulieu.itrithuc.vn/media/dataset/2020_08/bachkhoathudiachat_tai-nguyen-du-khi.pdf",
+     "period": "tài liệu tham khảo, không rõ năm (đăng 08/2020)"
+    },
+    {
+     "title": "Hệ thống PM3-Cà Mau thực hiện BDSC định kỳ 5 năm lần thứ 2",
+     "url": "https://tapchicongthuong.vn/he-thong-pm3-ca-mau-thuc-hien-bdsc-dinh-ky-5-nam-lan-thu-2-49245.htm",
+     "period": "bài 22/08/2017"
+    }
+   ]
+  }
+ ],
+ "pipelines": [
+  {
+   "id": "cuu_long_bach_ho_dinh_co",
+   "name": "Hệ thống khí Cửu Long: Bạch Hổ – Long Hải – Dinh Cố – Bà Rịa – Phú Mỹ",
+   "system": "cuulong",
+   "systems": [
+    "cuulong"
+   ],
+   "gas": "domestic",
+   "status": "operating",
+   "major": true,
+   "label": "Cửu Long",
+   "label_at": [
+    107.62,
+    10.02
+   ],
+   "owner": "PV GAS (xây dựng ban đầu bởi Vietsovpetro/PVN)",
+   "length": "biển 106,5 km · bờ 16,72 km",
+   "capacity": "2 tỷ m³/năm (2014)",
+   "throughput": "1,1 tỷ m³/năm (2014 (số cũ))",
+   "cod": "1995 (khí đồng hành vào bờ, cấp NMĐ Bà Rịa); GPP Dinh Cố 09/07/1999",
+   "inputs": [
+    "bach_ho",
+    "rang_dong",
+    "su_tu_trang",
+    "su_tu_den_vang",
+    "dai_hung",
+    "thien_ung"
+   ],
+   "outputs": "NMĐ Bà Rịa (trạm phân phối 1 triệu m³/ngày, 1995); sau GPP Dinh Cố → Phú Mỹ (theo tên tuyến Bạch Hổ – Dinh Cố – Bà Rịa – Phú Mỹ – Thủ Đức)",
+   "path": [
+    [
+     107.95,
+     9.75
+    ],
+    [
+     107.75,
+     9.95
+    ],
+    [
+     107.5,
+     10.2
+    ],
+    [
+     107.23,
+     10.39
+    ],
+    [
+     107.24,
+     10.47
+    ],
+    [
+     107.18,
+     10.5
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "Khí Đại Hùng/Thiên Ưng từng đi qua NCS2 GĐ1 rồi vào ống này (2015–2020) trước khi có NCS2 GĐ2. Ống biển Bạch Hổ–Long Hải bọc bê tông 106,5 km; Long Hải–Bà Rịa 16,72 km. Một nguồn 2014 nói 'gần 390 km' cho cả hệ thống Cửu Long (chỉ thấy qua tìm kiếm) Tạp chí Công Thương 2014; khi đó cấp ~1,1 tỷ m³/năm",
+   "sources": [
+    {
+     "title": "Tống Cảnh Sơn và cs., Công nghệ thu gom, xử lý và vận chuyển khí đồng hành ở các mỏ của Vietsovpetro tại Lô 09-1, Tạp chí Dầu khí số 9/2020 tr.40-48",
+     "url": "https://petrovietnam.vn/DataStore/Documents/2020/TCDK/T%209/p.40-48%20-%20Tong%20Canh%20Son-1.pdf",
+     "period": "số 9/2020; số liệu đến 31/12/2019"
+    },
+    {
+     "title": "Các dự án khí đang vận hành và triển khai (Tạp chí Công Thương)",
+     "url": "https://tapchicongthuong.vn/cac-du-an-khi-dang-van-hanh-va-trien-khai-34439.htm",
+     "period": "bài 07/04/2014"
+    },
+    {
+     "title": "Hoàn thành và đưa vào khai thác Dự án khí Nam Côn Sơn 2, giai đoạn 1",
+     "url": "https://tapchicongthuong.vn/hoan-thanh-va-dua-vao-khai-thac-du-an-khi-nam-con-son-2--giai-doan-1-25699.htm",
+     "period": "bài 16/12/2015"
+    },
+    {
+     "title": "GPP Dinh Cố – Niềm tự hào của ngành công nghiệp khí Việt Nam (Diễn đàn Doanh nghiệp)",
+     "url": "https://diendandoanhnghiep.vn/gpp-dinh-co-niem-tu-hao-cua-nganh-cong-nghiep-khi-viet-nam-10136816.html",
+     "period": "bài 09/07/2024 (lũy kế 25 năm)"
+    }
+   ],
+   "short": "Cửu Long (Bạch Hổ – Dinh Cố)"
+  },
+  {
+   "id": "su_tu_vang_rang_dong_bach_ho",
+   "name": "Ống thu gom Sư Tử Vàng – Rạng Đông – Bạch Hổ",
+   "system": "cuulong",
+   "systems": [
+    "cuulong"
+   ],
+   "gas": "domestic",
+   "status": "operating",
+   "major": false,
+   "label": null,
+   "label_at": null,
+   "owner": "PV GAS vận chuyển (theo bài 2021)",
+   "length": null,
+   "capacity": null,
+   "throughput": null,
+   "cod": null,
+   "inputs": [
+    "su_tu_den_vang",
+    "su_tu_trang",
+    "rang_dong"
+   ],
+   "outputs": null,
+   "path": [
+    [
+     108.4,
+     10.4
+    ],
+    [
+     108.2,
+     10.05
+    ],
+    [
+     107.95,
+     9.75
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "Chiều dài, công suất, năm vận hành: không có trong nguồn đã mở.",
+   "sources": [
+    {
+     "title": "PV GAS tiếp nhận nguồn khí từ dự án mỏ Sư Tử Trắng giai đoạn 2A",
+     "url": "https://tapchicongthuong.vn/pv-gas-tiep-nhan-nguon-khi-tu-du-an-mo-su-tu-trang-giai-doan-2a-81981.htm",
+     "period": "bài 29/06/2021"
+    }
+   ],
+   "short": "Thu gom Sư Tử Vàng – Rạng Đông"
+  },
+  {
+   "id": "ncs1",
+   "name": "Đường ống Nam Côn Sơn 1 (Lan Tây – Long Hải – Dinh Cố – Phú Mỹ)",
+   "system": "ncs",
+   "systems": [
+    "ncs"
+   ],
+   "gas": "domestic",
+   "status": "operating",
+   "major": true,
+   "label": "Nam Côn Sơn 1",
+   "label_at": [
+    107.82,
+    9.05
+   ],
+   "owner": "Vận hành: PV GAS (PV GAS NCSP). Sở hữu theo Offshore Technology: PV Gas 51%, Rosneft 32,7%, Perenco 16,3% (số cũ, có thể đã đổi)",
+   "length": "biển 360 km · bờ 40 km",
+   "capacity": "7 tỷ m³/năm",
+   "throughput": null,
+   "cod": "12/2002 (khí vào bờ; nguồn 2014 ghi 2003)",
+   "inputs": [
+    "lan_tay_lan_do",
+    "rong_doi",
+    "hai_thach_moc_tinh",
+    "thien_nga_hai_au"
+   ],
+   "outputs": "Các NMĐ khu vực Phú Mỹ, Đạm Phú Mỹ (qua GDC Phú Mỹ – nguồn 2017)",
+   "path": [
+    [
+     108.75,
+     7.9
+    ],
+    [
+     108.6,
+     8.3
+    ],
+    [
+     108.1,
+     8.9
+    ],
+    [
+     107.65,
+     9.5
+    ],
+    [
+     107.4,
+     10.0
+    ],
+    [
+     107.23,
+     10.39
+    ],
+    [
+     107.24,
+     10.47
+    ],
+    [
+     107.04,
+     10.59
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "Nguồn 2014 liệt kê lô cấp khí: 06.1, 11.2, 12W, 05-2 & 05-3. Đường kính 26 inch theo kết quả tìm kiếm (GEM) — chưa mở trang GEM (bị chặn). 2014: ~360 km biển + gần 40 km bờ; bài 09/2026: 'dài hơn 370 km' NM xử lý khí Nam Côn Sơn / GDC Phú Mỹ thiết kế 22 triệu m³/ngày",
+   "sources": [
+    {
+     "title": "Các dự án khí đang vận hành và triển khai (Tạp chí Công Thương)",
+     "url": "https://tapchicongthuong.vn/cac-du-an-khi-dang-van-hanh-va-trien-khai-34439.htm",
+     "period": "bài 07/04/2014"
+    },
+    {
+     "title": "PV GAS mở thêm cửa tiếp nhận nguồn khí 7,4 tỷ m³ từ Lô 12/11 (Người Quan Sát)",
+     "url": "https://nguoiquansat.vn/pv-gas-mo-them-cua-tiep-nhan-nguon-khi-7-4-ty-m-tu-lo-12-11-ngoai-bien-dong-318927.html",
+     "period": "bài 28/09/2026"
+    },
+    {
+     "title": "PV GAS – 35 năm đổi mới sáng tạo và tiên phong công nghệ (Nhân Dân)",
+     "url": "https://nhandan.vn/pv-gas-35-nam-doi-moi-sang-tao-va-tien-phong-cong-nghe-trong-nganh-cong-nghiep-khi-viet-nam-post916822.html",
+     "period": "bài 21/10/2025"
+    },
+    {
+     "title": "Nam Con Son 2 Gas Pipeline (Offshore Technology project profile)",
+     "url": "https://www.offshore-technology.com/projects/nam-con-son-2-gas-pipeline/",
+     "period": "hồ sơ dự án, nội dung đến khoảng 2019–2020 (truy cập 26/11/2026)"
+    },
+    {
+     "title": "GDC-Phú Mỹ: “Trái tim” khí của hệ thống vận chuyển Đông Nam bộ",
+     "url": "https://tapchicongthuong.vn/gdc-phu-my---trai-tim--khi-cua-he-thong-van-chuyen-dong-nam-bo-51637.htm",
+     "period": "bài 16/12/2017"
+    }
+   ],
+   "short": "Nam Côn Sơn 1"
+  },
+  {
+   "id": "ncs2_phase1",
+   "name": "Nam Côn Sơn 2 – giai đoạn 1 (Hải Thạch – Thiên Ưng – Bạch Hổ)",
+   "system": "ncs",
+   "systems": [
+    "ncs"
+   ],
+   "gas": "domestic",
+   "status": "operating",
+   "major": true,
+   "label": "Nam Côn Sơn 2",
+   "label_at": [
+    108.5,
+    9.05
+   ],
+   "owner": "PV GAS (chủ đầu tư/vận hành); EPC Vietsovpetro",
+   "length": "biển 151 km · bờ 0 km · tổng 151 km",
+   "capacity": "18,4 triệu m³ khí/ngày + 1.320 tấn condensate/ngày (≈7 tỷ m³/năm) — cho toàn hệ NCS2 325 km",
+   "throughput": null,
+   "cod": "16/12/2015",
+   "inputs": [
+    "hai_thach_moc_tinh",
+    "thien_ung",
+    "dai_hung",
+    "sao_vang_dai_nguyet"
+   ],
+   "outputs": null,
+   "path": [
+    [
+     109.1,
+     8.3
+    ],
+    [
+     108.85,
+     8.75
+    ],
+    [
+     108.4,
+     9.25
+    ],
+    [
+     107.95,
+     9.78
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "151 km Thiên Ưng → KP207,5 gần Bạch Hổ; đoạn Hải Thạch → Thiên Ưng ~56 km là suy ra (325 − 151 − 118), chưa có nguồn trực tiếp",
+   "sources": [
+    {
+     "title": "Hoàn thành và đưa vào khai thác Dự án khí Nam Côn Sơn 2, giai đoạn 1",
+     "url": "https://tapchicongthuong.vn/hoan-thanh-va-dua-vao-khai-thac-du-an-khi-nam-con-son-2--giai-doan-1-25699.htm",
+     "period": "bài 16/12/2015"
+    },
+    {
+     "title": "Nam Con Son 2 Gas Pipeline (Offshore Technology project profile)",
+     "url": "https://www.offshore-technology.com/projects/nam-con-son-2-gas-pipeline/",
+     "period": "hồ sơ dự án, nội dung đến khoảng 2019–2020 (truy cập 26/11/2026)"
+    },
+    {
+     "title": "Đón nhận dòng khí đầu tiên từ mỏ Sao Vàng – Đại Nguyệt đến đường ống Nam Côn Sơn 2",
+     "url": "https://tapchicongthuong.vn/don-nhan-dong-khi-dau-tien-tu-mo-sao-vang---dai-nguyet-den-duong-ong-nam-con-son-2-76569.htm",
+     "period": "bài 16/11/2020"
+    }
+   ],
+   "short": "Nam Côn Sơn 2 GĐ1"
+  },
+  {
+   "id": "ncs2_phase2",
+   "name": "Nam Côn Sơn 2 – giai đoạn 2 (KP207,5 – Long Hải)",
+   "system": "ncs",
+   "systems": [
+    "ncs"
+   ],
+   "gas": "domestic",
+   "status": "operating",
+   "major": true,
+   "label": null,
+   "label_at": null,
+   "owner": "PV GAS; EPC ống biển TechnipFMC",
+   "length": "biển 118 km",
+   "capacity": "18,4 triệu m³/ngày (toàn hệ NCS2)",
+   "throughput": null,
+   "cod": "16/11/2020 (đón khí đầu tiên từ Sao Vàng tại Long Hải)",
+   "inputs": [
+    "sao_vang_dai_nguyet",
+    "thien_ung",
+    "dai_hung",
+    "hai_thach_moc_tinh"
+   ],
+   "outputs": null,
+   "path": [
+    [
+     107.95,
+     9.78
+    ],
+    [
+     107.7,
+     10.0
+    ],
+    [
+     107.45,
+     10.22
+    ],
+    [
+     107.23,
+     10.39
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "Bài 11/2020 nói hạng mục còn đang chạy thử; không tìm thấy nguồn đã mở xác nhận ngày khánh thành toàn bộ GĐ2.",
+   "sources": [
+    {
+     "title": "Đón nhận dòng khí đầu tiên từ mỏ Sao Vàng – Đại Nguyệt đến đường ống Nam Côn Sơn 2",
+     "url": "https://tapchicongthuong.vn/don-nhan-dong-khi-dau-tien-tu-mo-sao-vang---dai-nguyet-den-duong-ong-nam-con-son-2-76569.htm",
+     "period": "bài 16/11/2020"
+    },
+    {
+     "title": "Nam Con Son 2 Gas Pipeline (Offshore Technology project profile)",
+     "url": "https://www.offshore-technology.com/projects/nam-con-son-2-gas-pipeline/",
+     "period": "hồ sơ dự án, nội dung đến khoảng 2019–2020 (truy cập 26/11/2026)"
+    }
+   ],
+   "short": "Nam Côn Sơn 2 GĐ2"
+  },
+  {
+   "id": "ncs2_onshore",
+   "name": "NCS2 trên bờ: Long Hải – GPP2 Dinh Cố – GDC Phú Mỹ (+ ống condensate/LPG về Thị Vải)",
+   "system": "ncs",
+   "systems": [
+    "ncs"
+   ],
+   "gas": "domestic",
+   "status": "operating",
+   "major": false,
+   "label": null,
+   "label_at": null,
+   "owner": "PV GAS",
+   "length": "biển 0 km",
+   "capacity": null,
+   "throughput": null,
+   "cod": "2020 (GPP2 nối GĐ2 tháng 9/2020 theo Offshore Tech)",
+   "inputs": [
+    "sao_vang_dai_nguyet",
+    "thien_ung",
+    "dai_hung",
+    "hai_thach_moc_tinh"
+   ],
+   "outputs": "GDC Phú Mỹ → NMĐ, phân bón, khách hàng công nghiệp (bài 2015 nêu chung)",
+   "path": [
+    [
+     107.23,
+     10.39
+    ],
+    [
+     107.25,
+     10.48
+    ],
+    [
+     107.15,
+     10.53
+    ],
+    [
+     107.04,
+     10.59
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "Long Hải → GPP2: ~8 km (Offshore Tech) hoặc ~10 km (TCCT 2020); GPP2 → GDC Phú Mỹ khí khô 29–29,5 km, 30 inch; 2 ống 6 inch ~25 km condensate/LPG GPP2 → Thị Vải; tổng ống bờ khí ~39 km (TCCT 2015)",
+   "sources": [
+    {
+     "title": "Nam Con Son 2 Gas Pipeline (Offshore Technology project profile)",
+     "url": "https://www.offshore-technology.com/projects/nam-con-son-2-gas-pipeline/",
+     "period": "hồ sơ dự án, nội dung đến khoảng 2019–2020 (truy cập 26/11/2026)"
+    },
+    {
+     "title": "Đón nhận dòng khí đầu tiên từ mỏ Sao Vàng – Đại Nguyệt đến đường ống Nam Côn Sơn 2",
+     "url": "https://tapchicongthuong.vn/don-nhan-dong-khi-dau-tien-tu-mo-sao-vang---dai-nguyet-den-duong-ong-nam-con-son-2-76569.htm",
+     "period": "bài 16/11/2020"
+    },
+    {
+     "title": "Hoàn thành và đưa vào khai thác Dự án khí Nam Côn Sơn 2, giai đoạn 1",
+     "url": "https://tapchicongthuong.vn/hoan-thanh-va-dua-vao-khai-thac-du-an-khi-nam-con-son-2--giai-doan-1-25699.htm",
+     "period": "bài 16/12/2015"
+    }
+   ],
+   "short": "NCS2 trên bờ"
+  },
+  {
+   "id": "svdn_gathering",
+   "name": "Ống thu gom Thiên Ưng – Sao Vàng – NCS2",
+   "system": "ncs",
+   "systems": [
+    "ncs"
+   ],
+   "gas": "domestic",
+   "status": "operating",
+   "major": false,
+   "label": null,
+   "label_at": null,
+   "owner": "PV GAS (chủ đầu tư chuỗi NCS2 điều chỉnh + Sao Vàng – Đại Nguyệt)",
+   "length": "biển 46 km · bờ 0 km · tổng 46 km",
+   "capacity": null,
+   "throughput": null,
+   "cod": "11/2020",
+   "inputs": [
+    "sao_vang_dai_nguyet",
+    "thien_ung"
+   ],
+   "outputs": null,
+   "path": [
+    [
+     108.85,
+     8.75
+    ],
+    [
+     109.0,
+     8.6
+    ],
+    [
+     108.75,
+     8.95
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "2 đoạn ~23 km mỗi đoạn Cùng Thiên Ưng – Đại Hùng dự kiến đưa ~2–3 tỷ m³/năm vào bờ (2020)",
+   "sources": [
+    {
+     "title": "Đón nhận dòng khí đầu tiên từ mỏ Sao Vàng – Đại Nguyệt đến đường ống Nam Côn Sơn 2",
+     "url": "https://tapchicongthuong.vn/don-nhan-dong-khi-dau-tien-tu-mo-sao-vang---dai-nguyet-den-duong-ong-nam-con-son-2-76569.htm",
+     "period": "bài 16/11/2020"
+    }
+   ],
+   "short": "Thu gom Sao Vàng – Đại Nguyệt"
+  },
+  {
+   "id": "pm3_ca_mau",
+   "name": "Đường ống PM3 – Cà Mau",
+   "system": "pm3",
+   "systems": [
+    "pm3"
+   ],
+   "gas": "domestic",
+   "status": "operating",
+   "major": true,
+   "label": "PM3 – Cà Mau",
+   "label_at": [
+    104.2,
+    8.05
+   ],
+   "owner": "PV GAS (chủ đầu tư); vận hành: Công ty Khí Cà Mau (KCM)",
+   "length": "biển 298 km · bờ 27 km · tổng 325 km",
+   "capacity": "2 tỷ m³/năm",
+   "throughput": null,
+   "cod": "29/04/2007 (khí vào bờ); NMĐ Cà Mau 1 nhận khí 15/05/2007",
+   "inputs": [
+    "pm3_caa",
+    "cai_nuoc_46",
+    "nam_du_u_minh"
+   ],
+   "outputs": "NMĐ Cà Mau 1 (từ 15/5/2007), Cà Mau 2 (từ 28/5/2008), Nhà máy Đạm Cà Mau (từ 15/9/2011), NM xử lý khí Cà Mau (từ 06/12/2017)",
+   "path": [
+    [
+     103.6,
+     7.15
+    ],
+    [
+     103.95,
+     7.7
+    ],
+    [
+     104.35,
+     8.4
+    ],
+    [
+     104.65,
+     8.9
+    ],
+    [
+     104.8,
+     9.12
+    ],
+    [
+     104.92,
+     9.2
+    ],
+    [
+     105.04,
+     9.27
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "Đoạn bờ đi xuyên rừng quốc gia U Minh Hạ tới cụm Khí–Điện–Đạm Khánh An. Đường kính 18 inch chỉ thấy trong kết quả tìm kiếm (Jadestone) — chưa xác nhận. Nguồn khác (pvgas, chỉ thấy qua tìm kiếm) ghi 330 km Trung tâm phân phối Cà Mau thiết kế >2 tỷ m³/năm (2017)",
+   "sources": [
+    {
+     "title": "PM3-CM: Công trình khí đầu tiên hoàn toàn do Việt Nam thiết kế và xây dựng",
+     "url": "https://tapchicongthuong.vn/pm3--cm--cong-trinh-khi-dau-tien-hoan-toan-do-viet-nam-thiet-ke-va-xay-dung-83105.htm",
+     "period": "bài 17/08/2021"
+    },
+    {
+     "title": "Hệ thống PM3-Cà Mau thực hiện BDSC định kỳ 5 năm lần thứ 2",
+     "url": "https://tapchicongthuong.vn/he-thong-pm3-ca-mau-thuc-hien-bdsc-dinh-ky-5-nam-lan-thu-2-49245.htm",
+     "period": "bài 22/08/2017"
+    },
+    {
+     "title": "Các dự án khí đang vận hành và triển khai (Tạp chí Công Thương)",
+     "url": "https://tapchicongthuong.vn/cac-du-an-khi-dang-van-hanh-va-trien-khai-34439.htm",
+     "period": "bài 07/04/2014"
+    },
+    {
+     "title": "PM3 CAA Block: A Symbol of International Partnership (Petrovietnam)",
+     "url": "https://petrovietnam.vn/pm3-caa-block-a-symbol-of-international-partnership-for-peace-and-sustainable-development-28208",
+     "period": "bài 10/04/2025; số liệu sản lượng cuối 2024"
+    }
+   ],
+   "short": "PM3 – Cà Mau"
+  },
+  {
+   "id": "ham_rong_thai_binh",
+   "name": "Hệ thống thu gom & phân phối khí Hàm Rồng – Thái Bình (Lô 102&106 GĐ1) → Tiền Hải",
+   "system": "songhong",
+   "systems": [
+    "songhong"
+   ],
+   "gas": "domestic",
+   "status": "operating",
+   "major": true,
+   "label": "Hàm Rồng – Thái Bình",
+   "label_at": [
+    106.95,
+    20.15
+   ],
+   "owner": "PV GAS (chủ đầu tư/quản lý); EPC PTSC",
+   "length": "tổng 25 km",
+   "capacity": "0,5664 triệu m³/ngày (~200 triệu m³/năm, GĐ1)",
+   "throughput": null,
+   "cod": "07/08/2015 (dòng khí đầu tiên); khánh thành 28/09/2015",
+   "inputs": [
+    "thai_binh",
+    "ham_rong",
+    "tien_hai_onshore"
+   ],
+   "outputs": "Khách hàng công nghiệp KCN Tiền Hải và lân cận (17 khách hàng KTA/CNG lúc khánh thành)",
+   "path": [
+    [
+     106.8,
+     20.25
+    ],
+    [
+     106.62,
+     20.33
+    ],
+    [
+     106.6,
+     20.35
+    ],
+    [
+     106.53,
+     20.41
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "Đầu chờ để kết nối mỏ Lô 103&107 tương lai (Kỳ Lân — MoU 2024 giao khí từ 2032, chỉ thấy qua tìm kiếm). Không phục vụ DPM/DCM. ~24–25 km, 12 inch, giàn Thái Bình → Cồn Vành → LFS Đông Minh → GDC Tiền Hải",
+   "sources": [
+    {
+     "title": "Đưa dòng khí đầu tiên ngoài khơi vào Tiền Hải – Thái Bình (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/dua-dong-khi-dau-tien-ngoai-khoi-vao-tien-hai-thai-binh.html",
+     "period": "bài 08/08/2015"
+    },
+    {
+     "title": "Lễ khánh thành Hệ thống thu gom & phân phối khí mỏ Hàm Rồng và mỏ Thái Bình lô 102&106 GĐ1",
+     "url": "https://tapchicongthuong.vn/le-khanh-thanh--he-thong-thu-gom-khi-phan-phoi-khi-mo-ham-rong-va-mo-thai-binh-lo-102-106-giai-doan-1-42557.htm",
+     "period": "bài 29/09/2015"
+    },
+    {
+     "title": "PV GAS kỷ niệm 10 năm vận hành hệ thống khí Hàm Rồng – Thái Bình",
+     "url": "https://diendandoanhnghiep.vn/pv-gas-ky-niem-10-nam-van-hanh-he-thong-khi-ham-rong-thai-binh-10158881.html",
+     "period": "bài 11/08/2025"
+    }
+   ],
+   "short": "Hàm Rồng – Thái Bình"
+  },
+  {
+   "id": "lo_b_o_mon",
+   "name": "Đường ống dẫn khí Lô B – Ô Môn (biển + bờ, nhánh Mũi Tràm)",
+   "system": "lob",
+   "systems": [
+    "lob"
+   ],
+   "gas": "domestic",
+   "status": "construction",
+   "major": true,
+   "label": "Lô B – Ô Môn",
+   "label_at": [
+    103.75,
+    8.75
+   ],
+   "owner": "PVN/PV GAS cùng MOECO, PTTEP (cơ cấu 2016); thượng nguồn: PQPOC",
+   "length": "biển 295 km · bờ 102 km · tổng 431 km",
+   "capacity": "20,3 triệu m³ (nguồn không ghi đơn vị thời gian; báo khác ghi /ngày)",
+   "throughput": null,
+   "cod": "Kế hoạch: dòng khí đầu tiên 08/2027 (Ô Môn I quý III/2027)",
+   "inputs": [
+    "kim_long",
+    "ac_quy",
+    "ca_voi_lob"
+   ],
+   "outputs": "Trung tâm điện lực Ô Môn I–IV (Cần Thơ); quy hoạch cả Trung tâm điện lực Kiên Giang (2016); 2026: cân nhắc cấp khí Lô B cho hộ tiêu thụ Cà Mau",
+   "path": [
+    [
+     103.2,
+     8.05
+    ],
+    [
+     103.75,
+     8.5
+    ],
+    [
+     104.3,
+     9.05
+    ],
+    [
+     104.6,
+     9.4
+    ],
+    [
+     104.86,
+     9.68
+    ],
+    [
+     105.1,
+     9.85
+    ],
+    [
+     105.4,
+     10.0
+    ],
+    [
+     105.62,
+     10.12
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "Nhánh KP209 – Mũi Tràm (route_branch) là điểm nối quan trọng cho Đạm Cà Mau khi PM3 suy giảm. Biển ~295 km 28 inch tới LFS An Minh + nhánh 37 km 18 inch từ KP209 tới LFS Mũi Tràm (bổ sung khí PM3–Cà Mau); bờ ~102 km 30 inch qua Kiên Giang, Cần Thơ. Nhiều báo ghi 329 km biển + 102 km bờ (tìm kiếm) Khí đưa vào bờ ~5,06 tỷ m³/năm",
+   "sources": [
+    {
+     "title": "PVN khởi động chuỗi dự án Lô B – Ô Môn (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/pvn-khoi-dong-chuoi-du-an-lo-b-o-mon.html",
+     "period": "bài 04/04/2016 (thông số thiết kế)"
+    },
+    {
+     "title": "Chuỗi dự án khí Lô B dự kiến có dòng khí đầu tiên vào tháng 8-2027 (SGGP)",
+     "url": "https://www.sggp.org.vn/chuoi-du-an-khi-lo-b-du-kien-co-dong-khi-dau-tien-vao-thang-8-2027-post831467.html",
+     "period": "bài 31/12/2025"
+    },
+    {
+     "title": "Đón dòng khí Lô B đầu tiên vào dự án nhiệt điện Ô Môn I trong quý III/2027",
+     "url": "https://tapchicongthuong.vn/don-dong-khi-lo-b-dau-tien-vao-du-an-nhiet-dien-o-mon-i-trong-quy-iii-2027-391428.htm",
+     "period": "bài 09/01/2026"
+    },
+    {
+     "title": "Dự án khí Lô B – Ô Môn tăng tốc hoàn thành các mốc thi công trọng điểm (Người Quan Sát)",
+     "url": "https://nguoiquansat.vn/du-an-khi-lo-b-o-mon-tang-toc-hoan-thanh-cac-moc-thi-cong-trong-diem-308560.html",
+     "period": "bài 05/08/2026"
+    }
+   ],
+   "short": "Lô B – Ô Môn"
+  },
+  {
+   "id": "ca_voi_xanh_pipeline",
+   "name": "Đường ống Cá Voi Xanh – Chu Lai (Tam Quang)",
+   "system": "cvx",
+   "systems": [
+    "cvx"
+   ],
+   "gas": "domestic",
+   "status": "planned",
+   "major": true,
+   "label": "Cá Voi Xanh (dự kiến)",
+   "label_at": [
+    109.1,
+    15.72
+   ],
+   "owner": "ExxonMobil (thượng nguồn) / PVN (đầu tư ~4,6 tỷ USD phần mình theo bài 2016)",
+   "length": "biển 88 km",
+   "capacity": null,
+   "throughput": null,
+   "cod": null,
+   "inputs": [
+    "ca_voi_xanh"
+   ],
+   "outputs": "Kế hoạch 2016: 4 NMĐ khí 750 MW (2 ở Tam Quang, 2 ở Dung Quất), ~1 tỷ m³/năm cho lọc dầu Dung Quất",
+   "path": [
+    [
+     109.45,
+     15.6
+    ],
+    [
+     109.05,
+     15.55
+    ],
+    [
+     108.68,
+     15.48
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "Chưa FID tới 26/11/2026 theo các nguồn tìm được.",
+   "sources": [
+    {
+     "title": "Xây 4 nhà máy nhiệt điện khí quy mô lớn tại miền Trung (Znews)",
+     "url": "https://znews.vn/xay-4-nha-may-nhiet-dien-khi-quy-mo-lon-tai-mien-trung-post675193.html",
+     "period": "bài 20/08/2016"
+    },
+    {
+     "title": "Ca Voi Xanh project overview (ExxonMobil)",
+     "url": "https://corporate.exxonmobil.com/Locations/Vietnam/Ca-Voi-Xanh-project-overview",
+     "period": "trang công ty, truy cập 26/11/2026"
+    }
+   ],
+   "short": "Cá Voi Xanh – Chu Lai"
+  },
+  {
+   "id": "dinh_co_phu_my",
+   "name": "Đường ống khí khô Dinh Cố – Phú Mỹ",
+   "system": "cuulong",
+   "systems": [
+    "cuulong",
+    "ncs"
+   ],
+   "gas": "domestic",
+   "status": "operating",
+   "major": false,
+   "label": null,
+   "label_at": null,
+   "owner": "PV GAS",
+   "length": "biển 0 km · bờ 29 km · tổng 29 km",
+   "capacity": null,
+   "throughput": null,
+   "cod": null,
+   "inputs": [
+    "bach_ho",
+    "lan_tay_lan_do"
+   ],
+   "outputs": "GDC Phú Mỹ",
+   "path": [
+    [
+     107.24,
+     10.47
+    ],
+    [
+     107.15,
+     10.53
+    ],
+    [
+     107.04,
+     10.59
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "Bài 2017 nêu là tuyến ra của GDC Phú Mỹ. Có thể trùng hành lang với ống khí khô NCS2 (29,5 km, 30 inch).",
+   "sources": [
+    {
+     "title": "GDC-Phú Mỹ: “Trái tim” khí của hệ thống vận chuyển Đông Nam bộ",
+     "url": "https://tapchicongthuong.vn/gdc-phu-my---trai-tim--khi-cua-he-thong-van-chuyen-dong-nam-bo-51637.htm",
+     "period": "bài 16/12/2017"
+    }
+   ],
+   "short": "Dinh Cố – Phú Mỹ"
+  },
+  {
+   "id": "phu_my_nhon_trach_hiep_phuoc",
+   "name": "Đường ống Phú Mỹ – Nhơn Trạch – Hiệp Phước",
+   "system": "cuulong",
+   "systems": [
+    "cuulong",
+    "ncs",
+    "lng"
+   ],
+   "gas": "domestic",
+   "status": "operating",
+   "major": false,
+   "label": null,
+   "label_at": null,
+   "owner": "PV GAS (Khí Đông Nam Bộ)",
+   "length": "biển 0 km · bờ 38 km · tổng 38 km",
+   "capacity": "2 tỷ m³/năm",
+   "throughput": null,
+   "cod": "2008",
+   "inputs": [
+    "lan_tay_lan_do",
+    "bach_ho",
+    "sao_vang_dai_nguyet"
+   ],
+   "outputs": "Các NMĐ và KCN dọc tuyến (nguồn không nêu tên)",
+   "path": [
+    [
+     107.04,
+     10.59
+    ],
+    [
+     106.92,
+     10.64
+    ],
+    [
+     106.82,
+     10.67
+    ],
+    [
+     106.75,
+     10.63
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "38 km là số cho Phú Mỹ – Hiệp Phước (2017)",
+   "sources": [
+    {
+     "title": "Các dự án khí đang vận hành và triển khai (Tạp chí Công Thương)",
+     "url": "https://tapchicongthuong.vn/cac-du-an-khi-dang-van-hanh-va-trien-khai-34439.htm",
+     "period": "bài 07/04/2014"
+    },
+    {
+     "title": "GDC-Phú Mỹ: “Trái tim” khí của hệ thống vận chuyển Đông Nam bộ",
+     "url": "https://tapchicongthuong.vn/gdc-phu-my---trai-tim--khi-cua-he-thong-van-chuyen-dong-nam-bo-51637.htm",
+     "period": "bài 16/12/2017"
+    }
+   ],
+   "short": "Phú Mỹ – Nhơn Trạch – Hiệp Phước"
+  },
+  {
+   "id": "phu_my_my_xuan_go_dau",
+   "name": "Đường ống thấp áp Phú Mỹ – Mỹ Xuân – Gò Dầu",
+   "system": "cuulong",
+   "systems": [
+    "cuulong",
+    "ncs"
+   ],
+   "gas": "domestic",
+   "status": "operating",
+   "major": false,
+   "label": null,
+   "label_at": null,
+   "owner": "PV GAS",
+   "length": null,
+   "capacity": "1 tỷ m³/năm",
+   "throughput": null,
+   "cod": "2003",
+   "inputs": [
+    "bach_ho",
+    "lan_tay_lan_do"
+   ],
+   "outputs": "Khách hàng KCN Phú Mỹ – Mỹ Xuân – Gò Dầu",
+   "path": [
+    [
+     107.04,
+     10.59
+    ],
+    [
+     107.05,
+     10.63
+    ],
+    [
+     107.02,
+     10.67
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "Chiều dài không có trong nguồn đã mở.",
+   "sources": [
+    {
+     "title": "Các dự án khí đang vận hành và triển khai (Tạp chí Công Thương)",
+     "url": "https://tapchicongthuong.vn/cac-du-an-khi-dang-van-hanh-va-trien-khai-34439.htm",
+     "period": "bài 07/04/2014"
+    }
+   ],
+   "short": "Phú Mỹ – Mỹ Xuân – Gò Dầu"
+  },
+  {
+   "id": "lng_thi_vai_phu_my",
+   "name": "Đường ống LNG Thị Vải – Phú Mỹ",
+   "system": "lng",
+   "systems": [
+    "lng"
+   ],
+   "gas": "lng",
+   "status": "operating",
+   "major": false,
+   "label": null,
+   "owner": "PV GAS (vận hành: PV GAS LNG/chi nhánh logistics)",
+   "length": null,
+   "capacity": null,
+   "throughput": null,
+   "cod": null,
+   "inputs": [
+    "lng_thi_vai"
+   ],
+   "outputs": [
+    "gdc_phu_my"
+   ],
+   "path": [
+    [
+     107.035,
+     10.565
+    ],
+    [
+     107.04,
+     10.59
+    ]
+   ],
+   "precision": "sơ đồ (nối kho với hộ tiêu thụ, không phải tuyến khảo sát)",
+   "note": "Kết nối khí tái hóa từ kho Thị Vải vào GDC Phú Mỹ; NM điện Nhơn Trạch 3&4 nhận LNG Thị Vải theo hợp đồng 25 năm.",
+   "sources": [
+    {
+     "title": "PV GAS nâng công suất tái hóa khí kho LNG Thị Vải lên 288 tấn/giờ (Nhà Đầu tư)",
+     "url": "https://nhadautu.vn/pv-gas-nang-cong-suat-tai-hoa-khi-kho-lng-thi-vai-len-muc-288-tan-gio-san-sang-dap-ung-huy-dong-khi-cho-phat-dien-mua-kho-d104118.html",
+     "period": "07/04/2026"
+    },
+    {
+     "title": "PV GAS increases capacity of Thi Vai LNG terminal (Petrovietnam)",
+     "url": "https://petrovietnam.vn/pv-gas-increases-capacity-of-thi-vai-lng-terminal-33232",
+     "period": "09/04/2026"
+    },
+    {
+     "title": "Petrovietnam asks PV Gas to triple LNG Thi Vai terminal to 3 mln tons (The Investor)",
+     "url": "https://theinvestor.vn/petrovietnam-asks-pv-gas-to-triple-lng-thi-vai-terminal-to-3-mln-tons-d14411.html",
+     "period": "05/02/2025"
+    },
+    {
+     "title": "PV GAS nhập thêm gần 120.000 tấn LNG và LPG (Nhân Dân)",
+     "url": "https://nhandan.vn/pv-gas-nhap-them-gan-120000-tan-lng-va-lpg-ve-viet-nam-post968544.html",
+     "period": "11/06/2026"
+    },
+    {
+     "title": "Nghịch lý thừa khí, thiếu khí cho phát điện (Báo Đầu tư)",
+     "url": "https://baodautu.vn/nghich-ly-thua-khi-thieu-khi-cho-phat-dien-d686850.html",
+     "period": "28/08/2026"
+    },
+    {
+     "title": "PV GAS ký hợp đồng 25 năm cung cấp LNG cho NT3 & NT4 (Tạp chí Toàn cảnh)",
+     "url": "https://tapchitoaan.vn/pv-gas-ky-hop-dong-25-nam-cung-cap-lng-cho-nha-may-dien-nhon-trach-3-va-nhon-trach-4-cua-pv-power13010.html",
+     "period": "02/03/2025"
+    },
+    {
+     "title": "Petrovietnam Gas awards first multi-year LNG deal to Shell 2027–31",
+     "url": "https://petrovietnam.vn/petrovietnam-gas-awards-first-multi-year-lng-deal-to-shell-2027-31-32204",
+     "period": "08/01/2026"
+    },
+    {
+     "title": "Vietnam Electricity receives 715 MW Phu My 2.2 (The Investor) — dùng LNG một số giai đoạn 2024",
+     "url": "https://theinvestor.vn/vietnam-electricity-receives-715-mw-power-plant-from-foreign-investors-as-bot-contract-ends-d14397.html",
+     "period": "04/02/2025"
+    }
+   ],
+   "short": "Ống LNG Thị Vải – Phú Mỹ"
+  },
+  {
+   "id": "lng_cai_mep_phu_my",
+   "name": "Đường ống LNG Cái Mép – Phú Mỹ",
+   "system": "lng",
+   "systems": [
+    "lng"
+   ],
+   "gas": "lng",
+   "status": "operating",
+   "major": false,
+   "label": null,
+   "owner": "AG&P LNG (Nebula Energy) — mua 49% năm 2024, nâng lên 100% (công bố 23/04/2026, Hải Linh thoái toàn bộ; theo bài VIR còn chờ phê duyệt)",
+   "length": null,
+   "capacity": null,
+   "throughput": null,
+   "cod": null,
+   "inputs": [
+    "lng_cai_mep_agp"
+   ],
+   "outputs": [
+    "pw_phu_my"
+   ],
+   "path": [
+    [
+     107.03,
+     10.515
+    ],
+    [
+     107.022,
+     10.618
+    ]
+   ],
+   "precision": "sơ đồ (nối kho với hộ tiêu thụ, không phải tuyến khảo sát)",
+   "note": "Cấp khí tái hóa cho Phú Mỹ 2.1 và 2.1 mở rộng (EVNGENCO3) từ 07/2026, giai đoạn chạy thử; chưa thấy hợp đồng dài hạn.",
+   "sources": [
+    {
+     "title": "Cai Mep Terminal delivers first pipeline gas to Phu My Power Complex (VIR)",
+     "url": "https://vir.com.vn/cai-mep-terminal-delivers-first-pipeline-gas-to-phu-my-power-complex-157053.html",
+     "period": "20/07/2026"
+    },
+    {
+     "title": "AG&P LNG to increase stake to 100% in Cai Mep LNG terminal (LNG Industry)",
+     "url": "https://www.lngindustry.com/liquid-natural-gas/23042026/agp-lng-to-increase-stake-to-100-in-cai-mep-lng-terminal/",
+     "period": "23/04/2026"
+    }
+   ],
+   "short": "Ống LNG Cái Mép – Phú Mỹ"
+  },
+  {
+   "id": "lng_vung_ang_qt2",
+   "name": "Kết nối LNG Vũng Áng – Quảng Trạch II (dự kiến)",
+   "system": "lng",
+   "systems": [
+    "lng"
+   ],
+   "gas": "lng",
+   "status": "planned",
+   "major": false,
+   "label": null,
+   "owner": "PV GAS",
+   "length": null,
+   "capacity": null,
+   "throughput": null,
+   "cod": null,
+   "inputs": [
+    "lng_bac_trung_bo_vung_ang"
+   ],
+   "outputs": [
+    "pw_quang_trach_2"
+   ],
+   "path": [
+    [
+     106.3774,
+     18.0375
+    ],
+    [
+     106.4079,
+     17.797
+    ]
+   ],
+   "precision": "sơ đồ (nối kho với hộ tiêu thụ, không phải tuyến khảo sát)",
+   "note": "EVN – PV GAS thống nhất thông số tái hóa 16/06/2026; GSA còn đàm phán.",
+   "sources": [
+    {
+     "title": "PV GAS kiến tạo hạ tầng năng lượng Vũng Áng (Tiền Phong)",
+     "url": "https://tienphong.vn/pv-gas-kien-tao-ha-tang-nang-luong-vung-ang-post1871146.tpo",
+     "period": "30/08/2026"
+    },
+    {
+     "title": "EVN and PVGAS discuss progress of supplying LNG to Quang Trach II and III",
+     "url": "https://en.evn.com.vn/d/en-US/news/EVN-and-PVGAS-discuss-progress-of-supplying-liquefied-natural-gas-to-Quang-Trach-II-and-III-power-plants-60-202-501514",
+     "period": "16/06/2026"
+    }
+   ],
+   "short": "LNG Vũng Áng – Quảng Trạch II"
+  },
+  {
+   "id": "lob_mui_tram",
+   "name": "Nhánh Lô B – Mũi Tràm (bù khí cho cụm Cà Mau)",
+   "system": "lob",
+   "systems": [
+    "lob",
+    "pm3"
+   ],
+   "gas": "domestic",
+   "status": "construction",
+   "major": false,
+   "label": null,
+   "label_at": null,
+   "owner": "PVN/PV GAS cùng MOECO, PTTEP (cơ cấu 2016); thượng nguồn: PQPOC",
+   "length": "37 km",
+   "capacity": null,
+   "throughput": null,
+   "cod": "Kế hoạch: dòng khí đầu tiên 08/2027 (Ô Môn I quý III/2027)",
+   "inputs": [
+    "lo_b_o_mon"
+   ],
+   "outputs": [
+    "lfs_mui_tram"
+   ],
+   "path": [
+    [
+     104.3,
+     9.05
+    ],
+    [
+     104.8,
+     9.12
+    ]
+   ],
+   "precision": "sơ đồ (tuyến minh họa, không phải tuyến khảo sát)",
+   "note": "Theo mô tả dự án đường ống Lô B – Ô Môn: nhánh 37 km tới Mũi Tràm để bổ sung khí cho cụm Khí – Điện – Đạm Cà Mau. Tuyến vẽ minh họa.",
+   "sources": [
+    {
+     "title": "PVN khởi động chuỗi dự án Lô B – Ô Môn (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/pvn-khoi-dong-chuoi-du-an-lo-b-o-mon.html",
+     "period": "bài 04/04/2016 (thông số thiết kế)"
+    },
+    {
+     "title": "Chuỗi dự án khí Lô B dự kiến có dòng khí đầu tiên vào tháng 8-2027 (SGGP)",
+     "url": "https://www.sggp.org.vn/chuoi-du-an-khi-lo-b-du-kien-co-dong-khi-dau-tien-vao-thang-8-2027-post831467.html",
+     "period": "bài 31/12/2025"
+    },
+    {
+     "title": "Đón dòng khí Lô B đầu tiên vào dự án nhiệt điện Ô Môn I trong quý III/2027",
+     "url": "https://tapchicongthuong.vn/don-dong-khi-lo-b-dau-tien-vao-du-an-nhiet-dien-o-mon-i-trong-quy-iii-2027-391428.htm",
+     "period": "bài 09/01/2026"
+    },
+    {
+     "title": "Dự án khí Lô B – Ô Môn tăng tốc hoàn thành các mốc thi công trọng điểm (Người Quan Sát)",
+     "url": "https://nguoiquansat.vn/du-an-khi-lo-b-o-mon-tang-toc-hoan-thanh-cac-moc-thi-cong-trong-diem-308560.html",
+     "period": "bài 05/08/2026"
+    }
+   ],
+   "short": "Nhánh Lô B – Mũi Tràm"
+  }
+ ],
+ "assets": [
+  {
+   "id": "bach_ho",
+   "kind": "field",
+   "name": "Bạch Hổ (và Rồng)",
+   "short": "Bạch Hổ",
+   "lon": 107.95,
+   "lat": 9.75,
+   "status": "producing",
+   "systems": [
+    "cuulong",
+    "lng",
+    "ncs"
+   ],
+   "owner": "Vietsovpetro (LD Việt – Nga)",
+   "capacity": null,
+   "output": null,
+   "cod": "1995 (bắt đầu thu gom khí đồng hành đưa vào bờ giữa năm 1995)",
+   "inputs": null,
+   "outputs": [
+    "cuu_long_bach_ho_dinh_co"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 09-1. Giàn nén khí trung tâm CCP tại Bạch Hổ là điểm gom khí Cửu Long (cả khí Sư Tử/Rạng Đông). Tọa độ suy ra từ chiều dài ống biển 106,5 km tới Long Hải. Lịch sử: Lũy kế đến 31/12/2019: Vietsovpetro đưa vào bờ >35 tỷ m³ khí, trong đó >22 tỷ m³ từ Lô 09-1; Lưu lượng vào bờ theo giai đoạn: 1 triệu m³/ngày (fast-track 1995) → 2 triệu m³/ngày → 3 → 5,6 triệu m³/ngày (khi có GPP Dinh Cố)",
+   "sources": [
+    {
+     "title": "Tống Cảnh Sơn và cs., Công nghệ thu gom, xử lý và vận chuyển khí đồng hành ở các mỏ của Vietsovpetro tại Lô 09-1, Tạp chí Dầu khí số 9/2020 tr.40-48",
+     "url": "https://petrovietnam.vn/DataStore/Documents/2020/TCDK/T%209/p.40-48%20-%20Tong%20Canh%20Son-1.pdf",
+     "period": "số 9/2020; số liệu đến 31/12/2019"
+    },
+    {
+     "title": "PV GAS tiếp nhận nguồn khí từ dự án mỏ Sư Tử Trắng giai đoạn 2A",
+     "url": "https://tapchicongthuong.vn/pv-gas-tiep-nhan-nguon-khi-tu-du-an-mo-su-tu-trang-giai-doan-2a-81981.htm",
+     "period": "bài 29/06/2021"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "rang_dong",
+   "kind": "field",
+   "name": "Rạng Đông",
+   "short": "Rạng Đông",
+   "lon": 108.2,
+   "lat": 10.05,
+   "status": "producing",
+   "systems": [
+    "cuulong"
+   ],
+   "owner": null,
+   "capacity": null,
+   "output": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "su_tu_vang_rang_dong_bach_ho",
+    "cuu_long_bach_ho_dinh_co"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 15-2. Nguồn đã mở chỉ xác nhận tuyến Sư Tử Vàng – Rạng Đông – Bạch Hổ chở khí về giàn nén Bạch Hổ. Nhà điều hành, số liệu khí: chưa có nguồn đã mở (cần kiểm chứng; không điền).",
+   "sources": [
+    {
+     "title": "PV GAS tiếp nhận nguồn khí từ dự án mỏ Sư Tử Trắng giai đoạn 2A",
+     "url": "https://tapchicongthuong.vn/pv-gas-tiep-nhan-nguon-khi-tu-du-an-mo-su-tu-trang-giai-doan-2a-81981.htm",
+     "period": "bài 29/06/2021"
+    },
+    {
+     "title": "Tống Cảnh Sơn và cs., Công nghệ thu gom, xử lý và vận chuyển khí đồng hành ở các mỏ của Vietsovpetro tại Lô 09-1, Tạp chí Dầu khí số 9/2020 tr.40-48",
+     "url": "https://petrovietnam.vn/DataStore/Documents/2020/TCDK/T%209/p.40-48%20-%20Tong%20Canh%20Son-1.pdf",
+     "period": "số 9/2020; số liệu đến 31/12/2019"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "su_tu_trang",
+   "kind": "field",
+   "name": "Sư Tử Trắng (GĐ 2A)",
+   "short": "Sư Tử Trắng",
+   "lon": 108.45,
+   "lat": 10.45,
+   "status": "producing",
+   "systems": [
+    "cuulong"
+   ],
+   "owner": "Bán khí cho PV GAS tại đầu ra giàn khai thác (Petrovietnam bán, PV GAS mua)",
+   "capacity": "14 tỷ ft³/năm (khối lượng bán ~0,4 tỷ m³/năm quy đổi)",
+   "output": null,
+   "cod": "06/2021 (dòng khí đầu tiên GĐ 2A)",
+   "inputs": null,
+   "outputs": [
+    "su_tu_vang_rang_dong_bach_ho",
+    "cuu_long_bach_ho_dinh_co"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 15-1. Khí nén tại giàn nén trung tâm Bạch Hổ rồi vào ống Bạch Hổ – Dinh Cố; nguồn nói khí này bù cho nguồn Nam Côn Sơn suy giảm. Lịch sử: Thử nhanh giếng ST-7P: ~50 triệu ft³/ngày khí + ~6.500 thùng/ngày condensate (06/2021)",
+   "sources": [
+    {
+     "title": "PV GAS tiếp nhận nguồn khí từ dự án mỏ Sư Tử Trắng giai đoạn 2A",
+     "url": "https://tapchicongthuong.vn/pv-gas-tiep-nhan-nguon-khi-tu-du-an-mo-su-tu-trang-giai-doan-2a-81981.htm",
+     "period": "bài 29/06/2021"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "su_tu_den_vang",
+   "kind": "field",
+   "name": "Sư Tử Đen / Sư Tử Vàng (khí đồng hành)",
+   "short": "Sư Tử Đen / Sư Tử Vàng",
+   "lon": 108.35,
+   "lat": 10.35,
+   "status": "producing",
+   "systems": [
+    "cuulong"
+   ],
+   "owner": null,
+   "capacity": null,
+   "output": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "su_tu_vang_rang_dong_bach_ho"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 15-1. Chỉ xác nhận được tên tuyến ống Sư Tử Vàng – Rạng Đông – Bạch Hổ. Sư Tử Đen có tên trong danh sách mỏ trong bài Tạp chí Dầu khí 9/2020. Không có số liệu khí riêng.",
+   "sources": [
+    {
+     "title": "PV GAS tiếp nhận nguồn khí từ dự án mỏ Sư Tử Trắng giai đoạn 2A",
+     "url": "https://tapchicongthuong.vn/pv-gas-tiep-nhan-nguon-khi-tu-du-an-mo-su-tu-trang-giai-doan-2a-81981.htm",
+     "period": "bài 29/06/2021"
+    },
+    {
+     "title": "Tống Cảnh Sơn và cs., Công nghệ thu gom, xử lý và vận chuyển khí đồng hành ở các mỏ của Vietsovpetro tại Lô 09-1, Tạp chí Dầu khí số 9/2020 tr.40-48",
+     "url": "https://petrovietnam.vn/DataStore/Documents/2020/TCDK/T%209/p.40-48%20-%20Tong%20Canh%20Son-1.pdf",
+     "period": "số 9/2020; số liệu đến 31/12/2019"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "lan_tay_lan_do",
+   "kind": "field",
+   "name": "Lan Tây – Lan Đỏ",
+   "short": "Lan Tây – Lan Đỏ",
+   "lon": 108.75,
+   "lat": 7.9,
+   "status": "producing",
+   "systems": [
+    "cuulong",
+    "lng",
+    "ncs"
+   ],
+   "owner": "Zarubezhneft EP Vietnam",
+   "capacity": null,
+   "output": null,
+   "cod": "12/2002 (dòng khí Nam Côn Sơn đầu tiên vào bờ)",
+   "inputs": null,
+   "outputs": [
+    "ncs1"
+   ],
+   "declining": true,
+   "decline_note": "Đỉnh sản lượng năm 2010; đã thu hồi 97,88% trữ lượng có thể thu hồi; dự kiến tới giới hạn kinh tế năm 2027 (Offshore Technology, cập nhật 06/11/2024).",
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 06.1. Mỏ cấp khí chính vào đường ống Nam Côn Sơn 1.",
+   "sources": [
+    {
+     "title": "Lan Do & Lan Tay field, Block 06-1 (Offshore Technology field profile)",
+     "url": "https://www.offshore-technology.com/?p=111938",
+     "period": "cập nhật 06/11/2024"
+    },
+    {
+     "title": "PV GAS – 35 năm đổi mới sáng tạo và tiên phong công nghệ (Nhân Dân)",
+     "url": "https://nhandan.vn/pv-gas-35-nam-doi-moi-sang-tao-va-tien-phong-cong-nghe-trong-nganh-cong-nghiep-khi-viet-nam-post916822.html",
+     "period": "bài 21/10/2025"
+    },
+    {
+     "title": "Các dự án khí đang vận hành và triển khai (Tạp chí Công Thương)",
+     "url": "https://tapchicongthuong.vn/cac-du-an-khi-dang-van-hanh-va-trien-khai-34439.htm",
+     "period": "bài 07/04/2014"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "rong_doi",
+   "kind": "field",
+   "name": "Rồng Đôi – Rồng Đôi Tây",
+   "short": "Rồng Đôi – Rồng Đôi Tây",
+   "lon": 108.6,
+   "lat": 8.3,
+   "status": "producing",
+   "systems": [
+    "ncs"
+   ],
+   "owner": null,
+   "capacity": null,
+   "output": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "ncs1"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 11-2. Lô 11.2 có tên trong danh sách lô cấp khí NCS1 (2014); giàn CPP Rồng Đôi được nêu (09/2026) là điểm tiếp nhận/xử lý khí Thiên Nga – Hải Âu trước khi vào NCS1. Nhà điều hành hiện tại và sản lượng: chưa có nguồn đã mở (tìm kiếm cho thấy Zarubezhneft nhận quyền điều hành từ KNOC năm 2024 — cần kiểm chứng).",
+   "sources": [
+    {
+     "title": "Các dự án khí đang vận hành và triển khai (Tạp chí Công Thương)",
+     "url": "https://tapchicongthuong.vn/cac-du-an-khi-dang-van-hanh-va-trien-khai-34439.htm",
+     "period": "bài 07/04/2014"
+    },
+    {
+     "title": "PV GAS mở thêm cửa tiếp nhận nguồn khí 7,4 tỷ m³ từ Lô 12/11 (Người Quan Sát)",
+     "url": "https://nguoiquansat.vn/pv-gas-mo-them-cua-tiep-nhan-nguon-khi-7-4-ty-m-tu-lo-12-11-ngoai-bien-dong-318927.html",
+     "period": "bài 28/09/2026"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "thien_nga_hai_au",
+   "kind": "field",
+   "name": "Thiên Nga – Hải Âu",
+   "short": "Thiên Nga – Hải Âu",
+   "lon": 108.3,
+   "lat": 8.1,
+   "status": "developing",
+   "systems": [
+    "ncs"
+   ],
+   "owner": "Thỏa thuận bán khí ký giữa PV GAS và Zarubezhneft (theo bài)",
+   "capacity": "7,43 tỷ m³ tổng cho giai đoạn 2026–2037",
+   "output": null,
+   "cod": "Kế hoạch Q4/2026",
+   "inputs": null,
+   "outputs": [
+    "ncs1"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 12/11. Đi qua giàn Rồng Đôi (Lô 11.2) rồi vào NCS1. Chưa xác nhận đã có dòng khí đầu tiên tính đến 26/11/2026.",
+   "sources": [
+    {
+     "title": "PV GAS mở thêm cửa tiếp nhận nguồn khí 7,4 tỷ m³ từ Lô 12/11 (Người Quan Sát)",
+     "url": "https://nguoiquansat.vn/pv-gas-mo-them-cua-tiep-nhan-nguon-khi-7-4-ty-m-tu-lo-12-11-ngoai-bien-dong-318927.html",
+     "period": "bài 28/09/2026"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "hai_thach_moc_tinh",
+   "kind": "field",
+   "name": "Hải Thạch – Mộc Tinh (Biển Đông 01)",
+   "short": "Hải Thạch – Mộc Tinh",
+   "lon": 109.1,
+   "lat": 8.3,
+   "status": "producing",
+   "systems": [
+    "ncs"
+   ],
+   "owner": "BIENDONG POC (công ty con PVN)",
+   "capacity": null,
+   "output": null,
+   "cod": "2013",
+   "inputs": null,
+   "outputs": [
+    "ncs1",
+    "ncs2_phase1"
+   ],
+   "declining": true,
+   "decline_note": "BIENDONG POC: cụm mỏ đang chịu áp lực suy giảm sản lượng sau thời gian dài khai thác; khí khu vực bước vào giai đoạn suy giảm tự nhiên (12/2025).",
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 05-2 & 05-3. Offshore Technology: Lô 05.2/05.3 khai thác từ 2013 cấp cho NCS-1; NCS2 thiết kế bắt đầu từ giàn WHP Hải Thạch. Bài 2025 chỉ nói 'hệ thống đường ống Nam Côn Sơn'. Lịch sử: Lũy kế 20 tỷ m³ khí thương phẩm tại 08/12/2025",
+   "sources": [
+    {
+     "title": "BIENDONG POC cán mốc 20 tỷ m³ khí tại cụm mỏ Hải Thạch – Mộc Tinh",
+     "url": "https://thuonghieucongluan.com.vn/biendong-poc-can-moc-20-ty-m-khi-tai-cum-mo-hai-thach-moc-tinh-a294357.html",
+     "period": "bài 09/12/2025 (mốc 08/12/2025)"
+    },
+    {
+     "title": "Nam Con Son 2 Gas Pipeline (Offshore Technology project profile)",
+     "url": "https://www.offshore-technology.com/projects/nam-con-son-2-gas-pipeline/",
+     "period": "hồ sơ dự án, nội dung đến khoảng 2019–2020 (truy cập 26/11/2026)"
+    },
+    {
+     "title": "Hoàn thành và đưa vào khai thác Dự án khí Nam Côn Sơn 2, giai đoạn 1",
+     "url": "https://tapchicongthuong.vn/hoan-thanh-va-dua-vao-khai-thac-du-an-khi-nam-con-son-2--giai-doan-1-25699.htm",
+     "period": "bài 16/12/2015"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "dai_hung",
+   "kind": "field",
+   "name": "Đại Hùng",
+   "short": "Đại Hùng",
+   "lon": 108.65,
+   "lat": 8.5,
+   "status": "producing",
+   "systems": [
+    "cuulong",
+    "ncs"
+   ],
+   "owner": null,
+   "capacity": null,
+   "output": null,
+   "cod": "16/12/2015 (khí thương mại đầu tiên vào NCS2 GĐ1)",
+   "inputs": null,
+   "outputs": [
+    "ncs2_phase1"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 05-1a. Khí Đại Hùng vào NCS2 GĐ1 không qua xử lý trên giàn Thiên Ưng. Nhà điều hành (PVEP POC theo kết quả tìm kiếm) và sản lượng khí: chưa có nguồn đã mở.",
+   "sources": [
+    {
+     "title": "Hoàn thành và đưa vào khai thác Dự án khí Nam Côn Sơn 2, giai đoạn 1",
+     "url": "https://tapchicongthuong.vn/hoan-thanh-va-dua-vao-khai-thac-du-an-khi-nam-con-son-2--giai-doan-1-25699.htm",
+     "period": "bài 16/12/2015"
+    },
+    {
+     "title": "Nam Con Son 2 Gas Pipeline (Offshore Technology project profile)",
+     "url": "https://www.offshore-technology.com/projects/nam-con-son-2-gas-pipeline/",
+     "period": "hồ sơ dự án, nội dung đến khoảng 2019–2020 (truy cập 26/11/2026)"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "thien_ung",
+   "kind": "field",
+   "name": "Thiên Ưng (– Mãng Cầu)",
+   "short": "Thiên Ưng",
+   "lon": 108.85,
+   "lat": 8.75,
+   "status": "producing",
+   "systems": [
+    "cuulong",
+    "ncs"
+   ],
+   "owner": null,
+   "capacity": null,
+   "output": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "ncs2_phase1"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 04-3. NCS2 GĐ1 dài ~151 km từ giàn Thiên Ưng (BK-TNG) về khu vực Bạch Hổ. Năm dòng khí đầu tiên (12/2016 theo kết quả tìm kiếm), nhà điều hành (Vietsovpetro theo tìm kiếm) chưa có nguồn đã mở.",
+   "sources": [
+    {
+     "title": "Hoàn thành và đưa vào khai thác Dự án khí Nam Côn Sơn 2, giai đoạn 1",
+     "url": "https://tapchicongthuong.vn/hoan-thanh-va-dua-vao-khai-thac-du-an-khi-nam-con-son-2--giai-doan-1-25699.htm",
+     "period": "bài 16/12/2015"
+    },
+    {
+     "title": "Nam Con Son 2 Gas Pipeline (Offshore Technology project profile)",
+     "url": "https://www.offshore-technology.com/projects/nam-con-son-2-gas-pipeline/",
+     "period": "hồ sơ dự án, nội dung đến khoảng 2019–2020 (truy cập 26/11/2026)"
+    },
+    {
+     "title": "Đón nhận dòng khí đầu tiên từ mỏ Sao Vàng – Đại Nguyệt đến đường ống Nam Côn Sơn 2",
+     "url": "https://tapchicongthuong.vn/don-nhan-dong-khi-dau-tien-tu-mo-sao-vang---dai-nguyet-den-duong-ong-nam-con-son-2-76569.htm",
+     "period": "bài 16/11/2020"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "sao_vang_dai_nguyet",
+   "kind": "field",
+   "name": "Sao Vàng – Đại Nguyệt",
+   "short": "Sao Vàng – Đại Nguyệt",
+   "lon": 109.0,
+   "lat": 8.6,
+   "status": "producing",
+   "systems": [
+    "cuulong",
+    "lng",
+    "ncs"
+   ],
+   "owner": "Idemitsu Gas Production (Vietnam)",
+   "capacity": "1,5 tỷ m³/năm",
+   "output": null,
+   "cod": "Sao Vàng 11/2020; Đại Nguyệt 11/2022",
+   "inputs": null,
+   "outputs": [
+    "svdn_gathering",
+    "ncs2_phase1",
+    "ncs2_phase2"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 05-1b & 05-1c. Nước sâu 110–130 m, ~300 km ĐN Vũng Tàu. Hai đoạn ống thu gom ~23 km (Thiên Ưng–Sao Vàng, Sao Vàng–NCS2). Điểm đặt ở Sao Vàng; Đại Nguyệt nằm lân cận về phía nam (xấp xỉ).",
+   "sources": [
+    {
+     "title": "Block 05-1b/05-1c (Sao Vang and Dai Nguyet Gas Field) – INPEX",
+     "url": "https://www.inpex.com/english/business/project/saovang.html",
+     "period": "trang dự án, truy cập 26/11/2026"
+    },
+    {
+     "title": "Đón nhận dòng khí đầu tiên từ mỏ Sao Vàng – Đại Nguyệt đến đường ống Nam Côn Sơn 2",
+     "url": "https://tapchicongthuong.vn/don-nhan-dong-khi-dau-tien-tu-mo-sao-vang---dai-nguyet-den-duong-ong-nam-con-son-2-76569.htm",
+     "period": "bài 16/11/2020"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "pm3_caa",
+   "kind": "field",
+   "name": "PM3-CAA (vùng chồng lấn Việt Nam – Malaysia)",
+   "short": "PM3-CAA",
+   "lon": 103.6,
+   "lat": 7.15,
+   "status": "producing",
+   "systems": [
+    "pm3"
+   ],
+   "owner": "Liên danh nhà thầu do Hibiscus Oil & Gas Malaysia dẫn dắt",
+   "capacity": null,
+   "output": "200 triệu ft³ chuẩn/ngày (~5,7 triệu m³/ngày quy đổi) — toàn khối, chia cho cả VN và Malaysia (cuối 2024)",
+   "cod": "29/04/2007 (khí vào bờ Cà Mau)",
+   "inputs": null,
+   "outputs": [
+    "pm3_ca_mau"
+   ],
+   "declining": true,
+   "decline_note": "PVCFC/PV GAS nêu nguồn PM3-CAA suy giảm (xem nguồn chế độ DCM).",
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô PM3 CAA. Nguồn khí chính cho Đạm Cà Mau (DCM) qua PM3–Cà Mau. Khí xử lý trên giàn BR-E (thiết kế 680 MMSCFD) rồi qua BR-A, BR-B. Quy đổi m³ là của người tổng hợp (1 ft³ = 0,0283 m³). Lịch sử: Lũy kế đến cuối 2024: ~1,6 nghìn tỷ ft³ (~43 tỷ m³), trong đó ~25 tỷ m³ cấp cho Việt Nam; Hệ thống PM3–Cà Mau đã tiếp nhận >22 tỷ m³ (08/2021)",
+   "sources": [
+    {
+     "title": "PM3 CAA Block: A Symbol of International Partnership (Petrovietnam)",
+     "url": "https://petrovietnam.vn/pm3-caa-block-a-symbol-of-international-partnership-for-peace-and-sustainable-development-28208",
+     "period": "bài 10/04/2025; số liệu sản lượng cuối 2024"
+    },
+    {
+     "title": "PM3-CM: Công trình khí đầu tiên hoàn toàn do Việt Nam thiết kế và xây dựng",
+     "url": "https://tapchicongthuong.vn/pm3--cm--cong-trinh-khi-dau-tien-hoan-toan-do-viet-nam-thiet-ke-va-xay-dung-83105.htm",
+     "period": "bài 17/08/2021"
+    },
+    {
+     "title": "Hệ thống PM3-Cà Mau thực hiện BDSC định kỳ 5 năm lần thứ 2",
+     "url": "https://tapchicongthuong.vn/he-thong-pm3-ca-mau-thuc-hien-bdsc-dinh-ky-5-nam-lan-thu-2-49245.htm",
+     "period": "bài 22/08/2017"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "cai_nuoc_46",
+   "kind": "field",
+   "name": "46 – Cái Nước",
+   "short": "Lô 46 Cái Nước",
+   "lon": 103.85,
+   "lat": 7.45,
+   "status": "producing",
+   "systems": [
+    "pm3"
+   ],
+   "owner": null,
+   "capacity": null,
+   "output": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "pm3_ca_mau"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 46 (Cái Nước). Được nêu là nguồn cùng PM3-CAA cho hệ thống PM3–Cà Mau ('PM3-46 Cái Nước'). Không có số liệu khí riêng trong nguồn đã mở.",
+   "sources": [
+    {
+     "title": "Các dự án khí đang vận hành và triển khai (Tạp chí Công Thương)",
+     "url": "https://tapchicongthuong.vn/cac-du-an-khi-dang-van-hanh-va-trien-khai-34439.htm",
+     "period": "bài 07/04/2014"
+    },
+    {
+     "title": "PM3-CM: Công trình khí đầu tiên hoàn toàn do Việt Nam thiết kế và xây dựng",
+     "url": "https://tapchicongthuong.vn/pm3--cm--cong-trinh-khi-dau-tien-hoan-toan-do-viet-nam-thiet-ke-va-xay-dung-83105.htm",
+     "period": "bài 17/08/2021"
+    },
+    {
+     "title": "PV GAS – 35 năm đổi mới sáng tạo và tiên phong công nghệ (Nhân Dân)",
+     "url": "https://nhandan.vn/pv-gas-35-nam-doi-moi-sang-tao-va-tien-phong-cong-nghe-trong-nganh-cong-nghiep-khi-viet-nam-post916822.html",
+     "period": "bài 21/10/2025"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "kim_long",
+   "kind": "field",
+   "name": "Kim Long (cụm Lô B)",
+   "short": "Kim Long",
+   "lon": 103.2,
+   "lat": 8.05,
+   "status": "developing",
+   "systems": [
+    "lob"
+   ],
+   "owner": "Công ty Điều hành Dầu khí Phú Quốc (PQPOC) – chủ đầu tư thượng nguồn",
+   "capacity": "5,06 tỷ m³/năm (toàn mỏ Lô B, khí đưa vào bờ)",
+   "output": null,
+   "cod": "Kế hoạch 08/2027 (Ô Môn I nhận khí quý III/2027)",
+   "inputs": null,
+   "outputs": [
+    "lo_b_o_mon"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô B&48/95 và 52/97. Mỏ cách bờ ~220 km, nước sâu ~77 m. Tên mỏ Kim Long/Ác Quỷ/Cá Voi KHÔNG xuất hiện trong các nguồn đã mở — vị trí từng mỏ là ước lượng; số liệu công suất là của cả Lô B. Giàn CPP đang hoàn thiện thượng tầng (chiến dịch 03/8–30/11/2026).",
+   "sources": [
+    {
+     "title": "PVN khởi động chuỗi dự án Lô B – Ô Môn (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/pvn-khoi-dong-chuoi-du-an-lo-b-o-mon.html",
+     "period": "bài 04/04/2016 (thông số thiết kế)"
+    },
+    {
+     "title": "Chuỗi dự án khí Lô B dự kiến có dòng khí đầu tiên vào tháng 8-2027 (SGGP)",
+     "url": "https://www.sggp.org.vn/chuoi-du-an-khi-lo-b-du-kien-co-dong-khi-dau-tien-vao-thang-8-2027-post831467.html",
+     "period": "bài 31/12/2025"
+    },
+    {
+     "title": "Đón dòng khí Lô B đầu tiên vào dự án nhiệt điện Ô Môn I trong quý III/2027",
+     "url": "https://tapchicongthuong.vn/don-dong-khi-lo-b-dau-tien-vao-du-an-nhiet-dien-o-mon-i-trong-quy-iii-2027-391428.htm",
+     "period": "bài 09/01/2026"
+    },
+    {
+     "title": "Dự án khí Lô B – Ô Môn tăng tốc hoàn thành các mốc thi công trọng điểm (Người Quan Sát)",
+     "url": "https://nguoiquansat.vn/du-an-khi-lo-b-o-mon-tang-toc-hoan-thanh-cac-moc-thi-cong-trong-diem-308560.html",
+     "period": "bài 05/08/2026"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "ac_quy",
+   "kind": "field",
+   "name": "Ác Quỷ (cụm Lô B)",
+   "short": "Ác Quỷ",
+   "lon": 103.05,
+   "lat": 7.9,
+   "status": "developing",
+   "systems": [
+    "lob"
+   ],
+   "owner": null,
+   "capacity": null,
+   "output": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "lo_b_o_mon"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô B&48/95 và 52/97. Xem bản ghi kim_long; vị trí ước lượng, tên mỏ chưa có trong nguồn đã mở.",
+   "sources": [
+    {
+     "title": "PVN khởi động chuỗi dự án Lô B – Ô Môn (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/pvn-khoi-dong-chuoi-du-an-lo-b-o-mon.html",
+     "period": "bài 04/04/2016 (thông số thiết kế)"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "ca_voi_lob",
+   "kind": "field",
+   "name": "Cá Voi (cụm Lô B)",
+   "short": "Cá Voi (Lô B)",
+   "lon": 103.35,
+   "lat": 7.85,
+   "status": "developing",
+   "systems": [
+    "lob"
+   ],
+   "owner": null,
+   "capacity": null,
+   "output": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "lo_b_o_mon"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô B&48/95 và 52/97. Xem bản ghi kim_long; vị trí ước lượng, tên mỏ chưa có trong nguồn đã mở.",
+   "sources": [
+    {
+     "title": "PVN khởi động chuỗi dự án Lô B – Ô Môn (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/pvn-khoi-dong-chuoi-du-an-lo-b-o-mon.html",
+     "period": "bài 04/04/2016 (thông số thiết kế)"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "nam_du_u_minh",
+   "kind": "field",
+   "name": "Nam Du – U Minh",
+   "short": "Nam Du – U Minh",
+   "lon": 103.7,
+   "lat": 8.5,
+   "status": "developing",
+   "systems": [
+    "pm3"
+   ],
+   "owner": "Jadestone Energy",
+   "capacity": null,
+   "output": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "pm3_ca_mau"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 46/07 (Nam Du) và 51 (U Minh) — số lô theo kết quả tìm kiếm, chưa mở nguồn xác nhận. FDP được Chính phủ phê duyệt (03/2026), 2P ban đầu ~32 triệu thùng quy dầu. Kết quả tìm kiếm (chưa mở) cho biết: GSPA với PV GAS 04/2026, 80 triệu ft³/ngày, dòng khí đầu tiên cuối 2028, dẫn qua ống 18 inch PM3–Cà Mau — cần kiểm chứng. Vị trí rất xấp xỉ.",
+   "sources": [
+    {
+     "title": "Vietnam advances offshore gas project with development approval (World Oil)",
+     "url": "https://worldoil.com/news/2026/3/19/vietnam-advances-offshore-gas-project-with-development-approval/",
+     "period": "bài 19/03/2026"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "ca_voi_xanh",
+   "kind": "field",
+   "name": "Cá Voi Xanh",
+   "short": "Cá Voi Xanh",
+   "lon": 109.45,
+   "lat": 15.6,
+   "status": "undeveloped",
+   "systems": [
+    "cvx"
+   ],
+   "owner": "ExxonMobil (nhà điều hành Lô 117-119)",
+   "capacity": null,
+   "output": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "ca_voi_xanh_pipeline"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 118. Cách bờ miền Trung ~100 km. Chưa có FID; ExxonMobil chỉ nói dự án 'đang tiến triển', khái niệm cấp khí cho ~3 GW điện.",
+   "sources": [
+    {
+     "title": "Ca Voi Xanh project overview (ExxonMobil)",
+     "url": "https://corporate.exxonmobil.com/Locations/Vietnam/Ca-Voi-Xanh-project-overview",
+     "period": "trang công ty, truy cập 26/11/2026"
+    },
+    {
+     "title": "Xây 4 nhà máy nhiệt điện khí quy mô lớn tại miền Trung (Znews)",
+     "url": "https://znews.vn/xay-4-nha-may-nhiet-dien-khi-quy-mo-lon-tai-mien-trung-post675193.html",
+     "period": "bài 20/08/2016"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "ken_bau",
+   "kind": "field",
+   "name": "Kèn Bầu",
+   "short": "Kèn Bầu",
+   "lon": 107.85,
+   "lat": 16.75,
+   "status": "undeveloped",
+   "systems": [
+    "songhong"
+   ],
+   "owner": "Eni Vietnam",
+   "capacity": null,
+   "output": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 114. Cách đất liền Quảng Trị ~65 km, Đà Nẵng ~86 km. QHĐ VIII dự kiến phát triển 2031–2035; chưa có phương án đường ống/điểm tiếp bờ.",
+   "sources": [
+    {
+     "title": "Quảng Trị kỳ vọng phát triển điện khí từ mỏ khí Kèn Bầu (Nhà Đầu Tư)",
+     "url": "https://nhadautu.vn/quang-tri-ky-vong-phat-trien-dien-khi-tu-mo-khi-ken-bau-d94048.html",
+     "period": "bài 01/03/2025"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "thai_binh",
+   "kind": "field",
+   "name": "Thái Bình",
+   "short": "Thái Bình",
+   "lon": 106.8,
+   "lat": 20.25,
+   "status": "producing",
+   "systems": [
+    "songhong"
+   ],
+   "owner": "PCOSB (theo bài 2015)",
+   "capacity": "0,5664 triệu m³/ngày (~200 triệu m³/năm) — công suất GĐ1 hệ thống",
+   "output": null,
+   "cod": "07/08/2015",
+   "inputs": null,
+   "outputs": [
+    "ham_rong_thai_binh"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 102 (Lô 102&106). Giàn đầu giếng không người; ống ~24–25 km vào bờ. Bài kỷ niệm 10 năm (08/2025) không có số liệu sản lượng.",
+   "sources": [
+    {
+     "title": "Đưa dòng khí đầu tiên ngoài khơi vào Tiền Hải – Thái Bình (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/dua-dong-khi-dau-tien-ngoai-khoi-vao-tien-hai-thai-binh.html",
+     "period": "bài 08/08/2015"
+    },
+    {
+     "title": "Lễ khánh thành Hệ thống thu gom & phân phối khí mỏ Hàm Rồng và mỏ Thái Bình lô 102&106 GĐ1",
+     "url": "https://tapchicongthuong.vn/le-khanh-thanh--he-thong-thu-gom-khi-phan-phoi-khi-mo-ham-rong-va-mo-thai-binh-lo-102-106-giai-doan-1-42557.htm",
+     "period": "bài 29/09/2015"
+    },
+    {
+     "title": "The first commercial gas flow from Thai Binh field (Năng lượng Việt Nam)",
+     "url": "https://vietnamenergy.vn/the-first-commercial-gas-flow-from-thai-binh-field-13344.html",
+     "period": "bài 11/08/2015"
+    },
+    {
+     "title": "PV GAS kỷ niệm 10 năm vận hành hệ thống khí Hàm Rồng – Thái Bình",
+     "url": "https://diendandoanhnghiep.vn/pv-gas-ky-niem-10-nam-van-hanh-he-thong-khi-ham-rong-thai-binh-10158881.html",
+     "period": "bài 11/08/2025"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "ham_rong",
+   "kind": "field",
+   "name": "Hàm Rồng",
+   "short": "Hàm Rồng",
+   "lon": 107.1,
+   "lat": 20.55,
+   "status": null,
+   "systems": [
+    "songhong"
+   ],
+   "owner": null,
+   "capacity": null,
+   "output": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "ham_rong_thai_binh"
+   ],
+   "declining": false,
+   "decline_note": null,
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô 106 (Lô 102&106). Có tên trong dự án 'Hệ thống thu gom và phân phối khí mỏ Hàm Rồng và mỏ Thái Bình', nhưng nguồn đã mở không xác nhận Hàm Rồng đang cấp khí; trạng thái để null. Vị trí rất xấp xỉ.",
+   "sources": [
+    {
+     "title": "Lễ khánh thành Hệ thống thu gom & phân phối khí mỏ Hàm Rồng và mỏ Thái Bình lô 102&106 GĐ1",
+     "url": "https://tapchicongthuong.vn/le-khanh-thanh--he-thong-thu-gom-khi-phan-phoi-khi-mo-ham-rong-va-mo-thai-binh-lo-102-106-giai-doan-1-42557.htm",
+     "period": "bài 29/09/2015"
+    },
+    {
+     "title": "PV GAS kỷ niệm 10 năm vận hành hệ thống khí Hàm Rồng – Thái Bình",
+     "url": "https://diendandoanhnghiep.vn/pv-gas-ky-niem-10-nam-van-hanh-he-thong-khi-ham-rong-thai-binh-10158881.html",
+     "period": "bài 11/08/2025"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "tien_hai_onshore",
+   "kind": "field",
+   "name": "Tiền Hải C / D14 / Đồng Quan D (mỏ trên bờ)",
+   "short": "Tiền Hải (trên bờ)",
+   "lon": 106.55,
+   "lat": 20.42,
+   "status": "producing",
+   "systems": [
+    "songhong"
+   ],
+   "owner": null,
+   "capacity": null,
+   "output": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "ham_rong_thai_binh"
+   ],
+   "declining": true,
+   "decline_note": "Bộ Công Thương (08/2015): nguồn khí cấp cho KCN Tiền Hải 'đang sụt giảm mạnh'; các mỏ trên bờ đã hơn 30 năm.",
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Lô trên bờ Thái Bình. Trạng thái 'producing' theo bài 2015; không có xác nhận mới hơn.",
+   "sources": [
+    {
+     "title": "Đưa dòng khí đầu tiên ngoài khơi vào Tiền Hải – Thái Bình (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/dua-dong-khi-dau-tien-ngoai-khoi-vao-tien-hai-thai-binh.html",
+     "period": "bài 08/08/2015"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "bach_ho_ccp",
+   "kind": "cpp",
+   "name": "Giàn nén khí trung tâm Bạch Hổ (CCP)",
+   "lon": 107.95,
+   "lat": 9.75,
+   "status": "operating",
+   "systems": [
+    "cuulong",
+    "ncs"
+   ],
+   "owner": "Vietsovpetro",
+   "capacity": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "cuu_long_bach_ho_dinh_co",
+    "su_tu_vang_rang_dong_bach_ho",
+    "ncs2_phase1"
+   ],
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Gom, nén khí đồng hành Cửu Long (kể cả Sư Tử/Rạng Đông) đẩy vào ống Bạch Hổ – Dinh Cố Bài 2020 có thông số thiết bị (1,62 triệu m³/ngày; tháp 4,05 triệu m³/ngày) nhưng không rõ là tổng công suất CCP",
+   "sources": [
+    {
+     "title": "Tống Cảnh Sơn và cs., Công nghệ thu gom, xử lý và vận chuyển khí đồng hành ở các mỏ của Vietsovpetro tại Lô 09-1, Tạp chí Dầu khí số 9/2020 tr.40-48",
+     "url": "https://petrovietnam.vn/DataStore/Documents/2020/TCDK/T%209/p.40-48%20-%20Tong%20Canh%20Son-1.pdf",
+     "period": "số 9/2020; số liệu đến 31/12/2019"
+    },
+    {
+     "title": "PV GAS tiếp nhận nguồn khí từ dự án mỏ Sư Tử Trắng giai đoạn 2A",
+     "url": "https://tapchicongthuong.vn/pv-gas-tiep-nhan-nguon-khi-tu-du-an-mo-su-tu-trang-giai-doan-2a-81981.htm",
+     "period": "bài 29/06/2021"
+    }
+   ],
+   "rank": 3,
+   "short": "CCP Bạch Hổ"
+  },
+  {
+   "id": "thien_ung_cpp",
+   "kind": "cpp",
+   "name": "Giàn BK-Thiên Ưng",
+   "lon": 108.85,
+   "lat": 8.75,
+   "status": "operating",
+   "systems": [
+    "ncs"
+   ],
+   "owner": null,
+   "capacity": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "ncs2_phase1",
+    "svdn_gathering"
+   ],
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Đầu NCS2 GĐ1; nút gom khí Đại Hùng, Sao Vàng – Đại Nguyệt",
+   "sources": [
+    {
+     "title": "Hoàn thành và đưa vào khai thác Dự án khí Nam Côn Sơn 2, giai đoạn 1",
+     "url": "https://tapchicongthuong.vn/hoan-thanh-va-dua-vao-khai-thac-du-an-khi-nam-con-son-2--giai-doan-1-25699.htm",
+     "period": "bài 16/12/2015"
+    },
+    {
+     "title": "Đón nhận dòng khí đầu tiên từ mỏ Sao Vàng – Đại Nguyệt đến đường ống Nam Côn Sơn 2",
+     "url": "https://tapchicongthuong.vn/don-nhan-dong-khi-dau-tien-tu-mo-sao-vang---dai-nguyet-den-duong-ong-nam-con-son-2-76569.htm",
+     "period": "bài 16/11/2020"
+    }
+   ],
+   "rank": 3,
+   "short": "Giàn Thiên Ưng"
+  },
+  {
+   "id": "rong_doi_cpp",
+   "kind": "cpp",
+   "name": "Giàn CPP Rồng Đôi (Lô 11.2)",
+   "lon": 108.6,
+   "lat": 8.3,
+   "status": "operating",
+   "systems": [
+    "ncs"
+   ],
+   "owner": null,
+   "capacity": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "ncs1"
+   ],
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Xử lý khí trước khi vào NCS1; dự kiến tiếp nhận khí Thiên Nga – Hải Âu",
+   "sources": [
+    {
+     "title": "PV GAS mở thêm cửa tiếp nhận nguồn khí 7,4 tỷ m³ từ Lô 12/11 (Người Quan Sát)",
+     "url": "https://nguoiquansat.vn/pv-gas-mo-them-cua-tiep-nhan-nguon-khi-7-4-ty-m-tu-lo-12-11-ngoai-bien-dong-318927.html",
+     "period": "bài 28/09/2026"
+    }
+   ],
+   "rank": 3,
+   "short": "CPP Rồng Đôi"
+  },
+  {
+   "id": "lob_cpp",
+   "kind": "cpp",
+   "name": "Giàn CPP Lô B",
+   "lon": 103.2,
+   "lat": 8.05,
+   "status": "construction",
+   "systems": [
+    "lob"
+   ],
+   "owner": "PQPOC",
+   "capacity": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "lo_b_o_mon"
+   ],
+   "precision": "xấp xỉ ±20–40 km, đặt theo khoảng cách/hướng nêu trong nguồn và bản đồ lô đã công bố; không phải tọa độ khảo sát",
+   "note": "Giàn xử lý trung tâm Lô B (1 CPP, 46 giàn khai thác, ~750 giếng theo thiết kế 2016) Đang hoàn thiện thượng tầng, chiến dịch 120 ngày 03/8–30/11/2026.",
+   "sources": [
+    {
+     "title": "PVN khởi động chuỗi dự án Lô B – Ô Môn (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/pvn-khoi-dong-chuoi-du-an-lo-b-o-mon.html",
+     "period": "bài 04/04/2016 (thông số thiết kế)"
+    },
+    {
+     "title": "Dự án khí Lô B – Ô Môn tăng tốc hoàn thành các mốc thi công trọng điểm (Người Quan Sát)",
+     "url": "https://nguoiquansat.vn/du-an-khi-lo-b-o-mon-tang-toc-hoan-thanh-cac-moc-thi-cong-trong-diem-308560.html",
+     "period": "bài 05/08/2026"
+    }
+   ],
+   "rank": 3,
+   "short": "CPP Lô B"
+  },
+  {
+   "id": "lfs_long_hai",
+   "kind": "landing",
+   "name": "Trạm tiếp bờ Long Hải",
+   "lon": 107.23,
+   "lat": 10.39,
+   "status": "operating",
+   "systems": [
+    "cuulong",
+    "ncs"
+   ],
+   "owner": "PV GAS",
+   "capacity": null,
+   "cod": "1995 (Cửu Long); 11/2020 (NCS2)",
+   "inputs": null,
+   "outputs": [
+    "cuu_long_bach_ho_dinh_co",
+    "ncs1",
+    "ncs2_phase2",
+    "ncs2_onshore"
+   ],
+   "precision": "xấp xỉ ±2–5 km (đặt theo tên xã/KCN trong nguồn), không phải tọa độ khảo sát",
+   "note": "Tiếp bờ ống Bạch Hổ (Cửu Long) và NCS2; NCS1 cũng vào bờ khu vực Long Hải Nguồn 2014 cho NCS1 chỉ nói 'trạm tiếp nhận và xử lý Dinh Cố', không nói rõ trạm tiếp bờ.",
+   "sources": [
+    {
+     "title": "Tống Cảnh Sơn và cs., Công nghệ thu gom, xử lý và vận chuyển khí đồng hành ở các mỏ của Vietsovpetro tại Lô 09-1, Tạp chí Dầu khí số 9/2020 tr.40-48",
+     "url": "https://petrovietnam.vn/DataStore/Documents/2020/TCDK/T%209/p.40-48%20-%20Tong%20Canh%20Son-1.pdf",
+     "period": "số 9/2020; số liệu đến 31/12/2019"
+    },
+    {
+     "title": "Đón nhận dòng khí đầu tiên từ mỏ Sao Vàng – Đại Nguyệt đến đường ống Nam Côn Sơn 2",
+     "url": "https://tapchicongthuong.vn/don-nhan-dong-khi-dau-tien-tu-mo-sao-vang---dai-nguyet-den-duong-ong-nam-con-son-2-76569.htm",
+     "period": "bài 16/11/2020"
+    },
+    {
+     "title": "Nam Con Son 2 Gas Pipeline (Offshore Technology project profile)",
+     "url": "https://www.offshore-technology.com/projects/nam-con-son-2-gas-pipeline/",
+     "period": "hồ sơ dự án, nội dung đến khoảng 2019–2020 (truy cập 26/11/2026)"
+    }
+   ],
+   "rank": 3,
+   "short": "Long Hải"
+  },
+  {
+   "id": "gpp_dinh_co",
+   "kind": "gpp",
+   "name": "Nhà máy xử lý khí Dinh Cố (GPP Dinh Cố)",
+   "lon": 107.24,
+   "lat": 10.47,
+   "status": "operating",
+   "systems": [
+    "cuulong"
+   ],
+   "owner": "PV GAS",
+   "capacity": null,
+   "cod": "09/07/1999",
+   "inputs": null,
+   "outputs": [
+    "cuu_long_bach_ho_dinh_co",
+    "dinh_co_phu_my"
+   ],
+   "precision": "xấp xỉ ±2–5 km (đặt theo tên xã/KCN trong nguồn), không phải tọa độ khảo sát",
+   "note": "Xử lý khí ẩm Cửu Long: khí khô, LPG, condensate (deep-chill, turbo-expander) Không có trong nguồn đã mở; tìm kiếm cho thấy 4,3 → 5,8 triệu m³/ngày (cần kiểm chứng). Lũy kế 25 năm: nhận ~44,9 tỷ m³ khí ẩm, cấp ~39,7 tỷ m³ khí khô, 7,2 triệu tấn LPG",
+   "sources": [
+    {
+     "title": "GPP Dinh Cố – Niềm tự hào của ngành công nghiệp khí Việt Nam (Diễn đàn Doanh nghiệp)",
+     "url": "https://diendandoanhnghiep.vn/gpp-dinh-co-niem-tu-hao-cua-nganh-cong-nghiep-khi-viet-nam-10136816.html",
+     "period": "bài 09/07/2024 (lũy kế 25 năm)"
+    },
+    {
+     "title": "PV GAS – 35 năm đổi mới sáng tạo và tiên phong công nghệ (Nhân Dân)",
+     "url": "https://nhandan.vn/pv-gas-35-nam-doi-moi-sang-tao-va-tien-phong-cong-nghe-trong-nganh-cong-nghiep-khi-viet-nam-post916822.html",
+     "period": "bài 21/10/2025"
+    }
+   ],
+   "rank": 2,
+   "short": "GPP Dinh Cố"
+  },
+  {
+   "id": "ncs_terminal",
+   "kind": "gpp",
+   "name": "Trạm tiếp nhận & xử lý khí Nam Côn Sơn (Dinh Cố)",
+   "lon": 107.25,
+   "lat": 10.46,
+   "status": "operating",
+   "systems": [
+    "ncs"
+   ],
+   "owner": "PV GAS NCSP",
+   "capacity": "22 triệu m³/ngày",
+   "cod": "2002/2003",
+   "inputs": null,
+   "outputs": [
+    "ncs1"
+   ],
+   "precision": "xấp xỉ ±2–5 km (đặt theo tên xã/KCN trong nguồn), không phải tọa độ khảo sát",
+   "note": "Tiếp nhận, xử lý khí NCS1 trước khi đưa về Phú Mỹ Bài 09/2026 gọi là công suất thiết kế NM xử lý khí Nam Côn Sơn Vị trí đặt cạnh GPP Dinh Cố (theo nguồn 2014 'trạm tiếp nhận và xử lý Dinh Cố'); tọa độ ước lượng.",
+   "sources": [
+    {
+     "title": "Các dự án khí đang vận hành và triển khai (Tạp chí Công Thương)",
+     "url": "https://tapchicongthuong.vn/cac-du-an-khi-dang-van-hanh-va-trien-khai-34439.htm",
+     "period": "bài 07/04/2014"
+    },
+    {
+     "title": "PV GAS mở thêm cửa tiếp nhận nguồn khí 7,4 tỷ m³ từ Lô 12/11 (Người Quan Sát)",
+     "url": "https://nguoiquansat.vn/pv-gas-mo-them-cua-tiep-nhan-nguon-khi-7-4-ty-m-tu-lo-12-11-ngoai-bien-dong-318927.html",
+     "period": "bài 28/09/2026"
+    }
+   ],
+   "rank": 3,
+   "short": "Trạm Nam Côn Sơn"
+  },
+  {
+   "id": "gpp2_dinh_co",
+   "kind": "gpp",
+   "name": "Nhà máy xử lý khí GPP2 (Nam Côn Sơn 2)",
+   "lon": 107.25,
+   "lat": 10.48,
+   "status": "operating",
+   "systems": [
+    "ncs"
+   ],
+   "owner": "PV GAS",
+   "capacity": "10 triệu m³/ngày",
+   "cod": "2020 (nối GĐ2 tháng 9/2020 theo Offshore Tech)",
+   "inputs": null,
+   "outputs": [
+    "ncs2_onshore"
+   ],
+   "precision": "xấp xỉ ±2–5 km (đặt theo tên xã/KCN trong nguồn), không phải tọa độ khảo sát",
+   "note": "Xử lý khí NCS2, thu hồi LPG (có dự phòng thu hồi ethane) Theo bài 12/2015; tìm kiếm cho thấy 20 triệu m³/ngày là quy mô đầy đủ (chưa kiểm chứng) Xã An Ngãi, H. Long Điền (theo kết quả tìm kiếm) — tọa độ ước lượng.",
+   "sources": [
+    {
+     "title": "Hoàn thành và đưa vào khai thác Dự án khí Nam Côn Sơn 2, giai đoạn 1",
+     "url": "https://tapchicongthuong.vn/hoan-thanh-va-dua-vao-khai-thac-du-an-khi-nam-con-son-2--giai-doan-1-25699.htm",
+     "period": "bài 16/12/2015"
+    },
+    {
+     "title": "Nam Con Son 2 Gas Pipeline (Offshore Technology project profile)",
+     "url": "https://www.offshore-technology.com/projects/nam-con-son-2-gas-pipeline/",
+     "period": "hồ sơ dự án, nội dung đến khoảng 2019–2020 (truy cập 26/11/2026)"
+    }
+   ],
+   "rank": 3,
+   "short": "GPP2 Dinh Cố"
+  },
+  {
+   "id": "gdc_phu_my",
+   "kind": "hub",
+   "name": "Trung tâm phân phối khí Phú Mỹ (GDC Phú Mỹ)",
+   "lon": 107.04,
+   "lat": 10.59,
+   "status": "operating",
+   "systems": [
+    "cuulong",
+    "ncs",
+    "lng"
+   ],
+   "owner": "PV GAS (Khí Đông Nam Bộ)",
+   "capacity": "22 triệu m³/ngày",
+   "cod": "2002",
+   "inputs": null,
+   "outputs": [
+    "ncs1",
+    "ncs2_onshore",
+    "dinh_co_phu_my",
+    "phu_my_nhon_trach_hiep_phuoc",
+    "phu_my_my_xuan_go_dau"
+   ],
+   "precision": "xấp xỉ ±2–5 km (đặt theo tên xã/KCN trong nguồn), không phải tọa độ khảo sát",
+   "note": "Tiếp nhận & phân phối khí Đông Nam Bộ cho NMĐ Phú Mỹ, Đạm Phú Mỹ, khách hàng công nghiệp Cấp >7 tỷ m³/năm (2017) KCN Phú Mỹ 1, 12,5 ha. Hộ tiêu thụ nêu trong nguồn: các NMĐ Phú Mỹ (5.150 MW), Đạm Phú Mỹ (>800.000 tấn urê/năm).",
+   "sources": [
+    {
+     "title": "GDC-Phú Mỹ: “Trái tim” khí của hệ thống vận chuyển Đông Nam bộ",
+     "url": "https://tapchicongthuong.vn/gdc-phu-my---trai-tim--khi-cua-he-thong-van-chuyen-dong-nam-bo-51637.htm",
+     "period": "bài 16/12/2017"
+    },
+    {
+     "title": "Các dự án khí đang vận hành và triển khai (Tạp chí Công Thương)",
+     "url": "https://tapchicongthuong.vn/cac-du-an-khi-dang-van-hanh-va-trien-khai-34439.htm",
+     "period": "bài 07/04/2014"
+    }
+   ],
+   "rank": 3,
+   "short": "GDC Phú Mỹ"
+  },
+  {
+   "id": "lfs_mui_tram",
+   "kind": "landing",
+   "name": "Trạm tiếp bờ Mũi Tràm (PM3–Cà Mau)",
+   "lon": 104.8,
+   "lat": 9.12,
+   "status": "operating",
+   "systems": [
+    "pm3",
+    "lob"
+   ],
+   "owner": "Công ty Khí Cà Mau (KCM)",
+   "capacity": null,
+   "cod": "29/04/2007",
+   "inputs": null,
+   "outputs": [
+    "pm3_ca_mau",
+    "lo_b_o_mon"
+   ],
+   "precision": "xấp xỉ ±2–5 km (đặt theo tên xã/KCN trong nguồn), không phải tọa độ khảo sát",
+   "note": "Tiếp bờ ống PM3–Cà Mau; điểm cuối nhánh 37 km từ Lô B (dự án) Ấp Mũi Tràm (B), xã Khánh Bình Tây Bắc, H. Trần Văn Thời.",
+   "sources": [
+    {
+     "title": "PM3-CM: Công trình khí đầu tiên hoàn toàn do Việt Nam thiết kế và xây dựng",
+     "url": "https://tapchicongthuong.vn/pm3--cm--cong-trinh-khi-dau-tien-hoan-toan-do-viet-nam-thiet-ke-va-xay-dung-83105.htm",
+     "period": "bài 17/08/2021"
+    },
+    {
+     "title": "PVN khởi động chuỗi dự án Lô B – Ô Môn (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/pvn-khoi-dong-chuoi-du-an-lo-b-o-mon.html",
+     "period": "bài 04/04/2016 (thông số thiết kế)"
+    },
+    {
+     "title": "Hệ thống PM3-Cà Mau thực hiện BDSC định kỳ 5 năm lần thứ 2",
+     "url": "https://tapchicongthuong.vn/he-thong-pm3-ca-mau-thuc-hien-bdsc-dinh-ky-5-nam-lan-thu-2-49245.htm",
+     "period": "bài 22/08/2017"
+    }
+   ],
+   "rank": 3,
+   "short": "Mũi Tràm"
+  },
+  {
+   "id": "gdc_ca_mau",
+   "kind": "hub",
+   "name": "Trung tâm phân phối khí Cà Mau (cụm Khí–Điện–Đạm Khánh An)",
+   "lon": 105.04,
+   "lat": 9.27,
+   "status": "operating",
+   "systems": [
+    "pm3"
+   ],
+   "owner": "Công ty Khí Cà Mau (KCM)",
+   "capacity": "2 tỷ m³/năm (thiết kế 'trên 2 tỷ')",
+   "cod": "2007",
+   "inputs": null,
+   "outputs": [
+    "pm3_ca_mau"
+   ],
+   "precision": "xấp xỉ ±2–5 km (đặt theo tên xã/KCN trong nguồn), không phải tọa độ khảo sát",
+   "note": "Phân phối khí PM3 cho NMĐ Cà Mau 1&2, Đạm Cà Mau, GPP Cà Mau",
+   "sources": [
+    {
+     "title": "Hệ thống PM3-Cà Mau thực hiện BDSC định kỳ 5 năm lần thứ 2",
+     "url": "https://tapchicongthuong.vn/he-thong-pm3-ca-mau-thuc-hien-bdsc-dinh-ky-5-nam-lan-thu-2-49245.htm",
+     "period": "bài 22/08/2017"
+    },
+    {
+     "title": "PM3-CM: Công trình khí đầu tiên hoàn toàn do Việt Nam thiết kế và xây dựng",
+     "url": "https://tapchicongthuong.vn/pm3--cm--cong-trinh-khi-dau-tien-hoan-toan-do-viet-nam-thiet-ke-va-xay-dung-83105.htm",
+     "period": "bài 17/08/2021"
+    }
+   ],
+   "rank": 3,
+   "short": "GDC Cà Mau"
+  },
+  {
+   "id": "gpp_ca_mau",
+   "kind": "gpp",
+   "name": "Nhà máy xử lý khí Cà Mau (GPP Cà Mau)",
+   "lon": 105.05,
+   "lat": 9.28,
+   "status": "operating",
+   "systems": [
+    "pm3"
+   ],
+   "owner": "Công ty Khí Cà Mau (KCM, nhận vận hành 06/12/2017)",
+   "capacity": "6,2 triệu m³/ngày",
+   "cod": "Khánh thành 02/05/2018",
+   "inputs": null,
+   "outputs": [
+    "pm3_ca_mau"
+   ],
+   "precision": "xấp xỉ ±2–5 km (đặt theo tên xã/KCN trong nguồn), không phải tọa độ khảo sát",
+   "note": "Tách LPG (~600 t/ngày) và condensate (~35 t/ngày) từ khí PM3-CAA; cấp permeate gas cho Đạm Cà Mau",
+   "sources": [
+    {
+     "title": "Khánh thành Nhà máy xử lý khí Cà Mau",
+     "url": "https://tapchicongthuong.vn/khanh-thanh-nha-may-xu-ly-khi-ca-mau-53218.htm",
+     "period": "bài 02/05/2018"
+    },
+    {
+     "title": "PM3-CM: Công trình khí đầu tiên hoàn toàn do Việt Nam thiết kế và xây dựng",
+     "url": "https://tapchicongthuong.vn/pm3--cm--cong-trinh-khi-dau-tien-hoan-toan-do-viet-nam-thiet-ke-va-xay-dung-83105.htm",
+     "period": "bài 17/08/2021"
+    },
+    {
+     "title": "PV GAS – 35 năm đổi mới sáng tạo và tiên phong công nghệ (Nhân Dân)",
+     "url": "https://nhandan.vn/pv-gas-35-nam-doi-moi-sang-tao-va-tien-phong-cong-nghe-trong-nganh-cong-nghiep-khi-viet-nam-post916822.html",
+     "period": "bài 21/10/2025"
+    }
+   ],
+   "rank": 3,
+   "short": "GPP Cà Mau"
+  },
+  {
+   "id": "lfs_an_minh",
+   "kind": "landing",
+   "name": "Trạm tiếp bờ An Minh (Lô B)",
+   "lon": 104.86,
+   "lat": 9.68,
+   "status": "construction",
+   "systems": [
+    "lob"
+   ],
+   "owner": "PV GAS (chuỗi Lô B)",
+   "capacity": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "lo_b_o_mon"
+   ],
+   "precision": "xấp xỉ ±2–5 km (đặt theo tên xã/KCN trong nguồn), không phải tọa độ khảo sát",
+   "note": "Tiếp bờ tuyến biển Lô B – Ô Môn Tên trạm từ nguồn 2016 (An Minh, Kiên Giang cũ); tọa độ ước lượng ±5–10 km.",
+   "sources": [
+    {
+     "title": "PVN khởi động chuỗi dự án Lô B – Ô Môn (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/pvn-khoi-dong-chuoi-du-an-lo-b-o-mon.html",
+     "period": "bài 04/04/2016 (thông số thiết kế)"
+    }
+   ],
+   "rank": 3,
+   "short": "An Minh"
+  },
+  {
+   "id": "gdc_o_mon",
+   "kind": "hub",
+   "name": "Trung tâm phân phối khí Ô Môn (GDC Ô Môn)",
+   "lon": 105.62,
+   "lat": 10.12,
+   "status": "construction",
+   "systems": [
+    "lob"
+   ],
+   "owner": null,
+   "capacity": null,
+   "cod": "Kế hoạch quý III/2027",
+   "inputs": null,
+   "outputs": [
+    "lo_b_o_mon"
+   ],
+   "precision": "xấp xỉ ±2–5 km (đặt theo tên xã/KCN trong nguồn), không phải tọa độ khảo sát",
+   "note": "Cấp khí Lô B cho NMĐ Ô Môn I (660 MW), II (1.050), III (1.050), IV (1.050–1.155 MW)",
+   "sources": [
+    {
+     "title": "PVN khởi động chuỗi dự án Lô B – Ô Môn (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/pvn-khoi-dong-chuoi-du-an-lo-b-o-mon.html",
+     "period": "bài 04/04/2016 (thông số thiết kế)"
+    },
+    {
+     "title": "Đón dòng khí Lô B đầu tiên vào dự án nhiệt điện Ô Môn I trong quý III/2027",
+     "url": "https://tapchicongthuong.vn/don-dong-khi-lo-b-dau-tien-vao-du-an-nhiet-dien-o-mon-i-trong-quy-iii-2027-391428.htm",
+     "period": "bài 09/01/2026"
+    },
+    {
+     "title": "Chuỗi dự án khí Lô B dự kiến có dòng khí đầu tiên vào tháng 8-2027 (SGGP)",
+     "url": "https://www.sggp.org.vn/chuoi-du-an-khi-lo-b-du-kien-co-dong-khi-dau-tien-vao-thang-8-2027-post831467.html",
+     "period": "bài 31/12/2025"
+    }
+   ],
+   "rank": 2,
+   "short": "GDC Ô Môn"
+  },
+  {
+   "id": "gdc_tien_hai",
+   "kind": "hub",
+   "name": "Trung tâm phân phối khí Tiền Hải",
+   "lon": 106.53,
+   "lat": 20.41,
+   "status": "operating",
+   "systems": [
+    "songhong"
+   ],
+   "owner": "PV GAS",
+   "capacity": null,
+   "cod": "07/08/2015 (khí ngoài khơi)",
+   "inputs": null,
+   "outputs": [
+    "ham_rong_thai_binh"
+   ],
+   "precision": "xấp xỉ ±2–5 km (đặt theo tên xã/KCN trong nguồn), không phải tọa độ khảo sát",
+   "note": "Phân phối khí Thái Bình/Hàm Rồng và mỏ trên bờ cho KCN Tiền Hải KCN Tiền Hải, xã Đông Cơ, 5 ha.",
+   "sources": [
+    {
+     "title": "Đưa dòng khí đầu tiên ngoài khơi vào Tiền Hải – Thái Bình (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/dua-dong-khi-dau-tien-ngoai-khoi-vao-tien-hai-thai-binh.html",
+     "period": "bài 08/08/2015"
+    },
+    {
+     "title": "Lễ khánh thành Hệ thống thu gom & phân phối khí mỏ Hàm Rồng và mỏ Thái Bình lô 102&106 GĐ1",
+     "url": "https://tapchicongthuong.vn/le-khanh-thanh--he-thong-thu-gom-khi-phan-phoi-khi-mo-ham-rong-va-mo-thai-binh-lo-102-106-giai-doan-1-42557.htm",
+     "period": "bài 29/09/2015"
+    }
+   ],
+   "rank": 3,
+   "short": "GDC Tiền Hải"
+  },
+  {
+   "id": "lfs_dong_minh",
+   "kind": "landing",
+   "name": "Trạm tiếp bờ Đông Minh (điểm tiếp bờ Cồn Vành)",
+   "lon": 106.6,
+   "lat": 20.35,
+   "status": "operating",
+   "systems": [
+    "songhong"
+   ],
+   "owner": "PV GAS",
+   "capacity": null,
+   "cod": "2015",
+   "inputs": null,
+   "outputs": [
+    "ham_rong_thai_binh"
+   ],
+   "precision": "xấp xỉ ±2–5 km (đặt theo tên xã/KCN trong nguồn), không phải tọa độ khảo sát",
+   "note": "Tiếp bờ ống Thái Bình",
+   "sources": [
+    {
+     "title": "Đưa dòng khí đầu tiên ngoài khơi vào Tiền Hải – Thái Bình (Bộ Công Thương)",
+     "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/dua-dong-khi-dau-tien-ngoai-khoi-vao-tien-hai-thai-binh.html",
+     "period": "bài 08/08/2015"
+    }
+   ],
+   "rank": 3,
+   "short": "Đông Minh"
+  },
+  {
+   "id": "chu_lai_gpp_planned",
+   "kind": "gpp",
+   "name": "Điểm tiếp bờ & NM xử lý khí Cá Voi Xanh (Tam Quang, Chu Lai)",
+   "lon": 108.68,
+   "lat": 15.48,
+   "status": "planned",
+   "systems": [
+    "cvx"
+   ],
+   "owner": null,
+   "capacity": null,
+   "cod": null,
+   "inputs": null,
+   "outputs": [
+    "ca_voi_xanh_pipeline"
+   ],
+   "precision": "xấp xỉ ±2–5 km (đặt theo tên xã/KCN trong nguồn), không phải tọa độ khảo sát",
+   "note": "Tách nước, xử lý tạp chất khí Cá Voi Xanh trên bờ",
+   "sources": [
+    {
+     "title": "Xây 4 nhà máy nhiệt điện khí quy mô lớn tại miền Trung (Znews)",
+     "url": "https://znews.vn/xay-4-nha-may-nhiet-dien-khi-quy-mo-lon-tai-mien-trung-post675193.html",
+     "period": "bài 20/08/2016"
+    },
+    {
+     "title": "Ca Voi Xanh project overview (ExxonMobil)",
+     "url": "https://corporate.exxonmobil.com/Locations/Vietnam/Ca-Voi-Xanh-project-overview",
+     "period": "trang công ty, truy cập 26/11/2026"
+    }
+   ],
+   "rank": 3,
+   "short": "Chu Lai (dự kiến)"
+  },
+  {
+   "id": "lng_thi_vai",
+   "kind": "lng",
+   "name": "Kho cảng LNG Thị Vải (PV GAS)",
+   "lon": 107.035,
+   "lat": 10.565,
+   "status": "operating",
+   "systems": [
+    "lng"
+   ],
+   "owner": "PV GAS (vận hành: PV GAS LNG/chi nhánh logistics)",
+   "capacity": "1,0 triệu tấn LNG/năm",
+   "output": null,
+   "cod": "2023 (tàu LNG đầu tiên 10/07/2023; khánh thành 10/2023)",
+   "inputs": [
+    "LNG nhập khẩu bằng tàu"
+   ],
+   "outputs": [
+    "Nhơn Trạch 3 & 4 (PV Power) (hợp đồng)",
+    "Đường ống Thị Vải – Phú Mỹ → Trung tâm phân phối khí Phú Mỹ (cụm điện Phú Mỹ) (kết nối vật lý)",
+    "Nhà máy điện do NSMO huy động ở Đông Nam Bộ (kết nối vật lý)",
+    "Đạm Phú Mỹ (unknown)"
+   ],
+   "precision": "tâm phường Tân Phước (nguồn); dịch ~3 km lên bắc để tách ký hiệu với kho Cái Mép — vị trí minh họa",
+   "note": "Giai đoạn 1: 1 triệu tấn/năm, bồn 180.000 m³, tàu tới 100.000 DWT. Công suất tái hóa nâng từ 171 lên 288 tấn/giờ (~9,5 triệu Sm³/ngày), chạy thử xong 02/04/2026. Giai đoạn 2 nâng lên 3 triệu tấn/năm: Petrovietnam yêu cầu (02/2025), PV GAS dự kiến ký EPC cuối 2025 — chưa thấy nguồn xác nhận đã ký.",
+   "sources": [
+    {
+     "title": "PV GAS nâng công suất tái hóa khí kho LNG Thị Vải lên 288 tấn/giờ (Nhà Đầu tư)",
+     "url": "https://nhadautu.vn/pv-gas-nang-cong-suat-tai-hoa-khi-kho-lng-thi-vai-len-muc-288-tan-gio-san-sang-dap-ung-huy-dong-khi-cho-phat-dien-mua-kho-d104118.html",
+     "period": "07/04/2026"
+    },
+    {
+     "title": "PV GAS increases capacity of Thi Vai LNG terminal (Petrovietnam)",
+     "url": "https://petrovietnam.vn/pv-gas-increases-capacity-of-thi-vai-lng-terminal-33232",
+     "period": "09/04/2026"
+    },
+    {
+     "title": "Petrovietnam asks PV Gas to triple LNG Thi Vai terminal to 3 mln tons (The Investor)",
+     "url": "https://theinvestor.vn/petrovietnam-asks-pv-gas-to-triple-lng-thi-vai-terminal-to-3-mln-tons-d14411.html",
+     "period": "05/02/2025"
+    },
+    {
+     "title": "PV GAS nhập thêm gần 120.000 tấn LNG và LPG (Nhân Dân)",
+     "url": "https://nhandan.vn/pv-gas-nhap-them-gan-120000-tan-lng-va-lpg-ve-viet-nam-post968544.html",
+     "period": "11/06/2026"
+    },
+    {
+     "title": "Nghịch lý thừa khí, thiếu khí cho phát điện (Báo Đầu tư)",
+     "url": "https://baodautu.vn/nghich-ly-thua-khi-thieu-khi-cho-phat-dien-d686850.html",
+     "period": "28/08/2026"
+    },
+    {
+     "title": "PV GAS ký hợp đồng 25 năm cung cấp LNG cho NT3 & NT4 (Tạp chí Toàn cảnh)",
+     "url": "https://tapchitoaan.vn/pv-gas-ky-hop-dong-25-nam-cung-cap-lng-cho-nha-may-dien-nhon-trach-3-va-nhon-trach-4-cua-pv-power13010.html",
+     "period": "02/03/2025"
+    },
+    {
+     "title": "Petrovietnam Gas awards first multi-year LNG deal to Shell 2027–31",
+     "url": "https://petrovietnam.vn/petrovietnam-gas-awards-first-multi-year-lng-deal-to-shell-2027-31-32204",
+     "period": "08/01/2026"
+    },
+    {
+     "title": "Vietnam Electricity receives 715 MW Phu My 2.2 (The Investor) — dùng LNG một số giai đoạn 2024",
+     "url": "https://theinvestor.vn/vietnam-electricity-receives-715-mw-power-plant-from-foreign-investors-as-bot-contract-ends-d14397.html",
+     "period": "04/02/2025"
+    }
+   ],
+   "rank": 2,
+   "short": "LNG Thị Vải"
+  },
+  {
+   "id": "lng_cai_mep_agp",
+   "kind": "lng",
+   "name": "Cai Mep LNG Terminal (AG&P LNG; trước là liên doanh Hải Linh – AG&P, tức 'Hải Linh LNG Cái Mép')",
+   "lon": 107.03,
+   "lat": 10.515,
+   "status": "operating",
+   "systems": [
+    "lng"
+   ],
+   "owner": "AG&P LNG (Nebula Energy) — mua 49% năm 2024, nâng lên 100% (công bố 23/04/2026, Hải Linh thoái toàn bộ; theo bài VIR còn chờ phê duyệt)",
+   "capacity": "3,0 triệu tấn LNG/năm",
+   "output": null,
+   "cod": "Xây xong và chạy thử 2025; cấp khí đường ống đầu tiên cho Phú Mỹ công bố 17/07/2026",
+   "inputs": [
+    "LNG nhập khẩu bằng tàu"
+   ],
+   "outputs": [
+    "Phú Mỹ 2.1 và 2.1 mở rộng (EVNGENCO3, 900 MW) qua đường ống mới Cái Mép – Phú Mỹ (hợp đồng)",
+    "Khách hàng công nghiệp KCN Phú Mỹ (xe bồn CNG/LNG) (kết nối vật lý)"
+   ],
+   "precision": "tâm phường Tân Phước (nguồn); dịch ~3 km xuống nam (khu Cái Mép) để tách ký hiệu — vị trí minh họa",
+   "note": "Công suất nhập 3 triệu tấn/năm, mở rộng được tới 6 triệu tấn/năm; 3 bồn trên bờ tổng 220.000 m³; 14 làn nạp xe CNG/LNG; có thể chuyển tải LNG sang tàu nhỏ",
+   "sources": [
+    {
+     "title": "Cai Mep Terminal delivers first pipeline gas to Phu My Power Complex (VIR)",
+     "url": "https://vir.com.vn/cai-mep-terminal-delivers-first-pipeline-gas-to-phu-my-power-complex-157053.html",
+     "period": "20/07/2026"
+    },
+    {
+     "title": "AG&P LNG to increase stake to 100% in Cai Mep LNG terminal (LNG Industry)",
+     "url": "https://www.lngindustry.com/liquid-natural-gas/23042026/agp-lng-to-increase-stake-to-100-in-cai-mep-lng-terminal/",
+     "period": "23/04/2026"
+    }
+   ],
+   "rank": 3,
+   "short": "LNG Cái Mép"
+  },
+  {
+   "id": "lng_son_my",
+   "kind": "lng",
+   "name": "Kho cảng LNG Sơn Mỹ",
+   "lon": 107.667,
+   "lat": 10.75,
+   "status": "planned",
+   "systems": [
+    "lng"
+   ],
+   "owner": null,
+   "capacity": null,
+   "output": null,
+   "cod": "Dự kiến vận hành quý I/2027 (theo The Investor 18/03/2025) — chưa có nguồn 2026 xác nhận khởi công/đóng tài chính",
+   "inputs": [
+    "LNG nhập khẩu bằng tàu"
+   ],
+   "outputs": [
+    "Sơn Mỹ I (2.250 MW, EDF/Sojitz/Kyushu/Pacific) (dự kiến)",
+    "Sơn Mỹ II (2.250 MW, AES) (dự kiến)"
+   ],
+   "precision": "district — tâm huyện Hàm Tân (Bình Thuận cũ, nay Lâm Đồng); kho ở xã Sơn Mỹ",
+   "note": null,
+   "sources": [
+    {
+     "title": "Central Vietnam province to clear sites for LNG projects in May, for operation in 2028 (The Investor)",
+     "url": "https://theinvestor.vn/central-vietnam-province-to-clear-sites-for-lng-projects-in-may-for-operation-in-2028-d14909.html",
+     "period": "18/03/2025"
+    }
+   ],
+   "rank": 1,
+   "short": "LNG Sơn Mỹ"
+  },
+  {
+   "id": "lng_bac_trung_bo_vung_ang",
+   "kind": "lng",
+   "name": "Kho LNG Bắc Trung bộ (Vũng Áng, PV GAS)",
+   "lon": 106.3774,
+   "lat": 18.0375,
+   "status": "planned",
+   "systems": [
+    "lng"
+   ],
+   "owner": "PV GAS",
+   "capacity": "1–3 (giai đoạn 1) triệu tấn LNG/năm",
+   "output": null,
+   "cod": "Dự kiến vận hành 2029–2030",
+   "inputs": [
+    "LNG nhập khẩu bằng tàu"
+   ],
+   "outputs": [
+    "Quảng Trạch II LNG (EVN) (dự kiến)",
+    "Quảng Trạch III, Vũng Áng III (dự kiến)"
+   ],
+   "precision": "ward — tâm phường Vũng Áng (Hà Tĩnh)",
+   "note": null,
+   "sources": [
+    {
+     "title": "PV GAS kiến tạo hạ tầng năng lượng Vũng Áng (Tiền Phong)",
+     "url": "https://tienphong.vn/pv-gas-kien-tao-ha-tang-nang-luong-vung-ang-post1871146.tpo",
+     "period": "30/08/2026"
+    },
+    {
+     "title": "EVN and PVGAS discuss progress of supplying LNG to Quang Trach II and III",
+     "url": "https://en.evn.com.vn/d/en-US/news/EVN-and-PVGAS-discuss-progress-of-supplying-liquefied-natural-gas-to-Quang-Trach-II-and-III-power-plants-60-202-501514",
+     "period": "16/06/2026"
+    }
+   ],
+   "rank": 1,
+   "short": "LNG Vũng Áng"
+  },
+  {
+   "id": "lng_ca_na",
+   "kind": "lng",
+   "name": "Kho cảng LNG Cà Ná (đi kèm nhà máy điện LNG Cà Ná)",
+   "lon": 108.8914,
+   "lat": 11.338,
+   "status": "planned",
+   "systems": [
+    "lng"
+   ],
+   "owner": "Liên danh Trung Nam – Sideros River (hợp đồng dự án ký 10/04/2026)",
+   "capacity": "1–1,2 triệu tấn LNG/năm",
+   "output": null,
+   "cod": "Mục tiêu vận hành năm 2030",
+   "inputs": [
+    "LNG nhập khẩu bằng tàu"
+   ],
+   "outputs": [
+    "Nhà máy điện LNG Cà Ná 1.500 MW (dự kiến)"
+   ],
+   "precision": "ward — tâm xã Cà Ná (Ninh Thuận cũ, nay Khánh Hòa)",
+   "note": "bồn ~220.000 m³ + cảng nhập",
+   "sources": [
+    {
+     "title": "Ký kết hợp đồng dự án LNG Cà Ná gần 57.400 tỷ (Nhà Đầu tư)",
+     "url": "https://nhadautu.vn/ky-ket-hop-dong-du-an-lng-ca-na-gan-57400-ty-do-lien-danh-trung-nam-dau-tu-d104232.html",
+     "period": "11/04/2026"
+    }
+   ],
+   "rank": 1,
+   "short": "LNG Cà Ná"
+  },
+  {
+   "id": "pw_phu_my",
+   "kind": "power",
+   "name": "Cụm điện Phú Mỹ",
+   "short": "Phú Mỹ",
+   "lon": 107.022,
+   "lat": 10.618,
+   "status": "operating",
+   "systems": [
+    "cuulong",
+    "ncs",
+    "lng"
+   ],
+   "owner": "EVN (nhận chuyển giao BOT 04/02/2025) · EVN – EVNGENCO3 · EVN – EVNGENCO3 (Công ty Nhiệt điện Phú Mỹ) · EVN/EVNGENCO3 (nhận chuyển giao BOT 01/03/2024)",
+   "capacity": "Nhiệt điện Phú Mỹ 1: 1.090 MW (Wikipedia) / 1.118 MW (tóm tắt tìm kiếm) · Nhiệt điện Phú Mỹ 2.1 + 2.1 mở rộng: 900 MW (VIR; Wikipedia), gồm 2.1 (~477 MW) và 2.1 mở rộng (~468 MW) theo danh sách Wikipedia vi · Nhiệt điện Phú Mỹ 2.2: 715 MW · Nhiệt điện Phú Mỹ 3: 715 MW · Nhiệt điện Phú Mỹ 4: 450 MW (Wikipedia) / 477 MW (Wikipedia vi)",
+   "mw": 3870.0,
+   "cod": "Nhiệt điện Phú Mỹ 1: 2000–2001 · Nhiệt điện Phú Mỹ 2.1 + 2.1 mở rộng: 1997–1999 · Nhiệt điện Phú Mỹ 2.2: 2005 · Nhiệt điện Phú Mỹ 3: 01/03/2004 · Nhiệt điện Phú Mỹ 4: 2004",
+   "inputs": "Nhiệt điện Phú Mỹ 1: Đông Nam Bộ (khí thềm lục địa phía Nam) (kết nối vật lý, chưa thấy hợp đồng) · Nhiệt điện Phú Mỹ 2.1 + 2.1 mở rộng: Đông Nam Bộ + LNG Cái Mép (AG&P) qua đường ống Cái Mép – Phú Mỹ từ 07/2026 (hợp đồng) · Nhiệt điện Phú Mỹ 2.2: Đông Nam Bộ; dùng LNG một số giai đoạn 2024 (kết nối vật lý, chưa thấy hợp đồng) · Nhiệt điện Phú Mỹ 3: Đông Nam Bộ (kết nối vật lý, chưa thấy hợp đồng) · Nhiệt điện Phú Mỹ 4: Đông Nam Bộ (kết nối vật lý, chưa thấy hợp đồng)",
+   "output": null,
+   "outputs": null,
+   "precision": "plant (Wikipedia); vị trí hiển thị lệch nhẹ để tách ký hiệu với nhà máy/kho lân cận",
+   "note": "GSA với AG&P cho giai đoạn chạy thử đường ống (07/2026); khí nội địa: không thấy hợp đồng công bố",
+   "sources": [
+    {
+     "title": "Phú Mỹ Power Plants (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Phu_My_Power_Plants",
+     "period": "truy cập 26/11/2026"
+    },
+    {
+     "title": "Trung tâm Điện lực Phú Mỹ - trái tim năng lượng miền Nam",
+     "url": "https://thuonghieucongluan.com.vn/trung-tam-dien-luc-phu-my-trai-tim-nang-luong-cua-mien-nam-a279782.html",
+     "period": "11/09/2025"
+    },
+    {
+     "title": "Cai Mep Terminal delivers first pipeline gas to Phu My (VIR)",
+     "url": "https://vir.com.vn/cai-mep-terminal-delivers-first-pipeline-gas-to-phu-my-power-complex-157053.html",
+     "period": "20/07/2026"
+    },
+    {
+     "title": "EVN receives 715 MW Phu My 2.2 (The Investor)",
+     "url": "https://theinvestor.vn/vietnam-electricity-receives-715-mw-power-plant-from-foreign-investors-as-bot-contract-ends-d14397.html",
+     "period": "04/02/2025"
+    },
+    {
+     "title": "Thermal power plant transferred to EVN after BOT contract ends (The Investor)",
+     "url": "https://theinvestor.vn/thermal-power-plant-transferred-to-state-utility-evn-after-bot-contract-ends-d8833.html",
+     "period": "02/03/2024"
+    },
+    {
+     "title": "Áp lực nguồn cung khí với doanh nghiệp sản xuất điện, đạm (DNSE) — NT2 chờ cam kết khí của Phú Mỹ 3, 2.2",
+     "url": "https://www.dnse.com.vn/senses/tin-tuc/ap-luc-nguon-cung-khi-voi-doanh-nghiep-san-xuat-dien-dam-33817152",
+     "period": "09/07/2024"
+    }
+   ],
+   "rank": 3
+  },
+  {
+   "id": "pw_nhon_trach",
+   "kind": "power",
+   "name": "Cụm điện Nhơn Trạch",
+   "short": "Nhơn Trạch",
+   "lon": 106.917,
+   "lat": 10.667,
+   "status": "operating",
+   "systems": [
+    "cuulong",
+    "ncs",
+    "lng"
+   ],
+   "owner": "PV Power · PV Power NT2 (NT2)",
+   "capacity": "Nhiệt điện Nhơn Trạch 1: 450 MW · Nhiệt điện Nhơn Trạch 2 (NT2): 750 MW · Nhiệt điện LNG Nhơn Trạch 3 & 4: 1.624 MW (2 tổ, GE 9HA.02)",
+   "mw": 2824.0,
+   "cod": "Nhiệt điện Nhơn Trạch 1: 2009 · Nhiệt điện Nhơn Trạch 2 (NT2): 2011 · Nhiệt điện LNG Nhơn Trạch 3 & 4: 05/01/2026 (VnEconomy; nguồn khác nêu NT3 COD 19–20/11/2025, khánh thành 14/12/2025)",
+   "inputs": "Nhiệt điện Nhơn Trạch 1: Đông Nam Bộ (Nam Côn Sơn → khu Phú Mỹ – Nhơn Trạch) (kết nối vật lý, chưa thấy hợp đồng) · Nhiệt điện Nhơn Trạch 2 (NT2): Đông Nam Bộ — sản lượng phụ thuộc phần khí sau khi chia với Phú Mỹ 3, 2.2 (DNSE 2024) (kết nối vật lý, chưa thấy hợp đồng) · Nhiệt điện LNG Nhơn Trạch 3 & 4: LNG Thị Vải (PV GAS) (hợp đồng)",
+   "output": null,
+   "outputs": null,
+   "precision": "district — tâm huyện Nhơn Trạch (cũ); district — tâm huyện Nhơn Trạch (cũ), Đồng Nai; district — tâm huyện Nhơn Trạch (cũ); nhà máy ở KCN Ông Kèo, xã Phước Khánh",
+   "note": "Hợp đồng LNG 25 năm từ 2025 với PV GAS",
+   "sources": [
+    {
+     "title": "OpenInfraMap — Vietnam gas power plants",
+     "url": "https://openinframap.org/stats/area/Vietnam/plants?source=gas",
+     "period": "truy cập 26/11/2026"
+    },
+    {
+     "title": "Ký loạt hợp đồng dầu khí Sư Tử Trắng (Tuổi Trẻ) — khí bổ sung cho điện Phú Mỹ, Nhơn Trạch",
+     "url": "https://tuoitre.vn/ky-loat-hop-dong-dau-khi-tai-cac-lo-mo-su-tu-trang-cung-ung-khi-cho-dong-nam-bo-100260619202130685.htm",
+     "period": "19/06/2026"
+    },
+    {
+     "title": "Áp lực nguồn cung khí với doanh nghiệp sản xuất điện, đạm (DNSE)",
+     "url": "https://www.dnse.com.vn/senses/tin-tuc/ap-luc-nguon-cung-khi-voi-doanh-nghiep-san-xuat-dien-dam-33817152",
+     "period": "09/07/2024"
+    },
+    {
+     "title": "Nhà máy điện LNG đầu tiên vận hành thương mại (VnEconomy)",
+     "url": "https://vneconomy.vn/nha-may-dien-lng-dau-tien-van-hanh-thuong-mai-mo-duong-cho-chuyen-dich-nang-luong.htm",
+     "period": "07/01/2026"
+    },
+    {
+     "title": "PV GAS ký hợp đồng 25 năm cung cấp LNG cho NT3 & NT4",
+     "url": "https://tapchitoaan.vn/pv-gas-ky-hop-dong-25-nam-cung-cap-lng-cho-nha-may-dien-nhon-trach-3-va-nhon-trach-4-cua-pv-power13010.html",
+     "period": "02/03/2025"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "pw_ca_mau",
+   "kind": "power",
+   "name": "Cụm điện Cà Mau",
+   "short": "Điện Cà Mau",
+   "lon": 105.075,
+   "lat": 9.225,
+   "status": "operating",
+   "systems": [
+    "pm3"
+   ],
+   "owner": "PV Power",
+   "capacity": "Nhiệt điện Cà Mau 1 & 2: 1.500 MW (2 × 750 MW) · Nhiệt điện LNG Cà Mau 3 (mở rộng TTĐL Cà Mau): N/A",
+   "mw": 1500.0,
+   "cod": "Nhiệt điện Cà Mau 1 & 2: 27/12/2008",
+   "inputs": "Nhiệt điện Cà Mau 1 & 2: PM3-CAA – đường ống PM3–Cà Mau (hợp đồng) · Nhiệt điện LNG Cà Mau 3 (mở rộng TTĐL Cà Mau): LNG (sau 2034) + khí Tây Nam Bộ (dự kiến)",
+   "output": "Nhiệt điện LNG Cà Mau 3 (mở rộng TTĐL Cà Mau): Nếu mở rộng, nhu cầu khí tăng ~6 triệu m³/ngày, tổng cụm ~12 triệu m³/ngày (PV GAS, 06/2026)",
+   "outputs": null,
+   "precision": "plant (Wikipedia — tọa độ cụm Khí-Điện-Đạm Cà Mau); plant-area (dùng tọa độ cụm Cà Mau); vị trí hiển thị lệch nhẹ để tách ký hiệu với nhà máy/kho lân cận",
+   "note": "Theo sửa đổi HĐ khí thông qua ĐHĐCĐ DCM 2023: khí thuộc quyền nhận của PVN phân bổ cho Đạm Cà Mau, các nhà máy điện Cà Mau và GPP Cà Mau theo tiêu thụ thực tế hàng tháng",
+   "sources": [
+    {
+     "title": "Cà Mau Gas-Power-Fertilizer Complex (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/C%C3%A0_Mau_Gas-Power-Fertilizer_Complex",
+     "period": "truy cập 26/11/2026"
+    },
+    {
+     "title": "BSC — Báo cáo cập nhật DCM",
+     "url": "https://www.bsc.com.vn/Report/ReportFile/11257",
+     "period": "18/07/2023"
+    },
+    {
+     "title": "TGĐ Petrovietnam: tối ưu hóa chuỗi Khí-Điện-Đạm Cà Mau (VCCI)",
+     "url": "https://www.vcci.com.vn/tin-tuc/tong-giam-doc-petrovietnam-le-manh-cuong-toi-uu-hoa-chuoi-khi-dien-dam-ca-mau-tren-tinh-than-mot-doi-ngu-mot-muc-tieu",
+     "period": "10/06/2026"
+    },
+    {
+     "title": "Động lực tăng trưởng mới của cụm Khí-Điện-Đạm Cà Mau (Stockbiz/PetroTimes)",
+     "url": "https://stockbiz.vn/tin-tuc/dong-luc-tang-truong-moi-cua-cum-khi---dien---dam-ca-mau/41370435",
+     "period": "11/08/2026"
+    }
+   ],
+   "rank": 3
+  },
+  {
+   "id": "pw_o_mon",
+   "kind": "power",
+   "name": "Trung tâm điện lực Ô Môn",
+   "short": "Ô Môn",
+   "lon": 105.7,
+   "lat": 10.1,
+   "status": "operating",
+   "systems": [
+    "lob"
+   ],
+   "owner": "EVN · EVN (Frasers/Wikipedia vi: EVN, vốn ODA) · EVNGENCO2 (Wikipedia vi)",
+   "capacity": "Nhiệt điện Ô Môn I: 660 MW · Nhiệt điện Ô Môn II: 1.050 MW · Nhiệt điện Ô Môn III: 1.050 MW · Nhiệt điện Ô Môn IV: 1.155 MW",
+   "mw": 660.0,
+   "cod": "Nhiệt điện Ô Môn I: 2009–2015 · Nhiệt điện Ô Môn II: Dự kiến 2029 (SGGP 31/12/2025) · Nhiệt điện Ô Môn III: COD 05/2030 (SGGP 31/12/2025) · Nhiệt điện Ô Môn IV: Dự kiến 12/2028",
+   "inputs": "Nhiệt điện Ô Môn I: Chuyển sang khí Lô B năm 2027 (dự kiến) · Nhiệt điện Ô Môn II: Lô B (dự kiến) · Nhiệt điện Ô Môn III: Lô B (dự kiến) · Nhiệt điện Ô Môn IV: Lô B (dự kiến)",
+   "output": null,
+   "outputs": null,
+   "precision": "ward — Phước Thới; ward — tâm phường Phước Thới (Cần Thơ), nơi đặt TTĐL Ô Môn; vị trí hiển thị lệch nhẹ để tách ký hiệu với nhà máy/kho lân cận",
+   "note": null,
+   "sources": [
+    {
+     "title": "Chuỗi dự án khí Lô B dự kiến có dòng khí đầu tiên vào tháng 8-2027 (SGGP)",
+     "url": "https://www.sggp.org.vn/chuoi-du-an-khi-lo-b-du-kien-co-dong-khi-dau-tien-vao-thang-8-2027-post831467.html",
+     "period": "31/12/2025"
+    },
+    {
+     "title": "Kế hoạch thực hiện QHĐ VIII (Frasers)",
+     "url": "https://www.frasersvn.com/vi/legal-updates-and-publications/pdp-viii-implementation-plan",
+     "period": "QĐ 262/QĐ-TTg 01/04/2024"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "pw_son_my",
+   "kind": "power",
+   "name": "Trung tâm điện lực Sơn Mỹ (LNG)",
+   "short": "Sơn Mỹ",
+   "lon": 107.72,
+   "lat": 10.78,
+   "status": "planned",
+   "systems": [
+    "lng"
+   ],
+   "owner": "AES · EDF, Sojitz, Kyushu Electric, Pacific Corporation",
+   "capacity": "Nhiệt điện LNG Sơn Mỹ I (BOT): 2.250 MW · Nhiệt điện LNG Sơn Mỹ II: 2.250 MW",
+   "mw": null,
+   "cod": "Nhiệt điện LNG Sơn Mỹ I (BOT): Mục tiêu 2028 (tại 03/2025) · Nhiệt điện LNG Sơn Mỹ II: Mục tiêu 2028 (tại 03/2025)",
+   "inputs": "Nhiệt điện LNG Sơn Mỹ I (BOT): LNG Sơn Mỹ (dự kiến) · Nhiệt điện LNG Sơn Mỹ II: LNG Sơn Mỹ (dự kiến)",
+   "output": null,
+   "outputs": null,
+   "precision": "district — Hàm Tân; vị trí hiển thị lệch nhẹ để tách ký hiệu với nhà máy/kho lân cận",
+   "note": null,
+   "sources": [
+    {
+     "title": "The Investor — Sơn Mỹ",
+     "url": "https://theinvestor.vn/central-vietnam-province-to-clear-sites-for-lng-projects-in-may-for-operation-in-2028-d14909.html",
+     "period": "18/03/2025"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "pw_dung_quat",
+   "kind": "power",
+   "name": "Điện khí Dung Quất – Miền Trung (Cá Voi Xanh)",
+   "short": "Dung Quất – Miền Trung",
+   "lon": 108.8297,
+   "lat": 15.3525,
+   "status": "planned",
+   "systems": [
+    "cvx"
+   ],
+   "owner": "Dung Quất I, III: EVN; Dung Quất II: BOT; Miền Trung I–II: PVN (Wikipedia vi, dữ liệu cũ)",
+   "capacity": "Cụm điện khí Dung Quất I–III & Miền Trung I–II (khí Cá Voi Xanh): Dung Quất I/II/III 750 MW mỗi nhà máy; Miền Trung I/II 750 MW mỗi nhà máy (KH thực hiện QHĐ VIII 04/2024)",
+   "mw": null,
+   "cod": "Cụm điện khí Dung Quất I–III & Miền Trung I–II (khí Cá Voi Xanh): Dung Quất 2028, Miền Trung 2030 (theo KH thực hiện 04/2024 — có thể đã lùi)",
+   "inputs": "Cụm điện khí Dung Quất I–III & Miền Trung I–II (khí Cá Voi Xanh): Mỏ Cá Voi Xanh (chưa có quyết định đầu tư phát triển mỏ trong nguồn đã mở) (dự kiến)",
+   "output": null,
+   "outputs": null,
+   "precision": "plant-area — dùng tọa độ NMLD Dung Quất (Wikipedia) làm điểm đại diện KKT Dung Quất; Miền Trung I–II ở Quảng Nam",
+   "note": null,
+   "sources": [
+    {
+     "title": "Kế hoạch thực hiện QHĐ VIII (Frasers)",
+     "url": "https://www.frasersvn.com/vi/legal-updates-and-publications/pdp-viii-implementation-plan",
+     "period": "02/04/2024"
+    },
+    {
+     "title": "Danh sách nhà máy nhiệt điện khí tại Việt Nam (Wikipedia vi)",
+     "url": "https://vi.wikipedia.org/wiki/Danh_sách_nhà_máy_nhiệt_điện_khí_tại_Việt_Nam",
+     "period": "truy cập 26/11/2026"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "pw_ba_ria",
+   "kind": "power",
+   "name": "Nhà máy điện Bà Rịa",
+   "short": "Bà Rịa",
+   "lon": 107.1547,
+   "lat": 10.5008,
+   "status": "operating",
+   "systems": [
+    "cuulong"
+   ],
+   "owner": "EVN – EVNGENCO3",
+   "capacity": "Nhiệt điện Bà Rịa: 390 MW (OpenInfraMap) / 340 MW (Wikipedia vi)",
+   "mw": 390.0,
+   "cod": "Nhiệt điện Bà Rịa: 1992–2002 (Wikipedia vi)",
+   "inputs": "Nhiệt điện Bà Rịa: Đông Nam Bộ (suy theo vị trí; nguồn đã mở không nêu mỏ cấp) (chưa xác minh)",
+   "output": null,
+   "outputs": null,
+   "precision": "ward — tâm phường Long Hương (Bà Rịa)",
+   "note": null,
+   "sources": [
+    {
+     "title": "OpenInfraMap — Vietnam gas power plants",
+     "url": "https://openinframap.org/stats/area/Vietnam/plants?source=gas",
+     "period": "truy cập 26/11/2026"
+    },
+    {
+     "title": "Danh sách nhà máy nhiệt điện khí tại Việt Nam (Wikipedia vi)",
+     "url": "https://vi.wikipedia.org/wiki/Danh_sách_nhà_máy_nhiệt_điện_khí_tại_Việt_Nam",
+     "period": "truy cập 26/11/2026 (dữ liệu cũ)"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "pw_hiep_phuoc_lng",
+   "kind": "power",
+   "name": "Điện LNG Hiệp Phước",
+   "short": "Hiệp Phước LNG",
+   "lon": 106.7325,
+   "lat": 10.6439,
+   "status": "construction",
+   "systems": [
+    "lng"
+   ],
+   "owner": "Công ty TNHH Điện lực Hiệp Phước (BOO)",
+   "capacity": "Nhiệt điện LNG Hiệp Phước giai đoạn I: 1.200 MW",
+   "mw": null,
+   "cod": "Nhiệt điện LNG Hiệp Phước giai đoạn I: Mục tiêu COD quý IV/2028 (Bloomberg/Energy Connects 06/10/2026, dẫn báo địa phương)",
+   "inputs": "Nhiệt điện LNG Hiệp Phước giai đoạn I: LNG nhập khẩu (kho/nguồn chưa xác nhận) (chưa xác minh)",
+   "output": null,
+   "outputs": null,
+   "precision": "ward — tâm xã Hiệp Phước (TP.HCM)",
+   "note": null,
+   "sources": [
+    {
+     "title": "EVN signs power deal for 1,200 MW LNG plant in HCMC (VIR)",
+     "url": "https://vir.com.vn/evn-signs-power-deal-for-1200-mw-lng-plant-in-ho-chi-minh-city-149489.html",
+     "period": "28/03/2026"
+    },
+    {
+     "title": "Vietnam's plan to expand LNG-fired power is well behind schedule (Energy Connects)",
+     "url": "https://www.energyconnects.com/news/renewables/2026/october/vietnam-s-plan-to-expand-lng-fired-power-is-well-behind-schedule/",
+     "period": "06/10/2026"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "pw_quang_trach_2",
+   "kind": "power",
+   "name": "Điện LNG Quảng Trạch II",
+   "short": "Quảng Trạch II",
+   "lon": 106.4079,
+   "lat": 17.797,
+   "status": "construction",
+   "systems": [
+    "lng"
+   ],
+   "owner": "EVN",
+   "capacity": "Nhiệt điện LNG Quảng Trạch II: 1.612,8 MW (2 × 806,4 MW)",
+   "mw": null,
+   "cod": "Nhiệt điện LNG Quảng Trạch II: Tổ 1: 02/2030; tổ 2: 04/2030",
+   "inputs": "Nhiệt điện LNG Quảng Trạch II: LNG — PV GAS (kho LNG Bắc Trung bộ/Vũng Áng); GSA đang đàm phán (dự kiến)",
+   "output": null,
+   "outputs": null,
+   "precision": "district — tâm huyện Quảng Trạch (cũ); nhà máy ở KKT Hòn La, xã Phú Trạch, Quảng Trị",
+   "note": null,
+   "sources": [
+    {
+     "title": "Khởi công Nhà máy Nhiệt điện LNG Quảng Trạch II (Tạp chí Công Thương)",
+     "url": "https://tapchicongthuong.vn/khoi-cong-nha-may-nhiet-dien-lng-quang-trach-ii-559538.htm",
+     "period": "20/10/2026"
+    },
+    {
+     "title": "EVN and PVGAS discuss LNG supply to Quang Trach II & III",
+     "url": "https://en.evn.com.vn/d/en-US/news/EVN-and-PVGAS-discuss-progress-of-supplying-liquefied-natural-gas-to-Quang-Trach-II-and-III-power-plants-60-202-501514",
+     "period": "16/06/2026"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "pw_ca_na_lng",
+   "kind": "power",
+   "name": "Điện LNG Cà Ná",
+   "short": "Cà Ná LNG",
+   "lon": 108.93,
+   "lat": 11.37,
+   "status": "planned",
+   "systems": [
+    "lng"
+   ],
+   "owner": "Liên danh Trung Nam – Sideros River",
+   "capacity": "Nhiệt điện LNG Cà Ná: 1.500 MW",
+   "mw": null,
+   "cod": "Nhiệt điện LNG Cà Ná: Mục tiêu 2030",
+   "inputs": "Nhiệt điện LNG Cà Ná: Kho LNG Cà Ná riêng của dự án (dự kiến)",
+   "output": null,
+   "outputs": null,
+   "precision": "ward — Cà Ná; vị trí hiển thị lệch nhẹ để tách ký hiệu với nhà máy/kho lân cận",
+   "note": null,
+   "sources": [
+    {
+     "title": "Ký kết hợp đồng dự án LNG Cà Ná (Nhà Đầu tư)",
+     "url": "https://nhadautu.vn/ky-ket-hop-dong-du-an-lng-ca-na-gan-57400-ty-do-lien-danh-trung-nam-dau-tu-d104232.html",
+     "period": "11/04/2026"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "id": "fert_dpm",
+   "kind": "fert",
+   "name": "Nhà máy Đạm Phú Mỹ",
+   "short": "Đạm Phú Mỹ (DPM)",
+   "lon": 107.0481,
+   "lat": 10.5906,
+   "status": "operating",
+   "systems": [
+    "cuulong",
+    "ncs"
+   ],
+   "owner": "PVFCCo – Phú Mỹ (DPM); Petrovietnam 59,59%",
+   "capacity": "~800 nghìn tấn urê/năm (suy ra: 885 nghìn tấn 2025 = 110,6% công suất; 873 nghìn tấn 2026F = 109%, VNDirect)",
+   "output": "PV GAS cấp 325 triệu Sm³ khí cho sản xuất đạm 7T/2026, kế hoạch cả năm 590 triệu Sm³ 'đáp ứng nhu cầu PVFCCo'; hợp đồng 2024: 22,1 triệu MMBtu",
+   "cod": "Vận hành thương mại đầu 2004",
+   "inputs": "Hệ thống khí Đông Nam Bộ (Cửu Long + Nam Côn Sơn), qua Trung tâm phân phối khí Phú Mỹ (hợp đồng)",
+   "outputs": null,
+   "precision": "ward — tâm phường Phú Mỹ (TP.HCM); nhà máy ở KCN Phú Mỹ I",
+   "note": "Hợp đồng mua bán khí năm 2026 với PV GAS (ký tháng 1/2026)",
+   "sources": [
+    {
+     "title": "PV GAS và PVFCCo - Phú Mỹ ký Hợp đồng mua bán khí năm 2026 (PetroTimes)",
+     "url": "https://petrovietnam.petrotimes.vn/pv-gas-va-pvfcco-phu-my-ky-ket-hop-dong-mua-ban-khi-nam-2026-736822.html",
+     "period": "16/01/2026"
+    },
+    {
+     "title": "Nghịch lý thừa khí, thiếu khí cho phát điện (Báo Đầu tư)",
+     "url": "https://baodautu.vn/nghich-ly-thua-khi-thieu-khi-cho-phat-dien-d686850.html",
+     "period": "28/08/2026; số liệu 7T/2026"
+    },
+    {
+     "title": "DPM Update (VNDirect)",
+     "url": "https://www.vndirect.com.vn/cmsupload/beta/DPM_Update_20260115.pdf",
+     "period": "15/01/2026"
+    },
+    {
+     "title": "Bản tin NĐT 6T/2026 (DPM)",
+     "url": "https://www.dpm.vn/public_folder/files_upload/202608/ban-tin-ndt-q32026---publishedpdf1787712029.pdf",
+     "period": "6T/2026, phát hành 17/08/2026"
+    }
+   ],
+   "rank": 1
+  },
+  {
+   "id": "fert_dcm",
+   "kind": "fert",
+   "name": "Nhà máy Đạm Cà Mau",
+   "short": "Đạm Cà Mau (DCM)",
+   "lon": 105.0156,
+   "lat": 9.2519,
+   "status": "operating",
+   "systems": [
+    "pm3"
+   ],
+   "owner": "PVCFC (DCM)",
+   "capacity": "800.000 tấn urê/năm",
+   "output": "Theo tài liệu ĐHĐCĐ bất thường 2026 (HSC dẫn): lượng hợp đồng năm 495 triệu Sm³, lấy tối thiểu 445,5 triệu Sm³",
+   "cod": null,
+   "inputs": "PM3-CAA (+ Lô 46 Cái Nước) – đường ống PM3–Cà Mau (hợp đồng)",
+   "outputs": null,
+   "precision": "ward — tâm xã Khánh An (Cà Mau); Wikipedia ghi tọa độ cụm Khí-Điện-Đạm 9.236, 105.063",
+   "note": "Hợp đồng mua bán khí số 3918/HĐ-DKVN với PV GAS (sửa đổi bổ sung số 12 thông qua 23/09/2026)",
+   "sources": [
+    {
+     "title": "Cà Mau Gas-Power-Fertilizer Complex (Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/C%C3%A0_Mau_Gas-Power-Fertilizer_Complex",
+     "period": "truy cập 26/11/2026"
+    },
+    {
+     "title": "DCM: Công thức giá khí Nam Du – U Minh (Elibook, dẫn HSC)",
+     "url": "https://elibook.vn/2026/09/18/dcm-cong-thuc-gia-khi-nam-du-u-minh-chinh-thuc-lo-dien-va-con-khat-ure-the-gioi-lai-den-dung-luc-con-dpm-thi-sao/",
+     "period": "18/09/2026"
+    },
+    {
+     "title": "PVCFC đưa Nam Du - U Minh vào bài toán nguồn khí (Người Đưa Tin)",
+     "url": "https://www.nguoiduatin.vn/pvcfc-dua-nam-du-u-minh-vao-bai-toan-nguon-khi-cho-dam-ca-mau-204260923182003472.htm",
+     "period": "24/09/2026"
+    }
+   ],
+   "rank": 1
+  },
+  {
+   "id": "ind_tien_hai",
+   "kind": "industry",
+   "name": "Khách hàng công nghiệp thấp áp KCN Tiền Hải (hệ thống khí Hàm Rồng – Thái Bình)",
+   "short": "Hộ công nghiệp Tiền Hải",
+   "lon": 106.54875,
+   "lat": 20.44905,
+   "status": "operating",
+   "systems": [
+    "songhong"
+   ],
+   "owner": "PV GAS (hệ thống thu gom & phân phối khí mỏ Hàm Rồng, Thái Bình lô 102&106 GĐ1)",
+   "capacity": null,
+   "cod": "07/08/2015 (dòng khí đầu tiên)",
+   "inputs": "Hàm Rồng – Thái Bình (Bắc Bộ); PV GAS chở LNG bằng đường sắt ra Bắc từ 09/2024",
+   "outputs": null,
+   "precision": "ward — tâm xã Tiền Hải (nay thuộc Hưng Yên); dịch nhẹ để tách ký hiệu với GDC Tiền Hải",
+   "note": "khách hàng mua khí của PV GAS (không nêu tên)",
+   "sources": [
+    {
+     "title": "PV GAS kỷ niệm 10 năm vận hành hệ thống khí Hàm Rồng – Thái Bình (Diễn đàn Doanh nghiệp)",
+     "url": "https://diendandoanhnghiep.vn/pv-gas-ky-niem-10-nam-van-hanh-he-thong-khi-ham-rong-thai-binh-10158881.html",
+     "period": "11/08/2025"
+    }
+   ],
+   "rank": 3
+  }
+ ],
+ "companies": {
+  "DPM": {
+   "plant": "fert_dpm",
+   "existing": [
+    "cuu_long_bach_ho_dinh_co",
+    "su_tu_vang_rang_dong_bach_ho",
+    "ncs1",
+    "ncs2_phase1",
+    "ncs2_phase2",
+    "ncs2_onshore",
+    "svdn_gathering",
+    "dinh_co_phu_my",
+    "bach_ho",
+    "dai_hung",
+    "hai_thach_moc_tinh",
+    "lan_tay_lan_do",
+    "rang_dong",
+    "rong_doi",
+    "sao_vang_dai_nguyet",
+    "su_tu_den_vang",
+    "thien_ung",
+    "bach_ho_ccp",
+    "thien_ung_cpp",
+    "rong_doi_cpp",
+    "lfs_long_hai",
+    "gpp_dinh_co",
+    "ncs_terminal",
+    "gpp2_dinh_co",
+    "gdc_phu_my"
+   ],
+   "agreed": [],
+   "potential": [
+    "su_tu_trang",
+    "lng_thi_vai",
+    "lng_cai_mep_agp",
+    "lng_thi_vai_phu_my",
+    "lng_cai_mep_phu_my",
+    "thien_nga_hai_au"
+   ],
+   "shared": [
+    "pw_phu_my",
+    "pw_nhon_trach",
+    "pw_ba_ria"
+   ],
+   "contract": "Hợp đồng mua bán khí theo năm với PV GAS (năm 2026 ký tháng 1/2026, không công bố lượng và giá); chưa có hợp đồng dài hạn (SSI, 07/2024). Công thức giá theo nguồn 2021: 46% × giá FO Singapore bình quân + phí thu gom, vận chuyển theo bể (2020: Cửu Long giá rẻ 1,02; Cửu Long khác 3,2; Nam Côn Sơn 1,4 USD/MMBtu). PV GAS cấp 325 triệu Sm³ cho sản xuất đạm 7T/2026, kế hoạch 590 triệu Sm³ cả năm. Tỷ trọng khí Bạch Hổ cước thấp giảm dần. Sư Tử Trắng 2B (khí từ 29/06/2026, qua GDC Phú Mỹ) và LNG Thị Vải, Cái Mép: nguồn tiềm năng, chưa thấy thỏa thuận cấp cho DPM. Bà Rịa xếp vào hộ dùng chung theo vị trí, nguồn chưa nêu mỏ cấp.",
+   "sources": [
+    {
+     "title": "PV GAS và PVFCCo - Phú Mỹ ký kết Hợp đồng mua bán khí năm 2026 (PetroTimes)",
+     "url": "https://petrovietnam.petrotimes.vn/pv-gas-va-pvfcco-phu-my-ky-ket-hop-dong-mua-ban-khi-nam-2026-736822.html",
+     "period": "16/01/2026"
+    },
+    {
+     "title": "Nghịch lý thừa khí, thiếu khí cho phát điện (Báo Đầu tư)",
+     "url": "https://baodautu.vn/nghich-ly-thua-khi-thieu-khi-cho-phat-dien-d686850.html",
+     "period": "28/08/2026"
+    },
+    {
+     "title": "Áp lực nguồn cung khí với doanh nghiệp sản xuất điện, đạm (DNSE, dẫn SSI)",
+     "url": "https://www.dnse.com.vn/senses/tin-tuc/ap-luc-nguon-cung-khi-voi-doanh-nghiep-san-xuat-dien-dam-33817152",
+     "period": "09/07/2024"
+    },
+    {
+     "title": "Đạm Phú Mỹ thận trọng trước xu hướng tăng giá khí (Báo Đầu tư)",
+     "url": "https://baodautu.vn/dam-phu-my-than-trong-truoc-xu-huong-tang-gia-khi-d145186.html",
+     "period": "17/06/2021"
+    },
+    {
+     "title": "Đạm Phú Mỹ trông chờ thông tin về nguồn cung khí dài hạn (Vietnambiz)",
+     "url": "https://vietnambiz.vn/dam-phu-my-trong-cho-vao-cac-thong-tin-ve-nguon-cung-khi-dai-han-20200625175517987.htm",
+     "period": "25/06/2020"
+    },
+    {
+     "title": "DPM Update (VNDirect)",
+     "url": "https://www.vndirect.com.vn/cmsupload/beta/DPM_Update_20260115.pdf",
+     "period": "15/01/2026"
+    },
+    {
+     "title": "Nửa đầu năm 2026: PVFCCo - Phú Mỹ bứt phá (Báo Đầu tư)",
+     "url": "https://baodautu.vn/nua-dau-nam-2026-pvfcco---phu-my-but-pha-tang-truong-toan-dien-d637354.html",
+     "period": "07/07/2026"
+    },
+    {
+     "title": "9 tháng đầu năm 2026: PVFCCo - Phú Mỹ (Thanh tra)",
+     "url": "https://thanhtra.com.vn/kinh-doanh-90943E907/9-thang-dau-nam-2026-pvfcco-phu-my-duy-tri-da-tang-truong-mo-rong-khong-gian-phat-trien-3bb81c485.html",
+     "period": "23/10/2026"
+    },
+    {
+     "title": "DPM: Thông tin về giá khí (CafeF/HOSE) — công thức lịch sử Cửu Long 2,0 USD; Nam Côn Sơn P = P06.1 + Tp + 0,15",
+     "url": "https://cafef.vn/du-lieu/dpm-736686/dpm-thong-tin-ve-gia-khi.chn",
+     "period": "26/03/2008"
+    },
+    {
+     "title": "Tuổi Trẻ",
+     "url": "https://tuoitre.vn/ky-loat-hop-dong-dau-khi-tai-cac-lo-mo-su-tu-trang-cung-ung-khi-cho-dong-nam-bo-100260619202130685.htm",
+     "period": "19/06/2026"
+    },
+    {
+     "title": "Năng lượng Việt Nam — first gas ST 2B",
+     "url": "https://nangluongvietnam.vn/don-dong-khi-dau-tien-first-gas-tu-du-an-phat-trien-mo-su-tu-trang-giai-doan-2b-36285.html",
+     "period": "29/06/2026"
+    },
+    {
+     "title": "Elibook — Sư Tử Trắng 2B",
+     "url": "https://elibook.vn/2026/07/07/su-tu-trang-2b-khoi-dau-chu-ky-phuc-hoi-nguon-cung-khi-noi-dia-pvd-va-pvs-huong-loi/",
+     "period": "07/07/2026"
+    },
+    {
+     "title": "Elibook — DCM/DPM",
+     "url": "https://elibook.vn/2026/09/18/dcm-cong-thuc-gia-khi-nam-du-u-minh-chinh-thuc-lo-dien-va-con-khat-ure-the-gioi-lai-den-dung-luc-con-dpm-thi-sao/",
+     "period": "18/09/2026"
+    },
+    {
+     "title": "Bản tin NĐT 6T/2026",
+     "url": "https://www.dpm.vn/public_folder/files_upload/202608/ban-tin-ndt-q32026---publishedpdf1787712029.pdf",
+     "period": "17/08/2026"
+    }
+   ]
+  },
+  "DCM": {
+   "plant": "fert_dcm",
+   "existing": [
+    "pm3_ca_mau",
+    "pm3_caa",
+    "cai_nuoc_46",
+    "lfs_mui_tram",
+    "gdc_ca_mau",
+    "gpp_ca_mau"
+   ],
+   "agreed": [
+    "nam_du_u_minh"
+   ],
+   "potential": [
+    "lo_b_o_mon",
+    "lob_mui_tram",
+    "kim_long",
+    "ac_quy",
+    "ca_voi_lob",
+    "lob_cpp",
+    "lfs_an_minh"
+   ],
+   "shared": [
+    "pw_ca_mau",
+    "gpp_ca_mau"
+   ],
+   "contract": "Hợp đồng mua bán khí 3918/HĐ-DKVN với PV GAS; sửa đổi bổ sung số 12 (ĐHĐCĐ bất thường DCM 23/09/2026, HĐQT PV GAS chấp thuận 15/10/2026) đổi tên thành hợp đồng cho Nhà máy Đạm Cà Mau và bổ sung nguồn Nam Du – U Minh, hiệu lực đến 24/04/2032 (SSI 07/2024 ghi 2029, mâu thuẫn). Lượng hợp đồng 495 triệu Sm³/năm, tối thiểu 445,5; Nam Du – U Minh tối thiểu 269,74 triệu Sm³/năm (~60,6%), khí đầu tiên chậm nhất Q4/2028. Giá: khí phần PVN 46% × HSFO (đến 31/12/2027); khí bổ sung (Petronas) 12,7% × Brent đến 31/12/2026, 13,7% × Brent 2027–2031; Nam Du – U Minh 10,39 USD/MMBtu × 1,0225^t, không gắn Brent. PM3-CAA đang suy giảm. Tiềm năng: khí Lô B qua nhánh Mũi Tràm (~2 triệu m³/ngày từ 2028), Khánh Mỹ – Đầm Dơi (khởi công 28/07/2026, chưa thấy thỏa thuận với DCM), LNG sau 2034.",
+   "sources": [
+    {
+     "title": "BSC — Báo cáo cập nhật DCM",
+     "url": "https://www.bsc.com.vn/Report/ReportFile/11257",
+     "period": "18/07/2023"
+    },
+    {
+     "title": "PVCFC mở rộng không gian phát triển (Thời báo Tài chính)",
+     "url": "https://thoibaotaichinhvietnam.vn/pvcfc-mo-rong-khong-gian-phat-trien-gia-tang-gia-tri-ben-vung-204139.html",
+     "period": "21/09/2026"
+    },
+    {
+     "title": "Người Đưa Tin",
+     "url": "https://www.nguoiduatin.vn/pvcfc-dua-nam-du-u-minh-vao-bai-toan-nguon-khi-cho-dam-ca-mau-204260923182003472.htm",
+     "period": "24/09/2026"
+    },
+    {
+     "title": "Người Quan Sát — HĐQT PV GAS duyệt SĐBS 12",
+     "url": "https://nguoiquansat.vn/mo-vang-750-trieu-usd-ngoai-khoi-sap-duoc-khai-thac-2-doanh-nghiep-viet-chot-hop-dong-bo-sung-nguon-cung-322355.html",
+     "period": "16/10/2026"
+    },
+    {
+     "title": "DCM: Công thức giá khí Nam Du – U Minh (Elibook, dẫn HSC/Vietcap/KBSV)",
+     "url": "https://elibook.vn/2026/09/18/dcm-cong-thuc-gia-khi-nam-du-u-minh-chinh-thuc-lo-dien-va-con-khat-ure-the-gioi-lai-den-dung-luc-con-dpm-thi-sao/",
+     "period": "18/09/2026"
+    },
+    {
+     "title": "VCCI — họp chuỗi Khí-Điện-Đạm Cà Mau",
+     "url": "https://www.vcci.com.vn/tin-tuc/tong-giam-doc-petrovietnam-le-manh-cuong-toi-uu-hoa-chuoi-khi-dien-dam-ca-mau-tren-tinh-than-mot-doi-ngu-mot-muc-tieu",
+     "period": "10/06/2026"
+    },
+    {
+     "title": "Tiền Phong — ĐHĐCĐ DCM 2026",
+     "url": "https://tienphong.vn/lanh-dao-dam-ca-mau-noi-ve-nguy-co-can-mo-khi-post1837750.html",
+     "period": "22/04/2026"
+    },
+    {
+     "title": "Elibook — DCM nguồn khí đến 2028",
+     "url": "https://elibook.vn/?p=118084",
+     "period": "27/04/2026"
+    },
+    {
+     "title": "CafeF — khởi công Khánh Mỹ & Đầm Dơi",
+     "url": "https://cafef.vn/khoi-cong-du-an-phat-trien-mo-khanh-my-va-dam-doi-lo-46-13-188260729155342288.chn",
+     "period": "30/07/2026"
+    },
+    {
+     "title": "Stockbiz/PetroTimes",
+     "url": "https://stockbiz.vn/tin-tuc/dong-luc-tang-truong-moi-cua-cum-khi---dien---dam-ca-mau/41370435",
+     "period": "11/08/2026"
+    },
+    {
+     "title": "Stockbiz — DCM khởi động BDTT 2025",
+     "url": "https://stockbiz.vn/tin-tuc/dcm-nha-may-dam-ca-mau-khoi-dong-bdtt-nam-2025-an-toan---chat-luong---tien-do---hieu-qua/34762734",
+     "period": "20/08/2025"
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Ngày tổng hợp: 26/11/2026. Mỗi bản ghi chỉ liệt kê nguồn đã mở thực tế; thông tin chỉ thấy trong đoạn trích tìm kiếm được ghi rõ là 'chưa kiểm chứng' trong notes và không điền vào trường số.",
+  "Tọa độ mỏ: xấp xỉ ±20–40 km, suy từ khoảng cách nêu trong nguồn (vd. Bạch Hổ cách Long Hải 106,5 km ống biển; Lô B cách bờ ~220 km; Kèn Bầu cách Quảng Trị 65 km/Đà Nẵng 86 km; Cá Voi Xanh cách bờ ~100 km) và vị trí lô thường thấy trên bản đồ. Tọa độ nút trên bờ: xấp xỉ ±2–5 km theo tên xã/KCN.",
+  "Liên hệ phân bón: Đạm Phú Mỹ (DPM) nhận khí qua GDC Phú Mỹ — nguồn là Cửu Long (Bạch Hổ & mỏ lân cận), NCS1 (Lan Tây–Lan Đỏ đã thu hồi 97,88%, giới hạn kinh tế 2027; Hải Thạch–Mộc Tinh đang suy giảm) và NCS2 (Sao Vàng–Đại Nguyệt, Thiên Ưng, Đại Hùng). Đạm Cà Mau (DCM) nhận khí qua PM3–Cà Mau từ PM3-CAA và 46 Cái Nước; nguồn bổ sung dự kiến: nhánh 37 km Lô B → Mũi Tràm và Nam Du–U Minh.",
+  "Quy đổi đơn vị (do người tổng hợp): 1 ft³ = 0,0283168 m³; 1 tỷ m³/năm ≈ 2,74 triệu m³/ngày.",
+  "Đơn vị và mốc thời gian giữ nguyên theo nguồn; nhiều số công suất là thiết kế từ các năm 2014–2018.",
+  "Trường route là danh sách [lon, lat]; route_precision = 'schematic' cho mọi tuyến vì không truy cập được bản đồ tuyến (GEM/PV GAS). Lô B có thêm route_branch cho nhánh KP209 – Mũi Tràm.",
+  "connection_basis: 'contract' = có hợp đồng/khế ước công bố; 'physical-only' = nối vật lý vào hệ thống nhưng không thấy hợp đồng công bố; 'planned' = theo kế hoạch/quy hoạch; 'unknown' = chưa xác nhận.",
+  "Phân loại nguồn khí: existing = đang cấp; additional_with_agreement = đã có thỏa thuận/sửa HĐ; potential = mới là phương án/nhận định.",
+  "Tên tỉnh/phường dùng theo nguồn; sau sáp nhập 2025 BR-VT thuộc TP.HCM, Bình Thuận thuộc Lâm Đồng, Ninh Thuận thuộc Khánh Hòa, Quảng Bình thuộc Quảng Trị, Thái Bình thuộc Hưng Yên, Bạc Liêu thuộc Cà Mau.",
+  "Một số dữ kiện nền chỉ thấy trong bản tóm tắt của công cụ tìm kiếm (không mở trang) đã được ghi chú rõ hoặc loại bỏ.",
+  "Kết quả DCM 2025: DT hợp nhất >17.032 tỷ, LNTT >2.207 tỷ (Tiền Phong 22/04/2026); urê đã tăng lên ~900 USD/t sau xung đột Trung Đông 2026, dầu từng ~120 USD/thùng — bối cảnh cho so sánh giá khí ND-UM cố định vs công thức gắn dầu."
+ ],
+ "gaps": [
+  "GEM (gem.wiki) và pvgas.com.vn chặn truy cập tự động (Cloudflare / HTTP 403) — không lấy được mô tả tuyến/tọa độ GEM, nên mọi route là 'schematic'.",
+  "Không có sản lượng khí năm 2025 theo từng mỏ cho Bạch Hổ, Rạng Đông, Sư Tử, Rồng Đôi, Thiên Ưng, Đại Hùng, Sao Vàng–Đại Nguyệt, Thái Bình (latest_gas_output = null).",
+  "Sản lượng PM3-CAA chỉ có số toàn khối cuối 2024 (~200 triệu ft³/ngày), không tách phần về Cà Mau năm 2025–2026. Kết quả tìm kiếm (GEM, chưa mở) nêu 469,3 triệu m³ năm 2025 — chưa kiểm chứng.",
+  "Không tìm được tổng khí PV GAS tiếp nhận 2025 theo hệ thống (Cửu Long / NCS1 / NCS2 / PM3) từ nguồn đã mở.",
+  "Công suất thực tế GPP Dinh Cố và GPP2 hiện tại chưa xác nhận; số 4,3→5,8 triệu m³/ngày và 20 triệu m³/ngày chỉ từ kết quả tìm kiếm.",
+  "Tên mỏ Kim Long / Ác Quỷ / Cá Voi không xuất hiện trong nguồn đã mở; tọa độ ba mỏ Lô B là ước lượng.",
+  "Nhà điều hành Rạng Đông, Rồng Đôi (hiện tại), Thiên Ưng, Đại Hùng, Cá Rồng Đỏ chưa có nguồn đã mở.",
+  "Hồng Ngọc: không tìm thấy thông tin; Hàm Rồng: không xác nhận đang cấp khí.",
+  "Đường bao bể trầm tích là sơ đồ vẽ tay, chưa số hóa từ bản đồ có tọa độ.",
+  "Chưa xác nhận ngày khánh thành toàn bộ NCS2 GĐ2 và GPP2; chưa xác nhận Thiên Nga – Hải Âu đã có dòng khí (kế hoạch Q4/2026).",
+  "Nam Du – U Minh: số lô, lưu lượng 80 triệu ft³/ngày, dòng khí đầu tiên cuối 2028, việc dùng ống PM3–Cà Mau chỉ có trong kết quả tìm kiếm.",
+  "DPM: không tìm được công thức giá khí hiện hành (2024–2026) trong văn bản gốc (BCTN/BCTC/nghị quyết); '46% FO + cước' lấy từ báo 2021; chưa có trần/sàn; hợp đồng 2026 không công bố lượng/giá.",
+  "DPM: không thấy nghị quyết ĐHĐCĐ/HĐQT 2025–2026 về nguồn khí mới (Sư Tử Trắng, LNG, Đại Hùng/Lô 10-11); liên hệ Sư Tử Trắng → DPM chỉ là nhận định phân tích.",
+  "DCM: chưa mở được tờ trình/nghị quyết ĐHĐCĐ bất thường 23/09/2026 bản gốc (pvcfc.com.vn); số liệu ACQ 495 triệu Sm³, giá ND-UM, hiệu lực 24/04/2032 lấy qua Elibook dẫn HSC. Lượng 700 triệu m³/năm (toàn mỏ) và 495 triệu Sm³ (ACQ của DCM) là hai đại lượng khác nhau.",
+  "DCM: không tìm thấy trần/sàn giá; mốc hết hạn HĐ mâu thuẫn (SSI 2024: 2029; HSC 2026: 24/04/2032).",
+  "DCM: các bài 2026 nêu bên bán là PV GAS; tài liệu 2023 (BSC) dùng 'PVN' cho lượng khí thuộc quyền nhận — chưa xác minh thời điểm PV GAS thay PVN làm Bên Bán.",
+  "pvgas.com.vn, gem.wiki trả 403; OSM/Nominatim không truy cập được → tọa độ phần lớn là tâm phường/huyện (precision ghi rõ), cần thay bằng tọa độ nhà máy nếu có GIS.",
+  "Thị Vải GĐ2 (3 Mtpa): chưa xác nhận đã ký EPC, năm COD, vốn 8.867 tỷ (chỉ trong tóm tắt tìm kiếm).",
+  "Sơn Mỹ LNG: chưa có nguồn 2026 về khởi công/đóng tài chính; công suất 3,6/6 Mtpa và chủ đầu tư PV GAS–AES chưa mở được nguồn gốc.",
+  "Không có nguồn xác nhận cho kho LNG riêng tại Long An, Bạc Liêu, Quảng Ninh, Nghi Sơn, Hải Phòng, Hiệp Phước (nguồn LNG Hiệp Phước GĐ I chưa rõ) — không đưa vào lng_terminals.",
+  "QHĐ VIII điều chỉnh (QĐ 768/QĐ-TTg 15/04/2025) và KH thực hiện điều chỉnh chưa mở trực tiếp; danh sách dự án LNG dùng KH thực hiện QĐ 262/QĐ-TTg (04/2024) qua Frasers.",
+  "Kiên Giang 1&2: chỉ có trong Wikipedia vi ('sau 2030', PVN), không có trong KH thực hiện 2024 → không đặt điểm.",
+  "Cá Voi Xanh / Dung Quất / Miền Trung: chưa có nguồn 2026 về FID mỏ và tiến độ nhà máy.",
+  "Lượng tiêu thụ khí thiết kế (mmscmd) của từng nhà máy điện không có trong nguồn đã mở.",
+  "Bà Rịa: công suất mâu thuẫn (390 vs 340 MW), mỏ cấp khí chưa xác nhận.",
+  "Khách hàng công nghiệp KCN Nhơn Trạch, Hiệp Phước (CNG/LPG): không có nguồn xác nhận → không đưa vào.",
+  "Mỏ Cá Rồng Đỏ, Hồng Ngọc: chưa có nguồn đã mở, không vẽ."
+ ]
+}
