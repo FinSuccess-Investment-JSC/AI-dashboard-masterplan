@@ -1,0 +1,59 @@
+{
+ "note": "Loại trùng khi cộng ngành: công ty con của GVR nằm trong GVR hợp nhất. TNC, DRI, DRG, VHG không có trong danh sách công ty con/liên kết của GVR 2025.",
+ "consolidation": [
+  {
+   "parent": "GVR",
+   "child": "PHR",
+   "since": "2019Q1",
+   "ownership": 66.62,
+   "source": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.123, danh sách công ty con/liên kết, cột Rate of interest (tỷ lệ lợi ích) – STT 33 Phuoc Hoa Rubber JSC",
+   "note": "công ty con theo danh sách BCTC hợp nhất GVR 2025; giả định là công ty con suốt 2019–2026"
+  },
+  {
+   "parent": "GVR",
+   "child": "DPR",
+   "since": "2019Q1",
+   "ownership": 55.24,
+   "source": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.124, danh sách công ty con/liên kết, cột Rate of interest (tỷ lệ lợi ích) – STT 46 Dong Phu Rubber JSC",
+   "note": "công ty con theo danh sách BCTC hợp nhất GVR 2025; giả định là công ty con suốt 2019–2026"
+  },
+  {
+   "parent": "GVR",
+   "child": "TRC",
+   "since": "2019Q1",
+   "ownership": 60.0,
+   "source": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.124, danh sách công ty con/liên kết, cột Rate of interest (tỷ lệ lợi ích) – STT 47 Tay Ninh Rubber JSC",
+   "note": "công ty con theo danh sách BCTC hợp nhất GVR 2025; giả định là công ty con suốt 2019–2026"
+  },
+  {
+   "parent": "GVR",
+   "child": "HRC",
+   "since": "2019Q1",
+   "ownership": 55.06,
+   "source": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.123, danh sách công ty con/liên kết, cột Rate of interest (tỷ lệ lợi ích) – STT 36 Hoa Binh Rubber JSC",
+   "note": "công ty con theo danh sách BCTC hợp nhất GVR 2025; giả định là công ty con suốt 2019–2026"
+  },
+  {
+   "parent": "GVR",
+   "child": "BRR",
+   "since": "2019Q1",
+   "ownership": 97.47,
+   "source": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.125, danh sách công ty con/liên kết, cột Rate of interest (tỷ lệ lợi ích) – STT 57 Ba Ria Rubber JSC",
+   "note": "công ty con theo danh sách BCTC hợp nhất GVR 2025; giả định là công ty con suốt 2019–2026"
+  },
+  {
+   "parent": "GVR",
+   "child": "RTB",
+   "since": "2019Q1",
+   "ownership": 98.46,
+   "source": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.125, danh sách công ty con/liên kết, cột Rate of interest (tỷ lệ lợi ích) – STT 60 Tan Bien Rubber JSC",
+   "note": "công ty con theo danh sách BCTC hợp nhất GVR 2025; giả định là công ty con suốt 2019–2026"
+  }
+ ]
+}

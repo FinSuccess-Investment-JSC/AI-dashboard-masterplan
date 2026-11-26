@@ -7287,6 +7287,191 @@
     ]
    },
    "note": "Cập nhật khi doanh nghiệp công bố công suất/nhà máy mới hoặc thay đổi cơ chế giá khí; sửa data/fertilizer/plants.json rồi chạy build_fertilizer.py; bản đồ khí: sửa data/fertilizer/gas-system.json khi có mỏ/đường ống/kho LNG mới hoặc hợp đồng khí DPM, DCM thay đổi, rồi chạy build_fertilizer.py; Chủ đề nóng (#mt7): thêm bài đã mở vào data/fertilizer/news.json (bài gốc → sự kiện → chủ đề) rồi chạy scripts/build_fertilizer_news.py"
+  },
+  {
+   "id": "rubber.public.markets",
+   "tier": "A",
+   "title": "Giá cao su: TSR 20, RSS 3 (World Bank); SVR 10, STR 20, SIR 20, SMR 20, TSR 20, RSS 3 (ARBC ngày); SHFE RU, INE NR, SHFE BR; tỷ giá CNY/USD",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     5
+    ]
+   },
+   "publication": "ARBC theo ngày làm việc; World Bank đầu tháng; SHFE/INE theo phiên",
+   "source": {
+    "name": "ARBC; World Bank Pink Sheet; Sina Finance (RU0, NR0, BR0); ECB",
+    "url": "https://aseanrubber.net/arbc/index.php/rubber-prices/arbc-prices"
+   },
+   "where": {
+    "page": "Cao-su/index.html",
+    "file": "data/rubber-data.js",
+    "blocks": [
+     "cs-00",
+     "cs-10",
+     "cs-11",
+     "cs-12",
+     "cs-13",
+     "cs-14",
+     "cs-15",
+     "cs-16",
+     "cs-17",
+     "cs-18",
+     "cs-19"
+    ]
+   },
+   "how": "python3 scripts/fetch_rubber_markets.py && python3 scripts/fetch_rubber_comtrade.py && python3 scripts/fetch_rubber_financials.py && python3 scripts/build_rubber.py (chạy tay; chưa gắn vào refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "chạy tay"
+  },
+  {
+   "id": "rubber.public.customs",
+   "tier": "A",
+   "title": "Xuất khẩu cao su Việt Nam theo tháng: lượng, trị giá, đơn giá (Hải quan); Trung Quốc nhập HS 4001, 400280 theo nước (UN Comtrade)",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     10
+    ]
+   },
+   "publication": "Hải quan sơ bộ ~ngày 5–6 tháng sau; Comtrade trễ 1–2 năm",
+   "source": {
+    "name": "Cục Hải quan; UN Comtrade",
+    "url": "https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294"
+   },
+   "where": {
+    "page": "Cao-su/index.html",
+    "file": "data/rubber-data.js",
+    "blocks": [
+     "cs-20",
+     "cs-21",
+     "cs-22",
+     "cs-23",
+     "cs-24",
+     "cs-25",
+     "cs-26",
+     "cs-27",
+     "cs-34"
+    ]
+   },
+   "how": "python3 scripts/fetch_rubber_markets.py && python3 scripts/fetch_rubber_comtrade.py && python3 scripts/fetch_rubber_financials.py && python3 scripts/build_rubber.py (chạy tay; chưa gắn vào refresh-data.yml); tháng Hải quan chưa có trong customs-monthly.json nhập ở data/rubber/customs-manual.json",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "chạy tay"
+  },
+  {
+   "id": "rubber.public.financials",
+   "tier": "A",
+   "title": "BCTC hợp nhất quý 13 mã cao su (GVR, PHR, DPR, TRC, DRI, TNC, HRC, BRR, DRG, RTB, DRC, CSM, SRC)",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     20
+    ]
+   },
+   "publication": "BCTC quý: 20–45 ngày sau quý",
+   "source": {
+    "name": "VNDirect finfo",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Cao-su/index.html",
+    "file": "data/rubber-data.js",
+    "blocks": [
+     "cs-04",
+     "cs-56",
+     "cs-59",
+     "cs-60"
+    ]
+   },
+   "how": "python3 scripts/fetch_rubber_markets.py && python3 scripts/fetch_rubber_comtrade.py && python3 scripts/fetch_rubber_financials.py && python3 scripts/build_rubber.py (chạy tay; chưa gắn vào refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "chạy tay"
+  },
+  {
+   "id": "rubber.manual.company",
+   "tier": "C",
+   "title": "Báo cáo SXKD tháng DPR; số vận hành năm GVR, PHR, TRC, DRI; thanh lý vườn cây, đền bù đất, KCN",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     12
+    ]
+   },
+   "publication": "DPR công bố báo cáo tháng ~ngày 6–10 tháng sau (PDF scan); BCTN, ĐHĐCĐ theo năm",
+   "source": {
+    "name": "Website DPR, BCTN, tài liệu ĐHĐCĐ, thuyết minh BCTC",
+    "url": "https://doruco.com.vn/danh-muc/bao-cao-san-xuat-kinh-doanh/"
+   },
+   "where": {
+    "page": "Cao-su/index.html",
+    "file": "data/rubber/dpr-monthly.json",
+    "blocks": [
+     "cs-50",
+     "cs-51",
+     "cs-52",
+     "cs-53",
+     "cs-54",
+     "cs-55",
+     "cs-57",
+     "cs-58",
+     "cs-61"
+    ]
+   },
+   "how": "Mở PDF scan, đọc từng trang (đơn vị, cột tháng/lũy kế), nhập vào data/rubber/dpr-monthly.json, ops.json có source_url + source_locator; rồi python3 scripts/build_rubber.py",
+   "gates": [
+    "Mở trang gốc, kiểm đơn vị và cột",
+    "Không đoán số: không chắc thì null + gaps"
+   ]
+  },
+  {
+   "id": "rubber.manual.demand",
+   "tier": "C",
+   "title": "Cầu, cung cao su: lốp và xe thương mại Trung Quốc, nhập khẩu cao su TQ, tồn kho sàn, Malaysia, ANRPC, FAOSTAT",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     18
+    ]
+   },
+   "publication": "NBS ~ngày 15–17; GACC ~ngày 7–20; SHFE tồn kho thứ Sáu; DOSM ~ngày 10",
+   "source": {
+    "name": "NBS, GACC, SHFE/INE, DOSM, ANRPC, FAOSTAT",
+    "url": "https://data.stats.gov.cn/"
+   },
+   "where": {
+    "page": "Cao-su/index.html",
+    "file": "data/rubber/demand.json",
+    "blocks": [
+     "cs-30",
+     "cs-31",
+     "cs-32",
+     "cs-33",
+     "cs-40",
+     "cs-41",
+     "cs-42",
+     "cs-43",
+     "cs-44"
+    ]
+   },
+   "how": "Nhập vào data/rubber/demand.json (source_url từng chuỗi/điểm) rồi python3 scripts/build_rubber.py",
+   "gates": [
+    "Mở trang gốc",
+    "Không đoán số: không chắc thì null + gaps"
+   ]
   }
  ]
 }
