@@ -33,21 +33,7 @@ function mapPane(p) {
 
 /* ---------- 01 · Chuỗi giá trị theo mô hình kinh doanh (26/11/2026) ----------
    1.1 Ba bước từ đất đến doanh thu (quy trình chung) → 1.2 bốn mô hình cùng một khung → 1.3 tiện ích và dịch vụ →
-   1.4 doanh nghiệp đa ngành → 1.5 ghi nhận doanh thu theo chính sách kế toán từng doanh nghiệp (data/kcn/company-policy.json). */
-const MODELS = [
-  ['Cho thuê đất', 'KBC • IDC • SZC • LHG • NTC • D2D • TIP • VGC • BCM • SIP'],
-  ['Nhà xưởng, nhà kho xây sẵn', 'IDC • LHG • SIP'],
-  ['Tiện ích và dịch vụ', 'SIP • IDC'],
-  ['Doanh nghiệp đa ngành', 'BCM • VGC; KBC, IDC, D2D, SIP có mảng ngoài KCN']
-];
-const MODEL_ROWS = [
-  ['Ai trả tiền', 'Nhà máy thuê lại đất: doanh nghiệp FDI, doanh nghiệp trong nước', 'Doanh nghiệp thuê nhà xưởng, kho: sản xuất quy mô vừa, logistics', 'Nhà máy đang vận hành trong KCN', 'Khách của từng mảng: khách thuê KCN, người mua nhà, khách mua vật liệu, bên mua điện'],
-  ['Doanh thu tính theo', 'Diện tích (m²) × giá thuê cho cả thời hạn còn lại; thêm phí quản lý hạ tầng theo m²/năm', 'm² × giá thuê mỗi tháng', 'Sản lượng điện, nước, nước thải × đơn giá; phí quản lý theo m²', 'Cộng các mảng, mỗi mảng một đơn vị riêng'],
-  ['Vốn bỏ vào đâu', 'Bồi thường, tiền thuê đất trả Nhà nước, hạ tầng kỹ thuật (thường nằm ở chi phí dở dang, hàng tồn kho hoặc bất động sản đầu tư)', 'Xây nhà xưởng, kho (bất động sản đầu tư)', 'Trạm điện, trạm xử lý nước thải, mạng cấp nước (tài sản cố định)', 'Theo từng mảng; vốn cho KCN cạnh tranh với đô thị, vật liệu, hạ tầng giao thông'],
-  ['Khi nào thu tiền', 'Đặt cọc khi ký, phần lớn thu theo tiến độ hợp đồng trước hoặc khi bàn giao đất', 'Hằng tháng hoặc hằng quý, kèm tiền cọc', 'Hằng tháng', 'Theo từng mảng'],
-  ['Khi nào ghi nhận doanh thu', 'Khi bàn giao: một lần nếu đủ điều kiện ghi nhận một lần, hoặc phân bổ đều theo thời hạn thuê, tùy chính sách kế toán từng doanh nghiệp (mục 1.5)', 'Phân bổ theo thời gian thuê', 'Khi cung cấp dịch vụ', 'Theo chính sách của từng mảng'],
-  ['Chỉ tiêu quyết định biên', 'Giá thuê so với chi phí đất và hạ tầng trên mỗi m² thương phẩm; đất vào sổ sớm có giá vốn thấp', 'Lấp đầy và giá thuê/m² so với chi phí xây', 'Chênh lệch giá bán và giá mua điện, nước; số nhà máy đang vận hành', 'Cơ cấu doanh thu giữa các mảng và biên từng mảng (khi có báo cáo bộ phận)']
-];
+   1.2 doanh nghiệp đa ngành → 1.3 ghi nhận (26/11/2026: bỏ bảng bốn mô hình và mục tiện ích theo yêu cầu người dùng) → doanh thu theo chính sách kế toán từng doanh nghiệp (data/kcn/company-policy.json). */
 let POLICY = null; const policyReady = fetch(new URL('../data/kcn/company-policy.json', document.baseURI), {cache: 'no-cache'}).then(r => r.ok ? r.json() : null).then(j => (POLICY = j)).catch(() => null);
 const METHOD = {one_off: 'Ghi nhận một lần', straight_line: 'Phân bổ theo thời hạn thuê', mixed: 'Một lần hoặc phân bổ, tùy hợp đồng', as_delivered: 'Khi cung cấp dịch vụ'};
 function policyTable(host, tickers, cols) {
@@ -70,10 +56,6 @@ function policyTable(host, tickers, cols) {
 function modelPane(p, pane) {
   const bm = pane.querySelector('.business-models'), road = pane.querySelector('.research-roadmap');
   if (road) road.querySelector(':scope>h2')?.remove();
-  const tbl = el('div', 'card ov-models', `<div class="tablewrap" data-no-fold><table class="kc-t ov-mt" data-no-fold><thead><tr><th></th>${MODELS.map(([t, c]) => `<th>${esc(t)}<br><span class="kc-na">${esc(c)}</span></th>`).join('')}</tr></thead><tbody>${MODEL_ROWS.map(r => `<tr><th>${esc(r[0])}</th>${r.slice(1).map(x => `<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div><div class="pw-src">Nguồn: cơ chế chung từ BCTN, BCTC doanh nghiệp; điều khoản cụ thể theo hợp đồng và chính sách kế toán từng doanh nghiệp (mục 1.5)</div>`);
-  const util = el('div', 'card');
-  util.innerHTML = `<p>Doanh thu tiện ích (phân phối điện, cấp nước, xử lý nước thải, phí quản lý) tăng theo số nhà máy đã vận hành chứ không theo diện tích ký mới, nên ổn định hơn doanh thu cho thuê đất và đi sau bàn giao vài năm. Mảng này cần hạ tầng riêng (trạm điện, trạm xử lý nước thải) và biên phụ thuộc chênh giá mua – bán điện, nước.</p><div class="ov-pol"></div>`;
-  policyTable(util.querySelector('.ov-pol'), ['SIP', 'IDC'], ['util', 'seg']);
   const multi = el('div', 'card');
   multi.innerHTML = `<p>Với doanh nghiệp có mảng ngoài KCN, tăng trưởng hay biên hợp nhất chỉ được quy về KCN khi có báo cáo bộ phận. Bảng dưới ghi các mảng doanh nghiệp tự công bố; nếu chỉ có số hợp nhất, số ở tab Tài chính ngành là số toàn doanh nghiệp.</p><div class="ov-pol"></div><p class="ov-cap"><a class="ov-more" href="?fin=fin#mt14" data-ov-fin="fin">Số hợp nhất theo quý ở Tài chính ngành →</a></p>`;
   policyTable(multi.querySelector('.ov-pol'), ['BCM', 'VGC', 'KBC', 'IDC', 'D2D', 'SIP'], ['seg']);
@@ -81,10 +63,8 @@ function modelPane(p, pane) {
   policyTable(rec.querySelector('.ov-pol'), null, ['land', 'unearned']);
   p.append(
     road ? sec('steps', '1.1', 'Ba bước từ đất đến doanh thu', road, {sub: 'Quy trình chung của mọi mô hình: đất và đền bù → vốn và hạ tầng → cho thuê và bàn giao.'}) : null,
-    sec('models', '1.2', 'Mỗi mô hình thu tiền từ ai, khi nào, và ghi nhận doanh thu ra sao?', tbl, {sub: 'Bốn mô hình trên cùng một khung: ai trả tiền, đơn vị tính doanh thu, vốn bỏ vào đâu, khi nào thu tiền, khi nào ghi nhận doanh thu, chỉ tiêu quyết định biên.'}),
-    sec('utility', '1.3', 'Tiện ích và dịch vụ kiếm tiền thế nào?', util),
-    sec('multi', '1.4', 'Doanh nghiệp đa ngành: mảng KCN đóng góp bao nhiêu?', multi),
-    sec('recog', '1.5', 'Từng doanh nghiệp ghi nhận doanh thu cho thuê đất theo cách nào?', rec, {sub: 'Theo thuyết minh chính sách kế toán trong BCTC kiểm toán. Cùng một hợp đồng, doanh nghiệp ghi nhận một lần sẽ có lợi nhuận dồn vào quý bàn giao; doanh nghiệp phân bổ có lợi nhuận đều và số dư doanh thu chưa thực hiện lớn.'})
+    sec('multi', '1.2', 'Doanh nghiệp đa ngành: mảng KCN đóng góp bao nhiêu?', multi),
+    sec('recog', '1.3', 'Từng doanh nghiệp ghi nhận doanh thu cho thuê đất theo cách nào?', rec, {sub: 'Theo thuyết minh chính sách kế toán trong BCTC kiểm toán. Cùng một hợp đồng, doanh nghiệp ghi nhận một lần sẽ có lợi nhuận dồn vào quý bàn giao; doanh nghiệp phân bổ có lợi nhuận đều và số dư doanh thu chưa thực hiện lớn.'})
   );
   bm?.remove();
 }
@@ -213,7 +193,7 @@ function finTab(pane1) {
 
 const SECTIONS = [
   ['map', '00', 'Bản đồ ngành', 'Chuỗi giá trị ngành', 'Đất, vốn và khách thuê đi qua những ai?', mapPane],
-  ['model', '01', 'Chuỗi giá trị theo mô hình', 'Cho thuê đất · nhà xưởng · tiện ích · đa ngành', 'Mỗi mô hình kinh doanh tạo doanh thu, ghi nhận lợi nhuận ở khâu nào?', modelPane],
+  ['model', '01', 'Chuỗi giá trị theo mô hình', 'Ba bước · đa ngành · ghi nhận doanh thu', 'Mỗi mô hình kinh doanh tạo doanh thu, ghi nhận lợi nhuận ở khâu nào?', modelPane],
   ['forward', '02', 'Triển vọng', 'Nguồn cung mới, mốc chính sách', 'Điều gì có thể làm thay đổi luận điểm?', forwardPane]
 ];
 
