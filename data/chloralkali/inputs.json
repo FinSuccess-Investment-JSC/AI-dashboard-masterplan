@@ -1,0 +1,532 @@
+{
+ "tariffs": [
+  {
+   "decision": "4495/QĐ-BCT",
+   "issuer": "Bộ Công Thương",
+   "signed": "2017-11-30",
+   "effective": "2017-12-01",
+   "avg_price": 1720.65,
+   "avg_change_pct": 6.08,
+   "voltage_scheme": "cũ (QĐ 28/2014/QĐ-TTg)",
+   "time_bands": "TT 16/2014 (cũ)",
+   "table": [
+    {
+     "voltage": "Từ 110 kV trở lên",
+     "binh_thuong": 1434,
+     "thap_diem": 884,
+     "cao_diem": 2570
+    },
+    {
+     "voltage": "Từ 22 kV đến dưới 110 kV",
+     "binh_thuong": 1452,
+     "thap_diem": 918,
+     "cao_diem": 2673
+    },
+    {
+     "voltage": "Từ 6 kV đến dưới 22 kV",
+     "binh_thuong": 1503,
+     "thap_diem": 953,
+     "cao_diem": 2759
+    },
+    {
+     "voltage": "Dưới 6 kV",
+     "binh_thuong": 1572,
+     "thap_diem": 1004,
+     "cao_diem": 2862
+    }
+   ],
+   "source_url": "https://luatvietnam.vn/cong-nghiep/quyet-dinh-4495-qd-bct-bo-cong-thuong-118646-d1.html",
+   "accessed": "2026-11-26",
+   "note": "Giá bình quân 1.720,65 đ/kWh (Điều 2); trang ghi tăng ~6,08% từ 1.622,01."
+  },
+  {
+   "decision": "648/QĐ-BCT",
+   "issuer": "Bộ Công Thương",
+   "signed": "2019-03-20",
+   "effective": "2019-03-20",
+   "avg_price": 1864.44,
+   "avg_change_pct": null,
+   "voltage_scheme": "cũ (QĐ 28/2014/QĐ-TTg)",
+   "time_bands": "TT 16/2014 (cũ)",
+   "table": [
+    {
+     "voltage": "Từ 110 kV trở lên",
+     "binh_thuong": 1536,
+     "thap_diem": 970,
+     "cao_diem": 2759
+    },
+    {
+     "voltage": "Từ 22 kV đến dưới 110 kV",
+     "binh_thuong": 1555,
+     "thap_diem": 1007,
+     "cao_diem": 2871
+    },
+    {
+     "voltage": "Từ 6 kV đến dưới 22 kV",
+     "binh_thuong": 1611,
+     "thap_diem": 1044,
+     "cao_diem": 2964
+    },
+    {
+     "voltage": "Dưới 6 kV",
+     "binh_thuong": 1685,
+     "thap_diem": 1100,
+     "cao_diem": 3076
+    }
+   ],
+   "source_url": "https://accgroup.vn/quyet-dinh-648-qd-bct-2019-dieu-chinh-muc-gia-ban-le-dien-binh-quan-va-quy-dinh-gia-ban-dien",
+   "accessed": "2026-11-26",
+   "source_url_2": "https://english.luatvietnam.vn/decision-no-648-qd-bct-on-adjusting-the-average-electricity-retail-price-and-providing-for-171439-doc1.html",
+   "note": "Bảng giá lấy từ bản chép của accgroup.vn (bản luatvietnam tiếng Anh không dịch phụ lục); giá bình quân 1.864,44 đ/kWh theo Điều 1 khoản 1. % tăng (8,36% theo tiêu đề SGGP) chưa mở trang để xác minh → null."
+  },
+  {
+   "decision": "1062/QĐ-BCT",
+   "issuer": "Bộ Công Thương",
+   "signed": "2023-05-04",
+   "effective": "2023-05-04",
+   "avg_price": 1920.3732,
+   "avg_change_pct": 3.0,
+   "voltage_scheme": "cũ (QĐ 28/2014/QĐ-TTg)",
+   "time_bands": "TT 16/2014 (cũ)",
+   "table": [
+    {
+     "voltage": "Từ 110 kV trở lên",
+     "binh_thuong": 1584,
+     "thap_diem": 999,
+     "cao_diem": 2844
+    },
+    {
+     "voltage": "Từ 22 kV đến dưới 110 kV",
+     "binh_thuong": 1604,
+     "thap_diem": 1037,
+     "cao_diem": 2959
+    },
+    {
+     "voltage": "Từ 6 kV đến dưới 22 kV",
+     "binh_thuong": 1661,
+     "thap_diem": 1075,
+     "cao_diem": 3055
+    },
+    {
+     "voltage": "Dưới 6 kV",
+     "binh_thuong": 1738,
+     "thap_diem": 1133,
+     "cao_diem": 3171
+    }
+   ],
+   "source_url": "https://luatvietnam.vn/dien-luc/quyet-dinh-1062-qd-bct-2023-gia-ban-dien-moi-nhat-251425-d1.html",
+   "accessed": "2026-11-26",
+   "source_url_2": "https://www.vietnamplus.vn/bo-cong-thuong-gia-dien-sinh-hoat-cao-nhat-la-3015-dong-moi-kwh-post860720.vnp",
+   "note": "Thay QĐ 648/2019. Bài VietnamPlus 04/05/2023 ghi cao điểm cấp 22–<110 kV là 2.595 — lệch văn bản (2.959), dùng số văn bản."
+  },
+  {
+   "decision": "2941/QĐ-BCT",
+   "issuer": "Bộ Công Thương",
+   "signed": "2023-11-08",
+   "effective": "2023-11-09",
+   "avg_price": 2006.79,
+   "avg_change_pct": 4.5,
+   "voltage_scheme": "cũ (QĐ 28/2014/QĐ-TTg)",
+   "time_bands": "TT 16/2014 (cũ)",
+   "table": [
+    {
+     "voltage": "Từ 110 kV trở lên",
+     "binh_thuong": 1649,
+     "thap_diem": 1044,
+     "cao_diem": 2973
+    },
+    {
+     "voltage": "Từ 22 kV đến dưới 110 kV",
+     "binh_thuong": 1669,
+     "thap_diem": 1084,
+     "cao_diem": 3093
+    },
+    {
+     "voltage": "Từ 6 kV đến dưới 22 kV",
+     "binh_thuong": 1729,
+     "thap_diem": 1124,
+     "cao_diem": 3194
+    },
+    {
+     "voltage": "Dưới 6 kV",
+     "binh_thuong": 1809,
+     "thap_diem": 1184,
+     "cao_diem": 3314
+    }
+   ],
+   "source_url": "https://english.luatvietnam.vn/cong-nghiep/decision-2941-qd-bct-2023-on-electricity-prices-275575-d1.html",
+   "accessed": "2026-11-26",
+   "note": "Bản dịch tiếng Anh của luatvietnam (Phụ lục mục 1). % tăng 4,5% so với 1.920,3731 theo tóm tắt kết quả tìm kiếm (lawnet), chưa mở trang gốc."
+  },
+  {
+   "decision": "2699/QĐ-BCT",
+   "issuer": "Bộ Công Thương",
+   "signed": "2024-10-11",
+   "effective": "2024-10-11",
+   "avg_price": 2103.1159,
+   "avg_change_pct": 4.8,
+   "voltage_scheme": "cũ (QĐ 28/2014/QĐ-TTg)",
+   "time_bands": "TT 16/2014 (cũ)",
+   "table": [
+    {
+     "voltage": "Từ 110 kV trở lên",
+     "binh_thuong": 1728,
+     "thap_diem": 1094,
+     "cao_diem": 3116
+    },
+    {
+     "voltage": "Từ 22 kV đến dưới 110 kV",
+     "binh_thuong": 1749,
+     "thap_diem": 1136,
+     "cao_diem": 3242
+    },
+    {
+     "voltage": "Từ 6 kV đến dưới 22 kV",
+     "binh_thuong": 1812,
+     "thap_diem": 1178,
+     "cao_diem": 3348
+    },
+    {
+     "voltage": "Dưới 6 kV",
+     "binh_thuong": 1896,
+     "thap_diem": 1241,
+     "cao_diem": 3474
+    }
+   ],
+   "source_url": "https://english.luatvietnam.vn/cong-nghiep/decision-2699-qd-bct-2024-electricity-prices-367943-d1.html",
+   "accessed": "2026-11-26",
+   "source_url_2": "https://vneconomy.vn/gia-dien-tang-them-4-8-vuot-muc-2-103-dong-kwh.htm",
+   "note": "EVN áp dụng theo QĐ 1046/QĐ-EVN ngày 11/10/2024."
+  },
+  {
+   "decision": "1279/QĐ-BCT",
+   "issuer": "Bộ Công Thương",
+   "signed": "2025-05-09",
+   "effective": "2025-05-10",
+   "avg_price": 2204.0655,
+   "avg_change_pct": 4.8,
+   "voltage_scheme": "cũ (QĐ 28/2014/QĐ-TTg)",
+   "time_bands": "TT 16/2014 (cũ)",
+   "table": [
+    {
+     "voltage": "Từ 110 kV trở lên",
+     "binh_thuong": 1811,
+     "thap_diem": 1146,
+     "cao_diem": 3266
+    },
+    {
+     "voltage": "Từ 22 kV đến dưới 110 kV",
+     "binh_thuong": 1833,
+     "thap_diem": 1190,
+     "cao_diem": 3398
+    },
+    {
+     "voltage": "Từ 6 kV đến dưới 22 kV",
+     "binh_thuong": 1899,
+     "thap_diem": 1234,
+     "cao_diem": 3508
+    },
+    {
+     "voltage": "Dưới 6 kV",
+     "binh_thuong": 1987,
+     "thap_diem": 1300,
+     "cao_diem": 3640
+    }
+   ],
+   "source_url": "https://luatvietnam.vn/dien-luc/quyet-dinh-1279-qd-bct-cua-bo-cong-thuong-quy-dinh-ve-gia-ban-dien-399752-d1.html",
+   "accessed": "2026-11-26",
+   "source_url_2": "https://baophapluat.vn/gia-dien-ban-le-binh-quan-tang-48-len-hon-2204-dongkwh-tu-ngay-105-post547893.html",
+   "note": "QĐ 1279 ra trước QĐ 14/2025/QĐ-TTg (29/5/2025) nên vẫn dùng 4 cấp điện áp cũ."
+  },
+  {
+   "decision": "2892/QĐ-BCT",
+   "issuer": "Bộ Công Thương",
+   "signed": "2026-10-31",
+   "effective": "2026-11-01",
+   "avg_price": 2159.9037,
+   "avg_change_pct": -2.0,
+   "voltage_scheme": "MỚI (QĐ 14/2025/QĐ-TTg)",
+   "time_bands": "MỚI (QĐ 963/QĐ-BCT ngày 22/4/2026)",
+   "table": [
+    {
+     "voltage": "Từ 220 kV trở lên",
+     "binh_thuong": 1771,
+     "thap_diem": 1101,
+     "cao_diem": 3110
+    },
+    {
+     "voltage": "Trên 35 kV đến dưới 220 kV",
+     "binh_thuong": 1792,
+     "thap_diem": 1123,
+     "cao_diem": 3218
+    },
+    {
+     "voltage": "Trung áp: trên 1 kV đến 35 kV",
+     "binh_thuong": 1814,
+     "thap_diem": 1166,
+     "cao_diem": 3348
+    },
+    {
+     "voltage": "Hạ áp: đến 1 kV",
+     "binh_thuong": 1966,
+     "thap_diem": 1274,
+     "cao_diem": 3586
+    }
+   ],
+   "source_url": "https://www.sggp.org.vn/chi-tiet-gia-ban-le-dien-ap-dung-tu-ngay-1-11-2026-post880092.html",
+   "accessed": "2026-11-26",
+   "source_url_2": "https://lsvn.vn/ap-dung-bieu-gia-ban-le-dien-moi-a182060.html",
+   "source_url_3": "https://www.vietnamplus.vn/evn-dieu-chinh-gia-dien-giam-2-con-21599-dongkwh-tu-ngay-mai-111-post1145418.vnp",
+   "note": "Bảng giá lấy từ 2 báo (SGGP 05/11/2026, LSVN 06/11/2026) trùng khớp; chưa mở được văn bản gốc 2892. 4 cấp điện áp mới KHÔNG tương ứng 1-1 với 4 cấp cũ (ví dụ 22 kV nay thuộc 'trung áp >1–35 kV'). EVN áp dụng giá bình quân theo QĐ 1305/QĐ-EVN ngày 30/10/2026."
+  }
+ ],
+ "tariff_notes": [
+  {
+   "topic": "Thay đổi cấp điện áp",
+   "text": "QĐ 14/2025/QĐ-TTg (ký và hiệu lực 29/5/2025, thay QĐ 28/2014/QĐ-TTg) định nghĩa cao áp >35 kV, trung áp >1 kV–35 kV, hạ áp ≤1 kV; nhóm sản xuất chia 4 cấp: 220 kV; >35 kV–<220 kV; trung áp; hạ áp. Cơ cấu mới áp dụng từ lần điều chỉnh giá bình quân gần nhất sau ngày hiệu lực (Điều 7 khoản 1); trước đó vẫn dùng QĐ 28/2014 (Điều 6). Lần áp dụng đầu tiên thấy được là QĐ 2892/QĐ-BCT từ 01/11/2026.",
+   "source_url": "https://luatvietnam.vn/chinh-sach/quyet-dinh-14-2025-qd-ttg-cua-thu-tuong-chinh-phu-quy-dinh-ve-co-cau-bieu-gia-ban-le-dien-401724-d1.html",
+   "accessed": "2026-11-26"
+  },
+  {
+   "topic": "Tỷ lệ giá theo QĐ 14/2025",
+   "text": "Phụ lục QĐ 14/2025 (theo luatvietnam) cho nhóm sản xuất: 220 kV 84%/53%/146%; >35–<220 kV 85%/54%/151%; trung áp 86%/56%/157%; hạ áp 93%/61%/168% giá bình quân (bình thường/thấp điểm/cao điểm). Giá thực tế QĐ 2892 chia cho giá bình quân 2.159,9037 cho cấp 220 kV = 82,0%/51,0%/144,0% — thấp hơn mức phụ lục; chưa xác minh phụ lục là khung hay đã được sửa (Bộ Công Thương lấy ý kiến dự thảo sửa QĐ 14 ngày 20–22/10/2026).",
+   "source_url": "https://luatvietnam.vn/chinh-sach/quyet-dinh-14-2025-qd-ttg-cua-thu-tuong-chinh-phu-quy-dinh-ve-co-cau-bieu-gia-ban-le-dien-401724-d1.html",
+   "accessed": "2026-11-26"
+  },
+  {
+   "topic": "Khung giờ cũ (đến 31/10/2026)",
+   "text": "Thứ Hai–thứ Bảy: cao điểm 9h30–11h30 và 17h00–20h00; thấp điểm 22h00–4h00 mọi ngày; còn lại là bình thường; Chủ nhật không có cao điểm. Áp dụng cho QĐ 4495/2017 đến QĐ 1279/2025.",
+   "source_url": "https://hatinh.gov.vn/vi/bai-viet/gio-cao-diem-tinh-gia-dien-thay-doi-nhom-khach-hang-nao-chiu-tac-dong-lon",
+   "accessed": "2026-11-26"
+  },
+  {
+   "topic": "Khung giờ mới QĐ 963/QĐ-BCT",
+   "text": "Hiệu lực 22/4/2026: cao điểm 17h30–22h30 thứ Hai–thứ Bảy (5 giờ), Chủ nhật không có; thấp điểm 0h–6h mọi ngày (6 giờ); bình thường 6h–17h30 và 22h30–24h (thứ Hai–thứ Bảy), Chủ nhật 6h–24h. Đến 08/5/2026 chưa áp dụng vào hóa đơn; EVNSPC ghi khung giờ này đi kèm biểu giá QĐ 2892 từ 01/11/2026.",
+   "source_url": "https://moit.gov.vn/tin-tuc/quy-dinh-moi-ve-gio-cao-diem-thap-diem-cua-he-thong-dien-quoc-gia.html",
+   "accessed": "2026-11-26",
+   "source_url_2": "https://www.cskh.evnspc.vn/TraCuu/ThongTinGiaDien"
+  },
+  {
+   "topic": "So sánh chuỗi",
+   "text": "Từ 01/11/2026 giá theo cấp điện áp mới và khung giờ mới; không nối thẳng chuỗi cấp '≥110 kV' cũ với '≥220 kV' mới. Khách hàng 110 kV cũ nay thuộc nhóm '>35 kV–<220 kV' (1.792/1.123/3.218).",
+   "source_url": null,
+   "accessed": "2026-11-26"
+  },
+  {
+   "topic": "Các lần giảm giá tạm thời",
+   "text": "Không thu thập các đợt hỗ trợ/giảm giá COVID-19 năm 2020 (chủ yếu cho sinh hoạt và cơ sở cách ly) vì không phải thay đổi biểu giá sản xuất; chưa mở trang xác minh.",
+   "source_url": null,
+   "accessed": "2026-11-26"
+  }
+ ],
+ "salt_quota": [
+  {
+   "year": 2018,
+   "quota_tonnes": null,
+   "document": null,
+   "scope": "HS 2501",
+   "in_quota_rate_pct": null,
+   "out_quota_rate_pct": null,
+   "source_url": null,
+   "note": "Chưa tìm được văn bản và lượng hạn ngạch năm 2018."
+  },
+  {
+   "year": 2019,
+   "quota_tonnes": null,
+   "document": "Thông tư 04/2019/TT-BCT (04/3/2019; hiệu lực 17/4–31/12/2019)",
+   "scope": "HS 2501",
+   "in_quota_rate_pct": null,
+   "out_quota_rate_pct": null,
+   "source_url": "https://www.vcci.com.vn/legal-document/thong-tu-042019tt-bct-quy-dinh-ve-nguyen-tac-dieu-hanh-han-ngach-thue-quan-nhap-khau-doi-voi-mat-hang-muoi-trung-gia-cam-nam-2019",
+   "note": "Thông tư nguyên tắc điều hành; lượng hạn ngạch không thấy trong phần đã đọc (thông tin văn bản lấy từ kết quả tìm kiếm, chưa mở trang)."
+  },
+  {
+   "year": 2020,
+   "quota_tonnes": null,
+   "document": "Thông tư 02/2020/TT-BCT (22/01/2020; hiệu lực 29/02–31/12/2020)",
+   "scope": "HS 2501",
+   "in_quota_rate_pct": null,
+   "out_quota_rate_pct": null,
+   "source_url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/quy-dinh-ve-nguyen-tac-dieu-hanh-nhap-khau-theo-han-ngach-th.html",
+   "note": "Trang Bộ Công Thương (05/02/2020) để lượng hạn ngạch trong ảnh, không đọc được."
+  },
+  {
+   "year": 2021,
+   "quota_tonnes": 80000,
+   "document": "Thông tư 52/2020/TT-BCT (24/12/2020; hiệu lực 06/02–31/12/2021)",
+   "scope": "HS 2501",
+   "in_quota_rate_pct": null,
+   "out_quota_rate_pct": null,
+   "source_url": "https://dulieuphapluat.vn/van-ban/xuat-nhap-khau-van-ban/circular-522020tt-bct-stipulating-quantity-and-principles-for-administering-import-tariff-quotas-for-salt-and-poultry-eggs-in-2021-promulgated-by-the-minister-of-industry-and-trade-1014427.html",
+   "note": ""
+  },
+  {
+   "year": 2022,
+   "quota_tonnes": 80000,
+   "document": "Thông tư 24/2021/TT-BCT (16/12/2021; hiệu lực 01/02–31/12/2022)",
+   "scope": "HS 2501",
+   "in_quota_rate_pct": null,
+   "out_quota_rate_pct": null,
+   "source_url": "https://tapchicongthuong.vn/cong-bo-han-ngach-thue-quan-nhap-khau-muoi--trung-gia-cam-nam-2023-106323.htm",
+   "note": "Số 80.000 tấn nêu trong bài Tạp chí Công Thương 20/6/2023 và bài Trung tâm WTO 23/8/2023."
+  },
+  {
+   "year": 2023,
+   "quota_tonnes": 84000,
+   "document": "Thông tư 13/2023/TT-BCT (09/6/2023; hiệu lực từ 25/7/2023)",
+   "scope": "HS 2501",
+   "in_quota_rate_pct": 15,
+   "out_quota_rate_pct": 50,
+   "source_url": "https://tapchicongthuong.vn/cong-bo-han-ngach-thue-quan-nhap-khau-muoi--trung-gia-cam-nam-2023-106323.htm",
+   "rate_source_url": "https://trungtamwto.vn/tin-tuc/24300-nghich-ly-cau-chuyen-nhap-khau-muoi",
+   "note": "Thuế 15% trong hạn ngạch / 50% ngoài hạn ngạch cho muối công nghiệp theo Trung tâm WTO (23/8/2023)."
+  },
+  {
+   "year": 2024,
+   "quota_tonnes": 88000,
+   "document": "Thông tư 37/2023/TT-BCT (22/12/2023; hiệu lực 06/02–31/12/2024)",
+   "scope": "HS 2501 (muối ăn, muối biến tính, NaCl tinh khiết, nước biển)",
+   "in_quota_rate_pct": null,
+   "out_quota_rate_pct": null,
+   "source_url": "https://www.vietnamplus.vn/quy-dinh-moi-ve-han-ngach-thue-quan-nhap-khau-muoi-trung-gia-cam-nam-2024-post917295.vnp",
+   "note": "Mức thuế năm 2024 không thấy trong nguồn đã mở."
+  },
+  {
+   "year": 2025,
+   "quota_tonnes": 92400,
+   "document": "Thông tư 01/2025/TT-BCT (15/01/2025; hiệu lực 02/3–31/12/2025)",
+   "scope": "HS 2501 (muối ăn, muối biến tính, NaCl tinh khiết, nước biển)",
+   "in_quota_rate_pct": null,
+   "out_quota_rate_pct": 50,
+   "source_url": "https://luatvietnam.vn/thue/thong-tu-01-2025-tt-bct-han-ngach-thue-quan-nhap-khau-mat-hang-muoi-trung-gia-cam-nam-2025-386232-d1.html",
+   "rate_source_url": "https://finance.vietstock.vn/downloadedoc/16435",
+   "note": "Báo cáo FPTS về HVT (dữ liệu đến 30/6/2025) ghi muối ngoài hạn ngạch chịu thuế 'lên tới 50%'; mức trong hạn ngạch không nêu. Phân giao cho làm thuốc/y tế từ 02/3/2025; cho hóa chất do Bộ Công Thương thống nhất với Bộ NN&PTNT."
+  },
+  {
+   "year": 2026,
+   "quota_tonnes": 97020,
+   "document": "Thông tư 03/2026/TT-BCT (26/01/2026; hiệu lực 15/3–31/12/2026; ký: Thứ trưởng Nguyễn Sinh Nhật Tân)",
+   "scope": "Nhóm 2501 (không chia phân nhóm): muối (gồm muối ăn, muối biến tính), NaCl tinh khiết, nước biển",
+   "in_quota_rate_pct": null,
+   "out_quota_rate_pct": null,
+   "source_url": "https://english.luatvietnam.vn/circular-no-03-2026-tt-bct-dated-january-26-2026-of-the-ministry-of-industry-and-trade-providing-the-import-tariff-rate-quotas-for-salt-and-birds-e-425073-doc1.html",
+   "source_url_2": "https://chinhphu.vn/?classid=0&docid=216801&pageid=27160",
+   "note": "Đã xác minh 97.020 tấn. Thông tư dẫn chiếu NĐ 26/2023/NĐ-CP cho thuế suất nhưng không ghi mức thuế. Phân giao muối làm thuốc/y tế từ 15/3/2026; muối làm hóa chất chờ Bộ Công Thương thống nhất với Bộ NN&MT."
+  }
+ ],
+ "salt_imports": null,
+ "salt_imports_reason": "Không tìm được chuỗi HS 250100/25010092 theo năm từ Hải quan hoặc UN Comtrade trong các trang đã mở.",
+ "power_norm": [
+  {
+   "source": "EU BREF Chlor-alkali 2014 (JRC), mục 3.3.4.3.2",
+   "basis": "AC kWh/t Cl2, chỉ điện phân, điện phân màng lưỡng cực (bipolar), các nhà máy EU",
+   "quote": "For bipolar membrane cells, the electrical energy consumption ranges from approximately 2 300 to 2 900 AC kWh/t Cl2 produced, the median being approximately 2 500 AC kWh/t Cl2 produced",
+   "value_per_t_cl2": {
+    "min": 2300,
+    "median": 2500,
+    "max": 2900
+   },
+   "value_per_t_naoh_100": {
+    "min": 2039,
+    "median": 2216,
+    "max": 2571
+   },
+   "conversion": "Chia 1,128 t NaOH(100%)/t Cl2 (hệ số BREF dùng)",
+   "source_url": "https://en.prtr-es.miteco.gob.es/Data/images/BREF_Chlor_alkali_2014.pdf",
+   "accessed": "2026-11-26"
+  },
+  {
+   "source": "EU BREF Chlor-alkali 2014, Bảng 3.13 (tổng năng lượng nhà máy EU-27 & EFTA)",
+   "basis": "AC kWh/t Cl2: điện phân 2.600 + thiết bị điện khác 200 = 2.800 (công nghệ màng, trung vị)",
+   "quote": "Membrane cell technique ... Electricity AC kWh/t Cl2 produced 2 600 200 NA 2 800",
+   "value_per_t_cl2": {
+    "electrolysis": 2600,
+    "total": 2800
+   },
+   "value_per_t_naoh_100": {
+    "electrolysis": 2305,
+    "total": 2482
+   },
+   "conversion": "Chia 1,128",
+   "source_url": "https://en.prtr-es.miteco.gob.es/Data/images/BREF_Chlor_alkali_2014.pdf",
+   "accessed": "2026-11-26"
+  },
+  {
+   "source": "EU BREF Chlor-alkali 2014, Bảng 4.16 (bộ điện phân màng lưỡng cực mới nhất, khởi động điều kiện tối ưu)",
+   "basis": "DC kWh/t NaOH (100%), không gồm tổn thất chỉnh lưu/biến áp",
+   "quote": "Chlorine Engineers DC kWh/t NaOH (100 %) produced: 1 890 (3 kA/m2) ... 2 060 (6 kA/m2) ... 2 170 (8 kA/m2); Uhde 1 885 ... 2 060 (6 kA/m2); Asahi Kasei 2 094 (6 kA/m2); INEOS 2 100 (6 kA/m2)",
+   "value_per_t_naoh_100": {
+    "at_6kA_m2": [
+     2060,
+     2100,
+     2094
+    ],
+    "range_3_8kA_m2": [
+     1885,
+     2170
+    ]
+   },
+   "conversion": "Đã là /t NaOH 100%",
+   "source_url": "https://en.prtr-es.miteco.gob.es/Data/images/BREF_Chlor_alkali_2014.pdf",
+   "accessed": "2026-11-26"
+  },
+  {
+   "source": "EU BREF Chlor-alkali 2014, Bảng 4.17 (Euro Chlor 2012)",
+   "basis": "AC kWh/t Cl2, bộ điện phân màng mới, gồm tổn thất 3%, không gồm hóa lỏng clo và phụ trợ",
+   "quote": "Electricity consumption in AC kWh/t Cl2 produced (1) 2 280 2 370 2 455 2 535 [4, 5, 6, 7 kA/m2]",
+   "value_per_t_cl2": {
+    "4kA": 2280,
+    "5kA": 2370,
+    "6kA": 2455,
+    "7kA": 2535
+   },
+   "value_per_t_naoh_100": {
+    "4kA": 2021,
+    "5kA": 2101,
+    "6kA": 2176,
+    "7kA": 2247
+   },
+   "conversion": "Chia 1,128",
+   "source_url": "https://en.prtr-es.miteco.gob.es/Data/images/BREF_Chlor_alkali_2014.pdf",
+   "accessed": "2026-11-26"
+  },
+  {
+   "source": "Chemical Engineering, 'The Greening of Chlor-Alkali Production' (01/10/2017)",
+   "basis": "kWh/t NaOH, thiết bị Uhde BM2.7v6 tại 6 kA/m2 (không nói AC/DC)",
+   "quote": "reduces power consumption to 2,020–2,035 kWh per metric ton (m.t.) of NaOH at 6 kA/m2",
+   "value_per_t_naoh_100": {
+    "min": 2020,
+    "max": 2035
+   },
+   "conversion": null,
+   "source_url": "https://www.chemengonline.com/greening-chlor-alkali-production/",
+   "accessed": "2026-11-26"
+  },
+  {
+   "source": "FPTS – Báo cáo định giá lần đầu HVT (dữ liệu đến 30/06/2025), Phụ lục 3",
+   "basis": "kWh/tấn NaOH, bình quân theo công nghệ (không ghi rõ AC/DC, có thể gồm cô đặc)",
+   "quote": "Điện năng tiêu thụ bình quân (kWh/1 tấn NaOH): 3.600 (thủy ngân) | 5.000 (màng ngăn) | 3.360 (màng trao đổi ion)",
+   "value_per_t_naoh_100": {
+    "membrane": 3360
+   },
+   "conversion": null,
+   "source_url": "https://finance.vietstock.vn/downloadedoc/16435",
+   "accessed": "2026-11-26",
+   "note": "Cùng báo cáo: HVT mua điện lưới 110 kV, giá bình quân 2.074 đ/kWh năm 2024; chi phí điện 350 tỷ đồng (2024), ~35,3% chi phí nguyên nhiên liệu 2019–2024."
+  }
+ ],
+ "gaps": [
+  "QĐ 2892/QĐ-BCT: chưa mở được văn bản gốc; bảng giá sản xuất lấy từ SGGP (05/11/2026) và LSVN (06/11/2026), hai nguồn khớp nhau. Trang EVNSPC tra cứu không trả về số liệu bảng (chỉ có tên quyết định và khung giờ).",
+  "QĐ 648/QĐ-BCT (2019): bảng giá lấy từ bản chép accgroup.vn; luatvietnam tiếng Anh không dịch phụ lục. % tăng giá bình quân 2019 chưa xác minh (null).",
+  "Tỷ lệ % giá theo QĐ 14/2025/QĐ-TTg (84/53/146 cho 220 kV) không khớp giá thực tế QĐ 2892 (82,0/51,0/144,0%); chưa rõ phụ lục là khung hay đã được sửa (dự thảo sửa QĐ 14 lấy ý kiến 20–22/10/2026, chưa thấy bản ban hành).",
+  "Thời điểm khung giờ QĐ 963 bắt đầu tính vào hóa đơn: EVNSPC và VietnamPlus gắn với biểu giá 01/11/2026 nhưng chưa thấy văn bản nêu rõ ngày áp dụng.",
+  "Hạn ngạch muối 2018, 2019, 2020: chưa có lượng (null) — trang Bộ Công Thương đưa lượng trong ảnh; 2018 chưa xác định văn bản.",
+  "Thuế suất muối trong/ngoài hạn ngạch chỉ xác minh từ bài Trung tâm WTO 23/8/2023 (15%/50%) và báo cáo FPTS 2025 (ngoài hạn ngạch 'lên tới 50%'); chưa mở biểu thuế NĐ 26/2023/NĐ-CP theo từng mã 8 số.",
+  "Chuỗi nhập khẩu muối công nghiệp (HS 250100/25010092) theo năm: không tìm được chuỗi đã kiểm chứng → salt_imports = null. Chỉ có số gộp: VN nhập trung bình ~465.000 t muối công nghiệp/năm 2019–2024 (FPTS) và 400.000–600.000 t/năm (Trung tâm WTO 2023).",
+  "Giá xút nhập khẩu (CIF) theo tháng: không có nguồn mở được; chỉ có giá nội địa 4T/2025 và giá XK Trung Quốc quý I/2025 (SHS qua Tạp chí Công Thương).",
+  "Phòng vệ thương mại đối với xút: không tìm thấy vụ điều tra nào của Việt Nam với xút (HS 2815) trong 6/2024–11/2026.",
+  "Báo cáo FPTS về HVT (a11): ngày phát hành không có trong phần đọc được; event_date dùng ngày dữ liệu 30/06/2025, published_at = null.",
+  "Định mức điện FPTS 3.360 kWh/t NaOH (màng) cao hơn BREF (~2.200–2.500 kWh/t NaOH) — FPTS không nêu cơ sở AC/DC hay có gồm cô đặc/phụ trợ.",
+  "Tin 6/2024–9/2024 về thị trường xút còn ít; chưa có sự kiện năng lực/kết quả của Vedan, Hóa chất Đông Á, Giấy Bãi Bằng."
+ ]
+}

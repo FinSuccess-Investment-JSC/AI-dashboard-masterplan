@@ -36,7 +36,7 @@ window.FS_SITE_NAV = {
       {label: 'Hóa chất', children: [
         {key: 'fertilizer', label: 'Phân bón'},
         {label: 'Phốt pho', soon: true},
-        {label: 'Xút', soon: true}
+        {key: 'chloralkali', label: 'Xút – Clo'}
       ]},
       {label: 'Thực phẩm & đồ uống', children: [
         {key: 'agri', label: 'Nông nghiệp & thực phẩm'},
