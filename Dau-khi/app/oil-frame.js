@@ -23,7 +23,7 @@ const TREE = {
   mt2: {label: 'Bức tranh ngành', title: 'Bức tranh ngành', intro: 'Theo khâu: dầu thô toàn cầu → thượng nguồn Việt Nam → khí & LNG → lọc dầu → phân phối → vận tải & dòng chảy.', subs: [
     {k: 'crude', n: '01', t: 'Dầu thô toàn cầu', d: 'Cung OPEC+ và ngoài OPEC, cầu, tồn kho, Brent/WTI, đường cong kỳ hạn, vị thế quỹ.', ids: ['dau-khi-05', 'dau-khi-12', 'dau-khi-23', 'dau-khi-24', 'dau-khi-25', 'dau-khi-11', 'dau-khi-06', 'dau-khi-07', 'dau-khi-08', 'dau-khi-09', 'dau-khi-10', 'dau-khi-13'], canv: ['chFastPrice'], sel: ['.opec-drivers', '.inventory-group'], kpis: true},
     {k: 'upstream', n: '02', t: 'Thượng nguồn VN', d: 'Sản lượng khai thác dầu và khí, chuỗi dự án và dòng khí đầu tiên.', ids: ['dau-khi-15', 'dau-khi-19'],
-      gap: 'Chưa có chuỗi giá thuê và tỷ lệ sử dụng giàn khoan Đông Nam Á theo thời gian; số của PVD đang ở thẻ PVD (Tổng quan › Doanh nghiệp niêm yết).'},
+      gap: 'Chưa có chuỗi giá thuê và tỷ lệ sử dụng giàn khoan Đông Nam Á theo thời gian; số của PVD đang ở thẻ PVD (Tổng quan › Chuỗi giá trị).'},
     {k: 'gas', n: '03', t: 'Khí & LNG', d: 'Khí vào bờ, LNG nhập khẩu và vị trí của PV GAS.', ids: ['dau-khi-16', 'dau-khi-17'],
       gap: 'Chưa có chuỗi giá LNG JKM và giá khí bán theo từng hợp đồng trên trang này; JKM đang ở dashboard Điện.'},
     {k: 'refining', n: '04', t: 'Lọc dầu', d: 'Crack spread Singapore và Mỹ, giá sản phẩm, cân đối hai nhà máy lọc dầu.', ids: ['dau-khi-singapore-crack', 'dau-khi-20', 'dau-khi-21', 'dau-khi-18'],
@@ -46,7 +46,28 @@ const ALIAS = {mt3: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
 
 function style() {
   const st = el('style'); st.id = 'oil-frame-style';
-  st.textContent = `.tx-flow{display:grid;grid-template-columns:170px minmax(0,1fr);gap:0 26px;align-items:stretch;margin:10px 0 8px}
+  st.textContent = `.gt{margin:12px 0 8px;font-size:13px}
+.gt-head,.gt-row{display:grid;grid-template-columns:200px minmax(0,1fr) 230px;gap:16px;align-items:center}
+.gt-head{height:46px}.gt-axis{position:relative;height:100%;border-bottom:1px solid #DCE1EE}
+.gt-axis span{position:absolute;bottom:6px;transform:translateX(-50%);font:600 12px Inter,sans-serif;color:#7A84A6}
+.gt-now{position:absolute;top:0;bottom:0;border-left:2px dashed #E5484D;opacity:.7;z-index:0;pointer-events:none}.gt-nowh{position:absolute;top:2px;transform:translateX(-50%);font:700 10.5px Inter,sans-serif;font-style:normal;color:#E5484D;background:#FDECEE;padding:1px 6px;border-radius:6px;white-space:nowrap}
+
+.gt{position:relative;overflow:hidden}
+.gt-tbd{font:600 12px Inter,sans-serif;color:#7A84A6}
+.gt-row{min-height:58px;border-bottom:1px solid #F0F2F8}
+.gt-name b{display:block;font:700 14px/1.3 Inter,sans-serif;color:#1F2A5C}.gt-name small{color:#7A84A6;font-size:12px}
+.gt-lane{position:relative;height:58px;background:repeating-linear-gradient(90deg,transparent 0 calc(100%/6 - 1px),#F0F2F8 calc(100%/6 - 1px) calc(100%/6))}
+.gt-pin{position:absolute;top:50%;display:flex;align-items:center;gap:8px;transform:translateY(-50%);z-index:1}
+.gt-pin .gt-dot{transform:translateX(-50%);flex:none}
+.gt-pin.left{flex-direction:row-reverse;transform:translate(calc(-100% + 0px),-50%)}.gt-pin.left .gt-dot{transform:translateX(50%)}.gt-pin.left .gt-lab{text-align:right}
+.gt-pin.tbd{position:static;transform:none}.gt-pin.tbd .gt-lab{white-space:normal}.gt-pin.tbd .gt-dot{transform:none}
+.gt-lab{display:flex;flex-direction:column;white-space:nowrap;line-height:1.3}.gt-lab b{font:600 13px Inter,sans-serif;color:#1F2A5C}.gt-lab small{font-size:11.5px;color:#6B7392}
+.gt-dot{display:inline-block;width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(31,42,92,.15),0 3px 8px -2px rgba(31,42,92,.35)}
+.gt-dot.on{background:#2BB673}.gt-dot.next{background:#2938A8}.gt-dot.tbd{background:#B4BAD0}
+.gt-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font-size:12px;color:#5A6385}.gt-key span{display:inline-flex;align-items:center;gap:6px}.gt-key .gt-dot{width:10px;height:10px}
+@media (max-width:900px){.gt-head,.gt-row{grid-template-columns:110px minmax(0,1fr) 70px;gap:8px}.gt-lab small{display:none}}
+:root[data-theme=dark] .gt-name b,:root[data-theme=dark] .gt-lab b{color:#E8EBFA}:root[data-theme=dark] .gt-row{border-color:#2A2A2A}
+.tx-flow{display:grid;grid-template-columns:170px minmax(0,1fr);gap:0 26px;align-items:stretch;margin:10px 0 8px}
 .tx-src{position:relative;align-self:center;display:flex;flex-direction:column;gap:4px;padding:18px 16px;border-radius:16px;color:#fff;background:linear-gradient(150deg,#2938A8,#6C5CE7 60%,#59C5C8);box-shadow:0 10px 26px -10px rgba(41,56,168,.55)}
 .tx-src b{font:700 16px/1.25 Inter,sans-serif}.tx-src small{color:#EEF0FF!important;font-size:12px}.tx-src .tx-k{color:#DDE3FF}
 .tx-k{display:block;font:700 10px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#8A93B8;margin-bottom:3px}
@@ -227,10 +248,43 @@ function stickySub() {
   const set = () => { const m = $('nav.majortabs'); if (!m) return; const cs = getComputedStyle(m); const top = (parseFloat(cs.top) || 0) + m.offsetHeight + 4; document.documentElement.style.setProperty('--of-top', top + 'px'); };
   set(); window.addEventListener('resize', set); setTimeout(set, 1500);
 }
+
+// Chuỗi dự án khí (dau-khi-19): dòng thời gian dòng khí đầu tiên, chấm to theo trữ lượng; bảng gốc trong "Xem dạng bảng".
+function gasTimeline() {
+  const card = $('[data-block-id="dau-khi-19"]'), wrap = card?.querySelector('.tablewrap'); if (!wrap || card.querySelector('.gt')) return;
+  const txt = n => n.textContent.replace(/\s+/g, ' ').trim(), num = t => { const m = t.match(/[\d.]+(?:,\d+)?/); return m ? +m[0].replace(/\./g, '').replace(',', '.') : null; };
+  const when = t => { let m;
+    if ((m = t.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/))) return +m[3] + (+m[2] - .5) / 12;
+    if ((m = t.match(/quý\s*(\d)\/(\d{4})/i))) return +m[2] + (+m[1] - .5) / 4;
+    if ((m = t.match(/(\d{4})\s*[–-]\s*(\d{4})/))) return (+m[1] + +m[2] + 1) / 2;
+    if ((m = t.match(/cuối\s*(\d{4})/i))) return +m[1] + .85;
+    if ((m = t.match(/(\d{4})/))) return +m[1] + .5; return null; };
+  const rows = [...wrap.querySelectorAll('tbody tr')].map(tr => { const c = [...tr.cells].map(txt); return {name: c[0], lot: c[1], res: num(c[2]), out: num(c[3]), first: c[4], capex: num(c[5]), t: when(c[4])}; });
+  if (!rows.length) return;
+  const now = 2026 + (10 + 26 / 30) / 12, y0 = 2026, y1 = 2032, X = t => ((Math.min(Math.max(t, y0), y1) - y0) / (y1 - y0) * 100).toFixed(2) + '%';
+  const maxR = Math.max(...rows.map(r => r.res || 0)), size = r => r.res ? 12 + 30 * Math.sqrt(r.res / maxR) : 10;
+  const f = v => v == null ? '—' : v.toLocaleString('vi-VN');
+  rows.sort((a, b) => (a.t ?? 9999) - (b.t ?? 9999));
+  const axis = [...Array(y1 - y0 + 1)].map((_, i) => `<span style="left:${X(y0 + i)}">${y0 + i}</span>`).join('');
+  const box = el('div', 'gt');
+  box.innerHTML = `<div class="gt-head"><div></div><div class="gt-axis">${axis}<i class="gt-nowh" style="left:${X(now)}">Hôm nay</i></div><div class="gt-tbd">Chưa có lịch</div></div>` +
+    rows.map(r => { const st = r.t == null ? 'tbd' : r.t <= now ? 'on' : 'next', d = size(r);
+      const dot = `<span class="gt-dot ${st}" style="width:${d}px;height:${d}px" title="${r.first}"></span>`;
+      const lab = `<span class="gt-lab"><b>${r.first}</b><small>${r.res ? 'Trữ lượng ' + f(r.res) + ' tỷ m³' : 'Trữ lượng chưa công bố'}${r.out ? ' · ' + f(r.out) + ' tỷ m³/năm' : ''}${r.capex ? ' · ' + f(r.capex) + ' tr USD' : ''}</small></span>`;
+      return `<div class="gt-row"><div class="gt-name"><b>${r.name}</b><small>${r.lot}</small></div>
+      <div class="gt-lane"><i class="gt-now" style="left:${X(now)}"></i>${r.t != null ? `<span class="gt-pin ${r.t > 2029 ? 'left' : ''}" style="left:${X(r.t)}">${dot}${lab}</span>` : ''}</div>
+      <div class="gt-tbd">${r.t == null ? `<span class="gt-pin tbd">${dot}${lab}</span>` : ''}</div></div>`; }).join('') +
+    `<div class="gt-key"><span><i class="gt-dot on"></i>Đã có dòng khí</span><span><i class="gt-dot next"></i>Sắp vận hành</span><span><i class="gt-dot tbd"></i>Chưa có mốc chắc chắn</span><span>Chấm càng to, trữ lượng càng lớn</span></div>`;
+  const d = el('details', 'dtable'); d.append(el('summary', '', 'Xem dạng bảng')); wrap.before(box); wrap.replaceWith(d); d.append(wrap);
+  // Không gập: bỏ lớp "research-fold" bọc thẻ, hiện tiêu đề gốc.
+  const unfold = () => card.querySelectorAll(':scope > details.research-fold').forEach(f => { const body = f.querySelector(':scope > .research-detail') || f; f.replaceWith(...[...body.childNodes].filter(n => n.tagName !== 'SUMMARY')); card.querySelectorAll('.research-repeated-heading').forEach(h => h.classList.remove('research-repeated-heading')); });
+  unfold(); [800, 3000].forEach(t => setTimeout(unfold, t));
+}
 function run() {
   if (document.body.dataset.oilFrame) return; document.body.dataset.oilFrame = '1';
   style();
   channelDiagram();
+  gasTimeline();
   stickySub();
   // Hormuz: thẻ đang nằm trong chủ đề "Hormuz · dòng chảy & tác động" ở Chủ đề nóng → Bức tranh ngành › 06.
   ['mt1', 'mt2', 'mt4'].forEach(buildTab);
