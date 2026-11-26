@@ -4911,8 +4911,7 @@
     "file": "data/telecom-benchmarks.js",
     "blocks": [
      "vt-gr-bench",
-     "vt-fx-asean",
-     "vt-fx-asean-t"
+     "vt-fx-asean"
     ]
    },
    "how": "python scripts/fetch_telecom_benchmarks.py && python scripts/build_telecom_industry.py",
@@ -4943,26 +4942,19 @@
     "file": "data/telecom-industry.js",
     "blocks": [
      "vt-5g-ops",
-     "vt-5g-share",
      "vt-5g-stations",
      "vt-5g-subs",
-     "vt-5g-targets",
      "vt-cp-hhi",
      "vt-cp-mob",
      "vt-cp-profit",
      "vt-cp-rev",
-     "vt-cp-subrev-fix",
      "vt-cp-subrev-mob",
-     "vt-data-prices",
      "vt-data-share",
      "vt-data-users-rev",
      "vt-fx-fox",
      "vt-fx-fox-scope",
      "vt-fx-hh",
      "vt-fx-hhpct",
-     "vt-fx-prices",
-     "vt-fx-rev",
-     "vt-fx-share",
      "vt-fx-subs",
      "vt-fx-tech",
      "vt-gr-index",
@@ -4976,19 +4968,15 @@
      "vt-ov-position",
      "vt-pol-roadmap",
      "vt-pol-spectrum",
-     "vt-src-datasets",
-     "vt-src-list",
      "vt-tw-bridge",
-     "vt-tw-bts",
      "vt-tw-cotenant",
      "vt-tw-facts",
      "vt-tw-margin",
      "vt-tw-owners-market",
-     "vt-tw-owners-towerco",
      "vt-tw-seg",
-     "vt-tw-tenancy",
      "vt-tw-towers",
-     "vt-tw-viettel"
+     "vt-tw-viettel",
+     "vt-5g-coverage"
     ]
    },
    "how": "Cập nhật data/telecom/{industry,companies,policy}.json (mỗi điểm có nguồn, URL, ngày công bố, trạng thái) rồi python scripts/build_telecom_industry.py (dựng cả data/telecom-news.js cho Chủ đề nóng và mốc Triển vọng)",
