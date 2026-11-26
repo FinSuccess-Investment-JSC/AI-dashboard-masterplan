@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ngành Xây dựng · VLXD · Đầu tư công Việt Nam · FinSuccess Research</title>
+<title>Ngành Xây dựng Việt Nam · FinSuccess Research</title>
 <link rel="stylesheet" href="app/dashboard-ui.css?v=8b5f71b2e791">
 <script src="app/sector-boot.js?v=555dd1c98235"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -18,7 +18,7 @@
 <script src="app/sector-visuals.js?v=6e232e4a9320" defer></script>
 <script src="../data/construction-wi-data.js?v=2b9106cc8f98" defer></script>
 <script src="../data/construction-backlog.js?v=2679fd623bfa" defer></script>
-<script src="../data/construction-hub.js?v=a6d792041bc5" defer></script>
+<script src="../data/construction-hub.js?v=b13e99ef054c" defer></script>
 <script src="../data/construction-financials.js?v=cb463fed38ec" defer></script>
 <script src="app/construction-dashboard.js?v=43ca093536b9" defer></script>
 <script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
@@ -48,10 +48,10 @@
 <script src="app/chart-source.js?v=20de8094fc85" defer></script>
 <script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
 <script src="app/xd-finance.js?v=577f834a3277" defer></script>
-<script src="app/xd-news.js?v=f930ce74ae94" defer></script>
-<script src="app/xd-frame.js?v=ed5e67b9ce02" defer></script>
-<script src="app/site-navigation.js?v=ac40d26f955c" data-release="20261126-bds-dan-cu-3"></script>
-<script src="../data/site-nav.js?v=31ac3fc76e94"></script>
+<script src="app/xd-news.js?v=0b27ae2990d8" defer></script>
+<script src="app/xd-frame.js?v=66e07a8f673b" defer></script>
+<script src="app/site-navigation.js?v=5ea76d882041" data-release="20261126-tach-xay-dung-2"></script>
+<script src="../data/site-nav.js?v=d23f41a5d501"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
@@ -63,9 +63,9 @@
 <link rel="stylesheet" href="app/xd-overview.css?v=552fffc3401a">
 <link rel="stylesheet" href="app/xd-news.css?v=5679aabe61a5">
 </head>
-<body data-sector="construction">
+<body data-sector="construction" data-xd-variant="contractor">
 <nav data-site-navigation="construction" aria-label="Điều hướng dashboard ngành"></nav>
-<div class="fiscbar"><span>Dashboard ngành · Xây dựng · VLXD · Đầu tư công · khung nghiên cứu gốc 11/10/2026 · rà soát 09/11/2026</span></div>
+<div class="fiscbar"><span>Dashboard ngành · Xây dựng (nhà thầu dân dụng, hạ tầng) · tách khỏi VLXD, Đầu tư công & BOT 26/11/2026</span></div>
 
 <nav class="majortabs">
   <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
@@ -79,7 +79,7 @@
 
 <div class="container">
   <section class="hero">
-    <h1>Bức tranh ngành xây dựng, vật liệu xây dựng và <em>đầu tư công</em></h1>
+    <h1>Bức tranh ngành <em>xây dựng</em>: nhà thầu dân dụng, nhà xưởng và hạ tầng</h1>
     <p>Đầu tư công là cầu đi trước: vốn ngân sách đến nhà thầu hạ tầng, rồi kéo đá, nhựa đường, xi măng 1–3 quý sau. Vật liệu ăn chênh lệch giá bán với nguyên liệu; nhà thầu ăn biên mỏng và chịu rủi ro phải thu.</p>
     <div class="tagrow">
       <span class="tag">Bản nghiên cứu: 11/10/2026 · rà 09/11/2026</span>
@@ -281,7 +281,7 @@
     <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>Vốn NSNN, sản lượng xi măng, IIP, XK</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a>, <a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Giá than, nhựa đường</b></td><td><a href="https://www.shfe.com.cn/eng/Market/Futures/" target="_blank" rel="noopener">SHFE</a> (nhựa đường), ICE (than)</td><td>Ngày · hiển thị cuối tháng</td><td>Script mỗi lượt job; giá CB300 Hòa Phát, than cốc: <a href="https://widata.vn/" target="_blank" rel="noopener">WiData (WiMCP)</a></td></tr><tr><td><b>Giá xi măng, đá, cát (Sở Xây dựng)</b></td><td><a href="https://soxaydung.hanoi.gov.vn/kinh-te-vat-lieu-xay-dung" target="_blank" rel="noopener">Sở Xây dựng Hà Nội · công bố giá VLXD</a></td><td>Quý</td><td>Script mỗi lượt job; lịch sử từ Q3/2026</td></tr><tr><td><b>Tín dụng, GDP xây dựng</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng / quý</td><td>Script mỗi lượt job · GDP từ 2024; tín dụng ngành từ NHNN (từ 01/2025)</td></tr><tr><td><b>P/E, P/B ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Rổ giá vật liệu (đá, xi măng, thép, nhựa đường)</b></td><td><a href="https://widata.vn/" target="_blank" rel="noopener">WiData</a> (Sở Xây dựng 80961, 80968; Hòa Phát 74362), <a href="https://www.shfe.com.cn/eng/Market/Futures/" target="_blank" rel="noopener">SHFE</a></td><td>Tháng</td><td>Tự tính trên trang; Wi routine + script mỗi lượt job</td></tr><tr><td><b>Chỉ số giá xây dựng tỉnh, BOT HHV</b></td><td><a href="https://thuviennhadat.vn/phap-luat/chi-so-gia-xay-dung-bac-ninh-quy-3-2026-phan-xay-dung-748836.html" target="_blank" rel="noopener">Sở XD Bắc Ninh</a>, <a href="https://hhv.com.vn/quan-he-co-dong/ban-tin-nha-dau-tu/" target="_blank" rel="noopener">HHV bản tin nhà đầu tư</a></td><td>Quý</td><td>Routine tài liệu (PDF, có bằng chứng)</td></tr><tr><td><b>Ứng trước, phải thu ÷ doanh thu nhà thầu</b></td><td><a href="https://api-finfo.vndirect.com.vn/v4/financial_statements" target="_blank" rel="noopener">VNDirect finfo · BCTC quý</a></td><td>Quý</td><td>Script (fetch_realestate_backlog.py --sector construction), chỉ số dẫn xuất tự động</td></tr><tr><td><b>Giải ngân so kế hoạch, dự án, chính sách</b></td><td>Bộ Tài chính, Bộ Công Thương qua báo (link tại từng thẻ)</td><td>Tháng / sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
     <div class="source-note" id="wi-built">—</div>
   </div>
-  <div class="footer">Vietnam Construction &amp; Materials Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 11/10/2026 · rà soát 09/11/2026.</div>
+  <div class="footer">Vietnam Construction Contractors Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 11/10/2026 · rà soát 09/11/2026.</div>
 </div>
 <script>
 /* ---------- tiny SVG chart engine ---------- */

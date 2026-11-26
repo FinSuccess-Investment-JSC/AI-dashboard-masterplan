@@ -6,7 +6,13 @@
 (() => {
   'use strict';
   const root = document.getElementById('xd-news');
-  const data = window.XD_HUB;
+  // 26/11/2026: ba dashboard Xây dựng, VLXD, Đầu tư công & BOT dùng chung luồng tin; mỗi trang chỉ hiện sự kiện thuộc phân khúc của mình.
+  const VK = document.body.dataset.xdVariant || 'contractor', RAW = window.XD_HUB;
+  const V = {key: VK, ...({contractor: {topics: ['contractor-cash', 'rail-airport'], seg: ['Dân dụng & nhà xưởng', 'Thi công hạ tầng']},
+    materials: {topics: ['materials'], seg: ['Xi măng', 'Đá & cát', 'Nhựa đường', 'Kính & gạch']},
+    publicbot: {topics: ['disbursement', 'rail-airport'], seg: ['Đầu tư công', 'BOT & thu phí']}}[VK])};
+  const keep = e => !V || (e.segments || []).some(x => V.seg.includes(x)) || (V.key === 'publicbot' && ['public', 'project', 'policy'].includes(e.category));
+  const data = RAW && {...RAW, events: RAW.events.filter(keep), topics: RAW.topics.filter(t => !V || V.topics.includes(t.id))};
   if (!root) return;
   if (!data) { root.querySelector('[role="status"]').textContent = 'Chưa tải được dữ liệu tin ngành Xây dựng (data/construction-hub.js).'; return; }
   const categories = {public: 'Giải ngân & vốn', project: 'Dự án & tiến độ', contractor: 'Nhà thầu & BOT', materials: 'Vật liệu & giá', policy: 'Chính sách'};
