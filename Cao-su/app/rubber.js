@@ -319,18 +319,6 @@ const PIC = {
     q1.append(c1.el, c2.el); p.append(q1);
     chart(c1.host, 'cs-20', L.map(mL), [{name: 'Lượng', color: C.teal, kind: 'bar', values: L.map(m => val('exp_q', m))}], {unit: 'nghìn tấn', digits: 1, native: 'bar'});
     chart(c2.host, 'cs-21', L.map(mL), [{name: 'Đơn giá', color: C.gold, values: L.map(m => val('exp_px', m))}], {unit: 'USD/tấn', zeroBase: false});
-    // Thác nước YoY kim ngạch: đóng góp lượng = (Q1−Q0)×P0, đóng góp giá = Q1×(P1−P0); rổ Hải quan là một ASP tổng nên giá và cơ cấu gộp.
-    const q2 = panel('·', 'Kim ngạch tăng giảm so cùng kỳ là do lượng hay do giá?');
-    const c3 = card('cs-22', `Kim ngạch ${mL(q.date)} so với ${mL(ymAdd(q.date, -12))}`, {sub: 'triệu USD · tách lượng và giá', source: SRC.customs + '; tự tính',
-      info: 'Đóng góp lượng = (lượng kỳ này − lượng kỳ gốc) × đơn giá kỳ gốc. Đóng góp giá = lượng kỳ này × (đơn giá kỳ này − đơn giá kỳ gốc). Báo cáo tháng chỉ có đơn giá bình quân của cả rổ nên phần giá gộp cả thay đổi cơ cấu grade, thị trường.'});
-    const c4 = card('cs-23', 'Đóng góp lượng và giá vào thay đổi kim ngạch so cùng kỳ', {sub: 'triệu USD · 24 tháng gần nhất', source: SRC.customs + '; tự tính'});
-    q2.append(two(c3, c4)); p.append(q2);
-    const eff = m => { const m0 = ymAdd(m, -12), Q1 = val('exp_q', m), Q0 = val('exp_q', m0), P1 = val('exp_px', m), P0 = val('exp_px', m0);
-      return [Q1, Q0, P1, P0].every(fin) ? {vol: (Q1 - Q0) * P0 / 1000, px: Q1 * (P1 - P0) / 1000, v0: Q0 * P0 / 1000, v1: Q1 * P1 / 1000} : null; };
-    const e = eff(q.date);
-    if (e) waterfall(c3.host, [{label: mL(ymAdd(q.date, -12)), value: e.v0, total: true}, {label: 'Lượng', value: e.vol}, {label: 'Giá & cơ cấu', value: e.px}, {label: mL(q.date), value: e.v1, total: true}], {unit: 'triệu USD', digits: 1});
-    const L24 = L.slice(-24);
-    chart(c4.host, 'cs-23', L24.map(mL), [{name: 'Lượng', color: C.teal, kind: 'bar', values: L24.map(m => eff(m)?.vol)}, {name: 'Giá & cơ cấu', color: C.gold, kind: 'bar', values: L24.map(m => eff(m)?.px)}], {unit: 'triệu USD', digits: 1, native: 'stack', stackable: true});
     const q3 = panel('·', 'Lượng xuất khẩu năm nay so với các năm trước, từng tháng');
     const c5 = card('cs-24', 'Lượng xuất khẩu — so cùng tháng', {sub: 'nghìn tấn', source: SRC.customs});
     const pm = el('div', 'pp-main'); pm.append(c5.el); q3.append(pm, heat('cs-25', 'Lượng xuất khẩu tăng giảm bao nhiêu so cùng kỳ, từng tháng', '% · so cùng tháng năm trước', 'exp_q', lastYears('exp_q', 3), SRC.customs)); p.append(q3);
@@ -342,12 +330,19 @@ const PIC = {
     const L6 = months('2023-01', q.date);
     chart(c6.host, 'cs-26', L6.map(mL), [{name: 'Đơn giá xuất khẩu', color: C.gold, values: L6.map(m => val('exp_px', m))}, {name: 'SVR 10 Việt Nam', color: C.navy, values: L6.map(m => fin(val('vn_svr10_m', m)) ? val('vn_svr10_m', m) * 10 : null)},
       {name: 'TSR 20 thế giới', color: C.teal, values: L6.map(m => fin(val('wb_tsr20', m)) ? val('wb_tsr20', m) * 1000 : null)}], {unit: 'USD/tấn', zeroBase: false});
-    const q5 = panel('·', `Lượng và kim ngạch lũy kế ${M} tháng đầu năm qua các năm`);
-    const c7 = card('cs-27', `Lũy kế ${M} tháng đầu năm`, {sub: 'nghìn tấn (cột) · đơn giá bình quân = tổng trị giá ÷ tổng lượng', source: SRC.customs + '; tự tính'});
+    // Lũy kế từ T1 đến tháng mới nhất có số Hải quan (M tự lấy từ dữ liệu, tháng sau tự thành M+1); năm thiếu một tháng thì để trống.
+    const q5 = panel('·', `Lũy kế ${M} tháng đầu năm qua các năm`);
+    const c7 = card('cs-27', `Xuất khẩu cao su lũy kế ${M} tháng đầu năm`, {sub: `T1–T${M} mỗi năm · chọn chỉ tiêu`, source: SRC.customs + '; tự tính',
+      info: `Cộng từ tháng 1 đến tháng ${M} (tháng mới nhất có số Hải quan) của từng năm để so cùng kỳ; khi có số tháng sau, chart tự chuyển sang lũy kế ${M + 1} tháng. Đơn giá bình quân = tổng trị giá ÷ tổng lượng của cùng các tháng.`});
     q5.append(c7.el); p.append(q5);
     const YS = []; for (let yy = 2019; yy <= y; yy++) YS.push(yy);
-    chart(c7.host, 'cs-27', YS.map(yy => `${M}T/${yy}`), [{name: 'Lượng', color: C.teal, kind: 'bar', values: YS.map(yy => sumYtd('exp_q', yy, M))},
-      {name: 'Kim ngạch (triệu USD)', color: C.navy, kind: 'bar', values: YS.map(yy => sumYtd('exp_v', yy, M))}], {unit: '', native: 'bar'});
+    let v7 = 'q';
+    const d7 = () => {
+      const Q = YS.map(yy => sumYtd('exp_q', yy, M)), V = YS.map(yy => sumYtd('exp_v', yy, M));
+      const o = {q: ['Lượng', C.teal, Q, 'nghìn tấn', 1], v: ['Kim ngạch', C.navy, V, 'triệu USD', 1], p: ['Đơn giá bình quân', C.gold, Q.map((x, i) => fin(x) && x && fin(V[i]) ? V[i] * 1000 / x : null), 'USD/tấn', 0]}[v7];
+      chart(c7.host, 'cs-27-' + v7, YS.map(yy => `${M}T/${yy}`), [{name: o[0], color: o[1], kind: 'bar', values: o[2]}], {unit: o[3], digits: o[4], native: 'bar'});
+    };
+    seg(c7, 'Chỉ tiêu', [['q', 'Lượng'], ['v', 'Kim ngạch'], ['p', 'Đơn giá bình quân']], v7, k => { v7 = k; d7(); }); d7();
     renum(p, 2);
   },
 };
