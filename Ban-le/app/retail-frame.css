@@ -188,3 +188,8 @@
 @media (max-width:600px){.bn-map{height:420px}.bn-groups{width:100%}}
 .bn-map{height:680px}
 @media (max-width:600px){.bn-map{height:520px}}
+/* Nhóm tham chiếu (siêu thị, tiện lợi), 27/11/2026 */
+.bn-grp small{font-weight:500;opacity:.7;font-size:10.5px}
+.bn-refnote{margin:8px 0 0;font-size:12.5px;color:var(--muted,#7a8399)}
+.bn-groups{width:auto;max-width:100%;box-sizing:border-box}
+#bnFilters,.bn-filters{min-width:0;max-width:100%}

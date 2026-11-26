@@ -32,22 +32,23 @@ BASE = 'https://bizmap.live/api'
 
 # Chuỗi theo dõi (slug Bizmap đã đối chiếu /v1/chains): chuỗi của doanh nghiệp niêm yết (có mã) và đối thủ chưa niêm yết
 # cùng mô hình bán lẻ (mã None), chia theo nhóm cạnh tranh. WinMart (siêu thị) và WiN chưa có trên Bizmap → chưa theo dõi.
-GROUPS = {'grocery': 'Bách hóa, siêu thị & tiện lợi', 'electronics': 'Điện máy & điện thoại', 'pharmacy': 'Nhà thuốc', 'jewelry': 'Trang sức', 'mother': 'Mẹ & bé'}
+# Tách theo mô hình cửa hàng: siêu thị và tiện lợi không cùng mô hình với bách hóa/minimart (BHX, WinMart+) nên để nhóm riêng.
+GROUPS = {'grocery': 'Bách hóa & minimart', 'supermarket': 'Siêu thị', 'convenience': 'Cửa hàng tiện lợi', 'electronics': 'Điện máy & điện thoại', 'pharmacy': 'Nhà thuốc', 'jewelry': 'Trang sức', 'mother': 'Mẹ & bé'}
 CHAINS = [
     ('bach-hoa-xanh', 'Bách Hóa Xanh', 'MWG', 'grocery'),
     ('winmart-plus', 'WinMart+', 'MSN', 'grocery'),
-    ('co-opmart', 'Co.opmart', None, 'grocery'),
+    ('co-opmart', 'Co.opmart', None, 'supermarket'),
     ('co-op-food', 'Co.op Food', None, 'grocery'),
     ('king-food-mart', 'Kingfoodmart', None, 'grocery'),
     ('satrafoods', 'Satrafoods', None, 'grocery'),
-    ('lotte-mart', 'Lotte Mart', None, 'grocery'),
-    ('aeon-maxvalu', 'AEON MaxValu', None, 'grocery'),
-    ('mm-mega-market', 'MM Mega Market', None, 'grocery'),
-    ('circle-k', 'Circle K', None, 'grocery'),
-    ('gs25', 'GS25', None, 'grocery'),
-    ('familymart', 'FamilyMart', None, 'grocery'),
-    ('ministop', 'Ministop', None, 'grocery'),
-    ('7-eleven', '7-Eleven', None, 'grocery'),
+    ('lotte-mart', 'Lotte Mart', None, 'supermarket'),
+    ('aeon-maxvalu', 'AEON MaxValu', None, 'supermarket'),
+    ('mm-mega-market', 'MM Mega Market', None, 'supermarket'),
+    ('circle-k', 'Circle K', None, 'convenience'),
+    ('gs25', 'GS25', None, 'convenience'),
+    ('familymart', 'FamilyMart', None, 'convenience'),
+    ('ministop', 'Ministop', None, 'convenience'),
+    ('7-eleven', '7-Eleven', None, 'convenience'),
     ('dien-may-xanh', 'Điện Máy Xanh', 'MWG', 'electronics'),
     ('the-gioi-di-dong', 'Thế Giới Di Động', 'MWG', 'electronics'),
     ('fpt-shop', 'FPT Shop', 'FRT', 'electronics'),
