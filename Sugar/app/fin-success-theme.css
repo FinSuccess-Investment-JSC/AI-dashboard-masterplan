@@ -715,3 +715,7 @@ html body .majortabbtn.active,html body .majortabbtn[aria-selected="true"]{backg
 .card:has(.ct-canvas) .cts-legend{margin:6px 0 0!important}
 .card:has(.ct-canvas) :is(.pw-src,.chart-source,.source-note,.srcrow){margin-top:6px!important;padding-top:6px!important}
 .card:has(.ct-canvas)::after{margin-top:2px!important}
+/* Thẻ cao hơn nội dung (do thẻ bên cạnh cao hơn): chart giãn ra lấp chỗ trống thay vì để trắng phía dưới */
+.card:has(.ct-canvas){display:flex!important;flex-direction:column}
+.card:has(.ct-canvas)>:has(>.ct-canvas){flex:1 1 auto;display:flex;flex-direction:column}
+.card:has(.ct-canvas) .ct-canvas{flex:1 1 auto;height:auto!important;min-height:280px;max-height:360px}
