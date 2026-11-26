@@ -1,5 +1,5 @@
 /* Bán lẻ & tiêu dùng · khung 4 tab theo mẫu Điện (26/11/2026), dựng từ khung Thủy sản (Thuy-san/app/seafood-frame.js).
-   Tab lớn: Tổng quan ngành (#mt1: 00 Bản đồ ngành; bỏ tab Mô hình kiếm tiền, Vị trí chu kỳ 27/11/2026; Bản tin dữ liệu ở đầu)
+   Tab lớn: Tổng quan ngành (#mt1: 00 Bản đồ ngành · 01 Chuỗi giá trị theo loại hình doanh nghiệp · 02 Triển vọng; bỏ Mô hình kiếm tiền, Vị trí chu kỳ 27/11/2026; Bản tin dữ liệu ở đầu)
           · Bức tranh ngành (#mt2: 01 Toàn ngành · 02 Bán lẻ hiện đại & điện máy · 03 Trang sức · 04 Hàng tiêu dùng nhanh · 05 Chính sách & thuế)
           · Tài chính ngành (#mt14: 01 Tài chính ngành · 02 Doanh nghiệp niêm yết)
           · Chủ đề nóng (#mt7, giữ research-editorial; mỗi chủ đề thêm dòng mô hình bị tác động, chỉ báo xác nhận, link chart).
@@ -24,6 +24,12 @@ const TREE = {
   mt1: {title: 'Tổng quan ngành', subs: [
     {k: 'map', t: 'Bản đồ ngành', d: 'Sức mua (thu nhập, khách, tín dụng) → ba nhóm doanh nghiệp → kênh bán → biên lợi nhuận.', items: [
       {q: 'Sức mua đi qua những khâu nào trước khi thành lợi nhuận?', id: 'rf-q-map', take: ['bl-01']},
+    ]},
+    {k: 'chain', t: 'Chuỗi giá trị theo loại hình doanh nghiệp', d: 'Mỗi loại hình doanh nghiệp đi từ đầu vào, vận hành, kênh bán đến biên lợi nhuận ra sao.', items: [
+      {q: 'Mỗi loại hình doanh nghiệp kiếm tiền ở khâu nào, biên ở mức nào?', id: 'rf-q-chain', meta: 'biên gộp quý gần nhất từ BCTC hợp nhất · số cửa hàng cuối Q3/2026', take: ['bl-08']},
+    ]},
+    {k: 'outlook', t: 'Triển vọng', d: 'Ba biến cần theo dõi: số mới nhất, hàm ý với doanh nghiệp, kỳ cần kiểm tiếp.', items: [
+      {q: 'Ba biến nào sẽ quyết định kết quả các quý tới?', id: 'rf-q-outlook', meta: 'số mới nhất tự lấy từ dữ liệu trên trang', take: ['bl-09']},
     ]},
   ]},
   mt2: {title: 'Bức tranh ngành', subs: [
@@ -77,7 +83,7 @@ const TREE = {
   ]},
 };
 const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
-const SUB_ALIAS = {durable: 'jewelry', model: 'map', cycle: 'map'}; // ?sub= cũ trước khi tách Ô tô – Xe máy
+const SUB_ALIAS = {durable: 'jewelry', model: 'chain', cycle: 'outlook'}; // ?sub= cũ trước khi tách Ô tô – Xe máy
 // ?sub=model cũ → Bản đồ ngành
 const ALIAS = {mt3: ['mt2', 'fmcg'], mt4: ['mt2', 'policy'], mt5: ['mt1'], mt6: ['mt14', 'listed'], mt8: ['mt1', 'map', 'rf-sources'], mt9: ['mt14', 'sector']};
 const SECTION = {policy: ['mt2', 'policy'], tax: ['mt2', 'policy'], trade: ['mt2', 'policy'], demand: ['mt2', 'all'], supply: ['mt2', 'modern'], price: ['mt2', 'fmcg'], margin: ['mt2', 'fmcg'],
@@ -108,7 +114,7 @@ function take(sel) {
   if (!n || used.has(n) || [...used].some(u => u.contains(n))) return null;
   used.add(n); n.hidden = false; n.classList.remove('rf-hidden-legacy'); n.style.marginTop = '';
   if (/^bl-5\d$/.test(sel)) unfold(n);
-  if (/^bl-(01|02|05|13|15|21|42|44|50|52|60|61)$/.test(sel)) n.classList.add('rf-wide');
+  if (/^bl-(01|02|05|08|09|13|15|21|42|44|50|52|60|61)$/.test(sel)) n.classList.add('rf-wide');
   return n;
 }
 // research-layout gập mọi thẻ của tab Chính sách cũ (#mt4) vào <details>; Bức tranh ngành cần thẻ sự kiện và chart hiện sẵn → gỡ lớp gập.

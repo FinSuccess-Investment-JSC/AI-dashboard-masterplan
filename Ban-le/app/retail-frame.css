@@ -105,3 +105,27 @@
 .rf-chmix-row{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;align-items:center}
 .rf-chmix-row b{font-variant-numeric:tabular-nums;font-size:13px}
 .rf-chmix-row .rf-stack{margin:4px 0;height:30px}
+
+/* Tổng quan › Chuỗi giá trị theo loại hình doanh nghiệp: mỗi loại hình một hàng Đầu vào → Vận hành → Kênh bán → Biên. */
+.rf-vc{display:grid;gap:8px;margin-top:6px}
+.rf-vc-head,.rf-vc-row{display:grid;grid-template-columns:170px repeat(4,minmax(0,1fr));gap:8px}
+.rf-vc-head span{font:700 11.5px Inter,sans-serif;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#1D2678;border-radius:6px;padding:5px 8px;text-align:center}
+.rf-vc-head span:first-child{background:transparent}
+.rf-vc-head span:nth-child(5){background:#B3262D}
+.rf-vc-t{display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-left:4px solid #2938A8;background:color-mix(in srgb,var(--card,#fff) 90%,#2938A8 6%);border-radius:8px}
+.rf-vc-t b{font-size:14px}.rf-vc-t small{color:#2938A8;font-weight:600;font-size:12px}.rf-vc-t a{font-size:12px;font-weight:600;color:#2938A8;margin-top:auto}
+.rf-vc-s{position:relative;border:1px solid var(--line,#e3e7f0);border-radius:8px;padding:8px 10px;background:var(--card,#fff);font-size:13px;line-height:1.45}
+.rf-vc-s b{display:block}.rf-vc-s small{display:block;color:var(--ink2,#3b4256);font-size:12px;margin-top:2px}
+.rf-vc-m{border-color:#e3a3a6;background:#fff7f7}
+:root[data-theme=dark] .rf-vc-m{background:#2a1c22}
+@media (max-width:900px){.rf-vc-head{display:none}.rf-vc-row{grid-template-columns:repeat(2,minmax(0,1fr))}.rf-vc-t{grid-column:1/-1}}
+@media (max-width:520px){.rf-vc-row{grid-template-columns:minmax(0,1fr)}}
+
+/* Tổng quan › Triển vọng: ba biến. */
+.rf-ol-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:6px}
+.rf-ol{border:1px solid var(--line,#e3e7f0);border-radius:12px;padding:12px 14px;background:var(--card,#fff)}
+.rf-ol h4{display:flex;gap:8px;align-items:center;margin:0 0 8px;font-size:14.5px}.rf-ol h4 span{font:700 11.5px Inter,sans-serif;color:#fff;background:#1D2678;border-radius:6px;padding:2px 7px}
+.rf-ol p{margin:6px 0;font-size:13px;line-height:1.55}
+.rf-ol-num{display:flex;flex-direction:column;gap:3px}.rf-ol-num span{font-weight:700;color:var(--ink,#1d2333)}
+.rf-ol-next{border-top:1px dashed var(--line,#e3e7f0);padding-top:6px;font-size:12.5px!important}
+@media (max-width:900px){.rf-ol-grid{grid-template-columns:minmax(0,1fr)}}

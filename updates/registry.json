@@ -1812,7 +1812,8 @@
      "oto-90",
      "cn-01",
      "cn-05",
-     "cn-90"
+     "cn-90",
+     "bl-08"
     ]
    }
   },
@@ -4699,7 +4700,9 @@
    },
    "where": {
     "page": "Ban-le/index.html",
-    "blocks": []
+    "blocks": [
+     "bl-09"
+    ]
    },
    "how": "Cập nhật bl-02 và catbox/riskbox; thẻ tín hiệu tự tính trong Ban-le/app/retail-dashboard.js.",
    "gates": [

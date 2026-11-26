@@ -319,6 +319,31 @@ if(CQ_?.quarters?.length&&document.getElementById('chFinRev')){
  insight('chFinMargin','Biên gộp hàng tiêu dùng nhanh cao gấp đôi bán lẻ nhưng nhạy với giá nguyên liệu và thuế; bán lẻ hiện đại biên mỏng nên lãi đi theo chi phí vận hành mỗi cửa hàng. Kiểm tiếp biên gộp quý IV của nhóm tiêu dùng nhanh khi đường, sữa bột tăng lại.');
 }
 {const g=document.querySelector('[data-block-id="bl-23"] .rf-tiles');if(g){g.id='goldTiles';pwSrc('goldTiles',[LK.vov])}}
+// Tổng quan › Chuỗi giá trị theo loại hình doanh nghiệp: biên gộp quý gần nhất lấy từ COMPANY_QUARTERLY; số cửa hàng có evidence (bl-14).
+const lastGM=s=>{const c=cqRow(s);if(!c)return null;const q=CQ_.quarters;for(let i=c.gross_margin.length-1;i>=0;i--)if(Number.isFinite(c.gross_margin[i]))return [c.gross_margin[i],q[i]];return null};
+const gmTxt=syms=>syms.map(s=>{const g=lastGM(s);return g?`${s} ${nf(g[0],1)}% (${g[1]})`:null}).filter(Boolean).join(' · ');
+if(document.getElementById('blTypeChain')){
+ const T=[
+  ['Chuỗi bán lẻ','MWG · FRT · WinCommerce (trong MSN)',['Mua hàng từ hãng, nhà phân phối','điện thoại, điện máy, thực phẩm, thuốc'],['Vận hành chuỗi cửa hàng','Bách Hóa Xanh 3.904 · Long Châu 2.741 · Điện Máy Xanh 1.998 điểm (30/9/2026)'],['Bán qua cửa hàng và online','khách lẻ, trả góp'],['Biên gộp − thuê mặt bằng, nhân công',gmTxt(['MWG','FRT'])],'#rf-q-stores'],
+  ['Phân phối ICT, hàng tiêu dùng','DGW · PET',['Nhập từ hãng công nghệ, hàng tiêu dùng','hợp đồng phân phối'],['Kho, logistics, công nợ đại lý','vốn lưu động lớn'],['Bán sỉ cho đại lý, chuỗi bán lẻ','kênh B2B'],['Biên gộp mỏng, nhạy với giá linh kiện',gmTxt(['DGW','PET'])],'#rf-q-gm'],
+  ['Trang sức','PNJ',['Vàng nguyên liệu mua trong nước','chênh lệch với giá thế giới'],['Chế tác tại xưởng','trang sức, vàng 24K'],['Chuỗi cửa hàng, bán sỉ','424 cửa hàng PNJ (cuối Q3/2026)'],['Biên theo cơ cấu trang sức / vàng 24K',gmTxt(['PNJ'])],'#rf-q-pnj'],
+  ['Hàng tiêu dùng nhanh','MSN · KDC · QNS',['Nguyên liệu nông sản','đường, dầu cọ, khô đậu, ngô'],['Nhà máy chế biến','thực phẩm, đồ uống, dầu ăn, đường'],['Đại lý, siêu thị, tạp hóa','MSN có thêm WinCommerce'],['Biên theo giá nguyên liệu, thuế TTĐB',gmTxt(['MSN','KDC'])],'#rf-q-cost']];
+ const host=document.getElementById('blTypeChain');host.className='rf-vc';
+ host.innerHTML='<div class="rf-vc-head"><span></span><span>Đầu vào</span><span>Vận hành</span><span>Kênh bán</span><span>Biên lợi nhuận</span></div>'+T.map(([name,syms,a,b,c,m,link])=>`<div class="rf-vc-row"><div class="rf-vc-t"><b>${esc(name)}</b><small>${esc(syms)}</small><a href="${link}">Xem chart →</a></div>${[a,b,c,m].map(([x,y],i)=>`<div class="rf-vc-s${i===3?' rf-vc-m':''}"><b>${esc(x)}</b><small>${esc(y||'—')}</small></div>`).join('')}</div>`).join('');
+ plainSrc('blTypeChain','FinSuccess tổng hợp; biên gộp: BCTC hợp nhất quý');
+ host.after(make('div','source-note method-note','Biên gộp = lãi gộp ÷ doanh thu thuần, quý gần nhất có số của từng mã (BCTC hợp nhất). QNS chưa có BCTC quý trong bộ dữ liệu. Số cửa hàng do doanh nghiệp công bố.'));
+}
+// Tổng quan › Triển vọng: ba biến, số mới nhất lấy từ dữ liệu trên trang (cùng nguồn với chart).
+if(document.getElementById('blOutlook')){
+ const rL_=rt.at(-1),cL_=cpi.at(-1),gL_=gS.at(-1),pg=lastGM('PNJ');
+ const V=[
+  ['Sức mua thực',[rL_?`Tổng mức bán lẻ ${mon(rL_.date)}: ${signed(yoyAt(rt,rL_),1)}% so cùng kỳ, lũy kế ${signed(ytdYo(rt),1)}% (danh nghĩa)`:null,'Loại trừ yếu tố giá 9T/2026: +7,8% (NSO)'],'Doanh thu chuỗi bán lẻ đi theo sức mua thực; phần chênh giữa danh nghĩa và thực là giá, làm doanh thu đẹp hơn lượng hàng bán ra.','số NSO tháng 11–12 và mức loại trừ giá cả năm','#rf-q-real','Bức tranh ngành › Toàn ngành'],
+  ['Thuế và giá bán từ 1/1/2027',[cL_?`CPI ${mon(cL_.date)}: ${nf(cL_.value,2)}% so cùng kỳ`:null,'Giảm 2% VAT hết hiệu lực 31/12/2026; thuế TTĐB nước giải khát có đường 8% từ 2027'],'Giá bán cuối cùng tăng khi VAT trở lại 10%, đẩy CPI lên và bào mòn sức mua thực; nước giải khát có đường (MSN, QNS) chịu thêm thuế TTĐB.','CPI tháng 1–2/2027, giá bán lẻ sau mốc thuế','#rf-q-policy','Bức tranh ngành › Chính sách & thuế'],
+  ['Giá vàng và biên PNJ',[gL_?`Vàng SJC ${short(gL_.date)}: ${nf(gL_.value/1000,1)} triệu/lượng, ${signed(yoyAt(gS,gL_),0)}% so cùng kỳ`:null,pg?`Biên gộp PNJ ${pg[1]}: ${nf(pg[0],1)}%`:null],'Giá vàng biến động mạnh làm tăng tỷ trọng vàng 24K biên thấp và lệch giá vốn tồn kho với giá bán; dự phòng thu đổi kim cương còn đè lên lợi nhuận.','BCTC Q4/2026 của PNJ, quyết định cấp phép nhập khẩu vàng','#rf-q-pnj','Bức tranh ngành › Trang sức']];
+ const host=document.getElementById('blOutlook');host.className='rf-ol-grid';
+ host.innerHTML=V.map(([t,nums,imp,next,link,lab],i)=>`<article class="rf-ol"><h4><span>${i+1}</span>${esc(t)}</h4><p class="rf-ol-num">${nums.filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join('')}</p><p><b>Hàm ý:</b> ${esc(imp)}</p><p class="rf-ol-next"><b>Kiểm tiếp:</b> ${esc(next)} · <a href="${link}">${esc(lab)}</a></p></article>`).join('');
+ plainSrc('blOutlook','Cục Thống kê; WiData (vàng SJC); BCTC hợp nhất quý; văn bản chính sách ở Chính sách & thuế');
+}
 window.RETAIL_POLICY=POLICY;
 
 // ---------- 4. KPIs, quick read, catalyst brief ----------
