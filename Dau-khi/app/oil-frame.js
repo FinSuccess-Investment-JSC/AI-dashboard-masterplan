@@ -42,7 +42,16 @@ const ALIAS = {mt3: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
 
 function style() {
   const st = el('style'); st.id = 'oil-frame-style';
-  st.textContent = `.of-ops-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:12px 0 4px}
+  st.textContent = `.dv{margin:10px 0 4px}.dv-axis{display:grid;grid-template-columns:260px 1fr;margin-bottom:4px}.dv-axis{position:relative}.dv-axis span{font:600 11.5px Inter,sans-serif;color:#9AA1BC}
+.dv-axis{display:flex;justify-content:space-between;padding-left:276px}.dv-g{margin:12px 0 4px;font:700 12px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#2938A8}
+.dv-row{display:grid;grid-template-columns:260px minmax(0,1fr);gap:16px;align-items:center;min-height:44px;border-bottom:1px solid #F0F2F8}
+.dv-l b{display:block;font:600 14px/1.3 Inter,sans-serif;color:#1F2A5C}.dv-l small{font-size:12px;color:#6B7392}
+.dv-track{position:relative;height:28px}.dv-zero{position:absolute;left:50%;top:-8px;bottom:-8px;border-left:1.5px solid #C9CEE0}
+.dv-bar{position:absolute;top:6px;height:16px;border-radius:4px}.dv-bar.neg{background:#E5484D;opacity:.8;border-radius:4px 0 0 4px}.dv-bar.pos{background:#2BB673;opacity:.85;border-radius:0 4px 4px 0}
+.dv-v{position:absolute;top:4px;font:700 13.5px Inter,sans-serif;font-style:normal}.dv-v.neg{color:#B3303F}.dv-v.pos{color:#17784A}
+.dv-note{margin:12px 0 0;font-size:12.5px;color:#6B7392}
+@media (max-width:900px){.dv-row{grid-template-columns:1fr}.dv-axis{padding-left:0}}
+.of-ops-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:12px 0 4px}
 .of-ops-i{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border:1px solid #E6E9F2;border-radius:12px;background:#FAFBFE}
 .of-ops-i span{font:600 12.5px Inter,sans-serif;color:#6B7392}.of-ops-i b{font:700 26px/1.15 Inter,sans-serif;color:#1F2A5C}.of-ops-i b small{font:600 13px Inter,sans-serif;color:#6B7392;margin-left:4px}.of-ops-i em{font-style:normal;font-size:12px;color:#6B7392}
 .tx2{margin:10px 0 6px;font-size:13px}.tx2-head,.tx2-row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:16px;align-items:center}
@@ -491,6 +500,23 @@ function supplyDemandCombo() {
     plugins: [{id: 'zeroLine', afterDraw(c) { const y = c.scales.y2.getPixelForValue(0), {left, right} = c.chartArea, x = c.ctx; x.save(); x.strokeStyle = '#9AA1BC'; x.setLineDash([3, 3]); x.beginPath(); x.moveTo(left, y); x.lineTo(right, y); x.stroke(); x.restore(); }}]});
   [sdCard, gapCard].forEach(n => { if (n) { n.hidden = true; n.classList.add('of-hidden-legacy'); } });
 }
+
+// Động lực cung cầu: một biểu đồ thanh hai chiều (âm trái, dương phải) thay cho 4 ô nhỏ; số giữ nguyên từ research-sources.js.
+function driversChart() {
+  const card = $('#opec-drivers'), grid = card?.querySelector('.opec-driver-grid'); if (!grid || card.querySelector('.dv')) return;
+  const groups = [
+    ['Cung', [['OPEC+ so với mục tiêu', -6, 'T7/2026 · IEA'], ['Vùng Vịnh so với trước chiến sự', -8.3, 'T7/2026 · IEA'], ['Cung toàn cầu 2026E', -4.3, 'so cùng kỳ, cả năm']]],
+    ['Cầu', [['Tăng trưởng cầu 2026 · IEA', -1.6, 'dự báo tại T8/2026'], ['Tăng trưởng cầu 2026 · OPEC', 0.58, 'dự báo tại T8/2026']]],
+    ['Lọc dầu', [['Công suất chạy lọc dầu toàn cầu', -5, 'T7/2026 so cùng kỳ, xấp xỉ']]],
+  ];
+  const max = 9, pct = v => (Math.abs(v) / max * 50).toFixed(2) + '%', nf = v => (v > 0 ? '+' : '') + v.toLocaleString('vi-VN');
+  const box = el('div', 'dv');
+  box.innerHTML = `<div class="dv-axis"><span>← giảm</span><span>0</span><span>tăng →</span></div>` + groups.map(([g, rows]) => `<div class="dv-g">${g}</div>` + rows.map(([l, v, n]) =>
+    `<div class="dv-row"><div class="dv-l"><b>${l}</b><small>${n}</small></div><div class="dv-track"><i class="dv-zero"></i><span class="dv-bar ${v < 0 ? 'neg' : 'pos'}" style="${v < 0 ? 'right:50%' : 'left:50%'};width:${pct(v)}"></span><em class="dv-v ${v < 0 ? 'neg' : 'pos'}" style="${v < 0 ? `right:calc(50% + ${pct(v)} + 6px)` : `left:calc(50% + ${pct(v)} + 6px)`}">${nf(v)}</em></div></div>`).join('')).join('') +
+    `<p class="dv-note">Triệu thùng/ngày. Các dòng dùng mốc so sánh khác nhau nên không cộng với nhau. Nguồn cung bù từ ngoài OPEC (Mỹ, Brazil, Canada, Guyana, Argentina, Na Uy) xem chart sản lượng 10 nước xuất khẩu lớn phía trên.</p>`;
+  grid.replaceWith(box);
+  const sub = card.querySelector('.chart-sub'); if (sub) sub.textContent = 'Thay đổi so với mốc tham chiếu · bản nguồn tháng 8/2026';
+}
 function run() {
   if (document.body.dataset.oilFrame) return; document.body.dataset.oilFrame = '1';
   style();
@@ -510,6 +536,7 @@ function run() {
   unfoldCards(['dau-khi-28']);
   crudeLayout();
   supplyDemandCombo();
+  driversChart();
   tankerRates();
   lngPrices();
   taxTimeline();
