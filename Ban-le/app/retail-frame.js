@@ -48,6 +48,12 @@ const TREE = {
       {q: 'Chuỗi nào tăng nhờ cửa hàng hiện hữu, chuỗi nào nhờ mở mới?', id: 'rf-q-sssg', meta: '% so cùng kỳ 9T/2026 · chỉ chuỗi công bố cả doanh thu và SSSG', take: ['bl-43'],
         after: NOTE('<b>So theo mô hình:</b> điện máy – điện thoại (MWG khối ĐMX, FPT Shop) tăng nhờ năng suất cửa hàng, nên theo dõi SSSG và biên gộp; bách hóa (Bách Hóa Xanh, WinCommerce) và nhà thuốc (Long Châu) tăng nhờ mở mới, nên theo dõi tỷ lệ cửa hàng mới hòa vốn, chi phí bán hàng/doanh thu và doanh thu/cửa hàng sau 12 tháng. <b>Còn thiếu để dựng cầu nối:</b> số cửa hàng bình quân và SSSG theo quý của Long Châu, Bách Hóa Xanh, WinCommerce. Biên gộp từng doanh nghiệp: <a href="#rf-q-gm">Tài chính ngành › 1.3</a>.')},
     ]},
+    {k: 'network', t: 'Mạng lưới bán lẻ', d: 'Quy mô, độ phủ địa lý và tốc độ mở rộng mạng lưới cửa hàng của các chuỗi niêm yết, theo số Bizmap.live ghi nhận.', items: [
+      {q: 'Mỗi chuỗi đang có bao nhiêu điểm bán, phủ bao nhiêu tỉnh/thành?', id: 'rf-q-net-scale', meta: 'điểm bán Bizmap ghi nhận (không phải thị phần doanh thu) · bộ lọc dùng chung cho bản đồ', take: ['bl-70', 'bl-71', 'bl-72']},
+      {q: 'Mạng lưới từng chuỗi tập trung ở địa phương nào?', id: 'rf-q-net-geo', meta: 'tỷ trọng trong mạng lưới của chính chuỗi · 34 tỉnh/thành từ 01/07/2025', take: ['bl-74', 'bl-75', 'bl-76']},
+      {q: 'Số Bizmap ghi nhận lệch bao nhiêu so với số doanh nghiệp công bố?', id: 'rf-q-net-official', meta: 'số công bố dùng cho doanh thu/cửa hàng · Bizmap dùng cho phân bố địa lý', take: ['bl-73']},
+      {q: 'Mạng lưới đang mở rộng thế nào?', id: 'rf-q-net-hist', meta: 'ảnh chụp hằng tuần · điểm mới ghi nhận chưa chắc là cửa hàng mới khai trương', take: ['bl-77']},
+    ]},
     {k: 'jewelry', t: 'Trang sức', d: 'Giá vàng truyền vào lợi nhuận PNJ qua đâu? Giá vàng, chênh lệch với thế giới, biên gộp PNJ. Ô tô – Xe máy có dashboard riêng.', items: [
       {grp: 'Vàng & trang sức'},
       {q: 'Giá vàng trong nước đang đi đâu?', id: 'rf-q-gold', meta: 'triệu đồng/lượng · SJC miếng và nhẫn, điểm cuối tháng (WiData)', take: ['bl-24', 'bl-23']},
@@ -135,7 +141,7 @@ function take(sel) {
   if (!n || used.has(n) || [...used].some(u => u.contains(n))) return null;
   used.add(n); n.hidden = false; n.classList.remove('rf-hidden-legacy'); n.style.marginTop = '';
   if (/^bl-5\d$/.test(sel)) unfold(n);
-  if (/^bl-(01|02|05|13|15|21|42|44|50|52|60|61)$/.test(sel)) n.classList.add('rf-wide');
+  if (/^bl-(70|71|72|73|74|76|01|02|05|13|15|21|42|44|50|52|60|61)$/.test(sel)) n.classList.add('rf-wide');
   return n;
 }
 // research-layout gập mọi thẻ của tab Chính sách cũ (#mt4) vào <details>; Bức tranh ngành cần thẻ sự kiện và chart hiện sẵn → gỡ lớp gập.
@@ -178,6 +184,7 @@ function buildTab(key) {
       if (it.build) BUILDS.push(it.build); // chạy sau khi pane đã gắn vào trang (thẻ đang tách khỏi document)
       if (it.after) grid.append(it.after());
       (it.fold || []).forEach(([sel, label]) => { const n = take(sel); if (!n) return; const d = el('details', 'rf-fold rf-wide'); d.append(el('summary', '', esc(label)), n); grid.append(d); });
+      if (!grid.children.length) return; // không có thẻ nào (dữ liệu chưa đủ) → không hiện câu hỏi
       panel.append(grid); p.append(panel);
     });
     const nx = def.subs[i + 1];

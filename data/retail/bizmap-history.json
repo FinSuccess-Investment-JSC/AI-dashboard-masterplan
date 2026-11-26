@@ -1,0 +1,58 @@
+{
+ "schema": 1,
+ "source": "bizmap.live",
+ "snapshots": [
+  {
+   "date": "2026-11-26",
+   "mode": "directory",
+   "source_updated": "2026-11-26",
+   "chains": {
+    "bach-hoa-xanh": {
+     "stores": 4176,
+     "province_count": 23,
+     "provinces": {}
+    },
+    "winmart-plus": {
+     "stores": 5096,
+     "province_count": 34,
+     "provinces": {}
+    },
+    "the-gioi-di-dong": {
+     "stores": 1649,
+     "province_count": 34,
+     "provinces": {}
+    },
+    "dien-may-xanh": {
+     "stores": 2200,
+     "province_count": 34,
+     "provinces": {}
+    },
+    "an-khang": {
+     "stores": 478,
+     "province_count": 20,
+     "provinces": {}
+    },
+    "avakids": {
+     "stores": 98,
+     "province_count": 13,
+     "provinces": {}
+    },
+    "long-chau": {
+     "stores": 2836,
+     "province_count": 34,
+     "provinces": {}
+    },
+    "fpt-shop": {
+     "stores": 629,
+     "province_count": 34,
+     "provinces": {}
+    },
+    "pnj": {
+     "stores": 430,
+     "province_count": 31,
+     "provinces": {}
+    }
+   }
+  }
+ ]
+}
