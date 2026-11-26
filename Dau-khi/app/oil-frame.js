@@ -582,8 +582,26 @@ function run() {
   const finHost = financePane();
   nav(finHost);
   // Tab Sources không còn trong thanh tab (nguồn đã ghi dưới từng chart, như Điện); nội dung vẫn trong DOM.
+  shortTitles(); setTimeout(shortTitles, 1600);  // lần hai sau các module đặt lại tiêu đề muộn
   window.dispatchEvent(new Event('oil:frame'));
 }
+// 26/11/2026: tiêu đề chart gọn ở Bức tranh ngành; kỳ và đơn vị để ở dòng phụ dưới tiêu đề.
+function shortTitles() {
+  const T = {chSDCombo: 'Cân bằng cung – cầu dầu toàn cầu', chSpare: 'Công suất dự phòng OPEC và gián đoạn cung',
+    chCrudeStock: 'Tồn kho dầu thô Mỹ', chProdStock: 'Tồn kho xăng và distillate Mỹ', chDistYear: 'Tồn kho distillate Mỹ theo mùa', chCushing: 'Tồn kho Cushing',
+    chBrentYear: 'Giá Brent bình quân năm', chCurve: 'Đường cong kỳ hạn WTI', chCot: 'Vị thế ròng quỹ đầu cơ WTI',
+    chVnUpstream: 'Sản lượng dầu khí Việt Nam theo năm', chVnOutputM: 'Sản lượng dầu khí Việt Nam theo tháng', chExpCrude: 'Xuất khẩu dầu thô Việt Nam',
+    chGasVol: 'Khí vào bờ và LNG nhập khẩu', chGasCustomer: 'Vị thế của PV GAS trong nền kinh tế', chLngSpread: 'Giá LNG châu Á và khí Mỹ', chImpLpg: 'Nhập khẩu LPG',
+    chSingaporeCrack: 'Crack spread Singapore', chCrack: 'Crack spread Mỹ', chImpCrude: 'Nhập khẩu dầu thô',
+    chRetailFuelMini: 'Giá bán lẻ xăng dầu', chImpFuel: 'Nhập khẩu xăng dầu thành phẩm',
+    chHormuzM: 'Tàu dầu qua Hormuz', chBabMandeb: 'Lưu lượng tàu qua Bab el-Mandeb', chMiddleEastExports: 'Xuất khẩu dầu thô Ả Rập Xê Út và Kuwait', chTankerIdx: 'Cước tàu dầu Baltic'};
+  Object.entries(T).forEach(([id, t]) => document.querySelectorAll('[id="' + id + '"]').forEach(c => {
+    if (!c.closest('[id^="of-mt2"]')) return;
+    const h = (c.closest('.fs-share-host') || c.closest('.card'))?.querySelector('.chart-title'); if (!h) return;
+    const n = [...h.childNodes].find(x => x.nodeType === 3 && x.textContent.trim()); if (n) n.textContent = t; else h.prepend(t);
+  }));
+}
+
 // 26/11/2026: dựng khung trong lượt SectorBoot (mốc 1600, sau mọi module ≤ 1500) để trang chỉ hiện khi khung đã xong.
 // Trước đây chạy load + 1700 ms, tức SAU khi sector-boot đã hiện trang: người xem thấy bố cục cũ rồi giật sang khung mới.
 if (window.SectorBoot) SectorBoot.add(1600, run);
