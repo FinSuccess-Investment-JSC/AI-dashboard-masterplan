@@ -228,5 +228,25 @@
   "quote": "Giá thuê đất công nghiệp trung bình đạt 185 USD/m² cho toàn bộ thời hạn thuê còn lại, ổn định so với quý trước",
   "status": "match",
   "note": "Cùng đoạn: \"tăng 1,5% so với cùng kỳ năm 2025\". Giá CBRE, phạm vi Tier-1."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-s-2026q3-land",
+  "value": "4.892.000 đ/m²/kỳ thuê",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hcmc-industrial-q3-2026-en.pdf?rev=885a3b2109c843e0ac05c565cde3483c",
+  "opened_at": "2026-11-26",
+  "quote": "Average industrial land rent reached VND 4.89 million/m²/lease term, down 0.4% QoQ but up 1.2% … Q3 2026 35.800 75.8% 4.892.000",
+  "status": "match",
+  "note": "Bảng thống kê trang cuối ghi 4.892.000; lời văn làm tròn 4,89 triệu."
+ },
+ {
+  "block": "kcn-supplement",
+  "claim": "cw-s-2026q3-rbw",
+  "value": "124.200 đ/m²/tháng",
+  "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hcmc-industrial-q3-2026-en.pdf?rev=885a3b2109c843e0ac05c565cde3483c",
+  "opened_at": "2026-11-26",
+  "quote": "Average asking rent reached VND 124,200/m²/month, up 0.3% QoQ and 2.3% YoY.",
+  "status": "match",
+  "note": "Đoạn kho xây sẵn (RBW) miền Nam."
  }
 ]

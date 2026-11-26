@@ -2,7 +2,7 @@
  "schema": 1,
  "about": "Dữ liệu workspace Khu công nghiệp (trang Bất động sản). Sinh bằng scripts/build_kcn_workbook.py từ workbook nghiên cứu; không sửa tay — thay workbook rồi chạy lại script.",
  "as_of": "2026-11-12",
- "built": "2026-11-12",
+ "built": "2026-11-26",
  "workbook": {
   "file": "data/raw/kcn/Vietnam_Industrial_Park_Research_Data_2026_Expanded_Landbank.xlsx",
   "sha256": "164711b1f415b70204cbfa169f5e3610cdd692f9411f047f98b19bcae75c4c7c",
@@ -818,13 +818,20 @@
    "occ": 0.758,
    "abs_ha": null,
    "ask_usd": null,
-   "ask_vnd": 4890000.0,
+   "ask_vnd": 4892000.0,
    "precision": "APPROX",
-   "note": "Stock ~35,800ha: -263ha vs Q2; reported occupancy QoQ delta contradicts direct data",
-   "src": "CW_S26Q3",
+   "note": "Bảng số liệu C&W Q3/2026: 4.892.000 đ/m²/kỳ thuê (lời văn làm tròn 4,89 triệu). Giá chưa gồm phí quản lý, VAT. C&W chỉ báo giá VND kỳ này, ghi tỷ giá USD/VND 26.250 nhưng không công bố giá USD.",
+   "src": "WEB_CW_S26Q3",
    "url": null,
    "occupied_proxy": 27136.4,
-   "vacant_proxy": 8663.6
+   "vacant_proxy": 8663.6,
+   "replaced": {
+    "ask_vnd": 4890000.0,
+    "src": "CW_S26Q3",
+    "note": "Stock ~35,800ha: -263ha vs Q2; reported occupancy QoQ delta contradicts direct data"
+   },
+   "src_web": "WEB_CW_S26Q3",
+   "added": "web"
   }
  ],
  "province": [
@@ -2170,13 +2177,15 @@
    "occ": 0.937,
    "abs_sqm": null,
    "ask_usd": null,
-   "ask_vnd": null,
+   "ask_vnd": 124200.0,
    "precision": "APPROX",
    "geo": "POST_2025Q3",
    "cohort": "POST",
    "src": "CW_S26Q3",
    "url": null,
-   "note": "Rounded supply; rent omitted until checked"
+   "note": "Kho xây sẵn miền Nam Q3/2026: 124.200 đ/m²/tháng, +0,3% so quý trước, +2,3% so cùng kỳ (C&W công bố); gồm phí dịch vụ, chưa VAT.",
+   "src_web": "WEB_CW_S26Q3",
+   "added": "web"
   }
  ],
  "dev": [
@@ -8411,7 +8420,7 @@
   {
    "name": "Số bổ sung từ web có bằng chứng trích dẫn",
    "ok": true,
-   "detail": "23 số · 4 cảnh báo cập nhật"
+   "detail": "25 số · 4 cảnh báo cập nhật"
   },
   {
    "name": "Không có lỗi chuẩn hóa",
@@ -8857,6 +8866,37 @@
     "src": "WEB_CBRE_9M_26S",
     "quote": "Giá thuê đất công nghiệp trung bình đạt 185 USD/m² cho toàn bộ thời hạn thuê còn lại, ổn định so với quý trước",
     "url": "https://thoibaotaichinhvietnam.vn/bat-dong-san-cong-nghiep-phia-nam-hap-thu-163-ha-dat-trong-9-thang-205377.html"
+   },
+   {
+    "id": "cw-s-2026q3-land",
+    "table": "market",
+    "mode": "replace",
+    "key": {
+     "period": "2026Q3",
+     "region": "South"
+    },
+    "set": {
+     "ask_vnd": 4892000.0
+    },
+    "src": "WEB_CW_S26Q3",
+    "quote": "Average industrial land rent reached VND 4.89 million/m²/lease term, down 0.4% QoQ but up 1.2% … Q3 2026 35.800 75.8% 4.892.000",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hcmc-industrial-q3-2026-en.pdf?rev=885a3b2109c843e0ac05c565cde3483c"
+   },
+   {
+    "id": "cw-s-2026q3-rbw",
+    "table": "rbf",
+    "mode": "fill",
+    "key": {
+     "period": "2026Q3",
+     "region": "South",
+     "segment": "RBW"
+    },
+    "set": {
+     "ask_vnd": 124200.0
+    },
+    "src": "WEB_CW_S26Q3",
+    "quote": "Average asking rent reached VND 124,200/m²/month, up 0.3% QoQ and 2.3% YoY.",
+    "url": "https://assets.cushmanwakefield.com/-/media/cw/marketbeat-pdfs/2026/q3/apac-and-gc/hcmc-industrial-q3-2026-en.pdf?rev=885a3b2109c843e0ac05c565cde3483c"
    }
   ],
   "qa_updates": [
