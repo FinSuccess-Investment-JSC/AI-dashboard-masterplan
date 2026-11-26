@@ -123,6 +123,8 @@ T.steps = c => {
   h.innerHTML = c.steps.map(([k, t, d], i) => `${i ? '<span class="rf-chain-ar" aria-hidden="true">→</span>' : ''}<div class="rf-chain-s"><small>${esc(k)}</small><b>${esc(t)}</b><span>${esc(d)}</span></div>`).join('');
   if (c.note) h.after(make('div', 'source-note', c.note)); pwSrc(c.id, c.src || []);
 };
+// Sơ đồ dựng riêng trong cấu hình ngành: c.render(host) trả HTML; dòng nguồn hiện sẵn.
+T.html = c => { const h = document.getElementById(c.id); if (!h) return; h.innerHTML = c.render(esc); pwSrc(c.id, c.src || []); if (c.method) h.after(make('div', 'source-note', c.method)); };
 T.models = c => {
   const h = document.getElementById(c.id); if (!h) return; h.className = 'rf-models';
   h.innerHTML = c.items.map(([t, syms, rev, drv, links], i) => `<article class="rf-model"><header><span>${i + 1}</span><h4>${esc(t)}</h4></header><p class="rf-syms">${esc(syms)}</p><dl><dt>Doanh thu đến từ</dt><dd>${esc(rev)}</dd><dt>Biến quyết định biên</dt><dd>${esc(drv)}</dd></dl><nav>${(links || []).map(([hr, l]) => `<a href="${hr}">${esc(l)} →</a>`).join('')}</nav></article>`).join('');
