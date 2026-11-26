@@ -1,6 +1,6 @@
 /* Cây ngành cho thanh điều hướng bên trái (scripts/sector_package/site-sidebar.js). Một nguồn duy nhất cho mọi trang.
    key = khóa route trong site-navigation.js (DashboardSite.href). sub/hash = mở thẳng sub-tab trong trang ngành.
-   soon = ngành chưa có dashboard: hiện mờ, không bấm được. Thêm ngành mới: thêm một dòng ở đây. */
+   soon = ngành chưa có dashboard: hiện mờ, không bấm được. Thêm ngành mới: thêm một dòng ở đây. Không đưa Master plan vào thanh (người dùng bỏ 26/11). */
 window.FS_SITE_NAV = {
   version: '2026-11-26',
   groups: [
@@ -40,9 +40,6 @@ window.FS_SITE_NAV = {
       ]},
       {key: 'pharma', label: 'Dược & y tế'},
       {key: 'telecom', label: 'Viễn thông'}
-    ]},
-    {title: 'Khác', items: [
-      {key: 'plan', label: 'Master plan'}
     ]}
   ]
 };
