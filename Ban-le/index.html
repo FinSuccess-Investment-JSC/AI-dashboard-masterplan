@@ -93,28 +93,20 @@
         <h3 style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3>
         <p style="font-size:12.5px;line-height:1.6;margin:0">Sức mua → kênh bán → biên lợi nhuận.</p>
       </div>
-      <div class="card" data-block-id="bl-02" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
-        <h3 style="margin-top:0;font-size:13.5px">Vị trí trong chu kỳ</h3>
-        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Sức mua đang ở pha tốt nhất từ 2022.</mark> Tổng mức bán lẻ 9T/2026 <b>5.925,7 nghìn tỷ, +13,4%</b> (loại trừ giá +7,8%); thu nhập bình quân quý III 9,2 triệu/tháng (+9,9%); khách quốc tế 17,7 triệu lượt (+14,5%).</p>
-        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Chuỗi bán lẻ thắng lớn, trang sức lỗ.</mark> MWG 6T lãi 6.112 tỷ (+82%), FRT Long Châu +33%; nhưng PNJ điều chỉnh kế hoạch 2026 thành <b>lỗ 6.271 tỷ</b> vì dự phòng thu đổi kim cương.</p>
-        <p style="font-size:12.5px;line-height:1.65;margin-bottom:0"><mark class="key-phrase">Lạm phát và thuế là ngược gió 2027.</mark> CPI tháng 9 <b>+5,08%</b>, cao nhất từ 2020; thuế TTĐB bia tăng bậc 70% và nước giải khát có đường 8% từ 1/1/2027; đường thô tăng giá trở lại từ tháng 8.</p>
-        <div class="source-note">Nguồn: <a href="https://www.nso.gov.vn/bai-top/2026/10/bao-cao-tinh-hinh-kinh-te-xa-hoi-quy-iii-va-9-thang-nam-2026/" target="_blank" rel="noopener">NSO quý III</a> · <a href="https://www.nso.gov.vn/tin-tuc-thong-ke/2026/10/thong-cao-bao-chi-ve-tinh-hinh-lao-dong-viec-lam-quy-iii-va-9-thang-nam-2026/" target="_blank" rel="noopener">NSO lao động</a> · <a href="https://doanhnhan.baophapluat.vn/quy-mo-tien-cua-the-gioi-di-dong-mwg-vot-len-63-600-ty-dong-loi-nhuan-ban-nien-tang-82.html" target="_blank" rel="noopener">DN&amp;PL – MWG</a> · <a href="https://doanhnhan.baophapluat.vn/vang-bac-da-quy-phu-nhuan-pnj-bat-ngo-dieu-chinh-ke-hoach-bao-lo-hon-6-200-ty-dong-khong-chia-co-tuc-tien-mat-nam-2026.html" target="_blank" rel="noopener">DN&amp;PL – PNJ</a> · <a href="https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm" target="_blank" rel="noopener">VnEconomy – TTĐB</a></div>
-      </div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bl-08" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+      <div class="chart-title">Chuỗi giá trị theo loại hình doanh nghiệp</div>
+      <div id="blTypeChain"></div>
+    </div>
+    <div class="card" style="margin-top:14px" data-block-id="bl-09" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
+      <div class="chart-title">Ba biến cần theo dõi</div>
+      <div id="blOutlook"></div>
     </div>
     <div class="card sector-valuation" style="margin-top:14px" data-block-id="bl-03" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
         <div class="chart-title">P/E chuỗi bán lẻ, phân phối, xe, sữa, bia — theo phiên</div>
         <div class="chart-sub">lần · rổ mã theo dõi (VNDirect) · mỗi 5 phiên · P/B ở bảng</div>
         <div id="chSectorVal"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-sector-val"></table></div></details>
-    </div>
-    <div class="card" style="margin-top:14px" data-block-id="bl-04" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
-      <h3 style="margin-top:0;font-size:13.5px">Doanh nghiệp theo dõi và biến quyết định</h3>
-      <div class="tablewrap"><table><thead><tr><th>Nhóm</th><th>Mã</th><th>Doanh thu đến từ</th><th>Biến quyết định</th></tr></thead><tbody><tr><td><b>Bán lẻ hiện đại &amp; điện máy</b></td><td>MWG · FRT · DGW · PET</td><td>Chuỗi điện máy, điện thoại, bách hóa (MWG), nhà thuốc và ICT (FRT); phân phối ICT, hàng tiêu dùng (DGW, PET)</td><td>Tổng mức bán lẻ, doanh thu/cửa hàng, biên gộp, tồn kho, chu kỳ sản phẩm Apple, giá linh kiện</td></tr><tr><td><b>Trang sức</b></td><td>PNJ</td><td>Trang sức, vàng 24K</td><td>Giá vàng, chênh lệch thế giới, Nghị định 24 sửa đổi</td></tr><tr><td><b>Tiêu dùng nhanh</b></td><td>QNS · MSN · KDC</td><td>Đường & sữa đậu nành, thực phẩm – WinCommerce – khai khoáng (MSN), dầu ăn & bánh kẹo</td><td>Giá đường, dầu cọ, khô đậu; thuế TTĐB nước giải khát; sức mua nông thôn</td></tr></tbody></table></div>
-      <div class="source-note">Sữa (VNM, MCM), Bia (SAB, BHN, SMB, HAD), Ô tô – Xe máy (HAX, SVC, CTF, TMT) có dashboard riêng. P/E, P/B, vốn hóa cập nhật mỗi phiên (VNDirect); số BCTC chỉ cập nhật khi người dùng yêu cầu.</div>
-    </div>
-    <div class="card" style="margin-top:14px" data-block-id="bl-05" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
-      <div class="chart-title">Ba mô hình kiếm tiền: doanh thu đến từ đâu, biến nào quyết định biên</div>
-      <div id="blModels"></div>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="bl-06" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
       <div class="chart-title">Doanh thu và lợi nhuận ròng theo quý của từng nhóm</div>
