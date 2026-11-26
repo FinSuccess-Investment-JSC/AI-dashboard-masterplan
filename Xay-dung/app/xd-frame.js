@@ -28,17 +28,20 @@ const ART = new Map((H.articles || []).map(a => [a.id, a]));
 const PROJ = new Map((H.projects || []).map(p => [p.id, p]));
 /* ---------- Ba dashboard ngành dùng chung bộ mã (26/11/2026, người dùng tách ngành Xây dựng) ----------
    Xay-dung/ (contractor: nhà thầu dân dụng, hạ tầng) · Vat-lieu-xay-dung/ (materials: xi măng, đá cát, nhựa đường, kính gạch) ·
-   Dau-tu-cong/ (publicbot: đầu tư công, dự án trọng điểm, BOT & thu phí, chính sách). <body data-xd-variant="…">.
+   Dau-tu-cong/ (publicbot) đã gỡ 27/11/2026, chỉ còn trang chuyển hướng; cấu hình publicbot giữ lại nhưng không trang nào dùng. <body data-xd-variant="…">.
    Link tới tab con thuộc trang khác (vd. ?section=cement#mt2 trên trang Xây dựng) tự chuyển sang trang đó. */
 const VAR = document.body.dataset.xdVariant || 'contractor';
-const PAGES = {contractor: 'Xay-dung/', materials: 'Vat-lieu-xay-dung/', publicbot: 'Dau-tu-cong/'};
+const PAGES = {contractor: 'Xay-dung/', materials: 'Vat-lieu-xay-dung/'};
+// 27/11/2026 người dùng bỏ dashboard Đầu tư công & BOT (dữ liệu không đủ ổn để cập nhật): mục thuộc publicbot không còn trang đích.
+const GONE = 'publicbot';
+const goneHref = h => { try { const u = new URL(h, location.href); return HOME[u.searchParams.get('section')] === GONE || GROUP_HOME[u.searchParams.get('m')] === GONE; } catch (e) { return false; } };
 const HOME = {market: 'contractor', civil: 'contractor', infra: 'contractor', cement: 'materials', stone: 'materials', asphalt: 'materials', glass: 'materials', public: 'publicbot', projects: 'publicbot', bot: 'publicbot', policy: 'publicbot'};
 const GROUP_HOME = {civil: 'contractor', infra: 'contractor', materials: 'materials', bot: 'publicbot'};
 const CFG = {
   contractor: {name: 'Xây dựng', full: 'xây dựng', groups: ['civil', 'infra'], brief: ['gdp', 'cred', 'disb', 'basket'], models: [0, 1],
     mt2: [['market', 'Toàn thị trường'], ['civil', 'Dân dụng & nhà xưởng'], ['infra', 'Thi công hạ tầng']],
     topics: ['contractor-cash', 'rail-airport'], seg: ['Dân dụng & nhà xưởng', 'Thi công hạ tầng'],
-    ov: 'Nhà thầu dân dụng, nhà xưởng (CTD, HBC) và nhà thầu hạ tầng (VCG, FCN, DPG, C4G, LCG). Vật liệu ở dashboard <a href="../Vat-lieu-xay-dung/">VLXD</a>, giải ngân, dự án, BOT ở <a href="../Dau-tu-cong/">Đầu tư công & BOT</a>, thép ở <a href="../Thep/">Thép</a>.'},
+    ov: 'Nhà thầu dân dụng, nhà xưởng (CTD, HBC) và nhà thầu hạ tầng (VCG, FCN, DPG, C4G, LCG). Vật liệu ở dashboard <a href="../Vat-lieu-xay-dung/">VLXD</a>, thép ở <a href="../Thep/">Thép</a>.'},
   materials: {name: 'Vật liệu xây dựng', full: 'vật liệu xây dựng', groups: ['materials'], brief: ['cem', 'coal', 'asph', 'stone'], models: [3],
     mt2: [['cement', 'Xi măng'], ['stone', 'Đá & cát'], ['asphalt', 'Nhựa đường'], ['glass', 'Kính & gạch']],
     topics: ['materials'], seg: ['Xi măng', 'Đá & cát', 'Nhựa đường', 'Kính & gạch'],
@@ -85,7 +88,7 @@ function flow(items) { // [[id, nhãn nhỏ, tên]]
   return f;
 }
 const grpHead = (id, title, sub) => { const h = el('h3', 'xd-grp', `${esc(title)}${sub ? `<small>${esc(sub)}</small>` : ''}`); h.id = 'xd-g-' + id; return h; };
-const go = (label, href) => `<a class="xd-go" href="${esc(href)}" data-xd-href="${esc(href)}">${esc(label)} →</a>`;
+const go = (label, href) => goneHref(href) ? '' : `<a class="xd-go" href="${esc(href)}" data-xd-href="${esc(href)}">${esc(label)} →</a>`;
 const card = (html, cls = '') => el('div', 'card ' + cls, html);
 const note = html => { const d = el('details', 'note-icon'); d.innerHTML = '<summary>ⓘ Lưu ý dữ liệu</summary><div>' + html + '</div>'; return d; };
 function sparkSvg(vals) {
@@ -189,14 +192,14 @@ function projectMaster() {
 // Bảng trích: chỉ tên, mốc, trạng thái, mã; link về dòng của bảng chính.
 function projectList(filter, cap) {
   const L = H.projects.filter(filter); if (!L.length) return gap('chưa có dự án có nguồn trong nhóm này.');
-  return card(`<div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold data-fs-tl="1"><thead><tr><th>Dự án</th><th>Tiến độ · mốc kế tiếp</th><th>Trạng thái</th><th>Mã</th></tr></thead><tbody>${L.map(p => `<tr><td><a class="xd-go" href="?section=projects&g=proj-${esc(p.id)}#mt2" data-xd-proj="${esc(p.id)}">${esc(p.name)}</a><br><span class="xd-na">${esc(p.scale)}</span></td><td>${esc(p.progress)}<br>${nextTxt(p)}</td><td>${stChip(p.stage)}</td><td>${p.tickers.map(t => `<span class="xd-tk">${esc(t.code)}</span>`).join('') || '—'}</td></tr>`).join('')}</tbody></table></div><p class="xd-na">${cap || 'Luồng vốn, gói thầu, căn cứ gắn mã và nguồn ở bảng dự án chính (Đầu tư công & BOT › Dự án trọng điểm).'}</p>`);
+  return card(`<div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold data-fs-tl="1"><thead><tr><th>Dự án</th><th>Tiến độ · mốc kế tiếp</th><th>Trạng thái</th><th>Mã</th></tr></thead><tbody>${L.map(p => `<tr><td>${esc(p.name)}<br><span class="xd-na">${esc(p.scale)}</span></td><td>${esc(p.progress)}<br>${nextTxt(p)}</td><td>${stChip(p.stage)}</td><td>${p.tickers.map(t => `<span class="xd-tk">${esc(t.code)}</span>`).join('') || '—'}</td></tr>`).join('')}</tbody></table></div><p class="xd-na">${cap || 'Luồng vốn, gói thầu, căn cứ gắn mã và nguồn ở bảng dự án chính (Đầu tư công & BOT › Dự án trọng điểm).'}</p>`);
 }
 function milestones(list) {
   const rank = p => p.next?.date ? p.next.date.replace(/-Q(\d)/, (m, q) => '-' + String(q * 3).padStart(2, '0')) : '9999';
   const L = [...(list || H.projects)].sort((a, b) => rank(a).localeCompare(rank(b)));
   const c = card(`<div class="chart-title">Mốc dự án sắp tới</div><div class="chart-sub">sắp theo ngày mốc kế tiếp · dòng "chưa có ngày" ở cuối</div>
-    <div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold data-fs-tl="1"><thead><tr><th>Dự án</th><th>Mốc kế tiếp</th><th>Trạng thái</th><th>Doanh nghiệp liên quan</th><th>Căn cứ</th></tr></thead><tbody>${L.map(p => `<tr><td><a class="xd-go" href="?section=projects&g=proj-${esc(p.id)}#mt2" data-xd-proj="${esc(p.id)}">${esc(p.name)}</a></td><td>${nextTxt(p)}<br><span class="xd-na">${esc(p.progress)}</span></td><td>${stChip(p.stage)}</td><td>${p.tickers.map(t => `<span class="xd-tk">${esc(t.code)}</span> ${esc(t.role)}`).join('<br>') || '<span class="xd-na">—</span>'}</td><td>${srcCell(p)}</td></tr>`).join('')}</tbody></table></div>
-    <div class="pw-src">Nguồn: bảng dự án chính (Đầu tư công & BOT › Dự án trọng điểm), mỗi dòng có bài gốc</div>`);
+    <div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold data-fs-tl="1"><thead><tr><th>Dự án</th><th>Mốc kế tiếp</th><th>Trạng thái</th><th>Doanh nghiệp liên quan</th><th>Căn cứ</th></tr></thead><tbody>${L.map(p => `<tr><td>${esc(p.name)}</td><td>${nextTxt(p)}<br><span class="xd-na">${esc(p.progress)}</span></td><td>${stChip(p.stage)}</td><td>${p.tickers.map(t => `<span class="xd-tk">${esc(t.code)}</span> ${esc(t.role)}`).join('<br>') || '<span class="xd-na">—</span>'}</td><td>${srcCell(p)}</td></tr>`).join('')}</tbody></table></div>
+    <div class="pw-src">Nguồn: cột Căn cứ từng dòng (bài gốc)</div>`);
   c.dataset.blockId = 'xd-73';
   const leg = el('div', 'xd-def', Object.entries(STAGES).map(([k, v]) => `<div>${stChip(k)}<br>${esc(v[1])}</div>`).join(''));
   return [c, leg];
@@ -262,6 +265,7 @@ function mapPane(p) {
     title: 'Chuỗi giá trị ngành xây dựng', desc: 'Nhà nước, ngân hàng, người mua và người đi đường trả tiền cho chủ đầu tư; chủ đầu tư ký hợp đồng và thanh toán cho tổng thầu theo nghiệm thu; tổng thầu thanh toán cho thầu phụ và nhà cung cấp vật liệu.'}); } catch (e) { LOG('chain:' + e.message); }
   if (fig) { const h = vc.querySelector('h3'); vc.replaceChildren(); if (h) { h.textContent = 'Chuỗi giá trị ngành xây dựng: nguồn vốn → chủ đầu tư → tổng thầu → thầu phụ, vật liệu'; h.classList.add('chart-title'); vc.append(h); } vc.append(fig, el('p', 'xd-na', 'Mũi tên là chiều thanh toán; hợp đồng ký theo chiều ngược lại: chủ đầu tư ký với tổng thầu, tổng thầu ký với thầu phụ và nhà cung cấp. Bấm một khâu để mở phần tương ứng (Xây dựng, VLXD hoặc Đầu tư công & BOT).'), el('div', 'pw-src', 'Nguồn: cơ chế chung của ngành; mã niêm yết theo danh sách 17 doanh nghiệp đang theo dõi')); }
   const MAP = {nsnn: '?section=public#mt2', pmu: '?section=public#mt2', credit: '?section=market&g=credit#mt2', buyer: '?section=market#mt2', dev: '?section=civil#mt2', toll: '?section=bot#mt2', bot: '?section=bot#mt2', gbot: '?section=bot#mt2', ginfra: '?section=infra#mt2', gcivil: '?section=civil#mt2', sub: '?section=civil#mt2', cement: '?section=cement#mt2', stone: '?section=stone#mt2', asphalt: '?section=asphalt#mt2', glass: '?section=glass#mt2'};
+  Object.keys(MAP).forEach(k => { if (goneHref(MAP[k])) delete MAP[k]; });
   vc.addEventListener('click', e => { const n = e.target.closest('.vc-node[data-id]'); if (n && MAP[n.dataset.id]) navigate(MAP[n.dataset.id], true); });
   vc.addEventListener('keydown', e => { if (e.key !== 'Enter') return; const n = e.target.closest('.vc-node[data-id]'); if (n && MAP[n.dataset.id]) navigate(MAP[n.dataset.id], true); });
   const roles = el('div', 'xd-def', [
@@ -555,12 +559,13 @@ function elsewhere(u, major) {
   let home = null;
   if (major === 'mt2') home = HOME[u.searchParams.get('section')] || null;
   if (major === 'mt14' && u.searchParams.get('m')) home = GROUP_HOME[u.searchParams.get('m')] || null;
-  if (!home || home === VAR) return null;
+  if (!home || home === VAR || home === GONE) return null;
   const base = new URL('../' + PAGES[home], location.href); ['nc'].forEach(k => u.searchParams.delete(k));
   return base.pathname + u.search + u.hash;
 }
 function parse(href) { const u = new URL(href, location.href); let major = u.hash.slice(1) || 'mt1'; if (LEGACY[major]) { const l = new URL(LEGACY[major], location.href); u.searchParams.forEach((v, k) => { if (!l.searchParams.has(k) && !['ov', 'section', 'fin', 'g', 'm'].includes(k)) l.searchParams.set(k, v); }); return parse(l.href); }
   if (major === 'mt2' && u.searchParams.get('section')) { const [sec, g] = OLD_SECTION(u.searchParams.get('section'), u.searchParams.get('g')); u.searchParams.set('section', sec); if (g) u.searchParams.set('g', g); else u.searchParams.delete('g'); }
+  if (goneHref(u.href)) { u.searchParams.delete('section'); u.searchParams.delete('g'); u.searchParams.delete('m'); }
   return {major, sub: u.searchParams.get(PARAMS[major] || ''), g: u.searchParams.get('g'), m: u.searchParams.get('m'), u, away: elsewhere(new URL(u.href), major)}; }
 function canonical(st) { const u = new URL(location.href); ALL_P.forEach(k => u.searchParams.delete(k)); const t = TABS[st.major]; if (t) u.searchParams.set(t.param, st.sub || t.cur); if (st.major === 'mt14') u.searchParams.set('m', st.m || MODEL); if (st.g) u.searchParams.set('g', st.g); u.hash = '#' + st.major; return u.pathname + u.search + u.hash; }
 function scrollG(g, major) {
@@ -588,7 +593,7 @@ function navigate(href, push, keepScroll) {
 }
 function openProject(id, push = true) {
   const href = `?section=projects&g=proj-${id}#mt2`;
-  if (VAR !== 'publicbot') { location.assign(new URL('../' + PAGES.publicbot + href, location.href).href); return; }
+  if (VAR !== 'publicbot') return;
   if (push) { history.pushState({xd: 1}, '', canonical(parse(href))); }
   window.showMajorTab?.('mt2'); TABS.mt2?.show('projects');
   const tbl = $('#xd-proj-master'); tbl?._reset?.();
