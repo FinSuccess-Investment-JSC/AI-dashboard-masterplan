@@ -9,8 +9,10 @@ window.FS_SITE_NAV = {
       {key: 'securities', label: 'Chứng khoán'},
       {key: 'insurance', label: 'Bảo hiểm'},
       {key: 'steel', label: 'Thép'},
-      {key: 'realestate', label: 'BĐS dân cư'},
-      {key: 'industrial', label: 'Khu công nghiệp'},
+      {label: 'Bất động sản', children: [
+        {key: 'realestate', label: 'Dân dụng'},
+        {key: 'industrial', label: 'Khu công nghiệp'}
+      ]},
       {label: 'Xây dựng - Đầu tư công', children: [
         {key: 'construction', label: 'Xây dựng'},
         {key: 'materials', label: 'Vật liệu xây dựng'},
