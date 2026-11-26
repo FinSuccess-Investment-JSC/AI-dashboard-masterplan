@@ -70,10 +70,10 @@
     ['landbank', 'Quỹ đất & doanh nghiệp', 'Doanh nghiệp nào có quỹ đất phù hợp, ai đang chuyển cầu ngành thành hợp đồng mới?'],
     ['data', 'Dữ liệu & phương pháp', 'Số nào là thực tế, số nào ước tính; nguồn, định nghĩa và quy tắc kiểm soát.']
   ];
-  const APPLY = {overview: ['r', 'src', 'from', 'to'], demand: ['r', 'src', 'from', 'to'], supply: ['r', 'from', 'to', 'seg', 'prov'], rent: ['r', 'from', 'to', 'seg', 'prov'], landbank: ['co', 'prov'], data: ['r', 'src', 'from', 'to', 'prov', 'co']};
-  const MOVE = {demand: ['bds-09', 'bds-10', 'bds-11', 'bds-47'], supply: ['bds-46'], rent: ['bds-45'], landbank: ['bds-41', 'bds-44']};
-  const MOVE_TITLE = {demand: 'Chỉ báo cập nhật hằng tháng: FDI chế biến chế tạo, vốn thực hiện, IIP (Cục ĐTNN, NSO) · FDI theo quốc gia (VDSC)', supply: 'Nguồn cung từ đất cao su chuyển sang KCN (VDSC 01/2026)',
-    rent: 'Giá chào thuê các KCN mở bán 2026 (VDSC 01/2026, nguồn khác C&W)', landbank: 'Định giá nhóm KCN theo phiên · dự phóng ký mới của VDSC (không phải số thực hiện)'};
+  const APPLY = {market: [], overview: ['r', 'src', 'from', 'to'], demand: ['r', 'src', 'from', 'to'], supply: ['r', 'from', 'to', 'seg', 'prov', 'stage'], rent: ['r', 'from', 'to', 'seg', 'prov'], landbank: ['co', 'prov'], data: ['r', 'src', 'from', 'to', 'prov', 'co']};
+  const MOVE = {demand: ['bds-09', 'bds-10', 'bds-11', 'bds-47'], supply: ['bds-46'], rent: ['bds-45'], landbank: ['bds-44']}; // bds-41 (định giá) dời sang Tài chính ngành › Doanh nghiệp niêm yết
+  const MOVE_TITLE = {demand: 'Chỉ báo cập nhật hằng tháng: FDI chế biến chế tạo, vốn thực hiện, IIP (Cục ĐTNN, NSO) · FDI theo quốc gia (VDSC)', supply: 'Đất cao su chuyển sang KCN (VDSC 01/2026): trình bày theo mốc pháp lý và triển khai; chưa cộng vào cung sẵn sàng khi chưa có trạng thái dự án làm căn cứ',
+    rent: 'Giá chào thuê các KCN mở bán 2026 (VDSC 01/2026, nguồn khác C&W): USD/m² cho cả thời hạn thuê còn lại, giá chào chứ không phải giá giao dịch', landbank: 'Ký mới thực tế 2024 và dự phóng 2025–2026 của VDSC: thực hiện và kế hoạch/dự phóng ghi riêng, không ghép'};
 
   /* ---------- Xem trước ở Tổng quan và Bức tranh ngành (chạy cả khi chưa mở workspace) ---------- */
   function previewHtml() {
@@ -114,27 +114,35 @@
   const QUARTERS = D ? [...new Set(D.market.map(m => m.period).concat(D.cbre.map(c => c.period)))].sort((a, b) => K.qk(a) - K.qk(b)) : [];
   const PROVS = D ? [...new Set(D.province.map(p => p.province_vi).concat(D.pipeline.filter(p => p.province !== 'Regional').map(p => p.province_vi), D.landbank.map(l => PROV_NORM(l.province))))].sort((a, b) => a.localeCompare(b, 'vi')) : [];
   const COS = D ? [...new Set(D.company.map(c => c.ticker).concat(D.coverage.map(c => c.ticker)))] : [];
-  const st = {tab: 'demand', r: 'both', src: 'all', from: QUARTERS[0], to: QUARTERS[QUARTERS.length - 1], seg: 'land', prov: 'all', co: 'all', unit: 'usd', side: 'North', mOcc: K && K.TH.m_occ, mRent: K && K.TH.m_rent, ex: {set: 'facts', q: '', src: 'all', reg: 'all', cls: 'all'}};
+  const st = {tab: 'market', mkR: 'North', mkQ: null, stage: 'all', r: 'both', src: 'all', from: QUARTERS[0], to: QUARTERS[QUARTERS.length - 1], seg: 'land', prov: 'all', co: 'all', unit: 'usd', side: 'North', mOcc: K && K.TH.m_occ, mRent: K && K.TH.m_rent, ex: {set: 'facts', q: '', src: 'all', reg: 'all', cls: 'all'}};
   const pEnd = p => { const s = String(p || ''); let m; if ((m = /^(\d{4})Q([1-4])$/.exec(s))) return K.qk(s); if ((m = /^(\d{4})(FY|AGM)$/.exec(s))) return K.qk(m[1] + 'Q4'); if ((m = /^(\d{4})H1$/.exec(s))) return K.qk(m[1] + 'Q2'); if ((m = /^(\d{4})M(\d+)$/.exec(s))) return K.qk(m[1] + 'Q' + Math.ceil(+m[2] / 3)); if ((m = /^(\d{4})$/.exec(s))) return K.qk(m[1] + 'Q4'); return null; };
   // Quý: nằm trong khoảng. Kỳ lũy kế (năm, H1, 9T, 10T): giao với khoảng (kỳ bắt đầu từ Q1 cùng năm).
   const inRange = p => { const k = pEnd(p); if (k == null) return true; const q = /^\d{4}Q[1-4]$/.test(String(p)), a = q ? k : Math.floor(k / 4) * 4; return a <= K.qk(st.to) && k >= K.qk(st.from); };
   const regOn = r => st.r === 'both' || st.r === r || r === 'Vietnam';
   const srcOn = rep => st.src === 'all' || (st.src === 'cw' && rep === 'C&W') || (st.src === 'cbre' && rep === 'CBRE');
   const labelsInRange = () => QUARTERS.filter(q => inRange(q));
+  // Tham số tab con chỉ đọc khi đang mở #mt2 (tham số của tab lớn khác không đổi đích). #mt2 không có kcn= thì mở Toàn thị trường.
   function readUrl() {
-    const u = new URLSearchParams(location.search);
-    if (['demand', 'supply', 'rent', 'landbank'].includes(u.get('kcn'))) st.tab = u.get('kcn');
+    const u = new URLSearchParams(location.search), mine = location.hash === '#mt2', k = mine ? u.get('kcn') : null;
+    st.tab = ['market', 'demand', 'supply', 'rent', 'landbank'].includes(k) ? k : 'market';
+    if (mine && ['North', 'South'].includes(u.get('mr'))) st.mkR = u.get('mr');
+    if (mine && QUARTERS.includes(u.get('mq'))) st.mkQ = u.get('mq');
+    if (mine && ['decision', 'infra', 'launch'].includes(u.get('stage'))) st.stage = u.get('stage');
     [['r', ['both', 'North', 'South']], ['src', ['all', 'cw', 'cbre']], ['seg', ['land', 'RBF', 'RBW']]].forEach(([k, ok]) => { if (ok.includes(u.get(k))) st[k] = u.get(k); });
     if (QUARTERS.includes(u.get('from'))) st.from = u.get('from');
     if (QUARTERS.includes(u.get('to'))) st.to = u.get('to');
     if (PROVS.includes(u.get('prov'))) st.prov = u.get('prov');
     if (COS.includes(u.get('co'))) st.co = u.get('co');
   }
-  function writeUrl() {
+  function writeUrl(push) {
     const u = new URLSearchParams(location.search);
+    ['ov', 'fin'].forEach(k => u.delete(k)); // tham số của tab lớn khác
     u.set('kcn', st.tab);
-    [['r', 'both'], ['src', 'all'], ['seg', 'land'], ['prov', 'all'], ['co', 'all'], ['from', QUARTERS[0]], ['to', QUARTERS[QUARTERS.length - 1]]].forEach(([k, def]) => { if (st[k] && st[k] !== def) u.set(k, st[k]); else u.delete(k); });
-    history.replaceState(null, '', '?' + u.toString() + '#mt2');
+    [['r', 'both'], ['src', 'all'], ['seg', 'land'], ['prov', 'all'], ['co', 'all'], ['stage', 'all'], ['from', QUARTERS[0]], ['to', QUARTERS[QUARTERS.length - 1]]].forEach(([k, def]) => { if (st[k] && st[k] !== def) u.set(k, st[k]); else u.delete(k); });
+    if (st.tab === 'market') { if (st.mkR !== 'North') u.set('mr', st.mkR); else u.delete('mr'); if (st.mkQ && st.mkQ !== QUARTERS.filter(q => D.market.some(m => m.period === q)).pop()) u.set('mq', st.mkQ); else u.delete('mq'); } else { u.delete('mr'); u.delete('mq'); }
+    const url = '?' + u.toString() + '#mt2';
+    if (url === location.search + location.hash) return;
+    if (push) history.pushState({kcn: st.tab}, '', url); else history.replaceState(history.state, '', url);
   }
 
   /* ---------- Chart.js ---------- */
@@ -272,7 +280,7 @@
       (o.controls ? `<div class="kc-ctl" role="group">${o.controls}</div>` : '') +
       (o.body ? `<div class="kc-body">${o.body}</div>` : `<div class="kc-plot" style="height:${o.height || 280}px"></div>`) + (o.legend ? `<div class="kc-legend">${o.legend}</div>` : '') +
       (o.take ? `<div class="kc-take">${o.take}</div>` : '') + '<div class="kc-tblbox" hidden></div>';
-    const qb = c.querySelector('[data-kc-pop="qa"]'); if (qb) qb.onclick = () => pop(qb, `<h4>Cảnh báo dữ liệu</h4><ul>${qa.map(k => `<li><b>${esc(ISSUE_TITLE[k] || k)}</b>: ${esc(issueText(k))}</li>`).join('')}</ul><button type="button" class="kc-link" data-kcn-go="data" data-kc-qa="${esc(qa.join(','))}">Xem chi tiết ở Dữ liệu & phương pháp →</button>`);
+    const qb = c.querySelector('[data-kc-pop="qa"]'); if (qb) qb.onclick = () => pop(qb, `<h4>Cảnh báo dữ liệu</h4><ul>${qa.map(k => `<li><b>${esc(ISSUE_TITLE[k] || k)}</b>: ${esc(issueText(k))}</li>`).join('')}</ul>`);
     const sb = c.querySelector('[data-kc-pop="src"]'); if (sb) sb.onclick = () => pop(sb, `<h4>Nguồn</h4><ul>${[...new Set(o.srcs)].map(id => `<li>${srcA(id)} · ${esc((D.sources[id] || {}).what || '')}${(D.sources[id] || {}).checked ? ` <span class="kc-na">· kiểm ${esc(D.sources[id].checked.split('-').reverse().join('/'))}</span>` : ''}</li>`).join('')}</ul>${o.method ? `<p>${o.method}</p>` : ''}`);
     const tb = c.querySelector('[data-kc-tbl]'); if (tb) tb.onclick = () => { const box = c.querySelector('.kc-tblbox'), on = tb.getAttribute('aria-pressed') !== 'true'; tb.setAttribute('aria-pressed', String(on)); box.hidden = !on; if (on) box.innerHTML = tableHtml(o.table()); };
     const cb = c.querySelector('[data-kc-csv]'); if (cb) cb.onclick = () => download(`kcn-${o.id}.csv`, csvOf(o.table()));
@@ -367,6 +375,92 @@
     box.append(el('div', 'kc-insgrid', pick.map(insightCard).join('')));
   }
 
+  /* ===================== 0. Toàn thị trường (26/11/2026) =====================
+     Điểm vào mặc định của Bức tranh ngành, tương đương "Toàn hệ thống" của trang Điện: ba khối cạnh nhau cho một vùng và một kỳ:
+     cầu thuê thực tế · cung có thể chào thuê · giá chào thuê. Mỗi khối ghi nguồn, kỳ, phạm vi; câu chốt theo vùng chỉ dựa trên
+     hai quý cùng phạm vi C&W. Chi tiết ở bốn tab con sau, không lặp lại chart. */
+  function lastCum(r) { // số lũy kế CBRE mới nhất của vùng, kèm so cùng kỳ nguồn công bố và cờ chưa hòa giải
+    const ys = [...new Set((D.cbre || []).filter(c => c.region === r).map(c => +c.period.slice(0, 4)))].sort();
+    for (let i = ys.length - 1; i >= 0; i--) { const c = K.cbreCum(D, r, ys[i]); const k = ['Năm', '9T', 'H1', 'Q1'].find(x => c[x]); if (k) { const y = K.cumYoY(D).find(x => x.region === r && x.year === ys[i] && x.label === k); return {year: ys[i], k, v: c[k], y}; } }
+    return null;
+  }
+  function renderMarket(box) {
+    const qs = QUARTERS.filter(q => D.market.some(m => m.period === q));
+    if (!qs.includes(st.mkQ)) st.mkQ = qs[qs.length - 1];
+    const r = st.mkR === 'South' ? 'South' : 'North', q = st.mkQ, rows = K.marketRows(D, r).filter(m => K.qk(m.period) <= K.qk(q));
+    const row = rows.find(m => m.period === q), yq = K.kOf(K.qk(q) - 4), pq = K.kOf(K.qk(q) - 1);
+    const scope = m => m ? (m.cohort === 'PRE' ? 'phạm vi C&W trước sáp nhập tỉnh' : 'phạm vi C&W sau sáp nhập tỉnh') : '';
+    box.append(el('div', 'kc-mk-ctl', `<div role="group" aria-label="Vùng">${['North', 'South'].map(x => `<button type="button" data-kc-mkr="${x}" aria-pressed="${r === x}">Miền ${REG[x]}</button>`).join('')}</div>` +
+      `<label>Kỳ <select data-kc-mkq aria-label="Kỳ">${qs.slice().reverse().map(x => `<option value="${x}" ${x === q ? 'selected' : ''}>${QL(x)}</option>`).join('')}</select></label>` +
+      `<span class="kc-na">Kỳ áp dụng cho chuỗi C&W theo quý; số lũy kế CBRE ghi kỳ riêng trên khối.</span>`));
+    box.append(section('M', 'Toàn thị trường', ''));
+    const ab = K.change(D, r, 'abs_ha', yq, q), oc = K.change(D, r, 'occ', yq, q), sk = K.change(D, r, 'stock_ha', yq, q), pr = K.change(D, r, 'ask_usd', yq, q);
+    const why = c => c && !c.ok ? `<span class="kc-na">so cùng kỳ: ${esc(c.reason)}</span>` : '';
+    const cum = lastCum(r), dl = K.stockDelta(D, r).find(x => x.period === q), pipe = K.pipelineRatios(D).find(p => p.region === r);
+    const ry = K.reportedOf(D, r, 'rent_yoy', 'C&W').find(x => x.period === q);
+    const L = rows.map(m => QL(m.period)), hl = rows.map(m => m.period === q);
+    const g = el('div', 'kc-grid kc-mk3');
+    // 1. Cầu thuê thực tế
+    g.append(card({id: 'kcn-mk-demand', title: 'Cầu thuê thực tế', sub: `ha hấp thụ thuần · C&W · miền ${REG[r]} · ${QL(q)} · ${scope(row)}`, srcs: rows.map(m => m.src).concat(cum ? [cum.v.src] : []), qa: ['ABSORPTION_GAPS', 'MIXED_CBRE_CW'], height: 170,
+      body: undefined,
+      take: `<div class="kc-mk-num"><b>${row && fin(row.abs_ha) ? nf(row.abs_ha) + ' ha' : 'Chưa công bố'}</b><span>hấp thụ ${QL(q)} (C&W)${ab.ok ? ` · ${pf(ab.rel, 0)} so ${QL(yq)}` : ''}</span>${row && fin(row.abs_ha) ? why(ab) : ''}</div>` +
+        (cum ? `<div class="kc-mk-num kc-mk-alt"><b>${cum.v.approx ? 'khoảng ' : ''}${nf(cum.v.value)} ha</b><span>CBRE, thị trường cấp 1 miền ${REG[r]}, lũy kế ${cum.k}/${cum.year}${cum.y && cum.y.reported != null && !cum.y.conflict ? ` · ${pf(cum.y.reported, 0)} so cùng kỳ (CBRE công bố)` : cum.y && !cum.y.conflict ? ` · ${pf(cum.y.yoy, 0)} so cùng kỳ` : ''}</span>${cum.y && cum.y.conflict ? `<span class="kc-na">So cùng kỳ chưa hòa giải: CBRE công bố ${pf(cum.y.reported, 0)}, nền ${cum.y.year - 1} CBRE đã công bố cho ra ${pf(cum.y.yoy, 0)}. Xem Nhu cầu.</span>` : ''}</div>` : ''),
+      draw: h => draw(h, hilite(combo({labels: L, sets: [{label: 'Hấp thụ C&W', type: 'bar', color: r === 'North' ? C.blue : C.tealD, missing: true, data: rows.map(m => fin(m.abs_ha) ? m.abs_ha : null), meta: rows.map(m => ({period: m.period, cls: 'ACTUAL', src: m.src, extra: [scope(m)]}))}], y: {unit: 'ha', title: 'ha'}, missing: true, markers: L.indexOf(QL(D.rebase)) > 0 ? [{label: QL(D.rebase), text: 'Đổi phạm vi'}] : []}), hl))}));
+    // 2. Cung có thể chào thuê
+    g.append(card({id: 'kcn-mk-supply', title: 'Cung có thể chào thuê', sub: `ha nguồn cung trong khảo sát · lấp đầy % · C&W · miền ${REG[r]} · ${QL(q)}`, srcs: rows.map(m => m.src).concat(pipe ? [pipe.src] : []), qa: ['STOCK_REVISIONS', 'GEOGRAPHY_REBASE'], height: 170,
+      take: `<div class="kc-mk-num"><b>${row && fin(row.occ) ? pf(row.occ, 1, false) : '—'}</b><span>lấp đầy ${QL(q)}${oc.ok ? ` · ${ppf(oc.abs)} so ${QL(yq)}` : ''}</span>${why(oc)}</div>` +
+        `<div class="kc-mk-num kc-mk-alt"><b>${row ? nf(row.stock_ha) + ' ha' : '—'}</b><span>nguồn cung${sk.ok ? ` · ${pf(sk.rel)} so ${QL(yq)}` : ''}${dl && fin(dl.value) ? ` · thêm ${nf(dl.value)} ha so ${QL(pq)}` : dl && dl.reason ? ` · so ${QL(pq)}: ${esc(dl.reason.toLowerCase())}` : ''} · đất trống ước tính ${row ? nf(row.vacant_proxy) : '—'} ha</span>${pipe ? `<span class="kc-na">Cung dự kiến ${esc((/(\d{4})-(\d{4})/.exec(D.pipeline.find(p => p.stage === 'REGIONAL_FORECAST' && p.region === r)?.project || '') || []).slice(1).join('–'))}: ${nf(pipe.pipeline)} ha (dự phóng C&W, chưa phải đất sẵn sàng)</span>` : ''}</div>`,
+      draw: h => draw(h, hilite(combo({labels: L, sets: [{label: 'Nguồn cung', type: 'bar', color: '#C9D3EE', data: rows.map(m => m.stock_ha), meta: rows.map(m => ({period: m.period, cls: 'ACTUAL', src: m.src, extra: [scope(m)]}))}, {label: 'Lấp đầy', type: 'line', axis: 'y2', color: C.plum, data: rows.map(m => fin(m.occ) ? m.occ * 100 : null), meta: rows.map(m => ({period: m.period, src: m.src}))}],
+        y: {unit: 'ha', title: 'ha'}, y2: {unit: '%', zero: false, min: 50, max: 90, fmt: v => nf(v, 1), title: '%'}, markers: L.indexOf(QL(D.rebase)) > 0 ? [{label: QL(D.rebase), text: 'Đổi phạm vi'}] : []}), hl))}));
+    // 3. Giá chào thuê
+    const usd = rows.filter(m => fin(m.ask_usd)), vnd = row && fin(row.ask_vnd) ? row : null, u = row && fin(row.ask_usd) ? row : null;
+    g.append(card({id: 'kcn-mk-rent', title: 'Giá chào thuê đất', sub: `USD/m²/kỳ thuê còn lại · giá chào, không phải giá giao dịch · C&W · miền ${REG[r]}`, srcs: rows.map(m => m.src).concat(ry ? [ry.src] : []), qa: ['RENT_CURRENCY_CHANGE', 'ASKING_VS_EXECUTION'], height: 170,
+      take: `<div class="kc-mk-num"><b>${u ? nf(u.ask_usd, 1) + ' USD' : vnd ? nf(vnd.ask_vnd / 1e6, 2) + ' triệu đ' : '—'}</b><span>/m²/kỳ thuê còn lại, ${QL(q)}${u && pr.ok ? ` · ${pf(pr.rel)} so ${QL(yq)}` : ''}${ry ? ` · ${pf(ry.value)} so cùng kỳ (C&W công bố, cùng phạm vi)` : ''}</span>${!u && vnd ? '<span class="kc-na">Từ kỳ này C&W báo giá VND; chuỗi USD dừng ở kỳ trước.</span>' : ''}${u && !pr.ok && !ry ? why(pr) : ''}</div>`,
+      draw: h => draw(h, hilite(combo({labels: L, sets: [{label: 'Giá chào thuê', type: 'line', color: r === 'North' ? C.blue : C.tealD, data: rows.map(m => fin(m.ask_usd) ? m.ask_usd : null), meta: rows.map(m => ({period: m.period, cls: 'ACTUAL', src: m.src, extra: [scope(m), 'USD/m²/kỳ thuê còn lại']}))}], y: {unit: 'USD/m²', zero: false, fmt: v => nf(v, 0)}, markers: L.indexOf(QL(D.rebase)) > 0 ? [{label: QL(D.rebase), text: 'Đổi phạm vi'}] : []}), hl))}));
+    box.append(g);
+    // Câu chốt: chỉ khi hai quý liền nhau cùng phạm vi có đủ hấp thụ và lấp đầy (K.regimes); nếu không, nói rõ vì sao chưa kết luận.
+    box.append(section('K', 'Kết luận theo vùng', 'Một câu có căn cứ: chỉ dùng hai kỳ cùng phạm vi C&W.'));
+    const rg = K.regimes(D, r).find(x => x.to === q);
+    const yoyLine = oc.ok && sk.ok ? `So ${QL(yq)} cùng phạm vi: lấp đầy ${ppf(oc.abs)}, nguồn cung ${pf(sk.rel)}${ab.ok ? `, hấp thụ quý ${pf(ab.rel, 0)}` : ''}${oc.abs < 0 && sk.rel > 0 ? ': cung mới đang vào nhanh hơn phần được hấp thụ.' : oc.abs > 0 && sk.rel > 0 ? ': cung mới đang được hấp thụ.' : '.'}` : '';
+    box.append(el('div', 'kc-mk-verdict', `<b>Miền ${REG[r]} ${QL(q)}:</b> ${rg ? `${esc(K.REGIME_TEXT[rg.key])} (hấp thụ ${nf(rg.absFrom)} → ${nf(rg.absTo)} ha, lấp đầy ${pf(rg.occFrom, 1, false)} → ${pf(rg.occTo, 1, false)} so ${QL(rg.from)}, C&W cùng phạm vi). ` : ''}${yoyLine || (rg ? '' : 'Chưa đủ hai kỳ cùng phạm vi C&W có cả hấp thụ và lấp đầy để kết luận cho kỳ này.')}` +
+      `<span class="kc-na">Căn cứ: Cushman & Wakefield ${esc(row ? row.src : '')}. Số CBRE là chuỗi riêng, không dùng để kết luận cùng câu này.</span>`));
+    box.append(el('div', 'kc-mk-go', `<span>Xem chi tiết:</span>${[['demand', 'Nhu cầu', 'hấp thụ theo nguồn, FDI, chỉ báo tháng'], ['supply', 'Nguồn cung', 'lấp đầy, cung mới theo tiến độ, đất cao su'], ['rent', 'Giá thuê', 'xu hướng vùng, tỉnh, dự án'], ['landbank', 'Quỹ đất', 'đất có thể giao của từng doanh nghiệp']].map(([k, t, s]) => `<button type="button" class="kc-link" data-kcn-go="${k}"><b>${t} →</b><small>${s}</small></button>`).join('')}`));
+  }
+  // Tô đậm cột/điểm của kỳ đang chọn (các kỳ khác nhạt đi).
+  function hilite(cfg, on) { if (!on.some(Boolean)) return cfg; cfg.data.datasets.forEach(ds => { if (ds.type === 'line') ds.pointRadius = on.map(x => (x ? 5 : 2)); else if (typeof ds.backgroundColor === 'string' && /^#[0-9a-f]{6}$/i.test(ds.backgroundColor)) { const c = ds.backgroundColor; ds.backgroundColor = on.map(x => (x ? c : c + '66')); } }); return cfg; }
+
+  /* ---------- Danh mục dự án dùng chung Nguồn cung, Quỹ đất, Triển vọng (26/11/2026) ----------
+     Gộp dự án từ C&W (D.pipeline) và BCTN doanh nghiệp (D.landbank) theo một khóa nhận diện; một dự án có trong cả hai nguồn chỉ
+     là một dòng. Nhóm trạng thái: đã có quyết định (chủ trương, phê duyệt) · đang làm hạ tầng · đã đưa ra thị trường chào thuê. */
+  const fold = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase();
+  const projKey = s => fold(s).replace(/^idico\s+/, '').replace(/\beco-ip\b|\bkcn\b|\bip\b/g, '').replace(/[–-]\s*gd\s*\d+|\bphase\s*\d+|\bgd\d+/g, '').replace(/\bextension\b/g, 'mo rong').replace(/[^a-z0-9]+/g, ' ').trim();
+  const PSTAGE = {decision: ['Đã có quyết định', 'Chấp thuận chủ trương hoặc được phê duyệt; chưa có hạ tầng', 'Quyết định cho thuê đất, phương án bồi thường, tỷ lệ giải phóng mặt bằng'],
+    infra: ['Đang làm hạ tầng', 'Đã động thổ hoặc đang đầu tư hạ tầng; chưa có số đất sạch', 'Tỷ lệ giải phóng mặt bằng, nghiệm thu hạ tầng, diện tích đất sạch'],
+    launch: ['Đã chào thuê', 'Đã đưa diện tích ra thị trường (C&W ghi nhận); chưa chắc đã bàn giao được', 'Diện tích ký mới, giá thuê thực hiện, tiến độ bàn giao']};
+  const stageOfLb = s => /chủ trương|phê duyệt|kế hoạch/i.test(s || '') ? 'decision' : /hạ tầng|động thổ|phát triển|triển khai/i.test(s || '') ? 'infra' : null;
+  const stageOfPl = p => p.stage === 'NEW_LAUNCH' ? 'launch' : p.stage === 'COMPANY_PIPELINE' ? (/Completed legal/i.test(p.caution || '') ? 'infra' : 'decision') : 'decision';
+  function projects() {
+    const out = new Map();
+    D.landbank.filter(x => x.stage === 'pipeline').forEach(x => {
+      const k = projKey(x.project); const s = stageOfLb(x.status) || 'decision';
+      out.set(k, {key: k, name: x.project, ticker: x.ticker, province: PROV_NORM(x.province), region: null, gross: x.gross_ha, commercial: x.commercial_ha, area: x.gross_ha, areaType: 'Tổng diện tích dự án (gross)', stage: s, status: x.status, timing: (/(\d{2}\/\d{2}\/\d{4})|từ (\d{4})/.exec(x.status || '') || []).filter(Boolean)[1] || null, note: x.def_note || '', qa: x.qa, src: [{label: 'BCTN 2025 ' + x.ticker, url: x.url, page: x.page}], ownership: x.ownership});
+    });
+    D.pipeline.filter(p => p.stage !== 'REGIONAL_FORECAST').forEach(p => {
+      const k = projKey(p.project), o = out.get(k), s = stageOfPl(p), src = {label: (D.sources[p.src] || {}).what ? `${p.src}` : p.src, id: p.src};
+      if (o) { o.region = p.region; o.src.push(src); o.alt = `${PL(p.period)}: ${p.caution || ''}`; if (!o.area && p.area_ha) { o.area = p.area_ha; o.areaType = 'Diện tích công bố (C&W)'; } return; }
+      out.set(k, {key: k, name: p.project, ticker: /^[A-Z]{3}$/.test(p.developer || '') ? p.developer : null, developer: p.developer, province: p.province_vi, region: p.region, area: p.area_ha, areaType: p.stage === 'COMBINED_PROJECTS' ? 'Diện tích gộp hai dự án (C&W)' : 'Diện tích công bố (C&W)', stage: s, status: STAGE[p.stage] || p.stage, timing: null, note: p.caution || '', qa: p.stage === 'COMBINED_PROJECTS' ? 'GROUPED_IP' : null, src: [src], period: p.period});
+    });
+    const N = ['Bắc Ninh', 'Hải Phòng', 'Ninh Bình', 'Phú Thọ', 'Thái Nguyên', 'Quảng Ninh', 'Hưng Yên', 'Hà Nội'];
+    return [...out.values()].map(x => ({...x, region: x.region || (N.some(n => (x.province || '').includes(n)) ? 'North' : 'South')}));
+  }
+  function projectTable(list, opt = {}) {
+    const src = x => x.src.map(s => s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener" title="${esc(s.page || '')}">${esc(s.label)} ↗</a>` : srcA(s.id, s.id)).join(' · ');
+    return `<div class="tablewrap kc-scroll" data-no-fold><table class="kc-t kc-wide-t" data-no-fold><thead><tr><th>Dự án</th><th>Mã / chủ đầu tư</th><th>Vùng · tỉnh</th><th>Diện tích</th><th>Loại diện tích</th><th>Trạng thái</th><th>Thời điểm dự kiến</th><th>Mốc kiểm tra tiếp</th><th>Nguồn</th></tr></thead><tbody>` +
+      (list.map(x => `<tr id="kc-p-${esc(x.key.replace(/\s+/g, '-'))}"><td><b>${esc(x.name)}</b>${x.qa === 'PHASE_ONLY' ? ' <span class="kc-chip kc-nt">một giai đoạn</span>' : x.qa === 'GROUPED_IP' ? ' <span class="kc-chip kc-est">gộp 2 dự án</span>' : ''}<br><span class="kc-na">khóa: ${esc(x.key)}</span></td><td>${x.ticker ? `<button type="button" class="pv-chip" data-code="${esc(x.ticker)}">${esc(x.ticker)}</button>` : esc(!x.developer || /not specified/i.test(x.developer) ? 'Chưa công bố' : x.developer)}</td><td>${REG[x.region]} · ${esc(x.province)}</td>` +
+        `<td class="kc-num">${nf(x.area, 0)} ha${fin(x.commercial) ? `<br><span class="kc-na">thương phẩm QH ${nf(x.commercial, 0)} ha</span>` : ''}</td><td>${esc(x.areaType)}</td><td><span class="kc-chip kc-st-${x.stage}">${PSTAGE[x.stage][0]}</span><br><span class="kc-na">${esc(x.status || '')}</span></td>` +
+        `<td>${x.timing ? esc(x.timing) : '<span class="kc-na">Chưa công bố · cần BCTN/ĐHCĐ chủ đầu tư</span>'}</td><td>${esc(PSTAGE[x.stage][2])}</td><td class="kc-na">${src(x)}${x.note ? `<br>${esc(x.note)}` : ''}</td></tr>`).join('') || `<tr><td colspan="9">${opt.empty || 'Không có dự án trong bộ lọc.'}</td></tr>`) + '</tbody></table></div>';
+  }
+
   /* ===================== 2. Nhu cầu & FDI ===================== */
   function renderDemand(box) {
     const fdiNew = D.fdi_snap.find(f => f.sector === 'FDI_MFG' && f.ctype === 'registered_new'), fdiAll = D.fdi_snap.find(f => f.sector === 'FDI_MFG' && f.ctype === 'registered_all' && f.period === '2026M9');
@@ -388,7 +482,7 @@
     const tone = (r, y) => y === 2026 ? RC['CBRE:' + r] : (r === 'North' ? '#D9B3C7' : '#EBD39A');
     g1.append(card({id: 'kcn-de-cum', title: 'Hấp thụ lũy kế CBRE: 2026 so cùng kỳ 2025', sub: 'ha · Q1, H1, 9 tháng · cùng phạm vi thị trường cấp 1 · cột nhạt là 2025', qa: ['MIXED_CBRE_CW'], srcs: [...new Set(cum.flatMap(x => Object.values(x.c).map(v => v.src)))],
       legend: cum.map(x => `<span><i style="background:${tone(x.r, x.y)}"></i>${REG[x.r]} ${x.y}</span>`).join('') + '<span><i class="kc-hatch"></i>Số "gần/khoảng" của nguồn</span>',
-      take: cy.length ? cy.filter(x => x.label !== 'Q1').map(x => `${REG[x.region]} ${x.label}: ${x.conflict ? `CBRE công bố ${pf(x.reported, 0)}, khác mức tự tính ${pf(x.yoy, 0)} (CBRE có thể đã sửa số 2025)` : pf(x.yoy, 0)}`).join(' · ') + ' so cùng kỳ. Số 2025 nhiều mốc là "gần/khoảng" theo CBRE.' : '',
+      take: cy.length ? cy.filter(x => x.label !== 'Q1').map(x => x.conflict ? `<b>${REG[x.region]} ${x.label}/${x.year}: chưa hòa giải.</b> CBRE công bố ${nf(x.cur.value)} ha, ${pf(x.reported, 0)} so cùng kỳ; nền ${x.label}/${x.year - 1} CBRE đã công bố là ${x.base.approx ? 'khoảng ' : ''}${nf(x.base.value)} ha, nếu tính trên nền này là ${pf(x.yoy, 0)}. CBRE dùng cùng phạm vi 5 tỉnh cấp 1 và chưa công bố số 2025 sửa lại (đã đối chiếu HCMC Figures Q3/2025, Q4/2025, Q3/2026); hai số giữ riêng, không đưa vào nhận định tóm tắt` : `${REG[x.region]} ${x.label}/${x.year}: ${pf(x.yoy, 0)} so cùng kỳ (tính trên số lũy kế CBRE)`).join(' · ') + '. Số 2025 nhiều mốc là "gần/khoảng" theo CBRE.' : '',
       table: () => ({head: ['Vùng', 'Năm', 'Kỳ', 'Hấp thụ lũy kế (ha)', 'Cách có số', 'Source_ID'], rows: cum.flatMap(x => KS.map(k => [REG[x.r], x.y, k, x.c[k] ? x.c[k].value : null, x.c[k] ? (x.c[k].derived ? 'Cộng các quý' : x.c[k].approx ? 'Công bố, xấp xỉ' : 'Công bố') : 'Chưa có', x.c[k] ? x.c[k].src : null]))}),
       draw: h => draw(h, combo({labels: KS, sets: cum.map(x => ({label: `${REG[x.r]} ${x.y}`, type: 'bar', color: tone(x.r, x.y), data: KS.map(k => (x.c[k] ? x.c[k].value : null)), est: KS.map(k => !!(x.c[k] && x.c[k].approx)),
         meta: KS.map(k => x.c[k] && {period: `${x.y}${k === 'Q1' ? 'Q1' : k === 'H1' ? 'H1' : 'M9'}`, cls: x.c[k].derived ? 'DERIVED' : 'REPORTED', src: x.c[k].src, extra: [x.c[k].derived ? 'Cộng từ các quý CBRE' : x.c[k].approx ? 'CBRE ghi "gần/khoảng"' : ''].filter(Boolean)})})),
@@ -500,23 +594,35 @@
       body: `<div class="tablewrap" data-no-fold><table class="kc-t" data-no-fold><thead><tr><th>Kỳ</th><th>Vùng</th><th>Nguồn</th><th>Chỉ tiêu</th><th>Mức thay đổi</th><th>Ghi chú</th></tr></thead><tbody>${RP.map(x => `<tr><td>${QL(x.period)}</td><td>${REG[x.region]}</td><td>${esc(x.reporter)}</td><td>${esc(MET[x.metric] || x.metric)}${x.unit ? ` (${esc(x.unit)})` : ''}</td><td class="kc-num">${x.metric === 'occ_yoy_pp' ? ppf(x.value) : x.metric === 'leased_area_change_ha' ? '+' + nf(x.value) + ' ha' : pf(x.value)}</td><td class="kc-na">${esc(x.note || (x.basis === 'like-for-like' ? 'C&W ghi rõ "like-for-like"' : ''))} ${srcA(x.src, '↗')}</td></tr>`).join('')}</tbody></table></div>`,
       take: 'Đây là mức thay đổi nguồn tự tính trên cùng phạm vi; mức tuyệt đối trước và sau Q3/2025 vẫn không đặt cạnh nhau.'}));
 
-    box.append(section('B', 'Nguồn cung tương lai', 'Diện tích quy hoạch hay mở bán không đồng nghĩa đất sạch sẵn sàng bàn giao. Không cộng dự án với số dự phóng toàn vùng.'));
+    box.append(section('B', 'Nguồn cung tương lai', 'Nguồn cung trả lời thị trường nhận thêm bao nhiêu và khi nào; Quỹ đất trả lời doanh nghiệp nào có quyền lợi và còn bao nhiêu đất có thể giao. Diện tích quy hoạch hay mở bán không đồng nghĩa đất sạch sẵn sàng bàn giao; không cộng dự án với số dự phóng toàn vùng.'));
+    box.append(ladderCard());
     const g2 = el('div', 'kc-grid');
-    const pr = K.pipelineRatios(D), pa = D.pipe_area;
-    g2.append(card({id: 'kcn-su-pipe', title: 'Cung dự kiến 2026–2028 theo vùng và tỉnh miền Nam', sub: `ha · dự phóng C&W ${QL('2026Q3')} · tỉnh = tỷ trọng × tổng vùng (phái sinh)`, qa: ['PROJECT_VS_REGIONAL_PIPELINE'], srcs: pr.map(p => p.src), kind: 'document',
+    const pr = K.pipelineRatios(D), pa = D.pipe_area, yrs = p => ((/(\d{4})-(\d{4})/.exec(p.project || p.label || '') || []).slice(1).join('–')) || '2026–2028';
+    g2.append(card({id: 'kcn-su-pipe', title: `Cung dự kiến ${yrs(D.pipeline.find(p => p.stage === 'REGIONAL_FORECAST') || {})} theo vùng và tỉnh miền Nam`, sub: `ha · dự phóng C&W ${QL((pr[0] && D.market.filter(m => m.src === pr[0].src)[0] || {}).period || '2026Q3')} · tỉnh = tỷ trọng × tổng vùng (phái sinh)`, qa: ['PROJECT_VS_REGIONAL_PIPELINE'], srcs: pr.map(p => p.src), kind: 'document', wide: true,
       legend: `<span><i class="kc-hatch"></i>Dự phóng</span>`,
       take: pr.length ? pr.map(p => `Miền ${REG[p.region]}: bằng ${pf(p.ratio, 0, false)} nguồn cung hiện hữu, ${pf(p.pipeline / p.vacant, 0, false)} đất trống ước tính`).join(' · ') + '.' : '',
-      table: () => ({head: ['Phạm vi', 'Kỳ dự phóng', 'Diện tích (ha)', 'Tỷ trọng', 'Loại số', 'Source_ID'], rows: pr.map(p => [`Miền ${REG[p.region]}`, '2026–2028', p.pipeline, '', 'FORECAST', p.src]).concat(pa.map(a => [a.province_vi, a.period, Math.round(a.implied_ha), pf(a.share, 0, false), a.cls, a.src]))}),
+      table: () => ({head: ['Phạm vi', 'Kỳ dự phóng', 'Diện tích (ha)', 'Tỷ trọng', 'Loại số', 'Source_ID'], rows: pr.map(p => [`Miền ${REG[p.region]}`, yrs(D.pipeline.find(x => x.stage === 'REGIONAL_FORECAST' && x.region === p.region) || {}), p.pipeline, '', 'FORECAST', p.src]).concat(pa.map(a => [a.province_vi, a.period, Math.round(a.implied_ha), pf(a.share, 0, false), a.cls, a.src]))}),
       draw: h => { const L = pr.map(p => 'Miền ' + REG[p.region]).concat(pa.map(a => a.province_vi)), v = pr.map(p => p.pipeline).concat(pa.map(a => a.implied_ha)); draw(h, combo({labels: L, horizontal: true, sets: [{label: 'Cung dự kiến', type: 'bar', color: C.navy, data: v, est: v.map(() => true), meta: pr.map(p => ({period: '2026Q3', cls: 'FORECAST', src: p.src})).concat(pa.map(a => ({cls: 'FORECAST_DERIVED', src: a.src, extra: [`${pf(a.share, 0, false)} × ${nf(a.regional_ha)} ha`]})))}], y: {unit: 'ha'}, labelsCfg: {show: true, fmt: v => nf(v)}})); }}));
-    const proj = D.pipeline.filter(p => p.stage !== 'REGIONAL_FORECAST' && (st.prov === 'all' || p.province_vi === st.prov) && regOn(p.region));
-    g2.append(card({id: 'kcn-su-proj', title: 'Dự án KCN mới theo kỳ công bố', sub: 'ha · màu theo giai đoạn nguồn ghi nhận · không cộng thành tổng cung', qa: ['PROJECT_VS_REGIONAL_PIPELINE'], srcs: proj.map(p => p.src), height: Math.max(260, proj.length * 26 + 60),
-      legend: Object.entries(STAGE_C).map(([k, c]) => `<span><i style="background:${c}"></i>${STAGE[k]}</span>`).join(''),
-      table: () => ({head: ['Kỳ công bố', 'Vùng', 'Tỉnh', 'Dự án', 'Diện tích (ha)', 'Giai đoạn', 'Chủ đầu tư', 'Lưu ý', 'Source_ID'], rows: proj.map(p => [PL(p.period), REG[p.region], p.province_vi, p.project, p.area_ha, STAGE[p.stage] || p.stage, p.developer, p.caution, p.src])}),
-      draw: h => { draw(h, combo({labels: proj.map(p => `${p.project} · ${p.province_vi}`), horizontal: true, sets: [{label: 'Diện tích', type: 'bar', color: C.blue, data: proj.map(p => p.area_ha), meta: proj.map(p => ({period: p.period, src: p.src, extra: [STAGE[p.stage] || p.stage, p.developer ? 'Chủ đầu tư: ' + p.developer : '', p.caution].filter(Boolean)}))}], y: {unit: 'ha'}, labelsCfg: {show: true, fmt: v => nf(v)}})); recolor(h, proj.map(p => STAGE_C[p.stage] || C.grey)); }}));
     box.append(g2);
-    const lbp = D.landbank.filter(x => x.stage === 'pipeline' && (st.prov === 'all' || PROV_NORM(x.province) === st.prov));
-    box.append(card({id: 'kcn-su-copipe', title: 'Dự án đang đầu tư của doanh nghiệp niêm yết', sub: 'trạng thái theo BCTN 2025 của chủ đầu tư · thương phẩm quy hoạch ≠ đất sạch', wide: true, kind: 'document', cadence: 'annual', srcs: [],
-      body: `<div class="tablewrap" data-no-fold><table class="kc-t" data-no-fold><thead><tr><th>Mã</th><th>Dự án</th><th>Tỉnh (sau sáp nhập)</th><th>Gross (ha)</th><th>Thương phẩm quy hoạch (ha)</th><th>Trạng thái</th><th>Lưu ý</th><th>Nguồn</th></tr></thead><tbody>${lbp.map(x => `<tr><td><b>${esc(x.ticker)}</b></td><td>${esc(x.project)}</td><td>${esc(x.province)}</td><td class="kc-num">${nf(x.gross_ha, 2)}</td><td class="kc-num">${nf(x.commercial_ha, 2)}</td><td>${esc(x.status)}</td><td>${esc(x.def_note || (x.qa === 'PHASE_ONLY' ? 'Chỉ một giai đoạn' : ''))}</td><td>${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">BCTN ↗</a> <span class="kc-na">${esc(x.page || '')}</span>` : ''}</td></tr>`).join('') || '<tr><td colspan="8">Không có dự án trong bộ lọc.</td></tr>'}</tbody></table></div><p class="kc-na">Bốn dự án IDC (Tân Phước 1, Mỹ Xuân B1 mở rộng, Vinh Quang GĐ1, Phú Long) cũng có trong danh sách dự án mới ở trên: cùng diện tích, không cộng hai lần.</p>`}));
+    const P = projects().filter(x => regOn(x.region) && (st.prov === 'all' || x.province === st.prov) && (st.stage === 'all' || x.stage === st.stage));
+    const sum = Object.keys(PSTAGE).map(k => { const a = P.filter(x => x.stage === k); return `<div class="kc-stg kc-st-${k}"><b>${PSTAGE[k][0]}</b><span>${a.length} dự án · ${nf(a.filter(x => x.qa !== 'GROUPED_IP').reduce((t, x) => t + (x.area || 0), 0))} ha${a.some(x => x.qa === 'GROUPED_IP') ? ' + 1 dòng gộp 2 dự án (không cộng)' : ''}</span><small>${PSTAGE[k][1]}</small></div>`; }).join('');
+    box.append(card({id: 'kcn-su-projects', title: 'Dự án KCN mới theo tiến độ', sub: 'gộp C&W và BCTN 2025 của chủ đầu tư theo khóa dự án (dùng chung với Quỹ đất) · diện tích là quy mô dự án, không phải đất sẵn sàng · không cộng thành tổng cung', wide: true, kind: 'document', srcs: P.flatMap(x => x.src.map(z => z.id).filter(Boolean)), qa: ['PROJECT_VS_REGIONAL_PIPELINE'],
+      body: `<div class="kc-stgs">${sum}</div>${projectTable(P)}<p class="kc-na">Bốn dự án IDC (Tân Phước 1, Mỹ Xuân B1 mở rộng, Vinh Quang, Phú Long) có trong cả danh sách C&W và BCTN: một dòng, ghi cả hai nguồn. Ô "Thời điểm dự kiến" trống nghĩa là nguồn chưa công bố; tài liệu có thể xác nhận: BCTN, nghị quyết ĐHCĐ hoặc quyết định cho thuê đất của tỉnh.</p>`,
+      table: () => ({head: ['Khóa', 'Dự án', 'Mã', 'Vùng', 'Tỉnh', 'Diện tích (ha)', 'Loại diện tích', 'Thương phẩm QH (ha)', 'Nhóm trạng thái', 'Trạng thái nguồn', 'Thời điểm dự kiến'], rows: P.map(x => [x.key, x.name, x.ticker || x.developer, REG[x.region], x.province, x.area, x.areaType, x.commercial, PSTAGE[x.stage][0], x.status, x.timing])})}));
+  }
+  // Bậc diện tích: quy hoạch → thương phẩm → chưa lấp đầy ước tính → đã giải phóng mặt bằng → sẵn sàng bàn giao.
+  // Cộng các dự án của doanh nghiệp niêm yết có số (BCTN 2025), bỏ phần thuê lại chồng lấn (D2D trong KCN Châu Đức của SZC).
+  function ladderCard() {
+    const L = D.landbank.filter(x => x.qa !== 'OVERLAPS_SZC' && coOn(x.ticker) && provOn(x.province)), n = L.length;
+    const sumOf = k => { const a = L.filter(x => fin(x[k])); return {v: a.reduce((t, x) => t + x[k], 0), n: a.length}; };
+    const steps = [['Quy hoạch (gross)', sumOf('gross_ha'), 'Tổng diện tích dự án theo quyết định; gồm đường, cây xanh, hạ tầng'],
+      ['Đất thương phẩm', sumOf('commercial_ha'), 'Phần được cho thuê theo quy hoạch chi tiết'],
+      ['Chưa lấp đầy (ước tính)', sumOf('unleased_est_ha'), 'Thương phẩm − đã thuê, hoặc thương phẩm × (1 − lấp đầy); dự án đang khai thác'],
+      ['Đã giải phóng mặt bằng', {v: null, n: 0}, 'Bộ dữ liệu chưa có; xác nhận bằng BCTN/BCTC ghi tỷ lệ bồi thường từng dự án'],
+      ['Sẵn sàng chào thuê, bàn giao', sumOf('ready_ha'), 'Doanh nghiệp chưa công bố số kèm ngày đo; không suy từ quỹ đất']];
+    const max = Math.max(...steps.map(x => x[1].v || 0), 1);
+    return card({id: 'kcn-su-ladder', title: 'Từ diện tích quy hoạch đến đất sẵn sàng bàn giao', sub: `ha · ${n} dòng dự án của doanh nghiệp niêm yết, BCTN 2025 · mỗi bậc chỉ cộng dự án có số, ghi độ phủ`, wide: true, kind: 'derived', cadence: 'annual', srcs: [], qa: ['FULL_LANDBANK_VS_READY'],
+      body: `<div class="kc-ladder">${steps.map(([t, x, d]) => `<div class="kc-lad-r"><span class="kc-lad-l">${esc(t)}</span><div class="kc-lad-t">${x.v != null && x.n ? `<i style="width:${(x.v / max * 100).toFixed(1)}%"></i>` : ''}</div><span class="kc-lad-v">${x.v != null && x.n ? `${nf(x.v)} ha <small>${x.n}/${n} dự án có số</small>` : '<small>Chưa có số</small>'}</span><small class="kc-lad-d">${esc(d)}</small></div>`).join('')}</div>`});
   }
   // Màu từng cột theo giai đoạn (một dataset).
   function recolor(h, cols) { if (h._kcCfg) h._kcCfg.data.datasets[0].backgroundColor = cols; const ch = h._kcChart; if (ch) { ch.data.datasets[0].backgroundColor = cols; ch.update('none'); } }
@@ -533,7 +639,7 @@
       ...rs.map(r => { const v = lastVnd(r), ry = v && K.reportedOf(D, r, 'rent_yoy', 'C&W').find(x => x.period === v.period); return v && {label: `Giá chào thuê miền ${REG[r]} ${QL(v.period)}`, value: `${nf(v.ask_vnd / 1e6, 2)} triệu đ/m²/kỳ`, delta: ry ? `${pf(ry.value)} so cùng kỳ (C&W công bố)` : '', dcls: ry && ry.value < 0 ? 'dn' : 'up', sub: `báo giá VND, không nối với chuỗi USD · ${srcA(v.src)}${ry ? ' · ' + srcA(ry.src) : ''}`}; }),
       ...q3.filter(p => st.prov === 'all' || p.province_vi === st.prov).map(p => ({label: `${p.province_vi} · giá so cùng kỳ ${QL(p.period)}`, value: pf(p.rent_yoy), dcls: p.rent_yoy < 0 ? 'dn' : 'up', delta: `lấp đầy ${pf(p.occ, 1, false)}`, sub: `C&W công bố ${srcA(p.src)}`}))
     ])));
-    box.append(section('A', 'Xu hướng giá chào thuê', 'Giá đất KCN là giá cho thời hạn thuê còn lại (thường đến hết đời dự án), không phải tiền thuê mỗi tháng. Nhà xưởng, nhà kho mới tính theo tháng.'));
+    box.append(section('A', 'Xu hướng giá chào thuê theo vùng', 'Đơn vị: đất KCN là USD (hoặc đồng)/m² cho cả thời hạn thuê còn lại, thường đến hết thời hạn dự án, không phải tiền thuê mỗi tháng; nhà xưởng, nhà kho xây sẵn là USD/m²/tháng. Đây là giá chào của C&W, không phải giá giao dịch; giá giao dịch chưa có nguồn công khai. Giá bình quân vùng có thể đổi do cơ cấu dự án trong mẫu (C&W đổi phạm vi từ Q3/2025, thêm tỉnh có giá thấp hơn), không hẳn do giá từng KCN đổi.'));
     const g = el('div', 'kc-grid');
     const unitCtl = ['usd', 'vnd'].map(u => `<button type="button" data-kc-unit="${u}" aria-pressed="${st.unit === u}">${u.toUpperCase()}</button>`).join('');
     if (st.seg === 'land') {
@@ -563,6 +669,14 @@
         table: () => ({head: ['Kỳ', 'Vùng', 'USD/m²/tháng', 'VND/m²/tháng', 'Source_ID'], rows: rows.map(x => [QL(x.period), REG[x.region], x.ask_usd, x.ask_vnd, x.src])}),
         draw: h => draw(h, combo({labels: L.map(QL), sets, y: {unit: 'USD/m²/tháng', zero: false, fmt: v => nf(v, 2)}, markers: L.indexOf('2025Q3') > 0 ? [{label: 'Q3/2025', text: 'Đổi phạm vi'}] : []}))}));
     }
+    // Giá đặt cạnh lấp đầy, hấp thụ và cung mới cùng vùng, cùng phạm vi: để kiểm "có sức mạnh tăng giá" hay "nguy cơ dư cung".
+    if (st.seg === 'land') {
+      const fr = rs.flatMap(r => K.marketRows(D, r).filter(m => inRange(m.period)).map(m => { const dd = K.stockDelta(D, r).find(x => x.period === m.period), rg = K.regimes(D, r).find(x => x.to === m.period), ry = K.reportedOf(D, r, 'rent_yoy', 'C&W').find(x => x.period === m.period);
+        return `<tr><td>${REG[r]}</td><td>${QL(m.period)}</td><td>${m.cohort === 'PRE' ? 'Trước sáp nhập' : 'Sau sáp nhập'}</td><td class="kc-num">${fin(m.ask_usd) ? nf(m.ask_usd, 1) + ' USD' : fin(m.ask_vnd) ? nf(m.ask_vnd / 1e6, 2) + ' tr.đ' : '—'}${ry ? `<br><span class="kc-na">${pf(ry.value)} so cùng kỳ</span>` : ''}</td><td class="kc-num">${fin(m.occ) ? pf(m.occ, 1, false) : '—'}</td><td class="kc-num">${fin(m.abs_ha) ? nf(m.abs_ha) : '—'}</td><td class="kc-num">${dd && fin(dd.value) ? (dd.value > 0 ? '+' : '') + nf(dd.value) : `<span class="kc-na">${esc(dd ? dd.reason : '—')}</span>`}</td><td>${rg ? `<span class="kc-chip kc-${({demand_exceeds: 'up', supply_faster: 'warn', weak_demand: 'dn'})[rg.key] || 'nt'}">${esc(K.REGIME_TEXT[rg.key])}</span>` : '<span class="kc-na">Thiếu hai quý cùng phạm vi</span>'}</td></tr>`; })).join('');
+      g.append(card({id: 'kcn-re-fund', title: 'Giá chào thuê đặt cạnh lấp đầy, hấp thụ và cung mới', sub: 'C&W · cùng vùng, cùng phạm vi · USD hoặc triệu đ/m²/kỳ thuê còn lại · ha', wide: true, kind: 'derived', srcs: D.market.map(m => m.src), qa: ['GEOGRAPHY_REBASE', 'STOCK_REVISIONS', 'RENT_CURRENCY_CHANGE'],
+        body: `<div class="tablewrap" data-no-fold><table class="kc-t" data-no-fold><thead><tr><th>Vùng</th><th>Kỳ</th><th>Phạm vi</th><th>Giá chào thuê</th><th>Lấp đầy</th><th>Hấp thụ (ha)</th><th>Cung tăng so quý trước (ha)</th><th>Trạng thái (hai quý liền, cùng phạm vi)</th></tr></thead><tbody>${fr}</tbody></table></div>`,
+        take: 'Giá tăng chỉ được coi là có sức mạnh khi lấp đầy giữ hoặc tăng và hấp thụ đủ bù cung mới; giá tăng trong khi lấp đầy giảm vì cung mới là tín hiệu cần kiểm thêm ở cấp tỉnh (mục bên dưới).'}));
+    }
     const sp = D.province.filter(p => p.region === 'South' && fin(p.occ) && inRange(p.period)), SL = [...new Set(sp.map(p => p.period))].sort((a, b) => K.qk(a) - K.qk(b)), pc = {'TP.HCM': C.navy, 'Đồng Nai': C.teal, 'Tây Ninh': C.plum};
     if (regOn('South') && st.seg === 'land') g.append(card({id: 'kcn-re-provocc', title: 'Lấp đầy theo tỉnh — miền Nam', sub: '% · C&W · địa giới sau sáp nhập', qa: ['PROVINCE_OCCUPANCY_REVISION'], srcs: sp.map(p => p.src),
       legend: Object.entries(pc).map(([k, c]) => `<span><i style="background:${c}"></i>${k}</span>`).join(''),
@@ -576,8 +690,11 @@
     box.append(matrixCard());
     box.append(section('D', 'So sánh hai địa phương', 'Không kết luận tỉnh nào tốt hơn khi hai bên khác kỳ hoặc khác bản khảo sát.'));
     box.append(compareCard());
-    const fired = K.rules(D, thNow()).fired.filter(f => f.tab === 'rent' || (f.id === 'R5' && f.scope !== 'Miền Bắc' && f.scope !== 'Miền Nam'));
-    if (fired.length) { box.append(section('E', 'Hàm ý đầu tư theo địa phương', '')); box.append(el('div', 'kc-insgrid', fired.map(insightCard).join(''))); }
+    // Một tỉnh một nhận định: gộp các quy tắc cùng tỉnh (vd. Tây Ninh: giá giảm và nhận phần lớn cung mới) thay vì hai thẻ lặp.
+    const fired0 = K.rules(D, thNow()).fired.filter(f => f.tab === 'rent' || (f.id === 'R5' && f.scope !== 'Miền Bắc' && f.scope !== 'Miền Nam'));
+    const byScope = new Map(); fired0.forEach(f => { const o = byScope.get(f.scope); if (!o) byScope.set(f.scope, {...f, evidence: [...f.evidence], sources: [...f.sources]}); else { o.id += ' · ' + f.id; o.headline += '; ' + f.headline.replace(/^[^:]+:\s*/, ''); f.evidence.forEach(e => o.evidence.includes(e) || o.evidence.push(e)); o.interp += ' ' + f.interp; o.implication += ' ' + f.implication; o.sources = [...new Set(o.sources.concat(f.sources))]; } });
+    const fired = [...byScope.values()].map(f => ({...f, evidence: f.evidence.concat([`Căn cứ: C&W ${QL((D.province.filter(p => p.province_vi === f.scope && fin(p.rent_yoy)).pop() || {}).period || '')}, địa giới tỉnh sau sáp nhập (TP.HCM gồm Bình Dương, Bà Rịa – Vũng Tàu cũ; Tây Ninh gồm Long An cũ); giá chào so cùng kỳ do C&W tự tính trên cùng mẫu dự án`])}));
+    if (fired.length) { box.append(section('E', 'Hàm ý đầu tư theo địa phương', 'Mỗi tỉnh một nhận định, gộp các quy tắc cùng tỉnh. Giá chào, không phải giá giao dịch.')); box.append(el('div', 'kc-insgrid', fired.map(insightCard).join(''))); }
   }
   function provRows() {
     const names = [...new Set(D.province.map(p => p.province_vi))];
@@ -657,9 +774,9 @@
       lease.length && {label: `IDC ký mới đất KCN ${lease[lease.length - 1].year}`, value: `${nf(lease[lease.length - 1].value_ha)} ha`, delta: mom.ok ? `${pf(mom.changes[mom.changes.length - 1].value)} so ${lease[lease.length - 2].year}` : '', dcls: 'dn', sub: `${chip('ACTUAL')} BCTN 2025 hợp nhất`},
       plan && {label: 'IDC kế hoạch ký mới 2026', value: `${nf(plan.value)} ha`, sub: `${chip('PLAN')} không phải số thực hiện`},
       bcm.length && {label: `BCM · ${bcm.length} KCN đang cho thuê`, value: `${nf(bcm.reduce((s, x) => s + x.unleased_est_ha, 0), 1)} ha`, sub: `chưa lấp đầy ước tính trên ${nf(bcm.reduce((s, x) => s + x.commercial_ha, 0))} ha thương phẩm ${chip('ESTIMATE')}`},
-      {label: 'Đất sạch sẵn sàng bàn giao', value: 'Chưa công bố', sub: 'BCTN 2025 không ghi số kèm ngày đo; không suy từ quỹ đất'}
+      {label: 'Đất sạch sẵn sàng bàn giao', value: 'Chưa công bố', sub: 'BCTN 2025 không ghi số kèm ngày đo; không suy từ quỹ đất. Tài liệu xác nhận: BCTN/ĐHCĐ ghi diện tích đất sạch và ngày đo'}
     ])));
-    box.append(section('A', 'Quy mô quỹ đất theo đúng loại diện tích', 'Mỗi doanh nghiệp công bố một loại diện tích khác nhau: không xếp hạng chung, không cộng ngang.'));
+    box.append(section('A', 'Quỹ đất có thể giao', 'Tách diện tích toàn dự án (gross), thương phẩm và phần chưa lấp đầy ước tính; quyền lợi kinh tế của doanh nghiệp ghi riêng khi dự án qua công ty con, liên doanh. Mỗi doanh nghiệp công bố một loại diện tích khác nhau: không xếp hạng chung, không cộng ngang.'));
     const rows = D.company.filter(c => coOn(c.ticker)).map(c => {
       const pr = L.filter(x => x.ticker === c.ticker), own = pr.filter(x => x.qa !== 'OVERLAPS_SZC'), ov = pr.filter(x => x.qa === 'OVERLAPS_SZC'), withC = own.filter(x => fin(x.commercial_ha)), withU = own.filter(x => fin(x.unleased_est_ha));
       const p = PREC[c.precision] || ['', c.precision];
@@ -702,10 +819,10 @@
         {label: 'Phi thương phẩm', type: 'bar', stack: 's', color: '#E3E7F0', data: comp.map(r => r.non), meta: comp.map(() => ({cls: 'DERIVED', extra: ['= gross − thương phẩm (đường, cây xanh, hạ tầng…)']}))}], y: {unit: 'ha'}}))}));
     box.append(g);
 
-    box.append(section('B', 'Tra cứu dự án', 'Lọc theo doanh nghiệp, tỉnh, tình trạng; bấm tiêu đề cột để sắp xếp. Dự án mẹ và giai đoạn con không cộng trùng.'));
+    box.append(section('B', 'Dự án theo giai đoạn', 'Lọc theo doanh nghiệp, tỉnh, tình trạng; bấm tiêu đề cột để sắp xếp. Dự án mẹ và giai đoạn con, dự án xuất hiện dưới nhiều pháp nhân không cộng trùng. Dự án đang đầu tư dùng cùng khóa với bảng Nguồn cung.'));
     box.append(explorerProjects());
 
-    box.append(section('C', 'Lịch sử cho thuê thực tế', 'Chỉ vẽ doanh nghiệp có đủ 3 năm số thực hiện liên tục, cùng định nghĩa. Không ghép kế hoạch hay dự phóng của CTCK.'));
+    box.append(section('C', 'Ký mới', 'Số thực hiện và kế hoạch ghi riêng. Chỉ vẽ doanh nghiệp có đủ 3 năm số thực hiện liên tục, cùng định nghĩa; không ghép kế hoạch hay dự phóng của công ty chứng khoán.'));
     const g3 = el('div', 'kc-grid');
     if (coOn('IDC')) g3.append(card({id: 'kcn-lb-idc', title: 'IDC — diện tích đất KCN cho thuê mới', sub: 'ha/năm · hợp nhất · BCTN 2025 (biểu đồ 2021–2025)', srcs: ['IDICO'], cadence: 'annual', kind: 'document', qa: ['PLAN_NOT_ACTUAL'],
       take: `2024 = 101 ha làm tròn từ 100,6 ha (BCTN 2024). 2025 = ${nf(lease[2] && lease[2].value_ha)} ha gồm 57 ha công ty mẹ + 19 ha công ty con. ${plan ? `Kế hoạch 2026 ${nf(plan.value)} ha không vẽ vì chưa phải số thực hiện.` : ''}`,
@@ -716,28 +833,21 @@
       body: `<div class="tablewrap" data-no-fold><table class="kc-t" data-no-fold><thead><tr><th>Mã</th><th>Đủ 3 năm thực hiện</th><th>Trạng thái</th><th>Lý do</th></tr></thead><tbody>${cov.map(c => `<tr><td><b>${esc(c.ticker)}</b></td><td>${(c.lease3y || '').toUpperCase() === 'YES' ? 'Có' : 'Không'}</td><td>${(c.lease3y || '').toUpperCase() === 'YES' ? chip('ACTUAL', 'Đã kiểm chứng') : '<span class="kc-chip kc-nt">Thiếu chuỗi liên tục</span>'}</td><td>${esc(c.reason)}</td></tr>`).join('')}</tbody></table></div>`}));
     box.append(g3);
 
-    box.append(section('D', 'Từ cầu thị trường đến kết quả doanh nghiệp', 'Ký mới, bàn giao, tiền nhận trước, doanh thu ghi nhận và tiền thu về xảy ra ở các thời điểm khác nhau; không đánh đồng.'));
-    const cq = (window.COMPANY_QUARTERLY || {}), idcQ = (cq.companies || []).find(c => c.symbol === 'IDC'), qs = cq.quarters || [];
-    const vn9 = D.absorption.find(a => a.period === '2026M9' && a.region === 'Vietnam');
+    box.append(section('D', 'Bàn giao', 'Cơ chế: ký mới → thu tiền theo tiến độ hợp đồng → bàn giao → ghi nhận doanh thu theo chính sách kế toán của từng doanh nghiệp. Các bước xảy ra ở thời điểm khác nhau; số liệu tiền nhận trước, doanh thu chưa thực hiện, dòng tiền ở tab Tài chính ngành.'));
+        const vn9 = D.absorption.find(a => a.period === '2026M9' && a.region === 'Vietnam');
     const idc25 = D.dev.filter(d => d.ticker === 'IDC' && d.period === '2025FY' && d.cls === 'ACTUAL');
     const kbcNew = L.filter(x => x.ticker === 'KBC' && /Ký mới 2025/.test(x.def_note || '')).map(x => `${x.project} ${(/Ký mới 2025 = ([\d.]+)/.exec(x.def_note) || [])[1]} ha`);
     const steps = [
       ['Hấp thụ thị trường', vn9 ? `CBRE Tier-1 9T/2026: ${nf(vn9.value)} ha` : '—', 'ok'],
       ['Ký mới của doanh nghiệp', [idc25.length ? `IDC 2025: ${idc25.map(d => d.metric === 'Land_leased_total' ? nf(d.value) + ' ha tổng' : d.metric === 'Land_leased_parent' ? nf(d.value) + ' ha mẹ' : d.metric === 'Land_leased_subsidiaries' ? nf(d.value) + ' ha con' : nf(d.value) + ' m² nhà xưởng/kho').join(', ')}` : '', kbcNew.length ? `KBC 2025: ${kbcNew.join(', ')}` : ''].filter(Boolean).join(' · '), 'ok'],
-      ['Bàn giao đất', 'Chưa có trong bộ dữ liệu', 'gap'],
-      ['Ghi nhận doanh thu', idcQ ? `IDC doanh thu thuần hợp nhất ${qs[qs.length - 1]}: ${nf(idcQ.revenue[idcQ.revenue.length - 1])} tỷ đ (gồm cả mảng ngoài KCN)` : 'Chưa có', idcQ ? 'ok' : 'gap'],
-      ['Dòng tiền', 'Chưa có trong bộ dữ liệu (tiền nhận trước, tiền thu)', 'gap']
+      ['Bàn giao đất', 'Chưa có số toàn ngành; doanh nghiệp công bố riêng trong BCTN, giải trình KQKD', 'gap'],
+      ['Tiền nhận trước', 'Người mua trả tiền trước, doanh thu chưa thực hiện: tab Tài chính ngành', 'ok'],
+      ['Ghi nhận doanh thu', 'Một lần khi bàn giao hoặc phân bổ theo thời hạn thuê, theo chính sách từng doanh nghiệp', 'ok']
     ];
     const g4 = el('div', 'kc-grid');
     g4.append(card({id: 'kcn-lb-flow', title: 'Chuỗi chuyển hóa: thị trường → doanh nghiệp', sub: 'dữ liệu đang có ở từng khâu', wide: true, kind: 'static', srcs: ['VIETCAP26', 'IDICO'],
       body: `<div class="kc-flow">${steps.map((s, i) => `${i ? '<span class="kc-arr">→</span>' : ''}<div class="kc-node kc-node-${s[2]}"><b>${esc(s[0])}</b><small>${esc(s[1])}</small></div>`).join('')}</div>`}));
-    if (idcQ && coOn('IDC')) {
-      const n = Math.min(12, qs.length), Q = qs.slice(-n), rev = idcQ.revenue.slice(-n);
-      g4.append(card({id: 'kcn-lb-idcrev', title: 'IDC — doanh thu thuần hợp nhất theo quý', sub: 'tỷ đ · BCTC quý · gồm KCN, điện, BOT, xây dựng; không phải doanh thu riêng mảng KCN', srcs: [], kind: 'periodic', cadence: 'quarterly',
-        take: 'Doanh thu cho thuê đất thường ghi nhận một lần khi bàn giao, nên doanh thu quý dao động mạnh và không theo nhịp ký mới.',
-        table: () => ({head: ['Quý', 'Doanh thu thuần (tỷ đ)'], rows: Q.map((q, i) => [q, rev[i]])}),
-        draw: h => draw(h, combo({labels: Q, sets: [{label: 'Doanh thu thuần', type: 'bar', color: C.blue, data: rev, meta: Q.map(q => ({period: q, extra: ['BCTC hợp nhất quý (COMPANY_QUARTERLY)']}))}], y: {unit: 'tỷ đ'}}))}));
-    }
+    g4.append(el('div', 'kc-mk-go', `<span>Số liệu chi tiết:</span><button type="button" class="kc-link" data-ov-fin="fin"><b>Tài chính ngành →</b><small>doanh thu, tiền nhận trước, doanh thu chưa thực hiện, dòng tiền</small></button><button type="button" class="kc-link" data-ov-fin="companies"><b>Doanh nghiệp niêm yết →</b><small>định giá, biến cần theo dõi từng mã</small></button>`));
     box.append(g4);
     const fired = K.rules(D, thNow()).fired.filter(f => f.tab === 'landbank' && coOn(f.scope));
     if (fired.length) box.append(el('div', 'kc-insgrid', fired.map(insightCard).join('')));
@@ -747,10 +857,10 @@
     const L = D.landbank.filter(x => coOn(x.ticker) && provOn(x.province) && (f.status === 'all' || x.stage === f.status) && (!f.q || (x.project + ' ' + x.ticker + ' ' + x.province).toLowerCase().includes(f.q.toLowerCase())))
       .sort((a, b) => { const va = a[f.sort], vb = b[f.sort]; if (va == null && vb == null) return 0; if (va == null) return 1; if (vb == null) return -1; return (typeof va === 'number' ? va - vb : String(va).localeCompare(String(vb), 'vi')) * f.dir; });
     const QA = {OVERLAPS_SZC: 'Chồng lấn SZC', PHASE_ONLY: 'Một giai đoạn', GROUPED_IP: 'Gộp 2 KCN', PIPELINE: 'Đang đầu tư', DEFINITION_CHECK: 'Cần kiểm định nghĩa', '2025_LEASE_FACT': 'Có số ký mới 2025'};
-    const cols = [['ticker', 'Mã'], ['project', 'Dự án'], ['province', 'Tỉnh'], ['gross_ha', 'Gross (ha)'], ['commercial_ha', 'Thương phẩm (ha)'], ['leased_ha', 'Đã thuê lũy kế (ha)'], ['occ', 'Lấp đầy'], ['unleased_est_ha', 'Chưa lấp đầy ƯT (ha)'], ['ready_ha', 'Sẵn sàng (ha)'], ['status', 'Tình trạng'], ['url', 'Nguồn']];
+    const cols = [['ticker', 'Mã'], ['project', 'Dự án'], ['province', 'Tỉnh'], ['gross_ha', 'Gross (ha)'], ['commercial_ha', 'Thương phẩm (ha)'], ['leased_ha', 'Đã thuê lũy kế (ha)'], ['occ', 'Lấp đầy'], ['unleased_est_ha', 'Chưa lấp đầy ƯT (ha)'], ['ready_ha', 'Sẵn sàng (ha)'], ['ownership', 'Quyền lợi kinh tế'], ['status', 'Tình trạng'], ['url', 'Nguồn']];
     const body = `<div class="kc-ctl"><input type="search" placeholder="Tìm dự án, mã, tỉnh…" value="${esc(f.q)}" data-kc-lbq aria-label="Tìm dự án"><select data-kc-lbs aria-label="Tình trạng">${[['all', 'Mọi tình trạng'], ['operating', 'Đang khai thác'], ['full', 'Đã lấp đầy'], ['pipeline', 'Đang đầu tư / pháp lý']].map(([k, t]) => `<option value="${k}" ${f.status === k ? 'selected' : ''}>${t}</option>`).join('')}</select><span class="kc-na">${L.length} dòng</span></div>` +
       `<div class="tablewrap kc-scroll" data-no-fold><table class="kc-t kc-sort kc-wide-t" data-no-fold><thead><tr>${cols.map(([k, t]) => `<th><button type="button" data-kc-sortby="${k}">${t}${f.sort === k ? (f.dir < 0 ? ' ▾' : ' ▴') : ''}</button></th>`).join('')}</tr></thead><tbody>` +
-      L.map(x => `<tr><td><b>${esc(x.ticker)}</b></td><td>${esc(x.project)}${x.qa && QA[x.qa] ? ` <span class="kc-chip kc-${x.qa === 'OVERLAPS_SZC' || x.qa === 'GROUPED_IP' || x.qa === 'DEFINITION_CHECK' ? 'est' : 'nt'}" title="${esc(x.def_note || '')}">${QA[x.qa]}</span>` : ''}</td><td>${esc(x.province)}</td><td class="kc-num">${nf(x.gross_ha, 2)}</td><td class="kc-num">${nf(x.commercial_ha, 2)}</td><td class="kc-num">${nf(x.leased_ha, 2)}</td><td class="kc-num">${x.occ == null ? '—' : pf(x.occ, 1, false)}</td><td class="kc-num">${nf(x.unleased_est_ha, 1)}</td><td class="kc-na">${x.ready_ha == null ? 'Chưa công bố' : nf(x.ready_ha, 1)}</td><td>${esc(x.status || '')}</td><td>${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc(x.page || '')}">BCTN ↗</a>` : ''}</td></tr>`).join('') + '</tbody></table></div>';
+      L.map(x => `<tr><td><b>${esc(x.ticker)}</b></td><td>${esc(x.project)}${x.qa && QA[x.qa] ? ` <span class="kc-chip kc-${x.qa === 'OVERLAPS_SZC' || x.qa === 'GROUPED_IP' || x.qa === 'DEFINITION_CHECK' ? 'est' : 'nt'}" title="${esc(x.def_note || '')}">${QA[x.qa]}</span>` : ''}</td><td>${esc(x.province)}</td><td class="kc-num">${nf(x.gross_ha, 2)}</td><td class="kc-num">${nf(x.commercial_ha, 2)}</td><td class="kc-num">${nf(x.leased_ha, 2)}</td><td class="kc-num">${x.occ == null ? '—' : pf(x.occ, 1, false)}</td><td class="kc-num">${nf(x.unleased_est_ha, 1)}</td><td class="kc-na" title="Tài liệu xác nhận: BCTN/ĐHCĐ ghi diện tích đất sạch kèm ngày đo">${x.ready_ha == null ? 'Chưa công bố' : nf(x.ready_ha, 1)}</td><td class="kc-na">${esc(x.ownership || 'Chưa ghi')}</td><td>${esc(x.status || '')}${x.stage === 'pipeline' ? `<br><button type="button" class="kc-link" data-kcn-go="supply" data-kcn-target="kc-p-${esc(projKey(x.project).replace(/\s+/g, '-'))}">Xem ở Nguồn cung →</button>` : ''}</td><td>${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc(x.page || '')}">BCTN ↗</a>` : ''}</td></tr>`).join('') + '</tbody></table></div>';
     return card({id: 'kcn-lb-explorer', title: 'Danh mục dự án KCN — BCTN 2025', sub: 'ha · gross, thương phẩm, đã thuê là ba định nghĩa khác nhau', wide: true, kind: 'document', cadence: 'annual', srcs: [], qa: ['FULL_LANDBANK_VS_READY'], body,
       table: () => ({head: cols.map(c => c[1]).concat(['Quan hệ sở hữu', 'Ghi chú định nghĩa', 'Vị trí trong nguồn', 'QA']), rows: L.map(x => cols.map(([k]) => x[k]).concat([x.ownership, x.def_note, x.page, x.qa]))})});
   }
@@ -857,21 +967,23 @@
       `<label>Phân khúc <select data-kc-f="seg" ${dis('seg')}>${opt('seg', [['land', 'Đất KCN'], ['RBF', 'Nhà xưởng xây sẵn'], ['RBW', 'Nhà kho xây sẵn']])}</select></label>` +
       `<label>Tỉnh <select data-kc-f="prov" ${dis('prov')}>${opt('prov', [['all', 'Tất cả']].concat(PROVS.map(p => [p, p])))}</select></label>` +
       `<label>Doanh nghiệp <select data-kc-f="co" ${dis('co')}>${opt('co', [['all', 'Tất cả']].concat(COS.map(c => [c, c])))}</select></label>` +
+      (st.tab === 'supply' ? `<label>Trạng thái dự án <select data-kc-f="stage">${opt('stage', [['all', 'Tất cả'], ['decision', 'Đã có quyết định'], ['infra', 'Đang làm hạ tầng'], ['launch', 'Đã chào thuê']])}</select></label>` : '') +
       `<button type="button" class="kc-reset" data-kc-reset>Đặt lại</button>`;
   }
   /* Câu hỏi của từng mục (khung Điện: số mục + câu hỏi); chữ mô tả cũ của workspace giữ làm dòng phụ. */
   const QMAP = {
     demand: {'1': 'Cầu thuê đất thực tế đang tăng hay chậm lại?', '2': 'FDI chế biến chế tạo có xác nhận xu hướng cầu không?', '3': 'FDI đã chuyển thành nhu cầu đất và sản xuất chưa?'},
-    supply: {A: 'Nguồn cung có tăng nhanh hơn nhu cầu không?', B: 'Nguồn cung mới sắp vào đến đâu?'},
-    rent: {A: 'Giá chào thuê đang lên hay đi ngang?', B: 'Tỉnh nào lấp đầy cao, tỉnh nào còn nhiều đất trống?', C: 'Khu vực nào có sức mạnh tăng giá, khu vực nào có nguy cơ dư cung?', D: 'Hai địa phương khác nhau ở đâu?', E: 'Hàm ý theo địa phương là gì?'},
-    landbank: {A: 'Doanh nghiệp nào còn quỹ đất để giao, theo đúng loại diện tích?', B: 'Dự án nào đang triển khai, ở tỉnh nào?', C: 'Doanh nghiệp nào đã chuyển cầu thành hợp đồng thực tế?', D: 'Cầu thị trường đi vào kết quả doanh nghiệp thế nào?'},
+    supply: {A: 'Cung hiện hữu và lấp đầy đang thay đổi thế nào?', B: 'Thị trường nhận thêm bao nhiêu đất, và khi nào?'},
+    rent: {A: 'Giá chào thuê theo vùng đang lên hay đi ngang, và có được lấp đầy, hấp thụ đỡ không?', B: 'Tỉnh nào lấp đầy cao, tỉnh nào còn nhiều đất trống?', C: 'Tỉnh nào có sức mạnh tăng giá, tỉnh nào có nguy cơ dư cung?', D: 'Hai địa phương khác nhau ở đâu?', E: 'Hàm ý theo địa phương là gì?'},
+    landbank: {A: 'Doanh nghiệp nào còn quỹ đất có thể giao, theo đúng loại diện tích?', B: 'Dự án của từng doanh nghiệp đang ở giai đoạn nào?', C: 'Doanh nghiệp nào đã ký mới, kế hoạch ký bao nhiêu?', D: 'Ký mới đi đến bàn giao, doanh thu và tiền thế nào?'},
     overview: {A: 'Ngành đang ở đâu trong chu kỳ: hấp thụ, nguồn cung, lấp đầy?', B: 'Dữ liệu hiện tại gợi ý điều gì cho nhà đầu tư?'},
+    market: {M: 'Cầu thuê, cung chào thuê và giá chào đang ở đâu, theo từng vùng?', K: 'Cung mới đang được hấp thụ, hay lấp đầy đang giảm?'},
     data: {A: 'Số trên trang lấy từ bảng nào?', B: 'Dữ liệu đang có cảnh báo gì?', C: 'Nhận định sinh từ quy tắc nào, ngưỡng bao nhiêu?', D: 'Định nghĩa, nguồn và cách cập nhật'}
   };
-  const TITLE = {demand: 'Nhu cầu thuê đất & FDI', supply: 'Nguồn cung & lấp đầy', rent: 'Giá thuê & địa phương', landbank: 'Quỹ đất & doanh nghiệp', finance: 'Tài chính ngành'};
-  const SHORT = {demand: 'Nhu cầu', supply: 'Nguồn cung', rent: 'Giá thuê', landbank: 'Quỹ đất', finance: 'Tài chính ngành'};
-  const MOVE_Q = {demand: 'Các chỉ báo hằng tháng (FDI đăng ký, vốn thực hiện, IIP) đang nói gì?', supply: 'Đất cao su chuyển đổi bổ sung bao nhiêu nguồn cung phía Nam?', rent: 'Giá chào thuê các KCN mở bán 2026 ở mức nào?', landbank: 'Thị trường đang định giá nhóm KCN thế nào, doanh nghiệp dự kiến ký mới bao nhiêu?'};
-  const BAR_TABS = ['demand', 'supply', 'rent', 'landbank']; // Tài chính ngành lên tab lớn #mt14 (kcn-overview.js), 26/11/2026
+  const TITLE = {market: 'Toàn thị trường', demand: 'Nhu cầu thuê đất & FDI', supply: 'Nguồn cung & lấp đầy', rent: 'Giá thuê & địa phương', landbank: 'Quỹ đất & doanh nghiệp', finance: 'Tài chính ngành'};
+  const SHORT = {market: 'Toàn thị trường', demand: 'Nhu cầu', supply: 'Nguồn cung', rent: 'Giá thuê', landbank: 'Quỹ đất', finance: 'Tài chính ngành'};
+  const MOVE_Q = {demand: 'Các chỉ báo hằng tháng (FDI đăng ký, vốn thực hiện, IIP) đang nói gì?', supply: 'Đất cao su chuyển đổi đang ở mốc pháp lý nào?', rent: 'Giá chào thuê ở từng dự án mở bán 2026 ra sao?', landbank: 'Doanh nghiệp dự kiến ký mới bao nhiêu (dự phóng, không phải số thực hiện)?'};
+  const BAR_TABS = ['market', 'demand', 'supply', 'rent', 'landbank']; // 26/11/2026: thêm Toàn thị trường làm tab con mặc định; Tài chính ngành ở tab lớn #mt14
   // Mỗi đoạn có tiêu đề (kc-sec-h) thành một mục câu hỏi pp-panel; phần trước đoạn đầu (ô số) giữ nguyên.
   function toPanels(box, key, prefix, start = 0) {
     let cur = null, k = start;
@@ -890,10 +1002,11 @@
   }
   function renderInto(key, box, prefix, start = 0) {
     box.replaceChildren();
-    try { ({overview: renderOverview, demand: renderDemand, supply: renderSupply, rent: renderRent, landbank: renderLandbank, data: renderData})[key](box); }
+    try { ({market: renderMarket, overview: renderOverview, demand: renderDemand, supply: renderSupply, rent: renderRent, landbank: renderLandbank, data: renderData})[key](box); }
     catch (e) { box.append(el('p', 'kc-gap', 'Không dựng được phần này: ' + esc(e.message))); console.error(e); }
     const n = toPanels(box, key, prefix, start);
     setTimeout(() => { paint(box); refit(box); if (window.FinShareImage) window.FinShareImage.scan(box); }, 0); // không dùng rAF: tab chạy nền sẽ không vẽ
+    setTimeout(() => refit(box), 450); // mở thẳng bằng link #mt2: lưới 3 cột chưa có bề rộng ở lần vẽ đầu
     return n;
   }
   function renderTab(key, force) {
@@ -910,28 +1023,30 @@
     setTimeout(() => dispatchEvent(new Event('pv:toc')), 60); // mục lục (sector-smart.js) dựng lại theo mục vừa vẽ
   }
   function select(key, push) {
-    if (!BAR_TABS.includes(key)) key = 'demand';
+    if (!BAR_TABS.includes(key)) key = 'market';
     st.tab = key;
     $$('[data-kc-tab]', nav).forEach(b => { const on = b.dataset.kcTab === key; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
     Object.entries(panels).forEach(([k, p]) => { p.hidden = k !== key; });
-    bar.hidden = key === 'finance';
-    filterBar(); renderTab(key); if (push !== false) writeUrl();
+    bar.hidden = key === 'market';
+    filterBar(); renderTab(key); if (push !== false) writeUrl(push === true);
   }
   function rerender() {
     Object.keys(rendered).forEach(k => { if (k !== 'finance') rendered[k] = false; });
     renderTab(st.tab, true);
     Object.entries(ext).forEach(([k, o]) => renderInto(k, o.box, o.prefix, o.start));
-    writeUrl();
+    if (location.hash === '#mt2') writeUrl();
   }
   function bindHost(h) {
     h.addEventListener('click', e => {
       const sd = e.target.closest('[data-kc-side]'); if (sd) { st.side = sd.dataset.kcSide; rerender(); return; }
+      const mr = e.target.closest('[data-kc-mkr]'); if (mr) { st.mkR = mr.dataset.kcMkr; rerender(); return; }
       const un = e.target.closest('[data-kc-unit]'); if (un) { st.unit = un.dataset.kcUnit; rerender(); return; }
       const sb = e.target.closest('[data-kc-sortby]'); if (sb) { const k = sb.dataset.kcSortby; st.lb.dir = st.lb.sort === k ? -st.lb.dir : -1; st.lb.sort = k; rerender(); return; }
       if (e.target.closest('[data-kc-excsv]')) { const c = e.target.closest('.kc-card'); if (c && c._csv) download(`kcn-${st.ex.set}.csv`, csvOf(c._csv())); return; }
       if (e.target.closest('[data-kc-qaclear]')) { st.qaFilter = null; rerender(); return; }
     });
     h.addEventListener('change', e => {
+      const mq = e.target.closest('[data-kc-mkq]'); if (mq) { st.mkQ = mq.value; rerender(); return; }
       const ex = e.target.closest('[data-kc-ex]'); if (ex && ex.tagName === 'SELECT') { st.ex[ex.dataset.kcEx] = ex.value; if (ex.dataset.kcEx === 'set') st.ex.src = 'all'; rerender(); return; }
       const cm = e.target.closest('[data-kc-cmp]'); if (cm) { st.cmp[+cm.dataset.kcCmp] = cm.value; rerender(); return; }
       const ls = e.target.closest('[data-kc-lbs]'); if (ls) { st.lb.status = ls.value; rerender(); return; }
@@ -971,10 +1086,12 @@
     });
     // Khung cũ của Bức tranh ngành (#supply-world / #supply-vietnam, lưới giá) không dùng ở trang này.
     $$('#supply-world, #supply-vietnam, .supply-tabs', pane).forEach(n => { n.hidden = true; n.style.display = 'none'; });
-    nav.addEventListener('click', e => { const b = e.target.closest('[data-kc-tab]'); if (b) select(b.dataset.kcTab); });
-    nav.addEventListener('keydown', e => { if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return; const i = BAR_TABS.indexOf(st.tab), j = (i + (e.key === 'ArrowRight' ? 1 : BAR_TABS.length - 1)) % BAR_TABS.length; select(BAR_TABS[j]); nav.children[j].focus(); });
+    nav.addEventListener('click', e => { const b = e.target.closest('[data-kc-tab]'); if (b) select(b.dataset.kcTab, true); });
+    nav.addEventListener('keydown', e => { if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return; const i = BAR_TABS.indexOf(st.tab), j = (i + (e.key === 'ArrowRight' ? 1 : BAR_TABS.length - 1)) % BAR_TABS.length; select(BAR_TABS[j], true); nav.children[j].focus(); });
+    // Back/Forward: trạng thái đọc lại từ URL khi quay về #mt2.
+    addEventListener('popstate', () => { if (location.hash !== '#mt2') return; readUrl(); rendered = {}; select(st.tab, false); });
     bar.addEventListener('change', e => { const s = e.target.closest('[data-kc-f]'); if (!s) return; st[s.dataset.kcF] = s.value; if (K.qk(st.from) > K.qk(st.to)) [st.from, st.to] = [st.to, st.from]; filterBar(); rerender(); });
-    bar.addEventListener('click', e => { if (e.target.closest('[data-kc-reset]')) { Object.assign(st, {r: 'both', src: 'all', from: QUARTERS[0], to: QUARTERS[QUARTERS.length - 1], seg: 'land', prov: 'all', co: 'all'}); filterBar(); rerender(); } });
+    bar.addEventListener('click', e => { if (e.target.closest('[data-kc-reset]')) { Object.assign(st, {r: 'both', src: 'all', from: QUARTERS[0], to: QUARTERS[QUARTERS.length - 1], seg: 'land', prov: 'all', co: 'all', stage: 'all'}); filterBar(); rerender(); } });
     bindHost(root);
     new MutationObserver(() => { if (!pane.hidden) { renderTab(st.tab); refit(panels[st.tab]); } }).observe(pane, {attributes: true, attributeFilter: ['hidden', 'class']});
     readUrl(); select(st.tab, false);
@@ -982,17 +1099,20 @@
   // Dựng phần chu kỳ (Tổng quan) và Dữ liệu & phương pháp (Nguồn dữ liệu) ở tab khác (kcn-overview.js): cùng trạng thái bộ lọc.
   window.KcnWS = {
     render(key, box, prefix, start = 0) { if (!D || !K) return; ext[key] = {box, prefix, start}; bindHost(box); renderInto(key, box, prefix, start); },
-    preview: () => (D && K ? previewHtml() : ''), ready: () => !!(D && K)
+    preview: () => (D && K ? previewHtml() : ''), ready: () => !!(D && K),
+    projects: () => (D && K ? projects() : []), projectTable: (l, o) => projectTable(l, o), stages: PSTAGE
   };
   // Link "Mở phân tích chi tiết", nút "Xem chart →" trong nhận định, nút cảnh báo → Dữ liệu.
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-kcn-go]'); if (!a) return;
     e.preventDefault();
-    if (a.dataset.kcQa) { st.qaFilter = a.dataset.kcQa; st.ex.set = 'facts'; if (popo) popo.hidden = true; rerender(); if (window.showMajorTab) window.showMajorTab('mt8'); return; }
-    const go = a.dataset.kcnGo;
+    let go = a.dataset.kcnGo; if (go === 'overview' || go === 'data') go = 'market';
     if (!BAR_TABS.includes(go)) { if (go === 'finance' && window.KcnFinTab) window.KcnFinTab.open('fin'); else if (window.showMajorTab) window.showMajorTab('mt1'); return; }
+    if (a.dataset.kcnCo && COS.includes(a.dataset.kcnCo)) { st.co = a.dataset.kcnCo; rendered = {}; }
     if (window.showMajorTab) window.showMajorTab('mt2');
-    select(go); setTimeout(() => root && root.scrollIntoView({block: 'start'}), 30);
+    select(go, true); if (popo) popo.hidden = true;
+    const tgt = a.dataset.kcnTarget && document.getElementById(a.dataset.kcnTarget);
+    setTimeout(() => (tgt || root) && (tgt || root).scrollIntoView({block: 'start'}), 60);
   });
 
   function start() {

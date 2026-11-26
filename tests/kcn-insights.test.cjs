@@ -40,7 +40,8 @@ const noBad = v => assert.doesNotMatch(JSON.stringify(v), /NaN|Infinity|undefine
   assert.ok(!f('South', 'H1').conflict);
   const ev = K.rules(D).fired.find(x => x.id === 'R1').evidence.join(' ');
   assert.doesNotMatch(ev, /2025FY/, 'không lấy số năm cũ vào nhận định năm nay');
-  assert.match(ev, /Nam 9T\/2026: 163 ha, \+56%/);
+  // 26/11/2026: +56% CBRE công bố chưa hòa giải với nền 9T/2025 khoảng 80 ha (+104%) → không đưa vào nhận định tóm tắt.
+  assert.doesNotMatch(ev, /Nam 9T\/2026/);
 }
 // 2c. Số bổ sung từ web: cảnh báo CBRE Q3 đã xử lý; giá thuê vùng so cùng kỳ lấy từ C&W công bố.
 {
