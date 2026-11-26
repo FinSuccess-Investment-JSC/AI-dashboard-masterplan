@@ -124,7 +124,7 @@ function toc() {
   const build = () => {
     const pane = document.querySelector('.majorpane.active'); if (!pane) return;
     const head = document.querySelector('.majortabbtn[aria-selected="true"]')?.textContent.trim() || 'Mục lục';
-    const all = blocksOf(pane).filter(x => !(x.lvl === 1 && fold(x.label) === fold(head)));
+    const all = blocksOf(pane).filter(x => !(x.lvl === 1 && fold(x.label) === fold(head)) && !x.box.closest('[hidden], .of-hidden-legacy') && x.box.getClientRects().length);  // chỉ mục của sub-tab đang mở
     // Chỉ tiêu đề chính (khu vực/nhóm); tab ít khu vực thì dùng tên chart rút gọn.
     list = all.filter(x => x.lvl < 3); if (list.length < 2) list = all;
     const short = t => t.replace(/\s*\([^)]*\)?\s*/g, ' ').replace(/\s*(?:\s—|:)\s.*$/, '').replace(/\s+/g, ' ').trim();
@@ -136,7 +136,7 @@ function toc() {
   build(); addEventListener('scroll', spy, {passive: true});
   addEventListener('pv:toc', () => setTimeout(build, 120));  // sub-tab vừa dựng xong nội dung (Bức tranh ngành, Tài chính ngành)
   document.addEventListener('click', e => {
-    if (e.target.closest('.majortabbtn, .pane-subtabs button, .supply-tabs button, .pp-nav button, .ov-nav button')) setTimeout(build, 150);
+    if (e.target.closest('.majortabbtn, .pane-subtabs button, .supply-tabs button, .pp-nav button, .ov-nav button, [role="tab"]')) setTimeout(build, 150);
     if (!e.target.closest('.pv-toc, .pv-fab')) document.body.classList.remove('pv-toc-open');
   });
   fab.querySelector('.pv-fab-toc').onclick = () => { build(); document.body.classList.toggle('pv-toc-open'); };
