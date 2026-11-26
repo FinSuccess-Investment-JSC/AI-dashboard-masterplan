@@ -107,11 +107,12 @@ document.addEventListener('click', e => {
 }, true);
 
 /* ---------- Mục lục + tìm nhanh ---------- */
-function blocksOf(root) {
-  return [...root.querySelectorAll('.sectionhead h2, h3.subhead, .card .chart-title, .card > h3, .business-models > h2, .cr-verdict')].filter(h => !h.closest('.pv-hub, .pv-drawer, .cr-verdict h3 ~ *')).map(h => {
-    const box = h.closest('.card, section, .business-models') || h;
+function blocksOf(root, all) { // all = gồm cả phần đang ẩn (Tìm nhanh: mở đúng tab, tab con rồi cuộn — Xây dựng 26/11/2026)
+  // 26/11/2026 (như trang Điện): tiêu đề câu hỏi của từng nhóm (.pp-ph h3, .ov-sh h3) là mục cấp 2 — mục lục đi theo nhóm, không liệt kê từng chart; bỏ phần đang ẩn.
+  return [...root.querySelectorAll('.sectionhead h2, h3.subhead, .pp-ph h3, .ov-sh h3, .card .chart-title, .card > h3, .business-models > h2, .cr-verdict')].filter(h => !h.closest('.pv-hub, .pv-drawer, .cr-verdict h3 ~ *, .pp-old') && (all || !h.closest('[hidden]'))).map(h => {
+    const box = h.closest('.pp-panel, .ov-sec, .card, section, .business-models') || h;
     const label = h.classList.contains('cr-verdict') ? 'Kết luận Catalyst' : h.textContent.replace(/[ⓘ↗]/g, '').replace(/\s+/g, ' ').trim();
-    return {box, label: label.slice(0, 80), lvl: h.matches('.sectionhead h2, .business-models > h2') ? 1 : h.matches('.subhead') ? 2 : 3};
+    return {box, label: label.slice(0, 140), lvl: h.matches('.sectionhead h2, .business-models > h2') ? 1 : h.matches('.subhead, .pp-ph h3, .ov-sh h3') ? 2 : 3};
   }).filter((x, i, a) => x.label && a.findIndex(y => y.label === x.label) === i);
 }
 function toc() {
@@ -133,8 +134,9 @@ function toc() {
   };
   const spy = () => { let cur = -1; list.forEach((x, i) => { const r = x.box.getBoundingClientRect(); if (r.height && r.top < 160) cur = i; }); box.querySelectorAll('a').forEach((a, i) => a.classList.toggle('on', i === cur)); };
   build(); addEventListener('scroll', spy, {passive: true});
+  addEventListener('pv:toc', () => setTimeout(build, 120));  // sub-tab vừa dựng xong nội dung (Bức tranh ngành, Tài chính ngành)
   document.addEventListener('click', e => {
-    if (e.target.closest('.majortabbtn, .pane-subtabs button, .supply-tabs button')) setTimeout(build, 150);
+    if (e.target.closest('.majortabbtn, .pane-subtabs button, .supply-tabs button, .pp-nav button, .ov-nav button')) setTimeout(build, 150);
     if (!e.target.closest('.pv-toc, .pv-fab')) document.body.classList.remove('pv-toc-open');
   });
   fab.querySelector('.pv-fab-toc').onclick = () => { build(); document.body.classList.toggle('pv-toc-open'); };
@@ -151,7 +153,7 @@ function palette(open) {
       ...[...known()].sort().map(k => ({t: k, sub: (groups().find(g => g.codes.includes(k))?.name || '') + (V[k]?.pe > 0 ? ` · P/E ${nf(V[k].pe, 1)}x` : ''), kind: 'Mã', run: () => drawer(k)})),
       ...S.index,
       ...(window.SECTOR_BRIEF?.score || []).map(r => ({t: r.name, sub: (r.big?.[0] || r.mid?.[0] || '') + ' ' + (r.mid?.[1] || ''), kind: 'Tín hiệu', run: () => goTo(r.chart && document.getElementById(r.chart) || document.querySelector('.cr-score'))})),
-      ...[...document.querySelectorAll('.majorpane')].flatMap(p => { const tab = document.querySelector(`.majortabbtn[data-tab="${p.dataset.tab}"]`)?.textContent || ''; return blocksOf(p).map(x => ({t: x.label, sub: tab, kind: 'Khối', run: () => goTo(x.box)})); })
+      ...[...document.querySelectorAll('.majorpane')].flatMap(p => { const tab = document.querySelector(`.majortabbtn[data-tab="${p.dataset.tab}"]`)?.textContent || ''; return blocksOf(p, true).map(x => ({t: x.label, sub: tab, kind: x.lvl === 2 ? 'Mục' : 'Khối', run: () => goTo(x.box)})); })
     ].filter((x, i, a) => x.t && a.findIndex(y => y.t === x.t && y.kind === x.kind) === i);
     const draw = () => {
       const q = fold(inp.value.trim()), all = index();
