@@ -3086,6 +3086,32 @@
    ]
   },
   {
+   "id": "pangasius.cost-structure",
+   "tier": "C",
+   "status": "manual",
+   "title": "Cá tra: cơ cấu chi phí nuôi và chi phí thức ăn; tỷ trọng chi phí, luồng sản lượng trên sơ đồ chuỗi",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Ước tính, không theo kỳ; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "FinSuccess ước tính",
+    "url": "https://finsuccess-investment-jsc.github.io/AI-dashboard-masterplan/Ca-tra/"
+   },
+   "where": {
+    "page": "Ca-tra/index.html",
+    "blocks": [
+     "ts-18",
+     "ts-19"
+    ]
+   },
+   "how": "Khi người dùng gửi số mới: sửa mảng cost/feed và cấu hình sơ đồ chuỗi (nhánh pang) trong Ca-tra/app/seafood-dashboard.js.",
+   "gates": [
+    "Ghi nguồn FinSuccess ước tính",
+    "Tổng các phần = 100%"
+   ]
+  },
+  {
    "id": "seafood.group-margin",
    "tier": "C",
    "title": "Thủy sản: biên gộp theo quý của từng nhóm (Cá tra, Tôm, Đa ngành, Toàn rổ)",
