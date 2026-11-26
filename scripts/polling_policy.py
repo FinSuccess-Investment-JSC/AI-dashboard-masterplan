@@ -29,7 +29,7 @@ def due(key: str, now: dt.datetime, last_checked: str | None) -> bool:
         window = day in (1, 2, 3, 4, 5)  # Completed trading sessions / KNOC T+1.
     elif key in ('sugar_producers', 'sugar_vn_balance', 'sugar_world_shares'):  # same USDA PSD sugar archive
         window = (local.month in (5, 11) and local.day >= 15) or (local.day == 1 and day < 5)
-    elif key in ('opec_capacity', 'world_balance'):  # both read the monthly EIA STEO workbook
+    elif key in ('opec_capacity', 'world_balance', 'top_producers'):  # both read the monthly EIA STEO workbook
         window = 5 <= local.day <= 15 or day == 0
     elif key == 'wti_cot':
         window = day in (5, 0, 1)  # Tuesday positions normally publish Friday US / Saturday VN.

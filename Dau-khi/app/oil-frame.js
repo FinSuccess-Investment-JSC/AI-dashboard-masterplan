@@ -320,6 +320,27 @@ function crudeLayout() {
   let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
   [...body.children].forEach(n => { if (n.hidden) return; if (n.matches('.of-wide,.of-group,details,.kpis')) flush(); else run.push(n); }); flush();
 }
+
+// 10 nước xuất khẩu dầu lớn: sản lượng tháng gần nhất (EIA STEO, tổng chất lỏng) và thay đổi so cùng kỳ.
+function topExporters() {
+  const src = window.SECTOR_DAILY?.sources?.top_producers, rec = src?.records; if (!rec?.length || $('#of-top-exporters')) return;
+  const last = rec.at(-1), ym = last.date.slice(0, 7), prev = rec.find(r => r.date.slice(0, 7) === (+ym.slice(0, 4) - 1) + ym.slice(4));
+  const names = src.names || {}, nf = (v, d = 2) => v.toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d});
+  const rows = Object.keys(names).map(k => ({k, name: names[k], v: last[k], d: prev ? last[k] - prev[k] : null})).sort((a, b) => b.v - a.v);
+  const mm = +ym.slice(5), yy = ym.slice(0, 4);
+  const card = el('div', 'card of-wide'); card.id = 'of-top-exporters';
+  card.innerHTML = `<div class="chart-title">Sản lượng dầu của 10 nước xuất khẩu lớn (triệu thùng/ngày)</div>
+    <div class="chart-sub">Tháng ${mm}/${yy} · tổng chất lỏng (dầu thô, condensate, NGL) · nhãn: so cùng kỳ ${mm}/${+yy - 1}</div>
+    <div class="ct-canvas" style="position:relative;height:340px"><canvas id="chTopExporters" role="img" aria-label="Sản lượng dầu 10 nước xuất khẩu lớn"></canvas></div>
+    <div class="pw-src">Nguồn: <a href="https://www.eia.gov/outlooks/steo/" target="_blank" rel="noopener">EIA STEO ${src.issue || ''}</a> · bảng 3b, 3c; chỉ tháng đã có số, không dùng dự báo</div>`;
+  const anchor = block('dau-khi-12'); if (!anchor) return; anchor.after(card);
+  if (!window.Chart) return;
+  new Chart(card.querySelector('canvas'), {type: 'bar', data: {labels: rows.map(r => r.name), datasets: [{data: rows.map(r => r.v), backgroundColor: rows.map(r => r.d == null ? '#2938A8' : r.d >= 0 ? '#2938A8' : '#8C95C9'), borderRadius: 6, barThickness: 20}]},
+    options: {indexAxis: 'y', responsive: true, maintainAspectRatio: false, layout: {padding: {right: 120}}, plugins: {legend: {display: false}, tooltip: {callbacks: {label: c => ` ${nf(rows[c.dataIndex].v)} tr thùng/ngày` + (rows[c.dataIndex].d == null ? '' : ` · ${rows[c.dataIndex].d >= 0 ? '+' : ''}${nf(rows[c.dataIndex].d)} so cùng kỳ`)}}},
+      scales: {x: {beginAtZero: true, grid: {color: '#EEF0F6'}, ticks: {color: '#6B7392', font: {size: 12}}}, y: {grid: {display: false}, ticks: {color: '#1F2A5C', font: {size: 13, weight: 600}}}}},
+    plugins: [{id: 'ofLabels', afterDatasetsDraw(ch) { const {ctx} = ch, meta = ch.getDatasetMeta(0); ctx.save(); ctx.font = '600 12.5px Inter, sans-serif'; ctx.textBaseline = 'middle';
+      meta.data.forEach((b, i) => { const r = rows[i]; ctx.fillStyle = '#1F2A5C'; ctx.fillText(nf(r.v), b.x + 8, b.y); if (r.d != null) { const w = ctx.measureText(nf(r.v)).width; ctx.fillStyle = r.d >= 0 ? '#17784A' : '#B3303F'; ctx.fillText(`${r.d >= 0 ? '▲ +' : '▼ '}${nf(r.d)}`, b.x + 16 + w, b.y); } }); ctx.restore(); }}]});
+}
 function run() {
   if (document.body.dataset.oilFrame) return; document.body.dataset.oilFrame = '1';
   style();
@@ -335,6 +356,7 @@ function run() {
     const a = el('p', 'research-caption of-moved', 'Biểu đồ Hormuz, Bab el-Mandeb và xuất khẩu dầu Trung Đông đã chuyển sang <a href="#of-mt2-flows">Bức tranh ngành › 06 Vận tải & dòng chảy</a>; năm kênh truyền dẫn ở <a href="#of-mt1-chain">Tổng quan › 01 Chuỗi giá trị</a>.');
     (t.querySelector('details.research-fold > :not(summary)') || t).prepend(a);
   });
+  topExporters();
   crudeLayout();
   const finHost = financePane();
   nav(finHost);
