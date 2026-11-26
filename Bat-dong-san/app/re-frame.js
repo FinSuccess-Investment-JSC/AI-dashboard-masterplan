@@ -279,6 +279,88 @@ function unfoldCards(ids) {
 function hideEmptyGaps() { $$('.of-body').forEach(b => { if (b.querySelector('[data-of-added], #of-tax')) b.querySelectorAll(':scope > .of-gap').forEach(g => { if (/Chưa có dữ liệu cho mục này/.test(g.textContent)) g.hidden = true; }); }); }
 
 
+// ===== Tổng quan › 01 Mô hình kinh doanh (26/11/2026, người dùng chọn phương án A + C) =====
+// A. Vòng đời tiền của một dự án: sơ đồ 5 bước + chart thật từ BCTC (người mua trả trước dẫn trước doanh thu).
+// C. Bảng mô hình theo mã: phân khúc, quỹ đất (link nguồn), cơ cấu nguồn vốn, tồn kho và tiền trả trước so doanh thu 4 quý.
+const LAND = {VHM: [29500, '31/12/2025', 'https://nguoiquansat.vn/he-lo-quy-dat-khung-vinhomes-dang-so-huu-298206.html'],
+  NVL: [10600, '08/2026', 'https://nhadautu.vn/novaland-hon-57-du-an-cho-giai-doan-2027-2032-aqua-city-la-khoi-dau-d107095.html'],
+  PDR: [6655, '31/12/2025', 'https://nguoiquansat.vn/phat-dat-pdr-du-kien-mo-ban-4-du-an-moi-tai-tp-hcm-286381.html'],
+  CEO: [1100, '04/2026', 'https://nguoiquansat.vn/chu-tich-ceo-group-noi-ve-co-hoi-nghin-nam-co-mot-quy-dat-1-100ha-san-sang-cho-20-du-an-moi-288142.html'],
+  DIG: [820, 'BCTN 2025', 'https://stockbiz.vn/tin-tuc/dig-dic-group-tinh-chuyen-mo-rong-quy-dat/42835718'],
+  NLG: [681, '06/2026', 'https://nguoiquansat.vn/nam-long-nlg-va-chu-ky-tang-truong-moi-tu-quy-dat-681ha-298702.html'],
+  KDH: [662.5, '11/2026', 'https://nguoiquansat.vn/khang-dien-kdh-he-lo-ke-hoach-phat-trien-121-000-can-nha-tai-tp-hcm-328540.html'],
+  AGG: [34, '06/2026 · tự cộng 4 dự án', 'https://nhadautu.vn/bds-an-gia-loi-nhuan-2026-chu-yeu-tu-hop-nhat-the-gio-riverside-d105973.html'],
+  DXG: [null, 'không công bố tổng', 'https://elibook.vn/2026/09/08/dxg-loi-nhuan-cot-loi-chi-con-7-ty-co-dong-thieu-so-am-63-mieng-banh-nghi-quyet-21-co-phai-con-bai-cuu-canh/'],
+  TCH: [null, 'không công bố tổng', 'https://nhadautu.vn/hoang-huy-phu-song-thi-truong-bat-dong-san-hai-phong-d107167.html'],
+  NTL: [null, 'không công bố tổng', 'https://tapchicongthuong.vn/do-thi-tu-liem--ntl--bat-tay-voi-tap-doan-ha-do--hdg--xay-thap-doi-47-tang-tai-khu-do-thi-dich-vong-123539.htm']};
+const SEG = {VHM: 'Đại đô thị, mọi phân khúc · cả nước · bán lẻ và bán buôn dự án', NVL: 'Đô thị sinh thái, nghỉ dưỡng · Đồng Nai, Bình Thuận, Vũng Tàu', KDH: 'Nhà phố, căn hộ trung–cao cấp · TP.HCM',
+  NLG: 'Nhà ở vừa túi tiền · TP.HCM, Long An, Đồng Nai', DXG: 'Căn hộ trung cấp · Bình Dương cũ; kèm môi giới (DXS)', PDR: 'Căn hộ, đất nền · Bình Dương, Bình Định',
+  DIG: 'Khu đô thị, nghỉ dưỡng · Vũng Tàu, Đồng Nai', CEO: 'Đất nền, nghỉ dưỡng · Phú Quốc, Hà Nội', AGG: 'Căn hộ trung cấp · TP.HCM', TCH: 'Căn hộ · Hải Phòng', NTL: 'Khu đô thị · Hà Nội, Quảng Ninh'};
+const FINSRC = '<a href="https://api-finfo.vndirect.com.vn/v4/financial_statements" target="_blank" rel="noopener">BCTC hợp nhất quý (VNDirect finfo)</a>';
+function modelTab() {
+  const host = $('#of-mt1-model .of-body'), D = window.RE_FIN; if (!host || !D || $('#re-cashlife')) return;
+  const P = D.periods, n = P.length, nf = (v, d = 0) => v == null || !isFinite(v) ? '—' : v.toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d});
+  const v = (t, k, i) => D.data[t]?.[k]?.[i] ?? null;
+  const sum = (ts, k, i) => { let a = 0, ok = 0; ts.forEach(t => { const x = v(t, k, i); if (x != null) { a += x; ok++; } }); return ok ? a : null; };
+  const ttm = (ts, k, i) => i < 3 ? null : [0, 1, 2, 3].reduce((a, j) => { const x = sum(ts, k, i - j); return a == null || x == null ? null : a + x; }, 0);
+  const ql = p => `Q${p.slice(-1)}/${p.slice(2, 4)}`;
+  // A. Sơ đồ
+  const steps = [['01', 'Đất & pháp lý', 'Trả tiền đất, bồi thường, tiền sử dụng đất', 'Tồn kho tăng · CFO âm', 'out'],
+    ['02', 'Xây dựng & mở bán', 'Vay ngân hàng, trái phiếu; nhận đặt cọc', 'Nợ vay tăng', 'out'],
+    ['03', 'Thu tiền theo tiến độ', 'Người mua đóng tiền theo tiến độ xây dựng', 'Người mua trả trước tăng · CFO dương', 'in'],
+    ['04', 'Bàn giao', 'Giao nhà, người mua trả trước chuyển thành doanh thu', 'Doanh thu, lợi nhuận ghi nhận', 'rec'],
+    ['05', 'Cấp sổ, thu nốt', 'Thu phần còn lại khi cấp giấy chứng nhận', 'Phải thu giảm', 'rec']];
+  const a = el('div', 'card of-wide'); a.id = 're-cashlife';
+  a.innerHTML = `<div class="chart-title">Vòng đời tiền của một dự án nhà ở</div><div class="chart-sub">Tiền chi ra trước, tiền khách trả vào giữa, lợi nhuận ghi nhận sau cùng · mỗi bước hiện lên BCTC ở khoản nào</div>
+    <div class="cl-flow">${steps.map(([k, t, d, b, c]) => `<div class="cl-step ${c}"><span class="cl-n">${k}</span><b>${t}</b><p>${d}</p><em>${b}</em></div>`).join('')}</div>
+    <div class="cl-key"><span class="out">Tiền ra</span><span class="in">Tiền vào</span><span class="rec">Ghi nhận lợi nhuận</span></div>
+    <div class="cl-ctl" role="group" aria-label="Nhóm"><button type="button" data-g="dev" aria-pressed="true">10 chủ đầu tư ngoài VHM</button><button type="button" data-g="vhm" aria-pressed="false">VHM</button></div>
+    <div style="position:relative;height:320px"><canvas id="chCashLife" role="img" aria-label="Người mua trả trước, doanh thu 4 quý và CFO 4 quý"></canvas></div>
+    <p class="of-lead" id="re-cashlife-lead"></p>
+    <div class="pw-src">Nguồn: ${FINSRC} · người mua trả trước là số dư cuối quý (ngắn hạn); doanh thu và CFO cộng 4 quý gần nhất; tỷ đồng</div>`;
+  host.prepend(a);
+  const G = {vhm: ['VHM'], dev: ['NVL', 'KDH', 'NLG', 'DXG', 'PDR', 'DIG', 'CEO', 'AGG', 'TCH', 'NTL']};
+  let ch;
+  const draw = g => { const ts = G[g], from = Math.max(3, P.indexOf('2020Q1')), idx = [...Array(n - from)].map((_, j) => from + j);
+    const adv = idx.map(i => sum(ts, 'adv_customers', i)), rev = idx.map(i => ttm(ts, 'revenue', i)), cfo = idx.map(i => ttm(ts, 'cfo', i));
+    ch?.destroy(); if (!window.Chart) return;
+    ch = new Chart($('#chCashLife'), {data: {labels: idx.map(i => ql(P[i])), datasets: [
+      {type: 'line', label: 'Người mua trả trước (số dư)', data: adv, borderColor: '#2BA5A8', backgroundColor: '#2BA5A8', borderWidth: 2.5, pointRadius: 0, tension: .25},
+      {type: 'line', label: 'Doanh thu 4 quý', data: rev, borderColor: '#2938A8', backgroundColor: '#2938A8', borderWidth: 2.5, pointRadius: 0, tension: .25},
+      {type: 'bar', label: 'CFO 4 quý', data: cfo, backgroundColor: cfo.map(x => x != null && x < 0 ? 'rgba(229,72,77,.45)' : 'rgba(43,182,115,.4)'), borderRadius: 3}]},
+      options: {responsive: true, maintainAspectRatio: false, animation: false, interaction: {mode: 'index', intersect: false},
+        plugins: {legend: {position: 'bottom', labels: {usePointStyle: true, boxWidth: 8, color: '#3B4256', font: {size: 12.5}}}, tooltip: {callbacks: {label: c => ` ${c.dataset.label}: ${nf(c.parsed.y)} tỷ đ`}}},
+        scales: {x: {grid: {display: false}, ticks: {color: '#6B7392', maxTicksLimit: 10, maxRotation: 0}}, y: {grid: {color: '#EEF0F6'}, ticks: {color: '#6B7392', callback: x => nf(x)}}}}});
+    const L = n - 1, Y = n - 5, r = (x, y) => x != null && y ? x / y : null;
+    const b1 = r(sum(ts, 'adv_customers', L), ttm(ts, 'revenue', L)), b0 = r(sum(ts, 'adv_customers', Y), ttm(ts, 'revenue', Y));
+    $('#re-cashlife-lead').innerHTML = `${g === 'vhm' ? 'VHM' : '10 chủ đầu tư'} đang giữ <b>${nf(sum(ts, 'adv_customers', L) / 1000, 1)} nghìn tỷ</b> tiền khách trả trước, bằng <b>${nf(b1, 2)} lần</b> doanh thu 4 quý (cùng kỳ ${nf(b0, 2)} lần): đây là phần doanh thu sẽ ghi nhận khi bàn giao. CFO 4 quý <b class="${ttm(ts, 'cfo', L) < 0 ? 'neg' : 'pos'}">${nf(ttm(ts, 'cfo', L))} tỷ đ</b>.`; };
+  a.querySelectorAll('.cl-ctl button').forEach(b => b.addEventListener('click', () => { a.querySelectorAll('.cl-ctl button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); draw(b.dataset.g); }));
+  draw('dev');
+  let cur = 'dev'; a.querySelectorAll('.cl-ctl button').forEach(b => b.addEventListener('click', () => { cur = b.dataset.g; }));
+  $('#of-mt1-model-tab')?.addEventListener('click', () => setTimeout(() => draw(cur), 60));
+  // C. Bảng mô hình theo mã
+  const L = n - 1, rows = Object.keys(SEG).map(t => { const debt = (v(t, 'st_debt', L) || 0) + (v(t, 'lt_debt', L) || 0), adv = v(t, 'adv_customers', L) || 0, eq = v(t, 'equity', L) || 0, tot = debt + adv + eq, rev = ttm([t], 'revenue', L);
+    return {t, debt: debt / tot * 100, adv: adv / tot * 100, eq: eq / tot * 100, inv: rev > 0 ? v(t, 'inventory', L) / rev : null, bl: rev > 0 ? adv / rev : null, land: LAND[t]}; }).sort((x, y) => (y.land[0] ?? -1) - (x.land[0] ?? -1));
+  const c = el('div', 'card of-wide'); c.id = 're-model-table';
+  const bar = r => `<div class="mt-bar" title="Nợ vay ${nf(r.debt)}% · khách trả trước ${nf(r.adv)}% · VCSH ${nf(r.eq)}%"><i class="d" style="width:${r.debt}%"></i><i class="a" style="width:${r.adv}%"></i><i class="e" style="width:${r.eq}%"></i></div><small>${nf(r.debt)} · ${nf(r.adv)} · ${nf(r.eq)}</small>`;
+  c.innerHTML = `<div class="chart-title">Mô hình kinh doanh theo doanh nghiệp</div><div class="chart-sub">Xếp theo quỹ đất · nguồn vốn, tồn kho và tiền trả trước tính từ BCTC ${ql(P[L])}</div>
+    <div class="tablewrap"><table class="mt-table" data-no-fold><thead><tr><th>Mã</th><th>Phân khúc · thị trường chính</th><th>Quỹ đất (ha)</th><th>Nguồn vốn: nợ vay · khách trả trước · VCSH (%)</th><th>Tồn kho ÷ doanh thu 4Q (lần)</th><th>Khách trả trước ÷ doanh thu 4Q (lần)</th></tr></thead><tbody>
+    ${rows.map(r => `<tr><td><b>${r.t}</b></td><td>${SEG[r.t]}</td><td><a href="${r.land[2]}" target="_blank" rel="noopener">${r.land[0] == null ? '—' : nf(r.land[0], r.land[0] < 100 ? 1 : 0)}</a><small> ${r.land[1]}</small></td><td>${bar(r)}</td><td>${nf(r.inv, 1)}</td><td>${nf(r.bl, 2)}</td></tr>`).join('')}</tbody></table></div>
+    <div class="cl-key"><span class="d">Nợ vay</span><span class="a">Khách trả trước</span><span class="e">Vốn chủ sở hữu</span></div>
+    <div class="pw-src">Nguồn: quỹ đất theo link từng dòng, số doanh nghiệp công bố hoặc báo dẫn lại, cách tính khác nhau giữa các mã · nguồn vốn, tồn kho, khách trả trước: ${FINSRC}. Tồn kho ÷ doanh thu cao nghĩa là cần nhiều năm bán theo tốc độ hiện tại; doanh thu 4 quý âm hoặc bằng 0 để trống.</div>`;
+  a.after(c);
+  const st = el('style'); st.textContent = `.cl-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:12px 0 6px}
+.cl-step{position:relative;padding:12px 12px 10px;border-radius:12px;border:1px solid #E6E9F2;border-top:4px solid #9AA1BC;background:#FAFBFE}.cl-step b{display:block;font:700 14px Inter,sans-serif;color:#1F2A5C;margin:2px 0 4px}
+.cl-step p{margin:0 0 6px;font-size:13px!important;line-height:1.45!important}.cl-step em{font-style:normal;font-size:12px;font-weight:600;color:#3B4256}.cl-n{font:700 11px Inter,sans-serif;color:#9AA1BC}
+.cl-step.out{border-top-color:#E5484D}.cl-step.in{border-top-color:#2BA5A8}.cl-step.rec{border-top-color:#2938A8}
+.cl-key{display:flex;gap:16px;flex-wrap:wrap;margin:6px 0 10px;font-size:12px;color:#5A6385}.cl-key span::before{content:'';display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:#9AA1BC}
+.cl-key .out::before,.cl-key .d::before{background:#E5484D}.cl-key .in::before,.cl-key .a::before{background:#2BA5A8}.cl-key .rec::before,.cl-key .e::before{background:#2938A8}
+.cl-ctl{display:flex;gap:8px;margin:8px 0}.cl-ctl button{padding:6px 14px;border:1px solid #D6DBEA;border-radius:999px;background:#fff;font:600 13px Inter,sans-serif;color:#3D4566;cursor:pointer}.cl-ctl button[aria-pressed=true]{background:#1F2677;border-color:#1F2677;color:#fff}
+.mt-bar{display:flex;height:12px;border-radius:6px;overflow:hidden;min-width:140px;background:#EEF0F6}.mt-bar i{display:block;height:100%}.mt-bar .d{background:#E5484D}.mt-bar .a{background:#2BA5A8}.mt-bar .e{background:#2938A8}
+.mt-table td small{color:#6B7392;font-size:11.5px}
+@media (max-width:900px){.cl-flow{grid-template-columns:1fr}}`; document.head.append(st);
+}
+
 function run() {
   if (document.body.dataset.reFrame) return; document.body.dataset.reFrame = '1';
   style();
@@ -291,6 +373,7 @@ function run() {
   const grp = (before, t, d) => { const n = block(before); if (n && n.parentElement?.classList.contains('of-body')) n.before(el('div', 'of-group of-wide', `<h3>${t}</h3><p>${d}</p>`)); };
   grp('bds-16', 'Lãi suất & tín dụng', 'Chi phí vốn của người mua nhà và chủ đầu tư.');
   grp('bds-28', 'Trái phiếu doanh nghiệp BĐS', 'Phát hành, dư nợ, chậm trả và lịch đáo hạn (HNX).');
+  modelTab();
   hideEmptyGaps();
   const finHost = financePane();
   nav(finHost);
