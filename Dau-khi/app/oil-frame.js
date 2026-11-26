@@ -465,6 +465,32 @@ function opsCards() {
     ['Sản lượng sản xuất', '6,15', ' triệu tấn', 'khoảng, 9 tháng 2026'], ['Sản lượng tiêu thụ', '6,08', ' triệu tấn', 'khoảng, 9 tháng 2026']],
     '<a href="https://giaoduc.net.vn/bsr-cung-co-noi-luc-mo-rong-khong-gian-tang-truong-post263415.gd" target="_blank" rel="noopener">Giáo dục & Thời đại, hội thảo nhà đầu tư BSR 15/10/2026</a>');
 }
+
+// Cung – cầu: một chart gộp. Cột = cung trừ cầu (trục phải, xanh dư cung / đỏ thiếu cung), đường = cung và cầu (trục trái).
+function supplyDemandCombo() {
+  const wb = window.SECTOR_DAILY?.sources?.world_balance, rec = wb?.records; const old = $('#chWorldSD'); if (!rec?.length || !old || $('#chSDCombo')) return;
+  const sdCard = old.closest('.fs-share-host') || old.closest('.card'), gapCard = $('#chWorldBalance')?.closest('.fs-share-host') || $('#chWorldBalance')?.closest('.card');
+  const labels = rec.map(r => r.year + (r.estimate ? 'E' : '')), nf = (v, d = 2) => v.toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d});
+  const last = rec.filter(r => !r.estimate).at(-1), next = rec.filter(r => r.estimate);
+  const sub = `triệu thùng/ngày, bình quân năm · ${last.year}: cung ${nf(last.supply)}, cầu ${nf(last.demand)} → ${last.balance >= 0 ? 'dư' : 'thiếu'} ${nf(Math.abs(last.balance))}` + (next.length ? ` · EIA dự báo ${next.map(r => `${r.year}E ${r.balance >= 0 ? 'dư' : 'thiếu'} ${nf(Math.abs(r.balance))}`).join(', ')}` : '');
+  const card = lineCard(sdCard.parentElement, {id: 'chSDCombo', before: sdCard, title: 'Cân bằng cung – cầu dầu toàn cầu', sub, h: 360,
+    labels, series: [], src: `<a href="https://www.eia.gov/outlooks/steo/" target="_blank" rel="noopener">EIA STEO ${wb.issue || ''}</a> · bảng 3a: cung (papr_world), cầu (patc_world); năm có tháng dự báo ghi E`});
+  if (!card) return;
+  const t = sdCard.querySelector('details'); if (t) card.append(t);
+  const cv = card.querySelector('canvas'), ch = window.Chart?.getChart?.(cv); if (ch) ch.destroy();
+  const bal = rec.map(r => r.balance), lim = Math.ceil(Math.max(...bal.map(Math.abs)) + .5);
+  new Chart(cv, {data: {labels, datasets: [
+      {type: 'line', label: 'Cung toàn cầu', data: rec.map(r => r.supply), borderColor: '#7A1F4F', backgroundColor: '#7A1F4F', borderWidth: 2.5, pointRadius: 4, tension: .2, yAxisID: 'y', order: 1, segment: {borderDash: c => rec[c.p1DataIndex]?.estimate ? [6, 4] : undefined}},
+      {type: 'line', label: 'Cầu toàn cầu', data: rec.map(r => r.demand), borderColor: '#2BA5A8', backgroundColor: '#2BA5A8', borderWidth: 2.5, pointRadius: 4, tension: .2, yAxisID: 'y', order: 1, segment: {borderDash: c => rec[c.p1DataIndex]?.estimate ? [6, 4] : undefined}},
+      {type: 'bar', label: 'Cung trừ cầu (dư + / thiếu −)', data: bal, backgroundColor: rec.map(r => (r.balance >= 0 ? 'rgba(43,165,168,' : 'rgba(229,72,77,') + (r.estimate ? '.35)' : '.6)')), borderColor: rec.map(r => r.balance >= 0 ? '#2BA5A8' : '#E5484D'), borderWidth: rec.map(r => r.estimate ? 1.5 : 0), borderRadius: 4, barPercentage: .55, yAxisID: 'y2', order: 2}]},
+    options: {responsive: true, maintainAspectRatio: false, interaction: {mode: 'index', intersect: false},
+      plugins: {legend: {position: 'bottom', labels: {usePointStyle: true, boxWidth: 8, color: '#3B4256', font: {size: 12.5}}}, tooltip: {callbacks: {label: c => ` ${c.dataset.label}: ${nf(c.parsed.y)} tr thùng/ngày`}}},
+      scales: {x: {grid: {display: false}, ticks: {color: '#3B4256', font: {size: 12.5, weight: 600}}},
+        y: {position: 'left', grid: {color: '#EEF0F6'}, ticks: {color: '#6B7392', callback: v => nf(v, 0)}, title: {display: true, text: 'Cung, cầu (tr thùng/ngày)', color: '#6B7392'}},
+        y2: {position: 'right', min: -lim, max: lim, grid: {display: false}, ticks: {color: '#6B7392', callback: v => (v > 0 ? '+' : '') + nf(v, 0)}, title: {display: true, text: 'Cung − cầu', color: '#6B7392'}}}},
+    plugins: [{id: 'zeroLine', afterDraw(c) { const y = c.scales.y2.getPixelForValue(0), {left, right} = c.chartArea, x = c.ctx; x.save(); x.strokeStyle = '#9AA1BC'; x.setLineDash([3, 3]); x.beginPath(); x.moveTo(left, y); x.lineTo(right, y); x.stroke(); x.restore(); }}]});
+  [sdCard, gapCard].forEach(n => { if (n) { n.hidden = true; n.classList.add('of-hidden-legacy'); } });
+}
 function run() {
   if (document.body.dataset.oilFrame) return; document.body.dataset.oilFrame = '1';
   style();
@@ -483,6 +509,7 @@ function run() {
   topExporters();
   unfoldCards(['dau-khi-28']);
   crudeLayout();
+  supplyDemandCombo();
   tankerRates();
   lngPrices();
   taxTimeline();
