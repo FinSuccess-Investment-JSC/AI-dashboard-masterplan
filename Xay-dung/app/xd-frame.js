@@ -278,9 +278,9 @@ function kpiTiles(list) { // [label, value, unit, delta, sub, go]
 const lastRec = rs => rs?.at(-1);
 const kCem = () => { const l = lastRec(S.cem); return l ? ['Sản lượng xi măng', nf(l.value, 1), 'triệu tấn', `${sg(sameMonthYoY(S.cem), 1)}% so cùng kỳ`, `${dmy(ym(l.date))} · Cục Thống kê`, '?section=cement&g=cement-output#mt2'] : null; };
 const kCoal = () => { const l = lastRec(S.coal); return l ? ['Than Newcastle', nf(l.value, 0), 'USD/tấn', `${sg(yoyDay(S.coal), 1)}% so cùng kỳ`, `${dmy(l.date)} · ICE`, '?section=cement&g=cement-input#mt2'] : null; };
-const kCp = () => { const l = lastRec(S.cp); return l ? ['Xi măng PCB40 Hà Nội', nf(l.value / 1e6, 2), 'triệu đ/tấn', '', `${dmy(l.date)} · Sở Xây dựng Hà Nội`, '?section=stone&g=stone-price#mt2'] : null; };
+const kCp = () => { const l = lastRec(S.cp); return l ? ['Xi măng PCB40 Hà Nội', nf(l.value / 1e6, 2), 'triệu đ/tấn', '', `${dmy(l.date)} · Sở Xây dựng Hà Nội`, '?section=stone#mt2'] : null; };
 const kAsph = () => { const l = lastRec(S.asph); return l ? ['Nhựa đường SHFE (giá tham chiếu quốc tế)', nf(l.value, 0), 'CNY/tấn', `${sg(yoyDay(S.asph), 1)}% so cùng kỳ`, `${dmy(l.date)} · SHFE`, '?section=asphalt#mt2'] : null; };
-const kStone = () => { const l = lastRec(S.stone); return l ? ['Đá 1x2 (giá công bố)', nf(l.value, 0), 'đồng', `${sg(yoyDay(S.stone), 1)}% so cùng kỳ`, `${dmy(l.date)} · Sở Xây dựng qua WiData`, '?section=stone&g=stone-price#mt2'] : null; };
+const kStone = () => { const l = lastRec(S.stone); return l ? ['Đá 1x2 (giá công bố)', nf(l.value, 0), 'đồng', `${sg(yoyDay(S.stone), 1)}% so cùng kỳ`, `${dmy(l.date)} · Sở Xây dựng qua WiData`, '?section=stone#mt2'] : null; };
 function yoyDay(rs) { const l = lastRec(rs); if (!l) return null; const t = new Date(l.date); t.setFullYear(t.getFullYear() - 1); const k = t.toISOString().slice(0, 10); const p = [...rs].reverse().find(r => r.date <= k); return p && p.value ? (l.value / p.value - 1) * 100 : null; }
 function coalChart() {
   const m = monthly(S.coal || []).slice(-36); if (!m.length) return gap('chưa có chuỗi giá than.');
@@ -330,43 +330,41 @@ function contractorPane(p) {
     panel('bot-m', '3.5', 'Biên gộp doanh nghiệp BOT đi thế nào?', gmChart(bot, 'Biên gộp theo quý (%)', 'Số hợp nhất gồm thu phí, xây lắp và mảng khác (CII, HUT có bất động sản).')));
 }
 function cementPane(p) {
+  block('xd-61')?.remove(); // 26/11/2026 (người dùng): bỏ bảng "Xi măng: công suất, kế hoạch, kết quả 6T/2026"
   p.append(kpiTiles([kCem(), kCoal(), kCp()]) || '',
-    flow([['xd-st-cement-input', 'Khâu 1', 'Than, chi phí đầu vào'], ['xd-st-cement-output', 'Khâu 2', 'Công suất, sản lượng'], ['xd-st-cement-sales', 'Khâu 3', 'Tiêu thụ nội địa, xuất khẩu'], ['xd-st-cement-price', 'Khâu 4', 'Giá bán, biên']]),
+    flow([['xd-st-cement-input', 'Khâu 1', 'Than, chi phí đầu vào'], ['xd-st-cement-output', 'Khâu 2', 'Sản lượng'], ['xd-st-cement-sales', 'Khâu 3', 'Tiêu thụ nội địa, xuất khẩu'], ['xd-st-cement-price', 'Khâu 4', 'Biên gộp']]),
     stage('cement-input', 'Khâu 1', 'Than, chi phí đầu vào'),
     panel('cement-coal', '4.1', 'Giá than, nhiên liệu chính của lò nung, đang ở đâu?', coalChart()),
-    stage('cement-output', 'Khâu 2', 'Công suất, sản lượng'),
-    panel('cement-out', '4.2', 'Sản lượng xi măng theo tháng và công suất từng doanh nghiệp', [take('xd-20'), take('xd-61')]),
+    stage('cement-output', 'Khâu 2', 'Sản lượng'),
+    panel('cement-out', '4.2', 'Sản lượng xi măng theo tháng', take('xd-20')),
     stage('cement-sales', 'Khâu 3', 'Tiêu thụ nội địa, xuất khẩu'),
     panel('cement-sd', '4.3', 'Tiêu thụ nội địa và xuất khẩu so công suất (cùng năm 2025, triệu tấn)', take('xd-23'), 'Chỉ so cung với cầu trong cùng kỳ, cùng đơn vị. Thuế xuất khẩu clinker 5% đến hết 2026 ghi trong bảng.'),
     panel('cement-exp', '4.4', 'Kim ngạch xuất khẩu clinker, xi măng theo tháng (triệu USD)', take('xd-21'), 'Đơn vị USD, không so trực tiếp với số tấn ở mục trên.'),
-    stage('cement-price', 'Khâu 4', 'Giá bán, biên'),
-    panel('cement-m', '4.5', 'Giá bán xi măng và biên gộp HT1, BCC', [gmChart(['HT1', 'BCC'], 'Biên gộp HT1, BCC theo quý (%)', 'Số hợp nhất toàn doanh nghiệp.'), card(`<p>Giá xi măng công bố tại Hà Nội theo quý ở ${go('Đá & cát › Giá', '?section=stone&g=stone-price#mt2')}; các đợt tăng giá 2026 ở ${go('Chủ đề nóng', '#mt7')}.</p>`)]));
+    stage('cement-price', 'Khâu 4', 'Biên gộp'),
+    panel('cement-m', '4.5', 'Biên gộp HT1, BCC đi thế nào?', gmChart(['HT1', 'BCC'], 'Biên gộp HT1, BCC theo quý (%)', 'Số hợp nhất toàn doanh nghiệp.')));
 }
 function stonePane(p) {
-  const cap = card(`<div class="chart-title">Công suất khai thác được phép và vùng cung ứng</div><div class="chart-sub">theo công bố doanh nghiệp · vùng theo vị trí mỏ</div><div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold><thead><tr><th>Mã</th><th>Công suất khai thác</th><th>Vùng</th><th>Công trình được cung ứng (có nguồn xác nhận)</th></tr></thead><tbody>
-    <tr><td><span class="xd-tk">VLB</span></td><td>5,7 triệu m³/năm; 5 mỏ, trữ lượng trên 86 triệu m³</td><td>Đồng Nai</td><td>Sân bay Long Thành: cấp 1,6 triệu m³ (${ext('DN&PL', 'https://doanhnhan.baophapluat.vn/xay-dung-va-san-xuat-vat-lieu-xay-dung-bien-hoa-vlb-bao-lai-rong-quy-ii-2026-dat-374-ty-dong-hoan-nhap-344-ty-dong-tien-cap-quyen-khai-thac.html')})</td></tr>
-    <tr><td><span class="xd-tk">KSB</span></td><td>Đá 2026 ~4 triệu m³; mỏ Tân Mỹ 2,2 triệu m³/năm; giấy phép mỏ Phước Vĩnh hết 6/2027</td><td>Bình Dương cũ (TP.HCM)</td><td><span class="xd-na">Chưa có nguồn xác nhận quan hệ cung ứng</span></td></tr>
-    <tr><td><span class="xd-tk">DHA</span></td><td>3 mỏ 1,606 triệu m³/năm; Tân Cang 3 trữ lượng 35,6 triệu m³ (2025)</td><td>Đồng Nai</td><td><span class="xd-na">Chưa có nguồn xác nhận; nhu cầu đá Long Thành ~18 triệu m³ (số 2025) là nhu cầu dự án, không phải hợp đồng của DHA</span></td></tr></tbody></table></div><div class="pw-src">Nguồn: bảng mỏ đá bên trên (đường dẫn từng mã)</div>`);
-  const t6 = card(`<div class="chart-title">Biến động giá công bố T6/2025 so T5/2025</div><div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold><tbody><tr><td>Cát</td><td class="n">+29,95% đến +58,45%</td></tr><tr><td>Đá</td><td class="n">+7,3% đến +11,11%</td></tr></tbody></table></div><div class="pw-src">Nguồn: ${artLink('baodauthau-da-0908')}</div>`);
+  // 26/11/2026 (người dùng): bỏ khâu "Mỏ, giấy phép" (bảng xd-63); nguồn từng mã của bảng công suất lấy từ cột Nguồn của bảng đó.
+  const x63 = block('xd-63'), srcOfTk = t => { const tr = [...(x63?.querySelectorAll('tbody tr') || [])].find(r => r.cells[0]?.textContent.trim() === t); return tr ? tr.cells[tr.cells.length - 1].innerHTML : '<span class="xd-na">—</span>'; };
+  const cap = card(`<div class="chart-title">Công suất khai thác được phép và vùng cung ứng</div><div class="chart-sub">theo công bố doanh nghiệp · vùng theo vị trí mỏ</div><div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold><thead><tr><th>Mã</th><th>Công suất khai thác</th><th>Vùng</th><th>Công trình được cung ứng (có nguồn xác nhận)</th><th>Nguồn</th></tr></thead><tbody>
+    <tr><td><span class="xd-tk">VLB</span></td><td>5,7 triệu m³/năm; 5 mỏ, trữ lượng trên 86 triệu m³</td><td>Đồng Nai</td><td>Sân bay Long Thành: cấp 1,6 triệu m³</td><td>${srcOfTk('VLB')}</td></tr>
+    <tr><td><span class="xd-tk">KSB</span></td><td>Đá 2026 ~4 triệu m³; mỏ Tân Mỹ 2,2 triệu m³/năm; giấy phép mỏ Phước Vĩnh hết 6/2027</td><td>Bình Dương cũ (TP.HCM)</td><td><span class="xd-na">Chưa có nguồn xác nhận quan hệ cung ứng</span></td><td>${srcOfTk('KSB')}</td></tr>
+    <tr><td><span class="xd-tk">DHA</span></td><td>3 mỏ 1,606 triệu m³/năm; Tân Cang 3 trữ lượng 35,6 triệu m³ (2025)</td><td>Đồng Nai</td><td><span class="xd-na">Chưa có nguồn xác nhận; nhu cầu đá Long Thành ~18 triệu m³ (số 2025) là nhu cầu dự án, không phải hợp đồng của DHA</span></td><td>${srcOfTk('DHA')}</td></tr></tbody></table></div><div class="pw-src">Nguồn: cột Nguồn từng dòng</div>`);
+  x63?.remove();
+  // 26/11/2026 (người dùng): bỏ khâu "Giá, chi phí giao tới công trình" (giá công bố Hà Nội xd-24, giá tại công trình phía Nam xd-62,
+  // biến động giá T6/2025). Giá đá 1x2, xi măng PCB40 vẫn ở ô số đầu tab.
+  ['xd-24', 'xd-62'].forEach(id => block(id)?.remove());
   p.append(kpiTiles([kStone(), kCp()]) || '',
-    flow([['xd-st-stone-mine', 'Khâu 1', 'Mỏ, giấy phép'], ['xd-st-stone-cap', 'Khâu 2', 'Công suất được phép, vùng cung'], ['xd-st-stone-price', 'Khâu 3', 'Giá, chi phí giao tới công trình']]),
-    stage('stone-mine', 'Khâu 1', 'Mỏ, giấy phép'),
-    panel('stone-m', '5.1', 'Doanh nghiệp có những mỏ nào, giấy phép đến khi nào?', [take('xd-63'), gap((H.policy_gaps || {}).mine || 'văn bản cấp mỏ.')]),
-    stage('stone-cap', 'Khâu 2', 'Công suất được phép, vùng cung'),
-    panel('stone-c', '5.2', 'Công suất khai thác và vùng cung ứng', cap, 'Chỉ gắn mỏ với công trình khi có nguồn xác nhận quan hệ cung ứng.'),
-    stage('stone-price', 'Khâu 3', 'Giá, chi phí giao tới công trình'),
-    panel('stone-p', '5.3', 'Giá đá, cát tại mỏ và tại công trình', [take('xd-24'), take('xd-62'), t6], 'Giá tại công trình gồm vận chuyển; giá tại mỏ là giá doanh nghiệp có mỏ bán ra.'));
+    stage('stone-cap', 'Khâu 1', 'Công suất được phép, vùng cung'),
+    panel('stone-c', '5.1', 'Công suất khai thác và vùng cung ứng', cap, 'Chỉ gắn mỏ với công trình khi có nguồn xác nhận quan hệ cung ứng.'));
 }
 function asphaltPane(p) {
   const x22 = take('xd-22'); if (x22) x22.append(el('div', 'pw-src-note', 'SHFE là giá hợp đồng tương lai nhựa đường sàn Thượng Hải (CNY/tấn), dùng làm giá tham chiếu quốc tế; không phải giá nhà thầu mua trong nước.'));
+  // 26/11/2026 (người dùng): bỏ khâu "Giá mua trong nước" (bảng PLC xd-64) và "Chi phí thi công".
+  block('xd-64')?.remove();
   p.append(kpiTiles([kAsph()]) || '',
-    flow([['xd-st-asph-ref', 'Khâu 1', 'Giá tham chiếu quốc tế'], ['xd-st-asph-dom', 'Khâu 2', 'Giá mua trong nước'], ['xd-st-asph-cost', 'Khâu 3', 'Chi phí thi công']]),
     stage('asph-ref', 'Khâu 1', 'Giá tham chiếu quốc tế'),
-    panel('asph-r', '6.1', 'Giá nhựa đường tham chiếu (SHFE) đi thế nào?', x22),
-    stage('asph-dom', 'Khâu 2', 'Giá mua trong nước'),
-    panel('asph-d', '6.2', 'Giá nhựa đường trong nước và doanh nghiệp bán', [gap('chưa có giá nhựa đường theo đồng/tấn trong nguồn mở được.'), take('xd-64')]),
-    stage('asph-cost', 'Khâu 3', 'Chi phí thi công'),
-    panel('asph-c', '6.3', 'Nhựa đường tác động chi phí thi công thế nào?', card(`<p>Nhựa đường chiếm 31,25% rổ giá vật liệu nhà thầu đường. ${go('Rổ giá vật liệu', '?section=contractor&g=infra-cost#mt2')}</p><div class="pw-src">Nguồn: ${BASKET_SRC}</div>`)));
+    panel('asph-r', '6.1', 'Giá nhựa đường tham chiếu (SHFE) đi thế nào?', x22));
 }
 function glassPane(p) {
   p.append(flow([['xd-st-glass-cap', 'Khâu 1', 'Công suất'], ['xd-st-glass-sales', 'Khâu 2', 'Tiêu thụ, giá bán'], ['xd-st-glass-eff', 'Khâu 3', 'Hiệu quả mảng vật liệu']]),
