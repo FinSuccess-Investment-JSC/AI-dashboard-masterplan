@@ -576,6 +576,8 @@ function run() {
   taxTimeline();
   vnMonthly();
   opsCards();
+  // 26/11/2026: Giá sản phẩm USGC (Brent, xăng, diesel) trùng chart Crack spread USGC, cùng ba chuỗi EIA.
+  { const m = block('dau-khi-21'); if (m) { m.hidden = true; m.classList.add('of-hidden-legacy'); } }
   hideEmptyGaps();
   const finHost = financePane();
   nav(finHost);
