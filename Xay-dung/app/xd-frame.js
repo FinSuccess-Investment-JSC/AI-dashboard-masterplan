@@ -408,40 +408,94 @@ function policyPane(p) {
   p.append(...body, el('p', 'xd-na', 'Giá vật liệu thương mại chuyển về Đá & cát (giá công bố) và Xi măng (thuế xuất khẩu clinker). Phòng vệ thương mại thép ở dashboard Thép.'));
 }
 
-/* ---------- Tài chính ngành (#mt14) › 02 Doanh nghiệp niêm yết ---------- */
-function companiesPane(p, pane1) {
-  const V = window.COMPANY_VALUATION?.companies || {};
-  const groups = F?.groups || [], comps = F?.companies || [];
-  const quick = card(`<div class="kc-qv">${comps.map(c => { const v = V[c.ticker]; return `<div class="kc-qv-t"><span class="xd-tk">${c.ticker}${c.mixed ? '*' : ''}</span><b>${v && fin(v.pe) ? nf(v.pe, 1) + 'x P/E' : 'P/E —'}</b><span>${v && fin(v.pb) ? nf(v.pb, 2) + 'x P/B' : 'P/B —'}</span><small>${esc(groups.find(g => g.id === c.group)?.label || '')} · định giá ${dmy(v?.date)}</small></div>`; }).join('')}</div><div class="pw-src">Nguồn: ${ext('VNDirect (P/E, P/B theo phiên)', 'https://www.vndirect.com.vn/')}</div><div class="pw-src-note">Dấu * là doanh nghiệp đa ngành. EPS, giá trị sổ sách theo BCTC gần nhất VNDirect dùng.</div>`);
-  const pe = PUB.sector_ratio?.by_sector?.['264']?.records || [], pl = pe.at(-1);
-  const peTile = pl ? kpiTiles([['P/E nhóm xi măng', nf(pl[1], 1) + 'x', '', `P/B ${nf(pl[2], 2)}x`, `phiên ${dmy(pl[0])} · VNDirect, rổ ngành xi măng`]]) : null;
-  const val = block('xd-03'); if (val) val.closest('.grid')?.classList.remove('grid');
-  // Bảng theo mô hình: LNST hợp nhất và thuộc cổ đông mẹ (TTM), ứng trước, phải thu (số dư), từ XD_FIN.
-  let byModel = gap('chưa tải được BCTC quý.');
-  if (F) { const P = F.periods; const row = c => { const d = F.data[c.ticker]; if (!d) return ''; let i = P.length - 1; while (i >= 0 && !fin(d.revenue[i])) i--; const T = k => i >= 3 && d[k].slice(i - 3, i + 1).every(fin) ? d[k].slice(i - 3, i + 1).reduce((a, b) => a + b, 0) : null; const adv = fin(d.adv_customers[i]) ? d.adv_customers[i] + (d.adv_customers_lt[i] || 0) : null, rv = T('revenue');
-      return `<tr><td><span class="xd-tk">${c.ticker}${c.mixed ? '*' : ''}</span></td><td>${esc((c.note || '').split(':')[1] || c.note || '')}${c.ticker === 'CTD' ? '<br><span class="xd-na">năm tài chính 1/7–30/6</span>' : ''}</td><td class="n">${qL(P[i])}</td><td class="n">${nf(rv)}</td><td class="n">${nf(T('npat'))}</td><td class="n">${nf(T('npat_parent'))}</td><td class="n">${fin(adv) && rv ? nf(adv / rv, 2) : '—'}</td><td class="n">${fin(d.receivables[i]) && rv ? nf(d.receivables[i] / rv, 2) : '—'}</td></tr>`; };
-    byModel = card(`<div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold><thead><tr><th>Mã</th><th>Hoạt động</th><th>Kỳ BCTC</th><th>Doanh thu TTM (tỷ đ)</th><th>LNST hợp nhất TTM</th><th>LNST thuộc cổ đông mẹ TTM</th><th>Ứng trước / Doanh thu TTM (lần)</th><th>Phải thu KH / Doanh thu TTM (lần)</th></tr></thead>${groups.map(g => `<tbody><tr><th colspan="8" style="color:${g.color}">${esc(g.label)}</th></tr>${comps.filter(c => c.group === g.id).map(row).join('')}</tbody>`).join('')}</table></div>
-      <div class="pw-src">Nguồn: ${ext('BCTC hợp nhất theo quý (VNDirect finfo)', 'https://api-finfo.vndirect.com.vn/v4/financial_statements')}; tự tính TTM</div><div class="pw-src-note">LNST hợp nhất gồm lợi ích cổ đông không kiểm soát; LNST thuộc cổ đông công ty mẹ là phần của cổ đông doanh nghiệp. Ứng trước = người mua trả tiền trước ngắn + dài hạn (số dư). Phải thu KH = phải thu khách hàng ngắn hạn (số dư), không gồm phải thu theo tiến độ HĐXD. Dấu * là đa ngành: số gồm mảng khác.</div>`); }
-  // Hợp đồng, liên danh, backlog: tách giá trị toàn gói, phần của doanh nghiệp, backlog công bố (từ bảng doanh nghiệp xd-60).
-  const NA = '<span class="xd-na">chưa công bố</span>';
-  const ct = card(`<div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold><thead><tr><th>Mã</th><th>Hợp đồng, gói thầu</th><th>Giá trị toàn gói (tỷ đ)</th><th>Phần thuộc doanh nghiệp (tỷ đ)</th><th>Backlog công bố (tỷ đ)</th></tr></thead><tbody>
-    <tr><td><span class="xd-tk">CTD</span></td><td>Lego, Nhà hát Opera, sân bay Gia Bình</td><td>${NA}</td><td>${NA}</td><td class="n">~65.000</td></tr>
-    <tr><td><span class="xd-tk">HBC</span></td><td>Hợp đồng nước ngoài 72 triệu USD (2026)</td><td>${NA}</td><td>${NA}</td><td class="n">&gt;15.000</td></tr>
-    <tr><td><span class="xd-tk">VCG</span></td><td>Long Thành gói 5.10 (liên danh Vietur)</td><td class="n">&gt;35.000</td><td>${NA}</td><td>${NA}</td></tr>
-    <tr><td><span class="xd-tk">FCN</span></td><td>Sân bay Gia Bình</td><td>${NA}</td><td class="n">~1.600</td><td class="n">~10.000</td></tr>
-    <tr><td><span class="xd-tk">DPG</span></td><td>Cầu Trần Hưng Đạo; Vành đai 4</td><td>${NA}</td><td class="n">2.896; 1.221</td><td class="n">&gt;8.000 (xây lắp)</td></tr>
-    <tr><td><span class="xd-tk">C4G</span></td><td>Cầu Ninh Cường; ký mới 2025</td><td>${NA}</td><td class="n">~453; &gt;2.700</td><td>${NA}</td></tr>
-    <tr><td><span class="xd-tk">LCG</span></td><td>Đường Di sản Hưng Yên; cao tốc Nội Bài – Lào Cai</td><td>${NA}</td><td class="n">1.140; ~1.400</td><td>${NA}</td></tr>
-    <tr><td><span class="xd-tk">HHV</span></td><td>Ký mới 2026</td><td>${NA}</td><td class="n">~2.000</td><td>${NA}</td></tr></tbody></table></div>
+/* ---------- Tài chính ngành (#mt14): 4 tab loại hình doanh nghiệp (26/11/2026, người dùng) ----------
+   Cùng một thanh tab ở cả 01 Tài chính ngành và 02 Doanh nghiệp niêm yết; chọn một loại hình là đổi cả hai. URL ?fin=…&m=<nhóm>#mt14. */
+const MODEL_TABS = (F?.groups || []).map((g, i) => [g.id, String(i + 1).padStart(2, '0'), g.label, g.color]);
+let MODEL = MODEL_TABS[0]?.[0] || 'civil';
+const BARS = [];
+function modelBar() {
+  const nav = el('div', 'xd-mtabs'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Loại hình doanh nghiệp');
+  MODEL_TABS.forEach(([k, n, l, c]) => { const b = el('button', 'xd-mtab', `<i style="background:${c}"></i><span>${n}</span>${esc(l)}<small>${(F.companies || []).filter(x => x.group === k).length} mã</small>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.xdModel = k; nav.append(b); });
+  nav.addEventListener('click', e => { const b = e.target.closest('[data-xd-model]'); if (b) navigate(`?fin=${TABS.mt14?.cur || 'fin'}&m=${b.dataset.xdModel}#mt14`, true, true); });
+  nav.addEventListener('keydown', e => { const d = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!d) return; e.preventDefault(); const ks = MODEL_TABS.map(x => x[0]), n = ks[(ks.indexOf(MODEL) + d + ks.length) % ks.length]; navigate(`?fin=${TABS.mt14?.cur || 'fin'}&m=${n}#mt14`, true, true); nav.querySelector(`[data-xd-model="${n}"]`)?.focus(); });
+  BARS.push(nav); return nav;
+}
+const MPANES = {};
+function setModel(k) {
+  if (!MODEL_TABS.some(x => x[0] === k)) k = MODEL_TABS[0]?.[0];
+  MODEL = k;
+  BARS.forEach(nav => [...nav.children].forEach(b => { const on = b.dataset.xdModel === k; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; b.classList.toggle('active', on); }));
+  Object.entries(MPANES).forEach(([g, d]) => { d.hidden = g !== k; });
+  window.XdFinance?.setGroup(k);
+  refit(document.getElementById('pane-mt14')); setTimeout(() => dispatchEvent(new Event('pv:toc')), 120);
+}
+const BASKET_NOTE = 'Rổ ngành của VNDirect, thành phần khác nhóm loại hình của dashboard';
+function basketBlock(codes) {
+  const BY = PUB.sector_ratio?.by_sector || {};
+  const ks = Object.keys(BY).filter(k => (BY[k].members || []).some(m => codes.includes(m)));
+  if (!ks.length) return gap('chưa có rổ định giá ngành chứa các mã này.');
+  const cols = ['#1D2678', '#2a9fa3', '#c98a00', '#861C52'];
+  const dates = [...new Set(ks.flatMap(k => BY[k].records.map(r => r[0])))].sort().filter((_, i, a) => (a.length - 1 - i) % 5 === 0).slice(-110);
+  const ser = ks.map((k, i) => { const m = new Map(BY[k].records.map(r => [r[0], r[2]])); return {name: 'P/B ' + BY[k].name, color: cols[i % cols.length], values: dates.map(d => m.get(d) ?? null)}; });
+  const ch = lineChart('P/B rổ ngành theo phiên (lần)', 'mỗi 5 phiên · rổ ngành VNDirect có chứa mã của nhóm', dates.map(dmy), ser, {unit: 'lần', digits: 2, src: ext('VNDirect · chỉ số định giá ngành', PUB.sector_ratio?.url || 'https://www.vndirect.com.vn/'), note: BASKET_NOTE + '; vốn hóa và thành phần ở bảng dưới.'});
+  const tbl = card(`<div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold data-fs-tl="1"><thead><tr><th>Rổ ngành</th><th>Thành phần</th><th>P/E</th><th>P/B</th><th>Vốn hóa (tỷ đ)</th><th>Phiên</th></tr></thead><tbody>${ks.map(k => { const l = BY[k].records.at(-1); return `<tr><td><b>${esc(BY[k].name)}</b></td><td>${(BY[k].members || []).map(m => `<span class="xd-tk"${codes.includes(m) ? '' : ' style="opacity:.55"'}>${m}</span>`).join('')}</td><td class="n">${nf(l?.[1], 1)}x</td><td class="n">${nf(l?.[2], 2)}x</td><td class="n">${nf(l?.[3], 0)}</td><td class="n">${dmy(l?.[0])}</td></tr>`; }).join('')}</tbody></table></div><div class="pw-src">Nguồn: ${ext('VNDirect · chỉ số định giá ngành', PUB.sector_ratio?.url || 'https://www.vndirect.com.vn/')}</div><div class="pw-src-note">Mã mờ là mã trong rổ nhưng thuộc nhóm loại hình khác.</div>`);
+  return [ch, tbl];
+}
+function finRows(codes) {
+  if (!F) return gap('chưa tải được BCTC quý.');
+  const P = F.periods, comps = F.companies.filter(c => codes.includes(c.ticker));
+  const row = c => { const d = F.data[c.ticker]; if (!d) return ''; let i = P.length - 1; while (i >= 0 && !fin(d.revenue[i])) i--; const T = k => i >= 3 && d[k].slice(i - 3, i + 1).every(fin) ? d[k].slice(i - 3, i + 1).reduce((a, b) => a + b, 0) : null; const adv = fin(d.adv_customers[i]) ? d.adv_customers[i] + (d.adv_customers_lt[i] || 0) : null, rv = T('revenue');
+    return `<tr><td><span class="xd-tk">${c.ticker}${c.mixed ? '*' : ''}</span></td><td>${esc((c.note || '').split(':')[1] || c.note || '')}${c.ticker === 'CTD' ? '<br><span class="xd-na">năm tài chính 1/7–30/6</span>' : ''}</td><td class="n">${qL(P[i])}</td><td class="n">${nf(rv)}</td><td class="n">${nf(T('npat'))}</td><td class="n">${nf(T('npat_parent'))}</td><td class="n">${fin(adv) && rv ? nf(adv / rv, 2) : '—'}</td><td class="n">${fin(d.receivables[i]) && rv ? nf(d.receivables[i] / rv, 2) : '—'}</td></tr>`; };
+  return card(`<div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold><thead><tr><th>Mã</th><th>Hoạt động</th><th>Kỳ BCTC</th><th>Doanh thu TTM (tỷ đ)</th><th>LNST hợp nhất TTM</th><th>LNST thuộc cổ đông mẹ TTM</th><th>Ứng trước / Doanh thu TTM (lần)</th><th>Phải thu KH / Doanh thu TTM (lần)</th></tr></thead><tbody>${comps.map(row).join('')}</tbody></table></div>
+    <div class="pw-src">Nguồn: ${ext('BCTC hợp nhất theo quý (VNDirect finfo)', 'https://api-finfo.vndirect.com.vn/v4/financial_statements')}; tự tính TTM</div><div class="pw-src-note">LNST hợp nhất gồm lợi ích cổ đông không kiểm soát; LNST thuộc cổ đông công ty mẹ là phần của cổ đông doanh nghiệp. Ứng trước = người mua trả tiền trước ngắn + dài hạn (số dư). Phải thu KH = phải thu khách hàng ngắn hạn (số dư), không gồm phải thu theo tiến độ HĐXD. Dấu * là đa ngành: số gồm mảng khác.</div>`);
+}
+// Hợp đồng, liên danh, backlog: tách giá trị toàn gói, phần của doanh nghiệp, backlog công bố (từ bảng doanh nghiệp xd-60).
+const NA = '<span class="xd-na">chưa công bố</span>';
+const CONTRACTS = [['CTD', 'Lego, Nhà hát Opera, sân bay Gia Bình', NA, NA, '~65.000'], ['HBC', 'Hợp đồng nước ngoài 72 triệu USD (2026)', NA, NA, '&gt;15.000'],
+  ['VCG', 'Long Thành gói 5.10 (liên danh Vietur)', '&gt;35.000', NA, NA], ['FCN', 'Sân bay Gia Bình', NA, '~1.600', '~10.000'], ['DPG', 'Cầu Trần Hưng Đạo; Vành đai 4', NA, '2.896; 1.221', '&gt;8.000 (xây lắp)'],
+  ['C4G', 'Cầu Ninh Cường; ký mới 2025', NA, '~453; &gt;2.700', NA], ['LCG', 'Đường Di sản Hưng Yên; cao tốc Nội Bài – Lào Cai', NA, '1.140; ~1.400', NA], ['HHV', 'Ký mới 2026', NA, '~2.000', NA]];
+function contractsFor(codes) {
+  const L = CONTRACTS.filter(r => codes.includes(r[0])); if (!L.length) return gap('doanh nghiệp vật liệu không công bố backlog hợp đồng; sản lượng, công suất ở Bức tranh ngành (Xi măng, Đá & cát, Nhựa đường, Kính & gạch).');
+  return card(`<div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold><thead><tr><th>Mã</th><th>Hợp đồng, gói thầu</th><th>Giá trị toàn gói (tỷ đ)</th><th>Phần thuộc doanh nghiệp (tỷ đ)</th><th>Backlog công bố (tỷ đ)</th></tr></thead><tbody>${L.map(r => `<tr><td><span class="xd-tk">${r[0]}</span></td><td>${r[1]}</td>${r.slice(2).map(x => x === NA ? `<td>${x}</td>` : `<td class="n">${x}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
     <div class="pw-src">Nguồn: bảng kế hoạch, kết quả, backlog ở ${go('Nhà thầu & BOT', '?section=contractor#mt2')} (đường dẫn từng mã)</div><div class="pw-src-note">Giá trị toàn gói liên danh không phải phần của doanh nghiệp; ô "chưa công bố" là nguồn đã mở chưa nêu. Backlog là số doanh nghiệp tự công bố, kỳ khác nhau.</div>`);
-  const fc = pane1.querySelector('.financial-comparison'), trend = pane1.querySelector('.company-trend');
-  const players = block('xd-04'), bk = block('xd-74');
+}
+// Bảng so sánh tài chính & xu hướng theo quý (financial-comparison.js, company-trend.js) dựng riêng cho từng nhóm: lọc dữ liệu
+// chung chỉ trong lúc dựng rồi trả lại.
+function comparisonFor(codes, g) {
+  if (!window.FinancialComparison) return null;
+  const host = el('section', 'financial-comparison'); const cc = window.COMPANY_COMPARISON, cq = window.COMPANY_QUARTERLY;
+  try {
+    if (cc) window.COMPANY_COMPARISON = {...cc, companies: (cc.companies || []).filter(r => r.sector !== 'construction' || codes.includes(r.symbol))};
+    if (cq) window.COMPANY_QUARTERLY = {...cq, companies: (cq.companies || []).filter(r => r.sector !== 'construction' || codes.includes(r.symbol))};
+    window.FinancialComparison.mount(host, {sector: 'construction', sources: el('div')});
+  } catch (e) { LOG('compare-' + g + ':' + e.message); } finally { window.COMPANY_COMPARISON = cc; window.COMPANY_QUARTERLY = cq; }
+  host.querySelectorAll('[id]').forEach(n => { n.id = n.id + '-' + g; });
+  host.querySelectorAll('label[for]').forEach(n => { n.htmlFor = n.htmlFor + '-' + g; });
+  return host.children.length ? host : null;
+}
+function rowsOf(src, keep) { if (!src) return null; const c = src.cloneNode(true); c.removeAttribute('data-block-id'); c.removeAttribute('id'); c.querySelectorAll('[id]').forEach(n => n.removeAttribute('id')); let n = 0; c.querySelectorAll('tbody tr').forEach(tr => { if (keep(tr)) n++; else tr.remove(); }); return n ? c : null; }
+function companiesPane(p) {
+  const V = window.COMPANY_VALUATION?.companies || {};
+  const comps = F?.companies || [];
+  const bk = block('xd-74'), players = block('xd-04');
   if (bk) { srcOf(bk); bk.querySelector('.pw-src') || bk.append(el('div', 'pw-src', `Nguồn: ${ext('VNDirect finfo · BCTC quý', 'https://api-finfo.vndirect.com.vn/v4/financial_statements')}; tự tính`)); }
-  p.append(panel('val', '2.1', 'Doanh nghiệp đang được định giá thế nào?', [quick, peTile, val], `Định giá theo phiên, ngày ${dmy(window.COMPANY_VALUATION?.latest_observation)}; nhóm theo mô hình.`),
-    panel('model', '2.2', 'Số hợp nhất, thuộc cổ đông mẹ, ứng trước và phải thu từng mã', byModel, 'Nhóm theo mô hình; doanh nghiệp đa ngành đánh dấu *.'),
-    panel('contracts', '2.3', 'Hợp đồng, liên danh và backlog đã công bố', ct),
-    fc ? panel('compare', '2.4', 'Lợi nhuận, nợ vay, định giá từng mã qua các kỳ', [fc, trend].filter(Boolean)) : null,
-    panel('cover', '2.5', 'Ứng trước và phải thu so doanh thu TTM; biến quyết định từng nhóm', [bk, players].filter(Boolean), 'Cột "Ứng trước / Doanh thu TTM" là trường backlog_cover của dữ liệu: tiền chủ đầu tư ứng trước ÷ doanh thu 4 quý, không phải tỷ lệ backlog.'));
+  if (players) srcOf(players);
+  MODEL_TABS.forEach(([g, num, label]) => {
+    const codes = comps.filter(c => c.group === g).map(c => c.ticker);
+    const d = el('div', 'xd-mpane'); d.dataset.model = g; d.hidden = true; MPANES[g] = d;
+    const quick = card(`<div class="kc-qv">${comps.filter(c => c.group === g).map(c => { const v = V[c.ticker]; return `<div class="kc-qv-t"><span class="xd-tk">${c.ticker}${c.mixed ? '*' : ''}</span><b>${v && fin(v.pe) ? nf(v.pe, 1) + 'x P/E' : 'P/E —'}</b><span>${v && fin(v.pb) ? nf(v.pb, 2) + 'x P/B' : 'P/B —'}</span><small>định giá ${dmy(v?.date)}</small></div>`; }).join('')}</div><div class="pw-src">Nguồn: ${ext('VNDirect (P/E, P/B theo phiên)', 'https://www.vndirect.com.vn/')}</div><div class="pw-src-note">Dấu * là doanh nghiệp đa ngành. EPS, giá trị sổ sách theo BCTC gần nhất VNDirect dùng.</div>`);
+    const bkRows = rowsOf(bk, tr => codes.includes(tr.cells[0]?.textContent.replace(/[^A-Z0-9]/g, '')));
+    const plRows = rowsOf(players, tr => { const t = tr.cells[1]?.textContent || ''; return codes.some(c => t.includes(c)); });
+    const cover = [bkRows, plRows].filter(Boolean);
+    d.append(panel('val-' + g, '2.1', `${label}: doanh nghiệp đang được định giá thế nào?`, [quick, basketBlock(codes)], `Định giá theo phiên, ngày ${dmy(window.COMPANY_VALUATION?.latest_observation)}.`),
+      panel('model-' + g, '2.2', `${label}: số hợp nhất, thuộc cổ đông mẹ, ứng trước và phải thu từng mã`, finRows(codes)),
+      panel('contracts-' + g, '2.3', `${label}: hợp đồng, liên danh và backlog đã công bố`, contractsFor(codes)),
+      panel('compare-' + g, '2.4', `${label}: lợi nhuận, nợ vay, định giá từng mã qua các kỳ`, comparisonFor(codes, g) || gap('chưa có bảng so sánh cho nhóm này.')),
+      panel('cover-' + g, '2.5', bkRows ? `${label}: ứng trước, phải thu và biến quyết định` : `${label}: biến quyết định`, cover.length ? cover : gap('chưa có bảng biến quyết định cho nhóm này.'), bkRows ? 'Cột "Ứng trước / Doanh thu TTM" là trường backlog_cover của dữ liệu: tiền chủ đầu tư ứng trước ÷ doanh thu 4 quý, không phải tỷ lệ backlog.' : ''));
+    p.append(d);
+  });
+  // Khối gốc đã tách theo nhóm: gỡ bản chung (P/B toàn ngành xd-03, so sánh tài chính toàn ngành, xd-04, xd-74).
+  [block('xd-03'), bk, players, ...document.querySelectorAll('#pane-mt1 .financial-comparison')].forEach(n => n?.remove());
 }
 
 /* ---------- Bộ tab con dùng chung ---------- */
@@ -465,10 +519,10 @@ function tabset(pane, major, param, defs, kind) {
 
 /* ---------- Điều hướng: URL ↔ tab chính, tab con, nhóm ---------- */
 const PARAMS = {mt1: 'ov', mt2: 'section', mt14: 'fin'};
-const ALL_P = ['ov', 'section', 'fin', 'g'];
+const ALL_P = ['ov', 'section', 'fin', 'g', 'm'];
 const LEGACY = {mt3: '?section=contractor&g=infra-cost#mt2', mt4: '?section=policy#mt2', mt6: '?fin=companies#mt14', mt10: '?section=public#mt2', mt8: '?section=market&g=sources#mt2'};
-function parse(href) { const u = new URL(href, location.href); let major = u.hash.slice(1) || 'mt1'; if (LEGACY[major]) return parse(LEGACY[major]); return {major, sub: u.searchParams.get(PARAMS[major] || ''), g: u.searchParams.get('g'), u}; }
-function canonical(st) { const u = new URL(location.href); ALL_P.forEach(k => u.searchParams.delete(k)); const t = TABS[st.major]; if (t) u.searchParams.set(t.param, st.sub || t.cur); if (st.g) u.searchParams.set('g', st.g); u.hash = '#' + st.major; return u.pathname + u.search + u.hash; }
+function parse(href) { const u = new URL(href, location.href); let major = u.hash.slice(1) || 'mt1'; if (LEGACY[major]) return parse(LEGACY[major]); return {major, sub: u.searchParams.get(PARAMS[major] || ''), g: u.searchParams.get('g'), m: u.searchParams.get('m'), u}; }
+function canonical(st) { const u = new URL(location.href); ALL_P.forEach(k => u.searchParams.delete(k)); const t = TABS[st.major]; if (t) u.searchParams.set(t.param, st.sub || t.cur); if (st.major === 'mt14') u.searchParams.set('m', st.m || MODEL); if (st.g) u.searchParams.set('g', st.g); u.hash = '#' + st.major; return u.pathname + u.search + u.hash; }
 function scrollG(g, major) {
   if (!g) return;
   if (g === 'sources') { const d = $('#xd-sources'); if (d) { d.open = true; setTimeout(() => d.scrollIntoView({block: 'start', behavior: 'instant'}), 120); } return; }
@@ -480,6 +534,7 @@ function scrollG(g, major) {
 function apply(st) {
   if (window.showMajorTab && !document.getElementById('pane-' + st.major)?.classList.contains('active')) window.showMajorTab(st.major);
   const t = TABS[st.major]; if (t) t.show(st.sub || t.cur);
+  if (st.major === 'mt14') setModel(st.m || MODEL);
   scrollG(st.g, st.major);
 }
 // push: ghi lịch sử (Back/Forward); keepScroll: đổi tab con không cuộn lên đầu.
@@ -519,7 +574,7 @@ function build() {
   p14.append(el('div', 'sectionhead', '<div><h2 class="sec">Tài chính ngành</h2><p>BCTC hợp nhất 17 doanh nghiệp xây dựng, VLXD niêm yết theo bốn mô hình; doanh nghiệp niêm yết, định giá, hợp đồng.</p></div>'));
   const T14 = tabset(p14, 'mt14', 'fin', [['fin', '01', 'Tài chính ngành'], ['companies', '02', 'Doanh nghiệp niêm yết']], 'pp');
   p14.append(T14.nav);
-  [['fin', '01', 'Tài chính ngành', 'Doanh thu & biên → phải thu, ứng trước & dở dang → CFO & chuyển đổi tiền → nợ, lãi vay & dòng tiền tự do.'], ['companies', '02', 'Doanh nghiệp niêm yết', 'Định giá → số hợp nhất, thuộc cổ đông mẹ theo mô hình → hợp đồng, backlog → lịch sử theo kỳ.']].forEach(([k, n, l, g]) => { T14.P[k].innerHTML = `<header class="pp-head"><div><span class="pp-k">${n}</span><h2>${esc(l)}</h2><p>${esc(g)}</p></div></header>`; p14.append(T14.P[k]); });
+  [['fin', '01', 'Tài chính ngành', 'Doanh thu & biên → phải thu, ứng trước & dở dang → CFO & chuyển đổi tiền → nợ, lãi vay & dòng tiền tự do.'], ['companies', '02', 'Doanh nghiệp niêm yết', 'Định giá → số hợp nhất, thuộc cổ đông mẹ → hợp đồng, backlog → lịch sử theo kỳ, cho từng loại hình doanh nghiệp.']].forEach(([k, n, l, g]) => { T14.P[k].innerHTML = `<header class="pp-head"><div><span class="pp-k">${n}</span><h2>${esc(l)}</h2><p>${esc(g)}</p></div></header>`; if (F) T14.P[k].append(modelBar()); p14.append(T14.P[k]); });
   let finBuilt = false;
   T14.onShow = k => { if (k === 'fin' && !finBuilt && !p14.hidden) { finBuilt = true; try { if (window.XdFinance) XdFinance.build(T14.P.fin); else T14.P.fin.append(gap('không tải được dữ liệu tài chính ngành.')); } catch (e) { LOG('fin:' + e.message); console.error(e); } setTimeout(() => dispatchEvent(new Event('pv:toc')), 120); } };
   new MutationObserver(() => { if (!p14.hidden) { T14.onShow(T14.cur); refit(T14.P[T14.cur]); } }).observe(p14, {attributes: true, attributeFilter: ['hidden', 'class']});
@@ -537,7 +592,8 @@ function build() {
   run('map', () => mapPane(T1.P.map)); run('model', () => modelPane(T1.P.model, p1)); run('forward', () => forwardPane(T1.P.forward));
   run('market', () => marketPane(T2.P.market)); run('public', () => publicPane(T2.P.public)); run('contractor', () => contractorPane(T2.P.contractor));
   run('cement', () => cementPane(T2.P.cement)); run('stone', () => stonePane(T2.P.stone)); run('asphalt', () => asphaltPane(T2.P.asphalt));
-  run('glass', () => glassPane(T2.P.glass)); run('policy', () => policyPane(T2.P.policy)); run('companies', () => companiesPane(T14.P.companies, p1));
+  run('glass', () => glassPane(T2.P.glass)); run('policy', () => policyPane(T2.P.policy)); run('companies', () => companiesPane(T14.P.companies));
+  run('model', () => setModel(new URL(location.href).searchParams.get('m') || MODEL));
   // Danh mục nguồn và lịch cập nhật (tab Nguồn dữ liệu cũ #mt8): mục thu gọn cuối Bức tranh ngành.
   const p8 = document.getElementById('pane-mt8');
   const src = el('details', 'xd-src-fold'); src.id = 'xd-sources'; src.innerHTML = '<summary>Danh mục nguồn và lịch cập nhật</summary>';
