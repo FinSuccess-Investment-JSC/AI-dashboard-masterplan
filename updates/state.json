@@ -48,9 +48,9 @@
    "attempts": 1
   },
   "oil.supply-news": {
-   "lastAttempt": "2026-11-16T13:05:03+07:00",
-   "lastSuccess": "2026-11-16T13:05:03+07:00",
-   "lastNote": "dau-khi-18: QH bổ sung TT lọc hóa dầu Dung Quất vào kỳ họp 2 ngày 05/11/2026 (444/444), nghị quyết còn dự thảo; đã mở petrotimes. Các bài LNG khác không đổi mốc dự án"
+   "lastAttempt": "2026-11-26T13:02:51+07:00",
+   "lastSuccess": "2026-11-26T13:02:51+07:00",
+   "lastNote": "Mở petrotimes 16/11/2026: chỉ là phát biểu của Zelensky (>55% công suất lọc dầu Nga), không kiểm chứng độc lập, không phải số liệu để đưa lên trang. Không sửa."
   },
   "oil.price-policy": {
    "lastAttempt": "2026-11-16T13:05:03+07:00",
@@ -208,14 +208,16 @@
    "stuck": true
   },
   "realestate.market-quarterly": {
-   "lastAttempt": "2026-11-06T13:02:42+07:00",
-   "lastSuccess": "2026-11-06T13:02:42+07:00",
-   "lastNote": "Dữ liệu đã có Q3/2026 (MOC VOV 20/10/2026, DKRA, Savills); CBRE Q3 chưa công bố. Không sửa."
+   "lastAttempt": "2026-11-26T13:02:51+07:00",
+   "lastSuccess": "2026-11-26T13:02:51+07:00",
+   "lastNote": "Bộ Xây dựng Q3/2026 (13/10/2026) và CBRE Hà Nội Q3 đã có trong dữ liệu. moc.gov.vn trả 503; tìm kiếm không thấy CBRE TP.HCM Q3/2026 công bố nên giữ ô null, không trộn nguồn khác. Không sửa trang."
   },
   "realestate.kcn-quarterly": {
-   "lastAttempt": "2026-11-06T13:02:42+07:00",
+   "lastAttempt": "2026-11-26T13:02:51+07:00",
    "lastSuccess": "2026-11-06T13:02:42+07:00",
-   "lastNote": "C&W Q3/2026 chưa công bố; mới nhất Q2/2026 đã trên trang. Không sửa."
+   "lastNote": "C&W Q3/2026 chưa công bố; mới nhất Q2/2026 đã trên trang. Không sửa.",
+   "lastError": "cushmanwakefield.com trả 403 (chặn máy chủ cloud); chưa có bản đăng lại để xác nhận số quý mới.",
+   "attempts": 1
   },
   "realestate.policy": {
    "lastAttempt": "2026-11-18T13:04:21+07:00",
@@ -757,9 +759,9 @@
   "pharma.public.monthly": {},
   "pharma.public.valuation": {},
   "realestate.kcn-broker": {
-   "lastAttempt": "2026-10-28T21:31:36+07:00",
-   "lastSuccess": "2026-10-28T21:31:36+07:00",
-   "lastNote": "không mới: MAS 29/01/2026, DSC KBC 07/08/2026; kbsec 400"
+   "lastAttempt": "2026-11-26T13:02:51+07:00",
+   "lastSuccess": "2026-11-26T13:02:51+07:00",
+   "lastNote": "Mở vdsc.com.vn 26/11/2026: không có báo cáo ngành BĐS KCN mới (chỉ báo cáo ngành Tiện ích 19/11/2026). Không sửa trang."
   },
   "realestate.infrastructure": {
    "lastAttempt": "2026-11-06T13:02:42+07:00",
@@ -839,22 +841,38 @@
    "attempts": 14,
    "stuck": true
   },
-  "retail.calendar": {},
-  "pharma.calendar": {},
+  "retail.calendar": {
+   "lastAttempt": "2026-11-26T13:02:51+07:00",
+   "lastSuccess": "2026-11-26T13:02:51+07:00",
+   "lastNote": "Mở doanhnhan.baophapluat.vn 26/11/2026: không có bài KQ tháng/quý MWG, FRT, PNJ mới; chỉ tin PNJ về giá vàng nhẫn/thu đổi, không có số doanh thu. Không sửa trang."
+  },
+  "pharma.calendar": {
+   "lastAttempt": "2026-11-26T13:02:51+07:00",
+   "lastError": "Mục không có nguồn/tài liệu để mở (registry không có source/url); không xác nhận được mốc nào.",
+   "attempts": 1
+  },
   "port.wi.portwatch": {
    "lastAttempt": "2026-11-25T09:11:38+07:00",
    "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
    "attempts": 14,
    "stuck": true
   },
-  "port.price-margin": {},
+  "port.price-margin": {
+   "lastAttempt": "2026-11-26T13:02:51+07:00",
+   "lastSuccess": "2026-11-26T13:02:51+07:00",
+   "lastNote": "Mở vanban.chinhphu.vn trang 1 (văn bản 15–24/11/2026): không có văn bản khung giá dịch vụ cảng biển mới (chỉ TT 71/2026/TT-BCT về phân hạng trung tâm logistics). Chưa có số công suất bến mới. Không sửa trang."
+  },
   "shipping.wi.fearnleys": {
    "lastAttempt": "2026-11-25T09:11:38+07:00",
    "lastError": "Widata hết credit tuần (làm mới 00:00 thứ Sáu 27/11/2026)",
    "attempts": 14,
    "stuck": true
   },
-  "shipping.derived": {},
+  "shipping.derived": {
+   "lastAttempt": "2026-11-26T13:02:51+07:00",
+   "lastSuccess": "2026-11-26T13:02:51+07:00",
+   "lastNote": "Mở cyprusshippingnews.com tìm BIMCO: bài mới nhất 23/10/2026 order book 203,2m CGT (1/9/2026) đã có trong evidence shipping. Không có tài liệu mới hơn, không sửa trang."
+  },
   "power.calendar": {},
   "seafood.wi.us-imports": {
    "lastAttempt": "2026-11-25T09:11:38+07:00",
@@ -874,7 +892,11 @@
   },
   "power.picture-derived": {},
   "power.overview-derived": {},
-  "power.overview-content": {},
+  "power.overview-content": {
+   "lastAttempt": "2026-11-26T13:02:51+07:00",
+   "lastError": "Rà soát lần đầu nội dung định tính (bản đồ ngành/chuỗi giá trị), không có tài liệu nguồn để đối chiếu; cần người dùng xem.",
+   "attempts": 1
+  },
   "power.hydro-assets": {},
   "shipping.public.daily_series": {},
   "shipping.document.chemical": {}
@@ -7101,16 +7123,6 @@
    "signals": []
   },
   {
-   "id": "retail.calendar",
-   "tier": "C",
-   "title": "Lịch mùa vụ, doanh thu/cửa hàng các chuỗi",
-   "since": "2026-11-05T14:20:04+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
    "id": "pharma.calendar",
    "tier": "C",
    "title": "Lịch 12 tháng Dược",
@@ -7146,16 +7158,6 @@
    "signals": []
   },
   {
-   "id": "port.price-margin",
-   "tier": "C",
-   "title": "Giá sàn theo đợt vs chỉ số giá bốc xếp; giá khu vực I vs nước sâu; công suất sử dụng theo bến",
-   "since": "2026-11-05T14:20:04+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
-   ],
-   "signals": []
-  },
-  {
    "id": "shipping.wi.fearnleys",
    "tier": "B",
    "title": "Wi: Fearnleys TC 1 năm, giá tàu cũ/đóng mới, VLCC MEG",
@@ -7165,16 +7167,6 @@
     "lịch 02/11 07:00",
     "lịch 09/11 07:00",
     "lịch 16/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "shipping.derived",
-   "tier": "C",
-   "title": "Đồng hồ lợi nhuận theo mã, cung tàu theo phân khúc",
-   "since": "2026-11-05T14:20:04+07:00",
-   "reasons": [
-    "lần đầu: rà soát số đang hiển thị"
    ],
    "signals": []
   },
@@ -7207,17 +7199,6 @@
    "since": "2026-11-09T15:23:55+07:00",
    "reasons": [
     "lịch 09/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "realestate.market-quarterly",
-   "tier": "C",
-   "title": "Bộ Xây dựng, CBRE, Savills, DKRA: giao dịch, tồn kho, cung mới theo phân khúc/khu vực, giá căn hộ HN/HCM, tỉnh lớn",
-   "since": "2026-11-09T15:23:55+07:00",
-   "reasons": [
-    "lịch 09/11 07:00",
-    "lịch 16/11 07:00"
    ],
    "signals": []
   },
@@ -7262,67 +7243,6 @@
     "lần đầu: rà soát số đang hiển thị"
    ],
    "signals": []
-  },
-  {
-   "id": "realestate.kcn-broker",
-   "tier": "C",
-   "title": "Chỉ số KCN theo báo cáo ngành CTCK: ký mới, giá thuê, đất cao su chuyển KCN, FDI theo quốc gia",
-   "since": "2026-11-15T14:06:27+07:00",
-   "reasons": [
-    "lịch 15/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "oil.supply-news",
-   "tier": "C",
-   "title": "Cân đối xăng dầu, chuỗi dự án khí",
-   "since": "2026-11-16T14:15:18+07:00",
-   "reasons": [
-    "watcher báo có công bố mới"
-   ],
-   "signals": [
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-16T14:15:18+07:00",
-     "what": "Ukraine Hơn một nửa công suất lọc dầu của Nga bị đình trệ — https://petrotimes.vn/ukraine-hon-mot-nua-cong-suat-loc-dau-cua-nga-bi-dinh-tre-748043.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-17T15:28:35+07:00",
-     "what": "Giá khí đốt châu Âu hạ nhiệt nhờ thời tiết ôn hòa và nguồn LNG kỷ lục từ Mỹ — https://petrotimes.vn/gia-khi-dot-chau-au-ha-nhiet-nho-thoi-tiet-on-hoa-va-nguon-lng-ky-luc-tu-my-748094.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-19T00:37:59+07:00",
-     "what": "PETROVIETNAM kiểm tra tiến độ chuỗi dự án khí điện Lô B Ô Môn tại Cần Thơ — https://petrovietnam.petrotimes.vn/petrovietnam-kiem-tra-tien-do-chuoi-du-an-khi-dien-lo-b-o-mon-tai-can-tho-748138.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-19T14:55:14+07:00",
-     "what": "Bản tin Năng lượng Quốc tế 19 11 China Gas tăng quy mô nguồn cung LNG dài hạn với doanh nghiệp Mỹ — https://nangluongquocte.petrotimes.vn/ban-tin-nang-luong-quoc-te-19-11-china-gas-tang-quy-mo-nguon-cung-lng-dai-han-voi-doanh-nghiep-my-748170.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-21T14:42:01+07:00",
-     "what": "Trungnam chọn đối tác Italy cung cấp thiết bị cho dự án LNG Cà Ná — https://kinhtexaydung.petrotimes.vn/trungnam-chon-doi-tac-italy-cung-cap-thiet-bi-cho-du-an-lng-ca-na-748257.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-21T14:42:01+07:00",
-     "what": "Bổ sung LNG cho nhà máy điện khí hiện hữu Từ yêu cầu kỹ thuật đến bài toán chi phí — https://petrovietnam.petrotimes.vn/bo-sung-lng-cho-nha-may-dien-khi-hien-huu-tu-yeu-cau-ky-thuat-den-bai-toan-chi-phi-748183.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-21T23:27:24+07:00",
-     "what": "Quốc hội thông qua Nghị quyết về cơ chế chính đặc thù cho Khu kinh tế Dung Quất — https://petrotimes.vn/quoc-hoi-thong-qua-nghi-quyet-ve-co-che-chinh-dac-thu-cho-khu-kinh-te-dung-quat-748278.html"
-    },
-    {
-     "watcher": "pvn.news",
-     "seenAt": "2026-11-22T14:23:53+07:00",
-     "what": "Từ Thị Vải đến Nhơn Trạch 3 và 4 Mở chuỗi khí – điện LNG — https://petrovietnam.petrotimes.vn/tu-thi-vai-den-nhon-trach-3-va-4-mo-chuoi-khi-dien-lng-748165.html"
-    }
-   ]
   },
   {
    "id": "power.evn-reservoirs",
@@ -7630,5 +7550,5 @@
    ]
   }
  ],
- "updatedAt": "2026-11-25T13:01:41+07:00"
+ "updatedAt": "2026-11-26T13:02:51+07:00"
 }
