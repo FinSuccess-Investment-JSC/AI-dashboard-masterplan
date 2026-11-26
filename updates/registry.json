@@ -1797,12 +1797,10 @@
      "bh-04",
      "bh-90",
      "bl-01",
-     "bl-04",
      "bl-90",
      "duoc-01",
      "duoc-04",
      "duoc-90",
-     "bl-05",
      "sua-01",
      "sua-05",
      "sua-90",
@@ -1818,7 +1816,8 @@
      "hk-01",
      "hk-05",
      "hk-40",
-     "hk-90"
+     "hk-90",
+     "bl-08"
     ]
    }
   },
@@ -4596,7 +4595,6 @@
    "where": {
     "page": "Ban-le/index.html",
     "blocks": [
-     "bl-02",
      "bl-13",
      "bl-14",
      "bl-23",
@@ -4707,7 +4705,7 @@
    "where": {
     "page": "Ban-le/index.html",
     "blocks": [
-     "bl-02"
+     "bl-09"
     ]
    },
    "how": "Cập nhật bl-02 và catbox/riskbox; thẻ tín hiệu tự tính trong Ban-le/app/retail-dashboard.js.",
