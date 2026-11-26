@@ -17,10 +17,8 @@ const byCanvas = id => $('#' + id)?.closest('.card,.viz-block');
 const GAP = t => `<p class="data-gap of-gap">${t}</p>`;
 const TREE = {
   mt1: {label: 'Tổng quan ngành', title: 'Tổng quan ngành dầu khí', intro: 'Nhìn để hiểu ngành: chuỗi giá trị → cơ chế lợi nhuận từng khâu → doanh nghiệp niêm yết → triển vọng.', subs: [
-    {k: 'map', n: '00', t: 'Bản đồ ngành', d: 'Thượng nguồn → trung nguồn → hạ nguồn, mỗi khâu gắn mã niêm yết.', sel: ['.research-roadmap'], ids: ['dau-khi-01', 'dau-khi-04']},
-    {k: 'chain', n: '01', t: 'Chuỗi giá trị', d: 'Giá dầu đi vào lợi nhuận từng khâu thế nào.', sel: ['.business-models'], ids: ['dau-khi-38', 'dau-khi-26', 'dau-khi-30', 'dau-khi-31']},
-    {k: 'listed', n: '02', t: 'Doanh nghiệp niêm yết', d: 'Mô hình kinh doanh và vị trí trong chuỗi của từng mã.', ids: ['dau-khi-03', 'dau-khi-32', 'dau-khi-33', 'dau-khi-34', 'dau-khi-35'], rest: true},
-    {k: 'outlook', n: '03', t: 'Triển vọng', d: 'Vị trí trong chu kỳ và chế độ thị trường hiện tại.', ids: ['dau-khi-02', 'dau-khi-14']},
+    {k: 'map', n: '00', t: 'Bản đồ ngành', d: 'Thượng nguồn → trung nguồn → hạ nguồn, mỗi khâu gắn mã niêm yết.', sel: ['.research-roadmap'], ids: ['dau-khi-01']},
+    {k: 'chain', n: '01', t: 'Chuỗi giá trị', d: 'Giá dầu đi vào lợi nhuận từng khâu, mô hình kinh doanh từng mã.', sel: ['.business-models'], ids: ['dau-khi-38', 'dau-khi-30', 'dau-khi-31', 'dau-khi-03', 'dau-khi-32', 'dau-khi-33', 'dau-khi-34', 'dau-khi-35'], rest: true},
   ]},
   mt2: {label: 'Bức tranh ngành', title: 'Bức tranh ngành', intro: 'Theo khâu: dầu thô toàn cầu → thượng nguồn Việt Nam → khí & LNG → lọc dầu → phân phối → vận tải & dòng chảy.', subs: [
     {k: 'crude', n: '01', t: 'Dầu thô toàn cầu', d: 'Cung OPEC+ và ngoài OPEC, cầu, tồn kho, Brent/WTI, đường cong kỳ hạn, vị thế quỹ.', ids: ['dau-khi-05', 'dau-khi-12', 'dau-khi-23', 'dau-khi-24', 'dau-khi-25', 'dau-khi-11', 'dau-khi-06', 'dau-khi-07', 'dau-khi-08', 'dau-khi-09', 'dau-khi-10', 'dau-khi-13'], canv: ['chFastPrice'], sel: ['.opec-drivers', '.inventory-group'], kpis: true},
@@ -79,9 +77,10 @@ function buildTab(key) {
   const def = TREE[key], pane = $(`.majorpane[data-tab="${key}"]`);
   if (!pane) return;
   const legacy = [...pane.children];
+  // Người dùng bỏ 26/11/2026: ghi chú độ tin cậy (04), thẻ biên phân phối (26), hai ô phân tích AI (02, 14).
+  ['dau-khi-04', 'dau-khi-26', 'dau-khi-02', 'dau-khi-14'].forEach(id => $$(`[data-block-id="${id}"]`).forEach(n => { n.hidden = true; n.classList.add('of-hidden-legacy'); }));
   const sec = el('section', 'section of-section');
   const brief = key === 'mt1' && $('#dataBrief'); if (brief) sec.append(brief);
-  sec.append(el('div', 'sectionhead', `<div><h2 class="sec">${def.title}</h2></div>`));
   const nav = el('div', 'of-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', def.title); sec.append(nav);
   const used = new Set();
   const subs = def.subs.map((s, i) => {
@@ -108,6 +107,7 @@ function buildTab(key) {
     if (n.matches('.sectionhead')) { n.classList.add('of-hidden-legacy'); return; }
     if (n.matches('.pane-subtabs,.supply-tabs,.world-subtabs,[role=tablist]')) { n.classList.add('of-hidden-legacy'); return; }
     // Chỉ giữ khối có dữ liệu (thẻ, chart, bảng); câu dẫn/đường dẫn của bố cục cũ bỏ.
+    if (n.matches?.('.of-hidden-legacy')) return;
     if (n.matches?.('[data-block-id]') || n.querySelector?.('[data-block-id],canvas,table,svg')) restItems.push(n);
   });
   if (restItems.length) {
