@@ -77,6 +77,24 @@ SPEC = {
     'air_freight': ('freight', r'sec:1|^hàng không', 'cur'),
     'sea_tonkm_ytd': ('freight', r'sec:2|^đường biển', 'ytd'),
     'tourists': ('visitors', r'^tổng số', 'cur'),
+    # Hàng không (26/11/2026): khách vận chuyển bằng đường hàng không (nghìn HK, biểu Vận tải hành khách mục I),
+    # luân chuyển (triệu HK.km), khách quốc tế đến theo phương tiện đường không và theo thị trường (lượt người).
+    'air_pax': ('pax', r'sec:1|^hàng không', 'cur'),
+    'air_paxkm': ('pax', r'sec:2|^hàng không', 'cur'),
+    'visitors_air': ('visitors', r'^đường (hàng )?không', 'cur'),
+    'vis_cn': ('visitors', r'^(chnd )?trung (hoa|quốc)', 'cur'),
+    'vis_kr': ('visitors', r'^hàn quốc', 'cur'),
+    'vis_jp': ('visitors', r'^nhật bản', 'cur'),
+    'vis_tw': ('visitors', r'^đài loan', 'cur'),
+    'vis_us': ('visitors', r'^(hoa kỳ|mỹ)$', 'cur'),
+    'vis_in': ('visitors', r'^ấn độ', 'cur'),
+    'vis_ru': ('visitors', r'^(liên bang )?nga', 'cur'),
+    'vis_au': ('visitors', r'^(ôx-trây-li-a|ô-xtrây-li-a|úc)', 'cur'),
+    'vis_th': ('visitors', r'^thái lan', 'cur'),
+    'vis_my': ('visitors', r'^ma-lai-xi-a|^malaysia', 'cur'),
+    'vis_sg': ('visitors', r'^xin-ga-po|^singapore', 'cur'),
+    'vis_ph': ('visitors', r'^phi-li-pin|^philippines', 'cur'),
+    'vis_kh': ('visitors', r'^cam-pu-chia|^campuchia', 'cur'),
 }
 TITLES = {
     'iip': r'chỉ số sản xuất công nghiệp',
@@ -86,6 +104,7 @@ TITLES = {
     'cpi': r'chỉ số giá tiêu dùng',
     'freight': r'vận tải hàng hoá|vận tải hàng hóa',
     'visitors': r'khách quốc tế',
+    'pax': r'vận tải hành khách',
 }
 
 
@@ -302,9 +321,9 @@ def parse(path):
         sec = 0
         for r in rows[first:]:
             lb = label(r)
-            if kind == 'freight' and re.match(r'^i\.\s*vận chuyển', lb):
+            if kind in ('freight', 'pax') and re.match(r'^i\.\s*vận chuyển', lb):
                 sec = 1
-            elif kind == 'freight' and re.match(r'^ii\.\s*luân chuyển', lb):
+            elif kind in ('freight', 'pax') and re.match(r'^ii\.\s*luân chuyển', lb):
                 sec = 2
             if not lb:
                 continue

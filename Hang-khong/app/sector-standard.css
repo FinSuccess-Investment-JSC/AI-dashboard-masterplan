@@ -1,0 +1,4 @@
+/* Gói ngành · CSS của các quy tắc chuẩn lấy từ trang Điện (25/11/2026): dòng nguồn dưới chart (chart-source.js), mục có chart mở sẵn (chart-unfold.js). */
+.pw-src{margin:8px 0 0;text-align:right;font-size:11px;line-height:1.4;color:var(--muted,#7a8399)}.pw-src a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.pw-src-note.chart-caveat,.pw-src-note{margin:2px 0 0;text-align:right;font-size:10.5px;line-height:1.35;color:#9aa3b5;font-style:normal;background:none;border:0;padding:0}
+details.su-open>summary{cursor:default;pointer-events:none;list-style:none}details.su-open>summary::-webkit-details-marker{display:none}details.su-open>summary::marker{content:""}

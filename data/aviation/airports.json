@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "note": "22 cảng hàng không đang khai thác; ACV quản lý 21 cảng, Vân Đồn do doanh nghiệp tư nhân khai thác. Tọa độ gần đúng theo vị trí đường cất hạ cánh, chỉ dùng để vẽ điểm. Số khách, hàng hóa, công suất chỉ ghi khi có nguồn và kỳ; chưa có số xác minh theo từng cảng thì để trống.",
+    "sources": [
+      ["SHS – Ngành hàng không Việt Nam: Đón kỷ nguyên mới (11/2025), tr. 20, 25, 27, 28", "https://www.shs.com.vn/bao-cao-phan-tich/nganh-hang-khong-viet-nam-don-ky-nguyen-moi"],
+      ["ACV – hệ thống cảng hàng không", "https://www.vietnamairport.vn/"]
+    ],
+    "checked_at": "2026-11-26"
+  },
+  "airports": [
+    {"iata": "SGN", "name": "Tân Sơn Nhất (TP.HCM)", "lat": 10.8188, "lon": 106.652, "operator": "ACV", "operator_group": "acv", "type": "Quốc tế", "hub": true,
+      "facts": [
+        {"label": "Công suất thiết kế trước T3", "value": "28–30 triệu khách/năm", "period": "trước 2025", "source": "SHS tr. 27"},
+        {"label": "Nhà ga T3 (nội địa)", "value": "20 triệu khách/năm", "period": "khánh thành 4/2025", "source": "SHS tr. 25, 29"},
+        {"label": "Lượng khách phục vụ", "value": "khoảng 41,6 triệu lượt/năm", "period": "SHS nêu, chưa ghi năm", "source": "SHS tr. 27"}
+      ]},
+    {"iata": "HAN", "name": "Nội Bài (Hà Nội)", "lat": 21.2212, "lon": 105.8072, "operator": "ACV", "operator_group": "acv", "type": "Quốc tế", "hub": true,
+      "facts": [
+        {"label": "Nhà ga T2 (quốc tế) sau mở rộng", "value": "từ 10 lên 15 triệu khách/năm", "period": "dự án khởi công 19/5/2024", "source": "SHS tr. 25, 29"},
+        {"label": "Tổng công suất sau mở rộng T2", "value": "khoảng 30 triệu khách/năm", "period": "theo dự án", "source": "SHS tr. 25"}
+      ]},
+    {"iata": "DAD", "name": "Đà Nẵng", "lat": 16.0439, "lon": 108.1994, "operator": "ACV", "operator_group": "acv", "type": "Quốc tế", "hub": true},
+    {"iata": "CXR", "name": "Cam Ranh (Khánh Hòa)", "lat": 11.9982, "lon": 109.2194, "operator": "ACV", "operator_group": "acv", "type": "Quốc tế", "hub": true},
+    {"iata": "PQC", "name": "Phú Quốc (An Giang)", "lat": 10.1698, "lon": 103.9931, "operator": "ACV", "operator_group": "acv", "type": "Quốc tế", "hub": true},
+    {"iata": "HPH", "name": "Cát Bi (Hải Phòng)", "lat": 20.8194, "lon": 106.725, "operator": "ACV", "operator_group": "acv", "type": "Quốc tế"},
+    {"iata": "VCA", "name": "Cần Thơ", "lat": 10.0851, "lon": 105.7119, "operator": "ACV", "operator_group": "acv", "type": "Quốc tế"},
+    {"iata": "HUI", "name": "Phú Bài (Huế)", "lat": 16.4015, "lon": 107.7026, "operator": "ACV", "operator_group": "acv", "type": "Quốc tế"},
+    {"iata": "VII", "name": "Vinh (Nghệ An)", "lat": 18.7376, "lon": 105.6708, "operator": "ACV", "operator_group": "acv", "type": "Quốc tế"},
+    {"iata": "VDO", "name": "Vân Đồn (Quảng Ninh)", "lat": 21.1178, "lon": 107.4142, "operator": "Doanh nghiệp tư nhân (Sun Group)", "operator_group": "other", "type": "Quốc tế"},
+    {"iata": "DIN", "name": "Điện Biên", "lat": 21.3975, "lon": 103.0078, "operator": "ACV", "operator_group": "acv", "type": "Nội địa"},
+    {"iata": "THD", "name": "Thọ Xuân (Thanh Hóa)", "lat": 19.9017, "lon": 105.4678, "operator": "ACV", "operator_group": "acv", "type": "Nội địa"},
+    {"iata": "VDH", "name": "Đồng Hới (Quảng Trị)", "lat": 17.515, "lon": 106.5906, "operator": "ACV", "operator_group": "acv", "type": "Nội địa"},
+    {"iata": "VCL", "name": "Chu Lai (Đà Nẵng)", "lat": 15.4033, "lon": 108.706, "operator": "ACV", "operator_group": "acv", "type": "Nội địa"},
+    {"iata": "UIH", "name": "Phù Cát (Gia Lai)", "lat": 13.955, "lon": 109.042, "operator": "ACV", "operator_group": "acv", "type": "Nội địa"},
+    {"iata": "TBB", "name": "Tuy Hòa (Đắk Lắk)", "lat": 13.0496, "lon": 109.3337, "operator": "ACV", "operator_group": "acv", "type": "Nội địa"},
+    {"iata": "PXU", "name": "Pleiku (Gia Lai)", "lat": 14.0045, "lon": 108.0172, "operator": "ACV", "operator_group": "acv", "type": "Nội địa"},
+    {"iata": "BMV", "name": "Buôn Ma Thuột (Đắk Lắk)", "lat": 12.6683, "lon": 108.1203, "operator": "ACV", "operator_group": "acv", "type": "Nội địa"},
+    {"iata": "DLI", "name": "Liên Khương (Lâm Đồng)", "lat": 11.75, "lon": 108.367, "operator": "ACV", "operator_group": "acv", "type": "Nội địa"},
+    {"iata": "VCS", "name": "Côn Đảo (TP.HCM)", "lat": 8.7318, "lon": 106.633, "operator": "ACV", "operator_group": "acv", "type": "Nội địa"},
+    {"iata": "VKG", "name": "Rạch Giá (An Giang)", "lat": 9.958, "lon": 105.1324, "operator": "ACV", "operator_group": "acv", "type": "Nội địa"},
+    {"iata": "CAH", "name": "Cà Mau", "lat": 9.1777, "lon": 105.1774, "operator": "ACV", "operator_group": "acv", "type": "Nội địa"},
+    {"iata": "", "short": "Long Thành", "name": "Long Thành (Đồng Nai) – đang xây dựng giai đoạn 1", "lat": 10.78, "lon": 107.04, "operator": "ACV (chủ đầu tư dự án thành phần 3)", "operator_group": "acv", "type": "Quốc tế", "status": "construction",
+      "facts": [
+        {"label": "Công suất giai đoạn 1", "value": "25 triệu khách, 1,2 triệu tấn hàng/năm", "period": "theo dự án", "source": "SHS tr. 25, 27"},
+        {"label": "Công suất toàn dự án", "value": "100 triệu khách, 5 triệu tấn hàng/năm", "period": "theo quy hoạch", "source": "SHS tr. 27, 30"}
+      ]}
+  ]
+}

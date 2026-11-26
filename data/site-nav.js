@@ -25,7 +25,7 @@ window.FS_SITE_NAV = {
       {label: 'Vận tải', children: [
         {key: 'port', label: 'Cảng & kho bãi'},
         {key: 'shipping', label: 'Vận tải biển'},
-        {label: 'Hàng không', soon: true}
+        {key: 'aviation', label: 'Hàng không'}
       ]},
       {key: 'rubber', label: 'Cao su'},
       {key: 'textile', label: 'Dệt may'},
