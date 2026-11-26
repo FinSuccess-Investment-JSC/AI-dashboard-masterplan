@@ -1760,7 +1760,7 @@
     "type": "none"
    },
    "where": {
-    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html, Xay-dung/index.html, Bao-hiem/index.html, Ban-le/index.html, Duoc/index.html",
+    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html, Xay-dung/index.html, Bao-hiem/index.html, Ban-le/index.html, Duoc/index.html, Sua/index.html, Bia/index.html, O-to-xe-may/index.html",
     "blocks": [
      "dau-khi-01",
      "dau-khi-03",
@@ -1802,7 +1802,16 @@
      "duoc-01",
      "duoc-04",
      "duoc-90",
-     "bl-05"
+     "bl-05",
+     "sua-01",
+     "sua-05",
+     "sua-90",
+     "bia-01",
+     "bia-05",
+     "bia-90",
+     "oto-01",
+     "oto-05",
+     "oto-90"
     ]
    }
   },
@@ -4471,9 +4480,6 @@
      "bl-10",
      "bl-11",
      "bl-12",
-     "bl-20",
-     "bl-22",
-     "bl-30",
      "bl-31",
      "bl-33",
      "bl-16"
@@ -4565,11 +4571,7 @@
      "bl-02",
      "bl-13",
      "bl-14",
-     "bl-21",
-     "bl-23",
-     "bl-17",
-     "bl-18",
-     "bl-25"
+     "bl-23"
     ]
    },
    "how": "Mở bài công bố mới; cập nhật bảng và chart chRetailMix, chStores trong Ban-le/app/retail-dashboard.js; thêm evidence.",
@@ -4598,8 +4600,7 @@
     "page": "Ban-le/index.html",
     "blocks": [
      "bl-50",
-     "bl-52",
-     "bl-53"
+     "bl-52"
     ]
    },
    "how": "Mở văn bản gốc; cập nhật bảng bl-50 và evidence.",
@@ -4655,7 +4656,6 @@
     "blocks": [
      "bl-t1",
      "bl-t2",
-     "bl-t3",
      "bl-t4"
     ]
    },
@@ -6266,9 +6266,6 @@
      "bl-10",
      "bl-11",
      "bl-12",
-     "bl-20",
-     "bl-22",
-     "bl-30",
      "bl-31",
      "bl-33"
     ]
@@ -6681,7 +6678,6 @@
      "bl-41",
      "bl-06",
      "bl-07",
-     "bl-26",
      "bl-27"
     ]
    },
@@ -6735,6 +6731,566 @@
    "how": "Mở bài KQ tháng/quý MWG, FRT, PNJ; cập nhật bảng + evidence.",
    "gates": [
     "Mở trang gốc"
+   ]
+  },
+  {
+   "id": "dairy.public.monthly",
+   "tier": "A",
+   "title": "Sữa: tổng mức bán lẻ, CPI, khách quốc tế, tiền gửi, tín dụng, sản lượng xe, bia, sữa, IIP",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     3,
+     15
+    ]
+   },
+   "publication": "NSO ngày 3–6 hằng tháng; tiền gửi, tín dụng NHNN chậm 1–2 tháng",
+   "source": {
+    "name": "Cục Thống kê (NSO), Cục Hải quan, NHNN",
+    "url": "https://www.nso.gov.vn/bao-cao-tinh-hinh-kinh-te-xa-hoi-hang-thang/"
+   },
+   "where": {
+    "page": "Sua/index.html",
+    "file": "data/retail-public-data.js",
+    "blocks": [
+     "sua-10",
+     "sua-11",
+     "sua-12"
+    ]
+   },
+   "how": "python3 scripts/fetch_nso.py && python3 scripts/fetch_customs.py && python3 scripts/fetch_sbv.py → build_sector_public.py (chạy trong refresh-data.yml) Trang Sữa (Sua/) dựng từ cùng nguồn qua Sua/app/dairy-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "dairy.public.weekly",
+   "tier": "A",
+   "title": "Sữa: đường thô, dầu cọ, khô đậu nành, ngô",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh; IMF/FRED cập nhật hằng tháng"
+   },
+   "publication": "IMF bình quân tháng (trễ 1–3 tháng); EIA/ICE theo phiên, lấy giá cuối tháng",
+   "source": {
+    "name": "IMF Primary Commodity Prices (FRED), EIA, ICE",
+    "url": "https://fred.stlouisfed.org/"
+   },
+   "where": {
+    "page": "Sua/index.html",
+    "file": "data/retail-public-data.js",
+    "blocks": [
+     "sua-20"
+    ]
+   },
+   "how": "python3 scripts/build_sector_public.py (chạy trong refresh-data.yml) Trang Sữa (Sua/) dựng từ cùng nguồn qua Sua/app/dairy-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Chỉ nguồn công khai (IMF/FRED, EIA, ICE); không dùng số Wi",
+    "Ghi rõ đơn vị và phép quy đổi trong data/<ngành>-public-data.json"
+   ],
+   "job": "build_sector_public.py (mỗi lượt refresh)",
+   "note": "Chỉ các chuỗi có nguồn công khai tương đương; chuỗi nội địa và chỉ số Baltic để trống."
+  },
+  {
+   "id": "dairy.public.margin",
+   "tier": "A",
+   "title": "Sữa: Biên gộp FMCG theo quý + nguyên liệu trễ 2 quý (đường, dầu cọ, khô đậu, ngô, SMP)",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     1,
+     10
+    ]
+   },
+   "source": {
+    "name": "VNDirect, FRED, ICE, FAO FPMA",
+    "url": "https://fpma.fao.org/"
+   },
+   "where": {
+    "page": "Sua/index.html",
+    "file": "data/retail-public-data.js",
+    "blocks": [
+     "sua-21",
+     "sua-22",
+     "sua-06"
+    ]
+   },
+   "how": "company-quarterly.json + build_sector_public.py (đọc data/raw/public/fao-fpma.json). · bl-06, bl-07 (Σ theo nhóm), bl-26 (biên gộp HAX, SVC), bl-27 (biên gộp PNJ cạnh SJC so cùng kỳ) tự tính trong Ban-le/app/retail-dashboard.js từ window.COMPANY_QUARTERLY; không nhập tay. Trang Sữa (Sua/) dựng từ cùng nguồn qua Sua/app/dairy-config.js + pkg-dashboard.js.",
+   "job": "company-quarterly.json + build_sector_public.py (đọc data/raw/public/fao-fpma.json)."
+  },
+  {
+   "id": "dairy.public.valuation",
+   "tier": "A",
+   "title": "Sữa: định giá phân ngành bán lẻ, phân phối, xe, sữa, bia theo phiên",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Theo phiên giao dịch",
+   "source": {
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
+   },
+   "where": {
+    "page": "Sua/index.html",
+    "file": "data/retail-public-data.js",
+    "blocks": [
+     "sua-03"
+    ]
+   },
+   "how": "python3 scripts/build_sector_public.py (gọi sector_valuation_public; chạy trong refresh-data.yml) Trang Sữa (Sua/) dựng từ cùng nguồn qua Sua/app/dairy-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "dairy.companies",
+   "tier": "C",
+   "status": "manual",
+   "title": "Sữa: Doanh nghiệp bán lẻ, tiêu dùng: kế hoạch, kết quả, cửa hàng",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "BCTC quý; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "BCTC công bố",
+    "url": "https://www.hsx.vn/"
+   },
+   "where": {
+    "page": "Sua/index.html",
+    "blocks": [
+     "sua-60"
+    ]
+   },
+   "how": "Khi người dùng nhắn: cập nhật bảng bl-60, bl-61 và evidence. Trang Sữa (Sua/) dựng từ cùng nguồn qua Sua/app/dairy-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Link BCTC hoặc bài dẫn"
+   ]
+  },
+  {
+   "id": "dairy.policy",
+   "tier": "C",
+   "title": "Sữa: VAT 2%, thuế TTĐB bia và nước giải khát, luật TMĐT, NĐ 24 vàng, lệ phí trước bạ, lương",
+   "schedule": {
+    "type": "watch",
+    "note": "Mốc: 31/12/2026 hết giảm VAT; 1/1/2027 TTĐB NGK 8%, bia bậc 70%; 3/2027 TTĐB xe điện"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Bộ Tài chính",
+    "url": "https://mof.gov.vn/"
+   },
+   "where": {
+    "page": "Sua/index.html",
+    "blocks": [
+     "sua-52"
+    ]
+   },
+   "how": "Mở văn bản gốc; cập nhật bảng bl-50 và evidence. Trang Sữa (Sua/) dựng từ cùng nguồn qua Sua/app/dairy-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Mở văn bản gốc",
+    "Ghi ngày hiệu lực"
+   ],
+   "watch": [
+    "news.retail"
+   ]
+  },
+  {
+   "id": "dairy.hot-topics",
+   "tier": "C",
+   "title": "Sữa: Chủ đề nóng: PNJ kim cương, Bách Hóa Xanh/Long Châu, thuế TTĐB, TMĐT",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Mekong ASEAN",
+    "url": "https://mekongasean.vn/"
+   },
+   "where": {
+    "page": "Sua/index.html",
+    "blocks": [
+     "sua-t1"
+    ]
+   },
+   "how": "Thêm mốc mới có ngày và link. Trang Sữa (Sua/) dựng từ cùng nguồn qua Sua/app/dairy-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Mỗi dòng có ngày + link"
+   ]
+  },
+  {
+   "id": "beer.public.monthly",
+   "tier": "A",
+   "title": "Bia: tổng mức bán lẻ, CPI, khách quốc tế, tiền gửi, tín dụng, sản lượng xe, bia, sữa, IIP",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     3,
+     15
+    ]
+   },
+   "publication": "NSO ngày 3–6 hằng tháng; tiền gửi, tín dụng NHNN chậm 1–2 tháng",
+   "source": {
+    "name": "Cục Thống kê (NSO), Cục Hải quan, NHNN",
+    "url": "https://www.nso.gov.vn/bao-cao-tinh-hinh-kinh-te-xa-hoi-hang-thang/"
+   },
+   "where": {
+    "page": "Bia/index.html",
+    "file": "data/retail-public-data.js",
+    "blocks": [
+     "bia-10",
+     "bia-11",
+     "bia-12",
+     "bia-13"
+    ]
+   },
+   "how": "python3 scripts/fetch_nso.py && python3 scripts/fetch_customs.py && python3 scripts/fetch_sbv.py → build_sector_public.py (chạy trong refresh-data.yml) Trang Bia (Bia/) dựng từ cùng nguồn qua Bia/app/beer-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "beer.public.margin",
+   "tier": "A",
+   "title": "Bia: Biên gộp FMCG theo quý + nguyên liệu trễ 2 quý (đường, dầu cọ, khô đậu, ngô, SMP)",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     1,
+     10
+    ]
+   },
+   "source": {
+    "name": "VNDirect, FRED, ICE, FAO FPMA",
+    "url": "https://fpma.fao.org/"
+   },
+   "where": {
+    "page": "Bia/index.html",
+    "file": "data/retail-public-data.js",
+    "blocks": [
+     "bia-20",
+     "bia-06"
+    ]
+   },
+   "how": "company-quarterly.json + build_sector_public.py (đọc data/raw/public/fao-fpma.json). · bl-06, bl-07 (Σ theo nhóm), bl-26 (biên gộp HAX, SVC), bl-27 (biên gộp PNJ cạnh SJC so cùng kỳ) tự tính trong Ban-le/app/retail-dashboard.js từ window.COMPANY_QUARTERLY; không nhập tay. Trang Bia (Bia/) dựng từ cùng nguồn qua Bia/app/beer-config.js + pkg-dashboard.js.",
+   "job": "company-quarterly.json + build_sector_public.py (đọc data/raw/public/fao-fpma.json)."
+  },
+  {
+   "id": "beer.public.valuation",
+   "tier": "A",
+   "title": "Bia: định giá phân ngành bán lẻ, phân phối, xe, sữa, bia theo phiên",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Theo phiên giao dịch",
+   "source": {
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
+   },
+   "where": {
+    "page": "Bia/index.html",
+    "file": "data/retail-public-data.js",
+    "blocks": [
+     "bia-03"
+    ]
+   },
+   "how": "python3 scripts/build_sector_public.py (gọi sector_valuation_public; chạy trong refresh-data.yml) Trang Bia (Bia/) dựng từ cùng nguồn qua Bia/app/beer-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "beer.companies",
+   "tier": "C",
+   "status": "manual",
+   "title": "Bia: Doanh nghiệp bán lẻ, tiêu dùng: kế hoạch, kết quả, cửa hàng",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "BCTC quý; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "BCTC công bố",
+    "url": "https://www.hsx.vn/"
+   },
+   "where": {
+    "page": "Bia/index.html",
+    "blocks": [
+     "bia-60"
+    ]
+   },
+   "how": "Khi người dùng nhắn: cập nhật bảng bl-60, bl-61 và evidence. Trang Bia (Bia/) dựng từ cùng nguồn qua Bia/app/beer-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Link BCTC hoặc bài dẫn"
+   ]
+  },
+  {
+   "id": "beer.policy",
+   "tier": "C",
+   "title": "Bia: VAT 2%, thuế TTĐB bia và nước giải khát, luật TMĐT, NĐ 24 vàng, lệ phí trước bạ, lương",
+   "schedule": {
+    "type": "watch",
+    "note": "Mốc: 31/12/2026 hết giảm VAT; 1/1/2027 TTĐB NGK 8%, bia bậc 70%; 3/2027 TTĐB xe điện"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Bộ Tài chính",
+    "url": "https://mof.gov.vn/"
+   },
+   "where": {
+    "page": "Bia/index.html",
+    "blocks": [
+     "bia-52",
+     "bia-53"
+    ]
+   },
+   "how": "Mở văn bản gốc; cập nhật bảng bl-50 và evidence. Trang Bia (Bia/) dựng từ cùng nguồn qua Bia/app/beer-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Mở văn bản gốc",
+    "Ghi ngày hiệu lực"
+   ],
+   "watch": [
+    "news.retail"
+   ]
+  },
+  {
+   "id": "beer.hot-topics",
+   "tier": "C",
+   "title": "Bia: Chủ đề nóng: PNJ kim cương, Bách Hóa Xanh/Long Châu, thuế TTĐB, TMĐT",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Mekong ASEAN",
+    "url": "https://mekongasean.vn/"
+   },
+   "where": {
+    "page": "Bia/index.html",
+    "blocks": [
+     "bia-t1"
+    ]
+   },
+   "how": "Thêm mốc mới có ngày và link. Trang Bia (Bia/) dựng từ cùng nguồn qua Bia/app/beer-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Mỗi dòng có ngày + link"
+   ]
+  },
+  {
+   "id": "auto.public.monthly",
+   "tier": "A",
+   "title": "Ô tô - Xe máy: tổng mức bán lẻ, CPI, khách quốc tế, tiền gửi, tín dụng, sản lượng xe, bia, sữa, IIP",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     3,
+     15
+    ]
+   },
+   "publication": "NSO ngày 3–6 hằng tháng; tiền gửi, tín dụng NHNN chậm 1–2 tháng",
+   "source": {
+    "name": "Cục Thống kê (NSO), Cục Hải quan, NHNN",
+    "url": "https://www.nso.gov.vn/bao-cao-tinh-hinh-kinh-te-xa-hoi-hang-thang/"
+   },
+   "where": {
+    "page": "O-to-xe-may/index.html",
+    "file": "data/retail-public-data.js",
+    "blocks": [
+     "oto-10",
+     "oto-13",
+     "oto-14"
+    ]
+   },
+   "how": "python3 scripts/fetch_nso.py && python3 scripts/fetch_customs.py && python3 scripts/fetch_sbv.py → build_sector_public.py (chạy trong refresh-data.yml) Trang Ô tô - Xe máy (O-to-xe-may/) dựng từ cùng nguồn qua O-to-xe-may/app/auto-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "auto.market",
+   "tier": "C",
+   "title": "Ô tô - Xe máy: Sức mua toàn thị trường, VAMA/VAMM/VinFast, giá vàng, TMĐT, mạng lưới cửa hàng, số tháng MWG/FRT/PNJ",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     8,
+     20
+    ]
+   },
+   "publication": "NSO ngày 6; VAMA ~10–12; MWG, PNJ báo tháng ~20",
+   "source": {
+    "name": "VAMA",
+    "url": "https://vama.org.vn/"
+   },
+   "where": {
+    "page": "O-to-xe-may/index.html",
+    "blocks": [
+     "oto-11",
+     "oto-12",
+     "oto-15"
+    ]
+   },
+   "how": "Mở bài công bố mới; cập nhật bảng và chart chRetailMix, chStores trong Ban-le/app/retail-dashboard.js; thêm evidence. Trang Ô tô - Xe máy (O-to-xe-may/) dựng từ cùng nguồn qua O-to-xe-may/app/auto-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Mở trang gốc",
+    "Ghi kỳ số liệu"
+   ],
+   "watch": [
+    "news.retail"
+   ]
+  },
+  {
+   "id": "auto.public.margin",
+   "tier": "A",
+   "title": "Ô tô - Xe máy: Biên gộp FMCG theo quý + nguyên liệu trễ 2 quý (đường, dầu cọ, khô đậu, ngô, SMP)",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     1,
+     10
+    ]
+   },
+   "source": {
+    "name": "VNDirect, FRED, ICE, FAO FPMA",
+    "url": "https://fpma.fao.org/"
+   },
+   "where": {
+    "page": "O-to-xe-may/index.html",
+    "file": "data/retail-public-data.js",
+    "blocks": [
+     "oto-20",
+     "oto-06"
+    ]
+   },
+   "how": "company-quarterly.json + build_sector_public.py (đọc data/raw/public/fao-fpma.json). · bl-06, bl-07 (Σ theo nhóm), bl-26 (biên gộp HAX, SVC), bl-27 (biên gộp PNJ cạnh SJC so cùng kỳ) tự tính trong Ban-le/app/retail-dashboard.js từ window.COMPANY_QUARTERLY; không nhập tay. Trang Ô tô - Xe máy (O-to-xe-may/) dựng từ cùng nguồn qua O-to-xe-may/app/auto-config.js + pkg-dashboard.js.",
+   "job": "company-quarterly.json + build_sector_public.py (đọc data/raw/public/fao-fpma.json)."
+  },
+  {
+   "id": "auto.public.valuation",
+   "tier": "A",
+   "title": "Ô tô - Xe máy: định giá phân ngành bán lẻ, phân phối, xe, sữa, bia theo phiên",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Theo phiên giao dịch",
+   "source": {
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
+   },
+   "where": {
+    "page": "O-to-xe-may/index.html",
+    "file": "data/retail-public-data.js",
+    "blocks": [
+     "oto-03"
+    ]
+   },
+   "how": "python3 scripts/build_sector_public.py (gọi sector_valuation_public; chạy trong refresh-data.yml) Trang Ô tô - Xe máy (O-to-xe-may/) dựng từ cùng nguồn qua O-to-xe-may/app/auto-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "auto.companies",
+   "tier": "C",
+   "status": "manual",
+   "title": "Ô tô - Xe máy: Doanh nghiệp bán lẻ, tiêu dùng: kế hoạch, kết quả, cửa hàng",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "BCTC quý; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "BCTC công bố",
+    "url": "https://www.hsx.vn/"
+   },
+   "where": {
+    "page": "O-to-xe-may/index.html",
+    "blocks": [
+     "oto-60"
+    ]
+   },
+   "how": "Khi người dùng nhắn: cập nhật bảng bl-60, bl-61 và evidence. Trang Ô tô - Xe máy (O-to-xe-may/) dựng từ cùng nguồn qua O-to-xe-may/app/auto-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Link BCTC hoặc bài dẫn"
+   ]
+  },
+  {
+   "id": "auto.policy",
+   "tier": "C",
+   "title": "Ô tô - Xe máy: VAT 2%, thuế TTĐB bia và nước giải khát, luật TMĐT, NĐ 24 vàng, lệ phí trước bạ, lương",
+   "schedule": {
+    "type": "watch",
+    "note": "Mốc: 31/12/2026 hết giảm VAT; 1/1/2027 TTĐB NGK 8%, bia bậc 70%; 3/2027 TTĐB xe điện"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Bộ Tài chính",
+    "url": "https://mof.gov.vn/"
+   },
+   "where": {
+    "page": "O-to-xe-may/index.html",
+    "blocks": [
+     "oto-52"
+    ]
+   },
+   "how": "Mở văn bản gốc; cập nhật bảng bl-50 và evidence. Trang Ô tô - Xe máy (O-to-xe-may/) dựng từ cùng nguồn qua O-to-xe-may/app/auto-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Mở văn bản gốc",
+    "Ghi ngày hiệu lực"
+   ],
+   "watch": [
+    "news.retail"
+   ]
+  },
+  {
+   "id": "auto.hot-topics",
+   "tier": "C",
+   "title": "Ô tô - Xe máy: Chủ đề nóng: PNJ kim cương, Bách Hóa Xanh/Long Châu, thuế TTĐB, TMĐT",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Mekong ASEAN",
+    "url": "https://mekongasean.vn/"
+   },
+   "where": {
+    "page": "O-to-xe-may/index.html",
+    "blocks": [
+     "oto-t1"
+    ]
+   },
+   "how": "Thêm mốc mới có ngày và link. Trang Ô tô - Xe máy (O-to-xe-may/) dựng từ cùng nguồn qua O-to-xe-may/app/auto-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Mỗi dòng có ngày + link"
    ]
   },
   {

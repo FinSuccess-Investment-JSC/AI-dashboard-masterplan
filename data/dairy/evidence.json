@@ -1,0 +1,82 @@
+[
+ {
+  "block": "sua-60",
+  "claim": "Kế hoạch 2026 (ĐHĐCĐ 22/4/2026): doanh thu hợp nhất / LNST / cổ tức",
+  "value": "66.477 tỷ (+4,3%) / 9.828 tỷ đồng (+4,4%) / cổ tức tiền ≥50% LNST",
+  "url": "https://thitruongtaichinhtiente.vn/dhdcd-vinamilk-loi-nhuan-quy-i-tang-55-thi-truong-sua-viet-nam-con-nhieu-du-dia-82341.html",
+  "opened_at": "2026-10-11",
+  "quote": "Năm 2026, Vinamilk đặt kế hoạch doanh thu hợp nhất 66.477 tỷ đồng và lợi nhuận sau thuế 9.828 tỷ đồng, lần lượt tăng 4,3% và 4,4% so với thực hiện 2025. Cổ tức tiền mặt năm 2026 tối thiểu bằng 50% lợi nhuận sau thuế hợp nhất.",
+  "status": "match",
+  "note": "VNM. thitruongtaichinhtiente.vn, bài 22/04/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "sua-60",
+  "claim": "Nền 2025: doanh thu thuần / LNST; cổ tức 2025",
+  "value": "63.724 tỷ (+3,1%) / 9.414 tỷ đồng (-0,4%); cổ tức 2025 43,5% (4.350 đ/cp)",
+  "url": "https://mekongasean.vn/vinamilk-dat-muc-tieu-lai-hon-9800-ty-nam-2026-co-tuc-toi-thieu-50-53451.html",
+  "opened_at": "2026-10-11",
+  "quote": "Kết thúc năm 2025, doanh nghiệp đầu ngành sữa Việt Nam đạt 63.724 tỷ đồng doanh thu thuần, tăng 3,1% so với cùng kỳ năm 2024 (YoY); lợi nhuận sau thuế giảm nhẹ 0,4% YoY, xuống còn 9.414 tỷ đồng.",
+  "status": "match",
+  "note": "VNM. mekongasean.vn, bài 01/04/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "sua-60",
+  "claim": "KQ Q2/2026 (sơ bộ): doanh thu / LNST",
+  "value": "18.856 tỷ (+12,5%) / 3.184 tỷ đồng (+28%)",
+  "url": "https://24hmoney.vn/news/vinamilk-bao-lai-quy-2-2026-tang-28-xuat-khau-va-cong-ty-con-la-dong-luc-chinh-c30a2811474.html",
+  "opened_at": "2026-10-11",
+  "quote": "Công ty Cổ phần Sữa Việt Nam (VNM) vừa công bố kết quả kinh doanh sơ bộ quý 2/2026 với doanh thu và lợi nhuận sau thuế lần lượt tăng 12,5% và 28% so với cùng kỳ, đạt 18.856 tỷ đồng và 3.184 tỷ đồng.",
+  "status": "match",
+  "note": "VNM. 24hmoney.vn, bài 24/07/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "sua-60",
+  "claim": "KQ 6T/2026: tổng doanh thu / LNST / % KH",
+  "value": "35.034 tỷ (+17,7%) / 5.643 tỷ đồng (+38,4%); 50% KH doanh thu, 55% KH lợi nhuận",
+  "url": "https://24hmoney.vn/news/vinamilk-bao-lai-quy-2-2026-tang-28-xuat-khau-va-cong-ty-con-la-dong-luc-chinh-c30a2811474.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 6 tháng đầu năm 2026, tổng doanh thu đạt 35.034 tỷ đồng, tăng 17,7% YoY, trong khi lợi nhuận sau thuế tăng mạnh 38,4%, lên mức 5.643 tỷ đồng.",
+  "status": "match",
+  "note": "VNM. 24hmoney.vn, bài 24/07/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "sua-60",
+  "claim": "Nội địa và xuất khẩu Q2 / 6T 2026",
+  "value": "nội địa 14.616 tỷ (+6,8%) / 26.596 tỷ (+12,6%); xuất khẩu 2.664 tỷ (+41,2%) / 4.990 tỷ (+42,3%)",
+  "url": "https://24hmoney.vn/news/vinamilk-bao-lai-quy-2-2026-tang-28-xuat-khau-va-cong-ty-con-la-dong-luc-chinh-c30a2811474.html",
+  "opened_at": "2026-10-11",
+  "quote": "Mảng xuất khẩu tiếp tục là điểm sáng nổi bật nhất, với doanh thu thuần tăng tới 41,2% trong quý 2 và 42,3% trong 6 tháng đầu năm, tương ứng đạt 2.664 tỷ đồng và 4.990 tỷ đồng.",
+  "status": "match",
+  "note": "VNM. 24hmoney.vn, bài 24/07/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "sua-60",
+  "claim": "Biên lợi nhuận ròng 6T/2026 và chi phí nguyên liệu",
+  "value": "16,1% (cùng kỳ 17%); chi phí nguyên liệu đầu vào giảm (Driftwood: sữa tươi nguyên liệu giảm)",
+  "url": "https://doanhnhan.baophapluat.vn/vinamilk-vnm-bao-lai-nua-dau-nam-2026-tang-manh-38-xuat-khau-dong-vai-tro-diem-sang.html",
+  "opened_at": "2026-10-11",
+  "quote": "Biên lợi nhuận ròng trong nửa đầu năm ghi nhận mức 16,1%, thấp hơn tỷ lệ 17% của cùng kỳ năm trước do quá trình tối ưu hóa danh mục sản phẩm và sự sụt giảm của chi phí nguyên liệu đầu vào.",
+  "status": "match",
+  "note": "VNM. doanhnhan.baophapluat.vn, bài cuối 07/2026 (theo báo cáo sơ bộ Vietcap) · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "sua-60",
+  "claim": "Công ty con: Angkor Milk, Driftwood 6T/2026",
+  "value": "Angkor Milk: DT +218,4%, LNST +187,9%; Driftwood: LNST +51,5%",
+  "url": "https://24hmoney.vn/news/vinamilk-bao-lai-quy-2-2026-tang-28-xuat-khau-va-cong-ty-con-la-dong-luc-chinh-c30a2811474.html",
+  "opened_at": "2026-10-11",
+  "quote": "Nổi bật nhất là Angkor Milk, khi doanh thu thuần và lợi nhuận sau thuế quý 2 lần lượt tăng vọt 241,7% và 209,9% so với cùng kỳ, còn tính chung 6 tháng mức tăng đạt 218,4% và 187,9%.",
+  "status": "match",
+  "note": "VNM. 24hmoney.vn, bài 24/07/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "sua-60",
+  "claim": "Sức mua ngành sữa (rủi ro) và mạng lưới cửa hàng",
+  "value": "ngành sữa Q1/2026 vẫn -3,7% YoY (2025: -2,4%); cửa hàng 800 → mục tiêu 1.000 trong 2026; đàn bò >130.000 con, 410.000 tấn sữa tươi",
+  "url": "https://thitruongtaichinhtiente.vn/dhdcd-vinamilk-loi-nhuan-quy-i-tang-55-thi-truong-sua-viet-nam-con-nhieu-du-dia-82341.html",
+  "opened_at": "2026-10-11",
+  "quote": "Đánh giá sức mua, bà Liên cho biết, bức tranh chung của ngành sữa vẫn chưa thực sự khả quan, vẫn âm 3,7% so với cùng kỳ.",
+  "status": "match",
+  "note": "VNM. thitruongtaichinhtiente.vn, bài 22/04/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ }
+]

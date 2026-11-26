@@ -15,7 +15,7 @@ window.FS_SITE_NAV = {
       {key: 'materials', label: 'Vật liệu xây dựng'},
       {key: 'publicinv', label: 'Đầu tư công & BOT'},
       {key: 'retail', label: 'Bán lẻ'},
-      {label: 'Ô tô - Xe máy', soon: true},
+      {key: 'auto', label: 'Ô tô - Xe máy'},
       {key: 'power', label: 'Điện'},
       {key: 'oil', label: 'Dầu khí'},
       {label: 'Vận tải', children: [
@@ -37,8 +37,8 @@ window.FS_SITE_NAV = {
       {label: 'Thực phẩm & đồ uống', children: [
         {key: 'agri', label: 'Nông nghiệp & thực phẩm'},
         {key: 'sugar', label: 'Đường'},
-        {label: 'Sữa', soon: true},
-        {label: 'Bia', soon: true}
+        {key: 'dairy', label: 'Sữa'},
+        {key: 'beer', label: 'Bia'}
       ]},
       {key: 'pharma', label: 'Dược & y tế'},
       {key: 'telecom', label: 'Viễn thông'}

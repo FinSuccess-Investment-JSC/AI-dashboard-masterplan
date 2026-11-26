@@ -35,9 +35,9 @@ if(chain){
  [...chain.children].filter(e=>e!==heading).forEach(e=>{e.classList.add('conf-note');e.dataset.snapshotAt='11/10/2026'});
  const w=220,h=65;
  const nodes=[
-  ['income',25,40,['Thu nhập & tín dụng','lương · tiền gửi · vay tiêu dùng']],['tourist',25,165,['Khách quốc tế','17,7 triệu lượt 9T/2026']],['input',25,290,['Nguyên liệu F&B','sữa bột · lúa mạch · đường · dầu cọ']],
-  ['modern',315,40,['Bán lẻ hiện đại','MWG · FRT · DGW · PET']],['durable',315,165,['Hàng lâu bền','PNJ · HAX · SVC']],['fmcg',315,290,['Tiêu dùng nhanh','VNM · SAB · QNS · MSN · KDC']],
-  ['store',605,40,['Cửa hàng & online','chuỗi · TMĐT · bancassurance xe']],['price',605,165,['Giá bán & CPI','VAT 2% · TTĐB bia, NGK']],['channel',605,290,['Kênh phân phối','siêu thị · tạp hóa · TMĐT']],
+  ['income',25,40,['Thu nhập & tín dụng','lương · tiền gửi · vay tiêu dùng']],['tourist',25,165,['Khách quốc tế','17,7 triệu lượt 9T/2026']],['input',25,290,['Nguyên liệu F&B','đường · dầu cọ · khô đậu · ngô']],
+  ['modern',315,40,['Bán lẻ hiện đại','MWG · FRT · DGW · PET']],['durable',315,165,['Trang sức','PNJ']],['fmcg',315,290,['Tiêu dùng nhanh','QNS · MSN · KDC']],
+  ['store',605,40,['Cửa hàng & online','chuỗi · TMĐT']],['price',605,165,['Giá bán & CPI','VAT 2% · TTĐB nước giải khát']],['channel',605,290,['Kênh phân phối','siêu thị · tạp hóa · TMĐT']],
   ['margin',895,165,['Biên lợi nhuận','giá bán − giá vốn − thuê mặt bằng']]
  ];
  const edges=[['income','modern'],['income','durable'],['tourist','fmcg',true],['input','fmcg',true],['modern','store'],['durable','price'],['fmcg','channel'],['store','margin'],['price','margin'],['channel','margin']];
@@ -51,7 +51,7 @@ if(chain){
  const figure=make('div','value-chain-scroll');figure.tabIndex=0;figure.setAttribute('aria-label','Sơ đồ chuỗi giá trị; có thể cuộn ngang trên màn hình nhỏ');
  figure.innerHTML=`<svg viewBox="0 0 1140 375" role="img" aria-labelledby="chain-title chain-desc"><title id="chain-title">Chuỗi giá trị ngành bán lẻ và tiêu dùng</title><desc id="chain-desc">Thu nhập, tín dụng và khách quốc tế tạo sức mua; bán lẻ hiện đại, hàng lâu bền và tiêu dùng nhanh bán qua cửa hàng, online; biên phụ thuộc giá bán, giá vốn và thuế.</desc><defs><marker id="chain-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker></defs>${paths}${boxes}</svg>`;
  heading.after(figure);
- chain.append(make('div','chart-insight','AI · cách đọc chuỗi: bán lẻ hiện đại (MWG, FRT) ăn theo sức mua và tốc độ mở cửa hàng — doanh thu đi sát tổng mức bán lẻ, lợi nhuận đi theo biên gộp và chi phí mặt bằng. Hàng lâu bền (xe, trang sức) nhạy với lãi suất và giá vàng. Tiêu dùng nhanh (sữa, bia, đường, thực phẩm) phụ thuộc giá nguyên liệu nhập và thuế TTĐB; VNM, SAB, QNS cũng có mặt ở dashboard Nông nghiệp theo chiều giá đầu vào.'));
+ chain.append(make('div','chart-insight','AI · cách đọc chuỗi: bán lẻ hiện đại (MWG, FRT) ăn theo sức mua và tốc độ mở cửa hàng — doanh thu đi sát tổng mức bán lẻ, lợi nhuận đi theo biên gộp và chi phí mặt bằng. Trang sức (PNJ) nhạy với giá vàng và chênh lệch thế giới. Tiêu dùng nhanh (đường, thực phẩm, dầu ăn) phụ thuộc giá nguyên liệu nhập và thuế TTĐB nước giải khát. Sữa, Bia, Ô tô – Xe máy có dashboard riêng.'));
  figure.after(make('div','source-note','Mũi tên liền: dòng cầu và doanh thu · Mũi tên đứt: yếu tố chi phí, hỗ trợ. Sơ đồ không biểu thị tỷ trọng.'));
 }
 
@@ -83,6 +83,7 @@ function legend(id,items){const host=document.getElementById(id);if(!host)return
 function kpi(spark,value,sub,delta,series,color=C.navy){const sp=document.getElementById(spark),card=sp?.closest('.kpi');if(!card)return;const ve=card.querySelector('.value'),seg=String(sub??'').split(' · '),hasU=value!=='—'&&seg.length>1&&/^(nghìn|triệu|tỷ|USD|CNY|VND|US cent|điểm|lượt)/.test(seg[0]);ve.textContent=value;if(hasU){const u=document.createElement('span');u.className='unit';u.style.cssText='font-size:12px;font-weight:600;color:var(--muted,#6b7a90);margin-left:6px;letter-spacing:0';u.textContent=seg[0];ve.append(u)}card.querySelector('.sub').textContent=hasU?seg.slice(1).join(' · '):sub;card.querySelector('.delta').textContent=delta;sp.replaceChildren();const sv=(series||[]).filter(Number.isFinite);if(sv.length>1)sparkline(spark,sv,color)}
 function lines(id,base,series,unit,digits,zeroBase=false){barLineChart(id,{categories:base.map(r=>mon(r.date)),series:series.map(([n,c,f])=>({name:n,color:c,kind:'line',values:base.map(f)})),unit,digits,height:260,zeroBase,rotateLabels:true})}
 const BASE='2024-01';
+const car=S('car_output'),cimp=S('car_import');
 const rt=S('retail_total'),rg=S('retail_goods'),cpi=S('cpi_yoy'),tour=S('tourists'),dep=S('household_deposits'),cred=S('credit_total');
 // Bán lẻ hiện đại: sức mua
 if(rt.length&&document.getElementById('chRetail')){
@@ -91,7 +92,7 @@ if(rt.length&&document.getElementById('chRetail')){
  legend('chRetail',[['Tổng mức bán lẻ HH & DV',C.navy],['Bán lẻ hàng hóa',C.teal]]);
  fillTable('tbl-retail',['Tháng','Tổng (nghìn tỷ)','YoY','Hàng hóa (nghìn tỷ)','YoY'],rt.slice().reverse().map(r=>{const g=gm[ym(r.date)];return [mon(r.date),nf(r.value/1000,1),signed(yoyAt(rt,r),1)+'%',nf((g?.value??NaN)/1000,1),signed(yoyAt(rg,g),1)+'%']}));
  sourceLine('chRetail',[SRC.nso],mon(rt.at(-1).date),'Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng, trong đó bán lẻ hàng hóa; giá hiện hành, chưa loại trừ giá.');
- insight('chRetail','Doanh thu danh nghĩa của chuỗi bán lẻ đi theo đường này, nhưng một phần tăng là do giá nên cần đọc cùng KPI loại trừ yếu tố giá bên cạnh. Kiểm tiếp bán lẻ hàng hóa tháng 11–12 (mùa khuyến mãi, Tết sớm 17/02/2027) và số loại trừ giá cả năm khi NSO công bố.');
+ insight('chRetail','Doanh thu danh nghĩa của chuỗi bán lẻ đi theo đường này, nhưng một phần tăng là do giá nên cần đọc cùng CPI ở lớp chỉ báo giải thích. Kiểm tiếp bán lẻ hàng hóa tháng 11–12 (mùa khuyến mãi, Tết sớm 17/02/2027) và số loại trừ giá cả năm khi NSO công bố.');
 }
 if(cpi.length&&document.getElementById('chCpi')){
  const rs=cpi.slice(-36),fm=byMonth(S('cpi_food_yoy')),bm=byMonth(S('cpi_bev_yoy'));
@@ -116,34 +117,8 @@ if(dep.length&&document.getElementById('chCredit')){
  sourceLine('chCredit',[SRC.sbv],mon(dep.at(-1).date),'Tiền gửi của dân cư và tổng dư nợ tín dụng nền kinh tế (NHNN, số liệu từ 01/2025). NHNN đổi phương pháp thống kê tiền gửi từ 10/2025 nên so cùng kỳ quanh mốc này có sai lệch. Nguồn công khai chưa tách tín dụng tiêu dùng.');
  insight('chCredit','Tín dụng ở đây là tổng dư nợ nền kinh tế, không phải tín dụng tiêu dùng, nên chỉ là chỉ báo gián tiếp cho hàng trả góp (điện thoại, điện máy, xe). Tiền gửi dân cư so cùng kỳ bị méo do NHNN phân tổ lại từ 10/2025; đọc lại khi đủ 12 tháng cùng phương pháp.');
 }
-// Hàng lâu bền: xe
-const car=S('car_output'),moto=S('moto_output'),cimp=S('car_import');
-if(car.length&&document.getElementById('chCar')){
- const rs=car.slice(-36),im=byMonth(cimp);
- barLineChart('chCar',{categories:rs.map(r=>mon(r.date)),series:[{name:'Ô tô sản xuất (nghìn chiếc)',color:C.navy,values:rs.map(r=>r.value)},{name:'Nhập khẩu ô tô (chục triệu USD)',color:C.gold,kind:'line',values:rs.map(r=>(im[ym(r.date)]?.value??NaN)/10)}],unit:'',digits:0,height:260,rotateLabels:true});
- legend('chCar',[['Ô tô sản xuất, nghìn chiếc',C.navy],['Nhập khẩu ô tô, chục triệu USD',C.gold]]);
- fillTable('tbl-car',['Tháng','Ô tô SX (nghìn)','YoY','Nhập khẩu (triệu USD)','YoY'],car.slice().reverse().map(r=>{const i=im[ym(r.date)];return [mon(r.date),nf(r.value,1),signed(yoyAt(car,r),0)+'%',nf(i?.value,0),signed(yoyAt(cimp,i),0)+'%']}));
- sourceLine('chCar',[SRC.nso,SRC.customs],mon(car.at(-1).date),'Sản lượng sản xuất ô tô và nhập khẩu ô tô nguyên chiếc. Doanh số VAMA ở bảng Key players.');
- insight('chCar','Đây là sản lượng sản xuất và nhập khẩu, không phải doanh số bán; lợi nhuận đại lý (HAX, SVC) đi theo số xe bán ra và biên mỗi xe nên cần đọc cùng VAMA và biên gộp đại lý bên dưới. Kiểm tiếp doanh số VAMA tháng 10–11 và cơ cấu xe điện khi lệ phí trước bạ 0% kéo khách khỏi xe xăng.');
-}
-if(moto.length&&document.getElementById('chMoto')){
- const rs=moto.slice(-36);
- barLineChart('chMoto',{categories:rs.map(r=>mon(r.date)),series:[{name:'Xe máy sản xuất',color:C.teal,values:rs.map(r=>r.value)}],unit:'nghìn chiếc',digits:0,height:260,rotateLabels:true});
- fillTable('tbl-moto',['Tháng','Nghìn chiếc','YoY'],moto.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),signed(yoyAt(moto,r),0)+'%']));
- sourceLine('chMoto',[SRC.nso],mon(moto.at(-1).date),'Sản lượng sản xuất xe máy. VAMM bán ra ở bảng Key players.');
- insight('chMoto','Xe máy là chỉ báo sức mua của nhóm thu nhập trung bình, cùng tệp khách mua trả góp điện máy, điện thoại. Kiểm tiếp số VAMM quý IV và tỷ trọng xe điện.');
-}
 // Tiêu dùng nhanh
-const beer=S('beer_output'),milk=S('milk_output'),mp=S('milkpowder_output'),iipF=S('iip_food'),iipB=S('iip_bev');
-if(beer.length&&document.getElementById('chFmcgOut')){
- const rs=beer.slice(-36),mm=byMonth(milk);
- barLineChart('chFmcgOut',{categories:rs.map(r=>mon(r.date)),series:[{name:'Bia (triệu lít)',color:C.gold,values:rs.map(r=>r.value)},{name:'Sữa tươi (triệu lít)',color:C.navy,kind:'line',values:rs.map(r=>mm[ym(r.date)]?.value??null)}],unit:'triệu lít',digits:0,height:260,rotateLabels:true});
- legend('chFmcgOut',[['Bia',C.gold],['Sữa tươi',C.navy]]);
- const pm=byMonth(mp);
- fillTable('tbl-fmcg-out',['Tháng','Bia (triệu lít)','YoY','Sữa tươi (triệu lít)','YoY','Sữa bột (nghìn tấn)'],beer.slice().reverse().map(r=>{const m=mm[ym(r.date)];return [mon(r.date),nf(r.value,0),signed(yoyAt(beer,r),0)+'%',nf(m?.value,0),signed(yoyAt(milk,m),0)+'%',nf(pm[ym(r.date)]?.value,1)]}));
- sourceLine('chFmcgOut',[SRC.nso],mon(beer.at(-1).date),'Sản lượng công nghiệp bia, sữa tươi, sữa bột. Sản lượng toàn ngành, không phải của SAB, VNM.');
- insight('chFmcgOut','Sản lượng sản xuất toàn ngành cho biết cầu và mức chạy máy, chưa phải sản lượng bán ra của SAB hay VNM. Kiểm tiếp sản lượng bia tháng 12–1 trước và sau mốc thuế TTĐB 70% (1/1/2027) để thấy phần kéo trước.');
-}
+const beer=S('beer_output'),iipF=S('iip_food'),iipB=S('iip_bev');
 if(iipF.length&&document.getElementById('chIip')){
  const rs=iipF.slice(-36),bm=byMonth(iipB);
  barLineChart('chIip',{categories:rs.map(r=>mon(r.date)),series:[{name:'Chế biến thực phẩm',color:C.navy,kind:'line',values:rs.map(r=>r.value)},{name:'Sản xuất đồ uống',color:C.gold,kind:'line',values:rs.map(r=>bm[ym(r.date)]?.value??null)}],unit:'%',digits:0,height:260,rotateLabels:true,zeroBase:false});
@@ -155,8 +130,8 @@ if(iipF.length&&document.getElementById('chIip')){
 const sugar=S('sugar'),palm=S('palm_oil'),soy=S('soymeal'),corn=S('corn'),smp=S('smp'),wmp=S('wmp');
 if(sugar.length&&document.getElementById('chInputs')){
  const si=byMonth(idx(sugar,BASE)),pi=byMonth(idx(palm,BASE)),so=byMonth(idx(soy,BASE)),co=byMonth(idx(corn,BASE)),wi_=byMonth(idx(wmp,BASE)),base=palm.filter(r=>r.date.slice(0,7)>=BASE);
- lines('chInputs',base,[['Đường thô',C.gold,r=>si[ym(r.date)]?.value??null],['Dầu cọ',C.plum,r=>pi[ym(r.date)]?.value??null],['Khô đậu nành',C.navy,r=>so[ym(r.date)]?.value??null],['Ngô',C.teal,r=>co[ym(r.date)]?.value??null],['Sữa bột nguyên kem WMP',C.red,r=>wi_[ym(r.date)]?.value??null]],'',0);
- legend('chInputs',[['Đường thô',C.gold],['Dầu cọ',C.plum],['Khô đậu nành',C.navy],['Ngô',C.teal],['Sữa bột WMP',C.red]]);
+ lines('chInputs',base,[['Đường thô',C.gold,r=>si[ym(r.date)]?.value??null],['Dầu cọ',C.plum,r=>pi[ym(r.date)]?.value??null],['Khô đậu nành',C.navy,r=>so[ym(r.date)]?.value??null],['Ngô',C.teal,r=>co[ym(r.date)]?.value??null]],'',0);
+ legend('chInputs',[['Đường thô',C.gold],['Dầu cọ',C.plum],['Khô đậu nành',C.navy],['Ngô',C.teal]]);
  const sm=byMonth(sugar),pm=byMonth(palm),som=byMonth(soy),cm=byMonth(corn),smm=byMonth(smp),wmm=byMonth(wmp);
  fillTable('tbl-inputs',['Tháng','Đường (US cent/lb)','Dầu cọ (USD/tấn)','Khô đậu (USD/tấn)','Ngô (US cent/bu)','SMP (USD/tấn)','WMP (USD/tấn)'],palm.slice().reverse().map(r=>[mon(r.date),nf(sm[ym(r.date)]?.value,2),nf(r.value,0),nf(som[ym(r.date)]?.value,1),nf(cm[ym(r.date)]?.value,2),nf(smm[ym(r.date)]?.value,0),nf(wmm[ym(r.date)]?.value,0)]));
  sourceLine('chInputs',[['ICE đường thô No.11 (Yahoo Finance)','https://finance.yahoo.com/quote/SB%3DF/'],['IMF qua FRED','https://fred.stlouisfed.org/series/PPOILUSDM'],['FAO FPMA','https://fpma.fao.org/']],short(palm.at(-1).date),'Chỉ số T1/2024 = 100. Đường thô ICE No.11 hợp đồng gần (giá cuối tháng); dầu cọ, khô đậu, ngô: IMF Primary Commodity Prices (FRED), bình quân tháng. Sữa bột WMP: FAO FPMA (bình quân châu Âu & châu Đại Dương, FOB). Chưa có nguồn công khai cho lúa mạch, malt, nhôm lon (nguyên liệu chính của SAB).');
@@ -165,13 +140,13 @@ if(sugar.length&&document.getElementById('chInputs')){
 }
 // Định giá
 if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
- const ids=[['220','Chuỗi bán lẻ (MWG, FRT)',C.navy],['215','Phân phối điện tử',C.grey],['224','Bán lẻ xe',C.teal],['239','Sữa',C.plum],['120','Bia',C.gold],['227','Trang sức (PNJ)',C.red]].filter(([id])=>sec[id]?.records?.length);
+ const ids=[['220','Chuỗi bán lẻ (MWG, FRT)',C.navy],['215','Phân phối điện tử',C.grey],['227','Trang sức (PNJ)',C.red]].filter(([id])=>sec[id]?.records?.length);
  const dates=[...new Set(ids.flatMap(([id])=>sec[id].records.map(r=>r[0])))].sort(),weekly=dates.filter((d,i)=>i%5===0||i===dates.length-1);
  const at=(id,d,k)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[k]:null};
  barLineChart('chSectorVal',{categories:weekly.map(d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4)),series:ids.map(([id,name,color])=>({name:'P/E '+name,color,kind:'line',values:weekly.map(d=>{const v=at(id,d,1);return v>0&&v<60?v:null})})),unit:'x',digits:1,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',ids.map(([,n,c])=>[n,c]));
  fillTable('tbl-sector-val',['Rổ mã','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],ids.map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
- sourceLine('chSectorVal',[['VNDirect finfo','https://dstock.vndirect.com.vn/']],short(dates.at(-1)),'Rổ mã theo dõi: Chuỗi bán lẻ (MWG, FRT); Phân phối điện tử (DGW, PET); Bán lẻ xe (HAX, SVC); Sữa (VNM); Bia (SAB); Trang sức (PNJ, rổ riêng từ 05/11/2026 vì Wi không phân ngành PNJ). P/E = tổng vốn hóa / tổng lợi nhuận (vốn hóa ÷ P/E từng mã, VNDirect); mã lỗ không có P/E (PNJ lỗ Q2–Q3/2026) chỉ vào P/B và vốn hóa. Không phải toàn ngành. Vẽ mỗi 5 phiên.');
+ sourceLine('chSectorVal',[['VNDirect finfo','https://dstock.vndirect.com.vn/']],short(dates.at(-1)),'Rổ mã theo dõi: Chuỗi bán lẻ (MWG, FRT); Phân phối điện tử (DGW, PET); Trang sức (PNJ, rổ riêng từ 05/11/2026 vì Wi không phân ngành PNJ). P/E = tổng vốn hóa / tổng lợi nhuận (vốn hóa ÷ P/E từng mã, VNDirect); mã lỗ không có P/E (PNJ lỗ Q2–Q3/2026) chỉ vào P/B và vốn hóa. Không phải toàn ngành. Vẽ mỗi 5 phiên.');
  insight('chSectorVal','P/E của mỗi rổ đọc cùng chu kỳ lợi nhuận: rổ có lợi nhuận đang hồi phục mạnh thường có P/E giảm dù giá cổ phiếu tăng. Kiểm tiếp lợi nhuận 4 quý của từng rổ ở chart doanh thu, lợi nhuận bên dưới.');
 }
 
@@ -191,7 +166,7 @@ if(gS.length&&document.getElementById('chGold')){
 }
 const CQ=window.COMPANY_QUARTERLY;
 if(CQ?.companies?.length&&document.getElementById('chMarginQ')){
- const want=['VNM','SAB','KDC','MSN'],col={VNM:C.navy,SAB:C.gold,KDC:C.plum,MSN:C.teal};
+ const want=['MSN','KDC'],col={KDC:C.plum,MSN:C.teal};
  const cos=want.map(sym=>CQ.companies.find(c=>c.symbol===sym&&c.sector==='retail')||CQ.companies.find(c=>c.symbol===sym)).filter(Boolean);
  const n=CQ.quarters.length,from=Math.max(0,n-12),qs=CQ.quarters.slice(from);
  const ser=cos.map(c=>({name:c.symbol,color:col[c.symbol],kind:'line',values:c.gross_margin.slice(from).map(v=>v==null?null:v)}));
@@ -199,7 +174,7 @@ if(CQ?.companies?.length&&document.getElementById('chMarginQ')){
  legend('chMarginQ',ser.map(x=>[x.name,x.color]));
  fillTable('tbl-margin-q',['Quý',...cos.map(c=>c.symbol+' (%)')],qs.map((qq,i)=>[qq,...cos.map(c=>nf(c.gross_margin[from+i],1))]).reverse());
  const miss=(CQ.missing||[]).filter(m=>['QNS'].includes(m.symbol)).map(m=>m.symbol);
- sourceLine('chMarginQ',[['VNDirect · BCTC hợp nhất quý (data/company-quarterly.json)','https://dstock.vndirect.com.vn/']],qs.at(-1),'Biên gộp = lợi nhuận gộp ÷ doanh thu thuần theo quý, chỉ đọc từ bộ dữ liệu so sánh tài chính (không cập nhật riêng).'+(miss.length?' Không có '+miss.join(', ')+' trong bộ dữ liệu quý.':'')+' VNM quý gần nhất có thể trống khi BCTC chưa vào nguồn.');
+ sourceLine('chMarginQ',[['VNDirect · BCTC hợp nhất quý (data/company-quarterly.json)','https://dstock.vndirect.com.vn/']],qs.at(-1),'Biên gộp = lợi nhuận gộp ÷ doanh thu thuần theo quý, chỉ đọc từ bộ dữ liệu so sánh tài chính (không cập nhật riêng).'+(miss.length?' Không có '+miss.join(', ')+' trong bộ dữ liệu quý.':'')+'');
  const last=sym=>{const c=cos.find(x=>x.symbol===sym);if(!c)return null;const v=c.gross_margin.filter(x=>x!=null);return v.at(-1)};
  insight('chMarginQ','Biên gộp hàng tiêu dùng nhanh phản ánh giá nguyên liệu đã mua từ các quý trước và khả năng tăng giá bán. Kiểm tiếp biên gộp quý IV của SAB (trước thuế TTĐB 2027) và VNM khi sữa bột, đường đổi chiều.');
 }
@@ -207,13 +182,13 @@ if(CQ?.quarters?.length&&document.getElementById('chInputLag')){
  const qk=d=>'Q'+Math.ceil(Number(d.slice(5,7))/3)+'/'+d.slice(0,4);
  const prevQ=(k,nq)=>{let qn=Number(k[1]),y=Number(k.slice(3));qn-=nq;while(qn<1){qn+=4;y-=1}return 'Q'+qn+'/'+y};
  const qavg=rs=>{const a={};rs.forEach(r=>{const k=qk(r.date);(a[k]=a[k]||[]).push(r.value)});return Object.fromEntries(Object.entries(a).map(([k,v])=>[k,v.reduce((x,y)=>x+y,0)/v.length]))};
- const items=[['Đường thô',C.gold,qavg(idx(S('sugar'),BASE))],['Dầu cọ',C.plum,qavg(idx(S('palm_oil'),BASE))],['Khô đậu nành',C.navy,qavg(idx(S('soymeal'),BASE))],['Ngô',C.teal,qavg(idx(S('corn'),BASE))],...(S('smp').length?[['Sữa bột gầy SMP',C.red,qavg(idx(S('smp'),BASE))]]:[])];
+ const items=[['Đường thô',C.gold,qavg(idx(S('sugar'),BASE))],['Dầu cọ',C.plum,qavg(idx(S('palm_oil'),BASE))],['Khô đậu nành',C.navy,qavg(idx(S('soymeal'),BASE))],['Ngô',C.teal,qavg(idx(S('corn'),BASE))]];
  const n=CQ.quarters.length,qs=CQ.quarters.slice(Math.max(0,n-12));
  const ser=items.map(([name,color,a])=>({name,color,kind:'line',values:qs.map(qq=>{const v=a[prevQ(qq,2)];return v==null?null:Math.round(v)})}));
  barLineChart('chInputLag',{categories:qs,series:ser,unit:'',digits:0,height:260,rotateLabels:true,zeroBase:false});
  legend('chInputLag',ser.map(x=>[x.name,x.color]));
  fillTable('tbl-input-lag',['Quý (biên gộp)','Quý nguyên liệu',...items.map(x=>x[0])],qs.map(qq=>[qq,prevQ(qq,2),...items.map(([,,a])=>nf(a[prevQ(qq,2)],0))]).reverse());
- sourceLine('chInputLag',[SRC.ice,['IMF qua FRED','https://fred.stlouisfed.org/']],qs.at(-1),'Mỗi quý trên trục là quý của biên gộp; giá trị vẽ là bình quân chỉ số nguyên liệu của quý trước đó 2 quý (độ trễ tồn kho và hợp đồng mua). Chỉ số T1/2024 = 100 nên quý trước 2024 trống. Sữa bột gầy SMP: FAO FPMA (bình quân châu Âu & châu Đại Dương). Chưa có lúa mạch, nhôm lon.');
+ sourceLine('chInputLag',[SRC.ice,['IMF qua FRED','https://fred.stlouisfed.org/']],qs.at(-1),'Mỗi quý trên trục là quý của biên gộp; giá trị vẽ là bình quân chỉ số nguyên liệu của quý trước đó 2 quý (độ trễ tồn kho và hợp đồng mua). Chỉ số T1/2024 = 100 nên quý trước 2024 trống. Giá sữa bột ở dashboard Sữa.');
  insight('chInputLag','Độ trễ 2 quý là giả định phân tích (tồn kho, hợp đồng mua), không phải quan hệ đã kiểm định: so hình dạng đường này với biên gộp bên cạnh để xem cơ chế có khớp. Để kiểm thật cần thêm tồn kho nguyên liệu, giá bán bình quân và cơ cấu sản phẩm từng doanh nghiệp.');
 }
 
@@ -246,26 +221,11 @@ if(rt.length&&document.getElementById('chRetailYoY')){
  sourceLine('chRetailYoY',[SRC.nso],mon(rt.at(-1).date),'Tự tính so cùng tháng năm trước từ số tháng NSO (giá hiện hành). NSO điều chỉnh số tháng trước khi công bố tháng sau nên tỷ lệ tháng gần nhất có thể đổi. Chưa có chuỗi tháng loại trừ yếu tố giá.');
  insight('chRetailYoY','Khoảng cách giữa hai đường cho biết dịch vụ (ăn uống, du lịch) đang tăng nhanh hay chậm hơn hàng hóa, tức phần nào của sức mua chảy vào chuỗi bán lẻ niêm yết. Kiểm tiếp liệu đà tăng danh nghĩa có giữ được khi CPI và thuế gián thu cùng tăng từ 1/2027.');
 }
-if(document.getElementById('chRealNominal')){
- const rL_=rt.at(-1);
- tiles('chRealNominal',[['Danh nghĩa · 9T/2026','+13,4%','so cùng kỳ · giá hiện hành'],['Loại trừ yếu tố giá · 9T/2026','+7,8%','so cùng kỳ · cùng phạm vi','rf-tile-hi'],['Tháng gần nhất · '+(rL_?mon(rL_.date):'—'),rL_?signed(yoyAt(rt,rL_),1)+'%':'—','danh nghĩa, tự tính; chưa có số loại trừ giá theo tháng']]);
- pwSrc('chRealNominal',[LK.nsoQ3]);
- sourceLine('chRealNominal',[LK.nsoQ3],'9T/2026','Hai ô đầu cùng kỳ (lũy kế 9 tháng), cùng phạm vi (tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng), đều là số NSO công bố. NSO chỉ công bố mức loại trừ giá ở dạng lũy kế; ô thứ ba là số tháng tự tính, không so trực tiếp với hai ô đầu.',false);
- insight('chRealNominal','Phần chênh giữa danh nghĩa và loại trừ giá (khoảng 5 điểm %) là giá, nên doanh thu chuỗi bán lẻ tăng nhanh hơn lượng hàng thực bán ra. Kiểm tiếp số loại trừ giá 10T và cả năm khi NSO công bố.');
-}
 if(document.getElementById('chRetailMix')){
  stackBar('chRetailMix',[{label:'Bán lẻ hàng hóa',value:4463.6,color:C.navy,extra:'+12,8%'},{label:'Lưu trú, ăn uống',value:758.6,color:C.teal,extra:'+16,7%'},{label:'Dịch vụ khác',value:625.4,color:C.grey,extra:'+13,4%'},{label:'Du lịch lữ hành',value:78.1,color:C.plum,extra:'+17,9%'}],{unit:'nghìn tỷ',total:5925.7,note:'Tổng 5.925,7 nghìn tỷ = Σ bốn cấu phần (đã đối chiếu). % tổng là tự tính.'});
  pwSrc('chRetailMix',[LK.vnp]);
  sourceLine('chRetailMix',[LK.vnp],'9T/2026','Bốn cấu phần do NSO công bố, kể cả "dịch vụ khác" (không tính bằng phần dư). Thương mại điện tử là kênh bán, trùng một phần với bán lẻ hàng hóa nên tách sang chart riêng.',false);
  insight('chRetailMix','Lưu trú, ăn uống và du lịch tăng nhanh hơn hàng hóa, nghĩa là phần tiền tăng thêm đang nghiêng về dịch vụ hơn là chuỗi bán hàng hóa. Kiểm tiếp cơ cấu cả năm và tốc độ bán lẻ hàng hóa so với doanh thu cùng cửa hàng của MWG, FRT.');
-}
-if(document.getElementById('chEcom')){
- const h=document.getElementById('chEcom');h.innerHTML='<div id="chEcomT"></div><div class="rf-sub">Thị phần sàn 6T/2026 (YouNet ECI)</div><div id="chEcomS"></div>';
- tiles('chEcomT',[['Doanh số 4 sàn · 6T/2026','291,6 nghìn tỷ','+44,1% so cùng kỳ · Metric'],['GMV 4 sàn · 6T/2026','264,8 nghìn tỷ','+19% · YouNet ECI (cách đo khác Metric)']]);
- stackBar('chEcomS',[{label:'Shopee',value:54.5,color:C.plum},{label:'TikTok Shop',value:43.4,color:C.navy},{label:'Sàn khác',value:2.1,color:C.grey,self:true}],{unit:'%',total:100});
- pwSrc('chEcom',[LK.metric,LK.younet]);
- sourceLine('chEcom',[LK.metric,LK.younet],'6T/2026','Hai đơn vị đo khác nhau (Metric: doanh số; YouNet: GMV) nên số không khớp; không cộng vào tổng mức bán lẻ vì khác kỳ và có phần trùng với bán lẻ hàng hóa. "Sàn khác" = 100% − Shopee − TikTok Shop.',false);
- insight('chEcom','Kênh online tăng nhanh hơn hẳn cửa hàng và dồn vào hai sàn, tạo áp lực giá lên điện thoại, điện máy, mỹ phẩm bán tại cửa hàng. Kiểm tiếp tỷ trọng online trong doanh thu MWG, FRT và tác động của Luật TMĐT (1/7/2026) lên hàng xuyên biên giới.');
 }
 // Bán lẻ hiện đại: mạng lưới, năng suất, SSSG
 if(document.getElementById('chStores')){
@@ -287,22 +247,8 @@ if(document.getElementById('chSssg')){
  sourceLine('chSssg',[LK.mwg9,LK.dmx],'9T/2026','Số doanh nghiệp công bố. EraBlue tăng theo Rupiah. Khối Điện Máy Xanh gồm EraBlue. Chưa có SSSG và số cửa hàng bình quân của Long Châu, Bách Hóa Xanh, FPT Shop, WinCommerce nên chưa dựng được cầu nối mở mới / cửa hàng hiện hữu cho các chuỗi này.',false);
  insight('chSssg','Khối Điện Máy Xanh tăng nhờ cửa hàng hiện hữu (số cửa hàng trong nước còn giảm nhẹ), còn EraBlue tăng chủ yếu nhờ mở mới. Kiểm tiếp SSSG quý IV khi nền so sánh cao dần và biên gộp EraBlue khi chuỗi còn non.');
 }
-// Ô tô & trang sức
-if(document.getElementById('chCarMix')){
- hbarCompare('chCarMix',{items:[{label:'Xe hybrid',value:64,color:C.teal},{label:'Xe nhập khẩu nguyên chiếc',value:22,color:C.navy},{label:'Toàn bộ VAMA',value:12,color:C.grey},{label:'Xe lắp ráp trong nước',value:2,color:C.plum}],unit:'%',digits:0,labelW:200,ariaLabel:'Tăng trưởng doanh số theo nhóm xe 9T/2026'});
- sourceLine('chCarMix',[LK.vama],'9T/2026','% so cùng kỳ, cùng phạm vi thành viên VAMA. Hybrid là nhóm theo động cơ, chồng lên nhóm nhập khẩu/lắp ráp, nên không cộng các thanh.',false);
- insight('chCarMix','Cơ cấu nghiêng về xe nhập khẩu đổi biên đại lý tùy hãng phân phối (HAX bán Mercedes, MG nhập; SVC đa hãng), nên sản lượng chung tăng chưa đủ để kết luận lợi nhuận đại lý. Kiểm tiếp số xe bán theo hãng và biên gộp đại lý bên dưới.');
-}
 const CQ_=window.COMPANY_QUARTERLY;
 const cqRow=s=>CQ_?.companies?.find(c=>c.symbol===s&&c.sector==='retail');
-if(CQ_?.quarters?.length&&document.getElementById('chDealerGM')){
- const n=CQ_.quarters.length,from=Math.max(0,n-12),qs=CQ_.quarters.slice(from);const cos=[['HAX',C.navy],['SVC',C.teal]].filter(([s])=>cqRow(s));
- barLineChart('chDealerGM',{categories:qs,series:cos.map(([s,c])=>({name:s,color:c,kind:'line',values:cqRow(s).gross_margin.slice(from)})),unit:'%',digits:1,height:260,rotateLabels:true,zeroBase:false});
- legend('chDealerGM',cos.map(([s,c])=>[s,c]));
- fillTable('tbl-dealer-gm',['Quý',...cos.map(([s])=>s+' biên gộp (%)'),...cos.map(([s])=>s+' doanh thu (tỷ)')],qs.map((q,i)=>[q,...cos.map(([s])=>nf(cqRow(s).gross_margin[from+i],1)),...cos.map(([s])=>nf(cqRow(s).revenue[from+i],0))]).reverse());
- sourceLine('chDealerGM',[LK.cq],qs.at(-1),'Biên gộp = lãi gộp ÷ doanh thu thuần, BCTC hợp nhất quý. HAX hợp nhất đại lý VinFast (Tương Lai Việt) từ cuối Q1/2026 nên cơ cấu doanh thu đổi từ quý này.',false);
- insight('chDealerGM','Biên gộp đại lý phụ thuộc chiết khấu từ hãng và mức giảm giá cạnh tranh, nên có thể đi ngược sản lượng khi thị trường tăng nhờ khuyến mãi. Kiểm tiếp doanh số theo hãng (Mercedes, VinFast) và thuế TTĐB xe điện từ 3/2027.');
-}
 if(CQ_?.quarters?.length&&gS.length&&document.getElementById('chPnjGold')){
  const n=CQ_.quarters.length,from=Math.max(0,n-12),qs=CQ_.quarters.slice(from),p=cqRow('PNJ');
  const qk=d=>'Q'+Math.ceil(Number(d.slice(5,7))/3)+'/'+d.slice(0,4),qa={};gS.forEach(r=>{(qa[qk(r.date)]=qa[qk(r.date)]||[]).push(r.value)});
@@ -325,29 +271,21 @@ if(document.getElementById('chGoldGap')){
 const POLICY=[
  {d:'2025-02-18',name:'QĐ 01/2025/QĐ-TTg',st:'Đã ban hành',what:'Áp VAT với hàng nhập khẩu dưới 1 triệu đồng qua chuyển phát nhanh',who:'MWG · FRT · DGW',v:'Giá bán tương đối so với hàng xuyên biên giới',url:'https://vneconomy.vn/hang-hoa-tren-cac-san-thuong-mai-co-kha-nang-tang-gia-sau-chinh-sach-ngung-mien-thue-nhap-khau.htm'},
  {d:'2025-10-10',name:'Nghị định 232/2025 (sửa NĐ 24)',st:'Đã ban hành',what:'Bỏ độc quyền sản xuất vàng miếng; doanh nghiệp đủ điều kiện được sản xuất, nhập khẩu vàng',who:'PNJ',v:'Giá vốn vàng nguyên liệu, chênh lệch trong nước – thế giới',url:'https://vov.vn/thi-truong/gia-vang/chinh-thuc-xoa-bo-co-che-nha-nuoc-doc-quyen-san-xuat-vang-mieng-post1236837.vov'},
- {d:'2026-01-01',name:'Luật Thuế TTĐB 2025',st:'Đã ban hành',what:'Bia 65% năm 2026, +5 điểm %/năm đến 90% năm 2031',who:'SAB',v:'Giá bán, sản lượng bia',url:'https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm'},
  {d:'2026-01-01',name:'Lương tối thiểu vùng (NĐ 293/2025)',st:'Đã ban hành',what:'+7,2%; vùng I 5.310.000 đ/tháng',who:'Cả ngành',v:'Sức mua · chi phí nhân công chuỗi',url:'https://nhadautu.vn/chinh-thuc-tang-luong-toi-thieu-vung-tu-1-1-2026-d100632.html'},
  {d:'2026-07-01',name:'Luật Thương mại điện tử',st:'Đã ban hành',what:'Nền tảng nước ngoài không hiện diện phải ký quỹ; định danh người livestream',who:'MWG · FRT · DGW',v:'Cạnh tranh giá online',url:'https://baodauthau.vn/8-noi-dung-moi-noi-bat-cua-luat-thuong-mai-dien-tu-post191869.html'},
  {d:'2026-07-01',name:'Lương cơ sở (NĐ 161/2026)',st:'Đã ban hành',what:'2,34 → 2,53 triệu đồng',who:'Cả ngành',v:'Sức mua khu vực công',url:'https://nhadautu.vn/chinh-thuc-tang-luong-co-so-len-253-trieu-dong-tu-ngay-1-7-d105043.html'},
  {d:'2026-07-01',name:'Dự thảo sửa NĐ 24 vòng 2',st:'Dự thảo',what:'Bỏ giấy phép con với vàng trang sức (dự kiến, chưa xác nhận ban hành)',who:'PNJ',v:'Chi phí tuân thủ, cạnh tranh trang sức',url:'https://vietnamfinance.vn/sua-doi-nghi-dinh-24-nhieu-thay-doi-ve-san-xuat-kinh-doanh-vang-trang-suc-d145528.html'},
  {d:'2026-12-31',name:'Hết giảm 2% VAT (NQ Quốc hội 17/6/2025)',st:'Đã ban hành',what:'Từ 1/1/2027 nhiều hàng hóa, dịch vụ trở lại 10%',who:'Cả ngành',v:'Giá bán cuối cùng, sức mua',url:'https://baodauthau.vn/quoc-hoi-thong-qua-giam-2-thue-vat-voi-nhieu-hang-hoa-dich-vu-den-het-nam-2026-post180339.html'},
- {d:'2027-01-01',name:'TTĐB nước giải khát có đường',st:'Đã ban hành',what:'Đường >5 g/100 ml: 8% từ 2027, 10% từ 2028',who:'MSN · QNS · VNM',v:'Giá bán, sản lượng nước giải khát',url:'https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm'},
- {d:'2030-12-31',name:'Lệ phí trước bạ ô tô điện 0% (NĐ 51/2025, 202/2026)',st:'Đã ban hành',what:'0% lần đầu đến hết 31/12/2030',who:'HAX (đại lý VinFast) · SVC',v:'Cơ cấu xe điện/xe xăng, sản lượng',url:'https://lsvn.vn/o-to-dien-duoc-ap-dung-le-phi-truoc-ba-lan-dau-0-den-het-nam-2030-a173952.html'}];
+ {d:'2027-01-01',name:'TTĐB nước giải khát có đường',st:'Đã ban hành',what:'Đường >5 g/100 ml: 8% từ 2027, 10% từ 2028',who:'MSN · QNS',v:'Giá bán, sản lượng nước giải khát',url:'https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm'}];
 const pt=document.getElementById('policyTimeline');
 if(pt){
  const today=new Date().toISOString().slice(0,10),dd=d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(0,4);
  pt.innerHTML='<ol class="rf-tl">'+POLICY.slice().sort((a,b)=>a.d<b.d?-1:1).map(p=>`<li class="${p.st==='Dự thảo'?'draft':''} ${p.d<today?'past':'next'}"><time datetime="${p.d}">${p.d==='2030-12-31'?'đến 31/12/2030':p.d==='2026-12-31'?'hết 31/12/2026':dd(p.d)}</time><div class="rf-ev"><div class="rf-ev-h"><b>${esc(p.name)}</b><span class="rf-st${p.st==='Dự thảo'?' draft':''}">${p.st==='Dự thảo'?'○ ':'● '}${esc(p.st)}</span></div><p>${esc(p.what)}</p><dl><dt>Doanh nghiệp</dt><dd>${esc(p.who)}</dd><dt>Biến cần theo dõi</dt><dd>${esc(p.v)}</dd></dl><a href="${p.url}" target="_blank" rel="noopener">Nguồn ↗</a></div></li>`).join('')+'</ol>';
  pwSrc('policyTimeline',[['Văn bản và bài nguồn ở từng thẻ','#rf-q-docs']]);
- pt.after(make('div','source-note','Mốc là ngày hiệu lực; "hết 31/12/2026" là ngày cuối còn hiệu lực. Thuế TTĐB xe điện 1–3% → 4–11% từ 3/2027 mới thấy trong bài về SVC, chưa mở được văn bản gốc nên chưa đưa vào.'));
-}
-if(document.getElementById('chSinTax')){
- barLineChart('chSinTax',{categories:['2026','2027','2028','2029','2030','2031'],series:[{name:'Bia',color:C.gold,values:[65,70,75,80,85,90]},{name:'Nước giải khát có đường',color:C.plum,values:[null,8,10,10,10,10]}],unit:'%',digits:0,height:250,rotateLabels:false});
- legend('chSinTax',[['Bia',C.gold],['Nước giải khát >5 g đường/100 ml',C.plum]]);
- sourceLine('chSinTax',[LK.ttdb],'2026–2031','Thuế suất theo luật đã ban hành (hiệu lực 1/1/2026). Thuế TTĐB tính trên giá bán của cơ sở sản xuất, nên giá bán lẻ cuối cùng tăng ít hơn mức tăng thuế suất và tùy doanh nghiệp chuyển vào giá.',false);
- insight('chSinTax','Mỗi bậc thuế bia buộc SAB chọn giữa tăng giá (mất sản lượng) và giữ giá (mất biên); nước giải khát có đường bắt đầu chịu thuế từ 2027. Kiểm tiếp giá bán lẻ bia đầu năm 2027 và sản lượng bia tháng 1–2 so cùng kỳ.');
+ pt.after(make('div','source-note','Mốc là ngày hiệu lực; "hết 31/12/2026" là ngày cuối còn hiệu lực. Thuế TTĐB bia, lệ phí trước bạ ô tô ở dashboard Bia, Ô tô – Xe máy.'));
 }
 // Tài chính ngành: Σ theo nhóm (không trùng sở hữu giữa các mã trong rổ)
-const FG=[['Bán lẻ hiện đại & điện máy',['MWG','FRT','DGW','PET'],C.navy],['Hàng lâu bền',['PNJ','HAX','SVC'],C.gold],['Hàng tiêu dùng nhanh',['VNM','SAB','MSN','KDC'],C.plum]];
+const FG=[['Bán lẻ hiện đại & điện máy',['MWG','FRT','DGW','PET'],C.navy],['Trang sức',['PNJ'],C.gold],['Hàng tiêu dùng nhanh',['MSN','KDC'],C.plum]];
 if(CQ_?.quarters?.length&&document.getElementById('chFinRev')){
  const n=CQ_.quarters.length,from=Math.max(0,n-12),qs=CQ_.quarters.slice(from);
  const sum=(syms,k,i)=>{let s=0;for(const x of syms){const v=cqRow(x)?.[k]?.[i];if(!Number.isFinite(v))return null;s+=v}return s};
@@ -367,7 +305,6 @@ if(CQ_?.quarters?.length&&document.getElementById('chFinRev')){
  sourceLine('chFinMargin',[LK.cq],qs.at(-1),'Biên nhóm = Σ lãi gộp (hoặc lãi ròng) ÷ Σ doanh thu thuần của cùng rổ, cùng quý — không lấy bình quân biên từng mã. Cấp hợp nhất doanh nghiệp, không phải cấp mảng.',false);
  insight('chFinMargin','Biên gộp hàng tiêu dùng nhanh cao gấp đôi bán lẻ nhưng nhạy với giá nguyên liệu và thuế; bán lẻ hiện đại biên mỏng nên lãi đi theo chi phí vận hành mỗi cửa hàng. Kiểm tiếp biên gộp quý IV của nhóm tiêu dùng nhanh khi đường, sữa bột tăng lại.');
 }
-pwSrc('carTiles',[LK.vama,['VinFast qua VOV','https://vov.vn/o-to-xe-may/doanh-so-vinfast-thang-92026-tang-truong-an-tuong-voi-hon-23000-xe-ban-giao-post1340347.vov']]);
 {const g=document.querySelector('[data-block-id="bl-23"] .rf-tiles');if(g){g.id='goldTiles';pwSrc('goldTiles',[LK.vov])}}
 window.RETAIL_POLICY=POLICY;
 
@@ -377,12 +314,10 @@ const rtY=ytdYo(rt),rtM=yoyAt(rt,rL),tY=ytdYo(tour),caY=ytdYo(car),beY=ytdYo(bee
 kpi('spk-retail',rL?nf(rL.value/1000,0):'—',rL?'nghìn tỷ · '+mon(rL.date):'—',rL?signed(rtM,0)+'% so cùng kỳ · lũy kế '+signed(rtY,0)+'%':'',rt.slice(-12).map(r=>r.value));
 kpi('spk-cpi',cL?nf(cL.value,2)+'%':'—',cL?'CPI so cùng kỳ · '+mon(cL.date):'—',cpi.length>12?'cùng kỳ '+nf(cpi[cpi.length-13].value,2)+'%':'',cpi.slice(-12).map(r=>r.value),C.red);
 kpi('spk-tourist',tL?nf(tL.value/1000,2):'—',tL?'triệu lượt · '+mon(tL.date):'—',tL?'lũy kế '+signed(tY,0)+'%':'',tour.slice(-12).map(r=>r.value),C.teal);
-kpi('spk-car',caL?nf(caL.value,1):'—',caL?'nghìn ô tô SX · '+mon(caL.date):'—',caL?'lũy kế '+signed(caY,0)+'%':'',car.slice(-12).map(r=>r.value),C.navy);
-kpi('spk-beer',bL?nf(bL.value,0):'—',bL?'triệu lít bia · '+mon(bL.date):'—',bL?'lũy kế '+signed(beY,0)+'%':'',beer.slice(-12).map(r=>r.value),C.gold);
 kpi('spk-pe',v220?nf(v220[1],1)+'x':'—',v220?'P/E chuỗi bán lẻ · '+short(v220[0]):'—',v239?'Sữa '+nf(v239[1],1)+'x':'',rs220.slice(-30).map(r=>r[1]),C.grey);
 const quick=document.querySelector('.hero .insight');
 if(quick&&rL){
- quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai: '),`Tổng mức bán lẻ ${mon(rL.date)} ${nf(rL.value/1000,0)} nghìn tỷ (${signed(rtM,0)}%, lũy kế ${signed(rtY,0)}%). CPI ${nf(cL?.value,1)}%. Khách quốc tế lũy kế ${signed(tY,0)}%. Ô tô sản xuất lũy kế ${signed(caY,0)}%, bia ${signed(beY,0)}%. Đường thô ${signed(suY,0)}% YoY. P/E chuỗi bán lẻ ${v220?nf(v220[1],1):'—'}x, sữa ${v239?nf(v239[1],1):'—'}x.`);
+ quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai: '),`Tổng mức bán lẻ ${mon(rL.date)} ${nf(rL.value/1000,0)} nghìn tỷ (${signed(rtM,0)}%, lũy kế ${signed(rtY,0)}%). CPI ${nf(cL?.value,1)}%. Khách quốc tế lũy kế ${signed(tY,0)}%. Đường thô ${signed(suY,0)}% YoY. P/E chuỗi bán lẻ ${v220?nf(v220[1],1):'—'}x.`);
  Object.assign(quick.dataset,{updateKind:'ai',cadence:'on-data-change',refreshStatus:'derived'});
 }
 const row=(group,name,big,evidence,cond,st,who,chart)=>({group,name,big,chart,st,mid:[evidence,cond],end:[who]});

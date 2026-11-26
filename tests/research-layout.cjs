@@ -60,7 +60,7 @@ try { for(const sector of SECTORS){
   for(const h of ['mt4','mt10']){await p.goto(base+sector+'/#'+h);await p.waitForFunction(()=>document.documentElement.dataset.sfReady==='1');assert.equal(await p.locator('#sf-mt2-policy').isVisible(),true,h+' mở Chính sách & thuế');}
   await p.goto(base+sector+'/');await p.waitForSelector('body[data-editorial-ready="true"]');
  }else if(sector==='Ban-le'){
-  assert.deepEqual(await p.locator('#pane-mt2 .pp-nav .pp-tab').allTextContents(),['01Toàn ngành','02Bán lẻ hiện đại & điện máy','03Ô tô & trang sức','04Hàng tiêu dùng nhanh','05Chính sách & thuế']);
+  assert.deepEqual(await p.locator('#pane-mt2 .pp-nav .pp-tab').allTextContents(),['01Toàn ngành','02Bán lẻ hiện đại & điện máy','03Trang sức','04Hàng tiêu dùng nhanh','05Chính sách & thuế']);
   await p.locator('#rf-mt2-modern-tab').click();assert.equal(await p.locator('#rf-mt2-modern [data-block-id="bl-15"]').isVisible(),true);assert.ok(await p.locator('#chStoreRev svg, #chStoreRev canvas').count()>0);
   await p.locator('#rf-mt2-fmcg-tab').focus();await p.keyboard.press('ArrowRight');assert.equal(await p.locator('#rf-mt2-policy [data-block-id="bl-52"] .rf-tl').isVisible(),true);
   await p.goBack();assert.equal(await p.locator('#rf-mt2-modern').isVisible(),true,'Back quay lại mục trước');
