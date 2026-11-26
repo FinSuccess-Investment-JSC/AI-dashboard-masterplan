@@ -43,7 +43,7 @@ const TREE = {
         fold: [['.fsv-heat', 'Bảng nhiệt: tăng trưởng so cùng kỳ của các chỉ báo theo tháng']]},
     ]},
     {k: 'modern', t: 'Bán lẻ hiện đại & điện máy', d: 'Doanh thu tăng nhờ mở thêm hay nhờ cửa hàng hiện hữu bán tốt hơn? MWG, FRT, WinCommerce (MSN) so theo đúng mô hình.', items: [
-      {q: 'Kênh hiện đại đang lấy thị phần từ chợ, tạp hóa nhanh tới đâu?', id: 'rf-q-channel', meta: '% doanh thu bán lẻ theo kênh · số chợ, tiệm tạp hóa theo năm · số làm tròn, khác nguồn tổng hợp', take: ['bl-44', 'bl-45', 'bl-46']},
+      {q: 'Kênh hiện đại đang lấy thị phần từ kênh truyền thống nhanh tới đâu?', id: 'rf-q-channel', meta: '% doanh thu bán lẻ theo kênh · theo năm · số làm tròn, khác nguồn tổng hợp', take: ['bl-44']},
       {q: 'Mở thêm bao nhiêu điểm bán, mỗi điểm bán được bao nhiêu?', id: 'rf-q-stores', meta: 'số điểm cuối kỳ · tỷ đồng/cửa hàng/tháng · ● công bố ○ tự tính (mẫu số cuối kỳ làm chuỗi mở nhanh bị tính thấp)', take: ['bl-14', 'bl-15']},
       {q: 'Chuỗi nào tăng nhờ cửa hàng hiện hữu, chuỗi nào nhờ mở mới?', id: 'rf-q-sssg', meta: '% so cùng kỳ 9T/2026 · chỉ chuỗi công bố cả doanh thu và SSSG', take: ['bl-43'],
         after: NOTE('<b>So theo mô hình:</b> điện máy – điện thoại (MWG khối ĐMX, FPT Shop) tăng nhờ năng suất cửa hàng, nên theo dõi SSSG và biên gộp; bách hóa (Bách Hóa Xanh, WinCommerce) và nhà thuốc (Long Châu) tăng nhờ mở mới, nên theo dõi tỷ lệ cửa hàng mới hòa vốn, chi phí bán hàng/doanh thu và doanh thu/cửa hàng sau 12 tháng. <b>Còn thiếu để dựng cầu nối:</b> số cửa hàng bình quân và SSSG theo quý của Long Châu, Bách Hóa Xanh, WinCommerce. Biên gộp từng doanh nghiệp: <a href="#rf-q-gm">Tài chính ngành › 1.3</a>.')},
