@@ -542,7 +542,7 @@ function contribCharts() {
       (down.length ? ` Kéo giảm: ${down.map(r => `${r[0]} <b class="neg">${nf(r[1])}</b>`).join(', ')}.` : '') + (up.length ? ` ${total < 0 ? 'Bù lại' : 'Kéo tăng'}: ${up.map(r => `${r[0]} <b class="pos">${nf(r[1])}</b>`).join(', ')}.` : '');
     const bar = (l, v, cls = '') => `<div class="dv-row ${cls}"><div class="dv-l"><b>${l}</b></div><div class="dv-track"><i class="dv-zero"></i><span class="dv-bar ${v < 0 ? 'neg' : 'pos'}" style="${v < 0 ? 'right:50%' : 'left:50%'};width:${pct(v)}"></span><em class="dv-v ${v < 0 ? 'neg' : 'pos'}" style="${v < 0 ? `right:calc(50% + ${pct(v)} + 6px)` : `left:calc(50% + ${pct(v)} + 6px)`}">${nf(v)}</em></div></div>`;
     const card = el('div', 'card of-wide'); card.id = id; card.dataset.ofAdded = id;
-    card.innerHTML = `<div class="chart-title">${kind === 'cung' ? 'Ai làm cung thay đổi' : 'Ai làm cầu thay đổi'}: đóng góp theo ${kind === 'cung' ? 'nước' : 'khu vực'}, tháng ${mm} so cùng kỳ</div>
+    card.innerHTML = `<div class="chart-title">${kind === 'cung' ? 'Thay đổi nguồn cung dầu toàn cầu theo quốc gia' : 'Thay đổi nhu cầu dầu toàn cầu theo khu vực'}</div>
       <p class="of-lead">${lead}</p><div class="dv">${bar(`Tổng ${kind} toàn cầu`, total, 'dv-total')}${rows.map(r => bar(r[0], r[1])).join('')}</div>
       <div class="pw-src">Nguồn: <a href="https://www.eia.gov/outlooks/steo/" target="_blank" rel="noopener">EIA STEO ${src.issue || ''}</a> · ${kind === 'cung' ? 'sản lượng tổng chất lỏng, bảng 3b, 3c; "các nước khác" = thế giới trừ 10 nước' : 'tiêu thụ, bảng 3e; "khu vực khác" = thế giới trừ các nhóm trên (Canada, Mexico, châu Á khác…)'} · triệu thùng/ngày, số ước tính của EIA có thể được sửa ở bản sau</div>`;
     return card;
