@@ -86,7 +86,7 @@
     function close() { options.classList.remove('open'); input.setAttribute('aria-expanded', 'false'); }
     function render() {
       const q = norm(input.value.trim()); message.textContent = '';
-      matches = q ? entries.filter(e => norm(e.code).startsWith(q) || e.words.includes(q)).sort((a, b) => (norm(b.code) === q) - (norm(a.code) === q) || (a.kind === 'sector' ? -1 : 1) - (b.kind === 'sector' ? -1 : 1)).slice(0, 12) : entries.filter(e => e.kind === 'sector');
+      matches = q ? entries.filter(e => norm(e.code).startsWith(q) || (e.kind === 'sector' && e.words.includes(q))).sort((a, b) => (norm(b.code) === q) - (norm(a.code) === q) || (a.kind === 'sector' ? -1 : 1) - (b.kind === 'sector' ? -1 : 1)).slice(0, 12) : entries.filter(e => e.kind === 'sector');
       selected = 0; options.replaceChildren();
       matches.forEach((e, i) => {
         const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'option' + (i === selected ? ' selected' : ''); btn.setAttribute('role', 'option');

@@ -111,16 +111,17 @@ function companiesPane(p, pane) {
   const at = (t, k, i) => F?.data?.[t]?.[k]?.[i];
   const dmy = s => s ? s.split('-').reverse().join('/') : '—', QLb = p => String(p || '').replace(/^(\d{4})Q([1-4])$/, 'Q$2/$1');
   const tickers = (F?.companies || []).map(c => c.ticker);
-  const quick = el('div', 'card', `<div class="kc-qv">${tickers.map(t => { const v = V[t], l = lastP(t); return `<div class="kc-qv-t"><button type="button" class="pv-chip" data-code="${t}">${t}</button><b>${v && fin(v.pb) ? nf(v.pb, 2) + 'x P/B' : '—'}</b><span>${v && fin(v.pe) ? nf(v.pe, 1) + 'x P/E' : 'P/E —'}</span><small>định giá ${dmy(v?.date)} · BCTC ${QLb(l?.p)}</small></div>`; }).join('')}</div><p class="ov-cap">P/E, P/B của VNDirect tại ngày định giá (giá đóng cửa phiên), EPS và giá trị sổ sách theo BCTC gần nhất; ngày định giá và kỳ BCTC ghi riêng.</p>`);
+  const quick = el('div', 'card', `<div class="kc-qv">${tickers.map(t => { const v = V[t], l = lastP(t); return `<div class="kc-qv-t"><button type="button" class="pv-chip" data-code="${t}">${t}</button><b>${v && fin(v.pb) ? nf(v.pb, 2) + 'x P/B' : '—'}</b><span>${v && fin(v.pe) ? nf(v.pe, 1) + 'x P/E' : 'P/E —'}</span><small>định giá ${dmy(v?.date)} · BCTC ${QLb(l?.p)}</small></div>`; }).join('')}</div><p class="ov-cap">P/E, P/B của VNDirect tại ngày định giá (giá đóng cửa phiên), EPS và giá trị sổ sách theo BCTC gần nhất; ngày định giá và kỳ BCTC ghi riêng.</p><div class="pw-src">Nguồn: <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></div>`);
   const watch = el('div', 'card');
   watch.innerHTML = `<div class="tablewrap" data-no-fold><table class="kc-t" data-no-fold><thead><tr><th>Mã</th><th>Biến cần theo dõi</th><th>Số kiểm tra được (BCTC ${QLb(F?.periods?.at(-1))})</th><th>Kiểm tra ở đâu</th></tr></thead><tbody>${tickers.map(t => { const l = lastP(t), i = l?.i, une = (at(t, 'unearned_st', i) || 0) + (at(t, 'unearned_lt', i) || 0), adv = at(t, 'adv_customers', i), pipe = (M?.landbank || []).filter(x => x.ticker === t && x.stage === 'pipeline');
     const facts = [adv != null ? `Người mua trả tiền trước ${nf(adv)} tỷ đ` : '', une ? `Doanh thu chưa thực hiện ${nf(une)} tỷ đ` : '', pipe.length ? `${pipe.length} dự án đang đầu tư (${pipe.map(x => esc(x.project)).join(', ')})` : ''].filter(Boolean);
     return `<tr><td><button type="button" class="pv-chip" data-code="${t}">${t}</button><br><span class="kc-na">${esc((F.companies.find(c => c.ticker === t) || {}).note || '').split(':')[0]}</span></td><td>${esc(WATCH[t] || '')}</td><td>${facts.join('<br>') || '<span class="kc-na">—</span>'}<br><span class="kc-na">số dư cuối ${QLb(l?.p)}, ${['LHG', 'NTC', 'D2D'].includes(t) ? 'BCTC riêng' : 'BCTC hợp nhất'}</span></td><td><a class="ov-more" href="?kcn=landbank&co=${t}#mt2" data-kcn-go="landbank" data-kcn-co="${t}">Danh mục dự án, quỹ đất →</a><br><a class="ov-more" href="?fin=fin#mt14" data-ov-fin="fin">Tiền nhận trước, doanh thu chưa thực hiện →</a>${V[t]?.source_url ? `<br><a href="${esc(V[t].source_url)}" target="_blank" rel="noopener">Hồ sơ VNDirect ↗</a>` : ''}</td></tr>`; }).join('')}</tbody></table></div>`;
   if (val) { val.closest('.grid')?.classList.remove('grid'); }
+  const players = block('kcn-03'); // bảng nhóm, nguồn doanh thu, biến quyết định (trước nằm dưới mọi sub-tab Tổng quan)
   p.append(
     sec('quick', '2.1', 'Doanh nghiệp KCN đang được định giá thế nào?', [quick, val].filter(Boolean), {sub: `Định giá theo phiên, ngày ${dmy(window.COMPANY_VALUATION?.latest_observation)}; kỳ BCTC dùng cho EPS, giá trị sổ sách ghi trên từng mã.`}),
     fc ? sec('compare', '2.2', 'Lợi nhuận, nợ vay, định giá từng mã qua các kỳ ra sao?', fc, {sub: 'Lịch sử theo kỳ và bảng chi tiết: chọn năm hoặc quý gần nhất, nhóm chỉ tiêu; bấm tiêu đề cột để sắp xếp. Số hợp nhất toàn doanh nghiệp.'}) : null,
-    sec('watch', '2.3', 'Mỗi mã cần theo dõi biến nào?', watch, {sub: 'Một biến gắn với kết quả của từng mã, kèm số kiểm tra được trong BCTC và link tới danh mục dự án ở Quỹ đất.'})
+    sec('watch', '2.3', 'Mỗi mã cần theo dõi biến nào?', [watch, players].filter(Boolean), {sub: 'Một biến gắn với kết quả của từng mã, kèm số kiểm tra được trong BCTC và link tới danh mục dự án ở Quỹ đất.'})
   );
 }
 
@@ -138,7 +139,7 @@ function forwardPane(p) {
     const max = Math.max(...pipe.map(x => x.pipeline || 0), 1);
     supply.innerHTML = `<div class="chart-title">Nguồn cung đất KCN dự kiến ${esc(Y)} theo vùng (ha)</div><div class="chart-sub">dự phóng C&W · tỷ lệ so nguồn cung hiện hữu trong phạm vi khảo sát · chưa phải đất sạch sẵn sàng bàn giao</div>
       <div class="ov-q8-bars">${pipe.map(x => `<div class="ov-q8-r"><span class="ov-q8-l">${esc(REG[x.region] || x.region)}</span><div class="ov-q8-t" title="${esc(REG[x.region] || x.region)}: ${nf(x.pipeline)} ha"><i style="width:${(x.pipeline / max * 100).toFixed(1)}%;background:${x.region === 'North' ? '#2938A8' : '#2a9fa3'}"></i></div><span class="ov-q8-v">${nf(x.pipeline)} ha · ${nf(x.ratio * 100, 0)}%</span></div>`).join('')}</div>
-      <a class="ov-more" href="?kcn=supply#mt2" data-kcn-go="supply">Xem nguồn cung theo tỉnh và dự án →</a>`;
+      <a class="ov-more" href="?kcn=supply#mt2" data-kcn-go="supply">Xem nguồn cung theo tỉnh và dự án →</a><div class="pw-src">Nguồn: <a href="${esc(D.sources[pipe[0].src]?.url || '#')}" target="_blank" rel="noopener">Cushman & Wakefield</a></div>`;
   } else supply.append(gap('workbook chưa có số cung dự kiến.'));
   // Mốc đáng theo dõi: dự án từ 200 ha hoặc của doanh nghiệp niêm yết, tách ba nhóm; bảng đầy đủ ở Nguồn cung.
   const mile = el('div', 'card');
