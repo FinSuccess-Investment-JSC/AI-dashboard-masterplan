@@ -146,14 +146,7 @@ function views() {
       const c = card('pb-c-gas-brent', 'Dầu Brent, bình quân quý', {sub: 'USD/thùng · Proxy cho nhóm giá khí gắn với giá dầu', source: SRC.wb, info: 'Brent không phải giá FO Singapore; chỉ thể hiện xu hướng nhóm giá dầu. Giá khí thực tế phụ thuộc công thức hợp đồng từng doanh nghiệp (2A.2).'});
       q3.append(c.el); h.append(q3);
       chart(c.host, 'pb-c-gas-brent', QL, [{name: 'Brent (proxy)', color: C.grey, values: qOf('brent')}], {unit: 'USD/thùng', digits: 1, zeroBase: false});
-      const q2 = panel('4.3', 'Giá khí đầu vào của DPM và DCM được tính thế nào?', 'Hai doanh nghiệp có hợp đồng khí riêng; không mặc định cùng giá hay cùng công thức.');
-      const m = el('div', 'card'); m.dataset.blockId = 'pb-c-gas-mech';
-      m.innerHTML = `<div class="chart-title">Cơ chế giá khí theo doanh nghiệp</div>` + (gasRows.length
-        ? `<div class="tbl-wrap"><table class="compare-table fb-mech"><thead><tr><th>Doanh nghiệp</th><th>Giai đoạn</th><th>Cơ chế giá khí</th><th>Ghi chú</th><th>Nguồn</th></tr></thead><tbody>${gasRows.map(r => `<tr><td><b>${esc(r.company)}</b></td><td>${esc(r.period || '–')}</td><td>${esc(r.mechanism || 'N/A')}</td><td>${esc(r.note && r.note !== r.mechanism.replace(/^Chưa có công thức; /, '') ? r.note : '')}</td><td>${(r.sources || []).map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener">[${i + 1}]</a>`).join(' ')}</td></tr>`).join('')}</tbody></table></div>`
-        : '<p class="fb-na-p">N/A · chưa xác minh được công thức giá khí từ tài liệu doanh nghiệp.</p>') + `<div class="pw-src">Nguồn: tài liệu doanh nghiệp, PV GAS (ghi theo từng dòng)</div>`;
-      q2.append(m);  // 26/11: bỏ thẻ định mức tiêu hao và thẻ dữ liệu còn thiếu theo yêu cầu người dùng
-      h.append(q2);
-      h.append(insight('Spread urê – khí quốc tế không được dựng: chưa có giá urê giao tại châu Âu và định mức có nguồn cho cùng khu vực, nên ghép giá urê Trung Đông với khí châu Âu sẽ sai khu vực.'));
+      // 26/11/2026: bỏ mục cơ chế giá khí theo doanh nghiệp (pb-c-gas-mech) và dòng chú thích spread theo yêu cầu người dùng; hợp đồng khí DPM, DCM xem bản đồ 4.3 (chế độ DPM/DCM).
     },
     matrix(h) {
       const q = panel('5.1', 'Biến số nào đang tác động lên doanh nghiệp nào, theo chiều nào?', 'Ba chế độ: phơi nhiễm cấu trúc (định tính), tác động hiện tại (biến động giá thực tế × chiều cấu trúc), tương quan thực tế với biên gộp.');
@@ -173,7 +166,7 @@ function views() {
         const g = c.querySelector('.fb-mx-grid'); c.querySelector('[data-k="per"]').hidden = S.mode !== 'now';
         let html = `<div class="fb-mx-row fb-mx-h"><span></span>${DRIVERS.map(([, n]) => `<span>${esc(n)}</span>`).join('')}</div>`;
         html += T.map(t => `<div class="fb-mx-row"><span class="fb-mx-t">${t}</span>${DRIVERS.map(([id, n, key]) => {
-          let [s, why] = E_[t][id]; if (s === 'fo') { const fo = gasRows.find(r => (r.company || '').includes(t) && /FO|dầu/i.test(r.mechanism || '')); s = fo ? '−' : '?'; why = fo ? 'Công thức giá khí gắn với giá FO/dầu (xem 04 Giá khí, mục 4.3).' : 'Chưa xác minh công thức giá khí gắn FO.'; }
+          let [s, why] = E_[t][id]; if (s === 'fo') { const fo = gasRows.find(r => (r.company || '').includes(t) && /FO|dầu/i.test(r.mechanism || '')); s = fo ? '−' : '?'; why = fo ? 'Công thức giá khí gắn với giá FO/dầu (xem 04 Nguồn khí, bản đồ 4.3 chế độ DPM/DCM).' : 'Chưa xác minh công thức giá khí gắn FO.'; }
           const base = SIGN[s] || SIGN['?']; let bg = base.c, lab = s, tip = `<b>${t} · ${esc(n)}</b><br>Phơi nhiễm cấu trúc: ${esc(base.t)} — ${esc(why)}`;
           if (S.mode === 'now') {
             const x = key ? chg(key, S.per) : null;

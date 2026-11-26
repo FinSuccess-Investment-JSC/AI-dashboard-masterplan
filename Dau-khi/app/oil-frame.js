@@ -46,7 +46,25 @@ const ALIAS = {mt3: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
 
 function style() {
   const st = el('style'); st.id = 'oil-frame-style';
-  st.textContent = `.of-nav{display:inline-flex;flex-wrap:wrap;gap:4px;margin:6px 0 22px;padding:5px;border-radius:16px;background:linear-gradient(120deg,#F1ECFF 0%,#E9EEFF 45%,#E3F6FA 100%);border:1px solid rgba(167,139,250,.22);box-shadow:0 6px 22px -8px rgba(139,120,240,.35),inset 0 1px 0 rgba(255,255,255,.8)}
+  st.textContent = `.tx-flow{display:grid;grid-template-columns:170px minmax(0,1fr);gap:0 26px;align-items:stretch;margin:10px 0 8px}
+.tx-src{position:relative;align-self:center;display:flex;flex-direction:column;gap:4px;padding:18px 16px;border-radius:16px;color:#fff;background:linear-gradient(150deg,#2938A8,#6C5CE7 60%,#59C5C8);box-shadow:0 10px 26px -10px rgba(41,56,168,.55)}
+.tx-src b{font:700 16px/1.25 Inter,sans-serif}.tx-src small{color:#EEF0FF!important;font-size:12px}.tx-src .tx-k{color:#DDE3FF}
+.tx-k{display:block;font:700 10px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#8A93B8;margin-bottom:3px}
+.tx-rows{position:relative;display:grid;gap:10px;padding-left:22px;border-left:2px dashed #C9C3F5}
+.tx-row{position:relative;display:grid;grid-template-columns:150px minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:center;padding:12px 14px;border:1px solid #E6E8F4;border-radius:12px;background:#fff;transition:box-shadow .2s,transform .2s}
+.tx-row:hover{box-shadow:0 6px 18px -8px rgba(41,56,168,.3);transform:translateX(2px)}
+.tx-row::before{content:'';position:absolute;left:-23px;top:50%;width:22px;border-top:2px dashed #C9C3F5}
+.tx-row::after{content:'';position:absolute;left:-28px;top:calc(50% - 4px);width:8px;height:8px;border-radius:50%;background:#A78BFA}
+.tx-ch{font:700 14px/1.3 Inter,sans-serif;color:#1F2A5C}.tx-ch b{font-weight:700}
+.tx-mech{font-size:13px;line-height:1.5;color:#3B4256}.tx-who{font-size:13px;line-height:1.45;color:#1F2A5C}
+.tx-dir{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;line-height:1.45;padding:8px 10px;border-radius:10px}
+.tx-dir i{font-style:normal;font-size:11px;line-height:1.6}
+.tx-row.neg{border-left:4px solid #E5484D}.tx-row.neg .tx-dir{background:#FDECEE;color:#A1252B}
+.tx-row.pos{border-left:4px solid #2BB673}.tx-row.pos .tx-dir{background:#E7F7EF;color:#17784A}
+.tx-row.mix{border-left:4px solid #A78BFA}.tx-row.mix .tx-dir{background:#F1EDFF;color:#5B4FD6}
+@media (max-width:900px){.tx-flow{grid-template-columns:1fr;gap:12px}.tx-row{grid-template-columns:1fr}.tx-rows{padding-left:14px}.tx-row::before{width:14px;left:-15px}.tx-row::after{left:-20px}}
+:root[data-theme=dark] .tx-row{background:var(--card);border-color:var(--line)}:root[data-theme=dark] .tx-ch,:root[data-theme=dark] .tx-who{color:#E8EBFA}:root[data-theme=dark] .tx-mech{color:#B8BEDA}
+.of-nav{display:inline-flex;flex-wrap:wrap;gap:4px;margin:6px 0 22px;padding:5px;border-radius:16px;background:linear-gradient(120deg,#F1ECFF 0%,#E9EEFF 45%,#E3F6FA 100%);border:1px solid rgba(167,139,250,.22);box-shadow:0 6px 22px -8px rgba(139,120,240,.35),inset 0 1px 0 rgba(255,255,255,.8)}
 .of-nav button.of-tab{display:flex;align-items:center;gap:8px;padding:8px 16px;border:0;border-radius:12px;background:transparent;font:600 14px/1.2 Inter,system-ui,sans-serif;color:#6B6F9E;cursor:pointer;transition:background .25s,color .25s,box-shadow .25s}
 .of-nav button.of-tab:hover{color:#5B4FD6;background:rgba(255,255,255,.6)}
 .of-nav .of-n{display:inline-grid;place-items:center;min-width:22px;height:20px;padding:0 5px;border-radius:7px;font:700 11px Inter,sans-serif;color:#8B84C9;background:rgba(255,255,255,.7)}
@@ -60,6 +78,14 @@ function style() {
 .of-body>.of-wide,.of-body>.of-gap,.of-body>details,.of-body>.kpis,.of-body>.research-grid,.of-body>table,.of-body>.tablewrap{grid-column:1/-1}
 @media (max-width:900px){.of-body{grid-template-columns:minmax(0,1fr)}}
 .of-body>.of-span{grid-column:1/-1}
+.of-body .ct-switch{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;margin:6px 0 2px!important}
+.of-body .ct-switch .ct-main{margin:0 0 0 auto!important;order:2}.of-body .ct-switch .ct-period{order:1;margin:0!important}
+.of-body .ct-canvas{margin-top:4px}
+.of-body>.card{padding:18px 20px 12px!important}
+.of-body>.card .chart-title{margin-bottom:4px!important}
+.of-body .cts-legend{margin:6px 0 0!important}
+.of-body .pw-src,.of-body .chart-source,.of-body .source-note,.of-body .srcrow{margin-top:6px!important;padding-top:6px!important}
+.of-body>.card::after{margin-top:2px!important}
 .of-body .card,.of-body .card *{min-width:0}.of-body canvas{max-width:100%!important}
 .of-body>.card{display:flex;flex-direction:column;align-self:stretch}
 .of-body>.card .chart{position:relative;width:100%;height:300px!important;min-height:0!important;flex:none}
@@ -124,6 +150,7 @@ function buildTab(key) {
   subs.forEach(({body}) => { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
     [...body.children].forEach(n => { const wide = n.matches('.of-wide,.of-gap,details,.kpis,.research-grid,table,.tablewrap') || getComputedStyle(n).gridColumnEnd === '-1'; if (wide) flush(); else run.push(n); }); flush(); });
   TABS[key] = subs;
+  [100, 600, 1500].forEach(t => setTimeout(() => { window.dispatchEvent(new Event('resize')); $$('.of-body canvas').forEach(c => { const ch = window.Chart?.getChart?.(c); if (ch && c.offsetParent) ch.resize(); }); }, t));
 }
 const TABS = {};
 function open(key, sub, push) {
@@ -159,7 +186,7 @@ function nav(finHost) {
     return key;
   };
   ROUTES.forEach(([key, label], i) => {
-    const b = el('button', 'majortabbtn', `${i + 1}. ${label}`); b.type = 'button'; b.dataset.tab = key; b.id = 'research-tab-' + key; b.setAttribute('role', 'tab');
+    const b = el('button', 'majortabbtn', label); b.type = 'button'; b.dataset.tab = key; b.id = 'research-tab-' + key; b.setAttribute('role', 'tab');
     const p = $(`.majorpane[data-tab="${key}"]`); if (p) { p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id); }
     b.addEventListener('click', () => { select(key, true); window.scrollTo({top: 0, behavior: 'instant'}); });
     b.addEventListener('keydown', e => { if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return; e.preventDefault();
@@ -181,9 +208,24 @@ function nav(finHost) {
   });
 }
 
+
+// Năm kênh truyền dẫn (dau-khi-38): vẽ sơ đồ cú sốc → kênh → ai chịu → chiều tác động; bảng gốc giữ trong "Xem bảng".
+function channelDiagram() {
+  const card = $('[data-block-id="dau-khi-38"]'), wrap = card?.querySelector('.tablewrap'); if (!wrap || card.querySelector('.tx-flow')) return;
+  const rows = [...wrap.querySelectorAll('tbody tr')].map(tr => [...tr.cells].map(td => td.innerHTML)); if (!rows.length) return;
+  const tone = t => /Tích cực/i.test(t) ? 'pos' : /Tiêu cực/i.test(t) ? 'neg' : 'mix';
+  const icon = {pos: '▲', neg: '▼', mix: '◆'};
+  const flow = el('div', 'tx-flow');
+  flow.innerHTML = `<div class="tx-src"><span class="tx-k">Cú sốc</span><b>Gián đoạn vùng Vịnh</b><small>giá dầu &amp; dòng chảy</small></div>
+  <div class="tx-rows">${rows.map(([ch, mech, who, dir]) => { const t = tone(dir.replace(/<[^>]+>/g, '')); return `<div class="tx-row ${t}">
+    <div class="tx-ch">${ch}</div><div class="tx-mech">${mech}</div><div class="tx-who"><span class="tx-k">Ai chịu</span>${who}</div>
+    <div class="tx-dir"><i>${icon[t]}</i>${dir}</div></div>`; }).join('')}</div>`;
+  const d = el('details', 'dtable'); d.append(el('summary', '', 'Xem dạng bảng')); wrap.before(flow); wrap.replaceWith(d); d.append(wrap);
+}
 function run() {
   if (document.body.dataset.oilFrame) return; document.body.dataset.oilFrame = '1';
   style();
+  channelDiagram();
   // Hormuz: thẻ đang nằm trong chủ đề "Hormuz · dòng chảy & tác động" ở Chủ đề nóng → Bức tranh ngành › 06.
   ['mt1', 'mt2', 'mt4'].forEach(buildTab);
   // Thẻ truyền dẫn dau-khi-38 nằm cùng chủ đề Hormuz; đã dời sang Tổng quan › 01. Chủ đề rỗng thì ẩn.
