@@ -38,7 +38,7 @@ SERIES_MAP = {
     'mob_subs': ('ind', 'nso_mobile_subs_y'), 'mob_traffic_subs': ('ind', 'mic_mobile_subs_traffic'), 'mob_data_users': ('ind', 'mic_mobile_subs_data_users'),
     'mob_bb': ('ind', 'mic_mbb_subs'), 'fix_bb': ('ind', 'nso_fbb_subs_y'), 'ftth': ('ind', 'mic_ftth_subs'), 'xdsl': ('ind', 'mic_xdsl_subs'),
     'ftth_hh_pct': ('ind', 'mst_ftth_household_pct_highlight'), 'smartphone': ('ind', 'mic_smartphone_subs'),
-    'subs_5g': ('ind', 'subs_5g_total'), 'bts_5g': ('ind', 'bts_5g_total'), 'bts_total': ('ind', 'bts_total'),
+    'subs_5g': ('ind', 'subs_5g_total'), 'cov_5g': ('ind', 'coverage_5g_pct'), 'cov_5g_b': ('com', 'VN_5G_NATIONAL', 'vn_5g_pop_coverage'), 'bts_5g': ('ind', 'bts_5g_total'), 'bts_total': ('ind', 'bts_total'),
     'pop': ('ind', 'nso_population_avg'), 'hh': ('ind', 'households'),
     # Doanh nghiệp (companies.json)
     'ctr_towers': ('com', 'CTR', 'ctr_bts_owned'), 'ctr_cotenant': ('com', 'CTR', 'ctr_bts_cotenant'), 'ctr_tenancy': ('com', 'CTR', 'ctr_tenancy'),
