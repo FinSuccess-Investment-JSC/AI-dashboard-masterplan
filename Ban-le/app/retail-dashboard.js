@@ -227,6 +227,31 @@ if(document.getElementById('chRetailMix')){
  sourceLine('chRetailMix',[LK.vnp],'9T/2026','Bốn cấu phần do NSO công bố, kể cả "dịch vụ khác" (không tính bằng phần dư). Thương mại điện tử là kênh bán, trùng một phần với bán lẻ hàng hóa nên tách sang chart riêng.',false);
  insight('chRetailMix','Lưu trú, ăn uống và du lịch tăng nhanh hơn hàng hóa, nghĩa là phần tiền tăng thêm đang nghiêng về dịch vụ hơn là chuỗi bán hàng hóa. Kiểm tiếp cơ cấu cả năm và tốc độ bán lẻ hàng hóa so với doanh thu cùng cửa hàng của MWG, FRT.');
 }
+// Kênh bán: cơ cấu GT/MT/TMĐT theo năm, số chợ và tiệm tạp hóa (số người dùng cung cấp 26/11/2026: FPTS 2019–2024; PHS, Shinhan Securities 2025).
+const plainSrc=(id,text)=>{const card=document.getElementById(id)?.closest('.card');if(!card||card.querySelector(':scope>.pw-src'))return;card.append(make('div','pw-src','Nguồn: '+text))};
+if(document.getElementById('chChannelMix')){
+ const M=[['2019',77,20,null],['2020',73,22,null],['2021',68,24,8],['2022',67,26,7],['2023',66,27,8],['2024',62,27,11],['2025',58,30,12]];
+ const K=[['Truyền thống (GT)','#1D2678'],['Hiện đại (MT)','#9AAAC8'],['Thương mại điện tử','#C9CDD6']];
+ const host=document.getElementById('chChannelMix');host.className='rf-chmix';
+ host.innerHTML='<ul class="rf-chmix-leg">'+K.map(([n,c])=>`<li><i style="background:${c}"></i>${esc(n)}</li>`).join('')+'</ul>'+M.map(([y,g,m,e])=>{const ee=e??100-g-m;const v=[g,m,ee];return `<div class="rf-chmix-row"><b>${y}</b><div class="rf-stack" role="img" aria-label="${y}: ${K.map(([n],i)=>n+' '+v[i]+'%').join(', ')}">${v.map((x,i)=>`<span class="rf-seg" style="flex:${x} 1 0;background:${K[i][1]};color:${i?'#1d2333':'#fff'}" title="${esc(K[i][0])}: ${x}%${e==null&&i===2?' (phần còn lại, tự tính)':''}">${x>=5&&!(e==null&&i===2)?x+'%':''}</span>`).join('')}</div></div>`}).join('');
+ fillTable('tbl-channel-mix',['Năm','Truyền thống (%)','Hiện đại (%)','TMĐT (%)','Nguồn'],M.slice().reverse().map(([y,g,m,e])=>[y,String(g),String(m),e==null?(100-g-m)+' (phần còn lại, tự tính)':String(e),y==='2025'?'PHS, Shinhan Securities':'FPTS']));
+ plainSrc('chChannelMix','FPTS (2019–2024); PHS và Shinhan Securities (2025)');
+ host.after(make('div','source-note method-note','Số làm tròn, khác nguồn tổng hợp nên một số năm cộng lệch 100% một điểm. Năm 2019, 2020 nguồn không ghi riêng TMĐT; phần còn lại (3%, 5%) là tự tính.'));
+ insight('chChannelMix','Kênh hiện đại và TMĐT lấy dần thị phần từ chợ, tạp hóa, là nền tăng trưởng của chuỗi bách hóa, nhà thuốc và điện máy niêm yết. Kiểm tiếp tốc độ chuyển dịch năm 2026 và phần TMĐT đến từ hàng của chính các chuỗi hay từ sàn.');
+}
+if(document.getElementById('chMarkets')){
+ const Y=['2018','2019','2020','2021','2022','2023','2024','2025'],mk=[8475,8500,8581,8549,8517,8318,8274,8150],gr=[656,660,663,630,647,650,644,638];
+ barLineChart('chMarkets',{categories:Y,series:[{name:'Số lượng chợ',color:C.navy,values:mk}],unit:'chợ',digits:0,height:240,rotateLabels:false,zeroBase:false});
+ fillTable('tbl-markets',['Năm','Số lượng chợ'],Y.map((y,i)=>[y,nf(mk[i],0)]).reverse());
+ plainSrc('chMarkets','FinSuccess tổng hợp');
+ insight('chMarkets','Số chợ giảm đều từ 2020 cho thấy kênh truyền thống thu hẹp về điểm bán, không chỉ về thị phần. Kiểm tiếp số chợ năm 2026 và mức mở mới của chuỗi bách hóa ở nông thôn.');
+ barLineChart('chGrocery',{categories:Y,series:[{name:'Số tiệm tạp hóa (nghìn)',color:C.teal,values:gr,confArr:Y.map(y=>y!=='2025')}],unit:'nghìn tiệm',digits:0,height:240,rotateLabels:false,zeroBase:false});
+ fillTable('tbl-grocery',['Năm','Số tiệm tạp hóa (nghìn)'],Y.map((y,i)=>[y+(y==='2025'?' (dự báo)':''),nf(gr[i],0)]).reverse());
+ plainSrc('chGrocery','FinSuccess tổng hợp');
+ document.getElementById('chGrocery').after(make('div','source-note method-note','2025 là số dự báo (cột nhạt).'));
+ insight('chGrocery','Số tiệm tạp hóa gần như đi ngang quanh 630–660 nghìn: tạp hóa giảm chậm hơn chợ và vẫn là đối thủ trực tiếp của Bách Hóa Xanh, WinCommerce ở khu dân cư. Kiểm tiếp số thực tế 2025 khi có công bố.');
+}
+
 // Bán lẻ hiện đại: mạng lưới, năng suất, SSSG
 if(document.getElementById('chStores')){
  hbarCompare('chStores',{items:[{label:'WinCommerce · Q2',value:5141,color:C.plum},{label:'Bách Hóa Xanh · T9',value:3904,color:C.navy},{label:'Long Châu · Q3',value:2741,color:C.teal},{label:'Điện Máy Xanh · T9',value:1998,color:C.navy},{label:'TGDĐ · T9',value:919,color:C.navy},{label:'FPT Shop · Q3',value:622,color:C.teal},{label:'An Khang · T9',value:438,color:C.navy},{label:'PNJ · Q3',value:424,color:C.gold},{label:'EraBlue (Indonesia) · T9',value:337,color:C.grey},{label:'Tiêm chủng LC · Q3',value:244,color:C.teal}],unit:'điểm',digits:0,labelW:190,ariaLabel:'Số điểm bán của các chuỗi'});

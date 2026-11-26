@@ -4597,7 +4597,10 @@
      "bl-02",
      "bl-13",
      "bl-14",
-     "bl-23"
+     "bl-23",
+     "bl-44",
+     "bl-45",
+     "bl-46"
     ]
    },
    "how": "Mở bài công bố mới; cập nhật bảng và chart chRetailMix, chStores trong Ban-le/app/retail-dashboard.js; thêm evidence.",
