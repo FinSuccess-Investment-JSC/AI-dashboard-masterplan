@@ -36,7 +36,7 @@ function route(u = new URL(location.href)) {
   if (TABS.some(t => t[0] === h)) r.tab = h;
   else if (h === 'mt3') { r.tab = 'mt2'; r.sub = 'policy'; }
   else if (h === 'mt4') r.tab = 'mt7';
-  else if (h === 'mt5') { r.tab = 'mt2'; r.anchor = 'vt-sources'; }
+  else if (h === 'mt5') r.tab = 'mt2';  // danh mục nguồn đã bỏ 26/11/2026
   const ov = q.get('ov'), sec = q.get('section'), fn = q.get('fin');
   // Link cũ ?ov=listed (bảng doanh nghiệp đã chuyển sang Tài chính ngành). Có cả #mt1 và section=… thì ưu tiên ngữ cảnh #mt1.
   if (ov === 'listed' && (!r.tab || r.tab === 'mt1')) { r.tab = 'mt14'; r.sub = 'listed'; return r; }
@@ -203,9 +203,9 @@ const FG = (T.fiveg || []);
 const nat5g = ev => FG.filter(x => x.operator === 'Toàn quốc' && x.event === ev && x.status === 'actual' && fin(x.value)).sort((a, b) => a.date.localeCompare(b.date));
 // Trạm, thuê bao 5G toàn quốc: gộp mốc công bố (policy) và chuỗi industry, mỗi tháng một điểm (ưu tiên mốc công bố của Bộ).
 function merged(key, ev) {
-  const m = new Map();
-  (S(key)?.points || []).forEach(([p, v, , src]) => m.set(p.slice(0, 7), {date: p, v, src}));
-  nat5g(ev).forEach(x => m.set(x.date.slice(0, 7), {date: x.date, v: x.value, src: x.src}));
+  const m = new Map(), off = nat5g(ev), near = (d, v) => off.some(x => x.value === v && Math.abs(new Date(x.date) - new Date(d.length === 7 ? d + '-15' : d)) / 864e5 <= 45);
+  (S(key)?.points || []).forEach(([p, v, , src]) => { if (!near(p, v)) m.set(p.slice(0, 7), {date: p, v, src}); });
+  off.forEach(x => m.set(x.date.slice(0, 7), {date: x.date, v: x.value, src: x.src}));
   return [...m.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([k, x]) => ({k, ...x}));
 }
 const stations5g = () => merged('bts_5g', 'stations'), subs5g = () => merged('subs_5g', 'subscribers');
@@ -257,7 +257,7 @@ function dataBrief() {
   return s;
 }
 // Sơ đồ chuỗi giá trị: ValueChain.draw (app/value-chain.js, chép từ Điện) — làn, ô có icon, luồng màu theo mô hình, mũi tên chạy.
-// Khung 1170 × 480; ô cao 74. Bấm một khâu: lọc bảng 0.3 theo các mã niêm yết của khâu đó (sự kiện vc:select).
+// Khung 1170 × 480; ô cao 74. Bấm một khâu: lọc bảng 0.2 theo các mã niêm yết của khâu đó (sự kiện vc:select).
 function telecomChain() {
   const C = {mob: '#2938A8', fix: '#c98a00', tow: '#2a9fa3', bld: '#b8801f', intl: '#861C52', pol: '#5a6682'}, H = 74;
   const N = [
@@ -288,7 +288,7 @@ function telecomChain() {
     title: 'Chuỗi giá trị ngành viễn thông', desc: 'Nhà nước cấp phép tần số; nhà cung cấp thiết bị và nhà thầu xây lắp phục vụ nhà mạng và TowerCo; TowerCo cho nhà mạng thuê trạm; nhà mạng di động và Internet cố định thu cước của khách hàng; VGI hoạt động ở thị trường nước ngoài.'});
   return fig;
 }
-// Bấm khâu trên sơ đồ: lọc bảng doanh nghiệp 0.3 theo mã niêm yết của khâu.
+// Bấm khâu trên sơ đồ: lọc bảng doanh nghiệp 0.2 theo mã niêm yết của khâu.
 document.addEventListener('vc:select', e => {
   const t = document.querySelector('[data-block-id="vt-ov-position"]'); if (!t) return;
   const codes = (e.detail?.codes || []).filter(c => LISTED.has(c));
@@ -298,28 +298,19 @@ function mapPane(p) {
   const L = (t, cls = '') => `<span class="vt-tk ${cls}">${t}</span>`;
   const col = (title, sub, items) => `<div class="vt-col"><b>${esc(title)}</b><small>${esc(sub)}</small><div>${items.join('')}</div></div>`;
   const c = el('div', 'card vt-chain'); c.dataset.blockId = 'vt-ov-chain'; c.dataset.updateKind = 'manual'; c.dataset.cadence = 'quarterly'; c.dataset.refreshStatus = 'snapshot';
-  c.innerHTML = `<div class="chart-title">Chuỗi giá trị viễn thông</div><div class="chart-sub">Mũi tên: chiều dịch vụ và hạ tầng đi tới khách hàng · nhãn trên luồng: chiều thanh toán (ngược mũi tên) · mỗi ô ghi bên sở hữu tài sản · rê chuột xem luồng, bấm khâu để lọc bảng 0.3</div>`;
+  c.innerHTML = `<div class="chart-title">Chuỗi giá trị viễn thông</div><div class="chart-sub">Mũi tên: chiều dịch vụ và hạ tầng đi tới khách hàng · nhãn trên luồng: chiều thanh toán (ngược mũi tên) · mỗi ô ghi bên sở hữu tài sản · rê chuột xem luồng, bấm khâu để lọc bảng 0.2</div>`;
   if (window.ValueChain) c.append(telecomChain()); else c.append(el('p', 'vt-note', 'Không tải được sơ đồ.'));
-  c.append(el('div', 'vt-legend', `${L('Mã', 'ls')} doanh nghiệp niêm yết · bấm mã ở bảng 0.3 để xem số liệu tài chính · ${go('TowerCo & hạ tầng', 'mt2:tower')} ${go('Internet cố định', 'mt2:fixed')} ${go('Di động & 5G', 'mt2:mobile')}`));
+  c.append(el('div', 'vt-legend', `${L('Mã', 'ls')} doanh nghiệp niêm yết · bấm mã ở bảng 0.2 để xem số liệu tài chính · ${go('TowerCo & hạ tầng', 'mt2:tower')} ${go('Internet cố định', 'mt2:fixed')} ${go('Di động & 5G', 'mt2:mobile')}`));
   c.append(el('div', 'pw-src', srcLine(MECH())));
   p.append(qpanel('0.1', 'Dịch vụ viễn thông đi từ phổ tần, hạ tầng đến khách hàng qua những ai?', [c],
     `Ba mã đại diện ba nguồn doanh thu: <b>FOX</b> thu cước Internet cố định và truyền hình (${go('Trường hợp FOX', 'mt2:fixed:fox')}); <b>CTR</b> thu từ xây lắp, vận hành mạng cho nhà mạng và cho thuê hạ tầng trạm (${go('TowerCo & hạ tầng', 'mt2:tower')}); <b>VGI</b> thu cước tại các thị trường nước ngoài (${go('Hồ sơ VGI', 'mt14:listed::VGI')}). Nhà mạng di động trong nước (Viettel, VNPT, MobiFone) chưa niêm yết.`));
-  const flows = tableCard('vt-ov-money', 'Ai trả tiền cho ai, ai sở hữu tài sản, ai ghi nhận doanh thu', ['Bên', 'Sở hữu tài sản', 'Trả tiền cho', 'Ghi nhận doanh thu từ'], [
-    ['<b>Nhà nước</b> (Bộ KH&CN)', 'Phổ tần (cấp quyền sử dụng có thời hạn)', '—', 'Tiền trúng đấu giá, phí sử dụng tần số'],
-    ['<b>Nhà mạng trong nước</b> (Viettel, VNPT, MobiFone, Vietnamobile, Gtel; FOX ở Internet cố định)', 'Thiết bị phát sóng, lõi mạng, cáp quang, phần lớn nhà trạm', 'Nhà nước (tần số), TowerCo (thuê trạm), nhà thầu (xây lắp, thiết bị, vận hành)', 'Cước thuê bao của khách hàng'],
-    [`<b>TowerCo</b> (${tk('CTR')}, OCK…)`, 'Cột, nhà trạm, hạ tầng thụ động', 'Nhà thầu xây trạm, chủ đất, điện', 'Giá thuê trạm của nhà mạng theo hợp đồng'],
-    [`<b>Nhà thầu, thiết bị, vận hành</b> (${['CTR', 'ELC', 'POT', 'ICT', 'MFS'].map(x => tk(x)).join(' ')})`, 'Không sở hữu trạm của khách hàng', 'Nhà cung cấp vật tư, thiết bị', 'Hợp đồng xây lắp, bán thiết bị, phí vận hành khai thác'],
-    [`<b>Nhà mạng quốc tế</b> (${tk('VGI')})`, 'Cổ phần nhà mạng ở nước ngoài', 'Cơ quan quản lý, nhà cung cấp tại nước sở tại', 'Cước thuê bao tại các nước hoạt động'],
-    ['<b>Khách hàng</b>', '—', 'Nhà mạng (cước trả trước, trả sau, gói Internet)', '—']
-  ], [], null);
-  flows?.querySelector('.pw-src')?.remove(); flows?.append(el('div', 'pw-src', srcLine(MECH())));
-  p.append(qpanel('0.2', 'Ai trả tiền cho ai, bên nào sở hữu tài sản và ghi nhận doanh thu?', [flows]));
+  // Bảng 0.2 "Ai trả tiền cho ai…" bỏ 26/11/2026 theo yêu cầu người dùng (sơ đồ 0.1 đã thể hiện chiều thanh toán, bên sở hữu).
   if (F) {
     const DEEP = {CTR: go('TowerCo & hạ tầng', 'mt2:tower') + go('Hồ sơ CTR', 'mt14:listed::CTR'), FOX: go('Trường hợp FOX', 'mt2:fixed:fox') + go('Hồ sơ FOX', 'mt14:listed::FOX'), VGI: go('Hồ sơ VGI', 'mt14:listed::VGI')};
     const rows = F.companies.map(co => { const g = F.groups.find(x => x.id === co.group); return [tk(co.ticker), `<i class="vt-dot" style="background:${g?.color}"></i>${esc(g?.label || '')}`, esc(co.note || ''), DEEP[co.ticker] || '—']; });
     const t = tableCard('vt-ov-position', 'Doanh nghiệp niêm yết theo vị trí trong chuỗi', ['Mã', 'Nhóm mô hình', 'Hoạt động chính', 'Phân tích sâu'], rows, [], 'Bấm mã để xem số liệu ở Tài chính ngành › Doanh nghiệp niêm yết');
     t?.querySelector('.pw-src')?.remove(); if (t) t.insertBefore(el('div', 'pw-src', srcLine(MECH(), FIN_SRC)), t.querySelector('.pw-src-note'));
-    p.append(qpanel('0.3', 'Doanh nghiệp niêm yết nằm ở khâu nào?', [t]));
+    p.append(qpanel('0.2', 'Doanh nghiệp niêm yết nằm ở khâu nào?', [t]));
   }
 }
 function chainPane(p) {
@@ -407,34 +398,56 @@ function marketPane(p) {
   stages(p, 'mt2', 'market', [
     ['size', 'Quy mô', 'Quy mô & tăng trưởng', [qpanel('1.1', 'Doanh thu ngành tăng nhanh hay chậm hơn số thuê bao?', [c1, c2], leadMarket()), qpanel('1.2', 'Hai cách đo doanh thu ngành khác nhau thế nào?', [c3], 'Dùng chuỗi <b>doanh thu hoạt động viễn thông</b> của Cục Thống kê (phạm vi rộng, có số quý) để theo dõi tốc độ tăng của cả ngành; dùng chuỗi <b>doanh thu dịch vụ viễn thông</b> của Bộ TT&TT/Bộ KH&CN khi đặt cạnh thuê bao hoặc doanh thu theo dịch vụ. Hai chuỗi khác phạm vi, giữ riêng, không ghép.')]],
     ['subs', 'Khách hàng', 'Thuê bao mới & mức thâm nhập', [qpanel('1.3', 'Tăng trưởng thuê bao đang tăng tốc hay giảm tốc?', [c4], 'Số thuê bao di động là số SIM ghi nhận. Các đợt khóa SIM không chính chủ, xác thực sinh trắc (2026), dừng 2G và thay đổi cách đếm có thể làm số SIM tăng, giảm mà không phản ánh khách hàng mới hay mất đi; nguồn chưa tách phần này nên không quy nguyên nhân cho từng năm.'), qpanel('1.4', 'Phân khúc nào còn dư địa mở rộng số khách hàng?', [c5, c6])]],
-    ['mix', 'Cơ cấu', 'Cơ cấu doanh thu', [qpanel('1.5', 'Doanh thu đến từ di động hay cố định?', [c7])]],
-    ['compete', 'Cạnh tranh', 'Cấu trúc cạnh tranh', [qpanel('1.6', 'Thị trường tập trung đến mức nào, quy mô các nhà mạng ra sao?', [c8, c9, c10], `Thị phần chi tiết: ${go('Di động', 'mt2:mobile:share')} ${go('Internet cố định', 'mt2:fixed:price')}`)]]
+    ['compete', 'Cạnh tranh', 'Quy mô các nhà mạng', [qpanel('1.5', 'Quy mô doanh thu và lợi nhuận các nhà mạng ra sao?', [c9, c10])]]
   ]);
 }
 function mobilePane(p) {
   p.append(el('p', 'vt-sublead', 'Hai khả năng cần phân biệt: thuê bao chuyển từ 4G sang 5G với cùng mức chi tiêu, hay nhà mạng thu thêm tiền trên mỗi thuê bao. Số thuê bao 5G và số trạm chỉ cho biết mức chuyển đổi và độ phủ; chỉ ARPU hoặc doanh thu dịch vụ di động cùng kỳ mới phân biệt được hai khả năng — hiện chưa có nguồn công bố định kỳ.'));
   // Chart giá trúng đấu giá tần số (2.1) bỏ 26/11/2026 theo yêu cầu người dùng; bảng đấu giá đầy đủ ở Chính sách.
   const st = stations5g();
-  const c2 = chartCard({id: 'vt-5g-stations', title: 'Số trạm 5G toàn quốc (trạm, thực tế)', cats: st.map(x => x.k), series: [{name: 'Trạm 5G', color: COL[2], values: st.map(x => x.v), kind: 'bar'}], unit: 'trạm', digits: 0, native: 'bar', src: st.map(x => x.src), cadence: 'on-data-change', note: 'Mỗi tháng một mốc công bố; mục tiêu không vẽ vào chuỗi thực tế'});
+  // Mục tiêu 5G vẽ cùng chart với số thực hiện (26/11/2026, theo yêu cầu người dùng); bảng mục tiêu bỏ.
+  const T5 = FG.filter(x => x.status === 'target' && /5G/.test(x.unit + ' ' + x.text));
+  const vtAct = FG.filter(x => x.operator === 'Viettel' && x.status === 'actual' && fin(x.value) && /trạm 5G/.test(x.unit)).sort((a, b) => a.date.localeCompare(b.date));
+  const tNat = T5.find(x => x.operator === 'Toàn quốc' && /trạm/.test(x.unit)), tAdd = T5.find(x => x.operator === 'Viettel' && /xây thêm/.test(x.unit)), tSite = T5.find(x => x.operator === 'Viettel' && /vị trí/.test(x.unit));
+  const vtEnd = vtAct.filter(x => tAdd && x.date.slice(0, 4) === String(+tAdd.date.slice(0, 4) - 1)).pop();
+  const months = [...new Set([...st.map(x => x.k), ...vtAct.map(x => x.date.slice(0, 7)), ...[tNat, tAdd, tSite].filter(Boolean).map(x => x.date.slice(0, 7))])].sort();
+  const at = (arr, getK, getV) => months.map(m => { const x = arr.find(z => getK(z) === m); return x ? getV(x) : null; });
+  const c2 = chartCard({id: 'vt-5g-stations', title: 'Trạm 5G: số thực hiện và mục tiêu đã công bố (trạm)', sub: 'Cột đậm: thực hiện · cột nhạt: mục tiêu (kế hoạch, chưa phải thực hiện)', cats: months, series: [
+    {name: 'Toàn quốc · thực hiện', color: COL[0], values: at(st, x => x.k, x => x.v), kind: 'bar'},
+    {name: 'Viettel · thực hiện', color: '#C8394B', values: at(vtAct, x => x.date.slice(0, 7), x => x.value), kind: 'bar'},
+    tNat && {name: 'Toàn quốc · mục tiêu', color: '#9AA3BD', values: months.map(m => m === tNat.date.slice(0, 7) ? tNat.value : null), kind: 'bar'},
+    tAdd && vtEnd && {name: `Viettel · mục tiêu: ${nf(vtEnd.value, 0)} + ${nf(tAdd.value, 0)} trạm xây thêm (tự tính)`, color: '#f0a8b2', values: months.map(m => m === tAdd.date.slice(0, 7) ? vtEnd.value + tAdd.value : null), kind: 'bar'},
+    tSite && {name: 'Viettel · mục tiêu vị trí trạm', color: '#e9c46a', values: months.map(m => m === tSite.date.slice(0, 7) ? tSite.value : null), kind: 'bar'}
+  ].filter(Boolean), unit: 'trạm', digits: 0, native: 'bar', src: [...st.map(x => x.src), ...vtAct.map(x => x.src), ...[tNat, tAdd, tSite].filter(Boolean).map(x => x.src)], cadence: 'on-data-change',
+    note: `Mục tiêu là số doanh nghiệp/cơ quan công bố.${tAdd && vtEnd ? ` Mục tiêu Viettel ${tAdd.date.slice(0, 4)} = ${nf(vtEnd.value, 0)} trạm cuối ${vtEnd.date.slice(0, 4)} + ${nf(tAdd.value, 0)} trạm xây thêm (tự tính, giả định không giảm trạm).` : ''}${tSite ? ' "Vị trí trạm" khác định nghĩa "trạm".' : ''}`});
+  // Độ phủ 5G theo dân số: thực hiện (Bộ KH&CN, các đợt công bố) và mục tiêu
+  const cov = new Map(); [...(S('cov_5g')?.points || []), ...(S('cov_5g_b')?.points || [])].forEach(([p, v, , src]) => { if (fin(v)) cov.set((/^\d{4}$/.test(p) ? p + '-12' : p).slice(0, 7), {v, src}); });
+  FG.filter(x => x.operator === 'Toàn quốc' && x.status === 'actual' && /% dân số/.test(x.unit) && fin(x.value)).forEach(x => cov.set(x.date.slice(0, 7), {v: x.value, src: x.src}));
+  const ctg = [...T5.filter(x => /% dân số/.test(x.unit) && fin(x.value)).map(x => ({who: x.operator.replace(/ \(.*\)/, ''), m: x.date.slice(0, 7), v: x.value, src: x.src})),
+    ...T5.filter(x => /phủ (\d+)% dân số/.test(x.text) && !/% dân số/.test(x.unit)).map(x => ({who: x.operator, m: x.date.slice(0, 7), v: +x.text.match(/phủ (\d+)% dân số/)[1], src: x.src}))];
+  const cm = [...new Set([...cov.keys(), ...ctg.map(x => x.m)])].sort(), whos = [...new Set(ctg.map(x => x.who))];
+  const TC = {Viettel: '#f0a8b2', VNPT: '#a9b4ea', 'Toàn quốc': '#9AA3BD'};
+  const c2b = cov.size ? chartCard({id: 'vt-5g-coverage', title: 'Độ phủ 5G theo dân số: thực hiện và mục tiêu (%)', sub: 'Cột đậm: thực hiện toàn quốc · cột nhạt: mục tiêu', cats: cm, series: [
+    {name: 'Toàn quốc · thực hiện', color: COL[0], values: cm.map(m => cov.get(m)?.v ?? null), kind: 'bar'},
+    ...whos.map(w => ({name: `${w} · mục tiêu`, color: TC[w] || '#9AA3BD', values: cm.map(m => ctg.find(x => x.who === w && x.m === m)?.v ?? null), kind: 'bar'}))], unit: '%', digits: 1, native: 'bar',
+    src: [...[...cov.values()].map(x => x.src), ...ctg.map(x => x.src)], cadence: 'on-data-change', note: 'VNPT công bố mục tiêu 55–60%, vẽ mức 60%; các đợt công bố thực hiện có thể khác cách đo giữa nguồn'}) : null;
   const ops = FG.filter(x => x.operator !== 'Toàn quốc' && ['launch', 'stations', 'subscribers'].includes(x.event) && x.status === 'actual').sort((a, b) => a.date.localeCompare(b.date));
   const tgt = FG.filter(x => x.operator !== 'Toàn quốc' && x.status === 'target').sort((a, b) => a.date.localeCompare(b.date));
   const LBL = {launch: 'Khai trương', stations: 'Số trạm', subscribers: 'Thuê bao', target: 'Mục tiêu'};
   const val = x => fin(x.value) ? `${nf(x.value, x.value < 100 ? 1 : 0)} ${esc(x.unit)}` : '—';
   const c3 = tableCard('vt-5g-ops', 'Tiến độ 5G theo nhà mạng: số thực tế đã công bố', ['Ngày', 'Nhà mạng', 'Loại', 'Giá trị', 'Nội dung'], ops.map(x => [dmy(x.date), esc(x.operator), LBL[x.event], val(x), esc(x.text)]), ops.map(x => x.src));
-  const c4 = tableCard('vt-5g-targets', 'Mục tiêu 5G theo nhà mạng (kế hoạch)', ['Hạn', 'Nhà mạng', 'Mục tiêu', 'Nội dung'], tgt.map(x => [dmy(x.date), esc(x.operator), val(x), esc(x.text)]), tgt.map(x => x.src), 'Mục tiêu, kế hoạch tách khỏi số thực tế');
   const s5 = subs5g();
-  const c5 = chartCard({id: 'vt-5g-subs', title: 'Thuê bao 5G toàn quốc (triệu thuê bao)', cats: s5.map(x => x.k), series: [{name: 'Thuê bao 5G', color: COL[0], values: s5.map(x => x.v), kind: 'bar'}], unit: 'triệu', digits: 1, native: 'bar', src: s5.map(x => x.src), cadence: 'on-data-change'});
-  // Tỷ lệ 5G / băng rộng di động: mẫu số cùng tháng nếu có; nếu không, ghi kỳ mẫu số và đánh dấu "tham chiếu".
-  const mbb = (S('mob_bb')?.points || []).filter(x => fin(x[1]));
-  const shareRows = s5.map(x => { const same = mbb.find(m => m[0].slice(0, 7) === x.k), near = same || [...mbb].reverse().find(m => m[0] <= x.date) || null;
-    return [dmy(x.date), nf(x.v, 1), near ? nf(near[1], 1) : '—', near ? per(near[0]) : '—', near ? nf(x.v / near[1] * 100, 1) + '%' + (same ? '' : ' <small>(tham chiếu)</small>') : '—']; });
-  const allRef = shareRows.every(r => /tham chiếu/.test(r[4]));
-  const c6 = tableCard('vt-5g-share', 'Thuê bao 5G so với thuê bao băng rộng di động', ['Thời điểm', 'Thuê bao 5G (triệu)', 'Băng rộng di động (triệu)', 'Kỳ mẫu số', 'Tỷ lệ'], shareRows, [...s5.map(x => x.src), ...seriesSrc(['mob_bb'])], null, allRef ? 'Tất cả tỷ lệ là số tham chiếu: mẫu số (thuê bao băng rộng di động) khác kỳ với tử số, không dùng để đọc xu hướng.' : 'Dòng ghi "tham chiếu": mẫu số khác kỳ với tử số; chỉ đọc xu hướng từ các dòng có tử, mẫu cùng kỳ.');
+  const vs = FG.filter(x => x.operator === 'Viettel' && x.event === 'subscribers' && x.status === 'actual' && fin(x.value)), vt5 = T5.find(x => x.operator === 'Viettel' && /người dùng|thuê bao/.test(x.unit));
+  const sm = [...new Set([...s5.map(x => x.k), ...vs.map(x => x.date.slice(0, 7)), ...(vt5 ? [vt5.date.slice(0, 7)] : [])])].sort();
+  const c5 = chartCard({id: 'vt-5g-subs', title: 'Thuê bao 5G: thực hiện và mục tiêu (triệu)', sub: 'Cột đậm: thực hiện · cột nhạt: mục tiêu', cats: sm, series: [
+    {name: 'Toàn quốc · thực hiện', color: COL[0], values: sm.map(m => s5.find(x => x.k === m)?.v ?? null), kind: 'bar'},
+    {name: 'Viettel · thực hiện', color: '#C8394B', values: sm.map(m => vs.find(x => x.date.startsWith(m))?.value ?? null), kind: 'bar'},
+    vt5 && {name: 'Viettel · mục tiêu', color: '#f0a8b2', values: sm.map(m => m === vt5.date.slice(0, 7) ? vt5.value : null), kind: 'bar'}].filter(Boolean),
+    unit: 'triệu', digits: 1, native: 'bar', src: [...s5.map(x => x.src), ...vs.map(x => x.src), ...(vt5 ? [vt5.src] : [])], cadence: 'on-data-change', note: 'Viettel công bố "người dùng 5G"; toàn quốc là thuê bao 5G theo Bộ KH&CN'});
+  // Bảng tỷ lệ 5G / băng rộng di động bỏ 26/11/2026: mọi tỷ lệ đều là số tham chiếu (mẫu số khác kỳ), không vẽ được chart có nghĩa.
   const sh = align(['mob_data_users', 'mob_traffic_subs'], exact);
   const c7 = has('mob_data_users', 'mob_traffic_subs') ? chartCard({id: 'vt-data-share', title: 'Tỷ lệ thuê bao di động có dùng data (%)', sub: 'Thuê bao có dùng dữ liệu ÷ thuê bao phát sinh lưu lượng, cùng nguồn Bộ TT&TT', cats: sh.cats, series: [{name: 'Thuê bao dùng data / thuê bao phát sinh lưu lượng', color: COL[0], values: sh.cats.map((_, i) => fin(sh.vals[0][i]) && fin(sh.vals[1][i]) ? sh.vals[0][i] / sh.vals[1][i] * 100 : null), kind: 'bar'}], unit: '%', digits: 1, native: 'bar', src: seriesSrc(['mob_data_users', 'mob_traffic_subs']), cadence: 'on-data-change', note: 'Tự tính'}) : null;
-  const pr = (T.prices || []).filter(x => x.segment === 'mobile').sort((a, b) => a.date.localeCompare(b.date));
-  const cond = x => [/trả sau/i.test(x.package) ? 'trả sau' : /trả trước/i.test(x.package) ? 'trả trước' : '', /chọn lọc/i.test(x.package) ? 'đối tượng chọn lọc' : '', /5G/.test(x.package) ? 'gói 5G' : /4G/.test(x.package) ? 'gói 4G' : '', /miễn phí/i.test(x.speed_or_quota) ? 'kèm ưu đãi' : ''].filter(Boolean).join(' · ');
-  const c8 = tableCard('vt-data-prices', 'Gói cước di động · giá niêm yết tại thời điểm quan sát', ['Ngày quan sát', 'Nhà mạng', 'Gói', 'Dung lượng', 'Điều kiện', 'Giá (đồng/tháng)'], pr.map(x => [dmy(x.date), esc(x.operator), esc(x.package.replace(/\s*\([^)]*\)/, '')), esc(x.speed_or_quota), esc(cond(x)), nf(x.price_vnd_month)]), pr.map(x => x.src), 'Giá niêm yết, không phải ARPU; khả năng so sánh phụ thuộc trả trước/trả sau, dung lượng, đối tượng và ưu đãi — chỉ so các dòng cùng điều kiện');
+  // Bảng gói cước di động (2.4) bỏ 26/11/2026 theo yêu cầu người dùng.
   // Chỉ giai đoạn hai chuỗi cùng có số (doanh thu di động theo Sách Trắng có đến 2018).
   const DM = [['rev_mobile_usd', 'Doanh thu dịch vụ di động (USD)'], ['mob_data_users', 'Thuê bao di động có dùng data']].filter(([k]) => has(k)), dm0 = align(DM.map(x => x[0]));
   const keep = dm0.cats.map((_, i) => dm0.vals.every(v => fin(v[i]))), dm = {cats: dm0.cats.filter((_, i) => keep[i]), vals: dm0.vals.map(v => v.filter((_, i) => keep[i]))}, dmi = index100(dm.vals);
@@ -447,10 +460,8 @@ function mobilePane(p) {
   const rowsSR = Object.keys(SH.mobile_rev || {}).flatMap(y => Object.keys(SH.mobile_rev[y]).map(o => [y, esc(o), fin(SH.mobile?.[y]?.[o]) ? nf(SH.mobile[y][o], 1) + '%' : '—', fin(SH.mbb?.[y]?.[o]) ? nf(SH.mbb[y][o], 1) + '%' : '—', nf(SH.mobile_rev[y][o], 1) + '%']));
   const c11 = tableCard('vt-cp-subrev-mob', 'Di động: thị phần thuê bao so với thị phần doanh thu', ['Năm', 'Nhà mạng', 'Thuê bao di động', 'Thuê bao băng rộng di động', 'Doanh thu di động'], rowsSR, [...(SH.mobile_rev_src || []), ...(SH.mbb_src || [])], 'Năm gần nhất có cả ba chỉ tiêu (Sách Trắng CNTT-TT)');
   stages(p, 'mt2', 'mobile', [
-    ['network', 'Đầu tư', 'Đầu tư & năng lực mạng', [qpanel('2.1', 'Số trạm 5G tăng thế nào, từng nhà mạng ở đâu so với mục tiêu?', [c2, c3, c4], st.length ? `Số thực hiện: <b>${nf(st.at(-1).v, 0)} trạm 5G</b> toàn quốc ngày ${dmy(st.at(-1).date)}. Bảng tiến độ ghi số trạm, thuê bao đã công bố; bảng mục tiêu tách riêng vì khác định nghĩa (trạm xây thêm trong năm, tổng vị trí trạm, độ phủ theo dân số) — không tính tỷ lệ hoàn thành khi khác định nghĩa.` : '')]],
-    ['usage', 'Sử dụng', 'Thuê bao & người dùng data', [qpanel('2.2', 'Thuê bao 5G tăng ra sao, chiếm bao nhiêu trong băng rộng di động?', [c5, c6], allRef ? 'Các tỷ lệ 5G trên băng rộng di động hiện đều là số tham chiếu (mẫu số khác kỳ), chưa đủ để đọc xu hướng thâm nhập 5G.' : ''), qpanel('2.3', 'Bao nhiêu thuê bao di động dùng data?', [c7])]],
-    ['commercial', 'Thương mại hóa', 'Gói cước & doanh thu di động', [qpanel('2.4', 'Gói data niêm yết ở mức nào?', [c8]), qpanel('2.5', `Giai đoạn ${yr || 'trước 5G'}: người dùng data tăng có đi kèm doanh thu di động không?`, [c9], dmLead)]],
-    ['share', 'Thị phần', 'Thị phần di động', [qpanel('2.6', 'Nhà mạng nào chiếm bao nhiêu thuê bao và doanh thu di động?', [c10, c11])]]
+    ['network', 'Đầu tư', 'Đầu tư & năng lực mạng', [qpanel('2.1', 'Số trạm 5G tăng thế nào, từng nhà mạng ở đâu so với mục tiêu?', [c2, c2b, c3], st.length ? `Số thực hiện: <b>${nf(st.at(-1).v, 0)} trạm 5G</b> toàn quốc ngày ${dmy(st.at(-1).date)}. Mục tiêu vẽ cột nhạt cạnh số thực hiện; các mục tiêu khác định nghĩa (trạm xây thêm, vị trí trạm, độ phủ theo dân số) được ghi tên riêng, không tính tỷ lệ hoàn thành khi khác định nghĩa.` : '')]],
+    ['usage', 'Sử dụng', 'Thuê bao 5G', [qpanel('2.2', 'Thuê bao 5G tăng ra sao so với mục tiêu?', [c5], 'Chưa tính tỷ lệ 5G trên thuê bao băng rộng di động: các kỳ công bố của hai chỉ tiêu không trùng nhau.')]],
   ]);
 }
 function leadFixedDef() {
@@ -463,14 +474,6 @@ function leadAsean() {
   const others = Object.keys(TELECOM_BENCH.countries).filter(c => c !== 'VNM').map(c => [c, last(c)]).filter(x => x[1] && x[1][0] === vn[0]);
   const top = others.every(([, v]) => v[1] < vn[1]);
   return `Việt Nam đạt <b>${nf(vn[1], 1)} thuê bao/100 dân</b> năm ${vn[0]}${others.length ? (top ? `, cao hơn ${others.length} nước còn lại trong mẫu cùng năm` : '') + ` (${others.map(([c, v]) => `${TELECOM_BENCH.countries[c]} ${nf(v[1], 1)}`).join(', ')})` : ''}. Câu hỏi tiếp theo: tăng trưởng đến từ hộ mới kết nối, nâng gói tốc độ hay giành thị phần — cần thuê bao mới ròng theo nhà mạng, cơ cấu gói và ARPU.`;
-}
-function leadFixedPrice() {
-  const area = t => /nội thành/i.test(t) ? 'nội thành Hà Nội, TP.HCM' : /ngoại thành|tỉnh/i.test(t) ? 'ngoại thành/tỉnh' : '';
-  const pr = (T.prices || []).filter(x => x.segment === 'fixed'), last = pr.map(x => x.date.slice(0, 7)).sort().at(-1);
-  const g = pr.filter(x => x.date.startsWith(last) && area(x.package) === 'ngoại thành/tỉnh'), sp = [...new Set(g.map(x => x.speed_or_quota))];
-  if (!g.length || sp.length !== 1) return '';
-  const v = g.map(x => x.price_vnd_month);
-  return `Gói ${sp[0]} ngoại thành/tỉnh cho khách lắp mới, tháng ${+last.slice(5)}/${last.slice(0, 4)}: <b>${nf(Math.min(...v) / 1000, 0)}–${nf(Math.max(...v) / 1000, 0)} nghìn đồng/tháng</b> (${g.map(x => `${x.operator} ${nf(x.price_vnd_month / 1000, 0)}`).join(', ')}). Giá niêm yết chưa gồm phí lắp đặt và khuyến mại; khách hiện hữu giữ giá theo hợp đồng.`;
 }
 function leadFox() {
   const fr = finYear('FOX', 'revenue'), ys = [...fr.keys()].sort(), y = ys.at(-1), fx = yearly('fix_bb');
@@ -489,26 +492,16 @@ function fixedPane(p) {
   const bm = window.TELECOM_BENCH; let c5 = null, c6 = null;
   if (bm?.series?.fixed_bb_per100) { const s = bm.series.fixed_bb_per100, ys = [...new Set(Object.values(s.data).flatMap(Object.keys))].sort().filter(y => y >= '2012');
     c5 = chartCard({id: 'vt-fx-asean', title: 'Băng rộng cố định trên 100 dân: Việt Nam và ASEAN', cats: ys, series: Object.entries(bm.countries).map(([c, n], i) => ({name: n, color: c === 'VNM' ? '#C8394B' : COL[i], values: ys.map(y => s.data[c]?.[y] ?? null)})), unit: 'thuê bao/100 dân', digits: 1, zeroBase: false, extraSrc: WB('IT.NET.BBND.P2'), cadence: 'yearly', note: 'Tính trên 100 dân, không phải trên số hộ; quy mô hộ khác nhau giữa các nước'});
-    const g = bm.series.gdp_pc, last = c => { const e = Object.entries(s.data[c] || {}); return e.length ? e[e.length - 1] : null; };
-    c6 = tableCard('vt-fx-asean-t', 'So sánh kỳ mới nhất', ['Quốc gia', 'Băng rộng cố định/100 dân', 'Năm', 'GDP bình quân đầu người (USD)', 'Năm'], Object.entries(bm.countries).map(([c, n]) => { const l = last(c), gl = Object.entries(g?.data?.[c] || {}).pop(); return [c === 'VNM' ? `<b>${n}</b>` : n, l ? nf(l[1], 1) : '—', l?.[0], gl ? nf(gl[1], 0) : '—', gl?.[0]]; }), [], null, null, WB('IT.NET.BBND.P2')); }
-  const pr = (T.prices || []).filter(x => x.segment === 'fixed').sort((x, y) => x.date.localeCompare(y.date));
-  const area = t => /nội thành/i.test(t) ? 'Nội thành Hà Nội, TP.HCM' : /ngoại thành|tỉnh/i.test(t) ? 'Ngoại thành, tỉnh' : 'Nguồn không tách khu vực';
-  const c7 = tableCard('vt-fx-prices', 'Gói cáp quang thấp nhất cho khách lắp mới', ['Ngày', 'Nhà mạng', 'Gói', 'Tốc độ', 'Khu vực', 'Giá (đồng/tháng)'], pr.map(x => [dmy(x.date), esc(x.operator), esc(x.package.replace(/\s*\([^)]*\)/, '')), esc(x.speed_or_quota), area(x.package), nf(x.price_vnd_month)]), pr.map(x => x.src), 'Chỉ so các dòng cùng tốc độ và cùng khu vực; giá chưa gồm phí lắp đặt, khuyến mại; khách hiện hữu giữ giá theo hợp đồng');
-  const fr = align(['rev_fixed_usd', 'rev_fbb_usd']);
-  const c8 = has('rev_fixed_usd') ? chartCard({id: 'vt-fx-rev', title: 'Doanh thu dịch vụ cố định (triệu USD)', cats: fr.cats, series: [{name: 'Cố định mặt đất (tổng)', color: COL[2], values: fr.vals[0], kind: 'bar'}, {name: 'Trong đó: băng rộng cố định', color: COL[0], values: fr.vals[1], kind: 'bar'}], unit: 'triệu USD', digits: 0, native: 'bar', src: seriesSrc(['rev_fixed_usd', 'rev_fbb_usd']), cadence: 'yearly', note: 'Băng rộng cố định là một phần của cố định mặt đất, không cộng'}) : null;
-  const fs = T.shares?.fixed || {}, yrs = Object.keys(fs).sort(), opsN = [...new Set(yrs.flatMap(y => Object.keys(fs[y])))];
-  const c9 = yrs.length ? chartCard({id: 'vt-fx-share', title: 'Thị phần thuê bao băng rộng cố định (%)', cats: yrs, series: opsN.map((o, i) => ({name: o, color: OPC[o] || COL[i], values: yrs.map(y => fs[y][o] ?? null), kind: 'bar'})), unit: '%', digits: 1, native: 'stack', stackable: true, src: T.shares?.fixed_src || [], min: 1, cadence: 'yearly'}) : null;
-  const SH = T.shares || {};
-  const c10 = tableCard('vt-cp-subrev-fix', 'Internet cố định: thị phần thuê bao so với thị phần doanh thu', ['Năm', 'Doanh nghiệp', 'Thị phần thuê bao', 'Thị phần doanh thu'], Object.keys(SH.fixed_rev || {}).flatMap(y => Object.keys(SH.fixed_rev[y]).map(o => [y, esc(o), fin(SH.fixed?.[y]?.[o]) ? nf(SH.fixed[y][o], 1) + '%' : '—', nf(SH.fixed_rev[y][o], 1) + '%'])), SH.fixed_rev_src || [], 'Sách Trắng CNTT-TT');
+    /* Bảng 'So sánh kỳ mới nhất' bỏ 26/11/2026 theo yêu cầu người dùng; số kỳ mới nhất nằm trong câu chốt 3.3. */ }
+  // Bỏ 26/11/2026 theo yêu cầu người dùng: bảng gói cáp quang (3.4); doanh thu, thị phần Internet cố định (3.5) vì số liệu chỉ đến 2016–2018.
   const foxRev = finYear('FOX', 'revenue'), ft = yearly('fpt_tel_rev'), fb = yearly('fpt_bb_rev'), fy = [...new Set([...foxRev.keys(), ...ft.keys(), ...fb.keys()])].sort();
   const c11 = fy.length ? chartCard({id: 'vt-fx-fox-scope', title: 'FOX: doanh thu theo phạm vi báo cáo (tỷ đồng)', cats: fy, series: [{name: 'Doanh thu thuần FOX hợp nhất (gồm FPT Online)', color: '#c98a00', values: fy.map(y => foxRev.get(y) ?? null), kind: 'bar'}, {name: 'Mảng Dịch vụ viễn thông (BCTN FPT)', color: COL[0], values: fy.map(y => ft.get(y) ?? null), kind: 'bar'}, {name: 'Doanh thu băng rộng (BCTN FPT)', color: COL[1], values: fy.map(y => fb.get(y) ?? null), kind: 'bar'}], unit: 'tỷ đ', digits: 0, native: 'bar', src: seriesSrc(['fpt_tel_rev', 'fpt_bb_rev']), extraSrc: FIN_SRC, cadence: 'yearly', note: 'Ba phạm vi khác nhau, không cộng; từ 2026 FPT ghi nhận FOX theo phương pháp vốn chủ sở hữu'}) : null;
   const cy = [...foxRev.keys()].filter(y => fx.has(y)).sort();
   const c12 = cy.length > 2 ? chartCard({id: 'vt-fx-fox', title: 'FOX so với thị trường: tăng trưởng so với năm trước (%)', cats: cy, series: [{name: 'Doanh thu thuần FOX hợp nhất', color: '#c98a00', values: yoy(cy.map(y => foxRev.get(y)))}, {name: 'Thuê bao băng rộng cố định toàn thị trường', color: COL[0], values: yoy(cy.map(y => fx.get(y)))}], unit: '%', digits: 1, zeroBase: false, src: seriesSrc(['fix_bb']), extraSrc: FIN_SRC, cadence: 'yearly', note: 'Doanh thu FOX hợp nhất gồm cả truyền hình, quảng cáo trực tuyến, trung tâm dữ liệu'}) : null;
   stages(p, 'mt2', 'fixed', [
-    ['infra', 'Hạ tầng', 'Hạ tầng & mức phủ', [qpanel('3.1', 'Mạng cố định đã chuyển sang cáp quang đến mức nào, bao nhiêu hộ đang dùng?', [c1, c2], leadFixedDef())]],
+    ['infra', 'Hạ tầng', 'Hạ tầng & mức phủ', [qpanel('3.1', 'Bao nhiêu hộ gia đình đang dùng cáp quang?', [c2], leadFixedDef())]],
     ['subs', 'Khách hàng', 'Thuê bao FTTH & thâm nhập hộ gia đình', [qpanel('3.2', 'Thuê bao Internet cố định còn tăng nhanh không?', [c3, c4]), qpanel('3.3', 'Mức thâm nhập của Việt Nam so với khu vực?', [c5, c6], leadAsean())]],
-    ['price', 'Thương mại', 'Gói cước, doanh thu & thị phần', [qpanel('3.4', 'Giá gói Internet cố định thay đổi thế nào?', [c7], leadFixedPrice()), qpanel('3.5', 'Doanh thu và thị phần Internet cố định phân bổ ra sao?', [c8, c9, c10])]],
-    ['fox', 'Doanh nghiệp', 'Trường hợp FOX', [qpanel('3.6', 'FOX tăng trưởng nhanh hay chậm hơn thị trường?', [c11, c12], leadFox())]]
+    ['fox', 'Doanh nghiệp', 'Trường hợp FOX', [qpanel('3.4', 'FOX tăng trưởng nhanh hay chậm hơn thị trường?', [c11, c12], leadFox())]]
   ]);
 }
 function towerPane(p) {
@@ -521,13 +514,10 @@ function towerPane(p) {
     p.append(el('p', 'vt-sublead', parts.filter(Boolean).join(' ') + ' Số CTR đại diện doanh nghiệp, không đại diện toàn thị trường TowerCo.')); }
   const LB = T.labelled || {}, own = k => LB[k] ? LB[k].rows : [], tot = k => own(k).reduce((a, r) => a + r[1], 0);
   const c1 = tableCard('vt-tw-owners-market', 'Toàn thị trường cuối 2019: ai sở hữu vị trí trạm?', ['Chủ sở hữu', 'Số vị trí trạm', 'Tỷ trọng toàn thị trường'], own('tower_owner_2019').map(r => [esc(r[0]), nf(r[1]), nf(r[1] / tot('tower_owner_2019') * 100, 1) + '%']), own('tower_owner_2019').map(r => r[3]), 'Đếm theo vị trí trạm (site); tỷ trọng tự tính');
-  const c2 = tableCard('vt-tw-owners-towerco', 'Nhóm TowerCo: số vị trí trạm theo doanh nghiệp', ['Thời điểm', 'TowerCo', 'Số vị trí trạm', 'Tỷ trọng trong nhóm TowerCo'], [['towerco_2019', 'Cuối 2019'], ['towerco_2024', 'Cuối 2024']].flatMap(([k, n]) => own(k).map(r => [n, esc(r[0]), nf(r[1]), nf(r[1] / tot(k) * 100, 1) + '%'])), [...own('towerco_2019'), ...own('towerco_2024')].map(r => r[3]), 'Tỷ trọng trong nhóm TowerCo, không phải tỷ trọng toàn thị trường');
-  const bt = (S('bts_total')?.points || []);
-  const c3 = tableCard('vt-tw-bts', 'Số trạm BTS cả nước (đếm theo thiết bị phát sóng)', ['Thời điểm', 'Số trạm BTS'], bt.map(x => [per(x[0]), nf(x[1])]), bt.map(x => x[3]), 'BTS đếm theo thiết bị/công nghệ (2G, 3G, 4G, 5G) nên lớn hơn số vị trí trạm; không so trực tiếp với số site');
   const tp = (S('ctr_towers')?.points || []).filter(x => fin(x[1]));
   const c4 = tp.length > 1 ? chartCard({id: 'vt-tw-towers', title: 'CTR: số trạm sở hữu (trạm)', cats: tp.map(x => x[0]), series: [{name: 'Trạm sở hữu', color: COL[0], values: tp.map(x => x[1]), kind: 'bar'}], unit: 'trạm', digits: 0, native: 'bar', src: tp.map(x => x[3]), cadence: 'monthly', note: 'CTR công bố số trạm sở hữu, không công bố riêng số trạm đang khai thác'}) : null;
   const tn = (S('ctr_tenancy')?.points || []).filter(x => fin(x[1]));
-  const c5 = tn.length > 1 ? chartCard({id: 'vt-tw-tenancy', title: 'CTR: số khách thuê bình quân trên trạm (lần)', cats: tn.map(x => x[0]), series: [{name: 'Tỷ lệ thuê chung', color: COL[2], values: tn.map(x => x[1])}], unit: 'lần', digits: 2, zeroBase: false, src: tn.map(x => x[3]), cadence: 'monthly'}) : null;
+  // Chart tỷ lệ thuê chung CTR bỏ 26/11/2026 theo yêu cầu người dùng (số vẫn nêu trong câu chốt đầu mục).
   const ct = (S('ctr_cotenant')?.points || []).filter(x => fin(x[1]));
   const c6 = ct.length > 1 ? chartCard({id: 'vt-tw-cotenant', title: 'CTR: số trạm có từ 2 nhà mạng thuê trở lên (trạm)', cats: ct.map(x => x[0]), series: [{name: 'Trạm có ≥2 khách thuê', color: COL[1], values: ct.map(x => x[1]), kind: 'bar'}], unit: 'trạm', digits: 0, native: 'bar', src: ct.map(x => x[3]), cadence: 'monthly'}) : null;
   const SEG = [['ctr_rev_build', 'Xây lắp'], ['ctr_rev_om', 'Vận hành khai thác'], ['ctr_rev_infra', 'Hạ tầng cho thuê'], ['ctr_rev_solution', 'Giải pháp tích hợp']].filter(([k]) => has(k)), sg2 = align(SEG.map(x => x[0]));
@@ -538,13 +528,10 @@ function towerPane(p) {
   const c9 = has('ctr_viettel_share') ? chartCard({id: 'vt-tw-viettel', title: 'CTR: tỷ trọng doanh thu từ Tập đoàn Viettel (%)', cats: vs.cats, series: [{name: 'Doanh thu từ Viettel / tổng doanh thu', color: '#C8394B', values: vs.vals[0], kind: 'bar'}], unit: '%', digits: 0, native: 'bar', src: seriesSrc(['ctr_viettel_share']), cadence: 'yearly'}) : null;
   const inf = yearly('ctr_rev_infra'), tw = yearly('ctr_towers'), ys = [...inf.keys()].filter(y => tw.has(y)).sort();
   const c10 = ys.length > 1 ? chartCard({id: 'vt-tw-bridge', title: 'CTR: doanh thu hạ tầng cho thuê trên mỗi trạm sở hữu · chỉ số tham chiếu (triệu đồng/trạm/năm)', sub: 'Tử số: doanh thu mảng hạ tầng cho thuê cả năm · mẫu số: số trạm sở hữu cuối năm', cats: ys, series: [{name: 'Doanh thu hạ tầng cho thuê / trạm sở hữu cuối năm', color: COL[3], values: ys.map(y => inf.get(y) / tw.get(y) * 1000), kind: 'bar'}], unit: 'triệu đ/trạm', digits: 1, native: 'bar', src: seriesSrc(['ctr_rev_infra', 'ctr_towers']), cadence: 'yearly', note: 'Chỉ số tham chiếu: mẫu số là trạm sở hữu cuối kỳ, không phải trạm khai thác bình quân; chưa tách giá thuê và số khách thuê'}) : null;
-  const facts = (T.companies?.CTR?.facts || []).filter(f => !/rủi ro|kỳ vọng|đánh giá|nhận định/i.test(f.text));
-  const c11 = tableCard('vt-tw-facts', 'CTR: kế hoạch, hợp đồng và thông tin vận hành theo công bố', ['Nội dung', 'Nguồn'], facts.map(f => [esc(f.text), srcA(f.src)]), facts.map(f => f.src), 'Số liệu CTR đại diện cho doanh nghiệp, không đại diện toàn thị trường TowerCo');
+  // Bảng kế hoạch, hợp đồng CTR (4.5) bỏ 26/11/2026 theo yêu cầu người dùng.
   stages(p, 'mt2', 'tower', [
-    ['market', 'Thị trường', 'Tài sản & chủ sở hữu trạm', [qpanel('4.1', 'Trạm viễn thông do nhà mạng hay TowerCo sở hữu?', [c1, c2, c3], 'Phân biệt các cách đếm: <b>vị trí trạm</b> (site, nơi đặt cột/nhà trạm) khác <b>thiết bị BTS</b> (đếm theo công nghệ, nên lớn hơn). CTR công bố số vị trí sở hữu và số vị trí có từ 2 nhà mạng thuê; chưa công bố số vị trí đang khai thác. Cơ cấu sở hữu toàn thị trường là số cuối 2019; nhóm TowerCo có thêm số cuối 2024.')]],
-    ['ctr', 'CTR', 'Số trạm & khách thuê trên trạm', [qpanel('4.2', 'CTR tăng trưởng nhờ thêm trạm hay thêm khách thuê trên mỗi trạm?', [c4, c5, c6])]],
-    ['rev', 'Doanh thu', 'Doanh thu, biên gộp & tập trung khách hàng', [qpanel('4.3', 'Mảng nào tạo doanh thu, biên lợi nhuận ra sao?', [c7, c8, c10], leadCtrSeg()), qpanel('4.4', 'CTR phụ thuộc vào khách hàng lớn đến mức nào?', [c9], (() => { const v = lastY('ctr_viettel_share'), f = (S('ctr_viettel_share')?.points || [])[0]; return v ? `Doanh thu từ Tập đoàn Viettel chiếm <b>${nf(v.v, 0)}%</b> tổng doanh thu CTR năm ${v.y}${f ? ` (${nf(f[1], 0)}% năm ${f[0]})` : ''}, theo CTR công bố cho toàn công ty, chưa tách theo mảng.` : ''; })())]],
-    ['plan', 'Kế hoạch', 'Kế hoạch & hợp đồng', [qpanel('4.5', 'CTR công bố gì về kế hoạch trạm và hợp đồng?', [c11], go('Số liệu tài chính CTR', 'mt14:listed'))]]
+    ['ctr', 'CTR', 'Số trạm & khách thuê trên trạm', [qpanel('4.1', 'CTR tăng trưởng nhờ thêm trạm hay thêm khách thuê trên mỗi trạm?', [c4, c6])]],
+    ['rev', 'Doanh thu', 'Doanh thu, biên gộp & tập trung khách hàng', [qpanel('4.2', 'Mảng nào tạo doanh thu, biên lợi nhuận ra sao?', [c7, c8, c10], leadCtrSeg()), qpanel('4.3', 'CTR phụ thuộc vào khách hàng lớn đến mức nào?', [c9], (() => { const v = lastY('ctr_viettel_share'), f = (S('ctr_viettel_share')?.points || [])[0]; return v ? `Doanh thu từ Tập đoàn Viettel chiếm <b>${nf(v.v, 0)}%</b> tổng doanh thu CTR năm ${v.y}${f ? ` (${nf(f[1], 0)}% năm ${f[0]})` : ''}, theo CTR công bố cho toàn công ty, chưa tách theo mảng.` : ''; })())]],
   ]);
 }
 function leadCtrSeg() {
@@ -565,24 +552,10 @@ function policyPane(p) {
   stages(p, 'mt2', 'policy', [
     ['license', 'Cấp phép', 'Cấp phép & phổ tần', [qpanel('5.1', 'Nhà mạng trả bao nhiêu cho tần số, kèm nghĩa vụ gì?', [c1, docTable('vt-pol-docs-license', 'Văn bản về tần số và cấp phép', 'license')], 'Biến số kinh doanh: <b>giá trúng đấu giá</b> là chi phí quyền sử dụng tần số trong thời hạn giấy phép; <b>CAPEX thực hiện nghĩa vụ</b> (xây trạm, phủ xã) là khoản riêng, nhà mạng chưa công bố số. Mốc và biến số cần theo dõi ở ' + go('Triển vọng', 'mt1:outlook') + '; diễn biến mới ở ' + go('Chủ đề nóng', 'mt7'))]],
     ['roadmap', 'Lộ trình', 'Lộ trình & nghĩa vụ triển khai', [qpanel('5.2', 'Lộ trình 5G, dừng 2G và nghĩa vụ hạ tầng đang ở đâu?', [c3, docTable('vt-pol-docs-roadmap', 'Văn bản về lộ trình và nghĩa vụ triển khai', 'roadmap')], `Nghĩa vụ đo theo các tiêu chí khác nhau: <b>số trạm/BTS</b> (≥3.000 trạm 5G sau 2 năm với băng 5G; ≥5.500 BTS sau 2 năm với 900 MHz), <b>tỷ lệ xã có sóng</b> (900 MHz: 60% sau 2 năm, 100% sau 4 năm), <b>tỷ lệ dân số được phủ</b> (mục tiêu 99% năm 2030). Bảng văn bản tách ngày ban hành, ngày hiệu lực và mốc nguồn ghi; kỳ mục tiêu và hạn nghĩa vụ ở ${go('Triển vọng', 'mt1:outlook')}. ${go('Tiến độ 5G theo nhà mạng', 'mt2:mobile:network')}`)]],
-    ['market', 'Thị trường', 'Quy định về giá cước & cạnh tranh', [qpanel('5.3', 'Văn bản nào thay đổi luật chơi về giá, cạnh tranh và sở hữu?', [docTable('vt-pol-docs', 'Văn bản về thị trường, giá cước và sở hữu', 'market')], `Biến số kinh doanh: Luật Viễn thông 2023 cho phép Bộ hướng dẫn giá thuê hạ tầng kỹ thuật thụ động và yêu cầu chung cư bảo đảm tối thiểu 2 nhà mạng (tác động giá thuê hạ tầng, cạnh tranh tại tòa nhà); xác thực sinh trắc thuê bao (2026) tác động số SIM ghi nhận. Dự thảo chuyển quyền đại diện vốn VNPT về Bộ KH&CN chỉ có hiệu lực khi Chính phủ ban hành nghị định sửa Nghị định 55/2025 — văn bản cần kiểm tra tiếp. Giá gói niêm yết: ${go('Di động', 'mt2:mobile:commercial')} ${go('Internet cố định', 'mt2:fixed:price')}`)]]
+    ['market', 'Thị trường', 'Quy định về giá cước & cạnh tranh', [qpanel('5.3', 'Văn bản nào thay đổi luật chơi về giá, cạnh tranh và sở hữu?', [docTable('vt-pol-docs', 'Văn bản về thị trường, giá cước và sở hữu', 'market')], `Biến số kinh doanh: Luật Viễn thông 2023 cho phép Bộ hướng dẫn giá thuê hạ tầng kỹ thuật thụ động và yêu cầu chung cư bảo đảm tối thiểu 2 nhà mạng (tác động giá thuê hạ tầng, cạnh tranh tại tòa nhà); xác thực sinh trắc thuê bao (2026) tác động số SIM ghi nhận. Dự thảo chuyển quyền đại diện vốn VNPT về Bộ KH&CN chỉ có hiệu lực khi Chính phủ ban hành nghị định sửa Nghị định 55/2025 — văn bản cần kiểm tra tiếp.`)]]
   ]);
 }
-function sourcesFold(host) {
-  const fq = {M: 'Tháng', Q: 'Quý', Y: 'Năm', event: 'Theo công bố'};
-  const rows = Object.entries(T.series || {}).map(([, s]) => { const ps = s.points.filter(x => fin(x[1])); return [esc(s.label), esc(s.unit), fq[s.freq] || s.freq, ps.length ? `${per(ps[0][0])} – ${per(ps[ps.length - 1][0])}` : '—', ps.length, s.kind === 'stock' ? 'Số dư cuối kỳ' : s.kind === 'flow' ? 'Phát sinh trong kỳ' : 'Tỷ lệ', esc(s.def || s.scope || ''), ps.some(x => x[2] === 'estimate') ? 'Có số ước tính' : 'Thực tế', 'Nhập tay có nguồn (data/telecom/*.json)']; });
-  if (F) rows.push(['BCTC hợp nhất ' + F.companies.length + ' doanh nghiệp', 'tỷ đồng', 'Quý', `${per(F.periods[0])} – ${per(F.periods.at(-1))}`, F.periods.length, 'KQKD, CĐKT, LCTT', 'VNDirect finfo', 'Thực tế', 'Tự động (scripts/fetch_telecom_financials.py)']);
-  if (window.TELECOM_BENCH) rows.push(['Chỉ tiêu ITU so sánh ASEAN (6 nước)', 'nhiều', 'Năm', '2010 – ' + Math.max(...Object.values(TELECOM_BENCH.series.fixed_bb_per100.data).flatMap(o => Object.keys(o).map(Number))), '—', 'Thuê bao/100 dân, GDP/người', 'World Bank WDI', 'Thực tế', 'Tự động (scripts/fetch_telecom_benchmarks.py)']);
-  if (window.TELECOM_NEWS) rows.push(['Tin & sự kiện ngành', 'sự kiện', 'Theo công bố', '—', TELECOM_NEWS.events.length, 'Bài gốc → sự kiện → chủ đề', '', 'Thực tế', 'Dựng từ data/telecom/policy.json (scripts/build_telecom_industry.py)']);
-  const d = el('details', 'card vt-sources'); d.id = 'vt-sources';
-  d.innerHTML = `<summary><b>Danh mục bộ dữ liệu & phương pháp cập nhật</b> <small>${rows.length} bộ dữ liệu · ${(T.sources || []).length} nguồn</small></summary>`;
-  const t1 = tableCard('vt-src-datasets', 'Bộ dữ liệu', ['Chỉ tiêu', 'Đơn vị', 'Tần suất', 'Kỳ dữ liệu', 'Số điểm', 'Loại', 'Định nghĩa / phạm vi', 'Trạng thái', 'Cập nhật'], rows, [], null);
-  t1?.querySelector('.pw-src')?.remove(); if (t1) { t1.append(el('div', 'pw-src', 'Nguồn: data/telecom-industry.json, data/telecom-financials.json, data/raw/public/telecom-benchmarks.json')); d.append(t1); }
-  const t2 = tableCard('vt-src-list', 'Danh mục nguồn', ['Đơn vị công bố', 'Tài liệu', 'Ngày công bố'], (T.sources || []).map(s => [esc(s.org || ''), `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`, dmy(s.published)]), [], null);
-  t2?.querySelector('.pw-src')?.remove(); if (t2) d.append(t2);
-  host.append(d);
-}
-
+// Danh mục bộ dữ liệu & phương pháp cập nhật (cuối Bức tranh ngành) bỏ 26/11/2026 theo yêu cầu người dùng.
 /* ================= Tài chính ngành ================= */
 function financePane(p) { const host = el('div'); p.append(host); if (window.TelecomFinance) window.TelecomFinance.build(host); }
 // Đầu hồ sơ: mảng nào tạo doanh thu, mảng nào tạo biên, đâu là chi phí vốn chính (theo dữ liệu sẵn có).
@@ -659,10 +632,10 @@ function listedPane(p) {
 
 /* ================= Khởi động ================= */
 const BTAB = [
-  ['market', '01', 'Toàn thị trường', 'Toàn thị trường', 'Quy mô và tăng trưởng → thuê bao mới, mức thâm nhập → cơ cấu doanh thu → cạnh tranh', marketPane],
-  ['mobile', '02', 'Di động & 5G', 'Di động & 5G', 'Đầu tư và năng lực mạng → sử dụng → thương mại hóa → thị phần', mobilePane],
-  ['fixed', '03', 'Internet cố định', 'Internet cố định', 'Hạ tầng và mức phủ → thuê bao, thâm nhập hộ gia đình → gói cước, doanh thu, thị phần → trường hợp FOX', fixedPane],
-  ['tower', '04', 'TowerCo & hạ tầng', 'TowerCo & hạ tầng', 'Tài sản và chủ sở hữu trạm → số trạm, khách thuê CTR → doanh thu, biên gộp → kế hoạch, hợp đồng', towerPane],
+  ['market', '01', 'Toàn thị trường', 'Toàn thị trường', 'Quy mô và tăng trưởng → thuê bao mới, mức thâm nhập → quy mô các nhà mạng', marketPane],
+  ['mobile', '02', 'Di động & 5G', 'Di động & 5G', 'Đầu tư và năng lực mạng → thuê bao 5G', mobilePane],
+  ['fixed', '03', 'Internet cố định', 'Internet cố định', 'Hạ tầng và mức phủ → thuê bao, thâm nhập hộ gia đình → trường hợp FOX', fixedPane],
+  ['tower', '04', 'TowerCo & hạ tầng', 'TowerCo & hạ tầng', 'Số trạm, khách thuê CTR → doanh thu, biên gộp, tập trung khách hàng', towerPane],
   ['policy', '05', 'Chính sách', 'Chính sách', 'Cấp phép và phổ tần → lộ trình, nghĩa vụ triển khai → quy định về giá cước và cạnh tranh', policyPane]
 ];
 const OTAB = [
@@ -680,7 +653,7 @@ function start() {
   const pane = k => document.querySelector(`.majorpane[data-tab="${k}"]`);
   document.querySelectorAll('.majortabbtn').forEach(b => { b.setAttribute('role', 'tab'); b.addEventListener('click', () => showTab(b.dataset.tab, true)); });
   const p1 = pane('mt1'); if (p1) { const b = dataBrief(); if (b) p1.append(b); head(p1, 'Tổng quan ngành viễn thông', 'Bản đồ ngành → chuỗi giá trị từng mô hình → triển vọng. Doanh nghiệp niêm yết ở tab Tài chính ngành.'); subtabs(p1, 'mt1', OTAB); }
-  const p2 = pane('mt2'); if (p2) { head(p2, 'Bức tranh ngành', 'Mỗi mục đi theo các khâu; mỗi nhóm trả lời một câu hỏi bằng dữ liệu, biểu đồ đặt ngay bên dưới.'); subtabs(p2, 'mt2', BTAB); sourcesFold(p2); }
+  const p2 = pane('mt2'); if (p2) { head(p2, 'Bức tranh ngành', 'Mỗi mục đi theo các khâu; mỗi nhóm trả lời một câu hỏi bằng dữ liệu, biểu đồ đặt ngay bên dưới.'); subtabs(p2, 'mt2', BTAB); }
   const p14 = pane('mt14'); if (p14) { head(p14, 'Tài chính ngành', 'Số tổng hợp từ BCTC hợp nhất của rổ doanh nghiệp niêm yết đang chọn; không đại diện toàn thị trường viễn thông Việt Nam.'); subtabs(p14, 'mt14', FTAB); }
   const p7 = pane('mt7'); if (p7) { const s = el('section', 'section'); s.innerHTML = '<div id="vt-news" aria-label="Tin ngành Viễn thông"><p role="status">Đang tải tin ngành Viễn thông…</p></div>'; p7.append(s); }
   queue.splice(0).forEach(f => { try { f(); } catch (e) { console.error(e); } });
