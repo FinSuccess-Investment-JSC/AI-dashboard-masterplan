@@ -10,6 +10,11 @@
     "bach-hoa-xanh": {
      "stores": 4176,
      "province_count": 23,
+     "regions": {
+      "Bắc": 466,
+      "Trung": 1074,
+      "Nam": 2615
+     },
      "provinces": {
       "Hồ Chí Minh": 1191,
       "Đồng Nai": 298,
@@ -39,6 +44,11 @@
     "winmart-plus": {
      "stores": 5096,
      "province_count": 34,
+     "regions": {
+      "Bắc": 2625,
+      "Trung": 1165,
+      "Nam": 1305
+     },
      "provinces": {
       "Hà Nội": 1161,
       "Hồ Chí Minh": 879,
@@ -61,14 +71,14 @@
       "An Giang": 67,
       "Quảng Ngãi": 65,
       "Thái Nguyên": 63,
-      "Khánh Hòa": 60,
       "Tuyên Quang": 60,
+      "Khánh Hòa": 60,
       "Lào Cai": 52,
       "Sơn La": 34,
       "Tây Ninh": 33,
       "Vĩnh Long": 33,
-      "Cà Mau": 29,
       "Đồng Tháp": 29,
+      "Cà Mau": 29,
       "Đắk Lắk": 23,
       "Lạng Sơn": 19,
       "Điện Biên": 14,
@@ -76,49 +86,134 @@
       "Cao Bằng": 8
      }
     },
-    "the-gioi-di-dong": {
-     "stores": 1649,
-     "province_count": 34,
-     "provinces": {
-      "Hồ Chí Minh": 282,
-      "Bắc Ninh": 141,
-      "Hà Nội": 128,
-      "Đồng Nai": 86,
-      "Tây Ninh": 70,
-      "Đồng Tháp": 62,
-      "Hải Phòng": 59,
-      "Lâm Đồng": 58,
-      "An Giang": 51,
-      "Vĩnh Long": 50,
-      "Cần Thơ": 48,
-      "Phú Thọ": 47,
-      "Đà Nẵng": 43,
-      "Gia Lai": 42,
-      "Khánh Hòa": 39,
-      "Đắk Lắk": 37,
-      "Quảng Ninh": 33,
-      "Thanh Hóa": 33,
-      "Cà Mau": 32,
-      "Hưng Yên": 32,
-      "Ninh Bình": 32,
-      "Lào Cai": 29,
-      "Quảng Ngãi": 26,
-      "Tuyên Quang": 26,
-      "Thái Nguyên": 25,
-      "Quảng Trị": 23,
-      "Nghệ An": 22,
-      "Huế": 20,
-      "Lạng Sơn": 16,
-      "Sơn La": 16,
-      "Hà Tĩnh": 15,
-      "Cao Bằng": 13,
-      "Lai Châu": 8,
-      "Điện Biên": 5
-     }
+    "co-opmart": {
+     "stores": 139,
+     "province_count": 22,
+     "regions": {
+      "Bắc": 14,
+      "Trung": 27,
+      "Nam": 98
+     },
+     "provinces": {}
+    },
+    "co-op-food": {
+     "stores": 275,
+     "province_count": 16,
+     "regions": {
+      "Bắc": 37,
+      "Trung": 24,
+      "Nam": 214
+     },
+     "provinces": {}
+    },
+    "king-food-mart": {
+     "stores": 163,
+     "province_count": 2,
+     "regions": {
+      "Bắc": 1,
+      "Trung": 0,
+      "Nam": 162
+     },
+     "provinces": {}
+    },
+    "satrafoods": {
+     "stores": 59,
+     "province_count": 1,
+     "regions": {
+      "Bắc": 0,
+      "Trung": 0,
+      "Nam": 59
+     },
+     "provinces": {}
+    },
+    "lotte-mart": {
+     "stores": 21,
+     "province_count": 12,
+     "regions": {
+      "Bắc": 5,
+      "Trung": 5,
+      "Nam": 11
+     },
+     "provinces": {}
+    },
+    "aeon-maxvalu": {
+     "stores": 41,
+     "province_count": 3,
+     "regions": {
+      "Bắc": 36,
+      "Trung": 0,
+      "Nam": 5
+     },
+     "provinces": {}
+    },
+    "mm-mega-market": {
+     "stores": 20,
+     "province_count": 14,
+     "regions": {
+      "Bắc": 4,
+      "Trung": 7,
+      "Nam": 9
+     },
+     "provinces": {}
+    },
+    "circle-k": {
+     "stores": 525,
+     "province_count": 12,
+     "regions": {
+      "Bắc": 246,
+      "Trung": 16,
+      "Nam": 263
+     },
+     "provinces": {}
+    },
+    "gs25": {
+     "stores": 513,
+     "province_count": 7,
+     "regions": {
+      "Bắc": 95,
+      "Trung": 0,
+      "Nam": 418
+     },
+     "provinces": {}
+    },
+    "familymart": {
+     "stores": 268,
+     "province_count": 25,
+     "regions": {
+      "Bắc": 42,
+      "Trung": 26,
+      "Nam": 200
+     },
+     "provinces": {}
+    },
+    "ministop": {
+     "stores": 178,
+     "province_count": 6,
+     "regions": {
+      "Bắc": 1,
+      "Trung": 1,
+      "Nam": 176
+     },
+     "provinces": {}
+    },
+    "7-eleven": {
+     "stores": 137,
+     "province_count": 5,
+     "regions": {
+      "Bắc": 7,
+      "Trung": 2,
+      "Nam": 128
+     },
+     "provinces": {}
     },
     "dien-may-xanh": {
      "stores": 2200,
      "province_count": 34,
+     "regions": {
+      "Bắc": 670,
+      "Trung": 591,
+      "Nam": 938
+     },
      "provinces": {
       "Hồ Chí Minh": 253,
       "Hà Nội": 147,
@@ -145,20 +240,230 @@
       "Quảng Trị": 40,
       "Lào Cai": 37,
       "Quảng Ninh": 34,
-      "Thái Nguyên": 31,
       "Tuyên Quang": 31,
+      "Thái Nguyên": 31,
       "Huế": 30,
       "Hà Tĩnh": 26,
-      "Lạng Sơn": 20,
       "Sơn La": 20,
+      "Lạng Sơn": 20,
       "Cao Bằng": 15,
       "Điện Biên": 12,
       "Lai Châu": 6
      }
     },
+    "the-gioi-di-dong": {
+     "stores": 1649,
+     "province_count": 34,
+     "regions": {
+      "Bắc": 610,
+      "Trung": 358,
+      "Nam": 681
+     },
+     "provinces": {
+      "Hồ Chí Minh": 282,
+      "Bắc Ninh": 141,
+      "Hà Nội": 128,
+      "Đồng Nai": 86,
+      "Tây Ninh": 70,
+      "Đồng Tháp": 62,
+      "Hải Phòng": 59,
+      "Lâm Đồng": 58,
+      "An Giang": 51,
+      "Vĩnh Long": 50,
+      "Cần Thơ": 48,
+      "Phú Thọ": 47,
+      "Đà Nẵng": 43,
+      "Gia Lai": 42,
+      "Khánh Hòa": 39,
+      "Đắk Lắk": 37,
+      "Thanh Hóa": 33,
+      "Quảng Ninh": 33,
+      "Cà Mau": 32,
+      "Ninh Bình": 32,
+      "Hưng Yên": 32,
+      "Lào Cai": 29,
+      "Quảng Ngãi": 26,
+      "Tuyên Quang": 26,
+      "Thái Nguyên": 25,
+      "Quảng Trị": 23,
+      "Nghệ An": 22,
+      "Huế": 20,
+      "Lạng Sơn": 16,
+      "Sơn La": 16,
+      "Hà Tĩnh": 15,
+      "Cao Bằng": 13,
+      "Lai Châu": 8,
+      "Điện Biên": 5
+     }
+    },
+    "fpt-shop": {
+     "stores": 629,
+     "province_count": 34,
+     "regions": {
+      "Bắc": 242,
+      "Trung": 163,
+      "Nam": 224
+     },
+     "provinces": {
+      "Hồ Chí Minh": 112,
+      "Hà Nội": 79,
+      "Hải Phòng": 26,
+      "An Giang": 26,
+      "Thanh Hóa": 26,
+      "Đồng Nai": 23,
+      "Lâm Đồng": 23,
+      "Đà Nẵng": 23,
+      "Bắc Ninh": 20,
+      "Phú Thọ": 19,
+      "Quảng Ninh": 18,
+      "Ninh Bình": 18,
+      "Đồng Tháp": 17,
+      "Tây Ninh": 16,
+      "Nghệ An": 15,
+      "Đắk Lắk": 15,
+      "Hưng Yên": 15,
+      "Khánh Hòa": 14,
+      "Gia Lai": 13,
+      "Lào Cai": 12,
+      "Cần Thơ": 11,
+      "Cà Mau": 11,
+      "Quảng Ngãi": 11,
+      "Thái Nguyên": 9,
+      "Hà Tĩnh": 9,
+      "Vĩnh Long": 8,
+      "Quảng Trị": 8,
+      "Tuyên Quang": 7,
+      "Lạng Sơn": 6,
+      "Huế": 6,
+      "Sơn La": 4,
+      "Điện Biên": 4,
+      "Lai Châu": 3,
+      "Cao Bằng": 2
+     }
+    },
+    "mediamart": {
+     "stores": 360,
+     "province_count": 24,
+     "regions": {
+      "Bắc": 262,
+      "Trung": 87,
+      "Nam": 11
+     },
+     "provinces": {}
+    },
+    "nguyen-kim": {
+     "stores": 40,
+     "province_count": 14,
+     "regions": {
+      "Bắc": 9,
+      "Trung": 4,
+      "Nam": 27
+     },
+     "provinces": {}
+    },
+    "dien-may-cho-lon": {
+     "stores": 19,
+     "province_count": 9,
+     "regions": {
+      "Bắc": 0,
+      "Trung": 2,
+      "Nam": 17
+     },
+     "provinces": {}
+    },
+    "cellphones": {
+     "stores": 185,
+     "province_count": 29,
+     "regions": {
+      "Bắc": 60,
+      "Trung": 25,
+      "Nam": 91
+     },
+     "provinces": {}
+    },
+    "viettel-store": {
+     "stores": 411,
+     "province_count": 34,
+     "regions": {
+      "Bắc": 176,
+      "Trung": 110,
+      "Nam": 125
+     },
+     "provinces": {}
+    },
+    "hoang-ha-mobile": {
+     "stores": 115,
+     "province_count": 31,
+     "regions": {
+      "Bắc": 58,
+      "Trung": 20,
+      "Nam": 37
+     },
+     "provinces": {}
+    },
+    "phong-vu": {
+     "stores": 145,
+     "province_count": 28,
+     "regions": {
+      "Bắc": 50,
+      "Trung": 33,
+      "Nam": 62
+     },
+     "provinces": {}
+    },
+    "long-chau": {
+     "stores": 2836,
+     "province_count": 34,
+     "regions": {
+      "Bắc": 989,
+      "Trung": 703,
+      "Nam": 1144
+     },
+     "provinces": {
+      "Hồ Chí Minh": 521,
+      "Hà Nội": 327,
+      "Đồng Nai": 137,
+      "Tây Ninh": 113,
+      "Lâm Đồng": 109,
+      "Phú Thọ": 108,
+      "Hải Phòng": 96,
+      "An Giang": 96,
+      "Đà Nẵng": 93,
+      "Bắc Ninh": 88,
+      "Ninh Bình": 85,
+      "Đồng Tháp": 82,
+      "Cần Thơ": 82,
+      "Gia Lai": 79,
+      "Đắk Lắk": 74,
+      "Vĩnh Long": 74,
+      "Khánh Hòa": 72,
+      "Nghệ An": 70,
+      "Thanh Hóa": 55,
+      "Thái Nguyên": 54,
+      "Hưng Yên": 51,
+      "Quảng Ninh": 48,
+      "Quảng Trị": 46,
+      "Quảng Ngãi": 46,
+      "Cà Mau": 39,
+      "Hà Tĩnh": 35,
+      "Tuyên Quang": 35,
+      "Lào Cai": 35,
+      "Huế": 24,
+      "Sơn La": 16,
+      "Lạng Sơn": 15,
+      "Lai Châu": 12,
+      "Điện Biên": 10,
+      "Cao Bằng": 9
+     }
+    },
     "an-khang": {
      "stores": 478,
      "province_count": 20,
+     "regions": {
+      "Bắc": 30,
+      "Trung": 110,
+      "Nam": 338
+     },
      "provinces": {
       "Hồ Chí Minh": 130,
       "An Giang": 41,
@@ -177,146 +482,176 @@
       "Quảng Ngãi": 5,
       "Bắc Ninh": 3,
       "Ninh Bình": 2,
-      "Hải Phòng": 1,
       "Hưng Yên": 1,
+      "Hải Phòng": 1,
       "Phú Thọ": 1
      }
     },
-    "avakids": {
-     "stores": 98,
-     "province_count": 13,
-     "provinces": {
-      "Hồ Chí Minh": 46,
-      "An Giang": 8,
-      "Lâm Đồng": 7,
-      "Khánh Hòa": 6,
-      "Cần Thơ": 5,
-      "Đồng Nai": 5,
-      "Đồng Tháp": 5,
-      "Cà Mau": 4,
-      "Vĩnh Long": 4,
-      "Tây Ninh": 3,
-      "Đắk Lắk": 2,
-      "Gia Lai": 2,
-      "Quảng Ngãi": 1
-     }
+    "pharmacity": {
+     "stores": 1283,
+     "province_count": 25,
+     "regions": {
+      "Bắc": 303,
+      "Trung": 221,
+      "Nam": 759
+     },
+     "provinces": {}
     },
-    "long-chau": {
-     "stores": 2836,
-     "province_count": 34,
-     "provinces": {
-      "Hồ Chí Minh": 521,
-      "Hà Nội": 327,
-      "Đồng Nai": 137,
-      "Tây Ninh": 113,
-      "Lâm Đồng": 109,
-      "Phú Thọ": 108,
-      "An Giang": 96,
-      "Hải Phòng": 96,
-      "Đà Nẵng": 93,
-      "Bắc Ninh": 88,
-      "Ninh Bình": 85,
-      "Cần Thơ": 82,
-      "Đồng Tháp": 82,
-      "Gia Lai": 79,
-      "Đắk Lắk": 74,
-      "Vĩnh Long": 74,
-      "Khánh Hòa": 72,
-      "Nghệ An": 70,
-      "Thanh Hóa": 55,
-      "Thái Nguyên": 54,
-      "Hưng Yên": 51,
-      "Quảng Ninh": 48,
-      "Quảng Ngãi": 46,
-      "Quảng Trị": 46,
-      "Cà Mau": 39,
-      "Hà Tĩnh": 35,
-      "Lào Cai": 35,
-      "Tuyên Quang": 35,
-      "Huế": 24,
-      "Sơn La": 16,
-      "Lạng Sơn": 15,
-      "Lai Châu": 12,
-      "Điện Biên": 10,
-      "Cao Bằng": 9
-     }
+    "phuc-thien": {
+     "stores": 795,
+     "province_count": 32,
+     "regions": {
+      "Bắc": 141,
+      "Trung": 254,
+      "Nam": 400
+     },
+     "provinces": {}
     },
-    "fpt-shop": {
-     "stores": 629,
-     "province_count": 34,
-     "provinces": {
-      "Hồ Chí Minh": 112,
-      "Hà Nội": 79,
-      "An Giang": 26,
-      "Hải Phòng": 26,
-      "Thanh Hóa": 26,
-      "Đà Nẵng": 23,
-      "Đồng Nai": 23,
-      "Lâm Đồng": 23,
-      "Bắc Ninh": 20,
-      "Phú Thọ": 19,
-      "Ninh Bình": 18,
-      "Quảng Ninh": 18,
-      "Đồng Tháp": 17,
-      "Tây Ninh": 16,
-      "Đắk Lắk": 15,
-      "Hưng Yên": 15,
-      "Nghệ An": 15,
-      "Khánh Hòa": 14,
-      "Gia Lai": 13,
-      "Lào Cai": 12,
-      "Cà Mau": 11,
-      "Cần Thơ": 11,
-      "Quảng Ngãi": 11,
-      "Hà Tĩnh": 9,
-      "Thái Nguyên": 9,
-      "Quảng Trị": 8,
-      "Vĩnh Long": 8,
-      "Tuyên Quang": 7,
-      "Huế": 6,
-      "Lạng Sơn": 6,
-      "Điện Biên": 4,
-      "Sơn La": 4,
-      "Lai Châu": 3,
-      "Cao Bằng": 2
-     }
+    "circa": {
+     "stores": 150,
+     "province_count": 21,
+     "regions": {
+      "Bắc": 9,
+      "Trung": 41,
+      "Nam": 100
+     },
+     "provinces": {}
     },
     "pnj": {
      "stores": 430,
      "province_count": 31,
+     "regions": {
+      "Bắc": 74,
+      "Trung": 116,
+      "Nam": 240
+     },
      "provinces": {
       "Hồ Chí Minh": 125,
       "Hà Nội": 36,
       "Đà Nẵng": 26,
       "Đồng Nai": 24,
       "An Giang": 18,
-      "Cần Thơ": 17,
-      "Đồng Tháp": 17,
       "Khánh Hòa": 17,
+      "Đồng Tháp": 17,
       "Lâm Đồng": 17,
+      "Cần Thơ": 17,
       "Tây Ninh": 16,
       "Gia Lai": 13,
       "Vĩnh Long": 13,
       "Đắk Lắk": 11,
       "Hải Phòng": 11,
       "Cà Mau": 10,
-      "Quảng Ngãi": 8,
       "Quảng Trị": 8,
+      "Quảng Ngãi": 8,
       "Huế": 7,
       "Quảng Ninh": 7,
       "Bắc Ninh": 5,
       "Thanh Hóa": 5,
       "Phú Thọ": 4,
       "Ninh Bình": 3,
-      "Hà Tĩnh": 2,
       "Hưng Yên": 2,
-      "Nghệ An": 2,
+      "Hà Tĩnh": 2,
       "Thái Nguyên": 2,
-      "Lạng Sơn": 1,
+      "Nghệ An": 2,
       "Lào Cai": 1,
+      "Tuyên Quang": 1,
       "Sơn La": 1,
-      "Tuyên Quang": 1
+      "Lạng Sơn": 1
      }
+    },
+    "doji": {
+     "stores": 92,
+     "province_count": 20,
+     "regions": {
+      "Bắc": 41,
+      "Trung": 21,
+      "Nam": 30
+     },
+     "provinces": {}
+    },
+    "the-gioi-kim-cuong": {
+     "stores": 67,
+     "province_count": 20,
+     "regions": {
+      "Bắc": 12,
+      "Trung": 16,
+      "Nam": 39
+     },
+     "provinces": {}
+    },
+    "huy-thanh-jewelry": {
+     "stores": 34,
+     "province_count": 10,
+     "regions": {
+      "Bắc": 16,
+      "Trung": 8,
+      "Nam": 10
+     },
+     "provinces": {}
+    },
+    "bao-tin-minh-chau": {
+     "stores": 29,
+     "province_count": 10,
+     "regions": {
+      "Bắc": 29,
+      "Trung": 0,
+      "Nam": 0
+     },
+     "provinces": {}
+    },
+    "avakids": {
+     "stores": 98,
+     "province_count": 13,
+     "regions": {
+      "Bắc": 0,
+      "Trung": 18,
+      "Nam": 80
+     },
+     "provinces": {
+      "Hồ Chí Minh": 46,
+      "An Giang": 8,
+      "Lâm Đồng": 7,
+      "Khánh Hòa": 6,
+      "Cần Thơ": 5,
+      "Đồng Tháp": 5,
+      "Đồng Nai": 5,
+      "Vĩnh Long": 4,
+      "Cà Mau": 4,
+      "Tây Ninh": 3,
+      "Gia Lai": 2,
+      "Đắk Lắk": 2,
+      "Quảng Ngãi": 1
+     }
+    },
+    "con-cung": {
+     "stores": 1268,
+     "province_count": 33,
+     "regions": {
+      "Bắc": 179,
+      "Trung": 371,
+      "Nam": 711
+     },
+     "provinces": {}
+    },
+    "kids-plaza": {
+     "stores": 240,
+     "province_count": 22,
+     "regions": {
+      "Bắc": 149,
+      "Trung": 9,
+      "Nam": 82
+     },
+     "provinces": {}
+    },
+    "bibo-mart": {
+     "stores": 157,
+     "province_count": 25,
+     "regions": {
+      "Bắc": 72,
+      "Trung": 21,
+      "Nam": 64
+     },
+     "provinces": {}
     }
    }
   }

@@ -9,7 +9,8 @@ Luồng: Bizmap API → fetch → validate → normalize (34 tỉnh/thành, mi�
   xác nhận quyền tái phân phối (điều khoản bizmap.live cho phép trích dẫn số liệu kèm ghi nguồn; cấm bán lại dữ liệu thô).
 - Kiểm: tổng theo tỉnh khớp tổng chuỗi (lệch ≤ 2%), số tỉnh ≤ 34, không số âm, đủ 9 chuỗi. Lỗi → không ghi đè bản hợp lệ gần nhất.
 - Lịch sử: data/retail/bizmap-history.json, mỗi tuần một ảnh chụp (bỏ qua nếu ảnh gần nhất < 7 ngày); không tạo lịch sử giả.
-Chạy tay: BIZMAP_API_KEY=... python scripts/fetch_bizmap.py [--force-snapshot] [--dry-run]
+Chạy tay: BIZMAP_API_KEY=... (hoặc BIZMAP_KEY_FILE=<file .env ngoài repo>) python scripts/fetch_bizmap.py [--force-snapshot] [--dry-run]
+- ~40 lời/lượt: 1 lời /v1/chains/{slug} mỗi chuỗi (dùng by_province) + 1 lời /v1/stats/provinces (dân số tỉnh). Đối thủ lỗi thì bỏ qua, chuỗi niêm yết lỗi thì giữ bản cũ.
 """
 from __future__ import annotations
 
@@ -29,19 +30,50 @@ OUT_JS = ROOT / 'data/retail-bizmap.js'
 HIST = ROOT / 'data/retail/bizmap-history.json'
 BASE = 'https://bizmap.live/api'
 
-# Chuỗi theo dõi: slug Bizmap (đã đối chiếu trang bizmap.live/thuong-hieu/<slug>), mã cổ phiếu, nhóm ngành.
-# WinMart (siêu thị) và WiN chưa có trang riêng trên Bizmap (404 ngày 26/11/2026) → chưa theo dõi, tránh cộng trùng với WinMart+.
+# Chuỗi theo dõi (slug Bizmap đã đối chiếu /v1/chains): chuỗi của doanh nghiệp niêm yết (có mã) và đối thủ chưa niêm yết
+# cùng mô hình bán lẻ (mã None), chia theo nhóm cạnh tranh. WinMart (siêu thị) và WiN chưa có trên Bizmap → chưa theo dõi.
+GROUPS = {'grocery': 'Bách hóa, siêu thị & tiện lợi', 'electronics': 'Điện máy & điện thoại', 'pharmacy': 'Nhà thuốc', 'jewelry': 'Trang sức', 'mother': 'Mẹ & bé'}
 CHAINS = [
-    ('bach-hoa-xanh', 'Bách Hóa Xanh', 'MWG', 'food'),
-    ('winmart-plus', 'WinMart+', 'MSN', 'food'),
-    ('the-gioi-di-dong', 'Thế Giới Di Động', 'MWG', 'ict'),
-    ('dien-may-xanh', 'Điện Máy Xanh', 'MWG', 'appliance'),
-    ('an-khang', 'An Khang', 'MWG', 'pharma'),
-    ('avakids', 'AVAKids', 'MWG', 'mother'),
-    ('long-chau', 'Long Châu', 'FRT', 'pharma'),
-    ('fpt-shop', 'FPT Shop', 'FRT', 'ict'),
+    ('bach-hoa-xanh', 'Bách Hóa Xanh', 'MWG', 'grocery'),
+    ('winmart-plus', 'WinMart+', 'MSN', 'grocery'),
+    ('co-opmart', 'Co.opmart', None, 'grocery'),
+    ('co-op-food', 'Co.op Food', None, 'grocery'),
+    ('king-food-mart', 'Kingfoodmart', None, 'grocery'),
+    ('satrafoods', 'Satrafoods', None, 'grocery'),
+    ('lotte-mart', 'Lotte Mart', None, 'grocery'),
+    ('aeon-maxvalu', 'AEON MaxValu', None, 'grocery'),
+    ('mm-mega-market', 'MM Mega Market', None, 'grocery'),
+    ('circle-k', 'Circle K', None, 'grocery'),
+    ('gs25', 'GS25', None, 'grocery'),
+    ('familymart', 'FamilyMart', None, 'grocery'),
+    ('ministop', 'Ministop', None, 'grocery'),
+    ('7-eleven', '7-Eleven', None, 'grocery'),
+    ('dien-may-xanh', 'Điện Máy Xanh', 'MWG', 'electronics'),
+    ('the-gioi-di-dong', 'Thế Giới Di Động', 'MWG', 'electronics'),
+    ('fpt-shop', 'FPT Shop', 'FRT', 'electronics'),
+    ('mediamart', 'MediaMart', None, 'electronics'),
+    ('nguyen-kim', 'Nguyễn Kim', None, 'electronics'),
+    ('dien-may-cho-lon', 'Điện Máy Chợ Lớn', None, 'electronics'),
+    ('cellphones', 'CellphoneS', None, 'electronics'),
+    ('viettel-store', 'Viettel Store', None, 'electronics'),
+    ('hoang-ha-mobile', 'Hoàng Hà Mobile', None, 'electronics'),
+    ('phong-vu', 'Phong Vũ', None, 'electronics'),
+    ('long-chau', 'Long Châu', 'FRT', 'pharmacy'),
+    ('an-khang', 'An Khang', 'MWG', 'pharmacy'),
+    ('pharmacity', 'Pharmacity', None, 'pharmacy'),
+    ('phuc-thien', 'Phúc Thiện', None, 'pharmacy'),
+    ('circa', 'Circa', None, 'pharmacy'),
     ('pnj', 'PNJ', 'PNJ', 'jewelry'),
+    ('doji', 'DOJI', None, 'jewelry'),
+    ('the-gioi-kim-cuong', 'Thế Giới Kim Cương', None, 'jewelry'),
+    ('huy-thanh-jewelry', 'Huy Thanh', None, 'jewelry'),
+    ('bao-tin-minh-chau', 'Bảo Tín Minh Châu', None, 'jewelry'),
+    ('avakids', 'AVAKids', 'MWG', 'mother'),
+    ('con-cung', 'Con Cưng', None, 'mother'),
+    ('kids-plaza', 'Kids Plaza', None, 'mother'),
+    ('bibo-mart', 'Bibo Mart', None, 'mother'),
 ]
+LISTED = {s for s, _, tk, _ in CHAINS if tk}
 
 # 34 tỉnh/thành từ 01/07/2025 và miền (Tây Nguyên, Nam Trung Bộ tính vào miền Trung).
 PROVINCES = {
@@ -110,45 +142,53 @@ def rows_of(payload):
     return []
 
 
-def fetch_chain(api: Api, slug: str) -> dict:
-    info = api.get(f'/v1/chains/{slug}')
-    chain = info.get('data', info) if isinstance(info, dict) else {}
-    total = pick(chain, 'store_count', 'stores', 'total', 'count')
-    logo = pick(chain, 'logo_url', 'logo')
-    st = api.get('/v1/stats/provinces', chain=slug)
+def parse_provinces(rows) -> tuple[dict, list, dict]:
     prov, unknown, pop = {}, [], {}
-    for row in rows_of(st):
+    for row in rows:
         name = province_name(pick(row, 'name', 'province_name', 'province', 'ten'))
         n = pick(row, 'stores', 'store_count', 'count', 'total')
         if n is None: continue
         if name is None: unknown.append(pick(row, 'name', 'province_name', 'province', 'code')); continue
         prov[name] = prov.get(name, 0) + int(n)
         if row.get('population'): pop[name] = int(row['population'])
-    updated = pick(st if isinstance(st, dict) else {}, 'updated_at') or pick(info if isinstance(info, dict) else {}, 'updated_at') or getattr(api, 'updated', None)
-    return {'total': int(total) if total is not None else sum(prov.values()), 'provinces': {k: v for k, v in prov.items() if v > 0}, 'population': pop, 'logo_url': logo,
-            'unknown_provinces': [u for u in unknown if u], 'source_updated': updated}
+    return prov, unknown, pop
+
+
+def fetch_chain(api: Api, slug: str) -> dict:
+    info = api.get(f'/v1/chains/{slug}')
+    chain = info.get('data', info) if isinstance(info, dict) else {}
+    total = pick(chain, 'store_count', 'stores', 'total', 'count')
+    rows = chain.get('by_province') if isinstance(chain, dict) else None
+    if not isinstance(rows, list): rows = rows_of(api.get('/v1/stats/provinces', chain=slug))
+    prov, unknown, _ = parse_provinces(rows)
+    updated = pick(info if isinstance(info, dict) else {}, 'updated_at') or getattr(api, 'updated', None)
+    return {'total': int(total) if total is not None else sum(prov.values()), 'provinces': {k: v for k, v in prov.items() if v > 0},
+            'logo_url': pick(chain, 'logo_url', 'logo'), 'unknown_provinces': [u for u in unknown if u], 'source_updated': updated}
 
 
 def validate(chains: dict) -> list[str]:
     errs = []
-    if len(chains) != len(CHAINS): errs.append(f'thiếu chuỗi: {len(chains)}/{len(CHAINS)}')
+    miss = LISTED - set(chains)
+    if miss: errs.append(f'thiếu chuỗi niêm yết: {sorted(miss)}')
     for slug, c in chains.items():
         s = sum(c['provinces'].values())
         if c['total'] <= 0: errs.append(f'{slug}: tổng ≤ 0')
         if any(v < 0 for v in c['provinces'].values()): errs.append(f'{slug}: số âm')
         if len(c['provinces']) > 34: errs.append(f'{slug}: > 34 tỉnh')
-        if c['provinces'] and abs(s - c['total']) > max(2, 0.02 * c['total']): errs.append(f'{slug}: Σ tỉnh {s} lệch tổng {c["total"]}')
+        tol = 0.02 if slug in LISTED else 0.10  # đối thủ: cho lệch tới 10% (điểm Bizmap chưa gán tỉnh), ghi rõ ở 'unassigned'
+        if c['provinces'] and abs(s - c['total']) > max(2, tol * c['total']): errs.append(f'{slug}: Σ tỉnh {s} lệch tổng {c["total"]}')
         if c['unknown_provinces']: errs.append(f'{slug}: tên tỉnh không nhận ra {c["unknown_provinces"][:5]}')
     return errs
 
 
 def aggregate(chains: dict) -> dict:
     out = {}
-    for slug, name, ticker, cat in CHAINS:
+    for slug, name, ticker, grp in CHAINS:
+        if slug not in chains: continue
         c = chains[slug]; reg = {'Bắc': 0, 'Trung': 0, 'Nam': 0}
         for p, n in c['provinces'].items(): reg[REGION[p]] += n
-        out[slug] = {'name': name, 'ticker': ticker, 'category': cat, 'stores': c['total'],
-                     'province_count': sum(1 for v in c['provinces'].values() if v > 0),
+        out[slug] = {'name': name, 'ticker': ticker, 'listed': bool(ticker), 'group': grp, 'stores': c['total'],
+                     'province_count': sum(1 for v in c['provinces'].values() if v > 0), 'unassigned': max(0, c['total'] - sum(c['provinces'].values())),
                      'provinces': dict(sorted(c['provinces'].items(), key=lambda x: -x[1])), 'regions': reg,
                      'logo_url': c['logo_url'], 'source_updated': c['source_updated']}
     return out
@@ -165,13 +205,16 @@ def snapshot(payload: dict, force: bool) -> None:
     if snaps and not force and (date.fromisoformat(today) - date.fromisoformat(snaps[-1]['date'])).days < 7: return
     snaps[:] = [s for s in snaps if s['date'] != today]
     snaps.append({'date': today, 'mode': payload['mode'], 'source_updated': payload.get('source_updated'),
-                  'chains': {k: {'stores': v['stores'], 'province_count': v['province_count'], 'provinces': v.get('provinces', {})} for k, v in payload['chains'].items()}})
+                  'chains': {k: {'stores': v['stores'], 'province_count': v['province_count'], 'regions': v.get('regions'), 'provinces': v.get('provinces', {}) if v.get('listed') else {}} for k, v in payload['chains'].items()}})
     HIST.write_text(json.dumps(hist, ensure_ascii=False, indent=1) + '\n', encoding='utf-8', newline='\n')
 
 
 def main(argv=None) -> int:
     argv = argv if argv is not None else sys.argv[1:]
     key = os.environ.get('BIZMAP_API_KEY', '').strip()
+    kf = os.environ.get('BIZMAP_KEY_FILE')
+    if not key and kf and Path(kf).exists():
+        key = next((l.split('=', 1)[1].strip() for l in Path(kf).read_text(encoding='utf-8').splitlines() if l.startswith('BIZMAP_API_KEY=')), '')
     if not key:
         print('fetch_bizmap: chưa có BIZMAP_API_KEY (GitHub Actions secret) — giữ nguyên dữ liệu hiện có.'); return 0
     api = Api(key)
@@ -179,7 +222,13 @@ def main(argv=None) -> int:
         me = api.get('/v1/me')
         api.updated = me.get('updated_at') if isinstance(me, dict) else None
         print('fetch_bizmap: còn', me.get('remaining_today', api.remaining) if isinstance(me, dict) else api.remaining, 'lời gọi hôm nay')
-        chains = {slug: fetch_chain(api, slug) for slug, *_ in CHAINS}
+        chains, skipped = {}, []
+        for slug, *_ in CHAINS:
+            try: chains[slug] = fetch_chain(api, slug)
+            except RuntimeError as e:
+                if slug in LISTED: raise
+                skipped.append(slug); print('fetch_bizmap: bỏ qua đối thủ', slug, e)
+        _, _, population = parse_provinces(rows_of(api.get('/v1/stats/provinces')))
     except Exception as e:  # noqa: BLE001 — lỗi mạng/API: giữ bản hợp lệ gần nhất
         print('fetch_bizmap: lỗi API, giữ dữ liệu cũ:', e); return 0
     errs = validate(chains)
@@ -187,10 +236,8 @@ def main(argv=None) -> int:
         print('fetch_bizmap: dữ liệu không đạt kiểm tra, giữ dữ liệu cũ:', '; '.join(errs)); return 0
     agg = aggregate(chains)
     upd = sorted({c['source_updated'] for c in agg.values() if c['source_updated']})
-    population = {}
-    for c in chains.values(): population.update(c.get('population') or {})
     payload = {'schema': 1, 'mode': 'api', 'source': 'bizmap.live', 'source_url': 'https://bizmap.live/', 'population': dict(sorted(population.items())),
-               'captured_at': datetime.now(timezone.utc).isoformat(timespec='seconds'), 'source_updated': upd[-1] if upd else None,
+               'captured_at': datetime.now(timezone.utc).isoformat(timespec='seconds'), 'groups': GROUPS, 'source_updated': upd[-1] if upd else None,
                'tracking_since': None, 'api_calls': api.calls, 'chains': agg}
     old = json.loads(OUT.read_text(encoding='utf-8')) if OUT.exists() else {}
     payload['tracking_since'] = old.get('tracking_since') or payload['captured_at'][:10]
