@@ -35,7 +35,9 @@ const tidy = h => {
 function sourceOf(unit) { return tidy(sourceRaw(unit)); }
 function sourceRaw(unit) {
   const out = [];
-  const btn = [...unit.querySelectorAll('.chart-info-button[aria-controls]')].find(b => b.closest(UNIT) === unit);
+  // Thẻ có cả nút ⓘ Insight và ⓘ Nguồn (Cá tra, Tôm): lấy panel của nút Nguồn trước (26/11/2026).
+  const own = [...unit.querySelectorAll('.chart-info-button[aria-controls]')].filter(b => b.closest(UNIT) === unit);
+  const btn = own.find(b => b.classList.contains('chart-source-action')) || own[0];
   const panel = btn && document.getElementById(btn.getAttribute('aria-controls'));
   panel?.querySelectorAll('.chart-primary-source').forEach(a => out.push(a.href ? `<a href="${esc(a.href)}" target="_blank" rel="noopener">${esc(clean(a.textContent))}</a>` : esc(clean(a.textContent))));
   if (out.length) return out.join(' · ');

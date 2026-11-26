@@ -49,6 +49,7 @@ if(chain){
  heading.after(figure);
  chain.append(make('div','chart-insight','AI · cách đọc chuỗi: nhà cá tra lớn (VHC, ANV) tự nuôi phần lớn cá và tự làm thức ăn, nên biên đi theo giá bán XK trừ giá khô đậu, ngô; nhà tôm mua tôm của hộ nuôi nên giá tôm nguyên liệu giảm là có lợi. Thuế CBPG của Mỹ áp riêng cho từng doanh nghiệp theo từng kỳ rà soát, nên cùng một ngành có mã chịu 0 (VHC) và mã chịu 0,84 USD/kg (ANV).'));
  figure.after(make('div','source-note','Mũi tên liền: dòng nguyên liệu và sản phẩm · Mũi tên đứt: thuế, cạnh tranh, sở hữu. Sơ đồ không biểu thị tỷ trọng.'));
+ if(document.body.dataset.seafoodLine==='shrimp')chain.append(make('div','pw-src','Nguồn: FinSuccess tổng hợp'));
 }
 
 // ---------- 2. Panes ----------

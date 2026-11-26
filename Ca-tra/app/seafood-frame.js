@@ -135,7 +135,7 @@ function groupMargin() {
   const anyRow = Object.values(rows)[0];
   const src = D.sources?.[anyRow?.source || 'vnd'] || D.sources?.vnd || {name: 'BCTC hợp nhất quý'};
   const n = el('div', 'source-note cadence-note'); n.append('Nguồn: ');
-  const a = el('a', '', esc(src.name)); a.href = src.url || '#'; a.target = '_blank'; a.rel = 'noopener'; n.append(a, ` · Kỳ cuối: ${qs.at(-1) || '—'} · Lấy số: ${D.captured_at || '—'}`);
+  const a = el('a', '', esc(src.name)); a.href = src.url || '#'; a.target = '_blank'; a.rel = 'noopener'; n.append(a);
   lg.after(n);
   const want = PANG ? ['VHC', 'ANV', 'IDI', 'ASM'] : ['FMC', 'MPC', 'CMX'];
   const miss = want.filter(s => !rows[s]);
