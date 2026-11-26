@@ -15,22 +15,22 @@
 <script src="app/sector-content.js?v=649051e35a0c" defer></script>
 <script src="app/sector-layout.js?v=851d26cc3f7c" defer></script>
 <script src="../data/agri-public-data.js?v=a97028654e3c" defer></script>
-<script src="app/sector-visuals.js?v=6e232e4a9320" defer></script>
-<script src="app/agri-dashboard.js?v=01b28d23844c" defer></script>
+<script src="app/sector-visuals.js?v=04bdb5a65192" defer></script>
+<script src="app/agri-dashboard.js?v=763add3341f2" defer></script>
 <script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=bb5b95d73397" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="app/sector-smart.js?v=b3c41b61cc4a" defer></script>
 <script src="../data/company-valuation.js?v=fa31970141b7" defer></script>
-<script src="../data/company-comparison.js?v=bd32935723d6" defer></script>
-<script src="../data/company-quarterly.js?v=ceed44a09f4e" defer></script>
+<script src="../data/company-comparison.js?v=0a183f0e1b9c" defer></script>
+<script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=db7f3db7126d" defer></script>
-<script src="app/research-layout.js?v=2f5cb88d6d09" defer></script>
+<script src="app/research-layout.js?v=e357317ed871" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=53be49980eb9" defer></script>
-<script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
+<script src="app/pane-subtabs.js?v=d54ba18d411c" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
 <script src="app/stock-dom.js?v=54e77361968d" defer></script>
@@ -42,8 +42,8 @@
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=20de8094fc85" defer></script>
-<script src="app/site-navigation.js?v=376fac62f1d4" data-release="20261126-nganh-nhua-2"></script>
-<script src="../data/site-nav.js?v=d3a32f5ad60c"></script>
+<script src="app/site-navigation.js?v=1143dba3c1b3" data-release="20261126-tach-chan-nuoi"></script>
+<script src="../data/site-nav.js?v=3c5596c7b7e7"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=a27a8ee6bc32">
@@ -69,7 +69,7 @@
 <div class="container">
   <section class="hero">
     <h1>Bức tranh ngành nông nghiệp &amp; thực phẩm <em>Việt Nam</em></h1>
-    <p>Ba chuỗi chạy theo ba lực khác nhau: cây trồng xuất khẩu theo giá thế giới và thời tiết; chăn nuôi theo giá heo hơi so với giá ngô, khô đậu; thực phẩm – đồ uống theo sức mua và thuế. Đọc tách, không gộp.</p>
+    <p>Hai chuỗi chạy theo hai lực khác nhau: cây trồng xuất khẩu theo giá thế giới và thời tiết; thực phẩm – đồ uống theo sức mua và thuế. Chăn nuôi có dashboard riêng: <a href="../Chan-nuoi/">Chăn nuôi</a>.</p>
     <div class="tagrow">
       <span class="tag">Bản nghiên cứu: 09/10/2026 · rà 09/11/2026</span>
       <span class="tag">XNK, sản lượng, giá: <a href="https://www.customs.gov.vn/" target="_blank" rel="noopener">Hải quan, NSO</a></span>
@@ -78,24 +78,21 @@
     <div class="insight" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot"><b>Đọc nhanh:</b> —</div>
   </section>
   <div class="majorpane active" data-tab="mt1" id="pane-mt1">
-    <div class="sectionhead"><div><h2>1. Tổng quan ngành nông nghiệp &amp; thực phẩm</h2><p>Cây trồng xuất khẩu nhận giá thế giới; chăn nuôi mua ngô, đậu tương nhập khẩu và bán heo theo giá trong nước; thực phẩm – đồ uống bán cho người tiêu dùng trong nước, chịu thuế tiêu thụ đặc biệt.</p></div></div>
+    <div class="sectionhead"><div><h2>1. Tổng quan ngành nông nghiệp &amp; thực phẩm</h2><p>Cây trồng xuất khẩu nhận giá thế giới; thực phẩm – đồ uống bán cho người tiêu dùng trong nước, chịu thuế tiêu thụ đặc biệt.</p></div></div>
     <section class="grid kpis">
       <div class="kpi"><div class="label">Cà phê Robusta ICE</div><div class="value">—</div><div class="delta"></div><div class="sub">ICE</div><div id="spk-robusta"></div></div>
       <div class="kpi"><div class="label">Cao su TSR20 SGX</div><div class="value">—</div><div class="delta"></div><div class="sub">SGX</div><div id="spk-rubber"></div></div>
       <div class="kpi"><div class="label">Giá XK gạo bình quân</div><div class="value">—</div><div class="delta"></div><div class="sub">Hải quan</div><div id="spk-rice"></div></div>
-      <div class="kpi"><div class="label">Heo hơi toàn quốc</div><div class="value">—</div><div class="delta"></div><div class="sub">WiData</div><div id="spk-hog"></div></div>
-      <div class="kpi"><div class="label">Ngô CBOT</div><div class="value">—</div><div class="delta"></div><div class="sub">CME</div><div id="spk-corn"></div></div>
       <div class="kpi"><div class="label">Bán lẻ hàng hóa</div><div class="value">—</div><div class="delta"></div><div class="sub">NSO</div><div id="spk-retail"></div></div>
     </section>
     <div class="grid two">
       <div class="card" data-block-id="nn-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
         <h3 style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3>
-        <p style="font-size:12.5px;line-height:1.6;margin:0">12 doanh nghiệp: cây trồng XK (LTG, PAN, GVR, DPR, PHR), chăn nuôi &amp; thức ăn (DBC, HAG, BAF), thực phẩm &amp; đồ uống (VNM, MSN, SAB, KDC).</p>
+        <p style="font-size:12.5px;line-height:1.6;margin:0">9 doanh nghiệp: cây trồng XK (LTG, PAN, GVR, DPR, PHR), thực phẩm &amp; đồ uống (VNM, MSN, SAB, KDC). Chăn nuôi (DBC, BAF, HAG) ở dashboard Chăn nuôi.</p>
       </div>
       <div class="card" data-block-id="nn-02" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3 style="margin-top:0;font-size:13.5px">Vị trí trong chu kỳ</h3>
         <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Cây trồng phân hóa.</mark> Cao su TSR20 <b>+52%</b> YoY, giá XK cao su <b>+27%</b>; Robusta <b>−24%</b>, giá XK cà phê <b>−21%</b>; kim ngạch gạo 9T <b>−12%</b>.</p>
-        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Chăn nuôi bị ép biên.</mark> Heo hơi <b data-agri="hog">—</b> nghìn đ/kg (<span data-agri="hog-date">—</span>), biên chăn nuôi ước <b data-agri="hog-margin">—</b> nghìn đ/kg; ngô <b data-agri="corn-yoy">—</b>, khô đậu <b data-agri="soy-yoy">—</b> YoY.</p>
         <p style="font-size:12.5px;line-height:1.65;margin-bottom:0"><mark class="key-phrase">Tiêu dùng trong nước khỏe; El Niño mạnh.</mark> Bán lẻ hàng hóa 9T <b>+12%</b>, bia <b>+15%</b>. NOAA: Niño-3.4 <b>+2,5 °C</b>, khoảng <b>60%</b> khả năng El Niño kỷ lục 10–12/2026, mạnh đến rất mạnh tới Q1/2027 → hạn Tây Nguyên, mặn ĐBSCL.</p>
         <div class="source-note">Nguồn: số liệu tại các chart · <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC 12/11/2026</a></div>
       </div>
@@ -108,13 +105,13 @@
     </div>
     <div class="card" style="margin-top:14px" data-block-id="nn-04" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
       <h3 style="margin-top:0;font-size:13.5px">Doanh nghiệp theo dõi và biến quyết định của từng nhóm</h3>
-      <div class="tablewrap"><table><thead><tr><th>Chuỗi</th><th>Mã</th><th>Doanh thu đến từ</th><th>Biến quyết định</th></tr></thead><tbody><tr><td><b>Cây trồng XK · gạo</b></td><td>LTG · PAN</td><td>Gạo XK, vật tư nông nghiệp (LTG); gạo, điều, thực phẩm (PAN)</td><td>Giá XK gạo · Philippines, Indonesia · mặn ĐBSCL</td></tr><tr><td><b>Cây trồng XK · cao su</b></td><td>GVR · DPR · PHR</td><td>Mủ cao su; đền bù, cho thuê đất KCN</td><td>Giá TSR20 · tiến độ chuyển đất sang KCN · EUDR</td></tr><tr><td><b>Chăn nuôi &amp; thức ăn</b></td><td>DBC · HAG · BAF</td><td>Heo hơi, thức ăn chăn nuôi; HAG thêm chuối, sầu riêng</td><td>Giá heo hơi − giá ngô, khô đậu · ASF</td></tr><tr><td><b>Thực phẩm &amp; đồ uống</b></td><td>VNM · MSN · SAB · KDC</td><td>Sữa, hàng tiêu dùng, bán lẻ, bia, dầu ăn</td><td>Sức mua · giá sữa bột, lúa mạch, dầu thực vật · thuế TTĐB</td></tr></tbody></table></div>
-      <div class="source-note">Cà phê không có mã niêm yết thuần (HAG có mảng cà phê). P/E, P/B, vốn hóa cập nhật mỗi phiên (VNDirect); LTG bị hạn chế giao dịch nên không có giá. Số BCTC chỉ cập nhật khi người dùng yêu cầu.</div>
+      <div class="tablewrap"><table><thead><tr><th>Chuỗi</th><th>Mã</th><th>Doanh thu đến từ</th><th>Biến quyết định</th></tr></thead><tbody><tr><td><b>Cây trồng XK · gạo</b></td><td>LTG · PAN</td><td>Gạo XK, vật tư nông nghiệp (LTG); gạo, điều, thực phẩm (PAN)</td><td>Giá XK gạo · Philippines, Indonesia · mặn ĐBSCL</td></tr><tr><td><b>Cây trồng XK · cao su</b></td><td>GVR · DPR · PHR</td><td>Mủ cao su; đền bù, cho thuê đất KCN</td><td>Giá TSR20 · tiến độ chuyển đất sang KCN · EUDR</td></tr><tr><td><b>Thực phẩm &amp; đồ uống</b></td><td>VNM · MSN · SAB · KDC</td><td>Sữa, hàng tiêu dùng, bán lẻ, bia, dầu ăn</td><td>Sức mua · giá sữa bột, lúa mạch, dầu thực vật · thuế TTĐB</td></tr></tbody></table></div>
+      <div class="source-note">Cà phê không có mã niêm yết thuần. P/E, P/B, vốn hóa cập nhật mỗi phiên (VNDirect); LTG bị hạn chế giao dịch nên không có giá. Số BCTC chỉ cập nhật khi người dùng yêu cầu.</div>
     </div>
   </div>
   <div class="majorpane" data-tab="mt2" id="pane-mt2">
   <section class="section">
-    <div class="sectionhead"><div><h2>2. Cung – Cầu</h2><p>Ba chuỗi: cây trồng XK, chăn nuôi &amp; thức ăn, thực phẩm &amp; đồ uống. Mỗi chuỗi gồm sản lượng, giá đầu ra và đầu vào.</p></div></div>
+    <div class="sectionhead"><div><h2>2. Cung – Cầu</h2><p>Hai chuỗi: cây trồng XK, thực phẩm &amp; đồ uống. Mỗi chuỗi gồm sản lượng, giá đầu ra và đầu vào.</p></div></div>
     <h3 class="subhead">Cây trồng XK</h3>
     <div class="grid two">
       <div class="card" data-block-id="nn-10" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
@@ -142,35 +139,6 @@
         <div class="chart-sub">nghìn đ/kg · cuối tháng</div>
         <div id="chRice"></div>
         <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-rice"></table></div></details>
-      </div>
-    </div>
-    <h3 class="subhead">Chăn nuôi &amp; thức ăn</h3>
-    <div class="grid two">
-      <div class="card" data-block-id="nn-20" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
-        <div class="chart-title">Giá heo hơi toàn quốc</div>
-        <div class="chart-sub">nghìn đ/kg · cuối tháng</div>
-        <div id="chHog"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-hog"></table></div></details>
-      </div>
-      <div class="card" data-block-id="nn-21" data-update-kind="periodic" data-cadence="daily" data-refresh-status="snapshot">
-        <div class="chart-title">Ngô và khô đậu tương CBOT</div>
-        <div class="chart-sub">% so cùng kỳ · cuối tháng</div>
-        <div id="chFeedPx"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-feedpx"></table></div></details>
-      </div>
-    </div>
-    <div class="grid two" style="margin-top:14px">
-      <div class="card" data-block-id="nn-22" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">Nhập khẩu ngô, đậu tương, thức ăn chăn nuôi</div>
-        <div class="chart-sub">triệu USD · theo tháng</div>
-        <div id="chFeedImp"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-feedimp"></table></div></details>
-      </div>
-      <div class="card" data-block-id="nn-23" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">Sản lượng thức ăn gia súc</div>
-        <div class="chart-sub">nghìn tấn · theo tháng</div>
-        <div id="chFeed"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-feed"></table></div></details>
       </div>
     </div>
     <h3 class="subhead">Thực phẩm &amp; đồ uống</h3>
@@ -206,14 +174,8 @@
   </div>
   <div class="majorpane" data-tab="mt3" id="pane-mt3">
   <section id="price" class="section">
-    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Chênh lệch giá ra − giá vào của từng chuỗi: chăn nuôi heo, gạo xuất khẩu, nguyên liệu F&amp;B. Giá gốc từng mặt hàng ở Bức tranh ngành.</p></div></div>
+    <div class="sectionhead"><div><h2>3. Giá – Chi phí – Margin</h2><p>Chênh lệch giá ra − giá vào của từng chuỗi: gạo xuất khẩu, nguyên liệu F&amp;B. Giá gốc từng mặt hàng ở Bức tranh ngành.</p></div></div>
     <div class="grid two">
-      <div class="card" data-block-id="nn-15" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
-        <div class="chart-title">Biên chăn nuôi heo ước tính</div>
-        <div class="chart-sub">nghìn đ/kg heo hơi · heo hơi so với giá thành ước · band hòa vốn 48–52</div>
-        <div id="chHogMargin"></div>
-        <details class="dtable"><summary>Xem bảng dữ liệu</summary><div class="tablewrap"><table id="tbl-hog-margin"></table></div></details>
-      </div>
       <div class="card" data-block-id="nn-16" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
         <div class="chart-title">Gạo XK: Thái 5% − Việt Nam 5%</div>
         <div class="chart-sub">USD/tấn · FOB · bình quân tháng</div>
@@ -231,16 +193,16 @@
   </div>
   <div class="majorpane" data-tab="mt4" id="pane-mt4">
   <section id="policy" class="section">
-    <div class="sectionhead"><div><h2>4. Policy / Trade / Tax</h2><p>Hai nhóm: thị trường nhập khẩu và rào cản (gạo, cà phê, cao su, nguyên liệu thức ăn); thuế và dịch bệnh trong nước.</p></div></div>
+    <div class="sectionhead"><div><h2>4. Policy / Trade / Tax</h2><p>Hai nhóm: thị trường nhập khẩu và rào cản (gạo, cà phê, cao su); thuế trong nước.</p></div></div>
     <div class="card" data-block-id="nn-50" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
       <h3 style="margin-top:0;font-size:13.5px">Thị trường nhập khẩu và rào cản thương mại</h3>
-      <div class="tablewrap"><table><thead><tr><th>Biện pháp</th><th>Hiệu lực</th><th>Nội dung</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Philippines tạm dừng nhập gạo (EO 102)</b></td><td>01/09/2025 → 31/12/2025; mở 01/2026, dừng tiếp 02–04/2026</td><td>Thị trường lớn nhất của gạo Việt Nam; thuế nhập khẩu linh hoạt 15–35% từ 01/2026 (EO 105). <b>24/09/2026: DA không dừng nhập gạo cuối 2026</b> để dự trữ trước El Niño</td><td>LTG · PAN</td><td><a href="https://www.bworldonline.com/economy/2026/09/24/781334/rice-import-suspension-ruled-out-due-to-el-nino/" target="_blank" rel="noopener">BusinessWorld 24/09/2026</a> · <a href="https://wealthinsights.metrobank.com.ph/bworldonline/philippines-eyes-1-month-rice-import-window-in-january-2026" target="_blank" rel="noopener">BusinessWorld</a> · <a href="https://www.gmanetwork.com/news/money/economy/965152/philippines-rice-tariff-january-2026/story/" target="_blank" rel="noopener">GMA</a></td></tr><tr><td><b>Indonesia không nhập gạo tiêu dùng 2026</b></td><td>2026</td><td>Dự trữ gạo chính phủ 5,0 triệu tấn (23/04/2026)</td><td>LTG · PAN</td><td><a href="https://trungtamwto.vn/tin-tuc/31553-indonesia-khong-nhap-khau-gao-ngo-va-duong-nam-2026-viet-nam-co-lo-that-thu" target="_blank" rel="noopener">Trung tâm WTO</a> · <a href="https://ekonomi.republika.co.id/berita/tdy3jb522/wamentan-sudaryono-stok-beras-ri-tembus-5-juta-ton" target="_blank" rel="noopener">Republika – dự trữ 5 triệu tấn</a></td></tr><tr><td><b>EUDR – Quy định (EU) 2025/2650</b></td><td>DN lớn, vừa 30/12/2026; DN siêu nhỏ, nhỏ 30/06/2027</td><td>Cà phê, cao su phải chứng minh không phá rừng</td><td>GVR · DPR · PHR · HAG</td><td><a href="https://trade.ec.europa.eu/access-to-markets/en/news/delay-until-december-2026-and-other-developments-implementation-eudr-regulation" target="_blank" rel="noopener">EC Access2Markets</a></td></tr><tr><td><b>Mỹ miễn thuế đối ứng cà phê, gia vị</b></td><td>13/11/2025</td><td>Cà phê nhập khẩu vào Mỹ được miễn thuế đối ứng</td><td>HAG (cà phê)</td><td><a href="https://trungtamwto.vn/chuyen-de/31145-ong-trump-ky-sac-lenh-giam-thue-nong-san-nhap-khau-ca-phe-viet-nam-don-thoi-diem-vang-gia-tang-thi-phan" target="_blank" rel="noopener">Trung tâm WTO</a></td></tr><tr><td><b>NĐ 73/2025 – thuế MFN ngô, khô đậu về 0%</b></td><td>31/03/2025</td><td>Ngô hạt 2% → 0%; khô dầu đậu tương 1–2% → 0%</td><td>DBC · BAF · HAG</td><td><a href="https://tapchicongthuong.vn/giam-thue-nhap-khau-mot-so-mat-hang-tu-31-3-2025-138889.htm" target="_blank" rel="noopener">Tạp chí Công Thương</a></td></tr></tbody></table></div>
+      <div class="tablewrap"><table><thead><tr><th>Biện pháp</th><th>Hiệu lực</th><th>Nội dung</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Philippines tạm dừng nhập gạo (EO 102)</b></td><td>01/09/2025 → 31/12/2025; mở 01/2026, dừng tiếp 02–04/2026</td><td>Thị trường lớn nhất của gạo Việt Nam; thuế nhập khẩu linh hoạt 15–35% từ 01/2026 (EO 105). <b>24/09/2026: DA không dừng nhập gạo cuối 2026</b> để dự trữ trước El Niño</td><td>LTG · PAN</td><td><a href="https://www.bworldonline.com/economy/2026/09/24/781334/rice-import-suspension-ruled-out-due-to-el-nino/" target="_blank" rel="noopener">BusinessWorld 24/09/2026</a> · <a href="https://wealthinsights.metrobank.com.ph/bworldonline/philippines-eyes-1-month-rice-import-window-in-january-2026" target="_blank" rel="noopener">BusinessWorld</a> · <a href="https://www.gmanetwork.com/news/money/economy/965152/philippines-rice-tariff-january-2026/story/" target="_blank" rel="noopener">GMA</a></td></tr><tr><td><b>Indonesia không nhập gạo tiêu dùng 2026</b></td><td>2026</td><td>Dự trữ gạo chính phủ 5,0 triệu tấn (23/04/2026)</td><td>LTG · PAN</td><td><a href="https://trungtamwto.vn/tin-tuc/31553-indonesia-khong-nhap-khau-gao-ngo-va-duong-nam-2026-viet-nam-co-lo-that-thu" target="_blank" rel="noopener">Trung tâm WTO</a> · <a href="https://ekonomi.republika.co.id/berita/tdy3jb522/wamentan-sudaryono-stok-beras-ri-tembus-5-juta-ton" target="_blank" rel="noopener">Republika – dự trữ 5 triệu tấn</a></td></tr><tr><td><b>EUDR – Quy định (EU) 2025/2650</b></td><td>DN lớn, vừa 30/12/2026; DN siêu nhỏ, nhỏ 30/06/2027</td><td>Cà phê, cao su phải chứng minh không phá rừng</td><td>GVR · DPR · PHR · HAG</td><td><a href="https://trade.ec.europa.eu/access-to-markets/en/news/delay-until-december-2026-and-other-developments-implementation-eudr-regulation" target="_blank" rel="noopener">EC Access2Markets</a></td></tr><tr><td><b>Mỹ miễn thuế đối ứng cà phê, gia vị</b></td><td>13/11/2025</td><td>Cà phê nhập khẩu vào Mỹ được miễn thuế đối ứng</td><td>HAG (cà phê)</td><td><a href="https://trungtamwto.vn/chuyen-de/31145-ong-trump-ky-sac-lenh-giam-thue-nong-san-nhap-khau-ca-phe-viet-nam-don-thoi-diem-vang-gia-tang-thi-phan" target="_blank" rel="noopener">Trung tâm WTO</a></td></tr></tbody></table></div>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Đã mở trang gốc các dòng trên (09/10/2026, xem data/agri/evidence.json). Philippines: kiểm 28/10/2026, chưa có lệnh dừng nhập gạo toàn quốc mới; vẫn có hạn chế hẹp (gạo 5% tấm, cảng Iloilo) chưa đưa vào bảng. Chưa tra: Ấn Độ mở lại xuất khẩu gạo, NĐ 107/2024 kinh doanh gạo, nhập khẩu cao su của Trung Quốc, nhập khẩu thịt.</div></details>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="nn-51" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
-      <h3 style="margin-top:0;font-size:13.5px">Thuế và dịch bệnh trong nước</h3>
-      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Biện pháp</th><th>Trước</th><th>Sau</th><th>Hiệu lực</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Luật Thuế TTĐB 66/2025/QH15 – rượu, bia</b></td><td>65%</td><td><b>70% (2027) → 75 → 80 → 85 → 90% (2031)</b></td><td>01/01/2026 (lộ trình từ 2027)</td><td>SAB</td><td><a href="https://hoatieu.vn/phap-luat/luat-thue-tieu-thu-dac-biet-so-66-2025-qh15-235343" target="_blank" rel="noopener">Luật 66/2025/QH15</a></td></tr><tr><td><b>Luật Thuế TTĐB – nước giải khát có đường</b></td><td>Không chịu thuế</td><td><b>8% (2027), 10% từ 2028</b> nếu &gt;5 g đường/100 mL</td><td>01/01/2027</td><td>MSN · KDC · VNM</td><td><a href="https://hoatieu.vn/phap-luat/luat-thue-tieu-thu-dac-biet-so-66-2025-qh15-235343" target="_blank" rel="noopener">Luật 66/2025/QH15</a></td></tr><tr><td><b>Giảm thuế GTGT 2%</b></td><td>10%</td><td><b>8%</b> (trừ hàng chịu TTĐB)</td><td>01/07/2025 → 31/12/2026</td><td>VNM · MSN · KDC</td><td><a href="https://lsvn.vn/chinh-thuc-giam-thue-gia-tri-gia-tang-tu-01-7-2025-den-het-31-12-2026-a159793.html" target="_blank" rel="noopener">Luật sư Việt Nam</a></td></tr><tr><td><b>Dịch tả heo châu Phi (ASF)</b></td><td>—</td><td>2T/2026: 225 ổ dịch, 23 tỉnh, ~12.700 con tiêu hủy</td><td>2026</td><td>DBC · BAF · HAG</td><td><a href="https://www.sggp.org.vn/2-thang-dau-nam-2026-ca-nuoc-co-gan-12700-con-heo-chet-buoc-tieu-huy-vi-dich-post840883.html" target="_blank" rel="noopener">SGGP</a></td></tr></tbody></table></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Lộ trình theo văn bản Luật 66/2025/QH15 cho bia và rượu từ 20°; rượu dưới 20° đi từ 35% (2026) lên 60% (2031). Số ổ ASF lũy kế đến 10/2026 chưa có.</div></details>
+      <h3 style="margin-top:0;font-size:13.5px">Thuế trong nước</h3>
+      <div class="tablewrap"><table class="compare-table"><thead><tr><th>Biện pháp</th><th>Trước</th><th>Sau</th><th>Hiệu lực</th><th>Mã chịu</th><th>Nguồn</th></tr></thead><tbody><tr><td><b>Luật Thuế TTĐB 66/2025/QH15 – rượu, bia</b></td><td>65%</td><td><b>70% (2027) → 75 → 80 → 85 → 90% (2031)</b></td><td>01/01/2026 (lộ trình từ 2027)</td><td>SAB</td><td><a href="https://hoatieu.vn/phap-luat/luat-thue-tieu-thu-dac-biet-so-66-2025-qh15-235343" target="_blank" rel="noopener">Luật 66/2025/QH15</a></td></tr><tr><td><b>Luật Thuế TTĐB – nước giải khát có đường</b></td><td>Không chịu thuế</td><td><b>8% (2027), 10% từ 2028</b> nếu &gt;5 g đường/100 mL</td><td>01/01/2027</td><td>MSN · KDC · VNM</td><td><a href="https://hoatieu.vn/phap-luat/luat-thue-tieu-thu-dac-biet-so-66-2025-qh15-235343" target="_blank" rel="noopener">Luật 66/2025/QH15</a></td></tr><tr><td><b>Giảm thuế GTGT 2%</b></td><td>10%</td><td><b>8%</b> (trừ hàng chịu TTĐB)</td><td>01/07/2025 → 31/12/2026</td><td>VNM · MSN · KDC</td><td><a href="https://lsvn.vn/chinh-thuc-giam-thue-gia-tri-gia-tang-tu-01-7-2025-den-het-31-12-2026-a159793.html" target="_blank" rel="noopener">Luật sư Việt Nam</a></td></tr></tbody></table></div>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Lộ trình theo văn bản Luật 66/2025/QH15 cho bia và rượu từ 20°; rượu dưới 20° đi từ 35% (2026) lên 60% (2031).</div></details>
       <div class="chart-title" style="margin-top:14px">Đồng hồ thuế TTĐB 2026 → 2031</div>
       <div class="chart-sub">% giá tính thuế · Luật 66/2025/QH15, Điều 8</div>
       <div class="tablewrap"><table class="compare-table" id="tbl-excise"><thead><tr><th>Mặt hàng</th><th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th><th>Mã</th></tr></thead><tbody><tr><td><b>Bia</b></td><td>65</td><td><b>70</b></td><td>75</td><td>80</td><td>85</td><td><b>90</b></td><td>SAB</td></tr><tr><td><b>Rượu từ 20°</b></td><td>65</td><td>70</td><td>75</td><td>80</td><td>85</td><td>90</td><td>—</td></tr><tr><td><b>Nước giải khát có đường &gt;5 g/100 mL</b></td><td>0</td><td><b>8</b></td><td><b>10</b></td><td>10</td><td>10</td><td>10</td><td>MSN · KDC</td></tr></tbody></table></div>
@@ -251,7 +213,7 @@
   </div>
   <div class="majorpane" data-tab="mt6" id="pane-mt6">
   <section class="section">
-    <div class="sectionhead"><div><h2>6. Key players</h2><p>12 doanh nghiệp theo ba chuỗi. Bảng so sánh tài chính và định giá hằng ngày ở Tổng quan.</p></div></div>
+    <div class="sectionhead"><div><h2>6. Key players</h2><p>9 doanh nghiệp theo hai chuỗi. Bảng so sánh tài chính và định giá hằng ngày ở Tổng quan.</p></div></div>
     <div class="card" data-block-id="nn-60" data-update-kind="document" data-cadence="quarterly" data-refresh-status="snapshot">
       <div class="chart-title">Kế hoạch và kết quả 2026</div>
       <div class="chart-sub">tỷ đồng · 6T/2026 trừ khi ghi khác</div>
@@ -261,32 +223,22 @@
       <tr><td><b>GVR</b></td><td>—</td><td>DT ~19.400 · LNTT 6.038 (87,5% KH)</td><td>Chuyển đất cao su sang KCN; 6T đã đạt 87,5% KH LNTT</td><td><a href="https://nhandan.vn/sau-thang-nam-2026-tap-doan-vrg-dat-loi-nhuan-hon-6000-ty-dong-post978413.html" target="_blank" rel="noopener">Nhân Dân</a></td></tr>
       <tr><td><b>DPR</b></td><td>DT 1.067 · LNST 398</td><td>DT 659 (+63%) · LNST 218 (+58%)</td><td>Giá bán bình quân 58,2 triệu đ/tấn (+11%)</td><td><a href="https://mekongasean.vn/huong-loi-tu-gia-ban-lai-quy-22026-cua-cao-su-dong-phu-tang-60-57810.html" target="_blank" rel="noopener">MekongAsean</a></td></tr>
       <tr><td><b>PHR</b></td><td>DT 2.300 · LNST 779</td><td>LNST 655</td><td>Đền bù 496 tỷ = 62% LNTT; còn ~900 tỷ VSIP III</td><td><a href="https://elibook.vn/2026/08/17/phr-cu-nhay-vot-ngoan-muc-quy-2-cua-vua-cao-su-binh-duong/" target="_blank" rel="noopener">Elibook</a> · <a href="https://nhadautu.vn/cao-su-phuoc-hoa-chia-thuong-tong-ty-le-94-ky-vong-lai-dot-bien-nho-den-bu-dat-d105349.html" target="_blank" rel="noopener">Nhà Đầu Tư – KH 2026</a></td></tr>
-      <tr><td><b>DBC</b></td><td>LNST 1.117 (−25%)</td><td>DT 8.377 (+13%) · LNST 663 (−35%)</td><td>Giá heo giảm, giá vốn tăng</td><td><a href="https://cafef.vn/gia-lon-hoi-giam-keo-lai-rong-quy-ii-2026-cua-dabaco-di-lui-43-188260731094501651.chn" target="_blank" rel="noopener">CafeF</a></td></tr>
-      <tr><td><b>HAG</b></td><td>—</td><td>DT 3.707 · LNST 2.299</td><td>Lãi chủ yếu từ miễn hơn 1.500 tỷ lãi trái phiếu trong 6T; chuối, sầu riêng, cà phê (diện tích chưa có nguồn mở được)</td><td><a href="https://mekongasean.vn/hagl-bam-sat-ke-hoach-loi-nhuan-ky-luc-nho-duoc-mien-lai-trai-phieu-57803.html" target="_blank" rel="noopener">MekongAsean</a></td></tr>
-      <tr><td><b>BAF</b></td><td>DT 8.431 · LNST 793</td><td>DT 3.899 (+55%)</td><td>Đàn ~900 nghìn con; xuất bán 6T +61%</td><td><a href="https://tapchicongthuong.vn/baf-tang-61--san-luong-heo-6-thang-dau-nam-2026--day-manh-dau-tu-cho-chu-ky-tang-truong-moi-538213.htm" target="_blank" rel="noopener">Tạp chí Công Thương</a> · <a href="https://thitruongtaichinhtiente.vn/baf-dat-muc-tieu-lai-793-ty-dong-nam-2026-tang-toc-chan-nuoi-cong-nghe-cao-82530.html" target="_blank" rel="noopener">KH 2026</a></td></tr>
       <tr><td><b>VNM</b></td><td>DT 66.477 · LNST 9.828</td><td>DT 35.034 (+18%) · LNST 5.643 (+38%)</td><td>Q2 lãi cao nhất từ Q1/2021</td><td><a href="https://mekongasean.vn/vinamilk-bao-lai-quy-cao-nhat-hon-5-nam-57688.html" target="_blank" rel="noopener">MekongAsean</a></td></tr>
       <tr><td><b>MSN</b></td><td>Đề xuất nâng: DT 98–105 nghìn tỷ · LNST 10.000–11.500</td><td>Q2: DT 28.118 (+54%) · LNST 3.800 (×2,3)</td><td>WinCommerce có lãi; MHT tăng mạnh</td><td><a href="https://doanhnhan.baophapluat.vn/masan-group-msn-bao-lai-ky-luc-3-800-ty-dong-quy-ii-2026-tu-tin-nang-chi-tieu-kinh-doanh-ca-nam.html" target="_blank" rel="noopener">Doanh nhân</a></td></tr>
       <tr><td><b>SAB</b></td><td>LNST 4.937</td><td>LNST 2.489 (+21%)</td><td>Thuế TTĐB tăng từ 2027</td><td><a href="https://doanhnhan.baophapluat.vn/sabeco-sab-thu-hon-2-480-ty-dong-lai-sau-thue-nua-dau-nam-2026-hoan-thanh-50-ke-hoach.html" target="_blank" rel="noopener">Doanh nhân</a></td></tr>
       <tr><td><b>KDC</b></td><td>DT 12.000 · LNTT 700</td><td>LNTT 149 (sau soát xét, cao hơn 64% số tự lập)</td><td>Tái cấu trúc dầu ăn, kế hoạch IPO Tường An</td><td><a href="https://mekongasean.vn/loi-nhuan-kido-tang-manh-sau-soat-xet-6-thang-dau-nam-2026-59181.html" target="_blank" rel="noopener">MekongAsean</a></td></tr>
       </tbody></table></div>
-      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Đã mở trang gốc từng dòng (09/10/2026, data/agri/evidence.json); chưa đối chiếu BCTC gốc. Kế hoạch HAG, GVR chỉ có % hoàn thành nên để trống. LTG không có số 2026. Số BCTC chỉ cập nhật khi người dùng yêu cầu.</div></details>
+      <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Đã mở trang gốc từng dòng (09/10/2026, data/agri/evidence.json); chưa đối chiếu BCTC gốc. Kế hoạch GVR chỉ có % hoàn thành nên để trống. LTG không có số 2026. Số BCTC chỉ cập nhật khi người dùng yêu cầu.</div></details>
     </div>
   </section>
   </div>
   <div class="majorpane" data-tab="mt7" id="pane-mt7">
-    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Bốn câu chuyện đang dẫn dắt ngành.</p></div></div>
+    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Ba câu chuyện đang dẫn dắt ngành.</p></div></div>
     <div data-topic-key="el_nino" data-topic-segment="Cây trồng XK" data-topic-title="El Niño mạnh: hạn và mặn">
       <div class="card" data-block-id="nn-t1" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
         <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>NOAA 12/11/2026: Niño-3.4 +2,5 °C; khoảng 60% khả năng El Niño kỷ lục (RONI 3 tháng ≥2,5 °C) vào 10–12/2026</li><li>Mưa có thể thấp hơn trung bình 25–50%; mặn ĐBSCL đầu 2027 vào sâu 90–125 km trên sông Vàm Cỏ</li><li>Mạnh đến rất mạnh tới Q1/2027 (trên 79% khả năng)</li></ul>
         <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▼ LTG · PAN · HAG · ▲ giá cà phê thế giới nếu hạn làm giảm vụ</p>
         <div class="source-note">Nguồn: <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC</a> · <a href="https://vietnamnews.vn/environment/1779696/viet-nam-faces-25-50-per-cent-rainfall-shortfalls-if-el-nino-strengthens.html" target="_blank" rel="noopener">Viet Nam News – thiếu mưa</a> · <a href="https://nongnghiepmoitruong.vn/giu-nguon-nuoc-truoc-el-nio-bai-1-gia-tang-suc-ep-d817899.html" target="_blank" rel="noopener">Nông nghiệp Môi trường – mặn</a></div>
-      </div>
-    </div>
-    <div data-topic-key="hog_cycle" data-topic-segment="Chăn nuôi &amp; thức ăn" data-topic-title="Giá heo giảm, thức ăn tăng">
-      <div class="card" data-block-id="nn-t2" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Heo hơi 23/10/2026: <b>46.000–51.000 đ/kg</b> toàn quốc (06/10: cao nhất 56.000)</li><li>Đàn heo doanh nghiệp tăng nhanh (BAF xuất bán 6T +61%)</li></ul>
-        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▼ DBC · BAF · HAG</p>
-        <div class="source-note">Nguồn: <a href="https://baovanhoa.vn/kinh-te/gia-heo-hoi-hom-nay-24102026-theo-doi-cung-cau-sau-dot-giam-278504.html" target="_blank" rel="noopener">Báo Văn hóa 24/10/2026</a> · <a href="https://baolaocai.vn/gia-lon-hoi-hom-nay-6102026-cao-nhat-56000-dongkg-post911190.html" target="_blank" rel="noopener">Báo Lào Cai 06/10/2026</a> · <a href="https://tapchicongthuong.vn/baf-tang-61--san-luong-heo-6-thang-dau-nam-2026--day-manh-dau-tu-cho-chu-ky-tang-truong-moi-538213.htm" target="_blank" rel="noopener">Tạp chí Công Thương</a></div>
       </div>
     </div>
     <div data-topic-key="rubber_land" data-topic-segment="Cây trồng XK" data-topic-title="Cao su: giá tăng và đất KCN">
@@ -330,14 +282,14 @@
     <div class="card" style="margin-top:14px" data-block-id="nn-42" data-update-kind="document" data-cadence="monthly" data-refresh-status="snapshot">
       <div class="chart-title">Lịch mùa vụ và tác động của El Niño</div>
       <div class="chart-sub">vụ chính · vùng · điều cần theo dõi</div>
-      <div class="tablewrap"><table><thead><tr><th>Cây trồng</th><th>Vùng</th><th>Thu hoạch</th><th>El Niño tác động</th><th>Mã</th></tr></thead><tbody><tr><td><b>Cà phê Robusta</b></td><td>Tây Nguyên</td><td>Niên vụ 10–9, thu hoạch 10–12</td><td>Hạn mùa khô (12–4) làm giảm vụ sau; tưới tốn chi phí. USDA 2026/27: 32,5 triệu bao (+2,5%)</td><td>HAG</td></tr><tr><td><b>Lúa</b></td><td>ĐBSCL</td><td>Đông Xuân 2–3, Hè Thu 7–8, Thu Đông 10–11</td><td>Mặn xâm nhập sâu đầu 2027 đe dọa vụ Đông Xuân — vụ lớn nhất, gạo XK chính</td><td>LTG · PAN</td></tr><tr><td><b>Cao su</b></td><td>Đông Nam Bộ, Tây Nguyên</td><td>Cạo 5–1, nghỉ cạo mùa khô 2–4</td><td>Khô hạn kéo dài mùa nghỉ cạo, giảm sản lượng mủ toàn vùng → hỗ trợ giá</td><td>GVR · DPR · PHR</td></tr><tr><td><b>Ngô, đậu tương (nhập)</b></td><td>Mỹ, Brazil, Argentina</td><td>Mỹ 9–11; Nam Mỹ 2–5</td><td>El Niño thường thuận cho Nam Mỹ → có thể hạ giá thức ăn chăn nuôi năm 2027</td><td>DBC · BAF</td></tr></tbody></table></div>
+      <div class="tablewrap"><table><thead><tr><th>Cây trồng</th><th>Vùng</th><th>Thu hoạch</th><th>El Niño tác động</th><th>Mã</th></tr></thead><tbody><tr><td><b>Cà phê Robusta</b></td><td>Tây Nguyên</td><td>Niên vụ 10–9, thu hoạch 10–12</td><td>Hạn mùa khô (12–4) làm giảm vụ sau; tưới tốn chi phí. USDA 2026/27: 32,5 triệu bao (+2,5%)</td><td>HAG</td></tr><tr><td><b>Lúa</b></td><td>ĐBSCL</td><td>Đông Xuân 2–3, Hè Thu 7–8, Thu Đông 10–11</td><td>Mặn xâm nhập sâu đầu 2027 đe dọa vụ Đông Xuân — vụ lớn nhất, gạo XK chính</td><td>LTG · PAN</td></tr><tr><td><b>Cao su</b></td><td>Đông Nam Bộ, Tây Nguyên</td><td>Cạo 5–1, nghỉ cạo mùa khô 2–4</td><td>Khô hạn kéo dài mùa nghỉ cạo, giảm sản lượng mủ toàn vùng → hỗ trợ giá</td><td>GVR · DPR · PHR</td></tr></tbody></table></div>
       <details class="note-icon"><summary>ⓘ Lưu ý dữ liệu</summary><div>Lịch mùa vụ là kiến thức ngành phổ biến, không phải số của nguồn cụ thể. Dự báo mặn và mức thiếu mưa lấy từ đoạn trích Viet Nam News; USDA cà phê từ đoạn trích báo cáo tháng 6/2026. Chưa có USDA gạo Việt Nam 2026/27.</div></details>
       <div class="source-note">Nguồn: <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener">NOAA CPC</a> · <a href="https://vietnamnews.vn/environment/1779696/viet-nam-faces-25-50-per-cent-rainfall-shortfalls-if-el-nino-strengthens.html" target="_blank" rel="noopener">Viet Nam News – thiếu mưa 25–50%</a> · <a href="https://apps.fas.usda.gov/psdonline/circulars/2026/07/coffee.pdf" target="_blank" rel="noopener">USDA FAS – Coffee</a></div>
     </div>
   </div>
   <div class="card" style="margin-top:14px" data-block-id="nn-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>
-    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>XNK gạo, cà phê, cao su, ngô, đậu tương, thức ăn, sữa; giá XK bình quân</b></td><td><a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Bán lẻ, CPI, IIP, sản lượng bia, sữa, thức ăn</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Heo hơi, gạo nội địa, Robusta, TSR20, ngô, khô đậu</b></td><td><a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">IMF qua FRED</a> (Robusta, cao su, ngô, khô đậu)</td><td>Ngày · hiển thị cuối tháng</td><td>Robusta, cao su, ngô, khô đậu: Script mỗi lượt job; heo hơi toàn quốc và 3 vùng: <a href="https://widata.vn/" target="_blank" rel="noopener">WiData (WiMCP)</a>, routine Wi; gạo 5% nội địa: <a href="https://vietfood.org.vn/gia-lua-gao-noi-dia/" target="_blank" rel="noopener">VFA</a>, script mỗi lượt job</td></tr><tr><td><b>Gạo XK Thái/Việt/Ấn, gạo 5% An Giang; sữa bột SMP, WMP</b></td><td><a href="https://fpma.fao.org/giews/pricetool/" target="_blank" rel="noopener">FAO GIEWS FPMA (API JSON)</a></td><td>Tuần / tháng</td><td>Script mỗi lượt job (scripts/fetch_fao_fpma.py)</td></tr><tr><td><b>Lúa mạch; tỷ giá USD/VND</b></td><td><a href="https://fred.stlouisfed.org/series/PBARLUSDM" target="_blank" rel="noopener">IMF qua FRED</a> · <a href="https://sbv.gov.vn/vi/t%E1%BB%B7-gi%C3%A1-trung-t%C3%A2m" target="_blank" rel="noopener">NHNN tỷ giá trung tâm</a></td><td>Tháng / ngày</td><td>Script mỗi lượt job</td></tr><tr><td><b>Sản lượng, XK, tồn kho cà phê Việt Nam</b></td><td><a href="https://apps.fas.usda.gov/psdonline/app/index.html#/app/downloads" target="_blank" rel="noopener">USDA FAS PSD (CSV)</a></td><td>Niên vụ, cập nhật 6 và 12</td><td>Script mỗi lượt job (scripts/fetch_usda_psd_coffee.py)</td></tr><tr><td><b>Biên chăn nuôi heo ước tính</b></td><td>Tính từ heo hơi (Wi), ngô, khô đậu (IMF), tỷ giá</td><td>Tháng</td><td>Tự tính khi số nền đổi; tham số ở ⓘ</td></tr><tr><td><b>ONI, Niño-3.4</b></td><td><a href="https://www.cpc.ncep.noaa.gov/" target="_blank" rel="noopener">NOAA CPC</a></td><td>Tháng / tuần</td><td>Script GitHub mỗi lượt job (dùng chung với Điện)</td></tr><tr><td><b>P/E, P/B nhóm ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Chính sách, mùa vụ, chủ đề nóng</b></td><td>Báo chí, văn bản (link tại từng thẻ)</td><td>Theo sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
+    <div class="tablewrap"><table><thead><tr><th>Nhóm dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách cập nhật</th></tr></thead><tbody><tr><td><b>XNK gạo, cà phê, cao su, sữa; giá XK bình quân</b></td><td><a href="https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294" target="_blank" rel="noopener">Cục Hải quan · số liệu thống kê</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Bán lẻ, CPI, IIP, sản lượng bia, sữa</b></td><td><a href="https://www.nso.gov.vn/" target="_blank" rel="noopener">Cục Thống kê (NSO) · biểu số liệu tháng</a></td><td>Tháng</td><td>Script mỗi lượt job</td></tr><tr><td><b>Gạo nội địa, Robusta, TSR20</b></td><td><a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">IMF qua FRED</a> (Robusta, cao su)</td><td>Ngày · hiển thị cuối tháng</td><td>Robusta, cao su: Script mỗi lượt job; gạo 5% nội địa: <a href="https://vietfood.org.vn/gia-lua-gao-noi-dia/" target="_blank" rel="noopener">VFA</a>, script mỗi lượt job</td></tr><tr><td><b>Gạo XK Thái/Việt/Ấn, gạo 5% An Giang; sữa bột SMP, WMP</b></td><td><a href="https://fpma.fao.org/giews/pricetool/" target="_blank" rel="noopener">FAO GIEWS FPMA (API JSON)</a></td><td>Tuần / tháng</td><td>Script mỗi lượt job (scripts/fetch_fao_fpma.py)</td></tr><tr><td><b>Lúa mạch; tỷ giá USD/VND</b></td><td><a href="https://fred.stlouisfed.org/series/PBARLUSDM" target="_blank" rel="noopener">IMF qua FRED</a> · <a href="https://sbv.gov.vn/vi/t%E1%BB%B7-gi%C3%A1-trung-t%C3%A2m" target="_blank" rel="noopener">NHNN tỷ giá trung tâm</a></td><td>Tháng / ngày</td><td>Script mỗi lượt job</td></tr><tr><td><b>Sản lượng, XK, tồn kho cà phê Việt Nam</b></td><td><a href="https://apps.fas.usda.gov/psdonline/app/index.html#/app/downloads" target="_blank" rel="noopener">USDA FAS PSD (CSV)</a></td><td>Niên vụ, cập nhật 6 và 12</td><td>Script mỗi lượt job (scripts/fetch_usda_psd_coffee.py)</td></tr><tr><td><b>ONI, Niño-3.4</b></td><td><a href="https://www.cpc.ncep.noaa.gov/" target="_blank" rel="noopener">NOAA CPC</a></td><td>Tháng / tuần</td><td>Script GitHub mỗi lượt job (dùng chung với Điện)</td></tr><tr><td><b>P/E, P/B nhóm ngành; từng mã</b></td><td><a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a></td><td>Phiên</td><td>Script mỗi lượt job</td></tr><tr><td><b>Chính sách, mùa vụ, chủ đề nóng</b></td><td>Báo chí, văn bản (link tại từng thẻ)</td><td>Theo sự kiện</td><td>Routine tài liệu thứ Hai</td></tr><tr><td><b>Số BCTC doanh nghiệp</b></td><td>BCTC công bố</td><td>Quý / năm</td><td>Khi người dùng yêu cầu</td></tr></tbody></table></div>
     <div class="source-note" id="wi-built">Giá hàng hóa: IMF Primary Commodity Prices (FRED), EIA, ICE — scripts/build_sector_public.py. </div>
   </div>
   <div class="footer">Vietnam Agriculture &amp; Food Dashboard · Dựng từ nguồn công khai có trích dẫn · Khung nghiên cứu 09/10/2026 · rà soát 23/11/2026.</div>

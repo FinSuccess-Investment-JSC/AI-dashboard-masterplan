@@ -10402,10 +10402,10 @@ window.COMPANY_COMPARISON = {
       }
     },
     {
-      "sector": "agri",
+      "sector": "livestock",
       "symbol": "DBC",
       "exchange": "hose",
-      "group": "Chăn nuôi & thức ăn",
+      "group": "Thức ăn & chăn nuôi",
       "year": {
         "end": "2025-12-31",
         "label": "FY 2025",
@@ -10558,10 +10558,10 @@ window.COMPANY_COMPARISON = {
       }
     },
     {
-      "sector": "agri",
+      "sector": "livestock",
       "symbol": "HAG",
       "exchange": "hose",
-      "group": "Chăn nuôi & thức ăn",
+      "group": "Chăn nuôi & trái cây",
       "year": {
         "end": "2025-12-31",
         "label": "FY 2025",
@@ -10714,10 +10714,10 @@ window.COMPANY_COMPARISON = {
       }
     },
     {
-      "sector": "agri",
+      "sector": "livestock",
       "symbol": "BAF",
       "exchange": "hose",
-      "group": "Chăn nuôi & thức ăn",
+      "group": "Chăn nuôi heo",
       "year": {
         "end": "2025-12-31",
         "label": "FY 2025",
