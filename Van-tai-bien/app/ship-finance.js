@@ -71,7 +71,7 @@ const share = (groups, i) => { const tot = groups.reduce((a, g) => a + (fin(g.va
 function filterBar() {
   const f = el('section', 'pf-filter');
   // Bộ lọc: mỗi dòng một nhãn cố định bên trái; bảng phân khúc bên dưới. Nút tải CSV ẩn (25/11/2026, theo yêu cầu người dùng).
-  f.innerHTML = `<div class="pf-grid"><span class="pf-lb">Khâu</span><div class="pf-chips">${D.groups.map(g => `<button type="button" data-g="${g.id}" aria-pressed="${S.groups.includes(g.id)}"><i style="background:${g.color}"></i>${esc(g.label)} <small>${D.companies.filter(c => c.group === g.id).length}</small></button>`).join('')}</div>
+  f.innerHTML = `<div class="pf-grid"><span class="pf-lb">Phân khúc</span><div class="pf-chips">${D.groups.map(g => `<button type="button" data-g="${g.id}" aria-pressed="${S.groups.includes(g.id)}"><i style="background:${g.color}"></i>${esc(g.label)} <small>${D.companies.filter(c => c.group === g.id).length}</small></button>`).join('')}</div>
     <span class="pf-lb">Chu kỳ</span><div class="pf-inline"><div class="pf-seg pf-box" data-role="mode">${MODES.map(([k, t]) => `<button type="button" data-m="${k}" aria-pressed="${S.mode === k}">${t}</button>`).join('')}</div>
     <span class="pf-lb">Kỳ chốt</span><select data-role="end">${D.periods.map((p, i) => `<option value="${i}"${i === S.end ? ' selected' : ''}>${qLabel(p)}</option>`).join('')}</select></div></div>
     <div class="pf-legend"></div>`;
@@ -85,9 +85,9 @@ function filterBar() {
     redraw(); });
   // Bảng phân khúc (dùng xuyên suốt tab): nhóm · doanh nghiệp · có trong tổng hay không.
   renders.push(() => { const s = sel(), cons = E.consolidation.filter(c => s.includes(c.parent) && s.includes(c.child));
-    f.querySelector('.pf-legend').innerHTML = `<table class="pf-gtable"><thead><tr><th>Khâu</th><th>Doanh nghiệp</th><th>Trong tổng</th></tr></thead><tbody>${D.groups.map(g => { const on = S.groups.includes(g.id);
+    f.querySelector('.pf-legend').innerHTML = `<table class="pf-gtable"><thead><tr><th>Phân khúc</th><th>Doanh nghiệp</th><th>Trong tổng</th></tr></thead><tbody>${D.groups.map(g => { const on = S.groups.includes(g.id);
         return `<tr class="${on ? '' : 'off'}"><td><i style="background:${g.color}"></i>${esc(g.label)}</td><td>${D.companies.filter(c => c.group === g.id).map(c => `<button type="button" class="pf-tk" data-tk="${c.ticker}" aria-pressed="${on && !S.off.includes(c.ticker)}" title="${esc(c.note || '')} · bấm để bỏ khỏi / thêm vào rổ">${c.ticker}${c.mixed ? '*' : ''}</button>`).join('')}</td><td>${on ? 'Có' : 'Không'}</td></tr>`; }).join('')}</tbody></table>
-      <p class="pf-scope">Rổ đang chọn: <b>${s.length}</b> doanh nghiệp (${s.join(', ') || '—'}) · số tổng hợp từ BCTC hợp nhất; mỗi chart ghi số mã có dữ liệu ở kỳ chốt · không đại diện toàn ngành vận tải biển Việt Nam (PVN, PVEP không niêm yết).</p>
+      <p class="pf-scope">Rổ đang chọn: <b>${s.length}</b> doanh nghiệp (${s.join(', ') || '—'}) · số tổng hợp từ BCTC hợp nhất; mỗi chart ghi số mã có dữ liệu ở kỳ chốt · không đại diện toàn ngành vận tải biển Việt Nam (chủ tàu chưa niêm yết không nằm trong rổ).</p>
       <p class="pf-note">Bấm mã để bỏ khỏi hoặc thêm vào rổ. Mỗi doanh nghiệp xếp vào mảng có doanh thu lớn nhất; dấu * là doanh nghiệp nhiều mảng kinh doanh, số theo nhóm chỉ mang tính tham khảo. Mẫu doanh nghiệp niêm yết, không đại diện toàn ngành vận tải biển.${cons.length ? ` Loại trùng hợp nhất: ${cons.map(c => `${c.parent} trừ ${c.child}`).join(', ')}.` : ''}</p>`; });
   return f;
 }
@@ -335,7 +335,7 @@ function s76() {
     foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; đặt cạnh nhau để phân biệt ROIC thấp do vận hành với ROIC thấp khi dự án đang xây`); }
   renders.push(draw3);
   const c4 = card('vt-fin-map', 'Bản đồ hiệu quả vốn', 'Trục ngang: nợ vay ròng/EBITDA TTM · trục dọc: ROIC TTM · kích thước: vốn đầu tư'); let v4 = 'group';
-  seg(c4, 'Đơn vị', [['group', 'Khâu'], ['firm', 'Doanh nghiệp']], () => v4, k => { v4 = k; draw4(); });
+  seg(c4, 'Đơn vị', [['group', 'Phân khúc'], ['firm', 'Doanh nghiệp']], () => v4, k => { v4 = k; draw4(); });
   function draw4() { const x = sel(), i = S.end, ri = roic(x, 'ttm'), ndp = E.per('net_debt', x, 'q'), ebp = E.per('ebitda', x, 'ttm'), icp = E.per('ic', x, 'q');
     let pts;
     if (v4 === 'firm') pts = x.map(t => ({l: t, c: GC[E.groupOf[t]], x: fin(ndp[t][i]) && fin(ebp[t][i]) && ebp[t][i] > 0 ? ndp[t][i] / ebp[t][i] : null, y: ri.each[t][i], s: icp[t][i]})).filter(p => fin(p.x) && fin(p.y) && fin(p.s) && p.s > 0);
