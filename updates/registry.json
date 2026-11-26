@@ -7005,7 +7005,8 @@
      "pb-c-npk-idx",
      "pb-c-intl-gas",
      "pb-c-intl-heat",
-     "pb-c-matrix"
+     "pb-c-matrix",
+     "pb-u-brent"
     ]
    },
    "how": "python3 scripts/fetch_fertilizer_markets.py && python3 scripts/fetch_fertilizer_nso.py && python3 scripts/fetch_fertilizer_financials.py && python3 scripts/build_fertilizer.py (chạy tay; chưa gắn vào refresh-data.yml)",
@@ -7105,10 +7106,13 @@
      "pb-08",
      "pb-09",
      "pb-c-gas-mech",
-     "pb-c-gas-map"
+     "pb-c-gas-map",
+     "pb-u-cap",
+     "pb-p-cap",
+     "pb-n-cap"
     ]
    },
-   "note": "Cập nhật khi doanh nghiệp công bố công suất/nhà máy mới hoặc thay đổi cơ chế giá khí; sửa data/fertilizer/plants.json rồi chạy build_fertilizer.py; bản đồ khí: sửa data/fertilizer/gas-system.json khi có mỏ/đường ống/kho LNG mới hoặc hợp đồng khí DPM, DCM thay đổi, rồi chạy build_fertilizer.py"
+   "note": "Cập nhật khi doanh nghiệp công bố công suất/nhà máy mới hoặc thay đổi cơ chế giá khí; sửa data/fertilizer/plants.json rồi chạy build_fertilizer.py; bản đồ khí: sửa data/fertilizer/gas-system.json khi có mỏ/đường ống/kho LNG mới hoặc hợp đồng khí DPM, DCM thay đổi, rồi chạy build_fertilizer.py; Chủ đề nóng (#mt7): thêm bài đã mở vào data/fertilizer/news.json (bài gốc → sự kiện → chủ đề) rồi chạy scripts/build_fertilizer_news.py"
   }
  ]
 }
