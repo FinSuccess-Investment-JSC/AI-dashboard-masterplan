@@ -8780,6 +8780,100 @@
     "Link nguồn gốc hoặc bài dẫn",
     "Số dự báo ghi tên bên dự báo"
    ]
+  },
+  {
+   "id": "chloralkali.public.trade",
+   "tier": "A",
+   "title": "Nhập khẩu xút HS 281511, 281512 của Việt Nam theo tháng, năm, đối tác; số liệu đối tác",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     15
+    ]
+   },
+   "publication": "UN Comtrade: Việt Nam báo cáo chậm (đến 2023 tại 11/2026); số liệu đối tác cập nhật theo năm",
+   "source": {
+    "name": "UN Comtrade (API công khai)",
+    "url": "https://comtradeplus.un.org/"
+   },
+   "where": {
+    "page": "Xut-clo/index.html",
+    "file": "data/chloralkali-data.js",
+    "blocks": [
+     "xc-00",
+     "xc-11",
+     "xc-12",
+     "xc-13",
+     "xc-14",
+     "xc-90"
+    ]
+   },
+   "how": "python3 scripts/fetch_chloralkali_trade.py && python3 scripts/fetch_chloralkali_financials.py && python3 scripts/build_chloralkali.py (chạy tay; chưa gắn vào refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay"
+   ],
+   "job": "chạy tay"
+  },
+  {
+   "id": "chloralkali.financials",
+   "tier": "A",
+   "title": "BCTC hợp nhất theo quý CSV, HVT, DGC",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     1,
+     20
+    ]
+   },
+   "publication": "BCTC quý: hạn 30 ngày (riêng), 45 ngày (hợp nhất) sau quý",
+   "source": {
+    "name": "VNDirect finfo",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Xut-clo/index.html",
+    "file": "data/chloralkali-data.js",
+    "blocks": [
+     "xc-04"
+    ],
+    "note": "Tab Tài chính ngành (app/chloralkali-finance.js) dựng thêm các thẻ xc-fin-* từ cùng dữ liệu"
+   },
+   "how": "python3 scripts/fetch_chloralkali_trade.py && python3 scripts/fetch_chloralkali_financials.py && python3 scripts/build_chloralkali.py (chạy tay; chưa gắn vào refresh-data.yml)",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi",
+    "Thiếu nguồn thì để trống, không điền tay",
+    "Giá vốn = 0 khi có doanh thu: để trống biên gộp (checks.cogs_zero)"
+   ],
+   "job": "chạy tay"
+  },
+  {
+   "id": "chloralkali.static",
+   "tier": "static",
+   "title": "Xút – Clo: chuỗi giá trị, công suất nhà máy, sản lượng HVT, tiến độ và sản phẩm Nghi Sơn, biểu giá điện, hạn ngạch muối (data/chloralkali/*.json nhập tay có nguồn từng dòng)",
+   "schedule": {
+    "type": "none"
+   },
+   "where": {
+    "page": "Xut-clo/index.html",
+    "blocks": [
+     "xc-01",
+     "xc-21",
+     "xc-22",
+     "xc-31",
+     "xc-32",
+     "xc-33",
+     "xc-34",
+     "xc-41",
+     "xc-42",
+     "xc-43",
+     "xc-44",
+     "xc-45"
+    ]
+   },
+   "note": "Cập nhật khi doanh nghiệp/Bộ Công Thương công bố: sửa data/chloralkali/{plants,inputs,fpts}.json; tin Chủ đề nóng ở data/chloralkali/news.json; rồi chạy scripts/build_chloralkali.py"
   }
  ]
 }
