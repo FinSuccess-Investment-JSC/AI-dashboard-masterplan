@@ -602,3 +602,17 @@ def load_lng_jkm(fetcher=fetch, today=None):
             'symbol': 'JKM=F', 'instrument': f'Yahoo continuous JKM=F (NYMEX), fallback because ICE failed: {reason}',
             'observation_frequency': 'daily trading session', 'publication_frequency': 'daily (delayed)',
             'unit': 'USD/MMBtu', 'records': records, 'raw_sha256': hashlib.sha256(raw).hexdigest()}, raw
+
+
+def load_lng_jkm_history(fetcher=fetch, today=None):
+    """Long JKM history (Yahoo continuous JKM=F, 10 years) for long-range charts; lng_jkm stays the live ICE feed."""
+    url = 'https://query1.finance.yahoo.com/v8/finance/chart/JKM%3DF?interval=1d&range=10y'
+    raw = fetcher(url)
+    result = json.loads(raw)['chart']['result'][0]
+    records = parse_yahoo_jkm(result, today or dt.datetime.now(ZoneInfo('America/New_York')).date())
+    if len(records) < 1500:
+        raise ValueError('Yahoo JKM 10-year history incomplete')
+    return {'source_url': 'https://finance.yahoo.com/quote/JKM%3DF/', 'source_name': 'Yahoo Finance (unofficial)',
+            'symbol': 'JKM=F', 'instrument': 'Yahoo continuous JKM=F (NYMEX), 10 years; long-range chart only',
+            'observation_frequency': 'daily trading session', 'publication_frequency': 'daily (delayed)',
+            'unit': 'USD/MMBtu', 'records': records, 'raw_sha256': hashlib.sha256(raw).hexdigest()}, raw

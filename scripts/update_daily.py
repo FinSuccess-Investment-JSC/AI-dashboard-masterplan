@@ -18,7 +18,7 @@ from polling_policy import due as source_due
 from steo_capacity import load as load_steo_capacity, load_world_balance, load_top_producers, load_world_demand
 from cftc_positions import load as load_wti_cot
 from jodi_exports import load as load_middle_east_exports
-from power_feeds import (discover_wb_monthly_url, load_enso_oni, load_ice_front, load_lng_jkm, load_nino34_weekly,
+from power_feeds import (discover_wb_monthly_url, load_enso_oni, load_ice_front, load_lng_jkm, load_lng_jkm_history, load_nino34_weekly,
                          load_vn_power_daily, load_wb_energy)
 ROOT=Path(__file__).resolve().parents[1]
 UTC=dt.timezone.utc
@@ -373,11 +373,11 @@ def main():
         tasks.update(hormuz=load_portwatch,bab_el_mandeb=lambda:load_portwatch('chokepoint4'),middle_east_crude_exports=lambda:load_middle_east_exports(bundle['sources'].get('middle_east_crude_exports',{}).get('records')),wti_curve=load_curve,brent_futures=lambda:load_daily_futures("BZ=F","USD/barrel"),sugar_futures=load_sugar_futures,sugar_vn_balance=load_sugar_vn_balance,sugar_monthly=load_wb_sugar,sugar_producers=load_sugar_producers,sugar_world_shares=load_sugar_world_shares,
                      singapore_cracks=lambda:load_singapore_cracks(bundle['sources'].get('singapore_cracks',{}).get('records')),
                      retail_fuel=lambda:load_retail_fuel(bundle['sources'].get('retail_fuel',{}).get('records')),
-                     opec_capacity=load_steo_capacity,world_balance=load_world_balance,top_producers=load_top_producers,world_demand=load_world_demand,wti_cot=load_wti_cot,
+                     opec_capacity=load_steo_capacity,world_balance=load_world_balance,top_producers=load_top_producers,world_demand=load_world_demand,wti_cot=lambda:load_wti_cot(bundle['sources'].get('wti_cot',{}).get('records')),
                      # Power sector (scripts/power_feeds.py); henry_hub is an EIA entry above.
                      vn_power_daily=lambda:load_vn_power_daily(bundle['sources'].get('vn_power_daily')),
                      wb_energy_monthly=lambda:load_wb_energy(*wb_monthly()),enso_oni=load_enso_oni,nino34_weekly=load_nino34_weekly,
-                     coal_newcastle=lambda:load_ice_front('coal_newcastle'),lng_jkm=load_lng_jkm)
+                     coal_newcastle=lambda:load_ice_front('coal_newcastle'),lng_jkm=load_lng_jkm,lng_jkm_history=load_lng_jkm_history)
         selected=args.sources or list(tasks)
         if any(k not in tasks for k in selected):raise ValueError('Unknown source')
         if args.scheduled and not args.sources:

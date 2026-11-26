@@ -400,7 +400,10 @@ function tankerRates() {
 
 // Khí & LNG: giá LNG châu Á (JKM) so với khí Mỹ (Henry Hub), bình quân tuần 2 năm — biên nhập LNG và giá khí đầu vào điện.
 function lngPrices() {
-  const src = window.SECTOR_DAILY?.sources, j = src?.lng_jkm?.records, h = src?.henry_hub?.records; if (!j?.length || !h?.length) return;
+  const src = window.SECTOR_DAILY?.sources, live = src?.lng_jkm?.records || [], h = src?.henry_hub?.records;
+  // Phần trước chuỗi ICE lấy từ JKM=F liên tục 10 năm (lng_jkm_history); từ ngày đầu của chuỗi ICE trở đi dùng ICE.
+  const cut = live[0]?.date || '9999', j = [...(src?.lng_jkm_history?.records || []).filter(r => r.date < cut), ...live];
+  if (!j.length || !h?.length) return;
   const from = '2019-01-01';  // 26/11/2026: từ 2019 thay vì 2 năm
   const wk = d => { const t = new Date(d + 'T00:00:00Z'); t.setUTCDate(t.getUTCDate() - ((t.getUTCDay() + 6) % 7)); return t.toISOString().slice(0, 10); };
   const avg = recs => { const m = new Map(); recs.filter(r => r.date >= from).forEach(r => { const k = wk(r.date); (m.get(k) || m.set(k, []).get(k)).push(r.value); }); return new Map([...m].map(([k, v]) => [k, v.reduce((a, b) => a + b, 0) / v.length])); };
@@ -442,7 +445,7 @@ function vnMonthly() {
   const C = P.customs?.series || {}, N = P.nso?.series || {};
   const lab = m => { const [y, mm] = m.split('-'); return `T${+mm}/${y.slice(2)}`; };
   const cusSrc = `<a href="${P.customs.url}" target="_blank" rel="noopener">Cục Hải quan · số liệu xuất nhập khẩu hằng tháng</a> (báo cáo 2N/2X, bản tốt nhất mỗi tháng)`;
-  const pair = (host, id, title, vk, qk, color) => { const v = C[vk], q = C[qk]; if (!v) return; const ms = Object.keys(v).filter(m => m >= '2024-01').sort(); if (!ms.length) return;
+  const pair = (host, id, title, vk, qk, color) => { const v = C[vk], q = C[qk]; if (!v) return; const ms = Object.keys(v).sort(); if (!ms.length) return;
     const last = ms.at(-1), yoy = v[(+last.slice(0, 4) - 1) + last.slice(4)];
     lineCard(host, {id, title, sub: `Tháng ${lab(last).slice(1)}: ${q ? Math.round(q[last] / 1000).toLocaleString('vi-VN') + ' nghìn tấn · ' : ''}${Math.round(v[last]).toLocaleString('vi-VN')} triệu USD${yoy ? ` (${v[last] >= yoy ? '+' : ''}${Math.round((v[last] / yoy - 1) * 100)}% so cùng kỳ)` : ''}`,
       labels: ms.map(lab), series: [...(q ? [{name: 'Lượng (nghìn tấn)', type: 'bar', color: color, fill: color + '99', values: ms.map(m => q[m] != null ? q[m] / 1000 : null)}] : []), {name: 'Trị giá (triệu USD)', type: 'line', color: '#1F2A5C', axis: q ? 'y2' : 'y', values: ms.map(m => v[m])}],
@@ -452,7 +455,7 @@ function vnMonthly() {
   pair($('#of-mt2-gas .of-body'), 'chImpLpg', 'Nhập khẩu khí đốt hóa lỏng (LPG) theo tháng', 'imp_lpg', 'imp_lpg_q', '#59C5C8');
   pair($('#of-mt2-upstream .of-body'), 'chExpCrude', 'Xuất khẩu dầu thô theo tháng', 'exp_crude', 'exp_crude_q', '#D4A72C');
   const nsoSrc = `<a href="${P.nso.url}" target="_blank" rel="noopener">Cục Thống kê · biểu số liệu kinh tế – xã hội hằng tháng</a>`;
-  if (N.crude_output || N.gas_output) { const ms = [...new Set([...Object.keys(N.crude_output || {}), ...Object.keys(N.gas_output || {})])].filter(m => m >= '2024-01').sort();
+  if (N.crude_output || N.gas_output) { const ms = [...new Set([...Object.keys(N.crude_output || {}), ...Object.keys(N.gas_output || {})])].sort();
     if (ms.length) lineCard($('#of-mt2-upstream .of-body'), {id: 'chVnOutputM', title: 'Sản lượng khai thác dầu thô và khí tự nhiên Việt Nam theo tháng', sub: 'dầu thô: nghìn tấn · khí: triệu m³ · tháng hiện tại là ước tính của Cục Thống kê', labels: ms.map(lab),
       series: [{name: 'Dầu thô (nghìn tấn)', type: 'bar', color: '#2938A8', fill: '#2938A899', values: ms.map(m => N.crude_output?.[m] ?? null)}, {name: 'Khí tự nhiên (triệu m³)', type: 'line', color: '#59C5C8', axis: 'y2', values: ms.map(m => N.gas_output?.[m] ?? null)}], y2: 'triệu m³', yTitle: 'nghìn tấn', zero: true, digits: 0, src: nsoSrc}); }
 }
