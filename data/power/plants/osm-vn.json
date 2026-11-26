@@ -1,0 +1,3596 @@
+{
+"source": "OpenStreetMap contributors (ODbL), Overpass API power=plant, khung 8.3–23.4°N 102.1–109.6°E, lọc điểm trong lãnh thổ Việt Nam",
+"fetched": "2026-11-26",
+"rows": [
+{
+"id": "node/9316748175",
+"name": "Thủy điện Huội Quảng",
+"name_en": "Huoi Quang Power Plant",
+"src": "hydro",
+"mw": 520.0,
+"lat": 21.66106,
+"lon": 103.89835,
+"operator": "Công ty Thủy điện Huội Quảng - Bản Chát",
+"wikidata": "Q30919648"
+},
+{
+"id": "node/12199322222",
+"name": "Thủy điện Thượng Kon Tum",
+"src": "hydro",
+"mw": 220.0,
+"lat": 14.81231,
+"lon": 108.38019,
+"operator": "Công ty CP Thủy điện Vĩnh Sơn - Sông Hinh"
+},
+{
+"id": "node/12199322912",
+"name": "Nhà máy thủy điện Hoà Bình",
+"src": "hydro",
+"mw": 1920.0,
+"lat": 20.81207,
+"lon": 105.32308,
+"operator": "Công ty Thủy điện Hòa Bình",
+"wikidata": "Q1504264"
+},
+{
+"id": "way/169405125",
+"name": "Nhà máy Nhiệt điện Ô Môn",
+"name_en": "O Mon-I Power Plant",
+"src": "gas;oil",
+"method": "combustion",
+"mw": 660.0,
+"lat": 10.13373,
+"lon": 105.67106
+},
+{
+"id": "way/181482774",
+"name": "Đập thủy điện Đăk Đrinh",
+"src": "hydro",
+"lat": 14.97932,
+"lon": 108.30139
+},
+{
+"id": "way/242071581",
+"name": "Nhà máy thủy điện Hương Điền",
+"src": "hydro",
+"mw": 81.0,
+"lat": 16.46017,
+"lon": 107.42474,
+"operator": "Công ty CP Đầu tư Hương Điền",
+"wikidata": "Q30920385"
+},
+{
+"id": "way/253422818",
+"name": "Nhà máy Nhiệt điện Bà Rịa",
+"name_en": "Ba Ria Power Plant",
+"src": "gas",
+"method": "combustion",
+"mw": 390.0,
+"lat": 10.48856,
+"lon": 107.16658,
+"operator": "EVN"
+},
+{
+"id": "way/263414467",
+"name": "Nhà mày Thuỷ điện Đạ Dâng 2",
+"src": "hydro",
+"mw": 34.0,
+"lat": 11.69524,
+"lon": 108.24438,
+"operator": "Công ty CP Thủy điện miền Nam",
+"wikidata": "Q49056241"
+},
+{
+"id": "way/290840226",
+"name": "Nhà máy thủy điện Bình Điền",
+"src": "hydro",
+"mw": 44.0,
+"lat": 16.31854,
+"lon": 107.50032,
+"operator": "Công ty CP Thủy điện Bình Điền"
+},
+{
+"id": "way/290884578",
+"name": "Đập Bình Điền",
+"src": "hydro",
+"lat": 16.31729,
+"lon": 107.50266
+},
+{
+"id": "way/320351744",
+"name": "Nhà máy thủy điện Vĩnh Sơn",
+"src": "hydro",
+"mw": 66.0,
+"lat": 14.37085,
+"lon": 108.71521,
+"operator": "Công ty CP Thủy điện Vĩnh Sơn - Sông Hinh",
+"wikidata": "Q32040608"
+},
+{
+"id": "way/390572051",
+"name": "Nhà máy thủy điện Sông Côn 2",
+"src": "hydro",
+"mw": 60.0,
+"lat": 15.89037,
+"lon": 107.81925,
+"operator": "Công ty CP Thủy điện Geruco Sông Côn",
+"wikidata": "Q30919946"
+},
+{
+"id": "way/400202736",
+"name": "Nhà máy Nhiệt điện Nhơn Trạch 1",
+"src": "gas",
+"method": "combustion",
+"mw": 450.0,
+"lat": 10.6423,
+"lon": 106.83967,
+"operator": "Petrovietnam Power Corporation"
+},
+{
+"id": "way/406463333",
+"name": "La Hieng 2",
+"src": "hydro",
+"lat": 13.50149,
+"lon": 108.84827
+},
+{
+"id": "way/423322168",
+"name": "Nhà máy thủy điện Thái An",
+"src": "hydro",
+"mw": 82.0,
+"lat": 22.97419,
+"lon": 105.04705,
+"operator": "Công ty CP Thủy điện Thái An",
+"wikidata": "Q49056133"
+},
+{
+"id": "way/434818298",
+"name": "Nhà máy thủy điện Sông Côn 1",
+"src": "hydro",
+"mw": 3.0,
+"lat": 15.98366,
+"lon": 107.79093,
+"operator": "Công ty CP Thủy điện Geruco Sông Côn"
+},
+{
+"id": "way/439941925",
+"name": "Nhà máy thủy điện Đăk Mi 4A",
+"src": "hydro",
+"mw": 148.0,
+"lat": 15.4443,
+"lon": 107.89242,
+"operator": "Công ty CP Thủy điện Đăk Mi",
+"wikidata": "Q30920411"
+},
+{
+"id": "way/440650947",
+"name": "Nhà máy thủy điện Đăk Mi 4B",
+"src": "hydro",
+"mw": 42.0,
+"lat": 15.45772,
+"lon": 107.91571,
+"operator": "Công ty CP Thủy điện Đăk Mi"
+},
+{
+"id": "way/470401936",
+"name": "Nhà máy Nhiệt điện Đăk Psi 3",
+"src": "hydro",
+"lat": 14.7528,
+"lon": 107.98117
+},
+{
+"id": "way/479326581",
+"name": "Thủy điện A Lưới",
+"src": "hydro",
+"method": "water-storage",
+"mw": 170.0,
+"lat": 16.27587,
+"lon": 107.36169,
+"operator": "Công ty CP Thủy điện Miền Trung",
+"wikidata": "Q30920387"
+},
+{
+"id": "way/479648364",
+"name": "Đập Thuỷ điện A Vương",
+"src": "hydro",
+"lat": 15.79966,
+"lon": 107.61733
+},
+{
+"id": "way/480696576",
+"name": "Đập thủy điện Krông H'Năng",
+"src": "hydro",
+"lat": 12.94049,
+"lon": 108.71375
+},
+{
+"id": "way/481433552",
+"name": "Nhà máy thủy điện Srok Phu Miêng",
+"src": "hydro",
+"method": "run-of-the-river",
+"mw": 51.0,
+"lat": 11.76864,
+"lon": 106.75662,
+"operator": "Công ty CP Thủy điện Srok Phu Miêng IDICO",
+"wikidata": "Q30920483"
+},
+{
+"id": "way/481521526",
+"name": "Nhà máy Thủy điện Cần Đơn",
+"src": "hydro",
+"method": "run-of-the-river",
+"mw": 78.0,
+"lat": 11.96858,
+"lon": 106.843,
+"operator": "Công ty CP Thủy điện Cần Đơn",
+"wikidata": "Q30920304"
+},
+{
+"id": "way/481965075",
+"name": "Thủy điện Bắc Hà",
+"src": "hydro",
+"method": "run-of-the-river",
+"mw": 90.0,
+"lat": 22.50677,
+"lon": 104.19475,
+"operator": "Công ty CP Thủy điện Bắc Hà",
+"wikidata": "Q10826789"
+},
+{
+"id": "way/482621679",
+"name": "Nhà máy Nhiệt điện Na Dương",
+"name_en": "Na Duong Thermoelectric Power Station",
+"src": "coal",
+"method": "combustion",
+"mw": 111.2,
+"lat": 21.69837,
+"lon": 106.97495,
+"operator": "Công ty Nhiệt điện Na Dương"
+},
+{
+"id": "way/483057098",
+"name": "Nhà máy Nhiệt điện Cao Ngạn",
+"name_en": "Cao Ngan Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 115.0,
+"lat": 21.61176,
+"lon": 105.81373,
+"operator": "Công ty Nhiệt điện Cao Ngạn"
+},
+{
+"id": "way/485543356",
+"name": "Nhà máy thủy điện Sơn La",
+"name_en": "Sơn La Dam",
+"src": "hydro",
+"method": "water-storage",
+"mw": 2400.0,
+"lat": 21.49649,
+"lon": 103.99687,
+"start": "2012-12-20",
+"wikidata": "Q992482"
+},
+{
+"id": "way/534693095",
+"name": "Nhà Máy Thủy Điện Yantiansien",
+"src": "hydro",
+"lat": 12.21025,
+"lon": 108.43355
+},
+{
+"id": "way/542458425",
+"name": "Nhà máy thủy điện Ankroet",
+"src": "hydro",
+"method": "photovoltaic",
+"mw": 3.0,
+"lat": 11.99687,
+"lon": 108.36055,
+"start": "1942",
+"wikidata": "Q24957473"
+},
+{
+"id": "way/543767776",
+"name": "Nhà mày Thuỷ điện Đại Ninh",
+"src": "hydro",
+"mw": 300.0,
+"lat": 11.47311,
+"lon": 108.35718,
+"operator": "Công ty Thủy điện Đại Ninh",
+"wikidata": "Q24959211"
+},
+{
+"id": "way/548210487",
+"name": "Thủy điện Buôn Tua Srah",
+"src": "hydro",
+"method": "water-storage",
+"mw": 86.0,
+"lat": 12.28557,
+"lon": 108.0401,
+"operator": "Công ty Thủy điện Buôn Kuôp",
+"wikidata": "Q49056232"
+},
+{
+"id": "way/549914182",
+"name": "Nhà máy Nhiệt điện Phả Lại",
+"name_en": "Pha Lai Power Complex",
+"src": "coal",
+"method": "combustion",
+"mw": 1040.0,
+"lat": 21.11878,
+"lon": 106.30681,
+"operator": "EVN",
+"wikidata": "Q7179855"
+},
+{
+"id": "way/549941558",
+"name": "Nhà máy Nhiệt điện Mạo Khê",
+"name_en": "Mao Khe Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 440.0,
+"lat": 21.09098,
+"lon": 106.57728,
+"operator": "Công ty Nhiệt điện Đông Triều",
+"wikidata": "Q10800795"
+},
+{
+"id": "way/549956787",
+"name": "Nhà máy Nhiệt điện Sơn Động",
+"name_en": "Son Dong Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 220.0,
+"lat": 21.1795,
+"lon": 106.77996,
+"operator": "Công ty Nhiệt điện Sơn Động",
+"wikidata": "Q10800847"
+},
+{
+"id": "way/549956792",
+"name": "Nhà máy Nhiệt điện Uông Bí",
+"name_en": "Uông Bí Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 620.0,
+"lat": 21.04105,
+"lon": 106.78711,
+"operator": "EVN",
+"wikidata": "Q12008544"
+},
+{
+"id": "way/549965874",
+"name": "Nhà máy Nhiệt điện Quảng Ninh",
+"name_en": "Quang Ninh Power Station",
+"src": "coal",
+"method": "combustion",
+"mw": 1200.0,
+"lat": 21.01142,
+"lon": 107.12665,
+"operator": "Công ty CP Nhiệt điện Quảng Ninh"
+},
+{
+"id": "way/550128713",
+"name": "Nhà máy thủy điện Sê San 4A",
+"src": "hydro",
+"method": "run-of-the-river",
+"mw": 63.0,
+"lat": 13.93041,
+"lon": 107.46635,
+"operator": "Công ty CP Thủy điện Sê San 4A"
+},
+{
+"id": "way/554382243",
+"name": "Nhà máy nhiệt điện Long Phú 1",
+"src": "coal",
+"method": "combustion",
+"mw": 1200.0,
+"lat": 9.71003,
+"lon": 106.08502,
+"operator": "PVN",
+"construction": "plant"
+},
+{
+"id": "way/624211580",
+"name": "Nhà máy thủy điện ZaHưng",
+"src": "hydro",
+"mw": 30.0,
+"lat": 15.84768,
+"lon": 107.65381,
+"operator": "Công ty cổ phần Tập đoàn Za Hưng",
+"wikidata": "Q30920401"
+},
+{
+"id": "way/624211586",
+"name": "Đập Thuỷ điện Za Hung",
+"src": "hydro",
+"lat": 15.85988,
+"lon": 107.65375
+},
+{
+"id": "way/636253159",
+"name": "Thủy điện Sê San 3A",
+"src": "hydro",
+"mw": 108.0,
+"lat": 14.10629,
+"lon": 107.65855,
+"operator": "Công ty CP ĐT và PT điện SêSan 3 A",
+"wikidata": "Q30920321"
+},
+{
+"id": "way/636380202",
+"name": "Đập thủy điện Đak Đoa",
+"src": "hydro",
+"lat": 14.18491,
+"lon": 108.10657,
+"wikidata": "Q57556665"
+},
+{
+"id": "way/636380252",
+"name": "Nhà máy thủy điện Đăk Đoa",
+"src": "hydro",
+"mw": 14.0,
+"lat": 14.19223,
+"lon": 108.10991,
+"wikidata": "Q61132533"
+},
+{
+"id": "way/690496944",
+"name": "Nhà máy Thủy điện Thác Mơ",
+"src": "hydro",
+"method": "water-storage",
+"mw": 150.0,
+"lat": 11.85886,
+"lon": 107.01404,
+"operator": "Công ty CP Thủy điện Thác Mơ",
+"wikidata": "Q3024352"
+},
+{
+"id": "way/692759713",
+"name": "Nhà máy Thuỷ điện Lai Châu",
+"name_en": "Lai Châu Hydroelectric Power Station",
+"src": "hydro",
+"method": "run-of-the-river",
+"mw": 1200.0,
+"lat": 22.13955,
+"lon": 102.98458,
+"operator": "Công ty Thủy điện Sơn La",
+"wikidata": "Q10800854"
+},
+{
+"id": "way/793513952",
+"name": "Nhà máy Nhiệt điện Nghi Sơn 1",
+"name_en": "Nghi Son 1 Thermal Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 600.0,
+"lat": 19.31581,
+"lon": 105.80029,
+"operator": "EVN"
+},
+{
+"id": "way/803190343",
+"name": "Nhà máy thủy điện Đăk Srông 2",
+"src": "hydro",
+"mw": 24.0,
+"lat": 13.69495,
+"lon": 108.56095
+},
+{
+"id": "way/803190345",
+"name": "Nhà máy thủy điện Đăk Srông 2A",
+"src": "hydro",
+"mw": 18.0,
+"lat": 13.67873,
+"lon": 108.56185
+},
+{
+"id": "way/805174036",
+"name": "Đập thủy điện Krông Kmar",
+"src": "hydro",
+"lat": 12.45204,
+"lon": 108.33729
+},
+{
+"id": "way/823246914",
+"name": "CMX RE Sunseap Solar Power Company",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 11.70489,
+"lon": 108.82835
+},
+{
+"id": "way/823246919",
+"name": "Nhà máy điện Mỹ Sơn HLV",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 11.66896,
+"lon": 108.8099
+},
+{
+"id": "way/824596808",
+"name": "Nhà máy Thuỷ điện Bản Giốc",
+"src": "hydro",
+"lat": 22.85892,
+"lon": 106.69974
+},
+{
+"id": "way/827889586",
+"name": "Nhà mày Thủy điện Hàm Thuận",
+"src": "hydro",
+"mw": 300.0,
+"lat": 11.28911,
+"lon": 107.87346,
+"operator": "Công ty CP Thủy điện Đa Nhim - Hàm Thuận - Đa Mi",
+"wikidata": "Q32255215"
+},
+{
+"id": "way/827889589",
+"name": "Nhà mày Thủy điện Đa Mi",
+"name_en": "Da Mi Power Plant",
+"src": "hydro",
+"mw": 175.0,
+"lat": 11.21942,
+"lon": 107.83346,
+"operator": "Công ty CP Thủy điện Đa Nhim - Hàm Thuận - Đa Mi",
+"wikidata": "Q84761111"
+},
+{
+"id": "way/827889601",
+"name": "Nhà máy Nhiệt điện Duyên Hải 1",
+"name_en": "Duyên Hải-1 Power Station",
+"src": "coal",
+"method": "combustion",
+"mw": 1245.0,
+"lat": 9.58184,
+"lon": 106.52492,
+"operator": "EVN",
+"wikidata": "Q5317674"
+},
+{
+"id": "way/827889618",
+"name": "Nhà máy Thủy điện Hạ Sông Pha 2",
+"src": "hydro",
+"lat": 11.83204,
+"lon": 108.70817
+},
+{
+"id": "way/827889624",
+"name": "Nhà máy Thủy điện Hạ Sông Pha 1",
+"src": "hydro",
+"lat": 11.82839,
+"lon": 108.69062
+},
+{
+"id": "way/827889628",
+"name": "Nhà máy thủy điện Trà Xom",
+"src": "hydro",
+"mw": 20.0,
+"lat": 14.28736,
+"lon": 108.72236,
+"wikidata": "Q97167367"
+},
+{
+"id": "way/827889634",
+"name": "Nhà máy thủy điện Vĩnh Sơn 5",
+"src": "hydro",
+"mw": 28.0,
+"lat": 14.31864,
+"lon": 108.75364,
+"wikidata": "Q49056252"
+},
+{
+"id": "way/827889639",
+"name": "Thủy điện Sêrêpôk 4A",
+"src": "hydro",
+"mw": 64.0,
+"lat": 12.89357,
+"lon": 107.81202,
+"operator": "Công ty CP Thủy điện Buôn Đôn",
+"wikidata": "Q30920333"
+},
+{
+"id": "way/827889643",
+"name": "Hoa Phu",
+"src": "hydro",
+"lat": 12.6495,
+"lon": 107.9093
+},
+{
+"id": "way/827889668",
+"name": "Thủy điện A Vương",
+"src": "hydro",
+"method": "water-storage",
+"mw": 210.0,
+"lat": 15.77584,
+"lon": 107.68431,
+"operator": "Công ty CP Thủy điện A Vương",
+"wikidata": "Q30920366"
+},
+{
+"id": "way/827889669",
+"name": "Nhà máy thủy điện Sông Bung 4A",
+"src": "hydro",
+"mw": 49.0,
+"lat": 15.76533,
+"lon": 107.67942,
+"operator": "Công ty CP Phú Thạnh Mỹ",
+"wikidata": "Q49055578"
+},
+{
+"id": "way/827889670",
+"name": "Thủy điện Sông Ba Hạ",
+"src": "hydro",
+"mw": 220.0,
+"lat": 13.06532,
+"lon": 108.91293,
+"operator": "Công ty CP Thủy điện Sông Ba Hạ",
+"wikidata": "Q12001973"
+},
+{
+"id": "way/827889671",
+"name": "Ia Grai 1",
+"src": "hydro",
+"lat": 13.96861,
+"lon": 107.78482
+},
+{
+"id": "way/827889672",
+"name": "Nhà máy Thủy điện Ry Ninh",
+"src": "hydro",
+"lat": 14.20512,
+"lon": 107.81672
+},
+{
+"id": "way/827889673",
+"name": "Thủy điện Bản Vẽ",
+"src": "hydro",
+"mw": 320.0,
+"lat": 19.34128,
+"lon": 104.48773,
+"operator": "Công ty Thủy điện Bản Vẽ",
+"wikidata": "Q24958708"
+},
+{
+"id": "way/827889674",
+"name": "Nhà máy Thủy điện Ry Ninh 2",
+"src": "hydro",
+"lat": 14.21298,
+"lon": 107.81376
+},
+{
+"id": "way/827889675",
+"name": "Thủy điện Sông Bung 2",
+"src": "hydro",
+"mw": 100.0,
+"lat": 15.7,
+"lon": 107.48494,
+"operator": "Công ty CP Thủy điện Sông Bung",
+"wikidata": "Q49055453"
+},
+{
+"id": "way/827889677",
+"name": "Nhà máy Thuỷ điện Quảng Tín",
+"src": "hydro",
+"mw": 5.0,
+"lat": 11.95601,
+"lon": 107.4092
+},
+{
+"id": "way/827889678",
+"name": "Nhà máy Thuỷ điện Đăk Ru",
+"src": "hydro",
+"mw": 6.9,
+"lat": 11.93351,
+"lon": 107.37894
+},
+{
+"id": "way/827889682",
+"name": "Thủy điện Sông Bung 4",
+"src": "hydro",
+"mw": 156.0,
+"lat": 15.72579,
+"lon": 107.65127,
+"operator": "Công ty CP Thủy điện Sông Bung",
+"wikidata": "Q30920406"
+},
+{
+"id": "way/827889683",
+"name": "Thủy điện Sêrêpôk 3",
+"src": "hydro",
+"mw": 220.0,
+"lat": 12.76674,
+"lon": 107.85916,
+"operator": "Công ty Thủy điện Buôn Kuôp",
+"wikidata": "Q30920392"
+},
+{
+"id": "way/827889684",
+"name": "Nhà máy Thuỷ điện Sơn La",
+"name_en": "Sơn La Hydroelectric Power Station",
+"src": "hydro",
+"method": "run-of-the-river",
+"mw": 2400.0,
+"lat": 21.49741,
+"lon": 103.99666,
+"operator": "Công ty Thủy điện Sơn La",
+"wikidata": "Q992482"
+},
+{
+"id": "way/827889687",
+"name": "Thủy điện Sêrêpôk 4",
+"src": "hydro",
+"mw": 80.0,
+"lat": 12.80825,
+"lon": 107.85576,
+"operator": "Công ty CP Đầu tư và Phát triển điện Đại Hải",
+"wikidata": "Q30920329"
+},
+{
+"id": "way/827889689",
+"name": "Thủy điện Sông Pha",
+"src": "hydro",
+"mw": 7.5,
+"lat": 11.83325,
+"lon": 108.68403
+},
+{
+"id": "way/827889692",
+"name": "Thủy điện Sê San 4",
+"src": "hydro",
+"mw": 360.0,
+"lat": 13.96871,
+"lon": 107.49418,
+"operator": "Công ty Phát triển Thủy điện Sê San",
+"wikidata": "Q19388059"
+},
+{
+"id": "way/827889694",
+"name": "Thủy điện Sê San 3",
+"src": "hydro",
+"mw": 260.0,
+"lat": 14.21598,
+"lon": 107.72124,
+"operator": "Công ty Thủy điện Ialy",
+"wikidata": "Q11999754"
+},
+{
+"id": "way/841606874",
+"name": "Nhà máy nhiệt điện Ninh Bình",
+"name_en": "Ninh Binh Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 100.0,
+"lat": 20.25491,
+"lon": 105.98686,
+"start": "1971-3-15",
+"wikidata": "Q10800846"
+},
+{
+"id": "way/846480787",
+"name": "Nhà máy Thuỷ điện Nậm Nghẹ",
+"src": "hydro",
+"lat": 22.39452,
+"lon": 102.95024
+},
+{
+"id": "way/859289423",
+"name": "Nhà máy Thuỷ điện A Lin B2",
+"src": "hydro",
+"lat": 16.4097,
+"lon": 107.22399
+},
+{
+"id": "way/862428826",
+"name": "Nhà máy điện (ngưng hoạt động)",
+"src": "oil",
+"lat": 15.37905,
+"lon": 109.12316
+},
+{
+"id": "way/864183646",
+"name": "Nhà máy Thuỷ điện Sông Miện 5A",
+"src": "hydro",
+"mw": 9.0,
+"lat": 22.88905,
+"lon": 104.99633
+},
+{
+"id": "way/864183652",
+"name": "Nhà máy Thuỷ điện Sông Miện 5",
+"src": "hydro",
+"method": "water-storage",
+"mw": 16.5,
+"lat": 22.9219,
+"lon": 105.006,
+"start": "2012"
+},
+{
+"id": "way/868661251",
+"name": "Nhà máy thuỷ điện La La",
+"src": "hydro",
+"lat": 16.59751,
+"lon": 106.67507
+},
+{
+"id": "way/868986053",
+"name": "Nhà máy thủy điện Đak Mi 3",
+"src": "hydro",
+"method": "water-storage",
+"mw": 63.0,
+"lat": 15.33689,
+"lon": 107.83253,
+"operator": "Công ty TNHH MTV Đầu tư và phát triển đô thị và khu công nghiệp Việt Nam",
+"wikidata": "Q49055441"
+},
+{
+"id": "way/870314776",
+"name": "Nhà máy thủy điện Đakrông 2",
+"src": "hydro",
+"method": "water-storage",
+"lat": 16.65525,
+"lon": 106.81288
+},
+{
+"id": "way/875395288",
+"name": "Nhà máy thủy điện Hạ Rào Quán",
+"src": "hydro",
+"method": "water-storage",
+"lat": 16.64598,
+"lon": 106.77569
+},
+{
+"id": "way/876521101",
+"name": "Hau Giang Lee & Man power station",
+"src": "coal",
+"mw": 125.0,
+"lat": 9.94467,
+"lon": 105.874
+},
+{
+"id": "way/876547179",
+"name": "Can Tho Thermal Power Plant",
+"src": "oil",
+"lat": 10.09948,
+"lon": 105.71802
+},
+{
+"id": "way/878175633",
+"name": "Nhà máy thủy điện Đăk Mi 4C",
+"src": "hydro",
+"mw": 18.0,
+"lat": 15.46376,
+"lon": 107.92915,
+"operator": "Công ty CP Thủy điện Đăk Mi"
+},
+{
+"id": "way/881704479",
+"name": "Nhà máy điện mặt trời BIM 1",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 11.44265,
+"lon": 108.89862
+},
+{
+"id": "way/881704521",
+"name": "Nhà máy điện mặt trời Nhị Hà",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 11.42495,
+"lon": 108.80321,
+"operator": "Công ty TNHH MTV Solar Power Ninh Thuận"
+},
+{
+"id": "way/881704529",
+"name": "Nhà máy điện mặt trời Thuận Nam 19",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 61.0,
+"lat": 11.42116,
+"lon": 108.85035,
+"operator": "ROX Energy"
+},
+{
+"id": "way/881706485",
+"name": "Nhà máy điện mặt trời Hà Đô Ninh Phước",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 11.58468,
+"lon": 108.86051
+},
+{
+"id": "way/881706491",
+"name": "Nhà máy điện mặt trời Sinenergy Ninh Thuận 1",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 11.55008,
+"lon": 108.86729,
+"operator": "Super Energy Corp"
+},
+{
+"id": "way/881706495",
+"name": "Nhà máy điện mặt trời Phước Hữu",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 65.0,
+"lat": 11.5091,
+"lon": 108.84765,
+"operator": "ROX Energy"
+},
+{
+"id": "way/892125519",
+"name": "Nhà máy điện mặt trời Hàm Kiệm",
+"name_en": "Ham Kiem solar power plant",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 49.0,
+"lat": 10.9061,
+"lon": 108.01628
+},
+{
+"id": "way/896361876",
+"name": "Nhà máy Thủy điện Quảng Trị",
+"src": "hydro",
+"method": "water-storage",
+"mw": 64.0,
+"lat": 16.64983,
+"lon": 106.74577,
+"operator": "Công ty Thủy điện Quảng Trị",
+"wikidata": "Q30920471"
+},
+{
+"id": "way/913330305",
+"name": "Thủy điện Trung Sơn",
+"src": "hydro",
+"method": "water-storage",
+"mw": 260.0,
+"lat": 20.60981,
+"lon": 104.83983,
+"operator": "Công ty Thủy điện Trung Sơn",
+"wikidata": "Q7847963"
+},
+{
+"id": "way/917166901",
+"name": "Nhà máy Nhiệt điện Thăng Long",
+"name_en": "Thang Long Coal Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 620.0,
+"lat": 21.02123,
+"lon": 107.04803,
+"operator": "Công ty CP nhiệt điện Thăng Long"
+},
+{
+"id": "way/924406413",
+"name": "Điện mặt trời Vĩnh Hảo 4",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 30.0,
+"lat": 11.29475,
+"lon": 108.73034
+},
+{
+"id": "way/924406414",
+"name": "Điện mặt trời Tuy Phong",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 30.0,
+"lat": 11.28945,
+"lon": 108.72347,
+"operator": "Power Plus Vietnam LLC."
+},
+{
+"id": "way/924406416",
+"name": "Nhà máy điện mặt trời Vĩnh Hảo 6",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 11.30671,
+"lon": 108.75431
+},
+{
+"id": "way/925373605",
+"name": "Nhà máy Nhiệt điện An Khánh I",
+"name_en": "An Khanh I Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 120.0,
+"lat": 21.59758,
+"lon": 105.76801,
+"operator": "Công ty CP Nhiệt điện An Khánh"
+},
+{
+"id": "way/931979274",
+"name": "Nhà máy Điện mặt trời Trung Nam",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 204.0,
+"lat": 11.69655,
+"lon": 109.0217,
+"operator": "Trungnam Group",
+"start": "2019"
+},
+{
+"id": "way/963999215",
+"name": "Nhà máy điện Mặt trời EVNCPC",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 12.0051,
+"lon": 109.08708
+},
+{
+"id": "way/963999216",
+"name": "Nhà máy điện Mặt trời EVNCPC",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 12.00946,
+"lon": 109.0912
+},
+{
+"id": "way/963999287",
+"name": "Điện mặt trời AMI Khánh Hòa",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 11.98157,
+"lon": 109.12942
+},
+{
+"id": "way/963999295",
+"name": "Nhà máy điện Mặt trời EVNCPC",
+"src": "solar",
+"lat": 12.01096,
+"lon": 109.09509
+},
+{
+"id": "way/963999301",
+"name": "Điện mặt trời Tuấn Ân",
+"src": "solar",
+"lat": 11.88028,
+"lon": 109.08612
+},
+{
+"id": "way/963999302",
+"name": "Nhà máy ĐIỆN MẶT TRỜI Sông Giang",
+"src": "solar",
+"lat": 11.8898,
+"lon": 109.09098
+},
+{
+"id": "way/968243276",
+"name": "Nhà máy Nhiệt điện Duyên Hải 2",
+"name_en": "Duyên Hải-2 Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 1200.0,
+"lat": 9.58923,
+"lon": 106.53232,
+"operator": "Công ty TNHH Janakuasa Việt Nam"
+},
+{
+"id": "way/968243290",
+"name": "Điện Mặt Trời Trung Nam - Trà Vinh",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 140.0,
+"lat": 9.59694,
+"lon": 106.49741,
+"operator": "Trungnam Group",
+"start": "2019",
+"wikidata": "Q65172519"
+},
+{
+"id": "way/983545570",
+"name": "Nhà máy Nhiệt điện Vũng Áng 1",
+"src": "coal",
+"method": "combustion",
+"mw": 1200.0,
+"lat": 18.09647,
+"lon": 106.38134,
+"operator": "PV Power",
+"wikidata": "Q10800851"
+},
+{
+"id": "way/996228846",
+"name": "Nhà máy Điện mặt trời Krông Nô 3",
+"src": "hydro",
+"mw": 18.0,
+"lat": 12.21122,
+"lon": 108.284,
+"operator": "Trungnam Group",
+"start": "2016",
+"wikidata": "Q30920334"
+},
+{
+"id": "way/1009757710",
+"name": "Thủy điện Bản Chát",
+"name_en": "Ban Chat Power Plant",
+"src": "hydro",
+"mw": 220.0,
+"lat": 21.86006,
+"lon": 103.82857,
+"operator": "Công ty Thủy điện Huội Quảng - Bản Chát",
+"wikidata": "Q30919649"
+},
+{
+"id": "way/1009757711",
+"name": "Thủy điện Bản Chát",
+"src": "hydro",
+"method": "water-storage",
+"mw": 220.0,
+"lat": 21.8615,
+"lon": 103.82791,
+"wikidata": "Q30919649"
+},
+{
+"id": "way/1009757713",
+"name": "Đập thủy điện Huội Quảng",
+"src": "hydro",
+"method": "run-of-the-river",
+"lat": 21.69668,
+"lon": 103.8778
+},
+{
+"id": "way/1044421475",
+"name": "Nhà máy Điện mặt trời Tân Châu 1",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 11.47451,
+"lon": 106.26415,
+"start": "2020"
+},
+{
+"id": "way/1047710404",
+"name": "Nhà máy thủy điện Cửa Đạt",
+"src": "hydro",
+"method": "water-storage",
+"mw": 97.0,
+"lat": 19.87493,
+"lon": 105.27428,
+"operator": "Công ty CP Thủy điện Cửa Đạt",
+"wikidata": "Q10826790"
+},
+{
+"id": "way/1050743863",
+"name": "Nhà máy Điện Mặt trời Lig Quảng Trị",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 49.5,
+"lat": 16.91531,
+"lon": 107.15434
+},
+{
+"id": "way/1050769344",
+"name": "Nhà máy thủy điện Đakrông 3",
+"src": "hydro",
+"method": "run-of-the-river",
+"lat": 16.56096,
+"lon": 106.95451
+},
+{
+"id": "way/1050812133",
+"name": "Nhà máy thủy điện Khe Bố",
+"src": "hydro",
+"method": "run-of-the-river",
+"mw": 100.0,
+"lat": 19.18113,
+"lon": 104.66367,
+"operator": "Công ty CP Phát triển Điện lực Việt Nam",
+"wikidata": "Q30920399"
+},
+{
+"id": "way/1050812137",
+"name": "Nhà máy thủy điện Chi Khê",
+"src": "hydro",
+"method": "run-of-the-river",
+"mw": 41.0,
+"lat": 19.08741,
+"lon": 104.80243,
+"operator": "Công ty Cổ phần năng lượng Agrita - Nghệ Tĩnh",
+"wikidata": "Q30920422"
+},
+{
+"id": "way/1056538991",
+"name": "Nhà máy Nhiệt điện Vĩnh Tân 4",
+"name_en": "Vinh Tan-4 Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 1800.0,
+"lat": 11.30874,
+"lon": 108.79732,
+"operator": "Nhà máy nhiệt điện Vĩnh Tân 4 - Chi nhánh Tập đoàn Điện lực Việt Nam",
+"wikidata": "Q130358623"
+},
+{
+"id": "way/1066587321",
+"name": "Nhà máy Nhiệt điện Duyên Hải 3",
+"name_en": "Duyên Hải-3 Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 1933.0,
+"lat": 9.58553,
+"lon": 106.5291,
+"operator": "EVN"
+},
+{
+"id": "way/1085800907",
+"name": "Nhà máy điện mặt trời Hồng Phong 4",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 48.0,
+"lat": 11.04429,
+"lon": 108.32249
+},
+{
+"id": "way/1085803919",
+"name_en": "Da Mi Floating Solar Power Plant",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 47.5,
+"lat": 11.24999,
+"lon": 107.84527,
+"operator": "Da Nhim-Ham Thuan-Da Mi Hydropower Joint Stock (DHD)",
+"start": "2019-05-13"
+},
+{
+"id": "way/1085803920",
+"name": "Da Mi 1",
+"src": "hydro",
+"lat": 11.24168,
+"lon": 107.84628
+},
+{
+"id": "way/1086826149",
+"name": "Nhà máy Nhiệt điện Hải Dương 1",
+"name_en": "Hai Duong Thermal Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 1200.0,
+"lat": 21.03298,
+"lon": 106.41533,
+"operator": "Công ty TNHH Điện lực Jaks Hải Dương"
+},
+{
+"id": "way/1090204845",
+"name": "Nhà máy Nhiệt điện Nghi Sơn 2",
+"name_en": "Nghi Son 2 Thermal Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 1330.0,
+"lat": 19.32281,
+"lon": 105.79696,
+"operator": "Công ty TNHH Điện Nghi Sơn 2"
+},
+{
+"id": "way/1091686587",
+"name": "Nhà máy điện mặt trời BIM 3",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 11.39768,
+"lon": 108.88052
+},
+{
+"id": "way/1099689720",
+"name": "Nhà máy thủy điện Tả Trạch",
+"src": "hydro",
+"mw": 21.0,
+"lat": 16.31568,
+"lon": 107.63383,
+"operator": "Công ty CP Thủy điện Bitexco - Tả Trạch",
+"wikidata": "Q61132558"
+},
+{
+"id": "way/1134826433",
+"name": "Nhà Máy Xử Lý Rác Bến Tre",
+"src": "waste",
+"method": "combustion",
+"lat": 10.2609,
+"lon": 106.39863
+},
+{
+"id": "way/1148143998",
+"name": "Nhà máy điện mặt trời TTC 01",
+"src": "solar",
+"lat": 11.0296,
+"lon": 106.28197
+},
+{
+"id": "way/1148143999",
+"name": "Nhà máy điện mặt trời Europlast Long An",
+"src": "solar",
+"mw": 50.0,
+"lat": 10.92307,
+"lon": 106.27765,
+"operator": "Europlast Long An"
+},
+{
+"id": "way/1183902228",
+"name": "Nhà máy Nhiệt điện Quảng Trạch I",
+"name_en": "Quang Trach 1 Thermal Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 1403.0,
+"lat": 17.95161,
+"lon": 106.49069,
+"operator": "EVN",
+"start": "2021-12-13",
+"construction": "power"
+},
+{
+"id": "way/1183902229",
+"name": "Nhà máy Nhiệt Điện LNG Quảng Trạch II & III",
+"src": "gas",
+"method": "thermal",
+"mw": 2700.0,
+"lat": 17.94714,
+"lon": 106.49247,
+"operator": "EVN",
+"construction": "power"
+},
+{
+"id": "way/1192953079",
+"name": "Nhà máy Thủy điện Đăk Glun",
+"src": "hydro",
+"mw": 18.0,
+"lat": 12.02311,
+"lon": 107.17865
+},
+{
+"id": "way/1193927744",
+"name": "Nhà máy Thủy điện Thác Mơ MR",
+"src": "hydro",
+"mw": 75.0,
+"lat": 11.86139,
+"lon": 107.01401,
+"operator": "Tập đoàn Điện lực Việt Nam"
+},
+{
+"id": "way/1198852921",
+"name": "Nhà máy thủy điện Trị An",
+"src": "hydro",
+"mw": 400.0,
+"lat": 11.10588,
+"lon": 106.98356,
+"operator": "Công ty Thủy điện Trị An",
+"wikidata": "Q7839833"
+},
+{
+"id": "way/1204890361",
+"name": "Nhà máy Nhiệt điện Thủ Đức",
+"src": "coal",
+"method": "combustion",
+"mw": 240.0,
+"lat": 10.82877,
+"lon": 106.75773
+},
+{
+"id": "way/1205471469",
+"name": "Nhà máy Thuỷ điện Đại Nga",
+"src": "hydro",
+"mw": 10.0,
+"lat": 11.51556,
+"lon": 107.86685,
+"wikidata": "Q61132560"
+},
+{
+"id": "way/1205472554",
+"name": "Nhà máy Thủy điện Lộc Phát",
+"src": "hydro",
+"mw": 0.558,
+"lat": 11.54349,
+"lon": 107.84008
+},
+{
+"id": "way/1205504389",
+"name": "Nhà máy Thủy điện Đồng Nai 4",
+"src": "hydro",
+"lat": 11.88444,
+"lon": 107.67344
+},
+{
+"id": "way/1205504400",
+"name": "Nhà máy Thủy điện Đồng Nai 4",
+"src": "hydro",
+"mw": 340.0,
+"lat": 11.88485,
+"lon": 107.67305,
+"operator": "Công ty Thủy điện Đồng Nai",
+"wikidata": "Q30920297"
+},
+{
+"id": "way/1205505956",
+"name": "Đập Thuỷ điện Đồng Nai 4",
+"src": "hydro",
+"lat": 11.88509,
+"lon": 107.72887
+},
+{
+"id": "way/1205704652",
+"name": "Nhà mày Thuỷ điện Đồng Nai 5",
+"src": "hydro",
+"mw": 150.0,
+"lat": 11.79126,
+"lon": 107.55366,
+"operator": "Công ty CP Thủy điện Đồng Nai 5",
+"wikidata": "Q30920440"
+},
+{
+"id": "way/1205718201",
+"name": "Nhà máy Thuỷ điện Đồng Nai 3",
+"src": "hydro",
+"mw": 180.0,
+"lat": 11.8714,
+"lon": 107.8801,
+"operator": "Công ty Thủy điện Đồng Nai",
+"wikidata": "Q30920298"
+},
+{
+"id": "way/1206376098",
+"name": "Nhà mày Thuỷ điện Đồng Nai 2",
+"src": "hydro",
+"mw": 70.0,
+"lat": 11.71223,
+"lon": 108.05699,
+"operator": "Công ty CP Thủy điện Trung Nam",
+"start": "2015",
+"wikidata": "Q30920303"
+},
+{
+"id": "way/1208281381",
+"name": "Nhà mày Thuỷ điện Đạ Khai",
+"src": "hydro",
+"mw": 8.1,
+"lat": 12.05586,
+"lon": 108.59309
+},
+{
+"id": "way/1209431403",
+"name": "Nhà máy Điện Mặt trời Long Thành 1",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 13.30755,
+"lon": 107.6706
+},
+{
+"id": "way/1211783782",
+"name": "Nhà máy thủy điện Sông Tranh 2",
+"name_en": "Song Tranh 2 hydro plant",
+"src": "hydro",
+"method": "water-storage",
+"mw": 190.0,
+"lat": 15.36469,
+"lon": 108.16054,
+"operator": "Công ty Thủy điện Sông Tranh",
+"wikidata": "Q10800855"
+},
+{
+"id": "way/1215089888",
+"name": "Nhà máy Thủy điện Đăk R'Tíh 2",
+"src": "hydro",
+"mw": 62.0,
+"lat": 11.91335,
+"lon": 107.67196,
+"operator": "Công ty CP Thủy điện Dakr’tih",
+"wikidata": "Q84761132"
+},
+{
+"id": "way/1227602230",
+"name": "Nhà máy thủy điện Chiêm Hóa",
+"src": "hydro",
+"mw": 48.0,
+"lat": 22.19648,
+"lon": 105.32896,
+"operator": "Công ty CP Đầu tư XD và TM quốc tế"
+},
+{
+"id": "way/1227602231",
+"name": "Nhà máy thủy điện Tuyên Quang",
+"src": "hydro",
+"method": "water-storage",
+"mw": 342.0,
+"lat": 22.36151,
+"lon": 105.39656,
+"operator": "Công ty Thủy điện Tuyên Quang",
+"wikidata": "Q24958696"
+},
+{
+"id": "way/1227602233",
+"name": "Nhà máy thủy điện Sông Lô 8B",
+"src": "hydro",
+"lat": 21.90636,
+"lon": 105.17336
+},
+{
+"id": "way/1228023249",
+"name": "Nhà máy điện mặt trời Mỹ Sơn 2",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 11.66495,
+"lon": 108.79329,
+"operator": "BB Group"
+},
+{
+"id": "way/1228023250",
+"name": "Nhà máy điện mặt trời Mỹ Sơn 1",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 61.0,
+"lat": 11.6717,
+"lon": 108.78417,
+"operator": "BB Group"
+},
+{
+"id": "way/1229075432",
+"name": "Nhà máy Thuỷ điện Bảo Lộc",
+"src": "hydro",
+"mw": 24.0,
+"lat": 11.41502,
+"lon": 107.90124
+},
+{
+"id": "way/1229075435",
+"name": "Nhà máy Thuỷ điện Đại Bình",
+"src": "hydro",
+"mw": 15.0,
+"lat": 11.498,
+"lon": 107.84965,
+"operator": "Công ty Cổ phần điện Bình Thủy Lâm Đồng"
+},
+{
+"id": "way/1229806942",
+"name": "Nhà mày thủy điện Đa Siat",
+"src": "hydro",
+"mw": 13.5,
+"lat": 11.84411,
+"lon": 107.62168
+},
+{
+"id": "way/1230281242",
+"name": "Nhà mày Thuỷ điện Đạ M'Bri",
+"src": "hydro",
+"mw": 75.0,
+"lat": 11.52644,
+"lon": 107.64908,
+"operator": "Công ty CP Thủy điện miền Nam",
+"wikidata": "Q59721990"
+},
+{
+"id": "way/1235087212",
+"name": "Nhà máy Thuỷ điện Đạ M'Bol",
+"src": "hydro",
+"mw": 10.2,
+"lat": 11.67886,
+"lon": 107.65065
+},
+{
+"id": "way/1236262645",
+"name": "Nhà máy Thủy điện Đa Nhim",
+"src": "hydro",
+"mw": 240.0,
+"lat": 11.83653,
+"lon": 108.68167,
+"operator": "Công ty CP Thủy điện Đa Nhim - Hàm Thuận - Đa Mi",
+"wikidata": "Q3023393"
+},
+{
+"id": "way/1238214272",
+"name": "NMĐMT Xuân Thọ 1",
+"src": "solar",
+"lat": 13.417,
+"lon": 109.16042
+},
+{
+"id": "way/1238214274",
+"name": "NMĐMT Xuân Thọ 2",
+"src": "solar",
+"lat": 13.37802,
+"lon": 109.17504
+},
+{
+"id": "way/1245291753",
+"name": "Nhà mày Thuỷ điện Đạ Dâng 3",
+"src": "hydro",
+"mw": 12.0,
+"lat": 11.667,
+"lon": 108.23435
+},
+{
+"id": "way/1263497521",
+"name": "Nhà máy thủy điện Nậm Chiến 1",
+"src": "hydro",
+"method": "water-storage",
+"mw": 200.0,
+"lat": 21.51538,
+"lon": 104.103,
+"operator": "Công ty CP Thủy điện Nậm Chiến",
+"wikidata": "Q30919725"
+},
+{
+"id": "way/1263497525",
+"name": "Nhà máy thủy điện Nậm Chiến 2",
+"src": "hydro",
+"mw": 32.0,
+"lat": 21.48017,
+"lon": 104.08041,
+"operator": "Công ty CP Đầu tư và Phát triển Điện Tây Bắc"
+},
+{
+"id": "way/1263573947",
+"name": "Nhà mày Thuỷ điện Khao Mang Thượng",
+"src": "hydro",
+"mw": 24.5,
+"lat": 21.86759,
+"lon": 103.99998,
+"start": "2015"
+},
+{
+"id": "way/1263573953",
+"name": "Nhà mày Thuỷ điện Khao Mang",
+"src": "hydro",
+"mw": 30.0,
+"lat": 21.8823,
+"lon": 103.94993,
+"start": "2017"
+},
+{
+"id": "way/1263839734",
+"name": "Đập Thủy Điện Thác Bà",
+"name_en": "Thac Ba Hydroelectric Power Plant",
+"src": "hydro",
+"method": "three-level",
+"mw": 120.0,
+"lat": 21.74699,
+"lon": 105.02327,
+"operator": "Tập đoàn Điện lực Việt Nam",
+"start": "1976",
+"wikidata": "Q12005686"
+},
+{
+"id": "way/1267181646",
+"name": "Nhà máy thủy điện Hồi Xuân",
+"src": "hydro",
+"method": "run-of-the-river",
+"mw": 102.0,
+"lat": 20.44597,
+"lon": 105.05328,
+"operator": "Công ty CP đầu tư và xây dựng điện Hồi Xuân",
+"wikidata": "Q30919697"
+},
+{
+"id": "way/1270939009",
+"name": "Nhà máy thủy điện Đak Mi 2",
+"src": "hydro",
+"method": "water-storage",
+"mw": 147.0,
+"lat": 15.29537,
+"lon": 107.81919,
+"operator": "Công ty CP Tập đoàn Hà Đô",
+"wikidata": "Q49055450"
+},
+{
+"id": "way/1270939020",
+"name": "Nhà máy thủy điện Sông Bung 6",
+"src": "hydro",
+"method": "run-of-the-river",
+"mw": 29.0,
+"lat": 15.81824,
+"lon": 107.77964,
+"wikidata": "Q49055588"
+},
+{
+"id": "way/1270939023",
+"name": "Nhà máy thủy điện Sông Tranh 3",
+"src": "hydro",
+"method": "water-storage",
+"mw": 62.0,
+"lat": 15.44391,
+"lon": 108.14394,
+"operator": "Công ty CP Thủy điện Sông Tranh 3",
+"wikidata": "Q59711115"
+},
+{
+"id": "way/1271285969",
+"name": "Nhà máy thủy điện Plei Krông",
+"src": "hydro",
+"method": "water-storage",
+"mw": 100.0,
+"lat": 14.40745,
+"lon": 107.86209,
+"operator": "Công ty Thủy điện Ialy",
+"wikidata": "Q59613965"
+},
+{
+"id": "way/1271492914",
+"name": "Dak Psi 3",
+"src": "hydro",
+"method": "run-of-the-river",
+"lat": 14.65673,
+"lon": 107.93522
+},
+{
+"id": "way/1271504475",
+"name": "Nhà máy thủy điện Sông Tranh 4",
+"src": "hydro",
+"method": "run-of-the-river",
+"mw": 48.0,
+"lat": 15.52717,
+"lon": 108.14765,
+"operator": "Công ty CP Thủy điện Sông Tranh 4",
+"wikidata": "Q86012217"
+},
+{
+"id": "way/1271779983",
+"name": "Nuoc Trong",
+"src": "hydro",
+"method": "water-storage",
+"lat": 15.07985,
+"lon": 108.41165
+},
+{
+"id": "way/1271779992",
+"name": "Nhà máy thủy điện ĐakĐrinh",
+"src": "hydro",
+"method": "water-storage",
+"mw": 125.0,
+"lat": 15.01666,
+"lon": 108.39116,
+"operator": "Công ty CP Thủy điện Đakđrinh",
+"wikidata": "Q30919940"
+},
+{
+"id": "way/1271779995",
+"name": "Nhà máy thủy điện Đăk Re",
+"src": "hydro",
+"method": "water-storage",
+"mw": 60.0,
+"lat": 14.6515,
+"lon": 108.51858,
+"operator": "Công ty CP Thủy điện Đăk Re",
+"wikidata": "Q97164559"
+},
+{
+"id": "way/1272088368",
+"name": "Nhà máy điện mặt trời Phù Mỹ",
+"name_en": "Phù Mỹ Solar Farm",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 330.0,
+"lat": 14.30199,
+"lon": 109.15802,
+"operator": "Bamboo Capital Group"
+},
+{
+"id": "way/1272389001",
+"name": "Thủy Điện Định Bình",
+"name_en": "Dinh Binh hydro power station",
+"src": "hydro",
+"method": "water-storage",
+"lat": 14.15619,
+"lon": 108.77423,
+"operator": "CTCP Thủy điện Định Bình"
+},
+{
+"id": "way/1272547752",
+"name": "Nhà máy điện mặt trời Krông Pa",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 49.0,
+"lat": 13.22735,
+"lon": 108.66035,
+"operator": "Bamboo Capital Group"
+},
+{
+"id": "way/1273140679",
+"name": "Nhà máy Điện mặt trời Thành Long Phú Yên",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 13.00073,
+"lon": 109.09291
+},
+{
+"id": "way/1273140701",
+"name": "Nhà máy Điện mặt trời Hòa Hội",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 257.0,
+"lat": 13.0604,
+"lon": 109.09358
+},
+{
+"id": "way/1273213180",
+"name": "Nhà máy Thuỷ điện Đăk Sin 1",
+"src": "hydro",
+"mw": 28.0,
+"lat": 11.79032,
+"lon": 107.4778,
+"wikidata": "Q61132573"
+},
+{
+"id": "way/1273328704",
+"name": "Nhà máy Điện mặt trời TTC Trúc Sơn",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 12.59002,
+"lon": 107.92741
+},
+{
+"id": "way/1273328711",
+"name": "Cụm Nhà máy Điện Mặt trời Srêpốk 1 và Quang Minh",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 100.0,
+"lat": 12.81165,
+"lon": 107.82902
+},
+{
+"id": "way/1273583738",
+"name": "Nhà máy thủy điện Sử Pán 1",
+"src": "hydro",
+"mw": 30.0,
+"lat": 22.27114,
+"lon": 103.93897,
+"wikidata": "Q30920488"
+},
+{
+"id": "way/1276456083",
+"name": "Nhà máy điện mặt trời Bình An",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 11.30973,
+"lon": 108.42775,
+"operator": "Super Energy Corp"
+},
+{
+"id": "way/1276456099",
+"name": "Nhà máy điện mặt trời Phân Lâm 2",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 41.0,
+"lat": 11.32739,
+"lon": 108.35523,
+"operator": "BB Group"
+},
+{
+"id": "way/1276456104",
+"name": "Nhà máy thủy điện Bắc Bình",
+"src": "hydro",
+"method": "water-storage",
+"mw": 34.0,
+"lat": 11.43652,
+"lon": 108.33586,
+"operator": "Công ty CP Phát triển Điện lực Việt Nam"
+},
+{
+"id": "way/1276487678",
+"name": "Ayun Ha",
+"src": "hydro",
+"method": "water-storage",
+"lat": 13.58241,
+"lon": 108.25539
+},
+{
+"id": "way/1276487683",
+"name": "Nhà máy thủy điện Đăk Srông 3B",
+"src": "hydro",
+"method": "run-of-the-river",
+"mw": 19.5,
+"lat": 13.33657,
+"lon": 108.55837
+},
+{
+"id": "way/1288323395",
+"name": "Nhà máy Thủy điện Buôn Kuốp",
+"src": "hydro",
+"mw": 280.0,
+"lat": 12.57607,
+"lon": 107.92549,
+"operator": "Công ty thủy điện Buôn Kuốp",
+"start": "2010-03",
+"wikidata": "Q3023398"
+},
+{
+"id": "way/1316610168",
+"name": "Đập thuỷ điện Hoà Bình",
+"name_en": "Hoa Binh Dam",
+"src": "hydro",
+"method": "water-storage",
+"mw": 1920.0,
+"lat": 20.80831,
+"lon": 105.32648,
+"start": "1979-11-6",
+"wikidata": "Q1504264"
+},
+{
+"id": "way/1317043985",
+"name": "Nhà máy Điện mặt trời Sơn Mỹ 3.1",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 10.66064,
+"lon": 107.66819
+},
+{
+"id": "way/1317044000",
+"name": "Hồ Tầm Bó floating solar power plant",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 35.0,
+"lat": 10.69898,
+"lon": 107.2687
+},
+{
+"id": "way/1317044016",
+"name": "Nhà máy điện mặt trời Long An 1,2",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 141.1,
+"lat": 10.6021,
+"lon": 106.168,
+"operator": "Bamboo Capital Group"
+},
+{
+"id": "way/1317044064",
+"name": "Nhà máy Điện mặt trời Solar Park 1",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 10.75735,
+"lon": 106.31161
+},
+{
+"id": "way/1317877923",
+"name": "Điện mặt trời Vĩnh Tân 2",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 42.65,
+"lat": 11.33623,
+"lon": 108.78994
+},
+{
+"id": "way/1317922271",
+"name": "Nhà máy Nhiệt điện Vĩnh Tân 2",
+"name_en": "Vinh Tan 2 Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 1244.0,
+"lat": 11.31433,
+"lon": 108.80368,
+"operator": "Công ty Nhiệt Điện Vĩnh Tân",
+"wikidata": "Q130358625"
+},
+{
+"id": "way/1317922272",
+"name": "Nhà máy Nhiệt điện Vĩnh Tân 1",
+"name_en": "Vinh Tan 1 Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 1200.0,
+"lat": 11.31638,
+"lon": 108.80744,
+"operator": "Công ty TNHH Điện lực Vĩnh Tân 1",
+"wikidata": "Q130358584"
+},
+{
+"id": "way/1317933707",
+"name": "Nhà máy Nhiệt điện Thái Bình 2",
+"name_en": "Thai Binh 2 Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 1200.0,
+"lat": 20.48199,
+"lon": 106.5636,
+"operator": "Tập đoàn Dầu khí Việt Nam"
+},
+{
+"id": "way/1317933708",
+"name": "Nhà máy Nhiệt điện Thái Bình 1",
+"name_en": "Thai Binh 1 Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 600.0,
+"lat": 20.47924,
+"lon": 106.55963,
+"operator": "Công ty Nhiệt điện Thái Bình"
+},
+{
+"id": "way/1317937609",
+"name": "Nhà máy điện Nhơn Trạch 3 & 4",
+"src": "gas",
+"method": "combustion",
+"mw": 1624.0,
+"lat": 10.63998,
+"lon": 106.83594,
+"operator": "Petrovietnam Power Corporation",
+"start": "2026-01-05"
+},
+{
+"id": "way/1318145065",
+"name": "Nhà máy thủy điện Krông H’năng",
+"src": "hydro",
+"mw": 64.0,
+"lat": 12.95694,
+"lon": 108.70715,
+"operator": "Công ty CP Sông Ba",
+"wikidata": "Q30920346"
+},
+{
+"id": "way/1318145067",
+"name": "Nhà máy Điện mặt trời Cư Jút",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 12.59806,
+"lon": 107.87164
+},
+{
+"id": "way/1318145069",
+"name": "Nhà máy thủy điện An Khê",
+"src": "hydro",
+"mw": 160.0,
+"lat": 14.01272,
+"lon": 108.77223,
+"operator": "Công ty Thủy điện An Khê - Kanak",
+"wikidata": "Q24958905"
+},
+{
+"id": "way/1318145073",
+"name": "Nhà máy thủy điện Pắc Ma",
+"src": "hydro",
+"mw": 140.0,
+"lat": 22.57083,
+"lon": 102.5182,
+"operator": "Công ty CP Thủy điện Pắc Ma",
+"wikidata": "Q49056253"
+},
+{
+"id": "way/1318145083",
+"name": "Nhà máy thủy điện Văn Chấn",
+"src": "hydro",
+"mw": 57.0,
+"lat": 21.68471,
+"lon": 104.58056,
+"operator": "Công ty CP Thủy điện Văn Chấn",
+"wikidata": "Q49056257"
+},
+{
+"id": "way/1318145085",
+"name": "Nhà máy thủy điện Tà Thàng",
+"src": "hydro",
+"mw": 60.0,
+"lat": 22.32397,
+"lon": 104.05725,
+"operator": "Công ty CP Điện Vietracimex Lào Cai",
+"wikidata": "Q30920486"
+},
+{
+"id": "way/1318145088",
+"name": "Nhà máy thủy điện Bá Thước 2",
+"src": "hydro",
+"mw": 80.0,
+"lat": 20.32014,
+"lon": 105.32767,
+"operator": "Công ty CP Thủy điện Hoàng Anh Thanh Hóa",
+"wikidata": "Q30919709"
+},
+{
+"id": "way/1318145096",
+"name": "Nhà máy Thuỷ điện Nậm He",
+"src": "hydro",
+"lat": 21.96844,
+"lon": 103.13376
+},
+{
+"id": "way/1318145107",
+"name": "Nhà máy thủy điện Nậm Na 3",
+"src": "hydro",
+"mw": 84.0,
+"lat": 22.2982,
+"lon": 103.1604,
+"operator": "Công ty CP Năng lượng Nậm Na 3",
+"wikidata": "Q25417578"
+},
+{
+"id": "way/1318145109",
+"name": "Nhà máy thủy điện Nho Quế 3",
+"src": "hydro",
+"mw": 110.0,
+"lat": 23.11013,
+"lon": 105.53021,
+"operator": "Công ty CP Thủy điện Nho Quế 3",
+"wikidata": "Q24959223"
+},
+{
+"id": "way/1318145113",
+"name": "Nhà máy thủy điện Nậm Na 2",
+"src": "hydro",
+"mw": 66.0,
+"lat": 22.49278,
+"lon": 103.23363,
+"operator": "Công ty CP Năng lượng Nậm Na 2",
+"wikidata": "Q49056168"
+},
+{
+"id": "way/1318145124",
+"name": "Nhà máy thủy điện Nhạn Hạc A",
+"src": "hydro",
+"mw": 55.0,
+"lat": 19.55475,
+"lon": 104.97251,
+"operator": "Công ty cổ phần Tập đoàn Za Hưng",
+"wikidata": "Q30920515"
+},
+{
+"id": "way/1318145126",
+"name": "Dự án điện mặt trời Hồ Núi Một",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 11.42142,
+"lon": 108.95968
+},
+{
+"id": "way/1318145130",
+"name": "Nhà máy Điện mặt trời Krông Nô 2",
+"src": "hydro",
+"mw": 30.0,
+"lat": 12.2308,
+"lon": 108.34223,
+"operator": "Trungnam Group",
+"start": "2016",
+"wikidata": "Q30920339"
+},
+{
+"id": "way/1318145146",
+"name": "Nhà máy thủy điện Hủa Na",
+"src": "hydro",
+"mw": 180.0,
+"lat": 19.87051,
+"lon": 105.10127,
+"operator": "Công ty CP Thủy điện Hủa Na",
+"wikidata": "Q30920400"
+},
+{
+"id": "way/1318145150",
+"name": "Nhà máy thủy điện Bá Thước 1",
+"src": "hydro",
+"mw": 60.0,
+"lat": 20.3207,
+"lon": 105.17193,
+"operator": "Công ty CP Thủy điện Hoàng Anh Thanh Hóa",
+"wikidata": "Q30919710"
+},
+{
+"id": "way/1318145156",
+"name": "Nhà máy thủy điện Sông Bung 5",
+"src": "hydro",
+"mw": 57.0,
+"lat": 15.80859,
+"lon": 107.74753,
+"operator": "Công ty CP Tư vấn Xây dựng Điện 1",
+"wikidata": "Q49055567"
+},
+{
+"id": "way/1318145165",
+"name": "Dohwa Lệ Thủy",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 17.22863,
+"lon": 106.87127
+},
+{
+"id": "way/1318245880",
+"name": "Nhà máy điện mặt trời Đầm Trà Ổ",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 14.29393,
+"lon": 109.12559,
+"operator": "BB Group"
+},
+{
+"id": "way/1318441711",
+"name": "Thủy điện Đray H'Linh",
+"src": "hydro",
+"lat": 12.67567,
+"lon": 107.90404
+},
+{
+"id": "way/1320783732",
+"name": "Nhà máy điện mặt trời Hồng Phong 5.2",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 41.0,
+"lat": 11.08214,
+"lon": 108.2787,
+"operator": "BB Group"
+},
+{
+"id": "way/1320783737",
+"name": "Nhà máy điện mặt trời Vĩnh Long",
+"src": "solar",
+"mw": 49.3,
+"lat": 10.03188,
+"lon": 106.21316,
+"operator": "Bamboo Capital Group"
+},
+{
+"id": "way/1320783745",
+"name": "Nhà máy Thuỷ điện Đăk Mê",
+"src": "hydro",
+"mw": 5.0,
+"lat": 12.13503,
+"lon": 108.28381
+},
+{
+"id": "way/1320783757",
+"name": "Phu Yen TPP",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 12.96932,
+"lon": 109.09842,
+"operator": "Phu Yen TPP"
+},
+{
+"id": "way/1320783761",
+"name": "Nhà máy điện mặt trời Thịnh Long AAA Phú Yên",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 12.96264,
+"lon": 109.09881,
+"operator": "Super Energy Corp"
+},
+{
+"id": "way/1320783765",
+"name": "Nhà máy điện mặt trời Sao Mai",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 210.0,
+"lat": 10.47236,
+"lon": 105.01169,
+"operator": "Tập đoàn Sao Mai"
+},
+{
+"id": "way/1320783787",
+"name": "Nhà máy thủy điện Nậm Ngần",
+"src": "hydro",
+"mw": 13.5,
+"lat": 22.61904,
+"lon": 104.91977
+},
+{
+"id": "way/1320783789",
+"name": "Nhà máy thủy điện Nậm Mu",
+"src": "hydro",
+"mw": 12.0,
+"lat": 22.53355,
+"lon": 104.89122
+},
+{
+"id": "way/1320783829",
+"name": "Nhà mày Thuỷ điện Suối Sập 2A",
+"src": "hydro",
+"mw": 49.6,
+"lat": 21.23056,
+"lon": 104.50401
+},
+{
+"id": "way/1320783830",
+"name": "Nhà mày Thuỷ điện Suối Sập 3",
+"src": "hydro",
+"lat": 21.1976,
+"lon": 104.50121
+},
+{
+"id": "way/1320783835",
+"name": "Nhà mày Thuỷ điện Háng Đồng A",
+"src": "hydro",
+"mw": 16.0,
+"lat": 21.28709,
+"lon": 104.47997,
+"start": "2015"
+},
+{
+"id": "way/1320783837",
+"name": "Nhà mày Thuỷ điện Háng Đồng A1",
+"src": "hydro",
+"mw": 8.4,
+"lat": 21.27762,
+"lon": 104.51411,
+"start": "2012"
+},
+{
+"id": "way/1320783840",
+"name": "Nhà mày Thuỷ điện Suối Sập 1",
+"src": "hydro",
+"mw": 19.5,
+"lat": 21.25734,
+"lon": 104.53578,
+"start": "2011"
+},
+{
+"id": "way/1320783855",
+"name": "Nhà máy Nhiệt điện Formosa Đồng Nai",
+"src": "coal",
+"method": "combustion",
+"mw": 450.0,
+"lat": 10.73271,
+"lon": 106.93437,
+"operator": "Công ty TNHH gang thép Hưng Nghiệp Formosa"
+},
+{
+"id": "way/1320783864",
+"name": "Nhà máy thủy điện Sông Lô 6",
+"src": "hydro",
+"mw": 48.0,
+"lat": 22.29148,
+"lon": 104.91633,
+"operator": "Công ty TNHH Xuân Thiện Hà Giang",
+"start": "2021",
+"wikidata": "Q30920446"
+},
+{
+"id": "way/1320783867",
+"name": "Nhà máy thủy điện Sông Lô 2",
+"src": "hydro",
+"mw": 28.0,
+"lat": 22.72221,
+"lon": 104.97427,
+"operator": "BB Group"
+},
+{
+"id": "way/1320783889",
+"name": "Nhà máy thủy điện Sông Giang 2",
+"src": "hydro",
+"mw": 37.0,
+"lat": 12.34427,
+"lon": 108.88182,
+"operator": "Công ty CP khai thác thủy điện Sông Giang",
+"wikidata": "Q30920449"
+},
+{
+"id": "way/1320783893",
+"name": "Nhà máy thủy điện Thuận Hòa",
+"src": "hydro",
+"mw": 42.0,
+"lat": 22.95245,
+"lon": 105.01894,
+"operator": "Công ty CP Thủy điện Thuận Hòa Hà Giang",
+"wikidata": "Q49056142"
+},
+{
+"id": "way/1320783913",
+"name": "Nhà máy thủy điện Sử Pán 2",
+"src": "hydro",
+"mw": 34.0,
+"lat": 22.26431,
+"lon": 103.96257,
+"operator": "Công ty CP Thủy điện Sông Đà - Hoàng Liên",
+"wikidata": "Q30920488"
+},
+{
+"id": "way/1320783916",
+"name": "Nhà máy thủy điện Nậm Toóng",
+"src": "hydro",
+"mw": 34.0,
+"lat": 22.26325,
+"lon": 103.96186,
+"operator": "Công ty TNHH MTV Thủy điện Sa Pa",
+"wikidata": "Q30920495"
+},
+{
+"id": "way/1320783920",
+"name": "Nhà máy thủy điện Sông Bạc",
+"src": "hydro",
+"mw": 42.0,
+"lat": 22.41594,
+"lon": 104.71693,
+"operator": "Công ty CP Thủy điện Sông Bạc",
+"wikidata": "Q30920444"
+},
+{
+"id": "way/1320783935",
+"name": "Nhà máy thủy điện Nậm Na 1",
+"src": "hydro",
+"mw": 30.0,
+"lat": 22.59516,
+"lon": 103.26142,
+"wikidata": "Q109430539"
+},
+{
+"id": "way/1320783941",
+"name": "Nhà máy thủy điện Sông Lô 4",
+"src": "hydro",
+"mw": 24.0,
+"lat": 22.54217,
+"lon": 104.90789,
+"operator": "Công ty CP Thủy điện Sông Lô 4",
+"wikidata": "Q30920463"
+},
+{
+"id": "way/1320783945",
+"name": "Nhà máy thủy điện Long Tạo",
+"src": "hydro",
+"mw": 44.0,
+"lat": 21.7117,
+"lon": 103.21704,
+"operator": "Công ty CP Thủy điện Long Tạo Điện Biên",
+"wikidata": "Q49055461"
+},
+{
+"id": "way/1320783947",
+"name": "Nhà máy thủy điện Nậm Mức",
+"src": "hydro",
+"mw": 44.0,
+"lat": 21.79885,
+"lon": 103.29359,
+"operator": "Công ty CP Thủy điện Nậm Mức",
+"wikidata": "Q30919654"
+},
+{
+"id": "way/1320783953",
+"name": "Nhà máy thủy điện Đăk Srông 1",
+"src": "hydro",
+"mw": 18.0,
+"lat": 13.75298,
+"lon": 108.53619
+},
+{
+"id": "way/1320783957",
+"name": "Nhà máy thủy điện Đăk Srông 3A",
+"src": "hydro",
+"mw": 10.2,
+"lat": 13.34544,
+"lon": 108.53225
+},
+{
+"id": "way/1320783985",
+"name": "Dak Lo",
+"src": "hydro",
+"lat": 14.72785,
+"lon": 108.36957
+},
+{
+"id": "way/1320783986",
+"name": "Nhà máy thủy điện Đồng Văn",
+"src": "hydro",
+"mw": 28.0,
+"lat": 19.89203,
+"lon": 105.13149,
+"wikidata": "Q61129499"
+},
+{
+"id": "way/1320783996",
+"name": "Nhà máy thủy điện Đồng Sung",
+"src": "hydro",
+"mw": 20.0,
+"lat": 21.82161,
+"lon": 104.65552,
+"start": "2021",
+"wikidata": "Q97164571"
+},
+{
+"id": "way/1320784000",
+"name": "Nhà mày Thuỷ điện Thác Cá 2",
+"src": "hydro",
+"mw": 14.5,
+"lat": 21.74077,
+"lon": 104.64403,
+"start": "2021"
+},
+{
+"id": "way/1320784004",
+"name": "Nhà mày Thuỷ điện Thác Cá 1",
+"src": "hydro",
+"mw": 27.0,
+"lat": 21.69779,
+"lon": 104.63227,
+"start": "2022"
+},
+{
+"id": "way/1320784006",
+"name": "Nhà máy thủy điện Nho Quế 1",
+"src": "hydro",
+"mw": 32.0,
+"lat": 23.23025,
+"lon": 105.431,
+"operator": "Công ty CP Thủy điện Nho Quế 1"
+},
+{
+"id": "way/1320784012",
+"name": "Nhà máy thủy điện Bắc Mê",
+"src": "hydro",
+"mw": 45.5,
+"lat": 22.73817,
+"lon": 105.40365,
+"operator": "Tổng công ty cổ phần Thương mại Xây dựng",
+"wikidata": "Q49055523"
+},
+{
+"id": "way/1320784015",
+"name": "Nhà máy thủy điện Bảo Lạc B",
+"src": "hydro",
+"mw": 18.0,
+"lat": 22.9521,
+"lon": 105.59817
+},
+{
+"id": "way/1320784020",
+"name": "Nhà máy thủy điện Nho Quế 2",
+"src": "hydro",
+"mw": 48.0,
+"lat": 23.17024,
+"lon": 105.49894,
+"operator": "Công ty CP đầu tư và phát triển điện Nho Quế"
+},
+{
+"id": "way/1320784023",
+"name": "Nhà máy thủy điện Sông Nhiệm 4",
+"src": "hydro",
+"mw": 6.0,
+"lat": 23.01019,
+"lon": 105.47766
+},
+{
+"id": "way/1320784025",
+"name": "Nhà máy thủy điện Bảo Lâm 3",
+"src": "hydro",
+"mw": 46.0,
+"lat": 23.0127,
+"lon": 105.48942
+},
+{
+"id": "way/1320784027",
+"name": "Nhà máy thủy điện Bảo Lâm 3A",
+"src": "hydro",
+"mw": 8.0,
+"lat": 22.97607,
+"lon": 105.51952
+},
+{
+"id": "way/1320784033",
+"name": "Nhà máy thủy điện Bảo Lâm 1",
+"src": "hydro",
+"mw": 30.0,
+"lat": 22.94156,
+"lon": 105.54985
+},
+{
+"id": "way/1320784041",
+"name": "Nhà máy thủy điện Cẩm Thủy 1",
+"src": "hydro",
+"mw": 28.6,
+"lat": 20.23587,
+"lon": 105.40541,
+"wikidata": "Q30919711"
+},
+{
+"id": "way/1320784042",
+"name": "Nhà máy thủy điện Thành Sơn",
+"src": "hydro",
+"mw": 30.0,
+"lat": 20.58925,
+"lon": 104.90727,
+"wikidata": "Q61132467"
+},
+{
+"id": "way/1320784049",
+"name": "Nhà máy thủy điện Hương Sơn",
+"src": "hydro",
+"mw": 33.0,
+"lat": 18.43127,
+"lon": 105.16722,
+"operator": "Công ty CP Thủy điện Hương Sơn",
+"wikidata": "Q30920465"
+},
+{
+"id": "way/1320784057",
+"name": "Nhà máy thủy điện Nậm Pông",
+"src": "hydro",
+"mw": 30.0,
+"lat": 19.55243,
+"lon": 105.06064,
+"operator": "Công ty cổ phần Tập đoàn Za Hưng",
+"wikidata": "Q30920479"
+},
+{
+"id": "way/1320784058",
+"name": "Nhà máy thủy điện Nhạn Hạc B",
+"src": "hydro",
+"mw": 4.0,
+"lat": 19.55792,
+"lon": 104.9732,
+"operator": "Công ty cổ phần Tập đoàn Za Hưng",
+"wikidata": "Q30920515"
+},
+{
+"id": "way/1320784060",
+"name": "Nhà máy thủy điện Kanak",
+"src": "hydro",
+"mw": 13.0,
+"lat": 14.17469,
+"lon": 108.57959,
+"operator": "Công ty Thủy điện An Khê - Kanak",
+"wikidata": "Q24958905"
+},
+{
+"id": "way/1320784066",
+"name": "Nhà máy Nhiệt điện Nhơn Trạch 2",
+"src": "gas",
+"method": "combustion",
+"mw": 750.0,
+"lat": 10.64214,
+"lon": 106.83846,
+"operator": "Petrovietnam Power Corporation"
+},
+{
+"id": "way/1320784085",
+"name": "Nhà máy Nhiệt điện Mông Dương 1",
+"name_en": "Mong Duong 1 power station",
+"src": "coal",
+"method": "combustion",
+"mw": 1080.0,
+"lat": 21.07403,
+"lon": 107.3459,
+"operator": "Công ty Nhiệt điện Mông Dương"
+},
+{
+"id": "way/1320784098",
+"name": "Nhà máy thủy điện Nậm Củm 4",
+"src": "hydro",
+"mw": 54.0,
+"lat": 22.51811,
+"lon": 102.5789,
+"operator": "Công ty CP Thủy điện Nậm Củm",
+"wikidata": "Q86012211"
+},
+{
+"id": "way/1320784125",
+"name": "Nhà máy Nhiệt điện Cẩm Phả",
+"src": "coal",
+"method": "combustion",
+"mw": 670.0,
+"lat": 21.00827,
+"lon": 107.35865,
+"operator": "Công ty CP Nhiệt điện Cẩm Phả",
+"wikidata": "Q10800845"
+},
+{
+"id": "way/1332739370",
+"name": "Nhà máy thủy điện Khe Giông",
+"src": "hydro",
+"lat": 16.60586,
+"lon": 106.79089
+},
+{
+"id": "way/1332743011",
+"name": "Nhà máy thủy điện Đakrông 4",
+"src": "hydro",
+"lat": 16.61476,
+"lon": 106.86073
+},
+{
+"id": "way/1332746280",
+"name": "NMTĐ Đakrông 1",
+"src": "hydro",
+"lat": 16.50495,
+"lon": 106.96987
+},
+{
+"id": "way/1333617520",
+"name": "Thai Hoa Wind Farm",
+"lat": 11.07154,
+"lon": 108.37379,
+"operator": "Pacific Corporation"
+},
+{
+"id": "way/1346139116",
+"name": "Nhà máy Thuỷ điện Nậm Cấu",
+"src": "hydro",
+"lat": 22.39197,
+"lon": 102.8083
+},
+{
+"id": "way/1346139119",
+"name": "Nhà máy Thuỷ điện Nậm Sì Lường 4",
+"src": "hydro",
+"mw": 20.0,
+"lat": 22.38343,
+"lon": 102.83368
+},
+{
+"id": "way/1346139120",
+"name": "Nhà máy Thuỷ điện Nậm Cấu Thượng",
+"src": "hydro",
+"lat": 22.42004,
+"lon": 102.80916
+},
+{
+"id": "way/1346335967",
+"name": "Nhà máy Thuỷ điện Nậm Thi 2",
+"src": "hydro",
+"lat": 22.35283,
+"lon": 103.69228
+},
+{
+"id": "way/1362621800",
+"name": "Nhà máy Thủy điện Đăk Pô Cô",
+"src": "hydro",
+"mw": 16.5,
+"lat": 14.64458,
+"lon": 107.80962
+},
+{
+"id": "way/1377172020",
+"name": "Thuỷ điện Hoa Thám",
+"src": "hydro",
+"lat": 22.61872,
+"lon": 106.10096
+},
+{
+"id": "way/1377410715",
+"name": "Thoong Cot 2",
+"src": "hydro",
+"lat": 22.82936,
+"lon": 106.61884
+},
+{
+"id": "way/1385239540",
+"name": "Nhà máy Thủy điện Ialy",
+"src": "hydro",
+"method": "run-of-the-river",
+"mw": 720.0,
+"lat": 14.22212,
+"lon": 107.79563,
+"operator": "Công ty Thủy điện Ialy",
+"wikidata": "Q8047470"
+},
+{
+"id": "way/1392345109",
+"name": "Nhà máy Thủy điện Văn Phong",
+"src": "hydro",
+"lat": 13.93709,
+"lon": 108.8734
+},
+{
+"id": "way/1395472729",
+"name": "Nhà máy Thủy Điện Sông Hinh",
+"src": "hydro",
+"mw": 70.0,
+"lat": 12.92276,
+"lon": 109.01755,
+"operator": "Công ty CP Thủy điện Vĩnh Sơn - Sông Minh",
+"wikidata": "Q10826793"
+},
+{
+"id": "way/1395472730",
+"name": "Nhà máy Thủy điện Sơn Giang",
+"src": "hydro",
+"lat": 12.95112,
+"lon": 109.02335
+},
+{
+"id": "way/1395472737",
+"name": "Năng lượng Mặt trời Sơn Giang 2",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 12.9524,
+"lon": 109.0237
+},
+{
+"id": "way/1395472738",
+"name": "Năng lượng Mặt trời Sơn Giang 1",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 12.95034,
+"lon": 109.0238
+},
+{
+"id": "way/1395534242",
+"name": "Nhà máy Thủy điện Đăk R’Tih 1",
+"src": "hydro",
+"mw": 82.0,
+"lat": 11.94589,
+"lon": 107.65991,
+"operator": "Công ty CP Thủy điện Dakr’tih",
+"wikidata": "Q30920454"
+},
+{
+"id": "way/1396189549",
+"name": "Nhà máy Thủy điện TTC H'Mun",
+"src": "hydro",
+"lat": 13.80446,
+"lon": 108.16503
+},
+{
+"id": "way/1414584010",
+"name": "Nhà máy Điện Mặt trời Thiên Tân Solar Ninh Thuận",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 1000.0,
+"lat": 11.68297,
+"lon": 108.96723
+},
+{
+"id": "way/1423259442",
+"name": "THONG NHAT STEEL INCORPORATED",
+"src": "coal",
+"method": "combustion",
+"mw": 10.0,
+"lat": 10.591,
+"lon": 107.045,
+"operator": "THONGNHAT GROUP"
+},
+{
+"id": "way/1453400039",
+"name": "Nhà máy Nhiệt điện Sông Hậu 1",
+"name_en": "Song Hau I Thermal Power Plant",
+"src": "coal",
+"method": "combustion",
+"mw": 1200.0,
+"lat": 9.95285,
+"lon": 105.86141,
+"operator": "Ban QLDA ĐIện Lực Dầu Khí Sông Hậu 1"
+},
+{
+"id": "way/1455073469",
+"name": "Thủy điện Hòa Bình mở rộng",
+"src": "hydro",
+"mw": 480.0,
+"lat": 20.8117,
+"lon": 105.33092
+},
+{
+"id": "way/1458074478",
+"name": "Thủy điện Hòa Thuận",
+"src": "hydro",
+"lat": 22.5412,
+"lon": 106.49637,
+"wikidata": "Q61129423"
+},
+{
+"id": "way/1458350587",
+"name": "Nhà máy Điện gió V1-3 REE Trà Vinh",
+"lat": 9.66239,
+"lon": 106.57625
+},
+{
+"id": "way/1459481022",
+"name": "Điện MT Trung Sơn",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 12.01045,
+"lon": 109.10218
+},
+{
+"id": "way/1459741548",
+"name": "Nhà máy điện mặt trời BIM 1",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 11.44313,
+"lon": 108.89589
+},
+{
+"id": "way/1462548615",
+"name": "Nhà máy Thủy điện Bái Thượng",
+"name_en": "Bai Thuong Hydropower Plant",
+"src": "hydro",
+"mw": 6.0,
+"lat": 19.89608,
+"lon": 105.37679,
+"operator": "CÔNG TY CỔ PHẦN THỦY ĐIỆN BÁI THƯỢNG",
+"start": "2016-11-01"
+},
+{
+"id": "way/1462564263",
+"name": "Nhà máy thuỷ điện Ea Krông Rou",
+"src": "hydro",
+"lat": 12.57643,
+"lon": 108.96217
+},
+{
+"id": "way/1462564264",
+"name": "Dak Rung 1",
+"src": "hydro",
+"lat": 12.11422,
+"lon": 107.63363
+},
+{
+"id": "way/1462564269",
+"name": "Ea MDoal 3",
+"src": "hydro",
+"lat": 12.79957,
+"lon": 108.93091
+},
+{
+"id": "way/1462564278",
+"name": "Dak Po ne 2",
+"src": "hydro",
+"lat": 14.51878,
+"lon": 108.29328
+},
+{
+"id": "way/1463793759",
+"name": "Dak Pia",
+"src": "hydro",
+"lat": 14.66513,
+"lon": 108.15944
+},
+{
+"id": "way/1466065796",
+"name": "Dak Nong 2",
+"src": "hydro",
+"lat": 11.96336,
+"lon": 107.66692
+},
+{
+"id": "way/1466065797",
+"name": "Bu Ca Mau",
+"src": "hydro",
+"lat": 11.87124,
+"lon": 106.97673
+},
+{
+"id": "way/1466065798",
+"name": "Ia Grai 3",
+"src": "hydro",
+"lat": 14.02329,
+"lon": 107.65149
+},
+{
+"id": "way/1466065799",
+"name": "Ia Grai 1",
+"src": "hydro",
+"lat": 13.97198,
+"lon": 107.72382
+},
+{
+"id": "way/1466065800",
+"name": "Dak Ro Sa",
+"src": "hydro",
+"lat": 14.74713,
+"lon": 107.83583
+},
+{
+"id": "way/1467971788",
+"name": "Nhà máy điện nhiệt dư Hoà Phát Dung Quất 2",
+"mw": 300.0,
+"lat": 15.38333,
+"lon": 108.79018,
+"operator": "Công ty cổ phần Thép Hoà Phát Dung Quất"
+},
+{
+"id": "way/1470265326",
+"name": "Nam Ho",
+"src": "hydro",
+"lat": 22.56424,
+"lon": 103.68052
+},
+{
+"id": "way/1470265327",
+"name": "Song Chay 5",
+"src": "hydro",
+"lat": 22.71417,
+"lon": 104.53533
+},
+{
+"id": "way/1470277667",
+"name": "Nam La",
+"src": "hydro",
+"lat": 21.40526,
+"lon": 103.98337
+},
+{
+"id": "way/1470277668",
+"name": "Nam Mo 3",
+"src": "hydro",
+"lat": 21.3196,
+"lon": 104.30223
+},
+{
+"id": "way/1470277669",
+"name": "Nam Cat",
+"src": "hydro",
+"lat": 22.20166,
+"lon": 105.77759
+},
+{
+"id": "way/1500864095",
+"name": "Hồ Gia Hoét floating solar power plant",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 35.0,
+"lat": 10.7035,
+"lon": 107.28862
+},
+{
+"id": "way/1509740254",
+"name": "Da Dang 2",
+"src": "hydro",
+"lat": 11.72196,
+"lon": 108.24684
+},
+{
+"id": "way/1522241570",
+"name": "Nhà máy Nhiệt điện Nông Sơn",
+"src": "coal",
+"mw": 30.0,
+"lat": 15.71676,
+"lon": 108.03103,
+"operator": "Vinacomin",
+"start": "2015-02-05"
+},
+{
+"id": "way/1528336537",
+"name": "Nhà máy Thủy điện Đăk Bla 1",
+"src": "hydro",
+"lat": 14.32563,
+"lon": 108.08225
+},
+{
+"id": "way/1546093470",
+"name": "Nhà máy Thủy điện Dambri 1",
+"src": "hydro",
+"method": "water-pumped-storage",
+"mw": 7.5,
+"lat": 11.62303,
+"lon": 107.7262,
+"operator": "Công ty Cổ phần Đầu tư Phát triển Dambri"
+},
+{
+"id": "way/1547171533",
+"name": "Nhà máy xử lý chất thải rắn Cần Thơ",
+"src": "waste",
+"method": "combustion",
+"mw": 7.5,
+"lat": 9.99356,
+"lon": 105.54297,
+"operator": "Công ty TNHH Năng lượng Môi trường EB"
+},
+{
+"id": "way/1557337240",
+"name": "Thuỷ điện Bạch Đằng",
+"src": "hydro",
+"lat": 22.60007,
+"lon": 106.16806
+},
+{
+"id": "way/1566371340",
+"name": "Hạ tầng cơ sở kỹ thuật",
+"lat": 20.90386,
+"lon": 105.85869
+},
+{
+"id": "relation/11322122",
+"name": "Nhà máy Nhiệt điện Cà Mau",
+"name_en": "Ca Mau power plant",
+"src": "gas",
+"method": "combustion",
+"mw": 1500.0,
+"lat": 9.24012,
+"lon": 105.0611,
+"operator": "Petrovietnam Power Corporation",
+"wikidata": "Q11962958"
+},
+{
+"id": "relation/11380488",
+"name": "Nhà máy Điện mặt trời Châu Đức",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 10.57878,
+"lon": 107.186
+},
+{
+"id": "relation/11987043",
+"name": "Nhà máy điện mặt trời Trung Nam Thuận Nam",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 450.0,
+"lat": 11.43699,
+"lon": 108.84471,
+"operator": "Trungnam Group",
+"start": "2020"
+},
+{
+"id": "relation/11987125",
+"name": "Nhà máy điện mặt trời Hồng Phong 1A",
+"src": "solar",
+"lat": 11.06572,
+"lon": 108.28561
+},
+{
+"id": "relation/13023753",
+"name": "Nhà Máy Phong Điện Phương Mai 3",
+"name_en": "Phuong Mai 3 wind power plant",
+"src": "wind",
+"mw": 21.0,
+"lat": 13.92023,
+"lon": 109.24319,
+"start": "2020-03"
+},
+{
+"id": "relation/13024841",
+"name": "Nhà máy điện gió Phương Mai 1",
+"name_en": "Phuong Mai 1 wind power plant",
+"src": "wind",
+"mw": 26.4,
+"lat": 13.9092,
+"lon": 109.24794
+},
+{
+"id": "relation/13714489",
+"name": "NHÀ MÁY ĐIỆN MẶT TRỜI THIÊN TÂN 1.2",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 11.44262,
+"lon": 108.77685
+},
+{
+"id": "relation/14026715",
+"name": "Điện gió Hướng Linh",
+"src": "wind",
+"mw": 60.0,
+"lat": 16.72014,
+"lon": 106.77955,
+"wikidata": "Q65172501"
+},
+{
+"id": "relation/14541051",
+"name": "Binh Thuan Wind Farm",
+"src": "wind",
+"method": "wind_turbine",
+"mw": 30.0,
+"lat": 11.21006,
+"lon": 108.67615
+},
+{
+"id": "relation/14541103",
+"name": "Dâm Nai Wind Farm",
+"src": "wind",
+"method": "wind_turbine",
+"mw": 39.0,
+"lat": 11.6578,
+"lon": 109.0492,
+"start": "2017"
+},
+{
+"id": "relation/15886127",
+"name": "Tan Linh Windfarm",
+"src": "wind",
+"method": "wind_turbine",
+"lat": 16.67913,
+"lon": 106.67678
+},
+{
+"id": "relation/15886128",
+"name": "Huong Tan Windfarm",
+"src": "wind",
+"method": "wind_turbine",
+"lat": 16.66692,
+"lon": 106.69496
+},
+{
+"id": "relation/15887208",
+"name": "Nhon Hoa 2 Windfarm",
+"src": "wind",
+"method": "wind_turbine",
+"lat": 13.54017,
+"lon": 108.07704
+},
+{
+"id": "relation/15887241",
+"name": "Nhon Hoa 1 Windfarm",
+"src": "wind",
+"method": "wind_turbine",
+"lat": 13.52559,
+"lon": 108.07396
+},
+{
+"id": "relation/15912517",
+"name": "Nhà máy Điện mặt trời Lộc Ninh 1-2-3",
+"src": "solar",
+"mw": 550.0,
+"lat": 11.92909,
+"lon": 106.46993,
+"operator": "Super Energy Corp"
+},
+{
+"id": "relation/15988048",
+"name": "Hong Phong 1 wind farm",
+"src": "wind",
+"method": "wind_turbine",
+"mw": 42.4,
+"lat": 11.0155,
+"lon": 108.32347,
+"owner": "The Blue Circle & AC Energy"
+},
+{
+"id": "relation/15988150",
+"name": "Phu Lac I wind farm",
+"src": "wind",
+"method": "wind_turbine",
+"lat": 11.22463,
+"lon": 108.69111
+},
+{
+"id": "relation/15988171",
+"name": "Phu Lac II wind farm",
+"src": "wind",
+"method": "wind_turbine",
+"lat": 11.23268,
+"lon": 108.69142
+},
+{
+"id": "relation/15988601",
+"name": "Thuan Nhien Phong wind farm",
+"src": "wind",
+"method": "wind_turbine",
+"lat": 11.05118,
+"lon": 108.40913
+},
+{
+"id": "relation/15992299",
+"name": "Hoa Thang 1.2 wind farm",
+"src": "wind",
+"method": "wind_turbine",
+"lat": 11.0719,
+"lon": 108.37272,
+"operator": "Pacific Corporation"
+},
+{
+"id": "relation/15993947",
+"name": "Nhà máy Điện mặt trời Thuận Bắc",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 256.0,
+"lat": 11.68772,
+"lon": 109.00928,
+"operator": "Tập đoàn Xuân Thiện",
+"start": "2020"
+},
+{
+"id": "relation/16031967",
+"name": "Trang trại điện gió BT2",
+"src": "wind",
+"method": "wind_turbine",
+"lat": 17.25631,
+"lon": 106.8269
+},
+{
+"id": "relation/16126872",
+"name": "Nhà máy Điện mặt trời Dầu Tiếng",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 500.0,
+"lat": 11.48029,
+"lon": 106.2174
+},
+{
+"id": "relation/16135954",
+"name": "Nhà máy Điện mặt trời Thác Mơ",
+"src": "solar",
+"mw": 50.0,
+"lat": 11.85783,
+"lon": 107.01968
+},
+{
+"id": "relation/16291454",
+"name": "Solar Cam Lam",
+"src": "solar",
+"lat": 11.99112,
+"lon": 109.08373
+},
+{
+"id": "relation/16355309",
+"name": "Điện mặt trời Vĩnh Tân 1",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 6.2,
+"lat": 11.31394,
+"lon": 108.81044
+},
+{
+"id": "relation/16528602",
+"name": "Nhà máy Nhiệt điện Phú Mỹ",
+"src": "gas",
+"method": "combustion",
+"mw": 3975.0,
+"lat": 10.60222,
+"lon": 107.03549,
+"operator": "Công ty Nhiệt điện Phú Mỹ",
+"wikidata": "Q7189879"
+},
+{
+"id": "relation/16850381",
+"name": "Wind Farm Hoàng Hải",
+"src": "wind",
+"method": "wind_turbine",
+"lat": 16.58894,
+"lon": 106.76714
+},
+{
+"id": "relation/16850450",
+"name": "Wind Farm Tài Tâm",
+"src": "wind",
+"method": "wind_turbine",
+"lat": 16.57766,
+"lon": 106.7536
+},
+{
+"id": "relation/16942144",
+"name": "Nhà máy Nhiệt điện Hải Phòng",
+"name_en": "Hai Phong Thermal Power Station",
+"src": "coal",
+"method": "combustion",
+"mw": 1200.0,
+"lat": 20.94045,
+"lon": 106.75802,
+"operator": "Công ty CP Nhiệt điện Hải Phòng",
+"wikidata": "Q17779747"
+},
+{
+"id": "relation/18089019",
+"name": "Nhà máy điện mặt trời Gio Thành 1,2",
+"src": "solar",
+"mw": 100.0,
+"lat": 16.91715,
+"lon": 107.14901,
+"operator": "BB Group"
+},
+{
+"id": "relation/18089020",
+"name": "Điện mặt trời Bàu Ngư",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 11.46988,
+"lon": 108.96298
+},
+{
+"id": "relation/18089021",
+"name": "Nhà máy điện gió Ia Pết – Đak Đoa 1 và 2",
+"src": "wind",
+"method": "wind_turbine",
+"mw": 198.0,
+"lat": 13.89495,
+"lon": 108.12034
+},
+{
+"id": "relation/18092595",
+"name": "Nhà máy ĐMT Gelex Ninh Thuận",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 11.43365,
+"lon": 108.9961
+},
+{
+"id": "relation/18092596",
+"name": "Nhà máy điện mặt trời Mũi Né",
+"name_en": "Mui Ne Solar Power Plant",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 40.0,
+"lat": 10.99863,
+"lon": 108.31918,
+"operator": "Công ty cổ phần Đức Thành Mũi Né",
+"wikidata": "Q65162281"
+},
+{
+"id": "relation/18092599",
+"name": "Điện mặt trời Ninh Phước 6",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 11.53133,
+"lon": 108.87098
+},
+{
+"id": "relation/18092600",
+"name": "Nhà máy Điện Mặt trời Phước Thái",
+"src": "solar",
+"lat": 11.57032,
+"lon": 108.86273
+},
+{
+"id": "relation/18092601",
+"name": "Nhà máy điện mặt trời Xuân Thành",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 11.46177,
+"lon": 108.79703
+},
+{
+"id": "relation/18122773",
+"name": "Nhà máy điện gió Nhơn Hội",
+"src": "wind",
+"method": "wind_turbine",
+"mw": 60.0,
+"lat": 13.84599,
+"lon": 109.28521
+},
+{
+"id": "relation/18122774",
+"name": "ĐIỆN MẶT TRỜI THIÊN TÂN 1.4",
+"src": "solar",
+"lat": 11.82373,
+"lon": 109.06525
+},
+{
+"id": "relation/18122775",
+"name": "Nhà máy Điện gió BB Power Gia Lai",
+"src": "wind",
+"method": "wind_turbine",
+"mw": 100.0,
+"lat": 13.77775,
+"lon": 108.45327,
+"operator": "BB Group"
+},
+{
+"id": "relation/18122776",
+"name": "Nhà máy điện mặt trời Phan Lâm 1",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 36.72,
+"lat": 11.32822,
+"lon": 108.36156,
+"operator": "Super Energy Corp"
+},
+{
+"id": "relation/18122777",
+"name": "Trang trại phong điện HBRE Chư Prông",
+"src": "wind",
+"mw": 50.0,
+"lat": 13.79724,
+"lon": 107.97414,
+"operator": "Super Energy Corp"
+},
+{
+"id": "relation/18122778",
+"name": "Nhà máy điện mặt trời Văn Giáo 1, 2",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 100.0,
+"lat": 10.56774,
+"lon": 104.9672,
+"operator": "Super Energy Corp"
+},
+{
+"id": "relation/18122779",
+"name": "Nhà máy Điện mặt trời Lộc Ninh 4",
+"src": "solar",
+"mw": 200.0,
+"lat": 11.89629,
+"lon": 106.49472
+},
+{
+"id": "relation/18122781",
+"name": "Điện gió Trung Nam",
+"src": "wind",
+"method": "wind_turbine",
+"mw": 151.95,
+"lat": 11.70813,
+"lon": 109.02855,
+"operator": "Trungnam Group"
+},
+{
+"id": "relation/18122784",
+"name": "Điện gió Ea Nam - Đắk Lắk",
+"src": "wind",
+"method": "wind_turbine",
+"mw": 400.0,
+"lat": 13.148,
+"lon": 108.21016,
+"operator": "Trungnam Group",
+"start": "2021"
+},
+{
+"id": "relation/18122787",
+"name": "Điện gió Số 5 Ninh Thuận",
+"src": "wind",
+"method": "wind_turbine",
+"mw": 46.2,
+"lat": 11.51265,
+"lon": 108.86973,
+"operator": "Trungnam Group"
+},
+{
+"id": "relation/18122790",
+"name": "Nhà máy ĐIỆN MẶT TRỜI Hacom Solar",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 11.4303,
+"lon": 108.87131
+},
+{
+"id": "relation/18122791",
+"name": "Nhà máy Điện mặt trời Ea Súp",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 600.0,
+"lat": 13.30238,
+"lon": 107.73272,
+"operator": "Tập đoàn Xuân Thiện",
+"start": "2020"
+},
+{
+"id": "relation/18122792",
+"name": "Nhà máy thủy điện Ngòi Phát",
+"src": "hydro",
+"mw": 84.0,
+"lat": 22.60386,
+"lon": 103.79663,
+"operator": "Công ty CP Đầu tư & Phát triển Điện miền Bắc 2",
+"wikidata": "Q30920448"
+},
+{
+"id": "relation/18122793",
+"name": "Nhà máy Nhiệt điện Mông Dương 2",
+"name_en": "Mong Duong 2 power station",
+"src": "coal",
+"method": "combustion",
+"mw": 1200.0,
+"lat": 21.0732,
+"lon": 107.34864,
+"operator": "Công ty TNHH Điện lực AES - TKV"
+},
+{
+"id": "relation/19293321",
+"name": "Đập giữ nước thành phố Cao Bằng",
+"src": "hydro",
+"lat": 22.65467,
+"lon": 106.2676
+},
+{
+"id": "relation/19914933",
+"name": "Điện mặt trời Fujiwara",
+"src": "solar",
+"method": "photovoltaic",
+"lat": 13.8628,
+"lon": 109.27197
+},
+{
+"id": "relation/20697829",
+"name": "Nhà máy điện Hiệp Phước",
+"src": "gas",
+"method": "combustion",
+"mw": 375.0,
+"lat": 10.64256,
+"lon": 106.74738,
+"operator": "Công ty TNHH Điện lực Hiệp Phước",
+"start": "1998-07"
+},
+{
+"id": "relation/20697830",
+"name": "Nhà máy điện khí LNG Hiệp Phước",
+"src": "gas",
+"method": "combustion",
+"mw": 1200.0,
+"lat": 10.64019,
+"lon": 106.75026,
+"operator": "Công ty TNHH Điện lực Hiệp Phước",
+"construction": "plant"
+},
+{
+"id": "relation/20777516",
+"name": "Điện Mặt Trời Bình Nguyên",
+"src": "solar",
+"method": "photovoltaic",
+"mw": 50.0,
+"lat": 15.33017,
+"lon": 108.7089
+},
+{
+"id": "relation/21186931",
+"name": "Nhà máy điện rác Sóc Sơn",
+"src": "waste",
+"method": "combustion",
+"mw": 90.0,
+"lat": 21.32998,
+"lon": 105.83511,
+"operator": "Công ty Cổ phần Năng lượng Môi trường Thiên Ý"
+}
+]
+}
