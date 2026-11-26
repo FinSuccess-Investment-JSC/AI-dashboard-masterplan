@@ -13,7 +13,7 @@ import re
 from urllib.parse import urlsplit, unquote
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = ['index.html','Bank/index.html','Chung-khoan/index.html','Dau-khi/index.html','Sugar/index.html','duong/index.html','Dien/index.html','Bat-dong-san/index.html','Bat-dong-san-KCN/index.html','Det-may/index.html','Cang-bien/index.html','Nong-nghiep/index.html','Thuy-san/index.html','Van-tai-bien/index.html','Thep/index.html','Xay-dung/index.html','Bao-hiem/index.html','Bao-hiem/cu.html','Ban-le/index.html','Sua/index.html','Bia/index.html','O-to-xe-may/index.html','Duoc/index.html','Phan-bon/index.html','Vien-thong/index.html','Cao-su/index.html','404.html']
+PAGES = ['index.html','Bank/index.html','Chung-khoan/index.html','Dau-khi/index.html','Sugar/index.html','duong/index.html','Dien/index.html','Bat-dong-san/index.html','Bat-dong-san-KCN/index.html','Det-may/index.html','Cang-bien/index.html','Nong-nghiep/index.html','Thuy-san/index.html','Van-tai-bien/index.html','Thep/index.html','Xay-dung/index.html','Vat-lieu-xay-dung/index.html','Dau-tu-cong/index.html','Bao-hiem/index.html','Bao-hiem/cu.html','Ban-le/index.html','Sua/index.html','Bia/index.html','O-to-xe-may/index.html','Duoc/index.html','Phan-bon/index.html','Vien-thong/index.html','Cao-su/index.html','404.html']
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -43,7 +43,7 @@ def main():
         page.write_text(text)
     manifest={
         'version':args.version,
-        'routes':{'home':'./','oil':'Dau-khi/','sugar':'Sugar/','bank':'Bank/','securities':'Chung-khoan/','power':'Dien/','realestate':'Bat-dong-san/','industrial':'Bat-dong-san-KCN/','textile':'Det-may/','port':'Cang-bien/','agri':'Nong-nghiep/','seafood':'Thuy-san/','shipping':'Van-tai-bien/','steel':'Thep/','construction':'Xay-dung/','insurance':'Bao-hiem/','retail':'Ban-le/','dairy':'Sua/','beer':'Bia/','auto':'O-to-xe-may/','pharma':'Duoc/','fertilizer':'Phan-bon/','telecom':'Vien-thong/','rubber':'Cao-su/'},
+        'routes':{'home':'./','oil':'Dau-khi/','sugar':'Sugar/','bank':'Bank/','securities':'Chung-khoan/','power':'Dien/','realestate':'Bat-dong-san/','industrial':'Bat-dong-san-KCN/','textile':'Det-may/','port':'Cang-bien/','agri':'Nong-nghiep/','seafood':'Thuy-san/','shipping':'Van-tai-bien/','steel':'Thep/','construction':'Xay-dung/','materials':'Vat-lieu-xay-dung/','publicinv':'Dau-tu-cong/','insurance':'Bao-hiem/','retail':'Ban-le/','dairy':'Sua/','beer':'Bia/','auto':'O-to-xe-may/','pharma':'Duoc/','fertilizer':'Phan-bon/','telecom':'Vien-thong/','rubber':'Cao-su/'},
         'files':{name:digest(ROOT/name) for name in sorted(public_files)},
         'note':'Release identifies site files; observation dates remain in each data source.'
     }
