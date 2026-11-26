@@ -531,13 +531,11 @@ function towerPane(p) {
   const c9 = has('ctr_viettel_share') ? chartCard({id: 'vt-tw-viettel', title: 'CTR: tỷ trọng doanh thu từ Tập đoàn Viettel (%)', cats: vs.cats, series: [{name: 'Doanh thu từ Viettel / tổng doanh thu', color: '#C8394B', values: vs.vals[0], kind: 'bar'}], unit: '%', digits: 0, native: 'bar', src: seriesSrc(['ctr_viettel_share']), cadence: 'yearly'}) : null;
   const inf = yearly('ctr_rev_infra'), tw = yearly('ctr_towers'), ys = [...inf.keys()].filter(y => tw.has(y)).sort();
   const c10 = ys.length > 1 ? chartCard({id: 'vt-tw-bridge', title: 'CTR: doanh thu hạ tầng cho thuê trên mỗi trạm sở hữu · chỉ số tham chiếu (triệu đồng/trạm/năm)', sub: 'Tử số: doanh thu mảng hạ tầng cho thuê cả năm · mẫu số: số trạm sở hữu cuối năm', cats: ys, series: [{name: 'Doanh thu hạ tầng cho thuê / trạm sở hữu cuối năm', color: COL[3], values: ys.map(y => inf.get(y) / tw.get(y) * 1000), kind: 'bar'}], unit: 'triệu đ/trạm', digits: 1, native: 'bar', src: seriesSrc(['ctr_rev_infra', 'ctr_towers']), cadence: 'yearly', note: 'Chỉ số tham chiếu: mẫu số là trạm sở hữu cuối kỳ, không phải trạm khai thác bình quân; chưa tách giá thuê và số khách thuê'}) : null;
-  const facts = (T.companies?.CTR?.facts || []).filter(f => !/rủi ro|kỳ vọng|đánh giá|nhận định/i.test(f.text));
-  const c11 = tableCard('vt-tw-facts', 'CTR: kế hoạch, hợp đồng và thông tin vận hành theo công bố', ['Nội dung', 'Nguồn'], facts.map(f => [esc(f.text), srcA(f.src)]), facts.map(f => f.src), 'Số liệu CTR đại diện cho doanh nghiệp, không đại diện toàn thị trường TowerCo');
+  // Bảng kế hoạch, hợp đồng CTR (4.5) bỏ 26/11/2026 theo yêu cầu người dùng.
   stages(p, 'mt2', 'tower', [
     ['market', 'Thị trường', 'Tài sản & chủ sở hữu trạm', [qpanel('4.1', 'Trạm viễn thông do nhà mạng hay TowerCo sở hữu?', [c1], 'Đếm theo <b>vị trí trạm</b> (site, nơi đặt cột/nhà trạm), khác số thiết bị BTS. CTR công bố số vị trí sở hữu và số vị trí có từ 2 nhà mạng thuê; chưa công bố số vị trí đang khai thác. Cơ cấu sở hữu toàn thị trường là số cuối 2019.')]],
     ['ctr', 'CTR', 'Số trạm & khách thuê trên trạm', [qpanel('4.2', 'CTR tăng trưởng nhờ thêm trạm hay thêm khách thuê trên mỗi trạm?', [c4, c6])]],
     ['rev', 'Doanh thu', 'Doanh thu, biên gộp & tập trung khách hàng', [qpanel('4.3', 'Mảng nào tạo doanh thu, biên lợi nhuận ra sao?', [c7, c8, c10], leadCtrSeg()), qpanel('4.4', 'CTR phụ thuộc vào khách hàng lớn đến mức nào?', [c9], (() => { const v = lastY('ctr_viettel_share'), f = (S('ctr_viettel_share')?.points || [])[0]; return v ? `Doanh thu từ Tập đoàn Viettel chiếm <b>${nf(v.v, 0)}%</b> tổng doanh thu CTR năm ${v.y}${f ? ` (${nf(f[1], 0)}% năm ${f[0]})` : ''}, theo CTR công bố cho toàn công ty, chưa tách theo mảng.` : ''; })())]],
-    ['plan', 'Kế hoạch', 'Kế hoạch & hợp đồng', [qpanel('4.5', 'CTR công bố gì về kế hoạch trạm và hợp đồng?', [c11], go('Số liệu tài chính CTR', 'mt14:listed'))]]
   ]);
 }
 function leadCtrSeg() {
@@ -641,7 +639,7 @@ const BTAB = [
   ['market', '01', 'Toàn thị trường', 'Toàn thị trường', 'Quy mô và tăng trưởng → thuê bao mới, mức thâm nhập → cơ cấu doanh thu → cạnh tranh', marketPane],
   ['mobile', '02', 'Di động & 5G', 'Di động & 5G', 'Đầu tư và năng lực mạng → sử dụng → thương mại hóa → thị phần', mobilePane],
   ['fixed', '03', 'Internet cố định', 'Internet cố định', 'Hạ tầng và mức phủ → thuê bao, thâm nhập hộ gia đình → trường hợp FOX', fixedPane],
-  ['tower', '04', 'TowerCo & hạ tầng', 'TowerCo & hạ tầng', 'Tài sản và chủ sở hữu trạm → số trạm, khách thuê CTR → doanh thu, biên gộp → kế hoạch, hợp đồng', towerPane],
+  ['tower', '04', 'TowerCo & hạ tầng', 'TowerCo & hạ tầng', 'Tài sản và chủ sở hữu trạm → số trạm, khách thuê CTR → doanh thu, biên gộp', towerPane],
   ['policy', '05', 'Chính sách', 'Chính sách', 'Cấp phép và phổ tần → lộ trình, nghĩa vụ triển khai → quy định về giá cước và cạnh tranh', policyPane]
 ];
 const OTAB = [
