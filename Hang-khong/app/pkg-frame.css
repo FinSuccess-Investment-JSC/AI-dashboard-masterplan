@@ -202,3 +202,19 @@
 .hk-hbr i{height:14px;background:var(--line,#eef0f5);border-radius:4px;overflow:hidden}.hk-hbr i b{display:block;height:100%;border-radius:4px}
 .hk-hbr em{font-style:normal;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}.hk-hbr em small{font-weight:500;color:var(--muted,#7a8399)}
 .hk-heat-note{font-size:11.5px;color:var(--muted,#7a8399);margin:6px 0 0}
+
+/* Mô hình kiếm tiền chi tiết theo loại hình (26/11/2026) */
+.hk-models{display:grid;gap:14px}
+.hk-model{border:1px solid var(--line,#e2e7f1);border-radius:12px;padding:14px 16px;background:var(--card,#fff)}
+.hk-model header{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.hk-model header span{font:700 12px Inter,sans-serif;color:#fff;background:#1D2678;border-radius:6px;padding:2px 7px}
+.hk-model header h4{margin:0;font-size:15.5px;color:#1d2678}.hk-model header p{margin:0;font-size:12.5px;color:var(--ink2,#3b4256)}
+.hk-mnote{margin:6px 0 10px;font-size:12.5px;color:var(--muted,#6b7686);line-height:1.5}
+.hk-mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hk-mgrid section{background:var(--bg2,#f6f8fd);border-radius:10px;padding:10px 12px}
+.hk-model h5{margin:0 0 6px;font:700 11px Inter,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--muted,#7a8399)}
+.hk-mgrid ul{margin:0;padding-left:16px;font-size:12.8px;line-height:1.55;color:var(--ink2,#39455a)}.hk-mgrid li{margin:0 0 4px}.hk-mgrid li b{color:var(--ink,#1d2333)}
+.hk-mfins{margin-top:10px}.hk-mfin{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;font-variant-numeric:tabular-nums;font-size:13px;padding:4px 0;border-top:1px dashed var(--line,#e2e7f1)}
+.hk-mfin>b{min-width:44px;color:#1d2678}.hk-mfin span i{font-style:normal;color:var(--muted,#7a8399);font-size:11.5px;margin-right:5px}
+.hk-model nav{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:8px}.hk-model nav a{font-size:12px;font-weight:650;color:#2938A8}
+@media (max-width:900px){.hk-mgrid{grid-template-columns:1fr}}
