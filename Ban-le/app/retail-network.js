@@ -15,7 +15,9 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '
 const nf = (v, d = 0) => Number.isFinite(v) ? v.toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d}) : '—';
 const dd = s => s ? s.slice(8, 10) + '/' + s.slice(5, 7) + '/' + s.slice(0, 4) : '—';
 
-const GROUPS = D.groups || {grocery: 'Bách hóa, siêu thị & tiện lợi', electronics: 'Điện máy & điện thoại', pharmacy: 'Nhà thuốc', jewelry: 'Trang sức', mother: 'Mẹ & bé'};
+const GROUPS = D.groups || {'grocery': 'Bách hóa & minimart', 'supermarket': 'Siêu thị', 'convenience': 'Cửa hàng tiện lợi', 'electronics': 'Điện máy & điện thoại', 'pharmacy': 'Nhà thuốc', 'jewelry': 'Trang sức', 'mother': 'Mẹ & bé'};
+// Nhóm không có chuỗi niêm yết (siêu thị, tiện lợi) chỉ để tham chiếu mô hình khác.
+const REF = g => !all.some(c => c.group === g && c.listed);
 const BRAND = {'bach-hoa-xanh': '#1E8F4E', 'winmart-plus': '#C8102E', 'the-gioi-di-dong': '#E0A800', 'dien-may-xanh': '#1F5FBF', 'an-khang': '#7CB342',
   'avakids': '#D63384', 'long-chau': '#14306B', 'fpt-shop': '#E4572E', 'pnj': '#9C6B1E'};
 const PEER = ['#8E9BB5', '#F2A65A', '#6CC3B5', '#B48CC8', '#E8C547', '#7FA7D9', '#D98C8C', '#9CC48A', '#C9A27E', '#5FA8A8', '#C48BB0', '#A0A6B0'];
@@ -42,7 +44,7 @@ all.forEach(c => {
 const bySlug = Object.fromEntries(all.map(c => [c.slug, c]));
 const SRC_TXT = `Bizmap.live (API), cập nhật ${dd(D.source_updated)}`;
 const inGroup = g => all.filter(c => c.group === g).sort((a, b) => (b.listed - a.listed) || b.stores - a.stores);
-const defaultSel = g => { const cs = inGroup(g); const l = cs.filter(c => c.listed).map(c => c.slug); const peers = cs.filter(c => !c.listed).sort((a, b) => b.stores - a.stores).slice(0, g === 'grocery' ? 0 : 2).map(c => c.slug); return new Set([...l, ...peers]); };
+const defaultSel = g => { const cs = inGroup(g); const l = cs.filter(c => c.listed).map(c => c.slug); const peers = cs.filter(c => !c.listed).sort((a, b) => b.stores - a.stores).slice(0, l.length ? 2 : 3).map(c => c.slug); return new Set([...l, ...peers]); };
 const state = {group: 'grocery', sel: defaultSel('grocery')};
 const chosen = () => inGroup(state.group).filter(c => state.sel.has(c.slug));
 
@@ -54,7 +56,8 @@ const tag = c => c.listed ? `<small class="bn-tk">${esc(c.ticker)}</small>` : '<
 /* ---------- Nhóm, bộ chọn chuỗi, ô số ---------- */
 function renderFilters() {
   const host = byId('bnFilters'); if (!host) return;
-  host.innerHTML = `<div class="bn-groups" role="tablist">${Object.entries(GROUPS).map(([k, l]) => `<button type="button" role="tab" class="bn-grp${k === state.group ? ' on' : ''}" aria-selected="${k === state.group}" data-g="${k}">${esc(l)}</button>`).join('')}</div>
+  host.innerHTML = `<div class="bn-groups" role="tablist">${Object.entries(GROUPS).map(([k, l]) => `<button type="button" role="tab" class="bn-grp${k === state.group ? ' on' : ''}" aria-selected="${k === state.group}" data-g="${k}">${esc(l)}${REF(k) ? ' <small>tham chiếu</small>' : ''}</button>`).join('')}</div>
+    ${REF(state.group) ? '<p class="bn-refnote">Nhóm tham chiếu: không có doanh nghiệp niêm yết cùng mô hình. Mô hình cửa hàng khác bách hóa/minimart (BHX, WinMart+) nên không so trực tiếp.</p>' : ''}
     <div class="bn-chips">${inGroup(state.group).map(c => `<button type="button" class="bn-chip${state.sel.has(c.slug) ? ' on' : ''}${c.listed ? ' listed' : ''}" data-slug="${c.slug}" style="--bc:${c.color}" aria-pressed="${state.sel.has(c.slug)}"><i></i>${esc(c.name)}${c.listed ? ' · ' + esc(c.ticker) : ''}</button>`).join('')}</div>`;
   host.querySelectorAll('.bn-grp').forEach(b => b.addEventListener('click', () => { state.group = b.dataset.g; state.sel = defaultSel(state.group); update(true); }));
   host.querySelectorAll('.bn-chip').forEach(b => b.addEventListener('click', () => { const s = b.dataset.slug; state.sel.has(s) ? state.sel.delete(s) : state.sel.add(s); update(false); }));
@@ -159,7 +162,8 @@ if (bhx?.regions && wm?.regions) {
   const gTot = G.reduce((a, c) => a + c.stores, 0), share = (bhx.stores + wm.stores) / gTot * 100;
   const regShare = (c, r) => c.regions[r] / REG.reduce((a, x) => a + c.regions[x], 0) * 100;
   const lead = r => G.slice().sort((a, b) => (b.regions?.[r] || 0) - (a.regions?.[r] || 0))[0];
-  take('bnKpis', `BHX và WinMart+ chiếm ${nf(share)}% số điểm bán Bizmap ghi nhận trong nhóm bách hóa, siêu thị & tiện lợi; đối thủ đông điểm nhất là chuỗi tiện lợi (${G.filter(c => !c.listed).sort((a, b) => b.stores - a.stores).slice(0, 2).map(c => c.name).join(', ')}) chứ không phải siêu thị. Kiểm tiếp số điểm mới của Co.opmart, Kingfoodmart qua ảnh chụp tuần.`);
+  const peers = G.filter(c => !c.listed).sort((a, b) => b.stores - a.stores);
+  take('bnKpis', `BHX và WinMart+ chiếm ${nf(share)}% số điểm bán Bizmap ghi nhận trong nhóm bách hóa & minimart; đối thủ cùng mô hình đông điểm nhất là ${peers.slice(0, 2).map(c => `${c.name} (${nf(c.stores)})`).join(', ')}. Siêu thị và cửa hàng tiện lợi khác mô hình nên tách thành nhóm tham chiếu riêng. Kiểm tiếp số điểm mới của Co.op Food, Kingfoodmart qua ảnh chụp tuần.`);
   take('bnMap', 'WinMart+ dày nhất ở Hà Nội, BHX ở TP.HCM và Đông Nam Bộ, nên cạnh tranh trực diện dồn vào các tỉnh có hình tròn mang cả hai màu. Kiểm tiếp tỉnh mới xuất hiện màu của từng chuỗi.');
   take('bnRegion', `BHX có ${nf(regShare(bhx, 'Nam'))}% điểm bán ở miền Nam, WinMart+ ${nf(regShare(wm, 'Bắc'))}% ở miền Bắc; trong nhóm, chuỗi đông điểm nhất ở miền Bắc là ${lead('Bắc').name}, ở miền Nam là ${lead('Nam').name}. Kiểm tiếp tỷ trọng miền của BHX khi chuỗi mở ra phía Bắc.`);
 }
