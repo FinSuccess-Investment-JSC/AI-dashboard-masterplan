@@ -312,30 +312,22 @@ function publicPane(p) {
 function contractorPane(p) {
   const civ = ['CTD', 'HBC'], inf = ['VCG', 'FCN', 'DPG', 'C4G', 'LCG'], bot = ['HHV', 'CII', 'HUT'];
   const basket = take('xd-72'); if (basket) { basket.querySelector('.pw-src') || basket.append(el('div', 'pw-src', 'Nguồn: ' + BASKET_SRC)); basket.append(el('div', 'pw-src-note', BASKET_W)); }
-  const bn = take('xd-71'); if (bn) bn.append(el('div', 'pw-src-note', 'Phạm vi: một tỉnh (Bắc Ninh, gồm Bắc Giang cũ), một quý, gốc bình quân 2025 = 100 — khác gốc 2024 của rổ; chỉ đọc chiều.'));
+  block('xd-71')?.remove(); // 26/11/2026 (người dùng): bỏ thẻ chỉ số giá xây dựng Bắc Ninh Q3/2026
   p.append(flow([['xd-g-civil', 'Nhóm 1', 'Dân dụng & nhà xưởng'], ['xd-g-infra', 'Nhóm 2', 'Thi công hạ tầng'], ['xd-g-bot', 'Nhóm 3', 'BOT & thu phí']]),
-    grpHead('civil', 'Dân dụng & nhà xưởng', 'CTD • HBC · ký mới, backlog → thi công, nghiệm thu → doanh thu và biên'),
-    stage('civil-backlog', 'Khâu 1', 'Ký mới, backlog'),
-    panel('civil-b', '3.1', 'Nhà thầu dân dụng có bao nhiêu việc trong tay?', [playersFor(civ, 'Dân dụng, nhà xưởng'), projectList(x => x.tickers.some(t => civ.includes(t.code)))]),
-    stage('civil-exec', 'Khâu 2', 'Thi công, nghiệm thu'),
-    panel('civil-e', '3.2', 'Tiền ứng trước, phải thu và dở dang của nhà thầu dân dụng ra sao?', finSnapshot(civ)),
-    stage('civil-margin', 'Khâu 3', 'Doanh thu và biên'),
-    panel('civil-m', '3.3', 'Biên gộp nhà thầu dân dụng đi thế nào?', gmChart(civ)),
-    grpHead('infra', 'Thi công hạ tầng', 'VCG • FCN • DPG • C4G • LCG · ký mới, backlog → thi công, nghiệm thu → doanh thu, biên và chi phí vật liệu'),
-    stage('infra-backlog', 'Khâu 1', 'Ký mới, backlog'),
-    panel('infra-b', '3.4', 'Nhà thầu hạ tầng có bao nhiêu việc trong tay?', [playersFor(inf, 'Thi công hạ tầng'), projectList(x => x.tickers.some(t => inf.includes(t.code)))]),
-    stage('infra-exec', 'Khâu 2', 'Thi công, nghiệm thu'),
-    panel('infra-e', '3.5', 'Tiền ứng trước, phải thu và dở dang của nhà thầu hạ tầng ra sao?', finSnapshot(inf)),
-    stage('infra-margin', 'Khâu 3', 'Doanh thu, biên và chi phí vật liệu'),
-    panel('infra-m', '3.6', 'Biên gộp nhà thầu hạ tầng đi thế nào?', gmChart(inf, 'Biên gộp theo quý (%)', 'Số toàn doanh nghiệp; VCG, DPG, LCG gồm mảng ngoài xây lắp.')),
-    panel('infra-cost', '3.7', 'Chi phí vật liệu của nhà thầu đường tăng bao nhiêu?', [basket, bn], 'Rổ giá vật liệu và chỉ số giá xây dựng đặt cạnh biên gộp; chưa so với đơn giá hợp đồng.'),
-    grpHead('bot', 'BOT & thu phí', 'HHV • CII • HUT · đầu tư dự án → vận hành, thu phí → doanh thu và biên'),
-    stage('bot-invest', 'Khâu 1', 'Đầu tư dự án, backlog'),
-    panel('bot-b', '3.8', 'Nhà đầu tư BOT đang làm dự án nào, nợ vay bao nhiêu?', [playersFor(bot, 'BOT, thu phí'), projectList(x => x.segment === 'BOT & thu phí')]),
-    stage('bot-toll', 'Khâu 2', 'Vận hành, thu phí'),
-    panel('bot-t', '3.9', 'Doanh thu thu phí và lưu lượng trạm thay đổi thế nào?', take('xd-70')),
-    stage('bot-margin', 'Khâu 3', 'Doanh thu và biên'),
-    panel('bot-m', '3.10', 'Biên gộp doanh nghiệp BOT đi thế nào?', gmChart(bot, 'Biên gộp theo quý (%)', 'Số hợp nhất gồm thu phí, xây lắp và mảng khác (CII, HUT có bất động sản).')));
+    // 26/11/2026 (người dùng): bỏ khâu "Ký mới, backlog" (bảng kế hoạch/backlog xd-60 + danh sách dự án) và "Thi công, nghiệm thu"
+    // (bảng ứng trước, phải thu, dở dang); số ứng trước, phải thu theo nhóm ở Tài chính ngành, backlog công bố ở Doanh nghiệp niêm yết.
+    grpHead('civil', 'Dân dụng & nhà xưởng', 'CTD • HBC · doanh thu và biên'),
+    stage('civil-margin', 'Khâu 1', 'Doanh thu và biên'),
+    panel('civil-m', '3.1', 'Biên gộp nhà thầu dân dụng đi thế nào?', gmChart(civ)),
+    grpHead('infra', 'Thi công hạ tầng', 'VCG • FCN • DPG • C4G • LCG · doanh thu, biên và chi phí vật liệu'),
+    stage('infra-margin', 'Khâu 1', 'Doanh thu, biên và chi phí vật liệu'),
+    panel('infra-m', '3.2', 'Biên gộp nhà thầu hạ tầng đi thế nào?', gmChart(inf, 'Biên gộp theo quý (%)', 'Số toàn doanh nghiệp; VCG, DPG, LCG gồm mảng ngoài xây lắp.')),
+    panel('infra-cost', '3.3', 'Chi phí vật liệu của nhà thầu đường tăng bao nhiêu?', basket, 'Rổ giá vật liệu đặt cạnh biên gộp; chưa so với đơn giá hợp đồng.'),
+    grpHead('bot', 'BOT & thu phí', 'HHV • CII • HUT · vận hành, thu phí → doanh thu và biên'),
+    stage('bot-toll', 'Khâu 1', 'Vận hành, thu phí'),
+    panel('bot-t', '3.4', 'Doanh thu thu phí và lưu lượng trạm thay đổi thế nào?', take('xd-70')),
+    stage('bot-margin', 'Khâu 2', 'Doanh thu và biên'),
+    panel('bot-m', '3.5', 'Biên gộp doanh nghiệp BOT đi thế nào?', gmChart(bot, 'Biên gộp theo quý (%)', 'Số hợp nhất gồm thu phí, xây lắp và mảng khác (CII, HUT có bất động sản).')));
 }
 function cementPane(p) {
   p.append(kpiTiles([kCem(), kCoal(), kCp()]) || '',
@@ -374,7 +366,7 @@ function asphaltPane(p) {
     stage('asph-dom', 'Khâu 2', 'Giá mua trong nước'),
     panel('asph-d', '6.2', 'Giá nhựa đường trong nước và doanh nghiệp bán', [gap('chưa có giá nhựa đường theo đồng/tấn trong nguồn mở được.'), take('xd-64')]),
     stage('asph-cost', 'Khâu 3', 'Chi phí thi công'),
-    panel('asph-c', '6.3', 'Nhựa đường tác động chi phí thi công thế nào?', card(`<p>Nhựa đường chiếm 31,25% rổ giá vật liệu nhà thầu đường. Chỉ số giá Bắc Ninh quý III/2026: vật liệu bê tông nhựa, nhựa đường 120,45 (2025 = 100). ${go('Rổ giá vật liệu và chỉ số giá xây dựng', '?section=contractor&g=infra-cost#mt2')}</p><div class="pw-src">Nguồn: ${artLink('tvnd-bacninh-1028')}</div>`)));
+    panel('asph-c', '6.3', 'Nhựa đường tác động chi phí thi công thế nào?', card(`<p>Nhựa đường chiếm 31,25% rổ giá vật liệu nhà thầu đường. ${go('Rổ giá vật liệu', '?section=contractor&g=infra-cost#mt2')}</p><div class="pw-src">Nguồn: ${BASKET_SRC}</div>`)));
 }
 function glassPane(p) {
   p.append(flow([['xd-st-glass-cap', 'Khâu 1', 'Công suất'], ['xd-st-glass-sales', 'Khâu 2', 'Tiêu thụ, giá bán'], ['xd-st-glass-eff', 'Khâu 3', 'Hiệu quả mảng vật liệu']]),
@@ -444,8 +436,10 @@ const CONTRACTS = [['CTD', 'Lego, Nhà hát Opera, sân bay Gia Bình', NA, NA, 
   ['C4G', 'Cầu Ninh Cường; ký mới 2025', NA, '~453; &gt;2.700', NA], ['LCG', 'Đường Di sản Hưng Yên; cao tốc Nội Bài – Lào Cai', NA, '1.140; ~1.400', NA], ['HHV', 'Ký mới 2026', NA, '~2.000', NA]];
 function contractsFor(codes) {
   const L = CONTRACTS.filter(r => codes.includes(r[0])); if (!L.length) return gap('doanh nghiệp vật liệu không công bố backlog hợp đồng; sản lượng, công suất ở Bức tranh ngành (Xi măng, Đá & cát, Nhựa đường, Kính & gạch).');
-  return card(`<div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold><thead><tr><th>Mã</th><th>Hợp đồng, gói thầu</th><th>Giá trị toàn gói (tỷ đ)</th><th>Phần thuộc doanh nghiệp (tỷ đ)</th><th>Backlog công bố (tỷ đ)</th></tr></thead><tbody>${L.map(r => `<tr><td><span class="xd-tk">${r[0]}</span></td><td>${r[1]}</td>${r.slice(2).map(x => x === NA ? `<td>${x}</td>` : `<td class="n">${x}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
-    <div class="pw-src">Nguồn: bảng kế hoạch, kết quả, backlog ở ${go('Nhà thầu & BOT', '?section=contractor#mt2')} (đường dẫn từng mã)</div><div class="pw-src-note">Giá trị toàn gói liên danh không phải phần của doanh nghiệp; ô "chưa công bố" là nguồn đã mở chưa nêu. Backlog là số doanh nghiệp tự công bố, kỳ khác nhau.</div>`);
+  // Nguồn từng mã lấy từ cột Nguồn của bảng kế hoạch/backlog gốc (xd-60, giữ bản sao trong XD_SHARE.players).
+  const srcOfTk = t => { const tr = [...(X.players?.querySelectorAll('tbody tr') || [])].find(r => r.cells[0]?.textContent.trim() === t); return tr ? tr.cells[tr.cells.length - 1].innerHTML : '<span class="xd-na">—</span>'; };
+  return card(`<div class="tablewrap" data-no-fold><table class="xd-t" data-no-fold><thead><tr><th>Mã</th><th>Hợp đồng, gói thầu</th><th>Giá trị toàn gói (tỷ đ)</th><th>Phần thuộc doanh nghiệp (tỷ đ)</th><th>Backlog công bố (tỷ đ)</th><th>Nguồn</th></tr></thead><tbody>${L.map(r => `<tr><td><span class="xd-tk">${r[0]}</span></td><td>${r[1]}</td>${r.slice(2).map(x => x === NA ? `<td>${x}</td>` : `<td class="n">${x}</td>`).join('')}<td>${srcOfTk(r[0])}</td></tr>`).join('')}</tbody></table></div>
+    <div class="pw-src">Nguồn: cột Nguồn từng dòng (báo cáo, bài báo về kết quả kinh doanh 6T/2026 của doanh nghiệp)</div><div class="pw-src-note">Giá trị toàn gói liên danh không phải phần của doanh nghiệp; ô "chưa công bố" là nguồn đã mở chưa nêu. Backlog là số doanh nghiệp tự công bố, kỳ khác nhau.</div>`);
 }
 // Bảng so sánh tài chính & xu hướng theo quý (financial-comparison.js, company-trend.js) dựng riêng cho từng nhóm: lọc dữ liệu
 // chung chỉ trong lúc dựng rồi trả lại.
