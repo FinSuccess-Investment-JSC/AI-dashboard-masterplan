@@ -402,7 +402,7 @@ table:not(.fintbl) th{font-size:12px}
 @media print{
 .ct-switch{display:none!important}
 }
-.ct-period{flex:1 0 100%;margin:0 0 2px}
+.ct-period{flex:0 1 auto;margin:0 0 2px}
 .ct-switch>button{padding:4px 8px}
 .fs-theme{flex:none;width:36px;height:36px;margin-left:10px;border:1px solid #DCE1E9;border-radius:9px;background:#fff;color:#1D2678;font-size:16px;cursor:pointer}
 .fs-brandbar .in .fs-search-inline{margin-left:auto}
@@ -689,3 +689,6 @@ html[data-theme="dark"] :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs) 
 .db .db-v{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 6px;line-height:1.1}
 .db .db-u{font:600 14px Inter,sans-serif;color:var(--muted);letter-spacing:0}
 .db .db-s{color:var(--muted)}
+/* Bản tin dữ liệu: thẻ số nhanh không cần nút chia sẻ ảnh và chữ fisc.vn (26/11/2026) */
+.db .fs-share-btn,.db .fs-share-acts{display:none!important}
+.db .card::after,.db.card::after,.db .db-c::after{content:none!important;display:none!important}

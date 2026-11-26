@@ -18,20 +18,22 @@
 <script src="app/sector-visuals.js?v=6e232e4a9320" defer></script>
 <script src="../data/construction-wi-data.js?v=2b9106cc8f98" defer></script>
 <script src="../data/construction-backlog.js?v=2679fd623bfa" defer></script>
-<script src="app/construction-dashboard.js?v=3e5afa4b3851" defer></script>
+<script src="../data/construction-hub.js?v=e507be93cb4e" defer></script>
+<script src="../data/construction-financials.js?v=cb463fed38ec" defer></script>
+<script src="app/construction-dashboard.js?v=43ca093536b9" defer></script>
 <script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=bb5999e0db49" defer></script>
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
-<script src="app/sector-smart.js?v=9199819d80e6" defer></script>
+<script src="app/sector-smart.js?v=ab8be7af7972" defer></script>
 <script src="../data/company-valuation.js?v=59d42616e817" defer></script>
 <script src="../data/company-comparison.js?v=57100795fdb1" defer></script>
 <script src="../data/company-quarterly.js?v=95f3ff4a5c9f" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=2f5cb88d6d09" defer></script>
+<script src="app/research-layout.js?v=941b942d6a89" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
-<script src="app/research-editorial.js?v=53be49980eb9" defer></script>
+<script src="app/research-editorial.js?v=3b32bc5fba45" defer></script>
 <script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
 <script src="app/table-fold.js?v=ef1324e22786" defer></script>
 <script src="app/motion.js?v=fdb0c76dabb8" defer></script>
@@ -42,13 +44,20 @@
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=7166cf0575e8" defer></script>
-<script src="app/site-navigation.js?v=9abea12d0335" data-release="20261126-vien-thong-cau-chot"></script>
+<script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
+<script src="app/xd-finance.js?v=20e3b949f918" defer></script>
+<script src="app/xd-news.js?v=f930ce74ae94" defer></script>
+<script src="app/xd-frame.js?v=7d62fb6c7020" defer></script>
+<script src="app/site-navigation.js?v=9abea12d0335" data-release="2026.11.26-phan-bon-bo-co-che-khi"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
-<link rel="stylesheet" href="app/fin-success-theme.css?v=f2a01887a19f">
+<link rel="stylesheet" href="app/fin-success-theme.css?v=6da0bf7f5a20">
 <link rel="stylesheet" href="app/brand.css?v=77df302ce59e">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
+<link rel="stylesheet" href="app/xd-frame.css?v=5c42991bd243">
+<link rel="stylesheet" href="app/xd-overview.css?v=552fffc3401a">
+<link rel="stylesheet" href="app/xd-news.css?v=5679aabe61a5">
 </head>
 <body data-sector="construction">
 <nav data-site-navigation="construction" aria-label="Điều hướng dashboard ngành"></nav>
@@ -256,29 +265,12 @@
     
   </section>
   </div>
+  <div class="majorpane" data-tab="mt14" id="pane-mt14"></div>
   <div class="majorpane" data-tab="mt7" id="pane-mt7">
-    <div class="sectionhead"><div><h2>7. Chủ đề nóng</h2><p>Ba câu chuyện đang dẫn dắt ngành.</p></div></div>
-    <div data-topic-key="rail" data-topic-segment="Xây dựng &amp; hạ tầng" data-topic-title="Đường sắt tốc độ cao và Long Thành">
-      <div class="card" data-block-id="xd-t1" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Đường sắt tốc độ cao Bắc–Nam 1.541 km, sơ bộ 1.713.548 tỷ; Bộ Xây dựng nhắm khởi công <b>12/2027</b> (mốc cũ 12/2026; <a href="https://tapchikinhtetaichinh.vn/dat-muc-tieu-khoi-cong-du-an-duong-sat-toc-do-cao-bac-nam-vao-thang-12-2027-166477.html" target="_blank" rel="noopener">TC KT-TC, 09/09/2026</a>)</li><li>Hòa Phát làm nhà máy ray 700.000 tấn/năm, xong gần 70%; ray đầu tiên Q1/2027</li><li>Long Thành khai thác 1/12/2026; Vinaconex trong liên danh gói 5.10 >35.000 tỷ</li></ul>
-        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▲ DPG · HPG · VCG · CTD · FCN</p>
-        <div class="source-note">Nguồn: <a href="https://www.sggp.org.vn/nghi-quyet-chu-truong-dau-tu-du-an-duong-sat-toc-do-cao-bac-nam-post773752.html" target="_blank" rel="noopener">SGGP</a> · <a href="https://www.vietnamplus.vn/nha-may-san-xuat-ray-va-thep-cua-hoa-phat-da-hoan-thanh-gan-70-tien-do-post1137607.vnp" target="_blank" rel="noopener">VietnamPlus</a> · <a href="https://vietnamfinance.vn/san-bay-long-thanh-van-hanh-thu-nghiem-tu-thang-9-khai-thac-tu-thang-12-d148249.html" target="_blank" rel="noopener">VietnamFinance</a></div>
-      </div>
-    </div>
-    <div data-topic-key="contractor-cash" data-topic-segment="Xây dựng &amp; hạ tầng" data-topic-title="Nhà thầu: backlog kỷ lục, dòng tiền âm">
-      <div class="card" data-block-id="xd-t3" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>CTD backlog ~65.000 tỷ nhưng nợ vay ~5.900 tỷ, phải thu 15.400 tỷ</li><li>VCG CFO 6T âm 1.315 tỷ; HUT âm 951 tỷ; LCG âm 109 tỷ</li><li>HBC hoán đổi 514 tỷ nợ thành cổ phiếu (9/2026), lỗ lũy kế 58% vốn</li></ul>
-        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> CTD · VCG · HUT · HBC · FCN — phát hành tăng vốn, trái phiếu</p>
-        <div class="source-note">Nguồn: <a href="https://doanhnhan.baophapluat.vn/coteccons-ctd-bao-lai-cao-nhat-7-nam-du-no-tai-chinh-tien-sat-6-000-ty-dong.html" target="_blank" rel="noopener">DN&amp;PL</a> · <a href="https://cafeland.vn/tin-tuc/vinaconex-lai-6-thang-tang-gan-25-dong-tien-kinh-doanh-am-hon-1300-ty-dong-153920.html" target="_blank" rel="noopener">Cafeland</a> · <a href="https://doanhnghiephoinhap.vn/tasco-tang-truong-loi-nhuan-nhung-dong-tien-kinh-doanh-tiep-tuc-am.html" target="_blank" rel="noopener">DN Hội nhập</a></div>
-      </div>
-    </div>
-    <div data-topic-key="materials" data-topic-segment="Xi măng &amp; VLXD" data-topic-title="Vật liệu: cát, đá, nhựa đường tăng giá">
-      <div class="card" data-block-id="xd-t4" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Cát +29,95–58,45%, đá +7,3–11,11% chỉ trong một tháng (T6/2025)</li><li>Biên gộp LCG Q2/2026 11,4% → 9,3%</li></ul>
-        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã chịu tác động:</mark> ▲ VLB · KSB · DHA (bán đá) · ▼ C4G · LCG · HHV (mua vật liệu)</p>
-        <div class="source-note">Nguồn: <a href="https://baodauthau.vn/nha-thau-sot-ruot-vi-gia-da-tang-nhanh-post184572.html" target="_blank" rel="noopener">Báo Đấu thầu</a> · <a href="https://www.tinnhanhchungkhoan.vn/6-thang-lizen-lcg-moi-hoan-thanh-206-ke-hoach-loi-nhuan-post395302.html" target="_blank" rel="noopener">TNCK</a></div>
-      </div>
-    </div>
+    <!-- 26/11/2026: luồng tin theo bố cục trang Điện (app/xd-news.js, data/construction/hub.json → data/construction-hub.js).
+         Ba cụm chủ đề cũ (Đường sắt tốc độ cao và Long Thành; Nhà thầu: backlog kỷ lục, dòng tiền âm; Vật liệu: cát, đá, nhựa đường tăng giá)
+         thành "Chủ đề đang theo dõi"; từng ý trong cụm thành sự kiện có ngày đăng, link bài gốc. -->
+    <section id="xd-news" class="card" data-block-id="xd-t1" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot" aria-label="Tin ngành Xây dựng"><p role="status">Đang tải tin ngành Xây dựng…</p></section>
   </div>
   <div class="card" style="margin-top:14px" data-block-id="xd-90" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
     <h3 style="margin-top:0;font-size:13.5px">Nguồn dữ liệu và khả năng tự động cập nhật</h3>

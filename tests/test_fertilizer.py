@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
 class GasSystemTests(unittest.TestCase):
     def test_gas_system_dataset(self):
-        # Bản đồ 4.4: mọi đối tượng có tọa độ/tuyến hợp lệ, có nguồn; chế độ doanh nghiệp chỉ trỏ tới id có thật.
+        # Bản đồ 4.3: mọi đối tượng có tọa độ/tuyến hợp lệ, có nguồn; chế độ doanh nghiệp chỉ trỏ tới id có thật.
         G = json.loads((ROOT / 'data/fertilizer/gas-system.json').read_text(encoding='utf-8'))
         ids = {a['id'] for a in G['assets']} | {p['id'] for p in G['pipelines']}
         self.assertTrue({'fert_dpm', 'fert_dcm'} <= ids)

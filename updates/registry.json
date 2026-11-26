@@ -4073,7 +4073,7 @@
   {
    "id": "construction.hot-topics",
    "tier": "C",
-   "title": "Chủ đề nóng: đường sắt, HRC, dòng tiền nhà thầu, giá vật liệu",
+   "title": "Chủ đề nóng: luồng tin dự án, giải ngân, nhà thầu, vật liệu (Tiêu điểm → Tin mới nhất → Chủ đề đang theo dõi)",
    "schedule": {
     "type": "weekly",
     "day": "mon",
@@ -4086,15 +4086,81 @@
    },
    "where": {
     "page": "Xay-dung/index.html",
+    "file": "data/construction/hub.json → data/construction-hub.js",
     "blocks": [
      "xd-t1",
-     "xd-t3",
-     "xd-t4"
+     "xd-32",
+     "xd-73",
+     "xd-50"
     ]
    },
-   "how": "Thêm mốc mới có ngày và link.",
+   "how": "Thêm bài (articles: ngày đăng đọc trên trang gốc, url https), sự kiện (events: ngày sự kiện/dự kiến/hiệu lực tách riêng, mã kèm căn cứ, dự án liên quan), sửa bảng dự án (projects) hoặc văn bản (policies) trong data/construction/hub.json; chạy python scripts/build_construction_hub.py (dừng nếu thiếu nguồn, ngày, căn cứ).",
    "gates": [
-    "Mỗi dòng có ngày + link"
+    "Mỗi bài có ngày đăng đọc trên trang gốc + link https",
+    "Mã doanh nghiệp gắn dự án/tin phải có căn cứ",
+    "Phân biệt ngày đăng, ngày sự kiện, ngày dự kiến"
+   ]
+  },
+  {
+   "id": "construction.industry-financials",
+   "tier": "C",
+   "title": "Xây dựng · Tài chính ngành (#mt14): BCTC 17 doanh nghiệp theo bốn mô hình (dân dụng, hạ tầng, BOT, vật liệu)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Xay-dung/index.html",
+    "file": "data/construction-financials.js",
+    "blocks": [
+     "xd-fin-pnl",
+     "xd-fin-gm",
+     "xd-fin-margin",
+     "xd-fin-balances",
+     "xd-fin-dso",
+     "xd-fin-adv",
+     "xd-fin-dio",
+     "xd-fin-cfo",
+     "xd-fin-conv",
+     "xd-fin-wc",
+     "xd-fin-debt",
+     "xd-fin-lev",
+     "xd-fin-int",
+     "xd-fin-fcf"
+    ]
+   },
+   "how": "python scripts/fetch_xd_financials.py && python scripts/build_xd_financials.py (chạy trong refresh-data.yml); danh mục mã, nhóm, khoản mục ở scripts/xd_fin_items.py; tổng hợp ở Xay-dung/app/industry-fin.js, giao diện Xay-dung/app/xd-finance.js",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%)",
+    "Phải thu theo tiến độ HĐXD (11340), người mua trả trước (13130 + 13311), hàng tồn kho (gồm dở dang) là dòng riêng, không cộng với nhau",
+    "Mã lỗi tải giữ bản trước, ghi vào stale"
    ]
   },
   {
@@ -7211,7 +7277,7 @@
   {
    "id": "fertilizer.static",
    "tier": "static",
-   "title": "Phân bón: chuỗi giá trị (pb-01), bản đồ nhà máy và công suất (pb-05…pb-09, data/fertilizer/plants.json nhập tay có nguồn), cơ chế giá khí DPM/DCM (pb-c-gas-mech), bản đồ hệ thống cung cấp khí Việt Nam (pb-c-gas-map, data/fertilizer/gas-system.json nhập tay có nguồn từng đối tượng)",
+   "title": "Phân bón: chuỗi giá trị (pb-01), bản đồ nhà máy và công suất (pb-05…pb-09, data/fertilizer/plants.json nhập tay có nguồn), bản đồ hệ thống cung cấp khí Việt Nam (pb-c-gas-map, data/fertilizer/gas-system.json nhập tay có nguồn từng đối tượng)",
    "schedule": {
     "type": "none"
    },
@@ -7224,7 +7290,6 @@
      "pb-07",
      "pb-08",
      "pb-09",
-     "pb-c-gas-mech",
      "pb-c-gas-map",
      "pb-u-cap",
      "pb-p-cap",
