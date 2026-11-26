@@ -1,6 +1,6 @@
 /* Phân bón · Bức tranh ngành: phần chi phí và biên gộp theo mô hình sản xuất (25/11/2026), dựng vào sub-tab theo loại phân (26/11/2026):
    01 Phân đạm: urê từ khí (DPM, DCM), urê từ than (DHB) · 02 Phân lân & DAP (DDV, LAS, VAF, NFC) · 03 NPK & kali (BFC, SFG)
-   · 04 Giá khí: benchmark khí quốc tế, Brent, cơ chế giá khí DPM/DCM · 05 Ma trận tác động lên doanh nghiệp.
+   · 04 Nguồn khí: benchmark khí quốc tế, Brent, cơ chế giá khí DPM/DCM · 05 Ma trận tác động lên doanh nghiệp.
    Nguyên tắc (yêu cầu người dùng):
    - Không dùng benchmark quốc tế thay giá mua thực tế của doanh nghiệp; benchmark gắn nhãn Proxy.
    - Không tự giả định định mức hay trọng số để tạo spread; thiếu định mức có nguồn thì chỉ hiện từng chuỗi giá.
@@ -66,7 +66,7 @@ const E_ = {
 const SIGN = {'+': {t: 'Hưởng lợi', c: '#2a9fa3'}, '−': {t: 'Chịu thiệt', c: '#dd7f4e'}, '±': {t: 'Hai chiều', c: '#c9b26b'}, '0': {t: 'Không đáng kể', c: '#EEF0F6'}, '?': {t: 'Chưa xác minh', c: '#f4f5f9'}};
 
 /* Mỗi phần dựng vào sub-tab theo loại phân của Bức tranh ngành (26/11/2026): FertCost.render(id, host).
-   ureaGas, ureaCoal → 01 Phân đạm · phos → 02 Phân lân & DAP · npk → 03 NPK & kali · gas → 04 Giá khí · matrix → 05 Ma trận tác động. */
+   ureaGas, ureaCoal → 01 Phân đạm · phos → 02 Phân lân & DAP · npk → 03 NPK & kali · gas → 04 Nguồn khí · matrix → 05 Ma trận tác động. */
 let CTX = null;
 function views() {
   if (CTX) return CTX; const k = K(); if (!k) return null;
