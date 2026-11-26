@@ -689,3 +689,6 @@ html[data-theme="dark"] :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs) 
 .db .db-v{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 6px;line-height:1.1}
 .db .db-u{font:600 14px Inter,sans-serif;color:var(--muted);letter-spacing:0}
 .db .db-s{color:var(--muted)}
+/* Bản tin dữ liệu: thẻ số nhanh không cần nút chia sẻ ảnh và chữ fisc.vn (26/11/2026) */
+.db .fs-share-btn,.db .fs-share-acts{display:none!important}
+.db .card::after,.db.card::after,.db .db-c::after{content:none!important;display:none!important}
