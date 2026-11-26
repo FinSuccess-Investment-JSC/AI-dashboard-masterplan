@@ -44,6 +44,7 @@ window.FS_SITE_NAV = {
         {key: 'dairy', label: 'Sữa'},
         {key: 'beer', label: 'Bia'}
       ]},
+      {key: 'livestock', label: 'Chăn nuôi'},
       {key: 'pharma', label: 'Dược & y tế'},
       {key: 'telecom', label: 'Viễn thông'}
     ]}

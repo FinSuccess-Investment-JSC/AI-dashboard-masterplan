@@ -14,10 +14,12 @@
 
   // Chuỗi theo tháng: {id, name, unit, src, url, pts:[[yyyy-mm, value]]}
   const series = [];
+  const LIVE = /^(hog|hog_r\d|corn|soymeal|feed|imp_corn|imp_soy|imp_feed)$/, LIVE_PE = ['240', '235'];
   Object.entries(DATA.blocks).forEach(([blk, b]) => Object.entries(b.series || {}).forEach(([id, s]) => {
     if (!s || !Array.isArray(s.records) || s.time_type !== 'monthly') return;
     const pts = s.records.filter(r => r && r.value != null && isFinite(r.value)).map(r => [String(r.date).slice(0, 7), +r.value]);
     if (pts.length < 13) return;
+    if (LIVE.test(id)) return;  // chuỗi chăn nuôi nằm ở dashboard Chăn nuôi (Chan-nuoi/) từ 26/11/2026
     series.push({id, blk, name: s.name, unit: s.unit || '', src: s.source, url: s.url, pts});
   }));
   const yoyAt = (s, i) => {
@@ -49,7 +51,7 @@
       const last = s.pts.at(-1), y = yoy(s);
       return `<span class="fsv-tk" title="${esc(s.name)} · ${esc(s.unit)} · ${mlabel(last[0])}"><em>${esc(short(s.name))}</em><b>${nf(last[1], digits(last[1]))}</b>${chg(y)}</span>`;
     });
-    Object.values(DATA.blocks.sector_ratio?.by_sector || {}).forEach(r => {
+    Object.entries(DATA.blocks.sector_ratio?.by_sector || {}).filter(([id]) => !LIVE_PE.includes(id)).map(([, r]) => r).forEach(r => {
       const rec = r.records || [], last = rec.at(-1); if (!last) return;
       const ago = rec.filter(x => x[0] <= String(+last[0].slice(0, 4) - 1) + last[0].slice(4)).at(-1);
       const c = ago && ago[1] ? (last[1] / ago[1] - 1) * 100 : null;

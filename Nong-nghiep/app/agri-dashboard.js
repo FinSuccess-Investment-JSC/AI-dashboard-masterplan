@@ -1,4 +1,4 @@
-/* Agriculture & food dashboard: value chain, Cây trồng XK / Chăn nuôi & thức ăn / Thực phẩm & đồ uống panes,
+/* Agriculture & food dashboard: value chain, Cây trồng XK / Thực phẩm & đồ uống (Chăn nuôi tách sang Chan-nuoi/ 26/11/2026) panes,
    charts from window.AGRI_PUBLIC (scripts/build_sector_public.py: public commodity series only) and the shared NOAA ENSO feeds in
    window.SECTOR_DAILY (enso_oni, nino34_weekly). Publishes window.AGRI_BRIEF for catalyst-board.js.
    Runs before research-layout.js; uses the page's inline chart helpers. */
@@ -31,10 +31,9 @@ if(chain){
  const w=220,h=65;
  const nodes=[
   ['weather',25,40,['Thời tiết, đất','ENSO · mưa · mặn']],['crop',315,40,['Cây trồng XK','Gạo · cà phê · cao su']],['export',605,40,['Xuất khẩu','LTG · PAN · GVR · DPR · PHR']],['world',895,40,['Giá thế giới','ICE · SGX · Philippines']],
-  ['grain',25,165,['Ngô, đậu tương nhập','CBOT · Mỹ · Nam Mỹ']],['feed',315,165,['Thức ăn chăn nuôi','DBC']],['hog',605,165,['Chăn nuôi heo','DBC · HAG · BAF']],['meat',895,165,['Thịt, chế biến','MSN (MEATLife)']],
-  ['input',315,290,['Sữa bột, lúa mạch, dầu','nguyên liệu nhập']],['food',605,290,['Thực phẩm & đồ uống','VNM · MSN · SAB · KDC']],['consumer',895,290,['Người tiêu dùng','bán lẻ · thuế TTĐB']]
+  ['input',315,165,['Sữa bột, lúa mạch, dầu','nguyên liệu nhập']],['food',605,165,['Thực phẩm & đồ uống','VNM · MSN · SAB · KDC']],['consumer',895,165,['Người tiêu dùng','bán lẻ · thuế TTĐB']]
  ];
- const edges=[['weather','crop'],['crop','export'],['export','world'],['grain','feed'],['feed','hog'],['hog','meat'],['input','food'],['food','consumer'],['meat','consumer'],['weather','grain',true]];
+ const edges=[['weather','crop'],['crop','export'],['export','world'],['input','food'],['food','consumer']];
  const byId=Object.fromEntries(nodes.map(n=>[n[0],n]));
  const paths=edges.map(([a,b,dashed])=>{const A=byId[a],Bn=byId[b];let d;
   if(A[2]===Bn[2]){const fw=Bn[1]>A[1];d=`M${A[1]+(fw?w:0)} ${A[2]+h/2} H${Bn[1]+(fw?0:w)}`}
@@ -43,21 +42,21 @@ if(chain){
   return `<path d="${d}" class="chain-edge${dashed?' dashed':''}" marker-end="url(#chain-arrow)"/>`}).join('');
  const boxes=nodes.map(([id,x,y,lines])=>`<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="9" class="chain-node"/><text x="${x+w/2}" y="${y+(lines.length===1?37:27)}" text-anchor="middle">${lines.map((t,i)=>`<tspan x="${x+w/2}" dy="${i?21:0}">${t.replace(/&/g,'&amp;')}</tspan>`).join('')}</text></g>`).join('');
  const figure=make('div','value-chain-scroll');figure.tabIndex=0;figure.setAttribute('aria-label','Sơ đồ chuỗi giá trị; có thể cuộn ngang trên màn hình nhỏ');
- figure.innerHTML=`<svg viewBox="0 0 1140 375" role="img" aria-labelledby="chain-title chain-desc"><title id="chain-title">Chuỗi giá trị ngành nông nghiệp và thực phẩm</title><desc id="chain-desc">Ba chuỗi: cây trồng xuất khẩu theo thời tiết và giá thế giới; chăn nuôi từ ngô, đậu tương nhập qua thức ăn tới heo và thịt; thực phẩm đồ uống từ nguyên liệu nhập tới người tiêu dùng.</desc><defs><marker id="chain-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker></defs>${paths}${boxes}</svg>`;
+ figure.innerHTML=`<svg viewBox="0 0 1140 250" role="img" aria-labelledby="chain-title chain-desc"><title id="chain-title">Chuỗi giá trị ngành nông nghiệp và thực phẩm</title><desc id="chain-desc">Hai chuỗi: cây trồng xuất khẩu theo thời tiết và giá thế giới; thực phẩm đồ uống từ nguyên liệu nhập tới người tiêu dùng. Chăn nuôi có dashboard riêng.</desc><defs><marker id="chain-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker></defs>${paths}${boxes}</svg>`;
  heading.after(figure);
- chain.append(make('div','chart-insight','AI · cách đọc chuỗi: ba hàng không liên quan nhau về giá. Cây trồng XK nhận giá thế giới nên biên đi theo giá ICE/SGX và thời tiết; chăn nuôi là chênh lệch giữa giá heo trong nước và giá ngô, đậu tương nhập khẩu (tính bằng USD); thực phẩm – đồ uống bán theo sức mua trong nước, chi phí là nguyên liệu nhập và thuế. Một tin xấu cho chuỗi này có thể là tin tốt cho chuỗi khác (ngô rẻ đi → lợi cho DBC, BAF).'));
- figure.after(make('div','source-note','Mũi tên liền: dòng hàng · Mũi tên đứt: thời tiết tác động tới vụ ngô, đậu tương nhập. Sơ đồ không biểu thị tỷ trọng.'));
+ chain.append(make('div','chart-insight','AI · cách đọc chuỗi: hai hàng không liên quan nhau về giá. Cây trồng XK nhận giá thế giới nên biên đi theo giá ICE/SGX và thời tiết; thực phẩm – đồ uống bán theo sức mua trong nước, chi phí là nguyên liệu nhập và thuế. Chăn nuôi (DBC, BAF, HAG) xem ở dashboard Chăn nuôi.'));
+ figure.after(make('div','source-note','Mũi tên: dòng hàng. Sơ đồ không biểu thị tỷ trọng.'));
 }
 
 // ---------- 2. Panes ----------
 const section=document.querySelector('.majorpane[data-tab="mt2"] .section');
 if(section){
  const head=section.querySelector('.sectionhead');
- const children=[...section.children].filter(e=>e!==head),crop=make('div','supply-pane'),live=make('div','supply-pane'),food=make('div','supply-pane');
- crop.id='supply-world';live.id='supply-vietnam';food.id='supply-trade';
- let cur=crop;children.forEach(e=>{if(e.matches('h3.subhead')){const t=e.textContent.trim();cur=t.startsWith('Chăn')?live:t.startsWith('Thực')?food:crop;e.remove();return}cur.append(e)});
+ const children=[...section.children].filter(e=>e!==head),crop=make('div','supply-pane'),food=make('div','supply-pane');
+ crop.id='supply-world';food.id='supply-vietnam';
+ let cur=crop;children.forEach(e=>{if(e.matches('h3.subhead')){const t=e.textContent.trim();cur=t.startsWith('Thực')?food:crop;e.remove();return}cur.append(e)});
  const tabs=make('div','supply-tabs');tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','Chuỗi');
- const panes=[crop,live,food],labels=['Cây trồng XK','Chăn nuôi & thức ăn','Thực phẩm & đồ uống'];
+ const panes=[crop,food],labels=['Cây trồng XK','Thực phẩm & đồ uống'];
  function select(i){panes.forEach((p,j)=>{p.hidden=i!==j;const b=tabs.children[j];b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1})}
  labels.forEach((label,i)=>{const b=make('button','tabbtn',label);b.type='button';b.id='supply-tab-'+i;b.setAttribute('role','tab');b.setAttribute('aria-controls',panes[i].id);panes[i].setAttribute('role','tabpanel');panes[i].setAttribute('aria-labelledby',b.id);b.addEventListener('click',()=>select(i));b.addEventListener('keydown',e=>{const n=panes.length;let next;if(e.key==='ArrowRight')next=(i+1)%n;else if(e.key==='ArrowLeft')next=(i+n-1)%n;else if(e.key==='Home')next=0;else if(e.key==='End')next=n-1;if(next!==undefined){e.preventDefault();select(next);tabs.children[next].focus()}});tabs.append(b)});
  head.after(tabs,...panes);select(0);
@@ -115,45 +114,6 @@ if(r5.length&&document.getElementById('chRice')){
  {const y=r5.filter(r=>r.date>=r5.at(-1).date.slice(0,4)-1+r5.at(-1).date.slice(4)),lo=y.reduce((a,r)=>r.value<a.value?r:a),hi=y.reduce((a,r)=>r.value>a.value?r:a),L=r5.at(-1);
  insight('chRice','12 tháng qua: đáy '+nf(lo.value,1)+' ('+mon(lo.date)+'), đỉnh '+nf(hi.value,1)+' ('+mon(hi.date)+'), nay '+nf(L.value,1)+' nghìn đ/kg. Đây là giá nhà XK (LTG, PAN) mua vào; giá nội địa tăng nhanh hơn giá XK sẽ ép biên xuất khẩu.')}
 }
-// Chăn nuôi
-const hog=S('hog'),HR=[['hog_r1','Vùng · Wi 74368',C.navy],['hog_r2','Vùng · Wi 74369',C.gold],['hog_r3','Vùng · Wi 74370',C.teal]].filter(([k])=>S(k).length);
-if(hog.length&&document.getElementById('chHog')){
- const rm=Object.fromEntries(HR.map(([k])=>[k,byMonth(S(k))])),months=[...new Set([...hog,...HR.flatMap(([k])=>S(k))].map(r=>ym(r.date)))].sort().slice(-36),hm=byMonth(hog);
- barLineChart('chHog',{categories:months.map(m=>mon(m+'-01')),series:[{name:'Toàn quốc',color:C.red,kind:'line',values:months.map(m=>hm[m]?.value??null)},...HR.map(([k,n,c])=>({name:n,color:c,kind:'line',values:months.map(m=>rm[k][m]?.value??null)}))],unit:'nghìn đ/kg',digits:1,height:260,zeroBase:false,rotateLabels:true});
- legend('chHog',[['Toàn quốc',C.red],...HR.map(([,n,c])=>[n,c])]);
- fillTable('tbl-hog',['Kỳ','Toàn quốc','So cùng kỳ',...HR.map(h=>h[1])],months.slice().reverse().map(m=>[mon(m+'-01'),nf(hm[m]?.value,1),signed(yoyAt(hog,hm[m]),1)+'%',...HR.map(([k])=>nf(rm[k][m]?.value,1))]));
- const lastR=HR.map(([k])=>S(k).at(-1)).filter(Boolean),lr=lastR.length?lastR.reduce((a,r)=>r.date>a.date?r:a):null;
- sourceLine('chHog',[['WiData (WiMCP)','https://widata.vn/']],short(hog.at(-1).date)+(lr?' · vùng '+short(lr.date):''),'Heo hơi toàn quốc (Wi 74124) và ba chuỗi vùng (Wi 74368, 74369, 74370). Wi nén giá ngày về cuối tháng; điểm cuối là ngày gọi gần nhất. Response Wi chưa ghi tên vùng nên nhãn ghi theo id.');
- {const L=hog.at(-1),pk=hog.slice(-12).reduce((a,r)=>r.value>a.value?r:a),rv=HR.map(([k,n])=>[n,S(k).at(-1)]).filter(x=>x[1]);
- insight('chHog','Toàn quốc '+nf(L.value,1)+' nghìn đ/kg ('+short(L.date)+'), từ đỉnh 12 tháng '+nf(pk.value,1)+' ('+mon(pk.date)+'). '+(rv.length?'Ba vùng '+short(rv[0][1].date)+': '+rv.map(([n,r])=>nf(r.value,1)).join(' / ')+' nghìn đ/kg. ':'')+'Dưới band hòa vốn ước 48–52 nghìn (tab Giá – Chi phí – Margin) thì mảng heo của DBC, BAF lỗ trên từng kg; đàn doanh nghiệp lớn tăng (BAF xuất bán 6T +61%) giữ cung cao.')}
-}
-const co=S('corn'),sm=S('soymeal');
-if(co.length&&document.getElementById('chFeedPx')){
- const smm=byMonth(sm),base=co.slice(-24);
- barLineChart('chFeedPx',{categories:base.map(r=>mon(r.date)),series:[{name:'Ngô',color:C.gold,kind:'line',values:base.map(r=>r.value/2.54012)},{name:'Khô đậu tương',color:C.green,kind:'line',values:base.map(r=>smm[ym(r.date)]?.value??null)}],unit:'USD/tấn',digits:0,height:260,zeroBase:false,rotateLabels:true});
- {const sub=document.getElementById('chFeedPx').closest('.card')?.querySelector('.chart-sub');if(sub)sub.textContent='USD/tấn · bình quân tháng · %YoY ở bảng và lời đọc'}
- legend('chFeedPx',[['Ngô (IMF)',C.gold],['Khô đậu tương (IMF)',C.green]]);
- fillTable('tbl-feedpx',['Kỳ','Ngô (cent/bushel)','Khô đậu (USD/tấn)','Ngô YoY','Khô đậu YoY'],co.slice().reverse().map(r=>{const s=smm[ym(r.date)];return [short(r.date),nf(r.value,1),nf(s?.value,1),signed(yoyAt(co,r),1)+'%',signed(yoyAt(sm,s),1)+'%']}));
- sourceLine('chFeedPx',[SRC.ice],short(co.at(-1).date),'IMF Primary Commodity Prices (FRED): ngô PMAIZMTUSDM quy sang US cent/bushel (×2,54012), khô đậu tương PSMEAUSDM (USD/tấn); bình quân tháng. Chart quy ngô về USD/tấn (÷2,54012) để cùng đơn vị với khô đậu.');
- insight('chFeedPx','Ngô '+nf(co.at(-1).value/2.54012,0)+' USD/tấn ('+signed(yoyAt(co,co.at(-1)),1)+'% YoY), khô đậu '+nf(sm.at(-1)?.value,0)+' USD/tấn ('+signed(yoyAt(sm,sm.at(-1)),1)+'% YoY), '+mon(co.at(-1).date)+'. Hai nguyên liệu chính của thức ăn chăn nuôi. Chi tiết: ngô '+signed(yoyAt(sm,sm.at(-1)),1)+'% và khô đậu '+signed(yoyAt(sm,sm.at(-1)),1)+'% so cùng kỳ.');
-}
-const ic=S('imp_corn'),is=S('imp_soy'),iff=S('imp_feed');
-if(ic.length&&document.getElementById('chFeedImp')){
- const sm2=byMonth(is),fm=byMonth(iff),rs=ic.slice(-36);
- stack('chFeedImp',{categories:rs.map(r=>mon(r.date)),series:[{name:'Ngô',color:C.gold,values:rs.map(r=>r.value)},{name:'Đậu tương',color:C.green,values:rs.map(r=>sm2[ym(r.date)]?.value??null)},{name:'Thức ăn gia súc & nguyên liệu',color:C.navy,values:rs.map(r=>fm[ym(r.date)]?.value??null)}],unit:'triệu USD',digits:0,aria:'Nhập khẩu nguyên liệu thức ăn'});
- legend('chFeedImp',[['Ngô',C.gold],['Đậu tương',C.green],['Thức ăn gia súc & nguyên liệu',C.navy]]);
- fillTable('tbl-feedimp',['Tháng','Ngô','Đậu tương','Thức ăn & NL'],ic.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),nf(sm2[ym(r.date)]?.value,0),nf(fm[ym(r.date)]?.value,0)]));
- sourceLine('chFeedImp',[SRC.customs],mon(ic.at(-1).date),'Nhập khẩu ngô, đậu tương, thức ăn gia súc và nguyên liệu.');
- insight('chFeedImp','Nhập ngô lũy kế 9T +29%, đậu tương +53% theo giá trị: vừa do giá tăng vừa do đàn heo, gia cầm lớn lên. Việt Nam nhập gần như toàn bộ đậu tương, nên tỷ giá USD/VND cũng là chi phí của nhà chăn nuôi.');
-}
-const fd=S('feed');
-if(fd.length&&document.getElementById('chFeed')){
- const rs=fd.slice(-36);
- barLineChart('chFeed',{categories:rs.map(r=>mon(r.date)),series:[{name:'Thức ăn gia súc',color:C.teal,values:rs.map(r=>r.value)}],unit:'nghìn tấn',digits:0,height:260,rotateLabels:true});
- fillTable('tbl-feed',['Tháng','Nghìn tấn','So cùng kỳ'],fd.slice().reverse().map(r=>[mon(r.date),nf(r.value,0),signed(yoyAt(fd,r),1)+'%']));
- sourceLine('chFeed',[SRC.nso],mon(fd.at(-1).date),'Sản lượng thức ăn cho gia súc, NSO.');
- insight('chFeed','Sản lượng thức ăn 9T +10% cho thấy đàn vật nuôi đang mở rộng; cung thịt tăng là một lý do giá heo giảm. Khi thức ăn tăng chậm lại hoặc âm, đàn đang thu hẹp và giá heo thường hồi sau 2–3 quý.');
-}
 // Thực phẩm & đồ uống
 const rt=S('retail_goods');
 if(rt.length&&document.getElementById('chRetail')){
@@ -191,13 +151,13 @@ if(ml.length&&document.getElementById('chMilk')){
 }
 // Định giá
 if(Object.keys(sec).length&&document.getElementById('chSectorVal')){
- const ids=[['282','Cao su',C.navy],['239','Sữa',C.teal],['240','Chăn nuôi, chế biến thịt',C.red],['120','Bia',C.gold]].filter(([id])=>sec[id]?.records?.length);
+ const ids=[['282','Cao su',C.navy],['239','Sữa',C.teal],['120','Bia',C.gold]].filter(([id])=>sec[id]?.records?.length);
  const dates=[...new Set(ids.flatMap(([id])=>sec[id].records.map(r=>r[0])))].sort(),weekly=dates.filter((d,i)=>i%5===0||i===dates.length-1);
  const at=(id,d,k)=>{const r=sec[id].records.find(x=>x[0]===d);return r?r[k]:null};
  barLineChart('chSectorVal',{categories:weekly.map(d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(2,4)),series:ids.map(([id,name,color])=>({name:'P/E '+name,color,kind:'line',values:weekly.map(d=>at(id,d,1))})),unit:'x',digits:1,height:260,zeroBase:false,rotateLabels:true});
  legend('chSectorVal',ids.map(([,n,c])=>[n,c]));
- fillTable('tbl-sector-val',['Rổ mã','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],[...ids,['235','Thức ăn chăn nuôi'],['241','Thực phẩm đóng gói']].filter(([id])=>sec[id]?.records?.length).map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
- sourceLine('chSectorVal',[['VNDirect finfo','https://dstock.vndirect.com.vn/']],short(dates.at(-1)),'Rổ mã theo dõi: Cao su (GVR, DPR, PHR); Sữa (VNM); Chăn nuôi, chế biến thịt (DBC, HAG, BAF); Bia (SAB); Thức ăn chăn nuôi (DBC); Thực phẩm đóng gói (MSN, KDC). P/E = tổng vốn hóa / tổng lợi nhuận (vốn hóa ÷ P/E từng mã, VNDirect); mã lỗ không có P/E chỉ vào P/B và vốn hóa. Không phải toàn ngành. Vẽ mỗi 5 phiên.');
+ fillTable('tbl-sector-val',['Rổ mã','P/B','P/E','Vốn hóa (nghìn tỷ)','Phiên'],[...ids,['241','Thực phẩm đóng gói']].filter(([id])=>sec[id]?.records?.length).map(([id,name])=>{const r=sec[id].records.at(-1);return [name,nf(r[2],2),nf(r[1],1),nf(r[3]/1000,1),short(r[0])]}));
+ sourceLine('chSectorVal',[['VNDirect finfo','https://dstock.vndirect.com.vn/']],short(dates.at(-1)),'Rổ mã theo dõi: Cao su (GVR, DPR, PHR); Sữa (VNM); Bia (SAB); Thực phẩm đóng gói (MSN, KDC). P/E = tổng vốn hóa / tổng lợi nhuận (vốn hóa ÷ P/E từng mã, VNDirect); mã lỗ không có P/E chỉ vào P/B và vốn hóa. Không phải toàn ngành. Vẽ mỗi 5 phiên.');
  insight('chSectorVal',(()=>{const L=ids.filter(([id])=>sec[id]?.records?.length);const l0=sec[L[0][0]].records.at(-1);return 'P/E rổ mã theo dõi, phiên '+short(l0[0])+': '+L.map(([id,name])=>{const r=sec[id].records,l=r.at(-1),y=r.find(x=>x[0]>=String(+l[0].slice(0,4)-1)+l[0].slice(4));return name+' '+nf(l[1],(1==2?2:1))+'x'+(y&&y[1]!=null?' (1 năm trước '+nf(y[1],(1==2?2:1))+'x)':'')}).join('; ')+'.'})());
 }
 // ENSO (NOAA, shared feed)
@@ -219,22 +179,6 @@ if(nino.length&&document.getElementById('chNino')){
 
 // ---------- 3b. Giá – Chi phí – Margin (đợt 1, 05/11/2026) ----------
 const fxm=byMonth(S('usdvnd')),FP=B.fao_fpma?.series||{},FPs=k=>FP[k]?.records||[],FAO=['FAO GIEWS FPMA',B.fao_fpma?.url||'https://fpma.fao.org/giews/pricetool/'];
-// Biên chăn nuôi heo implied: mọi tham số là giả định, ghi ở ⓘ.
-const HOG={fcr:2.7,k:1.75,corn:0.55,soy:0.25,other:17,band:[48,52]};
-let hogM=[];
-{const cm=byMonth(co),smm=byMonth(sm);
- hogM=hog.map(r=>{const m=ym(r.date),c=cm[m],s2=smm[m],f=fxm[m];if(!c||!s2||!f)return null;
-  const feed=HOG.k*(HOG.corn*c.value/2.54012+HOG.soy*s2.value)*f.value/1e6,cost=HOG.fcr*feed+HOG.other;
-  return {m,hog:r.value,feed,cost,margin:r.value-cost}}).filter(Boolean).slice(-36);}
-if(hogM.length&&document.getElementById('chHogMargin')){
- barLineChart('chHogMargin',{categories:hogM.map(r=>mon(r.m+'-01')),series:[{name:'Heo hơi toàn quốc',color:C.red,kind:'line',values:hogM.map(r=>r.hog)},{name:'Giá thành ước',color:C.navy,kind:'line',values:hogM.map(r=>r.cost)},{name:'Band hòa vốn 48',color:C.grey,kind:'line',values:hogM.map(()=>HOG.band[0])},{name:'Band hòa vốn 52',color:C.grey,kind:'line',values:hogM.map(()=>HOG.band[1])}],unit:'nghìn đ/kg',digits:1,height:260,zeroBase:false,rotateLabels:true});
- legend('chHogMargin',[['Heo hơi',C.red],['Giá thành ước',C.navy],['Band hòa vốn 48–52',C.grey]]);
- fillTable('tbl-hog-margin',['Tháng','Heo hơi','Thức ăn ước (nghìn đ/kg TĂ)','Giá thành ước','Biên ước','USD/VND'],hogM.slice().reverse().map(r=>[mon(r.m+'-01'),nf(r.hog,1),nf(r.feed,2),nf(r.cost,1),signed(r.margin,1),nf(fxm[r.m].value,0)]));
- sourceLine('chHogMargin',[['WiData (heo hơi)','https://widata.vn/'],SRC.ice,['NHNN tỷ giá trung tâm','https://sbv.gov.vn/vi/t%E1%BB%B7-gi%C3%A1-trung-t%C3%A2m']],mon(hogM.at(-1).m+'-01'),'Ước tính, không phải số doanh nghiệp. Giá thành = FCR × giá thức ăn ước + chi phí khác cố định; giá thức ăn ước = k × (0,55 × ngô + 0,25 × khô đậu) quy VND/kg.');
- const L=hogM.at(-1),host=document.getElementById('chHogMargin').closest('.card');
- const n=make('details','note-icon');n.innerHTML='<summary>ⓘ Lưu ý dữ liệu</summary><div>Tham số giả định: FCR '+nf(HOG.fcr,1)+' kg thức ăn/kg heo hơi; tỷ trọng ngô 0,55, khô đậu 0,25 trong khẩu phần; k = '+nf(HOG.k,2)+' quy giá nguyên liệu nhập (IMF, USD/tấn) ra giá thức ăn thành phẩm (cước, nguyên liệu khác, premix, gia công, biên nhà máy); chi phí khác cố định '+HOG.other+' nghìn đ/kg (giống, thú y, khấu hao chuồng, lao động, lãi vay). Band hòa vốn 48–52 nghìn đ/kg là vùng tham chiếu, không phải số của doanh nghiệp. Tỷ giá: bình quân tháng tỷ giá trung tâm (Wi 242638 trước 2025, NHNN từ 2025). Ngô, khô đậu IMF trễ 1–2 tháng nên tháng mới nhất của heo có thể chưa có giá thành. Doanh nghiệp tự sản xuất thức ăn (DBC, BAF) có giá thành thấp hơn mức ước.</div>';host.append(n);
- insight('chHogMargin','Tháng '+mon(L.m+'-01')+': heo hơi '+nf(L.hog,1)+' so với giá thành ước '+nf(L.cost,1)+' nghìn đ/kg → biên ước '+signed(L.margin,1)+' nghìn đ/kg; '+(L.hog<HOG.band[0]?'dưới':L.hog>HOG.band[1]?'trên':'trong')+' band hòa vốn 48–52. Thức ăn chiếm khoảng '+nf(HOG.fcr*L.feed/L.cost*100,0)+'% giá thành ước, nên ngô, khô đậu và tỷ giá dẫn giá thành 1–2 tháng; giá heo mới là biến quyết định biên của DBC, BAF.');
-}
 // Spread gạo Thái 5% − Việt Nam 5%
 const th5=FPs('rice_thai5'),vn5=FPs('rice_vn5'),in25=FPs('rice_india25'),ag5=FPs('rice5_angiang');
 if(vn5.length&&th5.length&&document.getElementById('chRiceSpread')){
@@ -271,23 +215,17 @@ if(psd.length&&oni.length&&document.getElementById('chCoffeePsd')){
 }
 
 // ---------- 4. KPIs, quick read, catalyst brief ----------
-const roL=ro.at(-1),tsL=ts.at(-1),prL=pr.at(-1),hgL=hog.at(-1),coL=co.at(-1),rtL=rt.at(-1);
+const roL=ro.at(-1),tsL=ts.at(-1),prL=pr.at(-1),rtL=rt.at(-1);
 kpi('spk-robusta',roL?nf(roL.value,0):'—',roL?'USD/tấn · '+short(roL.date):'—',roL?signed(yoyAt(ro,roL),1)+'% so cùng kỳ':'',ro.slice(-12).map(r=>r.value),C.plum);
 kpi('spk-rubber',tsL?nf(tsL.value,1):'—',tsL?'US cent/kg · '+short(tsL.date):'—',tsL?signed(yoyAt(ts,tsL),1)+'% so cùng kỳ':'',ts.slice(-12).map(r=>r.value));
 kpi('spk-rice',prL?nf(prL.value*1000,0):'—',prL?'USD/tấn · '+mon(prL.date):'—',prL?signed(yoyAt(pr,prL),1)+'% so cùng kỳ':'',pr.slice(-12).map(r=>r.value),C.gold);
-kpi('spk-hog',hgL?nf(hgL.value,1):'—',hgL?'nghìn đ/kg · '+short(hgL.date):'—',hgL?signed(yoyAt(hog,hgL),1)+'% so cùng kỳ':'',hog.slice(-12).map(r=>r.value),C.red);
-kpi('spk-corn',coL?nf(coL.value,0):'—',coL?'US cent/bushel · '+short(coL.date):'—',coL?signed(yoyAt(co,coL),1)+'% so cùng kỳ':'',co.slice(-12).map(r=>r.value),C.gold);
 kpi('spk-retail',rtL?nf(rtL.value/1000,0):'—',rtL?'nghìn tỷ đồng · '+mon(rtL.date):'—',rtL?signed(yoyAt(rt,rtL),1)+'% so cùng kỳ':'',rt.slice(-12).map(r=>r.value),C.navy);
-{const set=(k,v)=>document.querySelectorAll('[data-agri="'+k+'"]').forEach(e=>{e.textContent=v});
- set('hog',hgL?nf(hgL.value,1):'—');set('hog-date',hgL?short(hgL.date):'—');set('hog-margin',hogM.length?signed(hogM.at(-1).margin,1)+' ('+mon(hogM.at(-1).m+'-01')+')':'—');
- set('corn-yoy',signed(yoyAt(co,coL),0)+'%');set('soy-yoy',signed(yoyAt(sm,sm.at(-1)),0)+'%');}
 const oL=oni.at(-1),quick=document.querySelector('.hero .insight');
 if(quick&&roL){
- quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai, NOAA: '),`Robusta ${nf(roL.value,0)} USD/tấn (${signed(yoyAt(ro,roL),0)}% YoY), cao su TSR20 ${nf(tsL?.value,0)} cent/kg (${signed(yoyAt(ts,tsL),0)}%). Heo hơi ${nf(hgL?.value,1)} nghìn đ/kg${hogM.length?` (biên ước ${signed(hogM.at(-1).margin,1)})`:''}; ngô CBOT ${signed(yoyAt(co,coL),0)}% YoY. Bán lẻ hàng hóa ${rtL?mon(rtL.date):''} ${signed(yoyAt(rt,rtL),1)}%. `+(oL?`ONI ${oL.season}/${oL.year} ${nf(oL.oni,2)} °C (El Niño mạnh).`:''));
+ quick.innerHTML='';quick.append(make('b','','Đọc nhanh từ dữ liệu công khai, NOAA: '),`Robusta ${nf(roL.value,0)} USD/tấn (${signed(yoyAt(ro,roL),0)}% YoY), cao su TSR20 ${nf(tsL?.value,0)} cent/kg (${signed(yoyAt(ts,tsL),0)}%). Bán lẻ hàng hóa ${rtL?mon(rtL.date):''} ${signed(yoyAt(rt,rtL),1)}%. `+(oL?`ONI ${oL.season}/${oL.year} ${nf(oL.oni,2)} °C (El Niño mạnh).`:''));
  Object.assign(quick.dataset,{updateKind:'ai',cadence:'on-data-change',refreshStatus:'derived'});
 }
-const roY=yoyAt(ro,roL),tsY=yoyAt(ts,tsL),hgY=yoyAt(hog,hgL),coY=yoyAt(co,coL),smL=sm.at(-1),smY=yoyAt(sm,smL),rtY=ytdYo(rt),beY=ytdYo(be),riY=ytdYo(er);
-const hogPeak=Math.max(...hog.slice(-12).map(r=>r.value));
+const roY=yoyAt(ro,roL),tsY=yoyAt(ts,tsL),rtY=ytdYo(rt),beY=ytdYo(be),riY=ytdYo(er);
 const pe=sec['282']?.records||[],peL=pe.at(-1),pe0=pe[0];
 const row=(group,name,big,evidence,cond,st,who,chart)=>({group,name,big,chart,st,mid:[evidence,cond],end:[who]});
 const score=[
@@ -295,17 +233,14 @@ const score=[
  row('Cây trồng XK','Giá cà phê giảm từ đỉnh',[signed(roY,0)+'%','Robusta YoY'],'Robusta '+(roL?nf(roL.value,0)+' USD/tấn':'—')+' · giá XK cà phê '+signed(yoyAt(pc,pc.at(-1)),0)+'% YoY','Hạn El Niño làm giảm vụ 2027/28',roY==null?'na':roY<-10?'risk':roY>10?'good':'watch','▼ HAG (cà phê)','chWorld'),
  row('Cây trồng XK','Gạo mất thị trường',[signed(riY,0)+'%','kim ngạch gạo lũy kế'],'Philippines, Indonesia hạn chế nhập; giá XK gạo '+signed(yoyAt(pr,prL),0)+'% YoY','Philippines mở lại nhập khẩu dài hạn',riY==null?'na':riY<-5?'risk':'watch','▼ LTG · PAN','chExp'),
  row('Cây trồng XK','Gạo Việt rẻ hơn gạo Thái',(()=>{const t=byMonth(th5),L=vn5.filter(r=>t[ym(r.date)]).at(-1);return [L?nf(t[ym(L.date)].value-L.value,0):'—','USD/tấn Thái 5% − VN 5%'+(L?' ('+mon(L.date)+')':'')]})(),'FAO FPMA; Ấn Độ 25% '+(in25.length?nf(in25.at(-1).value,0)+' USD/tấn':'—'),'Chênh về dưới 20 USD/tấn (mất lợi thế giá)',(()=>{const t=byMonth(th5),L=vn5.filter(r=>t[ym(r.date)]).at(-1);if(!L)return 'na';const d=t[ym(L.date)].value-L.value;return d<20?'risk':d<40?'watch':'good'})(),'LTG · PAN','chRiceSpread'),
- row('Chăn nuôi','Giá heo hơi giảm',[hgL?nf(hgL.value,0):'—','nghìn đ/kg heo hơi'],'Từ đỉnh 12 tháng '+nf(hogPeak,0)+' nghìn đ/kg; '+signed(hgY,0)+'% YoY','Heo hơi vượt band hòa vốn ước 52 nghìn đ/kg',hgL==null?'na':hgL.value<48?'risk':hgL.value>52?'good':'watch','▼ DBC · BAF · HAG','chHogMargin'),
- row('Chăn nuôi','Biên chăn nuôi ước',[hogM.length?signed(hogM.at(-1).margin,1):'—','nghìn đ/kg (ước tính)'],'Heo hơi − giá thành ước '+(hogM.length?nf(hogM.at(-1).cost,1)+' nghìn đ/kg ('+mon(hogM.at(-1).m+'-01')+')':'—'),'Biên ước dương trở lại',hogM.length?(hogM.at(-1).margin<0?'risk':hogM.at(-1).margin<3?'watch':'good'):'na','▼ DBC · BAF','chHogMargin'),
- row('Chăn nuôi','Nguyên liệu thức ăn tăng',[signed(coY,0)+'%','ngô CBOT YoY'],'Khô đậu '+signed(smY,0)+'% YoY; nhập ngô 9T +29%','Ngô, khô đậu về âm YoY',coY==null?'na':coY>10?'risk':coY<-5?'good':'watch','▼ DBC · BAF','chFeedPx'),
  row('Thực phẩm & đồ uống','Tiêu dùng trong nước khỏe',[signed(rtY,0)+'%','bán lẻ hàng hóa lũy kế'],'Bia lũy kế '+signed(beY,0)+'%; CPI hàng ăn ~4%','Bán lẻ lũy kế về dưới +8%',rtY==null?'na':rtY>10?'good':rtY<6?'risk':'watch','▲ VNM · MSN · SAB · KDC','chRetail'),
  row('Thực phẩm & đồ uống','Thuế TTĐB bia từ 2027',['+5đ%','thuế TTĐB mỗi năm 2027–2031'],'Bia: 65% (2026) → 70% (2027) → 90% (2031); nước có đường >5 g/100 mL 8% từ 01/01/2027, 10% từ 2028','Lộ trình được giãn','risk','▼ SAB · MSN','tbl-excise'),
  row('Thời tiết','El Niño mạnh',[oL?nf(oL.oni,2)+'°C':'—','ONI '+(oL?oL.season+'/'+oL.year:'')],'NOAA 12/11: ~60% khả năng El Niño kỷ lục 10–12/2026, mạnh đến rất mạnh tới Q1/2027','ONI về dưới 1,0','risk','▼ LTG · PAN · HAG ▲ giá cà phê, cao su','chOni'),
  row('Định giá','Định giá cao su đã hạ',[peL?nf(peL[1],1)+'x':'—','P/E cao su'],'P/E cao su '+(peL?nf(peL[1],1)+'x':'—')+(pe0?' (đầu kỳ '+nf(pe0[1],1)+'x, '+short(pe0[0])+')':''),'Lợi nhuận cao su giảm khi giá mủ đảo chiều',peL?'info':'na','GVR · DPR · PHR','chSectorVal')];
 const nGood=score.filter(r=>r.st==='good').length,nRisk=score.filter(r=>r.st==='risk').length;
 window.AGRI_BRIEF={
- headline:'Cao su và tiêu dùng nội địa đang thuận; chăn nuôi bị ép biên, gạo mất thị trường và El Niño mạnh là rủi ro · '+nGood+' thuận, '+nRisk+' rủi ro',
- segs:[['Cao su','GVR · DPR · PHR',tsY!=null&&tsY>10?'up':'flat','TSR20 '+signed(tsY,0)+'%'],['Gạo, cà phê','LTG · PAN · HAG','down','Robusta '+signed(roY,0)+'% · El Niño'],['Chăn nuôi','DBC · BAF · HAG','down','Heo '+(hgL?nf(hgL.value,0):'—')+' · ngô '+signed(coY,0)+'%'],['Thực phẩm & đồ uống','VNM · MSN · SAB · KDC',rtY!=null&&rtY>10?'up':'flat','Bán lẻ '+signed(rtY,0)+'%']],
+ headline:'Cao su và tiêu dùng nội địa đang thuận; gạo mất thị trường và El Niño mạnh là rủi ro · '+nGood+' thuận, '+nRisk+' rủi ro',
+ segs:[['Cao su','GVR · DPR · PHR',tsY!=null&&tsY>10?'up':'flat','TSR20 '+signed(tsY,0)+'%'],['Gạo, cà phê','LTG · PAN · HAG','down','Robusta '+signed(roY,0)+'% · El Niño'],['Thực phẩm & đồ uống','VNM · MSN · SAB · KDC',rtY!=null&&rtY>10?'up':'flat','Bán lẻ '+signed(rtY,0)+'%']],
  headers:['Biến số đang thay đổi','Đang thấy (số mới nhất)','Đổi đánh giá khi','','Hưởng lợi ▲ / chịu thiệt ▼'],
  score,
  events:[['Đầu tháng','Hải quan, NSO: XNK, bán lẻ, sản lượng'],['Thứ Năm thứ 2 hằng tháng','NOAA: bản tin ENSO'],['Giữa tháng','USDA WASDE · FAO FPMA giá gạo, sữa bột'],['06 và 12 hằng năm','USDA PSD cà phê (niên vụ mới)'],['01/01/2027','TTĐB bia 70%, nước có đường 8%'],['20–30/10','BCTC quý III'],['30/12/2026','EUDR áp dụng DN lớn, vừa']]

@@ -1760,7 +1760,7 @@
     "type": "none"
    },
    "where": {
-    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html, Xay-dung/index.html, Bao-hiem/index.html, Ban-le/index.html, Duoc/index.html, Sua/index.html, Bia/index.html, O-to-xe-may/index.html",
+    "page": "Dau-khi/index.html, Sugar/index.html, Bank/index.html, Dien/index.html, Bat-dong-san/index.html, Det-may/index.html, Cang-bien/index.html, Nong-nghiep/index.html, Thuy-san/index.html, Van-tai-bien/index.html, Xay-dung/index.html, Bao-hiem/index.html, Ban-le/index.html, Duoc/index.html, Sua/index.html, Bia/index.html, O-to-xe-may/index.html, Chan-nuoi/index.html",
     "blocks": [
      "dau-khi-01",
      "dau-khi-03",
@@ -1811,7 +1811,10 @@
      "bia-90",
      "oto-01",
      "oto-05",
-     "oto-90"
+     "oto-90",
+     "cn-01",
+     "cn-05",
+     "cn-90"
     ]
    }
   },
@@ -2728,8 +2731,6 @@
     "blocks": [
      "nn-10",
      "nn-11",
-     "nn-22",
-     "nn-23",
      "nn-30",
      "nn-31",
      "nn-32",
@@ -2761,9 +2762,7 @@
     "file": "data/agri-public-data.js",
     "blocks": [
      "nn-12",
-     "nn-13",
-     "nn-20",
-     "nn-21"
+     "nn-13"
     ]
    },
    "how": "python3 scripts/build_sector_public.py (chạy trong refresh-data.yml)",
@@ -2807,7 +2806,7 @@
   {
    "id": "agri.policy",
    "tier": "C",
-   "title": "Gạo (Philippines, Indonesia, Ấn Độ), EUDR, thuế Mỹ cà phê, thuế MFN thức ăn, TTĐB, GTGT, ASF",
+   "title": "Gạo (Philippines, Indonesia, Ấn Độ), EUDR, thuế Mỹ cà phê, TTĐB, GTGT",
    "schedule": {
     "type": "weekly",
     "day": "mon",
@@ -2886,7 +2885,7 @@
   {
    "id": "agri.hot-topics",
    "tier": "C",
-   "title": "Chủ đề nóng: El Niño, chu kỳ heo, cao su & đất KCN, thuế TTĐB",
+   "title": "Chủ đề nóng: El Niño, cao su & đất KCN, thuế TTĐB",
    "schedule": {
     "type": "weekly",
     "day": "mon",
@@ -2901,7 +2900,6 @@
     "page": "Nong-nghiep/index.html",
     "blocks": [
      "nn-t1",
-     "nn-t2",
      "nn-t3",
      "nn-t4"
     ]
@@ -5739,8 +5737,6 @@
     "blocks": [
      "nn-10",
      "nn-11",
-     "nn-22",
-     "nn-23",
      "nn-30",
      "nn-31",
      "nn-32",
@@ -5776,9 +5772,7 @@
     "file": "data/agri-public-data.js",
     "blocks": [
      "nn-12",
-     "nn-13",
-     "nn-20",
-     "nn-21"
+     "nn-13"
     ]
    },
    "how": "Gọi lại đúng các lời gọi WiMCP trong data/agri-wi-contract.json, đặt to_time = hôm nay (hook wi_capture.py lưu kết quả), rồi python3 scripts/build_agri_wi.py và python3 scripts/build_sector_public.py (gộp chuỗi Wi vào data/agri-public-data.js khi nguồn gốc không có). Kiểm số mới nhất đổi hợp lý trước khi commit.",
@@ -6433,7 +6427,7 @@
   {
    "id": "agri.public.margin",
    "tier": "A",
-   "title": "Biên chăn nuôi ước, spread gạo Thái − VN 5%, chỉ số nguyên liệu F&B (FAO FPMA, FRED PBARLUSDM, tỷ giá)",
+   "title": "spread gạo Thái − VN 5%, chỉ số nguyên liệu F&B (FAO FPMA, FRED PBARLUSDM, tỷ giá)",
    "schedule": {
     "type": "policy",
     "note": "mỗi lượt refresh"
@@ -6445,7 +6439,6 @@
    "where": {
     "page": "Nong-nghiep/index.html",
     "blocks": [
-     "nn-15",
      "nn-16",
      "nn-17"
     ]
@@ -6479,6 +6472,184 @@
    "how": "python scripts/fetch_usda_psd_coffee.py && python scripts/build_sector_public.py",
    "publication": "USDA cập nhật cà phê tháng 6 và 12",
    "job": "python scripts/fetch_usda_psd_coffee.py && python scripts/build_sector_public.py"
+  },
+  {
+   "id": "livestock.public.monthly",
+   "tier": "A",
+   "title": "Chăn nuôi: nhập khẩu ngô, đậu tương, thức ăn; sản lượng thức ăn gia súc",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     3,
+     15
+    ]
+   },
+   "publication": "NSO ngày 3–6; Hải quan XNK theo mặt hàng đầu–giữa tháng",
+   "source": {
+    "name": "Cục Hải quan, Cục Thống kê",
+    "url": "https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/agri-public-data.js",
+    "blocks": [
+     "cn-11",
+     "cn-12"
+    ]
+   },
+   "how": "python3 scripts/build_sector_public.py (chạy trong refresh-data.yml). Trang Chăn nuôi (Chan-nuoi/) dựng từ cùng nguồn qua Chan-nuoi/app/livestock-config.js + pkg-dashboard.js.",
+   "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "livestock.public.weekly",
+   "tier": "A",
+   "title": "Chăn nuôi: heo hơi toàn quốc và 3 vùng, ngô, khô đậu",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh; heo hơi qua routine Wi; IMF/FRED cập nhật hằng tháng"
+   },
+   "publication": "Heo hơi giá ngày (WiData); IMF bình quân tháng trễ 1–3 tháng",
+   "source": {
+    "name": "WiData, IMF Primary Commodity Prices (FRED)",
+    "url": "https://fred.stlouisfed.org/"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/agri-public-data.js",
+    "blocks": [
+     "cn-10",
+     "cn-20"
+    ]
+   },
+   "how": "python3 scripts/build_sector_public.py; heo hơi theo data/agri-wi-contract.json (hog_regions, commodity_agri). Trang Chăn nuôi (Chan-nuoi/) dựng từ cùng nguồn qua Chan-nuoi/app/livestock-config.js + pkg-dashboard.js.",
+   "job": "build_sector_public.py (mỗi lượt refresh)"
+  },
+  {
+   "id": "livestock.public.margin",
+   "tier": "A",
+   "title": "Chăn nuôi: biên chăn nuôi heo ước, biên gộp và doanh thu quý DBC, BAF, HAG",
+   "schedule": {
+    "type": "policy",
+    "note": "mỗi lượt refresh; BCTC theo quý"
+   },
+   "source": {
+    "name": "WiData, FRED, NHNN, BCTC quý",
+    "url": "https://fred.stlouisfed.org/"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/agri-public-data.js",
+    "blocks": [
+     "cn-21",
+     "cn-22",
+     "cn-06"
+    ]
+   },
+   "how": "build_sector_public.py (heo hơi, ngô, khô đậu, tỷ giá) + data/company-quarterly.js (scripts/build_company_quarterly.py). Trang Chăn nuôi (Chan-nuoi/) dựng từ cùng nguồn qua Chan-nuoi/app/livestock-config.js + pkg-dashboard.js.",
+   "job": "python scripts/fetch_fao_fpma.py && python scripts/build_sector_public.py"
+  },
+  {
+   "id": "livestock.public.valuation",
+   "tier": "A",
+   "title": "Chăn nuôi: P/E rổ chăn nuôi, thức ăn chăn nuôi theo phiên",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Theo phiên giao dịch",
+   "source": {
+    "name": "VNDirect finfo (giá, BCTC)",
+    "url": "https://dstock.vndirect.com.vn/"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/agri-public-data.js",
+    "blocks": [
+     "cn-03"
+    ]
+   },
+   "how": "python3 scripts/build_sector_public.py (gọi sector_valuation_public; chạy trong refresh-data.yml). Trang Chăn nuôi (Chan-nuoi/) dựng từ cùng nguồn qua Chan-nuoi/app/livestock-config.js + pkg-dashboard.js.",
+   "gates": [
+    "Chỉ nguồn công khai gốc; không dùng số Wi"
+   ],
+   "job": "refresh-data.yml (mỗi lượt refresh)"
+  },
+  {
+   "id": "livestock.companies",
+   "tier": "C",
+   "status": "manual",
+   "title": "Chăn nuôi: DBC, BAF, HAG kế hoạch, kết quả",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "BCTC quý; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "BCTC công bố",
+    "url": "https://www.hsx.vn/"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "blocks": [
+     "cn-60"
+    ]
+   },
+   "how": "Khi người dùng nhắn: cập nhật ô kế hoạch, kết quả trong Chan-nuoi/app/livestock-config.js (chLivePlan).",
+   "gates": [
+    "Link BCTC hoặc bài dẫn"
+   ]
+  },
+  {
+   "id": "livestock.policy",
+   "tier": "C",
+   "title": "Chăn nuôi: thuế nhập khẩu ngô, khô đậu; dịch tả heo châu Phi",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo văn bản, sự kiện",
+   "source": {
+    "name": "Cổng văn bản Chính phủ",
+    "url": "https://vanban.chinhphu.vn/"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "blocks": [
+     "cn-52"
+    ]
+   },
+   "how": "Kiểm văn bản, sự kiện mới; thêm mốc vào liveTimeline trong Chan-nuoi/app/livestock-config.js.",
+   "gates": [
+    "Số hiệu + ngày hiệu lực",
+    "Link văn bản gốc"
+   ]
+  },
+  {
+   "id": "livestock.hot-topics",
+   "tier": "C",
+   "title": "Chăn nuôi: Chủ đề nóng: chu kỳ giá heo",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Báo ngành",
+    "url": "https://nongnghiepmoitruong.vn/"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "blocks": [
+     "cn-t1"
+    ]
+   },
+   "how": "Thêm mốc mới có ngày và link.",
+   "gates": [
+    "Mỗi dòng có ngày + link"
+   ]
   },
   {
    "id": "construction.backlog",
