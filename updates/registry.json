@@ -7425,9 +7425,7 @@
      "cs-53",
      "cs-54",
      "cs-55",
-     "cs-57",
-     "cs-58",
-     "cs-61"
+     "cs-57"
     ]
    },
    "how": "Mở PDF scan, đọc từng trang (đơn vị, cột tháng/lũy kế), nhập vào data/rubber/dpr-monthly.json, ops.json có source_url + source_locator; rồi python3 scripts/build_rubber.py",
