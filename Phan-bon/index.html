@@ -13,14 +13,14 @@
 <script src="app/value-chain.js?v=a597c7c73610" defer></script>
 <script src="app/fertilizer-finance.js?v=51001a441612" defer></script>
 <script src="app/vn-geo.js?v=07f6be6d571b" defer></script>
-<script src="app/fertilizer-map.js?v=2eed3f23f03a" defer></script>
+<script src="app/fertilizer-map.js?v=16cf64f14eb0" defer></script>
 <script src="app/fertilizer-cost.js?v=ee98255eda48" defer></script>
 <script src="app/fertilizer-gasmap.js?v=e5bf48090cbc" defer></script>
 <script src="../data/fertilizer-news.js?v=057536cbda76" defer></script>
 <script src="app/fertilizer-news.js?v=3a5456f68ef8" defer></script>
-<script src="app/fertilizer.js?v=9be2ad8e9505" defer></script>
+<script src="app/fertilizer.js?v=a40e77853e0a" defer></script>
 <link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
-<script src="app/site-navigation.js?v=9abea12d0335" data-release="2026.11.26-kcn-bo-chi-tiet"></script>
+<script src="app/site-navigation.js?v=9abea12d0335" data-release="2026.11.26-phan-bon-thanh-tab"></script>
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
 <link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
 <link rel="stylesheet" href="app/fin-success-theme.css?v=0761641d486e">
@@ -36,14 +36,11 @@
 <body data-sector="fertilizer">
 <div class="site-navigation-shell"><div class="site-navigation-inner"><nav data-site-navigation="fertilizer"><a href="../">Trang tổng</a><a href="../Phan-bon/">Phân bón</a></nav><p class="site-release-note" data-release-label></p></div></div>
 
-<nav class="majortabs">
-  <div class="majortabrow" role="tablist" aria-label="Các phần nghiên cứu">
-    <button class="majortabbtn active" type="button" data-tab="mt1" role="tab">Tổng quan ngành</button>
-    <button class="majortabbtn" type="button" data-tab="mt2" role="tab">Bức tranh ngành</button>
-    <button class="majortabbtn" type="button" data-tab="mt3" role="tab">Tài chính ngành</button>
-    <button class="majortabbtn" type="button" data-tab="mt7" role="tab">Chủ đề nóng</button>
-    <button class="majortabbtn" type="button" data-tab="mt8" role="tab">Nguồn dữ liệu</button>
-  </div>
+<nav class="majortabs tabs" role="tablist" aria-label="Các phần nghiên cứu">
+  <button class="majortabbtn active" type="button" data-tab="mt1" role="tab" aria-selected="true">Tổng quan ngành</button>
+  <button class="majortabbtn" type="button" data-tab="mt2" role="tab" aria-selected="false">Bức tranh ngành</button>
+  <button class="majortabbtn" type="button" data-tab="mt3" role="tab" aria-selected="false">Tài chính ngành</button>
+  <button class="majortabbtn" type="button" data-tab="mt7" role="tab" aria-selected="false">Chủ đề nóng</button>
 </nav>
 
 <div class="container wrap">
@@ -54,14 +51,18 @@
     <section class="section">
       <div class="sectionhead"><div><h2 class="sec">Tổng quan ngành phân bón</h2><p>Nhìn để hiểu ngành: chuỗi giá trị và doanh nghiệp niêm yết. Số tài chính chi tiết ở tab Tài chính ngành.</p></div></div>
       <div class="ov-nav" role="tablist" aria-label="Tổng quan ngành">
-        <button class="tabbtn ov-tab active" type="button" id="fb-ov-map-tab" role="tab" data-ov="map" aria-controls="fb-ov-map" aria-selected="true"><span>00</span>Bản đồ ngành<small>Chuỗi giá trị · nhà máy · công suất</small></button>
-        <button class="tabbtn ov-tab" type="button" id="fb-ov-listed-tab" role="tab" data-ov="listed" aria-controls="fb-ov-listed" aria-selected="false"><span>01</span>Doanh nghiệp niêm yết<small>9 mã: đạm, lân & DAP, NPK</small></button>
+        <button class="tabbtn ov-tab active" type="button" id="fb-ov-map-tab" role="tab" data-ov="map" aria-controls="fb-ov-map" aria-selected="true"><span>00</span>Bản đồ ngành<small>Chuỗi giá trị · nhà máy · vùng nguyên liệu</small></button>
+        <button class="tabbtn ov-tab" type="button" id="fb-ov-cap-tab" role="tab" data-ov="cap" aria-controls="fb-ov-cap" aria-selected="false"><span>01</span>Năng lực sản xuất<small>Công suất · công nghệ · nguồn cung</small></button>
+        <button class="tabbtn ov-tab" type="button" id="fb-ov-listed-tab" role="tab" data-ov="listed" aria-controls="fb-ov-listed" aria-selected="false"><span>02</span>Doanh nghiệp niêm yết<small>9 mã: đạm, lân & DAP, NPK</small></button>
       </div>
       <div class="pane-subpane ov-pane" id="fb-ov-map" data-ov="map" role="tabpanel" aria-labelledby="fb-ov-map-tab">
         <header class="ov-head"><div><span class="ov-k">00 · Toàn cảnh ngành</span><h2>Bản đồ ngành</h2><p>Vị trí nhà máy → nguồn nguyên liệu → công nghệ → công suất → yếu tố chi phí.</p></div></header>
       </div>
+      <div class="pane-subpane ov-pane" id="fb-ov-cap" data-ov="cap" role="tabpanel" aria-labelledby="fb-ov-cap-tab" hidden>
+        <header class="ov-head"><div><span class="ov-k">01 · Năng lực sản xuất</span><h2>Năng lực sản xuất</h2><p>Công suất thiết kế theo vùng, công nghệ và nhà máy; nguyên liệu, nguồn cung và yếu tố chi phí của từng nhà máy.</p></div></header>
+      </div>
       <div class="pane-subpane ov-pane" id="fb-ov-listed" data-ov="listed" role="tabpanel" aria-labelledby="fb-ov-listed-tab" hidden>
-        <header class="ov-head"><div><span class="ov-k">01 · Doanh nghiệp</span><h2>Doanh nghiệp niêm yết</h2><p>Quy mô, lợi nhuận và nợ vay của từng mã.</p></div></header>
+        <header class="ov-head"><div><span class="ov-k">02 · Doanh nghiệp</span><h2>Doanh nghiệp niêm yết</h2><p>Quy mô, lợi nhuận và nợ vay của từng mã.</p></div></header>
       </div>
     </section>
   </section>
@@ -108,12 +109,6 @@
     <section class="section"><div id="fb-news" aria-label="Tin ngành Phân bón"><p role="status">Đang tải tin ngành Phân bón…</p></div></section>
   </section>
 
-  <section class="majorpane" data-tab="mt8" id="pane-mt8">
-    <section class="section">
-      <div class="sectionhead"><div><h2 class="sec">Nguồn dữ liệu</h2><p>Nguồn, kỳ số mới nhất và cách lấy của từng nhóm dữ liệu.</p></div></div>
-      <div class="card" id="fb-sources"></div>
-    </section>
-  </section>
 </div>
 </body>
 </html>

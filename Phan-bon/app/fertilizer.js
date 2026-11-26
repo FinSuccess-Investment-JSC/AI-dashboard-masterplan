@@ -156,8 +156,8 @@ function overview() {
   c1.innerHTML = '<h3 class="chart-title" style="margin-top:0;font-size:13.5px">Chuỗi giá trị và vị trí doanh nghiệp niêm yết</h3><div class="fb-chain"></div><div class="pw-src">Nguồn: ' + SRC.ar + '; ' + SRC.vnd + '</div>';
   s1.append(c1); pane.append(s1); chain(c1.querySelector('.fb-chain'));
   // 0.2 Doanh thu/LNST theo nhóm và 0.3 Sản lượng theo năm bỏ 25/11/2026 (theo yêu cầu người dùng).
-  // 0.2 Bản đồ nhà máy, 0.3 cơ cấu công suất, 0.4 ma trận cấu trúc sản xuất (app/fertilizer-map.js, 25/11/2026).
-  if (window.FertMap) { try { FertMap.build(pane); } catch (e) { console.error(e); } }
+  // 0.2 Bản đồ nhà máy (app/fertilizer-map.js); cơ cấu công suất và ma trận cấu trúc sản xuất dời sang sub-tab 01 Năng lực sản xuất (26/11/2026).
+  if (window.FertMap) { try { FertMap.build(pane, $('#fb-ov-cap')); } catch (e) { console.error(e); } }
 }
 // 01 Doanh nghiệp niêm yết: thẻ từng mã (như bảng doanh nghiệp của Điện, rút gọn), bấm một khâu trên sơ đồ để lọc.
 function listed() {
@@ -334,6 +334,7 @@ function showPic(key) {
 function showOv(key) {
   $$('#pane-mt1 .ov-pane').forEach(p => { p.hidden = p.dataset.ov !== key; });
   $$('#pane-mt1 .ov-tab').forEach(b => { const on = b.dataset.ov === key; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
+  setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
 }
 
 /* =========================== NGUỒN DỮ LIỆU =========================== */
@@ -370,7 +371,7 @@ function asof() {
   $$('[data-asof]').forEach(n => { try { n.textContent = 'Dữ liệu mới nhất: ' + t[n.dataset.asof](); } catch (e) { n.textContent = ''; } });
 }
 function init() {
-  brief(); overview(); listed(); sources(); asof();
+  brief(); overview(); listed(); asof();  // 26/11/2026: bỏ tab Nguồn dữ liệu (như Điện); nguồn ghi dưới từng chart
   $$('#pane-mt1 .ov-tab').forEach(b => b.addEventListener('click', () => showOv(b.dataset.ov)));
   $$('#pane-mt2 .pp-tab').forEach(b => b.addEventListener('click', () => { showPic(b.dataset.sub); setTimeout(() => window.dispatchEvent(new Event('resize')), 30); }));
   $$('.majortabbtn').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
