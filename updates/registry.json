@@ -6504,7 +6504,7 @@
   {
    "id": "livestock.public.weekly",
    "tier": "A",
-   "title": "Chăn nuôi: heo hơi toàn quốc và 3 vùng, ngô, khô đậu",
+   "title": "Chăn nuôi: heo hơi toàn quốc dài hạn (WiData, bình quân tháng)",
    "schedule": {
     "type": "policy",
     "note": "mỗi lượt refresh; heo hơi qua routine Wi; IMF/FRED cập nhật hằng tháng"
@@ -6518,8 +6518,7 @@
     "page": "Chan-nuoi/index.html",
     "file": "data/agri-public-data.js",
     "blocks": [
-     "cn-10",
-     "cn-20"
+     "cn-10"
     ]
    },
    "how": "python3 scripts/build_sector_public.py; heo hơi theo data/agri-wi-contract.json (hog_regions, commodity_agri). Trang Chăn nuôi (Chan-nuoi/) dựng từ cùng nguồn qua Chan-nuoi/app/livestock-config.js + pkg-dashboard.js.",
@@ -6528,7 +6527,7 @@
   {
    "id": "livestock.public.margin",
    "tier": "A",
-   "title": "Chăn nuôi: biên chăn nuôi heo ước, biên gộp và doanh thu quý DBC, BAF, HAG",
+   "title": "Chăn nuôi: biên gộp và doanh thu quý DBC, BAF, HAG",
    "schedule": {
     "type": "policy",
     "note": "mỗi lượt refresh; BCTC theo quý"
@@ -6541,7 +6540,6 @@
     "page": "Chan-nuoi/index.html",
     "file": "data/agri-public-data.js",
     "blocks": [
-     "cn-21",
      "cn-22",
      "cn-06"
     ]
@@ -6592,10 +6590,12 @@
    "where": {
     "page": "Chan-nuoi/index.html",
     "blocks": [
-     "cn-60"
+     "cn-60",
+     "cn-d1",
+     "cn-d2"
     ]
    },
-   "how": "Khi người dùng nhắn: cập nhật ô kế hoạch, kết quả trong Chan-nuoi/app/livestock-config.js (chLivePlan).",
+   "how": "Khi BAF, DBC, Masan (MML) công bố KQKD: thêm quan sát vào data/livestock/observations.json (chỉ tiêu, kỳ, phạm vi, ngày công bố, URL, trạng thái), chạy scripts/build_livestock_public.py; kế hoạch ở Chan-nuoi/app/livestock-config.js (chLivePlan).",
    "gates": [
     "Link BCTC hoặc bài dẫn"
    ]
@@ -6617,7 +6617,8 @@
    "where": {
     "page": "Chan-nuoi/index.html",
     "blocks": [
-     "cn-52"
+     "cn-52",
+     "cn-40"
     ]
    },
    "how": "Kiểm văn bản, sự kiện mới; thêm mốc vào liveTimeline trong Chan-nuoi/app/livestock-config.js.",
@@ -6649,6 +6650,155 @@
    "how": "Thêm mốc mới có ngày và link.",
    "gates": [
     "Mỗi dòng có ngày + link"
+   ]
+  },
+  {
+   "id": "livestock.hog.daily",
+   "tier": "A",
+   "title": "Chăn nuôi: giá heo hơi ba miền và theo tỉnh (Báo Hà Tĩnh), độ rộng theo tỉnh",
+   "schedule": {
+    "type": "daily",
+    "at": "07:30"
+   },
+   "publication": "Nguồn cập nhật hằng ngày, giữ 30 ngày gần nhất",
+   "source": {
+    "name": "Báo Hà Tĩnh – Giá lợn hôm nay",
+    "url": "https://baohatinh.vn/cong-cu/gia-lon-hom-nay"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/livestock-public-data.js",
+    "blocks": [
+     "cn-h1",
+     "cn-h6",
+     "cn-h7",
+     "cn-h8"
+    ]
+   },
+   "how": "refresh-data.yml chạy python scripts/fetch_hog_prices.py; python scripts/fetch_pinksheet.py; python scripts/build_livestock_public.py; kho lưu nối tiếp data/raw/public/hog-prices.json (revisions, checks).",
+   "job": "python scripts/fetch_hog_prices.py; python scripts/fetch_pinksheet.py; python scripts/build_livestock_public.py",
+   "gates": [
+    "Nguồn lỗi → giữ số cũ, ghi lỗi vào checks",
+    "Không backfill từ nguồn khác"
+   ]
+  },
+  {
+   "id": "livestock.pinksheet.monthly",
+   "tier": "A",
+   "title": "Chăn nuôi: ngô, khô đậu tương World Bank Pink Sheet",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     3,
+     6
+    ]
+   },
+   "publication": "World Bank cập nhật Pink Sheet đầu mỗi tháng (ngày làm việc thứ 2–3)",
+   "source": {
+    "name": "World Bank Pink Sheet",
+    "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/world-bank-commodities-price-data-the-pink-sheet"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/livestock-public-data.js",
+    "blocks": [
+     "cn-h2",
+     "cn-h2b"
+    ]
+   },
+   "how": "refresh-data.yml chạy python scripts/fetch_hog_prices.py; python scripts/fetch_pinksheet.py; python scripts/build_livestock_public.py.",
+   "job": "python scripts/fetch_hog_prices.py; python scripts/fetch_pinksheet.py; python scripts/build_livestock_public.py"
+  },
+  {
+   "id": "livestock.nso.supply",
+   "tier": "C",
+   "title": "Chăn nuôi: tổng đàn heo % so cùng kỳ (tháng), sản lượng heo, gia cầm xuất chuồng (quý), ASF",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     6,
+     7
+    ]
+   },
+   "publication": "NSO công bố báo cáo KT-XH ngày 6 hằng tháng; số quý trong file .xlsx báo cáo quý",
+   "source": {
+    "name": "Cục Thống kê (NSO)",
+    "url": "https://www.nso.gov.vn/category/nong-lam-nghiep-va-thuy-san/"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/livestock/observations.json",
+    "blocks": [
+     "cn-h3",
+     "cn-h4",
+     "cn-21h",
+     "cn-22h",
+     "cn-24"
+    ]
+   },
+   "how": "Đọc báo cáo tháng/quý mới; thêm dòng vào data/livestock/observations.json (bản sửa đổi kỳ trước: dòng mới cùng chỉ tiêu × kỳ, ngày công bố sau → bản cũ tự vào revisions); chạy scripts/build_livestock_public.py.",
+   "gates": [
+    "Câu trích + URL",
+    "Không tự trừ hai mốc lũy kế"
+   ]
+  },
+  {
+   "id": "livestock.moit.import",
+   "tier": "C",
+   "title": "Chăn nuôi: nhập khẩu thịt heo HS 0203 (lượng, trị giá, xuất xứ)",
+   "schedule": {
+    "type": "monthly",
+    "at": "07:00",
+    "days": [
+     1,
+     2
+    ]
+   },
+   "publication": "Bộ Công Thương phát hành Bản tin thị trường NLTS cuối mỗi tháng (PDF)",
+   "source": {
+    "name": "Bộ Công Thương – Bản tin thị trường nông, lâm, thủy sản",
+    "url": "https://moit.gov.vn/tin-tuc/ban-tin-thi-truong-nong-lam-thuy-san"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/livestock/observations.json",
+    "blocks": [
+     "cn-30",
+     "cn-31",
+     "cn-32"
+    ]
+   },
+   "how": "Mở PDF bản tin mới, kiểm tiêu đề kỳ, đơn vị, footnote; thêm dòng imp_hs0203_t/usd/share vào evidence.json; chạy build_livestock_public.py.",
+   "gates": [
+    "Kỳ thống kê và ngày phát hành là hai trường riêng",
+    "Đối soát lượng × đơn giá"
+   ]
+  },
+  {
+   "id": "livestock.sim",
+   "tier": "C",
+   "status": "manual",
+   "title": "Chăn nuôi: mô phỏng kinh tế một con heo (preset VCBS 11/05/2023)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Preset lịch sử; số hiện tại do người dùng nhập",
+   "source": {
+    "name": "VCBS – Báo cáo ngành chăn nuôi heo 11/05/2023",
+    "url": "#cn-s1"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "blocks": [
+     "cn-s1",
+     "cn-s2"
+    ]
+   },
+   "how": "Thêm preset trong Chan-nuoi/app/hog-dashboard.js (PRESETS) khi có giá cám, giá giống cùng kỳ có nguồn.",
+   "gates": [
+    "Ghi nguồn và cách tách số"
    ]
   },
   {

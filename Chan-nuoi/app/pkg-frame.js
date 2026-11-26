@@ -13,7 +13,7 @@ const kpi = spark => $('#' + spark)?.closest('.kpi');
 const NOTE = html => () => el('p', 'rf-note', html);
 
 const TREE = P.tree;
-const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
+const ROUTES = P.routes || [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];  // Chăn nuôi: P.routes (5 tab)
 const ALIAS = {mt3: ['mt2'], mt4: ['mt2', 'policy'], mt5: ['mt1'], mt6: ['mt14', 'listed'], mt8: ['mt1', 'map', 'rf-sources'], mt9: ['mt14', 'sector'], ...(P.alias || {})};
 const SECTION = {policy: ['mt2', 'policy'], tax: ['mt2', 'policy'], finance: ['mt14', 'sector'], listed: ['mt14', 'listed'], companies: ['mt14', 'listed'], sources: ['mt1', 'map', 'rf-sources'], ...(P.section || {})};
 
@@ -29,7 +29,7 @@ function topicLinks() {
 /* ---------- Dựng ---------- */
 const TABS = {}, used = new Set(), BUILDS = [];
 function take(sel) {
-  const n = /^[a-z]+-[0-9t]/.test(sel) ? block(sel) : $(sel);
+  const n = /^[a-z]+-[0-9a-z]+$/.test(sel) ? block(sel) : $(sel);  // Chăn nuôi: id khối có chữ (cn-h1, cn-s1, cn-d1)
   if (!n || used.has(n) || [...used].some(u => u.contains(n))) return null;
   used.add(n); n.hidden = false; n.classList.remove('rf-hidden-legacy'); n.style.marginTop = '';
   if (/-5\d$/.test(sel)) unfold(n);
@@ -179,7 +179,7 @@ function run() {
   history.scrollRestoration = 'manual';
   const rest = [];
   // Dựng hết các tab rồi mới thay nội dung pane (tab sau còn lấy thẻ nằm trong tab cũ, vd. bl-03 ở Tổng quan cũ).
-  ['mt1', 'mt2', 'mt14'].map(buildTab).forEach(b => rest.push(...commit(b)));
+  Object.keys(TREE).map(buildTab).forEach(b => rest.push(...commit(b)));
   ['mt4'].forEach(k => { const p = $(`.majorpane[data-tab="${k}"]`); if (!p) return; [...p.children].forEach(n => { if (n.querySelector?.('[data-block-id]') || n.matches?.('[data-block-id]')) rest.push(n); }); p.replaceChildren(); });
   sources();
   BUILDS.forEach(f => f());
