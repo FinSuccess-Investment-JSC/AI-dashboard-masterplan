@@ -14,11 +14,12 @@ const block = id => $(`[data-block-id="${id}"]`);
 const byCanvas = id => $('#' + id)?.closest('.card,.viz-block');
 
 const GAP = t => `<p class="data-gap of-gap">${t}</p>`;
-const HIDE = ['bds-51'];  // 26/11/2026: người dùng bỏ thẻ tính trả góp mua nhà 3 tỷ
+const HIDE = ['bds-51'];
+const HIDE_SEL = ['.business-models'];  // 26/11/2026: người dùng bỏ thẻ tính trả góp mua nhà 3 tỷ
 const TREE = {
   mt1: {label: 'Tổng quan ngành', title: 'Tổng quan ngành BĐS dân cư', intro: 'Chuỗi giá trị → mô hình kinh doanh → doanh nghiệp niêm yết → vị trí chu kỳ.', subs: [
     {k: 'map', n: '00', t: 'Bản đồ ngành', d: 'Quỹ đất → pháp lý → vốn → xây dựng → bán hàng → bàn giao, mỗi khâu gắn mã niêm yết.', sel: ['.research-roadmap', '.value-chain-card'], ids: ['bds-01']},
-    {k: 'model', n: '01', t: 'Mô hình kinh doanh', d: 'Doanh nghiệp kiếm tiền từ đâu, người mua trả tiền thế nào.', sel: ['.business-models'], ids: [], rest: true},
+    {k: 'model', n: '01', t: 'Mô hình kinh doanh', d: 'Doanh nghiệp kiếm tiền từ đâu, người mua trả tiền thế nào.', ids: [], rest: true},  // 26/11/2026: bỏ thẻ mô tả cũ .business-models (lặp Bản đồ ngành)
     {k: 'cycle', n: '02', t: 'Vị trí chu kỳ', d: 'Giá, thanh khoản và vốn đang ở đâu trong chu kỳ.', ids: ['bds-02']},
   ]},
   mt2: {label: 'Bức tranh ngành', title: 'Bức tranh ngành', intro: 'Theo chuỗi: vĩ mô & vốn ngoại → nguồn cung → giao dịch → giá → vốn vay → hạ tầng.', subs: [
@@ -310,7 +311,7 @@ function modelTab() {
     ['03', 'Thu tiền theo tiến độ', 'Người mua đóng tiền theo tiến độ xây dựng', 'Người mua trả trước tăng · CFO dương', 'in'],
     ['04', 'Bàn giao', 'Giao nhà, người mua trả trước chuyển thành doanh thu', 'Doanh thu, lợi nhuận ghi nhận', 'rec'],
     ['05', 'Cấp sổ, thu nốt', 'Thu phần còn lại khi cấp giấy chứng nhận', 'Phải thu giảm', 'rec']];
-  const a = el('div', 'card of-wide'); a.id = 're-cashlife';
+  const a = el('div', 'card of-wide'); a.id = 're-cashlife'; a.dataset.ofAdded = 're-cashlife';
   a.innerHTML = `<div class="chart-title">Vòng đời tiền của một dự án nhà ở</div><div class="chart-sub">Tiền chi ra trước, tiền khách trả vào giữa, lợi nhuận ghi nhận sau cùng · mỗi bước hiện lên BCTC ở khoản nào</div>
     <div class="cl-flow">${steps.map(([k, t, d, b, c]) => `<div class="cl-step ${c}"><span class="cl-n">${k}</span><b>${t}</b><p>${d}</p><em>${b}</em></div>`).join('')}</div>
     <div class="cl-key"><span class="out">Tiền ra</span><span class="in">Tiền vào</span><span class="rec">Ghi nhận lợi nhuận</span></div>
@@ -373,6 +374,7 @@ function run() {
   const grp = (before, t, d) => { const n = block(before); if (n && n.parentElement?.classList.contains('of-body')) n.before(el('div', 'of-group of-wide', `<h3>${t}</h3><p>${d}</p>`)); };
   grp('bds-16', 'Lãi suất & tín dụng', 'Chi phí vốn của người mua nhà và chủ đầu tư.');
   grp('bds-28', 'Trái phiếu doanh nghiệp BĐS', 'Phát hành, dư nợ, chậm trả và lịch đáo hạn (HNX).');
+  HIDE_SEL.forEach(q => $$(q).forEach(n => { n.hidden = true; n.classList.add('of-hidden-legacy'); }));
   modelTab();
   hideEmptyGaps();
   const finHost = financePane();
