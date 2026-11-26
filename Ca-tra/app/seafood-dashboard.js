@@ -35,6 +35,8 @@ if(chain){
   ['us',605,290,['Thuế Mỹ','CBPG theo POR · CVD · Mục 301']],['asm',25,165,['Đa ngành','ASM (sở hữu IDI)']]
  ];
  const edges=[['feed','fry'],['fry','pang'],['pang','buyer'],['feed','shrimpfarm'],['shrimpfarm','shrimp'],['shrimp','buyer'],['rival','buyer',true],['us','shrimp',true],['asm','fry',true]];
+ // Gói Cá tra / Tôm (26/11/2026): chỉ vẽ khâu của ngành trang đang mở.
+ {const drop=document.body.dataset.seafoodLine==='shrimp'?['fry','pang','asm']:document.body.dataset.seafoodLine==='pang'?['shrimpfarm','shrimp','rival']:[];for(let i=nodes.length-1;i>=0;i--)if(drop.includes(nodes[i][0]))nodes.splice(i,1);for(let i=edges.length-1;i>=0;i--)if(drop.includes(edges[i][0])||drop.includes(edges[i][1]))edges.splice(i,1);if(document.body.dataset.seafoodLine==='pang')edges.push(['us','pang',true]);if(document.body.dataset.seafoodLine==='shrimp'){const f=nodes.find(n=>n[0]==='feed');if(f)f[3]=['Thức ăn','khô đậu, ngô, bột cá']}}
  const byId=Object.fromEntries(nodes.map(n=>[n[0],n]));
  const paths=edges.map(([a,b,dashed])=>{const A=byId[a],Bn=byId[b];let d;
   if(A[2]===Bn[2]){const fw=Bn[1]>A[1];d=`M${A[1]+(fw?w:0)} ${A[2]+h/2} H${Bn[1]+(fw?0:w)}`}

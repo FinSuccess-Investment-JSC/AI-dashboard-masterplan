@@ -2945,7 +2945,7 @@
     "url": "https://www.customs.gov.vn/index.jsp?pageId=4&cid=1294"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "file": "data/seafood-public-data.js",
     "blocks": [
      "ts-10",
@@ -2973,7 +2973,7 @@
     "url": "https://fred.stlouisfed.org/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "file": "data/seafood-public-data.js",
     "blocks": [
      "ts-11",
@@ -3002,7 +3002,7 @@
     "url": "https://www.federalregister.gov/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "blocks": [
      "ts-40",
      "ts-41",
@@ -3036,7 +3036,7 @@
     "url": "https://vasep.com.vn/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "blocks": [
      "ts-12",
      "ts-21",
@@ -3066,7 +3066,7 @@
     "url": "https://www.hsx.vn/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "blocks": [
      "ts-60"
     ]
@@ -3110,7 +3110,7 @@
     "url": "https://stockanalysis.com/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "file": "data/company-quarterly.js",
     "blocks": [
      "ts-06"
@@ -3138,7 +3138,7 @@
     "url": "https://vasep.com.vn/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "blocks": [
      "ts-t1",
      "ts-t2",
@@ -3163,7 +3163,7 @@
     "note": "Viết lại khi có kết luận CBPG mới, XK sang Mỹ/TQ đổi chiều, hoặc giá cá, tôm, khô đậu đổi ≥10%"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "blocks": [
      "ts-02",
      "ts-05"
@@ -3246,7 +3246,7 @@
     "url": "https://dstock.vndirect.com.vn/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "file": "data/seafood-public-data.js",
     "blocks": [
      "ts-03"
@@ -5413,7 +5413,7 @@
     "url": "https://vasep.com.vn/gia-thuy-san/gia-trong-nuoc"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "file": "data/seafood-public-data.js"
    },
    "how": "python3 scripts/fetch_vasep_prices.py → build_sector_public.py (chạy trong refresh-data.yml)",
@@ -5781,7 +5781,7 @@
     "url": "https://widata.vn/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "file": "data/seafood-public-data.js",
     "blocks": [
      "ts-10",
@@ -5812,7 +5812,7 @@
     "url": "https://widata.vn/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "file": "data/seafood-public-data.js",
     "blocks": [
      "ts-11",
@@ -5904,7 +5904,7 @@
     "url": "https://widata.vn/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "file": "data/seafood-public-data.js",
     "blocks": [
      "ts-03"
@@ -7089,7 +7089,7 @@
     "url": "https://fred.stlouisfed.org/series/PFISHUSDM"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html",
     "blocks": [
      "ts-15",
      "ts-16",
@@ -7115,7 +7115,7 @@
     "url": "https://widata.vn/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "blocks": [
      "ts-22",
      "ts-15"
@@ -7144,7 +7144,7 @@
     "url": "https://www.federalregister.gov/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "blocks": [
      "ts-43"
     ]
@@ -7164,7 +7164,7 @@
     "url": "https://www.federalregister.gov/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Tom/index.html",
     "blocks": [
      "ts-44"
     ]
@@ -7186,7 +7186,7 @@
     "url": "https://www.cna-ecuador.com/estadisticas/"
    },
    "where": {
-    "page": "Thuy-san/index.html",
+    "page": "Ca-tra/index.html, Tom/index.html",
     "blocks": []
    },
    "how": "Đợt 2: script đọc xlsx tháng.",
