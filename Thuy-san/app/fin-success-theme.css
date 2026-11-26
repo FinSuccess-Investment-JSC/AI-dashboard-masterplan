@@ -705,3 +705,13 @@ html body .majortabbtn.active,html body .majortabbtn[aria-selected="true"]{backg
 :root[data-theme=dark] body nav.majortabs.tabs{background:#161616!important}
 @media (max-width:900px){:root body nav.majortabs.tabs,:root body nav.majortabs{margin:10px 12px!important}}
 :root:not([data-theme=dark]) body nav.majortabs .majortabbtn.active,:root:not([data-theme=dark]) body nav.majortabs .majortabbtn[aria-selected="true"]{background:#1F2677!important;color:#fff!important}
+/* Khung chart chuẩn mọi ngành (26/11/2026): ít khoảng trắng, chart không tràn, chân thẻ gọn */
+.card:has(.ct-canvas){min-width:0;padding:18px 20px 12px!important}
+.card:has(.ct-canvas) *{min-width:0}
+.card:has(.ct-canvas) canvas{max-width:100%!important}
+.card:has(.ct-canvas) .chart-title{margin-bottom:4px!important}
+.card:has(.ct-canvas) .ct-switch{margin:6px 0 2px!important;align-items:center}
+.card:has(.ct-canvas) .ct-canvas{margin-top:4px}
+.card:has(.ct-canvas) .cts-legend{margin:6px 0 0!important}
+.card:has(.ct-canvas) :is(.pw-src,.chart-source,.source-note,.srcrow){margin-top:6px!important;padding-top:6px!important}
+.card:has(.ct-canvas)::after{margin-top:2px!important}
