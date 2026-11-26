@@ -37,7 +37,7 @@ def main():
             local=(page.parent/unquote(parsed.path)).resolve()
             if not local.is_relative_to(ROOT) or not local.is_file():
                 raise ValueError(f'{name}: missing local asset {url}')
-            public_files.add(str(local.relative_to(ROOT)))
+            public_files.add(local.relative_to(ROOT).as_posix())  # dấu / cả trên Windows
             return f'{attribute}="{parsed.path}?v={digest(local)[:12]}"'
         text=re.sub(r'\b(src|href)="([^"]+)"',asset,text)
         page.write_text(text)
