@@ -23,9 +23,9 @@ window.FS_SITE_NAV = {
       ]},
       {key: 'rubber', label: 'Cao su'},
       {key: 'textile', label: 'Dệt may'},
-      {key: 'seafood', label: 'Thủy sản', children: [
-        {key: 'seafood', label: 'Cá tra', sub: 'pang', hash: 'mt2'},
-        {key: 'seafood', label: 'Tôm', sub: 'shrimp', hash: 'mt2'}
+      {label: 'Thủy sản', children: [
+        {key: 'pangasius', label: 'Cá tra'},
+        {key: 'shrimp', label: 'Tôm'}
       ]},
       {label: 'Hóa chất', children: [
         {key: 'fertilizer', label: 'Phân bón'},

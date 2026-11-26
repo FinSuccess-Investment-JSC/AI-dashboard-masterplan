@@ -195,7 +195,7 @@ $$('.card').filter(n=>/Nguồn chưa gắn được đường dẫn|Nguồn dữ
 $$('.thesis-source-row').forEach(n=>{const wrap=make('section','source-register');wrap.append(make('h3','','Nguồn của bản phân tích Catalyst/Risk'),n);sources.append(wrap)});
 window.FinancialComparison?.mount(comp,{sector,sources});
 // Remove the previous summary from the product flow; source metadata remains in Sources.
-const hero=$('.hero');if(hero){const header=make('header','research-header');header.append(make('h1','',oil?'Dầu khí':bank?'Ngân hàng':power?'Điện':re?'Bất động sản':tx?'Dệt may':pt?'Cảng & kho bãi':ag?'Nông nghiệp & thực phẩm':sf?'Thủy sản':sh?'Vận tải biển':st?'Thép':xd?'Xây dựng · VLXD · Đầu tư công':bh?'Bảo hiểm':bl?'Bán lẻ & tiêu dùng':ph?'Dược & y tế':'Đường'));hero.before(header);preserveProvenance(hero);hero.remove();}
+const hero=$('.hero');if(hero){const header=make('header','research-header');header.append(make('h1','',oil?'Dầu khí':bank?'Ngân hàng':power?'Điện':re?'Bất động sản':tx?'Dệt may':pt?'Cảng & kho bãi':ag?'Nông nghiệp & thực phẩm':sf?({pang:'Cá tra',shrimp:'Tôm'}[document.body.dataset.seafoodLine]||'Thủy sản'):sh?'Vận tải biển':st?'Thép':xd?'Xây dựng · VLXD · Đầu tư công':bh?'Bảo hiểm':bl?'Bán lẻ & tiêu dùng':ph?'Dược & y tế':'Đường'));hero.before(header);preserveProvenance(hero);hero.remove();}
 $$('footer,.footer').forEach(n=>{if(!n.closest('.card'))n.remove()});
 if(bank){const filter=$('.bank-filter');if(filter){pane(5).prepend(filter);filter.querySelector('p').textContent='Chọn ngân hàng cho góc nhìn analyst và tín hiệu theo dõi. Số liệu toàn ngành giữ phạm vi ghi trên từng biểu đồ.'}}
 // Stick geography below the global navigation, including responsive header height.
