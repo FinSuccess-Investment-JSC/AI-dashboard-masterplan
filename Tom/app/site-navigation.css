@@ -1,0 +1,45 @@
+/* Shared navigation only; financial cards and source limitations are untouched. */
+html[data-redirecting="true"] body{visibility:hidden}
+.site-navigation-shell{background:#112b43;border-bottom:1px solid #29445c}
+.site-navigation-inner{max-width:1460px;margin:auto;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.site-navigation{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.site-navigation a,.topbar .site-navigation a{display:inline-flex;align-items:center;min-height:36px;padding:7px 12px;border:1px solid transparent;border-radius:7px;color:#dbe7f2;text-decoration:none;font:600 12px/1.4 Inter,system-ui,sans-serif;white-space:nowrap}
+.site-navigation a:hover,.topbar .site-navigation a:hover{background:#ffffff14;color:white}
+.site-navigation a[aria-current="page"],.topbar .site-navigation a[aria-current="page"]{background:#e2f3ef;color:#12695e;border-color:#bedfd7}
+.site-navigation a:focus-visible{outline:3px solid #75d0bf;outline-offset:2px}
+.site-release-note{font:11px/1.5 Inter,system-ui,sans-serif;color:#b9ccdb;margin:0}
+.site-release-inline{color:#61768a;font:11px/1.5 Inter,system-ui,sans-serif;margin:12px 0}
+@media(max-width:700px){.site-navigation-inner{padding:10px 14px}.site-navigation{gap:4px}.site-navigation a,.topbar .site-navigation a{padding:7px 9px;font-size:11px}.site-release-note{font-size:10px}}
+/* Nhúng trong website tổng: bỏ logo trùng, hàng tìm kiếm thấp sát mép trên, các hàng cách đều; tên ngành + tab bám đỉnh khi cuộn */
+html.fs-embed .fs-brandbar a[data-site-route=home],html.fs-embed .site-release-inline{display:none!important}
+html.fs-embed .fs-brandbar .in{min-height:0!important;padding-top:0!important;padding-bottom:6px!important}
+html.fs-embed .fs-brandbar input{height:30px!important;font-size:13px!important}
+html.fs-embed .fs-brandbar button[type=submit]{width:24px!important;height:24px!important;margin:3px!important}
+html.fs-embed .fs-theme{width:28px;height:28px;font-size:13px}
+html.fs-embed .sector-ticker{margin:4px 0 6px!important}
+@media(min-width:701px){
+html.fs-embed .research-header.fs-titleband{position:sticky!important;top:0;z-index:41;padding-top:7px!important;padding-bottom:7px!important;background:#fff!important}
+html.fs-embed[data-theme=dark] .research-header.fs-titleband{background:#0A0A0A!important}
+html.fs-embed .research-header.fs-titleband h1{font-size:18px!important;line-height:1.3}
+html.fs-embed .research-header.fs-titleband~.majortabs{top:var(--fs-title-h,44px)!important;padding-top:6px!important}
+html.fs-embed .majortabbtn{padding-top:9px!important;padding-bottom:9px!important}
+}
+html.fs-embed .fs-brandbar .in{justify-content:flex-start!important}
+html.fs-embed .fs-brandbar .fs-search{margin:0 auto 0 0!important;padding:0!important}
+html.fs-embed main.wrap{padding-top:0!important}
+html.fs-embed main.wrap>.research-header{padding-top:7px!important;padding-bottom:7px!important}
+
+/* Timeline chính sách: các mốc đều nhau, quá khứ mờ, mốc kế tiếp nổi bật */
+.fs-tl{margin:6px 0 16px;overflow-x:auto}
+.fs-tl ol{list-style:none;margin:0;padding:0;display:flex;gap:8px;min-width:min-content}
+.fs-tl-s{flex:1 1 0;min-width:128px;padding:10px 12px;border-radius:10px;background:#F4F6FB;border-top:3px solid #C9D1E3;display:flex;flex-direction:column;gap:3px}
+.fs-tl-s time{font-size:13px;font-weight:750;color:#1D2678;font-variant-numeric:tabular-nums}
+.fs-tl-s b{font-size:12px;font-weight:500;line-height:1.35;color:#4A5468}
+.fs-tl-s em{font-style:normal;font-size:10.5px;font-weight:700;color:#14796F;text-transform:uppercase;letter-spacing:.4px}
+.fs-tl-s.past{opacity:.62}
+.fs-tl-s.next{background:#DFF4F2;border-top-color:#14A098}.fs-tl-s.next b{color:#1D2678;font-weight:650}
+.fs-tl-s.future{background:#fff;box-shadow:inset 0 0 0 1px #DDE3F0;border-top-color:#2938A8}
+.fs-tl-now{flex:0 0 auto;display:flex;align-items:center;position:relative;padding:0 2px}
+.fs-tl-now span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:10.5px;font-weight:700;color:#14796F}
+html[data-theme="dark"] .fs-tl-s{background:#1F1F1F;border-top-color:#444}html[data-theme="dark"] .fs-tl-s time,html[data-theme="dark"] .fs-tl-s b{color:#F5F5F5}
+html[data-theme="dark"] .fs-tl-s.next{background:#123a38;border-top-color:#59C5C8}html[data-theme="dark"] .fs-tl-s.future{background:#171717;box-shadow:inset 0 0 0 1px #333}
