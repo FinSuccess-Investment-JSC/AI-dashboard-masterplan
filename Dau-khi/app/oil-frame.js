@@ -32,13 +32,9 @@ const TREE = {
       gap: 'Chưa có chuỗi sản lượng tiêu thụ xăng dầu, số dư Quỹ bình ổn và mức chiết khấu đại lý.'},
     {k: 'flows', n: '06', t: 'Vận tải & dòng chảy', d: 'Lưu lượng tàu qua Hormuz, Bab el-Mandeb và xuất khẩu dầu thô Trung Đông.', ids: ['dau-khi-37', 'dau-khi-41', 'dau-khi-40']},
   ]},
-  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Điều hành giá, Luật Dầu khí, thuế phí và quy hoạch khí & LNG: tác động lên từng khâu.', subs: [
+  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Điều hành giá và Luật Dầu khí: tác động lên từng khâu.', subs: [
     {k: 'price', n: '01', t: 'Điều hành giá', d: 'Cơ chế điều hành giá xăng dầu và tác động trong quý.', canv: ['chPolicyPremium', 'chPolicyChange'], ids: ['dau-khi-27'], rest: true},
     {k: 'law', n: '02', t: 'Luật Dầu khí 2026', d: 'Tác động ở đầu nguồn chu kỳ đầu tư.', ids: ['dau-khi-28']},
-    {k: 'tax', n: '03', t: 'Thuế & phí', d: 'Thuế bảo vệ môi trường, thuế nhập khẩu, xăng E10.', ids: [],
-      gap: 'Chưa có dữ liệu: biểu thuế bảo vệ môi trường, thuế nhập khẩu xăng dầu theo nguồn (FTA/MFN) và lộ trình E10 chưa được dựng thành bảng có nguồn.'},
-    {k: 'lng', n: '04', t: 'Quy hoạch khí & LNG', d: 'Quy hoạch hạ tầng khí, kho cảng LNG và điện khí.', ids: [],
-      gap: 'Chưa có dữ liệu: danh mục kho cảng LNG và tiến độ theo quy hoạch chưa được dựng. Pipeline điện LNG đang ở dashboard Điện (Chủ đề nóng); chuỗi dự án khí ở Bức tranh ngành › 02 Thượng nguồn VN.'},
   ]},
 };
 const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
@@ -341,6 +337,12 @@ function topExporters() {
     plugins: [{id: 'ofLabels', afterDatasetsDraw(ch) { const {ctx} = ch, meta = ch.getDatasetMeta(0); ctx.save(); ctx.font = '600 12.5px Inter, sans-serif'; ctx.textBaseline = 'middle';
       meta.data.forEach((b, i) => { const r = rows[i]; ctx.fillStyle = '#1F2A5C'; ctx.fillText(nf(r.v), b.x + 8, b.y); if (r.d != null) { const w = ctx.measureText(nf(r.v)).width; ctx.fillStyle = r.d >= 0 ? '#17784A' : '#B3303F'; ctx.fillText(`${r.d >= 0 ? '▲ +' : '▼ '}${nf(r.d)}`, b.x + 16 + w, b.y); } }); ctx.restore(); }}]});
 }
+
+// Thẻ chỉ có một nội dung thì không gập (bỏ lớp research-fold, hiện tiêu đề gốc).
+function unfoldCards(ids) {
+  const go = () => ids.forEach(id => { const card = block(id); if (!card) return; card.querySelectorAll(':scope > details.research-fold').forEach(f => { const body = f.querySelector(':scope > .research-detail') || f; f.replaceWith(...[...body.childNodes].filter(n => n.tagName !== 'SUMMARY')); }); card.querySelectorAll('.research-repeated-heading').forEach(h => h.classList.remove('research-repeated-heading')); });
+  go(); [800, 3000].forEach(t => setTimeout(go, t));
+}
 function run() {
   if (document.body.dataset.oilFrame) return; document.body.dataset.oilFrame = '1';
   style();
@@ -357,6 +359,7 @@ function run() {
     (t.querySelector('details.research-fold > :not(summary)') || t).prepend(a);
   });
   topExporters();
+  unfoldCards(['dau-khi-28']);
   crudeLayout();
   const finHost = financePane();
   nav(finHost);
