@@ -269,6 +269,15 @@
   function download(name, text) { const b = new Blob([text], {type: 'text/csv;charset=utf-8'}), a = el('a'); a.href = URL.createObjectURL(b); a.download = name; document.body.append(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
   const tableHtml = t => `<div class="tablewrap kc-tw" data-no-fold><table class="kc-t" data-no-fold><thead><tr>${t.head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${t.rows.map(r => `<tr>${r.map(c => `<td>${c == null ? '<span class="kc-na">—</span>' : esc(c)}</td>`).join('')}</tr>`).join('') || `<tr><td colspan="${t.head.length}">Không có dòng nào trong bộ lọc hiện tại.</td></tr>`}</tbody></table></div>`;
   // Một card chart: tiêu đề · đơn vị/kỳ · công cụ (cảnh báo dữ liệu, nguồn, bảng, CSV) · chart · một dòng nhận định.
+  // Dòng "Nguồn: …" hiện sẵn dưới mọi thẻ (quy tắc trang Điện, 26/11/2026): gộp mã nguồn của workbook thành tên tổ chức, link tới bản gần nhất.
+  const SRC_ORG = [[/^CWDN$/, 'Ban quản lý các KCN Đồng Nai'], [/^(WEB_)?CW/, 'Cushman & Wakefield'], [/CBRE/, 'CBRE'], [/^VIETCAP/, 'Vietcap (số CBRE)'], [/^SSI/, 'SSI Research'], [/^MFGHIST$/, 'Vietnam Briefing (số Bộ KH&ĐT)'],
+    [/^NSO/, 'Cục Thống kê'], [/^IDICO/, 'BCTN IDICO'], [/^VGC$/, 'Viglacera'], [/^SHINHAN$/, 'Shinhan Securities'], [/^HPADMIN$/, 'UBND Hải Phòng']];
+  function srcLine(o) {
+    const ids = [...new Set((o.srcs || []).filter(Boolean))], by = new Map();
+    ids.forEach(id => { const org = (SRC_ORG.find(([re]) => re.test(id)) || [])[1] || id, u = D && D.sources[id] && D.sources[id].url; if (!by.has(org) || u) by.set(org, u || by.get(org)); });
+    const txt = [...by].map(([org, u]) => u ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(org)}</a>` : esc(org)).join(' · ');
+    return [txt, o.srcText ? esc(o.srcText) : ''].filter(Boolean).join(' · ') || 'BCTN 2025 của doanh nghiệp (workbook nghiên cứu KCN)';
+  }
   function card(o) {
     const c = el('div', 'card kc-card' + (o.wide ? ' kc-wide' : ''));
     Object.assign(c.dataset, {blockId: o.id, updateKind: o.kind || 'document', cadence: o.cadence || 'quarterly', refreshStatus: 'snapshot'});
@@ -279,7 +288,7 @@
       (o.table ? '<button type="button" class="kc-tool" data-kc-tbl aria-pressed="false">Bảng</button><button type="button" class="kc-tool" data-kc-csv>CSV</button>' : '') + `</div></div>` +
       (o.controls ? `<div class="kc-ctl" role="group">${o.controls}</div>` : '') +
       (o.body ? `<div class="kc-body">${o.body}</div>` : `<div class="kc-plot" style="height:${o.height || 280}px"></div>`) + (o.legend ? `<div class="kc-legend">${o.legend}</div>` : '') +
-      (o.take ? `<div class="kc-take">${o.take}</div>` : '') + '<div class="kc-tblbox" hidden></div>';
+      (o.take ? `<div class="kc-take">${o.take}</div>` : '') + `<div class="pw-src">Nguồn: ${srcLine(o)}</div>` + '<div class="kc-tblbox" hidden></div>';
     const qb = c.querySelector('[data-kc-pop="qa"]'); if (qb) qb.onclick = () => pop(qb, `<h4>Cảnh báo dữ liệu</h4><ul>${qa.map(k => `<li><b>${esc(ISSUE_TITLE[k] || k)}</b>: ${esc(issueText(k))}</li>`).join('')}</ul>`);
     const sb = c.querySelector('[data-kc-pop="src"]'); if (sb) sb.onclick = () => pop(sb, `<h4>Nguồn</h4><ul>${[...new Set(o.srcs)].map(id => `<li>${srcA(id)} · ${esc((D.sources[id] || {}).what || '')}${(D.sources[id] || {}).checked ? ` <span class="kc-na">· kiểm ${esc(D.sources[id].checked.split('-').reverse().join('/'))}</span>` : ''}</li>`).join('')}</ul>${o.method ? `<p>${o.method}</p>` : ''}`);
     const tb = c.querySelector('[data-kc-tbl]'); if (tb) tb.onclick = () => { const box = c.querySelector('.kc-tblbox'), on = tb.getAttribute('aria-pressed') !== 'true'; tb.setAttribute('aria-pressed', String(on)); box.hidden = !on; if (on) box.innerHTML = tableHtml(o.table()); };
@@ -1057,6 +1066,8 @@
         if (cards.length) {
           const s = el('section', 'pp-panel pp-q kc-q kc-moved');
           s.innerHTML = `<header class="pp-ph"><span class="pp-num">${i + 1}.·</span><div><h3>${esc(MOVE_Q[k])}</h3><p class="kc-q-sub">${esc(MOVE_TITLE[k])}</p></div></header>`;
+          // Thẻ dời vào chưa có dòng nguồn hiện sẵn (bảng, không có chart): lấy từ ghi chú "Nguồn:" có sẵn của thẻ.
+          cards.forEach(c => { if (c.querySelector('.pw-src')) return; const b = c.querySelector('.chart-info-button[aria-controls]'), pn = b && document.getElementById(b.getAttribute('aria-controls')); const n = c.querySelector('.source-note') || pn?.querySelector('.chart-primary-source, .source-note, a[href]')?.closest('li, p, div') || pn, a = n && n.querySelector('a[href]'); if (!n) return; const d = el('div', 'pw-src'); d.append('Nguồn: '); d.append(a ? a.cloneNode(true) : n.textContent.replace(/^\s*Nguồn\s*:\s*/i, '').split('. ')[0]); c.append(d); });
           const g = el('div', 'grid two g2'); cards.forEach(c => g.append(c)); s.append(g); p.append(s); moved[k] = s;
         }
       }
