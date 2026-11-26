@@ -1,0 +1,63 @@
+/* Thủy sản · khung 4 tab theo mẫu Điện (26/11/2026). Lớp pp-* chép từ Dien/app/power-picture.js (CSS, CSS2) để
+   thanh sub-tab, tiêu đề câu hỏi, luồng Đầu vào → Sản xuất → Đầu ra trông giống trang Điện; sf-* là phần riêng của ngành. */
+.pp-nav{position:sticky;top:0;z-index:6;display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin;margin:6px 0 14px;padding:6px;border:1px solid var(--line,#e3e7f0);border-radius:12px;background:var(--card,#fff);box-shadow:0 2px 10px rgba(29,38,120,.06)}
+.pp-nav .pp-tab{flex:0 0 auto;white-space:nowrap;border:0;border-radius:8px;padding:7px 12px;background:transparent;color:var(--ink2,#3b4256);font:600 13px/1.2 Inter,system-ui,sans-serif;cursor:pointer}
+.pp-nav .pp-tab span{font-variant-numeric:tabular-nums;color:var(--muted,#7a8399);margin-right:6px;font-weight:500}
+.pp-nav .pp-tab[aria-selected=true]{background:#2938A8;color:#fff}.pp-nav .pp-tab[aria-selected=true] span{color:#cfd5f5}
+.pp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:2px 0 12px;flex-wrap:wrap}
+.pp-head h2{margin:0;font-size:19px}.pp-head p{margin:4px 0 0;color:var(--ink2,#3b4256);font-size:13.5px}.pp-k{font:600 12px Inter,sans-serif;color:var(--muted,#7a8399);letter-spacing:.04em}
+.pp-pane>.pp-kpis{margin-bottom:16px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.pp-panel{margin:0 0 22px;padding:14px 14px 10px;border:1px solid var(--line,#e3e7f0);border-radius:14px;background:color-mix(in srgb,var(--card,#fff) 92%,#2938A8 3%);scroll-margin-top:120px}
+.pp-ph{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}.pp-num{flex:0 0 auto;font:700 12px Inter,sans-serif;color:#fff;background:#1D2678;border-radius:6px;padding:3px 7px;margin-top:2px}
+.pp-ph h3{margin:0 0 4px;font-size:15.5px;line-height:1.35}
+.pp-grp{margin:22px 0 10px;font:700 12px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#7a8399)}
+.pp-flow{display:flex;align-items:stretch;gap:6px;margin:0 0 16px;flex-wrap:wrap}.pp-flow-s{flex:1 1 170px;display:flex;flex-direction:column;gap:3px;padding:10px 14px;border:1px solid var(--line,#d6dbe8);border-radius:12px;background:var(--card,#fff);color:var(--ink,#1d2333);text-decoration:none}
+.pp-flow-s small{font:700 10.5px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#7a8399)}.pp-flow-s b{font-size:14px;line-height:1.3}.pp-flow-s:hover,.pp-flow-s:focus-visible{border-color:#2938A8}
+.pp-flow-ar{align-self:center;color:#2938A8;font-weight:700}
+.pp-stage{display:flex;align-items:center;gap:10px;margin:24px 0 12px;padding-bottom:8px;border-bottom:2px solid #1D2678;scroll-margin-top:120px}.pp-stage span{font:700 11px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#1D2678;border-radius:6px;padding:3px 9px}.pp-stage h3{margin:0;font-size:16px}
+:root[data-theme=dark] .pp-panel{background:color-mix(in srgb,var(--card,#141a33) 94%,#6171C5 6%)}
+:root[data-theme=dark] .pp-stage{border-color:#8997D6}:root[data-theme=dark] .pp-stage span{background:#2938A8}
+@media (max-width:760px){.pp-flow-ar{display:none}.pp-flow-s{flex-basis:100%}.pp-panel{padding:12px 10px}.pp-pane>.pp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Lưới trong câu hỏi: chart 2 cột một hàng; bảng, sơ đồ, thẻ nhiều chart chiếm cả hàng. */
+.sf-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.sf-grid>*{min-width:0;margin:0!important}
+.sf-grid>.sf-wide,.sf-grid>.fsv-heat,.sf-grid>.financial-comparison,.sf-grid>.research-roadmap,.sf-grid>.business-models,.sf-grid>.value-chain-card,.sf-grid>details,.sf-grid>.sf-note,.sf-grid>.sf-links{grid-column:1/-1}
+@media (max-width:900px){.sf-grid{grid-template-columns:minmax(0,1fr)}}
+.sf-meta{margin:0;font-size:12.5px;color:var(--muted,#6b7280);line-height:1.5}
+.sf-note{margin:0;padding:9px 12px;border:1px dashed var(--line,#d6dbe8);border-radius:10px;font-size:12.8px;line-height:1.55;color:var(--ink2,#3b4256)}
+.sf-note b{color:var(--ink,#1d2333)}
+.sf-period{display:inline-block;font:600 10.5px/1.7 Inter,sans-serif;border-radius:4px;padding:0 6px;margin-right:6px;background:#e7ebfb;color:#1D2678;vertical-align:1px}
+:root[data-theme=dark] .sf-period{background:#26306b;color:#dfe4ff}
+.sf-hidden-legacy{display:none!important}
+.sf-rest>summary,.sf-old>summary{cursor:pointer;font-weight:600;font-size:13px;color:var(--ink2,#3b4256)}
+
+/* Bản tin dữ liệu: thêm dòng kỳ · phạm vi dưới mỗi ô số. */
+.db-scope{margin-top:4px;font-size:11.5px;line-height:1.4;color:var(--muted,#6b7280)}
+
+/* Triển vọng: ba biến. */
+.sf-outlook{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:8px 0 10px}
+.sf-ol{border:1px solid var(--line,#e3e7f0);border-radius:12px;padding:12px 14px;background:var(--card,#fff)}
+.sf-ol h4{display:flex;gap:8px;align-items:center;margin:0 0 8px;font-size:14.5px}.sf-ol h4 span{font:700 11.5px Inter,sans-serif;color:#fff;background:#1D2678;border-radius:6px;padding:2px 7px}
+.sf-ol p{margin:6px 0;font-size:13px;line-height:1.55}
+.sf-ol-num{display:flex;flex-direction:column;gap:3px}.sf-ol-num span{font-weight:700;color:var(--ink,#1d2333)}.sf-ol-num span:empty{display:none}
+.sf-ol-ev{color:var(--ink2,#3b4256)}.sf-ol-next{border-top:1px dashed var(--line,#e3e7f0);padding-top:6px;font-size:12.5px!important}
+@media (max-width:900px){.sf-outlook{grid-template-columns:minmax(0,1fr)}}
+
+/* Tôm › Đầu ra: thẻ dẫn sang dữ liệu dùng chung. */
+.sf-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.sf-link{display:block;border:1px solid var(--line,#d6dbe8);border-radius:12px;padding:10px 12px;background:var(--card,#fff);color:inherit;text-decoration:none}
+.sf-link:hover,.sf-link:focus-visible{border-color:#2938A8}.sf-link small{display:block;font:600 11px Inter,sans-serif;color:var(--muted,#7a8399);text-transform:uppercase;letter-spacing:.05em}
+.sf-link b{display:block;font-size:14px;margin:3px 0}.sf-link span{font-size:12.5px;color:var(--ink2,#3b4256)}
+
+/* Chủ đề nóng: ngày và diễn biến → tác động → dữ liệu liên quan. */
+.sf-tl{list-style:none;margin:0 0 10px;padding:0;border-left:2px solid var(--line,#d6dbe8)}
+.sf-tl li{position:relative;display:grid;grid-template-columns:92px 1fr;gap:10px;padding:5px 0 5px 14px;font-size:13px;line-height:1.55}
+.sf-tl li::before{content:"";position:absolute;left:-6px;top:11px;width:10px;height:10px;border-radius:50%;background:#2938A8;border:2px solid var(--card,#fff)}
+.sf-tl time{font:600 12px Inter,sans-serif;color:#1D2678;font-variant-numeric:tabular-nums}
+:root[data-theme=dark] .sf-tl time{color:#AFC0FF}
+.sf-hit,.sf-go{margin:6px 0;font-size:13px;line-height:1.55}.sf-who{font-weight:600}
+@media (max-width:600px){.sf-tl li{grid-template-columns:1fr;gap:0}}
+.sf-next{display:block;margin:8px 0 0 auto;border:1px solid var(--line,#d6dbe8);background:var(--card,#fff);color:#2938A8;border-radius:8px;padding:7px 12px;font:600 13px Inter,system-ui,sans-serif;cursor:pointer}
+.sf-next:hover{border-color:#2938A8}
+.sf-pane .research-roadmap>h2{display:none}
