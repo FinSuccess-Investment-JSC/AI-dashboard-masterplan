@@ -1,0 +1,404 @@
+{
+  "schema": 1,
+  "checked": "2026-11-26",
+  "note": "Trích từ BCTC kiểm toán năm 2025 (IDC: năm 2024 vì chưa tìm được bản 2025). Các PDF trên vietstock là bản scan; câu trích được đọc trực tiếp từ ảnh trang, số trang là số in ở chân trang. LHG, NTC, D2D chỉ công bố BCTC (không phải hợp nhất), mẫu B01-DN. Số dư Doanh thu chưa thực hiện / Người mua trả tiền trước lấy từ Bảng cân đối kế toán, đơn vị tỷ đồng, làm tròn 1 chữ số. Chưa đọc thuyết minh chi tiết nên chưa tách phần Người mua trả tiền trước thuộc riêng hợp đồng thuê đất. 'segment_result' = BCTC có dòng kết quả bộ phận (thường là doanh thu trừ giá vốn hoặc chi phí trực tiếp); 'gross_profit' = true chỉ khi BCTC gọi đúng là 'Lợi nhuận gộp'.",
+  "general_rule": {
+    "citation": "Thông tư 200/2014/TT-BTC ngày 22/12/2014, Điều 79 (Tài khoản 511), khoản 1, điểm 1.6.12",
+    "summary": "Mặc định phân bổ tiền thuê nhận trước theo thời gian thuê. Khi thời gian thuê chiếm trên 90% thời gian sử dụng hữu ích của tài sản, doanh nghiệp có thể chọn ghi nhận một lần toàn bộ tiền thuê nhận trước nếu thỏa mãn đồng thời 4 điều kiện: (1) bên thuê không có quyền hủy ngang và bên cho thuê không phải trả lại tiền đã nhận trong mọi trường hợp; (2) tiền nhận trước không nhỏ hơn 90% tổng tiền thuê dự kiến và bên thuê thanh toán toàn bộ trong 12 tháng kể từ khi bắt đầu thuê; (3) hầu như toàn bộ rủi ro và lợi ích gắn với quyền sở hữu tài sản thuê đã chuyển cho bên thuê; (4) bên cho thuê ước tính được tương đối đầy đủ giá vốn. Doanh nghiệp chọn ghi nhận một lần phải thuyết minh chênh lệch doanh thu và lợi nhuận so với phương pháp phân bổ dần, cùng ảnh hưởng tới các kỳ sau.",
+    "quote": "Trường hợp thời gian cho thuê chiếm trên 90% thời gian sử dụng hữu ích của tài sản, doanh nghiệp có thể lựa chọn phương pháp ghi nhận doanh thu một lần đối với toàn bộ số tiền cho thuê nhận trước nếu thỏa mãn đồng thời các điều kiện sau",
+    "page": "trang 360 của văn bản gốc (bản scan)",
+    "url": "https://ktkt.uel.edu.vn/Resources/Docs/SubDomain/ktkt/VanBan/Accounting%20System/200_2014_TT_BTC.pdf",
+    "url_note": "Đã mở và đọc bản scan văn bản gốc TT200 trên trang Khoa Kế toán, ĐH Kinh tế - Luật (ĐHQG TP.HCM). Bản chính thức chưa đối chiếu được: thuvienphapluat.vn chặn truy cập tự động (HTTP 403), còn đường dẫn tệp trên vbpl.vn (Attachments/66801) trả về 404. Trang toàn văn trên thuvienphapluat là https://thuvienphapluat.vn/van-ban/Doanh-nghiep/Thong-tu-200-2014-TT-BTC-huong-dan-Che-do-ke-toan-Doanh-nghiep-263599.aspx (chưa mở được).",
+    "caveat": "Theo kết quả tìm kiếm trên thuvienphapluat.vn (chưa mở văn bản), Thông tư 99/2025/TT-BTC thay thế TT200 từ 01/01/2026. Cần kiểm tra điều khoản tương ứng trong TT99 trước khi áp dụng cho BCTC năm 2026."
+  },
+  "companies": [
+    {
+      "ticker": "KBC",
+      "name": "Tổng Công ty Phát triển Đô thị Kinh Bắc - CTCP",
+      "land_lease_recognition": {
+        "method": "one_off",
+        "quote": "Doanh thu cho thuê dài hạn đất và cơ sở hạ tầng trên đất khu công nghiệp được ghi nhận khi Tập đoàn đã chuyển giao phần lớn rủi ro và lợi ích gắn liền với lô đất cho người mua và doanh thu có thể được xác định một cách chắc chắn.",
+        "ref": "Thuyết minh 4.22 Doanh thu, trang 19"
+      },
+      "rbf_recognition": {
+        "method": "straight_line",
+        "quote": "Doanh thu từ tiền cho thuê nhà xưởng theo hợp đồng thuê hoạt động được hạch toán vào báo cáo kết quả hoạt động kinh doanh riêng theo phương pháp đường thẳng trong suốt thời gian cho thuê.",
+        "ref": "Thuyết minh 4.22, trang 19 (có thêm mục riêng 'Doanh thu bán nhà xưởng': ghi nhận khi chuyển giao phần lớn rủi ro và lợi ích)"
+      },
+      "utility_recognition": {
+        "method": "as_rendered",
+        "quote": "Doanh thu dịch vụ cung cấp được ghi nhận khi dịch vụ được cung cấp cho khách hàng",
+        "ref": "Thuyết minh 4.22, trang 19 (không có mục riêng cho điện, nước, phí quản lý)"
+      },
+      "unearned_revenue": {
+        "present": true,
+        "amount_bn": 34.8,
+        "short_term_bn": 3.6,
+        "long_term_bn": 31.2,
+        "customer_advances_bn": 1572.5,
+        "period": "31/12/2025",
+        "quote": "Doanh thu chưa thực hiện ngắn hạn (318): 3.596.724.744 VND; dài hạn (336): 31.163.916.071 VND; Người mua trả tiền trước ngắn hạn (312): 1.572.487.859.345 VND",
+        "ref": "Bảng cân đối kế toán hợp nhất, trang 7"
+      },
+      "segments": null,
+      "segments_note": "Thuyết minh 4.27, trang 20: Ban Tổng Giám đốc cho rằng Tập đoàn chỉ có một bộ phận (kinh doanh bất động sản và các dịch vụ tiện ích liên quan) nên không trình bày thông tin theo bộ phận.",
+      "source": {
+        "doc": "BCTC hợp nhất kiểm toán 2025",
+        "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTC/VN/NAM/KBC_Baocaotaichinh_2025_Kiemtoan_Hopnhat.pdf",
+        "pages": "7, 19, 20"
+      },
+      "gaps": "Bản scan. Chưa đọc thuyết minh 20 để biết bao nhiêu trong 1.572,5 tỷ Người mua trả tiền trước là tiền thuê đất KCN."
+    },
+    {
+      "ticker": "IDC",
+      "name": "Tổng công ty IDICO - CTCP",
+      "land_lease_recognition": {
+        "method": "mixed",
+        "quote": "Đối với trường hợp cho thuê tài sản có nhận trước tiền cho thuê của nhiều kỳ và thời gian cho thuê chiếm trên 90% thời gian sử dụng hữu ích của tài sản, Nhóm công ty ghi nhận doanh thu một lần ... khi thỏa mãn đồng thời các điều kiện sau",
+        "ref": "Thuyết minh 3.20 Ghi nhận doanh thu, mục 'Doanh thu cho thuê ghi nhận một lần', trang 22. Mục 'Doanh thu cho thuê ghi nhận hàng kỳ' cùng trang: thuê hoạt động hạch toán theo đường thẳng."
+      },
+      "rbf_recognition": {
+        "method": "straight_line",
+        "quote": "Thu nhập từ tiền cho thuê tài sản theo hợp đồng thuê hoạt động được hạch toán vào báo cáo kết quả hoạt động kinh doanh hợp nhất theo phương pháp đường thẳng trong suốt thời gian cho thuê.",
+        "ref": "Thuyết minh 3.20, trang 22 (chính sách chung cho thuê hoạt động, không có mục riêng cho nhà xưởng)"
+      },
+      "utility_recognition": {
+        "method": "as_delivered",
+        "quote": "Doanh thu được ghi nhận dựa trên số lượng điện thực tế đã truyền tải đến khách hàng theo giá bán điện đã được cơ quan có thẩm quyền phê duyệt. Doanh thu cung cấp dịch vụ được ghi nhận khi dịch vụ được thực hiện và hoàn thành.",
+        "ref": "Thuyết minh 3.20, mục 'Doanh thu bán điện' và 'Doanh thu cung cấp dịch vụ', trang 22"
+      },
+      "unearned_revenue": {
+        "present": true,
+        "amount_bn": 5744.1,
+        "short_term_bn": 1144.3,
+        "long_term_bn": 4599.8,
+        "customer_advances_bn": 307.1,
+        "period": "31/12/2024",
+        "quote": "Doanh thu chưa thực hiện ngắn hạn (318): 1.144.345.071.562 VND; dài hạn (336): 4.599.772.152.061 VND; Người mua trả tiền trước ngắn hạn (312): 307.062.074.693 VND; dài hạn (332): 0",
+        "ref": "Bảng cân đối kế toán hợp nhất, trang 7; thuyết minh 24, 26"
+      },
+      "segments": {
+        "names": ["Hoạt động kinh doanh khu công nghiệp", "Hoạt động kinh doanh điện", "Hoạt động xây lắp", "Hoạt động thu phí đường bộ", "Hoạt động kinh doanh bất động sản", "Các hoạt động còn lại"],
+        "revenue": true,
+        "gross_profit": true,
+        "segment_result": true,
+        "result_label": "Lợi nhuận gộp",
+        "period": "2024",
+        "ref": "Thuyết minh 42 Thông tin theo bộ phận, trang 57-58"
+      },
+      "source": {
+        "doc": "BCTC hợp nhất kiểm toán 2024",
+        "url": "https://static2.vietstock.vn/data/HNX/2024/BCTC/VN/NAM/IDC_Baocaotaichinh_2024_Kiemtoan_Hopnhat.pdf",
+        "pages": "7, 22, 57-58"
+      },
+      "gaps": "Chưa tìm được PDF BCTC hợp nhất kiểm toán 2025. 24hmoney có liệt kê văn bản này nhưng không kèm tệp; vietstock theo mẫu đường dẫn năm 2025 trả về 404. Nên lấy lại số dư và bộ phận năm 2025 từ HNX hoặc idico.com.vn. Bản 2024 là scan có lớp chữ OCR lỗi, nên đã đọc từ ảnh trang."
+    },
+    {
+      "ticker": "SZC",
+      "name": "Công ty Cổ phần Sonadezi Châu Đức",
+      "land_lease_recognition": {
+        "method": "one_off",
+        "quote": "Doanh thu cho thuê đất khu công nghiệp được ghi nhận một lần đối với toàn bộ số tiền cho thuê nhận trước khi thỏa mãn đồng thời các điều kiện quy định tại Điều 79, Thông tư số 200/2014/TT-BTC",
+        "ref": "Thuyết minh 3.17 Doanh thu, mục 'Doanh thu cho thuê đất khu công nghiệp và cơ sở hạ tầng', trang 18. Thuyết minh 5.1 trang 41: năm 2025 ghi nhận một lần 808.555.013.763 VND; nếu phân bổ dần trong 33 năm sau thì doanh thu và lợi nhuận gộp chênh lần lượt 784.053.346.679 và 546.491.174.532 VND."
+      },
+      "rbf_recognition": {
+        "method": null,
+        "quote": null,
+        "ref": "Không có mục chính sách riêng. Thuyết minh 5.1 trang 41 có dòng 'Doanh thu cho thuê xưởng và phí quản lý xưởng' 5,3 tỷ năm 2025."
+      },
+      "utility_recognition": {
+        "method": "as_rendered",
+        "quote": "Doanh thu cung cấp dịch vụ được ghi nhận khi kết quả của giao dịch đó được xác định một cách đáng tin cậy.",
+        "ref": "Thuyết minh 3.17, trang 17 (chính sách dịch vụ chung). Thuyết minh 5.1 trang 41 tách riêng 'Doanh thu cho thuê đất và phí quản lý', cung cấp nước, xử lý nước thải."
+      },
+      "unearned_revenue": {
+        "present": true,
+        "amount_bn": 310.6,
+        "short_term_bn": 19.9,
+        "long_term_bn": 290.6,
+        "customer_advances_bn": 285.3,
+        "period": "31/12/2025",
+        "quote": "Doanh thu chưa thực hiện ngắn hạn (318): 19.942.095.826 VND; dài hạn (336): 290.633.670.716 VND; Người mua trả tiền trước ngắn hạn (312): 285.296.675.014 VND",
+        "ref": "Bảng cân đối kế toán hợp nhất, trang 6; thuyết minh 4.12, 4.16"
+      },
+      "segments": {
+        "names": ["Hoạt động cho thuê đất khu công nghiệp và hoạt động khác", "Hoạt động kinh doanh Golf và nhà hàng", "Hoạt động kinh doanh thu phí"],
+        "revenue": true,
+        "gross_profit": false,
+        "segment_result": true,
+        "result_label": "Kết quả của bộ phận",
+        "period": "2025",
+        "ref": "Thuyết minh 7 Báo cáo bộ phận, trang 46 (trang in ngang)"
+      },
+      "source": {
+        "doc": "BCTC hợp nhất kiểm toán 2025",
+        "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTC/VN/NAM/SZC_Baocaotaichinh_2025_Kiemtoan_Hopnhat.pdf",
+        "pages": "6, 17-18, 41, 46"
+      },
+      "gaps": "Bản scan. Chưa đọc thuyết minh 4.12 để tách phần Người mua trả tiền trước thuộc riêng hợp đồng thuê đất."
+    },
+    {
+      "ticker": "BCM",
+      "name": "Tập đoàn Đầu tư và Phát triển Công nghiệp Becamex - CTCP",
+      "land_lease_recognition": {
+        "method": "mixed",
+        "quote": "Doanh thu cho thuê tài sản hoạt động được ghi nhận theo phương pháp đường thẳng ... Trường hợp thời gian cho thuê chiếm trên 90% thời gian sử dụng hữu ích của tài sản, doanh thu được ghi nhận một lần ... nếu thỏa mãn đồng thời các điều kiện",
+        "ref": "Chính sách kế toán mục 22 Doanh thu, 'Doanh thu cho thuê tài sản hoạt động', trang 33. Cùng trang có 'Doanh thu bán bất động sản phân lô bán nền' (hợp đồng không hủy ngang, ghi nhận khi chuyển rủi ro và lợi ích)."
+      },
+      "rbf_recognition": {
+        "method": "straight_line",
+        "quote": "Doanh thu cho thuê tài sản hoạt động được ghi nhận theo phương pháp đường thẳng trong suốt thời gian cho thuê.",
+        "ref": "Mục 22, trang 33 (chính sách chung cho thuê hoạt động, không có mục riêng cho nhà xưởng)"
+      },
+      "utility_recognition": null,
+      "unearned_revenue": {
+        "present": true,
+        "amount_bn": 1398.6,
+        "short_term_bn": 0.0,
+        "long_term_bn": 1398.6,
+        "customer_advances_bn": 857.6,
+        "period": "31/12/2025",
+        "quote": "Doanh thu chưa thực hiện ngắn hạn (318): 0 (đầu năm 277.777.778 VND); dài hạn (336): 1.398.571.992.221 VND; Người mua trả tiền trước ngắn hạn (312): 857.613.700.058 VND; dài hạn (332): 0",
+        "ref": "Bảng cân đối kế toán hợp nhất, trang 10; thuyết minh V.16a, V.23"
+      },
+      "segments": {
+        "names": ["Lĩnh vực kinh doanh bất động sản và bất động sản đầu tư", "Lĩnh vực xây dựng", "Lĩnh vực kinh doanh thương mại", "Lĩnh vực sản xuất", "Lĩnh vực khác"],
+        "revenue": true,
+        "gross_profit": false,
+        "segment_result": true,
+        "result_label": "Kết quả kinh doanh theo bộ phận",
+        "period": "2025",
+        "ref": "Phụ lục 07: Thông tin về bộ phận theo lĩnh vực kinh doanh, trang 85-86"
+      },
+      "source": {
+        "doc": "BCTC hợp nhất kiểm toán 2025",
+        "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTC/VN/NAM/BCM_Baocaotaichinh_2025_Kiemtoan_Hopnhat.pdf",
+        "pages": "10, 33, 85-86"
+      },
+      "gaps": "Bản scan. Chưa tìm thấy chính sách riêng cho doanh thu điện, nước, phí quản lý (utility_recognition = null); cần đọc các trang 30-37 phần chính sách doanh thu. Bộ phận KCN không tách riêng mà nằm trong 'bất động sản và bất động sản đầu tư'."
+    },
+    {
+      "ticker": "VGC",
+      "name": "Tổng Công ty Viglacera - CTCP",
+      "land_lease_recognition": {
+        "method": "one_off",
+        "quote": "đối với trường hợp thời gian cho thuê chiếm hơn 90% thời gian sử dụng hữu ích của tài sản, Tổng Công ty có thể lựa chọn ghi nhận doanh thu một lần đối với toàn bộ số tiền cho thuê nhận trước theo các điều kiện sau",
+        "ref": "Thuyết minh chính sách kế toán, mục 'Doanh thu cho thuê dài hạn bất động sản', trang 25 (dẫn TT200). Kèm theo: trích khấu hao bất động sản đầu tư một lần vào giá vốn dịch vụ cho thuê."
+      },
+      "rbf_recognition": null,
+      "utility_recognition": null,
+      "unearned_revenue": {
+        "present": true,
+        "amount_bn": 2674.7,
+        "short_term_bn": 142.3,
+        "long_term_bn": 2532.4,
+        "customer_advances_bn": 1201.5,
+        "period": "31/12/2025",
+        "quote": "Doanh thu chưa thực hiện ngắn hạn (318): 142.304.609.817 VND; dài hạn (336): 2.532.405.847.606 VND; Người mua trả tiền trước ngắn hạn (312): 1.201.472.066.039 VND",
+        "ref": "Bảng cân đối kế toán hợp nhất, trang 7; thuyết minh 20, 23"
+      },
+      "segments": {
+        "names": ["Nhóm bất động sản và xây dựng", "Nhóm kính, gương", "Nhóm sứ, sen vòi và phụ kiện", "Nhóm gạch ốp lát", "Nhóm gạch, ngói đất sét nung", "Bộ phận khác"],
+        "revenue": true,
+        "gross_profit": false,
+        "segment_result": true,
+        "result_label": "Kết quả hoạt động kinh doanh bộ phận (= doanh thu thuần ra bên ngoài - chi phí hoạt động kinh doanh)",
+        "period": "2025",
+        "ref": "Thuyết minh 34, trang 53-54"
+      },
+      "source": {
+        "doc": "BCTC hợp nhất kiểm toán 2025",
+        "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTC/VN/NAM/VGC_Baocaotaichinh_2025_Kiemtoan_Hopnhat.pdf",
+        "pages": "7, 25, 53-54"
+      },
+      "gaps": "Bản scan. Chưa đọc trang 24 (đầu phần chính sách doanh thu) để lấy chính sách cho thuê nhà xưởng ngắn hạn và dịch vụ tiện ích KCN. Bộ phận KCN không tách riêng mà nằm trong 'Nhóm bất động sản và xây dựng'."
+    },
+    {
+      "ticker": "LHG",
+      "name": "Công ty Cổ phần Long Hậu",
+      "land_lease_recognition": {
+        "method": "one_off",
+        "quote": "Trường hợp thời gian cho thuê chiếm trên 90% thời gian sử dụng hữu ích của tài sản, Công ty ghi nhận doanh thu một lần đối với toàn bộ số tiền cho thuê nhận trước nếu thỏa mãn đồng thời các điều kiện sau",
+        "ref": "Thuyết minh 4.15, mục 'Doanh thu cho thuê lại đất đã phát triển cơ sở hạ tầng', trang 21"
+      },
+      "rbf_recognition": {
+        "method": "straight_line",
+        "quote": "Doanh thu về cho thuê tài sản hoạt động được ghi nhận theo phương pháp đường thẳng trong suốt thời gian cho thuê. Tiền cho thuê nhận trước của nhiều kỳ được phân bổ vào doanh thu phù hợp với thời gian cho thuê.",
+        "ref": "Thuyết minh 4.15, trang 21"
+      },
+      "utility_recognition": {
+        "method": "as_rendered",
+        "quote": "Doanh thu của giao dịch cung cấp dịch vụ được ghi nhận khi kết quả của giao dịch đó được xác định một cách đáng tin cậy.",
+        "ref": "Thuyết minh 4.15, trang 21 (chính sách dịch vụ chung)"
+      },
+      "unearned_revenue": {
+        "present": true,
+        "amount_bn": 2.9,
+        "short_term_bn": 0.05,
+        "long_term_bn": 2.8,
+        "customer_advances_bn": 28.8,
+        "period": "31/12/2025",
+        "quote": "Doanh thu chưa thực hiện ngắn hạn (318): 47.324.700 VND; dài hạn (336): 2.804.309.447 VND; Người mua trả tiền trước ngắn hạn (312): 28.789.537.119 VND",
+        "ref": "Bảng cân đối kế toán, trang 9; thuyết minh 5.15"
+      },
+      "segments": null,
+      "segments_note": "Thuyết minh 9.3, trang 45: không trình bày báo cáo bộ phận vì Công ty chủ yếu hoạt động trong lĩnh vực xây dựng hạ tầng KCN, khu dân cư, cho thuê đất và dịch vụ hỗ trợ, tập trung tại Long Hậu.",
+      "source": {
+        "doc": "BCTC kiểm toán 2025 (không phải hợp nhất)",
+        "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTC/VN/NAM/LHG_Baocaotaichinh_2025_Kiemtoan.pdf",
+        "pages": "9, 21, 23, 45"
+      },
+      "gaps": "Đây là BCTC (không phải hợp nhất). Thuyết minh chỉ nhắc tới công ty liên kết, không thấy công ty con, nên có thể LHG không lập BCTC hợp nhất. Cần xác nhận trên HOSE. Bản scan."
+    },
+    {
+      "ticker": "NTC",
+      "name": "Công ty Cổ phần Khu công nghiệp Nam Tân Uyên",
+      "land_lease_recognition": {
+        "method": "mixed",
+        "quote": "Trường hợp thời gian cho thuê chiếm 90% thời gian sử dụng hữu ích của tài sản, Công ty ghi nhận doanh thu một lần ... Các hợp đồng không thỏa mãn điều kiện ghi nhận doanh thu một lần thì Công ty ghi nhận ... theo phương pháp đường thẳng",
+        "ref": "Thuyết minh 2.21, mục 'Doanh thu cho thuê đất đã phát triển cơ sở hạ tầng', trang 17"
+      },
+      "rbf_recognition": null,
+      "utility_recognition": {
+        "method": "as_rendered",
+        "quote": "Doanh thu cung cấp dịch vụ: Xác định được phần công việc đã hoàn thành vào ngày lập Bảng cân đối kế toán",
+        "ref": "Thuyết minh 2.21, trang 16-17 (chính sách dịch vụ chung; thuyết minh 2.27 nêu hoạt động gồm cho thuê hạ tầng, cấp nước, xử lý nước thải)"
+      },
+      "unearned_revenue": {
+        "present": true,
+        "amount_bn": 4381.7,
+        "short_term_bn": 363.3,
+        "long_term_bn": 4018.5,
+        "customer_advances_bn": 2.7,
+        "period": "31/12/2025",
+        "quote": "Doanh thu chưa thực hiện ngắn hạn (318): 363.267.189.493 VND; dài hạn (336): 4.018.457.060.715 VND; Người mua trả tiền trước ngắn hạn (312): 2.749.634.814 VND",
+        "ref": "Bảng cân đối kế toán, trang 7; thuyết minh 16, 19"
+      },
+      "segments": null,
+      "segments_note": "Thuyết minh 2.27, trang 19: không lập báo cáo bộ phận vì hoạt động chính là cho thuê hạ tầng KCN, cấp nước sinh hoạt và xử lý nước thải; doanh thu và giá vốn các hoạt động chính trình bày ở thuyết minh 24 và 25.",
+      "source": {
+        "doc": "BCTC kiểm toán 2025 (không phải hợp nhất)",
+        "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTC/VN/NAM/NTC_Baocaotaichinh_2025_Kiemtoan.pdf",
+        "pages": "7, 16-17, 19"
+      },
+      "gaps": "Đây là BCTC (không phải hợp nhất); có vẻ không có công ty con, cần xác nhận. Bản scan. Doanh thu chưa thực hiện dài hạn lớn (4.018 tỷ) cho thấy phần lớn hợp đồng đang phân bổ đường thẳng, nhưng chưa đọc thuyết minh 24 để biết năm 2025 ghi nhận một lần bao nhiêu."
+    },
+    {
+      "ticker": "D2D",
+      "name": "Công ty Cổ phần Phát triển Đô thị Công nghiệp Số 2",
+      "land_lease_recognition": {
+        "method": "straight_line",
+        "quote": "Doanh thu từ tiền cho thuê khu công nghiệp theo hợp đồng thuê hoạt động được hạch toán vào báo cáo kết quả hoạt động kinh doanh theo phương pháp đường thẳng trong suốt thời gian cho thuê.",
+        "ref": "Thuyết minh 3.17, mục 'Doanh thu cho thuê khu công nghiệp', trang 17. Riêng 'Doanh thu bán lô đất đã xây dựng cơ sở hạ tầng' ghi nhận khi hoàn thành cơ bản hạ tầng và bàn giao lô đất."
+      },
+      "rbf_recognition": {
+        "method": "straight_line",
+        "quote": "Doanh thu từ tiền cho thuê tài sản hoạt động được trình bày ở Mục 3.9 của Bản thuyết minh báo cáo tài chính.",
+        "ref": "Thuyết minh 3.17, trang 17 (dẫn sang mục 3.9; chưa đọc mục 3.9)"
+      },
+      "utility_recognition": {
+        "method": "as_rendered",
+        "quote": "Doanh thu về cung cấp dịch vụ được ghi nhận khi kết quả của giao dịch đó được xác định một cách đáng tin cậy.",
+        "ref": "Thuyết minh 3.17, trang 17"
+      },
+      "unearned_revenue": {
+        "present": true,
+        "amount_bn": 604.7,
+        "short_term_bn": 27.9,
+        "long_term_bn": 576.7,
+        "customer_advances_bn": 6.8,
+        "period": "31/12/2025",
+        "quote": "Doanh thu chưa thực hiện ngắn hạn (318): 27.928.033.077 VND; dài hạn (336): 576.733.771.458 VND; Người mua trả tiền trước ngắn hạn (312): 6.844.535.149 VND",
+        "ref": "Bảng cân đối kế toán, trang 6; thuyết minh 4.15"
+      },
+      "segments": {
+        "names": ["Lĩnh vực cho thuê đất và hạ tầng khu công nghiệp", "Lĩnh vực kinh doanh bất động sản", "Các lĩnh vực khác"],
+        "revenue": true,
+        "gross_profit": false,
+        "segment_result": true,
+        "result_label": "Kết quả của bộ phận",
+        "period": "2025",
+        "ref": "Thuyết minh 6 Báo cáo bộ phận, trang 41-43"
+      },
+      "source": {
+        "doc": "BCTC kiểm toán 2025 (không phải hợp nhất)",
+        "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTC/VN/NAM/D2D_Baocaotaichinh_2025_Kiemtoan.pdf",
+        "pages": "6, 17, 41-43"
+      },
+      "gaps": "Đây là BCTC (mẫu B01-DN, không phải hợp nhất); có vẻ không có công ty con, cần xác nhận. Bản scan. Chưa đọc mục 3.9 về cho thuê tài sản hoạt động."
+    },
+    {
+      "ticker": "SIP",
+      "name": "Công ty Cổ phần Đầu tư Sài Gòn VRG",
+      "land_lease_recognition": {
+        "method": "straight_line",
+        "quote": "Doanh thu cho thuê lại đất và đất đã xây dựng cơ sở hạ tầng được ghi nhận theo phương pháp đường thẳng trong suốt thời hạn thuê.",
+        "ref": "Thuyết minh 3.18 Ghi nhận doanh thu, trang 24"
+      },
+      "rbf_recognition": null,
+      "utility_recognition": {
+        "method": "as_rendered",
+        "quote": "Doanh thu cung cấp dịch vụ tiện ích: Doanh thu được ghi nhận khi hoàn thành việc cung cấp dịch vụ.",
+        "ref": "Thuyết minh 3.18, trang 24"
+      },
+      "unearned_revenue": {
+        "present": true,
+        "amount_bn": 13375.4,
+        "short_term_bn": 399.0,
+        "long_term_bn": 12976.4,
+        "customer_advances_bn": 25.2,
+        "period": "31/12/2025",
+        "quote": "Doanh thu chưa thực hiện ngắn hạn (318): 399.007.839.195 VND; dài hạn (336): 12.976.350.665.547 VND; Người mua trả tiền trước ngắn hạn (312): 25.177.478.913 VND",
+        "ref": "Bảng cân đối kế toán hợp nhất, trang 8; thuyết minh 19"
+      },
+      "segments": {
+        "names": ["Cho thuê lại đất và cung cấp các tiện ích khu công nghiệp", "Khác"],
+        "revenue": true,
+        "gross_profit": false,
+        "segment_result": true,
+        "result_label": "Kết quả kinh doanh bộ phận",
+        "period": "2025",
+        "ref": "Thuyết minh 36 Thông tin theo bộ phận, trang 55-56; chính sách 3.21, trang 26"
+      },
+      "source": {
+        "doc": "BCTC hợp nhất kiểm toán 2025",
+        "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTC/VN/NAM/SIP_Baocaotaichinh_2025_Kiemtoan_Hopnhat.pdf",
+        "pages": "8, 24, 26, 55-56"
+      },
+      "gaps": "Bản scan. Điện, nước và cho thuê đất được gộp chung vào một bộ phận nên không tách được doanh thu điện. Chưa có chính sách riêng cho nhà xưởng xây sẵn."
+    },
+    {
+      "ticker": "TIP",
+      "name": "Công ty Cổ phần Phát triển Khu công nghiệp Tín Nghĩa",
+      "land_lease_recognition": {
+        "method": "straight_line",
+        "quote": "Doanh thu cho thuê hoạt động chủ yếu bao gồm doanh thu cho thuê hạ tầng Khu công nghiệp và cho thuê Kios chợ Tam Phước được ghi nhận ... theo phương pháp đường thẳng trong suốt thời hạn cho thuê",
+        "ref": "Thuyết minh 2.21 Doanh thu, trang 18. Mục 'Doanh thu cho thuê đất đã phát triển cơ sở hạ tầng' cùng trang chỉ ghi đây là doanh thu tại KCN Tam Phước, không nêu cách ghi nhận. Thuyết minh 2.19: doanh thu chưa thực hiện kết chuyển theo từng năm tài chính."
+      },
+      "rbf_recognition": null,
+      "utility_recognition": {
+        "method": "as_rendered",
+        "quote": "Doanh thu cung cấp dịch vụ: Xác định được phần công việc đã hoàn thành vào ngày lập Bảng cân đối kế toán",
+        "ref": "Thuyết minh 2.21, trang 18 (chính sách dịch vụ chung)"
+      },
+      "unearned_revenue": {
+        "present": true,
+        "amount_bn": 149.5,
+        "short_term_bn": 5.7,
+        "long_term_bn": 143.8,
+        "customer_advances_bn": 0.7,
+        "period": "31/12/2025",
+        "quote": "Doanh thu chưa thực hiện ngắn hạn (318): 5.721.908.901 VND; dài hạn (336): 143.811.480.284 VND; Người mua trả tiền trước ngắn hạn (312): 708.934.109 VND",
+        "ref": "Bảng cân đối kế toán hợp nhất, trang 7; thuyết minh 17, 20"
+      },
+      "segments": null,
+      "segments_note": "Thuyết minh 2.27, trang 20: không lập báo cáo bộ phận vì hoạt động chủ yếu là cho thuê hạ tầng KCN, bán đất nền, cấp nước sinh hoạt và xử lý nước thải; doanh thu và giá vốn trình bày ở thuyết minh 24, 25.",
+      "source": {
+        "doc": "BCTC hợp nhất kiểm toán 2025",
+        "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTC/VN/NAM/TIP_Baocaotaichinh_2025_Kiemtoan_Hopnhat.pdf",
+        "pages": "7, 18, 20"
+      },
+      "gaps": "Bản scan. Chính sách cho thuê đất có hạ tầng không nói rõ ghi nhận một lần hay phân bổ; xếp straight_line theo mục cho thuê hoạt động và mục 2.19. Cần đọc thuyết minh 24 để xác nhận."
+    }
+  ]
+}

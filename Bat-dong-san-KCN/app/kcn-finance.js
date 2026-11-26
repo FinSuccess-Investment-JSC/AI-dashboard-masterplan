@@ -74,7 +74,8 @@ function filterBar() {
   renders.push(() => { const s = sel(), cons = E.consolidation.filter(c => s.includes(c.parent) && s.includes(c.child));
     f.querySelector('.pf-legend').innerHTML = `<table class="pf-gtable"><thead><tr><th>Nhóm doanh nghiệp</th><th>Doanh nghiệp</th><th>Trong tổng</th></tr></thead><tbody>${D.groups.map(g => { const on = S.groups.includes(g.id);
         return `<tr class="${on ? '' : 'off'}"><td><i style="background:${g.color}"></i>${esc(g.label)}</td><td>${D.companies.filter(c => c.group === g.id).map(c => `<span class="pf-tk" title="${esc(c.note || '')}">${c.ticker}${c.mixed ? '*' : ''}</span>`).join('')}</td><td>${on ? 'Có' : 'Không'}</td></tr>`; }).join('')}</tbody></table>
-      <p class="pf-note">Mỗi doanh nghiệp xếp vào loại hình có công suất lớn nhất; dấu * là doanh nghiệp có nhiều loại hình, số theo nhóm chỉ mang tính tham khảo.${cons.length ? ` Loại trùng hợp nhất: ${cons.map(c => `${c.parent} trừ ${c.child}`).join(', ')}.` : ''}</p>`; });
+      <p class="pf-scope"><b>Phạm vi mẫu:</b> bộ dữ liệu gồm ${D.companies.length} doanh nghiệp KCN niêm yết; đang chọn ${s.length} mã (${s.join(', ')}), ${s.filter(t => fin(D.data[t]?.revenue?.[S.end])).length} mã có BCTC ${qLabel(D.periods[S.end])}${s.filter(t => !fin(D.data[t]?.revenue?.[S.end])).length ? ` (chưa có: ${s.filter(t => !fin(D.data[t]?.revenue?.[S.end])).join(', ')})` : ''}. Nhóm Đa ngành (BCM, VGC) không chọn mặc định. Mọi số là BCTC toàn doanh nghiệp, không phải số riêng mảng KCN: BCTC hợp nhất, riêng LHG, NTC, D2D chỉ lập BCTC riêng (theo BCTC kiểm toán 2025); tỷ lệ gộp = tổng tử số ÷ tổng mẫu số cùng tập mã.</p>
+      <p class="pf-note">Nhóm theo vùng của quỹ đất chính; dấu * là doanh nghiệp có mảng ngoài KCN lớn (đô thị, tiện ích, vật liệu): tăng trưởng hay biên của mã này chỉ quy về KCN khi có báo cáo bộ phận (Tổng quan › 1.4).${cons.length ? ` Loại trùng hợp nhất: ${cons.map(c => `${c.parent} trừ ${c.child}`).join(', ')}.` : ''}</p>`; });
   return f;
 }
 function spark(vals) {
@@ -89,14 +90,14 @@ function kpis() {
     const s = sel(), i = S.end, n = s.length;
     const T = (m, mode = 'ttm', avg) => E.total(m, s, mode, {avg});
     const npat = T('npat'), roe = E.ratio({m: 'npat'}, {m: 'equity', avg: true}, s, 'ttm', 100), rec = T('receivables', 'q'), capex = T('capex'), cip = T('cip', 'q'), nd = E.ratio({m: 'net_debt'}, {m: 'ebitda'}, s, 'ttm');
-    const tile = (label, val, unit, d, dTxt, cov, vals, sub) => `<div class="kpi pp-kpi"><div class="label l">${esc(label)}</div><div class="value v">${val}${unit ? `<small> ${esc(unit)}</small>` : ''}</div><div class="delta">${dTxt}</div>${spark(vals)}<div class="sub s">${esc(qLabel(D.periods[i]))} · phủ ${cov}/${n} DN${sub ? ' · ' + sub : ''}</div></div>`;
+    const tile = (label, val, unit, d, dTxt, cov, vals, sub) => `<div class="kpi pp-kpi"><div class="label l">${esc(label)}</div><div class="value v">${val}${unit ? `<small> ${esc(unit)}</small>` : ''}</div><div class="delta">${dTxt}</div>${spark(vals)}<div class="sub s">${esc(qLabel(D.periods[i]))} · phủ ${cov}/${n} DN · BCTC toàn doanh nghiệp${sub ? ' · ' + sub : ''}</div></div>`;
     const ch = (_a, m, mode = 'ttm') => E.growth(m, s, mode).values[i];
     g.innerHTML = [
-      tile('LNST TTM toàn ngành', nf(npat.values[i]), 'tỷ đ', null, `${sg(ch(0, 'npat'))}% so cùng kỳ`, npat.cov[i], npat.values),
+      tile(`LNST TTM · ${n} mã đang chọn`, nf(npat.values[i]), 'tỷ đ', null, `${sg(ch(0, 'npat'))}% so cùng kỳ`, npat.cov[i], npat.values),
       tile('ROE TTM', nf(roe.values[i], 1), '%', null, `${sg(fin(roe.values[i]) && fin(roe.values[i - 4]) ? roe.values[i] - roe.values[i - 4] : null)} đ.p. so cùng kỳ`, roe.cov[i], roe.values, 'LNST ÷ VCSH bình quân'),
       tile('Phải thu khách hàng', nf(rec.values[i]), 'tỷ đ', null, `${sg(ch(0, 'receivables', 'q'))}% so cùng kỳ`, rec.cov[i], rec.values, 'tổng các mã đang chọn'),
-      tile('CAPEX TTM', nf(capex.values[i]), 'tỷ đ', null, `${sg(ch(0, 'capex'))}% so cùng kỳ`, capex.cov[i], capex.values, 'tiền chi mua sắm, xây dựng TSCĐ'),
-      tile('XDCB dở dang', nf(cip.values[i]), 'tỷ đ', null, `${sg(ch(0, 'cip', 'q'))}% so cùng kỳ`, cip.cov[i], cip.values),
+      tile('CAPEX tiền mặt TTM', nf(capex.values[i]), 'tỷ đ', null, `${sg(ch(0, 'capex'))}% so cùng kỳ`, capex.cov[i], capex.values, 'tiền chi mua sắm, xây dựng TSCĐ (LCTT)'),
+      tile('XDCB dở dang cuối kỳ', nf(cip.values[i]), 'tỷ đ', null, `${sg(ch(0, 'cip', 'q'))}% so cùng kỳ`, cip.cov[i], cip.values, 'số dư, không phải tiền chi'),
       tile('Nợ vay ròng / EBITDA TTM', nf(nd.values[i], 2), 'lần', null, `${sg(fin(nd.values[i]) && fin(nd.values[i - 4]) ? nd.values[i] - nd.values[i - 4] : null, 2)} lần so cùng kỳ`, nd.cov[i], nd.values)
     ].join('');
   });
@@ -183,7 +184,7 @@ function s72() {
     const R = gs.map(row), names = ['Giá vốn trừ khấu hao', 'Khấu hao', 'Bán hàng & QLDN', 'Lãi vay', 'Thuế TNDN', 'LNST'], cols = ['#9AA3BD', '#3d4653', '#8997D6', '#c98a00', '#861C52', '#2938A8'];
     const m = {key: 'kcn-fin-cost', categories: gs.map(g => g.label), series: names.map((n, k) => ({name: n, color: cols[k], values: R.map(r => fin(r[k]) ? Math.round(r[k] * 10) / 10 : null)})), unit: 'đồng', digits: 1, stackable: true, native: 'stack', time: false, zeroBase: true};
     if (window.ChartTypes) ChartTypes.mount(c3.host, m, () => { c3.host.innerHTML = ChartTypes.render(m, 'stack'); });
-    foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; khoản còn lại (thu nhập tài chính, liên kết, khác, chi phí tài chính ngoài lãi vay) không vẽ nên tổng có thể khác 100; chưa tách chi phí nhiên liệu`); }
+    foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; khoản còn lại (thu nhập tài chính, liên kết, khác, chi phí tài chính ngoài lãi vay) không vẽ nên tổng có thể khác 100; chưa tách giá vốn đất và hạ tầng theo dự án`); }
   renders.push(draw3);
   // Chart "Khấu hao và chi phí tài trợ so với doanh thu, EBITDA" bỏ 25/11/2026 theo yêu cầu người dùng.
   s.append(grid2(c1, c3));
@@ -194,11 +195,11 @@ function s72() {
 function s73() {
   const s = section('1.3', 'Dòng vốn đầu tư đang dịch chuyển vào đâu, và ngành đang ở giai đoạn nào của chu kỳ vốn?');
   // Chart 1: CAPEX theo nhóm
-  const c1 = card('kcn-fin-capex', 'CAPEX toàn ngành theo nhóm doanh nghiệp (tỷ đồng)', 'Tiền chi mua sắm, xây dựng TSCĐ (LCTT) · quy mô, so cùng kỳ, tỷ trọng'); let v1 = 'abs';
+  const c1 = card('kcn-fin-capex', 'CAPEX tiền mặt của mẫu đang chọn, theo nhóm doanh nghiệp (tỷ đồng)', 'Tiền chi mua sắm, xây dựng TSCĐ và tài sản dài hạn khác (LCTT) · quy mô, so cùng kỳ, tỷ trọng'); let v1 = 'abs';
   seg(c1, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['share', 'Tỷ trọng (%)']], () => v1, k => { v1 = k; draw1(); });
   function draw1() { const b = E.byGroup('capex', sel(), S.mode), tot = b.labels.map((_, i) => b.groups.reduce((a, g) => a + (fin(g.values[i]) ? g.values[i] : 0), 0));
     chart(c1.host, 'kcn-fin-capex-' + v1, b.labels, b.groups.map(g => ({name: g.label, color: g.color, values: v1 === 'abs' ? g.values : v1 === 'yoy' ? (E.growth('capex', sel(), S.mode).groups.find(z => z.id === g.id)?.values || []) : g.values.map((v, i) => fin(v) && tot[i] ? v / tot[i] * 100 : null)})), {unit: v1 === 'abs' ? 'tỷ đ' : '%', digits: v1 === 'abs' ? 0 : 1, native: v1 === 'yoy' ? 'line' : 'stack', stackable: v1 !== 'yoy', zeroBase: v1 !== 'yoy'});
-    foot(c1, `CAPEX tiền mặt ${modeName(S.mode)}; không gồm tăng tài sản do M&A, lãi vay vốn hóa chưa tách; LCTT quý dùng từ năm khớp số năm`); }
+    foot(c1, `CAPEX tiền mặt ${modeName(S.mode)}; khác XDCB dở dang (số dư trên bảng cân đối, gồm cả phần chưa trả tiền). Chi phát triển hạ tầng KCN để cho thuê lại thường ghi vào hàng tồn kho hoặc chi phí dở dang dài hạn, nên đi qua CFO (biến động hàng tồn kho) chứ không nằm trong CAPEX; không gồm tăng tài sản do M&A, lãi vay vốn hóa chưa tách; LCTT quý dùng từ năm khớp số năm`); }
   renders.push(draw1);
   // Chart 2: cường độ đầu tư
   const c2 = card('kcn-fin-intensity', 'Cường độ đầu tư', 'CAPEX/khấu hao (đường 1 lần), CAPEX/doanh thu, CAPEX/tổng tài sản bình quân, CAPEX/CFO'); let g2 = 'all'; const p2 = groupPicker(c2, () => g2, (v, q) => { g2 = v; if (!q) draw2(); });
@@ -219,7 +220,7 @@ function s73() {
   const c5 = card('kcn-fin-funding', 'CAPEX được tài trợ bằng nguồn nào? (tỷ đồng)', 'CFO, CAPEX, FCF, vay nợ ròng, vốn góp bằng tiền, cổ tức đã trả · và CFO/CAPEX');
   function draw5() { const x = sel(), mode = S.mode === 'q' ? 'ttm' : S.mode, L = E.labels(mode), T = m => E.total(m, x, mode).values, cr = E.ratio({m: 'cfo'}, {m: 'capex'}, x, mode).values;
     chart(c5.host, 'kcn-fin-funding', L, [{name: 'CFO', color: LINE[0], values: T('cfo')}, {name: 'CAPEX', color: LINE[2], values: T('capex').map(v => fin(v) ? -v : null)}, {name: 'FCF', color: LINE[1], values: T('fcf')}, {name: 'Vay nợ ròng', color: LINE[3], values: T('net_borrow')}, {name: 'Vốn góp bằng tiền', color: LINE[5], values: T('equity_raised')}, {name: 'Cổ tức đã trả', color: LINE[4], values: T('dividends').map(v => fin(v) ? -v : null)}], {unit: 'tỷ đ', native: 'bar'});
-    foot(c5, `${mode === 'y' ? 'năm' : 'TTM'}; FCF = CFO − CAPEX tiền mặt; CAPEX và cổ tức vẽ số âm (tiền ra); không phải toàn bộ biến động tiền (còn đầu tư tài chính, tỷ giá…)`); }
+    foot(c5, `${mode === 'y' ? 'năm' : 'TTM'}; FCF = CFO − CAPEX tiền mặt. Phạm vi: tiền bồi thường, chi hạ tầng ghi ở hàng tồn kho/chi phí dở dang đã trừ trong CFO; tiền thuê đất khách trả trước đã cộng trong CFO dù chưa ghi nhận doanh thu. CAPEX và cổ tức vẽ số âm (tiền ra); không phải toàn bộ biến động tiền (còn đầu tư tài chính, tỷ giá…)`); }
   renders.push(draw5);
   // Chart "Mức hao mòn kế toán của nền tài sản" bỏ 25/11/2026 theo yêu cầu người dùng.
   // Chart "Vốn mới đang vào đâu so với nơi tạo lợi nhuận và dòng tiền?" bỏ 25/11/2026 theo yêu cầu người dùng.
@@ -229,13 +230,13 @@ function s73() {
 
 /* ---------- 6.4 Phải thu và chất lượng dòng tiền ---------- */
 function s74() {
-  const s = section('1.4', 'Lợi nhuận ghi nhận có chuyển thành dòng tiền, hay đang nằm lại ở công nợ?');
+  const s = section('1.4', 'Lợi nhuận ghi nhận có chuyển thành dòng tiền, hay đang nằm lại ở công nợ và quỹ đất?');
   s.id = 'pf-sec-cash';
   const c1 = card('kcn-fin-recv', 'Phải thu khách hàng theo nhóm doanh nghiệp (tỷ đồng)', 'Số dư cuối kỳ · giá trị hoặc so cùng kỳ'); let v1 = 'abs';
   seg(c1, 'Cách xem', [['abs', 'Tỷ đồng'], ['yoy', 'So cùng kỳ (%)']], () => v1, k => { v1 = k; draw1(); });
   function draw1() { const mode = S.mode === 'y' ? 'y' : 'q', b = E.byGroup('receivables', sel(), mode);
     chart(c1.host, 'kcn-fin-recv-' + v1, b.labels, b.groups.map(g => ({name: g.label, color: g.color, values: v1 === 'abs' ? g.values : (E.growth('receivables', sel(), mode).groups.find(z => z.id === g.id)?.values || [])})), {unit: v1 === 'abs' ? 'tỷ đ' : '%', digits: v1 === 'abs' ? 0 : 1, native: v1 === 'abs' ? 'stack' : 'line', stackable: v1 === 'abs', zeroBase: v1 === 'abs'});
-    foot(c1, 'phải thu khách hàng ngắn hạn; tiền thuê đất trả một lần nằm ở doanh thu chưa thực hiện, không ở phải thu'); }
+    foot(c1, 'phải thu khách hàng ngắn hạn; tiền thuê đất khách trả trước nằm ở người mua trả tiền trước hoặc doanh thu chưa thực hiện (mục dưới), không ở phải thu'); }
   renders.push(draw1);
   const c2 = card('kcn-fin-dso', 'Số ngày thu tiền bình quân (DSO) theo nhóm doanh nghiệp (ngày)', 'Phải thu khách hàng bình quân ÷ doanh thu TTM × 365');
   function draw2() { const mode = S.mode === 'y' ? 'y' : 'ttm', L = E.labels(mode);
@@ -247,8 +248,19 @@ function s74() {
     chart(c3.host, 'kcn-fin-conversion', L, [{name: 'CFO/EBITDA (lần)', color: LINE[0], values: R('cfo', 'ebitda')}, {name: 'CFO/LNST (lần)', color: LINE[2], values: R('cfo', 'npat')}, {name: 'Biên CFO (%) ÷ 100', color: LINE[1], values: R('cfo', 'revenue')}], {unit: 'lần', digits: 2});
     foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; biên CFO vẽ dạng tỷ lệ (0,2 = 20%)`); }
   renders.push(draw3);
+  // KCN: ký hợp đồng, thu tiền, bàn giao và ghi nhận doanh thu có thể khác kỳ (26/11/2026). Tách theo phân loại BCTC.
+  const c4 = card('kcn-fin-advance', 'Tiền khách trả trước và doanh thu chưa thực hiện (tỷ đồng)', 'Số dư cuối kỳ của mẫu đang chọn · phải thu, người mua trả tiền trước, doanh thu chưa thực hiện ngắn hạn, dài hạn');
+  function draw4() { const x = sel(), mode = S.mode === 'y' ? 'y' : 'q', L = E.labels(mode), T = m => E.total(m, x, mode).values;
+    chart(c4.host, 'kcn-fin-advance', L, [['receivables', 'Phải thu khách hàng', LINE[4]], ['adv_customers', 'Người mua trả tiền trước', LINE[2]], ['unearned_st', 'Doanh thu chưa thực hiện ngắn hạn', LINE[1]], ['unearned_lt', 'Doanh thu chưa thực hiện dài hạn', LINE[0]]].map(([k, n, c]) => ({name: n, color: c, values: T(k)})), {unit: 'tỷ đ', native: 'line'});
+    foot(c4, `số dư cuối ${mode === 'y' ? 'năm' : 'quý'}. Người mua trả tiền trước: tiền đã thu, chờ bàn giao; doanh thu chưa thực hiện: tiền thuê đã nhận nhưng chưa ghi nhận, được phân bổ dần nếu doanh nghiệp ghi nhận theo thời hạn thuê. Số dư lớn hay nhỏ phụ thuộc chính sách ghi nhận, không so trực tiếp giữa các mã; cách ghi nhận từng mã ở Tổng quan › 1.5`); }
+  renders.push(draw4);
+  const c5 = card('kcn-fin-landcap', 'Vốn đang nằm ở quỹ đất và hạ tầng (tỷ đồng)', 'Số dư cuối kỳ của mẫu đang chọn · hàng tồn kho, chi phí dở dang dài hạn, XDCB dở dang, bất động sản đầu tư');
+  function draw5() { const x = sel(), mode = S.mode === 'y' ? 'y' : 'q', L = E.labels(mode), T = m => E.total(m, x, mode).values;
+    chart(c5.host, 'kcn-fin-landcap', L, [['inventory', 'Hàng tồn kho', LINE[2]], ['wip_lt', 'Chi phí SXKD dở dang dài hạn', LINE[3]], ['cip', 'XDCB dở dang', LINE[4]], ['inv_property', 'Bất động sản đầu tư', LINE[0]]].map(([k, n, c]) => ({name: n, color: c, values: T(k)})), {unit: 'tỷ đ', native: 'stack', stackable: true, zeroBase: true});
+    foot(c5, 'số dư; khi giải thích CFO, phần tăng hàng tồn kho, chi phí dở dang là tiền đã chi cho bồi thường và hạ tầng đất cho thuê. Hàng tồn kho gồm cả bất động sản đô thị ở doanh nghiệp đa ngành; doanh nghiệp không tách theo dự án'); }
+  renders.push(draw5);
   // Chart "Vốn lưu động và áp lực tài trợ" và bảng "Phải thu và chuyển hóa dòng tiền theo doanh nghiệp" bỏ 25/11/2026 theo yêu cầu người dùng.
-  s.append(grid2(c1, c2), c3.el);
+  s.append(grid2(c1, c2), c3.el, grid2(c4, c5));
   return s;
 }
 
