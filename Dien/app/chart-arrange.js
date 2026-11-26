@@ -83,17 +83,22 @@ body.fs-arr-on .fs-arr-size{display:block;position:absolute;right:2px;bottom:2px
   function onDrag(card,e){
     e.preventDefault();e.stopPropagation();const box=card.parentElement,pane=paneOf(box);paneBoxes(pane);paneKey(pane);toGrid(box);card.classList.add('fs-arr-drag');
     let target=null,after=false;
-    const clear=()=>pane.querySelectorAll('.fs-arr-over-before,.fs-arr-over-after').forEach(n=>n.classList.remove('fs-arr-over-before','fs-arr-over-after'));
-    const move=ev=>{const hit=document.elementFromPoint(ev.clientX,ev.clientY);const t=hit&&hit.closest('.fs-share-host');clear();target=null;
-      if(t&&t!==card&&paneOf(t.parentElement)===pane){const r=t.getBoundingClientRect();after=ev.clientX>r.left+r.width/2;target=t;t.classList.add(after?'fs-arr-over-after':'fs-arr-over-before');tip(after?'Thả: đặt bên phải':'Thả: đặt bên trái',ev.clientX,ev.clientY)}
-      else tip(t&&t!==card?'Chỉ kéo trong cùng khu vực':'Kéo tới chart khác',ev.clientX,ev.clientY)};
+    const clear=()=>document.querySelectorAll('.fs-arr-over-before,.fs-arr-over-after').forEach(n=>n.classList.remove('fs-arr-over-before','fs-arr-over-after'));
+    // Đích thả: chart bất kỳ (kể cả ở khối khác) hoặc khối bất kỳ cùng khối với chart đang kéo, trong cùng tab đang mở.
+    const scope=card.closest('.majorpane')||(()=>{let o=null;for(let n=card.parentElement;n;n=n.parentElement)if(n.matches('[role="tabpanel"],.tab-pane,.tabpane'))o=n;return o})()||card.closest('main')||document.body;
+    const pick=hit=>{for(let n=hit;n&&n!==scope;n=n.parentElement){if(n===card||n.contains(card))return null;if(n.classList&&n.classList.contains('fs-share-host')&&!n.closest('.fs-share-modal'))return n;if(n.parentElement===box)return n}return null};
+    const move=ev=>{const hit=document.elementFromPoint(ev.clientX,ev.clientY);const t=hit&&scope.contains(hit)?pick(hit):null;clear();target=null;
+      if(t){const r=t.getBoundingClientRect();after=ev.clientX>r.left+r.width/2;target=t;t.classList.add(after?'fs-arr-over-after':'fs-arr-over-before');tip(after?'Thả: đặt bên phải':'Thả: đặt bên trái',ev.clientX,ev.clientY)}
+      else tip('Kéo tới chart hoặc khối khác',ev.clientX,ev.clientY)};
     const up=()=>{document.removeEventListener('pointermove',move);document.removeEventListener('pointerup',up);clear();untip();card.classList.remove('fs-arr-drag');
       if(target){const tb=target.parentElement;toGrid(tb);tb.insertBefore(card,after?target.nextSibling:target);
         const W=tb.clientWidth||1,ts=saved.cards[cardKey(target)],tsp=snap((ts&&ts.span)||spanOf(target,W)),free=Math.max(MINSPAN,12-tsp);
         let sp=snap(Math.round(card.offsetWidth/W*12));if(sp>free)sp=free;
         if(tsp+sp>12){const t2=saved.cards[cardKey(target)]||(saved.cards[cardKey(target)]={});t2.span=12-sp;target.style.gridColumn='span '+(12-sp)}
         const s=saved.cards[cardKey(card)]||(saved.cards[cardKey(card)]={});s.span=sp;card.style.gridColumn='span '+sp;
-        charts(card).forEach(ch=>{try{ch.resize()}catch(e){}});record(pane)}};
+        charts(card).forEach(ch=>{try{ch.resize()}catch(e){}});
+        const tp=paneOf(tb);if(tb!==box){saved.moves=saved.moves||{};saved.moves[cardKey(card)]={to:isCard(target)?cardKey(target):'',after}}
+        record(pane);if(tp&&tp!==pane)record(tp)}};
     document.addEventListener('pointermove',move);document.addEventListener('pointerup',up);
   }
   function onSize(card,e){
@@ -120,6 +125,9 @@ body.fs-arr-on .fs-arr-size{display:block;position:absolute;right:2px;bottom:2px
       hd.addEventListener('pointerdown',e=>onDrag(card,e));sz.addEventListener('pointerdown',e=>onSize(card,e));
       card.append(hd,sz);
     });
+    // Chart đã kéo sang khối khác: đặt lại cạnh chart đích đã lưu.
+    Object.entries(saved.moves||{}).forEach(([k,m])=>{if(!m.to)return;const all=[...document.querySelectorAll('.fs-arr-card')];const c=all.find(x=>cardKey(x)===k),t=all.find(x=>cardKey(x)===m.to);
+      if(c&&t&&c.parentElement!==t.parentElement&&!c.contains(t)){t.parentElement.insertBefore(c,m.after?t.nextSibling:t);boxes.add(t.parentElement)}});
     const panes=new Set([...boxes].map(paneOf).filter(Boolean));panes.forEach(p=>{if(!p.dataset.fsArrDone){p.dataset.fsArrDone='1';paneBoxes(p);paneKey(p);applyPane(p)}});
   }
   function reset(){

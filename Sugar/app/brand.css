@@ -1350,3 +1350,8 @@ html[data-theme="dark"] .re-gt-name,html[data-theme="dark"] .re-gt-grp{color:#59
 
 /* Khung "Trong tab" nổi trên thanh tab/sub-tab dính (người dùng báo 26/11/2026) */
 .mkt-toc{z-index:60!important}
+
+/* Dòng nguồn hiển thị cuối mỗi card dữ liệu (người dùng chốt 26/11/2026). In: dùng bản in của ⓘ. */
+.card > .fs-src-line{display:block;margin-top:8px;font-size:12px;font-style:italic;color:#64748B;line-height:1.4}
+html[data-theme="dark"] .card > .fs-src-line{color:#A3A3A3}
+@media print{.card > .fs-src-line{display:none}}
