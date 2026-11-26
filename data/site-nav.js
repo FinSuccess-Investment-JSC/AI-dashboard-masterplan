@@ -11,9 +11,11 @@ window.FS_SITE_NAV = {
       {key: 'steel', label: 'Thép'},
       {key: 'realestate', label: 'BĐS dân cư'},
       {key: 'industrial', label: 'Khu công nghiệp'},
-      {key: 'construction', label: 'Xây dựng'},
-      {key: 'materials', label: 'Vật liệu xây dựng'},
-      {key: 'publicinv', label: 'Đầu tư công & BOT'},
+      {label: 'Xây dựng - Đầu tư công', children: [
+        {key: 'construction', label: 'Xây dựng'},
+        {key: 'materials', label: 'Vật liệu xây dựng'},
+        {key: 'publicinv', label: 'Đầu tư công & BOT'}
+      ]},
       {key: 'retail', label: 'Bán lẻ'},
       {key: 'auto', label: 'Ô tô - Xe máy'},
       {key: 'power', label: 'Điện'},
