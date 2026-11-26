@@ -1,7 +1,18 @@
 """Danh mục khoản mục BCTC và universe cho Tài chính ngành Khu công nghiệp (KCN), cùng schema với ngành Điện.
 Khoản mục (ITEMS) dùng chung với scripts/power_fin_items.py (mã VNDirect finfo, mẫu TT200/TT202).
 Dùng bởi fetch_kcn_financials.py và build_kcn_financials.py."""
-from power_fin_items import ITEMS  # noqa: F401  (cùng khoản mục với ngành Điện)
+from power_fin_items import ITEMS as POWER_ITEMS
+
+# Khoản mục chung với ngành Điện + khoản mục riêng của KCN (26/11/2026): tiền khách thuê trả trước, doanh thu chưa thực hiện
+# (tiền thuê đất nhận trước chưa ghi nhận), chi phí dở dang dài hạn và bất động sản đầu tư (hạ tầng KCN cho thuê).
+# Mã VNDirect finfo kiểm trên KBC Q3/2026 (financial_models, modelType 1).
+ITEMS = POWER_ITEMS + [
+    {'id': 'adv_customers', 'model': 1, 'code': 13130, 'kind': 'stock', 'name': 'Người mua trả tiền trước ngắn hạn'},
+    {'id': 'unearned_st', 'model': 1, 'code': 13199, 'kind': 'stock', 'name': 'Doanh thu chưa thực hiện ngắn hạn'},
+    {'id': 'unearned_lt', 'model': 1, 'code': 13197, 'kind': 'stock', 'name': 'Doanh thu chưa thực hiện dài hạn'},
+    {'id': 'wip_lt', 'model': 1, 'code': 12450, 'kind': 'stock', 'name': 'Chi phí sản xuất, kinh doanh dở dang dài hạn'},
+    {'id': 'inv_property', 'model': 1, 'code': 12400, 'kind': 'stock', 'name': 'Bất động sản đầu tư'},
+]
 
 # Universe: doanh nghiệp KCN niêm yết (25/11/2026). Mã nào API không có dữ liệu quý thì bỏ khỏi danh sách.
 TICKERS = ['KBC', 'IDC', 'BCM', 'SZC', 'SIP', 'VGC', 'LHG', 'NTC', 'D2D', 'TIP']

@@ -242,7 +242,9 @@
     // Số nguồn công bố: chỉ kỳ của năm mới nhất, bỏ kỳ đã có so cùng kỳ tự tính khớp (không lặp).
     const lastY = Math.max(...reported.map(c => +String(c.period).slice(0, 4)));
     const covered = c => cy.some(x => !x.conflict && x.region === c.region && `${x.year}${{H1: 'H1', '9T': 'M9', 'Năm': 'FY'}[x.label] || ''}` === c.period);
-    reported.filter(c => +String(c.period).slice(0, 4) === lastY && !covered(c) && c.reported_yoy >= th.r1_yoy).forEach(c => { r1ev.push(`${repName(c.reporter)} ${REG[c.region] || c.region} ${c.period.replace('2026M9', '9T/2026').replace('2026H1', 'H1/2026')}: ${ha(c.value)}, ${pct(c.reported_yoy, 0)} so cùng kỳ (nguồn công bố)`); r1src.add(c.src); });
+    // Số nguồn công bố mà không khớp nền cùng kỳ nguồn đã công bố (vd. CBRE miền Nam 9T/2026 +56% so nền 9T/2025 khoảng 80 ha): chưa hòa giải, không đưa vào nhận định tóm tắt (26/11/2026).
+    const unrec = c => cy.some(x => x.conflict && x.region === c.region && `${x.year}${{H1: 'H1', '9T': 'M9', 'Năm': 'FY'}[x.label] || ''}` === c.period);
+    reported.filter(c => +String(c.period).slice(0, 4) === lastY && !covered(c) && !unrec(c) && c.reported_yoy >= th.r1_yoy).forEach(c => { r1ev.push(`${repName(c.reporter)} ${REG[c.region] || c.region} ${c.period.replace('2026M9', '9T/2026').replace('2026H1', 'H1/2026')}: ${ha(c.value)}, ${pct(c.reported_yoy, 0)} so cùng kỳ (nguồn công bố)`); r1src.add(c.src); });
     const fdiNew = (D.fdi_snap || []).find(f => f.sector === 'FDI_MFG' && f.ctype === 'registered_new');
     if (r1ev.length) {
       const m = fdiNew && /([+-]?\d+)% YoY/.exec(fdiNew.note || '');
