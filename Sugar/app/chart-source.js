@@ -17,8 +17,21 @@ const firstPart = t => clean(t).replace(/^Nguồn\s*:\s*/i, '').split(/\.\s+(?=[
 // Nguồn ghi tay theo tiêu đề chart cho ngành này (nếu cần): window.SECTOR_SOURCE_MANUAL = [[/^Tiêu đề/, 'Nguồn'], …]
 const MANUAL = window.SECTOR_SOURCE_MANUAL || [];
 
-// Bỏ phần ghi chú kỹ thuật/tiếng Anh trong tên nguồn.
-const tidy = h => h.replace(/\s*\(public chart data, unofficial\)/g, '').replace(/\s*qua job dữ liệu của trang/g, '');
+// Chỉ ghi tên nguồn gốc, không diễn giải (người dùng chốt 26/11/2026, giống trang cổ phiếu):
+// bỏ (…), "· phần mô tả chữ thường", ngày tháng, "Nguồn:" lặp; nhiều năm BCTC chỉ giữ năm mới nhất.
+const tidy = h => {
+  h = String(h || '').replace(/\s*\(public chart data, unofficial\)/g, '').replace(/\s*qua job dữ liệu của trang/g, '')
+    .replace(/^(\s*Nguồn\s*:\s*)+/i, '').replace(/\bundefined\b/g, '')
+    .replace(/\s*\(([^()<>]*)\)/g, (m, x) => { const k = x.match(/VNDirect|CafeF|Vietstock|WiData/i); return k ? ' (' + ({vndirect:'VNDirect',cafef:'CafeF',vietstock:'Vietstock',widata:'WiData'})[k[0].toLowerCase()] + ')' : ''; })
+    .replace(/\s+theo (quý|năm|tháng)(?=[\s(;]|$)/g, '')
+    .replace(/\s*·\s*(?=[a-zà-ỹđ])[^·;<]*/g, '')
+    .replace(/,?\s*\b\d{1,2}\/\d{1,2}\/\d{2,4}\b/g, '').replace(/,?\s*\b\d{1,2}\/\d{4}\b/g, '').replace(/\s+không rõ(?=\s*(;|$))/g, '').replace(/,?\s*\b(?:T|Q)\d{1,2}\/\d{2,4}\b/g, '');
+  const parts = h.split(/(?<!&amp|&lt|&gt|&quot|&#39);\s*/).map(x => x.replace(/^[\s·,]+|[\s·,]+$/g, '')).filter(x => x && !/^(<a[^>]*>)?\s*(<\/a>)?$/.test(x) && !/^(tự tính|đường viền|không rõ)/i.test(x.replace(/<[^>]+>/g, '').trim())).slice(0, 4);
+  const plain = x => x.replace(/<[^>]+>/g, '').trim(), out = [];
+  parts.forEach(x => { if (!out.some(y => plain(y).toLowerCase() === plain(x).toLowerCase())) out.push(x); });
+  const yr = x => +((plain(x).match(/^(BCTC[^\d]*?)\s(20\d\d)$/) || [])[2] || 0), kind = x => plain(x).replace(/\s20\d\d$/, '');
+  return out.filter((x, i) => !yr(x) || !out.some((z, j) => j !== i && kind(z) === kind(x) && (yr(z) > yr(x) || (yr(z) === yr(x) && j < i)))).join('; ');
+};
 function sourceOf(unit) { return tidy(sourceRaw(unit)); }
 function sourceRaw(unit) {
   const out = [];
@@ -52,6 +65,8 @@ function run() {
     // Ghi chú ngắn của chart (chart-cards: .chart-caveat) đặt ngay dưới dòng nguồn.
     [...u.querySelectorAll('.chart-caveat')].filter(n => n.closest(UNIT) === u).forEach(n => { n.classList.add('pw-src-note'); foot.after(n); });
   });
+  // Dòng nguồn do module riêng của trang dựng cũng rút gọn theo cùng quy tắc.
+  document.querySelectorAll('.pw-src').forEach(n => { if (n.dataset.tidied === n.innerHTML) return; const t = tidy(n.innerHTML); if (t) n.innerHTML = 'Nguồn: ' + t; n.dataset.tidied = n.innerHTML; });
   document.documentElement.dataset.pwSrcMissing = [...missing].join(' | ');
 }
 let t = 0; const later = (ms = 400) => { clearTimeout(t); t = setTimeout(run, ms); };
