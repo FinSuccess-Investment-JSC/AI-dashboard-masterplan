@@ -1,5 +1,5 @@
 /* Bán lẻ & tiêu dùng · khung 4 tab theo mẫu Điện (26/11/2026), dựng từ khung Thủy sản (Thuy-san/app/seafood-frame.js).
-   Tab lớn: Tổng quan ngành (#mt1: 00 Bản đồ ngành · 01 Mô hình kiếm tiền · 02 Vị trí chu kỳ; Bản tin dữ liệu ở đầu)
+   Tab lớn: Tổng quan ngành (#mt1: 00 Bản đồ ngành · 01 Vị trí chu kỳ; bỏ tab Mô hình kiếm tiền 27/11/2026; Bản tin dữ liệu ở đầu)
           · Bức tranh ngành (#mt2: 01 Toàn ngành · 02 Bán lẻ hiện đại & điện máy · 03 Trang sức · 04 Hàng tiêu dùng nhanh · 05 Chính sách & thuế)
           · Tài chính ngành (#mt14: 01 Tài chính ngành · 02 Doanh nghiệp niêm yết)
           · Chủ đề nóng (#mt7, giữ research-editorial; mỗi chủ đề thêm dòng mô hình bị tác động, chỉ báo xác nhận, link chart).
@@ -23,11 +23,7 @@ const NOTE = html => () => el('p', 'rf-note', html);
 const TREE = {
   mt1: {title: 'Tổng quan ngành', subs: [
     {k: 'map', t: 'Bản đồ ngành', d: 'Sức mua (thu nhập, khách, tín dụng) → ba nhóm doanh nghiệp → kênh bán → biên lợi nhuận.', items: [
-      {q: 'Sức mua đi qua những khâu nào trước khi thành lợi nhuận?', id: 'rf-q-map', take: ['.research-roadmap', 'bl-01']},
-    ]},
-    {k: 'model', t: 'Mô hình kiếm tiền', d: 'Doanh thu đến từ đâu, biến nào quyết định biên, mã nào đại diện và xem chart nào tiếp.', items: [
-      {q: 'Mỗi nhóm kiếm tiền từ đâu, biến nào quyết định biên?', id: 'rf-q-model', take: ['bl-05'], build: models, fold: [['bl-04', 'Bảng doanh nghiệp theo dõi (bản cũ)']]},
-      {q: 'Từng doanh nghiệp kiếm tiền ra sao?', id: 'rf-q-biz', take: ['.business-models']},
+      {q: 'Sức mua đi qua những khâu nào trước khi thành lợi nhuận?', id: 'rf-q-map', take: ['bl-01']},
     ]},
     {k: 'cycle', t: 'Vị trí chu kỳ', d: 'Đọc nhanh sức mua, kết quả doanh nghiệp và ngược gió 2027.', items: [
       {q: 'Ngành đang ở pha nào của chu kỳ sức mua?', id: 'rf-q-cycle', take: ['bl-02']},
@@ -84,33 +80,13 @@ const TREE = {
   ]},
 };
 const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
-const SUB_ALIAS = {durable: 'jewelry'}; // ?sub= cũ trước khi tách Ô tô – Xe máy
+const SUB_ALIAS = {durable: 'jewelry', model: 'map'}; // ?sub= cũ trước khi tách Ô tô – Xe máy
+// ?sub=model cũ → Bản đồ ngành
 const ALIAS = {mt3: ['mt2', 'fmcg'], mt4: ['mt2', 'policy'], mt5: ['mt1'], mt6: ['mt14', 'listed'], mt8: ['mt1', 'map', 'rf-sources'], mt9: ['mt14', 'sector']};
 const SECTION = {policy: ['mt2', 'policy'], tax: ['mt2', 'policy'], trade: ['mt2', 'policy'], demand: ['mt2', 'all'], supply: ['mt2', 'modern'], price: ['mt2', 'fmcg'], margin: ['mt2', 'fmcg'],
   finance: ['mt14', 'sector'], listed: ['mt14', 'listed'], companies: ['mt14', 'listed'], players: ['mt14', 'listed'], sources: ['mt1', 'map', 'rf-sources']};
 
 /* ---------- Phần dựng riêng ---------- */
-function models() {
-  // Ba nhóm: doanh thu đến từ đâu · biến quyết định biên · mã đại diện · chart liên quan.
-  const M = [
-    ['Bán lẻ hiện đại & điện máy', 'MWG · FRT · DGW · PET', 'Chuỗi điện máy, điện thoại, bách hóa (MWG); nhà thuốc, tiêm chủng, ICT (FRT); phân phối ICT, hàng tiêu dùng (DGW, PET)',
-      'Số cửa hàng × doanh thu/cửa hàng; biên gộp theo cơ cấu hàng; chi phí thuê, nhân công mỗi điểm', [['#rf-q-stores', 'Mạng lưới & năng suất'], ['#rf-q-sssg', 'SSSG'], ['#rf-q-real', 'Sức mua']]],
-    ['Trang sức', 'PNJ', 'Trang sức, vàng 24K bán qua chuỗi cửa hàng và bán sỉ',
-      'Giá vàng và chênh lệch thế giới, cơ cấu trang sức/24K, giá vốn tồn kho', [['#rf-q-gold', 'Giá vàng'], ['#rf-q-gap', 'Chênh lệch thế giới'], ['#rf-q-pnj', 'Biên PNJ']]],
-    ['Hàng tiêu dùng nhanh', 'QNS · MSN · KDC', 'Đường & sữa đậu nành (QNS), thực phẩm, đồ uống, WinCommerce (MSN), dầu ăn, bánh kẹo (KDC)',
-      'Giá đường, dầu cọ, khô đậu, ngô (giá vốn, trễ theo tồn kho); thuế TTĐB nước giải khát; giá bán và sản lượng', [['#rf-q-output', 'Sản lượng'], ['#rf-q-cost', 'Đầu vào → biên'], ['#rf-q-policy', 'Chính sách']]],
-  ];
-  const host = $('#blModels'); if (!host) return el('span');
-  host.className = 'rf-models';
-  host.innerHTML = M.map(([t, syms, rev, drv, links], i) => `<article class="rf-model"><header><span>${i + 1}</span><h4>${esc(t)}</h4></header><p class="rf-syms">${esc(syms)}</p>
-    <dl><dt>Doanh thu đến từ</dt><dd>${esc(rev)}</dd><dt>Biến quyết định biên</dt><dd>${esc(drv)}</dd></dl>
-    <nav>${links.map(([h, l]) => `<a href="${h}">${esc(l)} →</a>`).join('')}</nav></article>`).join('');
-  const links = el('nav', 'rf-split', '<b>Đã tách thành dashboard riêng:</b>' + [['../Sua/', 'Sữa', 'VNM · MCM'], ['../Bia/', 'Bia', 'SAB · BHN · SMB · HAD'], ['../O-to-xe-may/', 'Ô tô – Xe máy', 'HAX · SVC · CTF · TMT']].map(([h, l, s]) => `<a href="${h}">${l} <small>${s}</small> →</a>`).join(''));
-  host.after(links);
-  links.after(el('div', 'source-note', 'Sơ đồ mô hình, không biểu thị tỷ trọng.'));
-  return el('span');
-}
-
 function topicLinks() {
   // Chủ đề nóng: sự kiện → nhóm mã → dòng mô hình có thể đổi → chỉ báo xác nhận → chart.
   const T = {
