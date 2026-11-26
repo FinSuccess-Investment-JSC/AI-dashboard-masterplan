@@ -88,7 +88,7 @@ function filterBar() {
   renders.push(() => { const s = sel(), cons = E.consolidation.filter(c => s.includes(c.parent) && s.includes(c.child));
     f.querySelector('.pf-legend').innerHTML = `<table class="pf-gtable"><thead><tr><th>Nhóm mô hình</th><th>Doanh nghiệp</th><th>Trong tổng</th></tr></thead><tbody>${D.groups.map(g => { const on = S.groups.includes(g.id);
         return `<tr class="${on ? '' : 'off'}"><td><i style="background:${g.color}"></i>${esc(g.label)}</td><td>${D.companies.filter(c => c.group === g.id).map(c => `<button type="button" class="pf-tk" data-tk="${c.ticker}" aria-pressed="${on && !S.off.includes(c.ticker)}" title="${esc(c.note || '')} · bấm để bỏ khỏi / thêm vào rổ">${c.ticker}${c.mixed ? '*' : ''}</button>`).join('')}</td><td>${on ? 'Có' : 'Không'}</td></tr>`; }).join('')}</tbody></table>
-      <p class="pf-scope">Rổ đang chọn: <b>${s.length}</b> doanh nghiệp (${s.join(', ') || '—'}) · số tổng hợp từ BCTC hợp nhất; mỗi chart ghi số mã có dữ liệu ở kỳ chốt · không đại diện toàn thị trường viễn thông Việt Nam.</p>
+      <p class="pf-scope">Rổ đang chọn: <b>${s.length}</b> doanh nghiệp (${s.join(', ') || '—'}) · số tổng hợp từ BCTC hợp nhất; mỗi chart ghi số mã có dữ liệu ở kỳ chốt · không đại diện toàn thị trường viễn thông Việt Nam${s.includes('VGI') ? '; VGI hoạt động ở các thị trường nước ngoài' : ''}.</p><p class="pf-lead">${contrib('npat', 'LNST hợp nhất')}</p>
       <p class="pf-note">Bấm mã để bỏ khỏi hoặc thêm vào rổ. Mỗi doanh nghiệp xếp vào mảng có doanh thu lớn nhất; dấu * là doanh nghiệp nhiều mảng kinh doanh, số theo nhóm chỉ mang tính tham khảo. Mẫu doanh nghiệp niêm yết, không đại diện toàn ngành viễn thông.${cons.length ? ` Loại trùng hợp nhất: ${cons.map(c => `${c.parent} trừ ${c.child}`).join(', ')}.` : ''}</p>`; });
   return f;
 }
@@ -121,9 +121,48 @@ function kpis() {
 // Không có hàng ô số nhỏ dưới câu hỏi (quy tắc chung trang Điện, PR #35, 25/11/2026); chỉ giữ hàng KPI đầu sub-tab.
 // Mục lục: 6 nhóm Kết quả kinh doanh → Biên lợi nhuận → CAPEX & dở dang → Công nợ & chuyển đổi tiền → Nợ, thanh khoản & FCF → Hiệu quả vốn.
 function section(num, title, q) {
-  const s = el('section', 'pp-panel pp-q pf-sec'); s.innerHTML = `<header class="pp-ph"><span class="pp-num">${num}</span><div><h3>${esc(title)}</h3><p class="pf-q">${esc(q)}</p></div></header>`;
+  const s = el('section', 'pp-panel pp-q pf-sec'); s.innerHTML = `<header class="pp-ph"><span class="pp-num">${num}</span><div><h3>${esc(title)}</h3><p class="pf-q">${esc(q)}</p><p class="pf-lead"></p></div></header>`;
+  const ld = s.querySelector('.pf-lead');
+  if (LEADS[num]) renders.push(() => { try { ld.innerHTML = LEADS[num]() || ''; } catch (e) { ld.innerHTML = ''; } ld.hidden = !ld.innerHTML; });
   return s;
 }
+/* ---------- Câu chốt theo dữ liệu đang render (26/11/2026): mã dẫn dắt, đóng góp vào mức và vào biến động ---------- */
+const TT = (m, tks, i, mode = 'ttm', avg) => { const pv = E.per(m, tks, mode, avg); return Object.fromEntries(tks.map(t => [t, pv[t]?.[i] ?? null])); };
+const KQ = () => qLabel(D.periods[S.end]);
+const pct0 = (a, b) => fin(a) && fin(b) && b !== 0 ? nf(a / b * 100, 0) + '%' : '—';
+function contrib(m, name) {
+  const s = sel(), i = S.end, cur = TT(m, s, i), prev = TT(m, s, i - 4);
+  const have = s.filter(t => fin(cur[t])); if (!have.length) return `${name}: chưa có số TTM ${KQ()} cho rổ đang chọn.`;
+  const tot = have.reduce((a, t) => a + cur[t], 0), top = [...have].sort((a, b) => Math.abs(cur[b]) - Math.abs(cur[a]))[0];
+  let out = `${name} TTM ${KQ()}: <b>${nf(tot)} tỷ đồng</b> (${have.length}/${s.length} mã có số)`;
+  if (have.length > 1) out += tot > 0 && cur[top] > 0 ? `; lớn nhất <b>${top}</b> ${nf(cur[top])} tỷ (${pct0(cur[top], tot)})` : `; lớn nhất ${top} ${nf(cur[top])} tỷ (tổng âm hoặc gần 0, không tính tỷ trọng)`;
+  const both = s.filter(t => fin(cur[t]) && fin(prev[t]));
+  if (both.length) {
+    const d = both.reduce((a, t) => a + cur[t] - prev[t], 0), lv = both.reduce((a, t) => a + prev[t], 0), td = [...both].sort((a, b) => Math.abs(cur[b] - prev[b]) - Math.abs(cur[a] - prev[a]))[0], dv = cur[td] - prev[td];
+    out += `. So cùng kỳ ${sg(d, 0)} tỷ${fin(lv) && lv > 0 ? ` (${sg(d / lv * 100)}%)` : ''} trên ${both.length} mã có số hai kỳ`;
+    out += Math.abs(d) < Math.max(1, Math.abs(lv) * .02) ? '; tổng thay đổi gần 0 nên tỷ trọng đóng góp vào biến động khó diễn giải' : `; <b>${td}</b> đóng góp ${sg(dv, 0)} tỷ (${nf(dv / d * 100, 0)}% phần thay đổi)`;
+  } else out += '. Chưa có số cùng kỳ năm trước để tính biến động';
+  return out + '.';
+}
+const perTk = (num, den, sc = 100, d = 1) => { const s = sel(), i = S.end, a = TT(num, s, i), b = TT(den, s, i), rv = TT('revenue', s, i);
+  return s.filter(t => fin(a[t]) && fin(b[t]) && b[t] !== 0).sort((x, y) => (rv[y] ?? -1) - (rv[x] ?? -1)).map(t => `${t} ${nf(a[t] / b[t] * sc, d)}${sc === 100 ? '%' : ''}`).join(', '); };
+const LEADS = {
+  '1.1': () => { const s = sel(), i = S.end, g = m => { const a = TT(m, s, i), b = TT(m, s, i - 4), x = s.filter(t => fin(a[t]) && fin(b[t])), A = x.reduce((u, t) => u + a[t], 0), B = x.reduce((u, t) => u + b[t], 0); return B > 0 ? (A / B - 1) * 100 : null; };
+    const gr = g('revenue'), gn = g('npat');
+    return contrib('revenue', 'Doanh thu') + (fin(gr) && fin(gn) ? ` Cùng tập mã: doanh thu ${sg(gr)}%, LNST hợp nhất ${sg(gn)}% so cùng kỳ (LNST theo mã ở dòng tổng hợp phía trên).` : '') + (s.includes('VGI') ? ' VGI hoạt động ở thị trường nước ngoài, không phản ánh thị trường viễn thông trong nước.' : ''); },
+  '1.2': () => { const s = sel(), i = S.end, g = E.ratio({m: 'gross'}, {m: 'revenue'}, s, 'ttm', 100).values[i];
+    return `Biên gộp TTM ${KQ()} của rổ: <b>${nf(g, 1)}%</b>; từng mã (xếp theo doanh thu): ${perTk('gross', 'revenue') || '—'}. Biên của rổ là trung bình theo doanh thu, nên đổi khi cơ cấu doanh thu giữa các mã đổi.`; },
+  '1.3': () => contrib('capex', 'CAPEX') + ` CAPEX/doanh thu TTM: ${perTk('capex', 'revenue') || '—'}.`,
+  '1.4': () => { const s = sel(), i = S.end, cfo = TT('cfo', s, i), np = TT('npat', s, i), both = s.filter(t => fin(cfo[t]) && fin(np[t]));
+    if (!both.length) return 'CFO TTM chưa có số cho kỳ chốt (LCTT quý chỉ dùng ở năm có tổng 4 quý khớp số năm).';
+    const c = both.reduce((a, t) => a + cfo[t], 0), n = both.reduce((a, t) => a + np[t], 0), rec = TT('receivables', s, i, 'q'), r4 = TT('receivables', s, i - 4, 'q');
+    const dr = s.filter(t => fin(rec[t]) && fin(r4[t])).sort((a, b) => Math.abs(rec[b] - r4[b]) - Math.abs(rec[a] - r4[a]))[0];
+    return `CFO TTM ${KQ()} <b>${nf(c)} tỷ</b> so với LNST ${nf(n)} tỷ (${both.length} mã có cả hai; ${fin(n) && n > 0 ? nf(c / n, 2) + ' lần' : '—'}). ${dr ? `Phải thu khách hàng thay đổi nhiều nhất so cùng kỳ: <b>${dr}</b> ${sg(rec[dr] - r4[dr], 0)} tỷ (cuối ${KQ()}).` : ''}`; },
+  '1.5': () => { const s = sel(), i = S.end, nd = TT('net_debt', s, i, 'q'), x = s.filter(t => fin(nd[t]));
+    return contrib('fcf', 'FCF (CFO − CAPEX)') + (x.length ? ` Nợ vay ròng cuối ${KQ()}: ${x.map(t => `${t} ${nf(nd[t])} tỷ`).join(', ')} (số âm = tiền nhiều hơn nợ vay).` : ''); },
+  '1.6': () => { const s = sel(), i = S.end, r = s.map(t => [t, E.ratio({m: 'npat'}, {m: 'equity', avg: true}, [t], 'ttm', 100).values[i]]).filter(x => fin(x[1])).sort((a, b) => b[1] - a[1]);
+    return r.length ? `ROE TTM ${KQ()} (LNST hợp nhất ÷ VCSH bình quân): ${r.map(([t, v]) => `${t} ${nf(v, 1)}%`).join(', ')}. ROE theo phần cổ đông công ty mẹ ở Doanh nghiệp niêm yết.` : ''; }
+};
 const grid2 = (...cards) => { const g = el('div', 'grid two g2 pf-g2'); cards.forEach(c => g.append(c.el)); return g; };
 
 /* ---------- 1.1 Chu kỳ doanh thu và lợi nhuận ---------- */
@@ -199,7 +238,7 @@ function s72() {
     const R = gs.map(row), names = ['Giá vốn trừ khấu hao', 'Khấu hao', 'Bán hàng & QLDN', 'Lãi vay', 'Thuế TNDN', 'LNST'], cols = ['#9AA3BD', '#3d4653', '#8997D6', '#c98a00', '#861C52', '#2938A8'];
     const m = {key: 'vt-fin-cost', categories: gs.map(g => g.label), series: names.map((n, k) => ({name: n, color: cols[k], values: R.map(r => fin(r[k]) ? Math.round(r[k] * 10) / 10 : null)})), unit: 'đồng', digits: 1, stackable: true, native: 'stack', time: false, zeroBase: true};
     if (window.ChartTypes) ChartTypes.mount(c3.host, m, () => { c3.host.innerHTML = ChartTypes.render(m, 'stack'); });
-    foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; khoản còn lại (thu nhập tài chính, liên kết, khác, chi phí tài chính ngoài lãi vay) không vẽ nên tổng có thể khác 100; chưa tách chi phí nhiên liệu`); }
+    foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; khoản còn lại (thu nhập tài chính, liên kết, khác, chi phí tài chính ngoài lãi vay) không vẽ nên tổng có thể khác 100`); }
   renders.push(draw3);
   // Chart "Khấu hao và chi phí tài trợ so với doanh thu, EBITDA" bỏ 25/11/2026 theo yêu cầu người dùng.
   s.append(grid2(c1, c3));
@@ -425,7 +464,7 @@ function style() {
 .pf-legend{margin-top:4px}.pf-gtable{width:100%;border-collapse:collapse;font-size:12.5px}.pf-gtable th{text-align:left;font:600 11px Inter,sans-serif;color:var(--muted,#7a8399);text-transform:uppercase;letter-spacing:.04em;padding:6px 10px;border-bottom:1px solid var(--line,#e3e7f0)}
 .pf-gtable td{padding:7px 10px;border-bottom:1px solid var(--line,#eef0f6);vertical-align:middle}.pf-gtable td:first-child{white-space:nowrap;font-weight:600;color:var(--ink2,#3b4256);width:230px}.pf-gtable td:last-child{width:90px;color:var(--muted,#7a8399)}
 .pf-gtable td i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;vertical-align:-1px}.pf-gtable tr.off td{opacity:.45}.pf-tk{display:inline-block;margin:2px 6px 2px 0;padding:1px 7px;border:1px solid var(--line,#d6dbe8);border-radius:6px;font:600 12px Inter,sans-serif;cursor:help;background:var(--card,#fff)}
-.pf-note{margin:6px 2px 0;font-size:11px;color:var(--muted,#7a8399)}.pf-scope{margin:8px 2px 0;font-size:12px;color:var(--ink2,#3b4256)}.pf-q{margin:2px 0 0;font-size:12.5px;color:var(--ink2,#3b4256)}
+.pf-note{margin:6px 2px 0;font-size:11px;color:var(--muted,#7a8399)}.pf-scope{margin:8px 2px 0;font-size:12px;color:var(--ink2,#3b4256)}.pf-q{margin:2px 0 0;font-size:12.5px;color:var(--ink2,#3b4256)}.pf-lead{margin:6px 0 0;font-size:13px;line-height:1.55;color:var(--ink,#1d2333);background:color-mix(in srgb,var(--card,#fff) 90%,#2938A8 6%);border-left:3px solid #2938A8;border-radius:6px;padding:6px 10px}
 button.pf-tk[aria-pressed=false]{opacity:.45;text-decoration:line-through}.pf-method{margin-top:18px}.pf-method>summary{cursor:pointer}.pf-method>summary small{color:var(--muted,#7a8399);margin-left:8px}.pf-dl{border:1px solid var(--line,#d6dbe8);background:var(--card,#fff);border-radius:7px;padding:4px 10px;font:600 12px Inter,sans-serif;cursor:pointer}@media (max-width:640px){.pf-grid{grid-template-columns:1fr;gap:4px}.pf-gtable td:first-child{width:auto;white-space:normal}}.pf-lb{font:600 11.5px Inter,sans-serif;color:var(--muted,#7a8399);text-transform:uppercase;letter-spacing:.04em}
 .pf-chips{display:flex;flex-wrap:wrap;gap:6px}.pf-chips button,.pf-seg button{border:1px solid var(--line,#d6dbe8);background:var(--card,#fff);color:var(--ink2,#3b4256);border-radius:7px;padding:4px 9px;font:600 12px Inter,sans-serif;cursor:pointer}
 .pf-chips button i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}.pf-chips button small{color:var(--muted,#7a8399);font-weight:500}

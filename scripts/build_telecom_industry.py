@@ -217,38 +217,82 @@ def add_years(date, n):
 
 
 def outlook(P):
-    """Mốc phía trước (từ hôm nay) có nguồn. kind: obligation (tự tính từ ngày cấp phép), target, plan, draft."""
+    """Mốc phía trước (từ hôm nay) có nguồn (bản 26/11/2026):
+    - Nghĩa vụ giấy phép: ngày = ngày cấp phép + thời hạn (tự tính); các khối cùng ngày cấp phép, cùng nghĩa vụ gộp một dòng / hạn.
+    - Mục tiêu 5G: ghi rõ định nghĩa (trạm xây thêm, tổng vị trí trạm, độ phủ theo dân số); tiến độ chỉ ghi khi số thực hiện cùng định nghĩa.
+    - Kế hoạch doanh nghiệp: gộp các chỉ tiêu cùng kế hoạch năm của một doanh nghiệp vào một dòng.
+    - Văn bản dự thảo: giữ đến khi có văn bản chính thức."""
     out = []
+    # 1) Nghĩa vụ theo giấy phép
+    groups = {}
     for x in P['spectrum']:
         if not x.get('price_bn_vnd') or not x.get('date'):
             continue
         ob = x.get('obligation') or ''
-        for yrs, pat in ((1, r'12 tháng'), (2, r'2 năm|sau 2 năm'), (3, r'3 năm'), (4, r'4 năm')):
-            if re.search(pat, ob):
-                due = add_years(x['date'], yrs)
-                if due >= TODAY:
-                    out.append({'date': due, 'title': f"Hạn nghĩa vụ {yrs} năm sau cấp phép · {x['band'].split(' (')[0]}", 'status': 'Nghĩa vụ cấp phép (ngày tự tính)',
-                                'parties': x['winner'], 'variable': 'Số trạm, tỷ lệ phủ sóng, CAPEX mạng', 'watch': 'Số trạm, mức phủ theo xã/dân số mà doanh nghiệp công bố', 'detail': ob, 'src': x['src']})
+        groups.setdefault((x['date'], x['band'][:1]), []).append(x)  # các khối cùng băng, cùng ngày cấp phép
+    for (d0, _), xs in groups.items():
+        base = max((x.get('obligation') or '' for x in xs), key=len)  # mô tả đầy đủ nhất trong nhóm (các khối khác ghi "Như khối …")
+        band = '900 MHz' if xs[0]['band'].startswith('9') else xs[0]['band'].split(' (')[0]
+        steps = []
+        m = re.search(r'12 tháng[^;]*', base)
+        if m: steps.append((1, m.group(0)))
+        for yrs in (2, 3, 4):
+            m = re.search(rf'{yrs} năm:\s*([^;]*)', base) or re.search(rf'sau {yrs} năm[^;]*', base)
+            if m: steps.append((yrs, m.group(1) if m.lastindex else m.group(0)))
+        for yrs, txt in steps:
+            due = add_years(d0, yrs)
+            if due < TODAY:
+                continue
+            out.append({'date': due, 'kind': 'license', 'issued': d0, 'title': f'Băng {band}: hạn nghĩa vụ năm thứ {yrs} (tính từ ngày trúng đấu giá)', 'status': 'Nghĩa vụ giấy phép',
+                        'parties': ', '.join(x['winner'] for x in xs), 'variable': 'CAPEX mạng (số BTS, phủ xã); doanh thu xây lắp của nhà thầu',
+                        'watch': 'Số BTS và tỷ lệ xã có sóng nhà mạng công bố', 'detail': txt.strip(), 'src': xs[0]['src']})
+    # 2) Mục tiêu 5G, ghi rõ định nghĩa
+    def measure(unit, text):
+        u = (unit or '') + ' ' + (text or '')
+        if 'xây thêm' in u: return 'Trạm 5G xây thêm trong năm' + (' · phủ trong nhà' if 'trong nhà' in u else '')
+        if 'vị trí' in u: return 'Tổng vị trí trạm 5G' + (' · phủ dân số' if 'dân số' in u else '')
+        if '%' in u and 'dân số' in u: return 'Độ phủ 5G theo dân số'
+        if 'trạm' in u: return 'Tổng số trạm 5G'
+        return unit or ''
+    actual = {}
+    for x in P['fiveg']:
+        if x.get('status') == 'actual' and x.get('event') == 'stations' and isinstance(x.get('value'), (int, float)):
+            if x['date'] > actual.get(x['operator'], {}).get('date', ''):
+                actual[x['operator']] = x
     for x in P['fiveg']:
         if x.get('status') == 'target' and x['date'] >= TODAY and x.get('event') == 'target':
-            out.append({'date': x['date'], 'title': x['text'], 'status': 'Mục tiêu', 'parties': x['operator'], 'variable': 'Số trạm 5G, độ phủ, CAPEX',
-                        'watch': 'Số trạm, thuê bao 5G ở đợt công bố tiếp theo của Bộ KH&CN', 'detail': f"{x.get('value')} {x.get('unit', '')}".strip(), 'src': x['src']})
+            ms = measure(x.get('unit'), x.get('text'))
+            act = actual.get(x['operator'])
+            prog = ''
+            if act and 'trạm' in ms:
+                same = measure(act.get('unit'), '') == ms
+                prog = (f"Thực hiện {act['value']:,.0f} {act['unit']} ({act['date'][8:10]}/{act['date'][5:7]}/{act['date'][:4]})".replace(',', '.') +
+                        ('' if same else ' · khác định nghĩa với mục tiêu, không tính tiến độ'))
+            out.append({'date': x['date'], 'kind': 'target', 'title': x['text'], 'status': 'Mục tiêu', 'measure': ms, 'progress': prog, 'parties': x['operator'],
+                        'variable': 'CAPEX 5G của nhà mạng; doanh thu xây lắp, cho thuê hạ tầng (CTR)', 'watch': 'Số trạm, độ phủ 5G ở đợt công bố tiếp theo của Bộ KH&CN',
+                        'detail': f"{x.get('value'):,} {x.get('unit', '')}".replace(',', '.').strip(), 'src': x['src']})
+    # 3) Kế hoạch doanh nghiệp: gộp theo doanh nghiệp × năm
     names = {'CTR': 'CTR', 'FOX': 'FOX (FPT Telecom)', 'VNPT': 'VNPT', 'VIETTEL': 'Viettel', 'MOBIFONE': 'MobiFone', 'SGT': 'SGT'}
-    var = {'rev': 'Doanh thu', 'pbt': 'Lợi nhuận trước thuế', 'capex': 'CAPEX', 'bts': 'Số trạm', '5g': 'Số trạm 5G', 'tenancy': 'Tỷ lệ thuê chung'}
+    lab = {'fox_rev': 'doanh thu', 'fox_pbt': 'LNTT', 'fox_capex_plan': 'đầu tư phát triển hạ tầng', 'ctr_plan': 'doanh thu', 'vnpt_rev': 'doanh thu hợp nhất',
+           'vnpt_pbt': 'LNTT hợp nhất', 'vnpt_parent_rev': 'doanh thu công ty mẹ', 'sgt_rev': 'doanh thu'}
+    line = {'FOX': 'FOX: doanh thu, LNTT (BCTC FOX); CAPEX hạ tầng cáp quang', 'CTR': 'CTR: doanh thu xây lắp, vận hành, cho thuê hạ tầng', 'VNPT': 'Nhà mạng (chưa niêm yết)', 'SGT': 'SGT: doanh thu'}
+    plan = {}
     for x in P['plans']:
         y = x['p'][:4]
         if y + '-12-31' < TODAY or x['key'] == 'viettel_5g_new':  # viettel_5g_new trùng mục tiêu 5G của Viettel (fiveg)
             continue
-        if x['key'] == 'ctr_plan':
-            x = {**x, 'label': 'kế hoạch doanh thu'}
-        k = next((v for k, v in var.items() if k in x['key']), 'Kế hoạch kinh doanh')
-        out.append({'date': y + '-12-31', 'title': f"{names.get(x['company'], x['company'])}: {x['label']} {y}", 'status': 'Kế hoạch doanh nghiệp', 'parties': names.get(x['company'], x['company']),
-                    'variable': k, 'watch': 'Số thực hiện trong BCTC và bản tin tháng/quý', 'detail': f"{x['v']:,.0f} {x['unit']}".replace(',', '.') if x['v'] >= 100 else f"{x['v']} {x['unit']}", 'src': x['src']})
+        plan.setdefault((x['company'], y), []).append(x)
+    for (co, y), xs in plan.items():
+        parts = [f"{lab.get(x['key'], x['label'])} {x['v']:,.0f} {x['unit']}".replace(',', '.') for x in xs]
+        out.append({'date': y + '-12-31', 'kind': 'plan', 'title': f"{names.get(co, co)}: kế hoạch năm {y}", 'status': 'Kế hoạch doanh nghiệp', 'parties': names.get(co, co),
+                    'variable': line.get(co, 'Kế hoạch kinh doanh'), 'watch': 'Số thực hiện trong BCTC quý và bản tin tháng', 'detail': ' · '.join(parts), 'src': xs[0]['src']})
+    # 4) Văn bản dự thảo
     for x in P['policy']:
         if x.get('status') in ('draft', 'plan'):
-            out.append({'date': x['date'], 'title': x['title'], 'status': 'Dự thảo' if x['status'] == 'draft' else 'Kế hoạch', 'parties': '', 'variable': 'Sở hữu, quản trị doanh nghiệp nhà nước',
-                        'watch': 'Văn bản chính thức được ban hành', 'detail': x.get('effect', ''), 'src': x['src'], 'open': True})
-    return sorted(out, key=lambda z: z['date'])
+            out.append({'date': x['date'], 'kind': 'draft', 'title': x['title'], 'status': 'Dự thảo' if x['status'] == 'draft' else 'Kế hoạch', 'parties': 'VNPT' if 'VNPT' in x['title'] else '',
+                        'variable': 'Sở hữu, quản trị doanh nghiệp nhà nước', 'watch': 'Nghị định sửa đổi được ban hành chính thức', 'detail': x.get('effect', ''), 'src': x['src'], 'open': True})
+    order = {'draft': 0, 'target': 1, 'plan': 2, 'license': 3}
+    return sorted(out, key=lambda z: (z['date'], order.get(z['kind'], 9)))
 
 
 TOPICS = [
@@ -264,8 +308,8 @@ TOPICS = [
      'Theo dõi: giá gói thấp nhất theo tốc độ và khu vực.', ['Bức tranh ngành › Internet cố định', '?section=fixed#mt2']),
     ('ownership', 'Sở hữu & tái cấu trúc', 'Vốn nhà nước tại MobiFone, GTEL và FPT Telecom chuyển về Bộ Công an; VNPT có đề xuất chuyển về Bộ KH&CN (dự thảo).',
      'Theo dõi: văn bản chính thức về VNPT, thay đổi quản trị tại FOX.', None),
-    ('tech', 'Dừng 2G', 'Thuê bao chỉ dùng máy 2G bị khóa từ 16/10/2024; mạng 2G tắt hoàn toàn 15/9/2026, giải phóng băng 900 MHz.',
-     'Theo dõi: dùng băng 900 MHz cho 4G/5G theo nghĩa vụ cấp phép.', None),
+    ('tech', 'Tắt 2G → đấu giá 900 MHz → nghĩa vụ triển khai', 'Theo trình tự: thuê bao chỉ dùng máy 2G bị khóa từ 16/10/2024 → QĐ 3168/QĐ-BKHCN (21/07/2026) duyệt phương án đấu giá 900 MHz → mạng 2G tắt hoàn toàn 15/09/2026 → đấu giá 3 cặp khối 900 MHz ngày 09/09/2026.',
+     'Theo dõi: nghĩa vụ giấy phép 900 MHz — ≥20% số BTS sau 12 tháng (09/2027), ≥5.500 BTS và 60% xã có BTS sau 2 năm (09/2028), 85% xã sau 3 năm, 100% xã sau 4 năm (09/2030).', ['Tổng quan › Triển vọng', '?ov=outlook#mt1']),
     ('competition', 'Cạnh tranh & nhà mạng di động ảo', 'Thị trường di động có ba nhà mạng lớn và các nhà mạng di động ảo (MVNO).',
      'Theo dõi: thị phần thuê bao, số MVNO.', ['Bức tranh ngành › Toàn thị trường', '?section=market#mt2']),
     ('satellite', 'Internet vệ tinh', 'Starlink được cấp phép tần số thí điểm (2/2026) với tối đa 600.000 thiết bị đầu cuối.',
@@ -282,6 +326,22 @@ VARIABLE = {'5g': 'Biến số liên quan: số trạm, thuê bao 5G, CAPEX mạ
             'price': 'Biến số liên quan: giá gói, ARPU, thuê bao mới', 'ownership': 'Biến số liên quan: cổ đông, quản trị, kế hoạch đầu tư',
             'tech': 'Biến số liên quan: thuê bao, băng tần, chi phí vận hành mạng', 'competition': 'Biến số liên quan: thị phần, giá cước',
             'satellite': 'Biến số liên quan: cạnh tranh Internet vùng sâu, xa'}
+NEXT = {'5g': 'ARPU hoặc doanh thu dịch vụ di động cùng kỳ với số thuê bao 5G; số trạm 5G theo nhà mạng.',
+        'spectrum': 'số BTS, tỷ lệ xã có sóng tại các hạn nghĩa vụ giấy phép; CAPEX nhà mạng.',
+        'cable': 'thời gian khắc phục, dung lượng dự phòng; tuyến mới đưa vào khai thác.',
+        'tower': 'số vị trí sở hữu, số khách thuê trên vị trí, doanh thu hạ tầng cho thuê trong bản tin tháng của CTR.',
+        'price': 'giá gói cùng tốc độ, khu vực ở đợt điều chỉnh sau; doanh thu dịch vụ Internet cố định.',
+        'ownership': 'văn bản chính thức, thay đổi hội đồng quản trị và kế hoạch đầu tư.',
+        'tech': 'số BTS và tỷ lệ xã có sóng băng 900 MHz tại các hạn nghĩa vụ.',
+        'competition': 'thị phần thuê bao di động, số thuê bao của nhà mạng mới.',
+        'satellite': 'số thuê bao, giá dịch vụ Internet vệ tinh.'}
+RETITLE = {'CTR chưa tăng số trạm BTS năm 2026': 'CTR: số trạm BTS đi ngang từ cuối 2025 đến cuối tháng 7/2026 (bài 22/08/2026)'}
+SUMMARY = {
+    '5G đạt 27,2 triệu thuê bao': 'Bộ KH&CN: 27,2 triệu thuê bao 5G và 60.034 trạm 5G cuối quý 3/2026, phủ 93,4% dân số; thuê bao tăng khoảng 94% so với 14 triệu tháng 9/2025. Biến số: thuê bao 5G, CAPEX trạm của nhà mạng. Kiểm chứng tiếp: ARPU hoặc doanh thu dịch vụ di động cùng kỳ để biết nhà mạng có thu thêm tiền trên mỗi thuê bao hay chỉ chuyển thuê bao 4G sang 5G.',
+    'Đấu giá 3 cặp khối 900 MHz': 'VNPT, Viettel, Vietnamobile mỗi bên trúng một cặp khối 2×5 MHz băng 900 MHz, khoảng 1.077–1.079 tỷ đồng mỗi cặp (khởi điểm 1.056,9 tỷ), thời hạn 15 năm. Biến số: chi phí tần số và CAPEX để đạt nghĩa vụ ≥20% số BTS sau 12 tháng (09/2027), ≥5.500 BTS và 60% xã sau 2 năm (09/2028), 100% xã sau 4 năm (09/2030).',
+    'CTR: số trạm BTS đi ngang từ cuối 2025 đến cuối tháng 7/2026 (bài 22/08/2026)': 'Bài đăng 22/08/2026: CTR giữ khoảng 12.000 trạm từ cuối 2025 đến cuối tháng 7/2026, tỷ lệ dùng chung 1,05 lần; doanh thu hạ tầng cho thuê Q2/2026 tăng 28%. Chuỗi CTR trên trang (vị trí sở hữu) ghi 12.080 trạm tháng 10/2026. Kiểm chứng tiếp: số vị trí có khách thuê và kế hoạch 1.000 trạm mới năm 2026.',
+    'Tắt sóng 2G toàn quốc': 'Mạng 2G ngừng phát sóng từ 15/09/2026 (trừ M2M, Trường Sa, Hoàng Sa, nhà giàn DK); số thuê bao Viettel cần chuyển giảm từ 9,3 triệu cuối 2025 còn khoảng 750.000. Biến số: số SIM ghi nhận, băng 900 MHz được dùng cho 4G/5G. Kiểm chứng tiếp: số thuê bao di động cuối 2026 và nghĩa vụ giấy phép 900 MHz.',
+}
 TICKERS = {'FPT Telecom (FOX)': 'FOX', 'FPT Telecom': 'FOX', 'Viettel Construction (CTR)': 'CTR', 'VNPT (VinaPhone)': 'VNPT', 'Starlink Services Việt Nam (SpaceX)': 'Starlink'}
 
 
@@ -315,7 +375,9 @@ def build_news(P):
                             e['title'] = 'Thuê bao 5G theo nhà mạng'
                 return
         tk = [TICKERS.get(c, c) for c in companies]
-        events.append({'id': eid, 'title': title, 'summary': what, 'new_information': what, 'key_figures': [quant] if quant else [],
+        title = RETITLE.get(title, title)
+        summ = SUMMARY.get(title) or f"{what} {VARIABLE[topic]}. Kiểm chứng tiếp: {NEXT[topic]}"
+        events.append({'id': eid, 'title': title, 'summary': summ, 'brief': what, 'new_information': what, 'key_figures': [quant] if quant else [],
                        'companies': tk, 'segments': SEGMENT[topic], 'category': CATEGORY[topic], 'topic_ids': [topic],
                        'importance': importance, 'event_date': date, 'article_ids': [a], 'impact': VARIABLE[topic]})
     imp = {'spectrum': 3, '5g': 3, 'ownership': 3, 'tower': 2, 'price': 2, 'tech': 2, 'cable': 2, 'competition': 1, 'satellite': 1}
@@ -332,6 +394,12 @@ def build_news(P):
         title = {'launch': f"{x['operator']} thương mại hóa 5G", 'subscribers': f"Thuê bao 5G {x['operator']}", 'stations': f"Số trạm 5G {x['operator']}"}[x['event']]
         q = f"{x['value']:g} {x['unit']}" if isinstance(x.get('value'), (int, float)) else ''
         add(f'g{i}', title, x['text'], q, [x['operator']] if x['operator'] != 'Toàn quốc' else [], '5g', x['src'], x['date'], 2 if x['event'] != 'launch' else 3)
+    for x in P['policy']:
+        if re.search(r'2G|3168', x['doc'] + x['title']):
+            add('pol' + str(x['src']) + x['date'], x['title'], x['effect'], '', ['Viettel', 'VNPT', 'MobiFone'], 'tech', x['src'], x['date'], 2)
+    for e in events:
+        if re.search(r'(?<![\d–])900 MHz', e['title']) and 'tech' not in e['topic_ids']:
+            e['topic_ids'].append('tech')
     used = {t for e in events for t in e['topic_ids']}
     topics = [{'id': i, 'title': t, 'background': b, 'next_check': n, 'related_data': r} for i, t, b, n, r in TOPICS if i in used]
     return {'updated_at': max(a['published_at'] for a in articles.values()), 'articles': sorted(articles.values(), key=lambda a: a['id']),
