@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-26T09:01:02.077113+00:00",
+  "run_at": "2026-11-26T09:49:52.280937+00:00",
   "errors": 0,
   "sources": {
     "wti": {
@@ -222,8 +222,15 @@
     "top_producers": {
       "status": "ok",
       "latest_observation": "2026-10-31",
-      "last_success_at": "2026-11-26T09:01:02.077113+00:00",
-      "last_checked_at": "2026-11-26T09:01:02.077113+00:00",
+      "last_success_at": "2026-11-26T09:49:52.280937+00:00",
+      "last_checked_at": "2026-11-26T09:49:52.280937+00:00",
+      "error": null
+    },
+    "world_demand": {
+      "status": "ok",
+      "latest_observation": "2026-10-31",
+      "last_success_at": "2026-11-26T09:49:52.280937+00:00",
+      "last_checked_at": "2026-11-26T09:49:52.280937+00:00",
       "error": null
     }
   }

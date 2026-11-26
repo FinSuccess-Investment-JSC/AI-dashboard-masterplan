@@ -1801,7 +1801,8 @@
      "bl-90",
      "duoc-01",
      "duoc-04",
-     "duoc-90"
+     "duoc-90",
+     "bl-05"
     ]
    }
   },
@@ -4474,7 +4475,8 @@
      "bl-22",
      "bl-30",
      "bl-31",
-     "bl-33"
+     "bl-33",
+     "bl-16"
     ]
    },
    "how": "python3 scripts/fetch_nso.py && python3 scripts/fetch_customs.py && python3 scripts/fetch_sbv.py → build_sector_public.py (chạy trong refresh-data.yml)",
@@ -4564,7 +4566,10 @@
      "bl-13",
      "bl-14",
      "bl-21",
-     "bl-23"
+     "bl-23",
+     "bl-17",
+     "bl-18",
+     "bl-25"
     ]
    },
    "how": "Mở bài công bố mới; cập nhật bảng và chart chRetailMix, chStores trong Ban-le/app/retail-dashboard.js; thêm evidence.",
@@ -4592,7 +4597,9 @@
    "where": {
     "page": "Ban-le/index.html",
     "blocks": [
-     "bl-50"
+     "bl-50",
+     "bl-52",
+     "bl-53"
     ]
    },
    "how": "Mở văn bản gốc; cập nhật bảng bl-50 và evidence.",
@@ -6594,10 +6601,14 @@
     "file": "data/retail-public-data.js",
     "blocks": [
      "bl-40",
-     "bl-41"
+     "bl-41",
+     "bl-06",
+     "bl-07",
+     "bl-26",
+     "bl-27"
     ]
    },
-   "how": "company-quarterly.json + build_sector_public.py (đọc data/raw/public/fao-fpma.json).",
+   "how": "company-quarterly.json + build_sector_public.py (đọc data/raw/public/fao-fpma.json). · bl-06, bl-07 (Σ theo nhóm), bl-26 (biên gộp HAX, SVC), bl-27 (biên gộp PNJ cạnh SJC so cùng kỳ) tự tính trong Ban-le/app/retail-dashboard.js từ window.COMPANY_QUARTERLY; không nhập tay.",
    "job": "company-quarterly.json + build_sector_public.py (đọc data/raw/public/fao-fpma.json)."
   },
   {
@@ -6640,7 +6651,8 @@
     "page": "Ban-le/index.html",
     "blocks": [
      "bl-15",
-     "bl-42"
+     "bl-42",
+     "bl-43"
     ]
    },
    "how": "Mở bài KQ tháng/quý MWG, FRT, PNJ; cập nhật bảng + evidence.",

@@ -42,7 +42,18 @@ const ALIAS = {mt3: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
 
 function style() {
   const st = el('style'); st.id = 'oil-frame-style';
-  st.textContent = `.of-ops-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:12px 0 4px}
+  st.textContent = `.of-lead{margin:6px 0 4px;font-size:14px;line-height:1.6;color:#3B4256}.of-lead b{color:#1F2A5C}.of-lead b.neg{color:#B3303F}.of-lead b.pos{color:#17784A}
+.dv-row.dv-total{border-bottom:2px solid #DCE1EE}.dv-row.dv-total .dv-l b{font-weight:800}.dv-row.dv-total .dv-bar{opacity:1}
+.dv{margin:10px 0 4px}.dv-axis{display:grid;grid-template-columns:260px 1fr;margin-bottom:4px}.dv-axis{position:relative}.dv-axis span{font:600 11.5px Inter,sans-serif;color:#9AA1BC}
+.dv-axis{display:flex;justify-content:space-between;padding-left:276px}.dv-g{margin:12px 0 4px;font:700 12px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#2938A8}
+.dv-row{display:grid;grid-template-columns:260px minmax(0,1fr);gap:16px;align-items:center;min-height:44px;border-bottom:1px solid #F0F2F8}
+.dv-l b{display:block;font:600 14px/1.3 Inter,sans-serif;color:#1F2A5C}.dv-l small{font-size:12px;color:#6B7392}
+.dv-track{position:relative;height:28px}.dv-zero{position:absolute;left:50%;top:-8px;bottom:-8px;border-left:1.5px solid #C9CEE0}
+.dv-bar{position:absolute;top:6px;height:16px;border-radius:4px}.dv-bar.neg{background:#E5484D;opacity:.8;border-radius:4px 0 0 4px}.dv-bar.pos{background:#2BB673;opacity:.85;border-radius:0 4px 4px 0}
+.dv-v{position:absolute;top:4px;font:700 13.5px Inter,sans-serif;font-style:normal}.dv-v.neg{color:#B3303F}.dv-v.pos{color:#17784A}
+.dv-note{margin:12px 0 0;font-size:12.5px;color:#6B7392}
+@media (max-width:900px){.dv-row{grid-template-columns:1fr}.dv-axis{padding-left:0}}
+.of-ops-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:12px 0 4px}
 .of-ops-i{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border:1px solid #E6E9F2;border-radius:12px;background:#FAFBFE}
 .of-ops-i span{font:600 12.5px Inter,sans-serif;color:#6B7392}.of-ops-i b{font:700 26px/1.15 Inter,sans-serif;color:#1F2A5C}.of-ops-i b small{font:600 13px Inter,sans-serif;color:#6B7392;margin-left:4px}.of-ops-i em{font-style:normal;font-size:12px;color:#6B7392}
 .tx2{margin:10px 0 6px;font-size:13px}.tx2-head,.tx2-row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:16px;align-items:center}
@@ -311,7 +322,7 @@ function crudeLayout() {
   const groups = [
     ['Cung – cầu', 'Cân bằng cung cầu toàn cầu, dư địa công suất và các nguồn cung chính.', [sd, gap, block('dau-khi-12'), $('#of-top-exporters'), $('.opec-drivers'), block('dau-khi-09')]],
     ['Tồn kho', 'Tồn kho Mỹ cập nhật theo tuần, chỉ báo sớm cho cân bằng.', [$('.inventory-group'), block('dau-khi-06'), block('dau-khi-07'), block('dau-khi-08'), block('dau-khi-10')]],
-    ['Giá', 'Brent theo ngày, mặt bằng dài hạn theo năm và đường cong kỳ hạn WTI.', [card('chFastPrice'), block('dau-khi-24'), block('dau-khi-11')]],
+    ['Giá', 'Mặt bằng giá dài hạn theo năm và đường cong kỳ hạn WTI.', [block('dau-khi-24'), block('dau-khi-11')]],
     ['Dòng tiền đầu cơ', '', [block('dau-khi-13')]],
   ];
   const kpis = body.querySelector(':scope > .kpis');
@@ -320,7 +331,10 @@ function crudeLayout() {
   [...body.children].forEach(n => { if (!keep.includes(n)) keep.push(n); });
   keep.forEach(n => body.append(n));
   [sd, gap, block('dau-khi-12')].forEach(n => n && n.classList.add('of-wide'));
-  hide(wrap05); hide(block('dau-khi-23')); hide(block('dau-khi-25'));  // 23, 25 trùng Brent Futures theo ngày
+  hide(wrap05); hide(block('dau-khi-23')); hide(block('dau-khi-25')); hide(card('chFastPrice'));  // 23, 25 trùng Brent Futures theo ngày
+  hide(card('chUsProd'));
+  hide($('#of-top-exporters'));
+  hide($('#opec-drivers'));  // 26/11/2026: số nhập tay bản T8/2026, trùng combo cung–cầu (2026E) và chart đóng góp theo nước/khu vực  // 26/11/2026: trùng chart đóng góp thay đổi cung theo nước (cùng 10 nước, so cùng kỳ)  // 26/11/2026: Mỹ đã có trong chart 10 nước xuất khẩu lớn + ticker
   [...body.children].forEach(n => n.classList.remove('of-span'));
   let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
   [...body.children].forEach(n => { if (n.hidden) return; if (n.matches('.of-wide,.of-group,details,.kpis')) flush(); else run.push(n); }); flush();
@@ -465,6 +479,77 @@ function opsCards() {
     ['Sản lượng sản xuất', '6,15', ' triệu tấn', 'khoảng, 9 tháng 2026'], ['Sản lượng tiêu thụ', '6,08', ' triệu tấn', 'khoảng, 9 tháng 2026']],
     '<a href="https://giaoduc.net.vn/bsr-cung-co-noi-luc-mo-rong-khong-gian-tang-truong-post263415.gd" target="_blank" rel="noopener">Giáo dục & Thời đại, hội thảo nhà đầu tư BSR 15/10/2026</a>');
 }
+
+// Cung – cầu: một chart gộp. Cột = cung trừ cầu (trục phải, xanh dư cung / đỏ thiếu cung), đường = cung và cầu (trục trái).
+function supplyDemandCombo() {
+  const wb = window.SECTOR_DAILY?.sources?.world_balance, rec = wb?.records; const old = $('#chWorldSD'); if (!rec?.length || !old || $('#chSDCombo')) return;
+  const sdCard = old.closest('.fs-share-host') || old.closest('.card'), gapCard = $('#chWorldBalance')?.closest('.fs-share-host') || $('#chWorldBalance')?.closest('.card');
+  const labels = rec.map(r => r.year + (r.estimate ? 'E' : '')), nf = (v, d = 2) => v.toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d});
+  const last = rec.filter(r => !r.estimate).at(-1), next = rec.filter(r => r.estimate);
+  const sub = `triệu thùng/ngày, bình quân năm · ${last.year}: cung ${nf(last.supply)}, cầu ${nf(last.demand)} → ${last.balance >= 0 ? 'dư' : 'thiếu'} ${nf(Math.abs(last.balance))}` + (next.length ? ` · EIA dự báo ${next.map(r => `${r.year}E ${r.balance >= 0 ? 'dư' : 'thiếu'} ${nf(Math.abs(r.balance))}`).join(', ')}` : '');
+  const card = lineCard(sdCard.parentElement, {id: 'chSDCombo', before: sdCard, title: 'Cân bằng cung – cầu dầu toàn cầu', sub, h: 360,
+    labels, series: [], src: `<a href="https://www.eia.gov/outlooks/steo/" target="_blank" rel="noopener">EIA STEO ${wb.issue || ''}</a> · bảng 3a: cung (papr_world), cầu (patc_world); năm có tháng dự báo ghi E`});
+  if (!card) return;
+  const t = sdCard.querySelector('details'); if (t) card.append(t);
+  const cv = card.querySelector('canvas'), ch = window.Chart?.getChart?.(cv); if (ch) ch.destroy();
+  const bal = rec.map(r => r.balance), lim = Math.ceil(Math.max(...bal.map(Math.abs)) + .5);
+  new Chart(cv, {data: {labels, datasets: [
+      {type: 'line', label: 'Cung toàn cầu', data: rec.map(r => r.supply), borderColor: '#7A1F4F', backgroundColor: '#7A1F4F', borderWidth: 2.5, pointRadius: 4, tension: .2, yAxisID: 'y', order: 1, segment: {borderDash: c => rec[c.p1DataIndex]?.estimate ? [6, 4] : undefined}},
+      {type: 'line', label: 'Cầu toàn cầu', data: rec.map(r => r.demand), borderColor: '#2BA5A8', backgroundColor: '#2BA5A8', borderWidth: 2.5, pointRadius: 4, tension: .2, yAxisID: 'y', order: 1, segment: {borderDash: c => rec[c.p1DataIndex]?.estimate ? [6, 4] : undefined}},
+      {type: 'bar', label: 'Cung trừ cầu (dư + / thiếu −)', data: bal, backgroundColor: rec.map(r => (r.balance >= 0 ? 'rgba(43,165,168,' : 'rgba(229,72,77,') + (r.estimate ? '.35)' : '.6)')), borderColor: rec.map(r => r.balance >= 0 ? '#2BA5A8' : '#E5484D'), borderWidth: rec.map(r => r.estimate ? 1.5 : 0), borderRadius: 4, barPercentage: .55, yAxisID: 'y2', order: 2}]},
+    options: {responsive: true, maintainAspectRatio: false, interaction: {mode: 'index', intersect: false},
+      plugins: {legend: {position: 'bottom', labels: {usePointStyle: true, boxWidth: 8, color: '#3B4256', font: {size: 12.5}}}, tooltip: {callbacks: {label: c => ` ${c.dataset.label}: ${nf(c.parsed.y)} tr thùng/ngày`}}},
+      scales: {x: {grid: {display: false}, ticks: {color: '#3B4256', font: {size: 12.5, weight: 600}}},
+        y: {position: 'left', grid: {color: '#EEF0F6'}, ticks: {color: '#6B7392', callback: v => nf(v, 0)}, title: {display: true, text: 'Cung, cầu (tr thùng/ngày)', color: '#6B7392'}},
+        y2: {position: 'right', min: -lim, max: lim, grid: {display: false}, ticks: {color: '#6B7392', callback: v => (v > 0 ? '+' : '') + nf(v, 0)}, title: {display: true, text: 'Cung − cầu', color: '#6B7392'}}}},
+    plugins: [{id: 'zeroLine', afterDraw(c) { const y = c.scales.y2.getPixelForValue(0), {left, right} = c.chartArea, x = c.ctx; x.save(); x.strokeStyle = '#9AA1BC'; x.setLineDash([3, 3]); x.beginPath(); x.moveTo(left, y); x.lineTo(right, y); x.stroke(); x.restore(); }}]});
+  [sdCard, gapCard].forEach(n => { if (n) { n.hidden = true; n.classList.add('of-hidden-legacy'); } });
+}
+
+// Động lực cung cầu: một biểu đồ thanh hai chiều (âm trái, dương phải) thay cho 4 ô nhỏ; số giữ nguyên từ research-sources.js.
+function driversChart() {
+  const card = $('#opec-drivers'), grid = card?.querySelector('.opec-driver-grid'); if (!grid || card.querySelector('.dv')) return;
+  const groups = [
+    ['Cung', [['OPEC+ so với mục tiêu', -6, 'T7/2026 · IEA'], ['Vùng Vịnh so với trước chiến sự', -8.3, 'T7/2026 · IEA'], ['Cung toàn cầu 2026E', -4.3, 'so cùng kỳ, cả năm']]],
+    ['Cầu', [['Tăng trưởng cầu 2026 · IEA', -1.6, 'dự báo tại T8/2026'], ['Tăng trưởng cầu 2026 · OPEC', 0.58, 'dự báo tại T8/2026']]],
+    ['Lọc dầu', [['Công suất chạy lọc dầu toàn cầu', -5, 'T7/2026 so cùng kỳ, xấp xỉ']]],
+  ];
+  const max = 9, pct = v => (Math.abs(v) / max * 50).toFixed(2) + '%', nf = v => (v > 0 ? '+' : '') + v.toLocaleString('vi-VN');
+  const box = el('div', 'dv');
+  box.innerHTML = `<div class="dv-axis"><span>← giảm</span><span>0</span><span>tăng →</span></div>` + groups.map(([g, rows]) => `<div class="dv-g">${g}</div>` + rows.map(([l, v, n]) =>
+    `<div class="dv-row"><div class="dv-l"><b>${l}</b><small>${n}</small></div><div class="dv-track"><i class="dv-zero"></i><span class="dv-bar ${v < 0 ? 'neg' : 'pos'}" style="${v < 0 ? 'right:50%' : 'left:50%'};width:${pct(v)}"></span><em class="dv-v ${v < 0 ? 'neg' : 'pos'}" style="${v < 0 ? `right:calc(50% + ${pct(v)} + 6px)` : `left:calc(50% + ${pct(v)} + 6px)`}">${nf(v)}</em></div></div>`).join('')).join('') +
+    `<p class="dv-note">Triệu thùng/ngày. Các dòng dùng mốc so sánh khác nhau nên không cộng với nhau. Nguồn cung bù từ ngoài OPEC (Mỹ, Brazil, Canada, Guyana, Argentina, Na Uy) xem chart sản lượng 10 nước xuất khẩu lớn phía trên.</p>`;
+  grid.replaceWith(box);
+  const sub = card.querySelector('.chart-sub'); if (sub) sub.textContent = 'Thay đổi so với mốc tham chiếu · bản nguồn tháng 8/2026';
+}
+
+// Đóng góp vào thay đổi cung và cầu so cùng kỳ (EIA STEO, tháng gần nhất có số): nước/khu vực nào kéo tăng, kéo giảm.
+function contribCharts() {
+  const S = window.SECTOR_DAILY?.sources, anchor = $('#chSDCombo')?.closest('.card'); if (!anchor || $('#of-contrib-supply')) return;
+  const nf = (v, d = 2) => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v).toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d});
+  const build = (src, id, kind) => {
+    const rec = src?.records; if (!rec?.length) return null;
+    const last = rec.at(-1), ym = last.date.slice(0, 7), prev = rec.find(r => r.date.slice(0, 7) === (+ym.slice(0, 4) - 1) + ym.slice(4)); if (!prev) return null;
+    const names = src.names, keys = Object.keys(names).filter(k => k !== 'WD');
+    const rows = keys.map(k => [names[k], last[k] - prev[k]]);
+    const total = last.WD - prev.WD, other = total - rows.reduce((a, r) => a + r[1], 0);
+    rows.push([kind === 'cung' ? 'Các nước khác' : 'Khu vực khác', other]);
+    rows.sort((a, b) => a[1] - b[1]);
+    const max = Math.max(...rows.map(r => Math.abs(r[1])), Math.abs(total)) * 1.15, pct = v => (Math.abs(v) / max * 50).toFixed(2) + '%';
+    const mm = `${+ym.slice(5)}/${ym.slice(0, 4)}`, mp = `${+ym.slice(5)}/${+ym.slice(0, 4) - 1}`;
+    const down = rows.filter(r => r[1] < -0.05).slice(0, 3), up = rows.filter(r => r[1] > 0.05).reverse().slice(0, 3);
+    const lead = `${kind === 'cung' ? 'Cung' : 'Cầu'} dầu toàn cầu tháng ${mm} ${total < 0 ? 'giảm' : 'tăng'} <b>${nf(Math.abs(total)).replace(/^[+−]/, '')}</b> triệu thùng/ngày so với ${mp} (${last.WD.toLocaleString('vi-VN', {maximumFractionDigits: 2})} so với ${prev.WD.toLocaleString('vi-VN', {maximumFractionDigits: 2})}).` +
+      (down.length ? ` Kéo giảm: ${down.map(r => `${r[0]} <b class="neg">${nf(r[1])}</b>`).join(', ')}.` : '') + (up.length ? ` ${total < 0 ? 'Bù lại' : 'Kéo tăng'}: ${up.map(r => `${r[0]} <b class="pos">${nf(r[1])}</b>`).join(', ')}.` : '');
+    const bar = (l, v, cls = '') => `<div class="dv-row ${cls}"><div class="dv-l"><b>${l}</b></div><div class="dv-track"><i class="dv-zero"></i><span class="dv-bar ${v < 0 ? 'neg' : 'pos'}" style="${v < 0 ? 'right:50%' : 'left:50%'};width:${pct(v)}"></span><em class="dv-v ${v < 0 ? 'neg' : 'pos'}" style="${v < 0 ? `right:calc(50% + ${pct(v)} + 6px)` : `left:calc(50% + ${pct(v)} + 6px)`}">${nf(v)}</em></div></div>`;
+    const card = el('div', 'card of-wide'); card.id = id; card.dataset.ofAdded = id;
+    card.innerHTML = `<div class="chart-title">${kind === 'cung' ? 'Thay đổi nguồn cung dầu toàn cầu theo quốc gia' : 'Thay đổi nhu cầu dầu toàn cầu theo khu vực'}</div>
+      <p class="of-lead">${lead}</p><div class="dv">${bar(`Tổng ${kind} toàn cầu`, total, 'dv-total')}${rows.map(r => bar(r[0], r[1])).join('')}</div>
+      <div class="pw-src">Nguồn: <a href="https://www.eia.gov/outlooks/steo/" target="_blank" rel="noopener">EIA STEO ${src.issue || ''}</a> · ${kind === 'cung' ? 'sản lượng tổng chất lỏng, bảng 3b, 3c; "các nước khác" = thế giới trừ 10 nước' : 'tiêu thụ, bảng 3e; "khu vực khác" = thế giới trừ các nhóm trên (Canada, Mexico, châu Á khác…)'} · triệu thùng/ngày, số ước tính của EIA có thể được sửa ở bản sau</div>`;
+    return card;
+  };
+  const sup = build(S?.top_producers, 'of-contrib-supply', 'cung'), dem = build(S?.world_demand, 'of-contrib-demand', 'cầu');
+  if (sup) anchor.after(sup); if (dem) (sup || anchor).after(dem);
+}
 function run() {
   if (document.body.dataset.oilFrame) return; document.body.dataset.oilFrame = '1';
   style();
@@ -483,17 +568,42 @@ function run() {
   topExporters();
   unfoldCards(['dau-khi-28']);
   crudeLayout();
+  supplyDemandCombo();
+  driversChart();
+  contribCharts();
   tankerRates();
   lngPrices();
   taxTimeline();
   vnMonthly();
   opsCards();
+  // 26/11/2026: Giá sản phẩm USGC (Brent, xăng, diesel) trùng chart Crack spread USGC, cùng ba chuỗi EIA.
+  { const m = block('dau-khi-21'); if (m) { m.hidden = true; m.classList.add('of-hidden-legacy'); } }
   hideEmptyGaps();
   const finHost = financePane();
   nav(finHost);
   // Tab Sources không còn trong thanh tab (nguồn đã ghi dưới từng chart, như Điện); nội dung vẫn trong DOM.
+  shortTitles(); setTimeout(shortTitles, 1600);  // lần hai sau các module đặt lại tiêu đề muộn
   window.dispatchEvent(new Event('oil:frame'));
 }
-const start = () => setTimeout(run, 1700);  // sau các module dời khối theo hẹn giờ (≤ 1500 ms)
-if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
+// 26/11/2026: tiêu đề chart gọn ở Bức tranh ngành; kỳ và đơn vị để ở dòng phụ dưới tiêu đề.
+function shortTitles() {
+  const T = {chSDCombo: 'Cân bằng cung – cầu dầu toàn cầu', chSpare: 'Công suất dự phòng OPEC và gián đoạn cung',
+    chCrudeStock: 'Tồn kho dầu thô Mỹ', chProdStock: 'Tồn kho xăng và distillate Mỹ', chDistYear: 'Tồn kho distillate Mỹ theo mùa', chCushing: 'Tồn kho Cushing',
+    chBrentYear: 'Giá Brent bình quân năm', chCurve: 'Đường cong kỳ hạn WTI', chCot: 'Vị thế ròng quỹ đầu cơ WTI',
+    chVnUpstream: 'Sản lượng dầu khí Việt Nam theo năm', chVnOutputM: 'Sản lượng dầu khí Việt Nam theo tháng', chExpCrude: 'Xuất khẩu dầu thô Việt Nam',
+    chGasVol: 'Khí vào bờ và LNG nhập khẩu', chGasCustomer: 'Vị thế của PV GAS trong nền kinh tế', chLngSpread: 'Giá LNG châu Á và khí Mỹ', chImpLpg: 'Nhập khẩu LPG',
+    chSingaporeCrack: 'Crack spread Singapore', chCrack: 'Crack spread Mỹ', chImpCrude: 'Nhập khẩu dầu thô',
+    chRetailFuelMini: 'Giá bán lẻ xăng dầu', chImpFuel: 'Nhập khẩu xăng dầu thành phẩm',
+    chHormuzM: 'Tàu dầu qua Hormuz', chBabMandeb: 'Lưu lượng tàu qua Bab el-Mandeb', chMiddleEastExports: 'Xuất khẩu dầu thô Ả Rập Xê Út và Kuwait', chTankerIdx: 'Cước tàu dầu Baltic'};
+  Object.entries(T).forEach(([id, t]) => document.querySelectorAll('[id="' + id + '"]').forEach(c => {
+    if (!c.closest('[id^="of-mt2"]')) return;
+    const h = (c.closest('.fs-share-host') || c.closest('.card'))?.querySelector('.chart-title'); if (!h) return;
+    const n = [...h.childNodes].find(x => x.nodeType === 3 && x.textContent.trim()); if (n) n.textContent = t; else h.prepend(t);
+  }));
+}
+
+// 26/11/2026: dựng khung trong lượt SectorBoot (mốc 1600, sau mọi module ≤ 1500) để trang chỉ hiện khi khung đã xong.
+// Trước đây chạy load + 1700 ms, tức SAU khi sector-boot đã hiện trang: người xem thấy bố cục cũ rồi giật sang khung mới.
+if (window.SectorBoot) SectorBoot.add(1600, run);
+else { const start = () => setTimeout(run, 1700); if (document.readyState === 'complete') start(); else window.addEventListener('load', start); }
 })();
