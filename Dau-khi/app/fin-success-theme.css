@@ -684,3 +684,8 @@ html[data-theme="dark"] :is(.supply-tabs,.world-subtabs,.pane-subtabs,.subtabs) 
 .grid.two > .card.compact-chart-card > [id]:has(> .ct-body) { flex: 1 1 auto; display: flex; flex-direction: column; }
 .grid.two > .card.compact-chart-card > [id] > .ct-body { flex: 1 1 auto; display: flex; flex-direction: column; }
 .grid.two > .card.compact-chart-card > [id] > .ct-body > .ct-canvas { flex: 1 1 260px; min-height: 260px; height: auto !important; }
+/* Bản tin dữ liệu: tách số và đơn vị, thẻ không tràn khung (26/11/2026) */
+.db .db-r,.db .db-c{min-width:0}
+.db .db-v{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 6px;line-height:1.1}
+.db .db-u{font:600 14px Inter,sans-serif;color:var(--muted);letter-spacing:0}
+.db .db-s{color:var(--muted)}
