@@ -84,7 +84,8 @@ if(chain){
   figure.replaceWith(fig);
   chain.querySelector('.chart-insight')?.remove();
   const note=chain.querySelector(':scope>.source-note:last-of-type');
-  if(note)note.textContent='% trên mũi tên: tỷ trọng sản lượng cá tra nguyên liệu đi qua mỗi luồng · % trong ô đầu vào: tỷ trọng trong chi phí nuôi. Nguồn: FinSuccess ước tính.';
+  if(note)note.textContent='% trên mũi tên: tỷ trọng sản lượng cá tra nguyên liệu đi qua mỗi luồng · % trong ô đầu vào: tỷ trọng trong chi phí nuôi.';
+  chain.append(make('div','pw-src','Nguồn: FinSuccess ước tính'));
  }
 }
 
@@ -100,6 +101,7 @@ if(document.body.dataset.seafoodLine==='pang'){
  const cost=[['Thức ăn',84,'#8ab44e'],['Con giống',10,'#1d2b53'],['Thuốc, thú y',3,'#5b7598'],['Nhân công, khấu hao, khác',3,'#b9c2d0']];
  const feed=[['Bã đậu nành',55,'#8ab44e'],['Cám gạo',25,'#1d2b53'],['Khác',20,'#b9c2d0']];
  donut('chPangCost',cost);donut('chPangFeedMix',feed);
+ ['chPangCost','chPangFeedMix'].forEach(id=>{const c=document.getElementById(id)?.closest('.card');if(c&&!c.querySelector(':scope>.pw-src'))c.append(make('div','pw-src','Nguồn: FinSuccess ước tính'))});
  fillTable('tbl-pang-cost',['Khoản mục','% chi phí nuôi'],cost.map(x=>[x[0],nf(x[1],0)]));
  fillTable('tbl-pang-feedmix',['Nguyên liệu','% chi phí thức ăn'],feed.map(x=>[x[0],nf(x[1],0)]));
 }
