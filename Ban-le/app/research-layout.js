@@ -105,8 +105,8 @@ const models=ph?[
  ['FRT · TNH','Dịch vụ y tế','Long Châu (FRT) bán lẻ thuốc qua chuỗi nhà thuốc và tiêm chủng — lợi nhuận theo doanh thu/nhà thuốc và biên gộp; TNH vận hành bệnh viện tư, doanh thu theo lượt khám, giường bệnh và thanh toán BHYT.']
 ]:bl?[
  ['MWG · FRT · DGW · PET','Bán lẻ hiện đại & điện máy','MWG, FRT bán qua chuỗi (điện máy, điện thoại, bách hóa, nhà thuốc), lợi nhuận theo doanh thu/cửa hàng và biên gộp; DGW, PET phân phối ICT, hàng tiêu dùng cho đại lý, biên mỏng 4–13%.'],
- ['PNJ · HAX · SVC','Hàng lâu bền','PNJ bán trang sức, vàng 24K — biên theo giá vàng, kênh cửa hàng; HAX, SVC là đại lý ô tô, lợi nhuận theo doanh số xe, chiết khấu hãng và lãi vay tồn kho.'],
- ['VNM · SAB · QNS · MSN · KDC','Hàng tiêu dùng nhanh','Sản xuất sữa, bia, đường, thực phẩm, dầu ăn bán qua kênh phân phối rộng; biên theo giá nguyên liệu nhập và thuế TTĐB. MSN gồm cả WinCommerce (bán lẻ) và Masan High-Tech Materials.']
+ ['PNJ','Trang sức','PNJ bán trang sức, vàng 24K — biên theo giá vàng, chênh lệch với thế giới và cơ cấu sản phẩm, kênh cửa hàng. Ô tô – Xe máy có dashboard riêng.'],
+ ['QNS · MSN · KDC','Hàng tiêu dùng nhanh','Sản xuất đường, thực phẩm, đồ uống, dầu ăn bán qua kênh phân phối rộng; biên theo giá nguyên liệu nhập và thuế TTĐB nước giải khát. MSN gồm cả WinCommerce (bán lẻ) và Masan High-Tech Materials. Sữa, Bia có dashboard riêng.']
 ]:bh?[
  ['BVH','Tập đoàn','Bảo Việt Nhân thọ (dẫn đầu khai thác mới) và Bảo hiểm Bảo Việt; quỹ đầu tư lớn nhất ngành nên lợi nhuận nhạy nhất với lãi suất.'],
  ['PVI · BMI · MIG · PTI · BIC','Phi nhân thọ','Thu phí sức khỏe, xe, tài sản; lãi bảo hiểm gốc mỏng, lãi đầu tư là phần lớn lợi nhuận. MIG, BIC, PTI dựa vào ngân hàng/tập đoàn mẹ; PVI mạnh năng lượng và tái bảo hiểm.'],

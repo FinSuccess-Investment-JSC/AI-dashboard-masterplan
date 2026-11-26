@@ -1,8 +1,9 @@
 /* Bán lẻ & tiêu dùng · khung 4 tab theo mẫu Điện (26/11/2026), dựng từ khung Thủy sản (Thuy-san/app/seafood-frame.js).
    Tab lớn: Tổng quan ngành (#mt1: 00 Bản đồ ngành · 01 Mô hình kiếm tiền · 02 Vị trí chu kỳ; Bản tin dữ liệu ở đầu)
-          · Bức tranh ngành (#mt2: 01 Toàn ngành · 02 Bán lẻ hiện đại & điện máy · 03 Ô tô & trang sức · 04 Hàng tiêu dùng nhanh · 05 Chính sách & thuế)
+          · Bức tranh ngành (#mt2: 01 Toàn ngành · 02 Bán lẻ hiện đại & điện máy · 03 Trang sức · 04 Hàng tiêu dùng nhanh · 05 Chính sách & thuế)
           · Tài chính ngành (#mt14: 01 Tài chính ngành · 02 Doanh nghiệp niêm yết)
           · Chủ đề nóng (#mt7, giữ research-editorial; mỗi chủ đề thêm dòng mô hình bị tác động, chỉ báo xác nhận, link chart).
+   Sữa, Bia, Ô tô – Xe máy tách thành dashboard riêng (Sua/, Bia/, O-to-xe-may/) 26/11/2026; ?sub=durable cũ → Trang sức.
    Card cũ được DỜI theo data-block-id (không nhân bản, không xóa); card chưa có chỗ gom vào "Nội dung khác".
    URL: ?sub=<khóa>#mtN. Bấm tab/sub-tab → pushState nên nút Back/Forward đi lại đúng mục (popstate dựng lại).
    Link cũ: #mt3 → Hàng tiêu dùng nhanh (Giá – Chi phí – Margin cũ), #mt4 / ?section=policy|tax|trade → Chính sách & thuế,
@@ -46,39 +47,33 @@ const TREE = {
       {q: 'Chuỗi nào tăng nhờ cửa hàng hiện hữu, chuỗi nào nhờ mở mới?', id: 'rf-q-sssg', meta: '% so cùng kỳ 9T/2026 · chỉ chuỗi công bố cả doanh thu và SSSG', take: ['bl-43'],
         after: NOTE('<b>So theo mô hình:</b> điện máy – điện thoại (MWG khối ĐMX, FPT Shop) tăng nhờ năng suất cửa hàng, nên theo dõi SSSG và biên gộp; bách hóa (Bách Hóa Xanh, WinCommerce) và nhà thuốc (Long Châu) tăng nhờ mở mới, nên theo dõi tỷ lệ cửa hàng mới hòa vốn, chi phí bán hàng/doanh thu và doanh thu/cửa hàng sau 12 tháng. <b>Còn thiếu để dựng cầu nối:</b> số cửa hàng bình quân và SSSG theo quý của Long Châu, Bách Hóa Xanh, WinCommerce. Biên gộp từng doanh nghiệp: <a href="#rf-q-gm">Tài chính ngành › 1.3</a>.')},
     ]},
-    {k: 'durable', t: 'Ô tô & trang sức', d: 'Sản lượng xe và giá vàng truyền vào lợi nhuận qua đâu? Xe: số bán, cơ cấu nhập khẩu/lắp ráp, biên đại lý. Vàng: giá, chênh lệch thế giới, biên PNJ.', kpis: ['spk-car'], items: [
-      {grp: 'Ô tô & xe máy'},
-      {q: 'Sản lượng xe đang tăng ở nhóm nào?', id: 'rf-q-car', meta: 'VAMA và VinFast là hai phạm vi riêng · sản lượng sản xuất (NSO) khác số bán ra', take: ['bl-21', 'bl-25', 'bl-20']},
-      {q: 'Sản lượng truyền vào lợi nhuận đại lý qua đâu?', id: 'rf-q-dealer', meta: '% · biên gộp hợp nhất quý HAX, SVC', take: ['bl-26'],
-        after: NOTE('<b>Cơ chế:</b> lợi nhuận đại lý = số xe bán × (giá bán − giá nhập từ hãng) + dịch vụ, phụ tùng. <b>Chỉ báo cần kiểm tiếp:</b> doanh số theo hãng mà HAX, SVC phân phối (chưa có nguồn công khai theo tháng), tỷ trọng dịch vụ trong lãi gộp, hàng tồn kho xe và chi phí lãi vay.')},
-      {q: 'Xe máy: chỉ báo riêng cho sức mua nhóm thu nhập trung bình', id: 'rf-q-moto', take: ['bl-22']},
+    {k: 'jewelry', t: 'Trang sức', d: 'Giá vàng truyền vào lợi nhuận PNJ qua đâu? Giá vàng, chênh lệch với thế giới, biên gộp PNJ. Ô tô – Xe máy có dashboard riêng.', items: [
       {grp: 'Vàng & trang sức'},
       {q: 'Giá vàng trong nước đang đi đâu?', id: 'rf-q-gold', meta: 'triệu đồng/lượng · SJC miếng và nhẫn, điểm cuối tháng (WiData)', take: ['bl-24', 'bl-23']},
       {q: 'Vàng trong nước đắt hơn thế giới bao nhiêu?', id: 'rf-q-gap', meta: 'một ngày đã đối chiếu (11/10/2026) · quy đổi tự tính và số bài nguồn đặt cạnh nhau', take: ['bl-42']},
       {q: 'Giá vàng truyền vào biên gộp PNJ qua đâu?', id: 'rf-q-pnj', meta: '% · biên gộp hợp nhất PNJ cạnh giá SJC so cùng kỳ', take: ['bl-27'],
         after: NOTE('<b>Cơ chế:</b> biên gộp PNJ = cơ cấu (trang sức biên cao, vàng 24K biên thấp) × chênh giá bán với giá vốn tồn kho. <b>Chỉ báo cần kiểm tiếp:</b> tỷ trọng doanh thu vàng 24K theo quý, tồn kho vàng (18.855 tỷ cuối Q3), dự phòng thu đổi kim cương còn lại — chưa có chuỗi công bố theo quý trong repo.')},
     ]},
-    {k: 'fmcg', t: 'Hàng tiêu dùng nhanh', d: 'Sản lượng và giá đầu vào đang tác động thế nào lên biên gộp? Sản lượng ngành → giá nguyên liệu cạnh biên gộp → kiểm độ trễ.',
-      kpis: ['spk-beer'], flow: [['prod', 'Sản lượng', 'Bia, sữa, IIP'], ['cost', 'Đầu vào → biên', 'Giá nguyên liệu cạnh biên gộp'], ['lag', 'Kiểm cơ chế', 'Độ trễ 2 quý (giả định)']], items: [
+    {k: 'fmcg', t: 'Hàng tiêu dùng nhanh', d: 'Giá đầu vào đang tác động thế nào lên biên gộp MSN, KDC? Chỉ số sản xuất → giá nguyên liệu cạnh biên gộp → kiểm độ trễ. Sữa, Bia có dashboard riêng.',
+      flow: [['prod', 'Sản xuất', 'IIP thực phẩm, đồ uống'], ['cost', 'Đầu vào → biên', 'Giá nguyên liệu cạnh biên gộp'], ['lag', 'Kiểm cơ chế', 'Độ trễ 2 quý (giả định)']], items: [
       {stage: 'prod'},
-      {q: 'Sản lượng ngành đang tăng hay giảm?', id: 'rf-q-output', meta: '<b>sản lượng sản xuất</b> bia, sữa (triệu lít) · <b>chỉ số sản xuất</b> IIP (% so cùng kỳ) · NSO, toàn ngành, không phải sản lượng bán của doanh nghiệp', take: ['bl-30', 'bl-31']},
+      {q: 'Chỉ số sản xuất thực phẩm, đồ uống đang tăng hay giảm?', id: 'rf-q-output', meta: '<b>chỉ số sản xuất</b> IIP (% so cùng kỳ) · NSO, toàn ngành, không phải sản lượng bán của doanh nghiệp', take: ['bl-31']},
       {stage: 'cost'},
       {q: 'Giá đầu vào đang đi hướng nào so với biên gộp doanh nghiệp?', id: 'rf-q-cost', meta: 'chỉ số T1/2024 = 100 (giá gốc USD ở Chi tiết dữ liệu) · biên gộp % BCTC hợp nhất quý', take: ['bl-32', 'bl-40'],
-        after: NOTE('<b>Doanh nghiệp × nguyên liệu liên quan:</b> VNM — sữa bột (SMP, WMP), đường · SAB — malt, lúa mạch, nhôm lon (chưa có nguồn công khai) · KDC — dầu cọ · MSN (Masan Consumer, Masan MEATLife) — dầu cọ, đường, khô đậu, ngô · QNS — bán đường (giá đường tăng là thuận), chưa có BCTC quý trong bộ dữ liệu.')},
+        after: NOTE('<b>Doanh nghiệp × nguyên liệu liên quan:</b> KDC — dầu cọ · MSN (Masan Consumer, Masan MEATLife) — dầu cọ, đường, khô đậu, ngô · QNS — bán đường (giá đường tăng là thuận), chưa có BCTC quý trong bộ dữ liệu.')},
       {stage: 'lag'},
       {q: 'Nếu giá nguyên liệu đi trước biên gộp 2 quý thì sao? (giả định phân tích)', id: 'rf-q-lag', meta: '<b>giả định</b> độ trễ 2 quý do tồn kho và hợp đồng mua · chỉ ghép chuỗi cùng quý quan sát', take: ['bl-41'],
-        after: NOTE('<b>Đây là giả định để thử, chưa phải quan hệ đã kiểm định.</b> Để kiểm cơ chế truyền cần thêm: ngày tồn kho nguyên liệu từng doanh nghiệp, giá bán bình quân (đợt tăng giá của SAB, VNM), cơ cấu sản phẩm và tỷ giá USD/VND theo quý.')},
+        after: NOTE('<b>Đây là giả định để thử, chưa phải quan hệ đã kiểm định.</b> Để kiểm cơ chế truyền cần thêm: ngày tồn kho nguyên liệu từng doanh nghiệp, giá bán bình quân, cơ cấu sản phẩm và tỷ giá USD/VND theo quý.')},
     ]},
     {k: 'policy', t: 'Chính sách & thuế', d: 'Mốc nào có thể đổi giá bán, sản lượng hoặc chi phí? Thẻ sự kiện theo ngày hiệu lực, lộ trình thuế suất, văn bản gốc.', items: [
       {q: 'Mốc nào có thể đổi giá bán, sản lượng hoặc chi phí?', id: 'rf-q-policy', meta: '● đã ban hành · ○ dự thảo · ngày hiệu lực', take: ['bl-52']},
-      {q: 'Thuế suất tiêu thụ đặc biệt đi lên theo lộ trình nào?', id: 'rf-q-sintax', meta: '% thuế suất theo năm · phạm vi: bia, nước giải khát >5 g đường/100 ml · thuế suất ≠ mức tăng giá bán', take: ['bl-53']},
       {q: 'Văn bản gốc và ghi chú dữ liệu', id: 'rf-q-docs', take: ['bl-50']},
     ]},
   ]},
   mt14: {title: 'Tài chính ngành', subs: [
     {k: 'sector', t: 'Tài chính ngành', d: 'Định giá từng rổ và doanh thu, lợi nhuận, biên của ba nhóm, cộng từ BCTC hợp nhất quý.', kpis: ['spk-pe'], items: [
       {q: 'Thị trường định giá từng rổ ở mức nào?', id: 'rf-q-pe', meta: 'lần · rổ mã theo dõi (VNDirect) · không phải toàn ngành', take: ['bl-03']},
-      {q: 'Doanh thu và lợi nhuận từng nhóm đi thế nào?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · Σ hợp nhất quý · Bán lẻ hiện đại (MWG, FRT, DGW, PET) · Lâu bền (PNJ, HAX, SVC) · Tiêu dùng nhanh (VNM, SAB, MSN, KDC)', take: ['bl-06']},
+      {q: 'Doanh thu và lợi nhuận từng nhóm đi thế nào?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · Σ hợp nhất quý · Bán lẻ hiện đại (MWG, FRT, DGW, PET) · Trang sức (PNJ) · Tiêu dùng nhanh (MSN, KDC)', take: ['bl-06']},
       {q: 'Biên của từng nhóm mở rộng hay thu hẹp?', id: 'rf-q-gm', meta: '% · Σ tử số ÷ Σ mẫu số cùng rổ, cùng quý · cấp doanh nghiệp, không phải cấp mảng', take: ['bl-07']},
     ]},
     {k: 'listed', t: 'Doanh nghiệp niêm yết', d: 'Bảng so sánh, bộ lọc mã và kỳ báo cáo để tra số chính xác; kế hoạch và kết quả 2026.', items: [
@@ -88,6 +83,7 @@ const TREE = {
   ]},
 };
 const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
+const SUB_ALIAS = {durable: 'jewelry'}; // ?sub= cũ trước khi tách Ô tô – Xe máy
 const ALIAS = {mt3: ['mt2', 'fmcg'], mt4: ['mt2', 'policy'], mt5: ['mt1'], mt6: ['mt14', 'listed'], mt8: ['mt1', 'map', 'rf-sources'], mt9: ['mt14', 'sector']};
 const SECTION = {policy: ['mt2', 'policy'], tax: ['mt2', 'policy'], trade: ['mt2', 'policy'], demand: ['mt2', 'all'], supply: ['mt2', 'modern'], price: ['mt2', 'fmcg'], margin: ['mt2', 'fmcg'],
   finance: ['mt14', 'sector'], listed: ['mt14', 'listed'], companies: ['mt14', 'listed'], players: ['mt14', 'listed'], sources: ['mt1', 'map', 'rf-sources']};
@@ -98,17 +94,19 @@ function models() {
   const M = [
     ['Bán lẻ hiện đại & điện máy', 'MWG · FRT · DGW · PET', 'Chuỗi điện máy, điện thoại, bách hóa (MWG); nhà thuốc, tiêm chủng, ICT (FRT); phân phối ICT, hàng tiêu dùng (DGW, PET)',
       'Số cửa hàng × doanh thu/cửa hàng; biên gộp theo cơ cấu hàng; chi phí thuê, nhân công mỗi điểm', [['#rf-q-stores', 'Mạng lưới & năng suất'], ['#rf-q-sssg', 'SSSG'], ['#rf-q-real', 'Sức mua']]],
-    ['Hàng lâu bền: ô tô, trang sức', 'PNJ · HAX · SVC', 'Trang sức, vàng 24K (PNJ); đại lý Mercedes, MG, VinFast (HAX); đại lý đa hãng (SVC)',
-      'Giá vàng và chênh lệch thế giới, cơ cấu trang sức/24K; số xe bán theo hãng, chiết khấu hãng, lãi suất', [['#rf-q-car', 'Sản lượng xe'], ['#rf-q-dealer', 'Biên đại lý'], ['#rf-q-pnj', 'Biên PNJ']]],
-    ['Hàng tiêu dùng nhanh', 'VNM · SAB · QNS · MSN · KDC', 'Sữa (VNM), bia (SAB), đường & sữa đậu nành (QNS), thực phẩm, đồ uống, WinCommerce (MSN), dầu ăn, bánh kẹo (KDC)',
-      'Giá sữa bột, malt, đường, dầu cọ (giá vốn, trễ theo tồn kho); thuế TTĐB; giá bán và sản lượng', [['#rf-q-output', 'Sản lượng'], ['#rf-q-cost', 'Đầu vào → biên'], ['#rf-q-sintax', 'Thuế TTĐB']]],
+    ['Trang sức', 'PNJ', 'Trang sức, vàng 24K bán qua chuỗi cửa hàng và bán sỉ',
+      'Giá vàng và chênh lệch thế giới, cơ cấu trang sức/24K, giá vốn tồn kho', [['#rf-q-gold', 'Giá vàng'], ['#rf-q-gap', 'Chênh lệch thế giới'], ['#rf-q-pnj', 'Biên PNJ']]],
+    ['Hàng tiêu dùng nhanh', 'QNS · MSN · KDC', 'Đường & sữa đậu nành (QNS), thực phẩm, đồ uống, WinCommerce (MSN), dầu ăn, bánh kẹo (KDC)',
+      'Giá đường, dầu cọ, khô đậu, ngô (giá vốn, trễ theo tồn kho); thuế TTĐB nước giải khát; giá bán và sản lượng', [['#rf-q-output', 'Sản lượng'], ['#rf-q-cost', 'Đầu vào → biên'], ['#rf-q-policy', 'Chính sách']]],
   ];
   const host = $('#blModels'); if (!host) return el('span');
   host.className = 'rf-models';
   host.innerHTML = M.map(([t, syms, rev, drv, links], i) => `<article class="rf-model"><header><span>${i + 1}</span><h4>${esc(t)}</h4></header><p class="rf-syms">${esc(syms)}</p>
     <dl><dt>Doanh thu đến từ</dt><dd>${esc(rev)}</dd><dt>Biến quyết định biên</dt><dd>${esc(drv)}</dd></dl>
     <nav>${links.map(([h, l]) => `<a href="${h}">${esc(l)} →</a>`).join('')}</nav></article>`).join('');
-  host.after(el('div', 'source-note', 'Sơ đồ mô hình, không biểu thị tỷ trọng. Mã đại diện theo rổ dashboard; VNM, SAB, QNS, MSN cũng có ở dashboard Nông nghiệp theo chiều giá nguyên liệu.'));
+  const links = el('nav', 'rf-split', '<b>Đã tách thành dashboard riêng:</b>' + [['../Sua/', 'Sữa', 'VNM · MCM'], ['../Bia/', 'Bia', 'SAB · BHN · SMB · HAD'], ['../O-to-xe-may/', 'Ô tô – Xe máy', 'HAX · SVC · CTF · TMT']].map(([h, l, s]) => `<a href="${h}">${l} <small>${s}</small> →</a>`).join(''));
+  host.after(links);
+  links.after(el('div', 'source-note', 'Sơ đồ mô hình, không biểu thị tỷ trọng.'));
   return el('span');
 }
 
@@ -117,7 +115,6 @@ function topicLinks() {
   const T = {
     'pnj-diamond': ['Biên gộp, chi phí dự phòng, lợi nhuận ròng PNJ; nợ vay khi huy động vốn', 'Biên gộp quý IV, dự phòng thu đổi còn lại, kết quả phát hành riêng lẻ', [['#rf-q-pnj', 'Biên gộp PNJ cạnh giá vàng'], ['#rf-q-gap', 'Chênh lệch vàng trong nước – thế giới']]],
     'bhx': ['Doanh thu (số cửa hàng × doanh thu/cửa hàng), chi phí bán hàng, biên ròng MWG, FRT, MSN', 'Số cửa hàng mở mới quý IV, doanh thu/cửa hàng, tỷ lệ cửa hàng mới hòa vốn', [['#rf-q-stores', 'Mạng lưới & năng suất'], ['#rf-q-sssg', 'SSSG so với tăng trưởng doanh thu']]],
-    'sin-tax': ['Giá bán, sản lượng bia và nước giải khát; biên gộp SAB, MSN, QNS, VNM', 'Giá bán lẻ bia tháng 1/2027, sản lượng bia tháng 1–2, IIP đồ uống', [['#rf-q-sintax', 'Lộ trình thuế suất'], ['#rf-q-output', 'Sản lượng bia, IIP'], ['#rf-q-policy', 'Mốc hiệu lực']]],
     'ecommerce': ['Doanh thu kênh online và giá bán tại cửa hàng của MWG, FRT, DGW', 'Doanh số 4 sàn 9T/2026, tỷ trọng online trong doanh thu chuỗi', [['#rf-q-policy', 'Luật TMĐT (1/7/2026)']]],
   };
   $$('[data-block-id^="bl-t"]').forEach(card => {
@@ -228,6 +225,7 @@ function setUrl(key, sub, mode) {
 }
 function open(key, sub, mode) {
   const subs = TABS[key]; if (!subs) return;
+  sub = SUB_ALIAS[sub] || sub;
   const hit = subs.find(x => x.s.k === sub) || subs[0];
   subs.forEach(x => { const on = x === hit; x.b.setAttribute('aria-selected', String(on)); x.b.classList.toggle('active', on); x.b.tabIndex = on ? 0 : -1; x.p.hidden = !on; });
   const bar_ = hit.b.parentElement; if (bar_ && bar_.scrollWidth > bar_.clientWidth) bar_.scrollLeft = Math.max(0, hit.b.offsetLeft - 12);

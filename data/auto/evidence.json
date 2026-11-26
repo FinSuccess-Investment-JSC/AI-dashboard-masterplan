@@ -1,0 +1,222 @@
+[
+ {
+  "block": "oto-11",
+  "claim": "Doanh số VAMA tháng 9/2026",
+  "value": "35.094 xe; +38% MoM; hybrid +56%",
+  "url": "https://www.vietnamplus.vn/doanh-so-ban-oto-tai-viet-nam-tang-38-xe-hybrid-tang-toc-post1141084.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Chiều 9/10, Hiệp hội các nhà sản xuất ôtô Việt Nam (VAMA) công bố doanh số bán hàng toàn thị trường của các đơn vị thành viên trong tháng 9/2026 đạt 35.094 xe, tăng 38% so với trước; trong đó, xe hybrid tăng 56%, trong khi xe nhập khẩu tiếp tục vượt xe lắp ráp về tốc độ tăng trưởng.",
+  "status": "match",
+  "note": "R2. VietnamPlus, 09/10/2026, dẫn VAMA · chép từ data/retail/evidence.json (bl-21) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "Doanh số VAMA 9T/2026",
+  "value": "282.029 xe; +12% YoY",
+  "url": "https://www.vietnamplus.vn/doanh-so-ban-oto-tai-viet-nam-tang-38-xe-hybrid-tang-toc-post1141084.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Tính đến hết tháng 9/2026, doanh số ôtô toàn thị trường đạt 282.029 xe các loại, tăng 12% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "R2. VietnamPlus, 09/10/2026, dẫn VAMA (chưa gồm VinFast, Hyundai TC) · chép từ data/retail/evidence.json (bl-21) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "Xe nhập khẩu vs lắp ráp 9T/2026 (VAMA)",
+  "value": "Nhập khẩu +22%; lắp ráp trong nước +2%",
+  "url": "https://www.vietnamplus.vn/doanh-so-ban-oto-tai-viet-nam-tang-38-xe-hybrid-tang-toc-post1141084.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Đáng chú ý, doanh số xe nhập khẩu nguyên chiếc tăng 22% trong 9 tháng, cao hơn đáng kể mức tăng 2% của xe lắp ráp trong nước.",
+  "status": "match",
+  "note": "R2. VietnamPlus, 09/10/2026, dẫn VAMA · chép từ data/retail/evidence.json (bl-21) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "Xe hybrid VAMA 9T/2026",
+  "value": "16.057 xe; +64% YoY",
+  "url": "https://www.vietnamplus.vn/doanh-so-ban-oto-tai-viet-nam-tang-38-xe-hybrid-tang-toc-post1141084.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 9 tháng, doanh số xe hybrid của các thành viên VAMA đạt 16.057 chiếc, tăng 64% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "R2. VietnamPlus, 09/10/2026 · chép từ data/retail/evidence.json (bl-21) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "Doanh số VinFast tại Việt Nam tháng 8/2026 và lũy kế 8T",
+  "value": "20.161 xe tháng 8; 154.073 xe lũy kế từ đầu năm",
+  "url": "https://tienphong.vn/vinfast-ban-20161-xe-o-to-dien-tai-viet-nam-trong-thang-82026-post1875712.tpo",
+  "opened_at": "2026-10-11",
+  "quote": "Ngày 11/9/2026 - VinFast công bố đã bàn giao 20.161 xe ô tô điện các loại cho khách hàng tại Việt Nam trong tháng 8/2026, nâng tổng số xe bán ra kể từ đầu năm lên 154.073 xe.",
+  "status": "match",
+  "note": "R2. Tiền Phong, 12/09/2026 (số tháng 9 chưa công bố lúc mở trang) · chép từ data/retail/evidence.json (bl-21) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "Doanh số VinFast Việt Nam 6T/2026",
+  "value": "115.916 xe; +72% YoY (cùng kỳ 67.569)",
+  "url": "https://www.just-auto.com/newsletters/vinfasts-domestic-sales-surge-58-in-june",
+  "opened_at": "2026-10-11",
+  "quote": "In the first six months of the year, the company sold a total of 115,916 vehicles in Vietnam, up by 72% compared with 67,569 units in the same period last year.",
+  "status": "match",
+  "note": "R2. Just Auto, 7/2026 · chép từ data/retail/evidence.json (bl-21) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-60",
+  "claim": "Lệ phí trước bạ ô tô điện chạy pin",
+  "value": "0% lần đầu kéo dài 01/3/2027–31/12/2030 (NĐ 202/2026 ngày 08/6/2026); NĐ 51/2025 áp 0% đến hết tháng 2/2027",
+  "url": "https://lsvn.vn/o-to-dien-duoc-ap-dung-le-phi-truoc-ba-lan-dau-0-den-het-nam-2030-a173952.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể, từ ngày 01/3/2027 đến hết ngày 31/12/2030, ô tô điện chạy pin đăng ký lần đầu sẽ tiếp tục được miễn 100% lệ phí trước bạ (mức thu 0%).",
+  "status": "match",
+  "note": "R2. Tạp chí Luật sư Việt Nam, 09/06/2026 · chép từ data/retail/evidence.json (bl-21) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-15",
+  "claim": "Doanh số xe máy VAMM quý III và 9T/2026",
+  "value": "Quý 3: 686.661 xe (+10,4% YoY); 9T: 2.054.213 xe",
+  "url": "https://www.vietnamplus.vn/doanh-so-xe-may-viet-nam-vuot-2-trieu-chiec-xe-xang-van-tang-truong-post1141075.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Trong đó, quý 1 đạt 729.121 xe, tăng 8,3%; quý 2 đạt 638.431 xe, tăng 4,4%; quý 3 đạt 686.661 xe, tăng 10,4% so với cùng kỳ năm trước.",
+  "status": "match",
+  "note": "R2. VietnamPlus, 09/10/2026, dẫn VAMM (9T: 2.054.213 xe cùng bài) · chép từ data/retail/evidence.json (bl-21) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "Kế hoạch 2026: LNTT (chưa gồm VFG)",
+  "value": "180–200 tỷ đồng, gấp 4–5 lần 2025",
+  "url": "https://vneconomy.vn/chu-tich-haxaco-phan-phoi-xe-dien-vinfast-la-dong-luc-tang-truong-loi-nhuan-cua-hax-thoi-gian-toi.htm",
+  "opened_at": "2026-10-11",
+  "quote": "Về kế hoạch kinh doanh, Haxaco Group đặt mục tiêu lợi nhuận trước thuế năm 2026 trong khoảng 180–200 tỷ đồng, cao gấp 4–5 lần so với kết quả năm 2025.",
+  "status": "match",
+  "note": "HAX. vneconomy.vn, bài 29/01/2026 · chép từ data/retail/evidence.json (bl-60) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "KQ Q2/2026 hợp nhất (gồm Tương Lai Việt - đại lý VinFast từ cuối Q1): doanh thu / LNTT",
+  "value": "1.558,8 tỷ (+51,5%) / 29,6 tỷ đồng (+69,1%); lợi nhuận gộp 90,2 tỷ (-1%)",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/haxaco-kinh-doanh-ra-sao-sau-khi-mua-cong-ty-phan-phoi-xe-vinfast-35252657",
+  "opened_at": "2026-10-11",
+  "quote": "ghi nhận doanh thu thuần hơn 1.558,8 tỷ đồng, tăng 51,5% so với cùng kỳ năm trước (YoY). Giá vốn hàng bán đạt 1.468,5 tỷ đồng, tăng 56,6% YoY; lợi nhuận gộp đạt 90,2 tỷ đồng, giảm 900 triệu đồng, tương đương 1%.",
+  "status": "match",
+  "note": "HAX. dnse.com.vn, bài 29/07/2026 · chép từ data/retail/evidence.json (bl-60) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "KQ 6T/2026 hợp nhất: doanh thu / LNTT / % KH",
+  "value": "2.656,2 tỷ (+33,6%) / 49,8 tỷ đồng (+23,9%) / ~24,9% KH 200 tỷ",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/haxaco-kinh-doanh-ra-sao-sau-khi-mua-cong-ty-phan-phoi-xe-vinfast-35252657",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 6 tháng đầu năm 2026, doanh thu thuần của Haxaco đạt 2.656,2 tỷ đồng, tăng 33,6% so với nửa đầu năm 2025. Lãi trước thuế đạt 49,8 tỷ đồng, tăng 23,9%. Năm nay, Haxaco đặt mục tiêu lợi nhuận trước thuế 200 tỷ đồng. Như vậy sau nửa đầu năm, doanh nghiệp đã hoàn thành khoảng 24,9% kế hoạch năm.",
+  "status": "match",
+  "note": "HAX. dnse.com.vn, bài 29/07/2026 · chép từ data/retail/evidence.json (bl-60) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "Thương vụ Tập đoàn Tương Lai Việt (đại lý VinFast)",
+  "value": "nhận chuyển nhượng 9,75 triệu cp = 65% vốn (tháng 3/2026); lợi thế thương mại 208,6 tỷ",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/haxaco-kinh-doanh-ra-sao-sau-khi-mua-cong-ty-phan-phoi-xe-vinfast-35252657",
+  "opened_at": "2026-10-11",
+  "quote": "Hồi tháng 3/2026, HĐQT Haxaco thông qua nghị quyết nhận chuyển nhượng 9,75 triệu cổ phần, tương ứng 65% vốn điều lệ của CTCP Tập đoàn Tương Lai Việt.",
+  "status": "match",
+  "note": "HAX. dnse.com.vn, bài 29/07/2026 · chép từ data/retail/evidence.json (bl-60) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-60",
+  "claim": "Cổ tức từ PTM (phân phối MG) hỗ trợ lợi nhuận 6T/2026 (số theo bài DNPL, thấp hơn số hợp nhất của DNSE/nhadautu)",
+  "value": "doanh thu tài chính 6T 49,7 tỷ (+150,1%), trong đó cổ tức PTM 49,5 tỷ",
+  "url": "https://doanhnhan.baophapluat.vn/suc-mua-xe-sang-phuc-hoi-giup-haxaco-hax-loi-nguoc-dong-chuyen-tu-lo-sang-lai-trong-quy-ii-2026.html",
+  "opened_at": "2026-10-11",
+  "quote": "Doanh thu hoạt động tài chính của Haxaco 6 tháng đầu năm 2026 đạt hơn 49,7 tỷ đồng, tăng 150,1% so với cùng kỳ năm 2025. Đóng góp chủ yếu đến từ cổ tức, lợi nhuận được chia từ Công ty cổ phần Sản xuất thương mại và dịch vụ Ô tô PTM với khoản tiền hơn 49,5 tỷ đồng.",
+  "status": "match",
+  "note": "HAX. doanhnhan.baophapluat.vn, bài cuối 07/2026 · chép từ data/retail/evidence.json (bl-60) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "Rủi ro nợ vay và tồn kho 30/6/2026 (hợp nhất)",
+  "value": "nợ phải trả 1.942 tỷ (+75,1%); vay ngắn hạn 1.402 tỷ (+47,5%); tồn kho 1.759,6 tỷ (+20,8%)",
+  "url": "https://www.dnse.com.vn/senses/tin-tuc/haxaco-kinh-doanh-ra-sao-sau-khi-mua-cong-ty-phan-phoi-xe-vinfast-35252657",
+  "opened_at": "2026-10-11",
+  "quote": "Bên kia bảng cân đối kế toán, tổng nợ phải trả của doanh nghiệp đạt 1.942 tỷ đồng, tăng 75,1% so với thời điểm đầu năm.",
+  "status": "match",
+  "note": "HAX. dnse.com.vn, bài 29/07/2026 · chép từ data/retail/evidence.json (bl-60) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "Thị trường ô tô (VAMA) tháng 9 và 9T/2026",
+  "value": "T9: 35.094 xe (+38% MoM); 9T: 282.029 xe (+12%); xe nhập +22%, lắp ráp +2%; hybrid 9T 16.057 xe (+64%)",
+  "url": "https://www.vietnamplus.vn/doanh-so-ban-oto-tai-viet-nam-tang-38-xe-hybrid-tang-toc-post1141084.vnp",
+  "opened_at": "2026-10-11",
+  "quote": "Tính đến hết tháng 9/2026, doanh số ôtô toàn thị trường đạt 282.029 xe các loại, tăng 12% so với cùng kỳ năm trước. Trong đó, xe du lịch tăng 9%, xe thương mại tăng 17% và xe chuyên dụng tăng 62%.",
+  "status": "match",
+  "note": "HAX. vietnamplus.vn, bài 09/10/2026 (Mercedes-Benz không báo cáo VAMA) · chép từ data/retail/evidence.json (bl-60) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-60",
+  "claim": "Kế hoạch 2026 (ĐHĐCĐ 5/6/2026): doanh thu hợp nhất / LNST (2025 có lãi đột biến dự án Cần Giờ)",
+  "value": "22.094 tỷ (-21% so 27.810 tỷ) / ~159 tỷ đồng (-68% so 499 tỷ)",
+  "url": "https://nhadautu.vn/chu-tich-savico-co-dong-lon-chua-co-ke-hoach-thoai-von-d105473.html",
+  "opened_at": "2026-10-11",
+  "quote": "chỉ tiêu doanh thu hợp nhất đặt ra ở mức 22.094 tỷ đồng, giảm 21% so với mức thực hiện 27.810 tỷ đồng của năm 2025. Đáng chú ý, mục tiêu lợi nhuận sau thuế khoảng 159 tỷ đồng, giảm tới 68% so với con số 499 tỷ đồng đạt được trong năm trước",
+  "status": "match",
+  "note": "SVC. nhadautu.vn, bài 05/06/2026 · chép từ data/retail/evidence.json (bl-60) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-60",
+  "claim": "KQ Q1/2026: doanh thu / LNST",
+  "value": "6.449 tỷ (+16,2%) / 34 tỷ đồng (+5,66%)",
+  "url": "https://nhadautu.vn/chu-tich-savico-co-dong-lon-chua-co-ke-hoach-thoai-von-d105473.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cụ thể, doanh thu bán hàng và cung cấp dịch vụ trong quý đạt 6.449 tỷ đồng, tăng 16,2% so với mức 5.549 tỷ đồng của quý 1/2025. Lợi nhuận sau thuế tương ứng đạt 34 tỷ đồng, tăng trưởng 5,66% so với cùng kỳ năm ngoái.",
+  "status": "match",
+  "note": "SVC. nhadautu.vn, bài 05/06/2026 · chép từ data/retail/evidence.json (bl-60) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-60",
+  "claim": "Rút tờ trình tăng vốn 2026; UBCKNN gia hạn điều kiện công ty đại chúng",
+  "value": "tạm rút tờ trình chào bán tăng vốn (không tăng vốn năm nay); UBCKNN gia hạn thêm 1 năm",
+  "url": "https://nhadautu.vn/chu-tich-savico-co-dong-lon-chua-co-ke-hoach-thoai-von-d105473.html",
+  "opened_at": "2026-10-11",
+  "quote": "do các cổ đông lớn không có kế hoạch thoái vốn, công ty đã thống nhất tạm rút kế hoạch này và đang tìm kiếm giải pháp khác. Phía UBCKNN cũng đã chấp thuận gia hạn thêm 1 năm",
+  "status": "match",
+  "note": "SVC. nhadautu.vn, bài 05/06/2026 · chép từ data/retail/evidence.json (bl-60) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "Thị trường ô tô 6T/2026 (VAMA + VinFast + HTC)",
+  "value": "328.818 xe (+29,3%): VAMA & nhập khẩu 187.833, VinFast 115.916, Hyundai Thành Công 25.069",
+  "url": "https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html",
+  "opened_at": "2026-10-11",
+  "quote": "Trong đó, doanh số của các thành viên VAMA và các hãng xe nhập khẩu đạt 187.833 xe, VinFast bàn giao 115.916 xe, còn Hyundai Thành Công bán 25.069 xe.",
+  "status": "match",
+  "note": "SVC. nhadautu.vn, bài 10/08/2026 · chép từ data/retail/evidence.json (bl-60) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "Thị trường ô tô (VAMA) tháng 8/2026 - tháng Ngâu",
+  "value": "25.395 xe (-25% MoM, -2% YoY); 8T toàn thị trường +12%; thành viên VAMA 8T 193.898 xe (+8%)",
+  "url": "https://tapchikinhtetaichinh.vn/doanh-so-o-to-thang-8-giam-25-so-voi-thang-truoc-166849.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo báo cáo của Hiệp hội Các nhà sản xuất ô tô Việt Nam (VAMA), trong tháng 8/2026, doanh số bán hàng toàn thị trường đạt 25.395 xe, giảm 25% so với tháng 7 và giảm 2% so với cùng kỳ năm 2025.",
+  "status": "match",
+  "note": "SVC. tapchikinhtetaichinh.vn, bài 09/2026 · chép từ data/retail/evidence.json (bl-60) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-60",
+  "claim": "Chính sách hỗ trợ xe điện (ảnh hưởng cơ cấu thị trường đại lý)",
+  "value": "lệ phí trước bạ 0% xe điện đến hết 2030 (NĐ 202/2026); TTĐB xe điện 1-3% → 4-11% từ 3/2027; dự báo VIRAC thị trường 2026 +10-15%",
+  "url": "https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo Luật Thuế tiêu thụ đặc biệt có hiệu lực từ đầu năm 2026, xe điện chạy pin dưới 24 chỗ hiện chịu thuế suất từ 1-3% tùy loại. Theo lộ trình hiện hành, mức thuế này sẽ tăng lên 4-11% từ tháng 3/2027.",
+  "status": "match",
+  "note": "SVC. nhadautu.vn, bài 10/08/2026 · chép từ data/retail/evidence.json (bl-60) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "oto-11",
+  "claim": "VinFast 9T/2026 và tháng 9",
+  "value": "177.697; 23.624",
+  "url": "https://vov.vn/o-to-xe-may/doanh-so-vinfast-thang-92026-tang-truong-an-tuong-voi-hon-23000-xe-ban-giao-post1340347.vov",
+  "opened_at": "2026-10-28",
+  "quote": "Lũy kế 9 tháng đầu năm, VinFast đã bán ra thị trường tổng cộng 177.697 xe",
+  "status": "match",
+  "note": "VOV, bài 11/10/2026; tháng 9: 'VinFast công bố đã bàn giao 23.624 ô tô điện các loại tại thị trường Việt Nam trong tháng 9/2026' · chép từ data/retail/evidence.json (bl-21) khi tách ngành 26/11/2026"
+ }
+]

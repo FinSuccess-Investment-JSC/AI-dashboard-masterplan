@@ -1,0 +1,112 @@
+[
+ {
+  "block": "bia-60",
+  "claim": "Thuế TTĐB bia theo Luật Thuế TTĐB 2025",
+  "value": "Bia 65% năm 2026, tăng 5%/năm từ 2027 lên 90% năm 2031",
+  "url": "https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm",
+  "opened_at": "2026-10-11",
+  "quote": "Bia áp dụng mức 65% vào năm 2026 và tăng lên 90% vào năm 2031.",
+  "status": "match",
+  "note": "R4. VnEconomy, 11/07/2025 (công bố lệnh Chủ tịch nước); Luật Thuế TTĐB thông qua 14/6/2025, hiệu lực 01/01/2026 theo tapchitoaan.vn (đã mở) · chép từ data/retail/evidence.json (bl-50) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "bia-60",
+  "claim": "Thuế TTĐB rượu theo Luật Thuế TTĐB 2025",
+  "value": "Rượu ≥20 độ 65%→90% (2026→2031); rượu <20 độ 35%→60%",
+  "url": "https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm",
+  "opened_at": "2026-10-11",
+  "quote": "Liên quan đến bia, rượu và nước ngọt: tăng từ mức 65% hiện hành vào năm 2026 lên 90% vào năm 2031 đối với rượu từ 20 độ trở lên và tăng từ mức 35% lên 60% đối với rượu dưới 20 độ.",
+  "status": "match",
+  "note": "R4. VnEconomy, 11/07/2025 · chép từ data/retail/evidence.json (bl-50) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "bia-60",
+  "claim": "Thuế TTĐB nước giải khát có đường",
+  "value": "Đường >5g/100ml: 8% từ 2027, 10% từ 2028",
+  "url": "https://vneconomy.vn/thue-tieu-thu-dac-biet-ruou-va-bia-tang-den-90-vao-nam-2031.htm",
+  "opened_at": "2026-10-11",
+  "quote": "Nước giải khát có hàm lượng đường trên 5g/100ml sẽ áp dụng mức thuế suất 8% (từ năm 2027) và 10% (từ năm 2028).",
+  "status": "match",
+  "note": "R4. VnEconomy, 11/07/2025 · chép từ data/retail/evidence.json (bl-50) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "bia-60",
+  "claim": "KQ Q2/2026: doanh thu thuần / LNST",
+  "value": "6.888 tỷ (+1,2%) / 1.243 tỷ đồng (-0,6%); lợi nhuận ròng 1.167 tỷ (-3%)",
+  "url": "https://mekongasean.vn/bien-loi-nhuan-gop-cua-sabeco-cai-thien-manh-57663.html",
+  "opened_at": "2026-10-11",
+  "quote": "Kết quả, lợi nhuận sau thuế của Sabeco đạt 1.243 tỷ đồng, giảm 0,6% YoY.",
+  "status": "match",
+  "note": "SAB. mekongasean.vn, bài 24/07/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "bia-60",
+  "claim": "Biên lợi nhuận gộp Q2/2026 (malt, gạo thuận lợi)",
+  "value": "38,66% (Q2/2025: 35,98%, +2,68 điểm %); lợi nhuận gộp 2.663 tỷ (+8,8%)",
+  "url": "https://mekongasean.vn/bien-loi-nhuan-gop-cua-sabeco-cai-thien-manh-57663.html",
+  "opened_at": "2026-10-11",
+  "quote": "Giá vốn hàng bán tăng chậm hơn doanh thu giúp lợi nhuận gộp đạt 2.663 tỷ đồng, tăng 8,8%. Nhờ đó, biên lợi nhuận gộp của doanh nghiệp tăng từ 35,98% trong quý 2/2025 lên 38,66% trong quý 2 năm nay, cải thiện 2,68 điểm phần trăm.",
+  "status": "match",
+  "note": "SAB. mekongasean.vn, bài 24/07/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "bia-60",
+  "claim": "KQ 6T/2026: doanh thu thuần / LNST / biên gộp",
+  "value": "13.345 tỷ (+5,8%) / 2.489 tỷ đồng (+21,4%); biên gộp 37,98% (cùng kỳ 34,24%)",
+  "url": "https://mekongasean.vn/bien-loi-nhuan-gop-cua-sabeco-cai-thien-manh-57663.html",
+  "opened_at": "2026-10-11",
+  "quote": "Lũy kế 6 tháng đầu năm 2026, công ty đạt doanh thu thuần 13.345 tỷ đồng, tăng 5,8% YoY; lợi nhuận sau thuế đạt 2.489 tỷ đồng, tăng 21,4% YoY. Lợi nhuận tăng trưởng hai con số chủ yếu do cải thiện biên lợi nhuận gộp, từ mức 34,24% của cùng kỳ năm trước lên 37,98%.",
+  "status": "match",
+  "note": "SAB. mekongasean.vn, bài 24/07/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "bia-60",
+  "claim": "Tiền mặt và nợ vay 30/6/2026",
+  "value": "tiền + tiền gửi 20.743 tỷ đồng (~65% tài sản); nợ vay 367 tỷ (-31%)",
+  "url": "https://doanhnhan.baophapluat.vn/sabeco-sab-thu-hon-2-480-ty-dong-lai-sau-thue-nua-dau-nam-2026-hoan-thanh-50-ke-hoach.html",
+  "opened_at": "2026-10-11",
+  "quote": "Cơ cấu tài sản cho thấy mức độ an toàn thanh khoản cao khi khoản mục tiền và tiền gửi ngân hàng ghi nhận 20.743 tỷ đồng.",
+  "status": "match",
+  "note": "SAB. doanhnhan.baophapluat.vn, bài cuối 07/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "bia-60",
+  "claim": "Cổ tức tiền mặt 2025 và 2026",
+  "value": "2025: 5.000 đ/cp (đợt còn lại 3.000 đ, ~3.848 tỷ, trả 28/8/2026); 2026: duy trì 5.000 đ/cp (50%)",
+  "url": "https://mekongasean.vn/bien-loi-nhuan-gop-cua-sabeco-cai-thien-manh-57663.html",
+  "opened_at": "2026-10-11",
+  "quote": "Sabeco sẽ chốt danh sách cổ đông để thực hiện chi trả phần cổ tức còn lại của năm 2025 với tỷ lệ 30%, tương ứng mỗi cổ phiếu nhận 3.000 đồng. Với hơn 1,28 tỷ cổ phiếu đang lưu hành, Sabeco dự kiến sẽ chi khoảng 3.848 tỷ đồng cho đợt thanh toán này",
+  "status": "match",
+  "note": "SAB. mekongasean.vn, bài 24/07/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "bia-60",
+  "claim": "Rủi ro: lộ trình thuế tiêu thụ đặc biệt bia",
+  "value": "65% → 70% năm 2027, +5%/năm, 90% năm 2031",
+  "url": "https://doanhnhan.baophapluat.vn/sabeco-sab-chot-muc-tieu-lai-4-800-ty-dong-len-ke-hoach-tra-co-tuc-tien-mat-ty-le-50.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo quy định mới, thuế tiêu thụ đặc biệt áp dụng cho mặt hàng bia sẽ tăng từ mức 65% hiện hành lên 70% vào năm 2027, sau đó tiếp tục tăng thêm 5% mỗi năm để chạm ngưỡng 90% vào năm 2031.",
+  "status": "match",
+  "note": "SAB. doanhnhan.baophapluat.vn, bài tài liệu ĐHĐCĐ 04/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "bia-60",
+  "claim": "Nguyên liệu đầu vào ngành bia 2025 (malt, gạo, nhôm hạ nhiệt)",
+  "value": "biên gộp trung bình ngành bia gần 29% (2024: 24,6%)",
+  "url": "https://doanhnhan.baophapluat.vn/sabeco-sab-chot-muc-tieu-lai-4-800-ty-dong-len-ke-hoach-tra-co-tuc-tien-mat-ty-le-50.html",
+  "opened_at": "2026-10-11",
+  "quote": "Tuy nhiên, lợi nhuận ròng của các doanh nghiệp vẫn tăng vọt nhờ giá các loại nguyên liệu đầu vào như malt, gạo và nhôm hạ nhiệt. Yếu tố này giúp biên lợi nhuận gộp trung bình của toàn ngành bia được cải thiện lên mức gần 29%, cao hơn đáng kể so với con số 24,6% của năm 2024.",
+  "status": "match",
+  "note": "SAB. doanhnhan.baophapluat.vn, bài tài liệu ĐHĐCĐ 04/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ },
+ {
+  "block": "bia-60",
+  "claim": "Dự báo thị trường bia (Euromonitor) và dự báo NHSV cho SAB 2026",
+  "value": "thị trường +~5%/năm 2025-2030, ~10 tỷ USD, 4-4,5 tỷ lít/năm; NHSV: LNST 2026 4.900 tỷ (+11%), giá mục tiêu 55.555 đ",
+  "url": "https://doanhnhan.baophapluat.vn/bien-loi-nhuan-len-cao-nhat-nhieu-nam-sabeco-sab-duoc-nhsv-du-bao-lai-4-900-ty-dong.html",
+  "opened_at": "2026-10-11",
+  "quote": "Theo số liệu Euromonitor, thị trường bia Việt Nam được dự báo tăng trưởng bình quân khoảng 5% mỗi năm trong giai đoạn 2025 - 2030, hướng tới quy mô khoảng 10 tỷ USD. Sản lượng tiêu thụ bình quân dự kiến duy trì quanh 4 - 4,5 tỷ lít/năm.",
+  "status": "match",
+  "note": "SAB. doanhnhan.baophapluat.vn, bài 28/09/2026 · chép từ data/retail/evidence.json (bl-61) khi tách ngành 26/11/2026"
+ }
+]
