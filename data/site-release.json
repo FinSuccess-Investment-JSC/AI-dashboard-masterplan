@@ -135,7 +135,7 @@
     "Bao-hiem/app/table-fold.js": "ef1324e22786a5d679e72bbc209d41a682e01c79b846d66ea6c2f78d385e5dfb",
     "Bao-hiem/app/value-chain.js": "a597c7c73610a3a0d67511b376cbc0eed0f3005cc275d5946644d497d75b2cc3",
     "Bao-hiem/cu.html": "35625eb8d30f39a529b0edb0833575d8e3739aef80d1e32c75dd93a774bc6c01",
-    "Bao-hiem/index.html": "37c7a0282ee9837890871761d38595f71b3eaf3909c7fde8c4de995c11a80ed9",
+    "Bao-hiem/index.html": "b7a00aad190e0841521d8e7f9e221b93e001b92df85449a88f9afdf5d24b1a17",
     "Bat-dong-san-KCN/app/brand.css": "048c9b94157315faa97cd3ab405039d5842bf8e5b84c707acfe50f4583dad07f",
     "Bat-dong-san-KCN/app/chart-arrange.js": "3ca9033119b7769cfeb5d0f3a36fcdce8077b93e4378f5d803b8059f2c30bf0c",
     "Bat-dong-san-KCN/app/chart-cards.js": "eab76b0711ea21b3b9544b1f7669a184e21b8cd1a4ee5dcbb0a44fe59cf92d99",
@@ -259,7 +259,7 @@
     "Cang-bien/app/table-fold.js": "ef1324e22786a5d679e72bbc209d41a682e01c79b846d66ea6c2f78d385e5dfb",
     "Cang-bien/app/value-chain.js": "a597c7c73610a3a0d67511b376cbc0eed0f3005cc275d5946644d497d75b2cc3",
     "Cang-bien/index.html": "7b8c1907c089d497f2166ecdd9f3df3c61b30beb34ca6fb09580b3b2f9060096",
-    "Chung-khoan/index.html": "e8b0f64a929d32f2c8f5428f516f99abb7e412c1a58cec219971c4c6fb859297",
+    "Chung-khoan/index.html": "e3149399c3c3fb7f26f3b8a38d24fb840910f891aa0fe886976b9ee3eb645ddb",
     "Dau-khi/app/brand.css": "048c9b94157315faa97cd3ab405039d5842bf8e5b84c707acfe50f4583dad07f",
     "Dau-khi/app/catalyst-board.css": "3cbacede9079bd60b33660af153da702d34967d0475081f25b85412d7b802529",
     "Dau-khi/app/chart-arrange.js": "3ca9033119b7769cfeb5d0f3a36fcdce8077b93e4378f5d803b8059f2c30bf0c",
@@ -695,7 +695,7 @@
     "assets/fin-success-theme.css": "0761641d486e4c0999202d14e803d407d9573e9a1ab361e3c3e20aaae3cabf22",
     "assets/research-layout.css": "8cfc041b90be343b8def6d7f2509edfc09dbfe0a8359f74948abea79a797b810",
     "assets/site-navigation.css": "0aa68a6982f7e12946fa0ce852a91090ae90fef6d4df3ffeff72dc2e1e749fe9",
-    "assets/site-navigation.js": "245c23c0c3af2b6e0abc72ef4954b1b619fbdad4a0611033dda4ad1b366c1fb6",
+    "assets/site-navigation.js": "b54ef8e815de497aed3517ac66b6b0b51f9568cb2dde40b10a49031082c1b44b",
     "assets/source-gap.js": "02afdd3cfa3d69b77d8b64a54966383f294ef3e1a38892c25c0136a5fdf0d853",
     "data/agri-public-data.js": "a97028654e3c50cf37faf9e58e928324cf60849d3d09db2e62b3a578ef7b9fe9",
     "data/bank-public-data.js": "e04c83f98169d8eac0c63df647f2da4a0f71647345ab8d06fe61207df2e22573",
@@ -733,8 +733,8 @@
     "data/telecom-industry.js": "f89791b4f08d7febf16b457ebad7966299fa001babc1cb7ba77fe81aeb2d2798",
     "data/telecom-news.js": "263564ec08bf3f0eefe8cafedfd37306b106cc3de1d897e217f2d24ad5a2883c",
     "data/textile-public-data.js": "d2b843a96947a00e165601757c97eedcfcc321b74a1595b93698d5710a9bf3e2",
-    "duong/index.html": "bfb063deb55eeb32f3d0376b0a5bcb69d946f5e8e401da1a8f916ed3b9f70153",
-    "index.html": "686f40e453365fef913bb7b408ea6b681c9c07464e43771c4c3a8703db1bcfdc"
+    "duong/index.html": "3ca35fcebf2d84818f9f80eed58a8e54f473064be7d0435cfba29194eecd48d9",
+    "index.html": "29f7cebabf6adf0a4ffd4967d956f31fe2d72ae457dbfef2b12a72740455b75f"
   },
   "note": "Release identifies site files; observation dates remain in each data source."
 }
