@@ -2158,7 +2158,7 @@
     "url": "https://moc.gov.vn/"
    },
    "where": {
-    "page": "Bat-dong-san/index.html · Bat-dong-san-KCN/index.html (bds-26, bds-43)",
+    "page": "Bat-dong-san/index.html (bds-26, bds-43); Bat-dong-san-KCN dùng luồng tin data/kcn/news.json (scripts/update_kcn_news.py)",
     "blocks": [
      "bds-22",
      "bds-23",

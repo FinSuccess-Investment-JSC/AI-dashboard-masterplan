@@ -58,3 +58,79 @@
 @media (max-width:760px){.pp-tcard table,.pp-expo table{min-width:720px}.pp-twocol{grid-template-columns:1fr}.pp-deep dl{grid-template-columns:1fr}.pp-m{min-width:46%}}
 :root[data-theme=dark] .pp-take{background:color-mix(in srgb,var(--card,#141a33) 90%,#6171C5 10%)}
 :root[data-theme=dark] .pp-st-Verified{background:#173d27;color:#bfe8cc}:root[data-theme=dark] .pp-st-Estimated{background:#4a3b12;color:#ffe3a6}:root[data-theme=dark] .pp-st-Scenario{background:#33245c;color:#ddd0ff}:root[data-theme=dark] .pp-st-Insufficient{background:#262c3d;color:#b4bbdd;border-color:#3a4260}:root[data-theme=dark] .pp-st-Stale{background:#4a1f1b;color:#ffc9c2}
+
+/* ===== 26/11/2026: cấu trúc theo trang Điện ===== */
+/* Bản tin: phạm vi ngay trên thẻ */
+#pane-mt1 .kpi-note{margin:0 0 8px;font-size:12px;color:#5a6682}
+#pane-mt1 .kpi .kpi-scope{margin-top:4px;font-size:11.5px;line-height:1.4;color:#5a6682;border-top:1px dashed #D9DEF4;padding-top:4px}
+/* Sơ đồ các bên, ba lớp bật/tắt */
+.kf-wrap{position:relative}
+.kf-ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:4px 0 8px}
+.kf-ctl button{display:inline-flex;align-items:center;gap:6px;border:1px solid #D9DEF4;background:#fff;border-radius:999px;padding:4px 11px;font-size:12.5px;cursor:pointer;color:#1D2678}
+.kf-ctl button i{width:16px;height:3px;border-radius:2px;display:inline-block}
+.kf-ctl button[aria-pressed="false"]{opacity:.45;text-decoration:line-through}
+.kf-hint{font-size:11.5px;color:#5a6682;margin-left:auto}
+.kf-svg{width:100%;min-width:900px;height:auto;display:block}
+.kf-n rect{fill:#fff;stroke:#C9D3EE;stroke-width:1.2}
+.kf-n.kf-key rect{stroke:#1D2678;stroke-width:2}
+.kf-n{cursor:pointer}
+.kf-n .kf-t{font:600 13.5px system-ui,sans-serif;fill:#1D2678}
+.kf-n .kf-s{font:12px system-ui,sans-serif;fill:#475069}
+.kf-n .kf-c{font:600 10.5px system-ui,sans-serif;fill:#2a9fa3}
+.kf-n.picked rect{fill:#eef3fb;stroke:#2938A8;stroke-width:2.2}
+.kf-n:focus{outline:none}.kf-n:focus rect{stroke:#c98a00;stroke-width:2.4}
+.kf-e .kf-line{fill:none;stroke-width:1.8;opacity:.85}
+.kf-e.kf-legal .kf-line{stroke-dasharray:6 4}
+.kf-e .kf-hit{fill:none;stroke:transparent;stroke-width:12}
+.kf-e.kf-off{display:none}
+.kf-svg.kf-focus .kf-e .kf-line{opacity:.12}.kf-svg.kf-focus .kf-n rect{opacity:.45}
+.kf-svg.kf-focus .kf-e.on .kf-line{opacity:1;stroke-width:2.8}.kf-svg.kf-focus .kf-n.on rect{opacity:1}
+.kf-tip{position:absolute;z-index:5;max-width:320px;background:#1D2678;color:#fff;font-size:12px;line-height:1.45;padding:6px 9px;border-radius:8px;pointer-events:none}
+.kf-detail:empty{display:none}
+.kf-detail{margin-top:10px;border:1px solid #D9DEF4;border-radius:12px;padding:10px 12px;background:#fafbfe}
+.kf-d-h{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}.kf-d-h b{color:#1D2678;font-size:14px}.kf-d-h span{font-size:12px;color:#5a6682}
+.kf-x{margin-left:auto;border:0;background:none;cursor:pointer;font-size:14px;color:#5a6682}
+.kf-d-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:6px}
+.kf-d-g h4{margin:4px 0;font-size:12.5px;color:#2938A8}.kf-d-g p,.kf-d-g li{font-size:12.5px;line-height:1.5;margin:0}
+.kf-d-g ul{margin:0;padding-left:16px}.kf-legal{margin-top:6px!important;color:#7a5a12}
+.kf-d-codes{margin-top:8px;font-size:12.5px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+@media (max-width:760px){.kf-d-g{grid-template-columns:1fr}.kf-hint{margin-left:0}}
+/* Mô hình kinh doanh cùng một khung */
+.ov-mt th:first-child{width:150px;text-align:left;color:#1D2678}
+.ov-mt td{font-size:12.5px;line-height:1.5;vertical-align:top}
+.ov-mh{margin:12px 0 6px;font-size:13px}.ov-mh small{color:#5a6682;font-weight:400}
+/* Toàn thị trường */
+.kc-mk-ctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:4px 0 10px}
+.kc-mk-ctl [role=group]{display:flex;gap:4px}
+.kc-mk-ctl button{border:1px solid #D9DEF4;background:#fff;border-radius:8px;padding:5px 12px;cursor:pointer;color:#1D2678;font-size:13px}
+.kc-mk-ctl button[aria-pressed="true"]{background:#1D2678;color:#fff;border-color:#1D2678}
+.kc-mk3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+@media (max-width:980px){.kc-mk3{grid-template-columns:1fr!important}}
+.kc-mk-num{display:flex;flex-direction:column;gap:2px;margin:4px 0}
+.kc-mk-num b{font-size:20px;color:#1D2678}.kc-mk-num span{font-size:12.5px;color:#343b52}.kc-mk-alt b{font-size:15px}
+.kc-mk-verdict{margin:10px 0;padding:10px 12px;border-left:4px solid #2938A8;background:#f4f6fc;border-radius:8px;font-size:13.5px;line-height:1.6}
+.kc-mk-verdict .kc-na{display:block;margin-top:4px}
+.kc-mk-go{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0 4px;font-size:12.5px;color:#5a6682}
+.kc-mk-go .kc-link{display:flex;flex-direction:column;align-items:flex-start;border:1px solid #D9DEF4;border-radius:10px;padding:6px 10px;background:#fff;cursor:pointer;text-align:left}
+.kc-mk-go .kc-link small{color:#5a6682;font-size:11.5px}
+/* Bậc diện tích, nhóm trạng thái dự án */
+.kc-ladder{display:flex;flex-direction:column;gap:8px}
+.kc-lad-r{display:grid;grid-template-columns:200px 1fr 170px;gap:4px 10px;align-items:center}
+.kc-lad-l{font-size:13px;color:#1D2678;font-weight:600}.kc-lad-t{height:14px;background:#EEF0F6;border-radius:7px;overflow:hidden}
+.kc-lad-t i{display:block;height:100%;background:#2938A8;border-radius:7px}.kc-lad-v{font-size:13px}.kc-lad-v small,.kc-lad-d{font-size:11.5px;color:#5a6682}
+.kc-lad-d{grid-column:1/-1}
+@media (max-width:700px){.kc-lad-r{grid-template-columns:1fr}}
+.kc-stgs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:10px}
+@media (max-width:760px){.kc-stgs{grid-template-columns:1fr}}
+.kc-stg{border:1px solid #D9DEF4;border-left-width:4px;border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;gap:2px;font-size:12.5px}
+.kc-stg b{color:#1D2678}.kc-stg small{color:#5a6682}
+.kc-st-decision{border-left-color:#9AA3BD}.kc-st-infra{border-left-color:#c98a00}.kc-st-launch{border-left-color:#2a9fa3}
+.kc-chip.kc-st-decision{background:#EEF0F6;color:#3d4653}.kc-chip.kc-st-infra{background:#fbf2dc;color:#7a5a12}.kc-chip.kc-st-launch{background:#e3f5f5;color:#1d6e70}
+/* Doanh nghiệp niêm yết: so sánh nhanh */
+.kc-qv{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.kc-qv-t{border:1px solid #D9DEF4;border-radius:10px;padding:8px;display:flex;flex-direction:column;gap:2px;font-size:12.5px}
+.kc-qv-t b{font-size:16px;color:#1D2678}.kc-qv-t small{color:#5a6682;font-size:11px}
+/* Tài chính ngành: phạm vi mẫu */
+.pf-scope{margin:8px 0 4px;font-size:12.5px;line-height:1.55;background:#f4f6fc;border-radius:8px;padding:7px 10px}
+#dataBrief .db-scope{margin-top:4px;font-size:11px;line-height:1.4;color:#5a6682;border-top:1px dashed #D9DEF4;padding-top:4px}
+#dataBrief .db-note{font-size:12px;color:#5a6682}

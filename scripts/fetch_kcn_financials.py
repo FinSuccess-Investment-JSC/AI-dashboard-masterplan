@@ -11,8 +11,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from kcn_fin_items import TICKERS  # noqa: E402
-from fetch_power_financials import API, fetch  # noqa: E402  (cùng ITEMS nên dùng lại hàm tải)
+from kcn_fin_items import TICKERS, ITEMS  # noqa: E402
+import fetch_power_financials as fpf  # noqa: E402  (dùng lại hàm tải, với danh mục khoản mục của KCN)
+fpf.ITEMS = ITEMS
+API, fetch = fpf.API, fpf.fetch
 
 OUT = ROOT / 'data/raw/public/fs_kcn_full_vndirect.json'
 
