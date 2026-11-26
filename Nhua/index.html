@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ngành Nhựa · FinSuccess Research</title>
+<link rel="stylesheet" href="app/dashboard-ui.css?v=8b5f71b2e791">
+<script src="app/sector-boot.js?v=555dd1c98235"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="app/chart-types.js?v=de84f54bfcae"></script>
+<script src="../data/daily-data.js?v=293eac683185" defer></script>
+<script src="app/value-chain.js?v=a597c7c73610" defer></script>
+<script src="app/data-math.js?v=ed6356aac3af" defer></script>
+<script src="app/sector-runtime.js?v=6eb19cde98b2" defer></script>
+<script src="app/sector-content.js?v=649051e35a0c" defer></script>
+<script src="app/sector-layout.js?v=851d26cc3f7c" defer></script>
+<script src="../data/retail-public-data.js?v=eb33f0f10c68" defer></script>
+<script src="../data/plastic-prices.js?v=3c4943765baf" defer></script>
+<script src="app/sector-visuals.js?v=03ffbb5e1454" defer></script>
+<script src="../data/company-quarterly.js?v=ceed44a09f4e" defer></script>
+<script src="app/plastic-config.js?v=6cccb9354ec0" defer></script>
+<script src="app/pkg-dashboard.js?v=ff2681cd4b72" defer></script>
+<script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
+<script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
+<script src="app/chart-arrange.js?v=bb5b95d73397" defer></script>
+<script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
+<script src="app/sector-smart.js?v=b3c41b61cc4a" defer></script>
+<script src="../data/company-valuation.js?v=fa31970141b7" defer></script>
+<script src="../data/company-comparison.js?v=bd32935723d6" defer></script>
+<script src="app/pkg-shim.js?v=d953110f5aa0" defer></script>
+<script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
+<script src="app/financial-comparison.js?v=db7f3db7126d" defer></script>
+<script src="app/research-layout.js?v=1fc6a24f5b9e" defer></script>
+<script src="app/research-sources.js?v=2e0a8424c403" defer></script>
+<script src="app/research-editorial.js?v=53be49980eb9" defer></script>
+<script src="app/pane-subtabs.js?v=5986c555cbee" defer></script>
+<script src="app/table-fold.js?v=ef1324e22786" defer></script>
+<script src="app/motion.js?v=fdb0c76dabb8" defer></script>
+<script src="app/stock-dom.js?v=54e77361968d" defer></script>
+<script src="app/layout-balance.js?v=1266e321a8da" defer></script>
+<link rel="stylesheet" href="app/site-navigation.css?v=0aa68a6982f7">
+<link rel="stylesheet" href="app/site-sidebar.css?v=4efb49eaf265">
+<link rel="stylesheet" href="app/site-tidy.css?v=876dba0fb886">
+<script src="app/source-gap.js?v=f5423408804a" defer></script>
+<script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
+<script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
+<script src="app/chart-source.js?v=20de8094fc85" defer></script>
+<script src="app/pkg-frame.js?v=9f3ff233c4ce" defer></script>
+<link rel="stylesheet" href="app/pkg-frame.css?v=38b89b59c752">
+<script src="app/site-navigation.js?v=376fac62f1d4" data-release="20261126-nganh-nhua-2"></script>
+<script src="../data/site-nav.js?v=d3a32f5ad60c"></script>
+<script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
+<link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
+<link rel="stylesheet" href="app/research-layout.css?v=a27a8ee6bc32">
+<link rel="stylesheet" href="app/sector-base.css?v=ba33835e530c">
+<link rel="stylesheet" href="app/fin-success-theme.css?v=d2a28183412c">
+<link rel="stylesheet" href="app/brand.css?v=4fab96877d3a">
+<link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
+</head>
+<body data-sector="retail" data-pkg="plastic">
+<nav data-site-navigation="plastic" aria-label="Điều hướng dashboard ngành"></nav>
+<div class="fiscbar"><span>Dashboard ngành · Nhựa · nhóm Xây dựng - Đầu tư công</span></div>
+
+<nav class="majortabs">
+  <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">Tổng quan ngành</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt2',this)">Bức tranh ngành</button>
+  <button class="majortabbtn" onclick="showMajorTab('mt7',this)">Chủ đề nóng</button>
+</nav>
+
+<div class="container">
+  <section class="hero">
+    <h1>Bức tranh ngành <em>nhựa</em></h1>
+    <p>Giá hạt nhựa theo dầu, khí quyết định biên; xây dựng, tiêu dùng và xuất khẩu quyết định sản lượng.</p>
+  </section>
+  <div class="majorpane active" data-tab="mt1" id="pane-mt1">
+    <div class="sectionhead"><div><h2>Tổng quan ngành nhựa</h2></div></div>
+  </div>
+  <div class="majorpane" data-tab="mt2" id="pane-mt2">
+  <section class="section">
+    <div class="sectionhead"><div><h2>Bức tranh ngành</h2><p></p></div></div>
+    <section class="grid kpis">
+      <div class="kpi"><div class="label">Giá hạt nhựa (PPI Mỹ)</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-resin"></div></div>
+      <div class="kpi"><div class="label">Dầu Brent</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-brent"></div></div>
+      <div class="kpi"><div class="label">Xuất khẩu sản phẩm nhựa</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-ex"></div></div>
+      <div class="kpi"><div class="label">Nhập khẩu hạt nhựa</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-im"></div></div>
+    </section>
+    <!-- research-layout.js dựng lưới giá vào #supply-world / #supply-vietnam (khung chung của gói); để rỗng -->
+    <div class="supply-pane" id="supply-world"></div><div class="supply-pane" id="supply-vietnam"></div>
+      <div class="card" data-block-id="nh-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Chuỗi giá trị ngành nhựa</div>
+        <div class="chart-sub">đầu vào → sản xuất → đầu ra</div>
+        <div id="chNhChain"></div>
+      </div>
+      <div class="card" data-block-id="nh-02" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu chi phí sản xuất kinh doanh ngành nhựa Việt Nam</div>
+        <div class="chart-sub">% · 2024</div>
+        <div id="chNhCostVN"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-cost"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-03" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu sản lượng ngành nhựa Việt Nam</div>
+        <div class="chart-sub">% · 2024</div>
+        <div id="chNhMixVN"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-mixvn"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-05" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Mô hình kinh doanh của doanh nghiệp nhựa niêm yết</div>
+        <div id="chNhModels"></div>
+      </div>
+      <div class="card" data-block-id="nh-20" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Giá hạt nhựa, dầu Brent và khí thiên nhiên</div>
+        <div class="chart-sub">% thay đổi so với T1/2007 · theo tháng</div>
+        <div id="chNhPrice"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-price"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-21" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Dự báo giá hạt nhựa HDPE, PP, PVC</div>
+        <div class="chart-sub">USD/tấn · bình quân năm</div>
+        <div id="chNhFcst"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-fcst"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-22" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu sản lượng hạt nhựa nguyên sinh thế giới theo chủng loại</div>
+        <div class="chart-sub">% · 2024</div>
+        <div id="chNhResinType"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-resintype"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-23" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Tiêu thụ nhựa bình quân đầu người</div>
+        <div class="chart-sub">kg/người/năm · 2023</div>
+        <div id="chNhPerCap"></div>
+      </div>
+      <div class="card" data-block-id="nh-24" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Dự báo tăng trưởng tiêu thụ hạt nhựa theo khu vực</div>
+        <div class="chart-sub">%/năm · 2022 – 2030F</div>
+        <div id="chNhCagr"></div>
+      </div>
+      <div class="card" data-block-id="nh-25" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu sản lượng sản phẩm nhựa thế giới theo mảng</div>
+        <div class="chart-sub">% · 2023</div>
+        <div id="chNhUseWorld"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-useworld"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-26" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Doanh thu nhựa bao bì thế giới theo khu vực</div>
+        <div class="chart-sub">% · 2024</div>
+        <div id="chNhPackRegion"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-packreg"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-27" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Nhựa bao bì thế giới theo ứng dụng</div>
+        <div class="chart-sub">%</div>
+        <div id="chNhPackUse"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-packuse"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-28" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Tăng trưởng tiêu thụ, nhựa tái chế và nhựa sinh học</div>
+        <div id="chNhRecycle"></div>
+      </div>
+      <div class="card" data-block-id="nh-29" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Dự báo tăng trưởng ngành xây dựng theo khu vực</div>
+        <div class="chart-sub">%/năm · 2024 – 2029F</div>
+        <div id="chNhBuildCagr"></div>
+      </div>
+      <div class="card" data-block-id="nh-30" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu tiêu thụ hạt nhựa Việt Nam</div>
+        <div class="chart-sub">% · 2024</div>
+        <div id="chNhResinVN"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-resinvn"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-31" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Chất dẻo nguyên liệu (hạt nhựa) xuất, nhập khẩu</div>
+        <div class="chart-sub">nghìn tấn · 2022 – 10T/2026</div>
+        <div id="chNhImport"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-import"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-32" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Nguồn cung hạt nhựa trong nước</div>
+        <div id="chNhSupplyCap"></div>
+      </div>
+      <div class="card" data-block-id="nh-33" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Máy móc ngành nhựa nhập khẩu theo nước</div>
+        <div class="chart-sub">% giá trị · 2024</div>
+        <div id="chNhMachine"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-machine"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-34" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
+        <div class="chart-title">Xuất, nhập khẩu sản phẩm nhựa</div>
+        <div class="chart-sub">triệu USD · 2022 – 10T/2026</div>
+        <div id="chNhExport"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-export"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-35" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu xuất khẩu sản phẩm nhựa theo mặt hàng</div>
+        <div class="chart-sub">% giá trị · 2024</div>
+        <div id="chNhExportMix"></div>
+      </div>
+      <div class="card" data-block-id="nh-36" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Thị phần ống nhựa Việt Nam</div>
+        <div class="chart-sub">% · 2024</div>
+        <div id="chNhPipeShare"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-pipe"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-38" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu giá trị bao bì nhựa Việt Nam</div>
+        <div class="chart-sub">% · 2023</div>
+        <div id="chNhPackVN"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-packvn"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-37" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Xuất khẩu túi nhựa</div>
+        <div class="chart-sub">triệu USD</div>
+        <div id="chNhBag"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-bag"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-39" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
+        <div class="chart-title">Thị phần sàn SPC nhập khẩu vào Mỹ</div>
+        <div class="chart-sub">% sản lượng · 2024</div>
+        <div id="chNhSPC"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-spc"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-52" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
+        <div class="chart-title">Mốc hiệu lực: văn bản đổi chi phí hoặc sản lượng</div>
+        <div class="chart-sub">● đã ban hành · ○ dự thảo</div>
+        <div id="nhTimeline"></div>
+      </div>
+      <div class="card" data-block-id="nh-40" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Doanh thu và lợi nhuận nhựa xây dựng theo quý</div>
+        <div class="chart-sub">nghìn tỷ đồng · từng mã, không cộng</div>
+        <div id="chNhRevBuild"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-rev-build"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-41" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Doanh thu và lợi nhuận nhựa bao bì, kỹ thuật, gia dụng theo quý</div>
+        <div class="chart-sub">nghìn tỷ đồng · từng mã, không cộng</div>
+        <div id="chNhRevPack"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-rev-pack"></table></div></details>
+      </div>
+      <div class="card" data-block-id="nh-42" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
+        <div class="chart-title">Biên gộp và biên ròng theo quý</div>
+        <div class="chart-sub">% doanh thu thuần · BCTC hợp nhất</div>
+        <div id="chNhGM"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-nh-gm"></table></div></details>
+      </div>
+  </section>
+  </div>
+  <!-- research-layout.js cần các pane mt3, mt4, mt6 (bố cục chung của gói); để rỗng -->
+  <div class="majorpane" data-tab="mt3" id="pane-mt3"></div>
+  <div class="majorpane" data-tab="mt4" id="pane-mt4"><section id="policy" class="section"></section></div>
+  <div class="majorpane" data-tab="mt6" id="pane-mt6"></div>
+  <div class="majorpane" data-tab="mt7" id="pane-mt7">
+    <div class="sectionhead"><div><h2>Chủ đề nóng</h2><p>Câu chuyện đang dẫn dắt ngành.</p></div></div>
+    <div data-topic-key="long-son" data-topic-segment="Nguyên liệu" data-topic-title="Long Sơn vận hành: nguồn PE, PP trong nước">
+      <div class="card" data-block-id="nh-t1" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Tổ hợp hóa dầu Long Sơn (1,4 triệu tấn PE, PP/năm) vận hành thương mại từ T8/2025</li><li>Công suất hạt nhựa trong nước cuối 2024 ~2,7 triệu tấn/năm; mức tự chủ sau Long Sơn ~35%</li><li>Nhập khẩu chất dẻo nguyên liệu 10T/2026: 8,0 triệu tấn, 11,55 tỷ USD; giá nhập bình quân 1.445 USD/tấn (cả năm 2025: 1.298)</li></ul>
+        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã liên quan:</mark> BMP · NTP · AAA · TDP</p>
+        <div class="source-note">Nguồn: Finsuccess tổng hợp · <a href="https://files.customs.gov.vn/CustomsCMS/TONG_CUC/2026/11/5/2026-t10-2n(vn-sb).pdf" target="_blank" rel="noopener">Hải quan Việt Nam</a></div>
+      </div>
+    </div>
+    <div data-topic-key="spc-us" data-topic-segment="Xuất khẩu" data-topic-title="Sàn nhựa sang Mỹ và thuế đối ứng">
+      <div class="card" data-block-id="nh-t2" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Việt Nam chiếm 49,6% sản lượng sàn SPC Mỹ nhập khẩu năm 2024; xuất khẩu sàn nhựa sang Mỹ 1,5 tỷ USD</li><li>Thuế Mỹ với hàng Việt Nam 20%; hàng Trung Quốc tổng 55% từ T8/2025, giảm 10% từ T11/2025</li><li>Xuất khẩu sản phẩm nhựa 10T/2026: 6,94 tỷ USD, +12,7% so cùng kỳ</li></ul>
+        <p style="font-size:12.5px;margin:0"><mark class="key-phrase">Mã liên quan:</mark> AAA · TDP · NHH</p>
+        <div class="source-note">Nguồn: <a href="https://dataweb.usitc.gov/" target="_blank" rel="noopener">U.S. ITC</a> · <a href="https://files.customs.gov.vn/CustomsCMS/TONG_CUC/2026/11/5/2026-t10-2x(vn-sb).pdf" target="_blank" rel="noopener">Hải quan Việt Nam</a> · Finsuccess tổng hợp</div>
+      </div>
+    </div>
+    <div data-topic-key="pet-uk" data-topic-segment="Xuất khẩu" data-topic-title="Anh áp tự vệ tạm thời với nhựa PET">
+      <div class="card" data-block-id="nh-t3" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
+        <ul style="font-size:12.5px;line-height:1.65;margin:0 0 8px;padding-left:18px"><li>Biện pháp tự vệ tạm thời dạng hạn ngạch thuế quan với nhựa PET, dự kiến từ 01/12/2026</li><li>Đề xuất thuế bổ sung 65% với lượng vượt hạn ngạch</li></ul>
+        <div class="source-note">Nguồn: <a href="https://thuehaiquan.tapchikinhtetaichinh.vn/doanh-nghiep-xuat-khau-nhua-can-gui-y-kien-cham-nhat-ngay-22-11-de-dam-bao-quyen-loi-171443.html" target="_blank" rel="noopener">Tạp chí Thuế Hải quan</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">Ngành Nhựa · Finsuccess tổng hợp từ nguồn công khai ghi dưới từng chart · cập nhật 26/11/2026.</div>
+</div>
+<script>
+/* ---------- tiny SVG chart engine ---------- */
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs){
+  const e=document.createElementNS(NS,tag);
+  if(attrs){ for(const k in attrs){ e.setAttribute(k, attrs[k]); } }
+  return e;
+}
+function txt(tag,attrs,text){ const e=el(tag,attrs); if(text!==undefined) e.textContent=text; return e; }
+function niceMax(v){
+  if(v<=0) return 1;
+  const mag=Math.pow(10,Math.floor(Math.log10(v)));
+  const n=v/mag;
+  let step;
+  if(n<=1) step=1; else if(n<=2) step=2; else if(n<=2.5) step=2.5; else if(n<=5) step=5; else step=10;
+  return step*mag;
+}
+function fmt(v,d){
+  d = d===undefined?0:d;
+  return Number(v).toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d});
+}
+let tipEl=null;
+function tipBox(){
+  if(!tipEl){ tipEl=document.createElement('div'); tipEl.className='chtip'; document.body.appendChild(tipEl); }
+  return tipEl;
+}
+function showTip(evt,title,rows){
+  const t=tipBox();
+  t.innerHTML='';
+  const h=document.createElement('div'); h.className='chtip-title'; h.textContent=title; t.appendChild(h);
+  rows.forEach(r=>{
+    const row=document.createElement('div'); row.className='chtip-row';
+    const key=document.createElement('span'); key.className='chtip-key';
+    if(r.color){ const dot=document.createElement('span'); dot.className='chtip-dot'; dot.style.background=r.color; key.appendChild(dot); }
+    const kt=document.createElement('span'); kt.textContent=r.label; key.appendChild(kt);
+    const val=document.createElement('span'); val.className='chtip-val'; val.textContent=r.value;
+    row.appendChild(key); row.appendChild(val);
+    t.appendChild(row);
+  });
+  t.style.display='block';
+  moveTip(evt);
+}
+function moveTip(evt){
+  const t=tipBox();
+  const pad=16;
+  let x=evt.clientX+pad, y=evt.clientY+pad;
+  const rect=t.getBoundingClientRect();
+  if(x+rect.width>window.innerWidth-8) x=evt.clientX-rect.width-pad;
+  if(y+rect.height>window.innerHeight-8) y=evt.clientY-rect.height-pad;
+  t.style.left=x+'px'; t.style.top=y+'px';
+}
+function hideTip(){ if(tipEl) tipEl.style.display='none'; }
+
+function baseSvg(W,H,label){
+  return el('svg',{viewBox:'0 0 '+W+' '+H, width:'100%', height:H, class:'chartsvg', role:'img', 'aria-label':label||''});
+}
+function floatRange(minV,maxV){
+  const span=(maxV-minV)||Math.abs(maxV)||1;
+  const step=niceMax(span/4);
+  const lo=Math.floor((minV-span*0.15)/step)*step;
+  const hi=Math.ceil((maxV+span*0.15)/step)*step;
+  return [minV<0?lo:Math.max(lo,0), hi]; // negative series (YoY %) keep their own floor
+}
+function yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,digits,yMin,steps=4){
+  yMin=yMin||0;
+  const yToPx=(v)=> padT + plotH*(1-(v-yMin)/(yMax-yMin));
+  for(let i=0;i<=steps;i++){
+    const v=yMin+(yMax-yMin)*i/steps;
+    const y=yToPx(v);
+    svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:y,y2:y,class:'gridline'}));
+    svg.appendChild(txt('text',{x:padL-8,y:y+3,'text-anchor':'end',class:'axislabel'}, fmt(v,digits)));
+  }
+  return yToPx;
+}
+
+/* categorical bar / combo chart */
+function barLineChartBase(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host) return;
+  const cats=opts.categories, n=cats.length;
+  const rotate = opts.rotateLabels===false ? false : n>8;
+  const W=640, H=260;
+  const padL=50,padR=14,padT=14,padB= rotate?56:30;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  let maxV=0;
+  opts.series.forEach(s=> s.values.forEach(v=>{ if(v!=null && v>maxV) maxV=v; }));
+  let yMin=0, yMax=niceMax(maxV*1.15);
+  if(opts.zeroBase===false && opts.series.every(s=>s.kind==='line')){
+    let mn=Infinity; opts.series.forEach(s=>s.values.forEach(v=>{ if(v!=null && v<mn) mn=v; }));
+    const r=floatRange(mn,maxV); yMin=r[0]; yMax=r[1];
+  }
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits,yMin,opts.yGridSteps||4);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  const band=plotW/n;
+  const barSeries=opts.series.filter(s=>s.kind!=='line');
+  const lineSeries=opts.series.filter(s=>s.kind==='line');
+  const barW=Math.min(24, band*0.62/(barSeries.length||1));
+  const linePts={};
+  lineSeries.forEach(s=>{ linePts[s.name]=[]; });
+
+  cats.forEach((cat,i)=>{
+    const bandX=padL+i*band;
+    const cx=bandX+band/2;
+    const rows=[];
+    barSeries.forEach((s,si)=>{
+      const v=s.values[i];
+      const gx = cx - (barSeries.length*barW)/2 + si*barW;
+      if(v!=null){
+        const y0=yToPx(0), y1=yToPx(v);
+        const r=el('rect',{x:gx+1,y:Math.min(y0,y1),width:Math.max(barW-2,2),height:Math.max(Math.abs(y0-y1),1),rx:3,ry:3,fill:s.color, opacity: s.confArr && s.confArr[i]===false ? 0.55 : 1});
+        r.appendChild(txt('title',{},cat+' — '+s.name+': '+fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+        svg.appendChild(r);
+        if(i===n-1){ svg.appendChild(txt('text',{x:gx+barW/2,y:Math.min(y0,y1)-6,'text-anchor':'middle',class:'endlabel',fill:s.color},fmt(v,opts.digits))); }
+        rows.push({label:s.name,value:fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):''),color:s.color});
+      }
+    });
+    lineSeries.forEach(s=>{
+      const v=s.values[i];
+      if(v!=null){ linePts[s.name].push([cx, yToPx(v)]); rows.push({label:s.name,value:fmt(v,opts.digits)+(opts.unit?(' '+opts.unit):''),color:s.color}); }
+      else { linePts[s.name].push(null); }
+    });
+    const hit=el('rect',{x:bandX,y:padT,width:band,height:plotH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, cat, rows));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    hit.addEventListener('focus',e=>showTip({clientX:bandX+ (host.getBoundingClientRect ? host.getBoundingClientRect().left:0), clientY:80}, cat, rows));
+    hit.addEventListener('blur',hideTip);
+    svg.appendChild(hit);
+    const lx=cx, ly=padT+plotH+14;
+    const everyN = opts.maxLabels ? Math.max(1,Math.ceil(n/opts.maxLabels)) : n>24 ? Math.ceil(n/18) : 1;
+    if(i%everyN===0 || i===n-1){
+      const label=txt('text',{x:lx,y:ly,'text-anchor': rotate?'end':'middle',class:'catlabel'}, opts.tickLabels?.[i]||cat);
+      if(rotate) label.setAttribute('transform','rotate(-40 '+lx+' '+ly+')');
+      svg.appendChild(label);
+    }
+  });
+
+  const endLabelY=[];
+  lineSeries.forEach(s=>{
+    const pts=linePts[s.name].filter(p=>p);
+    if(pts.length>1){
+      let d='', pen=false;
+      linePts[s.name].forEach(p=>{if(!p){pen=false;return;}d+=(pen?' L':' M')+p[0]+','+p[1];pen=true;});
+      svg.appendChild(el('path',{d:d,fill:'none',stroke:s.color,'stroke-width':s.strokeWidth||2,'stroke-linecap':'round','stroke-linejoin':'round'}));
+    }
+    linePts[s.name].forEach((p,i)=>{
+      if(!p) return;
+      if(s.markers!==false){
+        const c=el('circle',{cx:p[0],cy:p[1],r:3.5,fill:s.color,stroke:'var(--card)','stroke-width':1.5});
+        svg.appendChild(c);
+      }
+      if(i===n-1){
+        let ly=p[1]-12;
+        while(endLabelY.some(v=>Math.abs(v-ly)<13)) ly-=14;
+        endLabelY.push(ly);
+        svg.appendChild(txt('text',{x:p[0],y:ly,'text-anchor':'middle',class:'endlabel',fill:s.color}, fmt(s.values[i],opts.digits)));
+      }
+    });
+  });
+
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* single-series line chart, evenly spaced (for monthly world price) */
+function lineChartBase(containerId, opts){
+  const labels=opts.labels, n=labels.length;
+  const W=640,H=260;
+  const padL=44,padR=14,padT=14,padB=30;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const maxV=Math.max.apply(null, opts.values);
+  const minV=Math.min.apply(null, opts.values);
+  let yMin=0, yMax=niceMax(maxV*1.1);
+  if(opts.zeroBase===false){ const r=floatRange(minV,maxV); yMin=r[0]; yMax=r[1]; }
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits,yMin);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  const step=plotW/(n-1);
+  const pts=opts.values.map((v,i)=>[padL+i*step, yToPx(v)]);
+  const areaD='M'+pts.map(p=>p[0]+','+p[1]).join(' L')+' L'+pts[pts.length-1][0]+','+(padT+plotH)+' L'+pts[0][0]+','+(padT+plotH)+' Z';
+  svg.appendChild(el('path',{d:areaD,fill:opts.color,opacity:0.1}));
+  const lineD='M'+pts.map(p=>p[0]+','+p[1]).join(' L');
+  svg.appendChild(el('path',{d:lineD,fill:'none',stroke:opts.color,'stroke-width':2,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  labels.forEach((lab,i)=>{
+    const showTick = (i%Math.max(1,Math.ceil(n/10))===0)||i===n-1;
+    const hit=el('rect',{x:padL+i*step-step/2,y:padT,width:step,height:plotH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, lab, [{label:opts.seriesName||'Giá trị',value:fmt(opts.values[i],opts.digits)+(opts.unit?(' '+opts.unit):''),color:opts.color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    svg.appendChild(hit);
+    const c=el('circle',{cx:pts[i][0],cy:pts[i][1],r:2.6,fill:opts.color,stroke:'var(--card)','stroke-width':1});
+    svg.appendChild(c);
+    if(showTick){
+      svg.appendChild(txt('text',{x:pts[i][0],y:padT+plotH+14,'text-anchor':'middle',class:'catlabel'}, lab));
+    }
+    if(i===n-1){ svg.appendChild(txt('text',{x:pts[i][0],y:pts[i][1]-10,'text-anchor':'end',class:'endlabel',fill:opts.color}, fmt(opts.values[i],opts.digits))); }
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* chart-type switcher (assets/chart-types.js): native view = renderer above */
+function barLineChart(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host||!window.ChartTypes) return barLineChartBase(containerId, opts);
+  ChartTypes.mount(host,{categories:opts.categories,tickLabels:opts.tickLabels,series:opts.series.map(s=>({name:s.name,color:s.color,kind:s.kind,values:s.values,conf:s.confArr,strokeWidth:s.strokeWidth})),unit:opts.unit,digits:opts.digits,zeroBase:opts.zeroBase,height:opts.height,stackable:opts.stackable,aria:opts.ariaLabel},()=>barLineChartBase(containerId,opts));
+}
+function lineChart(containerId, opts){
+  const host=document.getElementById(containerId);
+  if(!host||!window.ChartTypes) return lineChartBase(containerId, opts);
+  ChartTypes.mount(host,{categories:opts.labels,series:[{name:opts.seriesName||'Giá trị',color:opts.color,kind:'line',values:opts.values}],unit:opts.unit,digits:opts.digits,zeroBase:opts.zeroBase,height:opts.height,aria:opts.ariaLabel},()=>lineChartBase(containerId,opts));
+}
+
+/* multi-series real-date range/dot chart (VN price) */
+function rangeDotChart(containerId, opts){
+  if(window.ChartTypes&&ChartTypes.useChart()&&ChartTypes.dots(document.getElementById(containerId),opts))return;
+  const W=640,H=260;
+  const padL=48,padR=14,padT=14,padB=28;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const domainStart=opts.domain[0].getTime(), domainEnd=opts.domain[1].getTime();
+  const xOf=(d)=> padL + plotW*( (d.getTime()-domainStart) / (domainEnd-domainStart) );
+  let maxV=0;
+  opts.series.forEach(s=> s.points.forEach(p=>{ if(p.high>maxV) maxV=p.high; }));
+  const yMax=niceMax(maxV*1.1);
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  const yToPx=yGrid(svg,padL,padR,padT,plotW,plotH,yMax,W,opts.digits);
+  svg.appendChild(el('line',{x1:padL,x2:W-padR,y1:padT+plotH,y2:padT+plotH,class:'axisline'}));
+  for(let y=opts.domain[0].getFullYear(); y<=opts.domain[1].getFullYear(); y++){
+    const d=new Date(y+'-01-01T00:00:00');
+    if(d<opts.domain[0]||d>opts.domain[1]) continue;
+    const x=xOf(d);
+    svg.appendChild(el('line',{x1:x,x2:x,y1:padT,y2:padT+plotH,class:'gridline'}));
+    svg.appendChild(txt('text',{x:x,y:padT+plotH+13,'text-anchor':'start',class:'catlabel'}, String(y)));
+  }
+  opts.series.forEach(s=>{
+    s.points.forEach(p=>{
+      const d=new Date(p.date+'T00:00:00');
+      const x=xOf(d);
+      const yLow=yToPx(p.low), yHigh=yToPx(p.high), yMid=yToPx(p.mid);
+      if(p.high>p.low){ svg.appendChild(el('line',{x1:x,x2:x,y1:yHigh,y2:yLow,stroke:s.color,'stroke-width':2,opacity:0.55})); }
+      const c=el('circle',{cx:x,cy:yMid,r: p.conf===false?4:4.5, fill: p.conf===false? 'var(--card)':s.color, stroke:s.color,'stroke-width':2});
+      const hit=el('circle',{cx:x,cy:yMid,r:13,fill:'transparent',class:'hitband',tabindex:'0'});
+      const label=p.label+(p.conf===false?' (độ tin cậy thấp)':'');
+      hit.addEventListener('pointerenter',e=>showTip(e, p.date.split('-').reverse().join('/'), [{label:label,value:fmt(p.low)+'–'+fmt(p.high)+' đ/kg',color:s.color}]));
+      hit.addEventListener('pointermove',moveTip);
+      hit.addEventListener('pointerleave',hideTip);
+      svg.appendChild(hit);
+      svg.appendChild(c);
+    });
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+/* horizontal compare bars — single snapshot, N entities */
+function hbarCompare(containerId, opts){
+  if(window.ChartTypes&&ChartTypes.useChart()&&ChartTypes.hbar(document.getElementById(containerId),opts))return;
+  const items=opts.items, n=items.length;
+  const W=640, padT=8, padB=8, rowH=Math.max(38,(260-padT-padB)/n); /* same total height as the other charts */
+  const H=padT+padB+rowH*n;
+  const padL=8, padR=64, labelW=opts.labelW||112;
+  const plotW=W-padL-padR-labelW;
+  const maxV=niceMax(Math.max.apply(null, items.map(it=>it.value))*1.15);
+  const svg=baseSvg(W,H,opts.ariaLabel);
+  items.forEach((it,i)=>{
+    const y=padT+i*rowH;
+    const barH=Math.min(rowH-16,30), barY=y+(rowH-barH)/2;
+    const bw=plotW*(it.value/maxV);
+    svg.appendChild(txt('text',{x:padL+labelW-8,y:y+rowH/2+4,'text-anchor':'end',class:'catlabel',style:'font-weight:700'}, it.label));
+    const r=el('rect',{x:padL+labelW,y:barY,width:Math.max(bw,2),height:barH,rx:4,ry:4,fill:it.color});
+    r.appendChild(txt('title',{},it.label+': '+fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+    const hit=el('rect',{x:padL+labelW,y:barY,width:Math.max(bw,2),height:barH,fill:'transparent',class:'hitband',tabindex:'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, it.label, [{label:opts.unit||'Giá trị', value:fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):''), color:it.color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    svg.appendChild(r);
+    svg.appendChild(txt('text',{x:padL+labelW+bw+8,y:y+rowH/2+4,class:'endlabel',fill:'var(--ink2)'}, fmt(it.value,opts.digits)+(opts.unit?(' '+opts.unit):'')));
+    svg.appendChild(hit);
+  });
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+function balanceBarChart(containerId, opts){
+  if(window.ChartTypes&&ChartTypes.useChart()&&ChartTypes.balance(document.getElementById(containerId),opts))return;
+  const labels=opts.labels, values=opts.values, every=opts.labelEvery||1, digits=opts.digits??1;
+  const W=640,H=260,padL=52,padR=20,padT=16,padB=38;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const maxAbs=Math.max(opts.minScale||1, Math.max.apply(null, values.map(v=>Math.abs(v))))*1.2;
+  const zeroY=padT+plotH/2;
+  const svg=baseSvg(W,H,opts.ariaLabel||containerId);
+  [-1,0,1].forEach(t=>{
+    const y=zeroY-(plotH/2)*t;
+    svg.appendChild(el('line',{x1:padL,y1:y,x2:W-padR,y2:y,class:t===0?'axisline':'gridline'}));
+    svg.appendChild(txt('text',{x:padL-8,y:y+3,'text-anchor':'end',class:'axislabel'},fmt(t*maxAbs,digits)));
+  });
+  const band=plotW/labels.length, barW=Math.max(1,Math.min(46, band*(every>1?0.8:0.55)));
+  values.forEach((v,i)=>{
+    const x=padL+i*band+(band-barW)/2;
+    const yVal=zeroY-(plotH/2)*(v/maxAbs);
+    const y=Math.min(zeroY,yVal);
+    const h=Math.max(1,Math.abs(zeroY-yVal));
+    const color=v>=0?(opts.colors?.[0]||S3):(opts.colors?.[1]||S2);
+    svg.appendChild(el('rect',{x:x,y:y,width:barW,height:h,rx:every>1?0:4,ry:every>1?0:4,fill:color,opacity:.9}));
+    const hit=el('rect',{x:padL+i*band,y:padT,width:band,height:plotH,fill:'transparent',class:'hitband',tabindex:every>1?'-1':'0'});
+    hit.addEventListener('pointerenter',e=>showTip(e, labels[i], [{label:opts.name||'Cung - cầu', value:fmt(v,digits)+' '+(opts.unit||''), color:color}]));
+    hit.addEventListener('pointermove',moveTip);
+    hit.addEventListener('pointerleave',hideTip);
+    if(every===1) svg.appendChild(txt('text',{x:x+barW/2,y:v>=0?y-5:y+h+12,'text-anchor':'middle',class:'endlabel',fill:'var(--ink2)'},fmt(v,digits)));
+    if((i%every===0&&labels.length-1-i>=every/2)||i===labels.length-1) svg.appendChild(txt('text',{x:x+barW/2,y:H-14,'text-anchor':'middle',class:'catlabel'},labels[i]));
+    svg.appendChild(hit);
+  });
+  if(every>1){const i=values.length-1,v=values[i],x=padL+i*band+band/2,yVal=zeroY-(plotH/2)*(v/maxAbs);svg.appendChild(txt('text',{x:x-4,y:v>=0?yVal-6:yVal+14,'text-anchor':'end',class:'endlabel',fill:'var(--ink2)'},fmt(v,digits)));}
+  svg.appendChild(txt('text',{x:padL,y:H-4,class:'axislabel'},opts.unit||''));
+  const host=document.getElementById(containerId);
+  host.innerHTML=''; host.appendChild(svg);
+}
+
+function sparkline(id, values, color){
+  const host=document.getElementById(id);
+  if(!host) return;
+  if(window.ChartTypes&&ChartTypes.useChart()&&ChartTypes.spark(host,values,color))return;
+  const W=100,H=26,pad=3;
+  const maxV=Math.max.apply(null, values), minV=Math.min.apply(null, values);
+  const range=(maxV-minV)||1;
+  const step=(W-pad*2)/(values.length-1);
+  const pts=values.map((v,i)=>[pad+i*step, H-pad-(H-pad*2)*((v-minV)/range)]);
+  const d='M'+pts.map(p=>p[0]+','+p[1]).join(' L');
+  host.appendChild(el('path',{d:d,fill:'none',stroke:color,'stroke-width':1.6,'stroke-linecap':'round','stroke-linejoin':'round',opacity:0.55}));
+  const last=pts[pts.length-1];
+  host.appendChild(el('circle',{cx:last[0],cy:last[1],r:2.4,fill:color}));
+}
+
+function fillTable(id, headers, rows){
+  const t=document.getElementById(id);
+  if(!t) return;
+  const thead=el('thead' ); // not svg NS, use html
+  t.innerHTML='';
+  const theadHtml=document.createElement('thead');
+  const trh=document.createElement('tr');
+  headers.forEach(h=>{ const th=document.createElement('th'); th.textContent=h; trh.appendChild(th); });
+  theadHtml.appendChild(trh); t.appendChild(theadHtml);
+  const tbody=document.createElement('tbody');
+  rows.forEach(r=>{
+    const tr=document.createElement('tr');
+    r.forEach(c=>{ const td=document.createElement('td'); td.textContent=c; tr.appendChild(td); });
+    tbody.appendChild(tr);
+  });
+  t.appendChild(tbody);
+}
+
+function showMajorTab(key, btn){
+  document.querySelectorAll(".majorpane").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll(".majortabbtn").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll('.majorpane[data-tab="'+key+'"]').forEach(x=>x.classList.add("active"));
+  const activeBtn = btn || Array.from(document.querySelectorAll(".majortabbtn")).find(x => (x.getAttribute("onclick") || "").indexOf("'"+key+"'") >= 0);
+  if(activeBtn) activeBtn.classList.add("active");
+  if(location.hash !== "#"+key) history.replaceState(null, "", "#"+key);
+}
+const initialTab = (location.hash || "").replace("#", "");
+if(document.querySelector('.majorpane[data-tab="'+initialTab+'"]')) showMajorTab(initialTab);
+window.addEventListener("hashchange", () => {
+  const nextTab = (location.hash || "").replace("#", "");
+  if(document.querySelector('.majorpane[data-tab="'+nextTab+'"]')) showMajorTab(nextTab);
+});
+</script>
+</body>
+</html>
