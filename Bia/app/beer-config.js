@@ -13,12 +13,30 @@ window.PKG = {
     {spark: 'spk-pe', pe: '120', label: 'Bia'},
   ],
   charts: [
-    {id: 'chBeerChain', type: 'steps', steps: [
-      ['Đầu vào', 'Malt, lúa mạch, gạo, nhôm lon, chai', 'Phần lớn nhập khẩu; chi phí bao bì đáng kể'],
-      ['Sản xuất', 'Nấu bia tại nhà máy vùng', 'Công suất, mức chạy máy'],
-      ['Kênh bán', 'Nhà hàng, quán (on-trade) · siêu thị, tạp hóa (off-trade)', 'Sức mua, khách du lịch, quy định nồng độ cồn khi lái xe'],
-      ['Biên', 'Giá bán − thuế TTĐB − giá vốn', 'Thuế TTĐB tăng bậc mỗi năm đến 2031']],
-      note: 'Sơ đồ mô hình, không biểu thị tỷ trọng.', src: [['FinSuccess tổng hợp', '#rf-q-model']]},
+    {id: 'chBeerChain', type: 'html', src: [['FinSuccess tự tổng hợp', '#rf-q-model']],
+      method: 'Số nhà máy, công suất và cơ cấu tiêu thụ theo phân khúc năm 2023 là của SAB (FinSuccess tự tổng hợp).',
+      render: esc => `<div class="dc dc-beer">
+  <div class="dc-band dc-band4"><span class="dc-b dc-b1">Đầu vào</span><span class="dc-b dc-b2">Sản xuất</span><span class="dc-b dc-b3">Đầu ra</span><span class="dc-b dc-b4">Phân phối</span></div>
+  <div class="dc-cols dc-cols4">
+    <section class="dc-col"><h4>Nguyên liệu</h4>
+      <div class="dc-card"><b>Malt, hoa bia, men bia</b><small>Chủ yếu nhập khẩu từ châu Âu, Mỹ và Úc</small></div>
+      <div class="dc-card"><b>Gạo</b><small>Chủ yếu từ nguồn nội địa</small></div>
+    </section>
+    <section class="dc-col"><h4>Nhà máy</h4>
+      <p class="dc-num"><b>26</b> nhà máy · tổng công suất <b>2,4 tỷ lít/năm</b> (SAB)</p>
+      <ul class="dc-steps-v"><li>Nấu nguyên liệu thô</li><li>Đường hóa</li><li>Lên men</li><li>Lọc trong bia</li><li class="dc-end">Đóng gói</li></ul>
+    </section>
+    <section class="dc-col"><h4>Bia thành phẩm</h4>
+      <p class="dc-lbl">Cơ cấu tiêu thụ bia theo phân khúc của SAB năm 2023</p>
+      <div class="dc-pie-w"><div class="dc-pie" role="img" aria-label="Phân khúc trung cấp 97%, phân khúc cao cấp 3%" style="background:conic-gradient(#C9CDD6 0 3%, #1D2678 3% 100%)"></div>
+        <ul class="dc-leg dc-leg-v"><li><i style="background:#1D2678"></i>Phân khúc trung cấp <b>97%</b></li><li><i style="background:#C9CDD6"></i>Phân khúc cao cấp <b>3%</b></li></ul></div>
+    </section>
+    <section class="dc-col"><h4>Kênh bán</h4>
+      <div class="dc-card"><b>On-trade</b><small>Nhà hàng, quán ăn…</small></div>
+      <div class="dc-card"><b>Off-trade</b><small>Siêu thị, cửa hàng tiện lợi…</small></div>
+    </section>
+  </div>
+</div>`},
     {id: 'chBeerModels', type: 'models', items: [
       ['Hãng bia lớn, thương hiệu toàn quốc', 'SAB · BHN', 'Bia Sài Gòn, 333 (SAB); Bia Hà Nội (BHN); bán qua đại lý cấp 1 tới nhà hàng, tạp hóa, siêu thị', 'Giá malt, nhôm; thuế TTĐB; giá bán và sản lượng; chi phí bán hàng, quảng cáo', [['#rf-q-output', 'Sản lượng'], ['#rf-q-sintax', 'Thuế TTĐB'], ['#rf-q-gm', 'Biên gộp']]],
       ['Nhà máy bia vùng', 'SMB · HAD', 'Sản xuất bia theo nhãn của hãng lớn (Bia Sài Gòn, Bia Hà Nội) cho thị trường miền Trung, miền Bắc', 'Sản lượng đặt hàng từ hãng, giá gia công, chi phí nguyên liệu', [['#rf-q-gm', 'Biên gộp'], ['#rf-q-rev', 'Doanh thu, lợi nhuận']]]],
