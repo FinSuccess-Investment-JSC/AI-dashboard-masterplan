@@ -200,7 +200,7 @@ const PIC = {
     flow(p, 'urea', [['in', 'Đầu vào', 'Khí & than'], ['make', 'Sản xuất', 'Sản lượng và công suất urê'], ['out', 'Đầu ra', 'Giá bán & biên gộp']]);
     // Đầu vào
     stage(p, 'urea', 'in', 'Đầu vào', 'Khí & than');
-    const qi = panel('·', 'Giá dầu và giá than — biến số chi phí nhiên liệu của urê từ khí và urê từ than', 'Giá khí DPM, DCM tính theo công thức gắn giá dầu FO (xem 04 Nguồn khí, mục 4.3); urê từ than (DHB) dùng than antraxit trong nước.');
+    const qi = panel('·', 'Giá dầu và giá than — biến số chi phí nhiên liệu của urê từ khí và urê từ than', 'Giá khí DPM, DCM tính theo công thức gắn giá dầu FO (xem 04 Nguồn khí, bản đồ 4.3 chế độ DPM/DCM); urê từ than (DHB) dùng than antraxit trong nước.');
     const cb = card('pb-u-brent', 'Dầu Brent, bình quân tháng', {sub: 'USD/thùng · Proxy cho nhóm giá dầu trong công thức giá khí', source: SRC.wb, info: 'Brent không phải giá FO Singapore; chỉ thể hiện xu hướng nhóm giá dầu.'});
     qi.append(cb.el); p.append(qi);
     const LB = months('2021-01', b.date);
@@ -280,8 +280,8 @@ const PIC = {
       kpi('Khí Mỹ (Henry Hub) · ' + mL(us.date), nf(us.value, 2), 'USD/MMBtu', `${sg(yoy('gas_us', us.date))}% so cùng kỳ`, 'World Bank', tail('gas_us', 24), C.teal),
       kpi('Dầu Brent · ' + mL(b.date), nf(b.value, 1), 'USD/thùng', `${sg(yoy('brent', b.date))}% so cùng kỳ`, 'World Bank', tail('brent', 24), C.grey)]));
     if (window.FertCost) FertCost.render('gas', p);
-    // 4.4 Bản đồ hệ thống cung cấp khí (app/fertilizer-gasmap.js): nạp Leaflet khi mở sub-tab.
-    const q = panel('4.4', 'Bản đồ hệ thống cung cấp khí Việt Nam', 'Khí đi từ mỏ nào, qua đường ống nào, tới nhà máy đạm và nhà máy điện nào; chọn DPM hoặc DCM để xem hệ thống cấp khí riêng của từng nhà máy.');
+    // 4.3 Bản đồ hệ thống cung cấp khí (app/fertilizer-gasmap.js): nạp Leaflet khi mở sub-tab.
+    const q = panel('4.3', 'Bản đồ hệ thống cung cấp khí Việt Nam', 'Khí đi từ mỏ nào, qua đường ống nào, tới nhà máy đạm và nhà máy điện nào; chọn DPM hoặc DCM để xem hệ thống cấp khí riêng của từng nhà máy.');
     p.append(q); if (window.FertGasMap) FertGasMap.build(q);
   },
   matrix() { if (window.FertCost) FertCost.render('matrix', $('#fb-pp-matrix')); }
@@ -346,7 +346,7 @@ function sources() {
     ['Sản lượng phân urê, phân NPK', SRC.nso, 'đến ' + mL(last('urea_output').date), 'scripts/fetch_fertilizer_nso.py'],
     ['BCTC hợp nhất theo quý: DPM, DCM, DHB, DDV, LAS, VAF, NFC, BFC, SFG', SRC.vnd, F ? 'đến ' + qL(F.periods.at(-1)) : '', 'scripts/fetch_fertilizer_financials.py'],
     ['Nhà máy, công suất thiết kế, vùng nguyên liệu, quan hệ cung ứng, cơ chế giá khí', 'BCTN, website doanh nghiệp, Petrovietnam, Vinachem, báo chuyên ngành (nguồn từng dòng)', D.plants ? 'tài liệu 2012–2026, kỳ ghi từng nhà máy' : 'N/A', 'nhập tay · data/fertilizer/plants.json'],
-    ['Hệ thống cung cấp khí: bể, mỏ, đường ống, kho LNG, hộ tiêu thụ; hợp đồng khí DPM, DCM', 'PV GAS, Petrovietnam, PVEP, Bộ Công Thương, Tạp chí Dầu khí, tài liệu ĐHĐCĐ DPM, DCM, báo cáo CTCK (nguồn từng đối tượng, bấm trên bản đồ 4.4); nền bản đồ Natural Earth 1:10m', D.gas ? 'tra cứu ' + dL(D.gas.meta.updated) : 'N/A', 'nhập tay · data/fertilizer/gas-system.json; nền: scripts/build_gas_basemap.py'],
+    ['Hệ thống cung cấp khí: bể, mỏ, đường ống, kho LNG, hộ tiêu thụ; hợp đồng khí DPM, DCM', 'PV GAS, Petrovietnam, PVEP, Bộ Công Thương, Tạp chí Dầu khí, tài liệu ĐHĐCĐ DPM, DCM, báo cáo CTCK (nguồn từng đối tượng, bấm trên bản đồ 4.3); nền bản đồ Natural Earth 1:10m', D.gas ? 'tra cứu ' + dL(D.gas.meta.updated) : 'N/A', 'nhập tay · data/fertilizer/gas-system.json; nền: scripts/build_gas_basemap.py'],
     ['Tỷ giá trung tâm USD/VND', 'Ngân hàng Nhà nước', recs('usdvnd').length ? 'đến ' + mL(last('usdvnd').date) : 'N/A', 'scripts/fetch_sbv.py (bot)'],
   ];
   host.innerHTML = `<div class="chart-title">Nguồn dữ liệu</div><div class="chart-sub">Mỗi chart ghi nguồn ngay dưới chart; bảng dưới gom lại nguồn, kỳ số mới nhất và cách lấy.</div><div class="tbl-wrap"><table class="compare-table fb-src-table"><thead><tr><th>Dữ liệu</th><th>Nguồn</th><th>Kỳ</th><th>Cách lấy</th></tr></thead><tbody>`
