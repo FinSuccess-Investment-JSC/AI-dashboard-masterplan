@@ -46,7 +46,8 @@
     const ts = c.map(x => day(x.trim()));
     if (ts.length > 2 && ts.every(Number.isFinite)) {
       const gaps = ts.slice(1).map((t, i) => Math.abs(t - ts[i]) / 864e5).sort((a, b) => a - b), g = gaps[gaps.length >> 1];
-      return g >= 27 ? ['Tháng', 'tháng'] : g >= 6 ? ['Tuần', 'tuần'] : ['Phiên', 'phiên'];
+      // Chăn nuôi: chuỗi giá heo có cả thứ Bảy, Chủ nhật → ngày lịch, không phải phiên giao dịch.
+      return g >= 27 ? ['Tháng', 'tháng'] : g >= 6 ? ['Tuần', 'tuần'] : ts.some(t => [0, 6].includes(new Date(t).getUTCDay())) ? ['Ngày', 'ngày'] : ['Phiên', 'phiên'];
     }
     if (all(/^\d{1,2}\/\d{1,2}$/)) return ['Phiên', 'phiên'];
     if (all(/^(W|Tuần ?)\d/i)) return ['Tuần', 'tuần'];

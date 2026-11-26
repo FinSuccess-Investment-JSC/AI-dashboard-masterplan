@@ -168,7 +168,7 @@ T.prices = c => {
 T.hog = c => {
   const hog = S('hog'); if (!hog.length) return; const HR = c.regions.filter(([k]) => S(k).length);
   const rm = Object.fromEntries(HR.map(([k]) => [k, byMonth(S(k))])), hm = byMonth(hog);
-  const months = [...new Set([...hog, ...HR.flatMap(([k]) => S(k))].map(r => ym(r.date)))].sort().slice(-36);
+  const months = [...new Set([...hog, ...HR.flatMap(([k]) => S(k))].map(r => ym(r.date)))].sort().slice(-(c.months || 36));
   barLineChart(c.id, {categories: months.map(m => mon(m + '-01')), series: [{name: 'Toàn quốc', color: C.red, kind: 'line', values: months.map(m => hm[m]?.value ?? null)}, ...HR.map(([k, n, col]) => ({name: n, color: col, kind: 'line', values: months.map(m => rm[k][m]?.value ?? null)}))], unit: 'nghìn đ/kg', digits: 1, height: 260, zeroBase: false, rotateLabels: true});
   legend(c.id, [['Toàn quốc', C.red], ...HR.map(([, n, col]) => [n, col])]);
   fillTable(c.table, ['Kỳ', 'Toàn quốc', 'So cùng kỳ', ...HR.map(h => h[1])], months.slice().reverse().map(m => [mon(m + '-01'), nf(hm[m]?.value, 1), signed(yoyAt(hog, hm[m]), 1) + '%', ...HR.map(([k]) => nf(rm[k][m]?.value, 1))]));
