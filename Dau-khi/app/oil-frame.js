@@ -448,11 +448,19 @@ function hideEmptyGaps() { $$('.of-body').forEach(b => { if (b.querySelector('[d
 // Chỉ số vận hành doanh nghiệp (nhập tay, đã mở trang gốc; xem data/oil/evidence.json khối dau-khi-ops).
 function opsCards() {
   const kpi = (host, id, title, items, src) => { if (!host || $('#' + id)) return; const c = el('div', 'card of-wide of-ops'); c.id = id; c.dataset.ofAdded = id;
-    c.innerHTML = `<div class="chart-title">${title}</div><div class="of-ops-grid">${items.map(([k, v, u, note]) => `<div class="of-ops-i"><span>${k}</span><b>${v}<small>${u}</small></b><em>${note}</em></div>`).join('')}</div><div class="pw-src">Nguồn: ${src} · số doanh nghiệp công bố qua báo chí, chưa phải BCTC kiểm toán</div>`; host.append(c); };
+    c.innerHTML = `<div class="chart-title">${title}</div><div class="of-ops-grid">${items.map(([k, v, u, note]) => `<div class="of-ops-i"><span>${k}</span><b>${v}<small>${u}</small></b><em>${note}</em></div>`).join('')}</div><div class="pw-src">Nguồn: ${src} · số doanh nghiệp công bố, báo chí trích lại; BCTC quý chưa kiểm toán</div>`; host.append(c); };
   kpi($('#of-mt2-gas .of-body'), 'of-ops-thivai', 'Kho LNG Thị Vải (PV GAS) — năng lực nhập và tái hóa LNG', [
     ['Công suất tái hóa hiện tại', '288', ' tấn/giờ', 'chạy thử thành công, công bố 07/04/2026'], ['Công suất thiết kế ban đầu', '171', ' tấn/giờ', 'tăng khoảng 68% sau nâng cấp'],
     ['Tương đương', '9,5', ' triệu m³ khí/ngày', 'quy đổi theo công bố của PV GAS'], ['Giai đoạn 2', '1 → 3', ' triệu tấn/năm', 'dự kiến hoàn thành 2029']],
     '<a href="https://vir.com.vn/pv-gas-increases-capacity-of-thi-vai-lng-terminal-150173.html" target="_blank" rel="noopener">VIR 08/04/2026</a> · <a href="https://baonghean.vn/en/doan-cong-tac-tinh-nghe-an-khao-sat-kho-cang-lng-thi-vai-10330025.html" target="_blank" rel="noopener">Báo Nghệ An 25/03/2026</a>');
+  kpi($('#of-mt2-upstream .of-body'), 'of-ops-pvd', 'PV Drilling (PVD) — quý 3/2026', [
+    ['Hiệu suất sử dụng giàn', '91', '%', 'cùng kỳ 87%'], ['Giàn thuê hoạt động bình quân', '3,7', ' giàn', 'cùng kỳ 1,1 giàn'],
+    ['Doanh thu thuần', '3.213,5', ' tỷ đồng', '+25% so cùng kỳ'], ['Lãi gộp', '410,5', ' tỷ đồng', '−32,6% so cùng kỳ'], ['LNST hợp nhất', '81,7', ' tỷ đồng', '−70,5% so cùng kỳ']],
+    '<a href="https://doanhnhan.baophapluat.vn/pv-drilling-pvd-loi-nhuan-quy-iii-lao-doc-70-vi-ganh-nang-lai-vay.html" target="_blank" rel="noopener">Doanh nhân · Báo Pháp luật 03/11/2026, trích BCTC hợp nhất Q3/2026 và giải trình của PVD</a> · PVD không công bố giá thuê giàn bình quân trong BCTC');
+  kpi($('#of-mt2-gas .of-body'), 'of-ops-gas', 'PV GAS (GAS) — quý 3/2026', [
+    ['Khí khô và LNG tiêu thụ', '+24', '%', 'so cùng kỳ'], ['Brent bình quân quý', '97', ' USD/thùng', 'cùng kỳ 69'],
+    ['Doanh thu thuần', '39.708', ' tỷ đồng', '+11,26% so cùng kỳ'], ['LNST', '4.569', ' tỷ đồng', '+74,86% so cùng kỳ'], ['Biên lãi gộp', '15,66', '%', 'cùng kỳ 11,49%']],
+    '<a href="https://mekongasean.vn/khi-kho-va-lng-dan-dat-da-tang-truong-doanh-thu-cua-pv-gas-trong-quy-3-61334.html" target="_blank" rel="noopener">Mekong ASEAN 31/10/2026, theo BCTC hợp nhất Q3/2026 và thuyết minh</a> · BCTC không tách sản lượng tuyệt đối theo quý');
   kpi($('#of-mt2-refining .of-body'), 'of-ops-bsr', 'Lọc dầu Dung Quất (BSR) — 9 tháng 2026', [
     ['Sản lượng sản xuất', '6,15', ' triệu tấn', 'khoảng, 9 tháng 2026'], ['Sản lượng tiêu thụ', '6,08', ' triệu tấn', 'khoảng, 9 tháng 2026']],
     '<a href="https://giaoduc.net.vn/bsr-cung-co-noi-luc-mo-rong-khong-gian-tang-truong-post263415.gd" target="_blank" rel="noopener">Giáo dục & Thời đại, hội thảo nhà đầu tư BSR 15/10/2026</a>');

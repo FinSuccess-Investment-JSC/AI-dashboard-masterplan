@@ -150,5 +150,88 @@
   "quote": "Sản lượng sản xuất của Tổng Công ty đạt khoảng 6,15 triệu tấn, sản lượng tiêu thụ đạt khoảng 6,08 triệu tấn.",
   "status": "match",
   "note": "Giáo dục & Thời đại, hội thảo nhà đầu tư 15/10/2026"
+ },
+ {
+  "block": "dau-khi-q3",
+  "claim": "PVD Q3/2026: hiệu suất sử dụng giàn 91% (cùng kỳ 87%)",
+  "value": "91%",
+  "url": "https://doanhnhan.baophapluat.vn/pv-drilling-pvd-loi-nhuan-quy-iii-lao-doc-70-vi-ganh-nang-lai-vay.html",
+  "opened_at": "2026-11-26",
+  "quote": "Hiệu suất sử dụng giàn khoan đạt 91% so với mức 87% của cùng kỳ năm trước.",
+  "status": "match",
+  "note": "Doanh nhân · Báo Pháp luật 03/11/2026, trích BCTC hợp nhất Q3/2026 và giải trình"
+ },
+ {
+  "block": "dau-khi-q3",
+  "claim": "PVD Q3/2026: số giàn thuê bình quân 3,7 (cùng kỳ 1,1)",
+  "value": "3,7",
+  "url": "https://doanhnhan.baophapluat.vn/pv-drilling-pvd-loi-nhuan-quy-iii-lao-doc-70-vi-ganh-nang-lai-vay.html",
+  "opened_at": "2026-11-26",
+  "quote": "Số lượng giàn khoan thuê đưa vào hoạt động bình quân cũng tăng từ 1,1 giàn lên 3,7 giàn.",
+  "status": "match"
+ },
+ {
+  "block": "dau-khi-q3",
+  "claim": "PVD Q3/2026: doanh thu thuần 3.213,5 tỷ, +25%",
+  "value": "3.213,5",
+  "url": "https://doanhnhan.baophapluat.vn/pv-drilling-pvd-loi-nhuan-quy-iii-lao-doc-70-vi-ganh-nang-lai-vay.html",
+  "opened_at": "2026-11-26",
+  "quote": "doanh thu thuần đạt 3.213,5 tỷ đồng, tăng 25% so với cùng kỳ năm trước.",
+  "status": "match"
+ },
+ {
+  "block": "dau-khi-q3",
+  "claim": "PVD Q3/2026: lãi gộp 410,5 tỷ, −32,6%",
+  "value": "410,5",
+  "url": "https://doanhnhan.baophapluat.vn/pv-drilling-pvd-loi-nhuan-quy-iii-lao-doc-70-vi-ganh-nang-lai-vay.html",
+  "opened_at": "2026-11-26",
+  "quote": "lợi nhuận gộp trong kỳ giảm 32,6% xuống còn 410,5 tỷ đồng.",
+  "status": "match"
+ },
+ {
+  "block": "dau-khi-q3",
+  "claim": "PVD Q3/2026: LNST hợp nhất 81,7 tỷ, −70,5%",
+  "value": "81,7",
+  "url": "https://doanhnhan.baophapluat.vn/pv-drilling-pvd-loi-nhuan-quy-iii-lao-doc-70-vi-ganh-nang-lai-vay.html",
+  "opened_at": "2026-11-26",
+  "quote": "lợi nhuận sau thuế hợp nhất vẫn sụt giảm 70,5% xuống mức 81,7 tỷ đồng.",
+  "status": "match"
+ },
+ {
+  "block": "dau-khi-q3",
+  "claim": "GAS Q3/2026: doanh thu thuần 39.708 tỷ",
+  "value": "39.708",
+  "url": "https://mekongasean.vn/khi-kho-va-lng-dan-dat-da-tang-truong-doanh-thu-cua-pv-gas-trong-quy-3-61334.html",
+  "opened_at": "2026-11-26",
+  "quote": "đạt doanh thu thuần 39.708 tỷ đồng",
+  "status": "match",
+  "note": "Mekong ASEAN 31/10/2026, theo BCTC hợp nhất Q3/2026"
+ },
+ {
+  "block": "dau-khi-q3",
+  "claim": "GAS Q3/2026: LNST 4.569 tỷ",
+  "value": "4.569",
+  "url": "https://mekongasean.vn/khi-kho-va-lng-dan-dat-da-tang-truong-doanh-thu-cua-pv-gas-trong-quy-3-61334.html",
+  "opened_at": "2026-11-26",
+  "quote": "lãi sau thuế quý 3/2026 đạt 4.569 tỷ đồng",
+  "status": "match"
+ },
+ {
+  "block": "dau-khi-q3",
+  "claim": "GAS Q3/2026: Brent bình quân 97 USD/thùng",
+  "value": "97",
+  "url": "https://mekongasean.vn/khi-kho-va-lng-dan-dat-da-tang-truong-doanh-thu-cua-pv-gas-trong-quy-3-61334.html",
+  "opened_at": "2026-11-26",
+  "quote": "giá dầu Brent bình quân quý đạt 97 USD/thùng",
+  "status": "match"
+ },
+ {
+  "block": "dau-khi-q3",
+  "claim": "GAS Q3/2026: khí khô và LNG tiêu thụ +24%",
+  "value": "24%",
+  "url": "https://mekongasean.vn/khi-kho-va-lng-dan-dat-da-tang-truong-doanh-thu-cua-pv-gas-trong-quy-3-61334.html",
+  "opened_at": "2026-11-26",
+  "quote": "Lượng khí khô và LNG tiêu thụ trong quý tăng 24%",
+  "status": "match"
  }
 ]
