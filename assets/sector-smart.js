@@ -133,6 +133,8 @@ function toc() {
   };
   const spy = () => { let cur = -1; list.forEach((x, i) => { const r = x.box.getBoundingClientRect(); if (r.height && r.top < 160) cur = i; }); box.querySelectorAll('a').forEach((a, i) => a.classList.toggle('on', i === cur)); };
   build(); addEventListener('scroll', spy, {passive: true});
+  // Trang dựng lại khung sau khi tải (vd. Dầu khí phát 'oil:frame'): dựng lại mục lục theo sub-tab đang mở.
+  addEventListener('oil:frame', () => [200, 1500].forEach(t => setTimeout(build, t)));
   document.addEventListener('click', e => {
     if (e.target.closest('.majortabbtn, .pane-subtabs button, .supply-tabs button, .of-nav button, [role="tab"]')) setTimeout(build, 150);
     if (!e.target.closest('.pv-toc, .pv-fab')) document.body.classList.remove('pv-toc-open');

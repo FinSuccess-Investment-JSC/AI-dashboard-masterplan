@@ -163,6 +163,13 @@ def parse_top_producers(raw: bytes):
             for key, (t, c, _) in TOP_PRODUCERS.items():
                 if t == tab and code == c and key not in found:
                     found[key] = (tab, row)
+    # Tổng cung thế giới (papr_world, 3ctab) đi kèm để tính phần 'các nước khác' trong thay đổi cung.
+    for row in book['3ctab'].iter_rows():
+        if row[0].value == 'papr_world':
+            found['WD'] = ('3ctab', row)
+            break
+    if 'WD' not in found:
+        raise ValueError('EIA STEO papr_world missing')
     missing = set(TOP_PRODUCERS) - set(found)
     if missing:
         raise ValueError(f'EIA STEO producers missing: {sorted(missing)}')
@@ -172,12 +179,12 @@ def parse_top_producers(raw: bytes):
             if ym < '2023-01' or ym >= issue:
                 continue  # forecasts excluded
             v = row[col - 1].value
-            if not isinstance(v, (int, float)) or not 0 <= v <= 25:
+            if not isinstance(v, (int, float)) or not 0 <= v <= (130 if key == 'WD' else 25):
                 raise ValueError(f'Invalid STEO production {key} {ym}')
             by_month.setdefault(ym, {})[key] = round(float(v), 3)
     records = []
     for ym, vals in sorted(by_month.items()):
-        if len(vals) != len(TOP_PRODUCERS):
+        if len(vals) != len(TOP_PRODUCERS) + 1:
             continue
         y, m = map(int, ym.split('-'))
         records.append({'date': f'{ym}-{calendar.monthrange(y, m)[1]:02d}', **vals})
@@ -194,4 +201,66 @@ def load_top_producers():
             'publication_frequency': 'monthly', 'issue': issue, 'unit': 'million barrels/day',
             'names': {k: v[2] for k, v in TOP_PRODUCERS.items()},
             'records': rows, 'raw_sha256': hashlib.sha256(response.content).hexdigest(),
-            'method': 'Petroleum and other liquids production (papr_*): 3ctab for OPEC+ members, 3btab for others; months before the issue month only'}, response.content
+            'method': 'Petroleum and other liquids production (papr_*): 3ctab for OPEC+ members, 3btab for others; WD = papr_world (3ctab); months before the issue month only'}, response.content
+
+
+# Tiêu thụ dầu theo khu vực (3etab patc_*), theo tháng; các nhóm không chồng nhau, 'WD' = thế giới để tính phần còn lại.
+DEMAND = {'US': ('patc_us', 'Mỹ'), 'CH': ('patc_ch', 'Trung Quốc'), 'IN': ('patc_in', 'Ấn Độ'), 'JA': ('patc_ja', 'Nhật Bản'),
+          'EU': ('patc_r03', 'Châu Âu'), 'ME': ('patc_r05', 'Trung Đông'), 'EA': ('patc_r04', 'Nga & Á-Âu'),
+          'LA': ('patc_r02', 'Trung & Nam Mỹ'), 'AF': ('patc_r06', 'Châu Phi'), 'WD': ('patc_world', 'Thế giới')}
+
+
+def parse_world_demand(raw: bytes):
+    """Monthly consumption by region; months before the issue month only (EIA estimates, no forecasts)."""
+    book = openpyxl.load_workbook(io.BytesIO(raw), read_only=True, data_only=True)
+    if '3etab' not in book.sheetnames:
+        raise ValueError('EIA STEO 3etab missing')
+    sheet = book['3etab']
+    title = str(sheet.cell(2, 2).value or '')
+    match = re.search(r'-\s+([A-Za-z]+)\s+(\d{4})$', title.strip())
+    if 'Short-Term Energy Outlook' not in title or not match:
+        raise ValueError('Wrong EIA STEO workbook')
+    issue = f'{int(match[2]):04d}-{MONTHS[match[1][:3]]:02d}'
+    year, months = None, {}
+    for col in range(3, sheet.max_column + 1):
+        heading = sheet.cell(3, col).value
+        if isinstance(heading, (int, float)):
+            year = int(heading)
+        month = MONTHS.get(str(sheet.cell(4, col).value or '')[:3])
+        if year and month:
+            months[col] = f'{year:04d}-{month:02d}'
+    found = {}
+    for row in sheet.iter_rows():
+        for key, (code, _) in DEMAND.items():
+            if row[0].value == code and key not in found:
+                found[key] = row
+    if set(found) != set(DEMAND):
+        raise ValueError(f'EIA STEO demand missing: {sorted(set(DEMAND) - set(found))}')
+    by_month = {}
+    for key, row in found.items():
+        for col, ym in months.items():
+            if ym < '2023-01' or ym >= issue:
+                continue
+            v = row[col - 1].value
+            if not isinstance(v, (int, float)) or not 0 <= v <= 130:
+                raise ValueError(f'Invalid STEO demand {key} {ym}')
+            by_month.setdefault(ym, {})[key] = round(float(v), 3)
+    records = []
+    for ym, vals in sorted(by_month.items()):
+        if len(vals) == len(DEMAND):
+            y, m = map(int, ym.split('-'))
+            records.append({'date': f'{ym}-{calendar.monthrange(y, m)[1]:02d}', **vals})
+    if len(records) < 24:
+        raise ValueError('Incomplete STEO demand history')
+    return issue, records
+
+
+def load_world_demand():
+    response = requests.get(URL, timeout=40, headers={'User-Agent': 'FinSuccessDashboard/2.0 (public data research)'})
+    response.raise_for_status()
+    issue, rows = parse_world_demand(response.content)
+    return {'source_url': URL, 'source_name': 'EIA STEO', 'observation_frequency': 'monthly',
+            'publication_frequency': 'monthly', 'issue': issue, 'unit': 'million barrels/day',
+            'names': {k: v[1] for k, v in DEMAND.items()},
+            'records': rows, 'raw_sha256': hashlib.sha256(response.content).hexdigest(),
+            'method': '3etab consumption: patc_us, patc_ch, patc_in, patc_ja, patc_r03 (Europe), patc_r05 (Middle East), patc_r04 (Eurasia), patc_r02 (C&S America), patc_r06 (Africa), patc_world; months before the issue month only'}, response.content
