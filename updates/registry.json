@@ -3039,10 +3039,11 @@
     "blocks": [
      "ts-12",
      "ts-21",
+     "ts-23",
      "ts-50"
     ]
    },
-   "how": "Cập nhật số VASEP mới nhất (đã mở trang) vào chart chVasep, chMkt2 và bảng ts-50; thêm dòng evidence.",
+   "how": "Cập nhật số VASEP mới nhất (đã mở trang) vào chart chVasep, chMkt2, chMkt2T và bảng ts-50; thêm dòng evidence.",
    "gates": [
     "Mở trang gốc"
    ],
@@ -3072,6 +3073,53 @@
    "how": "Khi người dùng nhắn: cập nhật bảng ts-60 và evidence.",
    "gates": [
     "Link BCTC hoặc bài dẫn"
+   ]
+  },
+  {
+   "id": "seafood.group-margin",
+   "tier": "C",
+   "title": "Thủy sản: biên gộp theo quý của từng nhóm (Cá tra, Tôm, Đa ngành, Toàn rổ)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán)",
+   "source": {
+    "name": "BCTC hợp nhất quý (data/company-quarterly.js)",
+    "url": "https://stockanalysis.com/"
+   },
+   "where": {
+    "page": "Thuy-san/index.html",
+    "file": "data/company-quarterly.js",
+    "blocks": [
+     "ts-06"
+    ]
+   },
+   "how": "Không nhập tay: chart tự tính trong Thuy-san/app/seafood-frame.js (groupMargin) từ window.COMPANY_QUARTERLY; khi có quý mới chỉ cần làm mới data/company-quarterly.js. Thêm MPC vào rổ Tôm khi có BCTC quý.",
+   "gates": [
+    "Σ lãi gộp ÷ Σ doanh thu thuần cùng rổ",
+    "Thiếu số của một mã thì để trống quý đó",
+    "Không cộng IDI vào Toàn rổ (đã hợp nhất trong ASM)"
    ]
   },
   {
@@ -3116,10 +3164,11 @@
    "where": {
     "page": "Thuy-san/index.html",
     "blocks": [
-     "ts-02"
+     "ts-02",
+     "ts-05"
     ]
    },
-   "how": "Cập nhật ts-02 và catbox/riskbox; thẻ tín hiệu tự tính trong Thuy-san/app/seafood-dashboard.js.",
+   "how": "Cập nhật ts-05 (Triển vọng: ba biến — câu sự kiện, hàm ý, kỳ kiểm tiếp; số in đậm tự lấy từ chart qua Thuy-san/app/seafood-frame.js) và ts-02 (bản phân tích cũ, thu gọn trong Triển vọng); thẻ tín hiệu tự tính trong Thuy-san/app/seafood-dashboard.js.",
    "gates": [
     "Số khớp chart",
     "Không đụng ô analyst"

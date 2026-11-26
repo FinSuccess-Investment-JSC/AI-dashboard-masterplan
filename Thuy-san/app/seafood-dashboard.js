@@ -140,13 +140,13 @@ if((sh.length||cm50.length)&&document.getElementById('chShrimp')){
  sourceLine('chShrimp',[['WiData 74379 (Cà Mau 50 con/kg)','https://widata.vn/'],SRC.vasep],(cm50.length?'Cà Mau '+short(cm50.at(-1).date):'')+(sh.length?' · Đồng Tháp '+short(sh.at(-1).date):''),'Hai chuỗi khác vùng và cỡ: Wi 74379 tôm thẻ 50 con/kg Cà Mau (giá ngày, Wi nén về cuối tháng); VASEP tôm chân trắng Đồng Tháp cỡ '+shSize+', điểm giữa khoảng giá theo tuần (khoảng cỡ rộng nên ít nhạy).');
  {const L=cm50.at(-1),V=sh.at(-1);insight('chShrimp',(L?'Cà Mau 50 con '+nf(L.value,1)+' nghìn đ/kg ('+short(L.date)+', '+signed(yoyAt(cm50,L),0)+'% YoY)':'')+(V?'; Đồng Tháp '+nf(V.value,1)+' ('+short(V.date)+')':'')+'. Tôm nguyên liệu là chi phí chính của FMC, MPC (mua của hộ nuôi): giá nguyên liệu giảm nhanh hơn giá bán XK thì biên mở rộng.')}
 }
-if(document.getElementById('chMkt2')){
+if(document.getElementById('chMkt2T')){
  const cats=['Trung Quốc (+HK với tôm)','Mỹ','EU'];
- ctBar('chMkt2',{categories:cats,series:[{name:'Tôm',color:C.plum,values:[309,60,77]},{name:'Cá tra',color:C.navy,values:[94,38,26]}],unit:'triệu USD',digits:0,aria:'Tôm, cá tra 2T/2026 theo thị trường'});
- legend('chMkt2',[['Tôm',C.plum],['Cá tra',C.navy]]);
- fillTable('tbl-mkt2',['Thị trường','Tôm (triệu USD)','Tôm YoY','Cá tra (triệu USD)','Cá tra YoY'],[['Trung Quốc (tôm gồm HK)','309','+58%','94','+86%'],['Mỹ','~60','−22%','38','−5%'],['EU','77','+28%','26','+7%']]);
- sourceLine('chMkt2',[['Trung tâm WTO – tôm','https://trungtamwto.vn/tin-tuc/32016-xuat-khau-tom-sang-my-giam-sau-truoc-ap-luc-thue-quan-trung-quoc-thanh-luc-day-chinh'],['Trung tâm WTO – cá tra','https://trungtamwto.vn/chuyen-de/32000-trung-quoc-tiep-tuc-la-diem-den-lon-nhat-cua-ca-tra-viet-nam']],'2T/2026','Kỳ 2 tháng đầu năm (có Tết) — chỉ đọc cơ cấu, không ngoại suy cả năm.',false);
- insight('chMkt2','Ngay từ đầu năm, Trung Quốc đã chiếm gần một nửa tôm và hơn một nửa cá tra xuất đi, trong khi Mỹ giảm. Đây là dịch chuyển cơ cấu, không chỉ là mùa vụ.');
+ ctBar('chMkt2T',{categories:cats,series:[{name:'Tôm',color:C.plum,values:[309,60,77]},{name:'Cá tra',color:C.navy,values:[94,38,26]}],unit:'triệu USD',digits:0,aria:'Tôm, cá tra 2T/2026 theo thị trường'});
+ legend('chMkt2T',[['Tôm',C.plum],['Cá tra',C.navy]]);
+ fillTable('tbl-mkt2t',['Thị trường','Tôm (triệu USD)','Tôm YoY','Cá tra (triệu USD)','Cá tra YoY'],[['Trung Quốc (tôm gồm HK)','309','+58%','94','+86%'],['Mỹ','~60','−22%','38','−5%'],['EU','77','+28%','26','+7%']]);
+ sourceLine('chMkt2T',[['Trung tâm WTO – tôm','https://trungtamwto.vn/tin-tuc/32016-xuat-khau-tom-sang-my-giam-sau-truoc-ap-luc-thue-quan-trung-quoc-thanh-luc-day-chinh'],['Trung tâm WTO – cá tra','https://trungtamwto.vn/chuyen-de/32000-trung-quoc-tiep-tuc-la-diem-den-lon-nhat-cua-ca-tra-viet-nam']],'2T/2026','Kỳ 2 tháng đầu năm (có Tết) — chỉ đọc cơ cấu, không ngoại suy cả năm.',false);
+ insight('chMkt2T','Ngay từ đầu năm, Trung Quốc đã chiếm gần một nửa tôm và hơn một nửa cá tra xuất đi, trong khi Mỹ giảm. Đây là dịch chuyển cơ cấu, không chỉ là mùa vụ.');
 }
 // Thuế
 const pd=[['Nam Việt (ANV)',0,0.84],['Biên Đông',0,1.00],['NTSF',null,0.38],['CASEAMEX',0,0.84]];
