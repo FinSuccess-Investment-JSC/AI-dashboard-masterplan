@@ -46,14 +46,14 @@ const ALIAS = {mt3: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
 
 function style() {
   const st = el('style'); st.id = 'oil-frame-style';
-  st.textContent = `.of-nav{display:inline-flex;flex-wrap:wrap;gap:4px;margin:6px 0 22px;padding:5px;border-radius:14px;background:linear-gradient(180deg,#EEF1FA,#E7EBF7);box-shadow:inset 0 1px 2px rgba(31,42,92,.08)}
-.of-nav button{display:flex;align-items:center;gap:7px;padding:8px 16px;border:0;border-radius:10px;background:none;font:600 14px/1.2 Inter,system-ui,sans-serif;color:#5B6488;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s}
-.of-nav button:hover{color:#2938A8;background:rgba(255,255,255,.55)}
-.of-nav .of-n{display:inline-grid;place-items:center;min-width:22px;height:20px;padding:0 5px;border-radius:6px;font:700 11px Inter,sans-serif;color:#7A84AC;background:rgba(41,56,168,.07)}
+  st.textContent = `.of-nav{display:inline-flex;flex-wrap:wrap;gap:4px;margin:6px 0 22px;padding:5px;border-radius:16px;background:linear-gradient(120deg,#F1ECFF 0%,#E9EEFF 45%,#E3F6FA 100%);border:1px solid rgba(167,139,250,.22);box-shadow:0 6px 22px -8px rgba(139,120,240,.35),inset 0 1px 0 rgba(255,255,255,.8)}
+.of-nav button.of-tab{display:flex;align-items:center;gap:8px;padding:8px 16px;border:0;border-radius:12px;background:transparent;font:600 14px/1.2 Inter,system-ui,sans-serif;color:#6B6F9E;cursor:pointer;transition:background .25s,color .25s,box-shadow .25s}
+.of-nav button.of-tab:hover{color:#5B4FD6;background:rgba(255,255,255,.6)}
+.of-nav .of-n{display:inline-grid;place-items:center;min-width:22px;height:20px;padding:0 5px;border-radius:7px;font:700 11px Inter,sans-serif;color:#8B84C9;background:rgba(255,255,255,.7)}
 .of-nav b{font-weight:600}
-.of-nav button[aria-selected=true]{background:#fff;color:#1F2A5C;box-shadow:0 1px 2px rgba(31,42,92,.08),0 4px 12px rgba(41,56,168,.12)}
-.of-nav button[aria-selected=true] .of-n{color:#fff;background:linear-gradient(135deg,#2938A8,#59C5C8)}
-:root[data-theme=dark] .of-nav{background:#1A2250;box-shadow:inset 0 1px 2px rgba(0,0,0,.3)}:root[data-theme=dark] .of-nav button{color:#AEB6DA}:root[data-theme=dark] .of-nav button[aria-selected=true]{background:#2A3470;color:#fff}
+.of-nav button.of-tab[aria-selected=true]{background:#fff!important;color:#3B2F9E!important;box-shadow:0 0 0 1px rgba(167,139,250,.35),0 4px 16px -2px rgba(124,108,246,.35),0 0 24px -6px rgba(94,214,230,.55)!important}
+.of-nav button.of-tab[aria-selected=true] .of-n{color:#fff;background:linear-gradient(135deg,#A78BFA,#7DD3FC);box-shadow:0 2px 8px -2px rgba(139,92,246,.5)}
+:root[data-theme=dark] .of-nav{background:linear-gradient(120deg,#231C4A,#1A2250 50%,#13304A);border-color:rgba(167,139,250,.25)}:root[data-theme=dark] .of-nav button.of-tab{color:#C4C0F0}:root[data-theme=dark] .of-nav button.of-tab[aria-selected=true]{background:#2E2768!important;color:#fff!important}
 .of-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;margin:4px 0 12px;padding:10px 0;border-bottom:1px solid var(--line,#e3e7f0)}
 .of-head h2{margin:0;font-size:24px}.of-head .of-k{font:500 13px Inter,sans-serif;color:var(--muted,#7a8399);margin-right:8px}.of-head p{margin:4px 0 0;color:var(--ink2,#3b4256)}
 .of-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}.of-body>*{min-width:0;margin:0!important}
@@ -85,7 +85,7 @@ function buildTab(key) {
   const nav = el('div', 'of-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', def.title); sec.append(nav);
   const used = new Set();
   const subs = def.subs.map((s, i) => {
-    const b = el('button', '', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-${key}-${s.k}-tab`;
+    const b = el('button', 'of-tab', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-${key}-${s.k}-tab`;
     const p = el('div', 'pane-subpane of-pane'); p.id = `of-${key}-${s.k}`; p.dataset.sub = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
         const body = el('div', 'of-body'); p.append(body);
     if (s.kpis) { const k = $('.majorpane[data-tab="mt2"] .kpis'); if (k) { body.append(k); used.add(k); } }
