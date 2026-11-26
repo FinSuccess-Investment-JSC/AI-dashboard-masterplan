@@ -251,24 +251,51 @@ function dataBrief() {
   s.innerHTML = `<div class="db-l"><div class="db-k"><span class="db-dot"></span>Bản tin dữ liệu</div><div class="db-tk">Viễn thông</div><p class="db-lead">${lead.join('; ').replace(/^./, c => c.toUpperCase())}.</p><p class="vt-note">Mỗi ô ghi kỳ quan sát riêng; bấm để mở phần phân tích tương ứng.</p></div><div class="db-r">${cards.join('')}</div>`;
   return s;
 }
+// Sơ đồ chuỗi giá trị: ValueChain.draw (app/value-chain.js, chép từ Điện) — làn, ô có icon, luồng màu theo mô hình, mũi tên chạy.
+// Khung 1170 × 480; ô cao 74. Bấm một khâu: lọc bảng 0.3 theo các mã niêm yết của khâu đó (sự kiện vc:select).
+function telecomChain() {
+  const C = {mob: '#2938A8', fix: '#c98a00', tow: '#2a9fa3', bld: '#b8801f', intl: '#861C52', pol: '#5a6682'}, H = 74;
+  const N = [
+    ['spec', 20, 40, 230, C.pol, 'law', 'Phổ tần & cấp phép', 'Bộ KH&CN đấu giá • phí tần số'],
+    ['equip', 20, 150, 230, C.bld, 'factory', 'Thiết bị mạng', 'ELC • POT • ICT', 'Ericsson • Nokia • Viettel HT'],
+    ['build', 20, 260, 230, C.bld, 'tool', 'Xây lắp • vận hành mạng', 'CTR (xây lắp, vận hành)', 'MFS (vận hành MobiFone)'],
+    ['tower', 318, 95, 262, C.tow, 'tower', 'Hạ tầng trạm (cột, nhà trạm)', 'CTR ~12.000 trạm • OCK', 'phần lớn do nhà mạng tự sở hữu'],
+    ['fiber', 318, 260, 262, C.fix, 'direct', 'Mạng cáp quang tới hộ', 'nhà mạng tự đầu tư (FTTH)'],
+    ['cable', 318, 370, 262, C.pol, 'ship', 'Cáp quang biển quốc tế', 'ADC • APG • AAG • IA • SJC2'],
+    ['mobile', 672, 95, 218, C.mob, 'bolt', 'Nhà mạng di động', 'Viettel • VNPT • MobiFone', 'Vietnamobile • MVNO'],
+    ['fixed', 672, 260, 218, C.fix, 'home', 'Internet cố định • truyền hình', 'FOX • Viettel • VNPT'],
+    ['intl', 672, 370, 218, C.intl, 'ship', 'Nhà mạng quốc tế', 'VGI • 10 thị trường'],
+    ['vas', 935, 40, 222, C.pol, 'store', 'Dịch vụ số • nội dung', 'TTN • VTC • ABC • SGT'],
+    ['cust', 935, 205, 222, C.mob, 'home', 'Khách hàng trong nước', 'cá nhân • hộ • doanh nghiệp'],
+    ['custintl', 935, 370, 222, C.intl, 'home', 'Thuê bao nước ngoài', 'Đông Nam Á • châu Phi • Mỹ Latinh']
+  ];
+  const E = [
+    ['spec', 'mobile', C.pol, 'M250 77 C430 48,600 48,700 95', true],
+    ['equip', 'tower', C.bld], ['build', 'tower', C.bld], ['build', 'fiber', C.bld],
+    ['tower', 'mobile', C.tow], ['fiber', 'fixed', C.fix], ['cable', 'fixed', C.pol, 'M580 407 C626 407,626 312,672 312', true],
+    ['mobile', 'cust', C.mob], ['fixed', 'cust', C.fix], ['intl', 'custintl', C.intl],
+    ['vas', 'cust', C.pol, `M1046 ${40 + H} V205`, true]
+  ];
+  const fig = ValueChain.draw({N, E, H, height: 480, table: 'vt-ov-position',
+    lanes: [['PHỔ TẦN · THIẾT BỊ · XÂY LẮP', 0, 270, '#eef3fb', '#1D2678'], ['HẠ TẦNG', 285, 320, '#eefaf9', '#2a9fa3'], ['NHÀ MẠNG · KHÁCH HÀNG', 620, 550, '#fbf6ea', '#b8801f']],
+    labels: [[470, 64, 'tiền trúng đấu giá, phí tần số'], [626, 122, 'giá thuê trạm'], [284, 232, 'hợp đồng'], [1046, 182, 'cước × ARPU'], [781, 462, 'doanh thu ở nước sở tại']],
+    legend: [[C.mob, 'Di động'], [C.fix, 'Internet cố định'], [C.tow, 'Hạ tầng cho thuê'], [C.bld, 'Thiết bị · xây lắp'], [C.intl, 'Quốc tế (VGI)'], [C.pol, 'Cấp phép · kết nối quốc tế · dịch vụ số', true]],
+    title: 'Chuỗi giá trị ngành viễn thông', desc: 'Nhà nước cấp phép tần số; nhà cung cấp thiết bị và nhà thầu xây lắp phục vụ nhà mạng và TowerCo; TowerCo cho nhà mạng thuê trạm; nhà mạng di động và Internet cố định thu cước của khách hàng; VGI hoạt động ở thị trường nước ngoài.'});
+  return fig;
+}
+// Bấm khâu trên sơ đồ: lọc bảng doanh nghiệp 0.3 theo mã niêm yết của khâu.
+document.addEventListener('vc:select', e => {
+  const t = document.querySelector('[data-block-id="vt-ov-position"]'); if (!t) return;
+  const codes = (e.detail?.codes || []).filter(c => LISTED.has(c));
+  t.querySelectorAll('tbody tr').forEach(tr => { const code = tr.querySelector('td')?.textContent.trim(); tr.hidden = codes.length > 0 && !codes.includes(code); });
+});
 function mapPane(p) {
   const L = (t, cls = '') => `<span class="vt-tk ${cls}">${t}</span>`;
   const col = (title, sub, items) => `<div class="vt-col"><b>${esc(title)}</b><small>${esc(sub)}</small><div>${items.join('')}</div></div>`;
   const c = el('div', 'card vt-chain'); c.dataset.blockId = 'vt-ov-chain'; c.dataset.updateKind = 'manual'; c.dataset.cadence = 'quarterly'; c.dataset.refreshStatus = 'snapshot';
-  c.innerHTML = `<div class="chart-title">Chuỗi giá trị viễn thông trong nước</div>
-  <div class="vt-flow">
-    ${col('Phổ tần & cấp phép', 'Nhà nước đấu giá, cấp quyền sử dụng tần số có thời hạn; nhà mạng trả tiền trúng đấu giá, phí tần số', ['Bộ KH&CN', 'Cục Tần số VTĐ', 'Cục Viễn thông'].map(x => L(x, 'gov')))}
-    <i class="vt-arr">→</i>
-    ${col('Thiết bị, tư vấn & xây lắp', 'Doanh thu theo CAPEX của nhà mạng (dự án, hợp đồng)', [tk('CTR', 'xây lắp'), tk('ELC'), tk('POT'), tk('ICT'), L('Ericsson, Nokia, Viettel HT', 'un')])}
-    <i class="vt-arr">→</i>
-    ${col('Hạ tầng thụ động', 'Cột, nhà trạm, cáp quang: chủ sở hữu cho nhà mạng thuê theo hợp đồng', [tk('CTR', 'TowerCo'), L('Nhà mạng tự sở hữu', 'un'), L('OCK, TowerCo khác', 'un')])}
-    <i class="vt-arr">→</i>
-    ${col('Nhà mạng trong nước', 'Sở hữu thiết bị phát sóng, lõi mạng; thu cước thuê bao', [L('Viettel', 'un'), L('VNPT', 'un'), L('MobiFone', 'un'), L('Vietnamobile, Gtel, MVNO', 'un'), tk('FOX', 'Internet cố định'), tk('MFS'), tk('TTN'), tk('VTC'), tk('ABC'), tk('SGT')])}
-    <i class="vt-arr">→</i>
-    ${col('Khách hàng', 'Cá nhân, hộ gia đình, doanh nghiệp, cơ quan nhà nước', [L('Di động: thoại, SMS, data', 'un'), L('Internet cố định, truyền hình', 'un'), L('Kênh thuê riêng, trung tâm dữ liệu', 'un')])}
-  </div>
-  <div class="vt-intl"><b>Nhà mạng quốc tế</b> ${tk('VGI')} Viettel Global sở hữu cổ phần các nhà mạng ở nước ngoài (Mytel, Movitel, Natcom, Unitel, Metfone, Halotel, Lumitel, Bitel, Telemor…); doanh thu đến từ thuê bao tại các nước đó, tách khỏi thị trường trong nước.</div>
-  <div class="vt-legend">${L('Mã', 'ls')} doanh nghiệp niêm yết (bấm để xem số liệu tài chính) · ${L('Tên', 'un')} chưa niêm yết · ${L('Cơ quan', 'gov')} quản lý nhà nước · ${go('TowerCo & hạ tầng', 'mt2:tower')}</div>`;
+  c.innerHTML = `<div class="chart-title">Chuỗi giá trị viễn thông</div><div class="chart-sub">Mũi tên: dịch vụ và hạ tầng đi tới khách hàng · nhãn trên luồng: tiền đi ngược lại · rê chuột vào một khâu để xem luồng, bấm để lọc bảng doanh nghiệp bên dưới</div>`;
+  if (window.ValueChain) c.append(telecomChain()); else c.append(el('p', 'vt-note', 'Không tải được sơ đồ.'));
+  c.append(el('div', 'vt-legend', `${L('Mã', 'ls')} doanh nghiệp niêm yết · bấm mã ở bảng 0.3 để xem số liệu tài chính · ${go('TowerCo & hạ tầng', 'mt2:tower')} ${go('Internet cố định', 'mt2:fixed')} ${go('Di động & 5G', 'mt2:mobile')}`));
   c.append(el('div', 'pw-src', srcLine(MECH())));
   p.append(qpanel('0.1', 'Dịch vụ viễn thông đi từ phổ tần, hạ tầng đến khách hàng qua những ai?', [c]));
   const flows = tableCard('vt-ov-money', 'Ai trả tiền cho ai, ai sở hữu tài sản, ai ghi nhận doanh thu', ['Bên', 'Sở hữu tài sản', 'Trả tiền cho', 'Ghi nhận doanh thu từ'], [
