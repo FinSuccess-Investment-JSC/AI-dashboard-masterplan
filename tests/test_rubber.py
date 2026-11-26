@@ -72,3 +72,17 @@ class RubberTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class RubberNewsTests(unittest.TestCase):
+    def test_news_dataset(self):
+        # Chủ đề nóng: bài https có ngày, sự kiện trỏ tới bài và chủ đề có thật, link dữ liệu dạng [nhãn, link].
+        d = json.loads((ROOT / 'data/rubber/news.json').read_text(encoding='utf-8'))
+        arts, topics = {a['id'] for a in d['articles']}, {t['id'] for t in d['topics']}
+        self.assertGreaterEqual(len(d['events']), 20)
+        for a in d['articles']:
+            self.assertTrue(a['url'].startswith('https://'), a['id'])
+        for e in d['events']:
+            self.assertTrue(set(e['article_ids']) <= arts and set(e['topic_ids']) <= topics, e['id'])
+        self.assertIn('window.RUBBER_NEWS', (ROOT / 'data/rubber-news.js').read_text(encoding='utf-8')[:200])
+        self.assertIn('id="cs-news"', (ROOT / 'Cao-su/index.html').read_text(encoding='utf-8'))

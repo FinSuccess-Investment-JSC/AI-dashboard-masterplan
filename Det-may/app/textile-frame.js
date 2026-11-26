@@ -252,11 +252,40 @@ function stickySub() {
   set(); window.addEventListener('resize', set); setTimeout(set, 1500);
 }
 
+// Sơ đồ truyền dẫn thuế Mỹ → từng mã (26/11/2026). Số thuế từ dm-24; khách hàng, đơn hàng từ dm-30/dm-33 (đã có nguồn trên trang).
+// us: tỷ trọng Mỹ đã công bố (null = chưa có số công bố, không ước).
+const TARIFF_ROWS = [
+  {t: 'MSH', g: 'May xuất khẩu', us: '~80% XK (1H26)', ch: 'Khách Mỹ trực tiếp', mech: 'Bán FOB cho Columbia, Walmart, Target, Nike; nhà nhập khẩu Mỹ trả thuế rồi ép giá hoặc chuyển đơn.', ev: 'Đơn ổn định đến hết Q3/2026, cuối năm bất định; tồn kho 6T +83% so đầu năm; đang đẩy Nhật, liên doanh với tập đoàn dệt Hàn.', tone: 'neg', dir: 'Chịu mạnh nhất: phụ thuộc khách Mỹ', src: [['Stockbiz · MSH 1H2026', 'https://stockbiz.vn/tin-tuc/msh-linh-hoat-chuyen-dich-don-hang-duy-tri-nhip-tang-truong-thue-section-301-la-phep-thu-cua-nua-cuoi-2026/41651361'], ['ĐHĐCĐ MSH 2026', 'https://doanhnhan.baophapluat.vn/dhdcd-may-song-hong-msh-2026-don-hang-on-dinh-den-het-quy-3-dinh-huong-uu-tien-nguon-luc-cho-nguoi-lao-dong.html'], ['MSH Q2/2026', 'https://vnbusiness.vn/may-song-hong-lai-quy-ii-tang-13-lo-giai-bai-toan-vong-quay-hang-ton-kho.html']]},
+  {t: 'TNG', g: 'May xuất khẩu', us: '~50% XK, EU 34% DT (2024)', ch: 'Khách Mỹ + EU', mech: 'Haddad, Columbia, Asmara (Mỹ) cùng Decathlon (EU): phần EU không chịu thuế Mỹ, đỡ một phần.', ev: 'Đã đẩy giao hàng Mỹ trước Mục 301 (24/7/2026); đơn đảm bảo đến hết 2026, nhưng 2H2026 tăng chậm lại.', tone: 'mix', dir: 'Giảm tốc ngắn hạn, đơn vẫn đủ', src: [['BSC · TNG', 'https://new.bsc.com.vn/Report/ReportFile/12766940'], ['FPTS · TNG', 'https://file.fpts.com.vn/FileStore2/File/2025/06/27/TNG_-_InitialValuationReport_-_Jun2025_96c58b58.pdf'], ['Shinhan · TNG Q2/2026', 'https://shinhansec.com.vn/uploads/report/TNG_Q2_2026_VN.pdf']]},
+  {t: 'TCM', g: 'Sợi – dệt – may', us: '21% DT; Hàn 30%, Nhật 17% (2024)', ch: 'Khách Mỹ, đang dịch chuyển', mech: 'Chuỗi khép kín sợi – vải – may; giảm tỷ trọng Mỹ, tăng Nhật, Hàn.', ev: 'Đủ đơn đến hết Q2, Q3 mới có ~50% kế hoạch; LNST 6T/2026 −30%.', tone: 'neg', dir: 'Đơn Mỹ hụt, đang thay thị trường', src: [['VNDirect · TCM', 'https://vndirect.com.vn/cmsupload/beta/TCM_BCCapnhat_20250305.pdf'], ['ĐHĐCĐ TCM 2026', 'https://doanhnhan.baophapluat.vn/dhdcd-2026-det-may-thanh-cong-tcm-muc-tieu-loi-nhuan-ky-luc-293-ty-dong-du-kien-thu-lai-1-100-ty-tu-du-an-tc-tower.md'], ['TCM 6T/2026', 'https://vnbusiness.vn/det-may-thanh-cong-loi-nhuan-hut-hoi-co-phieu-roi-ve-day-gan-6-nam.html']]},
+  {t: 'GIL', g: 'May + BĐS KCN', us: null, ch: 'May gia công', mech: 'Mảng may chịu thuế qua khách hàng; mảng bất động sản khu công nghiệp không chịu thuế trực tiếp.', ev: 'Chưa có khách hàng công bố; DT 6T/2026 +75%, CFO −680 tỷ.', tone: 'mix', dir: 'Pha loãng bởi mảng KCN', src: [['GIL Q2/2026', 'https://doanhnhan.baophapluat.vn/gilimex-gil-lai-tro-lai-trong-quy-ii-2026-nhung-dong-tien-kinh-doanh-am-ky-luc-hon-680-ty-dong.html']]},
+  {t: 'VGT', g: 'Tập đoàn', us: '43,8% XK (6T25)', ch: 'Cả chuỗi sợi – may', mech: 'Mảng may chịu thuế qua đơn hàng; mảng sợi hưởng khi nhà may cần nguyên liệu trong nước để đạt xuất xứ.', ev: 'Từ tháng 7/2026 đơn hàng khan hiếm, khách chờ thuế; nhưng LNTT 9T/2026 +41%, mảng sợi lãi +168%.', tone: 'mix', dir: 'May yếu, sợi bù', src: [['FireAnt · VGT 6T2025', 'https://static.fireant.vn/Upload/AttachedFiles/VAnh-VGT-21072025a.pdf'], ['Vinatex 9T/2026', 'https://mekongasean.vn/vinatex-vuot-ke-hoach-loi-nhuan-nam-2026-sau-9-thang-60241.html'], ['Nhà Đầu Tư 13/07/2026', 'https://nhadautu.vn/vinatex-tng-tang-truong-tich-cuc-doanh-nghiep-det-may-van-doi-mat-ap-luc-d106264.html']]},
+  {t: 'STK', g: 'Sợi', us: 'nội địa ~70% DT (9T25)', ch: 'Gián tiếp qua sợi', mech: 'Bán sợi polyester cho nhà dệt/may; thuế Mỹ làm giảm đơn may, còn yêu cầu xuất xứ (chống chuyển tải) tăng cầu sợi không đến từ Trung Quốc.', ev: 'Lỗ 72 tỷ 6T/2026, DT −6,6%: hiện tác động giảm đơn lớn hơn lợi thế xuất xứ.', tone: 'neg', dir: 'Đang chịu, lợi thế xuất xứ chưa hiện', src: [['FPTS · STK 9T2025', 'https://file.fpts.com.vn/FileStore2/File/2025/11/28/112025STKCap_nhat_nhanhHuyTG_f6a20453.pdf'], ['STK Q2/2026', 'https://mekongasean.vn/soi-the-ky-lo-quy-22026-gan-34-ty-dong-tien-mat-giam-hon-90-57857.html']]},
+  {t: 'ADS', g: 'Sợi', us: null, ch: 'Gián tiếp qua sợi', mech: 'Sợi cotton cho nhà dệt trong và ngoài nước; chịu thuế qua đơn may của khách.', ev: 'Kế hoạch LNTT 2026 145 tỷ (+~20%); chưa có kết quả và khách hàng công bố.', tone: 'mix', dir: 'Chưa đủ dữ liệu', src: [['ADS KH 2026', 'https://doanhnhan.baophapluat.vn/cong-ty-damsan-ads-dat-ke-hoach-lai-145-ty-dong-cho-nam-2026-tang-truong-gan-20-so-voi-nam-truoc.html']]},
+];
+function tariffDiagram() {
+  const host = $('#of-mt4-tariff .of-body'); if (!host || $('#tx-tariff-flow')) return;
+  const icon = {pos: '▲', neg: '▼', mix: '◆'};
+  const card = el('div', 'card of-wide'); card.id = 'tx-tariff-flow'; card.dataset.blockId = 'dm-tariff-flow';
+  card.innerHTML = `<div class="chart-title">Thuế Mỹ truyền vào từng mã</div>
+  <p class="of-lead">Việt Nam chịu thuế bổ sung <b class="neg">12,5%</b> (Mục 301, từ 24/7/2026), cao hơn Bangladesh, Campuchia, Indonesia <b>2,5 điểm %</b> và không có hạn ngạch miễn thuế.</p>
+  <div class="tx-flow"><div class="tx-src"><span class="tx-k">Cú sốc</span><b>Thuế Mỹ 12,5%</b><small>Mục 301 · từ 24/7/2026</small></div>
+  <div class="tx-rows">${TARIFF_ROWS.map(r => `<div class="tx-row ${r.tone}">
+    <div class="tx-ch"><b>${r.t}</b><br><small>${r.g}${r.us != null ? ` · ${/^nội/.test(r.us) ? '' : 'Mỹ '}${r.us}` : ' · tỷ trọng Mỹ chưa công bố'}</small><br><span class="tx-k" style="margin-top:4px">${r.ch}</span></div>
+    <div class="tx-mech">${r.mech}</div>
+    <div class="tx-who"><span class="tx-k">Bằng chứng</span>${r.ev} <small>${r.src.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(' · ')}</small></div>
+    <div class="tx-dir"><i>${icon[r.tone]}</i>${r.dir}</div></div>`).join('')}</div></div>
+  <div class="srcrow"><a href="https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas" target="_blank" rel="noopener">Kelley Drye · USTR Mục 301 (24/7/2026)</a></div>`;
+  host.prepend(card);
+  if (!$('#tx-tariff-style')) { const st = el('style'); st.id = 'tx-tariff-style'; st.textContent = 'body[data-tx-frame] #tx-tariff-flow .tx-src small,body[data-tx-frame] #tx-tariff-flow .tx-src .tx-k{color:#EEF0FF!important}'; document.head.append(st); }
+}
+
 function run() {
   if (document.body.dataset.txFrame) return; document.body.dataset.txFrame = '1';
   style();
   stickySub();
   ['mt1', 'mt2', 'mt4'].forEach(buildTab);
+  tariffDiagram();
   // Tab cũ không còn trên thanh (Giá – Chi phí, Key players, XK & thuế quan, Đơn hàng): thẻ đã dời; thẻ sót gom về Tổng quan › 01.
   const host = TABS.mt1?.find(x => x.s.k === 'chain')?.body;
   ['mt3', 'mt6', 'mt10', 'mt11'].forEach(k => { const p = $(`.majorpane[data-tab="${k}"]`); if (!p) return;
