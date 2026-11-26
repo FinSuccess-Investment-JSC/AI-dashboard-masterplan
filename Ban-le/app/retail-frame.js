@@ -59,6 +59,10 @@ const TREE = {
       {q: 'Vàng trong nước đắt hơn thế giới bao nhiêu?', id: 'rf-q-gap', meta: 'một ngày đã đối chiếu (11/10/2026) · quy đổi tự tính và số bài nguồn đặt cạnh nhau', take: ['bl-42']},
       {q: 'Giá vàng truyền vào biên gộp PNJ qua đâu?', id: 'rf-q-pnj', meta: '% · biên gộp hợp nhất PNJ cạnh giá SJC so cùng kỳ', take: ['bl-27'],
         after: NOTE('<b>Cơ chế:</b> biên gộp PNJ = cơ cấu (trang sức biên cao, vàng 24K biên thấp) × chênh giá bán với giá vốn tồn kho. <b>Chỉ báo cần kiểm tiếp:</b> tỷ trọng doanh thu vàng 24K theo quý, tồn kho vàng (18.855 tỷ cuối Q3), dự phòng thu đổi kim cương còn lại — chưa có chuỗi công bố theo quý trong repo.')},
+      {grp: 'Mạng lưới cửa hàng PNJ'},
+      {q: 'PNJ đang mở thêm hay đóng bớt cửa hàng?', id: 'rf-q-pnj-stores', meta: 'cửa hàng · số PNJ công bố cuối kỳ', take: ['bl-80']},
+      {q: 'Cửa hàng PNJ nằm ở đâu?', id: 'rf-q-pnj-geo', meta: 'Bizmap ghi nhận theo tỉnh/thành và 3 miền · đối thủ trang sức ở 03 Mạng lưới bán lẻ', take: ['bl-81']},
+      {q: 'Tuần này PNJ mở, đóng cửa hàng ở tỉnh nào?', id: 'rf-q-pnj-week', meta: 'ảnh chụp Bizmap hằng tuần', take: ['bl-82']},
     ]},
     {k: 'fmcg', t: 'Hàng tiêu dùng nhanh', d: 'Giá đầu vào đang tác động thế nào lên biên gộp MSN, KDC? Chỉ số sản xuất → giá nguyên liệu cạnh biên gộp → kiểm độ trễ. Sữa, Bia có dashboard riêng.',
       flow: [['prod', 'Sản xuất', 'IIP thực phẩm, đồ uống'], ['cost', 'Đầu vào → biên', 'Giá nguyên liệu cạnh biên gộp'], ['lag', 'Kiểm cơ chế', 'Độ trễ 2 quý (giả định)']], items: [

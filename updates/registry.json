@@ -7106,7 +7106,9 @@
      "bl-72",
      "bl-73",
      "bl-74",
-     "bl-77"
+     "bl-77",
+     "bl-81",
+     "bl-82"
     ]
    },
    "how": "python scripts/fetch_bizmap.py (~40 lời/lượt) trong refresh-data.yml, đọc secret BIZMAP_API_KEY (thiếu key thì giữ dữ liệu cũ). Ghi data/retail/bizmap.json, data/retail/bizmap-history.json (mỗi tuần), data/retail-bizmap.js. Chạy tay: BIZMAP_KEY_FILE=<file .env ngoài repo>.",

@@ -25,7 +25,7 @@ const ABBR = {'bach-hoa-xanh': 'BHX', 'winmart-plus': 'W+', 'the-gioi-di-dong': 
 // Số doanh nghiệp công bố (evidence ở bl-14/bl-15). scope true = cùng phạm vi với chuỗi Bizmap.
 const OFFICIAL = {'bach-hoa-xanh': [3904, '30/9/2026', true], 'the-gioi-di-dong': [919, '30/9/2026', true], 'dien-may-xanh': [1998, '30/9/2026', true],
   'an-khang': [438, '30/9/2026', true], 'avakids': [95, '30/9/2026', true], 'long-chau': [2741, 'cuối Q3/2026', true, 'nhà thuốc; chưa gồm 244 trung tâm tiêm chủng'],
-  'fpt-shop': [622, 'Q3/2026', true], 'pnj': [424, 'cuối Q3/2026', true], 'winmart-plus': [5141, 'cuối Q2/2026', false, 'WinCommerce gồm cả WinMart siêu thị; Bizmap chỉ có WinMart+']};
+  'fpt-shop': [622, 'Q3/2026', true], 'pnj': [403, '30/9/2026', true], 'winmart-plus': [5141, 'cuối Q2/2026', false, 'WinCommerce gồm cả WinMart siêu thị; Bizmap chỉ có WinMart+']};
 // Trung tâm hành chính 34 tỉnh/thành (gần đúng) — chỉ để đặt hình tròn trên bản đồ.
 const XY = {'Hà Nội': [21.03, 105.85], 'Hải Phòng': [20.84, 106.69], 'Quảng Ninh': [20.95, 107.08], 'Bắc Ninh': [21.27, 106.19], 'Hưng Yên': [20.45, 106.34],
   'Ninh Bình': [20.25, 105.97], 'Phú Thọ': [21.32, 105.40], 'Thái Nguyên': [21.59, 105.85], 'Tuyên Quang': [21.82, 105.21], 'Lào Cai': [21.70, 104.87],
