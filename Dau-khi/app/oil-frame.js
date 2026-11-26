@@ -332,6 +332,7 @@ function crudeLayout() {
   keep.forEach(n => body.append(n));
   [sd, gap, block('dau-khi-12')].forEach(n => n && n.classList.add('of-wide'));
   hide(wrap05); hide(block('dau-khi-23')); hide(block('dau-khi-25')); hide(card('chFastPrice'));  // 23, 25 trùng Brent Futures theo ngày
+  hide(card('chUsProd'));  // 26/11/2026: Mỹ đã có trong chart 10 nước xuất khẩu lớn + ticker
   [...body.children].forEach(n => n.classList.remove('of-span'));
   let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
   [...body.children].forEach(n => { if (n.hidden) return; if (n.matches('.of-wide,.of-group,details,.kpis')) flush(); else run.push(n); }); flush();
