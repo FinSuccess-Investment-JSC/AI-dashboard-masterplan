@@ -98,3 +98,10 @@
 .rf-split a{border:1px solid var(--line,#d6dbe8);border-radius:999px;padding:4px 12px;color:#2938A8;font-weight:600;text-decoration:none;background:var(--card,#fff)}
 .rf-split a small{color:var(--muted,#7a8399);font-weight:500;margin-left:4px}
 .rf-split a:hover{border-color:#2938A8}
+
+/* Cơ cấu kênh GT/MT/TMĐT theo năm: mỗi năm một thanh 100%. */
+.rf-chmix-leg{list-style:none;margin:4px 0 8px;padding:0;display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12.5px}
+.rf-chmix-leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.rf-chmix-row{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;align-items:center}
+.rf-chmix-row b{font-variant-numeric:tabular-nums;font-size:13px}
+.rf-chmix-row .rf-stack{margin:4px 0;height:30px}
