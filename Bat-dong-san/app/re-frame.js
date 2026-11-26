@@ -1,5 +1,5 @@
 /* BĐS dân cư · khung 5 tab theo flow ngành Dầu khí / Điện (26/11/2026). Chép phần dựng tab từ Dau-khi/app/oil-frame.js.
-   Tab lớn: Tổng quan ngành (00 Bản đồ ngành · 01 Mô hình kinh doanh · 02 Doanh nghiệp niêm yết · 03 Vị trí chu kỳ)
+   Tab lớn: Tổng quan ngành (00 Bản đồ ngành · 01 Mô hình kinh doanh · 02 Vị trí chu kỳ)
           · Bức tranh ngành (01 Vĩ mô & FDI · 02 Nguồn cung · 03 Giao dịch & tồn kho · 04 Giá nhà & chi phí · 05 Tín dụng & trái phiếu · 06 Hạ tầng)
           · Chính sách (01 Luật mới 2026 · 02 Đất đai & bảng giá đất · 03 Nhà ở & NOXH · 04 Tín dụng & trái phiếu · 05 Văn bản & dự án theo dõi)
           · Tài chính ngành (#mt14, app/re-finance.js) · Chủ đề nóng.
@@ -14,13 +14,12 @@ const block = id => $(`[data-block-id="${id}"]`);
 const byCanvas = id => $('#' + id)?.closest('.card,.viz-block');
 
 const GAP = t => `<p class="data-gap of-gap">${t}</p>`;
-const HIDE = [];
+const HIDE = ['bds-51'];  // 26/11/2026: người dùng bỏ thẻ tính trả góp mua nhà 3 tỷ
 const TREE = {
   mt1: {label: 'Tổng quan ngành', title: 'Tổng quan ngành BĐS dân cư', intro: 'Chuỗi giá trị → mô hình kinh doanh → doanh nghiệp niêm yết → vị trí chu kỳ.', subs: [
     {k: 'map', n: '00', t: 'Bản đồ ngành', d: 'Quỹ đất → pháp lý → vốn → xây dựng → bán hàng → bàn giao, mỗi khâu gắn mã niêm yết.', sel: ['.research-roadmap', '.value-chain-card'], ids: ['bds-01']},
-    {k: 'model', n: '01', t: 'Mô hình kinh doanh', d: 'Doanh nghiệp kiếm tiền từ đâu, người mua trả tiền thế nào.', sel: ['.business-models'], ids: ['bds-51'], rest: true},
-    {k: 'listed', n: '02', t: 'Doanh nghiệp niêm yết', d: 'Nhóm doanh nghiệp, biến quyết định và định giá theo phiên.', ids: ['bds-03', 'bds-17']},
-    {k: 'cycle', n: '03', t: 'Vị trí chu kỳ', d: 'Giá, thanh khoản và vốn đang ở đâu trong chu kỳ.', ids: ['bds-02']},
+    {k: 'model', n: '01', t: 'Mô hình kinh doanh', d: 'Doanh nghiệp kiếm tiền từ đâu, người mua trả tiền thế nào.', sel: ['.business-models'], ids: [], rest: true},
+    {k: 'cycle', n: '02', t: 'Vị trí chu kỳ', d: 'Giá, thanh khoản và vốn đang ở đâu trong chu kỳ.', ids: ['bds-02']},
   ]},
   mt2: {label: 'Bức tranh ngành', title: 'Bức tranh ngành', intro: 'Theo chuỗi: vĩ mô & vốn ngoại → nguồn cung → giao dịch → giá → vốn vay → hạ tầng.', subs: [
     {k: 'macro', n: '01', t: 'Vĩ mô & FDI', d: 'GDP ngành, vốn FDI vào BĐS và CPI nhà ở.', ids: ['bds-04', 'bds-05', 'bds-05c', 'bds-05d', 'bds-05b', 'bds-06']},
@@ -220,6 +219,8 @@ function financePane() {
   sec.append(el('div', 'sectionhead', '<div><h2 class="sec">Tài chính ngành</h2><p>Số liệu tài chính của 13 doanh nghiệp BĐS dân cư niêm yết, tổng hợp theo nhóm, từ BCTC hợp nhất quý.</p></div>'));
   const host = el('div', 'of-fin'); host.id = 're-fin-root'; sec.append(host); p.replaceChildren(sec);
   // So sánh tài chính & định giá (chart xu hướng + bảng) thuộc Tài chính ngành; Tổng quan chỉ giữ mô hình kinh doanh.
+  // 26/11/2026 (người dùng chốt): doanh nghiệp theo dõi + backlog cover (bds-03, bds-53 nằm trong) và P/B theo phiên (bds-17) thuộc Tài chính ngành.
+  const dn = el('div', 'of-fin-listed'); ['bds-03', 'bds-17'].forEach(id => { const n = block(id); if (n) { n.style.marginTop = '16px'; dn.append(n); } }); sec.append(dn);
   const fc = $('.financial-comparison'); if (fc) { const was = fc.closest('.of-rest'); sec.append(fc); fc.classList.add('of-wide'); if (was && !was.querySelector('[data-block-id],canvas,svg,table,.card')) was.remove(); }
   return host;
 }
@@ -284,6 +285,8 @@ function run() {
   stickySub();
   ['mt1', 'mt2', 'mt4'].forEach(buildTab);
   unfoldCards(['bds-02']);
+  { const c = block('bds-02')?.querySelector('.research-caption'); if (c) c.textContent = 'Cập nhật 26/11/2026 · số đến Q3/2026'; }
+  { const st = el('style'); st.textContent = 'body[data-re-frame] .majorpane .card td b.neg{color:#B3303F!important}body[data-re-frame] .majorpane .card td b.pos{color:#17784A!important}'; document.head.append(st); }
   // 05 Tín dụng & trái phiếu: hai nhóm tiêu đề như Dầu khí › Dầu thô toàn cầu.
   const grp = (before, t, d) => { const n = block(before); if (n && n.parentElement?.classList.contains('of-body')) n.before(el('div', 'of-group of-wide', `<h3>${t}</h3><p>${d}</p>`)); };
   grp('bds-16', 'Lãi suất & tín dụng', 'Chi phí vốn của người mua nhà và chủ đầu tư.');
