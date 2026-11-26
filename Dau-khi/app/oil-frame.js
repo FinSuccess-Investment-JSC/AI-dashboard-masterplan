@@ -579,6 +579,8 @@ function run() {
   // Tab Sources không còn trong thanh tab (nguồn đã ghi dưới từng chart, như Điện); nội dung vẫn trong DOM.
   window.dispatchEvent(new Event('oil:frame'));
 }
-const start = () => setTimeout(run, 1700);  // sau các module dời khối theo hẹn giờ (≤ 1500 ms)
-if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
+// 26/11/2026: dựng khung trong lượt SectorBoot (mốc 1600, sau mọi module ≤ 1500) để trang chỉ hiện khi khung đã xong.
+// Trước đây chạy load + 1700 ms, tức SAU khi sector-boot đã hiện trang: người xem thấy bố cục cũ rồi giật sang khung mới.
+if (window.SectorBoot) SectorBoot.add(1600, run);
+else { const start = () => setTimeout(run, 1700); if (document.readyState === 'complete') start(); else window.addEventListener('load', start); }
 })();
