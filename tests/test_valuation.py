@@ -51,7 +51,8 @@ class ValuationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             out_json, out_js = Path(tmp) / 'v.json', Path(tmp) / 'v.js'
             good = {'date': '2026-10-05', 'close': 20.0, 'pe': 10.0, 'pb': 2.0, 'market_cap': 1000.0, 'basis_date': '2026-10-05', 'source_url': 'u'}
-            with patch.object(uv, 'OUT_JSON', out_json), patch.object(uv, 'OUT_JS', out_js):
+            med = {'pe': 12.0, 'pb': 1.5, 'from': '2021-10-06', 'to': '2026-10-05', 'n_pe': 3, 'n_pb': 3}
+            with patch.object(uv, 'OUT_JSON', out_json), patch.object(uv, 'OUT_JS', out_js), patch.object(uv, 'median5', return_value=med):
                 with patch.object(uv, 'value_ticker', return_value=good):
                     uv.main(['PLX', 'QNS'])
                 with patch.object(uv, 'value_ticker', side_effect=lambda s, now: (_ for _ in ()).throw(ValueError('timeout')) if s == 'QNS' else {**good, 'date': '2026-10-06', 'pe': 11.0}):
@@ -61,6 +62,31 @@ class ValuationTests(unittest.TestCase):
             self.assertTrue(bundle['companies']['QNS']['last_good'])
             self.assertEqual([r[0] for r in bundle['history']['PLX']], ['2026-10-05', '2026-10-06'])
             self.assertTrue(out_js.read_text().startswith(uv.PREFIX))
+            self.assertEqual(bundle['companies']['PLX']['median5']['pe'], 12.0)
+
+    def test_median5_skips_non_positive_and_uses_daily_series(self):
+        rows = [{'itemCode': '51006', 'value': v, 'reportDate': d} for v, d in [(8.0, '2022-01-03'), (-5.0, '2022-01-04'), (12.0, '2022-01-05'), (10.0, '2026-10-05')]]
+        rows += [{'itemCode': '51012', 'value': v, 'reportDate': d} for v, d in [(1.0, '2022-01-03'), (2.0, '2022-01-04'), (0.0, '2022-01-05'), (3.0, '2026-10-05')]]
+        seen = []
+        m = uv.median5('PLX', at('2026-10-06T15:30'), lambda url: seen.append(url) or {'data': rows})
+        self.assertIn('reportDate:gte:2021-10-06', seen[0])
+        self.assertEqual((m['pe'], m['n_pe']), (10.0, 3))
+        self.assertEqual((m['pb'], m['n_pb']), (2.0, 3))
+        self.assertEqual((m['from'], m['to']), ('2022-01-03', '2026-10-05'))
+
+    def test_median_only_keeps_quotes_and_status(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out_json, out_js = Path(tmp) / 'v.json', Path(tmp) / 'v.js'
+            old = {'checked_at': '2026-10-05T16:00:00+07:00', 'status': 'partial', 'errors': {'QNS': 'timeout'},
+                   'companies': {'PLX': {'date': '2026-10-05', 'pe': 10.0}}, 'history': {}}
+            out_json.write_text(json.dumps(old), encoding='utf-8')
+            med = {'pe': 12.0, 'pb': 1.5, 'from': '2021-10-06', 'to': '2026-10-05', 'n_pe': 3, 'n_pb': 3}
+            with patch.object(uv, 'OUT_JSON', out_json), patch.object(uv, 'OUT_JS', out_js), patch.object(uv, 'median5', return_value=med),                     patch.object(uv, 'value_ticker', side_effect=AssertionError('không được gọi')):
+                uv.main(['PLX', '--median-only'])
+            bundle = json.loads(out_json.read_text(encoding='utf-8'))
+            self.assertEqual(bundle['companies']['PLX'], {'date': '2026-10-05', 'pe': 10.0, 'median5': med})
+            self.assertEqual((bundle['status'], bundle['checked_at']), ('partial', old['checked_at']))
+            self.assertNotIn(b'\r\n', out_json.read_bytes())
 
 
 if __name__ == '__main__':
