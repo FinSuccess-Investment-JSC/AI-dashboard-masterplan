@@ -26,7 +26,7 @@ body.fs-arr-on .fs-arr-size{display:block;position:absolute;right:2px;bottom:2px
   const persist=()=>{try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}};
   const el=(t,c,x)=>{const n=document.createElement(t);if(c)n.className=c;if(x!=null)n.textContent=x;return n};
   const clean=t=>String(t||'').replace(/\s+/g,' ').replace(/[ⓘ⛶]/g,'').trim().slice(0,80);
-  function isCard(n){return n.nodeType===1&&n.classList.contains('fs-share-host')}
+  function isCard(n){return n.nodeType===1&&(n.classList.contains('fs-share-host')||n.classList.contains('fs-arr-card'))}
   function cardKey(card){
     if(card.dataset.fsArrKey)return card.dataset.fsArrKey;
     const h=card.querySelector('.chart-title,h3,h2,h4');const c=card.querySelector('canvas[id],[id^="ch"]');
@@ -115,7 +115,10 @@ body.fs-arr-on .fs-arr-size{display:block;position:absolute;right:2px;bottom:2px
   }
   function scan(){
     const boxes=new Set();
-    document.querySelectorAll('.fs-share-host').forEach(card=>{
+    // Thẻ .card không có chart chia sẻ (vd. khối sơ đồ) nằm cùng khối với chart: cũng kéo/đổi cỡ được.
+    const hosts=[...document.querySelectorAll('.fs-share-host')];
+    new Set(hosts.map(h=>h.parentElement).filter(Boolean)).forEach(p=>[...p.children].forEach(c=>{if(c.matches('.card,section.card')&&!c.classList.contains('fs-share-host')&&!c.closest('.fs-share-modal'))hosts.push(c)}));
+    hosts.forEach(card=>{
       if(card.closest('.fs-share-modal,.fs-arr-skip')||!card.parentElement)return;
       boxes.add(card.parentElement);
       if(card.dataset.fsArr)return;card.dataset.fsArr='1';card.classList.add('fs-arr-card');
