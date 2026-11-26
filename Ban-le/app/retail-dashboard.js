@@ -91,7 +91,7 @@ if(rt.length&&document.getElementById('chRetail')){
  legend('chRetail',[['Tổng mức bán lẻ HH & DV',C.navy],['Bán lẻ hàng hóa',C.teal]]);
  fillTable('tbl-retail',['Tháng','Tổng (nghìn tỷ)','YoY','Hàng hóa (nghìn tỷ)','YoY'],rt.slice().reverse().map(r=>{const g=gm[ym(r.date)];return [mon(r.date),nf(r.value/1000,1),signed(yoyAt(rt,r),1)+'%',nf((g?.value??NaN)/1000,1),signed(yoyAt(rg,g),1)+'%']}));
  sourceLine('chRetail',[SRC.nso],mon(rt.at(-1).date),'Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng, trong đó bán lẻ hàng hóa; giá hiện hành, chưa loại trừ giá.');
- insight('chRetail','Doanh thu danh nghĩa của chuỗi bán lẻ đi theo đường này, nhưng một phần tăng là do giá nên cần đọc cùng KPI loại trừ yếu tố giá bên cạnh. Kiểm tiếp bán lẻ hàng hóa tháng 11–12 (mùa khuyến mãi, Tết sớm 17/02/2027) và số loại trừ giá cả năm khi NSO công bố.');
+ insight('chRetail','Doanh thu danh nghĩa của chuỗi bán lẻ đi theo đường này, nhưng một phần tăng là do giá nên cần đọc cùng CPI ở lớp chỉ báo giải thích. Kiểm tiếp bán lẻ hàng hóa tháng 11–12 (mùa khuyến mãi, Tết sớm 17/02/2027) và số loại trừ giá cả năm khi NSO công bố.');
 }
 if(cpi.length&&document.getElementById('chCpi')){
  const rs=cpi.slice(-36),fm=byMonth(S('cpi_food_yoy')),bm=byMonth(S('cpi_bev_yoy'));
@@ -246,26 +246,11 @@ if(rt.length&&document.getElementById('chRetailYoY')){
  sourceLine('chRetailYoY',[SRC.nso],mon(rt.at(-1).date),'Tự tính so cùng tháng năm trước từ số tháng NSO (giá hiện hành). NSO điều chỉnh số tháng trước khi công bố tháng sau nên tỷ lệ tháng gần nhất có thể đổi. Chưa có chuỗi tháng loại trừ yếu tố giá.');
  insight('chRetailYoY','Khoảng cách giữa hai đường cho biết dịch vụ (ăn uống, du lịch) đang tăng nhanh hay chậm hơn hàng hóa, tức phần nào của sức mua chảy vào chuỗi bán lẻ niêm yết. Kiểm tiếp liệu đà tăng danh nghĩa có giữ được khi CPI và thuế gián thu cùng tăng từ 1/2027.');
 }
-if(document.getElementById('chRealNominal')){
- const rL_=rt.at(-1);
- tiles('chRealNominal',[['Danh nghĩa · 9T/2026','+13,4%','so cùng kỳ · giá hiện hành'],['Loại trừ yếu tố giá · 9T/2026','+7,8%','so cùng kỳ · cùng phạm vi','rf-tile-hi'],['Tháng gần nhất · '+(rL_?mon(rL_.date):'—'),rL_?signed(yoyAt(rt,rL_),1)+'%':'—','danh nghĩa, tự tính; chưa có số loại trừ giá theo tháng']]);
- pwSrc('chRealNominal',[LK.nsoQ3]);
- sourceLine('chRealNominal',[LK.nsoQ3],'9T/2026','Hai ô đầu cùng kỳ (lũy kế 9 tháng), cùng phạm vi (tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng), đều là số NSO công bố. NSO chỉ công bố mức loại trừ giá ở dạng lũy kế; ô thứ ba là số tháng tự tính, không so trực tiếp với hai ô đầu.',false);
- insight('chRealNominal','Phần chênh giữa danh nghĩa và loại trừ giá (khoảng 5 điểm %) là giá, nên doanh thu chuỗi bán lẻ tăng nhanh hơn lượng hàng thực bán ra. Kiểm tiếp số loại trừ giá 10T và cả năm khi NSO công bố.');
-}
 if(document.getElementById('chRetailMix')){
  stackBar('chRetailMix',[{label:'Bán lẻ hàng hóa',value:4463.6,color:C.navy,extra:'+12,8%'},{label:'Lưu trú, ăn uống',value:758.6,color:C.teal,extra:'+16,7%'},{label:'Dịch vụ khác',value:625.4,color:C.grey,extra:'+13,4%'},{label:'Du lịch lữ hành',value:78.1,color:C.plum,extra:'+17,9%'}],{unit:'nghìn tỷ',total:5925.7,note:'Tổng 5.925,7 nghìn tỷ = Σ bốn cấu phần (đã đối chiếu). % tổng là tự tính.'});
  pwSrc('chRetailMix',[LK.vnp]);
  sourceLine('chRetailMix',[LK.vnp],'9T/2026','Bốn cấu phần do NSO công bố, kể cả "dịch vụ khác" (không tính bằng phần dư). Thương mại điện tử là kênh bán, trùng một phần với bán lẻ hàng hóa nên tách sang chart riêng.',false);
  insight('chRetailMix','Lưu trú, ăn uống và du lịch tăng nhanh hơn hàng hóa, nghĩa là phần tiền tăng thêm đang nghiêng về dịch vụ hơn là chuỗi bán hàng hóa. Kiểm tiếp cơ cấu cả năm và tốc độ bán lẻ hàng hóa so với doanh thu cùng cửa hàng của MWG, FRT.');
-}
-if(document.getElementById('chEcom')){
- const h=document.getElementById('chEcom');h.innerHTML='<div id="chEcomT"></div><div class="rf-sub">Thị phần sàn 6T/2026 (YouNet ECI)</div><div id="chEcomS"></div>';
- tiles('chEcomT',[['Doanh số 4 sàn · 6T/2026','291,6 nghìn tỷ','+44,1% so cùng kỳ · Metric'],['GMV 4 sàn · 6T/2026','264,8 nghìn tỷ','+19% · YouNet ECI (cách đo khác Metric)']]);
- stackBar('chEcomS',[{label:'Shopee',value:54.5,color:C.plum},{label:'TikTok Shop',value:43.4,color:C.navy},{label:'Sàn khác',value:2.1,color:C.grey,self:true}],{unit:'%',total:100});
- pwSrc('chEcom',[LK.metric,LK.younet]);
- sourceLine('chEcom',[LK.metric,LK.younet],'6T/2026','Hai đơn vị đo khác nhau (Metric: doanh số; YouNet: GMV) nên số không khớp; không cộng vào tổng mức bán lẻ vì khác kỳ và có phần trùng với bán lẻ hàng hóa. "Sàn khác" = 100% − Shopee − TikTok Shop.',false);
- insight('chEcom','Kênh online tăng nhanh hơn hẳn cửa hàng và dồn vào hai sàn, tạo áp lực giá lên điện thoại, điện máy, mỹ phẩm bán tại cửa hàng. Kiểm tiếp tỷ trọng online trong doanh thu MWG, FRT và tác động của Luật TMĐT (1/7/2026) lên hàng xuyên biên giới.');
 }
 // Bán lẻ hiện đại: mạng lưới, năng suất, SSSG
 if(document.getElementById('chStores')){

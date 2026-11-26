@@ -33,10 +33,10 @@ const TREE = {
     ]},
   ]},
   mt2: {title: 'Bức tranh ngành', subs: [
-    {k: 'all', t: 'Toàn ngành', d: 'Sức mua thực đang tăng bao nhiêu? Tổng mức bán lẻ, phần do giá, cơ cấu chi tiêu và kênh bán; CPI, khách quốc tế, tín dụng là lớp giải thích.', kpis: ['spk-retail', 'spk-cpi', 'spk-tourist'], items: [
+    {k: 'all', t: 'Toàn ngành', d: 'Sức mua thực đang tăng bao nhiêu? Tổng mức bán lẻ, tăng trưởng so cùng kỳ, cơ cấu chi tiêu; CPI, khách quốc tế, tín dụng là lớp giải thích.', kpis: ['spk-retail', 'spk-cpi', 'spk-tourist'], items: [
       {grp: 'Sức mua'},
-      {q: 'Sức mua thực đang tăng bao nhiêu?', id: 'rf-q-real', meta: '<span class="rf-period">Tháng</span>NSO, giá hiện hành · <span class="rf-period">Lũy kế</span>danh nghĩa và loại trừ giá, cùng kỳ 9T/2026, cùng phạm vi', take: ['bl-17', 'bl-10', 'bl-16']},
-      {q: 'Tiền chi tiêu đi vào đâu, kênh nào tăng nhanh?', id: 'rf-q-mix', meta: 'cơ cấu cộng đúng về tổng 9T/2026 · TMĐT là chỉ báo kênh riêng (6T/2026, phạm vi 4 sàn)', take: ['bl-13', 'bl-18']},
+      {q: 'Sức mua thực đang tăng bao nhiêu?', id: 'rf-q-real', meta: 'NSO, giá hiện hành, theo tháng', take: ['bl-10', 'bl-16']},
+      {q: 'Tiền chi tiêu đi vào đâu?', id: 'rf-q-mix', meta: 'cơ cấu cộng đúng về tổng 9T/2026', take: ['bl-13']},
       {grp: 'Chỉ báo giải thích'},
       {q: 'Giá, khách quốc tế và tín dụng giải thích gì cho sức mua?', id: 'rf-q-drivers', meta: 'CPI % so cùng kỳ · khách quốc tế theo tháng · <b>tổng</b> tín dụng nền kinh tế (chưa tách tín dụng tiêu dùng)', take: ['bl-11', 'bl-33', 'bl-12'],
         fold: [['.fsv-heat', 'Bảng nhiệt: tăng trưởng so cùng kỳ của các chỉ báo theo tháng']]},
@@ -118,7 +118,7 @@ function topicLinks() {
     'pnj-diamond': ['Biên gộp, chi phí dự phòng, lợi nhuận ròng PNJ; nợ vay khi huy động vốn', 'Biên gộp quý IV, dự phòng thu đổi còn lại, kết quả phát hành riêng lẻ', [['#rf-q-pnj', 'Biên gộp PNJ cạnh giá vàng'], ['#rf-q-gap', 'Chênh lệch vàng trong nước – thế giới']]],
     'bhx': ['Doanh thu (số cửa hàng × doanh thu/cửa hàng), chi phí bán hàng, biên ròng MWG, FRT, MSN', 'Số cửa hàng mở mới quý IV, doanh thu/cửa hàng, tỷ lệ cửa hàng mới hòa vốn', [['#rf-q-stores', 'Mạng lưới & năng suất'], ['#rf-q-sssg', 'SSSG so với tăng trưởng doanh thu']]],
     'sin-tax': ['Giá bán, sản lượng bia và nước giải khát; biên gộp SAB, MSN, QNS, VNM', 'Giá bán lẻ bia tháng 1/2027, sản lượng bia tháng 1–2, IIP đồ uống', [['#rf-q-sintax', 'Lộ trình thuế suất'], ['#rf-q-output', 'Sản lượng bia, IIP'], ['#rf-q-policy', 'Mốc hiệu lực']]],
-    'ecommerce': ['Doanh thu kênh online và giá bán tại cửa hàng của MWG, FRT, DGW', 'Doanh số 4 sàn 9T/2026, tỷ trọng online trong doanh thu chuỗi', [['#rf-q-mix', 'Cơ cấu chi tiêu & kênh TMĐT'], ['#rf-q-policy', 'Luật TMĐT (1/7/2026)']]],
+    'ecommerce': ['Doanh thu kênh online và giá bán tại cửa hàng của MWG, FRT, DGW', 'Doanh số 4 sàn 9T/2026, tỷ trọng online trong doanh thu chuỗi', [['#rf-q-policy', 'Luật TMĐT (1/7/2026)']]],
   };
   $$('[data-block-id^="bl-t"]').forEach(card => {
     if (card.querySelector('.rf-topic')) return;
@@ -137,7 +137,7 @@ function take(sel) {
   if (!n || used.has(n) || [...used].some(u => u.contains(n))) return null;
   used.add(n); n.hidden = false; n.classList.remove('rf-hidden-legacy'); n.style.marginTop = '';
   if (/^bl-5\d$/.test(sel)) unfold(n);
-  if (/^bl-(01|02|05|13|15|17|21|42|50|52|60|61)$/.test(sel)) n.classList.add('rf-wide');
+  if (/^bl-(01|02|05|13|15|21|42|50|52|60|61)$/.test(sel)) n.classList.add('rf-wide');
   return n;
 }
 // research-layout gập mọi thẻ của tab Chính sách cũ (#mt4) vào <details>; Bức tranh ngành cần thẻ sự kiện và chart hiện sẵn → gỡ lớp gập.
