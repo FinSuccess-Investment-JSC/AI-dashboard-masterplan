@@ -1,0 +1,809 @@
+{
+ "checked_at": "2026-11-26",
+ "about": "Sửa tay sau rà soát: trùng lặp (dup_of: gộp chủ sở hữu vào nhà máy đích rồi bỏ dòng), tọa độ tra thêm (có nguồn, độ chính xác), sửa tọa độ/tỉnh/MW sai. So tên theo quy tắc same() của script.",
+ "rows": [
+  {
+   "name": "TBKHH Dung Quất I",
+   "set": {
+    "lat": 15.37889,
+    "lon": 108.75028
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10742567",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "TBKHH Dung Quất II",
+   "set": {
+    "lat": 15.37889,
+    "lon": 108.75028
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10742567",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "TBKHH Dung Quất III",
+   "set": {
+    "lat": 15.37889,
+    "lon": 108.75028
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10742567",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Nhiệt điện LNG Hải Lăng giai đoạn 1",
+   "set": {
+    "lat": 16.78139,
+    "lon": 107.31917
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10771604",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Nhiệt điện LNG Nghi Sơn",
+   "set": {
+    "lat": 19.30694,
+    "lon": 105.79056
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10771632",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Nhiệt điện LNG Hải Phòng giai đoạn II",
+   "set": {
+    "lat": 20.70639,
+    "lon": 106.66
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10830936",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Nhiệt điện LNG Vũng Áng III",
+   "set": {
+    "lat": 18.00706,
+    "lon": 106.43828
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://vi.wikipedia.org/wiki/Ho%C3%A0nh_S%C6%A1n_(ph%C6%B0%E1%BB%9Dng)",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Nhiệt điện LNG Thái Bình giai đoạn 2",
+   "set": {
+    "lat": 20.49167,
+    "lon": 106.58583
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10825802",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Nhiệt điện LNG Hòa Ninh giai đoạn I",
+   "set": {
+    "lat": 16.05167,
+    "lon": 108.02306
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10771028",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Hanbaram",
+   "set": {
+    "lat": 11.7165,
+    "lon": 109.0614
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://vi.wikipedia.org/wiki/Thu%E1%BA%ADn_B%E1%BA%AFc_(x%C3%A3)",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Lạc Hòa giai đoạn 1 (Sóc Trăng 5)",
+   "set": {
+    "lat": 9.4174,
+    "lon": 106.1024
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://gem.wiki/L%E1%BA%A1c_H%C3%B2a_wind_farm",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Lạc Hòa 2",
+   "set": {
+    "lat": 9.3727,
+    "lon": 106.1327
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.openstreetmap.org/relation/15587702",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Lạc Hòa (Sóc Trăng 5, UPC)",
+   "dup_of": "Điện gió Lạc Hòa giai đoạn 1 (Sóc Trăng 5)",
+   "why": "Same 30 MW Lạc Hòa (Sóc Trăng 5) farm listed twice in missing list."
+  },
+  {
+   "name": "Điện gió Hòa Thắng 1.2",
+   "set": {
+    "lat": 11.04204,
+    "lon": 108.39038
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10771095",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Cà Mau 1B",
+   "set": {
+    "lat": 8.8291,
+    "lon": 105.2518
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.openstreetmap.org/node/14130351560",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Cà Mau 1C",
+   "set": {
+    "lat": 8.8291,
+    "lon": 105.2518
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.openstreetmap.org/node/14130351560",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Cà Mau 1D",
+   "set": {
+    "lat": 8.8291,
+    "lon": 105.2518
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.openstreetmap.org/node/14130351560",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Duyên Hải (V1-4)",
+   "set": {
+    "lat": 9.5582,
+    "lon": 106.451
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://gem.wiki/Duy%C3%AAn_Hai_wind_farm",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Số 2 Sóc Trăng",
+   "set": {
+    "lat": 9.2362,
+    "lon": 105.8486
+   },
+   "note": null,
+   "src": "https://www.openstreetmap.org/relation/18122780",
+   "why": "tọa độ: site"
+  },
+  {
+   "name": "Điện gió Xanh Sông Cầu giai đoạn 1",
+   "set": {
+    "lat": 13.62944,
+    "lon": 109.21972
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10834947",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Số 18 Sóc Trăng",
+   "set": {
+    "lat": 9.3399,
+    "lon": 105.9466
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://gem.wiki/No.18_Trung_Thinh_Wind_Power_Plant",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió V1-3 Trà Vinh giai đoạn 2",
+   "set": {
+    "lat": 9.6624,
+    "lon": 106.5762
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.openstreetmap.org/way/1458350587",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió V1-5 & V1-6 Trà Vinh giai đoạn 2",
+   "set": {
+    "lat": 9.74694,
+    "lon": 106.57833
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10767698",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Đông Hải 3 (Trà Vinh)",
+   "set": {
+    "lat": 9.55694,
+    "lon": 106.43778
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10840746",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Đông Hải 1 (Bạc Liêu) giai đoạn 3",
+   "set": {
+    "lat": 9.1799,
+    "lon": 105.5343
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.openstreetmap.org/relation/15687977",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Đông Hải 1 (Bạc Liêu) giai đoạn 4",
+   "set": {
+    "lat": 9.1799,
+    "lon": 105.5343
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.openstreetmap.org/relation/15687977",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Đông Hải 13 giai đoạn 2",
+   "set": {
+    "lat": 9.1575,
+    "lon": 105.4577
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.openstreetmap.org/relation/15687982",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Khai Long - Cà Mau giai đoạn 1",
+   "set": {
+    "lat": 8.6003,
+    "lon": 104.7564
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.openstreetmap.org/node/14130351567",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Vân Canh 2",
+   "set": {
+    "lat": 13.62012,
+    "lon": 108.90633
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10744158",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Tây Hồ - Chư Prông",
+   "set": {
+    "lat": 13.83451,
+    "lon": 107.90688
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10742158",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Srêpốk 3",
+   "dup_of": "Thủy điện Sêrêpôk 3",
+   "why": "Srêpốk 3 = Sêrêpôk 3 (220 MW, Đắk Lắk/Đắk Nông border); spelling variant, same OSM plant w827889683."
+  },
+  {
+   "name": "Thủy điện Si Ma Cai",
+   "set": {
+    "lat": 22.6906,
+    "lon": 104.2269
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10743179",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Srêpốk 4A",
+   "dup_of": "Thủy điện Sêrêpôk 4A",
+   "why": "Srêpốk 4A = Sêrêpôk 4A (64 MW); spelling variant, same OSM plant w827889639."
+  },
+  {
+   "name": "Thủy điện Thác Bà 2",
+   "set": {
+    "lat": 21.7261,
+    "lon": 105.0536
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10770836",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Mường Hum",
+   "set": {
+    "lat": 22.558333,
+    "lon": 103.744167
+   },
+   "note": null,
+   "src": "https://vi.wikipedia.org/wiki/Th%E1%BB%A7y_%C4%91i%E1%BB%87n_M%C6%B0%E1%BB%9Dng_H%C3%B9m",
+   "why": "tọa độ: site"
+  },
+  {
+   "name": "Thủy điện Bản Xèo",
+   "set": {
+    "lat": 22.528056,
+    "lon": 103.751667
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10743199",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện của CTCP Mỹ Hưng Tây Nguyên (tên nhà máy chưa xác minh)",
+   "dup_of": "Thuỷ điện Đại Nga",
+   "why": "CTCP Mỹ Hưng Tây Nguyên (TMP subsidiary) operates Thủy điện Đại Nga 10 MW; mapped 311 is Đại Nga 10 MW at 11.5156,107.8668 = OSM powerhouse w1205471469."
+  },
+  {
+   "name": "Thủy điện của CTCP Thủy điện Đăkrơsa (tên nhà máy chưa xác minh)",
+   "set": {
+    "lat": 14.74713,
+    "lon": 107.83583
+   },
+   "note": null,
+   "src": "https://www.openstreetmap.org/way/1466065800",
+   "why": "tọa độ: exact"
+  },
+  {
+   "name": "Thủy điện Nậm Ban 2",
+   "set": {
+    "lat": 22.40007,
+    "lon": 103.105723
+   },
+   "note": null,
+   "src": "https://vi.wikipedia.org/wiki/Th%E1%BB%A7y_%C4%91i%E1%BB%87n_N%E1%BA%ADm_Ban",
+   "why": "tọa độ: site"
+  },
+  {
+   "name": "Thủy điện Đăk Nghé",
+   "set": {
+    "lat": 14.53707,
+    "lon": 108.17534
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://vi.wikipedia.org/wiki/%C4%90%C4%83k_K%C3%B4i",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Trà Khúc 2",
+   "set": {
+    "lat": 15.07475,
+    "lon": 108.56387
+   },
+   "note": null,
+   "src": "https://thuviennhadat.vn/phap-luat/du-an-thuy-dien-tra-khuc-2-o-dau-711786.html",
+   "why": "tọa độ: site"
+  },
+  {
+   "name": "Điện gió Trà Vinh V1-3 (giai đoạn 1)",
+   "dup_of": "Điện gió Số 3 - V1-3 Trà Vinh giai đoạn 1",
+   "why": "Same project (V1-3 Trà Vinh GĐ1, 48 MW, REE)."
+  },
+  {
+   "name": "Điện gió Phú Cường 1A & 1B (giai đoạn 1)",
+   "set": {
+    "lat": 9.2501,
+    "lon": 105.9156
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://gem.wiki/Phu_Cuong_Soc_Trang_Offshore_wind_farm",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Nà Lơi",
+   "set": {
+    "lat": 21.440278,
+    "lon": 103.045278
+   },
+   "note": null,
+   "src": "https://vi.wikipedia.org/wiki/N%E1%BA%ADm_R%E1%BB%91m",
+   "why": "tọa độ: site"
+  },
+  {
+   "name": "Thủy điện Hà Tây",
+   "set": {
+    "lat": 14.18,
+    "lon": 108.08
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10770627",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Trung Thu",
+   "set": {
+    "lat": 21.937197,
+    "lon": 103.254475
+   },
+   "note": null,
+   "src": "https://vi.wikipedia.org/wiki/Th%E1%BB%A7y_%C4%91i%E1%BB%87n_Trung_Thu",
+   "why": "tọa độ: site"
+  },
+  {
+   "name": "Thủy điện Mông Ân (Bảo Lâm 4)",
+   "set": {
+    "lat": 22.855687,
+    "lon": 105.485566
+   },
+   "note": null,
+   "src": "https://vi.wikipedia.org/wiki/Th%E1%BB%A7y_%C4%91i%E1%BB%87n_M%C3%B4ng_%C3%82n",
+   "why": "tọa độ: site"
+  },
+  {
+   "name": "Thủy điện Bảo Lạc A",
+   "set": {
+    "lat": 22.961208,
+    "lon": 105.775194
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://vi.wikipedia.org/wiki/Th%E1%BB%A7y_%C4%91i%E1%BB%87n_B%E1%BA%A3o_L%E1%BA%A1c",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Ia Đrăng 2",
+   "set": {
+    "lat": 13.70559,
+    "lon": 107.83802
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10772493",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Ia Đrăng 1",
+   "set": {
+    "lat": 13.70559,
+    "lon": 107.83802
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10772493",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Ia Đrăng 3",
+   "set": {
+    "lat": 13.71278,
+    "lon": 107.79139
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10772554",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Ia Meur 3",
+   "set": {
+    "lat": 13.70559,
+    "lon": 107.83802
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10772493",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Ia Puch 3",
+   "set": {
+    "lat": 13.71278,
+    "lon": 107.79139
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10772554",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Đak Pi Hao 2",
+   "set": {
+    "lat": 13.777342,
+    "lon": 108.526784
+   },
+   "note": "Tọa độ cấp huyện, không phải vị trí nhà máy.",
+   "src": "https://vi.wikipedia.org/wiki/K%C3%B4ng_Chro_(huy%E1%BB%87n)",
+   "why": "tọa độ: district"
+  },
+  {
+   "name": "Thủy điện Đak Pi Hao 1",
+   "set": {
+    "lat": 13.78075,
+    "lon": 108.27714
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10780929",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện H'Chan",
+   "set": {
+    "lat": 13.80417,
+    "lon": 108.20972
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10840553",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Ea Tih",
+   "set": {
+    "lat": 12.82083,
+    "lon": 108.57472
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10757826",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện mặt trời TTC Đức Huệ 1",
+   "set": {
+    "lat": 10.9147,
+    "lon": 106.2701
+   },
+   "note": null,
+   "src": "https://www.gem.wiki/%C4%90%E1%BB%A9c_Hu%E1%BB%87_TTC_solar_farm",
+   "why": "tọa độ: exact"
+  },
+  {
+   "name": "Điện mặt trời TTC Đức Huệ 2",
+   "set": {
+    "lat": 10.946236,
+    "lon": 106.24537
+   },
+   "note": null,
+   "src": "https://www.wikidata.org/wiki/Q65172398",
+   "why": "tọa độ: site"
+  },
+  {
+   "name": "Điện mặt trời TTC Hàm Phú 2",
+   "set": {
+    "lat": 11.155,
+    "lon": 108.0701
+   },
+   "note": null,
+   "src": "https://www.gem.wiki/Ham_Phu_solar_farm",
+   "why": "tọa độ: exact"
+  },
+  {
+   "name": "Điện gió V.P.L Bến Tre (giai đoạn 1)",
+   "dup_of": "Điện gió VPL Bến Tre",
+   "why": "V.P.L Bến Tre GĐ1 (30 MW, GEG) = mapped 'Điện gió VPL Bến Tre' (29.4 MW)."
+  },
+  {
+   "name": "Điện mặt trời Infra 1 (SP Infra 1, Ninh Phước)",
+   "set": {
+    "lat": 11.584,
+    "lon": 108.862
+   },
+   "note": null,
+   "src": "https://www.gem.wiki/Sp_Infra_1_solar_farm",
+   "why": "tọa độ: exact"
+  },
+  {
+   "name": "Thủy điện La Trọng",
+   "set": {
+    "lat": 17.86695,
+    "lon": 105.798465
+   },
+   "note": null,
+   "src": "https://vi.wikipedia.org/wiki/Th%E1%BB%A7y_%C4%91i%E1%BB%87n_La_Tr%E1%BB%8Dng",
+   "why": "tọa độ: site"
+  },
+  {
+   "name": "Thủy điện Sơn Nham",
+   "set": {
+    "lat": 15.07028,
+    "lon": 108.61861
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10823360",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Thủy điện Sơn Linh",
+   "set": {
+    "lat": 14.97,
+    "lon": 108.58222
+   },
+   "note": null,
+   "src": "https://minhlong.quangngai.gov.vn/upload/2006786/20260102/Quy%E1%BA%BFt%20%C4%91%E1%BB%8Bnh%20phe%20duy%E1%BB%87t%20%20%C4%90TM%20Thu%E1%BB%B7%20%C4%91i%E1%BB%87n%20S%C6%A1n%20Linh.signed.pdf",
+   "why": "tọa độ: exact"
+  },
+  {
+   "name": "Điện mặt trời BCG Băng Dương (BCG Long An 1)",
+   "dup_of": "điện mặt trời Long An 1,2",
+   "why": "Mapped 'Long An 1,2' 141.1 MW = BCG Long An 1 (40.6) + Long An 2 (100.5); Wikidata BCG Băng Dương point 10.6154,106.1706 lies ~1.5 km from it."
+  },
+  {
+   "name": "Điện mặt trời GAIA (BCG Long An 2)",
+   "dup_of": "điện mặt trời Long An 1,2",
+   "why": "GAIA = BCG Long An 2, part of mapped 'Long An 1,2' (141.1 MW = 40.6+100.5)."
+  },
+  {
+   "name": "Điện gió Đông Thành 1",
+   "set": {
+    "lat": 9.55694,
+    "lon": 106.43778
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10840746",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió Đông Thành 2",
+   "set": {
+    "lat": 9.55694,
+    "lon": 106.43778
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.wikidata.org/wiki/Q10840746",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Điện gió BCG Sóc Trăng",
+   "set": {
+    "lat": 9.3426,
+    "lon": 105.9219
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://gem.wiki/BCG_Soc_Trang_wind_farm",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Nhà máy đốt rác phát điện Tâm Sinh Nghĩa GĐ1 (Củ Chi)",
+   "set": {
+    "lat": 10.96574,
+    "lon": 106.4282
+   },
+   "note": null,
+   "src": "https://www.openstreetmap.org/way/1262409415",
+   "why": "tọa độ: site"
+  },
+  {
+   "name": "Thủy điện Ngòi Hút 2",
+   "set": {
+    "lat": 21.7938,
+    "lon": 104.3324
+   },
+   "note": null,
+   "src": "https://www.gem.wiki/Ngoi_Hut_2_hydroelectric_plant",
+   "why": "tọa độ: exact"
+  },
+  {
+   "name": "Thủy điện Ngòi Hút 2A",
+   "set": {
+    "lat": 21.773615,
+    "lon": 104.396062
+   },
+   "note": null,
+   "src": "https://vi.wikipedia.org/wiki/Th%E1%BB%A7y_%C4%91i%E1%BB%87n_Ng%C3%B2i_H%C3%BAt",
+   "why": "tọa độ: site"
+  },
+  {
+   "name": "Thủy điện Pá Hu",
+   "set": {
+    "lat": 21.4642,
+    "lon": 104.470606
+   },
+   "note": null,
+   "src": "https://vi.wikipedia.org/wiki/Th%E1%BB%A7y_%C4%91i%E1%BB%87n_P%C3%A1_Hu",
+   "why": "tọa độ: site"
+  },
+  {
+   "name": "Điện mặt trời Hồ Núi Một 1",
+   "set": {
+    "lat": 11.42142,
+    "lon": 108.95968
+   },
+   "note": null,
+   "src": "https://www.openstreetmap.org/way/1318145126",
+   "why": "tọa độ: exact"
+  },
+  {
+   "name": "Điện gió gần bờ Vĩnh Hải",
+   "set": {
+    "lat": 9.3727,
+    "lon": 106.1327
+   },
+   "note": "Tọa độ cấp xã (tâm xã theo nguồn), không phải vị trí nhà máy.",
+   "src": "https://www.openstreetmap.org/relation/15587702",
+   "why": "tọa độ: commune"
+  },
+  {
+   "name": "Nhiệt điện LNG Thái Bình",
+   "set": {
+    "lat": null,
+    "lon": null
+   },
+   "why": "tọa độ cũ rơi vào Hà Giang, không đúng vị trí",
+   "fuzzy": true
+  },
+  {
+   "name": "Điện gió Số 3 V1-3 giai đoạn 1",
+   "set": {
+    "lat": 9.6624,
+    "lon": 106.5762
+   },
+   "why": "OSM đặt nhà máy ở 9.6624,106.5762",
+   "fuzzy": true
+  },
+  {
+   "name": "Điện gió Cà Mau 1A",
+   "set": {
+    "lat": null,
+    "lon": null
+   },
+   "why": "tọa độ cũ trùng điểm nhà máy khí Cà Mau",
+   "fuzzy": true
+  },
+  {
+   "name": "Nhiệt điện LNG Hải Phòng giai đoạn I",
+   "set": {
+    "lat": null,
+    "lon": null
+   },
+   "why": "tọa độ cũ trùng điểm nhiệt điện than Hải Phòng",
+   "fuzzy": true
+  },
+  {
+   "name": "Nhiệt điện LNG Hải Phòng giai đoạn II",
+   "set": {
+    "lat": null,
+    "lon": null
+   },
+   "why": "tọa độ cũ trùng điểm nhiệt điện than Hải Phòng",
+   "fuzzy": true
+  },
+  {
+   "name": "Điện mặt trời Hồ Núi Một 1",
+   "set": {
+    "prov": "Ninh Thuận"
+   },
+   "why": "GEM và OSM: Thuận Nam, Ninh Thuận",
+   "fuzzy": true
+  },
+  {
+   "name": "Thủy điện Sơn Linh",
+   "set": {
+    "mw": 7
+   },
+   "why": "giấy phép môi trường: 7 MW",
+   "fuzzy": true
+  },
+  {
+   "name": "Thủy điện Sơn Nham",
+   "set": {
+    "mw": 6.8
+   },
+   "why": "giấy phép: 6,8 MW",
+   "fuzzy": true
+  },
+  {
+   "name": "Điện gió V1-3 giai đoạn 2 (Duyên Hải 2)",
+   "dup_of": "Điện gió V1-3 Trà Vinh giai đoạn 2",
+   "why": "cùng dự án 48 MW của REE (BCTN REE 2025 gọi Duyên Hải 2)"
+  },
+  {
+   "name": "Thủy điện Vĩnh Sơn – Sông Hinh (cụm nhà máy của VSH)",
+   "spread_to": [
+    "thủy điện Vĩnh Sơn",
+    "Thủy Điện Sông Hinh",
+    "Thủy điện Thượng Kon Tum"
+   ],
+   "why": "356 MW = Vĩnh Sơn 66 + Sông Hinh 70 + Thượng Kon Tum 220 (VSH); PGV nắm VSH 30,55%: ghi chủ sở hữu vào từng nhà máy, bỏ dòng gộp để không cộng trùng"
+  }
+ ]
+}

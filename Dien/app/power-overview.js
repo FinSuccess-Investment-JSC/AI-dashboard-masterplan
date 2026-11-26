@@ -190,6 +190,10 @@ function mapPane(p) {
       method: 'Tỷ trọng sản lượng từ đầu năm theo bản tin vận hành ngày EVN (cùng ngày đối chiếu với tab Bức tranh ngành; gió và mặt trời tách từ số EVN, mái nhà là số EVN ước tính). Khí, dầu và LNG gộp trong bản tin EVN. Vai trò các đơn vị theo Luật Điện lực 61/2024, TT 29/2026/TT-BCT và bảng 18 doanh nghiệp.'}),
     ...(vc ? [sec('chain', '0.2', 'Các doanh nghiệp nằm trên chuỗi giá trị thế nào?', vc, {sub: 'Rê chuột vào một khâu để xem luồng; bấm khâu để xem các mã niêm yết.'})] : []),
     sec('mix', '0.3', 'Công suất đặt khác sản lượng thực phát thế nào?', gm, {method: 'Công suất đặt cuối 2025 theo biểu đồ "Công suất nguồn cuối 2025" (Bức tranh ngành › Cung dài hạn); "Khí, dầu & khác" là phần còn lại của tổng 87.600 MW; nhóm NLTT của công suất đặt có thể gồm sinh khối, điện rác. Sản lượng: các ngày có bản tin đủ nguồn ở cả hai năm.'}));
+  // 0.4 Bản đồ phân bổ nguồn điện (26/11/2026, theo yêu cầu người dùng): module power-plant-map.js, dữ liệu data/power-plants.js nạp khi mở mục.
+  const pm = card('dien-ov-plantmap', 'ov-plantmap', '');
+  renders.map.push(() => { if (window.PowerPlantMap) window.PowerPlantMap.mount(pm); else pm.append(gap('không tải được module bản đồ.')); });
+  p.append(sec('plants', '0.4', 'Nhà máy điện phân bổ ở đâu, ai sở hữu?', pm, {method: 'Phạm vi: nhiệt điện than, khí, LNG, dầu và điện gió theo danh sách rà soát từng nhà máy (GEM, EVN, MOIT, QĐ 768/QĐ-TTg, chủ đầu tư); thủy điện, điện mặt trời là nhà máy từ 10 MW có trên OpenStreetMap, cộng tài sản của doanh nghiệp niêm yết. Tổng trên bản đồ vì vậy thấp hơn công suất đặt toàn hệ thống (không gồm điện mặt trời mái nhà, thủy điện nhỏ). Sở hữu: BCTN, BCTC hợp nhất 2025 và Q3/2026 của từng mã; tỷ lệ là sở hữu kinh tế, qua công ty trung gian thì nhân theo chuỗi. Nhiều mã cùng sở hữu một nhà máy thì công suất vật lý chỉ tính một lần. Miền theo vùng phục vụ của 3 tổng công ty điện lực EVN (ranh giới 63 tỉnh trước sáp nhập 2025). Một số tọa độ là tâm xã hoặc vị trí cụm, ghi rõ trong chi tiết nhà máy.'}));
 }
 
 /* ===================== 6. 01 · Chuỗi giá trị theo công nghệ ===================== */
