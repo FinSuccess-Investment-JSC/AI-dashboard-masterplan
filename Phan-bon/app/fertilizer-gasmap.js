@@ -1,4 +1,4 @@
-/* Phân bón · Bức tranh ngành › 04 Nguồn khí › 4.4 Bản đồ hệ thống cung cấp khí Việt Nam (26/11/2026).
+/* Phân bón · Bức tranh ngành › 04 Nguồn khí › 4.3 Bản đồ hệ thống cung cấp khí Việt Nam (26/11/2026).
    - Nền: GeoJSON Natural Earth 1:10m (app/gas-base.js, scripts/build_gas_basemap.py), Hoàng Sa, Trường Sa thuộc Việt Nam; không dùng ảnh nền (tile) bên ngoài.
    - Lớp: bể trầm tích (vùng bán trong suốt) · mỏ (giàn) · đường ống có mũi tên hướng dòng khí · nhà máy xử lý/trạm tiếp bờ/trung tâm phân phối
      · kho LNG · nhà máy điện · nhà máy đạm (DPM, DCM nổi bật).
