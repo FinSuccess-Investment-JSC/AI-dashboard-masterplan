@@ -53,6 +53,11 @@ SPEC = {
     'fabric_natural': ('prod', r'^vải dệt từ sợi tự nhiên', 'cur'),
     'fabric_synthetic': ('prod', r'^vải dệt từ sợi tổng hợp', 'cur'),
     'garments': ('prod', r'^quần áo mặc thường', 'cur'),
+    # Dầu khí (26/11/2026): dầu thô (nghìn tấn), khí tự nhiên (triệu m3), LPG (nghìn tấn), xăng dầu các loại (nghìn tấn).
+    'crude_output': ('prod', r'^dầu mỏ thô khai thác|^dầu thô khai thác', 'cur'),
+    'gas_output': ('prod', r'^khí đốt thiên nhiên dạng khí|^khí tự nhiên dạng khí', 'cur'),
+    'lpg_output': ('prod', r'^khí hóa lỏng|^khí hoá lỏng', 'cur'),
+    'fuel_output': ('prod', r'^xăng,? dầu các loại', 'cur'),
     'pub_inv': ('inv', r'^tổng số', 'cur'),
     'pub_inv_central': ('inv', r'^trung ương', 'cur'),
     'pub_inv_local': ('inv', r'^địa phương', 'cur'),

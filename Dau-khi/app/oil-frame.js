@@ -34,6 +34,7 @@ const TREE = {
   mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Điều hành giá và Luật Dầu khí: tác động lên từng khâu.', subs: [
     {k: 'price', n: '01', t: 'Điều hành giá', d: 'Cơ chế điều hành giá xăng dầu và tác động trong quý.', canv: ['chPolicyPremium', 'chPolicyChange'], ids: ['dau-khi-27'], rest: true},
     {k: 'law', n: '02', t: 'Luật Dầu khí 2026', d: 'Tác động ở đầu nguồn chu kỳ đầu tư.', ids: ['dau-khi-28']},
+    {k: 'tax', n: '03', t: 'Thuế & xăng E10', d: 'Các mức thuế xăng dầu đang áp dụng và lộ trình xăng E10.', ids: []},
   ]},
 };
 const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
@@ -41,7 +42,13 @@ const ALIAS = {mt3: 'mt2', mt5: 'mt1', mt6: 'mt1', mt8: 'mt1', mt10: 'mt2'};
 
 function style() {
   const st = el('style'); st.id = 'oil-frame-style';
-  st.textContent = `.of-group{grid-column:1/-1;margin:18px 0 -4px;padding-top:14px;border-top:1px solid #E6E9F2}
+  st.textContent = `.tx2{margin:10px 0 6px;font-size:13px}.tx2-head,.tx2-row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:16px;align-items:center}
+.tx2-head{height:40px}.tx2-axis{position:relative;height:100%;border-bottom:1px solid #DCE1EE}.tx2-axis span{position:absolute;bottom:6px;transform:translateX(-50%);font:600 12px Inter,sans-serif;color:#7A84A6}
+.tx2-row{min-height:64px;border-bottom:1px solid #F0F2F8}.tx2-lane{position:relative;height:64px}
+.tx2-bar{position:absolute;top:8px;bottom:8px;display:flex;flex-direction:column;justify-content:center;padding:0 10px;border-radius:9px;overflow:hidden;white-space:nowrap;background:#E8ECFB;border-left:4px solid #2938A8}
+.tx2-bar b{font:700 13px Inter,sans-serif;color:#1F2A5C;overflow:hidden;text-overflow:ellipsis}.tx2-bar small{font-size:11.5px;color:#5A6385;overflow:hidden;text-overflow:ellipsis}.tx2-bar small a{color:#2938A8}
+.tx2-bar.e10{background:#E7F7EF;border-left-color:#2BB673;right:0;width:auto!important}
+.of-group{grid-column:1/-1;margin:18px 0 -4px;padding-top:14px;border-top:1px solid #E6E9F2}
 .of-group h3{margin:0;font:700 20px/1.3 Inter,system-ui,sans-serif;color:#1F2A5C}.of-group p{margin:4px 0 0;font-size:13.5px;color:#6B7392}
 .of-body>.kpis+.of-group{border-top:0;padding-top:0}
 /* Thang chữ thống nhất cho Dầu khí (26/11/2026): tiêu đề thẻ 16 · chữ thường 14 · chú thích 12.5; ba màu chữ */
@@ -386,6 +393,54 @@ function lngPrices() {
     labels: keys.map(vnDate), series: [{name: 'JKM (LNG giao Nhật–Hàn)', color: '#2938A8', values: keys.map(k => J.get(k))}, {name: 'Henry Hub (Mỹ)', color: '#D4A72C', values: keys.map(k => H.get(k) ?? null)}], digits: 2, unit: 'USD/MMBtu', zero: true,
     src: `<a href="${src.lng_jkm.source_url}" target="_blank" rel="noopener">ICE · JKM (Platts) hợp đồng tương lai, dữ liệu biểu đồ công khai</a> · <a href="https://www.eia.gov/dnav/ng/hist/rngwhhdd.htm" target="_blank" rel="noopener">EIA · Henry Hub giao ngay</a>`});
 }
+
+// Chính sách › Thuế & xăng E10: dòng thời gian các mức thuế đang áp dụng (đã mở văn bản gốc, xem data/oil/evidence.json).
+function taxTimeline() {
+  const host = $('#of-mt4-tax .of-body'); if (!host || $('#of-tax')) return;
+  const t = s => { const [d, m, y] = s.split('/').map(Number); return y + (m - 1) / 12 + (d - 1) / 365; };
+  const y0 = 2026, y1 = 2027.5, X = v => ((Math.min(Math.max(v, y0), y1) - y0) / (y1 - y0) * 100).toFixed(2) + '%', W = (a, b) => ((Math.min(b, y1) - Math.max(a, y0)) / (y1 - y0) * 100).toFixed(2) + '%';
+  const now = 2026 + 10 / 12 + 25 / 365;
+  const L = (u, n) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`;
+  const U19 = 'https://lsvn.vn/ban-hanh-nghi-quyet-ve-thue-xang-dau-va-nhien-lieu-bay-a172369.html', U43 = 'https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/9/43_2026_nq-cp_30092026_1-signed.signed.pdf',
+    U45 = 'https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/11/45_2026_nq-cp_31102026-signed.signed.pdf', UE = 'https://hatinh.gov.vn/vi/bai-viet/bo-cong-thuong-chot-lo-trinh-cung-ung-xang-e10-tren-toan-quoc-tu-0162026';
+  const rows = [
+    ['Thuế bảo vệ môi trường', 'xăng, dầu, nhiên liệu bay', [['16/4/2026', '31/12/2026', '0 đồng/lít', 'cut', `${L(U19, 'NQ 19/2026/QH16')} · kéo dài bởi ${L(U43, 'NQ 43/2026/NQ-CP')}`]]],
+    ['Thuế GTGT', 'xăng, dầu, nhiên liệu bay', [['16/4/2026', '31/12/2026', 'Không phải nộp, vẫn khấu trừ đầu vào', 'cut', `${L(U19, 'NQ 19/2026/QH16')} · ${L(U43, 'NQ 43/2026/NQ-CP')}`]]],
+    ['Thuế tiêu thụ đặc biệt', 'xăng các loại', [['16/4/2026', '30/6/2026', '0%', 'cut', L(U19, 'NQ 19/2026/QH16')], ['1/11/2026', '31/3/2027', '0%', 'cut', L(U45, 'NQ 45/2026/NQ-CP')]]],
+    ['Thuế nhập khẩu ưu đãi', 'xăng, dầu, nguyên liệu', [['9/3/2026', '31/12/2026', 'Mức ưu đãi theo NĐ 72/2026', 'cut', L(U43, 'NQ 43/2026/NQ-CP')]]],
+    ['Xăng sinh học', 'TT 50/2025/TT-BCT', [['1/6/2026', '30/6/2027', 'E10 bắt buộc toàn quốc · E5 RON92 bán song song đến 31/12/2030', 'e10', L(UE, 'Bộ Công Thương')]]],
+  ];
+  const axis = ['1/2026', '4/2026', '7/2026', '10/2026', '1/2027', '4/2027'].map(m => { const [mm, yy] = m.split('/'); return `<span style="left:${X(+yy + (mm - 1) / 12)}">T${m}</span>`; }).join('');
+  const card = el('div', 'card of-wide'); card.id = 'of-tax';
+  card.innerHTML = `<div class="chart-title">Thuế xăng dầu đang được giảm thế nào, đến khi nào</div><div class="chart-sub">Mỗi thanh là một mức thuế đặc biệt đang áp dụng, đặt theo thời gian hiệu lực trong văn bản · ngoài các thanh: mức thuế theo luật thông thường</div>
+    <div class="tx2"><div class="tx2-head"><div></div><div class="tx2-axis">${axis}<i class="gt-nowh" style="left:${X(now)}">Hôm nay</i></div></div>
+    ${rows.map(([n, sub, bars]) => `<div class="tx2-row"><div class="gt-name"><b>${n}</b><small>${sub}</small></div><div class="tx2-lane"><i class="gt-now" style="left:${X(now)}"></i>${bars.map(([a, b, lab, k, src]) => `<div class="tx2-bar ${k}" style="left:${X(t(a))};width:${W(t(a), t(b) + 1 / 365)}" title="${a} → ${b}"><b>${lab}</b><small>${a} → ${b === '30/6/2027' ? 'tiếp tục' : b} · ${src}</small></div>`).join('')}</div></div>`).join('')}</div>
+    <div class="pw-src">Nguồn: văn bản gốc trên Cổng thông tin Chính phủ (NQ 43, NQ 45), Luật sư Việt Nam (tóm lược NQ 19), Bộ Công Thương qua VOV (TT 50/2025). Từ 01/10/2026 thuế TTĐB xăng theo Luật 66/2025 cho tới khi NQ 45 có hiệu lực.</div>`;
+  host.append(card);
+}
+
+// Hải quan / Cục Thống kê theo tháng (data/oil-public-data.js): nhập xăng dầu, dầu thô, LPG; xuất dầu thô; sản lượng khai thác.
+function vnMonthly() {
+  const P = window.OIL_PUBLIC; if (!P) return;
+  const C = P.customs?.series || {}, N = P.nso?.series || {};
+  const lab = m => { const [y, mm] = m.split('-'); return `T${+mm}/${y.slice(2)}`; };
+  const cusSrc = `<a href="${P.customs.url}" target="_blank" rel="noopener">Cục Hải quan · số liệu xuất nhập khẩu hằng tháng</a> (báo cáo 2N/2X, bản tốt nhất mỗi tháng)`;
+  const pair = (host, id, title, vk, qk, color) => { const v = C[vk], q = C[qk]; if (!v) return; const ms = Object.keys(v).filter(m => m >= '2024-01').sort(); if (!ms.length) return;
+    const last = ms.at(-1), yoy = v[(+last.slice(0, 4) - 1) + last.slice(4)];
+    lineCard(host, {id, title, sub: `Tháng ${lab(last).slice(1)}: ${q ? Math.round(q[last] / 1000).toLocaleString('vi-VN') + ' nghìn tấn · ' : ''}${Math.round(v[last]).toLocaleString('vi-VN')} triệu USD${yoy ? ` (${v[last] >= yoy ? '+' : ''}${Math.round((v[last] / yoy - 1) * 100)}% so cùng kỳ)` : ''}`,
+      labels: ms.map(lab), series: [...(q ? [{name: 'Lượng (nghìn tấn)', type: 'bar', color: color, fill: color + '99', values: ms.map(m => q[m] != null ? q[m] / 1000 : null)}] : []), {name: 'Trị giá (triệu USD)', type: 'line', color: '#1F2A5C', axis: q ? 'y2' : 'y', values: ms.map(m => v[m])}],
+      y2: q ? 'triệu USD' : null, yTitle: q ? 'nghìn tấn' : 'triệu USD', zero: true, digits: 0, src: cusSrc}); };
+  pair($('#of-mt2-retail .of-body'), 'chImpFuel', 'Nhập khẩu xăng dầu thành phẩm theo tháng', 'imp_fuel', 'imp_fuel_q', '#2938A8');
+  pair($('#of-mt2-refining .of-body'), 'chImpCrude', 'Nhập khẩu dầu thô theo tháng (nguyên liệu lọc dầu)', 'imp_crude', 'imp_crude_q', '#7C3AED');
+  pair($('#of-mt2-gas .of-body'), 'chImpLpg', 'Nhập khẩu khí đốt hóa lỏng (LPG) theo tháng', 'imp_lpg', 'imp_lpg_q', '#59C5C8');
+  pair($('#of-mt2-upstream .of-body'), 'chExpCrude', 'Xuất khẩu dầu thô theo tháng', 'exp_crude', 'exp_crude_q', '#D4A72C');
+  const nsoSrc = `<a href="${P.nso.url}" target="_blank" rel="noopener">Cục Thống kê · biểu số liệu kinh tế – xã hội hằng tháng</a>`;
+  if (N.crude_output || N.gas_output) { const ms = [...new Set([...Object.keys(N.crude_output || {}), ...Object.keys(N.gas_output || {})])].filter(m => m >= '2024-01').sort();
+    if (ms.length) lineCard($('#of-mt2-upstream .of-body'), {id: 'chVnOutputM', title: 'Sản lượng khai thác dầu thô và khí tự nhiên Việt Nam theo tháng', sub: 'dầu thô: nghìn tấn · khí: triệu m³ · tháng hiện tại là ước tính của Cục Thống kê', labels: ms.map(lab),
+      series: [{name: 'Dầu thô (nghìn tấn)', type: 'bar', color: '#2938A8', fill: '#2938A899', values: ms.map(m => N.crude_output?.[m] ?? null)}, {name: 'Khí tự nhiên (triệu m³)', type: 'line', color: '#59C5C8', axis: 'y2', values: ms.map(m => N.gas_output?.[m] ?? null)}], y2: 'triệu m³', yTitle: 'nghìn tấn', zero: true, digits: 0, src: nsoSrc}); }
+}
+// Sub-tab đã có chart bổ sung thì ẩn ô "Chưa có dữ liệu cho mục này".
+function hideEmptyGaps() { $$('.of-body').forEach(b => { if (b.querySelector('[data-of-added], #of-tax')) b.querySelectorAll(':scope > .of-gap').forEach(g => { if (/Chưa có dữ liệu cho mục này/.test(g.textContent)) g.hidden = true; }); }); }
 function run() {
   if (document.body.dataset.oilFrame) return; document.body.dataset.oilFrame = '1';
   style();
@@ -406,6 +461,9 @@ function run() {
   crudeLayout();
   tankerRates();
   lngPrices();
+  taxTimeline();
+  vnMonthly();
+  hideEmptyGaps();
   const finHost = financePane();
   nav(finHost);
   // Tab Sources không còn trong thanh tab (nguồn đã ghi dưới từng chart, như Điện); nội dung vẫn trong DOM.

@@ -38,6 +38,12 @@ SPEC = {
     'imp_yarn': ('2N', None, r'^xơ,? sợi dệt', 'v'), 'imp_materials': ('2N', None, r'^nguyên phụ liệu dệt,? may,? da,? giày', 'v'),
     'car_import': ('2N', None, r'^ô tô nguyên chiếc', 'v'), 'import_drugs': ('2N', None, r'^dược phẩm', 'v'),
     'import_api': ('2N', None, r'^nguyên phụ liệu dược phẩm', 'v'),
+    # Dầu khí (26/11/2026): nhập xăng dầu, dầu thô, LPG; xuất dầu thô — trị giá triệu USD và lượng tấn.
+    'imp_fuel': ('2N', None, r'^xăng dầu các loại', 'v'), 'imp_fuel_q': ('2N', None, r'^xăng dầu các loại', 'q'),
+    'imp_crude': ('2N', None, r'^dầu thô', 'v'), 'imp_crude_q': ('2N', None, r'^dầu thô', 'q'),
+    'imp_lpg': ('2N', None, r'^khí đốt hóa lỏng|^khí đốt hoá lỏng', 'v'), 'imp_lpg_q': ('2N', None, r'^khí đốt hóa lỏng|^khí đốt hoá lỏng', 'q'),
+    'exp_crude': ('2X', None, r'^dầu thô', 'v'), 'exp_crude_q': ('2X', None, r'^dầu thô', 'q'),
+    'exp_fuel': ('2X', None, r'^xăng dầu các loại', 'v'),
     'exp_us': ('5X', 'hoa kỳ', r'^hàng thủy sản|^hàng thuỷ sản', 'v'), 'exp_cn': ('5X', 'trung quốc', r'^hàng thủy sản|^hàng thuỷ sản', 'v'),
     'exp_jp': ('5X', 'nhật bản', r'^hàng thủy sản|^hàng thuỷ sản', 'v'), 'exp_kr': ('5X', 'hàn quốc', r'^hàng thủy sản|^hàng thuỷ sản', 'v'),
     'exp_textile_us': ('5X', 'hoa kỳ', r'^hàng dệt,? may', 'v'), 'exp_textile_jp': ('5X', 'nhật bản', r'^hàng dệt,? may', 'v'),
