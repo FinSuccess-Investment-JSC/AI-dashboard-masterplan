@@ -47,9 +47,9 @@ const TREE = {
       {q: 'Chuỗi nào tăng nhờ cửa hàng hiện hữu, chuỗi nào nhờ mở mới?', id: 'rf-q-sssg', meta: '% so cùng kỳ 9T/2026 · chỉ chuỗi công bố cả doanh thu và SSSG', take: ['bl-43'],
         after: NOTE('<b>So theo mô hình:</b> điện máy – điện thoại (MWG khối ĐMX, FPT Shop) tăng nhờ năng suất cửa hàng, nên theo dõi SSSG và biên gộp; bách hóa (Bách Hóa Xanh, WinCommerce) và nhà thuốc (Long Châu) tăng nhờ mở mới, nên theo dõi tỷ lệ cửa hàng mới hòa vốn, chi phí bán hàng/doanh thu và doanh thu/cửa hàng sau 12 tháng. <b>Còn thiếu để dựng cầu nối:</b> số cửa hàng bình quân và SSSG theo quý của Long Châu, Bách Hóa Xanh, WinCommerce. Biên gộp từng doanh nghiệp: <a href="#rf-q-gm">Tài chính ngành › 1.3</a>.')},
     ]},
-    {k: 'network', t: 'Mạng lưới bán lẻ', d: 'Quy mô, độ phủ địa lý và tốc độ mở rộng mạng lưới cửa hàng của các chuỗi niêm yết, theo số Bizmap.live ghi nhận.', items: [
-      {q: 'Mỗi chuỗi đang có bao nhiêu điểm bán, phủ bao nhiêu tỉnh/thành?', id: 'rf-q-net-scale', meta: 'điểm bán Bizmap ghi nhận (không phải thị phần doanh thu) · bộ lọc dùng chung cho bản đồ', take: ['bl-70', 'bl-71', 'bl-72']},
-      {q: 'Mạng lưới từng chuỗi tập trung ở địa phương nào?', id: 'rf-q-net-geo', meta: 'tỷ trọng trong mạng lưới của chính chuỗi · 34 tỉnh/thành từ 01/07/2025', take: ['bl-74', 'bl-75', 'bl-76']},
+    {k: 'network', t: 'Mạng lưới bán lẻ', d: 'Quy mô và phân bổ 3 miền của mạng lưới cửa hàng: chuỗi niêm yết so với đối thủ cùng mô hình (bách hóa, điện máy, nhà thuốc, trang sức, mẹ & bé), theo số Bizmap.live ghi nhận.', items: [
+      {q: 'Chuỗi niêm yết đứng ở đâu so với đối thủ cùng mô hình?', id: 'rf-q-net-scale', meta: 'điểm bán Bizmap ghi nhận (không phải thị phần doanh thu) · chọn nhóm cạnh tranh và chuỗi ở phía trên, dùng chung cho bản đồ và bảng 3 miền', take: ['bl-70', 'bl-71', 'bl-72']},
+      {q: 'Mạng lưới từng chuỗi dồn vào miền nào?', id: 'rf-q-net-geo', meta: 'Bắc · Trung · Nam theo 34 tỉnh/thành từ 01/07/2025 · cùng nhóm cạnh tranh đang chọn', take: ['bl-74']},
       {q: 'Số Bizmap ghi nhận lệch bao nhiêu so với số doanh nghiệp công bố?', id: 'rf-q-net-official', meta: 'số công bố dùng cho doanh thu/cửa hàng · Bizmap dùng cho phân bố địa lý', take: ['bl-73']},
       {q: 'Mạng lưới đang mở rộng thế nào?', id: 'rf-q-net-hist', meta: 'ảnh chụp hằng tuần · điểm mới ghi nhận chưa chắc là cửa hàng mới khai trương', take: ['bl-77']},
     ]},
