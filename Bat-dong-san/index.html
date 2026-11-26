@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ngành Bất động sản Việt Nam · FinSuccess Research</title>
+<title>Ngành Bất động sản dân cư · FinSuccess Research</title>
 <link rel="stylesheet" href="app/dashboard-ui.css?v=8b5f71b2e791">
 <script src="app/sector-boot.js?v=555dd1c98235"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -26,12 +26,12 @@
 <script src="app/dashboard-ui.js?v=08a5cb16b308" defer></script>
 <script src="app/sector-smart.js?v=b3c41b61cc4a" defer></script>
 <script src="../data/company-valuation.js?v=59d42616e817" defer></script>
-<script src="../data/company-comparison.js?v=574a7b270c41" defer></script>
-<script src="../data/company-quarterly.js?v=ba60543d6f34" defer></script>
+<script src="../data/company-comparison.js?v=57100795fdb1" defer></script>
+<script src="../data/company-quarterly.js?v=95f3ff4a5c9f" defer></script>
 <script src="app/ticker-scope.js?v=6668f0e2c31a" defer></script>
 <script src="app/company-trend.js?v=cf26b8af3d15" defer></script>
 <script src="app/financial-comparison.js?v=915100cada6a" defer></script>
-<script src="app/research-layout.js?v=0ab9093c4795" defer></script>
+<script src="app/research-layout.js?v=9e4f1a521717" defer></script>
 <script src="app/research-sources.js?v=2e0a8424c403" defer></script>
 <script src="app/research-editorial.js?v=53be49980eb9" defer></script>
 <script src="app/pane-subtabs.js?v=252d143e2329" defer></script>
@@ -46,8 +46,12 @@
 <script src="app/labels-vi.js?v=1b42ffdeea84" defer></script>
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=20de8094fc85" defer></script>
-<script src="app/site-navigation.js?v=a46512102886" data-release="20261126-tach-sua-bia-oto"></script>
-<script src="../data/site-nav.js?v=12b2f1cfd308"></script>
+<script src="../data/re-financials.js?v=a0fc4295dc85" defer></script>
+<script src="app/industry-fin.js?v=1fcc521b8b75" defer></script>
+<script src="app/re-finance.js?v=d4f902c42bc1" defer></script>
+<script src="app/re-frame.js?v=c229b51a6f9d" defer></script>
+<script src="app/site-navigation.js?v=ac40d26f955c" data-release="20261126-bds-dan-cu-3"></script>
+<script src="../data/site-nav.js?v=31ac3fc76e94"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
 <link rel="stylesheet" href="app/research-layout.css?v=8cfc041b90be">
@@ -58,7 +62,7 @@
 </head>
 <body data-sector="realestate">
 <nav data-site-navigation="realestate"><a data-site-route="home" href="../">Trang tổng</a><a data-site-route="oil" href="../Dau-khi/">Dầu khí</a><a data-site-route="sugar" href="../Sugar/">Đường</a><a data-site-route="bank" href="../Bank/">Ngân hàng</a><a data-site-route="power" href="../Dien/">Điện</a><a data-site-route="realestate" href="./" aria-current="page">Bất động sản</a><a data-site-route="industrial" href="../Bat-dong-san-KCN/">BĐS KCN</a><a data-site-route="textile" href="../Det-may/">Dệt may</a><a data-site-route="port" href="../Cang-bien/">Cảng &amp; kho bãi</a><a data-site-route="agri" href="../Nong-nghiep/">Nông nghiệp &amp; thực phẩm</a><a data-site-route="seafood" href="../Thuy-san/">Thủy sản</a></nav>
-<div class="fiscbar"><span>Dashboard ngành · Bất động sản Việt Nam · khung nghiên cứu gốc 08/10/2026 · rà soát 09/11/2026</span></div>
+<div class="fiscbar"><span>Dashboard ngành · Bất động sản dân cư · khung nghiên cứu gốc 08/10/2026 · rà soát 09/11/2026</span></div>
 
 <nav class="majortabs">
   <button class="majortabbtn active" onclick="showMajorTab('mt1',this)">1. Tổng quan ngành</button>
@@ -74,7 +78,7 @@
 
 <div class="container">
   <section class="hero">
-    <h1>Bức tranh ngành bất động sản <em>Việt Nam</em></h1>
+    <h1>Bức tranh ngành bất động sản <em>dân cư</em></h1>
     <p>Nhà ở đi theo pháp lý – vốn – lãi suất. Đọc theo từng khâu, không gom thành một con số chung.</p>
     <div class="tagrow">
       <span class="tag">Bản nghiên cứu: 08/10/2026 · rà 09/11/2026</span>
@@ -102,9 +106,19 @@
       </div>
       <div class="card" data-block-id="bds-02" data-update-kind="ai" data-cadence="on-data-change" data-refresh-status="snapshot">
         <h3 style="margin-top:0;font-size:13.5px">Vị trí trong chu kỳ</h3>
-        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Nhà ở: giá đỉnh, thanh khoản chững.</mark> Giá căn hộ sơ cấp Hà Nội <b>95–116 triệu đ/m²</b> (+21–27% YoY), TP.HCM <b>76 triệu đ/m²</b> (+16% YoY), nhưng giao dịch cả nước Q3/2026 còn <b>92.004</b> (= 92% Q2, Q2 đã chỉ bằng 63,7% cùng kỳ) và tồn kho lên <b>51.950</b> căn/lô (27/34 tỉnh). Lãi vay mua nhà thả nổi <b>13–16%</b>.</p>
-        <p style="font-size:12.5px;line-height:1.65"><mark class="key-phrase">Vốn: đảo nợ được nhưng đắt.</mark> Trái phiếu bất động sản vẫn phát hành với lãi suất <b>11–12,5%</b>; dư nợ chậm trả giảm chậm; ba đỉnh đáo hạn <b>12/2026</b>, <b>8/2027</b>, <b>12/2027</b>.</p>
-        <div class="source-note">Nguồn: <a href="https://vov.vn/kinh-te/thi-truong-bat-dong-san-luong-giao-dich-giam-sau-gia-nha-van-o-dinh-post1342677.vov" target="_blank" rel="noopener">Bộ Xây dựng Q3/2026 (VOV 20/10/2026)</a> · <a href="https://doanhnhan.baophapluat.vn/nguon-cung-nha-ha-noi-lap-dinh-5-nam-phan-khuc-cao-cap-tiep-tuc-chiem-uu-the.html" target="_blank" rel="noopener">CBRE Q2/2026</a> · <a href="https://cafef.vn/chung-cu-ha-noi-vang-bong-can-ho-duoi-70-trieu-dong-m2-188260814143655062.chn" target="_blank" rel="noopener">Savills Q2/2026</a> · <a href="https://thitruongtaichinhtiente.vn/9-thang-nam-2026-fdi-thuc-hien-dat-21-07-ty-usd-cao-nhat-5-nam-86014.html" target="_blank" rel="noopener">FDI 9T/2026 (NSO)</a> · <a href="https://www.cushmanwakefield.com/vi-vn/vietnam/news/2026/08/northern-vietnam-industrial-property-market-maintains-growth-momentum" target="_blank" rel="noopener">Cushman &amp; Wakefield Q2/2026</a> · TPDN: HNX (tab Vốn &amp; Trái phiếu).</div>
+        <p style="font-size:14px;line-height:1.6"><mark class="key-phrase">Đã qua đỉnh khối lượng, giá bắt đầu quay đầu.</mark> Ở BĐS, giao dịch giảm trước, tồn kho tăng sau, giá giảm cuối cùng. Cả ba bước đã xuất hiện; riêng doanh nghiệp niêm yết vẫn còn đệm doanh số đã bán.</p>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Chỉ báo</th><th>Thứ tự trong chu kỳ</th><th>Mốc đỉnh</th><th>Mới nhất</th><th>Tín hiệu</th></tr></thead>
+          <tbody>
+            <tr><td><b>Giao dịch cả nước</b> (Bộ Xây dựng)</td><td>Đi trước</td><td>157.021 · Q2/2025</td><td><b>92.004</b> · Q3/2026</td><td><b class="neg">−33% so cùng kỳ</b>, giảm 3 quý liền</td></tr>
+            <tr><td><b>Tỷ lệ hấp thụ căn hộ Hà Nội</b> (CBRE)</td><td>Đi trước</td><td>79% · Q4/2025</td><td><b>63%</b> · Q3/2026</td><td><b class="neg">−16 điểm %</b></td></tr>
+            <tr><td><b>Tồn kho chủ đầu tư</b> (Bộ Xây dựng)</td><td>Đi cùng</td><td>26.700 · Q3/2025</td><td><b>51.950</b> · Q3/2026</td><td><b class="neg">gần gấp đôi</b> trong 4 quý</td></tr>
+            <tr><td><b>Giá sơ cấp căn hộ Hà Nội</b> (CBRE)</td><td>Đi sau</td><td>95 tr/m² · Q2/2026</td><td><b>86 tr/m²</b> · Q3/2026</td><td><b class="neg">−9% so quý trước</b>, lần giảm đầu tiên của chu kỳ</td></tr>
+            <tr><td><b>Người mua trả trước</b>, 10 chủ đầu tư ngoài VHM</td><td>Đệm lợi nhuận</td><td>chưa có đỉnh</td><td><b>55,5 nghìn tỷ</b> · Q3/2026</td><td><b class="pos">+76% so cùng kỳ</b>, vẫn đang tăng</td></tr>
+            <tr><td><b>Người mua trả trước</b>, VHM</td><td>Đệm lợi nhuận</td><td>143,5 nghìn tỷ · Q2/2026</td><td><b>125,5 nghìn tỷ</b> · Q3/2026</td><td><b class="neg">−13% so quý trước</b>, lần đầu giảm</td></tr>
+          </tbody></table></div>
+        <p style="font-size:14px;line-height:1.6"><b>Hàm ý:</b> lợi nhuận 2026–2027 của doanh nghiệp niêm yết phần lớn đã nằm trong doanh số đã bán, nên KQKD còn tốt trong khi thị trường đã xấu đi. Chỉ báo cần theo dõi là <b>người mua trả trước</b>: khi nó giảm liên tục, doanh nghiệp bắt đầu chịu chu kỳ. VHM đã có quý giảm đầu tiên.</p>
+        <div class="source-note">Nguồn: <a href="https://vov.vn/kinh-te/thi-truong-bat-dong-san-luong-giao-dich-giam-sau-gia-nha-van-o-dinh-post1342677.vov" target="_blank" rel="noopener">Bộ Xây dựng Q3/2026 (VOV 20/10/2026)</a> · <a href="https://thoibaotaichinhvietnam.vn/gia-nha-chung-cu-tiep-tuc-vut-bay-trong-quy-iii2025-186074.html" target="_blank" rel="noopener">Bộ Xây dựng Q3/2025</a> · <a href="https://doanhnhan.baophapluat.vn/nguon-cung-can-ho-ha-noi-quy-iii-2026-giam-40-thanh-khoan-di-xuong.html" target="_blank" rel="noopener">CBRE Hà Nội Q3/2026</a> · <a href="https://tapchikinhtetaichinh.vn/nguon-cung-can-ho-ha-noi-lap-ky-luc-gia-thu-cap-lan-dau-giam-sau-gan-4-nam-161086.html" target="_blank" rel="noopener">CBRE Q2/2026</a> · <a href="https://mekongasean.vn/thi-truong-chung-cu-ha-noi-ghi-nhan-nam-ky-luc-ve-nguon-cung-va-giao-dich-50809.html" target="_blank" rel="noopener">CBRE Q4/2025</a> · người mua trả trước: <a href="https://api-finfo.vndirect.com.vn/v4/financial_statements" target="_blank" rel="noopener">BCTC hợp nhất quý (VNDirect finfo)</a>, tab Tài chính ngành › 1.4. Đỉnh giao dịch cả nước lấy trong chuỗi từ Q2/2024.</div>
       </div>
     </div>
     <div class="card" style="margin-top:14px" data-block-id="bds-03" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
