@@ -13,7 +13,7 @@ const TECH = {'Urê từ khí': '#2938A8', 'Urê từ than': '#3d4653', 'DAP/MAP
 const RAW = {gas: '#2938A8', coal: '#3d4653', apatit: '#c98a00', other: '#861C52'};
 const PRODUCTS = ['Urê', 'DAP/MAP', 'Supe lân', 'Lân nung chảy', 'NPK'];
 const prodKey = p => p === 'DAP' || p === 'MAP' ? 'DAP/MAP' : p;
-const DRIVER = {'Urê từ khí': 'Giá khí theo hợp đồng (xem Chi phí đầu vào 2A.2)', 'Urê từ than': 'Giá than (TKV/nhập khẩu), định mức than', 'DAP/MAP': 'Apatit, lưu huỳnh, amoniac, nhiên liệu',
+const DRIVER = {'Urê từ khí': 'Giá khí theo hợp đồng (xem Bức tranh ngành › 04 Giá khí, mục 4.3)', 'Urê từ than': 'Giá than (TKV/nhập khẩu), định mức than', 'DAP/MAP': 'Apatit, lưu huỳnh, amoniac, nhiên liệu',
   'Supe lân': 'Apatit, lưu huỳnh/axit sulfuric', 'Lân nung chảy': 'Apatit, serpentin, than cục', 'NPK': 'Urê, DAP/MAP, kali nhập khẩu'};
 const SUP = {verified: ['Đã xác minh', '#2a9fa3'], geographic_only: ['Chỉ gần vị trí', '#c9b26b'], unknown: ['Chưa rõ', '#9AA3BD']};
 
