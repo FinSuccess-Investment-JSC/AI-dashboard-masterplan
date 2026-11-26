@@ -31,15 +31,56 @@ function mapPane(p) {
   p.append(vc ? sec('chain', '0.1', 'Đất, vốn và khách thuê đi qua những ai?', vc, {sub: 'Ba lớp bật/tắt được: luồng đất và hạ tầng, luồng hợp đồng và thanh toán, luồng pháp lý và phê duyệt. Rê chuột vào một bên hoặc đường nối để xem luồng.'}) : gap('chưa dựng được sơ đồ chuỗi giá trị.'));
 }
 
-/* ---------- 01 · Chuỗi giá trị theo mô hình kinh doanh (26/11/2026) ----------
-   Chỉ còn 1.1 Ba bước từ đất đến doanh thu: bảng bốn mô hình, tiện ích, đa ngành, ghi nhận doanh thu từng doanh nghiệp đã bỏ theo yêu cầu người dùng
-   (dữ liệu data/kcn/company-policy.json giữ lại, trang không còn dùng). */
+/* ---------- 01 · Chuỗi giá trị theo mô hình kinh doanh (26/11/2026, bản 2) ----------
+   1.1 Ba bước từ đất đến doanh thu (sơ đồ chung) + ngay dưới: bảng so sánh gọn ba mô hình (cho thuê đất KCN, nhà xưởng/kho xây sẵn,
+   tiện ích và dịch vụ). Mỗi dòng trả lời năm câu hỏi; biến cần theo dõi được tô đậm; thời điểm nhận tiền tách khỏi thời điểm ghi nhận
+   doanh thu. Ví dụ doanh nghiệp lấy từ thuyết minh BCTC kiểm toán (data/kcn/company-policy.json), chỉ ghi mã khi đã xác minh. */
+const MQ = ['Ai trả tiền', 'Tính tiền theo đơn vị nào', 'Vốn nằm ở đâu', 'Khi nào thu tiền · khi nào ghi nhận doanh thu', 'Biến quyết định lợi nhuận'];
+const POLICY_URL = new URL('../data/kcn/company-policy.json', document.baseURI);
+const METHOD_TXT = {one_off: 'một lần khi bàn giao', straight_line: 'phân bổ theo thời hạn thuê', mixed: 'một lần hoặc phân bổ, tùy hợp đồng'};
+function modelTable(host) {
+  const chips = list => list.map(t => `<button type="button" class="pv-chip" data-code="${esc(t)}">${esc(t)}</button>`).join(' ');
+  const draw = P => {
+    const cs = (P && P.companies) || [], sure = c => !/không nói rõ|xếp straight_line theo/i.test(c.gaps || ''), by = m => cs.filter(c => c.land_lease_recognition?.method === m && sure(c)).map(c => c.ticker); // chỉ mã có câu chính sách rõ trong BCTC (TIP chưa rõ)
+    const rbf = cs.filter(c => c.rbf_recognition?.method === 'straight_line').map(c => c.ticker), util = cs.filter(c => c.utility_recognition?.method).map(c => c.ticker);
+    const ex = (lbl, list) => list.length ? `<span class="ov-mx-ex">${esc(lbl)}: ${chips(list)}</span>` : '';
+    const rows = [
+      ['Cho thuê đất KCN', 'land', [
+        'Nhà máy thuê lại đất: doanh nghiệp FDI, doanh nghiệp trong nước',
+        'USD hoặc đồng/m² cho cả thời hạn thuê còn lại; cộng phí quản lý hạ tầng theo m²/năm',
+        'Bồi thường, tiền thuê đất trả Nhà nước, hạ tầng kỹ thuật; trên BCTC ở hàng tồn kho, chi phí dở dang dài hạn hoặc BĐS đầu tư',
+        '<b>Thu tiền:</b> đặt cọc khi ký, phần lớn trước hoặc khi bàn giao (ghi ở người mua trả tiền trước). <b>Ghi nhận:</b> một lần khi bàn giao nếu đủ điều kiện (thời hạn thuê trên 90% thời gian sử dụng, nhận trước từ 90% tiền thuê, không hủy ngang…; Thông tư 200/2014, Điều 79); nếu không, phân bổ đều theo thời hạn thuê (ghi ở doanh thu chưa thực hiện).' +
+          `<span class="ov-mx-exs">${ex('Ghi nhận một lần', by('one_off'))}${ex('Phân bổ', by('straight_line'))}${ex('Tùy hợp đồng', by('mixed'))}</span>`,
+        '<mark>Diện tích bàn giao</mark> và <mark>giá thuê thực hiện</mark> so với chi phí đất và hạ tầng trên mỗi m² thương phẩm'],
+        `<a class="ov-more" href="?kcn=landbank#mt2" data-kcn-go="landbank">Quỹ đất từng doanh nghiệp →</a>`],
+      ['Nhà xưởng, kho xây sẵn', 'rbf', [
+        'Doanh nghiệp thuê nhà xưởng, kho: sản xuất quy mô vừa, logistics',
+        'Đồng/m²/tháng (C&W báo USD/m²/tháng đến Q2/2026, đồng từ Q3/2026)',
+        'Nhà xưởng, kho đã xây (BĐS đầu tư)',
+        '<b>Thu tiền:</b> hằng tháng hoặc hằng quý, kèm tiền cọc. <b>Ghi nhận:</b> đều theo thời gian thuê (thuê hoạt động).' + `<span class="ov-mx-exs">${ex('Theo thuyết minh BCTC', rbf)}</span>`,
+        '<mark>Diện tích cho thuê</mark> và <mark>tỷ lệ lấp đầy</mark>; giá thuê/m² so với chi phí xây'],
+        `<a class="ov-more" href="?kcn=supply&seg=RBF#mt2" data-kcn-go="supply" data-kcn-seg="RBF">Lấp đầy nhà xưởng toàn thị trường →</a>`],
+      ['Tiện ích và dịch vụ', 'util', [
+        'Nhà máy đang vận hành trong KCN',
+        'kWh điện, m³ nước, m³ nước thải × đơn giá; phí quản lý theo m²',
+        'Trạm điện, trạm xử lý nước thải, mạng cấp nước (tài sản cố định)',
+        '<b>Thu tiền</b> và <b>ghi nhận</b> cùng kỳ: hằng tháng, khi cung cấp dịch vụ.' + `<span class="ov-mx-exs">${ex('Theo thuyết minh BCTC', util)}</span>`,
+        '<mark>Sản lượng dịch vụ</mark> và <mark>biên đơn vị</mark> (giá bán − giá mua); bộ dữ liệu chưa có sản lượng'],
+        `<a class="ov-more" href="?fin=companies#mt14" data-ov-fin="companies">Doanh nghiệp niêm yết →</a>`]
+    ];
+    host.innerHTML = `<div class="tablewrap ov-mx-wrap" data-no-fold><table class="kc-t ov-mx" data-no-fold><thead><tr><th>Mô hình</th>${MQ.map(q => `<th>${esc(q)}</th>`).join('')}</tr></thead><tbody>` +
+      rows.map(([name, , cells, link]) => `<tr><th scope="row">${esc(name)}<br>${link}</th>${cells.map((c, i) => `<td data-q="${esc(MQ[i])}">${c}</td>`).join('')}</tr>`).join('') + '</tbody></table></div>' +
+      `<p class="ov-cap"><b>Doanh nghiệp đa ngành</b> thường kết hợp nhiều mô hình (BCM, VGC; KBC có đô thị, IDC có điện và BOT), nên lãi hợp nhất còn chịu ảnh hưởng của các mảng ngoài KCN; chỉ quy biên về KCN khi doanh nghiệp công bố báo cáo bộ phận.</p>` +
+      `<div class="pw-src">Nguồn: ${P && P.general_rule && P.general_rule.url ? `<a href="${esc(P.general_rule.url)}" target="_blank" rel="noopener">Thông tư 200/2014/TT-BTC</a>` : 'Thông tư 200/2014/TT-BTC'} · thuyết minh BCTC kiểm toán 2025 của doanh nghiệp (IDC: 2024)</div>`;
+  };
+  draw(null);
+  fetch(POLICY_URL, {cache: 'no-cache'}).then(r => (r.ok ? r.json() : null)).then(draw).catch(() => {});
+}
 function modelPane(p, pane) {
   const bm = pane.querySelector('.business-models'), road = pane.querySelector('.research-roadmap');
   if (road) road.querySelector(':scope>h2')?.remove();
-  p.append(
-    road ? sec('steps', '1.1', 'Ba bước từ đất đến doanh thu', road, {sub: 'Quy trình chung của mọi mô hình: đất và đền bù → vốn và hạ tầng → cho thuê và bàn giao.'}) : null,
-  );
+  const tbl = el('div', 'card ov-mx-card'); modelTable(tbl);
+  p.append(road ? sec('steps', '1.1', 'Ba bước từ đất đến doanh thu', [road, tbl], {sub: 'Quy trình chung: đất và đền bù → vốn và hạ tầng → cho thuê và bàn giao. Bảng dưới so sánh ba mô hình kiếm tiền trên cùng năm câu hỏi.'}) : sec('steps', '1.1', 'Ba mô hình kiếm tiền', tbl));
   bm?.remove();
 }
 
@@ -69,12 +110,12 @@ function companiesPane(p, pane) {
   const watch = el('div', 'card');
   watch.innerHTML = `<div class="tablewrap" data-no-fold><table class="kc-t" data-no-fold><thead><tr><th>Mã</th><th>Biến cần theo dõi</th><th>Số kiểm tra được (BCTC ${QLb(F?.periods?.at(-1))})</th><th>Kiểm tra ở đâu</th></tr></thead><tbody>${tickers.map(t => { const l = lastP(t), i = l?.i, une = (at(t, 'unearned_st', i) || 0) + (at(t, 'unearned_lt', i) || 0), adv = at(t, 'adv_customers', i), pipe = (M?.landbank || []).filter(x => x.ticker === t && x.stage === 'pipeline');
     const facts = [adv != null ? `Người mua trả tiền trước ${nf(adv)} tỷ đ` : '', une ? `Doanh thu chưa thực hiện ${nf(une)} tỷ đ` : '', pipe.length ? `${pipe.length} dự án đang đầu tư (${pipe.map(x => esc(x.project)).join(', ')})` : ''].filter(Boolean);
-    return `<tr><td><button type="button" class="pv-chip" data-code="${t}">${t}</button><br><span class="kc-na">${esc((F.companies.find(c => c.ticker === t) || {}).note || '').split(':')[0]}</span></td><td>${esc(WATCH[t] || '')}</td><td>${facts.join('<br>') || '<span class="kc-na">—</span>'}<br><span class="kc-na">số dư cuối ${QLb(l?.p)}, ${['LHG', 'NTC', 'D2D'].includes(t) ? 'BCTC riêng' : 'BCTC hợp nhất'}</span></td><td><a class="ov-more" href="?kcn=landbank&co=${t}#mt2" data-kcn-go="landbank" data-kcn-co="${t}">Danh mục dự án, quỹ đất →</a><br><a class="ov-more" href="?fin=fin#mt14" data-ov-fin="fin">Tiền nhận trước, doanh thu chưa thực hiện →</a>${V[t]?.source_url ? `<br><a href="${esc(V[t].source_url)}" target="_blank" rel="noopener">Hồ sơ VNDirect ↗</a>` : ''}</td></tr>`; }).join('')}</tbody></table></div>`;
+    return `<tr><td><button type="button" class="pv-chip" data-code="${t}">${t}</button><br><span class="kc-na">${esc((F.companies.find(c => c.ticker === t) || {}).note || '').split(':')[0]}</span></td><td>${esc(WATCH[t] || '')}</td><td>${facts.join('<br>') || '<span class="kc-na">—</span>'}<br><span class="kc-na">số dư cuối ${QLb(l?.p)}, ${(F.companies.find(c => c.ticker === t) || {}).report === 'separate' ? 'BCTC riêng' : 'BCTC hợp nhất'}</span></td><td><a class="ov-more" href="?kcn=landbank&co=${t}#mt2" data-kcn-go="landbank" data-kcn-co="${t}">Danh mục dự án, quỹ đất →</a><br><a class="ov-more" href="?fin=fin#mt14" data-ov-fin="fin">Tiền nhận trước, doanh thu chưa thực hiện →</a>${V[t]?.source_url ? `<br><a href="${esc(V[t].source_url)}" target="_blank" rel="noopener">Hồ sơ VNDirect ↗</a>` : ''}</td></tr>`; }).join('')}</tbody></table></div>`;
   if (val) { val.closest('.grid')?.classList.remove('grid'); }
   const players = block('kcn-03'); // bảng nhóm, nguồn doanh thu, biến quyết định (trước nằm dưới mọi sub-tab Tổng quan)
   p.append(
     sec('quick', '2.1', 'Doanh nghiệp KCN đang được định giá thế nào?', [quick, val].filter(Boolean), {sub: `Định giá theo phiên, ngày ${dmy(window.COMPANY_VALUATION?.latest_observation)}; kỳ BCTC dùng cho EPS, giá trị sổ sách ghi trên từng mã.`}),
-    fc ? sec('compare', '2.2', 'Lợi nhuận, nợ vay, định giá từng mã qua các kỳ ra sao?', fc, {sub: 'Lịch sử theo kỳ và bảng chi tiết: chọn năm hoặc quý gần nhất, nhóm chỉ tiêu; bấm tiêu đề cột để sắp xếp. Số hợp nhất toàn doanh nghiệp.'}) : null,
+    fc ? sec('compare', '2.2', 'Lợi nhuận, nợ vay, định giá từng mã qua các kỳ ra sao?', fc, {sub: 'Lịch sử theo kỳ và bảng chi tiết: chọn năm hoặc quý gần nhất, nhóm chỉ tiêu; bấm tiêu đề cột để sắp xếp. Số BCTC toàn doanh nghiệp (hợp nhất; LHG, NTC, D2D là BCTC riêng).'}) : null,
     sec('watch', '2.3', 'Mỗi mã cần theo dõi biến nào?', [watch, players].filter(Boolean), {sub: 'Một biến gắn với kết quả của từng mã, kèm số kiểm tra được trong BCTC và link tới danh mục dự án ở Quỹ đất.'})
   );
 }
@@ -116,13 +157,13 @@ function forwardPane(p) {
    01 Tài chính ngành (kcn-finance.js, trước là sub-tab 05 của Bức tranh ngành) · 02 Doanh nghiệp niêm yết (trước ở Tổng quan).
    URL: ?fin=<fin|companies>#mt14; link cũ ?kcn=finance#mt2 và ?ov=companies#mt1 tự chuyển. */
 const FIN_TABS = [
-  ['fin', '01', 'Tài chính ngành', 'Doanh thu, biên lợi nhuận, dòng vốn đầu tư, công nợ và dòng tiền của 10 doanh nghiệp KCN niêm yết, từ BCTC quý.'],
+  ['fin', '01', 'Tài chính ngành', 'Doanh thu, biên lợi nhuận, dòng vốn đầu tư, công nợ và dòng tiền từ BCTC quý toàn doanh nghiệp của 10 doanh nghiệp KCN niêm yết.'],
   ['companies', '02', 'Doanh nghiệp niêm yết', 'So sánh nhanh định giá → lịch sử theo kỳ và bảng chi tiết → biến cần theo dõi của từng mã.']
 ];
 function finTab(pane1) {
   const mp = document.getElementById('pane-mt14'); if (!mp) return null;
   const S = el('section', 'section'); S.id = 'kcn-fin-tab'; mp.append(S);
-  S.append(el('div', 'sectionhead', '<div><h2 class="sec">Tài chính ngành</h2><p>BCTC hợp nhất của 10 doanh nghiệp khu công nghiệp niêm yết: tổng hợp theo mẫu đang chọn và từng doanh nghiệp.</p></div>'));
+  S.append(el('div', 'sectionhead', '<div><h2 class="sec">Tài chính ngành</h2><p>BCTC toàn doanh nghiệp của 10 doanh nghiệp KCN niêm yết (hợp nhất; LHG, NTC, D2D là BCTC riêng): tổng hợp theo mẫu đang chọn và từng doanh nghiệp.</p></div>'));
   const nav = el('div', 'pp-nav fn-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Tài chính ngành'); S.append(nav);
   const P2 = {}, built = new Set();
   FIN_TABS.forEach(([key, num, label, goal]) => {
@@ -167,7 +208,7 @@ function finTab(pane1) {
 
 const SECTIONS = [
   ['map', '00', 'Bản đồ ngành', 'Chuỗi giá trị ngành', 'Đất, vốn và khách thuê đi qua những ai?', mapPane],
-  ['model', '01', 'Chuỗi giá trị theo mô hình', 'Ba bước từ đất đến doanh thu', 'Mỗi mô hình kinh doanh tạo doanh thu, ghi nhận lợi nhuận ở khâu nào?', modelPane],
+  ['model', '01', 'Chuỗi giá trị theo mô hình', 'Ba bước · ba mô hình kiếm tiền', 'Mỗi mô hình kinh doanh tạo doanh thu, ghi nhận lợi nhuận ở khâu nào?', modelPane],
   ['forward', '02', 'Triển vọng', 'Nguồn cung mới, mốc chính sách', 'Điều gì có thể làm thay đổi luận điểm?', forwardPane]
 ];
 

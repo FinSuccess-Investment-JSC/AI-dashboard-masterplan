@@ -521,6 +521,35 @@
    },
    "src": "WEB_CBRE_9M_26S",
    "note": "Cùng đoạn: \"tăng 1,5% so với cùng kỳ năm 2025\". Giá CBRE, phạm vi Tier-1."
+  },
+  {
+   "id": "cw-s-2026q3-land",
+   "table": "market",
+   "mode": "replace",
+   "key": {
+    "period": "2026Q3",
+    "region": "South"
+   },
+   "set": {
+    "ask_vnd": 4892000.0
+   },
+   "src": "WEB_CW_S26Q3",
+   "note": "Bảng số liệu C&W Q3/2026: 4.892.000 đ/m²/kỳ thuê (lời văn làm tròn 4,89 triệu). Giá chưa gồm phí quản lý, VAT. C&W chỉ báo giá VND kỳ này, ghi tỷ giá USD/VND 26.250 nhưng không công bố giá USD."
+  },
+  {
+   "id": "cw-s-2026q3-rbw",
+   "table": "rbf",
+   "mode": "fill",
+   "key": {
+    "period": "2026Q3",
+    "region": "South",
+    "segment": "RBW"
+   },
+   "set": {
+    "ask_vnd": 124200.0
+   },
+   "src": "WEB_CW_S26Q3",
+   "note": "Kho xây sẵn miền Nam Q3/2026: 124.200 đ/m²/tháng, +0,3% so quý trước, +2,3% so cùng kỳ (C&W công bố); gồm phí dịch vụ, chưa VAT."
   }
  ],
  "qa_updates": [

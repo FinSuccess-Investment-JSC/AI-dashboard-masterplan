@@ -134,3 +134,24 @@
 .pf-scope{margin:8px 0 4px;font-size:12.5px;line-height:1.55;background:#f4f6fc;border-radius:8px;padding:7px 10px}
 #dataBrief .db-scope{margin-top:4px;font-size:11px;line-height:1.4;color:#5a6682;border-top:1px dashed #D9DEF4;padding-top:4px}
 #dataBrief .db-note{font-size:12px;color:#5a6682}
+
+/* Bảng so sánh ba mô hình (Chuỗi giá trị theo mô hình, 26/11/2026) */
+.ov-mx-card{margin-top:12px}
+.ov-mx th[scope=row]{width:150px;text-align:left;color:#1D2678;vertical-align:top;font-size:13px}
+.ov-mx th[scope=row] .ov-more{font-weight:500;font-size:11.5px}
+.ov-mx td{font-size:12.5px;line-height:1.5;vertical-align:top;min-width:140px}
+.ov-mx td:nth-child(5){min-width:260px}
+.ov-mx mark{background:#fff1c7;color:#1D2678;font-weight:600;padding:0 2px;border-radius:3px}
+.ov-mx-exs{display:flex;flex-direction:column;gap:3px;margin-top:6px}
+.ov-mx-ex{font-size:11.5px;color:#5a6682}
+@media (max-width:760px){
+ .ov-mx-wrap{overflow:visible}
+ .ov-mx,.ov-mx tbody,.ov-mx tr,.ov-mx td,.ov-mx th{display:block;width:auto;min-width:0!important}
+ .ov-mx thead{display:none}
+ .ov-mx tr{border:1px solid #D9DEF4;border-radius:10px;padding:8px 10px;margin-bottom:10px}
+ .ov-mx th[scope=row]{border:0;padding:0 0 6px;font-size:14px}
+ .ov-mx td{border:0;padding:4px 0}
+ .ov-mx td::before{content:attr(data-q);display:block;font-size:11px;font-weight:600;color:#2938A8;text-transform:none}
+}
+.kc-st-unverified{border-left-color:#d0d5e2}.kc-chip.kc-st-unverified{background:#f3f4f7;color:#5a6682;border:1px dashed #b8bfd0}
+.kc-stgs{grid-template-columns:repeat(4,minmax(0,1fr))}@media (max-width:980px){.kc-stgs{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:560px){.kc-stgs{grid-template-columns:1fr}}
