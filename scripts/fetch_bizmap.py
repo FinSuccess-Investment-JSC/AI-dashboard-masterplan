@@ -55,7 +55,8 @@ assert len(REGION) == 34
 
 
 def norm(s: str) -> str:
-    s = unicodedata.normalize('NFD', str(s or '')).encode('ascii', 'ignore').decode().lower()
+    s = str(s or '').replace('Đ', 'D').replace('đ', 'd')
+    s = unicodedata.normalize('NFD', s).encode('ascii', 'ignore').decode().lower()
     s = s.replace('-', ' ').replace('.', ' ')
     for pre in ('thanh pho ', 'tinh ', 'tp '):
         if s.startswith(pre): s = s[len(pre):]
@@ -115,15 +116,16 @@ def fetch_chain(api: Api, slug: str) -> dict:
     total = pick(chain, 'store_count', 'stores', 'total', 'count')
     logo = pick(chain, 'logo_url', 'logo')
     st = api.get('/v1/stats/provinces', chain=slug)
-    prov, unknown = {}, []
+    prov, unknown, pop = {}, [], {}
     for row in rows_of(st):
         name = province_name(pick(row, 'name', 'province_name', 'province', 'ten'))
         n = pick(row, 'stores', 'store_count', 'count', 'total')
         if n is None: continue
         if name is None: unknown.append(pick(row, 'name', 'province_name', 'province', 'code')); continue
         prov[name] = prov.get(name, 0) + int(n)
-    updated = pick(st if isinstance(st, dict) else {}, 'updated_at') or pick(info if isinstance(info, dict) else {}, 'updated_at')
-    return {'total': int(total) if total is not None else sum(prov.values()), 'provinces': prov, 'logo_url': logo,
+        if row.get('population'): pop[name] = int(row['population'])
+    updated = pick(st if isinstance(st, dict) else {}, 'updated_at') or pick(info if isinstance(info, dict) else {}, 'updated_at') or getattr(api, 'updated', None)
+    return {'total': int(total) if total is not None else sum(prov.values()), 'provinces': {k: v for k, v in prov.items() if v > 0}, 'population': pop, 'logo_url': logo,
             'unknown_provinces': [u for u in unknown if u], 'source_updated': updated}
 
 
@@ -175,7 +177,8 @@ def main(argv=None) -> int:
     api = Api(key)
     try:
         me = api.get('/v1/me')
-        print('fetch_bizmap: key', pick(me.get('data', me) if isinstance(me, dict) else {}, 'name', 'key_name', default='?'), '· còn', api.remaining)
+        api.updated = me.get('updated_at') if isinstance(me, dict) else None
+        print('fetch_bizmap: còn', me.get('remaining_today', api.remaining) if isinstance(me, dict) else api.remaining, 'lời gọi hôm nay')
         chains = {slug: fetch_chain(api, slug) for slug, *_ in CHAINS}
     except Exception as e:  # noqa: BLE001 — lỗi mạng/API: giữ bản hợp lệ gần nhất
         print('fetch_bizmap: lỗi API, giữ dữ liệu cũ:', e); return 0
@@ -184,7 +187,9 @@ def main(argv=None) -> int:
         print('fetch_bizmap: dữ liệu không đạt kiểm tra, giữ dữ liệu cũ:', '; '.join(errs)); return 0
     agg = aggregate(chains)
     upd = sorted({c['source_updated'] for c in agg.values() if c['source_updated']})
-    payload = {'schema': 1, 'mode': 'api', 'source': 'bizmap.live', 'source_url': 'https://bizmap.live/',
+    population = {}
+    for c in chains.values(): population.update(c.get('population') or {})
+    payload = {'schema': 1, 'mode': 'api', 'source': 'bizmap.live', 'source_url': 'https://bizmap.live/', 'population': dict(sorted(population.items())),
                'captured_at': datetime.now(timezone.utc).isoformat(timespec='seconds'), 'source_updated': upd[-1] if upd else None,
                'tracking_since': None, 'api_calls': api.calls, 'chains': agg}
     old = json.loads(OUT.read_text(encoding='utf-8')) if OUT.exists() else {}

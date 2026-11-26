@@ -129,18 +129,21 @@ function renderRegion() {
   if (api) stackRows(host, S.map(c => [c.name, ['Bắc', 'Trung', 'Nam'].map(r => c.regions?.[r] || 0)]), ['Miền Bắc', 'Miền Trung', 'Miền Nam'], ['#1D2678', '#59C5C8', '#C8102E'], state.share);
   else stackRows(host, S.map(c => { const t = (c.top_provinces || []).map(x => x.stores); return [c.name, [...t, Math.max(0, c.stores - t.reduce((a, b) => a + b, 0))]]; }), ['Tỉnh lớn nhất', 'Tỉnh thứ 2', 'Tỉnh thứ 3', 'Các tỉnh còn lại'], ['#1D2678', '#4A62C4', '#9AAAC8', '#C9CDD6'], true);
 }
+const POP = D.population || {}, UNIT = {false: 'điểm bán', true: '% mạng lưới', pop: 'điểm bán / 10.000 dân'};
+// Số điểm bán, % trong mạng lưới của chuỗi, hoặc điểm bán trên 10.000 dân (dân số tỉnh theo Bizmap/WorldPop).
+function metric(c, p) { const v = c.provinces?.[p] || 0; return state.share === 'pop' ? (POP[p] ? v / POP[p] * 1e4 : null) : state.share ? v / c.stores * 100 : v; }
 function keyProvinces(n = 8) { const t = {}; S.forEach(c => Object.entries(provOf(c)).forEach(([p, v]) => { t[p] = (t[p] || 0) + v; })); return Object.entries(t).sort((a, b) => b[1] - a[1]).slice(0, n).map(x => x[0]); }
 function renderProv() {
   if (!byId('bnProv')) return; const P = keyProvinces(8), cs = chosen().length ? chosen() : S;
-  barLineChart('bnProv', {categories: P, series: cs.map(c => ({name: c.name, color: c.color, values: P.map(p => { const v = c.provinces?.[p] || 0; return state.share ? v / c.stores * 100 : v; })})), unit: state.share ? '% mạng lưới' : 'điểm bán', digits: state.share ? 1 : 0, height: 280, rotateLabels: false});
+  barLineChart('bnProv', {categories: P, series: cs.map(c => ({name: c.name, color: c.color, values: P.map(p => metric(c, p))})), unit: UNIT[String(state.share)], digits: state.share ? 1 : 0, height: 280, rotateLabels: false});
 }
 function renderHeat() {
   const host = byId('bnHeat'); if (!host) return;
   const P = state.prov ? [state.prov] : keyProvinces(20), cs = S;
-  const val = (c, p) => { const v = c.provinces?.[p] || 0; return state.share ? v / c.stores * 100 : v; };
+  const val = metric;
   const max = Math.max(1, ...cs.flatMap(c => P.map(p => val(c, p))));
   host.innerHTML = `<div class="bn-heat-w"><table class="bn-heat"><thead><tr><th>Tỉnh/thành</th>${cs.map(c => `<th style="--bc:${c.color}">${esc(c.ab)}</th>`).join('')}</tr></thead><tbody>${P.map(p => `<tr><th>${esc(p)}</th>${cs.map(c => { const v = val(c, p);
-    return `<td style="background:rgba(29,38,120,${(0.06 + 0.86 * v / max).toFixed(2)});color:${v / max > 0.45 ? '#fff' : 'inherit'}" title="${esc(c.name)} · ${esc(p)}: ${state.share ? nf(v, 1) + '%' : nf(v)}">${v ? (state.share ? nf(v, 1) : nf(v)) : '·'}</td>`; }).join('')}</tr>`).join('')}</tbody></table></div>`;
+    return `<td style="background:rgba(29,38,120,${(0.06 + 0.86 * v / max).toFixed(2)});color:${v / max > 0.45 ? '#fff' : 'inherit'}" title="${esc(c.name)} · ${esc(p)}: ${state.share ? nf(v, state.share === 'pop' ? 2 : 1) + ' ' + UNIT[String(state.share)] : nf(v) + ' điểm bán'}">${v ? (state.share ? nf(v, state.share === 'pop' ? 2 : 1) : nf(v)) : '·'}</td>`; }).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
 function renderHist() {
   if (!byId('bnHist')) return; const H = D.history || [];
@@ -158,7 +161,7 @@ if (!api) { drop('bnProv'); drop('bnHeat'); }
 if ((D.history || []).length < 2) drop('bnHist');
 renderFilters(); renderKpis(); renderScale(); renderOfficial(); renderRegion(); if (api) { renderProv(); renderHeat(); } if ((D.history || []).length >= 2) renderHist();
 toggles('bnScale', [['ticker', 'Theo doanh nghiệp'], ['cat', 'Theo ngành bán lẻ']], 'group');
-if (api) toggles('bnProv', [[false, 'Số điểm bán'], [true, 'Tỷ trọng trong mạng lưới']], 'share');
+if (api) toggles('bnProv', [[false, 'Số điểm bán'], [true, 'Tỷ trọng trong mạng lưới'], ...(Object.keys(POP).length ? [['pop', 'Trên 10.000 dân']] : [])], 'share');
 
 const tot = c => S.find(x => x.slug === c);
 const bhx = tot('bach-hoa-xanh'), wm = tot('winmart-plus');
@@ -166,7 +169,7 @@ src(byId('bnKpis')?.closest('.card'), SRC_TXT);
 src(byId('bnMap')?.closest('.card'), SRC_TXT + (api ? '' : ' · 3 tỉnh nhiều cửa hàng nhất mỗi chuỗi'));
 src(byId('bnScale')?.closest('.card'), SRC_TXT); src(byId('bnRegion')?.closest('.card'), SRC_TXT);
 src(byId('bnOfficial')?.closest('.card'), 'Bizmap.live; số công bố: báo cáo doanh nghiệp (Bán lẻ hiện đại › 2.2)');
-src(byId('bnProv')?.closest('.card'), SRC_TXT); src(byId('bnHeat')?.closest('.card'), SRC_TXT); src(byId('bnHist')?.closest('.card'), SRC_TXT);
+src(byId('bnProv')?.closest('.card'), SRC_TXT + ' · dân số: WorldPop qua bizmap.live'); src(byId('bnHeat')?.closest('.card'), SRC_TXT + ' · dân số: WorldPop qua bizmap.live'); src(byId('bnHist')?.closest('.card'), SRC_TXT);
 byId('bnMap')?.after(make('div', 'source-note method-note', 'Vòng tròn đặt tại trung tâm hành chính tỉnh/thành (34 đơn vị từ 01/07/2025), diện tích theo số điểm bán. Không hiển thị tọa độ từng cửa hàng khi chưa xác nhận quyền tái phân phối dữ liệu của bizmap.live.' + (api ? '' : ' Hiện có 3 tỉnh nhiều cửa hàng nhất của mỗi chuỗi.')));
 byId('bnOfficial')?.after(make('div', 'source-note method-note', 'Độ phủ dữ liệu = Bizmap ghi nhận ÷ số công bố, chỉ tính khi cùng phạm vi chuỗi; hai nguồn khác ngày (công bố cuối quý, Bizmap ' + dd(D.source_updated) + '). Phân tích doanh thu/cửa hàng dùng số công bố; Bizmap dùng cho phân bố địa lý.'));
 byId('bnRegion')?.after(make('div', 'source-note method-note', api ? 'Miền Trung gồm cả Tây Nguyên, Nam Trung Bộ. Tỷ trọng tính trên số điểm bán Bizmap ghi nhận, không phải thị phần doanh thu.' : 'Tỷ trọng 3 tỉnh nhiều cửa hàng nhất trong tổng điểm bán Bizmap ghi nhận của từng chuỗi; không phải thị phần doanh thu.'));
@@ -174,7 +177,8 @@ take('bnKpis', `WinMart+ ghi nhận ${nf(wm.stores)} điểm bán ở ${wm.provi
 take('bnMap', 'Hai chuỗi thực phẩm lớn có trọng tâm ngược nhau: WinMart+ mạnh nhất ở Hà Nội, BHX ở TP.HCM và miền Đông Nam Bộ, nên cạnh tranh trực diện tập trung ở các tỉnh cả hai cùng dày. Kiểm tiếp số điểm mới ở tỉnh còn trống của mỗi chuỗi.');
 const over = S.filter(c => OFFICIAL[c.slug]?.[2] && c.stores > OFFICIAL[c.slug][0] * 1.1).map(c => c.name);
 take('bnOfficial', (over.length ? `Bizmap ghi nhận nhiều hơn số công bố ở ${over.join(', ')}, có thể gồm điểm đã đóng hoặc định dạng khác, nên không dùng Bizmap để tính doanh thu/cửa hàng. ` : '') + 'Kiểm tiếp số công bố cuối năm của MWG, FRT, PNJ để cập nhật độ phủ.');
-take('bnRegion', api ? 'Mức tập trung theo miền cho biết dư địa mở rộng: chuỗi còn mỏng ở một miền có chỗ mở thêm nhưng chịu chi phí logistics mới. Kiểm tiếp tỷ trọng miền qua các ảnh chụp tuần.' : 'Chuỗi có 3 tỉnh lớn nhất chiếm phần lớn mạng lưới (BHX, AVAKids, An Khang) phụ thuộc vào sức mua của ít địa phương; chuỗi phủ đều (WinMart+, Long Châu, TGDĐ) ít rủi ro tập trung hơn. Kiểm tiếp khi có đủ phân bổ 34 tỉnh.');
+const regShare = (c, r) => c?.regions ? c.regions[r] / Object.values(c.regions).reduce((x, y) => x + y, 0) * 100 : null;
+take('bnRegion', api ? `BHX có ${nf(regShare(bhx, 'Nam'))}% điểm bán ở miền Nam, WinMart+ có ${nf(regShare(wm, 'Bắc'))}% ở miền Bắc: hai chuỗi thực phẩm lớn mạnh ở hai đầu đất nước, phần còn mỏng của mỗi bên là dư địa mở rộng nhưng kèm chi phí kho vận mới. Kiểm tiếp tỷ trọng miền qua các ảnh chụp tuần.` : 'Chuỗi có 3 tỉnh lớn nhất chiếm phần lớn mạng lưới (BHX, AVAKids, An Khang) phụ thuộc vào sức mua của ít địa phương; chuỗi phủ đều (WinMart+, Long Châu, TGDĐ) ít rủi ro tập trung hơn. Kiểm tiếp khi có đủ phân bổ 34 tỉnh.');
 take('bnScale', 'Số điểm bán Bizmap ghi nhận, không phải thị phần doanh thu: chuỗi thực phẩm và nhà thuốc có nhiều điểm nhất nhưng doanh thu mỗi điểm thấp hơn điện máy, trang sức. Đối chiếu doanh thu/cửa hàng ở mục 2.2.');
 
 // Bản đồ nạp khi khối hiện ra (pane ẩn thì chưa tải Leaflet).
