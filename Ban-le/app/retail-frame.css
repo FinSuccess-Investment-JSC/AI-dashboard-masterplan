@@ -157,3 +157,34 @@
 .bn-heat thead th{text-align:center;border-bottom:3px solid var(--bc)}
 .bn-heat td{text-align:center;padding:5px 4px;border-radius:4px;font-variant-numeric:tabular-nums}
 @media (max-width:600px){.bn-map{height:380px}.bn-row{grid-template-columns:86px minmax(0,1fr)}}
+
+/* Mạng lưới bán lẻ · bản 2 (27/11/2026): nhóm cạnh tranh, bảng 3 miền, bản đồ hình tròn chia múi. */
+.bn-groups{display:flex;flex-wrap:wrap;gap:4px;padding:4px;border:1px solid var(--line,#e3e7f0);border-radius:10px;background:var(--card,#fff);width:max-content;max-width:100%}
+.bn-grp{border:0;background:transparent;border-radius:7px;padding:6px 12px;font:600 12.5px Inter,system-ui,sans-serif;color:var(--ink2,#3b4256);cursor:pointer}
+.bn-grp.on{background:#2938A8;color:#fff}
+.bn-chip.listed{font-weight:700}
+.bn-tk{margin-left:auto;font:700 11px Inter,sans-serif;color:var(--muted,#7a8399)}
+.bn-peer{margin-left:auto;font:600 10.5px Inter,sans-serif;color:var(--muted,#7a8399);background:var(--line,#eef0f5);border-radius:999px;padding:1px 7px;white-space:nowrap}
+.bn-kpi.peer{border-top-style:dashed}
+.bn-map{height:500px;background:#eef3f9;border-color:#dfe6f2}
+.bn-map .leaflet-container{background:#eef3f9}
+.bn-pie{position:relative;filter:drop-shadow(0 1px 2px rgba(29,38,120,.25))}
+.bn-pie svg{display:block}
+.bn-pie b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 10.5px Inter,sans-serif;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.45);pointer-events:none}
+.bn-map .leaflet-tooltip{font:12px/1.5 Inter,system-ui,sans-serif;border-radius:8px;border-color:#d6dbe8;box-shadow:0 4px 14px rgba(29,38,120,.12)}
+.bn-lg-note{color:var(--muted,#7a8399);font-size:12px}
+.bn-reg-w{overflow-x:auto}
+.bn-reg{width:100%;min-width:560px;border-collapse:collapse;font-size:13px}
+.bn-reg th,.bn-reg td{padding:7px 10px;border-bottom:1px solid var(--line,#eef0f5);text-align:left;vertical-align:middle}
+.bn-reg thead th{font:700 11.5px Inter,sans-serif;text-transform:uppercase;letter-spacing:.04em;color:var(--muted,#7a8399);background:color-mix(in srgb,var(--card,#fff) 92%,#2938A8 5%)}
+.bn-reg tbody th{font-weight:600;white-space:nowrap}
+.bn-reg tr.listed th{font-weight:700}
+.bn-reg .r{text-align:right;white-space:nowrap}.bn-reg .r small{display:block;color:var(--muted,#7a8399);font-size:11px}
+.bn-rc{display:flex;justify-content:space-between;gap:8px;font-variant-numeric:tabular-nums}.bn-rc small{color:var(--muted,#7a8399)}
+.bn-rbar{height:5px;border-radius:3px;background:var(--line,#eef0f5);margin-top:4px;overflow:hidden}.bn-rbar span{display:block;height:100%;border-radius:3px}
+.bn-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:0}
+.bn-reg .bn-peer{margin-left:6px}
+.bn-sum th,.bn-sum td{background:color-mix(in srgb,var(--card,#fff) 94%,#3D4352 5%);font-weight:700}
+@media (max-width:600px){.bn-map{height:420px}.bn-groups{width:100%}}
+.bn-map{height:680px}
+@media (max-width:600px){.bn-map{height:520px}}
