@@ -5130,7 +5130,11 @@
      "bds-44",
      "bds-45",
      "bds-46",
-     "bds-47"
+     "bds-47",
+     "bds-60",
+     "bds-57",
+     "bds-58",
+     "bds-59"
     ]
    },
    "how": "Khi có báo cáo ngành KCN mới (VDSC hoặc CTCK khác) hoặc kết quả ký mới thực tế 2025–2026 của KBC, SIP, NTC, LHG: thay số dự phóng bằng số thực tế, giữ năm cũ; ghi trang và đoạn văn vào data/realestate-market/evidence.json",
