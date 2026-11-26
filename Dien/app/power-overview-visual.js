@@ -246,7 +246,7 @@ function tech(host, ctx, id0, stage0) {
       <div class="vt-legend">${Object.entries(FLOW).map(([k, v]) => `<span><i class="vz-k-${k}"></i>${v[0]}</span>`).join('')}</div>
       <ol class="vt-chain" aria-label="Quy trình ${esc(t.long)}">${t.stages.map((st, i) => `<li><button type="button" class="vt-st vz-f-${st.flow}" data-s="${st.id}" style="--c:${t.color}">${icon(st.icon)}<b>${esc(st.t)}</b><small>${esc(st.s)}</small>${st.chart ? '<i class="vt-dot" title="có biểu đồ dữ liệu">●</i>' : ''}</button></li>`).join('')}</ol>
       <div class="vt-detail"></div>
-      <div class="vt-foot"><div><h4>Rủi ro chính</h4><ul class="ov-list">${(O.source_profiles[t.groups[0]]?.risks || []).map(r => `<li>${esc(r)}</li>`).join('')}</ul></div><div><h4>Doanh nghiệp có tài sản</h4><p>${ctx.chips(t.groups[0])}</p></div></div>`;
+      <div class="vt-foot"><div><h4>Rủi ro chính</h4><ul class="ov-list">${(O.source_profiles[t.groups[0]]?.risks || []).map(r => `<li>${esc(r)}</li>`).join('')}</ul></div><div><h4>Doanh nghiệp hoạt động trong ngành</h4><p>${ctx.chips(t.groups[0])}</p></div></div>`;
     const det = body.querySelector('.vt-detail');
     const pickStage = sid2 => {
       const st = t.stages.find(s => s.id === sid2) || t.stages[0];
