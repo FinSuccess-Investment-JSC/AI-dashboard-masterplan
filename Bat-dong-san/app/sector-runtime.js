@@ -84,8 +84,8 @@ if(oil){
  }
  if(['brent','gasoline','diesel'].every(available)){
   crackRows=M.cracks(rows('brent'),rows('gasoline'),rows('diesel'));
-  const base=monthly(crackRows,'diesel_crack');const fields=['gasoline_crack','crack321','brent','gasoline','diesel'];
-  const maps=Object.fromEntries(fields.map(f=>[f,new Map(monthly(crackRows,f).map(r=>[r.date,r.value]))]));
+  const base=monthly(crackRows,'diesel_crack','mean',999);const fields=['gasoline_crack','crack321','brent','gasoline','diesel'];
+  const maps=Object.fromEntries(fields.map(f=>[f,new Map(monthly(crackRows,f,'mean',999).map(r=>[r.date,r.value]))]));
   const rs=base.map(r=>({...r,diesel_crack:r.value,...Object.fromEntries(fields.map(f=>[f,maps[f].get(r.date)]))}));
   plot('chCrack',rs,[['Crack diesel','diesel_crack',color[1]],['Crack xăng USGC','gasoline_crack',color[3]],['Crack 3-2-1','crack321',color[0]]],'USD/thùng');
   table('tbl-crack',['Tháng','Crack diesel','Crack xăng','Crack 3-2-1'],rs,['diesel_crack','gasoline_crack','crack321']);
@@ -96,8 +96,8 @@ if(oil){
  }
  if(available('singapore_cracks')){
   const daily=rows('singapore_cracks');
-  const gasoil=monthly(daily,'gasoil_crack');
-  const gasoline=new Map(monthly(daily,'gasoline_crack').map(r=>[r.date,r.value]));
+  const gasoil=monthly(daily,'gasoil_crack','mean',999);
+  const gasoline=new Map(monthly(daily,'gasoline_crack','mean',999).map(r=>[r.date,r.value]));
   const rs=gasoil.map(r=>({...r,gasoil_crack:r.value,gasoline_crack:gasoline.get(r.date)}));
   plot('chSingaporeCrack',rs,[['Gasoil 10ppm – Dubai','gasoil_crack',color[1]],['Gasoline RON 92 – Dubai','gasoline_crack',color[3]]],'USD/thùng');
   table('tbl-singapore-crack',['Tháng','Gasoil – Dubai','Gasoline – Dubai'],rs,['gasoil_crack','gasoline_crack'],2);
@@ -123,7 +123,7 @@ if(oil){
  }
  note('chSpare',['opec_capacity'],'EIA STEO bản '+(src.opec_capacity?.issue||'mới nhất')+': sheet 3dtab, mã cops_opec và padi_OPEC. Chỉ vẽ tháng có cả hai ước tính; tháng dự báo chưa có gián đoạn thực tế để trống.');
  if(available('middle_east_crude_exports')){
-  const exports=rows('middle_east_crude_exports').slice(-30).map(r=>({...r,label:'T'+Number(r.date.slice(5,7))+'/'+r.date.slice(2,4)}));
+  const exports=rows('middle_east_crude_exports').map(r=>({...r,label:'T'+Number(r.date.slice(5,7))+'/'+r.date.slice(2,4)}));
   plot('chMiddleEastExports',exports,[['Saudi Arabia','saudi',color[0]],['Kuwait','kuwait',color[2]]],'triệu thùng/ngày',2,270);
   table('tbl-middleeast-exports',['Tháng','Saudi Arabia · mb/d','Kuwait · mb/d'],exports,['saudi','kuwait'],2);
   currentReading('chMiddleEastExports',`JODI tháng ${exports.at(-1).label}: Saudi Arabia ${nf(exports.at(-1).saudi,2)}, Kuwait ${nf(exports.at(-1).kuwait,2)} triệu thùng/ngày. Hai chuỗi này không đại diện tổng xuất khẩu Trung Đông.`);
@@ -131,7 +131,7 @@ if(oil){
  }
  note('chMiddleEastExports',['middle_east_crude_exports'],'JODI Oil: CRUDEOIL / TOTEXPSB / KBD, đổi nghìn sang triệu thùng/ngày. Chỉ giữ tháng cả Saudi Arabia và Kuwait cùng báo cáo. Nguồn thường cập nhật quanh ngày 20; job kiểm theo lịch tháng. Thiếu số không được điền bằng 0, không suy ra tổng Trung Đông. Link IEA là bối cảnh xuất khẩu dầu vùng Vịnh rộng hơn, không phải dữ liệu của hai đường chart.');
  if(available('wti_cot')){
-  const cot=rows('wti_cot').slice(-104);
+  const cot=rows('wti_cot');
   plot('chCot',cot,[['Managed money · ròng','net_thousands',color[0]]],'nghìn hợp đồng',1,290);
   fillTable('tbl-cot',['Tuần kết thúc','Mua','Bán','Ròng (nghìn HĐ)'],cot.map(r=>[short(r.date),nf(r.long,0),nf(r.short,0),nf(r.net_thousands,1)]));
   const point=cot.at(-1);
@@ -159,14 +159,14 @@ if(oil){
  const priceMethod='Tải lịch sử XLS từ EIA; bỏ ngày thiếu số, không điền 0. Bình quân tháng từ các phiên có dữ liệu; dấu * là tháng hiện tại chưa đủ kỳ. Spread/crack chỉ dùng ngày có đủ các đầu vào; xăng và ULSD đổi USD/gallon × 42 rồi trừ Brent.';
  [['chBrent24',['brent']],['chBrentYear',['brent']],['chBrentWti',['brent','wti']],['chCrack',['brent','gasoline','diesel']],['chMoit',['brent','gasoline','diesel']]].forEach(([id,ks])=>note(id,ks,priceMethod));
  const stocks=[['chCrudeStock','tbl-crudestock','crude_stock','Tồn kho dầu thô','last'],['chCushing','tbl-cushing','cushing','Tồn kho Cushing','last'],['chUsProd','tbl-usprod','us_production','Sản lượng dầu Mỹ','mean']];
- stocks.forEach(([id,tbl,key,name,method])=>{if(available(key)){const rs=monthly(rows(key),'value',method,36);plot(id,rs,[[name,'value',color[2]]],key==='us_production'?'triệu thùng/ngày':'triệu thùng');table(tbl,['Tháng',name],rs,['value'])}note(id,[key],method==='last'?'Lấy số tuần cuối cùng có dữ liệu trong từng tháng; tháng hiện tại là mốc gần nhất, chưa phải cuối tháng.':'Bình quân các quan sát tuần có dữ liệu trong tháng; không phải sản lượng tháng do EIA điều tra riêng.');});
+ stocks.forEach(([id,tbl,key,name,method])=>{if(available(key)){const rs=monthly(rows(key),'value',method,999);plot(id,rs,[[name,'value',color[2]]],key==='us_production'?'triệu thùng/ngày':'triệu thùng');table(tbl,['Tháng',name],rs,['value'])}note(id,[key],method==='last'?'Lấy số tuần cuối cùng có dữ liệu trong từng tháng; tháng hiện tại là mốc gần nhất, chưa phải cuối tháng.':'Bình quân các quan sát tuần có dữ liệu trong tháng; không phải sản lượng tháng do EIA điều tra riêng.');});
  if(['gasoline_stock','distillate_stock'].every(available)){
-  const ds=monthly(rows('distillate_stock'),'value','last',36);const gs=new Map(monthly(rows('gasoline_stock'),'value','last',36).map(r=>[r.date,r.value]));const rs=ds.map(r=>({...r,dist:r.value,gas:gs.get(r.date)}));
+  const ds=monthly(rows('distillate_stock'),'value','last',999);const gs=new Map(monthly(rows('gasoline_stock'),'value','last',999).map(r=>[r.date,r.value]));const rs=ds.map(r=>({...r,dist:r.value,gas:gs.get(r.date)}));
   plot('chProdStock',rs,[['Xăng','gas',color[3]],['Distillate','dist',color[1]]],'triệu thùng');table('tbl-prodstock',['Tháng','Xăng','Distillate'],rs,['gas','dist']);
  }
  note('chProdStock',['gasoline_stock','distillate_stock'],'Dùng số tuần cuối cùng có dữ liệu trong tháng. Giữ nguyên dữ liệu thiếu.');
  if(available('distillate_stock')){
-  const rs=M.aggregate(rows('distillate_stock').filter(r=>r.date.slice(5,7)==='08'),'value','year').slice(-6);
+  const rs=M.aggregate(rows('distillate_stock').filter(r=>r.date.slice(5,7)==='08'),'value','year');
   barLineChart('chDistYear',{categories:rs.map(r=>r.date),series:[{name:'Tồn kho distillate tháng 8',color:color[1],values:rs.map(r=>r.value)}],unit:'triệu thùng',digits:1,height:240});table('tbl-distyear',['Năm','Bình quân tháng 8'],rs,['value']);
   showKpi('spk-dist',rows('distillate_stock'),'triệu thùng','Quan sát tuần gần nhất');
  }
@@ -209,7 +209,7 @@ if(oil){
   table('tbl-hormuz',['Ngày','Tàu chở dầu','Tổng số tàu','Bình quân 7 ngày'],rs,['tanker','total','average']);
   controls.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.days)===days)));
  }
- [[30,'30 ngày'],[90,'90 ngày'],[365,'1 năm'],[0,'Toàn bộ']].forEach(([days,label])=>{const b=document.createElement('button');b.textContent=label;b.dataset.days=days;b.type='button';b.addEventListener('click',()=>drawHz(days));controls.append(b)});drawHz(30);
+ [[30,'30 ngày'],[90,'90 ngày'],[365,'1 năm'],[0,'Toàn bộ']].forEach(([days,label])=>{const b=document.createElement('button');b.textContent=label;b.dataset.days=days;b.type='button';b.addEventListener('click',()=>drawHz(days));controls.append(b)});drawHz(365);
  const summary=host.closest('.card').querySelector('.dtable summary');if(summary)summary.textContent='Xem dữ liệu ngày theo khoảng đang chọn';
  ['chHormuzM'].forEach(id=>note(id,['hormuz'],'IMF PortWatch API: lọc portid=chokepoint6, đọc date/n_tanker/n_total và phân trang toàn bộ kết quả. Dữ liệu quan sát theo ngày, nguồn cập nhật theo đợt; job kiểm hằng ngày. Bình quân 7 ngày chỉ có khi đủ 7 ngày lịch, không thay ngày thiếu bằng 0. Khoảng 1 năm lấy một mốc BQ7 mỗi tuần; Toàn bộ là bình quân tháng của ngày có quan sát.'));
  if(available('bab_el_mandeb')){
@@ -231,7 +231,7 @@ if(oil){
    table('tbl-bab-mandeb',['Ngày','Tổng lượt tàu','Tàu chở dầu','Bình quân 7 ngày'],selected,['total','tanker','average']);
    buttons.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.days)===days)));
   }
-  [[30,'30 ngày'],[90,'90 ngày'],[365,'1 năm'],[0,'Toàn bộ']].forEach(([days,label])=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.dataset.days=days;b.addEventListener('click',()=>drawBab(days));buttons.append(b)});drawBab(30);
+  [[30,'30 ngày'],[90,'90 ngày'],[365,'1 năm'],[0,'Toàn bộ']].forEach(([days,label])=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.dataset.days=days;b.addEventListener('click',()=>drawBab(days));buttons.append(b)});drawBab(365);
   currentReading('chBabMandeb',`Ngày ${short(latest.date)} ghi nhận ${nf(latest.total,0)} lượt tàu qua Bab el-Mandeb, trong đó ${nf(latest.tanker,0)} tàu chở dầu; bình quân tổng lượt 7 ngày ${nf(latest.average,1)} lượt/ngày.`);
  }
  note('chBabMandeb',['bab_el_mandeb'],'IMF PortWatch API: portid=chokepoint4, n_total là tổng lượt tàu và n_tanker là số tàu chở dầu. Quan sát ngày, nguồn phát hành theo đợt; job kiểm hằng ngày. Bình quân 7 ngày chỉ tính khi đủ ngày lịch; không thay ngày thiếu bằng 0.');

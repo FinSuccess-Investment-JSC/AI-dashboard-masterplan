@@ -1,0 +1,2901 @@
+{
+ "companies": {
+  "GVR": {
+   "scope": "Sản lượng/diện tích: toàn Tập đoàn (khối các công ty cao su, gồm cả đơn vị ở Lào, Campuchia) theo BCTN. Tài chính: BCTC hợp nhất kiểm toán. kcn_bvnd = DT thuần kinh doanh bất động sản, cơ sở hạ tầng (chủ yếu KCN), không gồm DT duy tu hạ tầng KCN.",
+   "annual": [
+    {
+     "period": "2019",
+     "tapped_t": 331300,
+     "purchased_t": null,
+     "sold_t": null,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": null,
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": 12757.05,
+     "latex_cogs_bvnd": 10296.17,
+     "liquidation_bvnd": 792.46,
+     "land_comp_bvnd": 882.8,
+     "kcn_bvnd": 1011.32,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/GVR_20CN_BCTN.pdf",
+     "source_locator": "BCTN 2020 tr.54 PDF: 2020 = 369.731 t, nhiều hơn 38.431 t so với 2019 → 2019 tự tính",
+     "sources": {
+      "operations": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/GVR_20CN_BCTN.pdf",
+       "locator": "BCTN 2020 tr.54 PDF: 2020 = 369.731 t, nhiều hơn 38.431 t so với 2019 → 2019 tự tính"
+      },
+      "financials": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/GVR_19CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN 2019 tr.59 PDF 61 (TM 03, 04), tr.61 PDF 63 (TM 10 Thu nhập khác)"
+      }
+     },
+     "notes": "Sản lượng khai thác 2019 tự tính (369.731 − 38.431). Không có BCTN 2019 trên CafeF. Tiêu thụ/thu mua/diện tích 2019: chưa có."
+    },
+    {
+     "period": "2020",
+     "tapped_t": 369731,
+     "purchased_t": null,
+     "sold_t": 430449,
+     "asp_mvnd_per_t": 29.54,
+     "asp_status": "tự tính",
+     "area_total_ha": 402650,
+     "area_tapping_ha": 240004,
+     "area_kcb_ha": 143666,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null,
+      "note": "BCTN 2020 tr.14: VN ~290.000, Campuchia >87.000, Lào ~30.000 (làm tròn)"
+     },
+     "yield_t_per_ha": 1.55,
+     "latex_revenue_bvnd": 12713.9,
+     "latex_cogs_bvnd": 10320.54,
+     "liquidation_bvnd": 260.58,
+     "land_comp_bvnd": 971.35,
+     "kcn_bvnd": 890.81,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/GVR_20CN_BCTN.pdf",
+     "source_locator": "BCTN 2020 PDF tr.54 (Khối các công ty cao su): diện tích 31/12/2020, khai thác, năng suất, tiêu thụ \"khoảng 430.449 tấn\"",
+     "sources": {
+      "operations": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/GVR_20CN_BCTN.pdf",
+       "locator": "BCTN 2020 PDF tr.54 (Khối các công ty cao su): diện tích 31/12/2020, khai thác, năng suất, tiêu thụ \"khoảng 430.449 tấn\""
+      },
+      "financials": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/GVR_21CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN 2021 cột Năm 2020: PDF tr.59 (TM 03 DT thuần), tr.60 (TM 04 giá vốn), tr.62 (TM 10 thu nhập khác)"
+      }
+     },
+     "notes": "Phạm vi: toàn Tập đoàn (các công ty thành viên). Diện tích 402.650 ha gồm KD 240.004, KTCB 143.666, tái canh 7.437, khác 11.540. BCTN 2020 tr.14 ghi VN gần 290.000 ha, Campuchia hơn 87.000 ha, Lào gần 30.000 ha (số làm tròn). Giá BQ tự tính = DT thuần mủ hợp nhất (tỷ) ×1000 / sản lượng tiêu thụ toàn Tập đoàn (tấn); hai phạm vi không khớp hoàn toàn (sản lượng gồm cả đơn vị không hợp nhất/bán nội bộ) nên chỉ mang tính tham khảo."
+    },
+    {
+     "period": "2021",
+     "tapped_t": 402917,
+     "purchased_t": 95000,
+     "sold_t": 478000,
+     "asp_mvnd_per_t": 37.1,
+     "asp_status": "tự tính",
+     "area_total_ha": 401877.3,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": 287262.29,
+      "Lao": 26857.97,
+      "Cambodia": 87757.04
+     },
+     "yield_t_per_ha": 1.57,
+     "latex_revenue_bvnd": 17732.63,
+     "latex_cogs_bvnd": 12578.66,
+     "liquidation_bvnd": 402.69,
+     "land_comp_bvnd": 100.2,
+     "kcn_bvnd": 766.72,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/GVR_21CN_BCTN.pdf",
+     "source_locator": "BCTN 2021 PDF tr.13 (khai thác 402.917 t, năng suất 1,57); tr.25 (thu mua \"trên 95.000 t\", tiêu thụ \"khoảng 478.000 t\"); tr.7 bảng diện tích theo khu vực",
+     "sources": {
+      "operations": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/GVR_21CN_BCTN.pdf",
+       "locator": "BCTN 2021 PDF tr.13 (khai thác 402.917 t, năng suất 1,57); tr.25 (thu mua \"trên 95.000 t\", tiêu thụ \"khoảng 478.000 t\"); tr.7 bảng diện tích theo khu vực"
+      },
+      "financials": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/GVR_21CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN 2021 PDF tr.59 (TM 03), tr.60 (TM 04), tr.62 (TM 10)"
+      }
+     },
+     "notes": "BCTN 2021 tr.25 lại ghi khai thác \"trên 390.000 t\" – lệch với 402.917 t ở tr.13. Thu mua/tiêu thụ là số làm tròn. Diện tích = cộng cột tổng theo khu vực (ĐNB 158.231,65; Tây Nguyên 64.895,24; DH miền Trung 35.297,31; MN phía Bắc 28.838,09; Campuchia 87.757,04; Lào 26.857,97); diện tích khai thác không cộng được vì bảng thiếu ô. Lào: KD 21.161,39 ha, KTCB 4.618,31 ha. Giá BQ tự tính = DT thuần mủ hợp nhất (tỷ) ×1000 / sản lượng tiêu thụ toàn Tập đoàn (tấn); hai phạm vi không khớp hoàn toàn (sản lượng gồm cả đơn vị không hợp nhất/bán nội bộ) nên chỉ mang tính tham khảo."
+    },
+    {
+     "period": "2022",
+     "tapped_t": 429852,
+     "purchased_t": 80150,
+     "sold_t": 501322,
+     "asp_mvnd_per_t": 36.12,
+     "asp_status": "tự tính",
+     "area_total_ha": 394782.05,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": 280390.29,
+      "foreign_Lao_Cambodia": 114391.76
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": 18109.37,
+     "latex_cogs_bvnd": 13356.98,
+     "liquidation_bvnd": 495.71,
+     "land_comp_bvnd": 798.68,
+     "kcn_bvnd": 801.86,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_22CN_BCTN.pdf",
+     "source_locator": "BCTN 2022 PDF tr.26 (khai thác \"trên 429.852 t\", thu mua \"trên 80.150 t\", tiêu thụ \"khoảng 501.322 t\"); tr.7 diện tích",
+     "sources": {
+      "operations": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_22CN_BCTN.pdf",
+       "locator": "BCTN 2022 PDF tr.26 (khai thác \"trên 429.852 t\", thu mua \"trên 80.150 t\", tiêu thụ \"khoảng 501.322 t\"); tr.7 diện tích"
+      },
+      "financials": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_Baocaotaichinh_2023_Kiemtoan_Hopnhat_02042024104853.pdf",
+       "locator": "BCTC HN 2023 (bản scan) cột Năm 2022: PDF tr.62 (TM 6.3 DT thuần), tr.63 (TM 6.4 giá vốn), tr.65 (TM 6.10 thu nhập khác)"
+      }
+     },
+     "notes": "Campuchia 2022 (BCTN tr.37): 83.084 ha khai thác, sản lượng ước 125.364 t. Giá BQ tự tính = DT thuần mủ hợp nhất (tỷ) ×1000 / sản lượng tiêu thụ toàn Tập đoàn (tấn); hai phạm vi không khớp hoàn toàn (sản lượng gồm cả đơn vị không hợp nhất/bán nội bộ) nên chỉ mang tính tham khảo."
+    },
+    {
+     "period": "2023",
+     "tapped_t": 450500,
+     "purchased_t": 75290,
+     "sold_t": 520290,
+     "asp_mvnd_per_t": 30.49,
+     "asp_status": "công bố",
+     "area_total_ha": 373182.54,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": 259449.72,
+      "foreign_Lao_Cambodia": 113732.82
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": 16789.15,
+     "latex_cogs_bvnd": 13128.45,
+     "liquidation_bvnd": 721.76,
+     "land_comp_bvnd": 557.69,
+     "kcn_bvnd": 813.65,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_23CN_BCTN.pdf",
+     "source_locator": "BCTN 2023 PDF tr.50 (khai thác 450.500 t, thu mua ước 75.290 t, tiêu thụ ước 520.290 t), tr.52 (giá BQ 30,49 tr.đ/t), tr.13 diện tích",
+     "sources": {
+      "operations": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_23CN_BCTN.pdf",
+       "locator": "BCTN 2023 PDF tr.50 (khai thác 450.500 t, thu mua ước 75.290 t, tiêu thụ ước 520.290 t), tr.52 (giá BQ 30,49 tr.đ/t), tr.13 diện tích"
+      },
+      "financials": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_Baocaotaichinh_2023_Kiemtoan_Hopnhat_02042024104853.pdf",
+       "locator": "BCTC HN 2023 (bản scan) PDF tr.62 (TM 6.3), tr.63 (TM 6.4), tr.65 (TM 6.10)"
+      }
+     },
+     "notes": "Thu mua, tiêu thụ là số ước trong BCTN. Campuchia 2023 (tr.72): 85.281,9 ha KD, sản lượng 140.829 t. BCTN ghi DT KD mủ ước 16.852 tỷ."
+    },
+    {
+     "period": "2024",
+     "tapped_t": 445200,
+     "purchased_t": 77921,
+     "sold_t": 521651,
+     "asp_mvnd_per_t": 39.02,
+     "asp_status": "tự tính",
+     "area_total_ha": 380043,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": 266699,
+      "foreign_Lao_Cambodia": 113344
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": 20355.9,
+     "latex_cogs_bvnd": 14908.92,
+     "liquidation_bvnd": 770.98,
+     "land_comp_bvnd": 227.05,
+     "kcn_bvnd": 741.71,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_24CN_BCTN.pdf",
+     "source_locator": "BCTN 2024 PDF tr.35 (khai thác 445.200 t, thu mua ước 77.921 t, chế biến 499.859 t, tiêu thụ 521.651 t), tr.17 diện tích 31/12/2024",
+     "sources": {
+      "operations": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_24CN_BCTN.pdf",
+       "locator": "BCTN 2024 PDF tr.35 (khai thác 445.200 t, thu mua ước 77.921 t, chế biến 499.859 t, tiêu thụ 521.651 t), tr.17 diện tích 31/12/2024"
+      },
+      "financials": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+       "locator": "BCTC HN 2025 cột Year 2024 (bản tiếng Anh): PDF tr.187 (TM 33 net revenue rubber latex), tr.188 (TM 34 COGS), tr.190 (TM 40 other income); kcn = net revenue real estate & infrastructure"
+      }
+     },
+     "notes": "BCTN 2024: doanh thu khối cao su 24.582 tỷ (gồm cả thu nhập khác của khối), giá BQ tăng 20,17% so với 2023. Giá BQ tự tính = DT thuần mủ hợp nhất (tỷ) ×1000 / sản lượng tiêu thụ toàn Tập đoàn (tấn); hai phạm vi không khớp hoàn toàn (sản lượng gồm cả đơn vị không hợp nhất/bán nội bộ) nên chỉ mang tính tham khảo."
+    },
+    {
+     "period": "2025",
+     "tapped_t": 462609,
+     "purchased_t": null,
+     "sold_t": 535286,
+     "asp_mvnd_per_t": 43.81,
+     "asp_status": "tự tính",
+     "area_total_ha": 377797,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": null,
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": 23449.49,
+     "latex_cogs_bvnd": 16628.85,
+     "liquidation_bvnd": 1100.75,
+     "land_comp_bvnd": 328.3,
+     "kcn_bvnd": 1152.8,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_25CN_BCTN.pdf",
+     "source_locator": "BCTN 2025 PDF tr.10 (Những con số nổi bật: khai thác 462.609 t, tiêu thụ 535.286 t, DT cao su 23.925 tỷ), tr.21 (tổng diện tích 31/12/2025 377.797 ha)",
+     "sources": {
+      "operations": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_25CN_BCTN.pdf",
+       "locator": "BCTN 2025 PDF tr.10 (Những con số nổi bật: khai thác 462.609 t, tiêu thụ 535.286 t, DT cao su 23.925 tỷ), tr.21 (tổng diện tích 31/12/2025 377.797 ha)"
+      },
+      "financials": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+       "locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.187 (TM 33), tr.188 (TM 34), tr.190 (TM 40: Gain from liquidation and fallen rubber trees; Collected compensation)"
+      }
+     },
+     "notes": "BCTN 2025 không công bố thu mua và giá BQ; không tách diện tích theo nước. Giá BQ tự tính = DT thuần mủ hợp nhất (tỷ) ×1000 / sản lượng tiêu thụ toàn Tập đoàn (tấn); hai phạm vi không khớp hoàn toàn (sản lượng gồm cả đơn vị không hợp nhất/bán nội bộ) nên chỉ mang tính tham khảo."
+    }
+   ],
+   "quarterly": [
+    {
+     "period": "2026Q3",
+     "tapped_t": null,
+     "purchased_t": null,
+     "sold_t": null,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": 8176.89,
+     "latex_cogs_bvnd": 5666.63,
+     "liquidation_bvnd": 452.07,
+     "land_comp_bvnd": 1779.24,
+     "kcn_bvnd": 175.91,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_202610302020GVR2020Bao20cao20tai20chinh20hop20nhat20quy20320nam20202620kem20Giai20trinh_31102026105044.pdf",
+     "source_locator": "BCTC HN Q3/2026 PDF tr.94 (TM 35 DT thuần mủ), tr.95 (TM 36 giá vốn), tr.97 (TM 42 thu nhập khác: thanh lý/gãy đổ 452,07; tiền bồi thường, hỗ trợ thiệt hại 1.779,24); tr.14 + tr.1 giải trình",
+     "notes": "Chỉ số quý III (thuyết minh chỉ trình bày quý). Cùng kỳ Q3/2025: DT mủ 7.615,26; giá vốn 5.436,16; thanh lý 292,81; bồi thường 131,09; BĐS-hạ tầng 245,58. Giải trình: bồi thường liên quan bàn giao đất vườn cây cho địa phương; LNST Q3/2026 3.678,89 tỷ vs 2.187,28 tỷ. Sản lượng/giá quý không công bố trong BCTC."
+    }
+   ],
+   "plan_2026": {
+    "tapped_t": null,
+    "sold_t": null,
+    "asp_mvnd_per_t": null,
+    "revenue_bvnd": 33799,
+    "pbt_bvnd": 6948,
+    "pat_bvnd": 5558,
+    "parent_revenue_bvnd": 6619,
+    "parent_pbt_bvnd": 2644,
+    "source_url": "https://cafef1.mediacdn.vn/download/180626/gvr-bien-ban-hop-va-nghi-quyet-h-c-thuong-nien-nam-2026-0.pdf",
+    "source_locator": "Biên bản 134/BB-ĐHĐCĐCSVN và NQ 135/NQ-ĐHĐCĐCSVN ngày 17/6/2026, PDF tr.5 (Tờ trình 504/TTr-HĐQTCSVN)",
+    "notes": "Doanh thu = doanh thu và thu nhập khác hợp nhất. BCTN 2025 tr.54 ghi KH LNTT hợp nhất 6.902 tỷ, công ty mẹ DT 6.468 tỷ (bản trước ĐHĐCĐ). Sản lượng/giá KH không có trong nghị quyết; BCTN 2025 tr.51 chỉ nêu phấn đấu sản lượng mủ vượt ít nhất 5%."
+   },
+   "land_events": [
+    {
+     "date": "2026-09-30",
+     "stage": "ghi nhận",
+     "project": "Bàn giao đất vườn cây cho địa phương tại các công ty thành viên (không nêu dự án)",
+     "ha": null,
+     "amount_bvnd": 1779.24,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_202610302020GVR2020Bao20cao20tai20chinh20hop20nhat20quy20320nam20202620kem20Giai20trinh_31102026105044.pdf",
+     "source_locator": "BCTC HN Q3/2026 tr.14, tr.97 TM 42",
+     "notes": "Thu nhập bồi thường, hỗ trợ thiệt hại vườn cây Q3/2026"
+    },
+    {
+     "date": "2019-12-31",
+     "stage": "ghi nhận",
+     "project": "Tiền bồi thường (tổng hợp nhất, không tách dự án)",
+     "ha": null,
+     "amount_bvnd": 882.8,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/GVR_19CN_BCTC_HNKT.pdf",
+     "source_locator": "BCTC HN 2019 tr.59 PDF 61 (TM 03, 04), tr.61 PDF 63 (TM 10 Thu nhập khác)",
+     "notes": ""
+    },
+    {
+     "date": "2020-12-31",
+     "stage": "ghi nhận",
+     "project": "Tiền bồi thường (tổng hợp nhất, không tách dự án)",
+     "ha": null,
+     "amount_bvnd": 971.35,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/GVR_21CN_BCTC_HNKT.pdf",
+     "source_locator": "BCTC HN 2021 cột Năm 2020: PDF tr.59 (TM 03 DT thuần), tr.60 (TM 04 giá vốn), tr.62 (TM 10 thu nhập khác)",
+     "notes": ""
+    },
+    {
+     "date": "2021-12-31",
+     "stage": "ghi nhận",
+     "project": "Tiền bồi thường (tổng hợp nhất, không tách dự án)",
+     "ha": null,
+     "amount_bvnd": 100.2,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/GVR_21CN_BCTC_HNKT.pdf",
+     "source_locator": "BCTC HN 2021 PDF tr.59 (TM 03), tr.60 (TM 04), tr.62 (TM 10)",
+     "notes": ""
+    },
+    {
+     "date": "2022-12-31",
+     "stage": "ghi nhận",
+     "project": "Tiền bồi thường (tổng hợp nhất, không tách dự án)",
+     "ha": null,
+     "amount_bvnd": 798.68,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_Baocaotaichinh_2023_Kiemtoan_Hopnhat_02042024104853.pdf",
+     "source_locator": "BCTC HN 2023 (bản scan) cột Năm 2022: PDF tr.62 (TM 6.3 DT thuần), tr.63 (TM 6.4 giá vốn), tr.65 (TM 6.10 thu nhập khác)",
+     "notes": ""
+    },
+    {
+     "date": "2023-12-31",
+     "stage": "ghi nhận",
+     "project": "Tiền bồi thường (tổng hợp nhất, không tách dự án)",
+     "ha": null,
+     "amount_bvnd": 557.69,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/GVR_Baocaotaichinh_2023_Kiemtoan_Hopnhat_02042024104853.pdf",
+     "source_locator": "BCTC HN 2023 (bản scan) PDF tr.62 (TM 6.3), tr.63 (TM 6.4), tr.65 (TM 6.10)",
+     "notes": ""
+    },
+    {
+     "date": "2024-12-31",
+     "stage": "ghi nhận",
+     "project": "Tiền bồi thường (tổng hợp nhất, không tách dự án)",
+     "ha": null,
+     "amount_bvnd": 227.05,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+     "source_locator": "BCTC HN 2025 cột Year 2024 (bản tiếng Anh): PDF tr.187 (TM 33 net revenue rubber latex), tr.188 (TM 34 COGS), tr.190 (TM 40 other income); kcn = net revenue real estate & infrastructure",
+     "notes": ""
+    },
+    {
+     "date": "2025-12-31",
+     "stage": "ghi nhận",
+     "project": "Tiền bồi thường (tổng hợp nhất, không tách dự án)",
+     "ha": null,
+     "amount_bvnd": 328.3,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+     "source_locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.187 (TM 33), tr.188 (TM 34), tr.190 (TM 40: Gain from liquidation and fallen rubber trees; Collected compensation)",
+     "notes": ""
+    }
+   ],
+   "kcn_note": "BCTN 2025 tr.22: quản lý 14 KCN >4.200 ha, thêm 5 KCN đã có chủ trương (tổng 19 KCN ~6.300 ha); quỹ đất sẵn sàng ~1.600 ha đất công nghiệp + 125 ha đất dịch vụ."
+  },
+  "PHR": {
+   "scope": "Sản lượng, giá, diện tích: công ty mẹ CTCP Cao su Phước Hòa (VN); PH Kampong Thom (Campuchia, 100%) ghi trong notes. Tài chính (thanh lý, bồi thường, KCN, liên kết): BCTC hợp nhất kiểm toán.",
+   "annual": [
+    {
+     "period": "2025",
+     "tapped_t": 12805.01,
+     "purchased_t": 12835.88,
+     "sold_t": 28424.93,
+     "asp_mvnd_per_t": 47.875,
+     "asp_status": "công bố",
+     "area_total_ha": 14084.83,
+     "area_tapping_ha": 9199.31,
+     "area_kcb_ha": 3783.83,
+     "area_by_country": {
+      "VN": 14084.83,
+      "Lao": null,
+      "Cambodia": 7664.28
+     },
+     "yield_t_per_ha": 1.455,
+     "latex_revenue_bvnd": 1364.74,
+     "latex_cogs_bvnd": null,
+     "liquidation_bvnd": 0.9,
+     "land_comp_bvnd": 132.6,
+     "kcn_bvnd": 97.01,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_25CN_BCTN.pdf (file gốc lưu CafeF)",
+     "source_locator": "BCTN 2025 PDF tr.11 (II.1.1-1.2), tr.17 (III.1.3-1.5), tr.24-25 (HĐQT)",
+     "notes": "Công ty mẹ. purchased = 7.377,48 t mủ nguyên liệu trong nước + 5.465,04 t thành phẩm mua từ PH Kampong Thom (Tờ trình 667 ghi trong nước 7.370,84). sold: BCTN tr.17/tr.25 + Tờ trình 667 = 28.424,93 t; BCTN tr.11 ghi 28.448,32 t (lệch nội bộ). ASP 47,875 = giá bán bình quân toàn công ty (gồm mủ khai thác, thu mua trong nước và mủ hàng hóa PHK) theo Tờ trình 667 (AGM2026 PDF tr.73-74); giá thành phẩm công ty mẹ sản xuất 51,047; BCTN tr.11 ghi 49,48 (không khớp: 1.364,74/28.424,93 = 48,01). BKS (AGM2026 tr.58): giá SP khai thác 50,00; SP thu mua 52,44; mua từ Kampong Thom 45,71 tr.đ/t. latex_revenue = doanh thu bán mủ công ty mẹ (BCTN tr.11, tr.17; phần HĐQT tr.25 ghi 1.360,88). Diện tích: bảng 4.5.1 BKS (AGM2026 PDF tr.62) tại 31/12/2025: đất cao su 14.084,83 ha = khai thác 9.199,31 + KTCB 3.783,83 + giao khoán NĐ168 1.039,21 + vườn nhân 17,87 + tái canh 44,61; đầu năm (KK 1/1/2025) khai thác 8.800,01, KTCB 4.183,12 (399,30 ha chuyển KTCB sang khai thác). yield tự tính = 12.805,01 / 8.800,01 ha khai thác đầu năm = 1,455 t/ha (theo cuối năm 9.199,31 ha: 1,39). Cambodia = tổng diện tích trồng cao su PH Kampong Thom 7.664,28 ha (đất được giao 9.184 ha), BCTN tr.6; PHK 2025: khai thác 11.572 t, tiêu thụ 11.402,64 t, giá 45,36 tr.đ/t, DT 523,66 tỷ, LNTT 100,89 tỷ (BCTN tr.12). Đắk Lắk: 125,65 ha KD + 104,92 ha KTCB, khai thác 151,5 t. liquidation_bvnd = thu nhập thanh lý vườn cây / nhượng bán, thanh lý TSCĐ trong Thu nhập khác hợp nhất (số thuần theo TT200); land_comp_bvnd = tổng các khoản 'Thu tiền bồi thường...' trong Thu nhập khác hợp nhất; kcn_bvnd = DT cho thuê đất & phí hạ tầng KCN + DT xử lý nước thải KCN (KCN Tân Bình, công ty con 80%) trong DT hợp nhất. Lãi liên kết NTC (KCN Nam Tân Uyên, 32,85%) ghi ở extra, không cộng vào kcn_bvnd. 2025 HN: thanh lý vườn cây KTCB/cây gãy đổ 0,90; bồi thường VSIP III 120,15 + cao tốc HCM-TDM-Chơn Thành 7,98 + dự án khác 4,47; KCN cho thuê 81,55 + nước thải 15,46.",
+     "sources": {
+      "tapped_t,sold_t": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_25CN_BCTN.pdf",
+       "locator": "PDF tr.17, tr.24-25"
+      },
+      "asp_mvnd_per_t": {
+       "url": "https://cafef1.mediacdn.vn/download/010626/phr-nghi-quyet-bien-ban-hop-h-c-thuong-nien-2026-va-thong-bao-thay-doi-nhan-su-0.pdf",
+       "locator": "Tờ trình 667/TTr-CSPH, PDF tr.73-74"
+      },
+      "area_*": {
+       "url": "https://cafef1.mediacdn.vn/download/010626/phr-nghi-quyet-bien-ban-hop-h-c-thuong-nien-2026-va-thong-bao-thay-doi-nhan-su-0.pdf",
+       "locator": "Báo cáo BKS mục 4.5.1, PDF tr.62"
+      },
+      "liquidation_bvnd,land_comp_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_Baocaotaichinh_2025_Kiemtoan_Hopnhat_21042026090132.pdf",
+       "locator": "TM32 Thu nhập khác, PDF tr.51"
+      },
+      "kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_Baocaotaichinh_2025_Kiemtoan_Hopnhat_21042026090132.pdf",
+       "locator": "TM25 Doanh thu, PDF tr.48"
+      }
+     },
+     "extra": {
+      "assoc_NTC_share_bvnd": 58.42,
+      "NTC_dividend_booked_fin_income_bvnd": 47.31,
+      "dividend_income_total_bvnd": 65.37,
+      "consol_rubber_segment_revenue_bvnd": 1680.91,
+      "consol_finished_goods_revenue_bvnd": 1636.92,
+      "consol_finished_goods_cogs_bvnd": 1204.24,
+      "src": "BCTC HN 2025 TM25-29, 41 (PDF tr.48-50, 56)"
+     }
+    },
+    {
+     "period": "2024",
+     "tapped_t": 12771.73,
+     "purchased_t": 17320.34,
+     "sold_t": 28398.96,
+     "asp_mvnd_per_t": 45.27,
+     "asp_status": "công bố",
+     "area_total_ha": 14040.22,
+     "area_tapping_ha": 8795.79,
+     "area_kcb_ha": 3887.3,
+     "area_by_country": {
+      "VN": 14040.22,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": 1.452,
+     "latex_revenue_bvnd": 1285.71,
+     "latex_cogs_bvnd": null,
+     "liquidation_bvnd": 0.32,
+     "land_comp_bvnd": 66.33,
+     "kcn_bvnd": 105.59,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_24CN_BCTN.pdf (file gốc lưu CafeF)",
+     "source_locator": "BCTN 2024 PDF tr.11 (II.1.1-1.2), tr.18-19 (III.1.1-1.4)",
+     "notes": "Công ty mẹ. purchased = 10.355,06 t thu mua trong nước (BCTN tr.11) + 6.965,28 t thành phẩm thu mua PHK (BKS, AGM2025 PDF tr.49), cộng 2 nguồn. ASP 45,27 = bình quân chung (gồm mủ mua từ Kampuchia 41,67); thành phẩm công ty mẹ 47,85; bảng BKS ghi GB BQ 46,31. Diện tích KD 8.795,79 / KTCB 3.887,30 = thực hiện 2024 bảng BKS (AGM2025 tr.49); kiểm kê 1/1/2025 (AGM2026 tr.62) ghi khai thác 8.800,01, KTCB 4.183,12, tổng đất cao su 14.040,22 (dùng cho area_total). yield tự tính = 12.771,73/8.795,79. Tái canh 2024: 191,49 ha. PHK 2024: khai thác 11.572,54 t, tiêu thụ 11.354,67 t (BCTN tr.11). liquidation_bvnd = thu nhập thanh lý vườn cây / nhượng bán, thanh lý TSCĐ trong Thu nhập khác hợp nhất (số thuần theo TT200); land_comp_bvnd = tổng các khoản 'Thu tiền bồi thường...' trong Thu nhập khác hợp nhất; kcn_bvnd = DT cho thuê đất & phí hạ tầng KCN + DT xử lý nước thải KCN (KCN Tân Bình, công ty con 80%) trong DT hợp nhất. Lãi liên kết NTC (KCN Nam Tân Uyên, 32,85%) ghi ở extra, không cộng vào kcn_bvnd. Số tài chính 2024 lấy từ cột so sánh BCTC HN 2025: thanh lý vườn cây KTCB 0,32; bồi thường VSIP III 55,76 + cao tốc 8,59 + khác 1,98; KCN 86,74 + nước thải 18,85.",
+     "sources": {
+      "area_tapping_ha,area_kcb_ha": {
+       "url": "https://cafefnew.mediacdn.vn/download/300625/phr-nghi-quyet-bien-ban-va-tai-lieu-hop-h-c-thuong-nien-nam-2025-0.pdf",
+       "locator": "Báo cáo BKS, PDF tr.49"
+      },
+      "area_total_ha": {
+       "url": "https://cafef1.mediacdn.vn/download/010626/phr-nghi-quyet-bien-ban-hop-h-c-thuong-nien-2026-va-thong-bao-thay-doi-nhan-su-0.pdf",
+       "locator": "BKS 4.5.1 KK 1/1/2025, PDF tr.62"
+      },
+      "liquidation_bvnd,land_comp_bvnd,kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_Baocaotaichinh_2025_Kiemtoan_Hopnhat_21042026090132.pdf",
+       "locator": "cột Năm 2024, PDF tr.48-51"
+      }
+     },
+     "extra": {
+      "assoc_NTC_share_bvnd": 48.84,
+      "dividend_income_total_bvnd": 64.65,
+      "consol_rubber_segment_revenue_bvnd": 1497.29,
+      "consol_finished_goods_revenue_bvnd": 1513.62,
+      "consol_finished_goods_cogs_bvnd": 1170.99
+     }
+    },
+    {
+     "period": "2023",
+     "tapped_t": 11955.39,
+     "purchased_t": 20112.78,
+     "sold_t": 30704.18,
+     "asp_mvnd_per_t": 34.3,
+     "asp_status": "công bố",
+     "area_total_ha": null,
+     "area_tapping_ha": 8288.68,
+     "area_kcb_ha": 4369.86,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": 1.442,
+     "latex_revenue_bvnd": 1053.14,
+     "latex_cogs_bvnd": null,
+     "liquidation_bvnd": 69.5,
+     "land_comp_bvnd": 286.84,
+     "kcn_bvnd": 224.28,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_23CN_BCTN.pdf (file gốc lưu CafeF)",
+     "source_locator": "BCTN 2023 PDF tr.11 (II.1.1-1.2)",
+     "notes": "Công ty mẹ. purchased = 6.762,73 t trong nước + 13.350,05 t thành phẩm PHK. ASP chung 34,30; thành phẩm công ty mẹ 35,09 (giảm 4,35 so 2022); SVR10 PHK 33,09. latex_revenue = DT mủ thành phẩm. Bảng BKS (AGM2024 PDF tr.44) ghi khác: khai thác 12.165,17 t, tiêu thụ 31.062,56 t, giá 34,27 — dùng số BCTN. Diện tích KD 8.288,68 / KTCB 4.369,86 / tái canh 139,24 từ bảng BKS. yield tự tính = 11.955,39/8.288,68. liquidation_bvnd = thu nhập thanh lý vườn cây / nhượng bán, thanh lý TSCĐ trong Thu nhập khác hợp nhất (số thuần theo TT200); land_comp_bvnd = tổng các khoản 'Thu tiền bồi thường...' trong Thu nhập khác hợp nhất; kcn_bvnd = DT cho thuê đất & phí hạ tầng KCN + DT xử lý nước thải KCN (KCN Tân Bình, công ty con 80%) trong DT hợp nhất. Lãi liên kết NTC (KCN Nam Tân Uyên, 32,85%) ghi ở extra, không cộng vào kcn_bvnd. 2023 (BCTC HN 2023 TM34, PDF tr.48): thanh lý TSCĐ 69,50 gồm thanh lý vườn cây 285,14 ha (thu 75,358 tỷ, chi phí 6,59 tỷ); bồi thường VSIP III 283,65 + khác 3,19; KCN 212,23 (ghi nhận 1 lần 150,36) + nước thải 12,05.",
+     "sources": {
+      "area_tapping_ha,area_kcb_ha": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/phrnghiquyetbienbanhophcthuongniennam2024vatailieukemtheo02024-142411.pdf",
+       "locator": "Báo cáo BKS mục II.1, PDF tr.44"
+      },
+      "liquidation_bvnd,land_comp_bvnd,kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0001976284584980237cng-ty-c-phn-cao-su-phc-ha12032024-155942.pdf",
+       "locator": "TM26, 29, 31, 34; PDF tr.46-48"
+      }
+     },
+     "extra": {
+      "assoc_NTC_share_bvnd": 82.68,
+      "NTC_dividend_booked_fin_income_bvnd": 15.77,
+      "dividend_income_total_bvnd": 16.41,
+      "consol_rubber_segment_revenue_bvnd": 1065.75,
+      "consol_finished_goods_revenue_bvnd": 1085.9,
+      "consol_finished_goods_cogs_bvnd": 926.87,
+      "liquidated_area_ha": 285.14
+     }
+    },
+    {
+     "period": "2022",
+     "tapped_t": 10515.74,
+     "purchased_t": 11019.2,
+     "sold_t": 33494.09,
+     "asp_mvnd_per_t": 38.65,
+     "asp_status": "công bố",
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": null,
+     "latex_cogs_bvnd": null,
+     "liquidation_bvnd": 8.69,
+     "land_comp_bvnd": 704.03,
+     "kcn_bvnd": 253.16,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_22CN_BCTN.pdf (file gốc lưu CafeF)",
+     "source_locator": "BCTN 2022 PDF tr.12 (II.1.1-1.2)",
+     "notes": "Công ty mẹ. purchased 11.019,20 t (không tách PHK). ASP chung 38,65; giá thành phẩm công ty mẹ 2022 = 39,44 (suy từ BCTN 2023: 35,09 + 4,35). BCTN 2022 không ghi doanh thu bán mủ nên latex_revenue null (DT thành phẩm hợp nhất 1.436,20 ở extra). Diện tích thực hiện 2022 chưa tìm được (BCTN chỉ có KH 2023: khai thác 8.292,88, KTCB 4.370,63, tái canh 254,15). liquidation_bvnd = thu nhập thanh lý vườn cây / nhượng bán, thanh lý TSCĐ trong Thu nhập khác hợp nhất (số thuần theo TT200); land_comp_bvnd = tổng các khoản 'Thu tiền bồi thường...' trong Thu nhập khác hợp nhất; kcn_bvnd = DT cho thuê đất & phí hạ tầng KCN + DT xử lý nước thải KCN (KCN Tân Bình, công ty con 80%) trong DT hợp nhất. Lãi liên kết NTC (KCN Nam Tân Uyên, 32,85%) ghi ở extra, không cộng vào kcn_bvnd. Số 2022 lấy từ cột so sánh (trình bày lại) BCTC HN 2023: thanh lý TSCĐ 8,69; bồi thường VSIP III 698,30 + khác 5,73; KCN 239,92 + nước thải 13,24.",
+     "sources": {
+      "liquidation_bvnd,land_comp_bvnd,kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0001976284584980237cng-ty-c-phn-cao-su-phc-ha12032024-155942.pdf",
+       "locator": "cột Năm 2022, PDF tr.46-48"
+      }
+     },
+     "extra": {
+      "assoc_NTC_share_bvnd": 29.05,
+      "dividend_income_total_bvnd": 55.98,
+      "consol_rubber_segment_revenue_bvnd": 1344.89,
+      "consol_finished_goods_revenue_bvnd": 1436.2,
+      "consol_finished_goods_cogs_bvnd": 1215.15
+     }
+    },
+    {
+     "period": "2021",
+     "tapped_t": 10469.48,
+     "purchased_t": 15190.51,
+     "sold_t": 35387.37,
+     "asp_mvnd_per_t": 41.61,
+     "asp_status": "công bố",
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": 1461.93,
+     "latex_cogs_bvnd": null,
+     "liquidation_bvnd": 23.29,
+     "land_comp_bvnd": 2.07,
+     "kcn_bvnd": 256.97,
+     "source_url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/PHR_21CN_BCTN.pdf (file gốc lưu CafeF)",
+     "source_locator": "BCTN 2021 PDF tr.12 (II.1.1-1.2)",
+     "notes": "Công ty mẹ. Khai thác gồm 10.251,89 t vườn cây + 217,59 t tận thu vườn cây bán thanh lý. Link cafefnew lỗi, link cafef1 cùng đường dẫn tải được. Diện tích chưa tìm được. liquidation_bvnd = thu nhập thanh lý vườn cây / nhượng bán, thanh lý TSCĐ trong Thu nhập khác hợp nhất (số thuần theo TT200); land_comp_bvnd = tổng các khoản 'Thu tiền bồi thường...' trong Thu nhập khác hợp nhất; kcn_bvnd = DT cho thuê đất & phí hạ tầng KCN + DT xử lý nước thải KCN (KCN Tân Bình, công ty con 80%) trong DT hợp nhất. Lãi liên kết NTC (KCN Nam Tân Uyên, 32,85%) ghi ở extra, không cộng vào kcn_bvnd. BCTC HN 2021 (TM25, 28, 30, 33; PDF tr.45-48): thanh lý TSCĐ 23,29 gồm thanh lý vườn cây 209,61 ha; bồi thường dự án khác 2,07; hợp tác trên đất cao su thanh lý 4,72; KCN 252,65 + nước thải 4,32; lãi liên kết NTC -13,72 do cổ tức NTC 110,39 tỷ ghi vào DT tài chính (phần lãi tương ứng sở hữu 96,67 tỷ).",
+     "sources": {
+      "liquidation_bvnd,land_comp_bvnd,kcn_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/PHR_21CN_BCTC_HNKT.pdf",
+       "locator": "PDF tr.45-48"
+      }
+     },
+     "extra": {
+      "assoc_NTC_share_bvnd": -13.72,
+      "NTC_dividend_booked_fin_income_bvnd": 110.39,
+      "NTC_profit_share_economic_bvnd": 96.67,
+      "dividend_income_total_bvnd": 110.39,
+      "consol_finished_goods_revenue_bvnd": 1693.06,
+      "liquidated_area_ha": 209.61
+     }
+    },
+    {
+     "period": "2020",
+     "tapped_t": 11535.68,
+     "purchased_t": 20129.3,
+     "sold_t": 31761.4,
+     "asp_mvnd_per_t": 33.35,
+     "asp_status": "công bố",
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": null,
+     "latex_cogs_bvnd": null,
+     "liquidation_bvnd": 66.8,
+     "land_comp_bvnd": 861.98,
+     "kcn_bvnd": 288.68,
+     "source_url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/PHR_20CN_BCTN.pdf (file gốc lưu CafeF)",
+     "source_locator": "BCTN 2020 PDF tr.11-12 (II.1)",
+     "notes": "Công ty mẹ. purchased gồm 9.435 t từ PH Kampong Thom. Chế biến 21.273,27 t. Không có DT mủ, diện tích trong BCTN. liquidation_bvnd = thu nhập thanh lý vườn cây / nhượng bán, thanh lý TSCĐ trong Thu nhập khác hợp nhất (số thuần theo TT200); land_comp_bvnd = tổng các khoản 'Thu tiền bồi thường...' trong Thu nhập khác hợp nhất; kcn_bvnd = DT cho thuê đất & phí hạ tầng KCN + DT xử lý nước thải KCN (KCN Tân Bình, công ty con 80%) trong DT hợp nhất. Lãi liên kết NTC (KCN Nam Tân Uyên, 32,85%) ghi ở extra, không cộng vào kcn_bvnd. BCTC HN 2020 (TM25, 30, 33; PDF tr.46, 48, 49): thanh lý TSCĐ 66,80 (thanh lý vườn cây 683,31 ha); bồi thường KCN Nam Tân Uyên mở rộng GĐ II 860,14 + khác 1,84; hợp tác trên đất cao su thanh lý 5,78; KCN 284,99 + nước thải 3,69.",
+     "sources": {
+      "liquidation_bvnd,land_comp_bvnd,kcn_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/PHR_20CN_BCTC_HNKT.pdf",
+       "locator": "PDF tr.46, 48, 49"
+      }
+     },
+     "extra": {
+      "assoc_NTC_share_bvnd": 37.76,
+      "dividend_income_total_bvnd": 58.0,
+      "consol_finished_goods_revenue_bvnd": 1345.71,
+      "liquidated_area_ha": 683.31
+     }
+    },
+    {
+     "period": "2019",
+     "tapped_t": 12002.59,
+     "purchased_t": 14808.81,
+     "sold_t": 32690.7,
+     "asp_mvnd_per_t": 33.41,
+     "asp_status": "công bố",
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": null,
+     "latex_cogs_bvnd": null,
+     "liquidation_bvnd": 186.44,
+     "land_comp_bvnd": 32.17,
+     "kcn_bvnd": 392.49,
+     "source_url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/PHR_19CN_BCTN.pdf (file gốc lưu CafeF)",
+     "source_locator": "BCTN 2019 PDF tr.10 (II.1)",
+     "notes": "Công ty mẹ. purchased gồm 3.892,7 t nguyên liệu từ công ty con. Chế biến 27.043,07 t. liquidation_bvnd = thu nhập thanh lý vườn cây / nhượng bán, thanh lý TSCĐ trong Thu nhập khác hợp nhất (số thuần theo TT200); land_comp_bvnd = tổng các khoản 'Thu tiền bồi thường...' trong Thu nhập khác hợp nhất; kcn_bvnd = DT cho thuê đất & phí hạ tầng KCN + DT xử lý nước thải KCN (KCN Tân Bình, công ty con 80%) trong DT hợp nhất. Lãi liên kết NTC (KCN Nam Tân Uyên, 32,85%) ghi ở extra, không cộng vào kcn_bvnd. Số 2019 từ cột so sánh BCTC HN 2020 (PDF tr.46, 48, 49): thanh lý TSCĐ 186,44; bồi thường dự án 32,17; hợp tác trên đất cao su thanh lý 14,86; KCN 389,80 + nước thải 2,69. Diện tích thanh lý 2019 không nêu.",
+     "sources": {
+      "liquidation_bvnd,land_comp_bvnd,kcn_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/PHR_20CN_BCTC_HNKT.pdf",
+       "locator": "cột Năm 2019, PDF tr.46, 48, 49"
+      }
+     },
+     "extra": {
+      "assoc_NTC_share_bvnd": -1.15,
+      "dividend_income_total_bvnd": 78.91,
+      "consol_finished_goods_revenue_bvnd": 1246.87
+     }
+    }
+   ],
+   "quarterly": [
+    {
+     "period": "2026_9M",
+     "tapped_t": null,
+     "purchased_t": null,
+     "sold_t": null,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": null,
+     "latex_cogs_bvnd": null,
+     "liquidation_bvnd": 254.82,
+     "land_comp_bvnd": 751.74,
+     "kcn_bvnd": 60.98,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_202610302020PHR2020Bao20cao20tai20chinh20hop20nhat20Q32620va20giai20trinh20chenh20lech_05112026160758.pdf?v=1793869680289 (file gốc lưu CafeF)",
+     "source_locator": "BCTC HN Q3/2026: KQKD PDF tr.7; TM27-31 tr.47-48; TM34-35 tr.49-50",
+     "notes": "Hợp nhất. Sản lượng/giá 9T/2026 không có trong BCTC (file Q3 không kèm trang giải trình). Thu nhập khác 9T: 1.016,40 tỷ = thanh lý vườn cây KTCB/cây gãy đổ 254,82 (chi phí thanh lý 13,92) + bồi thường VSIP III 323,40 + bồi thường khi Nhà nước thu hồi đất dự án KCN Chuyên ngành Cơ khí 428,32 (QĐ 346/QĐ-UBND 20/03/2026, QĐ 533/QĐ-UBND 09/04/2026) + bồi thường khác 0,02 + hợp tác trên đất cao su thanh lý 0,55 + khác 9,12. KCN: cho thuê 51,12 + nước thải 9,86. DT thành phẩm 1.437,20; giá vốn thành phẩm 1.127,61 (gồm cả gỗ, không tách mủ). LNTT 9T 1.340,23; LNST 1.088,47.",
+     "extra": {
+      "assoc_NTC_share_bvnd": 71.27,
+      "dividend_income_total_bvnd": 9.98,
+      "consol_finished_goods_revenue_bvnd": 1437.2,
+      "consol_finished_goods_cogs_bvnd": 1127.61,
+      "other_income_total_bvnd": 1016.4,
+      "pbt_bvnd": 1340.23
+     }
+    },
+    {
+     "period": "2026Q3",
+     "tapped_t": null,
+     "purchased_t": null,
+     "sold_t": null,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": null,
+     "latex_cogs_bvnd": null,
+     "liquidation_bvnd": 254.06,
+     "land_comp_bvnd": 255.14,
+     "kcn_bvnd": 20.37,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_202610302020PHR2020Bao20cao20tai20chinh20hop20nhat20Q32620va20giai20trinh20chenh20lech_05112026160758.pdf?v=1793869680289 (file gốc lưu CafeF)",
+     "source_locator": "BCTC HN Q3/2026 PDF tr.7, 47-50 trừ BCTC HN Q2/2026 (6T) PDF tr.42-44",
+     "notes": "Hợp nhất. Q3 tự tính = 9T/2026 − 6T/2026 (6T link: https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_202607302020PHR2020Bao20cao20tai20chinh20hop20nhat20Q220202620kem20giai20trinh_01082026093507.pdf?v=1785551708636). 6T: thanh lý vườn cây 0,76; VSIP III 323,40; KCN Cơ khí 171,70; bồi thường khác 1,51 → Q3: thanh lý 254,06; KCN Cơ khí 256,63; VSIP III 0; khác −1,49 (land_comp = 256,63 − 1,49). KCN: cho thuê 51,12−34,00=17,12 + nước thải 9,86−6,61=3,25. DT thành phẩm Q3 627,41; giá vốn thành phẩm 542,50. Thu nhập khác Q3 517,14 (KQKD). Lãi liên kết NTC Q3 = 71,27 − 56,20 = 15,07. LNTT Q3 534,24. Sản lượng/giá Q3 chưa có nguồn gốc.",
+     "extra": {
+      "assoc_NTC_share_bvnd": 15.07,
+      "consol_finished_goods_revenue_bvnd": 627.41,
+      "consol_finished_goods_cogs_bvnd": 542.5,
+      "other_income_total_bvnd": 517.14,
+      "pbt_bvnd": 534.24
+     }
+    }
+   ],
+   "plan_2026": {
+    "tapped_t": 13700,
+    "sold_t": 28200,
+    "asp_mvnd_per_t": 49.44,
+    "revenue_bvnd": 2280.185,
+    "pbt_bvnd": 953.11,
+    "source_url": "https://cafef1.mediacdn.vn/download/010626/phr-nghi-quyet-bien-ban-hop-h-c-thuong-nien-2026-va-thong-bao-thay-doi-nhan-su-0.pdf (file gốc lưu CafeF)",
+    "source_locator": "Nghị quyết ĐHĐCĐ 28/05/2026 Điều 8 (PDF tr.3) thông qua Tờ trình 667/TTr-CSPH mục 3 (PDF tr.74); BC HĐQT PDF tr.37; BC BĐH PDF tr.48",
+    "notes": "Công ty mẹ. ĐHĐCĐ duyệt: khai thác tối thiểu 13.700 t; giá thành toàn bộ tối đa 43,92 tr.đ/t; tổng DT tối thiểu 2.280,185 tỷ; LNST tối thiểu 779,261 tỷ; chia/ứng cổ tức tối thiểu 340 tỷ; đầu tư & trả nợ tối đa 344,379 tỷ. Thu mua 14.500 t (10.000 t trong nước + 4.500 t thành phẩm PHK) và tiêu thụ 28.200 t từ BC HĐQT/BĐH trình ĐHĐCĐ (AGM2026 tr.37, 48). Nghị quyết không có giá bán và LNTT: asp 49,44 và pbt 953,11 lấy từ KH dự kiến BCTN 2025 mục III.4.1 (PDF tr.20-21); BCTN tr.26 (phần HĐQT) ghi giá 49,91, DT 2.275,74, LNST 762,49 (khác số duyệt). KH diện tích: khai thác 9.492,79 ha, KTCB 3.283,85 ha; năng suất 1,44 t/ha (Tập đoàn giao), phấn đấu 14.750 t (1,55 t/ha). PH Kampong Thom KH 2026: 11.800 t.",
+    "sources": {
+     "asp_mvnd_per_t,pbt_bvnd": {
+      "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_25CN_BCTN.pdf",
+      "locator": "PDF tr.20-21"
+     }
+    }
+   },
+   "land_events": [
+    {
+     "date": "2019-09-30",
+     "stage": "pháp lý",
+     "project": "KCN VSIP III (Tân Lập, Bắc Tân Uyên)",
+     "ha": 691,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_Baocaotaichinh_2025_Kiemtoan_Hopnhat_21042026090132.pdf",
+     "source_locator": "TM32 (i.1), PDF tr.51",
+     "notes": "HĐ bồi thường, hỗ trợ thiệt hại 367/HĐ/2019/VSIP-PHR: PHR nhận 20% lợi nhuận gộp VSIP thu từ cho thuê lại trên 691 ha đã nhận, sàn 1,2 tỷ đồng/ha (tức tối thiểu ~829,2 tỷ, tự tính), hiệu lực đến 12/2066."
+    },
+    {
+     "date": "2020-02-20",
+     "stage": "pháp lý",
+     "project": "KCN Nam Tân Uyên mở rộng GĐ II",
+     "ha": 345.767,
+     "amount_bvnd": 864.4175,
+     "source_url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/PHR_20CN_BCTC_HNKT.pdf",
+     "source_locator": "TM33 (2), PDF tr.49",
+     "notes": "QĐ 444/QĐ-UBND phê duyệt phương án bồi thường; tổng tiền đền bù 864,4175 tỷ cho 345,767 ha tại 2 xã, TX Tân Uyên."
+    },
+    {
+     "date": "2020-06-10",
+     "stage": "pháp lý",
+     "project": "KCN Nam Tân Uyên mở rộng GĐ II",
+     "ha": 345.767,
+     "amount_bvnd": 864.4175,
+     "source_url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/PHR_20CN_BCTC_HNKT.pdf",
+     "source_locator": "TM33 (2), PDF tr.49",
+     "notes": "HĐ bồi thường 124/HĐ/CSPH-NTC với CTCP KCN Nam Tân Uyên (NTC)."
+    },
+    {
+     "date": "2020-12-31",
+     "stage": "thu tiền",
+     "project": "KCN Nam Tân Uyên mở rộng GĐ II",
+     "ha": 345.767,
+     "amount_bvnd": 860.14,
+     "source_url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/PHR_20CN_BCTC_HNKT.pdf",
+     "source_locator": "TM33 (2), PDF tr.49",
+     "notes": "NTC đã trả 860,14 tỷ đến 31/12/2020 (thanh toán nhiều đợt); PHR đang chuẩn bị bàn giao mặt bằng sạch."
+    },
+    {
+     "date": "2020-12-31",
+     "stage": "ghi nhận",
+     "project": "KCN Nam Tân Uyên mở rộng GĐ II",
+     "ha": 345.767,
+     "amount_bvnd": 860.14,
+     "source_url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/PHR_20CN_BCTC_HNKT.pdf",
+     "source_locator": "TM33, PDF tr.49",
+     "notes": "Ghi vào thu nhập khác 2020."
+    },
+    {
+     "date": "2020-12-31",
+     "stage": "ghi nhận",
+     "project": "Thanh lý vườn cây cao su",
+     "ha": 683.31,
+     "amount_bvnd": 66.8,
+     "source_url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/PHR_20CN_BCTC_HNKT.pdf",
+     "source_locator": "TM33 (1), PDF tr.49",
+     "notes": "Thu nhập thanh lý TSCĐ thuần; dự án không nêu."
+    },
+    {
+     "date": "2021-12-31",
+     "stage": "ghi nhận",
+     "project": "Thanh lý vườn cây cao su",
+     "ha": 209.61,
+     "amount_bvnd": 23.29,
+     "source_url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/PHR_21CN_BCTC_HNKT.pdf",
+     "source_locator": "TM33 (*), PDF tr.48",
+     "notes": "Thu nhập thanh lý TSCĐ thuần; dự án không nêu."
+    },
+    {
+     "date": "2022-12-31",
+     "stage": "ghi nhận",
+     "project": "KCN VSIP III",
+     "ha": null,
+     "amount_bvnd": 698.3,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0001976284584980237cng-ty-c-phn-cao-su-phc-ha12032024-155942.pdf",
+     "source_locator": "TM34 cột 2022 (trình bày lại), PDF tr.48",
+     "notes": ""
+    },
+    {
+     "date": "2023-12-31",
+     "stage": "ghi nhận",
+     "project": "KCN VSIP III",
+     "ha": null,
+     "amount_bvnd": 283.65,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0001976284584980237cng-ty-c-phn-cao-su-phc-ha12032024-155942.pdf",
+     "source_locator": "TM34, PDF tr.48",
+     "notes": ""
+    },
+    {
+     "date": "2023-12-31",
+     "stage": "ghi nhận",
+     "project": "Thanh lý vườn cây cao su",
+     "ha": 285.14,
+     "amount_bvnd": 69.5,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0001976284584980237cng-ty-c-phn-cao-su-phc-ha12032024-155942.pdf",
+     "source_locator": "TM34 (1), PDF tr.48",
+     "notes": "Thu thanh lý 75,358 tỷ, chi phí 6,59 tỷ; dự án không nêu."
+    },
+    {
+     "date": "2024-12-31",
+     "stage": "ghi nhận",
+     "project": "KCN VSIP III",
+     "ha": null,
+     "amount_bvnd": 55.76,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_Baocaotaichinh_2025_Kiemtoan_Hopnhat_21042026090132.pdf",
+     "source_locator": "TM32 cột 2024, PDF tr.51",
+     "notes": ""
+    },
+    {
+     "date": "2025-03-24",
+     "stage": "pháp lý",
+     "project": "KCN Nam Tân Uyên, Tân Bình, VSIP III",
+     "ha": null,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_25CN_BCTN.pdf",
+     "source_locator": "Danh mục NQ HĐQT, NQ 14/2025/NQ-CSPH, PDF tr.29",
+     "notes": "HĐQT duyệt thanh lý tài sản là công trình nằm trong đất đã giao các KCN."
+    },
+    {
+     "date": "2025-06-02",
+     "stage": "pháp lý",
+     "project": "Cao tốc HCM–Thủ Dầu Một–Chơn Thành (Phú Giáo đợt 2)",
+     "ha": 30.79,
+     "amount_bvnd": 6.92,
+     "source_url": "https://cafef1.mediacdn.vn/download/010626/phr-nghi-quyet-bien-ban-hop-h-c-thuong-nien-2026-va-thong-bao-thay-doi-nhan-su-0.pdf",
+     "source_locator": "BKS mục 4.5.2, PDF tr.63",
+     "notes": "QĐ 2088 ngày 02/6/2025 – QĐ 2364 ngày 12/6/2025; 307.901,6 m2 đã bàn giao; giá trị bồi thường hỗ trợ 6,92 tỷ (BCTC HN 2025 ghi thu 7,98 tỷ cho dự án cao tốc)."
+    },
+    {
+     "date": "2025-12-22",
+     "stage": "pháp lý",
+     "project": "KCN Nam Tân Uyên mở rộng GĐ 2 (tuyến thoát nước mưa)",
+     "ha": null,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_25CN_BCTN.pdf",
+     "source_locator": "NQ 86/2025/NQ-CSPH, PDF tr.34",
+     "notes": "HĐQT duyệt đơn giá & phương thức bán thanh lý cao su tạm bàn giao đất."
+    },
+    {
+     "date": "2025-12-31",
+     "stage": "ghi nhận",
+     "project": "KCN VSIP III",
+     "ha": null,
+     "amount_bvnd": 120.15,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_Baocaotaichinh_2025_Kiemtoan_Hopnhat_21042026090132.pdf",
+     "source_locator": "TM32, PDF tr.51",
+     "notes": ""
+    },
+    {
+     "date": "2026-03-20",
+     "stage": "pháp lý",
+     "project": "KCN Chuyên ngành Cơ khí (Nhà nước thu hồi đất)",
+     "ha": null,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_202610302020PHR2020Bao20cao20tai20chinh20hop20nhat20Q32620va20giai20trinh20chenh20lech_05112026160758.pdf?v=1793869680289",
+     "source_locator": "TM34 (i.2), PDF tr.50",
+     "notes": "QĐ 346/QĐ-UBND; tiếp theo QĐ 533/QĐ-UBND ngày 09/04/2026. Diện tích không nêu. ĐHĐCĐ bất thường 16/10/2026 có ý kiến cổ đông về doanh thu đền bù đất từ các dự án KCN (THACO, VSIP) (EGM PDF tr.6) — chưa xác nhận KCN Cơ khí là dự án THACO."
+    },
+    {
+     "date": "2026-06-30",
+     "stage": "ghi nhận",
+     "project": "KCN VSIP III",
+     "ha": null,
+     "amount_bvnd": 323.4,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_202607302020PHR2020Bao20cao20tai20chinh20hop20nhat20Q220202620kem20giai20trinh_01082026093507.pdf?v=1785551708636",
+     "source_locator": "TM34 6T/2026, PDF tr.44",
+     "notes": "Ghi nhận trong 6T/2026 (không phát sinh thêm Q3)."
+    },
+    {
+     "date": "2026-06-30",
+     "stage": "ghi nhận",
+     "project": "KCN Chuyên ngành Cơ khí",
+     "ha": null,
+     "amount_bvnd": 171.7,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_202607302020PHR2020Bao20cao20tai20chinh20hop20nhat20Q220202620kem20giai20trinh_01082026093507.pdf?v=1785551708636",
+     "source_locator": "TM34 6T/2026, PDF tr.44",
+     "notes": ""
+    },
+    {
+     "date": "2026-09-30",
+     "stage": "ghi nhận",
+     "project": "KCN Chuyên ngành Cơ khí",
+     "ha": null,
+     "amount_bvnd": 256.63,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_202610302020PHR2020Bao20cao20tai20chinh20hop20nhat20Q32620va20giai20trinh20chenh20lech_05112026160758.pdf?v=1793869680289",
+     "source_locator": "TM34 9T/2026 (428,32) trừ 6T, PDF tr.49",
+     "notes": "Lũy kế 9T 428,32 tỷ."
+    },
+    {
+     "date": "2026-09-30",
+     "stage": "ghi nhận",
+     "project": "Thanh lý vườn cây KTCB/cây gãy đổ",
+     "ha": null,
+     "amount_bvnd": 254.06,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/PHR_202610302020PHR2020Bao20cao20tai20chinh20hop20nhat20Q32620va20giai20trinh20chenh20lech_05112026160758.pdf?v=1793869680289",
+     "source_locator": "TM34 9T trừ 6T, PDF tr.49",
+     "notes": "Lũy kế 9T 254,82 tỷ; dự án/diện tích không nêu."
+    }
+   ]
+  },
+  "DPR": {
+   "scope": "Sản lượng/diện tích/giá bán/năng suất: công ty mẹ (BCTN, BC HĐQT/BKS trình ĐHĐCĐ; từ 2023 gồm Đắk Nông đã sáp nhập; không gồm Kratie). Doanh thu mủ, giá vốn, thanh lý, đền bù, BĐS/KCN: BCTC hợp nhất kiểm toán (gồm Kratie 58,37%, KCN Bắc Đồng Phú 51%, Cao su Kỹ thuật Đồng Phú 76,83%). ASP đều là số công bố.",
+   "annual": [
+    {
+     "period": "2019",
+     "tapped_t": 12954,
+     "purchased_t": 3238,
+     "sold_t": 15871.5,
+     "asp_mvnd_per_t": 33.4,
+     "asp_status": "công bố",
+     "area_total_ha": null,
+     "area_tapping_ha": 6099,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": 2.12,
+     "latex_revenue_bvnd": 781.77,
+     "latex_cogs_bvnd": 667.01,
+     "liquidation_bvnd": 177.73,
+     "land_comp_bvnd": 2.7,
+     "kcn_bvnd": 54.92,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/DPR_19CN_BCTN.pdf",
+     "source_locator": "BCTN 2019 trang PDF 10 (bảng KQSXKD) + trang 17 (tiêu thụ 15.871,5 t) + trang 19 (thu mua 3.238 t, cột TH 2019) (file gốc lưu CafeF)",
+     "sources": {
+      "tapped_t": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/DPR_19CN_BCTN.pdf",
+       "locator": "BCTN 2019 trang PDF 10 (bảng KQSXKD) + trang 17 (tiêu thụ 15.871,5 t) + trang 19 (thu mua 3.238 t, cột TH 2019) (file gốc lưu CafeF)"
+      },
+      "purchased_t": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/DPR_19CN_BCTN.pdf",
+       "locator": "BCTN 2019 trang PDF 10 (bảng KQSXKD) + trang 17 (tiêu thụ 15.871,5 t) + trang 19 (thu mua 3.238 t, cột TH 2019) (file gốc lưu CafeF)"
+      },
+      "sold_t": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/DPR_19CN_BCTN.pdf",
+       "locator": "BCTN 2019 trang PDF 10 (bảng KQSXKD) + trang 17 (tiêu thụ 15.871,5 t) + trang 19 (thu mua 3.238 t, cột TH 2019) (file gốc lưu CafeF)"
+      },
+      "asp_mvnd_per_t": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/DPR_19CN_BCTN.pdf",
+       "locator": "BCTN 2019 trang PDF 10 (bảng KQSXKD) + trang 17 (tiêu thụ 15.871,5 t) + trang 19 (thu mua 3.238 t, cột TH 2019) (file gốc lưu CafeF)"
+      },
+      "area_tapping_ha": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/DPR_19CN_BCTN.pdf",
+       "locator": "BCTN 2019 trang PDF 10 (bảng KQSXKD) + trang 17 (tiêu thụ 15.871,5 t) + trang 19 (thu mua 3.238 t, cột TH 2019) (file gốc lưu CafeF)"
+      },
+      "yield_t_per_ha": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/DPR_19CN_BCTN.pdf",
+       "locator": "BCTN 2019 trang PDF 10 (bảng KQSXKD) + trang 17 (tiêu thụ 15.871,5 t) + trang 19 (thu mua 3.238 t, cột TH 2019) (file gốc lưu CafeF)"
+      },
+      "latex_revenue_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2020, cột năm 2019: TM 6.1 (trang PDF 46), 6.3 (trang 47), 6.8 (trang 48) (file gốc lưu CafeF)"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2020, cột năm 2019: TM 6.1 (trang PDF 46), 6.3 (trang 47), 6.8 (trang 48) (file gốc lưu CafeF)"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2020, cột năm 2019: TM 6.1 (trang PDF 46), 6.3 (trang 47), 6.8 (trang 48) (file gốc lưu CafeF)"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2020, cột năm 2019: TM 6.1 (trang PDF 46), 6.3 (trang 47), 6.8 (trang 48) (file gốc lưu CafeF)"
+      },
+      "kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2020, cột năm 2019: TM 6.1 (trang PDF 46), 6.3 (trang 47), 6.8 (trang 48) (file gốc lưu CafeF)"
+      }
+     },
+     "notes": "Sản lượng/diện tích/giá: phạm vi công ty mẹ (BCTN). Tài chính: hợp nhất. latex_revenue = 'Doanh thu bán thành phẩm, hàng hoá' HN (gồm mủ VN + Kratie + SP khác, không tách riêng mủ); latex_cogs = 'Giá vốn thành phẩm, hàng hoá'. liquidation = doanh thu cây cao su thanh lý (giá vốn 18,66 tỷ). land_comp = 'Thu nhập từ đền bù, bồi thường' (thu nhập khác). kcn_bvnd = 'Doanh thu kinh doanh bất động sản' (chủ yếu CTCP KCN Bắc Đồng Phú, công ty con 51%; gồm KCN + KDC), không phải lợi nhuận liên kết. Thu nhập thanh lý tài sản 15,13 tỷ (TN khác)."
+    },
+    {
+     "period": "2020",
+     "tapped_t": 11763.52,
+     "purchased_t": 3562.17,
+     "sold_t": 15849.08,
+     "asp_mvnd_per_t": 35.47,
+     "asp_status": "công bố",
+     "area_total_ha": null,
+     "area_tapping_ha": 5533.04,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": 2.12,
+     "latex_revenue_bvnd": 807.57,
+     "latex_cogs_bvnd": 679.9,
+     "liquidation_bvnd": 113.84,
+     "land_comp_bvnd": 2.32,
+     "kcn_bvnd": 93.66,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTN.pdf",
+     "source_locator": "BCTN 2020 trang PDF 11 (bảng KQSXKD) + trang 18 (tiêu thụ) + trang 20 (thu mua, cột TH 2020) (file gốc lưu CafeF)",
+     "sources": {
+      "tapped_t": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTN.pdf",
+       "locator": "BCTN 2020 trang PDF 11 (bảng KQSXKD) + trang 18 (tiêu thụ) + trang 20 (thu mua, cột TH 2020) (file gốc lưu CafeF)"
+      },
+      "purchased_t": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTN.pdf",
+       "locator": "BCTN 2020 trang PDF 11 (bảng KQSXKD) + trang 18 (tiêu thụ) + trang 20 (thu mua, cột TH 2020) (file gốc lưu CafeF)"
+      },
+      "sold_t": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTN.pdf",
+       "locator": "BCTN 2020 trang PDF 11 (bảng KQSXKD) + trang 18 (tiêu thụ) + trang 20 (thu mua, cột TH 2020) (file gốc lưu CafeF)"
+      },
+      "asp_mvnd_per_t": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTN.pdf",
+       "locator": "BCTN 2020 trang PDF 11 (bảng KQSXKD) + trang 18 (tiêu thụ) + trang 20 (thu mua, cột TH 2020) (file gốc lưu CafeF)"
+      },
+      "area_tapping_ha": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTN.pdf",
+       "locator": "BCTN 2020 trang PDF 11 (bảng KQSXKD) + trang 18 (tiêu thụ) + trang 20 (thu mua, cột TH 2020) (file gốc lưu CafeF)"
+      },
+      "yield_t_per_ha": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTN.pdf",
+       "locator": "BCTN 2020 trang PDF 11 (bảng KQSXKD) + trang 18 (tiêu thụ) + trang 20 (thu mua, cột TH 2020) (file gốc lưu CafeF)"
+      },
+      "latex_revenue_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2020, TM 6.1 (trang PDF 46), 6.3 (47), 6.8 (48) (file gốc lưu CafeF)"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2020, TM 6.1 (trang PDF 46), 6.3 (47), 6.8 (48) (file gốc lưu CafeF)"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2020, TM 6.1 (trang PDF 46), 6.3 (47), 6.8 (48) (file gốc lưu CafeF)"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2020, TM 6.1 (trang PDF 46), 6.3 (47), 6.8 (48) (file gốc lưu CafeF)"
+      },
+      "kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DPR_20CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2020, TM 6.1 (trang PDF 46), 6.3 (47), 6.8 (48) (file gốc lưu CafeF)"
+      }
+     },
+     "notes": "Phạm vi như 2019. kcn_bvnd = DT kinh doanh BĐS 21,66 + DT bán nền khu dân cư 72,00 tỷ (KCN/KDC của KCN Bắc Đồng Phú; tách KCN thuần không có). Giá vốn thanh lý 14,49 tỷ. Thêm: DT sản phẩm tại chi nhánh gỗ 81,13 tỷ."
+    },
+    {
+     "period": "2021",
+     "tapped_t": 12698.7,
+     "purchased_t": 3154,
+     "sold_t": 13145.12,
+     "asp_mvnd_per_t": 42.67,
+     "asp_status": "công bố",
+     "area_total_ha": null,
+     "area_tapping_ha": 5938.6,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": 2.14,
+     "latex_revenue_bvnd": 900.88,
+     "latex_cogs_bvnd": 654.94,
+     "liquidation_bvnd": 122.34,
+     "land_comp_bvnd": 229.13,
+     "kcn_bvnd": 56.53,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTN.pdf",
+     "source_locator": "BCTN 2021 trang PDF 10 (bảng KQSXKD) + trang 19 (thu mua, tiêu thụ cột TH 2021) (file gốc lưu CafeF)",
+     "sources": {
+      "tapped_t": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTN.pdf",
+       "locator": "BCTN 2021 trang PDF 10 (bảng KQSXKD) + trang 19 (thu mua, tiêu thụ cột TH 2021) (file gốc lưu CafeF)"
+      },
+      "purchased_t": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTN.pdf",
+       "locator": "BCTN 2021 trang PDF 10 (bảng KQSXKD) + trang 19 (thu mua, tiêu thụ cột TH 2021) (file gốc lưu CafeF)"
+      },
+      "sold_t": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTN.pdf",
+       "locator": "BCTN 2021 trang PDF 10 (bảng KQSXKD) + trang 19 (thu mua, tiêu thụ cột TH 2021) (file gốc lưu CafeF)"
+      },
+      "asp_mvnd_per_t": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTN.pdf",
+       "locator": "BCTN 2021 trang PDF 10 (bảng KQSXKD) + trang 19 (thu mua, tiêu thụ cột TH 2021) (file gốc lưu CafeF)"
+      },
+      "area_tapping_ha": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTN.pdf",
+       "locator": "BCTN 2021 trang PDF 10 (bảng KQSXKD) + trang 19 (thu mua, tiêu thụ cột TH 2021) (file gốc lưu CafeF)"
+      },
+      "yield_t_per_ha": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTN.pdf",
+       "locator": "BCTN 2021 trang PDF 10 (bảng KQSXKD) + trang 19 (thu mua, tiêu thụ cột TH 2021) (file gốc lưu CafeF)"
+      },
+      "latex_revenue_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2021, TM 6.1 (trang PDF 47), 6.3 (48), 6.8 Thu nhập khác (49) (file gốc lưu CafeF)"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2021, TM 6.1 (trang PDF 47), 6.3 (48), 6.8 Thu nhập khác (49) (file gốc lưu CafeF)"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2021, TM 6.1 (trang PDF 47), 6.3 (48), 6.8 Thu nhập khác (49) (file gốc lưu CafeF)"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2021, TM 6.1 (trang PDF 47), 6.3 (48), 6.8 Thu nhập khác (49) (file gốc lưu CafeF)"
+      },
+      "kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTC_HNKT.pdf",
+       "locator": "BCTC HN kiểm toán 2021, TM 6.1 (trang PDF 47), 6.3 (48), 6.8 Thu nhập khác (49) (file gốc lưu CafeF)"
+      }
+     },
+     "notes": "Đền bù, bồi thường 229,13 tỷ (HN) — BCTC không nêu dự án; BCTN 2022 trang 25 chỉ nói 2021 'thu được nguồn lớn từ thu nhập đền bù và bồi thường'. Năm 2021 HĐQT thông qua thanh lý cây trên đất địa phương thu hồi: 98,94 ha KDC Tiến Hưng 1&2, 9,63 ha đấu giá QSDĐ, 9,57 ha đường giao thông, 117,37 ha, 109,74 ha (xem land_events) — không gán được khoản 229 tỷ cho từng dự án. kcn_bvnd = DT KD BĐS 52,88 + bán nền KDC 3,65. DT hợp đồng gia công gỗ tách riêng 68,48. Giá vốn thanh lý 12,73. KH 2021 LNTT công ty mẹ 419 tỷ (BCTN 2021 trang 35)."
+    },
+    {
+     "period": "2022",
+     "tapped_t": 10897,
+     "purchased_t": 3293,
+     "sold_t": 13884.2,
+     "asp_mvnd_per_t": 38.63,
+     "asp_status": "công bố",
+     "area_total_ha": null,
+     "area_tapping_ha": 4780.26,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": 2.28,
+     "latex_revenue_bvnd": 903.59,
+     "latex_cogs_bvnd": 719.56,
+     "liquidation_bvnd": 141.49,
+     "land_comp_bvnd": 1.36,
+     "kcn_bvnd": 76.41,
+     "source_url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dpr-nghi-quyet-bien-ban-hop-va-tai-lieu-dinh-kem-h-c-thuong-nien-nam-2023-02023-111219.pdf",
+     "source_locator": "Tài liệu ĐHĐCĐ 2023, Báo cáo HĐQT mục 3 'Kết quả kinh doanh của Công ty năm 2022' (trang PDF 27) (file gốc lưu CafeF)",
+     "sources": {
+      "tapped_t": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dpr-nghi-quyet-bien-ban-hop-va-tai-lieu-dinh-kem-h-c-thuong-nien-nam-2023-02023-111219.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2023, Báo cáo HĐQT mục 3 'Kết quả kinh doanh của Công ty năm 2022' (trang PDF 27) (file gốc lưu CafeF)"
+      },
+      "purchased_t": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dpr-nghi-quyet-bien-ban-hop-va-tai-lieu-dinh-kem-h-c-thuong-nien-nam-2023-02023-111219.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2023, Báo cáo HĐQT mục 3 'Kết quả kinh doanh của Công ty năm 2022' (trang PDF 27) (file gốc lưu CafeF)"
+      },
+      "sold_t": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dpr-nghi-quyet-bien-ban-hop-va-tai-lieu-dinh-kem-h-c-thuong-nien-nam-2023-02023-111219.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2023, Báo cáo HĐQT mục 3 'Kết quả kinh doanh của Công ty năm 2022' (trang PDF 27) (file gốc lưu CafeF)"
+      },
+      "asp_mvnd_per_t": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dpr-nghi-quyet-bien-ban-hop-va-tai-lieu-dinh-kem-h-c-thuong-nien-nam-2023-02023-111219.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2023, Báo cáo HĐQT mục 3 'Kết quả kinh doanh của Công ty năm 2022' (trang PDF 27) (file gốc lưu CafeF)"
+      },
+      "area_tapping_ha": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dpr-nghi-quyet-bien-ban-hop-va-tai-lieu-dinh-kem-h-c-thuong-nien-nam-2023-02023-111219.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2023, Báo cáo HĐQT mục 3 'Kết quả kinh doanh của Công ty năm 2022' (trang PDF 27) (file gốc lưu CafeF)"
+      },
+      "yield_t_per_ha": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dpr-nghi-quyet-bien-ban-hop-va-tai-lieu-dinh-kem-h-c-thuong-nien-nam-2023-02023-111219.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2023, Báo cáo HĐQT mục 3 'Kết quả kinh doanh của Công ty năm 2022' (trang PDF 27) (file gốc lưu CafeF)"
+      },
+      "latex_revenue_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0004446640316205534cng-ty-c-phn-cao-su-ng-ph27032024-105702.pdf",
+       "locator": "BCTC HN kiểm toán 2023, cột năm 2022: TM 7.1 (trang PDF 45), 7.4, 7.9 Thu nhập khác (trang 47) (file gốc lưu CafeF)"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0004446640316205534cng-ty-c-phn-cao-su-ng-ph27032024-105702.pdf",
+       "locator": "BCTC HN kiểm toán 2023, cột năm 2022: TM 7.1 (trang PDF 45), 7.4, 7.9 Thu nhập khác (trang 47) (file gốc lưu CafeF)"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0004446640316205534cng-ty-c-phn-cao-su-ng-ph27032024-105702.pdf",
+       "locator": "BCTC HN kiểm toán 2023, cột năm 2022: TM 7.1 (trang PDF 45), 7.4, 7.9 Thu nhập khác (trang 47) (file gốc lưu CafeF)"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0004446640316205534cng-ty-c-phn-cao-su-ng-ph27032024-105702.pdf",
+       "locator": "BCTC HN kiểm toán 2023, cột năm 2022: TM 7.1 (trang PDF 45), 7.4, 7.9 Thu nhập khác (trang 47) (file gốc lưu CafeF)"
+      },
+      "kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0004446640316205534cng-ty-c-phn-cao-su-ng-ph27032024-105702.pdf",
+       "locator": "BCTC HN kiểm toán 2023, cột năm 2022: TM 7.1 (trang PDF 45), 7.4, 7.9 Thu nhập khác (trang 47) (file gốc lưu CafeF)"
+      },
+      "tapped_alt": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_22CN_BCTN.pdf",
+       "locator": "BCTN 2022 trang PDF 12: 10.739 t, năng suất 2,25 (file gốc lưu CafeF)"
+      }
+     },
+     "notes": "Sản lượng khai thác: ĐHĐCĐ 2023 = 10.897 t; BCTN 2022 trang 12 ghi 10.739 t, năng suất 2,25; BCTN 2023 trang 16 ghi 10.896,96 t, DT khai thác 4.901,21 ha. File BCTCHN_CN_2022 tải về thực chất là BCTC tổng hợp nên dùng số so sánh trong BCTC HN 2023. Giá vốn thanh lý 9,40."
+    },
+    {
+     "period": "2023",
+     "tapped_t": 12003.9,
+     "purchased_t": 1292.7,
+     "sold_t": 13954.2,
+     "asp_mvnd_per_t": 34.57,
+     "asp_status": "công bố",
+     "area_total_ha": null,
+     "area_tapping_ha": 5828.13,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": 2.06,
+     "latex_revenue_bvnd": 740.23,
+     "latex_cogs_bvnd": 654.74,
+     "liquidation_bvnd": 87.33,
+     "land_comp_bvnd": 5.28,
+     "kcn_bvnd": 72.23,
+     "source_url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dprcbttbienbanhopvanghiquyethcthuongniennam202402024-151611.pdf",
+     "source_locator": "Tài liệu ĐHĐCĐ 2024, '3. Kết quả kinh doanh của Công ty năm 2023' (trang PDF 61 và 68) (file gốc lưu CafeF)",
+     "sources": {
+      "tapped_t": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dprcbttbienbanhopvanghiquyethcthuongniennam202402024-151611.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2024, '3. Kết quả kinh doanh của Công ty năm 2023' (trang PDF 61 và 68) (file gốc lưu CafeF)"
+      },
+      "purchased_t": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dprcbttbienbanhopvanghiquyethcthuongniennam202402024-151611.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2024, '3. Kết quả kinh doanh của Công ty năm 2023' (trang PDF 61 và 68) (file gốc lưu CafeF)"
+      },
+      "sold_t": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dprcbttbienbanhopvanghiquyethcthuongniennam202402024-151611.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2024, '3. Kết quả kinh doanh của Công ty năm 2023' (trang PDF 61 và 68) (file gốc lưu CafeF)"
+      },
+      "asp_mvnd_per_t": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dprcbttbienbanhopvanghiquyethcthuongniennam202402024-151611.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2024, '3. Kết quả kinh doanh của Công ty năm 2023' (trang PDF 61 và 68) (file gốc lưu CafeF)"
+      },
+      "area_tapping_ha": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dprcbttbienbanhopvanghiquyethcthuongniennam202402024-151611.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2024, '3. Kết quả kinh doanh của Công ty năm 2023' (trang PDF 61 và 68) (file gốc lưu CafeF)"
+      },
+      "yield_t_per_ha": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/dprcbttbienbanhopvanghiquyethcthuongniennam202402024-151611.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2024, '3. Kết quả kinh doanh của Công ty năm 2023' (trang PDF 61 và 68) (file gốc lưu CafeF)"
+      },
+      "latex_revenue_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0004446640316205534cng-ty-c-phn-cao-su-ng-ph27032024-105702.pdf",
+       "locator": "BCTC HN kiểm toán 2023: TM 7.1/7.4 (trang PDF 45), 7.9 (47), 10.2 Báo cáo bộ phận (56) (file gốc lưu CafeF)"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0004446640316205534cng-ty-c-phn-cao-su-ng-ph27032024-105702.pdf",
+       "locator": "BCTC HN kiểm toán 2023: TM 7.1/7.4 (trang PDF 45), 7.9 (47), 10.2 Báo cáo bộ phận (56) (file gốc lưu CafeF)"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0004446640316205534cng-ty-c-phn-cao-su-ng-ph27032024-105702.pdf",
+       "locator": "BCTC HN kiểm toán 2023: TM 7.1/7.4 (trang PDF 45), 7.9 (47), 10.2 Báo cáo bộ phận (56) (file gốc lưu CafeF)"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0004446640316205534cng-ty-c-phn-cao-su-ng-ph27032024-105702.pdf",
+       "locator": "BCTC HN kiểm toán 2023: TM 7.1/7.4 (trang PDF 45), 7.9 (47), 10.2 Báo cáo bộ phận (56) (file gốc lưu CafeF)"
+      },
+      "kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0004446640316205534cng-ty-c-phn-cao-su-ng-ph27032024-105702.pdf",
+       "locator": "BCTC HN kiểm toán 2023: TM 7.1/7.4 (trang PDF 45), 7.9 (47), 10.2 Báo cáo bộ phận (56) (file gốc lưu CafeF)"
+      }
+     },
+     "notes": "Từ 2023 công ty mẹ gồm Đắk Nông (sáp nhập CTCP Cao su Đồng Phú Đắk Nông 2023). ASP 34.572,4 nghìn đ/t. BCTN 2023 trang 16 ghi DT khai thác 6.302,20 ha, năng suất 2,07 (BCTN 2024 trang 15 điều chỉnh 5.828 ha/2,06). latex_revenue = DT bộ phận 'SX và KD mủ cao su' bên ngoài 740,23 (DT thành phẩm, hàng hoá 771,67); latex_cogs = giá vốn thành phẩm, hàng hoá 654,74 (gồm cả hàng ngoài mủ). Bộ phận 'Xây dựng BĐS, cơ sở hạ tầng' DT 72,23, LN 13,68. land_comp: đền bù, bồi thường 5,28 (+ hỗ trợ 1,39). Giá vốn thanh lý 11,60. BCTN 2023 trang 14: tổng diện tích đất cao su nhóm ~16.700 ha (Bình Phước, Đắk Nông, Kratie)."
+    },
+    {
+     "period": "2024",
+     "tapped_t": 11179.43,
+     "purchased_t": 748.34,
+     "sold_t": 11929.53,
+     "asp_mvnd_per_t": 48.02,
+     "asp_status": "công bố",
+     "area_total_ha": 9135.55,
+     "area_tapping_ha": 5881.34,
+     "area_kcb_ha": 2533.19,
+     "area_by_country": {
+      "VN": 9135.55,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": 1.9,
+     "latex_revenue_bvnd": 907.89,
+     "latex_cogs_bvnd": 677.43,
+     "liquidation_bvnd": 82.55,
+     "land_comp_bvnd": 43.46,
+     "kcn_bvnd": 50.11,
+     "source_url": "https://cafefnew.mediacdn.vn/download/260625/dpr-nghi-quyet-bien-ban-va-tai-lieu-sau-h-c-thuong-nien-nam-2025-0.pdf",
+     "source_locator": "Tài liệu ĐHĐCĐ 2025, Báo cáo BKS mục II.1 bảng KQSXKD 2024 (trang PDF 50) + mục 2a (trang 51: KTCB 2.533,19 ha, tái canh 400,07 ha) (file gốc lưu CafeF)",
+     "sources": {
+      "tapped_t": {
+       "url": "https://cafefnew.mediacdn.vn/download/260625/dpr-nghi-quyet-bien-ban-va-tai-lieu-sau-h-c-thuong-nien-nam-2025-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2025, Báo cáo BKS mục II.1 bảng KQSXKD 2024 (trang PDF 50) + mục 2a (trang 51: KTCB 2.533,19 ha, tái canh 400,07 ha) (file gốc lưu CafeF)"
+      },
+      "purchased_t": {
+       "url": "https://cafefnew.mediacdn.vn/download/260625/dpr-nghi-quyet-bien-ban-va-tai-lieu-sau-h-c-thuong-nien-nam-2025-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2025, Báo cáo BKS mục II.1 bảng KQSXKD 2024 (trang PDF 50) + mục 2a (trang 51: KTCB 2.533,19 ha, tái canh 400,07 ha) (file gốc lưu CafeF)"
+      },
+      "sold_t": {
+       "url": "https://cafefnew.mediacdn.vn/download/260625/dpr-nghi-quyet-bien-ban-va-tai-lieu-sau-h-c-thuong-nien-nam-2025-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2025, Báo cáo BKS mục II.1 bảng KQSXKD 2024 (trang PDF 50) + mục 2a (trang 51: KTCB 2.533,19 ha, tái canh 400,07 ha) (file gốc lưu CafeF)"
+      },
+      "asp_mvnd_per_t": {
+       "url": "https://cafefnew.mediacdn.vn/download/260625/dpr-nghi-quyet-bien-ban-va-tai-lieu-sau-h-c-thuong-nien-nam-2025-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2025, Báo cáo BKS mục II.1 bảng KQSXKD 2024 (trang PDF 50) + mục 2a (trang 51: KTCB 2.533,19 ha, tái canh 400,07 ha) (file gốc lưu CafeF)"
+      },
+      "area_total_ha": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_24CN_BCTN.pdf",
+       "locator": "BCTN 2024 trang PDF 52, NQ 110/NQ-HĐQTCSĐP 30/7/2024 (file gốc lưu CafeF)"
+      },
+      "area_tapping_ha": {
+       "url": "https://cafefnew.mediacdn.vn/download/260625/dpr-nghi-quyet-bien-ban-va-tai-lieu-sau-h-c-thuong-nien-nam-2025-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2025, Báo cáo BKS mục II.1 bảng KQSXKD 2024 (trang PDF 50) + mục 2a (trang 51: KTCB 2.533,19 ha, tái canh 400,07 ha) (file gốc lưu CafeF)"
+      },
+      "area_kcb_ha": {
+       "url": "https://cafefnew.mediacdn.vn/download/260625/dpr-nghi-quyet-bien-ban-va-tai-lieu-sau-h-c-thuong-nien-nam-2025-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2025, Báo cáo BKS mục II.1 bảng KQSXKD 2024 (trang PDF 50) + mục 2a (trang 51: KTCB 2.533,19 ha, tái canh 400,07 ha) (file gốc lưu CafeF)"
+      },
+      "yield_t_per_ha": {
+       "url": "https://cafefnew.mediacdn.vn/download/260625/dpr-nghi-quyet-bien-ban-va-tai-lieu-sau-h-c-thuong-nien-nam-2025-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2025, Báo cáo BKS mục II.1 bảng KQSXKD 2024 (trang PDF 50) + mục 2a (trang 51: KTCB 2.533,19 ha, tái canh 400,07 ha) (file gốc lưu CafeF)"
+      },
+      "area_by_country": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_24CN_BCTN.pdf",
+       "locator": "BCTN 2024 trang PDF 52 (file gốc lưu CafeF)"
+      },
+      "latex_revenue_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/000016460905349794237cng-ty-c-phn-cao-su-ng-ph28032025-000000bo-co-ti-chnh-hp-nht-nm.pdf",
+       "locator": "BCTC HN kiểm toán 2024: TM 5.1/5.3 (trang PDF 42), 5.8 Thu nhập khác (44), Báo cáo bộ phận (54) (file gốc lưu CafeF)"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/000016460905349794237cng-ty-c-phn-cao-su-ng-ph28032025-000000bo-co-ti-chnh-hp-nht-nm.pdf",
+       "locator": "BCTC HN kiểm toán 2024: TM 5.1/5.3 (trang PDF 42), 5.8 Thu nhập khác (44), Báo cáo bộ phận (54) (file gốc lưu CafeF)"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/000016460905349794237cng-ty-c-phn-cao-su-ng-ph28032025-000000bo-co-ti-chnh-hp-nht-nm.pdf",
+       "locator": "BCTC HN kiểm toán 2024: TM 5.1/5.3 (trang PDF 42), 5.8 Thu nhập khác (44), Báo cáo bộ phận (54) (file gốc lưu CafeF)"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/000016460905349794237cng-ty-c-phn-cao-su-ng-ph28032025-000000bo-co-ti-chnh-hp-nht-nm.pdf",
+       "locator": "BCTC HN kiểm toán 2024: TM 5.1/5.3 (trang PDF 42), 5.8 Thu nhập khác (44), Báo cáo bộ phận (54) (file gốc lưu CafeF)"
+      },
+      "kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/000016460905349794237cng-ty-c-phn-cao-su-ng-ph28032025-000000bo-co-ti-chnh-hp-nht-nm.pdf",
+       "locator": "BCTC HN kiểm toán 2024: TM 5.1/5.3 (trang PDF 42), 5.8 Thu nhập khác (44), Báo cáo bộ phận (54) (file gốc lưu CafeF)"
+      }
+     },
+     "notes": "Khai thác: BKS 11.179,43 t; BCTN 2024 trang 15 ghi 11.185 t. area_total = 'quy mô diện tích cao su quản lý 9.135,55 ha (đất công ty quản lý 10.069 ha)' theo NQ 110/NQ-HĐQTCSĐP 30/7/2024 (BCTN 2024 trang PDF 52) — công ty mẹ, thời điểm giữa năm. latex_revenue = DT bộ phận mủ 907,89 (DT thành phẩm 936,70). Bộ phận 'Xây dựng BĐS, cơ sở hạ tầng' DT 50,11, LN HĐKD 29,40. land_comp: đền bù, bồi thường 43,46 (+ hỗ trợ 1,48), BCTC không nêu dự án. Giá vốn thanh lý 8,57; DT gỗ phôi 84,32."
+    },
+    {
+     "period": "2025",
+     "tapped_t": 12935.21,
+     "purchased_t": 1610.3,
+     "sold_t": 11607.87,
+     "asp_mvnd_per_t": 50.69,
+     "asp_status": "công bố",
+     "area_total_ha": 8982.33,
+     "area_tapping_ha": 6089.51,
+     "area_kcb_ha": 2433.76,
+     "area_by_country": {
+      "VN": 8982.33,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": 2.12,
+     "latex_revenue_bvnd": 926.06,
+     "latex_cogs_bvnd": 653.71,
+     "liquidation_bvnd": 158.65,
+     "land_comp_bvnd": 9.22,
+     "kcn_bvnd": 27.17,
+     "source_url": "https://cafef1.mediacdn.vn/download/300626/dpr-bien-ban-hop-va-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-0.pdf",
+     "source_locator": "Tài liệu ĐHĐCĐ 2026, Báo cáo BKS mục II.1 bảng KQSXKD riêng công ty mẹ 2025 (trang PDF 48) (file gốc lưu CafeF)",
+     "sources": {
+      "tapped_t": {
+       "url": "https://cafef1.mediacdn.vn/download/300626/dpr-bien-ban-hop-va-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2026, Báo cáo BKS mục II.1 bảng KQSXKD riêng công ty mẹ 2025 (trang PDF 48) (file gốc lưu CafeF)"
+      },
+      "purchased_t": {
+       "url": "https://cafef1.mediacdn.vn/download/300626/dpr-bien-ban-hop-va-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2026, Báo cáo BKS mục II.1 bảng KQSXKD riêng công ty mẹ 2025 (trang PDF 48) (file gốc lưu CafeF)"
+      },
+      "sold_t": {
+       "url": "https://cafef1.mediacdn.vn/download/300626/dpr-bien-ban-hop-va-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2026, Báo cáo BKS mục II.1 bảng KQSXKD riêng công ty mẹ 2025 (trang PDF 48) (file gốc lưu CafeF)"
+      },
+      "asp_mvnd_per_t": {
+       "url": "https://cafef1.mediacdn.vn/download/300626/dpr-bien-ban-hop-va-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2026, Báo cáo BKS mục II.1 bảng KQSXKD riêng công ty mẹ 2025 (trang PDF 48) (file gốc lưu CafeF)"
+      },
+      "area_total_ha": {
+       "url": "https://cafef1.mediacdn.vn/download/300626/dpr-bien-ban-hop-va-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2026, Báo cáo BKS mục II.1 bảng KQSXKD riêng công ty mẹ 2025 (trang PDF 48) (file gốc lưu CafeF)"
+      },
+      "area_tapping_ha": {
+       "url": "https://cafef1.mediacdn.vn/download/300626/dpr-bien-ban-hop-va-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2026, Báo cáo BKS mục II.1 bảng KQSXKD riêng công ty mẹ 2025 (trang PDF 48) (file gốc lưu CafeF)"
+      },
+      "area_kcb_ha": {
+       "url": "https://cafef1.mediacdn.vn/download/300626/dpr-bien-ban-hop-va-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2026, Báo cáo BKS mục II.1 bảng KQSXKD riêng công ty mẹ 2025 (trang PDF 48) (file gốc lưu CafeF)"
+      },
+      "yield_t_per_ha": {
+       "url": "https://cafef1.mediacdn.vn/download/300626/dpr-bien-ban-hop-va-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2026, Báo cáo BKS mục II.1 bảng KQSXKD riêng công ty mẹ 2025 (trang PDF 48) (file gốc lưu CafeF)"
+      },
+      "area_by_country": {
+       "url": "https://cafef1.mediacdn.vn/download/300626/dpr-bien-ban-hop-va-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-0.pdf",
+       "locator": "Tài liệu ĐHĐCĐ 2026, Báo cáo BKS mục II.1 bảng KQSXKD riêng công ty mẹ 2025 (trang PDF 48) (file gốc lưu CafeF)"
+      },
+      "latex_revenue_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260325_-_DPR_-_BCTC_HN_2025_DA_KT_1774440052.pdf",
+       "locator": "BCTC HN kiểm toán 2025: TM 5.1/5.3/5.4 (trang PDF 41), 5.9 Thu nhập khác (43), Báo cáo bộ phận (53) (file gốc lưu CafeF)"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260325_-_DPR_-_BCTC_HN_2025_DA_KT_1774440052.pdf",
+       "locator": "BCTC HN kiểm toán 2025: TM 5.1/5.3/5.4 (trang PDF 41), 5.9 Thu nhập khác (43), Báo cáo bộ phận (53) (file gốc lưu CafeF)"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260325_-_DPR_-_BCTC_HN_2025_DA_KT_1774440052.pdf",
+       "locator": "BCTC HN kiểm toán 2025: TM 5.1/5.3/5.4 (trang PDF 41), 5.9 Thu nhập khác (43), Báo cáo bộ phận (53) (file gốc lưu CafeF)"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260325_-_DPR_-_BCTC_HN_2025_DA_KT_1774440052.pdf",
+       "locator": "BCTC HN kiểm toán 2025: TM 5.1/5.3/5.4 (trang PDF 41), 5.9 Thu nhập khác (43), Báo cáo bộ phận (53) (file gốc lưu CafeF)"
+      },
+      "kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260325_-_DPR_-_BCTC_HN_2025_DA_KT_1774440052.pdf",
+       "locator": "BCTC HN kiểm toán 2025: TM 5.1/5.3/5.4 (trang PDF 41), 5.9 Thu nhập khác (43), Báo cáo bộ phận (53) (file gốc lưu CafeF)"
+      }
+     },
+     "notes": "area_total tự cộng = tái canh trồng mới 459,06 + KTCB 2.433,76 + khai thác 6.089,51 (công ty mẹ, VN gồm Bình Phước/Đồng Nai + Đắk Nông). BCTN 2025 trang 13: khai thác 12.935,21 t, ASP 50,68 (50,677). latex_revenue = DT bộ phận mủ 926,06 (DT thành phẩm, hàng hoá 946,17); latex_cogs = giá vốn thành phẩm, hàng hoá 653,71. land_comp = 'Thu nhập từ hỗ trợ đền bù, bồi thường' 9,22; thêm 'thu nhập từ tiền thuê đất được giảm' 16,23. kcn_bvnd = DT kinh doanh BĐS 27,17 (giá vốn 15,00). Giá vốn thanh lý 8,98."
+    }
+   ],
+   "quarterly": [
+    {
+     "period": "2026_9M",
+     "tapped_t": null,
+     "purchased_t": null,
+     "sold_t": null,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": 968.0,
+     "latex_cogs_bvnd": 668.91,
+     "liquidation_bvnd": 182.41,
+     "land_comp_bvnd": null,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_202610282020DPR2020BCTC20HN20Q3202026_29102026104106.pdf?v=1793245268460",
+     "source_locator": "BCTC HN Q3/2026, Báo cáo bộ phận (trang PDF 31); KQKD (trang 4); TM 39 Thu nhập khác (trang 27); TM 43 (trang 28) (file gốc lưu CafeF)",
+     "notes": "Hợp nhất. latex_revenue = DT bộ phận 'Kinh doanh mủ cao su' 967,998; latex_cogs tự tính = DT bộ phận − LN gộp bộ phận 299,087. liquidation = DT bộ phận 'Kinh doanh bán cây cao su' 182,41 (LN gộp 172,08). Thu nhập khác 9T 156,15 tỷ (Q3: 145,55) không thuyết minh chi tiết -> land_comp null. 'Các hoạt động khác' 68,92 (gồm KCN, không tách). CP QLDN 9T 180,34 tỷ gồm trích quỹ KHCN 101,76 tỷ. DT thuần 1.219,33; LNTT 545,76. Sản lượng 9T chưa có văn bản gốc."
+    },
+    {
+     "period": "2026Q3",
+     "tapped_t": null,
+     "purchased_t": null,
+     "sold_t": null,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": null,
+     "latex_cogs_bvnd": null,
+     "liquidation_bvnd": 75,
+     "land_comp_bvnd": 130,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_202610282020DPR2020BCTC20HN20Q3202026_29102026104106.pdf?v=1793245268460",
+     "source_locator": "BCTC HN Q3/2026, KQKD (trang PDF 4) (file gốc lưu CafeF)",
+     "sources": {
+      "liquidation_bvnd": {
+       "url": "https://24hmoney.vn/posts/-c55a2854049.html",
+       "locator": "bài báo 24hmoney phân tích KQ Q3/2026"
+      },
+      "land_comp_bvnd": {
+       "url": "https://24hmoney.vn/posts/-c55a2854049.html",
+       "locator": "bài báo 24hmoney phân tích KQ Q3/2026"
+      }
+     },
+     "notes": "báo: liquidation ~75 tỷ và land_comp ~130 tỷ ('bồi thường dự án Bắc Đồng Phú mở rộng') lấy từ báo, chưa thấy văn bản gốc (BCTC Q3 chỉ ghi thu nhập khác Q3 145,55 tỷ, chi phí khác 14,76 tỷ, không chi tiết; không tìm được giải trình Q3). Báo cũng nêu giá bán BQ ~63,2–64 trđ/t và tiêu thụ ước ~7.190 t — không đưa vào trường vì là ước/báo, lệch nhau giữa các bài. Gốc Q3/2026: DT thuần 559,44; GVHB 320,85; CP QLDN 135,49; LNTT 270,10; LNST cổ đông mẹ 198,67 tỷ."
+    }
+   ],
+   "plan_2026": {
+    "tapped_t": 11900,
+    "sold_t": 14000,
+    "asp_mvnd_per_t": null,
+    "revenue_bvnd": 1067.631,
+    "pbt_bvnd": 472.643,
+    "source_url": "https://cafef1.mediacdn.vn/download/300626/dpr-bien-ban-hop-va-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-0.pdf",
+    "source_locator": "Tài liệu ĐHĐCĐ 2026, Tờ trình số 4 ngày 08/6/2026 (trang PDF 61–62); NQ 88/NQ-ĐHĐCĐCSĐP 29/6/2026 Điều 6 thông qua (trang 3) (file gốc lưu CafeF)",
+    "notes": "Công ty mẹ. revenue = 'Tổng doanh thu và thu nhập khác' 1.067,631 tỷ (DT bán hàng & CCDV 734,575; DT tài chính 112,042; thu nhập khác 221,014). LNTT 472,643; LNST 398,523. Thu mua 2.000 t, chế biến 13.900 t; tổng DT cao su 9.080,82 ha, khai thác 6.226,68 ha, KTCB 2.854,14 ha (gồm tái canh 336,98), năng suất 1,91 t/ha; giá thành toàn bộ 40,36 trđ/t. Không có giá bán KH trong tờ trình. BCTN 2025 trang PDF 33 (bản HĐQT trình trước) ghi tổng DT 1.005,046 tỷ, LNTT 407,157 tỷ — khác Tờ trình 4. KCN Bắc Đồng Phú KH 2026: DT 93,929, LNTT 51,065 tỷ; Kratie: DT 122,085, LNTT 99,27 tỷ (BCTN 2025 trang 33–34).",
+    "purchased_t": 2000,
+    "area_total_ha": 9080.82,
+    "area_tapping_ha": 6226.68,
+    "area_kcb_ha": 2854.14,
+    "yield_t_per_ha": 1.91,
+    "pat_bvnd": 398.523,
+    "other_income_bvnd": 221.014
+   },
+   "land_events": [
+    {
+     "date": "2019-12-31",
+     "stage": "pháp lý",
+     "project": "Mở rộng KCN Bắc Đồng Phú và Nam Đồng Phú",
+     "ha": 610,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/DPR_19CN_BCTN.pdf",
+     "source_locator": "BCTN 2019 trang PDF 14 (file gốc lưu CafeF)",
+     "notes": "HĐQT thống nhất phương án mở rộng trong năm 2019 (không nêu ngày; ghi 31/12 làm mốc). Cùng chỗ: dự án nông nghiệp ứng dụng công nghệ cao dự kiến 496,4 ha (NQ 109 ngày 27/8/2019)."
+    },
+    {
+     "date": "2021-09-16",
+     "stage": "pháp lý",
+     "project": "Thanh lý cao su do địa phương thu hồi đất đấu giá QSDĐ (KDC Tiến Hưng 1 & 2)",
+     "ha": 98.94,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTN.pdf",
+     "source_locator": "BCTN 2021 trang PDF 30, NQ 108/NQ-HĐQTCSĐP (file gốc lưu CafeF)",
+     "notes": "Giá trị bồi thường theo CV 108/HĐQTCSVN-KHĐT 25/02/2021; GTCL 6,99 tỷ."
+    },
+    {
+     "date": "2021-09-16",
+     "stage": "pháp lý",
+     "project": "Thanh lý cao su do địa phương thu hồi đất để đấu giá QSDĐ",
+     "ha": 9.63,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTN.pdf",
+     "source_locator": "BCTN 2021 trang PDF 29, NQ 107/NQ-HĐQTCSĐP (file gốc lưu CafeF)",
+     "notes": "+7,73 ha ngoài sổ sách."
+    },
+    {
+     "date": "2021-09-30",
+     "stage": "pháp lý",
+     "project": "Thanh lý cao su do địa phương thu hồi đất làm đường giao thông",
+     "ha": 9.57,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTN.pdf",
+     "source_locator": "BCTN 2021 trang PDF 31, NQ 118/NQ-HĐQTCSĐP (file gốc lưu CafeF)",
+     "notes": ""
+    },
+    {
+     "date": "2021-11-08",
+     "stage": "pháp lý",
+     "project": "Thanh lý cao su (đất thu hồi, bồi thường theo CV 141/HĐQTCSVN-KHĐT 10/3/2021)",
+     "ha": 117.37,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTN.pdf",
+     "source_locator": "BCTN 2021 trang PDF 34, NQ 146/NQ-HĐQTCSĐP (file gốc lưu CafeF)",
+     "notes": "Không nêu tên dự án."
+    },
+    {
+     "date": "2021-12-24",
+     "stage": "pháp lý",
+     "project": "Thanh lý cao su (đất thu hồi, bồi thường theo CV 927/HĐQTCSVN-KHĐT 18/11/2021)",
+     "ha": 109.74,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTN.pdf",
+     "source_locator": "BCTN 2021 trang PDF 35–36 (file gốc lưu CafeF)",
+     "notes": "Không nêu tên dự án; 96,99 ha KTCB + 12,75 ha kinh doanh."
+    },
+    {
+     "date": "2021-12-31",
+     "stage": "ghi nhận",
+     "project": "Đền bù, bồi thường đất (tổng các dự án năm 2021)",
+     "ha": null,
+     "amount_bvnd": 229.13,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DPR_21CN_BCTC_HNKT.pdf",
+     "source_locator": "BCTC HN 2021 TM 6.8 (trang PDF 49) (file gốc lưu CafeF)",
+     "notes": "Không tách theo dự án."
+    },
+    {
+     "date": "2022-10-25",
+     "stage": "pháp lý",
+     "project": "Thanh lý cao su đất thu hồi",
+     "ha": 6.073,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_22CN_BCTN.pdf",
+     "source_locator": "BCTN 2022 trang PDF 45, NQ 130/NQ-HĐQTCSĐP (file gốc lưu CafeF)",
+     "notes": ""
+    },
+    {
+     "date": "2022-12-29",
+     "stage": "pháp lý",
+     "project": "Thanh lý cao su làm Dự án đường tạo lực Bắc Tân Uyên – Phú Giáo – Bàu Bàng",
+     "ha": null,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_22CN_BCTN.pdf",
+     "source_locator": "BCTN 2022 trang PDF 47, NQ 163/NQ-HĐQTCSĐP (file gốc lưu CafeF)",
+     "notes": "2.997 cây; ha không nêu."
+    },
+    {
+     "date": "2023-02-28",
+     "stage": "pháp lý",
+     "project": "Thanh lý cao su trên đất địa phương thu hồi",
+     "ha": 4.9424,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_23CN_BCTN.pdf",
+     "source_locator": "BCTN 2023 trang PDF 55, NQ 17/NQ-HĐQTCSĐP (file gốc lưu CafeF)",
+     "notes": ""
+    },
+    {
+     "date": "2023-08-18",
+     "stage": "pháp lý",
+     "project": "Thanh lý cao su trên đất địa phương thu hồi",
+     "ha": 11.87581,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_23CN_BCTN.pdf",
+     "source_locator": "BCTN 2023 trang PDF 63, NQ 90/NQ-HĐQTCSĐP (file gốc lưu CafeF)",
+     "notes": ""
+    },
+    {
+     "date": "2023-10-23",
+     "stage": "pháp lý",
+     "project": "Thanh lý cao su đất thu hồi theo QĐ 524/QĐ-TTg",
+     "ha": 3.2495,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_23CN_BCTN.pdf",
+     "source_locator": "BCTN 2023 trang PDF 64, NQ 130/NQ-HĐQTCSĐP (file gốc lưu CafeF)",
+     "notes": ""
+    },
+    {
+     "date": "2023-11-07",
+     "stage": "thu tiền",
+     "project": "Hoàn trả tiền tạm giữ cho ngân sách tỉnh Bình Phước (chưa thanh lý 106,848 ha đất thu hồi theo QĐ 524/QĐ-TTg 26/5/2004)",
+     "ha": 106.848,
+     "amount_bvnd": -16.45,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_23CN_BCTN.pdf",
+     "source_locator": "BCTN 2023 trang PDF 65, NQ 145/NQ-HĐQTCSĐP (file gốc lưu CafeF)",
+     "notes": "Số âm = DPR hoàn trả 16.447.927.121 đ."
+    },
+    {
+     "date": "2023-12-31",
+     "stage": "ghi nhận",
+     "project": "Đền bù, bồi thường đất 2023",
+     "ha": null,
+     "amount_bvnd": 5.28,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0004446640316205534cng-ty-c-phn-cao-su-ng-ph27032024-105702.pdf",
+     "source_locator": "BCTC HN 2023 TM 7.9 (trang PDF 47) (file gốc lưu CafeF)",
+     "notes": ""
+    },
+    {
+     "date": "2024-07-24",
+     "stage": "pháp lý",
+     "project": "Thanh lý cao su do địa phương thu hồi đất đấu giá QSDĐ dự án KDC Tiến Hưng 2",
+     "ha": 38.16,
+     "amount_bvnd": 3.856,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_24CN_BCTN.pdf",
+     "source_locator": "BCTN 2024 trang PDF 52, NQ 106/NQ-HĐQTCSĐP (file gốc lưu CafeF)",
+     "notes": "amount = giá khởi điểm bán đấu giá cây thanh lý, không phải tiền bồi thường đất."
+    },
+    {
+     "date": "2024-12-31",
+     "stage": "ghi nhận",
+     "project": "Đền bù, bồi thường đất 2024",
+     "ha": null,
+     "amount_bvnd": 43.46,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/000016460905349794237cng-ty-c-phn-cao-su-ng-ph28032025-000000bo-co-ti-chnh-hp-nht-nm.pdf",
+     "source_locator": "BCTC HN 2024 TM 5.8 (trang PDF 44) (file gốc lưu CafeF)",
+     "notes": "Không nêu dự án."
+    },
+    {
+     "date": "2025-03-06",
+     "stage": "bàn giao",
+     "project": "Xin bàn giao lại cho địa phương đất thuộc 2 dự án: KDC Tiến Hưng và KDC Cao su Đồng Phú mở rộng 10 ha",
+     "ha": 10,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_25CN_BCTN.pdf",
+     "source_locator": "BCTN 2025 trang PDF 42–43, NQ 43/NQ-HĐQTCSDP (file gốc lưu CafeF)",
+     "notes": "Chủ trương trình Tập đoàn (đề xuất của CTCP KCN Bắc Đồng Phú); kiến nghị thu hồi tiền đầu tư. Chưa rõ ngày bàn giao thực tế."
+    },
+    {
+     "date": "2025-03-17",
+     "stage": "pháp lý",
+     "project": "Thanh lý cao su bị thu hồi để xây Trạm 110kV KCN Bắc Đồng Phú",
+     "ha": 0.35058,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_25CN_BCTN.pdf",
+     "source_locator": "BCTN 2025 trang PDF 43, NQ 54/NQ-HĐQTCSDP (file gốc lưu CafeF)",
+     "notes": "Bồi thường theo VB 41/HĐQTCSVN-KHĐT 06/02/2025."
+    },
+    {
+     "date": "2025-07-16",
+     "stage": "pháp lý",
+     "project": "Thanh lý cao su xây khu tái định cư dự án cao tốc Bắc – Nam phía Tây đoạn Gia Nghĩa – Chơn Thành",
+     "ha": 9.36106,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DPR_25CN_BCTN.pdf",
+     "source_locator": "BCTN 2025 trang PDF 49–50, NQ 140/NQ-HĐQTCSDP (file gốc lưu CafeF)",
+     "notes": ""
+    },
+    {
+     "date": "2025-12-31",
+     "stage": "ghi nhận",
+     "project": "Hỗ trợ đền bù, bồi thường 2025",
+     "ha": null,
+     "amount_bvnd": 9.22,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260325_-_DPR_-_BCTC_HN_2025_DA_KT_1774440052.pdf",
+     "source_locator": "BCTC HN 2025 TM 5.9 (trang PDF 43) (file gốc lưu CafeF)",
+     "notes": ""
+    },
+    {
+     "date": "2026-09-30",
+     "stage": "ghi nhận",
+     "project": "Bồi thường dự án KCN Bắc Đồng Phú mở rộng (Q3/2026)",
+     "ha": null,
+     "amount_bvnd": 130,
+     "source_url": "https://24hmoney.vn/posts/-c55a2854049.html",
+     "source_locator": "bài báo phân tích KQ Q3/2026",
+     "notes": "báo; BCTC Q3/2026 chỉ có thu nhập khác Q3 145,55 tỷ không chi tiết."
+    },
+    {
+     "date": "2026-11-09",
+     "stage": "pháp lý",
+     "project": "Đền bù dự án nông nghiệp công nghệ cao (NNCNC) 1.500 ha",
+     "ha": 1500,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/download/111126/dpr-bien-ban-hop-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-kem-theo-0.pdf?v=1794369649630",
+     "source_locator": "Biên bản ĐHĐCĐ bất thường 09/11/2026, mục 3 Thảo luận (trang PDF 6) (file gốc lưu CafeF)",
+     "notes": "Chỉ là câu hỏi cổ đông (bổ sung phương án bồi thường, số tiền dự kiến ghi nhận Q4/2026, tiến độ nhận tiền); biên bản không ghi câu trả lời/số tiền. Cũng hỏi tiến độ GPMB KCN Bắc Đồng Phú giai đoạn II (khai thác từ Q1/2027?)."
+    }
+   ]
+  },
+  "TRC": {
+   "scope": "Hợp nhất = CTCP Cao su Tây Ninh (công ty mẹ, Tây Ninh, VN) + công ty con 100% Tây Ninh Siêm Riệp PTCS (Oddar Meanchey, Campuchia). Không có Lào (chỉ sở hữu 10% CTCP Cao su Việt Lào). Trường tấn/ha cấp năm = mẹ + TNSR (tự cộng); số theo từng đơn vị trong 'split'. Tiền (tỷ đồng) từ BCTC hợp nhất kiểm toán. Năm 2022 thiếu số TNSR.",
+   "annual": [
+    {
+     "period": "2025",
+     "tapped_t": 18880.54,
+     "purchased_t": 144.145,
+     "sold_t": 17090.41,
+     "asp_mvnd_per_t": 47.52,
+     "asp_status": "tự tính",
+     "area_total_ha": 13515.71,
+     "area_tapping_ha": 10932.32,
+     "area_kcb_ha": 1881.9,
+     "area_by_country": {
+      "VN": 7105.2,
+      "Lao": null,
+      "Cambodia": 6410.51
+     },
+     "yield_t_per_ha": 1.727,
+     "latex_revenue_bvnd": 812.17,
+     "latex_cogs_bvnd": 480.8,
+     "liquidation_bvnd": 40.92,
+     "land_comp_bvnd": 1.43,
+     "kcn_bvnd": 6.18,
+     "source_url": "https://cafef1.mediacdn.vn/download/010726/trc-bien-ban-hop-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-kem-theo-0.pdf",
+     "source_locator": "Tài liệu ĐHĐCĐ 2026, BC Ban TGĐ số 1119: tr.PDF 27 (diện tích VN), 28 (sản lượng VN), 29 (thu mua), 30 (KQKD mẹ), 31-32 (TNSR); BC HĐQT tr.PDF 22 (TNSR 2024-2025)",
+     "notes": "Phạm vi hợp nhất = mẹ (Tây Ninh, VN) + Tây Ninh Siêm Riệp PTCS (TNSR, Campuchia, 100%). tapped = 9.052,27 (mẹ tự khai thác; thêm 236,155 t nhượng quyền khai thác) + 9.828,27 (TNSR). sold = 8.958,34 (mẹ, gồm mủ thu mua) + 8.132,07 (TNSR). ASP tự tính = DT bán thành phẩm cao su HN 812,17 tỷ / 17.090,41 t; đối chiếu giá công bố: mẹ 50,40 trđ/t (mủ tự khai thác, NQ 303 Q4/2025), TNSR 45,15. Diện tích VN 7.105,2 ha = bảng vườn cây (KD 4.818,4 gồm 296,6 ha NQKT; tự khai thác 4.521,8; KTCB 1.881,9; tái canh 206,9; thanh lý gối vụ 183,9; ngưng cạo 14,1); bảng KQKD ghi tổng DT thực hiện 6.907,20 ha. area_tapping = 4.521,81 (VN tự khai thác) + 6.410,51 (CPC). yield tự tính = tapped/area_tapping (công bố: mẹ 2,002 t/ha, TNSR 1,53). Thanh lý: 185,03 ha, giá trị 44,42 tỷ, lãi 40,92 tỷ; ghi nhận Q3/2025 (theo giải trình LNST Q3/2026). land_comp = thu tiền bồi thường, hỗ trợ và phạt vi phạm HĐ (1,43 tỷ), không rõ có phải bồi thường đất. Ngoài ra: nhượng quyền khai thác mủ 4,50 tỷ (HĐ 1698 ngày 21/08/2025, 182,33 ha); miễn giảm tiền thuê đất 6,49 tỷ. kcn_bvnd = cổ tức nhận từ CTCP PTĐT & KCN Cao su VN (sở hữu 6,82%), không phải doanh thu KCN của TRC.",
+     "sources": {
+      "latex_revenue_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260327_-_TRC_-_BCTC_hop_nhat_nam_2025_da_kiem_toan_1774867466.pdf",
+       "locator": "TM 23 tr.PDF 36"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260327_-_TRC_-_BCTC_hop_nhat_nam_2025_da_kiem_toan_1774867466.pdf",
+       "locator": "TM 24 tr.PDF 37 (giá vốn thành phẩm cao su; chưa gồm 37,69 tỷ chi phí chung vượt dự toán)"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260327_-_TRC_-_BCTC_hop_nhat_nam_2025_da_kiem_toan_1774867466.pdf",
+       "locator": "TM 29 tr.PDF 38"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260327_-_TRC_-_BCTC_hop_nhat_nam_2025_da_kiem_toan_1774867466.pdf",
+       "locator": "TM 29 tr.PDF 38"
+      },
+      "kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260327_-_TRC_-_BCTC_hop_nhat_nam_2025_da_kiem_toan_1774867466.pdf",
+       "locator": "TM 40 tr.PDF 43"
+      },
+      "asp_parent": {
+       "url": "https://cafefnew.mediacdn.vn/download/030326/trc-nghi-quyet-h-qt-ve-ket-qua-thuc-hien-cac-chi-tieu-sxkd-quy-4-2025-0.pdf",
+       "locator": "NQ HĐQT 303 ngày 02/03/2026, Điều 1 (tr.PDF 2/4)"
+      }
+     },
+     "split": {
+      "VN_parent": {
+       "tapped_t": 9052.27,
+       "purchased_t": 144.145,
+       "sold_t": 8958.34,
+       "sold_own_latex_t": 8814.195,
+       "asp_mvnd_per_t": 50.4,
+       "asp_status": "công bố",
+       "area_total_ha": 7105.2,
+       "area_tapping_ha": 4521.81,
+       "area_kcb_ha": 1881.9,
+       "yield_t_per_ha": 2.002
+      },
+      "Cambodia_TNSR": {
+       "tapped_t": 9828.27,
+       "sold_t": 8132.07,
+       "asp_mvnd_per_t": 45.15,
+       "asp_status": "công bố",
+       "area_total_ha": 6410.51,
+       "area_tapping_ha": 6410.51,
+       "area_kcb_ha": 0,
+       "yield_t_per_ha": 1.53,
+       "revenue_latex_bvnd": 367.16,
+       "cogs_latex_bvnd": 240.15,
+       "pbt_bvnd": 95.53
+      }
+     }
+    },
+    {
+     "period": "2024",
+     "tapped_t": 17243.91,
+     "purchased_t": 656.04,
+     "sold_t": 16185.91,
+     "asp_mvnd_per_t": 42.24,
+     "asp_status": "tự tính",
+     "area_total_ha": 13517.27,
+     "area_tapping_ha": 9892.58,
+     "area_kcb_ha": 3083.84,
+     "area_by_country": {
+      "VN": 7106.76,
+      "Lao": null,
+      "Cambodia": 6410.51
+     },
+     "yield_t_per_ha": 1.743,
+     "latex_revenue_bvnd": 683.73,
+     "latex_cogs_bvnd": 403.62,
+     "liquidation_bvnd": 30.39,
+     "land_comp_bvnd": 0.82,
+     "kcn_bvnd": 6.71,
+     "source_url": "https://cafefnew.mediacdn.vn/download/270625/trc-bien-ban-hop-nghi-quyet-h-c-thuong-nien-nam-2025-va-tai-lieu-kem-theo-0.pdf",
+     "source_locator": "Tài liệu ĐHĐCĐ 2025, BC Ban TGĐ năm 2024: tr.PDF 33 (diện tích, sản lượng VN), 34 (thu mua/chế biến), 35 (KQKD mẹ), 36 (TNSR)",
+     "notes": "tapped = 8.975,23 (mẹ tự khai thác; thêm 115,68 t nhượng quyền) + 8.268,68 (TNSR). sold = 9.062,19 (mẹ) + 7.123,72 (TNSR). ASP tự tính = 683,73/16.185,91; chưa loại trừ giao dịch nội bộ khỏi sản lượng nên có thể thấp hơn thực tế (bình quân gia quyền giá công bố ~44,5). Giá công bố: mẹ 46,06 trđ/t (NQ 214 ngày 07/02/2025; BCTN 2024 ghi 46), TNSR 42,82. Diện tích VN 7.106,76 ha (KD 4.454,38; tự khai thác thực tế 4.380,46; KTCB 2.185,45; tái canh 245,53; thanh lý gối vụ 207,32; ngưng cạo 14,08). TNSR: KD 5.512,12 + KTCB 898,39. Thanh lý 208,82 ha, giá trị 34,13 tỷ, lãi 30,39 tỷ; bán đấu giá thành công 16/08/2024. land_comp = thu bồi thường, hỗ trợ, phạt HĐ. kcn = cổ tức từ CTCP PTĐT&KCN CSVN (BCTN 2024 tr.11).",
+     "sources": {
+      "latex_revenue_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260327_-_TRC_-_BCTC_hop_nhat_nam_2025_da_kiem_toan_1774867466.pdf",
+       "locator": "TM 23 tr.PDF 36 cột 2024"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260327_-_TRC_-_BCTC_hop_nhat_nam_2025_da_kiem_toan_1774867466.pdf",
+       "locator": "TM 24 tr.PDF 37 cột 2024"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/TRC_Baocaotaichinh_2024_Kiemtoan_Hopnhat_13032025141506.pdf",
+       "locator": "TM thu nhập khác tr.PDF 38-39, chú thích (1)"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260327_-_TRC_-_BCTC_hop_nhat_nam_2025_da_kiem_toan_1774867466.pdf",
+       "locator": "TM 29 cột 2024"
+      },
+      "kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/TRC_24CN_BCTN.pdf",
+       "locator": "BCTN 2024 tr.11 (text)"
+      },
+      "asp_parent": {
+       "url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/trcnghiquyethqtveketquathuchiencacchitieusanxuatkinhdoanhnam202402025-090952.pdf",
+       "locator": "NQ HĐQT 214 ngày 07/02/2025, tr.PDF 2"
+      },
+      "TNSR": {
+       "url": "https://cafefnew.mediacdn.vn/download/270625/trc-bien-ban-hop-nghi-quyet-h-c-thuong-nien-nam-2025-va-tai-lieu-kem-theo-0.pdf",
+       "locator": "tr.PDF 36; đối chiếu ĐHĐCĐ 2026 tr.PDF 22"
+      }
+     },
+     "split": {
+      "VN_parent": {
+       "tapped_t": 8975.23,
+       "purchased_t": 656.04,
+       "sold_t": 9062.19,
+       "sold_own_latex_t": 8406.154,
+       "asp_mvnd_per_t": 46.06,
+       "asp_status": "công bố",
+       "area_total_ha": 7106.76,
+       "area_tapping_ha": 4380.46,
+       "area_kcb_ha": 2185.45,
+       "yield_t_per_ha": 2.04
+      },
+      "Cambodia_TNSR": {
+       "tapped_t": 8268.68,
+       "sold_t": 7123.72,
+       "asp_mvnd_per_t": 42.82,
+       "asp_status": "công bố",
+       "area_total_ha": 6410.51,
+       "area_tapping_ha": 5512.12,
+       "area_kcb_ha": 898.39,
+       "yield_t_per_ha": 1.5,
+       "revenue_bvnd": 305.31,
+       "pbt_bvnd": 86.99
+      }
+     }
+    },
+    {
+     "period": "2023",
+     "tapped_t": 15256.5,
+     "purchased_t": 1406.06,
+     "sold_t": 17005.97,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": 13524.55,
+     "area_tapping_ha": 9374.38,
+     "area_kcb_ha": 3885.72,
+     "area_by_country": {
+      "VN": 7114.04,
+      "Lao": null,
+      "Cambodia": 6410.51
+     },
+     "yield_t_per_ha": 1.627,
+     "latex_revenue_bvnd": 479.7,
+     "latex_cogs_bvnd": 366.24,
+     "liquidation_bvnd": 12.46,
+     "land_comp_bvnd": 0.67,
+     "kcn_bvnd": 3.52,
+     "source_url": "https://cafefnew.mediacdn.vn/images/uploaded/dulieudownload/nghiquyet/trcnghiquyethqtveketquathuchiencacchitieusxkdnam202302024-104159.pdf",
+     "source_locator": "NQ HĐQT 405 ngày 20/03/2024 kết quả SXKD 2023, tr.PDF 2-3 (mẹ); TNSR: tài liệu ĐHĐCĐ 2024 (bản trên website IR taniruco.com) tr.PDF 38-39; diện tích VN: cùng tài liệu tr.PDF 33",
+     "notes": "tapped = 8.781,74 (mẹ) + 6.474,76 (TNSR). sold = 10.629,88 (mẹ: 9.223,82 khai thác + 1.406,06 thu mua) + 6.376,09 (TNSR). ASP hợp nhất để null: tự tính 479,70/17.005,97 = 28,2, thấp hơn cả giá công bố của mẹ (32,73) và TNSR (30,83), do giao dịch nội bộ chưa loại trừ khỏi sản lượng. Diện tích VN 31/12/2023: 7.114,04 ha (KD 4.155,53; KTCB 2.694,06; tái canh chuyển 2024 103,40; chờ thanh lý 14,08) + 146,97 ha luân canh mía. TNSR: KD 5.218,85, KTCB 1.191,66. Thanh lý 108,36 ha, giá trị 14,23 tỷ, lãi 12,46 tỷ. Bản ĐHĐCĐ 2024 trên CafeF hỏng từ trang 17 nên dùng bản IR. kcn = cổ tức CTCP PTĐT&KCN CSVN (BCTN 2023 tr.14).",
+     "sources": {
+      "latex_revenue_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/000691699604743083ctcp-cao-su-ty-ninh28022024-093503.pdf",
+       "locator": "TM 22 tr.PDF 36"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/000691699604743083ctcp-cao-su-ty-ninh28022024-093503.pdf",
+       "locator": "TM 23 tr.PDF 37"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/000691699604743083ctcp-cao-su-ty-ninh28022024-093503.pdf",
+       "locator": "TM 28 tr.PDF 38"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/000691699604743083ctcp-cao-su-ty-ninh28022024-093503.pdf",
+       "locator": "TM 28 tr.PDF 38"
+      },
+      "kcn_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/TRC_23CN_BCTN.pdf",
+       "locator": "BCTN 2023 tr.PDF 14"
+      },
+      "TNSR": {
+       "url": "http://taniruco.com/wp-content/uploads/2024/06/20240626-TRC-CBTT-Bien-ban-hop-Nghi-quyet-tai-lieu-sau-cuoc-hop-DHDCD-thuong-nien-nam-2024_1.pdf",
+       "locator": "tr.PDF 38-39"
+      },
+      "area_VN": {
+       "url": "http://taniruco.com/wp-content/uploads/2024/06/20240626-TRC-CBTT-Bien-ban-hop-Nghi-quyet-tai-lieu-sau-cuoc-hop-DHDCD-thuong-nien-nam-2024_1.pdf",
+       "locator": "tr.PDF 33"
+      }
+     },
+     "split": {
+      "VN_parent": {
+       "tapped_t": 8781.74,
+       "purchased_t": 1406.06,
+       "sold_t": 10629.88,
+       "asp_mvnd_per_t": 32.73,
+       "asp_status": "công bố (KT+TM)",
+       "area_total_ha": 7114.04,
+       "area_tapping_ha": 4155.53,
+       "area_kcb_ha": 2694.06,
+       "yield_t_per_ha": 2.113
+      },
+      "Cambodia_TNSR": {
+       "tapped_t": 6474.76,
+       "sold_t": 6376.09,
+       "asp_mvnd_per_t": 30.83,
+       "asp_status": "công bố",
+       "area_total_ha": 6410.51,
+       "area_tapping_ha": 5218.85,
+       "area_kcb_ha": 1191.66,
+       "yield_t_per_ha": 1.24,
+       "revenue_bvnd": 196.89,
+       "pbt_bvnd": 12.41
+      }
+     }
+    },
+    {
+     "period": "2022",
+     "tapped_t": null,
+     "purchased_t": 604.8,
+     "sold_t": null,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": 457.82,
+     "latex_cogs_bvnd": 335.4,
+     "liquidation_bvnd": 23.41,
+     "land_comp_bvnd": 0.9,
+     "kcn_bvnd": null,
+     "source_url": "http://taniruco.com/wp-content/uploads/2023/04/TRC-NQ390A-Ket-qua-SXKD-nam-2022-va-ke-hoach-SXKD-nam-2023.pdf",
+     "source_locator": "NQ HĐQT 390A ngày 25/04/2023 (website IR), tr.PDF 1-2; biên bản ĐHĐCĐ 2023 tr.PDF 7-8",
+     "notes": "Thiếu số TNSR (Campuchia) năm 2022 nên các trường hợp nhất (tapped/sold/area) để null. Mẹ: khai thác 8.853,48 t (BCTN 2023 tr.10 ghi 8.824 = mủ khai thác đưa vào chế biến), thu mua 604,80, tiêu thụ 9.429,94, giá bán BQ (KT+TM) 38,63 trđ/t, DT khai thác 4.037,20 ha, năng suất 2,19. latex_cogs theo cột 2022 trình bày lại trong BCTC 2023 (BCTC 2022 gốc: 335,82). land_comp = thu bồi thường, hỗ trợ (cột 2022 trong BCTC 2023: 0,90; BCTC 2022 gốc: 0,117). Thanh lý: thu nhập 23,41 tỷ; chưa có số ha.",
+     "sources": {
+      "latex_revenue_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/000691699604743083ctcp-cao-su-ty-ninh28022024-093503.pdf",
+       "locator": "TM 22 tr.PDF 36 cột 2022"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/000691699604743083ctcp-cao-su-ty-ninh28022024-093503.pdf",
+       "locator": "TM 23 tr.PDF 37 cột 2022 (trình bày lại)"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/0001812489701763058ctcp-cao-su-ty-ninh27022023-091205.pdf",
+       "locator": "TM 6.7 tr.PDF 42"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/000691699604743083ctcp-cao-su-ty-ninh28022024-093503.pdf",
+       "locator": "TM 28 cột 2022"
+      },
+      "area_tapping_VN": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/TRC_23CN_BCTN.pdf",
+       "locator": "BCTN 2023 tr.PDF 10"
+      }
+     },
+     "split": {
+      "VN_parent": {
+       "tapped_t": 8853.48,
+       "purchased_t": 604.8,
+       "sold_t": 9429.94,
+       "asp_mvnd_per_t": 38.63,
+       "asp_status": "công bố (KT+TM)",
+       "area_tapping_ha": 4037.2,
+       "yield_t_per_ha": 2.19
+      },
+      "Cambodia_TNSR": null
+     }
+    },
+    {
+     "period": "2021",
+     "tapped_t": 9748.54,
+     "purchased_t": 600.11,
+     "sold_t": 9669.44,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": 5655.8,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": 1.724,
+     "latex_revenue_bvnd": 367.38,
+     "latex_cogs_bvnd": 253.6,
+     "liquidation_bvnd": 34.29,
+     "land_comp_bvnd": 0.0,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/download/270122/trc-nghi-quyet-h-qt-ve-viec-thong-qua-mot-so-chi-tieu-sxkd-nam-2021-ke-hoach-sxkd-nam-2022-va-to-chuc-h-c-tn-2022-0.pdf",
+     "source_locator": "NQ HĐQT 05 ngày 26/01/2022 kết quả SXKD 2021, tr.PDF 2-3 (mẹ + TNSR)",
+     "notes": "tapped = 8.249 (mẹ) + 1.499,54 (TNSR). sold = 8.460,65 (mẹ) + 1.208,79 (TNSR). area_tapping = 3.758,52 (mẹ) + 1.897,28 (TNSR 'diện tích kinh doanh'); chưa có tổng diện tích. ASP hợp nhất null (tự tính 367,38/9.669,44 = 38,0, thấp hơn giá mẹ công bố 41,61; có thể lệch do giao dịch nội bộ). TNSR 2021 lỗ trước thuế 12,63 tỷ, DT 50,60 tỷ. Thanh lý: thu nhập 34,29 tỷ, chưa có ha. land_comp: TM 7.8 không có dòng bồi thường năm 2021.",
+     "sources": {
+      "latex_revenue_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/TRC_21CN_BCTC_HNKT.pdf",
+       "locator": "TM 7.1 tr.PDF 39"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/TRC_21CN_BCTC_HNKT.pdf",
+       "locator": "TM 7.3 tr.PDF 39"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/TRC_21CN_BCTC_HNKT.pdf",
+       "locator": "TM 7.8 tr.PDF 41"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/TRC_21CN_BCTC_HNKT.pdf",
+       "locator": "TM 7.8 tr.PDF 41"
+      }
+     },
+     "split": {
+      "VN_parent": {
+       "tapped_t": 8249,
+       "purchased_t": 600.11,
+       "sold_t": 8460.65,
+       "asp_mvnd_per_t": 41.61,
+       "asp_status": "công bố",
+       "area_tapping_ha": 3758.52,
+       "yield_t_per_ha": 2.19
+      },
+      "Cambodia_TNSR": {
+       "tapped_t": 1499.54,
+       "sold_t": 1208.79,
+       "area_tapping_ha": 1897.28,
+       "revenue_bvnd": 50.6,
+       "pbt_bvnd": -12.63
+      }
+     }
+    },
+    {
+     "period": "2020",
+     "tapped_t": 8557.83,
+     "purchased_t": 933,
+     "sold_t": 9837.7,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": 4302.42,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": 6419.09
+     },
+     "yield_t_per_ha": 1.989,
+     "latex_revenue_bvnd": 305.93,
+     "latex_cogs_bvnd": 236.96,
+     "liquidation_bvnd": 63.26,
+     "land_comp_bvnd": 1.32,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/download/290621/trc-nghi-quyet-va-bien-ban-hop-dhdcd-thuong-nien-nam-2021.pdf",
+     "source_locator": "Biên bản ĐHĐCĐ 2021 tr.PDF 8 (KQ SXKD 2020 mẹ); BCTN 2020 tr.PDF 32 (TNSR), tr.PDF 38 (diện tích khai thác mẹ, thu mua)",
+     "notes": "tapped = 8.053,83 (mẹ) + 504 (TNSR). sold = 9.074,82 (mẹ) + 762,875 (TNSR). area_tapping = 3.838 (mẹ, BCTN 2020 tr.38) + 464,42 (TNSR); TNSR KTCB 5.954,67 ha, tổng 6.419,09 ha. purchased = mủ thu mua đưa vào chế biến 933 t (BCTN 2020). Giá bán BQ mẹ 34,55 trđ/t (công bố). ASP hợp nhất null (tự tính 305,93/9.837,7 = 31,1, thấp hơn giá mẹ). TNSR DT 24,05 tỷ. Thanh lý: thu nhập 63,26 tỷ, chưa có ha.",
+     "sources": {
+      "latex_revenue_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/TRC_21CN_BCTC_HNKT.pdf",
+       "locator": "TM 7.1 tr.PDF 39 cột 2020"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/TRC_21CN_BCTC_HNKT.pdf",
+       "locator": "TM 7.3 cột 2020"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/TRC_21CN_BCTC_HNKT.pdf",
+       "locator": "TM 7.8 tr.PDF 41 cột 2020"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/TRC_21CN_BCTC_HNKT.pdf",
+       "locator": "TM 7.8 cột 2020"
+      },
+      "TNSR": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/TRC_20CN_BCTN.pdf",
+       "locator": "tr.PDF 32"
+      }
+     },
+     "split": {
+      "VN_parent": {
+       "tapped_t": 8053.83,
+       "purchased_t": 933,
+       "sold_t": 9074.82,
+       "asp_mvnd_per_t": 34.55,
+       "asp_status": "công bố",
+       "area_tapping_ha": 3838,
+       "yield_t_per_ha": 2.1
+      },
+      "Cambodia_TNSR": {
+       "tapped_t": 504,
+       "sold_t": 762.875,
+       "area_total_ha": 6419.09,
+       "area_tapping_ha": 464.42,
+       "area_kcb_ha": 5954.67,
+       "revenue_bvnd": 24.05
+      }
+     }
+    },
+    {
+     "period": "2019",
+     "tapped_t": 8992.5,
+     "purchased_t": 471,
+     "sold_t": null,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": 4205.99,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": 6419.09
+     },
+     "yield_t_per_ha": 2.138,
+     "latex_revenue_bvnd": 296.78,
+     "latex_cogs_bvnd": 230.21,
+     "liquidation_bvnd": 49.95,
+     "land_comp_bvnd": 0.76,
+     "kcn_bvnd": null,
+     "source_url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/TRC_19CN_BCTN.pdf",
+     "source_locator": "BCTN 2019 (có text) tr.PDF 19 & 38-39 (mẹ), tr.PDF 32 (TNSR)",
+     "notes": "tapped = 8.680 (mẹ) + 312,5 (TNSR, năm đầu khai thác). sold null vì thiếu tiêu thụ TNSR 2019; mẹ tiêu thụ 9.167 t (XK 1.866, nội tiêu 7.301), giá bán BQ 33,74 trđ/t (mủ khai thác 33,69; công bố). purchased = mủ thu mua chế biến 471 t. area_tapping = 3.986 (mẹ) + 219,99 (TNSR); TNSR KTCB 6.199,10. latex_revenue = DT bán thành phẩm cao su (trước giảm trừ; thuần 296,34). Thanh lý: thu nhập 49,95 tỷ (BCTN: thanh lý mang về 'hơn 56 tỷ' doanh thu ở mẹ).",
+     "sources": {
+      "latex_revenue_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/TRC_19CN_BCTC_HNKT.pdf",
+       "locator": "TM VI.01 tr.PDF 37"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/TRC_19CN_BCTC_HNKT.pdf",
+       "locator": "TM VI.04 tr.PDF 38"
+      },
+      "liquidation_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/TRC_19CN_BCTC_HNKT.pdf",
+       "locator": "TM VI.09 tr.PDF 39"
+      },
+      "land_comp_bvnd": {
+       "url": "https://cafef1.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/TRC_19CN_BCTC_HNKT.pdf",
+       "locator": "TM VI.09 tr.PDF 39"
+      }
+     },
+     "split": {
+      "VN_parent": {
+       "tapped_t": 8680,
+       "purchased_t": 471,
+       "sold_t": 9167,
+       "asp_mvnd_per_t": 33.74,
+       "asp_status": "công bố",
+       "area_tapping_ha": 3986,
+       "yield_t_per_ha": 2.18
+      },
+      "Cambodia_TNSR": {
+       "tapped_t": 312.5,
+       "area_total_ha": 6419.09,
+       "area_tapping_ha": 219.99,
+       "area_kcb_ha": 6199.1
+      }
+     }
+    }
+   ],
+   "quarterly": [
+    {
+     "period": "2026_9M",
+     "tapped_t": null,
+     "purchased_t": null,
+     "sold_t": null,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": 677.21,
+     "latex_cogs_bvnd": 442.32,
+     "liquidation_bvnd": 40.03,
+     "land_comp_bvnd": null,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/TRC_202610212020TRC2020BCTC20hop20nhat20Quy2032026_22102026093326.pdf?v=1792636407932",
+     "source_locator": "BCTC HN Q3/2026, KQKD tr.PDF 4; thuyết minh VI.3, VI.4, VI.7 tr.PDF 13",
+     "notes": "Không có sản lượng/giá 9T/2026 (năm 2026 TRC không ra NQ kết quả SXKD quý). Cùng kỳ 9T/2025: DT thành phẩm 577,79; giá vốn TP 359,29; thanh lý 40,72. DT thuần HN 9T/2026 705,67 tỷ; LNTT 265,97 tỷ. liquidation = 'TSCĐ thanh lý' trong thu nhập khác (theo giải trình, ghi nhận ở mẹ trong 6T/2026)."
+    },
+    {
+     "period": "2026Q3",
+     "tapped_t": null,
+     "purchased_t": null,
+     "sold_t": null,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": 289.2,
+     "latex_cogs_bvnd": 172.69,
+     "liquidation_bvnd": 0.46,
+     "land_comp_bvnd": null,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/TRC_202610212020TRC2020BCTC20hop20nhat20Quy2032026_22102026093326.pdf?v=1792636407932",
+     "source_locator": "Tự tính: 9T/2026 (BCTC HN Q3/2026 tr.PDF 13) − 6T/2026 (BCTC HN Q2/2026 tr.PDF 14)",
+     "notes": "Q3 = 9T − 6T: DT thành phẩm 677,21 − 388,00; giá vốn TP 442,32 − 269,63; thanh lý 40,03 − 39,57. Q3/2025 tương ứng: 233,37 / 143,92 / 40,72. Giải trình (CV 1977 ngày 21/10/2026): LNST Q3/2026 104,32 tỷ, −11,1% so cùng kỳ; LN SXKD +19 tỷ do giá bán mủ tăng; LN khác −37,8 tỷ vì lãi thanh lý ở mẹ đã ghi nhận 6T/2026 (năm 2025 ghi Q3). Không có sản lượng/giá quý.",
+     "sources": {
+      "h1_2026": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/TRC_202607162020TRC2020BCTC20Hop20nhat20quy202202026_17072026134948.pdf?v=1784270989750",
+       "locator": "tr.PDF 14 thuyết minh 3,4,7"
+      },
+      "giai_trinh": {
+       "url": "https://taniruco.com/wp-content/uploads/2026/10/20261021-TRC-Giai-trinh-nguyen-nhan-LNST-Q3.2026-so-voi-cung-ky-2025.pdf",
+       "locator": "tr.1-2"
+      }
+     }
+    }
+   ],
+   "plan_2026": {
+    "tapped_t": 18900.0,
+    "sold_t": 18593.0,
+    "asp_mvnd_per_t": null,
+    "revenue_bvnd": null,
+    "pbt_bvnd": null,
+    "source_url": "https://cafef1.mediacdn.vn/download/010726/trc-bien-ban-hop-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-kem-theo-0.pdf",
+    "source_locator": "BC Ban TGĐ 1119 trong tài liệu ĐHĐCĐ 2026: tr.PDF 34 (KH 2026 mẹ), tr.PDF 35-36 (KH 2026 TNSR); BC HĐQT 1116 tr.PDF 14",
+    "notes": "tapped/sold = mẹ + TNSR (tự cộng): khai thác 9.400 (9.043 tự khai thác + 357 nhượng quyền) + 9.500; tiêu thụ 10.043 + 8.550. Không có KH doanh thu/LNTT hợp nhất. KH công ty mẹ: tổng DT tối thiểu 1.013,851 tỷ, LNTT tối thiểu 592,407 tỷ, LNST 491,268 tỷ, cổ tức 210,984 tỷ; tài liệu không giải thích vì sao LNTT KH gấp ~2,6 lần 2025. KH TNSR: DT bán hàng 390,735 tỷ, giá vốn 250,20, LNTT 95,92, năng suất 1,48 t/ha trên 6.410,51 ha. KH diện tích mẹ: tổng 6.964,25 ha, khai thác 4.921,72 (tự khai thác 4.689,33; khoán/nhượng quyền 232,39), năng suất 1,93. Không có giá bán KH 2026.",
+    "split": {
+     "VN_parent": {
+      "tapped_t": 9400,
+      "sold_t": 10043,
+      "revenue_bvnd": 1013.851,
+      "pbt_bvnd": 592.407,
+      "npat_bvnd": 491.268,
+      "area_total_ha": 6964.25,
+      "area_tapping_ha": 4921.72
+     },
+     "Cambodia_TNSR": {
+      "tapped_t": 9500,
+      "sold_t": 8550,
+      "revenue_bvnd": 390.735,
+      "pbt_bvnd": 95.922,
+      "area_tapping_ha": 6410.51
+     }
+    }
+   },
+   "land_events": [
+    {
+     "date": "2015-10-26",
+     "stage": "pháp lý",
+     "project": "Nhận chuyển nhượng vườn cây dự án Best Royal (Campuchia), HĐ 30/2015/HĐKT-TNSR",
+     "ha": 3069.967,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260327_-_TRC_-_BCTC_hop_nhat_nam_2025_da_kiem_toan_1774867466.pdf",
+     "source_locator": "TM 11 tr.PDF 26",
+     "notes": "Cùng HĐ 31/2015 ngày 04/12/2015: Best Royal chuyển nhượng toàn bộ vườn KTCB 2013 và đất trồng cao su 2014-2015, tổng 3.069,967 ha (vườn 2013 hiện hữu 651,39 ha), giá trị HĐ 8.119.806 USD. Chủ trương: NQ 02/NQHĐTVCSVN ngày 22/04/2014 (4.000-4.500 ha). Là mua dự án, không phải đền bù."
+    },
+    {
+     "date": "2025-12-31",
+     "stage": "ghi nhận",
+     "project": "Best Royal trở thành công ty con của TNSR",
+     "ha": null,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260327_-_TRC_-_BCTC_hop_nhat_nam_2025_da_kiem_toan_1774867466.pdf",
+     "source_locator": "TM 11 tr.PDF 26",
+     "notes": "Công ty TNHH MTV Best Royal chính thức là công ty con của TNSR (đầu tư tài chính). Chi phí vườn KTCB Best Royal 285,76 tỷ (01/01/2025) không còn trong XDCB dở dang 31/12/2025; thu nhập 26,38 triệu 'khoản đầu tư tài chính mua rẻ'."
+    },
+    {
+     "date": "2024-05-04",
+     "stage": "pháp lý",
+     "project": "Nhượng quyền khai thác mủ năm 2024, Nông trường Bến Củi (CV 414/HĐQTCSVN-KHĐT)",
+     "ha": 73.92,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/TRC_Baocaotaichinh_2024_Kiemtoan_Hopnhat_13032025141506.pdf",
+     "source_locator": "TM thu nhập khác chú thích (2) tr.PDF 39",
+     "notes": "Sản lượng ước 115,68 t; để chuẩn bị thanh lý tái canh 2025. Thu nhập nhượng quyền 2024: 1,73 tỷ (BCTC 2025 TM 29)."
+    },
+    {
+     "date": "2024-08-16",
+     "stage": "bàn giao",
+     "project": "Bán đấu giá thanh lý vườn cây cao su 2024",
+     "ha": 207.32,
+     "amount_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/download/270625/trc-bien-ban-hop-nghi-quyet-h-c-thuong-nien-nam-2025-va-tai-lieu-kem-theo-0.pdf",
+     "source_locator": "BC Ban TGĐ năm 2024 tr.PDF 33 mục 1.4",
+     "notes": "Đến 16/08/2024 mới bán đấu giá thành công (diện tích thanh lý gối vụ 207,32 ha)."
+    },
+    {
+     "date": "2024-12-31",
+     "stage": "ghi nhận",
+     "project": "Thanh lý vườn cây cao su 2024",
+     "ha": 208.82,
+     "amount_bvnd": 30.39,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/TRC_Baocaotaichinh_2024_Kiemtoan_Hopnhat_13032025141506.pdf",
+     "source_locator": "TM thu nhập khác chú thích (1) tr.PDF 39",
+     "notes": "Tổng giá trị 34,13 tỷ; lãi 30,39 tỷ. Ngày = cuối kỳ."
+    },
+    {
+     "date": "2025-08-21",
+     "stage": "pháp lý",
+     "project": "Nhượng quyền khai thác mủ theo HĐ bán đấu giá 1698/HĐĐG-CSTN",
+     "ha": 182.33,
+     "amount_bvnd": 5.564,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260327_-_TRC_-_BCTC_hop_nhat_nam_2025_da_kiem_toan_1774867466.pdf",
+     "source_locator": "TM 29 chú thích (2) tr.PDF 38",
+     "notes": "Thời hạn đến 31/01/2026; ghi nhận 4,50 tỷ trong 2025."
+    },
+    {
+     "date": "2025-09-30",
+     "stage": "ghi nhận",
+     "project": "Thanh lý vườn cây cao su 2025 (ghi nhận Q3/2025)",
+     "ha": 185.03,
+     "amount_bvnd": 40.92,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260327_-_TRC_-_BCTC_hop_nhat_nam_2025_da_kiem_toan_1774867466.pdf",
+     "source_locator": "TM 29 chú thích (1) tr.PDF 38; quý ghi nhận theo giải trình LNST Q3/2026",
+     "notes": "Tổng giá trị 44,42 tỷ. Ngày 30/09 là cuối quý ghi nhận, không phải ngày văn bản."
+    },
+    {
+     "date": "2026-06-30",
+     "stage": "ghi nhận",
+     "project": "Thanh lý vườn cây cao su 2026 tại công ty mẹ (ghi nhận 6T/2026)",
+     "ha": null,
+     "amount_bvnd": 39.57,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/TRC_202607162020TRC2020BCTC20Hop20nhat20quy202202026_17072026134948.pdf?v=1784270989750",
+     "source_locator": "BCTC HN Q2/2026 TM 7 tr.PDF 14 ('TSCĐ thanh lý' 6T/2026); giải trình Q3/2026",
+     "notes": "Chưa có diện tích; 183,88 ha thanh lý chưa kịp tái canh năm 2025 chuyển sang 2026 (tài liệu ĐHĐCĐ 2026 tr.28). Ngày = cuối kỳ ghi nhận."
+    }
+   ],
+   "parent_yield_series": {
+    "note": "Năng suất vườn cây tự khai thác công ty mẹ (t/ha), bảng 10 năm trong BC Ban TGĐ, tài liệu ĐHĐCĐ 2026 tr.PDF 28",
+    "url": "https://cafef1.mediacdn.vn/download/010726/trc-bien-ban-hop-nghi-quyet-h-c-thuong-nien-nam-2026-va-tai-lieu-kem-theo-0.pdf",
+    "values": {
+     "2015": 2.21,
+     "2016": 1.918,
+     "2017": 2.139,
+     "2018": 2.129,
+     "2019": 2.178,
+     "2020": 2.098,
+     "2021": 2.195,
+     "2022": 2.193,
+     "2023": 2.113,
+     "2024": 2.041,
+     "2025": 2.002
+    }
+   }
+  },
+  "DRI": {
+   "scope": "Hợp nhất DRI; vườn cao su 100% tại Daklaoruco (Champasak, Lào); sản lượng = tấn mủ quy khô khai thác vườn nhà; tiêu thụ = tổng lượng mủ xuất bán (gồm mủ mua ngoài nếu có)",
+   "annual": [
+    {
+     "period": "2019",
+     "tapped_t": 15403,
+     "purchased_t": null,
+     "sold_t": 17475.88,
+     "asp_mvnd_per_t": 29.77,
+     "asp_status": "tự tính",
+     "area_total_ha": 8810.5,
+     "area_tapping_ha": 8341,
+     "area_kcb_ha": 469.5,
+     "area_by_country": {
+      "VN": 0,
+      "Lao": 8810.5,
+      "Cambodia": 0
+     },
+     "yield_t_per_ha": 1.85,
+     "latex_revenue_bvnd": 520.327,
+     "latex_cogs_bvnd": 364.981,
+     "liquidation_bvnd": null,
+     "land_comp_bvnd": null,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2019/DRI_19CN_BCTN.pdf (file gốc lưu CafeF)",
+     "source_locator": "BCTN 2019 tr.PDF 12 (bảng KQSXKD; xuất bán 17.475,88 t; Daklaoruco 8.810,5 ha cao su, 8.341 ha khai thác, NS 1,85 t/ha); tr.13 (DT cao su 520,327 tỷ; LN gộp cao su 155,346 tỷ)",
+     "notes": "ASP = 520,327 tỷ / 17.475,88 t. Giá BQ công bố 1.317,72 USD/t. COGS = DT cao su − LN gộp cao su (155,346) tự tính. KTCB = 8.810,5 − 8.341 tự tính. Phạm vi hợp nhất, toàn bộ vườn tại Daklaoruco (Champasak, Lào)."
+    },
+    {
+     "period": "2020",
+     "tapped_t": 15206,
+     "purchased_t": null,
+     "sold_t": 14273,
+     "asp_mvnd_per_t": 29.33,
+     "asp_status": "tự tính",
+     "area_total_ha": 8810.5,
+     "area_tapping_ha": 8341,
+     "area_kcb_ha": 469.5,
+     "area_by_country": {
+      "VN": 0,
+      "Lao": 8810.5,
+      "Cambodia": 0
+     },
+     "yield_t_per_ha": 1.8,
+     "latex_revenue_bvnd": 418.575,
+     "latex_cogs_bvnd": 294.027,
+     "liquidation_bvnd": null,
+     "land_comp_bvnd": null,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2020/DRI_20CN_BCTN.pdf (file gốc lưu CafeF)",
+     "source_locator": "BCTN 2020 tr.PDF 16 (sản lượng 15.206 t, xuất bán 14.273 t, diện tích, NS 1,80); tr.17 (DT cao su 418.575 trđ; LN gộp cao su 124.548 trđ)",
+     "notes": "ASP = 418,575/14.273. COGS = DT − LN gộp tự tính. Diện tích 8.810,5/8.341 ha lặp nguyên câu chữ BCTN 2019, có thể chưa cập nhật. Chế biến 15.031,53 t."
+    },
+    {
+     "period": "2021",
+     "tapped_t": 15439,
+     "purchased_t": null,
+     "sold_t": 14844.63,
+     "asp_mvnd_per_t": 38.02,
+     "asp_status": "tự tính",
+     "area_total_ha": 8810.5,
+     "area_tapping_ha": 8632.14,
+     "area_kcb_ha": 178.36,
+     "area_by_country": {
+      "VN": 0,
+      "Lao": 8810.5,
+      "Cambodia": 0
+     },
+     "yield_t_per_ha": 1.788,
+     "latex_revenue_bvnd": 564.357,
+     "latex_cogs_bvnd": 336.854,
+     "liquidation_bvnd": null,
+     "land_comp_bvnd": null,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/2021/DRI_21CN_BCTN.pdf (file gốc lưu CafeF)",
+     "source_locator": "BCTN 2021 tr.PDF 30 (khai thác 15.439 t; xuất bán 14.844,63 t; 1.757,83 USD/t); tr.31 (DT cao su 564.357 trđ, LN gộp 227.503 trđ); tr.33 (8.810,5 ha, 8.632,14 ha khai thác, NS 1,788)",
+     "notes": "ASP = 564,357/14.844,63; giá BQ công bố 1.757,83 USD/t. KTCB = 8.810,5 − 8.632,14 tự tính. COGS = DT − LN gộp. HĐQT 2021 thống nhất thanh lý 151,29 ha cao su kém hiệu quả để tái canh 2022 (tr.PDF 93); không thấy số tiền thanh lý."
+    },
+    {
+     "period": "2022",
+     "tapped_t": 13953.25,
+     "purchased_t": null,
+     "sold_t": 14330.26,
+     "asp_mvnd_per_t": 34.14,
+     "asp_status": "tự tính",
+     "area_total_ha": 8805.6,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": 0,
+      "Lao": 8805.6,
+      "Cambodia": 0
+     },
+     "yield_t_per_ha": 1.64,
+     "latex_revenue_bvnd": 489.27,
+     "latex_cogs_bvnd": 284.19,
+     "liquidation_bvnd": null,
+     "land_comp_bvnd": null,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DRI_22CN_BCTN.pdf (file gốc lưu CafeF)",
+     "source_locator": "BCTN 2022 tr.PDF 15 (khai thác 13.953,25 t; xuất bán 14.330,26 t, 22,7 tr USD); tr.17 (DT cao su 489,27 tỷ, LN gộp 205,08 tỷ); tr.18 (8.805,6 ha cao su, NS 1,64)",
+     "notes": "ASP = 489,27/14.330,26. COGS = 489,27 − 205,08 tự tính (BCTN 2023 ghi LN gộp cao su 2022 = 205,927 tỷ → COGS 283,343). Diện tích khai thác thực hiện 2022 không nêu; KH tạm giao 2023 ghi 8.506,48 ha khai thác (BCTN 2022 tr.PDF 53)."
+    },
+    {
+     "period": "2023",
+     "tapped_t": 13851.77,
+     "purchased_t": null,
+     "sold_t": 14445.58,
+     "asp_mvnd_per_t": 30.17,
+     "asp_status": "tự tính",
+     "area_total_ha": 8592.3,
+     "area_tapping_ha": 8506.48,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": 0,
+      "Lao": 8592.3,
+      "Cambodia": 0
+     },
+     "yield_t_per_ha": 1.63,
+     "latex_revenue_bvnd": 435.779,
+     "latex_cogs_bvnd": 276.485,
+     "liquidation_bvnd": null,
+     "land_comp_bvnd": null,
+     "kcn_bvnd": null,
+     "source_url": "https://static2.vietstock.vn/data/HNX/2023/BCTN/VN/DRI_Baocaothuongnien_2023.pdf (file gốc lưu Vietstock)",
+     "source_locator": "BCTN 2023 tr.PDF 15 (khai thác 13.851,77 t; xuất bán 14.445,58 t; 1.416,14 USD/t); tr.17 (DT cao su 435.779 trđ, LN gộp 159.294 trđ; 8.592,3 ha cao su; NS 1,63)",
+     "notes": "ASP = 435,779/14.445,58. COGS = DT − LN gộp tự tính. Diện tích khai thác là số KH tạm giao 2023 (không phải thực hiện); 13.851,77/8.506,48 = 1,63 khớp năng suất công bố. BCTN 2023 không có trên CafeF, lấy bản Vietstock. Diện tích quản lý điều chỉnh giảm 48,08 ha còn 9.276,07 ha.",
+     "sources": {
+      "area_tapping_ha": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DRI_22CN_BCTN.pdf (file gốc lưu CafeF)",
+       "locator": "BCTN 2022 tr.PDF 53, KH tạm giao 2023: tổng diện tích cao su khai thác 8.506,48 ha"
+      }
+     }
+    },
+    {
+     "period": "2024",
+     "tapped_t": 11116.4,
+     "purchased_t": null,
+     "sold_t": 10108.24,
+     "asp_mvnd_per_t": 43.98,
+     "asp_status": "tự tính",
+     "area_total_ha": 8592.3,
+     "area_tapping_ha": 8299.3,
+     "area_kcb_ha": 293.0,
+     "area_by_country": {
+      "VN": 0,
+      "Lao": 8592.3,
+      "Cambodia": 0
+     },
+     "yield_t_per_ha": 1.34,
+     "latex_revenue_bvnd": 444.566,
+     "latex_cogs_bvnd": 268.05,
+     "liquidation_bvnd": null,
+     "land_comp_bvnd": null,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DRI_24CN_BCTN.pdf (file gốc lưu CafeF)",
+     "source_locator": "BCTN 2024 tr.PDF 13 (khai thác 11.116 t; xuất bán 10.108,24 t; 1.788,19 USD/t); tr.15 (8.592,3 ha cao su; NS 1,34)",
+     "notes": "ASP = 444,566/10.108,24. KTCB = 8.592,3 − 8.299,3 tự tính (KH tạm giao 2024: 292,47 ha). Giá vốn/tấn BCTN 31,98 trđ/t là giá thành hàng bán gồm CPBH/QL, khác GV BCTC. Chế biến 11.457,73 t; mua ngoài không nêu số.",
+     "sources": {
+      "area_tapping_ha": {
+       "url": "https://static2.vietstock.vn/vietstock/2025/4/3/2_dri_2025_4_3_e3cd57b_vi_tailieuhopdaihoidongcodongthuongnien_2025_kyso.pdf (file gốc lưu Vietstock)",
+       "locator": "Tài liệu ĐHĐCĐ 2025, BC Ban điều hành tr.PDF 37: diện tích cao su khai thác 2024 = 8.299,30 ha; sản lượng 11.116,40 t"
+      },
+      "latex_revenue_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/_603787_Bao_cao_tai_chinh_nam_2025_1774435884.pdf (file gốc lưu CafeF)",
+       "locator": "BCTC HN 2025 TM 6.1 tr.PDF 36 (cột 2024): DT thành phẩm mủ 444.566.091.484 đ"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/_603787_Bao_cao_tai_chinh_nam_2025_1774435884.pdf (file gốc lưu CafeF)",
+       "locator": "BCTC HN 2025 TM 6.2 tr.PDF 36 (cột 2024): GV thành phẩm mủ 268.050.134.659 đ"
+      }
+     }
+    },
+    {
+     "period": "2025",
+     "tapped_t": 15152.83,
+     "purchased_t": 1018.07,
+     "sold_t": 14007.76,
+     "asp_mvnd_per_t": 47.24,
+     "asp_status": "công bố",
+     "area_total_ha": 8588.69,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": 0,
+      "Lao": 8588.69,
+      "Cambodia": 0
+     },
+     "yield_t_per_ha": 1.81,
+     "latex_revenue_bvnd": 661.7,
+     "latex_cogs_bvnd": 407.878,
+     "liquidation_bvnd": null,
+     "land_comp_bvnd": null,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DRI_25CN_BCTN.pdf (file gốc lưu CafeF)",
+     "source_locator": "BCTN 2025 tr.PDF 16 (bảng KQSXKD: khai thác 15.152,83 t; giá bán cao su 47,24 trđ/t; DT cao su 661,70 tỷ; xuất bán 14.007,76 t, 1.857,01 USD/t); tr.21 (NS 1,81)",
+     "notes": "ASP công bố 47,24 trđ/t (= 661,70/14.007,76). Diện tích khai thác thực hiện 2025 không công bố; KH tạm giao 2025: 8.201,66 ha khai thác, 387,03 ha KTCB (BCTN 2024 tr.PDF 56). BCTN 2025 vẫn ghi 8.592,3 ha cao su. Chế biến 16.237,7 t. BCTC 2025 không có thu thanh lý vườn cây; chi phí khác có lỗ thanh lý TSCĐ 0,772 tỷ.",
+     "sources": {
+      "purchased_t": {
+       "url": "https://cafef1.mediacdn.vn/download/190626/dri-nghi-quyet-ai-hoi-dong-co-dong-thuong-nien-nam-2026-1-620567.pdf (file gốc lưu CafeF)",
+       "locator": "NQ + tài liệu ĐHĐCĐ 2026, BC Ban điều hành tr.PDF 24: thu mua mủ ngoài 1.018,07 t"
+      },
+      "area_total_ha": {
+       "url": "https://cafef1.mediacdn.vn/download/190626/dri-nghi-quyet-ai-hoi-dong-co-dong-thuong-nien-nam-2026-1-620567.pdf (file gốc lưu CafeF)",
+       "locator": "BC Ban điều hành tr.PDF 24: cao su 8.588,69 ha"
+      },
+      "latex_cogs_bvnd": {
+       "url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/_603787_Bao_cao_tai_chinh_nam_2025_1774435884.pdf (file gốc lưu CafeF)",
+       "locator": "BCTC HN 2025 TM 6.2 tr.PDF 36: GV thành phẩm mủ 407.878.399.661 đ"
+      }
+     }
+    }
+   ],
+   "quarterly": [
+    {
+     "period": "2026Q3",
+     "tapped_t": null,
+     "purchased_t": null,
+     "sold_t": null,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": 135.998,
+     "latex_cogs_bvnd": 89.534,
+     "liquidation_bvnd": null,
+     "land_comp_bvnd": null,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DRI_000000016975709_VI_BaoCaoTaiChinhHopNhat_Q3_2026_kyso_10112026151342.pdf?v=1794298423679 (file gốc lưu CafeF)",
+     "source_locator": "BCTC HN Q3/2026 TM 6.1/6.2 tr.PDF 33 (kỳ này); KQKD tr.PDF 6",
+     "notes": "Toàn bộ DT Q3/2026 là mủ cao su (DT khác = 0). LNTT Q3 31,65 tỷ; LNST 25,87 tỷ (−33,5% yoy; giải trình 72/CV-CT: DT giảm 26,14%). Không công bố sản lượng/giá quý."
+    },
+    {
+     "period": "2025Q3",
+     "tapped_t": null,
+     "purchased_t": null,
+     "sold_t": null,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": 183.602,
+     "latex_cogs_bvnd": 118.455,
+     "liquidation_bvnd": null,
+     "land_comp_bvnd": null,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DRI_000000016975709_VI_BaoCaoTaiChinhHopNhat_Q3_2026_kyso_10112026151342.pdf?v=1794298423679 (file gốc lưu CafeF)",
+     "source_locator": "BCTC HN Q3/2026 TM 6.1/6.2 tr.PDF 33 (kỳ trước)",
+     "notes": "Cùng kỳ để so sánh; DT khác 0,521 tỷ, GV khác 0,309 tỷ."
+    },
+    {
+     "period": "2026_9M",
+     "tapped_t": null,
+     "purchased_t": null,
+     "sold_t": null,
+     "asp_mvnd_per_t": null,
+     "asp_status": null,
+     "area_total_ha": null,
+     "area_tapping_ha": null,
+     "area_kcb_ha": null,
+     "area_by_country": {
+      "VN": null,
+      "Lao": null,
+      "Cambodia": null
+     },
+     "yield_t_per_ha": null,
+     "latex_revenue_bvnd": null,
+     "latex_cogs_bvnd": null,
+     "liquidation_bvnd": null,
+     "land_comp_bvnd": null,
+     "kcn_bvnd": null,
+     "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/DRI_000000016975709_VI_BaoCaoTaiChinhHopNhat_Q3_2026_kyso_10112026151342.pdf?v=1794298423679 (file gốc lưu CafeF)",
+     "source_locator": "BCTC HN Q3/2026 KQKD tr.PDF 6 (lũy kế)",
+     "notes": "9T/2026: DT thuần 622,00 tỷ (9T/2025: 487,59), GVHB 377,40 tỷ, LNTT 208,21 tỷ (9T/2025: 141,84), LNST 167,44 tỷ. Thuyết minh chỉ tách DT theo quý, không tách mủ/sầu riêng lũy kế; không có sản lượng."
+    }
+   ],
+   "plan_2026": {
+    "tapped_t": 13800,
+    "sold_t": 16900,
+    "asp_mvnd_per_t": 46.26,
+    "revenue_bvnd": 820.137,
+    "pbt_bvnd": 149.402,
+    "source_url": "https://cafef1.mediacdn.vn/download/190626/dri-nghi-quyet-ai-hoi-dong-co-dong-thuong-nien-nam-2026-1-620567.pdf (file gốc lưu CafeF)",
+    "source_locator": "NQ ĐHĐCĐ TN 2026 (họp 16/06/2026, CBTT 17/06) Điều 2 thông qua Tờ trình 12/TTr-HĐQT; BC Ban điều hành tr.PDF 29–30; Tờ trình tr.PDF 42",
+    "notes": "Khai thác 13.800 t, NS 1,69 t/ha; mua ngoài 2.000 t; chế biến 15.800 t; tiêu thụ dự kiến 16.900 t (BC Ban điều hành) nhưng Tờ trình ghi DT mủ khai thác 689,249 tỷ cho 14.900 t + mủ mua ngoài 87,599 tỷ (lệch số tiêu thụ giữa 2 tài liệu). Giá bán BQ 46,26 trđ/t (1.759 USD/t); giá vốn 37,61 trđ/t. Revenue = tổng DT + thu nhập 820,137 tỷ (gồm sầu riêng 30,40 tỷ; DT TC + TN khác 12,887 tỷ). LNTT 149,402 tỷ (BCTN 2025 ghi 149,401). Diện tích KH 2026: 8.484,54 ha cao su, 8.146,66 ha khai thác, 337,88 ha KTCB; tái canh 37,77 ha."
+   },
+   "land_events": [
+    {
+     "date": "2023-10-12",
+     "stage": "pháp lý",
+     "project": "Vùng chồng lấn VQG Dong Hua Sao (NT1, NT3, Daklaoruco, Lào)",
+     "ha": 2172.24,
+     "amount_bvnd": null,
+     "source_url": "https://static2.vietstock.vn/data/HNX/2023/BCTN/VN/DRI_Baocaothuongnien_2023.pdf (file gốc lưu Vietstock)",
+     "source_locator": "BCTN 2023 tr.PDF 55, NQ 07/NQ-HĐQT 12/10/2023",
+     "notes": "Không phải đền bù: 2.172,24 ha cao su chồng lấn không được tái canh; 1.798,85 ha thuê lại của VQG (8,4 USD/ha/năm 2020–2024, +5%/chu kỳ 5 năm) tới 2054 rồi bàn giao lại, không được thanh lý cây; 373,39 ha thuê lại của chính quyền/Tỉnh đội."
+    },
+    {
+     "date": null,
+     "stage": "pháp lý",
+     "project": "Điều chỉnh diện tích quản lý Daklaoruco (BC 36/BC-CT ngày 27/12/2023)",
+     "ha": -48.08,
+     "amount_bvnd": null,
+     "source_url": "https://static2.vietstock.vn/data/HNX/2023/BCTN/VN/DRI_Baocaothuongnien_2023.pdf (file gốc lưu Vietstock)",
+     "source_locator": "BCTN 2023 tr.PDF 57 (NQ HĐQT cuối 2023)",
+     "notes": "Tổng diện tích quản lý xác định lại 9.276,07 ha, giảm 48,08 ha; ngày NQ không rõ."
+    }
+   ]
+  }
+ },
+ "gaps": [
+  "GVR: không có BCTN 2019 trên CafeF; 2019 chỉ có khai thác tự tính và số BCTC.",
+  "GVR: thu mua và giá BQ năm 2025 không công bố trong BCTN 2025; giá BQ 2020–2022, 2024–2025 là tự tính (phạm vi sản lượng toàn Tập đoàn ≠ doanh thu hợp nhất).",
+  "GVR: diện tích khai thác/KTCB chỉ có 2020; 2021 tách theo khu vực nhưng bảng thiếu ô; 2022–2025 chỉ có tổng và trong nước/nước ngoài.",
+  "GVR: năng suất 2022–2025 chưa lấy được số toàn Tập đoàn.",
+  "GVR: kế hoạch 2026 về sản lượng/giá bán chưa tìm được bản gốc (báo nêu khai thác KH ~455.845 t, thu mua ~100.000 t – chưa đối chiếu, không đưa vào số).",
+  "GVR: 9T/2026 chưa lấy (thuyết minh Q3/2026 chỉ trình bày quý III); sản lượng quý không công bố.",
+  "GVR: tiền bồi thường không tách theo dự án/KCN; lợi nhuận liên kết KCN (vd Nam Tân Uyên là công ty con 42,30%) chưa tách.",
+  "PHR: Sản lượng/giá bán Q3/2026 và 9T/2026: BCTC Q3 không có; file HN Q3 không kèm trang giải trình. Báo (doanhnhan.baophapluat.vn, chưa đối chiếu) nêu 9T: khai thác ~8,6 nghìn t, thu mua >11,8 nghìn t, tiêu thụ ~21,5 nghìn t — không đưa vào số.",
+  "PHR: Diện tích 2019–2022 (thực hiện) chưa tìm được; BCTN chỉ có diện tích kế hoạch năm sau. Diện tích thực hiện 2023–2025 lấy từ báo cáo BKS trong tài liệu ĐHĐCĐ.",
+  "PHR: Diện tích Campuchia (PHK) chỉ có 2025 (diện tích trồng 7.664,28 ha); diện tích khai thác PHK chưa có. Không có Lào.",
+  "PHR: latex_cogs_bvnd: không có thuyết minh tách giá vốn mủ; báo cáo bộ phận 'sản phẩm cao su' cho lợi nhuận gộp bất thường (2023 âm 219,7 tỷ; 2024 72,6 tỷ) nên không dùng. Giá vốn thành phẩm (gồm gỗ) để ở extra.",
+  "PHR: latex_revenue 2019, 2020, 2022: BCTN không nêu.",
+  "PHR: Lệch số giữa các tài liệu: 2025 tiêu thụ 28.448,32 vs 28.424,93 t, giá 49,48 vs 47,875; 2023 BCTN vs BKS (khai thác 11.955,39 vs 12.165,17 t); 2024 giá 45,27 (BCTN) vs 46,31 (BKS); KH 2026 giá 49,44 vs 49,91.",
+  "PHR: Bồi thường KCN Chuyên ngành Cơ khí 2026: chưa có diện tích, tổng giá trị theo QĐ và ngày bàn giao.",
+  "PHR: VSIP III: chưa có ngày bàn giao từng đợt; tổng thu lũy kế 2022–9T/2026 = 698,30+283,65+55,76+120,15+323,40 = 1.481,26 tỷ (tự cộng).",
+  "PHR: BCTC HN 2022, 2024 không xem riêng; dùng cột so sánh của BCTC 2023, 2025 (2022 là số trình bày lại).",
+  "PHR: BCTN 2019–2021 và BCTC HN 2020–2021: link cafefnew lỗi, tải được qua host cafef1.mediacdn.vn cùng đường dẫn (lưu S/rubber_ir/phr_extra/).",
+  "DPR: Diện tích Campuchia (Kratie) và Đắk Nông từng năm: chưa có số thực tế (chỉ quy mô dự án 8.000 ha Kratie, 900 ha Đắk Nông; nhóm ~16.700 ha theo BCTN 2023). Không có Lào.",
+  "DPR: Sản lượng hợp nhất (gồm Kratie) không có; Kratie chỉ có số rời: 2020 khai thác 6.386,67 t, 2021 khai thác 7.139 t/tiêu thụ 6.347,74 t (BCTN 2022 trang 20).",
+  "DPR: Diện tích KTCB/tổng 2019–2023 chưa lấy (chỉ có kế hoạch); area_total 2024 là diện tích quản lý giữa năm theo NQ HĐQT.",
+  "DPR: latex_revenue 2019–2022 là 'DT thành phẩm, hàng hoá' HN (gồm hàng khác), từ 2023 dùng DT bộ phận mủ; latex_cogs là giá vốn thành phẩm, hàng hoá (không có giá vốn riêng mủ, trừ 9T/2026 tự tính từ bộ phận).",
+  "DPR: kcn_bvnd = DT kinh doanh BĐS (+ bán nền KDC 2020–2021) của nhóm, chưa tách KCN cho thuê đất vs KDC; không có lợi nhuận liên kết KCN (KCN Bắc Đồng Phú là công ty con, hợp nhất). Nam Đồng Phú mở rộng, Tân Lập: không tìm thấy số tiền/ha đền bù cụ thể.",
+  "DPR: Khoản đền bù 229,13 tỷ (2021) và 43,46 tỷ (2024) không gán được dự án; không có ngày bàn giao/thu tiền cho từng dự án.",
+  "DPR: Q3/2026 và 9T/2026: thiếu sản lượng, giá bán, chi tiết thu nhập khác từ bản gốc; không tìm được văn bản giải trình KQKD Q3/2026 (chỉ thấy tin giải trình BCTC riêng bán niên 2026 trên stockbiz, không có file).",
+  "DPR: Kế hoạch 2026 không có giá bán KH.",
+  "DPR: ĐHĐCĐ bất thường 30/12/2025: chỉ bầu bổ sung HĐQT, không liên quan đất. ĐHĐCĐ bất thường 09/11/2026: miễn nhiệm/bầu HĐQT + phát hành cổ phiếu tăng vốn từ VCSH; cổ đông hỏi đền bù NNCNC 1.500 ha và KCN Bắc Đồng Phú GĐ II nhưng biên bản không ghi trả lời.",
+  "DPR: BCTC HN 2019 (file riêng) không dùng; số 2019 lấy từ cột so sánh BCTC HN 2020.",
+  "TRC: BCTN 2019-2021 trên cafefnew báo 'File not found' nhưng tải được từ host cafef1.mediacdn.vn (cùng đường dẫn); BCTC HN 2019 và 2021 cũng lấy từ cafef1. BCTN 2021 không cần dùng (số 2021 lấy từ NQ HĐQT).",
+  "TRC: Thiếu sản lượng, tiêu thụ, diện tích của Tây Ninh Siêm Riệp năm 2022 (BCTN 2022, 2023 và biên bản ĐHĐCĐ 2023 không có; tài liệu ĐHĐCĐ 2023 nằm trong thư mục Google Drive không tải được) nên năm 2022 không có số hợp nhất.",
+  "TRC: Thiếu tiêu thụ TNSR 2019 nên sold 2019 hợp nhất để null.",
+  "TRC: Không có sản lượng, tiêu thụ, giá bán 9T/2026 và Q3/2026 (năm 2026 TRC không ra NQ HĐQT kết quả SXKD quý; giải trình Q3 chỉ nói giá bán mủ tăng).",
+  "TRC: ASP hợp nhất tự tính chỉ giữ cho 2024-2025; các năm khác số tự tính thấp hơn giá công bố của mẹ và TNSR (giao dịch nội bộ chưa loại trừ khỏi sản lượng) nên để null. Dùng giá công bố trong 'split'.",
+  "TRC: Thiếu tổng diện tích VN 2019-2022 (chỉ có diện tích khai thác). Chưa rõ 651,39 ha vườn Best Royal có nằm trong 6.410,51 ha của TNSR không.",
+  "TRC: BCTC 2019-2025 và 9T/2026 không có dòng đền bù/chuyển đổi đất KCN hay điện mặt trời. land_comp_bvnd chỉ là 'thu bồi thường, hỗ trợ (và phạt HĐ)' nhỏ, không rõ có phải tiền đất. Tài liệu ĐHĐCĐ 2026 có nhắc diện tích nằm trong quy hoạch KCN Hiệp Thạnh và định hướng chuyển đất cao su sang khu/cụm công nghiệp, nhưng không nêu ha, tiền hay mốc thời gian, nên chưa có land_event KCN.",
+  "TRC: KH 2026 LNTT công ty mẹ tối thiểu 592,4 tỷ (gấp ~2,6 lần 2025) nhưng tài liệu không giải thích nguồn lợi nhuận; không công bố KH hợp nhất và giá bán KH.",
+  "TRC: kcn_bvnd chỉ là cổ tức nhận từ CTCP PTĐT & KCN Cao su VN (sở hữu 6,82%); TRC không có doanh thu cho thuê đất KCN trong BCTC. kcn 2019-2022 để null.",
+  "TRC: Thiếu số ha thanh lý 2019-2022 (chỉ có số tiền).",
+  "DRI: Sản lượng thu mua chỉ có 2025 (1.018,07 t); 2019–2024 không công bố số thực hiện (2024 chế biến 11.457,73 t vs khai thác 11.116 t).",
+  "DRI: Diện tích khai thác/KTCB thực hiện 2022 và 2025 không công bố (chỉ có KH tạm giao); 2023 dùng số KH tạm giao 8.506,48 ha; 2019–2020 BCTN lặp cùng câu 8.810,5/8.341 ha.",
+  "DRI: Không có doanh thu thanh lý vườn cây (đấu giá gỗ cao su thanh lý không thành công theo tài liệu ĐHĐCĐ 2026); thu nhập khác BCTC 2019–2023 (bản scan) chưa rà từng năm.",
+  "DRI: Không có đền bù đất/KCN: toàn bộ vườn cao su ở Lào (Champasak); DRI không có cao su tại VN (CNC DRI ở Đắk Lắk trồng sầu riêng 142,17 ha).",
+  "DRI: Quý: BCTC Q3/2026 không có sản lượng/giá; 9T/2026 không tách DT mủ. Không có bản tin SXKD quý.",
+  "DRI: Giá vốn/tấn trong BCTN (vd 2025: 33,11 trđ/t) là giá thành hàng bán gồm CPBH/QL, không khớp GV BCTC; latex_cogs dùng BCTC (2024–2025) hoặc DT − LN gộp BCTN (2019–2023)."
+ ],
+ "gvr_group": [
+  {
+   "ticker": "PHR",
+   "relation": "công ty con",
+   "ownership_pct": 66.62,
+   "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.123, danh sách công ty con/liên kết, cột Rate of interest (tỷ lệ lợi ích) – STT 33 Phuoc Hoa Rubber JSC"
+  },
+  {
+   "ticker": "DPR",
+   "relation": "công ty con",
+   "ownership_pct": 55.24,
+   "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.124, danh sách công ty con/liên kết, cột Rate of interest (tỷ lệ lợi ích) – STT 46 Dong Phu Rubber JSC"
+  },
+  {
+   "ticker": "TRC",
+   "relation": "công ty con",
+   "ownership_pct": 60.0,
+   "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.124, danh sách công ty con/liên kết, cột Rate of interest (tỷ lệ lợi ích) – STT 47 Tay Ninh Rubber JSC"
+  },
+  {
+   "ticker": "HRC",
+   "relation": "công ty con",
+   "ownership_pct": 55.06,
+   "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.123, danh sách công ty con/liên kết, cột Rate of interest (tỷ lệ lợi ích) – STT 36 Hoa Binh Rubber JSC"
+  },
+  {
+   "ticker": "BRR",
+   "relation": "công ty con",
+   "ownership_pct": 97.47,
+   "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.125, danh sách công ty con/liên kết, cột Rate of interest (tỷ lệ lợi ích) – STT 57 Ba Ria Rubber JSC"
+  },
+  {
+   "ticker": "RTB",
+   "relation": "công ty con",
+   "ownership_pct": 98.46,
+   "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 (bản tiếng Anh) PDF tr.125, danh sách công ty con/liên kết, cột Rate of interest (tỷ lệ lợi ích) – STT 60 Tan Bien Rubber JSC"
+  },
+  {
+   "ticker": "TNC",
+   "relation": "không",
+   "ownership_pct": null,
+   "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 tr.119–132 (công ty con, liên kết), tr.149–150 (đầu tư khác)",
+   "notes": "Không thấy CTCP Cao su Thống Nhất trong danh sách công ty con/liên kết/đầu tư khác. \"Thong Nhat JSC\" (36,07%, liên kết) là CTCP Thống Nhất – KCN Bàu Xéo, không phải TNC."
+  },
+  {
+   "ticker": "DRI",
+   "relation": "không",
+   "ownership_pct": null,
+   "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 tr.119–132, tr.149–150",
+   "notes": "Không có trong danh sách; null nếu có sở hữu gián tiếp nhỏ chưa thấy."
+  },
+  {
+   "ticker": "DRG",
+   "relation": "không",
+   "ownership_pct": null,
+   "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 tr.119–132, tr.149–150",
+   "notes": "Không thấy công ty tương ứng trong danh sách."
+  },
+  {
+   "ticker": "VHG",
+   "relation": "không",
+   "ownership_pct": null,
+   "source_url": "https://cafefnew.mediacdn.vn/Images/Uploaded/DuLieuDownload/BCTC/20260330_-_GVR_-_CBTT_Bao_cao_tai_chinh_hop_nhat_nam_2025_kem_Giai_trinh_tieng_Viet_Anh__1774927152.pdf",
+   "source_locator": "BCTC HN 2025 tr.119–132, tr.149–150",
+   "notes": "Không thấy trong danh sách."
+  }
+ ]
+}

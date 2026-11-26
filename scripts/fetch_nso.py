@@ -374,6 +374,9 @@ def main():
         if rm and vals and (rm not in by_month or u > by_month[rm][0]):
             by_month[rm] = (u, vals)
     # priority: newer workbook wins; within one workbook cur < prev (sơ bộ) < same month last year (current basis)
+    if not by_month:  # 26/11/2026: không tải/đọc được workbook nào thì giữ nguyên file cũ, không ghi đè rỗng
+        print('NSO: no workbook parsed; keeping', OUT, file=sys.stderr)
+        sys.exit(1)
     old = json.loads(OUT.read_text()) if a.recent and OUT.exists() else {'series': {}, 'files': {}}
     series, src, rank = {k: dict(v) for k, v in old['series'].items()}, dict(old.get('files', {})), {}
     for (y, m) in sorted(by_month):

@@ -18,7 +18,7 @@ NSO = ROOT / 'data/raw/public/nso-monthly.json'
 OUT = ROOT / 'data/oil-public-data.js'
 CUS_KEYS = ['imp_fuel', 'imp_fuel_q', 'imp_crude', 'imp_crude_q', 'imp_lpg', 'imp_lpg_q', 'exp_crude', 'exp_crude_q', 'exp_fuel']
 NSO_KEYS = ['crude_output', 'gas_output', 'lpg_output', 'fuel_output']
-SINCE = '2022-01'
+SINCE = '2019-01'
 
 
 def pick(path, keys):

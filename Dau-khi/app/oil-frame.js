@@ -332,7 +332,9 @@ function crudeLayout() {
   keep.forEach(n => body.append(n));
   [sd, gap, block('dau-khi-12')].forEach(n => n && n.classList.add('of-wide'));
   hide(wrap05); hide(block('dau-khi-23')); hide(block('dau-khi-25')); hide(card('chFastPrice'));  // 23, 25 trùng Brent Futures theo ngày
-  hide(card('chUsProd'));  // 26/11/2026: Mỹ đã có trong chart 10 nước xuất khẩu lớn + ticker
+  hide(card('chUsProd'));
+  hide($('#of-top-exporters'));
+  hide($('#opec-drivers'));  // 26/11/2026: số nhập tay bản T8/2026, trùng combo cung–cầu (2026E) và chart đóng góp theo nước/khu vực  // 26/11/2026: trùng chart đóng góp thay đổi cung theo nước (cùng 10 nước, so cùng kỳ)  // 26/11/2026: Mỹ đã có trong chart 10 nước xuất khẩu lớn + ticker
   [...body.children].forEach(n => n.classList.remove('of-span'));
   let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
   [...body.children].forEach(n => { if (n.hidden) return; if (n.matches('.of-wide,.of-group,details,.kpis')) flush(); else run.push(n); }); flush();
@@ -388,7 +390,7 @@ const vnDate = d => { const [y, m, dd] = d.split('-'); return dd ? `${dd}/${m}/$
 // Vận tải: chỉ số cước tàu dầu thô (BDTI) và tàu sản phẩm (BCTI), 2 năm gần nhất, số ngày.
 function tankerRates() {
   const s = window.SHIPPING_DAILY?.eastmoney?.series; if (!s?.bdti?.records?.length) return;
-  const from = new Date(Date.now() - 730 * 864e5).toISOString().slice(0, 10);
+  const from = '2019-01-01';  // 26/11/2026: cả chuỗi East Money (từ 2019) thay vì 2 năm
   const bcti = new Map(s.bcti.records.map(r => [r[0], r[1]]));
   const rows = s.bdti.records.filter(r => r[0] >= from);
   lineCard($('#of-mt2-flows .of-body'), {id: 'chTankerIdx', title: 'Cước tàu dầu: Baltic Dirty Tanker (dầu thô) và Clean Tanker (sản phẩm) — 2 năm', sub: `điểm chỉ số, số ngày · mới nhất ${vnDate(rows.at(-1)[0])}: BDTI ${rows.at(-1)[1].toLocaleString('vi-VN')}, BCTI ${(bcti.get(rows.at(-1)[0]) ?? '—').toLocaleString('vi-VN')}`,
@@ -398,8 +400,11 @@ function tankerRates() {
 
 // Khí & LNG: giá LNG châu Á (JKM) so với khí Mỹ (Henry Hub), bình quân tuần 2 năm — biên nhập LNG và giá khí đầu vào điện.
 function lngPrices() {
-  const src = window.SECTOR_DAILY?.sources, j = src?.lng_jkm?.records, h = src?.henry_hub?.records; if (!j?.length || !h?.length) return;
-  const from = new Date(Date.now() - 730 * 864e5).toISOString().slice(0, 10);
+  const src = window.SECTOR_DAILY?.sources, live = src?.lng_jkm?.records || [], h = src?.henry_hub?.records;
+  // Phần trước chuỗi ICE lấy từ JKM=F liên tục 10 năm (lng_jkm_history); từ ngày đầu của chuỗi ICE trở đi dùng ICE.
+  const cut = live[0]?.date || '9999', j = [...(src?.lng_jkm_history?.records || []).filter(r => r.date < cut), ...live];
+  if (!j.length || !h?.length) return;
+  const from = '2019-01-01';  // 26/11/2026: từ 2019 thay vì 2 năm
   const wk = d => { const t = new Date(d + 'T00:00:00Z'); t.setUTCDate(t.getUTCDate() - ((t.getUTCDay() + 6) % 7)); return t.toISOString().slice(0, 10); };
   const avg = recs => { const m = new Map(); recs.filter(r => r.date >= from).forEach(r => { const k = wk(r.date); (m.get(k) || m.set(k, []).get(k)).push(r.value); }); return new Map([...m].map(([k, v]) => [k, v.reduce((a, b) => a + b, 0) / v.length])); };
   const J = avg(j), H = avg(h), keys = [...J.keys()].sort();
@@ -440,7 +445,7 @@ function vnMonthly() {
   const C = P.customs?.series || {}, N = P.nso?.series || {};
   const lab = m => { const [y, mm] = m.split('-'); return `T${+mm}/${y.slice(2)}`; };
   const cusSrc = `<a href="${P.customs.url}" target="_blank" rel="noopener">Cục Hải quan · số liệu xuất nhập khẩu hằng tháng</a> (báo cáo 2N/2X, bản tốt nhất mỗi tháng)`;
-  const pair = (host, id, title, vk, qk, color) => { const v = C[vk], q = C[qk]; if (!v) return; const ms = Object.keys(v).filter(m => m >= '2024-01').sort(); if (!ms.length) return;
+  const pair = (host, id, title, vk, qk, color) => { const v = C[vk], q = C[qk]; if (!v) return; const ms = Object.keys(v).sort(); if (!ms.length) return;
     const last = ms.at(-1), yoy = v[(+last.slice(0, 4) - 1) + last.slice(4)];
     lineCard(host, {id, title, sub: `Tháng ${lab(last).slice(1)}: ${q ? Math.round(q[last] / 1000).toLocaleString('vi-VN') + ' nghìn tấn · ' : ''}${Math.round(v[last]).toLocaleString('vi-VN')} triệu USD${yoy ? ` (${v[last] >= yoy ? '+' : ''}${Math.round((v[last] / yoy - 1) * 100)}% so cùng kỳ)` : ''}`,
       labels: ms.map(lab), series: [...(q ? [{name: 'Lượng (nghìn tấn)', type: 'bar', color: color, fill: color + '99', values: ms.map(m => q[m] != null ? q[m] / 1000 : null)}] : []), {name: 'Trị giá (triệu USD)', type: 'line', color: '#1F2A5C', axis: q ? 'y2' : 'y', values: ms.map(m => v[m])}],
@@ -450,7 +455,7 @@ function vnMonthly() {
   pair($('#of-mt2-gas .of-body'), 'chImpLpg', 'Nhập khẩu khí đốt hóa lỏng (LPG) theo tháng', 'imp_lpg', 'imp_lpg_q', '#59C5C8');
   pair($('#of-mt2-upstream .of-body'), 'chExpCrude', 'Xuất khẩu dầu thô theo tháng', 'exp_crude', 'exp_crude_q', '#D4A72C');
   const nsoSrc = `<a href="${P.nso.url}" target="_blank" rel="noopener">Cục Thống kê · biểu số liệu kinh tế – xã hội hằng tháng</a>`;
-  if (N.crude_output || N.gas_output) { const ms = [...new Set([...Object.keys(N.crude_output || {}), ...Object.keys(N.gas_output || {})])].filter(m => m >= '2024-01').sort();
+  if (N.crude_output || N.gas_output) { const ms = [...new Set([...Object.keys(N.crude_output || {}), ...Object.keys(N.gas_output || {})])].sort();
     if (ms.length) lineCard($('#of-mt2-upstream .of-body'), {id: 'chVnOutputM', title: 'Sản lượng khai thác dầu thô và khí tự nhiên Việt Nam theo tháng', sub: 'dầu thô: nghìn tấn · khí: triệu m³ · tháng hiện tại là ước tính của Cục Thống kê', labels: ms.map(lab),
       series: [{name: 'Dầu thô (nghìn tấn)', type: 'bar', color: '#2938A8', fill: '#2938A899', values: ms.map(m => N.crude_output?.[m] ?? null)}, {name: 'Khí tự nhiên (triệu m³)', type: 'line', color: '#59C5C8', axis: 'y2', values: ms.map(m => N.gas_output?.[m] ?? null)}], y2: 'triệu m³', yTitle: 'nghìn tấn', zero: true, digits: 0, src: nsoSrc}); }
 }
@@ -540,7 +545,7 @@ function contribCharts() {
       (down.length ? ` Kéo giảm: ${down.map(r => `${r[0]} <b class="neg">${nf(r[1])}</b>`).join(', ')}.` : '') + (up.length ? ` ${total < 0 ? 'Bù lại' : 'Kéo tăng'}: ${up.map(r => `${r[0]} <b class="pos">${nf(r[1])}</b>`).join(', ')}.` : '');
     const bar = (l, v, cls = '') => `<div class="dv-row ${cls}"><div class="dv-l"><b>${l}</b></div><div class="dv-track"><i class="dv-zero"></i><span class="dv-bar ${v < 0 ? 'neg' : 'pos'}" style="${v < 0 ? 'right:50%' : 'left:50%'};width:${pct(v)}"></span><em class="dv-v ${v < 0 ? 'neg' : 'pos'}" style="${v < 0 ? `right:calc(50% + ${pct(v)} + 6px)` : `left:calc(50% + ${pct(v)} + 6px)`}">${nf(v)}</em></div></div>`;
     const card = el('div', 'card of-wide'); card.id = id; card.dataset.ofAdded = id;
-    card.innerHTML = `<div class="chart-title">${kind === 'cung' ? 'Ai làm cung thay đổi' : 'Ai làm cầu thay đổi'}: đóng góp theo ${kind === 'cung' ? 'nước' : 'khu vực'}, tháng ${mm} so cùng kỳ</div>
+    card.innerHTML = `<div class="chart-title">${kind === 'cung' ? 'Thay đổi nguồn cung dầu toàn cầu theo quốc gia' : 'Thay đổi nhu cầu dầu toàn cầu theo khu vực'}</div>
       <p class="of-lead">${lead}</p><div class="dv">${bar(`Tổng ${kind} toàn cầu`, total, 'dv-total')}${rows.map(r => bar(r[0], r[1])).join('')}</div>
       <div class="pw-src">Nguồn: <a href="https://www.eia.gov/outlooks/steo/" target="_blank" rel="noopener">EIA STEO ${src.issue || ''}</a> · ${kind === 'cung' ? 'sản lượng tổng chất lỏng, bảng 3b, 3c; "các nước khác" = thế giới trừ 10 nước' : 'tiêu thụ, bảng 3e; "khu vực khác" = thế giới trừ các nhóm trên (Canada, Mexico, châu Á khác…)'} · triệu thùng/ngày, số ước tính của EIA có thể được sửa ở bản sau</div>`;
     return card;
@@ -574,12 +579,32 @@ function run() {
   taxTimeline();
   vnMonthly();
   opsCards();
+  // 26/11/2026: Giá sản phẩm USGC (Brent, xăng, diesel) trùng chart Crack spread USGC, cùng ba chuỗi EIA.
+  { const m = block('dau-khi-21'); if (m) { m.hidden = true; m.classList.add('of-hidden-legacy'); } }
   hideEmptyGaps();
   const finHost = financePane();
   nav(finHost);
   // Tab Sources không còn trong thanh tab (nguồn đã ghi dưới từng chart, như Điện); nội dung vẫn trong DOM.
+  shortTitles(); setTimeout(shortTitles, 1600);  // lần hai sau các module đặt lại tiêu đề muộn
   window.dispatchEvent(new Event('oil:frame'));
 }
+// 26/11/2026: tiêu đề chart gọn ở Bức tranh ngành; kỳ và đơn vị để ở dòng phụ dưới tiêu đề.
+function shortTitles() {
+  const T = {chSDCombo: 'Cân bằng cung – cầu dầu toàn cầu', chSpare: 'Công suất dự phòng OPEC và gián đoạn cung',
+    chCrudeStock: 'Tồn kho dầu thô Mỹ', chProdStock: 'Tồn kho xăng và distillate Mỹ', chDistYear: 'Tồn kho distillate Mỹ theo mùa', chCushing: 'Tồn kho Cushing',
+    chBrentYear: 'Giá Brent bình quân năm', chCurve: 'Đường cong kỳ hạn WTI', chCot: 'Vị thế ròng quỹ đầu cơ WTI',
+    chVnUpstream: 'Sản lượng dầu khí Việt Nam theo năm', chVnOutputM: 'Sản lượng dầu khí Việt Nam theo tháng', chExpCrude: 'Xuất khẩu dầu thô Việt Nam',
+    chGasVol: 'Khí vào bờ và LNG nhập khẩu', chGasCustomer: 'Vị thế của PV GAS trong nền kinh tế', chLngSpread: 'Giá LNG châu Á và khí Mỹ', chImpLpg: 'Nhập khẩu LPG',
+    chSingaporeCrack: 'Crack spread Singapore', chCrack: 'Crack spread Mỹ', chImpCrude: 'Nhập khẩu dầu thô',
+    chRetailFuelMini: 'Giá bán lẻ xăng dầu', chImpFuel: 'Nhập khẩu xăng dầu thành phẩm',
+    chHormuzM: 'Tàu dầu qua Hormuz', chBabMandeb: 'Lưu lượng tàu qua Bab el-Mandeb', chMiddleEastExports: 'Xuất khẩu dầu thô Ả Rập Xê Út và Kuwait', chTankerIdx: 'Cước tàu dầu Baltic'};
+  Object.entries(T).forEach(([id, t]) => document.querySelectorAll('[id="' + id + '"]').forEach(c => {
+    if (!c.closest('[id^="of-mt2"]')) return;
+    const h = (c.closest('.fs-share-host') || c.closest('.card'))?.querySelector('.chart-title'); if (!h) return;
+    const n = [...h.childNodes].find(x => x.nodeType === 3 && x.textContent.trim()); if (n) n.textContent = t; else h.prepend(t);
+  }));
+}
+
 // 26/11/2026: dựng khung trong lượt SectorBoot (mốc 1600, sau mọi module ≤ 1500) để trang chỉ hiện khi khung đã xong.
 // Trước đây chạy load + 1700 ms, tức SAU khi sector-boot đã hiện trang: người xem thấy bố cục cũ rồi giật sang khung mới.
 if (window.SectorBoot) SectorBoot.add(1600, run);

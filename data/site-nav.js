@@ -21,7 +21,7 @@ window.FS_SITE_NAV = {
         {key: 'shipping', label: 'Vận tải biển'},
         {label: 'Hàng không', soon: true}
       ]},
-      {label: 'Cao su', soon: true},
+      {key: 'rubber', label: 'Cao su'},
       {key: 'textile', label: 'Dệt may'},
       {key: 'seafood', label: 'Thủy sản', children: [
         {key: 'seafood', label: 'Cá tra', sub: 'pang', hash: 'mt2'},

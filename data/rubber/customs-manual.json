@@ -1,0 +1,7 @@
+{
+  "note": "Tháng Hải quan đã công bố nhưng chưa có trong data/raw/public/customs-monthly.json (bot). Đọc bằng mắt từ PDF 2X, mặt hàng 'Cao su' (STT 24), cột 'Số trong tháng báo cáo'. Khi bot có tháng này, số bot được dùng (bản chính thức/điều chỉnh thay sơ bộ).",
+  "months": [
+    {"period": "2026-10", "exp_rubber_q": 147002, "exp_rubber_usd": 348460296, "status": "sơ bộ", "published_at": "2026-11-05",
+     "source_url": "https://files.customs.gov.vn/CustomsCMS/TONG_CUC/2026/11/5/2026-t10-2x(vn-sb).pdf", "source_locator": "trang 1, dòng 24 Cao su, Lượng 147.002 tấn, Trị giá 348.460.296 USD"}
+  ]
+}

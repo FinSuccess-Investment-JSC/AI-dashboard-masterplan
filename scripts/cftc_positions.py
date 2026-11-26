@@ -12,6 +12,8 @@ import requests
 URL = 'https://www.cftc.gov/files/dea/history/fut_disagg_txt_{year}.zip'
 CODE = '067651'
 MARKET = 'WTI-PHYSICAL - NEW YORK MERCANTILE EXCHANGE'
+# Same contract 067651 was named this until the 2022 rename.
+MARKET_OLD = 'CRUDE OIL, LIGHT SWEET - NEW YORK MERCANTILE EXCHANGE'
 
 
 def parse_archive(raw: bytes, year: int):
@@ -29,7 +31,7 @@ def parse_archive(raw: bytes, year: int):
         for row in reader:
             if row['CFTC_Contract_Market_Code'].strip() != CODE:
                 continue
-            if row['Market_and_Exchange_Names'].strip() != MARKET:
+            if row['Market_and_Exchange_Names'].strip() not in (MARKET, MARKET_OLD):
                 raise ValueError('CFTC WTI contract identity mismatch')
             date = dt.date.fromisoformat(row['Report_Date_as_YYYY-MM-DD'])
             if date.year != year or date > dt.date.today():
@@ -46,11 +48,14 @@ def parse_archive(raw: bytes, year: int):
         return sorted(rows, key=lambda row: row['date'])
 
 
-def load():
+def load(old_records=None):
     now = dt.date.today()
-    years = (now.year - 1, now.year)
+    # Backfill once to 2015 when the stored history starts later; afterwards refresh only the last two years
+    # and keep older weeks from the previous bundle.
+    first = min((int(r['date'][:4]) for r in (old_records or [])), default=now.year)
+    years = range(2015, now.year + 1) if first > 2015 else (now.year - 1, now.year)
     raws = []
-    records = []
+    records = [r for r in (old_records or []) if int(r['date'][:4]) not in set(years)]
     for year in years:
         response = requests.get(URL.format(year=year), timeout=40,
                                 headers={'User-Agent': 'FinSuccessDashboard/2.0 (public data research)'})
