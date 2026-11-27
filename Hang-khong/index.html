@@ -18,8 +18,8 @@
 <script src="../data/aviation-financials.js?v=c485482397a6" defer></script>
 <script src="app/sector-visuals.js?v=600d63e56c74" defer></script>
 <script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
-<script src="app/aviation-config.js?v=40443d137c54" defer></script>
-<script src="app/pkg-dashboard.js?v=bc8bff05015e" defer></script>
+<script src="app/aviation-config.js?v=6908eca0f90d" defer></script>
+<script src="app/pkg-dashboard.js?v=486377747ede" defer></script>
 <script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=bb5b95d73397" defer></script>
@@ -47,8 +47,8 @@
 <script src="app/chart-source.js?v=20de8094fc85" defer></script>
 <script src="app/aviation-map.js?v=7103282cdca5" defer></script>
 <script src="app/pkg-frame.js?v=9f3ff233c4ce" defer></script>
-<link rel="stylesheet" href="app/pkg-frame.css?v=ae7f0cec68c4">
-<script src="app/site-navigation.js?v=235aee299bbd" data-release="20261127-tai-chinh-2-subtab"></script>
+<link rel="stylesheet" href="app/pkg-frame.css?v=94d1e11408b1">
+<script src="app/site-navigation.js?v=235aee299bbd" data-release="20261127-hang-khong-gon"></script>
 <script src="../data/site-nav.js?v=a08e16075531"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
@@ -83,7 +83,6 @@
     <section class="grid kpis">
       <div class="kpi"><div class="label">Khách vận chuyển đường hàng không</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-pax"></div></div>
       <div class="kpi"><div class="label">Khách quốc tế đến bằng đường không</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-visair"></div></div>
-      <div class="kpi"><div class="label">Jet fuel US Gulf Coast</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-jet"></div></div>
       <div class="kpi"><div class="label">Hàng hóa vận chuyển đường hàng không</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-cargo"></div></div>
     </section>
     <!-- research-layout.js dựng lưới giá vào #supply-world / #supply-vietnam (khung chung của gói); để rỗng -->
@@ -149,12 +148,6 @@
         <div id="hkShare"></div>
         <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-share"></table></div></details>
       </div>
-      <div class="card" data-block-id="hk-23" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
-        <div class="chart-title">Đội tàu bay khai thác theo hãng</div>
-        <div class="chart-sub">tàu bay · 2024 thực tế, 2025–2027 dự báo của SHS (màu nhạt)</div>
-        <div id="hkFleet"></div>
-        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-fleet"></table></div></details>
-      </div>
       <div class="card" data-block-id="hk-24" data-update-kind="document" data-cadence="event" data-refresh-status="snapshot">
         <div class="chart-title">Tàu bay: đăng ký, khai thác và theo hãng</div>
         <div class="chart-sub">tàu bay · số dư tại từng ngày Cục Hàng không nêu</div>
@@ -179,16 +172,6 @@
         <div id="hkFx"></div>
         <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-fuelfx"></table></div></details>
       </div>
-      <div class="card" data-block-id="hk-31" data-update-kind="document" data-cadence="weekly" data-refresh-status="snapshot">
-        <div class="chart-title">Giá nhiên liệu bay bình quân toàn cầu (IATA)</div>
-        <div class="chart-sub">USD/thùng · tuần gần nhất · Platts qua IATA Fuel Price Monitor</div>
-        <div id="hkIata"></div>
-      </div>
-      <div class="card" data-block-id="hk-32" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
-        <div class="chart-title">Độ nhạy chi phí với jet fuel và tỷ giá</div>
-        <div class="chart-sub">kịch bản minh họa · tham số chỉnh được</div>
-        <div id="hkSens"></div>
-      </div>
       <div class="card" data-block-id="hk-33" data-update-kind="periodic" data-cadence="quarterly" data-refresh-status="snapshot">
         <div class="chart-title">Doanh thu, biên và dòng tiền của HVN, VJC</div>
         <div class="chart-sub">tỷ đồng, % · BCTC hợp nhất theo quý</div>
@@ -199,11 +182,6 @@
         <div class="chart-title">Bản đồ cảng hàng không Việt Nam</div>
         <div class="chart-sub">mã IATA · đơn vị khai thác · rê chuột xem số đã xác minh</div>
         <div id="hkMap"></div>
-      </div>
-      <div class="card" data-block-id="hk-41" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
-        <div class="chart-title">Mốc dự án Long Thành, T3 Tân Sơn Nhất, T2 Nội Bài</div>
-        <div class="chart-sub">● đã diễn ra · ○ dự kiến</div>
-        <div id="hkAirportTl"></div>
       </div>
       <div class="card" data-block-id="hk-42" data-update-kind="event" data-cadence="event" data-refresh-status="snapshot">
         <div class="chart-title">Tiến độ dự án thành phần 3 Long Thành</div>
