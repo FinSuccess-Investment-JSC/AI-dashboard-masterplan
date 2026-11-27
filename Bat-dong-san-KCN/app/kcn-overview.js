@@ -3,7 +3,7 @@
    (so sánh tài chính & định giá, bảng doanh nghiệp) · 03 Triển vọng (nguồn cung mới 2026–2028, điều kiện đổi chiều, chính sách).
    Nội dung lấy từ các khối đã dựng sẵn (research-layout.js: lộ trình, mô hình kinh doanh, so sánh tài chính; kcn-brief.js: chuỗi giá trị)
    và workbook KCN (window.KcnWS từ kcn-workspace.js). Thêm mục "Dữ liệu khu công nghiệp" vào tab Nguồn dữ liệu.
-   Không tạo số khi thiếu dữ liệu. Deep-link: ?ov=<map|model|companies|forward>#mt1. */
+   Không tạo số khi thiếu dữ liệu. Deep-link: ?ov=<map|model>#mt1 (forward đã bỏ 27/11/2026, mở map). */
 (() => {
 'use strict';
 if (document.body.dataset.sector !== 'industrial') return;
@@ -120,38 +120,7 @@ function companiesPane(p, pane) {
   );
 }
 
-/* ---------- 02 · Triển vọng (26/11/2026) ----------
-   3.1 quy mô cung mới (giai đoạn theo bộ dữ liệu) → 3.2 bảng mốc đáng theo dõi (dự án lớn tách ba nhóm trạng thái, dùng chung danh mục
-   dự án với Nguồn cung) → 3.3 điều kiện có thể làm đổi chu kỳ (điều kiện kết thúc của chủ đề đang theo dõi, data/kcn/news.json). */
-function forwardPane(p) {
-  const D = window.KCN_MARKET, K = window.KcnInsights, WS = window.KcnWS;
-  const REG = {North: 'Miền Bắc', South: 'Miền Nam'};
-  const pipe = D && K ? K.pipelineRatios(D) : [];
-  const yrs = r => ((/(\d{4})-(\d{4})/.exec((D?.pipeline || []).find(x => x.stage === 'REGIONAL_FORECAST' && (!r || x.region === r))?.project || '') || []).slice(1).join('–')) || '';
-  const Y = yrs();
-  const supply = el('div', 'card ov-q8');
-  if (pipe.length) {
-    const max = Math.max(...pipe.map(x => x.pipeline || 0), 1);
-    supply.innerHTML = `<div class="chart-title">Nguồn cung đất KCN dự kiến ${esc(Y)} theo vùng (ha)</div><div class="chart-sub">dự phóng C&W · tỷ lệ so nguồn cung hiện hữu trong phạm vi khảo sát · chưa phải đất sạch sẵn sàng bàn giao</div>
-      <div class="ov-q8-bars">${pipe.map(x => `<div class="ov-q8-r"><span class="ov-q8-l">${esc(REG[x.region] || x.region)}</span><div class="ov-q8-t" title="${esc(REG[x.region] || x.region)}: ${nf(x.pipeline)} ha"><i style="width:${(x.pipeline / max * 100).toFixed(1)}%;background:${x.region === 'North' ? '#2938A8' : '#2a9fa3'}"></i></div><span class="ov-q8-v">${nf(x.pipeline)} ha · ${nf(x.ratio * 100, 0)}%</span></div>`).join('')}</div>
-      <a class="ov-more" href="?kcn=supply#mt2" data-kcn-go="supply">Xem nguồn cung theo tỉnh và dự án →</a><div class="pw-src">Nguồn: <a href="${esc(D.sources[pipe[0].src]?.url || '#')}" target="_blank" rel="noopener">Cushman & Wakefield</a></div>`;
-  } else supply.append(gap('workbook chưa có số cung dự kiến.'));
-  // Mốc đáng theo dõi: dự án từ 200 ha hoặc của doanh nghiệp niêm yết, tách ba nhóm; bảng đầy đủ ở Nguồn cung.
-  const mile = el('div', 'card');
-  if (WS?.projects) {
-    const P = WS.projects(), S = WS.stages, pick = P.filter(x => x.qa !== 'GROUPED_IP' && ((x.area || 0) >= 200 || x.ticker)).sort((a, b) => (b.area || 0) - (a.area || 0));
-    mile.innerHTML = Object.keys(S).map(k => { const a = pick.filter(x => x.stage === k).slice(0, 5); return a.length ? `<h4 class="ov-mh"><span class="kc-chip kc-st-${k}">${esc(S[k][0])}</span> <small>${esc(S[k][1])}</small></h4>${WS.projectTable(a)}` : ''; }).join('') +
-      `<p class="ov-cap"><a class="ov-more" href="?kcn=supply#mt2" data-kcn-go="supply">Bảng dự án đầy đủ, lọc theo vùng và trạng thái, ở Nguồn cung →</a></p>`;
-  } else mile.append(gap('chưa dựng được danh mục dự án.'));
-  const watch = el('div', 'card'); watch.innerHTML = '<p class="kc-na">Đang tải chủ đề đang theo dõi…</p>';
-  fetch(new URL('../data/kcn/news.json', document.baseURI), {cache: 'no-cache'}).then(r => r.json()).then(n => {
-    watch.innerHTML = `<ul class="pp-ul">${n.topics.map(t => `<li><b>${esc(t.title)}</b>: ${esc(t.end_condition || '')}<br><span class="kc-na">Kiểm tra tiếp: ${esc(t.next_check || '')} · phân tích ngày ${esc((t.analysis_date || '').split('-').reverse().join('/'))}</span></li>`).join('')}</ul>
-      <p class="ov-cap"><a class="ov-more" href="#mt7" data-ov-main="mt7">Diễn biến của từng chủ đề ở tab Chủ đề nóng →</a> · <a class="ov-more" href="?fin=fin#mt14" data-ov-fin="fin">Doanh thu, biên và dòng tiền ở Tài chính ngành →</a></p>`;
-  }).catch(() => { watch.replaceChildren(gap('không tải được chủ đề đang theo dõi.')); });
-  p.append(sec('supply', '3.1', `Nguồn cung mới ${Y} lớn đến đâu so với hiện hữu?`, supply),
-    sec('mile', '3.2', 'Những mốc dự án nào đáng theo dõi?', mile, {sub: 'Tách dự án đã có quyết định, đang làm hạ tầng và đã đưa ra chào thuê. Diện tích là quy mô dự án theo nguồn, không phải đất sẵn sàng bàn giao.'}),
-    sec('watch', '3.3', 'Mốc nào có thể làm đổi chiều chu kỳ?', watch, {sub: 'Điều kiện kết thúc của các chủ đề đang theo dõi.'}));
-}
+/* 02 · Triển vọng: bỏ 27/11/2026 theo yêu cầu người dùng; link cũ ?ov=forward mở Bản đồ ngành. */
 
 /* ---------- Tab lớn Tài chính ngành (#mt14), theo mẫu trang Điện (power-overview.js finTab), 26/11/2026 ----------
    01 Tài chính ngành (kcn-finance.js, trước là sub-tab 05 của Bức tranh ngành) · 02 Doanh nghiệp niêm yết (trước ở Tổng quan).
@@ -209,15 +178,14 @@ function finTab(pane1) {
 const SECTIONS = [
   ['map', '00', 'Bản đồ ngành', 'Chuỗi giá trị ngành', 'Đất, vốn và khách thuê đi qua những ai?', mapPane],
   ['model', '01', 'Chuỗi giá trị theo mô hình', 'Ba bước · ba mô hình kiếm tiền', 'Mỗi mô hình kinh doanh tạo doanh thu, ghi nhận lợi nhuận ở khâu nào?', modelPane],
-  ['forward', '02', 'Triển vọng', 'Nguồn cung mới, mốc chính sách', 'Điều gì có thể làm thay đổi luận điểm?', forwardPane]
 ];
 
 function build() {
   const pane = document.getElementById('pane-mt1'); if (!pane || pane.querySelector('.ov-nav')) return;
   const head = pane.querySelector(':scope>.sectionhead');
   const oldBar = pane.querySelector(':scope>.pane-subtabs'), oldPanes = [...pane.querySelectorAll(':scope>.pane-subpane')];
-  if (head) head.innerHTML = '<div><h2 class="sec">Tổng quan ngành bất động sản khu công nghiệp</h2><p>Nhìn để hiểu ngành, bấm để phân tích: bản đồ ngành → chuỗi giá trị theo mô hình → triển vọng. Tài chính và doanh nghiệp niêm yết ở tab Tài chính ngành.</p></div>';
-  const nav = el('div', 'ov-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Tổng quan ngành: ba bước');
+  if (head) head.innerHTML = '<div><h2 class="sec">Tổng quan ngành bất động sản khu công nghiệp</h2><p>Nhìn để hiểu ngành, bấm để phân tích: bản đồ ngành → chuỗi giá trị theo mô hình. Tài chính và doanh nghiệp niêm yết ở tab Tài chính ngành.</p></div>';
+  const nav = el('div', 'ov-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Tổng quan ngành: hai bước');
   head ? head.after(nav) : pane.prepend(nav);
   const panes = {}; let anchor = nav;
   SECTIONS.forEach(([key, num, label, tech, q]) => {

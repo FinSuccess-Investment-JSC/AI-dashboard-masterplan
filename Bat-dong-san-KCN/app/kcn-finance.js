@@ -33,7 +33,9 @@ function card(id, title, sub) {
 function foot(c, note) {
   c.el.querySelectorAll(':scope > .pw-src, :scope > .pw-src-note').forEach(n => n.remove());
   c.el.append(el('div', 'pw-src', `Nguồn: ${SRC}; tự tính`));
-  c.el.append(el('div', 'pw-src-note', `${note ? esc(note) + ' · ' : ''}cập nhật ${esc(D.captured.split('-').reverse().join('/'))}`));
+  // 27/11/2026 (người dùng): không chú thích dưới chart; chỉ giữ phần đầu ngắn của ghi chú (đơn vị, kỳ) bằng chữ nhỏ.
+  const short = note ? String(note).split(/[;.]\s/)[0].trim() : '';
+  c.el.append(el('div', 'pw-src-note', `${short && short.length <= 50 ? esc(short) + ' · ' : ''}cập nhật ${esc(D.captured.split('-').reverse().join('/'))}`));
 }
 function seg(c, name, opts, get, set) {
   // Nút "Cách xem" / "Đơn vị" tách thành ô riêng, đặt bên phải; nút chọn chỉ tiêu ở bên trái (25/11/2026, theo yêu cầu người dùng).
@@ -398,7 +400,7 @@ function redraw() { renders.forEach(f => { try { f(); } catch (e) { document.doc
 function build(pane) {
   if (!pane || root) return; root = pane;
   style();
-  pane.append(filterBar(), kpis(), s71(), s72(), s73(), s74(), s75(), s76());
+  pane.append(filterBar(), s71(), s72(), s73(), s74(), s75(), s76()); // hàng ô số đầu tab bỏ 27/11/2026 theo yêu cầu người dùng
   redraw();
 }
 function style() {
