@@ -1,0 +1,5 @@
+period,product,value,yoy_pct,unit,source,data_status
+2026H1,can,1778.0,15.8,million_litres,ducvn_2026h1,actual
+2026H1,bottle,471.3,6.6,million_litres,ducvn_2026h1,actual
+2026H1,draft,184.1,11.8,million_litres,ducvn_2026h1,actual
+2026H1,total,2458.0,14.4,million_litres,ducvn_2026h1,actual

@@ -4598,10 +4598,11 @@
      "bl-13",
      "bl-14",
      "bl-23",
-     "bl-44"
+     "bl-44",
+     "bl-80"
     ]
    },
-   "how": "Mở bài công bố mới; cập nhật bảng và chart chRetailMix, chStores trong Ban-le/app/retail-dashboard.js; thêm evidence.",
+   "how": "Mở bài công bố mới; cập nhật bảng và chart chRetailMix, chStores trong Ban-le/app/retail-dashboard.js; thêm evidence. Số cửa hàng PNJ công bố (bl-80): thêm dòng kỳ mới vào STORES trong Ban-le/app/retail-pnj.js.",
    "gates": [
     "Mở trang gốc",
     "Ghi kỳ số liệu"
@@ -8907,6 +8908,50 @@
     ]
    },
    "note": "Cập nhật khi doanh nghiệp/Bộ Công Thương công bố: sửa data/chloralkali/{plants,inputs,fpts}.json; tin Chủ đề nóng ở data/chloralkali/news.json; rồi chạy scripts/build_chloralkali.py"
+  },
+  {
+   "id": "beer.market",
+   "tier": "C",
+   "title": "Bia: kênh tiêu thụ, sản xuất theo chủng loại, thị phần hãng và thương hiệu (Euromonitor, VBA)",
+   "schedule": {
+    "type": "watch"
+   },
+   "publication": "Euromonitor Beer in Vietnam công bố mỗi năm; VBA/NSO số sản xuất theo chủng loại theo kỳ 6 tháng, năm",
+   "source": {
+    "name": "Euromonitor (qua Shinhan, Markettimes), Đồ uống Việt Nam",
+    "url": "https://www.euromonitor.com/beer-in-vietnam/report"
+   },
+   "where": {
+    "page": "Bia/index.html",
+    "file": "data/beer-market.js",
+    "blocks": [
+     "bia-70",
+     "bia-71",
+     "bia-72",
+     "bia-73",
+     "bia-74",
+     "bia-75",
+     "bia-76",
+     "bia-77",
+     "bia-78",
+     "bia-79",
+     "bia-80",
+     "bia-81",
+     "bia-82",
+     "bia-83",
+     "bia-84",
+     "bia-85",
+     "bia-86",
+     "bia-02"
+    ]
+   },
+   "how": "Sửa/thêm dòng ở data/beer/market/*.csv (mỗi dòng có nguồn trong sources.json, data_status actual/derived/estimate/forecast), chạy python scripts/build_beer_market.py; bản cũ tự lưu vào data/beer/market/history/ khi số đổi. Không scrape nguồn trả phí.",
+   "gates": [
+    "Tổng thị phần mỗi kỳ × phạm vi = 100 ± 0,6",
+    "Không ghép toàn thị trường với kênh mang về/tại chỗ",
+    "Sản xuất theo chủng loại không ghép với tiêu thụ",
+    "Không nội suy năm thiếu, không điền 0"
+   ]
   }
  ]
 }

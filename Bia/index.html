@@ -17,8 +17,10 @@
 <script src="../data/retail-public-data.js?v=eb33f0f10c68" defer></script>
 <script src="app/sector-visuals.js?v=6e232e4a9320" defer></script>
 <script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
-<script src="app/beer-config.js?v=1b6a955e82e4" defer></script>
+<script src="app/beer-config.js?v=f82dcc315051" defer></script>
 <script src="app/pkg-dashboard.js?v=8cf928a21f40" defer></script>
+<script src="../data/beer-market.js?v=20ba94cfd104" defer></script>
+<script src="app/beer-market.js?v=26f915a2558c" defer></script>
 <script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=bb5b95d73397" defer></script>
@@ -45,8 +47,8 @@
 <script src="app/chart-unfold.js?v=6d7e15bddbff" defer></script>
 <script src="app/chart-source.js?v=20de8094fc85" defer></script>
 <script src="app/pkg-frame.js?v=9f3ff233c4ce" defer></script>
-<link rel="stylesheet" href="app/pkg-frame.css?v=4d4a075d815e">
-<script src="app/site-navigation.js?v=235aee299bbd" data-release="20261127-bds-so-sanh-dn"></script>
+<link rel="stylesheet" href="app/pkg-frame.css?v=43926e777354">
+<script src="app/site-navigation.js?v=235aee299bbd" data-release="20261127-bia-kenh-thi-phan"></script>
 <script src="../data/site-nav.js?v=a08e16075531"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
@@ -82,6 +84,14 @@
       <div class="kpi"><div class="label">IIP đồ uống</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-iipb"></div></div>
       <div class="kpi"><div class="label">CPI đồ uống &amp; thuốc lá</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-cpib"></div></div>
       <div class="kpi"><div class="label">P/E rổ bia</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-pe"></div></div>
+      <div class="kpi"><div class="label">Tỷ trọng mua mang về</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-off"></div></div>
+      <div class="kpi"><div class="label">Thay đổi tỷ trọng mang về</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-offchg"></div></div>
+      <div class="kpi"><div class="label">Tăng trưởng mua mang về</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-offcagr"></div></div>
+      <div class="kpi"><div class="label">Tăng trưởng uống tại chỗ</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-oncagr"></div></div>
+      <div class="kpi"><div class="label">Thị phần 2 hãng lớn nhất</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-cr2"></div></div>
+      <div class="kpi"><div class="label">Thị phần 4 hãng lớn nhất</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-cr4"></div></div>
+      <div class="kpi"><div class="label">Chênh Heineken − Sabeco</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-gap"></div></div>
+      <div class="kpi"><div class="label">Sabeco ở kênh mang về</div><div class="value">—</div><div class="delta"></div><div class="sub"></div><div id="spk-offsab"></div></div>
     </section>
     <!-- research-layout.js dựng lưới giá vào #supply-world / #supply-vietnam (khung chung của gói); để rỗng -->
     <div class="supply-pane" id="supply-world"></div><div class="supply-pane" id="supply-vietnam"></div>
@@ -93,6 +103,111 @@
       <div class="card" data-block-id="bia-05" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
         <div class="chart-title">Mô hình kiếm tiền của doanh nghiệp bia niêm yết</div>
         <div id="chBeerModels"></div>
+      </div>
+      <div class="card" data-block-id="bia-70" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu sản lượng tiêu thụ theo kênh</div>
+        <div class="chart-sub">% sản lượng · theo năm</div>
+        <div id="chBeerChMix"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-chmix"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-71" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Sản lượng tiêu thụ theo kênh</div>
+        <div class="chart-sub">triệu lít · theo năm</div>
+        <div id="chBeerChVol"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-chvol"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-72" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Chỉ số sản lượng tiêu thụ theo kênh</div>
+        <div class="chart-sub">năm 2019 = 100</div>
+        <div id="chBeerChIdx"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-chidx"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-73" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Cầu nối sản lượng tiêu thụ 2019 → 2024</div>
+        <div class="chart-sub">triệu lít · đóng góp từng kênh</div>
+        <div id="chBeerChBridge"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-chbridge"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-74" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Sản lượng sản xuất theo chủng loại</div>
+        <div class="chart-sub">triệu lít · lũy kế 6 tháng</div>
+        <div id="beerPackTiles"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-pack"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-75" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Sản xuất theo chủng loại, hai kỳ 6 tháng</div>
+        <div class="chart-sub">triệu lít</div>
+        <div id="chBeerPackYoY"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-packyoy"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-76" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu sản xuất theo chủng loại</div>
+        <div class="chart-sub">% sản lượng sản xuất</div>
+        <div id="chBeerPackMix"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-packmix"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-77" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Thị phần sản lượng từng hãng</div>
+        <div class="chart-sub">% sản lượng toàn thị trường · theo năm</div>
+        <div id="chBeerShare"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-share"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-78" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Thay đổi thị phần từng hãng</div>
+        <div class="chart-sub">điểm % · giữa hai năm chọn</div>
+        <div id="chBeerShareChg"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-sharechg"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-79" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu thị phần năm gần nhất</div>
+        <div class="chart-sub">% sản lượng toàn thị trường</div>
+        <div id="chBeerShareDonut"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-sharedonut"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-80" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Thị phần Heineken và Sabeco: mốc đầu và mốc cuối</div>
+        <div class="chart-sub">% sản lượng · theo phạm vi chọn</div>
+        <div id="chBeerSlope"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-slope"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-81" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Cơ cấu thị phần kênh mua mang về</div>
+        <div class="chart-sub">% sản lượng kênh mang về</div>
+        <div id="chBeerOffDonut"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-offdonut"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-82" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Thị phần theo hãng và thương hiệu</div>
+        <div class="chart-sub">% sản lượng toàn thị trường · bấm hãng để xem thương hiệu</div>
+        <div id="chBeerTreemap"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-treemap"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-83" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Xếp hạng thương hiệu</div>
+        <div class="chart-sub">% sản lượng toàn thị trường</div>
+        <div id="chBeerBrandRank"></div>
+      </div>
+      <div class="card" data-block-id="bia-84" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Thay đổi thị phần thương hiệu</div>
+        <div class="chart-sub">điểm % · giữa hai năm chọn</div>
+        <div id="chBeerBrandChg"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-brandchg"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-85" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Từ thị trường tới lợi nhuận doanh nghiệp</div>
+        <div class="chart-sub">chuỗi tác động</div>
+        <div id="beerFlow"></div>
+      </div>
+      <div class="card" data-block-id="bia-86" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Kịch bản thị phần: sản lượng, doanh thu, lợi nhuận đóng góp</div>
+        <div class="chart-sub">phân tích kịch bản · không phải dự báo</div>
+        <div id="beerSens"></div>
+        <details class="dtable"><summary>Chi tiết dữ liệu</summary><div class="tablewrap"><table id="tbl-beer-sens"></table></div></details>
+      </div>
+      <div class="card" data-block-id="bia-02" data-update-kind="document" data-cadence="annual" data-refresh-status="snapshot">
+        <div class="chart-title">Luận điểm đầu tư ngành bia</div>
+        <div class="chart-sub">số liệu chính và điều cần kiểm</div>
+        <div id="beerThesis"></div>
       </div>
       <div class="card" data-block-id="bia-10" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
         <div class="chart-title">Sản lượng bia sản xuất</div>
