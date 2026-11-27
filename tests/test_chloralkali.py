@@ -81,3 +81,12 @@ if __name__ == '__main__':
                 self.assertLess(r['price'], 20000, key)
         self.assertTrue(self.d['trade']['p4_vn_annual']['2019|280470'].get('weight_suspect'))
 
+    def test_every_js_card_registered(self):
+        # Thẻ dựng trong JS (card('xc-..') và dataset.blockId = 'xc-..') phải có mục registry — bắt lỗi mất mục khi gộp xung đột.
+        reg = json.loads((ROOT / 'updates/registry.json').read_text(encoding='utf-8'))
+        covered = {b for it in reg['items'] for b in it['where'].get('blocks', [])}
+        js = (ROOT / 'Xut-clo/app/chloralkali.js').read_text(encoding='utf-8')
+        ids = set(re.findall(r"card\('(xc-\d+)'", js)) | set(re.findall(r"blockId = '(xc-\d+)'", js))
+        self.assertTrue(ids)
+        self.assertFalse(ids - covered, sorted(ids - covered))
+
