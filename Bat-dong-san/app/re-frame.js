@@ -78,6 +78,7 @@ body[data-re-frame] .majorpane :is(.card th,.chart-sub,.note,.source-note,.resea
 body[data-re-frame] .majorpane .card th{font-weight:600!important}
 body[data-re-frame] .majorpane :is(.card td b,.card p b,.tx-ch,.gt-name b){color:var(--of-t1)!important}
 body[data-re-frame] .majorpane .card [style*="font-size:12.5px"]{font-size:14px!important;color:var(--of-t2)!important}
+body[data-re-frame] .re-cmp-old .company-trend,body[data-re-frame] .re-cmp-old .comparison-heading,body[data-re-frame] #pane-mt14 [data-block-id="bds-53"]{display:none!important}
 body[data-re-frame] .majorpane .comparison-heading h2{color:#fff!important;background:none!important;box-shadow:none!important}
 :root[data-theme=dark] body[data-re-frame] .majorpane{--of-t1:#E8EBFA;--of-t2:#C4C9E2;--of-t3:#9AA1BC}
 .gt{margin:12px 0 8px;font-size:13px}
@@ -225,7 +226,7 @@ function financePane() {
   // 02 So sánh doanh nghiệp = từng mã (xu hướng tài chính, P/E, kế hoạch – kết quả, số vận hành riêng). Tổng quan ngành (mt1) chỉ giữ mô hình kinh doanh.
   const CMP_IDS = ['bds-53'], CMP_SEL = [];
   const fnav = el('div', 'of-nav'); fnav.setAttribute('role', 'tablist'); fnav.setAttribute('aria-label', 'Tài chính ngành'); sec.append(fnav);
-  const subs = [{k: 'total', t: 'Tổng quan ngành'}, {k: 'compare', t: 'So sánh doanh nghiệp'}].map((s, i) => {
+  const subs = [{k: 'total', t: 'Tổng quan ngành'}, {k: 'compare', t: 'So sánh doanh nghiệp'}, {k: 'valuation', t: 'Định giá'}].map((s, i) => {
     const b = el('button', 'of-tab', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt14-${s.k}-tab`;
     const sp = el('div', 'pane-subpane of-pane'); sp.id = `of-mt14-${s.k}`; sp.dataset.sub = s.k; sp.setAttribute('role', 'tabpanel'); sp.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', sp.id);
     const body = el('div', 'of-body'); sp.append(body); fnav.append(b); sec.append(sp);
@@ -238,8 +239,19 @@ function financePane() {
     if (n.matches('.financial-comparison') || n.querySelector('table')) n.classList.add('of-wide');
     if (was && !was.querySelector('[data-block-id],canvas,svg,table,.card')) was.remove(); };
   take($('.financial-comparison'));
-  { const cr = el('div', 'of-wide re-cmp-root'); cr.id = 're-cmp-root'; cb.prepend(cr); }  // 7 mục so sánh từng mã (ReFinance.buildCompare)
+  { const cr = el('div', 'of-wide re-cmp-root'); cr.id = 're-cmp-root'; cb.prepend(cr); }
+  { const vr = el('div', 'of-wide re-val-root'); vr.id = 're-val-root'; subs[2].body.append(vr); }  // 27/11/2026: Định giá thành sub-tab riêng  // 7 mục so sánh từng mã (ReFinance.buildCompare)
   CMP_IDS.forEach(id => take(block(id))); CMP_SEL.forEach(q => $$(q).forEach(take));
+  // 27/11/2026: khối so sánh cũ (bảng + chart xu hướng) và thẻ backlog cover cũ trùng mục 2.1–2.5 → gấp vào "Bảng tổng hợp".
+  // Chart cũ trùng mục mới thì ẩn (chart xu hướng cũ ↔ 2.1–2.2; backlog cover cũ ↔ 2.5, nợ NH/tiền ↔ 2.6); chỉ bảng được gấp
+  // (quy tắc trang Điện: không giấu chart trong mục thu gọn — chart-unfold.js sẽ tự mở mục nào có chart).
+  { const bl = block('bds-53'); if (bl) { bl.hidden = true; bl.classList.add('of-hidden-legacy'); } }
+  { const d = el('details', 'research-fold of-wide re-cmp-old su-open'); d.hidden = true; d.append(el('summary', '', 'Bảng tổng hợp: chỉ số tài chính và định giá từng mã'));
+    const box = el('div', 'research-detail'); d.append(box); cb.append(d);
+    d.addEventListener('toggle', () => { if (d.open) [50, 300].forEach(t => setTimeout(() => window.dispatchEvent(new Event('resize')), t)); });
+    // Khối cũ (financial-comparison.js) dựng muộn hơn khung này: gấp vào khi nó xuất hiện.
+    const fold = () => { const fc = $('.financial-comparison'); if (fc && !box.contains(fc)) { fc.classList.remove('of-span'); box.append(fc); d.hidden = false; } return !!fc; };
+    if (!fold()) { const mo = new MutationObserver(() => { if (fold()) mo.disconnect(); }); mo.observe(document.body, {childList: true, subtree: true}); setTimeout(() => mo.disconnect(), 20000); } }
   if (!cb.children.length) cb.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu so sánh doanh nghiệp.'));
   { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
     [...cb.children].forEach(n => { if (n.matches('.of-wide,.of-gap,details,table,.tablewrap')) flush(); else run.push(n); }); flush(); }
@@ -337,12 +349,14 @@ function modelTab() {
   a.innerHTML = `<div class="chart-title">Vòng đời tiền của một dự án nhà ở</div><div class="chart-sub">Tiền chi ra trước, tiền khách trả vào giữa, lợi nhuận ghi nhận sau cùng · mỗi bước hiện lên BCTC ở khoản nào</div>
     <div class="cl-flow">${steps.map(([k, t, d, b, c]) => `<div class="cl-step ${c}"><span class="cl-n">${k}</span><b>${t}</b><p>${d}</p><em>${b}</em></div>`).join('')}</div>
     <div class="cl-key"><span class="out">Tiền ra</span><span class="in">Tiền vào</span><span class="rec">Ghi nhận lợi nhuận</span></div>
-    <div class="cl-ctl" role="group" aria-label="Nhóm"><button type="button" data-g="dev" aria-pressed="true">10 chủ đầu tư ngoài VHM</button><button type="button" data-g="vhm" aria-pressed="false">VHM</button></div>
+    <div class="cl-ctl" role="group" aria-label="Nhóm"><button type="button" data-g="all" aria-pressed="true">Tất cả chủ đầu tư</button><button type="button" data-g="mega" aria-pressed="false">Đại đô thị, quỹ đất lớn</button><button type="button" data-g="urban" aria-pressed="false">Nhà ở đô thị lớn</button><button type="button" data-g="prov" aria-pressed="false">Đất nền &amp; tỉnh</button></div>
     <div style="position:relative;height:320px"><canvas id="chCashLife" role="img" aria-label="Người mua trả trước, doanh thu 4 quý và CFO 4 quý"></canvas></div>
     <p class="of-lead" id="re-cashlife-lead"></p>
     <div class="pw-src">Nguồn: ${FINSRC} · người mua trả trước là số dư cuối quý (ngắn hạn); doanh thu và CFO cộng 4 quý gần nhất; tỷ đồng</div>`;
   host.prepend(a);
-  const G = {vhm: ['VHM'], dev: ['NVL', 'KDH', 'NLG', 'DXG', 'PDR', 'DIG', 'CEO', 'AGG', 'TCH', 'NTL']};
+  // 27/11/2026: nhóm theo mô hình kinh doanh (cùng data/re-financials.js), không tách VHM ↔ phần còn lại.
+  const G = {all: ['VHM', 'NVL', 'KDH', 'NLG', 'DXG', 'AGG', 'PDR', 'DIG', 'CEO', 'TCH', 'NTL'], mega: ['VHM', 'NVL'], urban: ['KDH', 'NLG', 'DXG', 'AGG'], prov: ['PDR', 'DIG', 'CEO', 'TCH', 'NTL']};
+  const GN = {all: '11 chủ đầu tư', mega: 'Nhóm đại đô thị (VHM, NVL)', urban: 'Nhóm nhà ở đô thị lớn', prov: 'Nhóm đất nền & tỉnh'};
   let ch;
   const draw = g => { const ts = G[g], from = Math.max(3, P.indexOf('2020Q1')), idx = [...Array(n - from)].map((_, j) => from + j);
     const adv = idx.map(i => sum(ts, 'adv_customers', i)), rev = idx.map(i => ttm(ts, 'revenue', i)), cfo = idx.map(i => ttm(ts, 'cfo', i));
@@ -356,10 +370,10 @@ function modelTab() {
         scales: {x: {grid: {display: false}, ticks: {color: '#6B7392', maxTicksLimit: 10, maxRotation: 0}}, y: {grid: {color: '#EEF0F6'}, ticks: {color: '#6B7392', callback: x => nf(x)}}}}});
     const L = n - 1, Y = n - 5, r = (x, y) => x != null && y ? x / y : null;
     const b1 = r(sum(ts, 'adv_customers', L), ttm(ts, 'revenue', L)), b0 = r(sum(ts, 'adv_customers', Y), ttm(ts, 'revenue', Y));
-    $('#re-cashlife-lead').innerHTML = `${g === 'vhm' ? 'VHM' : '10 chủ đầu tư'} đang giữ <b>${nf(sum(ts, 'adv_customers', L) / 1000, 1)} nghìn tỷ</b> tiền khách trả trước, bằng <b>${nf(b1, 2)} lần</b> doanh thu 4 quý (cùng kỳ ${nf(b0, 2)} lần): đây là phần doanh thu sẽ ghi nhận khi bàn giao. CFO 4 quý <b class="${ttm(ts, 'cfo', L) < 0 ? 'neg' : 'pos'}">${nf(ttm(ts, 'cfo', L))} tỷ đ</b>.`; };
+    $('#re-cashlife-lead').innerHTML = `${GN[g]} đang giữ <b>${nf(sum(ts, 'adv_customers', L) / 1000, 1)} nghìn tỷ</b> tiền khách trả trước, bằng <b>${nf(b1, 2)} lần</b> doanh thu 4 quý (cùng kỳ ${nf(b0, 2)} lần): đây là phần doanh thu sẽ ghi nhận khi bàn giao. CFO 4 quý <b class="${ttm(ts, 'cfo', L) < 0 ? 'neg' : 'pos'}">${nf(ttm(ts, 'cfo', L))} tỷ đ</b>.`; };
   a.querySelectorAll('.cl-ctl button').forEach(b => b.addEventListener('click', () => { a.querySelectorAll('.cl-ctl button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); draw(b.dataset.g); }));
-  draw('dev');
-  let cur = 'dev'; a.querySelectorAll('.cl-ctl button').forEach(b => b.addEventListener('click', () => { cur = b.dataset.g; }));
+  draw('all');
+  let cur = 'all'; a.querySelectorAll('.cl-ctl button').forEach(b => b.addEventListener('click', () => { cur = b.dataset.g; }));
   $('#of-mt1-model-tab')?.addEventListener('click', () => setTimeout(() => draw(cur), 60));
   // C. Bảng mô hình theo mã
   const L = n - 1, rows = Object.keys(SEG).map(t => { const debt = (v(t, 'st_debt', L) || 0) + (v(t, 'lt_debt', L) || 0), adv = v(t, 'adv_customers', L) || 0, eq = v(t, 'equity', L) || 0, tot = debt + adv + eq, rev = ttm([t], 'revenue', L);

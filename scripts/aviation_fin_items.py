@@ -10,8 +10,8 @@ TICKERS = ['HVN', 'VJC', 'ACV', 'SCS', 'NCT', 'SGN', 'AST', 'SAS']
 GROUPS = [
     {'id': 'airline', 'label': 'Hãng bay', 'color': '#2938A8', 'default': True},
     {'id': 'airport', 'label': 'Cảng hàng không', 'color': '#c29100', 'default': True},
-    {'id': 'cargo', 'label': 'Nhà ga hàng hóa', 'color': '#861C52', 'default': True},
-    {'id': 'service', 'label': 'Dịch vụ sân bay', 'color': '#27af95', 'default': True},
+    {'id': 'cargo', 'label': 'Nhà ga hàng hóa', 'color': '#861C52', 'default': False},
+    {'id': 'service', 'label': 'Dịch vụ sân bay', 'color': '#27af95', 'default': False},
 ]
 COMPANIES = [
     {'ticker': 'HVN', 'group': 'airline', 'note': 'Vietnam Airlines: vận tải hành khách, hàng hóa; hợp nhất Pacific Airlines, VASCO'},
