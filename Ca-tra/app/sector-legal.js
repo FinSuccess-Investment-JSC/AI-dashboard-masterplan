@@ -25,7 +25,7 @@ function summaries() {
 }
 function recent() {
   const body = $(BODY(T, 'docs')); if (!body || body.querySelector('.re-recent') || !(C.RECENT || []).length) return;
-  const c = el('div', 'card of-wide re-recent', `<h3>Mới duyệt, mới hiệu lực và đang trình — 12 tháng gần nhất</h3><div class="tablewrap"><table><thead><tr><th>Ngày</th><th>Văn bản</th><th>Điểm chính</th><th>Chi tiết</th></tr></thead><tbody>${C.RECENT.map(([d, v, n, k]) =>
+  const c = el('div', 'card of-wide re-recent', `<h3>Mới duyệt, mới hiệu lực và đang trình — 12 tháng gần nhất</h3><div class="tablewrap"><table data-no-fold><thead><tr><th>Ngày</th><th>Văn bản</th><th>Điểm chính</th><th>Chi tiết</th></tr></thead><tbody>${C.RECENT.map(([d, v, n, k]) =>
     `<tr><td>${d}</td><td><b>${v}</b></td><td>${n}</td><td>${k ? link('Xem sub-tab →', k) : ''}</td></tr>`).join('')}</tbody></table></div>${C.recentNote ? `<p class="note">${C.recentNote}</p>` : ''}`);
   const s = body.querySelector(':scope > .re-sum'); s ? s.after(c) : body.prepend(c);
 }
@@ -38,6 +38,7 @@ function split() {
     const rs = all.filter(r => r !== head && !r.querySelector('th') && re.test(r.cells[0]?.textContent || '')); if (!rs.length) return;
     const c = el('div', 'card of-wide re-lg-card', `<h3>${sp.title}</h3><div class="tablewrap"><table data-no-fold>${head ? `<thead>${head.outerHTML}</thead>` : ''}<tbody></tbody></table></div>`);
     rs.forEach(r => c.querySelector('tbody').append(r));
+    if (![...tb.querySelectorAll('tr')].some(r => r !== head && !r.querySelector('th'))) (tb.closest('.tablewrap') || tb).hidden = true;  // bảng gốc hết dòng: ẩn bảng, giữ tiêu đề và ghi chú của thẻ
     const src = b.querySelector('.source-note, .pw-src, .srcrow'); if (src) c.append(src.cloneNode(true));
     const s0 = body.querySelector(':scope > .re-sum'); const after = [...body.querySelectorAll(':scope > .re-lg-card')].pop() || s0; after ? after.after(c) : body.prepend(c);
   });

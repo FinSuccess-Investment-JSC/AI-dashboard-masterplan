@@ -3710,6 +3710,37 @@
    "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
+   "id": "steel.policy",
+   "tier": "C",
+   "title": "phòng vệ thương mại thép, thuế Mỹ, EU",
+   "schedule": {
+    "type": "watch",
+    "note": "Mốc: 12/2026 khởi công ĐSTĐC; hết 2026 thuế XK clinker 5%"
+   },
+   "publication": "Theo sự kiện",
+   "source": {
+    "name": "Bộ Công Thương – phòng vệ thương mại",
+    "url": "https://trav.gov.vn/"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "blocks": [
+     "th-50",
+     "th-51",
+     "th-52"
+    ],
+    "file": null
+   },
+   "how": "Mở văn bản/thông cáo gốc; cập nhật bảng và evidence.",
+   "gates": [
+    "Mở văn bản gốc",
+    "Ghi ngày hiệu lực"
+   ],
+   "watch": [
+    "news.public-investment"
+   ]
+  },
+  {
    "id": "steel.companies",
    "tier": "C",
    "status": "manual",
