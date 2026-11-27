@@ -4975,6 +4975,78 @@
    ]
   },
   {
+   "id": "sugar.industry-financials",
+   "tier": "C",
+   "title": "Đường · tab Tài chính ngành: BCTC 5 doanh nghiệp niêm yết (SLS, LSS, KTS, SBT, QNS) theo nhóm",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Sugar/index.html",
+    "file": "data/sugar-financials.js",
+    "blocks": [
+     "sugar-fin-breadth",
+     "sugar-fin-capex",
+     "sugar-fin-cip",
+     "sugar-fin-conversion",
+     "sugar-fin-cost",
+     "sugar-fin-debt",
+     "sugar-fin-dso",
+     "sugar-fin-dupont",
+     "sugar-fin-fcf",
+     "sugar-fin-funding",
+     "sugar-fin-intensity",
+     "sugar-fin-interest",
+     "sugar-fin-levdist",
+     "sugar-fin-leverage",
+     "sugar-fin-map",
+     "sugar-fin-margin",
+     "sugar-fin-method",
+     "sugar-fin-pnl",
+     "sugar-fin-pool",
+     "sugar-fin-ratios",
+     "sugar-fin-recv",
+     "sugar-fin-returns",
+     "sugar-fin-roic-cycle",
+     "sugar-fin-season"
+    ]
+   },
+   "how": "python scripts/fetch_sugar_financials.py && python scripts/build_sugar_financials.py (refresh-data.yml); giao diện Sugar/app/sugar-finance.js, tổng hợp bằng Sugar/app/industry-fin.js.",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Mã lỗi tải giữ bản trước, ghi vào stale",
+    "Universe và nhóm khâu ở scripts/oil_fin_items.py; loại trùng mẹ − con PLX ← PLC, PVT ← PVP (tỷ lệ sở hữu chưa đối chiếu báo cáo thường niên)"
+   ]
+  },
+  {
    "id": "realestate.industry-financials",
    "tier": "C",
    "title": "BĐS dân cư · tab Tài chính ngành: BCTC 13 doanh nghiệp niêm yết theo nhóm (VHM, chủ đầu tư nhà ở khác, cho thuê & môi giới)",
@@ -8730,7 +8802,6 @@
     "page": "Hang-khong/index.html",
     "file": "data/aviation-financials.js",
     "blocks": [
-     "hk-33",
      "hk-44",
      "hk-53",
      "hk-54",
@@ -8904,6 +8975,50 @@
     ]
    },
    "note": "Cập nhật khi doanh nghiệp/Bộ Công Thương công bố: sửa data/chloralkali/{plants,inputs,fpts}.json; tin Chủ đề nóng ở data/chloralkali/news.json; rồi chạy scripts/build_chloralkali.py"
+  },
+  {
+   "id": "beer.market",
+   "tier": "C",
+   "title": "Bia: kênh tiêu thụ, sản xuất theo chủng loại, thị phần hãng và thương hiệu (Euromonitor, VBA)",
+   "schedule": {
+    "type": "watch"
+   },
+   "publication": "Euromonitor Beer in Vietnam công bố mỗi năm; VBA/NSO số sản xuất theo chủng loại theo kỳ 6 tháng, năm",
+   "source": {
+    "name": "Euromonitor (qua Shinhan, Markettimes), Đồ uống Việt Nam",
+    "url": "https://www.euromonitor.com/beer-in-vietnam/report"
+   },
+   "where": {
+    "page": "Bia/index.html",
+    "file": "data/beer-market.js",
+    "blocks": [
+     "bia-70",
+     "bia-71",
+     "bia-72",
+     "bia-73",
+     "bia-74",
+     "bia-75",
+     "bia-76",
+     "bia-77",
+     "bia-78",
+     "bia-79",
+     "bia-80",
+     "bia-81",
+     "bia-82",
+     "bia-83",
+     "bia-84",
+     "bia-85",
+     "bia-86",
+     "bia-02"
+    ]
+   },
+   "how": "Sửa/thêm dòng ở data/beer/market/*.csv (mỗi dòng có nguồn trong sources.json, data_status actual/derived/estimate/forecast), chạy python scripts/build_beer_market.py; bản cũ tự lưu vào data/beer/market/history/ khi số đổi. Không scrape nguồn trả phí.",
+   "gates": [
+    "Tổng thị phần mỗi kỳ × phạm vi = 100 ± 0,6",
+    "Không ghép toàn thị trường với kênh mang về/tại chỗ",
+    "Sản xuất theo chủng loại không ghép với tiêu thụ",
+    "Không nội suy năm thiếu, không điền 0"
+   ]
   }
  ]
 }
