@@ -1,6 +1,8 @@
-Routine tài liệu 26/11/2026: xử lý 9 mục, không sửa trang/số liệu nào.
-Đóng không đổi: retail.calendar, port.price-margin, shipping.derived, realestate.market-quarterly, realestate.kcn-quarterly(lỗi), realestate.kcn-broker, oil.supply-news.
-Lỗi: realestate.kcn-quarterly (cushmanwakefield.com 403), pharma.calendar và power.overview-content (không có nguồn để mở).
-power.calendar: scheduler báo "Unknown item", cần kiểm registry.
-CBRE TP.HCM Q3/2026 chưa công bố, giữ ô trống.
+Routine Wi 27/11/2026: 33/37 mục đã cập nhật (Wi hết credit tuần đã làm mới, hook lưu đủ kết quả).
+Bank: lãi suất huy động/liên NH/OMO/tỷ giá tới 26-27/11, đường cong TPCP 27/11, định giá 27 NH tới 26/11, tin CBTT mới nhất 26/11.
+Ngành khác: agri, xây dựng, bảo hiểm, dược, cảng, BĐS, bán lẻ, thủy sản, vận tải biển, dệt may đã build lại; tháng mới nhất macro là 10/2026.
+Lỗi giữ số cũ: bank.wi.daily (đấu thầu TPCP thiếu winning_yield), bank.wi.monthly (dự báo lãi suất thiếu scenario).
+Lỗi: Fearnleys 404; PortWatch (tên tool đổi, builder không nhận).
+sector_ratio_daily trả rỗng (cây ngành v3) nên P/E ngành giữ số cũ.
+Tin Bank: Wi không còn cấp link PDF CBTT nên cột url để trống.
 Chưa kiểm giao diện bằng trình duyệt.
