@@ -7,23 +7,25 @@ from kcn_fin_items import ITEMS  # noqa: F401
 
 TICKERS = ['VHM', 'NVL', 'KDH', 'NLG', 'DXG', 'PDR', 'DIG', 'CEO', 'AGG', 'TCH', 'NTL', 'VRE', 'DXS']
 
+# 27/11/2026: chia nhóm theo mô hình kinh doanh, không tách riêng VHM (người dùng: chia VHM ↔ phần còn lại bị lệch).
 GROUPS = [
-    {'id': 'vhm', 'label': 'Vinhomes (VHM)', 'color': '#2938A8', 'default': True},
-    {'id': 'dev', 'label': 'Chủ đầu tư nhà ở khác', 'color': '#2a9fa3', 'default': True},
+    {'id': 'mega', 'label': 'Đại đô thị, quỹ đất lớn', 'color': '#2938A8', 'default': True},
+    {'id': 'urban', 'label': 'Nhà ở đô thị lớn', 'color': '#2a9fa3', 'default': True},
+    {'id': 'prov', 'label': 'Đất nền & tỉnh', 'color': '#861C52', 'default': True},
     {'id': 'service', 'label': 'Cho thuê & môi giới', 'color': '#c98a00', 'default': True},
 ]
 COMPANIES = [
-    {'ticker': 'VHM', 'group': 'vhm', 'note': 'Vinhomes: đại đô thị, căn hộ, thấp tầng; có bán buôn dự án và KCN'},
-    {'ticker': 'NVL', 'group': 'dev', 'note': 'Novaland: Aqua City, NovaWorld Phan Thiết, Hồ Tràm; đang tái cấu trúc nợ'},
-    {'ticker': 'KDH', 'group': 'dev', 'note': 'Khang Điền: nhà ở TP.HCM (TP Thủ Đức, Bình Chánh)'},
-    {'ticker': 'NLG', 'group': 'dev', 'note': 'Nam Long: nhà ở vừa túi tiền, Waterpoint, Izumi, Mizuki'},
-    {'ticker': 'DXG', 'group': 'dev', 'mixed': True, 'note': 'Đất Xanh: phát triển dự án và môi giới (sở hữu DXS)'},
-    {'ticker': 'PDR', 'group': 'dev', 'note': 'Phát Đạt: dự án Bình Dương, Bình Định, Đà Nẵng'},
-    {'ticker': 'DIG', 'group': 'dev', 'mixed': True, 'note': 'DIC Corp: khu đô thị, du lịch; có vật liệu xây dựng'},
-    {'ticker': 'CEO', 'group': 'dev', 'mixed': True, 'note': 'C.E.O Group: đất nền, du lịch nghỉ dưỡng Phú Quốc'},
-    {'ticker': 'AGG', 'group': 'dev', 'note': 'An Gia: căn hộ TP.HCM'},
-    {'ticker': 'TCH', 'group': 'dev', 'mixed': True, 'note': 'Tài chính Hoàng Huy: Hoang Huy Commerce (Hải Phòng); có kinh doanh xe'},
-    {'ticker': 'NTL', 'group': 'dev', 'note': 'Lideco: khu đô thị Hà Nội, Quảng Ninh'},
+    {'ticker': 'VHM', 'group': 'mega', 'note': 'Vinhomes: đại đô thị, căn hộ, thấp tầng; có bán buôn dự án và KCN'},
+    {'ticker': 'NVL', 'group': 'mega', 'note': 'Novaland: Aqua City, NovaWorld Phan Thiết, Hồ Tràm; đang tái cấu trúc nợ'},
+    {'ticker': 'KDH', 'group': 'urban', 'note': 'Khang Điền: nhà ở TP.HCM (TP Thủ Đức, Bình Chánh)'},
+    {'ticker': 'NLG', 'group': 'urban', 'note': 'Nam Long: nhà ở vừa túi tiền, Waterpoint, Izumi, Mizuki'},
+    {'ticker': 'DXG', 'group': 'urban', 'mixed': True, 'note': 'Đất Xanh: phát triển dự án và môi giới (sở hữu DXS)'},
+    {'ticker': 'PDR', 'group': 'prov', 'note': 'Phát Đạt: dự án Bình Dương, Bình Định, Đà Nẵng'},
+    {'ticker': 'DIG', 'group': 'prov', 'mixed': True, 'note': 'DIC Corp: khu đô thị, du lịch; có vật liệu xây dựng'},
+    {'ticker': 'CEO', 'group': 'prov', 'mixed': True, 'note': 'C.E.O Group: đất nền, du lịch nghỉ dưỡng Phú Quốc'},
+    {'ticker': 'AGG', 'group': 'urban', 'note': 'An Gia: căn hộ TP.HCM'},
+    {'ticker': 'TCH', 'group': 'prov', 'mixed': True, 'note': 'Tài chính Hoàng Huy: Hoang Huy Commerce (Hải Phòng); có kinh doanh xe'},
+    {'ticker': 'NTL', 'group': 'prov', 'note': 'Lideco: khu đô thị Hà Nội, Quảng Ninh'},
     {'ticker': 'VRE', 'group': 'service', 'note': 'Vincom Retail: cho thuê trung tâm thương mại'},
     {'ticker': 'DXS', 'group': 'service', 'note': 'Dịch vụ BĐS Đất Xanh: môi giới sơ cấp'},
 ]
