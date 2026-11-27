@@ -17,8 +17,8 @@ const GAP = t => `<p class="data-gap of-gap">${t}</p>`;
 const TREE = {
   mt1: {label: 'Tổng quan ngành', title: 'Tổng quan ngành cảng', intro: 'Doanh thu = sản lượng qua bến × giá bốc xếp; chuỗi giá trị → doanh nghiệp niêm yết → triển vọng.', subs: [
     {k: 'map', n: '00', t: 'Bản đồ ngành', d: 'Chủ hàng → hãng tàu → cảng → kho bãi, ICD, mỗi khâu gắn mã niêm yết.', sel: ['.research-roadmap'], ids: ['cg-01']},
-    {k: 'chain', n: '01', t: 'Chuỗi giá trị', d: 'Mô hình kinh doanh từng mã, biến quyết định từng nhóm.', sel: ['.business-models'], ids: ['cg-03'], rest: true},
-    {k: 'listed', n: '02', t: 'Doanh nghiệp niêm yết', d: 'Kế hoạch và kết quả 2026; định giá theo phiên.', ids: ['cg-30', 'cg-13']},
+    {k: 'chain', n: '01', t: 'Chuỗi giá trị', d: 'Sản lượng qua bến và giá bốc xếp đi vào doanh thu từng khâu.', ids: [], rest: true},
+    {k: 'listed', n: '02', t: 'Doanh nghiệp niêm yết', d: 'Mô hình kinh doanh từng mã: cảng nào, doanh thu đến từ đâu, biến quyết định.', sel: ['.business-models'], ids: ['cg-03']},
     {k: 'outlook', n: '03', t: 'Triển vọng', d: 'Vị trí trong chu kỳ, cung – cầu hai cụm cảng chính.', ids: ['cg-02', 'cg-09']},
   ]},
   mt2: {label: 'Bức tranh ngành', title: 'Bức tranh ngành', intro: 'Sản lượng → giá bốc xếp → cước → kho bãi → công suất mới.', subs: [
@@ -70,6 +70,7 @@ body[data-port-frame] .majorpane :is(.card th,.chart-sub,.note,.source-note,.res
 body[data-port-frame] .majorpane .card th{font-weight:600!important}
 body[data-port-frame] .majorpane :is(.card td b,.card p b,.tx-ch,.gt-name b){color:var(--of-t1)!important}
 body[data-port-frame] .majorpane .card [style*="font-size:12.5px"]{font-size:14px!important;color:var(--of-t2)!important}
+body[data-port-frame] .majorpane .comparison-heading h2{color:#fff!important;background:none!important;box-shadow:none!important}
 :root[data-theme=dark] body[data-port-frame] .majorpane{--of-t1:#E8EBFA;--of-t2:#C4C9E2;--of-t3:#9AA1BC}
 .gt{margin:12px 0 8px;font-size:13px}
 .gt-head,.gt-row{display:grid;grid-template-columns:200px minmax(0,1fr) 230px;gap:16px;align-items:center}
@@ -210,9 +211,30 @@ function financePane() {
   if (!p) { p = el('section', 'majorpane'); p.dataset.tab = 'mt14'; p.id = 'pane-mt14'; p.hidden = true; ($('.majorpane[data-tab="mt7"]') || $('.majorpane:last-of-type')).before(p); }
   const sec = el('section', 'section');
   sec.append(el('div', 'sectionhead', '<div><h2 class="sec">Tài chính ngành</h2><p>Số liệu tài chính của 12 doanh nghiệp cảng, kho bãi niêm yết, tổng hợp theo mảng, từ BCTC hợp nhất quý.</p></div>'));
-  const host = el('div', 'of-fin'); host.id = 'cg-fin-root'; sec.append(host); p.replaceChildren(sec);
-  // So sánh tài chính & định giá (chart xu hướng + bảng) thuộc Tài chính ngành; Tổng quan chỉ giữ mô hình kinh doanh.
-  const fc = $('.financial-comparison'); if (fc) { const was = fc.closest('.of-rest'); sec.append(fc); fc.classList.add('of-wide'); if (was && !was.querySelector('[data-block-id],canvas,svg,table,.card')) was.remove(); }
+  const host = el('div', 'of-fin'); host.id = 'cg-fin-root';
+  // 27/11/2026 (người dùng chốt): Tài chính ngành có 2 sub-tab. 01 Tổng quan ngành = chỉ số cộng gộp (tổng tử số ÷ tổng mẫu số);
+  // 02 So sánh doanh nghiệp = từng mã (xu hướng tài chính, P/E, kế hoạch – kết quả, số vận hành riêng). Tổng quan ngành (mt1) chỉ giữ mô hình kinh doanh.
+  const CMP_IDS = ['cg-30', 'cg-13'], CMP_SEL = ['.sector-valuation'];
+  const fnav = el('div', 'of-nav'); fnav.setAttribute('role', 'tablist'); fnav.setAttribute('aria-label', 'Tài chính ngành'); sec.append(fnav);
+  const subs = [{k: 'total', t: 'Tổng quan ngành'}, {k: 'compare', t: 'So sánh doanh nghiệp'}].map((s, i) => {
+    const b = el('button', 'of-tab', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt14-${s.k}-tab`;
+    const sp = el('div', 'pane-subpane of-pane'); sp.id = `of-mt14-${s.k}`; sp.dataset.sub = s.k; sp.setAttribute('role', 'tabpanel'); sp.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', sp.id);
+    const body = el('div', 'of-body'); sp.append(body); fnav.append(b); sec.append(sp);
+    b.addEventListener('click', () => open('mt14', s.k, true));
+    return {s, b, p: sp, body};
+  });
+  subs[0].body.append(host); host.classList.add('of-wide');
+  const cb = subs[1].body, moved = new Set();
+  const take = n => { if (!n || moved.has(n) || [...moved].some(m => m.contains(n))) return; const was = n.closest('.of-rest'); n.hidden = false; cb.append(n); moved.add(n);
+    if (n.matches('.financial-comparison') || n.querySelector('table')) n.classList.add('of-wide');
+    if (was && !was.querySelector('[data-block-id],canvas,svg,table,.card')) was.remove(); };
+  take($('.financial-comparison'));
+  CMP_IDS.forEach(id => take(block(id))); CMP_SEL.forEach(q => $$(q).forEach(take));
+  if (!cb.children.length) cb.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu so sánh doanh nghiệp.'));
+  { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
+    [...cb.children].forEach(n => { if (n.matches('.of-wide,.of-gap,details,table,.tablewrap')) flush(); else run.push(n); }); flush(); }
+  p.replaceChildren(sec);
+  TABS.mt14 = subs; open('mt14', new URL(location.href).searchParams.get('sub'));
   return host;
 }
 

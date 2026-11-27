@@ -190,7 +190,7 @@ T.hogmargin = c => {
 const OBS = () => W.obs || [];
 const obsOf = (metric, f = {}) => OBS().filter(o => o.metric_id === metric && Object.entries(f).every(([k, v]) => o[k] === v));
 const srcOf = list => { const seen = new Map(); list.forEach(o => { if (o.source_url && !seen.has(o.source_url)) seen.set(o.source_url, [o.source_name + (o.published_at ? ' ' + short(o.published_at) : ''), o.source_url]); }); return [...seen.values()]; };
-// Số theo kỳ công bố (năm, lũy kế): c.views [[metric, nhãn]], c.segs [[segment, nhãn, màu]]. Cột = giá trị; dải dưới chart = so cùng kỳ do nguồn công bố.
+// Số theo kỳ công bố (năm, lũy kế): c.views [[metric, nhãn]], c.segs [[segment, nhãn, màu]]. Cột = giá trị; so cùng kỳ do nguồn công bố ở bảng Chi tiết dữ liệu.
 T.cum = c => {
   const order = rows => [...new Map(rows.slice().sort((a, b) => a.period_end < b.period_end ? -1 : a.period_end > b.period_end ? 1 : (a.period_start < b.period_start ? 1 : -1)).map(o => [o.period_label, o])).keys()];
   const draw = metric => {
@@ -198,9 +198,7 @@ T.cum = c => {
     const at = (p, sg) => rows.find(o => o.period_label === p && o.segment === sg);
     const unit = rows[0]?.unit || '';
     barLineChart(c.id, {categories: periods, series: c.segs.map(([sg, n, col]) => ({name: n, color: col, values: periods.map(p => at(p, sg)?.value ?? null)})), unit, digits: c.digits ?? 1, height: 260, rotateLabels: false, stackable: !!c.stackable});
-    const host = document.getElementById(c.id), card = host?.closest('.card');
-    card?.querySelector(`[data-yoy="${c.id}"]`)?.remove();
-    if (host) { const box = make('div', 'hk-yoy'); box.dataset.yoy = c.id; box.innerHTML = '<b>So cùng kỳ (nguồn công bố)</b>' + periods.map(p => `<span><i>${esc(p)}</i>${c.segs.map(([sg, n, col]) => { const o = at(p, sg); return `<em style="color:${col}">${esc(n)} ${o?.yoy == null ? '—' : signed(o.yoy, 1) + '%'}</em>`; }).join('')}</span>`).join(''); (card?.querySelector(':scope>.legend') || host).after(box); }
+    // So cùng kỳ chỉ ở bảng Chi tiết dữ liệu (27/11/2026 người dùng bỏ dải "So cùng kỳ" dưới chart).
     fillTable(c.table, ['Kỳ', ...c.segs.flatMap(([, n]) => [n + ' (' + unit + ')', n + ' so cùng kỳ (%)']), 'Ngày công bố', 'Loại số'], periods.map(p => { const any = rows.find(o => o.period_label === p); return [p, ...c.segs.flatMap(([sg]) => { const o = at(p, sg); return [nf(o?.value, c.digits ?? 1), o?.yoy == null ? '—' : signed(o.yoy, 1)]; }), short(any?.published_at), any?.status || '']; }).reverse());
     return periods.at(-1);
   };

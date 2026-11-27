@@ -108,10 +108,11 @@ document.addEventListener('click', e => {
 
 /* ---------- Mục lục + tìm nhanh ---------- */
 function blocksOf(root) {
-  return [...root.querySelectorAll('.sectionhead h2, h3.subhead, .card .chart-title, .card > h3, .business-models > h2, .cr-verdict')].filter(h => !h.closest('.pv-hub, .pv-drawer, .cr-verdict h3 ~ *')).map(h => {
-    const box = h.closest('.card, section, .business-models') || h;
-    const label = h.classList.contains('cr-verdict') ? 'Kết luận Catalyst' : h.textContent.replace(/[ⓘ↗]/g, '').replace(/\s+/g, ' ').trim();
-    return {box, label: label.slice(0, 80), lvl: h.matches('.sectionhead h2, .business-models > h2') ? 1 : h.matches('.subhead') ? 2 : 3};
+  return [...root.querySelectorAll('.sectionhead h2, h3.subhead, .pf-sec > .pp-ph h3, .card .chart-title, .card > h3, .business-models > h2, .cr-verdict')].filter(h => !h.closest('.pv-hub, .pv-drawer, .cr-verdict h3 ~ *')).map(h => {
+    const box = h.closest('.pf-sec, .card, section, .business-models') || h;  // 27/11/2026: mục 1.1, 2.1… của Tài chính ngành là một dòng mục lục, không liệt kê từng chart
+    const num = h.closest('.pp-ph')?.querySelector('.pp-num')?.textContent.trim();
+    const label = h.classList.contains('cr-verdict') ? 'Kết luận Catalyst' : num ? num + ' ' + h.textContent.trim() : h.textContent.replace(/[ⓘ↗]/g, '').replace(/\s+/g, ' ').trim();
+    return {box, label: label.slice(0, 80), lvl: h.matches('.sectionhead h2, .business-models > h2, .pf-sec > .pp-ph h3') ? 1 : h.matches('.subhead') ? 2 : 3};
   }).filter((x, i, a) => x.label && a.findIndex(y => y.label === x.label) === i);
 }
 function toc() {

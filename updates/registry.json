@@ -8730,7 +8730,6 @@
     "page": "Hang-khong/index.html",
     "file": "data/aviation-financials.js",
     "blocks": [
-     "hk-33",
      "hk-44",
      "hk-53",
      "hk-54",
@@ -8795,11 +8794,7 @@
     "file": "data/aviation/observations.json",
     "blocks": [
      "hk-22",
-     "hk-23",
      "hk-25",
-     "hk-31",
-     "hk-32",
-     "hk-41",
      "hk-42",
      "hk-43",
      "hk-52",
