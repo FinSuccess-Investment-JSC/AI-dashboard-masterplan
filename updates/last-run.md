@@ -1,4 +1,4 @@
-# Lịch cập nhật — 26/11/2026 13:02
+# Lịch cập nhật — 27/11/2026 09:19
 
-- ✅ oil.supply-news: Mở petrotimes 16/11/2026: chỉ là phát biểu của Zelensky (>55% công suất lọc dầu Nga), không kiểm chứng độc lập, không phải số liệu để đưa lên trang. Không sửa.
-- Hàng chờ Claude: 84 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, pharma.wi.monthly
+- ✅ pharma.wi.valuation: Wi 27/11/2026 build xong; sector_ratio v3 rỗng, giữ số cũ (nếu có)
+- Hàng chờ Claude: 53 mục — shipping.policy, construction.disbursement, construction.policy, insurance.market, insurance.policy, retail.market, retail.policy, pharma.market, pharma.policy, bank.wi.daily
