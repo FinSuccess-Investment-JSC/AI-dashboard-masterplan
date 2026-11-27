@@ -510,7 +510,9 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Đăng ký ngành mới:** routes/aliases/SECTOR_WORDS/3 danh sách key trong mọi `site-navigation.js`, `data/site-nav.js` (thay mục "Xút" sắp có), `prepare_release.py` PAGES + routes, `404.html`, `tests/test_update_scheduler.py`; test riêng `tests/test_chloralkali.py`.
 
 
-## 41. Dải giá chạy cho ngành không dùng sector-visuals (27/11/2026, người dùng yêu cầu)
-- `scripts/sector_package/price-ticker.js` (chép sang `<Ngành>/app/`, nạp sau script trang): dựng `.fsv-ticker` cùng giao diện các ngành khác, ngay trên thanh tab lớn; mỗi ngành một hàm trong `SECTORS` theo `body[data-sector]`.
-- Phân bón: 12 giá từ `FERT_DATA.series` (urê, DAP, kali, TSP, quặng phosphate, khí, LNG, than, Brent, USD/VND) kèm % so cùng kỳ. Xút – Clo: P4 giao ngay Trung Quốc (so cùng kỳ) + giá điện bình quân (so lần điều chỉnh trước).
-- Chưa có P/E: mã Phân bón, Xút – Clo chưa nằm trong `company-valuation` (UNIVERSE của update_company_comparison). Ngành còn thiếu dải giá: KCN, Cao su, Viễn thông.
+## 41. Dải giá chạy ở mọi ngành (27/11/2026, người dùng: "phải có cái thanh ribbon chạy chạy trên đầu mới đúng")
+- **Quy tắc:** mọi trang ngành có thanh tab lớn phải có dải chạy `.fsv-ticker` ngay trên thanh tab. Ngành dùng `sector-visuals.js` (khối `commodity` + `sector_ratio` trong `*_PUBLIC`) tự có; Điện, Dầu khí, Đường dùng `.ticker-track` riêng. Ngành còn lại dùng `scripts/sector_package/price-ticker.js` (chép sang `<Ngành>/app/`, thẻ đặt cuối `<head>`), chọn hàm theo `body[data-pkg]` rồi `body[data-sector]`.
+- **Đang có trong price-ticker.js:** Phân bón (12 giá FERT_DATA), Xút – Clo (P4 + giá điện bình quân, so lần điều chỉnh trước), Cao su (11 giá cao su/đầu vào + P/E GVR, PHR, DPR; trang nạp thêm company-valuation.js), Hàng không (nhiên liệu bay, USD/VND, khách, hàng hóa + P/E từ AVIATION_VAL), Dược (P/E rổ ngành, nhập khẩu thuốc/nguyên liệu, CPI y tế, USD/VND + P/E 6 mã), KCN (P/E rổ KCN + P/E 9 mã), Viễn thông (thuê bao, 5G, trạm BTS, doanh thu; chuỗi theo sự kiện không so cùng kỳ; mã viễn thông chưa có trong company-valuation nên chưa có P/E).
+- **Cách tính:** giá trị cuối + % so cùng kỳ năm trước (năm/tháng cùng kỳ; ngày/tuần lấy điểm gần nhất cách ≥ 1 năm, lệch ≤ 45 ngày); đơn vị % thì so bằng điểm %. P/E từng mã không kèm % (chưa có chuỗi P/E cùng kỳ), rê chuột xem trung vị 5 năm.
+- **Không có dải:** Ngân hàng, Bảo hiểm, Chứng khoán (iframe repo khác), Nông nghiệp, Thủy sản (trang chọn ngành con, không có thanh tab).
+- **Kiểm:** mở từng trang ngành, tìm phần tử có `animation` rộng hơn màn hình cao < 70px; ngành mới tạo phải qua bước này.
