@@ -18,12 +18,13 @@ const GAP = t => `<p class="data-gap of-gap">${t}</p>`;
 const TREE = {
   mt1: {label: 'Tổng quan ngành', title: 'Tổng quan ngành dầu khí', intro: 'Nhìn để hiểu ngành: chuỗi giá trị → cơ chế lợi nhuận từng khâu → doanh nghiệp niêm yết → triển vọng.', subs: [
     {k: 'map', n: '00', t: 'Bản đồ ngành', d: 'Thượng nguồn → trung nguồn → hạ nguồn, mỗi khâu gắn mã niêm yết.', sel: ['.research-roadmap'], ids: ['dau-khi-01']},
-    {k: 'chain', n: '01', t: 'Chuỗi giá trị', d: 'Giá dầu đi vào lợi nhuận từng khâu, mô hình kinh doanh từng mã.', sel: ['.business-models'], ids: ['dau-khi-38', 'dau-khi-30', 'dau-khi-31', 'dau-khi-03', 'dau-khi-32', 'dau-khi-33', 'dau-khi-34', 'dau-khi-35'], rest: true},
+    {k: 'chain', n: '01', t: 'Chuỗi giá trị', d: 'Giá dầu đi vào lợi nhuận từng khâu qua năm kênh.', ids: ['dau-khi-38'], rest: true},
+    {k: 'listed', n: '02', t: 'Doanh nghiệp niêm yết', d: 'Mô hình kinh doanh từng mã: vị trí trong chuỗi, biến quyết định lợi nhuận, độ trễ so với giá dầu.', sel: ['.business-models'], ids: ['dau-khi-03']},
   ]},
   mt2: {label: 'Bức tranh ngành', title: 'Bức tranh ngành', intro: 'Theo khâu: dầu thô toàn cầu → thượng nguồn Việt Nam → khí & LNG → lọc dầu → phân phối → vận tải & dòng chảy.', subs: [
     {k: 'crude', n: '01', t: 'Dầu thô toàn cầu', d: 'Cung OPEC+ và ngoài OPEC, cầu, tồn kho, Brent/WTI, đường cong kỳ hạn, vị thế quỹ.', ids: ['dau-khi-05', 'dau-khi-12', 'dau-khi-23', 'dau-khi-24', 'dau-khi-25', 'dau-khi-11', 'dau-khi-06', 'dau-khi-07', 'dau-khi-08', 'dau-khi-09', 'dau-khi-10', 'dau-khi-13'], canv: ['chFastPrice'], sel: ['.opec-drivers', '.inventory-group'], kpis: true},
     {k: 'upstream', n: '02', t: 'Thượng nguồn VN', d: 'Sản lượng khai thác dầu và khí, chuỗi dự án và dòng khí đầu tiên.', ids: ['dau-khi-15', 'dau-khi-19'],
-      gap: 'Chưa có chuỗi giá thuê và tỷ lệ sử dụng giàn khoan Đông Nam Á theo thời gian; số của PVD đang ở thẻ PVD (Tổng quan › Chuỗi giá trị).'},
+      gap: 'Chưa có chuỗi giá thuê và tỷ lệ sử dụng giàn khoan Đông Nam Á theo thời gian; số của PVD ở thẻ PVD (Tài chính ngành › So sánh doanh nghiệp).'},
     {k: 'gas', n: '03', t: 'Khí & LNG', d: 'Khí vào bờ, LNG nhập khẩu và vị trí của PV GAS.', ids: ['dau-khi-16', 'dau-khi-17']},
     {k: 'refining', n: '04', t: 'Lọc dầu', d: 'Crack spread Singapore và Mỹ, giá sản phẩm, cân đối hai nhà máy lọc dầu.', ids: ['dau-khi-singapore-crack', 'dau-khi-20', 'dau-khi-21', 'dau-khi-18'],
       gap: 'Biên lọc dầu thực tế của BSR không công bố theo tháng; crack Singapore so Dubai là proxy.'},
@@ -215,9 +216,30 @@ function financePane() {
   if (!p) { p = el('section', 'majorpane'); p.dataset.tab = 'mt14'; p.id = 'pane-mt14'; p.hidden = true; ($('.majorpane[data-tab="mt7"]') || $('.majorpane:last-of-type')).before(p); }
   const sec = el('section', 'section');
   sec.append(el('div', 'sectionhead', '<div><h2 class="sec">Tài chính ngành</h2><p>Số liệu tài chính của 12 doanh nghiệp dầu khí niêm yết, tổng hợp theo khâu, từ BCTC hợp nhất quý.</p></div>'));
-  const host = el('div', 'of-fin'); host.id = 'dk-fin-root'; sec.append(host); p.replaceChildren(sec);
-  // So sánh tài chính & định giá (chart xu hướng + bảng) thuộc Tài chính ngành; Tổng quan chỉ giữ mô hình kinh doanh.
-  const fc = $('.financial-comparison'); if (fc) { const was = fc.closest('.of-rest'); sec.append(fc); fc.classList.add('of-wide'); if (was && !was.querySelector('[data-block-id],canvas,svg,table,.card')) was.remove(); }
+  const host = el('div', 'of-fin'); host.id = 'dk-fin-root';
+  // 27/11/2026 (người dùng chốt): Tài chính ngành có 2 sub-tab. 01 Tổng quan ngành = chỉ số cộng gộp (tổng tử số ÷ tổng mẫu số);
+  // 02 So sánh doanh nghiệp = từng mã (xu hướng tài chính, P/E, kế hoạch – kết quả, số vận hành riêng). Tổng quan ngành (mt1) chỉ giữ mô hình kinh doanh.
+  const CMP_IDS = ['dau-khi-34', 'dau-khi-30', 'dau-khi-31', 'dau-khi-32', 'dau-khi-33', 'dau-khi-35'], CMP_SEL = [];
+  const fnav = el('div', 'of-nav'); fnav.setAttribute('role', 'tablist'); fnav.setAttribute('aria-label', 'Tài chính ngành'); sec.append(fnav);
+  const subs = [{k: 'total', t: 'Tổng quan ngành'}, {k: 'compare', t: 'So sánh doanh nghiệp'}].map((s, i) => {
+    const b = el('button', 'of-tab', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt14-${s.k}-tab`;
+    const sp = el('div', 'pane-subpane of-pane'); sp.id = `of-mt14-${s.k}`; sp.dataset.sub = s.k; sp.setAttribute('role', 'tabpanel'); sp.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', sp.id);
+    const body = el('div', 'of-body'); sp.append(body); fnav.append(b); sec.append(sp);
+    b.addEventListener('click', () => open('mt14', s.k, true));
+    return {s, b, p: sp, body};
+  });
+  subs[0].body.append(host); host.classList.add('of-wide');
+  const cb = subs[1].body, moved = new Set();
+  const take = n => { if (!n || moved.has(n) || [...moved].some(m => m.contains(n))) return; const was = n.closest('.of-rest'); n.hidden = false; cb.append(n); moved.add(n);
+    if (n.matches('.financial-comparison') || n.querySelector('table')) n.classList.add('of-wide');
+    if (was && !was.querySelector('[data-block-id],canvas,svg,table,.card')) was.remove(); };
+  take($('.financial-comparison'));
+  CMP_IDS.forEach(id => take(block(id))); CMP_SEL.forEach(q => $$(q).forEach(take));
+  if (!cb.children.length) cb.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu so sánh doanh nghiệp.'));
+  { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
+    [...cb.children].forEach(n => { if (n.matches('.of-wide,.of-gap,details,table,.tablewrap')) flush(); else run.push(n); }); flush(); }
+  p.replaceChildren(sec);
+  TABS.mt14 = subs; open('mt14', new URL(location.href).searchParams.get('sub'));
   return host;
 }
 

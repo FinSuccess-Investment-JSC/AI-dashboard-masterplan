@@ -18,8 +18,8 @@ const GAP = t => `<p class="data-gap of-gap">${t}</p>`;
 const TREE = {
   mt1: {label: 'Tổng quan ngành', title: 'Tổng quan ngành dệt may', intro: 'Chuỗi giá trị → cơ chế lợi nhuận từng khâu → doanh nghiệp niêm yết.', subs: [
     {k: 'map', n: '00', t: 'Bản đồ ngành', d: 'Xơ → sợi → dệt nhuộm → may → nhãn hàng, mỗi khâu gắn mã niêm yết.', sel: ['.research-roadmap', '.value-chain-card'], ids: ['dm-01']},
-    {k: 'chain', n: '01', t: 'Chuỗi giá trị', d: 'Chu kỳ ngành và mô hình kinh doanh từng mã.', sel: ['.business-models'], ids: ['dm-02', 'dm-03'], rest: true},
-    {k: 'players', n: '02', t: 'Doanh nghiệp niêm yết', d: 'Định giá hằng ngày hai phân ngành.', sel: ['.sector-valuation'], ids: ['dm-13']},
+    {k: 'chain', n: '01', t: 'Chuỗi giá trị', d: 'Chu kỳ ngành: đơn hàng, tồn kho nhãn hàng, giá xơ sợi.', ids: ['dm-02'], rest: true},
+    {k: 'players', n: '02', t: 'Doanh nghiệp niêm yết', d: 'Mô hình kinh doanh từng mã: sợi hay dệt nhuộm – may, khách hàng, biến quyết định.', sel: ['.business-models'], ids: ['dm-03']},
   ]},
   mt2: {label: 'Bức tranh ngành', title: 'Bức tranh ngành', intro: 'Theo khâu: sợi & xơ → dệt nhuộm – may → thị trường xuất khẩu → đơn hàng của nhãn hàng.', subs: [
     {k: 'yarn', n: '01', t: 'Sợi & xơ', d: 'Giá bông, sợi, xơ polyester và nguyên liệu PTA/MEG; xuất khẩu xơ sợi.', ids: ['dm-10', 'dm-11', 'dm-12', 'dm-17', 'dm-08', 'dm-09']},
@@ -207,9 +207,30 @@ function financePane() {
   if (!p) { p = el('section', 'majorpane'); p.dataset.tab = 'mt14'; p.id = 'pane-mt14'; p.hidden = true; ($('.majorpane[data-tab="mt7"]') || $('.majorpane:last-of-type')).before(p); }
   const sec = el('section', 'section');
   sec.append(el('div', 'sectionhead', '<div><h2 class="sec">Tài chính ngành</h2><p>Số liệu tài chính của 7 doanh nghiệp dệt may niêm yết, tổng hợp theo khâu, từ BCTC hợp nhất quý.</p></div>'));
-  const host = el('div', 'of-fin'); host.id = 'dm-fin-root'; sec.append(host); p.replaceChildren(sec);
-  // So sánh tài chính & định giá (chart xu hướng + bảng) thuộc Tài chính ngành; Tổng quan chỉ giữ mô hình kinh doanh.
-  const fc = $('.financial-comparison'); if (fc) { const was = fc.closest('.of-rest'); sec.append(fc); fc.classList.add('of-wide'); if (was && !was.querySelector('[data-block-id],canvas,svg,table,.card')) was.remove(); }
+  const host = el('div', 'of-fin'); host.id = 'dm-fin-root';
+  // 27/11/2026 (người dùng chốt): Tài chính ngành có 2 sub-tab. 01 Tổng quan ngành = chỉ số cộng gộp (tổng tử số ÷ tổng mẫu số);
+  // 02 So sánh doanh nghiệp = từng mã (xu hướng tài chính, P/E, kế hoạch – kết quả, số vận hành riêng). Tổng quan ngành (mt1) chỉ giữ mô hình kinh doanh.
+  const CMP_IDS = ['dm-13'], CMP_SEL = ['.sector-valuation'];
+  const fnav = el('div', 'of-nav'); fnav.setAttribute('role', 'tablist'); fnav.setAttribute('aria-label', 'Tài chính ngành'); sec.append(fnav);
+  const subs = [{k: 'total', t: 'Tổng quan ngành'}, {k: 'compare', t: 'So sánh doanh nghiệp'}].map((s, i) => {
+    const b = el('button', 'of-tab', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt14-${s.k}-tab`;
+    const sp = el('div', 'pane-subpane of-pane'); sp.id = `of-mt14-${s.k}`; sp.dataset.sub = s.k; sp.setAttribute('role', 'tabpanel'); sp.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', sp.id);
+    const body = el('div', 'of-body'); sp.append(body); fnav.append(b); sec.append(sp);
+    b.addEventListener('click', () => open('mt14', s.k, true));
+    return {s, b, p: sp, body};
+  });
+  subs[0].body.append(host); host.classList.add('of-wide');
+  const cb = subs[1].body, moved = new Set();
+  const take = n => { if (!n || moved.has(n) || [...moved].some(m => m.contains(n))) return; const was = n.closest('.of-rest'); n.hidden = false; cb.append(n); moved.add(n);
+    if (n.matches('.financial-comparison') || n.querySelector('table')) n.classList.add('of-wide');
+    if (was && !was.querySelector('[data-block-id],canvas,svg,table,.card')) was.remove(); };
+  take($('.financial-comparison'));
+  CMP_IDS.forEach(id => take(block(id))); CMP_SEL.forEach(q => $$(q).forEach(take));
+  if (!cb.children.length) cb.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu so sánh doanh nghiệp.'));
+  { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
+    [...cb.children].forEach(n => { if (n.matches('.of-wide,.of-gap,details,table,.tablewrap')) flush(); else run.push(n); }); flush(); }
+  p.replaceChildren(sec);
+  TABS.mt14 = subs; open('mt14', new URL(location.href).searchParams.get('sub'));
   return host;
 }
 function nav(finHost) {

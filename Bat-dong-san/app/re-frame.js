@@ -20,7 +20,8 @@ const TREE = {
   mt1: {label: 'Tổng quan ngành', title: 'Tổng quan ngành BĐS dân cư', intro: 'Chuỗi giá trị → mô hình kinh doanh → doanh nghiệp niêm yết → vị trí chu kỳ.', subs: [
     {k: 'map', n: '00', t: 'Bản đồ ngành', d: 'Quỹ đất → pháp lý → vốn → xây dựng → bán hàng → bàn giao, mỗi khâu gắn mã niêm yết.', sel: ['.research-roadmap', '.value-chain-card'], ids: ['bds-01']},
     {k: 'model', n: '01', t: 'Mô hình kinh doanh', d: 'Doanh nghiệp kiếm tiền từ đâu, người mua trả tiền thế nào.', ids: [], rest: true},  // 26/11/2026: bỏ thẻ mô tả cũ .business-models (lặp Bản đồ ngành)
-    {k: 'cycle', n: '02', t: 'Vị trí chu kỳ', d: 'Giá, thanh khoản và vốn đang ở đâu trong chu kỳ.', ids: ['bds-02']},
+    {k: 'listed', n: '02', t: 'Doanh nghiệp niêm yết', d: 'Mô hình kinh doanh từng mã: quỹ đất, phân khúc, doanh thu đến từ đâu, biến quyết định.', ids: ['bds-03']},
+    {k: 'cycle', n: '03', t: 'Vị trí chu kỳ', d: 'Giá, thanh khoản và vốn đang ở đâu trong chu kỳ.', ids: ['bds-02']},
   ]},
   mt2: {label: 'Bức tranh ngành', title: 'Bức tranh ngành', intro: 'Theo chuỗi: vĩ mô & vốn ngoại → nguồn cung → giao dịch → giá → vốn vay → hạ tầng.', subs: [
     {k: 'macro', n: '01', t: 'Vĩ mô & FDI', d: 'GDP ngành, vốn FDI vào BĐS và CPI nhà ở.', ids: ['bds-04', 'bds-05', 'bds-05c', 'bds-05d', 'bds-05b', 'bds-06']},
@@ -218,11 +219,30 @@ function financePane() {
   if (!p) { p = el('section', 'majorpane'); p.dataset.tab = 'mt14'; p.id = 'pane-mt14'; p.hidden = true; ($('.majorpane[data-tab="mt7"]') || $('.majorpane:last-of-type')).before(p); }
   const sec = el('section', 'section');
   sec.append(el('div', 'sectionhead', '<div><h2 class="sec">Tài chính ngành</h2><p>Số liệu tài chính của 13 doanh nghiệp BĐS dân cư niêm yết, tổng hợp theo nhóm, từ BCTC hợp nhất quý.</p></div>'));
-  const host = el('div', 'of-fin'); host.id = 're-fin-root'; sec.append(host); p.replaceChildren(sec);
-  // So sánh tài chính & định giá (chart xu hướng + bảng) thuộc Tài chính ngành; Tổng quan chỉ giữ mô hình kinh doanh.
-  // 26/11/2026 (người dùng chốt): doanh nghiệp theo dõi + backlog cover (bds-03, bds-53 nằm trong) và P/B theo phiên (bds-17) thuộc Tài chính ngành.
-  const dn = el('div', 'of-fin-listed'); ['bds-03', 'bds-17'].forEach(id => { const n = block(id); if (n) { n.style.marginTop = '16px'; dn.append(n); } }); sec.append(dn);
-  const fc = $('.financial-comparison'); if (fc) { const was = fc.closest('.of-rest'); sec.append(fc); fc.classList.add('of-wide'); if (was && !was.querySelector('[data-block-id],canvas,svg,table,.card')) was.remove(); }
+  const host = el('div', 'of-fin'); host.id = 're-fin-root';
+  // 27/11/2026 (người dùng chốt): Tài chính ngành có 2 sub-tab. 01 Tổng quan ngành = chỉ số cộng gộp (tổng tử số ÷ tổng mẫu số);
+  // 02 So sánh doanh nghiệp = từng mã (xu hướng tài chính, P/E, kế hoạch – kết quả, số vận hành riêng). Tổng quan ngành (mt1) chỉ giữ mô hình kinh doanh.
+  const CMP_IDS = ['bds-53'], CMP_SEL = [];
+  const fnav = el('div', 'of-nav'); fnav.setAttribute('role', 'tablist'); fnav.setAttribute('aria-label', 'Tài chính ngành'); sec.append(fnav);
+  const subs = [{k: 'total', t: 'Tổng quan ngành'}, {k: 'compare', t: 'So sánh doanh nghiệp'}].map((s, i) => {
+    const b = el('button', 'of-tab', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt14-${s.k}-tab`;
+    const sp = el('div', 'pane-subpane of-pane'); sp.id = `of-mt14-${s.k}`; sp.dataset.sub = s.k; sp.setAttribute('role', 'tabpanel'); sp.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', sp.id);
+    const body = el('div', 'of-body'); sp.append(body); fnav.append(b); sec.append(sp);
+    b.addEventListener('click', () => open('mt14', s.k, true));
+    return {s, b, p: sp, body};
+  });
+  subs[0].body.append(host); host.classList.add('of-wide');
+  const cb = subs[1].body, moved = new Set();
+  const take = n => { if (!n || moved.has(n) || [...moved].some(m => m.contains(n))) return; const was = n.closest('.of-rest'); n.hidden = false; cb.append(n); moved.add(n);
+    if (n.matches('.financial-comparison') || n.querySelector('table')) n.classList.add('of-wide');
+    if (was && !was.querySelector('[data-block-id],canvas,svg,table,.card')) was.remove(); };
+  take($('.financial-comparison'));
+  CMP_IDS.forEach(id => take(block(id))); CMP_SEL.forEach(q => $$(q).forEach(take));
+  if (!cb.children.length) cb.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu so sánh doanh nghiệp.'));
+  { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
+    [...cb.children].forEach(n => { if (n.matches('.of-wide,.of-gap,details,table,.tablewrap')) flush(); else run.push(n); }); flush(); }
+  p.replaceChildren(sec);
+  TABS.mt14 = subs; open('mt14', new URL(location.href).searchParams.get('sub'));
   return host;
 }
 
