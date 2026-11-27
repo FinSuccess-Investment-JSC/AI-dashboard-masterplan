@@ -24,6 +24,10 @@ def main():
     args=cli.parse_args()
     if not re.fullmatch(r'[A-Za-z0-9._-]+',args.version):
         cli.error('Version must contain only letters, digits, dot, underscore or hyphen')
+    # Nối main hỏng để lại dấu xung đột git trong trang (27/11/2026: Phan-bon, Xut-clo hiện "<<<<<<< HEAD" lên web): dừng, không phát hành.
+    marked=[f'{name}:{i}' for name in PAGES for i,line in enumerate((ROOT/name).read_text(encoding='utf-8').splitlines(),1) if line.startswith(('<<<<<<< ','>>>>>>> ')) or line=='=======']
+    if marked:
+        raise SystemExit('Còn dấu xung đột git, giải xong rồi chạy lại: '+', '.join(marked[:12]))
     public_files=set(PAGES)
     for name in PAGES:
         page=ROOT/name

@@ -509,3 +509,8 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Tài chính ngành:** `scripts/fetch_chloralkali_financials.py` (CSV, HVT, DGC; danh sách ở `chloralkali_fin_items.py`) → `scripts/build_chloralkali.py` → `data/chloralkali-data.js` (`window.XC_DATA`, `XC_FIN`) + `data/chloralkali-news.js` (`XC_NEWS`). BCTC toàn doanh nghiệp, không riêng mảng xút.
 - **Đăng ký ngành mới:** routes/aliases/SECTOR_WORDS/3 danh sách key trong mọi `site-navigation.js`, `data/site-nav.js` (thay mục "Xút" sắp có), `prepare_release.py` PAGES + routes, `404.html`, `tests/test_update_scheduler.py`; test riêng `tests/test_chloralkali.py`.
 
+
+## 41. Dải giá chạy cho ngành không dùng sector-visuals (27/11/2026, người dùng yêu cầu)
+- `scripts/sector_package/price-ticker.js` (chép sang `<Ngành>/app/`, nạp sau script trang): dựng `.fsv-ticker` cùng giao diện các ngành khác, ngay trên thanh tab lớn; mỗi ngành một hàm trong `SECTORS` theo `body[data-sector]`.
+- Phân bón: 12 giá từ `FERT_DATA.series` (urê, DAP, kali, TSP, quặng phosphate, khí, LNG, than, Brent, USD/VND) kèm % so cùng kỳ. Xút – Clo: P4 giao ngay Trung Quốc (so cùng kỳ) + giá điện bình quân (so lần điều chỉnh trước).
+- Chưa có P/E: mã Phân bón, Xút – Clo chưa nằm trong `company-valuation` (UNIVERSE của update_company_comparison). Ngành còn thiếu dải giá: KCN, Cao su, Viễn thông.
