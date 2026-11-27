@@ -66,6 +66,22 @@ const POLICY = PANG
     {q: 'Tôm Việt Nam chịu CBPG, CVD cao hay thấp hơn Ecuador, Ấn Độ?', id: 'sf-q-shrimpduty', meta: '% giá trị · Việt Nam POR19 (2/2024–1/2025) <b>cuối cùng</b> 06/11/2026 · CVD Việt Nam <b>cuối cùng</b> 21/10/2024 · theo nhà xuất khẩu hoặc quốc gia', take: ['ts-41']},
     {q: 'Cộng các lớp thuế, tôm vào Mỹ chịu bao nhiêu?', id: 'sf-q-landed', meta: '% giá trị · cộng thẳng các mức đã có văn bản, không gộp kỳ · "chưa xác nhận" = chưa mở văn bản', take: ['ts-44']},
     Q_POR, Q_IUU]};
+// 27/11/2026 (flow ngành nhiều luật): tab lớn Chính sách (mt4), mỗi sub-tab một văn bản/biện pháp; tóm tắt 3–5 dòng, Mới duyệt,
+// nhãn luật trên chuỗi giá trị do app/sector-legal.js + app/legal-config.js thêm. Câu hỏi cũ của sub-tab 'Chính sách & thuế' dời sang đây.
+const POLICY_SUBS = PANG ? [
+    {k: "ad", t: "CBPG cá tra", d: "Lệnh A-552-801: mức theo doanh nghiệp qua từng POR, ai đã thoát lệnh.", items: [{...POLICY.items[0], take: ['ts-40', 'ts-42']}]},
+    {k: "por", t: "Lịch rà soát & hoàng hôn", d: "Kỳ POR sắp có kết luận, đếm ngược; rà soát hoàng hôn lần 4.", items: [Q_POR]},
+    {k: "tariff", t: "Thuế Mỹ chung", d: "Mục 122 → Mục 301, cộng chồng lên CBPG.", items: []},
+    {k: "iuu", t: "Thẻ vàng IUU", d: "Kế hoạch gỡ thẻ vàng EU; tác động gián tiếp tới cá tra.", items: [Q_IUU]},
+    {k: "mmpa", t: "MMPA (NOAA)", d: "12 nghề cá bị cấm vào Mỹ từ 01/01/2026.", items: []},
+    {k: "docs", t: "Mới duyệt gần đây", d: "Văn bản, kết luận 12 tháng qua, mới nhất trước.", items: []}]
+  : [
+    {k: "ad", t: "CBPG tôm", d: "Lệnh A-552-802: mức theo nhà xuất khẩu, so với Ecuador, Ấn Độ.", items: [{...POLICY.items[0], take: ['ts-41', 'ts-42']}]},
+    {k: "cvd", t: "CVD tôm", d: "Thuế chống trợ cấp kết luận 21/10/2024.", items: []},
+    {k: "tariff", t: "Thuế Mỹ chung & tổng thuế", d: "Mục 122 → Mục 301; cộng các lớp thuế vào Mỹ.", items: [POLICY.items[1]]},
+    {k: "por", t: "Lịch rà soát POR", d: "Kỳ POR sắp có kết luận và đếm ngược.", items: [Q_POR]},
+    {k: "iuu", t: "IUU & MMPA", d: "Thẻ vàng EU và cấm nhập theo MMPA — áp cho hải sản khai thác.", items: [Q_IUU]},
+    {k: "docs", t: "Mới duyệt gần đây", d: "Văn bản, kết luận 12 tháng qua, mới nhất trước.", items: []}];
 const TREE = {
   mt1: {title: 'Tổng quan ngành', subs: [
     {k: 'map', t: 'Bản đồ ngành', d: PANG ? 'Thức ăn và giống → vùng nuôi → chế biến phi lê → thị trường xuất khẩu; vị trí doanh nghiệp cá tra và ASM (thức ăn, sở hữu IDI).' : 'Thức ăn → tôm nuôi (hộ nuôi, một phần tự nuôi) → chế biến → thị trường xuất khẩu; đối thủ Ecuador, Ấn Độ và thuế Mỹ.', items: [
@@ -79,7 +95,8 @@ const TREE = {
       {q: 'Ba biến nào sẽ quyết định kết quả các quý tới?', id: 'sf-q-outlook', take: ['ts-05'], old: 'ts-02'},
     ]},
   ]},
-  mt2: {title: 'Bức tranh ngành', subs: [MARKET, CHAIN, POLICY]},
+  mt2: {title: 'Bức tranh ngành', subs: [MARKET, CHAIN]},
+  mt4: {title: 'Chính sách', subs: POLICY_SUBS},
   mt14: {title: 'Tài chính ngành', subs: [
     {k: 'sector', t: 'Tài chính ngành', d: 'Định giá rổ theo dõi và biên gộp theo quý, cộng từ BCTC hợp nhất.', items: [
       {q: 'Thị trường đang định giá rổ thủy sản ở mức nào?', id: 'sf-q-pe', meta: 'lần · rổ mã thủy sản theo dõi (cá tra và tôm, VNDirect) · theo phiên: nguồn chưa có P/E riêng từng ngành', take: ['ts-03']},
@@ -91,10 +108,10 @@ const TREE = {
     ]},
   ]},
 };
-const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
+const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
 // Link cũ → [tab lớn, sub-tab]; khóa sub-tab của trang Thủy sản gộp cũ cũng đổi sang khóa mới.
-const ALIAS = {mt3: ['mt2', 'chain'], mt4: ['mt2', 'policy'], mt10: ['mt2', 'policy'], mt5: ['mt1'], mt6: ['mt14', 'listed'], mt8: ['mt1']};
-const SECTION = {policy: ['mt2', 'policy'], tax: ['mt2', 'policy'], trade: ['mt2', 'policy'], pangasius: ['mt2', 'chain'], shrimp: ['mt2', 'chain'], market: ['mt2', 'market'], finance: ['mt14', 'sector'], listed: ['mt14', 'listed']};
+const ALIAS = {mt3: ['mt2', 'chain'], mt10: ['mt4'], mt5: ['mt1'], mt6: ['mt14', 'listed'], mt8: ['mt1']};
+const SECTION = {policy: ['mt4'], tax: ['mt4'], trade: ['mt4'], pangasius: ['mt2', 'chain'], shrimp: ['mt2', 'chain'], market: ['mt2', 'market'], finance: ['mt14', 'sector'], listed: ['mt14', 'listed']};
 const SUBALIAS = {all: 'market', pang: 'chain', shrimp: 'chain', chain: 'chain'};
 
 /* ---------- Phần dựng riêng ---------- */
@@ -304,8 +321,9 @@ function run() {
   // ts-60 được research-layout giữ lại vì đã nằm ở Tổng quan; thẻ của tab cũ Chính sách (mt4) và Thuế (mt10) dời vào Bức tranh ngành.
   lineFilter();
   const rest = [];
-  ['mt1', 'mt2', 'mt14'].map(buildTab).forEach(b => rest.push(...commit(b)));
-  ['mt4', 'mt10'].forEach(k => { const p = $(`.majorpane[data-tab="${k}"]`); if (!p) return; [...p.children].forEach(n => { if (n.querySelector?.('[data-block-id]') || n.matches?.('[data-block-id]')) rest.push(n); }); p.replaceChildren(); });
+  ['mt1', 'mt2', 'mt4', 'mt14'].map(buildTab).forEach(b => rest.push(...commit(b)));
+  // 27/11/2026: mt4 giờ là tab Chính sách mới, không dọn nữa; chỉ dọn tab Thuế cũ (mt10).
+  ['mt10'].forEach(k => { const p = $(`.majorpane[data-tab="${k}"]`); if (!p) return; [...p.children].forEach(n => { if (n.querySelector?.('[data-block-id]') || n.matches?.('[data-block-id]')) rest.push(n); }); p.replaceChildren(); });
   parkRest(rest);
   groupMargin(); outlookFill(); briefScope();
   // Link "#<id>" trỏ vào thẻ/câu hỏi đã dời: mở đúng tab lớn + sub-tab rồi cuộn tới.

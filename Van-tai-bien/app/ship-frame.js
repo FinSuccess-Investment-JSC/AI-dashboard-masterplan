@@ -31,9 +31,15 @@ const TREE = {
     {k: 'cost', n: '06', t: 'Chi phí & giá tàu', d: 'Nhiên liệu, giá tàu cũ và đóng mới, đồng hồ lợi nhuận theo mã.', ids: ['vt-11', 'vt-64', 'vt-63']},
     {k: 'routes', n: '07', t: 'Tuyến & địa chính trị', d: 'Hormuz, Bab el-Mandeb, Suez và chi phí đi vòng.', ids: ['vt-40', 'vt-41', 'vt-42']},
   ]},
-  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Quốc tế và Việt Nam.', subs: [
-    {k: 'intl', n: '01', t: 'Quốc tế', d: 'Phí cảng Mỹ, cấm vận, EU ETS, IMO.', ids: ['vt-50']},
-    {k: 'vn', n: '02', t: 'Việt Nam', d: 'Thuế, phí, Bộ luật Hàng hải, đề án đội tàu.', ids: ['vt-51']},
+  // 27/11/2026 (flow ngành nhiều luật): mỗi sub-tab là một văn bản; tóm tắt, Mới duyệt, nhãn luật trên chuỗi giá trị do app/sector-legal.js + app/legal-config.js thêm.
+  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Mỗi sub-tab là một văn bản pháp lý lớn: tóm tắt, quy định trước và sau, tác động lên doanh nghiệp.', subs: [
+    {k: "ustr", n: '01', t: "Phí cảng Mỹ (USTR 301)", d: "Phí cảng với tàu Trung Quốc sở hữu/vận hành/đóng; đang hoãn", ids: ["vt-50"]},
+    {k: "sanc", n: '02', t: "Cấm vận dầu Nga · Iran", d: "OFAC SDN và gói 21 EU: siết shadow fleet, giảm cung tàu hợp pháp", ids: []},
+    {k: "ets", n: '03', t: "EU ETS hàng hải", d: "Nộp 100% hạn ngạch từ 2026 cho tàu ghé cảng EU", ids: []},
+    {k: "imo", n: '04', t: "IMO Net-Zero Framework", d: "Giá carbon toàn cầu; hoãn 10/2025, phiên nối lại 12/2026", ids: []},
+    {k: "code", n: '05', t: "Bộ luật Hàng hải & Đường thủy", d: "Hợp nhất luật; QH cho ý kiến 10/2026, dự kiến thông qua 5/2027", ids: ["vt-51"]},
+    {k: "fleet", n: '06', t: "Thuế, phí & đề án đội tàu", d: "GTGT 0% vận tải quốc tế, miễn phí hàng hải, QĐ 1254 đội tàu", ids: []},
+    {k: "docs", n: '07', t: "Mới duyệt gần đây", d: "Văn bản, biện pháp ban hành trong 12 tháng gần nhất", ids: [], rest: true},
   ]},
 };
 const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];

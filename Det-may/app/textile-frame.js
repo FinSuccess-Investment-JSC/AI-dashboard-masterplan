@@ -27,10 +27,13 @@ const TREE = {
     {k: 'export', n: '03', t: 'Thị trường xuất khẩu', d: 'Xuất khẩu theo thị trường và thị phần của Việt Nam tại Mỹ, EU, Nhật, Hàn.', ids: ['dm-05', 'dm-22', 'dm-23', 'dm-20', 'dm-36', 'dm-37', 'dm-34']},
     {k: 'orders', n: '04', t: 'Đơn hàng & nhãn hàng', d: 'Bán lẻ và tồn kho quần áo Mỹ, nhãn hàng lớn, khách hàng của từng doanh nghiệp.', ids: ['dm-35', 'dm-27', 'dm-32', 'dm-28', 'dm-29', 'dm-33', 'dm-30', 'dm-31']},
   ]},
-  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Thuế quan Mỹ, hiệp định thương mại và chi phí trong nước: tác động lên từng khâu.', subs: [
-    {k: 'tariff', n: '01', t: 'Thuế quan Mỹ', d: 'Thuế bổ sung của Mỹ qua từng giai đoạn, Việt Nam so với đối thủ.', ids: ['dm-21', 'dm-24']},
-    {k: 'fta', n: '02', t: 'FTA & xuất xứ', d: 'Quy tắc xuất xứ và các hiệp định thương mại tự do.', ids: ['dm-25', 'dm-26']},
-    {k: 'domestic', n: '03', t: 'Chi phí & quy định trong nước', d: 'Lương, BHXH, thuế, môi trường; phòng vệ thương mại với sợi; lịch thay đổi.', ids: ['dm-15', 'dm-16', 'dm-18'], rest: true},
+  // 27/11/2026 (flow ngành nhiều luật): mỗi sub-tab là một văn bản; tóm tắt, Mới duyệt, nhãn luật trên chuỗi giá trị do app/sector-legal.js + app/legal-config.js thêm.
+  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Mỗi sub-tab là một văn bản pháp lý lớn: tóm tắt, quy định trước và sau, tác động lên doanh nghiệp.', subs: [
+    {k: "us301", n: '01', t: "Thuế Mỹ · Mục 301", d: "Thuế bổ sung của Mỹ qua IEEPA → Mục 122 → Mục 301; Việt Nam so với đối thủ.", ids: ["dm-21", "dm-24"]},
+    {k: "fta", n: '02', t: "EVFTA · CPTPP & xuất xứ", d: "Quy tắc xuất xứ (từ vải / từ sợi), thuế chuyển tải và lộ trình ưu đãi FTA.", ids: ["dm-25", "dm-26"]},
+    {k: "cost", n: '03', t: "Lương · BHXH · thuế · xanh EU", d: "NĐ 293/2025, Luật BHXH 2024, Luật TNDN 2025, NĐ 05/2025 (EPR), ESPR của EU.", ids: ["dm-15"]},
+    {k: "ad", n: '04', t: "CBPG sợi polyester", d: "AD10 – Việt Nam gia hạn thuế CBPG sợi filament; các vụ nước ngoài điều tra sợi Việt Nam.", ids: ["dm-16"]},
+    {k: "docs", n: '05', t: "Mới duyệt gần đây", d: "Văn bản mới ban hành, mới hiệu lực và mốc sắp tới trong 12 tháng.", ids: ["dm-18"], rest: true},
   ]},
 };
 const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];

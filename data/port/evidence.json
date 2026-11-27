@@ -1131,5 +1131,55 @@
   "status": "match",
   "correct_value": "",
   "note": "Khu vực I: các cảng biển từ vĩ tuyến 20 độ trở lên phía Bắc; không áp cho Lạch Huyện."
+ },
+ {
+  "block": "cg-legal",
+  "claim": "TT 39/2023 hiệu lực, thay TT 54/2018",
+  "value": "15/02/2024",
+  "url": "https://trungtamwto.vn/chuyen-de/25294-chinh-thuc-dieu-chinh-tang-10-gia-boc-do-container-cang-bien",
+  "opened_at": "2026-11-27",
+  "quote": "Thông tư mới có hiệu lực từ 15/2/2024, thay thế Thông tư 54/2018.",
+  "status": "match",
+  "note": "Bài đăng 28/12/2023; trang không ghi ngày ký TT."
+ },
+ {
+  "block": "cg-legal",
+  "claim": "Tăng giá bốc dỡ",
+  "value": "~10%",
+  "url": "https://trungtamwto.vn/chuyen-de/25294-chinh-thuc-dieu-chinh-tang-10-gia-boc-do-container-cang-bien",
+  "opened_at": "2026-11-27",
+  "quote": "tăng khoảng 10% so với mức giá quy định trong Thông tư 54",
+  "status": "match",
+  "note": "80% khung giá trong 3 năm cho tuyến mới cũng có trên trang."
+ },
+ {
+  "block": "cg-legal",
+  "claim": "Sửa Điều 7 QĐ 810, hiệu lực và mức giá",
+  "value": "01/02/2026; 63–73 USD/20', 94–107 USD/40'",
+  "url": "https://www.sggp.org.vn/tang-gia-dich-vu-boc-do-container-tai-cang-nuoc-sau-tu-ngay-1-2-post832247.html",
+  "opened_at": "2026-11-27",
+  "quote": "Bộ Xây dựng vừa ban hành Quyết định sửa đổi, bổ sung điều 7 Quyết định số 810/QĐ-BGTVT",
+  "status": "match",
+  "note": "Bài 06/01/2026; không nêu số hiệu QĐ sửa đổi. Câu khác: 'Quy định mới có hiệu lực từ ngày 1-2-2026'."
+ },
+ {
+  "block": "cg-legal",
+  "claim": "Mục tiêu quy hoạch 2030",
+  "value": "1.249–1.494 triệu tấn; 46,3–54,3 triệu TEU",
+  "url": "https://tapchicongthuong.vn/dieu-chinh-quy-hoach-tong-the-phat-trien-he-thong-cang-bien-viet-nam-121551.htm",
+  "opened_at": "2026-11-27",
+  "quote": "Quyết định số 442/QĐ-TTg",
+  "status": "match",
+  "note": "Bài 24/05/2024, Phó Thủ tướng Trần Hồng Hà ký; thân bài ghi nhầm 422/QĐ-TTg; không có ngày ký."
+ },
+ {
+  "block": "cg-legal",
+  "claim": "Bộ luật Hàng hải và 19 dự án",
+  "value": "19 dự án, >43.300 tỷ",
+  "url": "https://vmrcc.gov.vn/tin-tuc/cuc-hang-hai-va-duong-thuy-viet-nam-to-chuc-hoi-nghi-tong-ket-cong-tac-nam-2025-va-trien-khai-ke-hoach-nam-2026-1907.html",
+  "opened_at": "2026-11-27",
+  "quote": "với 19 dự án với tổng nhu cầu vốn dự kiến hơn 43.300 tỷ đồng",
+  "status": "match",
+  "note": "Bài 24/12/2025; câu khác: 'tổ chức thực hiện xây dựng hồ sơ chính sách/dự án Bộ luật Hàng hải Việt Nam'."
  }
 ]

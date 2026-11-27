@@ -28,9 +28,13 @@ const TREE = {
     {k: 'logistics', n: '04', t: 'Kho bãi & hàng không', d: 'Hàng không, đường thủy nội địa, kho hàng không và Long Thành.', ids: ['cg-17', 'cg-18', 'cg-19']},
     {k: 'projects', n: '05', t: 'Dự án cảng mới', d: 'Công suất mới theo năm, vốn đầu tư, công suất sử dụng, danh sách dự án.', ids: ['cg-40', 'cg-41', 'cg-43', 'cg-42']},
   ]},
-  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Giá dịch vụ cảng biển và quy hoạch, đầu tư cảng.', subs: [
-    {k: 'price', n: '01', t: 'Giá dịch vụ cảng', d: 'Khung giá bốc dỡ và lộ trình tăng.', ids: ['cg-20']},
-    {k: 'plan', n: '02', t: 'Quy hoạch & đầu tư', d: 'Quy hoạch cảng biển, chủ trương đầu tư dự án lớn.', ids: ['cg-21']},
+  // 27/11/2026 (flow ngành nhiều luật): mỗi sub-tab là một văn bản; tóm tắt, Mới duyệt, nhãn luật trên chuỗi giá trị do app/sector-legal.js + app/legal-config.js thêm.
+  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Mỗi sub-tab là một văn bản pháp lý lớn: tóm tắt, quy định trước và sau, tác động lên doanh nghiệp.', subs: [
+    {k: "price", n: '01', t: "Giá bốc dỡ · TT 39/2023 & QĐ 810", d: "Khung giá dịch vụ cảng biển và mức sàn container tại cảng nước sâu.", ids: ["cg-20"]},
+    {k: "plan", n: '02', t: "Quy hoạch cảng biển · QĐ 1579 / 442", d: "Quy hoạch tổng thể hệ thống cảng biển 2021–2030, tầm nhìn 2050.", ids: ["cg-21"]},
+    {k: "invest", n: '03', t: "Chủ trương đầu tư cảng mới", d: "Cần Giờ, Cái Mép Hạ: nguồn cung mới và cạnh tranh.", ids: []},
+    {k: "law", n: '04', t: "Bộ luật Hàng hải (sửa đổi)", d: "Đang xây dựng hồ sơ chính sách Bộ luật Hàng hải mới.", ids: []},
+    {k: "docs", n: '05', t: "Mới duyệt gần đây", d: "Văn bản, chủ trương mới duyệt hoặc mới hiệu lực trong 12 tháng.", ids: [], rest: true},
   ]},
 };
 const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
