@@ -240,6 +240,11 @@ function financePane() {
   take($('.financial-comparison'));
   { const cr = el('div', 'of-wide re-cmp-root'); cr.id = 're-cmp-root'; cb.prepend(cr); }  // 7 mục so sánh từng mã (ReFinance.buildCompare)
   CMP_IDS.forEach(id => take(block(id))); CMP_SEL.forEach(q => $$(q).forEach(take));
+  // 27/11/2026: khối so sánh cũ (bảng + chart xu hướng) và thẻ backlog cover cũ trùng mục 2.1–2.5 → gấp vào "Bảng tổng hợp".
+  { const old = [$('.financial-comparison'), block('bds-53')].filter(n => n && cb.contains(n));
+    if (old.length) { const d = el('details', 'research-fold of-wide re-cmp-old'); d.append(el('summary', '', 'Bảng tổng hợp: so sánh tài chính & định giá, backlog cover'));
+      const box = el('div', 'research-detail'); old.forEach(n => { n.classList.remove('of-span'); box.append(n); }); d.append(box); cb.append(d);
+      d.addEventListener('toggle', () => { if (d.open) [50, 300].forEach(t => setTimeout(() => window.dispatchEvent(new Event('resize')), t)); }); } }
   if (!cb.children.length) cb.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu so sánh doanh nghiệp.'));
   { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
     [...cb.children].forEach(n => { if (n.matches('.of-wide,.of-gap,details,table,.tablewrap')) flush(); else run.push(n); }); flush(); }

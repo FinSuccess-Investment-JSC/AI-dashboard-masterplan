@@ -57,7 +57,7 @@ function trim(labels, series) {
 }
 function chart(host, key, labels, series, o = {}) {
   const t = trim(labels, series);
-  const model = {key, categories: t.labels, series: t.series, unit: o.unit || '', digits: o.digits ?? 0, stackable: !!o.stackable, native: o.native || 'line', zeroBase: o.zeroBase !== false, aria: o.aria || key};
+  const model = {key, hidden: o.hidden, categories: t.labels, series: t.series, unit: o.unit || '', digits: o.digits ?? 0, stackable: !!o.stackable, native: o.native || 'line', zeroBase: o.zeroBase !== false, aria: o.aria || key};
   if (!window.ChartTypes) { host.textContent = ''; return; }
   ChartTypes.mount(host, model, () => { host.innerHTML = ChartTypes.render(model, model.native); });
 }
@@ -460,12 +460,13 @@ const CSEC = [
   ['2.6', 'Nợ vay & thanh khoản', 'Mã nào chịu áp lực nợ đến hạn?', ['de', 'nd_eb', 'st_cash', 'icov']],
 ];
 const cSel = () => CS.on.slice();
+const cFoot = (c, note) => { c.el.querySelectorAll(':scope > .pw-src, :scope > .pw-src-note').forEach(n => n.remove()); c.el.append(el('div', 'pw-src', `Nguồn: ${SRC}${note ? ' · ' + esc(note) : ''}`)); };
 function cSection(num, title, q, keys) {
   const s = section(num, title, q); let k = keys[0];
   const a = card('re-cmp-' + num.replace('.', '') + '-rank', 'Xếp hạng ở kỳ chốt', ' '), b = card('re-cmp-' + num.replace('.', '') + '-trend', 'Xu hướng từng mã', ' ');
-  const pick = el('div', 'pf-seg pf-box pf-cmp-pick'); pick.setAttribute('role', 'group'); pick.setAttribute('aria-label', 'Chỉ tiêu');
+  const pick = el('div', 'pf-seg pf-box'); pick.setAttribute('role', 'group'); pick.setAttribute('aria-label', 'Chỉ tiêu');
   keys.forEach(x => { const btn = el('button', '', esc(CM[x].n)); btn.type = 'button'; btn.dataset.k = x; btn.setAttribute('aria-pressed', String(x === k)); btn.addEventListener('click', () => { k = x; pick.querySelectorAll('button').forEach(z => z.setAttribute('aria-pressed', String(z.dataset.k === k))); draw(); }); pick.append(btn); });
-  s.append(pick);
+  s.querySelector('.pp-ph > div').append(pick);
   function draw() {
     const m = CM[k], md = m.md(), L = E.labels(md), i = cEndIdx(md), ts = cSel();
     const vals = Object.fromEntries(ts.map(t => [t, m.f(t, md)]));
@@ -475,11 +476,11 @@ function cSection(num, title, q, keys) {
     a.el.querySelector('.chart-sub').textContent = `${m.u} · ${per} · ${rows.length}/${ts.length} mã có số`;
     const rm = {key: a.el.dataset.blockId, categories: rows.map(r => r[0]), series: [{name: m.n, color: '#2938A8', values: rows.map(r => Math.round(r[1] * 100) / 100)}], unit: m.u, digits: m.d, native: 'hbar', time: false, zeroBase: true};
     if (window.ChartTypes) ChartTypes.mount(a.host, rm, () => { a.host.innerHTML = ChartTypes.render(rm, 'hbar'); });
-    foot(a, 'tính riêng từng doanh nghiệp, không trừ hợp nhất');
+    cFoot(a, 'từng doanh nghiệp, không trừ hợp nhất');
     b.el.querySelector('.chart-title').textContent = `${m.n} — xu hướng từng mã`;
-    b.el.querySelector('.chart-sub').textContent = `${m.u} · ${per} · bấm tên mã ở chú giải để ẩn/hiện`;
-    chart(b.host, b.el.dataset.blockId, L.slice(0, i + 1), ts.map(t => ({name: t, color: tkColor[t], values: vals[t].slice(0, i + 1)})), {unit: m.u, digits: m.d, zeroBase: false});
-    foot(b, '');
+    b.el.querySelector('.chart-sub').textContent = `${m.u} · ${per} · hiện 5 mã đứng đầu, bấm chú giải để thêm mã`;
+    chart(b.host, b.el.dataset.blockId, L.slice(0, i + 1), ts.map(t => ({name: t, color: tkColor[t], values: vals[t].slice(0, i + 1)})), {hidden: ts.filter(t => !rows.slice(0, 5).some(r => r[0] === t)), unit: m.u, digits: m.d, zeroBase: false});
+    cFoot(b, '');
   }
   cRenders.push(draw);
   s.append(grid2(a, b));
@@ -489,9 +490,9 @@ function cSection(num, title, q, keys) {
 function cValuation() {
   const V = window.COMPANY_VALUATION; const s = section('2.7', 'Định giá', 'Mã nào đang rẻ hay đắt so với chính lịch sử 5 năm của nó?');
   if (!V || !V.companies) { s.insertAdjacentHTML('beforeend', '<p class="data-gap">Chưa có dữ liệu định giá theo phiên.</p>'); return s; }
-  let k = 'pe'; const pick = el('div', 'pf-seg pf-box pf-cmp-pick');
+  let k = 'pe'; const pick = el('div', 'pf-seg pf-box');
   [['pe', 'P/E'], ['pb', 'P/B']].forEach(([x, n]) => { const btn = el('button', '', n); btn.type = 'button'; btn.dataset.k = x; btn.setAttribute('aria-pressed', String(x === k)); btn.addEventListener('click', () => { k = x; pick.querySelectorAll('button').forEach(z => z.setAttribute('aria-pressed', String(z.dataset.k === k))); draw(); }); pick.append(btn); });
-  s.append(pick);
+  s.querySelector('.pp-ph > div').append(pick);
   const a = card('re-cmp-27-now', 'Hiện tại so với trung vị 5 năm', ' '), b = card('re-cmp-27-trend', 'Xu hướng theo phiên', ' ');
   const vsrc = `<a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a>`;
   function draw() {
@@ -505,9 +506,9 @@ function cValuation() {
     a.el.append(el('div', 'pw-src', `Nguồn: ${vsrc}; trung vị 5 năm bỏ giá trị ≤ 0`));
     const H = V.history || {}, days = [...new Set(ts.flatMap(t => (H[t] || []).map(r => r[0])))].sort();
     b.el.querySelector('.chart-title').textContent = `${nm} từng mã theo phiên`;
-    b.el.querySelector('.chart-sub').textContent = `lần · ${days.length} phiên gần nhất · bấm tên mã ở chú giải để ẩn/hiện`;
+    b.el.querySelector('.chart-sub').textContent = `lần · ${days.length} phiên gần nhất · hiện 5 mã thấp nhất, bấm chú giải để thêm mã`;
     const series = ts.filter(t => H[t]?.length).map(t => { const mp = new Map(H[t].map(r => [r[0], r[col]])); return {name: t, color: tkColor[t], values: days.map(d => { const v = mp.get(d); return fin(v) && v > 0 ? v : null; })}; });
-    const lm = {key: 're-cmp-27-trend', categories: days.map(d => d.slice(8, 10) + '/' + d.slice(5, 7)), series, unit: 'lần', digits: 2, native: 'line', zeroBase: false, time: true};
+    const lm = {key: 're-cmp-27-trend', hidden: series.map(x => x.name).filter(t => !rows.slice(0, 5).some(r => r[0] === t)), categories: days.map(d => d.slice(8, 10) + '/' + d.slice(5, 7)), series, unit: 'lần', digits: 2, native: 'line', zeroBase: false, time: true};
     if (window.ChartTypes) ChartTypes.mount(b.host, lm, () => { b.host.innerHTML = ChartTypes.render(lm, 'line'); });
     b.el.querySelectorAll(':scope > .pw-src').forEach(n => n.remove()); b.el.append(el('div', 'pw-src', `Nguồn: ${vsrc}; P/E, P/B theo giá đóng cửa từng phiên`));
   }
@@ -516,25 +517,26 @@ function cValuation() {
   return s;
 }
 function cFilter() {
-  const f = el('section', 'pf-filter');
-  f.innerHTML = `<div class="pf-grid"><span class="pf-lb">Doanh nghiệp</span><div class="pf-chips pf-cmp-tk">${D.groups.map(g => D.companies.filter(c => c.group === g.id).map(c => `<button type="button" data-ctk="${c.ticker}" aria-pressed="true" title="${esc(g.label)}"><i style="background:${tkColor[c.ticker]}"></i>${c.ticker}</button>`).join('')).join('')}</div>
-    <span class="pf-lb">Chọn nhanh</span><div class="pf-chips">${D.groups.map(g => `<button type="button" data-cg="${g.id}">${esc(g.label)}</button>`).join('')}<button type="button" data-cg="*">Tất cả</button></div>
-    <span class="pf-lb">Chu kỳ</span><div class="pf-inline"><div class="pf-seg pf-box">${MODES.map(([k, t]) => `<button type="button" data-cm="${k}" aria-pressed="${CS.mode === k}">${t}</button>`).join('')}</div>
-    <span class="pf-lb">Kỳ chốt</span><select data-role="cend">${D.periods.map((p, i) => `<option value="${i}"${i === CS.end ? ' selected' : ''}>${qLabel(p)}</option>`).join('')}</select></div></div>
-    <p class="pf-note">Chu kỳ Quý: dòng tiền và tỷ suất sinh lời vẫn tính TTM để tránh nhiễu mùa vụ bàn giao. Số dư (tồn kho, nợ vay, trả trước) lấy cuối kỳ.</p>`;
-  const sync = () => f.querySelectorAll('[data-ctk]').forEach(b => b.setAttribute('aria-pressed', String(CS.on.includes(b.dataset.ctk))));
-  f.querySelectorAll('[data-ctk]').forEach(b => b.addEventListener('click', () => { const t = b.dataset.ctk; CS.on = CS.on.includes(t) ? CS.on.filter(x => x !== t) : [...CS.on, t]; if (!CS.on.length) CS.on = [t]; sync(); cRedraw(); }));
-  f.querySelectorAll('[data-cg]').forEach(b => b.addEventListener('click', () => { const g = b.dataset.cg; CS.on = D.companies.filter(c => g === '*' || c.group === g).map(c => c.ticker); sync(); cRedraw(); }));
+  // Một dòng: nhóm · chu kỳ · kỳ chốt · "Chọn mã" (mở ra mới thấy 13 mã).
+  const f = el('section', 'pf-filter pf-cmp-filter');
+  f.innerHTML = `<div class="pf-cmp-row"><div class="pf-seg pf-box" aria-label="Nhóm"><button type="button" data-cg="*" aria-pressed="true">Tất cả</button>${D.groups.map(g => `<button type="button" data-cg="${g.id}" aria-pressed="false">${esc(g.label)}</button>`).join('')}</div>
+    <div class="pf-seg pf-box" aria-label="Chu kỳ" title="Chu kỳ Quý: tỷ suất sinh lời và dòng tiền vẫn tính TTM; số dư lấy cuối kỳ">${MODES.map(([k, t]) => `<button type="button" data-cm="${k}" aria-pressed="${CS.mode === k}">${t}</button>`).join('')}</div>
+    <select data-role="cend" aria-label="Kỳ chốt">${D.periods.map((p, i) => `<option value="${i}"${i === CS.end ? ' selected' : ''}>${qLabel(p)}</option>`).join('')}</select>
+    <details class="pf-cmp-pickt"><summary>Chọn mã <b data-role="ccount"></b></summary><div class="pf-chips pf-cmp-tk">${D.groups.map(g => D.companies.filter(c => c.group === g.id).map(c => `<button type="button" data-ctk="${c.ticker}" aria-pressed="true" title="${esc(g.label)}"><i style="background:${tkColor[c.ticker]}"></i>${c.ticker}</button>`).join('')).join('')}</div></details></div>`;
+  const sync = () => { f.querySelectorAll('[data-ctk]').forEach(b => b.setAttribute('aria-pressed', String(CS.on.includes(b.dataset.ctk)))); f.querySelector('[data-role=ccount]').textContent = `${CS.on.length}/${D.companies.length}`; };
+  const grp = g => f.querySelectorAll('[data-cg]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.cg === g)));
+  f.querySelectorAll('[data-ctk]').forEach(b => b.addEventListener('click', () => { const t = b.dataset.ctk; CS.on = CS.on.includes(t) ? CS.on.filter(x => x !== t) : [...CS.on, t]; if (!CS.on.length) CS.on = [t]; grp(''); sync(); cRedraw(); }));
+  f.querySelectorAll('[data-cg]').forEach(b => b.addEventListener('click', () => { const g = b.dataset.cg; CS.on = D.companies.filter(c => g === '*' || c.group === g).map(c => c.ticker); grp(g); sync(); cRedraw(); }));
   f.querySelectorAll('[data-cm]').forEach(b => b.addEventListener('click', () => { CS.mode = b.dataset.cm; f.querySelectorAll('[data-cm]').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.cm === CS.mode))); cRedraw(); }));
   f.querySelector('[data-role=cend]').addEventListener('change', e => { CS.end = +e.target.value; cRedraw(); });
-  return f;
+  sync(); return f;
 }
 function cRedraw() { cRenders.forEach(fn => { try { fn(); } catch (e) { document.documentElement.dataset.pfError = (document.documentElement.dataset.pfError || '') + e.message + ';'; console.error(e); } }); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
 function cMap() {
   const c = card('re-fin-map', 'Bản đồ hiệu quả vốn', 'Mỗi bong bóng một doanh nghiệp, màu theo nhóm · trục ngang: nợ vay ròng/EBITDA TTM · trục dọc: ROIC TTM · kích thước: vốn đầu tư');
   cRenders.push(() => { const i = CS.end, pts = cSel().map(t => { const nd = one('net_debt', t, 'q')[i], eb = one('ebitda', t, 'ttm')[i];
       return {l: t, c: GC[E.groupOf[t]], x: fin(nd) && fin(eb) && eb > 0 ? nd / eb : null, y: roic([t], 'ttm').each[t][i], s: one('ic', t, 'q')[i]}; }).filter(p => fin(p.x) && fin(p.y) && fin(p.s) && p.s > 0);
-    c.host.innerHTML = bubble(pts); foot(c, `${qLabel(D.periods[i])}; doanh nghiệp EBITDA âm không vẽ; tính riêng từng doanh nghiệp`); });
+    c.host.innerHTML = bubble(pts); cFoot(c, `${qLabel(D.periods[i])}, EBITDA âm không vẽ`); });
   c.el.classList.add('of-wide'); return c.el;
 }
 let cRoot = null;
@@ -575,8 +577,9 @@ button.pf-tk[aria-pressed=false]{opacity:.45;text-decoration:line-through}.pf-me
 .pf-bubble{width:100%;height:auto}.pf-bubble text{font:11px Inter,sans-serif;fill:#5b6479}.pf-bubble text.l{font-weight:700;fill:#1D2678}.pf-bubble line.g{stroke:#eef0f6}.pf-bubble line.z{stroke:#9AA3BD;stroke-dasharray:3 3}
 @media (max-width:1100px){.pf-kpis{grid-template-columns:repeat(3,minmax(0,1fr))!important}}@media (max-width:640px){.pf-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pf-wf-r{grid-template-columns:110px 1fr 70px}}
 :root[data-theme=dark] .pf-wf-t{background:#262c45}
-.pf-cmp-pick{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}.pf-cmp-pick button[aria-pressed=true],.pf-seg button[aria-pressed=true]{background:#1D2678;color:#fff;border-color:#1D2678}
-.pf-cmp-tk button[aria-pressed=false]{opacity:.45;text-decoration:line-through}.pf-cmp-tk button i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}`;
+.pf-cmp-row{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}.pp-ph .pf-seg{margin-top:8px}
+.pf-cmp-pickt>summary{cursor:pointer;list-style:none;border:1px solid var(--line,#d6dbe8);border-radius:7px;padding:4px 10px;font:600 12px Inter,sans-serif;color:var(--ink2,#3b4256)}.pf-cmp-pickt>summary::-webkit-details-marker{display:none}.pf-cmp-pickt>summary::after{content:' ▾'}
+.pf-cmp-pickt[open]>.pf-cmp-tk{margin-top:8px}.pf-cmp-tk button[aria-pressed=false]{opacity:.45;text-decoration:line-through}.pf-cmp-tk button i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}`;
   document.head.append(st);
 }
 window.ReFinance = {build, buildCompare, engine: E, state: S};
