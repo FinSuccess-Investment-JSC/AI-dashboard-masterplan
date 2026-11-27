@@ -4598,10 +4598,11 @@
      "bl-13",
      "bl-14",
      "bl-23",
-     "bl-44"
+     "bl-44",
+     "bl-80"
     ]
    },
-   "how": "Mở bài công bố mới; cập nhật bảng và chart chRetailMix, chStores trong Ban-le/app/retail-dashboard.js; thêm evidence.",
+   "how": "Mở bài công bố mới; cập nhật bảng và chart chRetailMix, chStores trong Ban-le/app/retail-dashboard.js; thêm evidence. Số cửa hàng PNJ công bố (bl-80): thêm dòng kỳ mới vào STORES trong Ban-le/app/retail-pnj.js.",
    "gates": [
     "Mở trang gốc",
     "Ghi kỳ số liệu"
