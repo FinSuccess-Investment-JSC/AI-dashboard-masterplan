@@ -33,11 +33,16 @@ const TREE = {
       gap: 'Chưa có chuỗi tín dụng kinh doanh BĐS theo tháng (NHNN chỉ công bố theo đợt).'},
     {k: 'infra', n: '06', t: 'Hạ tầng', d: 'Cao tốc và dự án hạ tầng trọng điểm mở quỹ đất mới.', ids: ['bds-48', 'bds-50']},
   ]},
-  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Luật, đất đai, nhà ở xã hội, tín dụng: tác động lên vòng đời dự án và từng doanh nghiệp.', subs: [
-    {k: 'law', n: '01', t: 'Luật mới 2026', d: 'Luật đổi gì trong vòng đời dự án, tác động theo doanh nghiệp, lộ trình.', ids: ['bds-44', 'bds-60', 'bds-57', 'bds-58', 'bds-59'], rest: true},
-    {k: 'land', n: '02', t: 'Đất đai & bảng giá đất', d: 'Luật Đất đai 2024 và bảng giá đất 2026.', ids: ['bds-19', 'bds-38']},
-    {k: 'housing', n: '03', t: 'Nhà ở, NOXH & tín dụng', d: 'Luật Nhà ở, Kinh doanh BĐS, nhà ở xã hội; chỉ đạo tín dụng và trái phiếu BĐS.', ids: ['bds-20', 'bds-21']},  // 27/11/2026: gộp hai sub-tab mỏng
-    {k: 'docs', n: '04', t: 'Văn bản & dự án theo dõi', d: 'Văn bản đang hiệu lực, sắp ban hành; dự án và cơ chế thí điểm.', ids: ['bds-37', 'bds-39']},
+  // 27/11/2026 (người dùng chốt flow "ngành nhiều luật"): mỗi sub-tab là một văn bản lớn; tóm tắt 3–5 dòng ở đầu do app/re-legal.js thêm;
+  // bảng bds-20 (gộp nhiều văn bản) được re-legal.js tách dòng sang sub-tab 02, 03, 04. Sub-tab cuối: văn bản mới duyệt.
+  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Mỗi sub-tab là một văn bản pháp lý lớn: tóm tắt, quy định trước và sau, tác động lên doanh nghiệp.', subs: [
+    {k: 'land', n: '01', t: 'Luật Đất đai 2024', d: 'Bảng giá đất hằng năm, thu hồi đất, tiền sử dụng đất.', ids: ['bds-19', 'bds-38']},
+    {k: 'housing', n: '02', t: 'Luật Nhà ở & NOXH', d: 'Luật Nhà ở 2023, cơ chế nhà ở xã hội, Quỹ nhà ở quốc gia.', ids: []},
+    {k: 'kdbds', n: '03', t: 'Luật Kinh doanh BĐS', d: 'Đặt cọc, công khai thông tin dự án, sàn và môi giới.', ids: []},
+    {k: 'nq171', n: '04', t: 'NQ 171 thí điểm', d: 'Nhà ở thương mại trên đất không phải đất ở.', ids: []},
+    {k: 'law', n: '05', t: 'Luật sửa đổi 2026', d: 'Bộ ba luật thông qua 21/11/2026: đổi gì trong vòng đời dự án, tác động theo doanh nghiệp, lộ trình.', ids: ['bds-44', 'bds-60', 'bds-57', 'bds-58', 'bds-59'], rest: true},
+    {k: 'credit', n: '06', t: 'Tín dụng & trái phiếu', d: 'Room tín dụng BĐS, gói NOXH, trái phiếu doanh nghiệp.', ids: ['bds-21']},
+    {k: 'docs', n: '07', t: 'Mới duyệt gần đây', d: 'Văn bản mới thông qua, mới hiệu lực; danh sách đầy đủ và dự án theo dõi.', ids: ['bds-37', 'bds-39', 'bds-20']},
   ]},
 };
 const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];

@@ -100,9 +100,12 @@ function ontimeChart() {
 function grid(...cards) { const g = el('div', 're-pol-grid of-wide'); cards.filter(Boolean).forEach(c => g.append(c)); if (g.children.length === 1) g.firstChild.style.gridColumn = '1 / -1'; return g; }
 function run() {
   if (!window.Chart || !$('#of-mt4-land')) return;
-  const land = $('#of-mt4-land .of-body'), home = $('#of-mt4-housing .of-body');
+  // 27/11/2026: tab Chính sách chia theo văn bản — chart đặt ngay sau ô tóm tắt (re-legal.js) của đúng sub-tab văn bản.
+  const put = (body, node) => { if (!body || !node) return; const s = body.querySelector(':scope > .re-sum'); s ? s.after(node) : body.prepend(node); };
+  const land = $('#of-mt4-land .of-body'), home = $('#of-mt4-housing .of-body'), credit = $('#of-mt4-credit .of-body');
   if (land && !$('[data-block-id="bds-p1"]')) { const c = landChart(); if (c) { c.classList.add('of-wide'); land.append(c); } }
-  if (home && !$('[data-block-id="bds-p2"]')) { home.prepend(grid(noxhChart(), bondIssueChart())); const o = ontimeChart(); if (o) { o.classList.add('of-wide'); home.querySelector('.re-pol-grid').after(o); } }
+  if (home && !$('[data-block-id="bds-p2"]')) { const c = noxhChart(); c.classList.add('of-wide'); put(home, c); }
+  if (credit && !$('[data-block-id="bds-p3"]')) put(credit, grid(bondIssueChart(), ontimeChart()));
   const st = el('style'); st.textContent = '.re-pol-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.re-pol-card.of-wide,.re-pol-grid+.re-pol-card{margin-top:0}@media(max-width:900px){.re-pol-grid{grid-template-columns:1fr}}'; document.head.append(st);
 }
 // re-frame.js dựng sub-tab sau khi trang tải ~1,7 giây rồi phát 're:frame'.
