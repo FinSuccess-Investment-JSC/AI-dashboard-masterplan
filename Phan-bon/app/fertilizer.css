@@ -200,3 +200,15 @@
 .pp-stage{display:flex;align-items:center;gap:10px;margin:24px 0 12px;padding-bottom:8px;border-bottom:2px solid #1D2678;scroll-margin-top:130px}.pp-stage span{font:700 11px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#1D2678;border-radius:6px;padding:3px 9px}.pp-stage h3{margin:0;font-size:16px}
 :root[data-theme=dark] .pp-stage{border-color:#8997D6}:root[data-theme=dark] .pp-stage span{background:#2938A8}
 @media (max-width:760px){.pp-flow-ar{display:none}.pp-flow-s{flex-basis:100%}}
+/* So sánh hệ thống đường ống dưới bản đồ 4.3 (27/11/2026) */
+.fb-gm-sum{margin-top:16px;padding-top:14px;border-top:1px solid var(--line,#e3e7f0)}
+.fb-gm-bars{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.fb-gm-bar{display:grid;grid-template-columns:280px 1fr;gap:12px;align-items:center;font-size:12.5px}
+.fb-gm-bn b{display:block;color:#1d2333}.fb-gm-bn small{color:#5a6682}
+.fb-gm-bt{display:flex;align-items:center;gap:0;min-height:20px}.fb-gm-bt i{display:block;height:18px}.fb-gm-bt i:first-child{border-radius:4px 0 0 4px}.fb-gm-bt i.on{opacity:.45;border-radius:0 4px 4px 0}
+.fb-gm-bt em{white-space:nowrap;font-style:normal;font-weight:700;margin-left:8px;color:#1d2333}
+.fb-gm-swb{display:inline-block;width:16px;height:10px;border-radius:2px;background:#1D2678}.fb-gm-swb.on{opacity:.45}
+.fb-gm-tbl td small{display:block;color:#7a8296;font-size:11px}
+.fb-gm-ins{margin:12px 0 4px;padding:10px 12px;border-left:3px solid #2a9fa3;background:#f2f9f9;font-size:13px;line-height:1.5;color:#1d2333}
+@media (max-width:760px){.fb-gm-bar{grid-template-columns:1fr}}
+

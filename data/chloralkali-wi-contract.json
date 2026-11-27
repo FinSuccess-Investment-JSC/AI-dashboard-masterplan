@@ -1,0 +1,62 @@
+{
+ "schema": 1,
+ "about": "Các lời gọi WiMCP cho dashboard P4 – Xút – Clo (Xut-clo/): giá phốt pho vàng (P4) giao ngay Trung Quốc, Sunsirs qua WiData chỉ tiêu 73965. Routine gọi lại đúng các lời gọi này, ghi kết quả vào data/chloralkali/p4-price.json (quarterly/monthly/weekly), rồi chạy scripts/build_chloralkali.py. Không chép tay số.",
+ "calls": [
+  {
+   "block": "commodity_p4",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "73965",
+    "from_time": "2018-01-01",
+    "to_time": "2024-03-01",
+    "limit": 1000
+   },
+   "cadence": "none",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time",
+    "to_time"
+   ],
+   "note": "Wi nén về giá trị ngày cuối quý → p4-price.json quarterly (cố định, không gọi lại)."
+  },
+  {
+   "block": "commodity_p4",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "73965",
+    "from_time": "2024-03-01",
+    "to_time": "2026-11-27",
+    "limit": 1000
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id",
+    "from_time"
+   ],
+   "pick": "max_to_time",
+   "note": "Wi nén về giá trị ngày cuối tháng → monthly. to_time = hôm nay khi gọi lại."
+  },
+  {
+   "block": "commodity_p4",
+   "tool": "wi_data_commodity",
+   "input": {
+    "action": "get_values",
+    "indicator_id": "73965",
+    "from_time": "2026-02-01",
+    "to_time": "2026-11-27",
+    "limit": 300
+   },
+   "cadence": "weekly",
+   "match_keys": [
+    "action",
+    "indicator_id"
+   ],
+   "pick": "max_to_time",
+   "note": "Wi nén về giá trị ngày cuối tuần → weekly; khi gọi lại dời from_time để giữ khoảng 10 tháng gần nhất."
+  }
+ ]
+}

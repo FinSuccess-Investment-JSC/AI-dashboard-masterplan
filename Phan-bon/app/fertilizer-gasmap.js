@@ -223,6 +223,27 @@ function draw(card, G) {
     sw(ICON.landing('#3d4653'), 'Trạm tiếp bờ'), sw(ICON.hub('#3d4653'), 'Trung tâm phân phối'), sw(ICON.lng(COL.lng), 'Kho cảng LNG'), sw(ICON.power(COL.power), 'Nhà máy điện'), sw(ICON.fert(COL.fert), 'Nhà máy đạm'),
     '<span><i class="fb-gm-dec">↓</i>Sản lượng đang giảm</span>', '<span><i class="fb-gm-basinsw"></i>Bể trầm tích</span>'].join('');
 
+  // Dưới bản đồ: so sánh các hệ thống đường ống theo bể (chiều dài biển/bờ, công suất, năm vận hành, hộ nhận khí, cước).
+  const PS = G.pipeline_summary;
+  if (PS && PS.rows && PS.rows.length) {
+    const R = PS.rows, km = r => (r.offshore_km || 0) + (r.onshore_km || 0), mx = Math.max(...R.map(km));
+    const hav = (a, b) => { const r2 = x => x * Math.PI / 180, dLa = r2(b.lat - a.lat), dLo = r2(b.lon - a.lon); const h = Math.sin(dLa / 2) ** 2 + Math.cos(r2(a.lat)) * Math.cos(r2(b.lat)) * Math.sin(dLo / 2) ** 2; return 6371 * 2 * Math.asin(Math.sqrt(h)); };
+    const straight = r => r.field && r.plant && A[r.field] && A[r.plant] ? hav(A[r.field], A[r.plant]) : null;
+    const f1 = x => x == null ? '–' : x.toLocaleString('vi-VN', {maximumFractionDigits: 1});
+    const BC = {'Cửu Long': '#2462c9', 'Nam Côn Sơn': '#1D2678', 'Malay – Thổ Chu': '#2a9fa3'};
+    const pm3 = R.find(r => r.id === 'pm3_ca_mau'), ncs = R.find(r => r.id === 'ncs1');
+    const ins = pm3 && ncs ? `Khí PM3-CAA tới Đạm Cà Mau qua ${f1(km(pm3))} km ống (${f1(pm3.offshore_km)} km biển + ${f1(pm3.onshore_km)} km bờ); khí Nam Côn Sơn 1 (Lan Tây) tới Phú Mỹ qua ${f1(km(ncs))} km (${f1(ncs.offshore_km)} + ${f1(ncs.onshore_km)}): tuyến PM3 – Cà Mau ngắn hơn ${f1(km(ncs) - km(pm3))} km (${f1((1 - km(pm3) / km(ncs)) * 100)}%). Khoảng cách đường chim bay từ mỏ tới nhà máy: PM3-CAA → Đạm Cà Mau ~${f1(Math.round(straight(pm3)))} km, Lan Tây → Đạm Phú Mỹ ~${f1(Math.round(straight(ncs)))} km (tính từ tọa độ gần đúng trên bản đồ).` : '';
+    const sum = document.createElement('div'); sum.className = 'fb-gm-sum'; sum.dataset.blockId = 'pb-c-gas-pipes'; sum.dataset.updateKind = 'static'; sum.dataset.cadence = 'event';
+    sum.innerHTML = `<div class="chart-title">So sánh các hệ thống đường ống theo bể</div><div class="chart-sub">km đường ống từ mỏ vào bờ (biển) và trên bờ · công suất thiết kế tỷ m³/năm</div>
+      <div class="fb-gm-bars">${R.map(r => `<div class="fb-gm-bar"><span class="fb-gm-bn"><b>${esc(r.name)}</b><small>Bể ${esc(r.basin)} · ${esc(STATUS[r.status] || '')}</small></span>
+        <span class="fb-gm-bt"><i style="width:${(r.offshore_km || 0) / mx * 85}%;background:${BC[r.basin] || '#5a6682'}"></i><i class="on" style="width:${(r.onshore_km || 0) / mx * 85}%;background:${BC[r.basin] || '#5a6682'}"></i><em>${f1(km(r))} km</em></span></div>`).join('')}</div>
+      <div class="fb-gm-legend"><span><i class="fb-gm-swb"></i>Đoạn biển</span><span><i class="fb-gm-swb on"></i>Đoạn bờ</span></div>
+      <div class="tbl-wrap"><table class="compare-table fb-gm-tbl"><thead><tr><th>Bể</th><th>Hệ thống</th><th class="n">Biển (km)</th><th class="n">Bờ (km)</th><th class="n">Tổng (km)</th><th class="n">Công suất (tỷ m³/năm)</th><th>Vận hành</th><th>Cấp cho</th><th>Cước vận chuyển (USD/MMBtu, 2020)</th><th>Nguồn</th></tr></thead><tbody>
+      ${R.map(r => `<tr><td>${esc(r.basin)}</td><td><b>${esc(r.name)}</b>${r.length_note ? `<small>${esc(r.length_note)}</small>` : ''}</td><td class="n">${f1(r.offshore_km)}</td><td class="n">${f1(r.onshore_km)}</td><td class="n"><b>${f1(km(r))}</b></td><td class="n">${f1(r.capacity_bcm)}<small>${esc(r.capacity_note || '')}</small></td><td>${esc(r.cod || '–')}</td><td>${esc(r.serves || '')}</td><td>${esc(r.fee_usd_mmbtu || '–')}</td><td>${(r.sources || []).map((s, i) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">[${i + 1}]</a>`).join(' ')}</td></tr>`).join('')}</tbody></table></div>
+      ${ins ? `<p class="fb-gm-ins">${esc(ins)}</p>` : ''}
+      <div class="pw-src">Nguồn: PV GAS, Tạp chí Công Thương, Bộ Công Thương, Báo Đầu tư (cước 2020), ghi theo từng dòng; ${esc(PS.note)}</div>`;
+    card.querySelector('.fb-gm-legend').after(sum);
+  }
   map.on('zoomend', () => { density(); drawArrows(); });
   map.on('moveend', () => {});
   density(); drawArrows();
