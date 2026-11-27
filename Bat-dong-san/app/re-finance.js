@@ -344,15 +344,8 @@ function s76() {
     chart(c3.host, 're-fin-roic-cycle', L, [{name: 'ROIC (%)', color: LINE[0], values: roic(x, mode).values}, {name: 'CAPEX/khấu hao (lần)', color: LINE[2], values: E.ratio({m: 'capex'}, {m: 'da'}, x, mode).values}, {name: 'XDCB dở dang/tổng tài sản (%)', color: LINE[1], values: cipTa}], {unit: '', digits: 1});
     foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; đặt cạnh nhau để phân biệt ROIC thấp do vận hành với ROIC thấp khi dự án đang xây`); }
   renders.push(draw3);
-  const c4 = card('re-fin-map', 'Bản đồ hiệu quả vốn', 'Mỗi bong bóng một doanh nghiệp, màu theo nhóm · trục ngang: nợ vay ròng/EBITDA TTM · trục dọc: ROIC TTM · kích thước: vốn đầu tư'); const v4 = 'firm';  // 27/11/2026: chỉ vẽ từng doanh nghiệp; bong bóng gộp nhóm làm lệch (một mã lớn so với phần còn lại)
-  function draw4() { const x = sel(), i = S.end, ri = roic(x, 'ttm'), ndp = E.per('net_debt', x, 'q'), ebp = E.per('ebitda', x, 'ttm'), icp = E.per('ic', x, 'q');
-    let pts;
-    if (v4 === 'firm') pts = x.map(t => ({l: t, c: GC[E.groupOf[t]], x: fin(ndp[t][i]) && fin(ebp[t][i]) && ebp[t][i] > 0 ? ndp[t][i] / ebp[t][i] : null, y: ri.each[t][i], s: icp[t][i]})).filter(p => fin(p.x) && fin(p.y) && fin(p.s) && p.s > 0);
-    else pts = D.groups.filter(g => S.groups.includes(g.id)).map(g => { const ts = x.filter(t => E.groupOf[t] === g.id); const r = roic(ts, 'ttm').values[i], nd = E.ratio({m: 'net_debt'}, {m: 'ebitda'}, ts, 'ttm').values[i], ic = E.total('ic', ts, 'q').values[i]; return {l: g.label, c: g.color, x: nd, y: r, s: ic}; }).filter(p => fin(p.x) && fin(p.y) && fin(p.s) && p.s > 0);
-    c4.host.innerHTML = bubble(pts);
-    foot(c4, `${qLabel(D.periods[i])}; doanh nghiệp EBITDA âm không vẽ`); }
-  renders.push(draw4);
-  const c5 = card('re-fin-pool', 'Vốn đầu tư so với lợi nhuận tạo ra', 'Tỷ trọng từng nhóm trong vốn đầu tư và trong EBIT TTM · kỳ chốt');
+  // 27/11/2026: Bản đồ hiệu quả vốn (từng doanh nghiệp) dời sang So sánh doanh nghiệp › 2.3 (cMap).
+    const c5 = card('re-fin-pool', 'Vốn đầu tư so với lợi nhuận tạo ra', 'Tỷ trọng từng nhóm trong vốn đầu tư và trong EBIT TTM · kỳ chốt');
   function draw5() { const x = sel(), i = S.end, gs = D.groups.filter(g => S.groups.includes(g.id)), ic = E.byGroup('ic', x, 'q').groups, eb = E.byGroup('ebit', x, 'ttm').groups;
     const sh = arr => { const v = gs.map(g => { const z = arr.find(a => a.id === g.id); return z && fin(z.values[i]) ? z.values[i] : null; }); const tot = v.reduce((a, b) => a + (fin(b) && b > 0 ? b : 0), 0); return v.map(z => fin(z) && tot ? z / tot * 100 : null); };
     const a = sh(ic), b = sh(eb);
@@ -360,7 +353,7 @@ function s76() {
     if (window.ChartTypes) ChartTypes.mount(c5.host, m, () => { c5.host.innerHTML = ChartTypes.render(m, 'bar'); });
     foot(c5, `${qLabel(D.periods[i])}; vốn đầu tư = VCSH + nợ vay − tiền − đầu tư ngắn hạn (số dư)`); }
   renders.push(draw5);
-  s.append(grid2(c1, c2), grid2(c3, c4), c5.el);
+  s.append(grid2(c1, c2), grid2(c3, c5));
   return s;
 }
 function bubble(pts) {
@@ -537,10 +530,18 @@ function cFilter() {
   return f;
 }
 function cRedraw() { cRenders.forEach(fn => { try { fn(); } catch (e) { document.documentElement.dataset.pfError = (document.documentElement.dataset.pfError || '') + e.message + ';'; console.error(e); } }); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
+function cMap() {
+  const c = card('re-fin-map', 'Bản đồ hiệu quả vốn', 'Mỗi bong bóng một doanh nghiệp, màu theo nhóm · trục ngang: nợ vay ròng/EBITDA TTM · trục dọc: ROIC TTM · kích thước: vốn đầu tư');
+  cRenders.push(() => { const i = CS.end, pts = cSel().map(t => { const nd = one('net_debt', t, 'q')[i], eb = one('ebitda', t, 'ttm')[i];
+      return {l: t, c: GC[E.groupOf[t]], x: fin(nd) && fin(eb) && eb > 0 ? nd / eb : null, y: roic([t], 'ttm').each[t][i], s: one('ic', t, 'q')[i]}; }).filter(p => fin(p.x) && fin(p.y) && fin(p.s) && p.s > 0);
+    c.host.innerHTML = bubble(pts); foot(c, `${qLabel(D.periods[i])}; doanh nghiệp EBITDA âm không vẽ; tính riêng từng doanh nghiệp`); });
+  c.el.classList.add('of-wide'); return c.el;
+}
 let cRoot = null;
 function buildCompare(host) {
   if (!host || cRoot) return; cRoot = host; style();
-  host.append(cFilter(), ...CSEC.map(x => cSection(...x)), cValuation());
+  const secs = CSEC.map(x => cSection(...x)); secs[2].append(cMap());
+  host.append(cFilter(), ...secs, cValuation());
   cRedraw();
 }
 
