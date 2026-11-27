@@ -29,8 +29,15 @@ COMPANIES = [
     {'ticker': 'TNG', 'group': 'garment', 'note': 'TNG: may gia công và FOB, khách Decathlon, Columbia, The Children\'s Place'},
     {'ticker': 'MSH', 'group': 'garment', 'note': 'May Sông Hồng: may FOB/ODM sang Mỹ'},
     {'ticker': 'GIL', 'group': 'garment', 'mixed': True, 'note': 'Gilimex: may gia công, kinh doanh BĐS khu công nghiệp'},
+    {'ticker': 'HTG', 'group': 'garment', 'note': 'Dệt may Hòa Thọ: sợi và may FOB, khách Mỹ, EU, Nhật; công ty con của Vinatex (~62%)'},
+    {'ticker': 'VGG', 'group': 'garment', 'note': 'May Việt Tiến: may FOB, thương hiệu nội địa (Việt Tiến, San Sciaro); công ty liên kết của Vinatex (~32%)'},
     {'ticker': 'VGT', 'group': 'holding', 'mixed': True, 'note': 'Tập đoàn Dệt may Việt Nam (Vinatex): công ty mẹ và các công ty con sợi, dệt, may'},
 ]
 TICKERS = [c['ticker'] for c in COMPANIES]
-CONSOLIDATION = []
-ASSOCIATES = []
+# 27/11/2026: thêm HTG, VGG theo yêu cầu người dùng. Tỷ lệ theo báo cuối 2024 (chưa đối chiếu báo cáo thường niên 2025).
+CONSOLIDATION = [
+    {'parent': 'VGT', 'child': 'HTG', 'since': '2019Q1', 'ownership': 62.0, 'source': 'https://vcci.com.vn/en/news/det-may-hoa-tho-loi-nhuan-di-len-no-tiep-tuc-tang', 'note': 'công ty con của Vinatex (~62%); tỷ lệ theo báo, chưa đối chiếu BCTN'},
+]
+ASSOCIATES = [
+    {'parent': 'VGT', 'child': 'VGG', 'ownership': 31.92},  # tỷ lệ cũ theo báo (Báo Đầu tư), chưa đối chiếu BCTN 2025
+]

@@ -28,7 +28,8 @@ function metrics(D, E) {
     const mcap = v.market_cap, debt = (at('st_debt') || 0) + (at('lt_debt') || 0), cash = (at('cash') || 0) + (at('st_invest') || 0);
     const ev = fin(mcap) ? mcap + debt - cash : null, cff = fin(at('cfo')) && fin(at('capex')) ? at('cfo') - Math.abs(at('capex')) : null;
     const ey = fin(v.pe) && v.pe > 0 ? 100 / v.pe : null, div = fin(at('dividends')) && fin(mcap) && mcap > 0 ? Math.abs(at('dividends')) / mcap * 100 : null;
-    return {t, name: c.name || '', roe, gm, pb: fin(v.pb) && v.pb > 0 ? v.pb : null, pe: fin(v.pe) && v.pe > 0 ? v.pe : null, ey, div: fin(div) && fin(ey) ? Math.min(div, ey) : div,
+    const odd = fin(roe) && Math.abs(roe) > 100;  // vốn chủ gần 0 hoặc âm: ROE vô nghĩa, bỏ khỏi chart
+    return {t, name: c.name || '', roe: odd ? null : roe, odd, gm, pb: fin(v.pb) && v.pb > 0 ? v.pb : null, pe: fin(v.pe) && v.pe > 0 ? v.pe : null, ey, div: fin(div) && fin(ey) ? Math.min(div, ey) : div,
       kept: fin(ey) && fin(div) ? Math.max(0, ey - div) : null, ev, cff, evcff: fin(ev) && fin(cff) && cff > 0 ? ev / cff : null, period: D.periods[ri] || D.periods[i], vdate: v.date};
   });
 }
@@ -56,6 +57,7 @@ function mount(host, D, opt = {}) {
     card('', 'Trục ngang: biên gộp TTM (%) · trục dọc: ROE TTM (%)'),
     card('', '% giá cổ phiếu · 1/PE tách phần trả bằng cổ tức tiền (TTM) và phần giữ lại', 'cổ tức = tiền đã trả trong lưu chuyển tiền tệ 4 quý gần nhất'),
     card('', 'lần · P/E TTM và EV ÷ (CFO − CAPEX) TTM; dòng tiền âm thì không có cột', 'EV = vốn hóa + nợ vay − tiền và đầu tư ngắn hạn')];
+  const skip = new Set(opt.skip || []); skip.forEach(k => C[k]?.remove());
   const charts = [];
   const scatter = (c, pts, xl, yl, xf, yf, trend) => {
     const f = trend ? fit(pts) : null, xs = pts.map(p => p.x), lo = Math.min(...xs), hi2 = Math.max(...xs);
@@ -90,6 +92,7 @@ function mount(host, D, opt = {}) {
         tooltip: {callbacks: {label: x => ` ${x.dataset.label}: ${nf(x.parsed.y, 1)}% giá`}}}, scales: {x: {stacked: true, grid: {display: false}, ticks: {color: '#3B4256'}}, y: {stacked: true, beginAtZero: true, grid: {color: '#EEF0F6'}, ticks: {color: '#6B7392', callback: pct}, title: {display: true, text: '% giá cổ phiếu', color: '#6B7392'}}}},
       plugins: [valPlugin]}));
     // 4. P/E và EV/CFF
+    if (skip.has(3)) return;
     const m4 = M.filter(m => fin(m.pe) || fin(m.evcff));
     C[3].querySelector('.chart-title').textContent = `EV/dòng tiền cho doanh nghiệp so với P/E: ${hi} P/E ${nf(H.pe, 1)}x, EV/dòng tiền ${fin(H.evcff) ? nf(H.evcff, 1) + 'x' : fin(H.cff) ? 'dòng tiền âm' : '—'}${fin(H.pe) && fin(H.evcff) && H.evcff > H.pe * 2 ? ' — rẻ trên lợi nhuận nhưng dòng tiền còn thấp' : ''}`;
     charts.push(new Chart(C[3].querySelector('canvas'), {type: 'bar', data: {labels: m4.map(m => m.t + (fin(m.cff) && m.cff <= 0 ? ' (dòng tiền âm)' : '')), datasets: [
@@ -102,10 +105,46 @@ function mount(host, D, opt = {}) {
   head.querySelector('select').addEventListener('change', e => { hi = e.target.value; draw(); });
   const miss = M.filter(m => !fin(m.pe) && !fin(m.pb)).map(m => m.t);
   if (miss.length) head.insertAdjacentHTML('beforeend', `<span class="pv-note">Chưa có P/E, P/B: ${miss.join(', ')}.</span>`);
+  const odd = M.filter(m => m.odd).map(m => m.t);
+  if (odd.length) head.insertAdjacentHTML('beforeend', `<span class="pv-note">Bỏ khỏi chart ROE: ${odd.join(', ')} (ROE trên 100% vì vốn chủ gần 0 hoặc âm).</span>`);
   if (!document.getElementById('pv-style')) { const st = el('style'); st.id = 'pv-style'; st.textContent = `.pv-head{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin:4px 0 12px}.pv-head label{font:600 12.5px Inter,sans-serif;color:#3B4256}.pv-head select{margin-left:6px;font:600 12.5px Inter,sans-serif;padding:4px 8px;border:1px solid #D6DBE8;border-radius:7px}.pv-note{font-size:12px;color:#6B7392}
 .pv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.pv-cv{position:relative;height:330px;margin-top:8px}.pv-card .chart-title{min-height:2.7em}@media(max-width:900px){.pv-grid{grid-template-columns:1fr}}`; document.head.append(st); }
   draw();
   return {metrics: M};
 }
-window.PeerValuation = {mount, metrics};
+// Tự gắn vào tab Tài chính ngành (#mt14) của mọi trang có dữ liệu BCTC theo khuôn IndustryFin (window.*_FIN).
+// Trang dùng khung sub-tab (*-frame.js): thêm sub-tab "Định giá" (hoặc dùng sub-tab Định giá đã có); trang khác: thêm mục cuối tab.
+// BĐS dân cư, KCN: bỏ chart EV/dòng tiền (tiền khách trả trước làm CFO nhảy mạnh, bội số không có nghĩa).
+const NO_EV = ['RE_FIN', 'KCN_FIN'];
+function auto() {
+  const key = Object.keys(window).find(k => /_FIN$/.test(k) && window[k]?.companies?.length && window[k]?.periods?.length);
+  if (!key || !window.COMPANY_VALUATION) return;
+  const D = window[key], start = Date.now();
+  const tick = () => {
+    const pane = document.querySelector('.majorpane[data-tab="mt14"]');
+    if (pane?.querySelector('.pv-wrap')) return;  // trang đã gắn sẵn (Dệt may)
+    // Hai kiểu thanh sub-tab: khung mới (.of-nav/.of-tab/.of-pane) và kiểu cũ (.pane-subtabs/.tabbtn/.pane-subpane, trang Điện, Thép).
+    // Kiểu thứ ba: .pp-nav/.pp-tab/.pp-pane (trang Điện, Viễn thông).
+    const nav = pane?.querySelector('.of-nav') || pane?.querySelector('.pp-nav') || pane?.querySelector(':scope > .pane-subtabs'), late = Date.now() - start > 8000, old = !!nav && !nav.matches('.of-nav'), pp = !!nav?.matches('.pp-nav');
+    if (!pane || (!nav && !late)) return setTimeout(tick, 400);
+    const opt = {highlight: D.companies[0].ticker, skip: NO_EV.includes(key) ? [3] : [], src: `<a href="${D.url || 'https://api-finfo.vndirect.com.vn/v4/financial_statements'}" target="_blank" rel="noopener">${esc(D.source || 'BCTC hợp nhất theo quý')}</a>`};
+    let body = pane.querySelector('#of-mt14-valuation .of-body');
+    if (!body && nav) {
+      const sec = nav.parentElement, TAB = pp ? '.pp-tab' : old ? '.tabbtn' : '.of-tab', PANE = pp ? ':scope > .pp-pane' : old ? ':scope > .pane-subpane' : ':scope > .of-pane', n = nav.querySelectorAll(TAB).length + 1;
+      const b = el('button', pp ? 'tabbtn pp-tab' : old ? 'tabbtn' : 'of-tab', pp ? `<span>${String(n).padStart(2, '0')}</span>Định giá` : old ? 'Định giá' : `<span class="of-n">${String(n).padStart(2, '0')}</span><b>Định giá</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = 'valuation'; b.id = 'of-mt14-valuation-tab'; b.setAttribute('aria-selected', 'false');
+      const sp = el('div', pp ? 'pane-subpane pp-pane' : 'pane-subpane of-pane'); sp.id = 'of-mt14-valuation'; sp.dataset.sub = 'valuation'; sp.setAttribute('role', 'tabpanel'); sp.hidden = true; body = el('div', 'of-body'); sp.append(body);
+      nav.append(b); const panes = sec.querySelectorAll(PANE); (panes[panes.length - 1] || nav).after(sp);
+      const show = on => { sp.hidden = !on; sp.style.display = on ? '' : 'none'; b.setAttribute('aria-selected', String(on)); b.classList.toggle('active', on); if (on) { sec.querySelectorAll(PANE).forEach(p => { if (p !== sp) { p.hidden = true; p.classList.remove('active'); } }); nav.querySelectorAll(TAB).forEach(x => { if (x !== b) { x.setAttribute('aria-selected', 'false'); x.classList.remove('active'); } });
+        const u = new URL(location.href); u.searchParams.set('sub', 'valuation'); history.replaceState(null, '', u.pathname + u.search + u.hash); setTimeout(() => window.dispatchEvent(new Event('resize')), 30); } };
+      nav.addEventListener('click', e => { const t = e.target.closest(TAB); if (t) show(t === b); }, true);
+      if (new URL(location.href).searchParams.get('sub') === 'valuation') show(true);
+    }
+    if (!body) { body = el('section', 'section pv-auto-sec', '<div class="sectionhead"><div><h2 class="sec">Định giá so sánh giữa các mã</h2></div></div>'); pane.append(body); }
+    mount(body, D, opt);
+    body.querySelector('.pv-wrap')?.classList.add('of-wide');
+  };
+  tick();
+}
+window.PeerValuation = {mount, metrics, auto};
+if (document.currentScript?.dataset.auto != null) { if (document.readyState === 'complete') auto(); else window.addEventListener('load', auto); }
 })();

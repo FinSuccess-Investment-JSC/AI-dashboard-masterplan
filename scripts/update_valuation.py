@@ -128,6 +128,13 @@ def main(argv=None) -> int:
     median_only = '--median-only' in args
     args = [a for a in args if a != '--median-only']
     symbols = args or [s for group in UNIVERSE.values() for s, _, _ in group]
+    if not args:  # 27/11/2026: thêm mọi mã trong dữ liệu BCTC các ngành (data/*-financials.json) cho sub-tab Định giá
+        for f in sorted((ROOT / 'data').glob('*-financials.json')):
+            try:
+                symbols += [c['ticker'] for c in json.loads(f.read_text(encoding='utf-8')).get('companies', [])]
+            except (OSError, ValueError, KeyError):
+                pass
+        symbols = list(dict.fromkeys(symbols))
     now = dt.datetime.now(VN)
     old = json.loads(OUT_JSON.read_text(encoding='utf-8')) if OUT_JSON.exists() else {'companies': {}, 'history': {}}
     companies, history, errors = dict(old.get('companies', {})), dict(old.get('history', {})), {}
