@@ -428,19 +428,19 @@
     const num = (v, lbl) => `<div class="kc-mk-num"><b>${v}</b><span>${lbl}</span></div>`;
     const mk = [];
     // 1. Cầu thuê thực tế
-    g.append(card({id: 'kcn-mk-demand', title: 'Cầu thuê thực tế', unit: 'ha hấp thụ thuần', nums: true, srcs: rows.map(m => m.src).concat(cum ? [cum.v.src] : []), qa: ['ABSORPTION_GAPS', 'MIXED_CBRE_CW'], height: 170,
+    g.append(card({id: 'kcn-mk-demand', title: 'Cầu thuê thực tế', unit: 'ha hấp thụ thuần', nums: true, srcs: rows.map(m => m.src).concat(cum ? [cum.v.src] : []), qa: ['ABSORPTION_GAPS', 'MIXED_CBRE_CW'], height: 260,
       take: num(row && fin(row.abs_ha) ? nf(row.abs_ha) + ' ha' : '—', `C&W ${QL(q)}${ab.ok ? ` · ${pf(ab.rel, 0)} so ${QL(yq)}` : ''}`) +
         (cum ? num(`${nf(cum.v.value)} ha`, `CBRE lũy kế ${cum.k}/${cum.year}${cum.y && !cum.y.conflict ? ` · ${pf(cum.y.reported != null ? cum.y.reported : cum.y.yoy, 0)} so cùng kỳ` : ''}`) : ''),
       draw: h => draw(h, hilite(combo({labels: L, sets: [{label: 'Hấp thụ C&W', type: 'bar', color: r === 'North' ? C.blue : C.tealD, missing: true, data: rows.map(m => fin(m.abs_ha) ? m.abs_ha : null), meta: rows.map(m => ({period: m.period, cls: 'ACTUAL', src: m.src}))}], y: {unit: 'ha'}, missing: true, markers: L.indexOf(QL(D.rebase)) > 0 ? [{label: QL(D.rebase), text: ''}] : []}), hl))}));
     // 2. Cung có thể chào thuê
-    g.append(card({id: 'kcn-mk-supply', title: 'Cung có thể chào thuê', unit: 'ha (cột) · % lấp đầy (đường)', nums: true, srcs: rows.map(m => m.src).concat(pipe ? [pipe.src] : []), qa: ['STOCK_REVISIONS', 'GEOGRAPHY_REBASE'], height: 170,
+    g.append(card({id: 'kcn-mk-supply', title: 'Cung có thể chào thuê', unit: 'ha (cột) · % lấp đầy (đường)', nums: true, srcs: rows.map(m => m.src).concat(pipe ? [pipe.src] : []), qa: ['STOCK_REVISIONS', 'GEOGRAPHY_REBASE'], height: 260,
       take: num(row && fin(row.occ) ? pf(row.occ, 1, false) : '—', `lấp đầy ${QL(q)}${oc.ok ? ` · ${ppf(oc.abs)} so ${QL(yq)}` : ''}`) +
         num(row ? nf(row.stock_ha) + ' ha' : '—', `nguồn cung${sk.ok ? ` · ${pf(sk.rel)} so ${QL(yq)}` : ''}${row ? ` · đất trống ước tính ${nf(row.vacant_proxy)} ha` : ''}`),
       draw: h => draw(h, hilite(combo({labels: L, sets: [{label: 'Nguồn cung', type: 'bar', color: '#C9D3EE', data: rows.map(m => m.stock_ha), meta: rows.map(m => ({period: m.period, cls: 'ACTUAL', src: m.src}))}, {label: 'Lấp đầy', type: 'line', axis: 'y2', color: C.plum, data: rows.map(m => fin(m.occ) ? m.occ * 100 : null), meta: rows.map(m => ({period: m.period, src: m.src}))}],
         y: {unit: 'ha'}, y2: {unit: '%', zero: false, min: 50, max: 90, fmt: v => nf(v, 1)}, markers: L.indexOf(QL(D.rebase)) > 0 ? [{label: QL(D.rebase), text: ''}] : []}), hl))}));
     // 3. Giá chào thuê đất: thẻ số theo đơn vị nguồn của kỳ chọn; đường là chuỗi USD (C&W báo đồng từ Q3/2026, không quy đổi).
     const usd = rows.filter(m => fin(m.ask_usd)), vnd = row && fin(row.ask_vnd) ? row : null, u = row && fin(row.ask_usd) ? row : null;
-    g.append(card({id: 'kcn-mk-rent', title: 'Giá chào thuê đất', unit: `${u ? 'USD' : vnd ? 'đồng' : 'USD'}/m²/kỳ thuê còn lại${!u && vnd ? ' (đường: USD đến ' + QL(usd.length ? usd[usd.length - 1].period : '') + ')' : ''}`, nums: true, srcs: rows.map(m => m.src).concat(ry ? [ry.src] : []), qa: ['RENT_CURRENCY_CHANGE', 'ASKING_VS_EXECUTION'], height: 170,
+    g.append(card({id: 'kcn-mk-rent', title: 'Giá chào thuê đất', unit: `${u ? 'USD' : vnd ? 'đồng' : 'USD'}/m²/kỳ thuê còn lại${!u && vnd ? ' (đường: USD đến ' + QL(usd.length ? usd[usd.length - 1].period : '') + ')' : ''}`, nums: true, srcs: rows.map(m => m.src).concat(ry ? [ry.src] : []), qa: ['RENT_CURRENCY_CHANGE', 'ASKING_VS_EXECUTION'], height: 260,
       take: num(u ? nf(u.ask_usd, 1) + ' USD' : vnd ? nf(vnd.ask_vnd, 0) + ' đ' : '—', `${QL(q)}${u && pr.ok ? ` · ${pf(pr.rel)} so ${QL(yq)}` : ''}${ry ? ` · ${pf(ry.value)} so cùng kỳ` : ''}`),
       draw: h => draw(h, hilite(combo({labels: L, sets: [{label: 'Giá chào thuê', type: 'line', color: r === 'North' ? C.blue : C.tealD, data: rows.map(m => fin(m.ask_usd) ? m.ask_usd : null), meta: rows.map(m => ({period: m.period, cls: 'ACTUAL', src: m.src, extra: ['USD/m²/kỳ thuê còn lại']}))}], y: {unit: 'USD/m²', zero: false, fmt: v => nf(v, 0)}, markers: L.indexOf(QL(D.rebase)) > 0 ? [{label: QL(D.rebase), text: ''}] : []}), hl))}));
     box.append(g);

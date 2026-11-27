@@ -104,7 +104,7 @@
 .kc-mk-ctl [role=group]{display:flex;gap:4px}
 .kc-mk-ctl button{border:1px solid #D9DEF4;background:#fff;border-radius:8px;padding:5px 12px;cursor:pointer;color:#1D2678;font-size:13px}
 .kc-mk-ctl button[aria-pressed="true"]{background:#1D2678;color:#fff;border-color:#1D2678}
-.kc-mk3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.kc-mk3{grid-template-columns:1fr!important} /* 27/11/2026: mỗi hàng một chart */
 @media (max-width:980px){.kc-mk3{grid-template-columns:1fr!important}}
 .kc-mk-num{display:flex;flex-direction:column;gap:2px;margin:4px 0}
 .kc-mk-num b{font-size:20px;color:#1D2678}.kc-mk-num span{font-size:12.5px;color:#343b52}.kc-mk-alt b{font-size:15px}
