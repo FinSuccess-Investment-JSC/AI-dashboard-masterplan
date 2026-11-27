@@ -95,9 +95,71 @@ function style() {
 .re-recent h3,.re-legal-map h3{margin:0 0 8px}@media(max-width:900px){.re-lg-chain{grid-template-columns:repeat(2,1fr)!important}}`;
   document.head.append(st);
 }
+/* ---------- Chart cho sub-tab 04 E10 và 05 Quy hoạch điện VIII (27/11/2026) ---------- */
+const fin = v => typeof v === 'number' && Number.isFinite(v);
+const nf = (v, d = 0) => fin(v) ? v.toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d}) : '—';
+const vnd = s => s.split('-').reverse().join('/');
+function chartCard(id, title, sub, src, h = 320) {
+  const c = el('div', 'card ol-card'); c.dataset.blockId = id; c.dataset.updateKind = 'public'; c.dataset.refreshStatus = 'loaded';
+  c.innerHTML = `<div class="chart-title">${title}</div><div class="chart-sub">${sub}</div><div style="position:relative;height:${h}px;margin-top:8px"><canvas role="img" aria-label="${title}"></canvas></div><div class="pw-src">Nguồn: ${src}</div>`;
+  return c;
+}
+const LEG = {position: 'bottom', labels: {usePointStyle: true, boxWidth: 8, color: '#3B4256', font: {size: 12}}};
+const AX = (cb, o = {}) => Object.assign({grid: {color: '#EEF0F6'}, ticks: {color: '#6B7392', font: {size: 11.5}, callback: cb}}, o);
+const XA = {grid: {display: false}, ticks: {color: '#6B7392', font: {size: 11.5}, maxRotation: 0, autoSkip: true, maxTicksLimit: 10}};
+// E10: giá bán lẻ từng kỳ (Petrolimex Vùng 1) — E10 RON95-III, E5 RON92-II và chênh lệch.
+function e10Chart() {
+  const R = window.SECTOR_DAILY?.sources?.retail_fuel?.records?.filter(r => fin(r.e5) && fin(r.ron95)); if (!R?.length || !window.Chart) return null;
+  const c = chartCard('dau-khi-e10', 'Giá bán lẻ xăng E10 RON95-III và E5 RON92 theo kỳ điều hành',
+    `đồng/lít, Vùng 1 · ${R.length} kỳ từ ${vnd(R[0].date)} (sau mốc E10 bắt buộc 01/06/2026) · cột: E10 đắt hơn E5 bao nhiêu`,
+    `<a href="https://home.petrolimex.com.vn/ndi/thong-cao-bao-chi.html" target="_blank" rel="noopener">Petrolimex · thông cáo điều chỉnh giá</a>`, 340);
+  new Chart(c.querySelector('canvas'), {data: {labels: R.map(r => vnd(r.date).slice(0, 5)), datasets: [
+      {type: 'line', label: 'E10 RON95-III', data: R.map(r => r.ron95), borderColor: '#2938A8', backgroundColor: '#2938A8', borderWidth: 2.5, pointRadius: 2, tension: .2, yAxisID: 'y'},
+      {type: 'line', label: 'E5 RON92-II', data: R.map(r => r.e5), borderColor: '#c29100', backgroundColor: '#c29100', borderWidth: 2.5, pointRadius: 2, tension: .2, yAxisID: 'y'},
+      {type: 'bar', label: 'Chênh lệch E10 − E5', data: R.map(r => r.ron95 - r.e5), backgroundColor: 'rgba(89,197,200,.45)', borderRadius: 3, yAxisID: 'y2'}]},
+    options: {responsive: true, maintainAspectRatio: false, animation: false, interaction: {mode: 'index', intersect: false}, plugins: {legend: LEG, tooltip: {callbacks: {label: x => ` ${x.dataset.label}: ${nf(x.parsed.y)} đ/lít`}}},
+      scales: {x: XA, y: AX(v => nf(v), {title: {display: true, text: 'Giá bán lẻ (đ/lít)', color: '#6B7392'}}), y2: AX(v => nf(v), {position: 'right', beginAtZero: true, grid: {display: false}, title: {display: true, text: 'Chênh lệch (đ/lít)', color: '#6B7392'}})}}});
+  return c;
+}
+// Quy hoạch điện VIII: điện khí thực tế theo tháng (EVN/NSMO) và mục tiêu công suất 2030.
+function gasPowerChart() {
+  const R = window.SECTOR_DAILY?.sources?.vn_power_daily?.records; if (!R?.length || !window.Chart) return null;
+  const M = {}; R.forEach(r => { if (!fin(r.gas) || !fin(r.output_mkwh)) return; const k = r.date.slice(0, 7); (M[k] ||= {g: 0, t: 0, n: 0}); M[k].g += r.gas; M[k].t += r.output_mkwh; M[k].n++; });
+  const now = new Date().toISOString().slice(0, 7), K = Object.keys(M).sort().filter(k => M[k].n >= 20 || k === now);  // bỏ tháng thiếu nhiều ngày, trừ tháng hiện tại
+  const c = chartCard('dau-khi-gaspower', 'Điện khí thực tế: sản lượng theo tháng và tỷ trọng trong tổng sản lượng',
+    'triệu kWh (cột) · % tổng sản lượng (đường) · tổng hợp từ báo cáo vận hành hằng ngày; tháng hiện tại chưa đủ ngày',
+    `<a href="https://www.evn.com.vn/vi-VN/news-l/Thong-tin-tom-tat-van-hanh-HTD-Quoc-gia-60-2015" target="_blank" rel="noopener">EVN / NSMO · thông tin vận hành hệ thống điện</a>; tự cộng theo tháng`, 320);
+  new Chart(c.querySelector('canvas'), {data: {labels: K.map(k => k.slice(5) + '/' + k.slice(0, 4)), datasets: [
+      {type: 'bar', label: 'Điện khí (triệu kWh)', data: K.map(k => Math.round(M[k].g)), backgroundColor: K.map(k => k === now ? 'rgba(41,56,168,.35)' : '#2938A8'), borderRadius: 3, yAxisID: 'y'},
+      {type: 'line', label: 'Tỷ trọng (%)', data: K.map(k => M[k].g / M[k].t * 100), borderColor: '#c29100', backgroundColor: '#c29100', borderWidth: 2.5, pointRadius: 0, tension: .25, yAxisID: 'y2'}]},
+    options: {responsive: true, maintainAspectRatio: false, animation: false, interaction: {mode: 'index', intersect: false},
+      plugins: {legend: LEG, tooltip: {callbacks: {label: x => x.dataset.yAxisID === 'y2' ? ` Tỷ trọng: ${nf(x.parsed.y, 1)}%` : ` Điện khí: ${nf(x.parsed.y)} triệu kWh`}}},
+      scales: {x: XA, y: AX(v => nf(v), {beginAtZero: true}), y2: AX(v => nf(v) + '%', {position: 'right', beginAtZero: true, grid: {display: false}})}}});
+  return c;
+}
+function qh8Chart() {
+  if (!window.Chart) return null;
+  const c = chartCard('dau-khi-qh8', 'Quy hoạch điện VIII điều chỉnh: công suất điện khí mục tiêu năm 2030',
+    'MW · khí trong nước là khoảng 10.861–14.930 MW (phần nhạt là biên trên) · tỷ lệ trong ngoặc là tỷ trọng tổng công suất',
+    `<a href="https://tapchicongthuong.vn/thu-tuong-phe-duyet-dieu-chinh-quy-hoach-dien-viii-139491.htm" target="_blank" rel="noopener">QĐ 768/QĐ-TTg qua Tạp chí Công Thương 16/04/2025</a>`, 220);
+  new Chart(c.querySelector('canvas'), {type: 'bar', data: {labels: ['Nhiệt điện LNG (9,5–12,3%)', 'Nhiệt điện khí trong nước (5,9–6,3%)'], datasets: [
+      {label: 'Mức thấp / mục tiêu', data: [22524, 10861], backgroundColor: '#2938A8', borderRadius: 4, stack: 's'},
+      {label: 'Biên trên', data: [0, 14930 - 10861], backgroundColor: 'rgba(41,56,168,.3)', borderRadius: 4, stack: 's'}]},
+    options: {indexAxis: 'y', responsive: true, maintainAspectRatio: false, animation: false, plugins: {legend: {display: false}, tooltip: {callbacks: {label: x => x.datasetIndex ? ` Biên trên: ${nf(14930)} MW` : ` ${nf(x.parsed.x)} MW`}}},
+      scales: {x: AX(v => nf(v), {stacked: true, beginAtZero: true}), y: {stacked: true, grid: {display: false}, ticks: {color: '#3B4256', font: {size: 12.5}}}}}});
+  return c;
+}
+function charts() {
+  const put = (k, ...cards) => { const body = $(`#of-mt4-${k} .of-body`), cs = cards.filter(Boolean); if (!body || !cs.length || body.querySelector('.ol-card')) return;
+    const g = el('div', 'ol-grid of-wide'); cs.forEach(x => g.append(x)); if (cs.length === 1) g.style.gridTemplateColumns = '1fr';
+    const s = body.querySelector(':scope > .re-sum'); s ? s.after(g) : body.prepend(g); };
+  put('e10', e10Chart());
+  put('plan', gasPowerChart(), qh8Chart());
+  if (!$('#ol-chart-style')) { const st = el('style'); st.id = 'ol-chart-style'; st.textContent = '.ol-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}@media(max-width:900px){.ol-grid{grid-template-columns:1fr}}'; document.head.append(st); }
+}
 function run() {
   if (!$('#of-mt4-law') || run.done) return; run.done = true;
-  style(); summaries(); recent(); overview();
+  style(); summaries(); recent(); overview(); charts();
   document.addEventListener('click', e => { const a = e.target.closest('.re-lg-go'); if (!a) return; e.preventDefault(); go(a.dataset.go); });
 }
 window.addEventListener('oil:frame', run);
