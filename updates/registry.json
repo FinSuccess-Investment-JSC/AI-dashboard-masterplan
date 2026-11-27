@@ -8817,7 +8817,7 @@
   {
    "id": "chloralkali.public.trade",
    "tier": "A",
-   "title": "Nhập khẩu xút HS 281511, 281512 của Việt Nam theo tháng, năm, đối tác; số liệu đối tác",
+   "title": "Nhập khẩu xút HS 281511, 281512 và xuất khẩu P4 HS 280470 của Việt Nam (UN Comtrade); số liệu đối tác",
    "schedule": {
     "type": "monthly",
     "at": "07:00",
@@ -8839,7 +8839,10 @@
      "xc-12",
      "xc-13",
      "xc-14",
-     "xc-90"
+     "xc-90",
+     "xc-53",
+     "xc-54",
+     "xc-55"
     ]
    },
    "how": "python3 scripts/fetch_chloralkali_trade.py && python3 scripts/fetch_chloralkali_financials.py && python3 scripts/build_chloralkali.py (chạy tay; chưa gắn vào refresh-data.yml)",
@@ -8907,6 +8910,39 @@
     ]
    },
    "note": "Cập nhật khi doanh nghiệp/Bộ Công Thương công bố: sửa data/chloralkali/{plants,inputs,fpts}.json; tin Chủ đề nóng ở data/chloralkali/news.json; rồi chạy scripts/build_chloralkali.py"
+  },
+  {
+   "id": "chloralkali.wi.p4",
+   "tier": "B",
+   "title": "Wi: giá phốt pho vàng (P4) giao ngay Trung Quốc (Sunsirs, chỉ tiêu 73965)",
+   "schedule": {
+    "type": "weekly",
+    "day": "mon",
+    "at": "07:00"
+   },
+   "publication": "Hằng ngày (Sunsirs qua WiData)",
+   "source": {
+    "name": "WiData qua WiMCP (nguồn gốc Sunsirs)",
+    "url": "https://widata.vn/"
+   },
+   "where": {
+    "page": "Xut-clo/index.html",
+    "file": "data/chloralkali/p4-price.json",
+    "blocks": [
+     "xc-51",
+     "xc-52"
+    ]
+   },
+   "how": "Gọi lại đúng lời gọi trong data/chloralkali-wi-contract.json (to_time = hôm nay), ghi đè monthly/weekly trong data/chloralkali/p4-price.json, rồi python3 scripts/build_chloralkali.py.",
+   "gates": [
+    "Không chép tay số",
+    "Ngày quan sát mới không lùi so với bản cũ",
+    "Giữ nghĩa giá trị ngày cuối kỳ (không đổi sang bình quân)"
+   ],
+   "wiBlocks": [
+    "commodity_p4"
+   ],
+   "wiContract": "data/chloralkali-wi-contract.json"
   }
  ]
 }

@@ -1,6 +1,6 @@
 /* Dashboard ngành Xút – Clo (Xut-clo/, route chloralkali), dựng 26/11/2026 theo khung trang Điện (component chép qua gói Phân bón).
    - Tổng quan ngành: Bản tin dữ liệu; 00 Chuỗi giá trị (đầu vào → điện phân → sản phẩm gốc clo → ngành dùng); 01 Doanh nghiệp niêm yết.
-   - Bức tranh ngành theo câu hỏi đầu tư: 01 Nhập khẩu & giá → 02 Công suất nội địa → 03 Nghi Sơn & đầu ra gốc clo → 04 Chi phí đầu vào.
+   - Bức tranh ngành theo câu hỏi đầu tư: 01 Nhập khẩu & giá → 02 Công suất nội địa → 03 Nghi Sơn & đầu ra gốc clo → 04 Chi phí đầu vào → 05 Giá P4 (27/11/2026, ngành đổi tên P4 – Xút – Clo).
    - Tài chính ngành: app/chloralkali-finance.js (BCTC hợp nhất CSV, HVT, DGC). Chủ đề nóng: app/chloralkali-news.js.
    Dữ liệu: window.XC_DATA (scripts/build_chloralkali.py). Chỉ mô tả dữ liệu; số chưa xác minh để trống. */
 (() => {
@@ -72,13 +72,13 @@ function brief() {
   const pct = (a, b) => a && b ? (a / b - 1) * 100 : null;
   const tar = (IN.tariffs || []).at(-1);
   const lead = `Việt Nam báo cáo nhập ${nf(s.t / 1000, 1)} nghìn tấn xút rắn và ${nf(l.t / 1000, 1)} nghìn tấn xút dung dịch năm ${y}; đơn giá nhập khẩu bình quân ${nf(s.price)} và ${nf(l.price)} USD/tấn. `
-    + `Số liệu đối tác năm ${my}: ${nf(ms.t / 1000, 1)} và ${nf(ml.t / 1000, 1)} nghìn tấn. Dự án xút – clo Nghi Sơn của DGC (50 nghìn tấn NaOH/năm) dự kiến chạy dây chuyền xút Q4/2026.`;
+    + `Số liệu đối tác năm ${my}: ${nf(ms.t / 1000, 1)} và ${nf(ml.t / 1000, 1)} nghìn tấn. Dự án xút – clo Nghi Sơn của DGC (50 nghìn tấn NaOH/năm) dự kiến chạy dây chuyền xút Q4/2026.` + (D.p4?.monthly?.length ? ` Giá phốt pho vàng (P4) giao ngay Trung Quốc ${dL(D.p4.monthly.at(-1).date)}: ${nf(D.p4.monthly.at(-1).value)} CNY/tấn.` : '');
   const tiles = [
     [`Nhập xút rắn ${y}`, nf(s.t / 1000, 1), 'nghìn tấn', `${sg(pct(s.t, s0?.t))}% so năm trước`, years('vn_annual').map(p => rec('vn_annual', p, 'solid')?.t), C.blue, 'UN Comtrade'],
     [`Nhập xút dung dịch ${y}`, nf(l.t / 1000, 1), 'nghìn tấn', `${sg(pct(l.t, l0?.t))}% so năm trước`, years('vn_annual').map(p => rec('vn_annual', p, 'liquid')?.t), C.teal, 'UN Comtrade'],
     [`Đơn giá nhập khẩu xút rắn ${y}`, nf(s.price), 'USD/tấn', `${sg(pct(s.price, s0?.price))}% so năm trước`, years('vn_annual').map(p => rec('vn_annual', p, 'solid')?.price), C.gold, 'UN Comtrade; tự tính'],
     ['Giá điện bình quân', tar ? nf(tar.avg_price, 0) : 'N/A', 'đ/kWh', tar ? `từ ${dL(tar.effective)} · ${esc(tar.decision)}` : '', (IN.tariffs || []).map(t => t.avg_price), C.grey, 'Bộ Công Thương']];
-  host.innerHTML = `<div class="db-l"><div class="db-k"><span class="db-dot"></span>Bản tin dữ liệu</div><div class="db-tk">Xút – Clo</div><p class="db-lead">${esc(lead)}</p></div><div class="db-r"></div>`;
+  host.innerHTML = `<div class="db-l"><div class="db-k"><span class="db-dot"></span>Bản tin dữ liệu</div><div class="db-tk">P4 – Xút – Clo</div><p class="db-lead">${esc(lead)}</p></div><div class="db-r"></div>`;
   tiles.forEach(([t2, v, un, s2, sp, col, src]) => {
     const c = el('div', 'db-c card', `<div class="db-ch">${esc(t2)}</div><div class="db-v">${v}<span class="db-u">${esc(un)}</span></div><div class="db-s">${s2}</div><div class="db-spark"></div><div class="pw-src">Nguồn: ${esc(src)}</div>`);
     host.querySelector('.db-r').append(c);
@@ -264,6 +264,50 @@ const PIC = {
     }
     p.append(readings());
   },
+  p4() {
+    const p = $('#xc-pp-p4'), P4 = D.p4 || {}, M = P4.monthly || [], W = P4.weekly || [];
+    if (!M.length) return;
+    const SRC_P4 = `<a href="${esc(P4.source_url || '#')}" target="_blank" rel="noopener">Sunsirs</a> (qua WiData), giá giao ngay Trung Quốc, giá trị ngày cuối kỳ`;
+    // Chuỗi theo quý: quý cũ lấy từ chuỗi quý của nguồn; từ 03/2024 lấy giá cuối tháng 3, 6, 9, 12 (quý đang chạy lấy ngày mới nhất).
+    const qOf = d => `Q${Math.ceil(+d.slice(5, 7) / 3)}/${d.slice(0, 4)}`, mStart = M[0].date;
+    const QS = new Map();
+    (P4.quarterly || []).filter(r => r.date.slice(0, 7) < mStart.slice(0, 7)).forEach(r => QS.set(qOf(r.date), r));
+    M.forEach((r, i) => { const mm = +r.date.slice(5, 7); if (mm % 3 === 0 || i === M.length - 1) QS.set(qOf(r.date), r); });
+    const qKey = k => k.slice(3) + k[1];
+    const QK = [...QS.keys()].sort((a, b) => qKey(a) < qKey(b) ? -1 : 1);
+    const lastM = M.at(-1), yAgo = M.find(r => r.date.slice(0, 7) === `${+lastM.date.slice(0, 4) - 1}-${lastM.date.slice(5, 7)}`), dec = M.find(r => r.date.slice(0, 7) === `${+lastM.date.slice(0, 4) - 1}-12`);
+    const rp = (kind, y) => (T[kind] || {})[`${y}|280470`] || null;
+    const yrs = kind => [...new Set(Object.keys(T[kind] || {}).map(k => k.split('|')[0]))].filter(y => rp(kind, y)?.t).sort();
+    const vy = yrs('p4_vn_annual'), my = yrs('p4_mirror_annual');
+    const v1 = rp('p4_vn_annual', vy.at(-1)), m1 = rp('p4_mirror_annual', my.at(-1));
+    p.append(kpiRow([
+      kpi('Giá P4 Trung Quốc · ' + dL(lastM.date), nf(lastM.value), 'CNY/tấn', yAgo ? `${sg((lastM.value / yAgo.value - 1) * 100)}% so cùng kỳ` : '', 'giao ngay, Sunsirs', M.map(r => r.value), C.plum),
+      dec ? kpi('So với cuối năm trước', sg((lastM.value / dec.value - 1) * 100), '%', `cuối 12/${dec.date.slice(0, 4)}: ${nf(dec.value)} CNY/tấn`, 'giá ngày cuối kỳ', null) : null,
+      v1 ? kpi(`Xuất khẩu P4 ${vy.at(-1)} · Việt Nam báo cáo`, nf(v1.t / 1000, 1), 'nghìn tấn', `đơn giá ${nf(v1.price)} USD/tấn`, 'HS 280470, UN Comtrade', vy.map(y => rp('p4_vn_annual', y).t), C.gold) : null,
+      m1 ? kpi(`Xuất khẩu P4 ${my.at(-1)} · số liệu đối tác`, nf(m1.t / 1000, 1), 'nghìn tấn', `đơn giá ${nf(m1.price)} USD/tấn (CIF)`, 'nước nhập khẩu báo cáo', my.map(y => rp('p4_mirror_annual', y).t), C.navy) : null].filter(Boolean)));
+    const q1 = panel('5.1', 'Giá phốt pho vàng (P4) tại Trung Quốc qua các năm');
+    const a = card('xc-51', 'Giá P4 giao ngay Trung Quốc, cuối mỗi quý', {sub: 'CNY/tấn · giá ngày cuối quý (quý hiện tại: ngày mới nhất)', cadence: 'daily', kind: 'document', source: SRC_P4, info: 'Nguồn Sunsirs qua WiData trả giá trị ngày cuối kỳ, không phải bình quân. Trước 03/2024 nguồn chỉ còn số theo quý (một số quý có ngày quan sát cuối không trùng cuối quý, vd 01/11/2021); từ 03/2024 lấy giá cuối tháng 3, 6, 9, 12.'});
+    q1.append(a.el); p.append(q1);
+    chart(a.host, 'xc-51', QK, [{name: 'Giá P4 Trung Quốc', color: C.plum, values: QK.map(k => QS.get(k).value)}], {unit: 'CNY/tấn', zeroBase: false});
+    const q2 = panel('5.2', 'Giá P4 biến động thế nào trong năm nay?');
+    const b = card('xc-52', 'Giá P4 giao ngay Trung Quốc theo tuần', {sub: 'CNY/tấn · giá ngày cuối tuần', cadence: 'daily', kind: 'document', source: SRC_P4});
+    q2.append(b.el); p.append(q2);
+    chart(b.host, 'xc-52', W.map(r => dL(r.date)), [{name: 'Giá P4 Trung Quốc', color: C.plum, values: W.map(r => r.value)}], {unit: 'CNY/tấn', zeroBase: false});
+    if (vy.length || my.length) {
+      const q3 = panel('5.3', 'Việt Nam xuất khẩu bao nhiêu P4, sang đâu, đơn giá bao nhiêu?');
+      const c = card('xc-53', 'Xuất khẩu P4 (HS 280470) của Việt Nam theo thị trường', {sub: 'tấn · số liệu đối tác: nước nhập khẩu báo cáo nhập từ Việt Nam', cadence: 'annual', source: '<a href="https://comtradeplus.un.org/" target="_blank" rel="noopener">UN Comtrade</a> (số liệu đối tác)', info: 'Dùng số liệu đối tác vì chuỗi Việt Nam báo cáo thiếu và lệch (năm 2019, 2020 khối lượng bất thường, năm 2022 không có khối lượng, chưa có 2024–2025). HS 280470 là phốt pho nói chung.'});
+      const d = card('xc-54', 'Lượng xuất khẩu P4: Việt Nam báo cáo và số liệu đối tác', {sub: 'nghìn tấn', cadence: 'annual', source: '<a href="https://comtradeplus.un.org/" target="_blank" rel="noopener">UN Comtrade</a> (Việt Nam báo cáo, giá FOB; nước nhập khẩu báo cáo, giá CIF)', info: 'Số liệu đối tác = các nước nhập khẩu báo cáo nhập từ Việt Nam; giữ là chuỗi riêng, không cộng với số Việt Nam báo cáo. Năm Việt Nam báo cáo khối lượng bất thường (đơn giá suy ra trên 20.000 USD/tấn) hoặc không có khối lượng thì để trống.'});
+      const e = card('xc-55', 'Đơn giá xuất khẩu P4 bình quân', {sub: 'USD/tấn · trị giá ÷ khối lượng tịnh', cadence: 'annual', source: '<a href="https://comtradeplus.un.org/" target="_blank" rel="noopener">UN Comtrade</a>; tự tính', info: 'Số liệu đối tác theo giá CIF tại nước nhập khẩu; Việt Nam báo cáo theo giá FOB. Hai chuỗi riêng.'});
+      q3.append(c.el, d.el, e.el); p.append(q3);
+      const names = D.p4_partners_top || [], PC2 = {'Nhật Bản': C.gold, 'Ấn Độ': '#dd7f4e', 'Hàn Quốc': C.teal, 'Trung Quốc': C.blue, 'Indonesia': C.plum, 'Hà Lan': C.sky, 'Khác': '#9aa1b2'};
+      chart(c.host, 'xc-53', my, names.map(n => ({name: n, color: PC2[n] || C.grey, kind: 'bar', values: my.map(y => rp('p4_mirror_annual', y)?.partners?.[n]?.t ?? null)})), {unit: 'tấn', native: 'stack', stackable: true});
+      const YY = [...new Set([...vy, ...my])].sort();
+      chart(d.host, 'xc-54', YY, [{name: 'Lượng · Việt Nam báo cáo', color: C.gold, kind: 'bar', values: YY.map(y => rp('p4_vn_annual', y)?.t / 1000 || null)},
+        {name: 'Lượng · số liệu đối tác', color: '#e6c98a', kind: 'bar', values: YY.map(y => rp('p4_mirror_annual', y)?.t / 1000 || null)}], {unit: 'nghìn tấn', digits: 1, native: 'bar'});
+      chart(e.host, 'xc-55', YY, [{name: 'Số liệu đối tác (CIF)', color: C.navy, values: YY.map(y => rp('p4_mirror_annual', y)?.price ?? null)},
+        {name: 'Việt Nam báo cáo (FOB)', color: C.plum, values: YY.map(y => rp('p4_vn_annual', y)?.price ?? null)}], {unit: 'USD/tấn', zeroBase: false});
+    }
+  },
   cost() {
     const p = $('#xc-pp-cost'), TA = IN.tariffs || [], last2 = TA.at(-1), SQ = (IN.salt_quota || []).filter(x => fin(x.quota_tonnes)), sq = SQ.at(-1);
     p.append(kpiRow([
@@ -363,7 +407,7 @@ function showTab(key) {
 }
 function asof() {
   const t = {trade: () => `Việt Nam báo cáo đến ${years('vn_annual').at(-1)} (tháng đến ${ymL((T.vn_months_available || []).at(-1) || '')}) · số liệu đối tác đến ${years('mirror_annual').at(-1)} · tải ${dL(T.captured)}`,
-    plants: () => 'tài liệu doanh nghiệp đến 11/2026', power: () => { const x = (IN.tariffs || []).at(-1); return x ? `${x.decision}, hiệu lực ${dL(x.effective)}` : ''; },
+    plants: () => 'tài liệu doanh nghiệp đến 11/2026', p4: () => { const x = (D.p4?.monthly || []).at(-1); return x ? `giá P4 ${dL(x.date)} (Sunsirs) · xuất khẩu theo năm (UN Comtrade)` : ''; }, power: () => { const x = (IN.tariffs || []).at(-1); return x ? `${x.decision}, hiệu lực ${dL(x.effective)}` : ''; },
     fin: () => F ? `BCTC đến ${qL(F.periods.at(-1))} · tải ${dL(F.captured)}` : ''};
   $$('[data-asof]').forEach(n => { try { n.textContent = 'Kỳ dữ liệu gần nhất: ' + t[n.dataset.asof](); } catch (e) { n.textContent = ''; } });
 }

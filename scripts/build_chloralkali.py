@@ -6,6 +6,7 @@ Nguồn:
   * data/raw/public/chloralkali-comtrade.json — UN Comtrade (scripts/fetch_chloralkali_trade.py): Việt Nam báo cáo nhập khẩu
     HS 281511 (xút rắn), 281512 (xút dung dịch) theo tháng, năm, đối tác; số liệu đối tác (mirror) theo năm.
   * data/raw/public/fs_chloralkali_full_vndirect.json — BCTC hợp nhất quý CSV, HVT, DGC (scripts/fetch_chloralkali_financials.py).
+  * data/chloralkali/p4-price.json — giá phốt pho vàng (P4) giao ngay Trung Quốc, Sunsirs qua WiData (tier B, cập nhật qua MCP).
   * data/chloralkali/*.json — nhập tay có nguồn từng dòng: fpts.json (số FPTS 10/05/2024), plants.json (nhà máy, sản lượng,
     tiến độ Nghi Sơn, sản phẩm gốc clo), inputs.json (biểu giá điện sản xuất, hạn ngạch muối, định mức điện), news.json (Chủ đề nóng).
 
@@ -31,6 +32,7 @@ VN_NAME = {156: 'Trung Quốc', 490: 'Đài Loan', 392: 'Nhật Bản', 410: 'H�
            458: 'Malaysia', 702: 'Singapore', 50: 'Bangladesh', 344: 'Hồng Kông', 724: 'Tây Ban Nha', 276: 'Đức', 528: 'Hà Lan', 36: 'Úc',
            608: 'Philippines', 704: 'Việt Nam', 251: 'Pháp', 826: 'Anh', 116: 'Campuchia', 418: 'Lào'}
 TOP = [156, 490, 392, 410, 764, 699]  # đối tác hiện riêng trên chart; còn lại gộp "Khác" (không cộng dòng World, dòng khu vực)
+TOP_P4 = [392, 699, 410, 156, 360, 528]  # thị trường nhập P4 của Việt Nam hiện riêng
 
 
 def load(p):
@@ -99,9 +101,10 @@ def weight_t(r):
 
 def trade(raw):
     out = {'captured': raw['captured'], 'codes': raw['codes'], 'vn_months_available': raw['vn_months_available'], 'vn_years_available': raw['vn_years_available']}
-    for kind, who in (('vn_monthly', 'partner'), ('vn_annual', 'partner'), ('mirror_annual', 'reporter')):
+    for kind, who in (('vn_monthly', 'partner'), ('vn_annual', 'partner'), ('mirror_annual', 'reporter'), ('p4_vn_annual', 'partner'), ('p4_mirror_annual', 'reporter')):
         series = {}
-        for key, rows in raw[kind].items():
+        top = TOP_P4 if kind.startswith('p4') else TOP
+        for key, rows in raw.get(kind, {}).items():
             p, c = key.split('|')
             world = next((r for r in rows if r.get(who + '_code') == 0), None)
             parts = [r for r in rows if r.get(who + '_code') not in (0, None)]
@@ -119,7 +122,7 @@ def trade(raw):
                 rec['reporters'] = sorted({VN_NAME.get(r['reporter_code'], r.get('reporter') or str(r['reporter_code'])) for r in ok})
             by = {}
             for r in parts:
-                k = r[who + '_code'] if r[who + '_code'] in TOP else -1
+                k = r[who + '_code'] if r[who + '_code'] in top else -1
                 t = weight_t(r)
                 d = by.setdefault(k, {'t': 0.0, 'usd': 0.0, 'n_t': 0})
                 if t is not None:
@@ -129,23 +132,29 @@ def trade(raw):
             psum = sum(v['t'] for v in by.values() if v['n_t'])
             if rec.get('t') and psum:
                 rec['partner_gap_pct'] = round((psum / rec['t'] - 1) * 100, 2)
+            # P4 (HS 280470) Việt Nam báo cáo: một số năm khối lượng lệch bất thường (vd. 2019, 2020 vài trăm tấn → đơn giá >100.000 USD/tấn).
+            # Đơn giá P4 thực tế vài nghìn USD/tấn (số liệu đối tác) nên đơn giá >20.000 USD/tấn coi là lỗi khối lượng ở nguồn → để trống, gắn cờ.
+            if kind == 'p4_vn_annual' and rec.get('price') and rec['price'] > 20000:
+                rec.update(t=None, price=None, weight_suspect=True)
+                for v in rec.get('partners', {}).values():
+                    v['t'] = None
             series[key] = rec
         out[kind] = dict(sorted(series.items()))
     return out
 
 
 def main():
-    out = {'built_at': dt.datetime.now().isoformat(timespec='seconds'), 'partners_top': [VN_NAME[k] for k in TOP] + ['Khác']}
+    out = {'built_at': dt.datetime.now().isoformat(timespec='seconds'), 'partners_top': [VN_NAME[k] for k in TOP] + ['Khác'], 'p4_partners_top': [VN_NAME[k] for k in TOP_P4] + ['Khác']}
     raw = load(RAW / 'chloralkali-comtrade.json')
     if raw:
         out['trade'] = trade(raw)
     f = load(RAW / 'fs_chloralkali_full_vndirect.json')
     if f:
         out['fin'] = financials(f)
-    for name in ('fpts', 'plants', 'inputs'):
+    for name in ('fpts', 'plants', 'inputs', 'p4-price'):
         d = load(MAN / f'{name}.json')
         if d is not None:
-            out[name] = d
+            out['p4' if name == 'p4-price' else name] = d
     text = json.dumps(out, ensure_ascii=False, separators=(',', ':'))
     OUT.write_text(text + '\n', encoding='utf-8', newline='\n')
     OUT_JS.write_text('/* Sinh bởi scripts/build_chloralkali.py — không sửa tay. */\nwindow.XC_DATA = ' + text + ';\nwindow.XC_FIN = window.XC_DATA.fin;\n', encoding='utf-8', newline='\n')
