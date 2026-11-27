@@ -287,8 +287,8 @@ window.PKG = {
       {k: 'sector', t: 'Tài chính ngành', d: 'Rổ doanh nghiệp theo dõi (mặc định HVN, VJC, ACV): nhóm nào kéo lợi nhuận, chuyển lợi nhuận thành tiền, đầu tư và cần thêm vốn; bấm xuống từng mã.', items: [
         {q: 'Chi tiết theo mã', id: 'rf-q-fin', take: ['hk-60']},
         {q: 'Nợ vay theo mã', id: 'rf-q-debt', take: ['hk-61']}]},
-      {k: 'listed', t: 'Số vận hành doanh nghiệp', d: 'Số doanh nghiệp công bố 9T/2026.', items: [
-        {q: 'Doanh nghiệp công bố gì về sản lượng 9T/2026?', id: 'rf-q-ops', take: ['hk-62']}]},
+      {k: 'listed', t: 'Doanh nghiệp niêm yết', d: 'Định giá, hiệu quả và lợi nhuận của 8 doanh nghiệp hàng không; so sánh chi tiết theo quý; số vận hành doanh nghiệp công bố.', items: [
+        {q: 'Số vận hành doanh nghiệp công bố', id: 'rf-q-ops', take: ['hk-62']}]},
     ]},
   },
 };
