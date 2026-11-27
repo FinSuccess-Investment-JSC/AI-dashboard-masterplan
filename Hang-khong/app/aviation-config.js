@@ -289,9 +289,9 @@ window.PKG = {
         {q: 'Doanh nghiệp dịch vụ sân bay tăng trưởng ra sao?', id: 'rf-q-svc', meta: 'tỷ đồng, % · BCTC hợp nhất quý', take: ['hk-54']}]},
     ]},
     mt14: {title: 'Tài chính ngành', subs: [
-      {k: 'sector', t: 'Tài chính ngành', d: 'Doanh thu, lợi nhuận, nợ vay theo quý từng mã.', items: [
-        {q: 'Doanh thu và lợi nhuận đi thế nào?', id: 'rf-q-fin', meta: 'tỷ đồng · hợp nhất quý từng mã, không cộng', take: ['hk-60']},
-        {q: 'Đòn bẩy của HVN, VJC, ACV ra sao?', id: 'rf-q-debt', meta: 'tỷ đồng', take: ['hk-61']}]},
+      {k: 'sector', t: 'Tài chính ngành', d: 'Rổ doanh nghiệp theo dõi (mặc định HVN, VJC, ACV): nhóm nào kéo lợi nhuận, chuyển lợi nhuận thành tiền, đầu tư và cần thêm vốn; bấm xuống từng mã.', items: [
+        {q: 'Chi tiết theo mã', id: 'rf-q-fin', take: ['hk-60']},
+        {q: 'Nợ vay theo mã', id: 'rf-q-debt', take: ['hk-61']}]},
       {k: 'listed', t: 'Số vận hành doanh nghiệp', d: 'Số doanh nghiệp công bố 9T/2026.', items: [
         {q: 'Doanh nghiệp công bố gì về sản lượng 9T/2026?', id: 'rf-q-ops', take: ['hk-62']}]},
     ]},
