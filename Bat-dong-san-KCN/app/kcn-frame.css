@@ -155,3 +155,5 @@
 }
 .kc-st-unverified{border-left-color:#d0d5e2}.kc-chip.kc-st-unverified{background:#f3f4f7;color:#5a6682;border:1px dashed #b8bfd0}
 .kc-stgs{grid-template-columns:repeat(4,minmax(0,1fr))}@media (max-width:980px){.kc-stgs{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:560px){.kc-stgs{grid-template-columns:1fr}}
+.kc-card .kc-unit{font-size:11px;color:#7a8399;margin:4px 2px 0}
+.kc-take.kc-nums{border:0;padding:4px 0 0;background:none}
