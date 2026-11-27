@@ -91,7 +91,7 @@ window.PKG = {
         <p class="hk-chain-legend"><span>Cung ứng và vận chuyển</span><span>Hạ tầng và dịch vụ hỗ trợ</span></p>
       </div>`},
     {id: 'hkModels', type: 'html', src: [SHS, VND, ['Cục Hàng không – đội tàu 15/10/2026', CAA10[1]]],
-      method: 'Sơ đồ định tính: các khối nối bằng công thức (×, =) hoặc mũi tên, không vẽ theo tỷ trọng vì doanh nghiệp không công bố đủ số tách mảng theo quý. Màu: xanh ngọc = lưu lượng, xanh đậm = doanh thu, đỏ = chi phí, vàng = gắn với USD/VND. Dải BCTC: doanh thu, biên gộp, biên ròng là tổng 4 quý gần nhất; nợ vay ròng là số dư cuối quý gần nhất (vay ngắn + dài hạn − tiền − đầu tư ngắn hạn); BCTC hợp nhất.',
+      method: 'Sơ đồ định tính: các khối nối bằng công thức (×, =) hoặc mũi tên, không vẽ theo tỷ trọng vì doanh nghiệp không công bố đủ số tách mảng theo quý. Màu: xanh ngọc = lưu lượng, xanh đậm = doanh thu, đỏ = chi phí, vàng = gắn với USD/VND.',
       render: e => {
         const n = (F.periods || []).length, lp = (F.periods || [])[n - 1], ql = p => p ? 'Q' + p.slice(-1) + '/' + p.slice(0, 4) : '';
         const ttm = (t, k) => { const r = F.data?.[t]?.[k]; if (!r || n < 4) return null; const v = r.slice(n - 4); return v.every(Number.isFinite) ? v.reduce((a, b) => a + b, 0) : null; };
@@ -148,8 +148,7 @@ window.PKG = {
         ];
         const legend = '<div class="hkm-legend"><span class="hkm-flow">Lưu lượng</span><span class="hkm-rev">Doanh thu</span><span class="hkm-cost">Chi phí</span><span class="hkm-lever">Biến điều chỉnh</span><span class="hkm-fxl">Gắn USD/VND</span></div>';
         return `<div class="hk-models">${legend}${M.map((m, i) => `<article class="hk-model hkm" id="hkm-${i + 1}"><header><span>${i + 1}</span><h4>${e(m.t)}</h4><p><b>${e(m.who)}</b></p></header>
-          <div class="hkm-diagram">${m.lanes.join('')}</div>${m.foot ? `<p class="hkm-foot">${e(m.foot)}</p>` : ''}
-          <p class="hkm-close">${e(m.close)}</p>${kpis(m.kp)}
+          <div class="hkm-diagram">${m.lanes.join('')}</div>
           <nav><span>Theo dõi dữ liệu:</span>${m.links.map(([h, l]) => `<a href="${h}">${e(l)} ›</a>`).join('')}</nav></article>`).join('')}</div>`;
       }},
     {id: 'hkCarried', type: 'cum', table: 'tbl-carried', views: [['caa_pax_carried_vn', 'Hãng Việt vận chuyển'], ['caa_pax_carried_mkt', 'Toàn thị trường (gồm hãng nước ngoài)']].filter(([m]) => obs(m).length),
