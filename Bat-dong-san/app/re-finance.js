@@ -463,19 +463,57 @@ const cSel = () => CS.on.slice();
 const cFoot = (c, note) => { c.el.querySelectorAll(':scope > .pw-src, :scope > .pw-src-note').forEach(n => n.remove()); c.el.append(el('div', 'pw-src', `Nguồn: ${SRC}${note ? ' · ' + esc(note) : ''}`)); };
 // Một card mỗi mục (27/11/2026, người dùng: bỏ chart lặp): trái = xu hướng từng mã (Chart.js, bấm chú giải ẩn/hiện, mặc định 5 mã đầu),
 // phải = bảng xếp hạng gọn ở kỳ chốt. Không có thanh công cụ riêng từng chart; bộ lọc chung ở đầu sub-tab.
+// Thanh sửa chart kiểu Stock dashboard (_template/chart-toolbar.js, ux-analytics.js; 27/11/2026): icon gọn trên đầu chart —
+// Khoảng thời gian · Tùy chỉnh (loại chart, trục, cách xem) · Bảng số liệu · Phóng to (Esc để đóng). Bấm chú giải để ẩn/hiện mã.
+const IC = {
+  per: '<svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"/></svg>',
+  cust: '<svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 4h7M13 4h1M2 8h2M8 8h6M2 12h8M14 12h0"/><circle cx="11" cy="4" r="1.6"/><circle cx="6" cy="8" r="1.6"/><circle cx="12" cy="12" r="1.6"/></svg>',
+  tbl: '<svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2.5" width="12" height="11" rx="1.5"/><path d="M2 6h12M2 9.5h12M6.5 6v7.5"/></svg>',
+  zoom: '<svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg>'};
+const CUST = [['type', 'Loại chart', [['line', 'Đường'], ['bar', 'Cột'], ['area', 'Miền']]], ['axis', 'Trục', [['fit', 'Vừa dữ liệu'], ['zero', 'Từ 0']]],
+  ['view', 'Cách xem', [['val', 'Giá trị'], ['yoy', '% so cùng kỳ'], ['rebase', 'Rebase 100']]]];
 function cCard(id) {
   const c = el('div', 'card pf-card pf-cmp-card'); c.dataset.blockId = id; c.dataset.updateKind = 'public'; c.dataset.cadence = 'quarterly'; c.dataset.refreshStatus = 'snapshot';
-  c.innerHTML = `<div class="pf-cmp-grid"><div><div class="chart-title"></div><div class="chart-sub"></div><div class="pf-cmp-cv"><canvas role="img"></canvas></div></div><div class="pf-cmp-side"><div class="pf-cmp-sh"></div><ol class="pf-rank"></ol></div></div>`;
-  return {el: c, cv: c.querySelector('canvas'), title: c.querySelector('.chart-title'), sub: c.querySelector('.chart-sub'), sh: c.querySelector('.pf-cmp-sh'), rank: c.querySelector('.pf-rank')};
+  const seg = (k, opts, on) => `<div class="pf-pop-row" data-k="${k}">${opts.map(([v, t]) => `<button type="button" data-v="${v}" aria-pressed="${v === on}">${t}</button>`).join('')}</div>`;
+  c.innerHTML = `<div class="pf-cmp-grid"><div class="pf-cmp-main"><div class="pf-cmp-head"><div><div class="chart-title"></div><div class="chart-sub"></div></div>
+    <span class="pf-tb"><button type="button" class="pf-ic" data-pop="per" title="Khoảng thời gian" aria-label="Khoảng thời gian">${IC.per}</button><button type="button" class="pf-ic" data-pop="cust" title="Tùy chỉnh: loại chart, trục, cách xem" aria-label="Tùy chỉnh">${IC.cust}</button><button type="button" class="pf-ic" data-tbl title="Bảng số liệu" aria-label="Bảng số liệu" aria-pressed="false">${IC.tbl}</button><button type="button" class="pf-ic" data-zoom title="Phóng to chart (Esc để đóng)" aria-label="Phóng to">${IC.zoom}</button></span>
+    <div class="pf-pop" data-for="per" hidden><b>Khoảng thời gian</b>${seg('range', [['1', '1N'], ['3', '3N'], ['5', '5N'], ['all', 'Toàn bộ']], '5')}</div>
+    <div class="pf-pop" data-for="cust" hidden>${CUST.map(([k, t, o]) => `<b>${t}</b>${seg(k, o, o[0][0])}`).join('')}</div></div>
+    <div class="pf-cmp-cv"><canvas role="img"></canvas></div><div class="pf-cmp-tbl" hidden></div></div><div class="pf-cmp-side"><div class="pf-cmp-sh"></div><ol class="pf-rank"></ol></div></div>`;
+  const o = {range: '5', type: 'line', axis: 'fit', view: 'val', table: false, redraw: null};
+  const pops = c.querySelectorAll('.pf-pop'), close = () => { pops.forEach(p => { p.hidden = true; }); c.querySelectorAll('[data-pop]').forEach(b => b.setAttribute('aria-pressed', 'false')); };
+  c.querySelectorAll('[data-pop]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); const p = c.querySelector(`.pf-pop[data-for="${b.dataset.pop}"]`), on = p.hidden; close(); p.hidden = !on; b.setAttribute('aria-pressed', String(on)); }));
+  c.querySelectorAll('.pf-pop-row').forEach(r => r.addEventListener('click', e => { const b = e.target.closest('[data-v]'); if (!b) return; e.stopPropagation(); o[r.dataset.k] = b.dataset.v;
+    r.querySelectorAll('[data-v]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); o.redraw?.(); }));
+  document.addEventListener('click', e => { if (!c.contains(e.target)) close(); });
+  c.querySelector('[data-tbl]').addEventListener('click', e => { o.table = !o.table; e.currentTarget.setAttribute('aria-pressed', String(o.table)); c.querySelector('.pf-cmp-tbl').hidden = !o.table; o.redraw?.(); });
+  // Phóng to: card ra giữa màn hình như Stock (Esc hoặc bấm nền để đóng)
+  let ph = null, bg = null; const unzoom = () => { if (!ph) return; c.classList.remove('pf-zoomed'); ph.replaceWith(c); bg.remove(); ph = bg = null; setTimeout(() => window.dispatchEvent(new Event('resize')), 30); };
+  c.querySelector('[data-zoom]').addEventListener('click', () => { if (ph) return unzoom(); ph = document.createComment('pf-zoom'); c.replaceWith(ph); bg = el('div', 'pf-zoom-bg'); bg.onclick = unzoom; document.body.append(bg, c); c.classList.add('pf-zoomed'); setTimeout(() => window.dispatchEvent(new Event('resize')), 30); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { unzoom(); close(); } });
+  return Object.assign(o, {el: c, cv: c.querySelector('canvas'), title: c.querySelector('.chart-title'), sub: c.querySelector('.chart-sub'), sh: c.querySelector('.pf-cmp-sh'), rank: c.querySelector('.pf-rank'), tbl: c.querySelector('.pf-cmp-tbl')});
 }
-function cLine(c, labels, series, unit, digits) {
+function cLine(c, labels, series, unit, digits, ppy = 4) {
   c.cv._ch?.destroy(); if (!window.Chart) return;
-  const fmt = v => nf(v, digits);
-  c.cv._ch = new Chart(c.cv, {type: 'line', data: {labels, datasets: series.map(s => ({label: s.name, data: s.values, hidden: !!s.hidden, borderColor: s.color, backgroundColor: s.color, borderWidth: 2, pointRadius: 0, pointHoverRadius: 3, tension: .25, spanGaps: true}))},
+  // Cách xem: % so cùng kỳ / Rebase 100 tính trên toàn chuỗi rồi mới cắt khoảng thời gian.
+  if (c.view === 'yoy') { series = series.map(s => ({...s, values: s.values.map((v, i) => i >= ppy && fin(v) && fin(s.values[i - ppy]) && s.values[i - ppy] !== 0 ? (v / Math.abs(s.values[i - ppy]) - Math.sign(s.values[i - ppy])) * 100 : null)})); unit = '%'; digits = 1; }
+  const n = c.range === 'all' ? labels.length : Math.min(labels.length, ppy * +c.range + 1);  // 1N/3N/5N/Toàn bộ
+  labels = labels.slice(-n); series = series.map(s => ({...s, values: s.values.slice(-n)}));
+  if (c.view === 'rebase') { series = series.map(s => { const b = s.values.find(v => fin(v) && v > 0); return {...s, values: s.values.map(v => fin(v) && b ? v / b * 100 : null)}; }); unit = 'điểm (kỳ đầu = 100)'; digits = 0; }
+  const fmt = v => nf(v, digits), bar = c.type === 'bar';
+  const prev = c.cv._hidden;  // giữ mã người xem đã bật/tắt khi đổi kiểu xem
+  c.cv._ch = new Chart(c.cv, {type: bar ? 'bar' : 'line', data: {labels, datasets: series.map(s => ({label: s.name, data: s.values, hidden: prev ? prev.has(s.name) : !!s.hidden, borderColor: s.color, backgroundColor: c.type === 'area' ? s.color + '33' : s.color, fill: c.type === 'area' ? 'origin' : false, borderWidth: bar ? 0 : 2, borderRadius: bar ? 3 : 0, pointRadius: 0, pointHoverRadius: 3, tension: .25, spanGaps: true}))},
     options: {responsive: true, maintainAspectRatio: false, animation: false, interaction: {mode: 'index', intersect: false},
-      plugins: {legend: {position: 'bottom', labels: {usePointStyle: true, boxWidth: 8, color: '#3B4256', font: {size: 12}}},
+      plugins: {legend: {position: 'bottom', labels: {usePointStyle: true, boxWidth: 8, color: '#3B4256', font: {size: 12}},
+          onClick: (e, it, lg) => { Chart.defaults.plugins.legend.onClick.call(lg, e, it, lg); const ch = lg.chart; c.cv._hidden = new Set(ch.data.datasets.filter((d, i) => !ch.isDatasetVisible(i)).map(d => d.label)); if (c.table) cTable(c, ch, unit, digits); }},
         tooltip: {itemSort: (a, b) => (b.parsed.y ?? -1e18) - (a.parsed.y ?? -1e18), callbacks: {label: x => ` ${x.dataset.label}: ${fmt(x.parsed.y)} ${unit}`}}},
-      scales: {x: {grid: {display: false}, ticks: {color: '#6B7392', maxTicksLimit: 9, maxRotation: 0, font: {size: 11.5}}}, y: {grid: {color: '#EEF0F6'}, ticks: {color: '#6B7392', font: {size: 11.5}, callback: fmt}}}}});
+      scales: {x: {grid: {display: false}, ticks: {color: '#6B7392', maxTicksLimit: 9, maxRotation: 0, font: {size: 11.5}}}, y: {beginAtZero: c.axis === 'zero', grid: {color: '#EEF0F6'}, ticks: {color: '#6B7392', font: {size: 11.5}, callback: fmt}}}}});
+  if (c.table) cTable(c, c.cv._ch, unit, digits);
+}
+// Bảng số liệu của đúng các mã đang hiện, kỳ mới nhất ở trên (như nút Bảng ở Stock).
+function cTable(c, ch, unit, digits) {
+  const ds = ch.data.datasets.filter((d, i) => ch.isDatasetVisible(i)), L = ch.data.labels;
+  c.tbl.innerHTML = `<div class="tablewrap"><table><thead><tr><th>Kỳ</th>${ds.map(d => `<th>${esc(d.label)}</th>`).join('')}</tr></thead><tbody>${L.map((l, i) => i).reverse().map(i => `<tr><td>${esc(L[i])}</td>${ds.map(d => `<td>${nf(d.data[i], digits)}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="pf-note">Đơn vị: ${esc(unit)}</p>`;
 }
 function cRank(c, rows, digits, unit, extra) {
   const mx = Math.max(...rows.map(r => Math.abs(r[1])), 1e-9);
@@ -498,12 +536,12 @@ function cSection(num, title, q, keys) {
     const per = md === 'y' ? 'năm' : md === 'ttm' ? 'TTM' : 'quý';
     let a = 0; while (a < i && ts.every(t => !fin(vals[t][a]))) a++;
     c.title.textContent = m.n; c.sub.textContent = `${m.u} · ${per} · hiện 5 mã đứng đầu, bấm chú giải để thêm mã`;
-    cLine(c, L.slice(a, i + 1).map(qLabel), ts.map(t => ({name: t, color: tkColor[t], values: vals[t].slice(a, i + 1).map(v => fin(v) ? v : null), hidden: !top.includes(t)})), m.u, m.d);
+    cLine(c, L.slice(a, i + 1).map(qLabel), ts.map(t => ({name: t, color: tkColor[t], values: vals[t].slice(a, i + 1).map(v => fin(v) ? v : null), hidden: !top.includes(t)})), m.u, m.d, md === 'y' ? 1 : 4);
     c.sh.textContent = `Xếp hạng ${qLabel(L[i] || '')} · ${rows.length}/${ts.length} mã`;
     cRank(c, rows, m.d);
     cFoot(c, 'từng doanh nghiệp, không trừ hợp nhất');
   }
-  cRenders.push(draw);
+  c.redraw = draw; cRenders.push(draw);
   s.append(c.el);
   return s;
 }
@@ -523,13 +561,13 @@ function cValuation() {
     const now = t => { const a = V[t]?.[k]; if (fin(a) && a > 0) return a; const v = ser[t].filter(fin); return v.at(-1) ?? null; };
     const rows = ts.map(t => [t, now(t), V[t]?.median5?.[k]]).filter(r => fin(r[1])).sort((x, y) => x[1] - y[1]), top = rows.slice(0, 5).map(r => r[0]);
     c.title.textContent = `${nm} từng mã theo tuần`; c.sub.textContent = `lần · từ ${lab[keys[0]]?.slice(0, 4) || ''} · bỏ giá trị ≤ 0 (lỗ) và trên ${cap} lần (EPS gần 0) · hiện 5 mã thấp nhất, bấm chú giải để thêm mã`;
-    cLine(c, keys.map(x => { const d = lab[x]; return d.slice(5, 7) + '/' + d.slice(0, 4); }), ts.map(t => ({name: t, color: tkColor[t], values: ser[t], hidden: !top.includes(t)})), 'lần', 1);
+    cLine(c, keys.map(x => { const d = lab[x]; return d.slice(5, 7) + '/' + d.slice(0, 4); }), ts.map(t => ({name: t, color: tkColor[t], values: ser[t], hidden: !top.includes(t)})), 'lần', 1, 52);
     c.sh.textContent = `${nm} hiện tại · trung vị 5 năm`;
     cRank(c, rows, 1, 'lần', x => fin(x) ? ` · ${nf(x, 1)}` : '');
     c.el.querySelectorAll(':scope > .pw-src').forEach(n => n.remove());
     c.el.append(el('div', 'pw-src', `Nguồn: <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a> (P/E, P/B theo ngày, lấy phiên cuối tuần)`));
   }
-  cRenders.push(draw);
+  c.redraw = draw; cRenders.push(draw);
   s.append(c.el);
   return s;
 }
@@ -595,6 +633,13 @@ button.pf-tk[aria-pressed=false]{opacity:.45;text-decoration:line-through}.pf-me
 .pf-bubble{width:100%;height:auto}.pf-bubble text{font:11px Inter,sans-serif;fill:#5b6479}.pf-bubble text.l{font-weight:700;fill:#1D2678}.pf-bubble line.g{stroke:#eef0f6}.pf-bubble line.z{stroke:#9AA3BD;stroke-dasharray:3 3}
 @media (max-width:1100px){.pf-kpis{grid-template-columns:repeat(3,minmax(0,1fr))!important}}@media (max-width:640px){.pf-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pf-wf-r{grid-template-columns:110px 1fr 70px}}
 :root[data-theme=dark] .pf-wf-t{background:#262c45}
+.pf-cmp-head{position:relative;display:flex;gap:10px;align-items:flex-start;justify-content:space-between}.pf-tb{display:inline-flex;gap:4px;flex:none}
+.pf-ic{width:30px;height:30px;display:inline-grid;place-items:center;border:1px solid var(--line,#E4E7EE);border-radius:9px;background:var(--card,#fff);color:#5A6385;cursor:pointer}.pf-ic:hover{border-color:#2938A8;color:#2938A8}.pf-ic[aria-pressed=true]{background:#2938A8;border-color:#2938A8;color:#fff}
+.pf-pop{position:absolute;top:38px;right:0;z-index:20;display:grid;gap:6px;min-width:210px;padding:10px 12px;border:1px solid var(--line,#E4E7EE);border-radius:12px;background:var(--card,#fff);box-shadow:0 8px 28px rgba(16,24,64,.16)}
+.pf-pop>b{font:600 11px Inter,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--muted,#7a8399)}.pf-pop-row{display:flex;flex-wrap:wrap;gap:4px}
+.pf-pop-row button{border:1px solid var(--line,#d6dbe8);background:var(--card,#fff);color:var(--ink2,#3b4256);border-radius:7px;padding:4px 9px;font:600 12px Inter,sans-serif;cursor:pointer}.pf-pop-row button[aria-pressed=true]{background:#2938A8;border-color:#2938A8;color:#fff}
+.pf-cmp-tbl{margin-top:10px;max-height:320px;overflow:auto}.pf-cmp-tbl table{font-size:12px}.pf-cmp-tbl th,.pf-cmp-tbl td{text-align:right;padding:4px 8px}.pf-cmp-tbl th:first-child,.pf-cmp-tbl td:first-child{text-align:left}
+.pf-zoom-bg{position:fixed;inset:0;z-index:999;background:rgba(16,24,64,.45)}.pf-cmp-card.pf-zoomed{position:fixed;inset:4vh 4vw;z-index:1000;overflow:auto;margin:0!important}.pf-zoomed .pf-cmp-cv{height:62vh}
 .pf-cmp-grid{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(220px,1fr);gap:22px}.pf-cmp-cv{position:relative;height:340px;margin-top:8px}
 .pf-cmp-side{border-left:1px solid var(--line,#eef0f6);padding-left:18px}.pf-cmp-sh{font:600 12px Inter,sans-serif;color:var(--muted,#6B7392);margin:2px 0 8px}
 .pf-rank{list-style:none;margin:0;padding:0;display:grid;gap:5px}.pf-rank li{display:grid;grid-template-columns:62px 1fr auto;gap:8px;align-items:center;font-size:12.5px}
