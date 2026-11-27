@@ -465,11 +465,15 @@ const cFoot = (c, note) => { c.el.querySelectorAll(':scope > .pw-src, :scope > .
 // phải = bảng xếp hạng gọn ở kỳ chốt. Không có thanh công cụ riêng từng chart; bộ lọc chung ở đầu sub-tab.
 function cCard(id) {
   const c = el('div', 'card pf-card pf-cmp-card'); c.dataset.blockId = id; c.dataset.updateKind = 'public'; c.dataset.cadence = 'quarterly'; c.dataset.refreshStatus = 'snapshot';
-  c.innerHTML = `<div class="pf-cmp-grid"><div><div class="chart-title"></div><div class="chart-sub"></div><div class="pf-cmp-cv"><canvas role="img"></canvas></div></div><div class="pf-cmp-side"><div class="pf-cmp-sh"></div><ol class="pf-rank"></ol></div></div>`;
-  return {el: c, cv: c.querySelector('canvas'), title: c.querySelector('.chart-title'), sub: c.querySelector('.chart-sub'), sh: c.querySelector('.pf-cmp-sh'), rank: c.querySelector('.pf-rank')};
+  c.innerHTML = `<div class="pf-cmp-grid"><div><div class="chart-title"></div><div class="chart-sub"></div><div class="pf-seg pf-box pf-range" role="group" aria-label="Khoảng thời gian">${[['1', '1N'], ['3', '3N'], ['5', '5N'], ['all', 'Toàn bộ']].map(([k, t]) => `<button type="button" data-r="${k}" aria-pressed="${k === '5'}">${t}</button>`).join('')}</div><div class="pf-cmp-cv"><canvas role="img"></canvas></div></div><div class="pf-cmp-side"><div class="pf-cmp-sh"></div><ol class="pf-rank"></ol></div></div>`;
+  const o = {range: '5', redraw: null};
+  c.querySelectorAll('[data-r]').forEach(b => b.addEventListener('click', () => { o.range = b.dataset.r; c.querySelectorAll('[data-r]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); o.redraw?.(); }));
+  return Object.assign(o, {el: c, cv: c.querySelector('canvas'), title: c.querySelector('.chart-title'), sub: c.querySelector('.chart-sub'), sh: c.querySelector('.pf-cmp-sh'), rank: c.querySelector('.pf-rank')});
 }
-function cLine(c, labels, series, unit, digits) {
+function cLine(c, labels, series, unit, digits, ppy = 4) {
   c.cv._ch?.destroy(); if (!window.Chart) return;
+  const n = c.range === 'all' ? labels.length : Math.min(labels.length, ppy * +c.range + 1);  // 1N/3N/5N/Toàn bộ
+  labels = labels.slice(-n); series = series.map(s => ({...s, values: s.values.slice(-n)}));
   const fmt = v => nf(v, digits);
   c.cv._ch = new Chart(c.cv, {type: 'line', data: {labels, datasets: series.map(s => ({label: s.name, data: s.values, hidden: !!s.hidden, borderColor: s.color, backgroundColor: s.color, borderWidth: 2, pointRadius: 0, pointHoverRadius: 3, tension: .25, spanGaps: true}))},
     options: {responsive: true, maintainAspectRatio: false, animation: false, interaction: {mode: 'index', intersect: false},
@@ -498,12 +502,12 @@ function cSection(num, title, q, keys) {
     const per = md === 'y' ? 'năm' : md === 'ttm' ? 'TTM' : 'quý';
     let a = 0; while (a < i && ts.every(t => !fin(vals[t][a]))) a++;
     c.title.textContent = m.n; c.sub.textContent = `${m.u} · ${per} · hiện 5 mã đứng đầu, bấm chú giải để thêm mã`;
-    cLine(c, L.slice(a, i + 1).map(qLabel), ts.map(t => ({name: t, color: tkColor[t], values: vals[t].slice(a, i + 1).map(v => fin(v) ? v : null), hidden: !top.includes(t)})), m.u, m.d);
+    cLine(c, L.slice(a, i + 1).map(qLabel), ts.map(t => ({name: t, color: tkColor[t], values: vals[t].slice(a, i + 1).map(v => fin(v) ? v : null), hidden: !top.includes(t)})), m.u, m.d, md === 'y' ? 1 : 4);
     c.sh.textContent = `Xếp hạng ${qLabel(L[i] || '')} · ${rows.length}/${ts.length} mã`;
     cRank(c, rows, m.d);
     cFoot(c, 'từng doanh nghiệp, không trừ hợp nhất');
   }
-  cRenders.push(draw);
+  c.redraw = draw; cRenders.push(draw);
   s.append(c.el);
   return s;
 }
@@ -523,13 +527,13 @@ function cValuation() {
     const now = t => { const a = V[t]?.[k]; if (fin(a) && a > 0) return a; const v = ser[t].filter(fin); return v.at(-1) ?? null; };
     const rows = ts.map(t => [t, now(t), V[t]?.median5?.[k]]).filter(r => fin(r[1])).sort((x, y) => x[1] - y[1]), top = rows.slice(0, 5).map(r => r[0]);
     c.title.textContent = `${nm} từng mã theo tuần`; c.sub.textContent = `lần · từ ${lab[keys[0]]?.slice(0, 4) || ''} · bỏ giá trị ≤ 0 (lỗ) và trên ${cap} lần (EPS gần 0) · hiện 5 mã thấp nhất, bấm chú giải để thêm mã`;
-    cLine(c, keys.map(x => { const d = lab[x]; return d.slice(5, 7) + '/' + d.slice(0, 4); }), ts.map(t => ({name: t, color: tkColor[t], values: ser[t], hidden: !top.includes(t)})), 'lần', 1);
+    cLine(c, keys.map(x => { const d = lab[x]; return d.slice(5, 7) + '/' + d.slice(0, 4); }), ts.map(t => ({name: t, color: tkColor[t], values: ser[t], hidden: !top.includes(t)})), 'lần', 1, 52);
     c.sh.textContent = `${nm} hiện tại · trung vị 5 năm`;
     cRank(c, rows, 1, 'lần', x => fin(x) ? ` · ${nf(x, 1)}` : '');
     c.el.querySelectorAll(':scope > .pw-src').forEach(n => n.remove());
     c.el.append(el('div', 'pw-src', `Nguồn: <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a> (P/E, P/B theo ngày, lấy phiên cuối tuần)`));
   }
-  cRenders.push(draw);
+  c.redraw = draw; cRenders.push(draw);
   s.append(c.el);
   return s;
 }
@@ -595,6 +599,7 @@ button.pf-tk[aria-pressed=false]{opacity:.45;text-decoration:line-through}.pf-me
 .pf-bubble{width:100%;height:auto}.pf-bubble text{font:11px Inter,sans-serif;fill:#5b6479}.pf-bubble text.l{font-weight:700;fill:#1D2678}.pf-bubble line.g{stroke:#eef0f6}.pf-bubble line.z{stroke:#9AA3BD;stroke-dasharray:3 3}
 @media (max-width:1100px){.pf-kpis{grid-template-columns:repeat(3,minmax(0,1fr))!important}}@media (max-width:640px){.pf-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pf-wf-r{grid-template-columns:110px 1fr 70px}}
 :root[data-theme=dark] .pf-wf-t{background:#262c45}
+.pf-range{margin:8px 0 0}.pf-range button{padding:3px 9px}
 .pf-cmp-grid{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(220px,1fr);gap:22px}.pf-cmp-cv{position:relative;height:340px;margin-top:8px}
 .pf-cmp-side{border-left:1px solid var(--line,#eef0f6);padding-left:18px}.pf-cmp-sh{font:600 12px Inter,sans-serif;color:var(--muted,#6B7392);margin:2px 0 8px}
 .pf-rank{list-style:none;margin:0;padding:0;display:grid;gap:5px}.pf-rank li{display:grid;grid-template-columns:62px 1fr auto;gap:8px;align-items:center;font-size:12.5px}
