@@ -82,7 +82,7 @@ function recent() {
 function overview() {
   const host = $('#of-mt1-map .of-body'); if (!host || host.querySelector('.re-legal-map')) return;
   // 27/11/2026 (người dùng: "connect 2 phần này"): bỏ lưới khâu riêng; luật gắn thẳng lên sơ đồ chuỗi giá trị (linkChain).
-  host.append(el('div', 'card of-wide re-legal-map', `<h3>Khung pháp lý chính</h3><p class="chart-sub">Rê chuột vào một văn bản để thấy khâu bị tác động trên sơ đồ chuỗi giá trị phía trên · rê vào một khâu trên sơ đồ để thấy văn bản quy định nó · bấm tên văn bản để xem chi tiết</p>
+  host.append(el('div', 'card of-wide re-legal-map', `<h3>Khung pháp lý chính</h3><p class="chart-sub">Nhãn màu trên sơ đồ chuỗi giá trị phía trên khớp màu từng văn bản dưới đây · rê chuột để làm nổi khâu hoặc văn bản · bấm nhãn hoặc tên văn bản để xem chi tiết</p>
     <div class="tablewrap"><table class="lg-tbl"><thead><tr><th>Văn bản</th><th>Số hiệu</th><th>Hiệu lực</th><th>Quy định gì</th><th>Khâu</th><th>Mã liên quan</th><th>Trạng thái</th></tr></thead><tbody>${LAWS.map(([n, so, eff, what, stage, st, k, who]) =>
       `<tr data-law="${k}"><td>${link(`<b>${n}</b>`, k)}</td><td>${so}</td><td>${eff}</td><td>${what}</td><td>${stage}</td><td>${who}</td><td><span class="re-st ${ST[st][1]}">${ST[st][0]}</span></td></tr>`).join('')}</tbody></table></div>`));
   linkChain();
@@ -91,16 +91,22 @@ function overview() {
 const NODE_LAWS = {importgas: ['plan'], domestic: ['law'], importoil: ['tax'], gas: ['law', 'plan'], refine: ['tax', 'e10'], service: ['law'],
   power: ['plan'], retail: ['price', 'tax', 'e10'], use: ['price', 'tax']};
 const LAW_NAME = Object.fromEntries(LAWS.map(r => [r[6], r[0]]));
+const LAW_TAG = {law: {s: 'Luật DK', c: '#2938A8'}, price: {s: 'KD xăng dầu', c: '#861C52'}, tax: {s: 'Thuế', c: '#B07D00'}, e10: {s: 'E10', c: '#1E9C82'}, plan: {s: 'QHĐ8', c: '#D1583F'}};
 function linkChain(tries = 0) {
   const svg = $('#of-mt1-map svg.vc2'), tbl = $('.re-legal-map .lg-tbl');
   if (!svg || !tbl) { if (tries < 20) setTimeout(() => linkChain(tries + 1), 300); return; }
   if (svg.dataset.lg) return; svg.dataset.lg = '1';
   const NS = 'http://www.w3.org/2000/svg', rows = [...tbl.querySelectorAll('tr[data-law]')];
-  // Huy hiệu "⚖ n" ở góc phải trên mỗi khâu có văn bản.
+  // 27/11/2026 (người dùng: "nhìn được sự kết nối luôn thay vì rê chuột"): nhãn văn bản có màu gắn thẳng lên mép dưới từng khâu;
+  // cùng màu, cùng tên ngắn ở đầu mỗi dòng bảng → nhìn màu là nối được sơ đồ với bảng.
   svg.querySelectorAll('.vc-node').forEach(n => { const ks = NODE_LAWS[n.dataset.id]; const r = n.querySelector('rect.card'); if (!ks || !r) return;
-    const x = +r.getAttribute('x') + +r.getAttribute('width') - 46, y = +r.getAttribute('y') - 9, g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'lg-badge'); g.innerHTML = `<rect x="${x}" y="${y}" width="40" height="18" rx="9"/><text x="${x + 20}" y="${y + 13}" text-anchor="middle">⚖ ${ks.length}</text><title>${ks.map(k => LAW_NAME[k]).join(' · ')}</title>`;
-    n.append(g); });
+    let x = +r.getAttribute('x') + 12; const y = +r.getAttribute('y') + +r.getAttribute('height') - 9;
+    ks.forEach(k => { const t = LAW_TAG[k], w = t.s.length * 6.4 + 14, g = document.createElementNS(NS, 'g');
+      g.setAttribute('class', 'lg-badge'); g.dataset.law = k;
+      g.innerHTML = `<rect x="${x}" y="${y}" width="${w}" height="18" rx="9" fill="${t.c}"/><text x="${x + w / 2}" y="${y + 12.5}" text-anchor="middle">${t.s}</text><title>${LAW_NAME[k]}</title>`;
+      n.append(g); x += w + 5; }); });
+  rows.forEach(r => { const t = LAW_TAG[r.dataset.law], td = r.querySelector('td'); if (t && td && !td.querySelector('.lg-tag')) td.insertAdjacentHTML('afterbegin', `<span class="lg-tag" style="background:${t.c}" data-t="${t.s}" aria-hidden="true"></span>`); });
+  const card = svg.closest('.card'); if (card && !card.querySelector('.lg-legend')) svg.insertAdjacentHTML('beforebegin', `<div class="lg-legend"><span>Văn bản pháp lý:</span>${LAWS.map(r => `<a href="#mt4" class="re-lg-go" data-go="${r[6]}"><i style="background:${LAW_TAG[r[6]].c}"></i>${r[0]}</a>`).join('')}</div>`);
   const clear = () => { svg.classList.remove('lg-focus'); tbl.classList.remove('lg-focus'); svg.querySelectorAll('.lg-on').forEach(x => x.classList.remove('lg-on')); rows.forEach(r => r.classList.remove('lg-on')); };
   const showLaw = k => { clear(); svg.classList.add('lg-focus'); tbl.classList.add('lg-focus');
     svg.querySelectorAll('.vc-node').forEach(n => n.classList.toggle('lg-on', (NODE_LAWS[n.dataset.id] || []).includes(k))); rows.forEach(r => r.classList.toggle('lg-on', r.dataset.law === k)); };
@@ -108,8 +114,10 @@ function linkChain(tries = 0) {
   rows.forEach(r => { r.addEventListener('mouseenter', () => showLaw(r.dataset.law)); r.addEventListener('mouseleave', clear); });
   svg.querySelectorAll('.vc-node').forEach(n => { n.addEventListener('mouseenter', () => showNode(n.dataset.id)); n.addEventListener('mouseleave', clear); });
   // Bấm huy hiệu: cuộn xuống bảng, giữ các dòng văn bản của khâu đó sáng 2 giây.
-  svg.querySelectorAll('.lg-badge').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); const id = b.closest('.vc-node').dataset.id; tbl.scrollIntoView({behavior: 'smooth', block: 'center'}); showNode(id); setTimeout(clear, 2000); }));
-  const head = svg.closest('.card')?.querySelector('.vc-legend, .chart-sub, p'); if (head && !svg.closest('.card').querySelector('.lg-hint')) head.insertAdjacentHTML('afterend', '<p class="lg-hint">⚖ n = số văn bản pháp lý quy định khâu đó (bảng Khung pháp lý chính bên dưới)</p>');
+  // Bấm nhãn trên sơ đồ: sang thẳng sub-tab của văn bản đó ở tab Chính sách.
+  svg.querySelectorAll('.lg-badge').forEach(b => { b.addEventListener('click', e => { e.stopPropagation(); go(b.dataset.law); });
+    b.addEventListener('mouseenter', e => { e.stopPropagation(); showLaw(b.dataset.law); }); b.addEventListener('mouseleave', clear); });
+  card?.querySelectorAll('.lg-legend a').forEach(a => { a.addEventListener('mouseenter', () => showLaw(a.dataset.go)); a.addEventListener('mouseleave', clear); });
 }
 function style() {
   if ($('#re-legal-style')) return; const st = el('style'); st.id = 're-legal-style';
@@ -118,10 +126,11 @@ function style() {
 .re-lg-st b{font:700 12.5px Inter,sans-serif;color:#1F2A5C}.re-lg-st a{display:inline-block;padding:3px 8px;border-radius:999px;background:#EEF1FB;color:#2938A8;font:600 12px Inter,sans-serif;text-decoration:none}.re-lg-st a:hover{background:#2938A8;color:#fff}
 .re-st{display:inline-block;padding:2px 8px;border-radius:999px;font:600 11.5px Inter,sans-serif;white-space:nowrap}.re-st-on{background:#E3F5F0;color:#1d8a73}.re-st-soon{background:#E8EEFB;color:#2938A8}.re-st-amend{background:#FFF5D4;color:#8a6a00}.re-st-wait{background:#FDECEA;color:#b8432c}
 .re-recent h3,.re-legal-map h3{margin:0 0 8px}
-.vc2 .lg-badge{cursor:pointer}.vc2 .lg-badge rect{fill:#861C52}.vc2 .lg-badge text{fill:#fff;font:700 11px Inter,sans-serif;pointer-events:none}
+.vc2 .lg-badge{cursor:pointer}.vc2 .lg-badge rect{stroke:#fff;stroke-width:1.5}.vc2 .lg-badge text{fill:#fff;font:700 11px Inter,sans-serif;pointer-events:none}
 .vc2.lg-focus .vc-node,.vc2.lg-focus [class*=edge],.vc2.lg-focus path:not(.vc-node path){transition:opacity .15s}.vc2.lg-focus .vc-node:not(.lg-on){opacity:.25}.vc2.lg-focus .vc-node.lg-on rect.card{stroke:#861C52;stroke-width:2.5}
 .lg-tbl tr{transition:opacity .15s,background .15s}.lg-tbl.lg-focus tr[data-law]:not(.lg-on){opacity:.35}.lg-tbl tr.lg-on td{background:#FDF2F7}.lg-tbl tr[data-law]{cursor:default}
-.lg-hint{margin:4px 0 0;font-size:12px;color:#861C52}@media(max-width:900px){.re-lg-chain{grid-template-columns:repeat(2,1fr)!important}}`;
+.lg-tag::before{content:attr(data-t)}.lg-tag{display:inline-block;margin:0 6px 3px 0;padding:1px 8px;border-radius:999px;color:#fff;font:700 11px Inter,sans-serif;white-space:nowrap}
+.lg-legend{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:6px 0 4px;font-size:12.5px}.lg-legend span{font-weight:600;color:#6B7392}.lg-legend a{display:inline-flex;align-items:center;gap:5px;color:#1F2A5C;text-decoration:none;font-weight:600}.lg-legend a:hover{text-decoration:underline}.lg-legend i{width:10px;height:10px;border-radius:3px;display:inline-block}@media(max-width:900px){.re-lg-chain{grid-template-columns:repeat(2,1fr)!important}}`;
   document.head.append(st);
 }
 /* ---------- Chart cho sub-tab 04 E10 và 05 Quy hoạch điện VIII (27/11/2026) ---------- */
