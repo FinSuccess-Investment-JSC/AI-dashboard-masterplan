@@ -78,19 +78,29 @@ function renderKpis() {
 const LEAF_JS = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js', LEAF_CSS = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';
 const load = (u, css) => new Promise((ok, no) => { if (css ? document.querySelector(`link[href="${u}"]`) : document.querySelector(`script[src="${u}"]`)) return ok();
   const n = css ? Object.assign(document.createElement('link'), {rel: 'stylesheet', href: u}) : Object.assign(document.createElement('script'), {src: u}); n.onload = ok; n.onerror = no; document.head.append(n); });
-const VIEW = [[8.5, 102.6], [23.3, 112.3]];
-let map = null, layer = null;
+// 27/11/2026: tách 3 bản đồ Bắc · Trung · Nam (theo mẫu bản đồ nhà máy của Điện); miền theo 34 tỉnh/thành như bảng 3 miền.
+const RG = [['Bắc', 'Miền Bắc', [[19.95, 102.1], [23.45, 108.2]]], ['Trung', 'Miền Trung', [[11.2, 104.9], [20.2, 112.6]]], ['Nam', 'Miền Nam', [[8.4, 104.3], [11.9, 107.9]]]];
+const REGOF = {}; [['Bắc', 'Hà Nội|Hải Phòng|Quảng Ninh|Bắc Ninh|Hưng Yên|Ninh Bình|Phú Thọ|Thái Nguyên|Tuyên Quang|Lào Cai|Lạng Sơn|Cao Bằng|Lai Châu|Điện Biên|Sơn La'],
+  ['Trung', 'Thanh Hóa|Nghệ An|Hà Tĩnh|Quảng Trị|Huế|Đà Nẵng|Quảng Ngãi|Gia Lai|Khánh Hòa|Đắk Lắk|Lâm Đồng'], ['Nam', 'Hồ Chí Minh|Đồng Nai|Tây Ninh|Cần Thơ|Vĩnh Long|Đồng Tháp|An Giang|Cà Mau']]
+  .forEach(([r, s]) => s.split('|').forEach(pr => { REGOF[pr] = r; }));
+let map = null, MAPS = [];
 function initMap() {
   const box = byId('bnMap'); if (!box || map !== null) return; map = false;
   Promise.all([load(LEAF_CSS, true), load(LEAF_JS), window.GAS_BASE ? null : load('app/vn-base.js')]).then(() => {
-    const L = window.L; box.innerHTML = '';
-    map = L.map(box, {zoomSnap: 0.25, minZoom: 5, maxZoom: 9, attributionControl: false, scrollWheelZoom: false, maxBounds: [[4, 99], [25.5, 117]], maxBoundsViscosity: 0.9});
-    map.fitBounds(VIEW, {padding: [6, 6]});
-    L.control.attribution({prefix: false}).addAttribution('Nền: Natural Earth · Điểm bán: <a href="https://bizmap.live/" target="_blank" rel="noopener">bizmap.live</a>').addTo(map);
-    L.geoJSON(window.GAS_BASE, {interactive: false, style: f => { const r = f.properties.role; return r === 'vn' || r === 'vn-isl' ? {color: '#b9c3d8', weight: 0.9, fillColor: '#ffffff', fillOpacity: 1} : {color: '#e1e5ee', weight: 0.6, fillColor: '#f7f8fb', fillOpacity: 1}; }}).addTo(map);
-    [[16.45, 112.05, 'QĐ. Hoàng Sa (Việt Nam)'], [9.6, 113.3, 'QĐ. Trường Sa (Việt Nam)']].forEach(([la, lo, t]) => L.marker([la, lo], {interactive: false, icon: L.divIcon({className: 'bn-isl', html: esc(t), iconSize: null})}).addTo(map));
-    layer = L.layerGroup().addTo(map); drawMap();
-    new ResizeObserver(() => map.invalidateSize()).observe(box);
+    const L = window.L; box.className = 'bn-maps';
+    box.innerHTML = RG.map(([r, n]) => `<figure class="bn-mbox" data-r="${r}"><figcaption><span>${n}</span><b></b></figcaption><div class="bn-map" aria-label="Bản đồ điểm bán ${n}"></div></figure>`).join('');
+    MAPS = RG.map(([r, , view], k) => {
+      const el = box.querySelector(`.bn-mbox[data-r="${r}"] .bn-map`);
+      const m = L.map(el, {zoomSnap: 0.25, minZoom: 5, maxZoom: 10, attributionControl: false, scrollWheelZoom: false, maxBounds: [[4, 99], [25.5, 117]], maxBoundsViscosity: 0.9});
+      m.fitBounds(view, {padding: [4, 4]});
+      if (k === RG.length - 1) L.control.attribution({prefix: false}).addAttribution('Nền: Natural Earth · Điểm bán: <a href="https://bizmap.live/" target="_blank" rel="noopener">bizmap.live</a>').addTo(m);
+      L.geoJSON(window.GAS_BASE, {interactive: false, style: f => { const ro = f.properties.role; return ro === 'vn' || ro === 'vn-isl' ? {color: '#b9c3d8', weight: 0.9, fillColor: '#ffffff', fillOpacity: 1} : {color: '#e1e5ee', weight: 0.6, fillColor: '#f2f4f8', fillOpacity: 1}; }}).addTo(m);
+      if (r === 'Trung') L.marker([16.45, 112.05], {interactive: false, icon: L.divIcon({className: 'bn-isl', html: esc('QĐ. Hoàng Sa (Việt Nam)'), iconSize: null})}).addTo(m);
+      const layer = L.layerGroup().addTo(m);
+      new ResizeObserver(() => m.invalidateSize()).observe(el);
+      return {r, el, map: m, layer};
+    });
+    map = true; drawMap();
   }).catch(() => { box.textContent = 'Không tải được thư viện bản đồ (Leaflet, cdnjs).'; });
 }
 function pie(r, parts) {
@@ -102,17 +112,20 @@ function pie(r, parts) {
   return s + `<circle cx="${r}" cy="${r}" r="${r - 1}" fill="none" stroke="#fff" stroke-width="1.5"/>`;
 }
 function drawMap() {
-  if (!map || !layer) return; const L = window.L; layer.clearLayers();
+  if (!map || !MAPS.length) return; const L = window.L;
   const cs = chosen(), agg = {};
   cs.forEach(c => Object.entries(c.provinces || {}).forEach(([p, n]) => { if (!n) return; (agg[p] = agg[p] || {total: 0, rows: []}).total += n; agg[p].rows.push([c, n]); }));
-  const max = Math.max(1, ...Object.values(agg).map(a => a.total));
+  const max = Math.max(1, ...Object.values(agg).map(a => a.total)), tot = {};  // cùng thang kích thước cho cả 3 bản đồ
+  MAPS.forEach(M => M.layer.clearLayers());
   Object.entries(agg).sort((a, b) => b[1].total - a[1].total).forEach(([p, a]) => {
-    const xy = XY[p]; if (!xy) return;
-    const r = Math.round(6 + 24 * Math.sqrt(a.total / max)), rows = a.rows.sort((x, y) => y[1] - x[1]);
+    const xy = XY[p], M = MAPS.find(m => m.r === REGOF[p]); if (!xy || !M) return;
+    tot[M.r] = (tot[M.r] || 0) + a.total;
+    const r = Math.round(7 + 26 * Math.sqrt(a.total / max)), rows = a.rows.sort((x, y) => y[1] - x[1]);
     const html = `<svg width="${2 * r}" height="${2 * r}" viewBox="0 0 ${2 * r} ${2 * r}">${pie(r, rows.map(([c, n]) => [c.color, n]))}</svg>${r >= 17 ? `<b>${nf(a.total)}</b>` : ''}`;
     L.marker(xy, {icon: L.divIcon({className: 'bn-pie', html, iconSize: [2 * r, 2 * r], iconAnchor: [r, r]}), zIndexOffset: -a.total})
-      .bindTooltip(`<b>${esc(p)}</b> · ${nf(a.total)} điểm bán<br>` + rows.map(([c, n]) => `<span style="color:${c.color}">●</span> ${esc(c.name)}: ${nf(n)}`).join('<br>'), {direction: 'top', offset: [0, -r]}).addTo(layer);
+      .bindTooltip(`<b>${esc(p)}</b> · ${nf(a.total)} điểm bán<br>` + rows.map(([c, n]) => `<span style="color:${c.color}">●</span> ${esc(c.name)}: ${nf(n)}`).join('<br>'), {direction: 'top', offset: [0, -r]}).addTo(M.layer);
   });
+  MAPS.forEach(M => { const b = M.el.closest('.bn-mbox')?.querySelector('figcaption b'); if (b) b.textContent = nf(tot[M.r] || 0) + ' điểm bán'; });
   const lg = byId('bnMapLegend');
   if (lg) lg.innerHTML = cs.map(c => `<span><i style="background:${c.color}"></i>${esc(c.name)}</span>`).join('') + '<span class="bn-lg-note">Kích thước: tổng điểm bán các chuỗi đang chọn trong tỉnh · múi màu: phần của từng chuỗi</span>';
 }
