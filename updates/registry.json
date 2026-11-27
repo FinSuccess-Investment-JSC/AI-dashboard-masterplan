@@ -3670,8 +3670,7 @@
      "th-20",
      "th-21",
      "th-40",
-     "th-42",
-     "th-43"
+     "th-42"
     ]
    },
    "how": "python3 scripts/fetch_shfe.py && python3 scripts/fetch_markets.py && python3 scripts/fetch_sxd_hanoi.py → build_sector_public.py (chạy trong refresh-data.yml)",
@@ -3758,9 +3757,6 @@
     "page": "Thep/index.html",
     "blocks": [
      "th-60",
-     "th-14",
-     "th-23",
-     "th-31",
      "th-01",
      "th-04",
      "th-90",
@@ -3800,30 +3796,6 @@
    "how": "Thêm mốc mới có ngày và link.",
    "gates": [
     "Mỗi dòng có ngày + link"
-   ]
-  },
-  {
-   "id": "steel.ai.cycle",
-   "tier": "D",
-   "title": "vị trí chu kỳ ngành thép",
-   "schedule": {
-    "type": "data",
-    "sources": [],
-    "minDays": 7,
-    "material": [],
-    "note": "Viết lại khi có số giải ngân tháng mới, giá thép/HRC đổi ≥5%, hoặc BCTC quý"
-   },
-   "where": {
-    "page": "Thep/index.html",
-    "blocks": [
-     "th-02"
-    ],
-    "file": null
-   },
-   "how": "Cập nhật th-02 và catbox/riskbox; thẻ tín hiệu tự tính trong Thep/app/steel-dashboard.js.",
-   "gates": [
-    "Số khớp chart",
-    "Không đụng ô analyst"
    ]
   },
   {
