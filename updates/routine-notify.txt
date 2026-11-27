@@ -1,8 +1,5 @@
-Routine Wi 27/11/2026: 33/37 mục đã cập nhật (Wi hết credit tuần đã làm mới, hook lưu đủ kết quả).
-Bank: lãi suất huy động/liên NH/OMO/tỷ giá tới 26-27/11, đường cong TPCP 27/11, định giá 27 NH tới 26/11, tin CBTT mới nhất 26/11.
-Ngành khác: agri, xây dựng, bảo hiểm, dược, cảng, BĐS, bán lẻ, thủy sản, vận tải biển, dệt may đã build lại; tháng mới nhất macro là 10/2026.
-Lỗi giữ số cũ: bank.wi.daily (đấu thầu TPCP thiếu winning_yield), bank.wi.monthly (dự báo lãi suất thiếu scenario).
-Lỗi: Fearnleys 404; PortWatch (tên tool đổi, builder không nhận).
-sector_ratio_daily trả rỗng (cây ngành v3) nên P/E ngành giữ số cũ.
-Tin Bank: Wi không còn cấp link PDF CBTT nên cột url để trống.
+Routine tài liệu 27/11: hàng chờ 49 mục, lượt này chỉ xử lý 2 mục, chưa sửa trang nào.
+- shipping.rates: HARPEX 2.585 (20/11) trùng số đang hiển thị, nguồn lặp số 4 tuần nên không sửa.
+- power.evn-reservoirs: runner VN đã có mẫu đến 26/11.
+- 47 mục còn lại giữ trong hàng chờ, chưa đọc tài liệu gốc.
 Chưa kiểm giao diện bằng trình duyệt.

@@ -234,9 +234,9 @@
    "lastNote": "Q3/2026 BXD: 92.004 giao dịch (=92% Q2), tồn kho 51.950"
   },
   "power.evn-reservoirs": {
-   "lastAttempt": "2026-11-13T13:02:36+07:00",
-   "lastSuccess": "2026-11-13T13:02:36+07:00",
-   "lastNote": "Runner VN đã chụp hồ EVN 00h đến 11/11/2026 (data/raw/evn-reservoirs/2026-11-11.json). Không sửa trang."
+   "lastAttempt": "2026-11-27T13:02:24+07:00",
+   "lastSuccess": "2026-11-27T13:02:24+07:00",
+   "lastNote": "Runner VN đã lưu mẫu đến data/raw/evn-reservoirs/2026-11-26.json (99 file); routine cloud không mở được evn.com.vn nên không sửa trang."
   },
   "power.market-fmp": {
    "lastAttempt": "2026-11-24T13:02:37+07:00",
@@ -437,9 +437,9 @@
    "attempts": 1
   },
   "shipping.rates": {
-   "lastAttempt": "2026-11-09T13:03:34+07:00",
-   "lastSuccess": "2026-11-09T13:03:34+07:00",
-   "lastNote": "HARPEX 2.585 (06/11/2026); 2.500 TEU 47.000, 1.700 TEU 35.000 USD/ngày; mở harperpetersen.com/harpex. Cột BDI/Supramax (Handybulk 27/10) và bảng TCE Affinity chưa làm mới, nguồn không trích được số"
+   "lastAttempt": "2026-11-27T13:02:24+07:00",
+   "lastSuccess": "2026-11-27T13:02:24+07:00",
+   "lastNote": "Mở harperpetersen.com/harpex: HARPEX 2.585 ngày 20/11/2026, trùng số trang đang hiển thị (2.585, 06/11); nguồn lặp nguyên số 4 tuần liền, nghi chưa cập nhật nên không sửa trang. Các cột BDI/SCFI/TCE chưa kiểm lượt này."
   },
   "shipping.companies": {
    "lastAttempt": "2026-10-10T10:47:46+07:00",
@@ -6546,16 +6546,6 @@
    "signals": []
   },
   {
-   "id": "power.evn-reservoirs",
-   "tier": "C",
-   "title": "Hồ thủy điện EVN · ảnh chụp 00h, trung bình tháng",
-   "since": "2026-11-16T14:15:18+07:00",
-   "reasons": [
-    "lịch 16/11 07:00"
-   ],
-   "signals": []
-  },
-  {
    "id": "textile.trade-tariff",
    "tier": "C",
    "title": "Thuế Mỹ (Mục 301, danh sách miễn trừ, hạn ngạch đối thủ), FTA, xuất xứ; nhập khẩu may mặc Mỹ (OTEXA); VITAS theo thị trường",
@@ -6619,16 +6609,6 @@
    "id": "shipping.outlook",
    "tier": "C",
    "title": "BIMCO tanker/dry bulk/container, Clarksons, SCA Suez, bảo hiểm chiến tranh",
-   "since": "2026-11-16T14:15:18+07:00",
-   "reasons": [
-    "lịch 16/11 07:00"
-   ],
-   "signals": []
-  },
-  {
-   "id": "shipping.rates",
-   "tier": "C",
-   "title": "TCE tàu dầu (Affinity), BDI/Supramax (Handybulk), HARPEX, SCFI, giá tàu cũ",
    "since": "2026-11-16T14:15:18+07:00",
    "reasons": [
     "lịch 16/11 07:00"
@@ -6851,5 +6831,5 @@
    ]
   }
  ],
- "updatedAt": "2026-11-27T09:19:57+07:00"
+ "updatedAt": "2026-11-27T13:02:24+07:00"
 }
