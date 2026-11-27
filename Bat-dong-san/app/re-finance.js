@@ -1,6 +1,6 @@
 /* BĐS dân cư · tab lớn Tài chính ngành (#mt14, 26/11/2026). Chép từ Dau-khi/app/oil-finance.js, thêm hai thẻ tiền khách trả trước và vốn nằm ở
    quỹ đất từ Bat-dong-san-KCN/app/kcn-finance.js. Số từ window.RE_FIN (BCTC hợp nhất quý, VNDirect finfo; scripts/build_re_financials.py), tổng hợp bằng window.IndustryFin (app/industry-fin.js).
-   Nhóm: Vinhomes (VHM) · Chủ đầu tư nhà ở khác (NVL, KDH, NLG, DXG, PDR, DIG, CEO, AGG, TCH, NTL) · Cho thuê & môi giới (VRE, DXS). Tỷ số nhóm = tổng tử số ÷ tổng mẫu số. Chỉ mô tả dữ liệu; nguồn hiện dưới mọi chart. */
+   Nhóm (27/11/2026, theo mô hình kinh doanh): Đại đô thị, quỹ đất lớn (VHM, NVL) · Nhà ở đô thị lớn (KDH, NLG, DXG, AGG) · Đất nền & tỉnh (PDR, DIG, CEO, TCH, NTL) · Cho thuê & môi giới (VRE, DXS). Tỷ số nhóm = tổng tử số ÷ tổng mẫu số. Chỉ mô tả dữ liệu; nguồn hiện dưới mọi chart. */
 (() => {
 'use strict';
 const D = window.RE_FIN;
@@ -128,7 +128,7 @@ const grid2 = (...cards) => { const g = el('div', 'grid two g2 pf-g2'); cards.fo
 /* ---------- 1.1 Chu kỳ doanh thu và lợi nhuận ---------- */
 const PNL = [['revenue', 'Doanh thu'], ['gross', 'Lợi nhuận gộp'], ['ebitda', 'EBITDA'], ['ebit', 'EBIT'], ['npat', 'LNST']];
 function s71() {
-  const s = section('1.1', 'Kết quả kinh doanh', 'Lợi nhuận ngành đang nằm ở Vinhomes hay lan sang các chủ đầu tư còn lại?');
+  const s = section('1.1', 'Kết quả kinh doanh', 'Lợi nhuận ngành đang dồn vào mô hình nào: đại đô thị, nhà ở đô thị lớn hay đất nền tỉnh?');
   // Chart 1: quy mô theo nhóm
   const c1 = card('re-fin-pnl', 'Doanh thu và lợi nhuận theo nhóm doanh nghiệp (tỷ đồng)', 'Cột chồng theo nhóm doanh nghiệp · đổi chỉ tiêu và cách xem'); let m1 = 'npat', v1 = 'abs';
   seg(c1, 'Chỉ tiêu', PNL, () => m1, k => { m1 = k; draw1(); }); seg(c1, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['share', 'Tỷ trọng (%)']], () => v1, k => { v1 = k; draw1(); });
@@ -344,8 +344,7 @@ function s76() {
     chart(c3.host, 're-fin-roic-cycle', L, [{name: 'ROIC (%)', color: LINE[0], values: roic(x, mode).values}, {name: 'CAPEX/khấu hao (lần)', color: LINE[2], values: E.ratio({m: 'capex'}, {m: 'da'}, x, mode).values}, {name: 'XDCB dở dang/tổng tài sản (%)', color: LINE[1], values: cipTa}], {unit: '', digits: 1});
     foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; đặt cạnh nhau để phân biệt ROIC thấp do vận hành với ROIC thấp khi dự án đang xây`); }
   renders.push(draw3);
-  const c4 = card('re-fin-map', 'Bản đồ hiệu quả vốn', 'Trục ngang: nợ vay ròng/EBITDA TTM · trục dọc: ROIC TTM · kích thước: vốn đầu tư'); let v4 = 'group';
-  seg(c4, 'Đơn vị', [['group', 'Nhóm'], ['firm', 'Doanh nghiệp']], () => v4, k => { v4 = k; draw4(); });
+  const c4 = card('re-fin-map', 'Bản đồ hiệu quả vốn', 'Mỗi bong bóng một doanh nghiệp, màu theo nhóm · trục ngang: nợ vay ròng/EBITDA TTM · trục dọc: ROIC TTM · kích thước: vốn đầu tư'); const v4 = 'firm';  // 27/11/2026: chỉ vẽ từng doanh nghiệp; bong bóng gộp nhóm làm lệch (một mã lớn so với phần còn lại)
   function draw4() { const x = sel(), i = S.end, ri = roic(x, 'ttm'), ndp = E.per('net_debt', x, 'q'), ebp = E.per('ebitda', x, 'ttm'), icp = E.per('ic', x, 'q');
     let pts;
     if (v4 === 'firm') pts = x.map(t => ({l: t, c: GC[E.groupOf[t]], x: fin(ndp[t][i]) && fin(ebp[t][i]) && ebp[t][i] > 0 ? ndp[t][i] / ebp[t][i] : null, y: ri.each[t][i], s: icp[t][i]})).filter(p => fin(p.x) && fin(p.y) && fin(p.s) && p.s > 0);
