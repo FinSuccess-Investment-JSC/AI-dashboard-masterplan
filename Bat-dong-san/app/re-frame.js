@@ -78,6 +78,7 @@ body[data-re-frame] .majorpane :is(.card th,.chart-sub,.note,.source-note,.resea
 body[data-re-frame] .majorpane .card th{font-weight:600!important}
 body[data-re-frame] .majorpane :is(.card td b,.card p b,.tx-ch,.gt-name b){color:var(--of-t1)!important}
 body[data-re-frame] .majorpane .card [style*="font-size:12.5px"]{font-size:14px!important;color:var(--of-t2)!important}
+body[data-re-frame] .majorpane .comparison-heading h2{color:#fff!important;background:none!important;box-shadow:none!important}
 :root[data-theme=dark] body[data-re-frame] .majorpane{--of-t1:#E8EBFA;--of-t2:#C4C9E2;--of-t3:#9AA1BC}
 .gt{margin:12px 0 8px;font-size:13px}
 .gt-head,.gt-row{display:grid;grid-template-columns:200px minmax(0,1fr) 230px;gap:16px;align-items:center}
@@ -237,6 +238,7 @@ function financePane() {
     if (n.matches('.financial-comparison') || n.querySelector('table')) n.classList.add('of-wide');
     if (was && !was.querySelector('[data-block-id],canvas,svg,table,.card')) was.remove(); };
   take($('.financial-comparison'));
+  { const cr = el('div', 'of-wide re-cmp-root'); cr.id = 're-cmp-root'; cb.prepend(cr); }  // 7 mục so sánh từng mã (ReFinance.buildCompare)
   CMP_IDS.forEach(id => take(block(id))); CMP_SEL.forEach(q => $$(q).forEach(take));
   if (!cb.children.length) cb.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu so sánh doanh nghiệp.'));
   { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };

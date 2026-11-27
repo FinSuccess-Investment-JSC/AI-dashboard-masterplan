@@ -70,6 +70,7 @@ body[data-port-frame] .majorpane :is(.card th,.chart-sub,.note,.source-note,.res
 body[data-port-frame] .majorpane .card th{font-weight:600!important}
 body[data-port-frame] .majorpane :is(.card td b,.card p b,.tx-ch,.gt-name b){color:var(--of-t1)!important}
 body[data-port-frame] .majorpane .card [style*="font-size:12.5px"]{font-size:14px!important;color:var(--of-t2)!important}
+body[data-port-frame] .majorpane .comparison-heading h2{color:#fff!important;background:none!important;box-shadow:none!important}
 :root[data-theme=dark] body[data-port-frame] .majorpane{--of-t1:#E8EBFA;--of-t2:#C4C9E2;--of-t3:#9AA1BC}
 .gt{margin:12px 0 8px;font-size:13px}
 .gt-head,.gt-row{display:grid;grid-template-columns:200px minmax(0,1fr) 230px;gap:16px;align-items:center}
