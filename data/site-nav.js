@@ -35,11 +35,9 @@ window.FS_SITE_NAV = {
       ]},
       {label: 'Hóa chất', children: [
         {key: 'fertilizer', label: 'Phân bón'},
-        {label: 'Phốt pho', soon: true},
-        {key: 'chloralkali', label: 'Xút – Clo'}
+        {key: 'chloralkali', label: 'P4 – Xút – Clo'}
       ]},
       {label: 'Thực phẩm & đồ uống', children: [
-        {key: 'agri', label: 'Nông nghiệp & thực phẩm'},
         {key: 'sugar', label: 'Đường'},
         {key: 'dairy', label: 'Sữa'},
         {key: 'beer', label: 'Bia'}
