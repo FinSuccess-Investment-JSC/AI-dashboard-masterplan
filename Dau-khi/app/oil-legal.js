@@ -81,10 +81,35 @@ function recent() {
 }
 function overview() {
   const host = $('#of-mt1-map .of-body'); if (!host || host.querySelector('.re-legal-map')) return;
-  host.append(el('div', 'card of-wide re-legal-map', `<h3>Khung pháp lý chính</h3><p class="chart-sub">Văn bản nào quy định khâu nào của chuỗi giá trị · bấm tên văn bản để xem chi tiết ở tab Chính sách</p>
-    <div class="re-lg-chain" style="grid-template-columns:repeat(${STAGES.length},minmax(0,1fr))">${STAGES.map(([s, ls], i) => `<div class="re-lg-st"><b>${i + 1}. ${s}</b>${ls.map(([t, k]) => link(t, k)).join('')}</div>`).join('')}</div>
-    <div class="tablewrap"><table><thead><tr><th>Văn bản</th><th>Số hiệu</th><th>Hiệu lực</th><th>Quy định gì</th><th>Khâu</th><th>Mã liên quan</th><th>Trạng thái</th></tr></thead><tbody>${LAWS.map(([n, so, eff, what, stage, st, k, who]) =>
-      `<tr><td>${link(`<b>${n}</b>`, k)}</td><td>${so}</td><td>${eff}</td><td>${what}</td><td>${stage}</td><td>${who}</td><td><span class="re-st ${ST[st][1]}">${ST[st][0]}</span></td></tr>`).join('')}</tbody></table></div>`));
+  // 27/11/2026 (người dùng: "connect 2 phần này"): bỏ lưới khâu riêng; luật gắn thẳng lên sơ đồ chuỗi giá trị (linkChain).
+  host.append(el('div', 'card of-wide re-legal-map', `<h3>Khung pháp lý chính</h3><p class="chart-sub">Rê chuột vào một văn bản để thấy khâu bị tác động trên sơ đồ chuỗi giá trị phía trên · rê vào một khâu trên sơ đồ để thấy văn bản quy định nó · bấm tên văn bản để xem chi tiết</p>
+    <div class="tablewrap"><table class="lg-tbl"><thead><tr><th>Văn bản</th><th>Số hiệu</th><th>Hiệu lực</th><th>Quy định gì</th><th>Khâu</th><th>Mã liên quan</th><th>Trạng thái</th></tr></thead><tbody>${LAWS.map(([n, so, eff, what, stage, st, k, who]) =>
+      `<tr data-law="${k}"><td>${link(`<b>${n}</b>`, k)}</td><td>${so}</td><td>${eff}</td><td>${what}</td><td>${stage}</td><td>${who}</td><td><span class="re-st ${ST[st][1]}">${ST[st][0]}</span></td></tr>`).join('')}</tbody></table></div>`));
+  linkChain();
+}
+// Khâu trên sơ đồ (data-id của value-chain.js) → văn bản quy định khâu đó.
+const NODE_LAWS = {importgas: ['plan'], domestic: ['law'], importoil: ['tax'], gas: ['law', 'plan'], refine: ['tax', 'e10'], service: ['law'],
+  power: ['plan'], retail: ['price', 'tax', 'e10'], use: ['price', 'tax']};
+const LAW_NAME = Object.fromEntries(LAWS.map(r => [r[6], r[0]]));
+function linkChain(tries = 0) {
+  const svg = $('#of-mt1-map svg.vc2'), tbl = $('.re-legal-map .lg-tbl');
+  if (!svg || !tbl) { if (tries < 20) setTimeout(() => linkChain(tries + 1), 300); return; }
+  if (svg.dataset.lg) return; svg.dataset.lg = '1';
+  const NS = 'http://www.w3.org/2000/svg', rows = [...tbl.querySelectorAll('tr[data-law]')];
+  // Huy hiệu "⚖ n" ở góc phải trên mỗi khâu có văn bản.
+  svg.querySelectorAll('.vc-node').forEach(n => { const ks = NODE_LAWS[n.dataset.id]; const r = n.querySelector('rect.card'); if (!ks || !r) return;
+    const x = +r.getAttribute('x') + +r.getAttribute('width') - 46, y = +r.getAttribute('y') - 9, g = document.createElementNS(NS, 'g');
+    g.setAttribute('class', 'lg-badge'); g.innerHTML = `<rect x="${x}" y="${y}" width="40" height="18" rx="9"/><text x="${x + 20}" y="${y + 13}" text-anchor="middle">⚖ ${ks.length}</text><title>${ks.map(k => LAW_NAME[k]).join(' · ')}</title>`;
+    n.append(g); });
+  const clear = () => { svg.classList.remove('lg-focus'); tbl.classList.remove('lg-focus'); svg.querySelectorAll('.lg-on').forEach(x => x.classList.remove('lg-on')); rows.forEach(r => r.classList.remove('lg-on')); };
+  const showLaw = k => { clear(); svg.classList.add('lg-focus'); tbl.classList.add('lg-focus');
+    svg.querySelectorAll('.vc-node').forEach(n => n.classList.toggle('lg-on', (NODE_LAWS[n.dataset.id] || []).includes(k))); rows.forEach(r => r.classList.toggle('lg-on', r.dataset.law === k)); };
+  const showNode = id => { const ks = NODE_LAWS[id]; if (!ks) return; clear(); tbl.classList.add('lg-focus'); rows.forEach(r => r.classList.toggle('lg-on', ks.includes(r.dataset.law))); };
+  rows.forEach(r => { r.addEventListener('mouseenter', () => showLaw(r.dataset.law)); r.addEventListener('mouseleave', clear); });
+  svg.querySelectorAll('.vc-node').forEach(n => { n.addEventListener('mouseenter', () => showNode(n.dataset.id)); n.addEventListener('mouseleave', clear); });
+  // Bấm huy hiệu: cuộn xuống bảng, giữ các dòng văn bản của khâu đó sáng 2 giây.
+  svg.querySelectorAll('.lg-badge').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); const id = b.closest('.vc-node').dataset.id; tbl.scrollIntoView({behavior: 'smooth', block: 'center'}); showNode(id); setTimeout(clear, 2000); }));
+  const head = svg.closest('.card')?.querySelector('.vc-legend, .chart-sub, p'); if (head && !svg.closest('.card').querySelector('.lg-hint')) head.insertAdjacentHTML('afterend', '<p class="lg-hint">⚖ n = số văn bản pháp lý quy định khâu đó (bảng Khung pháp lý chính bên dưới)</p>');
 }
 function style() {
   if ($('#re-legal-style')) return; const st = el('style'); st.id = 're-legal-style';
@@ -92,7 +117,11 @@ function style() {
 .re-lg-chain{display:grid;gap:8px;margin:12px 0 14px}.re-lg-st{display:flex;flex-direction:column;gap:5px;padding:10px;border:1px solid #E4E7EE;border-radius:10px;background:#FAFBFE}
 .re-lg-st b{font:700 12.5px Inter,sans-serif;color:#1F2A5C}.re-lg-st a{display:inline-block;padding:3px 8px;border-radius:999px;background:#EEF1FB;color:#2938A8;font:600 12px Inter,sans-serif;text-decoration:none}.re-lg-st a:hover{background:#2938A8;color:#fff}
 .re-st{display:inline-block;padding:2px 8px;border-radius:999px;font:600 11.5px Inter,sans-serif;white-space:nowrap}.re-st-on{background:#E3F5F0;color:#1d8a73}.re-st-soon{background:#E8EEFB;color:#2938A8}.re-st-amend{background:#FFF5D4;color:#8a6a00}.re-st-wait{background:#FDECEA;color:#b8432c}
-.re-recent h3,.re-legal-map h3{margin:0 0 8px}@media(max-width:900px){.re-lg-chain{grid-template-columns:repeat(2,1fr)!important}}`;
+.re-recent h3,.re-legal-map h3{margin:0 0 8px}
+.vc2 .lg-badge{cursor:pointer}.vc2 .lg-badge rect{fill:#861C52}.vc2 .lg-badge text{fill:#fff;font:700 11px Inter,sans-serif;pointer-events:none}
+.vc2.lg-focus .vc-node,.vc2.lg-focus [class*=edge],.vc2.lg-focus path:not(.vc-node path){transition:opacity .15s}.vc2.lg-focus .vc-node:not(.lg-on){opacity:.25}.vc2.lg-focus .vc-node.lg-on rect.card{stroke:#861C52;stroke-width:2.5}
+.lg-tbl tr{transition:opacity .15s,background .15s}.lg-tbl.lg-focus tr[data-law]:not(.lg-on){opacity:.35}.lg-tbl tr.lg-on td{background:#FDF2F7}.lg-tbl tr[data-law]{cursor:default}
+.lg-hint{margin:4px 0 0;font-size:12px;color:#861C52}@media(max-width:900px){.re-lg-chain{grid-template-columns:repeat(2,1fr)!important}}`;
   document.head.append(st);
 }
 /* ---------- Chart cho sub-tab 04 E10 và 05 Quy hoạch điện VIII (27/11/2026) ---------- */
