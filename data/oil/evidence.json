@@ -293,5 +293,35 @@
   "quote": "Nhiệt điện khí trong nước: 10.861 - 14.930 MW (chiếm tỷ lệ 5,9 - 6,3%);",
   "status": "match",
   "note": ""
+ },
+ {
+  "block": "dau-khi-qh8",
+  "claim": "Nhơn Trạch 3&4 tổng công suất",
+  "value": "1.624 MW",
+  "url": "https://vietnamnews.vn/economy/1731874/viet-nam-inaugurates-1-4-billion-lng-power-plants-in-energy-security-push.html",
+  "opened_at": "2026-11-27",
+  "quote": "with a combined capacity of 1,624 megawatts (MW)",
+  "status": "match",
+  "note": "Viet Nam News 14/12/2025"
+ },
+ {
+  "block": "dau-khi-qh8",
+  "claim": "Nhơn Trạch 3&4 vận hành thương mại",
+  "value": "05/01/2026",
+  "url": "https://vneconomy.vn/nha-may-dien-lng-dau-tien-van-hanh-thuong-mai-mo-duong-cho-chuyen-dich-nang-luong.htm",
+  "opened_at": "2026-11-27",
+  "quote": "dự án điện khí tự nhiên hóa lỏng (LNG) đầu tiên tại Việt Nam [đã vận hành thương mại ngày 5/1/2026; tổng công suất hơn 1,6 GW]",
+  "status": "match",
+  "note": "VnEconomy 07/01/2026"
+ },
+ {
+  "block": "dau-khi-qh8",
+  "claim": "Tổng công suất nguồn điện cuối 2025 và cơ cấu",
+  "value": "87.600 MW; than 28.100; thủy 24.640; tái tạo 24.453",
+  "url": "https://cafef.vn/evn-cong-bo-doanh-thu-nam-2025-dat-645195-ty-dong-tang-10-so-voi-nam-ngoai-188251229150234112.chn",
+  "opened_at": "2026-11-27",
+  "quote": "tổng công suất nguồn điện toàn hệ thống (không bao gồm điện nhập khẩu) ước đạt khoảng 87.600 MW",
+  "status": "match",
+  "note": "CafeF 29/12/2025; phần còn lại ~10.400 MW tự tính, không tách được điện khí"
  }
 ]

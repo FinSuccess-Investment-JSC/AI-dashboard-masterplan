@@ -139,14 +139,19 @@ function gasPowerChart() {
 }
 function qh8Chart() {
   if (!window.Chart) return null;
-  const c = chartCard('dau-khi-qh8', 'Quy hoạch điện VIII điều chỉnh: công suất điện khí mục tiêu năm 2030',
-    'MW · khí trong nước là khoảng 10.861–14.930 MW (phần nhạt là biên trên) · tỷ lệ trong ngoặc là tỷ trọng tổng công suất',
-    `<a href="https://tapchicongthuong.vn/thu-tuong-phe-duyet-dieu-chinh-quy-hoach-dien-viii-139491.htm" target="_blank" rel="noopener">QĐ 768/QĐ-TTg qua Tạp chí Công Thương 16/04/2025</a>`, 220);
-  new Chart(c.querySelector('canvas'), {type: 'bar', data: {labels: ['Nhiệt điện LNG (9,5–12,3%)', 'Nhiệt điện khí trong nước (5,9–6,3%)'], datasets: [
-      {label: 'Mức thấp / mục tiêu', data: [22524, 10861], backgroundColor: '#2938A8', borderRadius: 4, stack: 's'},
-      {label: 'Biên trên', data: [0, 14930 - 10861], backgroundColor: 'rgba(41,56,168,.3)', borderRadius: 4, stack: 's'}]},
-    options: {indexAxis: 'y', responsive: true, maintainAspectRatio: false, animation: false, plugins: {legend: {display: false}, tooltip: {callbacks: {label: x => x.datasetIndex ? ` Biên trên: ${nf(14930)} MW` : ` ${nf(x.parsed.x)} MW`}}},
-      scales: {x: AX(v => nf(v), {stacked: true, beginAtZero: true}), y: {stacked: true, grid: {display: false}, ticks: {color: '#3B4256', font: {size: 12.5}}}}}});
+  // 27/11/2026: thêm công suất đang vận hành. LNG: Nhơn Trạch 3 & 4 (1.624 MW, vận hành thương mại 05/01/2026) là nhà máy LNG duy nhất.
+  // Khí trong nước: EVN/Bộ Công Thương không công bố tách riêng — chỉ ghi phần còn lại của cơ cấu EVN cuối 2025 (tự tính), không vẽ cột.
+  const LNG_NOW = 1624, LNG_T = 22524;
+  const c = chartCard('dau-khi-qh8', `Điện LNG: đang vận hành ${nf(LNG_NOW)} MW, mới bằng ${nf(LNG_NOW / LNG_T * 100, 1)}% mục tiêu 2030`,
+    'MW · cột đậm: đang vận hành (đầu 2026) · cột nhạt: mục tiêu 2030 theo QĐ 768/QĐ-TTg; khí trong nước là khoảng 10.861–14.930 MW',
+    `${A('https://vietnamnews.vn/economy/1731874/viet-nam-inaugurates-1-4-billion-lng-power-plants-in-energy-security-push.html', 'Viet Nam News 14/12/2025')} (1.624 MW), ${A('https://vneconomy.vn/nha-may-dien-lng-dau-tien-van-hanh-thuong-mai-mo-duong-cho-chuyen-dich-nang-luong.htm', 'VnEconomy 07/01/2026')} (vận hành thương mại 05/01/2026), ${A('https://tapchicongthuong.vn/thu-tuong-phe-duyet-dieu-chinh-quy-hoach-dien-viii-139491.htm', 'QĐ 768/QĐ-TTg')}`, 230);
+  new Chart(c.querySelector('canvas'), {type: 'bar', data: {labels: ['Nhiệt điện LNG', 'Nhiệt điện khí trong nước'], datasets: [
+      {label: 'Đang vận hành', data: [LNG_NOW, null], backgroundColor: '#2938A8', borderRadius: 4},
+      {label: 'Mục tiêu 2030 (mức thấp)', data: [LNG_T, 10861], backgroundColor: 'rgba(41,56,168,.3)', borderRadius: 4, stack: 't'},
+      {label: 'Mục tiêu 2030 (biên trên thêm)', data: [0, 14930 - 10861], backgroundColor: 'rgba(41,56,168,.14)', borderRadius: 4, stack: 't'}]},
+    options: {indexAxis: 'y', responsive: true, maintainAspectRatio: false, animation: false, plugins: {legend: LEG, tooltip: {callbacks: {label: x => x.datasetIndex === 2 ? ` Biên trên: ${nf(14930)} MW` : ` ${x.dataset.label}: ${nf(x.parsed.x)} MW`}}},
+      scales: {x: AX(v => nf(v), {beginAtZero: true}), y: {grid: {display: false}, ticks: {color: '#3B4256', font: {size: 12.5}}}}}});
+  c.querySelector('.pw-src').insertAdjacentHTML('beforebegin', `<p class="note" style="margin:8px 0 0">Công suất nhiệt điện khí trong nước đang vận hành chưa có số chính thức tách riêng. EVN công bố cuối 2025 tổng công suất ~87.600 MW, trong đó than 28.100, thủy điện 24.640, tái tạo 24.453 MW → phần còn lại <b>~10.400 MW</b> gồm điện khí, dầu và nguồn khác (tự tính, ${A('https://cafef.vn/evn-cong-bo-doanh-thu-nam-2025-dat-645195-ty-dong-tang-10-so-voi-nam-ngoai-188251229150234112.chn', 'CafeF 29/12/2025')}).</p>`);
   return c;
 }
 function charts() {
