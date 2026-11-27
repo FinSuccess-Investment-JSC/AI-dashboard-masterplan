@@ -32,10 +32,15 @@ const TREE = {
       gap: 'Chưa có chuỗi sản lượng tiêu thụ xăng dầu, số dư Quỹ bình ổn và mức chiết khấu đại lý.'},
     {k: 'flows', n: '06', t: 'Vận tải & dòng chảy', d: 'Lưu lượng tàu qua Hormuz, Bab el-Mandeb và xuất khẩu dầu thô Trung Đông.', ids: ['dau-khi-37', 'dau-khi-41', 'dau-khi-40']},
   ]},
-  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Điều hành giá và Luật Dầu khí: tác động lên từng khâu.', subs: [
-    {k: 'price', n: '01', t: 'Điều hành giá', d: 'Cơ chế điều hành giá xăng dầu và tác động trong quý.', canv: ['chPolicyPremium', 'chPolicyChange'], ids: ['dau-khi-27'], rest: true},
-    {k: 'law', n: '02', t: 'Luật Dầu khí 2026', d: 'Tác động ở đầu nguồn chu kỳ đầu tư.', ids: ['dau-khi-28']},
-    {k: 'tax', n: '03', t: 'Thuế & xăng E10', d: 'Các mức thuế xăng dầu đang áp dụng và lộ trình xăng E10.', ids: []},
+  // 27/11/2026 (người dùng chốt flow "ngành nhiều luật", BĐS làm mẫu): mỗi sub-tab là một văn bản, xếp theo khâu chuỗi giá trị
+  // (thượng nguồn → phân phối → thuế → nhiên liệu → khí & LNG); tóm tắt 3–5 dòng và sub-tab "Mới duyệt gần đây" do app/oil-legal.js thêm.
+  mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Mỗi sub-tab là một văn bản pháp lý lớn: tóm tắt, quy định trước và sau, tác động lên doanh nghiệp.', subs: [
+    {k: 'law', n: '01', t: 'Luật Dầu khí 2026', d: 'Luật 10/2026/QH16, hiệu lực 01/03/2027: tác động ở đầu nguồn chu kỳ đầu tư.', ids: ['dau-khi-28']},
+    {k: 'price', n: '02', t: 'Kinh doanh xăng dầu & điều hành giá', d: 'NĐ 83/2014 và sửa đổi, dự thảo nghị định thay thế; cơ chế điều hành giá.', canv: ['chPolicyPremium', 'chPolicyChange'], ids: ['dau-khi-27'], rest: true},
+    {k: 'tax', n: '03', t: 'Thuế xăng dầu', d: 'Các mức thuế xăng dầu đang giảm và thời hạn.', ids: []},
+    {k: 'e10', n: '04', t: 'Xăng sinh học E10', d: 'TT 50/2025/TT-BCT: E10 bắt buộc từ 01/06/2026.', ids: []},
+    {k: 'plan', n: '05', t: 'Quy hoạch điện VIII & LNG', d: 'QĐ 768/QĐ-TTg: nhu cầu khí cho phát điện đến 2030.', ids: []},
+    {k: 'docs', n: '06', t: 'Mới duyệt gần đây', d: 'Văn bản mới thông qua, mới hiệu lực, dự thảo đang trình.', ids: []},
   ]},
 };
 const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
