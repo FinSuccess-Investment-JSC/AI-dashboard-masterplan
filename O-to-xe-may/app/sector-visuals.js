@@ -88,7 +88,12 @@
   /* ---------- 3. Heatmap tăng trưởng YoY ---------- */
   function heatmap() {
     const pane = document.getElementById('pane-mt2'); if (!pane || pane.querySelector('.fsv-heat')) return;
-    const seenName = new Set(), rows = series.filter(s => s.unit.trim() !== '%' && s.pts.length >= 25 && !seenName.has(s.name) && seenName.add(s.name)).slice(0, 12); if (rows.length < 3) return;
+    // 27/11/2026: mỗi ngành chỉ giữ hàng hóa/chỉ tiêu tác động trực tiếp tới ngành (dữ liệu dùng chung RETAIL_PUBLIC cho Bán lẻ, Sữa, Bia, Ô tô).
+    const KEEP = {dairy: ['smp', 'wmp', 'milk_output', 'milkpowder_output'], beer: ['beer_output'], auto: ['car_output', 'moto_output', 'car_import'],
+      retail: ['retail_total', 'retail_goods', 'tourists', 'gold_sjc', 'palm_oil', 'soymeal', 'corn']};
+    const keep = key === 'RETAIL_PUBLIC' ? KEEP[document.body.dataset.pkg || 'retail'] : null;
+    const pool = keep ? keep.map(id => series.find(s => s.id === id)).filter(Boolean) : series;
+    const seenName = new Set(), rows = pool.filter(s => s.unit.trim() !== '%' && s.pts.length >= 25 && !seenName.has(s.name) && seenName.add(s.name)).slice(0, 12); if (rows.length < (keep ? 1 : 3)) return;
     const months = [...new Set(rows.flatMap(s => s.pts.map(p => p[0])))].sort().slice(-24);
     const cell = v => {
       if (v == null) return '<td class="na">·</td>';
