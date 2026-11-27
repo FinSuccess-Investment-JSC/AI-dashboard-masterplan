@@ -3870,5 +3870,165 @@
   "Bà Rịa: công suất mâu thuẫn (390 vs 340 MW), mỏ cấp khí chưa xác nhận.",
   "Khách hàng công nghiệp KCN Nhơn Trạch, Hiệp Phước (CNG/LPG): không có nguồn xác nhận → không đưa vào.",
   "Mỏ Cá Rồng Đỏ, Hồng Ngọc: chưa có nguồn đã mở, không vẽ."
- ]
+ ],
+ "pipeline_summary": {
+  "note": "Chiều dài, công suất lấy từ bản ghi đường ống (nguồn từng dòng). Cước vận chuyển: mức áp cho khí cấp Đạm Phú Mỹ năm 2020 (Báo Đầu tư 2021); cước PM3 – Cà Mau không công bố.",
+  "rows": [
+   {
+    "id": "cuu_long_bach_ho_dinh_co",
+    "basin": "Cửu Long",
+    "name": "Bạch Hổ – Long Hải – Dinh Cố",
+    "offshore_km": 106.5,
+    "onshore_km": 16.72,
+    "capacity_bcm": 2,
+    "capacity_note": "thiết kế, số 2014",
+    "cod": "1995",
+    "field": "bach_ho",
+    "plant": "fert_dpm",
+    "serves": "GDC Phú Mỹ → Đạm Phú Mỹ, cụm điện Phú Mỹ, Bà Rịa",
+    "fee_usd_mmbtu": "1,02 (khí giá rẻ Bạch Hổ, Rồng – Đồi Mồi); 3,2 (Cửu Long khác)",
+    "length_note": "Bờ: Long Hải – Bà Rịa 16,72 km; khí đi tiếp Dinh Cố – Phú Mỹ ~29 km",
+    "status": "operating",
+    "sources": [
+     {
+      "title": "Tống Cảnh Sơn và cs., Công nghệ thu gom, xử lý và vận chuyển khí đồng hành ở các mỏ của Vietsovpetro tại Lô 09-1, Tạp chí Dầu khí số 9/2020 tr.40-48",
+      "url": "https://petrovietnam.vn/DataStore/Documents/2020/TCDK/T%209/p.40-48%20-%20Tong%20Canh%20Son-1.pdf",
+      "period": "số 9/2020; số liệu đến 31/12/2019"
+     },
+     {
+      "title": "Các dự án khí đang vận hành và triển khai (Tạp chí Công Thương)",
+      "url": "https://tapchicongthuong.vn/cac-du-an-khi-dang-van-hanh-va-trien-khai-34439.htm",
+      "period": "bài 07/04/2014"
+     },
+     {
+      "title": "Đạm Phú Mỹ thận trọng trước xu hướng tăng giá khí (Báo Đầu tư)",
+      "url": "https://baodautu.vn/dam-phu-my-than-trong-truoc-xu-huong-tang-gia-khi-d145186.html",
+      "period": "17/06/2021"
+     }
+    ]
+   },
+   {
+    "id": "ncs1",
+    "basin": "Nam Côn Sơn",
+    "name": "Nam Côn Sơn 1 (Lan Tây – Long Hải – Phú Mỹ)",
+    "offshore_km": 360,
+    "onshore_km": 40,
+    "capacity_bcm": 7,
+    "capacity_note": "thiết kế",
+    "cod": "2002",
+    "field": "lan_tay_lan_do",
+    "plant": "fert_dpm",
+    "serves": "GDC Phú Mỹ → Đạm Phú Mỹ, cụm điện Phú Mỹ, Nhơn Trạch",
+    "fee_usd_mmbtu": "1,4",
+    "length_note": "Nguồn 09/2026 ghi \"dài hơn 370 km\" cho đoạn biển",
+    "status": "operating",
+    "sources": [
+     {
+      "title": "Các dự án khí đang vận hành và triển khai (Tạp chí Công Thương)",
+      "url": "https://tapchicongthuong.vn/cac-du-an-khi-dang-van-hanh-va-trien-khai-34439.htm",
+      "period": "bài 07/04/2014"
+     },
+     {
+      "title": "PV GAS mở thêm cửa tiếp nhận nguồn khí 7,4 tỷ m³ từ Lô 12/11 (Người Quan Sát)",
+      "url": "https://nguoiquansat.vn/pv-gas-mo-them-cua-tiep-nhan-nguon-khi-7-4-ty-m-tu-lo-12-11-ngoai-bien-dong-318927.html",
+      "period": "bài 28/09/2026"
+     },
+     {
+      "title": "Đạm Phú Mỹ thận trọng trước xu hướng tăng giá khí (Báo Đầu tư)",
+      "url": "https://baodautu.vn/dam-phu-my-than-trong-truoc-xu-huong-tang-gia-khi-d145186.html",
+      "period": "17/06/2021"
+     }
+    ]
+   },
+   {
+    "id": "ncs2_phase1",
+    "basin": "Nam Côn Sơn",
+    "name": "Nam Côn Sơn 2 (GĐ1 + GĐ2)",
+    "offshore_km": 325,
+    "onshore_km": null,
+    "capacity_bcm": 6.7,
+    "capacity_note": "18,4 triệu m³/ngày, tự quy đổi ×365",
+    "cod": "2015 (GĐ1), 2020 (GĐ2)",
+    "field": "hai_thach_moc_tinh",
+    "plant": "fert_dpm",
+    "serves": "GPP2 Dinh Cố → GDC Phú Mỹ",
+    "fee_usd_mmbtu": "1,4 (cước Nam Côn Sơn)",
+    "length_note": "325 km cho toàn hệ NCS2 (151 km GĐ1 + 118 km GĐ2 + đoạn Hải Thạch – Thiên Ưng); đoạn bờ GPP2 → Phú Mỹ ~29,5 km chưa cộng",
+    "status": "operating",
+    "sources": [
+     {
+      "title": "Hoàn thành và đưa vào khai thác Dự án khí Nam Côn Sơn 2, giai đoạn 1",
+      "url": "https://tapchicongthuong.vn/hoan-thanh-va-dua-vao-khai-thac-du-an-khi-nam-con-son-2--giai-doan-1-25699.htm",
+      "period": "bài 16/12/2015"
+     },
+     {
+      "title": "Nam Con Son 2 Gas Pipeline (Offshore Technology project profile)",
+      "url": "https://www.offshore-technology.com/projects/nam-con-son-2-gas-pipeline/",
+      "period": "hồ sơ dự án, nội dung đến khoảng 2019–2020 (truy cập 26/11/2026)"
+     },
+     {
+      "title": "Đạm Phú Mỹ thận trọng trước xu hướng tăng giá khí (Báo Đầu tư)",
+      "url": "https://baodautu.vn/dam-phu-my-than-trong-truoc-xu-huong-tang-gia-khi-d145186.html",
+      "period": "17/06/2021"
+     }
+    ]
+   },
+   {
+    "id": "pm3_ca_mau",
+    "basin": "Malay – Thổ Chu",
+    "name": "PM3 – Cà Mau",
+    "offshore_km": 298,
+    "onshore_km": 27,
+    "capacity_bcm": 2,
+    "capacity_note": "thiết kế",
+    "cod": "2007",
+    "field": "pm3_caa",
+    "plant": "fert_dcm",
+    "serves": "Đạm Cà Mau, Điện Cà Mau 1 & 2, GPP Cà Mau",
+    "fee_usd_mmbtu": null,
+    "length_note": "Một nguồn ghi 330 km",
+    "status": "operating",
+    "sources": [
+     {
+      "title": "PM3-CM: Công trình khí đầu tiên hoàn toàn do Việt Nam thiết kế và xây dựng",
+      "url": "https://tapchicongthuong.vn/pm3--cm--cong-trinh-khi-dau-tien-hoan-toan-do-viet-nam-thiet-ke-va-xay-dung-83105.htm",
+      "period": "bài 17/08/2021"
+     },
+     {
+      "title": "Hệ thống PM3-Cà Mau thực hiện BDSC định kỳ 5 năm lần thứ 2",
+      "url": "https://tapchicongthuong.vn/he-thong-pm3-ca-mau-thuc-hien-bdsc-dinh-ky-5-nam-lan-thu-2-49245.htm",
+      "period": "bài 22/08/2017"
+     }
+    ]
+   },
+   {
+    "id": "lo_b_o_mon",
+    "basin": "Malay – Thổ Chu",
+    "name": "Lô B – Ô Môn (đang xây dựng)",
+    "offshore_km": 295,
+    "onshore_km": 102,
+    "capacity_bcm": 5.06,
+    "capacity_note": "khí đưa vào bờ dự kiến",
+    "cod": "dự kiến 08/2027",
+    "field": "lob_cpp",
+    "plant": null,
+    "serves": "Ô Môn I–IV; nhánh 37 km tới Mũi Tràm (bổ sung khí cho cụm Cà Mau)",
+    "fee_usd_mmbtu": null,
+    "length_note": "Tổng 431 km gồm nhánh Mũi Tràm; nhiều báo ghi 329 km biển",
+    "status": "construction",
+    "sources": [
+     {
+      "title": "PVN khởi động chuỗi dự án Lô B – Ô Môn (Bộ Công Thương)",
+      "url": "https://moit.gov.vn/tin-tuc/thi-truong-nuoc-ngoai/pvn-khoi-dong-chuoi-du-an-lo-b-o-mon.html",
+      "period": "bài 04/04/2016 (thông số thiết kế)"
+     },
+     {
+      "title": "Chuỗi dự án khí Lô B dự kiến có dòng khí đầu tiên vào tháng 8-2027 (SGGP)",
+      "url": "https://www.sggp.org.vn/chuoi-du-an-khi-lo-b-du-kien-co-dong-khi-dau-tien-vao-thang-8-2027-post831467.html",
+      "period": "bài 31/12/2025"
+     }
+    ]
+   }
+  ]
+ }
 }
