@@ -1181,5 +1181,55 @@
   "quote": "với 19 dự án với tổng nhu cầu vốn dự kiến hơn 43.300 tỷ đồng",
   "status": "match",
   "note": "Bài 24/12/2025; câu khác: 'tổ chức thực hiện xây dựng hồ sơ chính sách/dự án Bộ luật Hàng hải Việt Nam'."
+ },
+ {
+  "block": "cg-legal",
+  "claim": "Số hiệu QĐ điều chỉnh QĐ 1579/QĐ-TTg năm 2024",
+  "value": "442/QĐ-TTg ngày 22/5/2024 (PTTg Trần Hồng Hà ký); '422' là lỗi đánh máy",
+  "url": "https://baodauthau.vn/dieu-chinh-quy-hoach-he-thong-cang-bien-thoi-ky-2021-2030-tam-nhin-den-nam-2050-post155961.html",
+  "opened_at": "2026-11-27",
+  "quote": "Phó Thủ tướng Trần Hồng Hà vừa ký Quyết định số 442/QĐ-TTg",
+  "status": "match",
+  "note": "Bài cũng ghi '422' ở thân bài (giống Tạp chí Công Thương). Ngày 22/5/2024 lấy từ tên file bản ký binhdinh.gov.vn/upload/2005340/20240610/442_QD-TTg_22052024_3-signed_1079c.pdf và trích dẫn trong văn bản BXD (thấy qua kết quả tìm kiếm, chưa mở PDF)."
+ },
+ {
+  "block": "cg-legal",
+  "claim": "Mục tiêu 2030 theo QĐ 442 – toàn hệ thống",
+  "value": "1.249–1.494 triệu tấn; container 46,3–54,3 triệu TEU (không gồm trung chuyển quốc tế)",
+  "url": "https://baodauthau.vn/dieu-chinh-quy-hoach-he-thong-cang-bien-thoi-ky-2021-2030-tam-nhin-den-nam-2050-post155961.html",
+  "opened_at": "2026-11-27",
+  "quote": "Hệ thống cảng biển đáp ứng thông qua lượng hàng hóa từ 1.249 - 1.494 triệu tấn",
+  "status": "match",
+  "note": "QĐ 1579 gốc: 1.140–1.423 triệu tấn. Nhóm 1: 322–384 tr tấn (13–16 tr TEU); Nhóm 4: 500–564 tr tấn (29–33 tr TEU)."
+ },
+ {
+  "block": "cg-legal",
+  "claim": "QĐ sửa đổi Điều 7 QĐ 810/QĐ-BGTVT",
+  "value": "2506/QĐ-BXD ngày 31/12/2025, hiệu lực 01/02/2026",
+  "url": "https://luatvietnam.vn/hang-hai/quyet-dinh-2506-qd-bxd-2025-sua-doi-bo-sung-dieu-7-khung-gia-dich-vu-boc-do-container-423025-d1.html",
+  "opened_at": "2026-11-27",
+  "quote": "có hiệu lực thi hành từ ngày 01 tháng 02 năm 2026",
+  "status": "match",
+  "note": "Thứ trưởng Nguyễn Xuân Sang ký. Bản gốc: https://www.moc.gov.vn/Images/FileVanBan/BXD_2506-QD-BXD_31122025.pdf (chưa mở). Một bài VCCI ghi nhầm '2056'."
+ },
+ {
+  "block": "cg-legal",
+  "claim": "Khung giá Lạch Huyện & Cái Mép–Thị Vải (container XNK có hàng)",
+  "value": "20': 63–73 USD; 40': 94–107 USD; rỗng 20' 39–48, 40' 59–68; trung chuyển có hàng 20' 37–44, 40' 56–64",
+  "url": "https://luatvietnam.vn/hang-hai/quyet-dinh-2506-qd-bxd-2025-sua-doi-bo-sung-dieu-7-khung-gia-dich-vu-boc-do-container-423025-d1.html",
+  "opened_at": "2026-11-27",
+  "quote": "bến cảng Lạch Huyện và khu vực Cái Mép - Thị Vải",
+  "status": "match",
+  "note": "Bảng giá đọc từ trang (công cụ tóm tắt), không có câu nguyên văn riêng cho từng mức."
+ },
+ {
+  "block": "cg-legal",
+  "claim": "Bộ luật Hàng hải sửa đổi – tình trạng 11/2026",
+  "value": "Hợp nhất BLHH 2015 + Luật GTĐTNĐ 2004 thành 'Bộ luật Hàng hải và Đường thủy Việt Nam (sửa đổi)', 21 chương 318 điều; Bộ trưởng BXD Trần Hồng Minh trình QH sáng 11/11/2026 (Kỳ họp thứ Hai); dự kiến thông qua Kỳ họp thứ Ba tháng 5/2027",
+  "url": "https://baolaocai.vn/quoc-hoi-xem-xet-du-an-bo-luat-hang-hai-va-duong-thuy-viet-nam-sua-doi-post914192.html",
+  "opened_at": "2026-11-27",
+  "quote": "Bộ trưởng Bộ Xây dựng Trần Hồng Minh, thừa ủy quyền của Thủ tướng Chính phủ, trình bày Tờ trình",
+  "status": "match",
+  "note": "Điểm mới liên quan cảng: cơ chế chọn nhà đầu tư chiến lược cho dự án cảng lớn/cảng đầu mối thủy nội địa vùng; tầm nhìn quy hoạch 100 năm; hãng tàu container tuyến cố định phải đăng ký tuyến. Không nêu phí cảng. Mốc trước (chỉ từ kết quả tìm kiếm, chưa mở): NQ 77/NQ-CP 01/4/2026 thông qua 6 chính sách; NQ 223/NQ-CP 10/8/2026; Tờ trình 532/TTr-CP 11/8/2026. Bản UBTVQH 09/2026 (daibieunhandan.vn) ghi 19 chương 156 điều – khác bản trình 11/2026."
  }
 ]

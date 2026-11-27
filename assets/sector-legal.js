@@ -29,6 +29,19 @@ function recent() {
     `<tr><td>${d}</td><td><b>${v}</b></td><td>${n}</td><td>${k ? link('Xem sub-tab →', k) : ''}</td></tr>`).join('')}</tbody></table></div>${C.recentNote ? `<p class="note">${C.recentNote}</p>` : ''}`);
   const s = body.querySelector(':scope > .re-sum'); s ? s.after(c) : body.prepend(c);
 }
+// Tách dòng bảng sang sub-tab văn bản (C.SPLIT = [{block, table, match, to, title}]): dòng được DỜI (giữ link), kèm tiêu đề cột
+// và dòng nguồn của thẻ gốc; dùng khi một thẻ gộp nhiều biện pháp.
+function split() {
+  (C.SPLIT || []).forEach(sp => {
+    const b = $(`[data-block-id="${sp.block}"]`), tb = b?.querySelectorAll('table')[sp.table || 0], body = $(BODY(T, sp.to)); if (!tb || !body) return;
+    const re = new RegExp(sp.match), all = [...tb.querySelectorAll('tr')], head = tb.querySelector('thead tr') || all.find(r => r.querySelector('th'));
+    const rs = all.filter(r => r !== head && !r.querySelector('th') && re.test(r.cells[0]?.textContent || '')); if (!rs.length) return;
+    const c = el('div', 'card of-wide re-lg-card', `<h3>${sp.title}</h3><div class="tablewrap"><table data-no-fold>${head ? `<thead>${head.outerHTML}</thead>` : ''}<tbody></tbody></table></div>`);
+    rs.forEach(r => c.querySelector('tbody').append(r));
+    const src = b.querySelector('.source-note, .pw-src, .srcrow'); if (src) c.append(src.cloneNode(true));
+    const s0 = body.querySelector(':scope > .re-sum'); const after = [...body.querySelectorAll(':scope > .re-lg-card')].pop() || s0; after ? after.after(c) : body.prepend(c);
+  });
+}
 function overview() {
   const host = $(BODY('mt1', 'map')); if (!host || host.querySelector('.re-legal-map') || !LAWS.length) return;
   host.append(el('div', 'card of-wide re-legal-map', `<h3>Khung pháp lý chính</h3><p class="chart-sub">Nhãn màu trên sơ đồ chuỗi giá trị phía trên cho biết văn bản nào quy định khâu nào · rê chuột để làm nổi khâu hoặc văn bản · bấm nhãn hoặc tên văn bản để xem chi tiết</p>
@@ -71,7 +84,7 @@ function style() {
 }
 function run() {
   if (run.done || !$(BODY(T, 'docs'))) return; run.done = true;
-  style(); summaries(); recent(); overview();
+  style(); summaries(); split(); recent(); overview();
   document.addEventListener('click', e => { const a = e.target.closest('.re-lg-go'); if (!a) return; e.preventDefault(); go(a.dataset.go); });
 }
 window.addEventListener(C.event || 'sector:frame', run);

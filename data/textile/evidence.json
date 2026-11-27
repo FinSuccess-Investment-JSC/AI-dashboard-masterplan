@@ -201,5 +201,45 @@
   "quote": "hạ nguồn ở nội địa (~70% doanh thu của STK 09T2025)",
   "status": "match",
   "note": "FPTS 28/11/2025; agent mở trang gốc/PDF"
+ },
+ {
+  "block": "dm-legal",
+  "claim": "Mục 122 áp cho VN",
+  "value": "10%, 24/02/2026 – 24/07/2026",
+  "url": "https://www.ghy.com/trade-compliance/us-10-percent-section-122-tariff/",
+  "opened_at": "2026-11-27",
+  "quote": "10% ad valorem duty ... 12:01 a.m. EST on February 24, 2026 ... through 12:01 a.m. EDT on July 24, 2026 ... no official announcement has confirmed an increase beyond 10% at this time.",
+  "status": "match",
+  "note": "15% chỉ là mức trần luật định. Kelley Drye cũng ghi 'the global 10% tariffs, issued under Section 122' hết hạn 24/7. Chưa mở được federalregister.gov (bị chặn, chuyển sang unblock)."
+ },
+ {
+  "block": "dm-legal",
+  "claim": "Mục 301 VN 12,5% từ 24/07/2026",
+  "value": "12,5% + MFN, từ 24/07/2026",
+  "url": "https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/ustr-announces-final-tariff-rates-exclusions-and-tariff-rate-quotas",
+  "opened_at": "2026-11-27",
+  "quote": "12.5% + MFN rate (38 economies) ... on or after 12:01 a.m. Eastern Standard Time on July 24, 2026",
+  "status": "match",
+  "note": "Trang không nêu thời hạn 4 năm, cũng không nhắc thuế chuyển tải 40% -> chưa kiểm được 2 ý này."
+ },
+ {
+  "block": "dm-legal",
+  "claim": "EVFTA hiệu lực 01/08/2020",
+  "value": "01/08/2020",
+  "url": "https://trungtamwto.vn/fta/199-evfta/1",
+  "opened_at": "2026-11-27",
+  "quote": "Đối với EVFTA, do đã hoàn tất thủ tục phê chuẩn, Hiệp định này đã chính thức có hiệu lực từ ngày 1/8/2020.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "dm-legal",
+  "claim": "Bangladesh rời LDC 24/11/2026",
+  "value": "Wikipedia: 24/11/2029 (đã hoãn theo đề nghị của chính phủ)",
+  "url": "https://en.wikipedia.org/wiki/Least_developed_countries",
+  "opened_at": "2026-11-27",
+  "quote": "The country will graduate on 24 November 2029, after government request for deferral.",
+  "status": "conflict",
+  "note": "Nguồn thứ cấp; un.org trả 403. Cần xác nhận bằng nghị quyết Đại hội đồng LHQ/UN-OHRLLS trước khi sửa trang."
  }
 ]
