@@ -1,41 +1,264 @@
-{"requests":[{"tool":"wifeed_news","action":"exchange_news","symbol":"VCB,CTG,BID,TCB,VPB,MBB,ACB,HDB,TPB,VIB,SHB,STB,LPB,MSB,OCB,EIB","from_time":"2026-09-01","to_time":"2026-09-11","limit":25,"meta":{"total_count":53,"returned":25}},{"tool":"wifeed_news","action":"ai_news","category_type":"Vĩ mô Việt Nam","from_time":"2026-09-01","to_time":"2026-09-11","limit":15,"meta":{"total_count":19,"returned":15}}],"fetched_at":"2026-09-11T12:40:00+07:00","note":"exchange_news = CBTT chính thức HOSE (publish_time là ngày công bố; ngày sự kiện nằm trong tiêu đề/PDF). ai_news = tin tự động của Wi từ dữ liệu Wi (tỷ giá/ON/OMO hằng ngày), không phải nguồn độc lập với các chuỗi đã lấy.",
-"exchange_news":[
-["2026-09-10T18:08","VPB","Ngày đăng ký cuối cùng","Nghị quyết HĐQT về ngày đăng ký cuối cùng để thực hiện quyền nhận cổ tức bằng cổ phiếu","https://cdn02.wigroup.vn/events_docs/VPB_1789038480_20260910 - VPB - NQ HDQT ve ngay DKCC thuc hien quyen tra co tuc bang co phieu.pdf"],
-["2026-09-10T17:50","LPB","Thông báo khác","Thông báo công văn của NHNN về chấp thuận cho LPB thay đổi địa điểm Chi nhánh Đông Anh và Phòng GD Hoàng Mai","https://cdn02.wigroup.vn/events_docs/LPB_1789037400_20260910 - LPB - Chap thuan thay doi dia diem CN Dong Anh & PGD Hoang Mai.pdf"],
-["2026-09-10T17:50","CTG","Nghị quyết HĐQT","Nghị quyết HĐQT về việc chấm dứt hoạt động của VPĐD tại Đà Nẵng","https://cdn02.wigroup.vn/events_docs/CTG_1789037400_20260910 - CTG - NQ HDQT phe duyet cham dut hoat dong VPDD tai Da Nang_signed.pdf"],
-["2026-09-10T17:48","TCB","Nghị quyết ĐHĐCĐ","Biên bản kiểm phiếu và Nghị quyết ĐHĐCĐ thông qua Phương án tăng vốn điều lệ 2026","https://cdn02.wigroup.vn/events_docs/TCB_1789037280_20260909 - TCB - Nghi quyet bien ban kiem phieu DHDCD thong qua phuong an tang von dieu le 2026.pdf"],
-["2026-09-10T17:40","TCB","Nghị quyết HĐQT","Nghị quyết HĐQT số 0494 ngày 10/09/2026 (cấp hạn mức tín dụng cho Eurowindow — người liên quan)","https://cdn02.wigroup.vn/events_docs/TCB_1789036800_20260910 - TCB - NQ cap han muc tin dung cho Eurowindow la NLQ cua Nguoi noi bo TCB.pdf"],
-["2026-09-10T16:12","VPB","Nghị quyết HĐQT","Nghị quyết HĐQT số 255/2026 ngày 09/09/2026 (giao dịch và ký kết tài liệu với SMBC Singapore)","https://cdn02.wigroup.vn/events_docs/VPB_1789031520_20260910 - VPB - NQ HDQT thong qua GD va ky ket tai lieu voi SMBC singapore va cac ben LQ.pdf"],
-["2026-09-10T16:05","CTG","Nghị quyết HĐQT","Nghị quyết HĐQT số 363 ngày 10/09/2026 (thỏa thuận sử dụng TKTT với công ty con)","https://cdn02.wigroup.vn/events_docs/CTG_1789031100_20260910 - CTG - HDQT thong qua thoa thuan ve su dung TKTT voi cong ty con_signed.pdf"],
-["2026-09-10T14:06","ACB","Nghị quyết HĐQT","Thay đổi địa chỉ trụ sở chi nhánh, PGD khu vực Quảng Ninh","https://cdn02.wigroup.vn/events_docs/ACB_1789023960_20260909 - ACB - NQ4052 thay doi dia chi dat tru so CN-PGD TP. Quang Ninh.pdf"],
-["2026-09-10T13:27","MSB","Nghị quyết HĐQT","Nghị quyết HĐQT số 24.06 ngày 08/09/2026 (phê duyệt kết quả phát hành cổ phiếu tăng vốn điều lệ từ VCSH)","https://cdn02.wigroup.vn/events_docs/MSB_1789021620_20260909 - MSB - CBTT NQ HDQT phe duyet KQPH co phieu tang VDL tu VCSH signed.pdf"],
-["2026-09-09T18:06","MBB","Niêm yết, lưu hành","Công văn VSDC về điều chỉnh số lượng chứng khoán đăng ký của MBB","https://cdn02.wigroup.vn/events_docs/MBB_1788951960_20260909 - MBB - Van ban cua VSDC ve dieu chinh thong tin so luong co phieu MBB.pdf"],
-["2026-09-09T18:05","HDB","Nghị quyết HĐQT","Phát hành và chào bán trái phiếu HDBank ra thị trường quốc tế năm 2026","https://cdn02.wigroup.vn/events_docs/HDB_1788951900_20260909 - HDB - CBTT NQ HDQT vv PH va chao ban TP ra quoc te nam 2026.pdf"],
-["2026-09-09T18:03","CTG","Nghị quyết HĐQT","HĐQT thông qua hợp đồng dịch vụ ngân quỹ, TKTT & DVNH với Indovina Bank","https://cdn02.wigroup.vn/events_docs/CTG_1788951780_20260909 - CTG - HDQT thong qua HD ngan quy, cac thoa thuan TKTT & DVNH voi Indovina Bank _Signed.pdf"],
-["2026-09-09T17:34","TPB","Nghị quyết HĐQT","Tái cấp và nâng hạn mức tín dụng cho Công ty TNHH FPT IS (giao dịch bên liên quan)","https://cdn02.wigroup.vn/events_docs/TPB_1788950040_20260909 - TPB - NQ HDQT vv Tai cap va nang han muc tin dung cho Cong ty TNHH FPT IS (giao dich ben LQ)_signed.pdf"],
-["2026-09-09T16:52","VPB","Nghị quyết HĐQT","Hợp đồng, giao dịch cho vay hợp vốn giữa VPBank và VPB SMBC FC","https://cdn02.wigroup.vn/events_docs/VPB_1788947520_20260908 - VPB - NQ HDQT vv hop dong giao dich cho vay hop von giua VPBank va VPB SMBC FC.pdf"],
-["2026-09-09T16:23","OCB","Công văn","NHNN CN khu vực 13 chấp thuận thay đổi địa điểm PGD Sa Đéc","https://cdn02.wigroup.vn/events_docs/OCB_1788945780_20260909 - OCB - Chap thuan cua NHNN thay doi dia diem tru so PGD Sa Dec.pdf"],
-["2026-09-09T16:08","ACB","Nghị quyết HĐQT","Nghị quyết HĐQT số 4048 ngày 08/09/2026 (thông qua hồ sơ phát hành trái phiếu)","https://cdn02.wigroup.vn/events_docs/ACB_1788944880_20260908 - ACB - NQ4048 thong qua Ho so phat hanh TP.pdf"],
-["2026-09-09T09:04","LPB","Nghị quyết HĐQT","Phương án phát hành trái phiếu ra công chúng","https://cdn02.wigroup.vn/events_docs/LPB_1788919440_20260908 - LPB - NQ HDQT ve phuong an phat hanh TP ra cong chung CA.pdf"],
-["2026-09-09T08:59","MSB","Tin giao dịch","Báo cáo kết quả giao dịch cổ phiếu của người liên quan Người nội bộ Trần Anh Đức","https://cdn02.wigroup.vn/events_docs/MSB_1788919140_20260908 - MSB - Bao cao ket qua GD co phieu NLQ NNB ban hide signed.pdf"],
-["2026-09-08T16:24","MBB","Tin giao dịch","Kết quả giao dịch quyền mua cổ phiếu của TCT Trực thăng Việt Nam (tổ chức liên quan NNB)","https://cdn02.wigroup.vn/events_docs/MBB_1788859440_20260908 - MBB - BCKQGD quyen mua co phieu cua TCT Truc Thang Viet Nam - CT TNHH.pdf"],
-["2026-09-08T14:26","LPB","Nghị quyết HĐQT","Phương án phát hành trái phiếu riêng lẻ tăng vốn cấp 2 LPBank năm 2026 - gói 03","https://cdn02.wigroup.vn/events_docs/LPB_1788852360_20260908 - LPB - NQ phuong an phat hanh TP rieng le tang von cap 2 CA.pdf"],
-["2026-09-08T10:49","MBB","Tin giao dịch","Kết quả giao dịch quyền mua cổ phiếu của Người nội bộ Nguyễn Thị Hải Lý, Phạm Thị Trung Hà","https://cdn02.wigroup.vn/events_docs/MBB_1788839340_20260907 - MBB - BCKQGD quyen mua co phieu cua ba Pham Thi Trung Ha.PDF"],
-["2026-09-08T10:48","MBB","Tin giao dịch","Kết quả giao dịch quyền mua cổ phiếu của TCT Tân Cảng Sài Gòn (tổ chức liên quan NNB)","https://cdn02.wigroup.vn/events_docs/MBB_1788839280_20260907 - MBB - BCKQGD quyen mua co phieu cua CT TNHH MTV TCT Tan Cang Sai Gon.pdf"],
-["2026-09-08T10:47","MBB","Tin giao dịch","Kết quả giao dịch quyền mua cổ phiếu của người liên quan NNB Doãn Thị Thịnh","https://cdn02.wigroup.vn/events_docs/MBB_1788839220_20260907 - MBB - BCKQGD quyen mua co phieu cua ba Doan Thi Thinh.PDF"],
-["2026-09-08T10:45","MBB","Nghị quyết HĐQT","Thay đổi địa điểm PGD Vạn Mỹ trực thuộc CN Hải Phòng","https://cdn02.wigroup.vn/events_docs/MBB_1788839100_20260907 - MBB - Thay doi dia diem phong giao dich Van My.pdf"],
-["2026-09-07T17:14","VCB","Thông báo khác","Thay đổi địa chỉ trụ sở 04 Chi nhánh và 15 PGD ở Quảng Ninh","https://cdn02.wigroup.vn/events_docs/VCB_1788776040_20260907 - VCB - Thong bao thay doi dia chi tru so 4 CN va 15 PGD tai Quang Ninh.pdf"]
-],
-"ai_news":[
-["2026-09-11","Tỷ giá 11/09/2026: Trung tâm 25,596, tăng 5","Tỷ giá Trung tâm 25.596 (+5). NHTM mua/bán 25.710/26.120 (+10/+10). Tự do 25.720/25.760. Chênh lệch NHTM–tự do 1,4%."],
-["2026-09-10","NHNN hút ròng 2,577.6 tỷ đồng qua OMO phiên 10/09/2026","Reverse repo phát hành 6.005,4 tỷ (7 và 35 ngày), đáo hạn 8.583 tỷ; không phát hành tín phiếu. Hút ròng 2.577,6 tỷ. OMO lưu hành 252.649,1 tỷ, thấp hơn đỉnh 291.054,5 tỷ 3 tháng trước 38.405,4 tỷ."],
-["2026-09-09","Lãi suất ON 09/09/2026: 1.63%, giảm 86 bps","ON 1,63% (−86 bps). 1W–1M 2,94%–5,28%. Doanh số ON 911.679 tỷ (99%). BQ 5 ngày 3,67% so nền 1 tháng 4,11%."],
-["2026-09-09","NHNN bơm ròng 5,893.3 tỷ đồng qua OMO phiên 09/09/2026","Reverse repo 11.773,2 tỷ (7/35/91 ngày), đáo hạn 5.879,9 tỷ. Bơm ròng 5.893,3 tỷ. OMO lưu hành 255.226,7 tỷ."],
-["2026-09-08","Lãi suất ON 08/09/2026: 2.49%, giảm 109 bps","ON 2,49% (−109 bps). 1W–1M 3,55%–5,98%. Doanh số ON 935.946 tỷ (99%). BQ 5 ngày 3,58% so nền 1 tháng 4,36%."],
-["2026-09-08","NHNN hút ròng 1,411.8 tỷ đồng qua OMO phiên 08/09/2026","Reverse repo 7.121,6 tỷ (7/91 ngày), đáo hạn 8.533,4 tỷ. Hút ròng 1.411,8 tỷ. OMO lưu hành 249.333,4 tỷ."],
-["2026-09-07","Lãi suất ON 07/09/2026: 3.58%, giảm 104 bps","ON 3,58% (−104 bps). 1W–1M 4,30%–6,04%. Doanh số ON 924.160 tỷ (99%). BQ 5 ngày 3,32% so nền 1 tháng 4,58%."],
-["2026-09-07","NHNN bơm ròng 2,713.4 tỷ đồng qua OMO phiên 07/09/2026","Reverse repo 20.658,8 tỷ (7/14 ngày), đáo hạn 17.945,4 tỷ. Bơm ròng 2.713,4 tỷ. OMO lưu hành 250.745,3 tỷ."],
-["2026-09-04","Lãi suất ON 04/09/2026: 4.62%, giảm 139 bps","ON 4,62% (−139 bps). 1W–1M 4,94%–6,27%. Doanh số ON 892.137 tỷ (98%)."],
-["2026-09-04","NHNN bơm ròng 5,625.6 tỷ đồng qua OMO phiên 04/09/2026","Reverse repo 5.625,6 tỷ (7 ngày), không đáo hạn. OMO lưu hành 248.031,8 tỷ."],
-["2026-09-03","Lãi suất ON 03/09/2026: 6.01%, tăng 482 bps","ON 6,01% (+482 bps). 1W–1M 6,34%–6,49%. Doanh số ON 862.738 tỷ (99%)."]
-]}
+{
+ "requests": [
+  {
+   "tool": "wi_data_news",
+   "action": "exchange_news",
+   "symbol": "VCB,CTG,BID,TCB,VPB,MBB,ACB,HDB,TPB,VIB,SHB,STB,LPB,MSB,OCB,EIB",
+   "from_time": "2026-11-16",
+   "to_time": "2026-11-27",
+   "limit": 25,
+   "meta": {
+    "total_count": 50,
+    "returned": 25
+   }
+  },
+  {
+   "tool": "wi_data_news",
+   "action": "ai_news",
+   "category_type": "Vĩ mô Việt Nam",
+   "from_time": "2026-11-20",
+   "to_time": "2026-11-27",
+   "limit": 11,
+   "meta": {
+    "total_count": 15,
+    "returned": 11
+   }
+  }
+ ],
+ "fetched_at": "2026-11-27T09:20:00+07:00",
+ "note": "exchange_news = CBTT chính thức HOSE (publish_time là ngày công bố; ngày sự kiện nằm trong tiêu đề/PDF). ai_news = tin tự động của Wi từ dữ liệu Wi (tỷ giá/ON/OMO hằng ngày), không phải nguồn độc lập với các chuỗi đã lấy. Từ 11/2026 Wi không cấp link PDF CBTT nên cột url để trống.",
+ "exchange_news": [
+  [
+   "2026-11-26T17:22",
+   "HDB",
+   "Trái phiếu",
+   "Hồ sơ đăng ký chào bán trái phiếu ra công chúng đợt 1",
+   ""
+  ],
+  [
+   "2026-11-26T17:13",
+   "TPB",
+   "Nghị quyết HĐQT",
+   "Nghị quyết HĐQT số 49 ngày 26/11/2026",
+   ""
+  ],
+  [
+   "2026-11-26T16:42",
+   "MSB",
+   "Ngày đăng ký cuối cùng",
+   "Thông báo về ngày đăng ký cuối cùng thực hiện quyền đề cử, ứng cử nhân sự dự kiến bầu thành viên HĐQT, BKS nhiệm kỳ VIII (2027-2031)",
+   ""
+  ],
+  [
+   "2026-11-26T15:50",
+   "MBB",
+   "Nghị quyết HĐQT",
+   "CBTT hợp đồng mua bán cổ phiếu MBB giữa MB với SCIC",
+   ""
+  ],
+  [
+   "2026-11-26T14:22",
+   "TCB",
+   "Tin giao dịch",
+   "Thông báo giao dịch cổ phiếu ESOP của Người nội bộ Nguyễn Anh Tuấn, Nguyễn Thu Lan, Nguyễn Tuấn Minh",
+   ""
+  ],
+  [
+   "2026-11-26T14:21",
+   "TCB",
+   "Tin giao dịch",
+   "Thông báo giao dịch cổ phiếu ESOP của Người nội bộ Macaire Alexandre, Charles, Emmanuel, Nguyễn Thị Trà My, Nguyễn Thị Vân Hoài",
+   ""
+  ],
+  [
+   "2026-11-26T14:19",
+   "TCB",
+   "Tin giao dịch",
+   "Thông báo giao dịch cổ phiếu ESOP của người có liên quan của Người nội bộ Đặng Ngọc Cảnh",
+   ""
+  ],
+  [
+   "2026-11-26T14:19",
+   "TCB",
+   "Tin giao dịch",
+   "Thông báo giao dịch cổ phiếu ESOP của Người nội bộ Trần Thị Thu Lan, Phan Thị Hải Yến",
+   ""
+  ],
+  [
+   "2026-11-26T11:15",
+   "TPB",
+   "Ngày đăng ký cuối cùng",
+   "Thông báo về ngày đăng ký cuối cùng để thực hiện quyền ứng cử, đề cử nhân sự dự kiến bầu bổ sung thành viên HĐQT nhiệm kỳ 2023-2028",
+   ""
+  ],
+  [
+   "2026-11-26T11:11",
+   "HDB",
+   "Ngày đăng ký cuối cùng",
+   "Thông báo về ngày đăng ký cuối cùng lấy ý kiến cổ đông bằng văn bản lần 3 năm 2026",
+   ""
+  ],
+  [
+   "2026-11-26T08:46",
+   "CTG",
+   "Nghị quyết HĐQT",
+   "CBTT chào bán trái phiếu ra công chúng đợt 2",
+   ""
+  ],
+  [
+   "2026-11-25T17:45",
+   "TCB",
+   "Nghị quyết HĐQT",
+   "Nghị quyết HĐQT về việc phê duyệt TCBS cung cấp dịch vụ phát hành trái phiếu TCB lần 23",
+   ""
+  ],
+  [
+   "2026-11-25T15:29",
+   "VPB",
+   "Nghị quyết HĐQT",
+   "Nghị quyết HĐQT về việc phê duyệt phương án mua lại trước hạn trái phiếu VPB12517",
+   ""
+  ],
+  [
+   "2026-11-25T10:34",
+   "LPB",
+   "Khác",
+   "Giấy ủy quyền thực hiện CBTT - Nguyễn Văn Ngọc (kèm Bản cung cấp thông tin)",
+   ""
+  ],
+  [
+   "2026-11-23T17:48",
+   "OCB",
+   "Nhân sự",
+   "Thông báo tiêu chuẩn, điều kiện và các thủ tục đề cử, ứng cử bầu làm Thành viên Ban kiểm soát nhiệm kì 2025-2030",
+   ""
+  ],
+  [
+   "2026-11-23T17:46",
+   "LPB",
+   "Nhân sự",
+   "Thông báo thay đổi nhân sự",
+   ""
+  ],
+  [
+   "2026-11-23T17:46",
+   "OCB",
+   "Nghị quyết HĐQT",
+   "Nghị quyết HĐQT về thay đổi địa điểm và chi nhánh quản lý PGD Trảng Bàng",
+   ""
+  ],
+  [
+   "2026-11-23T17:44",
+   "OCB",
+   "Công văn",
+   "Nhận được công văn của Ngân hàng NNVN - chi nhánh Khu vực 2 về chấp thuận thay đổi địa điểm PGD Nguyễn Văn Trỗi - CN.TPHCM",
+   ""
+  ],
+  [
+   "2026-11-23T17:42",
+   "OCB",
+   "Công văn",
+   "Nhận được công văn của Ngân hàng NNVN - chi nhánh Khu vực 2 về chấp thuận thay đổi địa điểm chi nhánh Phú Nhuận",
+   ""
+  ],
+  [
+   "2026-11-23T17:38",
+   "SHB",
+   "Niêm yết, lưu hành",
+   "Quyết định về việc thay đổi đăng ký niêm yết",
+   ""
+  ],
+  [
+   "2026-11-23T17:29",
+   "MBB",
+   "Tin giao dịch",
+   "Thông báo giao dịch cổ phiếu của tổ chức có liên quan đến người nội bộ Tập đoàn Công nghiệp - Viễn thông Quân đội",
+   ""
+  ],
+  [
+   "2026-11-23T11:05",
+   "MSB",
+   "Nghị quyết HĐQT",
+   "Nghị quyết HĐQT về việc phát hành trái phiếu riêng lẻ lần 2 năm 2026",
+   ""
+  ],
+  [
+   "2026-11-20T17:52",
+   "EIB",
+   "Thông báo khác",
+   "Thông báo công văn của VSDC về việc điều chỉnh tỷ lệ SHNN tối đa của EIB",
+   ""
+  ],
+  [
+   "2026-11-20T17:50",
+   "MBB",
+   "Tin giao dịch",
+   "Báo cáo kết quả giao dịch cổ phiếu của tổ chức có liên quan đến Người nội bộ Công đoàn cơ sở Ngân hàng Thương mại Cổ phần Quân Đội",
+   ""
+  ],
+  [
+   "2026-11-20T17:46",
+   "TCB",
+   "Thông báo khác",
+   "Thông báo phát hành CP theo chương trình lựa chọn cho NLĐ trong công ty",
+   ""
+  ]
+ ],
+ "ai_news": [
+  [
+   "2026-11-25",
+   "Lãi suất ON 25/11/2026: 4.84%, tăng 15 bps",
+   "Lãi suất liên ngân hàng kỳ hạn qua đêm (ON) phiên ngày 25/11/2026 đạt 4.84%, tăng 15 điểm cơ bản (bps) so với phiên trước. Các kỳ hạn chủ chốt khác (1W, 1M) dao động quanh mức 3.48% - 5.30%. Doanh số giao dịch kỳ hạn ON đạt 929,009 tỷ đồng, chiếm 96% tổng doanh số.Về xu hướng, mặt bằng lãi suất ngắn hạn đang ổn định khi mức bình quân 5 ngày gần nhất (4.79%) tương đương so với mức nền bình quân 1 tháng trước đó (4.61%)."
+  ],
+  [
+   "2026-11-26",
+   "NHNN bơm ròng 20,667.2 tỷ đồng qua OMO phiên 26/11/2026",
+   "Trên thị trường mở phiên 26/11/2026, ở kênh Reverse Repo, NHNN phát hành 29,199.5 tỷ đồng kỳ hạn 7 ngày, 14 ngày, 35 ngày và 91 ngày, lãi suất 4.5% giữ nguyên và có 8,532.4 tỷ đồng đáo hạn. Ở kênh Tín phiếu, NHNN không phát hành tín phiếu mới và không có khối lượng đáo hạn. Kết phiên, NHNN bơm ròng 20,667.2 tỷ đồng qua kênh OMO. Tổng lượng OMO đang lưu hành đạt 127,016.6 tỷ đồng, thấp hơn 128,210.2 tỷ so với mức đỉnh 255,226.7 tỷ đồng cách đây 3 tháng. Mức bơm ròng của phiên 26/11/2026 là mức cao nhất được ghi nhận kể từ phiên giao dịch ngày 25/11/2026."
+  ],
+  [
+   "2026-11-25",
+   "NHNN bơm ròng 22,210.6 tỷ đồng qua OMO phiên 25/11/2026",
+   "Trên thị trường mở phiên 25/11/2026, ở kênh Reverse Repo, NHNN phát hành 24,009.5 tỷ đồng kỳ hạn 7 ngày, 14 ngày, 35 ngày và 91 ngày, lãi suất 4.5% giữ nguyên và có 1,798.9 tỷ đồng đáo hạn. Ở kênh Tín phiếu, NHNN không phát hành tín phiếu mới và không có khối lượng đáo hạn. Kết phiên, NHNN bơm ròng 22,210.6 tỷ đồng qua kênh OMO. Tổng lượng OMO đang lưu hành đạt 106,349.4 tỷ đồng, thấp hơn 148,877.3 tỷ so với mức đỉnh 255,226.7 tỷ đồng cách đây 3 tháng. Mức bơm ròng của phiên 25/11/2026 là mức cao nhất được ghi nhận kể từ phiên giao dịch ngày 21/09/2026."
+  ],
+  [
+   "2026-11-26",
+   "Tỷ giá 26/11/2026: Trung tâm 25,676, giảm 3",
+   "Tỷ giá Trung tâm ngày 26/11/2026 niêm yết ở mức 25,676 đồng, giảm 3 đồng so với phiên trước. Tại các NHTM, tỷ giá Mua/Bán phổ biến quanh mức 25,630/26,040 đồng, biến động lần lượt là +20 đồng và +20 đồng. Trên thị trường tự do, tỷ giá giao dịch ở mức 26,460/26,560 đồng. Tỷ giá bán ra trên thị trường tự do hiện đang duy trì mức chênh lệch cao hơn 2% so với tỷ giá bán ra của các NHTM."
+  ],
+  [
+   "2026-11-23",
+   "Lãi suất ON 23/11/2026: 4.69%, giảm 57 bps",
+   "Lãi suất liên ngân hàng kỳ hạn qua đêm (ON) phiên ngày 23/11/2026 đạt 4.69%, giảm 57 điểm cơ bản (bps) so với phiên trước. Các kỳ hạn chủ chốt khác (1W, 1M) dao động quanh mức 4.73% - 5.72%. Doanh số giao dịch kỳ hạn ON đạt 1,053,948 tỷ đồng, chiếm 95% tổng doanh số.Về xu hướng, mặt bằng lãi suất ngắn hạn đang ổn định khi mức bình quân 5 ngày gần nhất (4.80%) tương đương so với mức nền bình quân 1 tháng trước đó (4.55%)."
+  ],
+  [
+   "2026-11-25",
+   "Tỷ giá 25/11/2026: Trung tâm 25,679, đi ngang",
+   "Tỷ giá Trung tâm ngày 25/11/2026 niêm yết ở mức 25,679 đồng, đi ngang so với phiên trước. Tại các NHTM, tỷ giá Mua/Bán phổ biến quanh mức 25,560/25,970 đồng, biến động lần lượt là -20 đồng và -20 đồng. Trên thị trường tự do, tỷ giá giao dịch ở mức 26,400/26,490 đồng. Tỷ giá bán ra trên thị trường tự do hiện đang duy trì mức chênh lệch cao hơn 2% so với tỷ giá bán ra của các NHTM."
+  ],
+  [
+   "2026-11-24",
+   "NHNN hút ròng 6,272.7 tỷ đồng qua OMO phiên 24/11/2026",
+   "Trên thị trường mở phiên 24/11/2026, ở kênh Reverse Repo, không có khối lượng phát hành và có 6,272.7 tỷ đồng đáo hạn. Ở kênh Tín phiếu, NHNN không phát hành tín phiếu mới và không có khối lượng đáo hạn. Kết phiên, NHNN hút ròng 6,272.7 tỷ đồng qua kênh OMO. Tổng lượng OMO đang lưu hành đạt 84,138.8 tỷ đồng, thấp hơn 171,087.9 tỷ so với mức đỉnh 255,226.7 tỷ đồng cách đây 3 tháng."
+  ],
+  [
+   "2026-11-20",
+   "Lãi suất ON 20/11/2026: 5.26%, tăng 58 bps",
+   "Lãi suất liên ngân hàng kỳ hạn qua đêm (ON) phiên ngày 20/11/2026 đạt 5.26%, tăng 58 điểm cơ bản (bps) so với phiên trước. Các kỳ hạn chủ chốt khác (1W, 1M) dao động quanh mức 5.36% - 5.73%. Doanh số giao dịch kỳ hạn ON đạt 888,178 tỷ đồng, chiếm 94% tổng doanh số.Về xu hướng, mặt bằng lãi suất ngắn hạn đang ổn định khi mức bình quân 5 ngày gần nhất (4.86%) tương đương so với mức nền bình quân 1 tháng trước đó (4.52%)."
+  ],
+  [
+   "2026-11-23",
+   "NHNN bơm ròng 7,260 tỷ đồng qua OMO phiên 23/11/2026",
+   "Trên thị trường mở phiên 23/11/2026, ở kênh Reverse Repo, NHNN phát hành 15,831.8 tỷ đồng kỳ hạn 7 ngày, 14 ngày, 35 ngày và 91 ngày, lãi suất 4.5% giữ nguyên và có 8,571.7 tỷ đồng đáo hạn. Ở kênh Tín phiếu, NHNN không phát hành tín phiếu mới và không có khối lượng đáo hạn. Kết phiên, NHNN bơm ròng 7,260 tỷ đồng qua kênh OMO. Tổng lượng OMO đang lưu hành đạt 90,411.5 tỷ đồng, thấp hơn 164,815.2 tỷ so với mức đỉnh 255,226.7 tỷ đồng cách đây 3 tháng. Mức bơm ròng của phiên 23/11/2026 là mức cao nhất được ghi nhận kể từ phiên giao dịch ngày 06/11/2026."
+  ],
+  [
+   "2026-11-23",
+   "Tỷ giá 23/11/2026: Trung tâm 25,668, đi ngang",
+   "Tỷ giá Trung tâm ngày 23/11/2026 niêm yết ở mức 25,668 đồng, đi ngang so với phiên trước. Tại các NHTM, tỷ giá Mua/Bán phổ biến quanh mức 25,610/26,020 đồng, biến động lần lượt là +40 đồng và +40 đồng. Trên thị trường tự do, tỷ giá giao dịch ở mức 26,250/26,290 đồng. Chênh lệch tỷ giá giữa NHTM và thị trường tự do duy trì ở mức 1%."
+  ],
+  [
+   "2026-11-19",
+   "Lãi suất ON 19/11/2026: 4.68%, tăng 21 bps",
+   "Lãi suất liên ngân hàng kỳ hạn qua đêm (ON) phiên ngày 19/11/2026 đạt 4.68%, tăng 21 điểm cơ bản (bps) so với phiên trước. Các kỳ hạn chủ chốt khác (1W, 1M) dao động quanh mức 4.80% - 5.36%. Doanh số giao dịch kỳ hạn ON đạt 876,147 tỷ đồng, chiếm 92% tổng doanh số.Về xu hướng, mặt bằng lãi suất ngắn hạn đang ổn định khi mức bình quân 5 ngày gần nhất (4.92%) tương đương so với mức nền bình quân 1 tháng trước đó (4.47%)."
+  ]
+ ]
+}

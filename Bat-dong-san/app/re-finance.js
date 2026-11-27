@@ -1,6 +1,6 @@
 /* BĐS dân cư · tab lớn Tài chính ngành (#mt14, 26/11/2026). Chép từ Dau-khi/app/oil-finance.js, thêm hai thẻ tiền khách trả trước và vốn nằm ở
    quỹ đất từ Bat-dong-san-KCN/app/kcn-finance.js. Số từ window.RE_FIN (BCTC hợp nhất quý, VNDirect finfo; scripts/build_re_financials.py), tổng hợp bằng window.IndustryFin (app/industry-fin.js).
-   Nhóm: Vinhomes (VHM) · Chủ đầu tư nhà ở khác (NVL, KDH, NLG, DXG, PDR, DIG, CEO, AGG, TCH, NTL) · Cho thuê & môi giới (VRE, DXS). Tỷ số nhóm = tổng tử số ÷ tổng mẫu số. Chỉ mô tả dữ liệu; nguồn hiện dưới mọi chart. */
+   Nhóm (27/11/2026, theo mô hình kinh doanh): Đại đô thị, quỹ đất lớn (VHM, NVL) · Nhà ở đô thị lớn (KDH, NLG, DXG, AGG) · Đất nền & tỉnh (PDR, DIG, CEO, TCH, NTL) · Cho thuê & môi giới (VRE, DXS). Tỷ số nhóm = tổng tử số ÷ tổng mẫu số. Chỉ mô tả dữ liệu; nguồn hiện dưới mọi chart. */
 (() => {
 'use strict';
 const D = window.RE_FIN;
@@ -57,7 +57,7 @@ function trim(labels, series) {
 }
 function chart(host, key, labels, series, o = {}) {
   const t = trim(labels, series);
-  const model = {key, categories: t.labels, series: t.series, unit: o.unit || '', digits: o.digits ?? 0, stackable: !!o.stackable, native: o.native || 'line', zeroBase: o.zeroBase !== false, aria: o.aria || key};
+  const model = {key, hidden: o.hidden, categories: t.labels, series: t.series, unit: o.unit || '', digits: o.digits ?? 0, stackable: !!o.stackable, native: o.native || 'line', zeroBase: o.zeroBase !== false, aria: o.aria || key};
   if (!window.ChartTypes) { host.textContent = ''; return; }
   ChartTypes.mount(host, model, () => { host.innerHTML = ChartTypes.render(model, model.native); });
 }
@@ -128,7 +128,7 @@ const grid2 = (...cards) => { const g = el('div', 'grid two g2 pf-g2'); cards.fo
 /* ---------- 1.1 Chu kỳ doanh thu và lợi nhuận ---------- */
 const PNL = [['revenue', 'Doanh thu'], ['gross', 'Lợi nhuận gộp'], ['ebitda', 'EBITDA'], ['ebit', 'EBIT'], ['npat', 'LNST']];
 function s71() {
-  const s = section('1.1', 'Kết quả kinh doanh', 'Lợi nhuận ngành đang nằm ở Vinhomes hay lan sang các chủ đầu tư còn lại?');
+  const s = section('1.1', 'Kết quả kinh doanh', 'Lợi nhuận ngành đang dồn vào mô hình nào: đại đô thị, nhà ở đô thị lớn hay đất nền tỉnh?');
   // Chart 1: quy mô theo nhóm
   const c1 = card('re-fin-pnl', 'Doanh thu và lợi nhuận theo nhóm doanh nghiệp (tỷ đồng)', 'Cột chồng theo nhóm doanh nghiệp · đổi chỉ tiêu và cách xem'); let m1 = 'npat', v1 = 'abs';
   seg(c1, 'Chỉ tiêu', PNL, () => m1, k => { m1 = k; draw1(); }); seg(c1, 'Cách xem', [['abs', 'Giá trị'], ['yoy', 'So cùng kỳ (%)'], ['share', 'Tỷ trọng (%)']], () => v1, k => { v1 = k; draw1(); });
@@ -344,16 +344,8 @@ function s76() {
     chart(c3.host, 're-fin-roic-cycle', L, [{name: 'ROIC (%)', color: LINE[0], values: roic(x, mode).values}, {name: 'CAPEX/khấu hao (lần)', color: LINE[2], values: E.ratio({m: 'capex'}, {m: 'da'}, x, mode).values}, {name: 'XDCB dở dang/tổng tài sản (%)', color: LINE[1], values: cipTa}], {unit: '', digits: 1});
     foot(c3, `${mode === 'y' ? 'năm' : 'TTM'}; đặt cạnh nhau để phân biệt ROIC thấp do vận hành với ROIC thấp khi dự án đang xây`); }
   renders.push(draw3);
-  const c4 = card('re-fin-map', 'Bản đồ hiệu quả vốn', 'Trục ngang: nợ vay ròng/EBITDA TTM · trục dọc: ROIC TTM · kích thước: vốn đầu tư'); let v4 = 'group';
-  seg(c4, 'Đơn vị', [['group', 'Nhóm'], ['firm', 'Doanh nghiệp']], () => v4, k => { v4 = k; draw4(); });
-  function draw4() { const x = sel(), i = S.end, ri = roic(x, 'ttm'), ndp = E.per('net_debt', x, 'q'), ebp = E.per('ebitda', x, 'ttm'), icp = E.per('ic', x, 'q');
-    let pts;
-    if (v4 === 'firm') pts = x.map(t => ({l: t, c: GC[E.groupOf[t]], x: fin(ndp[t][i]) && fin(ebp[t][i]) && ebp[t][i] > 0 ? ndp[t][i] / ebp[t][i] : null, y: ri.each[t][i], s: icp[t][i]})).filter(p => fin(p.x) && fin(p.y) && fin(p.s) && p.s > 0);
-    else pts = D.groups.filter(g => S.groups.includes(g.id)).map(g => { const ts = x.filter(t => E.groupOf[t] === g.id); const r = roic(ts, 'ttm').values[i], nd = E.ratio({m: 'net_debt'}, {m: 'ebitda'}, ts, 'ttm').values[i], ic = E.total('ic', ts, 'q').values[i]; return {l: g.label, c: g.color, x: nd, y: r, s: ic}; }).filter(p => fin(p.x) && fin(p.y) && fin(p.s) && p.s > 0);
-    c4.host.innerHTML = bubble(pts);
-    foot(c4, `${qLabel(D.periods[i])}; doanh nghiệp EBITDA âm không vẽ`); }
-  renders.push(draw4);
-  const c5 = card('re-fin-pool', 'Vốn đầu tư so với lợi nhuận tạo ra', 'Tỷ trọng từng nhóm trong vốn đầu tư và trong EBIT TTM · kỳ chốt');
+  // 27/11/2026: Bản đồ hiệu quả vốn (từng doanh nghiệp) dời sang So sánh doanh nghiệp › 2.3 (cMap).
+    const c5 = card('re-fin-pool', 'Vốn đầu tư so với lợi nhuận tạo ra', 'Tỷ trọng từng nhóm trong vốn đầu tư và trong EBIT TTM · kỳ chốt');
   function draw5() { const x = sel(), i = S.end, gs = D.groups.filter(g => S.groups.includes(g.id)), ic = E.byGroup('ic', x, 'q').groups, eb = E.byGroup('ebit', x, 'ttm').groups;
     const sh = arr => { const v = gs.map(g => { const z = arr.find(a => a.id === g.id); return z && fin(z.values[i]) ? z.values[i] : null; }); const tot = v.reduce((a, b) => a + (fin(b) && b > 0 ? b : 0), 0); return v.map(z => fin(z) && tot ? z / tot * 100 : null); };
     const a = sh(ic), b = sh(eb);
@@ -361,7 +353,7 @@ function s76() {
     if (window.ChartTypes) ChartTypes.mount(c5.host, m, () => { c5.host.innerHTML = ChartTypes.render(m, 'bar'); });
     foot(c5, `${qLabel(D.periods[i])}; vốn đầu tư = VCSH + nợ vay − tiền − đầu tư ngắn hạn (số dư)`); }
   renders.push(draw5);
-  s.append(grid2(c1, c2), grid2(c3, c4), c5.el);
+  s.append(grid2(c1, c2), grid2(c3, c5));
   return s;
 }
 function bubble(pts) {
@@ -420,11 +412,165 @@ function methods() {
   return d;
 }
 function redraw() { syncUrl(); renders.forEach(f => { try { f(); } catch (e) { document.documentElement.dataset.pfError = (document.documentElement.dataset.pfError || '') + e.message + ';'; console.error(e); } }); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
+/* ---------- Tài chính ngành › 02 So sánh doanh nghiệp (27/11/2026, người dùng chốt cách A) ----------
+   Mỗi nhóm chỉ số một mục; mỗi mục: chọn chỉ tiêu → chart xếp hạng từng mã ở kỳ chốt + chart xu hướng từng mã (chú giải bấm ẩn/hiện mã).
+   Số từng mã tính riêng cho chính mã đó (không trừ hợp nhất), tỷ số = tử ÷ mẫu của chính doanh nghiệp. */
+const CS = {mode: 'ttm', end: D.periods.length - 1, on: D.companies.map(c => c.ticker)};
+const TK_COLOR = ['#1D2678', '#2a9fa3', '#c98a00', '#861C52', '#3d4653', '#8997D6', '#2BB673', '#E5484D', '#7b61c9', '#3b8fd9', '#a0522d', '#59C5C8', '#D4A72C'];
+const tkColor = Object.fromEntries(D.companies.map((c, i) => [c.ticker, TK_COLOR[i % TK_COLOR.length]]));
+const cRenders = [];
+const one = (m, t, mode, avg) => E.per(m, [t], mode, avg)[t];
+const rat = (a, b, t, mode, sc = 1, avgB) => E.ratio({m: a}, {m: b, avg: avgB}, [t], mode, sc).values;
+const flowMode = () => CS.mode;                       // dòng tiền, lợi nhuận: quý / TTM / năm
+const stockMode = () => CS.mode === 'y' ? 'y' : 'q';  // số dư: cuối quý hoặc cuối năm
+const RMODE = () => CS.mode === 'q' ? 'ttm' : CS.mode; // tỷ suất sinh lời: TTM hoặc năm
+const cEndIdx = mode => mode === 'y' ? E.years.indexOf(D.periods[CS.end].slice(0, 4)) - (D.periods[CS.end].endsWith('Q4') ? 0 : 1) : CS.end;
+// Mỗi chỉ tiêu: tên, đơn vị, số lẻ, chu kỳ dùng, hàm trả chuỗi theo mã.
+const CM = {
+  revenue: {n: 'Doanh thu', u: 'tỷ đ', d: 0, md: flowMode, f: (t, md) => one('revenue', t, md)},
+  npat: {n: 'LNST', u: 'tỷ đ', d: 0, md: flowMode, f: (t, md) => one('npat', t, md)},
+  rev_g: {n: 'Doanh thu so cùng kỳ', u: '%', d: 1, md: flowMode, f: (t, md) => yoyPct(one('revenue', t, md), md)},
+  npat_g: {n: 'LNST so cùng kỳ', u: '%', d: 1, md: flowMode, f: (t, md) => yoy(one('npat', t, md), md)},
+  gm: {n: 'Biên gộp', u: '%', d: 1, md: RMODE, f: (t, md) => rat('gross', 'revenue', t, md, 100)},
+  em: {n: 'Biên EBIT', u: '%', d: 1, md: RMODE, f: (t, md) => rat('ebit', 'revenue', t, md, 100)},
+  nm: {n: 'Biên ròng', u: '%', d: 1, md: RMODE, f: (t, md) => rat('npat', 'revenue', t, md, 100)},
+  sga: {n: 'CP bán hàng + QLDN / doanh thu', u: '%', d: 1, md: RMODE, f: (t, md) => rat('sga', 'revenue', t, md, 100)},
+  roe: {n: 'ROE', u: '%', d: 1, md: RMODE, f: (t, md) => rat('npat', 'equity', t, md, 100, true)},
+  roa: {n: 'ROA', u: '%', d: 1, md: RMODE, f: (t, md) => rat('npat', 'total_assets', t, md, 100, true)},
+  roic: {n: 'ROIC', u: '%', d: 1, md: RMODE, f: (t, md) => roic([t], md).each[t]},
+  cfo: {n: 'CFO', u: 'tỷ đ', d: 0, md: RMODE, f: (t, md) => one('cfo', t, md)},
+  fcf: {n: 'FCF (CFO − CAPEX)', u: 'tỷ đ', d: 0, md: RMODE, f: (t, md) => one('fcf', t, md)},
+  cfo_np: {n: 'CFO / LNST', u: 'lần', d: 2, md: RMODE, f: (t, md) => rat('cfo', 'npat', t, md)},
+  inv: {n: 'Hàng tồn kho (quỹ đất, dự án)', u: 'tỷ đ', d: 0, md: stockMode, f: (t, md) => one('inventory', t, md)},
+  adv: {n: 'Người mua trả tiền trước', u: 'tỷ đ', d: 0, md: stockMode, f: (t, md) => one('adv_customers', t, md)},
+  cover: {n: 'Backlog cover (trả trước ÷ doanh thu TTM)', u: 'lần', d: 2, md: () => 'q', f: t => { const a = one('adv_customers', t, 'q'), r = one('revenue', t, 'ttm'); return a.map((v, i) => fin(v) && fin(r[i]) && r[i] > 0 ? v / r[i] : null); }},
+  inv_ta: {n: 'Tồn kho / tổng tài sản', u: '%', d: 1, md: stockMode, f: (t, md) => rat('inventory', 'total_assets', t, md, 100)},
+  rec_rev: {n: 'Phải thu / doanh thu TTM', u: 'lần', d: 2, md: () => 'q', f: t => { const a = one('receivables', t, 'q'), r = one('revenue', t, 'ttm'); return a.map((v, i) => fin(v) && fin(r[i]) && r[i] > 0 ? v / r[i] : null); }},
+  de: {n: 'Nợ vay / VCSH', u: 'lần', d: 2, md: stockMode, f: (t, md) => rat('debt', 'equity', t, md)},
+  nd_eb: {n: 'Nợ vay ròng / EBITDA TTM', u: 'lần', d: 2, md: () => 'q', f: t => { const a = one('net_debt', t, 'q'), b = one('ebitda', t, 'ttm'); return a.map((v, i) => fin(v) && fin(b[i]) && b[i] > 0 ? v / b[i] : null); }},
+  st_cash: {n: 'Nợ vay ngắn hạn / tiền', u: 'lần', d: 2, md: stockMode, f: (t, md) => rat('st_debt', 'cash_all', t, md)},
+  icov: {n: 'EBIT / lãi vay', u: 'lần', d: 2, md: RMODE, f: (t, md) => rat('ebit', 'interest', t, md)},
+};
+const CSEC = [
+  ['2.1', 'Quy mô & tăng trưởng', 'Mã nào đang lớn lên, mã nào co lại?', ['revenue', 'npat', 'rev_g', 'npat_g']],
+  ['2.2', 'Biên lợi nhuận', 'Ai giữ được biên khi cơ cấu bàn giao thay đổi?', ['gm', 'em', 'nm', 'sga']],
+  ['2.3', 'Hiệu quả vốn', 'Vốn chủ và vốn đầu tư của từng mã sinh lời bao nhiêu?', ['roe', 'roa', 'roic']],
+  ['2.4', 'Dòng tiền', 'Lợi nhuận của mã nào đã thành tiền?', ['cfo', 'fcf', 'cfo_np']],
+  ['2.5', 'Quỹ đất, dự án & tiền khách trả trước', 'Doanh thu 4–8 quý tới đã có tiền đặt cọc đứng sau chưa, vốn đang nằm ở dự án bao nhiêu?', ['cover', 'adv', 'inv', 'inv_ta', 'rec_rev']],
+  ['2.6', 'Nợ vay & thanh khoản', 'Mã nào chịu áp lực nợ đến hạn?', ['de', 'nd_eb', 'st_cash', 'icov']],
+];
+const cSel = () => CS.on.slice();
+const cFoot = (c, note) => { c.el.querySelectorAll(':scope > .pw-src, :scope > .pw-src-note').forEach(n => n.remove()); c.el.append(el('div', 'pw-src', `Nguồn: ${SRC}${note ? ' · ' + esc(note) : ''}`)); };
+// Một card mỗi mục (27/11/2026, người dùng: bỏ chart lặp): trái = xu hướng từng mã (Chart.js, bấm chú giải ẩn/hiện, mặc định 5 mã đầu),
+// phải = bảng xếp hạng gọn ở kỳ chốt. Không có thanh công cụ riêng từng chart; bộ lọc chung ở đầu sub-tab.
+function cCard(id) {
+  const c = el('div', 'card pf-card pf-cmp-card'); c.dataset.blockId = id; c.dataset.updateKind = 'public'; c.dataset.cadence = 'quarterly'; c.dataset.refreshStatus = 'snapshot';
+  c.innerHTML = `<div class="pf-cmp-grid"><div><div class="chart-title"></div><div class="chart-sub"></div><div class="pf-cmp-cv"><canvas role="img"></canvas></div></div><div class="pf-cmp-side"><div class="pf-cmp-sh"></div><ol class="pf-rank"></ol></div></div>`;
+  return {el: c, cv: c.querySelector('canvas'), title: c.querySelector('.chart-title'), sub: c.querySelector('.chart-sub'), sh: c.querySelector('.pf-cmp-sh'), rank: c.querySelector('.pf-rank')};
+}
+function cLine(c, labels, series, unit, digits) {
+  c.cv._ch?.destroy(); if (!window.Chart) return;
+  const fmt = v => nf(v, digits);
+  c.cv._ch = new Chart(c.cv, {type: 'line', data: {labels, datasets: series.map(s => ({label: s.name, data: s.values, hidden: !!s.hidden, borderColor: s.color, backgroundColor: s.color, borderWidth: 2, pointRadius: 0, pointHoverRadius: 3, tension: .25, spanGaps: true}))},
+    options: {responsive: true, maintainAspectRatio: false, animation: false, interaction: {mode: 'index', intersect: false},
+      plugins: {legend: {position: 'bottom', labels: {usePointStyle: true, boxWidth: 8, color: '#3B4256', font: {size: 12}}},
+        tooltip: {itemSort: (a, b) => (b.parsed.y ?? -1e18) - (a.parsed.y ?? -1e18), callbacks: {label: x => ` ${x.dataset.label}: ${fmt(x.parsed.y)} ${unit}`}}},
+      scales: {x: {grid: {display: false}, ticks: {color: '#6B7392', maxTicksLimit: 9, maxRotation: 0, font: {size: 11.5}}}, y: {grid: {color: '#EEF0F6'}, ticks: {color: '#6B7392', font: {size: 11.5}, callback: fmt}}}}});
+}
+function cRank(c, rows, digits, unit, extra) {
+  const mx = Math.max(...rows.map(r => Math.abs(r[1])), 1e-9);
+  c.rank.innerHTML = rows.map(([t, v, x]) => `<li><b><i style="background:${tkColor[t]}"></i>${t}</b><span class="pf-rbar"><span class="${v < 0 ? 'neg' : ''}" style="width:${(Math.abs(v) / mx * 100).toFixed(1)}%"></span></span><em>${nf(v, digits)}${extra ? `<small>${extra(x)}</small>` : ''}</em></li>`).join('')
+    || '<li class="pf-r0">Chưa có số</li>';
+}
+function cPick(s, opts, get, set) {
+  const pick = el('div', 'pf-seg pf-box'); pick.setAttribute('role', 'group'); pick.setAttribute('aria-label', 'Chỉ tiêu');
+  opts.forEach(([x, n]) => { const b = el('button', '', esc(n)); b.type = 'button'; b.dataset.k = x; b.setAttribute('aria-pressed', String(x === get())); b.addEventListener('click', () => { set(x); pick.querySelectorAll('button').forEach(z => z.setAttribute('aria-pressed', String(z.dataset.k === x))); }); pick.append(b); });
+  s.querySelector('.pp-ph > div').append(pick);
+}
+function cSection(num, title, q, keys) {
+  const s = section(num, title, q); let k = keys[0];
+  const c = cCard('re-cmp-' + num.replace('.', ''));
+  cPick(s, keys.map(x => [x, CM[x].n]), () => k, x => { k = x; draw(); });
+  function draw() {
+    const m = CM[k], md = m.md(), L = E.labels(md), i = cEndIdx(md), ts = cSel();
+    const vals = Object.fromEntries(ts.map(t => [t, m.f(t, md)]));
+    const rows = ts.map(t => [t, vals[t][i]]).filter(r => fin(r[1])).sort((x, y) => y[1] - x[1]), top = rows.slice(0, 5).map(r => r[0]);
+    const per = md === 'y' ? 'năm' : md === 'ttm' ? 'TTM' : 'quý';
+    let a = 0; while (a < i && ts.every(t => !fin(vals[t][a]))) a++;
+    c.title.textContent = m.n; c.sub.textContent = `${m.u} · ${per} · hiện 5 mã đứng đầu, bấm chú giải để thêm mã`;
+    cLine(c, L.slice(a, i + 1).map(qLabel), ts.map(t => ({name: t, color: tkColor[t], values: vals[t].slice(a, i + 1).map(v => fin(v) ? v : null), hidden: !top.includes(t)})), m.u, m.d);
+    c.sh.textContent = `Xếp hạng ${qLabel(L[i] || '')} · ${rows.length}/${ts.length} mã`;
+    cRank(c, rows, m.d);
+    cFoot(c, 'từng doanh nghiệp, không trừ hợp nhất');
+  }
+  cRenders.push(draw);
+  s.append(c.el);
+  return s;
+}
+// Định giá: P/E, P/B theo tuần từ 2018 (VNDirect v4/ratios, data/valuation-history.js); xếp hạng theo phiên mới nhất kèm trung vị 5 năm.
+function cValuation() {
+  const H = window.VALUATION_HISTORY?.tickers, V = window.COMPANY_VALUATION?.companies || {};
+  const s = section('3.1', 'P/E, P/B từng mã', 'Mã nào đang rẻ hay đắt so với chính lịch sử của nó?');
+  if (!H) { s.insertAdjacentHTML('beforeend', '<p class="data-gap">Chưa có chuỗi P/E, P/B dài hạn.</p>'); return s; }
+  let k = 'pe'; const c = cCard('re-cmp-27');
+  cPick(s, [['pe', 'P/E'], ['pb', 'P/B']], () => k, x => { k = x; draw(); });
+  function draw() {
+    const col = k === 'pe' ? 1 : 2, nm = k === 'pe' ? 'P/E' : 'P/B', ts = D.companies.map(c => c.ticker).filter(t => H[t]?.length);  // sub-tab riêng: đủ mã, bật/tắt bằng chú giải
+    const days = [...new Set(ts.flatMap(t => H[t].map(r => r[0])))].sort(), wk = d => { const x = new Date(d); return `${x.getUTCFullYear()}-W${Math.ceil(((x - Date.UTC(x.getUTCFullYear(), 0, 1)) / 864e5 + 1) / 7)}`; };
+    const keys = [...new Set(days.map(wk))], lab = {}; days.forEach(d => { lab[wk(d)] = d; });
+    const cap = k === 'pe' ? 100 : 20;  // EPS gần 0 làm P/E nhảy hàng nghìn lần: bỏ khỏi chart, ghi chú dưới tiêu đề
+    const ser = Object.fromEntries(ts.map(t => { const mp = new Map(H[t].map(r => [wk(r[0]), fin(r[col]) && r[col] <= cap ? r[col] : null])); return [t, keys.map(x => mp.get(x) ?? null)]; }));
+    const now = t => { const a = V[t]?.[k]; if (fin(a) && a > 0) return a; const v = ser[t].filter(fin); return v.at(-1) ?? null; };
+    const rows = ts.map(t => [t, now(t), V[t]?.median5?.[k]]).filter(r => fin(r[1])).sort((x, y) => x[1] - y[1]), top = rows.slice(0, 5).map(r => r[0]);
+    c.title.textContent = `${nm} từng mã theo tuần`; c.sub.textContent = `lần · từ ${lab[keys[0]]?.slice(0, 4) || ''} · bỏ giá trị ≤ 0 (lỗ) và trên ${cap} lần (EPS gần 0) · hiện 5 mã thấp nhất, bấm chú giải để thêm mã`;
+    cLine(c, keys.map(x => { const d = lab[x]; return d.slice(5, 7) + '/' + d.slice(0, 4); }), ts.map(t => ({name: t, color: tkColor[t], values: ser[t], hidden: !top.includes(t)})), 'lần', 1);
+    c.sh.textContent = `${nm} hiện tại · trung vị 5 năm`;
+    cRank(c, rows, 1, 'lần', x => fin(x) ? ` · ${nf(x, 1)}` : '');
+    c.el.querySelectorAll(':scope > .pw-src').forEach(n => n.remove());
+    c.el.append(el('div', 'pw-src', `Nguồn: <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a> (P/E, P/B theo ngày, lấy phiên cuối tuần)`));
+  }
+  cRenders.push(draw);
+  s.append(c.el);
+  return s;
+}
+function cFilter() {
+  // Một dòng: nhóm · chu kỳ · kỳ chốt · "Chọn mã" (mở ra mới thấy 13 mã).
+  const f = el('section', 'pf-filter pf-cmp-filter');
+  f.innerHTML = `<div class="pf-cmp-row"><div class="pf-seg pf-box" aria-label="Nhóm"><button type="button" data-cg="*" aria-pressed="true">Tất cả</button>${D.groups.map(g => `<button type="button" data-cg="${g.id}" aria-pressed="false">${esc(g.label)}</button>`).join('')}</div>
+    <div class="pf-seg pf-box" aria-label="Chu kỳ" title="Chu kỳ Quý: tỷ suất sinh lời và dòng tiền vẫn tính TTM; số dư lấy cuối kỳ">${MODES.map(([k, t]) => `<button type="button" data-cm="${k}" aria-pressed="${CS.mode === k}">${t}</button>`).join('')}</div>
+    <select data-role="cend" aria-label="Kỳ chốt">${D.periods.map((p, i) => `<option value="${i}"${i === CS.end ? ' selected' : ''}>${qLabel(p)}</option>`).join('')}</select>
+    <details class="pf-cmp-pickt"><summary>Chọn mã <b data-role="ccount"></b></summary><div class="pf-chips pf-cmp-tk">${D.groups.map(g => D.companies.filter(c => c.group === g.id).map(c => `<button type="button" data-ctk="${c.ticker}" aria-pressed="true" title="${esc(g.label)}"><i style="background:${tkColor[c.ticker]}"></i>${c.ticker}</button>`).join('')).join('')}</div></details></div>`;
+  const sync = () => { f.querySelectorAll('[data-ctk]').forEach(b => b.setAttribute('aria-pressed', String(CS.on.includes(b.dataset.ctk)))); f.querySelector('[data-role=ccount]').textContent = `${CS.on.length}/${D.companies.length}`; };
+  const grp = g => f.querySelectorAll('[data-cg]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.cg === g)));
+  f.querySelectorAll('[data-ctk]').forEach(b => b.addEventListener('click', () => { const t = b.dataset.ctk; CS.on = CS.on.includes(t) ? CS.on.filter(x => x !== t) : [...CS.on, t]; if (!CS.on.length) CS.on = [t]; grp(''); sync(); cRedraw(); }));
+  f.querySelectorAll('[data-cg]').forEach(b => b.addEventListener('click', () => { const g = b.dataset.cg; CS.on = D.companies.filter(c => g === '*' || c.group === g).map(c => c.ticker); grp(g); sync(); cRedraw(); }));
+  f.querySelectorAll('[data-cm]').forEach(b => b.addEventListener('click', () => { CS.mode = b.dataset.cm; f.querySelectorAll('[data-cm]').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.cm === CS.mode))); cRedraw(); }));
+  f.querySelector('[data-role=cend]').addEventListener('change', e => { CS.end = +e.target.value; cRedraw(); });
+  sync(); return f;
+}
+function cRedraw() { cRenders.forEach(fn => { try { fn(); } catch (e) { document.documentElement.dataset.pfError = (document.documentElement.dataset.pfError || '') + e.message + ';'; console.error(e); } }); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
+function cMap() {
+  const c = card('re-fin-map', 'Bản đồ hiệu quả vốn', 'Mỗi bong bóng một doanh nghiệp, màu theo nhóm · trục ngang: nợ vay ròng/EBITDA TTM · trục dọc: ROIC TTM · kích thước: vốn đầu tư');
+  cRenders.push(() => { const i = CS.end, pts = cSel().map(t => { const nd = one('net_debt', t, 'q')[i], eb = one('ebitda', t, 'ttm')[i];
+      return {l: t, c: GC[E.groupOf[t]], x: fin(nd) && fin(eb) && eb > 0 ? nd / eb : null, y: roic([t], 'ttm').each[t][i], s: one('ic', t, 'q')[i]}; }).filter(p => fin(p.x) && fin(p.y) && fin(p.s) && p.s > 0);
+    c.host.innerHTML = bubble(pts); cFoot(c, `${qLabel(D.periods[i])}, EBITDA âm không vẽ`); });
+  c.el.classList.add('of-wide'); c.el.style.marginTop = '14px'; return c.el;
+}
+let cRoot = null;
+function buildCompare(host) {
+  if (!host || cRoot) return; cRoot = host; style();
+  const secs = CSEC.map(x => cSection(...x)); secs[2].append(cMap());
+  host.append(cFilter(), ...secs);
+  const vr = document.getElementById('re-val-root'); (vr || host).append(cValuation());
+  cRedraw();
+}
+
 function build(pane) {
   if (!pane || root) return; root = pane;
   style();
   pane.append(filterBar(), kpis(), s71(), s72(), s73(), s74(), s75(), s76(), methods());
   redraw();
+  buildCompare(document.getElementById('re-cmp-root'));
 }
 function style() {
   if (document.getElementById('pf-style')) return;
@@ -448,8 +594,18 @@ button.pf-tk[aria-pressed=false]{opacity:.45;text-decoration:line-through}.pf-me
 .pf-table{width:100%;border-collapse:collapse;font-size:12.5px}.pf-table th{cursor:pointer;text-align:left;white-space:nowrap}.pf-table th,.pf-table td{padding:5px 8px;border-bottom:1px solid var(--line,#eef0f6)}.pf-table td.n{text-align:right;font-variant-numeric:tabular-nums}
 .pf-bubble{width:100%;height:auto}.pf-bubble text{font:11px Inter,sans-serif;fill:#5b6479}.pf-bubble text.l{font-weight:700;fill:#1D2678}.pf-bubble line.g{stroke:#eef0f6}.pf-bubble line.z{stroke:#9AA3BD;stroke-dasharray:3 3}
 @media (max-width:1100px){.pf-kpis{grid-template-columns:repeat(3,minmax(0,1fr))!important}}@media (max-width:640px){.pf-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pf-wf-r{grid-template-columns:110px 1fr 70px}}
-:root[data-theme=dark] .pf-wf-t{background:#262c45}`;
+:root[data-theme=dark] .pf-wf-t{background:#262c45}
+.pf-cmp-grid{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(220px,1fr);gap:22px}.pf-cmp-cv{position:relative;height:340px;margin-top:8px}
+.pf-cmp-side{border-left:1px solid var(--line,#eef0f6);padding-left:18px}.pf-cmp-sh{font:600 12px Inter,sans-serif;color:var(--muted,#6B7392);margin:2px 0 8px}
+.pf-rank{list-style:none;margin:0;padding:0;display:grid;gap:5px}.pf-rank li{display:grid;grid-template-columns:62px 1fr auto;gap:8px;align-items:center;font-size:12.5px}
+.pf-rank b{font:700 12.5px Inter,sans-serif;color:var(--ink,#1F2A5C)}.pf-rank b i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.pf-rbar{height:8px;background:#F1F3F9;border-radius:4px;overflow:hidden}.pf-rbar span{display:block;height:100%;background:#8997D6;border-radius:4px}.pf-rbar span.neg{background:#E5484D}
+.pf-rank em{font-style:normal;font:600 12.5px Inter,sans-serif;color:var(--ink2,#3B4256);text-align:right;white-space:nowrap}.pf-rank em small{font-weight:500;color:var(--muted,#7a8399)}
+.pf-cmp-card+.pf-cmp-card{margin-top:14px}@media(max-width:900px){.pf-cmp-grid{grid-template-columns:1fr}.pf-cmp-side{border-left:0;padding-left:0}}
+.pf-cmp-row{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}.pp-ph .pf-seg{margin-top:8px}
+.pf-cmp-pickt>summary{cursor:pointer;list-style:none;border:1px solid var(--line,#d6dbe8);border-radius:7px;padding:4px 10px;font:600 12px Inter,sans-serif;color:var(--ink2,#3b4256)}.pf-cmp-pickt>summary::-webkit-details-marker{display:none}.pf-cmp-pickt>summary::after{content:' ▾'}
+.pf-cmp-pickt[open]>.pf-cmp-tk{margin-top:8px}.pf-cmp-tk button[aria-pressed=false]{opacity:.45;text-decoration:line-through}.pf-cmp-tk button i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}`;
   document.head.append(st);
 }
-window.ReFinance = {build, engine: E, state: S};
+window.ReFinance = {build, buildCompare, engine: E, state: S};
 })();

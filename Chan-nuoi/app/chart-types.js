@@ -402,7 +402,7 @@
     const tpl = document.createElement('template'); tpl.innerHTML = toolbar(id, model, type);
     document.querySelectorAll('.ct-switch').forEach(b => { if (b.dataset.ctFor === id) b.remove(); });
     const v = readView(model.key), fit0 = model.zeroBase === false;
-    registry.set(id, {model, base: () => base(), body: host, type, bar: tpl.content.firstElementChild, fit0, fit: v.fit ?? fit0, hidden: new Set((v.hidden || []).filter(n => model.series.some(s => s.name === n))), ...restore(v, model)});
+    registry.set(id, {model, base: () => base(), body: host, type, bar: tpl.content.firstElementChild, fit0, fit: v.fit ?? fit0, hidden: new Set(((v.hidden ?? model.hidden) || []).filter(n => model.series.some(s => s.name === n))), ...restore(v, model)});
     paint(id);
     if (window.ResizeObserver && !host._ctRO) {
       let w = host.clientWidth;
