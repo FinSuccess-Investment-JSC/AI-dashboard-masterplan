@@ -5,7 +5,7 @@ const TTDB = ['VnEconomy · Luật Thuế TTĐB 2025', 'https://vneconomy.vn/thu
 const SAB = ['Sabeco qua DN&PL', 'https://doanhnhan.baophapluat.vn/sabeco-sab-thu-hon-2-480-ty-dong-lai-sau-thue-nua-dau-nam-2026-hoan-thanh-50-ke-hoach.html'];
 window.PKG = {
   key: 'beer', prefix: 'bia', label: 'Bia',
-  wide: ['bia-01', 'bia-05', 'bia-52', 'bia-53', 'bia-60'],
+  wide: ['bia-01', 'bia-05', 'bia-52', 'bia-53', 'bia-60', 'bia-02', 'bia-74', 'bia-82', 'bia-85', 'bia-86', 'bia-77'],
   kpis: [
     {spark: 'spk-beer', series: 'beer_output', unit: 'triệu lít', digits: 0},
     {spark: 'spk-iipb', series: 'iip_bev', pct: true, signed: true, note: 'IIP đồ uống so cùng kỳ', color: '#c29100'},
@@ -83,11 +83,23 @@ window.PKG = {
         {q: 'Bia đi qua những khâu nào trước khi thành lợi nhuận?', id: 'rf-q-map', take: ['bia-01']}]},
       {k: 'model', t: 'Mô hình kiếm tiền', d: 'Hãng bia lớn và nhà máy vùng kiếm tiền khác nhau thế nào.', items: [
         {q: 'Mỗi nhóm kiếm tiền từ đâu, biến nào quyết định biên?', id: 'rf-q-model', take: ['bia-05']}]},
+      {k: 'thesis', t: 'Luận điểm đầu tư', d: 'Kênh tiêu thụ, thị phần, cơ cấu sản phẩm và thuế đi vào sản lượng, biên lợi nhuận doanh nghiệp thế nào.', items: [
+        {q: 'Luận điểm chính về ngành bia là gì, cần kiểm gì tiếp?', id: 'rf-q-thesis', take: ['bia-02']}]},
     ]},
     mt2: {title: 'Bức tranh ngành', subs: [
       {k: 'all', t: 'Sản lượng & cầu', d: 'Ngành bia đang sản xuất và bán nhiều hơn hay ít hơn? Sản lượng, chỉ số sản xuất, giá đồ uống và khách quốc tế.', kpis: ['spk-beer', 'spk-iipb', 'spk-cpib'], items: [
         {q: 'Sản lượng bia đang tăng hay giảm?', id: 'rf-q-output', meta: '<b>sản lượng sản xuất</b> (NSO) và <b>chỉ số sản xuất</b> IIP, toàn ngành', take: ['bia-10', 'bia-11']},
         {q: 'Giá bán và khách quốc tế đang hỗ trợ hay cản cầu?', id: 'rf-q-demand', meta: 'CPI % so cùng kỳ · khách quốc tế theo tháng', take: ['bia-12', 'bia-13']}]},
+      {k: 'channel', t: 'Kênh tiêu thụ & sản phẩm', d: 'Người tiêu dùng chuyển từ uống tại chỗ sang mua mang về tới đâu, và bia lon đang tăng nhanh hơn bia chai, bia hơi thế nào?', kpis: ['spk-off', 'spk-offchg', 'spk-offcagr', 'spk-oncagr'], items: [
+        {q: 'Người tiêu dùng chuyển từ uống tại chỗ sang mua mang về tới đâu?', id: 'rf-q-channel', meta: '% và triệu lít · sản lượng tiêu thụ theo kênh, Euromonitor', take: ['bia-70', 'bia-71']},
+        {q: 'Mua mang về tăng thật, hay do uống tại chỗ giảm?', id: 'rf-q-channel-why', meta: 'chỉ số 2019 = 100 · cầu nối sản lượng', take: ['bia-72', 'bia-73']},
+        {q: 'Bia lon đang tăng nhanh hơn bia chai và bia hơi bao nhiêu?', id: 'rf-q-pack', meta: '<b>sản lượng sản xuất</b> theo chủng loại, lũy kế 6 tháng · không phải tiêu thụ', take: ['bia-74', 'bia-75', 'bia-76']}]},
+      {k: 'share', t: 'Thị phần & cạnh tranh', d: 'Hãng nào đang giành, hãng nào đang mất thị phần, ở toàn thị trường và ở kênh mua mang về.', kpis: ['spk-cr2', 'spk-cr4', 'spk-gap', 'spk-offsab'], items: [
+        {q: 'Hãng bia nào đang giành hoặc mất thị phần?', id: 'rf-q-share', meta: '% sản lượng toàn thị trường, theo chủ sở hữu thương hiệu', take: ['bia-79', 'bia-78', 'bia-77']},
+        {q: 'Ở kênh mua mang về, Sabeco mất vị thế đến đâu?', id: 'rf-q-offshare', meta: 'chỉ hai mốc có số · không nội suy năm giữa', take: ['bia-80', 'bia-81']},
+        {q: 'Thương hiệu nào đang lên, thương hiệu nào đi xuống?', id: 'rf-q-brand', meta: '% sản lượng toàn thị trường theo thương hiệu', take: ['bia-82', 'bia-83', 'bia-84']}]},
+      {k: 'impact', t: 'Tác động tới doanh nghiệp', d: 'Thay đổi kênh và thị phần đi vào sản lượng, doanh thu, lợi nhuận SAB, BHN thế nào.', items: [
+        {q: 'Mất 1 điểm % thị phần thì sản lượng, lợi nhuận đổi bao nhiêu?', id: 'rf-q-impact', meta: 'phân tích kịch bản, không phải dự báo', take: ['bia-85', 'bia-86']}]},
       {k: 'margin', t: 'Biên lợi nhuận', d: 'Biên gộp từng doanh nghiệp đi thế nào khi thuế và giá đầu vào đổi?', items: [
         {q: 'Biên gộp từng doanh nghiệp đang mở rộng hay thu hẹp?', id: 'rf-q-gm', meta: '% · BCTC hợp nhất quý từng mã', take: ['bia-20'],
           after: 'Chưa có chuỗi giá malt, lúa mạch, nhôm lon từ nguồn công khai nên chưa đặt giá đầu vào cạnh biên gộp. Chỉ báo cần kiểm: giá malt, nhôm LME, tỷ giá USD/VND, giá bán bình quân sau các đợt tăng giá.'}]},

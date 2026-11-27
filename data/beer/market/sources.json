@@ -1,0 +1,7 @@
+{
+ "euro_2025_t5": {"name": "Euromonitor, Beer in Vietnam 2025", "table": "bảng 5, sản lượng theo kênh", "url": "https://www.scribd.com/document/956217174/Beer-in-Vietnam", "published": "2025", "check": "Tỷ trọng kênh đối chiếu khớp Shinhan SAB Update 11/08/2026, tr.9 (https://shinhansec.com.vn/uploads/report/SAB_Update__Q2_2026.pdf); số lít tuyệt đối chưa đối chiếu được bản đầy đủ"},
+ "euro_2025_t11": {"name": "Euromonitor qua Shinhan Securities (SAB Update 11/08/2026)", "table": "thị phần sản lượng, tr.9", "url": "https://shinhansec.com.vn/uploads/report/SAB_Update__Q2_2026.pdf", "published": "2026-08-11", "check": "Khác = 100 − 4 hãng"},
+ "euro_2026_off": {"name": "Euromonitor qua Markettimes", "table": "thị phần kênh mua mang về", "url": "https://markettimes.vn/cu-100-lit-bia-mua-ve-o-viet-nam-50-lit-thuoc-ve-heineken-sabeco-tu-vi-the-dan-dau-bat-ngo-bi-bo-xa-134768.html", "published": "2026-11-23", "check": "Khác = 100 − Heineken − Sabeco"},
+ "euro_2025_brand": {"name": "Euromonitor, Beer in Vietnam 2025", "table": "thị phần thương hiệu", "url": "https://www.scribd.com/document/956217174/Beer-in-Vietnam", "published": "2025", "check": "Chưa đối chiếu được bản đầy đủ"},
+ "ducvn_2026h1": {"name": "Đồ uống Việt Nam (VBA)", "table": "sản xuất 6T/2026 theo chủng loại", "url": "https://douongvietnam.vn/gia-tri-lan-toa-cua-nganh-bia-trong-doi-song-kinh-te-xa-hoi.htm", "published": "2026-10-15"}
+}
