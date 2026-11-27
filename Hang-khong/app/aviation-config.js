@@ -91,52 +91,66 @@ window.PKG = {
         <p class="hk-chain-legend"><span>Cung ứng và vận chuyển</span><span>Hạ tầng và dịch vụ hỗ trợ</span></p>
       </div>`},
     {id: 'hkModels', type: 'html', src: [SHS, VND, ['Cục Hàng không – đội tàu 15/10/2026', CAA10[1]]],
-      method: 'Mô tả định tính theo loại hình; số BCTC là tổng 4 quý gần nhất (TTM) từ BCTC hợp nhất, tỷ đồng; biên = lợi nhuận ÷ doanh thu thuần cùng 4 quý. Không có tỷ trọng doanh thu theo mảng vì doanh nghiệp không công bố đều theo quý.',
+      method: 'Sơ đồ định tính: các khối nối bằng công thức (×, =) hoặc mũi tên, không vẽ theo tỷ trọng vì doanh nghiệp không công bố đủ số tách mảng theo quý. Màu: xanh ngọc = lưu lượng, xanh đậm = doanh thu, đỏ = chi phí, vàng = gắn với USD/VND. Dải BCTC: doanh thu, biên gộp, biên ròng là tổng 4 quý gần nhất; nợ vay ròng là số dư cuối quý gần nhất (vay ngắn + dài hạn − tiền − đầu tư ngắn hạn); BCTC hợp nhất.',
       render: e => {
-        const n = (F.periods || []).length, ql = p => 'Q' + p.slice(-1) + '/' + p.slice(0, 4);
+        const n = (F.periods || []).length, lp = (F.periods || [])[n - 1], ql = p => p ? 'Q' + p.slice(-1) + '/' + p.slice(0, 4) : '';
         const ttm = (t, k) => { const r = F.data?.[t]?.[k]; if (!r || n < 4) return null; const v = r.slice(n - 4); return v.every(Number.isFinite) ? v.reduce((a, b) => a + b, 0) : null; };
         const pt = (t, k) => { const r = F.data?.[t]?.[k]; return r && Number.isFinite(r[n - 1]) ? r[n - 1] : null; };
-        const fin = t => { const rev = ttm(t, 'revenue'), gp = ttm(t, 'gross'), np = ttm(t, 'npat'), debt = (pt(t, 'st_debt') ?? 0) + (pt(t, 'lt_debt') ?? 0), cash = (pt(t, 'cash') ?? 0) + (pt(t, 'st_invest') ?? 0);
-          return `<div class="hk-mfin"><b>${e(t)}</b><span><i>Doanh thu</i>${nf(rev, 0)}</span><span><i>Biên gộp</i>${rev ? nf(gp / rev * 100, 1) + '%' : '—'}</span><span><i>Biên ròng</i>${rev ? nf(np / rev * 100, 1) + '%' : '—'}</span><span><i>Nợ vay ròng</i>${nf(debt - cash, 0)}</span></div>`; };
-        const list = rows => `<ul>${rows.map(([a, b]) => `<li><b>${e(a)}</b>${b ? ' — ' + e(b) : ''}</li>`).join('')}</ul>`;
+        // Khối: [nhãn, đơn vị/ghi chú ngắn, loại flow|rev|cost|lever, giải thích khi rê/chạm, cờ]
+        const N = (l, u, k, tip, f = {}) => ({l, u, k, tip, ...f}), O = t => ({op: t});
+        const chip = x => x.op ? `<span class="hkm-op${/[→↘]/.test(x.op) ? ' hkm-arr' : ''}" aria-hidden="true">${e(x.op)}</span>`
+          : `<span class="hkm-n hkm-${x.k}${x.main ? ' hkm-main' : ''}" tabindex="0"${x.tip ? ` data-tip="${e(x.tip)}"` : ''} aria-label="${e(x.l + (x.u ? ', ' + x.u : '') + (x.tip ? '. ' + x.tip : ''))}"><b>${e(x.l)}</b>${x.u ? `<small>${e(x.u)}</small>` : ''}${x.fx ? '<i class="hkm-fx">USD/VND</i>' : ''}</span>`;
+        const lane = (t, seq, cls = '') => `<div class="hkm-lane ${cls}"><span class="hkm-lt">${e(t)}</span><div class="hkm-seq">${seq.map(chip).join('')}</div></div>`;
+        const margin = (from, costs, out) => `<div class="hkm-lane hkm-cost"><span class="hkm-lt">Biên</span><div class="hkm-seq">${chip(N(from, '', 'rev'))}<span class="hkm-op">−</span><span class="hkm-group">${costs.map(chip).join('')}</span><span class="hkm-op">=</span>${chip(N(out, '', 'rev', '', {main: 1}))}</div></div>`;
+        const kpis = (tks, scope) => `<div class="hkm-kpi"><p class="hkm-kh">BCTC hợp nhất · doanh thu, biên: 4 quý đến ${ql(lp)} · nợ vay ròng: cuối ${ql(lp)}${scope ? ' · ' + e(scope) : ''} · tỷ đồng</p>${tks.map(([t, where]) => { const rev = ttm(t, 'revenue'), gp = ttm(t, 'gross'), np = ttm(t, 'npat'), debt = (pt(t, 'st_debt') ?? 0) + (pt(t, 'lt_debt') ?? 0), cash = (pt(t, 'cash') ?? 0) + (pt(t, 'st_invest') ?? 0);
+          return `<div class="hk-mfin"><b>${e(t)}</b>${where ? `<em>${e(where)}</em>` : ''}<span><i>Doanh thu</i>${nf(rev, 0)}</span><span><i>Biên gộp</i>${rev ? nf(gp / rev * 100, 1) + '%' : '—'}</span><span><i>Biên ròng</i>${rev ? nf(np / rev * 100, 1) + '%' : '—'}</span><span><i>Nợ vay ròng</i>${nf(debt - cash, 0)}</span></div>`; }).join('')}</div>`;
+        const scsY = scsQ.yld.at(-1), scsP = scsQ.cats.at(-1);
         const M = [
-          {t: 'Hãng bay truyền thống (dịch vụ đầy đủ)', who: ['HVN'], note: 'Vietnam Airlines hợp nhất Pacific Airlines, VASCO; Cục HK ghi đội tàu Vietnam Airlines 94 chiếc (4 A320, 59 A321, 14 A350, 17 B787) tại 15/10/2026.',
-            rev: [['Vé hành khách quốc tế', 'giá vé theo hạng ghế (thương gia, phổ thông đặc biệt, phổ thông) và mùa; đường bay dài thân rộng sang châu Âu, Úc, Đông Bắc Á'], ['Vé hành khách nội địa', 'giá vé trong khung giá trần do Nhà nước quy định'], ['Hàng hóa, bưu kiện', 'cước theo kg trên khoang bụng tàu thân rộng và hẹp'], ['Dịch vụ phụ trợ', 'hành lý quá cước, đổi vé, chọn chỗ, phòng chờ'], ['Công ty con, liên kết', 'hãng thành viên và các công ty dịch vụ hàng không được hợp nhất hoặc góp vốn']],
-            cost: [['Nhiên liệu bay', 'giá theo Platts/MOPS, tính bằng USD'], ['Tàu bay', 'thuê hoạt động, thuê tài chính và khấu hao tàu sở hữu; phần lớn tính bằng USD'], ['Bảo dưỡng, động cơ', 'dự phòng bảo dưỡng lớn, thuê động cơ thay thế'], ['Phí sân bay, điều hành bay', 'trả cho ACV, VATM và sân bay nước ngoài theo chuyến'], ['Nhân công, bán vé', 'phi công, tiếp viên, kỹ thuật; hoa hồng đại lý, phí hệ thống đặt chỗ']],
-            drv: [['Hệ số tải và yield', 'giá vé bình quân trên mỗi khách.km'], ['Giá nhiên liệu', 'chi phí lớn nhất, đổi theo jet fuel'], ['USD/VND', 'chi phí và nợ thuê tàu bằng USD, doanh thu phần lớn bằng VND'], ['Số tàu khai thác được', 'tàu dừng do lỗi động cơ làm giảm ghế cung ứng']],
-            links: [['#rf-q-carried', 'Khách vận chuyển'], ['#rf-q-fuel', 'Nhiên liệu, tỷ giá'], ['#rf-q-airfin', 'Biên HVN']]},
-          {t: 'Hãng bay chi phí thấp', who: ['VJC'], note: 'Cục HK ghi đội tàu Vietjet 107 chiếc (16 A320, 83 A321, 8 A330) tại 15/10/2026. Doanh thu hợp nhất gồm cả mảng bán tàu bay.',
-            rev: [['Vé hành khách', 'giá cơ bản thấp, không gồm hành lý ký gửi, suất ăn; bán chủ yếu qua kênh trực tuyến'], ['Dịch vụ phụ trợ', 'hành lý ký gửi, chọn chỗ, suất ăn, bảo hiểm, ưu tiên làm thủ tục, quảng cáo trên tàu'], ['Bán và thuê lại tàu bay', 'mua tàu từ nhà sản xuất, bán cho bên cho thuê rồi thuê lại; ghi doanh thu và lợi nhuận khi chuyển giao, không đều theo quý'], ['Hàng hóa', 'cước hàng trên khoang bụng tàu']],
-            cost: [['Nhiên liệu bay', 'tính bằng USD'], ['Thuê tàu, bảo dưỡng', 'thuê hoạt động sau bán và thuê lại; dự phòng bảo dưỡng'], ['Phí sân bay, điều hành bay', 'theo chuyến'], ['Lãi vay, tỷ giá', 'vay mua tàu, tiền đặt cọc tàu bằng USD']],
-            drv: [['Cung ghế so với cầu', 'đội tàu một loại, khai thác dày; cung tăng nhanh có thể kéo giá vé xuống'], ['Doanh thu phụ trợ trên khách', 'phần bù cho giá vé cơ bản thấp'], ['Số tàu bàn giao', 'quyết định doanh thu bán và thuê lại'], ['Nhiên liệu, USD/VND, lãi suất', 'chi phí và nghĩa vụ vay']],
-            links: [['#rf-q-sched', 'Lịch bay'], ['#rf-q-fleet', 'Đội tàu'], ['#rf-q-airfin', 'Biên VJC']]},
-          {t: 'Khai thác cảng hàng không', who: ['ACV'], note: 'ACV quản lý 21/22 cảng đang khai thác và là chủ đầu tư dự án thành phần 3 Long Thành.',
-            rev: [['Phí phục vụ hành khách', 'thu qua giá vé, hãng nộp lại; mức quốc tế cao hơn nhiều mức nội địa'], ['Phí cất hạ cánh, sân đỗ', 'hãng trả theo chuyến và trọng tải tàu bay'], ['Phí soi chiếu an ninh', 'theo khách và hàng'], ['Phi hàng không', 'cho thuê mặt bằng nhà ga, quảng cáo, nhượng quyền bán lẻ, ăn uống, phục vụ mặt đất, kho hàng'], ['Thu nhập tài chính', 'lãi tiền gửi, cổ tức từ công ty góp vốn']],
-            cost: [['Khấu hao', 'nhà ga, đường lăn, sân đỗ; tăng khi công trình mới đưa vào dùng'], ['Nhân công, vận hành', 'an ninh, khai thác nhà ga'], ['Sửa chữa, duy tu', 'hạ tầng sân bay'], ['Tỷ giá', 'đánh giá lại khoản vay bằng ngoại tệ']],
-            drv: [['Lượt khách quốc tế qua cảng', 'biến lớn nhất của doanh thu hàng không'], ['Khung giá dịch vụ', 'do Nhà nước quy định'], ['Capex và thời điểm khai thác', 'Long Thành, T3 Tân Sơn Nhất, T2 Nội Bài'], ['Tỷ giá', 'lãi/lỗ tỷ giá trên nợ ngoại tệ']],
-            links: [['#rf-q-acv', 'Khách qua ACV'], ['#rf-q-lt', 'Long Thành'], ['#rf-q-share', 'Khách quốc tế qua cảng']]},
-          {t: 'Nhà ga hàng hóa', who: ['SCS', 'NCT'], note: 'SCS khai thác nhà ga hàng hóa SCSC tại Tân Sơn Nhất; NCT khai thác nhà ga hàng hóa tại Nội Bài. Mỗi sân bay có nhà ga cạnh tranh.',
-            rev: [['Phí phục vụ hàng hóa', 'tính theo kg/tấn hàng đi, đến; hàng quốc tế phí cao hơn nội địa'], ['Lưu kho, lưu bãi', 'theo thời gian hàng nằm tại kho'], ['Dịch vụ cộng thêm', 'soi chiếu, hàng đặc biệt (lạnh, nguy hiểm, giá trị cao), giao nhận, kho ngoại quan']],
-            cost: [['Khấu hao, thuê đất', 'nhà ga và thiết bị, phần lớn là chi phí cố định'], ['Nhân công', 'bốc xếp, kiểm đếm'], ['Phí nhượng quyền, thuê mặt bằng', 'trả cho chủ sân bay']],
-            drv: [['Sản lượng hàng quốc tế qua nhà ga', 'điện tử, may mặc, nông sản xuất khẩu'], ['Thị phần tại sân bay', 'hãng bay chọn nhà ga theo hợp đồng'], ['Đòn bẩy hoạt động', 'chi phí cố định cao nên biên đổi mạnh theo sản lượng']],
-            links: [['#rf-q-cargo', 'Hàng qua cảng'], ['#rf-q-scs', 'Sản lượng SCSC, doanh thu/tấn']]},
-          {t: 'Phục vụ mặt đất', who: ['SGN'], note: 'SAGS phục vụ mặt đất tại nhiều sân bay, khách hàng chủ yếu là hãng bay nước ngoài.',
-            rev: [['Phục vụ chuyến bay', 'theo hợp đồng với từng hãng, giá theo chuyến và loại tàu bay'], ['Phục vụ hành khách, hành lý', 'làm thủ tục, xếp dỡ hành lý'], ['Phục vụ sân đỗ, kỹ thuật', 'kéo đẩy tàu, cấp điện, xe thang']],
-            cost: [['Nhân công', 'phần lớn chi phí'], ['Trang thiết bị mặt đất', 'khấu hao, bảo dưỡng'], ['Phí nhượng quyền', 'trả cho chủ cảng']],
-            drv: [['Số chuyến hãng khách hàng khai thác', 'đặc biệt chuyến quốc tế'], ['Hiệu lực, giá hợp đồng', 'hợp đồng mới hoặc hết hạn với từng hãng']],
-            links: [['#rf-q-sched', 'Lịch bay quốc tế'], ['#rf-q-svc', 'Doanh thu dịch vụ']]},
-          {t: 'Bán lẻ, ẩm thực, dịch vụ nhà ga', who: ['AST', 'SAS'], note: 'AST có điểm bán tại nhiều nhà ga do ACV quản lý; SAS tập trung tại Tân Sơn Nhất.',
-            rev: [['Bán lẻ, miễn thuế', 'hàng lưu niệm, đặc sản, hàng miễn thuế khu cách ly quốc tế'], ['Ẩm thực', 'nhà hàng, cà phê trong nhà ga'], ['Phòng chờ, dịch vụ khác', 'phòng chờ hạng thương gia, khách sạn, dịch vụ đón tiễn']],
-            cost: [['Giá vốn hàng bán', 'hàng hóa, nguyên liệu'], ['Phí mặt bằng, nhượng quyền', 'trả cho chủ nhà ga, thường gắn với doanh thu'], ['Nhân công', 'theo số điểm bán']],
-            drv: [['Lượt khách tại nhà ga có điểm bán', 'khách quốc tế chi tiêu cao hơn'], ['Số điểm bán, thời hạn hợp đồng mặt bằng', 'nhà ga mới mở thêm điểm']],
+          {t: 'Hãng bay truyền thống', who: 'HVN', kp: [['HVN', 'hợp nhất Pacific Airlines, VASCO']],
+            lanes: [lane('Vé hành khách', [N('ASK', 'ghế-km cung ứng', 'flow', 'Số ghế × km bay. HVN chưa công bố ASK năm 2026.'), O('×'), N('Hệ số tải', 'RPK ÷ ASK', 'flow', 'Tỷ lệ ghế có khách.'), O('='), N('RPK', 'khách-km', 'flow', 'Số khách × km thực bay.'), O('×'), N('Yield', 'đồng/khách-km', 'rev', 'Giá vé bình quân trên mỗi khách-km; cao hơn ở hạng thương gia, thấp hơn ở chặng dài.'), O('='), N('Doanh thu vé', 'nội địa · quốc tế', 'rev', 'Quốc tế đường dài thân rộng (châu Âu, Úc, Đông Bắc Á) và hạng ghế quyết định mix; nội địa chịu trần giá vé.', {main: 1})]),
+              lane('Hàng hóa khoang bụng', [N('Tấn-km hàng', 'khoang bụng tàu', 'flow', 'Chủ yếu trên tàu thân rộng đường quốc tế.'), O('×'), N('Cước', 'đồng/tấn-km', 'rev'), O('='), N('Doanh thu hàng hóa', '', 'rev', '', {main: 1})]),
+              lane('Phụ trợ', [N('Khách', 'lượt', 'flow'), O('×'), N('Phụ trợ/khách', 'hành lý, đổi vé, phòng chờ', 'rev'), O('='), N('Doanh thu phụ trợ', '', 'rev', '', {main: 1})]),
+              margin('Doanh thu', [N('Nhiên liệu', 'giá USD', 'cost', 'Khoản chi lớn nhất, theo giá jet fuel.', {fx: 1}), N('Thuê tàu, khấu hao', 'phần lớn USD', 'cost', 'Thuê hoạt động, thuê tài chính, khấu hao tàu sở hữu.', {fx: 1}), N('Bảo dưỡng, động cơ', 'USD', 'cost', '', {fx: 1}), N('Phí sân bay, nhân công', 'theo chuyến', 'cost')], 'Biên khai thác')],
+            close: 'Hệ số tải, yield và cơ cấu đường bay quyết định doanh thu trên năng lực khai thác.',
+            links: [['#rf-q-carried', 'Khách vận chuyển'], ['#rf-q-fuel', 'Nhiên liệu, tỷ giá'], ['#rf-q-airfin', 'Doanh thu, biên HVN']]},
+          {t: 'Hãng bay chi phí thấp', who: 'VJC', kp: [['VJC', 'số hợp nhất, gồm giao dịch tàu bay']],
+            lanes: [lane('Khai thác bay', [N('Khách bay', 'lượt', 'flow'), O('×'), N('Giá vé cơ bản', 'đồng/khách', 'rev', 'Giá thấp, chưa gồm hành lý ký gửi, suất ăn.'), O('+'), N('Phụ trợ/khách', 'hành lý, chọn chỗ, suất ăn, bảo hiểm', 'rev', 'Phần bù cho giá vé cơ bản thấp; VJC chưa công bố số 2026.'), O('='), N('Doanh thu vé, phụ trợ', '+ hàng hóa (bổ sung)', 'rev', '', {main: 1})]),
+              lane('Giao dịch tàu bay', [N('Tàu bàn giao', 'chiếc trong kỳ', 'flow', 'Tàu mới từ nhà sản xuất.'), O('→'), N('Bán và thuê lại', 'SLB', 'lever', 'Bán tàu cho bên cho thuê rồi thuê lại để khai thác.'), O('→'), N('Ghi nhận theo kỳ', 'doanh thu, lãi bán tàu', 'rev', 'Không đều theo quý, làm KPI hợp nhất biến động.', {main: 1}), O('↘'), N('Nghĩa vụ thuê sau giao dịch', 'tiền thuê USD', 'cost', 'Chi phí thuê tàu các kỳ sau.', {fx: 1})], 'hkm-alt'),
+              margin('Doanh thu khai thác', [N('Nhiên liệu', 'giá USD', 'cost', '', {fx: 1}), N('Mức sử dụng tàu', 'giờ bay/tàu/ngày', 'lever', 'Bay càng dày, chi phí cố định trên ghế càng thấp.'), N('Chi phí thuê tàu', 'USD', 'cost', '', {fx: 1})], 'Biên khai thác')],
+            close: 'Theo dõi phụ trợ/khách để đọc sức kiếm tiền của hoạt động bay, và số tàu bàn giao để giải thích biến động do bán và thuê lại tàu.',
+            links: [['#rf-q-sched', 'Lịch bay'], ['#rf-q-fleet', 'Đội tàu'], ['#rf-q-airfin', 'Doanh thu, biên VJC']]},
+          {t: 'Khai thác cảng hàng không', who: 'ACV', kp: [['ACV', '21/22 cảng']],
+            lanes: [lane('Khách trả', [N('Khách nội địa, quốc tế', 'lượt qua cảng', 'flow'), O('→'), N('Phí phục vụ hành khách', 'thu qua giá vé', 'rev', 'Hãng thu hộ trong giá vé rồi nộp lại; mức quốc tế cao hơn nhiều nội địa.', {main: 1})]),
+              lane('Hãng bay trả', [N('Chuyến bay', 'cất hạ cánh', 'flow'), O('→'), N('Phí cất hạ cánh, sân đỗ', 'theo chuyến, trọng tải', 'rev', '', {main: 1})]),
+              lane('Bên thuê trả', [N('Bên thuê, nhượng quyền', 'bán lẻ, ăn uống, kho, mặt đất', 'flow'), O('→'), N('Mặt bằng, thương mại', 'theo hợp đồng', 'rev', '', {main: 1})]),
+              lane('Đầu tư', [N('Capex', 'Long Thành, nhà ga', 'cost', 'Tiền chi xây dựng, ghi vào XDCB dở dang.'), O('→'), N('Đưa vào sử dụng', 'chuyển thành tài sản', 'lever'), O('→'), N('Khấu hao', 'chi phí hằng năm', 'cost')], 'hkm-alt'),
+              lane('Công suất', [N('Công suất mới', 'triệu khách/năm', 'lever'), O('→'), N('Lưu lượng thực tế', 'lượt qua cảng', 'flow', 'Tốc độ lấp công suất quyết định doanh thu bù được khấu hao mới.'), O('→'), N('Doanh thu khai thác', '', 'rev', '', {main: 1})], 'hkm-alt')],
+            foot: 'Khi đối chiếu biên ròng: lãi tiền gửi làm tăng lợi nhuận; chênh lệch tỷ giá trên nợ vay ngoại tệ có thể làm tăng hoặc giảm.',
+            close: 'Mix khách quốc tế tác động đến doanh thu, còn tốc độ lấp công suất mới quyết định mức hấp thụ khấu hao.',
+            links: [['#rf-q-acv', 'Khách qua ACV'], ['#rf-q-lt', 'Long Thành']]},
+          {t: 'Nhà ga hàng hóa', who: 'SCS · NCT', kp: [['SCS', 'Tân Sơn Nhất'], ['NCT', 'Nội Bài']],
+            lanes: [lane('Sản lượng', [N('Hàng qua sân bay', 'tấn', 'flow'), O('×'), N('Thị phần nhà ga', '% tại sân bay', 'lever', 'Mỗi sân bay có nhà ga cạnh tranh; hãng bay chọn nhà ga theo hợp đồng.'), O('='), N('Tấn xử lý', 'quốc tế · nội địa', 'flow', 'Hàng quốc tế phí cao hơn nội địa.')]),
+              lane('Giá', [N('Tấn quốc tế', '', 'flow'), O('×'), N('Doanh thu/tấn quốc tế', 'phí xử lý', 'rev'), O('+'), N('Tấn nội địa', '', 'flow'), O('×'), N('Doanh thu/tấn nội địa', '', 'rev'), O('+'), N('Lưu kho, dịch vụ cộng thêm', 'nếu tính riêng', 'rev'), O('='), N('Doanh thu', Number.isFinite(scsY) ? `SCS ${scsP}: ~${nf(scsY / 1000, 1)} triệu đ/tấn` : '', 'rev', 'Doanh thu thuần SCS ÷ tổng tấn qua nhà ga SCSC cùng quý; gồm cả dịch vụ khác nên là số gần đúng.', {main: 1})]),
+              margin('Doanh thu', [N('Khấu hao nhà ga', 'cố định', 'cost'), N('Mặt bằng, nhượng quyền', 'cố định', 'cost'), N('Nhân công', '', 'cost')], 'Biên (đòn bẩy theo sản lượng)')],
+            close: 'Hàng qua sân bay tăng chỉ truyền sang doanh thu doanh nghiệp theo thị phần nhà ga, mix hàng và giá dịch vụ.',
+            links: [['#rf-q-cargo', 'Hàng qua cảng'], ['#rf-q-scs', 'Sản lượng, doanh thu/tấn']]},
+          {t: 'Phục vụ mặt đất', who: 'SGN', kp: [['SGN', 'nhiều sân bay']],
+            lanes: [lane('Bộ lọc hợp đồng', [N('Tổng chuyến tại sân bay', 'chuyến', 'flow'), O('→'), N('Chuyến của hãng có hợp đồng', 'mở mới · gia hạn · mất hợp đồng', 'lever', 'Bước quyết định: hợp đồng với từng hãng mở ra hoặc đóng lại phần chuyến SGN được phục vụ.'), O('→'), N('Chuyến được phục vụ', 'chuyến thực tế', 'flow'), O('×'), N('Đơn giá', 'theo loại tàu, gói dịch vụ', 'rev'), O('='), N('Doanh thu', '', 'rev', '', {main: 1})]),
+              margin('Doanh thu', [N('Nhân công', 'phần lớn chi phí', 'cost'), N('Thiết bị mặt đất', 'khấu hao, bảo dưỡng', 'cost'), N('Phí nhượng quyền', 'trả chủ cảng', 'cost')], 'Biên')],
+            close: 'Số chuyến của hãng khách hàng và hiệu lực hợp đồng là hai biến cần kiểm tra trước khi suy từ lịch bay sang doanh thu SGN.',
+            links: [['#rf-q-sched', 'Lịch bay'], ['#rf-q-svc', 'Doanh thu dịch vụ']]},
+          {t: 'Bán lẻ, ẩm thực và dịch vụ nhà ga', who: 'AST · SAS', kp: [['AST', 'nhiều nhà ga ACV'], ['SAS', 'Tân Sơn Nhất']],
+            lanes: [lane('Bán lẻ, ẩm thực', [N('Khách qua khu có điểm bán', 'lượt', 'flow', 'Chỉ tính khách đi qua khu vực có cửa hàng, không phải toàn bộ khách của sân bay.'), O('×'), N('Tỷ lệ mua', '%', 'lever'), O('='), N('Số giao dịch', '', 'flow'), O('×'), N('Giá trị hóa đơn', 'đồng/giao dịch', 'rev', 'Khách quốc tế chi tiêu cao hơn.'), O('='), N('Doanh thu bán lẻ, miễn thuế, ẩm thực', '', 'rev', '', {main: 1})]),
+              lane('Phòng chờ', [N('Lượt sử dụng', 'lượt', 'flow'), O('×'), N('Doanh thu/lượt', 'hãng trả, thẻ, khách trả', 'rev', 'Mức thu tùy cơ chế: hãng bay trả cho khách hạng cao, chủ thẻ hoặc khách mua lẻ.'), O('='), N('Doanh thu phòng chờ', '', 'rev', '', {main: 1})], 'hkm-alt'),
+              margin('Doanh thu', [N('Giá vốn hàng bán', '', 'cost'), N('Nhân công', '', 'cost'), N('Phí mặt bằng, nhượng quyền', 'thường gắn doanh thu', 'cost')], 'Biên')],
+            close: 'Lưu lượng chỉ chuyển thành lợi nhuận khi doanh nghiệp có vị trí tiếp cận khách và giữ được biên sau phí mặt bằng.',
             links: [['#rf-q-share', 'Khách qua cảng'], ['#rf-q-svc', 'Doanh thu dịch vụ']]},
         ];
-        const lp = (F.periods || [])[n - 1];
-        return `<div class="hk-models">${M.map((m, i) => `<article class="hk-model"><header><span>${i + 1}</span><h4>${e(m.t)}</h4><p>${m.who.map(w => `<b>${e(w)}</b>`).join(' · ')}</p></header>
-          <p class="hk-mnote">${e(m.note)}</p>
-          <div class="hk-mgrid"><section><h5>Doanh thu đến từ</h5>${list(m.rev)}</section><section><h5>Chi phí chính</h5>${list(m.cost)}</section><section><h5>Biến quyết định doanh thu, biên</h5>${list(m.drv)}</section></div>
-          <div class="hk-mfins"><h5>BCTC 4 quý gần nhất${lp ? ' (đến ' + ql(lp) + ')' : ''} · tỷ đồng</h5>${m.who.map(fin).join('')}</div>
-          <nav>${m.links.map(([h, l]) => `<a href="${h}">${e(l)} ›</a>`).join('')}</nav></article>`).join('')}</div>`;
+        const legend = '<div class="hkm-legend"><span class="hkm-flow">Lưu lượng</span><span class="hkm-rev">Doanh thu</span><span class="hkm-cost">Chi phí</span><span class="hkm-lever">Biến điều chỉnh</span><span class="hkm-fxl">Gắn USD/VND</span></div>';
+        return `<div class="hk-models">${legend}${M.map((m, i) => `<article class="hk-model hkm" id="hkm-${i + 1}"><header><span>${i + 1}</span><h4>${e(m.t)}</h4><p><b>${e(m.who)}</b></p></header>
+          <div class="hkm-diagram">${m.lanes.join('')}</div>${m.foot ? `<p class="hkm-foot">${e(m.foot)}</p>` : ''}
+          <p class="hkm-close">${e(m.close)}</p>${kpis(m.kp)}
+          <nav><span>Theo dõi dữ liệu:</span>${m.links.map(([h, l]) => `<a href="${h}">${e(l)} ›</a>`).join('')}</nav></article>`).join('')}</div>`;
       }},
     {id: 'hkCarried', type: 'cum', table: 'tbl-carried', views: [['caa_pax_carried_vn', 'Hãng Việt vận chuyển'], ['caa_pax_carried_mkt', 'Toàn thị trường (gồm hãng nước ngoài)']].filter(([m]) => obs(m).length),
       segs: [['dom', 'Nội địa', C.navy], ['intl', 'Quốc tế', C.teal]], stackable: true,
@@ -250,7 +264,7 @@ window.PKG = {
     mt1: {title: 'Tổng quan ngành', subs: [
       {k: 'map', t: 'Bản đồ ngành', d: 'Cách từng doanh nghiệp thu tiền từ một chuyến bay.', items: [
         {q: 'Một chuyến bay tạo doanh thu cho những ai?', id: 'rf-q-map', take: ['hk-01']}]},
-      {k: 'model', t: 'Mô hình kiếm tiền', d: 'Sáu loại hình kinh doanh: nguồn doanh thu, cách thu tiền, chi phí chính, biến quyết định biên và số BCTC 4 quý gần nhất.', items: [
+      {k: 'model', t: 'Mô hình kiếm tiền', d: 'Sáu sơ đồ: ai trả tiền, tính tiền theo đơn vị nào, biến nào làm doanh thu tăng, chi phí nào quyết định biên.', items: [
         {q: 'Mỗi doanh nghiệp kiếm tiền từ đâu, biến nào quyết định biên?', id: 'rf-q-model', take: ['hk-05']}]},
     ]},
     mt2: {title: 'Bức tranh ngành', subs: [

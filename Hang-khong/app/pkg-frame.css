@@ -242,3 +242,37 @@
 .rf-tiles.hk-fleet{grid-template-columns:repeat(4,minmax(0,1fr))}
 .rf-tiles.hk-fleet .rf-tile b{font-size:20px}
 @media (max-width:760px){.rf-tiles.hk-fleet{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* 27/11/2026: Mô hình kiếm tiền = 6 sơ đồ (lane công thức, màu lưu lượng/doanh thu/chi phí) */
+.hkm-legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--ink2,#3b4256);margin:0 0 4px}
+.hkm-legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-2px;border:2px solid}
+.hkm-legend .hkm-flow::before{background:#e6f6f6;border-color:#59C5C8}.hkm-legend .hkm-rev::before{background:#e8ebfa;border-color:#2938A8}
+.hkm-legend .hkm-cost::before{background:#fbe9e5;border-color:#d1583f}.hkm-legend .hkm-lever::before{background:#fff;border-color:#8a93a6;border-style:dashed}
+.hkm-legend .hkm-fxl::before{background:#c29100;border-color:#c29100}
+.hkm-diagram{display:grid;gap:8px;margin:10px 0 8px}
+.hkm-lane{display:grid;grid-template-columns:128px minmax(0,1fr);gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:var(--bg2,#f6f8fd)}
+.hkm-lane.hkm-alt{background:#f9f7f0}.hkm-lane.hkm-cost{background:#fdf4f2}
+.hkm-lt{font:700 11px Inter,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--muted,#6b7686)}
+.hkm-seq{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.hkm-group{display:flex;flex-wrap:wrap;gap:6px;padding:4px;border:1px dashed #e3b5aa;border-radius:10px}
+.hkm-op{font:700 16px Inter,sans-serif;color:#7a8399;min-width:12px;text-align:center}
+.hkm-n{position:relative;display:inline-flex;flex-direction:column;gap:1px;padding:6px 10px;border-radius:8px;border:2px solid;background:#fff;min-width:0;max-width:220px;line-height:1.25;cursor:default;outline:none}
+.hkm-n b{font-size:12.8px;color:var(--ink,#1d2333)}.hkm-n small{font-size:11px;color:var(--muted,#6b7686)}
+.hkm-flow{border-color:#59C5C8;background:#effafa}.hkm-rev{border-color:#2938A8;background:#eef0fb}.hkm-cost{border-color:#d1583f;background:#fdf0ed}.hkm-lever{border-color:#8a93a6;border-style:dashed}
+.hkm-n.hkm-main{box-shadow:0 0 0 2px rgba(41,56,168,.18)}.hkm-n.hkm-main b{color:#1D2678}
+.hkm-fx{display:inline-block;align-self:flex-start;margin-top:3px;font:700 9.5px Inter,sans-serif;font-style:normal;color:#fff;background:#c29100;border-radius:4px;padding:1px 5px}
+.hkm-n[data-tip]{cursor:help}.hkm-n[data-tip]::after{content:"ⓘ";position:absolute;top:2px;right:4px;font-size:9px;color:#8a93a6}
+.hkm-n[data-tip]:hover::before,.hkm-n[data-tip]:focus::before{content:attr(data-tip);position:absolute;left:0;top:calc(100% + 6px);z-index:20;width:240px;padding:8px 10px;border-radius:8px;background:#1d2333;color:#fff;font:400 12px/1.45 Inter,sans-serif;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.hkm-foot{margin:0 0 6px;font-size:12px;color:var(--muted,#6b7686)}
+.hkm-close{margin:6px 0 8px;padding:8px 12px;border-left:3px solid #2938A8;background:#f3f5fd;font-size:13.5px;font-weight:600;color:#1d2678;line-height:1.5}
+.hkm-kpi .hkm-kh{margin:0 0 2px;font-size:11px;color:var(--muted,#7a8399)}
+.hk-mfin em{font-style:normal;font-size:11.5px;color:var(--muted,#7a8399)}
+.hk-model.hkm nav span{font-size:12px;color:var(--muted,#7a8399)}
+@media (max-width:760px){
+ .hkm-lane{grid-template-columns:1fr;gap:6px}
+ .hkm-seq,.hkm-group{flex-direction:column;align-items:stretch}
+ .hkm-n{max-width:none}
+ .hkm-op{line-height:1}
+ .hkm-op.hkm-arr{transform:rotate(90deg)}
+ .hkm-n[data-tip]:hover::before,.hkm-n[data-tip]:focus::before{width:auto;right:0}
+}
