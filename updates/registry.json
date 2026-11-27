@@ -3710,37 +3710,6 @@
    "job": "refresh-data.yml (mỗi lượt refresh)"
   },
   {
-   "id": "steel.policy",
-   "tier": "C",
-   "title": "phòng vệ thương mại thép, thuế Mỹ, EU",
-   "schedule": {
-    "type": "watch",
-    "note": "Mốc: 12/2026 khởi công ĐSTĐC; hết 2026 thuế XK clinker 5%"
-   },
-   "publication": "Theo sự kiện",
-   "source": {
-    "name": "Bộ Công Thương – phòng vệ thương mại",
-    "url": "https://trav.gov.vn/"
-   },
-   "where": {
-    "page": "Thep/index.html",
-    "blocks": [
-     "th-50",
-     "th-51",
-     "th-52"
-    ],
-    "file": null
-   },
-   "how": "Mở văn bản/thông cáo gốc; cập nhật bảng và evidence.",
-   "gates": [
-    "Mở văn bản gốc",
-    "Ghi ngày hiệu lực"
-   ],
-   "watch": [
-    "news.public-investment"
-   ]
-  },
-  {
    "id": "steel.companies",
    "tier": "C",
    "status": "manual",
@@ -3757,6 +3726,7 @@
     "page": "Thep/index.html",
     "blocks": [
      "th-60",
+     "th-05",
      "th-01",
      "th-04",
      "th-90",
@@ -5016,6 +4986,78 @@
     "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
     "Mã lỗi tải giữ bản trước, ghi vào stale",
     "Universe và nhóm khâu ở scripts/oil_fin_items.py; loại trùng mẹ − con PLX ← PLC, PVT ← PVP (tỷ lệ sở hữu chưa đối chiếu báo cáo thường niên)"
+   ]
+  },
+  {
+   "id": "steel.industry-financials",
+   "tier": "C",
+   "title": "Thép · tab Tài chính ngành: BCTC 8 doanh nghiệp niêm yết (HPG, POM, TVN, HSG, NKG, VGS, TLH, SMC) theo nhóm",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "file": "data/steel-financials.js",
+    "blocks": [
+     "steel-fin-breadth",
+     "steel-fin-capex",
+     "steel-fin-cip",
+     "steel-fin-conversion",
+     "steel-fin-cost",
+     "steel-fin-debt",
+     "steel-fin-dso",
+     "steel-fin-dupont",
+     "steel-fin-fcf",
+     "steel-fin-funding",
+     "steel-fin-intensity",
+     "steel-fin-interest",
+     "steel-fin-levdist",
+     "steel-fin-leverage",
+     "steel-fin-map",
+     "steel-fin-margin",
+     "steel-fin-method",
+     "steel-fin-pnl",
+     "steel-fin-pool",
+     "steel-fin-ratios",
+     "steel-fin-recv",
+     "steel-fin-returns",
+     "steel-fin-roic-cycle",
+     "steel-fin-season"
+    ]
+   },
+   "how": "python scripts/fetch_steel_financials.py && python scripts/build_steel_financials.py (refresh-data.yml); giao diện Thep/app/steel-finance.js trong Thep/app/steel-frame.js, tổng hợp bằng Thep/app/industry-fin.js.",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Mã lỗi tải giữ bản trước, ghi vào stale",
+    "Universe và nhóm ở scripts/steel_fin_items.py; không có cặp mẹ − con trong rổ"
    ]
   },
   {
