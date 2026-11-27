@@ -510,12 +510,12 @@ function cSection(num, title, q, keys) {
 // Định giá: P/E, P/B theo tuần từ 2018 (VNDirect v4/ratios, data/valuation-history.js); xếp hạng theo phiên mới nhất kèm trung vị 5 năm.
 function cValuation() {
   const H = window.VALUATION_HISTORY?.tickers, V = window.COMPANY_VALUATION?.companies || {};
-  const s = section('2.7', 'Định giá', 'Mã nào đang rẻ hay đắt so với chính lịch sử của nó?');
+  const s = section('3.1', 'P/E, P/B từng mã', 'Mã nào đang rẻ hay đắt so với chính lịch sử của nó?');
   if (!H) { s.insertAdjacentHTML('beforeend', '<p class="data-gap">Chưa có chuỗi P/E, P/B dài hạn.</p>'); return s; }
   let k = 'pe'; const c = cCard('re-cmp-27');
   cPick(s, [['pe', 'P/E'], ['pb', 'P/B']], () => k, x => { k = x; draw(); });
   function draw() {
-    const col = k === 'pe' ? 1 : 2, nm = k === 'pe' ? 'P/E' : 'P/B', ts = cSel().filter(t => H[t]?.length);
+    const col = k === 'pe' ? 1 : 2, nm = k === 'pe' ? 'P/E' : 'P/B', ts = D.companies.map(c => c.ticker).filter(t => H[t]?.length);  // sub-tab riêng: đủ mã, bật/tắt bằng chú giải
     const days = [...new Set(ts.flatMap(t => H[t].map(r => r[0])))].sort(), wk = d => { const x = new Date(d); return `${x.getUTCFullYear()}-W${Math.ceil(((x - Date.UTC(x.getUTCFullYear(), 0, 1)) / 864e5 + 1) / 7)}`; };
     const keys = [...new Set(days.map(wk))], lab = {}; days.forEach(d => { lab[wk(d)] = d; });
     const cap = k === 'pe' ? 100 : 20;  // EPS gần 0 làm P/E nhảy hàng nghìn lần: bỏ khỏi chart, ghi chú dưới tiêu đề
@@ -560,7 +560,8 @@ let cRoot = null;
 function buildCompare(host) {
   if (!host || cRoot) return; cRoot = host; style();
   const secs = CSEC.map(x => cSection(...x)); secs[2].append(cMap());
-  host.append(cFilter(), ...secs, cValuation());
+  host.append(cFilter(), ...secs);
+  const vr = document.getElementById('re-val-root'); (vr || host).append(cValuation());
   cRedraw();
 }
 
