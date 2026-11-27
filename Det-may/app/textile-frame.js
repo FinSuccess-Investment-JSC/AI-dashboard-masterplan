@@ -213,7 +213,7 @@ function financePane() {
   // 02 So sánh doanh nghiệp = từng mã (xu hướng tài chính, P/E, kế hoạch – kết quả, số vận hành riêng). Tổng quan ngành (mt1) chỉ giữ mô hình kinh doanh.
   const CMP_IDS = ['dm-13'], CMP_SEL = ['.sector-valuation'];
   const fnav = el('div', 'of-nav'); fnav.setAttribute('role', 'tablist'); fnav.setAttribute('aria-label', 'Tài chính ngành'); sec.append(fnav);
-  const subs = [{k: 'total', t: 'Tổng quan ngành'}, {k: 'compare', t: 'So sánh doanh nghiệp'}].map((s, i) => {
+  const subs = [{k: 'total', t: 'Tổng quan ngành'}, {k: 'compare', t: 'So sánh doanh nghiệp'}, {k: 'valuation', t: 'Định giá'}].map((s, i) => {
     const b = el('button', 'of-tab', `<span class="of-n">${String(i + 1).padStart(2, '0')}</span><b>${s.t}</b>`); b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.sub = s.k; b.id = `of-mt14-${s.k}-tab`;
     const sp = el('div', 'pane-subpane of-pane'); sp.id = `of-mt14-${s.k}`; sp.dataset.sub = s.k; sp.setAttribute('role', 'tabpanel'); sp.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', sp.id);
     const body = el('div', 'of-body'); sp.append(body); fnav.append(b); sec.append(sp);
@@ -231,6 +231,9 @@ function financePane() {
   { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
     [...cb.children].forEach(n => { if (n.matches('.of-wide,.of-gap,details,table,.tablewrap')) flush(); else run.push(n); }); flush(); }
   p.replaceChildren(sec);
+  // 27/11/2026: sub-tab Định giá — 4 chart so sánh mã (P/B–ROE, biên gộp–ROE, 1/PE tách cổ tức, P/E và EV/dòng tiền), app/peer-valuation.js
+  if (window.PeerValuation && window.TEXTILE_FIN) PeerValuation.mount(subs[2].body, window.TEXTILE_FIN, {highlight: 'TNG', src: '<a href="https://api-finfo.vndirect.com.vn/v4/financial_statements" target="_blank" rel="noopener">BCTC hợp nhất theo quý (VNDirect finfo)</a>'});
+  subs[2].body.querySelector('.pv-wrap')?.classList.add('of-wide');
   TABS.mt14 = subs; open('mt14', new URL(location.href).searchParams.get('sub'));
   return host;
 }
