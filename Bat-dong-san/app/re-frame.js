@@ -36,9 +36,8 @@ const TREE = {
   mt4: {label: 'Chính sách', title: 'Chính sách', intro: 'Luật, đất đai, nhà ở xã hội, tín dụng: tác động lên vòng đời dự án và từng doanh nghiệp.', subs: [
     {k: 'law', n: '01', t: 'Luật mới 2026', d: 'Luật đổi gì trong vòng đời dự án, tác động theo doanh nghiệp, lộ trình.', ids: ['bds-44', 'bds-60', 'bds-57', 'bds-58', 'bds-59'], rest: true},
     {k: 'land', n: '02', t: 'Đất đai & bảng giá đất', d: 'Luật Đất đai 2024 và bảng giá đất 2026.', ids: ['bds-19', 'bds-38']},
-    {k: 'housing', n: '03', t: 'Nhà ở & NOXH', d: 'Luật Nhà ở, Kinh doanh BĐS và cơ chế nhà ở xã hội.', ids: ['bds-20']},
-    {k: 'credit', n: '04', t: 'Tín dụng & trái phiếu', d: 'Chỉ đạo tín dụng và trái phiếu BĐS đang áp dụng.', ids: ['bds-21']},
-    {k: 'docs', n: '05', t: 'Văn bản & dự án theo dõi', d: 'Văn bản đang hiệu lực, sắp ban hành; dự án và cơ chế thí điểm.', ids: ['bds-37', 'bds-39']},
+    {k: 'housing', n: '03', t: 'Nhà ở, NOXH & tín dụng', d: 'Luật Nhà ở, Kinh doanh BĐS, nhà ở xã hội; chỉ đạo tín dụng và trái phiếu BĐS.', ids: ['bds-20', 'bds-21']},  // 27/11/2026: gộp hai sub-tab mỏng
+    {k: 'docs', n: '04', t: 'Văn bản & dự án theo dõi', d: 'Văn bản đang hiệu lực, sắp ban hành; dự án và cơ chế thí điểm.', ids: ['bds-37', 'bds-39']},
   ]},
 };
 const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
@@ -156,9 +155,18 @@ function wideIfTable(n) {
   if (charts > 1 || (!charts && !n.querySelector('canvas,svg') && n.querySelector('table'))) n.classList.add('of-wide');
 }
 
+// 27/11/2026: CSS chuyên đề Luật mới nằm trong <style> và chỉ áp dụng dưới .law-2026; khung mới dời thẻ ra khỏi khối đó
+// → đưa <style> của tab lên <head> trước khi dựng lại, gắn .law-2026 cho sub-tab Luật mới; mở sẵn các thẻ chữ bị gấp ở tab Chính sách.
+function policyFix() {
+  $('#of-mt4-law')?.classList.add('law-2026');
+  ['bds-44', 'bds-60', 'bds-57', 'bds-58', 'bds-59', 'bds-19', 'bds-20', 'bds-21'].forEach(id => { const n = block(id); if (n) { n.classList.add('of-wide'); n.classList.remove('of-span'); } });  // thẻ chữ/sơ đồ cần cả hàng
+  const unfold = () => $$('#pane-mt4 details:not(.note-icon)').forEach(d => { if (!d.closest('.tablewrap,.source-note')) d.open = true; });
+  [0, 400, 1500].forEach(t => setTimeout(unfold, t));
+}
 function buildTab(key) {
   const def = TREE[key], pane = $(`.majorpane[data-tab="${key}"]`);
   if (!pane) return;
+  pane.querySelectorAll('style').forEach(st => document.head.append(st));
   const legacy = [...pane.children];
   HIDE.forEach(id => $$(`[data-block-id="${id}"]`).forEach(n => { n.hidden = true; n.classList.add('of-hidden-legacy'); }));
   const sec = el('section', 'section of-section');
@@ -403,6 +411,7 @@ function run() {
   style();
   stickySub();
   ['mt1', 'mt2', 'mt4'].forEach(buildTab);
+  policyFix();
   unfoldCards(['bds-02']);
   { const c = block('bds-02')?.querySelector('.research-caption'); if (c) c.textContent = 'Cập nhật 26/11/2026 · số đến Q3/2026'; }
   { const st = el('style'); st.textContent = 'body[data-re-frame] .majorpane .card td b.neg{color:#B3303F!important}body[data-re-frame] .majorpane .card td b.pos{color:#17784A!important}'; document.head.append(st); }
