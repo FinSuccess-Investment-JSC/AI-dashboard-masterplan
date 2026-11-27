@@ -102,7 +102,7 @@ function recent() {
 function overview() {
   const host = $('#of-mt1-map .of-body'); if (!host || host.querySelector('.re-legal-map')) return;
   // 27/11/2026 (cùng cách Dầu khí): bỏ lưới khâu riêng; nhãn văn bản có màu gắn thẳng lên sơ đồ chuỗi giá trị (linkChain).
-  const c = el('div', 'card of-wide re-legal-map', `<h3>Khung pháp lý chính</h3><p class="chart-sub">Nhãn màu trên sơ đồ chuỗi giá trị phía trên khớp màu từng văn bản dưới đây · rê chuột để làm nổi khâu hoặc văn bản · bấm nhãn hoặc tên văn bản để xem chi tiết</p>
+  const c = el('div', 'card of-wide re-legal-map', `<h3>Khung pháp lý chính</h3><p class="chart-sub">Nhãn màu trên sơ đồ chuỗi giá trị phía trên cho biết văn bản nào quy định khâu nào · rê chuột để làm nổi khâu hoặc văn bản · bấm nhãn hoặc tên văn bản để xem chi tiết</p>
     <div class="tablewrap"><table class="lg-tbl"><thead><tr><th>Văn bản</th><th>Số hiệu</th><th>Hiệu lực</th><th>Quy định gì</th><th>Khâu</th><th>Cần chú ý</th><th>Trạng thái</th></tr></thead><tbody>${LAWS.map(([n, so, eff, what, stage, st, k, who]) =>
       `<tr data-law="${k}"><td>${link(`<b>${n}</b>`, k)}</td><td>${so}</td><td>${eff}</td><td>${what}</td><td>${stage}</td><td>${who}</td><td><span class="re-st ${ST[st][1]}">${ST[st][0]}</span></td></tr>`).join('')}</tbody></table></div>`);
   host.append(c);
@@ -123,7 +123,7 @@ function linkChain(tries = 0) {
       g.setAttribute('class', 'lg-badge'); g.dataset.law = k;
       g.innerHTML = `<rect x="${x}" y="${y}" width="${w}" height="18" rx="9" fill="${t.c}"/><text x="${x + w / 2}" y="${y + 12.5}" text-anchor="middle">${t.s}</text><title>${LAW_NAME[k]}</title>`;
       n.append(g); x += w + 5; }); });
-  rows.forEach(r => { const t = LAW_TAG[r.dataset.law], td = r.querySelector('td'); if (t && td && !td.querySelector('.lg-tag')) td.insertAdjacentHTML('afterbegin', `<span class="lg-tag" style="background:${t.c}" data-t="${t.s}" aria-hidden="true"></span>`); });
+  // 27/11/2026: bỏ nhãn màu ở đầu dòng bảng (người dùng: chú giải trên sơ đồ đã đủ).
   if (card && !card.querySelector('.lg-legend')) svg.insertAdjacentHTML('beforebegin', `<div class="lg-legend"><span>Văn bản pháp lý:</span>${LAWS.map(r => `<a href="#mt4" class="re-lg-go" data-go="${r[6]}"><i style="background:${LAW_TAG[r[6]].c}"></i>${r[0]}</a>`).join('')}</div>`);
   const clear = () => { svg.classList.remove('lg-focus'); tbl.classList.remove('lg-focus'); svg.querySelectorAll('.lg-on').forEach(x => x.classList.remove('lg-on')); rows.forEach(r => r.classList.remove('lg-on')); };
   const showLaw = k => { clear(); svg.classList.add('lg-focus'); tbl.classList.add('lg-focus');
