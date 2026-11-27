@@ -38,7 +38,6 @@ window.FS_SITE_NAV = {
         {key: 'chloralkali', label: 'P4 – Xút – Clo'}
       ]},
       {label: 'Thực phẩm & đồ uống', children: [
-        {key: 'agri', label: 'Nông nghiệp & thực phẩm'},
         {key: 'sugar', label: 'Đường'},
         {key: 'dairy', label: 'Sữa'},
         {key: 'beer', label: 'Bia'}
