@@ -102,6 +102,8 @@ def main():
         results[name] = subprocess.run([sys.executable, str(ROOT / 'scripts' / script), *polling_args], cwd=ROOT).returncode
     # Daily P/E, P/B, market cap: every run (07:30 = previous close, 15:30 = same-day close).
     results['valuation'] = subprocess.run([sys.executable, str(ROOT / 'scripts' / 'update_valuation.py')], cwd=ROOT).returncode
+    # P/E, P/B dài hạn theo tuần (Tài chính ngành › So sánh doanh nghiệp › Định giá).
+    results['valuation_history'] = subprocess.run([sys.executable, str(ROOT / 'scripts' / 'build_valuation_history.py')], cwd=ROOT).returncode
     if args.comparison:
         results['comparison'] = subprocess.run([sys.executable, str(ROOT / 'scripts' / 'update_company_comparison.py')], cwd=ROOT).returncode
     after = signature(args.comparison)

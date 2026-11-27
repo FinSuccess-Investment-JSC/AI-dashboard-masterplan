@@ -126,7 +126,7 @@ function kpis() {
 // Mục lục: 6 nhóm Kết quả kinh doanh → Biên lợi nhuận → CAPEX & dở dang → Công nợ & chuyển đổi tiền → Nợ, thanh khoản & FCF → Hiệu quả vốn.
 function section(num, title, q, take) {
   const s = el('section', 'pp-panel pp-q pf-sec'); s.innerHTML = `<header class="pp-ph"><span class="pp-num">${num}</span><div><h3>${esc(title)}</h3><p class="pf-q">${esc(q)}</p></div></header>`;
-  if (take) { const p = el('p', 'pf-take'); s.append(p); renders.push(() => { try { p.innerHTML = take(); } catch (e) { p.textContent = ''; } }); }
+  // Câu kết luận dưới tiêu đề cụm: bỏ 27/11/2026 theo yêu cầu người dùng (không chữ diễn giải trên trang).
   return s;
 }
 // Số nhóm tại kỳ chốt (TTM) cho câu kết luận.
