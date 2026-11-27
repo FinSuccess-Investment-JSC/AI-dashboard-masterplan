@@ -54,7 +54,7 @@ window.PKG = {
           <section class="hk-chain-node hk-chain-airline">
             <div class="hk-chain-heading"><h4>Hãng bay</h4><b>HVN · VJC</b></div>
             <p>Vé, dịch vụ phụ trợ và cước vận chuyển hàng.</p>
-            <a href="#rf-q-airfin">Doanh thu, biên và dòng tiền <span aria-hidden="true">›</span></a>
+            <a href="#rf-mt14-sector">Doanh thu, biên và dòng tiền <span aria-hidden="true">›</span></a>
           </section>
           <span class="hk-chain-arrow" aria-hidden="true"></span>
           <section class="hk-chain-node">
@@ -112,13 +112,13 @@ window.PKG = {
               lane('Phụ trợ', [N('Khách', 'lượt', 'flow'), O('×'), N('Phụ trợ/khách', 'hành lý, đổi vé, phòng chờ', 'rev'), O('='), N('Doanh thu phụ trợ', '', 'rev', '', {main: 1})]),
               margin('Doanh thu', [N('Nhiên liệu', 'giá USD', 'cost', 'Khoản chi lớn nhất, theo giá jet fuel.', {fx: 1}), N('Thuê tàu, khấu hao', 'phần lớn USD', 'cost', 'Thuê hoạt động, thuê tài chính, khấu hao tàu sở hữu.', {fx: 1}), N('Bảo dưỡng, động cơ', 'USD', 'cost', '', {fx: 1}), N('Phí sân bay, nhân công', 'theo chuyến', 'cost')], 'Biên khai thác')],
             close: 'Hệ số tải, yield và cơ cấu đường bay quyết định doanh thu trên năng lực khai thác.',
-            links: [['#rf-q-carried', 'Khách vận chuyển'], ['#rf-q-fuel', 'Nhiên liệu, tỷ giá'], ['#rf-q-airfin', 'Doanh thu, biên HVN']]},
+            links: [['#rf-q-carried', 'Khách vận chuyển'], ['#rf-q-fuel', 'Nhiên liệu, tỷ giá'], ['#rf-mt14-sector', 'Doanh thu, biên HVN']]},
           {t: 'Hãng bay chi phí thấp', who: 'VJC', kp: [['VJC', 'số hợp nhất, gồm giao dịch tàu bay']],
             lanes: [lane('Khai thác bay', [N('Khách bay', 'lượt', 'flow'), O('×'), N('Giá vé cơ bản', 'đồng/khách', 'rev', 'Giá thấp, chưa gồm hành lý ký gửi, suất ăn.'), O('+'), N('Phụ trợ/khách', 'hành lý, chọn chỗ, suất ăn, bảo hiểm', 'rev', 'Phần bù cho giá vé cơ bản thấp; VJC chưa công bố số 2026.'), O('='), N('Doanh thu vé, phụ trợ', '+ hàng hóa (bổ sung)', 'rev', '', {main: 1})]),
               lane('Giao dịch tàu bay', [N('Tàu bàn giao', 'chiếc trong kỳ', 'flow', 'Tàu mới từ nhà sản xuất.'), O('→'), N('Bán và thuê lại', 'SLB', 'lever', 'Bán tàu cho bên cho thuê rồi thuê lại để khai thác.'), O('→'), N('Ghi nhận theo kỳ', 'doanh thu, lãi bán tàu', 'rev', 'Không đều theo quý, làm KPI hợp nhất biến động.', {main: 1}), O('↘'), N('Nghĩa vụ thuê sau giao dịch', 'tiền thuê USD', 'cost', 'Chi phí thuê tàu các kỳ sau.', {fx: 1})], 'hkm-alt'),
               margin('Doanh thu khai thác', [N('Nhiên liệu', 'giá USD', 'cost', '', {fx: 1}), N('Mức sử dụng tàu', 'giờ bay/tàu/ngày', 'lever', 'Bay càng dày, chi phí cố định trên ghế càng thấp.'), N('Chi phí thuê tàu', 'USD', 'cost', '', {fx: 1})], 'Biên khai thác')],
             close: 'Theo dõi phụ trợ/khách để đọc sức kiếm tiền của hoạt động bay, và số tàu bàn giao để giải thích biến động do bán và thuê lại tàu.',
-            links: [['#rf-q-sched', 'Lịch bay'], ['#rf-q-fleet', 'Đội tàu'], ['#rf-q-airfin', 'Doanh thu, biên VJC']]},
+            links: [['#rf-q-sched', 'Lịch bay'], ['#rf-q-fleet', 'Đội tàu'], ['#rf-mt14-sector', 'Doanh thu, biên VJC']]},
           {t: 'Khai thác cảng hàng không', who: 'ACV', kp: [['ACV', '21/22 cảng']],
             lanes: [lane('Khách trả', [N('Khách nội địa, quốc tế', 'lượt qua cảng', 'flow'), O('→'), N('Phí phục vụ hành khách', 'thu qua giá vé', 'rev', 'Hãng thu hộ trong giá vé rồi nộp lại; mức quốc tế cao hơn nhiều nội địa.', {main: 1})]),
               lane('Hãng bay trả', [N('Chuyến bay', 'cất hạ cánh', 'flow'), O('→'), N('Phí cất hạ cánh, sân đỗ', 'theo chuyến, trọng tải', 'rev', '', {main: 1})]),
@@ -218,9 +218,6 @@ window.PKG = {
       items: obs('otp_2024').sort((a, b) => b.value - a.value).map(o => [o.segment, o.value, o.segment === 'Vietjet Air' ? C.red : o.segment === 'Vietnam Airlines' ? C.navy : C.sky]),
       method: 'SHS tr. 24, tỷ lệ cất cánh đúng giờ năm 2024. Heatmap OTP theo tháng: Cục Hàng không đăng báo cáo dạng bài, chưa nạp tự động được nên để ngoài bản này.'},
     {id: 'hkFuel', id2: 'hkFx', type: 'fuelfx', table: 'tbl-fuelfx', from: '2025-01'},
-    {id: 'hkAirlineFin', type: 'fin', table: 'tbl-airlinefin', quarters: 12, syms: [['HVN', C.navy], ['VJC', C.red]],
-      views: [['revenue', 'Doanh thu thuần', 'tỷ đồng'], ['margin_gross', 'Biên gộp', '%'], ['margin_op', 'Biên LN thuần HĐKD', '%'], ['fin_exp', 'Chi phí tài chính', 'tỷ đồng'], ['cfo', 'CFO', 'tỷ đồng'], ['capex', 'Chi đầu tư TSCĐ', 'tỷ đồng']],
-      method: 'BCTC hợp nhất. Doanh thu VJC gồm cả doanh thu bán và thuê lại tàu bay (không tách được theo quý từ nguồn công khai); HVN hợp nhất Pacific Airlines, VASCO. RASK, CASK, yield chưa tính: thiếu ASK, RPK theo hãng và doanh thu hành khách tách riêng. CFO quý năm nào lệch số năm thì để trống.'},
     {id: 'hkLtProg', type: 'progress', table: 'tbl-ltprog', src: [LT],
       items: (EX.longthanh_progress || []).map(([l, v, n], i) => [l, v, [C.navy, C.gold, C.teal][i % 3], n]),
       method: 'Dự án thành phần 3 (ACV làm chủ đầu tư). Hai tỷ lệ đo khác nhau: phần trăm giá trị hợp đồng theo khối lượng đã thực hiện, và phần trăm vốn đã giải ngân.'},
@@ -254,7 +251,7 @@ window.PKG = {
       method: 'Số doanh nghiệp công bố. HVN, VJC chưa công bố ASK, RPK, hệ số tải năm 2026.'},
   ],
   topics: {
-    'hk-t1': ['Chi phí nhiên liệu trên ghế, biên gộp HVN, VJC', 'EIA theo ngày; chi phí nhiên liệu trong thuyết minh BCTC quý 4/2026; mức phụ thu nhiên liệu và giá vé', [['#rf-q-fuel', 'Nhiên liệu, tỷ giá'], ['#rf-q-airfin', 'Biên HVN, VJC']]],
+    'hk-t1': ['Chi phí nhiên liệu trên ghế, biên gộp HVN, VJC', 'EIA theo ngày; chi phí nhiên liệu trong thuyết minh BCTC quý 4/2026; mức phụ thu nhiên liệu và giá vé', [['#rf-q-fuel', 'Nhiên liệu, tỷ giá'], ['#rf-mt14-sector', 'Biên HVN, VJC']]],
     'hk-t2': ['Sản lượng và yield quốc tế của HVN, VJC; lượt khách quốc tế qua ACV', 'Số 11 tháng của Cục HK (khách quốc tế toàn thị trường và hãng Việt); lịch bay mùa Hè 2027; số chuyến theo hãng trong báo cáo đúng giờ', [['#rf-q-share', 'Thị phần quốc tế'], ['#rf-q-sched', 'Lịch bay'], ['#rf-q-otp', 'Chuyến theo hãng']]],
     'hk-t3': ['Capex, XDCB dở dang, thời điểm bắt đầu khấu hao của ACV; phân chia lưu lượng Tân Sơn Nhất – Long Thành', 'Mốc chạy thử, cấp phép khai thác của Bộ Xây dựng, Cục HK; BCTC quý 4/2026 của ACV', [['#rf-q-lt', 'Tiến độ Long Thành'], ['#rf-q-acv', 'Capex ACV']]],
   },
@@ -275,9 +272,8 @@ window.PKG = {
         {q: 'Cung ghế quốc tế mùa này tăng bao nhiêu, ai tăng?', id: 'rf-q-sched', meta: 'chuyến khứ hồi/tuần · lịch bay được duyệt; HK.km · NSO', take: ['hk-20', 'hk-21']},
         {q: 'Đội bay và thị phần nội địa thay đổi thế nào?', id: 'rf-q-fleet', meta: 'tàu bay · Cục Hàng không; thị phần, đúng giờ · SHS', take: ['hk-24', 'hk-22', 'hk-25']},
         {q: 'Hãng nào bay đúng giờ, khai thác bao nhiêu chuyến?', id: 'rf-q-otp', meta: '% chuyến cất cánh đúng giờ · theo tháng (Cục Hàng không)', take: ['hk-26']}]},
-      {k: 'cost', t: 'Nhiên liệu, tỷ giá & biên HVN/VJC', d: 'Jet fuel và USD/VND cùng trục thời gian; doanh thu, biên, dòng tiền theo BCTC.', items: [
-        {q: 'Giá nhiên liệu bay và tỷ giá đang ở đâu?', id: 'rf-q-fuel', meta: 'USD/gallon (EIA), đồng/USD (NHNN) · bình quân tháng; bảng bình quân quý', take: ['hk-30']},
-        {q: 'Doanh thu, biên và dòng tiền HVN, VJC đi thế nào?', id: 'rf-q-airfin', meta: 'tỷ đồng, % · BCTC hợp nhất quý', take: ['hk-33']}]},
+      {k: 'cost', t: 'Nhiên liệu & tỷ giá', d: 'Jet fuel và USD/VND cùng trục thời gian.', items: [
+        {q: 'Giá nhiên liệu bay và tỷ giá đang ở đâu?', id: 'rf-q-fuel', meta: 'USD/gallon (EIA), đồng/USD (NHNN) · bình quân tháng; bảng bình quân quý', take: ['hk-30']}]},
       {k: 'airport', t: 'Sân bay, công suất & capex ACV', d: 'Bản đồ cảng, tiến độ Long Thành, lưu lượng và đầu tư của ACV.', items: [
         {q: 'Các cảng nằm đâu, ai khai thác?', id: 'rf-q-airmap', take: ['hk-40']},
         {q: 'Long Thành đã làm được bao nhiêu?', id: 'rf-q-lt', meta: '% giá trị hợp đồng theo khối lượng và % giải ngân · dự án thành phần 3', take: ['hk-42']},
