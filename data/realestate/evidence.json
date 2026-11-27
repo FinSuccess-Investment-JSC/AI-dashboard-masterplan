@@ -2178,5 +2178,55 @@
   "quote": "Lideco xác định năm 2026 sẽ tiếp tục chưa ghi nhận doanh thu từ hoạt động kinh doanh bất động sản, tương tự tình trạng trong năm 2025 dù các dự án vẫn đang được triển khai.",
   "status": "match",
   "note": "Nhận định"
+ },
+ {
+  "block": "bds-p2",
+  "claim": "NOXH hoàn thành 2025",
+  "value": "102.633 căn",
+  "url": "https://voh.com.vn/xa-hoi/nha-o-xa-hoi-vuot-chi-tieu-chung-12-tinh-thanh-van-chua-co-du-an-641637.html",
+  "opened_at": "2026-11-27",
+  "quote": "cả nước đã hoàn thành 102.633 căn nhà ở xã hội",
+  "status": "match",
+  "note": "Báo trích số Bộ Xây dựng; trang moc.gov.vn lỗi chứng chỉ, chưa mở được bản gốc."
+ },
+ {
+  "block": "bds-p2",
+  "claim": "NOXH kế hoạch 2025",
+  "value": "100.275 căn",
+  "url": "https://voh.com.vn/xa-hoi/nha-o-xa-hoi-vuot-chi-tieu-chung-12-tinh-thanh-van-chua-co-du-an-641637.html",
+  "opened_at": "2026-11-27",
+  "quote": "kế hoạch Chính phủ giao là 100.275 căn",
+  "status": "match",
+  "note": "Báo trích số Bộ Xây dựng; trang moc.gov.vn lỗi chứng chỉ, chưa mở được bản gốc."
+ },
+ {
+  "block": "bds-p2",
+  "claim": "NOXH hoàn thành 2026 đến đầu 11/2026",
+  "value": "46.962 căn / kế hoạch 97.271",
+  "url": "https://cafef.vn/phan-dau-hoan-thanh-87601-can-nha-o-xa-hoi-trong-nam-2026-188261105102750855.chn",
+  "opened_at": "2026-11-27",
+  "quote": "Đến nay, có 170 dự án hoàn thành với quy mô 46.962 căn trên tổng số 97.271 căn theo kế hoạch, đạt 48%.",
+  "status": "match",
+  "note": "Báo trích số Bộ Xây dựng; trang moc.gov.vn lỗi chứng chỉ, chưa mở được bản gốc."
+ },
+ {
+  "block": "bds-p2",
+  "claim": "NOXH dự kiến 2026",
+  "value": "87.601 căn (90% kế hoạch)",
+  "url": "https://cafef.vn/phan-dau-hoan-thanh-87601-can-nha-o-xa-hoi-trong-nam-2026-188261105102750855.chn",
+  "opened_at": "2026-11-27",
+  "quote": "Dự kiến đến hết năm 2026, cả nước hoàn thành 87.601 căn nhà ở xã hội, đạt 90% kế hoạch đề ra.",
+  "status": "match",
+  "note": "Báo trích số Bộ Xây dựng; trang moc.gov.vn lỗi chứng chỉ, chưa mở được bản gốc."
+ },
+ {
+  "block": "bds-p2",
+  "claim": "NOXH mục tiêu 2026 theo NQ 244",
+  "value": "trên 110.000 căn",
+  "url": "https://vneconomy.vn/bo-xay-dung-dat-muc-tieu-hoan-thanh-tren-110000-can-nha-o-xa-hoi-trong-2026.htm",
+  "opened_at": "2026-11-27",
+  "quote": "hoàn thành trên 110.000 căn nhà ở xã hội",
+  "status": "match",
+  "note": "Báo trích số Bộ Xây dựng; trang moc.gov.vn lỗi chứng chỉ, chưa mở được bản gốc."
  }
 ]
