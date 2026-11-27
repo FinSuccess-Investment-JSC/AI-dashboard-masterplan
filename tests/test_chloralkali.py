@@ -65,9 +65,6 @@ class ChloralkaliTests(unittest.TestCase):
             self.assertEqual(len(t['related_data']), 2, t['id'])
 
 
-if __name__ == '__main__':
-    unittest.main()
-
     def test_p4_price_and_export(self):
         # Giá P4 Trung Quốc (Sunsirs qua WiData): ngày tăng dần, CNY/tấn dương; P4 xuất khẩu Việt Nam báo cáo: năm lệch khối lượng để trống.
         p4 = self.d['p4']
@@ -90,3 +87,5 @@ if __name__ == '__main__':
         self.assertTrue(ids)
         self.assertFalse(ids - covered, sorted(ids - covered))
 
+if __name__ == '__main__':
+    unittest.main()
