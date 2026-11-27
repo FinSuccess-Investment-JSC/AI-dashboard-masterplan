@@ -9056,6 +9056,28 @@
     "Ngày quan sát mới không lùi so với bản cũ",
     "Giữ nghĩa giá trị ngày cuối kỳ (không đổi sang bình quân)"
    ]
+  },
+  {
+   "id": "aviation.valuation",
+   "tier": "A",
+   "title": "Hàng không: P/E, P/B, vốn hóa theo phiên, trung vị 5 năm (8 mã)",
+   "schedule": {
+    "type": "daily",
+    "at": "07:00",
+    "days": "mon-fri"
+   },
+   "publication": "Theo phiên giao dịch",
+   "source": {
+    "name": "VNDirect finfo",
+    "url": "https://dstock.vndirect.com.vn/"
+   },
+   "where": {
+    "page": "Hang-khong/index.html",
+    "file": "data/aviation-valuation.js",
+    "blocks": []
+   },
+   "how": "python3 scripts/build_aviation_valuation.py (chạy trong refresh-data.yml).",
+   "job": "refresh-data.yml (mỗi lượt refresh)"
   }
  ]
 }
