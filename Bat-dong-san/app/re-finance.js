@@ -238,7 +238,8 @@ function s73() {
   renders.push(draw5);
   // Chart "Mức hao mòn kế toán của nền tài sản" bỏ 25/11/2026 theo yêu cầu người dùng.
   // Chart "Vốn mới đang vào đâu so với nơi tạo lợi nhuận và dòng tiền?" bỏ 25/11/2026 theo yêu cầu người dùng.
-  s.append(grid2(c1, c2), grid2(c3, c5));
+  // 28/11/2026: ẩn 're-fin-intensity' (CAPEX/khấu hao không mô tả đầu tư của chủ đầu tư nhà ở: vốn nằm ở hàng tồn kho, xem 1.4).
+  s.append(grid2(c1, c3), c5.el);
   return s;
 }
 
@@ -353,7 +354,8 @@ function s76() {
     if (window.ChartTypes) ChartTypes.mount(c5.host, m, () => { c5.host.innerHTML = ChartTypes.render(m, 'bar'); });
     foot(c5, `${qLabel(D.periods[i])}; vốn đầu tư = VCSH + nợ vay − tiền − đầu tư ngắn hạn (số dư)`); }
   renders.push(draw5);
-  s.append(grid2(c1, c2), grid2(c3, c5));
+  // 28/11/2026: ẩn 're-fin-roic-cycle' (CAPEX/khấu hao, XDCB dở dang không phải chu kỳ vốn của chủ đầu tư nhà ở).
+  s.append(grid2(c1, c2), c5.el);
   return s;
 }
 function bubble(pts) {
