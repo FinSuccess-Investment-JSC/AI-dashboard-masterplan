@@ -10172,6 +10172,131 @@
    "gates": [
     "Chỉ số đã mở trang gốc, có đoạn trích chứa số"
    ]
+  },
+  {
+   "id": "port.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "Cảng · Định giá: số vận hành và giá mục tiêu CTCK (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Tài liệu doanh nghiệp, báo cáo CTCK; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Tài liệu doanh nghiệp, báo cáo CTCK",
+    "url": "https://finance.vietstock.vn/bao-cao-phan-tich"
+   },
+   "where": {
+    "page": "Cang-bien/index.html",
+    "file": "data/port/manual.json",
+    "blocks": [
+     "port-manual"
+    ]
+   },
+   "how": "Sửa data/port/manual.json, chạy python scripts/build_port_manual.py. DASHBOARD_WORKFLOW §44.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số"
+   ]
+  },
+  {
+   "id": "steel.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "Thép · Định giá: số vận hành và giá mục tiêu CTCK (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Tài liệu doanh nghiệp, báo cáo CTCK; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Tài liệu doanh nghiệp, báo cáo CTCK",
+    "url": "https://finance.vietstock.vn/bao-cao-phan-tich"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "file": "data/steel/manual.json",
+    "blocks": [
+     "steel-manual"
+    ]
+   },
+   "how": "Sửa data/steel/manual.json, chạy python scripts/build_steel_manual.py. DASHBOARD_WORKFLOW §44.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số"
+   ]
+  },
+  {
+   "id": "sugar.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "Đường · Định giá: số vận hành và giá mục tiêu CTCK (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Tài liệu doanh nghiệp, báo cáo CTCK; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Tài liệu doanh nghiệp, báo cáo CTCK",
+    "url": "https://finance.vietstock.vn/bao-cao-phan-tich"
+   },
+   "where": {
+    "page": "Sugar/index.html",
+    "file": "data/sugar/manual.json",
+    "blocks": [
+     "sugar-manual"
+    ]
+   },
+   "how": "Sửa data/sugar/manual.json, chạy python scripts/build_sugar_manual.py. DASHBOARD_WORKFLOW §44.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số"
+   ]
+  },
+  {
+   "id": "dairy.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "Sữa · Định giá: số vận hành và giá mục tiêu CTCK (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Tài liệu doanh nghiệp, báo cáo CTCK; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Tài liệu doanh nghiệp, báo cáo CTCK",
+    "url": "https://finance.vietstock.vn/bao-cao-phan-tich"
+   },
+   "where": {
+    "page": "Sua/index.html",
+    "file": "data/dairy/manual.json",
+    "blocks": [
+     "dairy-manual"
+    ]
+   },
+   "how": "Sửa data/dairy/manual.json, chạy python scripts/build_dairy_manual.py. DASHBOARD_WORKFLOW §44.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số"
+   ]
+  },
+  {
+   "id": "beer.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "Bia · Định giá: số vận hành và giá mục tiêu CTCK (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Tài liệu doanh nghiệp, báo cáo CTCK; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Tài liệu doanh nghiệp, báo cáo CTCK",
+    "url": "https://finance.vietstock.vn/bao-cao-phan-tich"
+   },
+   "where": {
+    "page": "Bia/index.html",
+    "file": "data/beer/manual.json",
+    "blocks": [
+     "beer-manual"
+    ]
+   },
+   "how": "Sửa data/beer/manual.json, chạy python scripts/build_beer_manual.py. DASHBOARD_WORKFLOW §44.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số"
+   ]
   }
  ]
 }

@@ -1,0 +1,190 @@
+{
+ "updated": "2026-11-28",
+ "note": "",
+ "how": "Sửa file này rồi chạy python scripts/build_dairy_manual.py (DASHBOARD_WORKFLOW §44).",
+ "rows": [
+  {
+   "ticker": "VNM",
+   "item": "herd",
+   "period": "2025",
+   "value": 130000,
+   "unit": "con",
+   "extra": {
+    "qualifier": "trên; gồm trang trại liên kết",
+    "lower_bound": true
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/VNM_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Tổng đàn bò sữa do Công ty quản lý và liên kết đạt trên đạt trên 130.000 con",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "VNM",
+   "item": "share",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/VNM_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "no % thị phần found by grep in AR"
+  },
+  {
+   "ticker": "VNM",
+   "item": "export_share",
+   "period": "2025",
+   "value": 11.2,
+   "unit": "%",
+   "extra": {
+    "broker": "FPTS",
+    "report_date": "12/02/2026",
+    "qualifier": "from broker report, not AR"
+   },
+   "url": "https://file.fpts.com.vn/FileStore2/File/2026/02/12/VNMQuickUpdateReportFeb_2026_3a486854.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Doanh thu xuất khẩu (11,2% tổng doanh thu)",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "VNM",
+   "item": "target",
+   "period": "12m",
+   "value": 72400,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "FPTS",
+    "report_date": "12/02/2026",
+    "method": "DCF (FCFE và FCFF)",
+    "text": "THEO DÕI"
+   },
+   "url": "https://file.fpts.com.vn/FileStore2/File/2026/02/12/VNMQuickUpdateReportFeb_2026_3a486854.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "giá mục tiêu là 72.400 VND/cp, cao hơn 5,0% so với giá đóng cửa ngày 12/02/2026 (bằng phương pháp chiết khấu dòng tiền",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "MCM",
+   "item": "herd",
+   "period": "2025",
+   "value": 27000,
+   "unit": "con",
+   "extra": {
+    "qualifier": "~"
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MCM_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Tổng số lượng đàn bò của MCM là gần 27.000 con bò",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "MCM",
+   "item": "share",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MCM_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "no % in AR"
+  },
+  {
+   "ticker": "MCM",
+   "item": "target",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "not searched"
+  },
+  {
+   "ticker": "IDP",
+   "item": "herd",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "AR 2025 not at vietstock static2 path; not further searched"
+  },
+  {
+   "ticker": "IDP",
+   "item": "share",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "AR 2025 not at vietstock static2 path; not further searched"
+  },
+  {
+   "ticker": "IDP",
+   "item": "target",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "AR 2025 not at vietstock static2 path; not further searched"
+  },
+  {
+   "ticker": "HNM",
+   "item": "herd",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "AR 2025 not at vietstock static2 path; not further searched"
+  },
+  {
+   "ticker": "HNM",
+   "item": "share",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "AR 2025 not at vietstock static2 path; not further searched"
+  },
+  {
+   "ticker": "HNM",
+   "item": "target",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "AR 2025 not at vietstock static2 path; not further searched"
+  }
+ ]
+}
