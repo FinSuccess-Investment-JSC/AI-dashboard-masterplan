@@ -1,0 +1,1029 @@
+{
+ "updated": "2026-11-28",
+ "note": "",
+ "how": "Mỗi dòng đã mở trang gốc ngày opened_at. Sửa file này rồi chạy python scripts/build_re_manual.py. status not_found = đã tìm, không có nguồn mở được; hide = có số nhưng không đưa lên trang (xem hide_reason).",
+ "rows": [
+  {
+   "ticker": "VHM",
+   "item": "presales_latest",
+   "period": "9T/2026",
+   "value": 219.6,
+   "unit": "nghìn tỷ đồng",
+   "extra": {
+    "q3_2026_nghin_ty": 71.5,
+    "h1_2026_ty": 148104
+   },
+   "url": "https://doanhnhan.baophapluat.vn/vinhomes-vhm-loi-nhuan-9-thang-vuot-75-000-ty-dong-gap-gan-5-lan-cung-ky.html",
+   "opened_at": "2026-11-28",
+   "quote": "Về hoạt động bán hàng, doanh số lũy kế chín tháng đạt 219,6 nghìn tỷ đồng, tăng 35% so với cùng kỳ. Riêng quý III đóng góp 71,5 nghìn tỷ đồng, trong đó 81% tỷ trọng đến từ kênh bán lẻ với sự dẫn dắt của các dự án Vinhomes Sài Gòn Park và Vinhomes Global Gate Hạ Long.",
+   "status": "match",
+   "note": "Báo chí dẫn BCTC/thông cáo Q3/2026 của Vinhomes; thông cáo gốc trên vinhomes.vn trả 403 nên chưa mở được. Đối chiếu khớp: 24hmoney.vn/news/vinhomes-lai-gap-gan-5-lan-vuot-25-muc-tieu-ca-nam-c1a2852479.html ('doanh số bán hàng 219.6 ngàn tỷ đồng, tăng 35%'). 6T/2026 = 148.104 tỷ (cafef)."
+  },
+  {
+   "ticker": "VHM",
+   "item": "presales_fy2025",
+   "period": "FY2025",
+   "value": 205.3,
+   "unit": "nghìn tỷ đồng",
+   "extra": {
+    "broker": "MBS",
+    "report_date": "2026-03-10"
+   },
+   "url": "https://image.tinnhanhchungkhoan.vn/Uploaded/2026/cqjwqcqdh/2026_03_10/baocaocapnhatvhm-7512.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Năm 2025, doanh thu quy đổi đạt 183.9 nghìn tỷ đồng (+30% svck), LN ròng đạt 41.1 nghìn tỷ đồng (+29% svck). Doanh số bán hàng đạt 205.3 nghìn tỷ đồng, đóng góp lớn từ dự án Green Paradise và Wonder City.",
+   "status": "match",
+   "note": "Báo cáo MBS Research 10/03/2026 (dấu chấm là dấu thập phân). Khớp với phát biểu tại ĐHĐCĐ 2026: 'năm 2025 chúng ta đã thực đạt là khoảng 205.000 tỷ' (nguoiquansat)."
+  },
+  {
+   "ticker": "VHM",
+   "item": "presales_plan_2026",
+   "period": "FY2026",
+   "value": 300000,
+   "unit": "tỷ đồng",
+   "extra": {
+    "range_low": 300000,
+    "range_high": 350000,
+    "lower_bound": true
+   },
+   "url": "https://nguoiquansat.vn/dhdcd-vinhomes-muc-tieu-lai-ky-luc-60-000-ty-dong-chia-co-tuc-ty-le-160-bang-ca-tien-mat-va-co-phieu-287330.html",
+   "opened_at": "2026-11-28",
+   "quote": "Kế hoạch doanh số pre-sale năm 2026 dự kiến là sẽ đạt được khoảng 300.000 - 350.000 tỷ đồng. Tức là so với mức độ của năm 2025 chúng ta đã thực đạt là khoảng 205.000 tỷ thì tốc độ tăng trưởng khoảng 46% - 70",
+   "status": "match",
+   "note": "Phát biểu của lãnh đạo tại ĐHĐCĐ 21/04/2026 (tường thuật), là khoảng 300.000–350.000 tỷ; value ghi cận dưới. Không nằm trong chỉ tiêu ĐHĐCĐ biểu quyết (chỉ có doanh thu quy đổi 285.000 tỷ và LNST 60.000 tỷ)."
+  },
+  {
+   "ticker": "VHM",
+   "item": "unbilled",
+   "period": "30/09/2026",
+   "value": 185.6,
+   "unit": "nghìn tỷ đồng",
+   "extra": {
+    "end_q2_2026_ty": 196813,
+    "end_2025_nghin_ty": 186.4
+   },
+   "url": "https://doanhnhan.baophapluat.vn/vinhomes-vhm-loi-nhuan-9-thang-vuot-75-000-ty-dong-gap-gan-5-lan-cung-ky.html",
+   "opened_at": "2026-11-28",
+   "quote": "Tính đến cuối tháng 9, lượng doanh số đã bán nhưng chưa bàn giao đạt 185,6 nghìn tỷ đồng, gấp khoảng 1,7 lần mức trung bình của giai đoạn 2021 đến 2025, tạo nguồn thu ổn định cho các quý hoạt động tiếp theo.",
+   "status": "match",
+   "note": "Giảm so với cuối Q2/2026 (196.813 tỷ, cafef) và cuối 2025 (186,4 nghìn tỷ, MBS). Đối chiếu khớp trên 24hmoney news ('185.6 ngàn tỷ đồng')."
+  },
+  {
+   "ticker": "VHM",
+   "item": "rnav",
+   "period": "07/09/2026",
+   "value": 99800,
+   "unit": "đồng/cp",
+   "extra": {
+    "value_is": "target_price",
+    "broker": "Shinhan Securities Vietnam",
+    "report_date": "2026-09-07",
+    "target_price": 99800,
+    "rnav_per_share": null,
+    "rnav_total_ty_dong": 819621,
+    "shares_mn": 8214,
+    "discount_pct": null
+   },
+   "url": "https://shinhansec.com.vn/uploads/report/VHM_Update_VN_09_20261.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "MUA với mức giá mục tiêu 99,800 VND/cổ phiếu, được định giá dựa trên phương pháp RNAV. [...] RNAV 819,621 [...] Số lượng cổ phiếu đang lưu hành (triệu cổ phiếu) 8,214 | Giá mục tiêu (VND/cổ phiếu) (làm tròn)* 99,800 | Giá hiện tại (VND/cổ phiếu)* 74,500",
+   "status": "match",
+   "note": "value = giá mục tiêu. Báo cáo không nêu riêng dòng RNAV/cp và không áp chiết khấu: giá mục tiêu = RNAV 819.621 tỷ / 8.214 triệu cp. Đây là báo cáo RNAV mới nhất mở được; sau KQKD Q3 có VPX 04/11/2026 (CDN 24hmoney trả 504, không mở được) và DSC 08/10/2026 giá mục tiêu 114.400 nhưng theo P/B, không phải RNAV. Báo cáo MBS 10/03/2026 (123.200) là giá trước khi chia cổ phiếu 1:1."
+  },
+  {
+   "ticker": "NVL",
+   "item": "presales_latest",
+   "period": "9T/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "units_sold_9m": 218,
+    "broker": "TCBS",
+    "report_date": "2026-11-13"
+   },
+   "url": "https://cdn.24hmoney.vn/upload/file/2026-4/2026-11-14/20261113_NVL_Bao_cao_cap_nhat_KQKD_Quy_3_Nam_2026.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Trong khi đó, theo bản tin nhà đầu tư, bán mới 9 tháng chỉ 218 căn, riêng Quý 3 thêm 19 căn (bình quân 6 căn/tháng) trên nguồn hàng hơn 2.100 sản phẩm sẵn sàng bán",
+   "status": "not_found",
+   "note": "Novaland chỉ công bố số căn bán mới (218 căn 9T/2026), không thấy nguồn nào nêu giá trị doanh số bằng tỷ đồng. Nguồn: TCBS cập nhật KQKD Q3/2026 ngày 13/11/2026."
+  },
+  {
+   "ticker": "NVL",
+   "item": "presales_fy2025",
+   "period": "FY2025",
+   "value": 2500,
+   "unit": "tỷ đồng",
+   "extra": {
+    "broker": "Vietcap",
+    "report_date": "2026-06-18",
+    "estimate": true
+   },
+   "url": "https://cdn.simplize.vn/simplizevn/report/NVL/Du_an_Aqua_City_du_kien_dan_dat_a_phuc_hoi_manh_me_cua_doanh_so_ban_bat_ong_san_-_Cap_nhat.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "2025 2026F 2027F 2028F [...] Doanh số bán BĐS (tỷ đồng) 2.500 11.400 31.300 39.500 [...] giá trị doanh số bán được làm tròn đến hàng trăm gần nhất). Lưu ý: Bao gồm các giai đoạn dự án đã xác định; doanh số bán trong giai đoạn 2020–2025 bao gồm cả số liệu công ty công bố và ước tính của Vietcap.",
+   "status": "match",
+   "note": "Số của Vietcap (báo cáo 18/06/2026), làm tròn hàng trăm và có phần ước tính của Vietcap, không phải số công ty công bố trực tiếp. Dùng thận trọng."
+  },
+  {
+   "ticker": "NVL",
+   "item": "presales_plan_2026",
+   "period": "FY2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "units_ready_for_sale": 2100,
+    "vietcap_forecast_2026_ty": 11400
+   },
+   "url": "https://baodautu.vn/dhdcd-novaland-ong-bui-cao-nhat-quan-lam-chu-tich-hdqt-san-sang-kinh-doanh-2100-san-pham-d576364.html",
+   "opened_at": "2026-11-28",
+   "quote": "Novaland đặt mục tiêu bàn giao hơn 2.600 sản phẩm, hơn 4.300 sổ hồng được cấp cho các dự án ở trung tâm TP.HCM, tiếp tục triển khai bán mới với sản lượng sẵn sàng bán là hơn 2.100 sản phẩm.",
+   "status": "not_found",
+   "note": "ĐHĐCĐ 2026 không công bố mục tiêu doanh số bằng tỷ đồng, chỉ có 'hơn 2.100 sản phẩm sẵn sàng bán' (kế hoạch doanh thu thuần 22.715 tỷ, LNST 1.852 tỷ). Dự báo của Vietcap cho 2026 là 11,4 nghìn tỷ nhưng đó là dự báo CTCK, không phải kế hoạch công ty."
+  },
+  {
+   "ticker": "NVL",
+   "item": "unbilled",
+   "period": "31/03/2026",
+   "value": 227,
+   "unit": "nghìn tỷ đồng",
+   "extra": {
+    "broker": "Vietcap",
+    "report_date": "2026-06-18",
+    "customer_advances_q3_2026_ty": 23446
+   },
+   "url": "https://cdn.simplize.vn/simplizevn/report/NVL/Du_an_Aqua_City_du_kien_dan_dat_a_phuc_hoi_manh_me_cua_doanh_so_ban_bat_ong_san_-_Cap_nhat.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Tại cuối quý 1/2026, tổng giá trị của các sản phẩm đã giới thiệu ra thị trường trong giai đoạn trước của NVL (backlog) đạt 227 nghìn tỷ đồng, trong đó một phần lớn vẫn cần phải thu tiền từ phía khách hàng. Aqua City chiếm 51% lượng backlog, tiếp theo là NovaWorld Phan Thiet (24%), NovaWorld Ho Tram (11%) và các dự án tại TP.HCM (14%).",
+   "status": "match",
+   "note": "Định nghĩa rộng ('sản phẩm đã giới thiệu ra thị trường'), không hoàn toàn là doanh số đã ký chưa ghi nhận; mốc cuối Q1/2026, chưa có số 30/09/2026. Tham khảo khác: người mua trả tiền trước 23.446 tỷ cuối Q3/2026 (TCBS 13/11/2026) — đây là tiền đã thu, không phải unbilled.",
+   "hide": true,
+   "hide_reason": "Vietcap định nghĩa là tổng giá trị sản phẩm đã giới thiệu ra thị trường, không phải doanh số đã ký chưa ghi nhận."
+  },
+  {
+   "ticker": "NVL",
+   "item": "rnav",
+   "period": "18/06/2026",
+   "value": 18600,
+   "unit": "đồng/cp",
+   "extra": {
+    "value_is": "target_price",
+    "broker": "Vietcap",
+    "report_date": "2026-06-18",
+    "target_price": 18600,
+    "rnav_per_share": null,
+    "rnav_total_ty_dong": 49664,
+    "rnav_after_discount_ty_dong": 44698,
+    "shares_mn": 2402,
+    "discount_pct": 10
+   },
+   "url": "https://cdn.simplize.vn/simplizevn/report/NVL/Du_an_Aqua_City_du_kien_dan_dat_a_phuc_hoi_manh_me_cua_doanh_so_ban_bat_ong_san_-_Cap_nhat.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Chúng tôi sử dụng phương pháp định giá đánh giá lại tài sản ròng (RNAV) và ước tính giá mục tiêu cho cổ phiếu NVL ở mức 18.600 đồng/cổ phiếu. [...] Giá trị tài sản ròng 49.664 | Tỷ lệ chiết khấu % 10% | Giá trị tài sản ròng sau chiết khấu 44.698 | Số lượng cổ phiếu (triệu cổ phiếu) (***) 2.402 | Giá mục tiêu (đồng/cổ phiếu) 18.600",
+   "status": "match",
+   "note": "value = giá mục tiêu. RNAV/cp không được nêu thành dòng riêng (RNAV 49.664 tỷ trên 2.402 triệu cp). Giá mục tiêu tính trên số cổ phiếu trước đợt chào bán 800,7 triệu cp; chính báo cáo đưa độ nhạy 16.200 / 14.900 / 14.700 nếu phát hành; trang simplize.vn/co-phieu/NVL/bao-cao hiển thị 'giá mục tiêu điều chỉnh' 13,900 cho cùng báo cáo. TCBS 13/11/2026 không đưa giá mục tiêu (chỉ P/B 0,52 lần).",
+   "hide": true,
+   "hide_reason": "Giá mục tiêu 18.600 tính trước đợt phát hành 800,7 triệu cổ phiếu; cùng báo cáo nêu 14.700 sau khi hoàn tất các đợt phát hành."
+  },
+  {
+   "ticker": "KDH",
+   "item": "presales_latest",
+   "period": "6T/2026",
+   "value": 300,
+   "unit": "tỷ đồng",
+   "extra": {
+    "broker": "Shinhan Securities Vietnam",
+    "report_date": "2026-09-23",
+    "estimate": true
+   },
+   "url": "https://cdn.simplize.vn/simplizevn/report/KDH/20260924_kdh_mua_gia_mt_vnd_24_200_52_6_gladia_la_dong_luc_trong_ngan_han.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Doanh số bán hàng H1/2026 ước đạt 300 tỷ đồng.",
+   "status": "match",
+   "note": "Chỉ là ƯỚC TÍNH của Shinhan (báo cáo 23/09/2026) cho 6T/2026; KDH không công bố doanh số định kỳ. Không tìm thấy số 9T/2026. Sau đó Gladia Heights mở bán 01/08/2026 (~500 căn, hấp thụ ~90%; báo chí nêu 'gần 4.000 tỷ' nhưng tôi chưa mở bài gốc để trích) nên số 6T không đại diện cho 9T."
+  },
+  {
+   "ticker": "KDH",
+   "item": "presales_fy2025",
+   "period": "FY2025",
+   "value": 6000,
+   "unit": "tỷ đồng",
+   "extra": {
+    "broker": "Vietcap",
+    "report_date": "2026-08-28",
+    "conflict": "VDSC implies ~4.900 tỷ",
+    "estimate": true
+   },
+   "url": "https://cdn.24hmoney.vn/upload/file/2026-3/2026-09-05/KDH_20260828_MUA.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "2025 2026F 2027F 2028F [...] Doanh số bán BĐS (tỷ đồng) 6.000 6.600 8.300 9.700",
+   "status": "match",
+   "note": "Số ước tính làm tròn của Vietcap (báo cáo 28/08/2026), không phải số KDH công bố. MÂU THUẪN: VDSC 13/10/2026 dự phóng 2026 là 5.572 tỷ (+13,5% svck), ngầm định 2025 khoảng 4.900 tỷ. Không nên dùng làm số chính thức."
+  },
+  {
+   "ticker": "KDH",
+   "item": "presales_plan_2026",
+   "period": "FY2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "vietcap_forecast_2026_ty": 6600,
+    "vdsc_forecast_2026_ty": 5572
+   },
+   "url": "https://doanhnhan.baophapluat.vn/dhdcd-khang-dien-kdh-2026-sach-no-trai-phieu-noi-khong-voi-phat-hanh-von-moi-va-muc-tieu-lai-1-500-ty-dong.html",
+   "opened_at": "2026-11-28",
+   "quote": "Nền tảng tài chính vững chắc này giúp doanh nghiệp tự tin đặt chỉ tiêu doanh thu 4.200 tỷ đồng và lợi nhuận sau thuế 1.500 tỷ đồng, tương ứng tỷ lệ tăng 44% về lợi nhuận so với năm trước.",
+   "status": "not_found",
+   "note": "KDH không công bố mục tiêu doanh số 2026; ĐHĐCĐ chỉ có doanh thu 4.200 tỷ và LNST 1.500 tỷ. Dự báo CTCK cho 2026: Vietcap 6.600 tỷ (28/08/2026), VDSC 5.572 tỷ (13/10/2026)."
+  },
+  {
+   "ticker": "KDH",
+   "item": "unbilled",
+   "period": "30/09/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "customer_advances_q3_2026_nghin_ty": 1.86,
+    "broker": "Mirae Asset",
+    "report_date": "2026-11-03"
+   },
+   "url": "https://cdn.simplize.vn/simplizevn/report/KDH/20261103_ctcp_dau_tu_va_kinh_doanh_nha_khang_dien_kdh_cap_nhat_ket_qua_kinh_doanh_q3_2026.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Khoản người mua trả tiền trước tại cuối Q3/26 tăng lên 1,86 nghìn tỷ đồng (+366,9% sv Q2).",
+   "status": "not_found",
+   "note": "Không nguồn nào nêu doanh số chưa ghi nhận của KDH. Chỉ có proxy là người mua trả tiền trước 1,86 nghìn tỷ cuối Q3/2026 (Mirae Asset 03/11/2026) — tiền đã thu, không phải unbilled; phần Gladia nằm ở công ty liên kết Bình Trưng Mới từ 06/2026."
+  },
+  {
+   "ticker": "KDH",
+   "item": "rnav",
+   "period": "13/10/2026",
+   "value": 28300,
+   "unit": "đồng/cp",
+   "extra": {
+    "value_is": "target_price",
+    "broker": "VDSC (Rồng Việt)",
+    "report_date": "2026-10-13",
+    "target_price": 28300,
+    "rnav_per_share": 28300,
+    "rnav_total_ty_dong": 34903,
+    "shares_mn": 1234,
+    "discount_pct": 0
+   },
+   "url": "https://cdn.24hmoney.vn/upload/file/2026-4/2026-10-14/3a590841_df8d_44ad_2b8b_08df28be611e.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Theo đó, giá trị tài sản ròng (RNAV) của KDH được xác định ở mức 34.903 tỷ đồng, tương ứng với giá mục tiêu 28.300 đồng/cổ phiếu.",
+   "status": "match",
+   "note": "value = giá mục tiêu = RNAV/cp (34.903 tỷ / 1.234 triệu cp), VDSC không áp chiết khấu. PDF ghi 'Tháng Mười, 2026'; ngày 13/10/2026 lấy theo danh mục 24hmoney. Các báo cáo mới hơn có giá mục tiêu thấp hơn nhiều nhưng không nêu RNAV: ACBS 13/11/2026 19.000 (PDF dạng ảnh, đọc qua OCR), Agriseco 12/11/2026 18.000, Mirae 03/11/2026 26.500. Chênh lệch giữa các CTCK rất lớn."
+  },
+  {
+   "ticker": "KDH",
+   "item": "rnav",
+   "period": "23/09/2026",
+   "value": 24200,
+   "unit": "đồng/cp",
+   "extra": {
+    "value_is": "target_price",
+    "broker": "Shinhan Securities Vietnam",
+    "report_date": "2026-09-23",
+    "target_price": 24200,
+    "rnav_per_share": 37200,
+    "discount_pct": 35
+   },
+   "url": "https://cdn.simplize.vn/simplizevn/report/KDH/20260924_kdh_mua_gia_mt_vnd_24_200_52_6_gladia_la_dong_luc_trong_ngan_han.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "RNAV/ cổ phiếu 37,200 | Chiết khấu RNAV 35% | Giá mục tiêu (VND/cổ phiếu) 24,200 [...] Chúng tôi đồng thời áp dụng mức chiết khấu 35% để phản ánh rủi ro tiến độ, khả năng hấp thụ sản phẩm thấp tầng, đòn bẩy gia tăng trong môi trường lãi suất cao và nhu cầu vốn lớn cho các dự án mới. Theo đó, giá mục tiêu được xác định ở mức 24,200 VND/cổ phiếu.",
+   "status": "match",
+   "note": "Báo cáo gần nhất có nêu đủ cả RNAV/cp lẫn mức chiết khấu. RNAV/cp tính trên 1,122 tỷ cp (trước cổ tức cổ phiếu 10%). Thêm: Vietcap 28/08/2026 RNAV/cp 33.300, giá mục tiêu 31.700 (50% RNAV + 50% P/B); BSC 02/10/2026 giá mục tiêu 18.400 (RNAV, chiết khấu 40% hai dự án Tân Tạo A và Phong Phú 2).",
+   "hide": true,
+   "hide_reason": "Báo cáo cũ hơn (Shinhan 23/09/2026: RNAV/cp 37.200, chiết khấu 35%, giá mục tiêu 24.200); trang dùng báo cáo mới nhất."
+  },
+  {
+   "ticker": "NLG",
+   "item": "presales_latest",
+   "period": "9T/2026",
+   "value": 5726,
+   "unit": "tỷ đồng",
+   "extra": {
+    "q3_2026_ty": 647,
+    "h1_2026_ty": 5079,
+    "mbs_9m_rounded_ty": 5700
+   },
+   "url": "https://24hmoney.vn/posts/-c55a2854046.html",
+   "opened_at": "2026-11-28",
+   "quote": "Doanh số bán hàng trong quý 3 đạt 647 tỷ đồng, giảm 78% so với quý trước. Dù mức giảm khá mạnh, quý 2 có nền so sánh cao nhờ dự án Sol Garden đóng góp 1.252 tỷ đồng. Lũy kế 9 tháng, doanh số bán hàng đạt 5.726 tỷ đồng, tạo nền tảng cho hoạt động bàn giao trong những giai đoạn tiếp theo.",
+   "status": "match",
+   "note": "Nguồn là bài cộng đồng trên 24hmoney (không phải báo chính thống). Đối chiếu: MBS 11/11/2026 ghi 'Doanh số ký bán (tỷ VNĐ) ... 9T26 5,700 (+16%)' (làm tròn, Q3 = 620); 6T/2026 = 5.079 tỷ theo VDSC/BSC, cộng Q3 647 = 5.726. Chưa mở được bản tin IR Q3/2026 của Nam Long."
+  },
+  {
+   "ticker": "NLG",
+   "item": "presales_fy2025",
+   "period": "FY2025",
+   "value": 11855,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://cafeland.vn/tin-tuc/nam-long-dat-muc-tieu-doanh-so-hon-23000-ty-dong-trong-nam-nay-150967.html",
+   "opened_at": "2026-11-28",
+   "quote": "Kết thúc năm 2025, Nam Long ghi nhận doanh số bán hàng cao kỷ lục trong 30 năm, lên đến 11.855 tỷ đồng.",
+   "status": "match",
+   "note": "Khớp với báo cáo KBSV (new.bsc.com.vn/Report/ReportFile/12767628): 'Lũy kế cả năm 2025, doanh số bán hàng đạt 11,855 tỷ VND'."
+  },
+  {
+   "ticker": "NLG",
+   "item": "presales_plan_2026",
+   "period": "FY2026",
+   "value": 23460,
+   "unit": "tỷ đồng",
+   "extra": {
+    "revised_guidance_ty": 16400,
+    "revised_guidance_date": "2026-11-03"
+   },
+   "url": "https://cafeland.vn/tin-tuc/nam-long-dat-muc-tieu-doanh-so-hon-23000-ty-dong-trong-nam-nay-150967.html",
+   "opened_at": "2026-11-28",
+   "quote": "Theo đó, trong năm 2026 Nam Long đặt mục tiêu doanh số bán dự kiến đạt 23.460 tỷ đồng, gấp đôi so với kỷ lục thiết lập năm ngoái.",
+   "status": "match",
+   "note": "Kế hoạch ĐHĐCĐ 2026. Tại buổi gặp nhà đầu tư 03/11/2026 ban lãnh đạo định hướng chỉ đạt khoảng 70% kế hoạch, tương đương 16.400 tỷ (24hmoney.vn/posts/-c55a2854121.html — bài cộng đồng)."
+  },
+  {
+   "ticker": "NLG",
+   "item": "unbilled",
+   "period": "30/09/2026",
+   "value": 13000,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://24hmoney.vn/posts/-c55a2854121.html",
+   "opened_at": "2026-11-28",
+   "quote": "Động lực lớn nhất của NLG trong quý 4 đến từ lượng sản phẩm đã bán nhưng chưa ghi nhận doanh thu. Tính đến cuối tháng 9/2026, giá trị này đạt khoảng 13.000 tỷ đồng, trong đó dự án Southgate chiếm khoảng 60%, tương đương 7.800 tỷ đồng.",
+   "status": "match",
+   "note": "Số làm tròn ('khoảng'), nguồn là bài cộng đồng 24hmoney; đối chiếu khớp trên elibook.vn/?p=124407 ('Backlog chưa ghi nhận khoảng 13,000 tỷ đồng, 60% nằm ở Southgate'). Chưa có nguồn IR chính thức."
+  },
+  {
+   "ticker": "NLG",
+   "item": "rnav",
+   "period": "11/11/2026",
+   "value": 31300,
+   "unit": "đồng/cp",
+   "extra": {
+    "value_is": "target_price",
+    "broker": "MBS",
+    "report_date": "2026-11-11",
+    "target_price": 31300,
+    "rnav_per_share": null,
+    "rnav_total_ty_dong": 15235,
+    "shares_mn": 485,
+    "discount_pct": 15,
+    "discount_basis": "tổng giá trị các dự án"
+   },
+   "url": "https://cdn.24hmoney.vn/upload/file/2026-4/2026-11-11/NLG_BCPT_20261111.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Chúng tôi sử dụng phương pháp RNAV để đưa ra giá mục tiêu mới cho NLG là 31,300 VNĐ/cp (giảm 15% so với giá mục tiêu gần nhất, sau điều chỉnh phát hành cổ phiếu cho cổ đông hiện hữu) dựa trên các thay đổi sau: (1) điều chỉnh chậm lại tiến độ mở bán và bàn giao tại một số dự án như Waterpoint, Elyse Island, và Izumi City (2) chiết khấu tổng giá trị các dự án 15% để phản ánh tác động tiêu cực từ lãi suất [...] Giá trị tài sản ròng - RNAV 15,235 | Số lượng CP hiện hành (triệu cp) 485 | Giá mục tiêu (VNĐ/cp) 31,300",
+   "status": "match",
+   "note": "value = giá mục tiêu. MBS chiết khấu 15% trên tổng giá trị dự án (không phải chiết khấu trên RNAV); RNAV/cp không nêu thành dòng riêng (RNAV 15.235 tỷ / 485 triệu cp). Tham khảo: VDSC 06/10/2026 RNAV 17.109 tỷ, giá mục tiêu 35.300, không chiết khấu."
+  },
+  {
+   "ticker": "DXG",
+   "item": "presales_latest",
+   "period": "6T/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "qualitative_only": true
+   },
+   "url": "https://static.fireant.vn/reports/content/85074",
+   "opened_at": "2026-11-28",
+   "quote": "The Prive đang ghi nhận kết quả bán hàng tích cực, với presales lũy kế đạt khoảng 60% dự án, tương đương hơn 1.500 căn đã bán trong 1H.2026.",
+   "status": "not_found",
+   "note": "Không nguồn nào đã mở nêu doanh số ký mới 6T/9T 2026 bằng tỷ đồng; VCBS (24/08/2026) chỉ nêu tỷ lệ/số căn The Privé. Đã kiểm thêm: Techcom Securities Q2 (03/09/2026), TCBS ngành Q3 (09/11/2026), Yuanta 31/10/2026 trên 24hmoney, báo doanhnhan.baophapluat – chỉ có người mua trả tiền trước."
+  },
+  {
+   "ticker": "DXG",
+   "item": "presales_fy2025",
+   "period": "FY2025",
+   "value": 10.8,
+   "unit": "nghìn tỷ đồng",
+   "extra": {
+    "broker": "Vietcap",
+    "report_date": "2026-06-12",
+    "basis": "broker estimate"
+   },
+   "url": "https://static.fireant.vn/reports/content/83995",
+   "opened_at": "2026-11-28",
+   "quote": "Chúng tôi dự báo The Privé sẽ đóng góp 15,2 nghìn tỷ đồng (so với ước tính khoảng 10,8 nghìn tỷ đồng trong năm 2025) vào doanh số bán hàng giai đoạn 2026–2027 của DXG, với việc bàn giao dự kiến trong giai đoạn 2027–2029.",
+   "status": "match",
+   "note": "Là ƯỚC TÍNH của Vietcap (báo cáo 12/06/2026), không phải số công ty công bố; bảng tóm tắt cùng báo cáo ghi 'Doanh số bán hàng (tỷ đồng) 10.800' cột 2025, 100% từ The Privé. Lệch nguồn: MBS 19/05/2026 dự phóng 2026 = 12,250 tỷ '+30% svck' (ngụ ý 2025 ~9.400 tỷ) nhưng cùng báo cáo có chỗ ghi +62%."
+  },
+  {
+   "ticker": "DXG",
+   "item": "presales_plan_2026",
+   "period": "FY2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "broker_forecasts": {
+     "Vietcap_2026F_nghin_ty": 11.7,
+     "MBS_2026F_ty": 12250
+    },
+    "forecast_urls": [
+     "https://static.fireant.vn/reports/content/83995",
+     "https://static.fireant.vn/reports/content/83662"
+    ]
+   },
+   "url": "https://static.fireant.vn/reports/content/83365",
+   "opened_at": "2026-11-28",
+   "quote": "DXG đặt mục tiêu doanh thu năm 2026 đạt 5.000 tỷ đồng (+19% svck) và LNST cổ đông công ty mẹ đạt 268 tỷ đồng (+16% svck) nhờ bàn giao dự án Gem Sky World.",
+   "status": "not_found",
+   "note": "Công ty chỉ công bố kế hoạch doanh thu/LNST tại ĐHĐCĐ 17/04/2026, không công bố mục tiêu doanh số ký mới. Chỉ có DỰ BÁO của CTCK: Vietcap 12/06/2026 '11,7 nghìn tỷ đồng trong năm 2026'; MBS 19/05/2026 'Pre – sale 2026-27 ... đạt lần lượt 12,250/11,550 tỷ VNĐ'."
+  },
+  {
+   "ticker": "DXG",
+   "item": "unbilled",
+   "period": "30/09/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "proxy_customer_advances_ty": 9057,
+    "proxy_date": "2026-09-30"
+   },
+   "url": "https://finance.vietstock.vn/downloadedoc/23086",
+   "opened_at": "2026-11-28",
+   "quote": "DXG — The Privé bán tốt, thời điểm bàn giao còn xa — Khoản trả trước đạt 9.057 tỷ (+2.880 tỷ), chủ yếu từ The Privé.",
+   "status": "not_found",
+   "note": "Không tìm thấy số 'doanh số chưa ghi nhận' (unbilled) của DXG. Câu trích là NGƯỜI MUA TRẢ TIỀN TRƯỚC 9.057 tỷ tại 30/09/2026 (TCBS Research, báo cáo ngành Q3/2026, file tạo 09/11/2026) – chỉ là chỉ báo thay thế, không phải unbilled."
+  },
+  {
+   "ticker": "DXG",
+   "item": "rnav",
+   "period": "24/08/2026",
+   "value": 13755,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "VCBS",
+    "report_date": "2026-08-24",
+    "rnav_per_share": 13755,
+    "target_price": 14332,
+    "discount_pct": null,
+    "method": "50% RNAV + 50% P/B 0,87x",
+    "others": [
+     {
+      "broker": "Mirae Asset",
+      "report_date": "2026-07-30",
+      "target_price": 13900,
+      "url": "https://static.fireant.vn/reports/content/84357"
+     },
+     {
+      "broker": "Vietcap",
+      "report_date": "2026-06-12",
+      "target_price": 17000,
+      "url": "https://static.fireant.vn/reports/content/83995"
+     },
+     {
+      "broker": "MBS",
+      "report_date": "2026-05-19",
+      "target_price": 20800,
+      "url": "https://static.fireant.vn/reports/content/83662"
+     }
+    ]
+   },
+   "url": "https://static.fireant.vn/reports/content/85074",
+   "opened_at": "2026-11-28",
+   "quote": "Chúng tôi kết hợp 2 phương pháp định giá RNAV và định giá tương đối theo tỷ lệ 50:50 và đưa ra kết quả định giá hợp lý của cổ phiếu DXG là 14.332 VND/ cổ phiếu. [Bảng] Kết quả định giá (VND/ cổ phiếu): Phương pháp định giá RNAV 13.755; Phương pháp định giá tương đối 14.909",
+   "status": "match",
+   "note": "Báo cáo RNAV mới nhất mở được: VCBS, thị giá ghi ngày 24/08/2026 (Stockbiz ghi ngày đăng 07/10/2026). Giá mục tiêu là trung bình 50:50 RNAV và P/B, không nêu chiết khấu RNAV. Không tìm thấy báo cáo định giá nào sau KQKD Q3/2026. Báo cáo khác đã mở: Mirae Asset 30/07/2026 TP 13,900 (không nêu RNAV); Vietcap 12/06/2026 TP 17.000 thuần RNAV (NAV 21.556 tỷ / 1.268 triệu cp, không chiết khấu); MBS 19/05/2026 TP 20,800 (RNAV 22,808 tỷ / 1,114 triệu cp, trước cổ phiếu thưởng 14%)."
+  },
+  {
+   "ticker": "AGG",
+   "item": "presales_latest",
+   "period": "9T/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://24hmoney.vn/news/co-dong-chat-van-ve-luong-tien-mat-thap-cua-an-gia-phu-quyet-to-trinh-bo-sung-thanh-vien-hdqt-c1a2800443.html",
+   "opened_at": "2026-11-28",
+   "quote": "Hiện dự án đã bán hơn 90% sản phẩm và đang thu tiền khách hàng.",
+   "status": "not_found",
+   "note": "AGG không công bố doanh số ký bán bằng tỷ đồng. Chỉ có tỷ lệ hấp thụ The Gió Riverside (>90%, phát biểu tại ĐHĐCĐ 29/06/2026) - không phải doanh số 9T/2026."
+  },
+  {
+   "ticker": "AGG",
+   "item": "presales_fy2025",
+   "period": "2025",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://24hmoney.vn/news/co-dong-chat-van-ve-luong-tien-mat-thap-cua-an-gia-phu-quyet-to-trinh-bo-sung-thanh-vien-hdqt-c1a2800443.html",
+   "opened_at": "2026-11-28",
+   "quote": "Trong năm, Công ty tiếp tục triển khai kinh doanh dự án The Gió Riverside, với tỷ lệ tiêu thụ đạt 88% trên tổng số 2,640 sản phẩm tính đến tháng 5/2026, và bàn giao căn hộ Westgate.",
+   "status": "not_found",
+   "note": "Không có doanh số 2025 bằng tỷ đồng; chỉ có tỷ lệ tiêu thụ lũy kế 88%/2.640 sản phẩm đến 5/2026."
+  },
+  {
+   "ticker": "AGG",
+   "item": "presales_plan_2026",
+   "period": "2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://24hmoney.vn/news/co-dong-chat-van-ve-luong-tien-mat-thap-cua-an-gia-phu-quyet-to-trinh-bo-sung-thanh-vien-hdqt-c1a2800443.html",
+   "opened_at": "2026-11-28",
+   "quote": "Năm 2026, AGG đặt kế hoạch doanh thu thuần 200 tỷ đồng và lợi nhuận sau thuế của công ty mẹ 200 tỷ đồng.",
+   "status": "not_found",
+   "note": "Kế hoạch 2026 chỉ có doanh thu thuần/LNST (200 tỷ mỗi chỉ tiêu) và mục tiêu định tính 'hoàn tất bán hàng The Gió Riverside'; không có chỉ tiêu doanh số ký bán."
+  },
+  {
+   "ticker": "AGG",
+   "item": "unbilled",
+   "period": "30/09/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "proxy_customer_advances_ty_dong": ">3600",
+    "proxy_date": "30/09/2026"
+   },
+   "url": "https://doanhnhan.baophapluat.vn/bat-dong-san-an-gia-agg-vuot-muc-tieu-loi-nhuan-nam-dong-tien-khach-mua-tra-truoc-tang-dot-bien.md",
+   "opened_at": "2026-11-28",
+   "quote": "Trên bảng cân đối kế toán, chỉ tiêu đáng chú ý nhất là khoản tiền khách hàng cá nhân mua căn hộ trả trước tăng vọt lên mức kỷ lục hơn 3.600 tỷ đồng, cao gấp 33,4 lần so với đầu năm.",
+   "status": "not_found",
+   "note": "Không có số 'doanh số chưa ghi nhận'. Proxy duy nhất: người mua trả tiền trước >3.600 tỷ tại 30/09/2026 (tiền đã thu, KHÔNG phải giá trị hợp đồng chưa ghi nhận). Tổng doanh thu dự án The Gió các báo đưa lệch nhau: 9.500 tỷ (24hmoney/stockbiz) so với 5.500 tỷ (nhadautu)."
+  },
+  {
+   "ticker": "AGG",
+   "item": "rnav",
+   "period": "08/2025",
+   "value": 25317,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "VCBS",
+    "report_date": "08/2025",
+    "rnav_per_share": 20759,
+    "target_price": 25317,
+    "discount_pct": null,
+    "market_price_at_report": 20100
+   },
+   "url": "https://new.bsc.com.vn/Report/ReportFile/12765192",
+   "opened_at": "2026-11-28",
+   "quote": "Định giá RNAV Chúng tôi định giá từng dự án và tài sản sinh dòng tiền quan trọng của AGG và đưa ra kết quả định giá hợp lý là 20.759 VND/ cổ phiếu. [...] Chúng tôi kết hợp 2 phương pháp định giá RNAV và định giá tương đối theo tỷ lệ 50:50 và đưa ra kết quả định giá hợp lý của cổ phiếu AGG là 25.317 VND/ cổ phiếu.",
+   "status": "match",
+   "note": "CŨ (08/2025, trước khi hợp nhất The Gió và trước tăng vốn; mô hình dùng 163 triệu cp). PDF ghi 'Thị giá (/08/2025)' không có ngày. Giá mục tiêu là trung bình 50:50 RNAV và P/B, không phải RNAV thuần; chân trang PDF còn ghi 'MUA – 21.532 VND' (sót từ báo cáo 06/2025). Không tìm được báo cáo 2026 có RNAV: báo chí dẫn ABS 2026 nhưng không tìm thấy PDF gốc.",
+   "hide": true,
+   "hide_reason": "Báo cáo 08/2025, trước khi hợp nhất The Gió và đổi số cổ phiếu: quá cũ để so với giá hiện tại."
+  },
+  {
+   "ticker": "PDR",
+   "item": "presales_latest",
+   "period": "9T/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://static.fireant.vn/reports/content/85137",
+   "opened_at": "2026-11-28",
+   "quote": "239 Cách Mạng Tháng Tám (TP.HCM) và Poulo Condor (Côn Đảo) mở bán từ 2027 với doanh số ký bán dự phóng lần lượt 5,222 và 2,211 tỷ đồng, tạo nền cho bàn giao 2028–2029",
+   "status": "not_found",
+   "note": "Không nguồn nào nêu doanh số ký mới 6T/9T 2026 của PDR. MBS (14/10/2026) chỉ dự phóng doanh số ký bán từ 2027; 2026 PDR chủ yếu chuyển nhượng dự án/bán sỉ. Đã kiểm: MBS, BSC 25/09/2026, VFS 10/09/2026, VPBankS 16/04/2026, TCBS ngành Q3/2026."
+  },
+  {
+   "ticker": "PDR",
+   "item": "presales_fy2025",
+   "period": "FY2025",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://static.fireant.vn/reports/content/83156",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Không tìm thấy doanh số ký mới năm 2025 bằng số trong các báo cáo đã mở (MBS 27-30/03/2026 chỉ có biểu đồ 'Dự phóng cơ cấu doanh số ký bán – presale theo dự án', không trích được số từ văn bản; VCBS 18/03/2026 không nêu)."
+  },
+  {
+   "ticker": "PDR",
+   "item": "presales_plan_2026",
+   "period": "FY2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "revenue_plan_2026_ty": 8830
+   },
+   "url": "https://static.fireant.vn/reports/content/83337",
+   "opened_at": "2026-11-28",
+   "quote": "PDR đặt kế hoạch tổng doanh thu năm 2026 ở mức 8,830 tỷ đồng, bao gồm doanh thu thuần từ HĐKD và doanh thu chuyển nhượng cổ phần công ty con/công ty liên kết, tương ứng với mức tăng 264% svck.",
+   "status": "not_found",
+   "note": "Công ty không công bố mục tiêu doanh số ký mới 2026; chỉ có kế hoạch tổng doanh thu 8,830 tỷ (không phải presales – không dùng thay). Báo nhadautu 15/12/2025 nêu 'tổng doanh thu từ các dự án nêu trên là 35.525 tỷ đồng' cho 6 dự án (doanh thu cả vòng đời, không phải kế hoạch bán hàng 2026)."
+  },
+  {
+   "ticker": "PDR",
+   "item": "unbilled",
+   "period": "30/09/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "proxy_customer_advances_ty": 5812,
+    "proxy_date": "2026-09-30"
+   },
+   "url": "https://finance.vietstock.vn/downloadedoc/23086",
+   "opened_at": "2026-11-28",
+   "quote": "PDR — The EverRich 2 cải thiện đáng kể dòng tiền — Khoản trả trước tăng từ 238 tỷ lên 5.812 tỷ, trong đó riêng dự án The",
+   "status": "not_found",
+   "note": "Không tìm thấy số unbilled. Câu trích (bị cắt ở cuối dòng PDF) là NGƯỜI MUA TRẢ TIỀN TRƯỚC 5.812 tỷ tại 30/09/2026, chủ yếu từ The EverRich 2 (hơn 5.200 tỷ – giao dịch chuyển nhượng, không phải bán lẻ) – không phải unbilled."
+  },
+  {
+   "ticker": "PDR",
+   "item": "rnav",
+   "period": "14/10/2026",
+   "value": 17100,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "MBS",
+    "report_date": "2026-10-14",
+    "rnav_total_ty": 17096,
+    "rnav_per_share": 17100,
+    "target_price": 17100,
+    "discount_pct": 0,
+    "market_discount_to_rnav_pct": 34,
+    "others": [
+     {
+      "broker": "BSC",
+      "report_date": "2026-09-25",
+      "target_price": 13100,
+      "url": "https://static.fireant.vn/reports/content/84982"
+     },
+     {
+      "broker": "VFS",
+      "report_date": "2026-09-10",
+      "target_price": 18000,
+      "url": "https://static.fireant.vn/reports/content/84862"
+     }
+    ]
+   },
+   "url": "https://static.fireant.vn/reports/content/85137",
+   "opened_at": "2026-11-28",
+   "quote": "Về định giá, chúng tôi ước tính RNAV mới đạt 17,096 tỷ VNĐ, tương đương 17,100 VNĐ/cp, giảm 16.2% so với báo cáo tháng 3 [...] PDR hiện giao dịch ở P/B 0.9x, chiết khấu ~34% so với RNAV.",
+   "status": "match",
+   "note": "MBS Research 14/10/2026, khuyến nghị KHẢ QUAN. Giá mục tiêu = RNAV/cp (không áp chiết khấu; '~34%' là mức thị giá 11,100 đang thấp hơn RNAV, không phải chiết khấu định giá). Lệch nguồn: BSC 25/09/2026 TP 13,100 (THEO DÕI; RNAV + giá trị sổ sách, 'chiết khấu thêm 50% giá trị' các dự án nghỉ dưỡng); VFS 10/09/2026 giá hợp lý 18.000 (rNAV, WACC 12%)."
+  },
+  {
+   "ticker": "DIG",
+   "item": "presales_latest",
+   "period": "9T/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://stockbiz.vn/thi-truong/bao-cao-phan-tich?ma=DIG",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "DIG không công bố doanh số ký mới/unbilled; không tìm thấy báo cáo CTCK nào năm 2026 phủ DIG (Stockbiz chỉ có báo cáo tự động của FireAnt; Simplize liệt kê mới nhất DSC 21/11/2024). Báo chí ĐHĐCĐ 24/04/2026 chỉ nêu kế hoạch doanh thu 3.000 tỷ, LNTT 600 tỷ."
+  },
+  {
+   "ticker": "DIG",
+   "item": "presales_fy2025",
+   "period": "FY2025",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://stockbiz.vn/thi-truong/bao-cao-phan-tich?ma=DIG",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "DIG không công bố doanh số ký mới/unbilled; không tìm thấy báo cáo CTCK nào năm 2026 phủ DIG (Stockbiz chỉ có báo cáo tự động của FireAnt; Simplize liệt kê mới nhất DSC 21/11/2024). Báo chí ĐHĐCĐ 24/04/2026 chỉ nêu kế hoạch doanh thu 3.000 tỷ, LNTT 600 tỷ."
+  },
+  {
+   "ticker": "DIG",
+   "item": "presales_plan_2026",
+   "period": "FY2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://mekongasean.vn/dig-ha-muc-tieu-loi-nhuan-tang-gap-doi-von-da-u-tu-trong-nam-2026-53392.html",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Bài ĐHĐCĐ đã mở không có câu nào về doanh số bán hàng/ký mới; công ty chỉ đặt kế hoạch doanh thu và lợi nhuận."
+  },
+  {
+   "ticker": "DIG",
+   "item": "unbilled",
+   "period": "30/09/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "proxy_customer_advances_ty": 2464,
+    "proxy_date": "2026-09-30"
+   },
+   "url": "https://finance.vietstock.vn/downloadedoc/23086",
+   "opened_at": "2026-11-28",
+   "quote": "DIG — bàn giao đi kèm giảm nợ — Khoản trả trước giảm 571 tỷ, doanh thu 761 tỷ với lợi nhuận cốt lõi 110 tỷ.",
+   "status": "not_found",
+   "note": "Không có số unbilled. TCBS (ngành Q3/2026) chỉ có người mua trả tiền trước: bảng ghi DIG 2.464 tỷ tại 30/09/2026 (đầu năm 3.035) – chỉ báo thay thế, không phải unbilled."
+  },
+  {
+   "ticker": "DIG",
+   "item": "rnav",
+   "period": null,
+   "value": null,
+   "unit": "đồng/cp",
+   "extra": {},
+   "url": "https://simplize.vn/co-phieu/DIG/bao-cao",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Không tìm thấy định giá RNAV nào của CTCK trong 2025–2026. Danh sách Simplize: mới nhất DSC 21/11/2024 (không có giá mục tiêu), DSC 31/07/2024, Vietcap 22/03/2024 – quá cũ và chưa mở bản gốc nên không báo số. ABS 12/02/2025 (đã mở) không có giá mục tiêu."
+  },
+  {
+   "ticker": "CEO",
+   "item": "presales_latest",
+   "period": "9T/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://doanhnhan.baophapluat.vn/ceo-group-ceo-lai-187-5-ty-dong-sau-9-thang-hang-ton-kho-tang-them-2-300-ty-dong.html",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "CEO Group không công bố doanh số ký mới/unbilled; không có báo cáo CTCK cơ bản nào năm 2026 (Stockbiz chỉ có báo cáo tự động FireAnt; Simplize chỉ có ABS 07/03/2024). Báo chí ĐHĐCĐ 2026 và KQKD 9T/2026 đã mở chỉ có doanh thu/lợi nhuận, tồn kho."
+  },
+  {
+   "ticker": "CEO",
+   "item": "presales_fy2025",
+   "period": "FY2025",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://stockbiz.vn/thi-truong/bao-cao-phan-tich?ma=CEO",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "CEO Group không công bố doanh số ký mới/unbilled; không có báo cáo CTCK cơ bản nào năm 2026 (Stockbiz chỉ có báo cáo tự động FireAnt; Simplize chỉ có ABS 07/03/2024). Báo chí ĐHĐCĐ 2026 và KQKD 9T/2026 đã mở chỉ có doanh thu/lợi nhuận, tồn kho."
+  },
+  {
+   "ticker": "CEO",
+   "item": "presales_plan_2026",
+   "period": "FY2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://doanhnhan.baophapluat.vn/ceo-group-ceo-dat-muc-tieu-loi-nhuan-nam-2026-tang-50-du-kien-tra-co-tuc-bang-co-phieu.html",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Bài ĐHĐCĐ đã mở không có câu nào về doanh số bán hàng; kế hoạch 2026 chỉ gồm doanh thu 3.000 tỷ và LNST 300 tỷ (theo kết quả tìm kiếm, không dùng làm presales)."
+  },
+  {
+   "ticker": "CEO",
+   "item": "unbilled",
+   "period": "30/09/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "proxy_customer_advances_ty": 483,
+    "proxy_date": "2026-09-30"
+   },
+   "url": "https://finance.vietstock.vn/downloadedoc/23086",
+   "opened_at": "2026-11-28",
+   "quote": "CEO                  483           519           −36           −7%               7%    Dự án nghỉ dưỡng Vân Đồn — bàn giao chậm",
+   "status": "not_found",
+   "note": "Không có số unbilled. Dòng trích là bảng NGƯỜI MUA TRẢ TIỀN TRƯỚC của TCBS: CEO 483 tỷ tại 30/09/2026 (đầu năm 519) – chỉ báo thay thế, không phải unbilled."
+  },
+  {
+   "ticker": "CEO",
+   "item": "rnav",
+   "period": null,
+   "value": null,
+   "unit": "đồng/cp",
+   "extra": {},
+   "url": "https://simplize.vn/co-phieu/CEO/bao-cao",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Không tìm thấy định giá RNAV. Chỉ có báo cáo phân tích kỹ thuật: FPTS 13/10/2025 (giá mục tiêu ngắn hạn 35.300 đồng, kỹ thuật) và EVS 'Lựa chọn của tuần' 28/09/2025 – không dựa trên RNAV và đã cũ."
+  },
+  {
+   "ticker": "TCH",
+   "item": "presales_latest",
+   "period": "6T NĐTC 2026 (01/04/2026-30/09/2026)",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "proxy_cash_collection_6M_FY2026_ty_dong": "1.471,1",
+    "broker": "SHS",
+    "report_date": "30/10/2026"
+   },
+   "url": "https://cdn.simplize.vn/simplizevn/report/TCH/20261030_tch_new_city_ii_bat_dau_ban_giao_loi_nhuan_tang_truong_manh.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Tình hình thu tiền từ mảng bất động sản đã cải thiện trong kỳ Q2/FY26, ước đạt 835,7 tỷ (+31% QoQ).",
+   "status": "not_found",
+   "note": "TCH không công bố doanh số ký bán. SHS chỉ ước tính TIỀN THU BĐS (Q1 FY26 635,4; Q2 FY26 835,7; 6T 1.471,1 tỷ) - là dòng tiền thu, không phải presales."
+  },
+  {
+   "ticker": "TCH",
+   "item": "presales_fy2025",
+   "period": "NĐTC 04/2025–03/2026",
+   "value": 9000,
+   "unit": "tỷ đồng",
+   "extra": {
+    "broker": "VDSC (Rồng Việt)",
+    "report_date": "08/06/2026",
+    "estimate": true
+   },
+   "url": "https://cdn.simplize.vn/simplizevn/report/TCH/Nha_phat_trien_Bat_ong_san_tien_phong_tai_Hai_Phong.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Trong NĐTC 2025, doanh nghiệp đã đồng thời mở bán 02 dự án lớn, doanh số bán hàng ước tính đạt ~9.000 tỷ đồng và dự kiến hoàn thành bàn giao trong NĐTC 2026-2027.",
+   "status": "match",
+   "note": "Ước tính của CTCK Rồng Việt (VDSC, báo cáo 08/06/2026), không phải số công ty công bố; số xấp xỉ (~), tính cho 2 dự án Green River + New City II thấp tầng. Kỳ là niên độ 01/04/2025-31/03/2026, không phải năm dương lịch 2025."
+  },
+  {
+   "ticker": "TCH",
+   "item": "presales_plan_2026",
+   "period": "NĐTC 2026 (01/04/2026-31/03/2027)",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "broker_forecast_ty_dong": 9200,
+    "broker": "VDSC (Rồng Việt)",
+    "report_date": "08/06/2026"
+   },
+   "url": "https://cdn.simplize.vn/simplizevn/report/TCH/Nha_phat_trien_Bat_ong_san_tien_phong_tai_Hai_Phong.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Qua đó chúng tôi kỳ vọng giá trị bán của doanh nghiệp đạt 9.200 tỷ đồng (tương đương NĐTC 2025).",
+   "status": "not_found",
+   "note": "Không tìm thấy chỉ tiêu doanh số ký bán do công ty công bố. 9.200 tỷ là DỰ PHÓNG của VDSC cho NĐTC 2026, không phải kế hoạch công ty."
+  },
+  {
+   "ticker": "TCH",
+   "item": "unbilled",
+   "period": "30/09/2026",
+   "value": 10000,
+   "unit": "tỷ đồng",
+   "extra": {
+    "broker": "SHS",
+    "report_date": "30/10/2026",
+    "estimate": true,
+    "lower_bound": true,
+    "customer_advances_ty_dong": "5.592,9"
+   },
+   "url": "https://cdn.simplize.vn/simplizevn/report/TCH/20261030_tch_new_city_ii_bat_dau_ban_giao_loi_nhuan_tang_truong_manh.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Người mua trả trước cho BĐS còn 5.592,9 tỷ đồng, giảm 892,0 tỷ đồng QoQ, tập trung ở New City II khi dự án bắt đầu bàn giao. [...] Chúng tôi ước tính giá trị đã bán hàng chưa bàn giao của TCH đạt trên 10.000 tỷ đồng.",
+   "status": "match",
+   "note": "Ước tính của SHS, ở dạng 'trên 10.000 tỷ' (ngưỡng dưới, không phải số chính xác); không phải số công ty công bố. Số cứng từ BCTC: người mua trả tiền trước BĐS 5.592,9 tỷ tại 30/09/2026."
+  },
+  {
+   "ticker": "TCH",
+   "item": "rnav",
+   "period": "30/10/2026",
+   "value": 16100,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "SHS",
+    "report_date": "30/10/2026",
+    "rnav_per_share": null,
+    "target_price": 16100,
+    "discount_pct": null,
+    "market_price_at_report": 11850,
+    "method": "SOTP/RNAV (theo báo cáo SHS 21/05/2026)"
+   },
+   "url": "https://cdn.simplize.vn/simplizevn/report/TCH/20261030_tch_new_city_ii_bat_dau_ban_giao_loi_nhuan_tang_truong_manh.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Duy trì khuyến nghị Tăng tỷ trọng với giá mục tiêu 16.100 đồng/cp, tương ứng tiềm năng tăng giá 35,8% so với giá đóng cửa 11.850 đồng/cp ngày 30/10/2026. Giá mục tiêu đã điều chỉnh từ 17.700 đồng/cp cho đợt thưởng cổ phiếu tỷ lệ 10%.",
+   "status": "match",
+   "note": "Báo cáo 30/10/2026 không nêu RNAV/cp hay mức chiết khấu. Phương pháp SOTP/RNAV được SHS nêu ở báo cáo 21/05/2026 (https://s3-storage.shs.com.vn/shs-website/Bao_cao_Cap_nhat_TCH_T5_2026_31fe03518e.pdf: 'Chúng tôi định giá TCH theo phương pháp SOTP/RNAV', giá trị hợp lý 19.900 khi đó). Agriseco 11/2026 có giá mục tiêu 16.000 nhưng không theo RNAV."
+  },
+  {
+   "ticker": "NTL",
+   "item": "presales_latest",
+   "period": "9T/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {
+    "proxy_eligible_applications": 556,
+    "project_units": 850
+   },
+   "url": "https://cafef.vn/lideco-bao-lo-quy-iii-du-an-nha-o-xa-hoi-ha-long-bat-dau-co-nguon-thu-188261026170129453.chn",
+   "opened_at": "2026-11-28",
+   "quote": "Theo thông tin ghi nhận được từ phía Công ty công bố, dự án đã nhận được 556 hồ sơ đủ điều kiện mua nhà ở xã hội cho đợt 1 và công ty đang tiếp tục thông báo nhận hồ sơ đăng ký đợt 2 cho hơn 200 căn còn lại. Dự án bắt đầu có nguồn thu từ quý 4 năm 2026.",
+   "status": "not_found",
+   "note": "NTL không công bố doanh số ký bán. Chỉ có số hồ sơ NOXH Hạ Long (556 hồ sơ đủ điều kiện đợt 1 / 850 căn) - không quy ra tỷ đồng."
+  },
+  {
+   "ticker": "NTL",
+   "item": "presales_fy2025",
+   "period": "2025",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://stockbiz.vn/tin-tuc/ntl-xac-dinh-nam-2026-trang-doanh-thu-tu-bat-dong-san-chuyen-huong-sang-mot-mo-vang-khac/39398118",
+   "opened_at": "2026-11-28",
+   "quote": "Lideco xác định năm 2026 sẽ tiếp tục chưa ghi nhận doanh thu từ hoạt động kinh doanh bất động sản, tương tự tình trạng trong năm 2025 dù các dự án vẫn đang được triển khai.",
+   "status": "not_found",
+   "note": "Không có số doanh số ký bán 2025; năm 2025 gần như không có sản phẩm mở bán/ghi nhận BĐS."
+  },
+  {
+   "ticker": "NTL",
+   "item": "presales_plan_2026",
+   "period": "2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://stockbiz.vn/tin-tuc/ntl-xac-dinh-nam-2026-trang-doanh-thu-tu-bat-dong-san-chuyen-huong-sang-mot-mo-vang-khac/39398118",
+   "opened_at": "2026-11-28",
+   "quote": "Năm 2026, doanh nghiệp đặt kế hoạch doanh thu đạt 80 tỷ đồng và lợi nhuận trước thuế 30 tỷ đồng, thấp hơn mức thực hiện 32,7 tỷ đồng của năm trước.",
+   "status": "not_found",
+   "note": "Kế hoạch 2026 chỉ có doanh thu 80 tỷ / LNTT 30 tỷ; không có chỉ tiêu doanh số ký bán. Không thay bằng doanh thu."
+  },
+  {
+   "ticker": "NTL",
+   "item": "unbilled",
+   "period": "30/09/2026",
+   "value": null,
+   "unit": "tỷ đồng",
+   "extra": {},
+   "url": "https://cafef.vn/lideco-bao-lo-quy-iii-du-an-nha-o-xa-hoi-ha-long-bat-dau-co-nguon-thu-188261026170129453.chn",
+   "opened_at": "2026-11-28",
+   "quote": "Dự án bắt đầu có nguồn thu từ quý 4 năm 2026.",
+   "status": "not_found",
+   "note": "Không nguồn nào nêu doanh số chưa ghi nhận; NOXH Hạ Long mới bắt đầu thu tiền từ Q4/2026, NO11 Dịch Vọng chưa mở bán."
+  },
+  {
+   "ticker": "NTL",
+   "item": "rnav",
+   "period": "",
+   "value": null,
+   "unit": "đồng/cp",
+   "extra": {
+    "latest_broker": "Vietcap",
+    "report_date": "27/09/2024",
+    "rating": "KHÔNG ĐÁNH GIÁ"
+   },
+   "url": "https://cdn.simplize.vn/simplizevn/report/NTL/LIDECO_Bai_Muoi__Chung_cu_No11_du_kien_dan_dat_loi_nhuan_trong_ngan_va_trung_han_-_Bao_cao_Cong_ty.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "CTCP Phát triển Đô thị Từ Liêm (NTL) KHÔNG ĐÁNH GIÁ [...] Ngày báo cáo 27/09/2024",
+   "status": "not_found",
+   "note": "Không có báo cáo RNAV nào cho NTL. Danh mục báo cáo trên Simplize: gần nhất là Vietcap 27/09/2024 (KHÔNG ĐÁNH GIÁ, không giá mục tiêu); Mirae Asset 02/2024 định giá theo P/E, P/B (không RNAV). Không có báo cáo 2025-2026."
+  },
+  {
+   "ticker": "VRE",
+   "item": "occupancy",
+   "period": "30/09/2026",
+   "value": 88.8,
+   "unit": "%",
+   "extra": {
+    "yoy_ppt": 1.8
+   },
+   "url": "https://ir.vincom.com.vn/wp-content/uploads/2026/10/261029_3Q2026-Earnings-Presentation_VN.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Tỷ lệ lấp đầy toàn hệ thống tại ngày 30/9/2026 88,8% (+1,8 đpt YoY)",
+   "status": "match",
+   "note": "Tài liệu công bố KQKD Q3/2026 của VRE (IR), trang 3. Dấu thập phân kiểu VN (88,8). Tỷ lệ bao gồm thư chào thuê đã ký và khách đã đặt cọc. Theo loại hình Q3/26 (trang chỉ số hoạt động): 96,0% / 92,0% / 85,6% / 82,5%."
+  },
+  {
+   "ticker": "VRE",
+   "item": "gfa",
+   "period": "Q3/2026",
+   "value": 1939.2,
+   "unit": "nghìn m²",
+   "extra": {
+    "gfa_m2": 1939200,
+    "q3_2025_thousand_m2": "1.847,8",
+    "yoy_pct": 4.9
+   },
+   "url": "https://ir.vincom.com.vn/wp-content/uploads/2026/10/261029_3Q2026-Earnings-Presentation_VN.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Diện tích sàn bán lẻ - GFA ('000 m2) 1.847,8 1.939,2 4,9%",
+   "status": "match",
+   "note": "Bảng 'Tổng quan các chỉ số hoạt động và tài chính Quý 3/2026' (cột Q3/2025, Q3/2026, YoY) - quote ghép từ một dòng bảng trên slide. = 1.939.200 m²; định dạng số VN (1.939,2)."
+  },
+  {
+   "ticker": "VRE",
+   "item": "rnav",
+   "period": "26/10/2026",
+   "value": 33000,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "Shinhan Securities Vietnam",
+    "report_date": "26/10/2026",
+    "rnav_per_share": 33020,
+    "target_price": 33000,
+    "discount_pct": 0,
+    "market_price_at_report": 24950,
+    "alt": [
+     {
+      "broker": "Vietcap",
+      "report_date": "29/05/2026",
+      "target_price": 34200,
+      "discount_pct": 15,
+      "url": "https://cdn.simplize.vn/simplizevn/report/VRE/Hoat_ong_cho_thue_ban_le_on_inh_se_ho_tro_loi_nhuan_cot_loi_tang_truong_trong_nam_2026_.pdf",
+      "quote": "nâng giá mục tiêu thêm 11% lên 34.200 đồng/cổ phiếu [...] giảm mức chiết khấu RNAV từ 20% xuống 15%."
+     },
+     {
+      "broker": "BSC",
+      "report_date": "19/08/2026",
+      "target_price": 40800,
+      "url": "https://www.bsc.com.vn/Report/ReportFile/15798",
+      "quote": "Chúng tôi duy trì khuyến nghị MUA đối với VRE với giá mục tiêu 40,800 VND/cp (tương đương +69% upside)"
+     }
+    ]
+   },
+   "url": "https://cdn.simplize.vn/simplizevn/report/VRE/20261026_vre_mua_gia_mt_vnd_33_000_32_3_suc_manh_den_tu_do_phu.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Chúng tôi đưa ra khuyến nghị MUA cổ phiếu VRE với mức giá mục tiêu là 33,000 VND tương ứng với mức upside 32.3% (so với giá đóng cửa ngày 23/10/2026 là 24,950 VND) [...] NAV / cổ phiếu (VND) 33,020",
+   "status": "match",
+   "note": "Báo cáo lần đầu của Shinhan Securities VN, phương pháp NAV (vốn hóa NOI theo cap rate), không áp chiết khấu NAV. Định dạng số kiểu Anh (33,000). Báo cáo trước đó có chiết khấu RNAV rõ: Vietcap 29/05/2026, giá mục tiêu 34.200 đ/cp, 'Chiết khấu RNAV(%) 15%' (đã mở PDF). BSC 19/08/2026: giá mục tiêu 40.800 đ/cp (tỷ suất vốn hóa, đã mở PDF)."
+  }
+ ]
+}

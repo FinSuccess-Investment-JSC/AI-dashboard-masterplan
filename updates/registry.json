@@ -10068,6 +10068,33 @@
     "build_<x>_news.py chạy sạch (id, ngày, URL, trùng URL)",
     "Chủ đề đổi trạng thái thì sửa next_check, không xóa chủ đề cũ khi chưa có điều kiện kết thúc"
    ]
+  },
+  {
+   "id": "realestate.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "BĐS dân cư · Định giá: doanh số bán hàng, chưa ghi nhận, RNAV và giá mục tiêu CTCK (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Sau mỗi mùa BCTC quý và khi CTCK ra báo cáo mới; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Tài liệu công bố KQKD của doanh nghiệp, báo cáo CTCK",
+    "url": "https://finance.vietstock.vn/bao-cao-phan-tich"
+   },
+   "where": {
+    "page": "Bat-dong-san/index.html",
+    "file": "data/realestate/manual.json",
+    "blocks": [
+     "re-manual"
+    ]
+   },
+   "how": "Khi người dùng nhắn: mở nguồn gốc, sửa dòng trong data/realestate/manual.json (value, period, url, opened_at, quote), chạy python scripts/build_re_manual.py → data/re-manual.js + data/realestate/evidence.json (block re-manual). Xem DASHBOARD_WORKFLOW §44.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số",
+    "Ước tính của CTCK gắn cờ estimate, ghi tên CTCK và ngày báo cáo",
+    "RNAV/giá mục tiêu cũ hơn 12 tháng hoặc tính trước thay đổi số cổ phiếu thì hide"
+   ]
   }
  ]
 }
