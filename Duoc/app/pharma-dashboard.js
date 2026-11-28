@@ -205,8 +205,9 @@ if(apiL.length&&document.getElementById('chApiCost')){
  fillTable('tbl-api-cost',['Tháng','NPL (triệu USD)','Tỷ giá','NPL quy VND (tỷ)'],apiL.slice().reverse().map(r=>[mon(r.date),nf(r.value,1),nf(fxM[ym(r.date)].value,0),nf(r.value*fxM[ym(r.date)].value/1000,0)]));
  insight('chApiCost',`Tỷ giá ${signed(fxY,1)}% YoY: cùng một lượng API, chi phí VND tăng tương ứng trong khi giá trúng thầu cố định theo kỳ thầu — đối chiếu biên gộp bên cạnh 1–2 quý sau.`);
 }
-const CQ=window.COMPANY_QUARTERLY;
-if(CQ&&document.getElementById('chPharmaGm')){
+// 28/11/2026: company-quarterly.js nạp SAU file này (thẻ script defer đứng sau) nên trước đây CQ luôn trống, chart biên gộp không vẽ. Chờ load.
+const drawPharmaGm=()=>{const CQ=window.COMPANY_QUARTERLY;
+if(CQ&&document.getElementById('chPharmaGm')&&!document.querySelector('#chPharmaGm canvas,#chPharmaGm svg')){
  const qs=CQ.quarters,cs=['DHG','IMP','DBD','TRA','DMC'].map(s=>CQ.companies.find(c=>c.symbol===s&&c.sector==='pharma')||CQ.companies.find(c=>c.symbol===s)).filter(Boolean);
  let end=qs.length;while(end>0&&!cs.some(c=>c.revenue[end-1]!=null))end--;
  const idx=[...Array(8)].map((_,i)=>end-8+i).filter(i=>i>=0),gm=(c,i)=>c.revenue[i]&&c.gross_profit?.[i]!=null?+(c.gross_profit[i]/c.revenue[i]*100).toFixed(1):null;
@@ -214,6 +215,8 @@ if(CQ&&document.getElementById('chPharmaGm')){
  barLineChart('chPharmaGm',{categories:idx.map(i=>qs[i]),series:cs.map(c=>({name:c.symbol,color:col[c.symbol],kind:'line',values:idx.map(i=>gm(c,i))})),unit:'%',digits:1,height:260,zeroBase:false,rotateLabels:false});
  fillTable('tbl-pharma-gm',['Quý',...cs.map(c=>c.symbol)],idx.slice().reverse().map(i=>[qs[i],...cs.map(c=>{const v=gm(c,i);return v==null?'—':nf(v,1)+'%'})]));
 }
+};
+if(window.COMPANY_QUARTERLY)drawPharmaGm();else if(document.readyState==='complete')drawPharmaGm();else window.addEventListener('load',drawPharmaGm);
 const P=X.pop65?.records||[];
 if(P.length&&document.getElementById('chPop65')){
  const rs=P.filter(r=>r.date>='2000');

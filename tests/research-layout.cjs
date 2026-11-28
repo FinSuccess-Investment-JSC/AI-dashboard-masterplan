@@ -70,9 +70,9 @@ try { for(const sector of SECTORS){
   await p.locator('.majortabbtn[data-tab="mt2"]').click();assert.equal(await p.locator('#pane-mt2 .pp-tab').count(),4);
   for(const k of ['all','rebar','hrc','coat']){await p.locator('#of-mt2-'+k+'-tab').click();assert.equal(await p.locator('#of-mt2-'+k+' .pp-flow-s').count(),3,k+' có 3 khâu');assert.ok(await p.locator('#of-mt2-'+k+' .pp-panel canvas').count()>0,k+' có chart');}
   assert.equal(await p.locator('.majortabbtn[data-tab="mt4"]').count(),0,'Thép bỏ tab Chính sách');
- }else if(sector==='Duoc'){ // 28/11/2026: khung Điện — Bức tranh ngành 5 sub-tab (4 phân khúc có luồng Đầu vào → Sản xuất → Đầu ra + Chính sách), Tài chính ngành từ BCTC
+ }else if(sector==='Duoc'){ // 28/11/2026: khung Điện — Bức tranh ngành 5 sub-tab (4 phân khúc có luồng Đầu vào → Sản xuất → Đầu ra, bỏ khâu không có chart, bảng ở cuối + Chính sách), Tài chính ngành từ BCTC
   await p.locator('.majortabbtn[data-tab="mt2"]').click();assert.equal(await p.locator('#pane-mt2 .pp-tab').count(),5);
-  for(const k of ['all','mfg','etc','care']){await p.locator('#of-mt2-'+k+'-tab').click();assert.equal(await p.locator('#of-mt2-'+k+' .pp-flow-s').count(),3,k+' có 3 khâu');assert.ok(await p.locator('#of-mt2-'+k+' .pp-panel [data-block-id]').count()>0,k+' có thẻ');}
+  for(const k of ['all','mfg','etc','care']){await p.locator('#of-mt2-'+k+'-tab').click();assert.ok(await p.locator('#of-mt2-'+k+' .pp-flow-s').count()>=2,k+' có luồng (khâu không có chart bị bỏ)');assert.ok(await p.locator('#of-mt2-'+k+' .pp-panel [data-block-id]').count()>0,k+' có thẻ');assert.equal(await p.locator('#of-mt2-'+k+' .th-link').count(),0,k+' không có thẻ dẫn');}
   assert.equal(await p.locator('.majortabbtn[data-tab="mt4"]').count(),0,'Dược: Chính sách là sub-tab của Bức tranh ngành');
   await p.locator('.majortabbtn[data-tab="mt14"]').click();await p.waitForSelector('#duoc-fin-root .pf-filter');assert.ok(await p.locator('#duoc-fin-root .pp-q').count()>=6,'Tài chính ngành đủ mục');
   await p.goto(base+sector+'/#mt4');await p.waitForSelector('body[data-pharma-frame]');await p.waitForTimeout(200);assert.equal(await p.locator('#of-mt2-policy').isVisible(),true,'#mt4 mở Chính sách');

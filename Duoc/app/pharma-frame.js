@@ -4,7 +4,7 @@
             như Điện chia theo loại nguồn và để Chính sách là sub-tab cuối)
           · Tài chính ngành (#mt14: 01 Tổng quan ngành = app/pharma-finance.js · 02 So sánh doanh nghiệp) · Chủ đề nóng.
    Engine chép từ Thep/app/steel-frame.js (28/11/2026) ← Cang-bien/app/port-frame.js ← Dau-khi/app/oil-frame.js.
-   Thẻ được DỜI theo data-block-id, không nhân bản, không xóa; thẻ nằm ở sub-tab khác thì đặt thẻ dẫn (link).
+   Thẻ được DỜI theo data-block-id, không nhân bản, không xóa. Không đặt thẻ dẫn; khâu không có chart bị bỏ khỏi luồng; mục dạng bảng ở cuối sub-tab.
    Bỏ tab Chính sách · Thuế · Thương mại (#mt4 → Bức tranh ngành › 05 Chính sách) và tab Nguồn dữ liệu khỏi thanh tab (#pane-mt8 vẫn trong DOM, nguồn ghi dưới từng chart).
    Deep-link: Duoc/?sub=<all|mfg|etc|care|policy>#mt2 ; Duoc/?sub=<map|chain|outlook>#mt1 ; link cũ #mt3 → #mt2, #mt6 → #mt14, #mt8 → #mt1. */
 (() => {
@@ -39,9 +39,7 @@ const PICT = [
   {k: 'mfg', t: 'Sản xuất dược', kpis: ['spk-api', 'spk-fx', 'spk-cpi'], flow: [['in', 'Đầu vào', 'API nhập trả bằng USD'], ['prod', 'Sản xuất', 'Sản lượng thuốc, hóa dược, dược liệu'], ['out', 'Đầu ra', 'Giá bán và biên gộp']], items: [
     {stage: 'in'},
     {q: 'Chi phí nguyên liệu API quy đổi theo tỷ giá đang đi hướng nào?', id: 'duoc-q-api', take: ['duoc-30']},
-    LINK('#duoc-q-import', 'Toàn ngành › 1.1', 'Nhập khẩu nguyên phụ liệu dược', 'Lượng nguyên liệu nhập theo tháng'),
     {stage: 'prod'},
-    LINK('#duoc-q-iip', 'Toàn ngành › 1.2', 'IIP sản xuất thuốc, hóa dược, dược liệu', 'Sản lượng ngành theo tháng, so cùng kỳ'),
     {stage: 'out'},
     {q: 'Giá thuốc có theo kịp tỷ giá (chi phí API)?', id: 'duoc-q-price', take: ['duoc-12']},
     {q: 'Biên gộp nhà sản xuất dược theo quý', id: 'duoc-q-gm', take: ['duoc-31']},
@@ -233,6 +231,8 @@ function buildTab(key) {
   subs.forEach(({body}) => { let run = []; const flush = () => { if (run.length % 2) run.at(-1).classList.add('of-span'); run = []; };
     [...body.children].forEach(n => { const wide = n.matches('.of-wide,.of-gap,details,.kpis,.research-grid,table,.tablewrap') || getComputedStyle(n).gridColumnEnd === '-1'; if (wide) flush(); else run.push(n); }); flush(); });
   TABS[key] = subs;
+  // Chọn sẵn sub-tab đầu (00 Bản đồ ngành) để tab lớn không hiện mọi sub-tab cùng lúc.
+  { const want = new URL(location.href).searchParams.get('sub'); open(key, subs.some(x => x.s.k === want) ? want : subs[0].s.k); }
   [100, 600, 1500].forEach(t => setTimeout(() => { window.dispatchEvent(new Event('resize')); $$('.of-body canvas').forEach(c => { const ch = window.Chart?.getChart?.(c); if (ch && c.offsetParent) ch.resize(); }); }, t));
 }
 const TABS = {};
@@ -260,6 +260,8 @@ const PP_CSS = `/* pp-* chép từ Ca-tra/app/seafood-frame.css ← Dien/app/pow
 .th-link:hover,.th-link:focus-visible{border-color:#2938A8}.th-link small{display:block;font:600 11px Inter,sans-serif;color:var(--muted,#7a8399);text-transform:uppercase;letter-spacing:.05em}
 .th-link b{display:block;font-size:14px;margin:3px 0;color:#2938A8}.th-link span{font-size:12.5px;color:var(--ink2,#3b4256)}
 .of-nav.th-single{display:none}
+/* 28/11/2026: sector-base.css tô số KPI gần trắng khi máy để chế độ tối, trong khi thẻ vẫn nền trắng (trang không có giao diện tối tự động) → số gần như vô hình. Giữ màu navy trừ khi người dùng chọn giao diện tối. */
+@media (prefers-color-scheme: dark){html:root:not([data-theme="dark"]) body .kpis .kpi .value{color:#1D2678}}
 @media (max-width:900px){.th-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:760px){.pp-flow-ar{display:none}.pp-flow-s{flex-basis:100%}.pp-panel{padding:12px 10px}.pp-pane>.pp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}`;
 
@@ -279,18 +281,29 @@ function buildPicture() {
     const p = el('div', 'pp-pane of-pane'); p.id = `of-mt2-${s.k}`; p.dataset.sub = s.k; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id);
     p.append(el('header', 'pp-head', `<div><span class="pp-k">${num}</span><h2 style="display:inline">${esc(s.t)}</h2></div>`));
     const g = el('section', 'grid kpis pp-kpis'); (s.kpis || []).forEach(sp => { const t = kpiTile(sp); if (t) g.append(t); }); if (g.children.length) { g.style.setProperty('--pp-n', Math.min(4, g.children.length)); p.append(g); }
-    if (s.flow) { const bar = el('nav', 'pp-flow'); bar.setAttribute('aria-label', 'Luồng ' + s.t.toLowerCase());
-    bar.innerHTML = s.flow.map(([id, k, t], j) => `${j ? '<span class="pp-flow-ar" aria-hidden="true">→</span>' : ''}<a href="#duoc-st-${s.k}-${id}" class="pp-flow-s"><small>${k}</small><b>${esc(t)}</b></a>`).join('');
-    p.append(bar); }
-    let qn = 0;
+    /* 28/11/2026 (người dùng: trang đưa khách xem): không đặt thẻ dẫn sang sub-tab khác; khâu không còn chart thì bỏ khỏi
+       thanh luồng và không hiện tiêu đề khâu; mục dạng bảng (không có chart) dời xuống cuối sub-tab, sau mọi chart. */
+    const isTable = n => !n.querySelector('[id^="ch"],canvas,svg') && !!n.querySelector('table');
+    const charts = [], tables = []; let stage = null;
     s.items.forEach(it => {
-      if (it.stage) { const f = s.flow.find(x => x[0] === it.stage); const h = el('div', 'pp-stage', `<span>${f[1]}</span><h3>${esc(f[2])}</h3>`); h.id = `duoc-st-${s.k}-${f[0]}`; p.append(h); return; }
-      if (it.link) { const [href, k, t, sub] = it.link; const a = el('a', 'th-link', `<small>Xem chart ở ${esc(k)}</small><b>${esc(t)} →</b><span>${esc(sub)}</span>`); a.href = href; p.append(a); return; }
+      if (it.stage) { stage = it.stage; return; }
+      if (it.link) return;
       const grid = el('div', 'pp-main th-grid'); (it.take || []).forEach(sel => { const n = take(sel); if (n) grid.append(n); });
       if (!grid.children.length) return;
-      const panel = el('section', 'pp-panel pp-q'); panel.id = it.id; qn++;
-      panel.innerHTML = `<header class="pp-ph"><span class="pp-num">${i + 1}.${qn}</span><div><h3>${esc(it.q)}</h3></div></header>`;
-      panel.append(grid); p.append(panel);
+      const panel = el('section', 'pp-panel pp-q'); panel.id = it.id; panel.append(grid);
+      ([...grid.children].every(isTable) ? tables : charts).push({panel, q: it.q, stage});
+    });
+    const stages = s.flow ? s.flow.filter(([id]) => charts.some(c => c.stage === id)) : [];
+    if (stages.length > 1) { const bar = el('nav', 'pp-flow'); bar.setAttribute('aria-label', 'Luồng ' + s.t.toLowerCase());
+      bar.innerHTML = stages.map(([id, k, t], j) => `${j ? '<span class="pp-flow-ar" aria-hidden="true">→</span>' : ''}<a href="#duoc-st-${s.k}-${id}" class="pp-flow-s"><small>${k}</small><b>${esc(t)}</b></a>`).join('');
+      p.append(bar); }
+    let qn = 0, last = null;
+    [...charts, ...tables].forEach((c, j) => {
+      if (j < charts.length && stages.length > 1 && c.stage !== last) { const f = stages.find(x => x[0] === c.stage); last = c.stage;
+        if (f) { const h = el('div', 'pp-stage', `<span>${f[1]}</span><h3>${esc(f[2])}</h3>`); h.id = `duoc-st-${s.k}-${f[0]}`; p.append(h); } }
+      if (j === charts.length && charts.length && stages.length > 1) p.append(el('div', 'pp-stage', '<span>Bảng</span><h3>Số liệu và quy định tham khảo</h3>'));
+      qn++; c.panel.insertAdjacentHTML('afterbegin', `<header class="pp-ph"><span class="pp-num">${i + 1}.${qn}</span><div><h3>${esc(c.q)}</h3></div></header>`);
+      p.append(c.panel);
     });
     const nx = PICT[i + 1]; if (nx) { const go = el('button', 'of-next', `Tiếp: ${esc(nx.t)} →`); go.type = 'button'; go.addEventListener('click', () => { open('mt2', nx.k, true); nav.scrollIntoView({behavior: 'smooth', block: 'start'}); }); p.append(go); }
     nav.append(b); sec.append(p);
@@ -303,6 +316,9 @@ function buildPicture() {
   if (rest.length) { const d = el('details', 'research-fold of-rest'); const box = el('div', 'research-detail'); rest.forEach(n => box.append(n)); d.append(el('summary', '', 'Nội dung khác của tab cũ'), box); sec.append(d); }
   pane.replaceChildren(sec);
   TABS.mt2 = subs;
+  // Luôn chọn sẵn một sub-tab (mặc định 01 Toàn ngành), như Thép d07702af; không thì bấm tab lớn từ tab khác sẽ hiện mọi sub-tab cùng lúc.
+  const want = new URL(location.href).searchParams.get('sub');
+  open('mt2', subs.some(x => x.s.k === (SUBALIAS[want] || want)) ? want : 'all');
   [100, 600, 1500].forEach(t => setTimeout(() => { $$('.pp-pane canvas').forEach(c => { const ch = window.Chart?.getChart?.(c); if (ch && c.offsetParent) ch.resize(); }); }, t));
 }
 
