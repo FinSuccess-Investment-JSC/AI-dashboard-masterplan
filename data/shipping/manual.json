@@ -1,0 +1,1451 @@
+{
+ "updated": "2026-11-28",
+ "note": "",
+ "how": "Mỗi dòng đã mở trang gốc ngày opened_at. Sửa file này rồi chạy python scripts/build_ship_manual.py. hide = có số nhưng không đưa lên trang (xem hide_reason).",
+ "rows": [
+  {
+   "ticker": "PVT",
+   "item": "fleet_count",
+   "period": "31/12/2025",
+   "value": 65,
+   "unit": "tàu",
+   "extra": {
+    "scope": "sở hữu + quản lý, hợp nhất"
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "Với quy mô quản lý và khai thác 65 tàu, PVTrans tiếp tục khẳng định vị thế là Tổng công ty vận tải và dịch vụ hàng hải dầu khí đa sở hữu lớn nhất Việt Nam",
+   "status": "match",
+   "note": "BCTN 2025 PVTrans (ký 12/4/2026). Số hợp nhất toàn Tổng công ty, gồm tàu sở hữu + quản lý (kể cả PVP, GSP); BCTN không tách sở hữu / thuê.",
+   "hide": true,
+   "hide_reason": "Có nguồn khác mới hơn hoặc đúng phạm vi hơn cho cùng chỉ tiêu; giữ để đối chiếu."
+  },
+  {
+   "ticker": "PVT",
+   "item": "fleet_count",
+   "period": "14/08/2026",
+   "value": 68,
+   "unit": "chiếc",
+   "extra": {
+    "scope": "sở hữu + quản lý, hợp nhất",
+    "bulk_carriers": 15
+   },
+   "url": "https://thuonghieucongluan.com.vn/pvtrans-tiep-nhan-tau-moi-nang-tam-nang-luc-van-tai-bien-a330983.html",
+   "opened_at": "2026-11-28",
+   "quote": "Từ đầu năm đến nay, Tổng công ty Cổ phần Vận tải Dầu khí (PVTrans) - đơn vị thành viên của Tập đoàn Công nghiệp - Năng lượng Quốc gia Việt Nam (PETROVIETNAM) đã tiếp nhận 2 tàu vận tải khí hóa lỏng (LPG); đồng thời tiếp tục bổ sung thêm 1 tàu hàng rời mới, nâng tổng số tàu sở hữu và quản lý lên 68 chiếc, với tổng trọng tải gần 2,1 triệu DWT.",
+   "status": "match",
+   "note": "Bài đăng 19/08/2026, sau khi nhận tàu PVT Opal ngày 14/8. Số mới nhất theo định nghĩa 'sở hữu và quản lý'. Diễn đàn Doanh nghiệp 17/10/2026 vẫn ghi 68 chiếc.",
+   "hide": true,
+   "hide_reason": "Có nguồn khác mới hơn hoặc đúng phạm vi hơn cho cùng chỉ tiêu; giữ để đối chiếu."
+  },
+  {
+   "ticker": "PVT",
+   "item": "fleet_count",
+   "period": "30/09/2026",
+   "value": 59,
+   "unit": "tàu",
+   "extra": {
+    "scope": "không gồm tàu thuê trần (Vietcap)",
+    "broker": "Vietcap",
+    "report_date": "14/10/2026"
+   },
+   "url": "https://doanhnhan.baophapluat.vn/pv-trans-pvt-du-bao-lai-rong-tang-vot-hon-73-nho-da-tang-gia-cuoc-van-tai-quoc-te.html",
+   "opened_at": "2026-11-28",
+   "quote": "Tính đến cuối tháng 9 năm 2026, tổng trọng tải đội tàu của doanh nghiệp đạt 1.802 ngàn DWT với 59 tàu, tăng mạnh so với mức 725 ngàn DWT của năm 2020.",
+   "status": "match",
+   "note": "XUNG ĐỘT với 68 tàu / gần 2,1 triệu DWT: bài báo dẫn Vietcap. Đã mở báo cáo Vietcap 14/10/2026 (https://static.fireant.vn/reports/content/85172): mục '3. Đội tàu của PVT tính đến cuối tháng 9/2026 (không bao gồm đội tàu theo hợp đồng thuê tàu trần)', nhãn biểu đồ 1,802 và 59. Tức 59 tàu là KHÔNG gồm tàu thuê trần; 68 là sở hữu + quản lý."
+  },
+  {
+   "ticker": "PVT",
+   "item": "fleet_dwt",
+   "period": "31/12/2025",
+   "value": 2,
+   "unit": "triệu DWT",
+   "extra": {
+    "qualifier": ">"
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "với việc mở rộng quy mô đội tàu lên 65 chiếc cùng tổng trọng tải vượt mốc 2 triệu DWT, PVTrans không chỉ khẳng định vị thế đứng đầu trong lĩnh vực vận tải hàng lỏng tại Việt Nam",
+   "status": "match",
+   "note": "'vượt mốc 2 triệu DWT' = hơn 2 triệu, không có số chính xác trong BCTN.",
+   "hide": true,
+   "hide_reason": "Có nguồn khác mới hơn hoặc đúng phạm vi hơn cho cùng chỉ tiêu; giữ để đối chiếu."
+  },
+  {
+   "ticker": "PVT",
+   "item": "fleet_dwt",
+   "period": "14/08/2026",
+   "value": 2.1,
+   "unit": "triệu DWT",
+   "extra": {
+    "qualifier": "~"
+   },
+   "url": "https://thuonghieucongluan.com.vn/pvtrans-tiep-nhan-tau-moi-nang-tam-nang-luc-van-tai-bien-a330983.html",
+   "opened_at": "2026-11-28",
+   "quote": "nâng tổng số tàu sở hữu và quản lý lên 68 chiếc, với tổng trọng tải gần 2,1 triệu DWT.",
+   "status": "match",
+   "note": "'gần 2,1 triệu DWT' (sở hữu + quản lý).",
+   "hide": true,
+   "hide_reason": "Có nguồn khác mới hơn hoặc đúng phạm vi hơn cho cùng chỉ tiêu; giữ để đối chiếu."
+  },
+  {
+   "ticker": "PVT",
+   "item": "fleet_dwt",
+   "period": "30/09/2026",
+   "value": 1802,
+   "unit": "ngàn DWT",
+   "extra": {
+    "scope": "không gồm tàu thuê trần (Vietcap)"
+   },
+   "url": "https://doanhnhan.baophapluat.vn/pv-trans-pvt-du-bao-lai-rong-tang-vot-hon-73-nho-da-tang-gia-cuoc-van-tai-quoc-te.html",
+   "opened_at": "2026-11-28",
+   "quote": "Tính đến cuối tháng 9 năm 2026, tổng trọng tải đội tàu của doanh nghiệp đạt 1.802 ngàn DWT với 59 tàu, tăng mạnh so với mức 725 ngàn DWT của năm 2020.",
+   "status": "match",
+   "note": "Số Vietcap, không gồm tàu thuê trần (xem dòng fleet_count 30/09/2026). Không so trực tiếp với 2,1 triệu DWT."
+  },
+  {
+   "ticker": "PVT",
+   "item": "fleet_age",
+   "period": "06/2026 (bài báo, không ghi ngày đo)",
+   "value": 12,
+   "unit": "năm",
+   "extra": {
+    "value_max": 13,
+    "estimate": true
+   },
+   "url": "https://diendandoanhnghiep.vn/co-phieu-pvt-buoc-vao-chu-ky-thu-hoach-moi-10179782.html",
+   "opened_at": "2026-11-28",
+   "quote": "Đội tàu PVT có tuổi trung bình khoảng 12–13 năm, thấp hơn mức trung bình toàn cầu, với phần lớn tàu nằm trong nhóm 6–15 năm tuổi nhờ chiến lược trẻ hóa đội tàu.",
+   "status": "match",
+   "note": "Khoảng 12–13 năm. Nguồn là báo (Diễn đàn Doanh nghiệp 02/06/2026), không ghi nguồn gốc/ngày đo; BCTN 2025 KHÔNG công bố tuổi bình quân (chỉ nói 'vẫn ở mức cao'). Dùng thận trọng."
+  },
+  {
+   "ticker": "PVT",
+   "item": "fleet_age",
+   "period": "31/12/2025",
+   "value": 18,
+   "unit": "%",
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "Độ tuổi trung bình đội tàu PVTrans vẫn ở mức cao, số lượng tàu trên 20 tuổi chiếm 18%.",
+   "status": "match",
+   "note": "BCTN 2025 không nêu tuổi bình quân bằng số; chỉ có tỷ lệ tàu >20 tuổi. Tại ĐHĐCĐ 21/4/2026 lãnh đạo nói '50% dưới 15 tuổi' (baophapluat, đã mở).",
+   "extra": {},
+   "hide": true,
+   "hide_reason": "Có nguồn khác mới hơn hoặc đúng phạm vi hơn cho cùng chỉ tiêu; giữ để đối chiếu."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tc_share",
+   "period": "27/05/2026",
+   "value": 80,
+   "unit": "%",
+   "extra": {
+    "spot_pct": 20,
+    "broker": "BSC (bsi.com.vn)",
+    "report_date": "27/05/2026"
+   },
+   "url": "https://finance.vietstock.vn/downloadedoc/20506",
+   "opened_at": "2026-11-28",
+   "quote": "Duy trì cơ cấu khai thác khoảng 80% theo hình thức pool/time charter và 20% chạy spot nhằm cân bằng giữa hiệu quả khai thác và sự ổn định dòng tiền.",
+   "status": "match",
+   "note": "Báo cáo cập nhật BSC (BIDV Securities) 27/05/2026 sau ĐHĐCĐ; là cơ cấu định hướng của ban lãnh đạo, gộp pool + TC (pool vẫn hưởng giá spot). Không có tỷ trọng theo doanh thu."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tc_share",
+   "period": "2025",
+   "value": 70,
+   "unit": "%",
+   "extra": {
+    "chemical_pool_pct": 47
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "Trên tuyến quốc tế, trong hơn nửa đầu năm 2025, khoảng 70% đội tàu dầu sản phẩm được khai thác trong các Shipping pool lớn như Maersk Tankers và Hafnia, đảm bảo hiệu quả khai thác trước biến động của thị trường.",
+   "status": "match",
+   "note": "Theo phân khúc, BCTN 2025. Tàu hóa chất: 'khoảng 47% đội tàu khai thác trong các Shipping pool uy tín như Womar, Maersk', còn lại cho thuê định hạn. Tàu dầu thô quốc tế và hàng rời: cho thuê định hạn.",
+   "hide": true,
+   "hide_reason": "Có nguồn khác mới hơn hoặc đúng phạm vi hơn cho cùng chỉ tiêu; giữ để đối chiếu."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tce",
+   "period": "2025",
+   "value": 30000,
+   "unit": "USD/ngày",
+   "extra": {
+    "vessel_class": "dầu thô (tuyến quốc tế)",
+    "value_max": 40000,
+    "source_type": "công ty công bố"
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "Trên tuyến quốc tế, các tàu được khai thác ổn định theo hợp đồng cho thuê định hạn với khách hàng chủ yếu ở khu vực Châu Á – Thái Bình Dương. Mức TC bình quân trong năm khoảng 30.000 – 40.000 USD/ngày.",
+   "status": "match",
+   "note": "Mức TC bình quân thực tế của đội tàu PVTrans năm 2025 (BCTN 2025), dạng khoảng; value = cận dưới, extra.value_max = cận trên. Chưa có số tương ứng cho 2026 do công ty công bố.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tce",
+   "period": "2025",
+   "value": 17500,
+   "unit": "USD/ngày",
+   "extra": {
+    "vessel_class": "dầu sản phẩm (MR)",
+    "value_max": 22000,
+    "source_type": "công ty công bố"
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "Giai đoạn còn lại của năm, PVTrans linh hoạt kết hợp cho thuê định hạn và cho thuê chuyến trên các tuyến Châu Âu – Mỹ. Mức TC bình quân trong năm khoảng 17.500 – 22.000 USD/ngày.",
+   "status": "match",
+   "note": "Mức TC bình quân thực tế của đội tàu PVTrans năm 2025 (BCTN 2025), dạng khoảng; value = cận dưới, extra.value_max = cận trên. Chưa có số tương ứng cho 2026 do công ty công bố.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tce",
+   "period": "2025",
+   "value": 10500,
+   "unit": "USD/ngày",
+   "extra": {
+    "vessel_class": "hóa chất 13.000 DWT",
+    "value_max": 12500,
+    "source_type": "công ty công bố"
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "Mức TC bình quân trong năm đối với tàu 13.000 DWT khoảng 10.500 – 12.500 USD/ngày, tàu 20.000 DWT khoảng 17.000 – 20.000 USD/ngày.",
+   "status": "match",
+   "note": "Mức TC bình quân thực tế của đội tàu PVTrans năm 2025 (BCTN 2025), dạng khoảng; value = cận dưới, extra.value_max = cận trên. Chưa có số tương ứng cho 2026 do công ty công bố.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tce",
+   "period": "2025",
+   "value": 17000,
+   "unit": "USD/ngày",
+   "extra": {
+    "vessel_class": "hóa chất 20.000 DWT",
+    "value_max": 20000,
+    "source_type": "công ty công bố"
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "Mức TC bình quân trong năm đối với tàu 13.000 DWT khoảng 10.500 – 12.500 USD/ngày, tàu 20.000 DWT khoảng 17.000 – 20.000 USD/ngày.",
+   "status": "match",
+   "note": "Mức TC bình quân thực tế của đội tàu PVTrans năm 2025 (BCTN 2025), dạng khoảng; value = cận dưới, extra.value_max = cận trên. Chưa có số tương ứng cho 2026 do công ty công bố.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tce",
+   "period": "2025",
+   "value": 36000,
+   "unit": "USD/ngày",
+   "extra": {
+    "vessel_class": "VLGC",
+    "value_max": 41000,
+    "source_type": "công ty công bố"
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "02 tàu VLGC của Tổng công ty mang lại hiệu quả khai thác cao theo hợp đồng cho thuê định hạn và cho thuê chuyến tại khu vực Trung Đông, mức TC bình quân trong năm khoảng 36.000 – 41.000 USD/ngày.",
+   "status": "match",
+   "note": "Mức TC bình quân thực tế của đội tàu PVTrans năm 2025 (BCTN 2025), dạng khoảng; value = cận dưới, extra.value_max = cận trên. Chưa có số tương ứng cho 2026 do công ty công bố.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tce",
+   "period": "2025",
+   "value": 6000,
+   "unit": "USD/ngày",
+   "extra": {
+    "vessel_class": "LPG 3.500 CBM",
+    "value_max": 8000,
+    "source_type": "công ty công bố"
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "Mức TC bình quân trong năm đối với tàu 3.500 CBM khoảng 6.000 – 8.000 USD/ngày, tàu 5.000 CBM khoảng 8.000 – 10.000 USD/ngày.",
+   "status": "match",
+   "note": "Mức TC bình quân thực tế của đội tàu PVTrans năm 2025 (BCTN 2025), dạng khoảng; value = cận dưới, extra.value_max = cận trên. Chưa có số tương ứng cho 2026 do công ty công bố.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tce",
+   "period": "2025",
+   "value": 8000,
+   "unit": "USD/ngày",
+   "extra": {
+    "vessel_class": "LPG 5.000 CBM",
+    "value_max": 10000,
+    "source_type": "công ty công bố"
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "Mức TC bình quân trong năm đối với tàu 3.500 CBM khoảng 6.000 – 8.000 USD/ngày, tàu 5.000 CBM khoảng 8.000 – 10.000 USD/ngày.",
+   "status": "match",
+   "note": "Mức TC bình quân thực tế của đội tàu PVTrans năm 2025 (BCTN 2025), dạng khoảng; value = cận dưới, extra.value_max = cận trên. Chưa có số tương ứng cho 2026 do công ty công bố.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tce",
+   "period": "2025",
+   "value": 9000,
+   "unit": "USD/ngày",
+   "extra": {
+    "vessel_class": "hàng rời Handysize",
+    "value_max": 12000,
+    "source_type": "công ty công bố"
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "Mức TC bình quân trong năm đối với tàu Handysize khoảng 9.000 – 12.000 USD/ngày, tàu Supramax khoảng 11.000 – 13.000 USD/ngày.",
+   "status": "match",
+   "note": "Mức TC bình quân thực tế của đội tàu PVTrans năm 2025 (BCTN 2025), dạng khoảng; value = cận dưới, extra.value_max = cận trên. Chưa có số tương ứng cho 2026 do công ty công bố.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tce",
+   "period": "2025",
+   "value": 11000,
+   "unit": "USD/ngày",
+   "extra": {
+    "vessel_class": "hàng rời Supramax",
+    "value_max": 13000,
+    "source_type": "công ty công bố"
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "Mức TC bình quân trong năm đối với tàu Handysize khoảng 9.000 – 12.000 USD/ngày, tàu Supramax khoảng 11.000 – 13.000 USD/ngày.",
+   "status": "match",
+   "note": "Mức TC bình quân thực tế của đội tàu PVTrans năm 2025 (BCTN 2025), dạng khoảng; value = cận dưới, extra.value_max = cận trên. Chưa có số tương ứng cho 2026 do công ty công bố.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tce",
+   "period": "10T/2026",
+   "value": 57.7,
+   "unit": "nghìn USD/ngày",
+   "extra": {
+    "vessel_class": "Aframax (dầu thô)",
+    "source_type": "benchmark thị trường",
+    "broker": "Vietcap",
+    "report_date": "14/10/2026"
+   },
+   "url": "https://static.fireant.vn/reports/content/85172",
+   "opened_at": "2026-11-28",
+   "quote": "Aframax – Giá cước tàu chở 35,7 90,0 51% 152% 30,5 57,7 89% 3,6x 1,3x dầu thô",
+   "status": "match",
+   "note": "GIÁ THAM CHIẾU THỊ TRƯỜNG (TC 1 năm, nguồn Alibra/Bloomberg qua Vietcap 14/10/2026, dữ liệu đến 08/10/2026), KHÔNG phải TCE thực tế của PVT. Hàng bảng 'Hình 23': cột lần lượt Q4/2025, Q4/2026*, QoQ, YoY, 10T/2025, 10T/2026, YoY, s/v 2021, s/v 2024. Q4/2026 tới nay: Aframax 90,0 / MR 39,0 / Handymax 34,0.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tce",
+   "period": "10T/2026",
+   "value": 29.0,
+   "unit": "nghìn USD/ngày",
+   "extra": {
+    "vessel_class": "MR (sản phẩm dầu)",
+    "source_type": "benchmark thị trường",
+    "broker": "Vietcap",
+    "report_date": "14/10/2026"
+   },
+   "url": "https://static.fireant.vn/reports/content/85172",
+   "opened_at": "2026-11-28",
+   "quote": "Tầm trung (MR) – Giá cước 21,4 39,0 33% 82% 19,8 29,0 47% 2,4x 1,1x tàu chở sản phẩm dầu",
+   "status": "match",
+   "note": "GIÁ THAM CHIẾU THỊ TRƯỜNG (TC 1 năm, nguồn Alibra/Bloomberg qua Vietcap 14/10/2026, dữ liệu đến 08/10/2026), KHÔNG phải TCE thực tế của PVT. Hàng bảng 'Hình 23': cột lần lượt Q4/2025, Q4/2026*, QoQ, YoY, 10T/2025, 10T/2026, YoY, s/v 2021, s/v 2024. Q4/2026 tới nay: Aframax 90,0 / MR 39,0 / Handymax 34,0.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "PVT",
+   "item": "tce",
+   "period": "10T/2026",
+   "value": 26.1,
+   "unit": "nghìn USD/ngày",
+   "extra": {
+    "vessel_class": "Handymax (hóa chất)",
+    "source_type": "benchmark thị trường",
+    "broker": "Vietcap",
+    "report_date": "14/10/2026"
+   },
+   "url": "https://static.fireant.vn/reports/content/85172",
+   "opened_at": "2026-11-28",
+   "quote": "Handymax – Giá cước tàu 19,6 34,0 30% 73% 18,7 26,1 39% 2,4x 1,0x chở hóa chất",
+   "status": "match",
+   "note": "GIÁ THAM CHIẾU THỊ TRƯỜNG (TC 1 năm, nguồn Alibra/Bloomberg qua Vietcap 14/10/2026, dữ liệu đến 08/10/2026), KHÔNG phải TCE thực tế của PVT. Hàng bảng 'Hình 23': cột lần lượt Q4/2025, Q4/2026*, QoQ, YoY, 10T/2025, 10T/2026, YoY, s/v 2021, s/v 2024. Q4/2026 tới nay: Aframax 90,0 / MR 39,0 / Handymax 34,0.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "PVT",
+   "item": "fleet_plan_2026",
+   "period": "KH 2026 (BCTN 2025)",
+   "value": 130,
+   "unit": "triệu USD",
+   "extra": {
+    "count_min": 2,
+    "count_max": 5,
+    "capex": "130 triệu USD (45 + 85); tổng đầu tư công ty mẹ 3.858 tỷ đồng",
+    "sell_scrap": "không nêu",
+    "text": "2–5 tàu · 130 triệu USD (công ty mẹ)"
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "1.1 Đầu tư từ 01 đến 02 tàu (tàu dầu thô, tàu dầu sản phẩm, tàu dầu hóa chất) Tổng số Vốn chủ sở hữu Vốn vay + khác Tr.USD 130,0 39,0 91,0 Khoảng 19k DWT đến 120k DWT Tr.USD 45,0 13,5 31,5 Dự án chuyển tiếp từ KH 2025; tăng TMĐT Khoảng 19k DWT đến 140k DWT Tr.USD 85,0 25,5 59,5 Dự án mới Trọng tải ĐVT Ghi chú 2 Dự án khởi công mới 2.1 Đầu tư 01 đến 03 tàu (tàu dầu thô, tàu dầu sản phẩm, tàu hóa chất, tàu khí hóa lỏng, tàu hàng rời)",
+   "status": "match",
+   "note": "Kế hoạch CÔNG TY MẸ: 1–2 tàu chuyển tiếp (45 triệu USD) + 1–3 tàu mới (85 triệu USD) = 2–5 tàu, 130 triệu USD; tổng giá trị dự án đầu tư công ty mẹ 2026 'khoảng 3.858 tỷ đồng'. Văn bản bảng bị trộn cột khi trích PDF. Không có kế hoạch bán/thanh lý tàu trong tài liệu. Khớp mekongasean 23/02/2026 (đã mở lại)."
+  },
+  {
+   "ticker": "PVT",
+   "item": "fleet_plan_2026",
+   "period": "9T/2026 (thực hiện)",
+   "value": 947,
+   "unit": "tỷ đồng",
+   "extra": {
+    "broker": "Agriseco",
+    "report_date": "29/10/2026",
+    "delivered_2026": "2 LPG + 1 Ultramax"
+   },
+   "url": "https://static.fireant.vn/reports/content/85319",
+   "opened_at": "2026-11-28",
+   "quote": "So với kế hoạch đầu tư 3.858 tỷ đồng, chi mua sắm tài sản cố định 9T/2026 mới đạt 947 tỷ đồng.",
+   "status": "match",
+   "note": "Tiến độ thực tế: toàn Tổng công ty nhận 2 tàu LPG (4–5/2026) + 1 tàu hàng rời Ultramax PVT Opal 61.456 DWT (14/8/2026) theo thuonghieucongluan (đã mở); ACBS 06/08/2026: công ty mẹ chưa hoàn tất thương vụ mua tàu nào trong 1H2026. VLCC cho Nghi Sơn còn đang cân nhắc.",
+   "hide": true,
+   "hide_reason": "Có nguồn khác mới hơn hoặc đúng phạm vi hơn cho cùng chỉ tiêu; giữ để đối chiếu."
+  },
+  {
+   "ticker": "PVT",
+   "item": "target",
+   "period": "29/10/2026",
+   "value": 23500,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "Agriseco",
+    "report_date": "29/10/2026",
+    "method": "không nêu",
+    "rating": "Nắm giữ",
+    "nav_per_share": null
+   },
+   "url": "https://static.fireant.vn/reports/content/85319",
+   "opened_at": "2026-11-28",
+   "quote": "Khuyến nghị nhà đầu tư tiếp tục Nắm giữ cổ phiếu PVT với giá mục tiêu 23.500 đồng/cp.",
+   "status": "match",
+   "note": "Báo cáo MỚI NHẤT tìm được (Agriseco Snapshot 29/10/2026, Stockbiz ghi 30/10). Không nêu phương pháp định giá, không có NAV/cp. Giá hiện tại 21.300."
+  },
+  {
+   "ticker": "PVT",
+   "item": "target",
+   "period": "29/10/2026",
+   "value": 24200,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "VNDirect",
+    "report_date": "29/10/2026",
+    "method": "không nêu trong báo cáo này",
+    "nav_per_share": null
+   },
+   "url": "https://static.fireant.vn/reports/content/85306",
+   "opened_at": "2026-11-28",
+   "quote": "Chúng tôi nhân thấy có áp lực điều chỉnh với giá mục tiêu hiện tại là 24.200 đồng dù cần thêm những đánh giá chi tiết.",
+   "status": "match",
+   "note": "VNDirect, báo cáo KQKD Q3/2026; giá mục tiêu cũ đang được xem xét lại, báo cáo này không nêu phương pháp.",
+   "hide": true,
+   "hide_reason": "Có nguồn khác mới hơn hoặc đúng phạm vi hơn cho cùng chỉ tiêu; giữ để đối chiếu."
+  },
+  {
+   "ticker": "PVT",
+   "item": "target",
+   "period": "14/10/2026",
+   "value": 28500,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "Vietcap",
+    "report_date": "14/10/2026",
+    "method": "DCF (CKDT), chiết khấu minh bạch 15%",
+    "rating": "Khả quan",
+    "nav_per_share": null
+   },
+   "url": "https://static.fireant.vn/reports/content/85172",
+   "opened_at": "2026-11-28",
+   "quote": "Chúng tôi điều chỉnh tăng 13,1% giá mục tiêu cho PVT lên 28.500 đồng/cổ phiếu nhưng hạ khuyến nghị từ MUA xuống KHẢ QUAN, do giá cổ phiếu PVT đã tăng 32% kể từ Báo cáo Cập nhật gần nhất của chúng tôi vào ngày 13/08/2026.",
+   "status": "match",
+   "note": "Báo cáo mới nhất CÓ phương pháp: 'chúng tôi tiếp tục sử dụng mô hình định giá chiết khấu dòng tiền (CKDT) cho toàn bộ định giá' + 'chiết khấu minh bạch' 15%. Không có NAV/cp. EV/EBITDA 2026/2027 tại giá mục tiêu 3,3x/2,4x.",
+   "hide": true,
+   "hide_reason": "Có nguồn khác mới hơn hoặc đúng phạm vi hơn cho cùng chỉ tiêu; giữ để đối chiếu."
+  },
+  {
+   "ticker": "PVT",
+   "item": "target",
+   "period": "06/08/2026",
+   "value": 28200,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "ACBS",
+    "report_date": "06/08/2026",
+    "method": "DCF",
+    "rating": "BUY",
+    "nav_per_share": null
+   },
+   "url": "https://acbs.com.vn/acbsmedia/2026/08/PVT_Update-Q2-2026.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "we maintain our 2026 revenue and NPAT forecasts at VND18,197bn (+13.4% YoY) and VND1,937bn (+45.7% YoY), respectively, with a target price of VND28,200/share, based on our DCF valuation.",
+   "status": "match",
+   "note": "ACBS, cũ hơn (dòng evidence.json #52 mở lại hôm nay, câu vẫn còn). Không có NAV/cp.",
+   "hide": true,
+   "hide_reason": "Có nguồn khác mới hơn hoặc đúng phạm vi hơn cho cùng chỉ tiêu; giữ để đối chiếu."
+  },
+  {
+   "ticker": "PVP",
+   "item": "fleet_count",
+   "period": "04/2026 (BCTN 2025)",
+   "value": 3,
+   "unit": "tàu",
+   "extra": {
+    "owned": 3,
+    "fso": 1,
+    "chartered_in": "không nêu"
+   },
+   "url": "https://static2.vietstock.vn/vietstock/2026/4/7/20260407___pvp___bao_cao_thuong_nien_nam_2025_signed.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Pacifc hiện đang sở hữu 03 tàu với tổng trọng tải hơn 206.000 DWT và 01 kho nổi FSO Dai Hung Queen.",
+   "status": "match",
+   "note": "Sở hữu: Apollo (Aframax), Pacific Era (MR), Pacific Pride (MR) + 1 FSO. Bảng đội tàu trong báo cáo ACBS 29/10/2026 vẫn chỉ 3 tàu + FSO (chưa thấy tàu mới)."
+  },
+  {
+   "ticker": "PVP",
+   "item": "fleet_count",
+   "period": "31/12/2025 (sở hữu + quản lý)",
+   "value": 6,
+   "unit": "tàu",
+   "extra": {
+    "scope": "sở hữu + quản lý",
+    "owned": 3
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "Paciﬁc hiện đang sở hữu và quản lý 06 tàu gồm: 03 tàu dầu thô Aframax, 02 tàu dầu sản phẩm MR và 01 tàu FSO.",
+   "status": "match",
+   "note": "Theo BCTN 2025 của công ty mẹ PVT: gồm cả tàu PVP quản lý hộ (2 Aframax không thuộc sở hữu PVP). Không dùng số này làm tàu sở hữu của PVP.",
+   "hide": true,
+   "hide_reason": "Có nguồn khác mới hơn hoặc đúng phạm vi hơn cho cùng chỉ tiêu; giữ để đối chiếu."
+  },
+  {
+   "ticker": "PVP",
+   "item": "fleet_dwt",
+   "period": "04/2026 (BCTN 2025)",
+   "value": 206000,
+   "unit": "DWT",
+   "extra": {
+    "qualifier": ">"
+   },
+   "url": "https://static2.vietstock.vn/vietstock/2026/4/7/20260407___pvp___bao_cao_thuong_nien_nam_2025_signed.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Pacifc hiện đang sở hữu 03 tàu với tổng trọng tải hơn 206.000 DWT và 01 kho nổi FSO Dai Hung Queen.",
+   "status": "match",
+   "note": "'hơn 206.000 DWT' cho 3 tàu, chưa gồm FSO. ACBS 29/10/2026: Apollo 105.465, Pacific Era 50.058, Pacific Pride 50.698, FSO 104.518 DWT."
+  },
+  {
+   "ticker": "PVP",
+   "item": "fleet_age",
+   "period": "29/10/2026",
+   "value": null,
+   "unit": "năm",
+   "extra": {
+    "per_vessel_age": {
+     "Apollo": 20,
+     "Pacific Era": 18,
+     "Pacific Pride": 17,
+     "FSO PVN Dai Hung Queen": 11
+    },
+    "broker": "ACBS",
+    "report_date": "29/10/2026"
+   },
+   "url": "https://static.fireant.vn/reports/content/85318",
+   "opened_at": "2026-11-28",
+   "quote": "Tài sản Loại Trọng tải (DWT) Tuổi tàu Ghi chú Apollo Aframax 105.465 20 ... Pacific Era Medium range (MR) 50.058 18 ... Pacific Pride MR 50.698 17 ... PVN Dai Hung Queen Kho n 104.518 11",
+   "status": "not_found",
+   "note": "Không nguồn nào công bố TUỔI BÌNH QUÂN; chỉ có tuổi từng tàu trong bảng 'Đội tàu PVP' của ACBS (extra). Tôi không tự tính bình quân. Lớp chữ PDF của ACBS bị lỗi font ở phần thân, bảng số đọc được. BCTN 2025: tàu Apollo 'bước sang tuổi 20'."
+  },
+  {
+   "ticker": "PVP",
+   "item": "tc_share",
+   "period": "2025 – 10/2026",
+   "value": null,
+   "unit": "%",
+   "url": "https://static2.vietstock.vn/vietstock/2026/4/7/20260407___pvp___bao_cao_thuong_nien_nam_2025_signed.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Từ tháng 11/2025 tàu được khai thác theo hợp đồng định hạn (TC) cho khách hàng Vitol và hoạt động chủ yếu tại khu vực Tây Phi.",
+   "status": "not_found",
+   "note": "Không có tỷ trọng % TC/spot. Định tính: Pacific Pride TC (Vitol) từ 11/2025; Pacific Era trong Pool Maersk Tankers từ 5/2025; Apollo linh hoạt spot/TC nửa cuối 2025 rồi tái ký TC 2026. ACBS 29/10/2026 (chữ lỗi font): Apollo và Pacific Pride đang TC, Pacific Era trong pool, Pacific Pride tái ký TC tháng 11/2026. BCTN có biểu đồ 'CƠ CẤU DOANH THU ĐỘI TÀU NĂM 2025' (34% / 19% / 19% / 27%) nhưng thứ tự nhãn không chắc khi trích PDF nên không ghi.",
+   "extra": {}
+  },
+  {
+   "ticker": "PVP",
+   "item": "tce",
+   "period": "Q2/2026",
+   "value": 70000,
+   "unit": "USD/ngày",
+   "extra": {
+    "vessel": "Apollo",
+    "vessel_class": "Aframax 105.465 DWT"
+   },
+   "url": "https://elibook.vn/2026/05/25/pvt-gia-cuoc-thue-tau-dau-tho-aframax-van-neo-cao-trong-quy-2-tau-apollo-tai-ky-hop-dong-70000-dola-ngay-gap-doi-gia-thue-cu/",
+   "opened_at": "2026-11-28",
+   "quote": "Tàu Apollo tái ký hợp đồng với mức 70,000 USD/ngày , gấp đôi giá cũ, dự kiến đóng góp thêm ~71 tỷ đồng lợi nhuận quý 2 cho PVP.",
+   "status": "match",
+   "note": "Nguồn thứ cấp (elibook.vn 25/05/2026, tóm tắt báo cáo CTCK); dòng evidence.json #62 mở lại hôm nay, câu vẫn còn. Cùng bài ghi giá cũ lúc 35.000 lúc 30.000 USD/ngày (không nhất quán). ACBS 29/10/2026 cũng ghi Apollo thuê định hạn 'khoảng 70.000 USD/ngày' (chữ lỗi font). Không có TCE cho Pacific Era / Pacific Pride.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "PVP",
+   "item": "fleet_plan_2026",
+   "period": "KH 2026 (BCTN 2025)",
+   "value": 116,
+   "unit": "triệu USD",
+   "extra": {
+    "count": 3,
+    "capex": "116 triệu USD",
+    "sell_scrap": "không nêu",
+    "text": "3 tàu · 116 triệu USD"
+   },
+   "url": "https://static2.vietstock.vn/vietstock/2026/4/7/20260407___pvp___bao_cao_thuong_nien_nam_2025_signed.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "KẾ HOẠCH ĐẦU TƯ NĂM 2026 Đvt: Triệu USD Trong đó Stt Tên Dự án Tổng mức đầu tư 1 Đầu tư 01 tàu dầu thô Aframax số 2 trọng tải đến 120.000 DWT 50,50 15,28 35,22 2 Đầu tư 01 tàu dầu thô MR1/MR2 tàu dầu/hóa chất trọng tải đến 55.000 DWT 30,50 9,28 21,22 3 Đầu tư 01 tàu dầu thô Aframax số 3 trọng tải đến 120.000 DWT/Hoặc 01 tàu MR1/MR2 trọng tải đến 55.000 DWT 35,00 10,63 24,37 Tổng mức đầu tư 116,00 35,19 80,81",
+   "status": "match",
+   "note": "3 tàu, 116 triệu USD (VCSH 35,19 / vay 80,81). Chưa thấy tàu nào được nhận tính tới báo cáo ACBS 29/10/2026 (bảng đội tàu vẫn 3 tàu + FSO) – đây là suy ra từ bảng, không có câu xác nhận. ĐHĐCĐ bất thường về Aframax số 3 dự kiến 23/10/2026 (baophapluat 12/09/2026, đã mở lại); KHÔNG tìm được kết quả họp. Không có kế hoạch bán tàu."
+  },
+  {
+   "ticker": "PVP",
+   "item": "target",
+   "period": "29/10/2026",
+   "value": 23300,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "ACBS",
+    "report_date": "29/10/2026",
+    "method": "P/E 7,8x × EPS 2027F 2.989",
+    "rating": "Mua",
+    "nav_per_share": null
+   },
+   "url": "https://static.fireant.vn/reports/content/85318",
+   "opened_at": "2026-11-28",
+   "quote": "Khuyến nghị Mua Giá mục tiêu (VND) 23.300 Giá hiện tại (VND) 18.750 Tỷ lệ tăng giá 24,2%",
+   "status": "match",
+   "note": "ACBS 'Câu chuyện đầu tư' (PDF tạo 29/10/2026). Phương pháp P/E: P/E mục tiêu 7,8 lần (trung bình 5 năm) x EPS dự phóng 2027 2.989 đ – đọc từ đoạn 'Định giá' bị lỗi font (chỉ số còn nguyên, chữ mất dấu), nên trích câu ở bảng tóm tắt. Không có NAV/cp."
+  },
+  {
+   "ticker": "GSP",
+   "item": "fleet_count",
+   "period": "04/2026 (BCTN 2025)",
+   "value": 11,
+   "unit": "tàu",
+   "extra": {
+    "owned": 11,
+    "lpg": 9,
+    "chemical": 2,
+    "chartered_in": "có, không nêu số"
+   },
+   "url": "https://static2.vietstock.vn/vietstock/2026/4/6/20260404___gsp___bao_cao_thuong_nien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Hiện tại Gas Shipping sở hữu 11 tàu, trong đó 9 tàu vận tải LPG định áp có trọng tải từ 1.600 - 5.200 DWT và 02 tàu dầu/hóa chất có trọng tải 20.000 DWT. Tổng trọng tải đội tàu hiện nay khoảng 73.000 DWT.",
+   "status": "match",
+   "note": "BCTN 2025 (công bố 04/04/2026). XUNG ĐỘT: BCTN 2025 của PVT ghi GSP 'sở hữu 10 tàu' (dòng dưới). Khả năng 11 đã tính tàu LPG mã GSP-GAS-06/25 (ký MOA 12/2025, 'dự kiến bàn giao trong Quý 2/2026') – BCTN không nói rõ. BCTN cũng nói công ty 'thuê thêm tàu theo hình thức định hạn' nhưng không nêu số tàu thuê."
+  },
+  {
+   "ticker": "GSP",
+   "item": "fleet_count",
+   "period": "31/12/2025 (theo BCTN PVT)",
+   "value": 10,
+   "unit": "tàu",
+   "extra": {
+    "owned": 10,
+    "lpg": 8,
+    "chemical": 2
+   },
+   "url": "https://mobiv2.fireant.vn/News/NewsAttachedFile/1872467",
+   "opened_at": "2026-11-28",
+   "quote": "Công ty sở hữu 10 tàu, gồm: 05 tàu LPG size 3.500 CBM, 03 tàu LPG size 5.000 CBM và 02 tàu hóa chất 20.000 DWT.",
+   "status": "match",
+   "note": "Đoạn về Gas Shipping trong BCTN 2025 của PVT. Lệch 1 tàu so với BCTN của chính GSP (11 tàu).",
+   "hide": true,
+   "hide_reason": "Có nguồn khác mới hơn hoặc đúng phạm vi hơn cho cùng chỉ tiêu; giữ để đối chiếu."
+  },
+  {
+   "ticker": "GSP",
+   "item": "fleet_dwt",
+   "period": "04/2026 (BCTN 2025)",
+   "value": 73000,
+   "unit": "DWT",
+   "extra": {
+    "qualifier": "~"
+   },
+   "url": "https://static2.vietstock.vn/vietstock/2026/4/6/20260404___gsp___bao_cao_thuong_nien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Tổng trọng tải đội tàu hiện nay khoảng 73.000 DWT.",
+   "status": "match",
+   "note": "'khoảng 73.000 DWT'. Tổng sức chở theo CBM không được công bố (chỉ có cỡ tàu 3.500 / 5.000 CBM)."
+  },
+  {
+   "ticker": "GSP",
+   "item": "fleet_age",
+   "period": "04/2026 (BCTN 2025)",
+   "value": null,
+   "unit": "năm",
+   "url": "https://static2.vietstock.vn/vietstock/2026/4/6/20260404___gsp___bao_cao_thuong_nien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Tuổi tàu trung bình cao và áp lực đầu tư hiện đại hóa đội tàu: Một số tàu có tuổi đời trên 30 năm làm gia tăng chi phí bảo dưỡng, giảm hiệu quả khai thác",
+   "status": "not_found",
+   "note": "Không có tuổi bình quân bằng số trong BCTN 2025, báo cáo ABS 03/04/2026 hay báo chí đã mở; chỉ có mô tả định tính.",
+   "extra": {}
+  },
+  {
+   "ticker": "GSP",
+   "item": "tc_share",
+   "period": "2025",
+   "value": null,
+   "unit": "%",
+   "url": "https://static2.vietstock.vn/vietstock/2026/4/6/20260404___gsp___bao_cao_thuong_nien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Hoạt động kinh doanh vận tải LPG và hóa chất của Gas Shipping được triển khai thông qua nhiều loại hợp đồng quốc tế như voyage charter, time charter và COA (Contract of Affreightment).",
+   "status": "not_found",
+   "note": "Không công bố tỷ trọng TC/COA/spot. Chỉ có 'Khoảng 60% đội tàu khai thác quốc tế' (không phải tỷ trọng TC).",
+   "extra": {}
+  },
+  {
+   "ticker": "GSP",
+   "item": "tce",
+   "period": "2025",
+   "value": null,
+   "unit": "USD/ngày",
+   "url": "https://static2.vietstock.vn/vietstock/2026/4/6/20260404___gsp___bao_cao_thuong_nien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "BCTN 2025 GSP và báo cáo ABS không nêu TCE/giá thuê theo tàu. Tham chiếu cấp tập đoàn (BCTN 2025 PVT, không riêng GSP): tàu LPG 3.500 CBM 6.000–8.000 USD/ngày, 5.000 CBM 8.000–10.000 USD/ngày – xem các dòng PVT/tce.",
+   "extra": {}
+  },
+  {
+   "ticker": "GSP",
+   "item": "fleet_plan_2026",
+   "period": "KH 2026 (BCTN 2025)",
+   "value": 1,
+   "unit": "tàu",
+   "extra": {
+    "count": 1,
+    "capex": "không nêu",
+    "carry_over": "1 tàu LPG 5.000 CBM giao Q2/2026",
+    "sell_scrap": "không nêu",
+    "text": "1 tàu dầu/hóa chất, chưa nêu vốn"
+   },
+   "url": "https://static2.vietstock.vn/vietstock/2026/4/6/20260404___gsp___bao_cao_thuong_nien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "3. Nghiên cứu, theo dõi thị trường để thực hiện đầu tư 01 tàu dầu/hóa chất có tải trọng đến 25.000 DWT/01 tàu SR.",
+   "status": "match",
+   "note": "Chưa nêu vốn đầu tư cho tàu này trong BCTN. Chuyển tiếp từ 2025: tàu LPG ~5.000 CBM mã GSP-GAS-06/25 – 'Công ty đã ký kết Hợp đồng mua bán tàu (MOA) trong tháng 12/2025 và dự kiến bàn giao trong Quý 2/2026'; không tìm được tin xác nhận đã nhận tàu. ĐHĐCĐ 2026 (tinnhanhchungkhoan, đã mở) lặp lại kế hoạch 1 tàu dầu/hoá chất đến 25.000 DWT. Không có kế hoạch thanh lý dù có tàu >30 tuổi."
+  },
+  {
+   "ticker": "GSP",
+   "item": "target",
+   "period": "03/04/2026",
+   "value": null,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "ABS",
+    "report_date": "03/04/2026",
+    "bvps_2026f": 14981
+   },
+   "url": "https://www.abs.vn/wp-content/uploads/2026/04/GSP_260403_Note.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "EPS & BVPS 2026F dự kiến đạt 1.507 đồng/cp & 14.981 đồng/cp, tương ứng 2026F P/E và P/B đạt 7,63x lần & 0,77x lần tại mức giá giao dịch hiện tại.",
+   "status": "not_found",
+   "note": "Báo cáo CTCK duy nhất tìm được là ABS 03/04/2026 (cập nhật KQKD): KHÔNG đưa giá mục tiêu, chỉ có P/E và P/B dự phóng tại giá 11.300. Danh mục báo cáo trên Stockbiz không có báo cáo GSP nào mới hơn có giá mục tiêu. Không có NAV/cp."
+  },
+  {
+   "ticker": "VTO",
+   "item": "fleet_count",
+   "period": "09/2026",
+   "value": 10,
+   "unit": "tàu",
+   "extra": {
+    "broker": "VDSC",
+    "intermediate": 3,
+    "mr": 2,
+    "small_coastal": 5
+   },
+   "url": "https://static.fireant.vn/reports/content/84886",
+   "opened_at": "2026-11-28",
+   "quote": "NỀN TẢNG ĐỘI TÀU HIỆN HỮU ... 10 TÀU ĐANG KHAI THÁC ... 03 Intermediate tanker 46.201 DWT ... 02 MR1 / Medium Range 80.133 DWT ... 05 Small tanker ven biển 34.676 DWT ... 161.010 DWT TỔNG TẢI TRỌNG",
+   "status": "match",
+   "note": "Infographic trong báo cáo nhanh VDSC (Rồng Việt) 'Thời gian viết: 09/2026', nguồn ghi 'VTO. VDSC tổng hợp'; chữ nằm rải trong hình nên trích theo từng nhãn. Không tách sở hữu / thuê. Tài liệu ĐHĐCĐ 2026 của VTO không nêu số tàu."
+  },
+  {
+   "ticker": "VTO",
+   "item": "fleet_dwt",
+   "period": "09/2026",
+   "value": 161010,
+   "unit": "DWT",
+   "extra": {
+    "broker": "VDSC"
+   },
+   "url": "https://static.fireant.vn/reports/content/84886",
+   "opened_at": "2026-11-28",
+   "quote": "161.010 DWT TỔNG TẢI TRỌNG",
+   "status": "match",
+   "note": "VDSC 09/2026 (46.201 + 80.133 + 34.676 = 161.010, khớp). Một số trang hồ sơ công ty ghi con số DWT khác (thấp hơn) nhưng tôi chưa mở kiểm nên không ghi."
+  },
+  {
+   "ticker": "VTO",
+   "item": "fleet_age",
+   "period": "09/2026",
+   "value": 20,
+   "unit": "năm",
+   "extra": {
+    "broker": "VDSC",
+    "estimate": true
+   },
+   "url": "https://static.fireant.vn/reports/content/84886",
+   "opened_at": "2026-11-28",
+   "quote": "Đội tàu hiện tại của VTO đã khá cũ (tuổi tàu trung bình đã 20 năm), khả năng số ngày bảo dưỡng trên toàn đội tàu sẽ ngày càng tăng để đáp ứng các tiêu chuẩn quốc tế, đảm bảo an toàn cho thuyền viên.",
+   "status": "match",
+   "note": "Ước tính của VDSC, không phải số công ty công bố. Tài liệu ĐHĐCĐ 2026 chỉ nói 'đội tàu từng bước già hóa'."
+  },
+  {
+   "ticker": "VTO",
+   "item": "tc_share",
+   "period": "2025 – 2026",
+   "value": null,
+   "unit": "%",
+   "url": "https://static.fireant.vn/reports/content/84886",
+   "opened_at": "2026-11-28",
+   "quote": "VTO ký hợp đồng cho thuê định hạn với các tàu lớn viễn dương với PG tanker (công ty mẹ trực tiếp) trong khi cho Petrolimex thuê chuyến với các tàu nhỏ chạy ven biển.",
+   "status": "not_found",
+   "note": "Không có tỷ trọng % bằng chữ (VDSC chỉ có biểu đồ doanh thu định hạn/chuyến không kèm số). Định tính: tàu viễn dương cho PG Tanker thuê định hạn, tàu nhỏ ven biển chạy chuyến cho Petrolimex. BSC 01/04/2026 (đã mở lại): Petrolimex + PG Tanker 'chiếm 89% tỷ trọng doanh thu' – là tỷ trọng khách hàng, không phải TC.",
+   "extra": {}
+  },
+  {
+   "ticker": "VTO",
+   "item": "tce",
+   "period": "2025 – 2026",
+   "value": null,
+   "unit": "USD/ngày",
+   "url": "https://static.fireant.vn/reports/content/84886",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Không nguồn nào đã mở (VDSC 09/2026, BSC 01/04/2026, tài liệu ĐHĐCĐ 2026) công bố giá thuê định hạn/TCE theo tàu của VTO.",
+   "extra": {}
+  },
+  {
+   "ticker": "VTO",
+   "item": "fleet_plan_2026",
+   "period": "2026–2027",
+   "value": 1,
+   "unit": "tàu",
+   "extra": {
+    "count": 1,
+    "capex": "tối đa 56 triệu USD",
+    "sell_scrap": "có lộ trình thanh lý tàu già, không nêu số",
+    "text": "1 tàu MR · tối đa 56 triệu USD (2026–2027)"
+   },
+   "url": "https://files.petrolimex.com.vn/pdfs/8fb3004feb6e476ab3d74cd47d96c59b/448e69f0965143b693fa1f7ea1b2c626/13%20Bao%20cao%20KQ%20kinh%20doanh%20quan%20tri%202025%20KH2026%20tong%20ket%20hoat%20dong%20HDQT%20NK2021-2025%20va%20dinh%20huong%202026-2031.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Tiếp tục triển khai dự án đầu tư 01 tàu dầu viễn dương MR có trọng tải không lớn hơn 50.000 DWT, tuổi tàu dưới 08 năm, với tổng mức đầu tư dự kiến tối đa 56 triệu USD (chưa bao gồm thuế, phí), nhằm thay thế tàu đã thanh lý vào thời điểm phù hợp trong giai đoạn 2026-2027.",
+   "status": "match",
+   "note": "Tài liệu ĐHĐCĐ 22/04/2026 (dòng evidence.json #68 mở lại hôm nay, câu vẫn còn). Năm 2025 chưa mua được do giá tàu cao. Cũng nêu 'Xây dựng lộ trình thanh lý tàu già' nhưng không có số tàu/thời điểm. VDSC: tàu mới giúp tăng công suất 30–40%; BSC: +khoảng 19% tổng trọng tải (hai ước tính khác nhau). Chưa tìm thấy tin đã mua tàu."
+  },
+  {
+   "ticker": "VTO",
+   "item": "target",
+   "period": "09/2026",
+   "value": 13450,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "VDSC (Rồng Việt)",
+    "report_date": "09/2026 (giá tham chiếu 11/09/2026)",
+    "method": "P/E dự phóng ~6,0x",
+    "nav_per_share": null
+   },
+   "url": "https://static.fireant.vn/reports/content/84886",
+   "opened_at": "2026-11-28",
+   "quote": "Chúng tôi uớc tính giá trị hợp lý của cổ phiếu là 13.450 đồng/cp, tương ứng mức upside 27,4% so với giá đóng cửa ngày 11/09/2026 tương ứng mức P/E dự phóng khoảng 6,0 lần",
+   "status": "match",
+   "note": "'Giá trị hợp lý' trong báo cáo nhanh của Phòng Tư vấn đầu tư KHCN VDSC (không phải báo cáo định giá đầy đủ). BSC 01/04/2026: 'KHUYẾN NGHỊ: KHÔNG ĐÁNH GIÁ Giá mục tiêu: N/A'. Không có NAV/cp."
+  },
+  {
+   "ticker": "VIP",
+   "item": "fleet_count",
+   "period": "03/07/2025",
+   "value": 4,
+   "unit": "tàu",
+   "extra": {
+    "owned": 4
+   },
+   "url": "https://file.fpts.com.vn/FileStore2/File/2025/07/11/CHIPNBAO_CAO_DINH_GIA_LAN_DAU_VIP_73cbe040.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Đội tàu của VIP gồm 4 tàu với tổng trọng tải 150.727 DWT.",
+   "status": "match",
+   "note": "FPTS báo cáo lần đầu 03/07/2025. Chưa thấy CBTT nhận tàu mới đến 30/10/2026 (HĐQT mới duyệt đóng mới 2 tàu). Trang vipco.petrolimex.com.vn ghi '4 chiếc với tổng số 177.799 DWT' (trang cũ, lệch)."
+  },
+  {
+   "ticker": "VIP",
+   "item": "fleet_dwt",
+   "period": "03/07/2025",
+   "value": 150727,
+   "unit": "DWT",
+   "extra": {},
+   "url": "https://file.fpts.com.vn/FileStore2/File/2025/07/11/CHIPNBAO_CAO_DINH_GIA_LAN_DAU_VIP_73cbe040.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Đội tàu của VIP gồm 4 tàu với tổng trọng tải 150.727 DWT.",
+   "status": "match",
+   "note": "BVSC 02/2025 cũng ghi tổng 150.727 DWT (mở lại hôm nay, vẫn còn)."
+  },
+  {
+   "ticker": "VIP",
+   "item": "fleet_age",
+   "period": "03/07/2025",
+   "value": null,
+   "unit": "năm",
+   "extra": {
+    "build_years": {
+     "Petrolimex 15": 1999,
+     "Petrolimex 16": 2004,
+     "Petrolimex 18": 2007,
+     "Petrolimex 21": 2010
+    },
+    "computed_avg_2026": 21.5
+   },
+   "url": "https://file.fpts.com.vn/FileStore2/File/2025/07/11/CHIPNBAO_CAO_DINH_GIA_LAN_DAU_VIP_73cbe040.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Hiện tại, các tàu của VIP đều có tuổi thọ trên 10 năm, trong đó có 1 tàu trung bình (10 - 15 tuổi), 2 tàu già (15 - 20 tuổi) và 1 tàu quá già (trên 20 tuổi).",
+   "status": "not_found",
+   "note": "Không nguồn nào nêu tuổi bình quân. Bảng FPTS: năm đóng 1999/2004/2007/2010 -> tự tính ~21,5 năm vào 2026 (KHÔNG phải số trích)."
+  },
+  {
+   "ticker": "VIP",
+   "item": "tc_share",
+   "period": "Q1/2025",
+   "value": 97,
+   "unit": "%",
+   "extra": {
+    "share_2024": 95
+   },
+   "url": "https://file.fpts.com.vn/FileStore2/File/2025/07/11/CHIPNBAO_CAO_DINH_GIA_LAN_DAU_VIP_73cbe040.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Quý 1 năm 2025, đội tàu của VIP tiếp tục được thuê định hạn ổn định từ công ty mẹ, tỷ trọng thuê đội tàu định hạn đạt 97%, giá cước cho thuê định hạn đội tàu của VIP đạt 49.600 USD/ngày (+3,8% YoY).",
+   "status": "match",
+   "note": "Thuê định hạn với PG Tanker (công ty mẹ). Năm 2024 FPTS ước 95%. Chưa có số 2026."
+  },
+  {
+   "ticker": "VIP",
+   "item": "tce",
+   "period": "Q1/2025",
+   "value": 49600,
+   "unit": "USD/ngày",
+   "extra": {
+    "rate_2024": 48700,
+    "rate_2023": 48300
+   },
+   "url": "https://file.fpts.com.vn/FileStore2/File/2025/07/11/CHIPNBAO_CAO_DINH_GIA_LAN_DAU_VIP_73cbe040.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "giá cước cho thuê định hạn đội tàu của VIP đạt 49.600 USD/ngày (+3,8% YoY)",
+   "status": "match",
+   "note": "Là giá cước định hạn của CẢ ĐỘI TÀU (4 tàu) ký với PG Tanker, không phải mỗi tàu. 2023: 48.300; 2024: 48.700 USD/ngày (cùng báo cáo: 'trong năm 2023 và năm 2024 lần lượt đạt 48.300 USD/ngày và 48.700 USD/ngày'). Q1-Q2/2026 giá cước định hạn giảm nhưng không có số.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "VIP",
+   "item": "fleet_plan_2026",
+   "period": "29/10/2026",
+   "value": 2,
+   "unit": "tàu",
+   "extra": {
+    "capex": "107 triệu USD / 02 tàu",
+    "capex_per_ship": "53,5 triệu USD",
+    "dwt_per_ship": 49999,
+    "text": "2 tàu MR · 107 triệu USD"
+   },
+   "url": "https://files.petrolimex.com.vn/pdfs/dc3da68d1c9648d2ab1a382ae0e8caff/10656a74402245e9b6a8d6084251248f/20261030%20-%20VIP%20-%20Nghi%20quyet%20HDQT%20Vv%20phe%20duyet%20du%20an%20dau%20tu%20dong%20moi%20tau_0001.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Phê duyệt Dự án đóng mới 02 tàu chở dầu/hóa chất cỡ MR trọng tải 49.999 DWT với giá hợp đồng đóng mới 53,5 triệu USD/01 tàu (107 triệu USD /02 tàu, chưa bao gồm thuế, phí và các chi phí liên quan đến đóng mới và giao nhận tàu).",
+   "status": "match",
+   "note": "Nghị quyết HĐQT 159/VIPCO-NQ-HĐQT ngày 29/10/2026 (PDF scan, đọc bằng OCR + xem ảnh). Nhà máy K-Shipbuilding (Hàn Quốc), vốn vay Vietcombank. Chưa ký hợp đồng, chưa nêu ngày giao; không có tàu mua/bán hoàn tất trong 2026."
+  },
+  {
+   "ticker": "VIP",
+   "item": "target",
+   "period": "03/07/2025",
+   "value": 15400,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "FPTS",
+    "report_date": "03/07/2025",
+    "method": "DCF (FCFF/FCFE)",
+    "rating": "MUA"
+   },
+   "url": "https://file.fpts.com.vn/FileStore2/File/2025/07/11/CHIPNBAO_CAO_DINH_GIA_LAN_DAU_VIP_73cbe040.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Bằng phương pháp chiết khấu dòng tiền tự do, chúng tôi xác định mức giá mục tiêu của cổ phiếu VIP là 15.400 đồng/cp, cao hơn 22,7% so với mức giá đóng cửa tại ngày 03/07/2025.",
+   "status": "match",
+   "note": "Báo cáo có giá mục tiêu mới nhất tìm được (đã cũ 16 tháng). BVSC 02/2025: 20.300 đ (DCF + P/B 0,8x, 50-50). BSC 13/01/2026 không đưa khuyến nghị/giá mục tiêu (theo elibook). NAV/cp không nêu.",
+   "hide": true,
+   "hide_reason": "Báo cáo FPTS 07/2025, cũ hơn 12 tháng."
+  },
+  {
+   "ticker": "VOS",
+   "item": "fleet_count",
+   "period": "31/12/2025",
+   "value": 18,
+   "unit": "tàu",
+   "extra": {},
+   "url": "https://baodautu.vn/vosco-muon-dong-2-tau-moi-voi-so-tien-dau-tu-toi-da-104-trieu-usd-d569934.html",
+   "opened_at": "2026-11-28",
+   "quote": "Được biết, tính tới 31/12/2025, Vosco đang sở hữu đội tàu gồm 18 tàu, tổng trọng tải khoảng 670 nghìn DWT và đồng thời phấn đấu tới năm 2030 sẽ sở hữu đội tàu với tổng trọng tải lên tới 1 triệu DWT.",
+   "status": "match",
+   "note": "Gồm cả tàu thuê trần (không tách sở hữu/thuê). mekongasean 14/04/2026: 12 hàng khô, 4 dầu, 2 container. nguoiquansat (Q2/2026): thuê thêm Vosco Ocean từ tháng 5/2026 -> có thể 19 chiếc, chưa có câu xác nhận. Chưa thấy CBTT bán Vosco Sky."
+  },
+  {
+   "ticker": "VOS",
+   "item": "fleet_dwt",
+   "period": "31/12/2025",
+   "value": 670,
+   "unit": "nghìn DWT",
+   "extra": {},
+   "url": "https://baodautu.vn/vosco-muon-dong-2-tau-moi-voi-so-tien-dau-tu-toi-da-104-trieu-usd-d569934.html",
+   "opened_at": "2026-11-28",
+   "quote": "Được biết, tính tới 31/12/2025, Vosco đang sở hữu đội tàu gồm 18 tàu, tổng trọng tải khoảng 670 nghìn DWT",
+   "status": "match",
+   "note": "Số làm tròn; theinvestor.vn và nguoiquansat.vn ghi cùng con số (đã mở)."
+  },
+  {
+   "ticker": "VOS",
+   "item": "fleet_age",
+   "period": "1H2025",
+   "value": 21.2,
+   "unit": "năm",
+   "extra": {
+    "broker": "FPTS"
+   },
+   "url": "https://cdn.24hmoney.vn/upload/file/2025-3/2025-08-30/VOS_BAO_CAO_CAP_NHAT_TIN_TUC_1H2025_d1dae633.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "đội tàu do công ty sở hữu đa phần có tuổi thọ cao, trung bình đạt 21,2 tuổi, khiến các chi phí dịch vụ mua ngoài như sửa chữa, bảo dưỡng tăng mạnh.",
+   "status": "match",
+   "note": "FPTS 25/08/2025, chỉ tính tàu công ty SỞ HỮU, trước khi bán Vosco Unity (Q4/2025) -> đã cũ. Không tìm được tuổi bình quân cuối 2025/2026. Câu trích ghép từ cột văn bản xen biểu đồ trong PDF."
+  },
+  {
+   "ticker": "VOS",
+   "item": "tc_share",
+   "period": "",
+   "value": null,
+   "unit": "%",
+   "extra": {},
+   "url": "https://cdn.24hmoney.vn/upload/file/2025-3/2025-08-30/VOS_BAO_CAO_CAP_NHAT_TIN_TUC_1H2025_d1dae633.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Không nguồn nào nêu tỷ lệ cho thuê định hạn. FPTS 08/2025 chỉ ghi định tính: 'VOS tập trung tự khai thác đội tàu thay vì cho thuê định hạn'."
+  },
+  {
+   "ticker": "VOS",
+   "item": "tce",
+   "period": "2025 (ước tính FPTS)",
+   "value": 10950,
+   "unit": "USD/ngày",
+   "extra": {
+    "bulk": 10950,
+    "tanker": 20600
+   },
+   "url": "https://cdn.24hmoney.vn/upload/file/2025-3/2025-08-30/VOS_BAO_CAO_CAP_NHAT_TIN_TUC_1H2025_d1dae633.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Qua đó, trong năm 2025, chúng tôi ước tính giá cước trung bình đội tàu hàng rời của VOS đạt 10.950 USD/ngày (-12,7% YoY), sản lượng vận chuyển hàng rời đạt 6 triệu tấn (+34,2% YoY).",
+   "status": "match",
+   "note": "ƯỚC TÍNH của FPTS (25/08/2025), không phải số công ty công bố. Tàu dầu: 'giá cước vận tải dầu trung bình trong năm 2025 của VOS đạt 20.600 USD/ngày (-18,4% YoY)'. Không có số 2026.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "VOS",
+   "item": "fleet_plan_2026",
+   "period": "15/05/2026",
+   "value": null,
+   "unit": "tàu",
+   "extra": {
+    "sell": "Vosco Sky",
+    "buy_plan": "4 MR, 4 Ultramax, 2 Supramax, 2+2 container (chủ trương)",
+    "sell_count_implied": 1
+   },
+   "url": "https://www.vosco.vn/uploads/voscovn/news/2026_05/20260515-vos-nghi-quyet-dhdcd-thuong-nien-2026-signed_1440.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Trong năm 2026, Công ty dự kiến sẽ thực hiện thanh lý tàu Vosco Sky.",
+   "status": "match",
+   "note": "Nghị quyết ĐHĐCĐ 15/05/2026 (PDF scan, OCR). Bán: 1 tàu Vosco Sky; cân nhắc Lan Hạ, bán/S&LB 01-03 Supramax. Mua/đóng (chủ trương): 04 MR ~50.000 DWT giá < 52 triệu USD/tàu, 04 Ultramax < 40 triệu USD/tàu, 02 Supramax < 35 triệu USD/tàu, 02 container đóng mới < 35 triệu USD/tàu, 02 container cũ < 20 triệu USD/tàu.",
+   "hide": true,
+   "hide_reason": "Không có số do nguồn nêu (chỉ có số tự tính), không đưa lên trang."
+  },
+  {
+   "ticker": "VOS",
+   "item": "fleet_plan_2026",
+   "period": "14/04/2026",
+   "value": 2,
+   "unit": "tàu",
+   "extra": {
+    "capex": "104 triệu USD / 2 tàu",
+    "text": "2 tàu MR · 104 triệu USD (giao 2028)"
+   },
+   "url": "https://mekongasean.vn/vosco-muon-dau-tu-khoang-104-trieu-usd-dong-2-tau-moi-54013.html",
+   "opened_at": "2026-11-28",
+   "quote": "Mỗi tàu có trọng tải khoảng 50.000 DWT, dự kiến được đóng tại Hàn Quốc, trong đó tàu thứ nhất sẽ được bàn giao vào cuối tháng 6/2028 và tàu thứ hai vào cuối tháng 8/2028. Theo thông tin VOS công bố, giá đóng tàu mới tối đa là 52 triệu USD/tàu, tương đương hơn 1.350 tỷ đồng/tàu",
+   "status": "match",
+   "note": "Dòng evidence.json cũ, mở lại hôm nay vẫn còn. 2 tàu MR đóng mới, ký 2026 nhưng giao 2028."
+  },
+  {
+   "ticker": "VOS",
+   "item": "target",
+   "period": "25/08/2025",
+   "value": 14400,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "FPTS",
+    "report_date": "25/08/2025",
+    "method": "EV/EBITDA",
+    "rating": "THEO DÕI"
+   },
+   "url": "https://cdn.24hmoney.vn/upload/file/2025-3/2025-08-30/VOS_BAO_CAO_CAP_NHAT_TIN_TUC_1H2025_d1dae633.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Dựa trên phương pháp so sánh EV/EBITDA, chúng tôi khuyến nghị THEO DÕI đối với cổ phiếu VOS với mức giá mục tiêu là 14.400 đồng/cp, thấp hơn 5,9% so với mức giá đóng cửa ngày 25/08/2025.",
+   "status": "match",
+   "note": "Báo cáo có giá mục tiêu mới nhất tìm được (cũ 15 tháng); danh mục 24hmoney không có báo cáo VOS nào trong 2026. NAV/cp không nêu.",
+   "hide": true,
+   "hide_reason": "Báo cáo FPTS 08/2025, cũ hơn 12 tháng."
+  },
+  {
+   "ticker": "VNA",
+   "item": "fleet_count",
+   "period": "07/04/2026",
+   "value": 4,
+   "unit": "tàu",
+   "extra": {
+    "owned": 4
+   },
+   "url": "https://www.tinnhanhchungkhoan.vn/vinaship-vna-se-khong-tra-co-tuc-nam-2025-va-len-ke-hoach-mua-lai-2-tau-post388328.html",
+   "opened_at": "2026-11-28",
+   "quote": "Được biết, Vinaship đang sở hữu 4 tàu với tổng trọng tải 76.230 DWT.",
+   "status": "match",
+   "note": "ĐÃ CŨ: sau đó bán Vinaship Gold (Q2/2026), mua Vinaship Amity, bán Mỹ Hưng (xem dòng dưới). Dòng evidence.json cũ, mở lại hôm nay vẫn còn.",
+   "hide": true,
+   "hide_reason": "VNA đã bán Gold và Mỹ Hưng sau ngày này: số tàu cũ."
+  },
+  {
+   "ticker": "VNA",
+   "item": "fleet_count",
+   "period": "11/10/2026",
+   "value": null,
+   "unit": "tàu",
+   "extra": {
+    "computed_count": 3,
+    "ships": [
+     "Vinaship Amity",
+     "Vinaship Harmony",
+     "Vinaship Unity"
+    ]
+   },
+   "url": "https://drive.google.com/file/d/1MhTFUD0uNyS0GwODKlsPFRmm6zK6QxUx/view?usp=sharing",
+   "opened_at": "2026-11-28",
+   "quote": "Vinaship đã bán thành công tàu Mỹ Hưng trọng tải 6.595,8 dwt đóng năm 2003 tại Việt Nam. Hợp đồng bán tàu được ký ngày 17 tháng 09 năm 2026. Tàu đã được bàn giao cho bên mua [...] vào lúc 10 giờ 15 phút ngày 11 tháng 10 năm 2026.",
+   "status": "match",
+   "note": "CBTT 12/10/2026 (PDF scan, OCR; link từ https://vinaship.com.vn/cong-bo-thong-tin-ban-tau-my-hung/). Không có câu nào nêu số tàu hiện tại; TỰ SUY: còn 3 tàu (Amity, Harmony, Unity). Trang https://vinaship.com.vn/category/doi-tau/ vẫn liệt kê 4 tàu (chưa gỡ Mỹ Hưng).",
+   "hide": true,
+   "hide_reason": "Không có số do nguồn nêu (chỉ có số tự tính), không đưa lên trang."
+  },
+  {
+   "ticker": "VNA",
+   "item": "fleet_dwt",
+   "period": "28/11/2026",
+   "value": null,
+   "unit": "DWT",
+   "extra": {
+    "computed_total_dwt": 88940,
+    "last_quoted_total_dwt": 76230
+   },
+   "url": "https://vinaship.com.vn/category/doi-tau/",
+   "opened_at": "2026-11-28",
+   "quote": "Ex name of vessel: SEA SAPPHIRE [...] Built: 2010 Vinaship: 04/2025 [...] DWT: 32.550 | Ex name of vessel: BRIGHT HOPE [...] Built: 2010 Vinaship: 11/2025 [...] DWT: 28.201 | Built: 2012 Vinaship: 12/2024 [...] DWT: 28.189",
+   "status": "match",
+   "note": "Không có câu nêu tổng DWT sau khi bán Mỹ Hưng. TỰ CỘNG 3 tàu còn lại: 32.550 + 28.201 + 28.189 = 88.940 DWT (không phải số trích). Số có câu trích gần nhất: 76.230 DWT (07/04/2026, đã cũ).",
+   "hide": true,
+   "hide_reason": "Không có số do nguồn nêu (chỉ có số tự tính), không đưa lên trang."
+  },
+  {
+   "ticker": "VNA",
+   "item": "fleet_age",
+   "period": "28/11/2026",
+   "value": null,
+   "unit": "năm",
+   "extra": {
+    "computed_avg_2026": 15.3
+   },
+   "url": "https://vinaship.com.vn/category/doi-tau/",
+   "opened_at": "2026-11-28",
+   "quote": "Ex name of vessel: SEA SAPPHIRE [...] Built: 2010 | Ex name of vessel: BRIGHT HOPE [...] Built: 2010 | Type of vsl: M. Bulk/Lumber carrier [...] Built: 2012",
+   "status": "not_found",
+   "note": "Không nguồn nào nêu tuổi bình quân 2026. Năm đóng 3 tàu còn lại 2010/2010/2012 -> tự tính ~15,3 năm (không phải số trích)."
+  },
+  {
+   "ticker": "VNA",
+   "item": "tc_share",
+   "period": "",
+   "value": null,
+   "unit": "%",
+   "extra": {},
+   "url": "https://vinaship.com.vn/dai-hoi-co-dong-thuong-nien-2026/",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Nghị quyết ĐHĐCĐ 2026 và báo chí không nêu tỷ lệ cho thuê định hạn/tự khai thác."
+  },
+  {
+   "ticker": "VNA",
+   "item": "tce",
+   "period": "",
+   "value": null,
+   "unit": "USD/ngày",
+   "extra": {},
+   "url": "https://vinaship.com.vn/dai-hoi-co-dong-thuong-nien-2026/",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Không tìm thấy TCE/giá thuê theo ngày được công bố."
+  },
+  {
+   "ticker": "VNA",
+   "item": "fleet_plan_2026",
+   "period": "22/04/2026",
+   "value": 2,
+   "unit": "tàu",
+   "extra": {
+    "capex_per_ship": "11,5 triệu USD",
+    "sell": [
+     "Vinaship Gold",
+     "Mỹ Hưng"
+    ],
+    "text": "Mua 2 tàu cũ ~11,5 triệu USD/tàu, bán 2 tàu"
+   },
+   "url": "https://drive.google.com/file/d/1IC67ONe9BZmt_lARDnnVV51b6cLVBNd-/view?usp=sharing",
+   "opened_at": "2026-11-28",
+   "quote": "Đầu tư 02 tàu chở hàng khô đã qua sử dụng, trọng tải từ 28.000 - 35.000 DWT, năm đóng trong khoảng từ 2009-2014. [...] Mức đầu tư dự kiến khoảng 11,5 triệu usd/tàu.",
+   "status": "match",
+   "note": "Nghị quyết ĐHĐCĐ 08/NQ-ĐHĐCĐ ngày 22/04/2026 (PDF scan, OCR; link từ https://vinaship.com.vn/dai-hoi-co-dong-thuong-nien-2026/). Bán thanh lý 2 tàu: Vinaship Gold (13.245 DWT) và Mỹ Hưng -> cả hai đã bán xong (Gold Q2/2026, Mỹ Hưng giao 11/10/2026). Mua: mới thấy 1 tàu (Vinaship Amity, theo mekongasean Q2/2026); tàu thứ hai chưa thấy CBTT."
+  },
+  {
+   "ticker": "VNA",
+   "item": "target",
+   "period": "",
+   "value": null,
+   "unit": "đồng/cp",
+   "extra": {},
+   "url": "https://24hmoney.vn/bao-cao-phan-tich?k=VNA",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Trang tổng hợp báo cáo CTCK không có báo cáo nào về VNA; tìm kiếm không ra giá mục tiêu."
+  },
+  {
+   "ticker": "HAH",
+   "item": "fleet_count",
+   "period": "31/12/2025",
+   "value": 18,
+   "unit": "tàu",
+   "extra": {},
+   "url": "https://static2.vietstock.vn/vietstock/2026/3/9/20260306___hah___bao_cao_thuong_nien_nam_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Trong năm 2025, Công ty đã tiếp nhận thành công và đưa vào sử dụng 02 tàu container cũ là HA Zeta (Tháng 2/2025) và HA Iris (Tháng 10/2025) nâng tổng số tàu của Đội tàu Hải An lên 18 chiếc với năng lực vận tải 29.400 TEU",
+   "status": "match",
+   "note": "Báo cáo thường niên 2025 (nguồn gốc). Trang lịch sử cùng báo cáo ghi 29.300 Teu.",
+   "hide": true,
+   "hide_reason": "Có số 10/2026 mới hơn."
+  },
+  {
+   "ticker": "HAH",
+   "item": "fleet_dwt",
+   "period": "31/12/2025",
+   "value": 29400,
+   "unit": "TEU",
+   "extra": {},
+   "url": "https://static2.vietstock.vn/vietstock/2026/3/9/20260306___hah___bao_cao_thuong_nien_nam_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "nâng tổng số tàu của Đội tàu Hải An lên 18 chiếc với năng lực vận tải 29.400 TEU",
+   "status": "match",
+   "note": "",
+   "hide": true,
+   "hide_reason": "Có số 10/2026 mới hơn."
+  },
+  {
+   "ticker": "HAH",
+   "item": "fleet_count",
+   "period": "10/2026",
+   "value": 20,
+   "unit": "tàu",
+   "extra": {
+    "owned": 18,
+    "jv": 2
+   },
+   "url": "https://cdn.24hmoney.vn/upload/file/2026-4/2026-10-27/HAH_BCCap_nhat_27.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Trong tháng 4–5/2026, Hải An Green Shipping Lines (HAGSL), liên doanh giữa HAH (40%) và VSC (60%), đã nhận bàn giao hai tàu Green Park (1.060 TEU) và Green Time (2.800 TEU), nâng đội tàu của HAH lên 20 tàu với tổng công suất 33.100 TEU, tăng 13,2% so với cuối 2025.",
+   "status": "match",
+   "note": "VNDIRECT 26/10/2026. 20 tàu = 18 sở hữu + 2 tàu của liên doanh HAGSL (HAH 40%). MÂU THUẪN: BSC 07/10/2026 ghi 21 chiếc/35.793 TEU (tính cả Buxmelody, nói nhận T8/2026), VNDIRECT nói Buxmelody dự kiến nhận tháng 11/2026; ACBS 05/11/2026: 'khoảng 36.000 TEU, bao gồm các tàu liên doanh'. Cùng báo cáo VNDIRECT chỗ khác ghi '21 tàu với công suất đạt 33.100 TEU'."
+  },
+  {
+   "ticker": "HAH",
+   "item": "fleet_dwt",
+   "period": "10/2026",
+   "value": 33100,
+   "unit": "TEU",
+   "extra": {
+    "incl_buxmelody_bsc": 35793,
+    "cap_unit": "TEU"
+   },
+   "url": "https://cdn.24hmoney.vn/upload/file/2026-4/2026-10-27/HAH_BCCap_nhat_27.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "nâng đội tàu của HAH lên 20 tàu với tổng công suất 33.100 TEU, tăng 13,2% so với cuối 2025.",
+   "status": "match",
+   "note": "Gồm 2 tàu liên doanh. Nguồn khác: mekongasean 33.077 TEU (5/2026), SSV 33.070 TEU; BSC 35.793 TEU và ACBS ~36.000 TEU nếu tính Buxmelody 2.702 TEU."
+  },
+  {
+   "ticker": "HAH",
+   "item": "fleet_age",
+   "period": "05/2026",
+   "value": null,
+   "unit": "năm",
+   "extra": {
+    "computed_avg_21_ships": 15.8,
+    "computed_avg_18_ships": 15.7
+   },
+   "url": "https://cdn.24hmoney.vn/upload/file/2026-4/2026-10-09/X_Alpha_HAH_58900_12_Dung_truoc_chu_ky_mo_rong_doi_tau_.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Bảng 3: Thống kê đội tàu của HAH tại thời điểm tháng 5/2026 — Tàu / Năm đóng / Tuổi tàu (năm) / Sức chở (TEU): HAIAN Park 2000 26 787; HAIAN Time 2001 25 1,032; HAIAN Bell 2003 23 1,200; HAIAN Link 2010 16 1,060; HAIAN Mind 2012 14 1,794; HAIAN View 2009 17 1,577; HAIAN East 2008 18 1,702; HAIAN West 2007 19 1,740; HAIAN City 2008 18 1,577; ANBIEN Bay (LDLK) 2008 18 1,708; HAIAN Rose 2008 18 1,708; HAIAN Alfa 2021 5 1,781; HAIAN Beta 2021 5 1,781; ANBIEN Sky (LDLK) 2021 5 1,781; HAIAN Opus 2021 5 1,781; HAIAN Gama 2007 19 3,500; HAIAN Zeta 2010 16 1,700; HAIAN Iris 2011 15 1,024; Green Park (LDLK) 2009 17 1,060; Green Time (LDLK) 2011 15 2,798; Buxmelody (LDLK) 2008 18 2,702; Tổng công suất 35,791",
+   "status": "not_found",
+   "note": "Không nguồn nào nêu tuổi bình quân. Tự tính từ bảng BSC: bình quân đơn giản 21 tàu = 15,8 năm; 18 tàu không tính 3 tàu Green/Buxmelody = 15,7 năm (KHÔNG phải số trích). BSC 07/10/2026; PDF có font lỗi dấu khi pdftotext, dấu tiếng Việt trong quote được khôi phục thủ công, chữ số giữ nguyên."
+  },
+  {
+   "ticker": "HAH",
+   "item": "tc_share",
+   "period": "05/11/2026",
+   "value": 11,
+   "unit": "tàu",
+   "extra": {
+    "chartered_out": 11,
+    "owned_total": 18,
+    "self_operated_computed": 7
+   },
+   "url": "https://acbs.com.vn/acbsmedia/2026/11/HAH_Cap-nhat-Q3-2026.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "HAH hiện duy trì tỷ trọng tàu cho thuê theo hợp đồng định hạn (Time Charter – TC) cao hơn tỷ trọng tàu tự khai thác (11 tàu TC/ tổng 18 tàu sở hữu). Với mức giá thuê được cố định trong thời hạn hợp đồng (1-2 năm)",
+   "status": "match",
+   "note": "ACBS 05/11/2026: 11 cho thuê / 7 tự khai thác trên 18 tàu sở hữu (61%). Nguồn khác lệch: elibook ĐHĐCĐ 6/2026 '12 tàu cho thuê định hạn và 8 tàu tự vận hành' (trên 20 tàu, mở lại hôm nay vẫn còn); mekongasean: 6 tàu tự khai thác trên 20 (5/2026); BSC dự phóng 2026F '8 tàu cho thuê'.",
+   "hide": true,
+   "hide_reason": "Nguồn ghi số tàu cho thuê (11/18), không phải tỷ lệ; không tự quy đổi."
+  },
+  {
+   "ticker": "HAH",
+   "item": "tce",
+   "period": "2026F (BSC)",
+   "value": 25700,
+   "unit": "USD/ngày",
+   "extra": {
+    "market_1700teu": 35059,
+    "f2027_1700teu": 28000,
+    "f2027_3500teu": 34000
+   },
+   "url": "https://cdn.24hmoney.vn/upload/file/2026-4/2026-10-09/X_Alpha_HAH_58900_12_Dung_truoc_chu_ky_mo_rong_doi_tau_.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Doanh thu mảng vận tải 2026F tăng +6% YoY: (1) mảng cho thuê định hạn đạt 1,856 tỷ đồng (+29% YoY) với 8 tàu cho thuê, giá thuê bình quân tàu 1,700 TEU 25,700 USD/ngày",
+   "status": "match",
+   "note": "Giá thuê bình quân của HAH do BSC GIẢ ĐỊNH/ước tính, không phải công ty công bố. Cùng báo cáo: giá thị trường tàu 1,700 TEU 'đạt 35,059 USD/ngày (+34% YTD)'; 2027F 'giá thuê bình quân tàu 1,700 TEU 28,000 USD/ngày, tàu 3,500 TEU 34,000 USD/ngày'. BSC 07/10/2026; PDF có font lỗi dấu khi pdftotext, dấu tiếng Việt trong quote được khôi phục thủ công, chữ số giữ nguyên.",
+   "hide": true,
+   "hide_reason": "TCE/giá thuê theo cỡ tàu không so được giữa các mã, không đưa vào bảng."
+  },
+  {
+   "ticker": "HAH",
+   "item": "fleet_plan_2026",
+   "period": "16/10/2026",
+   "value": 2,
+   "unit": "tàu",
+   "extra": {
+    "capex": "70 triệu USD / 2 tàu",
+    "text": "2 tàu 1.900 TEU · 70 triệu USD"
+   },
+   "url": "https://haiants.vn/tin-noi-bo/cong-ty-co-phan-van-tai-va-xep-do-hai-an-dau-tu-dong-moi-02-tau-container-1.900-teu-n6803.html",
+   "opened_at": "2026-11-28",
+   "quote": "Ngày 16/10/2026, Hợp đồng đóng mới 02 tàu container sức chở 1.900 TEU giữa Công ty Cổ phần Vận tải và Xếp dỡ Hải An và Tập đoàn Đóng tàu Nhà nước Trung Quốc (China State Shipbuilding Corporation – CSSC) đã được Hội đồng quản trị hai bên thông qua. [...] với tổng mức đầu tư tối đa 70 triệu USD.",
+   "status": "match",
+   "note": "Ký 2026 nhưng giao trước 31/10/2029 và 30/11/2029. Trong 2026 còn ký 2 tàu 7.100 TEU (3/2026, 184 triệu USD theo VNDIRECT)."
+  },
+  {
+   "ticker": "HAH",
+   "item": "fleet_plan_2026",
+   "period": "2026 (BCTN 2025)",
+   "value": null,
+   "unit": "tàu",
+   "extra": {
+    "buy_min": 1,
+    "buy_max": 2
+   },
+   "url": "https://static2.vietstock.vn/vietstock/2026/3/9/20260306___hah___bao_cao_thuong_nien_nam_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Tìm mua từ 01 đến 02 tàu container cũ size từ 1.100 – 3.500 TEU khi có cơ hội để đáp ứng nhu cầu sử dụng của đội tàu",
+   "status": "match",
+   "note": "Kế hoạch 2026 trong BCTN 2025 (01-02 tàu cũ, không nêu capex). Thực tế 2026: liên doanh HAGSL nhận Green Park (1.060 TEU), Green Time (2.800 TEU) tháng 4-5/2026 và mua Buxmelody (2.702 TEU; VNDIRECT: dự kiến nhận 11/2026; elibook: giá 755 tỷ đồng). Không có kế hoạch bán/phá dỡ.",
+   "hide": true,
+   "hide_reason": "Không có số do nguồn nêu (chỉ có số tự tính), không đưa lên trang."
+  },
+  {
+   "ticker": "HAH",
+   "item": "target",
+   "period": "05/11/2026",
+   "value": 55000,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "ACBS",
+    "report_date": "05/11/2026",
+    "method": "DCF",
+    "rating": "KHẢ QUAN",
+    "other": {
+     "VNDIRECT 26/10/2026": 67500,
+     "BSC 07/10/2026": 58900
+    }
+   },
+   "url": "https://acbs.com.vn/acbsmedia/2026/11/HAH_Cap-nhat-Q3-2026.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Bằng phương pháp chiết khấu dòng tiền (DCF), chúng tôi định giá HAH tại 55.000 đồng/cp.",
+   "status": "match",
+   "note": "Báo cáo mới nhất tìm được. Khác: VNDIRECT 26/10/2026 67.500 đ (DCF, WACC 10,8%, đã mở PDF); BSC 07/10/2026 58.900 đ (P/E 8,7x EPS 2027); HSC 52.800 đ (chỉ qua elibook, chưa mở bản gốc). NAV/cp không nêu."
+  }
+ ]
+}
