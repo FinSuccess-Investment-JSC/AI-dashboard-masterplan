@@ -241,5 +241,105 @@
   "quote": "The country will graduate on 24 November 2029, after government request for deferral.",
   "status": "conflict",
   "note": "Nguồn thứ cấp; un.org trả 403. Cần xác nhận bằng nghị quyết Đại hội đồng LHQ/UN-OHRLLS trước khi sửa trang."
+ },
+ {
+  "block": "textile-manual",
+  "claim": "TNG · Giá mục tiêu của CTCK · 13/08/2026 · Shinhan Securities",
+  "value": "giá mục tiêu 24.900 đồng/cp",
+  "url": "https://shinhansec.com.vn/uploads/report/TNG_Q2_2026_VN.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Dựa trên phương pháp DCF, chúng tôi cập nhật giá mục tiêu của TNG ở mức 24,900 đồng; tương ứng với mức upside 44.9%",
+  "status": "match",
+  "note": "MUA"
+ },
+ {
+  "block": "textile-manual",
+  "claim": "TNG · Đơn hàng đã ký · 13/08/2026",
+  "value": "Kín đơn hàng đến hết 2026 (08/2026)",
+  "url": "https://shinhansec.com.vn/uploads/report/TNG_Q2_2026_VN.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Theo chia sẻ từ ban lãnh đạo, TNG đã ký kín đơn hàng đến hết năm 2026 và sẽ đàm phán đơn hàng 2027 vào tháng 9/2026.",
+  "status": "match",
+  "note": "Chưa thấy nguồn mở được xác nhận đơn 2027"
+ },
+ {
+  "block": "textile-manual",
+  "claim": "TNG · Tỷ trọng FOB · 2025 · TCBS",
+  "value": "80 %",
+  "url": "https://www.tcbs.com.vn/wp-content/uploads/2026/06/TNG_Bao_cao_phan_tich_chi_tiet_VI-1.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Mô hình sản xuất: TNG gia công theo phương thức FOB cấp 1 (trên 80% doanh thu)",
+  "status": "match",
+  "note": "Giá trị là ngưỡng dưới (>80%)"
+ },
+ {
+  "block": "textile-manual",
+  "claim": "TNG · Khách hàng lớn nhất · 2025",
+  "value": "30 %",
+  "url": "https://www.tcbs.com.vn/wp-content/uploads/2026/06/TNG_Bao_cao_phan_tich_chi_tiet_VI-1.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "(Decathlon ~30% doanh thu, Columbia, H&M, The North Face)",
+  "status": "match",
+  "note": "xấp xỉ"
+ },
+ {
+  "block": "textile-manual",
+  "claim": "TNG · Số lao động · 31/12/2025",
+  "value": "18.872 người",
+  "url": "https://www.tcbs.com.vn/wp-content/uploads/2026/06/TNG_Bao_cao_phan_tich_chi_tiet_VI-1.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "quy mô sản xuất lớn (367 dây chuyền, 18.872 lao động)",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "textile-manual",
+  "claim": "MSH · Giá mục tiêu của CTCK · 24/08/2026 · Shinhan Securities",
+  "value": "giá mục tiêu 38.600 đồng/cp",
+  "url": "https://shinhansec.com.vn/uploads/report/MSH_Q2_2026_VN.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Dựa trên phương pháp DCF, chúng tôi cập nhật giá mục tiêu của MSH ở mức 38,600 đồng; tương ứng với mức upside 27.8%.",
+  "status": "match",
+  "note": "MUA"
+ },
+ {
+  "block": "textile-manual",
+  "claim": "TCM · Giá mục tiêu của CTCK · 10/03/2026 · Shinhan Securities",
+  "value": "giá mục tiêu 28.200 đồng/cp",
+  "url": "https://shinhansec.com.vn/en/research-center/2599/tcmholdtp-vnd-28200-106-a-challenge-from-the-export-market.html",
+  "opened_at": "2026-11-28",
+  "quote": "[TCM/HOLD/TP: VND 28,200, +10.6%] - A challenge from the export market",
+  "status": "match",
+  "note": "HOLD; quote is page title; Simplize lists 26,300 for same date, unverified"
+ },
+ {
+  "block": "textile-manual",
+  "claim": "STK · Công suất · 2026 (sau Unitex)",
+  "value": "99.000 tấn/năm",
+  "url": "https://nhadautu.vn/nha-may-unitex-di-vao-van-hanh-cong-suat-soi-the-ky-tang-gap-ruoi-d102532.html",
+  "opened_at": "2026-11-28",
+  "quote": "Qua đó, công suất của Sợi Thế Kỷ tăng hơn gấp rưỡi lên 99.000 tấn/năm (doanh nghiệp hiện đã có nhà máy ở Củ Chi với 20.000 tấn/năm và Trảng Bàng với 43.000 tấn/năm).",
+  "status": "match",
+  "note": "Bài 24/01/2026; grepped bằng curl"
+ },
+ {
+  "block": "textile-manual",
+  "claim": "STK · Tỷ trọng sợi tái chế · 2025",
+  "value": "49,8 %",
+  "url": "https://nhadautu.vn/nha-may-unitex-di-vao-van-hanh-cong-suat-soi-the-ky-tang-gap-ruoi-d102532.html",
+  "opened_at": "2026-11-28",
+  "quote": "Đáng chú ý, doanh thu từ sợi tái chế chiếm khoảng 49,8% tổng doanh thu",
+  "status": "match",
+  "note": "Câu ngay sau số liệu năm 2025 (tăng 25,2% so với năm 2024); grepped bằng curl"
+ },
+ {
+  "block": "textile-manual",
+  "claim": "TCM · Đơn hàng đã ký · 07/07/2026",
+  "value": "~75% đơn hàng KH quý III/2026 (07/2026)",
+  "url": "https://doanhnhan.baophapluat.vn/det-thanh-cong-tcm-bao-lai-lao-doc-du-doanh-thu-van-tang-ky-vong-lap-day-don-hang-quy-iv.html",
+  "opened_at": "2026-11-28",
+  "quote": "Thành Công cho biết đã tiếp nhận khoảng 75% kế hoạch đơn hàng cho quý III/2026 và đang tiếp tục nhận đơn hàng cho quý IV.",
+  "status": "match",
+  "note": "value = % kế hoạch đơn Q3, không phải số tháng"
  }
 ]
