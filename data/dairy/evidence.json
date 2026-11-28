@@ -101,16 +101,6 @@
  },
  {
   "block": "dairy-manual",
-  "claim": "VNM · Giá mục tiêu của CTCK · 12m · FPTS",
-  "value": "giá mục tiêu 72.400 đồng/cp",
-  "url": "https://file.fpts.com.vn/FileStore2/File/2026/02/12/VNMQuickUpdateReportFeb_2026_3a486854.pdf",
-  "opened_at": "2026-11-28",
-  "quote": "giá mục tiêu là 72.400 VND/cp, cao hơn 5,0% so với giá đóng cửa ngày 12/02/2026 (bằng phương pháp chiết khấu dòng tiền",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "dairy-manual",
   "claim": "MCM · Tổng đàn bò · 2025",
   "value": "27.000 con",
   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MCM_Baocaothuongnien_2025.pdf",

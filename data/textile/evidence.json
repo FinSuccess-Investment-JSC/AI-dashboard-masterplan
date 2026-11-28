@@ -244,16 +244,6 @@
  },
  {
   "block": "textile-manual",
-  "claim": "TNG · Giá mục tiêu của CTCK · 13/08/2026 · Shinhan Securities",
-  "value": "giá mục tiêu 24.900 đồng/cp",
-  "url": "https://shinhansec.com.vn/uploads/report/TNG_Q2_2026_VN.pdf",
-  "opened_at": "2026-11-28",
-  "quote": "Dựa trên phương pháp DCF, chúng tôi cập nhật giá mục tiêu của TNG ở mức 24,900 đồng; tương ứng với mức upside 44.9%",
-  "status": "match",
-  "note": "MUA"
- },
- {
-  "block": "textile-manual",
   "claim": "TNG · Đơn hàng đã ký · 13/08/2026",
   "value": "Kín đơn hàng đến hết 2026 (08/2026)",
   "url": "https://shinhansec.com.vn/uploads/report/TNG_Q2_2026_VN.pdf",
@@ -291,26 +281,6 @@
   "quote": "quy mô sản xuất lớn (367 dây chuyền, 18.872 lao động)",
   "status": "match",
   "note": ""
- },
- {
-  "block": "textile-manual",
-  "claim": "MSH · Giá mục tiêu của CTCK · 24/08/2026 · Shinhan Securities",
-  "value": "giá mục tiêu 38.600 đồng/cp",
-  "url": "https://shinhansec.com.vn/uploads/report/MSH_Q2_2026_VN.pdf",
-  "opened_at": "2026-11-28",
-  "quote": "Dựa trên phương pháp DCF, chúng tôi cập nhật giá mục tiêu của MSH ở mức 38,600 đồng; tương ứng với mức upside 27.8%.",
-  "status": "match",
-  "note": "MUA"
- },
- {
-  "block": "textile-manual",
-  "claim": "TCM · Giá mục tiêu của CTCK · 10/03/2026 · Shinhan Securities",
-  "value": "giá mục tiêu 28.200 đồng/cp",
-  "url": "https://shinhansec.com.vn/en/research-center/2599/tcmholdtp-vnd-28200-106-a-challenge-from-the-export-market.html",
-  "opened_at": "2026-11-28",
-  "quote": "[TCM/HOLD/TP: VND 28,200, +10.6%] - A challenge from the export market",
-  "status": "match",
-  "note": "HOLD; quote is page title; Simplize lists 26,300 for same date, unverified"
  },
  {
   "block": "textile-manual",

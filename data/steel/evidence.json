@@ -1412,26 +1412,6 @@
  },
  {
   "block": "steel-manual",
-  "claim": "HPG · Giá mục tiêu của CTCK · 12T · ACBS",
-  "value": "giá mục tiêu 33.800 đồng/cp",
-  "url": "https://acbs.com.vn/acbsmedia/2026/08/HPG_Cap-nhat-6.8.2026-1.pdf",
-  "opened_at": "2026-11-28",
-  "quote": "duy trì khuyến nghị MUA và nâng giá mục tiêu cuối năm 2026 thêm 5% lên 33.800 đồng/cổ phiếu.",
-  "status": "match",
-  "note": "Phương pháp không ghi trong text PDF"
- },
- {
-  "block": "steel-manual",
-  "claim": "HSG · Giá mục tiêu của CTCK · 12T · Shinhan",
-  "value": "giá mục tiêu 15.300 đồng/cp",
-  "url": "https://shinhansec.com.vn/uploads/report/HSG_Q12026_(VI)1.pdf",
-  "opened_at": "2026-11-28",
-  "quote": "Cập nhật định giá với khuyến nghị GIỮ, giá mục tiêu 15,300 đồng ... Bằng phương pháp định giá DCF, chúng tôi định giá cập nhật cổ phiếu HSG ở mức 15,300 đồng.",
-  "status": "match",
-  "note": ""
- },
- {
-  "block": "steel-manual",
   "claim": "HSG · Thị phần · 2026 (theo báo cáo 20/03/2026)",
   "value": "29 %",
   "url": "https://shinhansec.com.vn/uploads/report/HSG_Q12026_(VI)1.pdf",
@@ -1469,15 +1449,5 @@
   "quote": "chiếm 17,4% thị phần tôn mạ.",
   "status": "match",
   "note": "Nguồn không ghi rõ VSA"
- },
- {
-  "block": "steel-manual",
-  "claim": "NKG · Giá mục tiêu của CTCK · 2026 · DSC",
-  "value": "giá mục tiêu 15.400 đồng/cp",
-  "url": "https://extgw.dsc.com.vn/eback/uploads/NKG_Q4_2025_adb197c633.pdf",
-  "opened_at": "2026-11-28",
-  "quote": "Giá mục tiêu 2026: 15.400 VND ... Chúng tôi sử dụng phương pháp P/B làm phương pháp chính để định giá NKG với mức P/B phù hợp là 0,9 lần",
-  "status": "match",
-  "note": ""
  }
 ]

@@ -40,6 +40,8 @@ def build(SRC, OUT, EVID, BLOCK, VAR, KEY, LABEL, SCALE, name):
             continue
         if r.get('status') != 'match' or r.get('hide'):
             continue
+        if item in ('rnav', 'target'):  # 28/11/2026 người dùng: dashboard ngành không cần giá mục tiêu, RNAV của CTCK; giữ dòng trong manual.json để tra cứu
+            continue
         ex = r.get('extra') or {}
         nums = [r.get('value'), ex.get('rnav_per_share'), ex.get('target_price')]
         nums = [n for n in nums if isinstance(n, (int, float))]

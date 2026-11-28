@@ -30,36 +30,36 @@ const DEFAULT_CHARTS = ['pb_roe', 'gm_roe', 'yield', 'pe_evcf'];
 const PROFILES = {
   OIL_FIN: {charts: ['pe_ev', 'netcash', 'pb_roe', 'yield'], cols: ['pe', 'evebitda', 'pb', 'pbgap', 'ncash', 'dy', 'roe', 'ebitdam', 'assoc', 'dio'],
     note: 'Ba khâu có mô hình khác nhau: so bội số trong cùng khâu. Lọc dầu (BSR) lợi nhuận theo crack spread, P/E một kỳ không đại diện chu kỳ.',
-    manual: {key: 'OIL_MANUAL', title: 'Số vận hành và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
-      cols: ['rig', 'rigu', 'bl', 'vol', 'lpg', 'util', 'st', 'tp', 'upside'], foot: 'Giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.'}},
+    manual: {key: 'OIL_MANUAL', title: 'Số vận hành', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
+      cols: ['rig', 'rigu', 'bl', 'vol', 'lpg', 'util', 'st']}},
   RE_FIN: {charts: ['pb_roe', 'pb_lev', 'adv_mcap', 'st_cash'], cols: ['pb', 'pbgap', 'pe', 'roe', 'advmc', 'advrev', 'invta', 'nde', 'stcash', 'finpbt'],
     note: 'Lợi nhuận chủ đầu tư ghi nhận theo thời điểm bàn giao: P/B và tiền khách trả trước ổn định hơn P/E.',
-    manual: {key: 'RE_MANUAL', title: 'Bán hàng, quỹ đất và RNAV', sub: 'Số doanh nghiệp công bố hoặc CTCK ước tính, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
-      cols: ['ps', 'psplan', 'psfy', 'mcps', 'unb', 'unbrev', 'land', 'rnav', 'prnav', 'tp', 'upside']}},
+    manual: {key: 'RE_MANUAL', title: 'Bán hàng và quỹ đất', sub: 'Số doanh nghiệp công bố hoặc CTCK ước tính, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
+      cols: ['ps', 'psplan', 'psfy', 'mcps', 'unb', 'unbrev', 'land']}},
   TEXTILE_FIN: {charts: ['pb_roe', 'gm_roe', 'yield', 'pe_ev'], cols: ['pe', 'evebitda', 'pb', 'pbgap', 'dy', 'roe', 'gm', 'ndebitda', 'doubt', 'assoc'],
     note: 'VGT là công ty mẹ nắm nhiều công ty con, liên kết: P/E, EV/EBITDA không so trực tiếp với doanh nghiệp may.',
-    manual: {key: 'TEXTILE_MANUAL', title: 'Mô hình đơn hàng và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
-      cols: ['fob', 'ord', 'cus', 'wk', 'cap', 'util', 'rec', 'tp', 'upside'], foot: 'Giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.'}},
+    manual: {key: 'TEXTILE_MANUAL', title: 'Mô hình đơn hàng', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
+      cols: ['fob', 'ord', 'cus', 'wk', 'cap', 'util', 'rec']}},
   PORT_FIN: {charts: ['pe_ev', 'pb_roe', 'yield', 'pe_med'], cols: ['evebitda', 'pe', 'pegap', 'pb', 'ebitdam', 'ncash', 'dy', 'assoc', 'ndebitda', 'roe'],
     note: 'Cảng là tài sản hạ tầng dài hạn, khấu hao lớn: so EV/EBITDA và dòng tiền trả cổ tức hơn là P/E. GMD có lãi lớn từ liên doanh (Gemalink); hàng không (SCS, SGN) và logistics là mô hình khác cảng.',
-    manual: {key: 'PORT_MANUAL', title: 'Sản lượng, công suất và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
-      cols: ['thr', 'cap', 'util', 'cpx', 'tp', 'upside'], foot: 'Giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.'}},
+    manual: {key: 'PORT_MANUAL', title: 'Sản lượng, công suất', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
+      cols: ['thr', 'cap', 'util', 'cpx']}},
   STEEL_FIN: {charts: ['pb_roe', 'pb_med', 'pe_ev', 'inv_gm'], cols: ['pb', 'pbgap', 'evebitda', 'pe', 'gm', 'dio', 'ndebitda', 'stcash', 'roe'],
     note: 'Thép là ngành chu kỳ: P/E thấp ở đỉnh lợi nhuận không có nghĩa là rẻ, nên so P/B với lịch sử và EV/EBITDA. Tồn kho lớn khiến biên gộp nhạy với giá quặng, thép cuộn.',
-    manual: {key: 'STEEL_MANUAL', title: 'Sản lượng, thị phần và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
-      cols: ['vol', 'hrc', 'cap', 'shr', 'exp', 'tp', 'upside'], foot: 'Giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.'}},
+    manual: {key: 'STEEL_MANUAL', title: 'Sản lượng, thị phần', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
+      cols: ['vol', 'hrc', 'cap', 'shr', 'exp']}},
   SUGAR_FIN: {charts: ['pb_roe', 'pe_ev', 'yield', 'inv_gm'], cols: ['pe', 'pegap', 'pb', 'pbgap', 'evebitda', 'gm', 'dio', 'ndebitda', 'dy', 'roe'],
     note: 'Đường theo niên vụ: tồn kho lên đỉnh cuối vụ ép, biên gộp theo giá đường. QNS là đa ngành (sữa đậu nành chiếm phần lớn lợi nhuận), không so trực tiếp với nhà máy đường.',
-    manual: {key: 'SUGAR_MANUAL', title: 'Sản lượng, vùng mía và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
-      cols: ['vol', 'cane', 'tp', 'upside'], foot: 'Giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.'}},
+    manual: {key: 'SUGAR_MANUAL', title: 'Sản lượng, vùng mía', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
+      cols: ['vol', 'cane']}},
   DAIRY_FIN: {charts: ['pe_ev', 'yield', 'gm_roe', 'pe_med'], cols: ['pe', 'pegap', 'evebitda', 'dy', 'gm', 'ebitdam', 'roe', 'ncash'],
     note: 'Sữa là hàng tiêu dùng thiết yếu, lợi nhuận ổn định: so P/E với lịch sử và lợi suất cổ tức. Biên gộp theo giá sữa bột nguyên liệu.',
-    manual: {key: 'DAIRY_MANUAL', title: 'Đàn bò, thị phần và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
-      cols: ['herd', 'shr', 'exp', 'tp', 'upside'], foot: 'Giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.'}},
+    manual: {key: 'DAIRY_MANUAL', title: 'Đàn bò, thị phần', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
+      cols: ['herd', 'shr', 'exp']}},
   BEER_FIN: {charts: ['pe_ev', 'yield', 'gm_roe', 'pe_med'], cols: ['pe', 'pegap', 'evebitda', 'dy', 'gm', 'ebitdam', 'roe', 'ncash', 'assoc'],
     note: 'Bia: hãng toàn quốc (SAB, BHN) có thương hiệu và tiền ròng lớn; nhà máy bia vùng phần lớn gia công cho Sabeco, Habeco nên biên và cổ tức phụ thuộc hợp đồng với công ty mẹ.',
-    manual: {key: 'BEER_MANUAL', title: 'Sản lượng, thị phần và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
-      cols: ['vol', 'shr', 'tp', 'upside'], foot: 'Giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.'}},
+    manual: {key: 'BEER_MANUAL', title: 'Sản lượng, thị phần', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
+      cols: ['vol', 'shr']}},
   POWER_FIN: {charts: ['pe_ev', 'pb_roe', 'yield', 'netcash'], cols: ['evebitda', 'pe', 'pegap', 'pb', 'dy', 'ncash', 'ndebitda', 'ebitdam', 'assoc', 'roe'],
     note: 'Điện là tài sản dài hạn, khấu hao lớn: so EV/EBITDA và cổ tức. Thủy điện theo thủy văn, nhiệt điện theo huy động và giá nhiên liệu; REE, PC1, HDG đa ngành, xây lắp (TV2, GEX) là mô hình khác.'},
   KCN_FIN: {charts: ['pb_roe', 'pb_med', 'yield', 'netcash'], cols: ['pb', 'pbgap', 'pe', 'unmc', 'advmc', 'ncash', 'dy', 'nde', 'stcash', 'roe'],
@@ -76,8 +76,8 @@ const PROFILES = {
     note: 'Dược sản xuất ổn định, tiền ròng và cổ tức đều: so P/E với lịch sử. FRT (bán lẻ dược) và TNH (bệnh viện) là mô hình khác.'},
   SHIP_FIN: {charts: ['pb_roe', 'pb_med', 'pe_ev', 'ev_ppe'], cols: ['pb', 'pbgap', 'evebitda', 'pe', 'evppe', 'dep', 'ebitdam', 'ndebitda', 'otherpbt', 'dy'],
     note: 'Vận tải biển định giá theo tài sản: P/E thấp ở đỉnh cước hoặc khi có lãi bán tàu không có nghĩa là rẻ. Chưa có P/NAV theo giá tàu thị trường.',
-    manual: {key: 'SHIP_MANUAL', title: 'Đội tàu và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
-      cols: ['n', 'dwt', 'evdwt', 'age', 'tc', 'plan', 'tp', 'upside'], foot: 'Giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.'}}
+    manual: {key: 'SHIP_MANUAL', title: 'Đội tàu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
+      cols: ['n', 'dwt', 'evdwt', 'age', 'tc', 'plan']}}
 };
 const x1f = v => nf(v, 1) + 'x', p0 = v => nf(v, 0) + '%', p1 = v => nf(v, 1) + '%';
 const COLS = {
@@ -278,16 +278,16 @@ function mount(host, D, opt = {}) {
       return ms.length ? `<tr class="pv-g"><td colspan="${P.cols.length + 1}"><i style="background:${esc(g.color)}"></i>${esc(g.label)}</td></tr>` + ms.map(m => `<tr${m.t === hi ? ' class="pv-hi"' : ''}><td>${esc(m.t)}</td>${P.cols.map(k => `<td>${fin(m[k]) ? COLS[k][1](m[k]) : '—'}</td>`).join('')}</tr>`).join('') : ''; }).join('')}</tbody></table>
       <p class="pv-note">${P.cols.filter(k => !['pe', 'pb', 'roe', 'gm'].includes(k)).map(k => `<b>${esc(COLS[k][0])}</b>: ${esc(COLS[k][2])}`).join(' · ')}.</p>`; };
   // Bảng số nhập tay: chỉ dựng khi trang nạp dữ liệu (window[P.manual.key]); mã không có ô nào thì không có dòng.
-  const MD = P?.manual ? window[P.manual.key] : null, LANDS = window.RE_LAND || {};
+  const MD = P?.manual && P.manual.cols.length ? window[P.manual.key] : null, LANDS = window.RE_LAND || {};
   let mtbl = null;
-  if (MD) { mtbl = el('div', 'card pv-tcard pv-manual', `<div class="chart-title">${esc(P.manual.title)}</div><div class="chart-sub">${esc(P.manual.sub)}</div><div class="pv-tw"></div>
+  if (MD && (Object.keys(MD.companies || {}).length || (P.manual.cols.includes('land') && window.RE_LAND))) { mtbl = el('div', 'card pv-tcard pv-manual', `<div class="chart-title">${esc(P.manual.title)}</div><div class="chart-sub">${esc(P.manual.sub)}</div><div class="pv-tw"></div>
       <div class="pw-src">Nguồn: tài liệu doanh nghiệp và báo cáo CTCK theo link từng ô; giá theo phiên: <a href="https://dstock.vndirect.com.vn/" target="_blank" rel="noopener">VNDirect</a>; mở nguồn ${esc((MD.updated || '').split('-').reverse().join('/'))}</div>`); wrap.append(mtbl); }
   const mtable = () => { if (!mtbl) return; const mc = P.manual.cols;
     const row = m => { const cells = mc.map(k => MCOLS[k][1](MD.companies[m.t] || {}, m, LANDS[m.t])); return cells.some(Boolean) ? `<tr${m.t === hi ? ' class="pv-hi"' : ''}><td>${esc(m.t)}</td>${cells.map(c => `<td>${c ?? '—'}</td>`).join('')}</tr>` : ''; };
     const none = M.filter(m => !row(m)).map(m => m.t);
     mtbl.querySelector('.pv-tw').innerHTML = `<table class="pv-table"><thead><tr><th>Mã</th>${mc.map(k => `<th title="${esc(MCOLS[k][2])}">${esc(MCOLS[k][0])}</th>`).join('')}</tr></thead><tbody>${D.groups.filter(g => on.has(g.id)).map(g => { const rs = M.filter(m => m.group === g.id).map(row).join('');
       return rs ? `<tr class="pv-g"><td colspan="${mc.length + 1}"><i style="background:${esc(g.color)}"></i>${esc(g.label)}</td></tr>` + rs : ''; }).join('')}</tbody></table>
-      <p class="pv-note">~ ước tính của CTCK · &gt; mức tối thiểu · ${esc(P.manual.foot || 'RNAV và giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.')}${none.length ? ` Không tìm được số có nguồn mở được: ${none.join(', ')}.` : ''}${MD.note ? ' ' + esc(MD.note) : ''}</p>${Object.entries(MD.companies).filter(([t, c]) => (c.occ || c.gfa) && M.some(m => m.t === t)).map(([t, c]) => `<p class="pv-note"><b>${esc(t)}</b>: ${[c.occ ? `tỷ lệ lấp đầy ${lk(nf(c.occ.v, 1) + '%', c.occ)} (${esc(c.occ.period)})` : '', c.gfa ? `diện tích sàn bán lẻ ${lk(nf(c.gfa.v, 1) + ' nghìn m²', c.gfa)} (${esc(c.gfa.period)})` : ''].filter(Boolean).join(' · ')}.</p>`).join('')}`; };
+      <p class="pv-note">~ ước tính · &gt; mức tối thiểu · ${esc(P.manual.foot || '')}${none.length ? ` Không tìm được số có nguồn mở được: ${none.join(', ')}.` : ''}${MD.note ? ' ' + esc(MD.note) : ''}</p>${Object.entries(MD.companies).filter(([t, c]) => (c.occ || c.gfa) && M.some(m => m.t === t)).map(([t, c]) => `<p class="pv-note"><b>${esc(t)}</b>: ${[c.occ ? `tỷ lệ lấp đầy ${lk(nf(c.occ.v, 1) + '%', c.occ)} (${esc(c.occ.period)})` : '', c.gfa ? `diện tích sàn bán lẻ ${lk(nf(c.gfa.v, 1) + ' nghìn m²', c.gfa)} (${esc(c.gfa.period)})` : ''].filter(Boolean).join(' · ')}.</p>`).join('')}`; };
   const charts = [];
   function draw() {
     charts.forEach(ch => ch.destroy()); charts.length = 0;
