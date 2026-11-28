@@ -100,15 +100,17 @@ const PICT = [
 const FIN = [['sector', 'Tài chính ngành', 'Chỉ số cộng gộp từ BCTC hợp nhất quý theo nhóm mô hình kinh doanh (tổng tử số ÷ tổng mẫu số).'],
   ['listed', 'Doanh nghiệp niêm yết', 'Từng mã: mô hình và biến quyết định, xu hướng tài chính theo quý, kế hoạch – kết quả, P/B rổ mã.'],
   ['valuation', 'Định giá', 'P/B, P/E so với ROE và lợi suất lợi nhuận giữa các mã, số theo phiên.']];
-const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
+// 28/11/2026 người dùng: "ngành BĐS có tab chính sách riêng… bị gộp chung" → Chính sách lại là tab lớn #mt4 (ngoại lệ §42, như Dầu khí §46).
+const ROUTES = [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt4', 'Chính sách'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']];
 // Link cũ: tab → [tab mới, sub-tab, đích cuộn]. #mt4 giữ ?sub=<văn bản> cũ làm thẻ con Chính sách.
 const ALIAS = {mt3: ['mt2', 'output', 're-st-output-px'], mt10: ['mt2', 'input', 're-st-input-capital'], mt12: ['mt2', 'input', 're-st-input-land'],
-  mt4: ['mt2', 'policy'], mt11: ['mt2', 'policy', null, 'docs'], mt5: ['mt1'], mt6: ['mt1'], mt8: ['mt1', 'map', 're-sources'], mt9: ['mt14', 'sector'], mt13: ['mt1']};
+  mt11: ['mt4', null, null, 'docs'], mt5: ['mt1'], mt6: ['mt1'], mt8: ['mt1', 'map', 're-sources'], mt9: ['mt14', 'sector'], mt13: ['mt1']};
 // Khóa sub-tab cũ → [tab, sub-tab mới, đích cuộn, thẻ con Chính sách].
 const SUBALIAS = {
   mt1: {listed: ['mt14', 'listed']},
   mt2: {macro: ['mt2', 'market'], demand: ['mt2', 'output', 're-st-output-tx'], price: ['mt2', 'output', 're-st-output-px'], capital: ['mt2', 'input', 're-st-input-capital'], infra: ['mt2', 'input', 're-st-input-land'],
-    ...Object.fromEntries(POL.map(p => [p.k, ['mt2', 'policy', null, p.k]]))},
+    policy: ['mt4', null], ...Object.fromEntries(POL.map(p => [p.k, ['mt4', null, null, p.k]]))},
+  mt4: Object.fromEntries(POL.map(p => [p.k, ['mt4', null, null, p.k]])),
   mt14: {total: ['mt14', 'sector'], compare: ['mt14', 'listed']},
 };
 
@@ -452,7 +454,7 @@ function openPol(k, push) {
   const subs = TABS.pol; if (!subs) return;
   const hit = subs.find(x => x.s.k === k) || subs[0];
   subs.forEach(x => { const on = x === hit; x.b.setAttribute('aria-selected', String(on)); x.b.tabIndex = on ? 0 : -1; x.p.hidden = !on; });
-  if (push != null) setUrl('mt2', 'policy', hit.s.k, push);
+  if (push != null) setUrl('mt4', null, hit.s.k, push);
   setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
 }
 // Mở tới một phần tử (thẻ, câu hỏi, khâu) ở bất kỳ tab nào: tab lớn → sub-tab → thẻ con Chính sách → mở details → cuộn.
@@ -460,9 +462,9 @@ function goTo(t, push = true, smooth = false) {
   const pane = t?.closest('.majorpane'); if (!pane) return false;
   const key = pane.dataset.tab; showMajor(key);
   const sub = t.closest('[data-re-sub]'), pol = t.closest('[data-re-pol]');
-  if (sub) open(key, sub.dataset.reSub, null);
+  if (sub && key !== 'mt4') open(key, sub.dataset.reSub, null);
   if (pol) openPol(pol.dataset.rePol, null);
-  setUrl(key, sub?.dataset.reSub, pol?.dataset.rePol || (sub?.dataset.reSub === 'policy' ? TABS.pol?.find(x => !x.p.hidden)?.s.k : null), push);
+  setUrl(key, key === 'mt4' ? null : sub?.dataset.reSub, pol?.dataset.rePol || (key === 'mt4' ? TABS.pol?.find(x => !x.p.hidden)?.s.k : null), push);
   for (let d = t.closest('details'); d; d = d.parentElement?.closest('details')) if (!d.matches('.of-rest')) d.open = true;
   if (!t.matches('.pp-pane,.re-pol-pane')) setTimeout(() => t.scrollIntoView({behavior: smooth ? 'smooth' : 'instant', block: 'start'}), 80);
   return true;
@@ -476,9 +478,10 @@ function route() {
   const sa = SUBALIAS[key]?.[sub]; if (sa) { const [k, s, t, p] = sa; key = k; sub = s; target = target || t || null; pol = p || pol; moved = true; }
   if (!ROUTES.some(r => r[0] === key)) { key = 'mt1'; sub = null; }
   showMajor(key);
-  if (TABS[key]) { open(key, sub, null); if (key === 'mt2' && (TABS.mt2.find(x => !x.p.hidden)?.s.k === 'policy')) openPol(pol, null); }
+  if (TABS[key]) open(key, sub, null);
+  if (key === 'mt4') openPol(pol, null);
   const cur = TABS[key]?.find(x => !x.p.hidden)?.s.k || null;
-  setUrl(key, cur, cur === 'policy' ? TABS.pol?.find(x => !x.p.hidden)?.s.k : null, false);
+  setUrl(key, cur, key === 'mt4' ? TABS.pol?.find(x => !x.p.hidden)?.s.k : null, false);
   if (target) { const t = document.getElementById(target); if (t) { if (t.matches('details')) t.open = true; setTimeout(() => t.scrollIntoView({behavior: 'instant', block: 'start'}), 120); } }
   return moved;
 }
@@ -490,7 +493,8 @@ function nav() {
     const p = $(`.majorpane[data-tab="${key}"]`); if (p) { p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', b.id); b.setAttribute('aria-controls', p.id); }
     b.addEventListener('click', () => {
       showMajor(key);
-      if (TABS[key]) { const cur = TABS[key].find(x => !x.p.hidden) || TABS[key][0]; open(key, cur.s.k, true); } else setUrl(key, null, null, true);
+      if (TABS[key]) { const cur = TABS[key].find(x => !x.p.hidden) || TABS[key][0]; open(key, cur.s.k, true); }
+      else if (key === 'mt4') openPol((TABS.pol?.find(x => !x.p.hidden) || TABS.pol?.[0])?.s.k, true); else setUrl(key, null, null, true);
       window.scrollTo({top: 0, behavior: 'instant'});
     });
     b.addEventListener('keydown', e => { if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return; e.preventDefault();
@@ -510,7 +514,7 @@ function nav() {
     e.preventDefault(); goTo(t, true, !!a.closest('.pp-flow'));
   });
 }
-window.ReFrame = {open: (key, sub) => { showMajor(key); open(key, sub, true); }, policy: k => { showMajor('mt2'); open('mt2', 'policy', null); openPol(k, true); $('#of-mt2-policy')?.scrollIntoView({behavior: 'smooth', block: 'start'}); }, goTo: id => goTo(document.getElementById(id))};
+window.ReFrame = {open: (key, sub) => { showMajor(key); open(key, sub, true); }, policy: k => { showMajor('mt4'); openPol(k, true); $('#of-mt2-policy')?.scrollIntoView({behavior: 'smooth', block: 'start'}); }, goTo: id => goTo(document.getElementById(id))};
 
 // Thanh sub-tab dính ngay dưới thanh tab chính khi cuộn.
 function stickySub() {
@@ -617,8 +621,14 @@ function run() {
   HIDE_SEL.forEach(q => $$(q).forEach(n => { n.hidden = true; n.classList.add('of-hidden-legacy'); }));
   // Dựng hết các tab (dời thẻ) rồi mới thay nội dung pane: tab sau còn lấy thẻ nằm trong pane cũ của tab khác.
   const pol = buildPolicy(), pic = buildPicture(pol.box), ov = buildOverview();
-  if (pol.pane) { restOf(pol.legacy, pol.box, pol.rest); pol.pane.replaceChildren(); }
+  if (pol.pane) restOf(pol.legacy, pol.box, pol.rest);
   if (pic) { restOf(pic.legacy, pic.sec, pic.rest); pic.pane.replaceChildren(pic.sec); }
+  // Tab lớn Chính sách: dời sub-tab Chính sách (đã dựng trong Bức tranh ngành) sang pane #mt4; ẩn nút sub-tab và nút "Tiếp" trỏ tới nó.
+  if (pol.pane) { const pp = $('#of-mt2-policy');
+    if (pp) { pp.hidden = false; const k = pp.querySelector('.pp-k'); if (k) k.hidden = true; const box = el('section', 'section of-section re-pp-sec'); box.append(pp); pol.pane.replaceChildren(box); }
+    const tb = $('#of-mt2-policy-tab'); if (tb) { tb.hidden = true; tb.style.display = 'none'; }
+    $$('.of-next').forEach(b => { if (/Chính sách/.test(b.textContent)) b.hidden = true; });
+    if (TABS.mt2) TABS.mt2 = TABS.mt2.filter(x => x.s.k !== 'policy'); }
   if (ov) { restOf(ov.legacy, ov.sec, ov.rest); ov.pane.replaceChildren(ov.sec); TABS.mt1.forEach(x => balance(x.body)); sources(TABS.mt1[0].body); }
   TABS.pol?.forEach(x => balance(x.body));
   finHost = financePane();

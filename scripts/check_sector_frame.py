@@ -27,7 +27,7 @@ SECTORS = ['Dien', 'Thep', 'Duoc', 'Chan-nuoi', 'Dau-khi', 'Ca-tra', 'Tom', 'Van
            'O-to-xe-may', 'Sugar', 'Cao-su', 'Phan-bon', 'Xut-clo', 'Vien-thong']
 TABS = ['Tổng quan ngành', 'Bức tranh ngành', 'Tài chính ngành', 'Chủ đề nóng']
 # Ngoại lệ người dùng chốt: Dầu khí giữ tab Chính sách riêng (28/11/2026, "dầu khí để tab chính sách riêng mà").
-TABS_BY = {'Dau-khi': ['Tổng quan ngành', 'Bức tranh ngành', 'Chính sách', 'Tài chính ngành', 'Chủ đề nóng']}
+TABS_BY = {s: ['Tổng quan ngành', 'Bức tranh ngành', 'Chính sách', 'Tài chính ngành', 'Chủ đề nóng'] for s in ('Dau-khi', 'Bat-dong-san')}
 FIN_SUBS = ['Tài chính ngành', 'Doanh nghiệp niêm yết', 'Định giá']
 CHROMES = [os.environ.get('CHROME', ''),
            r'C:\Program Files\Google\Chrome\Application\chrome.exe',

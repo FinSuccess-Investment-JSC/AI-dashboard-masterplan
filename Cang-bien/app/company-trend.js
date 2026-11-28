@@ -113,7 +113,9 @@ function mount(host,{sector}){
   const addMetric=([k,label])=>{const b=make('button','tabbtn',label);b.type='button';b.setAttribute('role','tab');b.dataset.k=k;if(!has(k)){b.disabled=true;b.title='Không có dữ liệu cho ngành này'}b.onclick=()=>{state.metric=k;update()};metricRow.append(b)};
   METRICS.forEach(addMetric);
   // BCTC của trang (window.<NGÀNH>_FIN) nạp sau khối này: thêm chỉ tiêu riêng ngành khi trang nạp xong.
-  if(!XMET.length&&document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{const more=sectorExtra(data,base);if(!more.length)return;METRICS.push(...more);fillYear(more);more.forEach(addMetric);update()});
+  // Script defer chạy khi readyState = 'interactive' (trước DOMContentLoaded): chờ trang nạp xong (load) rồi thêm; đã nạp xong thì thêm ngay.
+  const late=()=>{if(METRICS.length>BASE_METRICS.length)return;const more=sectorExtra(data,base);if(!more.length)return;METRICS.push(...more);fillYear(more);more.forEach(addMetric);update()};
+  if(!XMET.length){if(document.readyState==='complete')setTimeout(late,0);else{document.addEventListener('DOMContentLoaded',late);window.addEventListener('load',late)}}
   const typeRow=make('div','ct-types');typeRow.setAttribute('role','group');typeRow.setAttribute('aria-label','Loại biểu đồ');
   TYPES.forEach(([k,label])=>{const b=make('button','',label);b.type='button';b.dataset.k=k;b.onclick=()=>{state.type=k;update()};typeRow.append(b)});
   top.append(metricRow,typeRow);
