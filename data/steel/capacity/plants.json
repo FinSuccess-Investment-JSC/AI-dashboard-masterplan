@@ -1,0 +1,1979 @@
+{
+ "meta": {
+  "title": "Năng lực sản xuất thép Việt Nam theo nhà máy",
+  "checked_at": "2026-11-28",
+  "capacity_basis": "công suất thép thô danh nghĩa (nominal crude steel capacity) theo Global Energy Monitor cho mọi nhà máy luyện thép; công suất doanh nghiệp công bố chỉ hiện ở chi tiết, không cộng vào tổng; công suất luyện gang (BF) và công suất cán theo sản phẩm tách riêng",
+  "source_note": "Global Energy Monitor – Global Iron and Steel Tracker (trang nhà máy trên gem.wiki), Hòa Phát, VAS, VNSteel, công bố doanh nghiệp.",
+  "coverage_note": "dữ liệu khởi tạo, chưa phải toàn bộ danh mục nhà máy thép Việt Nam; các tổng trên trang là tổng của phạm vi này, không phải tổng toàn ngành.",
+  "seed_note": "Số công suất và tọa độ của nhà máy luyện thép lấy từ đề bài người dùng gửi 28/11/2026 (tổng hợp từ GEM). Trang gem.wiki chặn truy cập tự động (Cloudflare) nên chưa mở lại được để đối chiếu; mức xác minh ghi 'Đối chiếu một phần'.",
+  "licence_note": "Dữ liệu GEM được trích dẫn là phát hành theo CC BY 4.0 (chưa mở được trang điều khoản để xác nhận); ghi công Global Energy Monitor ở chân trang.",
+  "admin_note": "Tỉnh hiện hành theo Nghị quyết 202/2025/QH15 (sắp xếp đơn vị hành chính cấp tỉnh, hiệu lực 01/07/2025); địa danh trong cột địa điểm giữ tên cũ để đối chiếu với nguồn nhà máy.",
+  "gaps": [
+   "Pomina Steel 3 (Phú Mỹ, tọa độ 10.577042, 107.040324): chưa xác minh công suất, trạng thái từng lò (BF, EAF) nên chưa đưa lên bản đồ.",
+   "VAS An Hưng Tường (Bến Cát, Bình Dương cũ, IF): chưa có công suất luyện thép và tọa độ.",
+   "VAS Tuệ Minh (Bắc Tân Uyên, Bình Dương cũ, EAF): chưa xác minh đang vận hành hay tạm dừng.",
+   "Shengli Steel (An Bài, Thái Bình cũ, EAF): chưa có công suất và tọa độ.",
+   "Gang thép Lào Cai, Gang thép Tuyên Quang (BF–BOF): chưa xác minh công suất hiện hữu.",
+   "ASEAN Steel Hòa Phú, Hòa Phát Hưng Yên (phân biệt luyện phôi và cán), Long Sơn Phù Mỹ (Bình Định), DST Nghi Sơn, Pomina 2: chưa có số.",
+   "Formosa mở rộng: chưa xác minh phần công suất tăng thêm; VinMetal Hà Tĩnh: mới có công suất sản phẩm thiết kế công bố (5 Mtpa), chưa có công suất thép thô.",
+   "Sản lượng thực tế theo nhà máy chưa có nên chưa tính hiệu suất sử dụng công suất.",
+   "Công suất HPG Dung Quất: dùng 14,499 Mtpa BOF danh nghĩa theo GEM để cùng định nghĩa với nhà máy khác; HPG công bố 12 Mtpa cho khu liên hợp (hiện ở chi tiết).",
+   "Công suất theo sản phẩm: Formosa (HRC, thép dây), Hòa Phát Hải Dương, các nhà máy ống Hòa Phát ngoài Long An, Hoa Sen tách theo sản phẩm, Nam Kim cán nguội, VGS, Pomina, POSCO Yamato (thép hình), VAS theo nhà máy chưa có số từ doanh nghiệp hoặc cơ quan quản lý.",
+   "Nhà máy cán, tôn mạ, ống chưa có tọa độ đã xác minh (không đặt theo tâm tỉnh) nên chưa vẽ trên bản đồ; vẫn tính trong ô số và biểu đồ ở chế độ Sản phẩm thép.",
+   "Một số nguồn công suất sản phẩm là báo chí dẫn doanh nghiệp hoặc đã cũ (POSCO Việt Nam, CSVC 2009; Hoa Sen Yên Bái 2018)."
+  ]
+ },
+ "sources": {
+  "gem_dq": {
+   "label": "GEM wiki – Hòa Phát Dung Quất",
+   "url": "https://www.gem.wiki/Hoa_Phat_Dung_Quat_steel_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "gem_hd": {
+   "label": "GEM wiki – Hòa Phát Hải Dương",
+   "url": "https://www.gem.wiki/Hoa_Phat_Hai_Duong_Steel_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "gem_fhs": {
+   "label": "GEM wiki – Formosa Hà Tĩnh",
+   "url": "https://www.gem.wiki/Formosa_Ha_Tinh_Steel_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "gem_vasns": {
+   "label": "GEM wiki – VAS Nghi Sơn",
+   "url": "https://www.gem.wiki/VAS_Nghi_Son_Cast_Iron_and_Steel_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "gem_vks": {
+   "label": "GEM wiki – Vina Kyoei Phú Mỹ",
+   "url": "https://www.gem.wiki/Vina_Kyoei_Steel_Phu_My_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "gem_posco": {
+   "label": "GEM wiki – POSCO Yamato Vina Phú Mỹ",
+   "url": "https://www.gem.wiki/POSCO_Vietnam_Phu_My_steel_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "gem_tungho": {
+   "label": "GEM wiki – Tung Ho Phú Mỹ",
+   "url": "https://www.gem.wiki/Tung_Ho_Steel_Phu_My_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "gem_sscv": {
+   "label": "GEM wiki – Thép Miền Nam (VNSteel)",
+   "url": "https://www.gem.wiki/VNSteel_Southern_Steel_Company_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "gem_vis": {
+   "label": "GEM wiki – Thép Việt Ý Phố Nối",
+   "url": "https://www.gem.wiki/Vietnam_Italy_Steel_Pho_Noi_steel_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "gem_tisco": {
+   "label": "GEM wiki – Gang thép Thái Nguyên",
+   "url": "https://www.gem.wiki/Thai_Nguyen_Iron_and_Steel_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "gem_vinaone": {
+   "label": "GEM wiki – Vina One Bến Lức",
+   "url": "https://www.gem.wiki/Vina_One_Steel_Ben_Luc_steel_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "gem_vjs": {
+   "label": "GEM wiki – Việt Nhật VJS Nam Cầu Kiền",
+   "url": "https://www.gem.wiki/Viet_Nhat_VJS_Nam_Cau_Kien_steel_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "gem_vinmetal": {
+   "label": "GEM wiki – VinMetal Hà Tĩnh",
+   "url": "https://www.gem.wiki/VinMetal_Ha_Tinh_steel_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "gem_vinaroma": {
+   "label": "GEM wiki – Vina Roma Quảng Trị",
+   "url": "https://www.gem.wiki/Vina_Roma_Quang_Tri_steel_plant",
+   "publisher": "Global Energy Monitor"
+  },
+  "hpg_ar2025": {
+   "label": "Hòa Phát – Báo cáo thường niên 2025",
+   "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/annual-report-2025.pdf",
+   "publisher": "Hòa Phát"
+  },
+  "vas": {
+   "label": "VAS Group",
+   "url": "https://vasgroup.vn/",
+   "publisher": "VAS Group"
+  },
+  "brief": {
+   "label": "Đề bài người dùng 28/11/2026 (số tổng hợp từ GEM, chưa mở lại trang)",
+   "url": "https://globalenergymonitor.org/projects/global-iron-steel-tracker/",
+   "publisher": "Global Energy Monitor"
+  },
+  "qn_dq2": {
+   "label": "Sở KH&CN Quảng Ngãi – văn bản thẩm định Dung Quất 2 (01/04/2025)",
+   "url": "https://skh.quangngai.gov.vn/upload/2006758/20250401/CV%20tham%20dinh%20Hoa%20Phat%202%20(dieu%20chinh).pdf",
+   "date": "2025-04-01",
+   "publisher": "Sở KH&CN Quảng Ngãi"
+  },
+  "hpg_ar2024": {
+   "label": "Hòa Phát – Báo cáo thường niên 2024",
+   "url": "https://static2.vietstock.vn/vietstock/2025/4/17/20250417_hpg_250417_annual_report_2024.pdf",
+   "date": "2025-04-17",
+   "publisher": "Hòa Phát"
+  },
+  "hsg_2025": {
+   "label": "CafeLand dẫn tài liệu ĐHĐCĐ Hoa Sen (28/02/2025)",
+   "url": "https://cafeland.vn/tin-tuc/tap-doan-hoa-sen-tiet-lo-ke-hoach-dau-tu-moi-tai-dong-nai-de-don-song-san-bay-long-thanh-135160.html",
+   "date": "2025-02-28",
+   "publisher": "báo chí dẫn doanh nghiệp"
+  },
+  "hsg_bd": {
+   "label": "Tạp chí Công Thương – Hoa Sen Nhơn Hội (21/02/2025)",
+   "url": "https://tapchicongthuong.vn/tap-doan-hoa-sen--hsg--nang-cong-suat-nha-may-ton-ma-lon-nhat-mien-trung-them-81-133359.htm",
+   "date": "2025-02-21",
+   "publisher": "báo chí dẫn doanh nghiệp"
+  },
+  "hsg_yb": {
+   "label": "Thương hiệu & Công luận – Hoa Sen Yên Bái (22/05/2018)",
+   "url": "https://thuonghieucongluan.com.vn/tap-doan-hoa-sen-khanh-thanh-nm-vat-lieu-xay-dung-hoa-sen-yen-bai-a53884.html",
+   "date": "2018-05-22",
+   "publisher": "báo chí dẫn doanh nghiệp"
+  },
+  "nkg_2026": {
+   "label": "Báo Pháp luật – ĐHĐCĐ Nam Kim 2026 (27/04/2026)",
+   "url": "https://doanhnhan.baophapluat.vn/dhdcd-thep-nam-kim-nkg-2026-nha-may-phu-my-sap-van-hanh-chot-ke-hoach-loi-nhuan-400-ty-dong.html",
+   "date": "2026-04-27",
+   "publisher": "báo chí dẫn doanh nghiệp"
+  },
+  "gda": {
+   "label": "Tạp chí Công Thương – Tôn Đông Á, dự án thép dẹt 1,2 triệu tấn",
+   "url": "https://tapchicongthuong.vn/ton-dong-a--gda--ky-vong-dot-pha-tu-du-an-nha-may-thep-det-1-2-trieu-tan-131550.htm",
+   "date": null,
+   "publisher": "báo chí dẫn doanh nghiệp"
+  },
+  "posco_enc": {
+   "label": "POSCO E&C – dự án nhà máy cán nguội POSCO Việt Nam (2009)",
+   "url": "https://www.poscoenc.com:446/en/business_areas/project.aspx?brpt=157",
+   "date": "2009-09",
+   "publisher": "POSCO E&C"
+  },
+  "csvc": {
+   "label": "Báo Chính phủ – cấp phép dự án CSVC (26/05/2009)",
+   "url": "https://en.baochinhphu.vn/new-large-scale-steel-project-licensed-1111549.htm",
+   "date": "2009-05-26",
+   "publisher": "Báo Chính phủ"
+  }
+ },
+ "plants": [
+  {
+   "plant_id": "HPG_DQ",
+   "plant_name": "Hòa Phát Dung Quất 1+2",
+   "plant_name_en": "Hoa Phat Dung Quat steel plant",
+   "aliases": [],
+   "steelmaking": true,
+   "owner": "CTCP Thép Hòa Phát Dung Quất",
+   "parent_company": "Tập đoàn Hòa Phát",
+   "ticker": "HPG",
+   "company_group": "HPG",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "Tập đoàn Hòa Phát",
+     "ticker": "HPG",
+     "pct": null
+    }
+   ],
+   "location": "KKT Dung Quất, Quảng Ngãi",
+   "province": "Quảng Ngãi",
+   "province_current": "Quảng Ngãi",
+   "region": "C",
+   "latitude": 15.37768,
+   "longitude": 108.793321,
+   "coordinate_accuracy": "exact",
+   "status": "operating",
+   "status_source": "GEM",
+   "start_year": 2019,
+   "technology": [
+    "BF-BOF"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": 14.499,
+    "bof_mtpa": 14.499,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": 10.4,
+    "company_reported_capacity_mtpa": 12,
+    "company_reported_definition": "công suất khu liên hợp Hòa Phát công bố (Dung Quất 1 + 2)",
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "HRC",
+    "thép chất lượng cao",
+    "thép xây dựng",
+    "phôi"
+   ],
+   "products_group": [
+    "hrc",
+    "rebar"
+   ],
+   "product_capacity": {
+    "hrc": {
+     "mtpa": 8.6,
+     "definition": "Dung Quất 1: 3,0 (BCTN 2024) + Dung Quất 2: 5,6 (văn bản thẩm định); khớp mức 8,6 Mtpa HRC HPG nêu sau khi xong Dung Quất 2",
+     "sources": [
+      "hpg_ar2024",
+      "qn_dq2"
+     ]
+    },
+    "rebar": {
+     "mtpa": 3.5,
+     "definition": "Dung Quất 1: 3,0 thép xây dựng chất lượng cao (BCTN 2024) + Dung Quất 2: 0,5 thép dây (văn bản thẩm định)",
+     "sources": [
+      "hpg_ar2024",
+      "qn_dq2"
+     ]
+    }
+   },
+   "units": [
+    {
+     "name": "Dung Quất 1",
+     "stage": "Khu liên hợp luyện – cán",
+     "tech": "BF-BOF",
+     "mtpa": null,
+     "status": "operating",
+     "year": "2019–2020",
+     "note": "Cán: 3,0 Mtpa HRC + 3,0 Mtpa thép xây dựng chất lượng cao (BCTN 2024)."
+    },
+    {
+     "name": "Dung Quất 2",
+     "stage": "Khu liên hợp luyện – cán",
+     "tech": "BF-BOF",
+     "mtpa": null,
+     "status": "operating",
+     "year": "2025",
+     "note": "Cán: 5,6 Mtpa HRC + 0,5 Mtpa thép dây (văn bản thẩm định 01/04/2025). Không cộng luyện gang, luyện thép và cán với nhau."
+    }
+   ],
+   "raw_materials": "quặng sắt, than luyện cốc",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "brief",
+    "gem_dq",
+    "hpg_ar2025",
+    "hpg_ar2024",
+    "qn_dq2"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Một bubble cho cả khu liên hợp; bấm để xem từng phân kỳ. Không dùng công suất toàn tập đoàn HPG cho riêng Dung Quất. HPG từng nêu khoảng 9 Mtpa HRC và thép chất lượng cao; trên trang dùng 8,6 Mtpa HRC theo BCTN 2024."
+  },
+  {
+   "plant_id": "FHS",
+   "plant_name": "Formosa Hà Tĩnh",
+   "plant_name_en": "Formosa Ha Tinh Steel plant",
+   "aliases": [
+    "Hung Nghiep Formosa"
+   ],
+   "steelmaking": true,
+   "owner": "Công ty TNHH Gang thép Hưng Nghiệp Formosa Hà Tĩnh",
+   "parent_company": "Tập đoàn Formosa Plastics",
+   "ticker": null,
+   "company_group": "Formosa",
+   "ownership_group": "fdi",
+   "owners": [
+    {
+     "name": "Formosa Plastics Group và các cổ đông",
+     "ticker": null,
+     "pct": null
+    }
+   ],
+   "location": "KKT Vũng Áng, Hà Tĩnh",
+   "province": "Hà Tĩnh",
+   "province_current": "Hà Tĩnh",
+   "region": "C",
+   "latitude": 18.036333,
+   "longitude": 106.428271,
+   "coordinate_accuracy": "exact",
+   "status": "operating",
+   "status_source": "GEM",
+   "start_year": 2017,
+   "technology": [
+    "BF-BOF"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": 7.5,
+    "bof_mtpa": 7.5,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "HRC",
+    "thép dây",
+    "phôi, bán thành phẩm"
+   ],
+   "products_group": [
+    "hrc",
+    "rebar"
+   ],
+   "product_capacity": {},
+   "raw_materials": "quặng sắt, than luyện cốc",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "brief",
+    "gem_fhs"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Không đưa mức sau mở rộng (10,4 Mtpa) vào công suất đang vận hành khi chưa xác nhận hoàn thành."
+  },
+  {
+   "plant_id": "HPG_HD",
+   "plant_name": "Hòa Phát Hải Dương",
+   "plant_name_en": "Hoa Phat Hai Duong Steel plant",
+   "aliases": [],
+   "steelmaking": true,
+   "owner": "CTCP Thép Hòa Phát Hải Dương",
+   "parent_company": "Tập đoàn Hòa Phát",
+   "ticker": "HPG",
+   "company_group": "HPG",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "Tập đoàn Hòa Phát",
+     "ticker": "HPG",
+     "pct": null
+    }
+   ],
+   "location": "Kinh Môn, Hải Dương cũ",
+   "province": "Hải Dương",
+   "province_current": "Hải Phòng",
+   "region": "N",
+   "latitude": 21.01536,
+   "longitude": 106.536023,
+   "coordinate_accuracy": "exact",
+   "status": "operating",
+   "status_source": "GEM",
+   "start_year": null,
+   "technology": [
+    "BF-BOF"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": 2.525,
+    "bof_mtpa": 2.525,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "thép xây dựng",
+    "thép cuộn",
+    "phôi"
+   ],
+   "products_group": [
+    "rebar"
+   ],
+   "product_capacity": {},
+   "raw_materials": "quặng sắt, than luyện cốc",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "brief",
+    "gem_hd"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial"
+  },
+  {
+   "plant_id": "VAS_NS",
+   "plant_name": "VAS Nghi Sơn",
+   "plant_name_en": "VAS Nghi Son Cast Iron and Steel plant",
+   "aliases": [],
+   "steelmaking": true,
+   "owner": "CTCP Gang thép Nghi Sơn",
+   "parent_company": "VAS Group",
+   "ticker": null,
+   "company_group": "VAS",
+   "ownership_group": "unlisted",
+   "owners": [
+    {
+     "name": "VAS Group",
+     "ticker": null,
+     "pct": null
+    }
+   ],
+   "location": "KKT Nghi Sơn, Thanh Hóa",
+   "province": "Thanh Hóa",
+   "province_current": "Thanh Hóa",
+   "region": "C",
+   "latitude": 19.326924,
+   "longitude": 105.777449,
+   "coordinate_accuracy": "exact",
+   "status": "operating",
+   "status_source": "GEM",
+   "start_year": 2018,
+   "technology": [
+    "EAF",
+    "IF"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": 3.15,
+    "bof_mtpa": null,
+    "eaf_mtpa": 1.0,
+    "if_mtpa": 2.15,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "phôi thép",
+    "thép xây dựng",
+    "thép cuộn"
+   ],
+   "products_group": [
+    "rebar"
+   ],
+   "product_capacity": {},
+   "raw_materials": "thép phế và điện",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "brief",
+    "gem_vasns",
+    "vas"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Tổng 3,15 Mtpa = EAF 1,0 + IF 2,15 (EAF ~31,7%, IF ~68,3%); không cộng tổng với hai thành phần."
+  },
+  {
+   "plant_id": "VKS",
+   "plant_name": "Vina Kyoei",
+   "plant_name_en": "Vina Kyoei Steel Phu My plant",
+   "aliases": [],
+   "steelmaking": true,
+   "owner": "Công ty TNHH Thép Vina Kyoei",
+   "parent_company": "Liên doanh Kyoei Steel – VNSteel",
+   "ticker": null,
+   "company_group": "Vina Kyoei (liên doanh)",
+   "ownership_group": "jv",
+   "owners": [
+    {
+     "name": "Kyoei Steel",
+     "ticker": null,
+     "pct": 45
+    },
+    {
+     "name": "VNSteel",
+     "ticker": "TVN",
+     "pct": 40
+    },
+    {
+     "name": "Mitsui",
+     "ticker": null,
+     "pct": 9
+    },
+    {
+     "name": "Marubeni-Itochu Steel",
+     "ticker": null,
+     "pct": 6
+    }
+   ],
+   "location": "Phú Mỹ, Bà Rịa – Vũng Tàu cũ",
+   "province": "Bà Rịa – Vũng Tàu",
+   "province_current": "TP. Hồ Chí Minh",
+   "region": "S",
+   "latitude": 10.601423,
+   "longitude": 107.040679,
+   "coordinate_accuracy": "exact",
+   "status": "operating",
+   "status_source": "GEM",
+   "start_year": null,
+   "technology": [
+    "EAF"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": 1.0,
+    "bof_mtpa": null,
+    "eaf_mtpa": 1.0,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "thép xây dựng"
+   ],
+   "products_group": [
+    "rebar"
+   ],
+   "product_capacity": {},
+   "raw_materials": "thép phế và điện",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "brief",
+    "gem_vks"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Công suất vật lý 1 Mtpa; quy đổi theo tỷ lệ sở hữu của VNSteel (40%) là 0,4 Mtpa. Biểu đồ doanh nghiệp xếp theo pháp nhân liên doanh, không cộng vào VNSteel."
+  },
+  {
+   "plant_id": "POSCO_YV",
+   "plant_name": "POSCO Yamato Vina",
+   "plant_name_en": "POSCO Vietnam Phu My steel plant",
+   "aliases": [],
+   "steelmaking": true,
+   "owner": "Công ty TNHH POSCO Yamato Vina",
+   "parent_company": "POSCO, Yamato Kogyo",
+   "ticker": null,
+   "company_group": "POSCO",
+   "ownership_group": "fdi",
+   "owners": [
+    {
+     "name": "POSCO",
+     "ticker": null,
+     "pct": null
+    },
+    {
+     "name": "Yamato Kogyo",
+     "ticker": null,
+     "pct": null
+    }
+   ],
+   "location": "Phú Mỹ, Bà Rịa – Vũng Tàu cũ",
+   "province": "Bà Rịa – Vũng Tàu",
+   "province_current": "TP. Hồ Chí Minh",
+   "region": "S",
+   "latitude": 10.560316,
+   "longitude": 107.02684,
+   "coordinate_accuracy": "exact",
+   "status": "operating",
+   "status_source": "GEM",
+   "start_year": null,
+   "technology": [
+    "EAF"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": 1.0,
+    "bof_mtpa": null,
+    "eaf_mtpa": 1.0,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "thép hình"
+   ],
+   "products_group": [
+    "section"
+   ],
+   "product_capacity": {},
+   "raw_materials": "thép phế và điện",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "brief",
+    "gem_posco"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial"
+  },
+  {
+   "plant_id": "TUNG_HO",
+   "plant_name": "Tung Ho Steel Việt Nam",
+   "plant_name_en": "Tung Ho Steel Phu My plant",
+   "aliases": [],
+   "steelmaking": true,
+   "owner": "Công ty TNHH Thép Tung Ho Việt Nam",
+   "parent_company": "Tung Ho Steel (Đài Loan)",
+   "ticker": null,
+   "company_group": "Tung Ho",
+   "ownership_group": "fdi",
+   "owners": [
+    {
+     "name": "Tung Ho Steel",
+     "ticker": null,
+     "pct": null
+    }
+   ],
+   "location": "Phú Mỹ, Bà Rịa – Vũng Tàu cũ",
+   "province": "Bà Rịa – Vũng Tàu",
+   "province_current": "TP. Hồ Chí Minh",
+   "region": "S",
+   "latitude": 10.551445,
+   "longitude": 107.04368,
+   "coordinate_accuracy": "exact",
+   "status": "operating",
+   "status_source": "GEM",
+   "start_year": null,
+   "technology": [
+    "EAF"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": 1.0,
+    "bof_mtpa": null,
+    "eaf_mtpa": 1.0,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "thép xây dựng"
+   ],
+   "products_group": [
+    "rebar"
+   ],
+   "product_capacity": {},
+   "raw_materials": "thép phế và điện",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "brief",
+    "gem_tungho"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial"
+  },
+  {
+   "plant_id": "SSCV",
+   "plant_name": "Thép Miền Nam",
+   "plant_name_en": "VNSteel Southern Steel Company plant",
+   "aliases": [
+    "VNSteel Southern Steel Phu My"
+   ],
+   "steelmaking": true,
+   "owner": "Công ty Thép Miền Nam – VNSteel",
+   "parent_company": "Tổng công ty Thép Việt Nam (VNSteel)",
+   "ticker": "TVN",
+   "company_group": "VNSteel",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "VNSteel",
+     "ticker": "TVN",
+     "pct": null
+    }
+   ],
+   "location": "Phú Mỹ, Bà Rịa – Vũng Tàu cũ",
+   "province": "Bà Rịa – Vũng Tàu",
+   "province_current": "TP. Hồ Chí Minh",
+   "region": "S",
+   "latitude": 10.576597,
+   "longitude": 107.028995,
+   "coordinate_accuracy": "exact",
+   "status": "operating",
+   "status_source": "GEM",
+   "start_year": null,
+   "technology": [
+    "EAF"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": 0.55,
+    "bof_mtpa": null,
+    "eaf_mtpa": 0.55,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "phôi",
+    "thép xây dựng"
+   ],
+   "products_group": [
+    "rebar"
+   ],
+   "product_capacity": {},
+   "raw_materials": "thép phế và điện",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "brief",
+    "gem_sscv"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial"
+  },
+  {
+   "plant_id": "VIS",
+   "plant_name": "Thép Việt Ý",
+   "plant_name_en": "Vietnam Italy Steel Pho Noi steel plant",
+   "aliases": [],
+   "steelmaking": true,
+   "owner": "CTCP Thép Việt Ý",
+   "parent_company": "Kyoei Steel",
+   "ticker": "VIS",
+   "company_group": "Thép Việt Ý (VIS)",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "Kyoei Steel",
+     "ticker": null,
+     "pct": null
+    }
+   ],
+   "location": "KCN Phố Nối, Hưng Yên",
+   "province": "Hưng Yên",
+   "province_current": "Hưng Yên",
+   "region": "N",
+   "latitude": 20.946428,
+   "longitude": 106.025454,
+   "coordinate_accuracy": "exact",
+   "status": "operating",
+   "status_source": "GEM",
+   "start_year": null,
+   "technology": [
+    "EAF"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": 0.552,
+    "bof_mtpa": null,
+    "eaf_mtpa": 0.552,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "thép xây dựng"
+   ],
+   "products_group": [
+    "rebar"
+   ],
+   "product_capacity": {},
+   "raw_materials": "thép phế và điện",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "brief",
+    "gem_vis"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial"
+  },
+  {
+   "plant_id": "TISCO",
+   "plant_name": "Gang thép Thái Nguyên",
+   "plant_name_en": "Thai Nguyen Iron and Steel plant",
+   "aliases": [
+    "TISCO"
+   ],
+   "steelmaking": true,
+   "owner": "CTCP Gang thép Thái Nguyên",
+   "parent_company": "VNSteel",
+   "ticker": "TIS",
+   "company_group": "TISCO",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "VNSteel",
+     "ticker": "TVN",
+     "pct": null
+    }
+   ],
+   "location": "TP. Thái Nguyên",
+   "province": "Thái Nguyên",
+   "province_current": "Thái Nguyên",
+   "region": "N",
+   "latitude": 21.557484,
+   "longitude": 105.8728,
+   "coordinate_accuracy": "exact",
+   "status": "operating",
+   "status_source": "GEM",
+   "start_year": null,
+   "technology": [
+    "EAF"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": 0.3,
+    "bof_mtpa": null,
+    "eaf_mtpa": 0.3,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": 0.3,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "thép xây dựng",
+    "thép hình"
+   ],
+   "products_group": [
+    "rebar",
+    "section"
+   ],
+   "product_capacity": {},
+   "raw_materials": "thép phế, gang lỏng và điện",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "brief",
+    "gem_tisco"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Luyện gang BF 0,3 Mtpa không cộng vào thép thô. BOF 0,5 Mtpa thuộc dự án giai đoạn 2, tách riêng."
+  },
+  {
+   "plant_id": "VINA_ONE",
+   "plant_name": "Thép Vina One",
+   "plant_name_en": "Vina One Steel Ben Luc steel plant",
+   "aliases": [],
+   "steelmaking": true,
+   "owner": "CTCP Sản xuất Thép Vina One",
+   "parent_company": "Vina One",
+   "ticker": null,
+   "company_group": "Vina One",
+   "ownership_group": "unlisted",
+   "owners": [
+    {
+     "name": "Vina One",
+     "ticker": null,
+     "pct": null
+    }
+   ],
+   "location": "Bến Lức, Long An cũ",
+   "province": "Long An",
+   "province_current": "Tây Ninh",
+   "region": "S",
+   "latitude": 10.636835,
+   "longitude": 106.517595,
+   "coordinate_accuracy": "exact",
+   "status": "operating",
+   "status_source": "GEM",
+   "start_year": null,
+   "technology": [
+    "IF"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": 1.2,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": 1.2,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "phôi",
+    "thép ống, hộp"
+   ],
+   "products_group": [
+    "pipe"
+   ],
+   "product_capacity": {},
+   "raw_materials": "thép phế và điện",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "brief",
+    "gem_vinaone"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial"
+  },
+  {
+   "plant_id": "VJS",
+   "plant_name": "Thép Việt Nhật VJS",
+   "plant_name_en": "Viet Nhat VJS Nam Cau Kien steel plant",
+   "aliases": [],
+   "steelmaking": true,
+   "owner": "CTCP Thép Việt Nhật",
+   "parent_company": "VJS",
+   "ticker": null,
+   "company_group": "VJS",
+   "ownership_group": "unlisted",
+   "owners": [
+    {
+     "name": "Thép Việt Nhật",
+     "ticker": null,
+     "pct": null
+    }
+   ],
+   "location": "KCN Nam Cầu Kiền, Hải Phòng",
+   "province": "Hải Phòng",
+   "province_current": "Hải Phòng",
+   "region": "N",
+   "latitude": 20.90553,
+   "longitude": 106.628701,
+   "coordinate_accuracy": "exact",
+   "status": "operating",
+   "status_source": "GEM",
+   "start_year": null,
+   "technology": [
+    "IF"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": 0.5,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": 0.5,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "thép xây dựng"
+   ],
+   "products_group": [
+    "rebar"
+   ],
+   "product_capacity": {},
+   "raw_materials": "thép phế và điện",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "brief",
+    "gem_vjs"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial"
+  },
+  {
+   "plant_id": "HPG_PN",
+   "plant_name": "Tôn Hòa Phát Phố Nối",
+   "aliases": [],
+   "steelmaking": false,
+   "owner": "Công ty TNHH Tôn Hòa Phát",
+   "parent_company": "Tập đoàn Hòa Phát",
+   "ticker": "HPG",
+   "company_group": "HPG",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "Tập đoàn Hòa Phát",
+     "ticker": "HPG",
+     "pct": null
+    }
+   ],
+   "location": "KCN Phố Nối A, Văn Lâm, Hưng Yên",
+   "province": "Hưng Yên",
+   "province_current": "Hưng Yên",
+   "region": "N",
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "operating",
+   "status_source": "doanh nghiệp",
+   "start_year": null,
+   "technology": [
+    "Rolling"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": null,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "tôn mạ"
+   ],
+   "products_group": [
+    "coated"
+   ],
+   "product_capacity": {
+    "coated": {
+     "mtpa": 0.4,
+     "definition": "công suất khi thành lập (BCTN 2024)",
+     "sources": [
+      "hpg_ar2024"
+     ]
+    }
+   },
+   "raw_materials": "HRC, kẽm/nhôm kẽm (tôn mạ), thép cuộn",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "hpg_ar2024"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ; vẫn tính trong ô số và biểu đồ."
+  },
+  {
+   "plant_id": "HPG_PIPE_LA",
+   "plant_name": "Ống thép Hòa Phát Long An",
+   "aliases": [],
+   "steelmaking": false,
+   "owner": "Công ty TNHH Ống thép Hòa Phát",
+   "parent_company": "Tập đoàn Hòa Phát",
+   "ticker": "HPG",
+   "company_group": "HPG",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "Tập đoàn Hòa Phát",
+     "ticker": "HPG",
+     "pct": null
+    }
+   ],
+   "location": "KCN Thuận Đạo, Cần Đước, Long An cũ",
+   "province": "Long An",
+   "province_current": "Tây Ninh",
+   "region": "S",
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "operating",
+   "status_source": "doanh nghiệp",
+   "start_year": null,
+   "technology": [
+    "Rolling"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": null,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "ống thép"
+   ],
+   "products_group": [
+    "pipe"
+   ],
+   "product_capacity": {
+    "pipe": {
+     "mtpa": 0.4,
+     "definition": "công suất thiết kế (BCTN 2024)",
+     "sources": [
+      "hpg_ar2024"
+     ]
+    }
+   },
+   "raw_materials": "HRC, kẽm/nhôm kẽm (tôn mạ), thép cuộn",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "hpg_ar2024"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Ống thép Hòa Phát cả nhóm 1,2 Mtpa (BCTN 2024); các nhà máy ống khác chưa tách công suất nên chưa đưa vào. Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ; vẫn tính trong ô số và biểu đồ."
+  },
+  {
+   "plant_id": "HSG_PM",
+   "plant_name": "Tôn Hoa Sen Phú Mỹ",
+   "aliases": [],
+   "steelmaking": false,
+   "owner": "Tập đoàn Hoa Sen",
+   "parent_company": "Tập đoàn Hoa Sen",
+   "ticker": "HSG",
+   "company_group": "Hoa Sen",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "Tập đoàn Hoa Sen",
+     "ticker": "HSG",
+     "pct": null
+    }
+   ],
+   "location": "Phú Mỹ, Bà Rịa – Vũng Tàu cũ",
+   "province": "Bà Rịa – Vũng Tàu",
+   "province_current": "TP. Hồ Chí Minh",
+   "region": "S",
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "operating",
+   "status_source": "doanh nghiệp",
+   "start_year": null,
+   "technology": [
+    "Rolling"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": null,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "tôn mạ",
+    "thép cán nguội"
+   ],
+   "products_group": [
+    "coated",
+    "crc"
+   ],
+   "product_capacity": {
+    "coated": {
+     "mtpa": 1.2,
+     "definition": "tổng công suất thiết kế cả nhà máy, chưa tách tôn mạ và cán nguội",
+     "sources": [
+      "hsg_2025"
+     ]
+    }
+   },
+   "raw_materials": "HRC, kẽm/nhôm kẽm (tôn mạ), thép cuộn",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "hsg_2025"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ; vẫn tính trong ô số và biểu đồ."
+  },
+  {
+   "plant_id": "HSG_NA",
+   "plant_name": "Hoa Sen Nghệ An",
+   "aliases": [],
+   "steelmaking": false,
+   "owner": "Công ty TNHH MTV Hoa Sen Nghệ An",
+   "parent_company": "Tập đoàn Hoa Sen",
+   "ticker": "HSG",
+   "company_group": "Hoa Sen",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "Tập đoàn Hoa Sen",
+     "ticker": "HSG",
+     "pct": null
+    }
+   ],
+   "location": "Nghệ An",
+   "province": "Nghệ An",
+   "province_current": "Nghệ An",
+   "region": "C",
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "operating",
+   "status_source": "doanh nghiệp",
+   "start_year": null,
+   "technology": [
+    "Rolling"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": null,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "tôn mạ",
+    "thép cán nguội"
+   ],
+   "products_group": [
+    "coated",
+    "crc"
+   ],
+   "product_capacity": {
+    "coated": {
+     "mtpa": 1.0,
+     "definition": "tổng công suất thiết kế cả nhà máy, chưa tách sản phẩm",
+     "sources": [
+      "hsg_2025"
+     ]
+    }
+   },
+   "raw_materials": "HRC, kẽm/nhôm kẽm (tôn mạ), thép cuộn",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "hsg_2025"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ; vẫn tính trong ô số và biểu đồ."
+  },
+  {
+   "plant_id": "HSG_BD",
+   "plant_name": "Hoa Sen Nhơn Hội",
+   "aliases": [],
+   "steelmaking": false,
+   "owner": "Tập đoàn Hoa Sen",
+   "parent_company": "Tập đoàn Hoa Sen",
+   "ticker": "HSG",
+   "company_group": "Hoa Sen",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "Tập đoàn Hoa Sen",
+     "ticker": "HSG",
+     "pct": null
+    }
+   ],
+   "location": "KKT Nhơn Hội, Bình Định cũ",
+   "province": "Bình Định",
+   "province_current": "Gia Lai",
+   "region": "C",
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "operating",
+   "status_source": "doanh nghiệp",
+   "start_year": null,
+   "technology": [
+    "Rolling"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": null,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "tôn mạ"
+   ],
+   "products_group": [
+    "coated"
+   ],
+   "product_capacity": {
+    "coated": {
+     "mtpa": 0.43,
+     "definition": "tổng công suất hiện tại; mở rộng thêm 0,35 Mtpa đã duyệt, chưa tính",
+     "sources": [
+      "hsg_bd"
+     ]
+    }
+   },
+   "raw_materials": "HRC, kẽm/nhôm kẽm (tôn mạ), thép cuộn",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "hsg_bd"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ; vẫn tính trong ô số và biểu đồ."
+  },
+  {
+   "plant_id": "HSG_YB",
+   "plant_name": "Hoa Sen Yên Bái (giai đoạn 1)",
+   "aliases": [],
+   "steelmaking": false,
+   "owner": "Tập đoàn Hoa Sen",
+   "parent_company": "Tập đoàn Hoa Sen",
+   "ticker": "HSG",
+   "company_group": "Hoa Sen",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "Tập đoàn Hoa Sen",
+     "ticker": "HSG",
+     "pct": null
+    }
+   ],
+   "location": "Trấn Yên, Yên Bái cũ",
+   "province": "Yên Bái",
+   "province_current": "Lào Cai",
+   "region": "N",
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "operating",
+   "status_source": "doanh nghiệp",
+   "start_year": null,
+   "technology": [
+    "Rolling"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": null,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "ống thép"
+   ],
+   "products_group": [
+    "pipe"
+   ],
+   "product_capacity": {
+    "pipe": {
+     "mtpa": 0.06,
+     "definition": "6 dây chuyền cán ống (nguồn 2018, chưa cập nhật)",
+     "sources": [
+      "hsg_yb"
+     ]
+    }
+   },
+   "raw_materials": "HRC, kẽm/nhôm kẽm (tôn mạ), thép cuộn",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "hsg_yb"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ; vẫn tính trong ô số và biểu đồ."
+  },
+  {
+   "plant_id": "NKG_M1",
+   "plant_name": "Nam Kim – nhà máy tôn mạ số 1",
+   "aliases": [],
+   "steelmaking": false,
+   "owner": "CTCP Thép Nam Kim",
+   "parent_company": "Thép Nam Kim",
+   "ticker": "NKG",
+   "company_group": "Nam Kim",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "Thép Nam Kim",
+     "ticker": "NKG",
+     "pct": null
+    }
+   ],
+   "location": "chưa có địa điểm đã xác minh",
+   "province": null,
+   "province_current": null,
+   "region": null,
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "operating",
+   "status_source": "doanh nghiệp",
+   "start_year": null,
+   "technology": [
+    "Rolling"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": null,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "tôn mạ"
+   ],
+   "products_group": [
+    "coated"
+   ],
+   "product_capacity": {
+    "coated": {
+     "mtpa": 0.35,
+     "definition": "công suất thiết kế (ĐHĐCĐ 2026)",
+     "sources": [
+      "nkg_2026"
+     ]
+    }
+   },
+   "raw_materials": "HRC, kẽm/nhôm kẽm (tôn mạ), thép cuộn",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "nkg_2026"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Chưa xác minh địa điểm nên chưa xếp vào vùng. Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ; vẫn tính trong ô số và biểu đồ."
+  },
+  {
+   "plant_id": "NKG_M2",
+   "plant_name": "Nam Kim – nhà máy tôn mạ số 2",
+   "aliases": [],
+   "steelmaking": false,
+   "owner": "CTCP Thép Nam Kim",
+   "parent_company": "Thép Nam Kim",
+   "ticker": "NKG",
+   "company_group": "Nam Kim",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "Thép Nam Kim",
+     "ticker": "NKG",
+     "pct": null
+    }
+   ],
+   "location": "chưa có địa điểm đã xác minh",
+   "province": null,
+   "province_current": null,
+   "region": null,
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "operating",
+   "status_source": "doanh nghiệp",
+   "start_year": null,
+   "technology": [
+    "Rolling"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": null,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "tôn mạ"
+   ],
+   "products_group": [
+    "coated"
+   ],
+   "product_capacity": {
+    "coated": {
+     "mtpa": 0.65,
+     "definition": "công suất thiết kế (ĐHĐCĐ 2026)",
+     "sources": [
+      "nkg_2026"
+     ]
+    }
+   },
+   "raw_materials": "HRC, kẽm/nhôm kẽm (tôn mạ), thép cuộn",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "nkg_2026"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Chưa xác minh địa điểm nên chưa xếp vào vùng. Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ; vẫn tính trong ô số và biểu đồ."
+  },
+  {
+   "plant_id": "NKG_LA",
+   "plant_name": "Ống thép Nam Kim Long An",
+   "aliases": [],
+   "steelmaking": false,
+   "owner": "CTCP Thép Nam Kim",
+   "parent_company": "Thép Nam Kim",
+   "ticker": "NKG",
+   "company_group": "Nam Kim",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "Thép Nam Kim",
+     "ticker": "NKG",
+     "pct": null
+    }
+   ],
+   "location": "Long An cũ",
+   "province": "Long An",
+   "province_current": "Tây Ninh",
+   "region": "S",
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "operating",
+   "status_source": "doanh nghiệp",
+   "start_year": null,
+   "technology": [
+    "Rolling"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": null,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "ống thép"
+   ],
+   "products_group": [
+    "pipe"
+   ],
+   "product_capacity": {
+    "pipe": {
+     "mtpa": 0.12,
+     "definition": "công suất thiết kế (ĐHĐCĐ 2026)",
+     "sources": [
+      "nkg_2026"
+     ]
+    }
+   },
+   "raw_materials": "HRC, kẽm/nhôm kẽm (tôn mạ), thép cuộn",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "nkg_2026"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ; vẫn tính trong ô số và biểu đồ."
+  },
+  {
+   "plant_id": "GDA_EX",
+   "plant_name": "Tôn Đông Á – 2 nhà máy hiện hữu",
+   "aliases": [],
+   "steelmaking": false,
+   "owner": "CTCP Tôn Đông Á",
+   "parent_company": "Tôn Đông Á",
+   "ticker": "GDA",
+   "company_group": "Tôn Đông Á",
+   "ownership_group": "listed",
+   "owners": [
+    {
+     "name": "Tôn Đông Á",
+     "ticker": "GDA",
+     "pct": null
+    }
+   ],
+   "location": "Bình Dương cũ (chưa tách từng nhà máy)",
+   "province": "Bình Dương",
+   "province_current": "TP. Hồ Chí Minh",
+   "region": "S",
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "operating",
+   "status_source": "doanh nghiệp",
+   "start_year": null,
+   "technology": [
+    "Rolling"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": null,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "tôn mạ"
+   ],
+   "products_group": [
+    "coated"
+   ],
+   "product_capacity": {
+    "coated": {
+     "mtpa": 0.85,
+     "definition": "tổng 2 nhà máy hiện hữu, chưa tách theo nhà máy",
+     "sources": [
+      "gda"
+     ]
+    }
+   },
+   "raw_materials": "HRC, kẽm/nhôm kẽm (tôn mạ), thép cuộn",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "gda"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ; vẫn tính trong ô số và biểu đồ."
+  },
+  {
+   "plant_id": "POSCO_VN",
+   "plant_name": "POSCO Việt Nam (cán nguội)",
+   "aliases": [],
+   "steelmaking": false,
+   "owner": "Công ty TNHH POSCO Việt Nam",
+   "parent_company": "POSCO",
+   "ticker": null,
+   "company_group": "POSCO",
+   "ownership_group": "fdi",
+   "owners": [
+    {
+     "name": "POSCO",
+     "ticker": null,
+     "pct": null
+    }
+   ],
+   "location": "Phú Mỹ, Bà Rịa – Vũng Tàu cũ",
+   "province": "Bà Rịa – Vũng Tàu",
+   "province_current": "TP. Hồ Chí Minh",
+   "region": "S",
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "operating",
+   "status_source": "doanh nghiệp",
+   "start_year": null,
+   "technology": [
+    "Rolling"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": null,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "thép cán nguội"
+   ],
+   "products_group": [
+    "crc"
+   ],
+   "product_capacity": {
+    "crc": {
+     "mtpa": 1.2,
+     "definition": "dây chuyền tẩy gỉ + cán nguội liên tục (nguồn 2009); dây chuyền ủ 0,7 Mtpa nằm trong số này, không cộng",
+     "sources": [
+      "posco_enc"
+     ]
+    }
+   },
+   "raw_materials": "HRC, kẽm/nhôm kẽm (tôn mạ), thép cuộn",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "posco_enc"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ; vẫn tính trong ô số và biểu đồ."
+  },
+  {
+   "plant_id": "CSVC",
+   "plant_name": "China Steel Sumikin Việt Nam (CSVC)",
+   "aliases": [],
+   "steelmaking": false,
+   "owner": "Công ty TNHH China Steel Sumikin Việt Nam",
+   "parent_company": "China Steel, Nippon Steel",
+   "ticker": null,
+   "company_group": "CSVC",
+   "ownership_group": "fdi",
+   "owners": [
+    {
+     "name": "China Steel, Nippon Steel",
+     "ticker": null,
+     "pct": null
+    }
+   ],
+   "location": "KCN Mỹ Xuân A2, Bà Rịa – Vũng Tàu cũ",
+   "province": "Bà Rịa – Vũng Tàu",
+   "province_current": "TP. Hồ Chí Minh",
+   "region": "S",
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "operating",
+   "status_source": "doanh nghiệp",
+   "start_year": null,
+   "technology": [
+    "Rolling"
+   ],
+   "capacity": {
+    "nominal_crude_steel_mtpa": null,
+    "bof_mtpa": null,
+    "eaf_mtpa": null,
+    "if_mtpa": null,
+    "dri_mtpa": null,
+    "crude_iron_mtpa": null,
+    "company_reported_capacity_mtpa": null,
+    "under_construction_mtpa": null
+   },
+   "products": [
+    "thép cán nguội",
+    "tôn mạ"
+   ],
+   "products_group": [
+    "crc",
+    "coated"
+   ],
+   "product_capacity": {
+    "crc": {
+     "mtpa": 1.6,
+     "definition": "tổng nhà máy theo giấy phép 2009, gồm cán nguội và sản phẩm mạ, chưa tách",
+     "sources": [
+      "csvc"
+     ]
+    }
+   },
+   "raw_materials": "HRC, kẽm/nhôm kẽm (tôn mạ), thép cuộn",
+   "actual_production_mtpa": null,
+   "utilization_rate": null,
+   "sources": [
+    "csvc"
+   ],
+   "source_checked_at": "2026-11-28",
+   "verification_status": "partial",
+   "notes": "Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ; vẫn tính trong ô số và biểu đồ."
+  }
+ ],
+ "projects": [
+  {
+   "project_id": "P_VINAROMA",
+   "name": "Vina Roma Quảng Trị",
+   "plant_id": null,
+   "parent_company": "Vina Roma",
+   "company_group": "Vina Roma",
+   "ownership_group": "unlisted",
+   "location": "KKT Đông Nam Quảng Trị",
+   "province": "Quảng Trị",
+   "province_current": "Quảng Trị",
+   "region": "C",
+   "latitude": 16.756559,
+   "longitude": 107.329547,
+   "coordinate_accuracy": "approximate",
+   "status": "announced",
+   "status_source": "GEM",
+   "technology": [],
+   "added_crude_mtpa": 4.5,
+   "capacity_definition": "công suất dự án tham chiếu theo GEM (số trong đề bài); chưa mặc định là công suất vận hành",
+   "added_product": null,
+   "products_group": [],
+   "cod_year": null,
+   "cod_source": null,
+   "investment": null,
+   "last_update": "2026-11-28",
+   "sources": [
+    "brief",
+    "gem_vinaroma"
+   ],
+   "notes": "Tọa độ gần đúng."
+  },
+  {
+   "project_id": "P_VINMETAL",
+   "name": "VinMetal Hà Tĩnh",
+   "plant_id": null,
+   "parent_company": "Vingroup / VinMetal",
+   "company_group": "VinMetal",
+   "ownership_group": "listed",
+   "location": "KKT Vũng Áng, Hà Tĩnh",
+   "province": "Hà Tĩnh",
+   "province_current": "Hà Tĩnh",
+   "region": "C",
+   "latitude": 18.353226,
+   "longitude": 105.903042,
+   "coordinate_accuracy": "approximate",
+   "status": "announced",
+   "status_source": "GEM",
+   "technology": [],
+   "added_crude_mtpa": null,
+   "capacity_definition": "5 Mtpa là công suất sản phẩm thiết kế được công bố; chưa có công suất thép thô và trạng thái xây dựng đã xác minh",
+   "added_product": null,
+   "products_group": [],
+   "cod_year": null,
+   "cod_source": null,
+   "investment": null,
+   "last_update": "2026-11-28",
+   "sources": [
+    "brief",
+    "gem_vinmetal"
+   ],
+   "notes": "Tọa độ gần đúng theo GEM, cần kiểm tra với hồ sơ dự án. Vingroup (VIC) niêm yết; pháp nhân dự án chưa xác minh."
+  },
+  {
+   "project_id": "P_FHS_EXP",
+   "name": "Formosa Hà Tĩnh mở rộng",
+   "plant_id": "FHS",
+   "parent_company": "Tập đoàn Formosa Plastics",
+   "company_group": "Formosa",
+   "ownership_group": "fdi",
+   "location": "KKT Vũng Áng, Hà Tĩnh",
+   "province": "Hà Tĩnh",
+   "province_current": "Hà Tĩnh",
+   "region": "C",
+   "latitude": 18.036333,
+   "longitude": 106.428271,
+   "coordinate_accuracy": "exact",
+   "status": "announced",
+   "status_source": "đề bài",
+   "technology": [
+    "BF-BOF"
+   ],
+   "added_crude_mtpa": null,
+   "capacity_definition": "chưa xác minh phần công suất tăng thêm; không cộng toàn bộ mức sau mở rộng (10,4 Mtpa) vào pipeline",
+   "added_product": null,
+   "products_group": [],
+   "cod_year": null,
+   "cod_source": null,
+   "investment": null,
+   "last_update": "2026-11-28",
+   "sources": [
+    "brief",
+    "gem_fhs"
+   ]
+  },
+  {
+   "project_id": "P_TISCO2",
+   "name": "TISCO giai đoạn 2",
+   "plant_id": "TISCO",
+   "parent_company": "VNSteel",
+   "company_group": "TISCO",
+   "ownership_group": "listed",
+   "location": "TP. Thái Nguyên",
+   "province": "Thái Nguyên",
+   "province_current": "Thái Nguyên",
+   "region": "N",
+   "latitude": 21.557484,
+   "longitude": 105.8728,
+   "coordinate_accuracy": "exact",
+   "status": "stalled",
+   "status_source": "đề bài",
+   "technology": [
+    "BF-BOF"
+   ],
+   "added_crude_mtpa": 0.5,
+   "capacity_definition": "BOF 0,5 Mtpa của dự án mở rộng theo GEM (số trong đề bài)",
+   "added_product": null,
+   "products_group": [
+    "rebar"
+   ],
+   "cod_year": null,
+   "cod_source": null,
+   "investment": null,
+   "last_update": "2026-11-28",
+   "sources": [
+    "brief",
+    "gem_tisco"
+   ],
+   "notes": "Xếp nhóm đình trệ; tiến độ hiện tại chưa xác minh lại."
+  },
+  {
+   "project_id": "P_NKG_PM",
+   "name": "Nam Kim Phú Mỹ",
+   "plant_id": null,
+   "parent_company": "Thép Nam Kim",
+   "company_group": "Nam Kim",
+   "ownership_group": "listed",
+   "location": "Phú Mỹ, Bà Rịa – Vũng Tàu cũ",
+   "province": "Bà Rịa – Vũng Tàu",
+   "province_current": "TP. Hồ Chí Minh",
+   "region": "S",
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "construction",
+   "status_source": "doanh nghiệp",
+   "technology": [
+    "Rolling"
+   ],
+   "capacity_definition": "công suất thiết kế (ĐHĐCĐ 2026, \"sắp vận hành\")",
+   "added_product": {
+    "group": "coated",
+    "mtpa": 1.3
+   },
+   "products_group": [
+    "coated"
+   ],
+   "cod_year": null,
+   "cod_source": null,
+   "investment": null,
+   "last_update": "2026-11-28",
+   "sources": [
+    "nkg_2026"
+   ],
+   "notes": "Năm vận hành chưa có văn bản ấn định. Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ."
+  },
+  {
+   "project_id": "P_NKG_CL",
+   "name": "Ống thép Nam Kim Chu Lai",
+   "plant_id": null,
+   "parent_company": "Thép Nam Kim",
+   "company_group": "Nam Kim",
+   "ownership_group": "listed",
+   "location": "Chu Lai, Quảng Nam cũ",
+   "province": "Quảng Nam",
+   "province_current": "Đà Nẵng",
+   "region": "C",
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "announced",
+   "status_source": "doanh nghiệp",
+   "technology": [
+    "Rolling"
+   ],
+   "capacity_definition": "công suất thiết kế dự án (ĐHĐCĐ 2026)",
+   "added_product": {
+    "group": "pipe",
+    "mtpa": 0.15
+   },
+   "products_group": [
+    "pipe"
+   ],
+   "cod_year": null,
+   "cod_source": null,
+   "investment": null,
+   "last_update": "2026-11-28",
+   "sources": [
+    "nkg_2026"
+   ],
+   "notes": "Trạng thái xây dựng chưa xác minh. Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ."
+  },
+  {
+   "project_id": "P_GDA_PM",
+   "name": "Tôn Đông Á Phú Mỹ (nhà máy số 4)",
+   "plant_id": null,
+   "parent_company": "Tôn Đông Á",
+   "company_group": "Tôn Đông Á",
+   "ownership_group": "listed",
+   "location": "Phú Mỹ, Bà Rịa – Vũng Tàu cũ",
+   "province": "Bà Rịa – Vũng Tàu",
+   "province_current": "TP. Hồ Chí Minh",
+   "region": "S",
+   "latitude": null,
+   "longitude": null,
+   "coordinate_accuracy": null,
+   "status": "announced",
+   "status_source": "doanh nghiệp",
+   "technology": [
+    "Rolling"
+   ],
+   "capacity_definition": "tổng công suất thiết kế 3 giai đoạn",
+   "added_product": {
+    "group": "coated",
+    "mtpa": 1.2
+   },
+   "products_group": [
+    "coated"
+   ],
+   "cod_year": null,
+   "cod_source": null,
+   "investment": null,
+   "last_update": "2026-11-28",
+   "sources": [
+    "gda"
+   ],
+   "notes": "Trạng thái xây dựng chưa xác minh. Chưa có tọa độ đã xác minh nên chưa vẽ trên bản đồ."
+  }
+ ]
+}

@@ -8426,6 +8426,38 @@
    ]
   },
   {
+   "id": "steel.capacity-map",
+   "tier": "C",
+   "title": "bản đồ năng lực sản xuất thép: công suất theo nhà máy, sản phẩm, dự án",
+   "schedule": {
+    "type": "monthly",
+    "at": "09:00",
+    "days": [
+     5
+    ],
+    "note": "Công suất hiện hữu: khi GEM phát hành bản mới hoặc doanh nghiệp công bố; dự án: rà soát hằng tháng"
+   },
+   "publication": "GEM Global Iron and Steel Tracker theo đợt phát hành; công bố doanh nghiệp, giấy phép môi trường theo sự kiện",
+   "source": {
+    "name": "Global Energy Monitor – Global Iron and Steel Tracker; BCTN, ĐHĐCĐ doanh nghiệp",
+    "url": "https://globalenergymonitor.org/projects/global-iron-steel-tracker/"
+   },
+   "where": {
+    "page": "Thep/index.html",
+    "blocks": [
+     "th-cap-map"
+    ],
+    "file": "data/steel-capacity.js"
+   },
+   "how": "Sửa data/steel/capacity/plants.json (hoặc ghép CSV GEM: --gem-csv) → python -X utf8 scripts/build_steel_capacity.py (kiểm tra, ghi changelog, giữ snapshot) → prepare_release.py",
+   "gates": [
+    "Số thiếu để null, không điền 0",
+    "Không cộng luyện gang, công suất cán theo sản phẩm vào thép thô",
+    "Công suất dự kiến tách khỏi đang vận hành; không tự suy năm vận hành",
+    "Không đặt tọa độ theo tâm tỉnh"
+   ]
+  },
+  {
    "id": "fertilizer.public.markets",
    "tier": "A",
    "title": "Giá urê, DAP, TSP, quặng phosphate, kali; khí TTF, Henry Hub, LNG Nhật; Brent; than Úc; urê Trịnh Châu",

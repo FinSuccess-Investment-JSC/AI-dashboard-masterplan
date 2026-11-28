@@ -1,0 +1,132 @@
+[
+ {
+  "date": "2026-11-28",
+  "gem_merge": [],
+  "changes": [
+   {
+    "id": "CSVC",
+    "change": "thêm mới"
+   },
+   {
+    "id": "FHS",
+    "change": "thêm mới"
+   },
+   {
+    "id": "GDA_EX",
+    "change": "thêm mới"
+   },
+   {
+    "id": "HPG_DQ",
+    "change": "thêm mới"
+   },
+   {
+    "id": "HPG_HD",
+    "change": "thêm mới"
+   },
+   {
+    "id": "HPG_PIPE_LA",
+    "change": "thêm mới"
+   },
+   {
+    "id": "HPG_PN",
+    "change": "thêm mới"
+   },
+   {
+    "id": "HSG_BD",
+    "change": "thêm mới"
+   },
+   {
+    "id": "HSG_NA",
+    "change": "thêm mới"
+   },
+   {
+    "id": "HSG_PM",
+    "change": "thêm mới"
+   },
+   {
+    "id": "HSG_YB",
+    "change": "thêm mới"
+   },
+   {
+    "id": "NKG_LA",
+    "change": "thêm mới"
+   },
+   {
+    "id": "NKG_M1",
+    "change": "thêm mới"
+   },
+   {
+    "id": "NKG_M2",
+    "change": "thêm mới"
+   },
+   {
+    "id": "POSCO_VN",
+    "change": "thêm mới"
+   },
+   {
+    "id": "POSCO_YV",
+    "change": "thêm mới"
+   },
+   {
+    "id": "SSCV",
+    "change": "thêm mới"
+   },
+   {
+    "id": "TISCO",
+    "change": "thêm mới"
+   },
+   {
+    "id": "TUNG_HO",
+    "change": "thêm mới"
+   },
+   {
+    "id": "VAS_NS",
+    "change": "thêm mới"
+   },
+   {
+    "id": "VINA_ONE",
+    "change": "thêm mới"
+   },
+   {
+    "id": "VIS",
+    "change": "thêm mới"
+   },
+   {
+    "id": "VJS",
+    "change": "thêm mới"
+   },
+   {
+    "id": "VKS",
+    "change": "thêm mới"
+   },
+   {
+    "id": "P_FHS_EXP",
+    "change": "thêm mới"
+   },
+   {
+    "id": "P_GDA_PM",
+    "change": "thêm mới"
+   },
+   {
+    "id": "P_NKG_CL",
+    "change": "thêm mới"
+   },
+   {
+    "id": "P_NKG_PM",
+    "change": "thêm mới"
+   },
+   {
+    "id": "P_TISCO2",
+    "change": "thêm mới"
+   },
+   {
+    "id": "P_VINAROMA",
+    "change": "thêm mới"
+   },
+   {
+    "id": "P_VINMETAL",
+    "change": "thêm mới"
+   }
+  ]
+ }
+]

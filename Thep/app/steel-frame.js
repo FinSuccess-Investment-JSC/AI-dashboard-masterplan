@@ -1,6 +1,6 @@
 /* Thép · khung 4 tab (28/11/2026, người dùng yêu cầu: bỏ tab Chính sách, bỏ Chuỗi giá trị và Doanh nghiệp niêm yết ở Tổng quan,
    Bức tranh ngành chia sub-tab theo loại sản phẩm với luồng Đầu vào → Sản xuất → Đầu ra như trang Điện).
-   Tab lớn: Tổng quan ngành (Bản đồ ngành)
+   Tab lớn: Tổng quan ngành (Bản đồ ngành; cuối sub-tab là bản đồ năng lực sản xuất th-cap-map do app/steel-capacity-map.js thêm sau sự kiện steel:frame)
           · Bức tranh ngành (01 Toàn ngành · 02 Thép xây dựng · 03 HRC · 04 Tôn mạ & ống — buildPicture(), cây PICT)
           · Tài chính ngành (#mt14: 01 Tổng quan ngành = app/steel-finance.js · 02 So sánh doanh nghiệp · 03 Định giá = app/peer-valuation.js) · Chủ đề nóng.
    Engine chép từ Cang-bien/app/port-frame.js ← Dau-khi/app/oil-frame.js. Thẻ cũ được DỜI theo data-block-id, không nhân bản, không xóa.
