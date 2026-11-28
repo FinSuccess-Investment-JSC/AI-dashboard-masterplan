@@ -538,6 +538,7 @@ const LAND = {VHM: [29500, '31/12/2025', 'https://nguoiquansat.vn/he-lo-quy-dat-
   DXG: [null, 'không công bố tổng', 'https://elibook.vn/2026/09/08/dxg-loi-nhuan-cot-loi-chi-con-7-ty-co-dong-thieu-so-am-63-mieng-banh-nghi-quyet-21-co-phai-con-bai-cuu-canh/'],
   TCH: [null, 'không công bố tổng', 'https://nhadautu.vn/hoang-huy-phu-song-thi-truong-bat-dong-san-hai-phong-d107167.html'],
   NTL: [null, 'không công bố tổng', 'https://tapchicongthuong.vn/do-thi-tu-liem--ntl--bat-tay-voi-tap-doan-ha-do--hdg--xay-thap-doi-47-tang-tai-khu-do-thi-dich-vong-123539.htm']};
+window.RE_LAND = LAND;  // dùng lại ở Tài chính ngành › 03 Định giá (bảng Bán hàng, quỹ đất và RNAV)
 const SEG = {VHM: 'Đại đô thị, mọi phân khúc · cả nước · bán lẻ và bán buôn dự án', NVL: 'Đô thị sinh thái, nghỉ dưỡng · Đồng Nai, Bình Thuận, Vũng Tàu', KDH: 'Nhà phố, căn hộ trung–cao cấp · TP.HCM',
   NLG: 'Nhà ở vừa túi tiền · TP.HCM, Long An, Đồng Nai', DXG: 'Căn hộ trung cấp · Bình Dương cũ; kèm môi giới (DXS)', PDR: 'Căn hộ, đất nền · Bình Dương, Bình Định',
   DIG: 'Khu đô thị, nghỉ dưỡng · Vũng Tàu, Đồng Nai', CEO: 'Đất nền, nghỉ dưỡng · Phú Quốc, Hà Nội', AGG: 'Căn hộ trung cấp · TP.HCM', TCH: 'Căn hộ · Hải Phòng', NTL: 'Khu đô thị · Hà Nội, Quảng Ninh'};
