@@ -16,7 +16,7 @@ const fin = v => typeof v === 'number' && Number.isFinite(v);
 const nf = (v, d = 2) => fin(v) ? v.toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d}) : '—';
 const nf3 = v => fin(v) ? v.toLocaleString('vi-VN', {minimumFractionDigits: 2, maximumFractionDigits: 3}) : '—';  // số công suất nhà máy: giữ 3 chữ số lẻ (14,499)
 const pct = (a, b) => fin(a) && b > 0 ? nf(a / b * 100, 1) + '%' : '—';
-const NA = '<span class="sc-na">Chưa có dữ liệu</span>';
+const NA = '<span class="scm-na">Chưa có dữ liệu</span>';
 
 const TECH = [['BOF', 'BF–BOF (lò cao – lò thổi)', '#D97706'], ['EAF', 'EAF (lò hồ quang điện)', '#2563EB'], ['IF', 'IF (lò cảm ứng)', '#8B5CF6'],
   ['DRI', 'DRI–EAF', '#0D9488'], ['OTHER', 'Công nghệ khác / chưa xác định', '#9CA3AF']];
@@ -60,20 +60,20 @@ const mainTech = p => { const s = split(p); const k = Object.keys(s).sort((a, b)
 
 function mount(host) {
   if (!host || host.dataset.scReady) return; host.dataset.scReady = '1';
-  host.innerHTML = '<div class="sc-loading">Đang tải bản đồ…</div>';
+  host.innerHTML = '<div class="scm-loading">Đang tải bản đồ…</div>';
   const v = (document.querySelector('script[src*="steel-capacity-map.js"]')?.src.match(/\?v=([^&]+)/) || [])[1] || '';
   Promise.all([load(LEAF_CSS, true), load(LEAF_JS), window.GAS_BASE ? null : load(here() + 'vn-base.js?v=' + v)])
     .then(() => build(host, window.STEEL_CAP))
-    .catch(e => { console.error(e); host.innerHTML = '<div class="sc-loading">Không tải được thư viện bản đồ (Leaflet, cdnjs) hoặc nền bản đồ.</div>'; });
+    .catch(e => { console.error(e); host.innerHTML = '<div class="scm-loading">Không tải được thư viện bản đồ (Leaflet, cdnjs) hoặc nền bản đồ.</div>'; });
 }
 
 function seg(name, opts, sel, multi) {
-  return `<div class="sc-seg" role="group" aria-label="${esc(name)}" data-f="${esc(name)}">${opts.map(([k, t]) => `<button type="button" data-v="${esc(k)}" aria-pressed="${multi ? sel.includes(k) : k === sel}">${esc(t)}</button>`).join('')}</div>`;
+  return `<div class="scm-seg" role="group" aria-label="${esc(name)}" data-f="${esc(name)}">${opts.map(([k, t]) => `<button type="button" data-v="${esc(k)}" aria-pressed="${multi ? sel.includes(k) : k === sel}">${esc(t)}</button>`).join('')}</div>`;
 }
-const sel = (name, opts, all) => `<label class="sc-sel"><span class="sc-lab">${esc(name)}</span><select data-f="${esc(name)}"><option value="">${esc(all)}</option>${opts.map(([k, t]) => `<option value="${esc(k)}">${esc(t)}</option>`).join('')}</select></label>`;
+const sel = (name, opts, all) => `<label class="scm-sel"><span class="scm-lab">${esc(name)}</span><select data-f="${esc(name)}"><option value="">${esc(all)}</option>${opts.map(([k, t]) => `<option value="${esc(k)}">${esc(t)}</option>`).join('')}</select></label>`;
 
 function build(host, D) {
-  if (!D?.plants?.length) { host.innerHTML = '<div class="sc-loading">Chưa có dữ liệu nhà máy (data/steel/capacity/plants.json).</div>'; return; }
+  if (!D?.plants?.length) { host.innerHTML = '<div class="scm-loading">Chưa có dữ liệu nhà máy (data/steel/capacity/plants.json).</div>'; return; }
   const P = D.plants, J = D.projects || [], SRC = D.sources || {};
   const companies = [...new Set([...P, ...J].map(x => x.company_group).filter(Boolean))];
   const coOpts = ['HPG', 'Formosa', 'VAS', 'VNSteel'].filter(c => companies.includes(c)).map(c => [c, c]).concat([['_other', 'Khác']]);
@@ -81,34 +81,34 @@ function build(host, D) {
   let S = DEF();
 
   host.innerHTML = `
-    <div class="sc-top">${seg('Chế độ xem', MODES, 'crude')}<button type="button" class="sc-reset">Đặt lại bộ lọc</button></div>
-    <div class="sc-ctl">
-      <div class="sc-row"><span class="sc-lab">Khu vực</span>${seg('Khu vực', [['all', 'Toàn quốc'], ...REG.map(([k, t]) => [k, t.replace('Miền ', '')])], 'all')}
-        <span class="sc-lab">Trạng thái</span>${seg('Trạng thái', ST.map(([k, t]) => [k, t.split(' /')[0]]), ST.map(s => s[0]), true)}</div>
-      <div class="sc-row sc-r-tech"><span class="sc-lab">Công nghệ</span>${seg('Công nghệ', [['BOF', 'BF–BOF'], ['EAF', 'EAF'], ['IF', 'IF'], ['DRI', 'DRI–EAF'], ['OTHER', 'Khác']], TECH.map(t => t[0]), true)}</div>
-      <div class="sc-row sc-r-pmode" hidden><span class="sc-lab">Nhóm sản phẩm</span>${seg('Nhóm sản phẩm', PROD, 'hrc')}</div>
-      <div class="sc-row">${sel('Sản phẩm', PROD.filter(p => ['hrc', 'rebar', 'coated', 'pipe'].includes(p[0])).concat([['_other', 'Khác']]), 'Tất cả sản phẩm')}${sel('Doanh nghiệp', coOpts, 'Tất cả doanh nghiệp')}${sel('Nhóm sở hữu', OWNG, 'Tất cả')}</div>
+    <div class="scm-top">${seg('Chế độ xem', MODES, 'crude')}<button type="button" class="scm-reset">Đặt lại bộ lọc</button></div>
+    <div class="scm-ctl">
+      <div class="scm-row"><span class="scm-lab">Khu vực</span>${seg('Khu vực', [['all', 'Toàn quốc'], ...REG.map(([k, t]) => [k, t.replace('Miền ', '')])], 'all')}
+        <span class="scm-lab">Trạng thái</span>${seg('Trạng thái', ST.map(([k, t]) => [k, t.split(' /')[0]]), ST.map(s => s[0]), true)}</div>
+      <div class="scm-row scm-r-tech"><span class="scm-lab">Công nghệ</span>${seg('Công nghệ', [['BOF', 'BF–BOF'], ['EAF', 'EAF'], ['IF', 'IF'], ['DRI', 'DRI–EAF'], ['OTHER', 'Khác']], TECH.map(t => t[0]), true)}</div>
+      <div class="scm-row scm-r-pmode" hidden><span class="scm-lab">Nhóm sản phẩm</span>${seg('Nhóm sản phẩm', PROD, 'hrc')}</div>
+      <div class="scm-row">${sel('Sản phẩm', PROD.filter(p => ['hrc', 'rebar', 'coated', 'pipe'].includes(p[0])).concat([['_other', 'Khác']]), 'Tất cả sản phẩm')}${sel('Doanh nghiệp', coOpts, 'Tất cả doanh nghiệp')}${sel('Nhóm sở hữu', OWNG, 'Tất cả')}</div>
     </div>
-    <div class="sc-kpis"></div>
-    <div class="sc-wrap">
-      <div class="sc-mapbox"><div class="sc-map" role="application" aria-label="Bản đồ nhà máy thép Việt Nam"></div><button type="button" class="sc-home" title="Về toàn quốc">⤢ Toàn quốc</button></div>
-      <aside class="sc-side" aria-live="polite"></aside>
+    <div class="scm-kpis"></div>
+    <div class="scm-wrap">
+      <div class="scm-mapbox"><div class="scm-map" role="application" aria-label="Bản đồ nhà máy thép Việt Nam"></div><button type="button" class="scm-home" title="Về toàn quốc">⤢ Toàn quốc</button></div>
+      <aside class="scm-side" aria-live="polite"></aside>
     </div>
-    <div class="sc-legend"></div>
-    <div class="sc-below"><div class="sc-chart sc-pipe"></div><div class="sc-ins"></div></div>
-    <div class="pw-src source-note sc-foot"></div>`;
+    <div class="scm-legend"></div>
+    <div class="scm-below"><div class="scm-chart scm-pipe"></div><div class="scm-ins"></div></div>
+    <div class="pw-src source-note scm-foot"></div>`;
 
   /* ---------- Bản đồ ---------- */
-  const L = window.L, side = host.querySelector('.sc-side'), mapEl = host.querySelector('.sc-map');
+  const L = window.L, side = host.querySelector('.scm-side'), mapEl = host.querySelector('.scm-map');
   const map = L.map(mapEl, {zoomSnap: 0.25, minZoom: 5, maxZoom: 13, attributionControl: false, maxBounds: [[3.5, 99.5], [25.5, 121]], maxBoundsViscosity: 0.8});
   map.fitBounds(RVIEW.all);
   L.control.attribution({prefix: false}).addAttribution('Natural Earth · Global Energy Monitor (CC BY 4.0) · nguồn doanh nghiệp').addTo(map);
   L.geoJSON(window.GAS_BASE, {interactive: false, style: f => f.properties.role === 'nb' ? {color: '#c6ccda', weight: 0.6, fillColor: '#eef0f5', fillOpacity: 1} : {color: '#9aa6c4', weight: 0.8, fillColor: '#ffffff', fillOpacity: 1}}).addTo(map);
-  [[16.45, 112.05, 'QĐ. Hoàng Sa (Việt Nam)'], [9.6, 114.3, 'QĐ. Trường Sa (Việt Nam)']].forEach(([la, lo, t]) => L.marker([la, lo], {interactive: false, icon: L.divIcon({className: 'sc-isl', html: esc(t), iconSize: null})}).addTo(map));
+  [[16.45, 112.05, 'QĐ. Hoàng Sa (Việt Nam)'], [9.6, 114.3, 'QĐ. Trường Sa (Việt Nam)']].forEach(([la, lo, t]) => L.marker([la, lo], {interactive: false, icon: L.divIcon({className: 'scm-isl', html: esc(t), iconSize: null})}).addTo(map));
   const layer = L.layerGroup().addTo(map);
   map.on('zoomend', drawMap);
   new ResizeObserver(() => map.invalidateSize()).observe(mapEl);
-  host.querySelector('.sc-home').addEventListener('click', () => map.fitBounds(RVIEW[S.reg] || RVIEW.all));
+  host.querySelector('.scm-home').addEventListener('click', () => map.fitBounds(RVIEW[S.reg] || RVIEW.all));
 
   /* ---------- Phần tử hiển thị theo chế độ ----------
      Mỗi phần tử: {id, kind:'plant'|'project', x (bản ghi), cap (Mtpa của chế độ), parts {tech: Mtpa}, st, color...} */
@@ -203,9 +203,9 @@ function build(host, D) {
       if (g) g.ms.push(p); else groups.push({ms: [p], bg: p.it.bg}); });
     groups.sort((a, b) => (a.bg ? 0 : 1) - (b.bg ? 0 : 1)).forEach(g => {
       if (g.ms.length === 1) { const {it, r} = g.ms[0]; const d = 2 * r + 4;
-        const m = L.marker([it.x.latitude, it.x.longitude], {icon: L.divIcon({className: 'sc-mk' + (S.sel === it.id ? ' on' : '') + (it.hi ? ' hi' : ''), html: svgFor(it, r), iconSize: [d, d], iconAnchor: [d / 2, d / 2]}),
+        const m = L.marker([it.x.latitude, it.x.longitude], {icon: L.divIcon({className: 'scm-mk' + (S.sel === it.id ? ' on' : '') + (it.hi ? ' hi' : ''), html: svgFor(it, r), iconSize: [d, d], iconAnchor: [d / 2, d / 2]}),
           zIndexOffset: it.bg ? -500 : Math.round(1000 - r * 10), keyboard: true, title: it.x.plant_name || it.x.name}).addTo(layer);
-        m.bindTooltip(tip(it), {className: 'sc-tip', direction: 'top', offset: [0, -r]});
+        m.bindTooltip(tip(it), {className: 'scm-tip', direction: 'top', offset: [0, -r]});
         m.on('click', () => { S.sel = it.id; detail(it); drawMap(); });
         return; }
       const tot = g.ms.reduce((a, m) => a + (m.it.cap || 0), 0), la = g.ms.reduce((a, m) => a + m.it.x.latitude, 0) / g.ms.length, lo = g.ms.reduce((a, m) => a + m.it.x.longitude, 0) / g.ms.length;
@@ -216,15 +216,15 @@ function build(host, D) {
         const p = `M${c + rr * Math.cos(a0)},${c + rr * Math.sin(a0)} A${rr},${rr} 0 ${large} 1 ${c + rr * Math.cos(a1)},${c + rr * Math.sin(a1)}`; a0 = a1;
         return `<path d="${p}" fill="none" stroke="${colorOf(k)}" stroke-width="4"/>`; }).join('');
       const html = `<svg width="${d}" height="${d}" viewBox="0 0 ${d} ${d}"><circle cx="${c}" cy="${c}" r="${r - 2}" fill="#1D2678" fill-opacity=".88"/>${ring}<text x="${c}" y="${c + 4}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">${g.ms.length}</text></svg>`;
-      const m = L.marker([la, lo], {icon: L.divIcon({className: 'sc-mk sc-cl', html, iconSize: [d, d], iconAnchor: [d / 2, d / 2]}), zIndexOffset: 2000}).addTo(layer);
-      m.bindTooltip(`<b>${g.ms.length} nhà máy / dự án</b><br>${g.ms.map(x => `${esc(x.it.x.plant_name || x.it.x.name)}: ${fin(x.it.cap) ? nf(x.it.cap) + ' Mtpa' : 'chưa có số'}`).join('<br>')}<br><span class="sc-tip-s">Bấm để phóng to và tách từng nhà máy</span>`, {className: 'sc-tip', direction: 'top'});
+      const m = L.marker([la, lo], {icon: L.divIcon({className: 'scm-mk scm-cl', html, iconSize: [d, d], iconAnchor: [d / 2, d / 2]}), zIndexOffset: 2000}).addTo(layer);
+      m.bindTooltip(`<b>${g.ms.length} nhà máy / dự án</b><br>${g.ms.map(x => `${esc(x.it.x.plant_name || x.it.x.name)}: ${fin(x.it.cap) ? nf(x.it.cap) + ' Mtpa' : 'chưa có số'}`).join('<br>')}<br><span class="scm-tip-s">Bấm để phóng to và tách từng nhà máy</span>`, {className: 'scm-tip', direction: 'top'});
       m.on('click', () => map.fitBounds(L.latLngBounds(g.ms.map(x => [x.it.x.latitude, x.it.x.longitude])).pad(0.6), {maxZoom: map.getMaxZoom()}));
     });
   }
 
   /* ---------- Ô số ---------- */
   function kpis() {
-    const box = host.querySelector('.sc-kpis'), I = ITEMS.filter(it => !it.bg);
+    const box = host.querySelector('.scm-kpis'), I = ITEMS.filter(it => !it.bg);
     const capSt = (st, kind) => I.filter(it => it.st === st && (!kind || it.kind === kind)).reduce((a, it) => a + (it.cap || 0), 0);
     const nulls = st => I.filter(it => it.st === st && it.cap === null).length;
     const techOp = ks => I.filter(it => it.st === 'operating').reduce((a, it) => a + ks.reduce((b, k) => b + (fin(it.parts[k]) ? it.parts[k] : 0), 0), 0);
@@ -248,7 +248,7 @@ function build(host, D) {
         ['Công suất đang xây dựng', nf(capSt('construction') + ucPlant), 'Mtpa', sub(nulls('construction'))], ['Đã công bố, chưa xây dựng', nf(capSt('announced')), 'Mtpa', sub(nulls('announced'))]];
       if (!S.st.has('operating')) cells[0][1] = cells[2][1] = cells[3][1] = 'ẩn';
     }
-    box.innerHTML = cells.map(([l, v, u, s]) => `<div class="sc-k"><span>${esc(l)}</span><b>${v}${u && v !== 'ẩn' ? ` <small>${u}</small>` : ''}</b>${s}</div>`).join('');
+    box.innerHTML = cells.map(([l, v, u, s]) => `<div class="scm-k"><span>${esc(l)}</span><b>${v}${u && v !== 'ẩn' ? ` <small>${u}</small>` : ''}</b>${s}</div>`).join('');
   }
 
   /* ---------- Chart A, B, C (bên phải) ---------- */
@@ -260,7 +260,7 @@ function build(host, D) {
     let rows = Object.entries(byCo).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]);
     if (rows.length > 8) { const rest = rows.slice(7).reduce((a, [, v]) => a + v, 0); rows = rows.slice(0, 7).concat([['Doanh nghiệp khác', rest]]); }
     const mx = Math.max(1e-9, ...rows.map(r => r[1]));
-    const A = `<div class="sc-ch"><div class="sc-ch-h">A · Công suất theo doanh nghiệp <small>Mtpa</small></div>${rows.length ? rows.map(([k, v]) => `<div class="sc-bar"><span title="${esc(k)}">${esc(k)}</span><span class="sc-bt"><i style="width:${v / mx * 100}%"></i></span><b>${nf(v)}</b></div>`).join('') : `<p class="sc-na">Không có nhà máy theo bộ lọc.</p>`}</div>`;
+    const A = `<div class="scm-ch"><div class="scm-ch-h">A · Công suất theo doanh nghiệp <small>Mtpa</small></div>${rows.length ? rows.map(([k, v]) => `<div class="scm-bar"><span title="${esc(k)}">${esc(k)}</span><span class="scm-bt"><i style="width:${v / mx * 100}%"></i></span><b>${nf(v)}</b></div>`).join('') : `<p class="scm-na">Không có nhà máy theo bộ lọc.</p>`}</div>`;
     // B: theo công nghệ (donut) — không áp dụng ở chế độ sản phẩm.
     let B = '';
     if (S.mode !== 'product') {
@@ -268,20 +268,20 @@ function build(host, D) {
       const tt = Object.values(byT).reduce((a, v) => a + v, 0); let a0 = -Math.PI / 2; const R = 46, W = 16;
       const arcs = TECH.filter(([k]) => byT[k] > 0).map(([k, , c]) => { const a1 = a0 + byT[k] / tt * 2 * Math.PI - 1e-6, large = a1 - a0 > Math.PI ? 1 : 0;
         const p = `M${60 + R * Math.cos(a0)},${60 + R * Math.sin(a0)} A${R},${R} 0 ${large} 1 ${60 + R * Math.cos(a1)},${60 + R * Math.sin(a1)}`; a0 = a1 + 1e-6; return `<path d="${p}" fill="none" stroke="${c}" stroke-width="${W}"/>`; }).join('');
-      B = `<div class="sc-ch"><div class="sc-ch-h">B · Công suất theo công nghệ <small>Mtpa · %</small></div>${tt ? `<div class="sc-donut"><svg viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Cơ cấu công suất theo công nghệ">${arcs}<text x="60" y="58" text-anchor="middle" font-size="15" font-weight="700" fill="#1D2678">${nf(tt, 1)}</text><text x="60" y="73" text-anchor="middle" font-size="9" fill="#7a8399">Mtpa</text></svg>
-        <ul>${TECH.filter(([k]) => byT[k] > 0).map(([k, t, c]) => `<li><i style="background:${c}"></i><span>${esc(t.split(' (')[0])}</span><b>${nf(byT[k])}</b><em>${pct(byT[k], tt)}</em></li>`).join('')}</ul></div>` : '<p class="sc-na">Không có số theo bộ lọc.</p>'}</div>`;
+      B = `<div class="scm-ch"><div class="scm-ch-h">B · Công suất theo công nghệ <small>Mtpa · %</small></div>${tt ? `<div class="scm-donut"><svg viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Cơ cấu công suất theo công nghệ">${arcs}<text x="60" y="58" text-anchor="middle" font-size="15" font-weight="700" fill="#1D2678">${nf(tt, 1)}</text><text x="60" y="73" text-anchor="middle" font-size="9" fill="#7a8399">Mtpa</text></svg>
+        <ul>${TECH.filter(([k]) => byT[k] > 0).map(([k, t, c]) => `<li><i style="background:${c}"></i><span>${esc(t.split(' (')[0])}</span><b>${nf(byT[k])}</b><em>${pct(byT[k], tt)}</em></li>`).join('')}</ul></div>` : '<p class="scm-na">Không có số theo bộ lọc.</p>'}</div>`;
     }
     // C: theo khu vực, chia theo công nghệ (chế độ sản phẩm: một màu). Bấm vùng → lọc + phóng tới vùng.
     const byR = {N: {}, C: {}, S: {}}; I.forEach(it => { if (!byR[it.x.region]) return; Object.entries(it.parts).forEach(([k, v]) => { if (fin(v)) byR[it.x.region][k] = (byR[it.x.region][k] || 0) + v; }); });
     const rt = r => Object.values(byR[r]).reduce((a, v) => a + v, 0), rmx = Math.max(1e-9, ...REG.map(([r]) => rt(r)));
-    const C = `<div class="sc-ch"><div class="sc-ch-h">C · Công suất theo khu vực <small>Mtpa · bấm để phóng tới vùng</small></div>${REG.map(([r, n]) => `<button type="button" class="sc-rb${S.reg !== 'all' && S.reg !== r ? ' dim' : ''}" data-r="${r}"><span>${n}</span><span class="sc-rt" style="width:${rt(r) / rmx * 100}%">${Object.entries(byR[r]).filter(([, v]) => v > 0).map(([k, v]) => `<i style="flex:${v};background:${colorOf(k)}" title="${esc(k === 'ROLL' ? 'Cán hạ nguồn' : TNAME[k] || k)}: ${nf(v)} Mtpa"></i>`).join('')}</span><b>${nf(rt(r))}</b></button>`).join('')}${(() => {
+    const C = `<div class="scm-ch"><div class="scm-ch-h">C · Công suất theo khu vực <small>Mtpa · bấm để phóng tới vùng</small></div>${REG.map(([r, n]) => `<button type="button" class="scm-rb${S.reg !== 'all' && S.reg !== r ? ' dim' : ''}" data-r="${r}"><span>${n}</span><span class="scm-rt" style="width:${rt(r) / rmx * 100}%">${Object.entries(byR[r]).filter(([, v]) => v > 0).map(([k, v]) => `<i style="flex:${v};background:${colorOf(k)}" title="${esc(k === 'ROLL' ? 'Cán hạ nguồn' : TNAME[k] || k)}: ${nf(v)} Mtpa"></i>`).join('')}</span><b>${nf(rt(r))}</b></button>`).join('')}${(() => {
       const un = I.filter(it => !byR[it.x.region]).reduce((a, it) => a + (it.cap || 0), 0);
-      return un > 0 ? `<p class="sc-note">Chưa xếp vùng (chưa xác minh địa điểm): ${nf(un)} Mtpa, ${esc(I.filter(it => !byR[it.x.region] && it.cap).map(it => it.x.plant_name || it.x.name).join(', '))}.</p>` : ''; })()}</div>`;
+      return un > 0 ? `<p class="scm-note">Chưa xếp vùng (chưa xác minh địa điểm): ${nf(un)} Mtpa, ${esc(I.filter(it => !byR[it.x.region] && it.cap).map(it => it.x.plant_name || it.x.name).join(', '))}.</p>` : ''; })()}</div>`;
     const noXY = ITEMS.filter(it => !it.bg && !fin(it.x.latitude));
-    const noXYList = noXY.length ? `<details class="sc-noxy"><summary>${noXY.length} nhà máy/dự án chưa có tọa độ đã xác minh: tính trong số liệu, chưa vẽ trên bản đồ</summary><ul>${noXY.map(it => `<li><button type="button" data-id="${esc(it.id)}">${esc(it.x.plant_name || it.x.name)}</button> · ${fin(it.cap) ? nf(it.cap) + ' Mtpa' : 'chưa có số'}</li>`).join('')}</ul></details>` : '';
-    side.innerHTML = `<div class="sc-sh">${S.reg === 'all' ? 'Toàn quốc' : RNAME[S.reg]}</div><div class="sc-sub">Phạm vi: ${scope}, theo bộ lọc · ${I.length} ${S.mode === 'future' ? 'dự án' : 'nhà máy'}</div>${noXYList}${A}${B}${C}<p class="sc-hint">Bấm một nhà máy trên bản đồ để xem chi tiết.</p>`;
-    side.querySelectorAll('.sc-noxy [data-id]').forEach(b => b.addEventListener('click', () => { const it = ITEMS.find(x => x.id === b.dataset.id); S.sel = it.id; detail(it); }));
-    side.querySelectorAll('.sc-rb').forEach(b => b.addEventListener('click', () => { S.reg = S.reg === b.dataset.r ? 'all' : b.dataset.r; syncCtl(); map.fitBounds(RVIEW[S.reg]); render(); }));
+    const noXYList = noXY.length ? `<details class="scm-noxy"><summary>${noXY.length} nhà máy/dự án chưa có tọa độ đã xác minh: tính trong số liệu, chưa vẽ trên bản đồ</summary><ul>${noXY.map(it => `<li><button type="button" data-id="${esc(it.id)}">${esc(it.x.plant_name || it.x.name)}</button> · ${fin(it.cap) ? nf(it.cap) + ' Mtpa' : 'chưa có số'}</li>`).join('')}</ul></details>` : '';
+    side.innerHTML = `<div class="scm-sh">${S.reg === 'all' ? 'Toàn quốc' : RNAME[S.reg]}</div><div class="scm-sub">Phạm vi: ${scope}, theo bộ lọc · ${I.length} ${S.mode === 'future' ? 'dự án' : 'nhà máy'}</div>${noXYList}${A}${B}${C}<p class="scm-hint">Bấm một nhà máy trên bản đồ để xem chi tiết.</p>`;
+    side.querySelectorAll('.scm-noxy [data-id]').forEach(b => b.addEventListener('click', () => { const it = ITEMS.find(x => x.id === b.dataset.id); S.sel = it.id; detail(it); }));
+    side.querySelectorAll('.scm-rb').forEach(b => b.addEventListener('click', () => { S.reg = S.reg === b.dataset.r ? 'all' : b.dataset.r; syncCtl(); map.fitBounds(RVIEW[S.reg]); render(); }));
   }
 
   /* ---------- Chi tiết nhà máy (thay khung bên phải) ---------- */
@@ -300,16 +300,16 @@ function build(host, D) {
         + (fin(c.crude_iron_mtpa) ? row('Luyện gang (BF, không cộng vào thép thô)', mt(c.crude_iron_mtpa)) : '') + (fin(c.company_reported_capacity_mtpa) ? row('Doanh nghiệp công bố', mt(c.company_reported_capacity_mtpa) + (c.company_reported_definition ? `<br><small>${esc(c.company_reported_definition)}</small>` : '')) : '')
         + row('Công suất theo sản phẩm', prodCap || null) + row('Năm vận hành', x.start_year ? esc(x.start_year) : null) + row('Sản lượng thực tế', fin(x.actual_production_mtpa) ? mt(x.actual_production_mtpa) + (x.production_year ? ` (${esc(x.production_year)})` : '') : null)
         + row('Hiệu suất sử dụng công suất', util) + row('Dự án mở rộng', exp || null);
-    side.innerHTML = `<button type="button" class="sc-back">← Tổng quan</button>
-      <div class="sc-sh">${esc(x.plant_name || x.name)}</div><div class="sc-sub">${esc(x.parent_company || '')}${x.ownership_group ? ' · ' + esc(OWNAME[x.ownership_group]) : ''}</div>
-      <dl class="sc-dl">${row('Địa điểm', esc([x.location, x.province_current && x.province_current !== x.province ? 'nay ' + x.province_current : '', RNAME[x.region]].filter(Boolean).join(' · ')))}
+    side.innerHTML = `<button type="button" class="scm-back">← Tổng quan</button>
+      <div class="scm-sh">${esc(x.plant_name || x.name)}</div><div class="scm-sub">${esc(x.parent_company || '')}${x.ownership_group ? ' · ' + esc(OWNAME[x.ownership_group]) : ''}</div>
+      <dl class="scm-dl">${row('Địa điểm', esc([x.location, x.province_current && x.province_current !== x.province ? 'nay ' + x.province_current : '', RNAME[x.region]].filter(Boolean).join(' · ')))}
         ${row('Trạng thái', esc(SNAME[stKey(x.status)] || x.status) + (x.status_note ? `<br><small>${esc(x.status_note)}</small>` : ''))}${row('Công nghệ', esc((x.technology || []).join(' + ')) || null)}
         ${caps}${row('Chủ sở hữu', own || esc(x.owner || '') || null)}${row('Công suất quy đổi theo tỷ lệ sở hữu', eq || null)}
         ${row('Sản phẩm', esc((x.products || []).join(', ')) || null)}${row('Nguyên liệu chính', esc(x.raw_materials || '') || null)}
-        ${units ? row('Phân kỳ / công đoạn', `<ul class="sc-units">${units}</ul>`) : ''}${row('Độ chính xác tọa độ', esc({exact: 'Chính xác', approximate: 'Gần đúng'}[x.coordinate_accuracy] || x.coordinate_accuracy || '') || null)}
+        ${units ? row('Phân kỳ / công đoạn', `<ul class="scm-units">${units}</ul>`) : ''}${row('Độ chính xác tọa độ', esc({exact: 'Chính xác', approximate: 'Gần đúng'}[x.coordinate_accuracy] || x.coordinate_accuracy || '') || null)}
         ${row('Mức xác minh', esc({source_verified: 'Đã đối chiếu nguồn', partial: 'Đối chiếu một phần', unverified: 'Chưa xác minh'}[x.verification_status] || '') || null)}
         ${row('Ghi chú', x.notes ? esc(x.notes) : null)}${row('Nguồn', srcs || null)}${row('Kiểm tra nguồn', esc(x.source_checked_at || D.meta?.checked_at || ''))}</dl>`;
-    side.querySelector('.sc-back').addEventListener('click', () => { S.sel = null; render(); });
+    side.querySelector('.scm-back').addEventListener('click', () => { S.sel = null; render(); });
     side.scrollTop = 0;
   }
 
@@ -318,10 +318,10 @@ function build(host, D) {
     const tk = S.mode === 'product' ? [...TECH.filter(t => t[0] !== 'OTHER'), ['ROLL', 'Cán thép hạ nguồn (không luyện thép)', ROLL]] : TECH;
     const circ = (st, c) => { const s = st === 'construction' ? `stroke="${c}" stroke-dasharray="3 2" fill="${c}" fill-opacity=".28"` : st === 'announced' ? `stroke="${c}" fill="none"` : st === 'idle' ? 'fill="#9CA3AF" stroke="#fff"' : `fill="${c}" stroke="#fff"`;
       return `<svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5" stroke-width="1.6" ${s}/></svg>`; };
-    const size = [0.5, 1, 3, 5, 10].map(m => { const r = rad(m), d = 2 * r + 2; return `<span class="sc-lz"><svg width="${d}" height="${d}" viewBox="0 0 ${d} ${d}"><circle cx="${r + 1}" cy="${r + 1}" r="${r}" fill="none" stroke="#7a8399"/></svg>${nf(m, m < 1 ? 1 : 0)}</span>`; }).join('');
-    host.querySelector('.sc-legend').innerHTML = `<div><span class="sc-lab">Công nghệ</span>${tk.map(([k, t, c]) => `<span><i style="background:${c}"></i>${esc(t)}</span>`).join('')}<span><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 7V1.5A5.5 5.5 0 0 1 12.2 8.8Z" fill="#2563EB"/><path d="M7 7 12.2 8.8A5.5 5.5 0 1 1 7 1.5Z" fill="#8B5CF6"/></svg>Nhiều công nghệ (bánh theo tỷ trọng)</span></div>
-      <div><span class="sc-lab">Trạng thái</span>${ST.map(([k, t]) => `<span>${circ(k, '#2563EB')}${esc(t)}</span>`).join('')}<span><svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5" fill="#fff" stroke="#7a8399" stroke-dasharray="2 2"/></svg>Chưa có dữ liệu công suất</span><span><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#1D2678"/><text x="8" y="11" text-anchor="middle" font-size="8" fill="#fff" font-weight="700">3</text></svg>Cụm nhà máy gần nhau</span></div>
-      <div><span class="sc-lab">Kích thước (Mtpa)</span>${size}</div>`;
+    const size = [0.5, 1, 3, 5, 10].map(m => { const r = rad(m), d = 2 * r + 2; return `<span class="scm-lz"><svg width="${d}" height="${d}" viewBox="0 0 ${d} ${d}"><circle cx="${r + 1}" cy="${r + 1}" r="${r}" fill="none" stroke="#7a8399"/></svg>${nf(m, m < 1 ? 1 : 0)}</span>`; }).join('');
+    host.querySelector('.scm-legend').innerHTML = `<div><span class="scm-lab">Công nghệ</span>${tk.map(([k, t, c]) => `<span><i style="background:${c}"></i>${esc(t)}</span>`).join('')}<span><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 7V1.5A5.5 5.5 0 0 1 12.2 8.8Z" fill="#2563EB"/><path d="M7 7 12.2 8.8A5.5 5.5 0 1 1 7 1.5Z" fill="#8B5CF6"/></svg>Nhiều công nghệ (bánh theo tỷ trọng)</span></div>
+      <div><span class="scm-lab">Trạng thái</span>${ST.map(([k, t]) => `<span>${circ(k, '#2563EB')}${esc(t)}</span>`).join('')}<span><svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5" fill="#fff" stroke="#7a8399" stroke-dasharray="2 2"/></svg>Chưa có dữ liệu công suất</span><span><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#1D2678"/><text x="8" y="11" text-anchor="middle" font-size="8" fill="#fff" font-weight="700">3</text></svg>Cụm nhà máy gần nhau</span></div>
+      <div><span class="scm-lab">Kích thước (Mtpa)</span>${size}</div>`;
   }
 
   /* ---------- Chart D: pipeline theo năm vận hành dự kiến (chỉ công suất tăng thêm) ---------- */
@@ -334,10 +334,10 @@ function build(host, D) {
     const tot = k => cols[k].reduce((a, j) => a + (fin(val(j)) ? val(j) : 0), 0), mx = Math.max(1e-9, ...keys.map(tot));
     const pal = ['#2938A8', '#D97706', '#0D9488', '#8B5CF6', '#E5484D', '#64748B'], colOf = {}; js.forEach((j, i) => { colOf[j.project_id] = pal[i % pal.length]; });
     const noNum = js.filter(j => !fin(val(j)));
-    host.querySelector('.sc-pipe').innerHTML = `<div class="sc-ch-h">D · Công suất tăng thêm theo năm vận hành dự kiến <small>${g ? esc(PNAME[g]) : 'thép thô'}, Mtpa · không gồm công suất hiện hữu</small></div>
-      ${keys.length ? `<div class="sc-cols">${keys.map(k => `<div class="sc-col"><b>${nf(tot(k))}</b><div class="sc-stack" style="height:${Math.max(2, tot(k) / mx * 150)}px">${cols[k].filter(j => fin(val(j))).map(j => `<i style="flex:${val(j)};background:${colOf[j.project_id]}" title="${esc(j.name)}: ${nf(val(j))} Mtpa · ${esc(SNAME[stKey(j.status)])}"></i>`).join('')}</div><span>${esc(k)}</span></div>`).join('')}</div>
-      <div class="sc-pl">${js.filter(j => fin(val(j))).map(j => `<span><i style="background:${colOf[j.project_id]}"></i>${esc(j.name)} · ${esc(SNAME[stKey(j.status)].split(' /')[0])}</span>`).join('')}</div>` : '<p class="sc-na">Không có dự án theo bộ lọc.</p>'}
-      ${noNum.length ? `<p class="sc-note">Chưa có số công suất tăng thêm, không vẽ: ${noNum.map(j => esc(j.name)).join('; ')}.</p>` : ''}`;
+    host.querySelector('.scm-pipe').innerHTML = `<div class="scm-ch-h">D · Công suất tăng thêm theo năm vận hành dự kiến <small>${g ? esc(PNAME[g]) : 'thép thô'}, Mtpa · không gồm công suất hiện hữu</small></div>
+      ${keys.length ? `<div class="scm-cols">${keys.map(k => `<div class="scm-col"><b>${nf(tot(k))}</b><div class="scm-stack" style="height:${Math.max(2, tot(k) / mx * 150)}px">${cols[k].filter(j => fin(val(j))).map(j => `<i style="flex:${val(j)};background:${colOf[j.project_id]}" title="${esc(j.name)}: ${nf(val(j))} Mtpa · ${esc(SNAME[stKey(j.status)])}"></i>`).join('')}</div><span>${esc(k)}</span></div>`).join('')}</div>
+      <div class="scm-pl">${js.filter(j => fin(val(j))).map(j => `<span><i style="background:${colOf[j.project_id]}"></i>${esc(j.name)} · ${esc(SNAME[stKey(j.status)].split(' /')[0])}</span>`).join('')}</div>` : '<p class="scm-na">Không có dự án theo bộ lọc.</p>'}
+      ${noNum.length ? `<p class="scm-note">Chưa có số công suất tăng thêm, không vẽ: ${noNum.map(j => esc(j.name)).join('; ')}.</p>` : ''}`;
   }
 
   /* ---------- Nhận định (tính từ dữ liệu theo bộ lọc) ---------- */
@@ -351,25 +351,25 @@ function build(host, D) {
     if (tot > 0 && top.length) ins.push(['Nguồn cung tập trung', `${top.map(p => `<b>${esc(p.plant_name)}</b> ${nf(cap(p), 1)} Mtpa`).join(' và ')} chiếm <b>${pct(top.reduce((a, p) => a + cap(p), 0), tot)}</b> công suất thép thô đang vận hành trong dữ liệu (${op.length} nhà máy). Đây là tỷ trọng công suất, không phải thị phần tiêu thụ: quy mô lớn cho lợi thế chi phí cố định trên mỗi tấn, nhưng sản lượng thực tế còn tùy mức huy động.`]);
     if (tot > 0) ins.push(['Công nghệ quyết định cấu trúc chi phí', `BF–BOF chiếm <b>${pct(by.BOF || 0, tot)}</b>, EAF và IF <b>${pct((by.EAF || 0) + (by.IF || 0), tot)}</b> công suất đang vận hành. BF–BOF nhạy với giá quặng sắt, than luyện cốc, vốn đầu tư và chi phí cố định cao, hiệu suất vận hành quyết định giá thành; EAF/IF phụ thuộc nhiều hơn vào thép phế và giá điện, linh hoạt hơn khi giảm sản lượng (không mặc định mọi lò điện dùng 100% thép phế). Cán thép, tôn mạ phụ thuộc spread với HRC và kẽm, tồn kho và khả năng chuyển giá.`]);
     if (fut.length) ins.push(['Nguồn cung tương lai', `${f1.length ? f1.map(j => `<b>${esc(j.name)}</b> ${nf(j.added_crude_mtpa, 1)} Mtpa (${esc(SNAME[stKey(j.status)].split(' /')[0].toLowerCase())}, ${j.cod_year ? 'dự kiến ' + esc(j.cod_year) : 'chưa xác định năm vận hành'}${j.products_group?.length ? ', ' + esc(j.products_group.map(g => PNAME[g] || g).join(', ')) : ''})`).join('; ') : 'Các dự án theo bộ lọc chưa có số công suất'}. Nếu hoàn thành, nguồn cung nội địa (gồm HRC cho doanh nghiệp hạ nguồn) tăng và áp lực cạnh tranh, thay thế nhập khẩu lớn hơn; chưa đủ để kết luận dư cung khi chưa đối chiếu nhu cầu, sản lượng thực tế, mức sử dụng công suất và xuất nhập khẩu.`]);
-    host.querySelector('.sc-ins').innerHTML = `<div class="sc-ch-h">Nhận định đầu tư <small>tính từ dữ liệu theo bộ lọc</small></div>${ins.map(([h, t], i) => `<div class="sc-in"><span>${i + 1}</span><div><b>${h}</b><p>${t}</p></div></div>`).join('')}`;
+    host.querySelector('.scm-ins').innerHTML = `<div class="scm-ch-h">Nhận định đầu tư <small>tính từ dữ liệu theo bộ lọc</small></div>${ins.map(([h, t], i) => `<div class="scm-in"><span>${i + 1}</span><div><b>${h}</b><p>${t}</p></div></div>`).join('')}`;
   }
 
   function foot() {
     const m = D.meta || {}, nP = P.filter(p => p.steelmaking).length, nR = P.filter(p => !p.steelmaking).length;
-    host.querySelector('.sc-foot').innerHTML = `Nguồn: ${esc(m.source_note || '')} Định nghĩa: ${esc(m.capacity_basis || '')}. Phạm vi: ${nP} nhà máy luyện thép, ${nR} nhà máy cán/hạ nguồn, ${J.length} dự án; ${esc(m.coverage_note || '')}
-      ${(m.gaps || []).length ? `<details class="sc-gaps"><summary>Nhà máy, số liệu còn thiếu (${m.gaps.length})</summary><ul>${m.gaps.map(g => `<li>${esc(g)}</li>`).join('')}</ul></details>` : ''} Dữ liệu kiểm tra ngày ${esc(m.checked_at || '')}.`;
+    host.querySelector('.scm-foot').innerHTML = `Nguồn: ${esc(m.source_note || '')} Định nghĩa: ${esc(m.capacity_basis || '')}. Phạm vi: ${nP} nhà máy luyện thép, ${nR} nhà máy cán/hạ nguồn, ${J.length} dự án; ${esc(m.coverage_note || '')}
+      ${(m.gaps || []).length ? `<details class="scm-gaps"><summary>Nhà máy, số liệu còn thiếu (${m.gaps.length})</summary><ul>${m.gaps.map(g => `<li>${esc(g)}</li>`).join('')}</ul></details>` : ''} Dữ liệu kiểm tra ngày ${esc(m.checked_at || '')}.`;
   }
 
   /* ---------- Điều khiển ---------- */
-  const segEl = n => host.querySelector(`.sc-seg[data-f="${n}"]`), selEl = n => host.querySelector(`select[data-f="${n}"]`);
+  const segEl = n => host.querySelector(`.scm-seg[data-f="${n}"]`), selEl = n => host.querySelector(`select[data-f="${n}"]`);
   const press = (g, f) => g.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(f(b.dataset.v))));
   function syncCtl() {
     press(segEl('Chế độ xem'), v => v === S.mode); press(segEl('Khu vực'), v => v === S.reg); press(segEl('Trạng thái'), v => S.st.has(v));
     press(segEl('Công nghệ'), v => S.tech.has(v)); press(segEl('Nhóm sản phẩm'), v => v === S.pmode);
     selEl('Sản phẩm').value = S.prod; selEl('Doanh nghiệp').value = S.co; selEl('Nhóm sở hữu').value = S.own;
     // Bộ lọc không áp dụng ở chế độ nào thì khóa: chế độ sản phẩm dùng nhóm sản phẩm thay cho công nghệ và ô Sản phẩm.
-    host.querySelector('.sc-r-pmode').hidden = S.mode !== 'product';
-    host.querySelector('.sc-r-tech').classList.toggle('off', S.mode === 'product'); segEl('Công nghệ').querySelectorAll('button').forEach(b => { b.disabled = S.mode === 'product'; });
+    host.querySelector('.scm-r-pmode').hidden = S.mode !== 'product';
+    host.querySelector('.scm-r-tech').classList.toggle('off', S.mode === 'product'); segEl('Công nghệ').querySelectorAll('button').forEach(b => { b.disabled = S.mode === 'product'; });
     selEl('Sản phẩm').disabled = S.mode === 'product';
   }
   segEl('Chế độ xem').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; S.mode = b.dataset.v; S.sel = null; if (S.mode === 'product') S.prod = ''; syncCtl(); render(); });
@@ -381,7 +381,7 @@ function build(host, D) {
   selEl('Sản phẩm').addEventListener('change', e => { S.prod = e.target.value; render(); });
   selEl('Doanh nghiệp').addEventListener('change', e => { S.co = e.target.value; render(); });
   selEl('Nhóm sở hữu').addEventListener('change', e => { S.own = e.target.value; render(); });
-  host.querySelector('.sc-reset').addEventListener('click', () => { const m = S.mode; S = DEF(); S.mode = m; syncCtl(); map.fitBounds(RVIEW.all); render(); });
+  host.querySelector('.scm-reset').addEventListener('click', () => { const m = S.mode; S = DEF(); S.mode = m; syncCtl(); map.fitBounds(RVIEW.all); render(); });
 
   function render() {
     ITEMS = items();
@@ -395,11 +395,11 @@ function build(host, D) {
 
 /* ---------- Gắn vào Tổng quan ngành › Bản đồ ngành ---------- */
 function attach() {
-  const body = document.querySelector('#of-mt1-map .of-body'); if (!body || body.querySelector('.sc-card')) return;
-  const card = document.createElement('div'); card.className = 'card of-wide sc-card'; card.dataset.blockId = 'th-cap-map'; card.dataset.updateKind = 'document'; card.dataset.cadence = 'monthly';
-  card.innerHTML = `<div class="chart-title">Bản đồ phân bổ năng lực sản xuất thép Việt Nam</div><div class="chart-sub">triệu tấn/năm (Mtpa) · công suất thiết kế, không phải sản lượng</div><div class="sc-host"></div>`;
+  const body = document.querySelector('#of-mt1-map .of-body'); if (!body || body.querySelector('.scm-card')) return;
+  const card = document.createElement('div'); card.className = 'card of-wide scm-card'; card.dataset.blockId = 'th-cap-map'; card.dataset.updateKind = 'document'; card.dataset.cadence = 'monthly';
+  card.innerHTML = `<div class="chart-title">Bản đồ phân bổ năng lực sản xuất thép Việt Nam</div><div class="chart-sub">triệu tấn/năm (Mtpa) · công suất thiết kế, không phải sản lượng</div><div class="scm-host"></div>`;
   body.append(card);
-  const host = card.querySelector('.sc-host');
+  const host = card.querySelector('.scm-host');
   // Leaflet cần khung đang hiển thị (không ẩn) để đo kích thước: dựng ngay nếu tab Tổng quan đang mở, không thì chờ lần đổi tab
   // (khung tab phát sự kiện resize mỗi lần đổi tab/sub-tab).
   const go = () => { if (host.dataset.scReady || !card.offsetParent) return; mount(host); window.removeEventListener('resize', go); };
