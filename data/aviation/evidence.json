@@ -1,0 +1,32 @@
+[
+ {
+  "block": "aviation-manual",
+  "claim": "HVN · passengers · FY2025",
+  "value": "25,6 triệu lượt",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/HVN_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Hành khách vận chuyển Triệu khách 14,1 6,1 18,2 21,0 22,7 25,6",
+  "status": "match",
+  "note": "cột 2025; có thể là Hãng mẹ (bảng thứ 2 dòng 1712 là số khác)"
+ },
+ {
+  "block": "aviation-manual",
+  "claim": "HVN · load_factor · FY2025",
+  "value": "82 %",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/HVN_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Hệ số sử dụng ghế (LF) % 78,3% 71,6% 74,4% 78,8% 80,6% 82,0%",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "aviation-manual",
+  "claim": "SCS · cargo · FY2025",
+  "value": "278.843 tấn",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/SCS_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Tổng sản lượng Tấn 267.369 278.843 104,3 98,5",
+  "status": "match",
+  "note": "cột 2024 / 2025"
+ }
+]

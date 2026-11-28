@@ -1,0 +1,60 @@
+{
+ "updated": "2026-11-28",
+ "note": "",
+ "how": "Sửa file này rồi chạy script build tương ứng (DASHBOARD_WORKFLOW §44–45).",
+ "rows": [
+  {
+   "ticker": "CTR",
+   "item": "towers",
+   "period": "31/12/2025",
+   "value": 12000,
+   "unit": "trạm",
+   "extra": {
+    "text": "12.000 BTS sở hữu (+2.000 trong 2025); tenancy không nêu",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/CTR_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "năm 2025 Tổng Công ty có thêm 2.000 trạm BTS cho thuê, lũy kế sở hữu 12.000 trạm BTS; 2,45 triệu m2 DAS",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "FOX",
+   "item": "subscribers",
+   "period": "2025",
+   "value": null,
+   "unit": "thuê bao",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://bctn2025.fpt.com/business-performance-analysis/telecommunications/telecommunications-services/",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "BCTN FPT 2025 mục viễn thông không có số thuê bao; BCTN FOX 2025 không có trên vietstock"
+  },
+  {
+   "ticker": "VGI",
+   "item": "subscribers",
+   "period": "2025",
+   "value": 56,
+   "unit": "triệu thuê bao",
+   "extra": {
+    "text": "Thuê bao di động quốc tế của Viettel (10 thị trường)",
+    "qualifier": "cấp Viettel; VGI quản lý mảng nước ngoài",
+    "estimate": false
+   },
+   "url": "https://vietnamnews.vn/economy/1766146/viettel-leads-in-seven-of-its-10-overseas-markets.html",
+   "opened_at": "2026-11-28",
+   "quote": "Viettel now serves 56 million international mobile subscribers, exceeding its domestic subscriber base.",
+   "status": "match",
+   "note": "Không phải BCTN VGI; một kết quả tìm kiếm khác nêu 90 triệu nhưng không mở được nguồn",
+   "hide": true,
+   "hide_reason": "Số thuê bao quốc tế của Tập đoàn Viettel, không phải VGI tự công bố."
+  }
+ ]
+}

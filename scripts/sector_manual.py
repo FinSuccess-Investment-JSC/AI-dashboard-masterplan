@@ -35,6 +35,8 @@ def build(SRC, OUT, EVID, BLOCK, VAR, KEY, LABEL, SCALE, name):
     errors, companies, evidence = [], {}, []
     for r in doc['rows']:
         t, item = r.get('ticker'), r.get('item')
+        if item == 'all' and r.get('status') != 'match':  # dòng ghi chú 'chưa tra mã này'
+            continue
         if item not in KEY:
             errors.append(f'{t}: item lạ {item}')
             continue
@@ -86,7 +88,7 @@ def build(SRC, OUT, EVID, BLOCK, VAR, KEY, LABEL, SCALE, name):
            'missing': {t: sorted({KEY[r['item']] for r in doc['rows'] if r.get('ticker') == t and r.get('item') in KEY and (r.get('status') != 'match' or r.get('hide'))})
                        for t in sorted({r.get('ticker') for r in doc['rows']})}}
     OUT.write_text(f'window.{VAR} = ' + json.dumps(out, ensure_ascii=False, separators=(',', ':')) + ';\n', encoding='utf-8', newline='\n')
-    rows = [e for e in json.loads(EVID.read_text(encoding='utf-8')) if e.get('block') != BLOCK] + evidence
+    rows = [e for e in (json.loads(EVID.read_text(encoding='utf-8')) if EVID.exists() else []) if e.get('block') != BLOCK] + evidence
     EVID.write_text(json.dumps(rows, ensure_ascii=False, indent=1) + '\n', encoding='utf-8', newline='\n')
     print(f'{name}: {sum(len(c) for c in companies.values())} ô số của {len(companies)} mã; {len(evidence)} dòng bằng chứng')
 

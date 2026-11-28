@@ -1,0 +1,211 @@
+{
+ "updated": "2026-11-28",
+ "note": "",
+ "how": "Sửa file này rồi chạy script build tương ứng (DASHBOARD_WORKFLOW §44–45).",
+ "rows": [
+  {
+   "ticker": "DHG",
+   "item": "eu_gmp",
+   "period": "2025",
+   "value": null,
+   "unit": "",
+   "extra": {
+    "text": "Non-Betalactam: 5/6 dây chuyền EU-GMP/Japan-GMP; Betalactam: EU-GMP từ 10/2025",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://dhgpharma.com.vn/sites/default/files/2026-04/VN-Annual-Report-2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Trong đó: 05/ 06 dây chuyền đạt tiêu chuẩn EU-GMP/JAPAN-GMP ... NHÀ MÁY DƯỢC PHẨM BETALACTAM ... Tiêu chuẩn: EU-GMP (chứng nhận lần đầu vào tháng 10/2025) ... Penicillin: 04 dây chuyền",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "DHG",
+   "item": "etc_share",
+   "period": "2025",
+   "value": null,
+   "unit": "%",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://dhgpharma.com.vn/sites/default/files/2026-04/VN-Annual-Report-2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "BCTN 2025 không nêu tỷ trọng ETC (grep 'kênh ETC')"
+  },
+  {
+   "ticker": "IMP",
+   "item": "eu_gmp",
+   "period": "2025",
+   "value": null,
+   "unit": "",
+   "extra": {
+    "text": "12 dây chuyền EU-GMP",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://www.imexpharm.com/Data/Sites/1/media/ir/ar-sr-2025/imp_annual_report2025_en.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "maintaining the robustness of 12 EU-GMP production lines",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "IMP",
+   "item": "etc_share",
+   "period": "2025",
+   "value": null,
+   "unit": "%",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://www.imexpharm.com/Data/Sites/1/media/ir/ar-sr-2025/imp_annual_report2025_en.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Không nêu %; bảng có ETC Channel 1,540.5 tỷ vs Gross Revenue 2,914.3 tỷ (2025) – không tự tính. Câu '39%' là của toàn ngành"
+  },
+  {
+   "ticker": "DBD",
+   "item": "etc_share",
+   "period": "2025",
+   "value": null,
+   "unit": "%",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/DBD_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Chỉ nêu giá trị: 'doanh thu kênh bệnh viện đạt 1.173,9 tỷ đồng ... kênh đóng góp lớn nhất'; không có %"
+  },
+  {
+   "ticker": "DBD",
+   "item": "eu_gmp",
+   "period": "2025",
+   "value": null,
+   "unit": "",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/DBD_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Không tìm thấy EU-GMP trong BCTN 2025"
+  },
+  {
+   "ticker": "TRA",
+   "item": "eu_gmp",
+   "period": "2025",
+   "value": null,
+   "unit": "",
+   "extra": {
+    "text": "Nhà máy EU-GMP Traphaco Hưng Yên: dự án hoàn tất (chưa nêu đã có chứng nhận)",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/TRA_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "dự án nhà máy EU-GMP tại Traphaco Hưng Yên đã được hoàn",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "TRA",
+   "item": "etc_share",
+   "period": "2025",
+   "value": null,
+   "unit": "%",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/TRA_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Chỉ nêu CAGR kênh ETC 13,78%, không nêu tỷ trọng"
+  },
+  {
+   "ticker": "DMC",
+   "item": "eu_gmp",
+   "period": "2025",
+   "value": null,
+   "unit": "",
+   "extra": {
+    "text": "1 nhà máy (Nonbetalactam) EU-GMP",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/DMC_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Đặc biệt, việc đạt chứng nhận EU-GMP cho Nhà máy Nonbetalactam ... đã được Cơ quan Dược phẩm Châu Âu (EMA) đánh giá EU-GMP vào 11.2025",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "DMC",
+   "item": "etc_share",
+   "period": "2025",
+   "value": null,
+   "unit": "%",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/DMC_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Không nêu tỷ trọng ETC"
+  },
+  {
+   "ticker": "DVN",
+   "item": "etc_share",
+   "period": "2025",
+   "value": null,
+   "unit": "%",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Chưa thử (ưu tiên thấp)"
+  },
+  {
+   "ticker": "TNH",
+   "item": "beds",
+   "period": "2025",
+   "value": 750,
+   "unit": "giường",
+   "extra": {
+    "text": "BV Quốc tế Thái Nguyên, TNH Phổ Yên, TNH Việt Yên",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/TNH_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Tổng quy mô giường bệnh toàn hệ thống đạt 750 giường",
+   "status": "match",
+   "note": ""
+  }
+ ]
+}
