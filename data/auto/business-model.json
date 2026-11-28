@@ -1,0 +1,71 @@
+{
+  "_note": "Số đọc tay từ BCTC, báo cáo thường niên, tài liệu ĐHĐCĐ hoặc báo chí trích BCTC; mỗi bộ ghi kỳ, đơn vị, phạm vi, nguồn. Không có số thì để null. Mở nguồn 28/11/2026.",
+  "vea": {
+    "jv": [
+      {"name": "Honda Việt Nam", "short": "Honda VN", "pct": 30, "seg": ["car", "moto"], "note": "ô tô và xe máy"},
+      {"name": "Toyota Việt Nam", "short": "Toyota VN", "pct": 20, "seg": ["car"], "note": "ô tô"},
+      {"name": "Ford Việt Nam", "short": "Ford VN", "pct": 25, "seg": ["car"], "note": "ô tô · sở hữu gián tiếp qua Diesel Sông Công (DISOCO, công ty con 100%)"}
+    ],
+    "jv_period": "31/12/2024 (báo cáo thường niên 2024); cùng tỷ lệ được nhắc lại ở BCTC 30/6/2026 và Q3/2026",
+    "jv_source": ["VEA · Báo cáo thường niên 2024", "https://static2.vietstock.vn/vietstock/2025/4/21/2_vea_2025_4_21_a47be03_vi_baocaothuongnien_2024.pdf"],
+    "jv_source2": ["Tuổi Trẻ (BCTC 6T/2026)", "https://tuoitre.vn/honda-viet-nam-tra-49000-ti-dong-co-tuc-cho-mot-cong-ty-thuoc-bo-cong-thuong-sau-gan-10-nam-100260805190220117.htm"],
+    "jv_profit_by_brand": null,
+    "jv_profit_by_brand_note": "Chưa tìm được thuyết minh phần lãi theo từng liên doanh (Honda/Toyota/Ford) trong nguồn mở được; không chia ước.",
+    "dividends_by_jv": {
+      "unit": "tỷ đồng", "scope": "Cổ tức, lợi nhuận được chia VEA nhận từ từng liên doanh (thuyết minh BCTC công ty mẹ, theo bài báo)",
+      "cols": ["Honda VN", "Toyota VN", "Ford VN"],
+      "rows": {"2022": [4380, 717, 15], "2023": [5844, 660, 253], "2024": [5462, 261, 334], "2025": [5506, 264, 295], "6T/2026": [6184, 0, 0]},
+      "conflict": "Năm 2025: bài 31/01/2026 (Tuổi Trẻ, theo BCTC quý IV/2025 tự lập) ghi Honda 5.932, Toyota 264, Ford 358,5 (≈6.554); bảng trên theo bài 05/08/2026. Chưa đối chiếu được với BCTC kiểm toán 2025.",
+      "source": ["Tuổi Trẻ, 05/08/2026", "https://tuoitre.vn/honda-viet-nam-tra-49000-ti-dong-co-tuc-cho-mot-cong-ty-thuoc-bo-cong-thuong-sau-gan-10-nam-100260805190220117.htm"],
+      "source2": ["Tuổi Trẻ, 31/01/2026", "https://tuoitre.vn/moi-ngay-veam-nhan-gan-18-ti-dong-tu-honda-toyota-ford-viet-nam-dem-13-766-ti-gui-ngan-hang-20260131112027166.htm"]
+    },
+    "dps": {
+      "unit": "đồng/cổ phiếu và tỷ đồng", "scope": "Cổ tức tiền VEA trả cổ đông, ghi theo năm tài chính (chi vào cuối năm sau)",
+      "rows": [
+        {"fy": "2022", "dps": 4186.9, "total": 5570, "paid": "20/12/2023", "src": ["VnEconomy", "https://vneconomy.vn/co-phieu-bi-canh-bao-veam-sap-chi-5-570-ty-dong-tra-co-tuc-bang-tien-nam-2022.htm"]},
+        {"fy": "2023", "dps": 5035.18, "total": 6691, "paid": "20/12/2024", "src": ["Người Quan Sát", "https://nguoiquansat.vn/veam-vea-chot-ngay-tra-co-tuc-bang-tien-ty-le-hon-50-35-175146.html"]},
+        {"fy": "2024", "dps": 4658, "total": 6190, "paid": "19/12/2025", "src": ["Nhà đầu tư", "https://nhadautu.vn/veam-sap-chi-gan-6200-ty-tra-co-tuc-d100596.html"]},
+        {"fy": "2025", "dps": 5240, "total": 6963, "paid": "dự kiến 14/12/2026", "src": ["Báo Pháp luật", "https://doanhnhan.baophapluat.vn/veam-vea-sap-chi-gan-6-963-ty-dong-tien-tra-co-tuc-mot-don-vi-nhan-ve-hon-6-160-ty-dong.html"]}
+      ]
+    },
+    "audit_note": "BCTC hợp nhất VEA có ý kiến kiểm toán ngoại trừ ba năm liền (dự phòng tồn kho, công nợ chưa đối chiếu 446,6 tỷ, XDCB dở dang)."
+  },
+  "dealer_mix": {
+    "HAX": {"period": "2025", "revenue": {"vehicles": 4114.1, "service": 536.5, "other": 0}, "gross": {"vehicles": 257.1, "service": 97.8, "other": 0},
+      "note": "Bộ phận: kinh doanh xe (Mercedes, MG, VinFast) / sửa chữa, phụ tùng và khác (gồm 20,0 tỷ hoạt động khác)",
+      "source": ["HAX · BCTC hợp nhất kiểm toán 2025 (TM VIII.4)", "https://cdn.24hmoney.vn/upload/file/2026-1/2026-02-13/no-name-1770923051.pdf"]},
+    "SVC": {"period": "2025", "revenue": {"vehicles": 24744.3, "service": 2799.6, "other": 265.8}, "gross": {"vehicles": 1077.5, "service": 701.5, "other": 104.2},
+      "note": "SVC không tách xe và phụ tùng: 'Kinh doanh xe' gồm cả bán phụ tùng; 'Khác' là cho thuê bất động sản đầu tư. Doanh thu trước giảm trừ (30,7 tỷ); lãi gộp tự tính = doanh thu − giá vốn từng loại",
+      "source": ["SVC · Báo cáo thường niên 2025 (BCTC hợp nhất kiểm toán, TM VI.1, VI.3)", "https://savico.com.vn/Uploads/Reports/Savico%20BCTN%202025_Vie_V8.pdf"]},
+    "CTF": {"period": "2025", "revenue": {"vehicles": 7890.2, "service": 552.0, "other": 0}, "gross": {"vehicles": 253.9, "service": 223.9, "other": 0},
+      "note": "Bộ phận: xe / dịch vụ (454,6 DT; 191,5 lãi gộp) + phụ tùng (97,4; 32,4) gộp vào 'Dịch vụ, phụ tùng'",
+      "source": ["CTF · Báo cáo thường niên 2025 (BCTC hợp nhất kiểm toán, TM VI.3)", "https://mobiv2.fireant.vn/News/NewsAttachedFile/1873953"]}
+  },
+  "dealer_mix_note": "HAX, CTF công bố lãi gộp theo bộ phận; SVC: lãi gộp tự tính từ doanh thu và giá vốn theo loại.",
+  "dealer_bonus": {
+    "policy": "ghi vào thu nhập khác, không nằm trong lãi gộp",
+    "note": "Cả ba đại lý ghi thưởng doanh số, hỗ trợ từ hãng ở thu nhập khác (thuyết minh BCTC kiểm toán); không có chính sách kế toán nói rõ phần nào trừ vào giá vốn, nên không loại trừ được khoản đã cấn trừ trong giá vốn.",
+    "rows": {
+      "HAX": {"2025": 83.64, "2024": 64.73, "label": "Từ tiền hỗ trợ kinh doanh xe"},
+      "SVC": {"2025": 53.05, "2024": 9.70, "label": "Thưởng do đạt doanh số và hỗ trợ từ các nhà cung cấp"},
+      "CTF": {"2025": 20.07, "2024": 15.29, "label": "Hỗ trợ từ nhà cung cấp chính"}
+    },
+    "commission": "SVC: hoa hồng nhận từ đại lý bảo hiểm 0,68 tỷ (2025), 0,12 tỷ (2024) ở thu nhập khác; HAX, CTF: không thấy dòng riêng. Hoa hồng giới thiệu vay ngân hàng: không thấy ở cả ba."
+  },
+  "dealer_units": {
+    "unit": "xe",
+    "rows": {
+      "SVC": {"2025": 37166, "2024": 40315, "src": ["SVC · BCTN 2025 tr.20", "https://savico.com.vn/Uploads/Reports/Savico%20BCTN%202025_Vie_V8.pdf"], "note": "ô tô; 2024 thêm 7.649 xe máy"},
+      "CTF": {"2025": 8178, "2024": 8754, "src": ["Vietstock (ĐHĐCĐ 2026)", "https://vietstock.vn/2026/05/dhdcd-city-auto-muon-tang-toc-nho-vinfast-chu-tich-tran-ngoc-dan-roi-hdqt-737-1447896.htm"], "src2": ["VCCI (2024)", "https://www.vcci.com.vn/tin-tuc/city-auto-tra-co-tuc-tien-mat-sau-6-nam-gia-nhap-ban-xe-vinfast"], "note": "số báo chí trích ĐHĐCĐ, không có trong BCTN"}
+    },
+    "missing": "HAX không công bố số xe bán."
+  },
+  "dealer_vehicle_gp": {
+    "CTF": {"2025": 253.9, "2024": 249.2}
+  },
+  "tmt": {
+    "capacity": 10000, "capacity_note": "Nhà máy ô tô Hưng Yên, công suất 10.000 xe/năm (lịch sử công ty, BCTN); xưởng xe điện kế hoạch 3.000 xe/năm theo BCTN 2025 (báo chí ghi 30.000, chưa thống nhất)",
+    "units": {"2025": 4416, "2024": 3193}, "units_note": "Số xe bán (BCTN): 2025 đạt 54,69% kế hoạch 8.075; 2024 đạt 48% kế hoạch 6.582. 2022–2023 BCTN không ghi tổng số.",
+    "source": ["TMT · Báo cáo thường niên 2025", "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/TMT_Baocaothuongnien_2025.pdf"]
+  }
+}

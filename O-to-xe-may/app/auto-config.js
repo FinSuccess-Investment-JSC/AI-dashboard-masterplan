@@ -15,16 +15,7 @@ window.PKG = {
     {spark: 'spk-pe', pe: '224', label: 'Bán lẻ xe'},
   ],
   charts: [
-    {id: 'chAutoChain', type: 'steps', steps: [
-      ['Nguồn xe', 'Lắp ráp trong nước + nhập khẩu nguyên chiếc', 'Hãng, liên doanh, nhà lắp ráp (TMT); xe nhập chịu thuế nhập khẩu, TTĐB'],
-      ['Phân phối', 'Đại lý ủy quyền (HAX, SVC, CTF)', 'Mua xe từ hãng, hưởng chiết khấu và thưởng doanh số'],
-      ['Người mua', 'Vay mua xe, lệ phí trước bạ, đăng ký', 'Lãi suất, tín dụng, lệ phí trước bạ 0% xe điện đến 2030'],
-      ['Biên đại lý', 'Chiết khấu xe mới + dịch vụ, phụ tùng', 'Giảm giá cạnh tranh, tồn kho xe, lãi vay']],
-      note: 'Sơ đồ mô hình, không biểu thị tỷ trọng.', src: [['FinSuccess tổng hợp', '#rf-q-model']]},
-    {id: 'chAutoModels', type: 'models', items: [
-      ['Đại lý ô tô', 'HAX · SVC · CTF', 'Bán xe mới của các hãng (HAX: Mercedes, MG và đại lý VinFast từ 3/2026; SVC, CTF: đa hãng), dịch vụ, phụ tùng, sửa chữa', 'Số xe bán theo hãng, chiết khấu từ hãng, mức giảm giá; tồn kho xe và lãi vay', [['#rf-q-car', 'Doanh số xe'], ['#rf-q-gm', 'Biên đại lý']]],
-      ['Sản xuất, lắp ráp', 'TMT', 'Lắp ráp và bán xe tải, xe điện cỡ nhỏ', 'Sản lượng, giá linh kiện nhập, tỷ giá; thuế TTĐB, lệ phí trước bạ xe điện', [['#rf-q-output', 'Sản lượng sản xuất'], ['#rf-q-policy', 'Chính sách']]]],
-      src: [['BCTC và báo cáo thường niên doanh nghiệp', '#rf-q-compare']]},
+    // chAutoChain (oto-01) và chAutoModels (oto-05) dựng ở app/auto-chain.js: sơ đồ chuỗi giá trị tương tác, 4 mô hình kiếm tiền (28/11/2026).
     {id: 'chCar', type: 'series', base: 'car_output', series: [['Ô tô sản xuất (nghìn chiếc)', 'car_output', C.navy, 'bar'], ['Nhập khẩu ô tô nguyên chiếc (chục triệu USD)', 'car_import', C.gold, 'line', 'raw', 10]], unit: '', digits: 1, table: 'tbl-car', src: ['nso', 'customs'],
       method: 'Sản lượng sản xuất ô tô (NSO) và kim ngạch nhập khẩu ô tô nguyên chiếc (Hải quan, chia 10 để cùng trục). Đây không phải doanh số bán ra.',
       insight: 'Sản xuất trong nước và nhập khẩu là nguồn cung xe cho đại lý; doanh số bán ra (VAMA, VinFast) ở chart bên cạnh mới quyết định doanh thu đại lý. Kiểm tiếp tháng 11–12, mùa cao điểm mua xe cuối năm.'},
@@ -59,15 +50,15 @@ window.PKG = {
     {id: 'chAutoPlan', type: 'tiles', items: [['Kế hoạch 2026 · HAX', 'LNTT 180–200 tỷ', 'gấp 4–5 lần, chưa gồm đại lý VinFast'], ['Kết quả 6T/2026 · HAX', 'LNTT 49,8 tỷ', '25% kế hoạch; Q2 doanh thu 1.559 tỷ (+52%)'], ['Kế hoạch 2026 · SVC', '22.094 / ~159 tỷ', 'doanh thu (−21%) / LNST (−68%, nền 2025 có lãi bất thường)'], ['Kết quả 6T/2026 · SVC', '103,5 tỷ lãi ròng', '−30% so cùng kỳ · 65% kế hoạch']],
       src: [['HAX qua DNSE', 'https://www.dnse.com.vn/senses/tin-tuc/haxaco-kinh-doanh-ra-sao-sau-khi-mua-cong-ty-phan-phoi-xe-vinfast-35252657'], ['SVC qua Nhà đầu tư', 'https://nhadautu.vn/thi-truong-o-to-tang-toc-doanh-nghiep-nao-huong-loi-d106829.html']], method: 'Số doanh nghiệp công bố, kỳ ghi ở từng ô. HAX: số Q2 hợp nhất (DNSE) khác số công ty mẹ ở một số bài.'},
   ],
-  sourceManual: [[/^Chuỗi giá trị ngành ô tô/, 'FinSuccess tổng hợp']],
+  sourceManual: [],
   topics: {'oto-t1': ['Doanh thu, cơ cấu hãng và biên gộp HAX; doanh số đại lý xe xăng (SVC, CTF)', 'Doanh số VinFast và VAMA hằng tháng, biên gộp HAX quý III–IV', [['#rf-q-car', 'Doanh số xe'], ['#rf-q-gm', 'Biên đại lý'], ['#rf-q-policy', 'Lệ phí trước bạ']]]},
   section: {supply: ['mt2', 'all'], demand: ['mt2', 'all']},
   tree: {
     mt1: {title: 'Tổng quan ngành', subs: [
-      {k: 'map', t: 'Bản đồ ngành', d: 'Hãng, nhà lắp ráp, xe nhập → đại lý → người mua (vay, lệ phí) → biên đại lý.', items: [
-        {q: 'Một chiếc xe đi qua những khâu nào trước khi thành lợi nhuận?', id: 'rf-q-map', take: ['oto-01']}]},
-      {k: 'model', t: 'Mô hình kiếm tiền', d: 'Đại lý và nhà lắp ráp kiếm tiền khác nhau thế nào.', items: [
-        {q: 'Mỗi nhóm kiếm tiền từ đâu, biến nào quyết định biên?', id: 'rf-q-model', take: ['oto-05']}]},
+      {k: 'map', t: 'Bản đồ ngành', d: 'Linh kiện → sản xuất, nhập khẩu → phân phối → đại lý → người mua; nhánh hậu mãi, nhánh sở hữu vốn VEA; doanh nghiệp niêm yết nằm ở khâu nào.', items: [
+        {q: 'Một chiếc xe đi qua những khâu nào, ai trả tiền cho ai?', id: 'rf-q-map', take: ['oto-01']}]},
+      {k: 'model', t: 'Mô hình kiếm tiền', d: 'Bốn mô hình: sản xuất & lắp ráp, đại lý, hậu mãi, sở hữu vốn (VEA).', items: [
+        {q: 'Mỗi mô hình kiếm tiền từ đâu, biến nào quyết định lợi nhuận?', id: 'rf-q-model', take: ['oto-05']}]},
     ]},
     mt2: {title: 'Bức tranh ngành', subs: [
       {k: 'all', t: 'Ô tô', d: 'Sản lượng và doanh số xe đang tăng ở nhóm nào? Nguồn cung, số bán, cơ cấu nhập khẩu/lắp ráp, tín dụng.', kpis: ['spk-car', 'spk-carimp'], items: [

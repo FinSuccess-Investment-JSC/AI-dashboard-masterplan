@@ -17,8 +17,10 @@
 <script src="../data/retail-public-data.js?v=bd7f2d8df440" defer></script>
 <script src="app/sector-visuals.js?v=527a0e663b30" defer></script>
 <script src="../data/company-quarterly.js?v=0a9271b93bb5" defer></script>
-<script src="app/auto-config.js?v=7e5e8259aff6" defer></script>
+<script src="../data/auto-model.js?v=195d69a52582" defer></script>
+<script src="app/auto-config.js?v=4a55acd3edf1" defer></script>
 <script src="app/pkg-dashboard.js?v=8cf928a21f40" defer></script>
+<script src="app/auto-chain.js?v=ef32627de5af" defer></script>
 <script src="app/chart-cards.js?v=eab76b0711ea" defer></script>
 <script src="app/share-image.js?v=8a02d0b54ef2" defer></script>
 <script src="app/chart-arrange.js?v=bb5b95d73397" defer></script>
@@ -46,7 +48,7 @@
 <script src="app/chart-source.js?v=20de8094fc85" defer></script>
 <script src="app/pkg-frame.js?v=9f3ff233c4ce" defer></script>
 <link rel="stylesheet" href="app/pkg-frame.css?v=9fa58ba70f5d">
-<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-thep-sua-chuoi-gia-tri"></script>
+<script src="app/site-navigation.js?v=b54af29114cf" data-release="20261128-oto-chuoi-gia-tri"></script>
 <script src="../data/site-nav.js?v=bccdfcd7ccb8"></script>
 <script src="app/site-sidebar.js?v=6aa23ba41b70"></script>
 <link rel="stylesheet" href="app/catalyst-board.css?v=3cbacede9079">
@@ -55,6 +57,7 @@
 <link rel="stylesheet" href="app/fin-success-theme.css?v=d2a28183412c">
 <link rel="stylesheet" href="app/brand.css?v=4fab96877d3a">
 <link rel="stylesheet" href="app/sector-standard.css?v=220e74d5f83f">
+<link rel="stylesheet" href="app/auto-chain.css?v=75cd9371e827">
 </head>
 <body data-sector="retail" data-pkg="auto">
 <nav data-site-navigation="auto" aria-label="Điều hướng dashboard ngành"></nav>
@@ -86,12 +89,13 @@
     <!-- research-layout.js dựng lưới giá vào #supply-world / #supply-vietnam (khung chung của gói); để rỗng -->
     <div class="supply-pane" id="supply-world"></div><div class="supply-pane" id="supply-vietnam"></div>
       <div class="card" data-block-id="oto-01" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
-        <div class="chart-title">Chuỗi giá trị ngành ô tô</div>
-        <div class="chart-sub">nguồn xe → đại lý → người mua → biên đại lý</div>
+        <div class="chart-title">Chuỗi giá trị ô tô, xe máy: hàng đi đâu, tiền về đâu</div>
+        <div class="chart-sub">5 khâu chính · nhánh hậu mãi · nhánh sở hữu vốn VEA · hệ sinh thái hỗ trợ</div>
         <div id="chAutoChain"></div>
       </div>
       <div class="card" data-block-id="oto-05" data-update-kind="static" data-cadence="rare" data-refresh-status="snapshot">
-        <div class="chart-title">Mô hình kiếm tiền của doanh nghiệp niêm yết</div>
+        <div class="chart-title">Bốn mô hình kiếm tiền của doanh nghiệp niêm yết</div>
+        <div class="chart-sub">mỗi mô hình một hình riêng · số BCTC hợp nhất, thuyết minh bộ phận · truyền dẫn biến số cuối mỗi mô hình</div>
         <div id="chAutoModels"></div>
       </div>
       <div class="card" data-block-id="oto-10" data-update-kind="periodic" data-cadence="monthly" data-refresh-status="snapshot">
