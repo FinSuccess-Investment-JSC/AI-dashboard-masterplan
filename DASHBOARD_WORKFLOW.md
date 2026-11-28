@@ -608,3 +608,11 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **ROCE thay ROIC:** (LNTT + lãi vay) × (1 − thuế suất hiệu dụng 0–30%) ÷ (VCSH + nợ vay) bình quân, không trừ tiền. ROIC cũ trừ hết tiền nên PVS ra 147% (tiền chủ yếu từ phải trả, khách ứng trước) và bỏ lãi liên doanh FSO/FPSO. Bản đồ hiệu quả vốn: trục ngang tiền ÷ tổng tài sản.
 - Chỉ sửa Dầu khí; `ship-finance.js`, `port-finance.js` (chép từ `oil-finance.js`) giữ nguyên.
 
+## 49. BĐS dân cư › Tài chính ngành: thước đo theo chủ đầu tư nhà ở (28/11/2026, người dùng duyệt 7 việc sau bản rà soát)
+- **Nhóm:** 5 nhóm (`scripts/re_fin_items.py`): Đại đô thị (VHM, NVL) · Nhà ở đô thị lớn (KDH, NLG, DXG, AGG) · Đất nền & tỉnh (PDR, DIG, CEO, TCH, NTL) · Cho thuê TTTM (VRE) · Môi giới (DXS). Không tách VHM (chốt 27/11); thay vào đó `med()` vẽ **trung vị các mã** cạnh số cộng gộp ở biên, ROE, nợ vay ròng/VCSH, và ô KPI ghi mã lớn nhất chiếm bao nhiêu % LNST.
+- **Không dùng** nợ vay ròng/EBITDA và EBIT/lãi vay cho chủ đầu tư: EBITDA nhảy theo lịch bàn giao (hệ số từng giảm 4,7 → 1,6 lần khi nợ vay ròng tăng 51%), lãi vay trên KQKD chỉ là phần không vốn hóa (KDH 0,3% nợ vay). Thay bằng nợ vay ròng/VCSH, nợ vay/tồn kho, nợ vay ngắn hạn/tiền; chart lãi vay ÷ nợ vay theo nhóm để thấy mức vốn hóa. Áp dụng cả sub-tab 02 (mục 2.6) và Bản đồ hiệu quả vốn.
+- **Doanh thu tài chính:** chart "Lợi nhuận trước thuế đến từ đâu?" (1.2) và chỉ tiêu Doanh thu tài chính/LNTT (2.2), vì lãi chuyển nhượng dự án qua bán cổ phần nằm ngoài EBIT. ROCE = (LNTT + lãi vay) × (1 − thuế) ÷ (VCSH + nợ vay) thay ROIC.
+- **Mục 1.3** thành Đầu tư vào quỹ đất & nguồn tài trợ (vốn nằm ở dự án, tồn kho tăng so với tiền khách trả trước / vay ròng / vốn góp, 1 chart CAPEX). **Mục 1.4:** tiền khách trả trước theo nhóm (tỷ đồng, ÷ doanh thu TTM) thay DSO. Bảng nhiệt đổi tên "Lợi nhuận theo quý bàn giao".
+- **Độ phủ 80%** như §48. VRE, DXS thiếu LCTT quý 2025–2026 nên trống ở chart dòng tiền.
+- Còn thiếu: phải thu khác, trả trước người bán (đặt cọc, hợp tác đầu tư) chưa có trong `kcn_fin_items.ITEMS`; lãi vay vốn hóa không có trong BCTC tóm tắt.
+
