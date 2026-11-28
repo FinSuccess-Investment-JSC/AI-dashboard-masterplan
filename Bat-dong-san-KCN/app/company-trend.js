@@ -4,7 +4,7 @@
 (() => {
 'use strict';
 const NS='http://www.w3.org/2000/svg';
-const METRICS=[
+const BASE_METRICS=[
   ['gross_margin','Biên gộp','%'],['net_margin','Biên ròng','%'],
   ['revenue','Doanh thu','tỷ đ'],['gross_profit','Lãi gộp','tỷ đ'],['net_income','Lãi ròng','tỷ đ']
 ];
@@ -42,11 +42,48 @@ function annual(data,cs){
     return {...c,revenue,gross_profit,net_income,gross_margin:ratio(gross_profit,revenue),net_margin:ratio(net_income,revenue)}})};
 }
 
+
+/* Chỉ tiêu riêng theo ngành (28/11/2026, người dùng: so sánh tài chính chưa customized theo ngành). Tính từ BCTC quý của trang
+   (window.<NGÀNH>_FIN, engine IndustryFin), TTM cho số phát sinh, cuối quý cho số dư; chế độ Năm lấy giá trị quý 4. */
+const XR=(num,den,mode,sc,o={})=>(E,t)=>E.ratio({m:num,avg:o.an},{m:den,avg:o.ad},[t],mode,sc).each[t]||[];
+const XM={
+  roe:['roe','ROE (TTM)','%',XR('npat','equity','ttm',100,{ad:true})],
+  ebitdam:['ebitdam','Biên EBITDA','%',XR('ebitda','revenue','ttm',100)],
+  ndebitda:['ndebitda','Nợ vay ròng/EBITDA','lần',XR('net_debt','ebitda','ttm',1)],
+  nde:['nde','Nợ vay ròng/VCSH','%',XR('net_debt','equity','q',100)],
+  dio:['dio','Ngày tồn kho','ngày',XR('inventory','cogs','ttm',365,{an:true})],
+  dso:['dso','Ngày phải thu','ngày',XR('receivables','revenue','ttm',365,{an:true})],
+  advrev:['advrev','Khách trả trước/doanh thu','lần',XR('adv_customers','revenue','ttm',1)],
+  invta:['invta','Tồn kho/tổng tài sản','%',XR('inventory','total_assets','q',100)],
+  sellrev:['sellrev','Chi phí bán hàng/doanh thu','%',XR('selling','revenue','ttm',100)],
+  darev:['darev','Khấu hao/doanh thu','%',XR('da','revenue','ttm',100)],
+  assocpbt:['assocpbt','Lãi liên kết/LNTT','%',XR('assoc','pbt','ttm',100)]
+};
+const XSET={OIL_FIN:['ebitdam','roe','ndebitda','dio','assocpbt'],RE_FIN:['roe','advrev','invta','nde'],TEXTILE_FIN:['ebitdam','roe','dso','dio','ndebitda'],
+  SHIP_FIN:['ebitdam','roe','ndebitda','darev'],PORT_FIN:['ebitdam','roe','ndebitda','assocpbt'],STEEL_FIN:['ebitdam','roe','dio','ndebitda'],
+  SUGAR_FIN:['roe','dio','ndebitda'],DAIRY_FIN:['ebitdam','roe','sellrev'],BEER_FIN:['ebitdam','roe','sellrev'],POWER_FIN:['ebitdam','roe','ndebitda','assocpbt'],
+  KCN_FIN:['roe','advrev','nde'],RETAIL_FIN:['ebitdam','roe','dio','sellrev'],XD_FIN:['roe','dso','advrev','nde'],AVIATION_FIN:['ebitdam','roe','ndebitda'],
+  TELECOM_FIN:['ebitdam','roe','ndebitda','darev'],PHARMA_FIN:['ebitdam','roe','dio','sellrev']};
+function sectorExtra(data,base){
+  if(!window.IndustryFin)return[];
+  const hit=Object.keys(window).filter(k=>/_FIN$/.test(k)&&window[k]?.companies?.length&&window[k]?.periods?.length).find(k=>base.some(c=>window[k].companies.some(x=>x.ticker===c.symbol)));
+  if(!hit)return[];
+  const D=window[hit],E=IndustryFin.create(D),P=D.periods.map(p=>`Q${p.slice(-1)}/${p.slice(0,4)}`);
+  const ms=(XSET[hit]||['ebitdam','roe','ndebitda']).map(k=>XM[k]);
+  base.forEach(c=>{const ok=D.companies.some(x=>x.ticker===c.symbol);ms.forEach(([k,,,f])=>{const a=ok?f(E,c.symbol):[];
+    c[k]=data.quarters.map(q=>{const i=P.indexOf(q),v=i>=0?a[i]:null;return finite(v)?Math.round(v*100)/100:null})})});
+  return ms.map(([k,l,u])=>[k,l,u]);
+}
+
 function mount(host,{sector}){
   const data=window.COMPANY_QUARTERLY;
   if(!data||!data.companies?.some(c=>c.sector===sector))return null;
   const base=data.companies.filter(c=>c.sector===sector);
+  const XMET=sectorExtra(data,base),METRICS=[...BASE_METRICS,...XMET];
   const yearly=annual(data,base);
+  // Năm: chỉ tiêu TTM/số dư lấy giá trị quý 4 của năm đó.
+  const fillYear=ms=>yearly.companies.forEach((c,j)=>{const src=base[j];ms.forEach(([k])=>{c[k]=yearly.labels.map(y=>{const i=data.quarters.indexOf('Q4/'+y);return i>=0?src[k][i]:null})})});
+  fillYear(XMET);
   const views={Q:{labels:data.quarters,companies:base},Y:yearly};
   const groups=[...new Set(base.map(c=>c.group))];
   const color=Object.fromEntries(base.map((c,i)=>[c.symbol,colorOf(i)]));
@@ -73,7 +110,10 @@ function mount(host,{sector}){
   const sub=make('div','chart-sub');card.append(sub);
   const top=make('div','ct-top');
   const metricRow=make('div','supply-tabs company-trend-metrics');metricRow.setAttribute('role','tablist');
-  METRICS.forEach(([k,label])=>{const b=make('button','tabbtn',label);b.type='button';b.setAttribute('role','tab');b.dataset.k=k;if(!has(k)){b.disabled=true;b.title='Không có dữ liệu cho ngành này'}b.onclick=()=>{state.metric=k;update()};metricRow.append(b)});
+  const addMetric=([k,label])=>{const b=make('button','tabbtn',label);b.type='button';b.setAttribute('role','tab');b.dataset.k=k;if(!has(k)){b.disabled=true;b.title='Không có dữ liệu cho ngành này'}b.onclick=()=>{state.metric=k;update()};metricRow.append(b)};
+  METRICS.forEach(addMetric);
+  // BCTC của trang (window.<NGÀNH>_FIN) nạp sau khối này: thêm chỉ tiêu riêng ngành khi trang nạp xong.
+  if(!XMET.length&&document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{const more=sectorExtra(data,base);if(!more.length)return;METRICS.push(...more);fillYear(more);more.forEach(addMetric);update()});
   const typeRow=make('div','ct-types');typeRow.setAttribute('role','group');typeRow.setAttribute('aria-label','Loại biểu đồ');
   TYPES.forEach(([k,label])=>{const b=make('button','',label);b.type='button';b.dataset.k=k;b.onclick=()=>{state.type=k;update()};typeRow.append(b)});
   top.append(metricRow,typeRow);
@@ -131,7 +171,7 @@ function mount(host,{sector}){
     // So cùng kỳ: quý so quý cùng kỳ năm trước, năm so năm trước; doanh thu/lãi tính %, chỉ khi kỳ gốc dương; biên tính chênh lệch điểm %.
     const prev=Q.map(l=>Q.indexOf(state.mode==='Q'?l.replace(/\d{4}$/,y=>String(y-1)):String(+l-1)));
     lines.forEach(L=>{const a=L.s[key];L.v=!state.yoy?a:a.map((x,i)=>{const p=prev[i]<0?null:a[prev[i]];if(!finite(x)||!finite(p))return null;return pct?Math.round((x-p)*100)/100:p>0?Math.round((x/p-1)*10000)/100:null})});
-    const unitS=state.yoy?(pct?' điểm %':'%'):(pct?'%':''),dig=pct||state.yoy?1:0;
+    const unitS=state.yoy?(pct?' điểm %':'%'):(pct?'%':unit==='lần'?'x':unit==='ngày'?' ngày':''),dig=pct||state.yoy?1:unit==='lần'?2:0;
     const clamp=state.yoy?(pct?[-50,50]:[-100,300]):pct?[-30,100]:null;
     const syms=lines;
     for(let i=state.from;i<=state.to;i++)idx.push(i);

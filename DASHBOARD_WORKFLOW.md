@@ -594,3 +594,6 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 
 ## 46. Dầu khí giữ tab Chính sách riêng (28/11/2026, người dùng: "dầu khí để tab chính sách riêng mà")
 - Ngoại lệ của §42: Dầu khí có 5 tab lớn Tổng quan ngành · Bức tranh ngành (01–06) · **Chính sách** (`#mt4`, thanh con 6 văn bản) · Tài chính ngành · Chủ đề nóng. `Dau-khi/app/oil-frame.js` dựng tab #mt4 từ sub-tab policy cũ; link cũ `?sub=policy&pol=…#mt2` tự chuyển về `?sub=<văn bản>#mt4`. `scripts/check_sector_frame.py` có `TABS_BY` cho ngoại lệ này. Ngành khác vẫn theo §42.
+
+## 47. Chart xu hướng tài chính theo kỳ có chỉ tiêu riêng ngành (28/11/2026, người dùng: "tab 02 Doanh nghiệp niêm yết chẳng có gì thay đổi")
+- `app/company-trend.js` (mọi ngành) giữ 5 chỉ tiêu chung (biên gộp, biên ròng, doanh thu, lãi gộp, lãi ròng) và thêm chỉ tiêu riêng theo `XSET[<NGÀNH>_FIN]`, tính từ BCTC quý của trang qua IndustryFin: biên EBITDA, ROE TTM, nợ vay ròng/EBITDA, nợ vay ròng/VCSH, ngày tồn kho, ngày phải thu, khách trả trước/doanh thu, tồn kho/tổng tài sản, CPBH/doanh thu, khấu hao/doanh thu, lãi liên kết/LNTT. Chế độ Năm lấy giá trị quý 4. BCTC nạp sau khối này nên nút chỉ tiêu riêng được thêm khi DOMContentLoaded.
