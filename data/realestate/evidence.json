@@ -2271,16 +2271,6 @@
  },
  {
   "block": "re-manual",
-  "claim": "VHM · RNAV và giá mục tiêu của CTCK · 07/09/2026 · Shinhan",
-  "value": "giá mục tiêu 99.800 đồng/cp",
-  "url": "https://shinhansec.com.vn/uploads/report/VHM_Update_VN_09_20261.pdf",
-  "opened_at": "2026-11-28",
-  "quote": "MUA với mức giá mục tiêu 99,800 VND/cổ phiếu, được định giá dựa trên phương pháp RNAV. [...] RNAV 819,621 [...] Số lượng cổ phiếu đang lưu hành (triệu cổ phiếu) 8,214 | Giá mục tiêu (VND/cổ phiếu) (làm tròn)* 99,800 | Giá hiện tại (VND/cổ phiếu)* 74,500",
-  "status": "match",
-  "note": "value = giá mục tiêu. Báo cáo không nêu riêng dòng RNAV/cp và không áp chiết khấu: giá mục tiêu = RNAV 819.621 tỷ / 8.214 triệu cp. Đây là báo cáo RNAV mới nhất mở được; sau KQKD Q3 có VPX 04/11/2026 (CDN 24hmoney trả 504, không mở được) và DSC 08/10/2026 giá mục tiêu 114.400 nhưng theo P/B, không phải RNAV. Báo cáo MBS 10/03/2026 (123.200) là giá trước khi chia cổ phiếu 1:1."
- },
- {
-  "block": "re-manual",
   "claim": "NVL · Doanh số bán hàng năm 2025 · FY2025 · Vietcap",
   "value": "2.500 tỷ đồng",
   "url": "https://cdn.simplize.vn/simplizevn/report/NVL/Du_an_Aqua_City_du_kien_dan_dat_a_phuc_hoi_manh_me_cua_doanh_so_ban_bat_ong_san_-_Cap_nhat.pdf",
@@ -2308,16 +2298,6 @@
   "quote": "2025 2026F 2027F 2028F [...] Doanh số bán BĐS (tỷ đồng) 6.000 6.600 8.300 9.700",
   "status": "match",
   "note": "Số ước tính làm tròn của Vietcap (báo cáo 28/08/2026), không phải số KDH công bố. MÂU THUẪN: VDSC 13/10/2026 dự phóng 2026 là 5.572 tỷ (+13,5% svck), ngầm định 2025 khoảng 4.900 tỷ. Không nên dùng làm số chính thức."
- },
- {
-  "block": "re-manual",
-  "claim": "KDH · RNAV và giá mục tiêu của CTCK · 13/10/2026 · VDSC",
-  "value": "RNAV 28.300 đồng/cp · giá mục tiêu 28.300 đồng/cp",
-  "url": "https://cdn.24hmoney.vn/upload/file/2026-4/2026-10-14/3a590841_df8d_44ad_2b8b_08df28be611e.pdf",
-  "opened_at": "2026-11-28",
-  "quote": "Theo đó, giá trị tài sản ròng (RNAV) của KDH được xác định ở mức 34.903 tỷ đồng, tương ứng với giá mục tiêu 28.300 đồng/cổ phiếu.",
-  "status": "match",
-  "note": "value = giá mục tiêu = RNAV/cp (34.903 tỷ / 1.234 triệu cp), VDSC không áp chiết khấu. PDF ghi 'Tháng Mười, 2026'; ngày 13/10/2026 lấy theo danh mục 24hmoney. Các báo cáo mới hơn có giá mục tiêu thấp hơn nhiều nhưng không nêu RNAV: ACBS 13/11/2026 19.000 (PDF dạng ảnh, đọc qua OCR), Agriseco 12/11/2026 18.000, Mirae 03/11/2026 26.500. Chênh lệch giữa các CTCK rất lớn."
  },
  {
   "block": "re-manual",
@@ -2361,16 +2341,6 @@
  },
  {
   "block": "re-manual",
-  "claim": "NLG · RNAV và giá mục tiêu của CTCK · 11/11/2026 · MBS",
-  "value": "giá mục tiêu 31.300 đồng/cp",
-  "url": "https://cdn.24hmoney.vn/upload/file/2026-4/2026-11-11/NLG_BCPT_20261111.pdf",
-  "opened_at": "2026-11-28",
-  "quote": "Chúng tôi sử dụng phương pháp RNAV để đưa ra giá mục tiêu mới cho NLG là 31,300 VNĐ/cp (giảm 15% so với giá mục tiêu gần nhất, sau điều chỉnh phát hành cổ phiếu cho cổ đông hiện hữu) dựa trên các thay đổi sau: (1) điều chỉnh chậm lại tiến độ mở bán và bàn giao tại một số dự án như Waterpoint, Elyse Island, và Izumi City (2) chiết khấu tổng giá trị các dự án 15% để phản ánh tác động tiêu cực từ lãi suất [...] Giá trị tài sản ròng - RNAV 15,235 | Số lượng CP hiện hành (triệu cp) 485 | Giá mục tiêu (VNĐ/cp) 31,300",
-  "status": "match",
-  "note": "value = giá mục tiêu. MBS chiết khấu 15% trên tổng giá trị dự án (không phải chiết khấu trên RNAV); RNAV/cp không nêu thành dòng riêng (RNAV 15.235 tỷ / 485 triệu cp). Tham khảo: VDSC 06/10/2026 RNAV 17.109 tỷ, giá mục tiêu 35.300, không chiết khấu."
- },
- {
-  "block": "re-manual",
   "claim": "DXG · Doanh số bán hàng năm 2025 · FY2025 · Vietcap",
   "value": "10,8 nghìn tỷ đồng",
   "url": "https://static.fireant.vn/reports/content/83995",
@@ -2378,26 +2348,6 @@
   "quote": "Chúng tôi dự báo The Privé sẽ đóng góp 15,2 nghìn tỷ đồng (so với ước tính khoảng 10,8 nghìn tỷ đồng trong năm 2025) vào doanh số bán hàng giai đoạn 2026–2027 của DXG, với việc bàn giao dự kiến trong giai đoạn 2027–2029.",
   "status": "match",
   "note": "Là ƯỚC TÍNH của Vietcap (báo cáo 12/06/2026), không phải số công ty công bố; bảng tóm tắt cùng báo cáo ghi 'Doanh số bán hàng (tỷ đồng) 10.800' cột 2025, 100% từ The Privé. Lệch nguồn: MBS 19/05/2026 dự phóng 2026 = 12,250 tỷ '+30% svck' (ngụ ý 2025 ~9.400 tỷ) nhưng cùng báo cáo có chỗ ghi +62%."
- },
- {
-  "block": "re-manual",
-  "claim": "DXG · RNAV và giá mục tiêu của CTCK · 24/08/2026 · VCBS",
-  "value": "RNAV 13.755 đồng/cp · giá mục tiêu 14.332 đồng/cp",
-  "url": "https://static.fireant.vn/reports/content/85074",
-  "opened_at": "2026-11-28",
-  "quote": "Chúng tôi kết hợp 2 phương pháp định giá RNAV và định giá tương đối theo tỷ lệ 50:50 và đưa ra kết quả định giá hợp lý của cổ phiếu DXG là 14.332 VND/ cổ phiếu. [Bảng] Kết quả định giá (VND/ cổ phiếu): Phương pháp định giá RNAV 13.755; Phương pháp định giá tương đối 14.909",
-  "status": "match",
-  "note": "Báo cáo RNAV mới nhất mở được: VCBS, thị giá ghi ngày 24/08/2026 (Stockbiz ghi ngày đăng 07/10/2026). Giá mục tiêu là trung bình 50:50 RNAV và P/B, không nêu chiết khấu RNAV. Không tìm thấy báo cáo định giá nào sau KQKD Q3/2026. Báo cáo khác đã mở: Mirae Asset 30/07/2026 TP 13,900 (không nêu RNAV); Vietcap 12/06/2026 TP 17.000 thuần RNAV (NAV 21.556 tỷ / 1.268 triệu cp, không chiết khấu); MBS 19/05/2026 TP 20,800 (RNAV 22,808 tỷ / 1,114 triệu cp, trước cổ phiếu thưởng 14%)."
- },
- {
-  "block": "re-manual",
-  "claim": "PDR · RNAV và giá mục tiêu của CTCK · 14/10/2026 · MBS",
-  "value": "RNAV 17.100 đồng/cp · giá mục tiêu 17.100 đồng/cp",
-  "url": "https://static.fireant.vn/reports/content/85137",
-  "opened_at": "2026-11-28",
-  "quote": "Về định giá, chúng tôi ước tính RNAV mới đạt 17,096 tỷ VNĐ, tương đương 17,100 VNĐ/cp, giảm 16.2% so với báo cáo tháng 3 [...] PDR hiện giao dịch ở P/B 0.9x, chiết khấu ~34% so với RNAV.",
-  "status": "match",
-  "note": "MBS Research 14/10/2026, khuyến nghị KHẢ QUAN. Giá mục tiêu = RNAV/cp (không áp chiết khấu; '~34%' là mức thị giá 11,100 đang thấp hơn RNAV, không phải chiết khấu định giá). Lệch nguồn: BSC 25/09/2026 TP 13,100 (THEO DÕI; RNAV + giá trị sổ sách, 'chiết khấu thêm 50% giá trị' các dự án nghỉ dưỡng); VFS 10/09/2026 giá hợp lý 18.000 (rNAV, WACC 12%)."
  },
  {
   "block": "re-manual",
@@ -2421,16 +2371,6 @@
  },
  {
   "block": "re-manual",
-  "claim": "TCH · RNAV và giá mục tiêu của CTCK · 30/10/2026 · SHS",
-  "value": "giá mục tiêu 16.100 đồng/cp",
-  "url": "https://cdn.simplize.vn/simplizevn/report/TCH/20261030_tch_new_city_ii_bat_dau_ban_giao_loi_nhuan_tang_truong_manh.pdf",
-  "opened_at": "2026-11-28",
-  "quote": "Duy trì khuyến nghị Tăng tỷ trọng với giá mục tiêu 16.100 đồng/cp, tương ứng tiềm năng tăng giá 35,8% so với giá đóng cửa 11.850 đồng/cp ngày 30/10/2026. Giá mục tiêu đã điều chỉnh từ 17.700 đồng/cp cho đợt thưởng cổ phiếu tỷ lệ 10%.",
-  "status": "match",
-  "note": "Báo cáo 30/10/2026 không nêu RNAV/cp hay mức chiết khấu. Phương pháp SOTP/RNAV được SHS nêu ở báo cáo 21/05/2026 (https://s3-storage.shs.com.vn/shs-website/Bao_cao_Cap_nhat_TCH_T5_2026_31fe03518e.pdf: 'Chúng tôi định giá TCH theo phương pháp SOTP/RNAV', giá trị hợp lý 19.900 khi đó). Agriseco 11/2026 có giá mục tiêu 16.000 nhưng không theo RNAV."
- },
- {
-  "block": "re-manual",
   "claim": "VRE · Tỷ lệ lấp đầy · 30/09/2026",
   "value": "88,8 %",
   "url": "https://ir.vincom.com.vn/wp-content/uploads/2026/10/261029_3Q2026-Earnings-Presentation_VN.pdf",
@@ -2448,15 +2388,5 @@
   "quote": "Diện tích sàn bán lẻ - GFA ('000 m2) 1.847,8 1.939,2 4,9%",
   "status": "match",
   "note": "Bảng 'Tổng quan các chỉ số hoạt động và tài chính Quý 3/2026' (cột Q3/2025, Q3/2026, YoY) - quote ghép từ một dòng bảng trên slide. = 1.939.200 m²; định dạng số VN (1.939,2)."
- },
- {
-  "block": "re-manual",
-  "claim": "VRE · RNAV và giá mục tiêu của CTCK · 26/10/2026 · Shinhan",
-  "value": "RNAV 33.020 đồng/cp · giá mục tiêu 33.000 đồng/cp",
-  "url": "https://cdn.simplize.vn/simplizevn/report/VRE/20261026_vre_mua_gia_mt_vnd_33_000_32_3_suc_manh_den_tu_do_phu.pdf",
-  "opened_at": "2026-11-28",
-  "quote": "Chúng tôi đưa ra khuyến nghị MUA cổ phiếu VRE với mức giá mục tiêu là 33,000 VND tương ứng với mức upside 32.3% (so với giá đóng cửa ngày 23/10/2026 là 24,950 VND) [...] NAV / cổ phiếu (VND) 33,020",
-  "status": "match",
-  "note": "Báo cáo lần đầu của Shinhan Securities VN, phương pháp NAV (vốn hóa NOI theo cap rate), không áp chiết khấu NAV. Định dạng số kiểu Anh (33,000). Báo cáo trước đó có chiết khấu RNAV rõ: Vietcap 29/05/2026, giá mục tiêu 34.200 đ/cp, 'Chiết khấu RNAV(%) 15%' (đã mở PDF). BSC 19/08/2026: giá mục tiêu 40.800 đ/cp (tỷ suất vốn hóa, đã mở PDF)."
  }
 ]

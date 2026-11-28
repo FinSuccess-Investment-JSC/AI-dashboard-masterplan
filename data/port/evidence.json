@@ -1254,16 +1254,6 @@
  },
  {
   "block": "port-manual",
-  "claim": "GMD · Giá mục tiêu của CTCK · 12 tháng · ACBS",
-  "value": "giá mục tiêu 77.100 đồng/cp",
-  "url": "https://acbs.com.vn/en/report/gmd-update-neutral",
-  "opened_at": "2026-11-28",
-  "quote": "We maintain our target price of VND77,100/share for end-2026",
-  "status": "match",
-  "note": "Khuyến nghị NEUTRAL"
- },
- {
-  "block": "port-manual",
   "claim": "GMD · Sản lượng hàng qua cảng · Q1/2026",
   "value": "1.230.000 TEU",
   "url": "https://www.gemadept.com.vn/wp-content/uploads/2026/05/BAN-TIN-IR-Q12026-1.pdf",
@@ -1281,16 +1271,6 @@
   "quote": "ba cảng Nam Hải Đình Vũ, Green Port và VIP Green Port đạt 683.610 TEU (+14,3% YoY)",
   "status": "match",
   "note": ""
- },
- {
-  "block": "port-manual",
-  "claim": "VSC · Giá mục tiêu của CTCK · 12 tháng · VDSC",
-  "value": "giá mục tiêu 26.500 đồng/cp",
-  "url": "https://24hmoney.vn/bao-cao-phan-tich/vsc-khuyen-nghi-mua-voi-gia-muc-tieu-26-500-dong-co-phieu-rpId5620.html",
-  "opened_at": "2026-11-28",
-  "quote": "giá mục tiêu 26,500 đồng/cổ phiếu",
-  "status": "match",
-  "note": "Trang 24hmoney tóm tắt, ghi 'Nguồn: VDSC'; phương pháp không nêu; chưa mở PDF gốc. Khuyến nghị MUA"
  },
  {
   "block": "port-manual",
@@ -1314,16 +1294,6 @@
  },
  {
   "block": "port-manual",
-  "claim": "PHP · Giá mục tiêu của CTCK · 12 tháng · FPTS",
-  "value": "giá mục tiêu 50.800 đồng/cp",
-  "url": "https://file.fpts.com.vn/FileStore2/File/2026/08/19/PHPBAO_CAO_DINH_GIA_LAN_DAU082026_0da06bf1.pdf",
-  "opened_at": "2026-11-28",
-  "quote": "Chúng tôi khuyến nghị MUA cổ phiếu PHP với giá mục tiêu 50.800 VNĐ/cổ phiếu",
-  "status": "match",
-  "note": "Ngày từ URL file; giá đóng cửa tham chiếu 18/08/2026. ACBS 27/05/2026: 48.800 đ/cp, bình quân P/E 13,58x & P/B 1,95x"
- },
- {
-  "block": "port-manual",
   "claim": "PDN · Dự án đầu tư chính · 2026",
   "value": "Cảng Đồng Nai: +100m cầu cảng số 4 (chờ quy hoạch nhóm 4 phê duyệt); capex không nêu",
   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/PDN_Baocaothuongnien_2025.pdf",
@@ -1341,15 +1311,5 @@
   "quote": "Tổng sản lượng          Tấn      267.369     278.843       104,3       98,5",
   "status": "match",
   "note": ""
- },
- {
-  "block": "port-manual",
-  "claim": "SCS · Giá mục tiêu của CTCK · 12 tháng · DSC",
-  "value": "giá mục tiêu 44.500 đồng/cp",
-  "url": "https://dsc.com.vn/bao-cao-phan-tich/scs-capnhat26q3",
-  "opened_at": "2026-11-28",
-  "quote": "Giá mục tiêu: 44.500 VND.",
-  "status": "match",
-  "note": "Giá mục tiêu 2027"
  }
 ]

@@ -3122,16 +3122,6 @@
  },
  {
   "block": "ship-manual",
-  "claim": "PVT · Giá mục tiêu của CTCK · 29/10/2026 · Agriseco",
-  "value": "giá mục tiêu 23.500 đồng/cp",
-  "url": "https://static.fireant.vn/reports/content/85319",
-  "opened_at": "2026-11-28",
-  "quote": "Khuyến nghị nhà đầu tư tiếp tục Nắm giữ cổ phiếu PVT với giá mục tiêu 23.500 đồng/cp.",
-  "status": "match",
-  "note": "Báo cáo MỚI NHẤT tìm được (Agriseco Snapshot 29/10/2026, Stockbiz ghi 30/10). Không nêu phương pháp định giá, không có NAV/cp. Giá hiện tại 21.300."
- },
- {
-  "block": "ship-manual",
   "claim": "PVP · Số tàu · 04/2026 (BCTN 2025)",
   "value": "3 tàu",
   "url": "https://static2.vietstock.vn/vietstock/2026/4/7/20260407___pvp___bao_cao_thuong_nien_nam_2025_signed.pdf",
@@ -3159,16 +3149,6 @@
   "quote": "KẾ HOẠCH ĐẦU TƯ NĂM 2026 Đvt: Triệu USD Trong đó Stt Tên Dự án Tổng mức đầu tư 1 Đầu tư 01 tàu dầu thô Aframax số 2 trọng tải đến 120.000 DWT 50,50 15,28 35,22 2 Đầu tư 01 tàu dầu thô MR1/MR2 tàu dầu/hóa chất trọng tải đến 55.000 DWT 30,50 9,28 21,22 3 Đầu tư 01 tàu dầu thô Aframax số 3 trọng tải đến 120.000 DWT/Hoặc 01 tàu MR1/MR2 trọng tải đến 55.000 DWT 35,00 10,63 24,37 Tổng mức đầu tư 116,00 35,19 80,81",
   "status": "match",
   "note": "3 tàu, 116 triệu USD (VCSH 35,19 / vay 80,81). Chưa thấy tàu nào được nhận tính tới báo cáo ACBS 29/10/2026 (bảng đội tàu vẫn 3 tàu + FSO) – đây là suy ra từ bảng, không có câu xác nhận. ĐHĐCĐ bất thường về Aframax số 3 dự kiến 23/10/2026 (baophapluat 12/09/2026, đã mở lại); KHÔNG tìm được kết quả họp. Không có kế hoạch bán tàu."
- },
- {
-  "block": "ship-manual",
-  "claim": "PVP · Giá mục tiêu của CTCK · 29/10/2026 · ACBS",
-  "value": "giá mục tiêu 23.300 đồng/cp",
-  "url": "https://static.fireant.vn/reports/content/85318",
-  "opened_at": "2026-11-28",
-  "quote": "Khuyến nghị Mua Giá mục tiêu (VND) 23.300 Giá hiện tại (VND) 18.750 Tỷ lệ tăng giá 24,2%",
-  "status": "match",
-  "note": "ACBS 'Câu chuyện đầu tư' (PDF tạo 29/10/2026). Phương pháp P/E: P/E mục tiêu 7,8 lần (trung bình 5 năm) x EPS dự phóng 2027 2.989 đ – đọc từ đoạn 'Định giá' bị lỗi font (chỉ số còn nguyên, chữ mất dấu), nên trích câu ở bảng tóm tắt. Không có NAV/cp."
  },
  {
   "block": "ship-manual",
@@ -3239,16 +3219,6 @@
   "quote": "Tiếp tục triển khai dự án đầu tư 01 tàu dầu viễn dương MR có trọng tải không lớn hơn 50.000 DWT, tuổi tàu dưới 08 năm, với tổng mức đầu tư dự kiến tối đa 56 triệu USD (chưa bao gồm thuế, phí), nhằm thay thế tàu đã thanh lý vào thời điểm phù hợp trong giai đoạn 2026-2027.",
   "status": "match",
   "note": "Tài liệu ĐHĐCĐ 22/04/2026 (dòng evidence.json #68 mở lại hôm nay, câu vẫn còn). Năm 2025 chưa mua được do giá tàu cao. Cũng nêu 'Xây dựng lộ trình thanh lý tàu già' nhưng không có số tàu/thời điểm. VDSC: tàu mới giúp tăng công suất 30–40%; BSC: +khoảng 19% tổng trọng tải (hai ước tính khác nhau). Chưa tìm thấy tin đã mua tàu."
- },
- {
-  "block": "ship-manual",
-  "claim": "VTO · Giá mục tiêu của CTCK · 09/2026 · VDSC",
-  "value": "giá mục tiêu 13.450 đồng/cp",
-  "url": "https://static.fireant.vn/reports/content/84886",
-  "opened_at": "2026-11-28",
-  "quote": "Chúng tôi uớc tính giá trị hợp lý của cổ phiếu là 13.450 đồng/cp, tương ứng mức upside 27,4% so với giá đóng cửa ngày 11/09/2026 tương ứng mức P/E dự phóng khoảng 6,0 lần",
-  "status": "match",
-  "note": "'Giá trị hợp lý' trong báo cáo nhanh của Phòng Tư vấn đầu tư KHCN VDSC (không phải báo cáo định giá đầy đủ). BSC 01/04/2026: 'KHUYẾN NGHỊ: KHÔNG ĐÁNH GIÁ Giá mục tiêu: N/A'. Không có NAV/cp."
  },
  {
   "block": "ship-manual",
@@ -3369,15 +3339,5 @@
   "quote": "Ngày 16/10/2026, Hợp đồng đóng mới 02 tàu container sức chở 1.900 TEU giữa Công ty Cổ phần Vận tải và Xếp dỡ Hải An và Tập đoàn Đóng tàu Nhà nước Trung Quốc (China State Shipbuilding Corporation – CSSC) đã được Hội đồng quản trị hai bên thông qua. [...] với tổng mức đầu tư tối đa 70 triệu USD.",
   "status": "match",
   "note": "Ký 2026 nhưng giao trước 31/10/2029 và 30/11/2029. Trong 2026 còn ký 2 tàu 7.100 TEU (3/2026, 184 triệu USD theo VNDIRECT)."
- },
- {
-  "block": "ship-manual",
-  "claim": "HAH · Giá mục tiêu của CTCK · 05/11/2026 · ACBS",
-  "value": "giá mục tiêu 55.000 đồng/cp",
-  "url": "https://acbs.com.vn/acbsmedia/2026/11/HAH_Cap-nhat-Q3-2026.pdf",
-  "opened_at": "2026-11-28",
-  "quote": "Bằng phương pháp chiết khấu dòng tiền (DCF), chúng tôi định giá HAH tại 55.000 đồng/cp.",
-  "status": "match",
-  "note": "Báo cáo mới nhất tìm được. Khác: VNDIRECT 26/10/2026 67.500 đ (DCF, WACC 10,8%, đã mở PDF); BSC 07/10/2026 58.900 đ (P/E 8,7x EPS 2027); HSC 52.800 đ (chỉ qua elibook, chưa mở bản gốc). NAV/cp không nêu."
  }
 ]
