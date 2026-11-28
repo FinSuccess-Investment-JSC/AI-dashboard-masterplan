@@ -68,6 +68,8 @@ function buildTab(key) {
     s.items.forEach(it => {
       if (it.grp) { p.append(el('h3', 'pp-grp', esc(it.grp))); return; }
       if (it.stage) { const f = s.flow.find(x => x[0] === it.stage); const h = el('div', 'pp-stage', `<span>${f[1]}</span><h3>${esc(f[2])}</h3>`); h.id = `rf-st-${s.k}-${f[0]}`; p.append(h); return; }
+      // Thẻ dẫn (28/11/2026, chép cách Thép): khâu dùng chart nằm ở sub-tab khác thì dẫn sang, không nhân bản thẻ.
+      if (it.link) { const [href, where, t, sub] = it.link; const a = el('a', 'rf-xlink', `<small>Xem chart ở ${esc(where)}</small><b>${esc(t)} →</b>${sub ? `<span>${esc(sub)}</span>` : ''}`); a.href = href; p.append(a); return; }
       const panel = el('section', 'pp-panel pp-q'); panel.id = it.id;
       qn++; const pn = key === 'mt1' ? `${i}.${qn}` : `${i + 1}.${qn}`;
       panel.innerHTML = `<header class="pp-ph"><span class="pp-num">${pn}</span><div><h3>${esc(it.q)}</h3>${it.meta ? `<p class="rf-meta">${it.meta}</p>` : ''}</div></header>`;
@@ -135,9 +137,10 @@ function route(mode) {
   else if (/^mt\d+$/.test(h)) { key = h; if (ALIAS[h]) [key, sub, target] = ALIAS[h]; }
   else if (h && document.getElementById(h)) return goTo(h, mode);
   else key = 'mt1';
+  const sa = (P.subAlias || {})[key + '/' + sub]; if (sa) [key, sub] = sa;  // khóa sub-tab của bố cục cũ
   if (!ROUTES.some(r => r[0] === key)) key = 'mt1';
   showMajor(key);
-  if (TABS[key]) open(key, sub, secQ || ALIAS[h] ? 'replace' : mode);
+  if (TABS[key]) open(key, sub, secQ || ALIAS[h] || sa ? 'replace' : mode);
   else setUrl(key, null, mode);
   if (target) { const t = document.getElementById(target); if (t) { if (t.matches('details')) t.open = true; setTimeout(() => t.scrollIntoView({behavior: 'instant', block: 'start'}), 80); } }
   setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
@@ -182,6 +185,8 @@ function run() {
   Object.keys(TREE).map(buildTab).forEach(b => rest.push(...commit(b)));
   ['mt4'].forEach(k => { const p = $(`.majorpane[data-tab="${k}"]`); if (!p) return; [...p.children].forEach(n => { if (n.querySelector?.('[data-block-id]') || n.matches?.('[data-block-id]')) rest.push(n); }); p.replaceChildren(); });
   sources();
+  // Thẻ không dời vào cây (vd. bản trùng của chart khác): giữ trong DOM, ẩn — không xóa.
+  if (rest.length) { const d = el('details', 'research-fold rf-rest'); d.hidden = true; d.append(el('summary', '', 'Nội dung khác của bố cục cũ'), ...rest); ($('.majorpane[data-tab="mt1"] .rf-section') || document.body).append(d); }
   BUILDS.forEach(f => f());
   topicLinks();
   // Link "#<id>" tới thẻ/câu hỏi đã dời: mở đúng tab lớn + sub-tab rồi cuộn tới.

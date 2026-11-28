@@ -167,3 +167,9 @@
 @media (max-width:560px){.nh-donut{grid-template-columns:minmax(0,1fr)}.nh-donut svg{margin:0 auto}}
 .dc-tech{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:6px}
 .dc-tech li{border:1px solid #e3a3a6;border-radius:6px;padding:6px 8px;font-size:12.5px;font-weight:600;background:#fff7f7;text-align:center}
+/* Thẻ dẫn sang chart ở sub-tab khác (28/11/2026, chép .th-link của Thép) */
+.rf-xlink{display:block;margin:0 0 22px;border:1px dashed var(--line,#c9d0e6);border-radius:12px;padding:10px 14px;background:var(--card,#fff);color:inherit;text-decoration:none}
+.rf-xlink:hover,.rf-xlink:focus-visible{border-color:#2938A8}
+.rf-xlink small{display:block;font:600 11px Inter,sans-serif;color:var(--muted,#7a8399);text-transform:uppercase;letter-spacing:.05em}
+.rf-xlink b{display:block;font-size:14px;margin:3px 0;color:#2938A8}.rf-xlink span{font-size:12.5px;color:var(--ink2,#3b4256)}
+:root[data-theme=dark] .rf-xlink b{color:#9AA8F0}

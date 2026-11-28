@@ -517,3 +517,12 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
 - **Cách tính:** giá trị cuối + % so cùng kỳ năm trước (năm/tháng cùng kỳ; ngày/tuần lấy điểm gần nhất cách ≥ 1 năm, lệch ≤ 45 ngày); đơn vị % thì so bằng điểm %. P/E từng mã không kèm % (chưa có chuỗi P/E cùng kỳ), rê chuột xem trung vị 5 năm.
 - **Không có dải:** Ngân hàng, Bảo hiểm, Chứng khoán (iframe repo khác), Nông nghiệp, Thủy sản (trang chọn ngành con, không có thanh tab).
 - **Kiểm:** mở từng trang ngành, tìm phần tử có `animation` rộng hơn màn hình cao < 70px; ngành mới tạo phải qua bước này.
+
+## Chăn nuôi · khung 4 tab theo Điện (28/11/2026, người dùng yêu cầu)
+
+- **Tab lớn:** Tổng quan ngành · Bức tranh ngành · Tài chính ngành · Chủ đề nóng (cây `tree` trong `Chan-nuoi/app/livestock-config.js`, dựng bởi `Chan-nuoi/app/pkg-frame.js`). Bỏ tab Chi phí & biên (`#mt11`), tab Doanh nghiệp đổi tên Tài chính ngành (`#mt14`).
+- **Tổng quan ngành:** 00 Bản đồ ngành (cn-01 chuỗi giá trị, cn-05 mô hình kinh doanh, khối nguồn dữ liệu) · 01 Mốc chính sách & dịch bệnh (cn-52). Nội dung không thuộc luồng sản xuất về đây.
+- **Bức tranh ngành** chia theo khâu sản phẩm, mỗi sub-tab có ô số, thanh `.pp-flow` Đầu vào → Sản xuất → Đầu ra, tiêu đề khâu `.pp-stage`, câu hỏi đánh số: 01 Thức ăn chăn nuôi `feed` (ngô, khô đậu cn-h2, cn-h2b; nhập khẩu nguyên liệu cn-12 → sản lượng thức ăn cn-11 → thẻ dẫn sang tổng đàn, mô phỏng một con heo) · 02 Chăn nuôi heo `heo` (thẻ dẫn giá thức ăn, ASF cn-40 → tổng đàn cn-21h, xuất chuồng cn-22h → giá heo ba miền cn-h1, theo tỉnh cn-h6, cn-h7, nguồn báo giá cn-h8, nhiều năm cn-10, thịt heo nhập khẩu cn-30…32, gia cầm cn-24, mô phỏng cn-s1, cn-s2). Ô số mới `spk-hog` (heo hơi toàn quốc, WiData 74124 bình quân tháng).
+- **Thẻ dời, không nhân bản:** khâu dùng chart của sub-tab khác dùng mục `{link: [href, nơi, tiêu đề, mô tả]}` (`.rf-xlink`). cn-h3, cn-h4 là bản rút gọn của cn-21h, cn-22h (cùng hàm, cùng số NSO) nên nằm ẩn trong `.rf-rest`, không xóa.
+- **Tài chính ngành:** 01 Tổng quan ngành `sector` (P/E rổ cn-03, doanh thu cn-06, biên cn-22) · 02 So sánh doanh nghiệp `dn` (cn-d1, cn-d2, bảng so sánh, kế hoạch cn-60).
+- **Link cũ:** `#mt11` → Thức ăn; `#mt3`, `?section=sim` → Chăn nuôi heo › mô phỏng; `#mt4` → Tổng quan › Mốc chính sách; khóa sub-tab cũ qua `subAlias` (`mt1/gia`, `mt1/rong`, `mt2/dan|nk|asf` → `heo`; `mt11/nl` → `feed`).

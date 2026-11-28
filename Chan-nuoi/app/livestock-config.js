@@ -10,10 +10,13 @@ const MA_HAG = ['MekongAsean – HAG 6T/2026', 'https://mekongasean.vn/hagl-bam-
 window.PKG = {
   key: 'livestock', prefix: 'cn', label: 'Chăn nuôi', dataVar: 'AGRI_PUBLIC',
   ticker: {commodity: ['hog', 'corn', 'soymeal'], ratio: ['240', '235']},
-  // 5 tab lớn: 4 cụm phân tích + Chủ đề nóng (pkg-frame bản Chăn nuôi đọc P.routes; mt11 tránh alias mt3/mt5 của khung).
-  routes: [['mt1', 'Tổng quan thị trường'], ['mt2', 'Nguồn cung & nhập khẩu'], ['mt11', 'Chi phí & biên'], ['mt14', 'Doanh nghiệp'], ['mt7', 'Chủ đề nóng']],
+  // 28/11/2026 (người dùng yêu cầu): khung 4 tab theo trang Điện — Tổng quan ngành · Bức tranh ngành · Tài chính ngành · Chủ đề nóng.
+  // Bức tranh ngành chia sub-tab theo khâu sản phẩm (01 Thức ăn chăn nuôi · 02 Chăn nuôi heo), mỗi sub-tab có luồng Đầu vào → Sản xuất → Đầu ra;
+  // nội dung không thuộc luồng (bản đồ, mô hình kinh doanh, mốc chính sách) về Tổng quan. Bỏ tab Chi phí & biên (#mt11) và Doanh nghiệp (#mt14 đổi tên).
+  routes: [['mt1', 'Tổng quan ngành'], ['mt2', 'Bức tranh ngành'], ['mt14', 'Tài chính ngành'], ['mt7', 'Chủ đề nóng']],
   wide: ['cn-01', 'cn-05', 'cn-h1', 'cn-h6', 'cn-h7', 'cn-30', 'cn-21h', 'cn-22h', 'cn-52', 'cn-60', 'cn-s1', 'cn-s2', 'cn-d1', 'cn-40', 'cn-10'],
   kpis: [
+    {spark: 'spk-hog', series: 'hog', unit: 'nghìn đ/kg', digits: 1, ytd: false, color: C.red},
     {spark: 'spk-feed', series: 'feed', unit: 'nghìn tấn', digits: 0},
     {spark: 'spk-soy', series: 'soymeal', unit: 'USD/tấn', digits: 0, ytd: false, color: C.green},
     {spark: 'spk-pe', pe: '240', label: 'Chăn nuôi'},
@@ -36,8 +39,8 @@ window.PKG = {
 </div>`;
       }},
     {id: 'chLiveModels', type: 'models', items: [
-      ['Chuỗi khép kín thức ăn – giống – thịt', 'DBC', 'Thức ăn chăn nuôi, con giống, heo thịt, thịt chế biến; có thêm mảng bất động sản', 'Giá heo hơi; giá ngô, khô đậu nhập (biên thức ăn và giá thành heo); dịch bệnh', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-margin', 'Biên chăn nuôi']]],
-      ['Chăn nuôi heo quy mô lớn', 'BAF', 'Heo thịt từ trang trại công nghệ cao, thức ăn chăn nuôi tự sản xuất', 'Giá heo hơi; số đầu heo xuất bán; giá ngô, khô đậu', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-gm', 'Biên gộp']]],
+      ['Chuỗi khép kín thức ăn – giống – thịt', 'DBC', 'Thức ăn chăn nuôi, con giống, heo thịt, thịt chế biến; có thêm mảng bất động sản', 'Giá heo hơi; giá ngô, khô đậu nhập (biên thức ăn và giá thành heo); dịch bệnh', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-sim', 'Lãi một con heo']]],
+      ['Chăn nuôi heo quy mô lớn', 'BAF', 'Heo thịt từ trang trại công nghệ cao, thức ăn chăn nuôi tự sản xuất', 'Giá heo hơi; số đầu heo xuất bán; giá ngô, khô đậu', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-co-gm', 'Biên gộp']]],
       ['Chăn nuôi heo và cây ăn trái', 'HAG', 'Heo thịt, chuối, sầu riêng và cây ăn trái khác', 'Giá heo hơi; giá và sản lượng trái cây xuất khẩu; chi phí lãi vay', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-rev', 'Doanh thu, lợi nhuận']]]],
       src: [['BCTC và báo cáo thường niên doanh nghiệp', '#rf-q-compare']]},
     {id: 'chHog', type: 'hog', table: 'tbl-hog', src: ['wi'], months: 120, regions: [],
@@ -66,49 +69,54 @@ window.PKG = {
   ],
   sourceManual: [[/^Chuỗi giá trị ngành chăn nuôi/, 'FinSuccess tổng hợp']],
   topics: {'cn-t1': ['Giá bán thực nhận và biên gộp mảng heo của BAF, DBC', 'Giá heo BQ 7 ngày ba miền, độ rộng theo tỉnh, xuất chuồng quý IV', [['#rf-q-hog', 'Giá heo ba miền'], ['#rf-q-breadth', 'Độ rộng theo tỉnh'], ['#rf-q-sim', 'Mô phỏng một con heo']]]},
-  alias: {mt3: ['mt11', 'sim'], mt4: ['mt2', 'asf'], mt6: ['mt14', 'sector'], mt9: ['mt14', 'sector']},
-  section: {price: ['mt1', 'gia'], breadth: ['mt1', 'rong'], supply: ['mt2', 'dan'], import: ['mt2', 'nk'], asf: ['mt2', 'asf'], policy: ['mt2', 'asf'], input: ['mt11', 'nl'], feed: ['mt11', 'nl'], sim: ['mt11', 'sim'], companies: ['mt14', 'dn'], listed: ['mt14', 'sector']},
+  // Link cũ: tab lớn (#mtN) và ?section= của bố cục 5 tab; khóa sub-tab cũ ở subAlias ('tab/sub' → [tab, sub]).
+  alias: {mt3: ['mt2', 'heo', 'rf-q-sim'], mt4: ['mt1', 'policy'], mt6: ['mt14', 'sector'], mt9: ['mt14', 'sector'], mt11: ['mt2', 'feed']},
+  section: {price: ['mt2', 'heo', 'rf-q-hog'], breadth: ['mt2', 'heo', 'rf-q-breadth'], supply: ['mt2', 'heo', 'rf-st-heo-prod'], import: ['mt2', 'heo', 'rf-q-import'], asf: ['mt2', 'heo', 'rf-q-asf'], policy: ['mt1', 'policy'], input: ['mt2', 'feed'], feed: ['mt2', 'feed'], sim: ['mt2', 'heo', 'rf-q-sim'], companies: ['mt14', 'dn'], listed: ['mt14', 'sector']},
+  subAlias: {'mt1/gia': ['mt2', 'heo'], 'mt1/rong': ['mt2', 'heo'], 'mt2/dan': ['mt2', 'heo'], 'mt2/nk': ['mt2', 'heo'], 'mt2/asf': ['mt2', 'heo'], 'mt11/nl': ['mt2', 'feed'], 'mt11/sim': ['mt2', 'heo']},
+  // cn-h3 (chHerdS) và cn-h4 (chPigOutS) là bản rút gọn của cn-21h, cn-22h (cùng hàm herd()/output(), cùng số NSO) → không dời, nằm ẩn trong .rf-rest.
   tree: {
-    mt1: {title: 'Tổng quan thị trường', subs: [
-      {k: 'gia', t: 'Giá heo ba miền', d: 'Giá đang hồi hay giảm, so với 7 ngày trước; nguyên liệu và nguồn cung đi cùng chiều không.', items: [
-        {q: 'Giá heo hơi ba miền đang ở đâu?', id: 'rf-q-hog', meta: 'đ/kg tại chuồng · bình quân 7 ngày, bật giá ngày ở nút trên chart', take: ['cn-h1']},
-        {q: 'Ngô, khô đậu và nguồn cung nội địa đang đi hướng nào?', id: 'rf-q-side', meta: 'giá nguyên liệu tham chiếu thế giới · tổng đàn và xuất chuồng NSO, mỗi chart một kỳ', take: ['cn-h2', 'cn-h3', 'cn-h4']}]},
-      {k: 'rong', t: 'Độ rộng theo tỉnh', d: 'Giá tăng ở diện rộng hay chỉ ở vài tỉnh; các nguồn báo giá có khớp nhau.', items: [
-        {q: 'Giá hồi ở diện rộng hay chỉ một số tỉnh?', id: 'rf-q-breadth', meta: 'tỉnh × tuần · % tỉnh tăng/giảm so với 7 ngày trước, mẫu số ở bảng', take: ['cn-h6', 'cn-h7']},
-        {q: 'Các nguồn báo giá cùng ngày có khớp nhau?', id: 'rf-q-ref', meta: 'khác phạm vi tỉnh và cách lấy giá — đối chiếu, không ghép', take: ['cn-h8']},
-        {q: 'Giá hiện tại đứng đâu trong nhiều năm?', id: 'rf-q-long', meta: 'nghìn đ/kg · bình quân tháng, nguồn khác chuỗi ngày', take: ['cn-10']}]},
+    mt1: {title: 'Tổng quan ngành', subs: [
       {k: 'map', t: 'Bản đồ ngành', d: 'Nguyên liệu nhập → thức ăn → nuôi heo → giết mổ, chế biến; doanh nghiệp kiếm tiền ở khâu nào.', items: [
         {q: 'Heo đi qua những khâu nào trước khi thành lợi nhuận?', id: 'rf-q-map', take: ['cn-01']},
         {q: 'Mỗi doanh nghiệp kiếm tiền từ đâu, biến nào quyết định biên?', id: 'rf-q-model', take: ['cn-05']}]},
-    ]},
-    mt2: {title: 'Nguồn cung & nhập khẩu', subs: [
-      {k: 'dan', t: 'Tổng đàn & xuất chuồng', d: 'Nguồn cung trong nước đang thắt lại hay mở rộng.', items: [
-        {q: 'Tổng đàn heo cuối kỳ tăng bao nhiêu so với cùng kỳ?', id: 'rf-q-herd', meta: 'số tồn cuối tháng · % so cùng kỳ, NSO ước tính', take: ['cn-21h']},
-        {q: 'Sản lượng heo hơi xuất chuồng tăng hay giảm?', id: 'rf-q-out', meta: 'dòng chảy trong kỳ · NSO', take: ['cn-22h']},
-        {q: 'Cung protein thay thế (gia cầm) đi thế nào?', id: 'rf-q-poultry', meta: 'NSO · chỉ báo cung, không đo sức mua', take: ['cn-24']}]},
-      {k: 'nk', t: 'Nhập khẩu thịt heo', d: 'Thịt heo nhập khẩu (HS 0203) bao nhiêu, giá bao nhiêu, từ đâu.', items: [
-        {q: 'Lượng và đơn giá thịt heo nhập khẩu?', id: 'rf-q-import', meta: 'HS 0203 · tấn và USD/tấn; phụ phẩm, tổng thịt là chuỗi riêng', take: ['cn-30', 'cn-31']},
-        {q: 'Nhập từ nước nào?', id: 'rf-q-origin', meta: 'kỳ mới nhất có phân rã theo xuất xứ', take: ['cn-32']}]},
-      {k: 'asf', t: 'Dịch bệnh & chính sách', d: 'Dịch tả heo châu Phi và văn bản đổi giá thành hoặc nguồn cung.', items: [
-        {q: 'Dịch tả heo châu Phi đang ở mức nào?', id: 'rf-q-asf', meta: 'sự kiện có kỳ và nguồn · lũy kế ghi riêng', take: ['cn-40']},
+      {k: 'policy', t: 'Mốc chính sách & dịch bệnh', d: 'Văn bản và sự kiện có thể đổi giá thành hoặc nguồn cung của cả chuỗi.', items: [
         {q: 'Mốc nào có thể đổi giá thành hoặc nguồn cung?', id: 'rf-q-policy', meta: '● đã ban hành / sự kiện · ngày hiệu lực', take: ['cn-52']}]},
     ]},
-    mt11: {title: 'Chi phí & biên', subs: [
-      {k: 'nl', t: 'Nguyên liệu thức ăn', d: 'Ngô, khô đậu tương, tỷ giá; nhập khẩu nguyên liệu và sản lượng thức ăn.', kpis: ['spk-soy', 'spk-feed'], items: [
-        {q: 'Ngô và khô đậu tương đang đi cùng chiều?', id: 'rf-q-input', meta: 'USD/tấn hoặc quy đổi VND/tấn · World Bank Pink Sheet', take: ['cn-h2b']},
+    mt2: {title: 'Bức tranh ngành', subs: [
+      {k: 'feed', t: 'Thức ăn chăn nuôi', d: 'Ngô, khô đậu nhập khẩu → nhà máy thức ăn → cám cho đàn heo, gia cầm.', kpis: ['spk-soy', 'spk-feed'],
+        flow: [['in', 'Đầu vào', 'Ngô, khô đậu tương nhập khẩu'], ['prod', 'Sản xuất', 'Sản lượng thức ăn gia súc'], ['out', 'Đầu ra', 'Cám cho đàn heo, gia cầm']], items: [
+        {stage: 'in'},
+        {q: 'Ngô và khô đậu tương đang đi cùng chiều?', id: 'rf-q-input', meta: 'USD/tấn · World Bank Pink Sheet · 3 năm và 10 năm', take: ['cn-h2', 'cn-h2b']},
         {q: 'Nhập khẩu nguyên liệu thức ăn bao nhiêu?', id: 'rf-q-feedimp', meta: 'triệu USD · theo tháng (Hải quan)', take: ['cn-12']},
-        {q: 'Sản lượng thức ăn chăn nuôi đang tăng hay giảm?', id: 'rf-q-feed', meta: '<b>sản lượng sản xuất</b> toàn ngành (NSO)', take: ['cn-11']}]},
-      {k: 'sim', t: 'Kinh tế một con heo', d: 'Doanh thu, chi phí, lãi và giá hòa vốn một con heo theo bộ tham số sửa được.', items: [
-        {q: 'Một con heo lãi bao nhiêu ở bộ giá đang chọn?', id: 'rf-q-sim', meta: '<b>mô phỏng</b> · preset lịch sử VCBS hoặc số tự nhập', take: ['cn-s1']},
-        {q: 'Giá heo và giá cám đổi thì lãi đổi thế nào?', id: 'rf-q-sens', meta: 'nghìn đ/con · các yếu tố khác giữ cố định', take: ['cn-s2']}]},
+        {stage: 'prod'},
+        {q: 'Sản lượng thức ăn chăn nuôi đang tăng hay giảm?', id: 'rf-q-feed', meta: '<b>sản lượng sản xuất</b> toàn ngành (NSO)', take: ['cn-11']},
+        {stage: 'out'},
+        {link: ['#rf-q-herd', 'Chăn nuôi heo › 2.2', 'Cầu thức ăn đi theo tổng đàn heo', 'Tổng đàn cuối kỳ so cùng kỳ (NSO)']},
+        {link: ['#rf-q-sim', 'Chăn nuôi heo › 2.10', 'Giá cám trong giá thành một con heo', 'Mô phỏng doanh thu, chi phí, lãi theo giá heo và giá cám']}]},
+      {k: 'heo', t: 'Chăn nuôi heo', d: 'Thức ăn, con giống, dịch bệnh → tổng đàn, xuất chuồng → giá heo hơi, cạnh tranh của thịt nhập khẩu, lãi một con heo.', kpis: ['spk-hog'],
+        flow: [['in', 'Đầu vào', 'Giá thức ăn, dịch bệnh'], ['prod', 'Sản xuất', 'Tổng đàn và heo xuất chuồng'], ['out', 'Đầu ra', 'Giá heo hơi, thịt cạnh tranh, lãi một con heo']], items: [
+        {stage: 'in'},
+        {link: ['#rf-q-input', 'Thức ăn chăn nuôi › 1.1', 'Giá ngô, khô đậu tương', 'Thức ăn chiếm phần lớn giá thành heo']},
+        {q: 'Dịch tả heo châu Phi đang ở mức nào?', id: 'rf-q-asf', meta: 'sự kiện có kỳ và nguồn · lũy kế ghi riêng', take: ['cn-40']},
+        {stage: 'prod'},
+        {q: 'Tổng đàn heo cuối kỳ tăng bao nhiêu so với cùng kỳ?', id: 'rf-q-herd', meta: 'số tồn cuối tháng · % so cùng kỳ, NSO ước tính', take: ['cn-21h']},
+        {q: 'Sản lượng heo hơi xuất chuồng tăng hay giảm?', id: 'rf-q-out', meta: 'dòng chảy trong kỳ · NSO', take: ['cn-22h']},
+        {stage: 'out'},
+        {q: 'Giá heo hơi ba miền đang ở đâu?', id: 'rf-q-hog', meta: 'đ/kg tại chuồng · bình quân 7 ngày, bật giá ngày ở nút trên chart', take: ['cn-h1']},
+        {q: 'Giá hồi ở diện rộng hay chỉ một số tỉnh?', id: 'rf-q-breadth', meta: 'tỉnh × tuần · % tỉnh tăng/giảm so với 7 ngày trước, mẫu số ở bảng', take: ['cn-h6', 'cn-h7']},
+        {q: 'Các nguồn báo giá cùng ngày có khớp nhau?', id: 'rf-q-ref', meta: 'khác phạm vi tỉnh và cách lấy giá — đối chiếu, không ghép', take: ['cn-h8']},
+        {q: 'Giá hiện tại đứng đâu trong nhiều năm?', id: 'rf-q-long', meta: 'nghìn đ/kg · bình quân tháng, nguồn khác chuỗi ngày', take: ['cn-10']},
+        {q: 'Thịt heo nhập khẩu cạnh tranh bao nhiêu, giá bao nhiêu, từ đâu?', id: 'rf-q-import', meta: 'HS 0203 · tấn và USD/tấn; phụ phẩm, tổng thịt là chuỗi riêng', take: ['cn-30', 'cn-31', 'cn-32']},
+        {q: 'Cung protein thay thế (gia cầm) đi thế nào?', id: 'rf-q-poultry', meta: 'NSO · chỉ báo cung, không đo sức mua', take: ['cn-24']},
+        {q: 'Một con heo lãi bao nhiêu, giá heo và giá cám đổi thì lãi đổi thế nào?', id: 'rf-q-sim', meta: '<b>mô phỏng</b> · preset lịch sử VCBS hoặc số tự nhập · các yếu tố khác giữ cố định', take: ['cn-s1', 'cn-s2']}]},
     ]},
-    mt14: {title: 'Doanh nghiệp', subs: [
-      {k: 'dn', t: 'BAF / DBC / MML', d: 'Thay đổi giá heo, chi phí đi vào doanh thu, biên và dòng tiền từng doanh nghiệp.', items: [
-        {q: 'Doanh thu, lợi nhuận và chỉ tiêu vận hành từng doanh nghiệp?', id: 'rf-q-co', meta: 'chọn mã ở nút trên chart · BCTC hợp nhất quý + chỉ tiêu doanh nghiệp công bố', take: ['cn-d1']},
-        {q: 'Biên gộp có đi theo giá heo?', id: 'rf-q-co-gm', meta: '% biên gộp · giá heo tham chiếu bình quân quý, không phải ASP', take: ['cn-d2']}]},
-      {k: 'sector', t: 'Định giá & so sánh', d: 'Định giá rổ chăn nuôi, doanh thu, biên theo quý và bảng so sánh.', kpis: ['spk-pe'], items: [
+    mt14: {title: 'Tài chính ngành', subs: [
+      {k: 'sector', t: 'Tổng quan ngành', d: 'Định giá rổ chăn nuôi, doanh thu và biên theo quý của các mã niêm yết.', kpis: ['spk-pe'], items: [
         {q: 'Thị trường định giá cổ phiếu chăn nuôi ở mức nào?', id: 'rf-q-pe', meta: 'lần · rổ VNDirect', take: ['cn-03']},
-        {q: 'Doanh thu, biên theo quý?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · %, hợp nhất quý từng mã, không cộng', take: ['cn-06', 'cn-22']},
+        {q: 'Doanh thu, biên theo quý?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · %, hợp nhất quý từng mã, không cộng', take: ['cn-06', 'cn-22']}]},
+      {k: 'dn', t: 'So sánh doanh nghiệp', d: 'Thay đổi giá heo, chi phí đi vào doanh thu, biên của từng doanh nghiệp; bảng so sánh và kế hoạch 2026.', items: [
+        {q: 'Doanh thu, lợi nhuận và chỉ tiêu vận hành từng doanh nghiệp?', id: 'rf-q-co', meta: 'chọn mã ở nút trên chart · BCTC hợp nhất quý + chỉ tiêu doanh nghiệp công bố', take: ['cn-d1']},
+        {q: 'Biên gộp có đi theo giá heo?', id: 'rf-q-co-gm', meta: '% biên gộp · giá heo tham chiếu bình quân quý, không phải ASP', take: ['cn-d2']},
         {q: 'Doanh nghiệp nào sinh lời tốt hơn, định giá ra sao?', id: 'rf-q-compare', meta: 'số quý, lũy kế hoặc cả năm theo bộ chọn kỳ', take: ['.financial-comparison']},
         {q: 'Doanh nghiệp đã đi được bao nhiêu so với kế hoạch 2026?', id: 'rf-q-plan', take: ['cn-60']}]},
     ]},
