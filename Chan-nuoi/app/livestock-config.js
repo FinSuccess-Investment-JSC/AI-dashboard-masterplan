@@ -22,22 +22,10 @@ window.PKG = {
     {spark: 'spk-pe', pe: '240', label: 'Chăn nuôi'},
   ],
   charts: [
-    {id: 'chLiveChain', type: 'html', src: [['FinSuccess tổng hợp', '#rf-q-model']],
-      method: 'Sơ đồ các khâu và vị trí doanh nghiệp niêm yết; không có số liệu định lượng.',
-      render: esc => {
-        const box = t => `<span class="dc-box">${esc(t)}</span>`;
-        const col = (n, t, boxes, who, note) => `<section class="dc-col"><h4><span>${n}</span>${esc(t)}</h4><div class="dc-row">${boxes.map(box).join('')}</div>${note ? `<p class="dc-note">${esc(note)}</p>` : ''}<p class="dc-lbl">Doanh nghiệp niêm yết</p><p class="dc-brands">${who}</p></section>`;
-        return `<div class="dc dc-live">
-  <p class="dc-lead">Thức ăn chiếm phần lớn giá thành; nguyên liệu thức ăn chủ yếu nhập khẩu, giá heo hơi do cung – cầu trong nước quyết định</p>
-  <div class="dc-band dc-band4"><span class="dc-b dc-b1">Đầu vào</span><span class="dc-b dc-b2">Thức ăn</span><span class="dc-b dc-b2">Chăn nuôi</span><span class="dc-b dc-b3">Đầu ra</span></div>
-  <div class="dc-cols dc-cols4">
-    ${col(1, 'Nguyên liệu, con giống', ['Ngô', 'Đậu tương, khô đậu', 'Con giống', 'Thuốc thú y'], '<b>DBC</b> (tự sản xuất con giống)', 'Ngô, đậu tương chủ yếu nhập từ Mỹ, Brazil, Argentina')}
-    ${col(2, 'Thức ăn chăn nuôi', ['Phối trộn', 'Ép viên', 'Thức ăn hỗn hợp, đậm đặc'], '<b>DBC</b> · <b>BAF</b> (tự cung cho trang trại)')}
-    ${col(3, 'Nuôi heo thịt', ['Trang trại doanh nghiệp', 'Gia trại, hộ nhỏ'], '<b>DBC</b> · <b>BAF</b> · <b>HAG</b>')}
-    ${col(4, 'Giết mổ, chế biến, bán ra', ['Heo hơi cho thương lái', 'Thịt mát, thịt chế biến', 'Chợ, siêu thị, cửa hàng thịt'], '<b>DBC</b> (thịt chế biến) · MSN (MEATLife)')}
-  </div>
-</div>`;
-      }},
+    // 28/11/2026: sơ đồ luồng vẽ bằng window.CN_DRAW_CHAIN (cuối file) khi Bản đồ ngành dựng xong.
+    {id: 'chLiveChain', type: 'html', src: [['FinSuccess tổng hợp; tỷ trọng chi phí: VCBS 11/05/2023', '#rf-q-sim']],
+      method: '% trên mũi tên vào trại nuôi: tỷ trọng trong chi phí nuôi một con heo (VCBS T5/2023, trại chuyên nghiệp; số lịch sử, không phải hiện tại). Số trong ô: kỳ mới nhất của chart cùng khâu. Rê chuột xem luồng của khâu, bấm khâu xem mã niêm yết; nút dưới sơ đồ mở chart của khâu.',
+      render: () => '<div class="cn-vc" id="cnVcHost"></div>'},
     {id: 'chLiveModels', type: 'models', items: [
       ['Chuỗi khép kín thức ăn – giống – thịt', 'DBC', 'Thức ăn chăn nuôi, con giống, heo thịt, thịt chế biến; có thêm mảng bất động sản', 'Giá heo hơi; giá ngô, khô đậu nhập (biên thức ăn và giá thành heo); dịch bệnh', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-sim', 'Lãi một con heo']]],
       ['Chăn nuôi heo quy mô lớn', 'BAF', 'Heo thịt từ trang trại công nghệ cao, thức ăn chăn nuôi tự sản xuất', 'Giá heo hơi; số đầu heo xuất bán; giá ngô, khô đậu', [['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-co-gm', 'Biên gộp']]],
@@ -77,7 +65,7 @@ window.PKG = {
   tree: {
     mt1: {title: 'Tổng quan ngành', subs: [
       {k: 'map', t: 'Bản đồ ngành', d: 'Nguyên liệu nhập → thức ăn → nuôi heo → giết mổ, chế biến; doanh nghiệp kiếm tiền ở khâu nào.', items: [
-        {q: 'Heo đi qua những khâu nào trước khi thành lợi nhuận?', id: 'rf-q-map', take: ['cn-01']},
+        {q: 'Heo đi qua những khâu nào trước khi thành lợi nhuận?', id: 'rf-q-map', take: ['cn-01'], build: () => window.CN_DRAW_CHAIN?.()},
         {q: 'Mỗi doanh nghiệp kiếm tiền từ đâu, biến nào quyết định biên?', id: 'rf-q-model', take: ['cn-05']}]},
       {k: 'policy', t: 'Mốc chính sách & dịch bệnh', d: 'Văn bản và sự kiện có thể đổi giá thành hoặc nguồn cung của cả chuỗi.', items: [
         {q: 'Mốc nào có thể đổi giá thành hoặc nguồn cung?', id: 'rf-q-policy', meta: '● đã ban hành / sự kiện · ngày hiệu lực', take: ['cn-52']}]},
@@ -91,13 +79,12 @@ window.PKG = {
         {stage: 'prod'},
         {q: 'Sản lượng thức ăn chăn nuôi đang tăng hay giảm?', id: 'rf-q-feed', meta: '<b>sản lượng sản xuất</b> toàn ngành (NSO)', take: ['cn-11']},
         {stage: 'out'},
-        {link: ['#rf-q-herd', 'Chăn nuôi heo › 2.2', 'Cầu thức ăn đi theo tổng đàn heo', 'Tổng đàn cuối kỳ so cùng kỳ (NSO)']},
-        {link: ['#rf-q-sim', 'Chăn nuôi heo › 2.10', 'Giá cám trong giá thành một con heo', 'Mô phỏng doanh thu, chi phí, lãi theo giá heo và giá cám']}]},
+        {link: ['#rf-q-herd', 'Chăn nuôi heo › 2.1', 'Cầu thức ăn đi theo tổng đàn heo', 'Tổng đàn cuối kỳ so cùng kỳ (NSO)']},
+        {link: ['#rf-q-sim', 'Chăn nuôi heo › 2.9', 'Giá cám trong giá thành một con heo', 'Mô phỏng doanh thu, chi phí, lãi theo giá heo và giá cám']}]},
       {k: 'heo', t: 'Chăn nuôi heo', d: 'Thức ăn, con giống, dịch bệnh → tổng đàn, xuất chuồng → giá heo hơi, cạnh tranh của thịt nhập khẩu, lãi một con heo.', kpis: ['spk-hog'],
-        flow: [['in', 'Đầu vào', 'Giá thức ăn, dịch bệnh'], ['prod', 'Sản xuất', 'Tổng đàn và heo xuất chuồng'], ['out', 'Đầu ra', 'Giá heo hơi, thịt cạnh tranh, lãi một con heo']], items: [
+        flow: [['in', 'Đầu vào', 'Giá thức ăn'], ['prod', 'Sản xuất', 'Tổng đàn và heo xuất chuồng'], ['out', 'Đầu ra', 'Giá heo hơi, thịt cạnh tranh, lãi một con heo']], items: [
         {stage: 'in'},
         {link: ['#rf-q-input', 'Thức ăn chăn nuôi › 1.1', 'Giá ngô, khô đậu tương', 'Thức ăn chiếm phần lớn giá thành heo']},
-        {q: 'Dịch tả heo châu Phi đang ở mức nào?', id: 'rf-q-asf', meta: 'sự kiện có kỳ và nguồn · lũy kế ghi riêng', take: ['cn-40']},
         {stage: 'prod'},
         {q: 'Tổng đàn heo cuối kỳ tăng bao nhiêu so với cùng kỳ?', id: 'rf-q-herd', meta: 'số tồn cuối tháng · % so cùng kỳ, NSO ước tính', take: ['cn-21h']},
         {q: 'Sản lượng heo hơi xuất chuồng tăng hay giảm?', id: 'rf-q-out', meta: 'dòng chảy trong kỳ · NSO', take: ['cn-22h']},
@@ -108,13 +95,19 @@ window.PKG = {
         {q: 'Giá hiện tại đứng đâu trong nhiều năm?', id: 'rf-q-long', meta: 'nghìn đ/kg · bình quân tháng, nguồn khác chuỗi ngày', take: ['cn-10']},
         {q: 'Thịt heo nhập khẩu cạnh tranh bao nhiêu, giá bao nhiêu, từ đâu?', id: 'rf-q-import', meta: 'HS 0203 · tấn và USD/tấn; phụ phẩm, tổng thịt là chuỗi riêng', take: ['cn-30', 'cn-31', 'cn-32']},
         {q: 'Cung protein thay thế (gia cầm) đi thế nào?', id: 'rf-q-poultry', meta: 'NSO · chỉ báo cung, không đo sức mua', take: ['cn-24']},
-        {q: 'Một con heo lãi bao nhiêu, giá heo và giá cám đổi thì lãi đổi thế nào?', id: 'rf-q-sim', meta: '<b>mô phỏng</b> · preset lịch sử VCBS hoặc số tự nhập · các yếu tố khác giữ cố định', take: ['cn-s1', 'cn-s2']}]},
+        {q: 'Một con heo lãi bao nhiêu, giá heo và giá cám đổi thì lãi đổi thế nào?', id: 'rf-q-sim', meta: '<b>mô phỏng</b> · preset lịch sử VCBS hoặc số tự nhập · các yếu tố khác giữ cố định', take: ['cn-s1', 'cn-s2']},
+        // 28/11/2026 (người dùng yêu cầu): dịch tả heo châu Phi đưa xuống cuối sub-tab.
+        {grp: 'Rủi ro dịch bệnh'},
+        {q: 'Dịch tả heo châu Phi đang ở mức nào?', id: 'rf-q-asf', meta: 'sự kiện có kỳ và nguồn · lũy kế ghi riêng', take: ['cn-40']}]},
     ]},
+    // 28/11/2026 (người dùng yêu cầu, theo chuẩn Điện/Thép/Dược): 01 Tổng quan ngành = số cộng gộp BCTC quý (app/livestock-finance.js,
+    // window.LIVESTOCK_FIN từ scripts/build_livestock_financials.py) · 02 So sánh doanh nghiệp = từng mã · 03 Định giá = app/peer-valuation.js tự thêm.
     mt14: {title: 'Tài chính ngành', subs: [
-      {k: 'sector', t: 'Tổng quan ngành', d: 'Định giá rổ chăn nuôi, doanh thu và biên theo quý của các mã niêm yết.', kpis: ['spk-pe'], items: [
+      {k: 'sector', t: 'Tổng quan ngành', d: 'Kết quả kinh doanh, biên, CAPEX, vốn lưu động, nợ vay và tỷ suất sinh lời cộng gộp từ BCTC hợp nhất quý của DBC, BAF, HAG.', kpis: ['spk-pe'], items: [
         {q: 'Thị trường định giá cổ phiếu chăn nuôi ở mức nào?', id: 'rf-q-pe', meta: 'lần · rổ VNDirect', take: ['cn-03']},
-        {q: 'Doanh thu, biên theo quý?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · %, hợp nhất quý từng mã, không cộng', take: ['cn-06', 'cn-22']}]},
+        {q: 'Tài chính cộng gộp của nhóm chăn nuôi niêm yết', id: 'rf-q-indfin', meta: 'tổng tử số ÷ tổng mẫu số · chọn nhóm, chu kỳ Quý / TTM / Năm', after: () => { const h = document.createElement('div'); h.className = 'cn-fin-host rf-wide'; h.id = 'cn-fin-root'; return h; }}]},
       {k: 'dn', t: 'So sánh doanh nghiệp', d: 'Thay đổi giá heo, chi phí đi vào doanh thu, biên của từng doanh nghiệp; bảng so sánh và kế hoạch 2026.', items: [
+        {q: 'Doanh thu, biên theo quý từng mã?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · %, hợp nhất quý từng mã, không cộng', take: ['cn-06', 'cn-22']},
         {q: 'Doanh thu, lợi nhuận và chỉ tiêu vận hành từng doanh nghiệp?', id: 'rf-q-co', meta: 'chọn mã ở nút trên chart · BCTC hợp nhất quý + chỉ tiêu doanh nghiệp công bố', take: ['cn-d1']},
         {q: 'Biên gộp có đi theo giá heo?', id: 'rf-q-co-gm', meta: '% biên gộp · giá heo tham chiếu bình quân quý, không phải ASP', take: ['cn-d2']},
         {q: 'Doanh nghiệp nào sinh lời tốt hơn, định giá ra sao?', id: 'rf-q-compare', meta: 'số quý, lũy kế hoặc cả năm theo bộ chọn kỳ', take: ['.financial-comparison']},
@@ -123,3 +116,57 @@ window.PKG = {
   },
 };
 })();
+/* Sơ đồ chuỗi giá trị chăn nuôi heo (28/11/2026, người dùng yêu cầu trực quan hơn): luồng Đầu vào → Thức ăn → Chăn nuôi → Đầu ra
+   vẽ bằng ValueChain.draw (app/value-chain.js, cùng kiểu Điện, Phân bón, Cá tra). Mỗi ô có số mới nhất của chart cùng khâu (window.AGRI_PUBLIC).
+   % trên mũi tên vào trại = tỷ trọng trong chi phí nuôi một con heo, VCBS 11/05/2023 tr. 5, cột T5/2023 trại chuyên nghiệp:
+   thức ăn 2.685.000 (64%) · giống 1.235.000 (29%) · thú y + nhân công 306.000 (7%) đ/con trên tổng các dòng 4.226.000 — cùng preset mô phỏng cn-s1. */
+window.CN_DRAW_CHAIN = () => {
+  const host = document.getElementById('cnVcHost'); if (!host || !window.ValueChain || host.dataset.done) return; host.dataset.done = '1';
+  const A = window.AGRI_PUBLIC?.blocks || {}, S = k => A.macro?.series?.[k]?.records || A.commodity?.series?.[k]?.records || [];
+  const nf = (v, d = 0) => Number.isFinite(v) ? v.toLocaleString('vi-VN', {minimumFractionDigits: d, maximumFractionDigits: d}) : null;
+  const per = r => r ? 'T' + Number(r.date.slice(5, 7)) + '/' + r.date.slice(2, 4) : '';
+  const yoy = k => { const rs = S(k), l = rs.at(-1); if (!l) return null; const p = rs.find(x => x.date.slice(0, 7) === (Number(l.date.slice(0, 4)) - 1) + l.date.slice(4, 7)); return p ? (l.value / p.value - 1) * 100 : null; };
+  const sg = v => Number.isFinite(v) ? (v >= 0 ? '+' : '−') + nf(Math.abs(v), 0) + '%' : null;
+  const line = (k, unit, d = 0) => { const r = S(k).at(-1); return r ? `${nf(r.value, d)} ${unit} · ${per(r)}` : 'chưa có số'; };
+  const chg = (k, alt) => { const y = sg(yoy(k)); return y ? y + ' so cùng kỳ' : alt; };
+  const hog = S('hog').at(-1);
+  const IN = '#2a9fa3', FEED = '#c98a00', FARM = '#2f8f4e', OUT = '#2938A8', IMP = '#861C52', H = 74;
+  const N = [
+    ['corn', 24, 52, 236, IN, 'leaf', 'Ngô nhập khẩu', 'NK ' + line('imp_corn', 'tr. USD'), chg('imp_corn', 'chủ yếu từ Mỹ, Brazil, Argentina')],
+    ['soy', 24, 140, 236, IN, 'leaf', 'Đậu tương, khô đậu', 'NK ' + line('imp_soy', 'tr. USD'), chg('imp_soy', 'nguồn đạm chính của cám')],
+    ['piglet', 24, 252, 236, IN, 'box', 'Con giống', 'trại tự sản xuất hoặc mua', 'DBC tự sản xuất giống'],
+    ['vet', 24, 340, 236, IN, 'pill', 'Thú y, nhân công', 'vaccine, an toàn sinh học', 'rủi ro: dịch tả heo'],
+    ['mill', 292, 96, 200, FEED, 'factory', 'Nhà máy thức ăn', line('feed', 'nghìn tấn'), (sg(yoy('feed')) ? sg(yoy('feed')) + ' · ' : '') + 'DBC, BAF tự cung'],
+    ['farm', 520, 96, 196, FARM, 'home', 'Trại doanh nghiệp', 'quy mô lớn, khép kín', 'DBC · BAF · HAG'],
+    ['house', 520, 296, 196, FARM, 'home', 'Gia trại, hộ nhỏ', 'mua cám, mua giống', 'giá thành cao hơn'],
+    ['trader', 750, 52, 204, OUT, 'truck', 'Heo hơi', hog ? `${nf(hog.value, 1)} nghìn đ/kg · ${per(hog)}` : 'giá heo hơi', chg('hog', 'bán cho thương lái, lò mổ')],
+    ['slaughter', 750, 186, 204, OUT, 'factory', 'Giết mổ, chế biến', 'thịt mát, thịt chế biến', 'DBC · MSN (MEATLife)'],
+    ['import', 750, 336, 204, IMP, 'ship', 'Thịt heo nhập khẩu', 'HS 0203 · cạnh tranh giá', 'xem nước xuất xứ ở chart'],
+    ['market', 982, 120, 172, OUT, 'store', 'Chợ, siêu thị', 'cửa hàng thịt', 'kênh bán lẻ'],
+    ['consumer', 982, 290, 172, OUT, 'home', 'Người tiêu dùng', 'thịt heo, gia cầm', 'gia cầm là hàng thay thế'],
+  ];
+  const E = [
+    ['corn', 'mill', IN], ['soy', 'mill', IN],
+    ['mill', 'farm', FEED], ['mill', 'house', FEED],
+    ['piglet', 'farm', IN], ['piglet', 'house', IN], ['vet', 'farm', IN], ['vet', 'house', IN],
+    ['farm', 'trader', FARM], ['house', 'trader', FARM], ['farm', 'slaughter', FARM],
+    ['trader', 'slaughter', OUT], ['slaughter', 'market', OUT], ['import', 'market', IMP], ['market', 'consumer', OUT],
+  ];
+  const W = {'mill>farm': 6, 'mill>house': 6, 'piglet>farm': 3.5, 'piglet>house': 3.5};
+  const fig = ValueChain.draw({N, E, H, height: 440,
+    lanes: [['ĐẦU VÀO', 10, 264, '#eef6f6', '#2a9fa3'], ['THỨC ĂN', 284, 214, '#fbf4e4', '#c98a00'], ['CHĂN NUÔI', 506, 224, '#edf6ee', '#2f8f4e'], ['ĐẦU RA', 740, 424, '#eaf0f8', '#2938A8']],
+    labels: [[500, 150, '64%'], [500, 268, '29%'], [500, 372, '7%']],
+    width: (a, b) => W[a + '>' + b] || null,
+    legend: [[IN, 'Nguyên liệu, giống, thú y'], [FEED, 'Thức ăn (64% chi phí nuôi)'], [FARM, 'Heo hơi từ trại'], [OUT, 'Thịt đến người tiêu dùng'], [IMP, 'Thịt nhập khẩu cạnh tranh']],
+    title: 'Chuỗi giá trị ngành chăn nuôi heo',
+    desc: 'Ngô, đậu tương nhập khẩu vào nhà máy thức ăn; thức ăn, con giống, thú y vào trại doanh nghiệp và gia trại; heo hơi qua thương lái, giết mổ, chế biến tới chợ, siêu thị và người tiêu dùng; thịt nhập khẩu cạnh tranh ở khâu bán lẻ.'});
+  host.replaceChildren(fig);
+  // Nút mở chart của từng khâu (chart nằm ở Bức tranh ngành).
+  const go = [['#rf-q-input', 'Giá ngô, khô đậu'], ['#rf-q-feedimp', 'Nhập khẩu nguyên liệu'], ['#rf-q-feed', 'Sản lượng thức ăn'], ['#rf-q-herd', 'Tổng đàn'], ['#rf-q-out', 'Xuất chuồng'], ['#rf-q-hog', 'Giá heo hơi'], ['#rf-q-import', 'Thịt nhập khẩu'], ['#rf-q-sim', 'Lãi một con heo'], ['#rf-q-asf', 'Dịch tả heo châu Phi']];
+  const nav = document.createElement('p'); nav.className = 'cn-vc-go';
+  nav.innerHTML = '<b>Xem chart từng khâu:</b> ' + go.map(([h, t]) => `<a href="${h}">${t} →</a>`).join('');
+  host.append(nav);
+  if (!document.getElementById('cn-vc-style')) { const st = document.createElement('style'); st.id = 'cn-vc-style';
+    st.textContent = '.cn-vc-go{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;margin:10px 0 0;font-size:12.5px}.cn-vc-go b{color:var(--ink2,#3b4256);margin-right:4px}.cn-vc-go a{padding:4px 10px;border:1px solid var(--line,#d6dbe8);border-radius:999px;background:var(--card,#fff);color:#2938A8;text-decoration:none;font-weight:600}.cn-vc-go a:hover{border-color:#2938A8}';
+    document.head.append(st); }
+};

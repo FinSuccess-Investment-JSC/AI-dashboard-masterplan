@@ -5164,6 +5164,78 @@
    ]
   },
   {
+   "id": "livestock.industry-financials",
+   "tier": "C",
+   "title": "Chăn nuôi · tab Tài chính ngành: BCTC 3 doanh nghiệp niêm yết theo nhóm (chuỗi thức ăn – giống – thịt, chăn nuôi heo, chăn nuôi & cây ăn trái)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Chan-nuoi/index.html",
+    "file": "data/livestock-financials.js",
+    "blocks": [
+     "cn-fin-breadth",
+     "cn-fin-capex",
+     "cn-fin-cip",
+     "cn-fin-conversion",
+     "cn-fin-cost",
+     "cn-fin-debt",
+     "cn-fin-dso",
+     "cn-fin-dupont",
+     "cn-fin-fcf",
+     "cn-fin-funding",
+     "cn-fin-intensity",
+     "cn-fin-interest",
+     "cn-fin-levdist",
+     "cn-fin-leverage",
+     "cn-fin-map",
+     "cn-fin-margin",
+     "cn-fin-method",
+     "cn-fin-pnl",
+     "cn-fin-pool",
+     "cn-fin-ratios",
+     "cn-fin-recv",
+     "cn-fin-returns",
+     "cn-fin-roic-cycle",
+     "cn-fin-season"
+    ]
+   },
+   "how": "python scripts/fetch_livestock_financials.py && python scripts/build_livestock_financials.py (refresh-data.yml); giao diện Chan-nuoi/app/livestock-finance.js trong tab Tài chính ngành (#mt14), khung Chan-nuoi/app/pkg-frame.js",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Mã lỗi tải giữ bản trước, ghi vào stale",
+    "Universe và nhóm ở scripts/livestock_fin_items.py; không có cặp mẹ − con; DBC gồm mảng bất động sản, HAG gồm mảng trái cây (số hợp nhất)"
+   ]
+  },
+  {
    "id": "realestate.industry-financials",
    "tier": "C",
    "title": "BĐS dân cư · tab Tài chính ngành: BCTC 13 doanh nghiệp niêm yết theo nhóm (VHM, chủ đầu tư nhà ở khác, cho thuê & môi giới)",
