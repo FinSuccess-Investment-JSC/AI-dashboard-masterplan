@@ -538,5 +538,55 @@
   "quote": "Trong 9 tháng năm 2026, các cơ sở khám, chữa bệnh BHYT trên toàn quốc tiếp nhận khoảng 148 triệu lượt khám, chữa bệnh BHYT; đề nghị thanh toán chi phí khám, chữa bệnh BHYT hơn 133.300 tỷ đồng.",
   "status": "match",
   "note": ""
+ },
+ {
+  "block": "pharma-manual",
+  "claim": "DHG · eu_gmp · 2025",
+  "value": "Non-Betalactam: 5/6 dây chuyền EU-GMP/Japan-GMP; Betalactam: EU-GMP từ 10/2025",
+  "url": "https://dhgpharma.com.vn/sites/default/files/2026-04/VN-Annual-Report-2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Trong đó: 05/ 06 dây chuyền đạt tiêu chuẩn EU-GMP/JAPAN-GMP ... NHÀ MÁY DƯỢC PHẨM BETALACTAM ... Tiêu chuẩn: EU-GMP (chứng nhận lần đầu vào tháng 10/2025) ... Penicillin: 04 dây chuyền",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "pharma-manual",
+  "claim": "IMP · eu_gmp · 2025",
+  "value": "12 dây chuyền EU-GMP",
+  "url": "https://www.imexpharm.com/Data/Sites/1/media/ir/ar-sr-2025/imp_annual_report2025_en.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "maintaining the robustness of 12 EU-GMP production lines",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "pharma-manual",
+  "claim": "TRA · eu_gmp · 2025",
+  "value": "Nhà máy EU-GMP Traphaco Hưng Yên: dự án hoàn tất (chưa nêu đã có chứng nhận)",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/TRA_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "dự án nhà máy EU-GMP tại Traphaco Hưng Yên đã được hoàn",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "pharma-manual",
+  "claim": "DMC · eu_gmp · 2025",
+  "value": "1 nhà máy (Nonbetalactam) EU-GMP",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/DMC_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Đặc biệt, việc đạt chứng nhận EU-GMP cho Nhà máy Nonbetalactam ... đã được Cơ quan Dược phẩm Châu Âu (EMA) đánh giá EU-GMP vào 11.2025",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "pharma-manual",
+  "claim": "TNH · beds · 2025",
+  "value": "750 giường",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/TNH_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Tổng quy mô giường bệnh toàn hệ thống đạt 750 giường",
+  "status": "match",
+  "note": ""
  }
 ]

@@ -1,0 +1,1 @@
+window.TELECOM_MANUAL = {"updated":"2026-11-28","note":"","companies":{"CTR":{"towers":{"period":"31/12/2025","url":"https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/CTR_Baocaothuongnien_2025.pdf","opened":"2026-11-28","v":12000,"u":"trạm","text":"12.000 BTS sở hữu (+2.000 trong 2025); tenancy không nêu"}}},"missing":{"CTR":[],"FOX":["subs"],"VGI":["subs"]}};

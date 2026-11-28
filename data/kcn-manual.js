@@ -1,0 +1,1 @@
+window.KCN_MANUAL = {"updated":"2026-11-28","note":"","companies":{},"missing":{"BCM":["occ"],"D2D":[],"IDC":["landl"],"KBC":["landl"],"LHG":["occ"],"NTC":[],"SIP":["landl","occ"],"SZC":["landl"],"TIP":[],"VGC":[]}};

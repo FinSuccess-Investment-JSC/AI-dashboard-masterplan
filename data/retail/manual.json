@@ -1,0 +1,287 @@
+{
+ "updated": "2026-11-28",
+ "note": "",
+ "how": "Sửa file này rồi chạy script build tương ứng (DASHBOARD_WORKFLOW §44–45).",
+ "rows": [
+  {
+   "ticker": "MWG",
+   "item": "stores",
+   "period": "31/12/2025",
+   "value": 6225,
+   "unit": "cửa hàng",
+   "extra": {
+    "text": "Tổng 6.225 cửa hàng, 31/12/2025",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MWG_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Số cửa hàng 5.306 5.762 5.491 5.316 6.225 (2021–2025); 1.012 Cửa hàng (bao gồm TopZone) 2.008 Cửa hàng (bao gồm ĐMS) 2.559 Cửa hàng; 83 Cửa hàng 382 Cửa hàng 181 Cửa hàng tại indonesia",
+   "status": "match",
+   "note": "Gán chuỗi theo thứ tự infographic trang 15 BCTN; layout pdftotext không in tên chuỗi cạnh số"
+  },
+  {
+   "ticker": "MWG",
+   "item": "rev_per_store",
+   "period": "2025",
+   "value": 550,
+   "unit": "triệu đồng",
+   "extra": {
+    "text": "Chỉ chuỗi Nhà thuốc An Khang",
+    "qualifier": "khoảng",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MWG_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Doanh thu bình quân đạt khoảng 550 triệu đồng/cửa hàng/tháng, tăng 17% so với cùng kỳ",
+   "status": "match",
+   "note": "",
+   "hide": true,
+   "hide_reason": "Chỉ của chuỗi An Khang, không đại diện MWG."
+  },
+  {
+   "ticker": "MWG",
+   "item": "sssg",
+   "period": "2025",
+   "value": 20,
+   "unit": "%",
+   "extra": {
+    "text": "TGDĐ + ĐMX, cửa hàng hiện hữu",
+    "qualifier": "trên",
+    "estimate": false,
+    "lower_bound": true
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MWG_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Đáng chú ý, doanh thu cửa hàng hiện hữu tăng trên 20%, phản ánh sự cải thiện rõ nét về năng lực vận hành.",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "FRT",
+   "item": "stores",
+   "period": "31/12/2025",
+   "value": null,
+   "unit": "cửa hàng",
+   "extra": {
+    "text": "Long Châu 2.417 nhà thuốc · TT tiêm chủng 223 · FPT Shop 623",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/FRT_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "2.417 nhà thuốc ... 223 trung tâm tiêm chủng ... 623 cửa hàng (474 / 97 / 11 so với đầu năm 2025)",
+   "status": "match",
+   "note": "Nguồn không nêu tổng; value=null nên để trống — xem dưới"
+  },
+  {
+   "ticker": "FRT",
+   "item": "rev_per_store",
+   "period": "2025",
+   "value": 2200,
+   "unit": "triệu đồng",
+   "extra": {
+    "text": "FPT Shop",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/FRT_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Doanh thu bình quân đạt 2,2 tỷ đồng/cửa hàng/tháng, tăng 16,90% so với năm 2024",
+   "status": "match",
+   "note": "",
+   "hide": true,
+   "hide_reason": "Hai chuỗi (FPT Shop, Long Châu) khác mô hình, không có số chung."
+  },
+  {
+   "ticker": "FRT",
+   "item": "rev_per_store",
+   "period": "2025",
+   "value": 1200,
+   "unit": "triệu đồng",
+   "extra": {
+    "text": "FPT Long Châu (nhà thuốc)",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/FRT_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Doanh thu bình quân đạt 1,2 tỷ đồng/cửa hàng/tháng, dù các cửa hàng mới tập trung nhiều hơn tại khu vực ngoài trung tâm",
+   "status": "match",
+   "note": "",
+   "hide": true,
+   "hide_reason": "Hai chuỗi (FPT Shop, Long Châu) khác mô hình, không có số chung."
+  },
+  {
+   "ticker": "FRT",
+   "item": "sssg",
+   "period": "2025",
+   "value": null,
+   "unit": "%",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/FRT_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "BCTN 2025 không nêu SSSG"
+  },
+  {
+   "ticker": "PNJ",
+   "item": "stores",
+   "period": "31/12/2025",
+   "value": 431,
+   "unit": "cửa hàng",
+   "extra": {
+    "text": "PNJ 431 (mở mới 17, chuyển đổi 15)",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/PNJ_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Tính đến cuối năm 2025, PNJ có tổng cộng 431 điểm bán ở 31/34 tỉnh",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "PNJ",
+   "item": "rev_per_store",
+   "period": "2025",
+   "value": null,
+   "unit": "triệu đồng",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/PNJ_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Không nêu doanh thu/cửa hàng"
+  },
+  {
+   "ticker": "PNJ",
+   "item": "sssg",
+   "period": "2025",
+   "value": null,
+   "unit": "%",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/PNJ_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Không nêu SSSG trong BCTN 2025"
+  },
+  {
+   "ticker": "MSN",
+   "item": "stores",
+   "period": "FY2025",
+   "value": null,
+   "unit": "cửa hàng",
+   "extra": {
+    "text": "WinMart 130 · WinMart+/WiN 4.462",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MSN_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "hiện đại lớn nhất Việt Nam về quy mô với 130 siêu thị WinMart cùng 4.462 cửa hàng WinMart+/WiN",
+   "status": "match",
+   "note": "value=null theo luật không cộng; nguồn cũng ghi '4.600+'"
+  },
+  {
+   "ticker": "MSN",
+   "item": "sssg",
+   "period": "FY2025",
+   "value": 9.7,
+   "unit": "%",
+   "extra": {
+    "text": "WinMart+ (mini), so cùng cửa hàng",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MSN_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "tăng trưởng trên cơ sở so sánh tương đương (LFL) ở cả hai mô hình: siêu thị mini tăng trưởng 9,7% và siêu thị tăng trưởng 7,5% so với cùng kỳ năm trước",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "KDC",
+   "item": "stores",
+   "period": "2025",
+   "value": 300,
+   "unit": "cửa hàng",
+   "extra": {
+    "text": "Chỉ chuỗi miniBAO",
+    "qualifier": "hơn",
+    "estimate": false,
+    "lower_bound": true
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/KDC_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Hơn 300 cửa hàng miniBAO.",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "DGW",
+   "item": "stores",
+   "period": "2025",
+   "value": null,
+   "unit": "cửa hàng",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/DGW_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "DGW là nhà phân phối; BCTN chỉ nêu mạng lưới đại lý/điểm bán (vd 16.000 điểm bán), không có chuỗi cửa hàng riêng có số"
+  },
+  {
+   "ticker": "PET",
+   "item": "stores",
+   "period": "2025",
+   "value": null,
+   "unit": "cửa hàng",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/PET_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Nhà phân phối; BCTN không có số cửa hàng"
+  },
+  {
+   "ticker": "FRT",
+   "item": "etc_share",
+   "period": "2025",
+   "value": null,
+   "unit": "%",
+   "extra": {
+    "text": "",
+    "qualifier": "",
+    "estimate": false
+   },
+   "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/FRT_Baocaothuongnien_2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "",
+   "status": "not_found",
+   "note": "Bán lẻ, không áp dụng"
+  }
+ ]
+}

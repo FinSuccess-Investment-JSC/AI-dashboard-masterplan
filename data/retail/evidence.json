@@ -1638,5 +1638,75 @@
   "quote": "Riêng tháng 11, doanh thu chuỗi này đạt 4.200 tỷ đồng, tăng 6% so với tháng trước và gần 20% so với cùng kỳ năm ngoái … chuỗi nhà thuốc An Khang duy trì doanh thu bình quân hơn 550 triệu đồng/cửa hàng trong tháng 11",
   "status": "match",
   "note": ""
+ },
+ {
+  "block": "retail-manual",
+  "claim": "MWG · stores · 31/12/2025",
+  "value": "6.225 cửa hàng",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MWG_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Số cửa hàng 5.306 5.762 5.491 5.316 6.225 (2021–2025); 1.012 Cửa hàng (bao gồm TopZone) 2.008 Cửa hàng (bao gồm ĐMS) 2.559 Cửa hàng; 83 Cửa hàng 382 Cửa hàng 181 Cửa hàng tại indonesia",
+  "status": "match",
+  "note": "Gán chuỗi theo thứ tự infographic trang 15 BCTN; layout pdftotext không in tên chuỗi cạnh số"
+ },
+ {
+  "block": "retail-manual",
+  "claim": "MWG · sssg · 2025",
+  "value": "20 %",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MWG_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Đáng chú ý, doanh thu cửa hàng hiện hữu tăng trên 20%, phản ánh sự cải thiện rõ nét về năng lực vận hành.",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "retail-manual",
+  "claim": "FRT · stores · 31/12/2025",
+  "value": "Long Châu 2.417 nhà thuốc · TT tiêm chủng 223 · FPT Shop 623",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/FRT_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "2.417 nhà thuốc ... 223 trung tâm tiêm chủng ... 623 cửa hàng (474 / 97 / 11 so với đầu năm 2025)",
+  "status": "match",
+  "note": "Nguồn không nêu tổng; value=null nên để trống — xem dưới"
+ },
+ {
+  "block": "retail-manual",
+  "claim": "PNJ · stores · 31/12/2025",
+  "value": "431 cửa hàng",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/PNJ_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Tính đến cuối năm 2025, PNJ có tổng cộng 431 điểm bán ở 31/34 tỉnh",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "retail-manual",
+  "claim": "MSN · stores · FY2025",
+  "value": "WinMart 130 · WinMart+/WiN 4.462",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MSN_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "hiện đại lớn nhất Việt Nam về quy mô với 130 siêu thị WinMart cùng 4.462 cửa hàng WinMart+/WiN",
+  "status": "match",
+  "note": "value=null theo luật không cộng; nguồn cũng ghi '4.600+'"
+ },
+ {
+  "block": "retail-manual",
+  "claim": "MSN · sssg · FY2025",
+  "value": "9,7 %",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MSN_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "tăng trưởng trên cơ sở so sánh tương đương (LFL) ở cả hai mô hình: siêu thị mini tăng trưởng 9,7% và siêu thị tăng trưởng 7,5% so với cùng kỳ năm trước",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "retail-manual",
+  "claim": "KDC · stores · 2025",
+  "value": "300 cửa hàng",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/KDC_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Hơn 300 cửa hàng miniBAO.",
+  "status": "match",
+  "note": ""
  }
 ]

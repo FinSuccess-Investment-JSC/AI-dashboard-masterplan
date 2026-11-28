@@ -10297,6 +10297,174 @@
    "gates": [
     "Chỉ số đã mở trang gốc, có đoạn trích chứa số"
    ]
+  },
+  {
+   "id": "power.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "Điện · Định giá: số vận hành (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Báo cáo thường niên, tài liệu doanh nghiệp; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Báo cáo thường niên, tài liệu doanh nghiệp",
+    "url": "https://finance.vietstock.vn/"
+   },
+   "where": {
+    "page": "Dien/index.html",
+    "file": "data/power/manual.json",
+    "blocks": []
+   },
+   "how": "Sửa data/<ngành>/manual.json rồi chạy scripts/build_<x>_manual.py. DASHBOARD_WORKFLOW §44–45.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số",
+    "Không giá mục tiêu CTCK"
+   ]
+  },
+  {
+   "id": "industrial.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "BĐS KCN · Định giá: số vận hành (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Báo cáo thường niên, tài liệu doanh nghiệp; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Báo cáo thường niên, tài liệu doanh nghiệp",
+    "url": "https://finance.vietstock.vn/"
+   },
+   "where": {
+    "page": "Bat-dong-san-KCN/index.html",
+    "file": "data/kcn/manual.json",
+    "blocks": []
+   },
+   "how": "Sửa data/<ngành>/manual.json rồi chạy scripts/build_<x>_manual.py. DASHBOARD_WORKFLOW §44–45.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số",
+    "Không giá mục tiêu CTCK"
+   ]
+  },
+  {
+   "id": "retail.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "Bán lẻ · Định giá: số vận hành (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Báo cáo thường niên, tài liệu doanh nghiệp; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Báo cáo thường niên, tài liệu doanh nghiệp",
+    "url": "https://finance.vietstock.vn/"
+   },
+   "where": {
+    "page": "Ban-le/index.html",
+    "file": "data/retail/manual.json",
+    "blocks": []
+   },
+   "how": "Sửa data/<ngành>/manual.json rồi chạy scripts/build_<x>_manual.py. DASHBOARD_WORKFLOW §44–45.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số",
+    "Không giá mục tiêu CTCK"
+   ]
+  },
+  {
+   "id": "pharma.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "Dược · Định giá: số vận hành (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Báo cáo thường niên, tài liệu doanh nghiệp; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Báo cáo thường niên, tài liệu doanh nghiệp",
+    "url": "https://finance.vietstock.vn/"
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "file": "data/pharma/manual.json",
+    "blocks": []
+   },
+   "how": "Sửa data/<ngành>/manual.json rồi chạy scripts/build_<x>_manual.py. DASHBOARD_WORKFLOW §44–45.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số",
+    "Không giá mục tiêu CTCK"
+   ]
+  },
+  {
+   "id": "telecom.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "Viễn thông · Định giá: số vận hành (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Báo cáo thường niên, tài liệu doanh nghiệp; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Báo cáo thường niên, tài liệu doanh nghiệp",
+    "url": "https://finance.vietstock.vn/"
+   },
+   "where": {
+    "page": "Vien-thong/index.html",
+    "file": "data/telecom/manual.json",
+    "blocks": []
+   },
+   "how": "Sửa data/<ngành>/manual.json rồi chạy scripts/build_<x>_manual.py. DASHBOARD_WORKFLOW §44–45.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số",
+    "Không giá mục tiêu CTCK"
+   ]
+  },
+  {
+   "id": "construction.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "Xây dựng · VLXD · Định giá: số vận hành (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Báo cáo thường niên, tài liệu doanh nghiệp; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Báo cáo thường niên, tài liệu doanh nghiệp",
+    "url": "https://finance.vietstock.vn/"
+   },
+   "where": {
+    "page": "Xay-dung/index.html",
+    "file": "data/construction/manual.json",
+    "blocks": []
+   },
+   "how": "Sửa data/<ngành>/manual.json rồi chạy scripts/build_<x>_manual.py. DASHBOARD_WORKFLOW §44–45.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số",
+    "Không giá mục tiêu CTCK"
+   ]
+  },
+  {
+   "id": "aviation.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "Hàng không · Định giá: số vận hành (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Báo cáo thường niên, tài liệu doanh nghiệp; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Báo cáo thường niên, tài liệu doanh nghiệp",
+    "url": "https://finance.vietstock.vn/"
+   },
+   "where": {
+    "page": "Hang-khong/index.html",
+    "file": "data/aviation/manual.json",
+    "blocks": []
+   },
+   "how": "Sửa data/<ngành>/manual.json rồi chạy scripts/build_<x>_manual.py. DASHBOARD_WORKFLOW §44–45.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số",
+    "Không giá mục tiêu CTCK"
+   ]
   }
  ]
 }
