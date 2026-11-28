@@ -102,19 +102,6 @@
   },
   {
    "ticker": "PLX",
-   "item": "volume",
-   "period": "9T/2026",
-   "value": null,
-   "unit": "triệu m³",
-   "extra": {},
-   "url": "https://vnbusiness.vn/doanh-thu-petrolimex-cao-nhat-san-loi-nhuan-9-thang-tang-gan-60.html",
-   "opened_at": "2026-11-28",
-   "quote": "sản lượng xăng dầu xuất bán tăng 18% so với cùng kỳ",
-   "status": "not_found",
-   "note": "vnbusiness chỉ có +18%; con số 9,84 triệu m³ (Vietcap) không tìm thấy trên trang Vietcap đã mở"
-  },
-  {
-   "ticker": "PLX",
    "item": "stations",
    "period": null,
    "value": null,
@@ -125,45 +112,6 @@
    "quote": null,
    "status": "not_found",
    "note": "Hết ngân sách"
-  },
-  {
-   "ticker": "OIL",
-   "item": "volume",
-   "period": null,
-   "value": null,
-   "unit": "triệu m³",
-   "extra": {},
-   "url": null,
-   "opened_at": "2026-11-28",
-   "quote": null,
-   "status": "not_found",
-   "note": "Chưa tìm"
-  },
-  {
-   "ticker": "OIL",
-   "item": "stations",
-   "period": null,
-   "value": null,
-   "unit": "cửa hàng",
-   "extra": {},
-   "url": null,
-   "opened_at": "2026-11-28",
-   "quote": null,
-   "status": "not_found",
-   "note": "Chưa tìm"
-  },
-  {
-   "ticker": "PLC",
-   "item": "volume",
-   "period": null,
-   "value": null,
-   "unit": "nghìn m³",
-   "extra": {},
-   "url": null,
-   "opened_at": "2026-11-28",
-   "quote": null,
-   "status": "not_found",
-   "note": "Chưa tìm"
   },
   {
    "ticker": "PLC",
@@ -313,32 +261,6 @@
    "note": "Không thấy"
   },
   {
-   "ticker": "PVP",
-   "item": "target",
-   "period": null,
-   "value": null,
-   "unit": "đồng/cp",
-   "extra": {},
-   "url": null,
-   "opened_at": "2026-11-28",
-   "quote": null,
-   "status": "not_found",
-   "note": "Không thấy"
-  },
-  {
-   "ticker": "OIL",
-   "item": "target",
-   "period": null,
-   "value": null,
-   "unit": "đồng/cp",
-   "extra": {},
-   "url": null,
-   "opened_at": "2026-11-28",
-   "quote": null,
-   "status": "not_found",
-   "note": "Không thấy"
-  },
-  {
    "ticker": "PLC",
    "item": "target",
    "period": null,
@@ -363,6 +285,202 @@
    "quote": null,
    "status": "not_found",
    "note": "Không thấy"
+  },
+  {
+   "ticker": "PVP",
+   "item": "target",
+   "period": "29/10/2026",
+   "value": 23300,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "ACBS",
+    "report_date": "29/10/2026",
+    "method": null,
+    "estimate": false
+   },
+   "url": "https://static.fireant.vn/reports/content/85318",
+   "opened_at": "2026-11-28",
+   "quote": "Giá mục tiêu (VND)            23.300",
+   "status": "match",
+   "note": "PDF text garbled (font); method not legible. Date from caller; PDF header shows Q3/2026 update."
+  },
+  {
+   "ticker": "OIL",
+   "item": "target",
+   "period": "06/08/2026",
+   "value": 14500,
+   "unit": "đồng/cp",
+   "extra": {
+    "broker": "ACBS",
+    "report_date": "06/08/2026",
+    "method": null,
+    "estimate": false
+   },
+   "url": "https://acbs.com.vn/acbsmedia/2026/08/OIL_Cap-nhat-nhanh-06.08.2026.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "duy trì khuyến nghị Khả Quan với giá mục tiêu đến cuối 2026 (sau khi chia cổ tức) là 14.500 đồng/cp (tiềm năng tăng giá 13%).",
+   "status": "match",
+   "note": "Method not stated in text."
+  },
+  {
+   "ticker": "OIL",
+   "item": "volume",
+   "period": "FY2025",
+   "value": 6.06,
+   "unit": "triệu m³ xăng dầu",
+   "extra": {},
+   "url": "https://www.abs.vn/wp-content/uploads/2026/04/OIL_260428_DHCD.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "Sản lượng kinh doanh xăng dầu (KDXD) đạt 6,06 triệu m3/tấn, hoàn thành 112% kế hoạch năm, tăng trưởng 8% svck",
+   "status": "match",
+   "note": "ABS AGM note 28/04/2026; unit as written 'triệu m3/tấn'."
+  },
+  {
+   "ticker": "OIL",
+   "item": "stations",
+   "period": "31/12/2025",
+   "value": 950,
+   "unit": "cửa hàng",
+   "extra": {},
+   "url": "https://www.abs.vn/wp-content/uploads/2026/04/OIL_260428_DHCD.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "nâng tổng số CHXD của PVOIL đến 31/12/2025 là 950 CHXD",
+   "status": "match",
+   "note": ""
+  },
+  {
+   "ticker": "PLX",
+   "item": "volume",
+   "period": "FY2025",
+   "value": 11.4,
+   "unit": "triệu m³ xăng dầu",
+   "extra": {
+    "qualifier": "~"
+   },
+   "url": "https://acbs.com.vn/acbsmedia/2026/04/PLX_Cap-nhat-Q4.2025.pdf",
+   "opened_at": "2026-11-28",
+   "quote": "sản lượng tiêu thụ trong nước tăng trưởng 8% đạt gần 11,4 triệu m3.",
+   "status": "match",
+   "note": "Domestic only, 'gần'. 9T/2026 9,84 triệu m³ seen only in search snippet (Vietcap via press), not opened -> not used."
+  },
+  {
+   "ticker": "PLX",
+   "item": "stations",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "ACBS PLX Q4.2025 PDF and press pages have no system-wide store count; only Petrolimex Sài Gòn 138 stores."
+  },
+  {
+   "ticker": "PLC",
+   "item": "volume",
+   "period": "FY2025 (ước)",
+   "value": 32000,
+   "unit": "tấn",
+   "extra": {
+    "qualifier": "~"
+   },
+   "url": "https://tapchicongthuong.vn/plc-giu-da-tang-truong-san-luong--doanh-thu-vuot-ke-hoach-nam-2025-399312.htm",
+   "opened_at": "2026-11-28",
+   "quote": "dầu mỡ nhờn đạt gần 32.000 tấn",
+   "status": "match",
+   "note": "Estimate ('ước', 'gần'); unit tấn (not in allowed list). Total consolidated 436.501 tấn incl. asphalt 274.600 tấn, chemicals >130.000 tấn."
+  },
+  {
+   "ticker": "BSR",
+   "item": "util",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "Search snippet showed ~123% for 9T/2026 but opened pages (giaoduc, thuonghieucongluan, vcci) did not contain the figure; only 'vận hành tối ưu ở mức công suất khả dụng'."
+  },
+  {
+   "ticker": "GAS",
+   "item": "volume",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "9T/2026 press pages opened had no dry-gas volume; ACBS GAS Q1.2026 has only 2026 plan 7,2 tỷ m3 (plan, not actual); KBSV PDF returned HTML."
+  },
+  {
+   "ticker": "GAS",
+   "item": "volume_lpg",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "No LPG thousand-ton figure in opened sources."
+  },
+  {
+   "ticker": "PVB",
+   "item": "target",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "No broker report with PVB target found in search."
+  },
+  {
+   "ticker": "CNG",
+   "item": "target",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "No broker target found; CNG only listed in ABS sector report 06/2026 without target."
+  },
+  {
+   "ticker": "PET",
+   "item": "target",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "No broker target found."
+  },
+  {
+   "ticker": "PLC",
+   "item": "target",
+   "period": null,
+   "value": null,
+   "unit": null,
+   "extra": {},
+   "url": null,
+   "opened_at": "2026-11-28",
+   "quote": null,
+   "status": "not_found",
+   "note": "DSC PLC 22/06/2026 25.340 seen only in search snippet; dsc.com.vn page not opened/verified within attempt budget."
   }
  ]
 }

@@ -341,5 +341,55 @@
   "quote": "Thành Công cho biết đã tiếp nhận khoảng 75% kế hoạch đơn hàng cho quý III/2026 và đang tiếp tục nhận đơn hàng cho quý IV.",
   "status": "match",
   "note": "value = % kế hoạch đơn Q3, không phải số tháng"
+ },
+ {
+  "block": "textile-manual",
+  "claim": "HTG · Số lao động · 31/12/2025",
+  "value": "9.757 người",
+  "url": "https://new.bsc.com.vn/News/NewsAttachedFile/1303857",
+  "opened_at": "2026-11-28",
+  "quote": "Tổng số lượng người lao động (người) 10.339 10.133 9.631 9.757 9.850 [cột 2022/2023/2024/2025/KH2026]; Tính đến 31/12/2025 tổng số lao động",
+  "status": "match",
+  "note": "BCTN 2025 HTG tr.51"
+ },
+ {
+  "block": "textile-manual",
+  "claim": "ADS · Số lao động · 2025",
+  "value": "580 người",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/ADS_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "CƠ CẤU NHÂN SỰ ... NĂM 2025 ... TỔNG CỘNG Người 580",
+  "status": "match",
+  "note": "bảng không ghi ngày 31/12"
+ },
+ {
+  "block": "textile-manual",
+  "claim": "ADS · Công suất · 2025",
+  "value": "20.000 tấn/năm",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/ADS_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "tiếp tục mở rộng đầu tư nhà máy DAMSAN 2 và nhà máy An Ninh đến nay đã đạt công suất 20.000 tấn một năm",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "textile-manual",
+  "claim": "MSH · Số lao động · 31/12/2025",
+  "value": "11.720 người",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/MSH_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Tính đến ngày 31/12/2025, tổng số lao động của Công ty: 11.720 người",
+  "status": "match",
+  "note": ""
+ },
+ {
+  "block": "textile-manual",
+  "claim": "TCM · Số lao động · 2025",
+  "value": "5.489 người",
+  "url": "https://static2.vietstock.vn/data/HOSE/2025/BCTN/VN/TCM_Baocaothuongnien_2025.pdf",
+  "opened_at": "2026-11-28",
+  "quote": "Tổng số người lao động 6.720 6.625 5.552 5.798 5.489 [Năm 2021..Năm 2025]",
+  "status": "match",
+  "note": ""
  }
 ]
