@@ -532,7 +532,7 @@ button.pf-tk[aria-pressed=false]{opacity:.45;text-decoration:line-through}.pf-me
   document.head.append(st);
 }
 window.LivestockFinance = {build, engine: E, state: S};
-// Sub-tab 01 của tab lớn #mt14 (app/livestock-config.js tạo .cn-fin-host trong câu hỏi 1.2): dựng khi chỗ chứa hiện (đo đúng chiều rộng chart).
+// Sub-tab 01 của tab lớn #mt14 (app/livestock-config.js tạo .cn-fin-host trong câu hỏi 1.1): dựng khi chỗ chứa hiện (đo đúng chiều rộng chart).
 const host = () => document.querySelector('.cn-fin-host');
 const tryBuild = () => { const h = host(); if (h && h.offsetParent !== null) build(h); };
 tryBuild();

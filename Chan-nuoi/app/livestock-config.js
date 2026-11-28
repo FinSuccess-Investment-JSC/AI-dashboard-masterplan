@@ -71,7 +71,7 @@ window.PKG = {
         {q: 'Mốc nào có thể đổi giá thành hoặc nguồn cung?', id: 'rf-q-policy', meta: '● đã ban hành / sự kiện · ngày hiệu lực', take: ['cn-52']}]},
     ]},
     mt2: {title: 'Bức tranh ngành', subs: [
-      {k: 'feed', t: 'Thức ăn chăn nuôi', d: 'Ngô, khô đậu nhập khẩu → nhà máy thức ăn → cám cho đàn heo, gia cầm.', kpis: ['spk-soy', 'spk-feed'],
+      {k: 'feed', t: 'Thức ăn chăn nuôi', d: 'Ngô, khô đậu nhập khẩu → nhà máy thức ăn → cám cho đàn heo, gia cầm.', kpis: ['spk-soy', 'spk-feed', 'spk-pe'],
         flow: [['in', 'Đầu vào', 'Ngô, khô đậu tương nhập khẩu'], ['prod', 'Sản xuất', 'Sản lượng thức ăn gia súc'], ['out', 'Đầu ra', 'Cám cho đàn heo, gia cầm']], items: [
         {stage: 'in'},
         {q: 'Ngô và khô đậu tương đang đi cùng chiều?', id: 'rf-q-input', meta: 'USD/tấn · World Bank Pink Sheet · 3 năm và 10 năm', take: ['cn-h2', 'cn-h2b']},
@@ -100,18 +100,19 @@ window.PKG = {
         {grp: 'Rủi ro dịch bệnh'},
         {q: 'Dịch tả heo châu Phi đang ở mức nào?', id: 'rf-q-asf', meta: 'sự kiện có kỳ và nguồn · lũy kế ghi riêng', take: ['cn-40']}]},
     ]},
-    // 28/11/2026 (người dùng yêu cầu, theo chuẩn Điện/Thép/Dược): 01 Tổng quan ngành = số cộng gộp BCTC quý (app/livestock-finance.js,
+    // 28/11/2026 (người dùng yêu cầu, theo chuẩn Điện/Thép/Dược): 01 Tổng quan ngành = chỉ số cộng gộp BCTC quý (app/livestock-finance.js,
     // window.LIVESTOCK_FIN từ scripts/build_livestock_financials.py) · 02 So sánh doanh nghiệp = từng mã · 03 Định giá = app/peer-valuation.js tự thêm.
     mt14: {title: 'Tài chính ngành', subs: [
-      {k: 'sector', t: 'Tổng quan ngành', d: 'Kết quả kinh doanh, biên, CAPEX, vốn lưu động, nợ vay và tỷ suất sinh lời cộng gộp từ BCTC hợp nhất quý của DBC, BAF, HAG.', kpis: ['spk-pe'], items: [
-        {q: 'Thị trường định giá cổ phiếu chăn nuôi ở mức nào?', id: 'rf-q-pe', meta: 'lần · rổ VNDirect', take: ['cn-03']},
+      {k: 'sector', t: 'Tổng quan ngành', d: 'Kết quả kinh doanh, biên, CAPEX, vốn lưu động, nợ vay và tỷ suất sinh lời cộng gộp từ BCTC hợp nhất quý của DBC, BAF, HAG.', items: [
         {q: 'Tài chính cộng gộp của nhóm chăn nuôi niêm yết', id: 'rf-q-indfin', meta: 'tổng tử số ÷ tổng mẫu số · chọn nhóm, chu kỳ Quý / TTM / Năm', after: () => { const h = document.createElement('div'); h.className = 'cn-fin-host rf-wide'; h.id = 'cn-fin-root'; return h; }}]},
       {k: 'dn', t: 'So sánh doanh nghiệp', d: 'Thay đổi giá heo, chi phí đi vào doanh thu, biên của từng doanh nghiệp; bảng so sánh và kế hoạch 2026.', items: [
         {q: 'Doanh thu, biên theo quý từng mã?', id: 'rf-q-rev', meta: 'nghìn tỷ đồng · %, hợp nhất quý từng mã, không cộng', take: ['cn-06', 'cn-22']},
         {q: 'Doanh thu, lợi nhuận và chỉ tiêu vận hành từng doanh nghiệp?', id: 'rf-q-co', meta: 'chọn mã ở nút trên chart · BCTC hợp nhất quý + chỉ tiêu doanh nghiệp công bố', take: ['cn-d1']},
         {q: 'Biên gộp có đi theo giá heo?', id: 'rf-q-co-gm', meta: '% biên gộp · giá heo tham chiếu bình quân quý, không phải ASP', take: ['cn-d2']},
         {q: 'Doanh nghiệp nào sinh lời tốt hơn, định giá ra sao?', id: 'rf-q-compare', meta: 'số quý, lũy kế hoặc cả năm theo bộ chọn kỳ', take: ['.financial-comparison']},
-        {q: 'Doanh nghiệp đã đi được bao nhiêu so với kế hoạch 2026?', id: 'rf-q-plan', take: ['cn-60']}]},
+        {q: 'Doanh nghiệp đã đi được bao nhiêu so với kế hoạch 2026?', id: 'rf-q-plan', take: ['cn-60']},
+        // 28/11/2026 (người dùng yêu cầu đồng bộ): P/E rổ ngành ở So sánh doanh nghiệp như P/B nhóm thép th-03; ô số spk-pe ở sub-tab đầu Bức tranh ngành như Thép, Dược.
+        {q: 'Thị trường định giá cổ phiếu chăn nuôi ở mức nào?', id: 'rf-q-pe', meta: 'lần · rổ VNDirect', take: ['cn-03']}]},
     ]},
   },
 };
