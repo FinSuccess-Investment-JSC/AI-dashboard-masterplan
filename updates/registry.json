@@ -10122,6 +10122,56 @@
     "Không tự cộng số tàu, trọng tải",
     "Giá mục tiêu cũ hơn 12 tháng thì hide"
    ]
+  },
+  {
+   "id": "oil.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "Dầu khí · Định giá: số vận hành và giá mục tiêu CTCK (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Tài liệu doanh nghiệp, báo cáo CTCK; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Tài liệu doanh nghiệp, báo cáo CTCK",
+    "url": "https://finance.vietstock.vn/bao-cao-phan-tich"
+   },
+   "where": {
+    "page": "Dau-khi/index.html",
+    "file": "data/oil/manual.json",
+    "blocks": [
+     "oil-manual"
+    ]
+   },
+   "how": "Sửa data/oil/manual.json, chạy python scripts/build_oil_manual.py. DASHBOARD_WORKFLOW §44.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số"
+   ]
+  },
+  {
+   "id": "textile.manual-operating",
+   "tier": "C",
+   "status": "manual",
+   "title": "Dệt may · Định giá: số vận hành và giá mục tiêu CTCK (nhập tay)",
+   "schedule": {
+    "type": "none"
+   },
+   "publication": "Tài liệu doanh nghiệp, báo cáo CTCK; chỉ cập nhật khi người dùng yêu cầu",
+   "source": {
+    "name": "Tài liệu doanh nghiệp, báo cáo CTCK",
+    "url": "https://finance.vietstock.vn/bao-cao-phan-tich"
+   },
+   "where": {
+    "page": "Det-may/index.html",
+    "file": "data/textile/manual.json",
+    "blocks": [
+     "textile-manual"
+    ]
+   },
+   "how": "Sửa data/textile/manual.json, chạy python scripts/build_textile_manual.py. DASHBOARD_WORKFLOW §44.",
+   "gates": [
+    "Chỉ số đã mở trang gốc, có đoạn trích chứa số"
+   ]
   }
  ]
 }

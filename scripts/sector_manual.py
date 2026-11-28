@@ -46,9 +46,10 @@ def build(SRC, OUT, EVID, BLOCK, VAR, KEY, LABEL, SCALE, name):
         qd = ''.join(digits(r.get('quote') or ''))
         if not str(r.get('url', '')).startswith('https://'):
             errors.append(f'{t} {item}: thiếu url https')
-        if not nums or not any(re.sub(r'[.,]', '', vn(n)) in qd or str(n).replace('.', '') in qd for n in nums):
+        txt_only = r.get('value') is None and bool(ex.get('text')) and bool(r.get('quote'))  # chỉ có câu chữ (vd. đơn hàng đến khi nào)
+        if not txt_only and (not nums or not any(re.sub(r'[.,]', '', vn(n)) in qd or str(n).replace('.', '') in qd for n in nums)):
             errors.append(f'{t} {item}: không số nào của dòng có trong quote')
-        if r.get('unit') not in SCALE:
+        if not txt_only and r.get('unit') not in SCALE:
             errors.append(f'{t} {item}: đơn vị lạ {r.get("unit")}')
             continue
         by = {'Shinhan Securities Vietnam': 'Shinhan', 'VDSC (Rồng Việt)': 'VDSC', 'Mirae Asset': 'Mirae'}.get(ex.get('broker'), ex.get('broker'))
@@ -63,7 +64,8 @@ def build(SRC, OUT, EVID, BLOCK, VAR, KEY, LABEL, SCALE, name):
             cell.update({'rnav': ex.get('rnav_per_share'), 'tp': ex.get('target_price') or (r.get('value') if item == 'target' else None), 'method': ex.get('method'), 'date': ex.get('report_date')})
             shown = ' · '.join(x for x in [f"RNAV {vn(cell['rnav'])} đồng/cp" if cell['rnav'] else '', f"giá mục tiêu {vn(cell['tp'])} đồng/cp" if cell['tp'] else ''] if x)
         else:
-            cell['v'] = round(r['value'] * SCALE[r['unit']], 2)
+            cell['v'] = round(r['value'] * SCALE[r['unit']], 2) if not txt_only else None
+            cell['u'] = r['unit']
             if isinstance(ex.get('value_max'), (int, float)):
                 cell['vmax'] = round(ex['value_max'] * SCALE[r['unit']], 2)
             if ex.get('qualifier'):
@@ -72,7 +74,7 @@ def build(SRC, OUT, EVID, BLOCK, VAR, KEY, LABEL, SCALE, name):
                 cell['cu'] = ex['cap_unit']
             if ex.get('text'):
                 cell['text'] = ex['text']
-            shown = f"{vn(r['value'])} {r['unit']}"
+            shown = ex['text'] if txt_only else f"{vn(r['value'])} {r['unit']}"
         companies.setdefault(t, {})[KEY[item]] = cell
         evidence.append({'block': BLOCK, 'claim': f"{t} · {LABEL[item]} · {r.get('period') or ''}{' · ' + by if by else ''}", 'value': shown, 'url': r['url'],
                          'opened_at': r.get('opened_at'), 'quote': r['quote'], 'status': 'match', 'note': r.get('note', '')})

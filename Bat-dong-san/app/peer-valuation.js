@@ -29,13 +29,17 @@ const DEFAULT_CHARTS = ['pb_roe', 'gm_roe', 'yield', 'pe_evcf'];
 // Bộ chart và cột bảng theo ngành. Khóa = tên biến dữ liệu BCTC của trang (window.<KHÓA>).
 const PROFILES = {
   OIL_FIN: {charts: ['pe_ev', 'netcash', 'pb_roe', 'yield'], cols: ['pe', 'evebitda', 'pb', 'pbgap', 'ncash', 'dy', 'roe', 'ebitdam', 'assoc', 'dio'],
-    note: 'Ba khâu có mô hình khác nhau: so bội số trong cùng khâu. Lọc dầu (BSR) lợi nhuận theo crack spread, P/E một kỳ không đại diện chu kỳ.'},
+    note: 'Ba khâu có mô hình khác nhau: so bội số trong cùng khâu. Lọc dầu (BSR) lợi nhuận theo crack spread, P/E một kỳ không đại diện chu kỳ.',
+    manual: {key: 'OIL_MANUAL', title: 'Số vận hành và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
+      cols: ['rig', 'rigu', 'bl', 'vol', 'util', 'st', 'tp', 'upside'], foot: 'Giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.'}},
   RE_FIN: {charts: ['pb_roe', 'pb_lev', 'adv_mcap', 'st_cash'], cols: ['pb', 'pbgap', 'pe', 'roe', 'advmc', 'advrev', 'invta', 'nde', 'stcash', 'finpbt'],
     note: 'Lợi nhuận chủ đầu tư ghi nhận theo thời điểm bàn giao: P/B và tiền khách trả trước ổn định hơn P/E.',
     manual: {key: 'RE_MANUAL', title: 'Bán hàng, quỹ đất và RNAV', sub: 'Số doanh nghiệp công bố hoặc CTCK ước tính, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
       cols: ['ps', 'psplan', 'psfy', 'mcps', 'unb', 'unbrev', 'land', 'rnav', 'prnav', 'tp', 'upside']}},
   TEXTILE_FIN: {charts: ['pb_roe', 'gm_roe', 'yield', 'pe_ev'], cols: ['pe', 'evebitda', 'pb', 'pbgap', 'dy', 'roe', 'gm', 'ndebitda', 'doubt', 'assoc'],
-    note: 'VGT là công ty mẹ nắm nhiều công ty con, liên kết: P/E, EV/EBITDA không so trực tiếp với doanh nghiệp may.'},
+    note: 'VGT là công ty mẹ nắm nhiều công ty con, liên kết: P/E, EV/EBITDA không so trực tiếp với doanh nghiệp may.',
+    manual: {key: 'TEXTILE_MANUAL', title: 'Mô hình đơn hàng và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
+      cols: ['fob', 'ord', 'cus', 'wk', 'cap', 'util', 'rec', 'tp', 'upside'], foot: 'Giá mục tiêu là quan điểm của CTCK nêu tên, không phải của FinSuccess.'}},
   SHIP_FIN: {charts: ['pb_roe', 'pb_med', 'pe_ev', 'ev_ppe'], cols: ['pb', 'pbgap', 'evebitda', 'pe', 'evppe', 'dep', 'ebitdam', 'ndebitda', 'otherpbt', 'dy'],
     note: 'Vận tải biển định giá theo tài sản: P/E thấp ở đỉnh cước hoặc khi có lãi bán tàu không có nghĩa là rẻ. Chưa có P/NAV theo giá tàu thị trường.',
     manual: {key: 'SHIP_MANUAL', title: 'Đội tàu và giá mục tiêu', sub: 'Số doanh nghiệp công bố hoặc CTCK tổng hợp, bấm vào số để mở nguồn · ô trống: không tìm được nguồn mở được',
@@ -108,6 +112,19 @@ const MCOLS = {
   age: ['Tuổi tàu bình quân (năm)', x => x.age ? lk(n0(x.age.v) + (x.age.vmax ? '–' + n0(x.age.vmax) : ''), x.age, x.age.by) : null, 'Tuổi bình quân đội tàu theo doanh nghiệp hoặc CTCK'],
   tc: ['Định hạn / pool', x => x.tc ? lk(n0(x.tc.v) + '%', x.tc, x.tc.period) : null, 'Tỷ lệ đội tàu chạy hợp đồng thuê định hạn hoặc pool, phần còn lại chạy chuyến'],
   plan: ['Đầu tư tàu 2026', x => x.plan ? `<a href="${esc(x.plan.url)}" target="_blank" rel="noopener" title="${esc(x.plan.period || '')}">${esc(x.plan.text || '')}</a>` : null, 'Kế hoạch mua, đóng tàu năm 2026 theo tài liệu doanh nghiệp'],
+  // Cột chung cho số có đơn vị riêng từng mã (sản lượng, công suất…): hiện số + đơn vị như nguồn ghi.
+  rig: ['Giá thuê giàn (USD/ngày)', x => x.rig ? lk(n0(x.rig.v), x.rig, x.rig.period) : null, 'Giá thuê giàn khoan bình quân'],
+  rigu: ['Hiệu suất giàn', x => x.rigu ? lk(n0(x.rigu.v) + '%', x.rigu, x.rigu.period) : null, 'Hiệu suất sử dụng giàn khoan'],
+  bl: ['Hợp đồng tồn đọng', x => x.bl ? lk(nf(x.bl.v, x.bl.v % 1 ? 1 : 0) + ' ' + esc(x.bl.u || ''), x.bl, x.bl.period) : null, 'Giá trị hợp đồng đã ký chưa thực hiện (backlog)'],
+  vol: ['Sản lượng', x => x.vol ? lk(nf(x.vol.v, x.vol.v % 1 ? 1 : 0) + ' ' + esc(x.vol.u || ''), x.vol, x.vol.period) : null, 'Sản lượng tiêu thụ hoặc sản xuất theo nguồn; đơn vị khác nhau giữa các khâu, không so ngang'],
+  util: ['Công suất vận hành', x => x.util ? lk(n0(x.util.v) + '%', x.util, x.util.period) : null, 'Công suất vận hành so với thiết kế'],
+  st: ['Số cửa hàng', x => x.st ? lk(n0(x.st.v), x.st, x.st.period) : null, 'Số cửa hàng xăng dầu'],
+  fob: ['Tỷ trọng FOB', x => x.fob ? lk(n0(x.fob.v) + '%', x.fob, x.fob.period) : null, 'Tỷ trọng doanh thu theo phương thức FOB (tự mua nguyên liệu); còn lại chủ yếu CMT (gia công)'],
+  ord: ['Đơn hàng', x => x.ord ? `<a href="${esc(x.ord.url)}" target="_blank" rel="noopener" title="${esc(x.ord.period || '')}">${esc(x.ord.text || (fin(x.ord.v) ? n0(x.ord.v) + ' ' + (x.ord.u || '') : ''))}</a>` : null, 'Đơn hàng đã ký theo lời doanh nghiệp, kèm thời điểm nói'],
+  cus: ['Khách hàng lớn', x => x.cus ? lk(n0(x.cus.v) + '%', x.cus, x.cus.text || x.cus.period) : null, 'Tỷ trọng doanh thu của khách hàng lớn nhất hoặc nhóm khách hàng lớn theo nguồn'],
+  wk: ['Lao động', x => x.wk ? lk(n0(x.wk.v), x.wk, x.wk.period) : null, 'Số lao động'],
+  cap: ['Công suất (tấn/năm)', x => x.cap ? lk(n0(x.cap.v), x.cap, x.cap.period) : null, 'Công suất sợi thiết kế'],
+  rec: ['Sợi tái chế', x => x.rec ? lk(n0(x.rec.v) + '%', x.rec, x.rec.period) : null, 'Tỷ trọng sợi tái chế trong sản lượng hoặc doanh thu'],
   upside: ['So với giá hiện tại', (x, m) => x.rnav?.tp && fin(m.close) && m.close > 0 ? sgp((x.rnav.tp / (m.close * 1000) - 1) * 100) : null, 'Giá mục tiêu ÷ giá đóng cửa − 1']
 };
 // Hồi quy y = a + b·x trên các điểm có đủ số.
