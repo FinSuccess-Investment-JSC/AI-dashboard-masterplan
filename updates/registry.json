@@ -5092,6 +5092,78 @@
    ]
   },
   {
+   "id": "pharma.industry-financials",
+   "tier": "C",
+   "title": "Dược & y tế · tab Tài chính ngành: BCTC 8 doanh nghiệp niêm yết theo nhóm (sản xuất dược, bán lẻ dược, bệnh viện)",
+   "schedule": {
+    "type": "window",
+    "every": "weekly",
+    "day": "mon",
+    "at": "07:00",
+    "windows": [
+     [
+      "01-15",
+      "02-20"
+     ],
+     [
+      "04-15",
+      "05-20"
+     ],
+     [
+      "07-15",
+      "08-20"
+     ],
+     [
+      "10-15",
+      "11-20"
+     ]
+    ]
+   },
+   "publication": "BCTC quý công bố trong 30 ngày sau quý (45 ngày với quý IV có kiểm toán); VNDirect cập nhật theo công bố",
+   "source": {
+    "name": "VNDirect finfo · BCTC hợp nhất (bảng cân đối, KQKD, LCTT; quý và năm)",
+    "url": "https://api-finfo.vndirect.com.vn/v4/financial_statements"
+   },
+   "where": {
+    "page": "Duoc/index.html",
+    "file": "data/pharma-financials.js",
+    "blocks": [
+     "duoc-fin-breadth",
+     "duoc-fin-capex",
+     "duoc-fin-cip",
+     "duoc-fin-conversion",
+     "duoc-fin-cost",
+     "duoc-fin-debt",
+     "duoc-fin-dso",
+     "duoc-fin-dupont",
+     "duoc-fin-fcf",
+     "duoc-fin-funding",
+     "duoc-fin-intensity",
+     "duoc-fin-interest",
+     "duoc-fin-levdist",
+     "duoc-fin-leverage",
+     "duoc-fin-map",
+     "duoc-fin-margin",
+     "duoc-fin-method",
+     "duoc-fin-pnl",
+     "duoc-fin-pool",
+     "duoc-fin-ratios",
+     "duoc-fin-recv",
+     "duoc-fin-returns",
+     "duoc-fin-roic-cycle",
+     "duoc-fin-season"
+    ]
+   },
+   "how": "python scripts/fetch_pharma_financials.py && python scripts/build_pharma_financials.py (refresh-data.yml); giao diện Duoc/app/pharma-finance.js trong tab Tài chính ngành (#mt14), khung Duoc/app/pharma-frame.js",
+   "gates": [
+    "Số lấy nguyên văn từ VNDirect finfo, không chép tay; thiếu để null",
+    "KQKD: LNTT = LN thuần HĐKD + LN khác; LNST = LNTT − thuế; cân đối: tổng tài sản = nợ + VCSH",
+    "LCTT quý chỉ dùng cho năm có tổng 4 quý khớp số năm (lệch ≤ 5%); chế độ Năm dùng LCTT báo cáo năm",
+    "Mã lỗi tải giữ bản trước, ghi vào stale",
+    "Universe và nhóm ở scripts/pharma_fin_items.py; chưa khai cặp mẹ − con (DVN chưa đối chiếu); FRT là số hợp nhất gồm FPT Shop"
+   ]
+  },
+  {
    "id": "realestate.industry-financials",
    "tier": "C",
    "title": "BĐS dân cư · tab Tài chính ngành: BCTC 13 doanh nghiệp niêm yết theo nhóm (VHM, chủ đầu tư nhà ở khác, cho thuê & môi giới)",
