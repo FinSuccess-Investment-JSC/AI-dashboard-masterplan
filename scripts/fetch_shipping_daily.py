@@ -405,8 +405,8 @@ def main():
     page['lpg'] = {'reports': [{'date': r['date'], 'url': r['url'], 'values': {k: v for k, v in r['values'].items() if k.startswith('lpg_')}}
                                for _, r in sorted(fr.items()) if any(k.startswith('lpg_') for k in r['values'])]}
     em = page.get('eastmoney', {}).get('series', {})
-    for k in list(em):  # the page uses East Money only for BDTI/BCTI; the rest stay in the .json for cross-checks
-        if k not in ('bdti', 'bcti'):
+    for k in list(em):  # the page uses East Money for BDTI/BCTI and, from 29/11/2026, BDI since 2019 (Tài chính ngành › biên & cước); the rest stay in the .json
+        if k not in ('bdti', 'bcti', 'bdi'):
             em.pop(k)
     OUT.with_suffix('.js').write_text('window.SHIPPING_DAILY = ' + json.dumps(page, ensure_ascii=False) + ';\n')
     print({'bdi': out.get('bdi', {}).get('records', [[None]])[-1], **{k: v['records'][-1] for k, v in stocks.items()}})

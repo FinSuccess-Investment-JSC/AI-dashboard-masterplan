@@ -131,11 +131,14 @@ const CFG = {
     {k: 'docs', t: 'Mới duyệt gần đây'},
   ]},
   FIN: {fin: 'Lợi nhuận, biên, đòn bẩy và dòng tiền của 8 doanh nghiệp vận tải biển, cộng gộp theo phân khúc từ BCTC quý.',
-    companies: 'Bảng so sánh, xu hướng theo quý, kế hoạch – kết quả, biến quyết định từng mã và P/E rổ.',
-    items: [  // P/E rổ (vt-03) cuối cùng
+    companies: 'Bảng so sánh, xu hướng theo quý, kế hoạch – kết quả và biến quyết định từng mã.',
+    items: [
       {q: 'Doanh nghiệp nào tăng trưởng và biên tốt nhất qua các quý?', id: 'vt-fn-cmp', main: ['.financial-comparison']},
       {q: 'Kế hoạch 2026 của từng mã đã hoàn thành bao nhiêu?', id: 'vt-fn-plan', main: ['vt-60']},
       {q: 'Mỗi nhóm doanh nghiệp phụ thuộc biến nào?', id: 'vt-fn-drivers', main: ['vt-04']},
+    ],
+    // 29/11/2026: giá cổ phiếu và P/E rổ chuyển từ 02 sang cuối sub-tab 03 Định giá (peer-valuation.js dựng pane đó sau khi trang tải xong).
+    valuation: [
       {q: 'Cổ phiếu vận tải đã tăng, giảm bao nhiêu từ đầu năm?', id: 'vt-fn-stocks', main: ['vt-66'], sup: ['vt-67']},
       {q: 'P/E của rổ vận tải đường thủy đang ở đâu so với lịch sử?', id: 'vt-fn-pe', main: ['vt-03']},
     ]},
@@ -409,6 +412,12 @@ function financePane() {
   const cb = el('div', 'of-body'); subs[1].p.append(cb);
   const rest = $('.majorpane[data-tab="mt1"] .of-rest');
   let qn = 0; CFG.FIN.items.forEach(it => { const q = question(`2.${qn + 1}`, it); if (q) { qn++; cb.append(q); } });
+  // Thẻ dành cho sub-tab 03 Định giá: lấy ra ngay (để không rơi vào "Nội dung khác"), gắn khi peer-valuation.js dựng xong pane; quá 30 giây chưa có thì để lại ở 02.
+  const vq = (CFG.FIN.valuation || []).map(it => question('', it)).filter(Boolean);
+  vq.forEach(q => q.querySelector('.pp-num')?.remove());  // sub-tab Định giá không đánh số mục
+  if (vq.length) { let n = 0; const place = () => { const body = $('#of-mt14-valuation .of-body');
+    if (body?.querySelector('.pv-wrap')) { vq.forEach(q => body.append(q)); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
+    else if (n++ < 75) setTimeout(place, 400); else vq.forEach(q => cb.append(q)); }; setTimeout(place, 0); }
   if (rest && !rest.querySelector('[data-block-id],canvas,svg,table,.card')) rest.remove();
   if (!cb.children.length) cb.insertAdjacentHTML('beforeend', GAP('Chưa có dữ liệu so sánh doanh nghiệp.'));
   pn.replaceChildren(sec);

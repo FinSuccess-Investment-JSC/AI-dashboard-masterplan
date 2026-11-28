@@ -634,3 +634,16 @@ Hợp đồng dữ liệu cho IT: block ID, source IDs, update_kind, observation
   - 1.7 bảng tỷ số: 15 dòng chính luôn hiện, đủ 42 dòng trong mục gấp; dòng thanh toán lãi vay ghi đúng công thức (LNTT + lãi vay)/lãi vay; trung vị theo số mã thực.
 - **Sub-tab 03 Định giá** (`PROFILES.TEXTILE_FIN`, mọi bản `peer-valuation.js`): cột Ngày tồn kho thay Dự phòng ÷ phải thu.
 - Chưa có: tỷ trọng FOB/CMT theo mã (bảng nhập tay còn trống nhiều), chi phí nhân công (BCTC quý không tách), giá bán sợi filament của STK.
+
+## 51. Vận tải biển › Tài chính ngành: thước đo theo chủ tàu (29/11/2026, người dùng duyệt "làm cả 7" sau bản rà soát)
+- **Độ phủ 80%** như §48 (`Van-tai-bien/app/ship-finance.js`): LCTT quý VNDirect trước 2024 chỉ có ở 2–6/8 mã (PVT gần như trống), EBITDA TTM cả rổ từng nhảy 790 → 6.461 tỷ giữa Q3 và Q4/2024 chỉ vì rổ từ 3 lên 8 mã. Chart đường dựa vào LCTT quý dùng `runs: true`: chỉ vẽ đoạn liền gần nhất (bộ vẽ nối thẳng qua chỗ trống).
+- **KPI:** LNST (ghi hai mã lớn nhất chiếm bao nhiêu %, công ty con gộp về mẹ: PVT gồm PVP + HAH = 81% ở Q3/2026), EBIT, lợi nhuận khác ÷ LNTT, ROE + trung vị, mua ròng TSCĐ, nợ vay ÷ TSCĐ ròng + trung vị. Bỏ Doanh thu (PVT, GSP, VOS có mảng thương mại biên mỏng, chưa đối chiếu thuyết minh bộ phận), CAPEX, XDCB dở dang (0,1–0,3% tổng tài sản), nợ vay ròng/EBITDA cả rổ (4 mã tiền ròng bù 4 mã vay).
+- **1.1** thêm "Lợi nhuận trước thuế đến từ chạy tàu hay bán tàu?" (hàng rời TTM Q3/2026: lợi nhuận khác 401/607 tỷ LNTT); chart đầu mặc định EBIT; bỏ bảng nhiệt mùa vụ (doanh thu mỗi quý 18–28% cả năm, không có quy luật).
+- **1.2 Biên & cước:** biên theo phân khúc hoặc doanh nghiệp + trung vị; chart BDTI, BCTI, BDI bình quân cùng chu kỳ (`SHIPPING_DAILY.eastmoney.series`, quý dưới 30 phiên để trống). `fetch_shipping_daily.py` giữ thêm `bdi` (East Money, từ 2019) trong file trang. Tương quan biên gộp quý nhóm tàu dầu với BCTI: cùng quý 0,24, trễ 2 quý 0,50 (đội tàu cho thuê định hạn nhiều). Chưa có chỉ số cước container theo phiên.
+- **1.3 Đội tàu** (thay CAPEX & dở dang): mua ròng = CAPEX − tiền thu thanh lý TSCĐ; hao mòn lũy kế ÷ nguyên giá; CAPEX/khấu hao; EBITDA ÷ nguyên giá TSCĐ bình quân. TSCĐ hữu hình gồm cả cảng, kho, FSO (HAH, PVT), ghi dưới chart.
+- **1.4 Dòng tiền & cổ tức:** bỏ phải thu, DSO (23–70 ngày, ổn định); nguồn tài trợ và FCF có thêm tiền thu thanh lý TSCĐ.
+- **1.5:** đòn bẩy theo phân khúc hoặc doanh nghiệp (nợ vay ÷ TSCĐ ròng, nợ vay ròng/EBITDA, nợ vay/VCSH) + trung vị; bỏ chart 4 hệ số cộng gộp.
+- **1.6:** ROCE thay ROIC (ROIC trừ hết tiền nên VTO ra 72%); DuPont chọn được từng mã; bản đồ ROCE × mức đã khấu hao; bỏ "ROIC và chu kỳ vốn".
+- **Sub-tab 02 → 03:** hai mục giá cổ phiếu từ đầu năm và P/E rổ (`vt-66`, `vt-67`, `vt-03`) chuyển xuống cuối sub-tab 03 Định giá (`CFG.FIN.valuation` trong `ship-frame.js`, chờ `peer-valuation.js` dựng pane; quá 30 giây thì để lại ở 02).
+- Chưa có: giá tàu thị trường (P/NAV), chi phí nhiên liệu, doanh thu tách mảng thương mại, tàu thuê tài chính trong CAPEX.
+
